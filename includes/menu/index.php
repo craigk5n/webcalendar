@@ -269,8 +269,10 @@ function jscMenu_menu ( $title='', $url = false, $translate=true ) {
 function jscMenu_item ( $icon, $title='', $url, $translate=true, $target = '' ) {
   global $menuScript;
 
+  // escape single quite to avoid javascript error
+  $str = preg_replace ( "/'/", "\\'", $title );
   $menuScript .= '[\'<img src="includes/menu/icons/' . $icon
-   . '" alt="'.$title.'" />\',\'' . ( $translate ? translate ( $title ) : $title )
+   . '" alt="'. $str .'" />\',\'' . ( $translate ? translate ( $str ) : $str )
    . "','$url','$target',''],\n";
 }
 
@@ -279,8 +281,10 @@ function jscMenu_item ( $icon, $title='', $url, $translate=true, $target = '' ) 
 function jscMenu_sub_menu ( $icon, $title='', $translate=true  ) {
   global $menuScript;
 
+  // escape single quite to avoid javascript error
+  $str = preg_replace ( "/'/", "\\'", $title );
   $menuScript .= '[\'<img src="includes/menu/icons/' . $icon
-   . '" alt="" />\',\'' . ( $translate ? translate ( $title ) : $title )
+   . '" alt="" />\',\'' . ( $translate ? translate ( $str ) : $str )
    . "','',null,'',\n";
 }
 
