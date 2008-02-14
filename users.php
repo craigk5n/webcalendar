@@ -38,7 +38,7 @@ if ( $is_admin ) {
   $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
 }
 
-$currenttab = getPostValue ( 'tab' );
+$currenttab = getValue ( 'tab' );
 $currenttab = ( ! empty ( $currenttab) ? $currenttab : 'users' );
 
 $BodyX = 'onload="showTab(\'' . $currenttab . '\');"';
