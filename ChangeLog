@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b1 (?? ??? 2007)
+ - Fix bug: 'Remote Calendar' menu link not brining up correct tab on page
  - Fix bug: single quote in nonuser name causes JS error
  - Fix bug [ 1851371 ] Notification not sent on description change
  - Fix bug [ 1839882 ] help/guide pages blocked (non auth)
