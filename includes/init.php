@@ -91,7 +91,7 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
   $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR,
   $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG, $SCRIPT, $PUBLIC_ACCESS_FULLNAME,
-  $PUBLIC_ACCESS;
+  $PUBLIC_ACCESS, $is_admin;
 
   $lang = $ret = '';
   // Remember this view if the file is a view_x.php script.
