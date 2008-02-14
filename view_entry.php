@@ -248,6 +248,25 @@ if ( empty ( $error ) && ! $can_view && !
     $can_view = true;
 }
 
+// Final case.  If 'public visible by default' is on and 'public' is
+// a participant to this event, then anyone can view the event.
+if ( ! $can_view && ! empty ( $PUBLIC_ACCESS_DEFAULT_VISIBLE ) &&
+  $PUBLIC_ACCESS_DEFAULT_VISIBLE == 'Y' ) {
+  // check to see if 'public' was a participant
+  $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user ' .
+    "WHERE cal_id = ? AND cal_login = '__public__'" .
+    'AND cal_status IN (\'A\',\'W\')', array ( $id ) );
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      if ( ! empty ( $row[0] ) && $row[0] == '__public__' ) {
+        // public is participant
+        $can_view = true;
+      }
+    }
+    dbi_free_result ( $res );
+  }
+}
+
 $printerStr = generate_printer_friendly ( 'view_entry.php' );
 
 print_header ();
