@@ -146,7 +146,7 @@ function export_get_attendee( $id, $export ) {
     } else {
       $user = $userlist[$userPos];
       $attendee[$count] = 'ATTENDEE;ROLE=';
-      $attendee[$count] .= ( $row[2] == $user[3] ) ? 'OWNER;': 'ATTENDEE;';
+      $attendee[$count] .= ( $row[0] == $row[2] ) ? 'OWNER;': 'ATTENDEE;';
       // Note: Ray said Outlook likes 'STATUS', but RFC2445 says it
       // should be 'PARTSTAT'.
       //$attendee[$count] .= 'STATUS=';
@@ -707,6 +707,8 @@ function save_uid_for_event ( $importId, $id, $uid ) {
   // event?  If the original author sends an update or if the ical client
   // tries to update it?  I'm not really sure, but we will assume that
   // events imported into webcalendar become property of webcalendar.
+  dbi_execute ( 'DELETE FROM webcal_import_data WHERE ' .
+    'cal_id = ? AND cal_login = ?', array ( $id, $login ) );
   $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
     cal_login, cal_import_type, cal_external_id ) VALUES ( ?, ?, ?, ?, ? )';
   // do_debug ( "SQL: $sql" );
