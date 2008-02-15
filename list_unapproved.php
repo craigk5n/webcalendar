@@ -55,6 +55,10 @@ $eventinfo = $noret = '';
 function list_unapproved ( $user ) {
   global $eventinfo, $key, $login, $NONUSER_ENABLED, $noret, $temp_fullname;
 
+  $rssLink = '<a href="rss_unapproved.php?user=' .
+    htmlspecialchars ( $user ) . '"><img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - "' .
+    htmlspecialchars ( $temp_fullname ) . '" border="0"/></a>';
+
   $count = 0;
   $ret = '';
   user_load_variables ( $user, 'temp_' );
@@ -111,7 +115,7 @@ function list_unapproved ( $user ) {
 
       $ret .= ( $count == 0 ? '
       <tr>
-        <td colspan="5"><h3>' . $temp_fullname . '</h3></td>
+        <td colspan="5"><h3>' . $temp_fullname . '&nbsp;' . $rssLink . '</h3></td>
       </tr>' : '' ) . '
       <tr ' . ( $count % 2 == 0 ? '' : 'class="odd"' ) . '>
         <td width="5%" align="right"><input type="checkbox" name="'
@@ -162,7 +166,8 @@ function list_unapproved ( $user ) {
         <td colspan="5" class="nounapproved">'
     // translate ( 'No unapproved entries for' )
     . str_replace ( 'XXX', $temp_fullname,
-      translate ( 'No unapproved entries for XXX.' ) ) . '</td>
+      translate ( 'No unapproved entries for XXX.' ) ) .
+      '&nbsp;' . $rssLink . '</td>
       </tr>';
 
   return $ret;
