@@ -3117,8 +3117,8 @@ function getReminders ( $id, $display = false ) {
         $d = $h = $minutes = 0;
         if ( $reminder['offset'] > 0 ) {
           $minutes = $reminder['offset'];
-          $d = intval ( $minutes / 86400 );
-          $minutes -= ( $d * 86400 );
+          $d = intval ( $minutes / (24*60) );
+          $minutes -= ( $d * (24*60) );
           $h = intval ( $minutes / 60 );
           $minutes -= ( $h * 60 );
         }
