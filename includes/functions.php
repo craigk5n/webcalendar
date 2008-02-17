@@ -2030,8 +2030,9 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
     } elseif ( $rpt_type == 'weekly' ) {
       $r = 0;
       $dow = date ( 'w', $date );
+      $cdate = $date - ( $dow * 86400 );
       if ( ! empty ( $jump ) && $Count == 999 ) {
-        while ( $cdate < $jump ) {
+        while ( ($cdate+604800) < $jump ) {
           $cdate = add_dstfree_time ( $cdate, 604800, $interval );
         }
       }
