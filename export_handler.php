@@ -199,8 +199,8 @@ function transmit_header ( $mime, $file ) {
   // header ( 'Content-Type: application/octet-stream' );
   header ( 'Content-Type: ' . $mime );
   header ( 'Content-Disposition: attachment; filename="' . $file . '"' );
-  header ( 'Pragma: no-cache' );
-  header ( 'Cache-Control: no-cache' );
+  header ( 'Pragma: private' );
+  header ( 'Cache-control: private, must-revalidate' );
 }
 
 /* ********************************** */

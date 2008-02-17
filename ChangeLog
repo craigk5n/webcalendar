@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fix bug [ 1893997 ] - iCal export from Outlook over https (thanks neufeind)
  - Fix bug: not auth for certain events where public is participant
  - Fix bug: 'Remote Calendar' menu link not brining up correct tab on page
  - Fix bug: single quote in nonuser name causes JS error
