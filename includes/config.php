@@ -243,6 +243,8 @@ function do_config ( $fileLoc ) {
     }
     dbi_close ( $c );
   } else { // Must mean we don't have a settings.php file.
+    // NOTE: if we get a connect error when running send_reminders.php,
+    // we may want to show that error message here.
     // &amp; does not work here...leave it as &.
     header ( 'Location: install/index.php?action=mismatch&version=UNKNOWN' );
     exit;
