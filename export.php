@@ -83,7 +83,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="use_all_dates" id="exportall" '
- . 'value="y" onchange="toggle_datefields( \'dateArea\', this );" />
+ . 'value="y" onclick="toggle_datefields( \'dateArea\', this );" />
             <label for="exportall">' . translate ( 'Export all dates' )
  . '</label>
           </td>
