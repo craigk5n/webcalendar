@@ -3,6 +3,8 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b1 (?? ??? 2007)
+ - Fix bug [ 1882034 ] weekly repeat not showing in first week of some months
+   (thanks neufeind)
  - Apply patch [ 1895173 ] Fix for reminder-format
  - Fix bug [ 1893997 ] iCal export from Outlook over https (thanks neufeind)
  - Fix bug: not auth for certain events where public is participant
