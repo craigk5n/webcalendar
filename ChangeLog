@@ -4,6 +4,8 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fix bug [ 1844751 ] Events on Sundays not displayed in DayByTime view
+   (thanks neufeind)
  - Fix bug [ 1882034 ] weekly repeat not showing in first week of some months
    (thanks neufeind)
  - Apply patch [ 1895173 ] Fix for reminder-format

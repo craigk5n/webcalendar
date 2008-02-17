@@ -115,7 +115,7 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
-$wkend = $wkstart + ( ONE_DAY * 6 );
+$wkend = $wkstart + ( ONE_DAY * 7 );
 
 if ( ! $fit_to_window )
   $time_w = '100px';
