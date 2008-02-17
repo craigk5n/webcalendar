@@ -123,7 +123,7 @@ Bottom: fine
 Top: inizio
 Anyone: Chiuque
 Participant: Participante
-Settings: Settaggi
+Settings: Impostazioni
 Groups: Gruppi
 NonUser Calendars: Calendari dei non utenti
 Other: Altro
@@ -144,7 +144,7 @@ Table cell background for other month: Colore sfondo cella per altri mesi
 Week number color: Colore numero settimana
 Event popup background: Sfondo della popup degli eventi
 Event popup text: Testo della popup degli eventi
-System Settings: Settaggi del sistema
+System Settings: Impostazioni del sistema
 Help: Guida
 System options: Opzioni di sistema
 app-name-help: Specifica il nome dell'applicazione che apparir&agrave; nella barra del titolo del browser per tutte le pagine e sulla pagina di login. Il valore che si specifica qui sar&agrave; cercato nei file delle traduzioni, permettendo di fornire titoli diversi per linguaggi diversi
@@ -235,17 +235,17 @@ allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calenda
 Allow viewing other users calendars: Permetti la visione dei calendari degli altri utenti
 require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad Accesso Pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
 Require event approvals: Richiedi che gli eventi siano approvati
-display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se settato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se settato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
+display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se impostato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se impostato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
 Display unapproved: Mostra eventi non approvati
-conflict-check-help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo setti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo setti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia settare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
+conflict-check-help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo imposti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo imposti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia impostare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
 Check for event conflicts: Controlla se esistono conflitti fra gli eventi
 Yes: S&igrave;
 No: =
-conflict-months-help: Se il controllo dei conflitti &egrave; ablitato ("Controlla se esistono conflitti fra gli eventi" &egrave; settato a "No"), questo specifica quanti mesi futuri  includere nel controllo. Se verifichi che l'aggiunta di un evento dura molto tempo, riduci questo numero
+conflict-months-help: Se il controllo dei conflitti &egrave; ablitato ("Controlla se esistono conflitti fra gli eventi" &egrave; impostato a "No"), questo specifica quanti mesi futuri  includere nel controllo. Se verifichi che l'aggiunta di un evento dura molto tempo, riduci questo numero
 Conflict checking months: Controllo dei conflitti mensile
 conflict-check-override-help: Permette agli utenti di sovrascrivere conflitti degli eventi e di programmare due o pi&ugrave; eventi per lo stesso istante
 Allow users to override conflicts: Consenti agli utenti di sovrascrivere i conflitti
-limit-appts-help: Permette all'amministratore di sistema di settare un limite globale sul numero di appuntamenti che un singolo utente pu&ograve; avere in un singolo giorno
+limit-appts-help: Permette all'amministratore di sistema di impostare un limite globale sul numero di appuntamenti che un singolo utente pu&ograve; avere in un singolo giorno
 Limit number of timed events per day: Limita il numero degli eventi del giorno
 limit-appts-number-help: Specifica il massimo numero di eventi che un utente pu&ograve; avere in un giorno
 Maximum timed events per day: Massimo numero di eventi al giorno
@@ -268,7 +268,7 @@ Allow HTML in Description: Permetti HTML nella Descrizione
 Popups: Finestre transitorie
 disable-popups-help: Disablilita finestre transitorie nella vista calendario
 Disable Pop-Ups: Disablilita finestre transitorie
-popup-includes-siteextras-help: Se abilitato nei popup degli eventi sar&agrave abilitato nel file site_extras.php il settaggio del campo permetti eventi personalizzati
+popup-includes-siteextras-help: Se abilitato nei popup degli eventi sar&agrave abilitato nel file site_extras.php l'impostazione del campo permetti eventi personalizzati
 Display Site Extras in popup: Mostra gli Extra per il Sito in un popup
 popup-includes-participants-help: Se impostato, la scheda evento mostra i partecipanti
 Display Participants in popup: Mostra partecipanti in scheda evento
@@ -348,7 +348,7 @@ Admin and owner can always add attachments if enabled.: Amministratore e proprie
 allow-comments-help: Consenti agli utenti di aggiungere commenti agli eventi
 Allow comments to events: Consenti commenti in eventi
 Admin and owner can always add comments if enabled.: Amministratore e proprietario possono sempre aggiungere commenti, se abilitato.
-email-enabled-help: Attiva o disattiva l'invio di e-mail di notifica ed avviso. Settalo a "No", se il tuo server non &egrave; propriamente configurato per l'invio di e-mail
+email-enabled-help: Attiva o disattiva l'invio di e-mail di notifica ed avviso. Impostalo a "No", se il tuo server non &egrave; propriamente configurato per l'invio di e-mail
 Email enabled: Abilita e-mail
 email-default-sender: Specifica l'indirizzo e-mail da cui figurano provenire le e-mail quando si inviano gli avvisi
 Default sender address: Indirizzo del mittente standard
@@ -364,7 +364,7 @@ email-smtp-username: Nome utente SMTP (con autenticazione)
 SMTP Username: Nome utente SMTP
 email-smtp-password: Parola chiave SMTP (con autenticazione)
 SMTP Password: Parola chiave SMTP
-Default user settings: Settaggi dell'utente standard
+Default user settings: Impostazioni dell'utente standard
 email-event-reminders-help: Specifica se inviare o  meno avvisi per gli eventi
 Event reminders: Segnala eventi in e-mail
 email-event-added: Segnala nuovo evento
@@ -396,7 +396,7 @@ Preferences: Preferenze
 Control Panel: Pannello di controllo
 Users: Utenti
 Account: Conto
-Categories: Categoris
+Categories: Categorie
 Views: Viste
 Layers: Livelli
 Reports: Rapporti
@@ -689,7 +689,7 @@ You can only create one layer for each user.: Tu puoi creare un livello solo per
 ########################################
 # Page: edit_nonusers.php
 #
-NONUSER_PREFIX not set: NONUSER_PREFIX non &egrave; stato settato nel file config.php.
+NONUSER_PREFIX not set: NONUSER_PREFIX non &egrave; stato impostato nel file config.php.
 word characters only: pu&ograve; contenere solo caratteri alfanumerici (a-zA-Z_0-9)
 Add User: Aggiungi Utente
 Edit User: Modifica Utente
@@ -991,7 +991,7 @@ Enable layers: Abilita livelli
 Layers are currently: I livelli sono attualmente
 Disable Layers: Disabilita Livelli
 Click here: Clicca qui
-to modify the layers settings for the: per modificare i settaggi per
+to modify the layers settings for the: per modificare le impostazioni per
 calendar: calendario
 Add layer: Crea un livello
 
@@ -1686,9 +1686,9 @@ Password Incorrect: Credenziali non valide
 Invalid Login: Credenziali non valide
 Display Errors: Mostra errori
 File Uploads: Carico archivi
-required only if Remote Calendars are used: richiesto solo se solo usati <i>calendari remoti</i>
-(required only if Remote Calendars are used): (richiesto solo se solo usati <i>calendari remoti</i>)
-Allow URL fopen: Consenti URL <i>fopen</i> (richiesto solo se solo usati <i>calendari remoti</i>)
+required only if Remote Calendars are used: richiesto solo se usati <i>calendari remoti</i>
+(required only if Remote Calendars are used): (richiesto solo se usati <i>calendari remoti</i>)
+Allow URL fopen: Consenti URL <i>fopen</i> (richiesto solo se usati <i>calendari remoti</i>)
 Safe Mode: =
 Safe Mode Allowed Vars: =
 needed for Gradient Image Backgrounds: Necessario per immagini di sfondo a gradiente
