@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b1 (?? ??? 2007)
+ - Apply PATCH [ 1894150 ] corrections to 'translations/Italian.txt'
  - Fix bug [ 1844751 ] Events on Sundays not displayed in DayByTime view
    (thanks neufeind)
  - Fix bug [ 1882034 ] weekly repeat not showing in first week of some months
