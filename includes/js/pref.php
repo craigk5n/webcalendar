@@ -3,6 +3,24 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
   global $ALLOW_COLOR_CUSTOMIZATION;
 ?>
+
+function init_pref () {
+  reminder_handler ();
+
+  return true;
+}
+
+// Gets called on page load and when user changes setting for
+// "Email Reminders".
+function reminder_handler () {
+  var doReminders = document.prefform.pref_EMAIL_REMINDER[0].checked;
+  if ( doReminders ) {
+    makeVisible ( 'reminder_attachment' );
+  } else {
+    makeInvisible ( 'reminder_attachment' );
+  }
+}
+
 function valid_form ( form ) {
   var err = "";
   var colorErr = false;
@@ -50,6 +68,8 @@ function setTab( tab ) {
   showTab(tab);
   return false;
 }
+
+
 
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
