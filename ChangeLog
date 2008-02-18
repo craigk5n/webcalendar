@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b1 (?? ??? 2007)
+ - Add option to include iCalendar attachment to reminder emails
  - Apply PATCH [ 1878056 ] Call toggle_datefields() JavaScript function with onClick
  - Apply PATCH [ 1894150 ] corrections to 'translations/Italian.txt'
  - Fix bug [ 1844751 ] Events on Sundays not displayed in DayByTime view

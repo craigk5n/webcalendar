@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 09-12-2007
+# Translation last updated on 02-18-2008
 
 
 ################################################################################
@@ -667,6 +667,7 @@ A new appointment has been made for you by: A new appointment has been made for 
 XXX has made a new appointment.: XXX has made a new appointment.
 An appointment has been updated by: An appointment has been updated by
 XXX has updated an appointment.: XXX has updated an appointment.
+Security violation!: Security violation!
 You must enter the anti-spam text on the previous page.: You must enter the anti-spam text on the previous page.
 The following conflicts with the suggested time: The following conflicts with the suggested time
 User removed from participants list.: User removed from participants list.
@@ -1083,6 +1084,7 @@ Page may need to be reloaded for new Theme to take effect: Page may need to be r
 Email format preference: Email format preference
 HTML: HTML
 Plain Text: Plain Text
+Reminder includes iCalendar attachment: Reminder includes iCalendar attachment
 display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
 allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
@@ -1590,11 +1592,6 @@ Event Imported: Event Imported
 bytes: bytes
 kb: kb
 Mb: Mb
-
-########################################
-# Page: includes/classes/WebCalendar.class
-#
-Security violation!: Security violation!
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
