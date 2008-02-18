@@ -13,12 +13,20 @@ function init_pref () {
 // Gets called on page load and when user changes setting for
 // "Email Reminders".
 function reminder_handler () {
-  var doReminders = document.prefform.pref_EMAIL_REMINDER[0].checked;
-  if ( doReminders ) {
-    makeVisible ( 'reminder_attachment' );
-  } else {
-    makeInvisible ( 'reminder_attachment' );
+<?php
+  if ( $GLOBALS['SEND_EMAIL'] == 'Y' ) {
+?>
+  if ( document.prefform.pref_EMAIL_REMINDER ) {
+    var doReminders = document.prefform.pref_EMAIL_REMINDER[0].checked;
+    if ( doReminders ) {
+      makeVisible ( 'reminder_attachment' );
+    } else {
+      makeInvisible ( 'reminder_attachment' );
+    }
   }
+<?php
+  }
+?>
 }
 
 function valid_form ( form ) {
