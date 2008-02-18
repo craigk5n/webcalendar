@@ -306,8 +306,8 @@ subscriptions-enabled-help: Bestimmt ob &#39;REMOTE&#39;-Teilnehmer andere WebKa
 Allow remote subscriptions: &#39;REMOTE&#39;-Abos aktivieren
 remotes-enabled-help: Erm&ouml;glicht das Laden von ICS Dateien unter Verwendung einer URL
 Allow remote calendars: Erm&ouml;gliche externe (andere) Kalender
-rss-enabled-help: Bestimmt, ob ein Kalender &uuml;ber RRS-Feed erreicht werden kann.
-Enable RSS feed: RRS-Feed aktivieren
+rss-enabled-help: Bestimmt, ob ein Kalender &uuml;ber RSS-Feed erreicht werden kann.
+Enable RSS feed: RSS-Feed aktivieren
 categories-enabled-help: Aktiviert Unterst&uuml;tzung f&uuml;r Terminkategorien.
 Categories enabled: Kategorien aktivieren
 icon_upload-enabled-help: Wenn aktiviert, k&ouml;nnen Benutzer Icons f&uuml;r Kategorien hochladen
