@@ -171,7 +171,7 @@ $openStr ="\"window.open( 'edit_template.php?type=%s','cal_template','dependent,
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( ! empty ( $currenttab) ? $currenttab : 'settings' );
 
-$BodyX = 'onload="altrows();showTab( \'' . $currenttab . '\' );"';
+$BodyX = 'onload="init_pref();altrows();showTab( \'' . $currenttab . '\' );"';
 $INC = array ('js/visible.php', 'js/pref.php');
 print_header($INC, '', $BodyX);
 ?>
@@ -660,6 +660,11 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <tr><td class="tooltip">
  <?php etranslate ( 'Event reminders' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_REMINDER' ) ?>
+</td></tr>
+
+<tr><td class="tooltip">
+ <?php etranslate ( 'Includes iCalendar attachments' )?>:</td><td>
+ <?php echo print_radio ( 'EMAIL_ATTACH_ICS', '', '', 0 ) ?>
 </td></tr>
 
 <tr><td class="tooltip">

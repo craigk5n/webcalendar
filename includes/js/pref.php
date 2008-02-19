@@ -4,31 +4,6 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
   global $ALLOW_COLOR_CUSTOMIZATION;
 ?>
 
-function init_pref () {
-  reminder_handler ();
-
-  return true;
-}
-
-// Gets called on page load and when user changes setting for
-// "Email Reminders".
-function reminder_handler () {
-<?php
-  if ( $GLOBALS['SEND_EMAIL'] == 'Y' ) {
-?>
-  if ( document.prefform.pref_EMAIL_REMINDER ) {
-    var doReminders = document.prefform.pref_EMAIL_REMINDER[0].checked;
-    if ( doReminders ) {
-      makeVisible ( 'reminder_attachment' );
-    } else {
-      makeInvisible ( 'reminder_attachment' );
-    }
-  }
-<?php
-  }
-?>
-}
-
 function valid_form ( form ) {
   var err = "";
   var colorErr = false;
