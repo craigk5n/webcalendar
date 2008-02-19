@@ -800,8 +800,11 @@ if ( empty ( $error ) ) {
 
             $msg .= $url . "\n\n";
           }
+          $wantsAttach = get_pref_setting ( $old_participant,
+            'EMAIL_ATTACH_ICS', 'N' );
+          $attachId = ( $wantsAttach == 'Y' ? $id : '' );
           $mail->WC_Send ( $login_fullname, $tempemail,
-            $tempfullname, $name, $msg, $htmlmail, $from );
+            $tempfullname, $name, $msg, $htmlmail, $from, $attachId );
           activity_log ( $id, $login, $old_participant, LOG_NOTIFICATION,
             translate ( 'User removed from participants list.' ) );
         }
@@ -924,9 +927,12 @@ if ( empty ( $error ) ) {
 
             $msg .= "\n\n" . $url;
           }
+          $wantsAttach = get_pref_setting ( $participants[$i],
+            'EMAIL_ATTACH_ICS', 'N' );
+          $attachId = ( $wantsAttach == 'Y' ? $id : '' );
           // Use WebCalMailer class.
           $mail->WC_Send ( $login_fullname, $tempemail,
-            $tempfullname, $name, $msg, $htmlmail, $from );
+            $tempfullname, $name, $msg, $htmlmail, $from, $attachId );
           activity_log ( $id, $login, $participants[$i], LOG_NOTIFICATION, '' );
         }
       }
@@ -998,7 +1004,8 @@ if ( empty ( $error ) ) {
         // TODO:  Move this code into a function...
         if ( $EXTERNAL_NOTIFICATIONS == 'Y' && $SEND_EMAIL != 'N' &&
           strlen ( $ext_emails[$i] ) > 0 ) {
-          if ( ( ! $newevent && $EXTERNAL_UPDATES == 'Y' ) || $newevent ) {
+          if ( ( ! $newevent && isset ( $EXTERNAL_UPDATES ) &&
+            $EXTERNAL_UPDATES == 'Y' ) || $newevent ) {
             $fmtdate = ( $timetype == 'T'
               ? date ( 'Ymd', $eventstart ) : gmdate ( 'Ymd', $eventstart ) );
             // Strip [\d] from duplicate Names before emailing.
@@ -1018,6 +1025,7 @@ if ( empty ( $error ) ) {
             // Add Site Extra Date if permitted.
             . $extra_email_data;
             // Don't send HTML to external adresses.
+            // Always attach iCalendar file to external users
             $mail->WC_Send ( $login_fullname, $ext_emails[$i],
               $ext_names[$i], $name, $msg, 'N', $from, $id );
           }
