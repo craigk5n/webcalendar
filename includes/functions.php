@@ -2793,20 +2793,25 @@ function get_plugin_list ( $include_disabled = false ) {
  *
  * @param string $user     User login we are getting preference for
  * @param string $setting  Name of the setting
+ * @param stirng $defaultSetting	Value to return if no value foun
+ *			in the database
  *
  * @return string  The value found in the webcal_user_pref table for the
  *                 specified setting or the sytem default if no user settings
  *                 was found.
  */
-function get_pref_setting ( $user, $setting ) {
-  $ret = '';
+function get_pref_setting ( $user, $setting, $defaultValue='' ) {
+  $ret = $defaultValue;
   // Set default.
   if ( ! isset ( $GLOBALS['sys_' . $setting] ) ) {
     // This could happen if the current user has not saved any prefs yet.
-    if ( ! empty ( $GLOBALS[$setting] ) )
+    if ( ! empty ( $GLOBALS[$setting] ) ) {
       $ret = $GLOBALS[$setting];
-  } else
-    $ret = $GLOBALS['sys_' . $setting];
+    }
+  } else {
+    if ( isset ( $GLOBALS['sys_' . $setting] ) )
+      $ret = $GLOBALS['sys_' . $setting];
+  }
 
   $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_user_pref
     WHERE cal_login = ? AND cal_setting = ?', array ( $user, $setting ) );
