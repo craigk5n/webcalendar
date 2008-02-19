@@ -4749,7 +4749,8 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
     $variable = 'admin_' . $variable;
   }
   if ( $SCRIPT == 'pref.php' ) {
-    $setting = $prefarray[$variable];
+    if ( ! empty ( $prefarray[$variable] ) )
+      $setting = $prefarray[$variable];
     $variable = 'pref_' . $variable;
   }
   $onclickStr = ( empty ( $onclick ) ? '' : ' onclick="' . $onclick . '()"' );
