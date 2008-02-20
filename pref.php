@@ -652,42 +652,43 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <div id="tabscontent_email">
 <table cellspacing="1" cellpadding="2" summary="">
 <tr><td class="tooltip">
+<tr><td class="tooltip" title="<?php etooltip('email-format');?>">
  <?php etranslate ( 'Email format preference' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_HTML',
    array ( 'Y'=> translate ( 'HTML' ), 'N'=>translate ( 'Plain Text' ) ) ) ?>
 </td></tr>
 
-<tr><td class="tooltip">
+<tr><td class="tooltip" title="<?php etooltip('email-include-ics');?>">
  <?php etranslate ( 'Include iCalendar attachments' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_ATTACH_ICS', '', '', 0 ) ?>
 </td></tr>
 
-<tr><td class="tooltip">
+<tr><td class="tooltip" title="<?php etooltip('email-event-reminders-help');?>">
  <?php etranslate ( 'Event reminders' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_REMINDER' ) ?>
 </td></tr>
 
-<tr><td class="tooltip">
+<tr><td class="tooltip" title="<?php etooltip('email-event-added');?>">
  <?php etranslate ( 'Events added to my calendar' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_EVENT_ADDED' ) ?>
 </td></tr>
 
-<tr><td class="tooltip">
+<tr><td class="tooltip" title="<?php etooltip('email-event-updated');?>">
  <?php etranslate ( 'Events updated on my calendar' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_EVENT_UPDATED' ) ?>
 </td></tr>
 
-<tr><td class="tooltip">
+<tr><td class="tooltip" title="<?php etooltip('email-event-deleted');?>">
  <?php etranslate ( 'Events removed from my calendar' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_EVENT_DELETED' ) ?>
 </td></tr>
 
-<tr><td class="tooltip">
+<tr><td class="tooltip" title="<?php etooltip('email-event-rejected');?>">
  <?php etranslate ( 'Event rejected by participant' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_EVENT_REJECTED' ) ?>
 </td></tr>
 
-<tr><td class="tooltip">
+<tr><td class="tooltip" title="<?php etooltip('email-event-create');?>">
  <?php etranslate ( 'Event that I create' )?>:</td><td>
  <?php echo print_radio ( 'EMAIL_EVENT_CREATE' ) ?>
 </td></tr>
