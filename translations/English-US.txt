@@ -1091,9 +1091,11 @@ hour: hour
 minute: minute
 theme-reload-help: Due to CSS caching, a page reload may be required
 Page may need to be reloaded for new Theme to take effect: Page may need to be reloaded for new Theme to take effect
+email-format: Specify preference for HTML or plain text messages
 Email format preference: Email format preference
 HTML: HTML
 Plain Text: Plain Text
+email-include-ics: Include an iCalendar ICS file to email message
 Include iCalendar attachments: Include iCalendar attachments
 display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
