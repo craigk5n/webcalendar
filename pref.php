@@ -658,13 +658,13 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 </td></tr>
 
 <tr><td class="tooltip">
- <?php etranslate ( 'Event reminders' )?>:</td><td>
- <?php echo print_radio ( 'EMAIL_REMINDER' ) ?>
+ <?php etranslate ( 'Include iCalendar attachments' )?>:</td><td>
+ <?php echo print_radio ( 'EMAIL_ATTACH_ICS', '', '', 0 ) ?>
 </td></tr>
 
 <tr><td class="tooltip">
- <?php etranslate ( 'Includes iCalendar attachments' )?>:</td><td>
- <?php echo print_radio ( 'EMAIL_ATTACH_ICS', '', '', 0 ) ?>
+ <?php etranslate ( 'Event reminders' )?>:</td><td>
+ <?php echo print_radio ( 'EMAIL_REMINDER' ) ?>
 </td></tr>
 
 <tr><td class="tooltip">
