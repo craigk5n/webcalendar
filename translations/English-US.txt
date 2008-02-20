@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-19-2007
+# Translation last updated on 02-20-2008
 
 
 ################################################################################
@@ -672,6 +672,7 @@ A new appointment has been made for you by: A new appointment has been made for 
 XXX has made a new appointment.: XXX has made a new appointment.
 An appointment has been updated by: An appointment has been updated by
 XXX has updated an appointment.: XXX has updated an appointment.
+Security violation!: Security violation!
 You must enter the anti-spam text on the previous page.: You must enter the anti-spam text on the previous page.
 The following conflicts with the suggested time: The following conflicts with the suggested time
 User removed from participants list.: User removed from participants list.
@@ -839,11 +840,6 @@ export format not defined or incorrect: export format not defined or incorrect
 No user specified.: No user specified.
 
 ########################################
-# Page: groups.php
-#
-Add New Group: Add New Group
-
-########################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -857,6 +853,11 @@ Created by: Created by
 # Page: group_edit_handler.php
 #
 You must specify a group name: You must specify a group name
+
+########################################
+# Page: groups.php
+#
+Add New Group: Add New Group
 
 ########################################
 # Page: help_admin.php
@@ -1093,6 +1094,7 @@ Page may need to be reloaded for new Theme to take effect: Page may need to be r
 Email format preference: Email format preference
 HTML: HTML
 Plain Text: Plain Text
+Include iCalendar attachments: Include iCalendar attachments
 display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
 allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
@@ -1231,33 +1233,6 @@ listid: listid
 Reset: Reset
 
 ########################################
-# Page: views.php
-#
-Add New View: Add New View
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Unnamed View
-Add View: Add View
-Edit View: Edit View
-View Name: View Name
-View Type: View Type
-Day by Time: Day by Time
-Week (Users horizontal): Week (Users horizontal)
-Week by Time: Week by Time
-Week (Users vertical): Week (Users vertical)
-Week (Timebar): Week (Timebar)
-Month (Timebar): Month (Timebar)
-Month (side by side): Month (side by side)
-Month (on same calendar): Month (on same calendar)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: You must specify a view name
-
-########################################
 # Page: view_d.php
 #
 No users for this view: No users for this view
@@ -1308,6 +1283,33 @@ Palm Pilot: Palm Pilot
 # Page: view_m.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry.
+
+########################################
+# Page: views.php
+#
+Add New View: Add New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed View
+Add View: Add View
+Edit View: Edit View
+View Name: View Name
+View Type: View Type
+Day by Time: Day by Time
+Week (Users horizontal): Week (Users horizontal)
+Week by Time: Week by Time
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: You must specify a view name
 
 ########################################
 # Page: week_details.php
@@ -1603,11 +1605,6 @@ Event Imported: Event Imported
 bytes: bytes
 kb: kb
 Mb: Mb
-
-########################################
-# Page: includes/classes/WebCalendar.class
-#
-Security violation!: Security violation!
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
