@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 02-18-2008
+# Translation last updated on 02-20-2008
 
 
 ################################################################################
@@ -1084,7 +1084,7 @@ Page may need to be reloaded for new Theme to take effect: Page may need to be r
 Email format preference: Email format preference
 HTML: HTML
 Plain Text: Plain Text
-Includes iCalendar attachments: Includes iCalendar attachments
+Include iCalendar attachments: Include iCalendar attachments
 display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
 allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
