@@ -821,11 +821,20 @@ if ( ! $error ) {
    . ( empty ( $s['SMTP_PASSWORD'] ) ? '' : $s['SMTP_PASSWORD'] ) . '" /></p>
               </div>
             </div>
-            <p class="bold">' . translate ( 'Default user settings' ) . ':</p>
-            <p><label title="' . tooltip ( 'email-event-reminders-help' ) . '">'
+            <p class="bold">' . translate ( 'Default user settings' ) . ':</p>'
+   . "<blockquote id=\"default-user-settings\">\n"
+   . '<p><label title="' . tooltip ( 'email-format' ) . '">'
+   . translate ( 'Email format preference' ) . ':</label>'
+   . print_radio ( 'EMAIL_HTML',
+     array ( 'Y'=> translate ( 'HTML' ),
+             'N'=>translate ( 'Plain Text' ) )  ) . '</p>' 
+   . '<p><label title="' . tooltip ( 'email-include-ics' ) . '">'
+   . translate ( 'Include iCalendar attachments' ) . ':</label>'
+   . print_radio ( 'EMAIL_ATTACH_ICS' ) . '</p>' 
+   . '<p><label title="' . tooltip ( 'email-event-reminders-help' ) . '">'
    . translate ( 'Event reminders' ) . ':</label>'
-   . print_radio ( 'EMAIL_REMINDER' ) . '</p>
-            <p><label title="' . tooltip ( 'email-event-added' ) . '">'
+   . print_radio ( 'EMAIL_REMINDER' ) . '</p>' 
+   . '<p><label title="' . tooltip ( 'email-event-added' ) . '">'
    . translate ( 'Events added to my calendar' ) . ':</label>'
    . print_radio ( 'EMAIL_EVENT_ADDED' ) . '</p>
             <p><label title="' . tooltip ( 'email-event-updated' ) . '">'
@@ -840,6 +849,7 @@ if ( ! $error ) {
             <p><label title="' . tooltip ( 'email-event-create' ) . '">'
    . translate ( 'Event that I create' ) . ':</label>'
    . print_radio ( 'EMAIL_EVENT_CREATE' ) . '</p>
+          </blockquote>
           </div>
         </div>
 
