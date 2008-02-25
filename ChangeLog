@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Apply [ 1900716 ] themes not sticking if auth_http true
  - Apply PATCH [ 1900714 ] User Custom Headers Patch
  - Add option to include iCalendar attachment to emails for both
    reminders and notifications
