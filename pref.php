@@ -191,7 +191,7 @@ $formaction = substr ($self, strrpos($self, '/') + 1) . $qryStr;
 ?>&nbsp;<img src="images/help.gif" alt="<?php etranslate ( 'Help' )?>" class="help" onclick="window.open( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
 
 
-<form action="<?php echo $formaction ?>" method="post" onsubmit="return valid_form( this );" name="prefform">
+<form action="<?php echo htmlspecialchars($formaction) ?>" method="post" onsubmit="return valid_form( this );" name="prefform">
 <input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>" />
 <?php
  if ($user)
