@@ -158,6 +158,14 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   }
   // Add RSS feed for unapproved events if approvals are required
   if ( $GLOBALS['REQUIRE_APPROVALS'] == 'Y' && $login != '__public__' && $is_admin ) {
+
+  // Prh .. fix theme change for auth_http which does not set webcal*login
+  //        variables.
+  // 
+  //        Pass the logged in user id as login=<whatever> on the URL
+  //        Add css_cache=<cookie setting> to change the URL signature
+  //        to force a fetch from the server rather than from the 
+  //        browser cache when the style changes. 
     // Note: we could do all the queries to add the RSS feed for every user
     // the current user has permissions to approve for, but I'm thinking
     // that's too many db requests to repeat on every page.
@@ -173,10 +181,11 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // override the global colors and this is impossible if loading external file.
   // We will still increment the webcalendar_csscache cookie though.
   echo $ret . ( $disableStyle ? '' : '
-    <link rel="stylesheet" type="text/css" href="css_cacher.php?'
+    <link rel="stylesheet" type="text/css" href="css_cacher.php?login='
      . ( empty ( $_SESSION['webcal_tmp_login'] )
       ? $login : $_SESSION['webcal_tmp_login'] )
-     . $webcalendar_csscache . '" />' )
+     . '&css_cache=' . $webcalendar_csscache
+     . '" />' )
   // Add custom script/stylesheet if enabled.
   . ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom
     ? load_template ( $login, 'S' ) : '' )
