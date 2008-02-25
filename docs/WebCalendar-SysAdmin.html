@@ -88,7 +88,7 @@ h2 {
 </head>
 <body>
 <h1>WebCalendar System Administrator's Guide</h1>
-<p><strong>WebCalendar Version: 1.1.1</strong></p>
+<p><strong>WebCalendar Version: 1.2.b1</strong></p>
 
 <h2>Table of Contents</h2>
 <ul>
@@ -306,7 +306,7 @@ h2 {
   your web server will find it. (See your web server documentation for information.)</p>
  <p>By default, unpacking WebCalendar will create its own directory
   when you unpack it. The new directory name will typically
-  contain the version name (such as <tt>WebCalendar-1.1.1</tt>).
+  contain the version name (such as <tt>WebCalendar-1.2.0</tt>).
   You can rename this directory after unpacking the files if you
   prefer a directory name like <tt>calendar</tt> or <tt>webcalendar</tt>.
   Keep in mind that unless you remap the directory (via your web server's
@@ -1082,10 +1082,29 @@ and the event has been approved.
     N/A
    </td></tr>
    <tr><td>
+    <tt>EXTRA_USER</tt></td><td>
+    Allows selection of a WebCalendar user from a pulldown list</td><td>
+    N/A</td><td>
+    N/A
+   </td></tr>
+   <tr><td>
+    <tt>EXTRA_RADIO</tt></td><td>
+    Allows selection of a single item from a group of radio buttons</td><td>
+    Specifies the list of available options using the PHP <tt>array</tt></td><td>
+   The default item that will be selected (from list above)
+   </td></tr>
+   <tr><td>
     <tt>EXTRA_SELECTION_LIST</tt></td><td>
     Presents the user with a selection list (single selection) to choose from</td><td>
     Specifies the list of available options using the PHP <tt>array</tt>
     function</td><td>
+    0 indicates single selection, 1 indicates multiple selection and
+    also the maximum size
+   </td></tr>
+   <tr><td>
+    <tt>EXTRA_CHECKBOX</tt></td><td>
+    Will display a checkbox control</td><td>
+    N/A</td><td>
     N/A
    </td></tr>
   </table>
