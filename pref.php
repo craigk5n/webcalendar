@@ -166,7 +166,8 @@ $minutesStr = translate ( 'minutes' );
 //allow css_cache to display public or NUC values
 @session_start ();
 $_SESSION['webcal_tmp_login'] = $prefuser;
-$openStr ="\"window.open( 'edit_template.php?type=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";
+//Prh ... add user to edit_template to get/set correct template 
+$openStr ="\"window.open( 'edit_template.php?type=%s&user=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";
 
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( ! empty ( $currenttab) ? $currenttab : 'settings' );
@@ -812,7 +813,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip ( 'custom-script-help' );?>">
   <?php etranslate ( 'Custom script/stylesheet' )?>:</td><td>
   <input type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'S' ) ?> name="" />
+    printf ( $openStr, 'S',$prefuser ) ?> name="" />
  </td></tr>
 <?php }
 
@@ -820,7 +821,7 @@ if ( $CUSTOM_HEADER == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip ( 'custom-header-help' );?>">
   <?php etranslate ( 'Custom header' )?>:</td><td>
   <input type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'H' ) ?> name="" />
+    printf ( $openStr, 'H',$prefuser ) ?> name="" />
  </td></tr>
 <?php }
 
@@ -828,7 +829,7 @@ if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
  <tr><td class="tooltip" title="<?php etooltip ( 'custom-trailer-help' );?>">
   <?php etranslate ( 'Custom trailer' )?>:</td><td>
   <input type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf ( $openStr, 'T' ) ?> name="" />
+    printf ( $openStr, 'T',$prefuser ) ?> name="" />
  </td></tr>
 <?php } ?>
 </table>
