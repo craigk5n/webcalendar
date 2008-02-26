@@ -1019,7 +1019,7 @@ if ( empty ( $error ) ) {
 
           // Test for duplicate Names.
           if ( $i > 0 ) {
-            for ( $k = $i; $k > 0; $k-- ) {
+            for ( $k = $i - 1; $k > 0; $k-- ) {
               if ( $ext_names[$i] == $ext_names[$k] )
                 $ext_names[$i] .= "[$k]";
             }
