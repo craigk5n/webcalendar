@@ -1730,8 +1730,9 @@ function event_get_external_users ( $event_id, $use_mailto = 0 ) {
       if ( strlen ( $row[1] ) ) {
         $row_one = htmlentities ( " <$row[1]>" );
         $ret .= ( $use_mailto
-          ? ' <a href="mailto:' . "$row[1]\">$row_one</a>" : $row_one ) . "\n";
+          ? ' <a href="mailto:' . "$row[1]\">$row_one</a>" : $row_one );
       }
+      $ret .= "\n";
     }
   }
   return $ret;
