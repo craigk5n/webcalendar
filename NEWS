@@ -6,11 +6,9 @@ list (that includes specific bugs fixed, please look at ChangeLog):
 
 http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/ChangeLog?&pathrev=REL_1_2
 
-You are looking at a CVS snapshot of the REL_1_2 branch.
-
 ---------------------------------------------------------------------------
 
-Version 1.2.b1 (?? ??? 2007)
+Version 1.2.b1 (25 Feb 2007)
   - Changed default installation user/password to root/none
   - Added read/write test to db_cache /tmp folder
   - The following translations were updated:
