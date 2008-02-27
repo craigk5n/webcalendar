@@ -5,6 +5,7 @@ You are looking at a CVS snapshot of the REL_1_2 branch.
 Version 1.2-b2 (?? Feb 2007)
  - Fixed bug: external users with no email address get squished into a single
    user on second edit
+ - Fixed bug: use strpos instead of stripos for PHP4 compatibility
 
 Version 1.2-b1 (25 Feb 2007)
  - Apply [ 1900716 ] themes not sticking if auth_http true
