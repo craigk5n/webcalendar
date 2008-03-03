@@ -39,6 +39,7 @@ echo '
     <h2>' . translate ( 'Categories' ) . '</h2>
     ' . display_admin_link ();
 
+$add = getGetValue ( 'add' );
 if ( empty ( $add ) )
   $add = 0;
 // Adding/Editing category.

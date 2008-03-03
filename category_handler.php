@@ -17,6 +17,11 @@ function renameIcon ( $id ) {
 
 // Does the category belong to the user?
 $is_my_event = false;
+$id = getValue ( 'id' );
+$catname = getValue ( 'catname' );
+$catcolor = getValue ( 'catcolor' );
+$isglobal = getValue ( 'isglobal' );
+$delIcon = getPostValue ( 'delIcon' );
 if ( empty ( $id ) )
   $is_my_event = true; // New event.
 else {
@@ -69,7 +74,6 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
         array ( $catname, $catcolor, $id ) ) )
       $error = db_error ();
 
-    $delIcon = getPostValue ( 'delIcon' );
     if ( ! empty ( $delIcon ) && $delIcon == 'Y' )
       renameIcon ( $id );
   } else {
