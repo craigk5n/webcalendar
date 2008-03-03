@@ -457,6 +457,9 @@ if ( ( $is_admin || $reports_linkcnt  > 0 ) && $menuConfig['Reports'] ) {
   if ( $is_admin && $menuConfig['System Log'] && ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ACTIVITY_LOG, $user ) ) )
     jscMenu_item ( 'log.png', 'System Log', 'activity_log.php?system=1' );
+  if ( $is_admin && $menuConfig['Security Audit'] && ( ! access_is_enabled () ||
+        access_can_access_function ( ACCESS_SECURITY_AUDIT, $user ) ) )
+    jscMenu_item ( 'log.png', 'Security Audit', 'security_audit.php' );
 
   if ( ! empty ( $reports_link ) && $reports_linkcnt > 0 && $menuConfig['My Reports'] ) {
     jscMenu_sub_menu ( 'reports.png', 'My Reports' );

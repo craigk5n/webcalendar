@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 02-20-2008
+# Translation last updated on 03-03-2008
 
 
 ################################################################################
@@ -381,6 +381,12 @@ SMTP Username: SMTP Username
 email-smtp-password: SMTP Password if using Authentication
 SMTP Password: SMTP Password
 Default user settings: Default user settings
+email-format: Specify preference for HTML or plain text messages
+Email format preference: Email format preference
+HTML: HTML
+Plain Text: Plain Text
+email-include-ics: Include an iCalendar ICS file to email message
+Include iCalendar attachments: Include iCalendar attachments
 email-event-reminders-help: Specifies whether or not to send event reminders.
 Event reminders: Event reminders
 email-event-added: Specifies whether or not to send email notifications when an event is added to your calendar.
@@ -840,6 +846,11 @@ export format not defined or incorrect: export format not defined or incorrect
 No user specified.: No user specified.
 
 ########################################
+# Page: groups.php
+#
+Add New Group: Add New Group
+
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -853,11 +864,6 @@ Created by: Created by
 # Page: group_edit_handler.php
 #
 You must specify a group name: You must specify a group name
-
-########################################
-# Page: groups.php
-#
-Add New Group: Add New Group
 
 ########################################
 # Page: help_admin.php
@@ -1091,12 +1097,6 @@ hour: hour
 minute: minute
 theme-reload-help: Due to CSS caching, a page reload may be required
 Page may need to be reloaded for new Theme to take effect: Page may need to be reloaded for new Theme to take effect
-email-format: Specify preference for HTML or plain text messages
-Email format preference: Email format preference
-HTML: HTML
-Plain Text: Plain Text
-email-include-ics: Include an iCalendar ICS file to email message
-Include iCalendar attachments: Include iCalendar attachments
 display_byproxy-help: Display the real creator on view_entry page
 Display if created by Assistant: Display if created by Assistant
 allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
@@ -1203,6 +1203,22 @@ No matches found: No matches found
 New Search: New Search
 
 ########################################
+# Page: security_audit.php
+#
+Security Audit: =
+The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: =
+For questions about any WebCalendar security issue, please use the WebCalanedar forums hosted on SourceForge.net.: =
+View your current PHP settings: =
+Security Issue: =
+Status: Status
+The following item should not be writable: =
+File permissions: =
+File exists: =
+File location: =
+Database cache directory location: =
+PHP setting: =
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: View Another User's Calendar
@@ -1235,6 +1251,33 @@ listid: listid
 Reset: Reset
 
 ########################################
+# Page: views.php
+#
+Add New View: Add New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed View
+Add View: Add View
+Edit View: Edit View
+View Name: View Name
+View Type: View Type
+Day by Time: Day by Time
+Week (Users horizontal): Week (Users horizontal)
+Week by Time: Week by Time
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: You must specify a view name
+
+########################################
 # Page: view_d.php
 #
 No users for this view: No users for this view
@@ -1245,7 +1288,6 @@ No users for this view: No users for this view
 Update Task Percentage: Update Task Percentage
 Completed: Completed
 Assistant mode: Assistant mode
-Status: Status
 Declined: Declined
 Needs-Action: Needs-Action
 by: by
@@ -1285,33 +1327,6 @@ Palm Pilot: Palm Pilot
 # Page: view_m.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry.
-
-########################################
-# Page: views.php
-#
-Add New View: Add New View
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Unnamed View
-Add View: Add View
-Edit View: Edit View
-View Name: View Name
-View Type: View Type
-Day by Time: Day by Time
-Week (Users horizontal): Week (Users horizontal)
-Week by Time: Week by Time
-Week (Users vertical): Week (Users vertical)
-Week (Timebar): Week (Timebar)
-Month (Timebar): Month (Timebar)
-Month (side by side): Month (side by side)
-Month (on same calendar): Month (on same calendar)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: You must specify a view name
 
 ########################################
 # Page: week_details.php
