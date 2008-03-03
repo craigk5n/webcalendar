@@ -3,7 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
- - Fixes for edit_entry_handler to call getPostValue
+ - Bug fixes: call getPostValue in verious form handling files
  - Added new 'Security Audit' page.
  - Fixed bug: external users with no email address get squished into a single
    user on second edit

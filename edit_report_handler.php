@@ -38,6 +38,15 @@ load_user_categories ();
 $error = ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
   ? print_not_auth (12) : '' );
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
+$public = getPostValue ( 'public' );
+$report_name = getPostValue ( 'report_name' );
+$report_user = getPostValue ( 'report_user' );
+$time_range = getPostValue ( 'time_range' );
+$cat_id = getPostValue ( 'cat_id' );
+$page_template = getPostValue ( 'page_template' );
+$day_template = getPostValue ( 'day_template' );
+$event_template = getPostValue ( 'event_template' );
+$delete = getPostValue ( 'delete' );
 $updating_public = ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' );
 
 if ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y' )
