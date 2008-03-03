@@ -1192,6 +1192,24 @@ No matches found: No matches found
 New Search: New Search
 
 ########################################
+# Page: security_audit.php
+#
+Security Audit: =
+The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.
+For questions about any WebCalendar security issue, please use the WebCalanedar forums hosted on SourceForge.net.: For questions about any WebCalendar security issue, please use the WebCalanedar forums hosted on SourceForge.net.
+View your current PHP settings: View your current PHP settings
+Security Issue: Security Issue
+Status: Status
+You should change the password of the default admin user.: You should change the password of the default admin user.
+Default admin user password: Default admin user password
+The following item should not be writable: The following item should not be writable
+File permissions: File permissions
+File exists: File exists
+File location: File location
+Database cache directory location: Database cache directory location
+PHP setting: PHP setting
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: View Another User's Calendar
@@ -1261,7 +1279,6 @@ No users for this view: No users for this view
 Update Task Percentage: Update Task Percentage
 Completed: Completed
 Assistant mode: Assistant mode
-Status: Status
 Declined: Declined
 Needs-Action: Needs-Action
 by: by
@@ -1310,7 +1327,6 @@ New Entry: New Entry
 ########################################
 # Page: includes/access.php
 #
-Security Audit: =
 Another Users Calendar: Another User's Calendar
 Category Management: Category Management
 Day View: Day View
