@@ -5,10 +5,14 @@ include_once 'includes/init.php';
 $error = '';
 
 $viewisglobal = getPostValue ( 'is_global' );
+$viewname = getPostValue ( 'viewname' );
+$viewtype = getPostValue ( 'viewtype' );
+$users = getPostValue ( 'users' );
+$delete = getPostValue ( 'delete' );
+
 if ( ! $is_admin || $viewisglobal != 'Y' )
   $viewisglobal = 'N'; // Only admin can create global view.
   //.
-$delete = getPostValue ( 'delete' );
 if ( ! empty ( $delete ) )
   // Delete this view.
   dbi_execute ( 'DELETE FROM webcal_view WHERE cal_view_id = ? AND cal_owner = ?',

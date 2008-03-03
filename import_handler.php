@@ -46,6 +46,9 @@ if ( ! empty ( $calUser ) ) {
 } else
   $calUser = $login;
 
+$ImportType = getValue ( 'ImportType' );
+$exc_private = getValue ( 'exc_private' );
+$overwrite = getValue ( 'overwrite' );
 if ( $file['size'] > 0 ) {
   switch ( $ImportType ) {
 
