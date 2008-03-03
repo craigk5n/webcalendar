@@ -65,7 +65,12 @@ define ( 'ACCESS_ASSISTANTS', 23 );
 define ( 'ACCESS_TRAILER', 24 );
 define ( 'ACCESS_HELP', 25 );
 define ( 'ACCESS_ANOTHER_CALENDAR', 26 );
-define ( 'ACCESS_NUMBER_FUNCTIONS', 27 ); // How many function did we define?
+define ( 'ACCESS_SECURITY_AUDIT', 27 );
+
+// Note: If you modify ACCESS_NUMBER_FUNCTIONS, you must add the new function
+// to the order[] array defined in ../access.php.
+define ( 'ACCESS_NUMBER_FUNCTIONS', 28 ); // How many function did we define?
+
 /*#@-*/
 
 // The following pages will be handled differently than the others since they
@@ -111,6 +116,7 @@ $GLOBALS['page_lookup'] = array (
   ACCESS_LAYERS => 'layer',
   ACCESS_SEARCH => 'search',
   ACCESS_ACTIVITY_LOG => 'activity_log.php',
+  ACCESS_SECURITY_AUDIT => 'security_audit.php',
   ACCESS_USER_MANAGEMENT => '(edit.*user.*.php|nonusers.*php|group.*php|users.php)',
   ACCESS_ACCOUNT_INFO => '(users.php|XYZXYZ_special_case)',
   ACCESS_ACCESS_MANAGEMENT => '(access.*php)',
@@ -147,6 +153,8 @@ function access_get_function_description ( $function ) {
       return translate ( 'Account' );
     case ACCESS_ACTIVITY_LOG:
       return translate ( 'Activity Log' );
+    case ACCESS_SECURITY_AUDIT:
+      return translate ( 'Security Audit' );
     case ACCESS_ADMIN_HOME:
       return translate ( 'Administrative Tools' );
     case ACCESS_ADVANCED_SEARCH:
@@ -455,6 +463,7 @@ function get_default_function_access ( $page_id, $user ) {
 
   switch ( $page_id ) {
     case ACCESS_ACTIVITY_LOG:
+    case ACCESS_SECURITY_AUDIT:
     case ACCESS_ADMIN_HOME:
     case ACCESS_SYSTEM_SETTINGS:
     case ACCESS_USER_MANAGEMENT:
