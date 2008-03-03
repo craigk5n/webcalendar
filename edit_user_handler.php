@@ -7,6 +7,18 @@
 include_once 'includes/init.php';
 load_user_layers ();
 
+$delete = getPostValue ( 'delete' );
+$formtype = getPostValue ( 'formtype' );
+$add = getPostValue ( 'add' );
+$user = getPostValue ( 'user' );
+$ufirstname = getPostValue ( 'ufirstname' );
+$ulastname = getPostValue ( 'ulastname' );
+$uemail = getPostValue ( 'uemail' );
+$upassword1 = getPostValue ( 'upassword1' );
+$upassword2 = getPostValue ( 'upassword2' );
+$uis_admin = getPostValue ( 'uis_admin' );
+$u_enabled = getPostValue ( 'u_enabled' );
+
 $error = '';
 if ( ! $is_admin )
   $user = $login;
@@ -35,7 +47,6 @@ if ( empty ( $user ) ) {
 }
 
 // Handle delete.
-$delete = getPostValue ( 'delete' );
 if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
   if ( access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
     if ( $admin_can_delete_user ) {
