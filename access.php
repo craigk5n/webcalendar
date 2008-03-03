@@ -203,8 +203,11 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
 
     // We can reorder the display of user rights here.
     $order = array (
-      1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
+      1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 27,
       15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 );
+    // Make sure that we have defined all the types of
+    // access defined in access.php
+    assert ( count($order) == ACCESS_NUMBER_FUNCTIONS );
 
     echo '
     <div class="boxall" style="margin-top: 5px; padding: 5px;">

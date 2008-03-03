@@ -1282,6 +1282,27 @@ echo '  body {
   .layers p label {
     font-size:13px;
   }
+  #securityAudit {
+    border: 1px solid #c0c0c0;
+  }
+  #securityAudit th {
+    background-color: #d0d0d0;
+  }
+  #securityAudit .odd {
+    background-color: #E0E0E0;
+  }
+  #securityAudit .even {
+    background-color: #ffffff;
+  }
+  #securityAuditNotes {
+    margin: 20px;
+    border:1px solid ' . $GLOBALS['TABLEBG'] . ';
+    ' . background_css ( $GLOBALS['CELLBG'], 150 ) . '
+  }
+  #securityAuditNotes li {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
   #accountiframe,
   #useriframe {
     width:90%;
