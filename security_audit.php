@@ -46,6 +46,13 @@ print_header ();
   <th><?php etranslate('Details');?></th></tr>
 <?php
 
+// Make sure they aren't still using the default admin username/password
+$isOk = ( user_valid_login ( 'admin', 'admin' ) == false );
+$help =
+  translate ( 'You should change the password of the default admin user.' );
+print_issue ( 
+  translate('Default admin user password'), $isOk, $help );
+
 // Is the main directory still writable?
 // just see if we get an error trying to append to it.
 $wcDir = '.';

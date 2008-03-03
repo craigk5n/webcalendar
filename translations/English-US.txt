@@ -1211,6 +1211,8 @@ For questions about any WebCalendar security issue, please use the WebCalanedar 
 View your current PHP settings: =
 Security Issue: =
 Status: Status
+You should change the password of the default admin user.: =
+Default admin user password: =
 The following item should not be writable: =
 File permissions: =
 File exists: =
