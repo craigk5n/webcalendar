@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixes for edit_entry_handler to call getPostValue
  - Added new 'Security Audit' page.
  - Fixed bug: external users with no email address get squished into a single
    user on second edit
