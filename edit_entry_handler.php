@@ -46,6 +46,8 @@ function sort_byday ( $a, $b ) {
 
 $id = getPostValue ( 'cal_id' );
 
+$override = getPostValue ( 'override' );
+$override_date = getPostValue ( 'override_date' );
 if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
   // Override date specified.
   // User is going to create an exception to a repeating event.
@@ -54,6 +56,7 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 }
 
 // Remember previous cal_goup_id if present.
+$parent = getPostValue ( 'parent' );
 $old_id = ( empty ( $parent ) ? $old_id : $parent  );
 $old_status = array ();
 
@@ -66,12 +69,42 @@ $location = getPostValue ( 'location' );
 $name = getPostValue ( 'name' );
 $reminder = getPostValue ( 'reminder' );
 $rpt_type = getPostValue ( 'rpt_type' );
+$rptmode = getPostValue ( 'rptmode' );
+$rpt_end_use = getPostValue ( 'rpt_end_use' );
+$rpt_count = getPostValue ( 'rpt_count' );
+$rpt_freq = getPostValue ( 'rpt_freq' );
+$weekdays_only = getPostValue ( 'weekdays_only' );
+$wkst = getPostValue ( 'wkst' );
+$bydayList = getPostValue ( 'bydayList' );
+$bymonthdayList = getPostValue ( 'bymonthdayList' );
+$bysetposList = getPostValue ( 'bysetposList' );
+$bydayAll = getPostValue ( 'bydayAll' );
+$byday = getPostValue ( 'byday' );
+$bymonth = getPostValue ( 'bymonth' );
+$bysetpos = getPostValue ( 'bysetpos' );
+$bymonthday = getPostValue ( 'bymonthday' );
+$byweekno = getPostValue ( 'byweekno' );
+$byyearday = getPostValue ( 'byyearday' );
+$exceptions = getPostValue ( 'exceptions' );
 $timetype = getPostValue ( 'timetype' );
 $priority = getPostValue ( 'priority' );
 $access = getPostValue ( 'access' );
 // entry_changed is calculated client-side with javascript
 $entry_changed = getPostValue ( 'entry_changed' );
-
+$rem_action = getPostValue ( 'rem_action' );
+$rem_last_sent = getPostValue ( 'rem_last_sent' );
+$rem_times_sent = getPostValue ( 'rem_times_sent' );
+$reminder = getPostValue ( 'reminder' );
+$rem_when = getPostValue ( 'rem_when' );
+$rem_hours = getPostValue ( 'rem_hours' );
+$rem_minutes = getPostValue ( 'rem_minutes' );
+$rem_before = getPostValue ( 'rem_before' );
+$rem_related = getPostValue ( 'rem_related' );
+$rem_rep_count = getPostValue ( 'rem_rep_count' );
+$rem_rep_days = getPostValue ( 'rem_rep_days' );
+$rem_rep_hours = getPostValue ( 'rem_rep_hours' );
+$rem_rep_minutes = getPostValue ( 'rem_rep_minutes' );
+$rem_rep_minutes = getPostValue ( 'rem_rep_minutes' );
 
 $description =
 ( strlen ( $description ) == 0 || $description == '<br />' ? $name : $description );
@@ -100,6 +133,7 @@ $year = getPostValue ( 'year' );
 // Ensure variables are not empty.
 if ( empty ( $eType ) )
   $eType = 'event';
+$percent = getPostValue ( 'percent' );
 if ( empty ( $percent ) )
   $percent = 0;
 
@@ -214,6 +248,7 @@ if ( $eType != 'task' ) {
 //   - user is participant
 $can_doall = $can_edit = false;
 // Value may be needed later for recreating event.
+$user = getPostValue ( 'user' );
 $old_create_by = ( empty ( $user ) ? '' : $user );
 if ( empty ( $id ) )
   // New event...
@@ -578,7 +613,8 @@ if ( empty ( $error ) ) {
     if ( ! empty ( $site_extras[$i][5] ) )
       $extra_email = $site_extras[$i][5] & EXTRA_DISPLAY_EMAIL;
 
-    $value = $$extra_name;
+    //$value = $$extra_name;
+    $value = getPostValue ( $extra_name );
     // echo "Looking for $extra_name... value = " . $value . " ... type = " .
     // $extra_type . "<br />\n";
     $sql = '';
@@ -942,6 +978,7 @@ if ( empty ( $error ) ) {
   // Add external participants.
   $ext_emails = $ext_names = $matches = array ();
   $ext_count = 0;
+  $externalparticipants = getPostValue ( 'externalparticipants' );
   if ( $single_user == 'N' && !
     empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' && !
       empty ( $externalparticipants ) ) {
