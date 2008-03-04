@@ -8,7 +8,7 @@ $error = '';
 if ( $readonly == 'Y' )
   $error = print_not_auth (4);
 // Give user a chance to add comments to approval email.
-if ( ! empty ( $_POST ) ) {
+if ( getPostValue ( 'comments' ) != '' ) {
   $comments = getPostValue ( 'comments' );
   $cancel = getPostValue ( 'cancel' );
 } else
@@ -48,6 +48,11 @@ if ( empty ( $ret ) ) {
 ';
   exit;
 }
+
+$user = getValue ( 'user' );
+$type = getValue ( 'type' );
+$id = getValue ( 'id' );
+
 // Allow administrators to approve public events.
 $app_user = ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin
   ? '__public__' : ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
