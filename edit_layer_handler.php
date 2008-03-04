@@ -10,6 +10,14 @@ if ( $ALLOW_VIEW_OTHER != 'Y' )
 if ( empty ( $dups ) )
   $dups = 'N';
 
+$public = getPostValue ( 'public' );
+$layeruser = getPostValue ( 'layeruser' );
+$layercolor = getPostValue ( 'layercolor' );
+$dups = getPostValue ( 'dups' );
+$is_mine = getPostValue ( 'is_mine' );
+$cal_login = getPostValue ( 'cal_login' );
+$id = getPostValue ( 'id' );
+
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
