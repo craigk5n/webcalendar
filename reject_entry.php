@@ -29,6 +29,10 @@ if ( ! empty ( $_POST ) ) {
    echo "</body>\n</html>";
    exit;
 }
+
+$user = getValue ( 'user' );
+$id = getValue ( 'id' );
+
 // Allow administrators to approve public events
 if ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin )
   $app_user = '__public__';
