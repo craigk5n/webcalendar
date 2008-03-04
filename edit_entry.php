@@ -1009,7 +1009,7 @@ if ( $can_edit ) {
     <div id="tabscontent_participants">' : '
     <fieldset>
       <legend>' . translate ( 'Participants' ) . '</legend>' ) . '
-      <table border="0" summary="">';
+      <table border="0" summary="" cellpadding="10">';
 
   // Only ask for participants if we are multi-user.
   $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
@@ -1107,68 +1107,67 @@ if ( $can_edit ) {
 
     if ( $size > 50 )
       $size = 15;
+    else if ( $size > 10 )
+      $size = 10;
+    else if ( $size > 5 )
+      $size = $size;
     else
       $size = 4;
 
     echo '
         <tr title="' . tooltip ( 'avail_participants-help' ) . '">
-          <td class="tooltip aligntop" rowspan="3"><label>'
+          <td class="tooltip aligntop" rowspan="2"><label>'
      . translate ( 'Available' ) . '<br />' 
      . translate ( 'Participants' ) . ':</label></td>
           <td class="boxleft boxtop">&nbsp;</td>
-          <td colspan="5"class="boxtop boxright">' . translate ( 'Find Name' ) 
+          <td colspan="2"class="boxtop boxright">' . translate ( 'Find Name' ) 
           . '<input type="text" size="20" name="lookup" id="lookup" '
      . 'onkeyup="lookupName()" /></td>
         </tr>
         <tr>
-          <td align="right" valign="top" class="boxleft"><label>'
-          .translate ( 'Users' ) . '</label></td>
-          <td rowspan="2" valign="top" width="160px" class="boxbottom">
+          <td valign="top" width="160px" class="boxbottom boxleft">
+          <label>' .translate ( 'Users' ) . '</label><br/>
             <select class="fixed" name="participants[]" id="entry_part" size="' . $size
      . '" multiple="multiple">' . $users . '
-            </select></td>
-        <td align="right" valign="top"><label>'
-          .translate ( 'Resources' ) . '</label></td>
-        <td rowspan="2"  class="boxbottom">
+            </select><br/>
+            <input name="movert" type="button" value=' 
+            . $addStr . ' onclick="selAdd( this );" /></td>
+            </td>
+        <td class="boxbottom">
+        <label>' .translate ( 'Resources' ) . '</label><br/>
             <select class="fixed" name="nonuserPart[]" id="res_part" size="'
      . $size . '" multiple="multiple">' . $nonusers . '
-            </select>
+            </select><br/>
+            <input name="movert" type="button" value=' 
+            . $addStr . ' onclick="selResource( this );" />
           </td>  
-          <td rowspan="2" align="right" valign="top" class="boxbottom">'
-        .  ( $GROUPS_ENABLED == 'Y' ? '&nbsp;&nbsp;<label>' . translate ( 'Groups' ) .'</label>
-        </td><td rowspan="2" valign="top"  class="boxbottom boxright">
+        <td valign="top"  class="boxbottom boxright">'
+        .  ( $GROUPS_ENABLED == 'Y' ? '&nbsp;&nbsp;<label>' . translate ( 'Groups' ) .'</label><br/>
           <select class="fixed" name="groups" id="groups" size="'
      . $size . '" onclick="addGroup()" >' . $grouplist . '
-            </select>' : '' ) .'
+            </select><br/>
+            <input name="movert" type="button" value=' 
+       . $addStr . ' onclick="selAdd( this );" />' : '&nbsp;' ) . '
           </td>      
         </tr>
         <tr>
-          <td align="right" valign="bottom" class="boxbottom boxleft" >
-          <input name="movert" type="button" value=' 
-     . $addStr . ' onclick="selAdd( this );" /></td>
-       <td align="right" valign="bottom" class="boxbottom" >
-         <input name="moveit" type="button" value=' 
-     . $addStr . ' onclick="selResource( this );" /></td>
-        </tr>    
-        <tr>
-          <td colspan="7">&nbsp;</td>
+          <td colspan="4">&nbsp;</td>
         </tr>
         <tr title="' . tooltip ( 'participants-help' ) . '">
           <td class="tooltip aligntop"><label>'
             . translate ( 'Selected' ) . '<br />' 
             . translate ( 'Participants' ) . ':</label></td>
-          <td align="left" valign="bottom" class="boxtop boxleft boxbottom">'
-     . '<input name="movelt" type="button" value="'
-     . translate ( 'Remove' ) .'" '
-     . 'onclick="selRemove( this );" /></td>
+          <td align="left" valign="bottom" class="boxtop boxleft boxbottom">&nbsp;</td>
           <td class="boxtop boxright boxbottom" colspan="2">
             <select class="fixed" name="selectedPart[]" id="sel_part" size="7" multiple="multiple">'
      . $myusers . '
-            </select>
+            </select><br/>'
+            . '<input name="movelt" type="button" value="'
+            . translate ( 'Remove' ) .'" '
+            . 'onclick="selRemove( this );" />
             <input type="button" onclick="showSchedule()" value="'
      . translate ( 'Availability' ) . '..." />
           </td>
-          <td colspan="3"></td>
         </tr>'
     // External Users
     . ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ? '
