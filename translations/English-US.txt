@@ -841,11 +841,6 @@ export format not defined or incorrect: export format not defined or incorrect
 No user specified.: No user specified.
 
 ########################################
-# Page: groups.php
-#
-Add New Group: Add New Group
-
-########################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -859,6 +854,11 @@ Created by: Created by
 # Page: group_edit_handler.php
 #
 You must specify a group name: You must specify a group name
+
+########################################
+# Page: groups.php
+#
+Add New Group: Add New Group
 
 ########################################
 # Page: help_admin.php
@@ -1194,7 +1194,7 @@ New Search: New Search
 ########################################
 # Page: security_audit.php
 #
-Security Audit: =
+Security Audit: Security Audit
 The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.
 For questions about any WebCalendar security issue, please use the WebCalanedar forums hosted on SourceForge.net.: For questions about any WebCalendar security issue, please use the WebCalanedar forums hosted on SourceForge.net.
 View your current PHP settings: View your current PHP settings
@@ -1204,10 +1204,19 @@ You should change the password of the default admin user.: You should change the
 Default admin user password: Default admin user password
 The following item should not be writable: The following item should not be writable
 File permissions: File permissions
+Because you have email disabled, you should remove this file.: Because you have email disabled, you should remove this file.
 File exists: File exists
 File location: File location
+You may want to consider enabling User Access Control to set user privileges.: You may want to consider enabling User Access Control to set user privileges.
+It is recommended that public event submissions be approved: It is recommended that public event submissions be approved
+CAPTCHA is recommended to guard againt automated event submissions.: CAPTCHA is recommended to guard againt automated event submissions.
+The database cache directory should be in a directory that cannot be accessed with a URL.: The database cache directory should be in a directory that cannot be accessed with a URL.
 Database cache directory location: Database cache directory location
+The recommended setting for magic quotes is Off.: The recommended setting for magic quotes is Off.
 PHP setting: PHP setting
+The recommended setting for register_globals is Off.: The recommended setting for register_globals is Off.
+The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.
+The recommended setting for allow_url_include is Off.: The recommended setting for allow_url_include is Off.
 
 ########################################
 # Page: select_user.php
@@ -1240,33 +1249,6 @@ Add New User: Add New User
 form: form
 listid: listid
 Reset: Reset
-
-########################################
-# Page: views.php
-#
-Add New View: Add New View
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Unnamed View
-Add View: Add View
-Edit View: Edit View
-View Name: View Name
-View Type: View Type
-Day by Time: Day by Time
-Week (Users horizontal): Week (Users horizontal)
-Week by Time: Week by Time
-Week (Users vertical): Week (Users vertical)
-Week (Timebar): Week (Timebar)
-Month (Timebar): Month (Timebar)
-Month (side by side): Month (side by side)
-Month (on same calendar): Month (on same calendar)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: You must specify a view name
 
 ########################################
 # Page: view_d.php
@@ -1318,6 +1300,33 @@ Palm Pilot: Palm Pilot
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
+
+########################################
+# Page: views.php
+#
+Add New View: Add New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed View
+Add View: Add View
+Edit View: Edit View
+View Name: View Name
+View Type: View Type
+Day by Time: Day by Time
+Week (Users horizontal): Week (Users horizontal)
+Week by Time: Week by Time
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: You must specify a view name
 
 ########################################
 # Page: week_details.php
