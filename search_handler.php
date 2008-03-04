@@ -15,6 +15,7 @@ include_once 'includes/init.php';
 $error = '';
 
 $keywords = getValue ( 'keywords' );
+$advanced = getValue ( 'advanced' );
 
 if ( strlen ( $keywords ) == 0 )
   $error = translate ( 'You must enter one or more search keywords' ) . '.';
@@ -40,7 +41,6 @@ if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
   $search_others = true;
 
 $users = getPostValue ( 'users' );
-
 if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
 // Security precaution -- make sure users listed in participants list
@@ -228,7 +228,7 @@ if ( $matches > 0 ) {
 } else
   echo translate ( 'No matches found' );
 
-echo ": $keywords" . '</strong>.</p>';
+echo ": " . htmlentities ( $keywords ) . '</strong>.</p>';
 // now sort by number of hits
 if ( empty ( $error ) ) {
   //arsort ( $ids );
