@@ -3,6 +3,15 @@
 include_once 'includes/init.php';
 load_user_layers ();
 
+$nid = getValue ( 'nid' );
+$old_admin = getValue ( 'old_admin' );
+$nfirstname = getValue ( 'nfirstname' );
+$nlastname = getValue ( 'nlastname' );
+$nadmin = getValue ( 'nadmin' );
+$ispublic = getValue ( 'ispublic' );
+$action = getValue ( 'action' );
+$delete = getValue ( 'delete' );
+
 if ( ! $is_admin ) {
   echo print_not_auth ( true ) . print_trailer ();
   exit;
