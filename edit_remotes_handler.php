@@ -15,8 +15,11 @@ $add = getPostValue ( 'Add' );
 $delete = getPostValue ( 'delete' );
 $reload = getPostValue ( 'reload' );
 $nid = getPostValue ( 'nid' );
+$nfirstname = getPostValue ( 'nfirstname' );
+$nlastname = getPostValue ( 'nlastname' );
 $nadmin = getPostValue ( 'nadmin' );
 $nurl = getPostValue ( 'nurl' );
+$reload = getPostValue ( 'reload' );
 $nlayer = getPostValue ( 'nlayer' );
 $nlayercolor = getPostValue ( 'layercolor' );
 
