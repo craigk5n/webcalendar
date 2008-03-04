@@ -43,6 +43,9 @@ else {
   exit;
 }
 
+$user = getValue ( 'user' );
+$id = getValue ( 'id' );
+
 // Allow administrators to approve public events.
 $app_user = ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin
   ? '__public__' : ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
