@@ -2,6 +2,10 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
+$id = getPostValue ( 'id' );
+$groupname = getPostValue ( 'groupname' );
+$users = getPostValue ( 'users' );
+
 if ( ! $is_admin )
   $error = print_not_auth (3);
 else {
