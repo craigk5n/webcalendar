@@ -94,8 +94,7 @@ print_issue (
 if ( $SEND_EMAIL != 'Y' ) {
   // Reminders are disabled!
   $isOk = ( ! file_exists ( 'tools/send_reminders.php' ) );
-$help = translate (
-  'Because you have email disabled, you should remove this file.' );
+$help = translate ( 'Because you have email disabled, you should remove this file.' );
 print_issue ( 
   translate('File exists') . ': tools/send_reminders.php', $isOk, $help );
 } else {
@@ -110,8 +109,7 @@ print_issue (
 
 // Is UAC enabled
 $isOk = access_is_enabled ();
-$help = translate (
-  'You may want to consider enabling User Access Control to set user privileges.' );
+$help = translate ( 'You may want to consider enabling User Access Control to set user privileges.' );
 print_issue ( 
   translate('System Settings') . ': ' .
   translate('User Access Control'), $isOk, $help );
@@ -120,15 +118,13 @@ print_issue (
 if ( $PUBLIC_ACCESS == 'Y' ) {
   $isOk = ( $PUBLIC_ACCESS_CAN_ADD != 'Y' ||
     $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y' );
-  $help = translate (
-    'It is recommended that public event submissions be approved' );
+  $help = translate ( 'It is recommended that public event submissions be approved' );
   print_issue ( 
     translate('System Settings') . ': ' .
     translate('Public access new events require approval'), $isOk, $help );
 
   $isOk = $ENABLE_CAPTCHA == 'Y';
-  $help = translate (
-    'CAPTCHA is recommended to guard againt automated event submissions.' );
+  $help = translate ( 'CAPTCHA is recommended to guard againt automated event submissions.' );
   print_issue ( 
     translate('System Settings') . ': ' .
     translate('Require CAPTCHA validation for public access new events'), $isOk, $help );
@@ -137,8 +133,7 @@ if ( $PUBLIC_ACCESS == 'Y' ) {
 
 // See if db cache directory is subdirectory of WebCalendar
 $isOk = true;
-$help = translate (
-  'The database cache directory should be in a directory that cannot be accessed with a URL.' );
+$help = translate ( 'The database cache directory should be in a directory that cannot be accessed with a URL.' );
 if ( ! empty ( $settings['db_cachedir'] ) && $wcDir != '.' ) {
   $cache = str_replace ( '\\', '/', $settings['db_cachedir'] );
   $wcDir = str_replace ( "\\", '/', $wcDir );
@@ -154,32 +149,28 @@ print_issue (
 // Check for magic quotes.
 // Recommended setting is off.
 // See: http://us.php.net/manual/en/security.magicquotes.php
-$help = translate (
-  'The recommended setting for magic quotes is Off.' );
+$help = translate ( 'The recommended setting for magic quotes is Off.' );
 $isOk = ( get_magic_quotes_gpc () == 0 );
 print_issue ( 
   translate('PHP setting') . ': magic_quotes_gpc', $isOk, $help );
 
 // Check for register globals
 // Recommended setting is off.
-$help = translate (
-  'The recommended setting for register_globals is Off.' );
+$help = translate ( 'The recommended setting for register_globals is Off.' );
 $isOk = ( ini_get ( 'register_globals' ) == 0 );
 print_issue ( 
   translate('PHP setting') . ': register_globals', $isOk, $help );
 
 // Check for allow_url_fopen
 // Recommended setting is off when remote calendars are not enabled
-$help = translate (
-  'The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.' );
+$help = translate ( 'The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.' );
 $isOk = ( ini_get ( 'allow_url_fopen' ) == 0 || $REMOTES_ENABLED == 'Y' );
 print_issue ( 
   translate('PHP setting') . ': allow_url_fopen', $isOk, $help );
 
 // Check for allow_url_include
 // Recommended setting is Off
-$help = translate (
-  'The recommended setting for allow_url_include is Off.' );
+$help = translate ( 'The recommended setting for allow_url_include is Off.' );
 $isOk = ( ini_get ( 'allow_url_include' ) == 0 );
 print_issue ( 
   translate('PHP setting') . ': allow_url_include', $isOk, $help );
