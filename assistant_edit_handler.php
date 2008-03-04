@@ -2,6 +2,9 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
+$user = getPostValue ( 'user' );
+$users = getPostValue ( 'users' );
+
 $error = '';
 if ( $user != $login )
   $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
