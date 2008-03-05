@@ -1207,7 +1207,7 @@ New Search: New Search
 #
 Security Audit: =
 The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: =
-For questions about any WebCalendar security issue, please use the WebCalanedar forums hosted on SourceForge.net.: =
+For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: =
 View your current PHP settings: =
 Security Issue: =
 Status: Status
