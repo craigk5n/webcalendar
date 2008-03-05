@@ -53,7 +53,7 @@
  *     $username              default __public__
  *     $maxEvents             default 10
  *     $showTasks bool        default true
- *     $showTitle bool        default true
+ *     $showTitle bool        default false
  *     $upcoming_title        default "Upcoming Events"
  *     $showMore bool         default true
  *     $showTime bool         default false
@@ -67,12 +67,6 @@
  * Security:
  * TBD
  */
-
-//set default hCalendar but allow it to be overridden
-//this will include hidden values that can gleaned by hCalendar
-// clients
-if ( empty ( $hcalendar_output ) )
-  $hcalendar_output = false;
 
 //only go through the requires & includes & function declarations once,
 // in case upcoming.php is included twice on one page
@@ -104,6 +98,13 @@ $WebCalendar->initializeFirstPhase ();
 
 include 'includes/' . $user_inc;
 include 'includes/site_extras.php';
+
+//set default hCalendar but allow it to be overridden
+//this will include hidden values that can gleaned by hCalendar
+// clients
+$hcalendar_output = getGetValue ( 'hcalendar_output' );
+if ( empty ( $hcalendar_output ) )
+  $hcalendar_output = false;
 
 //added to support hCalendar
 if ( $hcalendar_output )
@@ -245,9 +246,13 @@ $link_target = '_top';
 //bhugh, 1/28/2006, if(empty and !== false constructions allow these vars to be passed
 //from another php program in case upcoming.php is called as an include file
 //(you can't pass ?days=60 type parameters when you use include)
+$numDays = getIntValue ( 'numDays' );
 if (empty ($numDays))  $numDays = 30;
+$showTitle = ( getGetValue ( 'showTitle', "[01]", true ) == '1' );
 $showTitle = ( ! empty ( $showTitle ) && $showTitle !== false ? true : false );
+$showMore = getGetValue ( 'showMore', "[01]", true );
 $showMore = ( ! empty ( $showMore ) && $showMore !== false ? true : false );
+$showTime = getGetValue ( 'showTime', "[01]", true );
 $showTime = ( ! empty ( $showTime ) && $showTime !== false ? true : false );
 
 //sets the URL used in the (optional) page title and
@@ -256,12 +261,14 @@ $showTime = ( ! empty ( $showTime ) && $showTime !== false ? true : false );
 $title_more_url=$SERVER_URL;
 
 //set default upcoming title but allow it to be overridden
+$upcoming_title = getValue ( 'upcoming_title' );
 if (empty ($upcoming_title)) $upcoming_title= '<a href="'.
    $title_more_url . '">Upcoming Events</a>';
 
 //echo "$numDays $showTitle $maxEvents <p>";
 
 // Max number of events (including tasks) to display
+$maxEvents = getIntValue ( 'maxEvents' );
 if (empty ($maxEvents)) $maxEvents = 10;
 
 // Should we include tasks?
@@ -270,21 +277,15 @@ if (empty ($maxEvents)) $maxEvents = 10;
 // a way to disable tasks from showing up. It will not display
 // them if specified user has not enabled "Display tasks in Calendars"
 // in their preferences.)
+$showTasks = getValue ( 'showTasks' );
 if ( empty ( $showTasks ) ) $showTasks = false;
 
 // Show event popups
-if ( ! isset ( $showPopups ) )
-  $showPopups = true;
-else if ( $showPopups == 'N' )
-  $showPopups = false;
-
-// Login of calendar user to use
-// '__public__' is the login name for the public user
-if (empty ($username)) $username = '__public__';
+$showPopups = ( getGetValue ( 'showPopups', "[01]", true ) != '0' );
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
-$allow_user_override = true;
+$allow_user_override = false;
 
 // Load layers
 $load_layers = true;
@@ -292,7 +293,7 @@ $load_layers = true;
 // Load just a specified category (by its id)
 // Leave blank to not filter on category (unless specified in URL)
 // Can override in URL with "upcoming.php?cat_id=4"
-if (empty ($cat_id)) $cat_id = '';
+$cat_id = getIntValue ( 'cat_id' );
 
 // Display timezone abbrev name
 // 1 = Display all times as GMT wo/TZID
@@ -301,6 +302,15 @@ if (empty ($cat_id)) $cat_id = '';
 $display_tzid = 2;
 
 // End configurable settings...
+
+// Login of calendar user to use
+// '__public__' is the login name for the public user
+$username = '__public__';
+if ( $allow_user_override ) {
+  $username = getValue ( 'username' );
+  if (empty ($username)) $username = '__public__';
+}
+
 
 // Set for use elsewhere as a global
 $login = $username;
@@ -398,8 +408,8 @@ if ( $tasks_only ) {
 }
 
 // Pre-load tasks for quicker access */
-if ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
-  && $showTasks ) {
+if ( ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' ) )
+  || $showTasks ) {
   /* Pre-load tasks for quicker access */
   $tasks = read_tasks ( $username, $endDate, $cat_id );
 }
@@ -527,9 +537,9 @@ for ( $i = $startDate; date ( 'Ymd', $i ) <= $endDateYmd &&
   $entries = get_entries ( $d, $get_unapproved );
   $rentries = get_repeating_entries ( $username, $d, $get_unapproved );
   $ev = combine_and_sort_events ( $entries, $rentries );
-  $ev_cnt = count ( $ev );
   $tentries = get_tasks ( $d, $get_unapproved );
   $ev = combine_and_sort_events ( $ev, $tentries );
+  $ev_cnt = count ( $ev );
 
   echo "<!-- $d " . count ( $ev ) . " -->\n";
 
