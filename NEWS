@@ -10,6 +10,7 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 Version 1.2.b2 (?? ??? 2007)
  - Added new 'Security Audit' page.
+ - Moved hard-coded upcoming.php config setting to System Settings.
 
 Version 1.2.b1 (25 Feb 2007)
  - Changed default installation user/password to root/none

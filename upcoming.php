@@ -127,6 +127,11 @@ $name_of_this_file='/upcoming.php/';
 
 load_global_settings ();
 
+// Make sure 'Upcoming Events' is enabled in System Settings.
+if ( empty ( $UPCOMING_EVENTS ) || $UPCOMING_EVENTS != 'Y' ) {
+  $error = print_not_auth ();
+}
+
 $WebCalendar->setLanguage ();
 
 // Print the details of an upcoming event
@@ -238,7 +243,8 @@ $public_must_be_enabled = false;
 
 // Do we include a link to view the event?  If so, what target
 // should we use.
-$display_link = true;
+$display_link = ( empty ( $UPCOMING_DISPLAY_LINKS ) ||
+  $UPCOMING_DISPLAY_LINKS == 'Y' );
 $link_target = '_top';
 
 // Default time window of events to load
@@ -281,14 +287,20 @@ $showTasks = getValue ( 'showTasks' );
 if ( empty ( $showTasks ) ) $showTasks = false;
 
 // Show event popups
-$showPopups = ( getGetValue ( 'showPopups', "[01]", true ) != '0' );
+$showPopups = ( empty ( $UPCOMING_DISPLAY_POPUPS ) ||
+  $UPCOMING_DISPLAY_POPUPS == 'Y' );
+if ( getGetValue ( 'showPopups' ) != '' ) {
+  $showPopups = ( getGetValue ( 'showPopups', "[01]", true ) != '0' );
+}
 
 // Allow the URL to override the user setting such as
 // "upcoming.php?user=craig"
-$allow_user_override = false;
+$allow_user_override = ( ! empty ( $UPCOMING_ALLOW_OVR ) &&
+  $UPCOMING_ALLOW_OVR == 'Y' );
 
 // Load layers
-$load_layers = true;
+$load_layers = ( ! empty ( $UPCOMING_DISPLAY_LAYERS ) &&
+  $UPCOMING_DISPLAY_LAYERS == 'Y' );
 
 // Load just a specified category (by its id)
 // Leave blank to not filter on category (unless specified in URL)
@@ -307,8 +319,12 @@ $display_tzid = 2;
 // '__public__' is the login name for the public user
 $username = '__public__';
 if ( $allow_user_override ) {
-  $username = getValue ( 'username' );
+  $username = getValue ( 'user' );
   if (empty ($username)) $username = '__public__';
+} else {
+  if ( getValue ( 'user' ) != '' ) {
+    $error = print_not_auth ();
+  }
 }
 
 
@@ -321,97 +337,99 @@ if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
   $error = print_not_auth (21);
 }
 
-if ( $allow_user_override ) {
-  $u = getValue ( 'user', "[A-Za-z0-9_\.=@,\-]+", true );
-  if ( ! empty ( $u ) ) {
-    $username = $u;
-    $login = $u;
-    $TIMEZONE = get_pref_setting ( $username, 'TIMEZONE' );
-    $DISPLAY_UNAPPROVED = get_pref_setting ( $username, 'DISPLAY_UNAPPROVED' );
-    $DISPLAY_TASKS_IN_GRID =
-      get_pref_setting ( $username, 'DISPLAY_TASKS_IN_GRID' );
-    // We also set $login since some functions assume that it is set.
+if ( $error == '' ) {
+  if ( $allow_user_override ) {
+    $u = getValue ( 'user', "[A-Za-z0-9_\.=@,\-]+", true );
+    if ( ! empty ( $u ) ) {
+      $username = $u;
+      $login = $u;
+      $TIMEZONE = get_pref_setting ( $username, 'TIMEZONE' );
+      $DISPLAY_UNAPPROVED = get_pref_setting ( $username, 'DISPLAY_UNAPPROVED' );
+      $DISPLAY_TASKS_IN_GRID =
+        get_pref_setting ( $username, 'DISPLAY_TASKS_IN_GRID' );
+      // We also set $login since some functions assume that it is set.
+    }
   }
-}
 
-$get_unapproved = ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y' );
+  $get_unapproved = ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED == 'Y' );
 
-if ( $CATEGORIES_ENABLED == 'Y' ) {
-  $x = getValue ( 'cat_id', '-?[0-9]+', true );
+  if ( $CATEGORIES_ENABLED == 'Y' ) {
+    $x = getValue ( 'cat_id', '-?[0-9]+', true );
+    if ( ! empty ( $x ) ) {
+      $cat_id = $x;
+    }
+  }
+
+    $x = getGetValue ( 'upcoming_title', true );
+    if ( ! empty ( $x ) ) {
+      $upcoming_title = $x;
+    }
+
+    $x = getGetValue ( 'showMore', true );
+    if ( strlen(  $x ) > 0 ) {
+      $showMore= $x;
+    }
+
+    $x = getGetValue ( 'showTime', true );
+    if ( strlen(  $x ) > 0 ) {
+      $showTime= $x;
+    }
+
+    $x = getGetValue ( 'showTitle', true );
+    if ( strlen(  $x ) > 0 ) {
+      $showTitle = $x;
+    }
+
+  if ( $load_layers ) {
+    load_user_layers ( $username );
+  }
+
+  //load_user_categories ();
+
+  // Calculate date range
+  $date = getValue ( 'date', '-?[0-9]+', true );
+  if ( empty ( $date ) || strlen ( $date ) != 8 ) {
+    // If no date specified, start with today
+    $date = date ( 'Ymd' );
+  }
+  $thisyear = substr ( $date, 0, 4 );
+  $thismonth = substr ( $date, 4, 2 );
+  $thisday = substr ( $date, 6, 2 );
+
+  $startDate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
+
+  $x = getValue ( 'days', '-?[0-9]+', true );
   if ( ! empty ( $x ) ) {
-    $cat_id = $x;
+    $numDays = $x;
   }
-}
+  // Don't let a malicious user specify more than 365 days
+  if ( $numDays > 365 ) {
+    $numDays = 365;
+  }
+  $endDate = mktime ( 23, 59, 59, $thismonth, $thisday + $numDays,
+    $thisyear );
 
-  $x = getGetValue ( 'upcoming_title', true );
-  if ( ! empty ( $x ) ) {
-    $upcoming_title = $x;
+  // If 'showEvents=0' is in URL, then just include tasks in list
+  $show_events = getGetValue ( 'showEvents', "[01]", true );
+  $tasks_only = ( $show_events == '0' );
+
+  if ( $tasks_only ) {
+    $repeated_events = $events = array ();
+  } else {
+
+    /* Pre-Load the repeated events for quckier access */
+    $repeated_events = read_repeated_events ( $username, $startDate, $endDate, $cat_id );
+
+    /* Pre-load the non-repeating events for quicker access */
+    $events = read_events ( $username, $startDate, $endDate, $cat_id );
   }
 
-  $x = getGetValue ( 'showMore', true );
-  if ( strlen(  $x ) > 0 ) {
-    $showMore= $x;
+  // Pre-load tasks for quicker access */
+  if ( ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' ) )
+    || $showTasks ) {
+    /* Pre-load tasks for quicker access */
+    $tasks = read_tasks ( $username, $endDate, $cat_id );
   }
-
-  $x = getGetValue ( 'showTime', true );
-  if ( strlen(  $x ) > 0 ) {
-    $showTime= $x;
-  }
-
-  $x = getGetValue ( 'showTitle', true );
-  if ( strlen(  $x ) > 0 ) {
-    $showTitle = $x;
-  }
-
-if ( $load_layers ) {
-  load_user_layers ( $username );
-}
-
-//load_user_categories ();
-
-// Calculate date range
-$date = getValue ( 'date', '-?[0-9]+', true );
-if ( empty ( $date ) || strlen ( $date ) != 8 ) {
-  // If no date specified, start with today
-  $date = date ( 'Ymd' );
-}
-$thisyear = substr ( $date, 0, 4 );
-$thismonth = substr ( $date, 4, 2 );
-$thisday = substr ( $date, 6, 2 );
-
-$startDate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
-
-$x = getValue ( 'days', '-?[0-9]+', true );
-if ( ! empty ( $x ) ) {
-  $numDays = $x;
-}
-// Don't let a malicious user specify more than 365 days
-if ( $numDays > 365 ) {
-  $numDays = 365;
-}
-$endDate = mktime ( 23, 59, 59, $thismonth, $thisday + $numDays,
-  $thisyear );
-
-// If 'showEvents=0' is in URL, then just include tasks in list
-$show_events = getGetValue ( 'showEvents', "[01]", true );
-$tasks_only = ( $show_events == '0' );
-
-if ( $tasks_only ) {
-  $repeated_events = $events = array ();
-} else {
-
-  /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $username, $startDate, $endDate, $cat_id );
-
-  /* Pre-load the non-repeating events for quicker access */
-  $events = read_events ( $username, $startDate, $endDate, $cat_id );
-}
-
-// Pre-load tasks for quicker access */
-if ( ( ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' ) )
-  || $showTasks ) {
-  /* Pre-load tasks for quicker access */
-  $tasks = read_tasks ( $username, $endDate, $cat_id );
 }
 
 // Determine if this script is being called directly, or via an include.
@@ -494,7 +512,7 @@ a:hover {
 </style>
 
 <?php
-if ( ! empty ( $showPopups ) ) {
+if ( ! empty ( $showPopups ) && empty ( $error ) ) {
   echo '<script type="text/javascript" src="includes/js/util.js"></script>' . "\n";
 
   echo '<script type="text/javascript">' . "\n";

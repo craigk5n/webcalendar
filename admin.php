@@ -694,8 +694,32 @@ if ( ! $error ) {
    . '</p>
         </div>
 
-<!-- BEGIN REPORTS -->
         <div id="tabscontent_other">
+<!-- BEGIN UPCOMING EVENTS -->
+   <fieldset><legend>' . translate('Upcoming Events') . '</legend>
+   ' . htmlspecialchars ( $SERVER_URL ) . 'upcoming.php<br/>
+   <p><label title="' . tooltip ( 'upcoming-events-help' ) . '">'
+   . translate ( 'Enabled' ) . ':</label>'
+   . print_radio ( 'UPCOMING_EVENTS', '', '', 'N' ) . '</p>
+
+   <p><label title="' . tooltip ( 'upcoming-events-allow-override' ) .  '">'
+   . translate ( 'Allow user override' ) . ':</label>'
+   . print_radio ( 'UPCOMING_ALLOW_OVR', '', '', 'N' ) . '</p>
+
+     <p><label title="' . tooltip ( 'upcoming-events-display-layers' ) .  '">'
+   . translate ( 'Display layers' ) . ':</label>'
+   . print_radio ( 'UPCOMING_DISPLAY_LAYERS', '', '', 'N' ) . '</p>
+
+     <p><label title="' . tooltip ( 'upcoming-events-display-links' ) .  '">'
+   . translate ( 'Display links to events' ) . ':</label>'
+   . print_radio ( 'UPCOMING_DISPLAY_LINKS', '', '', 'Y' ) . '</p>
+
+     <p><label title="' . tooltip ( 'upcoming-events-display-popups' ) .  '">'
+   . translate ( 'Display event popups' ) . ':</label>'
+   . print_radio ( 'UPCOMING_DISPLAY_POPUPS', '', '', 'Y' ) . '</p>
+   </fieldset>
+
+<!-- BEGIN REPORTS -->
           <p><label title="' . tooltip ( 'reports-enabled-help' ) . '">'
    . translate ( 'Reports enabled' ) . ':</label>'
    . print_radio ( 'REPORTS_ENABLED' ) . '</p>
