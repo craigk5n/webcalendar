@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Moved hard-coded upcoming.php config setting to System Settings.
  - Bug fixes: call getPostValue in verious form handling files
  - Added new 'Security Audit' page.
  - Fixed bug: external users with no email address get squished into a single
