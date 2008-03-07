@@ -52,15 +52,11 @@ include 'includes/' . $user_inc;
 include_once 'includes/validate.php';
 include 'includes/site_extras.php';
 
+// This next step will send a redirect to login.php, which we don't want.
 $WebCalendar->initializeSecondPhase ();
 
-// Make sure the have privileges to access the activity log
-if ( ! $is_admin || ( access_is_enabled () && !
-  access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) )
-  die_miserable_death ( print_not_auth (2) );
-
 $appStr = generate_application_name ();
-// If WebCalendar is using http auth, then $login will be set in validate.php.
+
 if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ) {
   list ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
   explode ( ':', base64_decode ( substr ( $_ENV['REMOTE_USER'], 6 ) ) );
@@ -70,7 +66,7 @@ if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ) {
 }
 
 unset ( $_ENV['REMOTE_USER'] );
-if ( empty ( $login ) || $login == '__public__' ) {
+if ( empty ( $login ) ) {
   if ( isset ( $_SERVER['PHP_AUTH_USER'] ) &&
       user_valid_login ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'], true ) )
     $login = $_SERVER['PHP_AUTH_USER'];
@@ -84,11 +80,19 @@ if ( empty ( $login ) || $login == '__public__' ) {
     exit;
   }
 }
-
 load_global_settings ();
 load_user_preferences ();
 
 $WebCalendar->setLanguage ();
+
+// Load user name, etc.
+user_load_variables ( $login, '' );
+
+// Make sure the have privileges to access the activity log
+if ( ! $is_admin || ( access_is_enabled () && !
+  access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) )
+  die_miserable_death ( print_not_auth (2) );
+
 
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 // This should work ok with RSS, may need to hardcode fallback value.
@@ -141,13 +145,13 @@ function rss_activity_log ( $sys, $entries ) {
     : 'we.cal_id, we.cal_name, wel.cal_log_id, we.cal_type, we.cal_description
       FROM webcal_entry_log wel, webcal_entry we
       WHERE wel.cal_entry_id = we.cal_id' )
-   . ' ORDER BY wel.cal_log_id DESC';
+   . ' ORDER BY wel.cal_log_id DESC LIMIT ' . $entries;
 
   $rows = dbi_get_cached_rows ( $sql, $sql_params );
 
   $ret = '';
 
-  for ( $i = 0; $i < count ( $rows ); $i++ ) {
+  for ( $i = 0; $i < count ( $rows ) && $i < $entries; $i++ ) {
     $row = $rows[$i];
     $num = 0;
     $l_login = $row[0];
@@ -173,7 +177,7 @@ function rss_activity_log ( $sys, $entries ) {
     }
     $num++;
     $unixtime = date_to_epoch ( $l_date . $l_time );
-    $subject = display_activity_log ( $l_type, $l_text );
+    $subject = display_activity_log ( $l_type, $l_text, "\n" );
     $ret .=
       "<item>\n" .
       '  <title><![CDATA[' . $subject . ': ' . htmlspecialchars ( $l_ename ) . ']]></title>' .        "\n  <link>" . $SERVER_URL .

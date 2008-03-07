@@ -427,9 +427,12 @@ class WebCalendar {
     if ( ! $use_http_auth &&
       ( $this->_filename == 'css_cacher.php' ||
         $this->_filename == 'icalclient.php' ||
+        $this->_filename == 'rss_unapproved.php' ||
+        $this->_filename == 'rss_activity_log.php' ||
         $this->_filename == 'js_cacher.php' ||
-        $this->_filename == 'publish.php' ) )
+        $this->_filename == 'publish.php' ) ) {
       return;
+    }
 
     $is_nonuser = $session_not_found = $validate_redirect = false;
 
@@ -759,13 +762,14 @@ class WebCalendar {
     }
 
     if ( empty ( $is_admin ) || ! $is_admin ) {
-      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
-        strstr ( $PHP_SELF, 'admin.php' ) ||
+      //if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
+      if ( strstr ( $PHP_SELF, 'admin.php' ) ||
         strstr ( $PHP_SELF, 'admin_handler.php' ) ||
         strstr ( $PHP_SELF, 'group_edit.php' ) ||
         strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'groups.php' ) )
+        strstr ( $PHP_SELF, 'groups.php' ) ) {
         $not_auth = true;
+      }
     }
 
     // Restrict access if calendar is read-only.

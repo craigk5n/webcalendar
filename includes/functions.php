@@ -886,7 +886,7 @@ function decode_string ( $instr ) {
  *
  * @return string  HTML for one log entry.
  */
-function display_activity_log ( $cal_type, $cal_text = '' ) {
+function display_activity_log ( $cal_type, $cal_text = '', $break = '<br/>&nbsp;' ) {
   if ( $cal_type == LOG_APPROVE )
     $ret = translate ( 'Event approved' );
   elseif ( $cal_type == LOG_APPROVE_J )
@@ -941,7 +941,7 @@ function display_activity_log ( $cal_type, $cal_text = '' ) {
     $ret = '???';
 
   return $ret
-   . ( empty ( $cal_text ) ? '' : '<br />&nbsp;' . htmlentities ( $cal_text ) );
+   . ( empty ( $cal_text ) ? '' : $break . htmlentities ( $cal_text ) );
 }
 
 /* Display the <<Admin link on pages if menus are not enabled
@@ -4745,8 +4745,10 @@ function print_error_header () {
  * @uses print_error_header
  */
 function print_not_auth ( $full = false ) {
-  return ( $full ? print_error_header () : '' )
+print_r  (debug_backtrace () );
+  $ret = ( $full ? print_error_header () : '' )
    . '!!!' . translate ( 'You are not authorized.' ) . "\n";
+  return $ret;
 }
 
 /* Generates HTML for radio buttons.
