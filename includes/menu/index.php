@@ -17,7 +17,7 @@ $MENU_DATE_TOP, $menuHtml, $menuScript, $NONUSER_ENABLED, $PUBLIC_ACCESS,
 $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $PUBLIC_ACCESS_CAN_ADD,
 $PUBLIC_ACCESS_OTHERS, $readonly, $REMOTES_ENABLED, $REPORTS_ENABLED,
 $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW, $thisday,
-$thismonth, $thisyear, $use_http_auth, $user, $views;
+$thismonth, $thisyear, $use_http_auth, $user, $views, $OVERRIDE_PUBLIC;
 
 /* -----------------------------------------------------------------------------
          First figure out what options are on and privileges we have
@@ -577,7 +577,8 @@ if ( ! empty ( $menuExtras[5] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[5] );
 
 // Search Menu
-if ( $search_url != '' && $menuConfig['Search'] ) {
+if ( ( $search_url != '' && $menuConfig['Search'] ) &&
+  ( $login != '__public__' || $OVERRIDE_PUBLIC != 'Y' ) ) {
   jscMenu_menu ( 'Search' );
 
   $doAdv = false;
