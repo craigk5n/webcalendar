@@ -55,13 +55,14 @@ $eventinfo = $noret = '';
 function list_unapproved ( $user ) {
   global $eventinfo, $key, $login, $NONUSER_ENABLED, $noret, $temp_fullname;
 
+  user_load_variables ( $user, 'temp_' );
+
   $rssLink = '<a href="rss_unapproved.php?user=' .
-    htmlspecialchars ( $user ) . '"><img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - "' .
+    htmlspecialchars ( $user ) . '"><img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - ' .
     htmlspecialchars ( $temp_fullname ) . '" border="0"/></a>';
 
   $count = 0;
   $ret = '';
-  user_load_variables ( $user, 'temp_' );
 
   $sql = 'SELECT we.cal_id, we.cal_name, we.cal_description, weu.cal_login,
     we.cal_priority, we.cal_date, we.cal_time, we.cal_duration,
