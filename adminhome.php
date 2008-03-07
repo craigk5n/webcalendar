@@ -141,6 +141,13 @@ if ( $is_nonuser_admin ) {
     $links[] = 'activity_log.php?system=1';
   }
 
+  if ( ( $is_admin || ! access_is_enabled () ) ||
+    ( access_is_enabled && 
+    access_can_access_function ( ACCESS_SECURITY_AUDIT ) ) ) {
+    $names[] = translate ( 'Security Audit' );
+    $links[] = 'security_audit.php';
+  }
+
   if ( $is_admin && ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) {
     $names[] = translate ( 'Public Preferences' );
     $links[] = 'pref.php?public=1';
