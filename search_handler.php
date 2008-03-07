@@ -14,6 +14,15 @@ include_once 'includes/init.php';
 
 $error = '';
 
+// Disable if public access and OVERRIDE_PUBLIC in use
+if ( $login == '__public__' && ! empty ( $OVERRIDE_PUBLIC ) &&
+  $OVERRIDE_PUBLIC == 'Y' ) {
+  print_header ();
+  echo print_not_auth ();
+  print_trailer ();
+  exit;
+}
+
 $keywords = getValue ( 'keywords' );
 $advanced = getValue ( 'advanced' );
 
