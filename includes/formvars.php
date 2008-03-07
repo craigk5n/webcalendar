@@ -24,7 +24,7 @@
  */
 function getPostValue ( $name ) {
   $postName = null;
-  if ( isset ( $_POST ) && is_array ( $_POST ) && ! empty ( $_POST[$name] ) )
+  if ( isset ( $_POST ) && is_array ( $_POST ) && isset ( $_POST[$name] ) )
     $postName = ( get_magic_quotes_gpc () != 0
       ? $_POST[$name] : (is_array ( $_POST[$name] ) 
 			? array_map ( 'addslashes',  
@@ -51,7 +51,7 @@ function getPostValue ( $name ) {
  */
 function getGetValue ( $name ) {
   $getName = null;
-  if ( isset ( $_GET ) && is_array ( $_GET ) && ! empty ( $_GET[$name] ) )
+  if ( isset ( $_GET ) && is_array ( $_GET ) && isset ( $_GET[$name] ) )
     $getName = ( get_magic_quotes_gpc () != 0
       ? $_GET[$name] : addslashes ( $_GET[$name] ) );
   return $getName;
