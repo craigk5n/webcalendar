@@ -4745,7 +4745,6 @@ function print_error_header () {
  * @uses print_error_header
  */
 function print_not_auth ( $full = false ) {
-print_r  (debug_backtrace () );
   $ret = ( $full ? print_error_header () : '' )
    . '!!!' . translate ( 'You are not authorized.' ) . "\n";
   return $ret;
