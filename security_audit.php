@@ -100,8 +100,7 @@ print_issue (
 } else {
   // Is tools/send_reminders.php in the 'standard' location
   $isOk = ! ( file_exists ( 'tools/send_reminders.php' ) );
-  $help = translate (
-    'If you are not using this file, remove it.  Otherwise, it should be moved to a different location.' ) .
+  $help = translate ( 'If you are not using this file, remove it.  Otherwise, it should be moved to a different location.' ) .
     '<br/><tt>' . get_wc_path ( 'tools/send_reminders.php' ) . '</tt>';
   print_issue ( 
     translate('File location') . ': tools/send_reminders.php', $isOk, $help );
