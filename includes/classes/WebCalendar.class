@@ -428,9 +428,12 @@ class WebCalendar {
     if ( ! $use_http_auth &&
       ( $this->_filename == 'css_cacher.php' ||
         $this->_filename == 'icalclient.php' ||
+        $this->_filename == 'rss_unapproved.php' ||
+        $this->_filename == 'rss_activity_log.php' ||
         $this->_filename == 'js_cacher.php' ||
-        $this->_filename == 'publish.php' ) )
+        $this->_filename == 'publish.php' ) ) {
       return;
+    }
 
     $is_nonuser = $session_not_found = $validate_redirect = false;
 
@@ -774,8 +777,8 @@ class WebCalendar {
 
     // restrict access if calendar is read-only
     if ( $readonly == 'Y' ) {
-      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
-        strstr ( $PHP_SELF, 'adminhome.php' ) ||
+      //if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
+      if ( strstr ( $PHP_SELF, 'adminhome.php' ) ||
         strstr ( $PHP_SELF, 'admin.php' ) ||
         strstr ( $PHP_SELF, 'approve_entry.php' ) ||
         strstr ( $PHP_SELF, 'category_handler.php' ) ||

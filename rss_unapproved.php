@@ -86,6 +86,9 @@ load_user_preferences ();
 
 $WebCalendar->setLanguage ();
 
+// Load user name, etc.
+user_load_variables ( $login, '' );
+
 // See if a user login was specified in the URL
 $user = getGetValue ( 'user' );
 // translate 'public' to be '__public__'
