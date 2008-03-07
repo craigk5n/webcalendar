@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 03-06-2008
+# Translation last updated on 03-07-2008
 
 
 ################################################################################
@@ -436,6 +436,7 @@ Reports: Reports
 Delete Events: Delete Events
 Activity Log: Activity Log
 System Log: System Log
+Security Audit: =
 Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
 Administrative Tools: Administrative Tools
@@ -1215,7 +1216,6 @@ New Search: New Search
 ########################################
 # Page: security_audit.php
 #
-Security Audit: =
 The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: =
 For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: =
 View your current PHP settings: =
@@ -1227,6 +1227,7 @@ The following item should not be writable: =
 File permissions: =
 Because you have email disabled, you should remove this file.: =
 File exists: =
+If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: =
 File location: =
 You may want to consider enabling User Access Control to set user privileges.: =
 It is recommended that public event submissions be approved: =
