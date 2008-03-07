@@ -4879,6 +4879,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   $is_task = false ) {
   global $db_connection_info, $jumpdate, $layers, $login, $max_until,
   $PUBLIC_ACCESS_DEFAULT_VISIBLE, $result, $thismonth, $thisyear;
+  global $OVERRIDE_PUBLIC, $OVERRIDE_PUBLIC_TEXT;
 
   // New multiple categories requires some checking to see if this cat_id is
   // valid for this cal_id. It could be done with nested SQL,
@@ -4980,15 +4981,24 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
       $cat_keys = array_keys ( $categories );
       $primary_cat = ( empty ( $cat_keys[0] ) ? '' : $cat_keys[0] );
 
+      if ( $login == '__public__' && ! empty ( $OVERRIDE_PUBLIC ) &&
+        $OVERRIDE_PUBLIC == 'Y' ) {
+        $evt_name = $OVERRIDE_PUBLIC_TEXT;
+        $evt_descr = $OVERRIDE_PUBLIC_TEXT;
+      } else {
+        $evt_name = $row[0];
+        $evt_descr = $row[1];
+      }
+
       if ( $want_repeated && ! empty ( $row[20] ) ) // row[20] = cal_type
-        $item =& new RepeatingEvent ( $row[0], $row[1], $row[2], $row[3],
+        $item =& new RepeatingEvent ( $evt_name, $evt_descr, $row[2], $row[3],
           $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10],
           $primary_cat, $row[11], $row[12], $row[13], $row[14], $row[15],
           $row[16], $row[17], $row[18], $row[19], $row[20], $row[21], $row[22],
           $row[23], $row[24], $row[25], $row[26], $row[27], $row[28], $row[29],
           $row[30], $row[31], $row[32], array (), array (), array () );
       else
-        $item =& new Event ( $row[0], $row[1], $row[2], $row[3], $row[4],
+        $item =& new Event ( $evt_name, $evt_descr, $row[2], $row[3], $row[4],
           $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $primary_cat,
           $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17],
           $row[18], $row[19] );
