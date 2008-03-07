@@ -10,14 +10,19 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 Version 1.3.0 (?? ??? 2007)
   - Fixes:
+    + Removed old hack for register_globals work-around that is no longer
+      needed.  This will improve security.
   - New Features / Enhancements:
     = User Interface
+      + Added new RSS feed for Activity Log.  This will allow you to be
+        notified via RSS of event approvals/rejections, email notification,
+        new event submissions, event updates, etc.
       + In some pages (week, month, day), the '+' icon has been removed.
         Users can double-click on the table cell to add an event.
       + New Security Audit report
       + Moved hard-coded upcoming.php config setting to System Settings.
   - The following translations were updated:
-    French, Indonesian
+    French, Indonesian, Italian
 
 Version 1.1.3 (04 Aug 2007)
 
