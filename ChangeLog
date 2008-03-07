@@ -3,6 +3,9 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Added new RSS feed for Activity Log
+ - Removed old hack for register_globals work-around that is no longer
+   needed.  This will improve security.
  - Moved hard-coded upcoming.php config setting to System Settings.
  - Fix bug [ 1907099 ] view_entry.php shows wrong date
  - Bug fixes: call getPostValue in verious form handling files
