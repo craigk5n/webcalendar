@@ -177,6 +177,10 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
         translate ( $PUBLIC_ACCESS_FULLNAME ) .
         '" href="rss_unapproved.php?user=public"/>';
   }
+  if ( $is_admin ) {
+    $ret .= '<link rel="alternate" type="application/rss+xml" title="' . $appStr
+      . ' - ' . translate('Activity Log') . '" href="rss_activity_log.php"/>';
+  }
   // If loading admin.php, we will not use an exrternal file because we need to
   // override the global colors and this is impossible if loading external file.
   // We will still increment the webcalendar_csscache cookie though.

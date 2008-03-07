@@ -51,7 +51,7 @@ class WebCalendar {
     array (
       array ( 'Config', 'PHPDBI', 'Functions' ),
       array ( 'User', 'Connect' ) ),
-    '/^(ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|get_reminders|get_events|ws)\.php$/' =>
+    '/^(ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws)\.php$/' =>
     array (
       array ( 'Config', 'PHPDBI', 'Functions' ),
       array ( 'User', 'Validate', 'Connect', 'SiteExtras', 'Access' ) ),
@@ -278,7 +278,7 @@ class WebCalendar {
    */
   function _initFunctions () {
     global $byday_names, $byday_values, $days_per_month, $db_login, $db_password,
-    $HTTP_COOKIE_VARS, $HTTP_GET_VARS, $HTTP_POST_VARS, $ldays_per_month, $noSet,
+    $ldays_per_month,
     $offsets, $PHP_SELF, $settings, $weekday_names;
 
     /**#@+
@@ -351,95 +351,15 @@ class WebCalendar {
      */
     $byday_values = array_flip ( $byday_names );
 
-    /* Array of global variables which are not allowed to by set via HTTP GET/POST.
-     *
-     * This is a security precaution
-     * to prevent users from overriding any global variables.
-     *
-     * @global array $noSet
-     */
-    $noSet = array (
-      'admin_can_add_user' => 1,
-      'admin_can_delete_user' => 1,
-      'allow_selfreg' => 1,
-      'browser_languages' => 1,
-      'db_host' => 1,
-      'db_login' => 1,
-      'db_password' => 1,
-      'db_persistent' => 1,
-      'db_type' => 1,
-      'includedir' => 1,
-      'is_admin' => 1,
-      'languages' => 1,
-      'NONUSER_PREFIX' => 1,
-      'noSet' => 1,
-      'PROGRAM_NAME' => 1,
-      'PROGRAM_URL' => 1,
-      'pub_acc_enabled' => 1,
-      'readonly' => 1,
-      'single_user' => 1,
-      'single_user_login' => 1,
-      'use_http_auth' => 1,
-      'user_can_update_password' => 1,
-      'user_inc' => 1,
-      'PHP_AUTH_USER' => 1,
-      'CATEGORIES_VIEW' => 1,
-      'FONTS' => 1,
-      );
-
-    // This code is a temporary hack to make the application work when
-    // register_globals is set to Off in php.ini
-    // (the default setting in PHP 4.2.0 and after).
-    if ( empty ( $HTTP_GET_VARS ) )
-      $HTTP_GET_VARS = $_GET;
-
-    if ( ! empty ( $HTTP_GET_VARS ) ) {
-      while ( list ( $key, $val ) = @each ( $HTTP_GET_VARS ) ) {
-        // Don't allow anything to have <script> in it...
-        if ( ! is_array ( $val ) && preg_match ( '/<\s*script/i', $val ) ) {
-          echo ( function_exists ( 'translate' )
-            ? translate ( 'Security violation!' ) : 'Security violation!' );
-          exit;
-        }
-
-        if ( $key == 'login' ) {
-          if ( strstr ( $PHP_SELF, 'login.php' ) )
-            $GLOBALS[$key] = $val;
-        } else {
-          if ( empty ( $noSet[$key] ) )
-            $GLOBALS[$key] = $val;
-        }
-      }
-      reset ( $HTTP_GET_VARS );
-    }
-    if ( empty ( $HTTP_POST_VARS ) )
-      $HTTP_POST_VARS = $_POST;
-
-    if ( ! empty ( $HTTP_POST_VARS ) ) {
-      while ( list ( $key, $val ) = @each ( $HTTP_POST_VARS ) ) {
-        // Don't allow anything to have <script> in it... except 'template'.
-        if ( ! is_array ( $val ) && $key != 'template' &&
-            preg_match ( '/<\s*script/i', $val ) ) {
-          echo ( function_exists ( 'translate' )
-            ? translate ( 'Security violation!' ) : 'Security violation!' );
-          exit;
-        }
-        if ( empty ( $noSet[$key] ) )
-          $GLOBALS[$key] = $val;
-      }
-      reset ( $HTTP_POST_VARS );
-    }
-
-    if ( empty ( $HTTP_COOKIE_VARS ) )
-      $HTTP_COOKIE_VARS = $_COOKIE;
-
-    if ( ! empty ( $HTTP_COOKIE_VARS ) ) {
-      while ( list ( $key, $val ) = @each ( $HTTP_COOKIE_VARS ) ) {
-        if ( empty ( $noSet[$key] ) && substr ( $key, 0, 12 ) == 'webcalendar_' )
-          $GLOBALS[$key] = $val;
-      }
-      reset ( $HTTP_COOKIE_VARS );
-    }
+    /* Pull out cookies and place them in global variables */
+    if ( ! empty ( $_COOKIE['webcalendar_session'] ) )
+      $GLOBALS['webcalendar_session'] = $_COOKIE['webcalendar_session'];
+    if ( ! empty ( $_COOKIE['webcalendar_login'] ) )
+      $GLOBALS['webcalendar_login'] = $_COOKIE['webcalendar_login'];
+    if ( ! empty ( $_COOKIE['webcalendar_last_view'] ) )
+      $GLOBALS['webcalendar_last_view'] = $_COOKIE['webcalendar_last_view'];
+    if ( ! empty ( $_COOKIE['webcalendar_csscache'] ) )
+      $GLOBALS['webcalendar_csscache'] = $_COOKIE['webcalendar_csscache'];
 
     // Don't allow a user to put "login=XXX" in the URL
     // if they are not coming from the login.php page.

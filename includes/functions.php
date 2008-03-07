@@ -1747,6 +1747,10 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
   $sql_params[] = $startid;
   $ret = "<$size>"
    . ( $sys ? translate ( 'System Log' ) : translate ( 'Activity Log' ) )
+   . ( $sys ? '' :
+   ' &nbsp;<a href="rss_activity_log.php">' .
+   '<img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - ' .
+   translate ( 'Activity Log' ) . '" border="0"/></a>' )
    . "</$size>" . display_admin_link () . '
     <table class="embactlog">
       <tr>
