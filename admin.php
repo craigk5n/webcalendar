@@ -706,6 +706,10 @@ if ( ! $error ) {
    . translate ( 'Allow user override' ) . ':</label>'
    . print_radio ( 'UPCOMING_ALLOW_OVR', '', '', 'N' ) . '</p>
 
+   <p><label title="' . tooltip ( 'upcoming-events-display-caticons' ) .  '">'
+   . translate ( 'Display category icons' ) . ':</label>'
+   . print_radio ( 'UPCOMING_DISPLAY_CAT_ICONS', '', '', 'Y' ) . '</p>
+
      <p><label title="' . tooltip ( 'upcoming-events-display-layers' ) .  '">'
    . translate ( 'Display layers' ) . ':</label>'
    . print_radio ( 'UPCOMING_DISPLAY_LAYERS', '', '', 'N' ) . '</p>

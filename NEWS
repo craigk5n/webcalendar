@@ -21,6 +21,7 @@ Version 1.3.0 (?? ??? 2007)
         Users can double-click on the table cell to add an event.
       + New Security Audit report
       + Moved hard-coded upcoming.php config setting to System Settings.
+      + Category icons can now be displayed next to events in upcoming.php
   - The following translations were updated:
     French, Indonesian, Italian
 
