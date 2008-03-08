@@ -142,7 +142,8 @@ $WebCalendar->setLanguage ();
 // declared twice in case of this file being included twice or more within the same doc.
 function print_upcoming_event ( $e, $date ) {
   global $display_link, $link_target, $SERVER_URL, $charset, $login,
-    $display_tzid, $showTime, $showPopups, $eventinfo, $username, $hcalendar_output;
+    $display_tzid, $showTime, $showPopups, $eventinfo, $username,
+    $hcalendar_output, $UPCOMING_DISPLAY_CAT_ICONS;
 
   $popupid = 'pop' . $e->getId () . '-' . $date;
 
@@ -172,16 +173,28 @@ function print_upcoming_event ( $e, $date ) {
         $e->getDescription (), $timestr, site_extras_for_popup ( $e->getId () ),
         $e->getLocation (), $e->getName (), $e->getId () );
     }
-    echo "<div class=\"vevent\">\n<a class=\"entry\" id=\"$popupid\" title=\"" .
+    echo "<div class=\"vevent\">\n";
+    $link = "<a class=\"entry\" id=\"$popupid\" title=\"" .
       htmlspecialchars ( $e->getName () ) . '" href="' .
       $SERVER_URL . 'view_entry.php?id=' .
-        $e->getID () . "&amp;date=$date";
-      if ( $e->getLogin () != $login )
-        echo "&amp;user=" . $e->getLogin ();
-      if ( ! empty ( $link_target ) ) {
-      echo "\" target=\"$link_target\"";
+      $e->getID () . "&amp;date=$date";
+    if ( $e->getLogin () != $login )
+      $link .= "&amp;user=" . $e->getLogin ();
+    if ( ! empty ( $link_target ) ) {
+      $link .= "\" target=\"$link_target\"";
     }
-    echo '>';
+    $link .= '>';
+    if ( empty ( $UPCOMING_DISPLAY_CAT_ICONS ) ||
+      $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
+      $catNum = abs ( $e->getCategory () );
+      if ( $catNum > 0 ) {
+        $catIcon = 'icons/cat-' . $catNum . '.gif';
+        if ( file_exists ( $catIcon ) )
+          echo $link .
+            '<img src="' . $catIcon . '" alt="category icon" border="0"/></a>';
+      }
+    }
+    echo $link;
   }
   if ( $private ) {
     echo '[' . translate ( 'Private' ) . ']';
