@@ -4916,7 +4916,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   // None was selected...return only events without categories.
   if ( $cat_id == -1 )
     $rows = dbi_get_cached_rows ( $sql, array () );
-  elseif ( $cat_id != '' ) {
+  elseif ( ! empty ( $cat_id ) ) {
     $cat_array = explode ( ',', $cat_id );
     $placeholders = '';
     for ( $p_i = 0, $cnt = count ( $cat_array ); $p_i < $cnt; $p_i++ ) {
@@ -4925,7 +4925,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
     $rows = dbi_get_cached_rows ( $sql . 'WHERE cat_id IN ( ' . $placeholders
        . ' )', $cat_array );
   }
-  if ( $cat_id != '' ) {
+  if ( ! empty ( $cat_id ) ) {
     // $rows = dbi_get_cached_rows ( $sql, array ( $cat_id ) );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -4963,7 +4963,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
     elseif ( $cat_id == -1 ) // Eliminate events with categories.
       $sql .= 'AND we.cal_id NOT IN ( ' . $placeholders . ' ) ';
   } else
-  if ( $cat_id != '' )
+  if ( ! empty ( $cat_id ) )
     // Force no rows to be returned. No matching entries in category.
     $sql .= 'AND 1 = 0 ';
 
