@@ -16,6 +16,7 @@ Version 1.2.b2 (?? ??? 2007)
    new event submissions, event updates, etc.
  - Removed old hack for register_globals work-around that is no longer
    needed.  This will improve security.
+ - Category icons can now be displayed next to events in upcoming.php
 
 Version 1.2.b1 (25 Feb 2007)
  - Changed default installation user/password to root/none
