@@ -127,6 +127,8 @@ $name_of_this_file='/upcoming.php/';
 
 load_global_settings ();
 
+$error = '';
+
 // Make sure 'Upcoming Events' is enabled in System Settings.
 if ( empty ( $UPCOMING_EVENTS ) || $UPCOMING_EVENTS != 'Y' ) {
   $error = print_not_auth ();
