@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Remove menu for modifying nonuser/public prefs when neither is enabled
  - Display category icons in upcoming.php; new corresponding system setting
  - Fixed bug [ 1909554 ] Public access override event name broken
  - Added new RSS feed for Activity Log

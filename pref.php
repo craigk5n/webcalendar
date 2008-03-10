@@ -218,20 +218,23 @@ if ( $is_admin && ! $updating_public  ) {
       "</option>\n";
   }
 }
-if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
-  $nulist = get_my_nonusers ( $login );
-  echo '<select onchange="location=this.options[this.selectedIndex].value;">' ."\n";
-  echo "<option $selected disabled=\"disabled\" value=\"\">" .
-    translate ( 'Modify Non User Calendar Preferences') . "</option>\n";
-  if ( ! empty ( $public_option ) ) echo $public_option . "\n";
-  for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
-    echo '<option value="pref.php?user='. $nulist[$i]['cal_login']. '">' .
-      $nulist[$i]['cal_fullname'] . "</option>\n";
+
+if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
+  if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
+    $nulist = get_my_nonusers ( $login );
+    echo '<select onchange="location=this.options[this.selectedIndex].value;">' ."\n";
+    echo "<option $selected disabled=\"disabled\" value=\"\">" .
+      translate ( 'Modify Non User Calendar Preferences') . "</option>\n";
+    if ( ! empty ( $public_option ) ) echo $public_option . "\n";
+    for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
+      echo '<option value="pref.php?user='. $nulist[$i]['cal_login']. '">' .
+        $nulist[$i]['cal_fullname'] . "</option>\n";
+    }
+    echo "</select>\n";
+  } else {
+    $linktext = translate ( 'Return to My Preferences' );
+    echo "<a title=\"$linktext\" class=\"nav\" href=\"pref.php\">&laquo;&nbsp; $linktext </a>";
   }
-  echo "</select>\n";
-} else {
-  $linktext = translate ( 'Return to My Preferences' );
-  echo "<a title=\"$linktext\" class=\"nav\" href=\"pref.php\">&laquo;&nbsp; $linktext </a>";
 }
 ?>
 
