@@ -29,8 +29,9 @@ if ( empty ( $login ) || $login == '__public__' ) {
 $doUser = $doUsers = $doGroups = $doNUCS = false;
 $doUser = ( ! access_is_enabled () ||
   access_can_access_function ( ACCESS_ACCOUNT_INFO ) );
-$doUsers = ( ! access_is_enabled () ||
-  access_can_access_function ( ACCESS_USER_MANAGEMENT ) );
+$doUsers = ( $is_admin ||
+  ( access_is_enabled () &&
+  access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) );
 $doRemotes = ( ! empty ( $REMOTES_ENABLED ) && $REMOTES_ENABLED == 'Y' &&
   ( ! access_is_enabled () || access_can_access_function ( ACCESS_IMPORT ) ) );
 if ( $is_admin ) {
