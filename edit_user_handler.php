@@ -17,7 +17,7 @@ $uemail = getPostValue ( 'uemail' );
 $upassword1 = getPostValue ( 'upassword1' );
 $upassword2 = getPostValue ( 'upassword2' );
 $uis_admin = getPostValue ( 'uis_admin' );
-$u_enabled = getPostValue ( 'u_enabled' );
+$uenabled = getPostValue ( 'u_enabled' );
 
 $error = '';
 if ( ! $is_admin )

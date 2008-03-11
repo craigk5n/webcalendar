@@ -4,6 +4,8 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixed bug [ 1905393 ] Profile cannot be edited
+ - Fixed bug [ 1911684 ] layers cannot be adjusted or modified for public access
  - Remove menu for modifying nonuser/public prefs when neither is enabled
  - Fixed bug [ 1909554 ] Public access override event name broken
  - Display category icons in upcoming.php; new corresponding system setting
