@@ -7,6 +7,8 @@ $layer_user = $login;
 $u_url = '';
 $updating_public = false;
 
+$public = getValue ( 'public' );
+
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $layer_user = '__public__';
   $u_url = '&amp;public=1';

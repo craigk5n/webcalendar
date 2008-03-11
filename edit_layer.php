@@ -10,8 +10,9 @@ if ( $ALLOW_VIEW_OTHER != 'Y' ) {
 
 $layer_user = $login;
 $updating_public = false;
+$public = getValue ( 'public', '[01]' );
 
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
+if ( $is_admin && $public == '1' && $PUBLIC_ACCESS == 'Y' ) {
   $layer_user = '__public__';
   $updating_public = true;
 }
