@@ -4,6 +4,7 @@ include_once 'includes/init.php';
 load_user_layers ();
 
 $status = getValue ( 'status', '(on|off)', true );
+$public = getValue ( 'public' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' ) {
   print_header ();
