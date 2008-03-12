@@ -300,7 +300,7 @@ function user_add_user ( $user, $password, $firstname,
   $sql = 'INSERT INTO webcal_user ' .
     '( cal_login, cal_lastname, cal_firstname, ' .
     'cal_is_admin, cal_passwd, cal_email, cal_enabled ) ' .
-    'VALUES ( ?, ?, ?, ?, ?, ? )';
+    'VALUES ( ?, ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $user, $ulastname,
     $ufirstname, $admin, $upassword, $uemail, $enabled ) ) ) {
     $error = db_error ();
