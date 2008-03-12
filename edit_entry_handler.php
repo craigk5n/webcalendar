@@ -69,7 +69,21 @@ $eType = getPostValue ( 'eType' );
 $location = getPostValue ( 'location' );
 $name = getPostValue ( 'name' );
 $reminder = getPostValue ( 'reminder' );
+
+$reminder_type = getPostValue ( 'reminder_type' );
+$reminder_hour = getPostValue ( 'reminder_hour' );
+$reminder_minute = getPostValue ( 'reminder_minute' );
+$reminder_day = getPostValue ( 'reminder_day' );
+$reminder_month = getPostValue ( 'reminder_month' );
+$reminder_year = getPostValue ( 'reminder_year' );
+
 $rpt_type = getPostValue ( 'rpt_type' );
+$rpt_hour = getPostValue ( 'rpt_hour' );
+$rpt_minute = getPostValue ( 'rpt_minute' );
+$rpt_day = getPostValue ( 'rpt_day' );
+$rpt_month = getPostValue ( 'rpt_month' );
+$rpt_year = getPostValue ( 'rpt_year' );
+
 $rptmode = getPostValue ( 'rptmode' );
 $rpt_end_use = getPostValue ( 'rpt_end_use' );
 $rpt_count = getPostValue ( 'rpt_count' );
@@ -106,6 +120,19 @@ $rem_rep_days = getPostValue ( 'rem_rep_days' );
 $rem_rep_hours = getPostValue ( 'rem_rep_hours' );
 $rem_rep_minutes = getPostValue ( 'rem_rep_minutes' );
 $rem_rep_minutes = getPostValue ( 'rem_rep_minutes' );
+
+$completed_hour = getPostValue ( 'completed_hour' );
+$completed_minute = getPostValue ( 'completed_minute' );
+$completed_day = getPostValue ( 'completed_day' );
+$completed_month = getPostValue ( 'completed_month' );
+$completed_year = getPostValue ( 'completed_year' );
+
+$due_hour = getPostValue ( 'due_hour' );
+$due_minute = getPostValue ( 'due_minute' );
+$due_day = getPostValue ( 'due_day' );
+$due_month = getPostValue ( 'due_month' );
+$due_year = getPostValue ( 'due_year' );
+
 
 $description =
 ( strlen ( $description ) == 0 || $description == '<br />' ? $name : $description );
@@ -639,10 +666,10 @@ if ( empty ( $error ) ) {
         }
       } else
       if ( $extra_type == EXTRA_DATE ) {
-        $dname = $extra_name . 'day';
-        $mname = $extra_name . 'month';
-        $yname = $extra_name . 'year';
-        $edate = sprintf ( "%04d%02d%02d", $$yname, $$mname, $$dname );
+        $dname = getPostValue ( $extra_name . 'day' );
+        $mname = getPostValue ( $extra_name . 'month' );
+        $yname = getPostValue ( $extra_name . 'year' );
+        $edate = sprintf ( "%04d%02d%02d", $yname, $mname, $dname );
         $sql = 'INSERT INTO webcal_site_extras ( cal_id, cal_name, cal_type,
           cal_date ) VALUES ( ?, ?, ?, ? )';
         $query_params = array ( $id, $extra_name, $extra_type, $edate );
