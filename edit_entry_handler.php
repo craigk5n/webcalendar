@@ -63,6 +63,7 @@ $old_status = array ();
 // Pass all string values through getPostValue.
 $cat_id = getPostValue ( 'cat_id' );
 $description = getPostValue ( 'description' );
+$participants = getPostValue ( 'participants' );
 $entry_url = getPostValue ( 'entry_url' );
 $eType = getPostValue ( 'eType' );
 $location = getPostValue ( 'location' );
