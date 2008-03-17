@@ -354,12 +354,12 @@ if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__publ
 // were selected (because there was no selection list available in the form or
 // because the user refused to select any participant from the list), then we
 // will assume the only participant is the current user.
-if ( empty ( $selectedPart[0] ) ) {
-  $selectedPart[0] = $login;
+if ( empty ( $participants[0] ) ) {
+  $participants[0] = $login;
   // There might be a better way to do this,
   // but if Admin sets this value, WebCalendar should respect it.
   if ( ! empty ( $PUBLIC_ACCESS_DEFAULT_SELECTED ) && $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' )
-    $selectedPart[1] = '__public__';
+    $participants[1] = '__public__';
 }
 
 if ( empty ( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
@@ -620,7 +620,7 @@ if ( empty ( $error ) ) {
     $newevent ? $log_c : $log_u, '' );
 
   if ( $single_user == 'Y' )
-    $selectedPart[0] = $single_user_login;
+    $participants[0] = $single_user_login;
 
   // Add categories.
   $cat_owner = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
@@ -852,7 +852,7 @@ if ( empty ( $error ) ) {
     while ( list ( $old_participant, $dummy ) = each ( $old_status ) ) {
       $found_flag = false;
       for ( $i = 0; $i < $partcnt; $i++ ) {
-        if ( $selectedPart[$i] == $old_participant ) {
+        if ( $participants[$i] == $old_participant ) {
           $found_flag = true;
           break;
         }
@@ -918,7 +918,7 @@ if ( empty ( $error ) ) {
   // Now add participants and send out notifications.
   for ( $i = 0; $i < $partcnt; $i++ ) {
     // Is the person adding the nonuser calendar admin?
-    $is_nonuser_admin = user_is_nonuser_admin ( $login, $selectedPart[$i] );
+    $is_nonuser_admin = user_is_nonuser_admin ( $login, $participants[$i] );
     // If public access, require approval unless
     // $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL is set to 'N'
     if ( $login == '__public__' ) {
@@ -933,36 +933,36 @@ if ( empty ( $error ) ) {
     if ( ! $newevent ) {
       // Keep the old status if no email will be sent.
       $send_user_mail =
-      ( empty ( $old_status[$selectedPart[$i]] ) || $entry_changed );
+      ( empty ( $old_status[$participants[$i]] ) || $entry_changed );
       $tmp_status =
-      ( ! empty ( $old_status[$selectedPart[$i]] ) && ! $send_user_mail
-        ? $old_status[$selectedPart[$i]] : 'W' );
-      $status = ( $selectedPart[$i] != $login &&
-        boss_must_approve_event ( $login, $selectedPart[$i] ) &&
+      ( ! empty ( $old_status[$participants[$i]] ) && ! $send_user_mail
+        ? $old_status[$participants[$i]] : 'W' );
+      $status = ( $participants[$i] != $login &&
+        boss_must_approve_event ( $login, $participants[$i] ) &&
         $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ? $tmp_status : 'A' );
 
       // Set percentage to old_percent if not owner.
-      $tmp_percent = ( empty ( $old_percent[$selectedPart[$i]] )
-        ? 0 : $old_percent[$selectedPart[$i]] );
+      $tmp_percent = ( empty ( $old_percent[$participants[$i]] )
+        ? 0 : $old_percent[$participants[$i]] );
 
       // TODO:  This logic needs work.
-      $new_percent = ( $selectedPart[$i] != $login
+      $new_percent = ( $participants[$i] != $login
         ? $tmp_percent : $percent );
       // If user is admin and this event was previously approved for public,
       // keep it as approved even though date/time may have changed.
       // This goes against stricter security, but it confuses users to have
       // to re-approve events they already approved.
-      if ( $selectedPart[$i] == '__public__' && $is_admin &&
+      if ( $participants[$i] == '__public__' && $is_admin &&
         ( empty ( $old_status['__public__'] ) || $old_status['__public__'] == 'A' ) )
         $status = 'A';
     } else { // New Event.
       $send_user_mail = true;
-      $status = ( $selectedPart[$i] != $login &&
-        boss_must_approve_event ( $login, $selectedPart[$i] ) &&
+      $status = ( $participants[$i] != $login &&
+        boss_must_approve_event ( $login, $participants[$i] ) &&
         $REQUIRE_APPROVALS == 'Y' && ! $is_nonuser_admin ? 'W' : 'A' );
-      $new_percent = ( $selectedPart[$i] != $login ? 0 : $percent );
+      $new_percent = ( $participants[$i] != $login ? 0 : $percent );
       // If admin, no need to approve Public Access Events
-      if ( $selectedPart[$i] == '__public__' && $is_admin )
+      if ( $participants[$i] == '__public__' && $is_admin )
         $status = 'A';
     } //end new/old event
 
@@ -970,34 +970,34 @@ if ( empty ( $error ) ) {
     // on the following add... As a safety measure, delete any
     // existing entry with the id. Ignore the result.
     dbi_execute ( 'DELETE FROM webcal_entry_user
-      WHERE cal_id = ? AND cal_login = ?', array ( $id, $selectedPart[$i] ) );
+      WHERE cal_id = ? AND cal_login = ?', array ( $id, $participants[$i] ) );
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status, cal_percent ) VALUES ( ?, ?, ?, ? )',
-        array ( $id, $selectedPart[$i], $status, $new_percent ) ) ) {
+        array ( $id, $participants[$i], $status, $new_percent ) ) ) {
       $error = $dberror . dbi_error ();
       break;
     } else {
       // Check UAC.
       $can_email = 'Y';
       if ( access_is_enabled () )
-        $can_email = access_user_calendar ( 'email', $selectedPart[$i], $login );
+        $can_email = access_user_calendar ( 'email', $participants[$i], $login );
 
       // Don't send mail if we are editing a non-user calendar and are the admin.
       if ( !$is_nonuser_admin && $can_email == 'Y' ) {
         // Only send mail if their email address is filled in.
-        $do_send = get_pref_setting ( $selectedPart[$i], $newevent
+        $do_send = get_pref_setting ( $participants[$i], $newevent
           ? 'EMAIL_EVENT_ADDED' : 'EMAIL_EVENT_UPDATED' );
-        $htmlmail = get_pref_setting ( $selectedPart[$i], 'EMAIL_HTML' );
-        $t_format = get_pref_setting ( $selectedPart[$i], 'TIME_FORMAT' );
-        $user_TIMEZONE = get_pref_setting ( $selectedPart[$i], 'TIMEZONE' );
+        $htmlmail = get_pref_setting ( $participants[$i], 'EMAIL_HTML' );
+        $t_format = get_pref_setting ( $participants[$i], 'TIME_FORMAT' );
+        $user_TIMEZONE = get_pref_setting ( $participants[$i], 'TIMEZONE' );
         set_env ( 'TZ', $user_TIMEZONE );
-        $user_language = get_pref_setting ( $selectedPart[$i], 'LANGUAGE' );
-        user_load_variables ( $selectedPart[$i], 'temp' );
-        if ( boss_must_be_notified ( $login, $selectedPart[$i] ) && !
+        $user_language = get_pref_setting ( $participants[$i], 'LANGUAGE' );
+        user_load_variables ( $participants[$i], 'temp' );
+        if ( boss_must_be_notified ( $login, $participants[$i] ) && !
             empty ( $tempemail ) && $do_send == 'Y' && $send_user_mail &&
               $SEND_EMAIL != 'N' ) {
           // We send to creator if they want it.
-          if ( $send_own != 'Y' && ( $selectedPart[$i] == $login ) )
+          if ( $send_own != 'Y' && ( $participants[$i] == $login ) )
             continue;
 
           reset_language ( empty ( $user_language ) || $user_language == 'none'
@@ -1006,7 +1006,7 @@ if ( empty ( $error ) ) {
             ? date ( 'Ymd', $eventstart ) : gmdate ( 'Ymd', $eventstart ) );
           $msg = str_replace ( 'XXX', $tempfullname, $helloStr ) . "\n\n"
            . str_replace ( 'XXX', $login_fullname,
-            ( $newevent || ( empty ( $old_status[$selectedPart[$i]] ) )
+            ( $newevent || ( empty ( $old_status[$participants[$i]] ) )
               ? $newAppStr : $updAppStr ) ) . "\n"
            . str_replace ( 'XXX', $name, $subjStr ) . "\n\n"
            . str_replace ( 'XXX', $description, $descStr ) . "\n"
@@ -1040,7 +1040,7 @@ if ( empty ( $error ) ) {
           // Use WebCalMailer class.
           $mail->WC_Send ( $login_fullname, $tempemail,
             $tempfullname, $name, $msg, $htmlmail, $from, $attachId );
-          activity_log ( $id, $login, $selectedPart[$i], LOG_NOTIFICATION, '' );
+          activity_log ( $id, $login, $participants[$i], LOG_NOTIFICATION, '' );
         }
       }
     }
