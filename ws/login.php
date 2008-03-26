@@ -69,7 +69,7 @@ else {
   <admin>1</admin>' : '' ) . '
   <calendarName>' . generate_application_name () . '</calendarName>
   <appName>' . htmlspecialchars ( PROGRAM_NAME ) . '</appName>
-  <appVersion>' . htmlspecialchars ( PROGRAM_VERSION ) . '</appVersion>
+  <appVersion>' . htmlspecialchars ( _WEBCAL_PROGRAM_VERSION ) . '</appVersion>
   <appDate>' . htmlspecialchars ( PROGRAM_DATE ) . '</appDate>';
     } else
       $out .= '

@@ -3,7 +3,7 @@
 {if ! $credits}
   <a title="{$smarty.const.PROGRAM_NAME}" href="{$smarty.const.PROGRAM_URL}" target="_blank">
       <h2 style="margin:0">__Title__</h2>
-      <p>__version__ {$smarty.const.PROGRAM_VERSION}</p>
+      <p>__version__ {$smarty.const._WEBCAL_PROGRAM_VERSION}</p>
       <p>{$smarty.const.PROGRAM_DATE}</p></a>
       <p>&nbsp;</p>
       <p>__Webcalendar is a PHP application used...__</p>
