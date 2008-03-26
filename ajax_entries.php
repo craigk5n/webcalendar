@@ -57,12 +57,12 @@ for ( $i=$startTS; $i<=$endTS; ) {
 }
 //Strip trailing comma
 $ajaxout = substr ( $ajaxout, 0, strlen ( $ajaxout ) -1 );
-	 
+ 
 //Wrap data with JSON label
 $ajaxout = '{"caldata":[' . $ajaxout . ']';
 
 //Add popup info
-if ( ! empty ( $tipinfo ) ) {
+if ( ! empty ( $tipinfo ) && getPref ( 'ENABLE_POPUPS' ) ) {
   $ajaxout .= ',"tip":[';
   foreach ( $tipinfo as $tip) {
     $ajaxout .= $tip . ',';
