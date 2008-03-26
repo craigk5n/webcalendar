@@ -2,26 +2,26 @@
 /* $Id$
  *
  * Page Description:
- *	This file can be used to define extra information associated with a
- *	calender entry.
+ *  This file can be used to define extra information associated with a
+ *  calender entry.
  *
- *	You may define extra fields of the following types:
- *	  EXTRA_TEXT - will allow user to enter a line of text
- *	  EXTRA_MULTILINETEXT - will allow user to enter multiple lines of text
- *	  EXTRA_URL - will be displayed as a link
- *	  EXTRA_DATE - will be presented with date pulldown menus when entering
- *	  EXTRA_EMAIL - will be presented as a mailto URL
- *	  EXTRA_USER - must be a calendar user name; will be presented
- *	               with a pulldown
- *	  EXTRA_RADIO - will display 1-n radio controls
- *	  EXTRA_SELECTLIST - allows a custom selection list.  Can use
- *	    this to specify a list of possible locations, etc.
- *	  EXTRA_CHECKBOX - will display a checkbox control
+ *  You may define extra fields of the following types:
+ *    EXTRA_TEXT - will allow user to enter a line of text
+ *    EXTRA_MULTILINETEXT - will allow user to enter multiple lines of text
+ *    EXTRA_URL - will be displayed as a link
+ *    EXTRA_DATE - will be presented with date pulldown menus when entering
+ *    EXTRA_EMAIL - will be presented as a mailto URL
+ *    EXTRA_USER - must be a calendar user name; will be presented
+ *                 with a pulldown
+ *    EXTRA_RADIO - will display 1-n radio controls
+ *    EXTRA_SELECTLIST - allows a custom selection list.  Can use
+ *      this to specify a list of possible locations, etc.
+ *    EXTRA_CHECKBOX - will display a checkbox control
  *
  * Comments:
- *	If you want to fully support using languages other than what
- *	you define below, you will need to add the 2nd field of the arrays
- *	below to the translation files.
+ *  If you want to fully support using languages other than what
+ *  you define below, you will need to add the 2nd field of the arrays
+ *  below to the translation files.
  *
  */
 // define types
@@ -130,17 +130,17 @@ function get_site_extra_fields ( $eid='' ) {
           'cal_data' => $row[3]
           );
       }
-		}
+    }
   } else { 
-	  foreach ( $site_extras as $extra ) {
+    foreach ( $site_extras as $extra ) {
       $extras[$extra[0]] = array (
         'cal_name' => $extra[0],
         'cal_type' => $extra[2],
         'cal_date' => '',
         'cal_data' => ( $extra[2] == EXTRA_RADIO || $extra[2] == EXTRA_CHECKBOX ? $extra[4] : '' )
-       );		  
-		}
-	}
+       );      
+    }
+  }
   return $extras;
 }
 
@@ -174,7 +174,7 @@ function get_site_extras_names ( $filter = '' ) {
  * @return string  The HTML to be used within the event popup for any site_extra
  *                 fields found for the specified event.
  */
-function site_extras_for_popup ( $eid ) {
+function site_extras_for_popup ( $eid, $json=false ) {
 
   if ( ! getPref ( 'SITE_EXTRAS_IN_POPUP' ) )
     return '';
@@ -186,7 +186,10 @@ function site_extras_for_popup ( $eid ) {
   $ret = '';
 
   foreach ( $extras as $extra ) {
-    $ret .= '<dt>' . $extra['name'] . ":</dt>\n<dd>" . $extra['data'] . "</dd>\n";
+    if ( $json )
+      $ret .= '<dt>' . $extra['name'] . ":</dt>\n<dd>" . $extra['data'] . "</dd>\n";
+    else 
+      $ret .= $extra['name'] . ":</dt>\n<dd>" . $extra['data'] . "</dd>\n";
   }
 
   return $ret;
