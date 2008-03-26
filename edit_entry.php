@@ -346,8 +346,10 @@ $smarty->assign ( 'due_time', $due_time );
 $smarty->assign ( 'catNames', $catNames );
 $smarty->assign ( 'catList', $catList );
 
-$smarty->assign ( 'overall_percent', $overall_percent );
-$smarty->assign ( 'others_complete', $others_complete );
+if ( $eType == 'task' ) {
+  $smarty->assign ( 'overall_percent', $overall_percent );
+  $smarty->assign ( 'others_complete', $others_complete );
+}
 //Setup to display user's timezone difference if Admin or Assistane
 //Even though event is stored in GMT, an Assistant may need to know that
 //the boss is in a different Timezone
