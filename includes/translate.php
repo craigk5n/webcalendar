@@ -218,7 +218,7 @@ function translate ( $str, $options = '' ) {
 
   static $translations;
   //Set $blink to true to aid in finding missing translations
-  $blink = ( true & WC_RUN_MODE == 'prod' );
+  $blink = ( true & ( _WC_RUN_MODE == 'dev' ) );
 
   $decode = ( strpos ( $options, 'D' ) ? true : false );
   $tooltip = ( strpos ( $options, 'T' ) ? true : false );
