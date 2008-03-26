@@ -20,19 +20,18 @@ function db_load_admin () {
 
     dbi_free_result ( $res );
   }
-  $upassword = ( $wewbcalConfig['_CLEARTEXT_PASSWORDS'] == 'Y'? 'admin' : md5 ( 'admin' ) );
+  $upassword = ( $webcalConfig['_CLEARTEXT_PASSWORDS'] == 'Y'? 'admin' : md5 ( 'admin' ) );
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_user
-    WHERE cal_login = \'admin\'', array (), false, false );
+    WHERE cal_login = ?', array ( 'admin' ), false, false );
   $sql = 'INSERT INTO webcal_user ( cal_login_id, cal_login, cal_passwd, cal_lastname,
-    cal_firstname, cal_is_admin ) VALUES ( \''. $next_id . '\', \'admin\', \''
-    . $upassword . '\', \'ADMINISTRATOR\', \'DEFAULT\', \'Y\' )';
+    cal_firstname, cal_is_admin ) VALUES ( ?, ?, ?, ?, ?, ? )';
   // Preload access_function premissions.
   $sql2 = 'INSERT INTO webcal_access_function ( cal_login_id, cal_permissions )
-    VALUES ( \'' . $next_id 
-  . '\', \'YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\' )';
+    VALUES ( ?, ? )';
   if ( ! $res ) {
-    dbi_execute ( $sql );
-    dbi_execute ( $sql2 );
+    dbi_execute ( $sql, array ( $next_id, 'admin', $upassword, 
+		  'ADMINISTRATOR', 'DEFAULT', 'Y' ) );
+    dbi_execute ( $sql2, array ( $next_id, str_repeat('Y', 64) ) );
   } else { // Sqlite returns $res always.
     $row = dbi_fetch_row ( $res );
     if ( ! isset ( $row[0] ) ) {
@@ -45,7 +44,7 @@ function db_load_admin () {
 
 function db_check_admin () {
   $res = dbi_execute ( 'SELECT COUNT( cal_login ) FROM webcal_user
-    WHERE cal_is_admin = \'Y\'', array (), false, false );
+    WHERE cal_is_admin = ?', array ( 'Y' ), false, false );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     dbi_free_result ( $res );
@@ -92,12 +91,12 @@ function get_installed_version ( $postinstall = false ) {
   // disable warnings
   // show_errors ();
   // Set this as the default value.
-  $_SESSION['application_name'] = 'Title';
+  $_SESSION['APPLICATION_NAME'] = 'Title';
   $_SESSION['blank_database'] = '';
   // We will append the db_type to come up the proper filename.
   $_SESSION['install_file'] = 'tables';
   $_SESSION['old_program_version'] = ( $postinstall
-    ? PROGRAM_VERSION : 'new_install' );
+    ? _WEBCAL_PROGRAM_VERSION : 'new_install' );
 
   // Suppress errors based on $show_all_errors.
   if ( ! $show_all_errors )
@@ -105,7 +104,7 @@ function get_installed_version ( $postinstall = false ) {
 
   // v1.1 and after will have an entry in webcal_config to make this easier
   $res = @dbi_execute ( 'SELECT cal_value FROM webcal_config
-    WHERE cal_setting = \'_WEBCAL_PROGRAM_VERSION\'', array(), false, false );
+    WHERE cal_setting = ?', array( '_WEBCAL_PROGRAM_VERSION' ), false, false );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
    if ( ! empty ( $row[0] ) ) {
@@ -135,7 +134,7 @@ function get_installed_version ( $postinstall = false ) {
 
       // Delete existing _WEBCAL_PROGRAM_VERSION number.
       dbi_execute ( 'DELETE FROM webcal_config
-        WHERE cal_setting = \'_WEBCAL_PROGRAM_VERSION\'' );
+        WHERE cal_setting = ?', array ( 'admin' ) );
     }
     dbi_free_result ( $res );
     // Insert webcal_config values only if blank.
@@ -146,22 +145,22 @@ function get_installed_version ( $postinstall = false ) {
   // Get existing server URL.
   // We could use the self-discvery value, but this may be a custom value.
   $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-    WHERE cal_setting = \'SERVER_URL\'', array (), false, $show_all_errors );
+    WHERE cal_setting = ?', array ( 'SERVER_URL' ), false, $show_all_errors );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( ! empty ( $row[0] ) && strlen ( $row[0] ) )
-      $_SESSION['server_url'] = $row[0];
+      $_SESSION['SERVER_URL'] = $row[0];
 
     dbi_free_result ( $res );
   }
   // Get existing application name.
   $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-    WHERE cal_setting = \'APPLICATION_NAME\'',
-    array (), false, $show_all_errors );
+    WHERE cal_setting = ?',
+    array ( 'APPLICATION_NAME' ), false, $show_all_errors );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( ! empty ( $row[0] ) )
-      $_SESSION['application_name'] = $row[0];
+      $_SESSION['APPLICATION_NAME'] = $row[0];
 
     dbi_free_result ( $res );
   }
@@ -241,12 +240,106 @@ function db_populate ( $install_filename, $display_sql ) {
   show_errors ( true );
 } //end db_populate
 
-function readSettings () {
-
+function doSettings ( $setting, $value='', $set=false ) {
+  global $settings;
+  //static $settings;
+	if ( $setting == 'SaveAll' )
+	   writeSettings ( $value, $settings );
+  else if ( $set )
+	  $settings[$setting] = $value;
+	else
+	  return ( ! empty ( $settings[$setting] ) ? $settings[$setting] : false );
 }
 
-function writeSettings ( $settingsAr ) {
+function testSettings ( $file ) {
+  $fd = @fopen ( $file, 'a+b', false );
+  if ( empty ( $fd ) ) {
+    writeAlert ( translate ( 'Unable to write password to settings.php file', true ) );
+    exit;
+  }
+}
 
+function readSettings ( $file ) {
+  
+	$settings = array();
+  $magic = @get_magic_quotes_runtime();
+  @set_magic_quotes_runtime(0);
+  $fd = @fopen ( $file, 'rb', false );
+  if ( ! empty ( $fd ) ) {
+    while ( ! feof ( $fd ) ) {
+      $buffer = fgets ( $fd, 4096 );
+      $buffer = trim ( $buffer, "\r\n " );
+      if ( preg_match ( "/^#|\/\*/", $buffer ) )
+        continue;
+      if ( preg_match ( "/^<\?/", $buffer ) ) // start php code
+        continue;
+      if ( preg_match ( "/^\?>/", $buffer ) ) // end php code
+        continue;
+      if ( preg_match ( "/(\S+):\s*(.*)/", $buffer, $matches ) ) {
+			  //echo $matches[1] . ' ' .  $matches[2] . '<br>';
+        doSettings( $matches[1], $matches[2], true );
+      }
+    }
+    fclose ( $fd );
+  }
+  @set_magic_quotes_runtime($magic);
+}
+
+function writeSettings ( $file, $settings='' ) {
+  
+
+	if ( empty ( $settings ) && ! @file_exists ( $file ) )
+	 $settingsAr = array (
+	   'db_prefix'=>'webcal_',
+     'db_type'=>'mysql',
+     'db_host'=>'localhost',
+     'db_database'=>'intranet',
+     'db_login'=>'root',
+     'db_password'=>'none',
+     'db_persistent'=>'false',
+     'db_cachedir'=>( file_exists ( '/tmp' ) && is_writable ( '/tmp' )
+      ? '/tmp' : '' ),
+     'readonly'=>'false',
+     'user_inc'=>'User',
+     'install_password'=>( ! empty ( $_SESSION['validuser'] ) ? $_SESSION['validuser'] : '' ),
+     'single_user_login'=>'',
+     'use_http_auth'=>'false',
+     'single_user'=>'false'
+	  );
+	else
+	  $settingsAr = ( ! empty ( $settings ) ? $settings : '');
+
+  $fd = @fopen ( $file, 'w+b', false );
+  if ( empty ( $fd ) ) {
+    if ( @file_exists ( $file ) ) {
+      $onloadDetailStr =
+        translate ( 'Please change the file permissions of this file', true );
+    } else {
+      $onloadDetailStr =
+        translate ( 'Please change includes dir permission', true );
+    }
+    $onload = "alert('" . translate ( 'Error Unable to write to file', true ) . $file. "\\n" .
+      $onloadDetailStr . ".');";
+  } else if ( ! empty ( $settingsAr ) ) {	
+	  fwrite ( $fd, "<?php\r\n" );
+    fwrite ( $fd, '/* updated via install/index.php on ' . date('r') . "\r\n" );
+    while ( list ( $key, $value ) = each ( $settingsAr ) ) {
+		  //echo "$key   $value  <br>";
+      fwrite ( $fd, "$key: $value\r\n" );
+	  }
+    fwrite ( $fd, "# end settings.php */\r\n?>\r\n" );
+    fclose ( $fd );
+		if ( ! empty ( $settings ) ) {
+		  //Check actual values passed in
+	    if ( array_key_exists( 'user_inc', $settings ) )
+        writeAlert ( translate ( 'Your settings have been saved', true ) );
+		}
+    // Change to read/write by us only (only applies if we created file)
+    // and read-only by all others.  Would be nice to make it 600, but
+    // the send_reminders.php script is usually run under a different
+    // user than the web server.
+    @chmod ( $file, 0644 );
+	}
 }
 
 function writeAlert ( $str, $back=false ) {

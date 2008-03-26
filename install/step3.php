@@ -8,7 +8,7 @@
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $_SESSION['db_updated'] = false;
-if ( $_SESSION['old_program_version'] == PROGRAM_VERSION  && 
+if ( $_SESSION['old_program_version'] == _WEBCAL_PROGRAM_VERSION  && 
    empty ( $_SESSION['blank_database'] ) ){
    $response_msg = translate ( 'database up to date...' );
   $_SESSION['db_updated'] = true; 
@@ -21,7 +21,7 @@ if ( $_SESSION['old_program_version'] == PROGRAM_VERSION  &&
   } else {
      $response_msg = translate ( 'This appears to be an upgrade from version' )  . 
      '&nbsp;' .   $_SESSION['old_program_version'] . '&nbsp;' .
-     translate ( 'to' ) . ' ' .  PROGRAM_VERSION . '.';
+     translate ( 'to' ) . ' ' .  _WEBCAL_PROGRAM_VERSION . '.';
   }
 ?>
 <table border="1" width="90%" align="center">

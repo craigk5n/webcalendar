@@ -158,7 +158,7 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
   <?php if ( ! empty ( $_SESSION['db_success'] ) && $_SESSION['db_success']  && empty ( $dologin ) ) { ?>
   <input name="action" type="button" value="<?php etranslate ( 'Save Settings' ) ?>" onclick="return validate();" />
    <?php if ( ! empty ( $_SESSION['old_program_version'] ) && 
-    $_SESSION['old_program_version'] == PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
+    $_SESSION['old_program_version'] == _WEBCAL_PROGRAM_VERSION  && ! empty ( $setup_complete )) { ?>
     <input type="button"  name="action2" value="<?php etranslate ( 'Launch WebCalendar' ) ?>" onclick="window.open('../index.php', 'webcalendar');" />
    <?php }
   } 
