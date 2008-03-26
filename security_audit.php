@@ -26,7 +26,7 @@ if ( $phpinfo == '1' ) {
   print_trailer ( false, true, true );
   exit;
 }
-
+clearstatcache();
 print_header ();
 
 ?>
@@ -58,10 +58,11 @@ print_issue (
 $wcDir = '.';
 $wcName = 'WebCalendar toplevel director';
 if ( preg_match ( '/(.*).security_audit.php/', __FILE__, $matches ) ) {
-  $wcDir = $matches[1];
+  $wcDir = $matches[1] . '\\';
   $wcName = basename ( $wcDir );
-}
-$isOk = ! is_writable ( $wcDir );
+} 
+
+$isOk = ! is__writable ( $wcDir );
 $help = translate ( 'The following item should not be writable' ) .
   ':<br/><tt>' . htmlentities ( $wcDir ) . '</tt>';
 print_issue ( 
@@ -69,7 +70,7 @@ print_issue (
 
 // Is the includes directory still writable?
 // just see if we get an error trying to append to it.
-$isOk = ! is_writable ( 'includes' );
+$isOk = ! is__writable ( 'includes' );
 $help = translate ( 'The following item should not be writable' ) .
   ':<br/><tt>' . get_wc_path ( 'includes' ) . '</tt>';
 print_issue ( 
@@ -220,4 +221,24 @@ function get_wc_path ( $filename ) {
     die_miserable_death ( 'Crap! Someone renamed security_audit.php' );
 }
 
+function is__writable($path) {
+//will work in despite of Windows ACLs bug
+//NOTE: use a trailing slash for folders!!!
+//see http://bugs.php.net/bug.php?id=27609
+//see http://bugs.php.net/bug.php?id=30931
+
+    if ($path{strlen($path)-1}=='/') // recursively return a temporary file path
+        return is__writable($path.uniqid(mt_rand()).'.tmp');
+    else if (is_dir($path))
+        return is__writable($path.'/'.uniqid(mt_rand()).'.tmp');
+    // check tmp file for read/write capabilities
+    $rm = file_exists($path);
+    $f = @fopen($path, 'a');
+    if ($f===false)
+        return false;
+    fclose($f);
+    if (!$rm)
+        unlink($path);
+    return true;
+}
 ?>
