@@ -1,0 +1,92 @@
+body {
+  margin: 0px;
+  color: #4F3AAA;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.main {
+  float:left;
+}
+tr {
+  background: #FFFFFF;
+  padding: 10px;
+}
+h3 {
+  margin:  0px 0px 0px 20px;
+}
+.box {
+  border: 1px solid #888;
+}
+.box2 {
+  border: 2px solid #888;
+}
+.title {
+  padding: 10px 0px 10px 0px;
+  vertical-align: middle;
+  background-image: url(../images/install1.png);
+  height: 30px;
+}
+.title img {
+  vertical-align: middle;
+}
+.title span {
+  font-size: 28px;
+  font-weight: bold;
+  vertical-align: middle;
+  padding: 3px 0px 0px 0px;
+}
+.install {
+  float:left;
+  text-align: center;
+  width: 200px;
+  background: #E4E4E4;
+}
+.menu {
+  vertical-align: middle;
+  padding: 40px 0px 40px 0px;
+  border: 5px solid #FFF;
+}
+.menu td {
+  font-size: 12px;
+  background: #E4E4E4;
+}
+.menu a {
+  color: #4F3AAA;
+  text-decoration:none;
+}
+label {
+  color: #4F3AAA;
+}
+.progress {
+  text-align: left;
+  height: 18px;
+	width: 90%;
+  background: #D0D0D0;
+}
+.main {
+  float:left;
+	text-align:left;
+	width: 70%;
+	margin: 5px 0px 0px 10px;
+  padding: 0px;
+}
+.grid{
+	background: #F0F0F0;
+}
+.grid div {
+  border: 0px;
+	padding-right: 25%;
+	padding-bottom: 5px;
+	margin-bottom: 0px;
+  text-align: right;
+}
+.main p {
+  margin-bottom: 0px;
+	font-size: 12px;
+}
+.center { 
+text-align:center;
+}
+.active,
+.active td{
+  background: #C0C0C0;
+}
