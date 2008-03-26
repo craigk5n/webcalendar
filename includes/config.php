@@ -21,10 +21,10 @@
   // so we don't get them mixed up with real logins.  This prefix should be
   // a maximum of 5 characters and should NOT change once set!
   define ( '_WC_NONUSER_PREFIX', '_NUC_' );
-  define ( 'PROGRAM_VERSION', 'v2.0' );
+  define ( '_WEBCAL_PROGRAM_VERSION', 'v2.0' );
   define ( 'PROGRAM_DATE', '?? ??? 2007' );
   define ( 'PROGRAM_NAME', 'WebCalendar ' . 
-    PROGRAM_VERSION .'( '. PROGRAM_DATE .' )' );
+    _WEBCAL_PROGRAM_VERSION .'( '. PROGRAM_DATE .' )' );
   define ( 'PROGRAM_URL', 'http://www.k5n.us/webcalendar.php' );
   define ( 'TROUBLE_URL', 'docs/WebCalendar-SysAdmin.html#trouble' );
    
@@ -148,7 +148,10 @@ function do_config ( $fileLoc ) {
     // echo "settings $matches[1] => $matches[2]<br />";
   }
   $configLines = $data = '';
-
+  
+	if ( empty ( $cfg['install_password'] ) )
+	  die_via_installation ();
+		
   foreach ( array ( 'db_type', 'db_host', 'db_login', 'db_password' ) as $s ) {
     if ( empty ( $cfg[$s] ) )
       die_miserable_death ( str_replace ( 'XXX', $s,
@@ -237,10 +240,10 @@ function do_config ( $fileLoc ) {
 
   if ( $c ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
-       WHERE cal_setting = ?', array( _WEBCAL_PROGRAM_VERSION ), false, false );
+       WHERE cal_setting = ?', array( '_WEBCAL_PROGRAM_VERSION' ), false, false );
     if ( $rows ) {
       $row = $rows[0];
-      if ( ! empty ( $row ) && $row[0] != PROGRAM_VERSION ) {
+      if ( ! empty ( $row ) && $row[0] != _WEBCAL_PROGRAM_VERSION ) {
         die_via_installation ( $row[0] );
       }
     } else
