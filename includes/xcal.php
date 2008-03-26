@@ -14,7 +14,7 @@
  *
  */
 function generate_prodid () {
-  $ret = 'PRODID:-//WebCalendar-' . PROGRAM_VERSION;
+  $ret = 'PRODID:-//WebCalendar-' . _WEBCAL_PROGRAM_VERSION;
   $ret .= "\r\n";
   return $ret;
 }

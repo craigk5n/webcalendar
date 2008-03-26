@@ -237,7 +237,7 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>';
 <description><![CDATA[<?php echo $appStr ?>]]></description>
 <language><?php echo $lang; ?></language>
 <generator>:"http://www.k5n.us/webcalendar.php?v=<?php 
-echo PROGRAM_VERSION; ?>"</generator>
+echo _WEBCAL_PROGRAM_VERSION; ?>"</generator>
 <image>
 <title><![CDATA[<?php echo $appStr ?>]]></title>
 <link><?php echo $server_url; ?></link>
