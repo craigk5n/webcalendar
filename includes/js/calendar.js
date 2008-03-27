@@ -3,7 +3,7 @@
 initPhpVars( 'calendar' );
 var myarray = '';
 function onLoad () {
-	  add_dblclick();
+      add_dblclick();
   //make sure AJAX is finished first
    if ( typeof( window[ 'DISPLAY_TASKS' ] ) == "undefined") {
      setTimeout ( "onLoad()", 10 );
@@ -15,7 +15,7 @@ function onLoad () {
 
 function initEntries( user, caltype, date, cat_id ) {
   var url = 'ajax_entries.php';
-	var catId = '';
+    var catId = '';
   if ( cat_id )
     catId = '&cat_id=' + cat_id;
   var params = 'page=initEntries&user=' + user + '&caltype=' + caltype + '&date=' + date + catId;
@@ -28,75 +28,76 @@ function initEntries( user, caltype, date, cat_id ) {
 function setEntries(originalRequest ) {
   waitForDom();
   if (originalRequest.responseText) {
-		var dvinfo = originalRequest.responseText.evalJSON();
+        var dvinfo = originalRequest.responseText.evalJSON();
     //dvinfo = eval( '(' + originalRequest.responseText + ')' );
     //Create event entries
-		var dvinner;
+        var dvinner;
     var eDiv;
-		var evAr = new Array();
-		if (dvinfo.tip)
-		dvinfo.tip.each(function(tips) {
-			tip = '';
-		 //Parse Popups
-			//Note: the text below has already been translated via ajax.php
-			if ( tips.puser )     
-				tip += '<dt>User:</dt><dd>' + tips.puser + '</dd>';
-			tip += '<dl><dt>Time:</dt><dd>' + tips.ptime + '</dd>';
-			if ( tips.ploc )     
-				tip += '<dt>Location:</dt><dd>' + tips.ploc + '</dd>';
-			if ( tips.psum )     
-				tip += '<dt>Summary:</dt><dd>' + tips.psum + '</dd>';
-			if ( tips.ppart )     
-				tip += '<dt>Participants:</dt><dd>' + tips.ppart + '</dd>';
-			if ( tips.pdesc ) 
-				tip += '<dt>Description:</dt><dd>' + tips.pdesc + '</dd>';
-			if ( tips.prem )
-				tip += '<dt>Reminder:</dt><dd>' + tips.prem + ' </dd>';
-			if ( tips.pse )
-				tip += '<dt>SiteExtras:</dt><dd>' + tips.pse + ' </dd>';
-			tip += '</dl>';
-			evAr[tips.tid] = tip;
-		});
-		//alert ( dvinfo.tip[0].ptime );
+        var evAr = new Array();
+        if (dvinfo.tip)
+        dvinfo.tip.each(function(tips) {
+            tip = '';
+         //Parse Popups
+            //Note: the text below has already been translated via ajax.php
+            if ( tips.puser )     
+                tip += '<dt>User:</dt><dd>' + tips.puser + '</dd>';
+            tip += '<dl><dt>Time:</dt><dd>' + tips.ptime + '</dd>';
+            if ( tips.ploc )     
+                tip += '<dt>Location:</dt><dd>' + tips.ploc + '</dd>';
+            if ( tips.psum )     
+                tip += '<dt>Summary:</dt><dd>' + tips.psum + '</dd>';
+            if ( tips.ppart )     
+                tip += '<dt>Participants:</dt><dd>' + tips.ppart + '</dd>';
+            if ( tips.pdesc ) 
+                tip += '<dt>Description:</dt><dd>' + tips.pdesc + '</dd>';
+            if ( tips.prem )
+                tip += '<dt>Reminder:</dt><dd>' + tips.prem + ' </dd>';
+            if ( tips.pse )
+                tip += '<dt>SiteExtras:</dt><dd>' + tips.pse + ' </dd>';
+            tip += '</dl>';
+
+            evAr[tips.tid] = tip;
+        });
+
     dvinfo.caldata.each(function(dvdata) {
       dvinner = '';
       dvid = 'dv' + dvdata.dv;
-			//alert ( dvdata.ev);
-			if ( dvdata.ev[0].eid == 'blank' ) {
-        $(dvid).update();	
-			}else{
+            //alert ( dvdata.ev);
+            if ( dvdata.ev[0].eid == 'blank' ) {
+        $(dvid).update();    
+            }else{
         dvdata.ev.each(function(evt) {
-					eid = evt.eid.split('-')[0];
-					date = evt.date ? evt.date : dvdata.dv;
-					time = evt.time ? evt.time : '';
-					//alert ( eid);
-					view = (evt.type ? viewTaskStr : viewEventStr);
-					img = (evt.type ? 'task' : 'event');
-					dvinner += '<div id="ev'+ evt.eid +'"><a  title="' + view 
-						+ '" class="' + evt.cl + '" href="view_entry.php?eid=' 
-						+ eid + '&amp;date=' + date + '&amp;user=' + evt.user
-						+ '"><img src="images/' + img + '.gif" class="bullet" alt="' 
-						+ view + '" width="5" height="7" />' + time 
-						+ evt.sum + '</a></div>';
-			   });
-				$(dvid).update(dvinner);
-				//Loop through again now that all DIVs are created
+                    eid = evt.eid.split('-')[0];
+                    date = evt.date ? evt.date : dvdata.dv;
+                    time = evt.time ? evt.time : '';
+                    //alert ( eid);
+                    view = (evt.type ? viewTaskStr : viewEventStr);
+                    img = (evt.type ? 'task' : 'event');
+                    dvinner += '<div id="ev'+ evt.eid +'"><a  title="' + view 
+                        + '" class="' + evt.cl + '" href="view_entry.php?eid=' 
+                        + eid + '&amp;date=' + date + '&amp;user=' + evt.user
+                        + '"><img src="images/' + img + '.gif" class="bullet" alt="' 
+                        + view + '" width="5" height="7" />' + time 
+                        + evt.sum + '</a></div>';
+               });
+                $(dvid).update(dvinner);
+                //Loop through again now that all DIVs are created
         dvdata.ev.each(function(evt) {
-					eid = evt.eid.split('-')[0];
-					//Create Context Menus  
-					contextKiller (evt.eid);                   
-					contextNew (evt.eid, evt.cm);
-					//Create Popups
-					if ( evAr[eid] ) 
-						new Tip( $('ev' + evt.eid), evAr[eid]);
-			   });
-			}
+                    eid = evt.eid.split('-')[0];
+                    //Create Context Menus  
+                    contextKiller (evt.eid);                   
+                    contextNew (evt.eid, evt.cm);
+                    //Create Popups
+                    if ( evAr[eid] ) 
+                        new Tip( $('ev' + evt.eid), evAr[eid]);
+               });
+            }
     });
   }
 }
 
 function waitForDom () {
-	if ( ! domInitialized )  {
+    if ( ! domInitialized )  {
     var t = setTimeout ( "waitForDom()", 10 ); 
  }
   return false;
@@ -219,10 +220,10 @@ var DomContextMenu = {
               var d = true;                    
               if (item.className) {
                 d = targets.find(function(s){return s.className.split(' ').include(item.className)});
-						  }
+                          }
               if (item.tagName) {
                 d = targets.find(function(s){return (s.tagName.toLowerCase() == item.tagName.toLowerCase())});
-					    }
+                        }
               if (d) {
                 var li = document.createElement('li');
                 li.innerHTML = item.name;
