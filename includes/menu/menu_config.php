@@ -36,6 +36,7 @@ $menuConfig = array (
   'System Log'=>1,
   'Security Audit'=>1,
   'Manage Reports'=>1,
+  'My Reports'=>1,
 'Settings'=>1,
   'NUC_Assistants'=>1,
   'NUC_Preferences'=>1,
