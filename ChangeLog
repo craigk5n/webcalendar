@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Fixed bug [ 1921675 ]  W3C Invalid HTML (1.2b1)
  - Fixed bug [ 1929381 ] FCKeditor changes é into &eacute;
  - Fixed bug [ 1912481 ] IMAPAuthentication bug and fix
  - Fixed bug [ 1905393 ] Profile cannot be edited
