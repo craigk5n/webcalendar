@@ -46,7 +46,7 @@ function sort_byday ( $a, $b ) {
 }
 
 $id = getPostValue ( 'cal_id' );
-
+$confirm_conflicts = getPostValue ( 'confirm_conflicts' );
 $override = getPostValue ( 'override' );
 $override_date = getPostValue ( 'override_date' );
 if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
