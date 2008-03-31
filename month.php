@@ -2,6 +2,11 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
+//check UAC
+if ( ! access_can_access_function ( ACCESS_MONTH ) || 
+  ( ! empty ( $user ) && ! access_user_calendar ( 'view', $user ) )  )
+  send_to_preferred_view ();
+
 if ( ( $user != $login ) && $is_nonuser_admin )
   load_user_layers ( $user );
 else
