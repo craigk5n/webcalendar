@@ -120,7 +120,10 @@ function event_to_text ( $event, $date ) {
     $name_str = htmlspecialchars ( $name );
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       $str = str_replace ( '&', '&amp;', $tempDesc );
+      //fix any broken special characters
+      $str =  preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str);
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
+      
       if ( strstr ( $description_str, '<' ) && strstr ( $description_str, '>' ) ) {
         // Found some HTML.
       } else
