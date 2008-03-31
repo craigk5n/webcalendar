@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Fixed bug [ 1929381 ] FCKeditor changes é into &eacute;
  - Fixed bug [ 1912481 ] IMAPAuthentication bug and fix
  - Fixed bug [ 1905393 ] Profile cannot be edited
  - Fixed bug [ 1911684 ] layers cannot be adjusted or modified for public access
