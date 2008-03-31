@@ -4,7 +4,8 @@ include_once 'includes/init.php';
 send_no_cache_header ();
 
 //check UAC
-if ( ! access_can_access_function ( ACCESS_YEAR ) )
+if ( ! access_can_access_function ( ACCESS_YEAR ) || 
+  ( ! empty ( $user ) && ! access_user_calendar ( 'view', $user ) )  )
   send_to_preferred_view ();
       
 if ( ( $user != $login ) && $is_nonuser_admin )

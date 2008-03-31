@@ -3,7 +3,8 @@
 include_once 'includes/init.php';
 
 //check UAC
-if ( ! access_can_access_function ( ACCESS_DAY ) )
+if ( ! access_can_access_function ( ACCESS_DAY ) || 
+  ( ! empty ( $user ) && ! access_user_calendar ( 'view', $user ) )  )
   send_to_preferred_view ();
   
 load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );
