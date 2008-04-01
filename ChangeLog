@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - FIxed bug [ 1881134 ] detailed information of RSS will not be shown
  - Added missing 'My Reports' to menu_config
  - Added more UAC checks to day,month,year views
  - Fixed problem with conflict 'Save' not processing
