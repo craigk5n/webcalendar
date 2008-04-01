@@ -480,7 +480,7 @@ if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
   $conf_until = ( empty ( $rpt_until ) ? '' : $rpt_until );
   $conf_count = ( empty ( $count ) ? 999 : $count );
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq,
-    array ( $bymonth, $byweekno, $byyearday, $bymonthday, $byday, $bysetpos ),
+    $bymonth, $byweekno, $byyearday, $bymonthday, $byday, $bysetpos,
     $conf_count, $conf_until, $wkst, $exception_list, $inclusion_list );
 
   // Make sure at least start date is in array.
