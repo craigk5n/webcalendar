@@ -939,9 +939,10 @@ function display_activity_log ( $cal_type, $cal_text = '', $break = '<br/>&nbsp;
     $ret = translate ( 'Edit User' );
   else
     $ret = '???';
-
+  //fix any broken special characters
+  $cal_text =  preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", htmlentities ( $cal_text ));
   return $ret
-   . ( empty ( $cal_text ) ? '' : $break . htmlentities ( $cal_text ) );
+   . ( empty ( $cal_text ) ? '' : $break . $cal_text );
 }
 
 /* Display the <<Admin link on pages if menus are not enabled
