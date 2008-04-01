@@ -835,9 +835,15 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   $y = intval ( $indate / 10000 );
   $m = intval ( $indate / 100 ) % 100;
   $d = $indate % 100;
-
-  $month = month_name ( $m - 1, ( $short_months ? 'M' : '' ) );
-
+  $wday = strftime ( "%w", mktime ( 0, 0, 0, $m, $d, $y ) );
+  if ( $short_months ) {
+    $month = month_name ( $m - 1, 'M' );
+    $weekday = weekday_name ( $wday, 'D' );
+  } else {
+    $month = month_name ( $m - 1 );
+    $weekday = weekday_name ( $wday );
+  }
+  
   $ret = str_replace ( '__dd__', $d, $format );
   $ret = str_replace ( '__j__', intval ( $d ), $ret );
   $ret = str_replace ( '__mm__', $m, $ret );
@@ -1973,7 +1979,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
     $n = 0;
     if ( ! empty ( $ByDay ) )
       $byday = explode ( ',', $ByDay );
-
+print_r ( $ByMonth);
     if ( ! empty ( $ByMonth ) )
       $bymonth = explode ( ',', $ByMonth );
 
