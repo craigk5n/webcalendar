@@ -103,7 +103,7 @@ $GLOBALS['page_lookup_ex'] = array (
  */
 $GLOBALS['page_lookup'] = array (
   ACCESS_EVENT_VIEW =>'(view_entry.php|select_user.php|purge.php|category*php|doc.php)',
-  ACCESS_EVENT_EDIT =>'(entry|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
+  ACCESS_EVENT_EDIT =>'(edit_entry|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
   ACCESS_DAY => 'day.php',
   ACCESS_WEEK => '(week.php|week_details.php)',
   ACCESS_MONTH => 'month.php',
@@ -115,6 +115,7 @@ $GLOBALS['page_lookup'] = array (
   ACCESS_CATEGORY_MANAGEMENT => 'category.*php',
   ACCESS_LAYERS => 'layer',
   ACCESS_SEARCH => 'search',
+  ACCESS_ADVANCED_SEARCH => 'search',
   ACCESS_ACTIVITY_LOG => 'activity_log.php',
   ACCESS_SECURITY_AUDIT => 'security_audit.php',
   ACCESS_USER_MANAGEMENT => '(edit.*user.*.php|nonusers.*php|group.*php|users.php)',
@@ -126,7 +127,11 @@ $GLOBALS['page_lookup'] = array (
   ACCESS_EXPORT => 'export.*php',
   ACCESS_PUBLISH =>'(publish.php|freebusy.php|icalclient.php|rss.php|minical.php|upcoming.php)',
   ACCESS_ASSISTANTS => 'assist.*php',
-  ACCESS_HELP => 'help_.*php'
+  ACCESS_TRAILER => 'trailer.*php',
+  ACCESS_HELP => 'help_.*php',
+  ACCESS_ANOTHER_CALENDAR => 'select_user_.*php',
+  ACCESS_SECURITY_AUDIT => 'security_audit.*php',
+  ACCESS_NUMBER_FUNCTIONS => ''
   );
 
 /* Is user access control enabled?
@@ -400,8 +405,6 @@ function access_can_view_page ( $page = '', $user = '' ) {
   global $access_user, $is_admin, $login,
   $page_lookup, $page_lookup_ex, $PHP_SELF;
 
-  $page_id = array();
-
   if ( ! access_is_enabled () )
     return true;
 
@@ -426,11 +429,11 @@ function access_can_view_page ( $page = '', $user = '' ) {
     return true;
   for ( $i = 0; $i <= ACCESS_NUMBER_FUNCTIONS; $i++ ) {
     if ( ! empty ( $page_lookup[$i] ) &&
-        preg_match ( "/$page_lookup[$i]/", $page ) )
-      $page_id[] = $i;
+      preg_match ( "/$page_lookup[$i]/", $page ) )
+      $page_id = $i;
   }
 
-  // echo "page_id = $page_id<br />page = $page<br />\n";
+   //echo "page_id = $page_id<br />page = $page<br />\n";
 
   // If the specified user is the currently logged in user, then we have already
   // loaded this user's access, stored in the global variable $access_user.
@@ -443,10 +446,8 @@ function access_can_view_page ( $page = '', $user = '' ) {
 
   // If we did not find a page id, then this is also a WebCalendar bug.
   // (Someone needs to add another entry in the $page_lookup[] array.)
-  //assert ( 'count ( $page_id ) > 0' );
-  for ( $i=0, $cnt = count ( $page_id ); $i < $cnt; $i++ ) {
-    $yesno  = substr ( $access, $page_id[$i], 1 );
-  }
+  $yesno  = substr ( $access, $page_id, 1 );
+
   // No setting found. Use default values.
   if ( empty ( $yesno ) )
     $yesno = get_default_function_access ( $page_id, $user );
@@ -477,8 +478,13 @@ function get_default_function_access ( $page_id, $user ) {
 
 function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
   $type = '', $access = '' ) {
-  global $access_other_cals, $access_users, $login;
+  global $access_other_cals, $access_users, $login, $ADMIN_OVERRIDE_UAC, $is_admin;
 
+  $admin_override = ( $is_admin && !
+    empty ( $ADMIN_OVERRIDE_UAC ) && $ADMIN_OVERRIDE_UAC == 'Y' );
+  if ( $admin_override )
+    return CAN_DOALL;
+    
   $access_wt = $ret = $type_wt = 0;
   if ( empty ( $cur_user ) && empty ( $login ) )
     $cur_user = '__public__';

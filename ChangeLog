@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - FIxed bug [ 1881134 ] detailed information of RSS will not be shown
  - Added missing 'My Reports' to menu_config
  - Added more UAC checks to day,month,year views
  - Fixed problem with conflict 'Save' not processing
