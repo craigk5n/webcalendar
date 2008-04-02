@@ -278,12 +278,11 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
       // Prevent non-Public events from feeding
       if ( in_array ( $entries[$j]->getAccess (), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID ();
-        $unixtime = date_to_epoch ( $entries[$j]->getDateTime () );
+        $unixtime = $entries[$j]->getDateTimeTS ();
         $dateinfo = ( $date_in_title
           ? date ( $date_format, $unixtime )
-           . ( $entries[$j]->isAllDay () || $entries[$j]->isUntimed ()
-            ? $time_separator . date ( $time_format, $unixtime ) : '' ) . ' '
-          : '' );
+           . ( $entries[$j]->isTimed () ? $time_separator 
+		   . date ( $time_format, $unixtime ) : '' ) . ' ' : '' );
 
         echo '
     <item>
@@ -325,7 +324,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
 
         echo '
     <item>';
-        $unixtime = date_to_epoch ( $rentries[$j]->getDateTime () );
+        $unixtime = $rentries[$j]->getDateTimeTS ();
         $dateinfo = ( $date_in_title == true
           ? date ( $date_format, $i )
            . ( $rentries[$j]->isAllDay () || $rentries[$j]->isUntimed ()
