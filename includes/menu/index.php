@@ -92,8 +92,11 @@ if ( $single_user != 'Y' ) {
     if ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) {
       // Get count of users this user can see. If > 1, then...
+
       $ulist = array_merge (
-        get_my_users ( $login, 'view' ), get_my_nonusers ( $login, true ) );
+        get_my_users ( $login, 'view' ), get_my_nonusers ( $login, true, 'view' ) );
+      //remove duplicates if any
+      $ulist = array_intersect_key($ulist, array_unique(array_map('serialize', $ulist)));
 
       if ( count ( $ulist ) > 1 )
         $select_user_url = 'select_user.php';
@@ -421,7 +424,7 @@ if ( $menuConfig['Views'] &&
 
       for ( $i = 0; $i < $groupcnt; $i++ ) {
         jscMenu_item ( 'display.png', $groups[$i]['name'],
-				  $groups[$i]['url'], false );
+                  $groups[$i]['url'], false );
       }
       jscMenu_close ();
     }
