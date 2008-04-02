@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixed bug [ 1917611 ] RSS feed, untimed events start at 7:00 pm
  - Fixed bug [ 1881030 ] date-format selection will not be proper displayed as adjust
  - Fixed bug [ 1931386 ] "Action"-entries not proper displayed at "System Log"
  - FIxed bug [ 1881134 ] detailed information of RSS will not be shown
