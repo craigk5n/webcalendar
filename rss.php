@@ -53,6 +53,7 @@
 
 $debug = false;
 
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
@@ -69,7 +70,6 @@ $WebCalendar->initializeFirstPhase ();
 include 'includes/' . $user_inc;
 
 include_once 'includes/validate.php';
-include 'includes/translate.php';
 include 'includes/site_extras.php';
 
 include_once 'includes/xcal.php';
@@ -89,50 +89,50 @@ if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
  * change the default settings. These settings will likely move into the System
  * Settings in the web admin interface in a future release.
  */
-// .
+
 // Show the date in the title and how to format it.
 $date_in_title = false; //Can override with "rss.php?showdate=1|true".
 $showdate = getValue ( 'showdate' );
 if ( ! empty ( $showdate ) )
   $date_in_title = ( $showdate == 'true' || $showdate == 1 ? true : false );
-// .
+
 $date_format = 'M jS'; //Aug 10th, 8/10
 $time_format = 'g:ia'; //4:30pm, 16:30
 $time_separator = ', '; //Aug 10th @ 4:30pm, Aug 10th, 4:30pm
-// .
+
 // Default time window of events to load.
 // Can override with "rss.php?days=60".
 $numDays = 30;
-// .
+
 // Max number of events to display.
 // Can override with "rss.php?max=20".
 $maxEvents = 10;
-// .
+
 // Login of calendar user to use.
 // '__public__' is the login name for the public user.
 $username = '__public__';
-// .
+
 // Allow the URL to override the user setting such as "rss.php?user=craig".
 $allow_user_override = true;
-// .
+
 // Load layers.
 $load_layers = false;
-// .
+
 // Load just a specified category (by its id).
 // Leave blank to not filter on category (unless specified in URL).
 // Can override in URL with "rss.php?cat_id=4".
 $cat_id = '';
-// .
+
 // Load all repeating events.
 // Can override with "rss.php?repeats=1".
 $allow_repeats = false;
-// .
+
 // Load show only first occurence within the given time span of daily repeating events.
 // Can override with "rss.php?repeats=2".
 $show_daily_events_only_once = false;
-// .
+
 // End configurable settings...
-// .
+
 // Set for use elsewhere as a global.
 $login = $username;
 
@@ -180,7 +180,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 
 if ( $load_layers )
   load_user_layers ( $username );
-// .
+
 // Calculate date range.
 $date = getValue ( 'date', '-?[0-9]+', true );
 if ( empty ( $date ) || strlen ( $date ) != 8 )
@@ -196,7 +196,7 @@ $startTime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $x = getValue ( 'days', '-?[0-9]+', true );
 if ( ! empty ( $x ) )
   $numDays = $x;
-// .
+
 // Don't let a malicious user specify more than 365 days.
 if ( $numDays > 365 )
   $numDays = 365;
@@ -204,7 +204,7 @@ if ( $numDays > 365 )
 $x = getValue ( 'max', '-?[0-9]+', true );
 if ( ! empty ( $x ) )
   $maxEvents = $x;
-// .
+
 // Don't let a malicious user specify more than 100 events.
 if ( $maxEvents > 100 )
   $maxEvents = 100;
@@ -232,7 +232,7 @@ $lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
   ? $lang : $LANGUAGE );
 if ( $lang == 'en' )
   $lang = 'en-us'; //the RSS 2.0 default.
-// .
+
 $appStr = generate_application_name ();
 
 ob_start ();
@@ -261,6 +261,7 @@ for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd && $numEvents < $maxEve
   $d = date ( 'Ymd', $i );
   $eventIds = array ();
   $pubDate = gmdate ( 'D, d M Y', $i );
+
   $entries = get_entries ( $d, false );
   $rentries = get_repeating_entries ( $username, $d );
   $entrycnt = count ( $entries );
@@ -277,12 +278,11 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
       // Prevent non-Public events from feeding
       if ( in_array ( $entries[$j]->getAccess (), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID ();
-        $unixtime = date_to_epoch ( $entries[$j]->getDateTime () );
+        $unixtime = $entries[$j]->getDateTimeTS ();
         $dateinfo = ( $date_in_title
           ? date ( $date_format, $unixtime )
-           . ( $entries[$j]->isAllDay () || $entries[$j]->isUntimed ()
-            ? $time_separator . date ( $time_format, $unixtime ) : '' ) . ' '
-          : '' );
+           . ( $entries[$j]->isTimed () ? $time_separator 
+		   . date ( $time_format, $unixtime ) : '' ) . ' ' : '' );
 
         echo '
     <item>
@@ -308,7 +308,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
       if ( in_array ( $rentries[$j]->getID (),
             $eventIds ) && $rentries[$j]->getrepeatType () == 'daily' )
         $reventIds[] = $rentries[$j]->getID ();
-      // .
+
       // Prevent non-Public events from feeding.
       // Prevent a repeating event from displaying if the original event has
       // already been displayed; prevent 2nd & later recurrence of daily events
@@ -317,14 +317,14 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
           ( ! $show_daily_events_only_once || ! in_array ( $rentries[$j]->getID (),
               $reventIds ) ) &&
           ( in_array ( $rentries[$j]->getAccess (), $allow_access ) ) ) {
-        // .
+
         // Show repeating events only once.
         if ( $rentries[$j]->getrepeatType () == 'daily' )
           $reventIds[] = $rentries[$j]->getID ();
 
         echo '
     <item>';
-        $unixtime = date_to_epoch ( $rentries[$j]->getDateTime () );
+        $unixtime = $rentries[$j]->getDateTimeTS ();
         $dateinfo = ( $date_in_title == true
           ? date ( $date_format, $i )
            . ( $rentries[$j]->isAllDay () || $rentries[$j]->isUntimed ()
