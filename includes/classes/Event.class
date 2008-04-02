@@ -394,10 +394,11 @@ class Event {
   if ( $this->_time > 0 ) {
     $h = (int) ( $this->_time / 10000 );
     $m = ( $this->_time / 100 ) % 100;
+	$this->_DateTime = gmmktime ( $h, $m, 0, $month, $day, $year );
   } else {
    $h = $m = 0;
+   $this->_DateTime = mktime ( $h, $m, 0, $month, $day, $year );
   }
-    $this->_DateTime = gmmktime ( $h, $m, 0, $month, $day, $year );
     return $this->_DateTime;
   }
 
