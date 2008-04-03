@@ -5191,7 +5191,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
  * @uses query_events
  */
 function read_events ( $user, $startdate, $enddate, $cat_id = '' ) {
-  global $layers, $login;
+  global $login;
 
   // Shift date/times to UTC.
   $start_date = gmdate ( 'Ymd', $startdate );
@@ -5229,7 +5229,7 @@ function read_events ( $user, $startdate, $enddate, $cat_id = '' ) {
  * @uses query_events
  */
 function read_repeated_events ( $user, $date = '', $enddate = '', $cat_id = '' ) {
-  global $jumpdate, $layers, $login, $max_until;
+  global $jumpdate, $login, $max_until;
 
   // This date should help speed up things
   // by eliminating events that won't display anyway.
