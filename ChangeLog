@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Fixed bug [ 1933105 ] missing events in monthly view (side by side)
  - Fixed bug [ 1913340 ] end date of a repeating entry won't be saved at 1.2b1
  - Fixed bug [ 1922041 ] upcoming.php
  - Fixed bug [ 1917611 ] RSS feed, untimed events start at 7:00 pm
