@@ -46,10 +46,13 @@ $hide_details = ( $login == '__public__' && !
 $rssuser = getGetValue ( 'rssuser' );
 if ( ! empty ( $rssuser ) ) {
   $user_rss_enabled = get_pref_setting ( $rssuser, 'USER_RSS_ENABLED' );
+  $user_remote_access = get_pref_setting ( $rssuser, 'USER_REMOTE_ACCESS' );
   $user_rss_timezone = get_pref_setting ( $rssuser, 'TIMEZONE' );
   $rss_view = ( $RSS_ENABLED == 'Y' && $user_rss_enabled == 'Y' &&
-    $friendly == 1 && ! empty ( $rssuser ) );
+    $friendly == 1 && ! empty ( $rssuser ) && isset ( $user_remote_access ) );
   if ( $rss_view == true ) {
+    if ( $login == '__public__')
+      $user = $rssuser;
     $hide_details = false;
     // Make sure the displayed time is accurate.
     set_env ( 'TZ', $user_rss_timezone );
@@ -324,6 +327,11 @@ if ( ( empty ( $event_status ) && ! $is_admin ) ||
   exit;
 }
 
+// We can bypass $can_view if coming from RSS
+if ( ( ! $can_view && empty ( $rss_view ) ) ) {
+  echo print_not_auth ( 8, true ) . print_trailer ();
+  exit;
+}
 // save date so the trailer links are for the same time period
 $thisyear = intval ( $orig_date / 10000 );
 $thismonth = ( $orig_date / 100 ) % 100;
