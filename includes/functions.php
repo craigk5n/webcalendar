@@ -945,9 +945,10 @@ function display_activity_log ( $cal_type, $cal_text = '', $break = '<br/>&nbsp;
     $ret = translate ( 'Edit User' );
   else
     $ret = '???';
-
+  //fix any broken special characters
+  $cal_text =  preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", htmlentities ( $cal_text ));
   return $ret
-   . ( empty ( $cal_text ) ? '' : $break . htmlentities ( $cal_text ) );
+   . ( empty ( $cal_text ) ? '' : $break . $cal_text );
 }
 
 /* Display the <<Admin link on pages if menus are not enabled
@@ -1472,7 +1473,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
 
   // Prevent goofy times like 8:00 9:30 9:00 10:30 10:00.
   if ( $time < 0 && $min > 0 )
-    $hour = $hour - 1;
+    $hour--;
   while ( $hour < 0 ) {
     $hour += 24;
   }
