@@ -1967,7 +1967,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
     $realend = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
   } else
     $realend = ( $Count != 999
-      ? mktime ( 0, 0, 0, 1, 1, 2038 ) // Set $until so some ridiculous value.
+      ? mktime ( 0, 0, 0, 1, 1, 2038 ) // Set $until to some ridiculous value.
       : $Until );
 
   $ret = array ();

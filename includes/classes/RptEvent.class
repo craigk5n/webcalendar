@@ -266,7 +266,10 @@ class RepeatingEvent extends Event {
       } else {
         $h = $m = 0;
       }
-      $edt = gmmktime ( $h, $m, 0, $month, $day, $year );
+	  if ( $this->isTimed() )
+        $edt = gmmktime ( $h, $m, 0, $month, $day, $year );
+	  else 
+	    $edt = mktime ( 23, 59, 59, $month, $day, $year );
       $this->_repeatEndDateTimeTS = ( $edt > 0 ? $edt : '' );
     } else {
       $this->_repeatEndDateTimeTS = '';

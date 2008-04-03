@@ -421,15 +421,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 
   if ( ! empty ( $defusers ) ) {
     $tmp_ar = explode ( ',', $defusers );
-    /*
-This used to be
-    for ( $i = 0; $i < count ( $tmp_arr ); $i++ )
-then we found that this was faster
-    for ( $i = 0, $cnt = count ( $tmp_arr ); $i < $cnt; $i++ )
-Now, I've found that this is faster still.
-As long as we're looping the whole array.
-     */
-    for ( $i = count ( $tmp_ar ) - 1; $i >= 0; $i-- ) {
+    for ( $i = 0, $cnt = count ( $tmp_ar ); $i < $cnt; $i++ ) {
       $participants[$tmp_ar[$i]] = 1;
     }
   } 
@@ -1248,7 +1240,7 @@ if ( $can_edit ) {
           <td class="boxright"><span class="end_day_selection" '
      . 'id="rpt_end_day_select">'
      . date_selection ( 'rpt_', ( $rpt_end_date ? $rpt_end_date : $cal_date ) )
-     . '</span><br />' . time_selection ( 'rpt_', $rpt_end_time ) . '</td>
+     . '</span><span id="rpt_until_time_date"><br />' . time_selection ( 'rpt_', $rpt_end_time ) . '</span></td>
         </tr>
         <tr id="rptenddate3" style="visibility:hidden;">
           <td class="boxbottom boxleft"><input type="radio" name="rpt_end_use" '
