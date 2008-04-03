@@ -222,6 +222,7 @@ Reports: Berichte
 Delete Events: Eintr&auml;ge l&ouml;schen (endg&uuml;ltig)
 Activity Log: Aktivit&auml;ten Protokoll
 System Log: System Protokoll
+Security Audit: Sicherheits&uuml;berpr&uuml;fung
 Public Preferences: Voreinstellungen &Ouml;ffentl. Zugang
 Unapproved Public Events: Unbest&auml;tigte &Ouml;ffentl. Termine
 Administrative Tools: Administrative Werkzeuge
@@ -341,7 +342,7 @@ Illegal characters in login: Nicht zul&auml;ssige Zeichen beim Login
 Invalid login: Benutzername oder Kennwort falsch
 Activity login failure: Benutzername: &#34;XXX&#34;, IP: &#34;YYY&#34;.
 Error XXX: Fehler: &#34;XXX&#34;.
-You have been logged out.: Sie wurden ausgeloggt.
+You have been logged out.: Sie haben sich abgemeldet.
 Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
 
 ########################################
@@ -638,6 +639,18 @@ nonuser-enabled-help: Falls aktiviert: Administratoren haben die M&ouml;glichkei
 Nonuser enabled: &#39;Zentrale&#39;-Kalender aktivieren
 nonuser-list-help: Wo sollen die &#39;Zentralen&#39;-Kalender in der Teilnehmerliste angezeigt werden?
 Nonuser list: Wo sollen die &#39;Zentralen&#39; Kalender in der Teilnehmerliste angezeigt werden
+Upcoming Events: Demn&auml;chst anstehende Termine
+upcoming-events-help: Aktiviere upcoming.php
+upcoming-events-allow-override: Erlaube benutzerdefinierte Parameter f&uuml;r upcoming.php
+Allow user override: Benutzer die Einstellungen &uuml;berschreiben lassen
+upcoming-events-display-caticons: Inklusive des Kategorie-Icons in upcoming.php
+Display category icons: Kategorie Icons anzeigen
+upcoming-events-display-layers: Anzeigen der Layers im upcoming.php
+Display layers: Layers anzeigen
+upcoming-events-display-links: Anzeigen der Links im upcoming.php
+Display links to events: Zeige Links zu den Terminen
+upcoming-events-display-popups: Anzeigen der Termin PopUps im upcoming.php
+Display event popups: Anzeigen von Termin PopUps
 reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag &#34;Berichte&#34; welcher f&uuml;r das Erstellen von Berichten verwendet werden kann. Zus&auml;tzlich kann der &#34;Administrator&#34; allgemeine Berichte erstellen, die f&uuml;r jeden Benutzer am Ende jeder Seite zur Verf&uuml;gung stehen.
 Reports enabled: Berichte aktivieren
 subscriptions-enabled-help: Bestimmt ob &#39;REMOTE&#39;-Teilnehmer andere WebKalender von Teilnehmern abonnieren, und somit dessen Termine und ihre &#39;iCal&#39;-aktiven Anwendungen (wie Apple&#39;s iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
@@ -1160,6 +1173,33 @@ You must specify a view name: Sie m&uuml;ssen einen Ansichtsnamen angeben
 Add New NonUser Calendar: Neuen &#39;Zentralen-Kalender&#39; hinzuf&uuml;gen
 
 ########################################
+# Page: security_audit.php
+#
+The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: Die folgenden Informationen weisen auf m&ouml;gliche Probleme im Bezug mit Ihrer WebKalender-Installation hin. Diese k&ouml;nnen jedoch ge&auml;ndert werden, um Ihre Installation sicherer gegen etwaige Angriffe zu machen.
+For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.
+View your current PHP settings: Ihre PHP-Informationen anzeigen
+Security Issue: Sicherheitsoptionen
+Details: Beschreibung
+You should change the password of the default admin user.: Sie sollten das Passwort des admin user &auml;ndern.
+Default admin user password: Grundeinstellung des admin user Passwortes
+The following item should not be writable: Der folgende Eintrag soll als &#39;schreibgesch&uuml;tzt&#39; gesetzt werden
+File permissions: Dateirechte
+Because you have email disabled, you should remove this file.: Sie sollten diese Datei l&ouml;schen, da Sie die Emailfunktion deaktiviert haben.
+File exists: Datei exisitert
+If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: Wenn Sie diese Datei nicht verwenden, k&ouml;nnen Sie diese entfernen oder an einem anderen Ort verschieben.
+File location: Ort der Datei
+You may want to consider enabling User Access Control to set user privileges.: Vielleicht m&ouml;chten Sie die &#39;Zugriffskontrolle&#39; f&uuml;r die Benutzerrechte aktivieren.
+It is recommended that public event submissions be approved: Es wird empfohlen, da&szlig; Eintr&auml;ge des &#39;&Ouml;ffentlichen&#39;-Kalenders genehmigt und &uuml;berpr&uuml;ft werden
+CAPTCHA is recommended to guard againt automated event submissions.: Es wird CAPTCHA empfohlen, zum Schutz gegen automatisierende eingegebende Eintr&auml;ge
+The database cache directory should be in a directory that cannot be accessed with a URL.: Das Datenbank-Cache-Verzeichnis soll in einem Verzeichnis angelegt werden, das &uuml;ber eine URL-Eingabe nicht direkt darauf zugegriffen werden kann.
+Database cache directory location: Ort des Datenbank-Cache-Verzeichnis
+The recommended setting for magic quotes is Off.: Die empfohlene Einstellung f&uuml;r magic_quotes ist OFF.
+PHP setting: PHP Einstellung
+The recommended setting for register_globals is Off.: Die empfohlene Einstellung f&uuml;r register_globals ist OFF.
+The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: Wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist, wird empfohlenen die Einstellung f&uuml;r allow_url_fopen auf OFF zu setzen. 
+The recommended setting for allow_url_include is Off.: Die empfohlene Einstellung f&uuml;r allow_url_include ist OFF.
+
+########################################
 # Page: category.php
 #
 Category Icon: Icon f&uuml;r Kategorie
@@ -1204,14 +1244,13 @@ XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; YYY
 Time entered here is based on your Timezone.: Die eingegebene Zeit basiert auf <b>Ihre</b> Zeitzone.
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
-Details: =
 Repeat: Wiederholung
 Reminders: Erinnerungen
 completed-help: Datumaufgabe ist abgeschlossen. Nur aktiv, wenn alle Teilnehmer einen Prozentsatz von 100% entsprechen.
 Date Completed: Datum f&uuml;hrte durch
 percent-help: Aufgabenbeendigungsprozentsatz f&uuml;r diesen Benutzer
 Percent Complete: Prozent erledigt
-All Percentages: <u><b>Erf&uuml;llungsgrad der Aufgabe (%)</b></u>
+All Percentages: <u><b>Erf&uuml;llungsgrad der Aufgabe in %</b></u>
 location-help: Ort des Termines
 url-help: URL des Termins
 Timed event: Termin MIT Zeitangabe
@@ -1458,7 +1497,7 @@ Delete User: Teilnehmer l&ouml;schen
 WK: KW
 TASKS: AUFGABEN
 Task_Title: Aufgabentitel
-Due: F&auml;lligkeit
+Due: F&auml;llig
 Task Name: Aufgabe
 Task Due Date: Abgabefrist
 You have XXX unapproved entries: Anzahl der unbest&auml;tigten Eintr&auml;ge&#058; <b>&rArr; &quot;XXX&quot;</b>
