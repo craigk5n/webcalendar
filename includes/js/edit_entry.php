@@ -193,6 +193,9 @@ function validate_and_submit () {
     } else {
       makeInvisible ( "timeentryend" );
     }
+     if ( form.rpttype ) {
+      makeInvisible ( "rpt_until_time_date", true );
+    }
   } else {
     // Timed Event
     makeVisible ( "timeentrystart" );
@@ -204,6 +207,9 @@ function validate_and_submit () {
       makeVisible ( "timeentryduration" );
     } else {
       makeVisible ( "timeentryend" );
+    }
+    if ( form.rpttype ) {
+      makeVisible ( "rpt_until_time_date", true );
     }
   }
 }
