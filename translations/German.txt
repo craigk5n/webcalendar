@@ -1027,7 +1027,7 @@ cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Coo
 Illegal characters in login: Nicht zul&auml;ssige Zeichen beim Login
 Illegal characters in login XXX.: Ung&uuml;ltige Zeichen im Login XXX.
 Invalid login: Benutzername oder Kennwort falsch
-Activity login failure: Benutzername: &#34;XXX&#34;, IP: &#34;XXX&#34;.
+Activity login failure: Benutzername: &#34;XXX&#34;, IP: &#34;YYY&#34;.
 Error XXX: Fehler: &#34;XXX&#34;.
 You have been logged out.: Sie wurden ausgeloggt.
 Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
