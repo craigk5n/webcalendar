@@ -110,10 +110,10 @@ $checked = ' checked="checked"';
 $guser = getPostValue ( 'guser' );
 $selected = ' selected="selected"';
 
-if ( $guser == '__default__' ) {
-  $otheruser = $guser;
-  $user_fullname = $defConfigStr;
-} else
+//if ( $guser == '__default__' ) {
+//  $otheruser = $guser;
+//  $user_fullname = $defConfigStr;
+//} else
   $otheruser = getPostValue ( 'otheruser' );
 
 if ( $otheruser == '__default__' ) {
@@ -166,6 +166,7 @@ if ( $is_admin ) {
   $adminStr = translate ( 'Admin' );
   $userlist = get_my_users ();
   $nonuserlist = get_nonuser_cals ();
+
   // If we are here... we must need to print out a list of users.
   echo '
     <h2>' . translate ( 'User Access Control' )
@@ -193,7 +194,7 @@ if ( $is_admin ) {
   }
 
   echo $goStr;
-} //end admin $guser !- default test
+} //end admin $guser != default test
 
 if ( ! empty ( $guser ) || ! $is_admin ) {
   if ( $is_admin ) {
@@ -204,10 +205,10 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     // We can reorder the display of user rights here.
     $order = array (
       1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 27,
-      15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 );
+      15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27 );
     // Make sure that we have defined all the types of
     // access defined in access.php
-    assert ( count($order) == ACCESS_NUMBER_FUNCTIONS );
+    assert ( count($order) == ACCESS_NUMBER_FUNCTIONS +1 );
 
     echo '
     <div class="boxall" style="margin-top: 5px; padding: 5px;">
@@ -236,6 +237,7 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
           case ACCESS_SYSTEM_SETTINGS:
           case ACCESS_USER_MANAGEMENT:
           case ACCESS_VIEW_MANAGEMENT:
+          case ACCESS_SECURITY_AUDIT:
             // Skip these...
             $show = false;
             break;
@@ -271,11 +273,11 @@ if ( ! empty ( $guser ) || ! $is_admin ) {
     $pagetitle = translate ( 'Grant This User Access to My Calendar' );
   }
 
-  if ( $guser == '__default__' ) {
-    $userlist = array ( '__default__' );
-    $otheruser = $otheruser_login = '__default__';
-    $otheruser_fullname = $defConfigStr;
-  } else
+//  if ( $guser == '__default__' ) {
+//    $userlist = array ( '__default__' );
+//    $otheruser = $otheruser_login = '__default__';
+ //   $otheruser_fullname = $defConfigStr;
+//  } else
   if ( $allow_view_other ) {
     $userlist = get_list_of_users ( $guser );
     echo '
@@ -491,6 +493,9 @@ echo print_trailer ();
 // Get the list of users that the specified user can see.
 function get_list_of_users ( $user ) {
   global $is_admin, $is_nonuser_admin;
+  //Let Admins userlist be returnd
+  if ( $user == '__default__' )
+    $user = '';
   $u = get_my_users ( $user, 'view' );
   if ( $is_admin || $is_nonuser_admin ) {
     // Get public NUCs also.
