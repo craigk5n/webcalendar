@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Fixed bug [ 1922041 ] upcoming.php
  - Fixed bug [ 1917611 ] RSS feed, untimed events start at 7:00 pm
  - FIxed bug [ 1881134 ] detailed information of RSS will not be shown
  - Added missing 'My Reports' to menu_config
