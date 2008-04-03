@@ -158,7 +158,9 @@ function print_upcoming_event ( $e, $date ) {
     $confidential = true;
   }
 
-  if ( $display_link && ! empty ( $SERVER_URL ) && ! $private && ! $confidential) {
+  if ( ! empty ( $SERVER_URL ) && ! $private && ! $confidential) {
+    echo "<div class=\"vevent\">\n";
+      if ( $display_link ) {
     if ( $showPopups ) {
       $timestr = '';
       if ( $e->isAllDay () ) {
@@ -173,7 +175,6 @@ function print_upcoming_event ( $e, $date ) {
         $e->getDescription (), $timestr, site_extras_for_popup ( $e->getId () ),
         $e->getLocation (), $e->getName (), $e->getId () );
     }
-    echo "<div class=\"vevent\">\n";
     $link = "<a class=\"entry\" id=\"$popupid\" title=\"" .
       htmlspecialchars ( $e->getName () ) . '" href="' .
       $SERVER_URL . 'view_entry.php?id=' .
@@ -195,6 +196,7 @@ function print_upcoming_event ( $e, $date ) {
       }
     }
     echo $link;
+  }
   }
   if ( $private ) {
     echo '[' . translate ( 'Private' ) . ']';
@@ -471,32 +473,32 @@ dt {
   font-family: arial,helvetica;
   font-weight: bold;
   font-size: 12px;
-  color: #000;
+  color: #000000;
 }
 dd {
   font-family: arial,helvetica;
-  color: #33a;
+  color: #3030a0;
   font-size: 12px;
 }
 a {
   font-family: arial,helvetica;
-  color: #33a;
+  color: #3030a0;
 }
 a:hover {
   font-family: arial,helvetica;
   color: #ffffff;
-  background-color: #33a;
+  background-color: #3030a0;
 }
 .popup {
   color: #ffffff;
-  background-color: #33a;
+  background-color: #3030a0;
   text-decoration: none;
   position: absolute;
   z-index: 20;
   visibility: hidden;
   top: 0px;
   left: 0px;
-  border: 1px solid #000;
+  border: 1px solid #000000;
   padding: 3px;
 }
 .popup dl {
