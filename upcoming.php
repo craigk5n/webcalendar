@@ -82,13 +82,13 @@ if ( empty ($upcoming_initialized)) {
 $save_current_working_dir= getcwd ();
 chdir(dirname(__FILE__));
 
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
 
 $WebCalendar =& new WebCalendar ( __FILE__ );
 
-include 'includes/translate.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
