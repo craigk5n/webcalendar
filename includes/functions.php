@@ -30,8 +30,8 @@
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-   error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n<br />",
-   3, 'c:/wamp/logs/debug.txt' );
+   //error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n<br />",
+   //3, 'c:/wamp/logs/debug.txt' );
   // fwrite ( $fd, date ( 'Y-m-d H:i:s' ) . "> $msg\n" );
   // fclose ( $fd );
   // 3, '/tmp/webcal-debug.log' );
