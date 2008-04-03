@@ -321,7 +321,8 @@ if ( ! empty ( $user ) && $login != $user ) {
 //}
 
 // If we have no event status yet, it must have been deleted.
-if ( empty ( $event_status ) && ! $is_admin  ) {
+if ( ( empty ( $event_status ) && ! $is_admin ) ||
+    ( ! $can_view && empty ( $rss_view ) ) ) {
   echo print_not_auth ( 33, true ) . print_trailer ();
   exit;
 }
@@ -392,7 +393,7 @@ echo '
   ? '  ( ' . translate ( 'Admin mode' ) . ' )' : '' )
  . ( $is_assistant ? ' ( ' . translate ( 'Assistant mode' ) . ' )' : '' )
  . '</h2>
-    <table width="100%">
+    <table width="100%" summary="">
       <tr>
         <td class="aligntop bold" width="10%">' . translate ( 'Description' )
  . ':</td>
@@ -660,7 +661,7 @@ if ( $single_user == 'N' && $show_participants ) {
   }
   if ( $eType == 'task' ) {
     echo '
-          <table border="1" width="80%" cellspacing="0" cellpadding="1">
+          <table border="1" width="80%" cellspacing="0" cellpadding="1" summary="">
             <th align="center">' . translate ( 'Participants' ) . '</th>
             <th align="center" colspan="2">'
      . translate ( 'Percentage Complete' ) . '</th>';
