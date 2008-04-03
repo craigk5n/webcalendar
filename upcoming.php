@@ -158,43 +158,45 @@ function print_upcoming_event ( $e, $date ) {
     $confidential = true;
   }
 
-  if ( $display_link && ! empty ( $SERVER_URL ) && ! $private && ! $confidential) {
-    if ( $showPopups ) {
-      $timestr = '';
-      if ( $e->isAllDay () ) {
-        $timestr = translate ( 'All day event' );
-      } else if ( $e->getTime () >= 0 ) {
-        $timestr = display_time ( $e->getDatetime () );
-        if ( $e->getDuration () > 0 ) {
-          $timestr .= ' - ' . display_time ( $e->getEndDateTime () );
-        }
-      }
-      $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $username,
-        $e->getDescription (), $timestr, site_extras_for_popup ( $e->getId () ),
-        $e->getLocation (), $e->getName (), $e->getId () );
-    }
+  if ( ! empty ( $SERVER_URL ) && ! $private && ! $confidential) {
     echo "<div class=\"vevent\">\n";
-    $link = "<a class=\"entry\" id=\"$popupid\" title=\"" .
-      htmlspecialchars ( $e->getName () ) . '" href="' .
-      $SERVER_URL . 'view_entry.php?id=' .
-      $e->getID () . "&amp;date=$date";
-    if ( $e->getLogin () != $login )
-      $link .= "&amp;user=" . $e->getLogin ();
-    if ( ! empty ( $link_target ) ) {
-      $link .= "\" target=\"$link_target\"";
-    }
-    $link .= '>';
-    if ( empty ( $UPCOMING_DISPLAY_CAT_ICONS ) ||
-      $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
-      $catNum = abs ( $e->getCategory () );
-      if ( $catNum > 0 ) {
-        $catIcon = 'icons/cat-' . $catNum . '.gif';
-        if ( file_exists ( $catIcon ) )
-          echo $link .
-            '<img src="' . $catIcon . '" alt="category icon" border="0"/></a>';
+      if ( $display_link ) {
+        if ( $showPopups ) {
+          $timestr = '';
+          if ( $e->isAllDay () ) {
+            $timestr = translate ( 'All day event' );
+          } else if ( $e->getTime () >= 0 ) {
+            $timestr = display_time ( $e->getDatetime () );
+            if ( $e->getDuration () > 0 ) {
+              $timestr .= ' - ' . display_time ( $e->getEndDateTime () );
+            }
+          }
+          $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $username,
+            $e->getDescription (), $timestr, site_extras_for_popup ( $e->getId () ),
+            $e->getLocation (), $e->getName (), $e->getId () );
+        }
+        $link = "<a class=\"entry\" id=\"$popupid\" title=\"" .
+          htmlspecialchars ( $e->getName () ) . '" href="' .
+          $SERVER_URL . 'view_entry.php?id=' .
+          $e->getID () . "&amp;date=$date";
+        if ( $e->getLogin () != $login )
+          $link .= "&amp;user=" . $e->getLogin ();
+        if ( ! empty ( $link_target ) ) {
+          $link .= "\" target=\"$link_target\"";
+        }
+        $link .= '>';
+        if ( empty ( $UPCOMING_DISPLAY_CAT_ICONS ) ||
+          $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
+          $catNum = abs ( $e->getCategory () );
+          if ( $catNum > 0 ) {
+            $catIcon = 'icons/cat-' . $catNum . '.gif';
+            if ( file_exists ( $catIcon ) )
+              echo $link .
+                '<img src="' . $catIcon . '" alt="category icon" border="0"/></a>';
       }
     }
     echo $link;
+    }
   }
   if ( $private ) {
     echo '[' . translate ( 'Private' ) . ']';
