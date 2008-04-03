@@ -222,6 +222,9 @@ function addGroup () {
     } else {
       makeInvisible ( "timeentryend" );
     }
+     if ( form.rpttype ) {
+      makeInvisible ( "rpt_until_time_date", true );
+    }
   } else {
     // Timed Event
     makeVisible ( "timeentrystart" );
@@ -233,6 +236,9 @@ function addGroup () {
       makeVisible ( "timeentryduration" );
     } else {
       makeVisible ( "timeentryend" );
+    }
+    if ( form.rpttype ) {
+      makeVisible ( "rpt_until_time_date", true );
     }
   }
 }

@@ -83,6 +83,7 @@ $reminder_year = getPostValue ( 'reminder_year' );
 $rpt_type = getPostValue ( 'rpt_type' );
 $rpt_hour = getPostValue ( 'rpt_hour' );
 $rpt_minute = getPostValue ( 'rpt_minute' );
+$rpt_ampm = getPostValue ( 'rpt_ampm' );
 $rpt_day = getPostValue ( 'rpt_day' );
 $rpt_month = getPostValue ( 'rpt_month' );
 $rpt_year = getPostValue ( 'rpt_year' );
@@ -131,6 +132,7 @@ $completed_year = getPostValue ( 'completed_year' );
 
 $due_hour = getPostValue ( 'due_hour' );
 $due_minute = getPostValue ( 'due_minute' );
+$due_ampm = getPostValue ( 'due_ampm' );
 $due_day = getPostValue ( 'due_day' );
 $due_month = getPostValue ( 'due_month' );
 $due_year = getPostValue ( 'due_year' );
