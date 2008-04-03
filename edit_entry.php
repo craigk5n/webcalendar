@@ -98,18 +98,18 @@ $minutStr = translate ( 'minutes' );
 $saveStr = translate ( 'Save' );
 
 load_user_categories ();
-// .
+
 // Default for using tabs is enabled.
 if ( empty ( $EVENT_EDIT_TABS ) )
   $EVENT_EDIT_TABS = 'Y'; // default
-// .
+
 $useTabs = ( $EVENT_EDIT_TABS == 'Y' );
 // Make sure this is not a read-only calendar.
 $can_edit = false;
 $others_complete = 'yes';
 $checked = ' checked="checked"';
 $selected = ' selected="selected"';
-// .
+
 // Public access can only add events, not edit.
 if ( empty ( $login ) || ( $login == '__public__' && $id > 0 ) )
   $id = 0;
@@ -139,7 +139,7 @@ if ( empty ( $date ) && empty ( $month ) ) {
 $BodyX = 'onload="onLoad();"';
 $INC = array ( 'js/edit_entry.php/false/' . $user, 'js/visible.php' );
 $textareasize = '15';
-// .
+
 // Can we use HTMLArea or FCKEditor? (Relax! That's the authors initials.)
 // Note: HTMLArea has been discontinued, so FCKEditor is preferred.
 $use_fckeditor = $use_htmlarea = false;
@@ -167,7 +167,7 @@ $byweekno = $byyearday = $catList = $catNames = $external_users = $rpt_count = '
 $create_by = $login;
 
 //This is the default per RFC2445
-//We could override it and use $byday_names[$WEEK_START']
+//We could override it and use $byday_names[$WEEK_START]
 $wkst = 'MO';
 
 $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
@@ -231,7 +231,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $location = $row[12];
     $completed = ( empty ( $row[15] ) ? date ( 'Ymd' ) : $row[15] );
     $cal_url = $row[16];
-    // .
+
     // What kind of entry are we dealing with?
     if ( strpos ( 'EM', $type ) !== false )
       $eType = 'event';
@@ -239,13 +239,13 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $eType = 'journal';
     elseif ( strpos ( 'NT', $type ) !== false )
       $eType = 'task';
-    // .
+
     // Public access has no access to tasks.
     // translate ( 'You are not authorized to edit this task' )
     if ( $login == '__public__' && $eType == 'task' )
       echo str_replace ( 'XXX', translate ( 'task' ),
         translate ( 'You are not authorized to edit this XXX.' ) );
-    // .
+
     // Check UAC.
     if ( access_is_enabled () )
       $can_edit =
@@ -263,7 +263,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $duration = '';
       $hour = -1;
     }
-    // .
+
     // Check for repeating event info...
     // but not if we're overriding a single entry of an already repeating event...
     // confusing, eh?
@@ -310,7 +310,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
           $byyearday = $row[10];
           $wkst = $row[11];
           $rpt_count = $row[12];
-          // .
+
           // Check to see if Weekends Only is applicable.
           $weekdays_only = ( $rpt_type == 'daily' && $byday == 'MO,TU,WE,TH,FR' );
         }
@@ -330,12 +330,12 @@ if ( ! empty ( $id ) && $id > 0 ) {
       }
       dbi_free_result ( $res );
     }
-    // .
+
     // Determine if Expert mode needs to be set.
     $expert_mode = ( count ( $byday ) || count ( $bymonth ) ||
       count ( $bymonthday ) || count ( $bysetpos ) ||
       isset ( $byweekno ) || isset ( $byyearday ) || isset ( $rpt_count ) );
-    // .
+
     // Get Repeat Exceptions.
     $res = dbi_execute ( 'SELECT cal_date, cal_exdate
       FROM webcal_entry_repeats_not WHERE cal_id = ?', array ( $id ) );
@@ -356,20 +356,21 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $catList = implode ( ',', array_keys ( $catById ) );
     }
   } //end CATEGORIES_ENABLED test
-  // .
+
   // Get reminders.
   $reminder = getReminders ( $id );
   $reminder_offset = ( empty ( $reminder ) ? 0 : $reminder['offset'] );
 	
 	$rem_status = ( count ( $reminder ));
   $rem_use_date = ( ! empty ( $reminder['date'] ) );
-  // .
+
   // Get participants.
-  $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user WHERE cal_id = ?
+  $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user WHERE cal_id = ?
     AND cal_status IN ( \'A\', \'W\' )', array ( $id ) );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;
+      $selectedStatus[$row[0]] = $row[1];
     }
     dbi_free_result ( $res );
   }
@@ -380,7 +381,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 } else {
   // ##########   New entry   ################
   $id = 0; // To avoid warnings below about use of undefined var.
-  // .
+
   // We'll use $WORK_DAY_START_HOUR and $WORK_DAY_END_HOUR
   // as our starting and due times.
   $cal_time = $WORK_DAY_START_HOUR . '0000';
@@ -389,7 +390,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $due_minute = $task_percent = 0;
   $due_time = $WORK_DAY_END_HOUR . '0000';
   $overall_percent = array ();
-  // .
+
   // Get category if passed in URL as cat_id.
   $cat_id = getGetValue ( 'cat_id' );
   if ( ! empty ( $cat_id ) ) {
@@ -402,17 +403,16 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $catList = $cat_id;
     }
   }
-  // .
+
   // Reminder settings.
   $reminder_offset = ( $REMINDER_WITH_DATE == 'N' ? $REMINDER_OFFSET : 0 );
 
 	$rem_status = ( $REMINDER_DEFAULT == 'Y' );
   $rem_use_date = ( $reminder_offset == 0 && $REMINDER_WITH_DATE == 'Y' );
 			
-			
   if ( $eType == 'task' )
     $hour = $WORK_DAY_START_HOUR;
-  // .
+
   // Anything other then testing for strlen breaks either hour=0 or no hour in URL.
   if ( strlen ( $hour ) )
     $time = $hour * 100;
@@ -425,12 +425,16 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $participants[$tmp_ar[$i]] = 1;
     }
   }
+
+  //Add the logged in user if none other supplied
+  if ( count ( $participants )  == 0 )
+    $participants[$login] = 1;
+
   if ( $readonly == 'N' ) {
-    // If public, then make sure we can add events.
+    // Is public allowed to add events?
     if ( $login == '__public__'  && $PUBLIC_ACCESS_CAN_ADD != 'Y' )
         $can_edit = false;
     else
-      // Not public user.
       $can_edit = true;
   }
 }
@@ -440,7 +444,7 @@ $thismonth = $month;
 $thisyear = $year;
 if ( empty ( $rpt_type ) || ! $rpt_type )
   $rpt_type = 'none';
-// .
+
 // Avoid error for using undefined vars.
 if ( ! isset ( $hour ) && $hour != 0 )
   $hour = -1;
@@ -503,7 +507,7 @@ if ( empty ( $cal_date ) || ! $cal_date )
 
 if ( empty ( $due_date ) || ! $due_date )
   $due_date = $thisdate;
-// .
+
 // Setup to display user's timezone difference if Admin or Assistant.
 // Even though event is stored in GMT,
 // an Assistant may need to know that the boss is in a different Timezone.
@@ -599,7 +603,7 @@ if ( $can_edit ) {
         <div id="tabscontent_details">' : '
       <fieldset>
         <legend>' . translate ( 'Details' ) . '</legend>' ) . '
-          <table border="0">
+          <table border="0" summary="">
             <tr>
               <td style="width:14%;" class="tooltip" title="'
    . tooltip ( 'brief-description-help' ) . '"><label for="entry_brief">'
@@ -621,7 +625,7 @@ if ( $can_edit ) {
    . ( ! empty ( $categories ) || $DISABLE_ACCESS_FIELD != 'Y' ||
     ( $DISABLE_PRIORITY_FIELD != 'Y' )
     /* New table for extra fields. */ ? '
-                <table border="0" width="90%">' : '' )
+                <table border="0" width="90%" summary="">' : '' )
    . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
                   <tr>
                     <td class="tooltip" title="' . tooltip ( 'access-help' )
@@ -651,6 +655,7 @@ if ( $can_edit ) {
       translate ( 'High' ),
       translate ( 'Medium' ),
       translate ( 'Low' ) );
+
     for ( $i = 1; $i <= 9; $i++ ) {
       echo '
                         <option value="' . $i . '"'
@@ -686,7 +691,7 @@ if ( $can_edit ) {
   if ( $eType == 'task' ) { // Only for tasks.
     $completed_visible = ( strlen ( $completed ) ? 'visible' : 'hidden' );
     echo '<br />
-                <table border="0">
+                <table border="0" summary="">
                   <tr id="completed">
                     <td class="tooltip" title="' . tooltip ( 'completed-help' )
      . '"><label for="task_percent">' . translate ( 'Date Completed' )
@@ -715,7 +720,8 @@ if ( $can_edit ) {
       echo '
                   <tr>
                     <td colspan="2">
-                      <table width="100%" border="0" cellpadding="2" cellspacing="5">
+                      <table width="100%" border="0" cellpadding="2" '
+       . 'cellspacing="5" summary="">
                         <tr>
                           <td colspan="2">' . translate ( 'All Percentages' )
        . '</td>
@@ -728,7 +734,8 @@ if ( $can_edit ) {
                           <td>' . $percentfullname . '</td>
                           <td>' . $overall_percent[$i][1] . '</td>
                         </tr>';
-        if ( $overall_percent[$i][0] != $real_user && $overall_percent[$i][1] < 100 )
+        if ( $overall_percent[$i][0] != $real_user &&
+          $overall_percent[$i][1] < 100 )
           $others_complete = 'no';
       }
       echo '
@@ -741,6 +748,7 @@ if ( $can_edit ) {
                 <input type="hidden" name="others_complete" value="'
      . $others_complete . '" />';
   } //end tasks only
+
   echo '
               </td>
             </tr>' . ( $DISABLE_LOCATION_FIELD != 'Y' ? '
@@ -767,6 +775,7 @@ if ( $can_edit ) {
             </tr>
             <tr>
               <td';
+
   if ( $eType != 'task' ) {
     $dur_h = intval ( $duration / 60 );
 
@@ -847,7 +856,7 @@ if ( $can_edit ) {
           <td colspan="2">' . time_selection ( 'due_', $due_time ) . '</td>
         </tr>';
   }
-  // .
+
   // Site-specific extra fields (see site_extras.php).
   // load and display any site-specific fields.
   if ( $id > 0 )
@@ -859,7 +868,7 @@ if ( $can_edit ) {
       <div>
         <fieldset>
           <legend>' . translate ( 'Site Extras' ) . '</legend>' : '' ) . '
-          <table>' : '' );
+          <table summary="">' : '' );
 
   for ( $i = 0; $i < $site_extracnt; $i++ ) {
     if ( $site_extras[$i] == 'FIELDSET' )
@@ -919,7 +928,7 @@ if ( $can_edit ) {
         if ( access_is_enabled () && !
             access_user_calendar ( 'view', $userlist[$j]['cal_login'] ) )
           continue; // Cannot view calendar so cannot add to their cal.
-        // .
+
         echo '
                   <option value="' . $userlist[$j]['cal_login'] . '"'
          . ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
@@ -943,16 +952,19 @@ if ( $can_edit ) {
         }
 
         echo '
-                <select name="' . $extra_name . $isMultiple . '"' . $multiselect . '>';
+                <select name="' . $extra_name . $isMultiple . '"'
+         . $multiselect . '>';
         for ( $j = 0; $j < $extra_arg1cnt; $j++ ) {
           echo '
                   <option value="' . $extra_arg1[$j] . '" ';
 
           if ( ! empty ( $extras[$extra_name]['cal_data'] ) ) {
-            if ( $extra_arg2 == 0 && $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
+            if ( $extra_arg2 == 0 &&
+              $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
               echo $selected;
             else
-            if ( $extra_arg2 > 0 && in_array ( $extra_arg1[$j], $extraSelectArr ) )
+            if ( $extra_arg2 > 0 &&
+              in_array ( $extra_arg1[$j], $extraSelectArr ) )
               echo $selected;
           } else
             echo ( $j == 0 ? $selected : '' );
@@ -980,7 +992,7 @@ if ( $can_edit ) {
       </div>' );
   }
   // end site-specific extra fields
-  // .
+
   echo ( $useTabs ? '
     </div>' : '
     </fieldset>' ) . '
@@ -1077,7 +1089,7 @@ if ( $can_edit ) {
     <div id="tabscontent_pete">' : '
     <fieldset>
       <legend>' . translate ( 'Repeat' ) . '</legend>' ) . '
-      <table border="0" cellspacing="0" cellpadding="3">
+      <table border="0" cellspacing="0" cellpadding="3" summary="">
         <tr>
           <td class="tooltip" title="' . tooltip ( 'repeat-type-help' )
      . '"><label for="rpttype">' . translate ( 'Type' ) . ':</label></td>
@@ -1131,7 +1143,7 @@ if ( $can_edit ) {
           <td class="boxright"><span class="end_day_selection" '
      . 'id="rpt_end_day_select">'
      . date_selection ( 'rpt_', ( $rpt_end_date ? $rpt_end_date : $cal_date ) )
-     . '</span><br />' . time_selection ( 'rpt_', $rpt_end_time ) . '</td>
+     . '</span><span id="rpt_until_time_date"><br />' . time_selection ( 'rpt_', $rpt_end_time ) . '</span></td>
         </tr>
         <tr id="rptenddate3" style="visibility:hidden;">
           <td class="boxbottom boxleft"><input type="radio" name="rpt_end_use" '
@@ -1155,12 +1167,14 @@ if ( $can_edit ) {
      . '</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span id="rptwkst">
               <select name="wkst">';
-			for ( $i=0; $i<=6;$i++ ) {
-			    echo '<option value="'.  $byday_names[$i] .'" '
+    for ( $i = 0; $i < 7; $i++ ) {
+      echo '
+                <option value="' . $byday_names[$i] . '" '
 				 . ( $wkst ==$byday_names[$i] ? $selected : '' )
-				 . '>' .translate ( $byday_names[$i] ) . "</option>\n";			
+       . '>' . translate ( $byday_names[$i] ) . '</option>';
 			  }
-     echo '</select>&nbsp;&nbsp;<label for="rptwkst">'
+    echo '
+              </select>&nbsp;&nbsp;<label for="rptwkst">'
      . translate ( 'Week Start' ) . '</label>
             </span>
           </td>
@@ -1178,7 +1192,8 @@ if ( $can_edit ) {
      . ( empty ( $bymonthdayStr ) ? '' : $bymonthdayStr ) . '" />
             <input type="hidden" name="bysetposList" value="'
      . ( empty ( $bysetposStr ) ? '' : $bysetposStr ) . '" />
-            <table class="byxxx" cellpadding="2" cellspacing="2" border="1">
+            <table class="byxxx" cellpadding="2" cellspacing="2" '
+     . 'border="1" summary="">
               <tr>
                 <td></td>';
     // Display byday extended selection.
@@ -1248,7 +1263,7 @@ if ( $can_edit ) {
           <td class="tooltip">' . translate ( 'ByMonth' ) . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bymonth selection. */ . '
-            <table cellpadding="5" cellspacing="0">
+            <table cellpadding="5" cellspacing="0" summary="">
               <tr>';
     for ( $rpt_month = 1; $rpt_month < 13; $rpt_month++ ) {
       echo '
@@ -1274,10 +1289,12 @@ if ( $can_edit ) {
      . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bysetpos selection. */ . '
-            <table class="byxxx" cellpadding="2" cellspacing="0" border="1">
+            <table class="byxxx" cellpadding="2" cellspacing="0" '
+     . 'border="1" summary="">
               <tr>
                 <td></td>';
-    for ( $rpt_bysetpos_label = 1; $rpt_bysetpos_label < 11; $rpt_bysetpos_label++ ) {
+    for ( $rpt_bysetpos_label = 1; $rpt_bysetpos_label < 11;
+      $rpt_bysetpos_label++ ) {
       echo '
                 <th width="37px"><label>' . $rpt_bysetpos_label
        . '</label></th>';
@@ -1314,10 +1331,12 @@ if ( $can_edit ) {
      . ':&nbsp;</td>
         <td colspan="2" class="boxall">'
     /* Display bymonthday extended selection. */ . '
-          <table class="byxxx" cellpadding="2" cellspacing="0" border="1">
+          <table class="byxxx" cellpadding="2" cellspacing="0" '
+     . 'border="1" summary="">
             <tr>
               <td></td>';
-    for ( $rpt_bymonthday_label = 1; $rpt_bymonthday_label < 11; $rpt_bymonthday_label++ ) {
+    for ( $rpt_bymonthday_label = 1; $rpt_bymonthday_label < 11;
+      $rpt_bymonthday_label++ ) {
       echo '
               <th width="37px"><label>' . $rpt_bymonthday_label
        . '</label></th>';
@@ -1344,7 +1363,7 @@ if ( $can_edit ) {
     echo '
           </tr>
         </table>';
-    // .
+
     // Populate Repeat Exceptions data for later use.
     $excepts = '';
     $exceptcnt = count ( $exceptions );
@@ -1381,7 +1400,7 @@ if ( $can_edit ) {
         <td class="tooltip"><label>' . translate ( 'Exclusions' ) . '/<br />'
      . translate ( 'Inclusions' ) . ':</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
-          <table border="0" width="250px">
+          <table border="0" width="250px" summary="">
             <tr>
               <td colspan="2">'
      . date_selection ( 'except_', $rpt_end_date ? $rpt_end_date : $cal_date )
@@ -1418,7 +1437,6 @@ if ( $can_edit ) {
 
 <!-- REMINDER INFO -->';
   if ( $DISABLE_REMINDER_FIELD != 'Y' ) {
-
     $rem_minutes = $reminder_offset;
     // Will be specified in total minutes.
     $rem_days = intval ( $rem_minutes / 1440 );
@@ -1430,13 +1448,13 @@ if ( $can_edit ) {
     ( empty ( $reminder['before'] ) || $reminder['before'] == 'Y' );
     $rem_related =
     ( empty ( $reminder['related'] ) || $reminder['related'] == 'S' );
-    // .
+
     // Reminder Repeats.
     $rem_rep_count =
     ( isset ( $reminder['repeats'] ) ? $reminder['repeats'] : 0 );
     $rem_rep_minutes =
     ( isset ( $reminder['duration'] ) ? $reminder['duration'] : 0 );
-    // .
+
     // Will be specified in total minutes.
     $rem_rep_days = intval ( $rem_rep_minutes / 1440 );
     $rem_rep_minutes -= ( $rem_rep_days * 1440 );
@@ -1448,7 +1466,7 @@ if ( $can_edit ) {
     <div id="tabscontent_reminder">' : '
     <fieldset>
       <legend>' . translate ( 'Reminders' ) . '</legend>' ) . '
-      <table border="0" cellspacing="0" cellpadding="3">
+      <table border="0" cellspacing="0" cellpadding="3" summary="">
         <thead>
           <tr>
             <td class="tooltip"><label>' . translate ( 'Send Reminder' )
@@ -1538,8 +1556,8 @@ if ( $can_edit ) {
      . ':</label></td>
             <td class="boxtop boxleft">&nbsp;&nbsp;&nbsp;<label>'
      . translate ( 'Times' ) . '</label></td>
-            <td class="boxtop boxright" colspan="2"><input type="text" size="2" '
-     . 'name="rem_rep_count" value="' . $rem_rep_count
+            <td class="boxtop boxright" colspan="2"><input type="text" '
+     . 'size="2" name="rem_rep_count" value="' . $rem_rep_count
      . '" onchange="toggle_rem_rep();" /></td>
           </tr>
           <tr id="rem_repeats">
@@ -1561,8 +1579,8 @@ if ( $can_edit ) {
     </fieldset>' );
   }
 
-
-  if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' && !
+  if ( file_exists ( 'includes/classes/captcha/captcha.php' ) &&
+      $login == '__public__' && !
       empty ( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA == 'Y' ) {
     if ( function_exists ( 'imagecreatetruecolor' ) ) {
       include_once 'includes/classes/captcha/captcha.php';
@@ -1575,7 +1593,7 @@ if ( $can_edit ) {
 <!-- End tabscontent -->';
 
   echo '
-      <table>
+      <table summary="">
         <tr>
           <td>
             <script type="text/javascript">
@@ -1590,8 +1608,11 @@ if ( $can_edit ) {
         </tr>
       </table>
       <input type="hidden" name="participant_list" value="" />'
+  // This bit should be moved to a webcal_fckconfig.js file.
+  // Then the current FCKEditor SVN version would probably work.
        . ( $use_fckeditor ? '
-      <script type="text/javascript" src="includes/FCKeditor-2.0/fckeditor.js"></script>
+      <script type="text/javascript" '
+     . 'src="includes/FCKeditor-2.0/fckeditor.js"></script>
       <script type="text/javascript">
         var myFCKeditor = new FCKeditor ( \'description\' );
 
@@ -1613,7 +1634,7 @@ if ( $can_edit ) {
   echo str_replace ( 'XXX', translate ( 'entry' ),
     translate ( 'You are not authorized to edit this XXX.' ) );
 // end if ( $can_edit )
-// .
+
 ob_end_flush ();
 
 echo print_trailer ();
