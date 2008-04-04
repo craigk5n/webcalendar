@@ -1998,10 +1998,10 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         if ( preg_match ( "/TZID=(.*)$/i", $match[1], $submatch ) ) {
           $substate = 'dtstartTzid';
           $event[$substate] = $submatch[1];
-        } else if ( preg_match ( "/VALUE=DATE-TIME(.*)$/i", $match[1], $submatch ) ) {
+        } else if ( preg_match ( "/VALUE=\"{0,1}DATE-TIME\"{0,1}(.*)$/i", $match[1], $submatch ) ) {
           $substate = 'dtstartDATETIME';
           $event[$substate] = true;
-        } else if ( preg_match ( "/VALUE=DATE(.*)$/i", $match[1], $submatch ) ) {
+        } else if ( preg_match ( "/VALUE=\"{0,1}DATE\"{0,1}(.*)$/i", $match[1], $submatch ) ) {
           $substate = 'dtstartDATE';
           $event[$substate] = true;
         }
@@ -2415,11 +2415,11 @@ function format_ical ( $event ) {
   }
 
   if ( isset ( $event['dtstartDATE'] ) && ! isset ( $event['dtendDATE'] ) ) {
-    // This is an anniversary
+    // Untimed
     $fevent['StartTime'] = icaldate_to_timestamp ( $event['dtstart'], 'GMT' );
-    $fevent['EndTime'] = $fevent['StartTime'] + 86400;
-    $fevent['AllDay'] = 1;
-    $fevent['Duration'] = 1440;
+    $fevent['EndTime'] = $fevent['StartTime'];
+    $fevent['Untimed'] = 1;
+    $fevent['Duration'] = 0;
   } else if ( isset ( $event['dtstartDATE'] ) && isset ( $event['dtendDATE'] ) ) {
     $fevent['StartTime'] = icaldate_to_timestamp ( $event['dtstart'], 'GMT' );
     // This is an untimed event
