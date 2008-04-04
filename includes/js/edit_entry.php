@@ -144,9 +144,11 @@ function validate_and_submit () {
    elements['bysetposList'].value = bysetposStr.substr(1);
 
  //select allusers in selectedPart
- var userlist = form.elements['selectedPart[]'];
- for ( i = 0; i < userlist.length; i++ ) { 
-   userlist.options[i].selected = true;
+ if ( form.elements['selectedPart[]'] ) {
+   var userlist = form.elements['selectedPart[]'];
+   for ( i = 0; i < userlist.length; i++ ) { 
+     userlist.options[i].selected = true;
+   }
  }
  
  form.submit ();
@@ -781,7 +783,7 @@ function selRemove(btn){
 function lookupName(){
   var selectid = -1;
   var x =  stringLength(form.lookup.value);
-	var lower = stringToLowercase(form.lookup.value );
+    var lower = stringToLowercase(form.lookup.value );
   form.entry_part.selectedIndex = -1;
   form.res_part.selectedIndex = -1;
   if ( form.groups )
