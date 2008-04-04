@@ -138,9 +138,12 @@ $login = $username;
 
 if ( $allow_user_override ) {
   $u = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]+', true );
-  if ( ! empty ( $u ) )
+  if ( ! empty ( $u ) ) {
+    if ( $u == 'public' )
+      $u = '__public__';
     // We also set $login since some functions assume that it is set..
     $login = $username = $u;
+  }
 }
 
 load_user_preferences ();
