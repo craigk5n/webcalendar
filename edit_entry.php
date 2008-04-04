@@ -118,7 +118,7 @@ $eType = getGetValue ( 'eType' );
 if ( empty ( $eType ) )
   $eType = 'event';
 
-$copy = getValue ( 'copy' );
+$copy = getValue ( 'copy', '[01]' );
 $date = getValue ( 'date', '-?[0-9]+' );
 $day = getValue ( 'day', '-?[0-9]+' );
 $month = getValue ( 'month', '-?[0-9]+' );
