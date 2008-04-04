@@ -61,7 +61,7 @@ function export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
       if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
         $enc = export_quoted_printable_encode( $string[$i] );
       else if ( strcmp( $encoding, 'utf8' ) == 0 )
-        $enc = utf8_encode( $string[$i] );
+        $enc = $string[$i];
     }
     if ( $string[$i] == ':' )
       $start_encode = 1;
@@ -874,7 +874,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   $ret = "BEGIN:VCALENDAR\r\n";
   $title = 'X-WR-CALNAME;VALUE=TEXT:' .
   ( empty ( $publish_fullname ) ? $login : translate ( $publish_fullname ) );
-  $title = utf8_encode( str_replace ( ',', "\\,", $title ) );
+  $title = str_replace ( ',', "\\,", $title );
   $ret .= "$title\r\n";
   $ret .= generate_prodid ( 'ics' );
   $ret .= "VERSION:2.0\r\n";
