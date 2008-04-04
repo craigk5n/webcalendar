@@ -21,6 +21,12 @@ if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
   // not allowed...
   exit;
 
+
+$users = getGetValue ( 'users' );
+$year = getGetValue ( 'year' );
+$month = getGetValue ( 'month' );
+$day = getGetValue ( 'day' );
+
 // Input args in URL.
 // users: list of comma-separated users.
 // translate ( 'Program Error' ) translate ( 'No XXX specified!' )
