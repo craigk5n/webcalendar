@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixed bug [ 1901746 ] 12:am ending time
  - Fixed bug [ 1912636 ] 1.2b1 import error - international chars
  - Fixed bug [ 1913623 ] public user are not able to submit event
  - Fixed bug [ 1931360 ] 1.2.b1 Mon-Sun Repeating Weekly Appt
