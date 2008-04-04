@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Convert public to __public__ in rss.php
  - Fixed bug [ 1901746 ] 12:am ending time
  - Fixed bug [ 1912636 ] 1.2b1 import error - international chars
  - Fixed bug [ 1912638 ] 1.2b1 import error - untimed events
