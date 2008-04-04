@@ -750,10 +750,10 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
   <td>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
-      'publish.php/' . ( $updating_public ? 'public' : $user ) .  '.ics';
+      'publish.php/' . ( $updating_public ? '__public__' : $user ) .  '.ics';
     echo "<br />\n";
     echo htmlspecialchars ( $SERVER_URL ) .
-      'publish.php?user=' . ( $updating_public ? 'public' : $user );
+      'publish.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
 <?php } /* $SERVER_URL */ ?>
 
@@ -785,7 +785,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
   <td>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
-      'rss.php?user=' . ( $updating_public ? 'public' : $user );
+      'rss.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
 <?php } /* $SERVER_URL */
 } /* $RSS_ENABLED */ ?>
@@ -799,10 +799,10 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
   <td>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
-      'freebusy.php/' . ( $updating_public ? 'public' : $user ) . '.ifb';
+      'freebusy.php/' . ( $updating_public ? '__public__' : $user ) . '.ifb';
     echo "<br />\n";
     echo htmlspecialchars ( $SERVER_URL ) .
-      'freebusy.php?user=' . ( $updating_public ? 'public' : $user );
+      'freebusy.php?user=' . ( $updating_public ? '__public__' : $user );
   ?></td></tr>
 <?php } /* $SERVER_URL */ ?>
 </table>
