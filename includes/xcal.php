@@ -61,7 +61,7 @@ function export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
       if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
         $enc = export_quoted_printable_encode( $string[$i] );
       else if ( strcmp( $encoding, 'utf8' ) == 0 )
-        $enc = utf8_encode( $string[$i] );
+        $enc = $string[$i];
     }
     if ( $string[$i] == ':' )
       $start_encode = 1;
@@ -874,7 +874,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   $ret = "BEGIN:VCALENDAR\r\n";
   $title = 'X-WR-CALNAME;VALUE=TEXT:' .
   ( empty ( $publish_fullname ) ? $login : translate ( $publish_fullname ) );
-  $title = utf8_encode( str_replace ( ',', "\\,", $title ) );
+  $title = str_replace ( ',', "\\,", $title );
   $ret .= "$title\r\n";
   $ret .= generate_prodid ( 'ics' );
   $ret .= "VERSION:2.0\r\n";
@@ -1856,9 +1856,9 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       fclose ( $fd );
     }
   } else if ( $source == 'icalclient' ) {
-    //do_debug ( "before fopen on stdin..." );
+    do_debug ( "before fopen on stdin..." );
     $stdin = fopen ( 'php://input', 'r' );
-    $tmp = fopen ( "/tmp/data.ics", "w+" );
+    //$tmp = fopen ( "/tmp/data.ics", "w+" );
     //$stdin = fopen ("/dev/stdin", "r");
     // $stdin = fopen ("/dev/fd/0", "r");
     do_debug ( "after fopen on stdin..." );
@@ -1867,7 +1867,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
     $cnt = 0;
     while ( ! feof ( $stdin ) ) {
       $line = fgets ( $stdin, 1024 );
-      fwrite ( $tmp, $line );
+      //fwrite ( $tmp, $line );
       $cnt++;
       do_debug ( "read: " . $line );
       do_debug ( "cnt = " . ( $cnt ) );
@@ -1883,8 +1883,8 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       }
     }
     fclose ( $stdin );
-    fclose ( $tmp );
-    do_debug ( "strlen (data)=" . strlen ($data) );
+    //fclose ( $tmp );
+    //do_debug ( "strlen (data)=" . strlen ($data) );
     // Check for PHP stdin bug
     if ( $cnt > 5 && strlen ( $data ) < 10 ) {
       do_debug ( "Read $cnt lines of data, but got no data :-(" );
@@ -2305,6 +2305,17 @@ function RepeatType ( $type ) {
     'monthlyBySetPos', 'yearly', 'manual' );
   return $Repeat[$type];
 }
+
+function utf8Decode ( $string ){
+  $ret = $string;
+  if ( function_exists ( 'html_entity_decode' ) )
+	  $ret = html_entity_decode ( htmlentities( $string, ENT_COMPAT, 'UTF-8' ) );
+	else 
+    utf8_decode ( $string );
+		
+  return $string;
+}
+
 // Convert ical format (yyyymmddThhmmssZ) to epoch time
 function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
   $plus_m = '0', $plus_y = '0' ) {
@@ -2383,7 +2394,7 @@ function format_ical ( $event ) {
   if ( isset ( $event['categories'] ) ) {
     // $fevent['Categories']  will contain an array of cat_id(s) that match the
     // category_names
-    $fevent['Categories'] = get_categories_id_byname ( utf8_decode ( $event['categories'] ) );
+    $fevent['Categories'] = get_categories_id_byname ( utf8Decode ( $event['categories'] ) );
   }
   // Start and end time
   /* Snippet from RFC2445
@@ -2448,9 +2459,9 @@ function format_ical ( $event ) {
 
   if ( empty ( $event['summary'] ) )
     $event['summary'] = translate ( 'Unnamed Event' );
-  $fevent['Summary'] = utf8_decode ( $event['summary'] );
+  $fevent['Summary'] = utf8Decode ( $event['summary'] );
   if ( ! empty ( $event['description'] ) ) {
-    $fevent['Description'] = utf8_decode ( $event['description'] );
+    $fevent['Description'] = utf8Decode ( $event['description'] );
   } else {
     $fevent['Description'] = $fevent['Summary'];
   }
@@ -2524,11 +2535,11 @@ function format_ical ( $event ) {
   }
 
   if ( ! empty ( $event['location'] ) ) {
-    $fevent['Location'] = utf8_decode ( $event['location'] );
+    $fevent['Location'] = utf8Decode ( $event['location'] );
   }
 
   if ( ! empty ( $event['url'] ) ) {
-    $fevent['URL'] = utf8_decode ( $event['url'] );
+    $fevent['URL'] = utf8Decode ( $event['url'] );
   }
 
   if ( ! empty ( $event['priority'] ) ) {
