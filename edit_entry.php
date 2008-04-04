@@ -118,7 +118,7 @@ $eType = getGetValue ( 'eType' );
 if ( empty ( $eType ) )
   $eType = 'event';
 
-$copy = getValue ( 'copy' );
+$copy = getValue ( 'copy', '[01]' );
 $date = getValue ( 'date', '-?[0-9]+' );
 $day = getValue ( 'day', '-?[0-9]+' );
 $month = getValue ( 'month', '-?[0-9]+' );
@@ -360,8 +360,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
   // Get reminders.
   $reminder = getReminders ( $id );
   $reminder_offset = ( empty ( $reminder ) ? 0 : $reminder['offset'] );
-	
-	$rem_status = ( count ( $reminder ));
+    
+    $rem_status = ( count ( $reminder ));
   $rem_use_date = ( ! empty ( $reminder['date'] ) );
 
   // Get participants.
@@ -407,9 +407,9 @@ if ( ! empty ( $id ) && $id > 0 ) {
   // Reminder settings.
   $reminder_offset = ( $REMINDER_WITH_DATE == 'N' ? $REMINDER_OFFSET : 0 );
 
-	$rem_status = ( $REMINDER_DEFAULT == 'Y' );
+    $rem_status = ( $REMINDER_DEFAULT == 'Y' );
   $rem_use_date = ( $reminder_offset == 0 && $REMINDER_WITH_DATE == 'Y' );
-			
+            
   if ( $eType == 'task' )
     $hour = $WORK_DAY_START_HOUR;
 
@@ -1170,9 +1170,9 @@ if ( $can_edit ) {
     for ( $i = 0; $i < 7; $i++ ) {
       echo '
                 <option value="' . $byday_names[$i] . '" '
-				 . ( $wkst ==$byday_names[$i] ? $selected : '' )
+                 . ( $wkst ==$byday_names[$i] ? $selected : '' )
        . '>' . translate ( $byday_names[$i] ) . '</option>';
-			  }
+              }
     echo '
               </select>&nbsp;&nbsp;<label for="rptwkst">'
      . translate ( 'Week Start' ) . '</label>
@@ -1201,9 +1201,9 @@ if ( $can_edit ) {
     // a javascript array until form submission. We then set the hidden field
     // bydayList to the string value of the array.
     for ( $rpt_byday_label = $WEEK_START; 
-		  $rpt_byday_label <= ( $WEEK_START + 6); $rpt_byday_label++ ) {
-			$rpt_byday_mod = $rpt_byday_label %7;
-			$class = ( is_weekend ( $rpt_byday_mod ) ? ' class="weekend" ' : '' );
+          $rpt_byday_label <= ( $WEEK_START + 6); $rpt_byday_label++ ) {
+            $rpt_byday_mod = $rpt_byday_label %7;
+            $class = ( is_weekend ( $rpt_byday_mod ) ? ' class="weekend" ' : '' );
       echo '
                 <th width="50px"' .$class . '><label>'
        . translate ( $weekday_names[$rpt_byday_mod] ) . '</label></th>';
@@ -1213,8 +1213,8 @@ if ( $can_edit ) {
               <tr>
                 <th>' . translate ( 'All' ) . '</th>';
     for ( $rpt_byday_single = $WEEK_START; 
-		  $rpt_byday_single <= ( $WEEK_START + 6); $rpt_byday_single++ ) {
-			$rpt_byday_mod = $rpt_byday_single %7;
+          $rpt_byday_single <= ( $WEEK_START + 6); $rpt_byday_single++ ) {
+            $rpt_byday_mod = $rpt_byday_single %7;
       echo '
                 <td><input type="checkbox" name="bydayAll[]" id="'
        . $byday_names[$rpt_byday_mod] . '" value="'
@@ -1230,13 +1230,13 @@ if ( $can_edit ) {
                 <th><label>' . $loop_ctr . '/' . ( $loop_ctr - 6 )
        . '</label></th>';
       for ( $rpt_byday = $WEEK_START; 
-			  $rpt_byday <= ( $WEEK_START + 6); $rpt_byday++ ) {
-				$rpt_byday_mod = $rpt_byday %7;
+              $rpt_byday <= ( $WEEK_START + 6); $rpt_byday++ ) {
+                $rpt_byday_mod = $rpt_byday %7;
         $buttonvalue = ( in_array ( $loop_ctr
              . $byday_names[$rpt_byday_mod], $byday )
           ? $loop_ctr . translate ( $byday_names[$rpt_byday_mod] )
           : ( in_array ( ( $loop_ctr - 6 ) 
-					. $byday_names[$rpt_byday_mod], $byday )
+                    . $byday_names[$rpt_byday_mod], $byday )
           ? ( $loop_ctr - 6 )
           . translate ( $byday_names[$rpt_byday_mod] ) : '        ' ) );
 
