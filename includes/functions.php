@@ -807,9 +807,9 @@ function date_to_epoch ( $d ) {
  * @param bool   $short_months  Should the abbreviated month names be used
  *                              instead of the full month names?
  * @param bool   $forceTranslate Check to see if there is a translation for
- *			the specified data format.  If there is, then use
- *			the translated format from the language file, but
- *			only if $DATE_FORMAT is language-defined.
+ *            the specified data format.  If there is, then use
+ *            the translated format from the language file, but
+ *            only if $DATE_FORMAT is language-defined.
  *
  * @return string  Date in the specified format.
  *
@@ -1970,10 +1970,12 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
       }
       while ( $cdate <= $realend && $n <= $Count ) {
         if ( ! empty ( $byday ) ) {
-          foreach ( $byday as $day ) {
-            $td = $cdate + ( $byday_values[$day] * 86400 );
-            if ( getBymonth ( $td, $Byxxx[0] ) && $td >= $date 
-              && $td <= $realend && $n <= $Count )
+          $WkstDay = $byday_values[$Wkst];
+          for ( $i=$WkstDay; $i<=( $WkstDay + 6 ); $i++ ) {
+            $td = $cdate + ( $i * 86400 );
+            $tdDay = date ( 'w', $td );
+            //echo $Count . '  ' . $n . '  ' .$WkstDay .'<br>';
+            if ( in_array ( $byday_names[$tdDay], $byday  ) && $td >= $date && $td <= $realend && $n <= $Count)
               $ret[$n++] = $td;
           }
         } else {
@@ -2750,8 +2752,8 @@ function get_plugin_list ( $include_disabled = false ) {
  *
  * @param string $user     User login we are getting preference for
  * @param string $setting  Name of the setting
- * @param stirng $defaultSetting	Value to return if no value foun
- *			in the database
+ * @param stirng $defaultSetting    Value to return if no value foun
+ *            in the database
  *
  * @return string  The value found in the webcal_user_pref table for the
  *                 specified setting or the sytem default if no user settings
@@ -4725,8 +4727,8 @@ function print_not_auth ( $errno='', $full = false ) {
   global $settings;
   return ( $full ? print_error_header () : '' )
    . '!!!' . translate ( 'You are not authorized.' ) 
-	 . ( ! empty ( $settings['mode'] ) && $settings['mode'] == 'dev' ? ' ' 
-	 . $errno : '' )  . "\n";
+     . ( ! empty ( $settings['mode'] ) && $settings['mode'] == 'dev' ? ' ' 
+     . $errno : '' )  . "\n";
 }
 
 /* Generates HTML for radio buttons.
