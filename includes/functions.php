@@ -32,9 +32,9 @@ function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
   // error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n<br />",
   // 3, 'd:/php/logs/debug.txt' );
-  $fd = fopen ( "/tmp/webcal.log", 'a+b' );
-  fwrite ( $fd, date ( 'Y-m-d H:i:s' ) . "> $msg\n" );
-  fclose ( $fd );
+  //$fd = fopen ( "/tmp/webcal.log", 'a+b' );
+  //fwrite ( $fd, date ( 'Y-m-d H:i:s' ) . "> $msg\n" );
+  //fclose ( $fd );
   // 3, '/tmp/webcal-debug.log' );
   // error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n",
   // 2, 'sockieman:2000' );
@@ -1979,7 +1979,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
     $n = 0;
     if ( ! empty ( $ByDay ) )
       $byday = explode ( ',', $ByDay );
-print_r ( $ByMonth);
+
     if ( ! empty ( $ByMonth ) )
       $bymonth = explode ( ',', $ByMonth );
 
@@ -2002,7 +2002,7 @@ print_r ( $ByMonth);
         while ( $cdate < $jump ) {
           $cdate = add_dstfree_time ( $cdate, 86400, $interval );
         }
-      } while ( $cdate <= $realend && $n <= $Count ) {
+      } while ( $cdate <= $realend && $n < $Count ) {
         // Check RRULE items.
         if ( ! empty ( $bymonth ) && !
             in_array ( date ( 'n', $cdate ), $bymonth ) )
@@ -2048,12 +2048,15 @@ print_r ( $ByMonth);
           $cdate = add_dstfree_time ( $cdate, 604800, $interval );
         }
       }
-      $cdate = $date - ( $dow * 86400 );
-      while ( $cdate <= $realend && $n <= $Count ) {
+
+      while ( $cdate <= $realend && $n < $Count ) {
         if ( ! empty ( $byday ) ) {
-          foreach ( $byday as $day ) {
-            $td = $cdate + ( $byday_values[$day] * 86400 );
-            if ( $td >= $date && $td <= $realend && $n <= $Count )
+          $WkstDay = $byday_values[$Wkst];
+          for ( $i=$WkstDay; $i<=( $WkstDay + 6 ); $i++ ) {
+            $td = $cdate + ( $i * 86400 );
+            $tdDay = date ( 'w', $td );
+            //echo $Count . '  ' . $n . '  ' .$WkstDay .'<br>';
+            if ( in_array ( $byday_names[$tdDay], $byday  ) && $td >= $date && $td <= $realend && $n < $Count)
               $ret[$n++] = $td;
           }
         } else {
@@ -2080,7 +2083,7 @@ print_r ( $ByMonth);
       }
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       $mdate = $cdate;
-      while ( $cdate <= $realend && $n <= $Count ) {
+      while ( $cdate <= $realend && $n < $Count ) {
           $bydayvalues = $bymonthdayvalues = $yret = array ();
           if ( isset ( $byday ) )
             $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
@@ -2146,7 +2149,7 @@ print_r ( $ByMonth);
         }
       }
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
-      while ( $cdate <= $realend && $n <= $Count ) {
+      while ( $cdate <= $realend && $n < $Count ) {
         $yret = array ();
         $ycd = date ( 'Y', $cdate );
         $fdoy = mktime ( 0, 0, 0, 1, 1, $ycd ); //first day of year
@@ -2183,7 +2186,7 @@ print_r ( $ByMonth);
               $yret[] =
               mktime ( $hour, $minute, 0, 12, 31 - $match[2] - 1, $thisyear );
             else
-            if ( ( $n <= $Count ) && ( $cdate >= $date ) )
+            if ( ( $n < $Count ) && ( $cdate >= $date ) )
               $yret[] = mktime ( $hour, $minute, 0, 1, $match[2], $thisyear );
           }
         } elseif ( isset ( $byweekno ) ) {
@@ -2266,7 +2269,7 @@ print_r ( $ByMonth);
  * @return array  Dates that match ByDay (YYYYMMDD format).
  */
 function get_byday ( $byday, $cdate, $type = 'month', $date ) {
-  global $byday_names, $byday_values;
+  global $byday_values;
 
   if ( empty ( $byday ) )
     return;
@@ -2805,8 +2808,8 @@ function get_plugin_list ( $include_disabled = false ) {
  *
  * @param string $user     User login we are getting preference for
  * @param string $setting  Name of the setting
- * @param stirng $defaultSetting	Value to return if no value foun
- *			in the database
+ * @param stirng $defaultSetting    Value to return if no value foun
+ *            in the database
  *
  * @return string  The value found in the webcal_user_pref table for the
  *                 specified setting or the sytem default if no user settings
@@ -5119,7 +5122,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           // a custom report that asks for N years of events.
           // $jump = mktime ( 0, 0, 0, $thismonth -1, 1, $thisyear);
           if ( $result[$i]->getRepeatCount () )
-            $rpt_count = $result[$i]->getRepeatCount () -1;
+            $rpt_count = $result[$i]->getRepeatCount ();
 
           $date = $result[$i]->getDateTimeTS ();
           if ( $result[$i]->isAllDay () || $result[$i]->isUntimed () )
