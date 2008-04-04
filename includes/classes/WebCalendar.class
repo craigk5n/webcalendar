@@ -134,7 +134,7 @@ class WebCalendar {
    */
   function _initInitSecondPhase () {
     global $ALLOW_VIEW_OTHER, $can_add, $can_add, $cat_id, $CATEGORIES_ENABLED,
-    $CATEGORY_VIEW, $caturl, $date, $DMW, $friendly, $fullname, $GROUPS_ENABLED,
+    $CATEGORY_VIEW, $caturl, $date, $DMW, $friendly, $override, $fullname, $GROUPS_ENABLED,
     $hour, $id, $is_admin, $is_assistant, $is_nonuser, $login, $minute, $month,
     $NONUSER_ENABLED, $nonusers, $ovrd, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
     $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS_OTHERS, $readonly, $u_url, $user,
@@ -151,6 +151,7 @@ class WebCalendar {
     $cat_id = getValue ( 'cat_id', '[\-0-9]+' );
     $date = getValue ( 'date', '[0-9]+' );
     $friendly = getValue ( 'friendly', '[01]' );
+    $override = getValue ( 'override', '[01]' );
     $hour = getValue ( 'hour', '[0-9]+' );
     $id = getValue ( 'id', '[0-9]+', true );
     $minute = getValue ( 'minute', '[0-9]+' );
@@ -598,11 +599,11 @@ class WebCalendar {
       $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
          WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
       if ( $rows ) {
-			  $row = $rows[0];
+              $row = $rows[0];
         if ( $row[0] != $PROGRAM_VERSION ) {
           // &amp; does not work here...leave it as &
           header ( 'Location: install/index.php?action=mismatch&version='
-					  . $row[0] );
+                      . $row[0] );
         exit;}
 
       }
@@ -639,8 +640,8 @@ class WebCalendar {
     // Global settings have not been loaded yet, so check for public_access now.
     $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_config
       WHERE cal_setting = \'PUBLIC_ACCESS\'' );
-		if ( $rows )
-		  $row = $rows[0];
+        if ( $rows )
+          $row = $rows[0];
 
     $pub_acc_enabled = ( ! empty ( $row ) && $row[0] == 'Y' );
 
@@ -659,16 +660,16 @@ class WebCalendar {
 
     $login_url .= ( strstr ( $login_url, '?' ) ? '&amp;' : '?' )
      . ( empty ( $login_return_path ) ? '' : 'return_path='
-		 . $login_return_path );
+         . $login_return_path );
 
     // If sent here from an email and not logged in,
-		//save URI and redirect to login.
+        //save URI and redirect to login.
     $em = getGetValue ( 'em' );
-		$view_via_email = false;
+        $view_via_email = false;
     if ( ! empty ( $em ) && empty ( $login ) ) {
       remember_this_view ();
-		  $view_via_email = true;
-		}
+          $view_via_email = true;
+        }
 
     if ( empty ( $session_not_found ) )
       $session_not_found = false;
@@ -680,7 +681,7 @@ class WebCalendar {
       $login = '__public__';
     } else
     if ( $view_via_email || ( ! $pub_acc_enabled && $session_not_found 
-		  && ! $use_http_auth ) ) {
+          && ! $use_http_auth ) ) {
       if ( substr ( $user_inc, 0, 9 ) == 'user-app-' )
         app_login_screen ( clean_whitespace ( $SCRIPT ) );
       else {
