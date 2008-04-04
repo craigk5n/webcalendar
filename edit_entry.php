@@ -37,7 +37,7 @@ function time_selection ( $prefix, $time = '', $trigger = false ) {
   }
   if ( $TIME_FORMAT == '12' ) {
     $maxhour = 12;
-    if ( $hour < 12 )
+    if ( $hour < 12 || $hour == 24 )
       $amsel = $checked;
     else
       $pmsel = $checked;

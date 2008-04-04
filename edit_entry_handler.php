@@ -153,10 +153,15 @@ for ( $i = 0; $i < count ( $bannedTags ); $i++ ) {
 }
 
 // Pass all numeric values through getPostValue.
-$day = getPostValue ( 'day' );
 $entry_ampm = getPostValue ( 'entry_ampm' );
 $entry_hour = getPostValue ( 'entry_hour' );
 $entry_minute = getPostValue ( 'entry_minute' );
+
+$end_ampm = getPostValue ( 'end_ampm' );
+$end_hour = getPostValue ( 'end_hour' );
+$end_minute = getPostValue ( 'end_minute' );
+
+$day = getPostValue ( 'day' );
 $month = getPostValue ( 'month' );
 $year = getPostValue ( 'year' );
 
@@ -246,6 +251,10 @@ if ( $eType == 'task' ) {
 // Create event stop from event duration/end values.
 // Note: for any given event, either end times or durations are 0
 if ( $TIMED_EVT_LEN == 'E' ) {
+  //User might have entered midnight as an end time
+  //if so, we need to jump to next day
+  if ( $end_hour === 0 && $end_ampm == 0 )
+    $day++;
   $eventstophour = $end_hour + $duration_h;
   $eventstopmin = $end_minute + $duration_m;
 } else {
