@@ -45,7 +45,7 @@ $purge_deleted = getPostValue ( 'purge_deleted' );
 $end_year = getPostValue ( 'end_year' );
 $end_month = getPostValue ( 'end_month' );
 $end_day = getPostValue ( 'end_day' );
-$user = getPostValue ( 'user' );
+$username = getPostValue ( 'username' );
 $preview = getPostValue ( 'preview' );
 $preview = ( empty ( $preview ) ? false : true );
 
@@ -65,9 +65,9 @@ echo display_admin_link ();
 
 if ( $do_purge ) {
   if ( $preview )
-    echo '<h2> [' . $previewStr . '] ' . $purgingStr . " $user...</h2>\n";
+    echo '<h2> [' . $previewStr . '] ' . $purgingStr . " $username...</h2>\n";
   else
-    echo '<h2>' . $purgingStr . ": $user</h2>\n";
+    echo '<h2>' . $purgingStr . ": $username</h2>\n";
 
   $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
   $ids = $tail = '';
@@ -75,15 +75,15 @@ if ( $do_purge ) {
     $tail = " AND weu.cal_status = 'D' ";
 
   if ( $purge_all == 'Y' ) {
-    if ( $user == 'ALL' ) {
+    if ( $username == 'ALL' ) {
       $ids = array ( 'ALL' );
     } else {
       $ids = get_ids ( 'SELECT cal_id FROM webcal_entry '
-        . " WHERE cal_create_by = '$user' $tail" );
+        . " WHERE cal_create_by = '$username' $tail" );
     }
   } elseif ( $end_date ) {
-    if ( $user != 'ALL' ) {
-      $tail = " AND we.cal_create_by = '$user' $tail";
+    if ( $username != 'ALL' ) {
+      $tail = " AND we.cal_create_by = '$username' $tail";
     } else {
       $tail = '';
       $ALL = 1;  // Need this to tell get_ids to ignore participant check
@@ -118,10 +118,10 @@ onclick="history.back()" /></form
 ?>
 
 <form action="purge.php" method="post" name="purgeform" id="purgeform">
-<table summary="">
+<table>
  <tr><td><label for="user">
   <?php echo translate ( 'User' );?>:</label></td>
- <td><select name="user">
+ <td><select name="username">
 <?php
   $userlist = get_my_users ();
   if ($NONUSER_ENABLED == 'Y' ) {
@@ -161,7 +161,7 @@ onclick="history.back()" /></form
   <input type="submit" name="delete" value="<?php
     echo $deleteStr?>" onclick="return confirm( '<?php
     etranslate ( 'Are you sure you want to delete events for', true);
-    ?> ' + document.forms[0].user.value + '?' )" />
+    ?> ' + document.forms[0].username.value + '?' )" />
  </td></tr>
 </table>
 </form>
