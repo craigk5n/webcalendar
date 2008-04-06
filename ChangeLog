@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixed bug [ 1935981 ] icalclient.php delivers faulty data
  - Fixed bug [ 1934763 ] upcoming events - link is not authorized
  - Convert public to __public__ in rss.php
  - Fixed bug [ 1901746 ] 12:am ending time

@@ -154,14 +154,13 @@ function export_get_attendee( $id, $export ) {
 
       switch ( $row[1] ) {
         case 'A':
-          //$attendee[$count] .= 'CONFIRMED';
           $attendee[$count] .= 'ACCEPTED';
           break;
         case 'R':
           $attendee[$count] .= 'DECLINED';
           break;
         case 'W':
-          $attendee[$count] .= 'SENT';
+          $attendee[$count] .= 'NEEDS-ACTION';
           break;
         default:
           continue;
@@ -176,7 +175,7 @@ function export_get_attendee( $id, $export ) {
       else
         $attendee[$count] .= ':' . $user['cal_firstname'] . ' ' .  $user['cal_lastname'];
       if ( ! empty ( $user['cal_email'] ) )
-        $attendee[$count]  .= ' <' . $user['cal_email'] . '>';
+        $attendee[$count]  .= ':MAILTO:' . $user['cal_email'];
 
       $count++;
     } //end if ( count ( $user ) > 0 )
