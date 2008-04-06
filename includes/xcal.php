@@ -173,7 +173,8 @@ function export_get_attendee( $id, $export ) {
       if ( empty ( $user['cal_firstname'] ) && empty ( $user['cal_lastname'] ) )
         $attendee[$count] .= ':' . $user['cal_login'];
       else
-        $attendee[$count] .= ':' . $user['cal_firstname'] . ' ' .  $user['cal_lastname'];
+        $attendee[$count] .= ';CN="' . utf8_encode($user['cal_firstname']) 
+		  . ' ' .  utf8_encode($user['cal_lastname']).'"';
       if ( ! empty ( $user['cal_email'] ) )
         $attendee[$count]  .= ':MAILTO:' . $user['cal_email'];
 
