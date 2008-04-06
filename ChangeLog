@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Fixed bug [ 1935981 ] icalclient.php delivers faulty data
  - Fixed bug [ 1934763 ] upcoming events - link is not authorized
  - Convert public to __public__ in rss.php
  - Fixed bug [ 1901746 ] 12:am ending time
