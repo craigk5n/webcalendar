@@ -178,9 +178,7 @@ function print_upcoming_event ( $e, $date ) {
     $link = "<a class=\"entry\" id=\"$popupid\" title=\"" .
       htmlspecialchars ( $e->getName () ) . '" href="' .
       $SERVER_URL . 'view_entry.php?id=' .
-      $e->getID () . "&amp;date=$date";
-    if ( $e->getLogin () != $login )
-      $link .= "&amp;user=" . $e->getLogin ();
+      $e->getID () . "&amp;date=$date&amp;user=" . $e->getLogin ();
     if ( ! empty ( $link_target ) ) {
       $link .= "\" target=\"$link_target\"";
     }
