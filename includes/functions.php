@@ -772,10 +772,11 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
 /* Converts a date to a timestamp.
  *
  * @param string $d   Date in YYYYMMDD or YYYYMMDDHHIISS format
+ * @param bool   $gmt Whether to use GMT or LOCAL
  *
- * @return int  Timestamp representing, in UTC time.
+ * @return int  Timestamp representing, in UTC or LOCAL time.
  */
-function date_to_epoch ( $d ) {
+function date_to_epoch ( $d , $gmt=true) {
   if ( $d == 0 )
     return 0;
 
@@ -790,11 +791,17 @@ function date_to_epoch ( $d ) {
     $di = substr ( $d, 10, 2 );
     $ds = substr ( $d, 12, 2 );
   }
-
-  return gmmktime ( $dH, $di, $ds,
-    substr ( $d, 4, 2 ),
-    substr ( $d, 6, 2 ),
-    substr ( $d, 0, 4 ) );
+  
+  if ( $gmt )
+    return gmmktime ( $dH, $di, $ds,
+      substr ( $d, 4, 2 ),
+      substr ( $d, 6, 2 ),
+      substr ( $d, 0, 4 ) );
+  else
+    return mktime ( $dH, $di, $ds,
+      substr ( $d, 4, 2 ),
+      substr ( $d, 6, 2 ),
+      substr ( $d, 0, 4 ) );
 }
 
 /* Converts a date in YYYYMMDD format into "Friday, December 31, 1999",
