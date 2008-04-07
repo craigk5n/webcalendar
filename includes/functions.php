@@ -261,7 +261,7 @@ function calc_time_slot ( $time, $round_down = false ) {
 function check_for_conflicts ( $dates, $duration, $eventstart,
   $participants, $login, $id ) {
   global $LIMIT_APPTS, $LIMIT_APPTS_NUMBER, $repeated_events,
-  $single_user, $single_user_login;
+  $single_user, $single_user_login, $jumpdate;
 
   $datecnt = count ( $dates );
   if ( ! $datecnt )
@@ -360,13 +360,14 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
 
   for ( $q = 0; $q < $partcnt; $q++ ) {
     // Read repeated events only once for a participant for performance reasons.
+    $jumpdate = gmdate ( 'Ymd', $dates[count ( $dates )-1] );
     $repeated_events = query_events ( $participants[$q], true,
       // This date filter is not necessary for functional reasons, but it
       // eliminates some of the events that couldn't possibly match. This could
       // be made much more complex to put more of the searching work onto the
       // database server, or it could be dropped all together to put the
       // searching work onto the client.
-      'AND ( we.cal_date <= ' . gmdate ( 'Ymd', $dates[count ( $dates )-1] )
+      'AND ( we.cal_date <= ' . $jumpdate
        . ' AND ( wer.cal_end IS NULL OR wer.cal_end >= '
        . gmdate ( 'Ymd', $dates[0] ) . ' ) )' );
     for ( $i = 0; $i < $datecnt; $i++ ) {
@@ -376,7 +377,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
         // OK we've narrowed it down to a day, now I just gotta check the time...
         // I hope this is right...
         $row = $list[$j];
-        if ( $row->getID () != $id &&
+        if ( $row->getID () != $id && ! in_array ($row->getID (), $found ) &&
             ( $row->getExtForID () == '' || $row->getExtForID () != $id ) ) {
           $time2 = sprintf ( "%06d", $row->getTime () );
           $duration2 = $row->getDuration ();
@@ -387,7 +388,8 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
               user_load_variables ( $row->getLogin (), 'conflict_' );
               $conflicts .= $GLOBALS['conflict_fullname'] . ': ';
             }
-            $conflicts .= ( $row->getAccess () == 'C' && $row->getLogin () != $login && !
+            $conflicts .= ( $row->getAccess () == 'C' 
+              && $row->getLogin () != $login && !
               $is_assistant && ! $is_nonuser_admin
               // Assistants can see confidential stuff.
               ? '(' . $confidentialStr . ')'
@@ -523,7 +525,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $ret = <<<EOT
     <br />
     <table align="center" class="matrixd" style="width:'80%';" cellspacing="0"
-      cellpadding="0" summary="">
+      cellpadding="0">
       <tr>
         <td class="matrix" colspan="{$cols}"></td>
       </tr>
@@ -702,7 +704,7 @@ EOT;
   } // End foreach participant.
   return $ret . <<<EOT
     </table><br />
-    <table align="center" summary="">
+    <table align="center">
       <tr>
         <td class="matrixlegend" ><img src="images/pix.gif" title="{$busy}"
           alt="{$busy}" />{$busy}&nbsp;&nbsp;&nbsp;<img src="images/pixb.gif"
@@ -771,10 +773,11 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
 /* Converts a date to a timestamp.
  *
  * @param string $d   Date in YYYYMMDD or YYYYMMDDHHIISS format
+ * @param bool   $gmt Whether to use GMT or LOCAL
  *
- * @return int  Timestamp representing, in UTC time.
+ * @return int  Timestamp representing, in UTC or LOCAL time.
  */
-function date_to_epoch ( $d ) {
+function date_to_epoch ( $d , $gmt=true) {
   if ( $d == 0 )
     return 0;
 
@@ -789,12 +792,19 @@ function date_to_epoch ( $d ) {
     $di = substr ( $d, 10, 2 );
     $ds = substr ( $d, 12, 2 );
   }
-
-  return gmmktime ( $dH, $di, $ds,
-    substr ( $d, 4, 2 ),
-    substr ( $d, 6, 2 ),
-    substr ( $d, 0, 4 ) );
+  
+  if ( $gmt )
+    return gmmktime ( $dH, $di, $ds,
+      substr ( $d, 4, 2 ),
+      substr ( $d, 6, 2 ),
+      substr ( $d, 0, 4 ) );
+  else
+    return mktime ( $dH, $di, $ds,
+      substr ( $d, 4, 2 ),
+      substr ( $d, 6, 2 ),
+      substr ( $d, 0, 4 ) );
 }
+
 
 /* Converts a date in YYYYMMDD format into "Friday, December 31, 1999",
  * "Friday, 12-31-1999" or whatever format the user prefers.

@@ -61,7 +61,7 @@ function export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
       if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
         $enc = export_quoted_printable_encode( $string[$i] );
       else if ( strcmp( $encoding, 'utf8' ) == 0 )
-        $enc = $string[$i];
+        $enc = utf8_encode ( $string[$i] );
     }
     if ( $string[$i] == ':' )
       $start_encode = 1;
@@ -193,27 +193,16 @@ function export_get_attendee( $id, $export ) {
 function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   global $TIMEZONE, $insert_vtimezone;
   $ret = '';
-  $eventstart = date_to_epoch ( $date . $time );
+  $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), false );
   $eventend = $eventstart + ( $duration * 60 );
-  $startHasTime = 0;
   if ( $time == 0 && $duration == 1440 ) {
     // all day. Treat this as an event that starts at midnight localtime
     // with a duration of 24 hours
-    $dtstart = $date . 'T000000';
-    if ( $insert_vtimezone = get_vtimezone ( $TIMEZONE, $dtstart ) )
-      $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $dtstart. "\r\n";
-    else
-      $ret .= 'DTSTART;VALUE=DATETIME:' . $dtstart. "\r\n";
-    $startHasTime = 1;
-  } else if ( $time == -1 ) {
-    // untimed event: this is the same regardless of timezone. For example,
-    // New Year's Day starts at 12am localtime regardless of timezone.
     $ret .= "DTSTART;VALUE=DATE:$date\r\n";
   } else {
-    // timed event
+    // timed or untimed event
     $utc_start = export_ts_utc_date ( $eventstart );
     $ret .= "DTSTART:$utc_start\r\n";
-    $startHasTime = 1;
   }
   if ( strcmp( $texport, 'ical' ) == 0 ) {
     $utc_dtstamp = export_ts_utc_date ( time () );
@@ -223,12 +212,10 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
     if ( $time == 0 && $duration == 1440 ) {
       // all day event: better to use end date than duration since
       // duration will be 23hr and 25hrs on DST switch-over days.
-      $ret .= 'DTEND;VALUE=' . ( $startHasTime ? 'DATETIME' : 'DATE' ) .
-        ':' . gmdate ( 'Ymd', $eventend ) .
-        ( $startHasTime ? 'T000000' : '' ) . "\r\n";
+      $ret .= 'DTEND;VALUE=DATE:' . gmdate ( 'Ymd', $eventend ) . "\r\n";
     }
-    else if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
-      // timed event
+    else if ( $time !=0 ) {
+      // timed or untimed event
       $utc_end = export_ts_utc_date ( $eventend );
       $ret .= "DTEND:$utc_end\r\n";
     }
@@ -1780,9 +1767,11 @@ function import_data ( $data, $overwrite, $type ) {
         echo '" title="' . translate ( 'View this entry' ) . '">';
         $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
         $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
-        echo htmlspecialchars ( $Entry['Summary'] );
-        echo '</a> (' . $dd;
-        if ( ! empty ( $time ) )
+        echo htmlspecialchars ( $Entry['Summary'] ). '</a> ( ' . $dd;
+		
+		if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
+		  echo '&nbsp; ' . translate ( 'All day event' );
+		else if ( ! empty ( $time ) )
           echo '&nbsp; ' . $time;
         echo ")<br /><br />\n";
       }
@@ -2306,15 +2295,6 @@ function RepeatType ( $type ) {
   return $Repeat[$type];
 }
 
-function utf8Decode ( $string ){
-  $ret = $string;
-  if ( function_exists ( 'html_entity_decode' ) )
-	  $ret = html_entity_decode ( htmlentities( $string, ENT_COMPAT, 'UTF-8' ) );
-	else 
-    utf8_decode ( $string );
-		
-  return $string;
-}
 
 // Convert ical format (yyyymmddThhmmssZ) to epoch time
 function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
@@ -2394,7 +2374,7 @@ function format_ical ( $event ) {
   if ( isset ( $event['categories'] ) ) {
     // $fevent['Categories']  will contain an array of cat_id(s) that match the
     // category_names
-    $fevent['Categories'] = get_categories_id_byname ( utf8Decode ( $event['categories'] ) );
+    $fevent['Categories'] = get_categories_id_byname ( utf8_decode ( $event['categories'] ) );
   }
   // Start and end time
   /* Snippet from RFC2445
@@ -2439,7 +2419,7 @@ function format_ical ( $event ) {
   } else if ( isset ( $event['dtstartDATE'] ) && isset ( $event['dtendDATE'] ) ) {
     $fevent['StartTime'] = icaldate_to_timestamp ( $event['dtstart'], 'GMT' );
     // This is an untimed event
-    if ( $event['dtstartDATE']  == $event['dtendDATE'] ) {
+    if ( $event['dtstart']  == $event['dtend'] ) {
       $fevent['EndTime'] = $fevent['StartTime'];
       $fevent['Untimed'] = 1;
       $fevent['Duration'] = 0;
@@ -2459,9 +2439,9 @@ function format_ical ( $event ) {
 
   if ( empty ( $event['summary'] ) )
     $event['summary'] = translate ( 'Unnamed Event' );
-  $fevent['Summary'] = utf8Decode ( $event['summary'] );
+  $fevent['Summary'] = utf8_decode ( $event['summary'] );
   if ( ! empty ( $event['description'] ) ) {
-    $fevent['Description'] = utf8Decode ( $event['description'] );
+    $fevent['Description'] = utf8_decode ( $event['description'] );
   } else {
     $fevent['Description'] = $fevent['Summary'];
   }
@@ -2535,11 +2515,11 @@ function format_ical ( $event ) {
   }
 
   if ( ! empty ( $event['location'] ) ) {
-    $fevent['Location'] = utf8Decode ( $event['location'] );
+    $fevent['Location'] = utf8_decode ( $event['location'] );
   }
 
   if ( ! empty ( $event['url'] ) ) {
-    $fevent['URL'] = utf8Decode ( $event['url'] );
+    $fevent['URL'] = utf8_decode ( $event['url'] );
   }
 
   if ( ! empty ( $event['priority'] ) ) {
