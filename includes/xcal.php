@@ -193,7 +193,7 @@ function export_get_attendee( $id, $export ) {
 function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   global $TIMEZONE, $insert_vtimezone;
   $ret = '';
-  $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), false );
+  $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ) );
   $eventend = $eventstart + ( $duration * 60 );
   if ( $time == 0 && $duration == 1440 ) {
     // all day. Treat this as an event that starts at midnight localtime
@@ -1047,7 +1047,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $attendee = export_get_attendee( $id, 'ical' );
     $attendcnt = count ( $attendee );
     for ( $i = 0; $i < $attendcnt; $i++ ) {
-      $attendee[$i] = export_fold_lines ( $attendee[$i], 'quotedprintable' );
+      $attendee[$i] = export_fold_lines ( $attendee[$i], 'utf8' );
       while ( list ( $key, $value ) = each ( $attendee[$i] ) )
         $ret .= "$value\r\n";
     }
