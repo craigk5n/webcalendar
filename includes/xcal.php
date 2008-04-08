@@ -114,7 +114,7 @@ function search_users($arrInArray, $varSearchValue){
 }
 
 function export_get_attendee( $id, $export ) {
-  global $login;
+  global $login, $EMAIL_FALLBACK_FROM;
 
   $request = 'SELECT weu.cal_login, weu.cal_status, we.cal_create_by
     FROM webcal_entry_user weu LEFT JOIN  webcal_entry we
@@ -146,10 +146,13 @@ function export_get_attendee( $id, $export ) {
     } else {
       $user = $userlist[$userPos];
       $attendee[$count] = 'ATTENDEE;ROLE=';
+	  if ( strcmp( $export, 'vcal' ) == 0 )
       $attendee[$count] .= ( $row[0] == $row[2] ) ? 'OWNER;': 'ATTENDEE;';
-      // Note: Ray said Outlook likes 'STATUS', but RFC2445 says it
-      // should be 'PARTSTAT'.
-      //$attendee[$count] .= 'STATUS=';
+	  else
+        $attendee[$count] .= ( $row[0] == $row[2] ) ? 'CHAIR;': 'REQ-PARTICIPANT;';	  
+      if ( strcmp( $export, 'vcal' ) == 0 )
+        $attendee[$count] .= 'STATUS=';
+	  else
       $attendee[$count] .= 'PARTSTAT=';
 
       switch ( $row[1] ) {
@@ -165,19 +168,30 @@ function export_get_attendee( $id, $export ) {
         default:
           continue;
       } //end switch
-      if ( strcmp( $export, 'vcal' ) == 0 )
-        $attendee[$count] .= ';ENCODING=QUOTED-PRINTABLE';
-
+      if ( strcmp( $export, 'vcal' ) == 0 ) {
+        $attendee[$count] .= ';ENCODING=QUOTED-PRINTABLE:';
+        if ( empty ( $user['cal_firstname'] ) && empty ( $user['cal_lastname'] ) )
+          $attendee[$count] .= $user['cal_login'] .'"';
+        else
+          $attendee[$count] .= $user['cal_firstname']
+	       . ' ' .  $user['cal_lastname'];  
+		if ( ! empty ( $user['cal_email'] ) )
+          $attendee[$count]  .= '<' . $user['cal_email'] . '>'; 
+		else 
+          $attendee[$count]  .= '<' . $EMAIL_FALLBACK_FROM . '>';   
+	  } else {
       // Use "Full Name <email>" if we have it, just "login" if that's all
       // we have.
       if ( empty ( $user['cal_firstname'] ) && empty ( $user['cal_lastname'] ) )
-        $attendee[$count] .= ':' . $user['cal_login'];
+          $attendee[$count] .= ';CN="' . $user['cal_login'] .'"';
       else
         $attendee[$count] .= ';CN="' . utf8_encode($user['cal_firstname']) 
 		  . ' ' .  utf8_encode($user['cal_lastname']).'"';
       if ( ! empty ( $user['cal_email'] ) )
         $attendee[$count]  .= ':MAILTO:' . $user['cal_email'];
-
+	    else 
+          $attendee[$count]  .= ':MAILTO:' . $EMAIL_FALLBACK_FROM;
+      }
       $count++;
     } //end if ( count ( $user ) > 0 )
   } //end while
@@ -195,7 +209,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   $ret = '';
   $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ) );
   $eventend = $eventstart + ( $duration * 60 );
-  if ( $time == 0 && $duration == 1440 ) {
+  if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0  ) {
     // all day. Treat this as an event that starts at midnight localtime
     // with a duration of 24 hours
     $ret .= "DTSTART;VALUE=DATE:$date\r\n";
@@ -220,13 +234,8 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
       $ret .= "DTEND:$utc_end\r\n";
     }
   } elseif ( strcmp( $texport, 'vcal' ) == 0 ) {
-    if ( $time == -1 || ( $time == 0 && $duration == 1440 ) ) {
-      $utc_end = gmdate ( 'Ymd', $eventend );
-      $ret .= "DTEND:$utc_end\r\n";
-    } else {
       $utc_end = export_ts_utc_date ( $eventend );
       $ret .= "DTEND:$utc_end\r\n";
-    }
   } else {
     $ret .= "DURATION:P$str_duration\r\n";
   }
@@ -733,6 +742,7 @@ function create_import_instance () {
 }
 
 function export_vcal ( $id ) {
+  global $login;
 
   header ( 'Content-Type: text/x-vcalendar' );
   // header ( "Content-Type: text/plain" );
@@ -771,6 +781,8 @@ function export_vcal ( $id ) {
     $url = $row[15];
     $cal_type = $row[16];
 
+    // Figure out Categories
+    $categories = get_categories_by_id ( $id, $login );
     /* Start of event/task */
     if ( $cal_type == 'E' || $cal_type == 'M' )
       echo "BEGIN:VEVENT\r\n";
@@ -804,6 +816,15 @@ function export_vcal ( $id ) {
       while ( list ( $key, $value ) = each ( $array ) )
       echo "$value\r\n";
     } //end if ($description != '')
+	
+    /* CATEGORIES if any (folded to 76 char) */
+    if ( isset ( $categories ) && count ( $categories ) ) {
+      $categories = 'CATEGORIES:' . implode ( ';', $categories );
+      $array = export_fold_lines ( $categories, 'quotedprintable' );
+      while ( list ( $key, $value ) = each ( $array ) )
+      $ret .= "$value\r\n";
+    }
+	
     /* CLASS either "PRIVATE", "CONFIDENTIAL, or "PUBLIC" (the default) */
     if ( $access == 'R' ) {
       echo "CLASS:PRIVATE\r\n";
@@ -813,13 +834,13 @@ function export_vcal ( $id ) {
       echo "CLASS:PUBLIC\r\n";
     }
     // ATTENDEE of the event
-    $attendee = export_get_attendee( $row[0], 'vcal' );
-    $attendcnt = count ( $attendee );
-    for ( $i = 0; $i < $attendcnt; $i++ ) {
-      $attendee[$i] = export_fold_lines ( $attendee[$i], 'quotedprintable' );
-      while ( list ( $key, $value ) = each ( $attendee[$i] ) )
-      echo "$value\r\n";
-    }
+   // $attendee = export_get_attendee( $row[0], 'vcal' );
+    //$attendcnt = count ( $attendee );
+    //for ( $i = 0; $i < $attendcnt; $i++ ) {
+    //  $attendee[$i] = export_fold_lines ( $attendee[$i], 'quotedprintable' );
+    //  while ( list ( $key, $value ) = each ( $attendee[$i] ) )
+    //  echo "$value\r\n";
+    //}
 
     /* Time - all times are utc */
     echo export_time ( $date, $duration, $time, 'vcal' );
@@ -859,8 +880,8 @@ function export_ical ( $id = 'all', $attachment = false ) {
   // Always output something, even if no records come back
   // This prevents errors on the iCal client
   $ret = "BEGIN:VCALENDAR\r\n";
-  $title = 'X-WR-CALNAME;VALUE=TEXT:' .
-  ( empty ( $publish_fullname ) ? $login : translate ( $publish_fullname ) );
+  $title = utf8_encode ( 'X-WR-CALNAME;VALUE=TEXT:' .
+  ( empty ( $publish_fullname ) ? $login : translate ( $publish_fullname ) ) );
   $title = str_replace ( ',', "\\,", $title );
   $ret .= "$title\r\n";
   $ret .= generate_prodid ( 'ics' );
@@ -1485,7 +1506,7 @@ function import_data ( $data, $overwrite, $type ) {
           $uid = empty ( $Entry['UID'] ) ? null : $Entry['UID'];
           // This may cause problems
           if ( strlen ( $uid ) > 200 )
-            $uid = null;
+            $uid = substr ( $uid, 0, 200 );
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
             cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
@@ -2819,15 +2840,21 @@ function format_vcal( $event ) {
   // Set Calendar Type for easier processing later
   $fevent['CalendarType'] = $event['state'];
   
+  $fevent['Untimed'] = $fevent['AllDay'] = 0;
+  
   $fevent['StartTime'] = vcaldate_to_timestamp( $event['dtstart'] );
   if ( $fevent['StartTime'] == '-1' ) return false;
   $fevent['EndTime'] = vcaldate_to_timestamp( $event['dtend'] );
+  
+  if ( $fevent['StartTime'] == $fevent['EndTime'] ) {
+    $fevent['Untimed'] = 1;
+	$fevent['Duration'] = 0;
+  } else {
   // Calculate duration in minutes
   $fevent['Duration'] = ( $fevent['EndTime'] - $fevent['StartTime'] ) / 60;
-  if ( $fevent['Duration'] == '1440' ) {
-    $fevent['Duration'] = '0';
-    $fevent['Untimed'] = 1;
-  } //All day (untimed)
+    if ( $fevent['Duration'] == '1440' && date ( 'His', $fevent['StartTime'] ) == 0 )
+      $fevent['AllDay'] = 1;
+  }
   if ( ! empty ( $event['summary'] ) ) $fevent['Summary'] = $event['summary'];
   if ( ! empty ( $event['description'] ) )
     $fevent['Description'] = $event['description'];
