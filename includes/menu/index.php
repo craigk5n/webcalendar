@@ -95,6 +95,10 @@ if ( $single_user != 'Y' ) {
       $ulist = array_merge (
         get_my_users ( $login, 'view' ), get_my_nonusers ( $login, true ) );
 
+	  //remove duplicates if any
+	  if ( function_exists ( 'array_intersect_key' ) )
+        $ulist = array_intersect_key($ulist, array_unique(array_map('serialize', $ulist)));
+		
       if ( count ( $ulist ) > 1 )
         $select_user_url = 'select_user.php';
     }
