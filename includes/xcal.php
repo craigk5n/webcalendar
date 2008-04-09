@@ -207,7 +207,7 @@ function export_get_attendee( $id, $export ) {
 function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   global $TIMEZONE, $insert_vtimezone;
   $ret = '';
-  $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ) );
+  $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), $time>0 );
   $eventend = $eventstart + ( $duration * 60 );
   if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0  ) {
     // all day. Treat this as an event that starts at midnight localtime
@@ -1930,7 +1930,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       return false;
     }
     $buff = trim( $lines[$n] );
-
+ 
     if ( preg_match ( "/^PRODID:(.+)$/i", $buff, $match ) ) {
       $prodid = $match[1];
       $prodid = str_replace ( "-//", "", $prodid );
