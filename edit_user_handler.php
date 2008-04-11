@@ -94,7 +94,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
               $error = $blankUserStr;
             else {
               user_add_user ( $user, $upassword1, $ufirstname, $ulastname,
-                $uemail, $uis_admin );
+                $uemail, $uis_admin, $uenabled );
               activity_log ( 0, $login, $user, LOG_USER_ADD,
                 "$ufirstname $ulastname"
                  . ( empty ( $uemail ) ? '' : " <$uemail>" ) );
@@ -111,7 +111,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
           if ( ! $is_admin )
             $uis_admin = 'N';
 
-          user_update_user ( $user, $ufirstname, $ulastname, $uemail, $uis_admin );
+          user_update_user ( $user, $ufirstname, $ulastname, $uemail, $uis_admin, $uenabled );
           activity_log ( 0, $login, $user, LOG_USER_UPDATE,
             "$ufirstname $ulastname" . ( empty ( $uemail ) ? '' : " <$uemail>" ) );
         }

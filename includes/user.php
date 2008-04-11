@@ -40,13 +40,14 @@ $admin_can_delete_user = true;
  */
 function user_valid_login ( $login, $password, $silent=false ) {
   global $error;
-  $ret = false;
+  $ret = $enabled = false;
 
-  $sql = 'SELECT cal_login FROM webcal_user WHERE cal_login = ? AND cal_passwd = ?';
+  $sql = 'SELECT cal_login, cal_enabled FROM webcal_user WHERE cal_login = ? AND cal_passwd = ?';
   $res = dbi_execute ( $sql, array ( $login, md5 ( $password ) ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] != '' ) {
+      $enabled = ( $row[1] == 'Y' ? true : false );
       // MySQL seems to do case insensitive matching, so double-check the login.
       if ( $row[0] == $login )
         $ret = true; // found login/password
@@ -74,6 +75,10 @@ function user_valid_login ( $login, $password, $silent=false ) {
       }
     }
     dbi_free_result ( $res );
+    if ( ! $enabled && $error == '' ) {
+      $ret = false;
+      $error = ( ! $silent ? translate('Account disabled', true) : '' );
+    }
   } else if ( ! $silent ) {
     $error = db_error ();
   }
@@ -194,7 +199,7 @@ function user_load_variables ( $login, $prefix ) {
  * @global string Error message
  */
 function user_add_user ( $user, $password, $firstname,
-  $lastname, $email, $admin ) {
+  $lastname, $email, $admin, $enabled='Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -222,10 +227,10 @@ function user_add_user ( $user, $password, $firstname,
     $admin = 'N';
   $sql = 'INSERT INTO webcal_user ' .
     '( cal_login, cal_lastname, cal_firstname, ' .
-    'cal_is_admin, cal_passwd, cal_email ) ' .
-    'VALUES ( ?, ?, ?, ?, ?, ? )';
+    'cal_is_admin, cal_passwd, cal_email, cal_enabled ) ' .
+    'VALUES ( ?, ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $user, $ulastname,
-    $ufirstname, $admin, $upassword, $uemail ) ) ) {
+    $ufirstname, $admin, $upassword, $uemail, $enabled ) ) ) {
     $error = db_error ();
     return false;
   }
@@ -268,6 +273,9 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabl
   if ( $admin != 'Y' )
     $admin = 'N';
 
+  if ( $enabled != 'Y' )
+    $enabled = 'N';
+    
   $sql = 'UPDATE webcal_user SET cal_lastname = ?, ' .
     'cal_firstname = ?, cal_email = ?,' .
     'cal_is_admin = ?,cal_enabled = ? WHERE cal_login = ?';
