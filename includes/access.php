@@ -483,7 +483,8 @@ function access_user_calendar ( $cal_can_xxx = '', $other_user, $cur_user = '',
   $admin_override = ( $is_admin && !
     empty ( $ADMIN_OVERRIDE_UAC ) && $ADMIN_OVERRIDE_UAC == 'Y' );
   if ( $admin_override )
-    return CAN_DOALL;
+    return ( $cal_can_xxx == 'email' || $cal_can_xxx == 'invite'
+      ? 'Y' : CAN_DOALL );
 
   $access_wt = $ret = $type_wt = 0;
   if ( empty ( $cur_user ) && empty ( $login ) )
