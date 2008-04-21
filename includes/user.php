@@ -24,6 +24,7 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 $user_can_update_password = true;
 $admin_can_add_user = true;
 $admin_can_delete_user = true;
+$admin_can_disable_user = true;
 
 /**
  * Check to see if a given login/password is valid.
