@@ -489,7 +489,7 @@ if ( empty ( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' )
 if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
     strlen ( $entry_hour ) > 0 && $timetype != 'U' && $eType != 'task' ) {
   $conf_until = ( empty ( $rpt_until ) ? '' : $rpt_until );
-  $conf_count = ( empty ( $count ) ? 999 : $count );
+  $conf_count = ( empty ( $rpt_count ) ? 999 : $rpt_count );
   $dates = get_all_dates ( $eventstart, $rpt_type, $rpt_freq,
     $bymonth, $byweekno, $byyearday, $bymonthday, $byday, $bysetpos,
     $conf_count, $conf_until, $wkst, $exception_list, $inclusion_list );
