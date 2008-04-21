@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixed bug [ 1948086 ] File Attachments
  - Fixed bug [ 1939275 ] getting error at security_audit.php
  - Fixed bug [ 1940172 ] disabling user will not be stored at user.php
  - Fixed bug [ 1935981 ] icalclient.php delivers faulty data
