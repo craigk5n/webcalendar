@@ -4315,7 +4315,7 @@ function print_checkbox ( $vals, $id = '', $onchange = '' ) {
 
   $setting = ( empty ( $vals[3] ) ? $vals[0] : $vals[3] );
   $variable = $vals[0];
-
+  $hidden = '';
   if ( ! empty ( $id ) && $id = 'dito' )
     $id = $vals[0];
 
@@ -4328,12 +4328,16 @@ function print_checkbox ( $vals, $id = '', $onchange = '' ) {
   if ( $SCRIPT == 'admin.php' ) {
     $setting = $s[$vals[0]];
     $variable = 'admin_' . $vals[0];
+	$hidden = '
+	  <input type="hidden" name="' . $variable . '" value="N" />';
   }
   if ( $SCRIPT == 'pref.php' ) {
     $setting = $prefarray[$vals[0]];
     $variable = 'pref_' . $vals[0];
+	$hidden = '
+	  <input type="hidden" name="' . $variable . '" value="N" />';
   }
-  return '
+  return $hidden . '
       <label><input type="checkbox" name="' . $variable . '" value="' . $vals[1]
    . '" ' . ( empty ( $id ) ? '' : 'id="' . $id . '" ' )
    . ( $setting == $vals[1] ? $checked : '' )
