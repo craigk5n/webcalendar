@@ -109,7 +109,7 @@ if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
  <tr><td class="bold">
   <?php etranslate ( 'Enabled' )?>:</td><td>
   <?php
-    $defIdx = ( ! empty ( $uenabled ) && $uenabled == 'Y' ? 'Y' : 'N' );
+    $defIdx = ( ! empty ( $uenabled ) && $uenabled == 'N' ? 'N' : 'Y' );
     echo print_radio ( 'uenabled', '', '', $defIdx ) ?>
  </td></tr>
  <?php }else { ?>
