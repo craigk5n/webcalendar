@@ -949,12 +949,12 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
 
 // TODO add these permissions to the UAC list
 $can_add_attach = ( Doc::attachmentsEnabled () && $login != '__public__'
-  && ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
-  ( $ALLOW_ATTACH_ANY == 'Y' ) );
+  && ( ( $login == $create_by ) || ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
+  ( $ALLOW_ATTACH_ANY == 'Y' ) || $is_admin  ) );
 
-$can_add_comment = ( Doc::commentsEnabled () && $login != '__public__'
-  && ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
-  ( $ALLOW_COMMENTS_ANY == 'Y' ) );
+$can_add_comment = ( Doc::commentsEnabled () && $login != '__public__' 
+  && ( ( $login == $create_by ) ||  ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
+  ( $ALLOW_COMMENTS_ANY == 'Y' ) || $is_admin  ) );
 
 if ( $can_add_attach && $event_status != 'D' ) {
   $addAttchStr = translate ( 'Add Attachment' );
