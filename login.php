@@ -61,9 +61,7 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
 } else
 if ( empty ( $return_path ) ) {
   // See if a return path was set.
-  $return_path = get_last_view ();
-  if ( ! empty ( $return_path ) )
-    SetCookie ( 'webcalendar_last_view', '', 0 );
+  $return_path = get_last_view ( false );
 }
 
 if ( ! empty ( $return_path ) )
