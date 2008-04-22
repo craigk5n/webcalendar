@@ -2431,10 +2431,11 @@ function get_entries ( $date, $get_unapproved = true ) {
  *
  * @global array  Cookies
  */
-function get_last_view () {
+function get_last_view ( $clear=true ) {
   $val = ( isset ( $_COOKIE['webcalendar_last_view'] )
     ? str_replace ( '&', '&amp;', $_COOKIE['webcalendar_last_view'] ) : '' );
 
+  if ( $clear )
   SetCookie ( 'webcalendar_last_view', '', 0 );
 
   return $val;
