@@ -66,10 +66,14 @@ if ( empty ( $DISPLAY_TASKS ) || $DISPLAY_TASKS == 'N' &&
 }
 
 if ( $DISPLAY_TASKS == 'Y' && $friendly != 1 ) {
+  if (  $DISPLAY_SM_MONTH != 'N' ) {
   $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false,
     'nextmonth', $monthURL ) . '<br />';
   $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false,
     'prevmonth', $monthURL ) . '<br />';
+  } else {
+    $nextMonth2 =  $prevMonth2 = '<br /><br /><br /><br />';
+  }
   $smallTasks = display_small_tasks ( $cat_id );
   $tableWidth = '80%';
 }
