@@ -28,11 +28,11 @@ $prevmonth = substr ( $prevYmd, 4, 2 );
 
 if ( $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
-  $startdate = mktime ( 0, 0, 0, $prevmonth, 1, $prevyear );
+  $startdate = mktime ( 0, 0, 0, $prevmonth, 0, $prevyear );
   $enddate = mktime ( 23, 59, 59, $nextmonth + 1, 0, $nextyear );
 } else {
   $boldDays = false;
-  $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
+  $startdate = mktime ( 0, 0, 0, $thismonth, 0, $thisyear );
   $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 }
 
@@ -65,10 +65,14 @@ if ( empty ( $DISPLAY_TASKS ) || $DISPLAY_TASKS == 'N' &&
 }
 
 if ( $DISPLAY_TASKS == 'Y' && $friendly != 1 ) {
-  $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false,
-    'nextmonth', $monthURL ) . '<br />';
-  $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false,
-    'prevmonth', $monthURL ) . '<br />';
+  if (  $DISPLAY_SM_MONTH != 'N' ) {
+    $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false,
+      'nextmonth', $monthURL ) . '<br />';
+    $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false,
+      'prevmonth', $monthURL ) . '<br />';
+  } else {
+    $nextMonth2 =  $prevMonth2 = '<br /><br /><br /><br />';
+  }
   $smallTasks = display_small_tasks ( $cat_id );
   $tableWidth = '80%';
 }
