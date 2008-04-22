@@ -105,12 +105,13 @@ for ( $i = 0; $i < $allusercnt; $i++ ) {
   $emails[$allusers[$i]['cal_login']] = $allusers[$i]['cal_email'];
 }
 
-$htmlmail = $languages = $noemail = $t_format = $tz = array ();
+$attachics = $htmlmail = $languages = $noemail = $t_format = $tz = array ();
 
 $res = dbi_execute ( 'SELECT cal_login, cal_value, cal_setting
   FROM webcal_user_pref
   WHERE ( cal_setting = \'EMAIL_HTML\' AND cal_value = \'Y\' )
   OR ( cal_setting = \'EMAIL_REMINDER\' AND cal_value = \'N\' )
+  OR ( cal_setting = \'EMAIL_REMINDER_ATTACH_ICS\' AND cal_value = \'Y\')
   OR cal_setting = \'LANGUAGE\'
   OR cal_setting = \'TIME_FORMAT\'
   OR cal_setting = \'TIMEZONE\'
@@ -131,6 +132,12 @@ if ( $res ) {
         $noemail[$user] = 1;
         if ( $debug )
           echo "User $user does not want email.<br />\n";
+        break;
+      case 'EMAIL_REMINDER_ATTACH_ICS':
+        // Users who have asked receive an ICS-attachment with their email.
+        $attachics[$user] = 1;
+        if ( $debug )
+          echo "User $user does want ICS-attachment with email.<br />\n";
         break;
       case 'LANGUAGE':
         // Users language preference.
@@ -247,7 +254,7 @@ if ( $debug )
 // But, don't send to users who rejected (cal_status='R' ).
 function send_reminder ( $id, $event_date ) {
   global $ALLOW_EXTERNAL_USERS, $debug, $def_tz, $emails,
-  $EXTERNAL_REMINDERS, $htmlmail, $is_task, $LANGUAGE, $languages, $names,
+  $EXTERNAL_REMINDERS, $attachics, $htmlmail, $is_task, $LANGUAGE, $languages, $names,
   $only_testing, $SERVER_URL, $site_extras, $t_format, $tz;
 
   $ext_participants = $participants = array ();
@@ -391,10 +398,11 @@ function send_reminder ( $id, $event_date ) {
      . ":\n" . $padding . $description . "\n"
      . ( $is_task ? translate ( 'Start Date' ) : translate ( 'Date' ) )
      . ': ' . date_to_str ( date ( 'Ymd', $event_date ) ) . "\n"
-     . ( $row[2] >= 0
+     . ( $row[2] > 0 
       ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time' ) ) . ': '
        . display_time ( '', $display_tzid, $event_time, $userTformat ) . "\n"
-      : '' )
+      : ( ( $row[2] == 0 &&  $row[5] = 1440) ? translate ( 'Time' ) . ': ' 
+	  . translate ( 'All day event' ). "\n" : '' ) )
      . ( $row[5] > 0 && ! $is_task
       ? translate ( 'Duration' ) . ': ' . $row[5] . ' '
        . translate ( 'minutes' ) . "\n"
@@ -488,8 +496,9 @@ From:' . $adminStr . '
       $mail = new WebCalMailer;
       user_load_variables ( $user, 'temp' );
       $recipName = ( $isExt ? $user : $GLOBALS ['tempfullname'] );
-      // Send ics attachment to External Users.
-      $attach = ( $isExt ? $id : '' );
+      // Send ics attachment to External Users or
+      // or users who explicitly chose to receive it.
+      $attach = ( ($isExt || isset($attachics[$user])) ? $id : '' );
       $mail->WC_Send ( $adminStr, $recip, $recipName, $subject,
         $body, $useHtml, $GLOBALS['EMAIL_FALLBACK_FROM'], $attach );
       $cal_text = ( $isExt ? translate ( 'External User' ) : '' ) . $recipName;
