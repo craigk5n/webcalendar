@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Fixed bug [ 1833136 ] option Display small months
  - Fixed bug [ 1737128 ] From notification to "not authorized"
  - Fixed bug [ 1948086 ] File Attachments
  - Fixed bug [ 1939275 ] getting error at security_audit.php
