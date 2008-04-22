@@ -398,10 +398,11 @@ function send_reminder ( $id, $event_date ) {
      . ":\n" . $padding . $description . "\n"
      . ( $is_task ? translate ( 'Start Date' ) : translate ( 'Date' ) )
      . ': ' . date_to_str ( date ( 'Ymd', $event_date ) ) . "\n"
-     . ( $row[2] >= 0
+     . ( $row[2] > 0 
       ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time' ) ) . ': '
        . display_time ( '', $display_tzid, $event_time, $userTformat ) . "\n"
-      : '' )
+      : ( ( $row[2] == 0 &&  $row[5] = 1440) ? translate ( 'Time' ) . ': ' 
+	  . translate ( 'All day event' ). "\n" : '' ) )
      . ( $row[5] > 0 && ! $is_task
       ? translate ( 'Duration' ) . ': ' . $row[5] . ' '
        . translate ( 'minutes' ) . "\n"
@@ -618,6 +619,9 @@ function my_get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
     $list = $repeated_events[$i]->getRepeatAllDates ();
     for ( $j = 0, $cnt_j = count ( $list ); $j < $cnt_j; $j++ ) {
+	    if ( $debug )
+	       echo "     checking $list[$j] = " . date ( 'Ymd', $list[$j]) . '<br />';
+
       if ( $dateYmd == date ( 'Ymd', $list[$j] ) ) {
         $ret[$n++] = $repeated_events[$i];
         if ( $debug )
