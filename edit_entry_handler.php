@@ -112,6 +112,7 @@ $rem_last_sent = getPostValue ( 'rem_last_sent' );
 $rem_times_sent = getPostValue ( 'rem_times_sent' );
 $reminder = getPostValue ( 'reminder' );
 $rem_when = getPostValue ( 'rem_when' );
+$rem_days = getPostValue ( 'rem_days' );
 $rem_hours = getPostValue ( 'rem_hours' );
 $rem_minutes = getPostValue ( 'rem_minutes' );
 $rem_before = getPostValue ( 'rem_before' );
