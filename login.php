@@ -66,9 +66,9 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
   SetCookie ( 'webcalendar_last_view', '', 0, $cookie_path );
 } else if ( empty ( $return_path ) ) {
   // see if a return path was set
-  $return_path = get_last_view ();
-  if ( ! empty ( $return_path ) )
-    SetCookie ( 'webcalendar_last_view', '', 0, $cookie_path );
+  $return_path = get_last_view ( false );
+
+
 }
 
 if ( ! empty ( $return_path ) ) {
