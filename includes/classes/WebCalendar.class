@@ -668,8 +668,8 @@ class WebCalendar {
         $view_via_email = false;
     if ( ! empty ( $em ) && empty ( $login ) ) {
       remember_this_view ();
-          $view_via_email = true;
-        }
+      $view_via_email = true;
+    }
 
     if ( empty ( $session_not_found ) )
       $session_not_found = false;
