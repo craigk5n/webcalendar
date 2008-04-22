@@ -2490,11 +2490,12 @@ function get_groups ( $user ) {
  *
  * @global array  Cookies
  */
-function get_last_view () {
+function get_last_view ( $clear=true ) {
   $val = ( isset ( $_COOKIE['webcalendar_last_view'] )
     ? str_replace ( '&', '&amp;', $_COOKIE['webcalendar_last_view'] ) : '' );
 
-  SetCookie ( 'webcalendar_last_view', '', 0 );
+  if ( $clear )
+    SetCookie ( 'webcalendar_last_view', '', 0 );
 
   return $val;
 }
@@ -5308,6 +5309,7 @@ function remember_this_view ( $view = false ) {
     return;
 
   SetCookie ( 'webcalendar_last_view', $REQUEST_URI );
+  
 }
 
 /* This just sends the DOCTYPE used in a lot of places in the code.
