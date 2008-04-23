@@ -92,8 +92,9 @@ if ( $single_user != 'Y' ) {
     if ( ! access_is_enabled () ||
         access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) {
       // Get count of users this user can see. If > 1, then...
+
       $ulist = array_merge (
-        get_my_users ( $login, 'view' ), get_my_nonusers ( $login, true ) );
+        get_my_users ( $login, 'view' ), get_my_nonusers ( $login, true, 'view' ) );
 
 	  //remove duplicates if any
 	  if ( function_exists ( 'array_intersect_key' ) )
@@ -105,10 +106,13 @@ if ( $single_user != 'Y' ) {
   }
 }
 // Only display some links if we're viewing our own calendar.
-if ( empty ( $user ) || $user == $login ) {
+if ( ( empty ( $user ) || $user == $login ) || ( ! empty ( $user ) && access_is_enabled () && 
+  access_user_calendar ( 'view', $user) ) ) {
   // Search
   if ( access_can_access_function ( ACCESS_SEARCH, $user ) )
     $search_url = 'search.php';
+}
+if ( empty ( $user ) || $user == $login ) {
   // Import/Export
   if ( access_is_enabled () || ( $login != '__public__' && ! $is_nonuser ) ) {
     if ( $readonly != 'Y' &&
@@ -600,7 +604,8 @@ if ( ( $search_url != '' && $menuConfig['Search'] ) &&
     jscMenu_divider ();
   }
   jscMenu_custom ( '<td class="ThemeMenuItemLeft"><img src="includes/menu/icons'
-     . '/spacer.gif" /></td><td colspan="2"><form action="search_handler.php" '
+     . '/spacer.gif" /></td><td colspan="2"><form action="search_handler.php'
+	 . ( ! empty ( $user ) ? '?users[]=' . $user : '' ) . '" '
      . 'method="post"><input type="text" name="keywords" size="25" /><input '
      . 'type="submit" value="' . translate ( 'Search' )
      . '" /></form></td>' );
