@@ -49,7 +49,7 @@ if ( $login == '__public__' && ! empty ( $PUBLIC_ACCESS_OTHERS ) &&
     $PUBLIC_ACCESS_OTHERS == 'Y' )
   $search_others = true;
 
-$users = getPostValue ( 'users' );
+$users = getValue ( 'users' );
 if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
 // Security precaution -- make sure users listed in participants list
@@ -97,9 +97,13 @@ $date_filter = getPostValue ( 'date_filter' );
 $start_day = getPostValue ( 'from_day' );
 $start_month = getPostValue ( 'from_month' );
 $start_year = getPostValue ( 'from_year' );
+if ( $start_year < 1970 )
+  $start_year = 1970;
 $end_day = getPostValue ( 'until_day' );
 $end_month = getPostValue ( 'until_month' );
 $end_year = getPostValue ( 'until_year' );
+if ( $end_year < 1970 )
+  $end_year = 1970;
 $startDate =  gmdate ( 'Ymd', gmmktime ( 0, 0, 0,
   $start_month, $start_day, $start_year ) );
 $endDate =  gmdate ( 'Ymd', gmmktime ( 23, 59, 59,
@@ -112,7 +116,6 @@ echo '
 if ( ! empty ( $error ) )
   echo print_error ( $error );
 else {
-  $ids = array ();
 // *** "Phrase" feature by Steve Weyer saweyer@comcast.net 4-May-2005
 // check if keywords is surrounded by quotes
 // an alternative might be to add a checkbox/list on search.php
@@ -139,12 +142,13 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
   for ( $i = 0; $i < $word_cnt; $i++ ) {
     $sql_params = array ();
     // Note: we only search approved/waiting events (not deleted).
-    $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date '
+    $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, weu.cal_login '
       . ( ! empty ( $extra_filter ) ? ', wse.cal_data ' : '' )
-      . 'FROM webcal_entry we, webcal_entry_user weu '
+      . 'FROM webcal_entry_user weu LEFT JOIN  webcal_entry we '
       . ( ! empty ( $cat_filter ) ? ', webcal_entry_categories wec ' : '')
       . ( ! empty ( $extra_filter ) ? ', webcal_site_extras wse ' : '')
-      . ' WHERE we.cal_id = weu.cal_id AND weu.cal_status in ( \'A\',\'W\' )
+	  . 'ON weu.cal_id = we.cal_id
+        WHERE weu.cal_status in ( \'A\',\'W\' )
       AND weu.cal_login IN ( ?';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
@@ -210,14 +214,11 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
      . ', we.cal_name', $sql_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
+        $info[$matches]['id'] = $row[0];
+        $info[$matches]['text'] = $row[1] . ' ( ' . date_to_str ( $row[2] ) . ' )';
+		$info[$matches]['user'] = $row[3];
+		
         $matches++;
-        $idstr = strval ( $row[0] );
-        if ( empty ( $ids[$idstr] ) )
-          $ids[$idstr] = 1;
-        else
-          $ids[$idstr]++;
-
-        $info[$idstr] = $row[1] . ' ( ' . date_to_str ( $row[2] ) . ' )';
       }
     }
     dbi_free_result ( $res );
@@ -228,7 +229,6 @@ ob_start ();
 echo '
     <p><strong>';
 if ( $matches > 0 ) {
-  $matches = count ( $ids );
   // Let update_translation.pl pick up translations.
   // translate ( 'match found' ) translate ( 'matches found' )
   echo $matches . ' '
@@ -238,15 +238,16 @@ if ( $matches > 0 ) {
   echo translate ( 'No matches found' );
 
 echo ": " . htmlentities ( $keywords ) . '</strong>.</p>';
+
+
 // now sort by number of hits
 if ( empty ( $error ) ) {
-  //arsort ( $ids );
   echo '
     <ul>';
-  for ( reset ( $ids ); $key = key ( $ids ); next ( $ids ) ) {
+  foreach ( $info as $result ) {
     echo '
-      <li><a class="nav" href="view_entry.php?id=' . $key . '">' . $info[$key]
-     . '</a></li>';
+      <li><a class="nav" href="view_entry.php?id=' . $result['id'] 
+	   . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>';
   }
   echo '
     </ul>';
