@@ -378,7 +378,7 @@ function send_reminder ( $id, $event_date ) {
       translate ( 'This is a reminder for the XXX detailed below.' ) ) . "\n\n";
 
     $create_by = $row[0];
-    $event_time = date_to_epoch ( $row[1] . sprintf ( "%06d", $row[2] ) );
+    $event_time = date_to_epoch ( $row[1] . ( $row[2] != -1 ? sprintf ( "%06d", $row[2] ): '' ) );
     $name = $row[9];
     $description = $row[10];
 
@@ -397,7 +397,7 @@ function send_reminder ( $id, $event_date ) {
     $body .= strtoupper ( $name ) . "\n\n" . translate ( 'Description' )
      . ":\n" . $padding . $description . "\n"
      . ( $is_task ? translate ( 'Start Date' ) : translate ( 'Date' ) )
-     . ': ' . date_to_str ( date ( 'Ymd', $event_date ) ) . "\n"
+     . ': ' . date_to_str ( ( $row[2] > 0? date ( 'Ymd', $event_date ) : gmdate ( 'Ymd', $event_date ) ) ) . "\n"
      . ( $row[2] > 0 
       ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time' ) ) . ': '
        . display_time ( '', $display_tzid, $event_time, $userTformat ) . "\n"
