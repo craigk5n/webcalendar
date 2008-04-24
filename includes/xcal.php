@@ -146,13 +146,13 @@ function export_get_attendee( $id, $export ) {
     } else {
       $user = $userlist[$userPos];
       $attendee[$count] = 'ATTENDEE;ROLE=';
-	  if ( strcmp( $export, 'vcal' ) == 0 )
+      if ( strcmp( $export, 'vcal' ) == 0 )
       $attendee[$count] .= ( $row[0] == $row[2] ) ? 'OWNER;': 'ATTENDEE;';
-	  else
-        $attendee[$count] .= ( $row[0] == $row[2] ) ? 'CHAIR;': 'REQ-PARTICIPANT;';	  
+      else
+        $attendee[$count] .= ( $row[0] == $row[2] ) ? 'CHAIR;': 'REQ-PARTICIPANT;';      
       if ( strcmp( $export, 'vcal' ) == 0 )
         $attendee[$count] .= 'STATUS=';
-	  else
+      else
       $attendee[$count] .= 'PARTSTAT=';
 
       switch ( $row[1] ) {
@@ -174,22 +174,22 @@ function export_get_attendee( $id, $export ) {
           $attendee[$count] .= $user['cal_login'] .'"';
         else
           $attendee[$count] .= $user['cal_firstname']
-	       . ' ' .  $user['cal_lastname'];  
-		if ( ! empty ( $user['cal_email'] ) )
+           . ' ' .  $user['cal_lastname'];  
+        if ( ! empty ( $user['cal_email'] ) )
           $attendee[$count]  .= '<' . $user['cal_email'] . '>'; 
-		else 
+        else 
           $attendee[$count]  .= '<' . $EMAIL_FALLBACK_FROM . '>';   
-	  } else {
+      } else {
       // Use "Full Name <email>" if we have it, just "login" if that's all
       // we have.
       if ( empty ( $user['cal_firstname'] ) && empty ( $user['cal_lastname'] ) )
           $attendee[$count] .= ';CN="' . $user['cal_login'] .'"';
       else
         $attendee[$count] .= ';CN="' . utf8_encode($user['cal_firstname']) 
-		  . ' ' .  utf8_encode($user['cal_lastname']).'"';
+          . ' ' .  utf8_encode($user['cal_lastname']).'"';
       if ( ! empty ( $user['cal_email'] ) )
         $attendee[$count]  .= ':MAILTO:' . $user['cal_email'];
-	    else 
+        else 
           $attendee[$count]  .= ':MAILTO:' . $EMAIL_FALLBACK_FROM;
       }
       $count++;
@@ -205,18 +205,32 @@ function export_get_attendee( $id, $export ) {
 // than just a DATE is needed to avoid a bug in Sunbird 0.7.  If the
 // DTSTART has a DATETIME and the DTEND is just DATE, then Sunbird locks up.
 function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
-  global $TIMEZONE, $insert_vtimezone;
-  $ret = '';
+  global $TIMEZONE, $vtimezone_data, $use_vtimezone;
+  $ret = $vtimezone_exists = '';
   $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), $time>0 );
   $eventend = $eventstart + ( $duration * 60 );
   if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0  ) {
-    // all day. Treat this as an event that starts at midnight localtime
-    // with a duration of 24 hours
+    // all day.
+    if ( $use_vtimezone && ( $vtimezone_data = get_vtimezone ( $TIMEZONE, $dtstart ) ) ) {
+      $vtimezone_exists = true;
+      $dtstart = $date . 'T000000';
+      $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $dtstart. "\r\n";
+     }else
+      $ret .= "DTSTART;VALUE=DATE:$date\r\n";
+  } else if ( $time == -1 ) {
+    // untimed event: this is the same regardless of timezone. For example,
+    // New Year's Day starts at 12am localtime regardless of timezone.
     $ret .= "DTSTART;VALUE=DATE:$date\r\n";
   } else {
-    // timed or untimed event
+    // timed  event
     $utc_start = export_ts_utc_date ( $eventstart );
-    $ret .= "DTSTART:$utc_start\r\n";
+    $dtstart = $date . 'T000000';
+    if ( $use_vtimezone && ( $vtimezone_data = get_vtimezone ( $TIMEZONE, $dtstart ) ) ) {
+      $vtimezone_exists = true;
+      $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $utc_start . "\r\n";
+    } else {
+      $ret .= "DTSTART:$utc_start\r\n";
+    }
   }
   if ( strcmp( $texport, 'ical' ) == 0 ) {
     $utc_dtstamp = export_ts_utc_date ( time () );
@@ -226,12 +240,22 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
     if ( $time == 0 && $duration == 1440 ) {
       // all day event: better to use end date than duration since
       // duration will be 23hr and 25hrs on DST switch-over days.
-      $ret .= 'DTEND;VALUE=DATE:' . gmdate ( 'Ymd', $eventend ) . "\r\n";
-    }
-    else if ( $time !=0 ) {
-      // timed or untimed event
-      $utc_end = export_ts_utc_date ( $eventend );
-      $ret .= "DTEND:$utc_end\r\n";
+      if ( $vtimezone_exists ) {
+        $ret .= 'DTEND;TZID=' . $TIMEZONE . ':' . date ( 'Ymd', $eventend ) . "T000000\r\n";
+      }else
+        $ret .= 'DTEND;VALUE=DATE:' . gmdate ( 'Ymd', $eventend ) . "\r\n";
+      }
+    else  if ( $time == -1 )
+    // untimed event   
+     $ret .= "DTEND;VALUE=DATE:$date\r\n";
+    else if ( $time > 0 ) {
+      // timed  event
+      if ( $vtimezone_exists ) {
+        $ret .= 'DTEND;TZID=' . $TIMEZONE . ':' . date ( 'Ymd', $eventend ) . "T000000\r\n";
+      }else {
+        $utc_end = export_ts_utc_date ( $eventend );
+        $ret .= "DTEND:$utc_end\r\n";
+      }
     }
   } elseif ( strcmp( $texport, 'vcal' ) == 0 ) {
       $utc_end = export_ts_utc_date ( $eventend );
@@ -244,7 +268,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
 }
 // $simple allows for easy reading
 function export_recurrence_ical ( $id, $simple = false ) {
-  global $timestamp_RRULE, $DATE_FORMAT_TASK, $lang_file;
+  global $DATE_FORMAT_TASK, $lang_file;
 
   $recurrance = '';
   $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not
@@ -410,6 +434,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
       }
     }
   }
+
   return $recurrance;
 }
 
@@ -816,7 +841,7 @@ function export_vcal ( $id ) {
       while ( list ( $key, $value ) = each ( $array ) )
       echo "$value\r\n";
     } //end if ($description != '')
-	
+    
     /* CATEGORIES if any (folded to 76 char) */
     if ( isset ( $categories ) && count ( $categories ) ) {
       $categories = 'CATEGORIES:' . implode ( ';', $categories );
@@ -824,7 +849,7 @@ function export_vcal ( $id ) {
       while ( list ( $key, $value ) = each ( $array ) )
       $ret .= "$value\r\n";
     }
-	
+    
     /* CLASS either "PRIVATE", "CONFIDENTIAL, or "PUBLIC" (the default) */
     if ( $access == 'R' ) {
       echo "CLASS:PRIVATE\r\n";
@@ -861,11 +886,11 @@ function export_vcal ( $id ) {
 } //end function
 
 function export_ical ( $id = 'all', $attachment = false ) {
-  global $publish_fullname, $login, $cal_type, $timestamp_RRULE,
-    $cat_filter, $insert_vtimezone;
+  global $publish_fullname, $login, $cal_type,
+    $cat_filter, $vtimezone_data, $use_vtimezone;
 
   $exportId = -1;
-  $ret = '';
+  $ret = $Vret = $vtimezone_data = $use_vtimezone = '';
 
   $res = export_get_event_entry( $id, $attachment );
   $entry_array = array ();
@@ -947,6 +972,8 @@ function export_ical ( $id = 'all', $attachment = false ) {
     }
     // get recurrance info
     $recurrance = export_recurrence_ical ( $id );
+    if ( ! empty ( $recurrance  ) )
+      $use_vtimezone = true;
 
     /* snippet from RFC2445
   The "VTIMEZONE" calendar component MUST be present if the iCalendar
@@ -967,27 +994,27 @@ function export_ical ( $id = 'all', $attachment = false ) {
         ! array_key_exists ( $cat_filter, $categories ) )
         continue;
     }
-
+   
     if ( $cal_type == 'E' || $cal_type == 'M' ) {
       $exporting_event = true;
       /* Start of event */
-      $ret .= "BEGIN:VEVENT\r\n";
+      $Vret .= "BEGIN:VEVENT\r\n";
     } else if ( $cal_type == 'T' || $cal_type == 'N' ) {
       $exporting_event = false;
       /* Start of VTODO */
-      $ret .= "BEGIN:VTODO\r\n";
+      $Vret .= "BEGIN:VTODO\r\n";
     } else if ( $cal_type == 'J' || $cal_type == 'O' ) {
       $exporting_event = false;
       /* Start of VJOURNAL */
-      $ret .= "BEGIN:VJOURNAL\r\n";
+      $Vret .= "BEGIN:VJOURNAL\r\n";
     }
 
     /* UID of the event (folded to 76 char) */
     $array = export_fold_lines ( "UID:$event_uid" );
     while ( list ( $key, $value ) = each ( $array ) )
-    $ret .= "$value\r\n";
+    $Vret .= "$value\r\n";
 
-    $ret .= 'LAST-MODIFIED:' . export_get_utc_date ( $moddate,$modtime ) . "\r\n";
+    $Vret .= 'LAST-MODIFIED:' . export_get_utc_date ( $moddate,$modtime ) . "\r\n";
 
     $name = preg_replace( "/\r/", ' ', $name );
     // escape,;  \ in octal ascii
@@ -1001,14 +1028,14 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $array = export_fold_lines ( $name, 'utf8' );
 
     while ( list ( $key, $value ) = each ( $array ) )
-    $ret .= "$value\r\n";
+    $Vret .= "$value\r\n";
 
     /* DESCRIPTION if any (folded to 76 char) */
     if ( $description != '' ) {
       $description = 'DESCRIPTION:' . $description;
       $array = export_fold_lines ( $description, 'utf8' );
       while ( list ( $key, $value ) = each ( $array ) )
-      $ret .= "$value\r\n";
+      $Vret .= "$value\r\n";
     }
 
     /* LOCATION if any (folded to 76 char) */
@@ -1016,7 +1043,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
       $location = 'LOCATION:' . $location;
       $array = export_fold_lines ( $location, 'utf8' );
       while ( list ( $key, $value ) = each ( $array ) )
-      $ret .= "$value\r\n";
+      $Vret .= "$value\r\n";
     }
 
     /* URL if any (folded to 76 char) */
@@ -1024,7 +1051,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
       $url = 'URL:' . $url;
       $array = export_fold_lines ( $url, 'utf8' );
       while ( list ( $key, $value ) = each ( $array ) )
-      $ret .= "$value\r\n";
+      $Vret .= "$value\r\n";
     }
 
     /* CATEGORIES if any (folded to 76 char) */
@@ -1032,36 +1059,36 @@ function export_ical ( $id = 'all', $attachment = false ) {
       $categories = 'CATEGORIES:' . implode ( ',', $categories );
       $array = export_fold_lines ( $categories, 'utf8' );
       while ( list ( $key, $value ) = each ( $array ) )
-      $ret .= "$value\r\n";
+      $Vret .= "$value\r\n";
     }
 
     /* CLASS either "PRIVATE", "CONFIDENTIAL",  or "PUBLIC" (the default) */
     if ( $access == 'R' ) {
-      $ret .= "CLASS:PRIVATE\r\n";
+      $Vret .= "CLASS:PRIVATE\r\n";
     } else if ( $access == 'C' ) {
-      $ret .= "CLASS:CONFIDENTIAL\r\n";
+      $Vret .= "CLASS:CONFIDENTIAL\r\n";
     } else {
-      $ret .= "CLASS:PUBLIC\r\n";
+      $Vret .= "CLASS:PUBLIC\r\n";
     }
 
     /* STATUS */
     if ( $cal_type == 'E' || $cal_type == 'M' ) {
       if ( $status == 'A' ) {
-        $ret .= "STATUS:CONFIRMED\r\n";
+        $Vret .= "STATUS:CONFIRMED\r\n";
       } else if ( $status == 'W' ) {
-        $ret .= "STATUS:TENTATIVE\r\n";
+        $Vret .= "STATUS:TENTATIVE\r\n";
       } else if ( $status == 'D' ) {
-        $ret .= "STATUS:CANCELLED\r\n";
+        $Vret .= "STATUS:CANCELLED\r\n";
       }
     } else if ( $cal_type == 'T' || $cal_type == 'N' ) {
       if ( $status == 'A' && empty ( $completed ) ) {
-        $ret .= "STATUS:IN-PROCESS\r\n";
+        $Vret .= "STATUS:IN-PROCESS\r\n";
       } else if ( $status == 'A' ) {
-        $ret .= "STATUS:COMPLETED\r\n";
+        $Vret .= "STATUS:COMPLETED\r\n";
       } else if ( $status == 'W' ) {
-        $ret .= "STATUS:NEEDS-ACTION\r\n";
+        $Vret .= "STATUS:NEEDS-ACTION\r\n";
       } else if ( $status == 'D' ) {
-        $ret .= "STATUS:CANCELLED\r\n";
+        $Vret .= "STATUS:CANCELLED\r\n";
       }
     }
     // ATTENDEE of the event
@@ -1070,42 +1097,43 @@ function export_ical ( $id = 'all', $attachment = false ) {
     for ( $i = 0; $i < $attendcnt; $i++ ) {
       $attendee[$i] = export_fold_lines ( $attendee[$i], 'utf8' );
       while ( list ( $key, $value ) = each ( $attendee[$i] ) )
-        $ret .= "$value\r\n";
+        $Vret .= "$value\r\n";
     }
     /* Time - all times are utc */
-    $ret .= export_time ( $date, $duration, $time, 'ical', $cal_type );
+    $Vret .= export_time ( $date, $duration, $time, 'ical', $cal_type );
     // VTODO specific items
     $task_complete = false;
     if ( $cal_type == 'T' || $cal_type == 'N' ) {
-      $ret .= 'DUE:' . $due_date . 'T'
+      $Vret .= 'DUE:' . $due_date . 'T'
        . sprintf ( "%06d", $due_time ) . "Z\r\n";
       if ( ! empty ( $completed ) ) {
-        $ret .= 'COMPLETED:' . $completed . "\r\n";
+        $Vret .= 'COMPLETED:' . $completed . "\r\n";
         $task_complete = true;
       }
-      $ret .= 'PERCENT-COMPLETE:' . $percent . "\r\n";
+      $Vret .= 'PERCENT-COMPLETE:' . $percent . "\r\n";
     }
 
     /* Recurrence */
-    $ret .= $recurrance;
+    $Vret .= $recurrance;
 
     /* handle alarms */
-    $ret .= export_alarm_ical( $id, $date, $description, $task_complete );
+    $Vret .= export_alarm_ical( $id, $date, $description, $task_complete );
 
     if ( $cal_type == 'E' || $cal_type == 'M' ) {
       /* End of event */
-      $ret .= "END:VEVENT\r\n";
+      $Vret .= "END:VEVENT\r\n";
     } else if ( $cal_type == 'T' || $cal_type == 'N' ) {
       /* Start of VTODO */
-      $ret .= "END:VTODO\r\n";
+      $Vret .= "END:VTODO\r\n";
     } else if ( $cal_type == 'J' || $cal_type == 'O' ) {
       /* Start of VJOURNAL */
-      $ret .= "END:VJOURNAL\r\n";
+      $Vret .= "END:VJOURNAL\r\n";
     }
   }
-
+  
   /* VTIMEZONE Set in export_time () if needed */
-  if ( $insert_vtimezone ) $ret .= $insert_vtimezone . "\r\n";
+  $ret .= $vtimezone_data  . $Vret;
+
 
   $ret .= "END:VCALENDAR\r\n";
   // attachment will be true if called during email creation
@@ -1789,10 +1817,10 @@ function import_data ( $data, $overwrite, $type ) {
         $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
         $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
         echo htmlspecialchars ( $Entry['Summary'] ). '</a> ( ' . $dd;
-		
-		if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
-		  echo '&nbsp; ' . translate ( 'All day event' );
-		else if ( ! empty ( $time ) )
+        
+        if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
+          echo '&nbsp; ' . translate ( 'All day event' );
+        else if ( ! empty ( $time ) )
           echo '&nbsp; ' . $time;
         echo ")<br /><br />\n";
       }
@@ -2862,7 +2890,7 @@ function format_vcal( $event ) {
   
   if ( $fevent['StartTime'] == $fevent['EndTime'] ) {
     $fevent['Untimed'] = 1;
-	$fevent['Duration'] = 0;
+    $fevent['Duration'] = 0;
   } else {
   // Calculate duration in minutes
   $fevent['Duration'] = ( $fevent['EndTime'] - $fevent['StartTime'] ) / 60;
@@ -3051,10 +3079,11 @@ function get_vtimezone ( $tzid, $dtstart, $dtend='' ) {
 
   if ( $res ) {
     while ( $row = dbi_fetch_row( $res ) ) {
-      $ret = $row[0];
+      $ret = $row[0] . "\r\n";
     }
     dbi_free_result ( $res );
   }
+
   return $ret;
 }
 

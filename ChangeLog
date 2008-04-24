@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixed bug [ 1948133 ] Weekly repeating events appear on wrong day in iCal
  - Fixed bug [ 1814160 ] CVS 1.1.7 - advanced search in non user calendar
  - Fixed bug [ 1842507 ] Reminders being sent out 1 day early
  - Fixed bug [ 1748124 ] reminder email has wrong date
