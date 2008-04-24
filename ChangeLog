@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Fixed bug [ 1948133 ] Weekly repeating events appear on wrong day in iCal
  - Fixed bug [ 1814160 ] CVS 1.1.7 - advanced search in non user calendar
  - Fixed bug [ 1842507 ] Reminders being sent out 1 day early
  - Fixed bug [ 1748124 ] reminder email has wrong date
