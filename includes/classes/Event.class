@@ -291,6 +291,20 @@ class Event {
     return $this->_date;
   }
 
+  function getDateTimeAdjusted () {
+    $year = substr ( $this->_date, 0, 4 );
+    $month = substr ( $this->_date, 4, 2 );
+    $day = substr ( $this->_date, 6, 2 );
+  if ( $this->isTimed() ) {
+    $h = (int) ( $this->_time / 10000 );
+    $m = ( $this->_time / 100 ) % 100;
+    $this->_Date = date ( 'Ymd', gmmktime ( $h, $m, 0, $month, $day, $year ) );
+  } else {
+   $h = $m = 0;
+   $this->_Date = date ( 'Ymd', mktime ( $h, $m, 0, $month, $day, $year ) );
+  }
+    return $this->_Date;
+  }
   /**
    * Gets the event's time
    *
@@ -391,7 +405,7 @@ class Event {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
-  if ( $this->_time > 0 ) {
+  if ( $this->isTimed() ) {
     $h = (int) ( $this->_time / 10000 );
     $m = ( $this->_time / 100 ) % 100;
     $this->_DateTime = gmmktime ( $h, $m, 0, $month, $day, $year );

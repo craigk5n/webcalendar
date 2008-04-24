@@ -1083,10 +1083,10 @@ function display_month ( $thismonth, $thisyear, $demo = false,
 
         // Get events for this day.
         $ret_events = '';
-        if ( ! $demo )
+        if ( ! $demo ) {
           $ret_events = print_date_entries ( $dateYmd,
             ( empty ( $user ) ? $login : $user ), false, true );
-        else {
+        } else {
           // Since we base this calendar on the current month,
           // the placement of the days always change so
           // set 3rd Thursday as "today" for the demo...
@@ -2428,7 +2428,7 @@ function get_entries ( $date, $get_unapproved = true ) {
   global $events;
   $ret = array ();
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
-    $event_date = date ( 'Ymd', $events[$i]->getDateTimeTS () );
+    $event_date = $events[$i]->getDateTimeAdjusted ();
     if ( ! $get_unapproved && $events[$i]->getStatus () == 'W' )
       continue;
 
