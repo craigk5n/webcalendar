@@ -2409,7 +2409,7 @@ function get_entries ( $date, $get_unapproved = true ) {
   global $events;
   $ret = array ();
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
-    $event_date = date ( 'Ymd', $events[$i]->getDateTimeTS () );
+    $event_date = $events[$i]->getDateTimeAdjusted ();
     if ( ! $get_unapproved && $events[$i]->getStatus () == 'W' )
       continue;
 
