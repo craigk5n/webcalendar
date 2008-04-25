@@ -59,7 +59,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
   // Handle update of password.
   if ( $formtype == 'setpassword' && strlen ( $user ) ) {
     if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) && !
-        access_can_access_function ( ACCESS_ACCOUNT ) )
+        access_can_access_function ( ACCESS_ACCOUNT_INFO ) )
       $error = print_not_auth (17);
     else
     if ( $upassword1 != $upassword2 )
