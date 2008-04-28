@@ -503,7 +503,7 @@ function toggle_bymonthday(ele){
   ele.value = "     ";
   tmp = '';
   }
-  bymonthdayAr[ele.id] = tmp;
+  bymonthdayAr[ele.id.substr(10)] = tmp;
 }
 
 function toggle_bysetpos(ele){
