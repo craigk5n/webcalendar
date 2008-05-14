@@ -405,6 +405,7 @@ function define_languages () {
     translate ( 'Lithuanian' ) => 'Lithuanian',
     translate ( 'Norwegian' ) => 'Norwegian',
     translate ( 'Polish' ) => 'Polish',
+    translate ( 'Polish' ) . ' (UTF-8)'  => 'Polish-utf8',
     translate ( 'Portuguese' ) => 'Portuguese',
     translate ( 'Portuguese/Brazil' ) => 'Portuguese_BR',
     translate ( 'Romanian' ) => 'Romanian',
