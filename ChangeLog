@@ -3,6 +3,8 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2007)
+ - Updated Polish translation and added Polish_UTF-8 format
+ - Fixed problem with ByMonthDay not being saved
  - Fixed bug [ 1948133 ] Weekly repeating events appear on wrong day in iCal
  - Fixed bug [ 1814160 ] CVS 1.1.7 - advanced search in non user calendar
  - Fixed bug [ 1842507 ] Reminders being sent out 1 day early
