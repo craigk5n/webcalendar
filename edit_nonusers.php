@@ -23,7 +23,7 @@ $nid = getValue ( 'nid' );
 if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   $userlist = user_get_users ();
   $button = translate ( 'Add', true );
-	$buttonAction = 'Add';
+    $buttonAction = 'Add';
   $nid = clean_html ( $nid );
 
   if ( ! empty ( $nid ) ) {
@@ -31,9 +31,9 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     $id_display = $nid . '
       <input type="hidden" name="nid" value="' . $nid . '" />';
     $button = translate ( 'Save', true );
-		$buttonAction = 'Save';
-    $nonusertemp_login = substr ( $nonusertemp_login,
-      strlen ( $NONUSER_PREFIX ) );
+        $buttonAction = 'Save';
+    //$nonusertemp_login = substr ( $nonusertemp_login,
+   //   strlen ( $NONUSER_PREFIX ) );
   } else
     $id_display = '
       <input type="text" name="nid" id="calid" size="20" '
@@ -106,8 +106,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
 
     if ( ! empty ( $nonusertemp_login ) ) {
       $nu_url = $SERVER_URL . 'nulogin.php?login=' . $nonusertemp_login;
-      echo '
-            <a href="' . "$nu_url\">$nu_url" . '</a>';
+      echo  $nu_url;
     }
 
     echo '
@@ -118,7 +117,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   echo '
       </table><br />
       <input type="submit" name="' . $buttonAction 
-			. '" value="' . $button . '" />'
+            . '" value="' . $button . '" />'
    . ( empty ( $nid ) ? '' : '
       <input type="submit" name="delete" value="' . translate ( 'Delete')
      . '" onclick="return confirm( \''
