@@ -2,7 +2,8 @@ $Id$
 
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
-Version 1.2-b2 (?? Feb 2007)
+Version 1.2-b2 (?? Feb 2008)
+ - Apply PATCH [ 1980001 ] Portuguese_BR translation
  - Fixed NUC URL in edit_nonusers.php. Removed hyperlink and added _NUC_
  - Updated Polish translation and added Polish_UTF-8 format
  - Fixed problem with ByMonthDay not being saved
@@ -49,7 +50,7 @@ Version 1.2-b2 (?? Feb 2007)
    user on second edit
  - Fixed bug: use strpos instead of stripos for PHP4 compatibility
 
-Version 1.2-b1 (25 Feb 2007)
+Version 1.2-b1 (25 Feb 2008)
  - Apply [ 1900716 ] themes not sticking if auth_http true
  - Apply PATCH [ 1900714 ] User Custom Headers Patch
  - Add option to include iCalendar attachment to emails for both

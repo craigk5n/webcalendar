@@ -8,7 +8,7 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
-Version 1.2.b2 (?? ??? 2007)
+Version 1.2.b2 (?? ??? 2008)
  - Added new 'Security Audit' page.
  - Moved hard-coded upcoming.php config setting to System Settings.
  - Added new RSS feed for Activity Log.  This will allow you to be
@@ -17,8 +17,9 @@ Version 1.2.b2 (?? ??? 2007)
  - Removed old hack for register_globals work-around that is no longer
    needed.  This will improve security.
  - Category icons can now be displayed next to events in upcoming.php
+ - Updated Portuguese_BR translations
 
-Version 1.2.b1 (25 Feb 2007)
+Version 1.2.b1 (25 Feb 2008)
  - Changed default installation user/password to root/none
  - Added read/write test to db_cache /tmp folder
  - The following translations were updated:
