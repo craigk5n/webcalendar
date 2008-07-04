@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2008)
+ - Patch [ 1986759 ] Incorrect date shift logic in view_entry.php
  - Apply PATCH [ 1980001 ] Portuguese_BR translation
  - Fixed NUC URL in edit_nonusers.php. Removed hyperlink and added _NUC_
  - Updated Polish translation and added Polish_UTF-8 format
