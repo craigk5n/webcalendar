@@ -375,7 +375,9 @@ if ( $cal_access == 'R' && ! $is_my_event && ! access_is_enabled () ) {
   $is_confidential = true;
   $description = $name = '[' . translate ( 'Confidential' ) . ']';
 }
-$event_date = ( $event_repeats && ! empty ( $date ) ? $date : $orig_date );
+$event_date = ( $event_repeats && ! empty ( $date ) ? $date :
+  ( $event_time > 0 ? date ( 'Ymd', date_to_epoch ( $orig_date
+  . sprintf ( "%06d", $event_time ) ) ) : $orig_date ) );
 
 // Get category Info
 if ( $CATEGORIES_ENABLED == 'Y' ) {
