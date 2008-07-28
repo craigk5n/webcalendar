@@ -6,7 +6,7 @@
 # Last updated: 12-08-2006
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 07-28-2008
 
 
 ################################################################################
@@ -41,15 +41,20 @@ __month__ __yyyy__: __yyyy__ 年 __month__
 ########################################
 # Page: about.php
 #
+Title: ウェブカレンダー
 version: バージョン
+version XXX: バージョン XXX
+OK: =
 
 ########################################
 # Page: access.php
 #
 Database error: データベースエラー
-DEFAULT CONFIGURATION: デフォルト設定
+Database error XXX.: データベースエラー「XXX」です。
+DEFAULT CONFIGURATION: 標準設定
 Go: 表示
 Save: 保存
+Undo: 取り消し
 Public Access: 公開アクセス
 Admin: 管理
 User Access Control: ユーザーアクセス制御
@@ -83,6 +88,7 @@ Previous: 前へ
 ########################################
 # Page: add_entry.php
 #
+Invalid entry id XXX.: 「XXX」は無効なエントリーー ID です。
 confidential: 非公開
 private: プライベート
 Error adding event: イベント追加エラー
@@ -90,19 +96,39 @@ Error adding event: イベント追加エラー
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: 無効な設定名「XXX」です。
 Select: 選択
 Day: 日
 Week: 週
 Month: 月
 Year: 年
-System Settings: システム設定
-Help: ヘルプ
+Bottom: 下
+Top: 上
+Anyone: 誰でも
+Participant: 参加者
 Settings: 設定
 Groups: グループ
 NonUser Calendars: 他のユーザーのカレンダー
 Other: その他
 Email: 電子メール
 Colors: 色
+Document background: 書類の背景色
+Document title: ドキュメントタイトル
+Document text: ドキュメントテキスト
+My event text: 自分のイベントテキスト
+Table grid color: テーブルのグリッド
+Table header background: テーブルヘッダの背景
+Table header text: テーブルヘッダのテキスト
+Table cell background: テーブル背景
+Table cell background for current day: 今日のテーブルセル背景
+Table cell background for days with events: イベント日のテーブルセルの背景色
+Table cell background for weekends: 週末のテーブルセル背景
+Table cell background for other month: その他の月のテーブルセルの背景色
+Week number color: 週数の色
+Event popup background: イベントポップアップの背景
+Event popup text: イベントポップアップのテキスト
+System Settings: システム設定
+Help: ヘルプ
 System options: システムオプション
 app-name-help: ログインページとすべてのページのブラウザータイトルバーの中で使用するアプリケーションの名前を指定します。The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: アプリケーション名
@@ -113,7 +139,8 @@ home-url-help: アプリケーションのホーム URL を指定します。こ
 Home URL: ホーム URL
 language-help: 使用する言語を指定します。
 Language: 言語
-Your browser default language is: あなたのブラウザのデフォルト言語
+Your browser default language is: あなたのブラウザの標準言語
+Your browser default language is XXX.: ブラウザーの標準言語は「XXX」です。
 Allow user to use themes: ユーザーがテーマを使うことを許可する
 themes-help: 設定の一括更新を許可します。小文字のラベルはユーザー設定のみです。
 Themes: テーマ
@@ -154,11 +181,10 @@ Work hours: 勤務時間
 From: .
 to: 〜
 Appearance: 外観
-preferred-view-help: デフォルトの表示を指定します (日間、週間、月間もしくは年間)
+preferred-view-help: 標準の表示を指定します (日間、週間、月間もしくは年間)
 Preferred view: 優先する表示
 Allow top menu: トップメニューを許可する
-Bottom: 下
-Top: 上
+menu-themes-help: トップメニューのスタイルと色を設定します
 Menu theme: メニューテーマ
 fonts-help: 使用するシステムフォントの一覧を指定します("Arial, Helvetica"のように)
 Fonts: フォント
@@ -171,7 +197,7 @@ Display long day names: 長い日付名で表示する
 display-alldays-help: 月間表示で前月と翌月のすべてのセルを表示します。
 Display all days in month view: 月間ビューですべての日を表示する
 display-week-number-help: 週番号(1-52)を月間表示と週間表示で表示するかどうか指定します。
-Display week number: 週番号を表示する
+Display week number: 週番号の表示
 display-desc-print-day-help: 印刷用の日間表示でイベントの説明を含みます。
 Display description in printer day view: 印刷用の日間ビューで説明を表示する
 yearly-shows-events-help: 年間表意jで強調フォントでイベントを含む日を表示します。
@@ -184,7 +210,7 @@ allow-view-other-help: ユーザーが他のユーザーのカレンダーを見
 Allow viewing other users calendars: 他のユーザーのカレンダーを見ることを許可する
 Require event approvals: イベントの承認を必要とする
 display-unapproved-help: 承認が済んでいないイベントをカレンダーに表示するかどうか指定します。<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
-Display unapproved: 未承認イベントを表示する
+Display unapproved: 未承認イベントの表示
 conflict-check-help: イベントの衝突を確認します(同一人物の同じ時間で予定される 2 つのイベントスケジュール)これを「はい」に設定した場合、警告を確認した後に、同時に 2 つのイベントを予定することができるでしょう。これを「いいえ」に設定した場合、衝突の確認をしないでしょう。したがっておそらく衝突の発生を確認するためにこれを「はい」に設定したいでしょう。
 Check for event conflicts: イベント衝突を確認する
 Yes: はい
@@ -221,16 +247,11 @@ Brief Description Length: 短い説明の長さ
 User Sort Order: ユーザーのソート基準
 Lastname, Firstname: 苗字 名前(ラストネーム，ファーストネーム)
 Firstname, Lastname: 名前 苗字(ファーストネーム，ラストネーム)
-Plugins: プラグイン
-plugins-enabled-help: アプリケーションプラグインを有効にします。
-Enable Plugins: プラグイン有効
-plugins-sort-key-help: プラグインのソートキーを指定します。This allows the plugins to appear in a specific order.
-Plugin: プラグイン
 allow-public-access-help: 有効の場合、カレンダーは、ユーザーにログインすることを要求せｚ読取専用公開カレンダーとして使用することができます。
 Allow public access: 公開アクセス許可
 public-access-default-visible: 公開カレンダーのイベントは、自動的にすべてのユーザーのカレンダーで表示するでしょう。
-Public access visible by default: 公開アクセスはデフォルトで見える
-Public access is default participant: 公開アクセスはデフォルト参加者
+Public access visible by default: 標準で公開アクセスが見える
+Public access is default participant: 公開アクセスは標準で参加
 Public access can view other users: 公開アクセスは他のユーザーを見ることができる
 Public access can add events: 公開アクセスはイベント追加できる
 Public access new events require approval: 公開アクセスの新規イベントは認証を必要とする
@@ -239,6 +260,7 @@ public-access-override-help: 公開カレンダーでイベント名と説明を
 Override event name/description for public access: 公開アクセスでのイベント名/説明を上書きする
 public-access-override-text-help: もし下のオプションが有効ならテキストを表示します。
 Text to display to public access: 公開アクセスで表示するテキスト
+Require CAPTCHA validation for public access new events: 公開アクセスでの新規イベントは CAPTCHA での確認を要求する
 uac-enabled-help: ユーザーレベルでのアクセス制御を有効にします
 User Access Control enabled: ユーザーアクセス制御を有効にする
 groups-enabled-help: グループサポートを有効にしたら、ユーザーはグループでユーザーを選択することを許可します。
@@ -248,19 +270,26 @@ nonuser-enabled-help: 有効にした場合、管理者が非ユーザーをカ�
 Nonuser enabled: 非ユーザーを有効にする
 nonuser-list-help: 参加者一覧中の非ユーザーをカレンダーに表示するべき場所です。
 Nonuser list: 非ユーザー一覧
+Upcoming Events: 近々のイベント
+Enabled: 使用可能
+Allow user override: ユーザーの上書きの許可
+Display category icons: カテゴリーアイコンの表示
+Display layers: レイヤーの表示
+Display links to events: イベントへのリンクの表示
+Display event popups: イベントポップアップの表示
 Reports enabled: レポート有効
 Allow remote subscriptions: リモート申し込みを許可
 Allow remote calendars: リモートのカレンダーを許可する
 Enable RSS feed: RSS フィードを有効にする
-categories-enabled-help: 有効にするとイベントカテゴリをサポートします。
-Categories enabled: カテゴリ有効
-icon_upload-enabled-help: 有効の場合、ユーザーはカテゴリアイコンをアップロードできます。
-Category Icon Upload enabled: カテゴリアイコンのアップロードは有効
-display-tasks-help: 月間と日間カレンダーに小さなタスクウィンドウを表示します．
-Display small task list: 小さなタスク一覧を表示する
-Display tasks in Calendars: カレンダーにタスクを表示する
+categories-enabled-help: 有効にするとイベントカテゴリーをサポートします。
+Categories enabled: カテゴリー有効
+icon_upload-enabled-help: 有効の場合、ユーザーはカテゴリーアイコンをアップロードできます。
+Category Icon Upload enabled: カテゴリーアイコンのアップロードは有効
+display-tasks-help: 月間と日間カレンダーに小さなタスクウィンドウを表示します。
+Display small task list: 小さなタスク一覧の表示
+Display tasks in Calendars: カレンダーにタスクの表示
 allow-external-users-help: これは、非カレンダーユーザーがイベント参加者として記録されることを許可します。
-Allow external users: 外部ユーザー許可
+Allow external users: 外部ユーザーの許可
 External users can receive email notifications: 外部ユーザーは電子メール通知を受けることができる
 External users can receive email reminders: 外部ユーザーは電子メールリマインダーを受けることができる
 allow-self-registration-help: 新規のユーザが登録することを可能にします。
@@ -272,15 +301,13 @@ Use self-registration email notifications: 自己登録の電子メール通知�
 allow-attachment-help: ユーザーがイベントへの添付ファイルの追加をすることを許可します。
 Allow file attachments to events: イベントへのファイル添付を許可する
 Admin and owner can always add attachments if enabled.: 有効にした場合、管理者と所有者は常に添付を追加できます。
-Anyone: 誰でも
-Participant: 参加者
 allow-comments-help: ユーザーがイベントにコメントを追加することを許可します。
 Allow comments to events: イベントへのコメントを許可する
 Admin and owner can always add comments if enabled.: 有効にした場合、管理者と所有者は常にコメントを追加できます。
 email-enabled-help: すべてのリマインダーと通知の電子メールを送信を切り替えます。サーバーが適切にメールの送信設定がされていない場合「いいえ」に設定します。
 Email enabled: 電子メール有効
 email-default-sender: リマインダーを送信する場合に送信者として指定するべき電子メールアドレスを指定します。
-Default sender address: デフォルト送信アドレス
+Default sender address: 標準の送信アドレス
 email-mailer: 電子メールタイプを選択します (SMTP、PHP mail、sendmail))
 Email Mailer: 電子メールメーラー
 email-smtp-host: SMTP サーバーのホスト名をカンマ区切りで指定します。
@@ -293,35 +320,33 @@ email-smtp-username: 認証を使用する場合の SMTP ユーザー名です�
 SMTP Username: SMTP ユーザー名
 email-smtp-password: 認証を使用する場合の SMTP パスワードです。
 SMTP Password: SMTP パスワード
-Default user settings: デフォルトユーザー設定
+Default user settings: 標準のユーザー設定
+email-format: HTML か通常のテキストメッセージかの設定を指定します
+Email format preference: 電子メールの書式設定
+HTML: =
+Plain Text: 通常のテキスト
+email-include-ics: 電子メールメッセージに iCalendar ICS ファイルを含む
+Include iCalendar attachments: iCalendar 添付を含む
 email-event-reminders-help: イベントのお知らせを送るべきかどうか指定します。
 Event reminders: イベントリマインダー
 email-event-added: カレンダーにイベントが追加された場合、電子メール通知を送るかどうか指定します。
-Events added to my calendar: 自分のカレンダーにイベントを追加
+Events added to my calendar: 自分のカレンダーにイベントの追加
 email-event-updated: カレンダーのイベントが更新された場合、電子メール通知を送るかどうか指定します。
-Events updated on my calendar: 自分のカレンダーのイベントを更新
+Events updated on my calendar: 自分のカレンダーのイベントの更新
 email-event-deleted: カレンダーのイベントが削除された場合、電子メール通知を送るかどうか指定します。
-Events removed from my calendar: 自分のカレンダーからイベントを削除
+Events removed from my calendar: 自分のカレンダーからイベントの削除
 Event rejected by participant: 参加者のイベント拒否
+Event that I create: 自分の作成するイベント
+Color options: 色オプション
 Allow user to customize colors: ユーザーの色設定を許可する
 gradient-colors: 有効にした場合、グラデーション色を使用します。これは非常に動作に影響を与えることができます。
 Enable gradient images for background colors: 背景色にグラデーション画像を有効にする
 Not available: 利用可能ではありません
-Document background: 書類の背景色
-Document title: ドキュメントタイトル
-Document text: ドキュメントテキスト
-My event text: 自分のイベントテキスト
-Table grid color: テーブルのグリッド
-Table header background: テーブルヘッダの背景
-Table header text: テーブルヘッダのテキスト
-Table cell background: テーブル背景
-Table cell background for current day: 今日のテーブルセル背景
-Table cell background for days with events: イベント日のテーブルセルの背景色
-Table cell background for weekends: 週末のテーブルセル背景
-Table cell background for other month: その他の月のテーブルセルの背景色
-Week number color: 週数の色
-Event popup background: イベントポップアップの背景
-Event popup text: イベントポップアップのテキスト
+Background Image options: 背景画像のオプション
+bgimage-help: 背景画像に必要な URL です。相対 URL かもしれません。
+Background Image: 背景画像
+bgrepeat-help: 背景画像の繰り返しの振る舞いの制御です。
+Background Repeat: 背景を繰り返す
 
 ########################################
 # Page: adminhome.php
@@ -331,13 +356,14 @@ Preferences: プリファレンス
 Control Panel: コントロールパネル
 Users: ユーザー
 Account: アカウント
-Categories: カテゴリ
+Categories: カテゴリー
 Views: 表示
 Layers: レイヤー
 Reports: レポート
 Delete Events: イベントの削除
 Activity Log: 活動ログ
 System Log: システムログ
+Security Audit: セキュリティの検査
 Public Preferences: 公開設定
 Unapproved Public Events: 未承認の公開イベント
 Administrative Tools: 管理ツール
@@ -345,9 +371,12 @@ Administrative Tools: 管理ツール
 ########################################
 # Page: ajax.php
 #
-Duplicate Name: 重複名
+Duplicate Name: 名前の重複
+Duplicate Name XXX: 名前「XXX」が重複しています
 Username already exists.: ユーザー名は既に存在します。
+Username XXX already exists.: ユーザー名「XXX」は既に存在します。
 Email address already exists.: 電子メールアドレスは既に存在します。
+Email address XXX already exists.: 電子メールアドレス「XXX」は既に存在します。
 
 ########################################
 # Page: approve_entry.php
@@ -356,6 +385,7 @@ Additional Comments (optional): 追加コメント(オプション)
 Approve and Send: 承認と送信
 Approve and Exit: 承認と終了
 Hello: こんにちは!
+Hello, XXX.: こんにちは、XXX さん
 The subject was: 課題
 The description is: 詳細:
 Date: 日付
@@ -372,26 +402,30 @@ Your assistants: あなたのアシスタント
 # Page: availability.php
 #
 Program Error: プログラムエラー
+No XXX specified!: XXX が指定されていません!
+Program Error No XXX specified!: XXX が指定されていないプログラムエラー!
 user: ユーザー
+year: 年
+month: 月
 day: 日
 
 ########################################
 # Page: category.php
 #
-Category Icon: カテゴリアイコン
+Category Icon: カテゴリーアイコン
 Global: 全体
-Category Name: カテゴリ名
+Category Name: カテゴリー名
 Color: 色
 Remove Icon: アイコンを削除する
-Add Icon to Category: カテゴリにアイコンを追加する
+Add Icon to Category: カテゴリーにアイコンの追加
 Upload: アップロードする
 gif 3kb max: gif 最大 3 キロバイト
-Search for existing icons: 既存のアイコンを検索する
+Search for existing icons: 既存のアイコンの検索
 Add: 追加
 Delete: 削除
-entry: エントリ
+entry: エントリー
 Are you sure you want to delete this XXX?: 本当にこのXXXを削除しますか?
-Make New Category: 新規カテゴリの追加
+Make New Category: 新規カテゴリーの追加
 
 ########################################
 # Page: category_handler.php
@@ -402,10 +436,10 @@ File is not a gif image.: ファイルは GIF 画像ではありません
 ########################################
 # Page: catsel.php
 #
-AVAILABLE CATEGORIES: 利用可能なカテゴリ一覧
-ENTRY CATEGORIES: エントリのカテゴリ
+AVAILABLE CATEGORIES: 利用可能なカテゴリー一覧
+ENTRY CATEGORIES: エントリーのカテゴリー
 Remove: 削除
-Global Category: 全体カテゴリ
+Global Category: 全体カテゴリー
 Cancel: 取り消し
 
 ########################################
@@ -445,11 +479,16 @@ Removed: 削除しました
 ########################################
 # Page: edit_entry.php
 #
+am: 午前
+pm: 午後
+days: 日
+hours: 時間
+minutes: 分
 You are not authorized to edit this task: このタスクを編集することを許可されていません
 task: タスク
 Time entered here is based on your Timezone.: ここで入力された時間は、あなたのタイムゾーンに基づきます。
-Edit Entry: エントリの編集
-Add Entry: エントリの追加
+Edit Entry: エントリーの編集
+Add Entry: エントリーの追加
 Details: 詳細
 Participants: 参加者
 Repeat: 繰り返し
@@ -465,8 +504,8 @@ Priority: 優先順位
 High: 高
 Medium: 中
 Low: 低
-category-help: イベントのカテゴリを指定します。
-Category: カテゴリ
+category-help: イベントのカテゴリーを指定します。
+Category: カテゴリー
 Date Completed: 完了日
 percent-help: このユーザーのタスク完了率
 Percent Complete: 完了率
@@ -482,13 +521,11 @@ All day event: 全日イベント
 Timezone Offset: タイムゾーン時差
 time-help: イベントの時間を指定します。<br /><i>このフィールドは空に出来ます。</i>
 duration-help: イベントの間隔(時:分)を指定します)<br /><i>このフィールドは空に出来ます。</i>
-hours: 時間
-minutes: 分
 end-time-help: イベントが終了すると予想される時間(期間)を指定します。
 Start Time: 開始時間
 Due Date: 予定日
 Due Time: 予定時間
-participants-help: このエントリの参加者一覧です。
+participants-help: このエントリーの参加者一覧です。
 Availability: 適用範囲
 External Participants: 外部参加者
 repeat-type-help: イベントをどれ位繰り返すか選択します。<i>月刊 (日付による)</i> イベントがその月の最初の月曜日、その月の 3 番目の木曜などに繰り返すことを許可します。 <i>月刊 (期日による)</i> イベントがその月の同じ日に繰り返すことを許可します。
@@ -502,36 +539,34 @@ Manual: 手動
 Expert Mode: エキスパートモード
 repeat-end-date-help: イベントの繰り返し終了日を指定します。
 Ending: 終了
-Forever: 永遠
+Forever: ずっと
 Use end date: 終了日を使用
 Number of times: 回数
-repeat-frequency-help: イベントがどれくらい頻繁に繰り返さなければならないか指定します。デフォルトは 1 それはすべての時間で発生することを示します。Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
+repeat-frequency-help: イベントがどれくらい頻繁に繰り返さなければならないか指定します。標準は 1 で、それはすべての時間で発生することを示します。Specifying 2 will make the event occur every other week (if <i>Repeat Type</i> is set to <i>Weekly</i>), every other month (if <i>Repeat Type</i> is set to <i>Monthly</i>), etc.
 Frequency: 頻度
 Weekdays Only: 平日のみ
-MO: 月
-SU: 日
 Week Start: 週はじめ
 ByDay: 日で指定
-All: 全て
+All: すべて
 ByMonth: 月で指定
 Exclusions: 除外
 Inclusions: 内包
-Add Exception: 例外を追加する
-Add Inclusion: 内包を追加する
-Delete Selected: 選択済を削除する
+Add Exception: 例外の追加
+Add Inclusion: 内包の追加
+Delete Selected: 選択されたものの削除
 Send Reminder: リマインダー送信
 When: いつ
 Use Date/Time: 日付・時間を使う
 Use Offset: オフセットを使う
-days: 日
 Before: 前に
 After: 後に
 Start: 開始
 End/Due: 終了・期間
 Times: 回数
 Every: 毎回
-Delete entry: エントリの削除
-You are not authorized to edit this entry.: このエントリの編集は許可されていません。
+CAPTCHA Warning: CAPTCHA 警告
+Delete entry: エントリーの削除
+You are not authorized to edit this entry.: このエントリーの編集は許可されていません。
 
 ########################################
 # Page: edit_entry_handler.php
@@ -544,7 +579,7 @@ to accept or reject this appointment: この予定を受け入れるか受け入
 to view this appointment: 予定を見る
 Scheduling Conflict: スケジュールが重なっています。
 Your suggested time of: 予定時間
-conflicts with the following existing calendar entries: 以下のエントリと重なっています：
+conflicts with the following existing calendar entries: 以下のエントリーと重なっています：
 
 ########################################
 # Page: edit_layer.php
@@ -568,8 +603,8 @@ You can only create one layer for each user.: 各ユーザーのひとつのレ�
 #
 NONUSER_PREFIX not set: 非ユーザー接頭語は未設定
 word characters only: 文字は英数字とアンダーラインのみを使用できます。
-Add User: ユーザーを追加
-Edit User: ユーザーを編集
+Add User: ユーザーの追加
+Edit User: ユーザーの編集
 Calendar ID: カレンダー ID
 First Name: 名
 Last Name: 姓
@@ -578,9 +613,9 @@ Is public calendar: カレンダーを公開しますか?
 ########################################
 # Page: edit_remotes.php
 #
-Add Remote Calendar: リモートカレンダーを追加する
-Edit Remote Calendar: リモートカレンダーを編集する
-Create Layer: レイヤーを作成する
+Add Remote Calendar: リモートカレンダーの追加
+Edit Remote Calendar: リモートカレンダーの編集
+Create Layer: レイヤーの作成
 Reload: 再読み込み
 
 ########################################
@@ -628,6 +663,7 @@ Edit Report: レポート編集
 Report name: レポート名
 User: ユーザー
 Current User: 現在のユーザー
+Include link in menu: メニューのリンクを含む
 Include standard header/trailer: 標準ヘッダー/フッターを含む
 Include previous/next links: 前/次へのリンクを含む
 Include empty dates: 空の日を含む
@@ -641,7 +677,8 @@ report: レポート
 ########################################
 # Page: edit_report_handler.php
 #
-Variable N not found: 変数 N が見つかりません。
+Variable N not found: 変数「N」が見つかりません。
+Variable XXX not found.: 変数「XXX」が見つかりません。
 
 ########################################
 # Page: edit_template.php
@@ -657,11 +694,10 @@ Username: ユーザー名
 E-mail address: メールアドレス
 Password: パスワード
 again: 再度
-Enabled: 使用可能
 Disabled for demo: デモでは使用できません
 Change Password: パスワード変更
 New Password: 新しいパスワード
-Set Password: パスワードを設定
+Set Password: パスワードの設定
 
 ########################################
 # Page: edit_user_handler.php
@@ -677,7 +713,7 @@ Username cannot be blank.: ユーザー名は空にできません。
 Export: エクスポート
 Export format: エクスポート形式
 Include all layers: すべてのレイヤーを含む
-Include deleted entries: 削除されたエントリを含む
+Include deleted entries: 削除されたエントリーを含む
 Export all dates: すべての日付をエクスポート
 Start date: 開始日
 End date: 終了日
@@ -687,6 +723,11 @@ Modified since: 修正日以降
 # Page: export_handler.php
 #
 export format not defined or incorrect: エクスポート形式が未定義か正しくありません
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: ユーザーが指定されていません。
 
 ########################################
 # Page: groups.php
@@ -715,7 +756,7 @@ Auto-refresh calendars: カレンダーの自動更新
 Auto-refresh time: 時間の自動更新
 auto-refresh-time-help: 自動更新を有効にした場合、これは自動更新の時間を指定します。
 Display days with events in bold in year view: 年間表示でイベントのある日を太字で表示する
-Display weekends in week view: 週間表示で週末を表示する
+Display weekends in week view: 週間表示で週末の表示
 Time interval: 時間間隔
 time-interval-help: 週間表示と日間表示で時間区画がどれくらいの時間あるか指定します。
 Nonuser: 非ユーザーカレンダー
@@ -731,8 +772,9 @@ Report Bug: バグ報告
 ########################################
 # Page: help_edit_entry.php
 #
-Adding/Editing Calendar Entries: カレンダーのエントリの追加/編集
+Adding/Editing Calendar Entries: カレンダーのエントリーの追加/編集
 Repeat Type: 繰返しタイプ
+For More Information...: 更なる情報...
 Repeat End Date: 繰返し終了日
 Repeat Day: 繰返し日
 
@@ -741,12 +783,10 @@ Repeat Day: 繰返し日
 #
 Import: インポート
 Palm Desktop: Palm デスクトップ
-The following entries will not be imported: 次のエントリはインポートされなかったでしょう
-Entries older than the current date: エントリは現在の期日より古いです
+The following entries will not be imported: 次のエントリーはインポートされなかったでしょう
+Entries older than the current date: エントリーは現在の期日より古いです
 Therefore, updates should be made in the Palm Desktop.: したがって、Palm デスクトップで更新されるべきです。
-This form will import vCalendar (.vcs) 1.0 events: このフォームは vCalendar (.vcs) 1.0 イベントとしてインポートするでしょう
 The following formats have been tested: 次の形式がテストされました。
-This form will import iCalendar (.ics) events: このフォームは iCalendar (.ics) イベントをインポートするでしょう
 Enabling: 有効にする
 Overwrite Prior Import: インポート先を上書きする
 
@@ -768,8 +808,8 @@ Specifies the user that you would like to see displayed in your calendar.: カ�
 ########################################
 # Page: help_pref.php
 #
-Default Category: デフォルトのカテゴリ
-default-category-help: 新規イベントがデフォルトになるべきカテゴリを指定します。
+Default Category: 標準のカテゴリー
+default-category-help: 新規イベントで標準になるべきカテゴリーを指定します。
 When I am the boss: 上司の場合
 Email me event notification: イベント通知を自分にメールする
 email-boss-notifications-help: 上司がイベント通知として電子メールを受信する場合に指定します。
@@ -785,7 +825,7 @@ rss-feed-url-help: RSS フィードにアクセスするための URL
 #
 If disabled, this user cannot send you emails.: 無効の場合、このユーザーは電子メールを送ることができないでしょう。
 If disabled, this user cannot see you in the participants list.: 無効の場合、このユーザーは参加者一覧を閲覧できないでしょう。
-If enabled, this user cannot view the details of any of your entries.: 無効の場合、このユーザーはエントリのいくつかの詳細を閲覧できないでしょう。
+If enabled, this user cannot view the details of any of your entries.: 無効の場合、このユーザーはエントリーのいくつかの詳細を閲覧できないでしょう。
 
 ########################################
 # Page: icalclient.php
@@ -810,6 +850,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: 繰�
 ########################################
 # Page: import_handler.php
 #
+No file: ファイルがありません
 Conflicting events: イベントが衝突中
 The import file contained no data: インポートファイルの中身がありません。
 
@@ -818,6 +859,7 @@ The import file contained no data: インポートファイルの中身があり
 #
 Layer: レイヤー
 Edit layer: レイヤーの編集
+Enable layers: レイヤーの有効化
 Layers are currently: 現在のレイヤー
 Disable Layers: レイヤーを使用不可にする
 Click here: [ ここをクリック ]
@@ -826,30 +868,38 @@ calendar: カレンダー
 Add layer: レイヤーの追加
 
 ########################################
+# Page: layers_toggle.php
+#
+Unable to update preference: 設定の更新に失敗
+
+########################################
 # Page: list_unapproved.php
 #
-View this entry: このエントリを見る
 Approve/Confirm: 承認/確認
-Reject: 拒否
-Check All: すべてチェックする
-Uncheck All: すべてチェックをはずす
 Approve Selected: 選択を承認する
+Check All: すべてチェックする
 Reject Selected: 選択を拒否する
+Reject: 拒否
+Uncheck All: すべてチェックをはずす
+View this entry: このエントリーを見る
 No unapproved entries for: 次のユーザーの未承認イベント:
+No unapproved entries for XXX.: XXX の未承認エントリーはありません。
 Unapproved Entries: 未承認イベント
 Not authorized: 認証していません
-Approve this entry?: エントリを承認しますか?
-Reject this entry?: エントリを拒否しますか?
-Approve Selected entries?: 選択されたエントリを承認しますか?
+Approve this entry?: エントリーを承認しますか?
+Reject this entry?: エントリーを拒否しますか?
+Approve Selected entries?: 選択されたエントリーを承認しますか?
 Reject Selected entries?: 選択を拒否しますか?
 
 ########################################
 # Page: login-app.php
 #
 You must enter a login and password.: ユーザー名とパスワードを入力してください。
-Save login via cookies so I dont have to login next time.: 次回からログインしなくても良いように、ユーザー情報をクッキーにセーブする
+Save login via cookies so I dont have to login next time.: 次回からログインしなくてもいいように、ユーザー情報をクッキーに保存する
 Login: ログイン
 Access public calendar: 公開カレンダーアクセス
+public: 公開
+Access XXX calendar: XXX カレンダーにアクセスする
 cookies-note: <b>注意:</b> このアプリケーションはクッキーが有効でなければ正常に動作しません。
 
 ########################################
@@ -873,23 +923,23 @@ Add New NonUser Calendar: 非ユーザーのカレンダーに新規追加
 ########################################
 # Page: nulogin.php
 #
+A login must be specified: ログイン名を指定しなければなりません
 Illegal characters in login: 間違った文字がログイン名にあります。
 
 ########################################
 # Page: pref.php
 #
-Save Preferences: 設定を保存
+Save Preferences: 設定の保存
 Public Access calendar: 公開アクセスのカレンダー
 Modify Non User Calendar Preferences: 非ユーザーのカレンダー設定を修正する
 Return to My Preferences: 自分のプリファレンスに戻る
 Custom Scripts: カスタムスクリプト
 Timezone Selection: タイムゾーンの選択
-Entry interval: エントリの間隔
+Entry interval: エントリーの間隔
 hour: 時間
 minute: 分
-Email format preference: 電子メールの書式設定
-Plain Text: ただのテキスト
 Display if created by Assistant: もしアシスタントの作成も表示
+entries: エントリー
 
 ########################################
 # Page: publish.php
@@ -912,8 +962,11 @@ Records deleted from: レコードを削除しました 対象:
 # Page: register.php
 #
 Email address cannot be blank.: 電子メールアドレスは空にできません。
+Illegal characters in login XXX.: ログイン名「XXX」は間違った文字です。
 Your username is: ユーザー名は
+Your username is XXX.: ユーザー名は「XXX」です。
 Your password is: パスワードは
+Your password is XXX.: パスワードは「XXX」です。
 Please visit: 訪問してください
 You may change your password after logging in the first time.: 最初をログインした後にパスワードを変更するでしょう。
 Administrator: 管理者
@@ -935,19 +988,22 @@ An appointment has been rejected by: 予定が以下の人によって拒否さ�
 ########################################
 # Page: remotes.php
 #
-Add New Remote Calendar: 新規リモートカレンダーを追加する
+Add New Remote Calendar: 新規リモートカレンダーの追加
 
 ########################################
 # Page: report.php
 #
-This event is confidential.: このイベントは非公開です
+This event is confidential.: このイベントは非公開です。
+(Private): (プライベート)
 cont.: 続ける
+(cont.): (続ける)
 Approved: 承認済み
 Deleted: 削除済
 Rejected: 拒否済
 Waiting for approval: 承認待ち
 Unknown: 未知
 to manage reports for the Public Access calendar: すると公開アクセスカレンダー用レポートを管理します
+Click here to manage reports for the Public Access calendar.: 公開アクセスのカレンダーのレポートを管理するにはここをクリックします。
 Add new report: 新規レポートの追加
 Manage Reports: レポート管理
 
@@ -958,7 +1014,9 @@ Advanced Search: 高度な検索
 Search: 検索
 Keywords: キーワード
 Filter by Date: 日付でフィルター
+All Dates: すべての日
 Past: 過去
+Upcoming: 近々
 Range: 範囲
 
 ########################################
@@ -969,6 +1027,26 @@ Search Results: 検索結果
 match found: 個の該当項目が見つかりました。
 matches found: 個の該当項目が見つかりました。
 No matches found: 該当項目が見つかりませんでした。
+New Search: 新規検索
+
+########################################
+# Page: security_audit.php
+#
+View your current PHP settings: 現在の PHP の設定の閲覧
+Status: 状態
+You should change the password of the default admin user.: 標準の管理者ユーザーのパスワードを変更するべきです
+Default admin user password: 標準の管理者ユーザーのパスワード
+The following item should not be writable: 次の項目は書き込みできなくするべきです
+File permissions: ファイルの権限
+Because you have email disabled, you should remove this file.: 電子メールを無効にしているため、このファイルを削除するべきです。
+File exists: ファイルの存在
+File location: ファイルの場所
+Database cache directory location: データベースのキャッシュディレクトリーの場所
+The recommended setting for magic quotes is Off.: magic quotes の推奨設定は「Off」です。
+PHP setting: PHP の設定
+The recommended setting for register_globals is Off.: register_globals の推奨設定は「Off」です。
+The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: リモートカレンダーを有効にしないときは、allow_url_fopen の推奨設定は「Off」です。
+The recommended setting for allow_url_include is Off.: allow_url_include の設定は「Off」を推奨します。
 
 ########################################
 # Page: select_user.php
@@ -978,9 +1056,10 @@ View Another Users Calendar: 他のユーザーのカレンダーを見る
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: いくつかのカテゴリを追加していません
-Set Category: カテゴリ設定
-Global Categories cannot be changed.: グローバルカテゴリは変更できませんでした
+Invalid entry id.: 無効なイベント ID です。
+You have not added any categories.: いくつかのカテゴリーを追加していません
+Set Category: カテゴリー設定
+Global Categories cannot be changed.: グローバルカテゴリーは変更できませんでした
 
 ########################################
 # Page: upcoming.php
@@ -991,8 +1070,8 @@ more: もっと
 # Page: users.php
 #
 Remote Calendars: リモートカレンダー
-denotes administrative user: 管理ユーザーを表示
-Add New User: 新しいユーザーを追加
+denotes administrative user: 管理ユーザーの表示
+Add New User: 新しいユーザーの追加
 
 ########################################
 # Page: usersel.php
@@ -1037,7 +1116,6 @@ No users for this view: この表示にユーザーがいません。
 Update Task Percentage: タスク率を更新する
 Completed: 完了しました
 Assistant mode: アシスタントモード
-Status: 状態
 Declined: 拒否済
 Needs-Action: 操作が必要
 Percentage Complete: パーセント完了
@@ -1047,40 +1125,42 @@ Attachments: 添付
 comments: 個のコメント
 Show: 表示する
 Hide: 隠す
-Approve/Confirm entry: 承認/エントリを確認する
-Reject entry: エントリの拒否
-Set category: カテゴリの設定
-Copy entry: エントリのコピー
-This will delete this entry for all users.: これによってこのエントリをすべてのユーザから削除します
-Edit entry: エントリの編集
-Edit repeating entry for all dates: 繰返しエントリをすべて編集する
-Delete repeating event for all dates: 繰返しエントリをすべて削除する
-Edit entry for this date: エントリを今回分だけ編集する
-Delete entry only for this date: エントリを今回分だけ削除する
+Approve/Confirm entry: 承認/エントリーを確認する
+Reject entry: エントリーの拒否
+Set category: カテゴリーの設定
+Copy entry: エントリーのコピー
+This will delete this entry for all users.: これによってこのエントリーをすべてのユーザから削除します
+Edit entry: エントリーの編集
+Edit repeating entry for all dates: 全繰返しエントリーの編集
+Delete repeating event for all dates: 全繰返しエントリーの削除
+Edit entry for this date: 今回分だけエントリーを編集する
+Delete entry only for this date: 今回分だけエントリーを削除する
 from calendar of: 次のカレンダーから:
-This will delete the entry from your calendar.: このエントリをあなたのカレンダーから削除します。
-Do you want to add this entry to your calendar?: このエントリをあなたのカレンダーに追加しますか?
-This will add the entry to your calendar.: これによってこのエントリをあなたのカレンダーに追加します
+boss: ボス
+This will delete the entry from your calendar.: このエントリーをあなたのカレンダーから削除します。
+Do you want to add this entry to your calendar?: このエントリーをあなたのカレンダーに追加しますか?
+This will add the entry to your calendar.: これによってこのエントリーをあなたのカレンダーに追加します
 Email all participants: 参加者全員にメール送信する
 Hide activity log: 活動ログを隠す
-Show activity log: 活動ログを表示する
+Show activity log: 活動ログの表示
 Export this entry to: 次の形式にエクスポート
+Palm Pilot: =
 
 ########################################
 # Page: view_r.php
 #
-Double-click on empty cell to add new entry: 空セルをダブルクリックで新規エントリを追加する
+Double-click on empty cell to add new entry: 空セルをダブルクリックで新規エントリーを追加する
 
 ########################################
 # Page: week_details.php
 #
-New Entry: 新規エントリ
+New Entry: 新規エントリー
 
 ########################################
 # Page: includes/access.php
 #
 Another Users Calendar: 他ユーザーのカレンダー
-Category Management: カテゴリ管理
+Category Management: カテゴリー管理
 Day View: 日間表示
 Edit Event: イベントの編集
 Month View: 月間表示
@@ -1091,53 +1171,60 @@ Week View: 週間表示
 Year View: 年間表示
 
 ########################################
-# Page: includes/config.php
-#
-Fatal Error: 致命的なエラー
-Troubleshooting Help: トラブルシューティングヘルプ
-
-########################################
 # Page: includes/date_formats.php
 #
-LANGUAGE DEFINED: 言語ファイルでの定義を使う
 December: 12月
 Dec: 12 月
+LANGUAGE DEFINED: 言語ファイルでの定義を使う
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database: データベースへの接続時にエラーです
+db_type not defined.: db_type が定義されていません。
+invalid db_type: 無効な db_type
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: 致命的なエラー
 
 ########################################
 # Page: includes/functions.php
 #
 This event is private: このイベントはプライベートです
+This event is XXX.: このイベントは XXX です。
 exceeds limit of XXX events per day: 1 日のイベント数の制限である XXX 個を超えました。
 All Attendees: 全参加者
 Busy: 予約済み
 Tentative: 暫定的
-Event approved: イベントを承認しました。
-Journal approved: 記事を承認しました
-Task approved: タスクを承認しました
+Event approved: イベントの承認
+Journal approved: 記事の承認
+Task approved: タスクの承認
 Attachment: 添付
-Event created: イベントを作成しました。
-Journal created: 記事を作成しました
-Task created: タスクを作成しました
-Event deleted: イベントを削除しました。
-Journal deleted: 記事を削除しました
-Task deleted: タスクを削除しました
-New user via email (self registration): 電子メールで新規ユーザー(自分で登録する)
-New user (self registration): 新規ユーザー(自分で登録する)
-Notification sent: 通知送信
-Event rejected: イベントを拒否しました。
-Journal rejected: 記事を拒否しました
-Task rejected: タスクを拒否しました
-Reminder sent: リマインダー送信
-Event updated: イベントを更新しました。
-Journal updated: 記事を更新しました
-Task updated: タスクを更新しました
+Event created: イベントの作成
+Journal created: 記事の作成
+Task created: タスクの作成
+Event deleted: イベントの削除
+Journal deleted: 記事の削除
+Task deleted: タスクの削除
+New user via email (self registration): 電子メールで新規ユーザー作成(自己登録)
+New user (self registration): 新規ユーザー作成(自己登録)
+Notification sent: 通知の送信
+Event rejected: イベントの拒否
+Journal rejected: 記事の拒否
+Task rejected: タスクの拒否
+Reminder sent: リマインダーの送信
+Event updated: イベントの更新
+Journal updated: 記事の更新
+Task updated: タスクの更新
 Delete User: ユーザーの削除
 WK: 週
 TASKS: タスク一覧
 Task_Title: 題名
 Due: 予定
 Task Name: タスク名
-You have XXX unapproved entries: XXX 件の未承認エントリを持っています。
+You have XXX unapproved entries: XXX 件の未承認エントリーを持っています。
 Changes successfully saved: 変更の保存に成功しました。
 Event: イベント
 Action: 操作
@@ -1167,13 +1254,16 @@ Aug: 8 月
 Sep: 9 月
 Oct: 10 月
 Nov: 11 月
+Full Moon: 満月
+New Moon: 新月
 The following error occurred: 以下のエラーが起きました
 You are not authorized.: 権限を与えられていません。
-Add N hours to: +N ����
-Subtract N hours from: -N ����
-same as: ����
-server time: �T�[�o�[�Ƃ̎���
+Add N hours to: +N 時間加算する
+Subtract N hours from: -N 時間減算する
+same as: 次と同じ:
+server time: サーバー時間
 Your current GMT offset is: 現在の GMT との差:
+Your current GMT offset is XXX hours.: 現在の GMT との差は XXX 時間です。
 Error approving event: イベント承認エラー
 Sunday: 日曜日
 Monday: 月曜日
@@ -1200,7 +1290,7 @@ Page: ページ
 # Page: includes/trailer.php
 #
 My Calendar: マイカレンダー
-Add New Entry: 新規エントリの追加
+Add New Entry: 新規エントリーの追加
 Add New Task: 新規タスクの追加
 Logout: ログアウト
 Home: ホーム
@@ -1211,7 +1301,6 @@ Manage calendar of: カレンダー管理:
 ########################################
 # Page: includes/translate.php
 #
-Browser-defined: ブラウザーの定義
 English: 英語
 English-US: 英語(米国)
 Afrikaans: アフリカ語
@@ -1245,6 +1334,7 @@ Spanish: スペイン語
 Swedish: スウェーデン語
 Turkish: トルコ語
 Welsh: ウェールズ語
+Browser-defined: ブラウザーの定義
 event: イベント
 journal: ジャーナル
 
@@ -1262,11 +1352,14 @@ no such user: ユーザーが居ません。
 ########################################
 # Page: includes/xcal.php
 #
+MO: 月
 TU: 火
 WE: 水
 TH: 木
 FR: 金
 SA: 土
+SU: 日
+Exclusion Dates: 除外日
 Unnamed Event: 名称未設定イベント
 Event Imported: イベントをインポートしました。
 
@@ -1281,6 +1374,7 @@ Mb: メガバイト
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: お知らせ
+encoding: エンコーディング
 execute: 実行できません。
 instantiate: Could not instantiate mail function mail 関数をインスタンスできません。
 mailer_not_supported: メーラーをサポートしていません。
@@ -1306,7 +1400,7 @@ Color format should be RRGGBB.: 色は '#RRGGBB'の書式で設定してくだ�
 ########################################
 # Page: includes/js/availability.php
 #
-Change the date and time of this entry?: このエントリの日付と時間を変更しますか?
+Change the date and time of this entry?: このエントリーの日付と時間を変更しますか?
 
 ########################################
 # Page: includes/js/edit_entry.php
@@ -1321,7 +1415,8 @@ You have not entered a valid time of day: 有効な時間を入力していま�
 ########################################
 # Page: includes/js/edit_layer.php
 #
-Invalid color: 無効色
+Invalid color: 無効な色
+layer: レイヤー
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1339,13 +1434,18 @@ URL cannot be blank.: URL は空にできません
 File type does not match Import Format: ファイルの種類がインポート形式と一致しません。
 
 ########################################
+# Page: includes/js/visible.php
+#
+Invalid Color: 無効な色
+
+########################################
 # Page: includes/menu/index.php
 #
 This Week: 今週
 This Month: 今月
 This Year: 今年
 Add New Event: 新規イベントの追加
-Delete Entries: エントリの削除
+Delete Entries: エントリーの削除
 My Views: 自分の表示
 Manage Calendar of: カレンダーの管理
 My Reports: 自分の報告
@@ -1360,6 +1460,7 @@ Help Contents: ヘルプコンテンツ
 #
 WebCalendar Installation Wizard: WebCalendar インストールウィザード
 Step: ステップ
+WebCalendar Installation Wizard Step XXX: WebCalendar インストールウィザード ステップ XXX
 Single-User: シングルユーザー
 Failure Reason: 失敗の理由
 You must manually create database: 手動でデータベースを作成しなければなりません
@@ -1379,16 +1480,15 @@ Unable to write password to settings.php file: ファイル settings.php に書�
 Password has been set: パスワードは設定されました。
 Connection Successful: 接続に成功しました。
 Please go to next page to continue installation: インストールを続けるには次のページに移動してください。
-Correct your entries or click the Create New button to continue installation: エントリを修正するか、インストールを継続するために<b>新規作成する</b>ボタンをクリックしてください。
-Correct your entries and try again: エントリを修正し、再度試みます。
+does not exist: は存在しません
+is not writable: は書き込めません
 Error Converting Timezone: タイムゾーンの変換にエラーです。
-Please change the file permissions of this file: このファイルのパーミッションを変更してください。
-Your settings have been saved: 設定を保存しました。
+Your settings have been saved: 設定は保存されました
 Error you must specify a Single-User Login: エラーです。シングルユーザーログインを指定しなければなりません。
 Full Path (no backslashes): フルパス (バックスラッシュは不要です)
 The password contains illegal characters.: パスワードに不当な文字が含まれています。
 PHP Version Check: PHP のバージョンを確認する
-Check to see if PHP 4.1.0 or greater is installed: PHP 4.1.0 以上がインストールされているか確認
+Check to see if PHP 4.1.0 or greater is installed: PHP バージョン 4.1.0 以上がインストールされているか確認
 PHP version: PHP のバージョン
 PHP Settings: PHP の設定
 Detailed PHP Info: PHP の詳細情報
@@ -1396,13 +1496,12 @@ Session Check: セッションの確認
 To test the proper operation of sessions, reload this page: セションの適切な操作を確認するためには、このページに再読み込みしてください。
 You should see the session counter increment each time: セッションカウンターが毎回増加していることを確認するべきです。
 SESSION COUNTER: セッションカウンター
-Settings.php Status: Settings.php の状態
-Your settings.php file appears to be valid: <b>settings.php</b> ファイルは有効に見えます。
+Settings.php Status: Settins.php の状態
+Your settings.php file appears to be valid: settings.php は正常に見えます
 Configuration Wizard Password: ウィザードパスワードの設定
 Create Settings File Password: 設定ファイルのパスワードを作成する
 Database Status: データベースの状態
 Supported databases for your PHP installation: インストール済 PHP でサポートされたデータベース
-Your current database settings are able to access the database: 現在のデータベース設定はデータベースにアクセスできます。
 Please Test Settings: テスト設定をしてください。
 Your current database settings are not able...: 現在のデータベース設定はデータベースにアクセスすることが<b>できず</b>、まだテストされていません。
 Database Settings: データベースの設定
@@ -1419,13 +1518,14 @@ This appears to be an upgrade from version: これは次のバージョンから
 If you are using a fully supported database, this step will be performed automatically for you: 全面的にサポートされたデータベースを使用していれば、このステップは自動的に実行されるでしょう。
 If not, the required SQL can be displayed and you should be able: そうでない場合、要求された SQL を表示することができます。
 to cut &amp; paste it into your database server query window: またそれを切り取り、データベースサーバーの照会ウィンドウに貼り付けできなければなりません。
-No database actions are required: データベース操作を要求しません
+No database actions are required: データベース操作は要求されていません
 The following database actions are required: 次のデータベース操作が必要です。
 ODBC Underlying Database: ODBC の元のデータベース
+Automatic installation not supported: 自動インストールはサポートされていません
 This may take several minutes to complete: これが完了するには数分かかるかもしれません。
 Install Database: データベースをインストールする
-Update Database: データベースをアップデートする
-Display Required SQL: 要求された SQL を表示する
+Update Database: データベースを更新する
+Display Required SQL: 要求された SQL の表示
 This is the final step in setting up your WebCalendar Installation.: これは、WebCalendar のインストール設定における最終ステップです。
 Timezone Conversion: タイムゾーン変換
 It appears that you have: おそらく
@@ -1436,17 +1536,21 @@ Application Settings: アプリケーション設定
 HTTP-based authentication was not detected: HTTPに基づいた認証は検知されませんでした。
 You will need to reconfigure your web server if you wish to: もしウェブサーバーを再設定する必要があるなら、
 select Web Server from the User Authentication choices below.: 「ユーザー認証」より「ウェブサーバー」を選択してください。
-HTTP-based authentication was detected.: HTTP ベースの認証を検知しました
+HTTP-based authentication was not detected...: HTTP での認証は検出されませんでした
+HTTP-based authentication was detected.: HTTP での認証を検知しました
 User authentication is being handled by your web server.: ユーザー認証はウェブサーバーで扱います。
 You should select Web Server from the list of User Authentication choices below.: 「ユーザー認証」選択の一覧からから「ウェブサーバー」を選ばなければなりません
-Create Default Admin Account: デフォルト管理アカウントを作成する
+Create Default Admin Account: 標準の管理アカウントを作成する
+Admin Account Not Found: 管理者アカウントが見つかりません
 User Authentication: ユーザー認証
-Web-based via WebCalendar (default): WebCalendar でウェブベース(デフォルト)
+Web-based via WebCalendar (default): WebCalendar でウェブベース(標準)
 Web Server: ウェブサーバー
+Web Server (detected): ウェブサーバー (自動検出)
+Web Server (not detected): ウェブサーバー (自動検出なし)
 None (Single-User): なし (シングルユーザー)
 Read-Only: 読み込みのみ
 Environment: 環境
-Production: 製作
+Production: 本番
 Development: 開発
 Save Settings: 設定を保存する
 Launch WebCalendar: WebCalendar を起動する
@@ -1454,7 +1558,13 @@ Launch WebCalendar: WebCalendar を起動する
 ########################################
 # Page: install/install_functions.php
 #
+Error updating table XXX: テーブル XXX の更新時にエラーです
 Conversion Successful: 変換に成功しました
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: プレビューが利用できません
 
 ########################################
 # Page: tools/reload_remotes.php
@@ -1467,6 +1577,13 @@ Remote Calendars not enabled: リモートカレンダーは有効ではあり�
 #
 Pecentage Complete: パーセント完了
 Reminder: リマインダー
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action: 未サポート操作
+Unsupported action XXX.: 「XXX」はサポートされていない操作です。
+No event id specified.: イベント ID が指定されていません。
 
 ########################################
 # Page: ws/user_mod.php
