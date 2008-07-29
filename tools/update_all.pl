@@ -15,8 +15,7 @@ closedir ( DIR );
 
 foreach $f ( @files ) {
   print "update_translation.pl $f\n";
-  print `perl update_translation.pl $f`;
+  print `perl update_translation.pl -b -m $f`;
 }
 print "Done.\n";
 exit 0;
-
