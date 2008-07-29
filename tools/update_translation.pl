@@ -61,24 +61,32 @@ sub find_install_files {
     if ( $_ =~ /\.(php)$/i
     && $File::Find::dir =~ /install/i );
 }
-		
+
 $base_dir  = '..';
 $trans_dir = '../translations';
 
 $base_trans_file = "$trans_dir/English-US.txt";
 $plugin          = '';
 
-$show_missing = 1; # set to 0 to minimize translation file.
+$save_backup  = 0; # set to 1 to create backups
 $show_dups    = 0; # set to 0 to minimize translation file.
+$show_missing = 1; # set to 0 to minimize translation file.
 $verbose      = 0;
 
 ( $this ) = reverse split( /\//, $0 );
 
-$save_backup = 0;  # set to 1 to create backups
-
 for ( $i = 0; $i < @ARGV; $i++ ) {
   if ( $ARGV[ $i ] eq '-p' ) {
     $plugin = $ARGV[ ++$i ];
+  }
+  elsif ( $ARGV[ $i ] eq '-b' ) {
+    $save_backup++;
+  }
+  elsif ( $ARGV[ $i ] eq '-d' ) {
+    $show_dups++;
+  }
+  elsif ( $ARGV[ $i ] eq '-m' ) {
+    $show_missing--;
   }
   elsif ( $ARGV[ $i ] eq '-v' ) {
     $verbose++;
