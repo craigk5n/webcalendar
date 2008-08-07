@@ -185,7 +185,7 @@ $languages = array (
   "Basque" => "Basque",
   "Bulgarian" => "Bulgarian",
   "Catalan" => "Catalan",
-  "Chinese (Traditonal/Big5)" => "Chinese-Big5",
+  "Chinese (Traditional/Big5)" => "Chinese-Big5",
   "Chinese (Simplified/GB2312)" => "Chinese-GB2312",
   "Czech" => "Czech",
   "Danish" => "Danish",
@@ -279,7 +279,7 @@ $browser_languages = array (
 // translate("Basque")
 // translate("Bulgarian")
 // translate("Catalan")
-// translate("Chinese (Traditonal/Big5)")
+// translate("Chinese (Traditional/Big5)")
 // translate("Chinese (Simplified/GB2312)")
 // translate("Czech")
 // translate("Danish")
