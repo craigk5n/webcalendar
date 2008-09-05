@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -38,21 +38,21 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: access.php
+# Page: templates/activity_log.tpl
 #
 Calendar: Kalendarin
+Date: Daten
+Time: Koha
+
+########################################
+# Page: templates/edit_views.tpl
+#
+Month: Muaji
 
 ########################################
 # Page: admin.php
 #
-Month: Muaji
 Year: Viti
-
-########################################
-# Page: approve_entry.php
-#
-Date: Daten
-Time: Koha
 
 ########################################
 # Page: edit_report.php
@@ -70,7 +70,6 @@ Dec: Dhj
 ########################################
 # Page: includes/functions.php
 #
-WK: Java
 January: Janar
 February: Shkurt
 March: Mars
@@ -104,3 +103,8 @@ Wed: Mer
 Thu: Enj
 Fri: Pre
 Sat: Sht
+
+########################################
+# Page: includes/smarty/function.display_month.php
+#
+WK: Java

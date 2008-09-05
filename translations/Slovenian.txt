@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -38,20 +38,20 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: access.php
+# Page: templates/activity_log.tpl
 #
 Calendar: koledarju
+Date: datum
+
+########################################
+# Page: templates/edit_views.tpl
+#
+Month: mesec
 
 ########################################
 # Page: admin.php
 #
-Month: mesec
 Year: leto
-
-########################################
-# Page: approve_entry.php
-#
-Date: datum
 
 ########################################
 # Page: edit_report.php
@@ -63,7 +63,6 @@ Next year: Naslednje leto
 ########################################
 # Page: includes/functions.php
 #
-WK: Te
 January: Januar
 February: Februar
 March: Marec
@@ -89,3 +88,8 @@ Wed: Sre
 Thu: Čet
 Fri: Pet
 Sat: Sob
+
+########################################
+# Page: includes/smarty/function.display_month.php
+#
+WK: Te

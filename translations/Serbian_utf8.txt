@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -38,13 +38,9 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: access.php
+# Page: templates/activity_log.tpl
 #
 Calendar: kalendaru
-
-########################################
-# Page: approve_entry.php
-#
 Date: datum
 Time: Vreme
 
@@ -63,7 +59,6 @@ December: Decembar
 ########################################
 # Page: includes/functions.php
 #
-WK: Nd
 January: Januar
 February: Februar
 March: Mart
@@ -90,3 +85,8 @@ Wed: Sre
 Thu: Čet
 Fri: Pet
 Sat: Sub
+
+########################################
+# Page: includes/smarty/function.display_month.php
+#
+WK: Nd

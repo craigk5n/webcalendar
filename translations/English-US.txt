@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-21-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -810,8 +810,8 @@ Next: Next
 ########################################
 # Page: access.php
 #
-DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 ASSISTANT PERMISSIONS: ASSISTANT PERMISSIONS
+DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Database error XXX.: Database error: XXX.
 Allow Access to Other Users Calendar: Allow Access to Other Users&#39; Calendar
 Configure Default Assistant Access to My Calendar: Configure Default Assistant Access to My Calendar
@@ -848,7 +848,6 @@ Bottom: Bottom
 ########################################
 # Page: adminhome.php
 #
-Account: Account
 Views: Views
 Layers: Layers
 Reports: Reports
@@ -856,14 +855,11 @@ Reports: Reports
 ########################################
 # Page: ajax.php
 #
-Duplicate Name: Duplicate Name
 Duplicate Name XXX: Duplicate Name: "XXX".
-Username already exists: Username already exists
 Username XXX already exists.: Username "XXX" already exists.
-Email address already exists: Email address already exists
 Email address XXX already exists.: Email address XXX already exists.
 Invalid Color: Invalid Color
-Color format should be &#39;#RRGGBB&#39;: Color format should be &#39;#RRGGBB&#39;
+Color format should be #RRGGBB: Color format should be #RRGGBB
 View this event: View this event
 Edit this event: Edit this event
 View this task: View this task
@@ -1065,6 +1061,9 @@ ruSureTemplate: Are you sure you want to delete this template?
 # Page: edit_user_handler.php
 #
 Deleting users not supported: Deleting users not supported
+The passwords were not identical: The passwords were not identical
+You have not entered a password: You have not entered a password
+Username can not be blank: Username can not be blank
 
 ########################################
 # Page: edit_views.php
@@ -1241,7 +1240,9 @@ No user specified: No user specified
 ########################################
 # Page: register.php
 #
+Username already exists: Username already exists
 Email address can not be blank: Email address can not be blank
+Email address already exists: Email address already exists
 Illegal characters in login: Illegal characters in login
 A new WebCalendar account has been set up for you: A new WebCalendar account has been set up for you
 Your username is: Your username is
@@ -1322,6 +1323,7 @@ more: more
 ########################################
 # Page: users.php
 #
+Account: Account
 NonUser Calendars: NonUser Calendars
 Remote Calendars: Remote Calendars
 
@@ -1339,6 +1341,11 @@ Invalid entry id.: Invalid entry id.
 Declined: Declined
 Needs-Action: Needs-Action
 by: by
+
+########################################
+# Page: view_r.php
+#
+Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
 
 ########################################
 # Page: view_t.php
@@ -1770,34 +1777,62 @@ No participants found for event id XXX.: No participants found for event id: XXX
 Error you must specify a\\nSingle-User Login: Error you must specify a\\nSingle-User Login
 Error you must specify an\\nIMAP Server: Error you must specify an\\nIMAP Server
 Error you must specify an\\nApplication Path: Error you must specify an\\nApplication Path
+Server URL is required: Server URL is required
+Server URL must end with &quot;/&quot;: Server URL must end with &quot;/&quot;
 Full Path (no backslashes): Full Path (no backslashes)
 The password contains illegal characters.: The password contains illegal characters.
 
 ########################################
 # Page: install/index.php
 #
-WebCalendar Installation Wizard: WebCalendar Installation Wizard
-Step: Step
-Single-User: Single-User
-Failure Reason: Failure Reason
-You must manually create database: You must manually create database
-Database Cache Directory: Database Cache Directory
-Test Settings: Test Settings
-Create New: Create New
-Database Prefix: Database Prefix
-Database Name: Database Name
-Timezone Conversion Successful: Timezone Conversion Successful
+Passwords do not match: Passwords do not match
+Password has been set: Password has been set
 Successful Login: Successful Login
 Invalid Login: Invalid Login
-Passwords do not match: Passwords do not match
-Unable to write password to settings.php file: Unable to write password to settings.php file
-Password has been set: Password has been set
 Connection Successful: Connection Successful
 Please go to next page to continue installation: Please go to next page to continue installation
 Correct your entries or click Create...: Correct your entries or click the <b>Create New</b> button to continue installation
 Correct your entries and try again: Correct your entries and try again
 does not exist: does not exist
 is not writable: is not writable
+Log In: Log In
+#
+# << MISSING >>
+# install password text...:
+Enter Installation Password: Enter Installation Password
+Installation Password: Installation Password
+Enter Installation Password Again: Enter Installation Password Again
+
+########################################
+# Page: install/install_ajax.php
+#
+Database Name: Database Name
+
+########################################
+# Page: install/install_config.php
+#
+File Locations: File Locations
+#
+# << MISSING >>
+# file location text...:
+#
+# << MISSING >>
+# public-cache-help:
+#
+# << MISSING >>
+# database-cache-help:
+Database Settings: Database Settings
+#
+# << MISSING >>
+# db setting text...:
+Database Type: Database Type
+Server: Server
+Connection Persistence: Connection Persistence
+
+########################################
+# Page: install/install_functions.php
+#
+Unable to write password to settings.php file: Unable to write password to settings.php file
 Please change the file permissions of this file: Please change the file permissions of this file
 Please change includes dir permission: Please change the file permissions of your includes directory to allow writing by other users
 Error Unable to write to file: Error Unable to write to file
@@ -1840,10 +1875,6 @@ Step2 Intro: In this section you will set up and test a connection to your datab
 Database Status: Database Status
 Please Test Settings: Please Test Settings
 Your current database settings are not...: Your current database settings are <b>not</b> able to access the database or have not yet been tested
-Database Settings: Database Settings
-Database Type: Database Type
-Server: Server
-Connection Persistence: Connection Persistence
 
 ########################################
 # Page: install/step3.php

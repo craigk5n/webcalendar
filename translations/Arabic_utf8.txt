@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -38,7 +38,7 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: approve_entry.php
+# Page: templates/activity_log.tpl
 #
 Time: الوقت
 
@@ -58,7 +58,6 @@ Dec: ديسمبر
 ########################################
 # Page: includes/functions.php
 #
-WK: أسبوع
 January: يناير
 February: فبراير
 March: مارس
@@ -95,3 +94,8 @@ Wed: أربعاء
 Thu: خميس
 Fri: جمعة
 Sat: سبت
+
+########################################
+# Page: includes/smarty/function.display_month.php
+#
+WK: أسبوع

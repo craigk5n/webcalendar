@@ -12,7 +12,7 @@
 # Czech converted to UTF8 and updated by: Lukáš Hlůže on 13 Nov, 2007
 #
 # $Id$
-# Translation last updated on 11-14-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -45,61 +45,32 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: access.php
+# Page: templates/access.tpl
 #
-Database error: Chyba databáze
+User Access Control: Správa uživatelských práv
 Go: Jdi
 Save: Uložit
-Public Access: Veřejný přístup
-User Access Control: Správa uživatelských práv
-Calendar: Kalendář
 Edit: Uprav
-Events: Události
 Public: veřejný
 Confidential: důvěrný
 Private: Soukromé
 
 ########################################
-# Page: activity_log.php
+# Page: templates/activity_log.tpl
 #
-Next: Další
-Previous: Předchozí
+Activity Log: Protokol o aktivitách
+Action: Událost
+User: Uživatel
+Calendar: Kalendář
+Date: Datum
+Time: Čas
+Event: Událost
+Events: Události
 
 ########################################
-# Page: add_entry.php
+# Page: templates/admin.tpl
 #
-confidential: důvěrný
-private: soukromé
-Error adding event: Chyba při přidávání události
-
-########################################
-# Page: admin.php
-#
-Select: Výběr
-Day: Den
-Week: Týden
-Month: Měsíc
-Year: Rok
-Bottom: Dole
-Top: Nahoře
-Settings: Nastavení
-Groups: Skupiny
-NonUser Calendars: Neuživatelské kalendáře
-Other: Ostatní
-Colors: Barvy
-Document background: Pozadí dokumentu
-Document title: Titulek
-Document text: Text dokumentu
-Table grid color: Barva mřížky v tabulce
-Table header background: Pozadí záhlaví tabulky
-Table header text: Záhlaví tabulky
-Table cell background: Pozadí políček v tabulce
-Table cell background for current day: Pozadí políčka pro dnešní den
-Table cell background for weekends: Pozadí tabulky pro víkendy
-Event popup background: Pozadí vyskakovacího okna události
-Event popup text: Text vyskakovacího okna události
 System Settings: Nastavení systému
-Help: Nápověda
 app-name-help: Určuje jméno aplikace, které se na všech stránkách zobrazí v záhlaví prohlížeče. Zadaná hodnota se zkusí vyhledat v překladech, aby bylo možno definovat její znění ve všech jazycích.
 Application Name: Název aplikace
 server-url-help: Určuje základní URL k tomuto web kalendáři. Tato URL bude použita jako základ při zasílání emailů s připomínkami a upozorňováním.
@@ -121,12 +92,8 @@ display-week-starts-on: Tímto lze určit, zda týden začíná v neděli a nebo
 Week starts on: Začátek týdne
 time-format-help: Určuje jaký formát času používat:<br /><i>12ti hodinový:</i> Zobrazuje časy jako je 3dop., 8:30odp., atp.<br /><i>24 hodinový:</i> Zobrazuje časy např. jako 300, 2030, atp.
 Time format: Formát času
-12 hour: 12 hodin
-24 hour: 24 hodin
 timed-evt-len-help: Určuje způsob zadávání, kterým se určí délka naplánované události.
 Specify timed event length by: Zadávání délky plánovaných událostí
-Duration: Délka
-End Time: Koncovým časem
 work-hours-help: Tímto určíš rozsah času pro zobrazení dne v kalendáři.
 Work hours: Pracovní doba
 From: Od
@@ -141,19 +108,16 @@ Display week number: Zobrazovat číslo týdne
 display-desc-print-day-help: Vypisuj popisy událostí v náhledu na den určenému pro tisk.
 Display description in printer day view: Zobrazuj popisy při tiskovém náhledu na den
 yearly-shows-events-help: V ročním pohledu bude zobrazovat události tučnými písmy.
-Display days with events in bold in month and year views: V mšsíčním a ročním pohledu zobrazovat dny s událostmi tučně
 allow-view-add-help: V náhledu na kalendáře jiných uživatelů přibude '+' pro rychlé vkládání nových událostí do jejich kalendářů.
 Include add event link in views: Přidej odkaz na vkládání v jiných pohledech
-allow-view-other-help: Určuje, zda si může uživatel prohlížet kalendář někoho jiného.
-Allow viewing other users calendars: Povol prohlížení kalendářů jiných uživatelů
+popup-includes-siteextras-help: Pokud je povoleno, umožní vlastní údaje k událostem. Nastavitelné v souboru site_extras.php. Bude zobrazeno v popupu události.
+Display Site Extras in popup: Zobrazuj rozšířené místní info v pop-up oknech
 require-approvals-help: Pokud je povoleno, uživatel bude muset danou událost nejprve potvrdit a teprve pak se mu zobrazí v kalendáři (samozřejmě, pokud nemá povoleno zobrazování nepotvrzených). Poznemenejme, že nastavením tohoto na "Ne" nevypne nutnost potvrzování událostí pro veřejně přístupné kalendá?e (pokud jsou veřejně přístupné kalendáře povoleny...).
 Require event approvals: Vyžaduj potvrzování událostí
 display-unapproved-help: Tímto určíš, jestli se mají v tvém kalendáři zobrazovat nepotvrzené události<br /> Pokud je nastaveno na "Ano", pak se nepotvrzené události zobrazí v kalendáři (jinou barvou písma).<br /> Pokud je nastaveno na "Ne", nebudou nepotvrzené události zobrazeny, dokud je někdo nepotvrdí.
 Display unapproved: Zobrazovat nepotvrzené události
 conflict-check-help: Kontroluje konflikty mezi událostmi (dvě události naplánované na stejnou dobu pro tutéž osobu). Pokud tuto kontrolu povolíš, i tak bude možno po potvrzení konfliktu naplánovat na stejnou dobu více událostí. Doporučujeme nechat tuto kontrolu zapnutou.
 Check for event conflicts: Kontrola na konflikty mezi událostmi
-Yes: Ano
-No: Ne
 conflict-months-help: Pokud je zapnuta kontrola konfliktů, tímto lze nastavit, kolik mšsíců do budoucnosti má být prohledáno na možný konflikt. Jestliže ti připadá, že vkládání nových událostí trvá moc dlouho, zmenši toto číslo.
 Conflict checking months: Na konflikty kontolovat měsíců
 conflict-check-override-help: Umožní uživatelům potlačit konflikt mezi událostmi a naplánovat dvě a více události na stejný čas.
@@ -162,54 +126,29 @@ limit-appts-help: Umožní administrátorovi nastavit systémové omezení počt
 Limit number of timed events per day: Omez počet naplánovaných události na jeden den
 limit-appts-number-help: Určuje maximální počet událostí, které si může daný uživatel naplánovat na jeden den.
 Maximum timed events per day: Maximální počet naplánovaných události za den
-disable-priority-field-help: Výběrem 'Ano' odstraníš políčko 'Priorita' ze stránky události. Čímž se zajistí jednodušší formulá?.
-Disable Priority field: Zakaž políčko priority
-disable-access-field-help: Výběrem 'Ano' odstraníš políčko 'Přístup' ze stránky události. Čímž se zajistí jednodušší formulář.
-Disable Access field: Zakaž políčko pro nastavení přístupu
-disable-participants-field-help: Výběrem 'Ano' odstraníš políčko pro nastavování účastníků událostí - tím také zabráníš přidávání jiných uživatelů k událostem. Pokud povolíš tuto volbu, pak budeš chtít asi taky zakázat 'Povolení prohlížení si kalendářů jiných uživatelů'.
-Disable Participants field: Zakaž políčko pro účastníky
-disable-repeating-field-help: Výběrem 'Ano' se odstraní možnost nastavovat opakování události. Tímto se pro nováčky zjednoduší formulář.
-Disable Repeating field: Zakaž políčko pro opakování
 allow-html-description-help: Pokud je povoleno, uživatelé si smí vkládat HTML kód do popisu události. Pokud je zakázáno, HTML bude 'oříznuto', takže bude vypadat jako čístý text bez formátování. POZOR: Povolením této vlastnosti umožníš uživatelům např. vkládat obrázky z jiných serverů. Tj. bezpečnostní riziko.
 Allow HTML in Description: Povol HTML v popisu
-popup-includes-siteextras-help: Pokud je povoleno, umožní vlastní údaje k událostem. Nastavitelné v souboru site_extras.php. Bude zobrazeno v popupu události.
-Display Site Extras in popup: Zobrazuj rozšířené místní info v pop-up oknech
-remember-last-login-help: Pokud je povoleno, login uživatele bude předvyplněn na přihlašovací stránce (ne heslo) a bude i použito uživatelské nastavení barev a jazyka.
-Remember last login: Zapamatuj si poslední přihlášení
-allow-public-access-help: Pokud je povoleno, bude možno bez možnosti zápisu přistupovat do kalendáře bez nutnosti se přihlašovat.
-Allow public access: Povolit veřejný přístup
-public-access-default-visible: Události od anonymů se automaticky objeví v kalendářích všech uživatel?
-Public access visible by default: Anonymní příspěvky standartně viditelné
-public-access-default-selected: Při přidávání nových události se anonmní účet automaticky přidá jako účastník.
-Public access is default participant: Anonymové budou ve výchozím stavu účastníky
-public-access-view-others-help: Určuje, zda při anonymním přístupu (nebo pomocí veřejného účtu) je možné si prohlížet kalendáře uživatelů tohoto systému.
-Public access can view other users: Anonymové si smějí prohlížet jiné uživatele
-public-access-can-add-help: Pokud je povoleno, lidé přistupující pomocí veřejného účtu/anonymně budou moci vytvářet nové události, ale ty se nezobrazí do kalendářů, dokud to administrátor nepovolí.
-Public access can add events: Anonymové smějí přidávat události
-public-access-add-requires-approval-help: Určuje, zda nově vytvořené události pomocí veřejného účtu vyžadují souhlas předtím, než budou zobrazeny.
-Public access new events require approval: Nové události od anonymů vyžadují souhlas
-public-access-sees-participants-help: Pokud je povoleno, lidé přistupující ke kalendáři pomocí veřejného účtu/přístupu budou mít při prohlížení události zobrazeny i účastníky.
-Public access can view participants: Anonymové smějí vidět účastníky
 groups-enabled-help: Povolí podporu skupin. To umožní řazení uživatelů do skupin.
 Groups enabled: Skupiny jsou povoleny
 user-sees-his-group-help: Pokud je povoleno, uživatel neuvidí kalendáře uživatelů, kteří nejsou alespon v jedné z jeho skupin.
 User sees only his groups: Uživatel smí vidět jen svou skupinu
+remember-last-login-help: Pokud je povoleno, login uživatele bude předvyplněn na přihlašovací stránce (ne heslo) a bude i použito uživatelské nastavení barev a jazyka.
+Remember last login: Zapamatuj si poslední přihlášení
+allow-view-other-help: Určuje, zda si může uživatel prohlížet kalendář někoho jiného.
 nonuser-enabled-help: Pokud je povoleno, administrátoři budou mít možnost přidávat kalendáře nepatřící žádnému uživateli - neuživatelské kalendáře
 Nonuser enabled: Povolit neuživatelské kalendáře
 nonuser-list-help: Kde se mají zobratovat neuživatelské kalendáře v seznamu účastníků
 Nonuser list: Zobrazuj v seznamu účastníků
-reports-enabled-help: Pokud jsou povoleny, uživatelé uvidí "Sestavy" v dolní části každé stránky. Bude jim umožněno si sestavovat vlastní sestavy. Navíc, administrátoři můžou vytvářet globální sestavy, které se také všem objeví v dolní části stránek.
-Reports enabled: Povolit sestavy
-subscriptions-enabled-help: Určuje, zda se vzdálený uživatel smí připojit ke svému kalendáři v tomto systému. To mu umožní prohlížet si jeho události v aplikacích, které podporují standard iCal (jako jsou iCal od Apple a nebo Mozilla Calendar).
-Allow remote subscriptions: Povolit vzdálené přihlášení ke kalendáři
-categories-enabled-help: Povolení a podpora kategorií událostí
-Categories enabled: Povolení kategorií
 allow-external-users-help: Určuje, zda se i neuživatelé kalendáře smějí přidávat k událostem. Tímto umožníte i lidem, co nemají tento kalendář, aby byli v seznamu účastníků.
 Allow external users: Povol externí uživatele
 external-can-receive-notification-help: Když jsou povoleni externí uživatelé a zapnuto odesílání emailu, můžou externí uživatelé dostávat upozorňování na změny v událostech do svých emailů (na přidání, aktualizaci a mazání). Samozřejmě, pokud je zadán jejich email.
 External users can receive email notifications: Externí uživatelé smějí dostávat upozornění na email
 external-can-receive-reminder-help: Když jsou povoleni externí uživatelé a zapnuto odesílání emailu s notifikacemi, můžou externí uživatelé také dostávat na email připomínky (pokud je samozřejmě zadán jejich email)
 External users can receive email reminders: Externí uživatelé smějí dostávat emailové připomínky
+reports-enabled-help: Pokud jsou povoleny, uživatelé uvidí "Sestavy" v dolní části každé stránky. Bude jim umožněno si sestavovat vlastní sestavy. Navíc, administrátoři můžou vytvářet globální sestavy, které se také všem objeví v dolní části stránek.
+Reports enabled: Povolit sestavy
+categories-enabled-help: Povolení a podpora kategorií událostí
+Categories enabled: Povolení kategorií
 email-enabled-help: Lze zapnout/vypnout odesílaní všech upozornění a připomínek na email. Nastav na "ne", pokud tvůj server není nastaven pro odesílání emailů.
 Email enabled: Odesílání emailu povoleno
 email-default-sender: Určuje emailovou adresu odesilatele připomínek.
@@ -228,83 +167,53 @@ Event rejected by participant: Událost byla zamítnuta účastníkem
 Allow user to customize colors: Povol uživatelům měnit si barvy
 Enable gradient images for background colors: Povol gradientová obrázky namísto barvy pozadí
 Not available: Není k dispozici
+Document background: Pozadí dokumentu
+Document title: Titulek
+Document text: Text dokumentu
+Table header background: Pozadí záhlaví tabulky
+Table header text: Záhlaví tabulky
+Table cell background: Pozadí políček v tabulce
+Event popup background: Pozadí vyskakovacího okna události
+Event popup text: Text vyskakovacího okna události
 
 ########################################
-# Page: adminhome.php
+# Page: templates/adminhome.tpl
 #
-Assistants: Asistenti
-Preferences: Možnosti
-Users: Uživatelé
-Account: Účet
-Categories: Kategorie
-Views: Náhledy
-Layers: Vrstvy
-Reports: Sestavy
-Delete Events: Mazání události
-Activity Log: Protokol o aktivitách
-Public Preferences: Veřejné předvolby
-Unapproved Public Events: Neschválené veřejné události
 Administrative Tools: Administrační nástroje
 
 ########################################
-# Page: approve_entry.php
+# Page: templates/category.tpl
 #
-Hello: Ahoj
-The subject was: Předmět byl
-The description is: Popis je
-Date: Datum
-Time: Čas
-
-########################################
-# Page: assistant_edit.php
-#
-Admin mode: Admin mód
-Your assistants: Tví asistenti
-
-########################################
-# Page: availability.php
-#
-day: den
-
-########################################
-# Page: category.php
-#
-Global: Globální
 Category Name: Jméno kategorie
+Global: Globální
 Color: Barva
 Add: Přidat
 Delete: Smazat
 Make New Category: Přidat novou kategorii
 
 ########################################
-# Page: catsel.php
+# Page: templates/category_menu.tpl
 #
+Category: Kategorie
+
+########################################
+# Page: templates/catsel.tpl
+#
+Categories: Kategorie
 Remove: Odstranit
 Cancel: Zrušit
 
 ########################################
-# Page: del_entry.php
-#
-An appointment has been canceled for you by: Tvá schůzka byla zrušena uživatelem
-
-########################################
-# Page: docadd.php
+# Page: templates/docadd.tpl
 #
 Description: Popis
 
 ########################################
-# Page: edit_entry.php
+# Page: templates/edit_entry.tpl
 #
-am: dop.
-pm: odp.
-days: dnů
-hours: hodin
-minutes: minut
 Edit Entry: Uprav záznam
 Add Entry: Přidat záznam
 Details: Detaily
-Participants: Účastníci
-Repeat: Opakování
 brief-description-help: Zde by měl být stručný popis události (kolem 20ti znaků). Tímto textem bude zastupována událost při prohlížení kalendáře.
 Brief Description: Stručný popis
 full-description-help: Tímto bys měl doplňovat další detaily události. Tyto informace si bude moct prohlédnout ten, kdo klikne na zobrazení podrobností.
@@ -313,11 +222,7 @@ access-help: Určuje úroveň pro přístup k události.<br /> <i>Veřejné</i>:
 Access: Přístup
 priority-help: Určuje prioritu události. Události s vyšší prioritou budou zobrazeny tučně.
 Priority: Priorita
-High: vysoká
-Medium: střední
-Low: nízká
 category-help: Upřesňuje kategorii událostí.
-Category: Kategorie
 date-help: Tímto se určuje, kdy událost nastala.
 Untimed event: Nenačasovaná událost
 Timed event: Načasovaná událost
@@ -325,10 +230,17 @@ All day event: Celodenní událost
 Timezone Offset: časová zóna
 time-help: Tímto se urdžuje přesný čas události.<br /><i>Nemusí se sem nic vyplňovat.</i>
 duration-help: Tímto lze určit dobu trvání (v minutách) dané události.<br /><i>Toto políčko může zůstat prázdné.</i>
+Duration: Délka
+hours: hodin
+minutes: minut
 end-time-help: Určuje očekávaný konec události.
+Participants: Účastníci
+Users: Uživatelé
+Groups: Skupiny
 participants-help: Seznam účastníků této události.
 external-participants-help: Určuje seznam zůčastněných události, kterí nepatří mezi uživatele tohoto kalendářového systému. Tyto uživatele je možno vypsat jednoho po druhém, jeden na řádek (včetně emailové adresy). Pokud bude zadána emailová adresa, uživatel bude moct přijímat sdělení a připomínky.
 External Participants: Vnější zůčastnění
+Repeat: Opakování
 repeat-type-help: Vyber si, jak často se má událost opakovat<i>Měsíčně (podle dne)</i> znamená, že se událost má opakovat každé první pondělí v měsíci, třetí úterý v měsíci, atp. <i>Měsíční (podle data)</i> umožní opakovýní události ve stejný den každý měsíc.
 Daily: denně
 Weekly: týdně
@@ -342,15 +254,275 @@ repeat-frequency-help: Určuje, jak často se má událost opakovat. Výchozí p
 Frequency: Frekvence
 All: Všichni
 Send Reminder: Poslat upomínku
+Yes: Ano
+No: Ne
+days: dnů
+
+########################################
+# Page: templates/edit_group.tpl
+#
+Add Group: Přidej skupinu
+Edit Group: Uprav skupinu
+Group name: Jméno skupiny
+Updated: Aktualizováno
+Created by: Vytvořil
+
+########################################
+# Page: templates/edit_layer.tpl
+#
+Edit Layer: Upravit vrstvu
+Add Layer: Přidat vrstvu
+Source: Zdroj
+Duplicates: Duplikáty
+Show layer events that are the same as your own: Zobrazuj i ty události z vrstev, které máš stejné
+Add to My Calendar: Přidej do mého kalendáře
+
+########################################
+# Page: templates/edit_nonusers.tpl
+#
+Edit User: Editovat uživatele
+Add User: Přidat uživatele
+Calendar ID: ID kalendáře
+word characters only: může obsahovat pouze běžné znaky, bez háčka a čárek (a-zA-Z_0-9)
+First Name: Jméno
+Last Name: Příjmení
+
+########################################
+# Page: templates/edit_report.tpl
+#
+Add Report: Přidej sestavu
+Edit Report: Uprav sestavu
+Report name: Jméno sestavy
+Include standard header/trailer: Včetně standardního záhlaví/zápatí
+Include previous/next links: Včetně odkazů na předchozí/další
+Include empty dates: Včetně prázdných dnů
+Date range: Rozsah
+Template variables: Proměnné pro šablony
+Page template: Šablona stránky
+Day template: Šablona pro den
+Event template: Šablona pro událost
+
+########################################
+# Page: templates/edit_user.tpl
+#
+Change Password: Změnit heslo
+New Password: Nové heslo
+again: znovu
+Set Password: Nastavit heslo
+Disabled for demo: Pro 'demo' nepovoleno
+Username: Uživatelské jméno
+Password: Heslo
+E-mail address: E-mailová adresa
+Enabled: Povoleno
+
+########################################
+# Page: templates/edit_views.tpl
+#
+Add View: Přidej náhled
+Edit View: Uprav náhled
+View Name: Jméno náhledu
+View Type: Typ náhledu
+Day: Den
+Week: Týden
+Month: Měsíc
+Select: Výběr
+
+########################################
+# Page: templates/error.tpl
+#
+Error: Chyba
+The following error occurred: Nastala následující chyba:
+
+########################################
+# Page: templates/export.tpl
+#
+Export format: Formát pro export
+Include all layers: Zahrnout všechny vrstvy
+Export all dates: Exportuj všechna data
+Start date: Počáteční datum
+End date: Koncové datum
+Modified since: Změněné od
+
+########################################
+# Page: templates/import.tpl
+#
+Import Results: Výsledky importu
+Disabled: Zakázáno
+Import format: Datový formát importu
+Exclude private records: Vyjmout soukromé záznamy
+Overwrite Prior Import: Přepsat data předchozího importu
+Events successfully imported: Úspěšně importované události
+Events from prior import marked as deleted: Události označené v předchozím importu za smazané
+Conflicting events: Konfliktní události
+Errors: Chyby
+
+########################################
+# Page: templates/layers.tpl
+#
+Layers are currently: Stav vrstev:
+Disable Layers: Zakaž vrstvy
+Add layer: Přidej vrstvu
+Layer: Vrstva
+
+########################################
+# Page: templates/list_unapproved.tpl
+#
+Unapproved Entries: Neschválené události
+View this entry: Prohlédnout tento záznam
+Approve/Confirm: Schválit/potvrdit
+Reject: Odmítnout
+
+########################################
+# Page: templates/login.tpl
+#
+Login: Příhlást se
+calendar: kalendář
+cookies-note: <b>Poznámka:</b> Pro přihlášení a správný běh je potřeba mít v prohlížeci povolena cookies.
+
+########################################
+# Page: templates/menu.tpl
+#
+Logout: Odhlášení
+
+########################################
+# Page: templates/pref.tpl
+#
+Preferences: Možnosti
+Default Category: Výchozí kategorie
+hour: hodina
+minute: minuta
+time-interval-help: Určuje, po jakých časových úsecích bude den rozdělen při denním a týdením pohledu na kalendář.
+Time interval: časový odstup
+auto-refresh-help: Pokud je povoleno, tak pohledy na den, měsíc, rok a na seznam nepovrzených události se budou periodicky obnovovat.
+Auto-refresh calendars: Obnovuj kalendář
+auto-refresh-time-help: Pokud je automatické obnovování povoleno, tímto lze určit, po jaké dob+ se znovu načte kalendář.
+Auto-refresh time: Automaticky aktualizovat za
+Email me event notification: Posílej mi emailem notifikace na události
+I want to approve events: Chci schvalovat události
+
+########################################
+# Page: templates/purge.tpl
+#
+Delete Events: Mazání události
+Purging events for: Čištění událostí pro
+Records deleted from: Záznamy smazány z
+Finished: Dokončeno
+Delete all events before: Smazat všechny události před
+Are you sure you want to delete events for: Opravdu si přeješ smazat události uživatele
+
+########################################
+# Page: templates/users.tpl
+#
+Add New User: Přidat nového uživatele
+denotes administrative user: označuje uživatele s administrátorskými právy
+Add New Group: Přidej novou skupinu
+Add New NonUser Calendar: Přidej nový obecný (ne pro uživatele) kalendář
+
+########################################
+# Page: templates/views.tpl
+#
+Add New View: Přidej nový náhled
+
+########################################
+# Page: templates/view_entry.tpl
+#
+Status: Stav
+Repeat Type: Typ opakování
+Rejected: Odmítnuto
+Approve/Confirm entry: Potvrdit/schválit záznam
+Approve this entry?: Potvrdit tento záznam?
+Reject entry: Zamítnout záznam
+Reject this entry?: Odmítnout tuto událost?
+Set category: Uprav kategorii
+Edit entry: Editovat záznam
 Delete entry: Smaž záznam
-You are not authorized to edit this entry.: Nemáš oprávnění upravovat tento záznam
+This will delete this entry for all users.: Tímto smažeš tento záznam pro všechny uživatele.
+Copy entry: Kopíruj záznam
+Email all participants: Pošli email všem zúčastněným
+Hide activity log: Skryj protokol o aktivit?
+Show activity log: Zobraz protokol o aktivit?
+Export this entry to: Exportuj tento záznam do
+
+########################################
+# Page: templates/view_t.tpl
+#
+Previous: Předchozí
+Next: Další
+
+########################################
+# Page: add_entry.php
+#
+private: soukromé
+confidential: důvěrný
+Error adding event: Chyba při přidávání události
+
+########################################
+# Page: admin.php
+#
+Year: Rok
+Settings: Nastavení
+Other: Ostatní
+Colors: Barvy
+12 hour: 12 hodin
+24 hour: 24 hodin
+End Time: Koncovým časem
+Top: Nahoře
+Bottom: Dole
+
+########################################
+# Page: adminhome.php
+#
+Views: Náhledy
+Layers: Vrstvy
+Reports: Sestavy
+
+########################################
+# Page: ajax.php
+#
+Reminder: Připomínka
+You have not entered a password.: Nezadal jsi heslo
+The passwords were not identical.: Hesla nebyla shodná
+Server URL is required.: Je nutno zadat cestu (URL) k serveru
+Server URL must end with /.: Cesta k serveru (URL) musí končit na '/'
+You have not entered a Brief Description.: Nevložil jste stručný popis
+You have not entered a valid time of day.: Nevložil jste platný čas
+time entered before preferred work hours...: Zadaný čas je před záčátkem nastavené pracovní doby. Je to v pořádku?
+
+########################################
+# Page: ajax_entries.php
+#
+External User: Externí uživatel
+
+########################################
+# Page: approve_entry.php
+#
+Hello: Ahoj
+The subject was: Předmět byl
+The description is: Popis je
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: Tvá schůzka byla zrušena uživatelem
+
+########################################
+# Page: docadd.php
+#
+Database error: Chyba databáze
+
+########################################
+# Page: edit_entry.php
+#
+High: vysoká
+Medium: střední
+Low: nízká
 
 ########################################
 # Page: edit_entry_handler.php
 #
+The following conflicts with the suggested time: Následují konfliky s navrhovaným časem
 A new appointment has been made for you by: Máš novou schůzku. Založil ti ji
 An appointment has been updated by: Schůzka byla upravena uživatelem
-The following conflicts with the suggested time: Následují konfliky s navrhovaným časem
 Please look on: Prosím podívej se na
 to accept or reject this appointment: pro přijetí a nebo odmítnutí této schůzky
 to view this appointment: k prohlédnutí schůzky
@@ -359,47 +531,25 @@ Your suggested time of: Tebou navrhovaný čas
 conflicts with the following existing calendar entries: konflikt s následujícími záznamy v kalendáři
 
 ########################################
-# Page: edit_layer.php
+# Page: edit_group.php
 #
-Add Layer: Přidat vrstvu
-Edit Layer: Upravit vrstvu
-Source: Zdroj
-Duplicates: Duplikáty
-Show layer events that are the same as your own: Zobrazuj i ty události z vrstev, které máš stejné
-Add to My Calendar: Přidej do mého kalendáře
-Delete layer: Smaž vrstvu
+Unnamed Group: Nepojmenovaná skupina
 
 ########################################
-# Page: edit_layer_handler.php
+# Page: edit_group_handler.php
 #
-You cannot create a layer for yourself.: Nemůžeš vytvářet vrstvu sám na sebe
-You can only create one layer for each user.: Každého uživatele je možno dát jen do jedné vrstvy
-
-########################################
-# Page: edit_nonusers.php
-#
-NONUSER_PREFIX not set: Proměnná NONUSER_PREFIX nebyla v config.php nastavena.
-word characters only: může obsahovat pouze běžné znaky, bez háčka a čárek (a-zA-Z_0-9)
-Add User: Přidat uživatele
-Edit User: Editovat uživatele
-Calendar ID: ID kalendáře
-First Name: Jméno
-Last Name: Příjmení
+You must specify a group name: Musíš zadat jméno skupiny
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Chyba
-Import Results: Výsledky importu
-Events successfully imported: Úspěšně importované události
-Errors: Chyby
 There was an error parsing the import file or no events were returned: Nastala chyba při rozboru importovaného souboru a nebo nebyly vráceny žádné události
 
 ########################################
 # Page: edit_report.php
 #
-Tomorrow: Zítra
 Today: Dnes
+Tomorrow: Zítra
 Yesterday: Včera
 Day before yesterday: Předevčírem
 Next week: Příští týden
@@ -418,21 +568,7 @@ Next year: Příští rok
 This year: Tento rok
 Last year: Minulý rok
 Year before last: Předminulý rok
-Invalid report id.: Neplatná sestava s id
 Unnamed Report: Nepojmenovaná sestava
-Add Report: Přidej sestavu
-Edit Report: Uprav sestavu
-Report name: Jméno sestavy
-User: Uživatel
-Current User: Současný uživatel
-Include standard header/trailer: Včetně standardního záhlaví/zápatí
-Include previous/next links: Včetně odkazů na předchozí/další
-Include empty dates: Včetně prázdných dnů
-Date range: Rozsah
-Template variables: Proměnné pro šablony
-Page template: Šablona stránky
-Day template: Šablona pro den
-Event template: Šablona pro událost
 
 ########################################
 # Page: edit_report_handler.php
@@ -447,71 +583,41 @@ Edit Custom Script/Stylesheet: Uprav vlastní skript/styl
 Edit Custom Trailer: Uprav si vlastní patičku
 
 ########################################
-# Page: edit_user.php
+# Page: edit_views.php
 #
-Username: Uživatelské jméno
-E-mail address: E-mailová adresa
-Password: Heslo
-again: znovu
-Enabled: Povoleno
-Disabled for demo: Pro 'demo' nepovoleno
-Change Password: Změnit heslo
-New Password: Nové heslo
-Set Password: Nastavit heslo
+Unnamed View: Nepojmenovaný náhled
 
 ########################################
-# Page: edit_user_handler.php
+# Page: edit_views_handler.php
 #
-Deleting users not supported.: Mazání uživatelů není podporováno
-The passwords were not identical.: Hesla nebyla shodná
-You have not entered a password.: Nezadal jsi heslo
+You must specify a view name: Musíš zadat jméno náhledu
 
 ########################################
 # Page: export.php
 #
-Export format: Formát pro export
-Include all layers: Zahrnout všechny vrstvy
-Export all dates: Exportuj všechna data
-Start date: Počáteční datum
-End date: Koncové datum
-Modified since: Změněné od
-
-########################################
-# Page: export_handler.php
-#
 export format not defined or incorrect: nebyl určen formát exportu a nebo není platný
-
-########################################
-# Page: groups.php
-#
-Add New Group: Přidej novou skupinu
-
-########################################
-# Page: group_edit.php
-#
-Unnamed Group: Nepojmenovaná skupina
-Add Group: Přidej skupinu
-Edit Group: Uprav skupinu
-Group name: Jméno skupiny
-Updated: Aktualizováno
-Created by: Vytvořil
-
-########################################
-# Page: group_edit_handler.php
-#
-You must specify a group name: Musíš zadat jméno skupiny
 
 ########################################
 # Page: help_admin.php
 #
-Auto-refresh calendars: Obnovuj kalendář
-auto-refresh-help: Pokud je povoleno, tak pohledy na den, měsíc, rok a na seznam nepovrzených události se budou periodicky obnovovat.
-Auto-refresh time: Automaticky aktualizovat za
-auto-refresh-time-help: Pokud je automatické obnovování povoleno, tímto lze určit, po jaké dob+ se znovu načte kalendář.
+Help: Nápověda
 Display days with events in bold in year view: V ročním pohledu zobrazuj tučně dny s událostmi
 Display weekends in week view: Zobrazovat víkend v týdením pohledu
-Time interval: časový odstup
-time-interval-help: Určuje, po jakých časových úsecích bude den rozdělen při denním a týdením pohledu na kalendář.
+Public Access: Veřejný přístup
+Allow public access: Povolit veřejný přístup
+allow-public-access-help: Pokud je povoleno, bude možno bez možnosti zápisu přistupovat do kalendáře bez nutnosti se přihlašovat.
+Public access can add events: Anonymové smějí přidávat události
+public-access-can-add-help: Pokud je povoleno, lidé přistupující pomocí veřejného účtu/anonymně budou moci vytvářet nové události, ale ty se nezobrazí do kalendářů, dokud to administrátor nepovolí.
+Public access can view other users: Anonymové si smějí prohlížet jiné uživatele
+public-access-view-others-help: Určuje, zda při anonymním přístupu (nebo pomocí veřejného účtu) je možné si prohlížet kalendáře uživatelů tohoto systému.
+Public access can view participants: Anonymové smějí vidět účastníky
+public-access-sees-participants-help: Pokud je povoleno, lidé přistupující ke kalendáři pomocí veřejného účtu/přístupu budou mít při prohlížení události zobrazeny i účastníky.
+Public access is default participant: Anonymové budou ve výchozím stavu účastníky
+public-access-default-selected: Při přidávání nových události se anonmní účet automaticky přidá jako účastník.
+Public access new events require approval: Nové události od anonymů vyžadují souhlas
+public-access-add-requires-approval-help: Určuje, zda nově vytvořené události pomocí veřejného účtu vyžadují souhlas předtím, než budou zobrazeny.
+Public access visible by default: Anonymní příspěvky standartně viditelné
+public-access-default-visible: Události od anonymů se automaticky objeví v kalendářích všech uživatel?
 Nonuser: Neuživatelský kalendář
 
 ########################################
@@ -523,7 +629,6 @@ Report Bug: Oznam chybu
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Přidávání/editování záznamů v kalendáři
-Repeat Type: Typ opakování
 Repeat End Date: Datum konce opakování
 Repeat Day: Den opakování
 repeat-day-help: Určuje, které dny týdne by se událost měla opakovat. Použije se jen tehdy, pokud <i>typ opakování</i> je <i>týdně</i>.
@@ -532,15 +637,11 @@ repeat-day-help: Určuje, které dny týdne by se událost měla opakovat. Použ
 # Page: help_import.php
 #
 This form will allow you to import entries from the Palm Desktop Datebook.: Tento formulář umožňuje najíst záznamy ze zařízení Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Datový soubor by se měl nacházet v adresáři Palm v souboru <tt>datebook/datebook.dat</tt> v podadresáři se tvým jménem.
 The following entries will not be imported: Následující záznamy nebudou importovány
 Entries older than the current date: Záznamy starší, než aktuální datum
-Entries created in the Palm Desktop...: Záznamy vytvořené Palm Desktopem, které nebyly synchronizovány HotSyncem
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Cokoli importovaného z Palmu bude přepsáno následujícím importem (ledaže by již prošla platnost záznamu).
 Therefore, updates should be made in the Palm Desktop.: Proto, měl by provést aktualizaci v Palm Desktopu.
 The following formats have been tested: Tyto formáty souborů byly otestovány
 Enabling: Povolení
-Overwrite Prior Import: Přepsat data předchozího importu
 
 ########################################
 # Page: help_index.php
@@ -552,98 +653,28 @@ About WebCalendar: O aplikaci WebCalendar
 # Page: help_layers.php
 #
 Add/Edit/Delete: Přidat/Upravit/Smazat
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klikni si na úpravu vrstev v administrační části v dolní části stránky. To ti umožní jak přidávat, tak i upravovat a mazat vrstvy.
 The text color of the new layer that will be displayed in your calendar.: Barva text nové vrstvy zobrazené ve tvém kalendáči.
 Disabling: Zakázání
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Pro zakázání vrstev stačí kliknout na zakázání vrstev v administrační sekci "Vrstvy" v dolní části stránky.
 If checked, events that are duplicates of your events will be shown.: Pokud je zaškrtnuto, budou zobrazeny i duplikáty tvých událostí z vrstev.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Pro zapnutí vrstev stačí kliknout na povolení vrstev v administrační sekci "Vrstvy" v dolní části stránky.
 Specifies the user that you would like to see displayed in your calendar.: Tímto vybíráš uživatele, kterého chceš mít zobrazeného ve svém kalendáři.
 
 ########################################
 # Page: help_pref.php
 #
-Default Category: Výchozí kategorie
 default-category-help: Určuje kategorii, do které budou patřit nové události (výchozí nastavení)
 When I am the boss: Když tady tomu šéfuju
-Email me event notification: Posílej mi emailem notifikace na události
-I want to approve events: Chci schvalovat události
 Subscribe/Publish: Přijmout vzdálený/publikovat
-allow-remote-subscriptions-help: Určuje, zda si můžou externí uživatelé zapsat k odběru tvého kalendáře. Umožní jim to vidět tvé události v aplikaci podporujícím standard iCal (jako je iCal od Apple nebo Mozilla Calendar).
 remote-subscriptions-url-help: Ukazuje URL pro externí uživatele, kterou m§žou použít pro zapsání se k odběru tvého kalendáře.
 
 ########################################
 # Page: import.php
 #
-Disabled: Zakázáno
-Import format: Datový formát importu
-Exclude private records: Vyjmout soukromé záznamy
-
-########################################
-# Page: import_handler.php
-#
-Events from prior import marked as deleted: Události označené v předchozím importu za smazané
-Conflicting events: Konfliktní události
 The import file contained no data: Importovaný soubor neobsahoval žádná data
 
 ########################################
 # Page: layers.php
 #
-Layer: Vrstva
-Edit layer: Uprav vrstvu
-Layers are currently: Stav vrstev:
-Disable Layers: Zakaž vrstvy
-Click here: Zde klikni
-to modify the layers settings for the: k úpravě nastavení vrstev pro
-calendar: kalendář
-Add layer: Přidej vrstvu
-
-########################################
-# Page: list_unapproved.php
-#
-Approve/Confirm: Schválit/potvrdit
-Reject: Odmítnout
-View this entry: Prohlédnout tento záznam
-Unapproved Entries: Neschválené události
-Approve this entry?: Potvrdit tento záznam?
-Reject this entry?: Odmítnout tuto událost?
-
-########################################
-# Page: login-app.php
-#
-You must enter a login and password.: Musíš zadat svůj platný login a heslo
-Save login via cookies so I dont have to login next time.: Abych se příště nemusel přihlašovat, zapamatuj si přihlašovací údaje do cookies
-Login: Příhlást se
-Access public calendar: Přístup k veřejným kalendářům
-cookies-note: <b>Poznámka:</b> Pro přihlášení a správný běh je potřeba mít v prohlížeci povolena cookies.
-
-########################################
-# Page: login.php
-#
-Invalid login: Neplatné přihlášení
-Not yet registered? Register here!: Nemáte ještě účet? Registrovat zde!
-
-########################################
-# Page: nonusers.php
-#
-Add New NonUser Calendar: Přidej nový obecný (ne pro uživatele) kalendář
-
-########################################
-# Page: pref.php
-#
-Save Preferences: Uložit nastavení
-hour: hodina
-minute: minuta
-
-########################################
-# Page: purge.php
-#
-Purging events for: Čištění událostí pro
-Finished: Dokončeno
-Check box to delete ALL events for a user: Zaškrtnout pro smazání <b>VŠECH</b> událostí a záznam? uživatele
-Delete all events before: Smazat všechny události před
-Are you sure you want to delete events for: Opravdu si přeješ smazat události uživatele
-Records deleted from: Záznamy smazány z
+Admin mode: Admin mód
 
 ########################################
 # Page: reject_entry.php
@@ -653,14 +684,11 @@ An appointment has been rejected by: Schůzka byla odmítnuta uživatelem
 ########################################
 # Page: report.php
 #
-This event is confidential.: Tento záznam je důvěrný
 cont.: pokr.
-Approved: Odsouhlaseno
-Deleted: Smazáno
-Rejected: Odmítnuto
 Waiting for approval: čeká na schválení
+Deleted: Smazáno
+Approved: Odsouhlaseno
 Unknown: Neznámý
-to manage reports for the Public Access calendar: pro správu reportů u veřejně přístupných kalendářů
 Add new report: Přidej nový report
 Manage Reports: Správa sestav
 
@@ -688,74 +716,38 @@ View Another Users Calendar: Prohlédnou si kalendář jiného uživatele
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: Nepřidával jsi žádné kategorie
 Set Category: Přidat kategorii
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: označuje uživatele s administrátorskými právy
-Add New User: Přidat nového uživatele
-
-########################################
-# Page: views.php
-#
-Add New View: Přidej nový náhled
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Nepojmenovaný náhled
-Add View: Přidej náhled
-Edit View: Uprav náhled
-View Name: Jméno náhledu
-View Type: Typ náhledu
-Week (Users horizontal): Týden (uživatelé horizontálně)
-Week (Users vertical): Týden (uživatelé vertikálně)
-Week (Timebar): Týden (s rozdělením času)
-Month (Timebar): Měsíc (s rozdělením času)
-Month (side by side): Měsíc (vedle sebe)
-Month (on same calendar): Měsíc (v jednom kalendáři)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: Musíš zadat jméno náhledu
-
-########################################
-# Page: view_entry.php
-#
-Assistant mode: Mód asistenta
-Status: Stav
-External User: Externí uživatel
-Approve/Confirm entry: Potvrdit/schválit záznam
-Reject entry: Zamítnout záznam
-Set category: Uprav kategorii
-Copy entry: Kopíruj záznam
-This will delete this entry for all users.: Tímto smažeš tento záznam pro všechny uživatele.
-Edit entry: Editovat záznam
-Edit repeating entry for all dates: Uprav opakující se událost pro všechna data
-Delete repeating event for all dates: Smaž opakující se záznam pro všechna data
-Edit entry for this date: Uprav záznam k tomuto datu
-Delete entry only for this date: Smaž záznam pouze k tomuto datu
-This will delete the entry from your calendar.: Tímto smažeš záznam ze svého kalendáře.
-Do you want to add this entry to your calendar?: Přeješ si přidat tento záznam do svého kalendáře?
-This will add the entry to your calendar.: Tímto si přidáš záznam do svého kalendáře.
-Email all participants: Pošli email všem zúčastněným
-Hide activity log: Skryj protokol o aktivit?
-Show activity log: Zobraz protokol o aktivit?
-Export this entry to: Exportuj tento záznam do
+Account: Účet
+NonUser Calendars: Neuživatelské kalendáře
 
 ########################################
 # Page: week_details.php
 #
+Assistant mode: Mód asistenta
 New Entry: Nový záznam
 
 ########################################
 # Page: includes/access.php
 #
 Another Users Calendar: Kalendář jiného uživatele
+Assistants: Asistenti
 Manage Views: Uprav náhledy
+
+########################################
+# Page: includes/activity_log.php
+#
+Event approved: Událost byla přijata
+Event created: Byla založena událost
+Event deleted: Událost byla změněna
+Invalid login: Neplatné přihlášení
+Notification sent: Bylo odesláno upozornění
+Event rejected: Událost byla odmítnuta
+Reminder sent: Byla odeslána upopomínka
+Event updated: Událost byla aktualizována
 
 ########################################
 # Page: includes/date_formats.php
@@ -767,19 +759,8 @@ Dec: pro
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: překročení omezení na XXX událostí denně
-Event approved: Událost byla přijata
-Event created: Byla založena událost
-Event deleted: Událost byla změněna
-Notification sent: Bylo odesláno upozornění
-Event rejected: Událost byla odmítnuta
-Reminder sent: Byla odeslána upopomínka
-Event updated: Událost byla aktualizována
-WK: týden
 Changes successfully saved: Změny byly úspěšně uloženy
-Event: Událost
-Action: Událost
-Printer Friendly: Pro tiskárnu
-Generate printer-friendly version: Verze pro tiskárnu
+day: den
 January: leden
 February: únor
 March: březen
@@ -802,12 +783,6 @@ Aug: srp
 Sep: zář
 Oct: říj
 Nov: lis
-The following error occurred: Nastala následující chyba:
-You are not authorized.: Nemáte oprávnění
-Add N hours to: Přidej N hodin k
-Subtract N hours from: Odečti N hodin z
-same as: stejná, jako je
-server time: času na serveru
 Error approving event: Chyba při schvalování záznamu
 Sunday: neděle
 Monday: pondělí
@@ -825,13 +800,25 @@ Fri: pá
 Sat: so
 
 ########################################
-# Page: includes/trailer.php
+# Page: includes/menu.php
 #
 My Calendar: Můj kalendář
-Add New Entry: Přidat nový záznam
-Add New Task: Přidej nový úkol
-Logout: Odhlášení
 Home: Domů
+This Week: Tento týden
+This Month: Tento měsíc
+This Year: Tento rok
+Exit: Konec
+Add New Event: Přidej novou událost
+Add New Task: Přidej nový úkol
+Manage Calendar of: Uprav cizí kalendář
+Unapproved Events: Nepotvrzené události
+Help Contents: Obsah nápovědy
+
+########################################
+# Page: includes/trailer.php
+#
+Add New Entry: Přidat nový záznam
+Current User: Současný uživatel
 Back to My Calendar: Zpět k mému kalendáři
 Go to: Jít na
 Manage calendar of: Správa kalendáře uživatele
@@ -843,24 +830,13 @@ Czech: česky
 event: záznam
 
 ########################################
-# Page: includes/user-imap.php
-#
-Invalid user login: Chybné přihlášení uživatele
-
-########################################
-# Page: includes/user-nis.php
-#
-incorrect password: neplatné heslo
-no such user: neznámý uživatel
-
-########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Nepojmenovaná událost
 Event Imported: Importované události
 
 ########################################
-# Page: includes/classes/WebCalMailer.class
+# Page: includes/classes/WebCalMailer.class.php
 #
 Notification: Oznámení
 authenticate: SMTP Error: Chyba autentikace.
@@ -877,47 +853,26 @@ provide_address: Musíte zadat alespoň jednu emailovou adresu příjemce.
 recipients_failed: SMTP Error: Adresy příjemců nejsou správné
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/classes/user/User.class.php
 #
-Server URL is required.: Je nutno zadat cestu (URL) k serveru
-Server URL must end with /.: Cesta k serveru (URL) musí končit na '/'
-Invalid work hours.: Neplatná pracovní doba
-Invalid color for document background.: Neplatná barva pro pozadí dokumentu
-Invalid color for document title.: Neplatná barva pro záhlaví dokumentu
-Invalid color for table cell background.: Neplatná barva pro pozadí buněk tabulky
-Invalid color for table grid.: Neplatná barva mřížky tabulky
-Invalid color for table header background.: Neplatná barva pozadí v záhlaví tabulky
-Invalid color for table text background.: Neplatná barva textu v tabulce
-Invalid color for event popup background.: Neplatná barva pozadí u vyskakovacích (popup) událostí
-Invalid color for event popup text.: Neplatná barva textu u vyskakovacích (popup) událostí
-Invalid color for table cell background for today.: Neplatná barva pozadí buňky tabulky při zobrazení dne
-Color format should be RRGGBB.: Formát barvy by například měl být '#RRGGBB'
+incorrect password: neplatné heslo
+no such user: neznámý uživatel
 
 ########################################
-# Page: includes/js/edit_entry.php
+# Page: includes/smarty/function.display_month.php
 #
-You have not entered a Brief Description.: Nevložil jste stručný popis
-time entered before preferred work hours...: Zadaný čas je před záčátkem nastavené pracovní doby. Je to v pořádku?
-You have not entered a valid time of day.: Nevložil jste platný čas
+WK: týden
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/smarty/function.print_timezone_list.php
 #
-Invalid color: Neplatná barva
+Add N hours to: Přidej N hodin k
+Subtract N hours from: Odečti N hodin z
+same as: stejná, jako je
+server time: času na serveru
 
 ########################################
-# Page: includes/menu/index.php
+# Page: includes/smarty/function.time_selection.php
 #
-This Week: Tento týden
-This Month: Tento měsíc
-This Year: Tento rok
-Exit: Konec
-Add New Event: Přidej novou událost
-Manage Calendar of: Uprav cizí kalendář
-Unapproved Events: Nepotvrzené události
-Help Contents: Obsah nápovědy
-
-########################################
-# Page: tools/send_reminders.php
-#
-Reminder: Připomínka
+am: dop.
+pm: odp.
