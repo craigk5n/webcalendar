@@ -10,7 +10,7 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -85,13 +85,26 @@ Day: dzieñ
 Week: Tydzieñ
 Month: Miesi±c
 Year: Rok
-System Settings: Ustawienia Systemowe
-Help: Pomoc
+Bottom: Dó³
+Top: Góra
 Settings: Ustawienia
 Groups: Grupy
 NonUser Calendars: Kalendarze bez w³a¶cicieli
 Other: Pozosta³e
 Colors: Kolory
+Document background: T³o dokumentu
+Document title: Tytu³ dokumentu
+Document text: Tekst dokumentu
+Table grid color: Kolor ramek tabeli
+Table header background: T³o nag³ówka tabeli
+Table header text: Tekst nag³ówka tabeli
+Table cell background: T³o komórki tabeli
+Table cell background for current day: T³o komórki bie¿±cego dnia
+Table cell background for weekends: T³o komórki weekendów
+Event popup background: Zdarzenie pojawiaj±cego siê t³a
+Event popup text: Zdarzenie pojawiaj±cego siê tekstu
+System Settings: Ustawienia Systemowe
+Help: Pomoc
 app-name-help: Okresla nazwe aplikacji która bedzie siê pojawia³a jako tytu³ przegl±darki na wszystkich stronach oraz na stronie logowania. Warto¶æ któr± tutaj wybierzesz zostanie zachowana w pliku z t³umaczeniem pozwalaj±c na obs³uge ró¿nych tytu³ów dla ró¿nych jezyków
 Application Name: Nazwa aplikacji
 server-url-help: Okre¶la adres bazowy dla aplikacji. Bedzie on dodany w momencie wysy³ania wiadomo¶ci email z powiadomieniami i pzypomnieniami
@@ -130,8 +143,6 @@ From: Od
 to: Do
 preferred-view-help: Okre¶la preferowany widok (dzieñ, tydzieñ, miesi±c lub rok)
 Preferred view: Preferowany widok
-Bottom: Dó³
-Top: Góra
 fonts-help: Okre¶la liste czcionek systemowych do u¿ycia (np. "Arial, Helvetica")
 Fonts: Czcionki
 display-weekends-help: W czasie ogl±dania tygodnia wy¶wietla tak¿e weekendy
@@ -174,11 +185,6 @@ Allow HTML in Description: Zezwalaj na HTML w opisie
 Display Site Extras in popup: Wyowietlaj Bonusy Strony w popup-ach
 remember-last-login-help: W³±cza zapamietywanie ostatnio u¿ytej nazwy u¿ytkownika na stronie logowania (lecz nie has³a) oraz preferencji (wliczaj±c kolory i jezyk).
 Remember last login: Pamietaj ostatnie logowanie
-Plugins: Wtyczki
-plugins-enabled-help: W³±cza aplikacje bed±ce wtyczkami
-Enable Plugins: Wtyczki w³±czone
-plugins-sort-key-help: Okre¶la klawisz sortuj±cy dla wtyczki. Pozwala to na pojawianie siê wtyczek w okre¶lonym porz±dku.
-Plugin: Wtyczka
 allow-public-access-help: Pozwalaj na dostep do publicznego kalendarza dla niezalogowanych
 Allow public access: Zezwalaj na dostep publiczny
 public-access-default-visible: Ustala czy elementy kalendarza publicznego powinny bya widoczne dla wszystkich u¿ytkowników
@@ -207,6 +213,7 @@ nonuser-enabled-help: Je¿eli w³±czone, administratorzy bed± mieli mo¿liwo¶æ doda
 Nonuser enabled: Kalendarze bez w³a¶cicieli w³±czone
 nonuser-list-help: Gdzie wy¶wietlaæ kalendarze bez w³a¶cicieli na li¶cie wspó³uczestników
 Nonuser list: Miejsce wy¶wietlania kalendarzy bez w³a¶cicieli
+Enabled: W³±czone
 reports-enabled-help: W³±cza opcje tworzenia raportów.
 Reports enabled: Raporty w³±czone
 subscriptions-enabled-help: Ustala, czy u¿ytkownicy zdalni mog± korzystaæ z zasobów WebCalendara
@@ -245,17 +252,6 @@ Event rejected by participant: Wysy³aj przypominacze o odrzuceniu istniej±cego z
 Allow user to customize colors: Pozwala u¿ytkownikowi na wybór kolorów
 Enable gradient images for background colors: W³±cz gradient w tle
 Not available: Niedostepny
-Document background: T³o dokumentu
-Document title: Tytu³ dokumentu
-Document text: Tekst dokumentu
-Table grid color: Kolor ramek tabeli
-Table header background: T³o nag³ówka tabeli
-Table header text: Tekst nag³ówka tabeli
-Table cell background: T³o komórki tabeli
-Table cell background for current day: T³o komórki bie¿±cego dnia
-Table cell background for weekends: T³o komórki weekendów
-Event popup background: Zdarzenie pojawiaj±cego siê t³a
-Event popup text: Zdarzenie pojawiaj±cego siê tekstu
 
 ########################################
 # Page: adminhome.php
@@ -333,9 +329,12 @@ Description: Opis
 #
 am: Przed po³udniem
 pm: Po po³udniu
+days: dni
+hours: godziny
+minutes: minut
+is in a different timezone than you are. Currently: jest w innej strefie czasowej ni¿ ty. Aktualnie:
 hours ahead of you: godzin przed tob±
 hours behind you: godzin za tob±
-is in a different timezone than you are. Currently: jest w innej strefie czasowej ni¿ ty. Aktualnie:
 Time entered here is based on your Timezone.: Podany czas jest ustalony na podstawie twojej strefy czasowej
 Edit Entry: Eytuj wpis
 Add Entry: Dodaj wpis
@@ -362,8 +361,6 @@ All day event: Zdarzenie ca³odniowe
 Timezone Offset: przesuniecie strefy czasowej
 time-help: Okre¶la czas wydarzenia.<br /><i>Mo¿e zostaæ puste.</i>
 duration-help: Okre¶la (w minutach) czas trwania wydarzenia.<br /><i>Mo¿e zostaæ puste.</i>
-hours: godziny
-minutes: minut
 end-time-help: Okre¶la godzinê, o której zdarzenie powinno siê skoñczyæ
 Availability: Dostepno¶æ
 external-participants-help: Okre¶la liste uczestników dla zdarzenia, którzy nie s± u¿ytkownikami kalendarza. U¿ytkownicy powinni bya uszeregowani - jeden na linie i mog±zawrzea adres email. Je¿eli adres email jest podany, u¿ytkownik mo¿e ubiegaæ siê o otrzymywanie zawiadomien i przypomnien.
@@ -381,7 +378,6 @@ repeat-frequency-help: Okre¶la jak czesto wydarzenia ba bya powtarzane. Domy¶lni
 Frequency: Czestotliwo¶æ
 All: Wszystko
 Send Reminder: Wy¶lij przypomnienie
-days: dni
 Delete entry: Skasuj wpis
 You are not authorized to edit this entry.: Nie masz autoryzacji by skasowaæ ten wpis
 
@@ -493,7 +489,6 @@ Username: U¿ytkownik
 E-mail address: Adres e-mail
 Password: Has³o
 again: ponów
-Enabled: W³±czone
 Disabled for demo: Wy³aczony dla wersji demo
 Change Password: Zmien has³o
 New Password: Nowe has³o
@@ -666,9 +661,9 @@ Add layer: Dodaj warstwe
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Ogl±daj ten wpis
 Approve/Confirm: Zatwierd¼/potwierd¼
 Reject: Odrzuæ
+View this entry: Ogl±daj ten wpis
 Not authorized: Nieautoryzowane
 Approve this entry?: Zatwierdziæ ten wpis ?
 Reject this entry?: Odrzuciæ wpis?
@@ -684,8 +679,8 @@ cookies-note: <b>Uwaga!</b> Ta aplikacja wymaga w³±czonych cookies!
 ########################################
 # Page: login.php
 #
+Illegal characters in login: Niepoprawne znaki w nazwie u¿ytkownika
 Invalid login: Nieprawod³owy login
-You have been logged out..: Zosta³e¶ wylogowany
 Not yet registered? Register here!: Niezarejestrowany? Zarejestruj siê tutaj!
 
 ########################################
@@ -698,11 +693,6 @@ This Calendar is not Public.: Ten kalendarz nie jest publiczny
 # Page: nonusers.php
 #
 Add New NonUser Calendar: Dodaj nowy kalendarz bez w³a¶ciciela
-
-########################################
-# Page: nulogin.php
-#
-Illegal characters in login: Niepoprawne znaki w nazwie u¿ytkownika
 
 ########################################
 # Page: pref.php
@@ -859,7 +849,7 @@ Show activity log: Poka¿ dzieñnik zdarzeñ
 Export this entry to: Eksportuj ten wpis do
 
 ########################################
-# Page: view_r.php
+# Page: view_m.php
 #
 Double-click on empty cell to add new entry: Podwójne klikniêcie na pustej komórce dodaje nowy wpis
 
@@ -1071,13 +1061,12 @@ Unapproved Events: Niezatwierdzone wydarzenia
 ########################################
 # Page: install/index.php
 #
-WebCalendar Installation Wizard: Kreator Instalacji WebCalendara
-Step: Krok
-Failure Reason: Powód niepowodzenia
 Create New: Stwórz nowy
 Database Name: Nazwa bazy danych
+Failure Reason: Powód niepowodzenia
 Timezone Conversion Successful: Konwersja strefy czasowej zakoñczona powodzeniem
-Error Unable to write to file: B³±d podczas zapisu pliku
+WebCalendar Installation Wizard: Kreator Instalacji WebCalendara
+Step: Krok
 Invalid Login: B³êdna nazwa u¿ytkownika
 needed for Gradient Image Backgrounds: potrzebny do gradientów w tle
 Passwords do not match: Podane has³a ró¿ni± siê od siebie
@@ -1087,6 +1076,7 @@ Please go to next page to continue installation: Przejd¼ do nastêpnej strony aby
 Correct your entries or click the Create New...: Popraw wprowadzone dane lub klikni j przycisk <b>Stwórz nowy</b> aby kontynuowaæ instalacjê
 Correct your entries and try again.: Popraw wprowadzone dane i spróbuj ponownie
 Error Converting Timezone: B³±d podczas konwertowania stefy czasowej
+Error Unable to write to file: B³±d podczas zapisu pliku
 Please change the file permissions of this file.: Zmieñ prawa dostêpu do tego pliku
 Your settings have been saved.: Twoje ustawienia zosta³y zapisane
 Error you must specify a Single-User Login: B³±d musisz ustaliæ a\\nLogowanie pojedyñczego u¿ytkownika
@@ -1095,11 +1085,11 @@ PHP Version Check: Sprawdzenie wersji PHP
 Check to see if PHP 4.1.0 or greater is installed.: Zaznacz aby sprawdziæ czy jest zainstalowane PHP w wersji 4.1.0 lub nowszej
 PHP version: Wersja PHP
 Detailed PHP Info: Szczegó³owe informacje o PHP
+settings.php Status: Status settings.php
 Session Check: Sprawdzenie sesji
 To test the proper operation of sessions, reload this page: Aby sprawrziæ odpowiednie operacje sesji od¶wie¿ stronê
 You should see the session counter increment each time: Powiniene¶ widzieæ zwiêkszanie siê licznika sesji za ka¿dem razem.
 SESSION COUNTER: LICZNIK SESJI
-settings.php Status: Status settings.php
 Your settings.php file appears to be valid.: Plik <b>settings.php</b> jest poprawny
 Configuration Wizard Password: Has³o kreatora instalacji
 Create Settings File Password: Utwórz has³o pliku z ustawieniami
@@ -1116,9 +1106,9 @@ All your database tables appear to be up to date. You may proceed to the: Wszyst
 next page and complete your WebCalendar setup: nastêpnej strony i zakoñczyæ instalacjê WebCalendara
 This appears to be a new installation. If this is not correct, please: Wygl±da na to, ¿e to nowa instalacja. Je¶li siê mylê
 go back to the previous page and correct your settings: wróæ na poprzedni± stronê i popraw ustawienia
+This appears to be an upgrade from version: Wygl±da na to, ¿e to aktualizacja z poprzedniej wersji.
 The database requires some data input: Baza danych wymaga podania pewnych danych
 Click Update Database to complete the upgrade: Kliknij <b>Aktualizuj bazê danych</b> aby zakoñczyæ aktualizacjê
-This appears to be an upgrade from version: Wygl±da na to, ¿e to aktualizacja z poprzedniej wersji.
 In this section we will perform the required database changes to bring your database up to the required level: W tej sekcji przeprowadzimy niezbêdne zmiany w bazie danych aby aktualizowaæ j± do wymaganego stanu.
 If you are using a fully supported database, this step will be performed automatically for you: Je¶li u¿ywasz w pe³ni obs³ugiwanej bazy danych, ten krok zostanie wykonany automatycznie.
 If not, the required SQL can be displayed and you should be able: Je¶li nie, niezbêdne zapytania SQL bêd± wy¶wietlone i bêdziesz móg³

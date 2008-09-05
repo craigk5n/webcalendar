@@ -2,7 +2,7 @@
 # Last update: 28 August 2007
 #
 # $Id$
-# Translation last updated on 09-30-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -192,6 +192,7 @@ nonuser-enabled-help: Jika dinyalakan, admin akan memiliki opsi unyuk menambahka
 Nonuser enabled: Kalender-kalender Non-Pengguna Dinyalakan
 nonuser-list-help: Dimana menampilkan kalender-kalender non-pengguna dalam daftar partisipan
 Nonuser list: Tampilkan dalam daftar partisipan pada
+Enabled: Dinyalakan
 reports-enabled-help: Jika dinyalakan maka pengguna akan dapat melihat bagian "Laporan" pada bagian paling bawah dari tiap halaman dan akan diperkenankan untuk membuat laporan sendiri sesuai keinginannya. Sebagai tambahan, pengguna admin dapat membuat laporan global yang akan muncul pada bagian bawah dari semua halaman pengguna.
 Reports enabled: laporan dinyalakan
 subscriptions-enabled-help: Menentukan apakah pengguna jauh dapat mendaftar berlangganan ke kalender pengguna WebCalendar, dengan demikian akan memperkenankan mereka untuk melihat acara-acara pengguna WebCalendar dalam aplikasi yang mendukung iCal (seperti iCal dari Apple atau Mozilla Calendar).
@@ -446,7 +447,6 @@ Username: Nama pengguna
 E-mail address: Alamat pos-el
 Password: Kata sandi
 again: lagi
-Enabled: Dinyalakan
 Disabled for demo: Dimatikan untuk demo
 Change Password: Ganti Kata Sandi
 New Password: Kata Sandi Baru
@@ -670,6 +670,11 @@ matches found: yang cocok ditemukan
 No matches found: Tidak ada data yang cocok yang ditemukan
 
 ########################################
+# Page: security_audit.php
+#
+Status: =
+
+########################################
 # Page: set_entry_cat.php
 #
 Set Category: Tetapkan Kategori
@@ -719,7 +724,6 @@ No users for this view: Tidak ada pengguna untuk tampilan ini
 # Page: view_entry.php
 #
 Assistant mode: Modus Asisten
-Status: =
 External User: Pengguna Eksternal
 Approve/Confirm entry: Setujui/Konfirmasi entri
 Reject entry: Tolak entri

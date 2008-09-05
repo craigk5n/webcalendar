@@ -9,7 +9,7 @@
 # Last update: 8. Juli 2007
 #
 # $Id$
-# Translation last updated on 07-09-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -105,11 +105,37 @@ Error adding event XXX.: Fehler beim Hinzufügen eines Termins für XXX.
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Ungültiger Einstellungsname XXX.
 Select: Auswählen
+Day: Tag
+Week: Woche
+Month: Monat
+Year: Jahr
 Bottom: Unten
 Top: Oben
 Anyone: Jeder
 Participant: Benutzer
+Settings: Einstellungen
+Groups: Benutzergruppen
+NonUser Calendars: 'Zentrale' - Kalender
+Other: Sonstiges
+Email: =
+Colors: Farben
+Document background: Hintergrund
+Document title: Titel
+Document text: Textfarbe der Webkalenderseiten
+My event text: Textfarbe meiner eigenen Einträge
+Table grid color: Tabellen-Gitterfarbe
+Table header background: Hintergrund Tabellen-Kopfzeile
+Table header text: Textfarbe Tabellen-Kopfzeile
+Table cell background: Tabellen-Hintergrund
+Table cell background for current day: Tabellen-Hintergrund für "Heute"
+Table cell background for days with events: Tabellen-Hintergrund für Tage mit Terminen
+Table cell background for weekends: Hintergrundfarbe für Wochenenden
+Table cell background for other month: Tabellen-Hintergrund für anderen Monat
+Week number color: Farbe für Wochennummer
+Event popup background: Hintergrundfarbe Termin-PopUp
+Event popup text: Textfarbe Termin-PopUp
 System Settings: Systemeinstellungen
 Help: Hilfe
 System options: Systemeinstellungen
@@ -277,6 +303,7 @@ nonuser-enabled-help: Falls aktiviert: Administratoren haben die Möglichkeit 'Z
 Nonuser enabled: 'Zentrale'-Kalender aktivieren
 nonuser-list-help: Wo sollen die 'Zentralen'-Kalender in der Teilnehmerliste angezeigt werden?
 Nonuser list: Wo sollen die 'Zentralen' Kalender in der Teilnehmerliste angezeigt werden
+Enabled: Aktiv
 reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag "Berichte" welcher für das Erstellen von Berichten verwendet werden kann. Zusätzlich kann der "Administrator" allgemeine Berichte erstellen, die für jeden Benutzer am Ende jeder Seite zur Verfügung stehen.
 Reports enabled: Berichte aktivieren
 subscriptions-enabled-help: Bestimmt ob 'REMOTE'-Teilnehmer andere WebKalender von Teilnehmern abonnieren, und somit dessen Termine und ihre 'iCal'-aktiven Anwendungen (wie Apple's iCal oder Mozilla-Kalender) sehen können.
@@ -331,6 +358,9 @@ SMTP Username: SMTP Benutzername
 email-smtp-password: SMTP Kennwort (wenn Authentisierung verwendet wird)
 SMTP Password: SMTP Kennwort
 Default user settings: Standardbenutzer Einstellungen
+Email format preference: Emailformat Einstellungen
+HTML: =
+Plain Text: Reiner Text
 email-event-reminders-help: Gibt an ob Erinnerungen versendet werden sollen oder nicht.
 Event reminders: an Termin erinnern
 email-event-added: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Termin zu ihrem Kalender HINZUGEFÜGT wurde.
@@ -496,14 +526,17 @@ Removed: Entfernt
 #
 am: Vormittag
 pm: Nachmittag
+days: Tage
+hours: Stunden
+minutes: Minute(n)
 You are not authorized to edit this task: Sie sind nicht berechtigt diese Aufgabe zu ändern
 task: Aufgabe
 You are not authorized to edit this XXX.: Sie sind nicht berechtigt diesen XXX zu bearbeiten
-hours ahead of you: Stunden vor Ihnen
-hours behind you: Stunden nach Ihnen
+is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
 hour ahead of you: Stunde vor Ihnen
 hour behind you: Stunde nach Ihnen
-is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
+hours ahead of you: Stunden vor Ihnen
+hours behind you: Stunden nach Ihnen
 Time entered here is based on your Timezone.: Die eingegebene Zeit entspricht Ihrer Zeitzone
 Edit Entry: Eintrag ändern
 Add Entry: Eintrag hinzufügen
@@ -541,8 +574,6 @@ All day event: Termin für den GANZEN Tag
 Timezone Offset: Zeitzonenausgleich
 time-help: Gibt die Uhrzeit des Termines an. Kann leer gelassen werden.
 duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen werden.
-hours: Stunden
-minutes: Minute(n)
 end-time-help: Definiert die Zeit des Termines als Endzeitpunkt.
 Start Time: Startzeit
 Due Date: Fälligkeitsdatum
@@ -570,8 +601,6 @@ Number of times: Anzahl der Zeiten
 repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist&nbsp; "1",  der Termin wird immer wiederholt. Wenn sie&nbsp; "2" auswählen wird der Termin jede 2. Woche wiederholt (wenn Art der Wiederholung auf Wöchentlich gesetzt ist), jeden 2. Monat (wenn Art der Wiederholung auf Monatlich gesetzt ist), etc.
 Frequency: Häufigkeit
 Weekdays Only: Nur Wochentage
-MO: Mo
-SU: So
 Week Start: Wochenstart
 repeat-bydayextended-help: Erlaubt Datumsauswahl, die auf Tag der Woche basiert
 ByDay: Nach Tag
@@ -596,7 +625,6 @@ Send Reminder: Erinnerung senden
 When: Wann
 Use Date/Time: Datum/Zeit verwenden
 Use Offset: Zeitzone verwenden
-days: Tage
 Before: Davor
 After: Danach
 Start: Beginn
@@ -613,6 +641,7 @@ A new appointment has been made for you by: Es wurde Ihnen eine neuer Termin ein
 XXX has made a new appointment.: XXX hat Ihnen einen neuen Termin eingetragen.
 An appointment has been updated by: Ein Termin wurde aktualisiert von
 XXX has updated an appointment.: XXX hat einen Termin aktualisiert.
+Security violation!: Sicherheitsverletzung!
 You must enter the anti-spam text on the previous page.: Auf der vorigen Seite müssen Sie einen Anti-Spam Text eingeben.
 The following conflicts with the suggested time: Folgende Konflikte mit der vorgeschlagenen Zeit
 User removed from participants list.: Benutzer wurde von der Teilnehmerliste entfernt.
@@ -743,7 +772,6 @@ Username: Benutzername
 E-mail address: E-Mail Adresse
 Password: Kennwort
 again: Wiederholung
-Enabled: Aktiv
 Disabled for demo: Für DEMO deaktiviert
 Change Password: Kennwort ändern
 New Password: Neues Kennwort
@@ -802,7 +830,6 @@ You must specify a group name: Sie müssen einen Gruppennamen anlegen
 ########################################
 # Page: help_admin.php
 #
-Settings: Einstellungen
 Auto-refresh calendars: Kalender aktualisieren
 auto-refresh-help: Falls aktiviert, Tages,- Wochen- und Monats-Ansicht, und "unbestätigte Termine" werden automatisch aktualisiert.
 Auto-refresh time: Aktualisierungsintervall
@@ -811,11 +838,7 @@ Display days with events in bold in year view: Zeigt Tage MIT Terminen in der Ja
 Display weekends in week view: Wochenenden in der Wochenansicht anzeigen
 Time interval: Zeitintervall
 time-interval-help: Legt das Zeitintervall in der Tages,- Wochen- und Monatsansicht fest.
-Groups: Benutzergruppen
 Nonuser: 'Zentrale'-Kalender
-Other: Sonstiges
-Email: =
-Colors: Farben
 user-customize-color: Spezifiziert, ob Benutzern erlaubt wird, ihre eigenen Farbeneinstellungen zu ändern
 enable-gradient-help: Verwendet die stufenweise Farbänderungen für Zellenhintergründe
 Manually entering color values: Eigene eingegebene Farbwerte
@@ -994,8 +1017,9 @@ cookies-note: <b>Hinweis:</b> Für diese Anwendung muß ihr Browser Cookies akze
 ########################################
 # Page: login.php
 #
+Illegal characters in login: Nicht zulässige Zeichen beim Login
+Illegal characters in login XXX.: Ungültige Zeichen im Login XXX.
 Invalid login: Benutzername oder Kennwort falsch
-You have been logged out..: Sie sind nun abgemeldet
 Not yet registered? Register here!: Noch nicht registriert? Hier können Sie sich registrieren!
 
 ########################################
@@ -1014,40 +1038,27 @@ Add New NonUser Calendar: Neuen 'Zentralen-Kalender' hinzufügen
 # Page: nulogin.php
 #
 A login must be specified: Eine Anmeldung muß erfolgen
-Illegal characters in login: Nicht zulässige Zeichen beim Login
 
 ########################################
 # Page: pref.php
 #
-entries: Einträge
 Save Preferences: Voreinstellungen speichern
-0: =
-1: =
-2: =
-3: =
-4: =
-5: =
-6: =
-7: =
-8: =
-9: =
 Public Access calendar: Öffentlicher Kalender
 Modify Non User Calendar Preferences: Ändern der Einstellungen von Zentralen Kalendern
 Return to My Preferences: Zurück zu meinen Einstellungen
-hour: Stunde
+Custom Scripts: Eigene Scripte
 Timezone Selection: Auswahl der Zeitzone
 entry-interval-help: Setzt Minutenintervall beim Ändern eingetragener Zeiten
 Entry interval: Eintragsintervall
+hour: Stunde
 minute: Minute
 theme-reload-help: Wegen gecachten CSS ist ein nochmaliges (Reload) der Seite erforderlich
 Page may need to be reloaded for new Theme to take effect: Seite müßte neu geladen werden um das neue Thema anzuzeigen
-Email format preference: Emailformat Einstellungen
-HTML: =
-Plain Text: Reiner Text
 display_byproxy-help: Anzeige durch Proxyhilfe
 Display if created by Assistant: Anzeigen wenn durch Assistent eingegeben
 allow-view-subscriptions-help: Erlaubt eingeschränkten EXTERNEN Zugriff auf Private oder Vertrauliche Einträge
 Allow remote viewing of: Erlaubt Ansicht EXTERNEN Zugriff auf
+entries: Einträge
 
 ########################################
 # Page: publish.php
@@ -1071,7 +1082,6 @@ Records deleted from: Einträge werden gelöscht für
 # Page: register.php
 #
 Email address cannot be blank.: Emailadresse darf nicht leer sein.
-Illegal characters in login XXX.: Ungültige Zeichen im Login XXX.
 New user via self-registration.: Neuer Benutzer via Selbstregistrierung.
 A new WebCalendar account has been set up for you.: Ein neues Webkalenderkonto wurde für Sie eingerichtet.
 Your username is: Ihr Benutzername lautet
@@ -1148,6 +1158,11 @@ No matches found: Keine Einträge gefunden
 New Search: Neue Suche
 
 ########################################
+# Page: security_audit.php
+#
+Status: =
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Ansicht anderer Kalender
@@ -1168,7 +1183,6 @@ more: weitere...
 ########################################
 # Page: users.php
 #
-NonUser Calendars: 'Zentrale' - Kalender
 Remote Calendars: Externe Kalender (Remote)
 denotes administrative user: Kennzeichnet Benutzer mit Administrator-Rechten
 Add New User: Neuen Benutzer hinzufügen
@@ -1193,7 +1207,6 @@ Add View: Ansicht hinzufügen
 Edit View: Ansicht editieren
 View Name: Ansichtsname
 View Type: Ansichtstyp
-Day: Tag
 Day by Time: Zeiteinteilungen pro Tag
 Week (Users horizontal): Woche (Teilnehmer horizontal)
 Week by Time: Zeiteinteilungen pro Woche
@@ -1219,7 +1232,6 @@ No users for this view: Keine gültigen Benutzer für diese Ansicht
 Update Task Percentage: Aktualisierung des Aufgabenprozentsatzes
 Completed: Abgeschlossen
 Assistant mode: Assistentenmodus
-Status: =
 Declined: Abgenommen
 Needs-Action: Benötige Aktion
 by: von
@@ -1255,9 +1267,8 @@ Export this entry to: Diesen Eintrag exportieren nach
 Palm Pilot: =
 
 ########################################
-# Page: view_r.php
+# Page: view_m.php
 #
-Week: Woche
 Double-click on empty cell to add new entry: Ein 'Doppelklick' auf eine leere Zelle fügt einen neuen Termin ein.
 
 ########################################
@@ -1281,33 +1292,8 @@ Year View: Jahresansicht
 Invalid function id: Ungültige 'Funktions-ID'
 
 ########################################
-# Page: includes/common_admin_pref.php
-#
-Month: Monat
-Year: Jahr
-Custom Scripts: Eigene Scripte
-Document background: Hintergrund
-Document title: Titel
-Document text: Textfarbe der Webkalenderseiten
-My event text: Textfarbe meiner eigenen Einträge
-Table grid color: Tabellen-Gitterfarbe
-Table header background: Hintergrund Tabellen-Kopfzeile
-Table header text: Textfarbe Tabellen-Kopfzeile
-Table cell background: Tabellen-Hintergrund
-Table cell background for current day: Tabellen-Hintergrund für "Heute"
-Table cell background for days with events: Tabellen-Hintergrund für Tage mit Terminen
-Table cell background for weekends: Hintergrundfarbe für Wochenenden
-Table cell background for other month: Tabellen-Hintergrund für anderen Monat
-Week number color: Farbe für Wochennummer
-Event popup background: Hintergrundfarbe Termin-PopUp
-Event popup text: Textfarbe Termin-PopUp
-Invalid setting name XXX.: Ungültiger Einstellungsname XXX.
-
-########################################
 # Page: includes/config.php
 #
-Fatal Error: Fataler Fehler
-Troubleshooting Help: Fehlersuche (Hilfe)
 Could not find settings.php file...: Kann die Datei "settings.php" nicht finden.</br>Bitte kopieren Sie "settings.php.orig" nach "settings.php" und editieren diese für Ihre Seite.
 Could not find XXX defined in...: Kann XXX in Ihrer Datei "settings.php" nicht finden.
 You must define XXX in: Sie müssen XXX in Ihrer "settings.php" Datei definieren.
@@ -1330,11 +1316,15 @@ Error executing query.: Fehler beim Ausführen des Query
 Unfortunately, XXX is not implemented for: Ungewöhnliches, XXX ist nicht implementiert
 Unknown ODBC error.: Unbekannter ODBC Fehler
 Unknown error.: Unbekannter Fehler
-Cache error: Cache Fehler
 write: schreiben
-Could not XXX file: Kann Datei XXX nicht
 Error opening cache dir: Fehler beim Öffnen des Cache-Verzeichnis
 delete: löschen
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fataler Fehler
+Invalid data format for: Ungültiges Datenformat für&nbsp;
 
 ########################################
 # Page: includes/functions.php
@@ -1450,11 +1440,6 @@ Sat: Sa
 unknown-weekday: unbekannter Wochentag
 
 ########################################
-# Page: includes/getPredefinedVariables.php
-#
-Invalid data format for: Ungültiges Datenformat für&nbsp;
-
-########################################
 # Page: includes/help_list.php
 #
 Index: =
@@ -1478,7 +1463,6 @@ Manage calendar of: Kalender verwalten von
 #
 Browser Language Not Found: Browsersprache nicht gefunden
 not supported: nicht unterstützt
-Browser-defined: Browser-definiert
 English: Englisch
 English-US: Englisch-US
 Afrikaans: Afrikanisch
@@ -1521,8 +1505,19 @@ Spanish: Spanisch
 Swedish: Schwedisch
 Turkish: Türkisch
 Welsh: Wallisisch
+Browser-defined: Browser-definiert
 event: Termin
 journal: Journal
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
 
 ########################################
 # Page: includes/user-imap.php
@@ -1538,11 +1533,13 @@ no such user: kein solcher Benutzer
 ########################################
 # Page: includes/xcal.php
 #
+MO: Mo
 TU: Di
 WE: Mi
 TH: Do
 FR: Fr
 SA: Sa
+SU: So
 Interval: =
 Months: Monate
 Month Days: Monatstage
@@ -1562,11 +1559,6 @@ Event Imported: Termin importiert
 bytes: Bytes
 kb: kB
 Mb: =
-
-########################################
-# Page: includes/classes/WebCalendar.class
-#
-Security violation!: Sicherheitsverletzung!
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -1672,23 +1664,21 @@ Help Contents: Hilfe Inhaltsverzeichnis
 ########################################
 # Page: install/index.php
 #
+Create New: Neu erstellen
+Database Cache Directory: Cache-Verzeichnis der Datenbank
+Database Name: Datenbankname
+Failure Reason: Fehlerbegründung
+Single-User: Einzelbenutzer
+Test Settings: Einstellungen testen
+Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlossen
 WebCalendar Installation Wizard: Webkalender Installationsassistent
 Step: Schritt
 WebCalendar Installation Wizard Step XXX: Webkalender Installationsassistent Schritt XXX
-Single-User: Einzelbenutzer
-Failure Reason: Fehlerbegründung
 You must manually create database: Sie müssen die Datenbank manuell einrichten
-Database Cache Directory: Cache-Verzeichnis der Datenbank
-Test Settings: Einstellungen testen
-Create New: Neu erstellen
-Database Name: Datenbankname
-Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlossen
-Error Unable to write to file: Fehler beim Schreiben auf Datei
-Error Unable to write to file XXX.: Fehler beim Schreiben auf Datei XXX.
 Successful Login: Erfolgreiches Login
 Invalid Login: Ungültiges Login
-required only if Safe Mode is On: nur erforderlich wenn Safe Mode 'ON' gesetzt ist
 required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden
+required only if Safe Mode is On: nur erforderlich wenn Safe Mode 'ON' gesetzt ist
 needed for Gradient Image Backgrounds: Für stufenweis verlaufendes Hintergrundbild nötig
 Passwords do not match: Passwörter stimmen nicht überein
 Unable to write password to settings.php file: Kennwort kann nicht in die 'settings.php'-Datei geschrieben werden
@@ -1700,6 +1690,8 @@ Correct your entries and try again.: Korrigieren Sie Ihre Einträge und versiche
 does not exist: existiert nicht
 is not writable: ist schreibgeschützt
 Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
+Error Unable to write to file: Fehler beim Schreiben auf Datei
+Error Unable to write to file XXX.: Fehler beim Schreiben auf Datei XXX.
 Please change the file permissions of this file.: Bitte ändern Sie die Rechte dieser Datei
 Please change includes dir permission: Bitte ändern Sie die Dateiberechtigungen von Ihrem 'includes'-Verzeichnis um 'Schreibrechte' für 'andere Benutzer' zu haben.
 Your settings have been saved.: Ihre Einstellungen wurden gespeichert.
@@ -1712,11 +1704,11 @@ Check to see if PHP 4.1.0 or greater is installed.: Überprüfung ob PHP 4.1.0 o
 PHP version: PHP Version
 PHP Settings: PHP Einstellungen
 Detailed PHP Info: Detailierte PHP Information
+settings.php Status: 'Settings.php' Status
 Session Check: Session Überprüfung
 To test the proper operation of sessions, reload this page: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie diese Seite neu.
 You should see the session counter increment each time: Kontrollieren Sie ob der Sessionzähler jedesmal weiterzählt
 SESSION COUNTER: Sessionzähler
-settings.php Status: 'Settings.php' Status
 The file permissions of settings.php are set...: Die Dateirechte von <b>settings.php</b> sind so gesetzt, daß der Installer keine Rechte zur Änderung besitzt. Bitte ändern Sie die Zugriffsrechte der Datei um fortzufahren
 The file permissions of the includes directory are set...: Die Zugriffsrechte von <b>includes</b> Verzeichnis sind so gesetzt, daß der Installer keine Rechte zum Erstellen von neuen Dateien hat. Bitte ändern Sie die Zugriffsrechte des Verzeichnisses um fortzufahren.
 Your settings.php file appears to be valid.: Ihre <b>settings.php</b> Datei scheint gültig zu sein
@@ -1736,9 +1728,9 @@ All your database tables appear to be up to date. You may proceed to the: Alle I
 next page and complete your WebCalendar setup: Ihre Webkalendereinstellungen zu vervollständigen
 This appears to be a new installation. If this is not correct, please: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte
 go back to the previous page and correct your settings: Gehen Sie zurück zur vorigen Seite und korrigieren Sie Ihre Einstellungen
+This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
 The database requires some data input: Die Datenbank erfodert einige Dateneingaben
 Click Update Database to complete the upgrade: Klicken Sie auf <b>Update Database</b> um das Upgrade zu vervollständigen
-This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
 In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt führen wir die angeforderten Datenbankänderungen durch, um Ihre Datenbank auf den aktuellen Stand zu bringen.
 If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine völlig unterstützte Datenbank benutzen, wird dieser Schritt automatisch für Sie durchgeführt.
 If not, the required SQL can be displayed and you should be able: Wenn nicht, kann das benötigte SQL-Skript angezeigt werden und sollten dann in der Lage sein,
@@ -1759,7 +1751,6 @@ NOT: NICHT
 converted your existing WebCalendar event data to GMT.: &nbsp;in GMT (Greenwich Mean Time) umgewandelt zu haben.
 If you have, you may ignore this notice and not proceed with the conversion.: Wenn Sie dies bereits getan haben, können Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
 If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, dürfen Sie diese Meldung auch ignorieren.
-It appears that you have NOT converted your existing WebCalendar...: Es scheint, Ihr existierender Webkalender wurde noch NICHT auf GMT umgewandelt. Wenn Sie dies bereits getan haben, oder es sich um eine NEUE Installation handelt, dürfen Sie diese Meldung ignorieren und fortfahren.
 Convert Data to GMT: Konvertieren nach GMT
 Application Settings: Anwendungseinstellung
 HTTP-based authentication was not detected: HTTP-basierende Authentisierung wurde nicht erkannt
@@ -1831,9 +1822,7 @@ Not authorized (not admin).: Nicht berechtigt (kein Administrator).
 ########################################
 # Page: ws/get_events.php
 #
-Checking for events for XXX from date XXX to date XXX.: Terminüberprüfung für XXX von XXX bis XXX
 Found XXX events in time range.: XXX Termine im Zeitbereich gefunden.
-Event id=XXX XXX at XXX on XXX.: Termin Id=XXX XXX am XXX um XXX.
 
 ########################################
 # Page: ws/get_reminders.php
@@ -1845,13 +1834,11 @@ Reminder set for event.: Erinnerungseinstellung für Termin.
 Mins Before XXX.: Minuten vor XXX.
 Event time is XXX.: Terminzeit ist XXX.
 Remind time is XXX.: Erinnerungszeit ist XXX.
-Reminders for user XXX, login XXX.: Erinnerung für Benutzer XXX, Login XXX.
 
 ########################################
 # Page: ws/get_unapproved.php
 #
 Getting unapproved for user XXX.: Erhaltene 'zu überprüfende' für Benutzer XXX.
-Event id=XXX XXX already sent.: Termin-Id=XXX XXX schon gesendet.
 
 ########################################
 # Page: ws/login.php

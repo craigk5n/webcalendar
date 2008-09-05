@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -72,9 +72,13 @@ private: 개인용
 Week: 주
 Month: 월
 Year: 해
-Help: 도움말
 Settings: 설정
 Colors: 색상
+Document background: 배경 색상
+Document title: 제목 색상
+Table cell background: 테이블 셀 배경 색상
+Table cell background for current day: 오늘 날짜 표시 색상
+Help: 도움말
 Language: 언어
 time-format-help: 시간 표시 형식을 명시합니다.<br /><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br /><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
 Time format: 시간 표시 형식
@@ -89,10 +93,6 @@ display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다.<br
 Display unapproved: 승인안된 행사 표시
 Yes: 예
 No: 아니오
-Document background: 배경 색상
-Document title: 제목 색상
-Table cell background: 테이블 셀 배경 색상
-Table cell background for current day: 오늘 날짜 표시 색상
 
 ########################################
 # Page: adminhome.php
@@ -121,6 +121,7 @@ Description: 설명
 ########################################
 # Page: edit_entry.php
 #
+minutes: 분
 Edit Entry: 항목 편집
 Add Entry: 항목 추가
 Participants: 참가자
@@ -138,7 +139,6 @@ Low: 낮음
 date-help: 행사일을 나타냅니다.
 time-help: 행사 시각입니다.<br /><i>이 항목은 비워둘 수 있습니다.</i>
 duration-help: 행사기간 명시(분단위)<br /><i>이 항목은 비워둘 수 있습니다.</i>
-minutes: 분
 participants-help: 참가자의 목록 표시.
 Delete entry: 항목 지우기
 You are not authorized to edit this entry.: 이 항목을 편집할 권한이 없습니다.

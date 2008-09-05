@@ -2,7 +2,7 @@
 # Last update: 03 October 2002
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -73,11 +73,22 @@ Day: Dydd
 Week: Wythnos
 Month: Mis
 Year: Blwyddyn
-System Settings: Gosodiad System
 Settings: Gosodiadau
 Groups: Grwpiau
 Email: E-bost
 Colors: Lliwiau
+Document background: Cefndir y ddogfen
+Document title: Teitl y Ddogfen
+Document text: Testun y Ddogfen
+Table grid color: Lliw grid y tabl
+Table header background: Lliw cefndir pennawd y tabl
+Table header text: Lliw testun y pennawd i'r tabl
+Table cell background: Lliw cefndir celloedd y tabl
+Table cell background for current day: Lliw cefndir celloedd y tabl am y diwrnod presennol
+Table cell background for weekends: Lliw cefndir celloedd y tabl dros y penwythnosau
+Event popup background: Lliw cefndir 'popup'
+Event popup text: Lliw testun 'popup'
+System Settings: Gosodiad System
 app-name-help: Mae hwn yn dynodi enw'r cymwysiad (application) a fydd yn ymddangos ym mar teitl y porwr am bob tudalen a'r tudalen mewngofnodi yn ogystal. Mi fydd yr hyn yr ydych yn cofnodi yma yn cael ei gymharu a chynnwys y ffeil cyfieithiadiau gan ganiatau i chi roi teitlau amrywiol i ieithoedd gwahanol.
 Application Name: Enw'r Cymwysiad (Application)
 server-url-help: Mae hwn yn dynodi y URL sylfaen i'r cymwysiad (application). Cynnhywsir hwn wrth anfon e-byst sydd yn atgoffa neu yn nodi.
@@ -138,6 +149,7 @@ groups-enabled-help: Os y dewisir hwn ceir cymorth grwp, gan ganiatau i ddefnydd
 Groups enabled: Grwpiau
 user-sees-his-group-help: Os y dewisir hwn, ni fydd defnyddiwr yn gallu gweld digwyddiadau defnyddwyr eraill nad ydynt yn bodoli yn o leiaf un o grwpiau y defnyddiwr.
 User sees only his groups: Defnyddiwr yn gweld ei grwpiau yn unig
+Enabled: Ymlaen
 categories-enabled-help: Mae hwn yn caniatau i digwyddiadau cael ei gosod mewn dosbarthiadau.
 Categories enabled: Dosbarthiadau
 email-enabled-help: Defnyddir hwn i dewis a oes modd anfon e-byst i atgoffa defnyddwyr o digwyddiad. Gosoder i "na", os yw'r gweinydd ddim yn medru anfon e-byst yn y ffordd yma.
@@ -156,17 +168,6 @@ Events removed from my calendar: Digwyddiadau a ddiddymwyd o fy nghalendr
 email-event-rejected: Mae hwn yn penderfynnu a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os yw defnyddiwr yn gwrthod derbyn digwyddiad sydd ar eich calendr.
 Event rejected by participant: Digwyddiad wedi ei wrthod gan ddefnyddiwr
 Allow user to customize colors: Caniatad i ddefnyddwyr dewis eu lliwiau
-Document background: Cefndir y ddogfen
-Document title: Teitl y Ddogfen
-Document text: Testun y Ddogfen
-Table grid color: Lliw grid y tabl
-Table header background: Lliw cefndir pennawd y tabl
-Table header text: Lliw testun y pennawd i'r tabl
-Table cell background: Lliw cefndir celloedd y tabl
-Table cell background for current day: Lliw cefndir celloedd y tabl am y diwrnod presennol
-Table cell background for weekends: Lliw cefndir celloedd y tabl dros y penwythnosau
-Event popup background: Lliw cefndir 'popup'
-Event popup text: Lliw testun 'popup'
 
 ########################################
 # Page: adminhome.php
@@ -217,6 +218,9 @@ Description: Disgrifiad
 ########################################
 # Page: edit_entry.php
 #
+days: diwrnod
+hours: awr
+minutes: munud
 Edit Entry: Newid Digwyddiad
 Add Entry: Ychwanegu Digwyddiad
 Participants: Cyfranogwyr
@@ -236,8 +240,6 @@ Category: Dosbarth
 date-help: Mae hwn yn dynodi dyddiad y digwyddiad.
 time-help: Mae hwn yn dynodi amser y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
 duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
-hours: awr
-minutes: munud
 participants-help: Rhestrir y defnyddwyr sydd a cofnod o'r digwyddiad.
 repeat-type-help: Dewiswch pa more aml y dylsai'r digwyddiad ailgyflawni. Wrth dewis <i>Misol (wrth dydd o'r wythnos)</i> mi all digwyddiad ailgyflawni ar y Llun 1af o'r mis, 3ydd Iau o'r mis, ayyb. Wrth dewis <i>Misol (wrth dyddiad)</i> mi all digwyddiad ailgyflawni ar yr un diwrnod o'r mis (e.e. y 3ydd)
 Daily: Dyddiol
@@ -252,7 +254,6 @@ repeat-frequency-help: Mae hwn yn dynodi pa mor aml bydd y digwyddiad yn ailgyfl
 Frequency: Amlder
 All: Pob
 Send Reminder: Anfoner atgofiad
-days: diwrnod
 Delete entry: Dileu digwyddiad
 You are not authorized to edit this entry.: Nid oes ganddo chi yr awdurdod i newid y digwyddiad yma
 
@@ -312,7 +313,6 @@ Username: Enw Defnyddiwr
 E-mail address: Cyfeiriad E-bost
 Password: Gair Cydd
 again: eto
-Enabled: Ymlaen
 Disabled for demo: Dim yn gweithio yn yr arddangosiad
 Change Password: Newid Gair Cydd
 New Password: Gair Cydd Newydd
@@ -422,9 +422,9 @@ Add layer: Ychwanegu haen
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Gwyliwch y digwyddiad hwn
 Approve/Confirm: Cymeradwywch
 Reject: Gwrthod
+View this entry: Gwyliwch y digwyddiad hwn
 Approve this entry?: Cymeradwywch y digwyddiad hwn?
 Reject this entry?: Gwrthodwch y digwyddiad hwn?
 
@@ -478,6 +478,11 @@ matches found: Darganfyddwyd atebion cyfatebol
 No matches found: Dim byd yn cyfateb
 
 ########################################
+# Page: security_audit.php
+#
+Status: Statws
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Gwylio Calendr Defnyddiwr arall
@@ -516,7 +521,6 @@ View Type: Math Golwg
 ########################################
 # Page: view_entry.php
 #
-Status: Statws
 Approve/Confirm entry: Cymeradwyo digwyddiad
 Reject entry: Gwrthod digwyddiad
 Set category: Gosod dosbarth

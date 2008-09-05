@@ -17,7 +17,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -89,14 +89,26 @@ Day: Dia
 Week: Semana
 Month: Mês
 Year: Ano
-System Settings: Configurações
-Help: Ajuda
+Bottom: Rodapé
 Settings: Configurações
 Groups: Grupos
 NonUser Calendars: Calendários de não-usuário
 Other: Outros
 Email: E-mail
 Colors: Cores
+Document background: Fundo do documento
+Document title: Título do documento
+Document text: Texto do documento
+Table grid color: Cor da grade da tabela
+Table header background: Cor de fundo do cabeçalho
+Table header text: Texto do cabeçalho da tabela
+Table cell background: Fundo da célula da tabela
+Table cell background for current day: Fundo da célula da tabela (para o dia atual)
+Table cell background for weekends: Fundo da célula para feriados
+Event popup background: Fundo para eventos pop-up
+Event popup text: Texto para eventos pop-up
+System Settings: Configurações
+Help: Ajuda
 app-name-help: Especificar o nome do aplicativo a ser mostrado na barra de título
 Application Name: Nome da Aplicação
 server-url-help: Especificar a URL base para a aplicação.
@@ -131,7 +143,6 @@ From: De
 to: para
 preferred-view-help: Especificar a visualização padrão (Dia, Semana, Mês ou Ano)
 Preferred view: Visualização preferida
-Bottom: Rodapé
 fonts-help: Especificar uma lista de fontes do sistema para uso (Exemplo: Arial, Verdana)
 Fonts: Fontes
 display-weekends-help: Mostrar feriados na visualização semanal
@@ -175,9 +186,6 @@ popup-includes-siteextras-help: Se habilitado, permitir setup de campos de event
 Display Site Extras in popup: Exibir extras do site em popup
 remember-last-login-help: Quando ligado, o logon do usuário poderá ser automaticamente lembrado
 Remember last login: Lembrar ultimo acesso
-plugins-enabled-help: Habilitar aplicações plugin
-Enable Plugins: Habilitar Plugins
-plugins-sort-key-help: Especifica uma chave de ordenação para o plugin. Isto permite que os plugins apareçam em uma ordem específica.
 allow-public-access-help: Quando habilitado, o calendário pode ser usado como um calendário público somente leitura que não exige login dos usuários.
 Allow public access: Permitir acesso público
 public-access-default-visible: Eventos do calendário público aparecerão automáticamente em todos os calendários de usuários
@@ -200,6 +208,7 @@ nonuser-enabled-help: Se habilitado, admins terão a opção de criar calendários d
 Nonuser enabled: Habilitada criação de calendários de não-usuário
 nonuser-list-help: Aonde exibir os calendários de não-usuário na lista de parcipantes
 Nonuser list: Exibir na lista de participantes no
+Enabled: Ativados
 reports-enabled-help: Se habilitado, os usuários verão uma seção "Relatórios" no pé de cada página e terão a permissão de criar relatórios personalizados. Usuarios admin poderão criar relatórios globais que aparecerão no rodapé de todas as páginas de usuários.
 Reports enabled: Relatórios habilitados
 subscriptions-enabled-help: Especifica se usuários remotos podem assinar o calendário de um usuário do WebCalendar, permitindo-os ver os eventos do usuário WebCalendar em sua aplicação iCal (tais como iCal da Apple's ou Calendário Mozilla).
@@ -230,17 +239,6 @@ Event rejected by participant: Evento rejeitado pelo participante
 Allow user to customize colors: Permitir ao usuário customizar suas cores.
 Enable gradient images for background colors: Permitir imagens em gradiente para cores de fundo
 Not available: Não disponível
-Document background: Fundo do documento
-Document title: Título do documento
-Document text: Texto do documento
-Table grid color: Cor da grade da tabela
-Table header background: Cor de fundo do cabeçalho
-Table header text: Texto do cabeçalho da tabela
-Table cell background: Fundo da célula da tabela
-Table cell background for current day: Fundo da célula da tabela (para o dia atual)
-Table cell background for weekends: Fundo da célula para feriados
-Event popup background: Fundo para eventos pop-up
-Event popup text: Texto para eventos pop-up
 
 ########################################
 # Page: adminhome.php
@@ -308,6 +306,9 @@ Description: Descrição
 ########################################
 # Page: edit_entry.php
 #
+days: dias
+hours: horas
+minutes: minutos
 Edit Entry: Editar Entrada
 Add Entry: Adicionar Entrada
 Details: Detalhes
@@ -333,8 +334,6 @@ All day event: Evento no dia todo
 Timezone Offset: Diferença de Fuso Horário
 time-help: Especifica a hora do evento<br /><i>Este campo é opcional.</i>
 duration-help: Especifica a duração (em minutos) do evento.<br /><i>Este campo
-hours: horas
-minutes: minutos
 end-time-help: Especifica a hora em que um evento terminará.
 participants-help: Lista os participantes desse evento
 Availability: Disponibilidade
@@ -353,7 +352,6 @@ repeat-frequency-help: Especifica a frequência com que o evento deve ser repetid
 Frequency: Freqüência
 All: Todos
 Send Reminder: Enviar Lembrete
-days: dias
 Delete entry: Apagar entrada
 You are not authorized to edit this entry.: Não está autorizado a editar esta entrada
 
@@ -465,7 +463,6 @@ Username: Usuário
 E-mail address: Endereço de e-mail
 Password: Senha
 again: novamente
-Enabled: Ativados
 Disabled for demo: Desativado em modo demo
 Change Password: Alterar Senha
 New Password: Nova Senha
@@ -623,9 +620,9 @@ Add layer: Adicionar nível
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Visualizar esta entrada
 Approve/Confirm: Aprovar/Confirmar
 Reject: Rejeitar
+View this entry: Visualizar esta entrada
 Approve this entry?: Aprovar esta entrada?
 Reject this entry?: Rejeitar esta entrada?
 

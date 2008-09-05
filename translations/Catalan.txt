@@ -15,7 +15,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -82,12 +82,25 @@ Day: Dia
 Week: Setmana
 Month: Mes
 Year: Any
-System Settings: Configuració del sistema
-Help: Ajuda
+Bottom: Final
+Top: Inici
 Settings: Paràmetres
 Groups: Grups
 NonUser Calendars: Calendaris no d'usuari
 Email: Correu electrònic
+Document background: Fons del document
+Document title: Títol del document
+Document text: Text del document
+Table grid color: Color de la taula
+Table header background: Color del fons de la capçalera de la taula
+Table header text: Text capçalera taula
+Table cell background: Fons de la cel·la de la taula
+Table cell background for current day: Fons de la cel·la del dia actual
+Table cell background for weekends: Fons de les cel·les de caps de setmana
+Event popup background: Fons del requadre emergent de l'esdeveniment
+Event popup text: Text del missatge emergent de l'esdeveniment
+System Settings: Configuració del sistema
+Help: Ajuda
 app-name-help: Especifica el nom de l'aplicació que es mostrarà a la barra de títol del navegador a totes les pàgines i a la pàgina d'entrada. A l'arxiu de traduccions es mirarà el valor que s'especifiqui aquí per poder oferir títols diferents per a diverses llengües.
 Application Name: Nom de l'aplicació
 server-url-help: Especifica la URL principal de l'aplicació. Això s'inclourà en enviar recordatoris i notificacions per correu electrònic.
@@ -118,8 +131,6 @@ From: Des de les
 to: a les
 preferred-view-help: Especifica la visualització per defecte (Dia, Setmana, Mes, o Any).
 Preferred view: Visualització preferida
-Bottom: Final
-Top: Inici
 fonts-help: Especifica una llista de tipus de lletra del sistema que es vol fer servir (com ara "Arial,Helvetica")
 Fonts: Tipus de lletra
 display-weekends-help: Inclou caps de setmana quan es visualitzen les setmanes.
@@ -161,11 +172,6 @@ popup-includes-siteextras-help: Si està habilitat, als missatges emergents es mo
 Display Site Extras in popup: Mostra els Extres del Lloc al requadre emergent
 remember-last-login-help: Quan està habilitat, la identificació de l'usuari s'omplirà automàticament a la pàgina d'entrada (però no la contrasenya), i es carregaran les preferències de l'usuari (incloent-hi les preferències de colors i idioma).
 Remember last login: Recorda la darrera identificació
-Plugins: Connectors
-plugins-enabled-help: Habilitar connectors.
-Enable Plugins: Habilita connectors
-plugins-sort-key-help: Especifica una tecla d'ordenació per al connector. Permet que els connectors s'ordenin en un ordre específic.
-Plugin: Connector
 allow-public-access-help: Si està activat, el calendari es pot fer servir com un calendari públic només de lectura que no requereix identificació d'usuaris.
 Allow public access: Permetre l'accés públic
 public-access-view-others-help: En cas d'accés públic, s'especifica si l'usuari pot veure el calendari d'un altre usuari.
@@ -184,6 +190,7 @@ nonuser-enabled-help: Si està habilitat, els administradors tindran l'opció d'af
 Nonuser enabled: Calendaris No d'Usuari Habilitats
 nonuser-list-help: On mostrar els calendaris no d'usuari a la llista de participants
 Nonuser list: Mostra la llista de participants a
+Enabled: Habilitat
 reports-enabled-help: Si està habilitat, els usuaris veuran una secció "Informes" al peu de cada pàgina i podran crear informes personalitzats. Addicionalment, els usuaris administradors poden crear informes globals que es mostraran al peu de les pàgines de tots els usuaris.
 Reports enabled: Informes habilitats
 subscriptions-enabled-help: Especifica si els usuaris remots es poden subscriure al calendari d'un usuari de WebCalendar, permetent-los veure els esdeveniments de l'usuari WebCalendar a la seva aplicació d'iCal (com ara l'iCal d'Apple o el Mozilla Calendar).
@@ -212,17 +219,6 @@ Events removed from my calendar: Esdeveniments esborrats del meu calendari
 email-event-rejected: Especifica si s'envien o no notificacions per correu electrònic quan un participant rebutgi un esdeveniment del teu calendari.
 Event rejected by participant: Esdeveniment rebutjat pel participant
 Allow user to customize colors: Permet que l'usuari personalitzi els colors
-Document background: Fons del document
-Document title: Títol del document
-Document text: Text del document
-Table grid color: Color de la taula
-Table header background: Color del fons de la capçalera de la taula
-Table header text: Text capçalera taula
-Table cell background: Fons de la cel·la de la taula
-Table cell background for current day: Fons de la cel·la del dia actual
-Table cell background for weekends: Fons de les cel·les de caps de setmana
-Event popup background: Fons del requadre emergent de l'esdeveniment
-Event popup text: Text del missatge emergent de l'esdeveniment
 
 ########################################
 # Page: adminhome.php
@@ -282,6 +278,9 @@ Description: Descripció
 ########################################
 # Page: edit_entry.php
 #
+days: dies
+hours: hores
+minutes: minuts
 Edit Entry: Edita Entrada
 Add Entry: Afegeix una entrada
 brief-description-help: Aquest camp permet una descripció breu (d'uns 20 caràcters) de l'esdeveniment. Així és com es mostrarà l'esdeveniment en visualitzar el calendari.
@@ -304,8 +303,6 @@ All day event: Esdeveniment de dia complet
 Timezone Offset: Franja horària
 time-help: Especifica l'hora de l'esdeveniment.<br />Seleccioneu "Esdeveniment amb hora" (per a un esdeveniment programat per a una hora determinada del dia), o bé "Esdeveniment sense hora" (per a un esdeveniment sense hora determinada (com ara un festiu), o bé "Esdeveniment dia complet" (per a un esdeveniment que ocupa tot el dia, com ara haver de sortir fora de l'oficina).
 duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.<br /><i>Aquest camp es pot deixar en blanc.</i>
-hours: hores
-minutes: minuts
 participants-help: Mostra la llista de participants en aquesta entrada.
 external-participants-help: Especifica una llista de participants per a l'esdeveniment que no són usuaris de calendari. S'indicaran un usuari per línia i s'en pot incloure una adreça de correu electrònic. Si s'especifica una adreça electrònica, l'usuari podrà rebre notificacions i recordatoris
 External Participants: Participants externs
@@ -322,7 +319,6 @@ repeat-frequency-help: Especifica amb quina assiduïtat cal repetir l'esdevenimen
 Frequency: Freqüència
 All: Totes
 Send Reminder: Envia recordatori
-days: dies
 Delete entry: Suprimeix l'entrada
 You are not authorized to edit this entry.: No tens autorització per editar aquesta entrada
 
@@ -431,7 +427,6 @@ Username: Nom d'usuari
 E-mail address: Adreça electrònica
 Password: Contrasenya
 again: una altra vegada
-Enabled: Habilitat
 Disabled for demo: Inhabilitat per a la demo
 Change Password: Canvia la contrasenya
 New Password: Nova contrasenya
@@ -580,9 +575,9 @@ Add layer: Afegeix capa
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Visualitza aquesta entrada
 Approve/Confirm: Aprova/Confirma
 Reject: Rebutja
+View this entry: Visualitza aquesta entrada
 Approve this entry?: Vols aprovar aquesta entrada?
 Reject this entry?: Rebutges aquesta entrada?
 
@@ -655,6 +650,11 @@ matches found: coincidències trobades
 No matches found: No s'han trobat coincidències
 
 ########################################
+# Page: security_audit.php
+#
+Status: Estat
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Visualitza el calendari d'un altre usuari
@@ -704,7 +704,6 @@ You must specify a view name: Cal especificar un nom de visualització
 # Page: view_entry.php
 #
 Assistant mode: Mode assistent
-Status: Estat
 External User: Usuari extern
 Approve/Confirm entry: Aprova/Confirma entrada
 Reject entry: Rebutja entrada

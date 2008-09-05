@@ -14,8 +14,8 @@ closedir ( DIR );
 @files = grep ( /.txt$/, @files );
 
 foreach $f ( @files ) {
-  print "update_translation.pl $f\n";
+  printf "%-25s", $f;
   print `perl update_translation.pl -b -m $f`;
 }
-print "Done.\n";
+print "\nDone.\n";
 exit 0;

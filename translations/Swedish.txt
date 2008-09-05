@@ -8,7 +8,7 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -80,13 +80,25 @@ Day: Dag
 Week: Vecka
 Month: Månad
 Year: År
-System Settings: Systeminställningar
-Help: Hjälp
+Bottom: Botten
 Settings: Inställningar
 Groups: Grupper
 NonUser Calendars: Icke-användare kalender
 Email: E-post
 Colors: Färger
+Document background: Dokumentbakgrundens färg
+Document title: Dokumenttitelns färg
+Document text: Dokumenttextens färg
+Table grid color: Tabellstreckens färg
+Table header background: Tabellhuvudets bakgrundsfärg
+Table header text: Tabellhuvudtextens färg
+Table cell background: Tabellcells bakgrundsfärg
+Table cell background for current day: Tabellcells bakgrundsfärg för idag
+Table cell background for weekends: Tabellcells bakgrundsfärg för veckoslut
+Event popup background: Aktivitetspopp-upps bakgrundsfärg
+Event popup text: Aktivitetspopp-upps textfärg
+System Settings: Systeminställningar
+Help: Hjälp
 app-name-help: Anger namnet på denna applikation. Det kommer att synas i bläddrarens titelfält på alla sidor och på login-sidan. Värdet du anger här kommer att slås upp i språk-filen och tillåter dig att tillhandahålla olika titlar för olika språk.
 Application Name: Denna applikations namn
 server-url-help: Anger bas-URL för denna applikation. Denna kommer att inkluderas när e-post med påminnelser och meddelanden skickas ut.
@@ -120,7 +132,6 @@ From: Från
 to: till
 preferred-view-help: Specificera standardvisning (dag, vecka, månad eller år).
 Preferred view: Vald standardvy
-Bottom: Botten
 fonts-help: Anger en lista på systemtypsnitt att använda (som "Arial, Helvetica, Verdana")
 Fonts: Typsnitt
 display-weekends-help: Inkludera veckoslut vid visning av vecka.
@@ -163,11 +174,6 @@ popup-includes-siteextras-help: Om aktiverat tillåts egna händelsefältinställnin
 Display Site Extras in popup: Visa Webb-extra i popp-uppfönster
 remember-last-login-help: Om aktiverat kommer användares användarnamn att fyllas i åt dem på inloggningssidan (men inte lösenordet). och användarens inställningar kommer att laddas (inklusive inställda färger och språkval).
 Remember last login: Kom ihåg föregående inloggning
-Plugins: Plugg-in tillämpningar
-plugins-enabled-help: Tillåt plugg-in tillämpningar.
-Enable Plugins: Tillåt plugg-in tillämpningar
-plugins-sort-key-help: Anger en sorteringsnyckel för plugg-in tillämpningar. Detta tillåter plugg-in tillämpningar att visas i en specificerad orning.
-Plugin: Plugg-in tillämpning
 allow-public-access-help: Om tillåtet kan kalendern användas som en läsbar offentlig kalender som inte kräver användarinloggning.
 Allow public access: Tillåt offentlig åtkomst
 public-access-default-visible: Aktiviteter från den offentliga kalendern kommer automatiskt att synas på alla användares kalendrar
@@ -188,6 +194,7 @@ nonuser-enabled-help: Om aktiverat har administratörer möjligheten att lägga til
 Nonuser enabled: Icke-användares kalendrar aktiverat
 nonuser-list-help: Var ska icke-användares kalendrar visas i deltagarlistan.
 Nonuser list: Visa i deltagarlistans
+Enabled: Aktiverat
 reports-enabled-help: Om aktiverat kommer användare att se ett "Rapport"-val i slutet på varje sida och har då möjlighet att skapa egna rapporter. Därtill kan administratörer skapa globala rapporter som syns i slutet på alla användares sidor.
 Reports enabled: Rapporter tillåts
 subscriptions-enabled-help: Anger om fjärranvändare ska kunna abbonera på en Webbkalenderanvändares kalender och tillåta dem att se Webbkalenderanvändarens aktiviteter i deras iCal-tillåtna applikation (som Apples iCal eller Mozilla-kalender).
@@ -216,17 +223,6 @@ Events removed from my calendar: Aktivitetet som raderats från min kalender
 email-event-rejected: Skicka e-post när aktivitetet inte har accepterats
 Event rejected by participant: Aktiviteter som avböjts av deltagare
 Allow user to customize colors: Tillåt användare att anpassa färgerna
-Document background: Dokumentbakgrundens färg
-Document title: Dokumenttitelns färg
-Document text: Dokumenttextens färg
-Table grid color: Tabellstreckens färg
-Table header background: Tabellhuvudets bakgrundsfärg
-Table header text: Tabellhuvudtextens färg
-Table cell background: Tabellcells bakgrundsfärg
-Table cell background for current day: Tabellcells bakgrundsfärg för idag
-Table cell background for weekends: Tabellcells bakgrundsfärg för veckoslut
-Event popup background: Aktivitetspopp-upps bakgrundsfärg
-Event popup text: Aktivitetspopp-upps textfärg
 
 ########################################
 # Page: adminhome.php
@@ -290,6 +286,9 @@ Description: Beskrivning
 #
 am: f.m.
 pm: e.m.
+days: dagar
+hours: timmar
+minutes: minuter
 Edit Entry: Ändra aktivitet
 Add Entry: Lägg till aktivitet
 Participants: Deltagare
@@ -313,8 +312,6 @@ All day event: Heldagsaktivitet
 Timezone Offset: Lokal tid
 time-help: Anger tidpunkt för aktiviteten.<br /><i>Det här fältet behöver inte vara ifyllt.</i>
 duration-help: I detta fält anger du aktivitetens varaktighet<br /><i>Det här fältet behöver inte vara ifyllt.</i>
-hours: timmar
-minutes: minuter
 end-time-help: Anger den tid aktiviteten förväntas sluta.
 participants-help: Visa deltagare för denna händelse.
 external-participants-help: Anger en lista på deltagare till händelsen som inte är kalenderanvändare. Användarna bör listas en per rad och kan innehålla e-postadress. Om en e-postadress angetts, är användaren berättigad att få meddelande och påminnelser.
@@ -332,7 +329,6 @@ repeat-frequency-help: Hur ofta skall aktiviteten upprepas? Talet 1 visar att de
 Frequency: Upprepningens regelbundenhet
 All: Alla
 Send Reminder: Skicka påminnelse
-days: dagar
 Delete entry: Radera händelse
 You are not authorized to edit this entry.: Du har inte lov att redigera denna händelse
 
@@ -443,7 +439,6 @@ Username: Användarnamn
 E-mail address: E-postadress
 Password: Lösenord
 again: igen
-Enabled: Aktiverat
 Disabled for demo: Avstängd i demoversionen
 Change Password: Ändra lösenord
 New Password: Nytt lösenord
@@ -590,9 +585,9 @@ Add layer: Lägg till lager
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Visa aktivitet
 Approve/Confirm: Godkänn/bekräfta
 Reject: Avböj
+View this entry: Visa aktivitet
 Approve this entry?: Godkänn händelsen?
 Reject this entry?: Avböj denna händelse?
 

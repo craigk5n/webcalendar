@@ -7,7 +7,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -78,12 +78,23 @@ Day: Eguna
 Week: Astea
 Month: Hilabetea
 Year: Urtea
-System Settings: Sistemaren aukerak
-Help: Laguntza
 Settings: Aukerak
 Groups: Taldeak
 Email: E-posta
 Colors: Koloreak
+Document background: Dokumentuaren atzea
+Document title: Izenburua
+Document text: Dokumentuaren testua
+Table grid color: Taularen kolorea
+Table header background: Taularen burukoaren atzea
+Table header text: Taularen burukoaren testua
+Table cell background: Taulako gelaxken atzea
+Table cell background for current day: Gaurko egunaren gelaxkaren atzea
+Table cell background for weekends: Astebukaerako gelaxken atzea
+Event popup background: Gertaera popup-aren atzea
+Event popup text: Gertaera popup-aren testua
+System Settings: Sistemaren aukerak
+Help: Laguntza
 app-name-help: Izenburuan azalduko den testua adierazten du
 Application Name: Aplikazioaren izena
 server-url-help: Aplikazioaren oinarri URL-a adierazten du
@@ -146,6 +157,7 @@ groups-enabled-help: Taldekako antolaketa ahalbideratzen du
 Groups enabled: Taldeak gaituak
 user-sees-his-group-help: Taldekideek bere taldearen gertaerak soilik ikusiko dituzte
 User sees only his groups: Erabiltzaileak bere taldea ikusten du soilik
+Enabled: Gaitua
 Allow remote subscriptions: Urrutiko harpidetzak baimendu
 categories-enabled-help: Kategori sistema gaitzen du
 Categories enabled: Kategoriak gaituak
@@ -165,17 +177,6 @@ Events removed from my calendar: Egutegitik ezabatutako gertaerak.
 email-event-rejected: Kide batek gertaera bati uko egiten dionean e-posta bidezko notifikazioa.
 Event rejected by participant: Partaideak uko egindako gertaera
 Allow user to customize colors: Erabiltzaileei kolore esleipena egitea baimendu
-Document background: Dokumentuaren atzea
-Document title: Izenburua
-Document text: Dokumentuaren testua
-Table grid color: Taularen kolorea
-Table header background: Taularen burukoaren atzea
-Table header text: Taularen burukoaren testua
-Table cell background: Taulako gelaxken atzea
-Table cell background for current day: Gaurko egunaren gelaxkaren atzea
-Table cell background for weekends: Astebukaerako gelaxken atzea
-Event popup background: Gertaera popup-aren atzea
-Event popup text: Gertaera popup-aren testua
 
 ########################################
 # Page: adminhome.php
@@ -227,6 +228,9 @@ Description: Deskribapena
 ########################################
 # Page: edit_entry.php
 #
+days: egunak
+hours: orduak
+minutes: Minutuak
 Edit Entry: Sarrera editatu
 Add Entry: Sarrera gehitu
 Details: Zehaztasunak
@@ -250,8 +254,6 @@ Timed event: Denboraz mugatua
 All day event: Egun osokoa
 time-help: Gertaeraren iraupena adierazten du ( hutsik utz liteke )
 duration-help: Gertaeraren iraupena minutuetan adierazirik
-hours: orduak
-minutes: Minutuak
 participants-help: Gertaeran honetan partaide direnen lista.
 Availability: Libre egotea
 External Participants: Kanpo partaideak
@@ -268,7 +270,6 @@ repeat-frequency-help: Gertaera zenbatero errepikatu behar den adierazten du.
 Frequency: Maiztasuna
 All: Denak
 Send Reminder: Gogorarazteko abixua bidali
-days: egunak
 Delete entry: Sarrera ezabatu
 You are not authorized to edit this entry.: Ez zaude baimenduta gertaera hau editatzeko
 
@@ -331,7 +332,6 @@ Username: Erabiltzaile izena
 E-mail address: E-posta
 Password: Pasahitza
 again: berriz
-Enabled: Gaitua
 Disabled for demo: Demoan desgaitua
 Change Password: Pasahitza aldatu
 New Password: Pasahitz berria
@@ -441,9 +441,9 @@ Add layer: Geruza gehitu
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Sarrera hau ikusi
 Approve/Confirm: Onetsi/Konfirmatu
 Reject: Gaitzetsi
+View this entry: Sarrera hau ikusi
 Approve this entry?: Sarrera hau onetsi
 Reject this entry?: Gaitzetsi sarrera hau?
 
@@ -497,6 +497,11 @@ matches found: asmatze topatuak
 No matches found: Ez da asmatzerik topatu
 
 ########################################
+# Page: security_audit.php
+#
+Status: Egoera
+
+########################################
 # Page: set_entry_cat.php
 #
 You have not added any categories.: Ez duzu atalik gehitu
@@ -530,7 +535,6 @@ View Type: Mota ikusi
 ########################################
 # Page: view_entry.php
 #
-Status: Egoera
 Approve/Confirm entry: Onetsi/Konfirmatu erregistroa
 Reject entry: Erregistroa gaitzetsi
 Set category: Atala ezarri

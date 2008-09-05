@@ -13,7 +13,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -86,13 +86,26 @@ Day: Día
 Week: Semana
 Month: Mes
 Year: Año
-System Settings: Ajustes del sistema
-Help: Ayuda
+Bottom: Abajo
+Top: Arriba
 Settings: Opciones
 Groups: Grupos
 NonUser Calendars: Calendarios de NoUsuario
 Other: Otros
 Colors: Colores
+Document background: Fondo de Documento
+Document title: Título del documento
+Document text: Texto del documento
+Table grid color: Color de la tabla
+Table header background: Fondo del encabezado de la tabla
+Table header text: Texto del Encabezado de la Tabla
+Table cell background: Fondo de Celda de Tabla
+Table cell background for current day: Fondo de Celda de Tabla para día de hoy
+Table cell background for weekends: Fondo de una celda de fin de semana
+Event popup background: Fondo de un popup de evento
+Event popup text: Texto del popup de evento
+System Settings: Ajustes del sistema
+Help: Ayuda
 app-name-help: Especifica el nombre de la aplicación que aparecera en el título del navegador en todas las páginas y en la página de login. El valor especeficado aquí se buscará en el fichero de traducciones permitiendo diferentes títulos para diferentes idiomas.
 Application Name: Nombre de la aplicación
 server-url-help: Especifica la URL base para la aplicación. Se incluirá al enviar emails de recordatorios y notificaciones.
@@ -126,8 +139,6 @@ From: De
 to: para
 preferred-view-help: Especifica la vista por defecto (Día, Semana, Mes, o Año)
 Preferred view: Vista preferida
-Bottom: Abajo
-Top: Arriba
 fonts-help: Especifica la fuente del sistema a utilizar (como "Arial, Helvetica")
 Fonts: Fuentes
 display-weekends-help: Incluir los fines de semana al ver una semana
@@ -170,9 +181,6 @@ popup-includes-siteextras-help: Si se activa, se permite que los campos de event
 Display Site Extras in popup: Mostrar campos extra en emergentes
 remember-last-login-help: Cuando se habilita, recuerda el último login (pero no la contraseña), y las preferencias del usuario se muestran (incluyendo sus colores e idioma).
 Remember last login: Recordar información de login
-plugins-enabled-help: Habilitar aplicaciones plugin
-Enable Plugins: Habilitar plugins
-plugins-sort-key-help: Especifica la clave de ordenación de los plugins. Esto permite que los plugins aparezcan en un orden específico.
 allow-public-access-help: Si se selecciona, el calendario puede ser usado como un calendario público de sólo lectura que no exige login a los usuarios.
 Allow public access: Permitir usuario anónimo
 public-access-default-visible: Los eventos del calendario público aparecerán automáticamente en todos los calendarios de usuario
@@ -195,6 +203,7 @@ nonuser-enabled-help: Si se habilita, los administradores tienen la opción de añ
 Nonuser enabled: Activados calendarios de NoUsuarios
 nonuser-list-help: Dónde mostrar los calendarios de NoUsuarios en la lista de participantes
 Nonuser list: Lista de NoUsuarios
+Enabled: Habilitadas
 reports-enabled-help: Si se habilita, los usuarios verán una sección "Informes" en la parte inferior de cada página permitiendo crear informes personalizados. Adicionalmente, los administradores pueden crear informes globales que aparecerán en la parte inferior de todas las páginas de los usuarios.
 Reports enabled: Informes habilitados
 subscriptions-enabled-help: Especifica si usuarios remotos pueden suscribirse al WebCalendar del calendario de un usuario, permitiendoles ver los eventos del usuario de WebCalendar en sus aplicaciones iCal (como Apple's iCal o Mozilla Calendar).
@@ -225,17 +234,6 @@ Event rejected by participant: Evento rechazado por el participante
 Allow user to customize colors: Permitir a los usuarios seleccionar colores
 Enable gradient images for background colors: Activar imágenes en gradiente para colores de fondo
 Not available: No disponible
-Document background: Fondo de Documento
-Document title: Título del documento
-Document text: Texto del documento
-Table grid color: Color de la tabla
-Table header background: Fondo del encabezado de la tabla
-Table header text: Texto del Encabezado de la Tabla
-Table cell background: Fondo de Celda de Tabla
-Table cell background for current day: Fondo de Celda de Tabla para día de hoy
-Table cell background for weekends: Fondo de una celda de fin de semana
-Event popup background: Fondo de un popup de evento
-Event popup text: Texto del popup de evento
 
 ########################################
 # Page: adminhome.php
@@ -301,6 +299,9 @@ Description: Descripción
 ########################################
 # Page: edit_entry.php
 #
+days: días
+hours: horas
+minutes: Minutos
 Edit Entry: Editar entrada
 Add Entry: Añadir entrada
 Details: Detalles
@@ -326,8 +327,6 @@ All day event: Evento para todo el día
 Timezone Offset: Desplazamiento de zona horaria
 time-help: Especifica la hora del evento.<br />Selecciona "Evento con hora" (para un evento planificado a una hora especifica del día), "Evento sin hora" (para un evento que no tiene hora, como un festivo) o "Evento para todo el día" (para un evento que dura todo el día, como estar fuera de la oficina).
 duration-help: Especifica la duración (en horas:minutos) del evento.<br /><i>Este campo puede dejarse vacío.</i>
-hours: horas
-minutes: Minutos
 end-time-help: Especifica la hora a la que se espera que acabe el evento.
 participants-help: Lista de participantes en esta entrada.
 external-participants-help: Especifica una lista de participantes en el evento que no son usuarios del calentario. Los usuario deben ser listados uno por línea y pueden incluir su dirección de email. Si la dirección de email se especifica, el usuario es elegible para recibir notications y recordatorios.
@@ -345,7 +344,6 @@ repeat-frequency-help: Especifica con qué frecuencia un evento debe repetirse. P
 Frequency: Frecuencia
 All: Todos
 Send Reminder: Enviar recordatorio
-days: días
 Delete entry: Borrar entrada
 You are not authorized to edit this entry.: No estás autorizado para editar esta entrada
 
@@ -456,7 +454,6 @@ Username: Nombre de usuario
 E-mail address: Dirección de email
 Password: Contraseña
 again: de nuevo
-Enabled: Habilitadas
 Disabled for demo: Desactivado en la demo
 Change Password: Cambiar contraseña
 New Password: Nueva contraseña
@@ -608,9 +605,9 @@ Add layer: Agregar capa
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Ver esta entrada
 Approve/Confirm: Aprobar/Confirmar
 Reject: Rechazar
+View this entry: Ver esta entrada
 Approve this entry?: ¿Aprueba esta entrada?
 Reject this entry?: ¿Rechazar este registro?
 
