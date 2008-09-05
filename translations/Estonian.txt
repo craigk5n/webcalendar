@@ -4,7 +4,7 @@
 # Last update: 14.03.2003
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -69,11 +69,22 @@ Day: päev
 Week: nädal
 Month: kuu
 Year: aasta
-System Settings: Süsteemi seaded
-Help: Abiks
 Settings: Seaded
 Groups: Grupid
 Colors: Värvid
+Document background: Dokumendi taust
+Document title: Dokumendi pealkiri
+Document text: Dokumendi tekst
+Table grid color: Tabeli joonte värv
+Table header background: Tabeli päise taust
+Table header text: Tabel päise tekst
+Table cell background: Tabeli ruudu taust
+Table cell background for current day: Tabeli ruudu taust jooksval päeval
+Table cell background for weekends: Tabeli ruudu taust nädalavahetuseks
+Event popup background: Sündmuse akna taust
+Event popup text: Sündmuse tekst
+System Settings: Süsteemi seaded
+Help: Abiks
 app-name-help: Määrab ära rakenduse nime mis ilmub edaspidi lehitseja tiitli ribale
 Application Name: Rakenduse nimi
 server-url-help: määrab ära baasaadressi (URL-i) rakendusele. See lisatakse email meeldetuletustele.
@@ -133,11 +144,6 @@ disable-repeating-field-help: Valides "Jah" kaob "Korduv" väli kui lisad sündmus
 Disable Repeating field: Keela Korduv väli
 remember-last-login-help: Kui on lubatud, siis näidatakse kasutaja registreerimisandmed ilma salasõnata sisenemise lehel ja kasutaja seaded koos värvide ja keeltega laetakse automaatselt.
 Remember last login: Mäleta viimast sisenemist
-Plugins: Liidesed
-plugins-enabled-help: Lubame liidesrakendusi
-Enable Plugins: Lubame liidesed
-plugins-sort-key-help: Määrab liideste järjekorra tunnuse. See lubab liidestel ilmuda kindlas järjekorras.
-Plugin: Liides
 allow-public-access-help: Kui on lubatud, siis saab kalendrit kasutada kirjutamise keeluga avaliku kalendrina kuhu ei nõuta sisse registreerimist.
 Allow public access: Lubame avaliku ligipääsu
 public-access-view-others-help: Kui kalendrile saab avalikult ligi, siis määrab kas kasutaja saab ka teiste kalendreid näha.
@@ -150,6 +156,7 @@ groups-enabled-help: Lubab gruppide toe. Kasutajaid võib valida gruppide järgi.
 Groups enabled: Grupid lubatud
 user-sees-his-group-help: Kui on lubatud, siis kasutaja ei näe teisi kalendri kasutajaid kes ei kuulu vähemalt ühte nende gruppi.
 User sees only his groups: Kasutaja näeb ainult oma gruppi
+Enabled: Lubatud
 categories-enabled-help: Lubame sündmuste kategooriad
 Categories enabled: Kategooriad lubatud
 allow-external-users-help: Määrab kas kalendri mitte kasutajaid saab kutsuda sündmustele. See lubab kalendri mittekasutajaid loetleda kui sündmusel osalejaid.
@@ -174,17 +181,6 @@ Events removed from my calendar: Minu kalendrist eemaldatud sündmused
 email-event-rejected: Määrab kas saata emailiga teade kui kutsutu lükkab sündmuse tagasi
 Event rejected by participant: Osaleja poolt tagasi lükatud sündmus
 Allow user to customize colors: Lubame kasutajal muuta värve
-Document background: Dokumendi taust
-Document title: Dokumendi pealkiri
-Document text: Dokumendi tekst
-Table grid color: Tabeli joonte värv
-Table header background: Tabeli päise taust
-Table header text: Tabel päise tekst
-Table cell background: Tabeli ruudu taust
-Table cell background for current day: Tabeli ruudu taust jooksval päeval
-Table cell background for weekends: Tabeli ruudu taust nädalavahetuseks
-Event popup background: Sündmuse akna taust
-Event popup text: Sündmuse tekst
 
 ########################################
 # Page: adminhome.php
@@ -240,6 +236,9 @@ Description: Kirjeldus
 ########################################
 # Page: edit_entry.php
 #
+days: päevi
+hours: tunnid
+minutes: minutid
 Edit Entry: Muuda kannet
 Add Entry: Lisa kannet
 Participants: Osalejad
@@ -262,8 +261,6 @@ All day event: Kogu päeva sündmus
 Timezone Offset: Ajavööndi erinevus
 time-help: Määrab sündmuse aja.<br />Vali kas "Ajastatud sündmus" (sündmuse jaoks mis on määratud kindlale ajale), "Ajastamata sündmus" (sündmuse jaoks millel pole kindlat kellaaega (nägu pühad) või "Kogu päeva sündmus" (sündmusele mis kestab kogu päeva (olen kontorist väljas).
 duration-help: Määrab sündmuse kestvuse (tunnid:minutid).<br /><i>Selle välja võib jätta tühjaks.</i>
-hours: tunnid
-minutes: minutid
 participants-help: Näita selle kande osalejaid.
 external-participants-help: Määrab ära kalendi mittekasutajatest osalejad. Osalejad tuleb loetleda üks rea kohta ja lisada võib emaili aadressi. Kui email on määratud, siis võib inimene saada teadustusi ja meeldetuletusi.
 External Participants: Välised osalejad
@@ -278,11 +275,8 @@ repeat-end-date-help: Määrab kuupäeva milleni sündmust korrata.
 Use end date: Kasutuse lõppkuupäev
 repeat-frequency-help: Määrab kui tihti sündmust korrata. 1 näitab et peab korduma igas ajaühikus, 2 näitab et peab korduma igal teisel nädalal (kui <i>Korduse tüüp</i> on <i>nädalati</i>), igal teisel kuul (kui <i>Korduse tüüp</i> on <i>kuiselt</i>), jne.
 Frequency: Sagedus
-MO: E
-SU: P
 All: Kõik
 Send Reminder: Saada meeldetuletus
-days: päevi
 Delete entry: Kustuta kanne
 You are not authorized to edit this entry.: Sul ei ole lubatud muuta seda kannet
 
@@ -341,7 +335,6 @@ Username: Kasutajanimi
 E-mail address: E-mail aadress
 Password: Salasõna
 again: uuesti
-Enabled: Lubatud
 Disabled for demo: Keelatud näidise jaoks
 Change Password: Muuda salasõna
 New Password: Uus salasõna
@@ -457,9 +450,9 @@ Add layer: Lisa kiht
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Vaata seda kannet
 Approve/Confirm: Kiidan heaks/Kinnitan
 Reject: Hülgame
+View this entry: Vaata seda kannet
 Approve this entry?: Kiida see kanne heaks?
 Reject this entry?: Lükkame kande tagasi?
 
@@ -514,6 +507,11 @@ matches found: vasteid leitud
 No matches found: Ühtegi vastet ei leitud
 
 ########################################
+# Page: security_audit.php
+#
+Status: Olukord
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Vaata teise kasutaja kalendrit
@@ -558,7 +556,6 @@ You must specify a view name: Pead näitama vaate nime
 # Page: view_entry.php
 #
 Assistant mode: Abistav olek
-Status: Olukord
 External User: Väline kasutaja
 Approve/Confirm entry: Kiida heaks/kinnita kanne
 Reject entry: Hülga kanne
@@ -670,11 +667,13 @@ Invalid user login: Ebasobiva kasutaja sisenemine
 ########################################
 # Page: includes/xcal.php
 #
+MO: E
 TU: T
 WE: K
 TH: N
 FR: R
 SA: L
+SU: P
 Unnamed Event: Nimetu sündmus
 
 ########################################

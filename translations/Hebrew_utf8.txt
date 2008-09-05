@@ -4,7 +4,7 @@
 # Last update: 22 July 2006
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -91,14 +91,31 @@ Day: יום
 Week: שבוע
 Month: חודש
 Year: שנה
-System Settings: הגדרות מערכת
-Help: עזרה
+Anyone: כל אחד
+Participant: משתתף
 Settings: הגדרות
 Groups: קבוצות
 NonUser Calendars: לוחות שנה ללא משתמש
 Other: אחר
 Email: דוא"ל
 Colors: צבעים
+Document background: רקע למסמכים
+Document title: כותרת המסמך
+Document text: טקסט המסמך
+My event text: הטקסט של הארוע שלי
+Table grid color: צבע הרשת בטבלה
+Table header background: רקע לכותרת טבלה
+Table header text: טקסט כותרת טבלה
+Table cell background: רקע לתא בטבלה
+Table cell background for current day: רקע לתא בטבלה ליום הנוכחי
+Table cell background for days with events: צבע רקע התא של ימים בהם יש ארועים
+Table cell background for weekends: רקע לתא בטבלה לסופי שבוע
+Table cell background for other month: צבע רקע התא של חודש אחר
+Week number color: צבע מספר השבוע
+Event popup background: רקע לחלונית ארוע קופצת
+Event popup text: טקסט לחלונית ארוע קופצת
+System Settings: הגדרות מערכת
+Help: עזרה
 app-name-help: קובע את שם היישום שיופיע בפס הכותרת של הדפדפן עבור כל הדפים ועל דף הכניסה. הערך שתקבע כאן יימצא בקובץ התרגום מה שיאפשר כותרות שונות עבור שפות שונות.
 Application Name: שם היישום
 Translated Name: שם מתורגם
@@ -213,11 +230,6 @@ remember-last-login-help: כאשר נבחר, שם המשתמש יופיעה או
 Remember last login: זכור שם משתמש קודם
 summary_length-help: האורך המירבי של תאור קצר בתצוגת לוחות שנה
 Brief Description Length: אורך תאור קצר
-Plugins: מתוספים
-plugins-enabled-help: אפשר יישומים מתוספים
-Enable Plugins: אפשר מצורפים
-plugins-sort-key-help: ציין קליד קיצור עבור המתוסף. זה מאפשר להציג את המתוספים בסדר מסוים.
-Plugin: מתוסף
 allow-public-access-help: כאשר נבחר, ניתן להשתמש בלוח השנה כלוח ציבורי לקריאה בלבד אשר לא מחייב אימות משתמשים.
 Allow public access: אפשר גישה ציבורית
 public-access-default-visible: ארועים בלוח הציבורי יופיעו אוטומטית בלוחות השנה של כל המשתמשים.
@@ -246,6 +258,7 @@ nonuser-enabled-help: אם מאופשר, למנהל אפשרות להוסיף ל
 Nonuser enabled: אפשור לוחות שנה ללא משתמש
 nonuser-list-help: היכן להציג את לוחות השנה ללא משתמשים ברשימת משתתפים
 Nonuser list: הצג ברשימת משתתפים ב-
+Enabled: מאופשרות
 reports-enabled-help: אם מאופשר, משתמשים ייראו מחלקה של "דוחות" בתחתית כל דף והם יוכלו ליצור דוחות מותאמים אישית. בנוסף, מנהלים יוכלו ליצור דו"חות גלובליים שיוצגו בתחתית הדף של כל משתמש.
 Reports enabled: דו"חות מאופשרים
 subscriptions-enabled-help: קובע אם משתמשים מרוחקים יוכלו להרשם ללוח שנה של משתמש מקומי, מאפשר להם לראות את הארועים של המשתמש המקומי ביישומים בעלי יכולות iCal כדוגמת iCal של Apple או Mozilla Calendar.
@@ -277,8 +290,6 @@ Use self-registration email notifications: חולל סיסמאות ושלח או
 allow-attachment-help: אפשר למשתמשים להוסיף קבצים מצורפים לארועים
 Allow file attachments to events: אפשר קבצים מצורפים בארועים
 Admin and owner can always add attachments if enabled.: המנהל והבעלים יכולים תמיד להוסיף מצורפים באם מאופשר.
-Anyone: כל אחד
-Participant: משתתף
 allow-comments-help: אפשר למשתמשים להוסיף הערות לארועים
 Allow comments to events: אפשר הערות בארועים
 Admin and owner can always add comments if enabled.: המנהל והבעלים תמיד יכולים להוסיף הערות, באם מאופשר.
@@ -299,6 +310,8 @@ SMTP Username: שם משתמש SMTP
 email-smtp-password: סיסמת SMTP אם משתמשים באימות
 SMTP Password: סיסמת SMTP
 Default user settings: הגדרות משתמש ברירות המחדל
+Email format preference: עדיפות תצורת דוא"ל
+Plain Text: טקסט פשוט
 email-event-reminders-help: קובע באם לשלוח תזכורות לארועים או לא.
 Event reminders: תזכורות לארועים
 email-event-added: קובע אם לשלוח הודעות דוא"ל כאשר מתווסף ארוע ללוח השנה שלך.
@@ -313,21 +326,6 @@ Allow user to customize colors: אפשר למשתמשים לשנות צבעים
 gradient-colors: אם מופעל משתמשים בצבעים גרדיאנטים. זה יכול להשפיע מאוד על ביצועים.
 Enable gradient images for background colors: אפשר צבעים גרדיאנטים כצבעי רקע
 Not available: לא זמין
-Document background: רקע למסמכים
-Document title: כותרת המסמך
-Document text: טקסט המסמך
-My event text: הטקסט של הארוע שלי
-Table grid color: צבע הרשת בטבלה
-Table header background: רקע לכותרת טבלה
-Table header text: טקסט כותרת טבלה
-Table cell background: רקע לתא בטבלה
-Table cell background for current day: רקע לתא בטבלה ליום הנוכחי
-Table cell background for days with events: צבע רקע התא של ימים בהם יש ארועים
-Table cell background for weekends: רקע לתא בטבלה לסופי שבוע
-Table cell background for other month: צבע רקע התא של חודש אחר
-Week number color: צבע מספר השבוע
-Event popup background: רקע לחלונית ארוע קופצת
-Event popup text: טקסט לחלונית ארוע קופצת
 
 ########################################
 # Page: adminhome.php
@@ -440,13 +438,16 @@ Removed: הוסר
 #
 am: לפנה"צ
 pm: אחה"צ
+days: ימים
+hours: שעות
+minutes: דקות
 You are not authorized to edit this task: אינך רשאי לערוך משימה זו.
 task: משימה
-hours ahead of you: שעות מוקדמות ממך
-hours behind you: שעות מאוחרות ממך
+is in a different timezone than you are. Currently: הנו באיזור זמן שונה ממך. כרגע
 hour ahead of you: שעה מוקדמת ממך
 hour behind you: שעה מאוחרת ממך
-is in a different timezone than you are. Currently: הנו באיזור זמן שונה ממך. כרגע
+hours ahead of you: שעות מוקדמות ממך
+hours behind you: שעות מאוחרות ממך
 Time entered here is based on your Timezone.: השעה כאן מבוססת על איזור הזמן שלך
 Edit Entry: ערוך רשומה
 Add Entry: הוסף רשומה
@@ -482,8 +483,6 @@ All day event: ארוע של יום שלם
 Timezone Offset: היסט איזור זמן
 time-help: קובע את שעת הארוע.<br /> בחר "ארוע לפי זמן" (עבור ארוע שמזומן לשעה מסויימת באותו יום), "ארוע לא לפי זמן" (עבור ארוע שלא קשור לשעה (כמו חופשה)), או "ארוע של יום שלם" עבור ארוע שלוקח את כל היום (כמו להיות מחוץ למשרד).
 duration-help: קובע את משך הארוע (בשעות:דקות).<br /><i>ניתן להשאיר שדה זה ריק.</i>
-hours: שעות
-minutes: דקות
 end-time-help: קובע את שעת סיום הצפוי של הארוע.
 Start Time: שעת התחלה
 Due Date: תאריך יעד
@@ -534,7 +533,6 @@ Send Reminder: שלח תזכורת
 When: כאשר
 Use Date/Time: השתמש בתאריך/שעה
 Use Offset: השתמש בהיסט
-days: ימים
 Before: לפני
 After: אחרי
 Start: תחילה
@@ -670,7 +668,6 @@ Username: שם משתמש
 E-mail address: כתובת דוא"ל
 Password: סיסמא
 again: שוב
-Enabled: מאופשרות
 Disabled for demo: לא פעיל לצורך ההדגמה
 Change Password: שנה סיסמא
 New Password: סיסמא חדשה
@@ -857,14 +854,14 @@ Add layer: הוסף שכבה
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: צפה ברשומה זו
 Approve/Confirm: אשר
-Reject: דחה
-Check All: בחר הכל
-Uncheck All: נקה הכל
 Approve Selected: אשר מסומנות
-Reject Selected: דחה מסומנות
+Check All: בחר הכל
 Emails Will Not Be Sent: לא יישלח דוא"ל
+Reject Selected: דחה מסומנות
+Reject: דחה
+Uncheck All: נקה הכל
+View this entry: צפה ברשומה זו
 No unapproved entries for: אין רשומות לא מאושרות עבור
 Unapproved Entries: רשומות לא מאושרות
 Not authorized: לא מורשה
@@ -920,8 +917,6 @@ hour: שעה
 minute: דקה
 theme-reload-help: בגלל המטמון של CSS, יתכן שצריך לרענן את הדף
 Page may need to be reloaded for new Theme to take effect: יתכן שצריך לרענן את הדף כדי שערכת הצבעים החדשה תתחיל לפעול.
-Email format preference: עדיפות תצורת דוא"ל
-Plain Text: טקסט פשוט
 display_byproxy-help: בטל את היוצר האמיתי בדף התצוגת רשומות
 Display if created by Assistant: הצג אם נוצר על ידי עוזר
 allow-view-subscriptions-help: מאפשר הגבלת הגישה אל רשומות פרטיות וסודיות בגישה מרחוק
@@ -1008,6 +1003,11 @@ matches found: נמצאו התאמות
 No matches found: לא נמצאו התאמות
 
 ########################################
+# Page: security_audit.php
+#
+Status: מצב
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: צפה בלוח שנה של משתמש אחר
@@ -1074,7 +1074,6 @@ No users for this view: אין משתמשים בתצוגה זו
 Update Task Percentage: עדכן אחוז המשימה
 Completed: הושלם
 Assistant mode: מצב עוזר
-Status: מצב
 Declined: נדחה
 Needs-Action: נדרש טיפול
 by: על ידי
@@ -1130,17 +1129,16 @@ Week View: תצוגה שבועית
 Year View: תצוגה שנתית
 
 ########################################
-# Page: includes/config.php
-#
-Fatal Error: שגיאה חמורה
-Troubleshooting Help: עזרה באיתור תקלות
-
-########################################
 # Page: includes/date_formats.php
 #
-LANGUAGE DEFINED: שפה מוגדרת
 December: דצמבר
 Dec: דצמ
+LANGUAGE DEFINED: שפה מוגדרת
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: שגיאה חמורה
 
 ########################################
 # Page: includes/functions.php

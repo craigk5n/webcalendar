@@ -10,10 +10,11 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-20-2007
 # 
 # PKaszubski [pkaszubski@gmail.com]
 # Translation completed on 2008-05-07 01:25
+# Translation last updated on 09-05-2008
+
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
@@ -47,13 +48,13 @@ __month__ __yyyy__: =
 ########################################
 # Page: about.php
 #
-Title: WebCalendar
+Title: =
 version: wersja
 version XXX: wersja XXX
 WebCalendar is a PHP application used...: WebCalendar to aplikacja kalendarzowa PHP dla pojedynczego użytkownika lub grupy użytkowników połączonych przez internet / intranet. Można ją także skonfigurować jako kalendarz zdarzeń.
 Credits: Autorzy
 About: O programie
-OK: OK
+OK: =
 
 ########################################
 # Page: access.php
@@ -62,8 +63,8 @@ Database error: Błąd bazy danych
 Database error XXX.: Błąd bazy danych: XXX.
 DEFAULT CONFIGURATION: DOMYŚLNA KONFIGURACJA
 Go: Idź
-Undo: Cofnij
 Save: Zapisz
+Undo: Cofnij
 Public Access: Dostęp Publiczny
 Admin: Administrator
 User Access Control: Kontrola dostępu użytkownika
@@ -122,7 +123,7 @@ Settings: Ustawienia
 Groups: Grupy
 NonUser Calendars: Kalendarze bez właścicieli
 Other: Pozostałe
-Email: Email
+Email: =
 Colors: Kolory
 Document background: Tło dokumentu
 Document title: Tytuł dokumentu
@@ -270,11 +271,6 @@ Display Participants in popup: Wyświetlaj uczestników w okienkach pop-up
 Miscellaneous: Różne
 remember-last-login-help: Włącza zapamiętywanie ostatnio użytej nazwy użytkownika na stronie logowania (lecz nie hasła) oraz preferencji (wliczając kolory i język).
 Remember last login: Pamiętaj ostatnie logowanie
-Plugins: Wtyczki
-plugins-enabled-help: Włącza aplikacje bedące wtyczkami
-Enable Plugins: Wtyczki włączone
-plugins-sort-key-help: Określa klawisz sortujący dla wtyczki. Pozwala to na pojawianie się wtyczek w określonym porządku.
-Plugin: Wtyczka
 summary_length-help: Maksymalna długość krótkiego opisu w widokach kalendarzowych
 Brief Description Length: Maksymalna długość krótkiego opisu
 user_sort-help: Określa kolejność sortowania list użytkownika oraz list bez właściciela
@@ -311,6 +307,7 @@ nonuser-enabled-help: Jeżeli włączone, administratorzy bedą mieli możliwoś
 Nonuser enabled: Kalendarze bez właścicieli włączone
 nonuser-list-help: Gdzie wyświetlać kalendarze bez właścicieli na liście współuczestników
 Nonuser list: Miejsce wyświetlania kalendarzy bez właścicieli
+Enabled: Włączone
 reports-enabled-help: Włącza opcje tworzenia raportów.
 Reports enabled: Raporty włączone
 subscriptions-enabled-help: Ustala, czy użytkownicy zdalni mogą korzystać z zasobów WebCalendara
@@ -352,7 +349,7 @@ email-enabled-help: Włącza wysyłanie emaili z informacjami i przypominaczami.
 Email enabled: Emaile włączone
 email-default-sender: Ustala domyślnego nadawcę wiadomości
 Default sender address: Domyślny adres nadawcy
-email-mailer: Choose email type (SMTP, PHP mail, sendmail)
+email-mailer: =
 Email Mailer: Program pocztowy
 email-smtp-host: Host(y) SMTP (oddzielaj przecinkami)
 SMTP Host name(s): Nazwa/nazwy hosta/hostów SMTP
@@ -365,6 +362,12 @@ SMTP Username: Nazwa użytkownika SMTP
 email-smtp-password: Hasło SMTP jeśli używana jest autoryzacja
 SMTP Password: Hasło SMTP
 Default user settings: Domyślne ustawienia użytkownika
+email-format: Określ preferowany format dla wiadomości email: HTML lub zwykły tekst
+Email format preference: Ustawienie preferowanego formatu dla wiadomości email
+HTML: =
+Plain Text: Zwykły tekst
+email-include-ics: Dołączaj plik w formacie iCalendar (.ics) do wiadomości email
+Include iCalendar attachments: Stosuj załączniki iCalendar
 email-event-reminders-help: Ustala, czy wysyłać przypomnienia
 Event reminders: Wysyłaj przypomnienia
 email-event-added: Ustala, czy wysyłać informacje o dodaniu zdarzenia
@@ -782,7 +785,6 @@ Username: Użytkownik
 E-mail address: Adres e-mail
 Password: Hasło
 again: ponów
-Enabled: Włączone
 Disabled for demo: Wyłączony w wersji demo
 Change Password: Zmień hasło
 New Password: Nowe hasło
@@ -814,6 +816,11 @@ Modified since: Zmodyfikowane po
 export format not defined or incorrect: niezdefiniowany lub niepoprawny format eksportu
 
 ########################################
+# Page: freebusy.php
+#
+No user specified.: Nie podano nazwy użytkownika
+
+########################################
 # Page: groups.php
 #
 Add New Group: Dodaj nową grupę
@@ -832,11 +839,6 @@ Created by: Stworzony przez
 # Page: group_edit_handler.php
 #
 You must specify a group name: Musisz podać nazwę grupy
-
-########################################
-# Page: groups.php
-#
-Add New Group: Dodaj nową grupę
 
 ########################################
 # Page: help_admin.php
@@ -891,7 +893,7 @@ Entries older than the current date: Wpisy starsze od bieżącej daty
 Entries created in the Palm Desktop...: Wpisy utworzone w Palmtopie, które nie zostały HotSync'owane
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Wszystko zaimportowane z Palmtopa będzie nadpisane podczas kolejnego importu (chyba że data zdarzenia minęła). 
 Therefore, updates should be made in the Palm Desktop.: Dlatego aktualizacje powinny być przeprowadzone w Palmtopie.
-vCal: vCal
+vCal: =
 This form will import vCalendar (.vcs) 1.0 events: Ten formularz zaimportuje zdarzenia vCalendar (.vcs) 1.0
 The following formats have been tested: Podane formaty zostały przetestowane
 This form will import iCalendar (.ics) events: Ten formularz zaimportuje zdarzenia iCalendar (.ics)
@@ -938,12 +940,6 @@ Enable FreeBusy publishing: Włącz FreeBusy
 freebusy-enabled-help: Ustala, czy użytkownik jest dostępny za pomocą standardu iCal FreeBusy
 freebusy-url-help: Adres dostępu do listy FreeBusy
 rss-feed-url-help: Adres dostępu do RSS
-
-########################################
-# Page: freebusy.php
-#
-#
-No user specified.: Nie podano nazwy użytkownika
 
 ########################################
 # Page: help_uac.php
@@ -1037,7 +1033,6 @@ cookies-note: <b>Uwaga!</b> Ta aplikacja wymaga włączonych cookies ('ciastecze
 Invalid login: Nieprawidłowa nazwa użytkownika (login)
 You have been logged out.: Zostałeś wylogowany
 Not yet registered? Register here!: Nie masz konta? Zarejestruj się tutaj!
-Save login via cookies so I dont have to login next time.: Zapisz nazwę użytkownika przez cookies, by uniknąć konieczności ponownego logowania.
 
 ########################################
 # Page: minical.php
@@ -1072,12 +1067,6 @@ hour: godzina
 minute: minuta
 theme-reload-help: Ze względu na zapis CSS w pamięci podręcznej "cache", może być konieczne odświeżenie strony
 Page may need to be reloaded for new Theme to take effect: Zmiana skórki ("theme") może wymagać odświeżenia strony
-email-format: Określ preferowany format dla wiadomości email: HTML lub zwykły tekst
-Email format preference: Ustawienie preferowanego formatu dla wiadomości email
-HTML: HTML
-Plain Text: Zwykły tekst
-email-include-ics: Dołączaj plik w formacie iCalendar (.ics) do wiadomości email
-Include iCalendar attachments: Stosuj załączniki iCalendar
 display_byproxy-help: Wyświetl właściwego twórcę zdarzenia na stronie "view_entry"
 Display if created by Assistant: Wyświetl, jeśli stworzone przez asystenta
 allow-view-subscriptions-help: Umożliwia ograniczenie dostępu zdalnego do wpisów prywatnych i poufnych
@@ -1118,7 +1107,7 @@ to log in and start using your account: aby zalogować się i zacząć korzysta�
 Please visit XXX to log in and start using your account!: Proszę odwiedź "XXX", aby się zalogować i zacząć korzystać z konta!
 You may change your password after logging in the first time.: Możesz zmienić hasło po logowaniu się za pierwszym razem
 If you received this email in error: Jeśli dostałeś ten email w wyniku błędu i nie tworzyłeś sobie konta WebCalendar, zignoruj tę informację, lub odpowiedz krótką notką.
-Administrator: Administrator
+Administrator: =
 Welcome: Witaj
 New user via email.: Nowy użytkownik utworzony przez email.
 Registration: Rejestracja
@@ -1132,7 +1121,7 @@ Submit: Wyślij
 ########################################
 # Page: reject_entry.php
 #
-Continue: Continue
+Continue: =
 (Your comments will be emailed to the other participants.): (Twoje uwagi zostaną wysłane emailem do innych uczestników.)
 An appointment has been rejected by: Spotkanie zostało odrzucone przez
 
@@ -1183,6 +1172,11 @@ No matches found: Nie znaleziono
 New Search: Nowe wyszukiwanie
 
 ########################################
+# Page: security_audit.php
+#
+Status: Stan
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Pokaż kalendarz innego użytkownika
@@ -1215,6 +1209,33 @@ listid: id listy
 Reset: Resetuj
 
 ########################################
+# Page: views.php
+#
+Add New View: Dodaj nowy widok
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Widok bez nazwy
+Add View: Dodaj Widok
+Edit View: Edytuj Widok
+View Name: Zobacz Nazwę
+View Type: Zobacz Typ
+Day by Time: Dzień (sortuj wg czasu)
+Week (Users horizontal): Tydzień (Użytkownicy poziomo)
+Week by Time: Tydzień (sortuj wg czasu)
+Week (Users vertical): Tydzień (Użytkownicy pionowo)
+Week (Timebar): Tydzień (z uwzględnieniem czasu)
+Month (Timebar): Miesiąc (z uwzględnieniem czasu)
+Month (side by side): Miesiąc (obok siebie)
+Month (on same calendar): Miesiąc (na tym samym kalendarzu)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Musisz określić nazwę widoku
+
+########################################
 # Page: view_d.php
 #
 No users for this view: Brak użytkowników dla tego widoku
@@ -1225,7 +1246,6 @@ No users for this view: Brak użytkowników dla tego widoku
 Update Task Percentage: Aktualizuj procent wykonania
 Completed: Ukończone
 Assistant mode: Tryb asystenta
-Status: Stan
 Declined: Odrzucone
 Needs-Action: Wymaga działania
 by: do
@@ -1265,33 +1285,6 @@ Palm Pilot: =
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Podwójne kliknięcie na pustej komórce dodaje nowy wpis
-
-########################################
-# Page: views.php
-#
-Add New View: Dodaj nowy widok
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Widok bez nazwy
-Add View: Dodaj Widok
-Edit View: Edytuj Widok
-View Name: Zobacz Nazwę
-View Type: Zobacz Typ
-Day by Time: Dzień (sortuj wg czasu)
-Week (Users horizontal): Tydzień (Użytkownicy poziomo)
-Week by Time: Tydzień (sortuj wg czasu)
-Week (Users vertical): Tydzień (Użytkownicy pionowo)
-Week (Timebar): Tydzień (z uwzględnieniem czasu)
-Month (Timebar): Miesiąc (z uwzględnieniem czasu)
-Month (side by side): Miesiąc (obok siebie)
-Month (on same calendar): Miesiąc (na tym samym kalendarzu)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: Musisz określić nazwę widoku
 
 ########################################
 # Page: week_details.php
@@ -1415,10 +1408,9 @@ August: Sierpień
 September: Wrzesień
 October: Październik
 November: Listopad
-December: Grudzień
 Jan: Sty
 Feb: Lut
-Mar: Mar
+Mar: =
 Apr: Kwi
 May: Maj
 Jun: Cze
@@ -1427,7 +1419,6 @@ Aug: Sie
 Sep: Wrz
 Oct: Paź
 Nov: Lis
-Dec: Gru
 unknown-month: nieznany miesiąc
 First Quarter Moon: Pierwsza kwadra Księżyca
 Full Moon: Pełnia Księżyca
@@ -1512,8 +1503,8 @@ Galician: galicyjski
 German: niemiecki
 Greek: grecki
 Hebrew: hebrajski
-Hungarian: węgierski
 Holo (Taiwanese): Holo (tajwański)
+Hungarian: węgierski
 Icelandic: islandzki
 Indonesian: indonezyjski
 Italian: włoski
@@ -1585,8 +1576,8 @@ Event Imported: Zdarzenia zaimportowane
 # Page: includes/classes/Doc.class
 #
 bytes: bajty/bajtów
-kb: kb
-Mb: Mb
+kb: =
+Mb: =
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -1685,7 +1676,6 @@ Manage Calendar of: Zarządzaj innymi kalendarzami
 My Reports: Moje raporty
 My Profile: Moje profile
 Public Calendar: Kalendarz publiczny
-Unapproved Entries: Niezatwierdzone wpisy
 Unapproved Events: Niezatwierdzone wydarzenia
 User Manager: Zarządzaj użytkownikami
 Help Contents: Pomoc
@@ -1739,7 +1729,7 @@ You should see the session counter increment each time: Powinieneś zobaczyć zw
 SESSION COUNTER: LICZNIK SESJI
 Settings.php Status: Status settings.php
 The file permissions of settings.php are set...: Ustawione przywileje dostępu do pliku <b>settings.php</b> nie pozwalają instalatorowi na jego modyfikację. Aby kontynuować, należy zmienić przywileje następujacego pliku.
-The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
+The file permissions of the includes directory are set...: =
 Your settings.php file appears to be valid: Plik <b>settings.php</b> jest poprawny
 Configuration Wizard Password: Hasło kreatora instalacji
 Create Settings File Password: Utwórz hasło pliku z ustawieniami

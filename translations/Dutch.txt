@@ -6,7 +6,7 @@
 #   Oliver Heesakkers / dev@heesakkers.info
 #
 # $Id$
-# Translation last updated on 04-30-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -104,14 +104,33 @@ Day: Dag
 Week: =
 Month: Maand
 Year: Jaar
-System Settings: Instellingen
-Help: =
+Bottom: Onder
+Top: Boven
+Anyone: Wie dan ook
+Participant: Deelnemer
 Settings: Instellingen
 Groups: Groepen
 NonUser Calendars: Losse agenda's
 Other: Overige
 Email: E-mail
 Colors: Kleuren
+Document background: Achtergrondkleur agenda
+Document title: Tekstkleur programmanaam inlogscherm
+Document text: Standaard tekstkleur
+My event text: Mijn afspraak tekstkleur
+Table grid color: Kleur tabelraster
+Table header background: Achtergrondkleur tabelzijden
+Table header text: Tekstkleur tabelheaders
+Table cell background: Achtergrondkleur tabelcellen
+Table cell background for current day: Achtergrondkleur voor afspraken en huidige dag
+Table cell background for days with events: Achtergrondkleur voor cellen met afspraken
+Table cell background for weekends: Achtergrondkleur voor weekeinden
+Table cell background for other month: Achtergrondkleur voor cellen in andere maand
+Week number color: Weeknummer kleur
+Event popup background: Achtergrondkleur afspraak-popup
+Event popup text: Tekstkleur afspraak-popup
+System Settings: Instellingen
+Help: =
 System options: Systeemopties
 app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam verschijnt in het browservenster op elke pagina en op de login-pagina.
 Application Name: Programmanaam
@@ -168,8 +187,6 @@ preferred-view-help: Specificeert de standaard agendaview - dag, week, maand, ja
 Preferred view: Voorkeursweergave
 Allow top menu: Permitteer menu bovenin
 Date Selectors position: Datum positiekiezers
-Bottom: Onder
-Top: Boven
 menu-themes-help: Bepaalt kleuren en stijl van het hoofdmenu
 Menu theme: Menu thema
 fonts-help: Specificeert een lijst van systeem-fonts die gebruikt kunnen worden, zoals Verdana, Arial, Helvetica, etc.
@@ -245,11 +262,6 @@ user_sort-help: Bepaalt de volgorde op lijsten van gebruikers en losse agenda's
 User Sort Order: Gebruikersvolgorde
 Lastname, Firstname: Achternaam, Voornaam
 Firstname, Lastname: Voornaam, Achternaam
-Plugins: Plug-ins
-plugins-enabled-help: Sta het gebruik van plug-in-applicaties toe
-Enable Plugins: Plug-ins geactiveerd
-plugins-sort-key-help: Deze optie bepaalt de sorteringsvolgorde voor weergave van de plug-ins.
-Plugin: Plug-in
 allow-public-access-help: Indien ingeschakeld kan de agenda worden gebruikt als read-only Open Agenda; gebruikers hoeven in dit geval niet in te loggen
 Allow public access: Publieke toegang tot agenda toestaan
 public-access-default-visible: Afspraken op de Open Agenda verschijnen automatisch op de kalenders van alle gebruikers
@@ -278,6 +290,7 @@ nonuser-enabled-help: Indien deze optie is geactiveerd kan een beheerder een of 
 Nonuser enabled: Activeer losse agenda
 nonuser-list-help: Deze optie bepaalt waar de losse agenda in het deelnemersoverzicht wordt getoond.
 Nonuser list: Positie losse agenda
+Enabled: wel weergeven
 reports-enabled-help: Indien deze optie is geactiveerd wordt een nieuwe rapportage-sectie zichtbaar in het beheerpaneel onderaan de pagina. Hier kan een gebruiker eigen agendarapportages definieren.<br />Beheerders kunnen algemene rapportages toevoegen die in het rapportagemenu van alle gebruikers beschikbaar zijn.
 Reports enabled: Activeer rapportages
 subscriptions-enabled-help: Met deze optie bepaalt u of remote gebruikers zich op een WebCalendar-agenda kunnen aanmelden om zo de inhoud van deze agenda in hun iCal-applicatie te bekijken (bijvoorbeeld Apple's iCal of Mozilla Calendar).
@@ -311,8 +324,6 @@ Use self-registration email notifications: Gebruik zelf-registratie email-notifi
 allow-attachment-help: Met deze functie wordt het mogelijk om bijlagen aan afspraken toe te voegen.
 Allow file attachments to events: Permitteer bestandsbijlagen bij afspraken
 Admin and owner can always add attachments if enabled.: Indien ingesteld kunnen de Admin en eigenaar altijd bijlagen toevoegen.
-Anyone: Wie dan ook
-Participant: Deelnemer
 allow-comments-help: Met deze functie wordt het mogelijk om opmerkingen aan afspraken toe te voegen.
 Allow comments to events: Permitteer opmerkingen bij afspraken
 Admin and owner can always add comments if enabled.: Indien ingesteld kunnen de Admin en eigenaar altijd opmerkingen toevoegen.
@@ -333,6 +344,9 @@ SMTP Username: SMPT Gebruikersnaam
 email-smtp-password: email-smtp-paswoord
 SMTP Password: SMPT Wachtwoord
 Default user settings: Standaard gebruikersinstellingen
+Email format preference: Email formaat voorkeur
+HTML: =
+Plain Text: Platte tekst
 email-event-reminders-help: Hiermee stelt u in of u per email een herinnering ontvangt indien u dit heeft ingesteld.<br /> <b>N.B.</b>: dit vereist aanvullende serverinstellingen.
 Event reminders: Stuur mij per email een herinnering om mij aan een afspraak te herinneren
 email-event-added: Specificeert of er email-notificaties worden verzonden bij het toevoegen van een afspraak
@@ -350,21 +364,6 @@ Allow user to customize colors: Gebruikers mogen kleuren van eigen agenda aanpas
 gradient-colors: overloop-kleuren
 Enable gradient images for background colors: Maak gradient images voor achtergrondkleuren mogelijk
 Not available: Niet beschikbaar
-Document background: Achtergrondkleur agenda
-Document title: Tekstkleur programmanaam inlogscherm
-Document text: Standaard tekstkleur
-My event text: Mijn afspraak tekstkleur
-Table grid color: Kleur tabelraster
-Table header background: Achtergrondkleur tabelzijden
-Table header text: Tekstkleur tabelheaders
-Table cell background: Achtergrondkleur tabelcellen
-Table cell background for current day: Achtergrondkleur voor afspraken en huidige dag
-Table cell background for days with events: Achtergrondkleur voor cellen met afspraken
-Table cell background for weekends: Achtergrondkleur voor weekeinden
-Table cell background for other month: Achtergrondkleur voor cellen in andere maand
-Week number color: Weeknummer kleur
-Event popup background: Achtergrondkleur afspraak-popup
-Event popup text: Tekstkleur afspraak-popup
 Background Image options: Opties achtergrondafbeelding
 bgimage-help: URL van de gewenste achtergrondafbeelding. Dit mag een relatieve link zijn.
 Background Image: Achtergrondafbeelding
@@ -501,13 +500,16 @@ Removed: Verwijderd
 #
 am: a.m. (ante meridiem), 's morgens
 pm: p.m. (post meridiem), 's avond
+days: dagen
+hours: uren
+minutes: minuten
 You are not authorized to edit this task: U heeft geen recht deze taak te bewerken
 task: taak
-hours ahead of you: uren voor op u
-hours behind you: uren achter op u
+is in a different timezone than you are. Currently: is in een andere tijdzone dan u, Op het moment
 hour ahead of you: een uur voor op u
 hour behind you: een uur achter op u
-is in a different timezone than you are. Currently: is in een andere tijdzone dan u, Op het moment
+hours ahead of you: uren voor op u
+hours behind you: uren achter op u
 Time entered here is based on your Timezone.: Gegeven tijd is gebaseerd op uw tijdzone
 Edit Entry: Afspraak wijzigen
 Add Entry: Afspraak toevoegen
@@ -545,8 +547,6 @@ All day event: Dagvullende afspraak
 Timezone Offset: Tijdverschil server-lokaal
 time-help: Dit is de aanvangstijd van de afspraak.<br /><i>Dit veld mag leeg blijven</i><br />
 duration-help: Hier geeft u aan hoe lang de afspraak duurt (in minuten).<br /><i>Dit veld mag leeg blijven</i><br />
-hours: uren
-minutes: minuten
 end-time-help: Bepaalt de tijd waarop de afspraak gepland is te eindigen.
 Start Time: Starttijd
 Due Date: Af zijn op datum
@@ -574,8 +574,6 @@ Number of times: Aantal keren
 repeat-frequency-help: Hier kunt u een eventueel herhalingspatroon specificeren. Indien u [1] invult wordt de afspraak elke dag / week / maand / jaar herhaald. Indien u [2] invult wordt de afspraak om de dag / week / maand / jaar herhaalt, etc.<br />N.B.: bij een herhalingsinterval om de x weken dient u wel een herhalingsdag te specificeren (zie boven).
 Frequency: Herhalingspatroon
 Weekdays Only: Enkel werkdagen
-MO: MA
-SU: ZO
 Week Start: Week start
 repeat-bydayextended-help: Sta toe dat een dag van de week wordt gekozen.
 ByDay: PerDag
@@ -600,7 +598,6 @@ Send Reminder: Herinnering sturen
 When: Wanneer
 Use Date/Time: Gebruik Datum/Tijd
 Use Offset: Gebruik dispositie
-days: dagen
 Before: Voor
 After: Na
 Start: Begin
@@ -738,7 +735,6 @@ Username: Gebruikersnaam
 E-mail address: E-mailadres
 Password: Wachtwoord
 again: opnieuw
-Enabled: wel weergeven
 Disabled for demo: Uitgeschakeld in demo-versie
 Change Password: Wijzig wachtwoord
 New Password: Nieuw wachtwoord
@@ -940,14 +936,14 @@ Unable to update preference: Voorkeuren kunnen niet bijgewerkt worden
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Afspraak bekijken
 Approve/Confirm: Bevestigen
-Reject: Weigeren
-Check All: Controleer alle
-Uncheck All: Alles uitvinken
 Approve Selected: Goedkeuren geselecteerden
-Reject Selected: Verwerp geselecteerde
+Check All: Controleer alle
 Emails Will Not Be Sent: Er zullen geen emails worden verstuurd
+Reject Selected: Verwerp geselecteerde
+Reject: Weigeren
+Uncheck All: Alles uitvinken
+View this entry: Afspraak bekijken
 No unapproved entries for: Geen openstaande vermeldingen voor
 Unapproved Entries: Openstaande vermeldingen
 Not authorized: Niet geauthoriseerd
@@ -1005,9 +1001,6 @@ hour: uur
 minute: minuut
 theme-reload-help: Omwille van CSS caching is een herladen van de pagina misschien nodig.
 Page may need to be reloaded for new Theme to take effect: Pagina moet opnieuw worden geladen om de nieuwe stijl te gebruiken
-Email format preference: Email formaat voorkeur
-HTML: =
-Plain Text: Platte tekst
 display_byproxy-help: Toon de werkelijke maker op de view_entry pagina
 Display if created by Assistant: Markering weergeven indien aangemaakt door assistent
 allow-view-subscriptions-help: Met deze functie wordt het mogelijk om geregistreerden te bekijken.
@@ -1103,6 +1096,11 @@ No matches found: Helaas, geen match aangetroffen
 New Search: Nieuwe zoekopdracht
 
 ########################################
+# Page: security_audit.php
+#
+Status: =
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Bekijk de agenda van een andere gebruiker
@@ -1172,7 +1170,6 @@ No users for this view: Geen gebruikers voor deze weergave
 Update Task Percentage: Taak bijwerken percentage
 Completed: Afgewerkt
 Assistant mode: Assistentiemodus
-Status: =
 Declined: Afgewezen
 Needs-Action: Behoeft-aandacht
 by: door
@@ -1233,17 +1230,11 @@ Year View: Jaar weergave
 Invalid function id: Ongeldige functie-id
 
 ########################################
-# Page: includes/config.php
-#
-Fatal Error: Fatale fout
-Troubleshooting Help: Probleemoplossing
-
-########################################
 # Page: includes/date_formats.php
 #
-LANGUAGE DEFINED: TAAL GEDEFINIEERD
 December: =
 Dec: dec
+LANGUAGE DEFINED: TAAL GEDEFINIEERD
 
 ########################################
 # Page: includes/dbi4php.php
@@ -1261,6 +1252,12 @@ write: wegschrijven
 Could not XXX file: Kan het bestand niet XXX
 Error opening cache dir: Fout bij het openen van de cache-map
 delete: verwijderen
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatale fout
+Invalid data format for: Ongeldig dataformaat voor
 
 ########################################
 # Page: includes/functions.php
@@ -1363,11 +1360,6 @@ Sat: za
 unknown-weekday: ongekende weekdag
 
 ########################################
-# Page: includes/getPredefinedVariables.php
-#
-Invalid data format for: Ongeldig dataformaat voor
-
-########################################
 # Page: includes/help_list.php
 #
 Index: =
@@ -1390,7 +1382,6 @@ Manage calendar of: Beheer de agenda van
 #
 Browser Language Not Found: Taal van de browser niet gevonden
 not supported: Niet ondersteund
-Browser-defined: Door browser ingesteld
 English: Engels
 English-US: Engels-VS
 Afrikaans: =
@@ -1432,6 +1423,7 @@ Spanish: Spaans
 Swedish: Zweeds
 Turkish: Turks
 Welsh: Wels(GB)
+Browser-defined: Door browser ingesteld
 event: afspraak
 journal: journaal
 
@@ -1449,11 +1441,13 @@ no such user: Gebruiker bestaat niet
 ########################################
 # Page: includes/xcal.php
 #
+MO: MA
 TU: DI
 WE: WO
 TH: DO
 FR: VR
 SA: ZA
+SU: ZO
 Interval: =
 Months: Maanden
 Month Days: Maand dagen

@@ -9,7 +9,7 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -74,13 +74,26 @@ Day: Ziua
 Week: S&#259;pt&#259;m&#226;na
 Month: Luna
 Year: Anul
-System Settings: Configura&#355;ie de sistem
-Help: Ajutor
+Bottom: Coad&#259;
+Top: Cap
 Settings: Configura&#355;ie
 Groups: Grupuri
 NonUser Calendars: Calendare non-utilizator
 Other: Altele
 Colors: Culori
+Document background: Fundalul documentului
+Document title: Titlul documentului
+Document text: Textul documentului
+Table grid color: Culoarea liniilor tabelului
+Table header background: Fundalul legendei tabelului
+Table header text: Textul legendei tabelului
+Table cell background: Fundalul casu&#355;elor tabelului
+Table cell background for current day: Fundalul casu&#355;elor tabelului pentru ziua curent&#259;
+Table cell background for weekends: Fundalul casu&#355;elor tabelului pentru weekend
+Event popup background: Fundalul popup-urilor
+Event popup text: Textul popup-urilor
+System Settings: Configura&#355;ie de sistem
+Help: Ajutor
 app-name-help: Specific&#259; numele aplica&#355;iei care va ap&#259;rea &#238;n bara de titlu a browserului pentru toate paginile &#351;i pentru pagina de login. Valoarea specificat&#259; aici va fi c&#259;utat&#259; &#238;n dic&#355;ionar &#238;n a&#351;a fel &#238;nc&#226;t se pot folosi titluri diferite pentru diferite limbi.
 Application Name: Numele aplica&#355;iei
 server-url-help: Specific&#259; URL-ul de baz&#259; al aplica&#355;iei. Acesta va fi inclus c&#226;nd vor fi trimise aduceri-aminte sau notificari prin email.
@@ -114,8 +127,6 @@ From: De la
 to: p&#226;n&#259; la
 preferred-view-help: Specific&#259; vizualizarea implicit&#259; (zi, s&#259;pt&#259;m&#226;na, lun&#259; sau an).
 Preferred view: Vizualizarea preferat&#259;
-Bottom: Coad&#259;
-Top: Cap
 fonts-help: Specific&#259; o list&#259; a fonturilor care pot fi folosite (de exemplu "Arial, Helvetica")
 Fonts: Fonturi
 display-weekends-help: Include weekendurile &#238;n s&#259;pt&#259;m&#226;na.
@@ -159,10 +170,6 @@ popup-includes-siteextras-help: C&#226;nd aceast&#259; op&#355;iune este activat
 Display Site Extras in popup: Afi&#351;eaz&#259; op&#355;iunile speciale &#238;n popup-uri
 remember-last-login-help: C&#226;nd aceast&#259; proprietate este activat&#259;, numele utilizatorului va fi auto-inserat &#238;n pagina de login (dar nu &#351;i parola), iar dup&#259; login preferin&#355;ele utilizatorului vor fi &#238;nc&#259;rcate (incluz&#226;nd culorile &#351;i limba selectate).
 Remember last login: &#354;ine minte ultimul login
-Plugins: Plugin-uri
-plugins-enabled-help: Activeaz&#259; aplica&#355;ii plugin.
-Enable Plugins: Activeaz&#259; plugin-uri.
-plugins-sort-key-help: Specific&#259; o cheie de sortare pentru plugin-uri &#238;n a&#351;a fel &#238;nc&#226;t plugin-urile s&#259; apar&#259; &#238;ntr-o anumit&#259; ordine.
 allow-public-access-help: C&#226;nd aceast&#259; op&#355;iune este activat&#259;, calendarul este deschis publicului (doar pentru citire) iar autentificarea nu mai este necesar&#259;.
 Allow public access: Permite accesul public
 public-access-default-visible: Evenimentele din calendarul public vor aparea automat &#238;n calendarele toturor utilizatorilor.
@@ -185,6 +192,7 @@ nonuser-enabled-help: Dac&#259; se alege aceast&#259; op&#355;iune, administrato
 Nonuser enabled: Calendarele non-utilizator sunt activate
 nonuser-list-help: Unde s&#259; fie afi&#351;ate calendare non-utilizator &#238;n lista participan&#355;ilor
 Nonuser list: Pune &#238;n lista participan&#355;ilor la
+Enabled: Activate
 reports-enabled-help: Dac&#259; aceast&#259; op&#355;iune este aleas&#259;, utilizatorii vor vedea o sec&#355;iune intitulat&#259; "Rapoarte" &#238;n josul paginii &#351;i vor putea crea rapoarte personale. &#206;n plus, utilizatorii administrativi pot crea rapoarte globale care s&#259; apar&#259; pe paginile tuturor utilizatorilor.
 Reports enabled: Rapoartele sunt activate
 subscriptions-enabled-help: Specific&#259; daca utilizatorii nelocali se pot abona la un calendar utilizator WebCalendar, permi&#355;&#238;ndu-le s&#259; vad&#259; evenimentele de tip WebCalendar &#238;n aplica&#355;ii compatibile cu iCal (ca de exemplu iCal-ul lui Apple sau Mozilla Calendar).
@@ -213,17 +221,6 @@ Events removed from my calendar: Evenimente &#351;terse din calendarul meu.
 email-event-rejected: Specific&#259; dac&#259; s&#259; se trimit&#259; notifica&#355;ii prin email c&#226;nd un utilizator refuz&#259; un eveniment din calendarul t&#259;u.
 Event rejected by participant: Eveniment refuzat de c&#259;tre participant
 Allow user to customize colors: Permite utilizatorilor sa-&#351;i aleag&#259; culorile
-Document background: Fundalul documentului
-Document title: Titlul documentului
-Document text: Textul documentului
-Table grid color: Culoarea liniilor tabelului
-Table header background: Fundalul legendei tabelului
-Table header text: Textul legendei tabelului
-Table cell background: Fundalul casu&#355;elor tabelului
-Table cell background for current day: Fundalul casu&#355;elor tabelului pentru ziua curent&#259;
-Table cell background for weekends: Fundalul casu&#355;elor tabelului pentru weekend
-Event popup background: Fundalul popup-urilor
-Event popup text: Textul popup-urilor
 
 ########################################
 # Page: adminhome.php
@@ -291,6 +288,9 @@ Description: Descriere
 ########################################
 # Page: edit_entry.php
 #
+days: zile
+hours: ore
+minutes: minute
 Edit Entry: Editeaz&#259; eveniment
 Add Entry: Adaug&#259; eveniment
 Details: Detalii
@@ -316,8 +316,6 @@ All day event: Eveniment cuprinz&#226;nd toat&#259; ziua
 Timezone Offset: Diferen&#355;a de fus orar
 time-help: Specific&#259; ora evenimentului. Selecteaz&#259; fie "Eveniment cu ora fixat&#259;" (pentru evenimente programate la moment anume din zi), fie "Eveniment fara or&#259; fixat&#259;" (pentru evenimente care nu se petrec la o or&#259; anume - ca de exemplu o zi liber&#259;), fie "Cuprinz&#226;nd toat&#259; ziua" (pentru evenimente care iau toat&#259; ziua - de exemplu o aniversare).
 duration-help: Specific&#259; durata (in ore:minute) a evenimentului.<br /><i>Poate fi l&#259;sat gol.</i>
-hours: ore
-minutes: minute
 end-time-help: Specific&#259; ora la care se a&#351;teapt&#259; ca evenimentul s&#259; se termine.
 participants-help: Listeaz&#259; participan&#355;ii din aceast&#259; &#238;nregistrare.
 external-participants-help: Specific&#259; o list&#259; de participan&#355;i la eveniment care nu sunt utilizatori ai calendarului. Ace&#351;ti utilizatori trebuie listati c&#226;te unul pe linie &#351;i se pot include cu adrese de email. Daca adresa de email este specificata, utilizatorul poate primi notificari &#351;i aduceri-aminte.
@@ -335,7 +333,6 @@ repeat-frequency-help: Spune c&#226;t de des un eveniment trebuie repetat. Cifra
 Frequency: Frecven&#355;a
 All: Toate
 Send Reminder: Trimite aducere-aminte
-days: zile
 Delete entry: &#350;terge aceast&#259; &#238;nregistrare
 You are not authorized to edit this entry.: Nu e&#351;ti autorizat(&#259;) s&#259; editezi acest eveniment
 
@@ -447,7 +444,6 @@ Username: Utilizator
 E-mail address: Adresa de email
 Password: Parol&#259;
 again: din nou
-Enabled: Activate
 Disabled for demo: Dezactivat pentru demonstra&#355;ie
 Change Password: Schimb&#259; parola
 New Password: Noua parol&#259;
@@ -598,9 +594,9 @@ Add layer: Adaug&#259; un strat
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Afi&#351;eaz&#259;
 Approve/Confirm: Aprob&#259;/Confirm&#259;
 Reject: Refuz&#259;
+View this entry: Afi&#351;eaz&#259;
 Approve this entry?: Aprob&#259;?
 Reject this entry?: Refuz&#259;?
 
@@ -674,6 +670,11 @@ matches found: potriviri g&#259;site
 No matches found: Nimic nu se potrive&#351;te
 
 ########################################
+# Page: security_audit.php
+#
+Status: Statut
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Vizualizeaz&#259; calendarul unui alt utilizator
@@ -724,7 +725,6 @@ You must specify a view name: Trebuie specificat numele vizualizarii
 # Page: view_entry.php
 #
 Assistant mode: Modul 'asistent'
-Status: Statut
 External User: Utilizator extern
 Approve/Confirm entry: Aprob&#259;/Confirm&#259; &#238;nregistrarea
 Reject entry: Refuz&#259; &#238;nregistrarea

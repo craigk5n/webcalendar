@@ -30,21 +30,24 @@
 #
 #
 # $Id$
-# Translation last updated on 04-21-2008
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
 # Specify a charset (will be sent within meta tag for each page).
 
-#charset: iso-8859-1
 charset: UTF-8
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
 
-direction: ltr
+direction: =
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
@@ -53,7 +56,7 @@ direction: ltr
 __mm__/__dd__/__yyyy__: __dd__/__mm__/__yyyy__
 __month__ __dd__: __dd__ __month__
 __month__ __dd__, __yyyy__: __dd__ de __month__ de __yyyy__
-__month__ __yyyy__: __month__ __yyyy__
+__month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
@@ -80,7 +83,7 @@ Go: OK
 Save: Gravar
 Undo: Desfazer
 Public Access: Acesso Público
-Admin: Admin
+Admin: =
 User Access Control: Permissões de usuários
 Allow Access to Other Users Calendar: Permitir acesso ao calendário de outros usuários
 Grant This User Access to My Calendar: Permitir que este usuário acesse o meu calendário
@@ -137,7 +140,7 @@ Settings: Configuração
 Groups: Grupos
 NonUser Calendars: Calendários de não-usuários
 Other: Outros
-Email: Email
+Email: =
 Colors: Cores
 Document background: Fundo do Documento
 Document title: Título do Documento
@@ -230,7 +233,7 @@ display-week-number-help: Especifica se o número da semana (1-52) deve ser most
 Display week number: Mostra número da semana
 display-desc-print-day-help: Incluir descrições na versão para impressão da visualização de Dia.
 Display description in printer day view: Mostrar descrições na impressão da visualização de Dia
-yearly-shows-events-help: On the yearly view, display days that contain events in a bold font.
+yearly-shows-events-help: =
 Display days with events in bold in month and year views: Mostrar dias com eventos em negrito nas visualizações de Mês e Ano
 display-minutes-help: Se habilitado, os minutos terminando em :00 serão sempre mostrados
 Display 00 minutes always: Mostrar minutos 00
@@ -275,7 +278,7 @@ disable-repeating-field-help: Selecionar "Sim" para remover o campo "Recorrênci
 Disable Repeating field: Remover o campo "Recorrência"
 allow-html-description-help: Se habilitado, os usuários podem entrar HTML na descrição do evento. Se não, o HTML será convertido para texto. Cuidado: Habilitar esta opção vai permitir que usuários referenciem imagens em outros sites.
 Allow HTML in Description: Permitir HTML nas descrições
-Popups: Popups
+Popups: =
 disable-popups-help: Desabilitar popups das visualizações
 Disable Pop-Ups: Desabilitar popups
 popup-includes-siteextras-help: Se habilitado, Permitir customizar eventos usando o arquivo site_extras.php com popups.
@@ -321,6 +324,7 @@ nonuser-enabled-help: Se habilitado, administradores poderão adicionar calendá
 Nonuser enabled: Habilitar calendários de não-usuários
 nonuser-list-help: Onde mostrar os calendários de não-usuários na lista de participantes
 Nonuser list: Posição de calendários de não-usuários
+Enabled: Habilitado
 reports-enabled-help: Se habilitado, os usuários terão uma seção Relatórios no rodapé de cada tela, podendo configurar relatórios customizados. Adicioanlmente, administrdores podem criar Relatŕios Globais que aparecerão no rodapé de todas as telas.
 Reports enabled: Permitir Relatórios
 subscriptions-enabled-help: Especifica se usuários remotos podem se inscrever nos WebCalendars dos usuários, podendo visualizar os eventos em seus aplicativos com iCal (como iCal da Apple ou Mozilla Calendar).
@@ -363,9 +367,9 @@ Email enabled: Habilitar Email
 email-default-sender: Especifica o endereço de email remetente para enviar lembretes.
 Default sender address: Endereço de remetente default
 email-mailer: tipo de envio (SMTP, PHP mail, sendmail)
-Email Mailer: Email Mailer
+Email Mailer: =
 email-smtp-host: Hostname(s) do(s) servidor(es) SMTP separados por vírgula
-SMTP Host name(s): SMTP Host name(s)
+SMTP Host name(s): =
 email-smtp-port: Porta SMTP (normalmente 25)
 SMTP Port Number: Porta SMTP
 email-smtp-auth: Usar authenticação SMTP
@@ -375,6 +379,12 @@ SMTP Username: Login SMTP
 email-smtp-password: Senha SMTP para authenticação
 SMTP Password: Senha SMTP
 Default user settings: Configuração Default
+email-format: Especificar preferência para mensagens HTML ou texto
+Email format preference: Formato preferido de Email
+HTML: =
+Plain Text: Texto pleno
+email-include-ics: Incluir arquivo iCalendar (ICS) na mensagem de email
+Include iCalendar attachments: Incluir anexo iCalendar
 email-event-reminders-help: Especifica se envia lembretes.
 Event reminders: Lembretes
 email-event-added: Especifica se envia emails de notificação quando um evento é adicionado ao seu calendário.
@@ -538,8 +548,8 @@ Removed: Removido
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
+am: =
+pm: =
 days: dias
 hours: horas
 minutes: minutos
@@ -594,7 +604,7 @@ end-time-help: Especifica o horário de término do evento.
 Start Time: Hora início
 Due Date: Data prevista
 Due Time: Hora prevista
-Site Extras: Site Extras
+Site Extras: =
 participants-help: Lista de participantes.
 Availability: Disponibilidade
 external-participants-help: Especifica a lista de participantes externos. Devem ser listados um por linha e pode ser fornecido o email para que o participante possa receber notificações e lembretes.
@@ -792,7 +802,6 @@ Username: Nome de usuário
 E-mail address: E-mail
 Password: Senha
 again: de novo
-Enabled: Habilitado
 Disabled for demo: Desabilitado para demo
 Change Password: Mudar senha
 New Password: Nova senha
@@ -829,6 +838,11 @@ export format not defined or incorrect: Formato de Exportação não definido ou
 No user specified.: Nenhum usuário especificao.
 
 ########################################
+# Page: groups.php
+#
+Add New Group: Adicionar Novo Grupo
+
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Grupo sem nome
@@ -842,11 +856,6 @@ Created by: Criado por
 # Page: group_edit_handler.php
 #
 You must specify a group name: Nome de Grupo necessário
-
-########################################
-# Page: groups.php
-#
-Add New Group: Adicionar Novo Grupo
 
 ########################################
 # Page: help_admin.php
@@ -893,7 +902,7 @@ repeat-day-help: Especifica em quais dias da semana o evento deve repetir.
 # Page: help_import.php
 #
 Import: Importar
-Palm Desktop: Palm Desktop
+Palm Desktop: =
 This form will allow you to import entries from the Palm Desktop Datebook.: Este formulário permite importar dados do Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: deve estar localizado na sua pasta do Palm <tt>datebook/datebook.dat</tt> numa subpasta com o nome do seu usuário.
 The following entries will not be imported: As entradas a seguir não serão importadas
@@ -912,8 +921,8 @@ will cause events imported previously, that used the same UID as an event from t
 ########################################
 # Page: help_index.php
 #
-Help Index: Help Index
-About WebCalendar: About WebCalendar
+Help Index: =
+About WebCalendar: =
 
 ########################################
 # Page: help_layers.php
@@ -989,7 +998,7 @@ The import file contained no data: O arquivo de importação não contém nenhum
 ########################################
 # Page: layers.php
 #
-Layer: Layer
+Layer: =
 Edit layer: Editar Camada
 Enable layers: Habilitar Camadas
 Layers are currently: O uso de camadas está atualmente
@@ -1075,12 +1084,6 @@ hour: hora
 minute: minuto
 theme-reload-help: Devido ao cache de CSS, pode ser necessário recarrgar a página
 Page may need to be reloaded for new Theme to take effect: A página pode precisar ser atualizada para habilitar o novo Tema
-email-format: Especificar preferência para mensagens HTML ou texto
-Email format preference: Formato preferido de Email
-HTML: =
-Plain Text: Texto pleno
-email-include-ics: Incluir arquivo iCalendar (ICS) na mensagem de email
-Include iCalendar attachments: Incluir anexo iCalendar
 display_byproxy-help: Mostrar o criador real na página de vizualização da entrada
 Display if created by Assistant: Mostrar se for criado por assistente
 allow-view-subscriptions-help: Permitir acesso remoto às entradas Pessoais ou Confidenciais
@@ -1149,8 +1152,8 @@ Add New Remote Calendar: Adicionar novo calendário remoto
 #
 This event is confidential.: Este evento é confidencial.
 (Private): (Pessoal)
-cont.: cont.
-(cont.): (cont.)
+cont.: =
+(cont.): =
 Approved: Aprovado
 Deleted: apagado
 Rejected: Rejeitado
@@ -1186,6 +1189,11 @@ No matches found: nada encontrado
 New Search: Nova pesquisa
 
 ########################################
+# Page: security_audit.php
+#
+Status: =
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Visualizar Calendário de outro usuário
@@ -1218,6 +1226,33 @@ listid: =
 Reset: Reseta
 
 ########################################
+# Page: views.php
+#
+Add New View: Adicionar nova visualização
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Visualização sem nome
+Add View: Adicionar visualização
+Edit View: Editar visualização
+View Name: Nome da visualização
+View Type: Tipo da visualização
+Day by Time: Dia por hora
+Week (Users horizontal): Semana (Usuários na horizontal)
+Week by Time: Semana por Tempo
+Week (Users vertical): Semana (Usuários na vertical)
+Week (Timebar): Semana (Barra de Tempo)
+Month (Timebar): Mês (Barra de Tempo)
+Month (side by side): Mês (lado a lado)
+Month (on same calendar): Mês (no mesmo calendário)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Você precisa fornecer um nome de visualização
+
+########################################
 # Page: view_d.php
 #
 No users for this view: Nenhum usuário para esta visualização
@@ -1228,7 +1263,6 @@ No users for this view: Nenhum usuário para esta visualização
 Update Task Percentage: Atualiza Realização da Tarefa
 Completed: Realizado
 Assistant mode: Modo Assistente
-Status: =
 Declined: Rejeitado
 Needs-Action: Açãao Necessária
 by: por
@@ -1268,33 +1302,6 @@ Palm Pilot: =
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Click duplo numa célula vazia para adicionar uma nova entrada
-
-########################################
-# Page: views.php
-#
-Add New View: Adicionar nova visualização
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Visualização sem nome
-Add View: Adicionar visualização
-Edit View: Editar visualização
-View Name: Nome da visualização
-View Type: Tipo da visualização
-Day by Time: Dia por hora
-Week (Users horizontal): Semana (Usuários na horizontal)
-Week by Time: Semana por Tempo
-Week (Users vertical): Semana (Usuários na vertical)
-Week (Timebar): Semana (Barra de Tempo)
-Month (Timebar): Mês (Barra de Tempo)
-Month (side by side): Mês (lado a lado)
-Month (on same calendar): Mês (no mesmo calendário)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: Você precisa fornecer um nome de visualização
 
 ########################################
 # Page: week_details.php
@@ -1360,7 +1367,7 @@ Invalid data format for: Formato de data inválido para
 Error Type not set for activity log!: Erro: Tipo não definido para log de atividades!
 This event is private: Este evento é privado
 This event is XXX.: Este evento é XXX.
-Conf.: Conf.
+Conf.: =
 exceeds limit of XXX events per day: limite de XXX eventos por dia excedido
 on: ativado
 All Attendees: Todos os participantes
@@ -1418,17 +1425,17 @@ August: Agosto
 September: Setembro
 October: Outubro
 November: Novembro
-Jan: Jan
+Jan: =
 Feb: Fev
-Mar: Mar
+Mar: =
 Apr: Abr
 May: Mai
-Jun: Jun
-Jul: Jul
+Jun: =
+Jul: =
 Aug: Ago
 Sep: Set
 Oct: Out
-Nov: Nov
+Nov: =
 unknown-month: mês desconhecido
 First Quarter Moon: Lua crescente
 Full Moon: Lua cheia
@@ -1693,127 +1700,127 @@ Help Contents: Ajuda - Conteúdo
 ########################################
 # Page: install/index.php
 #
-WebCalendar Installation Wizard: WebCalendar Installation Wizard
-Step: Step
-WebCalendar Installation Wizard Step XXX: WebCalendar Installation Wizard Step XXX
-Single-User: Single-User
-Failure Reason: Failure Reason
-You must manually create database: You must manually create database
-Database Cache Directory: Database Cache Directory
-Test Settings: Test Settings
-Create New: Create New
-Database Name: Database Name
-Timezone Conversion Successful: Timezone Conversion Successful
-Error Unable to write to file: Error Unable to write to file
-Error Unable to write to file XXX.: Error Unable to write to file XXX.
-Successful Login: Successful Login
-Invalid Login: Invalid Login
-required only if Safe Mode is On: required only if Safe Mode is On
-required only if Remote Calendars are used: required only if Remote Calendars are used
-needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
-Passwords do not match: Passwords do not match
-Unable to write password to settings.php file: Unable to write password to settings.php file
-Password has been set: Password has been set
-Connection Successful: Connection Successful
-Please go to next page to continue installation: Please go to next page to continue installation
-Correct your entries or click the Create New button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
-Correct your entries and try again: Correct your entries and try again
-does not exist: does not exist
-is not writable: is not writable
-Error Converting Timezone: Error Converting Timezone
-Please change the file permissions of this file: Please change the file permissions of this file
-Please change includes dir permission: Please change the file permissions of your includes directory to allow writing by other users
-Your settings have been saved: Your settings have been saved
-Error you must specify a Single-User Login: Error you must specify a\nSingle-User Login
-Full Path (no backslashes): Full Path (no backslashes)
-The password contains illegal characters.: The password contains illegal characters.
-This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
-PHP Version Check: PHP Version Check
-Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
-PHP version: PHP version
-PHP Settings: PHP Settings
-Detailed PHP Info: Detailed PHP Info
-Session Check: Session Check
-To test the proper operation of sessions, reload this page: To test the proper operation of sessions, reload this page
-You should see the session counter increment each time: You should see the session counter increment each time
-SESSION COUNTER: SESSION COUNTER
-Settings.php Status: Settings.php Status
-The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-Your settings.php file appears to be valid: Your <b>settings.php</b> file appears to be valid
-Configuration Wizard Password: Configuration Wizard Password
-Create Settings File Password: Create Settings File Password
-db setup directions...: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
-Database Status: Database Status
-Supported databases for your PHP installation: Supported databases for your PHP installation
-Your current database settings are able to access the database: Your current database settings are able to access the database
-Please Test Settings: Please Test Settings
-Your current database settings are not able...: Your current database settings are <b>not</b> able to access the database or have not yet been tested
-Database Settings: Database Settings
-Database Type: Database Type
-Server: Server
-Connection Persistence: Connection Persistence
-All your database tables appear to be up to date. You may proceed to the: All your database tables appear to be up to date. You may proceed to the
-next page and complete your WebCalendar setup: next page and complete your WebCalendar setup
-This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
-go back to the previous page and correct your settings: go back to the previous page and correct your settings
-The database requires some data input: The database requires some data input
-Click Update Database to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
-This appears to be an upgrade from version: This appears to be an upgrade from version
-In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
-If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
-If not, the required SQL can be displayed and you should be able: If not, the required SQL can be displayed and you should be able
-to cut &amp; paste it into your database server query window: to cut &amp; paste it into your database server query window
-No database actions are required: No database actions are required
-The following database actions are required: The following database actions are required
-ODBC Underlying Database: ODBC Underlying Database
-Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the SQL supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
-This may take several minutes to complete: This may take several minutes to complete
-Install Database: Install Database
-Update Database: Update Database
-Display Required SQL: Display Required SQL
-Return to previous page after processing SQL.: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
-This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
-Timezone Conversion: Timezone Conversion
-It appears that you have: It appears that you have
-NOT: NOT
-converted your existing WebCalendar event data to GMT.: converted your existing WebCalendar event data to GMT.
-If you have, you may ignore this notice and not proceed with the conversion.: If you have, you may ignore this notice and not proceed with the conversion.
-If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
-It appears that you have NOT converted your existing WebCalendar...: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion.. If this is a new installation, you may also ignore this notice.
-Convert Data to GMT: Convert Data to GMT
-Application Settings: Application Settings
-HTTP-based authentication was not detected: HTTP-based authentication was not detected
-You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
-select Web Server from the User Authentication choices below.: select 'Web Server' from the 'User Authentication' choices below
-HTTP-based authentication was not detected...: HTTP-based authentication was not detected. You will need to reconfigure your web server if you wish to select 'Web Server' from the 'User Authentication' choices below.
-HTTP-based authentication was detected.: HTTP-based authentication was detected.
-User authentication is being handled by your web server.: User authentication is being handled by your web server.
-You should select Web Server from the list of User Authentication choices below.: You should select 'Web Server' from the list of 'User Authentication' choices below.
-HTTP-based authentication was detected...: HTTP-based authentication was detected. User authentication is being handled by your web server. You should select 'Web Server' from the list of 'User Authentication' choices below.
-Create Default Admin Account: Create Default Admin Account
-Admin Account Not Found: Admin Account Not Found
-User Authentication: User Authentication
-Web-based via WebCalendar (default): Web-based via WebCalendar (default)
-Web Server: Web Server
-Web Server (detected): Web Server (detected)
-Web Server (not detected): Web Server (not detected)
-None (Single-User): None (Single-User)
-Read-Only: Read-Only
-Environment: Environment
-Production: Production
-Development: Development
-Save Settings: Save Settings
-Launch WebCalendar: Launch WebCalendar
+WebCalendar Installation Wizard: =
+Step: =
+WebCalendar Installation Wizard Step XXX: =
+Single-User: =
+Failure Reason: =
+You must manually create database: =
+Database Cache Directory: =
+Test Settings: =
+Create New: =
+Database Name: =
+Timezone Conversion Successful: =
+Error Unable to write to file: =
+Error Unable to write to file XXX.: =
+Successful Login: =
+Invalid Login: =
+required only if Safe Mode is On: =
+required only if Remote Calendars are used: =
+needed for Gradient Image Backgrounds: =
+Passwords do not match: =
+Unable to write password to settings.php file: =
+Password has been set: =
+Connection Successful: =
+Please go to next page to continue installation: =
+Correct your entries or click the Create New button to continue installation: =
+Correct your entries and try again: =
+does not exist: =
+is not writable: =
+Error Converting Timezone: =
+Please change the file permissions of this file: =
+Please change includes dir permission: =
+Your settings have been saved: =
+Error you must specify a Single-User Login: =
+Full Path (no backslashes): =
+The password contains illegal characters.: =
+This installation wizard will guide you...: =
+PHP Version Check: =
+Check to see if PHP 4.1.0 or greater is installed: =
+PHP version: =
+PHP Settings: =
+Detailed PHP Info: =
+Session Check: =
+To test the proper operation of sessions, reload this page: =
+You should see the session counter increment each time: =
+SESSION COUNTER: =
+Settings.php Status: =
+The file permissions of settings.php are set...: =
+The file permissions of the includes directory are set...: =
+Your settings.php file appears to be valid: =
+Configuration Wizard Password: =
+Create Settings File Password: =
+db setup directions...: =
+Database Status: =
+Supported databases for your PHP installation: =
+Your current database settings are able to access the database: =
+Please Test Settings: =
+Your current database settings are not able...: =
+Database Settings: =
+Database Type: =
+Server: =
+Connection Persistence: =
+All your database tables appear to be up to date. You may proceed to the: =
+next page and complete your WebCalendar setup: =
+This appears to be a new installation. If this is not correct, please: =
+go back to the previous page and correct your settings: =
+The database requires some data input: =
+Click Update Database to complete the upgrade: =
+This appears to be an upgrade from version: =
+In this section we will perform the required database changes to bring your database up to the required level: =
+If you are using a fully supported database, this step will be performed automatically for you: =
+If not, the required SQL can be displayed and you should be able: =
+to cut &amp; paste it into your database server query window: =
+No database actions are required: =
+The following database actions are required: =
+ODBC Underlying Database: =
+Automatic installation not supported: =
+This may take several minutes to complete: =
+Install Database: =
+Update Database: =
+Display Required SQL: =
+Return to previous page after processing SQL.: =
+This is the final step in setting up your WebCalendar Installation.: =
+Timezone Conversion: =
+It appears that you have: =
+NOT: =
+converted your existing WebCalendar event data to GMT.: =
+If you have, you may ignore this notice and not proceed with the conversion.: =
+If this is a new installation, you may also ignore this notice.: =
+It appears that you have NOT converted your existing WebCalendar...: =
+Convert Data to GMT: =
+Application Settings: =
+HTTP-based authentication was not detected: =
+You will need to reconfigure your web server if you wish to: =
+select Web Server from the User Authentication choices below.: =
+HTTP-based authentication was not detected...: =
+HTTP-based authentication was detected.: =
+User authentication is being handled by your web server.: =
+You should select Web Server from the list of User Authentication choices below.: =
+HTTP-based authentication was detected...: =
+Create Default Admin Account: =
+Admin Account Not Found: =
+User Authentication: =
+Web-based via WebCalendar (default): =
+Web Server: =
+Web Server (detected): =
+Web Server (not detected): =
+None (Single-User): =
+Read-Only: =
+Environment: =
+Production: =
+Development: =
+Save Settings: =
+Launch WebCalendar: =
 
 ########################################
 # Page: install/install_functions.php
 #
-Error updating webcal_config: Error updating webcal_config
-Error updating table XXX: Error updating table "XXX": XXX.
-Conversion Successful: <b>Conversion Successful</b>
-Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-previous version requires updating several tables: Your previous version of WebCalendar requires updating several database tables.
+Error updating webcal_config: =
+Error updating table XXX: =
+Conversion Successful: =
+Perl script required: =
+previous version requires updating several tables: =
 
 ########################################
 # Page: themes/theme_inc.php
@@ -1894,7 +1901,3 @@ Unknown error saving user: Erro desconhecido gravando usuário.
 No participants found for event id XXX.: Nenhum participante encontrado para o evento id: XXX.
 Db error Could not find event id XXX.: Erro de banco de dados: Não encontrado evento id XXX.
 Error Could not find event id XXX in database.: Erro: Não encontrado evento id XXX no banco de dados.
-
-
-
- 	  	 

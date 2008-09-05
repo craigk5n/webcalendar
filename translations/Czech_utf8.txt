@@ -12,7 +12,7 @@
 # Czech converted to UTF8 and updated by: Lukáš Hlůže on 13 Nov, 2007
 #
 # $Id$
-# Translation last updated on 11-14-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -198,6 +198,7 @@ nonuser-enabled-help: Pokud je povoleno, administrátoři budou mít možnost p�
 Nonuser enabled: Povolit neuživatelské kalendáře
 nonuser-list-help: Kde se mají zobratovat neuživatelské kalendáře v seznamu účastníků
 Nonuser list: Zobrazuj v seznamu účastníků
+Enabled: Povoleno
 reports-enabled-help: Pokud jsou povoleny, uživatelé uvidí "Sestavy" v dolní části každé stránky. Bude jim umožněno si sestavovat vlastní sestavy. Navíc, administrátoři můžou vytvářet globální sestavy, které se také všem objeví v dolní části stránek.
 Reports enabled: Povolit sestavy
 subscriptions-enabled-help: Určuje, zda se vzdálený uživatel smí připojit ke svému kalendáři v tomto systému. To mu umožní prohlížet si jeho události v aplikacích, které podporují standard iCal (jako jsou iCal od Apple a nebo Mozilla Calendar).
@@ -453,7 +454,6 @@ Username: Uživatelské jméno
 E-mail address: E-mailová adresa
 Password: Heslo
 again: znovu
-Enabled: Povoleno
 Disabled for demo: Pro 'demo' nepovoleno
 Change Password: Změnit heslo
 New Password: Nové heslo
@@ -681,6 +681,11 @@ matches found: nalezeny záznamy
 No matches found: Žádné záznamy nenalezeny
 
 ########################################
+# Page: security_audit.php
+#
+Status: Stav
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Prohlédnou si kalendář jiného uživatele
@@ -726,7 +731,6 @@ You must specify a view name: Musíš zadat jméno náhledu
 # Page: view_entry.php
 #
 Assistant mode: Mód asistenta
-Status: Stav
 External User: Externí uživatel
 Approve/Confirm entry: Potvrdit/schválit záznam
 Reject entry: Zamítnout záznam

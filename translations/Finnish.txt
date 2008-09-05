@@ -12,7 +12,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -79,14 +79,27 @@ Day: Päivä
 Week: Viikko
 Month: Kuukausi
 Year: Vuosi
-System Settings: Järjestelmän asetukset
-Help: Ohjeita
+Bottom: Alhaalla
+Top: Ylhäällä
 Settings: Yleisasetukset
 Groups: Ryhmät
 NonUser Calendars: Ei-kenenkään kalenterit
 Other: Muut
 Email: Sähköposti-ilmoitukset
 Colors: Värit
+Document background: Sivun pohja
+Document title: Sivun otsikko
+Document text: Sivun teksti
+Table grid color: Sivun taulukoiden viivat
+Table header background: Taulukon otsikon tausta
+Table header text: Taulukon otsikko
+Table cell background: Taulukon tausta
+Table cell background for current day: Kuluvan päivän tausta
+Table cell background for weekends: Taulukon solut viikonlopuille
+Event popup background: Tapahtuma-popupin tausta
+Event popup text: Tapahtuma-popupin teksti
+System Settings: Järjestelmän asetukset
+Help: Ohjeita
 app-name-help: Asettaa kalenterisovelluksen "titlen" joka näkyy sivulla, kun kalenteria käytetään
 Application Name: Sovelluksen nimi
 server-url-help: Asettaa perus-URL -osoitteen kalenterisovellukselle. Tätä käytetään lähetettäessä sähköpostia tapahtuman osallistujille.
@@ -116,8 +129,6 @@ From: Alkaen
 to: ulottuen
 preferred-view-help: Määrittelee oletusnäkymän (Päivä, Viikko, Kuukausi tai Vuosi).
 Preferred view: Oletusnäkymä
-Bottom: Alhaalla
-Top: Ylhäällä
 fonts-help: Määrittää käytettävät järjestelmäfontit (esim. "Arial, Helvetica")
 Fonts: Fontit
 display-weekends-help: Näytä viikonloput viikkoa katseltaessa.
@@ -156,11 +167,6 @@ Allow HTML in Description: Salli HTML kuvauksissa
 Display Site Extras in popup: Näytä palvelukohtaiset lisukkeet ponnahdusikkunassa
 remember-last-login-help: Muistaa edellisen kirjauksesi ja asetuksesi.
 Remember last login: Muista edellinen kirjaus
-Plugins: Lisäpalikat
-plugins-enabled-help: Ota 'pluginit' käyttöön
-Enable Plugins: Ota lisäpalikat käyttöön
-plugins-sort-key-help: Määrittää lajittelu-keyn lisäpalikalle
-Plugin: Lisäpalikka
 allow-public-access-help: Sallii tapahtuman näkymisen kaikille
 Allow public access: Salli yleinen käyttö
 public-access-view-others-help: Määrittää, voiko käyttäjä katsella toisen henkilön tapahtumia.
@@ -177,6 +183,7 @@ User sees only his groups: Vain käyttäjät omissa ryhmissä
 nonuser-enabled-help: Jos käytössä, pääkäyttäjä voi lisätä kalentereita, jotka eivät kuulu kenellekään käyttäjälle
 Nonuser enabled: Ei-kenenkään kalenterit käytössä
 Nonuser list: Näytä osallistujaluettelossa
+Enabled: Käytössä
 Reports enabled: Raportit käytössä
 Allow remote subscriptions: Salli ulkopuoliset tilaukset
 categories-enabled-help: Salli tapahtumaluokkien käyttö.
@@ -203,17 +210,6 @@ Events removed from my calendar: Kalenterimerkintöjä poistettu
 email-event-rejected: Määrittelee lähetetäänkö sähköpostilla tiedote ryhmän jäsenten hylkäämistä kalenterimerkinnöistä.
 Event rejected by participant: Ryhmän jäsen hylkäsi tapahtuman
 Allow user to customize colors: Salli käyttäjien muokata värejä
-Document background: Sivun pohja
-Document title: Sivun otsikko
-Document text: Sivun teksti
-Table grid color: Sivun taulukoiden viivat
-Table header background: Taulukon otsikon tausta
-Table header text: Taulukon otsikko
-Table cell background: Taulukon tausta
-Table cell background for current day: Kuluvan päivän tausta
-Table cell background for weekends: Taulukon solut viikonlopuille
-Event popup background: Tapahtuma-popupin tausta
-Event popup text: Tapahtuma-popupin teksti
 
 ########################################
 # Page: adminhome.php
@@ -275,6 +271,9 @@ Description: Kuvaus
 ########################################
 # Page: edit_entry.php
 #
+days: päivää
+hours: tuntia
+minutes: minuuttia
 Edit Entry: Muokkaa merkintää
 Add Entry: Lisää merkintä
 Details: Tiedot
@@ -300,8 +299,6 @@ All day event: Koko päivän kestävä tapahtuma
 Timezone Offset: Aikaero
 time-help: Määrittelee tapahtuman ajan.<br /><i>(Voidaan jättää tyhjäksi)</i>
 duration-help: Määrittelee tapahtuman keston (tunteina ja minuutteina).<br /><i>(Voidaan jättää tyhjäksi)</i>
-hours: tuntia
-minutes: minuuttia
 participants-help: Luetteloi tapahtuman osanottajat.
 external-participants-help: Määrittää listan ulkoisista tapahtuman osallistujista.
 External Participants: Ulkoisia osallistujia
@@ -318,7 +315,6 @@ repeat-frequency-help: Määrittelee tapahtuman toistotiheyden. Oletusarvo 1 tarko
 Frequency: Toistuvuus
 All: Kaikki
 Send Reminder: Lähetä muistutus
-days: päivää
 Delete entry: Poista merkintä
 You are not authorized to edit this entry.: Sinulla ei ole oikeutta muokata tätä merkintää
 
@@ -429,7 +425,6 @@ Username: Käyttäjätunnus
 E-mail address: Sähköposti
 Password: Salasana
 again: uudestaan
-Enabled: Käytössä
 Disabled for demo: Toiminto ei käytössä (demoversio)
 Change Password: Vaihda salasana
 New Password: Uusi salasana
@@ -578,9 +573,9 @@ Add layer: Lisättävä taso
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Näytä merkintä
 Approve/Confirm: Hyväksy/Vahvista
 Reject: Hylkää
+View this entry: Näytä merkintä
 Approve this entry?: Hyväksytäänkö merkintä?
 Reject this entry?: Hylätäänkö merkintä?
 
@@ -654,6 +649,11 @@ matches found: kohdetta löytyi
 No matches found: Kohteita ei löytynyt
 
 ########################################
+# Page: security_audit.php
+#
+Status: Tila
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Näytä toisen käyttäjän kalenteri
@@ -703,7 +703,6 @@ You must specify a view name: Sinun täytyy määrittää näkymän nimi
 # Page: view_entry.php
 #
 Assistant mode: Avustaja-tila
-Status: Tila
 External User: Ulkoinen käyttäjä
 Approve/Confirm entry: Hyväksy/Vahvista merkintä
 Reject entry: Hylkää merkintä

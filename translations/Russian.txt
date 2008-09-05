@@ -6,7 +6,7 @@
 # Last update: Wed Oct 25 14:34:05 IST 2000
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -95,14 +95,33 @@ Day: День
 Week: Неделя
 Month: Месяц
 Year: Год
-System Settings: Настройки системы
-Help: Подсказка
+Bottom: внизу
+Top: вверху
+Anyone: Кто угодно
+Participant: Участник
 Settings: Установки
 Groups: Группы
 NonUser Calendars: Не пользовательские календари
 Other: Другое
 Email: Адрес электронной почты
 Colors: Цвета
+Document background: Фон документа
+Document title: Заголовок документа
+Document text: Текст документа
+My event text: Текст моих событий
+Table grid color: Цвет линий таблицы
+Table header background: Фона заголовка таблицы
+Table header text: Текст заголовка таблицы
+Table cell background: Фон таблицы
+Table cell background for current day: Фон клетки текущего дня
+Table cell background for days with events: Фон клетки таблицы для дней с событиями
+Table cell background for weekends: Фон клетки выходных
+Table cell background for other month: Фон клетки таблицы для другого месяца
+Week number color: Цвет номера недели
+Event popup background: Фон окна события
+Event popup text: Текст окна события
+System Settings: Настройки системы
+Help: Подсказка
 System options: Параметры системы
 app-name-help: Определяет имя приложения которое будет показано в заголовке браузера для всех страниц включая вход в систему. Значение указанное вами будет просмотрено в файле кодировок, что позволит вам предоставить различные заголовки для различных языков.
 Application Name: Имя приложения
@@ -157,8 +176,6 @@ preferred-view-help: Определяет предпочтимый вид (день, неделя, месяц или год).
 Preferred view: Предпочимый вид
 Allow top menu: Разрешить меню в заголовке
 Date Selectors position: Позиция выбора Даты
-Bottom: внизу
-Top: вверху
 menu-themes-help: Устанавливает цвета и стиль меню заголовка
 Menu theme: Тема меню
 fonts-help: Указывать список системных шрифтов для использования (например "Arial, Helvetica")
@@ -232,11 +249,6 @@ user_sort-help: Определяет порядок сортировки для списков Пользователей и Неполь
 User Sort Order: Порядок Сортировки Пользователей
 Lastname, Firstname: Фамилия, Имя
 Firstname, Lastname: Имя, Фамилия
-Plugins: Модули
-plugins-enabled-help: Включить модули-приложения.
-Enable Plugins: Включить модули
-plugins-sort-key-help: Указывает клавишу сортировки для модулей. Это позволяет модулям появляться в определенной последовательности.
-Plugin: Модуль
 allow-public-access-help: Когда включено, календарь может быть использован как общий календарь только для чтения, который не требует входа пользователей.
 Allow public access: Разрешить общий доступ
 public-access-default-visible: События из общего календаря автоматически появляются в календарях пользователей.
@@ -265,6 +277,7 @@ nonuser-enabled-help: Если включено, администраторы будут иметь возможность доба
 Nonuser enabled: Непользовательские календари включены
 nonuser-list-help: Где отображать непользовательские календари в списке участников
 Nonuser list: Отображать в списке участников
+Enabled: Включены
 reports-enabled-help: Если включено, пользователь сможет видеть секцию "Отчеты" внизу каждой страницы и сможет создавать разные отчеты.
 Reports enabled: Отчеты включены
 subscriptions-enabled-help: Указывает, что внешние пользователи смогут подписываться на календарь пользователя WebCalendar, разрешает видеть события пользователя WebCalendar в их приложении с поддержкой iCal (например Apple's iCal или Mozilla Calendar)
@@ -298,8 +311,6 @@ Use self-registration email notifications: Генерирует пароли и рассылает их новы
 allow-attachment-help: Разрешить пользователям загружать вложения к событиям
 Allow file attachments to events: Разрешить присоединять файлы к событиям
 Admin and owner can always add attachments if enabled.: Администратор и владелец всегда могут загружать вложения если включено
-Anyone: Кто угодно
-Participant: Участник
 allow-comments-help: Разрешить пользователям комментировать события
 Allow comments to events: Разрешить комментировать события
 Admin and owner can always add comments if enabled.: Администратор и владелец всегда могут добавлять комментарии если включено
@@ -320,6 +331,8 @@ SMTP Username: Имя пользователя SMTP
 email-smtp-password: Пароль SMTP если используется авторизация
 SMTP Password: Пароль SMTP
 Default user settings: Настройки пользователя по умолчанию
+Email format preference: Параметры формата писем
+Plain Text: Чистый текст
 email-event-reminders-help: Указывает посылать или нет напоминания
 Event reminders: Напоминания о событии
 email-event-added: Указывает нужно или нет посылать уведомления почтой, когда событие добавлено в ваш календарь.
@@ -334,21 +347,6 @@ Allow user to customize colors: Разрешить пользователю изменять цвета
 gradient-colors: Если включено, градиентные цвета будут использованы. Это может очень повредить производительности.
 Enable gradient images for background colors: Включить градиентные картинки для фоновых цветов
 Not available: Не доступен
-Document background: Фон документа
-Document title: Заголовок документа
-Document text: Текст документа
-My event text: Текст моих событий
-Table grid color: Цвет линий таблицы
-Table header background: Фона заголовка таблицы
-Table header text: Текст заголовка таблицы
-Table cell background: Фон таблицы
-Table cell background for current day: Фон клетки текущего дня
-Table cell background for days with events: Фон клетки таблицы для дней с событиями
-Table cell background for weekends: Фон клетки выходных
-Table cell background for other month: Фон клетки таблицы для другого месяца
-Week number color: Цвет номера недели
-Event popup background: Фон окна события
-Event popup text: Текст окна события
 
 ########################################
 # Page: adminhome.php
@@ -461,13 +459,16 @@ Removed: Удалено
 ########################################
 # Page: edit_entry.php
 #
+days: дней
+hours: часов
+minutes: минуты
 You are not authorized to edit this task: Вы неавторизованы для редактирования этой задачи
 task: задача
-hours ahead of you: часов впереди вас
-hours behind you: часов после вас
+is in a different timezone than you are. Currently: в другой временной зоне чем вы. В данный момент
 hour ahead of you: час впереди вас
 hour behind you: час после вас
-is in a different timezone than you are. Currently: в другой временной зоне чем вы. В данный момент
+hours ahead of you: часов впереди вас
+hours behind you: часов после вас
 Time entered here is based on your Timezone.: Время введенное здесь основано на вашей временной зоне
 Edit Entry: Редактировать Запись
 Add Entry: Добавить Запись
@@ -505,8 +506,6 @@ All day event: Событие на весь день
 Timezone Offset: Временная Зона
 time-help: Задает время события.<br /> <i>Это поле можно не заполнять.</i>
 duration-help: Задает продолжительность события.<br /><i>Это поле можно не заполнять.</i>
-hours: часов
-minutes: минуты
 end-time-help: Определяет время, когда ожидается конец события.
 Start Time: Время начала
 Due Date: Дата конца
@@ -534,8 +533,6 @@ Number of times: Количество раз
 repeat-frequency-help: Задает как часто событие повторяется. Значение по умолчанию 1 означает, что оно должно происходить каждый раз, когда наступает означеное время. Значение 2 приведет к тому, что событие будет происходить через раз и т.д.
 Frequency: Частота
 Weekdays Only: Только по дням недели
-MO: ПН
-SU: ВС
 Week Start: Начало недели
 repeat-bydayextended-help: Позволяет выбор даты основанному на дне недели.
 ByDay: По дню
@@ -560,7 +557,6 @@ Send Reminder: Послать напоминание
 When: Когда
 Use Date/Time: Использовать Дату/Время
 Use Offset: Использовать Смещение
-days: дней
 Before: До
 After: После
 Start: Начало
@@ -696,7 +692,6 @@ Username: Имя пользователя
 E-mail address: Адрес электронной почты
 Password: Пароль
 again: еще раз
-Enabled: Включены
 Disabled for demo: Отключено для демонстрации
 Change Password: Сменить пароль
 New Password: Новый пароль
@@ -885,14 +880,14 @@ Add layer: Добавить слой
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Просмотр этой записи
 Approve/Confirm: Подтвердить
-Reject: Отвергнуть
-Check All: Отметить все
-Uncheck All: Снять отметку со всего
 Approve Selected: Подтвердить Выбранное
-Reject Selected: Отвергнуть выбранное
+Check All: Отметить все
 Emails Will Not Be Sent: Электронные письма не будут посланы
+Reject Selected: Отвергнуть выбранное
+Reject: Отвергнуть
+Uncheck All: Снять отметку со всего
+View this entry: Просмотр этой записи
 No unapproved entries for: Нет неподтвержденных записей для
 Unapproved Entries: Неподтвержденные записи
 Not authorized: Не авторизован
@@ -948,8 +943,6 @@ hour: час
 minute: минута
 theme-reload-help: Всвязи с кэшированием CSS может потребоваться обновить страницу
 Page may need to be reloaded for new Theme to take effect: Странице может понадобиться обновление, чтобы новая тема возымела эффект.
-Email format preference: Параметры формата писем
-Plain Text: Чистый текст
 display_byproxy-help: Отобразить настоящего автора страницы view_entry
 Display if created by Assistant: Отобразить если создано ассистентом
 allow-view-subscriptions-help: Разрешить запрещение удаленного доступа к частным и конфиденциальным записям
@@ -1037,6 +1030,11 @@ matches found: найдены соответствия
 No matches found: Ничего не найдено
 
 ########################################
+# Page: security_audit.php
+#
+Status: Статус
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Просмотреть календарь другого пользователя
@@ -1103,7 +1101,6 @@ No users for this view: Нет пользователей для этого вида
 Update Task Percentage: Обновить процент выполнения
 Completed: Выполнено
 Assistant mode: Режим Ассистента
-Status: Статус
 Declined: Отказано
 Needs-Action: Необходимо действие
 by: участником
@@ -1159,22 +1156,21 @@ Week View: Просмотр Недели
 Year View: Просмотр Года
 
 ########################################
-# Page: includes/config.php
-#
-Fatal Error: Фатальная Ошибка
-Troubleshooting Help: Помощь в решении проблем
-
-########################################
 # Page: includes/date_formats.php
 #
-LANGUAGE DEFINED: ОПРЕДЕЛЕННЫЙ ЯЗЫКОМ
 December: Декабрь
 Dec: Дек
+LANGUAGE DEFINED: ОПРЕДЕЛЕННЫЙ ЯЗЫКОМ
 
 ########################################
 # Page: includes/dbi4php.php
 #
 Error connecting to database: Ошибка соединения с базой данных
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Фатальная Ошибка
 
 ########################################
 # Page: includes/functions.php
@@ -1297,7 +1293,6 @@ Manage calendar of: Управлять календарями
 #
 Browser Language Not Found: Язык Браузера Не Найден
 not supported: не потдерживается
-Browser-defined: Определенный браузером
 English: Английский
 English-US: Английский США
 Afrikaans: Африкаанс
@@ -1339,6 +1334,7 @@ Spanish: Испанский
 Swedish: Шведский
 Turkish: Турецкий
 Welsh: Валлийский
+Browser-defined: Определенный браузером
 event: событие
 journal: журнал
 
@@ -1356,11 +1352,13 @@ no such user: несуществующий пользователь
 ########################################
 # Page: includes/xcal.php
 #
+MO: ПН
 TU: ВТ
 WE: СР
 TH: ЧТ
 FR: ПТ
 SA: СБ
+SU: ВС
 Interval: Интервал
 Months: Месяцев
 Month Days: Дней месяца

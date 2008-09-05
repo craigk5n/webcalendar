@@ -15,7 +15,7 @@
 # Please include your e-mail addresses,
 # so that we can sort it out easier
 # and faster than this time. Thanks in advance, had
-# Translation last updated on 10-24-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -202,6 +202,7 @@ nonuser-enabled-help: Pokud je povoleno, administrátoøi budou mít mo¾nost pøidáv
 Nonuser enabled: Povolit neu¾ivatelské kalendáøe
 nonuser-list-help: Kde se mají zobratovat neu¾ivatelské kalendáøe v seznamu úèastníkù
 Nonuser list: Zobrazuj v seznamu úèastníkù
+Enabled: Povoleno
 reports-enabled-help: Pokud jsou povoleny, u¾ivatelé uvidí "Sestavy" v dolní èásti ka¾dé stránky. Bude jim umo¾nìno si sestavovat vlastní sestavy. Navíc, administrátoøi mohou vytváøet globální sestavy, které se také v¹en objeví v dolní èásti stránek.
 Reports enabled: Povolit sestavy
 subscriptions-enabled-help: Urèuje, zda se vzdálený u¾ivatel smí pøipojit ke svému kalendáøi v tomto systému. To mu umo¾ní prohlí¾et si jeho události v aplikacích, které podporují standard iCal (jako jsou iCal od Apple a nebo Mozilla Calendar).
@@ -449,7 +450,6 @@ Username: U¾ivatelské jméno
 E-mail address: E-mailová adresa
 Password: Heslo
 again: znovu
-Enabled: Povoleno
 Disabled for demo: Pro 'demo' nepovoleno
 Change Password: Zmìnit heslo
 New Password: Nové heslo
@@ -664,6 +664,11 @@ matches found: nalezeny záznamy
 No matches found: Žádné záznamy nenalezeny
 
 ########################################
+# Page: security_audit.php
+#
+Status: Stav
+
+########################################
 # Page: set_entry_cat.php
 #
 Set Category: Pøiøaï kategorii
@@ -708,7 +713,6 @@ You must specify a view name: Musí¹ zadat jméno náhledu
 # Page: view_entry.php
 #
 Assistant mode: Mód asistenta
-Status: Stav
 External User: Externí u¾ivatel
 Approve/Confirm entry: Potvrdit/schválit záznam
 Reject entry: Zamítnout záznam

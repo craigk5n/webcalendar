@@ -17,7 +17,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 11-23-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -311,6 +311,7 @@ nonuser-enabled-help: Se abilitato, gli amministratori potranno aggiungere calen
 Nonuser enabled: Calendari abilitati per i non utenti
 nonuser-list-help: Dove mostrare i calendari dei non utenti nella lista dei partecipanti
 Nonuser list: Mostra nella lista dei partecipanti a
+Enabled: Abilitati
 reports-enabled-help: Se abilitato, gli utenti vedranno una sezione "Rapporti" alla fine di ogni pagina e saranno in grado di creare rapporti personalizzati. Inoltre, gli amministratori potranno creare rapporti globali che appariranno alla fine delle pagine di tutti gli utenti
 Reports enabled: Rapporti abilitati
 subscriptions-enabled-help: Specifica se utenti remoti possono sottoscrivere un calendario di un utente WebCalendar, permettendo loro di vedere gli eventi dell'utente di WebCalendar nella loro applicazione abilitata all'uso di iCal (ad esempio iCal della Apple o il Mozilla Calendar).
@@ -365,6 +366,9 @@ SMTP Username: Nome utente SMTP
 email-smtp-password: Parola chiave SMTP (con autenticazione)
 SMTP Password: Parola chiave SMTP
 Default user settings: Impostazioni dell'utente standard
+Email format preference: Preferenze formato post@
+HTML: HTML (sconsigliato)
+Plain Text: Testo semplice
 email-event-reminders-help: Specifica se inviare o  meno avvisi per gli eventi
 Event reminders: Segnala eventi in e-mail
 email-event-added: Segnala nuovo evento
@@ -651,6 +655,7 @@ A new appointment has been made for you by: Un nuovo appuntamento &egrave; stato
 XXX has made a new appointment.: XXX ha registrato un appuntamento
 An appointment has been updated by: Un appuntamento &egrave; stato aggiornato da
 XXX has updated an appointment.: XXX ha aggiornato un appuntamento
+Security violation!: Violazione di sicurezza!
 You must enter the anti-spam text on the previous page.: Devi inserire il testo anti-spam nella pagina precedente
 The following conflicts with the suggested time: Il seguente &egrave; in conflitto con l'orario suggerito
 User removed from participants list.: Utenti rimossi dalla lista partecipanti
@@ -781,7 +786,6 @@ Username: Nome Utente
 E-mail address: Indirizzo email
 Password: Parola chiave
 again: di nuovo
-Enabled: Abilitati
 Disabled for demo: Disabilita per la demo
 Change Password: Cambiare Parola chiave
 New Password: Nuova parola chiave
@@ -1063,9 +1067,6 @@ hour: ora
 minute: minuto
 theme-reload-help: Per effetto della memorizzazione dei CSS, pu&ograve; essere necessario ricaricare la pagina
 Page may need to be reloaded for new Theme to take effect: Pu&ograve; essere necessario ricaricare la pagina per applicare il nuovo tema
-Email format preference: Preferenze formato post@
-HTML: HTML (sconsigliato)
-Plain Text: Testo semplice
 display_byproxy-help: Mostra autore effettivo nella scheda elemento
 Display if created by Assistant: Mostra se l'autore &egrave; un assistente
 allow-view-subscriptions-help: Consente di limitare accesso remoto a elementi privati o condfidenziali
@@ -1171,6 +1172,11 @@ No matches found: Nessuna corrispondenza trovata
 New Search: Nuova ricerca
 
 ########################################
+# Page: security_audit.php
+#
+Status: Stato
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Visualizza calendario di un altro utente
@@ -1240,7 +1246,6 @@ No users for this view: Nessun utente per questa vista
 Update Task Percentage: Aggiorna percentuale compito
 Completed: Completato
 Assistant mode: Modalit&agrave; assistente
-Status: Stato
 Declined: Rifiutato
 Needs-Action: Richiede azione
 by: per
@@ -1546,11 +1551,6 @@ Event Imported: Eventi importati
 bytes: byte
 kb: kB
 Mb: MB
-
-########################################
-# Page: includes/classes/WebCalendar.class
-#
-Security violation!: Violazione di sicurezza!
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
