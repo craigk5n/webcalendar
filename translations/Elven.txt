@@ -12,7 +12,7 @@
 # Note:  Elven folk do not use abbreviations much.
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -54,12 +54,12 @@ Previous: Yana
 # Page: admin.php
 #
 Week: Enquie
-to: a'
 Bottom: Sundo
 Top: Telmello
+Anyone: Ai'er
+to: a'
 Yes: Um
 No: N'uma
-Anyone: Ai'er
 
 ########################################
 # Page: adminhome.php
@@ -84,8 +84,6 @@ day: re
 High: Taurn
 Medium: Ened
 Low: N'taurn
-MO: Elenya
-SU: Tárion
 All: Ilya
 
 ########################################
@@ -185,11 +183,13 @@ Elven: Eldalie
 ########################################
 # Page: includes/xcal.php
 #
+MO: Elenya
 TU: Anarya
 WE: Isilya
 TH: Alduya
 FR: Menelya
 SA: Valany
+SU: Tárion
 
 ########################################
 # Page: install/index.php

@@ -4,7 +4,7 @@
 # Last update: 18 August 2000
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -65,9 +65,13 @@ Day: Dagur
 Week: Vika
 Month: Mánuður
 Year: Ár
-Help: Hjálp
 Settings: Stillingar
 Colors: Litir
+Document background: Bakgrunnur
+Document title: Titill
+Table cell background: Bakgrunnur dálka
+Table cell background for current day: Bakgrunnur dálka núverandi dags
+Help: Hjálp
 language-help: Tilgreinir tungumál.
 Language: Tungumál
 None: Engin
@@ -90,10 +94,6 @@ display-unapproved-help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali
 Display unapproved: Birta ósamþykkt
 Yes: Já
 No: Nei
-Document background: Bakgrunnur
-Document title: Titill
-Table cell background: Bakgrunnur dálka
-Table cell background for current day: Bakgrunnur dálka núverandi dags
 
 ########################################
 # Page: adminhome.php
@@ -124,6 +124,7 @@ Description: Lýsing
 #
 am: fh
 pm: eh
+minutes: mínútur
 Edit Entry: Breyta atriði
 Add Entry: Bæta við
 Participants: Þátttakendur
@@ -141,7 +142,6 @@ Low: Lágur
 date-help: Tilgreinir dagsetningu atriðis.
 time-help: Tilgreinir tíma atriðis.<br /><i>Þessu sviði má sleppa.</i>
 duration-help: Tilgreinir áætlaða lengd (í mínútum) atriðis.<br /><i>Þessu sviði má sleppa.</i>
-minutes: mínútur
 participants-help: Fá fram þá sem koma að atriði.
 repeat-type-help: Velja hversu oft endurtaka á atburðinn.<i>Mánaðarlega (eftir degi)</i> gerir kleift að endurtaka atriði fyrsta mánudag mánaðar, þriðja þriðjudag o.s.frv. <i>Mánaðarlega (eftir dags)</i> gerir kleift að endurtaka atriði á sama mánaðardegi.
 Daily: Daglega
@@ -154,8 +154,6 @@ repeat-end-date-help: Tilgreinir dagsetningu sem endurtaka á atriði þangað til.
 Use end date: Loka dags
 repeat-frequency-help: Tilgreinir hversu oft á að endurtaka atriði. 1 er sjálfgefið fyrir hvert skipti. Með því að velja 2 er hægt að láta atriði gerast aðra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern mánuð (ef valin <i>Endurtekning</i> er <i>Mánaðarlega</i>), o.s.frv.
 Frequency: Tíðni
-MO: MÁ
-SU: =
 Delete entry: Eyða atriði
 You are not authorized to edit this entry.: Þú hefur ekki réttindi til þess að breyta þessu atriði
 
@@ -242,9 +240,9 @@ Help Index: Efnisyfirlit
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Skoða
 Approve/Confirm: Samþykkja/Staðfesta
 Reject: Hafna
+View this entry: Skoða
 Approve this entry?: Samþykkja?
 Reject this entry?: Hafna þessu atriði?
 
@@ -372,11 +370,13 @@ event: atburður
 ########################################
 # Page: includes/xcal.php
 #
+MO: MÁ
 TU: ÞR
 WE: MI
 TH: FI
 FR: FÖ
 SA: L
+SU: =
 Unnamed Event: Ónafngreint atriði
 
 ########################################

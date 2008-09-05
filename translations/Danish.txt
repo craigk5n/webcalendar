@@ -18,7 +18,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -90,13 +90,25 @@ Day: Dag
 Week: Uge
 Month: Måned
 Year: År
-System Settings: System indstillinger
-Help: Hjælp
+Bottom: Bund
 Settings: Indstillinger
 Groups: Grupper
 NonUser Calendars: Ikke brugertilknyttede kalendere
 Other: Diverse
 Colors: Farver
+Document background: Dokumentbaggrund
+Document title: Dokumenttitel
+Document text: Dokumenttekst
+Table grid color: Farve for tabelrammer
+Table header background: Baggrund for tabeloverskrift
+Table header text: Tabeloverskrift
+Table cell background: Baggrund for tabelcelle
+Table cell background for current day: Baggrund for tabelcelle (idag)
+Table cell background for weekends: Baggrund for tabelcelle (weekender)
+Event popup background: Baggrund for aftale-popup
+Event popup text: Tekst i aftale-popup
+System Settings: System indstillinger
+Help: Hjælp
 app-name-help: Angiver navnet på kalenderen. Dette fremgår i browserens titellinie for samtlige sider samt på login-siden.
 Application Name: Kalender navn
 server-url-help: Angiver basis URL'en for applikationen. Denne bliver inkluderet når der udsendes email påmindelser og notifikationer.
@@ -130,7 +142,6 @@ From: Fra
 to: til
 preferred-view-help: Angiver den foretrukne opstilling (dag, uge, måned eller år).
 Preferred view: Foretrukken opstilling
-Bottom: Bund
 fonts-help: Angiver en liste over skrifttyper systemet kan benytte (f.eks. "Arial, Helvetica")
 Fonts: Skrifttyper
 display-weekends-help: Inkluderer weekender i uge-visning
@@ -174,9 +185,6 @@ popup-includes-siteextras-help: Hvis slået til, vis brugertilpasset aftale opsæt
 Display Site Extras in popup: Vis Site Extras i popup-besked
 remember-last-login-help: Når slået til bliver brugerens sidste login automatisk udfyldt på login-siden (ikke password) og brugerens indstillinger bliver automatisk hentet (inkl. deres foretrukne farver og sprogvalg).
 Remember last login: Husk sidste login
-plugins-enabled-help: Gør det muligt at benytte plugins.
-Enable Plugins: Aktiver plugins
-plugins-sort-key-help: Angiver en sorteringsnøgle for den valgte plugin. Dette gør det muligt at vise plugins i en speciel rækkefølge.
 allow-public-access-help: Når slået til kan kalenderen bruges som en offentlig kalender der ikke kræver login.
 Allow public access: Tillad offentlig adgang
 public-access-default-visible: Aftaler i den offentlige kalender vil automatisk optræde i alle brugeres kalendere
@@ -199,6 +207,7 @@ nonuser-enabled-help: Hvis slået til, har administrator-brugere mulighed for at 
 Nonuser enabled: Ikke brugertilknyttede kalendere slået til
 nonuser-list-help: Hvor skal ikke brugertilknyttede kalendere vises i deltagerlisten
 Nonuser list: Vis i deltagerliste i
+Enabled: Slået til
 reports-enabled-help: Hvis slået til kan brugere vælge "Rapporter" i bunden af hver side og har mulighed for at oprettet brugerdefinerede rapporter. Derudover kan administrator-brugere oprettet globale rapporter som vises i bunden af alle sider på alle brugere.
 Reports enabled: Rapporter slået til
 subscriptions-enabled-help: Angiver om eksterne brugere kan abonnere på en WebCalendar-bruger's kalender. Dette sætter dem i stand til at se brugerens aftaler i en Ical-applikation (fx. Apple's iCal eller Mozilla Calendar).
@@ -229,17 +238,6 @@ Event rejected by participant: Aftale afvist af deltager
 Allow user to customize colors: Tillad bruger at ændre farver
 Enable gradient images for background colors: Slå farvegraduering til på baggrundsfarver
 Not available: Ikke tilgængelig
-Document background: Dokumentbaggrund
-Document title: Dokumenttitel
-Document text: Dokumenttekst
-Table grid color: Farve for tabelrammer
-Table header background: Baggrund for tabeloverskrift
-Table header text: Tabeloverskrift
-Table cell background: Baggrund for tabelcelle
-Table cell background for current day: Baggrund for tabelcelle (idag)
-Table cell background for weekends: Baggrund for tabelcelle (weekender)
-Event popup background: Baggrund for aftale-popup
-Event popup text: Tekst i aftale-popup
 
 ########################################
 # Page: adminhome.php
@@ -306,6 +304,9 @@ Description: Beskrivelse
 ########################################
 # Page: edit_entry.php
 #
+days: dage
+hours: timer
+minutes: minutter
 Edit Entry: Redigér aftale
 Add Entry: Tilføj aftale
 Details: Detaljer
@@ -330,8 +331,6 @@ All day event: Aftale for hele dagen
 Timezone Offset: Tidszone forskydning
 time-help: Angiver tidspunktet for aftalen.<br /><i>Dette felt behøver ikke at være udfyldt.</i>
 duration-help: I dette felt kan du angive varigheden af aftalen<br /><i>Dette felt behøver ikke at være udfyldt.</i>
-hours: timer
-minutes: minutter
 end-time-help: Angiver sluttidspunktet for aftalen.
 participants-help: Vis deltagerne i denne aftale.
 Availability: Tlgængelighed
@@ -350,7 +349,6 @@ repeat-frequency-help: Hvor ofte skal aftalen gentages ? Tallet 1 viser at det s
 Frequency: Hyppighed
 All: Alle
 Send Reminder: Send påmindelse
-days: dage
 Delete entry: Slet aftale
 You are not authorized to edit this entry.: Du har ikke ret til at slette denne aftale
 
@@ -462,7 +460,6 @@ Username: Brugernavn
 E-mail address: Email-adresse
 Password: Kodeord
 again: igen
-Enabled: Slået til
 Disabled for demo: Slået fra i demo
 Change Password: Skift kodeord
 New Password: Nyt kodeord
@@ -609,9 +606,9 @@ Add layer: Tilføj lag
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Se denne aftale
 Approve/Confirm: Godkend/bekræft
 Reject: Afvis
+View this entry: Se denne aftale
 Approve this entry?: Godkend denne aftale?
 Reject this entry?: Afvis denne aftale?
 

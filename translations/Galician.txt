@@ -4,7 +4,7 @@
 # Last update: 20 May 2001
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -62,10 +62,14 @@ Day: Día
 Week: Semana
 Month: Mes
 Year: Ano
-Help: Axuda
 Settings: Configuración
 Email: correo electrónico
 Colors: Cores
+Document background: Fondo do documento
+Document title: Título do documento
+Table cell background: Fondo da cela da táboa
+Table cell background for current day: Fondo da cela para hoxe
+Help: Axuda
 language-help: Especifica o idioma que se empregará.
 Language: Idioma
 Your browser default language is: O idioma por defecto do seu navegador é
@@ -89,6 +93,7 @@ display-unapproved-help: Especifica se amosar ou non os eventos non aprobados no
 Display unapproved: Amosar non aprobados
 Yes: Si
 No: Non
+Enabled: Activado
 email-event-reminders-help: Especifica se enviar ou non recordatorios de evento.
 Event reminders: Recordatorios de eventos
 email-event-added: Especifica se enviar ou non notificacións por correo electrónico cando se engade un evento ó seu calendario.
@@ -99,10 +104,6 @@ email-event-deleted: Especifica se enviar ou non notificacións por correo electr
 Events removed from my calendar: Eventos borrados do meu calendario
 email-event-rejected: Especifica se enviar ou non notificacións por correo electrónico cando un participante rexeita un evento do seu calendario.
 Event rejected by participant: Evento rexeitado polo participante
-Document background: Fondo do documento
-Document title: Título do documento
-Table cell background: Fondo da cela da táboa
-Table cell background for current day: Fondo da cela para hoxe
 
 ########################################
 # Page: adminhome.php
@@ -144,6 +145,9 @@ Description: Descrición
 ########################################
 # Page: edit_entry.php
 #
+days: días
+hours: horas
+minutes: minutos
 Edit Entry: Modificar Entrada
 Add Entry: Engadir Entrada
 Participants: Participantes
@@ -161,8 +165,6 @@ Low: Baixa
 date-help: Especifica a data do evento.
 time-help: Especifica a hora do evento.<br /><i>Este campo pode deixarse en branco.</i>
 duration-help: Especifica a duración (en horas:minutos) do evento.<br /><i>Este campo pode deixarse en branco.</i>
-hours: horas
-minutes: minutos
 participants-help: Lista dos participantes desta entrada.
 repeat-type-help: Seleccione con qué frecuencia se repetirá o evento.<i>Mensualmente (por días)</i> permite que o evento se repita o primeiro luns do mes, o terceiro xoves do mes, etc.<i>Mensualmente (por data)</i> permite que o evento se repita o mesmo día de cada mes.
 Daily: Diariamente
@@ -175,7 +177,6 @@ repeat-end-date-help: Especifica a data ata a qeu se debe repeti-lo evento.
 Use end date: Data final de uso
 repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento. O 1 por defecto indica que debería ter lugar cada vez. Se se especifica 2, o evento terá lugar nas outras semanas (se en <i>Tipo de Repetición</i> se selecciona <i>Semanalmente</i>), terá lugar nos outros meses (se en <i>Tipo de Repetición</i> se selecciona <i>Mensualmente</i>), etc.
 Frequency: Frecuencia
-days: días
 Delete entry: Borrar entrada
 You are not authorized to edit this entry.: Non está autorizado para modificar esta entrada
 
@@ -229,7 +230,6 @@ Username: Nome de usuario
 E-mail address: enderezo de correo electrónico
 Password: Contrasinal
 again: outra vez
-Enabled: Activado
 Disabled for demo: Desactivado para a demo
 Change Password: Cambiar contrasinal
 New Password: Novo contrasinal
@@ -293,9 +293,9 @@ Add layer: Engadir capa
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Ver esta entrada
 Approve/Confirm: Aprobar/Confirmar
 Reject: Rexeitar
+View this entry: Ver esta entrada
 Approve this entry?: ¿Aprobar esta entrada?
 Reject this entry?: ¿Rexeitar esta entrada?
 

@@ -9,7 +9,7 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -81,14 +81,26 @@ Day: Dag
 Week: Uke
 Month: Måned
 Year: År
-System Settings: Systeminnstillinger
-Help: Hjelp
+Bottom: Bunn
 Settings: Innstillinger
 Groups: Grupper
 NonUser Calendars: Ikke-bruker kalendere
 Other: Andre
 Email: E-post
 Colors: Farger
+Document background: Dokumentbakgrunn
+Document title: Dokumenttittel
+Document text: Dokumenttekst
+Table grid color: Farge for tabellgridet
+Table header background: Farge for tabellheaderen
+Table header text: Tekst i tabellheaderen
+Table cell background: Tabellbakgrunn
+Table cell background for current day: Tabellbakgrunn for inneværende dag
+Table cell background for weekends: Tabellbakgrunn for helger
+Event popup background: Bakgrunn for aktivitetspopup
+Event popup text: Tekst for aktivitetspopup
+System Settings: Systeminnstillinger
+Help: Hjelp
 app-name-help: Setter navnet på programmet. Dette vil vises i nettlesertittelen for alle sider.
 Application Name: Programnavn
 server-url-help: Setter base-URLen for programmet. Denne vil bli inkludert ved utsending av påminnelser på e-post.
@@ -123,7 +135,6 @@ From: Fra
 to: til
 preferred-view-help: Angir standardvisning (dag, uke, måned eller år).
 Preferred view: Foretrukket visning
-Bottom: Bunn
 fonts-help: Angir en liste med systemskrifter som skal brukes (som "Arial, Helvetica")
 Fonts: Skrifter
 display-weekends-help: Inkluder helg når uker skal vises
@@ -167,9 +178,6 @@ popup-includes-siteextras-help: Hvis aktivert, vil egendefinert felter i site_ex
 Display Site Extras in popup: Vis nettstedstillegg i sprettopp
 remember-last-login-help: Hvis aktivert, vil brukerens navn bli fylt ut på innloggingssiden og preferansene lastet inn.
 Remember last login: Husk siste innlogging
-plugins-enabled-help: Aktiver plugin-programmer
-Enable Plugins: Aktiver plugins
-plugins-sort-key-help: Angir sorteringsnøkkel for plugins. Dette tillater sortering av plugins i angitt rekkefølge.
 allow-public-access-help: Hvis aktivert, vil kalender kunne bli brukt som en kun lesbar offentlig kalender som ikke krever innlogging.
 Allow public access: Tillatt offentlig tilgang
 public-access-default-visible: Aktitiviteter i den offentlig kalenderen blir vist automatisk i alle brukere sine kalendere
@@ -192,6 +200,7 @@ nonuser-enabled-help: Hvis aktivert, så vil administratorer ha muligheten til å 
 Nonuser enabled: Ikke-bruker kalendere aktivert
 nonuser-list-help: Hvor ikke-bruker kalendere skal vises i deltagerlisten
 Nonuser list: Vis i deltagerlisten ved
+Enabled: Aktivert
 reports-enabled-help: Hvis aktivert, så vil brukere se en "Rapporter"-seksjon
 Reports enabled: Rapporter aktivert
 subscriptions-enabled-help: Angir om eksterne brukere kan abonnere på en brukers kalender og tillate dem å se brukerens aktiviteter i en applikasjon som støtter iCal (som Apple sin iCal eller Mozilla Calendar).
@@ -222,17 +231,6 @@ Event rejected by participant: Aktivitet avvist av deltager
 Allow user to customize colors: Tillat bruker å tilpasse farger
 Enable gradient images for background colors: Aktiver bilder med fargeovergang for bakgrunnsfarger
 Not available: Ikke tilgjengelig
-Document background: Dokumentbakgrunn
-Document title: Dokumenttittel
-Document text: Dokumenttekst
-Table grid color: Farge for tabellgridet
-Table header background: Farge for tabellheaderen
-Table header text: Tekst i tabellheaderen
-Table cell background: Tabellbakgrunn
-Table cell background for current day: Tabellbakgrunn for inneværende dag
-Table cell background for weekends: Tabellbakgrunn for helger
-Event popup background: Bakgrunn for aktivitetspopup
-Event popup text: Tekst for aktivitetspopup
 
 ########################################
 # Page: adminhome.php
@@ -299,6 +297,9 @@ Description: Beskrivelse
 ########################################
 # Page: edit_entry.php
 #
+days: dager
+hours: timer
+minutes: minutter
 Edit Entry: Endre aktiviteten
 Add Entry: Legg til aktivitet
 Details: Detaljer
@@ -324,8 +325,6 @@ All day event: Fulldagsaktivitet
 Timezone Offset: Tidssoneavvik
 time-help: Angir tidspunkt for aktiviteten.<br /><i>Dette feltet trenger ikke være utfylt.</i>
 duration-help: I dette feltet kan du angi varigheten på aktiviteten<br /><i>Dette feltet trenger ikke være utfylt.</i>
-hours: timer
-minutes: minutter
 end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
 Start Time: Starttidspunkt
 participants-help: Vis deltagerne i dette innlegget.
@@ -345,7 +344,6 @@ repeat-frequency-help: Hvor ofte skal aktiviteten gjentas? Tallet 1 viser at det
 Frequency: Hyppighet
 All: Alle
 Send Reminder: Send påminnelse
-days: dager
 Delete entry: Slett aktiviteten
 You are not authorized to edit this entry.: Du har ikke lov å redigere denne aktiviteten
 
@@ -463,7 +461,6 @@ Username: Brukernavn
 E-mail address: E-postadresse
 Password: Passord
 again: igjen
-Enabled: Aktivert
 Disabled for demo: Deaktivert for demo
 Change Password: Endre passord
 New Password: Nytt passord
@@ -621,9 +618,9 @@ Add layer: Legg til lag
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Vis aktiviteten
 Approve/Confirm: Godkjenn/Bekreft
 Reject: Avvis
+View this entry: Vis aktiviteten
 Approve this entry?: Godkjenn aktiviteten?
 Reject this entry?: Avvis denne aktiviteten?
 

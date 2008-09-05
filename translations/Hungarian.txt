@@ -8,7 +8,7 @@
 # Updated to 1.1 by Istvan Bubreg bubreg_at_freemail_hu
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -96,13 +96,31 @@ Day: Nap
 Week: Hét
 Month: Hónap
 Year: Év
-System Settings: Rendszerbeállítások
-Help: Súgó
+Bottom: Alul
+Top: Felül
+Anyone: Bárki
+Participant: Résztvevő
 Settings: Beállítások
 Groups: Csoportok
 NonUser Calendars: Felhasználó nélküli naptárak
 Other: Egyéb
 Colors: Színek
+Document background: Naptár háttér
+Document title: Naptár címsor színe
+Document text: Szöveg színe
+My event text: Saját eseményeim szövege
+Table grid color: Táblarács színe
+Table header background: Táblafejléc háttere
+Table header text: Táblafejléc szövegszíne
+Table cell background: Táblacellák háttere
+Table cell background for current day: Táblacella háttere a MAI napra
+Table cell background for days with events: Táblacella háttere eseménnyel rendelkező napokra
+Table cell background for weekends: Táblacellák háttere hétvégén
+Table cell background for other month: Táblacella háttere más hónapokhoz
+Event popup background: Felugró eseményablak háttere
+Event popup text: Felugró eseményablak szövegszíne
+System Settings: Rendszerbeállítások
+Help: Súgó
 app-name-help: Megadhatsz egy programnevet, ami a böngészõ címsorában jelenik meg, illetve a bejelentkezéskor. Az itt megadott érték lefordításra kerül, így a különbözõ nyelvekhez különbözõ programnevet adhatsz meg.
 Application Name: Programnév
 Translated Name: Lefordított név
@@ -149,8 +167,6 @@ to: vége
 preferred-view-help: Az alapértelmezett nézetet adja meg (Napi, Heti, Havi vagy Éves).
 Preferred view: Kedvenc nézet
 Allow top menu: Felső menüsor bekapcsolása
-Bottom: Alul
-Top: Felül
 menu-themes-help: A felső menü színének és stílusának beállítása
 Menu theme: Menü téma
 fonts-help: A használandó betûkészletek listája (például "Arial, Helvetica").
@@ -211,11 +227,6 @@ remember-last-login-help: Bekapcsolva a bejelenkezési ablakban kitöltésre ker
 Remember last login: Utolsó bejelentkezés megjegyzése
 summary_length-help: A rövid leírás mező hossza a naptárban
 Brief Description Length: Rövid leírás hossza
-Plugins: Beépülõ modulok
-plugins-enabled-help: Beépülõ programok engedélyezése.
-Enable Plugins: Beépülõ modulok engedélyezése
-plugins-sort-key-help: Megadja a beépülõ modulok rendezési kulcsát, lehetõvé téve egy bizonyos sorrend szerinti megjelenítésüket.
-Plugin: Beépülõ modulok
 allow-public-access-help: Bekapcsolva megjelenik egy csak olvasható nyilvános naptár jelenik meg, melyhez be sem kell jelentkezni.
 Allow public access: Nyilvános elérés
 public-access-default-visible: A nyilvános naptár eseményei automatikusan megjelennek az összes felhasználó naptárában
@@ -244,6 +255,7 @@ nonuser-enabled-help: Bekapcsolva az adminisztrátorok létrehozhatnak felhaszn�
 Nonuser enabled: Felhasználó nélküli naptárak engedélyezése
 nonuser-list-help: Megadja, hogy a felhasználó nélküli naptárak hol jelenjenek meg a résztvevõk listájában.
 Nonuser list: Résztvevõk listájában való megjelenés
+Enabled: Engedélyezve
 reports-enabled-help: Bekapcsolva a felhasználók minden oldal alján látnak egy "Jelentések" részt és létrehozhatnak egyedi jelentéseket, továbbá az adminisztrátorok létrehozhatnak globális jelentéseket, melyek megjelennek minden felhasználó oldalainak alján.
 Reports enabled: Jelentések engedélyezése
 subscriptions-enabled-help: Megadja, hogy távoli felhasználók feliratkozhatnak-e egy WebCalendar felhasználó naptárjához, így lehetõvé téve számukra annak egy iCal-kompatibilis programban (mint például Apple iCal vagy Mozilla Calendar) való megtekintését.
@@ -273,8 +285,6 @@ Use self-registration email notifications: Felhasználónevek és jelszavak kül
 allow-attachment-help: Mellékletek csatolhatók az eseményekhez
 Allow file attachments to events: Mellékletek csatolhatók az eseményekhez
 Admin and owner can always add attachments if enabled.: Admin és a tulajdonos csatolhat mellékletet
-Anyone: Bárki
-Participant: Résztvevő
 allow-comments-help: Megjegyzések írhatók az eseményekhez
 Allow comments to events: Megjegyzések engedélyezése
 Admin and owner can always add comments if enabled.: Admin és a tulajdonos mindig írhat megjegyzést
@@ -295,6 +305,8 @@ SMTP Username: SMTP Felhasználónév
 email-smtp-password: SMTP jelszó ha van authentikáció
 SMTP Password: SMTP Jelszó
 Default user settings: Alapértelmezett felhasználói beállítások
+Email format preference: Email formátum beállításai
+Plain Text: Egyszerű szöveg
 email-event-reminders-help: Kérsz-e email emlékeztetõt az eseményrõl.
 Event reminders: Esemény emlékeztetõk
 email-event-added: Kérsz-e email emlékeztetõt a saját naptáradba bejegyzett új eseményrõl.
@@ -309,20 +321,6 @@ Allow user to customize colors: Felhasználók beállíthatják a színeket
 gradient-colors: színátmenetek
 Enable gradient images for background colors: Színátmenetek engedélyezése
 Not available: Nem elérhető
-Document background: Naptár háttér
-Document title: Naptár címsor színe
-Document text: Szöveg színe
-My event text: Saját eseményeim szövege
-Table grid color: Táblarács színe
-Table header background: Táblafejléc háttere
-Table header text: Táblafejléc szövegszíne
-Table cell background: Táblacellák háttere
-Table cell background for current day: Táblacella háttere a MAI napra
-Table cell background for days with events: Táblacella háttere eseménnyel rendelkező napokra
-Table cell background for weekends: Táblacellák háttere hétvégén
-Table cell background for other month: Táblacella háttere más hónapokhoz
-Event popup background: Felugró eseményablak háttere
-Event popup text: Felugró eseményablak szövegszíne
 
 ########################################
 # Page: adminhome.php
@@ -429,11 +427,14 @@ Removed: Eltávolítva
 #
 am: de
 pm: du
+days: nap
+hours: óra
+minutes: perc
 You are not authorized to edit this task: Nem szerkesztheted ezt a feladatot
 task: feladat
+is in a different timezone than you are. Currently: más időzónában van mint te. Éppen
 hours ahead of you: hátralévő órák
 hours behind you: eltelt órák
-is in a different timezone than you are. Currently: más időzónában van mint te. Éppen
 Time entered here is based on your Timezone.: Az itt megadott idő az időzóna alapján
 Edit Entry: Bejegyzés szerkesztése
 Add Entry: Új bejegyzés
@@ -462,8 +463,6 @@ Timed event: Időzített esemény
 All day event: Egész napos esemény
 Timezone Offset: Idõzóna eltérés
 duration-help: Specifies the duration (in hours;minutes) of the event.<br /><em>This field can be left blank.</em>
-hours: óra
-minutes: perc
 Start Time: Kezdő idő
 Due Date: Esedékesség dátuma
 Due Time: Esedékesség ideje
@@ -499,7 +498,6 @@ Send Reminder: Emlékeztetõ küldése
 When: Mikor
 Use Date/Time: Dátum/idő használata
 Use Offset: Eltolás használata
-days: nap
 Before: Előtt
 After: Után
 Start: Kezdet
@@ -624,7 +622,6 @@ Username: Azonosító
 E-mail address: E-mail cím
 Password: Jelszó
 again: újra
-Enabled: Engedélyezve
 Disabled for demo: A demo-ban letiltva
 Change Password: Jelszó változtatás
 New Password: Új jelszó
@@ -807,9 +804,9 @@ Add layer: Réteg hozzáadása
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Bejegyzés megtekintése
 Approve/Confirm: Jóváhagyás/Beleegyezés
 Reject: Elutasítás
+View this entry: Bejegyzés megtekintése
 No unapproved entries for: Nincs jóváhagyás nélküli bejegyzés
 Unapproved Entries: Jóváhagyás nélküli bejegyzések
 Not authorized: Nincs jogosultságod
@@ -828,8 +825,8 @@ cookies-note: <b>Megjegyzés:</b> A sütiket engedélyezni kell a naptár haszn�
 ########################################
 # Page: login.php
 #
+Illegal characters in login: Illegális karakter a felhasználónévben
 Invalid login: Érvénytelen azonosító
-You have been logged out..: Sikeresen kijelentkeztél
 Not yet registered? Register here!: Még nem regisztráltál ? Tedd meg itt!
 
 ########################################
@@ -844,11 +841,6 @@ This Calendar is not Public.: Ez a naptár nem nyilvános
 Add New NonUser Calendar: Új felhasználó nélküli naptár hozzáadása
 
 ########################################
-# Page: nulogin.php
-#
-Illegal characters in login: Illegális karakter a felhasználónévben
-
-########################################
 # Page: pref.php
 #
 Save Preferences: Beállítások mentése
@@ -856,8 +848,6 @@ Custom Scripts: Egyéni parancsfájlok
 Timezone Selection: Időzóna kiválasztás
 hour: óra
 minute: perc
-Email format preference: Email formátum beállításai
-Plain Text: Egyszerű szöveg
 display_byproxy-help: Az eredeti szerző megjelenítése a view_entry oldalon
 Display if created by Assistant: Megjelenítés, ha titkár hozta létre
 
@@ -930,6 +920,11 @@ matches found: egyezést találtam
 No matches found: Nincs találat
 
 ########################################
+# Page: security_audit.php
+#
+Status: Állapot
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Betekintés más felhasználók naptárába
@@ -995,7 +990,6 @@ No users for this view: Nincs felhasználó a nézethez
 Update Task Percentage: Készültségi fok frissítése
 Completed: Kész
 Assistant mode: Titkár mód
-Status: Állapot
 Percentage Complete: Készültségi fok
 External User: Külső felhasználó
 Attachments: Mellékletek
@@ -1022,7 +1016,7 @@ Show activity log: Tevékenységi napló megjelenítése
 Export this entry to: Ezen esemény exportálása a következõbe
 
 ########################################
-# Page: view_r.php
+# Page: view_m.php
 #
 Double-click on empty cell to add new entry: Kattints duplán egy üres cellán új bejegyzés hozzáadásához
 
@@ -1046,15 +1040,14 @@ Week View: Heti nézet
 Year View: Év nézet
 
 ########################################
-# Page: includes/config.php
-#
-Fatal Error: Súlyos hiba
-Troubleshooting Help: Problémamegoldó help
-
-########################################
 # Page: includes/date_formats.php
 #
 LANGUAGE DEFINED: NYELV ALAPJÁN
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Súlyos hiba
 
 ########################################
 # Page: includes/functions.php

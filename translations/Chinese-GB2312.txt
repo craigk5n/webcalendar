@@ -4,7 +4,7 @@
 # Last update: 2003-8-5
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -75,12 +75,25 @@ Day: 日
 Week: 周
 Month: 月
 Year: 年
-System Settings: 系统设置
-Help: 说明
+Bottom: 底部
+Top: 顶部
 Settings: 设置
 Groups: 组
 Email: 邮件
 Colors: 颜色
+Document background: 文件背景
+Document title: 文件标题
+Document text: 文档文本
+Table grid color: 表栅格颜色
+Table header background: 表头背景颜色
+Table header text: 表头文本颜色
+Table cell background: 表格背景
+Table cell background for current day: 当天颜色
+Table cell background for weekends: 设置周末背景色
+Event popup background: 事件弹出背景颜色
+Event popup text: 事件弹出文本颜色
+System Settings: 系统设置
+Help: 说明
 app-name-help: 应用-名称-帮助
 Application Name: 应用名称
 server-url-help: 系统-URL-帮助
@@ -92,7 +105,6 @@ None: 无
 date-format-help: 描述合适的日期格式
 Date format: 日期格式
 Week starts on: 每周开始于
-
 Time format: 时间格式
 12 hour: 12时制
 24 hour: 24时制
@@ -102,8 +114,6 @@ From: 自
 to: 至
 preferred-view-help: 描述默认的视图 (天, 周, 月, 或年).
 Preferred view: 查看选择
-Bottom: 底部
-Top: 顶部
 fonts-help: 字体帮助
 Fonts: 字体
 display-weekends-help: 显示-周末-帮助
@@ -131,10 +141,6 @@ disable-repeating-field-help: 关闭-重复-域-帮助
 Disable Repeating field: 关闭重复域
 remember-last-login-help: 记录最后一次登录
 Remember last login: 记住最后一次登录
-Plugins: 插件
-plugins-enabled-help: 允许使用插件应用程序
-Enable Plugins: 允许使用插件
-Plugin: 插件
 allow-public-access-help: 允许-公共-进入-帮助
 Allow public access: 允许公共登录
 public-access-view-others-help: 可以为公共日历添加其他视图
@@ -147,6 +153,7 @@ user-sees-his-group-help: 察看-所在组-帮助
 User sees only his groups: 用户只能看见自己的组
 Nonuser enabled: 允许非日历用户
 Nonuser list: 非日历用户清单
+Enabled: 已使用
 Reports enabled: 允许报告
 Allow remote subscriptions: 允许远程投递
 categories-enabled-help: 允许-分类-帮助
@@ -169,17 +176,6 @@ Events removed from my calendar: 我的日历中事件删除时通知
 email-event-rejected: 邮件-事件-已拒绝
 Event rejected by participant: 事件审核未通过时通知
 Allow user to customize colors: 允许用户个性化颜色
-Document background: 文件背景
-Document title: 文件标题
-Document text: 文档文本
-Table grid color: 表栅格颜色
-Table header background: 表头背景颜色
-Table header text: 表头文本颜色
-Table cell background: 表格背景
-Table cell background for current day: 当天颜色
-Table cell background for weekends: 设置周末背景色
-Event popup background: 事件弹出背景颜色
-Event popup text: 事件弹出文本颜色
 
 ########################################
 # Page: adminhome.php
@@ -240,6 +236,9 @@ Description: 描述
 #
 am: 上午
 pm: 下午
+days: 天
+hours: 时
+minutes: 分
 Edit Entry: 编辑事件
 Add Entry: 新增事件
 Participants: 参与者
@@ -256,8 +255,6 @@ Untimed event: 无时间的事件
 Timed event: 有时间的事件
 All day event: 全天事件
 Timezone Offset: 时区设置
-hours: 时
-minutes: 分
 External Participants: 其他参与者
 Daily: 每日的
 Weekly: 每周的
@@ -269,7 +266,6 @@ Use end date: 使用结束日期设置
 Frequency: 重复次数
 All: 全部
 Send Reminder: 发送邮件通知
-days: 天
 Delete entry: 删除事件
 
 ########################################
@@ -368,7 +364,6 @@ Username: 用户名称
 E-mail address: 电子邮件地址
 Password: 密码
 again: 再次
-Enabled: 已使用
 Disabled for demo: 关闭演示模式
 Change Password: 更改密码
 New Password: 新的密码
@@ -496,9 +491,9 @@ Add layer: 新增层次
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: 查看这个事件
 Approve/Confirm: 核准/确定
 Reject: 拒绝
+View this entry: 查看这个事件
 Approve this entry?: 核准此事件?
 Reject this entry?: 拒绝此事件?
 
@@ -563,6 +558,11 @@ matches found: 笔符合查询
 No matches found: 查无资料
 
 ########################################
+# Page: security_audit.php
+#
+Status: 状态
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: 查看其他用户的日历
@@ -612,7 +612,6 @@ You must specify a view name: 您必须指定一个视图名称
 # Page: view_entry.php
 #
 Assistant mode: 辅助模式
-Status: 状态
 External User: 其他用户
 Approve/Confirm entry: 核准/确定 事件
 Reject entry: 拒绝事件
