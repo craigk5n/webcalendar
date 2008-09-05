@@ -8,7 +8,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -69,9 +69,13 @@ Day: 日
 Week: 週
 Month: 月
 Year: 年
-Help: 說明
 Settings: 設定中
 Colors: 顏色
+Document background: 文件背景
+Document title: 文件標題
+Table cell background: 表格背景
+Table cell background for current day: 當日顏色
+Help: 說明
 Language: 語系
 Your browser default language is: 你的瀏覽器預設的語系是
 None: 無
@@ -88,10 +92,7 @@ Display week number: 顯示週數(以年計算)
 Display unapproved: 顯示未核准的
 Yes: 是
 No: 否
-Document background: 文件背景
-Document title: 文件標題
-Table cell background: 表格背景
-Table cell background for current day: 當日顏色
+Enabled: 啟用的
 
 ########################################
 # Page: adminhome.php
@@ -130,6 +131,8 @@ Description: 描&nbsp;述
 #
 am: 上午
 pm: 下午
+hours: 時
+minutes: 分
 Edit Entry: 編輯記事
 Add Entry: 新增記事
 Participants: 參與者
@@ -140,8 +143,6 @@ Priority: 優先等級
 High: 高
 Medium: 中
 Low: 低
-hours: 時
-minutes: 分
 Daily: 每日的
 Weekly: 每週的
 Monthly: 每月的
@@ -199,7 +200,6 @@ Username: 使用者名稱
 E-mail address: 電子郵件地址
 Password: 密碼
 again: 再一次
-Enabled: 啟用的
 Change Password: 變更密碼
 New Password: 新的密碼
 Set Password: 設定密碼
@@ -256,9 +256,9 @@ Add layer: 新增階層
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: 檢視這個記事
 Approve/Confirm: 核准/確定
 Reject: 拒絕
+View this entry: 檢視這個記事
 Approve this entry?: 核准這個記事?
 Reject this entry?: 拒絕這個記事?
 

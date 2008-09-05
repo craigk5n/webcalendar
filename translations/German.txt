@@ -6,7 +6,7 @@
 # Last update: 19. November 2007
 #
 # $Id$
-# Translation last updated on 02-11-2008
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -300,6 +300,7 @@ nonuser-enabled-help: Falls aktiviert: Administratoren haben die M&ouml;glichkei
 Nonuser enabled: &#39;Zentrale&#39;-Kalender aktivieren
 nonuser-list-help: Wo sollen die &#39;Zentralen&#39;-Kalender in der Teilnehmerliste angezeigt werden?
 Nonuser list: Wo sollen die &#39;Zentralen&#39; Kalender in der Teilnehmerliste angezeigt werden
+Enabled: Aktiv
 reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag &#34;Berichte&#34; welcher f&uuml;r das Erstellen von Berichten verwendet werden kann. Zus&auml;tzlich kann der &#34;Administrator&#34; allgemeine Berichte erstellen, die f&uuml;r jeden Benutzer am Ende jeder Seite zur Verf&uuml;gung stehen.
 Reports enabled: Berichte aktivieren
 subscriptions-enabled-help: Bestimmt ob &#39;REMOTE&#39;-Teilnehmer andere WebKalender von Teilnehmern abonnieren, und somit dessen Termine und ihre &#39;iCal&#39;-aktiven Anwendungen (wie Apple&#39;s iCal oder Mozilla-Kalender) sehen k&ouml;nnen.
@@ -354,6 +355,9 @@ SMTP Username: SMTP Benutzername
 email-smtp-password: SMTP Kennwort (wenn Authentisierung verwendet wird)
 SMTP Password: SMTP Kennwort
 Default user settings: Standardbenutzer Einstellungen
+Email format preference: Emailformat Einstellungen
+HTML: =
+Plain Text: Reiner Text
 email-event-reminders-help: Gibt an ob Erinnerungen versendet werden sollen oder nicht.
 Event reminders: an Termin erinnern
 email-event-added: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Termin zu ihrem Kalender HINZUGEF&Uuml;GT wurde.
@@ -574,12 +578,7 @@ Start Time: Startzeit
 Due Date: F&auml;lligkeitsdatum
 Due Time: F&auml;lligkeitszeit
 Site Extras: Extrafelder
-avail_participants-help: Liste der verf&uuml;gbaren Teilnehmer dieses Eintrags.
-Available: Verf&uuml;gbar
-Find Name: Suche Name
-Resources: Mittel
 participants-help: Gibt die Benutzer des Termines an.
-Selected: Auswahl
 Availability: Verf&uuml;gbarkeit
 external-participants-help: Spezifiziert eine Teilnehmerliste f&uuml;r Benutzer die keinen eigenen Webkalenderzugang haben. Die Benutzer sollten pro Zeile aufgef&uuml;hrt werden und k&ouml;nnen auch Emailadressen miteinschlie&szlig;en bzw. enthalten.  Wenn ein Emailadresse eingetragen wurde, ist der Benutzer in der Lage, Benachrichtigungen und Erinnerungen zu empfangen.
 External Participants: Externe Benutzer
@@ -776,7 +775,6 @@ Username: Benutzername
 E-mail address: E-Mail Adresse
 Password: Kennwort
 again: Wiederholung
-Enabled: Aktiv
 Disabled for demo: F&uuml;r DEMO deaktiviert
 Change Password: Kennwort &auml;ndern
 New Password: Neues Kennwort
@@ -880,20 +878,15 @@ Import: =
 Palm Desktop: =
 This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereintr&auml;ge ihres Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner <tt>datebook&#47;datebook.dat</tt> in einem Unterverzeichnis mit Ihrem Usernamen sein.
-allow you to import entries from the Palm...: Diese Maske erm&ouml;glicht das Importieren von Eintr&auml;gen aus dem Palm Desktop Datebook. Diese sollten in einem Unterverzeichnis (benannt nach Ihrem Benutzernamen) Ihres Palm in <tt>datebook/datebook.dat</tt> sich befinden.
 The following entries will not be imported: Folgende Eintr&auml;ge werden nicht importiert
 Entries older than the current date: Eintr&auml;ge die &auml;lter als das aktuelle Datum sind
 Entries created in the Palm Desktop...: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync&#39;d)
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
 Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm&#47;Desktop durchgef&uuml;hrt werden.
-Anything imported from Palm...: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er Termine die abgelaufen sind). Deshalb sollten &Auml;nderungen auf dem Palm&#47;Desktop durchgef&uuml;hrt werden.
 vCal: =
-This form will import vCalendar (.vcs) 1.0 events.: Dieses Formular importiert vCalendar (.vcs) 1.0 - Eintr&auml;ge.
 The following formats have been tested: Folgende Formate wurden getestet
-This form will import iCalendar (.ics) events.: Dieses Formular importiert iCalendar (.ics) - Eintr&auml;ge.
 Enabling: Aktivieren
 Overwrite Prior Import: Vorigen Import &uuml;berschreiben
-will cause events imported previously...: bewirkt, da&szlig; vorige <b>&#34;importierte Termine&#34;</b>, welche die <u>selbe UID</u> verwenden, als <b>&#34;gel&ouml;scht&#34;</b> markiert sind. Das erm&ouml;glicht ein importieren einer aktuellen iCalendar Datei <b>ohne Duplikate</b> zu erzeugen.
 
 ########################################
 # Page: help_index.php
@@ -1024,11 +1017,7 @@ cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Coo
 ########################################
 # Page: login.php
 #
-Illegal characters in login: Nicht zul&auml;ssige Zeichen beim Login
-Illegal characters in login XXX.: Ung&uuml;ltige Zeichen im Login XXX.
 Invalid login: Benutzername oder Kennwort falsch
-Activity login failure: Benutzername: &#34;XXX&#34;, IP: &#34;YYY&#34;.
-Error XXX: Fehler: &#34;XXX&#34;.
 You have been logged out.: Sie wurden ausgeloggt.
 Not yet registered? Register here!: Noch nicht registriert? Hier k&ouml;nnen Sie sich registrieren!
 
@@ -1048,6 +1037,7 @@ Add New NonUser Calendar: Neuen &#39;Zentralen-Kalender&#39; hinzuf&uuml;gen
 # Page: nulogin.php
 #
 A login must be specified: Eine Anmeldung mu&szlig; erfolgen
+Illegal characters in login: Nicht zul&auml;ssige Zeichen beim Login
 
 ########################################
 # Page: pref.php
@@ -1064,9 +1054,6 @@ hour: Stunde
 minute: Minute
 theme-reload-help: Wegen gecachten CSS ist ein nochmaliges (Reload) der Seite erforderlich
 Page may need to be reloaded for new Theme to take effect: Seite m&uuml;&szlig;te neu geladen werden um das neue Thema anzuzeigen
-Email format preference: Emailformat Einstellungen
-HTML: =
-Plain Text: Reiner Text
 display_byproxy-help: Anzeige durch Proxyhilfe
 Display if created by Assistant: Anzeigen wenn durch Assistent eingegeben
 allow-view-subscriptions-help: Erlaubt eingeschr&auml;nkten EXTERNEN Zugriff auf Private oder Vertrauliche Eintr&auml;ge
@@ -1095,6 +1082,7 @@ Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
 # Page: register.php
 #
 Email address cannot be blank.: Emailadresse darf nicht leer sein.
+Illegal characters in login XXX.: Ung&uuml;ltige Zeichen im Login XXX.
 New user via self-registration.: Neuer Benutzer via Selbstregistrierung.
 A new WebCalendar account has been set up for you.: Ein neues Webkalenderkonto wurde f&uuml;r Sie eingerichtet.
 Your username is: Ihr Benutzername lautet
@@ -1123,8 +1111,6 @@ Submit: Senden
 Continue: Weiter
 (Your comments will be emailed to the other participants.): (Ihre Anmerkungen werden den anderen Teilnehmern per Email gesendet.)
 An appointment has been rejected by: Eine Termin wurde zur&uuml;ckgewiesen von
-XXX has rejected an appointment.: XXX hat einen Termin zur&uuml;ckgewiesen.
-Rejected by XXX.: Zur&uuml;ckgewiesen von XXX.
 
 ########################################
 # Page: remotes.php
@@ -1171,6 +1157,11 @@ match found: Eintrag gefunden
 matches found: Eintr&auml;ge gefunden
 No matches found: Keine Eintr&auml;ge gefunden
 New Search: Neue Suche
+
+########################################
+# Page: security_audit.php
+#
+Status: =
 
 ########################################
 # Page: select_user.php
@@ -1242,7 +1233,6 @@ No users for this view: Keine g&uuml;ltigen Benutzer f&uuml;r diese Ansicht
 Update Task Percentage: Aktualisierung des Aufgabenprozentsatzes
 Completed: Abgeschlossen
 Assistant mode: Assistentenmodus
-Status: =
 Declined: Abgenommen
 Needs-Action: Ben&ouml;tige Aktion
 by: von
@@ -1279,7 +1269,7 @@ Export this entry to: Diesen Eintrag exportieren nach
 Palm Pilot: =
 
 ########################################
-# Page: view_m.php
+# Page: view_r.php
 #
 Double-click on empty cell to add new entry: Ein &#39;Doppelklick&#39; auf eine leere Zelle f&uuml;gt einen neuen Termin ein.
 
@@ -1327,13 +1317,10 @@ invalid db_type: ung&uuml;tige db_type
 Cache cleared from previous SQL!: Cache wird von voriger SQL geleert!
 Error executing query.: Fehler beim Ausf&uuml;hren des Query
 Unfortunately, XXX is not implemented for: Ungew&ouml;hnliches, XXX ist nicht implementiert
-Unfortunately, XXX is not implemented for YYY: Ungew&ouml;hnlich, &#34;XXX&#34; ist nicht (f&uuml;r YYY) implementiert.
 Unknown ODBC error.: Unbekannter ODBC Fehler
 Unknown error.: Unbekannter Fehler
 write: schreiben
-Cache error Could not XXX file YYY.: Cache-Fehler, kann Datei YYY nicht XXX.
 Error opening cache dir: Fehler beim &Ouml;ffnen des Cache-Verzeichnis
-Error opening cache dir XXX.: Fehler beim &Ouml;ffnen des Cache-Verzeichnisses &#34;XXX&#34;.
 delete: l&ouml;schen
 
 ########################################
@@ -1479,7 +1466,6 @@ Manage calendar of: Kalender verwalten von
 #
 Browser Language Not Found: Browsersprache nicht gefunden
 not supported: nicht unterst&uuml;tzt
-(not supported): (nicht unterst&uuml;tzt)
 English: Englisch
 English-US: Englisch-US
 Afrikaans: Afrikanisch
@@ -1599,7 +1585,6 @@ recipients_failed: SMTP Fehler - Die (der) folgende(n) Empf&auml;nger sind (ist)
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Eingabe der Zeichen, die in der Grafik angezeigt werden
-Enter the correct letters and numbers...: Geben Sie die am Bild angezigten richtigen Buchstaben und Ziffern in das Textfeld ein. Dieser kleine Test dient als Zugangsbeschr&auml;kung vor b&ouml;swilligen Bots. Wenn das Bild schwer zu lesen ist, einfach diese Seite nochmals laden (bzw. aktualisieren)
 Challenge/Response: Aufforderung/Beantwortung
 
 ########################################
@@ -1682,85 +1667,52 @@ Help Contents: Hilfe Inhaltsverzeichnis
 ########################################
 # Page: install/index.php
 #
-Create New: Neu erstellen
-Database Cache Directory: Cache-Verzeichnis der Datenbank
-Database Name: Datenbankname
-Failure Reason: Fehlerbegr&uuml;ndung
-Single-User: Einzelbenutzer
-Test Settings: Einstellungen testen
-Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlossen
 WebCalendar Installation Wizard: Webkalender Installationsassistent
 Step: Schritt
 WebCalendar Installation Wizard Step XXX: Webkalender Installationsassistent Schritt XXX
+Single-User: Einzelbenutzer
+Failure Reason: Fehlerbegr&uuml;ndung
 You must manually create database: Sie m&uuml;ssen die Datenbank manuell einrichten
-Password Accepted: Kennwort akzeptiert
+Database Cache Directory: Cache-Verzeichnis der Datenbank
+Test Settings: Einstellungen testen
+Create New: Neu erstellen
+Database Name: Datenbankname
+Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlossen
+Error Unable to write to file: Fehler beim Schreiben auf Datei
+Error Unable to write to file XXX.: Fehler beim Schreiben auf Datei XXX.
 Successful Login: Erfolgreiches Login
-Password Incorrect: Kennwort falsch
 Invalid Login: Ung&uuml;ltiges Login
-Display Errors: =
-File Uploads: =
-required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden
-(required only if Remote Calendars are used): (nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden)
-Allow URL fopen: Allow URL fopen (nur erforderlich wenn Externe-Kalender(Remote-Kalender) verwendet werden)
-Safe Mode: =
 required only if Safe Mode is On: nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist
-(required only if Safe Mode is On): (nur erforderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
-Safe Mode Allowed Vars: Safe Mode erlaubte Variablen (nur erfoderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
+required only if Remote Calendars are used: nur erforderlich wenn Externe-Kalender (Remote-Kalender) verwendet werden
 needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufende Hintergrundbilder n&ouml;tig
-(needed for Gradient Image Backgrounds): (F&uuml;r stufenweis verlaufende Hintergrundbilder n&ouml;tig)
-GD: GD (ben&ouml;tigt f&uuml;r stufenweis verlaufendes Hintergrundbild)
 Passwords do not match: Kennw&ouml;rter stimmen nicht &uuml;berein
-Passwords do not match!: Kennw&ouml;rter stimmen nicht &uuml;berein!
 Unable to write password to settings.php file: Kennwort kann nicht in die &#39;settings.php&#39;-Datei geschrieben werden
-Password Updated: Kennwort upgedated
 Password has been set: Kennwort wurde gesetzt
 Connection Successful: Verbindung erfolgreich.
 Please go to next page to continue installation: Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
-Connection Successful...: <b>Verbindung erfolgreich</b> Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
-Correct your entries or click the Create New...: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Neu erstellen</b> Button um die Installation fortzufahren.
-Correct your entries and try again.: Korrigieren Sie Ihre Eintr&auml;ge und versuchen Sie es erneut.
 does not exist: existiert nicht
 is not writable: ist schreibgesch&uuml;tzt
 Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
-Error Unable to write to file: Fehler beim Schreiben auf Datei
-Error Unable to write to file XXX.: Fehler beim Schreiben auf Datei XXX.
-Please change the file permissions of this file.: Bitte &auml;ndern Sie die Rechte dieser Datei.
 Please change includes dir permission: Bitte &auml;ndern Sie die Dateiberechtigungen von Ihrem &#39;includes&#39;-Verzeichnis um &#39;Schreibrechte&#39; f&uuml;r &#39;andere Benutzer&#39; zu haben.
-Your settings have been saved.: Ihre Einstellungen wurden gespeichert.
-WebCalendar Setup Wizard: WebKalender Installationsassistent
 Error you must specify a Single-User Login: Sie m&uuml;ssen ein\nSingle-User Login festlegen.
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
-System Administrators Guide: Systemverwalter-Anleitung (in Englisch)
-Frequently Asked Questions: H&auml;ufig gestellte Fragen und Antworten (in Englisch)
-FAQ: FAQ - H&auml;ufig gestellte Fragen und Antworten (in Englisch)
-Troubleshooting: Fehlersuche (in Englisch)
-Getting Help: Hilfe erhalten (in Englisch)
-Upgrading Guide: Upgrade-Anleitung (in Englisch)
-User Supported Wiki: Benutzer unterst&uuml;tztes Wiki (mehrsprachig)
 PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
-Check to see if PHP 4.1.0 or greater is installed.: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist.
 PHP version: PHP Version
 PHP Settings: PHP Einstellungen
 Detailed PHP Info: Detailierte PHP Information
-ON: EIN
-OFF: AUS
-settings.php Status: &#39;settings.php&#39; Status
 Session Check: Session &Uuml;berpr&uuml;fung
 To test the proper operation of sessions, reload this page: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie diese Seite neu.
 You should see the session counter increment each time: Kontrollieren Sie ob der Sessionz&auml;hler jedesmal weiterz&auml;hlt
-To test the proper operation of sessions...: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie diese Seite neu. Kontrollieren Sie ob der Sessionz&auml;hler jedesmal weiterz&auml;hlt
 SESSION COUNTER: Sessionz&auml;hler
 The file permissions of settings.php are set...: Die Dateirechte von <b>settings.php</b> sind so gesetzt, da&szlig; der Installer keine Rechte zur &Auml;nderung besitzt. Bitte &auml;ndern Sie die Zugriffsrechte der Datei um fortzufahren
 The file permissions of the includes directory are set...: Die Zugriffsrechte von <b>includes</b> Verzeichnis sind so gesetzt, da&szlig; der Installer keine Rechte zum Erstellen von neuen Dateien hat. Bitte &auml;ndern Sie die Zugriffsrechte des Verzeichnisses um fortzufahren.
-Your settings.php file appears to be valid.: Ihre <b>settings.php</b> Datei scheint g&uuml;ltig zu sein.
 Configuration Wizard Password: Assitenten - Konfigurationspasswort
 Create Settings File Password: Erzeuge Kennwort f&uuml;r die Settings Datei
 db setup directions...: In diesem Abschnitt stellen (und &uuml;berpr&uuml;fen) Sie die Verbindung zum Datenbankserver her. Die gelieferten Kontoinformationen sollten VOLLE Erlaubnis haben um Datenbanken, Tabellen und Benutzer zu erstellen. Wenn dies nicht m&ouml;glich oder Ihr Datenbankzugriff begrenzt ist, m&uuml;ssen Sie manuell Ihre Datenbank justieren.
 Database Status: Datenbank Status
 Supported databases for your PHP installation: Unterst&uuml;zte Datenbanken f&uuml;r Ihre PHP Installation
-Your current database settings are able to access the database.: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie in der Lage auf Ihre Datenbank zuzugreifen.
 Please Test Settings: Bitte testen Sie Ihre Einstellungen
 Your current database settings are not able...: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie <b>nicht</b> in der Lage auf die Datenbank zuzugreifen, oder ist noch nicht getestet worden (dr&uuml;cken Sie auf den &#39;Einstellungen-testen&#39;-Knopf)
 Database Settings: Datenbankeinstellungen
@@ -1769,21 +1721,15 @@ Server: =
 Connection Persistence: Permanente Verbindung
 All your database tables appear to be up to date. You may proceed to the: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 next page and complete your WebCalendar setup: Ihre Webkalendereinstellungen zu vervollst&auml;ndigen
-All your database tables appear to be up...: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 This appears to be a new installation. If this is not correct, please: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte
 go back to the previous page and correct your settings: Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
-This appears to be a new installation...: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen.
-This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
-This appears to be an upgrade...: Dieses scheint ein Upgrade zu sein von der Version&nbsp;XXX&nbsp;auf&nbsp;YYY.
 The database requires some data input: Die Datenbank erfodert einige Dateneingaben
 Click Update Database to complete the upgrade: Klicken Sie auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen
-The database requires some data input...: Die Datenbank erfodert einige Dateneingaben. Klicken Sie auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen.
+This appears to be an upgrade from version: Dieses scheint ein Upgrade zu sein von der Version
 In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf den aktuellen Stand zu bringen.
 If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt.
 If not, the required SQL can be displayed and you should be able: Wenn nicht, kann das ben&ouml;tigte SQL-Skript angezeigt werden und sollten dann in der Lage sein,
 to cut &amp; paste it into your database server query window: dieses zu kopieren und danach in Ihrem Datenbankabfragefenster einzuf&uuml;gen und auszuf&uuml;hren
-In this section we will perform...: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch um Ihre Datenbank auf den aktuellen Stand zu bringen. Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt. Wenn nicht, kann das ben&ouml;tigte SQL-Skript angezeigt werden und sollten dann in der Lage sein, dieses in Ihr Datenbankabfragefenster zu kopieren und danach auszuf&uuml;hren.
-No database actions are required.: Kein Datenbankeingriff erforderlich
 The following database actions are required: Folgende Datenbankt&auml;tigkeiten sind erforderlich
 ODBC Underlying Database: ODBC zugrundeliegende Datenbank
 Automatic installation not supported: Eine komplett automatisierte Installation wird von Ihrem verwendeten Datenbanktyps nicht vollst&auml;ndig unterst&uuml;tzt. Sie m&uuml;ssen die erforderlichen Tabellen mit den mitgelieferten SQL manuell erstellen. Bitte Klicken <b>Ben&ouml;tigte SQL anzeigen</b> um fortzufahren. Ausschneiden &amp; Einf&uml;gen in Ihrem Datenbankabfragefenster.
@@ -1799,7 +1745,6 @@ NOT: NICHT
 converted your existing WebCalendar event data to GMT.: &nbsp;in GMT (Greenwich Mean Time) umgewandelt zu haben.
 If you have, you may ignore this notice and not proceed with the conversion.: Wenn Sie dies bereits getan haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
 If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren. Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren.
-It appears that you have NOT converted...: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noch NICHT in GMT (Greenwich Mean Time) umgewandelt zu haben.
 Convert Data to GMT: Umwandeln auf GMT
 Application Settings: Anwendungseinstellung
 HTTP-based authentication was not detected: HTTP-basierende Authentisierung wurde nicht erkannt
@@ -1812,7 +1757,6 @@ You should select Web Server from the list of User Authentication choices below.
 HTTP-based authentication was detected...: HTTP-basierende Authentisierung wurde erkannt. Sie sollten &#39;Web Server&#39; von der Liste &#39;Benutzer Authentisierung&#39; von unten ausw&auml;hlen.
 Create Default Admin Account: Ein Administratorkonto einrichten
 Admin Account Not Found: Administratorkonto nicht gefunden
-(Admin Account Not Found): (Administratorkonto nicht gefunden)
 User Authentication: Benutzer Authentisierung
 Web-based via WebCalendar (default): Webbasierend via Webkalender (Grundeinstellung)
 Web Server: Webserver
@@ -1872,9 +1816,7 @@ Not authorized (not admin).: Nicht berechtigt (kein Administrator).
 ########################################
 # Page: ws/get_events.php
 #
-Checking for events for XXX from date YYY to date ZZZ.: Termin&uuml;berpr&uuml;fung f&uuml;r XXX von YYY bis ZZZ.
 Found XXX events in time range.: XXX Termine im Zeitbereich gefunden.
-Event id=XXX YYY at ZZZ on AAA.: Termin id=XXX &#34;YYY&#34; am ZZZ um AAA.
 
 ########################################
 # Page: ws/get_reminders.php
@@ -1886,13 +1828,11 @@ Reminder set for event.: Erinnerungseinstellung f&uuml;r Termin.
 Mins Before XXX.: Minuten vor XXX.
 Event time is XXX.: Terminzeit ist XXX.
 Remind time is XXX.: Erinnerungszeit ist XXX.
-Reminders for user XXX, login YYY.: Erinnerung f&uuml;r Benutzer &#34;XXX&#34;, Login &#34;YYY&#34;.
 
 ########################################
 # Page: ws/get_unapproved.php
 #
 Getting unapproved for user XXX.: Erhaltene &#39;zu &uuml;berpr&uuml;fende&#39; f&uuml;r Benutzer XXX.
-Event id=XXX YYY already sent.: Termin-Id=XXX &#34;YYY&#34; schon gesendet.
 
 ########################################
 # Page: ws/login.php

@@ -11,7 +11,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -84,13 +84,26 @@ Day: Ημέρα
 Week: Εβδομάδα
 Month: Μήνας
 Year: Έτος
-System Settings: Ρυθμίσεις συστήματος
-Help: Βοήθεια
+Bottom: Κάτω
+Top: Πάνω
 Settings: Ρυθμίσεις
 Groups: Ομάδες
 NonUser Calendars: Ημερολόγια μη-χρηστών
 Other: Διάφορα
 Colors: Χρώματα
+Document background: Background κειμένου
+Document title: Τίτλος κειμένου
+Document text: Κείμενο
+Table grid color: Χρώμα του grid του πίνακα
+Table header background: Χρώμα του background της επικεφαλίδας του πίνακα
+Table header text: Κείμενο της επικεφαλίδας του πίνακα
+Table cell background: Background κελιών του πίνακα
+Table cell background for current day: Background κελιών του πίνακα για την τρέχουσα ημέρα
+Table cell background for weekends: Background κελιών του πίνακα για τα σαββατοκύριακα
+Event popup background: Background των αναδυόμενων κειμένων των γεγονότων
+Event popup text: Κείμενο των αναδυόμενων κειμένων των γεγονότων
+System Settings: Ρυθμίσεις συστήματος
+Help: Βοήθεια
 app-name-help: Καθορίζει το όνομα της εφαρμογής που θα εμφανίζεται στη γραμμή τίτλου του browser σε όλες τις σελίδες. Η επιλογή εδώ θα αναζητηθεί στα αρχεία μεταφράσεων για να μπορούν να δωθούν διαφορετικοί τίτλοι σε διαφορετικές γλώσσες.
 Application Name: Όνομα εφαρμογής
 server-url-help: Καθορίζει το URL της εφαρμογής. Θα περιλαμβάνεται στα email υπενθυμίσεων και ειδοποιήσεων.
@@ -124,8 +137,6 @@ From: Από
 to: ως
 preferred-view-help: Καθορίζει ποιά εμφάνιση θα είναι η default (Ημέρας, Εβδομάδας, Μήνα, ή Χρόνου).
 Preferred view: Προτιμόμενη εμφάνιση
-Bottom: Κάτω
-Top: Πάνω
 fonts-help: Καθορίζει μια λίστα από γραμματοσειρές που θα χρησιμοποιούνται (π.χ. "Arial, Helvetica")
 Fonts: Γραμματοσειρές
 display-weekends-help: Εμφάνιση και των Σαββατοκύριακων στην Εμφάνιση Εβδομάδας.
@@ -169,9 +180,6 @@ popup-includes-siteextras-help: Αν είναι ενεργό επιτρέπει 
 Display Site Extras in popup: Εμφάνιση των επιπλέον πληροφοριών με αναδυόμενο μύνημα
 remember-last-login-help: Όταν είναι ενεργό, το Όνομα Χρήστη θα συμπληρώνεται αυτόματα στη σελίδα εισόδου (όχι όμως και ο κωδικός), και οι ρυθμίσεις του χρήστη θα φορτώνονται (συμπεριλαμβανομένων των επιλεγμένων χρωμάτων και της γλώσσας).
 Remember last login: Μνήμη της τελευταίας εισόδου
-plugins-enabled-help: Επιτρέπονται plugin εφαρμογές.
-Enable Plugins: Επιτρέπονται τα Plugins
-plugins-sort-key-help: Ορίζει μια συντόμευση για το plugin. Αυτό τα επιτρέπει να εμφανίζονται με συγκεκριμένη σειρά τα plugins.
 allow-public-access-help: Όταν είναι ενεργό το ημερολόγιο μπορεί να χρησιμοποιηθεί σαν δημόσια μόνο για ανάγνωση, χωρίς να χρειάζεται να γίνει login.
 Allow public access: Δημόσια πρόσβαση
 public-access-default-visible: Τα γεγονότα του δημοσίου ημερολογίου θα εμφανίζονται στα ημερολόγια όλων των χρηστών.
@@ -193,6 +201,7 @@ nonuser-enabled-help: Αν είναι ενεργό, οι διαχειριστέ�
 Nonuser enabled: Ενεργά ημερολόγια μη χρηστών
 nonuser-list-help: Που να εμφανίζονται τα ημερολόγια των μη χρηστών στη λίστα συμμετέχοντων
 Nonuser list: Εμφάνιση στη λίστα συμμετέχοντων
+Enabled: Ενεργό
 reports-enabled-help: Αν είναι ενεργό, οι χρήστες θα βλέπουν μια περιοχή "Αναφορές" κάτω, σε κάθε σελίδα, και τους επιτρέπεται να δημιουργούν δικές τους αναφορές. Επιπρόσθετα, οι διαχειριστές μπορούν να δημιουργήσουν αναφορές που να εμφανίζονται στις σελίδες όλων.
 Reports enabled: Αναφορές
 subscriptions-enabled-help: Καθορίζει αν οι απομακρυσμένοι χρήστες μπορούν να συνδεθούν στο ημερολόγιο ενός χρήστη, επιτρέποντας τους να δούν τα γεγονότα του στη συμβατή με iCal εφαρμογή τους (όπως το iCal της Apple ή το Mozilla Calendar).
@@ -223,17 +232,6 @@ Event rejected by participant: Γεγονότα που απορρίπτοντα�
 Allow user to customize colors: Αλλαγή χρωμάτων από τους χρήστες
 Enable gradient images for background colors: Ενεργοποίηση εικόνων για χρώμα background
 Not available: Μη διαθέσιμο
-Document background: Background κειμένου
-Document title: Τίτλος κειμένου
-Document text: Κείμενο
-Table grid color: Χρώμα του grid του πίνακα
-Table header background: Χρώμα του background της επικεφαλίδας του πίνακα
-Table header text: Κείμενο της επικεφαλίδας του πίνακα
-Table cell background: Background κελιών του πίνακα
-Table cell background for current day: Background κελιών του πίνακα για την τρέχουσα ημέρα
-Table cell background for weekends: Background κελιών του πίνακα για τα σαββατοκύριακα
-Event popup background: Background των αναδυόμενων κειμένων των γεγονότων
-Event popup text: Κείμενο των αναδυόμενων κειμένων των γεγονότων
 
 ########################################
 # Page: adminhome.php
@@ -303,6 +301,9 @@ Description: Περιγραφή
 #
 am: πμ
 pm: μμ
+days: μέρες
+hours: ώρες
+minutes: λεπτά
 Edit Entry: Επεξεργασία Εγγραφής
 Add Entry: Προσθήκη Εγγραφής
 Details: Λεπτομέρειες
@@ -327,8 +328,6 @@ Timed event: Γεγονός με ώρα
 All day event: Ολοήμερο γεγονός
 time-help: Καθορίζει την ώρα του γεγονότος.<br />Επέλεξε "Γεγονός με ώρα" (για γεγονός που προγραμματίστηκε για συγκεκριμένη ώρα της μέρας), "Γεγονός δίχως ώρα" (για γεγονός που δεν έχει ώρα (π.χ. εορτή κάποιου φίλου), ή "Ολοήμερο γεγονός" (για γεγονός που ισχύει όλη την ημέρα (π.χ. απουσία από το γραφείο).
 duration-help: Καθορίζει τη διάρκεια (σε ώρες:λεπτά) του γεγονότος.<br /><i>Η επιλογή μπορεί να μείνει κενή.</i>
-hours: ώρες
-minutes: λεπτά
 end-time-help: Καθορίζει την ώρα που αναμένεται το γεγονός να τελειώσει.
 participants-help: Εμφανίζει τους συμμετέχοντες στο γεγονός.
 Availability: Διαθεσιμότητα
@@ -347,7 +346,6 @@ repeat-frequency-help: Καθορίζει πόσο συχνά το γεγονό�
 Frequency: Συχνότητα
 All: Όλα
 Send Reminder: Αποστολή υπενθυμιστή
-days: μέρες
 Delete entry: Διαγραφή εγγραφής
 You are not authorized to edit this entry.: Δεν είστε εξουσιοδοτημένος να επεξεργαστείτε αυτή την εγγραφή
 
@@ -464,7 +462,6 @@ Username: Όνομα Χρήστη
 E-mail address: Διεύθυνση E-mail
 Password: Κωδικός
 again: ξανά
-Enabled: Ενεργό
 Change Password: Αλλαγή κωδικού
 New Password: Νέος κωδικός
 Set Password: Θέσετε τον κωδικό
@@ -621,9 +618,9 @@ Add layer: Προσθήκη επιπέδου
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Εμφάνιση της εγγραφής
 Approve/Confirm: Αποδοχή/Έγκριση
 Reject: Απόρριψη
+View this entry: Εμφάνιση της εγγραφής
 Approve this entry?: Αποδοχή της εγγραφής;
 Reject this entry?: Απόρριψη της εγγραφής;
 
@@ -699,6 +696,11 @@ matches found: Βρέθηκαν ταιριάσματα
 No matches found: Δεν βρέθηκαν ταιριάσματα
 
 ########################################
+# Page: security_audit.php
+#
+Status: Κατάσταση
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Δείτε το Ημερολόγιο άλλου χρήστη
@@ -754,7 +756,6 @@ No users for this view: Δεν υπάρχουν χρήστες για την ε�
 # Page: view_entry.php
 #
 Assistant mode: Κατάσταση βοηθού
-Status: Κατάσταση
 External User: Εξωτερικός Χρήστης
 Approve/Confirm entry: Αποδοχή/Έγκριση εγγραφής
 Reject entry: Απόριψη εγγραφής

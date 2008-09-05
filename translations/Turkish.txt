@@ -5,7 +5,7 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -66,9 +66,13 @@ Day: Gün
 Week: Hafta
 Month: Ay
 Year: Sene
-Help: Yardim
 Settings: Ayar
 Colors: Renkler
+Document background: Sayfa-arkasi
+Document title: Baslik
+Table cell background: Tabela Sayfa-arkasi
+Table cell background for current day: Tabela-arkasi 'Bugün' icin
+Help: Yardim
 Language: Lisan
 None: Hic
 Week starts on: Hafta baslangici
@@ -88,10 +92,6 @@ display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<br /> E
 Display unapproved: Onaylanmamis Termin'leri gör
 Yes: Evet
 No: Hayir
-Document background: Sayfa-arkasi
-Document title: Baslik
-Table cell background: Tabela Sayfa-arkasi
-Table cell background for current day: Tabela-arkasi 'Bugün' icin
 
 ########################################
 # Page: adminhome.php
@@ -119,6 +119,7 @@ Description: Anlam
 ########################################
 # Page: edit_entry.php
 #
+minutes: Dakika
 Edit Entry: Islem degistir
 Add Entry: Islem ekle
 Participants: Katilanlar
@@ -136,7 +137,6 @@ Low: alcak
 date-help: Termin'in tarihini gösterir.
 time-help: Termin'in saatini gösterir.<br /><i>Bos birakilabilir.</i>
 duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<br /><i>Bos birakilabilir.</i>
-minutes: Dakika
 participants-help: Termine katilanlari gösterir.
 Daily: Günliük
 Weekly: Haftalik
@@ -232,9 +232,9 @@ Help Index: Yardim-Endeksi
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Islemi gör
 Approve/Confirm: Islem onaylansin
 Reject: Ret
+View this entry: Islemi gör
 Approve this entry?: Islem onaylansin?
 Reject this entry?: Isleme ret?
 

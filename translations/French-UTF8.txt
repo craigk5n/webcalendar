@@ -12,7 +12,7 @@
 # Last updated on July 21 2006
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -82,14 +82,25 @@ Day: Jour
 Week: Semaine
 Month: Mois
 Year: Année
-System Settings: Réglages du système
-Help: Aide
 Settings: Réglages
 Groups: Groupes
 NonUser Calendars: Agendas Non-Utilisateurs
 Other: Autre
 Email: Courrier électronique
 Colors: Couleurs
+Document background: Fond
+Document title: Titre du document
+Document text: Texte du document
+Table grid color: Couleur de quadrillage de tableau
+Table header background: Fond d'en-tête de tableau
+Table header text: Texte d'en-tête de tableau
+Table cell background: Fond de cellule
+Table cell background for current day: Fond de cellule pour aujourd'hui
+Table cell background for weekends: Couleur de fond pour les week-ends
+Event popup background: Fond des détails d'événements
+Event popup text: Texte surgissant des événements
+System Settings: Réglages du système
+Help: Aide
 app-name-help: Spécifie le nom de l'application qui apparaîtra dans la barre de titre du navigateur pour toutes les pages (page de connexion incluse). La valeur que vous spécifiez ici sera recherchée dans le fichier de traduction vous permettant de fournir différents titres pour différentes langues.
 Application Name: Nom de l'application
 server-url-help: Spécifie l'URL de base pour l'application. Elle sera incluse lors de l'envoi des courriers électroniques ainsi que pour les rappels et les notifications.
@@ -167,11 +178,6 @@ popup-includes-siteextras-help: Si coché, permet aux champs ajoutés dans site_
 Display Site Extras in popup: Afficher les extras au site dans les fenêtres d'alerte
 remember-last-login-help: Si activé, l'identifiant de l'utilisateur sera rempli pour son compte sur la page de connexion (sans le mot de passe), et les préférences de l'utilisateur seront chargées (y compris les couleurs préférées et la sélection de la langue).
 Remember last login: Se souvenir de la dernière connexion
-Plugins: Modules
-plugins-enabled-help: Autoriser les modules
-Enable Plugins: Autoriser les modules
-plugins-sort-key-help: Spécifie une méthode de tri pour les modules. Celà permet aux modules d'apparaître dans un ordre déterminé.
-Plugin: Module
 allow-public-access-help: Activé, l'agenda peut être utilisé comme un agenda public en lecture seule ne requierant pas de connexion par les utilisateurs.
 Allow public access: Autoriser l'accès public
 public-access-default-visible: Les événements de l'agenda public s'afficheront automatiquement sur les agenda de tous les autres usagers.
@@ -194,6 +200,7 @@ nonuser-enabled-help: Si activé, les administrateurs auront la possibilité d'a
 Nonuser enabled: Agenda des non-utilisateurs activé
 nonuser-list-help: Indique où afficher l'agenda des non-utilisateurs dans la liste des participants
 Nonuser list: Afficher la liste des participants
+Enabled: activés
 reports-enabled-help: Si coché, les utilisateurs verront apparaitre une section « Rapports » au bas de chaque page et pourront créer des rapports personnalisés.  En plus, les administrateurs ont la possibilité de créer des rapports globaux s'affichant au bas de chaque page d'usager.
 Reports enabled: Rapports activés
 subscriptions-enabled-help: Spécifie si l'utilisateur distant peut s'inscrire comme utilisateur de l'agenda partagé WebCalendar, lui permettant ainsi de voir les événements des utilisateurs des applications de type iCal (par exemple l'application iCal d'Apple ou le calendrier Mozilla)
@@ -224,17 +231,6 @@ Event rejected by participant: Événement rejeté par un participant
 Allow user to customize colors: Autoriser les utilisateurs à personnaliser leurs couleurs
 Enable gradient images for background colors: Autoriser les images en dégradés comme images de fond
 Not available: Non disponible
-Document background: Fond
-Document title: Titre du document
-Document text: Texte du document
-Table grid color: Couleur de quadrillage de tableau
-Table header background: Fond d'en-tête de tableau
-Table header text: Texte d'en-tête de tableau
-Table cell background: Fond de cellule
-Table cell background for current day: Fond de cellule pour aujourd'hui
-Table cell background for weekends: Couleur de fond pour les week-ends
-Event popup background: Fond des détails d'événements
-Event popup text: Texte surgissant des événements
 
 ########################################
 # Page: adminhome.php
@@ -295,6 +291,8 @@ An appointment has been canceled for you by: Un événement été annulé pour v
 ########################################
 # Page: edit_entry.php
 #
+days: jours
+hours: heures
 Edit Entry: Modification de l'événement
 Add Entry: Ajouter un événement
 Details: Détails
@@ -319,7 +317,6 @@ All day event: événement permanent
 Timezone Offset: Décalage horaire
 time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
 duration-help: Spécification de la durée (en minutes) de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
-hours: heures
 end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
 participants-help: Liste des participants pour cet événement.
 Availability: Disponibilité
@@ -336,11 +333,8 @@ repeat-end-date-help: Spécifie la date de fin de répétition de l'événement.
 Use end date: Utiliser une date de fin
 repeat-frequency-help: Spécifie la fréquence de répétition de l'événement. La valeur par défaut 1 indique que l'événement doit survenir à chaque fois.  Si vous choisissez 2, celà indique que l'événement doit survenir toutes les autres semaines (si <i>Type de répétition</i> est sur <i>Hebdomadaire</i>), tous les autres Mois (si <i>Type de répétition</i> est sur <i>Mensuel</i>), etc.
 Frequency: Fréquence
-MO: LU
-SU: DI
 All: Tout
 Send Reminder: Envoyer un rappel
-days: jours
 Delete entry: Supprimer l'événement
 You are not authorized to edit this entry.: Vous n'êtes pas autorisé à modifier cet événement
 
@@ -457,7 +451,6 @@ Username: Identifiant utilisateur
 E-mail address: Adresse de couriel
 Password: Mot de passe
 again: confirmer
-Enabled: activés
 Disabled for demo: Désactivé pour la démo
 Change Password: Changer de mot de passe
 New Password: Nouveau mot de passe
@@ -615,9 +608,9 @@ Add layer: Ajouter un calque
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Voir cet événement
 Approve/Confirm: Approuver/Confirmer
 Reject: Rejeter
+View this entry: Voir cet événement
 Approve this entry?: Accepter cet événement ?
 Reject this entry?: Rejeter cet événement ?
 
@@ -692,6 +685,11 @@ matches found: événements correspondent à votre recherche
 No matches found: Aucun événement ne correspond à votre recherche
 
 ########################################
+# Page: security_audit.php
+#
+Status: Etat
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Visualiser l'agenda d'un autre utilisateur
@@ -747,7 +745,6 @@ No users for this view: Aucun utilisateur pour cette vue
 # Page: view_entry.php
 #
 Assistant mode: Mode assistant
-Status: Etat
 External User: Utilisateur extérieur
 Approve/Confirm entry: Approuver/Confirmer cet événement
 Reject entry: Rejeter l'événement
@@ -891,11 +888,13 @@ no such user: Utilisateur inexistant
 ########################################
 # Page: includes/xcal.php
 #
+MO: LU
 TU: MA
 WE: ME
 TH: JE
 FR: VE
 SA: =
+SU: DI
 Unnamed Event: événement sans nom
 Event Imported: Événement importé
 

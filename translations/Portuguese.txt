@@ -9,7 +9,7 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -81,14 +81,27 @@ Day: Dia
 Week: Semana
 Month: Mês
 Year: Ano
-System Settings: Parâmetros Gerais
-Help: Ajuda
+Bottom: Abaixo
+Top: Acima
 Settings: Parâmetros
 Groups: Grupos
 NonUser Calendars: Calendários sem utilizador
 Other: Outro
 Email: Correio electrónico
 Colors: Cores
+Document background: Fundo do documento
+Document title: Título do documento
+Document text: Texto do documento
+Table grid color: Cor da grelha da tabela
+Table header background: Fundo do cabeçalho da tabela
+Table header text: Texto do cabeçalho da tabela
+Table cell background: Fundo da célula da tabela
+Table cell background for current day: Fundo da célula da tabela (para o dia actual)
+Table cell background for weekends: Fundo da célula da tabela (para semana)
+Event popup background: Fundo da caixa de aviso para eventos
+Event popup text: Texto da caixa de aviso para eventos
+System Settings: Parâmetros Gerais
+Help: Ajuda
 app-name-help: Especifica o nome da aplicação que irá aparecer no título do navegador, para todas as páginas, incluindo a de entrada.
 Application Name: Nome da Aplicação
 server-url-help: Especifica o URL de base para esta aplicação. Ele será usado aquando do envio de lembretes e notificações.
@@ -118,8 +131,6 @@ From: De
 to: para
 preferred-view-help: Especifica a vista padrão (Dia, Semana, Mês, ou Ano).
 Preferred view: Visualização preferida
-Bottom: Abaixo
-Top: Acima
 fonts-help: Especifica a lista de tipos de letra a usar (por exemplo, "Arial, Helvetica", etc).
 Fonts: Tipos de letra
 display-weekends-help: Incluir fins-de-semana na vista de semana.
@@ -155,7 +166,6 @@ Allow HTML in Description: Permitir HTML na descrição
 Display Site Extras in popup: Mostrar Extras num popup
 remember-last-login-help: Quando activo, o campo com o nome do utilizador será preenchido automaticamente, assim como as suas preferências.
 Remember last login: Usar preferências do último acesso
-Enable Plugins: Activar Plugins
 allow-public-access-help: Quando activo, o calendário pode ser usado para acesso público (sem possibilidade de modificação).
 Allow public access: Permitir acesso público
 public-access-default-visible: Eventos do calendário público irão aparecer em todos os calendários
@@ -174,6 +184,7 @@ user-sees-his-group-help: Quando activo, o utilizador não verá calendários de ou
 User sees only his groups: Utilizador apenas acede aos seus grupos
 Nonuser enabled: Informação anónima activada
 Nonuser list: Mostrar lista de paticipantes em
+Enabled: Activados
 Reports enabled: Relatórios activados
 Allow remote subscriptions: Permitir subscrições remotas
 categories-enabled-help: Activa o suporte de categorias de eventos.
@@ -197,17 +208,6 @@ Events removed from my calendar: Eventos apagados do meu calendário
 email-event-rejected: Especifica se são ou não enviadas notificações via email quando um participante rejeita um evento.
 Event rejected by participant: Evento rejeitado por um participante
 Allow user to customize colors: Permitir ao utilizador redefinir cores
-Document background: Fundo do documento
-Document title: Título do documento
-Document text: Texto do documento
-Table grid color: Cor da grelha da tabela
-Table header background: Fundo do cabeçalho da tabela
-Table header text: Texto do cabeçalho da tabela
-Table cell background: Fundo da célula da tabela
-Table cell background for current day: Fundo da célula da tabela (para o dia actual)
-Table cell background for weekends: Fundo da célula da tabela (para semana)
-Event popup background: Fundo da caixa de aviso para eventos
-Event popup text: Texto da caixa de aviso para eventos
 
 ########################################
 # Page: adminhome.php
@@ -274,6 +274,9 @@ Description: Descrição
 ########################################
 # Page: edit_entry.php
 #
+days: dias
+hours: horas
+minutes: minutos
 Edit Entry: Editar Entrada
 Add Entry: Adicionar Entrada
 Details: Detalhes
@@ -299,8 +302,6 @@ All day event: Evento de dia completo
 Timezone Offset: Offset de Zona Horária
 time-help: Especifica a hora do evento. Este campo é opcional.
 duration-help: Especifica a duração do evento em minutos. Este campo é opcional.
-hours: horas
-minutes: minutos
 participants-help: Lista os participantes neste evento.
 External Participants: Participantes Externos
 repeat-type-help: Selecciona a periodicidade do evento. <i>Mensal (por dia)</i> faz com que o evento se repita no 1º dia do mês, 3º dia do mês, etc. <i>Mensal (por data)</i> faz com que um evento se repita todos os meses no mesmo dia.
@@ -316,7 +317,6 @@ repeat-frequency-help: Especifica quantas vezes o evento se deve repetir. O valo
 Frequency: Frequência
 All: Todos
 Send Reminder: Enviar Lembrete
-days: dias
 Delete entry: Apagar entrada
 You are not authorized to edit this entry.: Não está autorizado a editar esta entrada
 
@@ -427,7 +427,6 @@ Edit Custom Trailer: Editar Rodapé Personalizado
 Username: Utilizador
 E-mail address: Endereço de email
 again: novamente
-Enabled: Activados
 Disabled for demo: Desactivado em modo demo
 Change Password: Alterar Password
 New Password: Nova Password
@@ -577,9 +576,9 @@ Add layer: Adicionar nível
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Visualizar esta entrada
 Approve/Confirm: Aprovar/Confirmar
 Reject: Rejeitar
+View this entry: Visualizar esta entrada
 Approve this entry?: Aprovar esta entrada?
 Reject this entry?: Rejeitar esta entrada?
 
@@ -654,6 +653,11 @@ matches found: Ocorrências encontradas
 No matches found: Ocorrências não encontradas
 
 ########################################
+# Page: security_audit.php
+#
+Status: Estado
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Ver Calendário de Outro Utilizador
@@ -704,7 +708,6 @@ You must specify a view name: Deve especificar un nome de vista
 # Page: view_entry.php
 #
 Assistant mode: Modo de assistência
-Status: Estado
 External User: Utilizador anónimo
 Approve/Confirm entry: Aprovar/Confirmar entrada
 Reject entry: Rejeitar entrada

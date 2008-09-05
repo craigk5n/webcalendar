@@ -3,7 +3,7 @@
 # Translated by: Henry H. Tan-Tenn <share2002nov@lomaji.com>
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -74,10 +74,14 @@ Day: 日
 Week: 週
 Month: 月
 Year: 年
-System Settings: 系統設定
-Help: 說明
 Settings: 設定中
 Colors: 顏色
+Document background: 文件背景
+Document title: 文件標題
+Table cell background: 表格背景
+Table cell background for current day: 當日顏色
+System Settings: 系統設定
+Help: 說明
 Language: 語系
 Your browser default language is: 你 e 瀏覽器預設 e 語系是
 None: 無
@@ -96,11 +100,8 @@ Display unapproved: 顯示未核准 e
 Yes: 好
 No: Mai
 Allow public access: 允準公眾 access
+Enabled: 啟用 e
 Categories enabled: 啟用類別
-Document background: 文件背景
-Document title: 文件標題
-Table cell background: 表格背景
-Table cell background for current day: 當日顏色
 
 ########################################
 # Page: adminhome.php
@@ -157,6 +158,9 @@ Description: 描述
 #
 am: 上午
 pm: 下晡
+days: 工
+hours: 點鐘
+minutes: 分鐘
 Edit Entry: 編輯記事
 Add Entry: 註冊記事
 Participants: 參與者
@@ -179,8 +183,6 @@ Timed event: 有定時間 e 活動
 All day event: 歸工 e 活動
 time-help: 活動舉辦 e 時間。<br /><i>這項會使免添。</i>
 duration-help: 活動前後 e 長度（按分鐘算）。<br /><i>這項會使免添。</i>
-hours: 點鐘
-minutes: 分鐘
 participants-help: 列出這項記事 e 參與者。
 external-participants-help: 非行事曆用者 e 本活動參與者名單。一 choa 應該列一位，會使包括電子郵便住址。有列住址 e 參與者通收著通知函及提醒函。
 External Participants: 外面參與者
@@ -196,7 +198,6 @@ Use end date: 使用結束日期設定
 repeat-frequency-help: 活動重複 e 頻率。設定「1」表示按時重複，「2」表示活動每兩禮拜 (假使<i>週期性</i>設定<i>「按週」</i>)、每兩個月 (假使<i>週期性</i> 設定<i>「按月」</i>) ...等等，會重複。
 Frequency: 頻率
 All: 全部
-days: 工
 Delete entry: 刪除記事
 You are not authorized to edit this entry.: 你無權利編輯這項記事
 
@@ -243,7 +244,6 @@ Username: 使用者名稱
 E-mail address: 電子郵件地址
 Password: 密碼
 again: 閣一擺
-Enabled: 啟用 e
 Change Password: 變更密碼
 New Password: 新 e 密碼
 Set Password: 設定密碼
@@ -311,9 +311,9 @@ Add layer: 新增階層
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: 檢視這個記事
 Approve/Confirm: 核准/確定
 Reject: 拒絕
+View this entry: 檢視這個記事
 Approve this entry?: 核准這個記事?
 Reject this entry?: 拒絕這個記事?
 
@@ -361,6 +361,11 @@ matches found: 筆符合查詢
 No matches found: 查無資料
 
 ########################################
+# Page: security_audit.php
+#
+Status: 狀態
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: 檢視其他人 e 月曆
@@ -399,7 +404,6 @@ You must specify a view name: 你必須要註明檢視 e 名稱
 # Page: view_entry.php
 #
 Assistant mode: 助理模式
-Status: 狀態
 External User: 外面用者
 Approve/Confirm entry: 核准/確定 記事
 Reject entry: 拒絕記事

@@ -17,7 +17,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 09-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -311,6 +311,7 @@ nonuser-enabled-help: Si activé, les administrateurs auront la possibilité d'ajo
 Nonuser enabled: Agenda des non-utilisateurs activé
 nonuser-list-help: Indique où afficher l'agenda des non-utilisateurs dans la liste des participants
 Nonuser list: Afficher la liste des participants
+Enabled: activés
 reports-enabled-help: Si coché, les utilisateurs verront apparaitre une section « Rapports » au bas de chaque page et pourront créer des rapports personnalisés.  En plus, les administrateurs ont la possibilité de créer des rapports globaux s'affichant au bas de chaque page d'usager.
 Reports enabled: Rapports activés
 subscriptions-enabled-help: Spécifie si l'utilisateur distant peut s'inscrire comme utilisateur de l'agenda partagé WebCalendar, lui permettant ainsi de voir les événements des utilisateurs des applications de type iCal (par exemple l'application iCal d'Apple ou le agenda Mozilla)
@@ -365,6 +366,9 @@ SMTP Username: Nom d'utilisateur SMTP
 email-smtp-password: Mot de passe SMTP si utilisation de l'authentification
 SMTP Password: Mot de passe SMTP
 Default user settings: Réglages par défaut de l'utilisateur
+Email format preference: Préférence de format d'email
+HTML: =
+Plain Text: Texte brut
 email-event-reminders-help: Permet de définir si un couriel est adressé ou non pour le rappel d'un événement.
 Event reminders: Rappel pour un événement
 email-event-added: Notification par couriel lors de l'ajout d'un événement dans votre agenda.
@@ -651,6 +655,7 @@ A new appointment has been made for you by: Un nouvel événement est proposé par
 XXX has made a new appointment.: XXX a créé un nouveau rendez-vous.
 An appointment has been updated by: Un événement a été mis à jour par
 XXX has updated an appointment.: XXX a modifié un rendez-vous.
+Security violation!: Violation de sécurité !
 You must enter the anti-spam text on the previous page.: Vous devez saisir le texte anti-spam sur la page précédente
 The following conflicts with the suggested time: Cet événement est en conflit avec l'heure suggérée.
 User removed from participants list.: Utilisateur retiré des participants
@@ -781,7 +786,6 @@ Username: Identifiant utilisateur
 E-mail address: Adresse de couriel
 Password: Mot de passe
 again: confirmer
-Enabled: activés
 Disabled for demo: Désactivé pour la démo
 Change Password: Changer de mot de passe
 New Password: Nouveau mot de passe
@@ -1064,9 +1068,6 @@ hour: heure
 minute: =
 theme-reload-help: A cause de la mise en cache des CSS, le rechargement de la page pourra être nécessaire
 Page may need to be reloaded for new Theme to take effect: La page peut avoir besoin d'être rechargée pour prendre en compte le nouveau thème
-Email format preference: Préférence de format d'email
-HTML: =
-Plain Text: Texte brut
 display_byproxy-help: Afficher le créateur réel sur la page "view_entry"
 Display if created by Assistant: Afficher si créé par un assistant
 allow-view-subscriptions-help: Permet de restreindre l'accès distant des entrées privées ou confidentielles
@@ -1172,6 +1173,11 @@ No matches found: Aucun événement ne correspond à votre recherche
 New Search: Nouvelle recherche
 
 ########################################
+# Page: security_audit.php
+#
+Status: Etat
+
+########################################
 # Page: select_user.php
 #
 View Another Users Calendar: Visualiser l'agenda d'un autre utilisateur
@@ -1241,7 +1247,6 @@ No users for this view: Aucun utilisateur pour cette vue
 Update Task Percentage: Mettre à jour le pourcentage
 Completed: Terminée
 Assistant mode: Mode assistant
-Status: Etat
 Declined: Refusée
 Needs-Action: Besoin d'une action
 by: par
@@ -1576,11 +1581,6 @@ kb: ko
 Mb: Mo
 
 ########################################
-# Page: includes/classes/WebCalendar.class
-#
-Security violation!: Violation de sécurité !
-
-########################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: =
@@ -1798,220 +1798,6 @@ Save Settings: =
 Launch WebCalendar: =
 
 ########################################
-# Page: install/install_functions.php
-#
-#
-# << MISSING >>
-# Error updating webcal_config:
-#
-# << MISSING >>
-# Error updating table XXX:
-# English text: Error updating table "XXX": XXX.
-#
-#
-# << MISSING >>
-# Conversion Successful:
-# English text: <b>Conversion Successful</b>
-#
-#
-# << MISSING >>
-# Perl script required:
-# English text: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
-#
-#
-# << MISSING >>
-# previous version requires updating several tables:
-# English text: Your previous version of WebCalendar requires updating several database tables.
-#
-
-########################################
-# Page: themes/theme_inc.php
-#
-#
-# << MISSING >>
-# NO PREVIEW AVAILABLE:
-
-########################################
-# Page: tools/reload_remotes.php
-#
-#
-# << MISSING >>
-# Include Path:
-#
-# << MISSING >>
-# Deleting events for:
-#
-# << MISSING >>
-# Importing events for:
-#
-# << MISSING >>
-# No data returned from:
-#
-# << MISSING >>
-# for non-user calendar:
-#
-# << MISSING >>
-# No Remote Calendars found:
-#
-# << MISSING >>
-# Remote Calendars not enabled:
-
-########################################
 # Page: tools/send_reminders.php
 #
-#
-# << MISSING >>
-# could not find event id:
-#
-# << MISSING >>
-# could not find event id XXX in database.:
-#
-# << MISSING >>
-# This is a reminder for the XXX detailed below.:
-#
-# << MISSING >>
-# Pecentage Complete:
 Reminder: Rappel
-
-########################################
-# Page: ws/event_mod.php
-#
-#
-# << MISSING >>
-# Unsupported action:
-#
-# << MISSING >>
-# Unsupported action XXX.:
-# English text: Unsupported action: XXX.
-#
-#
-# << MISSING >>
-# No event id specified.:
-#
-# << MISSING >>
-# not admin:
-#
-# << MISSING >>
-# Not authorized (not admin).:
-
-########################################
-# Page: ws/get_events.php
-#
-#
-# << MISSING >>
-# Checking for events for XXX from date XXX to date XXX.:
-#
-# << MISSING >>
-# Found XXX events in time range.:
-#
-# << MISSING >>
-# Event id=XXX XXX at XXX on XXX.:
-# English text: Event id=XXX "XXX" at XXX on XXX.
-#
-
-########################################
-# Page: ws/get_reminders.php
-#
-#
-# << MISSING >>
-# Allowing XXX user to view other users calendar.:
-# English text: Allowing XXX user to view other user's calendar.
-#
-#
-# << MISSING >>
-# Error Email reminders disabled for user XXX.:
-# English text: Error: Email reminders disabled for user "XXX".
-#
-#
-# << MISSING >>
-# Number of site_extras XXX.:
-# English text: Number of site_extras: XXX.
-#
-#
-# << MISSING >>
-# Reminder set for event.:
-#
-# << MISSING >>
-# Mins Before XXX.:
-# English text: Mins Before: XXX.
-#
-#
-# << MISSING >>
-# Event time is XXX.:
-# English text: Event time is: XXX.
-#
-#
-# << MISSING >>
-# Remind time is XXX.:
-# English text: Remind time is: XXX.
-#
-#
-# << MISSING >>
-# Reminders for user XXX, login XXX.:
-# English text: Reminders for user "XXX", login "XXX".
-#
-
-########################################
-# Page: ws/get_unapproved.php
-#
-#
-# << MISSING >>
-# Getting unapproved for user XXX.:
-# English text: Getting unapproved for user "XXX".
-#
-#
-# << MISSING >>
-# Event id=XXX XXX already sent.:
-# English text: Event id=XXX "XXX" already sent.
-#
-
-########################################
-# Page: ws/login.php
-#
-#
-# << MISSING >>
-# No login required for single-user mode.:
-#
-# << MISSING >>
-# No login required for HTTP authentication.:
-
-########################################
-# Page: ws/user_mod.php
-#
-#
-# << MISSING >>
-# Invalid characters in login:
-# English text: Invalid characters in login.
-#
-#
-# << MISSING >>
-# Username XXX does not exist.:
-# English text: Username "XXX" does not exist.
-#
-#
-# << MISSING >>
-# You cannot remove admin rights from yourself!:
-#
-# << MISSING >>
-# Unknown error saving user:
-# English text: Unknown error saving user.
-#
-
-########################################
-# Page: ws/ws.php
-#
-#
-# << MISSING >>
-# No participants found for event id XXX.:
-# English text: No participants found for event id: XXX.
-#
-#
-# << MISSING >>
-# Db error Could not find event id XXX.:
-# English text: Db error: Could not find event id XXX.
-#
-#
-# << MISSING >>
-# Error Could not find event id XXX in database.:
-# English text: Error: Could not find event id XXX in database.
-#
