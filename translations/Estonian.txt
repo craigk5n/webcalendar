@@ -4,7 +4,7 @@
 # Last update: 14.03.2003
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -37,43 +37,29 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: access.php
+# Page: templates/access.tpl
 #
-Database error: Andmebaasi viga
 Go: Mine
 Save: Salvestame
-Public Access: Avalik ligipääs
-Calendar: Kalender
 Public: Avalik
 Confidential: Isiklik
 Private: Isiklik
 
 ########################################
-# Page: activity_log.php
+# Page: templates/activity_log.tpl
 #
-Next: Järgmine
-Previous: Eelmine
+Activity Log: Kasutamise ajalugu
+Action: Tegevus
+User: Kasutaja
+Calendar: Kalender
+Date: Kuupäev
+Time: Aeg
+Event: Sündmus
 
 ########################################
-# Page: add_entry.php
+# Page: templates/admin.tpl
 #
-confidential: isiklik
-private: isiklik
-Error adding event: Viga sündmuse lisamisel
-
-########################################
-# Page: admin.php
-#
-Select: Vali
-Day: päev
-Week: nädal
-Month: kuu
-Year: aasta
 System Settings: Süsteemi seaded
-Help: Abiks
-Settings: Seaded
-Groups: Grupid
-Colors: Värvid
 app-name-help: Määrab ära rakenduse nime mis ilmub edaspidi lehitseja tiitli ribale
 Application Name: Rakenduse nimi
 server-url-help: määrab ära baasaadressi (URL-i) rakendusele. See lisatakse email meeldetuletustele.
@@ -89,9 +75,6 @@ display-week-starts-on: Määrab kas nädal algab pühapäeval või esmaspäeval. Kui e
 Week starts on: Nädal algab
 time-format-help: Määrab kasutatava aja eelistused :<br /><i>12 tundi:</i> Näita aega nii: 3am, 8:30pm, etc.<br /><i>24 tundi:</i> Näita aega nii: 300, 2030, jne.
 Time format: Aja eelistused
-12 hour: 12 tundi
-24 hour: 24 tundi
-Duration: Kestvus
 work-hours-help: Määrab näidatava tööaja vahemiku päeva vaates.
 Work hours: Töö aeg
 From: Alates
@@ -105,16 +88,12 @@ display-week-number-help: Määrab kas nädala number (1-52) tuleb näidata kuu- ja 
 Display week number: Näita nädala numbrit
 allow-view-add-help: '+' ikoon on lisatud vaadetesse lubamaks kasutajal kiiresti lisada sündmusi teiste kasutajate kalendritesse.
 Include add event link in views: Kaasa lisa sündmus viide vaadetesse
-allow-view-other-help: Määrab kas kasutaja saab näha teiste kalendreid.
-Allow viewing other users calendars: Luba näha teiste kalendreid
 require-approvals-help: Kui on lubatud siis peab kasutaja sündmuse heaks kiitma enne kui seda näidatakse kalendris (kehtib, kui 'Näita heakskiitmatuid' on keelatud). Märkus - seade 'Ei' ei keela näitamist Avalikult Ligipääsetavas kalendris kui see on lubatud.
 Require event approvals: Nõua sündmuse heakskiitu
 display-unapproved-help: Määrab kas heakskiitmata sündmused näidatakse kalendris.<br /> Kui on 'Jah', siis näidatakse heakskiitmata sündmusi kalendris (erineva teksti värviga).<br /> Kui on 'Ei', siis peab heakskiitmata sündmused enne kalendris näitamist lubama.
 Display unapproved: Näita heakskiitmatuid
 conflict-check-help: Kontrolli sündmuste vastuolulisust (mitu sündmust samal ajal ühele isikule). Kui ütled "jah" siis saad siiski samaaegseid sündmusi planeerida kui kinnitad hoiatus teateid. Kui ütled "ei", siis mingeid kontrolle ei tehta. Arvatavasti tahad öelda "jah", et vastuolusid kontrollida.
 Check for event conflicts: Kontrolli sündmuste vastuolulisust
-Yes: jah
-No: ei
 conflict-months-help: Kui sündmuste vastuolulisuse kontrollimine on lubatud siis määrame kui mitu kuud ette peame kontrollima. Kui leiad, et kontrollimine võtab liiga kaua aega, siis vähenda seda numbrit
 Conflict checking months: Vastuolulisuse kontrollimise kuud
 conflict-check-override-help: Lubame kasutajal määrata mitmeid sündmusi samale ajale.
@@ -123,41 +102,21 @@ limit-appts-help: Lubab administraatoril seada kogu kalendrisüsteemi hõlmavat pi
 Limit number of timed events per day: Piira ajastatud sündmuste arvu päevas
 limit-appts-number-help: Määrab suurima ajastatud sündmuste arvu mida kasutaja saab päeavas omada.
 Maximum timed events per day: Suurim ajastatud sündmuste arv päeavas
-disable-priority-field-help: Valides "Jah" kaob "Tähtsuse" väli sündmuse lehelt ja algajatel on lihtsam lehekülg.
-Disable Priority field: Keela Tähtsuse väli
-disable-access-field-help: Valides "Jah" kaob "Juurdepääs" väli sündmuse lehelt ja algajatel on lihtsam lehekülg.
-Disable Access field: Keela Juurdepääsu väli
-disable-participants-field-help: Valides "Jah" kaob "Osalejate" väli sündmuse lehelt ja pole võimalust kutsuda teisi kasutajaid oma sündmustele. Kui lubad selle võimaluse, siis tahad võib-olla keelata "Luban näha teiste kalendreid" ka.
-Disable Participants field: Keela Osalejate väli
-disable-repeating-field-help: Valides "Jah" kaob "Korduv" väli kui lisad sündmusi ja algajatel on lihtsam lehekülg.
-Disable Repeating field: Keela Korduv väli
-remember-last-login-help: Kui on lubatud, siis näidatakse kasutaja registreerimisandmed ilma salasõnata sisenemise lehel ja kasutaja seaded koos värvide ja keeltega laetakse automaatselt.
-Remember last login: Mäleta viimast sisenemist
-Plugins: Liidesed
-plugins-enabled-help: Lubame liidesrakendusi
-Enable Plugins: Lubame liidesed
-plugins-sort-key-help: Määrab liideste järjekorra tunnuse. See lubab liidestel ilmuda kindlas järjekorras.
-Plugin: Liides
-allow-public-access-help: Kui on lubatud, siis saab kalendrit kasutada kirjutamise keeluga avaliku kalendrina kuhu ei nõuta sisse registreerimist.
-Allow public access: Lubame avaliku ligipääsu
-public-access-view-others-help: Kui kalendrile saab avalikult ligi, siis määrab kas kasutaja saab ka teiste kalendreid näha.
-Public access can view other users: Avalik ligipääs näeb teisi kasutajaid
-public-access-can-add-help: Kui on lubatud, siis avalik kasutaja saab lisada sündmusi kuid neid ei ole näha enne administraatori heakskiitu.
-Public access can add events: Avalik kasutaja saab lisada sündmusi
-public-access-add-requires-approval-help: Määrab kas avaliku ligipääsu kaudu lisatud sündmused vajavad heakskiitu.
-Public access new events require approval: Avaliku kasutuse uued sündmused vajavad heakskiitu:
 groups-enabled-help: Lubab gruppide toe. Kasutajaid võib valida gruppide järgi.
 Groups enabled: Grupid lubatud
 user-sees-his-group-help: Kui on lubatud, siis kasutaja ei näe teisi kalendri kasutajaid kes ei kuulu vähemalt ühte nende gruppi.
 User sees only his groups: Kasutaja näeb ainult oma gruppi
-categories-enabled-help: Lubame sündmuste kategooriad
-Categories enabled: Kategooriad lubatud
+remember-last-login-help: Kui on lubatud, siis näidatakse kasutaja registreerimisandmed ilma salasõnata sisenemise lehel ja kasutaja seaded koos värvide ja keeltega laetakse automaatselt.
+Remember last login: Mäleta viimast sisenemist
+allow-view-other-help: Määrab kas kasutaja saab näha teiste kalendreid.
 allow-external-users-help: Määrab kas kalendri mitte kasutajaid saab kutsuda sündmustele. See lubab kalendri mittekasutajaid loetleda kui sündmusel osalejaid.
 Allow external users: Lubame välised kasutajad
 external-can-receive-notification-help: Kui välised kasutajad ja emaili kasutamine on lubatud, siis saavad välised kasutajad (nende emaili aadressi olemasolul) teateid kui sündmus on lisatud, uuendatud või kustutatud
 External users can receive email notifications: Välised kasutajad võivad saada emaili teateid
 external-can-receive-reminder-help: Kui välised kasutajad ja emaili kasutamine on lubatud, siis saavad välised kasutajad (nende emaili aadressi olemasolul) meeldetuletusi.
 External users can receive email reminders: Välised kasutajad võivad saada emaili meeldetuletusi
+categories-enabled-help: Lubame sündmuste kategooriad
+Categories enabled: Kategooriad lubatud
 email-enabled-help: Luba või keela kõik emaili meeldetuletused või teated. Sea "ei" kui sinu server ei oska maili saata.
 Email enabled: Email lubatud
 email-default-sender: Määrab emaili saatja aadressi meeldetuletustele.
@@ -177,72 +136,44 @@ Allow user to customize colors: Lubame kasutajal muuta värve
 Document background: Dokumendi taust
 Document title: Dokumendi pealkiri
 Document text: Dokumendi tekst
-Table grid color: Tabeli joonte värv
 Table header background: Tabeli päise taust
 Table header text: Tabel päise tekst
 Table cell background: Tabeli ruudu taust
-Table cell background for current day: Tabeli ruudu taust jooksval päeval
-Table cell background for weekends: Tabeli ruudu taust nädalavahetuseks
 Event popup background: Sündmuse akna taust
 Event popup text: Sündmuse tekst
 
 ########################################
-# Page: adminhome.php
+# Page: templates/category.tpl
 #
-Assistants: Abilised
-Preferences: Eelistused
-Users: Kasutajaid
-Account: Konto
-Categories: Kategooriad
-Layers: Kihid
-Activity Log: Kasutamise ajalugu
-
-########################################
-# Page: approve_entry.php
-#
-Hello: Halloo
-The subject was: Teema oli
-The description is: Kirjeldus on
-Date: Kuupäev
-Time: Aeg
-
-########################################
-# Page: assistant_edit.php
-#
-Your assistants: Sinu abiline
-
-########################################
-# Page: category.php
-#
-Global: Üleüldine
 Category Name: Kategooria nimi
+Global: Üleüldine
 Color: Värv
 Add: Lisa
 Delete: Kustuta
 Make New Category: Lisa uus kategooria
 
 ########################################
-# Page: catsel.php
+# Page: templates/category_menu.tpl
 #
+Category: Kategooria
+
+########################################
+# Page: templates/catsel.tpl
+#
+Categories: Kategooriad
 Remove: Eemalda
 Cancel: Loobu
 
 ########################################
-# Page: del_entry.php
-#
-An appointment has been canceled for you by: Sinu kokkusaamise jättis ära
-
-########################################
-# Page: docadd.php
+# Page: templates/docadd.tpl
 #
 Description: Kirjeldus
 
 ########################################
-# Page: edit_entry.php
+# Page: templates/edit_entry.tpl
 #
 Edit Entry: Muuda kannet
 Add Entry: Lisa kannet
-Participants: Osalejad
 Brief Description: Lühikirjeldus
 full-description-help: See lõpetab sündmuse kirjelduse. Neid andmeid näeb kui kasutaja vaatab sündmust.
 Full Description: Täiskirjeldus
@@ -250,11 +181,7 @@ access-help: Määrab sündmuse ligipääsetavuse.<br /> <i>Avalik</i>: Kõik võivad s
 Access: Ligipääsetavus
 priority-help: Määrab sündmuse tähtsuse. Suure tähtsusega sündmused näidatakse esile tõstetult.
 Priority: Tähtsus
-High: Suur
-Medium: Keskmine
-Low: Madal
 category-help: Määrab sündmuse kategooria
-Category: Kategooria
 date-help: Määrab sündmuse kuupäeva.
 Untimed event: Ajastamata sündmus
 Timed event: Ajastatud sündmus
@@ -262,8 +189,12 @@ All day event: Kogu päeva sündmus
 Timezone Offset: Ajavööndi erinevus
 time-help: Määrab sündmuse aja.<br />Vali kas "Ajastatud sündmus" (sündmuse jaoks mis on määratud kindlale ajale), "Ajastamata sündmus" (sündmuse jaoks millel pole kindlat kellaaega (nägu pühad) või "Kogu päeva sündmus" (sündmusele mis kestab kogu päeva (olen kontorist väljas).
 duration-help: Määrab sündmuse kestvuse (tunnid:minutid).<br /><i>Selle välja võib jätta tühjaks.</i>
+Duration: Kestvus
 hours: tunnid
 minutes: minutid
+Participants: Osalejad
+Users: Kasutajaid
+Groups: Grupid
 participants-help: Näita selle kande osalejaid.
 external-participants-help: Määrab ära kalendi mittekasutajatest osalejad. Osalejad tuleb loetleda üks rea kohta ja lisada võib emaili aadressi. Kui email on määratud, siis võib inimene saada teadustusi ja meeldetuletusi.
 External Participants: Välised osalejad
@@ -278,84 +209,72 @@ repeat-end-date-help: Määrab kuupäeva milleni sündmust korrata.
 Use end date: Kasutuse lõppkuupäev
 repeat-frequency-help: Määrab kui tihti sündmust korrata. 1 näitab et peab korduma igas ajaühikus, 2 näitab et peab korduma igal teisel nädalal (kui <i>Korduse tüüp</i> on <i>nädalati</i>), igal teisel kuul (kui <i>Korduse tüüp</i> on <i>kuiselt</i>), jne.
 Frequency: Sagedus
-MO: E
-SU: P
 All: Kõik
 Send Reminder: Saada meeldetuletus
+Yes: jah
+No: ei
 days: päevi
-Delete entry: Kustuta kanne
-You are not authorized to edit this entry.: Sul ei ole lubatud muuta seda kannet
 
 ########################################
-# Page: edit_entry_handler.php
+# Page: templates/edit_group.tpl
 #
-A new appointment has been made for you by: Sulle on määratud uus kohtumine
-The following conflicts with the suggested time: Järgmised sündmused on vastuolus soovitud ajaga
-Please look on: Palun vaata
-to accept or reject this appointment: kohtumise heakskiitmiseks või tagasilükkamiseks
-to view this appointment: kohtumise nägemiseks
-Scheduling Conflict: Kavandame vastuolu
-Your suggested time of: Sinu soovitud aeg
-conflicts with the following existing calendar entries: on vastuolus järgmiste kalendri kannetega
+Add Group: Lisa grupp
+Edit Group: Muuda gruppi
+Group name: Grupi nimi
+Updated: Uuendatud
+Created by: Loodud
 
 ########################################
-# Page: edit_layer.php
+# Page: templates/edit_layer.tpl
 #
-Add Layer: Lisa kiht
 Edit Layer: Muuda kihti
+Add Layer: Lisa kiht
 Source: Allikas
 Duplicates: Kordused
 Show layer events that are the same as your own: Näita sündmuste kihte mis on samased sinu omadega
 Add to My Calendar: Lisa minu kalendrisse
-Delete layer: Kustuta kiht
 
 ########################################
-# Page: edit_layer_handler.php
+# Page: templates/edit_nonusers.tpl
 #
-You cannot create a layer for yourself.: Sa ei saa ise kihti kustutada
-You can only create one layer for each user.: Saad teha vaid ühe kihi kasutaja kohta
-
-########################################
-# Page: edit_nonusers.php
-#
-Add User: Lisa kasutaja
 Edit User: Muuda kasutajat
+Add User: Lisa kasutaja
 First Name: Eesnimi
 Last Name: Perenimi
 
 ########################################
-# Page: edit_remotes_handler.php
+# Page: templates/edit_user.tpl
 #
-Error: Viga
-
-########################################
-# Page: edit_report.php
-#
-User: Kasutaja
-Current User: Käesolev kasutaja
-
-########################################
-# Page: edit_user.php
-#
-Username: Kasutajanimi
-E-mail address: E-mail aadress
-Password: Salasõna
-again: uuesti
-Enabled: Lubatud
-Disabled for demo: Keelatud näidise jaoks
 Change Password: Muuda salasõna
 New Password: Uus salasõna
+again: uuesti
 Set Password: Sea salasõna
+Disabled for demo: Keelatud näidise jaoks
+Username: Kasutajanimi
+Password: Salasõna
+E-mail address: E-mail aadress
+Enabled: Lubatud
 
 ########################################
-# Page: edit_user_handler.php
+# Page: templates/edit_views.tpl
 #
-Deleting users not supported.: Kasutajate kustutamine pole lubatud
-The passwords were not identical.: Salasõnad pole samased
-You have not entered a password.: Salasõna sisestamata
+Add View: Lisa vaade
+Edit View: Muuda vaadet
+View Name: Vaata vaadet
+View Type: Vaata tüüpi
+Day: päev
+Week: nädal
+Month: kuu
+Select: Vali
 
 ########################################
-# Page: export.php
+# Page: templates/error.tpl
+#
+Error: Viga
+The following error occurred: Järgmine viga on juhtunud
+
+########################################
+# Page: templates/export.tpl
 #
 Export: Eksport
 Export format: Ekspordi määrangud
@@ -365,35 +284,200 @@ End date: Lõpp kuupäev
 Modified since: Muudetud alates
 
 ########################################
-# Page: groups.php
+# Page: templates/import.tpl
 #
+Disabled: Keelatud
+
+########################################
+# Page: templates/layers.tpl
+#
+Layers are currently: Kihid on praegu
+Disable Layers: Keela kihid
+Add layer: Lisa kiht
+Layer: Kiht
+
+########################################
+# Page: templates/list_unapproved.tpl
+#
+View this entry: Vaata seda kannet
+Approve/Confirm: Kiidan heaks/Kinnitan
+Reject: Hülgame
+
+########################################
+# Page: templates/login.tpl
+#
+Login: Sisenemine
+cookies-note: <b>Märkus:</b> See rakendus nõuab küpsiste kasutamise lubamist.
+
+########################################
+# Page: templates/menu.tpl
+#
+Logout: Väljume
+
+########################################
+# Page: templates/pref.tpl
+#
+Preferences: Eelistused
+Default Category: Vaikimisi kategooria
+hour: tund
+time-interval-help: Määrab kui pikad on aja vahemikud nädala- ja päeva vaates
+Time interval: Aja vahemik
+auto-refresh-help: Kui on lubatud, siis päeva, nädala ja kuu vaated, samuti nimekiri heakskiitma lehtedest värskendavad ise.
+Auto-refresh calendars: Automaatne kalendri värskendus
+auto-refresh-time-help: Kui automaatne värskendus on lubatud, siis määrame värskenduste sageduse.
+Auto-refresh time: Automaatse värskenduse aeg
+
+########################################
+# Page: templates/users.tpl
+#
+Add New User: Lisa uus kasutaja
+denotes administrative user: määrab administratiivse kasutaja
 Add New Group: Lisa uus grupp
 
 ########################################
-# Page: group_edit.php
+# Page: templates/views.tpl
 #
-Unnamed Group: Nimeta grupp
-Add Group: Lisa grupp
-Edit Group: Muuda gruppi
-Group name: Grupi nimi
-Updated: Uuendatud
-Created by: Loodud
+Add New View: Lisa uus vaade
 
 ########################################
-# Page: group_edit_handler.php
+# Page: templates/view_entry.tpl
+#
+Status: Olukord
+Repeat Type: Korduse tüüp
+Rejected: Tagasi lükatud
+Approve/Confirm entry: Kiida heaks/kinnita kanne
+Approve this entry?: Kiida see kanne heaks?
+Reject entry: Hülga kanne
+Reject this entry?: Lükkame kande tagasi?
+Set category: Määra kategooria
+Edit entry: Muuda kannet
+Delete entry: Kustuta kanne
+This will delete this entry for all users.: See kustutab kande kõikide kasutajate jaoks
+Email all participants: Saada email kõigile osalejaile
+Hide activity log: Peida kasutamise ajalugu
+Show activity log: Näita kasutamise ajalugu
+
+########################################
+# Page: templates/view_t.tpl
+#
+Previous: Eelmine
+Next: Järgmine
+
+########################################
+# Page: add_entry.php
+#
+private: isiklik
+confidential: isiklik
+Error adding event: Viga sündmuse lisamisel
+
+########################################
+# Page: admin.php
+#
+Year: aasta
+Settings: Seaded
+Colors: Värvid
+12 hour: 12 tundi
+24 hour: 24 tundi
+
+########################################
+# Page: adminhome.php
+#
+Layers: Kihid
+
+########################################
+# Page: ajax.php
+#
+Reminder: Meeldetuletus
+You have not entered a password.: Salasõna sisestamata
+The passwords were not identical.: Salasõnad pole samased
+Server URL is required.: Serveri URL on puudu
+Server URL must end with /.: Serveri URL peab lõppema '/' märgiga
+SU: P
+MO: E
+TU: T
+WE: K
+TH: N
+FR: R
+SA: L
+You have not entered a Brief Description.: Sa ei ole kirjutanud lühikirjeldust
+You have not entered a valid time of day.: Sa ei ole kirjutanud õiget kellaaega
+time entered before preferred work hours...: Sisestatud aeg algab enne tööpäeva. Kas see on õige?
+
+########################################
+# Page: ajax_entries.php
+#
+External User: Väline kasutaja
+
+########################################
+# Page: approve_entry.php
+#
+Hello: Halloo
+The subject was: Teema oli
+The description is: Kirjeldus on
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: Sinu kokkusaamise jättis ära
+
+########################################
+# Page: docadd.php
+#
+Database error: Andmebaasi viga
+
+########################################
+# Page: edit_entry.php
+#
+High: Suur
+Medium: Keskmine
+Low: Madal
+
+########################################
+# Page: edit_entry_handler.php
+#
+The following conflicts with the suggested time: Järgmised sündmused on vastuolus soovitud ajaga
+A new appointment has been made for you by: Sulle on määratud uus kohtumine
+Please look on: Palun vaata
+to accept or reject this appointment: kohtumise heakskiitmiseks või tagasilükkamiseks
+to view this appointment: kohtumise nägemiseks
+Scheduling Conflict: Kavandame vastuolu
+Your suggested time of: Sinu soovitud aeg
+conflicts with the following existing calendar entries: on vastuolus järgmiste kalendri kannetega
+
+########################################
+# Page: edit_group.php
+#
+Unnamed Group: Nimeta grupp
+
+########################################
+# Page: edit_group_handler.php
 #
 You must specify a group name: Pead määrama grupi nime
 
 ########################################
+# Page: edit_views.php
+#
+Unnamed View: Nimeta vaade
+
+########################################
+# Page: edit_views_handler.php
+#
+You must specify a view name: Pead näitama vaate nime
+
+########################################
 # Page: help_admin.php
 #
-Auto-refresh calendars: Automaatne kalendri värskendus
-auto-refresh-help: Kui on lubatud, siis päeva, nädala ja kuu vaated, samuti nimekiri heakskiitma lehtedest värskendavad ise.
-Auto-refresh time: Automaatse värskenduse aeg
-auto-refresh-time-help: Kui automaatne värskendus on lubatud, siis määrame värskenduste sageduse.
+Help: Abiks
 Display weekends in week view: näita nädalavahetusi nädala vaates
-Time interval: Aja vahemik
-time-interval-help: Määrab kui pikad on aja vahemikud nädala- ja päeva vaates
+Public Access: Avalik ligipääs
+Allow public access: Lubame avaliku ligipääsu
+allow-public-access-help: Kui on lubatud, siis saab kalendrit kasutada kirjutamise keeluga avaliku kalendrina kuhu ei nõuta sisse registreerimist.
+Public access can add events: Avalik kasutaja saab lisada sündmusi
+public-access-can-add-help: Kui on lubatud, siis avalik kasutaja saab lisada sündmusi kuid neid ei ole näha enne administraatori heakskiitu.
+Public access can view other users: Avalik ligipääs näeb teisi kasutajaid
+public-access-view-others-help: Kui kalendrile saab avalikult ligi, siis määrab kas kasutaja saab ka teiste kalendreid näha.
+Public access new events require approval: Avaliku kasutuse uued sündmused vajavad heakskiitu:
+public-access-add-requires-approval-help: Määrab kas avaliku ligipääsu kaudu lisatud sündmused vajavad heakskiitu.
 colors-help: Kõik värvid tuleb näidata kaheksandsüsteemis kujul "#RRGGBB" kus "RR" on kaheksandsüsteemi väärtus punasele, "GG" rohelisele ja "BB" sinisele.
 
 ########################################
@@ -405,7 +489,6 @@ Report Bug: Teata veast
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Lisame/Muudame kalendri kirjeid
-Repeat Type: Korduse tüüp
 Repeat End Date: Korduse lõppkuupäev
 Repeat Day: Korduse päev
 repeat-day-help: Määrab missugustel nädalapäevadel sündmust korrata. Kehtib vaid siis kui <i>Korduse tüüp</i> on <i>nädalati</i>.
@@ -424,64 +507,15 @@ Help Index: Abiinfo sisu
 # Page: help_layers.php
 #
 Add/Edit/Delete: Lisa/Muuda/Kustuta
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klõpsates 'Muuda kiht' viitel admin osas lehe all saad lisada/muuta/kustutada kihte.
 The text color of the new layer that will be displayed in your calendar.: Uue kihi teksti värv mida sinu kalendris näidatakse.
 Disabling: Keelame
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Vajuta 'Keela kihid' viidet admin osas lehe all kihtide eemaldamiseks.
 If checked, events that are duplicates of your events will be shown.: Kui on valitud, siis näidatakse samaseid sündmuseid.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Vajuta 'Luba kihid' viidet admin osas lehe all kihtide näitamiseks
 Specifies the user that you would like to see displayed in your calendar.: Määrab kasutaja keda tahad oma kalendris näha.
 
 ########################################
 # Page: help_pref.php
 #
-Default Category: Vaikimisi kategooria
 default-category-help: Määrab kategooria kuhu uus sündmus väikimisi kuulub.
-
-########################################
-# Page: import.php
-#
-Disabled: Keelatud
-
-########################################
-# Page: layers.php
-#
-Layer: Kiht
-Edit layer: Muuda kihti
-Layers are currently: Kihid on praegu
-Disable Layers: Keela kihid
-Click here: Klõpsi siia
-to modify the layers settings for the: et muuta kihtide seadeid
-Add layer: Lisa kiht
-
-########################################
-# Page: list_unapproved.php
-#
-View this entry: Vaata seda kannet
-Approve/Confirm: Kiidan heaks/Kinnitan
-Reject: Hülgame
-Approve this entry?: Kiida see kanne heaks?
-Reject this entry?: Lükkame kande tagasi?
-
-########################################
-# Page: login-app.php
-#
-You must enter a login and password.: Pead sisestama kasutajanime ja salasõna
-Save login via cookies so I dont have to login next time.: Salvesta kasutajatunnused küpsisesse et ma ei peaks enam neid sisestama
-Login: Sisenemine
-Access public calendar: Kasuta avalikku kalendrit
-cookies-note: <b>Märkus:</b> See rakendus nõuab küpsiste kasutamise lubamist.
-
-########################################
-# Page: login.php
-#
-Invalid login: Ebasobiv kasutaja
-
-########################################
-# Page: pref.php
-#
-Save Preferences: Salvesta eelistused
-hour: tund
 
 ########################################
 # Page: reject_entry.php
@@ -491,11 +525,9 @@ An appointment has been rejected by: Kohtumise lükkas tagasi
 ########################################
 # Page: report.php
 #
-This event is confidential.: Sündmus on isiklik
 cont.: jätkub.
-Deleted: Kustutatud
-Rejected: Tagasi lükatud
 Waiting for approval: Ootab heakskiitu
+Deleted: Kustutatud
 
 ########################################
 # Page: search.php
@@ -521,14 +553,12 @@ View Another Users Calendar: Vaata teise kasutaja kalendrit
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: Ssa pole lisanud ühtegi kategooriat
 Set Category: Määra kategooria
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: määrab administratiivse kasutaja
-Add New User: Lisa uus kasutaja
+Account: Konto
 
 ########################################
 # Page: usersel.php
@@ -536,56 +566,29 @@ Add New User: Lisa uus kasutaja
 Reset: Tühista
 
 ########################################
-# Page: views.php
-#
-Add New View: Lisa uus vaade
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Nimeta vaade
-Add View: Lisa vaade
-Edit View: Muuda vaadet
-View Name: Vaata vaadet
-View Type: Vaata tüüpi
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: Pead näitama vaate nime
-
-########################################
-# Page: view_entry.php
-#
-Assistant mode: Abistav olek
-Status: Olukord
-External User: Väline kasutaja
-Approve/Confirm entry: Kiida heaks/kinnita kanne
-Reject entry: Hülga kanne
-Set category: Määra kategooria
-This will delete this entry for all users.: See kustutab kande kõikide kasutajate jaoks
-Edit entry: Muuda kannet
-Edit repeating entry for all dates: Muuda korduvat kannet kõikidel kuupäevadel
-Delete repeating event for all dates: Kustuta korduv kanne kõikidel kuupäevadel
-Edit entry for this date: Muuda kanne sellel kuupäeval
-Delete entry only for this date: Kustuta kanne ainult sellel kuupäeval
-This will delete the entry from your calendar.: See kustutab kande sinu kalendrist
-Do you want to add this entry to your calendar?: Kas tahad lisada kande oma kalendrisse?
-This will add the entry to your calendar.: See lisab kande sinu kalendrisse.
-Email all participants: Saada email kõigile osalejaile
-Hide activity log: Peida kasutamise ajalugu
-Show activity log: Näita kasutamise ajalugu
-
-########################################
 # Page: week_details.php
 #
+Assistant mode: Abistav olek
 New Entry: uus kanne
 
 ########################################
 # Page: includes/access.php
 #
 Another Users Calendar: Teise kasutaja kalender
+Assistants: Abilised
 Manage Views: Tegele vaadetega
+
+########################################
+# Page: includes/activity_log.php
+#
+Event approved: Sündmus heaks kiidetud
+Event created: Sündmus loodud
+Event deleted: Sündmus kustutatud
+Invalid login: Ebasobiv kasutaja
+Notification sent: Teade saadetud
+Event rejected: Sündmus tagasi lükatud
+Reminder sent: Meeldetuletus saadetud
+Event updated: Sündmus muudetud
 
 ########################################
 # Page: includes/date_formats.php
@@ -597,17 +600,6 @@ Dec: dets
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: ületab päeva piiri XXX sündmust päevas
-Event approved: Sündmus heaks kiidetud
-Event created: Sündmus loodud
-Event deleted: Sündmus kustutatud
-Notification sent: Teade saadetud
-Event rejected: Sündmus tagasi lükatud
-Reminder sent: Meeldetuletus saadetud
-Event updated: Sündmus muudetud
-Event: Sündmus
-Action: Tegevus
-Printer Friendly: Trükkali sõbralik
-Generate printer-friendly version: Tee trükkalisõbralik leht
 January: jaanuar
 February: veebruar
 March: märts
@@ -630,12 +622,6 @@ Aug: aug
 Sep: sept
 Oct: okt
 Nov: nov
-The following error occurred: Järgmine viga on juhtunud
-You are not authorized.: Sa ei ole siis lubatud
-Add N hours to: Lisa N tundi
-Subtract N hours from: Lahuta N tundi
-same as: sama kui
-server time: serveri aeg
 Error approving event: Viga sündmuse heakskiidul
 Sunday: pühapäev
 Monday: esmaspäev
@@ -653,69 +639,34 @@ Fri: R
 Sat: L
 
 ########################################
-# Page: includes/trailer.php
+# Page: includes/menu.php
 #
 My Calendar: Minu kalender
+Unapproved Events: Heakskiitmata sündmused
+
+########################################
+# Page: includes/trailer.php
+#
 Add New Entry: Lisa uus kanne
-Logout: Väljume
+Current User: Käesolev kasutaja
 Back to My Calendar: Tagasi minu kalendrisse
 Go to: Mine
 Manage calendar of: Tegele kalendriga
 
 ########################################
-# Page: includes/user-imap.php
-#
-Invalid user login: Ebasobiva kasutaja sisenemine
-
-########################################
 # Page: includes/xcal.php
 #
-TU: T
-WE: K
-TH: N
-FR: R
-SA: L
 Unnamed Event: Nimetu sündmus
 
 ########################################
-# Page: includes/classes/WebCalMailer.class
+# Page: includes/classes/WebCalMailer.class.php
 #
 Notification: Teadustus
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/smarty/function.print_timezone_list.php
 #
-Server URL is required.: Serveri URL on puudu
-Server URL must end with /.: Serveri URL peab lõppema '/' märgiga
-Invalid color for document background.: Vigane värv dokumendi tausta jaoks
-Invalid color for document title.: Vigane värv dokumendi tiitli jaoks
-Invalid color for table cell background.: Vigane värv tabeli ruudu tausta jaoks
-Invalid color for table grid.: Vigane värv tabeli piirjoonte jaoks
-Invalid color for table header background.: Vigane värv tabeli päise tausta jaoks
-Invalid color for table text background.: Vigane värv tabeli teksti tausta jaoks
-Invalid color for event popup background.: Vigane värv sündmuse akna tausta jaoks
-Invalid color for event popup text.: Vigane värv sündmuse akna teksti jaoks
-Invalid color for table cell background for today.: Vigane värv tänase päeva tabeli ruudu tausta jaoks
-Color format should be RRGGBB.: Värvi esitusviis peab olema kujul '#RRGGBB'
-
-########################################
-# Page: includes/js/edit_entry.php
-#
-You have not entered a Brief Description.: Sa ei ole kirjutanud lühikirjeldust
-time entered before preferred work hours...: Sisestatud aeg algab enne tööpäeva. Kas see on õige?
-You have not entered a valid time of day.: Sa ei ole kirjutanud õiget kellaaega
-
-########################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Vale värv
-
-########################################
-# Page: includes/menu/index.php
-#
-Unapproved Events: Heakskiitmata sündmused
-
-########################################
-# Page: tools/send_reminders.php
-#
-Reminder: Meeldetuletus
+Add N hours to: Lisa N tundi
+Subtract N hours from: Lahuta N tundi
+same as: sama kui
+server time: serveri aeg

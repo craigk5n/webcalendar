@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -38,13 +38,9 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: access.php
+# Page: templates/activity_log.tpl
 #
 Calendar: Kalendoriø
-
-########################################
-# Page: approve_entry.php
-#
 Date: Pasirinkite datà
 
 ########################################
@@ -63,7 +59,6 @@ Dec: Gru
 ########################################
 # Page: includes/functions.php
 #
-WK: sav
 January: Sausis
 February: Vasaris
 March: Kovas
@@ -100,3 +95,8 @@ Wed: Tre
 Thu: Ket
 Fri: Pen
 Sat: Ðeð
+
+########################################
+# Page: includes/smarty/function.display_month.php
+#
+WK: sav

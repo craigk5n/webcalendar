@@ -7,7 +7,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -40,50 +40,29 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: about.php
+# Page: templates/access.tpl
 #
-OK: Ados
-
-########################################
-# Page: access.php
-#
-Database error: Akatsa datu basean
 Go: Joan
 Save: Gorde
-Public Access: Atzipen publikoa
-Admin: Konfigurazioa
-Calendar: Egutegia
 Public: Publikoa
 Confidential: Konfidentziala
 Private: Pribatua
 
 ########################################
-# Page: activity_log.php
+# Page: templates/activity_log.tpl
 #
-Next: Hurrengoa
-Previous: Aurrekoa
+Activity Log: Jardunaren erregistroa
+Action: Ekintza
+User: Erabiltzailea
+Calendar: Egutegia
+Date: Data
+Time: Ordua
+Event: Gertaera
 
 ########################################
-# Page: add_entry.php
+# Page: templates/admin.tpl
 #
-confidential: konfidentziala
-private: pribatua
-Error adding event: Akatsa gertaera gehitzean
-
-########################################
-# Page: admin.php
-#
-Select: Aukeratu
-Day: Eguna
-Week: Astea
-Month: Hilabetea
-Year: Urtea
 System Settings: Sistemaren aukerak
-Help: Laguntza
-Settings: Aukerak
-Groups: Taldeak
-Email: E-posta
-Colors: Koloreak
 app-name-help: Izenburuan azalduko den testua adierazten du
 Application Name: Aplikazioaren izena
 server-url-help: Aplikazioaren oinarri URL-a adierazten du
@@ -98,11 +77,7 @@ display-week-starts-on: Astea Igande edo Astelehenean asten den adierazteko
 Week starts on: Astea hasten da
 time-format-help: Erabiliko den ordu formatua adierazten du, 12 ordu edo 24 ordu
 Time format: Ordu formatua
-12 hour: 12 ordukoa
-24 hour: 24 ordukoa
 Specify timed event length by: Bileren iraupena nola zehaztu
-Duration: Iraupena
-End Time: Amaitzeko ordua
 work-hours-help: Egutegi bakoitzean erakutsi beharreko orduak adierazten ditu.
 Work hours: Lan orduak
 From: Nork
@@ -115,38 +90,20 @@ display-weekends-help: Astebukaerak erakusten ditu asteroko ikus aukeran
 display-week-number-help: Asteari dagokion zenbakia erakutsiko den adierazten du
 Display week number: Aste zenbakia erakutsi
 Display description in printer day view: Egunaren inprimatzeko ikus eran deskribapena adierazi
-allow-view-other-help: Beste erabiltzaileen egutegia ikusi daiteken ala ez adierazten du
-Allow viewing other users calendars: Beste erabiltzaileen egutegiak ikustea baimendu
 require-approvals-help: Aktibatu ez gero, onespena behar da.
 Require event approvals: Gertaeraren onespena eskatu
 display-unapproved-help: Onetsi gabeko gertaerak erakutsiko diren adierazten du.
 Display unapproved: Onespengabekoak erakutsi
 Check for event conflicts: Gertaera talkak antzeman
-Yes: Bai
-No: Ez
 conflict-months-help: Hilak aztertzean talkak
 Conflict checking months: Hilak aztertzean talkak
-disable-priority-field-help: Lehentasun eremua azaldu ala ez
-Disable Priority field: Desgaitu lehentasun eremua
-disable-access-field-help: Atzipen informazioa azaldu ala ez
-Disable Access field: Desgaitu atzipen eremua
-disable-participants-field-help: Partaide eremua azaldu ala ez
-Disable Participants field: Desgaitu partaide eremua
-disable-repeating-field-help: Gertaera errepikatuak kentzea ekidin ala ez
-Disable Repeating field: Desgaitu errepikapen ezabatzea
-remember-last-login-help: Aukeratzen bada azken login informazioa gogoratuko du
-Remember last login: Login informazioa gogoratu
-allow-public-access-help: Egutegiak atzipen publikoa izan dezaken edo ez adierazten du.
-Allow public access: Atzipen publikoa baimendu
-public-access-view-others-help: Beste erabiltzaile batzuen egutegiak ikus daitezken adierazten du
-Public access can view other users: Beste erabiltzaileen gertaerak ikus daitezke
-public-access-can-add-help: Aukeratuz gero erabiltzaile publikoak gertaerak gehi ditzazke
-Public access can add events: Erabiltzaile publikoak gertaerak gehi ditzazke
 groups-enabled-help: Taldekako antolaketa ahalbideratzen du
 Groups enabled: Taldeak gaituak
 user-sees-his-group-help: Taldekideek bere taldearen gertaerak soilik ikusiko dituzte
 User sees only his groups: Erabiltzaileak bere taldea ikusten du soilik
-Allow remote subscriptions: Urrutiko harpidetzak baimendu
+remember-last-login-help: Aukeratzen bada azken login informazioa gogoratuko du
+Remember last login: Login informazioa gogoratu
+allow-view-other-help: Beste erabiltzaileen egutegia ikusi daiteken ala ez adierazten du
 categories-enabled-help: Kategori sistema gaitzen du
 Categories enabled: Kategoriak gaituak
 email-enabled-help: E-posta bidezko notifikazioak gaitzen edo desgaitzen ditu
@@ -168,70 +125,55 @@ Allow user to customize colors: Erabiltzaileei kolore esleipena egitea baimendu
 Document background: Dokumentuaren atzea
 Document title: Izenburua
 Document text: Dokumentuaren testua
-Table grid color: Taularen kolorea
 Table header background: Taularen burukoaren atzea
 Table header text: Taularen burukoaren testua
 Table cell background: Taulako gelaxken atzea
-Table cell background for current day: Gaurko egunaren gelaxkaren atzea
-Table cell background for weekends: Astebukaerako gelaxken atzea
 Event popup background: Gertaera popup-aren atzea
 Event popup text: Gertaera popup-aren testua
 
 ########################################
-# Page: adminhome.php
+# Page: templates/adminhome.tpl
 #
-Preferences: Lehenetsiak
-Users: Erabiltzaileak
-Account: Kontua
-Categories: Kategoria
-Views: Ikus erak
-Layers: Geruzak
-Activity Log: Jardunaren erregistroa
 Administrative Tools: Konfigurazio-tresnak
 
 ########################################
-# Page: approve_entry.php
+# Page: templates/category.tpl
 #
-Hello: Kaixo
-The subject was: Izeburua zen
-The description is: Deskribapena da
-Date: Data
-Time: Ordua
-
-########################################
-# Page: category.php
-#
-Global: Orokorra
 Category Name: Atalaren izena
+Global: Orokorra
 Color: Kolorea
 Add: Gehitu
 Delete: Ezabatu
 Make New Category: Atal berria gehitu
 
 ########################################
-# Page: catsel.php
+# Page: templates/category_menu.tpl
 #
+Category: Atala
+
+########################################
+# Page: templates/catsel.tpl
+#
+Categories: Kategoria
 Remove: Kendu
 Cancel: Utzi
 
 ########################################
-# Page: del_entry.php
+# Page: templates/colors.tpl
 #
-An appointment has been canceled for you by: Bilera bat bertan bera utzi dizu
+OK: Ados
 
 ########################################
-# Page: docadd.php
+# Page: templates/docadd.tpl
 #
 Description: Deskribapena
 
 ########################################
-# Page: edit_entry.php
+# Page: templates/edit_entry.tpl
 #
 Edit Entry: Sarrera editatu
 Add Entry: Sarrera gehitu
 Details: Zehaztasunak
-Participants: Partaideak
-Repeat: Errepikatu
 brief-description-help: Deskribapen motza ( 20 bat karaktere )
 Brief Description: Deskribapen laburra
 full-description-help: Gertaeraren deskribapen luze, zabal eta mamitsua.
@@ -240,21 +182,22 @@ access-help: Gertaeraren atzigarritasun maila adierazten du.
 Access: Atzitu
 priority-help: Gertaeraren lehentasuna adierazten du-
 Priority: Lehentasuna
-High: Altua
-Medium: Ertaina
-Low: Baxua
-Category: Atala
 date-help: Gertaeraren data adierazten du.
 Untimed event: Denbora-mugarik gabe
 Timed event: Denboraz mugatua
 All day event: Egun osokoa
 time-help: Gertaeraren iraupena adierazten du ( hutsik utz liteke )
 duration-help: Gertaeraren iraupena minutuetan adierazirik
+Duration: Iraupena
 hours: orduak
 minutes: Minutuak
+Participants: Partaideak
+Users: Erabiltzaileak
+Groups: Taldeak
 participants-help: Gertaeran honetan partaide direnen lista.
 Availability: Libre egotea
 External Participants: Kanpo partaideak
+Repeat: Errepikatu
 repeat-type-help: Gertaera bat zenbatero errepikatzen den adierazi.
 Daily: Egunero
 Weekly: Astero
@@ -268,84 +211,71 @@ repeat-frequency-help: Gertaera zenbatero errepikatu behar den adierazten du.
 Frequency: Maiztasuna
 All: Denak
 Send Reminder: Gogorarazteko abixua bidali
+Yes: Bai
+No: Ez
 days: egunak
-Delete entry: Sarrera ezabatu
-You are not authorized to edit this entry.: Ez zaude baimenduta gertaera hau editatzeko
 
 ########################################
-# Page: edit_entry_handler.php
+# Page: templates/edit_group.tpl
 #
-A new appointment has been made for you by: Bilera bat ezartzen dizu
-An appointment has been updated by: Bilera bat eguneratu du
-The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
-Please look on: Mesedez bilatu
-to accept or reject this appointment: bilera hau onartzeko edo uko egiteko
-to view this appointment: bilera hau ikusteko
-Scheduling Conflict: Bilera arteko talka
-Your suggested time of: Zure ordu gomendatua da
-conflicts with the following existing calendar entries: hondoko sarrerekin egiten du talka
+Add Group: Taldea gehitu
+Edit Group: Taldea editatu
+Group name: Taldearen izena
+Updated: Eguneratua
+Created by: Sortzailea
 
 ########################################
-# Page: edit_layer.php
+# Page: templates/edit_layer.tpl
 #
-Add Layer: Geruza gehitu
 Edit Layer: Geruza editatu
+Add Layer: Geruza gehitu
 Source: Iturburua
 Duplicates: Bikoiztuak
 Show layer events that are the same as your own: Zure gertaeren berdinak direnak erakutsi
 Add to My Calendar: Egutegiari gehitu
-Delete layer: Geruza ezabatu
 
 ########################################
-# Page: edit_layer_handler.php
+# Page: templates/edit_nonusers.tpl
 #
-You cannot create a layer for yourself.: Ezin duzu zeuretzako geruza bat sortu
-You can only create one layer for each user.: Erabiltzaile bakoitzeko geruza bakarra osa dezakezu
-
-########################################
-# Page: edit_nonusers.php
-#
-Add User: Erabiltzailea gehitu
 Edit User: Erabiltzailea editatu
+Add User: Erabiltzailea gehitu
 First Name: Izena
 Last Name: Abizena
+Admin: Konfigurazioa
 
 ########################################
-# Page: edit_remotes_handler.php
+# Page: templates/edit_user.tpl
 #
-Error: Akatsa
-
-########################################
-# Page: edit_report.php
-#
-Today: Gaur
-Next month: Hurrengo hilabetea
-Next year: Hurrengo urtea
-User: Erabiltzailea
-Current User: Une hontako erabiltzailea
-
-########################################
-# Page: edit_user.php
-#
-Username: Erabiltzaile izena
-E-mail address: E-posta
-Password: Pasahitza
-again: berriz
-Enabled: Gaitua
-Disabled for demo: Demoan desgaitua
 Change Password: Pasahitza aldatu
 New Password: Pasahitz berria
+again: berriz
 Set Password: Pasahitza jarri
+Disabled for demo: Demoan desgaitua
+Username: Erabiltzaile izena
+Password: Pasahitza
+E-mail address: E-posta
+Enabled: Gaitua
 
 ########################################
-# Page: edit_user_handler.php
+# Page: templates/edit_views.tpl
 #
-Deleting users not supported.: Erabiltzaileak ezabatzea debekatua
-The passwords were not identical.: Pasahitza hauek ez dira berdinak
-You have not entered a password.: Ez duzu pasahitz bat sartu
+Add View: Ikus era gehitu
+Edit View: Ikus era editatu
+View Name: Izena ikusi
+View Type: Mota ikusi
+Day: Eguna
+Week: Astea
+Month: Hilabetea
+Select: Aukeratu
 
 ########################################
-# Page: export.php
+# Page: templates/error.tpl
+#
+Error: Akatsa
+The following error occurred: Hondoko akatsa gertatu da
+
+########################################
+# Page: templates/export.tpl
 #
 Export: Exportatu
 Export format: Exportatzeko formatua
@@ -355,30 +285,190 @@ End date: Bukaera data
 Modified since: Azken eguneratze data
 
 ########################################
-# Page: groups.php
+# Page: templates/import.tpl
 #
+Import: Inportatu
+Disabled: Desgaitua
+
+########################################
+# Page: templates/layers.tpl
+#
+Layers are currently: Geruzak orain
+Disable Layers: Geruzak desgaitu
+Add layer: Geruza gehitu
+Layer: Geruza
+
+########################################
+# Page: templates/list_unapproved.tpl
+#
+View this entry: Sarrera hau ikusi
+Approve/Confirm: Onetsi/Konfirmatu
+Reject: Gaitzetsi
+
+########################################
+# Page: templates/login.tpl
+#
+Login: Sartu
+cookies-note: <b>Oharra:</b> Aplikazio honek cookiak gaituak egotea behar du.
+
+########################################
+# Page: templates/menu.tpl
+#
+Logout: Irten
+
+########################################
+# Page: templates/pref.tpl
+#
+Preferences: Lehenetsiak
+hour: Ordua
+time-interval-help: Ikus aukeretan erabiliko den denbora zati minimoa adierazten du
+Time interval: Denbora zatia
+auto-refresh-help: Egutegiaren edukiak automakiko eguneratzeko
+Auto-refresh calendars: Egutegia automatikoki eguneratu
+auto-refresh-time-help: Aktibatu ez gero, eguneraketa zenbatero egingo den
+Auto-refresh time: Eguneratze automatiko denbora
+Email me event notification: Bidali e-posta neuri ere
+I want to approve events: Bilera onartu nahi dut
+
+########################################
+# Page: templates/users.tpl
+#
+Add New User: Erabiltzaile berria gehitu
+denotes administrative user: erabiltzaile administraria adierazten du
 Add New Group: Talde berria gehitu
 
 ########################################
-# Page: group_edit.php
+# Page: templates/views.tpl
+#
+Add New View: Ikus era berria
+
+########################################
+# Page: templates/view_entry.tpl
+#
+Status: Egoera
+Repeat Type: Mota errepikatu
+Rejected: Gaitzetsiak
+Approve/Confirm entry: Onetsi/Konfirmatu erregistroa
+Approve this entry?: Sarrera hau onetsi
+Reject entry: Erregistroa gaitzetsi
+Reject this entry?: Gaitzetsi sarrera hau?
+Set category: Atala ezarri
+Edit entry: Sarrera editatu
+Delete entry: Sarrera ezabatu
+This will delete this entry for all users.: Ekintza honek gertaera hau ezabatuko du egun baterako
+Copy entry: Sarrera kopiatu
+Email all participants: Partaide guztiei e-posta bidez jakinarazi
+Hide activity log: Jardunaren erregistroa ezkutatu
+Show activity log: Mostrar bitácora de actividad
+Export this entry to: Sarrera hau exportatu
+
+########################################
+# Page: templates/view_t.tpl
+#
+Previous: Aurrekoa
+Next: Hurrengoa
+
+########################################
+# Page: add_entry.php
+#
+private: pribatua
+confidential: konfidentziala
+Error adding event: Akatsa gertaera gehitzean
+
+########################################
+# Page: admin.php
+#
+Year: Urtea
+Settings: Aukerak
+Email: E-posta
+Colors: Koloreak
+12 hour: 12 ordukoa
+24 hour: 24 ordukoa
+End Time: Amaitzeko ordua
+
+########################################
+# Page: adminhome.php
+#
+Views: Ikus erak
+Layers: Geruzak
+
+########################################
+# Page: ajax.php
+#
+Reminder: Oroigarria
+You have not entered a password.: Ez duzu pasahitz bat sartu
+The passwords were not identical.: Pasahitza hauek ez dira berdinak
+Server URL is required.: Zerbitzariaren URL-a falta da
+Server URL must end with /.: Zerbitzariaren URL-a '/'-z bukatu behar du
+You have not entered a Brief Description.: Ez duzu deskribapen laburrik sartu
+You have not entered a valid time of day.: Ez duzu ordu egoki bat sartu
+
+########################################
+# Page: approve_entry.php
+#
+Hello: Kaixo
+The subject was: Izeburua zen
+The description is: Deskribapena da
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: Bilera bat bertan bera utzi dizu
+
+########################################
+# Page: docadd.php
+#
+Database error: Akatsa datu basean
+
+########################################
+# Page: edit_entry.php
+#
+High: Altua
+Medium: Ertaina
+Low: Baxua
+
+########################################
+# Page: edit_entry_handler.php
+#
+The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
+A new appointment has been made for you by: Bilera bat ezartzen dizu
+An appointment has been updated by: Bilera bat eguneratu du
+Please look on: Mesedez bilatu
+to accept or reject this appointment: bilera hau onartzeko edo uko egiteko
+to view this appointment: bilera hau ikusteko
+Scheduling Conflict: Bilera arteko talka
+Your suggested time of: Zure ordu gomendatua da
+conflicts with the following existing calendar entries: hondoko sarrerekin egiten du talka
+
+########################################
+# Page: edit_group.php
 #
 Unnamed Group: Izengabeko taldea
-Add Group: Taldea gehitu
-Edit Group: Taldea editatu
-Group name: Taldearen izena
-Updated: Eguneratua
-Created by: Sortzailea
+
+########################################
+# Page: edit_report.php
+#
+Today: Gaur
+Next month: Hurrengo hilabetea
+Next year: Hurrengo urtea
+
+########################################
+# Page: edit_views.php
+#
+Unnamed View: Izen gabeko ikus era
 
 ########################################
 # Page: help_admin.php
 #
-Auto-refresh calendars: Egutegia automatikoki eguneratu
-auto-refresh-help: Egutegiaren edukiak automakiko eguneratzeko
-Auto-refresh time: Eguneratze automatiko denbora
-auto-refresh-time-help: Aktibatu ez gero, eguneraketa zenbatero egingo den
+Help: Laguntza
 Display weekends in week view: Astebukaerak erakusten ditu hilabeteroko ikus aukeran
-Time interval: Denbora zatia
-time-interval-help: Ikus aukeretan erabiliko den denbora zati minimoa adierazten du
+Public Access: Atzipen publikoa
+Allow public access: Atzipen publikoa baimendu
+allow-public-access-help: Egutegiak atzipen publikoa izan dezaken edo ez adierazten du.
+Public access can add events: Erabiltzaile publikoak gertaerak gehi ditzazke
+public-access-can-add-help: Aukeratuz gero erabiltzaile publikoak gertaerak gehi ditzazke
+Public access can view other users: Beste erabiltzaileen gertaerak ikus daitezke
+public-access-view-others-help: Beste erabiltzaile batzuen egutegiak ikus daitezken adierazten du
 colors-help: Kolore guztiak formatu hamaseitarrean adierazi behar dira "#RRG
 
 ########################################
@@ -390,7 +480,6 @@ Report Bug: Bug informea
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Gehitu/Editatu egutegi sarrerak
-Repeat Type: Mota errepikatu
 Repeat End Date: Errepikapenen bukaera data
 Repeat Day: Eguna errepikatu
 repeat-day-help: Gertaera hilabetearen zein egunetan errepikatu behar den adierazten du.
@@ -398,7 +487,6 @@ repeat-day-help: Gertaera hilabetearen zein egunetan errepikatu behar den adiera
 ########################################
 # Page: help_import.php
 #
-Import: Inportatu
 Enabling: Gaitzen
 
 ########################################
@@ -419,53 +507,7 @@ Specifies the user that you would like to see displayed in your calendar.: Zure 
 # Page: help_pref.php
 #
 When I am the boss: Bilera neuk sortzen dudanean
-Email me event notification: Bidali e-posta neuri ere
-I want to approve events: Bilera onartu nahi dut
 Subscribe/Publish: Harpidetu/Zabaldu
-
-########################################
-# Page: import.php
-#
-Disabled: Desgaitua
-
-########################################
-# Page: layers.php
-#
-Layer: Geruza
-Edit layer: Geruza editatu
-Layers are currently: Geruzak orain
-Disable Layers: Geruzak desgaitu
-Click here: Hemen sakatu
-Add layer: Geruza gehitu
-
-########################################
-# Page: list_unapproved.php
-#
-View this entry: Sarrera hau ikusi
-Approve/Confirm: Onetsi/Konfirmatu
-Reject: Gaitzetsi
-Approve this entry?: Sarrera hau onetsi
-Reject this entry?: Gaitzetsi sarrera hau?
-
-########################################
-# Page: login-app.php
-#
-You must enter a login and password.: Erabiltzaile eta pasahitz bat sartu behar dituzu
-Save login via cookies so I dont have to login next time.: Datuak gorde
-Login: Sartu
-Access public calendar: Egutegi publikora joan
-cookies-note: <b>Oharra:</b> Aplikazio honek cookiak gaituak egotea behar du.
-
-########################################
-# Page: login.php
-#
-Invalid login: Erabiltzaile/pasahitz desegokia
-
-########################################
-# Page: pref.php
-#
-Save Preferences: Lehenetsiak gorde
-hour: Ordua
 
 ########################################
 # Page: reject_entry.php
@@ -475,10 +517,8 @@ An appointment has been rejected by: Gertaera bat gaitzetsia izan da
 ########################################
 # Page: report.php
 #
-This event is confidential.: Gertaera hau konfidentziala da
-Deleted: Ezabatuak
-Rejected: Gaitzetsiak
 Waiting for approval: Onespenaren zai
+Deleted: Ezabatuak
 
 ########################################
 # Page: search.php
@@ -499,55 +539,17 @@ No matches found: Ez da asmatzerik topatu
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: Ez duzu atalik gehitu
 Set Category: Atala ezarri
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: erabiltzaile administraria adierazten du
-Add New User: Erabiltzaile berria gehitu
+Account: Kontua
 
 ########################################
 # Page: usersel.php
 #
 Reset: Berhasieratu
-
-########################################
-# Page: views.php
-#
-Add New View: Ikus era berria
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Izen gabeko ikus era
-Add View: Ikus era gehitu
-Edit View: Ikus era editatu
-View Name: Izena ikusi
-View Type: Mota ikusi
-
-########################################
-# Page: view_entry.php
-#
-Status: Egoera
-Approve/Confirm entry: Onetsi/Konfirmatu erregistroa
-Reject entry: Erregistroa gaitzetsi
-Set category: Atala ezarri
-Copy entry: Sarrera kopiatu
-This will delete this entry for all users.: Ekintza honek gertaera hau ezabatuko du egun baterako
-Edit entry: Sarrera editatu
-Edit repeating entry for all dates: Data guztietarako errepikatutako gertaera editatu
-Delete repeating event for all dates: Errepikatutako gertaera data guztietarako ezabatu
-Edit entry for this date: Egun honetarako sarrera editatu
-Delete entry only for this date: Data honetako sarrera ezabatu
-This will delete the entry from your calendar.: Ekintza honek sarrera ezabatuko du egutegitik
-Do you want to add this entry to your calendar?: Sarrera hau gehitu nahi al duzu zure egutegian?
-This will add the entry to your calendar.: Ekintza honek sarrera gehituko du zure egutegian
-Email all participants: Partaide guztiei e-posta bidez jakinarazi
-Hide activity log: Jardunaren erregistroa ezkutatu
-Show activity log: Mostrar bitácora de actividad
-Export this entry to: Sarrera hau exportatu
 
 ########################################
 # Page: week_details.php
@@ -560,6 +562,18 @@ New Entry: Sarrera berria
 Manage Views: Ikus era administratu
 
 ########################################
+# Page: includes/activity_log.php
+#
+Event approved: Gertaera onetsia
+Event created: Gertaera sortua
+Event deleted: Gertaera ezabatua
+Invalid login: Erabiltzaile/pasahitz desegokia
+Notification sent: Jakinarazpen mezua bidalia
+Event rejected: Gertaera gaitzetsia
+Reminder sent: Gogorarazteko mezua bidalia
+Event updated: Gertaera eguneratua
+
+########################################
 # Page: includes/date_formats.php
 #
 December: Abendua
@@ -568,18 +582,6 @@ Dec: Abe
 ########################################
 # Page: includes/functions.php
 #
-Event approved: Gertaera onetsia
-Event created: Gertaera sortua
-Event deleted: Gertaera ezabatua
-Notification sent: Jakinarazpen mezua bidalia
-Event rejected: Gertaera gaitzetsia
-Reminder sent: Gogorarazteko mezua bidalia
-Event updated: Gertaera eguneratua
-WK: ast
-Event: Gertaera
-Action: Ekintza
-Printer Friendly: Inprimatzeko egokia
-Generate printer-friendly version: Formatu inprimagarria sortu
 January: Urtarrila
 February: Otsaila
 March: Martxoa
@@ -601,8 +603,6 @@ Aug: Abu
 Sep: Ira
 Oct: Urr
 Nov: Aza
-The following error occurred: Hondoko akatsa gertatu da
-You are not authorized.: Ez zaude baimenduta
 Error approving event: Akatsa gertaera onestean
 Sunday: Igandea
 Monday: Astelehena
@@ -620,18 +620,18 @@ Fri: Otr
 Sat: Lar
 
 ########################################
-# Page: includes/trailer.php
+# Page: includes/menu.php
 #
 My Calendar: Nire egutegia
-Add New Entry: Sarrera berria gehitu
-Logout: Irten
-Back to My Calendar: Nire egutegira itzuli
-Go to: Joan
+Unapproved Events: Gertaera ez onetsiak
 
 ########################################
-# Page: includes/user-imap.php
+# Page: includes/trailer.php
 #
-Invalid user login: Erabiltzaile/pasahitz desegokia
+Add New Entry: Sarrera berria gehitu
+Current User: Une hontako erabiltzailea
+Back to My Calendar: Nire egutegira itzuli
+Go to: Joan
 
 ########################################
 # Page: includes/xcal.php
@@ -639,42 +639,11 @@ Invalid user login: Erabiltzaile/pasahitz desegokia
 Unnamed Event: Izengabeko gertaera
 
 ########################################
-# Page: includes/classes/WebCalMailer.class
+# Page: includes/classes/WebCalMailer.class.php
 #
 Notification: Abixua
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/smarty/function.display_month.php
 #
-Server URL is required.: Zerbitzariaren URL-a falta da
-Server URL must end with /.: Zerbitzariaren URL-a '/'-z bukatu behar du
-Invalid color for document background.: Kolore desegokia dokumentuaren atzerako
-Invalid color for document title.: Kolore desegokia dokumentuaren izenbururako
-Invalid color for table cell background.: Kolore desegokia taulako gelaxken atzerako
-Invalid color for table grid.: Kolore desegokia taularentzako
-Invalid color for table text background.: Kolore desegokia taularen textuaren atzerako
-Invalid color for event popup background.: Kolore desegokia gertaera popup-aren atzerako
-Invalid color for event popup text.: Kolore desegokia gertaera popup-aren texturako
-Invalid color for table cell background for today.: Kolore desegokia gaurko egunaren atzerako
-Color format should be RRGGBB.: Kolorearen formatua hamaseitarra izan beharko luke adibidez, '#RRGGB
-
-########################################
-# Page: includes/js/edit_entry.php
-#
-You have not entered a Brief Description.: Ez duzu deskribapen laburrik sartu
-You have not entered a valid time of day.: Ez duzu ordu egoki bat sartu
-
-########################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Kolore desegokia
-
-########################################
-# Page: includes/menu/index.php
-#
-Unapproved Events: Gertaera ez onetsiak
-
-########################################
-# Page: tools/send_reminders.php
-#
-Reminder: Oroigarria
+WK: ast

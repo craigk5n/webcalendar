@@ -14,7 +14,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 11-05-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -47,28 +47,16 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: access.php
+# Page: templates/access.tpl
 #
-Database error: Errore nel database
-Database error XXX.: Errore nel database: XXX.
-DEFAULT CONFIGURATION: CONFIGURAZIONE PREDEFINITA
-Go: Vai
-Save: Salva
-Undo: Annulla
-Public Access: Accesso Pubblico
-Admin: Amministratore
 User Access Control: Controllo Accesso Utente
-Allow Access to Other Users Calendar: Consenti accesso al calendario di altri utenti
-Grant This User Access to My Calendar: Concedi l'accesso al mio calendario a questo utente
+Go: Vai
+Undo: Annulla
+Save: Salva
 Type: Tipo
-Calendar: Calendario
-View Event: Mostra evento
 View: Vedi
 Edit: Modifica
 Approve/Reject: Conferma/Rifiuta
-Events: Eventi
-Tasks: Compiti
-Journals: =
 Can Invite: Pu&ograve; invitare
 Can Email: Pu&ograve; spedire Email
 Can See Time Only: Pu&ograve; vedere solo i tempi
@@ -80,47 +68,21 @@ Confidential: Confidenziale
 Private: Privato
 
 ########################################
-# Page: activity_log.php
+# Page: templates/activity_log.tpl
 #
-Next: Prossimo
-Previous: Precedente
+Activity Log: Log delle attivit&agrave;
+Action: Azione
+User: Utente
+Calendar: Calendario
+Date: Data
+Time: Ora
+Event: Evento
+Events: Eventi
 
 ########################################
-# Page: add_entry.php
+# Page: templates/admin.tpl
 #
-confidential: confidenziale
-private: privato
-Error adding event: Errore nell'aggiunta dell'evento
-
-########################################
-# Page: admin.php
-#
-Select: Seleziona
-Day: Giorno
-Week: Settimana
-Month: Mese
-Year: Anno
-Bottom: fine
-Top: inizio
-Settings: Impostazioni
-Groups: Gruppi
-NonUser Calendars: Calendari dei non utenti
-Other: Altro
-Email: E-Mail
-Colors: Colori
-Document background: Sfondo documento
-Document title: Titolo documento
-Document text: Testo
-Table grid color: Griglia della tabella
-Table header background: Sfondo dell'intestazione della tabella
-Table header text: Testo dell'intestazione della tabella
-Table cell background: Sfondo cella tabella
-Table cell background for current day: Sfondo cella tabella per oggi
-Table cell background for weekends: Sfondo cella tabella per il week-end
-Event popup background: Sfondo della popup degli eventi
-Event popup text: Testo della popup degli eventi
 System Settings: Impostazioni del sistema
-Help: Guida
 app-name-help: Specifica il nome dell'applicazione che apparir&agrave; nella barra del titolo del browser per tutte le pagine e sulla pagina di login. Il valore che si specifica qui sar&agrave; cercato nei file delle traduzioni, permettendo di fornire titoli diversi per linguaggi diversi
 Application Name: Nome dell'applicazione
 server-url-help: Specifica l'URL di base per l'applicazione. Questo sar&agrave; incluso quando si inviano memorandum e notifiche via e-mail
@@ -128,7 +90,6 @@ Server URL: URL del Server
 language-help: Specifica quale lingua utilizzare
 Language: Lingua
 Your browser default language is: La lingua preferita del tuo browser &egrave;:
-Your browser default language is XXX.: La lingua preferita del tuo navigatore &egrave; "XXX".
 None: Nessuna
 custom-script-help: Permette di inserire il proprio codice Javascript o foglio di stile che sar&agrave; inserito nella sezione "head" del codice HTML di ogni pagina
 Custom script/stylesheet: Script/foglio di stile personale
@@ -143,12 +104,8 @@ display-week-starts-on: Specifica se la settimana inizia Domenica o Luned&igrave
 Week starts on: La settimana inizia
 time-format-help: Specifica quale formato orario usare:<br /><i>12 ore:</i> Mostra le ore come 3am, 8:30pm, ecc.<br /><i>24 ore:</i> Mostra le ore come 3:00, 20:30, ecc.
 Time format: Formato ora
-12 hour: 12 ore
-24 hour: 24 ore
 timed-evt-len-help: Specifica il metodo di input per determinare la lunghezza di un evento.
 Specify timed event length by: Specifica la lunghezza di un evento in
-Duration: Durata
-End Time: Tempo di fine
 work-hours-help: Specifica l'arco temporale da mostrare nella vista giornaliera.
 Work hours: Ore lavorative
 From: Da
@@ -162,18 +119,16 @@ Display week number: Mostrare numero settimana
 display-desc-print-day-help: Include la descrizione dell'evento nel formato stampabile della vista giornaliera
 Display description in printer day view: Mostra la descrizione nella visualizzazione giornaliera stampabile
 yearly-shows-events-help: Nella visualizzazione annuale, mostra in grassetto i giorni con degli eventi
-Display days with events in bold in month and year views: Mostra i giorni con degli eventi in grassetto nella visualizzazione mensile ed annuale
 allow-view-add-help: Un'icona raffigurante un '+'sar&agrave; inclusa nelle viste, permettendo agli utenti di aggiungere velocemente eventi ai calendari degli altri utenti
 Include add event link in views: Includi il link che permette di aggiungere un evento nelle viste
-allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calendario di un altro utente.
-Allow viewing other users calendars: Permetti la visione dei calendari degli altri utenti
+popup-includes-siteextras-help: Se abilitato nei popup degli eventi sar&agrave abilitato nel file site_extras.php l'impostazione del campo permetti eventi personalizzati
+Display Site Extras in popup: Mostra gli Extra per il Sito in un popup
 require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad accesso pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
 Require event approvals: Richiedi che gli eventi siano approvati
 display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se impostato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se impostato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
 Display unapproved: Mostrare eventi non approvati
 conflict-check-help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo imposti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo imposti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia impostare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
 Check for event conflicts: Controlla se esistono conflitti fra gli eventi
-Yes: S&igrave;
 conflict-months-help: Se il controllo dei conflitti &egrave; ablitato ("Controlla se esistono conflitti fra gli eventi" &egrave; impostato a "No"), questo specifica quanti mesi futuri includere nel controllo. Se verifichi che l'aggiunta di un evento dura molto tempo, riduci questo numero
 Conflict checking months: Controllo dei conflitti mensile
 conflict-check-override-help: Permette agli utenti di sovrascrivere conflitti degli eventi e di programmare due o pi&ugrave; eventi per lo stesso istante
@@ -182,54 +137,29 @@ limit-appts-help: Permette all'amministratore di sistema di impostare un limite 
 Limit number of timed events per day: Limita il numero degli eventi del giorno
 limit-appts-number-help: Specifica il massimo numero di eventi che un utente pu&ograve; avere in un giorno
 Maximum timed events per day: Massimo numero di eventi al giorno
-disable-priority-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Priorit&agrave;" dalle pagine di informazione sugli eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
-Disable Priority field: Disattiva il campo "priorit&agrave;"
-disable-access-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Accesso" dalle pagine di informazione sugli eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
-Disable Access field: Disattiva il campo "accesso"
-disable-participants-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Partecipanti" dalle pagine di informazione sugli eventi, impedendo agli utenti di aggiungere altri utenti ai loro eventi. Se abiliti questa opzione, potresti anche voler disabilitare il campo "Permetti la visualizzazione dei calendari degli altri utenti"
-Disable Participants field: Disattiva il campo "partecipanti"
-disable-repeating-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Ripetizioni" quando si aggiungono eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
-Disable Repeating field: Disattiva il campo "ripetizioni"
 allow-html-description-help: Se abilitato, gli utenti possono inserire HTML nel campo di descrizione di un evento. Se non abilitato, i tag HTML saranno saltati, in modo da farli apparire com testo semplice. Attenzione: Abilitare questa caratteristica permetter&agrave; agli utenti di fare riferimenti ad immagini di altri siti
 Allow HTML in Description: Permetti HTML nella Descrizione
-popup-includes-siteextras-help: Se abilitato nei popup degli eventi sar&agrave abilitato nel file site_extras.php l'impostazione del campo permetti eventi personalizzati
-Display Site Extras in popup: Mostra gli Extra per il Sito in un popup
-remember-last-login-help: Quando abilitato, i campi di accesso dell'utente saranno riempiti automaticamente nella pagina di accesso (ma non la password) e saranno caricate le preferenze dell'utente (inclusi i colori preferiti e la scelta della lingua)
-Remember last login: Ricorda l'ultimo accesso
-allow-public-access-help: Se abilitato, il calendario pu&ograve; essere utilizzato come un calendario pubblico in sola lettura che non richiede agli utenti di effettuare il login
-Allow public access: Permetti l'accesso pubblico
-public-access-default-visible: Eventi dal calendario pubblico appariranno automaticamente nel calendario di tutti gli utenti
-Public access visible by default: Accesso pubblico visibile di default
-public-access-default-selected: Quando si aggiunge un nuovo evento, l'utente pubblico sar&agrave; selezionato automaticamente come partecipante
-Public access is default participant: L'accesso pubblico &egrave; un partecipante per default
-public-access-view-others-help: Quando si accede al sistema coun un accesso pubblico, specifica se l'utente pu&ograve; vedere il calendario di un altro utente
-Public access can view other users: Permetti all'accesso pubblico di vedere gli altri utenti
-public-access-can-add-help: Quando abilitato, gli utenti che accedono al sistema con un accesso pubblico saranno in grado di aggiungere nuovo eventi, ma questi non saranni visibili nel calendario finch&eacute; un amministratore approver&agrave; il nuovo evento
-Public access can add events: Permetti all'accesso pubblico di aggiungere eventi
-public-access-add-requires-approval-help: Specifica se gli eventi aggiunti per mezzo dell'accesso pubblico necessitino dell'approvazione prima di essere visibili
-Public access new events require approval: L'inserimento di un evento da pubblico accesso richiede l'approvazione
-public-access-sees-participants-help: Se abilitato, gli utenti che stanno accedendo al calendario dall'account pubblico saranno in grado di vedere i partecipanti all'evento se guarderanno i dettagli dell'evento
-Public access can view participants: L'accesso pubblico pu&ograve; vedere i partecipanti
 groups-enabled-help: Abilita il supporto dei gruppi, permettendo agli utenti di scegliere gli utenti per gruppi
 Groups enabled: Abilita Gruppi
 user-sees-his-group-help: Se abilitato, gli utenti non vedranno gli utenti di calendari che non siano in almeno uno dei loro gruppi
 User sees only his groups: L'utente pu&ograve; vedere solo il suo gruppo
+remember-last-login-help: Quando abilitato, i campi di accesso dell'utente saranno riempiti automaticamente nella pagina di accesso (ma non la password) e saranno caricate le preferenze dell'utente (inclusi i colori preferiti e la scelta della lingua)
+Remember last login: Ricorda l'ultimo accesso
+allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calendario di un altro utente.
 nonuser-enabled-help: Se abilitato, gli amministratori potranno aggiungere calendari per i non utenti
 Nonuser enabled: Calendari abilitati per i non utenti
 nonuser-list-help: Dove mostrare i calendari dei non utenti nella lista dei partecipanti
 Nonuser list: Mostra nella lista dei partecipanti a
-reports-enabled-help: Se abilitato, gli utenti vedranno una sezione "Rapporti" alla fine di ogni pagina e saranno in grado di creare rapporti personalizzati. Inoltre, gli amministratori potranno creare rapporti globali che appariranno alla fine delle pagine di tutti gli utenti
-Reports enabled: Rapporti abilitati
-subscriptions-enabled-help: Specifica se utenti remoti possono sottoscrivere un calendario di un utente WebCalendar, permettendo loro di vedere gli eventi dell'utente di WebCalendar nella loro applicazione abilitata all'uso di iCal (ad esempio iCal della Apple o il Mozilla Calendar).
-Allow remote subscriptions: Permetti sottoscrizioni remote
-categories-enabled-help: Abilita il supporto per le categorie degli eventi
-Categories enabled: Abilita categorie
 allow-external-users-help: Specifica se un non utente pu&ograve; essere aggiunto ad un evento. Questo permette ai non utenti di essere listati come partecipanti all'evento.
 Allow external users: Permetti utenti esterni
 external-can-receive-notification-help: Quando gli utenti esterni sono abilitati ed &egrave; abilitato l'uso di e-mail, gli utenti esterni possono ricevere avvisi via e-mail quando un evento &egrave; stato aggiunto, aggiornato o cancellato (se l'indirizzo e-mail dell'utente &egrave; stato fornito)
 External users can receive email notifications: Gli utenti esterni possono ricevere e-mail di notifica
 external-can-receive-reminder-help: Quando gli utenti esterni sono abilitati ed &egrave; abilitato l'uso di e-mail, gli utenti esterni possono ricevere avvisi via e-mail (se l'indirizzo e-mail dell'utente &egrave; stato fornito)
 External users can receive email reminders: Utenti esterni possono ricevere avvisi via e-mail
+reports-enabled-help: Se abilitato, gli utenti vedranno una sezione "Rapporti" alla fine di ogni pagina e saranno in grado di creare rapporti personalizzati. Inoltre, gli amministratori potranno creare rapporti globali che appariranno alla fine delle pagine di tutti gli utenti
+Reports enabled: Rapporti abilitati
+categories-enabled-help: Abilita il supporto per le categorie degli eventi
+Categories enabled: Abilita categorie
 email-enabled-help: Attiva o disattiva l'invio di e-mail di notifica ed avviso. Impostalo a "No", se il tuo server non &egrave; propriamente configurato per l'invio di e-mail
 Email enabled: Abilita e-mail
 email-default-sender: Specifica l'indirizzo e-mail da cui figurano provenire le e-mail quando si inviano gli avvisi
@@ -246,80 +176,53 @@ Events removed from my calendar: Segnala un evento cancellato dal mio calendario
 email-event-rejected: Segnala un evento rifiutato
 Event rejected by participant: Segnala un evento rifiutato da un partecipante
 Allow user to customize colors: Consenti all'utente di personalizzare i colori
+Document background: Sfondo documento
+Document title: Titolo documento
+Document text: Testo
+Table header background: Sfondo dell'intestazione della tabella
+Table header text: Testo dell'intestazione della tabella
+Table cell background: Sfondo cella tabella
+Event popup background: Sfondo della popup degli eventi
+Event popup text: Testo della popup degli eventi
 
 ########################################
-# Page: adminhome.php
+# Page: templates/adminhome.tpl
 #
-Assistants: Assistenti
-Preferences: Preferenze
-Users: Utenti
-Categories: Categorie
-Views: Viste
-Layers: Livelli
-Reports: Rapporti
-Delete Events: Cancella eventi
-Activity Log: Log delle attivit&agrave;
-Public Preferences: Preferenze pubbliche
-Unapproved Public Events: Eventi pubblici non approvati
 Administrative Tools: Strumenti di amministrazione
 
 ########################################
-# Page: approve_entry.php
+# Page: templates/category.tpl
 #
-Hello: Ciao
-The subject was: L'oggetto era
-The description is: La descrizione &egrave;
-Date: Data
-Time: Ora
-
-########################################
-# Page: assistant_edit.php
-#
-Admin mode: Modalit&agrave; amministratore
-Your assistants: I tuoi Assistenti
-
-########################################
-# Page: availability.php
-#
-day: giorno
-
-########################################
-# Page: category.php
-#
-Global: Globale
 Category Name: Nome della categoria
+Global: Globale
 Color: Colore
 Add: Aggiungi
 Delete: Cancella
 Make New Category: Aggiungi una nuova categoria
 
 ########################################
-# Page: catsel.php
+# Page: templates/category_menu.tpl
 #
+Category: Categoria
+
+########################################
+# Page: templates/catsel.tpl
+#
+Categories: Categorie
 Remove: Rimuovi
 Cancel: Cancella
 
 ########################################
-# Page: del_entry.php
-#
-An appointment has been canceled for you by: Un appuntamento &egrave; stato cancellato per te da
-
-########################################
-# Page: docadd.php
+# Page: templates/docadd.tpl
 #
 Description: Descrizione
 
 ########################################
-# Page: edit_entry.php
+# Page: templates/edit_entry.tpl
 #
-days: giorni
-hours: ore
-minutes: minuti
 Edit Entry: Modifica Nota
 Add Entry: Aggiungi Nota
 Details: Dettagli
-Participants: Partecipanti
-Repeat: Ripetizione
 brief-description-help: Questo dovrebbe dare una breve descrizione (circa 20 caratteri) dell'evento. Questo rappresenter&agrave; l'evento quando si visita il calendario.
 Brief Description: Descrizione Breve
 full-description-help: Questo dovrebbe dare dettagli completi dell'evento. Questa informazione sar&agrave; mostrata quando l'utente visualizza l'evento.
@@ -328,11 +231,7 @@ access-help: Specifica il livello di accesso dell'evento.<br /> <i>Pubblico</i>:
 Access: Accesso
 priority-help: Specifica la priorit&agrave; dell'evento. Eventi con un alta priorit&agrave; saranno mostrati in grassetto.
 Priority: Priorit&agrave;
-High: Alta
-Medium: Media
-Low: Bassa
 category-help: Specifica la categoria dell'evento
-Category: Categoria
 date-help: Specifica la data di un evento.
 Untimed event: Evento senza tempo
 Timed event: Evento temporizzato
@@ -340,11 +239,18 @@ All day event: Evento giornaliero
 Timezone Offset: Scostamento della Timezone
 time-help: Specifica l'ora di un evento.<br /><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
 duration-help: Specifica la durata (in minuti) dell'evento.<br /><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
+Duration: Durata
+hours: ore
+minutes: minuti
 end-time-help: Specifica il tempo previsto per la fine dell'evento
+Participants: Partecipanti
+Users: Utenti
+Groups: Gruppi
 participants-help: Elenca i partecipanti di questa nota.
 Availability: Disponibilit&agrave;
 external-participants-help: Specifica una lista di partecipanti all'evento che sono dei non utenti del calendario. Gli utenti dovrebbero essere listati uno per riga e possono includere un indirizzo e-mail. Se un indirizzo e-mail viene specificato, &egrave; possibile che l'utente riceva notifiche e avvisi
 External Participants: Partecipanti Esterni
+Repeat: Ripetizione
 repeat-type-help: Seleziona quanto spesso l'evento si deve ripetere.<i>Mensile (per giorno)</i> permette ad un evento di ripetersi il 1&grad; Luned&igrave; del mese, 3&grad; Gioved&igrave; del mese, ecc. <i>Mensile (per data)</i> permette ad un evento di ripetersi nello stesso giorno del mese.
 Daily: Giornaliera
 Weekly: Settimanale
@@ -358,15 +264,291 @@ repeat-frequency-help: Specifica quanto spesso l'evento si deve ripetere. Il val
 Frequency: Frequenza
 All: Tutte
 Send Reminder: Avvisa
+Yes: S&igrave;
+days: giorni
+
+########################################
+# Page: templates/edit_group.tpl
+#
+Add Group: Aggiungi un gruppo
+Edit Group: Modifica il gruppo
+Group name: Nome del gruppo
+Updated: Aggiornato
+Created by: Creato da
+
+########################################
+# Page: templates/edit_layer.tpl
+#
+Edit Layer: Modifica il livello
+Add Layer: Aggiungi un livello
+Source: Sorgente
+Duplicates: Duplicato
+Show layer events that are the same as your own: Mostra gli eventi del livello che sono simili ai tuoi
+Add to My Calendar: Aggiungi al mio calendario
+
+########################################
+# Page: templates/edit_nonusers.tpl
+#
+Edit User: Modifica Utente
+Add User: Aggiungi Utente
+Calendar ID: Identificativo del calendario
+word characters only: pu&ograve; contenere solo caratteri alfanumerici (a-zA-Z_0-9)
+First Name: Nome
+Last Name: Cognome
+Admin: Amministratore
+
+########################################
+# Page: templates/edit_report.tpl
+#
+Add Report: Aggiungi un rapporto
+Edit Report: Modifica un rapporto
+Report name: Nome del rapporto
+Include standard header/trailer: Includi intestazione/parte finale standard
+Include previous/next links: Includi i link precedente/successivo
+Include empty dates: Includi date vuote
+Date range: Intervallo della data
+Template variables: Variabili del modello
+Page template: Modello di pagina
+Day template: Modello di giorno
+Event template: Modello di evento
+
+########################################
+# Page: templates/edit_user.tpl
+#
+Change Password: Cambiare Password
+New Password: Nuova Password
+again: di nuovo
+Set Password: Assegnare Password
+Disabled for demo: Disabilita per la demo
+Username: Nome Utente
+E-mail address: Indirizzo email
+Enabled: Abilitati
+
+########################################
+# Page: templates/edit_views.tpl
+#
+Add View: Aggiungi una vista
+Edit View: Modifica la vista
+View Name: Nome della vista
+View Type: Tipo di vista
+Day: Giorno
+Week: Settimana
+Month: Mese
+Select: Seleziona
+
+########################################
+# Page: templates/error.tpl
+#
+Error: Errore
+The following error occurred: &Egrave; avvenuto il seguente errore
+
+########################################
+# Page: templates/export.tpl
+#
+Export: Esporta
+Export format: Formato esportazione
+Include all layers: Includi tutti i livelli
+Export all dates: Esporta tutte le date
+Start date: Data inizio
+End date: Data fine
+Modified since: Modificato dal
+
+########################################
+# Page: templates/import.tpl
+#
+Import Results: Risultati dell'importazione
+Import: Importa
+Disabled: Disabilitati
+Import format: Formato per l'importazione
+Exclude private records: Escludi record privati
+Overwrite Prior Import: Sovrascrivi importazione precedente
+Events successfully imported: Eventi importati con successo
+Events from prior import marked as deleted: Eventi di un'importazione precedente segnati come cancellati
+Conflicting events: Eventi che sono in conflitto
+Errors: Errori
+
+########################################
+# Page: templates/layers.tpl
+#
+Layers are currently: I livelli sono attualmente
+Disable Layers: Disabilita Livelli
+Add layer: Crea un livello
+Layer: Livello
+
+########################################
+# Page: templates/list_unapproved.tpl
+#
+Unapproved Entries: Eventi non approvati
+View this entry: Visualizza questa nota
+Approve/Confirm: Approva/Conferma
+Reject: Rifiuta
+
+########################################
+# Page: templates/login.tpl
+#
+Login: Entra
+cookies-note: <b>Nota:</b> Questo applicativo necessita dei cookie abilitati.
+
+########################################
+# Page: templates/menu.tpl
+#
+Logout: Esci
+
+########################################
+# Page: templates/pref.tpl
+#
+Preferences: Preferenze
+Return to My Preferences: Torna a 'Le mie preferenze'
+Default Category: Categoria di default
+hour: ora
+minute: minuto
+time-interval-help: Specifica quanto saranno lunghi gli intervalli di tempo nelle visualizzazioni settimanali e giornaliere
+Time interval: Intervallo di tempo
+auto-refresh-help: Quando &egrave; abilitato, la vista giornaliera, quella settimanale, quella mensile e la lista delle pagine non approvate si aggiorneranno automaticamente
+Auto-refresh calendars: Calendari autoaggiornanti
+auto-refresh-time-help: Se Calendari autoaggiornanti &egrave; abilitato, questo specifica il tempo che intercorre fra due aggiornamenti
+Auto-refresh time: Frequenza di aggiornamento
+Email me event notification: Mandami una notifica dell'evento via e-mail
+I want to approve events: Voglio approvare gli eventi
+rss-feed-url-help: L' URL per accedere al flusso RSS
+freebusy-enabled-help: Specifica se la disponibilit&agrave; di un utente pu&ograve; essere letta da un cliente iCal via lo standard FreeBusy.
+Enable FreeBusy publishing: Abilita pubblicazione di Libero/Occupato (FreeBusy)
+freebusy-url-help: L' URL per accedere alla lista Libero/Occupato di un utente
+
+########################################
+# Page: templates/purge.tpl
+#
+Delete Events: Cancella eventi
+Purging events for: Cancellando gli eventi per
+Records deleted from: Record cancellati da
+Finished: Finito
+Delete all events before: Cancella tutti gli eventi prima del
+Are you sure you want to delete events for: Sei sicuro di voler cancellare eventi per
+
+########################################
+# Page: templates/users.tpl
+#
+Add New User: Aggiungere Nuovo Utente
+denotes administrative user: denota utente con privilegi amministrativi
+Add New Group: Aggiungi un nuovo gruppo
+Add New NonUser Calendar: Aggiungi un nuovo calendario per non utenti
+
+########################################
+# Page: templates/views.tpl
+#
+Add New View: Aggiungi una nuova vista
+
+########################################
+# Page: templates/view_entry.tpl
+#
+Status: Stato
+Repeat Type: Tipo di ripetizione
+Rejected: Rifiutato
+Approve/Confirm entry: Approva/Conferma nota
+Approve this entry?: Approva questa nota?
+Reject entry: Rifiuta evento
+Reject this entry?: Rifiuta questo inserimento?
+Set category: Setta la categoria
+Edit entry: Modifica Nota
 Delete entry: Cancella nota
-You are not authorized to edit this entry.: Non sei autorizzato a modificare questa nota
+This will delete this entry for all users.: Questo canceller&agrave; la nota per tutti gli utenti.
+Copy entry: Copia record
+Email all participants: Avvisa tutti i partecipanti via e-mail
+Hide activity log: Nascondi il log delle attivit&agrave;
+Show activity log: Mostra il log delle attivit&agrave;
+Export this entry to: Esporta questa nota in
+
+########################################
+# Page: templates/view_t.tpl
+#
+Previous: Precedente
+Next: Prossimo
+
+########################################
+# Page: access.php
+#
+DEFAULT CONFIGURATION: CONFIGURAZIONE PREDEFINITA
+Database error XXX.: Errore nel database: XXX.
+Allow Access to Other Users Calendar: Consenti accesso al calendario di altri utenti
+Grant This User Access to My Calendar: Concedi l'accesso al mio calendario a questo utente
+Tasks: Compiti
+Journals: =
+
+########################################
+# Page: add_entry.php
+#
+private: privato
+confidential: confidenziale
+Error adding event: Errore nell'aggiunta dell'evento
+
+########################################
+# Page: admin.php
+#
+Year: Anno
+Settings: Impostazioni
+Other: Altro
+Email: E-Mail
+Colors: Colori
+12 hour: 12 ore
+24 hour: 24 ore
+End Time: Tempo di fine
+Top: inizio
+Bottom: fine
+
+########################################
+# Page: adminhome.php
+#
+Views: Viste
+Layers: Livelli
+Reports: Rapporti
+
+########################################
+# Page: ajax.php
+#
+Reminder: Avviso
+You have not entered a password.: Non si &egrave; inserita nessuna password
+The passwords were not identical.: Le password non sono identiche
+Server URL is required.: L'URL del server &egrave; necessario
+Server URL must end with /.: L'URL del server deve finire con '/'
+You have not entered a Brief Description.: Non &egrave; stata inserita una breve descrizione
+You have not entered a valid time of day.: Non &egrave; stato inserito un orario corretto
+time entered before preferred work hours...: Il tempo che hai inserito inizia prima delle tue ore di lavoro preferite. &Egrave; corretto?
+
+########################################
+# Page: ajax_entries.php
+#
+External User: Utente Esterno
+
+########################################
+# Page: approve_entry.php
+#
+Hello: Ciao
+The subject was: L'oggetto era
+The description is: La descrizione &egrave;
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: Un appuntamento &egrave; stato cancellato per te da
+
+########################################
+# Page: docadd.php
+#
+Database error: Errore nel database
+
+########################################
+# Page: edit_entry.php
+#
+High: Alta
+Medium: Media
+Low: Bassa
 
 ########################################
 # Page: edit_entry_handler.php
 #
+The following conflicts with the suggested time: Il seguente &egrave; in conflitto con l'orario suggerito
 A new appointment has been made for you by: Un nuovo appuntamento &egrave; stato fissato per te da
 An appointment has been updated by: Un appuntamento &egrave; stato aggiornato da
-The following conflicts with the suggested time: Il seguente &egrave; in conflitto con l'orario suggerito
 Please look on: Per favore guarda
 to accept or reject this appointment: per accettare o respingere questo appuntamento
 to view this appointment: per visualizzare questo appuntamento
@@ -375,47 +557,25 @@ Your suggested time of: L'ora suggerita
 conflicts with the following existing calendar entries: &egrave; in conflitto con il seguente appuntamento gi&agrave; presente nel calendario
 
 ########################################
-# Page: edit_layer.php
+# Page: edit_group.php
 #
-Add Layer: Aggiungi un livello
-Edit Layer: Modifica il livello
-Source: Sorgente
-Duplicates: Duplicato
-Show layer events that are the same as your own: Mostra gli eventi del livello che sono simili ai tuoi
-Add to My Calendar: Aggiungi al mio calendario
-Delete layer: Cancella il livello
+Unnamed Group: Gruppo senza nome
 
 ########################################
-# Page: edit_layer_handler.php
+# Page: edit_group_handler.php
 #
-You cannot create a layer for yourself.: Non puoi creare un livello per te stesso
-You can only create one layer for each user.: Tu puoi creare un livello solo per ciascun utente
-
-########################################
-# Page: edit_nonusers.php
-#
-NONUSER_PREFIX not set: NONUSER_PREFIX non &egrave; stato impostato nel file config.php.
-word characters only: pu&ograve; contenere solo caratteri alfanumerici (a-zA-Z_0-9)
-Add User: Aggiungi Utente
-Edit User: Modifica Utente
-Calendar ID: Identificativo del calendario
-First Name: Nome
-Last Name: Cognome
+You must specify a group name: Devi specificare il nome del gruppo
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Errore
-Import Results: Risultati dell'importazione
-Events successfully imported: Eventi importati con successo
-Errors: Errori
 There was an error parsing the import file or no events were returned: C'&egrave; stato un errore nella scansione dei file da importare oppure non sono stati trovati eventi
 
 ########################################
 # Page: edit_report.php
 #
-Tomorrow: Domani
 Today: Oggi
+Tomorrow: Domani
 Yesterday: Ieri
 Day before yesterday: Ieri l'altro
 Next week: La prossima settimana
@@ -434,21 +594,7 @@ Next year: L'anno prossimo
 This year: Quest'anno
 Last year: L'anno scorso
 Year before last: Due anni fa
-Invalid report id.: Identificatore di rapporto non valido
 Unnamed Report: Rapporto senza nome
-Add Report: Aggiungi un rapporto
-Edit Report: Modifica un rapporto
-Report name: Nome del rapporto
-User: Utente
-Current User: Utente Corrente
-Include standard header/trailer: Includi intestazione/parte finale standard
-Include previous/next links: Includi i link precedente/successivo
-Include empty dates: Includi date vuote
-Date range: Intervallo della data
-Template variables: Variabili del modello
-Page template: Modello di pagina
-Day template: Modello di giorno
-Event template: Modello di evento
 
 ########################################
 # Page: edit_report_handler.php
@@ -463,71 +609,41 @@ Edit Custom Script/Stylesheet: Modofica lo script/foglio di stile personalizzato
 Edit Custom Trailer: Modifica il fine pagina personalizzato
 
 ########################################
-# Page: edit_user.php
+# Page: edit_views.php
 #
-Username: Nome Utente
-E-mail address: Indirizzo email
-again: di nuovo
-Enabled: Abilitati
-Disabled for demo: Disabilita per la demo
-Change Password: Cambiare Password
-New Password: Nuova Password
-Set Password: Assegnare Password
+Unnamed View: Vista senza nome
 
 ########################################
-# Page: edit_user_handler.php
+# Page: edit_views_handler.php
 #
-Deleting users not supported.: La cancellazione degli utenti non &egrave; pi&ugrave; supportata
-The passwords were not identical.: Le password non sono identiche
-You have not entered a password.: Non si &egrave; inserita nessuna password
+You must specify a view name: Devi specificare il nome di una vista
 
 ########################################
 # Page: export.php
 #
-Export: Esporta
-Export format: Formato esportazione
-Include all layers: Includi tutti i livelli
-Export all dates: Esporta tutte le date
-Start date: Data inizio
-End date: Data fine
-Modified since: Modificato dal
-
-########################################
-# Page: export_handler.php
-#
 export format not defined or incorrect: formato di esportazione non definito o non corretto
-
-########################################
-# Page: groups.php
-#
-Add New Group: Aggiungi un nuovo gruppo
-
-########################################
-# Page: group_edit.php
-#
-Unnamed Group: Gruppo senza nome
-Add Group: Aggiungi un gruppo
-Edit Group: Modifica il gruppo
-Group name: Nome del gruppo
-Updated: Aggiornato
-Created by: Creato da
-
-########################################
-# Page: group_edit_handler.php
-#
-You must specify a group name: Devi specificare il nome del gruppo
 
 ########################################
 # Page: help_admin.php
 #
-Auto-refresh calendars: Calendari autoaggiornanti
-auto-refresh-help: Quando &egrave; abilitato, la vista giornaliera, quella settimanale, quella mensile e la lista delle pagine non approvate si aggiorneranno automaticamente
-Auto-refresh time: Frequenza di aggiornamento
-auto-refresh-time-help: Se Calendari autoaggiornanti &egrave; abilitato, questo specifica il tempo che intercorre fra due aggiornamenti
+Help: Guida
 Display days with events in bold in year view: Nella visualizzazione annuale mostra in grassetto i giorni con degli eventi
 Display weekends in week view: Mostra i week-end nella vista della settimana
-Time interval: Intervallo di tempo
-time-interval-help: Specifica quanto saranno lunghi gli intervalli di tempo nelle visualizzazioni settimanali e giornaliere
+Public Access: Accesso Pubblico
+Allow public access: Permetti l'accesso pubblico
+allow-public-access-help: Se abilitato, il calendario pu&ograve; essere utilizzato come un calendario pubblico in sola lettura che non richiede agli utenti di effettuare il login
+Public access can add events: Permetti all'accesso pubblico di aggiungere eventi
+public-access-can-add-help: Quando abilitato, gli utenti che accedono al sistema con un accesso pubblico saranno in grado di aggiungere nuovo eventi, ma questi non saranni visibili nel calendario finch&eacute; un amministratore approver&agrave; il nuovo evento
+Public access can view other users: Permetti all'accesso pubblico di vedere gli altri utenti
+public-access-view-others-help: Quando si accede al sistema coun un accesso pubblico, specifica se l'utente pu&ograve; vedere il calendario di un altro utente
+Public access can view participants: L'accesso pubblico pu&ograve; vedere i partecipanti
+public-access-sees-participants-help: Se abilitato, gli utenti che stanno accedendo al calendario dall'account pubblico saranno in grado di vedere i partecipanti all'evento se guarderanno i dettagli dell'evento
+Public access is default participant: L'accesso pubblico &egrave; un partecipante per default
+public-access-default-selected: Quando si aggiunge un nuovo evento, l'utente pubblico sar&agrave; selezionato automaticamente come partecipante
+Public access new events require approval: L'inserimento di un evento da pubblico accesso richiede l'approvazione
+public-access-add-requires-approval-help: Specifica se gli eventi aggiunti per mezzo dell'accesso pubblico necessitino dell'approvazione prima di essere visibili
+Public access visible by default: Accesso pubblico visibile di default
+public-access-default-visible: Eventi dal calendario pubblico appariranno automaticamente nel calendario di tutti gli utenti
 Nonuser: Calendari dei non utenti
 colors-help: Tutti i colori devono essere specificati nel formato esadecimale "#RRGGBB" dove "RR" &egrave; il valore esadecimale della componente rossa, "GG" &egrave; il valore esadecimale della componente verde, e "BB" &egrave; il valore esadecimale della componente blu.
 
@@ -540,7 +656,6 @@ Report Bug: Segnala un Bug
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Aggiungere/Modificare note nel Calendario
-Repeat Type: Tipo di ripetizione
 Repeat End Date: Data ultima ripetizione
 Repeat Day: Giorno Ripetizione
 repeat-day-help: Specifica in quali giorni della settimana l'evento pu&ograve; ripetersi. Questo pu&ograve; essere usato solo quando <i>Tipo di ripetizione</i> &egrave; impostato su <i>Settimanale</i>.
@@ -548,19 +663,12 @@ repeat-day-help: Specifica in quali giorni della settimana l'evento pu&ograve; r
 ########################################
 # Page: help_import.php
 #
-Import: Importa
 This form will allow you to import entries from the Palm Desktop Datebook.: Questo form ti permetter&agrave; di importare eventi dal file degli appuntamenti di Palm Desktop
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Dovrebbe essere localizzato nel tuo Palm, nella directory <tt>datebook/datebook.dat</tt> in una sottodirectory col tuo nome utente
 The following entries will not be imported: I record seguenti non saranno importati
 Entries older than the current date: Record pi&ugrave; vecchi della data odierna
-Entries created in the Palm Desktop...: Record nel Palm Desktop che non sono stati sincronizzati con HotSync
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualunque cosa importata dal Palm sar&agrave; sovrascritta durante l'importazione successiva (a meno che la data dell'evento non sia gi&agrave; passata)
 Therefore, updates should be made in the Palm Desktop.: Quindi, gli aggiornamenti dovrebbero essere fatti sul Palm Desktop.
-This form will import vCalendar (.vcs) 1.0 events.: Questo form importer&agrave; eventi vCalendar (.vcs) 1.0
 The following formats have been tested: I seguenti formati sono stati provati
-This form will import iCalendar (.ics) events.: Questo form importer&agrave; eventi iCalendar (.ics)
 Enabling: Abilita
-Overwrite Prior Import: Sovrascrivi importazione precedente
 
 ########################################
 # Page: help_index.php
@@ -571,106 +679,33 @@ Help Index: Indice della Guida
 # Page: help_layers.php
 #
 Add/Edit/Delete: Aggiungi/Modifica/Cancella
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Cliccando sul link "Modifica Livelli" nell'area di amministrazione in fondo alla pagina, verrete abilitati ad aggiungere/modificare/cancellare i livelli.
 The text color of the new layer that will be displayed in your calendar.: Il colore del testo del nuovo livello che vuoi sia visualizzato nel tuo calendario.
 Disabling: Disabilita
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Clicca "Disabilita Livelli" nell'area di amministrazione in fondo alla pagina per disabilitare i livelli.
 If checked, events that are duplicates of your events will be shown.: Se segnato, gli eventi che verrano duplicati dai tuoi eventi, verranno visualizzati.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Clicca "Abilita Livelli" nell'area di amministrazione in fondo alla pagina per abilitare i livelli
 Specifies the user that you would like to see displayed in your calendar.: Specifica l'utente che tu vorresti vedere visualizzato nel tuo calendario.
 
 ########################################
 # Page: help_pref.php
 #
-Default Category: Categoria di default
 default-category-help: Specifica la categoria di default di un nuovo evento
 When I am the boss: Quando il capo sono io
-Email me event notification: Mandami una notifica dell'evento via e-mail
 email-boss-notifications-help: Specifica se i capi ricevono email per notifiche eventi
-I want to approve events: Voglio approvare gli eventi
 boss-approve-event-help: Specifica al capo &egrave; richiesto approvare eventi aggiunti dagli assistententi.
 Subscribe/Publish: Sottoscrizione/Pubblicazione
 Allow remote publishing: Consenti pubblicazione remota
 allow-remote-publishing-help: Specifica se il cliente iCal remoto pu&ograve; pubblicare eventi su questo WebCalendar
 remote-publishing-url-help: Mosta l'URL da usare nel cliente remoto iCal sia per sottoscrizione che pubblicazione su questo WebCalendar.
-allow-remote-subscriptions-help: Specifica se utenti remoti possono sottoscrivere il tuo calendario, permettendo loro di vedere i tuoi eventi nella loro applicazione abilitata all'uso di iCal (ad esempio iCal della Apple o il Mozilla Calendar).
 remote-subscriptions-url-help: Mostra l'URL che gli utenti remoti dovrebbero utilizzare per sottoscrivere il tuo calendario
-Enable FreeBusy publishing: Abilita pubblicazione di Libero/Occupato (FreeBusy)
-freebusy-enabled-help: Specifica se la disponibilit&agrave; di un utente pu&ograve; essere letta da un cliente iCal via lo standard FreeBusy.
-freebusy-url-help: L' URL per accedere alla lista Libero/Occupato di un utente
-rss-feed-url-help: L' URL per accedere al flusso RSS
 
 ########################################
 # Page: import.php
 #
-Disabled: Disabilitati
-Import format: Formato per l'importazione
-Exclude private records: Escludi record privati
-
-########################################
-# Page: import_handler.php
-#
-Events from prior import marked as deleted: Eventi di un'importazione precedente segnati come cancellati
-Conflicting events: Eventi che sono in conflitto
 The import file contained no data: Il file da importare non contiene dati
 
 ########################################
 # Page: layers.php
 #
-Layer: Livello
-Edit layer: Modifica il livello
-Layers are currently: I livelli sono attualmente
-Disable Layers: Disabilita Livelli
-Click here: Clicca qui
-to modify the layers settings for the: per modificare i impostazioni per
-Add layer: Crea un livello
-
-########################################
-# Page: list_unapproved.php
-#
-Approve/Confirm: Approva/Conferma
-Reject: Rifiuta
-View this entry: Visualizza questa nota
-Unapproved Entries: Eventi non approvati
-Approve this entry?: Approva questa nota?
-Reject this entry?: Rifiuta questo inserimento?
-
-########################################
-# Page: login-app.php
-#
-You must enter a login and password.: Inserire nome utente e password
-Save login via cookies so I dont have to login next time.: Salvare le informazioni di login tramite i cookie cos&igrave; da non doversi pi&ugrave; registrare la prossima volta
-Login: Entra
-Access public calendar: Accedi al calendario pubblico
-cookies-note: <b>Nota:</b> Questo applicativo necessita dei cookie abilitati.
-
-########################################
-# Page: login.php
-#
-Invalid login: Login non valido
-
-########################################
-# Page: nonusers.php
-#
-Add New NonUser Calendar: Aggiungi un nuovo calendario per non utenti
-
-########################################
-# Page: pref.php
-#
-Save Preferences: Salva Preferenze
-Return to My Preferences: Torna a 'Le mie preferenze'
-hour: ora
-minute: minuto
-
-########################################
-# Page: purge.php
-#
-Purging events for: Cancellando gli eventi per
-Finished: Finito
-Check box to delete ALL events for a user: Abilita la casella per cancellare <b>TUTTI</b> gli eventi per un utente
-Delete all events before: Cancella tutti gli eventi prima del
-Are you sure you want to delete events for: Sei sicuro di voler cancellare eventi per
-Records deleted from: Record cancellati da
+Admin mode: Modalit&agrave; amministratore
 
 ########################################
 # Page: reject_entry.php
@@ -680,13 +715,10 @@ An appointment has been rejected by: Un appuntamento &egrave; stato rifiutato da
 ########################################
 # Page: report.php
 #
-This event is confidential.: Questo evento &egrave; confidenziale
-Approved: Approvato
-Deleted: Cancellato
-Rejected: Rifiutato
 Waiting for approval: In attesa di approvazione
+Deleted: Cancellato
+Approved: Approvato
 Unknown: Sconosciuto
-to manage reports for the Public Access calendar: per gestire rapporti per il calendario ad accesso pubblico
 Add new report: Aggiungi un nuovo rapporto
 Manage Reports: Gestisci rapporti
 
@@ -714,15 +746,13 @@ View Another Users Calendar: Visualizza calendario di un altro utente
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: Non hai ancora aggiunto nessuna categoria
 Set Category: Setta la categoria
 
 ########################################
 # Page: users.php
 #
+NonUser Calendars: Calendari dei non utenti
 Remote Calendars: Calendari remoti
-denotes administrative user: denota utente con privilegi amministrativi
-Add New User: Aggiungere Nuovo Utente
 
 ########################################
 # Page: usersel.php
@@ -730,64 +760,30 @@ Add New User: Aggiungere Nuovo Utente
 Reset: Resetta
 
 ########################################
-# Page: views.php
-#
-Add New View: Aggiungi una nuova vista
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Vista senza nome
-Add View: Aggiungi una vista
-Edit View: Modifica la vista
-View Name: Nome della vista
-View Type: Tipo di vista
-Week (Users horizontal): Settimana (Utenti in orizzontale)
-Week (Users vertical): Settimana (Utenti in verticale)
-Week (Timebar): Settimana (Asse del tempo)
-Month (Timebar): Mese (Asse del tempo)
-Month (side by side): Mese (uno di fianco all'altro)
-Month (on same calendar): Mese (nello stesso calendario)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: Devi specificare il nome di una vista
-
-########################################
-# Page: view_entry.php
-#
-Assistant mode: Modalit&agrave; assistente
-Status: Stato
-External User: Utente Esterno
-Approve/Confirm entry: Approva/Conferma nota
-Reject entry: Rifiuta evento
-Set category: Setta la categoria
-Copy entry: Copia record
-This will delete this entry for all users.: Questo canceller&agrave; la nota per tutti gli utenti.
-Edit entry: Modifica Nota
-Edit repeating entry for all dates: Modifica l'evento per tutte le date
-Delete repeating event for all dates: Cancella l'evento per tutte le date
-Edit entry for this date: Inserisci l'evento per questa data
-Delete entry only for this date: Cancella l'evento solo per questa data
-This will delete the entry from your calendar.: Questo canceller&agrave; tutti gli eventi del tuo calendario.
-Do you want to add this entry to your calendar?: Vuoi aggiungere questo evento al tuo calendario?
-This will add the entry to your calendar.: Questo aggiunger&agrave; un evento al tuo calendario.
-Email all participants: Avvisa tutti i partecipanti via e-mail
-Hide activity log: Nascondi il log delle attivit&agrave;
-Show activity log: Mostra il log delle attivit&agrave;
-Export this entry to: Esporta questa nota in
-
-########################################
 # Page: week_details.php
 #
+Assistant mode: Modalit&agrave; assistente
 New Entry: Nuova Nota
 
 ########################################
 # Page: includes/access.php
 #
 Another Users Calendar: Calendario di altro utente
+Assistants: Assistenti
+View Event: Mostra evento
 Manage Views: Gestione Viste
+
+########################################
+# Page: includes/activity_log.php
+#
+Event approved: Evento approvato
+Event created: Evento creato
+Event deleted: Evento cancellato
+Invalid login: Login non valido
+Notification sent: Notifica inviata
+Event rejected: Evento rifiutato
+Reminder sent: Avviso mandato
+Event updated: Evento aggiornato
 
 ########################################
 # Page: includes/date_formats.php
@@ -799,19 +795,8 @@ Dec: Dic
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: Superato il limite di XXX eventi al giorno
-Event approved: Evento approvato
-Event created: Evento creato
-Event deleted: Evento cancellato
-Notification sent: Notifica inviata
-Event rejected: Evento rifiutato
-Reminder sent: Avviso mandato
-Event updated: Evento aggiornato
-WK: set
 Changes successfully saved: Cambiamenti salvati correttamente
-Event: Evento
-Action: Azione
-Printer Friendly: Stampabile
-Generate printer-friendly version: Genera una versione stampabile
+day: giorno
 January: Gennaio
 February: Febbraio
 March: Marzo
@@ -830,12 +815,6 @@ Jul: Lug
 Aug: Ago
 Sep: Set
 Oct: Ott
-The following error occurred: &Egrave; avvenuto il seguente errore
-You are not authorized.: Non sei autorizzato
-Add N hours to: Aggiungi N ore all'
-Subtract N hours from: Sottrai N ore all'
-same as: come
-server time: ora del server
 Unauthorized: Non autorizzato
 Error approving event: Errore durante l'approvazione di un evento
 Sunday: Domenica
@@ -854,12 +833,30 @@ Fri: Ven
 Sat: Sab
 
 ########################################
-# Page: includes/trailer.php
+# Page: includes/menu.php
 #
 My Calendar: Il mio calendario
-Add New Entry: Aggiungi nuova nota
+This Week: Settimana corrente
+This Month: Mese corrente
+This Year: Anno corrente
+Exit: Esci
+Add New Event: Aggiungi nuovo evento
+Delete Entries: Elimina elementi
 Add New Task: Aggiungi nuovo compito
-Logout: Esci
+My Views: Viste ...
+Manage Calendar of: Gestione del Calendario di ...
+My Reports: Rapporti
+My Profile: Profilo utente
+Public Calendar: Calendario pubblico
+Unapproved Events: Eventi non approvati
+User Manager: Gestione Utenti
+Help Contents: Argomenti Guida
+
+########################################
+# Page: includes/trailer.php
+#
+Add New Entry: Aggiungi nuova nota
+Current User: Utente Corrente
 Back to My Calendar: Torna al mio calendario
 Go to: Vai a
 Manage calendar of: Gestisci il calendario di
@@ -897,24 +894,13 @@ Turkish: Turco
 event: evento
 
 ########################################
-# Page: includes/user-imap.php
-#
-Invalid user login: Nome utente non valido
-
-########################################
-# Page: includes/user-nis.php
-#
-incorrect password: password sbagliata
-no such user: utente non trovato
-
-########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Evento Senza Nome
 Event Imported: Eventi importati
 
 ########################################
-# Page: includes/classes/WebCalMailer.class
+# Page: includes/classes/WebCalMailer.class.php
 #
 Notification: Notifica
 authenticate: SMTP Error: Impossibile autenticarsi.
@@ -931,53 +917,20 @@ provide_address: Deve essere fornito almeno un indirizzo ricevente
 recipients_failed: SMTP Error: I seguenti indirizzi destinatari hanno generato errore:
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/classes/user/User.class.php
 #
-Server URL is required.: L'URL del server &egrave; necessario
-Server URL must end with /.: L'URL del server deve finire con '/'
-Invalid work hours.: Ore di lavoro non valide
-Invalid color for document background.: Il colore dello sfondo del documento non &egrave; valido
-Invalid color for document title.: Il colore del titolo del documento non &egrave; valido
-Invalid color for table cell background.: Il colore dello sfondo della cella non &egrave; valido
-Invalid color for table grid.: Il colore per la griglia della tabella non &egrave; valido
-Invalid color for table header background.: Il colore di sfondo per l'intestazione della tabella non &egrave; valido
-Invalid color for table text background.: Il colore di sfondo per il testo della tabella non &egrave; valido
-Invalid color for event popup background.: Il colore di sfondo per i popup di un evento non &egrave; valido
-Invalid color for event popup text.: Il colore del testo per i popup di un evento non &egrave; valido
-Invalid color for table cell background for today.: Il colore dello sfondo della cella della data odierna non &egrave; valido
-Color format should be RRGGBB.: Il fomrato del colore deve essere '#RRGGBB'
+incorrect password: password sbagliata
+no such user: utente non trovato
 
 ########################################
-# Page: includes/js/edit_entry.php
+# Page: includes/smarty/function.display_month.php
 #
-You have not entered a Brief Description.: Non &egrave; stata inserita una breve descrizione
-time entered before preferred work hours...: Il tempo che hai inserito inizia prima delle tue ore di lavoro preferite. &Egrave; corretto?
-You have not entered a valid time of day.: Non &egrave; stato inserito un orario corretto
+WK: set
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/smarty/function.print_timezone_list.php
 #
-Invalid color: Colore non valido
-
-########################################
-# Page: includes/menu/index.php
-#
-This Week: Settimana corrente
-This Month: Mese corrente
-This Year: Anno corrente
-Exit: Esci
-Add New Event: Aggiungi nuovo evento
-Delete Entries: Elimina elementi
-My Views: Viste ...
-Manage Calendar of: Gestione del Calendario di ...
-My Reports: Rapporti
-My Profile: Profilo utente
-Public Calendar: Calendario pubblico
-Unapproved Events: Eventi non approvati
-User Manager: Gestione Utenti
-Help Contents: Argomenti Guida
-
-########################################
-# Page: tools/send_reminders.php
-#
-Reminder: Avviso
+Add N hours to: Aggiungi N ore all'
+Subtract N hours from: Sottrai N ore all'
+same as: come
+server time: ora del server

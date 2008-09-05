@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -38,9 +38,13 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: admin.php
+# Page: templates/edit_views.tpl
 #
 Month: mjesec
+
+########################################
+# Page: admin.php
+#
 Year: godina
 
 ########################################
@@ -58,7 +62,6 @@ December: Prosinac
 ########################################
 # Page: includes/functions.php
 #
-WK: Tje
 January: Siječanj
 February: Veljača
 March: Ožujak
@@ -77,3 +80,8 @@ Wednesday: Srijeda
 Thursday: Četvrtak
 Friday: Petak
 Saturday: Subota
+
+########################################
+# Page: includes/smarty/function.display_month.php
+#
+WK: Tje

@@ -13,7 +13,7 @@ opendir ( DIR, $transdir ) || die 'Error opening ' . "$transdir: $!";
 closedir ( DIR );
 
 # header
-printf "%-20s %s\n", 'Language file', 'No. missing translations';
+printf "%-25s %s\n", 'Language file', 'No. missing translations';
 
 foreach $f ( @files ) {
   $out = `perl check_translation.pl $transdir/$f`;
@@ -22,10 +22,10 @@ foreach $f ( @files ) {
     @lines = split ( /\n/, $out );
     ( $l ) = grep ( / translation.s. missing/, @lines );
     if ( $l =~ /^(\d+).*\((\d\S+)% complete/ ) {
-      printf "%-20s %4d (%4.1f%% complete)\n", $f . ':', $1, $2;
+      printf "%-25s %4d (%4.1f%% complete)\n", $f . ':', $1, $2;
     }
   } else {
     # all translations found :-)
-    printf "%-20s %s\n", $f . ':', 'Complete';
+    printf "%-25s %s\n", $f . ':', 'Complete';
   }
 }

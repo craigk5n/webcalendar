@@ -2,7 +2,7 @@
 # Last update: 28 August 2007
 #
 # $Id$
-# Translation last updated on 09-30-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -35,65 +35,36 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: about.php
+# Page: templates/about.tpl
 #
 Title: KalenderWeb
 
 ########################################
-# Page: access.php
+# Page: templates/access.tpl
 #
-Database error: Terjadi kesalahan pada database
 Go: Pergi
 Save: Simpan
-Public Access: Akses Umum
-Admin: =
-Calendar: Kalender
 Edit: =
-Events: Acara
 Public: Umum
 Confidential: Pribadi
 Private: Pribadi
 
 ########################################
-# Page: activity_log.php
+# Page: templates/activity_log.tpl
 #
-Next: Berikutnya
-Previous: Sebelumnya
+Activity Log: Log Aktifitas
+Action: Tindakan
+User: Pengguna
+Calendar: Kalender
+Date: Tanggal
+Time: Waktu
+Event: Acara
+Events: Acara
 
 ########################################
-# Page: add_entry.php
+# Page: templates/admin.tpl
 #
-Error adding event: Terjadi kesalahan pada saat menambahkan acara
-
-########################################
-# Page: admin.php
-#
-Select: Pilih
-Day: Hari
-Week: Pekan
-Month: Bulan
-Year: Tahun
-Bottom: Bagian bawah
-Top: Bagian atas
-Settings: Pengaturan
-Groups: Grup
-NonUser Calendars: Kalender Non-Pengguna
-Other: Lainnya
-Email: Pos-el
-Colors: Warna
-Document background: Latar belakang dokumen
-Document title: Judul dokumen
-Document text: Teks dokumen
-Table grid color: Warna garis tabel
-Table header background: Latar belakang kepala tabel
-Table header text: Teks kepala tabel
-Table cell background: Latar belakang sel tabel
-Table cell background for current day: Latar belakang sel tabel untuk hari saat ini
-Table cell background for weekends: Latar belakang sel tabel untuk akhir pekan
-Event popup background: Latar belakang pop-up acara
-Event popup text: Teks pop-up acara
 System Settings: Pengaturan Sistem
-Help: Bantuan
 app-name-help: Tentukan nama aplikasi yang akan muncul pada bilah judul perambah untuk semua halaman dan pada halaman log masuk. Nilai yang Anda berikan disini akan dicari dalam berkas terjemahan-terjemahan sehingga akan memberikan Anda suatu cara untuk menyediakan judul-judul yang berbeda untuk bahasa-bahasa yang berbeda.
 Application Name: Nama Aplikasi
 server-url-help: Tentukan URL dasar untuk aplikasi. URL ini akan disertakan pada saat sistem mengirimkan pos-el pengingat dan pemberitahuan.
@@ -116,12 +87,8 @@ display-week-starts-on: Menentukan apakah pekan dimulai pada hari Ahad atau Seni
 Week starts on: Pekan dimulai pada
 time-format-help: Tentukan format waktu yang mana yang ingin digunakan: <br /><i>12 jam:</i> Menampilkan waktu sebagai 3am, 8:30pm, dsb.  <br /><i>24 jam:</i> Menampilkan waktu sebagai 300, 2030, dsb.
 Time format: Format waktu
-12 hour: 12 jam
-24 hour: 24 jam
 timed-evt-len-help: Menentukan metode input untuk menentukan panjang dari sebuah acara berdurasi.
 Specify timed event length by: Tentukan panjang acara berdurasi berdasarkan
-Duration: Durasi
-End Time: Waktu Akhir
 work-hours-help: Menentukan rentang waktu yang ditampilkan untuk tampilan pekan.
 Work hours: Jam kerja
 From: Dari
@@ -136,18 +103,16 @@ Display week number: Tampilkan nomor pekan
 display-desc-print-day-help: Sertakan keterangan acara dalam versi cetak dari tampilan hari.
 Display description in printer day view: Tampilkan keterangan acara dalam versi cetak dari tampilan hari
 yearly-shows-events-help: Pada tampilan tahun, tampilkan hari-hari yang memiliki acara dalam huruf tebal.
-Display days with events in bold in month and year views: Tampilkan hari-hari yang memiliki acara dalam huruf tebal dalam tampilan bulan dan tahun
 allow-view-add-help: Sebuah gambar '+' akan disertakan dalam tampilan, dengan demikian akan memperkenankan pengguna untuk menambahkan acara-acara ke kalender pengguna yang lain secara cepat.
 Include add event link in views: Sertakan tautan tambahkan acara dalam tampilan
-allow-view-other-help: Menentukan apakah seorang pengguna dapat melihat kalender pengguna yang lain atau tidak.
+popup-includes-siteextras-help: Jika dinyalakan, maka sistem akan memperkenankan pengaturan bidang-bidang isian spesial dalam berkas site_extras.php yang akan ditampilkan dalam pop-up acara.
+Display Site Extras in popup: Tampilkan Ekstra Situs dalam pop-up
 require-approvals-help: Jika dinyalakan, maka seorang pengguna harus menyetuji sebuah acara sebelum acara tersebut ditampilkan pada kalender pribadi mereka (terkecuali jika Tampilkan acara yang belum disetujui dinyalakan). Harap diperhatikan bahwa dengan menyetel nilai ini ke "Tidak" tidak akan mematikan penyetujuan untuk kalender Akses Umum (jika kalender Akses Umum dinyalakan).
 Require event approvals: Membutuhkan penyetujuan acara
 display-unapproved-help: Menentukan apakah acara-acara yang belum disetujui akan ditampilkan dalam kalender Anda.<br /> Jika ditetapkan ke "Ya", maka acara-acara yang belum disetujui akan ditampilkan pada kalender Anda (dengan warna teks yang berbeda).<br /> Jika ditetapkan ke "Tidak", maka acara-acara yang belum disetujui harus disetujui terlebih dahulu sebelum mereka ditampilkan dalam kalender Anda.
 Display unapproved: Tampilkan acara yang belum disetujui
 conflict-check-help: Periksa konflik acara (dua buah acara dijadwalkan untuk waktu yang sama untuk orang yang sama). Jika Anda menyetel nilai ini ke "Ya", maka Anda masih akan tetap bisa untuk menjadwalkan dua buah acara pada waktu yang sama setelah mengkonfirmasikan sebuah peringatan. Jika Anda menyetel nilai ini ke "Tidak", maka tidak ada pemeriksaan konflik yang akan dilakukan. Anda mungkin ingin untuk menyetel nilai ini ke "Ya", agar pemeriksaan konflik dilakukan.
 Check for event conflicts: Periksa konflik acara
-Yes: Ya
-No: Tidak
 conflict-months-help: Jika pemeriksaan konflik dimatikan ("Periksa konflik acara" disetel ke "Tidak"), maka nilai ini akan menentukan berapa banyak bulan ke depannya nanti kami harus memeriksa konflik. Jika Anda mengalami penambahan acara membutuhkan waktu yang lama untuk diproses, maka kurangi nilai ini.
 Conflict checking months: Jumlah bulan pemeriksaan konflik
 conflict-check-override-help: Memperkenankan pengguna untuk mengabaikan konflik acara dan menjadwalkan dua atau lebih acara untuk waktu yang sama.
@@ -156,54 +121,29 @@ limit-appts-help: Memperkenankan administrator sistem untuk menyetel sebuah bata
 Limit number of timed events per day: Jumlah batasan acara berdurasi per hari
 limit-appts-number-help: Menentukan jumlah maksimum acara berdurasi yang dapat dimiliki seorang pengguna dalam satu hari.
 Maximum timed events per day: Jumlah maksimum acara berdurasi per hari
-disable-priority-field-help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Prioritas" dari halaman-halaman informasi acara, dengan demikian akan memberikan antarmuka yang lebih mudah bagi para pemula.
-Disable Priority field: Matikan bidang isian Prioritas
-disable-access-field-help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Akses" dari halaman-halaman informasi acara, dengan demikian akan memberikan antarmuka yang lebih mudah bagi para pemula.
-Disable Access field: Matikan bidang isian Akses
-disable-participants-field-help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Partisipan" dari halaman-halaman informasi acara, dengan demikian akan mencegah pengguna untuk menambahkan pengguna-pengguna lainnya ke acara mereka. Jika Anda menyalakan opsi ini, mungkin Anda juga ingin untuk mematikan bidang isian "Perkenankan untuk melihat kalender pengguna lainnya."
-Disable Participants field: Matikan bidang isian Partisipan
-disable-repeating-field-help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Pengulangan" pada saat menambahkan acara. Dengan demikian akan memberikan antarmuka yang lebih mudah bagi para pemula.
-Disable Repeating field: Matikan bidang isian Pengulangan
 allow-html-description-help: Jika dinyalakan, maka pengguna akan dapat mengetikkan HTML dalam bidang isian keterangan acara. Jika tidak dinyalakan, maka tag-tag HTML akan diterjemahkan (escape) sehingga mereka akan muncul sebagai teks biasa. Peringatan: Jika Anda menyalakan fitur ini maka akan memperkenankan pengguna untuk membuat referensi ke gambar-gambar pada situs-situs web lain.
 Allow HTML in Description: Perkenankan HTML dalam Keterangan
-popup-includes-siteextras-help: Jika dinyalakan, maka sistem akan memperkenankan pengaturan bidang-bidang isian spesial dalam berkas site_extras.php yang akan ditampilkan dalam pop-up acara.
-Display Site Extras in popup: Tampilkan Ekstra Situs dalam pop-up
-remember-last-login-help: Jika dinyalakan, maka log masuk pengguna pada halaman log masuk akan diisikan untuk mereka (tetapi tidak kata sandinya),dan preferensi pengguna akan dimuat (termasuk bahasa yang dipilih dan warna yang dikehendaki mereka).
-Remember last login: Ingat log masuk terakhir
-allow-public-access-help: Jika dinyalakan, maka kalender dapat digunakan sebagai sebuah kalender umum baca-saja yang tidak membutuhkan pengguna untuk log masuk.
-Allow public access: Perkenankan akses umum
-public-access-default-visible: Acara-acara pada kalender umum akan muncul pada kalender semua pengguna secara otomatis. 
-Public access visible by default: Secara asali akses umum dapat terlihat
-public-access-default-selected: Ketika menambahkan sebuah acara, pengguna umum akan dipilih secara asali sebagai seorang partisipan.
-Public access is default participant: Akses umum adalah partisipan asali
-public-access-view-others-help: Ketika mengakses sistem dengan akses umum, tentukan apakah pengguna dapat melihat kalender dari pengguna kalender lain atau tidak.
-Public access can view other users: Akses umum dapat melihat pengguna lain
-public-access-can-add-help: Jika dinyalakan, maka pengguna-pengguna yang mengakses sistem melalui Akses Umum akan dapat menambahkan acara-acara baru, namun acara-acara tersebut tidak akan ditampilkan pada kalender sampai seorang administrator menyetujui acara-acara baru tersebut.
-Public access can add events: Akses umum dapat menambahkan acara
-public-access-add-requires-approval-help: Menentukan apakah acara-acara yang ditambahkan melalui akun akses umum membutuhkan perseetujuan terlebih dahulu sebelum ditampilkan.
-Public access new events require approval: Acara baru dari akses umum membutuhkan persetujuan
-public-access-sees-participants-help: Jika dinyalakan, maka pengguna yang mengakses kalender dari akun publik akan dapat melihat  partisipan-partisipan acara jika mereka melihat rincian dari sebuah acara.
-Public access can view participants: Akses umum dapat melihat partisipan
 groups-enabled-help: Menyalakan dukungan grup, memperkenankan pengguna untuk memilih pengguna berdasarkan grup.
 Groups enabled: Grup dinyalakan
 user-sees-his-group-help: Jika dinyalakan, maka pengguna tidak akan dapat melihat pengguna kalender yang tidak berada dalam sedikitnya satu grup dari grup-grup mereka.
 User sees only his groups: Pengguna hanya dapat melihat grupnya
+remember-last-login-help: Jika dinyalakan, maka log masuk pengguna pada halaman log masuk akan diisikan untuk mereka (tetapi tidak kata sandinya),dan preferensi pengguna akan dimuat (termasuk bahasa yang dipilih dan warna yang dikehendaki mereka).
+Remember last login: Ingat log masuk terakhir
+allow-view-other-help: Menentukan apakah seorang pengguna dapat melihat kalender pengguna yang lain atau tidak.
 nonuser-enabled-help: Jika dinyalakan, admin akan memiliki opsi unyuk menambahkan kalender-kalender non-prngguna
 Nonuser enabled: Kalender-kalender Non-Pengguna Dinyalakan
 nonuser-list-help: Dimana menampilkan kalender-kalender non-pengguna dalam daftar partisipan
 Nonuser list: Tampilkan dalam daftar partisipan pada
-reports-enabled-help: Jika dinyalakan maka pengguna akan dapat melihat bagian "Laporan" pada bagian paling bawah dari tiap halaman dan akan diperkenankan untuk membuat laporan sendiri sesuai keinginannya. Sebagai tambahan, pengguna admin dapat membuat laporan global yang akan muncul pada bagian bawah dari semua halaman pengguna.
-Reports enabled: laporan dinyalakan
-subscriptions-enabled-help: Menentukan apakah pengguna jauh dapat mendaftar berlangganan ke kalender pengguna WebCalendar, dengan demikian akan memperkenankan mereka untuk melihat acara-acara pengguna WebCalendar dalam aplikasi yang mendukung iCal (seperti iCal dari Apple atau Mozilla Calendar).
-Allow remote subscriptions: Perkenankan pendaftaran jauh
-categories-enabled-help: Nyalakan dukungan untuk kategori acara.
-Categories enabled: Kategori dinyalakan
 allow-external-users-help: Menentukan apakah seorang pengguna non-kalender dapat ditambahkan ke sebuah acara. Hal ini akan memperkenankan pengguna-pengguna non-kalender untuk didaftarkan sebagai partisipan acara.
 Allow external users: Perkenankan pengguna eksternal
 external-can-receive-notification-help: Jika pengguna eksternal dinyalakan dan penggunaan pos-el dinyalakan, maka pengguna eksternal dapat menerima pos-el pemberitahuan pada saat acara ditambahkan, dimutakhirkan atau dihapus (jika alamat pos-el pengguna eksternal diberikan).
 External users can receive email notifications: Pengguna eksternal dapat menerima pos-el pemberitahuan
 external-can-receive-reminder-help: Jika pengguna eksternal dinyalakan dan penggunaan pos-el dinyalakan, makapengguna eksternal dapat menerima pos-el pengingat (jika alamat pos-el pengguna eksternal diberikan).
 External users can receive email reminders: Pengguna eksternal dapat menerima pos-el pengingat
+reports-enabled-help: Jika dinyalakan maka pengguna akan dapat melihat bagian "Laporan" pada bagian paling bawah dari tiap halaman dan akan diperkenankan untuk membuat laporan sendiri sesuai keinginannya. Sebagai tambahan, pengguna admin dapat membuat laporan global yang akan muncul pada bagian bawah dari semua halaman pengguna.
+Reports enabled: laporan dinyalakan
+categories-enabled-help: Nyalakan dukungan untuk kategori acara.
+Categories enabled: Kategori dinyalakan
 email-enabled-help: Menyalakan atau mematikan semua pengiriman pos-el untuk pemberitahuan dan pengingat. Tetapkan ke "tidak," jika server Anda tidak dikonfigurasikan dengan baik untuk mengirim pos-el.
 Email enabled: Pos-el dinyalakan
 email-default-sender: Menentukan alamat pos-el untuk ditetapkan sebagai pengirim pada saat mengirim pengingat.
@@ -222,82 +162,52 @@ Event rejected by participant: Acara ditolak oleh partisipan
 Allow user to customize colors: Perkenankan pengguna untuk mengkustomisasikan warna
 Enable gradient images for background colors: Nyalakan gambar gradasi untuk warna latar belakang
 Not available: Tidak tersedia
+Document background: Latar belakang dokumen
+Document title: Judul dokumen
+Document text: Teks dokumen
+Table header background: Latar belakang kepala tabel
+Table header text: Teks kepala tabel
+Table cell background: Latar belakang sel tabel
+Event popup background: Latar belakang pop-up acara
+Event popup text: Teks pop-up acara
 
 ########################################
-# Page: adminhome.php
+# Page: templates/adminhome.tpl
 #
-Assistants: Asisten
-Preferences: Preferensi
-Users: Pengguna
-Account: Akun
-Categories: Kategori
-Views: Tampilan
-Layers: Lapisan
-Reports: Laporan
-Delete Events: Hapus Acara
-Activity Log: Log Aktifitas
-Public Preferences: Preferensi Umum
-Unapproved Public Events: Acara Umum yang Belum Disetujui
 Administrative Tools: Peralatan Administratif
 
 ########################################
-# Page: approve_entry.php
+# Page: templates/category.tpl
 #
-Hello: Halo
-The subject was: Subyeknya adalah
-The description is: Keterangannya adalah
-Date: Tanggal
-Time: Waktu
-
-########################################
-# Page: assistant_edit.php
-#
-Admin mode: Modus Admin
-Your assistants: Asisten Anda
-
-########################################
-# Page: availability.php
-#
-day: hari
-
-########################################
-# Page: category.php
-#
-Global: =
 Category Name: Nama Kategori
+Global: =
 Color: Warna
 Add: Tambah
 Delete: Hapus
 
 ########################################
-# Page: catsel.php
+# Page: templates/category_menu.tpl
 #
+Category: Kategori
+
+########################################
+# Page: templates/catsel.tpl
+#
+Categories: Kategori
 Remove: Hapus
 Cancel: Batal
 
 ########################################
-# Page: del_entry.php
-#
-An appointment has been canceled for you by: Sebuah perjanjian telah dibatalkan untuk Anda oleh
-
-########################################
-# Page: docadd.php
+# Page: templates/docadd.tpl
 #
 Description: Keterangan
 
 ########################################
-# Page: edit_entry.php
+# Page: templates/edit_entry.tpl
 #
-am: =
-pm: =
-days: hari
-hours: jam
-minutes: menit
 Edit Entry: Edit Entri
 Add Entry: Tambah Entri
 Details: Perincian
-Participants: Partisipan
-Repeat: Pengulangan
 brief-description-help: Ketikkan sebuah keterangan singkat (sekitar 20 karakter) mengenai acara disini. Teks ini akan ditampilkan sebagai judul acara ketika seorang pengguna melihat kalender.
 Brief Description: Keterangan Singkat
 full-description-help: Ketikkan rincian lengkap mengenai acara ini disini. Teks ini dapat dilihat pada saat seorang pengguna melihat acaranya.
@@ -306,11 +216,7 @@ access-help: Menentukan tingkat akses dari acara.<br /> <i>Umum</i>: Siapa saja 
 Access: Akses
 priority-help: Menentukan prioritas acara. Acara-acara dengan prioritas tinggi akan ditampilkan dalam huruf tebal.
 Priority: Prioritas
-High: Tinggi
-Medium: Sedang
-Low: Rendah
 category-help: Menentukan kategori untuk acara.
-Category: Kategori
 URL: =
 date-help: Menentukan tanggal dari acara.
 Untimed event: Acara tanpa jadwal waktu
@@ -319,11 +225,18 @@ All day event: Acara sepanjang hari
 Timezone Offset: Selisih Zona Waktu
 time-help: Menentukan waktu dari acara.<br />Pilih antara "Acara dengan jadwal waktu" (untuk sebuah acara yang dijadwalkan untuk rentang waktu tertentu pada hari tersebut), "Acara tanpa jadwal waktu" (untuk sebuah acara yang tidak mempunyai sebuah jadwal waktu (seperti liburan), atau "Acara sepanjang hari" (untuk suatu acara yang memakan waktu sepanjang hari (seperti berada di luar kantor).
 duration-help: Menentukan durasi (dalam jam:menit) dari acara.  <br /><i>Bidangisian ini dapat dibiarkan kosong.</i>
+Duration: Durasi
+hours: jam
+minutes: menit
 end-time-help: Menentukan waktu dimana acara ini diperkirakan akan selesai.
+Participants: Partisipan
+Users: Pengguna
+Groups: Grup
 participants-help: Mendaftarkan partisipan dari entri ini.
 Availability: Ketersediaan
 external-participants-help: Menentukan sebuah daftar dari partisipan untuk acara yang bukan milik pengguna kalender. Pengguna harus didaftarkan satu orang per baris dan dapat menyertakan sebuah alamat pos-el. Jika sebuah alamat pos-el ditentukan, maka pengguna memenuhi syarat untuk menerima pemberitahuan dan pengingat.
 External Participants: Partisipan Eksternal
+Repeat: Pengulangan
 repeat-type-help: Pilih seberapa sering acara ini harus diulangi.<i>Bulanan (berdasarkan hari)</i> memperkenankan sebuah acara untuk diulangi pada Senin pertama setiap bulan, Kamis ketiga setiap bulan, dsb. <i>Bulanan (berdasarkan tanggal)</i> memperkenankan sebuah acara untuk diulangi pada tanggal yang sama setiap bulannya.
 Daily: Harian
 Weekly: Mingguan
@@ -337,14 +250,275 @@ repeat-frequency-help: Menentukan seberapa sering acara harus diulangi. Nilai as
 Frequency: Frekuensi
 All: Semua
 Send Reminder: Kirim Pengingat
+Yes: Ya
+No: Tidak
+days: hari
+
+########################################
+# Page: templates/edit_group.tpl
+#
+Add Group: tambah Grup
+Edit Group: Edit Grup
+Group name: Nama grup
+Updated: Dimutakhirkan
+Created by: Dibuat oleh
+
+########################################
+# Page: templates/edit_layer.tpl
+#
+Edit Layer: Edit Lapisan
+Add Layer: Tambah Lapisan
+Source: Sumber
+Duplicates: Duplikat
+Show layer events that are the same as your own: Perlihatkan lapisan acara yang sama seperti milik Anda
+Add to My Calendar: Tambahkan ke Kalender Saya
+
+########################################
+# Page: templates/edit_nonusers.tpl
+#
+Edit User: Edit Pengguna
+Add User: Tambah Pengguna
+Calendar ID: ID Kalender
+word characters only: hanya dapat berisi karakter-karakter (a-zA-Z_0-9)
+First Name: Nama Depan
+Last Name: Nama Belakang
+Admin: =
+
+########################################
+# Page: templates/edit_report.tpl
+#
+Add Report: Tambah Laporan
+Edit Report: Edit Laporan
+Report name: Nama laporan
+Include standard header/trailer: Sertakan header/footer standar
+Include previous/next links: Sertakan tautan sebelumnya/berikutnya
+Include empty dates: Sertakan tanggal kosong
+Date range: Rentang tanggal
+Template variables: Variabel template
+Page template: Template halaman
+Day template: Template hari
+Event template: Template acara
+
+########################################
+# Page: templates/edit_user.tpl
+#
+Change Password: Ganti Kata Sandi
+New Password: Kata Sandi Baru
+again: lagi
+Set Password: Tetapkan Kata Sandi
+Disabled for demo: Dimatikan untuk demo
+Username: Nama pengguna
+Password: Kata sandi
+E-mail address: Alamat pos-el
+Enabled: Dinyalakan
+
+########################################
+# Page: templates/edit_views.tpl
+#
+Add View: Tambahkan Tampilan
+Edit View: Edit Tampilan
+View Name: Nama Tampilan
+View Type: Tipe Tampilan
+Day: Hari
+Week: Pekan
+Month: Bulan
+Select: Pilih
+
+########################################
+# Page: templates/error.tpl
+#
+Error: Terjadi Kesalahan
+The following error occurred: Kesalahan berikut ini telah terjadi
+
+########################################
+# Page: templates/export.tpl
+#
+Export: Ekspor
+Export format: Format pengeksporan
+Include all layers: Sertakan semua lapisan
+Export all dates: Ekspor semua tanggal
+Start date: Tanggal mulai
+End date: Tanggal akhir
+Modified since: Dimodifikasi sejak
+
+########################################
+# Page: templates/import.tpl
+#
+Import Results: Hasil Pengimporan
+Import: Impor
+Disabled: Dimatikan
+Import format: Format pengimporan
+Exclude private records: Kecualikan data-data pribadi
+Overwrite Prior Import: Timpa Pengimporan Terdahulu
+Events successfully imported: Acara-acara telah berhasil diimpor
+Events from prior import marked as deleted: Acara-acara dari pengimporan terdahulu telah ditandai sebagai dihapus
+Conflicting events: Acara-acara yang Mengalami Konflik
+Errors: Kesalahan-kesalahan
+
+########################################
+# Page: templates/layers.tpl
+#
+Layers are currently: Lapisan saat ini
+Disable Layers: Matikan Lapisan
+Add layer: Tambahkan lapisan
+Layer: Lapisan
+
+########################################
+# Page: templates/list_unapproved.tpl
+#
+View this entry: Lihat entri ini
+Approve/Confirm: Setujui/Kkonfirmasi
+Reject: Tolak
+
+########################################
+# Page: templates/login.tpl
+#
+Login: Log Masuk
+calendar: kalender
+cookies-note: <b>Catatan:</b> Aplikasi ini mengharuskan dukungan kuki pada perambah Anda dinyalakan.
+
+########################################
+# Page: templates/menu.tpl
+#
+Logout: Log Keluar
+
+########################################
+# Page: templates/pref.tpl
+#
+Preferences: Preferensi
+Default Category: Kategori Asali
+hour: jam
+minute: menit
+time-interval-help: Tentukan interval waktu untuk tampilan pekan dan tampilan hari.
+Time interval: Interval waktu
+auto-refresh-help: Jika dinyalakan, maka tampilan hari, tampilan pekan, tampilan bulan dan halaman-halaman daftar acara belum disetujui semuanya akan menyegarkan diri mereka sendiri secara otomatis secara periodik.
+Auto-refresh calendars: Segarkan kalender-kalender secara otomatis
+auto-refresh-time-help: Jika penyegaran otomatis dinyalakan, maka tentukan jarak waktu antara tiap penyegaran disini.
+Auto-refresh time: Waktu penyegaran otomatis
+Email me event notification: Kirim pos-el kepada saya mengenai pemberitahuan acara
+I want to approve events: Saya ingin menyetujui acara
+
+########################################
+# Page: templates/purge.tpl
+#
+Delete Events: Hapus Acara
+Purging events for: Bersihkan acara-acara untuk
+Records deleted from: Acara-acara telah dihapus dari
+Finished: Selesai
+Delete all events before: Hapus semua acara sebelum
+Preview delete: Pratinjau Penghapusan
+Are you sure you want to delete events for: Anda yakin ingin menghapus acara-acara untuk
+
+########################################
+# Page: templates/users.tpl
+#
+Add New User: Tambahkan Pengguna Baru
+denotes administrative user: menandakan pengguna administratif
+Add New Group: Tambahkan Grup Baru
+Add New NonUser Calendar: Tambahkan kalender Non-Pengguna Baru
+
+########################################
+# Page: templates/views.tpl
+#
+Add New View: Tambahkan Tampilan Baru
+
+########################################
+# Page: templates/view_entry.tpl
+#
+Status: =
+Repeat Type: Tipe Pengulangan
+Rejected: Ditolak
+Approve/Confirm entry: Setujui/Konfirmasi entri
+Approve this entry?: Setujui entri ini?
+Reject entry: Tolak entri
+Reject this entry?: Tolak entri ini?
+Set category: Tetapkan kategori
+Edit entry: Edit entri
 Delete entry: Hapus entri
+This will delete this entry for all users.: Ini akan menghapus entri ini untuk semua pengguna.
+Copy entry: Salin entri
+Email all participants: Kirim pos-el ke semua partisipan
+Hide activity log: Sembunyikan log aktifitas
+Show activity log: Perlihatkan log aktifitas
+Export this entry to: Ekspor entri ini ke
+
+########################################
+# Page: templates/view_t.tpl
+#
+Previous: Sebelumnya
+Next: Berikutnya
+
+########################################
+# Page: add_entry.php
+#
+Error adding event: Terjadi kesalahan pada saat menambahkan acara
+
+########################################
+# Page: admin.php
+#
+Year: Tahun
+Settings: Pengaturan
+Other: Lainnya
+Email: Pos-el
+Colors: Warna
+12 hour: 12 jam
+24 hour: 24 jam
+End Time: Waktu Akhir
+Top: Bagian atas
+Bottom: Bagian bawah
+
+########################################
+# Page: adminhome.php
+#
+Views: Tampilan
+Layers: Lapisan
+Reports: Laporan
+
+########################################
+# Page: ajax.php
+#
+Reminder: Pengingat
+Change the date and time of this entry?: Ganti tanggal dan waktu dari entri ini?
+You have not entered a Brief Description.: Anda tidak mengetikkan Keterangan Singkat
+Please add a participant.: Silakan tambahkan seorang partisipan
+You have not entered a valid time of day.: Anda tidak mengetikkan sebuah waktu hari yang sahih
+time entered before preferred work hours...: Waktu yang telah Anda ketikkan dimulai sebelum jam kerja Anda. Apakah memang waktu ini yang Anda inginkan?
+
+########################################
+# Page: ajax_entries.php
+#
+External User: Pengguna Eksternal
+
+########################################
+# Page: approve_entry.php
+#
+Hello: Halo
+The subject was: Subyeknya adalah
+The description is: Keterangannya adalah
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: Sebuah perjanjian telah dibatalkan untuk Anda oleh
+
+########################################
+# Page: docadd.php
+#
+Database error: Terjadi kesalahan pada database
+
+########################################
+# Page: edit_entry.php
+#
+High: Tinggi
+Medium: Sedang
+Low: Rendah
 
 ########################################
 # Page: edit_entry_handler.php
 #
+The following conflicts with the suggested time: Yang berikut ini konflik dengan waktu yang ditunjukkan
 A new appointment has been made for you by: Sebuah perjanjian telah dibuat untuk Anda oleh
 An appointment has been updated by: Sebuah perjanjian telah dimutakhirkan oleh
-The following conflicts with the suggested time: Yang berikut ini konflik dengan waktu yang ditunjukkan
 Please look on: Silakan lihat
 to accept or reject this appointment: untuk menerima atau menolak perjanjian ini
 to view this appointment: untuk melihat perjanjian ini
@@ -353,41 +527,25 @@ Your suggested time of: Waktu yang Anda tunjukkan untuk
 conflicts with the following existing calendar entries: telah konflik dengan entri-entri kalender yang sudah ada berikut ini
 
 ########################################
-# Page: edit_layer.php
+# Page: edit_group.php
 #
-Add Layer: Tambah Lapisan
-Edit Layer: Edit Lapisan
-Source: Sumber
-Duplicates: Duplikat
-Show layer events that are the same as your own: Perlihatkan lapisan acara yang sama seperti milik Anda
-Add to My Calendar: Tambahkan ke Kalender Saya
-Delete layer: Hapus layer
+Unnamed Group: Grup Belum Bernama
 
 ########################################
-# Page: edit_nonusers.php
+# Page: edit_group_handler.php
 #
-NONUSER_PREFIX not set: NONUSER_PREFIX belum ditetapkan dalam berkas config.php.
-word characters only: hanya dapat berisi karakter-karakter (a-zA-Z_0-9)
-Add User: Tambah Pengguna
-Edit User: Edit Pengguna
-Calendar ID: ID Kalender
-First Name: Nama Depan
-Last Name: Nama Belakang
+You must specify a group name: Anda harus menentukan sebuah nama grup
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Terjadi Kesalahan
-Import Results: Hasil Pengimporan
-Events successfully imported: Acara-acara telah berhasil diimpor
-Errors: Kesalahan-kesalahan
 There was an error parsing the import file or no events were returned: Telah terjadi kesalahan pada saat menguraikan berkas impor atau tidak ada acara yang ditemukan
 
 ########################################
 # Page: edit_report.php
 #
-Tomorrow: Besok
 Today: Hari ini
+Tomorrow: Besok
 Yesterday: Kemarin
 Day before yesterday: Kemarin lusa
 Next week: Pekan depan
@@ -406,26 +564,7 @@ Next year: Tahun depan
 This year: Tahun ini
 Last year: Tahun lalu
 Year before last: Dua tahun lalu
-Next 14 days: 14 hari ke depan
-Next 30 days: 30 hari ke depan
-Next 60 days: 60 hari ke depan
-Next 90 days: 90 hari ke depan
-Next 180 days: 180 hari ke depan
-Next 365 days: 365 hari ke depan
 Unnamed Report: Laporan Belum Bernama
-Add Report: Tambah Laporan
-Edit Report: Edit Laporan
-Report name: Nama laporan
-User: Pengguna
-Current User: Pengguna saat ini
-Include standard header/trailer: Sertakan header/footer standar
-Include previous/next links: Sertakan tautan sebelumnya/berikutnya
-Include empty dates: Sertakan tanggal kosong
-Date range: Rentang tanggal
-Template variables: Variabel template
-Page template: Template halaman
-Day template: Template hari
-Event template: Template acara
 
 ########################################
 # Page: edit_report_handler.php
@@ -440,65 +579,41 @@ Edit Custom Script/Stylesheet: Edit Script/Stylesheet Spesial
 Edit Custom Trailer: Edit Footer Spesial
 
 ########################################
-# Page: edit_user.php
+# Page: edit_views.php
 #
-Username: Nama pengguna
-E-mail address: Alamat pos-el
-Password: Kata sandi
-again: lagi
-Enabled: Dinyalakan
-Disabled for demo: Dimatikan untuk demo
-Change Password: Ganti Kata Sandi
-New Password: Kata Sandi Baru
-Set Password: Tetapkan Kata Sandi
+Unnamed View: Tampilan Belum Dinamai
+
+########################################
+# Page: edit_views_handler.php
+#
+You must specify a view name: Anda harus menentukan sebuah nama tampilan
 
 ########################################
 # Page: export.php
 #
-Export: Ekspor
-Export format: Format pengeksporan
-Include all layers: Sertakan semua lapisan
-Export all dates: Ekspor semua tanggal
-Start date: Tanggal mulai
-End date: Tanggal akhir
-Modified since: Dimodifikasi sejak
-
-########################################
-# Page: export_handler.php
-#
 export format not defined or incorrect: format pengeksporan tidak ditentukan atau salah
-
-########################################
-# Page: groups.php
-#
-Add New Group: Tambahkan Grup Baru
-
-########################################
-# Page: group_edit.php
-#
-Unnamed Group: Grup Belum Bernama
-Add Group: tambah Grup
-Edit Group: Edit Grup
-Group name: Nama grup
-Updated: Dimutakhirkan
-Created by: Dibuat oleh
-
-########################################
-# Page: group_edit_handler.php
-#
-You must specify a group name: Anda harus menentukan sebuah nama grup
 
 ########################################
 # Page: help_admin.php
 #
-Auto-refresh calendars: Segarkan kalender-kalender secara otomatis
-auto-refresh-help: Jika dinyalakan, maka tampilan hari, tampilan pekan, tampilan bulan dan halaman-halaman daftar acara belum disetujui semuanya akan menyegarkan diri mereka sendiri secara otomatis secara periodik.
-Auto-refresh time: Waktu penyegaran otomatis
-auto-refresh-time-help: Jika penyegaran otomatis dinyalakan, maka tentukan jarak waktu antara tiap penyegaran disini.
+Help: Bantuan
 Display days with events in bold in year view: Tampilkan hari dengan acara dalam huruf tebal dalam tampilan tahun
 Display weekends in week view: Tampilkan akhir pekan dalam tampilan pekan
-Time interval: Interval waktu
-time-interval-help: Tentukan interval waktu untuk tampilan pekan dan tampilan hari.
+Public Access: Akses Umum
+Allow public access: Perkenankan akses umum
+allow-public-access-help: Jika dinyalakan, maka kalender dapat digunakan sebagai sebuah kalender umum baca-saja yang tidak membutuhkan pengguna untuk log masuk.
+Public access can add events: Akses umum dapat menambahkan acara
+public-access-can-add-help: Jika dinyalakan, maka pengguna-pengguna yang mengakses sistem melalui Akses Umum akan dapat menambahkan acara-acara baru, namun acara-acara tersebut tidak akan ditampilkan pada kalender sampai seorang administrator menyetujui acara-acara baru tersebut.
+Public access can view other users: Akses umum dapat melihat pengguna lain
+public-access-view-others-help: Ketika mengakses sistem dengan akses umum, tentukan apakah pengguna dapat melihat kalender dari pengguna kalender lain atau tidak.
+Public access can view participants: Akses umum dapat melihat partisipan
+public-access-sees-participants-help: Jika dinyalakan, maka pengguna yang mengakses kalender dari akun publik akan dapat melihat  partisipan-partisipan acara jika mereka melihat rincian dari sebuah acara.
+Public access is default participant: Akses umum adalah partisipan asali
+public-access-default-selected: Ketika menambahkan sebuah acara, pengguna umum akan dipilih secara asali sebagai seorang partisipan.
+Public access new events require approval: Acara baru dari akses umum membutuhkan persetujuan
+public-access-add-requires-approval-help: Menentukan apakah acara-acara yang ditambahkan melalui akun akses umum membutuhkan perseetujuan terlebih dahulu sebelum ditampilkan.
+Public access visible by default: Secara asali akses umum dapat terlihat
+public-access-default-visible: Acara-acara pada kalender umum akan muncul pada kalender semua pengguna secara otomatis. 
 Nonuser: Kalender Non-Pengguna
 user-customize-color: Menentukan apakah pengguna diperkenankan untuk mengubah skema warna meeka sendiri.
 enable-gradient-help: Gunakan warna gradasi untk latar belakang sel.
@@ -514,7 +629,6 @@ Report Bug: Laporkan Cacat Program
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Menambahkan/Mengedit Entri-entri Kalender
-Repeat Type: Tipe Pengulangan
 Repeat End Date: Tanggal Akhir Pengulangan
 Repeat Day: Hari Pengulangan
 repeat-day-help: Menentukan pada hari apa acara harus diulangi. Pilihan ini digunakan hanya apabila <i>Tipe Pengulangan</i> ditetapkan ke <i>Mingguan</i>.
@@ -522,18 +636,14 @@ repeat-day-help: Menentukan pada hari apa acara harus diulangi. Pilihan ini digu
 ########################################
 # Page: help_import.php
 #
-Import: Impor
 Palm Desktop: =
 This form will allow you to import entries from the Palm Desktop Datebook.: Formulir ini akan memperkenankan Anda untuk mengimpor entri-entri dari Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Ini terletak dalam direktori Palm Anda dalam <tt>datebook/datebook.dat</tt> dalam sebuah sub-direktori yang dinamai berdasarkan nama pengguna Anda.
 The following entries will not be imported: Entri-entri berikut ini tidak akan diimpor
 Entries older than the current date: Entri-entri yang lebih lama dari tanggal hari ini
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Semua yang diimpor dari Palm akan ditimpa selama pengimporan selanjutnya (terkecuali tanggal acara telah terlewati).
 Therefore, updates should be made in the Palm Desktop.: Dengan demikian, pemutakhiran harus dilakukan di Palm Desktop.
 vCal: =
 The following formats have been tested: Format-format berikut ini telah diuji coba
 Enabling: Dinyalakan
-Overwrite Prior Import: Timpa Pengimporan Terdahulu
 
 ########################################
 # Page: help_index.php
@@ -544,96 +654,30 @@ Help Index: Indeks Bantuan
 # Page: help_layers.php
 #
 Add/Edit/Delete: Tambah/Edit/Hapus
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Dengan mengklik tautan Edit Lapisan dalam bagian Admin pada bagian bawah halaman akan memperkenankan Anda untuk menambahkan/mengedit/menghapus lapisan.
 The text color of the new layer that will be displayed in your calendar.: Warna teks dari lapisan yang baru yang akan ditampilkan dalam kalender Anda.
 Disabling: Dimatikan
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Tekan tautan Matikan Lapisak dalam bagian admin pada bagian bawah halaman untuk mematikan lapisan.
 If checked, events that are duplicates of your events will be shown.: Jika dicentang, maka acara-acara yang merupakan duplikat dari acara-acara Anda akan ditampilkan.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Tekan tautan Nyalakan Lapisan dalam bagian admin pada bagian bawah halaman untuk menyalakan lapisan.
 Specifies the user that you would like to see displayed in your calendar.: Menentukan pengguna yang Anda inginkan untuk ditampilkan dalam kalende Anda.
 
 ########################################
 # Page: help_pref.php
 #
-Default Category: Kategori Asali
 default-category-help: Menentukan kategori asali untuk acara-acara baru.
 When I am the boss: Saat saya menjadi bos
-Email me event notification: Kirim pos-el kepada saya mengenai pemberitahuan acara
 email-boss-notifications-help: Menentukan apakah bos-bos akan menerima pos-el-pos-el sehubungan pemberitahuan acara.
-I want to approve events: Saya ingin menyetujui acara
 boss-approve-event-help: Menentukan apakah bos akan diharuskan untuk menyetujui acara yang ditambahkan oleh asisten.
 Subscribe/Publish: Daftar Berlangganan/Publikasi
-allow-remote-subscriptions-help: Menentukan apakah pengguna jauh dapat mendaftar berlangganan ke kelender Anda, memperkenankan mereka untuk melihat acara-acara Anda dalam sebuah aplikasi yang mendukung iCal (seperti iCal dari Apple atau Mozilla Calendar).
 remote-subscriptions-url-help: Menampilkan URL yang akan digunakan oleh pengguna jauh untuk daftar berlangganan ke kalender Anda.
 
 ########################################
 # Page: import.php
 #
-Disabled: Dimatikan
-Import format: Format pengimporan
-Exclude private records: Kecualikan data-data pribadi
-
-########################################
-# Page: import_handler.php
-#
-Events from prior import marked as deleted: Acara-acara dari pengimporan terdahulu telah ditandai sebagai dihapus
-Conflicting events: Acara-acara yang Mengalami Konflik
 The import file contained no data: Berksa pengimporan tidak berisi data
 
 ########################################
 # Page: layers.php
 #
-Layer: Lapisan
-Edit layer: Edit lapisan
-Layers are currently: Lapisan saat ini
-Disable Layers: Matikan Lapisan
-Click here: Klik disini
-to modify the layers settings for the: untuk memodifikasi pengaturan lapisan untuk
-calendar: kalender
-Add layer: Tambahkan lapisan
-
-########################################
-# Page: list_unapproved.php
-#
-Approve/Confirm: Setujui/Kkonfirmasi
-Reject: Tolak
-View this entry: Lihat entri ini
-Approve this entry?: Setujui entri ini?
-Reject this entry?: Tolak entri ini?
-
-########################################
-# Page: login-app.php
-#
-Login: Log Masuk
-Access public calendar: Klik disini untuk mengakses kalender umum
-cookies-note: <b>Catatan:</b> Aplikasi ini mengharuskan dukungan kuki pada perambah Anda dinyalakan.
-
-########################################
-# Page: login.php
-#
-Invalid login: Log masuk taksahih
-
-########################################
-# Page: nonusers.php
-#
-Add New NonUser Calendar: Tambahkan kalender Non-Pengguna Baru
-
-########################################
-# Page: pref.php
-#
-Save Preferences: Simpan Preferensi
-hour: jam
-minute: menit
-
-########################################
-# Page: purge.php
-#
-Purging events for: Bersihkan acara-acara untuk
-Finished: Selesai
-Delete all events before: Hapus semua acara sebelum
-Preview delete: Pratinjau Penghapusan
-Are you sure you want to delete events for: Anda yakin ingin menghapus acara-acara untuk
-Records deleted from: Acara-acara telah dihapus dari
+Admin mode: Modus Admin
 
 ########################################
 # Page: reject_entry.php
@@ -644,12 +688,10 @@ An appointment has been rejected by: Sebuah perjanjian telah ditolak oleh
 # Page: report.php
 #
 cont.: bersambung
-Approved: Disetujui
-Deleted: Dihapus
-Rejected: Ditolak
 Waiting for approval: Menunggu persetujuan
+Deleted: Dihapus
+Approved: Disetujui
 Unknown: Tidak Diketahui
-to manage reports for the Public Access calendar: untuk mengelola laporan untuk kalender Akses Umum
 Add new report: Tambahkan laporan baru
 Manage Reports: Kelola Laporan
 
@@ -677,8 +719,8 @@ Set Category: Tetapkan Kategori
 ########################################
 # Page: users.php
 #
-denotes administrative user: menandakan pengguna administratif
-Add New User: Tambahkan Pengguna Baru
+Account: Akun
+NonUser Calendars: Kalender Non-Pengguna
 
 ########################################
 # Page: usersel.php
@@ -686,64 +728,32 @@ Add New User: Tambahkan Pengguna Baru
 Reset: =
 
 ########################################
-# Page: views.php
-#
-Add New View: Tambahkan Tampilan Baru
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Tampilan Belum Dinamai
-Add View: Tambahkan Tampilan
-Edit View: Edit Tampilan
-View Name: Nama Tampilan
-View Type: Tipe Tampilan
-Week (Users horizontal): Pekan (Daftar pengguna secara horizontal)
-Week (Users vertical): Pekan (Daftar pengguna secara vertikal)
-Week (Timebar): Pekan (Bilah waktu)
-Month (Timebar): Bulan (Bilah waktu)
-Month (side by side): Bulan (bersebelahan)
-Month (on same calendar): Bulan (pada kalender yang sama)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: Anda harus menentukan sebuah nama tampilan
-
-########################################
-# Page: view_d.php
+# Page: view_t.php
 #
 No users for this view: Tidak ada pengguna untuk tampilan ini
 
 ########################################
-# Page: view_entry.php
-#
-Assistant mode: Modus Asisten
-Status: =
-External User: Pengguna Eksternal
-Approve/Confirm entry: Setujui/Konfirmasi entri
-Reject entry: Tolak entri
-Set category: Tetapkan kategori
-Copy entry: Salin entri
-This will delete this entry for all users.: Ini akan menghapus entri ini untuk semua pengguna.
-Edit entry: Edit entri
-Edit repeating entry for all dates: Edit entri berulang untuk semua tanggal
-Delete repeating event for all dates: hapus entri berulang untuk semua tanggal
-Edit entry for this date: Edit entri untuk tanggal ini
-Delete entry only for this date: Hapus entri hanya untuk tanggal ini
-This will delete the entry from your calendar.: Ini akan menghapus entri dari kalender Anda.
-Do you want to add this entry to your calendar?: Apakah Anda ingin menambahkan entri ini ke kelender Anda?
-This will add the entry to your calendar.: Ini akan menambahkan entri ke kalender Anda.
-Email all participants: Kirim pos-el ke semua partisipan
-Hide activity log: Sembunyikan log aktifitas
-Show activity log: Perlihatkan log aktifitas
-Export this entry to: Ekspor entri ini ke
-Palm Pilot: =
-
-########################################
 # Page: week_details.php
 #
+Assistant mode: Modus Asisten
 New Entry: Entri Baru
+
+########################################
+# Page: includes/access.php
+#
+Assistants: Asisten
+
+########################################
+# Page: includes/activity_log.php
+#
+Event approved: Menyetujui acara
+Event created: Membuat acara
+Event deleted: Menghapus acara
+Invalid login: Log masuk taksahih
+Notification sent: Mengirim pemberitahuan
+Event rejected: Menolak acara
+Reminder sent: Mengirim pengingat
+Event updated: Memutakhirkan acara
 
 ########################################
 # Page: includes/date_formats.php
@@ -755,21 +765,8 @@ Dec: Des
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: melebihi batasan XXX acara per hari
-All Attendees: Semua Peserta
-Busy: Sibuk
-Tentative: Sebagian
-Event approved: Menyetujui acara
-Event created: Membuat acara
-Event deleted: Menghapus acara
-Notification sent: Mengirim pemberitahuan
-Event rejected: Menolak acara
-Reminder sent: Mengirim pengingat
-Event updated: Memutakhirkan acara
 Changes successfully saved: Perubahan-perubahan telah berhasil disimpan
-Event: Acara
-Action: Tindakan
-Printer Friendly: Versi Cetak
-Generate printer-friendly version: Buat versi cetak
+day: hari
 January: Januari
 February: Februari
 March: Maret
@@ -792,11 +789,6 @@ Aug: Ags
 Sep: =
 Oct: Okt
 Nov: Nop
-The following error occurred: Kesalahan berikut ini telah terjadi
-Add N hours to: Tambahkan N jam ke
-Subtract N hours from: Kurangi N jam dari
-same as: sama seperti
-server time: waktu server
 Error approving event: Terjadi kesalahan pada saat sedang menyetujui acara
 Sunday: Ahad
 Monday: Senin
@@ -814,11 +806,16 @@ Fri: Jum
 Sat: Sab
 
 ########################################
-# Page: includes/trailer.php
+# Page: includes/menu.php
 #
 My Calendar: Kalender Saya
+Unapproved Events: Acara yang Belum Disetujui
+
+########################################
+# Page: includes/trailer.php
+#
 Add New Entry: Tambahkan Entri Baru
-Logout: Log Keluar
+Current User: Pengguna saat ini
 Back to My Calendar: Kembali ke Kalender Saya
 Go to: Pergi ke
 Manage calendar of: Kelola kalender
@@ -843,7 +840,6 @@ Greek: Bahasa Yunani
 Holo (Taiwanese): Holo (Bahasa Taiwan)
 Hungarian: Bahasa Hungaria
 Icelandic: Bahasa Iceland
-Indonesian: Bahasa Indonesia
 Italian: Bahasa Italia
 Japanese: Bahasa Jepang
 Korean: Bahasa Korea
@@ -859,51 +855,44 @@ Turkish: Bahasa Turki
 Welsh: Bahasa Wales
 
 ########################################
-# Page: includes/user-imap.php
-#
-Invalid user login: Log masuk pengguna taksahih
-
-########################################
-# Page: includes/user-nis.php
-#
-incorrect password: kata sandi salah
-no such user: pengguna tidak dikenali
-
-########################################
 # Page: includes/xcal.php
 #
 Unnamed Event: Acara Belum Bernama
 Event Imported: Acara Telah Diimpor
 
 ########################################
-# Page: includes/classes/WebCalMailer.class
+# Page: includes/classes/WebCalMailer.class.php
 #
 Notification: Pemberitahuan
 
 ########################################
-# Page: includes/js/availability.php
+# Page: includes/classes/user/User.class.php
 #
-Change the date and time of this entry?: Ganti tanggal dan waktu dari entri ini?
+incorrect password: kata sandi salah
+no such user: pengguna tidak dikenali
 
 ########################################
-# Page: includes/js/edit_entry.php
+# Page: includes/smarty/function.daily_matrix.php
 #
-You have not entered a Brief Description.: Anda tidak mengetikkan Keterangan Singkat
-time entered before preferred work hours...: Waktu yang telah Anda ketikkan dimulai sebelum jam kerja Anda. Apakah memang waktu ini yang Anda inginkan?
-Please add a participant.: Silakan tambahkan seorang partisipan
-You have not entered a valid time of day.: Anda tidak mengetikkan sebuah waktu hari yang sahih
+All Attendees: Semua Peserta
+Busy: Sibuk
+Tentative: Sebagian
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/smarty/function.generate_export_select.php
 #
-Invalid color: Warna taksahih
+Palm Pilot: =
 
 ########################################
-# Page: includes/menu/index.php
+# Page: includes/smarty/function.print_timezone_list.php
 #
-Unapproved Events: Acara yang Belum Disetujui
+Add N hours to: Tambahkan N jam ke
+Subtract N hours from: Kurangi N jam dari
+same as: sama seperti
+server time: waktu server
 
 ########################################
-# Page: tools/send_reminders.php
+# Page: includes/smarty/function.time_selection.php
 #
-Reminder: Pengingat
+am: =
+pm: =

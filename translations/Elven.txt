@@ -12,7 +12,7 @@
 # Note:  Elven folk do not use abbreviations much.
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -45,38 +45,55 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: activity_log.php
-#
-Next: Ento
-Previous: Yana
-
-########################################
-# Page: admin.php
-#
-Week: Enquie
-to: a'
-Bottom: Sundo
-Top: Telmello
-Yes: Um
-No: N'uma
-Anyone: Ai'er
-
-########################################
-# Page: adminhome.php
-#
-Account: Quentale
-
-########################################
-# Page: approve_entry.php
+# Page: templates/activity_log.tpl
 #
 Time: Luume'
 
 ########################################
-# Page: availability.php
+# Page: templates/admin.tpl
 #
-year: atendea
-month: asta
-day: re
+to: a'
+Anyone: Ai'er
+
+########################################
+# Page: templates/edit_entry.tpl
+#
+All: Ilya
+Yes: Um
+No: N'uma
+
+########################################
+# Page: templates/edit_user.tpl
+#
+again: au'
+
+########################################
+# Page: templates/edit_views.tpl
+#
+Week: Enquie
+
+########################################
+# Page: templates/view_t.tpl
+#
+Previous: Yana
+Next: Ento
+
+########################################
+# Page: admin.php
+#
+Top: Telmello
+Bottom: Sundo
+
+########################################
+# Page: ajax.php
+#
+SU: Tárion
+MO: Elenya
+TU: Anarya
+WE: Isilya
+TH: Alduya
+FR: Menelya
+SA: Valany
 
 ########################################
 # Page: edit_entry.php
@@ -84,21 +101,13 @@ day: re
 High: Taurn
 Medium: Ened
 Low: N'taurn
-MO: Elenya
-SU: Tárion
-All: Ilya
 
 ########################################
 # Page: edit_report.php
 #
-Tomorrow: Tul're
 Today: A're
+Tomorrow: Tul're
 Yesterday: Tella're
-
-########################################
-# Page: edit_user.php
-#
-again: au'
 
 ########################################
 # Page: register.php
@@ -111,10 +120,14 @@ Welcome: Creoso
 more: ner
 
 ########################################
+# Page: users.php
+#
+Account: Quentale
+
+########################################
 # Page: view_entry.php
 #
 by: ed'
-boss: kano
 
 ########################################
 # Page: includes/date_formats.php
@@ -130,11 +143,11 @@ write: tengw
 ########################################
 # Page: includes/functions.php
 #
-WK: ENQUIE
 after: ale'
 before: n'ala
 end: tál
 start: mas
+day: re
 January: Narvinye
 February: Nénime
 March: Súlime
@@ -173,7 +186,7 @@ Fri: Menelya
 Sat: Valany
 
 ########################################
-# Page: includes/trailer.php
+# Page: includes/menu.php
 #
 Home: Eska
 
@@ -183,15 +196,6 @@ Home: Eska
 Elven: Eldalie
 
 ########################################
-# Page: includes/xcal.php
+# Page: includes/smarty/function.display_month.php
 #
-TU: Anarya
-WE: Isilya
-TH: Alduya
-FR: Menelya
-SA: Valany
-
-########################################
-# Page: install/index.php
-#
-NOT: IL
+WK: ENQUIE

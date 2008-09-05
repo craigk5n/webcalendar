@@ -5,7 +5,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -38,27 +38,35 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: activity_log.php
-#
-Next: Volgende
-Previous: Vorige
-
-########################################
-# Page: admin.php
-#
-Month: Maand
-Year: Jaar
-
-########################################
-# Page: approve_entry.php
+# Page: templates/activity_log.tpl
 #
 Date: Datum
 
 ########################################
-# Page: edit_entry.php
+# Page: templates/edit_views.tpl
 #
-MO: MA
+Month: Maand
+
+########################################
+# Page: templates/view_t.tpl
+#
+Previous: Vorige
+Next: Volgende
+
+########################################
+# Page: admin.php
+#
+Year: Jaar
+
+########################################
+# Page: ajax.php
+#
 SU: SO
+MO: MA
+TU: DI
+WE: WO
+TH: DO
+FR: VR
 
 ########################################
 # Page: edit_report.php
@@ -100,11 +108,3 @@ Tue: Din
 Wed: Woe
 Thu: Don
 Fri: Vry
-
-########################################
-# Page: includes/xcal.php
-#
-TU: DI
-WE: WO
-TH: DO
-FR: VR

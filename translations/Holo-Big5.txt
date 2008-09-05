@@ -3,7 +3,7 @@
 # Translated by: Henry H. Tan-Tenn <share2002nov@lomaji.com>
 #
 # $Id$
-# Translation last updated on 04-20-2007
+# Translation last updated on 09-05-2008
 
 
 ################################################################################
@@ -36,56 +36,39 @@ __month__ __yyyy__: =
 
 
 ########################################
-# Page: about.php
+# Page: templates/about.tpl
 #
 Title: 網路行事曆
 
 ########################################
-# Page: access.php
+# Page: templates/access.tpl
 #
-Database error: 資料庫錯誤
 Go: 來去
 Save: 儲存
-Public Access: 公眾入口
-Admin: 管理
-Calendar: 行事曆
 Public: 公眾 e
 Confidential: 機密 e
 Private: 私人 e
 
 ########################################
-# Page: activity_log.php
+# Page: templates/activity_log.tpl
 #
-Next: 後一個
-Previous: 前一個
+Activity Log: 使用紀錄
+Action: 行動
+User: 使用者
+Calendar: 行事曆
+Date: 日期
+Time: 時間
+Event: 活動
 
 ########################################
-# Page: add_entry.php
+# Page: templates/admin.tpl
 #
-confidential: 機密 e
-private: 私人 e
-Error adding event: 記事加入發生錯誤
-
-########################################
-# Page: admin.php
-#
-Select: 選擇
-Day: 日
-Week: 週
-Month: 月
-Year: 年
 System Settings: 系統設定
-Help: 說明
-Settings: 設定中
-Colors: 顏色
 Language: 語系
 Your browser default language is: 你 e 瀏覽器預設 e 語系是
 None: 無
 Week starts on: 每週開始於
 Time format: 時間格式
-12 hour: 12時制
-24 hour: 24時制
-Duration: 持續時間
 Work hours: 月曆可顯示之工作時間
 From: 自
 to: 至
@@ -93,73 +76,42 @@ Preferred view: 檢視選擇
 Fonts: 字型
 Display week number: 顯示週數(以年計算)
 Display unapproved: 顯示未核准 e
-Yes: 好
-No: Mai
-Allow public access: 允準公眾 access
 Categories enabled: 啟用類別
 Document background: 文件背景
 Document title: 文件標題
 Table cell background: 表格背景
-Table cell background for current day: 當日顏色
 
 ########################################
-# Page: adminhome.php
+# Page: templates/category.tpl
 #
-Assistants: 助理
-Preferences: 參數設定
-Users: 使用者
-Account: 編輯個人資料
-Categories: 類別
-Views: 檢視
-Layers: 階層架構
-Activity Log: 使用紀錄
-
-########################################
-# Page: approve_entry.php
-#
-Hello: 你好
-The subject was: 主題是
-Date: 日期
-Time: 時間
-
-########################################
-# Page: assistant_edit.php
-#
-Your assistants: 你 e 助理
-
-########################################
-# Page: category.php
-#
-Global: 歸個系統
 Category Name: 類別名稱
+Global: 歸個系統
 Color: 色緻
 Add: 增加
 Delete: 刪除
 Make New Category: 增加新類別
 
 ########################################
-# Page: catsel.php
+# Page: templates/category_menu.tpl
 #
+Category: 類別
+
+########################################
+# Page: templates/catsel.tpl
+#
+Categories: 類別
 Cancel: 取消
 
 ########################################
-# Page: del_entry.php
-#
-An appointment has been canceled for you by: 約會已經被取消，取消者是
-
-########################################
-# Page: docadd.php
+# Page: templates/docadd.tpl
 #
 Description: 描述
 
 ########################################
-# Page: edit_entry.php
+# Page: templates/edit_entry.tpl
 #
-am: 上午
-pm: 下晡
 Edit Entry: 編輯記事
 Add Entry: 註冊記事
-Participants: 參與者
 brief-description-help: 佇遮簡單描述這個活動（約略二十字以內）。佇行事曆面頂是用這代表這個活動。
 Brief Description: 概要描述
 full-description-help: 活動 e 詳細說明。用者檢視活動內涵 e 時陣，會看著這部分。
@@ -168,19 +120,18 @@ access-help: 活動 e 顯示設定。<br /> <i>公眾 e </i>: 所有人都看會著活動 e 詳細資
 Access: 顯示設定
 priority-help: 活動 e 優先等級。高等級 e 活動會用粗體字型特別表示。
 Priority: 優先等級
-High: 高
-Medium: 中
-Low: 低
 category-help: 活動 e 類別。
-Category: 類別
 date-help: 活動舉辦 e 日期。
 Untimed event: 無定時間 e 活動
 Timed event: 有定時間 e 活動
 All day event: 歸工 e 活動
 time-help: 活動舉辦 e 時間。<br /><i>這項會使免添。</i>
 duration-help: 活動前後 e 長度（按分鐘算）。<br /><i>這項會使免添。</i>
+Duration: 持續時間
 hours: 點鐘
 minutes: 分鐘
+Participants: 參與者
+Users: 使用者
 participants-help: 列出這項記事 e 參與者。
 external-participants-help: 非行事曆用者 e 本活動參與者名單。一 choa 應該列一位，會使包括電子郵便住址。有列住址 e 參與者通收著通知函及提醒函。
 External Participants: 外面參與者
@@ -196,67 +147,69 @@ Use end date: 使用結束日期設定
 repeat-frequency-help: 活動重複 e 頻率。設定「1」表示按時重複，「2」表示活動每兩禮拜 (假使<i>週期性</i>設定<i>「按週」</i>)、每兩個月 (假使<i>週期性</i> 設定<i>「按月」</i>) ...等等，會重複。
 Frequency: 頻率
 All: 全部
+Yes: 好
+No: Mai
 days: 工
-Delete entry: 刪除記事
-You are not authorized to edit this entry.: 你無權利編輯這項記事
 
 ########################################
-# Page: edit_entry_handler.php
+# Page: templates/edit_group.tpl
 #
-A new appointment has been made for you by: 你有一個新約會，邀請者是
-Please look on: 請查看
-to accept or reject this appointment: 決定接受或拒絕這個約會
+Add Group: 增加使用陣
+Edit Group: 編輯使用陣
+Group name: 使用陣名稱
+Updated: 更新
+Created by: 公布者
 
 ########################################
-# Page: edit_layer.php
+# Page: templates/edit_layer.tpl
 #
-Add Layer: 新增階層
 Edit Layer: 編輯階層
+Add Layer: 新增階層
 Source: 來源
 Duplicates: 副本
 Add to My Calendar: 新增到我 e 行事曆
-Delete layer: 刪除階層
 
 ########################################
-# Page: edit_nonusers.php
+# Page: templates/edit_nonusers.tpl
 #
-Add User: 新增使用者
 Edit User: 編輯使用者資料
+Add User: 新增使用者
 First Name: 姓
 Last Name: 名
+Admin: 管理
 
 ########################################
-# Page: edit_remotes_handler.php
+# Page: templates/edit_user.tpl
 #
-Error: 錯誤
-
-########################################
-# Page: edit_report.php
-#
-User: 使用者
-Current User: 目前使用者
-
-########################################
-# Page: edit_user.php
-#
-Username: 使用者名稱
-E-mail address: 電子郵件地址
-Password: 密碼
-again: 閣一擺
-Enabled: 啟用 e
 Change Password: 變更密碼
 New Password: 新 e 密碼
+again: 閣一擺
 Set Password: 設定密碼
+Username: 使用者名稱
+Password: 密碼
+E-mail address: 電子郵件地址
+Enabled: 啟用 e
 
 ########################################
-# Page: edit_user_handler.php
+# Page: templates/edit_views.tpl
 #
-Deleting users not supported.: 無支援刪除使用者
-The passwords were not identical.: 密碼無對
-You have not entered a password.: 你無輸入密碼
+Add View: 增加檢視
+Edit View: 編輯檢視
+View Name: 檢視名稱
+View Type: 檢視類
+Day: 日
+Week: 週
+Month: 月
+Select: 選擇
 
 ########################################
-# Page: export.php
+# Page: templates/error.tpl
+#
+Error: 錯誤
+The following error occurred: 發生以下 e 錯誤
+
+########################################
+# Page: templates/export.tpl
 #
 Export: 輸出
 Export format: 輸出格式
@@ -266,14 +219,163 @@ End date: 結束日期
 Modified since: 更改自
 
 ########################################
-# Page: group_edit.php
+# Page: templates/import.tpl
+#
+Disabled: 停用 e
+
+########################################
+# Page: templates/layers.tpl
+#
+Layers are currently: 階層架構目前是
+Disable Layers: 停用階層架構
+Add layer: 新增階層
+Layer: 階層
+
+########################################
+# Page: templates/list_unapproved.tpl
+#
+View this entry: 檢視這個記事
+Approve/Confirm: 核准/確定
+Reject: 拒絕
+
+########################################
+# Page: templates/login.tpl
+#
+Login: 登入
+cookies-note: <b>注意:</b> 本程式須要 cookies 才會得使用。
+
+########################################
+# Page: templates/menu.tpl
+#
+Logout: 登出
+
+########################################
+# Page: templates/pref.tpl
+#
+Preferences: 參數設定
+
+########################################
+# Page: templates/users.tpl
+#
+Add New User: 新增使用者
+denotes administrative user: 使用者管理員
+
+########################################
+# Page: templates/views.tpl
+#
+Add New View: 增加新檢視
+
+########################################
+# Page: templates/view_entry.tpl
+#
+Status: 狀態
+Repeat Type: 週期性
+Rejected: 已經被拒絕
+Approve/Confirm entry: 核准/確定 記事
+Approve this entry?: 核准這個記事?
+Reject entry: 拒絕記事
+Reject this entry?: 拒絕這個記事?
+Set category: 設定類別
+Edit entry: 編輯記事
+Delete entry: 刪除記事
+This will delete this entry for all users.: 這會對所有用者刪除這項記事。
+Email all participants: Email 所有參與者
+Hide activity log: 暗蓋使用紀錄
+Show activity log: 顯示使用紀錄
+
+########################################
+# Page: templates/view_t.tpl
+#
+Previous: 前一個
+Next: 後一個
+
+########################################
+# Page: add_entry.php
+#
+private: 私人 e
+confidential: 機密 e
+Error adding event: 記事加入發生錯誤
+
+########################################
+# Page: admin.php
+#
+Year: 年
+Settings: 設定中
+Colors: 顏色
+12 hour: 12時制
+24 hour: 24時制
+
+########################################
+# Page: adminhome.php
+#
+Views: 檢視
+Layers: 階層架構
+
+########################################
+# Page: ajax.php
+#
+You have not entered a password.: 你無輸入密碼
+The passwords were not identical.: 密碼無對
+You have not entered a Brief Description.: 你無輸入概要描述
+You have not entered a valid time of day.: 你無輸入正確 e 時間
+time entered before preferred work hours...: 這個時段無佇你自定 e 工作時間內。 這敢是正確 e ?
+
+########################################
+# Page: ajax_entries.php
+#
+External User: 外面用者
+
+########################################
+# Page: approve_entry.php
+#
+Hello: 你好
+The subject was: 主題是
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: 約會已經被取消，取消者是
+
+########################################
+# Page: docadd.php
+#
+Database error: 資料庫錯誤
+
+########################################
+# Page: edit_entry.php
+#
+High: 高
+Medium: 中
+Low: 低
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: 你有一個新約會，邀請者是
+Please look on: 請查看
+to accept or reject this appointment: 決定接受或拒絕這個約會
+
+########################################
+# Page: edit_group.php
 #
 Unnamed Group: 無號名 e 使用陣
-Add Group: 增加使用陣
-Edit Group: 編輯使用陣
-Group name: 使用陣名稱
-Updated: 更新
-Created by: 公布者
+
+########################################
+# Page: edit_views.php
+#
+Unnamed View: 無名稱 e 檢視
+
+########################################
+# Page: edit_views_handler.php
+#
+You must specify a view name: 你必須要註明檢視 e 名稱
+
+########################################
+# Page: help_admin.php
+#
+Help: 說明
+Public Access: 公眾入口
+Allow public access: 允準公眾 access
 
 ########################################
 # Page: help_bug.php
@@ -284,7 +386,6 @@ Report Bug: 提報 bug
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: 註冊/編輯 行事曆項目
-Repeat Type: 週期性
 Repeat End Date: 週期結束日期
 Repeat Day: 重複於
 repeat-day-help: 活動拜幾重複。這干單<i>週期性</i>設定<i>「按週」</i>才需要。
@@ -295,43 +396,6 @@ repeat-day-help: 活動拜幾重複。這干單<i>週期性</i>設定<i>「按週」</i>才需要。
 Help Index: 輔助索引
 
 ########################################
-# Page: import.php
-#
-Disabled: 停用 e
-
-########################################
-# Page: layers.php
-#
-Layer: 階層
-Edit layer: 編輯階層
-Layers are currently: 階層架構目前是
-Disable Layers: 停用階層架構
-Add layer: 新增階層
-
-########################################
-# Page: list_unapproved.php
-#
-View this entry: 檢視這個記事
-Approve/Confirm: 核准/確定
-Reject: 拒絕
-Approve this entry?: 核准這個記事?
-Reject this entry?: 拒絕這個記事?
-
-########################################
-# Page: login-app.php
-#
-You must enter a login and password.: 你著輸入用者名稱及密碼
-Save login via cookies so I dont have to login next time.: 將登入資料儲存佇 cookies 中，後擺就免重登入。
-Login: 登入
-Access public calendar: 入去公眾行事曆
-cookies-note: <b>注意:</b> 本程式須要 cookies 才會得使用。
-
-########################################
-# Page: pref.php
-#
-Save Preferences: 儲存參數
-
-########################################
 # Page: reject_entry.php
 #
 An appointment has been rejected by: 約會已經被拒絕，拒絕者是
@@ -339,10 +403,8 @@ An appointment has been rejected by: 約會已經被拒絕，拒絕者是
 ########################################
 # Page: report.php
 #
-This event is confidential.: 這個記事是機密 e
-Deleted: 已經刪除
-Rejected: 已經被拒絕
 Waiting for approval: 等待核准
+Deleted: 已經刪除
 
 ########################################
 # Page: search.php
@@ -373,60 +435,31 @@ Set Category: 設定類別
 ########################################
 # Page: users.php
 #
-denotes administrative user: 使用者管理員
-Add New User: 新增使用者
-
-########################################
-# Page: views.php
-#
-Add New View: 增加新檢視
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: 無名稱 e 檢視
-Add View: 增加檢視
-Edit View: 編輯檢視
-View Name: 檢視名稱
-View Type: 檢視類
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: 你必須要註明檢視 e 名稱
-
-########################################
-# Page: view_entry.php
-#
-Assistant mode: 助理模式
-Status: 狀態
-External User: 外面用者
-Approve/Confirm entry: 核准/確定 記事
-Reject entry: 拒絕記事
-Set category: 設定類別
-This will delete this entry for all users.: 這會對所有用者刪除這項記事。
-Edit entry: 編輯記事
-Edit repeating entry for all dates: 編輯所有日期 e 重複記事
-Delete repeating event for all dates: 刪除重複 e 活動（所有日期）
-Edit entry for this date: 編輯這個日期 e 記事
-Delete entry only for this date: 干單刪除這個日期 e 記事
-This will delete the entry from your calendar.: 這將會從你 e 行事曆刪除這個記事。
-Do you want to add this entry to your calendar?: 你要新增這個記事到你 e 行事曆嗎？
-This will add the entry to your calendar.: 這將會新增這個記事到你 e 行事曆。
-Email all participants: Email 所有參與者
-Hide activity log: 暗蓋使用紀錄
-Show activity log: 顯示使用紀錄
+Account: 編輯個人資料
 
 ########################################
 # Page: week_details.php
 #
+Assistant mode: 助理模式
 New Entry: 新 e 記事
 
 ########################################
 # Page: includes/access.php
 #
 Another Users Calendar: 別人 e 行事曆
+Assistants: 助理
 Manage Views: 管理檢視
+
+########################################
+# Page: includes/activity_log.php
+#
+Event approved: 活動確認過
+Event created: 活動註冊
+Event deleted: 活動被刪除
+Notification sent: 通知函送出去
+Event rejected: 活動被拒絕
+Reminder sent: 提醒函送出去
+Event updated: 活動更新
 
 ########################################
 # Page: includes/date_formats.php
@@ -438,16 +471,6 @@ Dec: 12月
 # Page: includes/functions.php
 #
 exceeds limit of XXX events per day: 超出一工 XXX 項活動 e 限制
-Event approved: 活動確認過
-Event created: 活動註冊
-Event deleted: 活動被刪除
-Notification sent: 通知函送出去
-Event rejected: 活動被拒絕
-Reminder sent: 提醒函送出去
-Event updated: 活動更新
-Event: 活動
-Action: 行動
-Printer Friendly: 友善列印
 January: 1月
 February: 2月
 March: 3月
@@ -470,8 +493,6 @@ Aug: 8月
 Sep: 9月
 Oct: 10月
 Nov: 11月
-The following error occurred: 發生以下 e 錯誤
-You are not authorized.: 您未經授權
 Sunday: 禮拜日
 Monday: 拜一
 Tuesday: 拜二
@@ -488,32 +509,26 @@ Fri: 拜五
 Sat: 拜六
 
 ########################################
-# Page: includes/trailer.php
+# Page: includes/menu.php
 #
 My Calendar: 我 e 行事曆
+Unapproved Events: 未核准 e 活動
+
+########################################
+# Page: includes/trailer.php
+#
 Add New Entry: 註冊記事
-Logout: 登出
+Current User: 目前使用者
 Back to My Calendar: 轉去我 e 行事曆
 Go to: 功能選擇
 
 ########################################
-# Page: includes/classes/WebCalMailer.class
+# Page: includes/classes/WebCalMailer.class.php
 #
 Notification: 通告
 
 ########################################
-# Page: includes/js/edit_entry.php
+# Page: includes/smarty/function.time_selection.php
 #
-You have not entered a Brief Description.: 你無輸入概要描述
-time entered before preferred work hours...: 這個時段無佇你自定 e 工作時間內。 這敢是正確 e ?
-You have not entered a valid time of day.: 你無輸入正確 e 時間
-
-########################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: 無效 e 色緻
-
-########################################
-# Page: includes/menu/index.php
-#
-Unapproved Events: 未核准 e 活動
+am: 上午
+pm: 下晡
