@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 19. November 2007
+# Last update: 14. April 2007
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 09-18-2008
 
 
 ################################################################################
@@ -219,7 +219,7 @@ allow-view-add-help: Ein &#34;+&#34; Icon wird bei Ansichten beigef&uuml;gt, wel
 Include add event link in views: &Uuml;ber "Ansichten" Termine
 lunar-help: Falls aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
 Display Lunar Phases in month view: Anzeigen der Mondphasen in der Monatsansicht
-Restrictions: Beschr&auml;nkungen
+Restrictions: Einschr&auml;nkungen
 allow-view-other-help: Gibt an, ob die Benutzer die Kalender anderer Teilnehmer sehen kann.
 Allow viewing other users calendars: Kalenderansicht anderer Benutzer zulassen
 require-approvals-help: Wenn diese Option ausgew&auml;hlt ist, mu&szlig; der Benutzer den Termin best&auml;tigen, um auf seinem Kalender anzeigen zu lassen (vorausgesetzt &#34;unbest&auml;tigte Termine anzeigen&#34;). Anmerkung: Wenn diese Option auf &#34;Nein&#34; gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte &#34;&Ouml;ffentliche Kalender&#34; aus.
@@ -596,8 +596,8 @@ Due Time: F&auml;lligkeitszeit
 Site Extras: Extrafelder
 avail_participants-help: Liste der verf&uuml;gbaren Teilnehmer dieses Eintrags.
 Available: Verf&uuml;gbar
-Find Name: Suche Name
-Resources: Mittel
+Find Name: Suche Namen
+Resources: Quellen
 participants-help: Gibt die Benutzer des Termines an.
 Selected: Auswahl
 Availability: Verf&uuml;gbarkeit
@@ -1589,6 +1589,11 @@ Invalid user login: Ung&uuml;ltige Anmeldung
 #
 incorrect password: Ung&uuml;ltiges Kennwort
 no such user: kein solcher Benutzer
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Konto deaktiviert
 
 ########################################
 # Page: includes/xcal.php
