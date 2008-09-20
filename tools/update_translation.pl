@@ -126,7 +126,6 @@ if ( $save_backup ) {
   }
 }
 
-
 # Read in the plugin base translation file.
 if ( $plugin ne '' ) {
   print "Reading plugin base translation file: $p_base_trans_file\n"
@@ -154,7 +153,7 @@ while ( <F> ) {
   next if ( /^#/ );
   if ( /\s*:\s*/ ) {
     $abbrev = $`;
-    $base_trans{ $abbrev } = $' if ( $abbrev ne 'charset' );
+    $base_trans{ $abbrev } = $' );
   }
 }
 close( F );
