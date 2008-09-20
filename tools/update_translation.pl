@@ -17,7 +17,7 @@
 # when using this tool (except for the comments at the very beginning).
 #
 # Note #2: This will overwrite the existing translation file, so a backup
-# of the original can optionally be saved with a .bak file extension.
+# of the original can optionally be saved with a timestamp file extension.
 #
 # Usage:
 # update_translation.pl [-p plugin] languagefile
@@ -40,6 +40,7 @@
 #  (which will create update_translation.pl.tdy, the new version)
 #
 ####################################################################
+use File::Copy;
 use File::Find;
 
 sub find_pgm_files {
@@ -122,6 +123,21 @@ die "Usage: $this [-p plugin] language\n" if ( !-f $infile );
 
 print "Translation file: $infile\n" if ( $verbose );
 
+#
+# Save a backup copy of old translation file before we mess with it.
+#
+if ( $save_backup ) {
+  $bak = $infile;
+  $bak =~ s/txt$//;
+  print "Attempting to to backup file $infile. ";
+  if ( copy( $infile, $bak . ( stat( $infile ) )[9] ) ) {
+    print "Success!\n";
+  }
+  else {
+    warn "Failure!:\n$! ";
+  }
+}
+
 # Read in the plugin base translation file.
 if ( $plugin ne '' ) {
   print "Reading plugin base translation file: $p_base_trans_file\n"
@@ -174,13 +190,11 @@ if ( $plugin ne '' ) {
 #
 # Now load the translation file we are going to update.
 #
-$old = '';
 if ( -f $infile ) {
   print "Reading current translations from $infile\n" if ( $verbose );
   open( F, $infile ) || die "Error opening $infile";
   $in_header = 1;
   while ( <F> ) {
-    $old .= $_;
     chop;
     s/\r*$//g; # remove annoying CR
     if ( $in_header && /^#/ ) {
@@ -229,16 +243,6 @@ if ( $plugin ne '' ) {
     }
   }
 	close( F );
-}
-
-#
-# Save a backup copy of old translation file.
-#
-if ( $save_backup ) {
-  open( F, ">$infile.bak" ) || die "Error writing $infile.bak";
-  print F $old;
-  close( F );
-  print "Backup of translation saved in $infile.bak\n";
 }
 
 ( $day, $mon, $year ) = ( localtime( time() ) )[ 3, 4, 5 ];
