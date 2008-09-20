@@ -165,7 +165,7 @@ while ( <F> ) {
   next if ( /^#/ );
   if ( /\s*:\s*/ ) {
     $abbrev = $`;
-    $base_trans{ $abbrev } = $' if ( $abbrev ne 'charset' );
+    $base_trans{ $abbrev } = $' );
   }
 }
 close( F );
