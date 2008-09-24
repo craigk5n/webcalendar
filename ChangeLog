@@ -1,5 +1,6 @@
 $Id$
 Version 2.0+CVS (?? ??? 2007)
+ - Apply Patch [ 2126269 ] Norwegian translation update
  - Apply Patch [ 2117687 ] German updated translation
  - Add Portuguese_BR_utf8 to includes/translate.php
  - Fix typo. Bug report [2122876] syntax error at "update_translation.pl" update_translation.pl
