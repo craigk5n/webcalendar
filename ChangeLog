@@ -3,6 +3,7 @@ $Id$
 You are looking at a CVS snapshot of the REL_1_2 branch.
 
 Version 1.2-b2 (?? Feb 2008)
+ - Apply Patch [ 2126001 ] Fixes for upgrade-postgres.sql
  - Add Portuguese_BR_utf8 to includes/translate.php
  - Patch [ 1986759 ] Incorrect date shift logic in view_entry.php
  - Apply PATCH [ 1980001 ] Portuguese_BR translation
