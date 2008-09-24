@@ -4,8 +4,10 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Apply Patch [ 2117687 ] German updated translation
  - Apply Patch [ 2126001 ] Fixes for upgrade-postgres.sql
  - Add Portuguese_BR_utf8 to includes/translate.php
+ - Fix typo. Bug report [2122876] syntax error at "update_translation.pl" update_translation.pl
  - Patch [ 1986759 ] Incorrect date shift logic in view_entry.php
  - Fixed NUC URL in edit_nonusers.php. Removed hyperlink and added _NUC_
  - Fixed problem with ByMonthDay not being saved
