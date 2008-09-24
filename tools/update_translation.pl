@@ -129,7 +129,7 @@ print "Translation file: $infile\n" if ( $verbose );
 if ( $save_backup ) {
   $bak = $infile;
   $bak =~ s/txt$//;
-  print "Attempting to to backup file $infile. ";
+  print "Attempting to backup file $infile. ";
   if ( copy( $infile, $bak . ( stat( $infile ) )[9] ) ) {
     print "Success!\n";
   }
@@ -165,7 +165,7 @@ while ( <F> ) {
   next if ( /^#/ );
   if ( /\s*:\s*/ ) {
     $abbrev = $`;
-    $base_trans{ $abbrev } = $' );
+    $base_trans{ $abbrev } = $';
   }
 }
 close( F );

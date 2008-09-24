@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 31. Oktober 2007
+# Last update: 14. April 2007
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 09-18-2008
 
 
 ################################################################################
@@ -226,8 +226,9 @@ Display small task list: Kleine Aufgabenliste anzeigen
 display-tasks-in-grid-help: Anzeigen der Aufgaben zusammen mit den Terminen in den Kalendern
 Display tasks in Calendars: Aufgaben in den Kalendern anzeigen
 remotes-enabled-help: Erm&ouml;glicht das Laden von ICS Dateien unter Verwendung einer URL
-rss-enabled-help: Bestimmt, ob ein Kalender &uuml;ber RRS-Feed erreicht werden kann.
-Enable RSS feed: RRS-Feed aktivieren
+rss-enabled-help: Bestimmt, ob ein Kalender &uuml;ber RSS-Feed erreicht werden kann.
+Enable RSS feed: RSS-Feed aktivieren
+Allow user override: Benutzer die Einstellungen &uuml;berschreiben lassen
 email-enabled-help: Die Option &#34;JA&#34; erm&ouml;glicht das Versenden von Emails sowie von Erinnerungen &uuml;ber den Kalender. Wenn Sie keinen Mailserver installiert haben setzen Sie diese Option auf &#34;NEIN&#34;.
 Email enabled: Email aktivieren
 email-default-sender: Standard Email-Absender
@@ -338,7 +339,7 @@ Add Attachment: Anhang hinzuf&uuml;gen
 #
 Edit Entry: Eintrag &auml;ndern
 Add Entry: Eintrag hinzuf&uuml;gen
-Details: =
+Details: Beschreibung
 brief-description-help: Kurzbeschreibung (ca. 20 Zeichen) des Termines. Diese erscheint, wenn der Kalender angezeigt wird.
 Brief Description: Kurzbeschreibung
 full-description-help: Komplette Beschreibung des Termines. Diese Information sieht der Benutzer beim Termin.
@@ -352,7 +353,7 @@ completed-help: Datumaufgabe ist abgeschlossen. Nur aktiv, wenn alle Teilnehmer 
 Date Completed: Datum f&uuml;hrte durch
 percent-help: Aufgabenbeendigungsprozentsatz f&uuml;r diesen Benutzer
 Percent Complete: Prozent erledigt
-All Percentages: <u><b>Erf&uuml;llungsgrad der Aufgabe (%)</b></u>
+All Percentages: <u><b>Erf&uuml;llungsgrad der Aufgabe in %</b></u>
 location-help: Ort des Termines
 Location: Ort
 url-help: URL des Termins
@@ -376,9 +377,9 @@ Site Extras: Extrafelder
 Participants: Teilnehmer
 avail_participants-help: Liste der verf&uuml;gbaren Teilnehmer dieses Eintrags.
 Available: Verf&uuml;gbar
-Find Name: Suche Name
+Find Name: Suche Namen
 Users: Benutzer
-Resources: Mittel
+Resources: Quellen
 Groups: Benutzergruppen
 participants-help: Gibt die Benutzer des Termines an.
 Selected: Auswahl
@@ -735,8 +736,6 @@ Invalid Color: Ung&uuml;ltige Farbe
 View this event: Diesen Termin anzeigen
 View this task: Diese Aufgabe anzeigen
 Invalid Date: Ung&uuml;ltiges Datum
-File type does not match Import Format.: Dateityp passt nicht mit dem Import-Format &uuml;berein
-Double-click on empty cell to add new entry.: Ein &#39;Doppelklick&#39; auf eine leere Zelle f&uuml;gt einen neuen Termin ein.
 Reminder: Erinnerung
 You have not entered a password.: Sie haben kein Kennwort eingegeben.
 The passwords were not identical.: Die eingegebenen Passw&ouml;rter sind nicht identisch.
@@ -754,10 +753,6 @@ WE: MI
 TH: DO
 FR: =
 SA: =
-You have not entered a Brief Description.: Sie haben keine Kurzbeschreibung eingegeben
-Please add a participant.: Bitte einen Teilnehmer hinzuf&uuml;gen
-You have not entered a valid time of day.: Sie haben keine g&uuml;ltige Zeit f&uuml;r diesen Tag eingetragen
-time entered before preferred work hours...: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das richtig?
 
 ########################################
 # Page: ajax_entries.php
@@ -1146,6 +1141,11 @@ Needs-Action: Ben&ouml;tige Aktion
 by: von
 
 ########################################
+# Page: view_r.php
+#
+Double-click on empty cell to add new entry: Ein &#39;Doppelklick&#39; auf eine leere Zelle f&uuml;gt einen neuen Termin ein.
+
+########################################
 # Page: view_t.php
 #
 No users for this view: Keine g&uuml;ltigen Benutzer f&uuml;r diese Ansicht
@@ -1240,7 +1240,7 @@ exceeds limit of XXX events per day: &uuml;berschrittenes Limit von XXX Termin(e
 on: am
 TASKS: AUFGABEN
 Task_Title: Aufgabentitel
-Due: F&auml;lligkeit
+Due: F&auml;llig
 Task Name: Aufgabe
 Task Due Date: Abgabefrist
 Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
@@ -1442,6 +1442,7 @@ recipients_failed: SMTP Fehler - Die (der) folgende(n) Empf&auml;nger sind (ist)
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Eingabe der Zeichen, die in der Grafik angezeigt werden
+Enter the correct letters and numbers...: Geben Sie die am Bild angezigten richtigen Buchstaben und Ziffern in das Textfeld ein. Dieser kleine Test dient als Zugangsbeschr&auml;kung vor b&ouml;swilligen Bots. Wenn das Bild schwer zu lesen ist, einfach diese Seite nochmals laden (bzw. aktualisieren)
 Challenge/Response: Aufforderung/Beantwortung
 
 ########################################
@@ -1449,6 +1450,7 @@ Challenge/Response: Aufforderung/Beantwortung
 #
 incorrect password: Ung&uuml;ltiges Kennwort
 no such user: kein solcher Benutzer
+Account disabled: Konto deaktiviert
 
 ########################################
 # Page: includes/smarty/function.daily_matrix.php
@@ -1596,11 +1598,11 @@ Error Unable to write to file: Fehler beim Schreiben auf Datei
 ########################################
 # Page: install/step1.php
 #
-Display Errors: Anzeigefehler
-File Uploads: Datei Hochladen
-Allow URL fopen: Erlaubt URL (Adresse) &#39;fopen&#39; (nur erforderlich wenn Externe-Kalender(Remote-Kalender) verwendet werden)
+Display Errors: =
+File Uploads: =
+Allow URL fopen: Allow URL fopen (nur erforderlich wenn Externe-Kalender(Remote-Kalender) verwendet werden)
 Safe Mode: =
-Safe Mode Allowed Vars: Safe Mode erlaubte Variablen (TZ nur erfoderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
+Safe Mode Allowed Vars: Safe Mode erlaubte Variablen (nur erfoderlich wenn Safe Mode &#39;ON&#39; gesetzt ist)
 needed for Gradient Image Backgrounds: F&uuml;r stufenweis verlaufende Hintergrundbilder n&ouml;tig
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
 PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
@@ -1652,4 +1654,4 @@ Environment: Umgebung
 Production: Produktion
 Development: Entwicklung
 Save Settings: Einstellung speichern
-Launch WebCalendar: Webkalender starte
+Launch WebCalendar: Webkalender starten
