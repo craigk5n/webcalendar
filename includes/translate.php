@@ -455,6 +455,7 @@ function define_languages () {
     translate ( 'Polish' ) => 'Polish',
     translate ( 'Portuguese' ) => 'Portuguese',
     translate ( 'Portuguese/Brazil' ) => 'Portuguese_BR',
+    translate ( 'Portuguese/Brazil' ) . ' (UTF-8)' => 'Portuguese_BR_utf8',
     translate ( 'Romanian' ) => 'Romanian',
     translate ( 'Russian' ) . ' (UTF-8)' => 'Russian_utf8',
     translate ( 'Russian' ) => 'Russian',
