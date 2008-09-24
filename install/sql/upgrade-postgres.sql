@@ -192,10 +192,10 @@ CREATE TABLE webcal_access_user (
   cal_other_user VARCHAR(25) NOT NULL,
   PRIMARY KEY ( cal_login, cal_other_user )
 );
-ALTER TABLE webcal_nonuser_cals ADD cal_is_global CHAR(1);
-UPDATE webcal_nonuser_cals SET cal_is_global = 'N';
-ALTER TABLE webcal_nonuser_cals ALTER cal_is_global SET DEFAULT 'N';
-ALTER TABLE webcal_nonuser_cals ALTER cal_is_global SET NOT NULL;
+ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1);
+UPDATE webcal_nonuser_cals SET cal_is_public = 'N';
+ALTER TABLE webcal_nonuser_cals ALTER cal_is_public SET DEFAULT 'N';
+ALTER TABLE webcal_nonuser_cals ALTER cal_is_public SET NOT NULL;
 
 /*upgrade_v1.1.0a-CVS*/
 CREATE TABLE webcal_user_template (
@@ -218,7 +218,9 @@ ALTER TABLE webcal_entry_repeats ADD cal_bysetpos VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_byweekno VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_byyearday VARCHAR(50) DEFAULT NULL;
 ALTER TABLE webcal_entry_repeats ADD cal_count INT DEFAULT NULL;
-ALTER TABLE webcal_entry_repeats ADD cal_wkst CHAR(2) DEFAULT 'MO';
+ALTER TABLE webcal_entry_repeats ADD cal_wkst CHAR(2);
+UPDATE webcal_entry_repeats SET cal_wkst = 'MO';
+ALTER TABLE webcal_entry_repeats ALTER cal_wkst SET DEFAULT 'MO';
 ALTER TABLE webcal_entry_repeats_not ADD cal_exdate int;
 UPDATE webcal_entry_repeats_not SET cal_exdate = '1';
 ALTER TABLE webcal_entry_repeats_not ALTER cal_exdate SET DEFAULT '1';
