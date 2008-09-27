@@ -3480,7 +3480,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
       if ( $rowspan > $rowspan_arr[$ind] && $rowspan > 1 )
         $rowspan_arr[$ind] = $rowspan;
     }
-  $hour_arr[$ind] .= ']';
+  $hour_arr[$ind] .= '] ';
   }
   $hour_arr[$ind] .= build_entry_label ( $event, 'eventinfo-' . $linkid,
     $can_access, $popup_timestr, $time_only )
