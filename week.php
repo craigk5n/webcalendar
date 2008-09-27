@@ -177,14 +177,13 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );
-    // Class "hasevents" overrides "weekend".
-    // And class "today" overrides both "hasevents" and "weekend".
+    // Class "hasevents" overrides both "today" and "weekend".
+    // And class "today" overrides "weekend".
     // So, no need to list them all.
-    $class = ( $dateYmd == date ( 'Ymd', $today )
-      ? ' class="today"'
-      // Use the class 'hasevents' for any hour block that has events in it.
-      : ( ! empty ( $save_hour_arr[$d][$i] ) && strlen ( $save_hour_arr[$d][$i] )
-        ? ' class="hasevents"'
+    $class = ( ! empty ( $save_hour_arr[$d][$i] ) && strlen ( $save_hour_arr[$d][$i] )
+      ? ' class="hasevents"'
+      : ( $dateYmd == date ( 'Ymd', $today )
+        ? ' class="today"'
         : ( is_weekend ( $days[$d] ) ? ' class="weekend"' : '' ) ) );
 
     if ( $rowspan_day[$d] > 1 ) {

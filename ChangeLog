@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Apply Patch [ 2126058 ] Color for today's event in week.php
  - Apply Patch [ 2126269 ] Norwegian translation update
  - Apply Patch [ 2117687 ] German updated translation
  - Apply Patch [ 2126001 ] Fixes for upgrade-postgres.sql
