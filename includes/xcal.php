@@ -44,6 +44,36 @@ function export_quoted_printable_encode( $car ) {
   return $res;
 } //end function export_quoted_printable_encode
 function export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
+  global $enable_mbstring;
+
+  if ($enable_mbstring) {
+    $res = mb_export_fold_lines ( $string, $encoding, $limit);
+  } else {
+    $res = wc_export_fold_lines ( $string, $encoding, $limit);
+  }
+  return $res;
+}
+
+function mb_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
+  $res = array();
+  $line = '';
+  mb_language('japanese');
+  mb_internal_encoding('UTF-8');
+
+  $line = mb_strcut($string, 0, $limit);    // multibyte operation
+  $string = substr($string, strlen($line)); // siglebyte(bytestream) operation
+  $res[] = $line;
+
+  while (0 < mb_strlen($string)) {
+    $line = " " . mb_strcut($string, 0, $limit - 1);
+    $string = substr($string, strlen($line) - 1);
+
+    $res[] = $line;
+  }
+  return $res;
+}
+
+function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
   $len = strlen ( $string );
   $fold = $limit;
   $res = array ();
@@ -102,7 +132,7 @@ function export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
   } //end for ($i = 0; $i < $len; $i++)
   $res[$res_ind] = $row; // Add last row (or first if no folding is necessary)
   return $res;
-} //end function export_fold_lines ($string, $encoding="none", $limit=76)
+} //end function wc_export_fold_lines ($string, $encoding="none", $limit=76)
 
 function search_users($arrInArray, $varSearchValue){
   foreach ($arrInArray as $key => $row){
