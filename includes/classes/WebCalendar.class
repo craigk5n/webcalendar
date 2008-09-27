@@ -849,7 +849,7 @@ class WebCalendar {
    */
   function _initTranslate () {
     global $lang, $lang_file, $LANGUAGE, $PUBLIC_ACCESS_FULLNAME,
-    $translation_loaded;
+    $translation_loaded, $enable_mbstring;
 
     if ( empty ( $LANGUAGE ) )
       $LANGUAGE = 'English-US'; // Default
@@ -866,6 +866,15 @@ class WebCalendar {
       $lang = 'English-US'; // Default
 
     $lang_file = 'translations/' . $lang . '.txt';
+
+    if (extension_loaded('mbstring')) {
+      $mb_lang = strtok($lang, '-');
+      if (mb_language($mb_lang) && mb_internal_encoding(translate('charset'))) {
+        $enable_mbstring = true;
+      } else {
+        $enable_mbstring = false;
+      }
+    }
 
     $translation_loaded = false;
 
