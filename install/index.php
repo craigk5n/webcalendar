@@ -1478,7 +1478,7 @@ translate ( 'You should select Web Server from the list of User Authentication c
     <td class="prompt">&nbsp;&nbsp;&nbsp;<?php echo
      $singleUserStr . ' ' . $loginStr ?>:</td>
     <td>
-     <input name="form_single_user_login" size="20" value="<?php echo $settings['single_user_login'];?>" /></td>
+     <input name="form_single_user_login" size="20" value="<?php echo ( empty ( $settings['single_user_login'] ) ? '' : $settings['single_user_login'] );?>" /></td>
    </tr>
    <tr>
     <td class="prompt"><?php etranslate ( 'Read-Only' ) ?>:</td>
