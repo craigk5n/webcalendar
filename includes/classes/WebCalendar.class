@@ -765,7 +765,7 @@ class WebCalendar {
       }
     }
 
-    if ( empty ( $is_admin ) || ! $is_admin ) {
+    if ( ! empty ( $login ) && ( empty ( $is_admin ) || ! $is_admin ) ) {
       if ( strstr ( $PHP_SELF, 'admin.php' ) ||
         strstr ( $PHP_SELF, 'admin_handler.php' ) ||
         strstr ( $PHP_SELF, 'groups.php' ) ||
