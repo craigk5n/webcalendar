@@ -1566,7 +1566,7 @@ translate ( 'You should select Web Server from the list of User Authentication c
               <td class="prompt">&nbsp;&nbsp;&nbsp;' . $singleUserStr . ' '
    . $loginStr . ':</td>
               <td><input name="form_single_user_login" size="20" value="'
-   . $settings['single_user_login'] . '" /></td>
+   . ( empty ( $settings['single_user_login'] ) ? '' : $settings['single_user_login'] ) . '" /></td>
             </tr>
             <tr>
               <td class="prompt">' . translate ( 'Read-Only' ) . ':</td>
