@@ -8,7 +8,7 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
-Version 1.2.b2 (?? ??? 2008)
+Version 1.2.0 (27 Sep 2008)
  - Added new 'Security Audit' page.
  - Moved hard-coded upcoming.php config setting to System Settings.
  - Added new RSS feed for Activity Log.  This will allow you to be
