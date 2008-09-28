@@ -1,8 +1,6 @@
 $Id$
 
-You are looking at a CVS snapshot of the REL_1_2 branch.
-
-Version 1.2-b2 (?? Feb 2008)
+Version 1.2.0 (27 Sep 2008)
  - Apply Patch [ 2086918 ] icalendar with multi byte
  - Apply Patch [ 2129844 ] Missing space in day view
  - Apply Patch [ 2126058 ] Color for today's event in week.php
