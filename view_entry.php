@@ -418,11 +418,11 @@ echo '</td>
       <tr>
         <td class="aligntop bold">' . translate ( 'Location' ) . ':</td>
         <td>' . $location . '</td>
-      <tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' && ! empty ( $url ) ? '
+      </tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' && ! empty ( $url ) ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'URL' ) . ':</td>
         <td>' . activate_urls ( $url ) . '</td>
-      <tr>' : '' );
+      </tr>' : '' );
 
 if ( $event_status != 'A' && ! empty ( $event_status ) ) {
   echo '
@@ -850,7 +850,7 @@ if ( Doc::commentsEnabled () ) {
     user_load_variables ( $cmt->getLogin (), 'cmt_' );
     $comment_text .= '
           <strong>' . htmlspecialchars ( $cmt->getDescription () )
-     . '</strong> - ' . $cmt_fullname . ' ' . translate ( 'at' ) . ' ' 
+     . '</strong> - ' . $cmt_fullname . ' ' . translate ( 'at' ) . ' '
      . date_to_str ( $cmt->getModDate (), '', false, true ) . ' '
      . display_time ( $cmt->getModTime (), 2 )
     // show delete link if user can delete
@@ -953,7 +953,7 @@ $can_add_attach = ( Doc::attachmentsEnabled () && $login != '__public__'
   && ( ( $login == $create_by ) || ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
   ( $ALLOW_ATTACH_ANY == 'Y' ) || $is_admin  ) );
 
-$can_add_comment = ( Doc::commentsEnabled () && $login != '__public__' 
+$can_add_comment = ( Doc::commentsEnabled () && $login != '__public__'
   && ( ( $login == $create_by ) ||  ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
   ( $ALLOW_COMMENTS_ANY == 'Y' ) || $is_admin  ) );
 
