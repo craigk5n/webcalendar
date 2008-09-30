@@ -1,6 +1,7 @@
 $Id$
 
 Version 1.2.0 (27 Sep 2008)
+ - Italian 100% translated by Pierfrancesco Passerini
  - Fix bug [ 2138032 ] Invalid DTD
  - Fix typos. Bug Report [ 2138019 ] Missing </tr> in view_entry.php
  - Apply Patch [ 2086918 ] icalendar with multi byte
