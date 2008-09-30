@@ -387,7 +387,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
               user_load_variables ( $row->getLogin (), 'conflict_' );
               $conflicts .= $GLOBALS['conflict_fullname'] . ': ';
             }
-            $conflicts .= ( $row->getAccess () == 'C' 
+            $conflicts .= ( $row->getAccess () == 'C'
               && $row->getLogin () != $login && !
               $is_assistant && ! $is_nonuser_admin
               // Assistants can see confidential stuff.
@@ -791,7 +791,7 @@ function date_to_epoch ( $d , $gmt=true) {
     $di = substr ( $d, 10, 2 );
     $ds = substr ( $d, 12, 2 );
   }
-  
+
   if ( $gmt )
     return gmmktime ( $dH, $di, $ds,
       substr ( $d, 4, 2 ),
@@ -1988,7 +1988,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $Byxxx = '',
         } else {
           $td = $cdate + ( $dow * 86400 );
           $cdow = date ( 'w', $td );
-          if ( get_RRULE ( $date, $td, $Byxxx ) 
+          if ( get_RRULE ( $date, $td, $Byxxx )
             && $cdow == $dow )
             $ret[$n++] = $td;
         }
@@ -2207,14 +2207,14 @@ function get_RRULE ( $date, $cdate, $Byxxx ) {
 function getBymonth ( $cdate, $bymonth ) {
 
  if ( empty ( $bymonth ) )
-   return true;   
+   return true;
  return ( in_array ( date ( 'n', $cdate ), explode ( ',', $bymonth ) ) );
 }
 
 function getByweekno ( $cdate, $byweekno ) {
 
  if ( empty ( $byweekno ) )
-   return true;   
+   return true;
  return ( in_array ( date ( 'W', $cdate ), explode ( ',', $byweekno ) ) );
 }
 
@@ -2229,7 +2229,7 @@ function getByyearday ( $cdate, $byyearday  ) {
   return ( in_array ( $doy, $byyearday ) ||
     in_array ( $diyReverse, $byyearday ) );
 }
-  
+
 function getBymonthday( $cdate, $bymonthday  ) {
 
  if ( empty ( $bymonthday ) )
@@ -2239,17 +2239,17 @@ function getBymonthday( $cdate, $bymonthday  ) {
    $dimReverse = $dom - $dim -1;
    return ( in_array ( $dom, $bymonthday ) ||
      in_array ( $dimReverse, $bymonthday ) );
-}        
+}
 
 function getByday ( $cdate, $byday, $type, $date ) {
 
  if ( empty ( $byday ) )
-   return true; 
+   return true;
   $bydayvalues = get_byday ( explode ( ',',$byday ), $cdate, $type, $date );
   return( in_array ( $cdate, $bydayvalues ) );
 
 }
-          
+
 /* Get the dates the correspond to the byday values.
  *
  * @param array $byday   ByDay values to process (MO,TU,-1MO,20MO...)
@@ -3361,7 +3361,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
     $not_my_entry = ( ( $login != $user && strlen ( $user ) ) ||
     ( $login != $event->getLogin () && strlen ( $event->getLogin () ) ) );
     $can_access = ( $not_my_entry && $event->getAccess () != 'P' ? 0 : $can_access );
-  } 
+  }
 
   // If TZ_OFFSET make this event before the start of the day or
   // after the end of the day, adjust the time slot accordingly.
@@ -4738,8 +4738,8 @@ function print_error_header () {
 function print_not_auth ( $errno='', $full = false ) {
   global $settings;
   return ( $full ? print_error_header () : '' )
-   . '!!!' . translate ( 'You are not authorized.' ) 
-     . ( ! empty ( $settings['mode'] ) && $settings['mode'] == 'dev' ? ' ' 
+   . '!!!' . translate ( 'You are not authorized.' )
+     . ( ! empty ( $settings['mode'] ) && $settings['mode'] == 'dev' ? ' '
      . $errno : '' )  . "\n";
 }
 
@@ -5123,7 +5123,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           // } else {
           $dates = get_all_dates ( $date,
             $result[$i]->getRepeatType (), $result[$i]->getRepeatFrequency (),
-            array ($result[$i]->getRepeatByMonth (), 
+            array ($result[$i]->getRepeatByMonth (),
             $result[$i]->getRepeatByWeekNo (),
             $result[$i]->getRepeatByYearDay (),
             $result[$i]->getRepeatByMonthDay (),
@@ -5295,7 +5295,7 @@ function send_doctype ( $doc_title = '' ) {
 
   return '<?xml version="1.0" encoding="' . $charset . '"?' . '>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
    . $lang . '">
   <head>
