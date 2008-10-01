@@ -1,7 +1,10 @@
 $Id$
 
-Version 1.2.0 (27 Sep 2008)
+Version 1.2.1 (Not Yet Released -- CVS!)
+ - Fixed bug [ 2135644 ] mb_language error in 1.2.0 prevent login
  - Italian 100% translated by Pierfrancesco Passerini
+
+Version 1.2.0 (27 Sep 2008)
  - Fix bug [ 2138032 ] Invalid DTD
  - Fix typos. Bug Report [ 2138019 ] Missing </tr> in view_entry.php
  - Apply Patch [ 2086918 ] icalendar with multi byte
