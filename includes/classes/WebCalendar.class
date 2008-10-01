@@ -865,7 +865,7 @@ class WebCalendar {
 
     if (extension_loaded('mbstring')) {
       $mb_lang = strtok($lang, '-');
-      if (mb_language($mb_lang) && mb_internal_encoding(translate('charset'))) {
+      if (@mb_language($mb_lang) && mb_internal_encoding(translate('charset'))) {
         $enable_mbstring = true;
       } else {
         $enable_mbstring = false;
