@@ -32,7 +32,7 @@ $editLayerStr = translate ( 'Edit layer' );
 $editStr = translate ( 'Edit' );
 $deleteStr = translate ( 'Delete' );
 $deleteLayerStr = translate ( 'Delete layer' );
-$areYouSureStr = translate ( 'Are you sure you want to delete this XXX?' );
+$areYouSureStr = translate ( 'Are you sure you want to delete this layer?' );
 $sourceStr = translate ( 'Source' );
 $colorStr = translate ( 'Color' );
 $duplicatesStr = translate ( 'Duplicates' );
@@ -55,21 +55,20 @@ else {
    . translate ( 'Help' ) . '" class="help" onclick="window.open( '
    . '\'help_layers.php\', \'cal_help\', \'dependent,menubar,scrollbars,'
    . 'height=400,width=400,innerHeight=420,outerWidth=420\' );" /></h2>
-    ' . display_admin_link () . translate ( 'Layers are currently' )
-   . '&nbsp;<strong>';
+    ' . display_admin_link();
 
   if ( $layers_enabled ) {
-    echo translate ( 'Enabled' ) . '</strong>. (<a class="nav" '
+    echo translate( 'Layers are currently enabled.' )
+     . ' (<a class="nav" '
      . 'href="layers_toggle.php?status=off' . $u_url . '">'
      . translate ( 'Disable Layers' ) . '</a>)<br />'
      . ( $is_admin && empty ( $public ) &&
       ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) ? '
     <blockquote>
       <a href="layers.php?public=1">'
-       . translate ( 'Click here' ) . '&nbsp;'
-       . translate ( 'to modify the layers settings for the' ) . '&nbsp;'
-       . translate ( $PUBLIC_ACCESS_FULLNAME ) . '&nbsp;'
-       . translate ( 'calendar' ) . '.</a>
+       . str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
+         translate( 'Click here to modify the layers settings for the XXX calendar.' ) )
+       . '</a>
     </blockquote>' : '' ) . '
     <a href="edit_layer.php' . ( $updating_public ? '?public=1' : '' )
      . '">' . translate ( 'Add layer') . '</a><br />';
@@ -88,7 +87,7 @@ else {
         <a title="' . $deleteLayerStr
          . '" href="del_layer.php?id=' . $layer['cal_layerid'] . $u_url
          . '" onclick="return confirm( \''
-         . str_replace ( 'XXX', $layerStr, $areYouSureStr )
+         . $areYouSureStr
          . '\' );">' . $deleteStr . '</a>)</h4>
       <p><label>' . $sourceStr . ': </label>' . $layerfullname
          . '</p>
@@ -103,7 +102,8 @@ else {
       }
     }
   } else
-    echo $disabledStr . '</strong>. (<a class="nav" '
+    echo translate( 'Layers are currently disabled.' )
+     . ' (<a class="nav" '
      . 'href="layers_toggle.php?status=on' . $u_url . '">'
      . $enableLayersStr . '</a>)<br />';
 }

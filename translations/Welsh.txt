@@ -471,7 +471,7 @@ Keywords: Allweddeiriau
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Rhaid i chi defnyddio un neu fwy allweddeiriau chwilio
+You must enter one or more search keywords.: Rhaid i chi defnyddio un neu fwy allweddeiriau chwilio
 Search Results: Canlyniadau Archwiliad
 match found: Darganfyddwyd ateb cyfatebol
 matches found: Darganfyddwyd atebion cyfatebol

@@ -389,7 +389,7 @@ Modified since: 更改自
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: 导出格式未定义或不正确
+export format not defined or incorrect.: 导出格式未定义或不正确
 
 ########################################
 # Page: groups.php
@@ -551,7 +551,7 @@ Keywords: 关键字
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: 您至少要输入一个搜寻文字或句子
+You must enter one or more search keywords.: 您至少要输入一个搜寻文字或句子
 Search Results: 查询结果
 match found: 笔符合查询
 matches found: 笔符合查询

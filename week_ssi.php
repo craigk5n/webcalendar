@@ -26,7 +26,7 @@ if ( strlen ( $login ) == 0 ) {
   else {
     echo '<span style="color:#F00;"><span style="font-weight: bold;">'
      . translate ( 'Error' ) . ':</span>'
-     . translate ( 'No user specified' ) . '.</span>';
+     . translate( 'No user specified.' ) . '</span>';
     exit;
   }
 }

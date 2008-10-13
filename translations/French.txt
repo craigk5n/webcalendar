@@ -537,7 +537,7 @@ pm: PM
 days: jours
 hours: heures
 minutes: =
-You are not authorized to edit this task: Vous n'êtes pas autorisé à modifier cette tâche.
+You are not authorized to edit this task.: Vous n'êtes pas autorisé à modifier cette tâche.
 task: tâche
 You are not authorized to edit this XXX.: Vous n'êtes pas autorisé à modifier cet(te) XXX
 is in a different timezone than you are. Currently: est dans un fuseau horaire différent du votre. Actuellement
@@ -713,9 +713,9 @@ Required to View Remote Calendar: Requis pour visualiser l'agenda distant
 Error: Erreur
 Import Results: Résultat de l'importation
 Events successfully imported: Événements importés avec succès
-Create a new layer to view this calendar: Créer un nouveau calque pour visualiser cet agenda
+Create a new layer to view this calendar.: Créer un nouveau calque pour visualiser cet agenda
 Errors: Erreurs
-There was an error parsing the import file or no events were returned: Erreur lors de l'analyse du fichier d'importation - ou - aucun événément n'a été détecté
+There was an error parsing the import file or no events were returned.: Erreur lors de l'analyse du fichier d'importation - ou - aucun événément n'a été détecté
 
 ########################################
 # Page: edit_report.php
@@ -814,7 +814,7 @@ Modified since: Modifié depuis
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: Le format d'exportation n'est pas défini ou est incorrect
+export format not defined or incorrect.: Le format d'exportation n'est pas défini ou est incorrect
 
 ########################################
 # Page: freebusy.php
@@ -974,7 +974,7 @@ No file: Aucun fichier
 Error deleting palm events from webcalendar.: Erreur lors de l'éffacement d'événements palm de webcalendar
 Events from prior import marked as deleted: Les événements importés précédemment sont marqués supprimés
 Conflicting events: Événements en conflits
-The import file contained no data: Le fichier à importer ne contient aucune donnée exploitable
+The import file contained no data.: Le fichier à importer ne contient aucune donnée exploitable
 
 ########################################
 # Page: layers.php
@@ -1048,7 +1048,7 @@ Add New NonUser Calendar: Ajouter un nouvel utilisateur générique
 ########################################
 # Page: nulogin.php
 #
-A login must be specified: Vous devez spécifier un nom d'utilisateur
+A login must be specified.: Vous devez spécifier un nom d'utilisateur
 
 ########################################
 # Page: pref.php
@@ -1074,7 +1074,7 @@ entries: entrées
 ########################################
 # Page: publish.php
 #
-No user specified: aucun utilisateur spécifié
+No user specified.: aucun utilisateur spécifié
 
 ########################################
 # Page: purge.php
@@ -1161,7 +1161,7 @@ Range: Etendue
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Vous devez indiquer un ou plusieurs mot(s) clé(s) pour la recherche
+You must enter one or more search keywords.: Vous devez indiquer un ou plusieurs mot(s) clé(s) pour la recherche
 Search Results: Résultats de la recherche
 match found: événement correspond à votre recherche
 matches found: événements correspondent à votre recherche
@@ -1235,7 +1235,7 @@ You must specify a view name: Vous devez indiquer une vue
 ########################################
 # Page: view_d.php
 #
-No users for this view: Aucun utilisateur pour cette vue
+No users for this view.: Aucun utilisateur pour cette vue
 
 ########################################
 # Page: view_entry.php

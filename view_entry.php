@@ -29,8 +29,7 @@ $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
 $can_email = 'Y';
 
-$areYouSureStr = str_replace ( 'XXX', translate ( 'entry' ),
-  translate ( 'Are you sure you want to delete this XXX?' ) );
+$areYouSureStr = translate( 'Are you sure you want to delete this entry?' );
 $pri[1] = translate ( 'High' );
 $pri[2] = translate ( 'Medium' );
 $pri[3] = translate ( 'Low' );
@@ -952,7 +951,7 @@ $can_add_attach = ( Doc::attachmentsEnabled () && $login != '__public__'
   && ( ( $login == $create_by ) || ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
   ( $ALLOW_ATTACH_ANY == 'Y' ) || $is_admin  ) );
 
-$can_add_comment = ( Doc::commentsEnabled () && $login != '__public__' 
+$can_add_comment = ( Doc::commentsEnabled() && $login != '__public__'
   && ( ( $login == $create_by ) ||  ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
   ( $ALLOW_COMMENTS_ANY == 'Y' ) || $is_admin  ) );
 
@@ -1025,19 +1024,22 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
        . '</a></li>';
     }
   } else {
+    if ( ! empty( $user ) && $user != $login && ! $is_assistant ) {
+      user_load_variables( $user, 'temp_' );
+      $delete_str = str_replace( 'XXX', $temp_fullname,
+                                translate( 'Delete entry from calendar of XXX' ) );
+    } else {
+      $delete_str = $deleteEntryStr;
+    }
     echo '
       <li><a title="' . $editEntryStr . '" class="nav" href="edit_entry.php?id='
      . $id . $u_url . '">' . $editEntryStr . '</a></li>
-      <li><a title="' . $deleteEntryStr . '" class="nav" href="del_entry.php?id='
+      <li><a title="' . $delete_str . '" class="nav" href="del_entry.php?id='
      . $id . $u_url . $rdate . '" onclick="return confirm( \'' . $areYouSureStr
      . "\\n\\n"
      . ( empty ( $user ) || $user == $login || $is_assistant
       ? $deleteAllStr : '' )
-     . '\' );">' . $deleteEntryStr;
-    if ( ! empty ( $user ) && $user != $login && ! $is_assistant ) {
-      user_load_variables ( $user, 'temp_' );
-      echo ' ' . translate ( 'from calendar of' ) . ' ' . $temp_fullname;
-    }
+     . '\' );">' . $delete_str;
     echo '</a></li>';
   }
   echo '

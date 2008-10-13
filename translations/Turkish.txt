@@ -266,7 +266,7 @@ Keywords: Kelimeler
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: En az bir Kelime girmeniz gerekiyor
+You must enter one or more search keywords.: En az bir Kelime girmeniz gerekiyor
 Search Results: Arama sonucu
 match found: Bulunan
 matches found: Bulunan

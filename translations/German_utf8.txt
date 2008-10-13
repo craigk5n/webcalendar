@@ -534,7 +534,7 @@ pm: Nachmittag
 days: Tage
 hours: Stunden
 minutes: Minute(n)
-You are not authorized to edit this task: Sie sind nicht berechtigt diese Aufgabe zu &auml;ndern
+You are not authorized to edit this task.: Sie sind nicht berechtigt diese Aufgabe zu &auml;ndern
 task: Aufgabe
 You are not authorized to edit this XXX.: Sie sind nicht berechtigt diesen XXX zu bearbeiten
 is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
@@ -715,9 +715,9 @@ Required to View Remote Calendar: Erfordert Ansicht des externen Kalenders
 Error: Fehler
 Import Results: Importierte Ergebnisse
 Events successfully imported: Termine erfolgreich importiert
-Create a new layer to view this calendar: Erstelle neuen Layer um diesen Kalendar anzuzeigen.
+Create a new layer to view this calendar.: Erstelle neuen Layer um diesen Kalendar anzuzeigen.
 Errors: Fehler
-There was an error parsing the import file or no events were returned: Beim Einlesen der Import-Datei trat ein Fehler auf oder es wurden keine Eintr&auml;ge zur&uuml;ckgegeben
+There was an error parsing the import file or no events were returned.: Beim Einlesen der Import-Datei trat ein Fehler auf oder es wurden keine Eintr&auml;ge zur&uuml;ckgegeben
 
 ########################################
 # Page: edit_report.php
@@ -816,7 +816,7 @@ Modified since: &Auml;nderungen ab
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: Exportiertes Format nicht definiert oder ung&uuml;ltig
+export format not defined or incorrect.: Exportiertes Format nicht definiert oder ung&uuml;ltig
 
 ########################################
 # Page: freebusy.php
@@ -981,7 +981,7 @@ No file: Keine Datei
 Error deleting palm events from webcalendar.: Fehler beim L&ouml;schen der Palm-Termine vom Webkalender
 Events from prior import marked as deleted: Termine vom vorigen Import als &#34;gel&ouml;scht&#34; markieren
 Conflicting events: Termin&uuml;berschneidung
-The import file contained no data: Die importierte Datei enthielt keine Daten
+The import file contained no data.: Die importierte Datei enthielt keine Daten
 
 ########################################
 # Page: layers.php
@@ -1058,7 +1058,7 @@ Add New NonUser Calendar: Neuen &#39;Zentralen-Kalender&#39; hinzuf&uuml;gen
 ########################################
 # Page: nulogin.php
 #
-A login must be specified: Eine Anmeldung mu&szlig; erfolgen
+A login must be specified.: Eine Anmeldung mu&szlig; erfolgen
 
 ########################################
 # Page: pref.php
@@ -1084,7 +1084,7 @@ entries: Eintr&auml;ge
 ########################################
 # Page: publish.php
 #
-No user specified: Kein Benutzer ausgew&auml;hlt
+No user specified.: Kein Benutzer ausgew&auml;hlt
 
 ########################################
 # Page: purge.php
@@ -1173,7 +1173,7 @@ Range: Datumsbereich
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Sie m&uuml;ssen ein oder mehrere Stichw&ouml;rter eingeben
+You must enter one or more search keywords.: Sie m&uuml;ssen ein oder mehrere Stichw&ouml;rter eingeben
 Search Results: Suchergebnis
 match found: Eintrag gefunden
 matches found: Eintr&auml;ge gefunden
@@ -1269,7 +1269,7 @@ You must specify a view name: Sie m&uuml;ssen einen Ansichtsnamen angeben
 ########################################
 # Page: view_d.php
 #
-No users for this view: Keine g&uuml;ltigen Benutzer f&uuml;r diese Ansicht
+No users for this view.: Keine g&uuml;ltigen Benutzer f&uuml;r diese Ansicht
 
 ########################################
 # Page: view_entry.php

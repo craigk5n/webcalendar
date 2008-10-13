@@ -384,7 +384,7 @@ Error: Eroare
 Import Results: Rezultatul importului
 Events successfully imported: Evenimentele au fost importate cu succes
 Errors: Erori
-There was an error parsing the import file or no events were returned: Eroare la citirea fi&#351;ierului importat sau lips&#259; de evenimente
+There was an error parsing the import file or no events were returned.: Eroare la citirea fi&#351;ierului importat sau lips&#259; de evenimente
 
 ########################################
 # Page: edit_report.php
@@ -470,7 +470,7 @@ Modified since: Modificat&#259; din
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: formatul de export este incorect sau nu a fost definit
+export format not defined or incorrect.: formatul de export este incorect sau nu a fost definit
 
 ########################################
 # Page: groups.php
@@ -578,7 +578,7 @@ Exclude private records: Exclude datele private
 #
 Events from prior import marked as deleted: Evenimentele importate anterior sunt marcate ca &#351;terse
 Conflicting events: Evenimente &#238;n conflict
-The import file contained no data: Fisierul importat nu con&#355;ine date
+The import file contained no data.: Fisierul importat nu con&#355;ine date
 
 ########################################
 # Page: layers.php
@@ -663,7 +663,7 @@ Keywords: Cuvinte cheie
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Specific&#259; unul sau mai multe cuvinte cheie
+You must enter one or more search keywords.: Specific&#259; unul sau mai multe cuvinte cheie
 Search Results: Rezultatele cautarii
 match found: potrivire g&#259;sita
 matches found: potriviri g&#259;site

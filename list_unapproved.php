@@ -284,8 +284,8 @@ echo '
             action = \'R\';
             break;
           case "delete":
-            str = "' . str_replace ( 'XXX', translate ( 'entry' ),
-  translate ( 'Are you sure you want to delete this XXX?' ) ) . '";
+            str = "'
+ . translate( 'Are you sure you want to delete this entry?' ) . '";
             action = \'D\';
             break;
           case "approveSelected":

@@ -61,8 +61,7 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
 	$buttonAction = 'Add';
   $calIdStr = translate ( 'Calendar ID' );
   $colorStr = translate ( 'Color' );
-  $confirmStr = str_replace ( 'XXX', translate ( 'entry' ),
-    translate ( 'Are you sure you want to delete this XXX?' ) );
+  $confirmStr = translate( 'Are you sure you want to delete this entry?' );
   $createLayerStr = translate ( 'Create Layer' );
   $deleteStr = translate ( 'Delete' );
   $firstNameStr = translate ( 'First Name' );

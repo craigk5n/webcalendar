@@ -11,7 +11,7 @@ if ( ! $is_admin ) {
   exit;
 }
 if ( ! $NONUSER_PREFIX ) {
-  echo print_error_header () . translate ( 'NONUSER_PREFIX not set' ) . '.
+  echo print_error_header() . translate( 'NONUSER_PREFIX not set' ) . '
   </body>
 </html>';
   exit;
@@ -39,7 +39,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
       <input type="text" name="nid" id="calid" size="20" '
      . 'onchange="check_name();" maxlength="20" /> '
      . translate ( 'word characters only' );
-         
+
   ob_start ();
 
   echo '
@@ -116,13 +116,12 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
 
   echo '
       </table><br />
-      <input type="submit" name="' . $buttonAction 
+      <input type="submit" name="' . $buttonAction
             . '" value="' . $button . '" />'
             . ( empty ( $nid ) ? '' : '
       <input type="submit" name="delete" value="' . translate ( 'Delete' )
      . '" onclick="return confirm( \''
-     . str_replace ( 'XXX', translate ( 'entry' ),
-      translate ( 'Are you sure you want to delete this XXX?' ) )
+     . translate( 'Are you sure you want to delete this entry?' )
      . '\')" />' ) . '
     </form>
     ';

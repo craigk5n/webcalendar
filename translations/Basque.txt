@@ -490,7 +490,7 @@ Keywords: Hitz gakoa
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Hitz gako bat edo gehiago sartu behar duzu
+You must enter one or more search keywords.: Hitz gako bat edo gehiago sartu behar duzu
 Search Results: Bilaketaren emaitzak
 match found: asmatze topatua
 matches found: asmatze topatuak

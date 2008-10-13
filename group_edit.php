@@ -99,8 +99,7 @@ echo '
  . ( ! $newgroup ? '
             <input type="submit" name="delete" value="'
    . translate ( 'Delete' ) . '" onclick="return confirm( \''
-   . str_replace ( 'XXX', translate ( 'entry' ),
-    translate ( 'Are you sure you want to delete this XXX?' ) )
+   . translate( 'Are you sure you want to delete this entry?' )
    . '\')" />' : '' ) . '
           </td>
         </tr>

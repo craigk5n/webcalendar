@@ -274,7 +274,7 @@ Keywords: Leitarorð
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Þú verður að slá inn amk eitt leitarorð
+You must enter one or more search keywords.: Þú verður að slá inn amk eitt leitarorð
 Search Results: Niðurstaða leitar
 match found: fannst
 matches found: fundust

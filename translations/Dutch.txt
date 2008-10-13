@@ -503,7 +503,7 @@ pm: p.m. (post meridiem), 's avond
 days: dagen
 hours: uren
 minutes: minuten
-You are not authorized to edit this task: U heeft geen recht deze taak te bewerken
+You are not authorized to edit this task.: U heeft geen recht deze taak te bewerken
 task: taak
 is in a different timezone than you are. Currently: is in een andere tijdzone dan u, Op het moment
 hour ahead of you: een uur voor op u
@@ -665,9 +665,9 @@ Required to View Remote Calendar: Nodig om Kalender op afstand te bekijken
 Error: fout
 Import Results: Resultaat van importeren
 Events successfully imported: Afspraken succesvol geimporteerd
-Create a new layer to view this calendar: Maak een nieuwe laag om deze kalender te bekijken
+Create a new layer to view this calendar.: Maak een nieuwe laag om deze kalender te bekijken
 Errors: Fouten
-There was an error parsing the import file or no events were returned: Er heeft zich een fout voorgedaan bij het verwerken van het importbestand of er zijn geen items aangetroffen
+There was an error parsing the import file or no events were returned.: Er heeft zich een fout voorgedaan bij het verwerken van het importbestand of er zijn geen items aangetroffen
 
 ########################################
 # Page: edit_report.php
@@ -763,7 +763,7 @@ Modified since: Wijzigingen vanaf
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: Exportformaat niet gedefinieerd of incorrect
+export format not defined or incorrect.: Exportformaat niet gedefinieerd of incorrect
 
 ########################################
 # Page: groups.php
@@ -913,7 +913,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: Herh
 Error deleting palm events from webcalendar.: Fout bij het verwidjeren van palm afspraken uit de webkalender.
 Events from prior import marked as deleted: Afspraken van vorige import gemarkeerd als verwijderd
 Conflicting events: Conflicterende afspraken
-The import file contained no data: Het importbestand bevat geen gegevens.
+The import file contained no data.: Het importbestand bevat geen gegevens.
 
 ########################################
 # Page: layers.php
@@ -983,7 +983,7 @@ Add New NonUser Calendar: Losse agenda toevoegen
 ########################################
 # Page: nulogin.php
 #
-A login must be specified: Er moet een login gespecifieerd worden
+A login must be specified.: Er moet een login gespecifieerd worden
 
 ########################################
 # Page: pref.php
@@ -1009,7 +1009,7 @@ entries: afspraken
 ########################################
 # Page: publish.php
 #
-No user specified: Geen gebruiker gekozen
+No user specified.: Geen gebruiker gekozen
 
 ########################################
 # Page: purge.php
@@ -1087,7 +1087,7 @@ Range: Periode
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Vul een of meer trefwoorden in
+You must enter one or more search keywords.: Vul een of meer trefwoorden in
 Search Results: Zoekresultaten
 match found: afspraak gevonden die overeenkomst met de trefwoorden
 matches found: afspraken gevonden die overeenkomen met de trefwoorden
@@ -1161,7 +1161,7 @@ You must specify a view name: Bepaal de naam voor dit overzicht
 ########################################
 # Page: view_d.php
 #
-No users for this view: Geen gebruikers voor deze weergave
+No users for this view.: Geen gebruikers voor deze weergave
 
 ########################################
 # Page: view_entry.php

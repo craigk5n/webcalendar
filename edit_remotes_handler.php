@@ -76,8 +76,8 @@ if ( ! empty ( $delete ) ) {
           array ( $nid, $nfirstname, $nlastname, $nadmin, 'N', $nurl ) ) )
         $error = db_error ();
     } else
-      $error = translate ( 'Calendar ID' ) . ' '
-       . translate ( 'word characters only' ) . '.';
+      $error = translate( 'Calendar ID' )
+        . translate( 'word characters only' );
 
     // Add new layer if requested.
     if ( ! empty ( $nlayer ) && $nlayer == 'Y' ) {
@@ -150,15 +150,15 @@ if ( ! empty ( $reload ) ) {
     }
     if ( $layer_found == false )
       echo '
-    <p>' . translate ( 'Create a new layer to view this calendar' ) . '.</p>';
+    <p>' . translate( 'Create a new layer to view this calendar.' ) . '</p>';
   } elseif ( ! empty ( $errormsg ) ) {
     echo '
     ' . translate ( 'Errors' ) . ': ' . $error_num . '<br /><br />
     ' . $errorStr . $errormsg . '<br />';
   } else {
     echo $errorStr .
-    translate ( 'There was an error parsing the import file or no events were returned' )
-     . '.<br />';
+    translate( 'There was an error parsing the import file or no events were returned.' )
+     . '<br />';
   }
   echo print_trailer ( false, true, true );
 }

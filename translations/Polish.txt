@@ -429,7 +429,7 @@ Is public calendar: Jest kalendarzem publicznym
 Import Results: Importuj rezultaty
 Events successfully imported: Wydarzenia pomy¶lnie zaimportowano
 Errors: B³edy
-There was an error parsing the import file or no events were returned: B³±d przekazania importowanego pliku lub brak zdarzeñ zwróconych
+There was an error parsing the import file or no events were returned.: B³±d przekazania importowanego pliku lub brak zdarzeñ zwróconych
 
 ########################################
 # Page: edit_report.php
@@ -516,7 +516,7 @@ Modified since: Czas modyfikacji
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: format eksportu niezdefiniowany lub niepoprawny
+export format not defined or incorrect.: format eksportu niezdefiniowany lub niepoprawny
 
 ########################################
 # Page: groups.php
@@ -644,7 +644,7 @@ Exclude private records: Wyklucz prywatne wpisy
 #
 Events from prior import marked as deleted: Zdarzenia z wcze¶niejszego imporu zosta³y zaznaczone jak skasowane
 Conflicting events: Wydarzenia konfliktowe
-The import file contained no data: Plik importowany nie zawiera³ ¿adnych danych
+The import file contained no data.: Plik importowany nie zawiera³ ¿adnych danych
 
 ########################################
 # Page: layers.php
@@ -764,7 +764,7 @@ Keywords: S³owa kluczowe
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Musisz wprowadzia jedno lub wiecej s³ów kluczowych
+You must enter one or more search keywords.: Musisz wprowadzia jedno lub wiecej s³ów kluczowych
 Search Results: Rezultaty wyszukiwania
 match found: znaleziono
 matches found: znaleziono
@@ -822,7 +822,7 @@ You must specify a view name: Musisz okre¶lia nazwe widoku
 ########################################
 # Page: view_d.php
 #
-No users for this view: Brak u¿ytkowników dla tego widoku
+No users for this view.: Brak u¿ytkowników dla tego widoku
 
 ########################################
 # Page: view_entry.php

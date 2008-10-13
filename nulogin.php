@@ -31,7 +31,7 @@ if ( $single_user == 'Y'/* No login for single-user mode.*/ ||
 
 $login = getValue ( 'login' );
 if ( empty ( $login ) )
-  die_miserable_death ( translate ( 'A login must be specified' ) . '.' );
+  die_miserable_death( translate( 'A login must be specified.' ) );
 
 $date = getValue ( 'date' );
 $return_path = getValue ( 'return_path' );

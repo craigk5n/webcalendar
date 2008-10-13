@@ -480,7 +480,7 @@ pm: 午後
 days: 日
 hours: 時間
 minutes: 分
-You are not authorized to edit this task: このタスクを編集することを許可されていません
+You are not authorized to edit this task.: このタスクを編集することを許可されていません
 task: タスク
 Time entered here is based on your Timezone.: ここで入力された時間は、あなたのタイムゾーンに基づきます。
 Edit Entry: エントリーの編集
@@ -621,7 +621,7 @@ Reload: 再読み込み
 Error: エラー
 Import Results: インポート結果
 Events successfully imported: イベントのインポートに成功しました。
-Create a new layer to view this calendar: このカレンダー表示に新しいレイヤーを作成する
+Create a new layer to view this calendar.: このカレンダー表示に新しいレイヤーを作成する
 Errors: エラー
 
 ########################################
@@ -719,7 +719,7 @@ Modified since: 修正日以降
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: エクスポート形式が未定義か正しくありません
+export format not defined or incorrect.: エクスポート形式が未定義か正しくありません
 
 ########################################
 # Page: freebusy.php
@@ -851,7 +851,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: 繰り
 #
 No file: ファイルがありません
 Conflicting events: イベントが衝突中
-The import file contained no data: インポートファイルの中身がありません。
+The import file contained no data.: インポートファイルの中身がありません。
 
 ########################################
 # Page: layers.php
@@ -924,7 +924,7 @@ Add New NonUser Calendar: 非ユーザーのカレンダーに新規追加
 ########################################
 # Page: nulogin.php
 #
-A login must be specified: ログイン名を指定しなければなりません
+A login must be specified.: ログイン名を指定しなければなりません
 
 ########################################
 # Page: pref.php
@@ -944,7 +944,7 @@ entries: エントリー
 ########################################
 # Page: publish.php
 #
-No user specified: ユーザーが指定されていません
+No user specified.: ユーザーが指定されていません
 
 ########################################
 # Page: purge.php
@@ -1019,7 +1019,7 @@ Range: 範囲
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: キーワードを 1 つ以上入力してください。
+You must enter one or more search keywords.: キーワードを 1 つ以上入力してください。
 Search Results: 検索結果
 match found: 個の該当項目が見つかりました。
 matches found: 個の該当項目が見つかりました。
@@ -1101,7 +1101,7 @@ You must specify a view name: ビュー名を指定しなければなりません。
 ########################################
 # Page: view_d.php
 #
-No users for this view: この表示にユーザーがいません。
+No users for this view.: この表示にユーザーがいません。
 
 ########################################
 # Page: view_entry.php

@@ -418,7 +418,7 @@ pm: =
 days: dager
 hours: timer
 minutes: minutter
-You are not authorized to edit this task: Du er ikke autorsiert til å redigere denne oppgaven
+You are not authorized to edit this task.: Du er ikke autorsiert til å redigere denne oppgaven
 task: oppgave
 You are not authorized to edit this XXX.: Du er ikke autorsiert til å redigere XXX.
 is in a different timezone than you are. Currently: er i en annen tidssone enn deg. Er 
@@ -561,9 +561,9 @@ Last Name: Etternavn
 Error: Feil
 Import Results: Importeringsresultat
 Events successfully imported: Aktiviteter vellykket importert
-Create a new layer to view this calendar: Opprett et nytt lag for å vise denne kalenderen
+Create a new layer to view this calendar.: Opprett et nytt lag for å vise denne kalenderen
 Errors: Feil
-There was an error parsing the import file or no events were returned: Det oppstod en feil ved behandling av den importerte filen eller ingen aktiviteter ble returnert
+There was an error parsing the import file or no events were returned.: Det oppstod en feil ved behandling av den importerte filen eller ingen aktiviteter ble returnert
 
 ########################################
 # Page: edit_report.php
@@ -659,7 +659,7 @@ Modified since: Endret etter
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: eksportformat ikke definert eller feil
+export format not defined or incorrect.: eksportformat ikke definert eller feil
 
 ########################################
 # Page: freebusy.php
@@ -804,7 +804,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: Gjen
 #
 Events from prior import marked as deleted: Aktiviteter fra tidligere importering markert som slettede
 Conflicting events: Aktiviteter som kolliderer
-The import file contained no data: Den importerte filen inneholdt ikke noen data
+The import file contained no data.: Den importerte filen inneholdt ikke noen data
 
 ########################################
 # Page: layers.php
@@ -878,7 +878,7 @@ minute: minutt
 ########################################
 # Page: publish.php
 #
-No user specified: Ingen bruker oppgitt
+No user specified.: Ingen bruker oppgitt
 
 ########################################
 # Page: purge.php
@@ -961,7 +961,7 @@ Range: Intervall
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Vennligst oppgi ett eller flere søkeord
+You must enter one or more search keywords.: Vennligst oppgi ett eller flere søkeord
 Search Results: Søkeresultat
 match found: treff funnet
 matches found: treff funnet
@@ -1026,7 +1026,7 @@ You must specify a view name: Du må angi et oversiktnavn
 ########################################
 # Page: view_d.php
 #
-No users for this view: Ingen brukere for denne visningen
+No users for this view.: Ingen brukere for denne visningen
 
 ########################################
 # Page: view_entry.php
