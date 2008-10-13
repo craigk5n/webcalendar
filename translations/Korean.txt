@@ -242,7 +242,7 @@ Keywords: 검색어
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: 검색어를 입력하셔야 합니다.
+You must enter one or more search keywords.: 검색어를 입력하셔야 합니다.
 Search Results: 검색 결과
 match found: 항목 발견
 matches found: 항목 발견

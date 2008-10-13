@@ -104,13 +104,13 @@ if ( $file['size'] > 0 ) {
     echo '
     <br /><br />
     <b>' . translate ( 'Error' ) . ':</b> '
-     . translate ( 'There was an error parsing the import file or no events were returned' )
-     . '.<br />';
+     . translate( 'There was an error parsing the import file or no events were returned.' )
+     . '<br />';
 } else
   echo '
     <br /><br />
     <b>' . translate ( 'Error' ) . ':</b> '
-   . translate ( 'The import file contained no data' ) . '.<br />';
+   . translate( 'The import file contained no data.' ) . '<br />';
 // echo "<hr />$sqlLog\n";
 echo print_trailer ();
 

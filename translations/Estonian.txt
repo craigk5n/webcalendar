@@ -500,7 +500,7 @@ Keywords: Võtmesõnad
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Pead sisestama ühe või mitu võtmesõna
+You must enter one or more search keywords.: Pead sisestama ühe või mitu võtmesõna
 Search Results: Otsingu tulemused
 match found: vaste leitud
 matches found: vasteid leitud

@@ -173,7 +173,7 @@ $viewusercnt = count ( $viewusers );
 // In theory, we whould always at least have ourselves in the view, right?
 if ( $viewusercnt == 0 ) {
   // I don't think we need to translate this.
-  $error = 'No users for this view';
+  $error = 'No users for this view.';
 }
 
 if ( ! empty ( $error ) ) {

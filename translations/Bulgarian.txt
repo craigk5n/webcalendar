@@ -412,7 +412,7 @@ Modified since: >48D8F8@0=> A;54
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: $>@<0BJB =0 5:A?>@B8@0=5 =5 5 >?@545;5= 8;8 5 =5?@028;5=
+export format not defined or incorrect.: $>@<0BJB =0 5:A?>@B8@0=5 =5 5 >?@545;5= 8;8 5 =5?@028;5=
 
 ########################################
 # Page: groups.php
@@ -545,7 +545,7 @@ Keywords: ;NG>28 4C<8
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: "@O120 40 2J2545B5 54=0 8;8 ?>25G5 :;NG>28 4C<8 70 BJ@A5=5
+You must enter one or more search keywords.: "@O120 40 2J2545B5 54=0 8;8 ?>25G5 :;NG>28 4C<8 70 BJ@A5=5
 Search Results: 57C;B0B8 >B BJ@A5=5B>
 match found: =0<5@5=> AJ>B25BAB285
 matches found: =0<5@5=8 AJ>B25BAB28O

@@ -396,7 +396,7 @@ Error: Σφάλμα
 Import Results: Αποτελέσματα Εισαγωγής
 Events successfully imported: Γεγονότα που εισάχθηκαν επιτυχώς
 Errors: Σφάλματα
-There was an error parsing the import file or no events were returned: Σφάλμα κατά την ανάλυση του αρχείου εισαγωγής ή δεν υπήρχαν γεγονότα
+There was an error parsing the import file or no events were returned.: Σφάλμα κατά την ανάλυση του αρχείου εισαγωγής ή δεν υπήρχαν γεγονότα
 
 ########################################
 # Page: edit_report.php
@@ -488,7 +488,7 @@ Modified since: Έχει να τροποποιηθεί από τις
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: το format εξαγωγής δεν ορίστηκε ή είναι λανθασμένο
+export format not defined or incorrect.: το format εξαγωγής δεν ορίστηκε ή είναι λανθασμένο
 
 ########################################
 # Page: groups.php
@@ -601,7 +601,7 @@ Exclude private records: Αποκλείονται ιδιωτικές εγγρα�
 #
 Events from prior import marked as deleted: Γεγονότα από προηγούμενη εισαγωγή που μαρκαρίστηκαν για διαγραφή
 Conflicting events: Γεγονότα που επικαλύπτονται
-The import file contained no data: Το αρχείο εισαγωγής δεν περιέχει δεδομένα
+The import file contained no data.: Το αρχείο εισαγωγής δεν περιέχει δεδομένα
 
 ########################################
 # Page: layers.php
@@ -689,7 +689,7 @@ Keywords: Λέξεις-Κλειδιά
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Πρέπει να θέσετε μια ή περισσότερες λέξεις κλειδιά
+You must enter one or more search keywords.: Πρέπει να θέσετε μια ή περισσότερες λέξεις κλειδιά
 Search Results: Αποτελέσματα Αναζήτησης
 match found: Βρέθηκε ταίριασμα
 matches found: Βρέθηκαν ταιριάσματα
@@ -750,7 +750,7 @@ You must specify a view name: Πρέπει να ορίσετε ένα όνομα
 ########################################
 # Page: view_d.php
 #
-No users for this view: Δεν υπάρχουν χρήστες για την εμφάνιση αυτή
+No users for this view.: Δεν υπάρχουν χρήστες για την εμφάνιση αυτή
 
 ########################################
 # Page: view_entry.php

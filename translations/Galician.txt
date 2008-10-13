@@ -337,7 +337,7 @@ Keywords: Palabras clave
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Debe introducir unha ou máis palabras clave para a busca
+You must enter one or more search keywords.: Debe introducir unha ou máis palabras clave para a busca
 Search Results: Resultados da busca
 match found: coincidencia atopada
 matches found: coincidencias atopadas

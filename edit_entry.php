@@ -241,10 +241,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $eType = 'task';
 
     // Public access has no access to tasks.
-    // translate ( 'You are not authorized to edit this task' )
     if ( $login == '__public__' && $eType == 'task' )
-      echo str_replace ( 'XXX', translate ( 'task' ),
-        translate ( 'You are not authorized to edit this XXX.' ) );
+      etranslate( 'You are not authorized to edit this task.' );
 
     // Check UAC.
     if ( access_is_enabled () )
@@ -424,7 +422,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
     for ( $i = 0, $cnt = count ( $tmp_ar ); $i < $cnt; $i++ ) {
       $participants[$tmp_ar[$i]] = 1;
     }
-  } 
+  }
 
   //Add the logged in user if none other supplied
   if ( count ( $participants )  == 0 )
@@ -1031,7 +1029,7 @@ if ( $can_edit ) {
       if ( $id > 0 ) {
         if ( ! empty ( $participants[$l] ) ) {
           $myusers .= '
-            <option value="' . $l . '">' 
+            <option value="' . $l . '">'
             . $f . $q . '</option>';
         }
       } else {
@@ -1045,14 +1043,14 @@ if ( $can_edit ) {
         if ( ! empty ( $user ) && ! empty ( $userlist[$l] ) ) {
           // Default selection of participants was in the URL.
           $myusers .= '
-            <option value="' . $l . '">' 
+            <option value="' . $l . '">'
             . $f . $q . '</option>';
         }
         if ( ( $l == $login && ! $is_assistant && ! $is_nonuser_admin ) ||
             ( ! empty ( $user ) && $l == $user ) )
            // Default selection of participants is logged in user.
           $myusers .= ' <option value="' . $l . '">' . $f . '</option>';
-            
+
         if ( $l == '__public__' && !
           empty ( $PUBLIC_ACCESS_DEFAULT_SELECTED ) &&
             $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' )
@@ -1076,25 +1074,25 @@ if ( $can_edit ) {
 
         if ( ! empty ( $participants[$l] ) ) {
           $myusers .= '
-              <option value="' . $l . '">' 
+              <option value="' . $l . '">'
                 . $n . $q .'</option>';
 
         } else if ( ! empty ( $user ) && ! empty ( $mynonusers[$l] ) ) {
           // Default selection of participants was in the URL.
           $myusers .= '
-              <option value="' . $l . '">' 
+              <option value="' . $l . '">'
                 . $n . $q . '</option>';
         }
       }
     }
-    
+
     if ( $GROUPS_ENABLED == 'Y'  ) {
       for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
         $grouplist .= '
           <option value="' . $groups[$i]['cal_group_id'] . '">'
             . $groups[$i]['cal_name'] . '</option>';
-     }  
-    
+     }
+
     }
     $addStr = '"     ' . translate ( 'Add' ) . '    "';
 
@@ -1110,10 +1108,10 @@ if ( $can_edit ) {
     echo '
         <tr title="' . tooltip ( 'avail_participants-help' ) . '">
           <td class="tooltip aligntop" rowspan="2"><label>'
-     . translate ( 'Available' ) . '<br />' 
+     . translate( 'Available' ) . '<br />'
      . translate ( 'Participants' ) . ':</label></td>
           <td class="boxleft boxtop">&nbsp;</td>
-          <td colspan="2"class="boxtop boxright">' . translate ( 'Find Name' ) 
+          <td colspan="2"class="boxtop boxright">' . translate( 'Find Name' )
           . '<input type="text" size="20" name="lookup" id="lookup" '
      . 'onkeyup="lookupName()" /></td>
         </tr>
@@ -1123,7 +1121,7 @@ if ( $can_edit ) {
             <select class="fixed" name="participants[]" id="entry_part" size="' . $size
      . '" multiple="multiple">' . $users . '
             </select><br/>
-            <input name="movert" type="button" value=' 
+            <input name="movert" type="button" value='
             . $addStr . ' onclick="selAdd( this );" /></td>
             </td>
         <td class="boxbottom">
@@ -1131,24 +1129,24 @@ if ( $can_edit ) {
             <select class="fixed" name="nonuserPart[]" id="res_part" size="'
      . $size . '" multiple="multiple">' . $nonusers . '
             </select><br/>
-            <input name="movert" type="button" value=' 
+            <input name="movert" type="button" value='
             . $addStr . ' onclick="selResource( this );" />
-          </td>  
+          </td>
         <td valign="top"  class="boxbottom boxright">'
         .  ( $GROUPS_ENABLED == 'Y' ? '&nbsp;&nbsp;<label>' . translate ( 'Groups' ) .'</label><br/>
           <select class="fixed" name="groups" id="groups" size="'
      . $size . '" onclick="addGroup()" >' . $grouplist . '
             </select><br/>
-            <input name="movert" type="button" value=' 
+            <input name="movert" type="button" value='
        . $addStr . ' onclick="selAdd( this );" />' : '&nbsp;' ) . '
-          </td>      
+          </td>
         </tr>
         <tr>
           <td colspan="4">&nbsp;</td>
         </tr>
         <tr title="' . tooltip ( 'participants-help' ) . '">
           <td class="tooltip aligntop"><label>'
-            . translate ( 'Selected' ) . '<br />' 
+            . translate( 'Selected' ) . '<br />'
             . translate ( 'Participants' ) . ':</label></td>
           <td align="left" valign="bottom" class="boxtop boxleft boxbottom">&nbsp;</td>
           <td class="boxtop boxright boxbottom" colspan="2">
@@ -1723,13 +1721,10 @@ if ( $can_edit ) {
   if ( $id > 0 && ( $login == $create_by || $single_user == 'Y' || $is_admin ) )
     echo '
     <a href="del_entry.php?id=' . $id . '" onclick="return confirm( \''
-     . str_replace ( 'XXX', translate ( 'entry' ),
-      translate ( 'Are you sure you want to delete this XXX?' ) ) . '\' );">'
+     . translate( 'Are you sure you want to delete this entry?' ) . '\' );">'
      . translate ( 'Delete entry' ) . '</a><br />';
 } else
-  // translate ( 'You are not authorized to edit this entry.' )
-  echo str_replace ( 'XXX', translate ( 'entry' ),
-    translate ( 'You are not authorized to edit this XXX.' ) );
+  etranslate( 'You are not authorized to edit this entry.' );
 // end if ( $can_edit )
 
 ob_end_flush ();

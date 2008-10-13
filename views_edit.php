@@ -169,9 +169,8 @@ echo '<tr><td><label>'
 <br />
 <input type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>" />
 <?php if ( ! $newview ) { ?>
- <input type="submit" name="delete" value="<?php etranslate ( 'Delete' )?>" onclick="return confirm( '<?php str_replace ( 'XXX',
-  translate ( 'entry' ),
-  translate ( 'Are you sure you want to delete this XXX?' ) ); ?>' )" />
+ <input type="submit" name="delete" value="<?php etranslate( 'Delete' )?>" onclick="return confirm( '<?php
+  translate( 'Are you sure you want to delete this entry?' ); ?>' )" />
 <?php } ?>
 </td></tr>
 </table>

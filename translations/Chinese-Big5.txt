@@ -295,7 +295,7 @@ Keywords: 關鍵字
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: 你至少要輸入一個搜尋文字或句子
+You must enter one or more search keywords.: 你至少要輸入一個搜尋文字或句子
 Search Results: 搜尋結果
 match found: 筆符合查詢
 matches found: 筆符合查詢

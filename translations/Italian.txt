@@ -537,7 +537,7 @@ pm: =
 days: giorni
 hours: ore
 minutes: minuti
-You are not authorized to edit this task: Non sei autorizzato a modificare questo compito.
+You are not authorized to edit this task.: Non sei autorizzato a modificare questo compito.
 task: compito
 You are not authorized to edit this XXX.: Non sei autorizzato a modificare questo XXX.
 is in a different timezone than you are. Currently: &egrave; in un fuso orario differente dal tuo. Attualmente
@@ -718,9 +718,9 @@ Required to View Remote Calendar: Richiesto per vedere un calendario remoto
 Error: Errore
 Import Results: Risultati dell'importazione
 Events successfully imported: Eventi importati con successo
-Create a new layer to view this calendar: Crea un nuovo livello per vedere questo calendario
+Create a new layer to view this calendar.: Crea un nuovo livello per vedere questo calendario
 Errors: Errori
-There was an error parsing the import file or no events were returned: C'&egrave; stato un errore nella scansione dei file da importare oppure non sono stati trovati eventi
+There was an error parsing the import file or no events were returned.: C'&egrave; stato un errore nella scansione dei file da importare oppure non sono stati trovati eventi
 
 ########################################
 # Page: edit_report.php
@@ -819,7 +819,7 @@ Modified since: Modificato dal
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: formato di esportazione non definito o non corretto
+export format not defined or incorrect.: formato di esportazione non definito o non corretto
 
 ########################################
 # Page: freebusy.php
@@ -984,7 +984,7 @@ No file: Nessun archivio
 Error deleting palm events from webcalendar.: Errore cancellando eventi <i>Palm</i> da WebCalendar
 Events from prior import marked as deleted: Eventi di un'importazione precedente segnati come cancellati
 Conflicting events: Eventi che sono in conflitto
-The import file contained no data: Il file da importare non contiene dati
+The import file contained no data.: Il file da importare non contiene dati
 
 ########################################
 # Page: layers.php
@@ -1061,7 +1061,7 @@ Add New NonUser Calendar: Aggiungi un nuovo calendario per non utenti
 ########################################
 # Page: nulogin.php
 #
-A login must be specified: Devi specificare un nome utente
+A login must be specified.: Devi specificare un nome utente
 
 ########################################
 # Page: pref.php
@@ -1087,7 +1087,7 @@ entries: elementi
 ########################################
 # Page: publish.php
 #
-No user specified: Nessun utente specificato
+No user specified.: Nessun utente specificato
 
 ########################################
 # Page: purge.php
@@ -1174,7 +1174,7 @@ Range: Intervallo
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Occorre inserire una o pi&ugrave; parole chiave
+You must enter one or more search keywords.: Occorre inserire una o pi&ugrave; parole chiave
 Search Results: Risultati della Ricerca
 match found: corrispondenza trovata
 matches found: corrispondenze trovate
@@ -1248,7 +1248,7 @@ You must specify a view name: Devi specificare il nome di una vista
 ########################################
 # Page: view_d.php
 #
-No users for this view: Nessun utente per questa vista
+No users for this view.: Nessun utente per questa vista
 
 ########################################
 # Page: view_entry.php

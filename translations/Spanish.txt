@@ -394,7 +394,7 @@ Last Name: Apellido
 Import Results: Resultado de la importacion
 Events successfully imported: Eventos importados correctamente
 Errors: Errores
-There was an error parsing the import file or no events were returned: Ha habido un error al analizar el archivo de importación o no se devolvió ningún acontecimiento
+There was an error parsing the import file or no events were returned.: Ha habido un error al analizar el archivo de importación o no se devolvió ningún acontecimiento
 
 ########################################
 # Page: edit_report.php
@@ -480,7 +480,7 @@ Modified since: Modificado desde
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: Formato de exportación no definido o incorrecto
+export format not defined or incorrect.: Formato de exportación no definido o incorrecto
 
 ########################################
 # Page: groups.php
@@ -588,7 +588,7 @@ Exclude private records: Excluir eventos privados
 #
 Events from prior import marked as deleted: Eventos de la importación anterior marcados como borrados
 Conflicting events: Eventos que están en conflicto
-The import file contained no data: El fichero de importación no contiene datos
+The import file contained no data.: El fichero de importación no contiene datos
 
 ########################################
 # Page: layers.php
@@ -675,7 +675,7 @@ Keywords: Palabra clave
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Debes introducir una ó más palabras clave
+You must enter one or more search keywords.: Debes introducir una ó más palabras clave
 Search Results: Resultados de la búsqueda
 match found: acierto encontrado
 matches found: aciertos encontrados

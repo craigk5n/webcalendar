@@ -394,7 +394,7 @@ Error: Chyba
 Import Results: Výsledky importu
 Events successfully imported: Úspěšně importované události
 Errors: Chyby
-There was an error parsing the import file or no events were returned: Nastala chyba při rozboru importovaného souboru a nebo nebyly vráceny žádné události
+There was an error parsing the import file or no events were returned.: Nastala chyba při rozboru importovaného souboru a nebo nebyly vráceny žádné události
 
 ########################################
 # Page: edit_report.php
@@ -479,7 +479,7 @@ Modified since: Změněné od
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: nebyl určen formát exportu a nebo není platný
+export format not defined or incorrect.: nebyl určen formát exportu a nebo není platný
 
 ########################################
 # Page: groups.php
@@ -584,7 +584,7 @@ Exclude private records: Vyjmout soukromé záznamy
 #
 Events from prior import marked as deleted: Události označené v předchozím importu za smazané
 Conflicting events: Konfliktní události
-The import file contained no data: Importovaný soubor neobsahoval žádná data
+The import file contained no data.: Importovaný soubor neobsahoval žádná data
 
 ########################################
 # Page: layers.php
@@ -674,7 +674,7 @@ Keywords: Klíčová slova
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Musíte vložit jedno nebo více klíčových slov pro vyhledávání
+You must enter one or more search keywords.: Musíte vložit jedno nebo více klíčových slov pro vyhledávání
 Search Results: Výsledky vyhledávání
 match found: nalezen záznam
 matches found: nalezeny záznamy

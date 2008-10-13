@@ -368,7 +368,7 @@ Error: Erro
 Import Results: Importar Resultados
 Events successfully imported: Eventos importados com sucesso
 Errors: Erros
-There was an error parsing the import file or no events were returned: Ocorreu um erro ao interpretar o ficheiro ou não foram encontrados eventos
+There was an error parsing the import file or no events were returned.: Ocorreu um erro ao interpretar o ficheiro ou não foram encontrados eventos
 
 ########################################
 # Page: edit_report.php
@@ -453,7 +453,7 @@ Modified since: Modificado desde
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: formato de exportação não definido ou incorrecto
+export format not defined or incorrect.: formato de exportação não definido ou incorrecto
 
 ########################################
 # Page: groups.php
@@ -560,7 +560,7 @@ Exclude private records: Excluir eventos privados
 #
 Events from prior import marked as deleted: Eventos de importações anteriores marcadas para remoção
 Conflicting events: Eventos conflituosos
-The import file contained no data: O ficheiro não contém dados
+The import file contained no data.: O ficheiro não contém dados
 
 ########################################
 # Page: layers.php
@@ -646,7 +646,7 @@ Keywords: Palavras
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Tem de introduzir uma ou mais palavras de pesquisa
+You must enter one or more search keywords.: Tem de introduzir uma ou mais palavras de pesquisa
 Search Results: Resultados da pesquisa
 match found: Ocorrência encontrada
 matches found: Ocorrências encontradas

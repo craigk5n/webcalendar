@@ -403,7 +403,7 @@ Error: Erro
 Import Results: Resultado da Importação
 Events successfully imported: Eventos importados com sucesso
 Errors: Erros
-There was an error parsing the import file or no events were returned: Ocorreu um erro ao processar o arquivo importado ou nenhum evento retornou
+There was an error parsing the import file or no events were returned.: Ocorreu um erro ao processar o arquivo importado ou nenhum evento retornou
 
 ########################################
 # Page: edit_report.php
@@ -490,7 +490,7 @@ Modified since: Modificado desde
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: Formato para exportar não foi definido ou está errado.
+export format not defined or incorrect.: Formato para exportar não foi definido ou está errado.
 
 ########################################
 # Page: groups.php
@@ -603,7 +603,7 @@ Exclude private records: Excluir eventos privados
 #
 Events from prior import marked as deleted: Eventos passados marcados como excluídos
 Conflicting events: Eventos Conflitantes
-The import file contained no data: O arquivo não contém data
+The import file contained no data.: O arquivo não contém data
 
 ########################################
 # Page: layers.php
@@ -691,7 +691,7 @@ Keywords: Palavras
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: É preciso introduzir uma ou mais palavras para busca
+You must enter one or more search keywords.: É preciso introduzir uma ou mais palavras para busca
 Search Results: Resultados da pesquisa
 match found: Ocorrência encontrada
 matches found: Ocorrências encontradas
@@ -747,7 +747,7 @@ You must specify a view name: Você deve especificar um novo nome para a Visualiz
 ########################################
 # Page: view_d.php
 #
-No users for this view: Nenhum usuário para esta visão
+No users for this view.: Nenhum usuário para esta visão
 
 ########################################
 # Page: view_entry.php

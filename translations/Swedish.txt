@@ -379,7 +379,7 @@ Error: Fel
 Import Results: Importresultat
 Events successfully imported: Händelseimport lyckades
 Errors: Fel
-There was an error parsing the import file or no events were returned: Det var ett fel vid analysen av importfilen eller inga händelser returnerades
+There was an error parsing the import file or no events were returned.: Det var ett fel vid analysen av importfilen eller inga händelser returnerades
 
 ########################################
 # Page: edit_report.php
@@ -463,7 +463,7 @@ Modified since: Ändrad efter
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: exportformat inte angett eller felaktigt
+export format not defined or incorrect.: exportformat inte angett eller felaktigt
 
 ########################################
 # Page: groups.php
@@ -569,7 +569,7 @@ Exclude private records: Ta inte med privata poster
 #
 Events from prior import marked as deleted: Händelser från tidigare import markerade som borttagna
 Conflicting events: Händelsekonflikter
-The import file contained no data: Importfilen innehöll inga data
+The import file contained no data.: Importfilen innehöll inga data
 
 ########################################
 # Page: layers.php
@@ -655,7 +655,7 @@ Keywords: Sökord
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Du måste ange ett eller flera sökord
+You must enter one or more search keywords.: Du måste ange ett eller flera sökord
 Search Results: Sökresultat
 match found: träff hittad
 matches found: träffar hittade

@@ -224,8 +224,9 @@ function purge_events ( $ids ) {
   for ( $i = 0; $i < $cnt; $i++ ) {
     $table = $tables[$i][0];
     echo '[' . $previewStr . '] ' .
-      translate ( 'Records deleted from' ) .
-      " $table: $num[$i]<br />\n";
+      str_replace( 'XXX', " $table: {$num[$i]}" .
+      translate( 'Records deleted from XXX' ) ) .
+      "<br />\n";
   }
 }
 

@@ -367,7 +367,7 @@ Last Name: Cognom
 #
 Import Results: Importar resultats
 Events successfully imported: Esdeveniments importats correctament
-There was an error parsing the import file or no events were returned: S'ha produït un error en processar el fitxer d'importació o no s'ha recuperat cap esdeveniment
+There was an error parsing the import file or no events were returned.: S'ha produït un error en processar el fitxer d'importació o no s'ha recuperat cap esdeveniment
 
 ########################################
 # Page: edit_report.php
@@ -452,7 +452,7 @@ Modified since: Modificat des de
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: format d'exportació no definit o incorrecte
+export format not defined or incorrect.: format d'exportació no definit o incorrecte
 
 ########################################
 # Page: groups.php
@@ -559,7 +559,7 @@ Exclude private records: Exclou registres privats
 #
 Events from prior import marked as deleted: Esdeveniments de la importació anterior marcats com a eliminats
 Conflicting events: Esdeveniments en conflicte
-The import file contained no data: El fitxer d'importació no conté cap dada
+The import file contained no data.: El fitxer d'importació no conté cap dada
 
 ########################################
 # Page: layers.php
@@ -643,7 +643,7 @@ Keywords: Mots clau
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Cal introduir un o més mots clau de cerca
+You must enter one or more search keywords.: Cal introduir un o més mots clau de cerca
 Search Results: Resultats de la cerca
 match found: coincidència trobada
 matches found: coincidències trobades

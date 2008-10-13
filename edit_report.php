@@ -391,8 +391,7 @@ echo '
  . ( $adding_report ? '' : '&nbsp;&nbsp;
             <input type="submit" name="delete" value="'
    . translate ( 'Delete' ) . '" onclick="return confirm( \''
-   . str_replace ( 'XXX', translate ( 'report' ),
-    translate ( 'Are you sure you want to delete this XXX?' ) )
+   . translate( 'Are you sure you want to delete this report?' )
    . '\');" />' );
 
 ob_end_flush ();

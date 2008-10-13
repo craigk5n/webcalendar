@@ -73,7 +73,7 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
 }
 
 $errorStr = translate ( 'Error' );
-$nouser = translate ( 'No user specified' );
+$nouser = translate( 'No user specified.' );
 // Make sure they specified a username.
 if ( empty ( $user ) ) {
   echo send_doctype ( $errorStr );

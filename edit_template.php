@@ -134,8 +134,7 @@ echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
    . ( ! empty ( $user ) ? '
       <input name="delete" type="submit" value="' . translate ( 'Delete' )
      . '" onclick="return confirm( \''
-     . str_replace ( 'XXX', translate ( 'entry' ),
-      translate ( 'Are you sure you want to delete this XXX?' ) ) . '\');" />'
+     . translate( 'Are you sure you want to delete this entry?' ) . '\');" />'
     : '' ) . '
     </form>' ) . "\n" . print_trailer ( false, true, true );
 

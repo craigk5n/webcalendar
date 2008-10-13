@@ -388,7 +388,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
               user_load_variables ( $row->getLogin (), 'conflict_' );
               $conflicts .= $GLOBALS['conflict_fullname'] . ': ';
             }
-            $conflicts .= ( $row->getAccess () == 'C' 
+            $conflicts .= ( $row->getAccess() == 'C'
               && $row->getLogin () != $login && !
               $is_assistant && ! $is_nonuser_admin
               // Assistants can see confidential stuff.
@@ -737,34 +737,54 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   if ( $thisyear - date ( 'Y' ) >= ( $num_years - 1 ) )
     $num_years = $thisyear - date ( 'Y' ) + 2;
 
-  $ret = '
+  $dd_select = '
       <select name="' . $prefix . 'day" id="' . $prefix . 'day"'
    . $onchange . '>';
   for ( $i = 1; $i <= 31; $i++ ) {
-    $ret .= '
+    $dd_select .= '
         <option value="' . "$i\""
      . ( $i == substr ( $date, 6, 2 ) ? $selected : '' ) . ">$i" . '</option>';
   }
-  $ret .= '
-      </select>
+  $dd_select .= '
+      </select>';
+
+  //  $mm_select ... number of month, $month_select name of month
+  $month_select = '
+      <select name="' . $prefix . 'month"' . $onchange . '>';
+  $mm_select = '
       <select name="' . $prefix . 'month"' . $onchange . '>';
   for ( $i = 1; $i < 13; $i++ ) {
-    $ret .= '
+    $month_select .= '
         <option value="' . "$i\""
      . ( $i == substr ( $date, 4, 2 ) ? $selected : '' )
      . '>' . month_name ( $i - 1, 'M' ) . '</option>';
+
+    $mm_select .= '
+        <option value="' . "$i\""
+     . ( $i == substr( $date, 4, 2 ) ? $selected : '' )
+     . '>' . $i . '</option>';
   }
-  $ret .= '
-      </select>
+  $month_select .= '
+      </select>';
+  $mm_select .= '
+      </select>';
+  $yyyy_select = '
       <select name="' . $prefix . 'year"' . $onchange . '>';
   for ( $i = -10; $i < $num_years; $i++ ) {
     $y = $thisyear + $i;
-    $ret .= '
+    $yyyy_select .= '
         <option value="' . "$y\"" . ( $y == $thisyear ? $selected : '' )
      . ">$y" . '</option>';
   }
+  $yyyy_select .= '
+      </select>';
+  $replace_strings = array(
+                           '__yyyy__'=>$yyyy_select,
+                           '__month__'=>$month_select,
+                           '__mm__'=>$mm_select,
+                           '__dd__'=>$dd_select);
+  $ret = strtr( translate( 'date_select'), $replace_strings );
   return $ret . '
-      </select>
       <input type="button" name="' . $prefix . 'btn" onclick="selectDate( \''
    . $prefix . 'day\',\'' . $prefix . 'month\',\'' . $prefix . "year','$date'"
    . ', event, this.form );" value="' . translate ( 'Select' ) . '..." />' . "\n";
@@ -792,7 +812,7 @@ function date_to_epoch ( $d , $gmt=true) {
     $di = substr ( $d, 10, 2 );
     $ds = substr ( $d, 12, 2 );
   }
-  
+
   if ( $gmt )
     return gmmktime ( $dH, $di, $ds,
       substr ( $d, 4, 2 ),
@@ -853,7 +873,7 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
     $month = month_name ( $m - 1 );
     $weekday = weekday_name ( $wday );
   }
-  
+
   $ret = str_replace ( '__dd__', $d, $format );
   $ret = str_replace ( '__j__', intval ( $d ), $ret );
   $ret = str_replace ( '__mm__', $m, $ret );
@@ -3700,8 +3720,7 @@ function icon_text ( $id, $can_edit, $can_delete ) {
    . ( $can_delete && ( $readonly == 'N' || $is_admin ) ? '
         <a title="' . $deleteStr . '" href="del_entry.php?id=' . $id
      . '" onclick="return confirm( \''
-     . str_replace ( 'XXX', translate ( 'entry' ),
-      translate ( 'Are you sure you want to delete this XXX?' ) ) . ' '
+     . translate( 'Are you sure you want to delete this entry?' ) . ' '
      . translate ( 'This will delete this entry for all users.' )
      . '\' );"><img src="images/delete.gif" alt="' . $deleteStr
      . '" class="icon_text" /></a>' : '' );
@@ -5309,7 +5328,7 @@ function remember_this_view ( $view = false ) {
     return;
 
   SetCookie ( 'webcalendar_last_view', $REQUEST_URI );
-  
+
 }
 
 /* This just sends the DOCTYPE used in a lot of places in the code.

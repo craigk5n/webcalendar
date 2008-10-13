@@ -38,7 +38,7 @@ $participants = view_get_user_list ( $id );
 if ( count ( $participants ) == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any group assigned to this view.
-  $error = translate ( 'No users for this view' ) . '.';
+  $error = translate( 'No users for this view.' );
 
   echo print_error ( $error ) . print_trailer ();
   exit;

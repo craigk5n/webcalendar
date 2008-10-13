@@ -382,7 +382,7 @@ Error: Terjadi Kesalahan
 Import Results: Hasil Pengimporan
 Events successfully imported: Acara-acara telah berhasil diimpor
 Errors: Kesalahan-kesalahan
-There was an error parsing the import file or no events were returned: Telah terjadi kesalahan pada saat menguraikan berkas impor atau tidak ada acara yang ditemukan
+There was an error parsing the import file or no events were returned.: Telah terjadi kesalahan pada saat menguraikan berkas impor atau tidak ada acara yang ditemukan
 
 ########################################
 # Page: edit_report.php
@@ -466,7 +466,7 @@ Modified since: Dimodifikasi sejak
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: format pengeksporan tidak ditentukan atau salah
+export format not defined or incorrect.: format pengeksporan tidak ditentukan atau salah
 
 ########################################
 # Page: groups.php
@@ -578,7 +578,7 @@ Exclude private records: Kecualikan data-data pribadi
 #
 Events from prior import marked as deleted: Acara-acara dari pengimporan terdahulu telah ditandai sebagai dihapus
 Conflicting events: Acara-acara yang Mengalami Konflik
-The import file contained no data: Berksa pengimporan tidak berisi data
+The import file contained no data.: Berksa pengimporan tidak berisi data
 
 ########################################
 # Page: layers.php
@@ -663,7 +663,7 @@ Keywords: Kata Kunci
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Anda harus mengetikkan satu atau lebih kata kunci pencarian
+You must enter one or more search keywords.: Anda harus mengetikkan satu atau lebih kata kunci pencarian
 Search Results: Hasil Pencarian
 match found: yang cocok ditemukan
 matches found: yang cocok ditemukan
@@ -718,7 +718,7 @@ You must specify a view name: Anda harus menentukan sebuah nama tampilan
 ########################################
 # Page: view_d.php
 #
-No users for this view: Tidak ada pengguna untuk tampilan ini
+No users for this view.: Tidak ada pengguna untuk tampilan ini
 
 ########################################
 # Page: view_entry.php

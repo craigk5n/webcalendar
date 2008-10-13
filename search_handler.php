@@ -27,7 +27,7 @@ $keywords = getValue ( 'keywords' );
 $advanced = getValue ( 'advanced' );
 
 if ( strlen ( $keywords ) == 0 )
-  $error = translate ( 'You must enter one or more search keywords' ) . '.';
+  $error = translate( 'You must enter one or more search keywords.' );
 
 $matches = 0;
 // Determine if this user is allowed to search the calendar of other users
@@ -217,7 +217,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
         $info[$matches]['id'] = $row[0];
         $info[$matches]['text'] = $row[1] . ' ( ' . date_to_str ( $row[2] ) . ' )';
 		$info[$matches]['user'] = $row[3];
-		
+
         $matches++;
       }
     }
@@ -246,7 +246,7 @@ if ( empty ( $error ) ) {
     <ul>';
   foreach ( $info as $result ) {
     echo '
-      <li><a class="nav" href="view_entry.php?id=' . $result['id'] 
+      <li><a class="nav" href="view_entry.php?id=' . $result['id']
 	   . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>';
   }
   echo '

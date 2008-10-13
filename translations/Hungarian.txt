@@ -430,7 +430,7 @@ pm: du
 days: nap
 hours: óra
 minutes: perc
-You are not authorized to edit this task: Nem szerkesztheted ezt a feladatot
+You are not authorized to edit this task.: Nem szerkesztheted ezt a feladatot
 task: feladat
 is in a different timezone than you are. Currently: más időzónában van mint te. Éppen
 hours ahead of you: hátralévő órák
@@ -556,7 +556,7 @@ Error: Hiba
 Import Results: Import eredménye
 Events successfully imported: események rendben importálva.
 Errors: Hibák
-There was an error parsing the import file or no events were returned: Hiba történt az importálandó fájl feldolgozásakor, vagy nem volt benne esemény
+There was an error parsing the import file or no events were returned.: Hiba történt az importálandó fájl feldolgozásakor, vagy nem volt benne esemény
 
 ########################################
 # Page: edit_report.php
@@ -648,7 +648,7 @@ Modified since: Módosítva
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: nem adtál meg exportformátumot, vagy az hibás
+export format not defined or incorrect.: nem adtál meg exportformátumot, vagy az hibás
 
 ########################################
 # Page: groups.php
@@ -787,7 +787,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: Az i
 #
 Events from prior import marked as deleted: elõzõ importból származó eredmények töröltnek jelzése
 Conflicting events: Ütközõ események
-The import file contained no data: Az importálandó fájl nem tartalmaz adatot.
+The import file contained no data.: Az importálandó fájl nem tartalmaz adatot.
 
 ########################################
 # Page: layers.php
@@ -913,7 +913,7 @@ Keywords: Kulcsszavak
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Legalább egy kulcsszót meg kell adnod
+You must enter one or more search keywords.: Legalább egy kulcsszót meg kell adnod
 Search Results: Találatok
 match found: egyezést találtam
 matches found: egyezést találtam
@@ -982,7 +982,7 @@ You must specify a view name: Adj meg egy nézetnevet
 ########################################
 # Page: view_d.php
 #
-No users for this view: Nincs felhasználó a nézethez
+No users for this view.: Nincs felhasználó a nézethez
 
 ########################################
 # Page: view_entry.php

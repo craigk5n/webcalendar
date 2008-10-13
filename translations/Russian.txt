@@ -462,7 +462,7 @@ Removed: Удалено
 days: дней
 hours: часов
 minutes: минуты
-You are not authorized to edit this task: Вы неавторизованы для редактирования этой задачи
+You are not authorized to edit this task.: Вы неавторизованы для редактирования этой задачи
 task: задача
 is in a different timezone than you are. Currently: в другой временной зоне чем вы. В данный момент
 hour ahead of you: час впереди вас
@@ -624,9 +624,9 @@ Required to View Remote Calendar: Необходим для просмотра Внешнего Календаря
 Error: Ошибка
 Import Results: Результаты Загрузки
 Events successfully imported: События успешно загружены
-Create a new layer to view this calendar: Создать новый слой для просмотра этого календаря
+Create a new layer to view this calendar.: Создать новый слой для просмотра этого календаря
 Errors: Ошибки
-There was an error parsing the import file or no events were returned: В загружаемом файле была обнаружена ошибка или не было данных
+There was an error parsing the import file or no events were returned.: В загружаемом файле была обнаружена ошибка или не было данных
 
 ########################################
 # Page: edit_report.php
@@ -719,7 +719,7 @@ Modified since: Изменено
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: Формат экспорта неопределен или неправилен
+export format not defined or incorrect.: Формат экспорта неопределен или неправилен
 
 ########################################
 # Page: groups.php
@@ -863,7 +863,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: Повт
 #
 Events from prior import marked as deleted: События из предыдущей загрузки помечены как удаленные
 Conflicting events: Конфликтующие события
-The import file contained no data: Загружаемый файл не содержит данных
+The import file contained no data.: Загружаемый файл не содержит данных
 
 ########################################
 # Page: layers.php
@@ -947,7 +947,7 @@ entries: записи
 ########################################
 # Page: publish.php
 #
-No user specified: Не указан пользователь
+No user specified.: Не указан пользователь
 
 ########################################
 # Page: purge.php
@@ -1018,7 +1018,7 @@ Keywords: Ключевые слова
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Следует ввести одно ключевое слово или более
+You must enter one or more search keywords.: Следует ввести одно ключевое слово или более
 Search Results: Результаты поиска
 match found: найдено соответствие
 matches found: найдены соответствия
@@ -1088,7 +1088,7 @@ You must specify a view name: Вы должны указать имя вида
 ########################################
 # Page: view_d.php
 #
-No users for this view: Нет пользователей для этого вида
+No users for this view.: Нет пользователей для этого вида
 
 ########################################
 # Page: view_entry.php

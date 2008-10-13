@@ -109,8 +109,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
    . ( ! empty ( $id ) ? '
             <input type="submit" name="delete" value="'
      . translate ( 'Delete' ) . '" onclick="return confirm( '
-     . str_replace ( 'XXX', translate ( 'entry', true ),
-      translate ( 'Are you sure you want to delete this XXX?', true ) )
+     . translate( 'Are you sure you want to delete this entry?', true )
      . '\' )" />' : '' ) . '
           </td>
         </tr>

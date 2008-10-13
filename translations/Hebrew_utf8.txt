@@ -441,7 +441,7 @@ pm: אחה"צ
 days: ימים
 hours: שעות
 minutes: דקות
-You are not authorized to edit this task: אינך רשאי לערוך משימה זו.
+You are not authorized to edit this task.: אינך רשאי לערוך משימה זו.
 task: משימה
 is in a different timezone than you are. Currently: הנו באיזור זמן שונה ממך. כרגע
 hour ahead of you: שעה מוקדמת ממך
@@ -600,9 +600,9 @@ Required to View Remote Calendar: צריך כדי לצפות בלוח שנה מ�
 Error: שגיאה
 Import Results: תוצאות הייבוא
 Events successfully imported: הארועים הובוא בהצלחה
-Create a new layer to view this calendar: צור שכבה חדשה כדי לצפות בלוח שנה זה.
+Create a new layer to view this calendar.: צור שכבה חדשה כדי לצפות בלוח שנה זה.
 Errors: שגיאות
-There was an error parsing the import file or no events were returned: ארעה שגיאה בקריאת קובץ הייבוא או שלא נמצאו ארועים כל שהם.
+There was an error parsing the import file or no events were returned.: ארעה שגיאה בקריאת קובץ הייבוא או שלא נמצאו ארועים כל שהם.
 
 ########################################
 # Page: edit_report.php
@@ -695,7 +695,7 @@ Modified since: שהשתנו מאז
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect: תצורת ייצוא לא מוגדרת או שגויה
+export format not defined or incorrect.: תצורת ייצוא לא מוגדרת או שגויה
 
 ########################################
 # Page: groups.php
@@ -837,7 +837,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: פר
 #
 Events from prior import marked as deleted: ארועים מייבוא קודם סומנו כמחוקים
 Conflicting events: ארועים מתנגשים
-The import file contained no data: קובץ הייבוא לא מכיל מידע.
+The import file contained no data.: קובץ הייבוא לא מכיל מידע.
 
 ########################################
 # Page: layers.php
@@ -921,7 +921,7 @@ entries: רשומות
 ########################################
 # Page: publish.php
 #
-No user specified: לא ציינת משתמש
+No user specified.: לא ציינת משתמש
 
 ########################################
 # Page: purge.php
@@ -991,7 +991,7 @@ Keywords: מילות מפתח
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: עליך להקליד מלת מפתח אחת לפחות
+You must enter one or more search keywords.: עליך להקליד מלת מפתח אחת לפחות
 Search Results: תוצאות החיפוש
 match found: נמצאה התאמה
 matches found: נמצאו התאמות
@@ -1061,7 +1061,7 @@ You must specify a view name: עליך לציין שם לתצוגה
 ########################################
 # Page: view_d.php
 #
-No users for this view: אין משתמשים בתצוגה זו
+No users for this view.: אין משתמשים בתצוגה זו
 
 ########################################
 # Page: view_entry.php

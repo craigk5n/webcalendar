@@ -400,7 +400,7 @@ Error: Fejl
 Import Results: Import resultat
 Events successfully imported: Aftaler importeret
 Errors: Fejl
-There was an error parsing the import file or no events were returned: Der skete en fejl under indlæsning af import-filen eller der kunne ikke findes nogen aftaler.
+There was an error parsing the import file or no events were returned.: Der skete en fejl under indlæsning af import-filen eller der kunne ikke findes nogen aftaler.
 
 ########################################
 # Page: edit_report.php
@@ -589,7 +589,7 @@ Exclude private records: Undlad import af private aftaler
 #
 Events from prior import marked as deleted: Aftaler fra tidligere import er markeret som slettede
 Conflicting events: Overlappende aftaler
-The import file contained no data: Import-filen indeholder ingen data.
+The import file contained no data.: Import-filen indeholder ingen data.
 
 ########################################
 # Page: layers.php
@@ -677,7 +677,7 @@ Keywords: Søgeord
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords: Du skal indtaste et eller flere søgeord
+You must enter one or more search keywords.: Du skal indtaste et eller flere søgeord
 Search Results: Søgeresultater
 match found: emne fundet
 matches found: emner fundet
@@ -733,7 +733,7 @@ You must specify a view name: Du skal angive et navn for visningen
 ########################################
 # Page: view_d.php
 #
-No users for this view: Ingen brugere til denne visning
+No users for this view.: Ingen brugere til denne visning
 
 ########################################
 # Page: view_entry.php
