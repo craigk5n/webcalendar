@@ -200,10 +200,10 @@ $php_settings = array (
 // translate ( 'required only if Safe Mode is On' )
 // translate ( '(required only if Safe Mode is On)' )
 if ( get_php_setting ( 'safe_mode' )== 'ON' )
-  $php_settings[] =  array ( 
+  $php_settings[] =  array (
     translate ('Safe Mode Allowed Vars'),
     'safe_mode_allowed_env_vars', 'TZ', 'TZ');
-    
+
 // Set up array to test for some constants
 // (display name, constant name, preferred value )
 $php_constants = array (
@@ -467,12 +467,14 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr && !
   // Test db_cachedir directory for write permissions.
   if ( strlen ( $db_cachedir ) > 0 ) {
     if ( ! is_dir ( $db_cachedir ) )
-      $response_msg2 = $failureStr . $cachedirStr . ' '
-       . translate ( 'does not exist' );
+      $response_msg2 = $failureStr
+       . str_replace( 'XXX', $cachedirStr,
+         translate ( 'XXX does not exist' ) );
     else
     if ( ! is_writable ( $db_cachedir ) )
-      $response_msg2 = $failureStr . $cachedirStr . ' '
-       . translate ( 'is not writable' );
+      $response_msg2 = $failureStr
+       . str_replace( 'XXX', $cachedirStr,
+         translate ( 'XXX is not writable' ) );
   }
 
   // Is this a db create?
@@ -1542,10 +1544,8 @@ translate ( 'You should select Web Server from the list of User Authentication c
                   <option value="http"'
    . ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] == 'true'
     ? $selected : '' ) . '>'
-  // translate ( 'Web Server' ) translate ( 'Web Server (detected)' )
-  // translate ( 'Web Server (not detected)' )
-  . translate ( 'Web Server (' .
-    ( empty ( $PHP_AUTH_USER ) ? 'not ' : '' ) . 'detected)' ) . '</option>'
+  . ( empty ( $PHP_AUTH_USER ) ? translate( 'Web Server (not detected)' )
+    : translate( 'Web Server (detected)' ) ) . '</option>'
    . ( function_exists ( 'ldap_connect' ) ? '
                   <option value="user-ldap.php"'
      . ( $settings['user_inc'] == 'user-ldap.php' ? $selected : '' )
