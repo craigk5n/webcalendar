@@ -238,47 +238,47 @@ if ( $plugin eq '' ) {
     $text{ '__mm__/__dd__/__yyyy__' }     = $text{ '__month__ __dd__' } =
     $text{ '__month__ __dd__, __yyyy__' } = $text{ '__month__ __yyyy__' } = 1;
 
-  print OUT '
+  print OUT ( $infile !~ /english-us/i ? '
 
-################################################################################
+' . ( '#' x 80 ) . '
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
-################################################################################';
+' . ( '#' x 80 ) . '
 
-  print OUT '
-# A lone equal sign "=" to the right of the FIRST colon ": "
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
-' if ( $infile !~ /english-us/i);
 
-  print OUT '
 # Specify a charset (will be sent within meta tag for each page).
-
-charset: ' . $trans{ 'charset' } . '
+' : '' ) . '
+charset: ' . $trans{ 'charset' } . ( $infile !~ /english-us/i ? '
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
-
-direction: ' . $trans{ 'direction' } . '
+' : '' ) . '
+direction: ' . $trans{ 'direction' } . ( $infile !~ /english-us/i ? '
 
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+' : '' ) . '
 __mm__/__dd__/__yyyy__: ' . $trans{ '__mm__/__dd__/__yyyy__' } . '
 __month__ __dd__: ' . $trans{ '__month__ __dd__' } . '
 __month__ __dd__, __yyyy__: ' . $trans{ '__month__ __dd__, __yyyy__' } . '
 __month__ __yyyy__: ' . $trans{ '__month__ __yyyy__' } . '
+' . ( $infile !~ /english-us/i ? '
+' . ('#' x 80).'
+' . ('#' x 80).'
 
-################################################################################
-################################################################################
-
-';
+' : '' );
 }
 
 foreach $f ( @files ) {
   open( F, $f ) || die "Error reading $f";
   $f =~ s,^\.\.\/,,;
-  $pageHeader = "\n########################################\n# Page: $f\n#\n";
+  $pageHeader = "\n" . ( '#' x 40 ) . "\n# Page: $f\n#\n";
   print "Searching $f\n" if ( $verbose );
   %thispage = ();
   while ( <F> ) {
