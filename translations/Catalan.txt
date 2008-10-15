@@ -15,15 +15,15 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -38,6 +38,10 @@ direction: =
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
 __month__ __dd__, __yyyy__: =
@@ -46,6 +50,11 @@ __month__ __yyyy__: =
 ################################################################################
 ################################################################################
 
+
+########################################
+# Page: about.php
+#
+Title: =
 
 ########################################
 # Page: access.php
@@ -88,6 +97,7 @@ Settings: Paràmetres
 Groups: Grups
 NonUser Calendars: Calendaris no d'usuari
 Email: Correu electrònic
+Colors: =
 Document background: Fons del document
 Document title: Títol del document
 Document text: Text del document
@@ -150,6 +160,7 @@ Display unapproved: Mostra pendents d'aprovar
 conflict-check-help: Comprova els conflictes entre esdeveniments (dos esdeveniments programats per a la mateixa hora i la mateixa persona). Si ho configures com a "Sí", podràs planificar igualment dos esdeveniments alhora després de confirmar un avís. Si ho configures com a "no", no es comprovaran els possibles conflictes entre esdeveniments. Probablement vulguis posar "Sí", a fi que es produeixin les comprovacions.
 Check for event conflicts: Comprova conflictes entre esdeveniments
 Yes: Sí
+No: =
 conflict-months-help: Si està posada la comprovació de conflictes ("Comprova conflictes entre esdeveniments" està configurat com a "No"), aquí s'especifica el nombre de mesos endavant que cal fer aquesta comprovació. Si trobes que afegir esdeveniments triga molt a processar-se, redueix aquest número.
 Conflict checking months: Mesos de comprovació de conflictes
 conflict-check-override-help: Permet als usuaris sobreescriure conflictes i programar dos o més esdeveniments alhora.
@@ -227,6 +238,7 @@ Assistants: Assistents
 Preferences: Preferències
 Users: Usuaris
 Account: Compte
+Categories: =
 Views: Visualitzacions
 Layers: Capes
 Reports: Informes
@@ -254,9 +266,12 @@ Your assistants: Els vostres assistents
 ########################################
 # Page: category.php
 #
+Global: =
 Category Name: Nom de categoria
+Color: =
 Add: Afegeix
 Delete: Suprimeix
+Are you sure you want to delete this entry?: Esteu segur que voleu suprimir aquesta entrada?
 Make New Category: Afegir nova categoria
 
 ########################################
@@ -278,11 +293,14 @@ Description: Descripció
 ########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 days: dies
 hours: hores
 minutes: minuts
 Edit Entry: Edita Entrada
 Add Entry: Afegeix una entrada
+Participants: =
 brief-description-help: Aquest camp permet una descripció breu (d'uns 20 caràcters) de l'esdeveniment. Així és com es mostrarà l'esdeveniment en visualitzar el calendari.
 Brief Description: Descripció breu
 full-description-help: Aquí cal completar els detalls de l'esdeveniment. Es pot veure aquesta informació quan un usuari visualitza l'esdeveniment.
@@ -296,6 +314,7 @@ Medium: Mitjana
 Low: Baixa
 category-help: Especifica la categoria de l'esdeveniment.
 Category: Categoria
+URL: =
 date-help: Especifica la data de l'esdeveniment.
 Untimed event: Esdeveniment sense hora
 Timed event: Esdeveniment amb hora
@@ -365,8 +384,10 @@ Last Name: Cognom
 ########################################
 # Page: edit_remotes_handler.php
 #
+Error: =
 Import Results: Importar resultats
 Events successfully imported: Esdeveniments importats correctament
+Errors: =
 There was an error parsing the import file or no events were returned.: S'ha produït un error en processar el fitxer d'importació o no s'ha recuperat cap esdeveniment
 
 ########################################
@@ -407,6 +428,7 @@ Template variables: Variables de plantilla
 Page template: Plantilla de pàgina
 Day template: Plantilla de dia
 Event template: Plantilla d'esdeveniment
+Are you sure you want to delete this report?: Esteu segur que voleu suprimir aquest informe?
 
 ########################################
 # Page: edit_report_handler.php
@@ -506,6 +528,7 @@ repeat-day-help: Especifica quins dies de la setmana cal repetir l'esdeveniment 
 # Page: help_import.php
 #
 Import: Importa
+Palm Desktop: =
 This form will allow you to import entries from the Palm Desktop Datebook.: Aquest formulari et permet importar entrades des del Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Hauria d'estar en el teu directori Palm a <tt>datebook/datebook.dat</tt> en un subdirectori amb el teu nom d'usuari.
 The following entries will not be imported: Les entrades següents no s'importaran
@@ -513,6 +536,7 @@ Entries older than the current date: Entrades anteriors a la data actual
 Entries created in the Palm Desktop...: Entrades creades al Palm Desktop que no han estat sincronitzades mitjançant HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualsevol cosa importada des del Palm quedarà sobreescrita durant la propera importació (llevat que ja s'hagi superat la data de l'esdeveniment).
 Therefore, updates should be made in the Palm Desktop.: Per tant, caldria realitzar les actualitzacions al Palm Desktop.
+vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Aquest formulari importa esdeveniments de vCalendar 1.0 (.vcs).
 The following formats have been tested: S'han comprovat els formats següents
 This form will import iCalendar (.ics) events.: Aquest formulari importa esdeveniments d'iCalendar (.ics)
@@ -566,10 +590,8 @@ The import file contained no data.: El fitxer d'importació no conté cap dada
 #
 Layer: Capa
 Edit layer: Edita capa
-Layers are currently: Les capes ara estan
+Are you sure you want to delete this layer?: Esteu segur que voleu suprimir aquest capa?
 Disable Layers: Desactiva les capes
-Click here: Fes clic
-to modify the layers settings for the: per modificar la configuració de les capes per a
 Add layer: Afegeix capa
 
 ########################################
@@ -624,11 +646,13 @@ An appointment has been rejected by: Una cita ha estat rebutjatda per
 # Page: report.php
 #
 This event is confidential.: Aquest esdeveniment és confidencial
+cont.: =
 Approved: Aprovat
 Deleted: Suprimit
 Rejected: Rebutjat
 Waiting for approval: Pendent d'aprovació
 Unknown: Desconegut
+Click here: Fes clic
 to manage reports for the Public Access calendar: per gestionar informes per al calendari d'Accés Públic
 Add new report: Afegir informe nou
 Manage Reports: Gestiona informes
@@ -721,6 +745,7 @@ Email all participants: Envia un correu electrònic a tots els participants
 Hide activity log: Oculta el registre d'activitat
 Show activity log: Mostra el registre d'activitat
 Export this entry to: Exporta aquesta entrada a
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php
@@ -767,10 +792,16 @@ September: Setembre
 October: Octubre
 November: Novembre
 Jan: Gen
+Feb: =
+Mar: =
 Apr: Abr
 May: Mai
+Jun: =
+Jul: =
 Aug: Ago
 Sep: Set
+Oct: =
+Nov: =
 The following error occurred: S'ha produït un error
 You are not authorized.: No tens autorització
 Add N hours to: Afegir N hores a

@@ -5,15 +5,15 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -27,6 +27,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -98,6 +102,7 @@ No: Hayir
 #
 Preferences: Ana Ayar
 Users: Kullanici
+Account: =
 
 ########################################
 # Page: approve_entry.php
@@ -110,6 +115,7 @@ Time: Saat
 # Page: category.php
 #
 Delete: Sil
+Are you sure you want to delete this entry?: Islemi sahiden silmek istiyormusunuz?
 
 ########################################
 # Page: docadd.php
@@ -119,6 +125,8 @@ Description: Anlam
 ########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 minutes: Dakika
 Edit Entry: Islem degistir
 Add Entry: Islem ekle
@@ -325,7 +333,9 @@ October: Ekim
 November: Kasim
 Jan: Oca
 Feb: Sub
+Mar: =
 Apr: Nis
+May: =
 Jun: Haz
 Jul: Tem
 Aug: Agu

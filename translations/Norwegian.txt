@@ -9,15 +9,15 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 09-24-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -31,6 +31,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -361,6 +365,7 @@ gif 3kb max: GIF maks 3Kb
 Search for existing icons: Søk etter eksisterende ikoner
 Add: Legg til
 Delete: Slett
+Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne aktiviteten?
 Make New Category: Legg til ny kategori
 
 ########################################
@@ -419,8 +424,6 @@ days: dager
 hours: timer
 minutes: minutter
 You are not authorized to edit this task.: Du er ikke autorsiert til å redigere denne oppgaven
-task: oppgave
-You are not authorized to edit this XXX.: Du er ikke autorsiert til å redigere XXX.
 is in a different timezone than you are. Currently: er i en annen tidssone enn deg. Er 
 hour ahead of you: time foran deg
 hour behind you: time etter deg
@@ -463,6 +466,7 @@ Due Date: Avslutningsdato
 Due Time: Avslutningstid
 Site Extras: Nettstedsekstra
 participants-help: Vis deltagerne i dette innlegget.
+Selected: Valgt
 Availability: Tilgjengelighet
 external-participants-help: Angir en liste med deltagere for en aktivitet som
 External Participants: Eksterne deltagere
@@ -609,6 +613,7 @@ Template variables: Variabler for malen
 Page template: Mal for siden
 Day template: Mal for dag
 Event template: Mal for aktivitet
+Are you sure you want to delete this report?: Er du sikker på at du vil slette denne rapporten?
 
 ########################################
 # Page: edit_report_handler.php
@@ -632,6 +637,7 @@ E-mail address: E-postadresse
 Password: Passord
 again: igjen
 Disabled for demo: Deaktivert for demo
+Are you sure you want to delete this user?: Er du sikker på at du vil slette denne brukeren?
 Change Password: Endre passord
 New Password: Nytt passord
 Set Password: Sett passord
@@ -728,6 +734,7 @@ repeat-day-help: Hvilke ukedager skal aktiviteten gjentas på.
 # Page: help_import.php
 #
 Import: Importer
+Palm Desktop: =
 This form will allow you to import entries from the Palm Desktop Datebook.: Dette skjemaet gjør det mulig for deg å importere oppføringer fra Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør finnes i din Palm katalog i <tt>datebook/datebook.dat</tt> i en underkatalog med ditt brukernavn.
 The following entries will not be imported: Følgende oppføringer vil ikke bli importert
@@ -735,6 +742,7 @@ Entries older than the current date: Oppføringer eldre enn nåværende dato
 Entries created in the Palm Desktop...: Oppføringer opprettet i Palm Desktop-en som ikke har blitt HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alt som blir importert fra Palm vil bli overskrevet ved neste import (hvis ikke aktivitetsdatoen har passert)
 Therefore, updates should be made in the Palm Desktop.: Derfor bør oppdatering bli gjort i Palm Desktop-en.
+vCal: =
 The following formats have been tested: Følgende formater har blitt testet
 Enabling: Aktiverer
 Overwrite Prior Import: Skriv over tidligere importering
@@ -811,11 +819,8 @@ The import file contained no data.: Den importerte filen inneholdt ikke noen dat
 #
 Layer: Lag
 Edit layer: Editer lag
-Layers are currently: Lagene er nå
+Are you sure you want to delete this layer?: Er du sikker på du vil slette dette laget?
 Disable Layers: Deaktiver lag
-Click here: Klikk her
-to modify the layers settings for the: for å modifisere laginnstilling for
-calendar: kalender
 Add layer: Legg til lag
 
 ########################################
@@ -847,6 +852,7 @@ Login: Logg inn
 Access public calendar: Gå til offentlig kalender
 public: offentlig
 Access XXX calendar: Gå til XXX kalender
+calendar: kalender
 cookies-note: <b>OBS:</b> Programmet krever at "cookies" er slått på
 
 ########################################
@@ -876,11 +882,6 @@ hour: time
 minute: minutt
 
 ########################################
-# Page: publish.php
-#
-No user specified.: Ingen bruker oppgitt
-
-########################################
 # Page: purge.php
 #
 Purging events for: Sletter aktiviteter for
@@ -889,7 +890,6 @@ Check box to delete ALL events for a user: Marker i boksen hvis <b>ALLE</b> akti
 Delete all events before: Slett alle aktiviteter før
 Preview delete: Forhåndsvisning for sletting
 Are you sure you want to delete events for: Er du sikker
-Records deleted from: Oppføringer slettet fra:
 
 ########################################
 # Page: register.php
@@ -939,6 +939,7 @@ Deleted: Slettet
 Rejected: Avvist
 Waiting for approval: Venter på godkjenning
 Unknown: Ukjent
+Click here: Klikk her
 to manage reports for the Public Access calendar: for å administrere kalenderen med offentlig tilgang
 Click here to manage reports for the Public Access calendar.: Klikk her for å administrere rapporter for kalenderen med offentlig tilgang
 Add new report: Legg til ny rapport
@@ -995,6 +996,11 @@ more: mer
 #
 denotes administrative user: indikerer administrator
 Add New User: Opprett bruker
+
+########################################
+# Page: usersel.php
+#
+Reset: =
 
 ########################################
 # Page: views.php
@@ -1055,7 +1061,6 @@ Edit repeating entry for all dates: Rediger repeterende aktivitet for alle datoe
 Delete repeating event for all dates: Slett repeterende aktiviteter for alle datoer
 Edit entry for this date: Rediger aktiviteten for denne datoen
 Delete entry only for this date: Slett aktiviteten for denne datoen
-from calendar of: fra kalenderen for
 This will delete the entry from your XXX calendar.: Dette vil slette aktiviteten fra din XXX kalender.
 boss: sjef
 This will delete the entry from your boss calendar.: Dette vil slette aktiviteten fra sjefen din sin kalender.
@@ -1355,7 +1360,6 @@ You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspun
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Ugyldig farge
-layer: lag
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1431,6 +1435,7 @@ Remote Calendars not enabled: Eksterne kalendere er ikke aktivert
 #
 could not find event id: klarte ikke finne ID for aktivitet
 could not find event id XXX in database.: klarte ikke finne ID XX for aktivitet i databasen. 
+task: oppgave
 This is a reminder for the XXX detailed below.: Dette er en påminnelse om XXX beskrevet nedenfor.
 Pecentage Complete: Prosent fullført
 Reminder: Påminnelse

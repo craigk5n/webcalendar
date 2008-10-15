@@ -12,15 +12,15 @@
 # Czech converted to UTF8 and updated by: Lukáš Hlůže on 13 Nov, 2007
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -34,6 +34,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: __dd__. __month__
 __month__ __dd__: __month__ __yyyy__
@@ -591,11 +595,7 @@ The import file contained no data.: Importovaný soubor neobsahoval žádná dat
 #
 Layer: Vrstva
 Edit layer: Uprav vrstvu
-Layers are currently: Stav vrstev:
 Disable Layers: Zakaž vrstvy
-Click here: Zde klikni
-to modify the layers settings for the: k úpravě nastavení vrstev pro
-calendar: kalendář
 Add layer: Přidej vrstvu
 
 ########################################
@@ -615,6 +615,7 @@ You must enter a login and password.: Musíš zadat svůj platný login a heslo
 Save login via cookies so I dont have to login next time.: Abych se příště nemusel přihlašovat, zapamatuj si přihlašovací údaje do cookies
 Login: Příhlást se
 Access public calendar: Přístup k veřejným kalendářům
+calendar: kalendář
 cookies-note: <b>Poznámka:</b> Pro přihlášení a správný běh je potřeba mít v prohlížeci povolena cookies.
 
 ########################################
@@ -643,7 +644,6 @@ Finished: Dokončeno
 Check box to delete ALL events for a user: Zaškrtnout pro smazání <b>VŠECH</b> událostí a záznam? uživatele
 Delete all events before: Smazat všechny události před
 Are you sure you want to delete events for: Opravdu si přeješ smazat události uživatele
-Records deleted from: Záznamy smazány z
 
 ########################################
 # Page: reject_entry.php
@@ -660,6 +660,7 @@ Deleted: Smazáno
 Rejected: Odmítnuto
 Waiting for approval: čeká na schválení
 Unknown: Neznámý
+Click here: Zde klikni
 to manage reports for the Public Access calendar: pro správu reportů u veřejně přístupných kalendářů
 Add new report: Přidej nový report
 Manage Reports: Správa sestav

@@ -4,15 +4,15 @@
 # Last update: 22 July 2006
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -26,6 +26,10 @@ direction: rtl
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: __yyyy__ __dd__, __mm__
 __month__ __dd__: __dd__ __month__
@@ -311,6 +315,7 @@ email-smtp-password: סיסמת SMTP אם משתמשים באימות
 SMTP Password: סיסמת SMTP
 Default user settings: הגדרות משתמש ברירות המחדל
 Email format preference: עדיפות תצורת דוא"ל
+HTML: =
 Plain Text: טקסט פשוט
 email-event-reminders-help: קובע באם לשלוח תזכורות לארועים או לא.
 Event reminders: תזכורות לארועים
@@ -391,6 +396,7 @@ gif 3kb max: gif מקסימום 3kb
 Search for existing icons: חפש צלמיות קיימות
 Add: הוסף
 Delete: מחק
+Are you sure you want to delete this entry?: בטוח שהנך רוצה למחוק רשומה זו?
 Make New Category: הוסף סיווג חדש
 
 ########################################
@@ -442,7 +448,6 @@ days: ימים
 hours: שעות
 minutes: דקות
 You are not authorized to edit this task.: אינך רשאי לערוך משימה זו.
-task: משימה
 is in a different timezone than you are. Currently: הנו באיזור זמן שונה ממך. כרגע
 hour ahead of you: שעה מוקדמת ממך
 hour behind you: שעה מאוחרת ממך
@@ -475,6 +480,7 @@ Percent Complete: אחוז ביצוע
 All Percentages: כל האחוזים
 location-help: מקום הארוע
 Location: מקום
+URL: =
 date-help: קובע את תאריך הארוע.
 Start Date: תאריך התחלה
 Untimed event: ארוע לא לפי זמן
@@ -488,6 +494,7 @@ Start Time: שעת התחלה
 Due Date: תאריך יעד
 Due Time: שעת יעד
 participants-help: מציג את המשתתפים בארוע זה.
+Selected: נבחר
 Availability: זמינות
 external-participants-help: קובע רשימת משתתפים לארוע אשר אינם משתמשים במערכת לוח השנה. יש לציין משתתף אחד בכל שורה ואפשר לכלול כתובת דוא"ל. אם מציינים כתובת דוא"ל המשתתף מועמד לקבל הודעות ותזכורות
 External Participants: מתשתתפים חיצוניים
@@ -648,6 +655,7 @@ Template variables: משתני התבנית
 Page template: תבנית הדף
 Day template: תבנית היום
 Event template: תבנית ארוע
+Are you sure you want to delete this report?: בטוח שהנך רוצש למחוק דו"ח זה?
 
 ########################################
 # Page: edit_report_handler.php
@@ -669,6 +677,7 @@ E-mail address: כתובת דוא"ל
 Password: סיסמא
 again: שוב
 Disabled for demo: לא פעיל לצורך ההדגמה
+Are you sure you want to delete this user?: בטוח שהנך רוצה למחוק משתמש זה?
 Change Password: שנה סיסמא
 New Password: סיסמא חדשה
 Set Password: קבע סיסמא
@@ -696,6 +705,11 @@ Modified since: שהשתנו מאז
 # Page: export_handler.php
 #
 export format not defined or incorrect.: תצורת ייצוא לא מוגדרת או שגויה
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: לא ציינת משתמש
 
 ########################################
 # Page: groups.php
@@ -844,11 +858,8 @@ The import file contained no data.: קובץ הייבוא לא מכיל מידע
 #
 Layer: שכבה
 Edit layer: ערוך שכבה
-Layers are currently: שכבות כרגע
+Are you sure you want to delete this layer?: בטוח שהנך רוצה למחוק שכבה זו?
 Disable Layers: בטל שכבות
-Click here: הקלק כאן
-to modify the layers settings for the: כדי לשנות הגדרות שכבה עבור
-calendar: לוח השנה
 Add layer: הוסף שכבה
 
 ########################################
@@ -877,6 +888,7 @@ You must enter a login and password.: עליך להקליד שם משתמש וס
 Save login via cookies so I dont have to login next time.: שמור שם משתמש בעזרת עוגיות כדי שלא אצטרך להקליד אותו בפעם הבאה
 Login: כניסה
 Access public calendar: גישה ללוח שנה ציבורית
+calendar: לוח השנה
 cookies-note: <b>הערה:</b> יישום זה מחייב שימוש בעוגיות.
 
 ########################################
@@ -884,6 +896,7 @@ cookies-note: <b>הערה:</b> יישום זה מחייב שימוש בעוגי�
 #
 Illegal characters in login: ישנם תווים לא חוקיים בשם המשתמש
 Invalid login: כניסה לא חוקית
+You have been logged out.: יצאת מהמערכת
 Not yet registered? Register here!: עוד לא רשמת? הרשם כאן!
 
 ########################################
@@ -919,11 +932,6 @@ Allow remote viewing of: אפשר תצוגה מרוחקת של
 entries: רשומות
 
 ########################################
-# Page: publish.php
-#
-No user specified.: לא ציינת משתמש
-
-########################################
 # Page: purge.php
 #
 Purging events for: מוחק ארועים עבור
@@ -932,7 +940,6 @@ Back: חזור
 Check box to delete ALL events for a user: סמן משבצת כדי למחוק את <b>כל</b> הארועים של משתמש אחד
 Delete all events before: מחק את כל הארועים מלפני
 Preview delete: תצוגה מקדימה של המחיקה
-Records deleted from: רשומות נמחקו מ-
 
 ########################################
 # Page: register.php
@@ -977,6 +984,7 @@ Deleted: נמחק
 Rejected: נדחה
 Waiting for approval: מחכה לאישור
 Unknown: לא ידוע
+Click here: הקלק כאן
 to manage reports for the Public Access calendar: כדי לנהל דו"חות עבור לוח השנה של גישה ציבורית
 Add new report: הוסף דו"ח חדש
 Manage Reports: ניהול דו"חות
@@ -1089,7 +1097,6 @@ Edit repeating entry for all dates: ערוך רשומה חוזרת עבור כל
 Delete repeating event for all dates: מחק רשומה חוזרת עבור כל התאריכים
 Edit entry for this date: ערוך רשומה עבור תאריך זה בלבד
 Delete entry only for this date: מחק רשומה עבור תאריך זה בלבד
-from calendar of: מלוח השנה של
 This will delete the entry from your calendar.: זה ימחוק את הרשומה מלוח השנה שלך.
 from your boss calendar: מלוח השנה של המנהל שלך
 Do you want to add this entry to your calendar?: האם ברצונך להוסיף את הרשומה ללוח השנה שלך?
@@ -1098,6 +1105,7 @@ Email all participants: שלח דוא"ל לכל המשתתפים
 Hide activity log: הסתר יומן פעילויות
 Show activity log: הצג יומן פעילויות
 Export this entry to: ייצא רשומה זו ל-
+Palm Pilot: =
 
 ########################################
 # Page: view_m.php
@@ -1282,6 +1290,8 @@ Event Imported: הארוע הובא
 # Page: includes/classes/Doc.class
 #
 bytes: בייטים
+kb: =
+Mb: =
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -1393,8 +1403,6 @@ Connection Successful: החיבור הצליח
 Please go to next page to continue installation: נא להתקדם לדף הבא כדי להמשיך בהתקנה
 Correct your entries or click the Create New...: תקן את התשובות שלך או הלקל על כפתור <b>צור חדש</b> כדי להמשיך את ההתקנה
 Correct your entries and try again.: תקן את התשובות שלך ונסה שוב
-does not exist: אינו קיים
-is not writable: לא פתוח לכתיבה
 Error Converting Timezone: שגיאה בהמרת איזור הזמן
 Error Unable to write to file: שגיאה, לא הצלחתי לכתוב לקובץ
 Please change the file permissions of this file.: נא לשנות את ההרשאות של הקובץ הזה
@@ -1465,7 +1473,6 @@ You should select Web Server from the list of User Authentication choices below.
 Create Default Admin Account: צור חשבון מנהל ברירת מחדל
 User Authentication: אימות משתמשים
 Web-based via WebCalendar (default): מבוסס ווב באמצעות לוח השנה (ברירת המחדל)
-Web Server: שרת ווב
 None (Single-User): ללא (משתמש יחיד)
 Read-Only: לקריאה בלבד
 Environment: סביבה
@@ -1483,6 +1490,7 @@ previous version requires updating several tables: הגירסה הקודמת ש�
 ########################################
 # Page: tools/reload_remotes.php
 #
+Include Path: =
 Deleting events for: מוחק ארועים עבור
 Importing events for: מייבא ארועים עבור
 No data returned from: לא התקבל כל מידע מ-
@@ -1493,6 +1501,7 @@ Remote Calendars not enabled: לוחות שנה מרוקים לא מאופשרי
 ########################################
 # Page: tools/send_reminders.php
 #
+task: משימה
 Pecentage Complete: אחוז מושלם
 Reminder: תזכורת
 

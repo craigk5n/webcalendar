@@ -8,15 +8,15 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -30,6 +30,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -81,6 +85,7 @@ Week: Vecka
 Month: Månad
 Year: År
 Bottom: Botten
+Top: Topp
 Settings: Inställningar
 Groups: Grupper
 NonUser Calendars: Icke-användare kalender
@@ -259,10 +264,12 @@ Your assistants: Dina medhjälpare
 ########################################
 # Page: category.php
 #
+Global: =
 Category Name: Kategorinamn
 Color: Färg
 Add: Lägg till
 Delete: Radera
+Are you sure you want to delete this entry?: Är du säker på att du vill ta bort denna aktivitet?
 Make New Category: Lägg till ny kategori
 
 ########################################
@@ -305,6 +312,7 @@ Medium: Mellan
 Low: Låg
 category-help: Anger aktivitetens kategori
 Category: Kategori
+URL: =
 date-help: Anger datum för aktiviteten.
 Untimed event: Icke tidsbestämd aktivitet
 Timed event: Tidsbestämd aktivitet
@@ -419,6 +427,7 @@ Template variables: Mallvariabler
 Page template: Sidmall
 Day template: Dagmall
 Event template: Händelsemall
+Are you sure you want to delete this report?: Är du säker på att du vill ta bort denna rapport?
 
 ########################################
 # Page: edit_report_handler.php
@@ -454,6 +463,7 @@ You have not entered a password.: Du har inte angivit något lösenord
 ########################################
 # Page: export.php
 #
+Export: =
 Export format: Exportformat
 Export all dates: Exportera allt
 Start date: Startdatum
@@ -516,6 +526,8 @@ repeat-day-help: Vilka veckodagar skall aktiviteten upprepas på
 ########################################
 # Page: help_import.php
 #
+Import: =
+Palm Desktop: Palm desktop
 This form will allow you to import entries from the Palm Desktop Datebook.: Detta formulär tillåter dig att importera aktiviteter från Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Det bör vara placerat i din Palm-mapp <tt>"datebook/datebook.dat"</tt> i en undermapp benämnd med ditt användarnamn.
 The following entries will not be imported: Följande händelser kommer inte att importeras
@@ -523,6 +535,7 @@ Entries older than the current date: Händelser äldre än dagens datum
 Entries created in the Palm Desktop...: Händelser skapade i Palm Desktop som inte har blivit "HotSynkroniserade"
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Allting som importerats från Palm kommer att skrivas över vid nästa import (om inte händelsedatumet har passerats).
 Therefore, updates should be made in the Palm Desktop.: Därför bör uppdateringar göras i Palm Desktop.
+vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Detta formulär kommer att importera vCalendar (.vcs) 1.0 aktiviteter
 The following formats have been tested: Följande format har testats
 This form will import iCalendar (.ics) events.: Detta formulär kommer att importera iCalendar (.ics) aktiviteter
@@ -576,10 +589,8 @@ The import file contained no data.: Importfilen innehöll inga data
 #
 Layer: Lager
 Edit layer: Redigera lager
-Layers are currently: Lager är för närvarande
+Are you sure you want to delete this layer?: Är du säker på att du vill ta bort detta lager?
 Disable Layers: Inaktivera lager
-Click here: Klicka här
-to modify the layers settings for the: för att ändra lagerinställningarna för
 Add layer: Lägg till lager
 
 ########################################
@@ -624,7 +635,6 @@ Finished: Klar
 Check box to delete ALL events for a user: Markera boxen för att ta bort <b>ALLA</b> aktiviteter för användare
 Delete all events before: Ta bort alla aktiviteter före
 Are you sure you want to delete events for: Är du säker på att du vill ta bort aktiviteter för
-Records deleted from: Poster borttagna från
 
 ########################################
 # Page: reject_entry.php
@@ -641,6 +651,7 @@ Deleted: Borttagen
 Rejected: Avböjd
 Waiting for approval: Väntar på godkännande
 Unknown: Okänd
+Click here: Klicka här
 to manage reports for the Public Access calendar: för att hantera rapporter för offentlig kalender
 Add new report: Lägg till ny rapport
 Manage Reports: Hantera rapporter
@@ -660,6 +671,11 @@ Search Results: Sökresultat
 match found: träff hittad
 matches found: träffar hittade
 No matches found: Inga träffar hittades
+
+########################################
+# Page: security_audit.php
+#
+Status: =
 
 ########################################
 # Page: select_user.php
@@ -729,6 +745,7 @@ Email all participants: E-posta alla deltagare
 Hide activity log: Dölj aktivitetetslogg
 Show activity log: Visa aktivitetslogg
 Export this entry to: Exportera denna händelse till
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php
@@ -739,6 +756,12 @@ New Entry: Ny händelse
 # Page: includes/access.php
 #
 Another Users Calendar: Annans kalender
+
+########################################
+# Page: includes/date_formats.php
+#
+December: =
+Dec: =
 
 ########################################
 # Page: includes/functions.php
@@ -758,13 +781,25 @@ Generate printer-friendly version: Skapa utskriftsvänlig version
 January: Januari
 February: Februari
 March: Mars
+April: =
 May_: Maj
 June: Juni
 July: Juli
 August: Augusti
+September: =
 October: Oktober
+November: =
+Jan: =
+Feb: =
+Mar: =
+Apr: =
 May: Maj
+Jun: =
+Jul: =
+Aug: =
+Sep: =
 Oct: Okt
+Nov: =
 The following error occurred: Följande fel uppstod
 You are not authorized.: Förbjuden åtgärd
 Add N hours to: Lägg till N timmar till

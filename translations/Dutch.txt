@@ -6,15 +6,15 @@
 #   Oliver Heesakkers / dev@heesakkers.info
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -28,6 +28,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: __dd__/__mm__/__yyyy__
 __month__ __dd__: __dd__ __month__
@@ -442,8 +446,7 @@ gif 3kb max: gif maximaal 3 kilobyte
 Search for existing icons: Zoek naar bestaande ikonen
 Add: Voeg toe
 Delete: Verwijderen
-entry: afspraak
-Are you sure you want to delete this XXX?: Ben je zeker dat je deze XXX wil verwijderen?
+Are you sure you want to delete this entry?: Weet u zeker dat u dit item wilt verwijderen?
 Make New Category: Categorie toevoegen
 
 ########################################
@@ -504,7 +507,6 @@ days: dagen
 hours: uren
 minutes: minuten
 You are not authorized to edit this task.: U heeft geen recht deze taak te bewerken
-task: taak
 is in a different timezone than you are. Currently: is in een andere tijdzone dan u, Op het moment
 hour ahead of you: een uur voor op u
 hour behind you: een uur achter op u
@@ -553,6 +555,7 @@ Due Date: Af zijn op datum
 Due Time: Af zijn om
 Site Extras: Site extra's
 participants-help: Noteer hier welke externe deelnemers bij de afspraak aanwezig zullen zijn. Zorg dat elke regel maximaal één deelnemer omvat en voeg een mailadres toe om de externe deelnemer een email-notificatie of herinnering te laten ontvangen.<br />N.B. het verzenden van notificaties en herinneringen zal alleen plaatsvinden indien de agenda-instellingen en de server dit ondersteunen.
+Selected: Geselecteerd
 Availability: Beschikbaarheid
 external-participants-help: Hier wordt een lijst van externe deelnemers gegeven. Vul per regel een gebruiker en emailadres in. Als een emailadres is ingevoerd kan de externe gebruiker ook notificaties en herinneringen ontvangen.
 External Participants: externe deelnemers
@@ -713,7 +716,7 @@ Template variables: sjabloon variabelen
 Page template: sjabloon pagina
 Day template: sjabloon dag
 Event template: sjabloon agendaitems
-report: rapportage
+Are you sure you want to delete this report?: Weet u zeker dat u deze rapportage wilt verwijderen?
 
 ########################################
 # Page: edit_report_handler.php
@@ -736,6 +739,7 @@ E-mail address: E-mailadres
 Password: Wachtwoord
 again: opnieuw
 Disabled for demo: Uitgeschakeld in demo-versie
+Are you sure you want to delete this user?: Weet u zeker dat u deze gebruiker wilt wissen?
 Change Password: Wijzig wachtwoord
 New Password: Nieuw wachtwoord
 Set Password: Bewaar wachtwoord
@@ -764,6 +768,11 @@ Modified since: Wijzigingen vanaf
 # Page: export_handler.php
 #
 export format not defined or incorrect.: Exportformaat niet gedefinieerd of incorrect
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Geen gebruiker gekozen
 
 ########################################
 # Page: groups.php
@@ -920,12 +929,9 @@ The import file contained no data.: Het importbestand bevat geen gegevens.
 #
 Layer: laag
 Edit layer: Laag wijzigen
+Are you sure you want to delete this layer?: Weet u zeker dat u deze laag wilt verwijderen?
 Enable layers: Lagen activeren
-Layers are currently: Lagen worden momenteel
 Disable Layers: Lagen deactiveren
-Click here: Klik hier
-to modify the layers settings for the: om de instellingen aan te passen voor
-calendar: agenda
 Add layer: Laag toevoegen
 
 ########################################
@@ -960,6 +966,7 @@ Save login via cookies so I dont have to login next time.: Bewaar inloggegevens
 Login: Aanmelden
 Access public calendar: Ga naar Open Agenda
 public: publiekelijk
+calendar: agenda
 cookies-note: <b>NB:</b> Deze applicatie maakt gebruik van cookies.
 
 ########################################
@@ -967,6 +974,7 @@ cookies-note: <b>NB:</b> Deze applicatie maakt gebruik van cookies.
 #
 Illegal characters in login: Ongeldige karakters in login
 Invalid login: Ongeldige login
+You have been logged out.: U bent uitgelogd
 Not yet registered? Register here!: Nog niet geregistreerd? Registreer hier!
 
 ########################################
@@ -1007,11 +1015,6 @@ Allow remote viewing of: Permitteer inzage op afstand
 entries: afspraken
 
 ########################################
-# Page: publish.php
-#
-No user specified.: Geen gebruiker gekozen
-
-########################################
 # Page: purge.php
 #
 Purging events for: Afspraken geheel verwijderen voor
@@ -1021,7 +1024,7 @@ Check box to delete ALL events for a user: Vinkje om <b>ALLE</b> afspraken van e
 Delete all events before: Alle afspraken verwijderen voor
 Purge deleted only: Alleen de geschrapte afspraken definitief verwijderen
 Preview delete: Preview verwijderen
-Records deleted from: Afspraken verwijderd van
+Are you sure you want to delete events for: Weet u zeker dat u alle afspraken wilt verwijderen voor
 
 ########################################
 # Page: register.php
@@ -1068,6 +1071,7 @@ Deleted: Verwijderd
 Rejected: Geweigerd
 Waiting for approval: Nog niet bevestigd
 Unknown: Onbekend
+Click here: Klik hier
 to manage reports for the Public Access calendar: om rapportages voor de Open Agenda te beheren
 Add new report: Rapportage toevoegen
 Manage Reports: Rapportagebeheer
@@ -1189,7 +1193,6 @@ Edit repeating entry for all dates: Wijzig de gehele reeks met afspraken
 Delete repeating event for all dates: Verwijder de gehele reeks met afspraken
 Edit entry for this date: Wijzig alleen de afspraak op deze datum
 Delete entry only for this date: Verwijder alleen de afspraak op deze datum (NB: niet mogelijk voor de eerste dag)
-from calendar of: uit de kalender van
 This will delete the entry from your XXX calendar.: U staat op het punt de afspraak te verwijderen uit uw XXX agenda.
 boss: van uw baas
 This will delete the entry from your boss calendar.: Hiermee wordt een afspraak verwijderd uit de agenda van uw baas.
@@ -1518,7 +1521,6 @@ You have not entered a valid time of day: U heeft geen geldige tijd ingevuld
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Ongeldige kleur
-layer: laag
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1584,8 +1586,6 @@ Connection Successful: Verbinding succesvol
 Please go to next page to continue installation: Ga naar de volgende pagina om de installatie voort te zetten
 Correct your entries or click the Create New...: Corrigeer uw vermeldingen of klik de <b>Maak nieuw</b> knop om door te gaan
 Correct your entries and try again.: Corrigeer uw vermeldingen en probeer opnieuw
-does not exist: bestaat niet
-is not writable: is niet schrijfbaar
 Error Converting Timezone: Fout bij converteren tijdzone
 Error Unable to write to file: Fout Niet mogelijk om bestand te schrijven
 Please change the file permissions of this file.: Wijzig de bestandspermissies van dit bestand
@@ -1658,7 +1658,6 @@ Create Default Admin Account: Maak een standaard beheer-account
 Admin Account Not Found: Admin account niet gevonden
 User Authentication: Gebruikers Authenticatie
 Web-based via WebCalendar (default): Web-based via WebKalender (standaard)
-Web Server: Webserver
 None (Single-User): Geen (enkele-gebruiker)
 Read-Only: Alleen-Lezen
 Environment: Omgeving
@@ -1689,6 +1688,7 @@ Remote Calendars not enabled: Kalenders op afstand niet ingeschakeld
 #
 could not find event id: afspraak id onvindbaar
 could not find event id XXX in database.: afspraak id onvindbaar in de database
+task: taak
 This is a reminder for the XXX detailed below.: Dit is een herinnering aan de XXX waarvan u hieronder de details vindt
 Pecentage Complete: Percentage compleet
 Reminder: Herinnering

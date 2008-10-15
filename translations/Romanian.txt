@@ -9,15 +9,15 @@
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -32,6 +32,10 @@ direction: =
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
 __month__ __dd__, __yyyy__: =
@@ -42,14 +46,22 @@ __month__ __yyyy__: =
 
 
 ########################################
+# Page: about.php
+#
+Title: =
+
+########################################
 # Page: access.php
 #
 Database error: Eroare in baza de date
 Go: Schimb&#259;
 Save: Salveaz&#259;
 Public Access: Acces public
+Admin: =
+Calendar: =
 Edit: Editeaz&#259;
 Events: Evenimente
+Public: =
 Confidential: Confiden&#355;ial
 Private: Privat
 
@@ -80,6 +92,7 @@ Settings: Configura&#355;ie
 Groups: Grupuri
 NonUser Calendars: Calendare non-utilizator
 Other: Altele
+Email: =
 Colors: Culori
 Document background: Fundalul documentului
 Document title: Titlul documentului
@@ -267,6 +280,7 @@ Category Name: Numele categoriei
 Color: Culoarea
 Add: Adaug&#259;
 Delete: &#350;terge
+Are you sure you want to delete this entry?: Sigur vrei s&#259; &#351;tergi ?
 Make New Category: Adaug&#259; o nou&#259; categorie
 
 ########################################
@@ -288,6 +302,8 @@ Description: Descriere
 ########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 days: zile
 hours: ore
 minutes: minute
@@ -309,6 +325,7 @@ Medium: Medie
 Low: Scazut&#259;
 category-help: Specific&#259; tipul evenimentului.
 Category: Categorie
+URL: =
 date-help: Specific&#259; data evenimentului.
 Untimed event: Eveniment far&#259; ora fixata
 Timed event: Eveniment cu ora fixat&#259;
@@ -424,6 +441,7 @@ Template variables: Variabile &#351;ablon
 Page template: &#350;sblonul paginii
 Day template: &#350;sblonul zilei
 Event template: &#350;sblonul evenimentului
+Are you sure you want to delete this report?: Sigur vrei s&#259; &#351;tergi acest raport?
 
 ########################################
 # Page: edit_report_handler.php
@@ -445,6 +463,7 @@ E-mail address: Adresa de email
 Password: Parol&#259;
 again: din nou
 Disabled for demo: Dezactivat pentru demonstra&#355;ie
+Are you sure you want to delete this user?: Sigur vrei s&#259; &#351;tergi acest utilizator?
 Change Password: Schimb&#259; parola
 New Password: Noua parol&#259;
 Set Password: Seteaz&#259; parola
@@ -524,6 +543,7 @@ repeat-day-help: Specifica &#238;n ce zile ale saptamanii s&#259; se repete even
 # Page: help_import.php
 #
 Import: Import&#259;
+Palm Desktop: =
 This form will allow you to import entries from the Palm Desktop Datebook.: Acest formular &#238;&#355;i permite s&#259; impor&#355;i &#238;nregistr&#259;ri dintr-un Palm Desktop Datebook.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Ar trebui s&#259; fie localizat &#238;n directorul <tt>datebook/datebook.dat</tt> de pe Palm, &#238;ntr-un subdirector cu numele t&#259;u de utilizator.
 The following entries will not be imported: Urmatoarele date nu vor fi importate
@@ -531,6 +551,7 @@ Entries older than the current date: &#206;nregistr&#259;ri mai vechi dec&#226;t
 Entries created in the Palm Desktop...: &#206;nregistr&#259;ri create pe Palm dar care nu au fost HotSync-ate
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Orice a fost importat de pe Palm va fi rescris la urmatorul import (dac&#259; data nu este trecut&#259;).
 Therefore, updates should be made in the Palm Desktop.: De aceea actualiz&#259;rile ar trebui f&#259;cute pe Palm Desktop.
+vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Acest formular va importa evenimente de tip vCalendar (.vcs) 1.0
 The following formats have been tested: Au fost testate urm&#259;toarele formate
 This form will import iCalendar (.ics) events.: Aceast formular va importa evenimente de tip iCalendar (.ics)
@@ -585,10 +606,8 @@ The import file contained no data.: Fisierul importat nu con&#355;ine date
 #
 Layer: Strat
 Edit layer: Editeaz&#259; stratul
-Layers are currently: Starturile sunt acum
+Are you sure you want to delete this layer?: Sigur vrei s&#259; &#351;tergi acest strat?
 Disable Layers: Dezactiveaz&#259; straturile
-Click here: F&#259; click aici
-to modify the layers settings for the: ca s&#259; modifici configurarea straturilor pentru
 Add layer: Adaug&#259; un strat
 
 ########################################
@@ -605,6 +624,7 @@ Reject this entry?: Refuz&#259;?
 #
 You must enter a login and password.: Este nevoie de login &#351;i parol&#259;
 Save login via cookies so I dont have to login next time.: Salveaz&#259; loginul &#238;ntr-un cookie pentru data viitoare
+Login: =
 Access public calendar: Acceseaz&#259; calendarul public
 cookies-note: <b>Nota:</b> Aceast&#259; aplica&#355;ie necesit&#259; cookie-uri.
 
@@ -633,7 +653,6 @@ Finished: Terminat
 Check box to delete ALL events for a user: Bifeaz&#259; aceast&#259; casu&#355;&#259; ca s&#259; &#351;tergi <b>TOATE</b> evenimentele utilizatorului
 Delete all events before: &#350;terge toate evenimentele dinainte de
 Are you sure you want to delete events for: Sigur vrei s&#259; &#351;tergi evenimentele lui
-Records deleted from: &#206;nregistrari au fost &#351;terse &#238;ncep&#226;nd de la
 
 ########################################
 # Page: reject_entry.php
@@ -644,11 +663,13 @@ An appointment has been rejected by: O programare a fost refuzat&#259; de c&#259
 # Page: report.php
 #
 This event is confidential.: Acest eveniment este confiden&#355;ial
+cont.: =
 Approved: Aprobat
 Deleted: Stears&#259;
 Rejected: Refuzat&#259;
 Waiting for approval: Astept&#226;nd aprobare
 Unknown: Necunoscut
+Click here: F&#259; click aici
 to manage reports for the Public Access calendar: pentru a administra rapoartele din calendarul cu acces public
 Add new report: Adaug&#259; un nou raport
 Manage Reports: Administreaza rapoartele
@@ -743,6 +764,7 @@ Email all participants: Trimite email tuturor participan&#355;ilor
 Hide activity log: Ascunde jurnalul de activitate
 Show activity log: Afi&#351;eaz&#259; jurnalul de activitate
 Export this entry to: Export&#259; aceast&#259; &#238;nregistrare &#238;n
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php
@@ -758,6 +780,7 @@ Another Users Calendar: Calendarul altcuiva
 # Page: includes/date_formats.php
 #
 December: Decembrie
+Dec: =
 
 ########################################
 # Page: includes/functions.php
@@ -782,13 +805,20 @@ April: Aprilie
 May_: Mai
 June: Iunie
 July: Iulie
+August: =
 September: Septembrie
 October: Octombrie
 November: Noiembrie
 Jan: Ian
+Feb: =
+Mar: =
+Apr: =
 May: Mai
 Jun: Iun
 Jul: Iul
+Aug: =
+Sep: =
+Oct: =
 Nov: Noi
 The following error occurred: Urm&#259;toarea eroare s-a petrecut
 You are not authorized.: Nu e&#351;ti autorizat(&#259;)
@@ -817,6 +847,7 @@ Sat: S&#226;mb&#259;t&#259;
 #
 My Calendar: Calendarul meu
 Add New Entry: Adaug&#259; un nou eveniment
+Logout: =
 Back to My Calendar: &#206;napoi la calendarul meu
 Go to: Schimb&#259; cu
 Manage calendar of: Lucreaz&#259; cu calendarul lui

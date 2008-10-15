@@ -12,15 +12,15 @@
 # Last updated on July 21 2006
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -34,6 +34,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -60,6 +64,7 @@ Admin: Administration
 Calendar: Agenda
 Edit: Éditer
 Events: Événements
+Public: =
 
 ########################################
 # Page: activity_log.php
@@ -235,6 +240,7 @@ Not available: Non disponible
 ########################################
 # Page: adminhome.php
 #
+Assistants: =
 Preferences: Préférences
 Users: Utilisateurs
 Account: Compte
@@ -254,6 +260,7 @@ Administrative Tools: Outils d'administration
 Hello: Bonjour
 The subject was: Le sujet était
 The description is: La description est
+Date: =
 Time: Heure
 
 ########################################
@@ -275,6 +282,7 @@ Category Name: Nom de la catégorie
 Color: Couleur
 Add: Ajouter
 Delete: Supprimer
+Are you sure you want to delete this entry?: Voulez-vous vraiment supprimer cet événement ?
 Make New Category: Ajouter une nouvelle catégorie
 
 ########################################
@@ -289,13 +297,22 @@ Cancel: Annuler
 An appointment has been canceled for you by: Un événement été annulé pour vous par
 
 ########################################
+# Page: docadd.php
+#
+Description: =
+
+########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 days: jours
 hours: heures
+minutes: =
 Edit Entry: Modification de l'événement
 Add Entry: Ajouter un événement
 Details: Détails
+Participants: =
 Repeat: Répétition
 brief-description-help: Ceci doit être un résumé (environ 20 caractères) de l'événement. Cette information représentera l'événement quand vous visualiserez l'agenda.
 Brief Description: Description résumée
@@ -310,6 +327,7 @@ Medium: Moyenne
 Low: Basse
 category-help: Définir la catégorie associée à un événement.
 Category: Catégorie
+URL: =
 date-help: Spécification de la date de l'événement.
 Untimed event: événement intemporel
 Timed event: événement temporel
@@ -319,6 +337,7 @@ time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut êt
 duration-help: Spécification de la durée (en minutes) de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
 end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
 participants-help: Liste des participants pour cet événement.
+Selected: Sélection
 Availability: Disponibilité
 external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un à un par ligne avec éventuellement leur adresse de couriel. Si une adresse de couriel est spécifiée, l'utilisateur peut recevoir par couriel les notifications et rappels.
 External Participants: Participants extérieurs
@@ -356,6 +375,7 @@ conflicts with the following existing calendar entries: est en conflit avec les 
 #
 Add Layer: Ajouter un calque
 Edit Layer: Modifier un calque
+Source: =
 Duplicates: Duplication
 Show layer events that are the same as your own: Afficher les événements dont les libellés sont identiques aux vôtres
 Add to My Calendar: Ajouter à mon agenda
@@ -431,6 +451,7 @@ Template variables: Variables disponibles
 Page template: Options de présentation
 Day template: Options de présentation pour une journée
 Event template: Options de présentation pour un événement
+Are you sure you want to delete this report?: Etes vous certain de vouloir effacer ce rapport ?
 
 ########################################
 # Page: edit_report_handler.php
@@ -452,6 +473,7 @@ E-mail address: Adresse de couriel
 Password: Mot de passe
 again: confirmer
 Disabled for demo: Désactivé pour la démo
+Are you sure you want to delete this user?: Êtes-vous certain de vouloir supprimer cet utilisateur ?
 Change Password: Changer de mot de passe
 New Password: Nouveau mot de passe
 Set Password: Modifier le mot de passe
@@ -598,11 +620,8 @@ The import file contained no data.: Le fichier à importer ne contient aucune do
 #
 Layer: Calque
 Edit layer: Modifier un calque
-Layers are currently: Les calques sont actuellement
+Are you sure you want to delete this layer?: êtes vous certain de détruire ce calque ? 
 Disable Layers: Désactiver les calques
-Click here: Cliquez ici
-to modify the layers settings for the: pour modifier les paramètres de calque de
-calendar: agenda
 Add layer: Ajouter un calque
 
 ########################################
@@ -621,6 +640,7 @@ You must enter a login and password.: Vous devez saisir un login et un mot de pa
 Save login via cookies so I dont have to login next time.: Sauvegarder l'identifiant dans un cookie, pour ne plus le saisir la prochaine fois
 Login: Connexion
 Access public calendar: Agenda à accès public
+calendar: agenda
 cookies-note: <b>Note:</b> Cette application nécessite l'activation des cookies
 
 ########################################
@@ -638,6 +658,7 @@ Add New NonUser Calendar: Ajouter un nouvel utilisateur générique
 #
 Save Preferences: Sauvegarder les préférences
 hour: heure
+minute: =
 
 ########################################
 # Page: purge.php
@@ -647,7 +668,6 @@ Finished: Terminé
 Check box to delete ALL events for a user: Cocher la case pour supprimer <b>TOUS</b> les événements d'un utilisateur
 Delete all events before: Supprimer les événements antérieurs au
 Preview delete: Aperçu de la suppression
-Records deleted from: Enregistrements marqués supprimés de
 
 ########################################
 # Page: reject_entry.php
@@ -664,6 +684,7 @@ Deleted: Supprimé
 Rejected: Rejeté
 Waiting for approval: En attente de validation
 Unknown: Inconnu
+Click here: Cliquez ici
 to manage reports for the Public Access calendar: pour gérer les rapports relatifs à l'accès à l'agenda public
 Add new report: Ajouter un nouveau rapport
 Manage Reports: Gérer les rapports
@@ -763,6 +784,7 @@ Email all participants: Envoyer un courriel à tous les participants
 Hide activity log: Masquer le journal de suivi
 Show activity log: Visualiser le journal de suivi
 Export this entry to: Exporter cet événement au format
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php
@@ -796,6 +818,7 @@ Reminder sent: Rappel envoyé
 Event updated: événement mis à jour
 Changes successfully saved: Modifications sauvegardées avec succès
 Event: Événement
+Action: =
 Printer Friendly: Version&nbsp;imprimable
 Generate printer-friendly version: Générer une version imprimable
 January: janvier
@@ -809,10 +832,17 @@ August: août
 September: septembre
 October: octobre
 November: novembre
+Jan: =
 Feb: Fév
+Mar: =
 Apr: Avr
 May: Mai
+Jun: =
+Jul: =
 Aug: Aoû
+Sep: =
+Oct: =
+Nov: =
 The following error occurred: L'erreur suivante est survenue
 You are not authorized.: Vous n'êtes pas autorisé(e)
 Error approving event: Erreur en approuvant l'événement
@@ -845,7 +875,9 @@ Manage calendar of: Gérer l'agenda de
 # Page: includes/translate.php
 #
 English: Anglais
+Basque: =
 Bulgarian: Bulgare
+Catalan: =
 Chinese (Simplified/GB2312): Chinois (Simplifié/GB2312)
 Chinese (Traditional/Big5): Chinois (Traditionnel/Big5)
 Czech: Tchèque
@@ -897,6 +929,11 @@ SA: =
 SU: DI
 Unnamed Event: événement sans nom
 Event Imported: Événement importé
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: =
 
 ########################################
 # Page: includes/js/admin.php
