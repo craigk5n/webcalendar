@@ -328,9 +328,11 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
         echo '
     <item>';
         $unixtime = $rentries[$j]->getDateTimeTS ();
-        $dateinfo = ( $date_in_title == true
-          ? date ( $date_format, $i )
-           . ( $rentries[$j]->isAllDay () || $rentries[$j]->isUntimed ()
+        // Constructing the TS for the current repeating event
+        $unixtime = strtotime( date ( 'D, d M Y ', $i ) . date ( 'H:i:s', $unixtime ) ); 
+        $dateinfo = ( $date_in_title
+          ? date ( $date_format, $unixtime )
+           . ( $rentries[$j]->isTimed ()
             ? $time_separator . date ( $time_format, $unixtime ) : '' ) . ' '
           : '' );
 
@@ -343,7 +345,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
       <category><![CDATA[' . $category . ']]></category>' )
         // . '<creator><![CDATA[' . $creator . ']]></creator>'
         . '
-      <pubDate>' . $pubDate . ' ' . gmdate ( 'H:i:s', $unixtime ) . ' GMT</pubDate>
+      <pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>
       <guid>' . $SERVER_URL . 'view_entry.php?id=' . $rentries[$j]->getID ()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</guid>
     </item>';
