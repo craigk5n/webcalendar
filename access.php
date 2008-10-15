@@ -26,7 +26,7 @@ if ( ! access_is_enabled () ) {
   echo print_not_auth ();
   exit;
 }
-// translate ( 'Database error' )
+
 $dbErrStr = translate ( 'Database error XXX.' );
 $defConfigStr = translate ( 'DEFAULT CONFIGURATION' );
 $goStr = '

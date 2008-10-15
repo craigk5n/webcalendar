@@ -70,7 +70,6 @@ function event_to_text ( $event, $date ) {
 
   $allDayStr = translate ( 'All day event' );
   $confStr = translate ( 'This event is confidential.' );
-  // translate ( 'Private' )
   $privStr = translate ( '(Private)' );
 
   $end_time_str = $start_time_str = $time_str = '';
@@ -105,7 +104,6 @@ function event_to_text ( $event, $date ) {
 
   if ( $tempExtForID != '' ) {
     $id = $tempExtForID;
-    // translate ( 'cont.' )
     $name .= ' ' . translate ( '(cont.)' );
   } else
     $id = $event->getID ();
@@ -121,7 +119,7 @@ function event_to_text ( $event, $date ) {
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       $str = str_replace ( '&', '&amp;', $tempDesc );
       //fix any broken special characters
-      $str =  preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str);      
+      $str =  preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str);
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
       if ( strstr ( $description_str, '<' ) && strstr ( $description_str, '>' ) ) {
         // Found some HTML.
@@ -218,8 +216,6 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   if ( $is_admin ) {
     if ( ! $updating_public ) {
       if ( $PUBLIC_ACCESS == 'Y' ) {
-        // translate ( 'Click here' )
-        // translate ( 'to manage reports for the Public Access calendar' )
         $clickStr =
         translate ( 'Click here to manage reports for the Public Access calendar.' );
         $list .= '

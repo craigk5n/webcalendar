@@ -161,7 +161,6 @@ if ( empty ( $error ) && $report_id >= 0 ) {
       if ( $is_admin && $report_login == '__public__' )
         $updating_public = true;
     } else
-      // translate ( 'Invalid report id.' )
       $error = str_replace ( 'XXX', $report_id,
         translate ( 'Invalid report id XXX.' ) );
 

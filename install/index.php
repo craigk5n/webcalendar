@@ -93,7 +93,6 @@ $passwordStr = translate ( 'Password' );
 $singleUserStr = translate ( 'Single-User' );
 $testSettingsStr = translate ( 'Test Settings' );
 $tzSuccessStr = translate ( 'Timezone Conversion Successful' );
-// translate ( 'WebCalendar Installation Wizard' ) translate ( 'Step' )
 $wizardStr = translate ( 'WebCalendar Installation Wizard Step XXX' );
 $manualStr = translate ( 'You must manually create database' );
 
@@ -190,15 +189,11 @@ if ( file_exists ( $file ) && ! empty ( $pwd ) ) {
 $php_settings = array (
   array ( translate ( 'Display Errors' ), 'display_errors', 'ON', false ),
   array ( translate ( 'File Uploads' ), 'file_uploads', 'ON', false ),
-  // translate ( 'required only if Remote Calendars are used' )
-  // translate ( '(required only if Remote Calendars are used)' )
   array ( translate ( 'Allow URL fopen' ), 'allow_url_fopen', 'ON', false ),
   array ( translate ( 'Safe Mode' ), 'safe_mode', 'OFF', false )
   );
 
 //Add 'Safe Mode Allowed Vars' if 'Safe Mode' is enabled
-// translate ( 'required only if Safe Mode is On' )
-// translate ( '(required only if Safe Mode is On)' )
 if ( get_php_setting ( 'safe_mode' )== 'ON' )
   $php_settings[] =  array (
     translate ('Safe Mode Allowed Vars'),
@@ -214,15 +209,12 @@ $php_constants = array (
   // array ('CRYPT_BLOWFISH',CRYPT_BLOWFISH, 1)
   );
 $php_modules = array (
-  // translate ( 'needed for Gradient Image Backgrounds' )
-  // translate ( '(needed for Gradient Image Backgrounds)' )
   array ( translate ( 'GD' ), 'imagepng', 'ON' ),
   );
 
 $pwd1 = getPostValue ( 'password1' );
 $pwd2 = getPostValue ( 'password2' );
 if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
-  // translate ( 'Passwords do not match' )
   if ( $pwd1 != $pwd2 ) {
     echo translate ( 'Passwords do not match!' ) . '<br />' . "\n";
     exit;
@@ -429,8 +421,6 @@ if ( ! empty ( $post_action ) && $post_action == $testSettingsStr && !
 
     // Do some queries to try to determine the previous version.
     get_installed_version ();
-    // translate ( 'Connection Successful' )
-    // translate ( 'Please go to next page to continue installation' )
     $response_msg = translate ( 'Connection Successful...' );
   } else {
     $response_msg = $failure . dbi_error () . '</blockquote>' . "\n";
@@ -705,7 +695,6 @@ if ( ! empty ( $y ) ) {
 // Save settings to file now.
 if ( ! empty ( $x ) || ! empty ( $y ) ) {
   $fd = @fopen ( $file, 'w+b', false );
-  // translate ( 'Error Unable to write to file' )
   if ( empty ( $fd ) )
     $onload = 'alert( \'' . str_replace ( 'XXX', $file,
       translate ( 'Error Unable to write to file XXX.', true ) ) . "\\n"
@@ -985,8 +974,6 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       </tr>
       <tr>
         <td>'
-  // translate ( 'To test the proper operation of sessions, reload this page' )
-  // translate ( 'You should see the session counter increment each time' )
   . translate ( 'To test the proper operation of sessions...' ) . '</td>
         <td class="' . ( $_SESSION['check'] > 0 ? '' : 'not' ) . 'recommended'
    . '"><img src="'
@@ -1297,8 +1284,6 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   $_SESSION['db_updated'] = false;
   if ( $_SESSION['old_program_version'] == $PROGRAM_VERSION &&
     empty ( $_SESSION['blank_database'] ) ) {
-    // translate ( 'All your database tables appear to be up to date. You may proceed to the')
-    // translate ( 'next page and complete your WebCalendar setup' )
     $response_msg = translate ( 'All your database tables appear to be up...' );
     $_SESSION['db_updated'] = true;
     // $response_msg .= '<br />Previous Version: ' .
@@ -1312,13 +1297,9 @@ translate ( 'go back to the previous page and correct your settings' )
     $response_msg = ( $_SESSION['old_program_version'] == 'new_install'
       ? translate ( 'This appears to be a new installation...' )
       : ( empty ( $_SESSION['blank_database'] )
-        // translate ( 'This appears to be an upgrade from version' )
-        // translate ( 'to' )
         ? str_replace ( array ('XXX', 'YYY'),
           array ( $_SESSION['old_program_version'], $PROGRAM_VERSION ),
           translate ( 'This appears to be an upgrade...' ) )
-        // translate ( 'The database requires some data input' )
-        // translate ( 'Click Update Database to complete the upgrade' )
         : translate ( 'The database requires some data input...' ) ) );
 
   echo '
@@ -1516,7 +1497,6 @@ translate ( 'You should select Web Server from the list of User Authentication c
    . ( ( $_SESSION['old_program_version'] == 'new_install' )
     ? $checked : '' ) . ' />' . ( $_SESSION['admin_exists'] == 0 ? '
                 <span class="notrecommended"> '
-    // translate ( 'Admin Account Not Found' )
     . translate ( '(Admin Account Not Found)' ) . '</span>' : '' ) . '
               </td>
             </tr>

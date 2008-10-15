@@ -14,11 +14,9 @@ $old_id = -1;
 $dateStr = translate ( 'Date XXX' );
 $descStr = translate ( 'Description XXX' );
 $helloStr = translate ( 'Hello, XXX.' );
-// translate ( 'A new appointment has been made for you by' )
 $newAppStr = translate ( 'XXX has made a new appointment.' );
 $subjStr = translate ( 'Subject XXX' );
 $timeStr = translate ( 'Time XXX' );
-// translate ( 'An appointment has been updated by' )
 $updAppStr = translate ( 'XXX has updated an appointment.' );
 
 /* Put byday values in logical sequence.
@@ -278,7 +276,7 @@ if ( $TIMED_EVT_LEN == 'E' ) {
 }
 
 $duration = 0;
-if ( $eType != 'task' ) {	
+if ( $eType != 'task' ) {
   $eventstop = ( $timetype != 'T'
     ? gmmktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year )
     : mktime ( $eventstophour, $eventstopmin, 0, $month, $day, $year ) );
@@ -895,7 +893,6 @@ if ( empty ( $error ) ) {
           $fmtdate = ( $timetype == 'T'
             ? date ( 'Ymd', $eventstart ) : gmdate ( 'Ymd', $eventstart ) );
           $msg = str_replace ( 'XXX', $tempfullname, $helloStr ) . "\n\n"
-          // translate ( 'An appointment has been canceled for you by' )
           . str_replace ( 'XXX', $login_fullname,
             translate ( 'XXX has canceled an appointment.' ) ) . "\n"
            . str_replace ( 'XXX', $name, $subjStr ) . "\n\n"
@@ -1029,9 +1026,6 @@ if ( empty ( $error ) ) {
               $timeStr ) . "\n" )
           // Add Site Extra Date if permitted.
           . $extra_email_data
-          // translate ( 'Please look on' )
-          // translate ( 'to accept or reject this appointment' )
-          // translate ( 'to view this appointment' )
           . str_replace ( 'XXX', generate_application_name (),
             ( $REQUIRE_APPROVALS == 'Y'
               ? translate ( 'Please look on XXX to accept or reject this appointment.' )

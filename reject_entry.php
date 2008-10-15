@@ -104,7 +104,6 @@ if ( empty ( $error ) && $id > 0 ) {
       reset_language ( empty ( $user_language ) || $user_language == 'none'
         ? $LANGUAGE : $user_language );
 
-      // translate ( 'An appointment has been rejected by' )
       $msg =
       str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) ) . '
 

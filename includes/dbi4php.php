@@ -472,7 +472,6 @@ function dbi_affected_rows ( $conn, $res ) {
 function dbi_update_blob ( $table, $column, $key, $data ) {
   global $unavail_DBI_Update_blob;
 
-  // translate ( 'Unfortunately, XXX is not implemented for' )
   $unavail_DBI_Update_blob = str_replace ( array ( 'XXX', 'YYY' ),
     array ( '"dbi_update_blob"', $GLOBALS['db_type'] ),
     translate ( 'Unfortunately, XXX is not implemented for YYY' ) );
@@ -731,7 +730,7 @@ function dbi_get_cached_rows ( $sql, $params = array (),
   if ( ! empty ( $db_connection_info['cachedir'] ) &&
     function_exists ( 'file_get_contents' ) ) {
     // Cache enabled.
-    $hash = md5 ( $db_connection_info['database'] 
+    $hash = md5 ( $db_connection_info['database']
       . $db_connection_info['password'] .$sql . serialize ( $params ) );
     $file = $db_connection_info['cachedir'] . '/' . $hash . '.dat';
     if ( file_exists ( $file ) ) {
@@ -813,7 +812,6 @@ function dbi_clear_cache () {
   $cnt = 0;
   $fd = @opendir ( $db_connection_info['cachedir'] );
   if ( empty ( $fd ) )
-    // translate ( 'Error opening cache dir' )
     dbi_fatal_error ( str_replace ( 'XXX', $db_connection_info['cachedir'],
       translate ( 'Error opening cache dir XXX.' ) ) );
 

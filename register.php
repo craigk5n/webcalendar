@@ -173,14 +173,10 @@ if ( empty ( $error ) && ! empty ( $control ) ) {
       translate ( 'Hello, XXX.' ) ) . "\n\n"
      . translate ( 'A new WebCalendar account has been set up for you.' )
      . "\n\n"
-    // translate ( 'Your username is' )
     . str_replace ( 'XXX', $user, translate ( 'Your username is XXX.' ) )
      . "\n\n"
-    // translate ( 'Your password is' )
     . str_replace ( 'XXX', $new_pass, translate ( 'Your password is XXX.' ) )
      . "\n\n"
-    // translate ( 'Please visit' )
-    // translate ( 'to log in and start using your account' )
     . str_replace ( 'XXX', $appStr,
       translate ( 'Please visit XXX to log in and start using your account!' ) )
      . "\n";

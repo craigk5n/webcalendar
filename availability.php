@@ -28,7 +28,6 @@ $day = getGetValue ( 'day' );
 
 // Input args in URL.
 // users: list of comma-separated users.
-// translate ( 'Program Error' ) translate ( 'No XXX specified!' )
 $noXStr = translate ( 'Program Error No XXX specified!' );
 if ( empty ( $users ) ) {
   echo str_replace ( 'XXX', translate ( 'user' ), $noXStr );

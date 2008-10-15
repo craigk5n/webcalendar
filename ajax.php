@@ -38,7 +38,6 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
     $row = dbi_fetch_row ( $res );
     // Presuming we are using '_NUC_' as $NONUSER_PREFIX.
     if ( $name == substr ( $row[0], strlen ( $NONUSER_PREFIX ) ) )
-      // translate ( 'Duplicate Name' )
       echo str_replace ( 'XXX', $name, translate ( 'Duplicate Name XXX', true ) );
   }
 } elseif ( $page == 'register' || $page == 'edit_user' ) {
@@ -47,7 +46,6 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
     array ( $name ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    // translate ( 'Username already exists.' )
     if ( $row[0] == $name )
       echo str_replace ( 'XXX', $name,
         translate ( 'Username XXX already exists.', true ) );
@@ -58,7 +56,6 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
     array ( $name ) );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    // translate ( 'Email address already exists.' )
     if ( $row[0] == $name )
       echo str_replace ( 'XXX', $name,
         translate ( 'Email address XXX already exists.', true ) );

@@ -173,7 +173,6 @@ function build_entry_label ( $event, $popupid,
     if ( $time_only != 'Y' )
       $ret = '(' . translate ( 'Private' ) . ')';
 
-    // translate ( 'This event is private' )
     $eventinfo .= build_entry_popup ( $popupid, $tmpLogin,
       str_replace ( 'XXX', translate ( 'private' ),
         translate ( 'This event is XXX.' ) ), '' );
@@ -511,7 +510,6 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $participant_pct = '20%'; //Use percentage.
 
   $tentative = translate ( 'Tentative' );
-  // translate ( 'Schedule an appointment for' )
   $titleStr = ' title="' . translate ( 'Schedule an appointment for XXX.' ) . '">';
   $viewMsg = translate ( 'View this entry' );
 
@@ -534,7 +532,6 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
 EOT;
    $ret .= translate ( 'Participants' ) . '</th>';
   $tentative = translate ( 'Tentative' );
-  // translate ( 'Schedule an appointment for' )
   $titleStr = ' title="' . translate ( 'Schedule an appointment for XXX.' ) . '">';
   $viewMsg = translate ( 'View this entry' );
 
@@ -4920,7 +4917,6 @@ function print_timezone_select_html ( $prefix, $tz ) {
        . ( $timezones[$i] == $tz ? ' selected="selected" ' : '' ) . '>'
        . unhtmlentities ( $timezones[$i] ) . '</option>';
     }
-// translate ( 'Your current GMT offset is' )
     $ret .= '
         </select>&nbsp;&nbsp;' . str_replace (' XXX ',
          '&nbsp;' . date ( 'Z' ) / 3600 . '&nbsp;',
@@ -5605,17 +5601,14 @@ function update_status ( $status, $user, $id, $type = 'E' ) {
   switch ( $status ) {
     case 'A':
       $log_type = constant ( 'LOG_APPROVE' . $log_type );
-      // translate ( 'Error approving event' )
       $error_msg = translate ( 'Error approving event XXX.' );
       break;
     case 'D':
       $log_type = constant ( 'LOG_DELETE' . $log_type );
-      // translate ( 'Error deleting event' )
       $error_msg = translate ( 'Error deleting event XXX.' );
       break;
     case 'R':
       $log_type = constant ( 'LOG_REJECT' . $log_type );
-      // translate ( 'Error rejecting event' )
       $error_msg = translate ( 'Error rejecting event XXX.' );
   }
 

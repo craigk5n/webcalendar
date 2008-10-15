@@ -518,9 +518,6 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
     user_load_variables ( $user, 'temp' );
     $tz_diff = ( $user_tz_offset - $tz_offset ) / 3600;
     $abs_diff = abs ( $tz_diff );
-    // translate ( 'is in a different timezone than you are. Currently' )
-    // translate ( 'hour ahead of you' ) translate ( 'hour behind you' )
-    // translate ( 'hours ahead of you' ) translate ( 'hours behind you' )
     // translate ( 'XXX is in a different timezone (ahead)' )
     // translate ( 'XXX is in a different timezone (behind)' )
     // Line breaks in translates below are to bypass update_translation.pl.
@@ -1199,8 +1196,6 @@ if ( $can_edit ) {
       ? $selected : '' ) . '>' . translate ( 'Weekly' ) . '</option>
               <option value="monthlyByDay"'
      . ( strcmp ( $rpt_type, 'monthlyByDay' ) == 0 ? $selected : '' )
-    // translate ( 'Monthly' ) translate ( 'by day' ) translate ( 'by date' )
-    // translate ( 'by position' )
     . '>' . translate ( 'Monthly (by day)' ) . '</option>
               <option value="monthlyByDate"'
      . ( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? $selected : '' )

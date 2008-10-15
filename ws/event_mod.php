@@ -50,7 +50,6 @@ if ( empty ( $user ) )
 
 $action = getGetValue ( 'action' );
 if ( strpos ( 'approvedeletereject', $action ) === false )
-  // translate ( 'Unsupported action' )
   $error = str_replace ( 'XXX', ws_escape_xml ( $action ),
     translate ( 'Unsupported action XXX.' ) );
 
@@ -64,7 +63,6 @@ if ( empty ( $error ) && $login == '__public__' )
 // Only admin users can modify events on the public calendar.
 if ( empty ( $error ) && $PUBLIC_ACCESS == 'Y' && $user == '__public__' && !
     $is_admin )
-  // translate ( 'not admin' )
   $error = translate ( 'Not authorized (not admin).' );
 
 if ( empty ( $error ) && ! $is_admin && $user != $login ) {

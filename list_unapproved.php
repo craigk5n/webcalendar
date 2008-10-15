@@ -165,7 +165,6 @@ function list_unapproved ( $user ) {
     $noret .= '
       <tr>
         <td colspan="5" class="nounapproved">'
-    // translate ( 'No unapproved entries for' )
     . str_replace ( 'XXX', $temp_fullname,
       translate ( 'No unapproved entries for XXX.' ) ) .
       '&nbsp;' . $rssLink . '</td>
