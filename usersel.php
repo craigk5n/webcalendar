@@ -7,6 +7,9 @@ include_once 'includes/init.php';
 // form:   name of form on parent page
 // listid: element id of user selection object in form
 //         ... to be used like form.elements[$listid]
+$users = getGetValue ( 'users' );
+$form = getGetValue ( 'form' );
+$listid = getGetValue ( 'listid' );
 $progErrStr = translate ( 'Program Error No XXX specified!' );
 if ( empty ( $form ) ) {
   echo str_replace ( 'XXX', translate ( 'form' ), $progErrStr );
