@@ -138,14 +138,26 @@ function rss_activity_log ( $sys, $entries ) {
 
   $sql_params = array ();
 
+  $limit = $where = '';
+  switch ( $GLOBALS['db_type'] ) {
+    case 'mysqli':
+    case 'mysql':
+    case 'postgresql':
+      $limit .= ' LIMIT ' . $entries;
+      break;
+    case 'oracle':
+      $where .= ' AND ROWNUM <= ' . $entries;
+      break;
+  }
+
   $sql = 'SELECT wel.cal_login, wel.cal_user_cal, wel.cal_type, wel.cal_date,
     wel.cal_time, wel.cal_text, '
    . ( $sys
     ? 'wel.cal_log_id FROM webcal_entry_log wel WHERE wel.cal_entry_id = 0'
     : 'we.cal_id, we.cal_name, wel.cal_log_id, we.cal_type, we.cal_description
       FROM webcal_entry_log wel, webcal_entry we
-      WHERE wel.cal_entry_id = we.cal_id' )
-   . ' ORDER BY wel.cal_log_id DESC LIMIT ' . $entries;
+      WHERE wel.cal_entry_id = we.cal_id' . $where )
+   . ' ORDER BY wel.cal_log_id DESC' . $limit;
 
   $rows = dbi_get_cached_rows ( $sql, $sql_params );
 
