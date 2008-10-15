@@ -12,15 +12,15 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -35,6 +35,10 @@ direction: =
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
 __month__ __dd__, __yyyy__: =
@@ -43,6 +47,11 @@ __month__ __yyyy__: =
 ################################################################################
 ################################################################################
 
+
+########################################
+# Page: about.php
+#
+Title: =
 
 ########################################
 # Page: access.php
@@ -250,6 +259,7 @@ Category Name: Tapahtumaluokan nimi
 Color: V‰ri
 Add: Lis‰‰
 Delete: Poista
+Are you sure you want to delete this entry?: Haluatko varmasti poistaa t‰m‰n merkinn‰n?
 Make New Category: Lis‰‰ uusi tapahtumaluokka
 
 ########################################
@@ -271,6 +281,8 @@ Description: Kuvaus
 ########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 days: p‰iv‰‰
 hours: tuntia
 minutes: minuuttia
@@ -292,6 +304,7 @@ Medium: Normaali
 Low: V‰h‰inen
 category-help: M‰‰ritt‰‰ tapahtumalle tapahtumaluokan.
 Category: Tapahtumaluokka
+URL: =
 date-help: M‰‰rittelee tapahtuman p‰iv‰m‰‰r‰n.
 Untimed event: Ajoittamaton tapahtuma
 Timed event: Ajoitettu tapahtuma
@@ -405,6 +418,7 @@ Template variables: Sivupohjan muuttujat
 Page template: Sivupohja
 Day template: P‰iv‰raportin pohja
 Event template: Tapahtumaraportin pohja
+Are you sure you want to delete this report?: Haluatko varmasti poistaa t‰m‰n raportin?
 
 ########################################
 # Page: edit_report_handler.php
@@ -512,6 +526,7 @@ Entries older than the current date: Kuluvaa p‰iv‰‰ vanhemmat tapahtumat
 Entries created in the Palm Desktop...: Palmissa luodut tapahtumat, joita ei ole synkronoitu HotSync:ll‰
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Kaikki Palmista tuodut tapahtumat pyyhkiytyv‰t seuraavassa tuonnissa (ellei tapahtuma ole jo mennyt ohi).
 Therefore, updates should be made in the Palm Desktop.: Siksi p‰ivitykset tulisi tehd‰ Palmin kautta.
+vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Tuo vCalendar (.vcs) 1.0 t‰ll‰ lomakkeella
 The following formats have been tested: Seuraavat tiedostomuodot on testattu
 This form will import iCalendar (.ics) events.: Tuo iCalendar (.ics) t‰ll‰ lomakkeella
@@ -564,10 +579,8 @@ The import file contained no data.: Tuontitiedostossa ei ollut tapahtumia
 #
 Layer: Taso
 Edit layer: Muokkaa tasoa
-Layers are currently: Tasot ovat
+Are you sure you want to delete this layer?: Haluatko poistaa t‰m‰n tason?
 Disable Layers: Poista tasot k‰ytˆst‰
-Click here: Napsauta t‰st‰
-to modify the layers settings for the: muokataksesi tason asetuksia tasolle
 Add layer: Lis‰tt‰v‰ taso
 
 ########################################
@@ -628,6 +641,7 @@ Deleted: Poistettu
 Rejected: Hyl‰tty
 Waiting for approval: Odottaa hyv‰ksymist‰
 Unknown: Ei tiedossa
+Click here: Napsauta t‰st‰
 to manage reports for the Public Access calendar: hallinnoidaksesi Julkisen kalenterin raportteja
 Add new report: Lis‰‰ uusi raportti
 Manage Reports: Hallinnoi raportteja
@@ -720,6 +734,7 @@ Email all participants: L‰het‰ s‰hkˆpostia kaikille osallistujille
 Hide activity log: Piilota aktiviteettiloki
 Show activity log: N‰yt‰ aktiviteettiloki
 Export this entry to: L‰het‰ t‰m‰ tapahtuma
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php

@@ -6,15 +6,15 @@
 # Last updated: 12-08-2006
 #
 # $Id$
-# Translation last updated on 07-28-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -28,6 +28,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: __yyyy__ Ç¯ __mm__ ·î __dd__ Æü
 __month__ __dd__: __month__ __dd__ Æü
@@ -270,6 +274,7 @@ nonuser-enabled-help: Í­¸ú¤Ë¤·¤¿¾ì¹ç¡¢´ÉÍý¼Ô¤¬Èó¥æ¡¼¥¶¡¼¤ò¥«¥ì¥ó¥À¡¼¤ËÄÉ²Ã¤¹¤ë¥ª
 Nonuser enabled: Èó¥æ¡¼¥¶¡¼¤òÍ­¸ú¤Ë¤¹¤ë
 nonuser-list-help: »²²Ã¼Ô°ìÍ÷Ãæ¤ÎÈó¥æ¡¼¥¶¡¼¤ò¥«¥ì¥ó¥À¡¼¤ËÉ½¼¨¤¹¤ë¤Ù¤­¾ì½ê¤Ç¤¹¡£
 Nonuser list: Èó¥æ¡¼¥¶¡¼°ìÍ÷
+Upcoming Events: ¶á¡¹¤Î¥¤¥Ù¥ó¥È
 Enabled: »ÈÍÑ²ÄÇ½
 Allow user override: ¥æ¡¼¥¶¡¼¤Î¾å½ñ¤­¤Îµö²Ä
 Display category icons: ¥«¥Æ¥´¥ê¡¼¥¢¥¤¥³¥ó¤ÎÉ½¼¨
@@ -335,12 +340,14 @@ Events updated on my calendar: ¼«Ê¬¤Î¥«¥ì¥ó¥À¡¼¤Î¥¤¥Ù¥ó¥È¤Î¹¹¿·
 email-event-deleted: ¥«¥ì¥ó¥À¡¼¤Î¥¤¥Ù¥ó¥È¤¬ºï½ü¤µ¤ì¤¿¾ì¹ç¡¢ÅÅ»Ò¥á¡¼¥ëÄÌÃÎ¤òÁ÷¤ë¤«¤É¤¦¤«»ØÄê¤·¤Þ¤¹¡£
 Events removed from my calendar: ¼«Ê¬¤Î¥«¥ì¥ó¥À¡¼¤«¤é¥¤¥Ù¥ó¥È¤Îºï½ü
 Event rejected by participant: »²²Ã¼Ô¤Î¥¤¥Ù¥ó¥ÈµñÈÝ
+Event that I create: ¼«Ê¬¤ÎºîÀ®¤¹¤ë¥¤¥Ù¥ó¥È
 Color options: ¿§¥ª¥×¥·¥ç¥ó
 Allow user to customize colors: ¥æ¡¼¥¶¡¼¤Î¿§ÀßÄê¤òµö²Ä¤¹¤ë
 gradient-colors: Í­¸ú¤Ë¤·¤¿¾ì¹ç¡¢¥°¥é¥Ç¡¼¥·¥ç¥ó¿§¤ò»ÈÍÑ¤·¤Þ¤¹¡£¤³¤ì¤ÏÈó¾ï¤ËÆ°ºî¤Ë±Æ¶Á¤òÍ¿¤¨¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£
 Enable gradient images for background colors: ÇØ·Ê¿§¤Ë¥°¥é¥Ç¡¼¥·¥ç¥ó²èÁü¤òÍ­¸ú¤Ë¤¹¤ë
 Not available: ÍøÍÑ²ÄÇ½¤Ç¤Ï¤¢¤ê¤Þ¤»¤ó
 Background Image options: ÇØ·Ê²èÁü¤Î¥ª¥×¥·¥ç¥ó
+bgimage-help: ÇØ·Ê²èÁü¤ËÉ¬Í×¤Ê URL ¤Ç¤¹¡£ÁêÂÐ URL ¤«¤â¤·¤ì¤Þ¤»¤ó¡£
 Background Image: ÇØ·Ê²èÁü
 bgrepeat-help: ÇØ·Ê²èÁü¤Î·«¤êÊÖ¤·¤Î¿¶¤ëÉñ¤¤¤ÎÀ©¸æ¤Ç¤¹¡£
 Background Repeat: ÇØ·Ê¤ò·«¤êÊÖ¤¹
@@ -360,6 +367,7 @@ Reports: ¥ì¥Ý¡¼¥È
 Delete Events: ¥¤¥Ù¥ó¥È¤Îºï½ü
 Activity Log: ³èÆ°¥í¥°
 System Log: ¥·¥¹¥Æ¥à¥í¥°
+Security Audit: ¥»¥­¥å¥ê¥Æ¥£¤Î¸¡ºº
 Public Preferences: ¸ø³«ÀßÄê
 Unapproved Public Events: Ì¤¾µÇ§¤Î¸ø³«¥¤¥Ù¥ó¥È
 Administrative Tools: ´ÉÍý¥Ä¡¼¥ë
@@ -419,8 +427,7 @@ gif 3kb max: gif ºÇÂç 3 ¥­¥í¥Ð¥¤¥È
 Search for existing icons: ´ûÂ¸¤Î¥¢¥¤¥³¥ó¤Î¸¡º÷
 Add: ÄÉ²Ã
 Delete: ºï½ü
-entry: ¥¨¥ó¥È¥ê¡¼
-Are you sure you want to delete this XXX?: ËÜÅö¤Ë¤³¤ÎXXX¤òºï½ü¤·¤Þ¤¹¤«?
+Are you sure you want to delete this entry?: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤òºï½ü¤·¤Æ¤âÎÉ¤¤¤Ç¤¹¤«?
 Make New Category: ¿·µ¬¥«¥Æ¥´¥ê¡¼¤ÎÄÉ²Ã
 
 ########################################
@@ -481,7 +488,6 @@ days: Æü
 hours: »þ´Ö
 minutes: Ê¬
 You are not authorized to edit this task.: ¤³¤Î¥¿¥¹¥¯¤òÊÔ½¸¤¹¤ë¤³¤È¤òµö²Ä¤µ¤ì¤Æ¤¤¤Þ¤»¤ó
-task: ¥¿¥¹¥¯
 Time entered here is based on your Timezone.: ¤³¤³¤ÇÆþÎÏ¤µ¤ì¤¿»þ´Ö¤Ï¡¢¤¢¤Ê¤¿¤Î¥¿¥¤¥à¥¾¡¼¥ó¤Ë´ð¤Å¤­¤Þ¤¹¡£
 Edit Entry: ¥¨¥ó¥È¥ê¡¼¤ÎÊÔ½¸
 Add Entry: ¥¨¥ó¥È¥ê¡¼¤ÎÄÉ²Ã
@@ -509,6 +515,7 @@ All Percentages: ¤¹¤Ù¤Æ¤Î³ä¹ç
 location-help: ¥¤¥Ù¥ó¥È¤Î¾ì½ê
 Location: ¾ì½ê
 url-help: ¥¤¥Ù¥ó¥È¤Î URL
+URL: =
 date-help: ¥¤¥Ù¥ó¥È¤ÎÆüÉÕ¤ò»ØÄê¤·¤Þ¤¹¡£
 Start Date: ³«»ÏÆü
 Untimed event: Èó»þ¸Â¥¤¥Ù¥ó¥È
@@ -523,6 +530,7 @@ Due Date: Í½ÄêÆü
 Due Time: Í½Äê»þ´Ö
 Resources: ¥ê¥½¡¼¥¹
 participants-help: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤Î»²²Ã¼Ô°ìÍ÷¤Ç¤¹¡£
+Selected: ÁªÂòºÑ
 Availability: Å¬ÍÑÈÏ°Ï
 External Participants: ³°Éô»²²Ã¼Ô
 repeat-type-help: ¥¤¥Ù¥ó¥È¤ò¤É¤ì°Ì·«¤êÊÖ¤¹¤«ÁªÂò¤·¤Þ¤¹¡£<i>·î´© (ÆüÉÕ¤Ë¤è¤ë)</i> ¥¤¥Ù¥ó¥È¤¬¤½¤Î·î¤ÎºÇ½é¤Î·îÍËÆü¡¢¤½¤Î·î¤Î 3 ÈÖÌÜ¤ÎÌÚÍË¤Ê¤É¤Ë·«¤êÊÖ¤¹¤³¤È¤òµö²Ä¤·¤Þ¤¹¡£ <i>·î´© (´üÆü¤Ë¤è¤ë)</i> ¥¤¥Ù¥ó¥È¤¬¤½¤Î·î¤ÎÆ±¤¸Æü¤Ë·«¤êÊÖ¤¹¤³¤È¤òµö²Ä¤·¤Þ¤¹¡£
@@ -669,7 +677,7 @@ Template variables: ÃÍ¥Æ¥ó¥×¥ì¡¼¥È
 Page template: ¥Ú¡¼¥¸¥Æ¥ó¥×¥ì¡¼¥È
 Day template: Æü¥Æ¥ó¥×¥ì¡¼¥È
 Event template: ¥¤¥Ù¥ó¥È¥Æ¥ó¥×¥ì¡¼¥È
-report: ¥ì¥Ý¡¼¥È
+Are you sure you want to delete this report?: ¤³¤Î¥ì¥Ý¡¼¥È¤òËÜÅö¤Ëºï½ü¤·¤Þ¤¹¤«?
 
 ########################################
 # Page: edit_report_handler.php
@@ -692,6 +700,7 @@ E-mail address: ¥á¡¼¥ë¥¢¥É¥ì¥¹
 Password: ¥Ñ¥¹¥ï¡¼¥É
 again: ºÆÅÙ
 Disabled for demo: ¥Ç¥â¤Ç¤Ï»ÈÍÑ¤Ç¤­¤Þ¤»¤ó
+Are you sure you want to delete this user?: ¤³¤Î¥æ¡¼¥¶¡¼¤òËÜÅö¤Ëºï½ü¤·¤Þ¤¹¤«?
 Change Password: ¥Ñ¥¹¥ï¡¼¥ÉÊÑ¹¹
 New Password: ¿·¤·¤¤¥Ñ¥¹¥ï¡¼¥É
 Set Password: ¥Ñ¥¹¥ï¡¼¥É¤ÎÀßÄê
@@ -724,7 +733,7 @@ export format not defined or incorrect.: ¥¨¥¯¥¹¥Ý¡¼¥È·Á¼°¤¬Ì¤ÄêµÁ¤«Àµ¤·¤¯¤¢¤ê¤Þ¤
 ########################################
 # Page: freebusy.php
 #
-No user specified.: ¥æ¡¼¥¶¡¼¤¬»ØÄê¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡£
+No user specified.: ¥æ¡¼¥¶¡¼¤¬»ØÄê¤µ¤ì¤Æ¤¤¤Þ¤»¤ó¡
 
 ########################################
 # Page: groups.php
@@ -783,6 +792,7 @@ Palm Desktop: Palm ¥Ç¥¹¥¯¥È¥Ã¥×
 The following entries will not be imported: ¼¡¤Î¥¨¥ó¥È¥ê¡¼¤Ï¥¤¥ó¥Ý¡¼¥È¤µ¤ì¤Ê¤«¤Ã¤¿¤Ç¤·¤ç¤¦
 Entries older than the current date: ¥¨¥ó¥È¥ê¡¼¤Ï¸½ºß¤Î´üÆü¤è¤ê¸Å¤¤¤Ç¤¹
 Therefore, updates should be made in the Palm Desktop.: ¤·¤¿¤¬¤Ã¤Æ¡¢Palm ¥Ç¥¹¥¯¥È¥Ã¥×¤Ç¹¹¿·¤µ¤ì¤ë¤Ù¤­¤Ç¤¹¡£
+vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: ¤³¤Î¥Õ¥©¡¼¥à¤Ï vCalendar (.vcs) 1.0 ¥¤¥Ù¥ó¥È¤È¤·¤Æ¥¤¥ó¥Ý¡¼¥È¤¹¤ë¤Ç¤·¤ç¤¦
 The following formats have been tested: ¼¡¤Î·Á¼°¤¬¥Æ¥¹¥È¤µ¤ì¤Þ¤·¤¿¡£
 This form will import iCalendar (.ics) events.: ¤³¤Î¥Õ¥©¡¼¥à¤Ï iCalendar (.ics) ¥¤¥Ù¥ó¥È¤ò¥¤¥ó¥Ý¡¼¥È¤¹¤ë¤Ç¤·¤ç¤¦
@@ -858,12 +868,9 @@ The import file contained no data.: ¥¤¥ó¥Ý¡¼¥È¥Õ¥¡¥¤¥ë¤ÎÃæ¿È¤¬¤¢¤ê¤Þ¤»¤ó¡£
 #
 Layer: ¥ì¥¤¥ä¡¼
 Edit layer: ¥ì¥¤¥ä¡¼¤ÎÊÔ½¸
+Are you sure you want to delete this layer?: ¤³¤Î¥ì¥¤¥ä¡¼¤òºï½ü¤·¤Æ¤âÎÉ¤¤¤Ç¤¹¤«?
 Enable layers: ¥ì¥¤¥ä¡¼¤ÎÍ­¸ú²½
-Layers are currently: ¸½ºß¤Î¥ì¥¤¥ä¡¼
 Disable Layers: ¥ì¥¤¥ä¡¼¤ò»ÈÍÑÉÔ²Ä¤Ë¤¹¤ë
-Click here: [ ¤³¤³¤ò¥¯¥ê¥Ã¥¯ ]
-to modify the layers settings for the: ¤Ç±¦¤Î¥ì¥¤¥ä¡¼ÀßÄê¤òÊÑ¹¹¤¹¤ë:
-calendar: ¥«¥ì¥ó¥À¡¼
 Add layer: ¥ì¥¤¥ä¡¼¤ÎÄÉ²Ã
 
 ########################################
@@ -882,6 +889,7 @@ Reject: µñÈÝ
 Uncheck All: ¤¹¤Ù¤Æ¥Á¥§¥Ã¥¯¤ò¤Ï¤º¤¹
 View this entry: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤ò¸«¤ë
 No unapproved entries for: ¼¡¤Î¥æ¡¼¥¶¡¼¤ÎÌ¤¾µÇ§¥¤¥Ù¥ó¥È:
+No unapproved entries for XXX.: XXX ¤ÎÌ¤¾µÇ§¥¨¥ó¥È¥ê¡¼¤Ï¤¢¤ê¤Þ¤»¤ó¡£
 Unapproved Entries: Ì¤¾µÇ§¥¤¥Ù¥ó¥È
 Not authorized: Ç§¾Ú¤·¤Æ¤¤¤Þ¤»¤ó
 Approve this entry?: ¥¨¥ó¥È¥ê¡¼¤ò¾µÇ§¤·¤Þ¤¹¤«?
@@ -898,6 +906,7 @@ Login: ¥í¥°¥¤¥ó
 Access public calendar: ¸ø³«¥«¥ì¥ó¥À¡¼¥¢¥¯¥»¥¹
 public: ¸ø³«
 Access XXX calendar: XXX ¥«¥ì¥ó¥À¡¼¤Ë¥¢¥¯¥»¥¹¤¹¤ë
+calendar: ¥«¥ì¥ó¥À¡¼
 cookies-note: <b>Ãí°Õ:</b> ¤³¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Ï¥¯¥Ã¥­¡¼¤¬Í­¸ú¤Ç¤Ê¤±¤ì¤ÐÀµ¾ï¤ËÆ°ºî¤·¤Þ¤»¤ó¡£
 
 ########################################
@@ -942,11 +951,6 @@ Display if created by Assistant: ¤â¤·¥¢¥·¥¹¥¿¥ó¥È¤ÎºîÀ®¤âÉ½¼¨
 entries: ¥¨¥ó¥È¥ê¡¼
 
 ########################################
-# Page: publish.php
-#
-No user specified.: ¥æ¡¼¥¶¡¼¤¬»ØÄê¤µ¤ì¤Æ¤¤¤Þ¤»¤ó
-
-########################################
 # Page: purge.php
 #
 Purging events for: ±¦¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò¾Ãµî¤·¤Æ¤¤¤Þ¤¹
@@ -956,7 +960,6 @@ Check box to delete ALL events for a user: 1 ¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò<b>¤¹¤Ù¤Æ</b>ºï
 Delete all events before: ¼¡¤ÎÆüÉÕ°ÊÁ°¤Î¥¤¥Ù¥ó¥È¤ò¤¹¤Ù¤Æºï½ü¤¹¤ë
 Preview delete: ºï½ü¤ò¥×¥ì¥Ó¥å¡¼¤¹¤ë
 Are you sure you want to delete events for: ±¦¥æ¡¼¥¶¡¼¤Î¥¤¥Ù¥ó¥È¤ò¤¹¤Ù¤Æºï½ü¤·¤ÆÎÉ¤¤¤Ç¤¹¤«?¡§
-Records deleted from: ¥ì¥³¡¼¥É¤òºï½ü¤·¤Þ¤·¤¿ ÂÐ¾Ý:
 
 ########################################
 # Page: register.php
@@ -1001,6 +1004,7 @@ Deleted: ºï½üºÑ
 Rejected: µñÈÝºÑ
 Waiting for approval: ¾µÇ§ÂÔ¤Á
 Unknown: Ì¤ÃÎ
+Click here: [ ¤³¤³¤ò¥¯¥ê¥Ã¥¯ ]
 to manage reports for the Public Access calendar: ¤¹¤ë¤È¸ø³«¥¢¥¯¥»¥¹¥«¥ì¥ó¥À¡¼ÍÑ¥ì¥Ý¡¼¥È¤ò´ÉÍý¤·¤Þ¤¹
 Click here to manage reports for the Public Access calendar.: ¸ø³«¥¢¥¯¥»¥¹¤Î¥«¥ì¥ó¥À¡¼¤Î¥ì¥Ý¡¼¥È¤ò´ÉÍý¤¹¤ë¤Ë¤Ï¤³¤³¤ò¥¯¥ê¥Ã¥¯¤·¤Þ¤¹¡£
 Add new report: ¿·µ¬¥ì¥Ý¡¼¥È¤ÎÄÉ²Ã
@@ -1013,7 +1017,9 @@ Advanced Search: ¹âÅÙ¤Ê¸¡º÷
 Search: ¸¡º÷
 Keywords: ¥­¡¼¥ï¡¼¥É
 Filter by Date: ÆüÉÕ¤Ç¥Õ¥£¥ë¥¿¡¼
+All Dates: ¤¹¤Ù¤Æ¤ÎÆü
 Past: ²áµî
+Upcoming: ¶á¡¹
 Range: ÈÏ°Ï
 
 ########################################
@@ -1024,6 +1030,7 @@ Search Results: ¸¡º÷·ë²Ì
 match found: ¸Ä¤Î³ºÅö¹àÌÜ¤¬¸«¤Ä¤«¤ê¤Þ¤·¤¿¡£
 matches found: ¸Ä¤Î³ºÅö¹àÌÜ¤¬¸«¤Ä¤«¤ê¤Þ¤·¤¿¡£
 No matches found: ³ºÅö¹àÌÜ¤¬¸«¤Ä¤«¤ê¤Þ¤»¤ó¤Ç¤·¤¿¡£
+New Search: ¿·µ¬¸¡º÷
 
 ########################################
 # Page: security_audit.php
@@ -1035,12 +1042,14 @@ Default admin user password: É¸½à¤Î´ÉÍý¼Ô¥æ¡¼¥¶¡¼¤Î¥Ñ¥¹¥ï¡¼¥É
 The following item should not be writable: ¼¡¤Î¹àÌÜ¤Ï½ñ¤­¹þ¤ß¤Ç¤­¤Ê¤¯¤¹¤ë¤Ù¤­¤Ç¤¹
 File permissions: ¥Õ¥¡¥¤¥ë¤Î¸¢¸Â
 Because you have email disabled, you should remove this file.: ÅÅ»Ò¥á¡¼¥ë¤òÌµ¸ú¤Ë¤·¤Æ¤¤¤ë¤¿¤á¡¢¤³¤Î¥Õ¥¡¥¤¥ë¤òºï½ü¤¹¤ë¤Ù¤­¤Ç¤¹¡£
+File exists: ¥Õ¥¡¥¤¥ë¤ÎÂ¸ºß
 File location: ¥Õ¥¡¥¤¥ë¤Î¾ì½ê
 Database cache directory location: ¥Ç¡¼¥¿¥Ù¡¼¥¹¤Î¥­¥ã¥Ã¥·¥å¥Ç¥£¥ì¥¯¥È¥ê¡¼¤Î¾ì½ê
 The recommended setting for magic quotes is Off.: magic quotes ¤Î¿ä¾©ÀßÄê¤Ï¡ÖOff¡×¤Ç¤¹¡£
 PHP setting: PHP ¤ÎÀßÄê
 The recommended setting for register_globals is Off.: register_globals ¤Î¿ä¾©ÀßÄê¤Ï¡ÖOff¡×¤Ç¤¹¡£
 The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: ¥ê¥â¡¼¥È¥«¥ì¥ó¥À¡¼¤òÍ­¸ú¤Ë¤·¤Ê¤¤¤È¤­¤Ï¡¢allow_url_fopen ¤Î¿ä¾©ÀßÄê¤Ï¡ÖOff¡×¤Ç¤¹¡£
+The recommended setting for allow_url_include is Off.: allow_url_include ¤ÎÀßÄê¤Ï¡ÖOff¡×¤ò¿ä¾©¤·¤Þ¤¹¡£
 
 ########################################
 # Page: select_user.php
@@ -1050,6 +1059,7 @@ View Another Users Calendar: Â¾¤Î¥æ¡¼¥¶¡¼¤Î¥«¥ì¥ó¥À¡¼¤ò¸«¤ë
 ########################################
 # Page: set_entry_cat.php
 #
+Invalid entry id.: Ìµ¸ú¤Ê¥¤¥Ù¥ó¥È ID ¤Ç¤¹¡£
 You have not added any categories.: ¤¤¤¯¤Ä¤«¤Î¥«¥Æ¥´¥ê¡¼¤òÄÉ²Ã¤·¤Æ¤¤¤Þ¤»¤ó
 Set Category: ¥«¥Æ¥´¥ê¡¼ÀßÄê
 Global Categories cannot be changed.: ¥°¥í¡¼¥Ð¥ë¥«¥Æ¥´¥ê¡¼¤ÏÊÑ¹¹¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿
@@ -1128,7 +1138,6 @@ Edit repeating entry for all dates: ·«ÊÖ¤·¥¨¥ó¥È¥ê¡¼¤ò¤¹¤Ù¤ÆÊÔ½¸¤¹¤ë
 Delete repeating event for all dates: ·«ÊÖ¤·¥¨¥ó¥È¥ê¡¼¤ò¤¹¤Ù¤Æºï½ü¤¹¤ë
 Edit entry for this date: ¥¨¥ó¥È¥ê¡¼¤òº£²óÊ¬¤À¤±ÊÔ½¸¤¹¤ë
 Delete entry only for this date: ¥¨¥ó¥È¥ê¡¼¤òº£²óÊ¬¤À¤±ºï½ü¤¹¤ë
-from calendar of: ¼¡¤Î¥«¥ì¥ó¥À¡¼¤«¤é:
 boss: ¥Ü¥¹
 This will delete the entry from your calendar.: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤ò¤¢¤Ê¤¿¤Î¥«¥ì¥ó¥À¡¼¤«¤éºï½ü¤·¤Þ¤¹¡£
 Do you want to add this entry to your calendar?: ¤³¤Î¥¨¥ó¥È¥ê¡¼¤ò¤¢¤Ê¤¿¤Î¥«¥ì¥ó¥À¡¼¤ËÄÉ²Ã¤·¤Þ¤¹¤«?
@@ -1367,11 +1376,18 @@ Mb: ¥á¥¬¥Ð¥¤¥È
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: ¤ªÃÎ¤é¤»
+authenticate: SMTP¥¨¥é¡¼: Ç§¾Ú¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£
+connect_host: SMTP¥¨¥é¡¼: SMTP¥Û¥¹¥È¤ËÀÜÂ³¤Ç¤­¤Þ¤»¤ó¤Ç¤·¤¿¡£
+data_not_accepted: SMTP¥¨¥é¡¼: ¥Ç¡¼¥¿¤¬¼õ¤±ÉÕ¤±¤é¤ì¤Þ¤»¤ó¤Ç¤·¤¿¡£
 encoding: ¥¨¥ó¥³¡¼¥Ç¥£¥ó¥°
 execute: ¼Â¹Ô¤Ç¤­¤Þ¤»¤ó¡£
+file_access: ¥Õ¥¡¥¤¥ë¤Ë¥¢¥¯¥»¥¹¤Ç¤­¤Þ¤»¤ó:
+file_open: ¥Õ¥¡¥¤¥ë¥¨¥é¡¼: ¥Õ¥¡¥¤¥ë¤ò³«¤±¤Þ¤»¤ó:
+from_failed: ¼¡¤ÎFrom¥¢¥É¥ì¥¹¤Ë´Ö°ã¤¤¤¬¤¢¤ê¤Þ¤¹:
 instantiate: Could not instantiate mail function mail ´Ø¿ô¤ò¥¤¥ó¥¹¥¿¥ó¥¹¤Ç¤­¤Þ¤»¤ó¡£
 mailer_not_supported: ¥á¡¼¥é¡¼¤ò¥µ¥Ý¡¼¥È¤·¤Æ¤¤¤Þ¤»¤ó¡£
 provide_address: ¾¯¤Ê¤¯¤È¤â 1 ¤Ä¤Î¼õ¼è¿Í¤ÎÅÅ»Ò¥á¡¼¥ë¥¢¥É¥ì¥¹¤òÄó¶¡¤·¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó¡£
+recipients_failed: SMTP¥¨¥é¡¼: ¼¡¤Î¼õ¿®¼Ô¥¢¥É¥ì¥¹¤Ë Ö°ã¤¤¤¬¤¢¤ê¤Þ¤¹:
 
 ########################################
 # Page: includes/js/admin.php
@@ -1409,7 +1425,6 @@ You have not entered a valid time of day: Í­¸ú¤Ê»þ´Ö¤òÆþÎÏ¤·¤Æ¤¤¤Þ¤»¤ó¡£
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Ìµ¸ú¤Ê¿§
-layer: ¥ì¥¤¥ä¡¼
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1541,6 +1556,7 @@ Display Required SQL: Í×µá¤µ¤ì¤¿ SQL ¤ÎÉ½¼¨
 This is the final step in setting up your WebCalendar Installation.: ¤³¤ì¤Ï¡¢WebCalendar ¤Î¥¤¥ó¥¹¥È¡¼¥ëÀßÄê¤Ë¤ª¤±¤ëºÇ½ª¥¹¥Æ¥Ã¥×¤Ç¤¹¡£
 Timezone Conversion: ¥¿¥¤¥à¥¾¡¼¥óÊÑ´¹
 It appears that you have: ¤ª¤½¤é¤¯
+NOT: =
 converted your existing WebCalendar event data to GMT.: ´ûÂ¸¤ÎWebCalendar¥¤¥Ù¥ó¥È¥Ç¡¼¥¿¤ò GMT ¤ËÊÑ´¹¤·¤Þ¤·¤¿¡£
 If this is a new installation, you may also ignore this notice.: ¤³¤ì¤¬¿·µ¬¥¤¥ó¥¹¥È¡¼¥ë¤Î¾ì¹ç¡¢¤³¤ÎÄÌÃÎ¤ÏÌµ»ë¤¹¤ë¤Ç¤·¤ç¤¦¡£
 Convert Data to GMT: GMT ¤Ë¥Ç¡¼¥¿¤òÊÑ´¹¤¹¤ë
@@ -1548,6 +1564,7 @@ Application Settings: ¥¢¥×¥ê¥±¡¼¥·¥ç¥óÀßÄê
 HTTP-based authentication was not detected: HTTP¤Ë´ð¤Å¤¤¤¿Ç§¾Ú¤Ï¸¡ÃÎ¤µ¤ì¤Þ¤»¤ó¤Ç¤·¤¿¡£
 You will need to reconfigure your web server if you wish to: ¤â¤·¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¤òºÆÀßÄê¤¹¤ëÉ¬Í×¤¬¤¢¤ë¤Ê¤é¡¢
 select Web Server from the User Authentication choices below.: ¡Ö¥æ¡¼¥¶¡¼Ç§¾Ú¡×¤è¤ê¡Ö¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¡×¤òÁªÂò¤·¤Æ¤¯¤À¤µ¤¤¡£
+HTTP-based authentication was not detected...: HTTP ¤Ç¤ÎÇ§¾Ú¤Ï¸¡½Ð¤µ¤ì¤Þ¤»¤ó¤Ç¤·¤¿
 HTTP-based authentication was detected.: HTTP ¥Ù¡¼¥¹¤ÎÇ§¾Ú¤ò¸¡ÃÎ¤·¤Þ¤·¤¿
 User authentication is being handled by your web server.: ¥æ¡¼¥¶¡¼Ç§¾Ú¤Ï¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¤Ç°·¤¤¤Þ¤¹¡£
 You should select Web Server from the list of User Authentication choices below.: ¡Ö¥æ¡¼¥¶¡¼Ç§¾Ú¡×ÁªÂò¤Î°ìÍ÷¤«¤é¤«¤é¡Ö¥¦¥§¥Ö¥µ¡¼¥Ð¡¼¡×¤òÁª¤Ð¤Ê¤±¤ì¤Ð¤Ê¤ê¤Þ¤»¤ó
@@ -1556,9 +1573,8 @@ Admin Account Not Found: ´ÉÍý¼Ô¥¢¥«¥¦¥ó¥È¤¬¸«¤Ä¤«¤ê¤Þ¤»¤ó
 (Admin Account Not Found): (´ÉÍý¼Ô¥¢¥«¥¦¥ó¥È¤¬¸«¤Ä¤«¤ê¤Þ¤»¤ó)
 User Authentication: ¥æ¡¼¥¶¡¼Ç§¾Ú
 Web-based via WebCalendar (default): WebCalendar ¤Ç¥¦¥§¥Ö¥Ù¡¼¥¹(É¸½à)
-Web Server: ¥¦¥§¥Ö¥µ¡¼¥Ð¡¼
-Web Server (detected): ¥¦¥§¥Ö¥µ¡¼¥Ð¡¼ (¼«Æ°¸¡½Ð)
 Web Server (not detected): ¥¦¥§¥Ö¥µ¡¼¥Ð¡¼ (¼«Æ°¸¡½Ð¤Ê¤·)
+Web Server (detected): ¥¦¥§¥Ö¥µ¡¼¥Ð¡¼ (¼«Æ°¸¡½Ð)
 None (Single-User): ¤Ê¤· (¥·¥ó¥°¥ë¥æ¡¼¥¶¡¼)
 Read-Only: ÆÉ¤ß¹þ¤ß¤Î¤ß
 Environment: ´Ä¶­
@@ -1587,6 +1603,7 @@ Remote Calendars not enabled: ¥ê¥â¡¼¥È¥«¥ì¥ó¥À¡¼¤ÏÍ­¸ú¤Ç¤Ï¤¢¤ê¤Þ¤»¤ó
 ########################################
 # Page: tools/send_reminders.php
 #
+task: ¥¿¥¹¥¯
 Pecentage Complete: ¥Ñ¡¼¥»¥ó¥È´°Î»
 Reminder: ¥ê¥Þ¥¤¥ó¥À¡¼
 

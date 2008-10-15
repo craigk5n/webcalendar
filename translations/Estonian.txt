@@ -4,15 +4,15 @@
 # Last update: 14.03.2003
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -27,6 +27,10 @@ direction: =
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
 __month__ __dd__, __yyyy__: =
@@ -37,12 +41,18 @@ __month__ __yyyy__: =
 
 
 ########################################
+# Page: about.php
+#
+Title: =
+
+########################################
 # Page: access.php
 #
 Database error: Andmebaasi viga
 Go: Mine
 Save: Salvestame
 Public Access: Avalik ligipääs
+Admin: =
 Calendar: Kalender
 Public: Avalik
 Confidential: Isiklik
@@ -71,6 +81,7 @@ Month: kuu
 Year: aasta
 Settings: Seaded
 Groups: Grupid
+Email: =
 Colors: Värvid
 Document background: Dokumendi taust
 Document title: Dokumendi pealkiri
@@ -190,6 +201,7 @@ Preferences: Eelistused
 Users: Kasutajaid
 Account: Konto
 Categories: Kategooriad
+Views: =
 Layers: Kihid
 Activity Log: Kasutamise ajalugu
 
@@ -215,6 +227,7 @@ Category Name: Kategooria nimi
 Color: Värv
 Add: Lisa
 Delete: Kustuta
+Are you sure you want to delete this entry?: Kas oled kindel et tahad kustutada seda kannet?
 Make New Category: Lisa uus kategooria
 
 ########################################
@@ -236,6 +249,8 @@ Description: Kirjeldus
 ########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 days: päevi
 hours: tunnid
 minutes: minutid
@@ -441,10 +456,8 @@ Disabled: Keelatud
 #
 Layer: Kiht
 Edit layer: Muuda kihti
-Layers are currently: Kihid on praegu
+Are you sure you want to delete this layer?: Kas oled kindel et kustutad selle kihi?
 Disable Layers: Keela kihid
-Click here: Klõpsi siia
-to modify the layers settings for the: et muuta kihtide seadeid
 Add layer: Lisa kiht
 
 ########################################
@@ -489,6 +502,7 @@ cont.: jätkub.
 Deleted: Kustutatud
 Rejected: Tagasi lükatud
 Waiting for approval: Ootab heakskiitu
+Click here: Klõpsi siia
 
 ########################################
 # Page: search.php
@@ -572,6 +586,7 @@ This will add the entry to your calendar.: See lisab kande sinu kalendrisse.
 Email all participants: Saada email kõigile osalejaile
 Hide activity log: Peida kasutamise ajalugu
 Show activity log: Näita kasutamise ajalugu
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php

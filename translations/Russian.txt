@@ -6,15 +6,15 @@
 # Last update: Wed Oct 25 14:34:05 IST 2000
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -28,6 +28,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -414,6 +418,7 @@ gif 3kb max: файлы gif до 3kb
 Search for existing icons: Поиск существующих картинок
 Add: Добавить
 Delete: Удалить
+Are you sure you want to delete this entry?: Вы уверены, что вы хотите удалить эту запись?
 Make New Category: Добавить новую категорию
 
 ########################################
@@ -459,11 +464,12 @@ Removed: Удалено
 ########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 days: дней
 hours: часов
 minutes: минуты
 You are not authorized to edit this task.: Вы неавторизованы для редактирования этой задачи
-task: задача
 is in a different timezone than you are. Currently: в другой временной зоне чем вы. В данный момент
 hour ahead of you: час впереди вас
 hour behind you: час после вас
@@ -722,6 +728,11 @@ Modified since: Изменено
 export format not defined or incorrect.: Формат экспорта неопределен или неправилен
 
 ########################################
+# Page: freebusy.php
+#
+No user specified.: Не указан пользователь
+
+########################################
 # Page: groups.php
 #
 Add New Group: Добавить Новую Группу
@@ -870,11 +881,7 @@ The import file contained no data.: Загружаемый файл не содержит данных
 #
 Layer: Слой
 Edit layer: Редактировать слой
-Layers are currently: Слои в данный момент
 Disable Layers: Отключить слои
-Click here: Нажмите здесь
-to modify the layers settings for the: изменить настройки слоев для
-calendar: календарь
 Add layer: Добавить слой
 
 ########################################
@@ -903,6 +910,7 @@ You must enter a login and password.: Необходимо ввести имя и пароль
 Save login via cookies so I dont have to login next time.: Сохранить имя в браузере, чтобы не нужно было совершать загрузку в следующий раз
 Login: Вход
 Access public calendar: Вход в общий календарь
+calendar: календарь
 cookies-note: <b>Внимание:</b> Этому приложению требуются включенные cookies.
 
 ########################################
@@ -910,6 +918,7 @@ cookies-note: <b>Внимание:</b> Этому приложению требуются включенные cookies.
 #
 Illegal characters in login: Недопустимые символы в имени пользователя
 Invalid login: Недопустимый пользователь
+You have been logged out.: Вы вышли из системы
 Not yet registered? Register here!: Еще не зарегистрированы? Вам сюда!
 
 ########################################
@@ -945,11 +954,6 @@ Allow remote viewing of: Разрешить удаленный просмотр
 entries: записи
 
 ########################################
-# Page: publish.php
-#
-No user specified.: Не указан пользователь
-
-########################################
 # Page: purge.php
 #
 Purging events for: Удалить события для
@@ -959,7 +963,6 @@ Check box to delete ALL events for a user: Отметить для удаления <b>ВСЕХ</b> соб
 Delete all events before: Удалить все события до
 Preview delete: Предпросмотр удаления
 Are you sure you want to delete events for: Вы уверены, что хотите удалить события для
-Records deleted from: Записи удалены из
 
 ########################################
 # Page: register.php
@@ -1004,6 +1007,7 @@ Deleted: Удалено
 Rejected: Отвергнуто
 Waiting for approval: В ожидании утверждения
 Unknown: Неизвестно
+Click here: Нажмите здесь
 to manage reports for the Public Access calendar: управлять отчетами для календаря Общего Доступа
 Add new report: Добавить новый отчет
 Manage Reports: Управлять Отчетами
@@ -1116,7 +1120,6 @@ Edit repeating entry for all dates: Редактировать повторяющееся событие для всех
 Delete repeating event for all dates: Удалить повторяющееся событие для всех дат
 Edit entry for this date: Редактидовать событие на эту дату
 Delete entry only for this date: Удалить событие только на эту дату
-from calendar of: из календаря
 This will delete the entry from your calendar.: Это удалит данную запись из вашего календаря.
 from your boss calendar: из календаря вашего начальника
 Do you want to add this entry to your calendar?: Вы хотите добавить эту запись в ваш календарь?
@@ -1125,6 +1128,7 @@ Email all participants: Отправить сообщение всем участникам
 Hide activity log: Спрятать монитор активности
 Show activity log: Показать монитор активности
 Export this entry to: Экспортировать данную запись в
+Palm Pilot: =
 
 ########################################
 # Page: view_m.php
@@ -1486,8 +1490,6 @@ Connection Successful: Соединение Успешно
 Please go to next page to continue installation: Пожалуйста пройдите на следующую страницу для продолжения установки
 Correct your entries or click the Create New...: Исправьте введенные значения или нажмите <b>Создать Новую</b> для продолжения
 Correct your entries and try again.: Исправьте введенные значения и попробуйте снова
-does not exist: не существует
-is not writable: не доступна запись
 Error Converting Timezone: Ошибка преобразования Временной Зоны
 Error Unable to write to file: Ошибка. Невозможно записать в файл
 Please change the file permissions of this file.: Пожалуйста измените права доступа к файлу
@@ -1560,7 +1562,6 @@ Create Default Admin Account: Создать учетную запись Администратора по умолчанию
 Admin Account Not Found: Учетная запись Администратора не обнаружена
 User Authentication: Авторизация Пользователей
 Web-based via WebCalendar (default): На странице WebCalendar (по умолчанию)
-Web Server: Веб Сервер
 None (Single-User): Нет (Однопользовательская)
 Read-Only: Только Чтение
 Environment: Окружение
@@ -1592,6 +1593,7 @@ Remote Calendars not enabled: Внешние Календари не включены
 #
 could not find event id: не могу найти id события
 could not find event id XXX in database.: не могу найти событие с id XXX в базе данных.
+task: задача
 This is a reminder for the XXX detailed below.: Это напоминание о XXX описанном ниже.
 Pecentage Complete: Процентов выполнено
 Reminder: Напоминание

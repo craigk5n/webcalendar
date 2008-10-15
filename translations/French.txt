@@ -17,15 +17,15 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -39,6 +39,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -475,8 +479,7 @@ gif 3kb max: (gif 3ko max)
 Search for existing icons: Rechercher des icônes existantes
 Add: Ajouter
 Delete: Supprimer
-entry: entrée
-Are you sure you want to delete this XXX?: Etes-vous sûr de vouloir supprimer cet(te) XXX ?
+Are you sure you want to delete this entry?: Etes-vous sur de vouloir supprimer cette saisie?
 Make New Category: Ajouter une nouvelle catégorie
 
 ########################################
@@ -538,8 +541,6 @@ days: jours
 hours: heures
 minutes: =
 You are not authorized to edit this task.: Vous n'êtes pas autorisé à modifier cette tâche.
-task: tâche
-You are not authorized to edit this XXX.: Vous n'êtes pas autorisé à modifier cet(te) XXX
 is in a different timezone than you are. Currently: est dans un fuseau horaire différent du votre. Actuellement
 hour ahead of you: heure devant vous
 hour behind you: heure derrière vous
@@ -763,7 +764,6 @@ Template variables: Variables disponibles
 Page template: Options de présentation
 Day template: Options de présentation pour une journée
 Event template: Options de présentation pour un événement
-report: Rapport
 
 ########################################
 # Page: edit_report_handler.php
@@ -982,11 +982,7 @@ The import file contained no data.: Le fichier à importer ne contient aucune don
 Layer: Calque
 Edit layer: Modifier un calque
 Enable layers: Activer les calques
-Layers are currently: Les calques sont actuellement
 Disable Layers: Désactiver les calques
-Click here: Cliquez ici
-to modify the layers settings for the: pour modifier les paramètres de calque de
-calendar: agenda
 Add layer: Ajouter un calque
 
 ########################################
@@ -1023,6 +1019,7 @@ Login: Connexion
 Access public calendar: Agenda à accès public
 public: =
 Access XXX calendar: Accéder à l'agenda de XXX
+calendar: agenda
 cookies-note: <b>Note:</b> Cette application nécessite l'activation des cookies
 
 ########################################
@@ -1031,6 +1028,7 @@ cookies-note: <b>Note:</b> Cette application nécessite l'activation des cookies
 Illegal characters in login: Caractères non autorisés dans le nom d'utilisateur
 Illegal characters in login XXX.: Carractères non autorisés dans le nom d'utilisateur "XXX".
 Invalid login: Identifiant utilisateur incorrect
+You have been logged out.: Vous avez été déconnecté(e)
 Not yet registered? Register here!: Pas encore enregistré(e) ? Enregistrez-vous ici !
 
 ########################################
@@ -1072,11 +1070,6 @@ Allow remote viewing of: Permet la visualiation distante de
 entries: entrées
 
 ########################################
-# Page: publish.php
-#
-No user specified.: aucun utilisateur spécifié
-
-########################################
 # Page: purge.php
 #
 Purging events for: Supprimer les événements de
@@ -1087,7 +1080,6 @@ Delete all events before: Supprimer les événements antérieurs au
 Purge deleted only: Nettoyer les éléments supprimés seulement
 Preview delete: Aperçu de la suppression
 Are you sure you want to delete events for: Etes-vous certain de vouloir supprimer les événements de
-Records deleted from: Enregistrements marqués supprimés de
 
 ########################################
 # Page: register.php
@@ -1139,6 +1131,7 @@ Deleted: Supprimé
 Rejected: Rejeté
 Waiting for approval: En attente de validation
 Unknown: Inconnu
+Click here: Cliquez ici
 to manage reports for the Public Access calendar: pour gérer les rapports relatifs à l'accès à l'agenda public
 Click here to manage reports for the Public Access calendar.: Cliquez ici pour gérer les rapports pour l'agenda public
 Add new report: Ajouter un nouveau rapport
@@ -1264,7 +1257,6 @@ Edit repeating entry for all dates: Modifier l'événement répétitif pour toutes l
 Delete repeating event for all dates: Supprimer l'événement répétitif pour toutes les dates
 Edit entry for this date: Modifier l'événement pour cette date
 Delete entry only for this date: Supprimer l'événement pour cette date
-from calendar of: de l'agenda de 
 This will delete the entry from your XXX calendar.: Ceci va supprimer l'entrée de votre agenda XXX.
 boss: patron
 This will delete the entry from your boss calendar.: Ceci va supprimer l'entrée de l'agenda de votre patron.
@@ -1634,7 +1626,6 @@ You have not entered a valid time of day: Vous n'avez pas saisi une heure approp
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Couleur incorrecte
-layer: calque
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1699,8 +1690,6 @@ Unable to write password to settings.php file: Incapable d'écrire le mot de pass
 Password has been set: Le mot de passe a bien été déterminé
 Connection Successful: Succès de connexion
 Please go to next page to continue installation: S.V.P. aller vers la prochaine page pour continuer l'installation
-does not exist: n'exist pas
-is not writable: n'est pas écrivable
 Error Converting Timezone: Erreur conversion zone de temps
 Error Unable to write to file: Erreur incapable d'écrire vers le fichier
 Error Unable to write to file XXX.: Erreur incapable d'écrire vers le fichier XXX.
@@ -1770,9 +1759,8 @@ Create Default Admin Account: =
 Admin Account Not Found: =
 User Authentication: =
 Web-based via WebCalendar (default): =
-Web Server: =
-Web Server (detected): =
 Web Server (not detected): =
+Web Server (detected): =
 None (Single-User): =
 Read-Only: =
 Environment: =
@@ -1784,4 +1772,5 @@ Launch WebCalendar: =
 ########################################
 # Page: tools/send_reminders.php
 #
+task: tâche
 Reminder: Rappel

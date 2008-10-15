@@ -4,15 +4,15 @@
 # Last update: 18 August 2000
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -26,6 +26,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -113,6 +117,7 @@ Time: Tími
 # Page: category.php
 #
 Delete: Eyða
+Are you sure you want to delete this entry?: Viltu örugglega eyða þessu atriði?
 
 ########################################
 # Page: docadd.php
@@ -165,6 +170,7 @@ The following conflicts with the suggested time: Eftirfarandi stangast á við tím
 Please look on: Vinsamlegast skoðið
 to accept or reject this appointment: til að staðfesta eða hafna þessum fundi
 to view this appointment: til að skoða fund
+Scheduling Conflict: =
 Your suggested time of: Uppgefinn tími
 conflicts with the following existing calendar entries: stangast á við eftirfarandi atriði
 
@@ -298,6 +304,7 @@ Approve/Confirm entry: Samþykkja/Staðfesta atriði
 Reject entry: Hafna atriði
 This will delete this entry for all users.: Atriði verður eytt hjá öllum notendum.
 Edit entry: Breyta atriði
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php
@@ -328,12 +335,18 @@ May_: Maí
 June: Júní
 July: Júlí
 August: Ágúst
+September: =
 October: Október
 November: Nóvember
+Jan: =
+Feb: =
+Mar: =
+Apr: =
 May: Maí
 Jun: Jún
 Jul: Júl
 Aug: Ágú
+Sep: =
 Oct: Okt
 Nov: Nóv
 The following error occurred: Eftirfarandi villa kom upp
@@ -346,6 +359,7 @@ Wednesday: Miðvikudagur
 Thursday: Fimmtudagur
 Friday: Föstudagur
 Saturday: Laugardagur
+Sun: =
 Mon: Mán
 Tue: Þri
 Wed: Mið

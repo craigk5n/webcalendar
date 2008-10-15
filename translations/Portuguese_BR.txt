@@ -17,15 +17,15 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -39,6 +39,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -61,6 +65,7 @@ Database error: Erro no banco de dados
 Go: Ir
 Save: Salvar
 Public Access: Acesso Público
+Admin: =
 Calendar: Calendário
 Edit: Editar
 Events: Eventos
@@ -285,6 +290,7 @@ Category Name: Nome da categoria
 Color: Cor
 Add: Adicionar
 Delete: Apagar
+Are you sure you want to delete this entry?: Tem certeza que pretende apagar esta entrada?
 Make New Category: Nova categoria
 
 ########################################
@@ -306,6 +312,8 @@ Description: Descrição
 ########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 days: dias
 hours: horas
 minutes: minutos
@@ -610,11 +618,8 @@ The import file contained no data.: O arquivo não contém data
 #
 Layer: Nível
 Edit layer: Editar nível
-Layers are currently: Os níveis estão
+Are you sure you want to delete this layer?: Quer mesmo apagar este nível?
 Disable Layers: Desativar Níveis
-Click here: Clique aqui
-to modify the layers settings for the: para modificar as configurações de níveis para o
-calendar: calendário
 Add layer: Adicionar nível
 
 ########################################
@@ -633,6 +638,7 @@ You must enter a login and password.: Você deve digitar um usuário e senha
 Save login via cookies so I dont have to login next time.: Gravar usuário e senha
 Login: Entrar
 Access public calendar: Calendário de acesso público
+calendar: calendário
 cookies-note: <b>Nota:</b> Esta opção requer a opção de 'cookies' no seu browser habilitada.
 
 ########################################
@@ -661,7 +667,6 @@ Check box to delete ALL events for a user: Marcar para excluir <b>TODOS</b> os e
 Delete all events before: Excluir todos os eventos ateriores
 Preview delete: Excluir Visualização
 Are you sure you want to delete events for: Você tem certeza que deseja excluir os eventos para
-Records deleted from: Registros deletados do
 
 ########################################
 # Page: reject_entry.php
@@ -677,6 +682,7 @@ Deleted: Deletado
 Rejected: Rejeitada
 Waiting for approval: Aguardando por aprovação
 Unknown: Desconhecido
+Click here: Clique aqui
 to manage reports for the Public Access calendar: para administrar relatórios para o Calendário de Acesso Público
 Add new report: Adiciona novo relatório
 Manage Reports: Confugurar Relatórios
@@ -771,6 +777,7 @@ Email all participants: Enviar e-mail para participantes
 Hide activity log: Esconder log de atividade
 Show activity log: Mostrar log de atividade
 Export this entry to: Esportar esta entrada para
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php
@@ -814,12 +821,17 @@ August: Agosto
 September: Setembro
 October: Outubro
 November: Novembro
+Jan: =
 Feb: Fev
+Mar: =
 Apr: Abr
 May: Mai
+Jun: =
+Jul: =
 Aug: Ago
 Sep: Set
 Oct: Out
+Nov: =
 The following error occurred: Ocorreu o seguinte erro
 You are not authorized.: Você não está autorizado
 Error approving event: Erro aprovando evento
@@ -880,6 +892,7 @@ Russian: Russo
 Spanish: Espanhol
 Swedish: Sueco
 Turkish: Turco
+event: evento
 
 ########################################
 # Page: includes/user-imap.php

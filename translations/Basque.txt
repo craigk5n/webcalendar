@@ -7,15 +7,15 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -30,6 +30,10 @@ direction: =
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
 __month__ __dd__, __yyyy__: =
@@ -42,6 +46,7 @@ __month__ __yyyy__: =
 ########################################
 # Page: about.php
 #
+Title: =
 OK: Ados
 
 ########################################
@@ -207,6 +212,7 @@ Category Name: Atalaren izena
 Color: Kolorea
 Add: Gehitu
 Delete: Ezabatu
+Are you sure you want to delete this entry?: Seguru al zaude sarrera hau ezabatu nahi duzula?
 Make New Category: Atal berria gehitu
 
 ########################################
@@ -228,6 +234,8 @@ Description: Deskribapena
 ########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 days: egunak
 hours: orduak
 minutes: Minutuak
@@ -433,9 +441,8 @@ Disabled: Desgaitua
 #
 Layer: Geruza
 Edit layer: Geruza editatu
-Layers are currently: Geruzak orain
+Are you sure you want to delete this layer?: Seguru al zaude geruza hau ezabatu nahi duzula?
 Disable Layers: Geruzak desgaitu
-Click here: Hemen sakatu
 Add layer: Geruza gehitu
 
 ########################################
@@ -479,6 +486,7 @@ This event is confidential.: Gertaera hau konfidentziala da
 Deleted: Ezabatuak
 Rejected: Gaitzetsiak
 Waiting for approval: Onespenaren zai
+Click here: Hemen sakatu
 
 ########################################
 # Page: search.php
@@ -552,6 +560,7 @@ Email all participants: Partaide guztiei e-posta bidez jakinarazi
 Hide activity log: Jardunaren erregistroa ezkutatu
 Show activity log: Mostrar bitácora de actividad
 Export this entry to: Sarrera hau exportatu
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php
@@ -597,6 +606,7 @@ October: Urria
 November: Azaroa
 Jan: Urt
 Feb: Ots
+Mar: =
 Apr: Api
 May: Mai
 Jun: Eka

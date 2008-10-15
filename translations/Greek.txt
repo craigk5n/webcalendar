@@ -11,15 +11,15 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -33,6 +33,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -90,6 +94,7 @@ Settings: Ρυθμίσεις
 Groups: Ομάδες
 NonUser Calendars: Ημερολόγια μη-χρηστών
 Other: Διάφορα
+Email: =
 Colors: Χρώματα
 Document background: Background κειμένου
 Document title: Τίτλος κειμένου
@@ -107,6 +112,7 @@ Help: Βοήθεια
 app-name-help: Καθορίζει το όνομα της εφαρμογής που θα εμφανίζεται στη γραμμή τίτλου του browser σε όλες τις σελίδες. Η επιλογή εδώ θα αναζητηθεί στα αρχεία μεταφράσεων για να μπορούν να δωθούν διαφορετικοί τίτλοι σε διαφορετικές γλώσσες.
 Application Name: Όνομα εφαρμογής
 server-url-help: Καθορίζει το URL της εφαρμογής. Θα περιλαμβάνεται στα email υπενθυμίσεων και ειδοποιήσεων.
+Server URL: =
 language-help: Καθορίζει το ποιά γλώσσα θα χρησιμοποιείται.
 Language: Γλώσσα
 Your browser default language is: Η default γλώσσα του browser σας είναι
@@ -278,6 +284,7 @@ Category Name: Όνομα Κατηγορίας
 Color: Χρώμα
 Add: Προσθήκη
 Delete: Διαγραφή
+Are you sure you want to delete this entry?: Είστε σίγουρος οτι θέλετε να σβύσετε την εγγραφή;
 Make New Category: Προσθήκη νέας κατηγορίας
 
 ########################################
@@ -322,14 +329,17 @@ Medium: Μέτρια
 Low: Χαμηλή
 category-help: Καθορίζει την κατηγορία του γεγονότος.
 Category: Κατηγορία
+URL: =
 date-help: Καθορίζει την ημερομηνία του γεγονότος.
 Untimed event: Γεγονός δίχως ώρα
 Timed event: Γεγονός με ώρα
 All day event: Ολοήμερο γεγονός
+Timezone Offset: =
 time-help: Καθορίζει την ώρα του γεγονότος.<br />Επέλεξε "Γεγονός με ώρα" (για γεγονός που προγραμματίστηκε για συγκεκριμένη ώρα της μέρας), "Γεγονός δίχως ώρα" (για γεγονός που δεν έχει ώρα (π.χ. εορτή κάποιου φίλου), ή "Ολοήμερο γεγονός" (για γεγονός που ισχύει όλη την ημέρα (π.χ. απουσία από το γραφείο).
 duration-help: Καθορίζει τη διάρκεια (σε ώρες:λεπτά) του γεγονότος.<br /><i>Η επιλογή μπορεί να μείνει κενή.</i>
 end-time-help: Καθορίζει την ώρα που αναμένεται το γεγονός να τελειώσει.
 participants-help: Εμφανίζει τους συμμετέχοντες στο γεγονός.
+Selected: Επιλεγμένο
 Availability: Διαθεσιμότητα
 external-participants-help: Καθορίζει μια λίστα με συμμετέχοντες στο γεγονός, οι οποίοι δεν χρησιμοποιούν την εφαρμογή. Οι χρήστες εμφανίζονται ένας ανα γραμμή και μπορούν να περιλαμβάνουν email. Αν περιλαμβάνεται email, ο χρήστης μπορεί να λαμβάνει υπενθημίσεις και ειδοποιήσεις.
 External Participants: Εξωτερικοί συμμετέχοντες
@@ -442,6 +452,7 @@ Template variables: Μεταβλητές του template
 Page template: Template σελίδας
 Day template: Template ημέρας
 Event template: Template γεγονότος
+Are you sure you want to delete this report?: Είστε σίγουρος οτι θέλετε να διαγράψετε την αναφορά;
 
 ########################################
 # Page: edit_report_handler.php
@@ -462,6 +473,7 @@ Username: Όνομα Χρήστη
 E-mail address: Διεύθυνση E-mail
 Password: Κωδικός
 again: ξανά
+Are you sure you want to delete this user?: Είστε σίγουρος οτι θέλετε να διαγράψετε το χρήστη;
 Change Password: Αλλαγή κωδικού
 New Password: Νέος κωδικός
 Set Password: Θέσετε τον κωδικό
@@ -608,11 +620,8 @@ The import file contained no data.: Το αρχείο εισαγωγής δεν 
 #
 Layer: Επίπεδο
 Edit layer: Επεξεργασία επιπέδου
-Layers are currently: Τα επίπεδα είναι
+Are you sure you want to delete this layer?: Είστε σίγουρος οτι θέλετε να διαγράψετε αυτό το Επίπεδο;
 Disable Layers: Απενεργοποίηση Επιπέδων
-Click here: Πατήστε εδώ
-to modify the layers settings for the: για να τροποποιήσετε τις ρυθμίσεις των επιπέδων για το
-calendar: ημερολόγιο
 Add layer: Προσθήκη επιπέδου
 
 ########################################
@@ -631,6 +640,7 @@ You must enter a login and password.: Πρέπει να δώσετε Όνομα 
 Save login via cookies so I dont have to login next time.: Αποθήκευση της εισόδου με cookies για να μην χρειαστεί η διαδικασία εισόδου την επόμενη φορά
 Login: Είσοδος
 Access public calendar: Πρόσβαση στο Δημόσιο Ημερολόγιο
+calendar: ημερολόγιο
 cookies-note: <b>Σημείωση:</b> Η εφαρμογή απαιτεί τα cookies να είναι ενεργά.
 
 ########################################
@@ -659,7 +669,6 @@ Check box to delete ALL events for a user: Επιλέξτε το για να δ�
 Delete all events before: Διαγραφή όλων των γεγονότων πριν τις
 Preview delete: Προεπισκόπηση διαγραφής
 Are you sure you want to delete events for: Είστε σίγουρος οτι θέλετε να διαγραφούν τα γεγονότα για το χρήστη:
-Records deleted from: Οι εγγραφές θα διαγραφούν από τις
 
 ########################################
 # Page: reject_entry.php
@@ -670,11 +679,13 @@ An appointment has been rejected by: Μια συνάντηση, απορρίφθ
 # Page: report.php
 #
 This event is confidential.: Το γεγονός είναι ιδιωτικό
+cont.: =
 Approved: Εγκεκριμένο
 Deleted: Διεγραμένο
 Rejected: Απορριφθέν
 Waiting for approval: Περιμένει για αποδοχή
 Unknown: Άγνωστο
+Click here: Πατήστε εδώ
 to manage reports for the Public Access calendar: για τη διαχείρηση αναφορών από το Ημερολόγιο Δημόσιας Πρόσβασης
 Add new report: Προσθήκη νέας αναφοράς
 Manage Reports: Διαχείρηση αναφορών
@@ -774,6 +785,7 @@ Email all participants: Στείλε email σε όλους τους συμμετ
 Hide activity log: Απόκρυψη του αρχείου ενεργειών
 Show activity log: Εμφάνιση του αρχείου ενεργειών
 Export this entry to: Εξαγωγή αυτής της εγγραφής σε
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php

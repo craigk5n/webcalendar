@@ -30,15 +30,15 @@
 #
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-14-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -52,6 +52,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: __dd__/__mm__/__yyyy__
 __month__ __dd__: __dd__ __month__
@@ -491,8 +495,6 @@ gif 3kb max: gif 3kb máx.
 Search for existing icons: Procura por ícones existentes
 Add: Adicionar
 Delete: Apagar
-entry: entrada
-Are you sure you want to delete this XXX?: Tem certeza de que quer apagar este XXX?
 Make New Category: Nova Categoria
 
 ########################################
@@ -554,8 +556,6 @@ days: dias
 hours: horas
 minutes: minutos
 You are not authorized to edit this task.: Você não está autorizado a editar esta Tarefa.
-task: tarefa
-You are not authorized to edit this XXX.: Você não está autorizado a editar XXX.
 is in a different timezone than you are. Currently: está em um fuso horário diferente do seu. Atualmente
 hour ahead of you: hora na sua frente
 hour behind you: hora atrás de você
@@ -779,7 +779,6 @@ Template variables: Variáveis do Modelo
 Page template: Modelo de página
 Day template: Modelo de dia
 Event template: Modelo de evento
-report: relatório
 
 ########################################
 # Page: edit_report_handler.php
@@ -835,7 +834,7 @@ export format not defined or incorrect.: Formato de Exportação não definido o
 ########################################
 # Page: freebusy.php
 #
-No user specified.: Nenhum usuário especificao.
+No user specified.: Nenhum usuário especificado
 
 ########################################
 # Page: groups.php
@@ -998,11 +997,7 @@ The import file contained no data.: O arquivo de importação não contém nenhu
 Layer: =
 Edit layer: Editar Camada
 Enable layers: Habilitar Camadas
-Layers are currently: O uso de camadas está atualmente
 Disable Layers: Desabilitar Camadas
-Click here: Clickar Aqui
-to modify the layers settings for the: para modificar a configuração de camadas do
-calendar: calendário
 Add layer: Adicionar Camada
 
 ########################################
@@ -1039,6 +1034,7 @@ Login: =
 Access public calendar: Acessar Calendário Público
 public: público
 Access XXX calendar: Acessar calendário XXX
+calendar: calendário
 cookies-note: <b>Nota:</b> Este aplicativo requer que os cookies sejam permitidos.
 
 ########################################
@@ -1089,11 +1085,6 @@ Allow remote viewing of: Permitir acesso remoto a
 entries: entradas
 
 ########################################
-# Page: publish.php
-#
-No user specified.: Nenhum usuário especificado
-
-########################################
 # Page: purge.php
 #
 Purging events for: Limpando eventos de
@@ -1104,7 +1095,6 @@ Delete all events before: Apagar todos os eventos anteriores a
 Purge deleted only: Eliminar somentes os apagados
 Preview delete: Simula apagar
 Are you sure you want to delete events for: tem certeza que quer apagar os eventos para
-Records deleted from: Registros apagados de
 
 ########################################
 # Page: register.php
@@ -1156,6 +1146,7 @@ Deleted: apagado
 Rejected: Rejeitado
 Waiting for approval: Esperando aprovação
 Unknown: Desconhecido
+Click here: Clickar Aqui
 to manage reports for the Public Access calendar: Para gerenciar relatórios do Calendário de Acesso Público
 Click here to manage reports for the Public Access calendar.: Aperte aqui para gerenciar relatórios do Calendário de Acesso Público.
 Add new report: Adicionar novo relatório
@@ -1281,7 +1272,6 @@ Edit repeating entry for all dates: Editar entrada recorrente para todas as data
 Delete repeating event for all dates: Apagar evento recorrente para todas as datas
 Edit entry for this date: Editar entrada para esta data
 Delete entry only for this date: Apagar entrada somente para esta data
-from calendar of: do calendário de
 This will delete the entry from your XXX calendar.: Isto vai apagar a entrada do seu calendário XXX.
 boss: chefe
 This will delete the entry from your boss calendar.: Isto vai apagar a entrada do calendário do seu chefe.
@@ -1650,7 +1640,6 @@ You have not entered a valid time of day: Hora inválida
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Cor inválida
-layer: camada
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1715,8 +1704,6 @@ Unable to write password to settings.php file: Unable to write password to setti
 Password has been set: Password has been set
 Connection Successful: =
 Please go to next page to continue installation: =
-does not exist: =
-is not writable: =
 Error Converting Timezone: =
 Error Unable to write to file: =
 Error Unable to write to file XXX.: =
@@ -1786,9 +1773,8 @@ Create Default Admin Account: =
 Admin Account Not Found: =
 User Authentication: =
 Web-based via WebCalendar (default): =
-Web Server: =
-Web Server (detected): =
 Web Server (not detected): =
+Web Server (detected): =
 None (Single-User): =
 Read-Only: =
 Environment: =
@@ -1827,6 +1813,7 @@ Remote Calendars not enabled: Calendário Remoto não está habilitado
 #
 could not find event id: Não foi possĩvel encontrar o evento id
 could not find event id XXX in database.: Não foi possĩvel encontrar o evento id XXX no banco de dados.
+task: tarefa
 This is a reminder for the XXX detailed below.: Este é um lembrete para o evento XXX detalhado abaixo.
 Pecentage Complete: Realização completa
 Reminder: Lembrete

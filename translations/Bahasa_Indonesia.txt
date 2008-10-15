@@ -2,15 +2,15 @@
 # Last update: 28 August 2007
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -24,6 +24,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -585,11 +589,7 @@ The import file contained no data.: Berksa pengimporan tidak berisi data
 #
 Layer: Lapisan
 Edit layer: Edit lapisan
-Layers are currently: Lapisan saat ini
 Disable Layers: Matikan Lapisan
-Click here: Klik disini
-to modify the layers settings for the: untuk memodifikasi pengaturan lapisan untuk
-calendar: kalender
 Add layer: Tambahkan lapisan
 
 ########################################
@@ -606,6 +606,7 @@ Reject this entry?: Tolak entri ini?
 #
 Login: Log Masuk
 Access public calendar: Klik disini untuk mengakses kalender umum
+calendar: kalender
 cookies-note: <b>Catatan:</b> Aplikasi ini mengharuskan dukungan kuki pada perambah Anda dinyalakan.
 
 ########################################
@@ -633,7 +634,6 @@ Finished: Selesai
 Delete all events before: Hapus semua acara sebelum
 Preview delete: Pratinjau Penghapusan
 Are you sure you want to delete events for: Anda yakin ingin menghapus acara-acara untuk
-Records deleted from: Acara-acara telah dihapus dari
 
 ########################################
 # Page: reject_entry.php
@@ -649,6 +649,7 @@ Deleted: Dihapus
 Rejected: Ditolak
 Waiting for approval: Menunggu persetujuan
 Unknown: Tidak Diketahui
+Click here: Klik disini
 to manage reports for the Public Access calendar: untuk mengelola laporan untuk kalender Akses Umum
 Add new report: Tambahkan laporan baru
 Manage Reports: Kelola Laporan
@@ -797,6 +798,7 @@ Sep: =
 Oct: Okt
 Nov: Nop
 The following error occurred: Kesalahan berikut ini telah terjadi
+You are not authorized.: Anda tidak mempunyai kewenangan
 Add N hours to: Tambahkan N jam ke
 Subtract N hours from: Kurangi N jam dari
 same as: sama seperti
@@ -835,6 +837,7 @@ Basque: Bahasa Basque
 Bulgarian: Bahasa Bulgaria
 Catalan: Bahasa Catalonia
 Chinese (Simplified/GB2312): Cina (Disederhanakan/GB2312)
+Chinese (Traditional/Big5): Cina (Tradisional/Big5)
 Czech: Bahasa Ceko
 Danish: Bahasa Denmark
 Dutch: Bahasa Belanda

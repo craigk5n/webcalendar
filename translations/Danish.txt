@@ -18,15 +18,15 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
@@ -40,6 +40,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: =
 __month__ __dd__: =
@@ -62,6 +66,7 @@ Database error: Database fejl
 Go: Gå til
 Save: Gem
 Public Access: Offentlig adgang
+Admin: =
 Calendar: Kalender
 Edit: Redigér
 Events: Aftaler
@@ -91,10 +96,12 @@ Week: Uge
 Month: Måned
 Year: År
 Bottom: Bund
+Top: =
 Settings: Indstillinger
 Groups: Grupper
 NonUser Calendars: Ikke brugertilknyttede kalendere
 Other: Diverse
+Email: =
 Colors: Farver
 Document background: Dokumentbaggrund
 Document title: Dokumenttitel
@@ -112,6 +119,7 @@ Help: Hjælp
 app-name-help: Angiver navnet på kalenderen. Dette fremgår i browserens titellinie for samtlige sider samt på login-siden.
 Application Name: Kalender navn
 server-url-help: Angiver basis URL'en for applikationen. Denne bliver inkluderet når der udsendes email påmindelser og notifikationer.
+Server URL: =
 language-help: Angiver hvilket sprog, der skal bruges.
 Language: Sprog
 Your browser default language is: Din browsers standardsprog er
@@ -279,10 +287,12 @@ day: dag
 ########################################
 # Page: category.php
 #
+Global: =
 Category Name: Navn på kategori
 Color: Farve
 Add: Tilføj
 Delete: Slet
+Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne aftale?
 Make New Category: Tilføj ny kategori
 
 ########################################
@@ -304,6 +314,8 @@ Description: Beskrivelse
 ########################################
 # Page: edit_entry.php
 #
+am: =
+pm: =
 days: dage
 hours: timer
 minutes: minutter
@@ -321,9 +333,11 @@ Access: Adgang
 priority-help: Angiv aftalens prioritet.
 Priority: Prioritet
 High: Høj
+Medium: =
 Low: Lav
 category-help: Angiver aftalens kategori.
 Category: Kategori
+URL: =
 date-help: Angiver datoen for aftalen.
 Untimed event: Ikke tidsbestemt aftale
 Timed event: Tidsbestemt aftale
@@ -333,6 +347,7 @@ time-help: Angiver tidspunktet for aftalen.<br /><i>Dette felt behøver ikke at v
 duration-help: I dette felt kan du angive varigheden af aftalen<br /><i>Dette felt behøver ikke at være udfyldt.</i>
 end-time-help: Angiver sluttidspunktet for aftalen.
 participants-help: Vis deltagerne i denne aftale.
+Selected: Valgt
 Availability: Tlgængelighed
 external-participants-help: Angiver en liste over deltagere som ikke er kalender-brugere. Disse brugere skal listes én pr. linie og kan godt inkludere email-adresser. Hvis en email-adresse specificeres kan brugeren modtage notifikationer og påmindelser.
 External Participants: Eksterne deltagere
@@ -440,6 +455,7 @@ Template variables: Skabelon variabler
 Page template: Side skabelon
 Day template: Dags skabelon
 Event template: Aftale skabelon
+Are you sure you want to delete this report?: Er du sikker på at du vil slette denne rapport?
 
 ########################################
 # Page: edit_report_handler.php
@@ -461,6 +477,7 @@ E-mail address: Email-adresse
 Password: Kodeord
 again: igen
 Disabled for demo: Slået fra i demo
+Are you sure you want to delete this user?: Er du sikker på du vil slette denne bruger?
 Change Password: Skift kodeord
 New Password: Nyt kodeord
 Set Password: Skift kodeord
@@ -530,6 +547,7 @@ repeat-day-help: Hvilke ugedage skal aftalen gentages på.
 # Page: help_import.php
 #
 Import: Importér
+Palm Desktop: =
 This form will allow you to import entries from the Palm Desktop Datebook.: Denne formular gør det muligt at importere aftaler fra Palm Desktop adressebog.
 It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den bør ligge i din Palm mappe i <tt>datebook/datebook.dat</tt> i en undermappe med dit brugernavn.
 The following entries will not be imported: Følgende aftaler importeres ikke
@@ -537,6 +555,7 @@ Entries older than the current date: Aftaler ældre end dags dato
 Entries created in the Palm Desktop...: Aftaler oprettet på Palm Desktoppen som ikke er blevet HotSync&#39;d
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alle data importeret fra Palm bliver overskrevet ved den næste import (hvis ikke datoen for aftalen er passeret).
 Therefore, updates should be made in the Palm Desktop.: Derfor bør opdateringer blive lavet på Palm Desktoppen
+vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Denne formular importerer vCalandar (.vcs) 1.0 aftaler
 The following formats have been tested: Følgende formater er testet
 This form will import iCalendar (.ics) events.: Denne formular importerer iCalendar (.ics) aftaler
@@ -582,6 +601,7 @@ Publishing Disabled (User): Udgivelse slået fra (User)
 # Page: import.php
 #
 Disabled: Slået fra
+Import format: =
 Exclude private records: Undlad import af private aftaler
 
 ########################################
@@ -596,11 +616,8 @@ The import file contained no data.: Import-filen indeholder ingen data.
 #
 Layer: Lag
 Edit layer: Rediger lag
-Layers are currently: Lag er aktuelt
+Are you sure you want to delete this layer?: Er du sikker på, at du vil slette dette lag?
 Disable Layers: Slå lag fra
-Click here: Tryk her
-to modify the layers settings for the: for at redigere lag indstillingerne for
-calendar: kalender
 Add layer: Tilføj lag
 
 ########################################
@@ -619,6 +636,7 @@ You must enter a login and password.: Du skal indtaste et brugernavn og kodeord
 Save login via cookies so I dont have to login next time.: Gem login-informationer i en cookie, så jeg ikke behøver indtaste dem næste gang
 Login: Log ind
 Access public calendar: Til offentlig kalender
+calendar: kalender
 cookies-note: <b>OBS:</b> Dette program kræver at cookies er slået til i browseren
 
 ########################################
@@ -647,7 +665,6 @@ Check box to delete ALL events for a user: Afkryds for at slette <b>ALLE</b> aft
 Delete all events before: Slet alle aftaler før
 Preview delete: Vis aftaler som slettes
 Are you sure you want to delete events for: Er du sikker på du vil slette aftaler for
-Records deleted from: Poster slettet fra
 
 ########################################
 # Page: reject_entry.php
@@ -658,11 +675,13 @@ An appointment has been rejected by: En aftale er blevet afslået af
 # Page: report.php
 #
 This event is confidential.: Denne aftale er fortrolig
+cont.: =
 Approved: Accepteret
 Deleted: Slettet
 Rejected: Afvist
 Waiting for approval: Afventer acceptering
 Unknown: Ukendt
+Click here: Tryk her
 to manage reports for the Public Access calendar: for at redigere rapporter i den offentlige kalender
 Add new report: Tilføj ny rapport
 Manage Reports: Rediger rapporter
@@ -682,6 +701,11 @@ Search Results: Søgeresultater
 match found: emne fundet
 matches found: emner fundet
 No matches found: Ingen emner fundet
+
+########################################
+# Page: security_audit.php
+#
+Status: =
 
 ########################################
 # Page: select_user.php
@@ -757,6 +781,7 @@ Email all participants: Send email til alle deltagere
 Hide activity log: Skjul Aktivitetslog
 Show activity log: Vis Aktivitetslog
 Export this entry to: Eksporter denne visning til
+Palm Pilot: =
 
 ########################################
 # Page: week_details.php
@@ -768,6 +793,12 @@ New Entry: Ny aftale
 #
 Another Users Calendar: Anden brugers kalender
 Manage Views: Definer Visninger
+
+########################################
+# Page: includes/date_formats.php
+#
+December: =
+Dec: =
 
 ########################################
 # Page: includes/functions.php
@@ -792,12 +823,25 @@ Generate printer-friendly version: Vis printervenlig side
 January: Januar
 February: Februar
 March: Marts
+April: =
 May_: Maj
 June: Juni
 July: Juli
+August: =
+September: =
 October: Oktober
+November: =
+Jan: =
+Feb: =
+Mar: =
+Apr: =
 May: Maj
+Jun: =
+Jul: =
+Aug: =
+Sep: =
 Oct: Okt
+Nov: =
 The following error occurred: Følgende fejl opstod
 You are not authorized.: Du har ikke tilladelse til dette
 Add N hours to: Tilføj N timer til
