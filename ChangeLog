@@ -1,6 +1,7 @@
 $Id$
 
 Version 1.2.1 (Not Yet Released -- CVS!)
+ - Patch [ 2135609 ] Date issues for repeating events in RSS feed
  - Fixed bug [ 2163504 ] usersel.php was not running "register_globals = off".
  - Fixed bug [ 2142564 ] rss_activity_log.php doesn't work with Oracle
  - Fixed bug [ 2135644 ] mb_language error in 1.2.0 prevent login
