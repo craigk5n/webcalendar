@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixed bug [ 2163504 ] usersel.php was not running "register_globals = off".
  - Fixed bug [ 2142564 ] rss_activity_log.php doesn't work with Oracle
  - Apply Patch [ 2163740 ] I made more i18n patches. (with some modifications.)
  - Fixed bug [ 2135644 ] mb_language error in 1.2.0 prevent login
