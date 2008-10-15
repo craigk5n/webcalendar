@@ -81,7 +81,6 @@ if ( empty ( $error ) && $single_user != 'N' && !
 if ( empty ( $error ) ) {
   $errStr = '
     <p>' . translate ( 'Error' ) . ' [';
-  // translate ( 'Variable N not found' )
   $noVarXXX = ']: ' . translate ( 'Variable XXX not found.' ) . '</p>';
   if ( ! strstr ( $page_template, '${days}' ) )
     $error .= $errStr . translate ( 'Page template' )

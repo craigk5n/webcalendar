@@ -92,7 +92,6 @@ else {
       $password = stripslashes ( $password );
     }
     $login = trim ( $login );
-    // translate ( 'Illegal characters in login' )
     $badLoginStr = translate ( 'Illegal characters in login XXX.' );
 
     if ( $login != addslashes ( $login ) )

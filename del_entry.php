@@ -154,7 +154,6 @@ if ( $id > 0 && empty ( $error ) ) {
           $mail->WC_Send ( $login_fullname, $tempemail, $tempfullname, $name,
             str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) )
              . ".\n\n" . str_replace ( 'XXX', $login_fullname,
-              // translate ( 'An appointment has been canceled for you by' )
               translate ( 'XXX has canceled an appointment.' ) ) . "\n"
              . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . "\"\n"
              . str_replace ( 'XXX', date_to_str ( $thisdate ),

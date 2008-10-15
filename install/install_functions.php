@@ -11,7 +11,6 @@ function do_debug ( $msg ) {
 
 function make_uppercase () {
   // Make sure all cal_settings are UPPERCASE.
-  // translate ( 'Error updating webcal_config' )
   if ( ! dbi_execute ( 'UPDATE webcal_config
     SET cal_setting = UPPER( cal_setting )' ) )
     echo str_replace ( array ( 'XXX', 'YYY'),

@@ -47,7 +47,6 @@ if ( $id > 0 ) {
   if ( $readonly == 'N' && ! $is_my_event && ! $is_private ) {
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status ) VALUES ( ?, ?, ? )', array ( $id, $login, 'A' ) ) )
-      // translate ( 'Error adding event' )
       $error = str_replace ( 'XXX', dbi_error (),
         translate ( 'Error adding event XXX.' ) );
   }

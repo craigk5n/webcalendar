@@ -273,7 +273,6 @@ function get_browser_language ( $pref = false ) {
         return $browser_languages[$l];
     }
   }
-  // translate ( 'not supported' )
   return ( strlen ( $HTTP_ACCEPT_LANGUAGE ) && $pref == true
     ? $HTTP_ACCEPT_LANGUAGE . ' ' . translate ( '(not supported)' )
     : 'English-US' );

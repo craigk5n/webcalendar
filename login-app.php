@@ -127,7 +127,6 @@ echo '
     </form>' . ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y'
   ? '<br /><br />
     <a class="nav" href="index.php">' . str_replace ( 'XXX',
-    // translate ( 'Access public calendar' )
     translate ( 'public' ), translate ( 'Access XXX calendar' ) )
    . '</a><br />' : '' );
 
@@ -137,7 +136,6 @@ for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
     echo '
     <a class="nav" href="nulogin.php?login=' . $nulist[$i]['cal_login'] . '">'
      . str_replace ( 'XXX', $nulist[$i]['cal_fullname'],
-      // translate ( 'Access' ) translate ( 'calendar' )
       translate ( 'Access XXX calendar' ) ) . '</a><br />';
 }
 

@@ -96,18 +96,12 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
     reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
       ? $LANGUAGE : $user_language );
 
-    // translate ( 'Hello' )
     $msg = str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) )
-    // translate ( 'An appointment has been approved and comments added by' )
     . "\n\n" . str_replace ( 'XXX', $login_fullname,
       translate ( 'XXX has approved an appointment and added comments.' ) ) . "\n\n"
-    // translate ( 'The subject was' )
     . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . "\n"
-    // translate ( 'The description is' )
     . str_replace ( 'XXX', $description, translate ( 'Description XXX' ) ) . "\n"
-    // translate ( 'Date' )
     . str_replace ( 'XXX', date_to_str ( $fmtdate ), translate ( 'Date XXX' ) )
-    // translate ( 'Time' )
     . ' ' . ( empty ( $hour ) && empty ( $minute )
       ? '' : str_replace ( 'XXX',
         // Display using user's GMT offset and display TZID.
@@ -124,7 +118,6 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
       $msg .= "\n" . $url;
     }
     if ( ! empty ( $comments ) )
-      // translate ( 'Comments' )
       $msg .= "\n\n" . str_replace ( 'XXX', $comments,
         translate ( 'Comments XXX' ) );
 

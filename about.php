@@ -29,7 +29,6 @@ if ( empty ( $credits ) )
       <a title="' . $PROGRAM_NAME . '" href="' . $PROGRAM_URL . '" target="_blank">
       <h2 style="margin:0">' . translate ( 'Title' ) . '</h2>
       <p>' . str_replace ( 'XXX', $PROGRAM_VERSION,
-        // translate ( 'version' )
         translate ( 'version XXX' ) ) . '</p>
       <p>' . $PROGRAM_DATE . '</p></a>
       <p>&nbsp;</p>
