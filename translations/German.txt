@@ -3,22 +3,22 @@
 # Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 14. April 2007
+# Last update: 14. Oktober 2008
 #
 # $Id$
-# Translation last updated on 09-18-2008
+# Translation last updated on 10-15-2008
 
 
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
-# A lone equal sign "=" to the right of the FIRST colon ": "
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
-#
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-1
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -28,6 +28,10 @@ direction: =
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 
 __mm__/__dd__/__yyyy__: __dd__.__mm__.__yyyy__
 __month__ __dd__: __dd__.__month__
@@ -480,8 +484,7 @@ gif 3kb max: gif max. 3kb gro&szlig;
 Search for existing icons: Suche nach bereits vorhandenen Icons
 Add: Hinzuf&uuml;gen
 Delete: L&ouml;schen
-entry: Eintrag
-Are you sure you want to delete this XXX?: Sind Sie sicher, da&szlig; Sie XXX l&ouml;schen wollen?
+Are you sure you want to delete this entry?: Sind Sie sicher, da&szlig; Sie diesen Eintrag l&ouml;schen wollen?
 Make New Category: Neue Kategorie erstellen
 
 ########################################
@@ -543,8 +546,6 @@ days: Tage
 hours: Stunden
 minutes: Minute(n)
 You are not authorized to edit this task.: Sie sind nicht berechtigt diese Aufgabe zu &auml;ndern
-task: Aufgabe
-You are not authorized to edit this XXX.: Sie sind nicht berechtigt diesen XXX zu bearbeiten
 is in a different timezone than you are. Currently: ist in einem anderen Zeitzone, als Sie sind. Derzeit
 hour ahead of you: Stunde vor Ihnen
 hour behind you: Stunde nach Ihnen
@@ -773,7 +774,7 @@ Template variables: Vorlagen Variablen
 Page template: Seiten Vorlagen
 Day template: Tagesvorlage
 Event template: Terminvorlage
-report: Bericht
+Are you sure you want to delete this report?: Sind Sie sicher, da&szlig; Sie diesen Bericht l&ouml;schen wollen?
 
 ########################################
 # Page: edit_report_handler.php
@@ -797,6 +798,7 @@ E-mail address: E-Mail Adresse
 Password: Kennwort
 again: Wiederholung
 Disabled for demo: F&uuml;r DEMO deaktiviert
+Are you sure you want to delete this user?: Sind Sie sicher, da&szlig; Sie diesen Benuter l&ouml;schen wollen?
 Change Password: Kennwort &auml;ndern
 New Password: Neues Kennwort
 Set Password: Setze Kennwort
@@ -829,7 +831,7 @@ export format not defined or incorrect.: Exportiertes Format nicht definiert ode
 ########################################
 # Page: freebusy.php
 #
-No user specified.: Kein Benutzer ausgew&auml;hlt.
+No user specified.: Kein Benutzer ausgew&auml;hlt
 
 ########################################
 # Page: groups.php
@@ -996,13 +998,13 @@ The import file contained no data.: Die importierte Datei enthielt keine Daten
 #
 Layer: =
 Edit layer: Layer &auml;ndern
+Are you sure you want to delete this layer?: Sind Sie sicher, da&szlig; Sie diesen Layer l&ouml;schen wollen?
 Enable layers: Layers aktivieren
-Layers are currently: Layers sind derzeit
+Layers are currently enabled.: Layers sind derzeit <strong>aktiv</strong>.
 Disable Layers: Layers abschalten
-Click here: <u>Klicken Sie hier</u>
-to modify the layers settings for the: um die Layer Einstellungen zu &auml;ndern f&uuml;r den
-calendar: Kalender
+Click here to modify the layers settings for the XXX calendar.: Hier klicken um die Layereinstellungen des Kalenders XXX zu &auml;ndern.
 Add layer: Layer hinzuf&uuml;gen
+Layers are currently disabled.: Layers sind derzeit <strong>inaktiv</strong>.
 
 ########################################
 # Page: layers_toggle.php
@@ -1038,6 +1040,7 @@ Login: Anmelden
 Access public calendar: Zugang &Ouml;ffentlicher Kalender
 public: &ouml;ffentlich
 Access XXX calendar: Zugang XXX Kalender
+calendar: Kalender
 cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Cookies akzeptieren.
 
 ########################################
@@ -1090,11 +1093,6 @@ Allow remote viewing of: Erlaubt Ansicht EXTERNEN Zugriff auf
 entries: Eintr&auml;ge
 
 ########################################
-# Page: publish.php
-#
-No user specified.: Kein Benutzer ausgew&auml;hlt
-
-########################################
 # Page: purge.php
 #
 Purging events for: L&ouml;sche Termine f&uuml;r
@@ -1105,7 +1103,7 @@ Delete all events before: L&ouml;sche alle Termine vor dem
 Purge deleted only: L&ouml;sche nur die &#39;markiert gel&ouml;schten Eintr&auml;ge&#39; endg&uuml;ltig
 Preview delete: Nur Vorschau der zu l&ouml;schenden Termine
 Are you sure you want to delete events for: Sind Sie sicher das Sie alle Termine l&ouml;schen wollen
-Records deleted from: Eintr&auml;ge werden gel&ouml;scht f&uuml;r
+Records deleted from XXX: Eintr&auml;ge wurden von &#39;XXX&#39; gel&ouml;scht.
 
 ########################################
 # Page: register.php
@@ -1159,6 +1157,7 @@ Deleted: Gel&ouml;scht
 Rejected: Eintrag abgelehnt, wird nicht teilnehmen
 Waiting for approval: Warten auf &Uuml;berpr&uuml;fung
 Unknown: Unbekannt
+Click here: <u>Klicken Sie hier</u>
 to manage reports for the Public Access calendar: Zum verwalten der Berichte f&uuml;r den &Ouml;ffentlichen Kalender
 Click here to manage reports for the Public Access calendar.: <u>Hier klicken</u> um die Berichte des &Ouml;ffentlichen Kalenders zu verwalten
 Add new report: Neuen Bericht hinzuf&uuml;gen
@@ -1306,7 +1305,7 @@ Edit repeating entry for all dates: &Auml;ndern ALLER wiederkehrenden Termine de
 Delete repeating event for all dates: L&ouml;schen ALLER wiederkehrenden Termine des Eintrages
 Edit entry for this date: &Auml;ndern des Termines f&uuml;r DIESES Datum
 Delete entry only for this date: L&ouml;schen des Termines nur f&uuml;r DIESES Datum
-from calendar of: vom Kalender
+Delete entry from calendar of XXX: L&ouml;sche Termin nur f&uuml;r den Kalender XXX
 This will delete the entry from your XXX calendar.: Dieser Eintrag wird von Ihrem XXX Kalender gel&ouml;scht.
 boss: Boss&#39;
 This will delete the entry from your boss calendar.: Dieser Eintrag wird von Ihrem Boss&#39; Kalender gel&ouml;scht.
@@ -1398,6 +1397,7 @@ Busy: Besch&auml;ftigt
 Tentative: Vorl&auml;ufig
 Schedule an appointment for: Einen Termin festlegen f&uuml;r
 Schedule an appointment for XXX.: Einen Termin festlegen f&uuml;r XXX.
+date_select: =
 Event approved: Termin best&auml;tigt
 Journal approved: Journal best&auml;tigt
 Task approved: Aufgabe genehmigt
@@ -1685,7 +1685,6 @@ You have not entered a valid time of day: Sie haben keine g&uuml;ltige Zeit f&uu
 # Page: includes/js/edit_layer.php
 #
 Invalid color: Ung&uuml;ltige Farbe
-layer: Layer
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1766,8 +1765,8 @@ Please go to next page to continue installation: Bitte f&uuml;hren Sie den n&aum
 Connection Successful...: <b>Verbindung erfolgreich</b> Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
 Correct your entries or click the Create New...: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Neu erstellen</b> Button um die Installation fortzufahren.
 Correct your entries and try again.: Korrigieren Sie Ihre Eintr&auml;ge und versuchen Sie es erneut.
-does not exist: existiert nicht
-is not writable: ist schreibgesch&uuml;tzt
+XXX does not exist: XXX existiert nicht
+XXX is not writable: XXX ist nicht beschreibbar
 Error Converting Timezone: Fehler bei der Zeitzonenkonvertierung
 Error Unable to write to file: Fehler beim Schreiben auf Datei
 Error Unable to write to file XXX.: Fehler beim Schreiben auf Datei XXX.
@@ -1862,9 +1861,8 @@ Admin Account Not Found: Administratorkonto nicht gefunden
 (Admin Account Not Found): (Administratorkonto nicht gefunden)
 User Authentication: Benutzer Authentisierung
 Web-based via WebCalendar (default): Webbasierend via Webkalender (Grundeinstellung)
-Web Server: Webserver
-Web Server (detected): Webserver (erkannt)
 Web Server (not detected): Webserver (nicht erkannt)
+Web Server (detected): Webserver (erkannt)
 None (Single-User): Keine (Einzelbenutzer)
 Read-Only: Nur Lesen
 Environment: Umgebung
@@ -1903,6 +1901,7 @@ Remote Calendars not enabled: &#39;Externer&#39;-Kalender (Remote) nicht aktiv
 #
 could not find event id: kann id-Eintrag nicht finden
 could not find event id XXX in database.: kann den id-Eintrag XXX in der Datenbank nicht finden
+task: Aufgabe
 This is a reminder for the XXX detailed below.: Dies ist eine Erinnerung f&uuml;r XXX wie unten beschrieben
 Pecentage Complete: Prozentsatz abgeschlossen
 Reminder: Erinnerung
