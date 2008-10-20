@@ -7,9 +7,6 @@ $error = '';
 if ( $ALLOW_VIEW_OTHER != 'Y' )
   $error = print_not_auth (7);
 
-if ( empty ( $dups ) )
-  $dups = 'N';
-
 $public = getPostValue ( 'public' );
 $layeruser = getPostValue ( 'layeruser' );
 $layercolor = getPostValue ( 'layercolor' );
@@ -17,6 +14,9 @@ $dups = getPostValue ( 'dups' );
 $is_mine = getPostValue ( 'is_mine' );
 $cal_login = getPostValue ( 'cal_login' );
 $id = getPostValue ( 'id' );
+
+if ( empty ( $dups ) )
+  $dups = 'N';
 
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
