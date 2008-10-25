@@ -1,6 +1,7 @@
 $Id$
 
 Version 1.2.1 (Not Yet Released -- CVS!)
+ - Fixed bug [ 2157160 ] in week selector wrong weeks
  - Fixed bug [ 2148435 ] Not possible to create/edit layer with duplicates=No
  - Patch [ 2135609 ] Date issues for repeating events in RSS feed
  - Fixed bug [ 2163504 ] usersel.php was not running "register_globals = off".
