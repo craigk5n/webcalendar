@@ -77,6 +77,8 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
     include_once $theme;
     save_pref ( $webcal_theme, 'theme' );
   }
+  // Reload preferences
+  load_user_preferences ();
 }
 
 
