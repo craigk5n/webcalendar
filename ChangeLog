@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Fixed bug [ 2157160 ] in week selector wrong weeks
  - Fixed bug [ 2148435 ] Not possible to create/edit layer with duplicates=No
  - Delete translate phrases that are no longer used from code.
  - Patch [ 2135609 ] Date issues for repeating events in RSS feed
