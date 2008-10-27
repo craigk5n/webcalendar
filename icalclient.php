@@ -109,7 +109,7 @@ $appStr = generate_application_name ();
 
 If running as CGI, the following instructions should set the PHP_AUTH_xxxx
 variables. This has only been tested with apache2, so far. If using php as CGI,
-you'll need to include this in your php.ini file or possibly in an .htaccess file.
+you'll need to include this in your httpd.conf file or possibly in an .htaccess file.
 
   <IfModule mod_rewrite.c>
     RewriteEngine on
