@@ -647,55 +647,6 @@ function handleEditCatOk () {
   editCatPanel.hide(); 
 }
 
-function NeweditCats ( evt ) {
-  var obj;
-
-  if ( editCatPanel == null ) {
-    editCatPanel = new YAHOO.widget.SimpleDialog("editCatsDiv", 
-      { 
-        width: "350px",
-        height: "400px",
-        close: false,  
-        visible: false,  
-        draggable: false,
-        modal: true,
-        xy:[100,100],
-        //fixedcenter: true,
-        zindex: 60
-      } 
-    ); 
-    editCatPanel.render();
-  }
-  editCatPanel.show();
-
-  var cat_ids = elements['cat_id'].value;
-  var selected_ids = cat_ids.split ( ',' );
-
-<?php
-  load_user_categories ();
-  foreach ( $categories as $catid => $cat ) {
-    if ( $catid == 0 || $catid == -1 )
-      continue; // Ignore these special cases (0=All, -1=None)
-    ?>
-    var checkboxId = 'cat_<?php echo $catid;?>';
-    obj = document.getElementById ( checkboxId );
-    if ( obj ) {
-      // Is this selected??
-      var sel = false;
-      for ( i = 0; i < selected_ids.length; i++ ) {
-        if ( selected_ids[i] == <?php echo $catid;?> )
-          sel = true;
-      }
-      obj.checked = sel;
-    } else {
-      alert ( "Could not find '" + checkboxId + "' in DOM" );
-    }
-  <?php
-  }
-  ?>
-}
-
-
 function editCats ( evt ) {
   var obj;
 
@@ -766,25 +717,6 @@ function editCats ( evt ) {
       obj.value = catIds;
     return true;
   }
-}
-
-function Old_editCats (  evt ) {
-  if (document.getElementById) {
-    mX = evt.clientX   -160;
-    mY = evt.clientY  + 150;
-  }
-  else {
-    mX = evt.pageX  -160;
-    mY = evt.pageY + 150;
-  }
-  var MyPosition = 'scrollbars=no,toolbar=no,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
-  var cat_ids = elements['cat_id'].value;
-  var user = '<?php echo $user ?>';
-  url = "catsel.php?form=editentryform&cats=" + cat_ids;
-  if (user ) {
-  url += "&user=" + user;
- }
-  var catWindow = window.open (url,"EditCat","width=440,height=250,"  + MyPosition);
 }
 
 function displayInValid(myvar)
