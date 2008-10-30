@@ -160,6 +160,14 @@ if ( $ALLOW_HTML_DESCRIPTION == 'Y' ) {
   }
 }
 
+// Add Modal Dialog javascript/CSS
+$HEAD =
+  '<link rel="stylesheet" href="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css" type="text/css" />' . "\n" .
+  '<script type="text/javascript" src="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js"></script>' . "\n" .
+  '<link rel="stylesheet" href="includes/js/dhtmlmodal/modalfiles/modal.css" type="text/css" />' . "\n" .
+  '<script type="text/javascript" src="includes/js/dhtmlmodal/modalfiles/modal.js"></script>' . "\n";
+
+
 $byday = $bymonth = $bymonthday = $bysetpos = $participants = array ();
 $exceptions = $inclusions = $reminder = array ();
 $byweekno = $byyearday = $catList = $catNames = $external_users = $rpt_count = '';
@@ -173,7 +181,7 @@ $wkst = 'MO';
 $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
   ( $is_assistant || $is_admin ) ) ? $user : $login;
 
-print_header ( $INC, '', $BodyX, false, false, false, true );
+print_header ( $INC, $HEAD, $BodyX, false, false, false, true );
 
 ob_start ();
 
@@ -518,6 +526,9 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
     user_load_variables ( $user, 'temp' );
     $tz_diff = ( $user_tz_offset - $tz_offset ) / 3600;
     $abs_diff = abs ( $tz_diff );
+    // translate ( 'is in a different timezone than you are. Currently' )
+    // translate ( 'hour ahead of you' ) translate ( 'hour behind you' )
+    // translate ( 'hours ahead of you' ) translate ( 'hours behind you' )
     // translate ( 'XXX is in a different timezone (ahead)' )
     // translate ( 'XXX is in a different timezone (behind)' )
     // Line breaks in translates below are to bypass update_translation.pl.
@@ -1196,6 +1207,8 @@ if ( $can_edit ) {
       ? $selected : '' ) . '>' . translate ( 'Weekly' ) . '</option>
               <option value="monthlyByDay"'
      . ( strcmp ( $rpt_type, 'monthlyByDay' ) == 0 ? $selected : '' )
+    // translate ( 'Monthly' ) translate ( 'by day' ) translate ( 'by date' )
+    // translate ( 'by position' )
     . '>' . translate ( 'Monthly (by day)' ) . '</option>
               <option value="monthlyByDate"'
      . ( strcmp ( $rpt_type, 'monthlyByDate' ) == 0 ? $selected : '' )
@@ -1723,6 +1736,38 @@ if ( $can_edit ) {
 // end if ( $can_edit )
 
 ob_end_flush ();
+
+// Create a hidden div tag for editing categories...
+?>
+<div id="editCatsDiv" style="display: none;">
+  <div style="background-color: <?php echo $BGCOLOR;?>; border: 1px solid <?php echo $TABLEBG;?>; color: <?php echo $TEXTCOLOR;?>">
+  <form name="editCatForm" id="editCatForm">
+  <div id="scrollCatDiv" style="overflow: auto; height: 370px; width: 340px;">
+  <?php
+  if ( ! empty ( $categories ) ) {
+    foreach ( $categories as $K => $V ) {
+      // None is index -1 and needs to be ignored
+      if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
+          substr ( $form, 0, 4 ) == 'edit' ) ) {
+        $tmpStr = $K . '">' . $V['cat_name'];
+        echo '<input type="checkbox" name="cat_' . $K . '" ' .
+          'id="cat_' . $K . '"><label for="cat_' . $K . '">' .
+          htmlentities ( $V['cat_name'] );
+         if ( empty ( $V['cat_owner'] ) )
+           echo '<sup>*</sup>';
+        echo "</label><br/>\n";
+      }
+    }
+  }
+  ?>
+  </div>
+  <center>
+  <input type="button" value="<?php etranslate("Save");?>" onclick="modalEditCatDialog.hide()" />
+  </center>
+  </form>
+  </div>
+</div>
+<?php
 
 echo print_trailer ();
 

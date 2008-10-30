@@ -51,7 +51,7 @@ class WebCalendar {
     array (
       array ( 'Config', 'PHPDBI', 'Functions' ),
       array ( 'User', 'Connect' ) ),
-    '/^(ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws)\.php$/' =>
+    '/^(ajax|layers_ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws)\.php$/' =>
     array (
       array ( 'Config', 'PHPDBI', 'Functions' ),
       array ( 'User', 'Validate', 'Connect', 'SiteExtras', 'Access' ) ),

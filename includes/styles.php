@@ -136,7 +136,7 @@ if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
 }
 
 echo '  body {
-    margin:2px;
+    margin:0px;
     background:' . $GLOBALS['BGCOLOR'] . ( empty ( $GLOBALS['BGIMAGE'] )
   ? '' : ' url( ' . $GLOBALS['BGIMAGE'] . ' ) ' . $GLOBALS['BGREPEAT'] ) . ';
     color:' . $GLOBALS['TEXTCOLOR'] . ';
@@ -1313,6 +1313,36 @@ echo '  body {
   }
   #useriframe {
     height:280px;
+  }
+  .note {
+   border:1px solid ' . $GLOBALS['TABLEBG'] . ';
+   ' . background_css ( $GLOBALS['CELLBG'], 50 ) . '
+   color:' . $TABLEBG . ';
+   margin: 0px 25px 0px 25px;
+   padding: 10px 10px 10px 10px;
+  }
+  .rightsidetip {
+    float: right;
+    text-align: center;
+    width: 250px;
+    margin-top: 10px;
+    margin-right: 25px;
+    border: 1px solid ' . $GLOBALS['TABLEBG'] . ';
+    font-size: 11px;
+    padding: 5px;
+  }
+  .layertable {
+     text-align: center;
+  }
+  .layertable th {
+    background-color: ' . $GLOBALS['THBG'] . ';
+    color: ' . $GLOBALS['THFG'] . ';
+    padding: 5px 20px 5px 20px;
+  }
+  .layertable td {
+    background-color: ' . $GLOBALS['CELLBG'] . ';
+    cursor: pointer;
+    padding: 5px 20px 5px 20px;
   }
   #eventcomment {
    padding:.25em;
