@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+<title>DHTML Modal Window demos</title>
+<link rel="stylesheet" href="windowfiles/dhtmlwindow.css" type="text/css" />
+
+<script type="text/javascript" src="windowfiles/dhtmlwindow.js">
+
+/***********************************************
+* DHTML Window Widget- © Dynamic Drive (www.dynamicdrive.com)
+* This notice must stay intact for legal use.
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+</script>
+
+<link rel="stylesheet" href="modalfiles/modal.css" type="text/css" />
+<script type="text/javascript" src="modalfiles/modal.js"></script>
+
+</head>
+
+<body>
+
+<div id="modalalertdiv" style="display:none;">
+
+<div style="background: #F3F3F3; height: 100%; padding: 5px">
+<b>Age Verification Check</b>
+<p>I certify that I'm above 13 years old, and love web development!</p>
+<form id="agecheck">
+<input type="button" value="Confirm" style="margin-right: 20px" onClick="process_age('yes')" /> <input id="denybutton" type="button" value="Deny" onClick="process_age('no')" />
+</form>
+</div>
+
+</div>
+
+
+
+
+
+<!-##################### 1) DHTML Modal Window Example 1: ###################-->
+
+<h3>1) DHTML Modal window Example 1 (iframe content/ auto load)</h3>
+
+<script type="text/javascript">
+
+var agreewin=dhtmlmodal.open("agreebox", "iframe", "modalfiles/agreement.htm", "This Page's Terms of service", "width=590px,height=450px,center=1,resize=1,scrolling=0", "recal")
+
+agreewin.onclose=function(){ //Define custom code to run when window is closed
+	var theform=this.contentDoc.getElementById("eula") //Access form with id="eula" inside iframe
+	var yesbox=theform.eulabox[0] //Access the first radio button within form
+	var nobox=theform.eulabox[1] //Access the second radio button within form
+	if (yesbox.checked==true)
+		alert("You agreed to the terms")
+	else if (nobox.checked==true)
+		alert("You didn't agree to the terms")
+	return true //Allow closing of window in both cases
+}
+
+</script>
+
+
+
+
+
+
+
+
+<!-##################### 2) DHTML Modal Window Example 2: ###################-->
+
+<h3 style="margin-top: 50px">2) DHTML Modal Window Example 2 (iframe/ onclick):</h3>
+
+<script type="text/javascript">
+
+function opennewsletter(){
+	emailwindow=dhtmlmodal.open('EmailBox', 'iframe', 'modalfiles/newsletter.htm', 'Newsletter Signup page', 'width=350px,height=200px,center=1,resize=0,scrolling=1')
+
+emailwindow.onclose=function(){ //Define custom code to run when window is closed
+	var theform=this.contentDoc.forms[0] //Access first form inside iframe just for your reference
+	var theemail=this.contentDoc.getElementById("emailfield") //Access form field with id="emailfield" inside iframe
+	if (theemail.value.indexOf("@")==-1){ //crude check for invalid email
+		alert("Please enter a valid email address")
+		return false //cancel closing of modal window
+	}
+	else{ //else if this is a valid email
+		document.getElementById("youremail").innerHTML=theemail.value //Assign the email to a span on the page
+		return true //allow closing of window
+	}
+}
+} //End "opennewsletter" function
+
+</script>
+
+<a href="#" onClick="opennewsletter(); return false">Signup for our newletter</a> <span id="youremail" style="color: red"></span>
+
+
+
+
+
+
+
+
+
+<!-##################### 3) DHTML Modal Window Example 3: ###################-->
+
+<h3 style="margin-top: 50px">3) DHTML Modal Window Example 3 (hidden div/ onclick):</h3>
+
+<script type="text/javascript">
+
+function ageprompt(){
+	agewindow=dhtmlmodal.open('agebox', 'div', 'modalalertdiv', 'Age Check', 'width=350px,height=150px,left=150px,top=100px,resize=0,scrolling=0')
+}
+
+//Function to run when buttons within modal window is clicked on. Directly embedded inside hidden DIV, bypassing "onclose" event:
+function process_age(whichbutton){
+	if (whichbutton=="no")
+		alert("You are under 13 yrs old")
+	agewindow.hide()
+}
+
+</script>
+
+<a href="#" onClick="ageprompt(); return false">Open Age Verification window</a>
+
+
+
+
+
+<div style="margin-top: 100px">Note: <a href="http://www.dynamicdrive.com/dynamicindex8/dhtmlwindow/dhtmlmodal.htm">DHTML Modal Window- Download and documentation</a></div>
+

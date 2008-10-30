@@ -4392,7 +4392,8 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
 
   return '
             <p><label for="' . $name . '">' . $title
-   . ':</label><input type="text" name="' . $name . '" id="' . $name
+   . ( $title == '' ? '' : ':' ) 
+   . '</label><input type="text" name="' . $name . '" id="' . $name
    . '" size="7" maxlength="7" value="' . $setting
    . '" onchange="updateColor( this, \'' . $varname
    . '_sample\' );" /><span class="sample" id="' . $varname . '_sample" style="background:'
