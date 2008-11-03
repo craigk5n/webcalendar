@@ -683,10 +683,8 @@ if ( $can_edit ) {
      . '" onclick="editCats( event )" />
                     </td>
                     <td valign="top">
-                      <input readonly="readonly" type="text" name="catnames" '
-     . 'id="entry_categories" value="' . $catNames
-     . '" size="30" onclick="editCats( event )"/>
-                      <input type="hidden" name="cat_id" value="' . $catList
+                      <span name="catnames" id="entry_categories" " onclick="editCats( event )" style="cursor: pointer;"/>' . $catNames . '</span>
+                      <input type="hidden" id="cat_id" name="cat_id" value="' . $catList
      . '" />
                     </td>
                   </tr>' : '' )
