@@ -605,48 +605,6 @@ function toggle_rem_rep (){
  ( elements['rem_rep_count'].value == 0 );
 }
 
-function handleEditCatCancel () {
-  editCatPanel.hide(); 
-}
-
-function handleEditCatOk () {
-  // Get selected categories
-  var catIds = '', catNames = '';
-<?php
-  load_user_categories ();
-  foreach ( $categories as $catid => $cat ) {
-    if ( $catid == 0 || $catid == -1 )
-      continue; // Ignore these special cases (0=All, -1=None)
-    ?>
-    var checkboxId = 'cat_<?php echo $catid;?>';
-    var nameId = 'cat_<?php echo $catid;?>_text';
-    obj = document.getElementById ( checkboxId );
-    if ( obj ) {
-      if ( obj.checked ) {
-        if ( catIds.length > 0 ) {
-          catIds += ',';
-          catNames += ', ';
-        }
-        catIds += '<?php echo $catid;?>';
-        catNames += '<?php echo $cat['cat_name'];?>';
-      }
-    } else {
-      if ( ! obj ) alert ( "Could not find " + checkboxId );
-      else alert ( "Could not find " + nameId );
-    }
-<?php
-  }
-?>
-  //alert ( "catNames = " + catNames + "\n\nCatIds = " + catIds );
-  obj = document.getElementById ( 'entry_categories' );
-  if ( obj )
-    obj.value = catNames;
-  obj = document.getElementById ( 'cat_id' );
-  if ( obj )
-    obj.value = catIds;
-  editCatPanel.hide(); 
-}
-
 function editCats ( evt ) {
   var obj;
 
@@ -708,13 +666,13 @@ function editCats ( evt ) {
 <?php
   }
 ?>
-    //alert ( "catNames = " + catNames + "\n\nCatIds = " + catIds );
     obj = document.getElementById ( 'entry_categories' );
     if ( obj )
-      obj.value = catNames;
+      obj.innerHTML = catNames;
     obj = document.getElementById ( 'cat_id' );
-    if ( obj )
+    if ( obj ) {
       obj.value = catIds;
+    }
     return true;
   }
 }
