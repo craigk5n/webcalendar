@@ -43,6 +43,34 @@ function ajax_send_object ( $objectName, $object, $sendPlainText=false ) {
   return true;
 }
 
+/* Send a objects back to the AJAX request.  This represents a successful
+ * AJAX request.  Using a common return structure for all of our AJAX
+ * responses make them easier to handle in the client-side JavaScript.
+ *
+ * @param  array   $objects	array of objects with the object name as
+ *				the key.
+ * @param  boolean $sendPlainText  (Optional) Set to true to use plain/text
+ *				as the Content-type.
+ */
+function ajax_send_objects ( $objectArray, $sendPlainText=false ) {
+  // Plain text can be helpful for debugging in the browser.
+  if ( $sendPlainText )
+    Header ( 'Content-Type: text/plain' );
+  else
+    Header ( 'Content-Type: text/json' );
+  $json = new Services_JSON();
+  $ret = array (
+    "error" => 0,
+    "status" => 'OK',
+    "message" => '',
+    );
+  foreach ( $objectArray as $name => $value ) {
+    $ret[$name] = $value;
+  }
+  echo $json->encode($ret);
+  return true;
+}
+
 /* Send a success message back to our AJAX client.
  * Using a common return structure for all of our AJAX
  * responses make them easier to handle in the client-side JavaScript.

@@ -51,7 +51,7 @@ class WebCalendar {
     array (
       array ( 'Config', 'PHPDBI', 'Functions' ),
       array ( 'User', 'Connect' ) ),
-    '/^(ajax|layers_ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws)\.php$/' =>
+    '/^(ajax|layers_ajax|events_ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws)\.php$/' =>
     array (
       array ( 'Config', 'PHPDBI', 'Functions' ),
       array ( 'User', 'Validate', 'Connect', 'SiteExtras', 'Access' ) ),
@@ -121,7 +121,7 @@ class WebCalendar {
 
     // Several files need a no-cache header and some of the same code.
     $special = array ( 'month.php', 'day.php', 'week.php',
-      'week_details.php', 'year.php', 'minical.php' );
+      'week_details.php', 'year.php', 'minical.php', 'events_ajax.php' );
     $DMW = in_array ( $SCRIPT, $special );
 
     // Unset some variables that shouldn't be set.

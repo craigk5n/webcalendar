@@ -34,12 +34,16 @@ class Event {
    * @access private
    */
   var $_date;
+  /** The event's date in the local user's timezone */
+  var $_localDate;
   /**
    * The event's time (in HHMMSS format).
    * @var string
    * @access private
    */
   var $_time;
+  /** The event's modified date (in YYYYMMDD format). */
+  var $_localTime;
   /**
    * The event's modified date (in YYYYMMDD format).
    * @var string
@@ -729,6 +733,26 @@ class Event {
    */
   function setDate ( $date ) {
     $this->_date = $date;
+  }
+
+ /**
+   * Set _localDate
+   *
+   *
+   * @access public
+   */
+  function setLocalDate ( $localDate ) {
+    $this->_localDate = $localDate;
+  }
+
+ /**
+   * Set _localTime (in HHMM format)
+   *
+   *
+   * @access public
+   */
+  function setLocalTime ( $localTime ) {
+    $this->_localTime = $localTime;
   }
  /**
    * Set cal_name

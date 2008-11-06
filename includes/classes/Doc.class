@@ -276,8 +276,9 @@ class Doc {
    *
    * @return string  A summary of the object
    */
-  function getSummary () {
-    $ret = '<a href="doc.php?blid=' . $this->_blob_id . '">'
+  function getSummary ($target='') {
+    $ret = '<a href="doc.php?blid=' . $this->_blob_id . '"' .
+     ( empty ( $target ) ? '' : " target=\"$target\"" ) . '>'
      . htmlspecialchars ( $this->_description ) . '</a>' . ' ( '
      . htmlspecialchars ( $this->_name ) . ', ';
     if ( $this->_size < 1024 )
