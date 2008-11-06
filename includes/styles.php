@@ -446,6 +446,7 @@ echo '  body {
     font-weight:bold;
     text-decoration:none;
     vertical-align:top;
+    font-size: 75%;
   }
   .dayofmonth:hover {
     border-right:1px solid #00F;
@@ -1069,6 +1070,7 @@ echo '  body {
     font-size:12px;
   }
   #viewl .main td,
+  #contentMonth .main td,
   #month .main td {
     height:75px;
     font-size:12px;
@@ -1106,6 +1108,12 @@ echo '  body {
   #month .minical {
     margin:0 4px;
     border:0;
+  }
+  #contentMonth .monthtitle {
+    font-size: 120%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
   }
   .topnav {
     border:0;
@@ -1343,6 +1351,23 @@ echo '  body {
     background-color: ' . $GLOBALS['CELLBG'] . ';
     cursor: pointer;
     padding: 5px 20px 5px 20px;
+  }
+  .clickable {
+    cursor: pointer;
+  }
+  .fakebutton {
+     color: #000;
+     font-size: 12pt;
+     background-color: #a0a0a0;
+     border-top: 2px solid #e0e0e0;
+     border-left: 2px solid #e0e0e0;
+     border-bottom: 2px solid #808080;
+     border-right: 2px solid #808080;
+     padding-left: 5px;
+     padding-right: 5px;
+  }
+  .fakebutton hover {
+    background-color: #0ff;
   }
   #eventcomment {
    padding:.25em;
