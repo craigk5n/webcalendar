@@ -109,10 +109,11 @@ if ( $action == 'get' ) {
       $dates[$dateYmd] = $ev;
     }
   }
+  $objects = array ( 'dates' => $dates );
   if ( $debug ) {
-    echo "<pre>"; print_r ( $dates ); echo "</pre>\n";
+    echo "<pre>"; print_r ( $objects ); echo "</pre>\n";
   }
-  ajax_send_object ( 'dates', $dates, true );
+  ajax_send_objects ( $objects, true );
 } else if ( $action == 'eventinfo' ) {
   // TODO: enforce user access control here...
   $id = getIntValue ( 'id' );
