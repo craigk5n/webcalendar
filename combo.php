@@ -169,6 +169,25 @@ views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()
 // End init tabs
 
+var categories = [];
+<?php
+if ( $CATEGORIES_ENABLED == 'Y' ) {
+  foreach ( $categories as $catId => $val ) {
+    if ( $catId > 0 ) {
+      echo 'categories[' . $catId . '] = ' .
+        '{ id : ' . $catId .
+        ', owner: "' . $categories[$catId]['cat_owner'] . '"' .
+        ', name: "' . $categories[$catId]['cat_name'] . '"' .
+        ', color: "' . $categories[$catId]['cat_color'] . '"' .
+        ', global: ' . ( $categories[$catId]['cat_global'] ? '0' : '1' );
+      $catIconFile = 'icons/cat-' . $catId . '.gif';
+      if ( file_exists ( $catIconFile ) )
+        echo ', icon: "' . $catIconFile . '"';
+      echo " };\n";
+    }
+  }
+}
+?>
 var viewDialog = null;
 var events = new Array ();
 var loadedMonths = new Array (); // Key will be format "200801" For Jan 2008
@@ -267,7 +286,6 @@ function load_content (year,month)
       for ( var key in response.dates ) {
         events[key] = response.dates[key];
       }
-
       loadedMonths[monthKey] = 1;
       update_display ( year, month );
     },
@@ -483,10 +501,17 @@ function build_month_view ( year, month )
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
           var myEvent = eventArray[l];
           var id = 'popup-' + key + "-" + myEvent._id;
-          ret += "<span class=\"clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
+          ret += "<div class=\"clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
             " onmouseout=\"hidePopUp('" + id + "')\"" +
-            " onclick=\"view_event('" + key + "'," + l + ")\">" +
-            myEvent._name + "</span>";
+            " onclick=\"view_event('" + key + "'," + l + ")\">";
+          if ( categories && categories.length ) {
+            var catId = myEvent._category;
+            if ( catId < 0 ) catId = 0 - catId;
+            if ( categories[catId] && categories[catId].icon ) {
+              ret += '<img src="' + categories[catId].icon + '"/>';
+            }
+          }
+          ret += myEvent._name + "</div>";
           // Create popup
           if ( ! document.getElementById ( id ) ) {
             var popup = document.createElement('dl');
