@@ -26,6 +26,7 @@ include 'includes/classes/CommentList.class';
 send_no_cache_header ();
 
 $LOADING = '<div style="height: 220px; padding-top: 190px;"><center><img src="images/loading_animation.gif" alt=""/></center></div>';
+$SMALL_LOADING = '<img src="images/loading_animation_small.gif" alt="..." width="16" height="16"/>';
 
 load_user_categories ();
 
@@ -231,9 +232,12 @@ function load_content (year,month)
   }
   //alert ( "Loading startdate=" + startdate );
 
-  $('contentDay').innerHTML = '<?php echo $LOADING;?>';
-  $('contentWeek').innerHTML = '<?php echo $LOADING;?>';
-  $('contentMonth').innerHTML = '<?php echo $LOADING;?>';
+  //$('contentDay').innerHTML = '<?php echo $LOADING;?>';
+  //$('contentWeek').innerHTML = '<?php echo $LOADING;?>';
+  //$('contentMonth').innerHTML = '<?php echo $LOADING;?>';
+  var o = $('monthstatus');
+  if ( o )
+    o.innerHTML = '<?php echo $SMALL_LOADING;?>';
 <?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
   $('contentTasks').innerHTML = '<?php echo $LOADING;?>';
 <?php } ?>
@@ -326,8 +330,10 @@ function view_event ( key, location )
     '" class="fakebutton"><?php etranslate('View Event')?></a>';
 
   // For now, blank out participants.
-  $('participants').innerHTML = "Loading...";
-  $('attachments').innerHTML = "Loading...";
+  $('participants').innerHTML = '<?php echo $SMALL_LOADING;?>';
+  $('attachments').innerHTML = '<?php echo $SMALL_LOADING;?>';
+  $('comments').innerHTML = '<?php echo $SMALL_LOADING;?>';
+
   // Load participants via AJAX
   new Ajax.Request('events_ajax.php',
   {
@@ -435,6 +441,7 @@ function build_month_view ( year, month )
     ret = prev_month_link ( year, month ) +
       next_month_link ( year, month ) + "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
+      "<span id=\"monthstatus\"> </span>" +
       "<table id=\"month_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"1\"><tr>";
     for ( var i = 0; i < 7; i++ ) {
       ret += "<th>" + weekdays[i] + "</th>";
