@@ -328,9 +328,9 @@ function view_event ( key, location )
     format_time ( myEvent._modtime ) + ' GMT';
   $('createdby').innerHTML = users[myEvent._owner] ?
     users[myEvent._owner] : myEvent._owner;
-  if ( myEvent._priority >= 7 )
+  if ( myEvent._priority < 4 )
     $('priority').innerHTML = '<?php etranslate('High');?>';
-  else if ( myEvent._priority >= 4 )
+  else if ( myEvent._priority < 7 )
     $('priority').innerHTML = '<?php etranslate('Medium');?>';
   else
     $('priority').innerHTML = '<?php etranslate('Low');?>';
@@ -495,7 +495,7 @@ function build_month_view ( year, month )
         if ( eventArray && eventArray.length > 0 )
           class += ' entry hasevents';
         ret += "<td class=\"" + class + "\">";
-        ret += "<span class=\"dayofmonth\">" + i + "</span>";
+        ret += "<span class=\"dayofmonth\">" + i + "</span><br/>";
         // If eventArray is null here, that means we have not loaded
         // event data for that date.
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
