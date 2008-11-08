@@ -3986,6 +3986,7 @@ function load_user_categories ( $ex_global = '' ) {
         $categories[$row[0]] = array (
           'cat_name' => $row[1],
           'cat_owner' => $row[2],
+          'cat_global' => empty ( $row[2] ) ? 1 : 0,
           'cat_color' => ( empty ( $row[3] ) ? '#000000' : $row[3] )
           );
       }

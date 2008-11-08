@@ -108,6 +108,10 @@ class Event {
    * @access private
    */
   var $_category;
+  /** Array of categories... not set by default.  Must be set with
+    * setCategories first.
+    */
+  var $_categories;
   /**
    * The event's owner.
    * @var mixed
@@ -506,6 +510,15 @@ class Event {
    */
   function getCategory () {
     return $this->_category;
+  }
+
+  function setCategories ( $cats )
+  {
+    $this->_categories = $cats;
+  }
+
+  function getCategories () {
+    return $this->_categories;
   }
 
   /**

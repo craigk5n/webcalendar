@@ -1109,6 +1109,27 @@ echo '  body {
     margin:0 4px;
     border:0;
   }
+  #combo div.headerinfo {
+    margin: 15px; border: 1px solid #000; background-color: #fff;
+    color: #000; padding: 10px;
+  }
+  #combo div.headerinfo .username {
+    font-size: 120%;
+    font-weight: bold;
+  }
+  #combo div.headerinfo #categoryselection {
+    padding-left: 30px;
+    font-size: 12pt;
+    font-weight: plain;
+  }
+  #combo div.headerinfo #selectedcategories {
+    font-size: 12pt;
+    font-weight: plain;
+  }
+  #combo #categorylist {
+    border: 1px solid #ccc;
+    background-color: #ffa;
+  }
   #contentMonth .monthtitle {
     font-size: 120%;
     text-align: center;

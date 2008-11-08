@@ -11,6 +11,8 @@
  * - Category selection
  * - Layers
  * - Print layout
+ * - Quick add event (like Google Calendar)
+ * - Delete event
  *
  * Possibilities for later:
  * - Include tab for unapproved events where users could approve from
@@ -28,7 +30,8 @@ send_no_cache_header ();
 $LOADING = '<div style="height: 220px; padding-top: 190px;"><center><img src="images/loading_animation.gif" alt=""/></center></div>';
 $SMALL_LOADING = '<img src="images/loading_animation_small.gif" alt="..." width="16" height="16"/>';
 
-load_user_categories ();
+if ( $CATEGORIES_ENABLED == 'Y' )
+  load_user_categories ();
 
 $date = getIntValue ( 'date' );
 if ( empty ( $date ) )
@@ -90,6 +93,49 @@ This page is a prototype that will hopefully evolve into a replacement
 for all four of the main views (day.php, week.php, month.php, year.php).
 </div>
 
+<div class="headerinfo">
+<table border="0">
+<tr>
+<?php
+if ( $single_user == 'N' ) {
+  user_load_variables ( ! empty ( $user ) ? $user : $login, 'user_' );
+  echo "<td valign=\"top\" class=\"username\"><nobr>" .
+     htmlspecialchars ( $user_fullname ) . "</nobr></td>";
+}
+if ( $CATEGORIES_ENABLED == 'Y' ) {
+  ?>
+  <td valign="top" id="categoryselection">Categories:</td>
+  <td valign="top" onmouseover="setCategoryVisibility(true)" onmouseout="setCategoryVisibility(false)">
+  <img id="catexpand" src="images/expand.gif"/>
+  <span id="selectedcategories">All</span><br/>
+  <div id="categorylist" style="display:none">
+  <?php
+  foreach ( $categories as $catId => $val ) {
+    $name = "cat-" . $catId;
+    if ( $catId > 0 ) {
+      ?>
+      <nobr><input type="checkbox" id="<?php echo $name;?>" name="<?php echo $name;?>"
+        onclick="handleCategoryCheckboxChange()" value="Y" /><label for="<?php echo $name;?>">
+        <?php echo htmlspecialchars ( $categories[$catId]['cat_name'] ) ?>
+        </label></nobr>&nbsp;
+      <?php
+      //$catIconFile = 'icons/cat-' . $catId . '.gif';
+      //if ( file_exists ( $catIconFile ) )
+    }
+  }
+  ?>
+  <br/><input style="font-size: 80%" type="button" value="<?php etranslate("Select All");?>" onclick="selectAllCategories()"/>
+    &nbsp;&nbsp;
+  <input style="font-size: 80%" type="button" value="<?php etranslate("Select None");?>" onclick="selectNoCategories()" />
+  <?php
+?>
+</div>
+<?php
+}
+?>
+</tr></table>
+</div>
+
 <ul id="viewtabs" class="shadetabs" style="margin-left: 10px;">
 
 <li><a href="#" rel="contentDay" class="selected">Day</a></li>
@@ -121,6 +167,7 @@ Tasks content goes here...
 <?php } ?>
 
 </div>
+
 
 <div id="viewEventDiv" style="display: none;">
 <table border="0" width="100%">
@@ -169,13 +216,19 @@ views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()
 // End init tabs
 
+var currentYear = null, currentMonth = null;
+
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+
+var allCatsSelected = true;
+var selectedCats = [];
 var categories = [];
 <?php
-if ( $CATEGORIES_ENABLED == 'Y' ) {
   foreach ( $categories as $catId => $val ) {
     if ( $catId > 0 ) {
       echo 'categories[' . $catId . '] = ' .
         '{ id : ' . $catId .
+        ', state: 1' .
         ', owner: "' . $categories[$catId]['cat_owner'] . '"' .
         ', name: "' . $categories[$catId]['cat_name'] . '"' .
         ', color: "' . $categories[$catId]['cat_color'] . '"' .
@@ -186,9 +239,10 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
       echo " };\n";
     }
   }
-}
 ?>
+<?php } ?>
 var viewDialog = null;
+var catsVisible = false;
 var events = new Array ();
 var loadedMonths = new Array (); // Key will be format "200801" For Jan 2008
 var months = [
@@ -237,6 +291,84 @@ var users = [];
       "\n";
   }
 ?>
+
+function setCategoryVisibility (newIsVisible)
+{
+  if ( newIsVisible ) {
+    $('categorylist').style.display = "block";
+    $('catexpand').src = "images/collapse.gif";
+    catsVisible = true;
+  } else {
+    $('categorylist').style.display = "none";
+    $('catexpand').src = "images/expand.gif";
+    catsVisible = false;
+  }
+}
+
+function selectAllCategories ()
+{
+<?php
+  foreach ( $categories as $catId => $val ) {
+    if ( $catId > 0 ) {
+      $checkboxName = "cat-" . $catId;
+      echo "  $('" . $checkboxName . "').checked = true;\n";
+    }
+  }
+?>
+  handleCategoryCheckboxChange ();
+}
+
+function selectNoCategories ()
+{
+<?php
+  foreach ( $categories as $catId => $val ) {
+    if ( $catId > 0 ) {
+      $checkboxName = "cat-" . $catId;
+      echo "  $('" . $checkboxName . "').checked = false;\n";
+    }
+  }
+?>
+  handleCategoryCheckboxChange ();
+}
+
+function handleCategoryCheckboxChange()
+{
+  var newText = '';
+  var cnt = 0, cntOff = 0;
+  var all = false;
+  selectedCats = [];
+<?php
+  foreach ( $categories as $catId => $val ) {
+    if ( $catId > 0 ) {
+      $checkboxName = "cat-" . $catId;
+      $varName = "cat" . $catId;
+      echo "  var $varName = document.getElementById('$checkboxName');\n";
+      echo "  if ( " . $varName . ' && ' . $varName . '.checked ) {' . "\n";
+      echo '    selectedCats[cnt] = ' . $catId . ';' . "\n";
+      echo "    if ( cnt++ > 0 ) newText += ', ';\n";
+      echo "    newText += \"" . $categories[$catId]['cat_name'] . "\";\n";
+      echo '    categories[' . $catId . '].state = 1;' . "\n";
+      echo '  } else { ' . "\n";
+      echo '    cntOff++;' . "\n";
+      echo '    categories[' . $catId . '].state = 0;' . "\n";
+      echo '  }' . "\n";
+    }
+  }
+?>
+  if ( cnt == 0 || cntOff == 0 ) {
+    newText = '<?php etranslate('All');?>';
+    for ( var catId in categories ) {
+      categories[catId].state = 1;
+    }
+    allCatsSelected = true;
+  } else {
+    allCatsSelected = false;
+  }
+  $('selectedcategories').innerHTML = newText;
+
+  // Update display
+  update_display ( currentYear, currentMonth );
+}
 
 function load_content (year,month)
 {
@@ -416,6 +548,8 @@ function view_event ( key, location )
 
 function update_display ( year, month )
 {
+  currentYear = year;
+  currentMonth = month;
   $('contentDay').innerHTML = "Not yet implemented...";
   $('contentWeek').innerHTML = "Not yet implemented...";
   $('contentMonth').innerHTML = build_month_view ( year, month );
@@ -451,6 +585,7 @@ function next_month_link ( year, month )
     y + "," + m + ")\">&gt;</span>";
 }
 
+// Build the HTML for the month view
 function build_month_view ( year, month )
 {
   var ret = "";
@@ -500,10 +635,18 @@ function build_month_view ( year, month )
         // event data for that date.
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
           var myEvent = eventArray[l];
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+          // See if this event matches selected categories.
+          if ( ! allCatsSelected ) {
+            if ( ! eventMatchesSelectedCats ( myEvent ) )
+              continue;
+          }
+<?php } ?>
           var id = 'popup-' + key + "-" + myEvent._id;
           ret += "<div class=\"clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
             " onmouseout=\"hidePopUp('" + id + "')\"" +
             " onclick=\"view_event('" + key + "'," + l + ")\">";
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
           if ( categories && categories.length ) {
             var catId = myEvent._category;
             if ( catId < 0 ) catId = 0 - catId;
@@ -511,6 +654,7 @@ function build_month_view ( year, month )
               ret += '<img src="' + categories[catId].icon + '"/>';
             }
           }
+<?php } ?>
           ret += myEvent._name + "</div>";
           // Create popup
           if ( ! document.getElementById ( id ) ) {
@@ -532,6 +676,29 @@ function build_month_view ( year, month )
   }
   return ret;
 }
+
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+function eventMatchesSelectedCats ( event ) {
+  if ( ! event._categories || event._categories.length == 0 )
+    return false;
+  for ( var i = 0; i < event._categories.length; i++ ) {
+    var catId = event._categories[i];
+    if ( isInArray ( catId, selectedCats ) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function isInArray ( val, searchArr )
+{
+  for ( var i = 0; i < searchArr.length; i++ ) {
+    if ( searchArr[i] == val )
+      return true;
+  }
+  return false;
+}
+<?php } ?>
 
 // This function mimics the date_to_str PHP function found in
 // includes/functions.php.
