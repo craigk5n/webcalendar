@@ -292,6 +292,7 @@ var users = [];
   }
 ?>
 
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
 function setCategoryVisibility (newIsVisible)
 {
   if ( newIsVisible ) {
@@ -369,6 +370,8 @@ function handleCategoryCheckboxChange()
   // Update display
   update_display ( currentYear, currentMonth );
 }
+
+<?php } ?>
 
 function load_content (year,month)
 {
