@@ -587,6 +587,16 @@ function next_month_link ( year, month )
   return "<span class=\"clickable fakebutton\" onclick=\"load_content(" +
     y + "," + m + ")\">&gt;</span>";
 }
+function today_link ()
+{
+  var today = new Date ();
+  var m = today.getMonth() + 1;
+  var y = today.getYear () + 1900;
+  return "<span class=\"clickable fakebutton\" onclick=\"load_content(" +
+    y + "," + m + ")\">" +
+   '<img src="includes/menu/icons/today.png" style="vertical-align: middle;"/>'
+   + " <?php etranslate('Today');?></span>";
+}
 
 // Build the HTML for the month view
 function build_month_view ( year, month )
@@ -595,7 +605,8 @@ function build_month_view ( year, month )
   try {
     var dateYmd;
     ret = prev_month_link ( year, month ) +
-      next_month_link ( year, month ) + "&nbsp;" +
+      next_month_link ( year, month ) +
+      today_link () + "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
       "<span id=\"monthstatus\"> </span>" +
       "<table id=\"month_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"1\"><tr>";

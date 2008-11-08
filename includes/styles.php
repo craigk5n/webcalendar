@@ -1379,11 +1379,11 @@ echo '  body {
   .fakebutton {
      color: #000;
      font-size: 12pt;
-     background-color: #a0a0a0;
-     border-top: 2px solid #e0e0e0;
-     border-left: 2px solid #e0e0e0;
-     border-bottom: 2px solid #808080;
-     border-right: 2px solid #808080;
+     background-color: #d0d0d0;
+     border-top: 1px solid #e0e0e0;
+     border-left: 1px solid #e0e0e0;
+     border-bottom: 1px solid #808080;
+     border-right: 1px solid #808080;
      padding-left: 5px;
      padding-right: 5px;
   }
