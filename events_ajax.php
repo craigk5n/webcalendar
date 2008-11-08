@@ -45,6 +45,8 @@ load_global_settings ();
 load_user_preferences ();
 $WebCalendar->setLanguage ();
 
+load_user_layers ();
+
 $debug = getValue ( 'debug' );
 $debug = ! empty ( $debug );
 $action = getValue ( 'action' );
@@ -82,6 +84,7 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 
 if ( $action == 'get' ) {
   $dates = array ();
+  $eventCats = array ();
 //echo "startdate: $startdate <br>enddate: $enddate<br>";
   /* Pre-Load the repeated events for quicker access */
   $repeated_events = read_repeated_events ( $user, $startTime, $endTime );
@@ -90,6 +93,23 @@ if ( $action == 'get' ) {
   $tasks = array ();
   if ( $DISPLAY_TASKS_IN_GRID == 'Y' )
     $tasks = read_tasks ( $user, $enddate );
+  // Gather the category IDs for each
+  $ids = array ();
+  for ( $i = 0; $i < count ( $events ); $i++ ) {
+    $id = $events[$i]->getID ();
+    $ids[$id] = $id;
+  }
+  for ( $i = 0; $i < count ( $repeated_events ); $i++ ) {
+    $id = $repeated_events[$i]->getID ();
+    $ids[$id] = $id;
+  }
+  for ( $i = 0; $i < count ( $tasks ); $i++ ) {
+    $id = $tasks[$i]->getID ();
+    $ids[$id] = $id;
+  }
+  // Load all category IDs for the specified event IDs
+  // echo "<pre>"; print_r ( $ids ); echo "</pre>";
+  load_category_ids ( $ids );
 
   // TODO:  We need to be able to start a week on ANY day.
   $wkstart = get_weekday_before ( $startyear, $startmonth );
@@ -105,7 +125,8 @@ if ( $action == 'get' ) {
       $myRepEvents =  get_repeating_entries ( $user, $dateYmd );
       $ev = combine_and_sort_events ( $myEvents, $myRepEvents );
       setLocalTimes ( $ev );
-//echo "<pre>"; print_r ( $ev ); echo "</pre>\n";
+      setCategories ( $ev );
+      //echo "<pre>"; print_r ( $ev ); echo "</pre>\n";
       $dates[$dateYmd] = $ev;
     }
   }
@@ -194,6 +215,47 @@ function setLocalTimes ( $eventList )
       $event->setLocalTime ( $localTime );
     }
   }
+}
+
+function setCategories ( $eventList )
+{
+  global $eventCats;
+
+  for ( $i = 0; $i < count ( $eventList ); $i++ ) {
+    $event = $eventList[$i];
+    $id = $event->getID ();
+    if ( ! empty ( $eventCats[$id] ) ) {
+      $event->setCategories ( $eventCats[$id] );
+    }
+  }
+}
+
+// Get all categories for each event.
+function load_category_ids ( $ids )
+{
+  global $eventCats, $user;
+  //$ids = array_unique ( sort ( $ids, SORT_NUMERIC ) );
+  $sql = 'SELECT cal_id, cat_id FROM webcal_entry_categories ' .
+    'WHERE cal_id IN (?) AND cat_owner in (\'' . $user . '\',NULL)';
+  $idList = implode ( ",", $ids );
+  $res = dbi_execute ( $sql, array ( $idList ) );
+  $eventCats = array ();
+  if ( $res ) {
+    while ( $row = dbi_fetch_row ( $res ) ) {
+      $eventId = $row[0];
+      $catId = $row[1];
+      if ( ! empty ( $eventCats[$eventId] ) && is_array ( $eventCats[$eventId] ) ) {
+        $eventCats[$eventId][] = $catId;
+      } else {
+        $eventCats[$eventId] = array ( $catId );
+      }
+    }
+    dbi_free_result ( $res );
+  } else {
+    ajax_send_error ( translate('Database error') . ": " . dbi_error () );
+    exit;
+  }
+  //echo "<pre>"; print_r ( $eventCats ); echo "</pre>"; exit;
 }
 
 exit;
