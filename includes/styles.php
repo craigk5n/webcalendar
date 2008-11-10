@@ -1114,7 +1114,7 @@ echo '  body {
     color: #000; padding: 10px;
   }
   #combo div.headerinfo .username {
-    font-size: 120%;
+    font-size: 16pt;
     font-weight: bold;
   }
   #combo div.headerinfo #categoryselection {
