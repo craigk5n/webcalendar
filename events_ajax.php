@@ -235,10 +235,13 @@ function load_category_ids ( $ids )
 {
   global $eventCats, $user;
   //$ids = array_unique ( sort ( $ids, SORT_NUMERIC ) );
-  $sql = 'SELECT cal_id, cat_id FROM webcal_entry_categories ' .
-    'WHERE cal_id IN (?) AND cat_owner in (\'' . $user . '\',NULL)';
   $idList = implode ( ",", $ids );
-  $res = dbi_execute ( $sql, array ( $idList ) );
+  $sql = 'SELECT cal_id, cat_id FROM webcal_entry_categories ' .
+    'WHERE cal_id IN (' . $idList . ') AND ' .
+    '(cat_owner = \'' . $user . '\' OR cat_owner IS NULL) ' .
+    'ORDER BY cat_order';
+  //echo "SQL: $sql <br>";
+  $res = dbi_execute ( $sql, array () );
   $eventCats = array ();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -255,7 +258,8 @@ function load_category_ids ( $ids )
     ajax_send_error ( translate('Database error') . ": " . dbi_error () );
     exit;
   }
-  //echo "<pre>"; print_r ( $eventCats ); echo "</pre>"; exit;
+  //echo "<pre>"; print_r ( $ids ); echo "</pre>"; exit;
+  //echo "idList: $idList <br><pre>"; print_r ( $eventCats ); echo "</pre>"; exit;
 }
 
 exit;
