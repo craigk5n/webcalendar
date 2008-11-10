@@ -85,8 +85,10 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 if ( $action == 'get' ) {
   $dates = array ();
   $eventCats = array ();
-//echo "startdate: $startdate <br>enddate: $enddate<br>";
   /* Pre-Load the repeated events for quicker access */
+  $wkstart = get_weekday_before ( $startyear, $startmonth );
+  $startTime = $wkstart;
+  //echo "startdate: $startdate <br>enddate: $enddate<br>startTime: $startTime<br>";
   $repeated_events = read_repeated_events ( $user, $startTime, $endTime );
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $user, $startTime, $endTime );
@@ -112,7 +114,6 @@ if ( $action == 'get' ) {
   load_category_ids ( $ids );
 
   // TODO:  We need to be able to start a week on ANY day.
-  $wkstart = get_weekday_before ( $startyear, $startmonth );
   $monthend = date ( 'Ymd',
     mktime ( 0, 0, 0, $startmonth + 1, 0, $startyear ) );
   for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthend; $i += 604800 ) {

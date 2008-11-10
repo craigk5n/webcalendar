@@ -657,7 +657,7 @@ function build_month_view ( year, month )
           }
 <?php } ?>
           var id = 'popup-' + key + "-" + myEvent._id;
-          ret += "<div class=\"clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
+          ret += "<div class=\"event clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
             " onmouseout=\"hidePopUp('" + id + "')\"" +
             " onclick=\"view_event('" + key + "'," + l + ")\">";
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
