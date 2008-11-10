@@ -1130,11 +1130,20 @@ echo '  body {
     border: 1px solid #ccc;
     background-color: #ffa;
   }
+  #contentMonth #monthstatus {
+    margin-left: 20px;
+  }
   #contentMonth .monthtitle {
     font-size: 120%;
     text-align: center;
     margin: 0;
     padding: 0;
+  }
+  #combo .event {
+    overflow: hidden;
+    /*background-color: #090;*/
+    /*height: 25px;*/
+    margin-top: 1px;
   }
   .topnav {
     border:0;
