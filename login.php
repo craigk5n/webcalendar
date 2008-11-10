@@ -75,6 +75,7 @@ $appStr = generate_application_name ();
 
 $login = getPostValue ( 'login' );
 $password = getPostValue ( 'password' );
+$remember = getPostValue ( 'remember' );
 
 // Calculate path for cookie.
 if ( empty ( $PHP_SELF ) )
