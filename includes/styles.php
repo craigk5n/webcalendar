@@ -1134,9 +1134,10 @@ echo '  body {
     margin-left: 20px;
   }
   #contentMonth .monthtitle {
-    font-size: 120%;
+    font-size: 14pt;
     text-align: center;
     margin: 0;
+    margin-left: 5px;
     padding: 0;
   }
   #combo .event {
@@ -1387,7 +1388,7 @@ echo '  body {
   }
   .fakebutton {
      color: #000;
-     font-size: 12pt;
+     font-size: 10pt;
      background-color: #d0d0d0;
      border-top: 1px solid #e0e0e0;
      border-left: 1px solid #e0e0e0;
