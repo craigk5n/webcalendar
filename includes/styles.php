@@ -1074,7 +1074,6 @@ echo '  body {
   #month .main td {
     height:75px;
     font-size:12px;
-    overflow:auto;
     table-layout:fixed;
     vertical-align:top;
   }
