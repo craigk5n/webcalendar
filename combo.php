@@ -64,6 +64,12 @@ $view_width = empty ( $VIEW_EVENT_DIALOG_WIDTH ) ? "350" :
 $view_height = empty ( $VIEW_EVENT_DIALOG_HEIGHT ) ? "300" :
   $VIEW_EVENT_DIALOG_HEIGHT;
 
+// Get width/height settings for modal dialog used for "quick add"
+$quick_add_width = empty ( $QUICK_ADD_DIALOG_WIDTH ) ? "450" :
+  $QUICK_ADD_DIALOG_WIDTH;
+$quick_add_height = empty ( $QUICK_ADD_DIALOG_HEIGHT ) ? "200" :
+  $QUICK_ADD_DIALOG_HEIGHT;
+
 $BodyX = 'onload="load_content(' . $thisyear . ',' . $thismonth .
   ');"';
 
@@ -207,6 +213,38 @@ Tasks content goes here...
 </table>
 </div>
 
+<!-- Hidden div tag for Quick Add dialog -->
+<div id="quickAddDiv" style="display: none;">
+<table border="0" width="100%">
+<tr><td class="aligntop bold"><?php etranslate('Date');?>:</td>
+  <td><span id="quickAddDateFormatted"></span>
+  <input type="hidden" id="quickAddDate" name="quickAddDate" /></td></tr>
+<tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
+  <td><input id="quickAddName" name="quickAddName" /></td></tr>
+<tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
+  <td><textarea id="quickAddDescription" name="quickAddDescription"
+       rows="4" cols="40" wrap="virtual"></textarea></td></tr>
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+<tr><td class="aligntop bold"><?php etranslate('Category');?>:</td>
+  <td><select id="quickAddCategory" name="quickAddCategory">
+     <option value="-1"><?php etranslate('None');?></option>
+     <?php
+     foreach ( $categories as $K => $V ) {
+       if ( $K > 1 ) {
+         echo '<option value="' . $K . '">' .
+           htmlspecialchars ( $categories[$K]['cat_name'] ) . "</option>\n";
+       }
+     }
+     ?>
+     </select></td></tr>
+<?php } ?>
+<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="quickAddHandler()"/><br/>
+<span class="clickable" onclick="addEventDetail()"><?php etranslate("Add event detail");?></span>
+</td></tr>
+</table>
+</div>
+
+
 <script type="text/javascript">
 
 // Initialize tabs
@@ -242,6 +280,7 @@ var categories = [];
 ?>
 <?php } ?>
 var viewDialog = null;
+var quickAddDialog = null;
 var catsVisible = false;
 var events = new Array ();
 var loadedMonths = new Array (); // Key will be format "200801" For Jan 2008
@@ -455,6 +494,10 @@ function view_event ( key, location )
     'width=<?php echo $view_width;?>px,height=<?php echo $view_height;?>px' +
     'resize=1,scrolling=1,center=1' );
 
+  viewDialog.onclose = function () {
+    viewDialog = null;
+  }
+
   $('name').innerHTML = myEvent._name;
   $('description').innerHTML = format_description ( myEvent._description );
   $('date').innerHTML = format_date ( myEvent._localDate, true );
@@ -598,6 +641,93 @@ function today_link ()
    + " <?php etranslate('Today');?></span>";
 }
 
+function monthCellClickHandler ( dateYmd )
+{
+  // Make sure user has not opened the view dialog.  When a user clicks
+  // on an event to view it, we will still receive the onclick event for
+  // the td cell onclick handler below it.
+  if ( viewDialog != null )
+    return;
+  quickAddDialog = dhtmlmodal.open ( 'quickAddDialog', 'div',
+    'quickAddDiv', '<?php etranslate('Add Entry');?>',
+    'width=<?php echo $quick_add_width;?>px,height=<?php echo $quick_add_height;?>px,' +
+    'resize=1,scrolling=1,center=1' );
+
+  $('quickAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Event');?>" );
+  $('quickAddName').select ();
+  $('quickAddName').focus ();
+  $('quickAddDescription').innerHTML = "";
+  $('quickAddDate').setAttribute ( 'value', dateYmd );
+  $('quickAddDateFormatted').innerHTML = format_date ( "" + dateYmd, true );
+  $('quickAddCategory').selectedIndex = 0;
+}
+
+
+// Handler for user click the "Save" button in the Add Event dialog
+// window.
+function quickAddHandler ()
+{
+  var name = $('quickAddName').value;
+  var description = $('quickAddDescription').value;
+  var dateYmd = $('quickAddDate').value;
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+  var catObj = $('quickAddCategory');
+  var category = catObj.options[catObj.selectedIndex].value;
+<?php } ?>
+  //alert ( 'name: ' + name + '\ndescription: ' + description +
+  //  '\ndate: ' + dateYmd + '\ncategory: ' + category );
+  new Ajax.Request('events_ajax.php',
+  {
+    method:'post',
+    parameters: { action: 'addevent', date: dateYmd,
+      name: name, description: description<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
+    onSuccess: function(transport){
+      if ( ! transport.responseText ) {
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
+        return;
+      }
+      //alert ( "Response:\n" + transport.responseText );
+      try  {
+        //var response = transport.responseText.evalJSON ();
+        // Hmmm... The Prototype JSON above doesn't seem to work!
+        var response = eval('(' + transport.responseText + ')');
+      } catch ( err ) {
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        return;
+      }
+      if ( response.error ) {
+        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        return;
+      }
+      // Successfully added :-)
+      //alert('Event added');
+      // force reload of data.
+      events = [];
+      quickAddDialog.hide ();
+      var monthKey = "" + currentYear + ( currentMonth < 10 ? "0" : "" ) + currentMonth;
+      loadedMonths[monthKey] = 0;
+      load_content ( currentYear, currentMonth );
+    },
+    onFailure: function(){ alert('<?php etranslate("Error");?>') }
+  });
+}
+
+function addEventDetail ()
+{
+  var url = 'edit_entry.php?date=' + $('quickAddDate').value;
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+  var catObj = $('quickAddCategory');
+  var category = catObj.options[catObj.selectedIndex].value;
+  if ( category > 0 )
+    url += '&cat_id=' + category;
+<?php } ?>
+  url += '&name=' + escape($('quickAddName').value) +
+    '&description=' + escape($('quickAddDescription').value);
+  window.location.href = url;
+  return true;
+}
+
+
 // Build the HTML for the month view
 function build_month_view ( year, month )
 {
@@ -643,7 +773,8 @@ function build_month_view ( year, month )
           class = 'today';
         if ( eventArray && eventArray.length > 0 )
           class += ' entry hasevents';
-        ret += "<td class=\"" + class + "\">";
+        ret += "<td class=\"" + class +
+          "\" onclick=\"return monthCellClickHandler(" + key + ")\">";
         ret += "<span class=\"dayofmonth\">" + i + "</span><br/>";
         // If eventArray is null here, that means we have not loaded
         // event data for that date.
