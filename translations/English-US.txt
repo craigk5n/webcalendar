@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-30-2008
+# Translation last updated on 11-14-2008
 
 charset: iso-8859-1
 direction: ltr
@@ -501,6 +501,37 @@ Custom Colors: Custom Colors
 Old Color: Old Color
 
 ########################################
+# Page: combo.php
+#
+Select None: Select None
+Description: Description
+Date: Date
+Time: Time
+Priority: Priority
+Access: Access
+Created by: Created by
+Updated: Updated
+Participants: Participants
+Attachments: Attachments
+Comments: Comments
+Brief Description: Brief Description
+Full Description: Full Description
+Category: Category
+Add event detail: Add event detail
+All: All
+Error: Error
+no response from server: no response from server
+JSON error: JSON error
+High: High
+Medium: Medium
+Low: Low
+Today: Today
+Add Entry: Add Entry
+Unnamed Event: Unnamed Event
+pm: pm
+am: am
+
+########################################
 # Page: del_entry.php
 #
 XXX has canceled an appointment.: XXX has canceled an appointment.
@@ -518,7 +549,6 @@ Add Attachment: Add Attachment
 Subject: Subject
 Comment: Comment
 Upload file: Upload file
-Description: Description
 
 ########################################
 # Page: docdel.php
@@ -528,8 +558,6 @@ Removed: Removed
 ########################################
 # Page: edit_entry.php
 #
-am: am
-pm: pm
 days: days
 hours: hours
 minutes: minutes
@@ -543,24 +571,14 @@ XXX is in a different timezone (ahead): (XXX is in a different timezone; YYY ahe
 XXX is in a different timezone (behind): (XXX is in a different timezone; YYY behind you.<br />&nbsp;ZZZ)
 Time entered here is based on your Timezone.: Time entered here is based on <b>your</b> Timezone.
 Edit Entry: Edit Entry
-Add Entry: Add Entry
 Details: Details
-Participants: Participants
 Repeat: Repeat
 Reminders: Reminders
 brief-description-help: This should provide a short description (about 20 characters) of the event. This will represent the event when viewing the calendar.
-Brief Description: Brief Description
 full-description-help: This should complete details of the event. This information can be seen when a user views the event.
-Full Description: Full Description
 access-help: Specifies the access level of the event. <ul><li><em>Public</em>: Everyone can see the full details of the event. </li><li><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.</li></ul>
-Access: Access
 priority-help: Specifies the priority of the event. High priority events will be displayed in bold.
-Priority: Priority
-High: High
-Medium: Medium
-Low: Low
 category-help: Specifies the category of the event.
-Category: Category
 completed-help: Date task is completed. Only enabled when all participants percentage equals 100%.
 Date Completed: Date Completed
 percent-help: Task completion percentage for this user
@@ -572,13 +590,11 @@ url-help: Event URL
 URL: URL
 date-help: Specifies the date of the event.
 Start Date: Start Date
-Date: Date
 Untimed event: Untimed event
 Timed event: Timed event
 All day event: All day event
 Timezone Offset: Timezone Offset
 time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
-Time: Time
 duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
@@ -618,7 +634,6 @@ Weekdays Only: Weekdays Only
 Week Start: Week Start
 repeat-bydayextended-help: Allows date selection based on day of week.
 ByDay: ByDay
-All: All
 repeat-month-help: Specifies which months the event should repeat in.
 ByMonth: ByMonth
 repeat-bysetpos-help: Allows date selection based on position withing the month.
@@ -665,24 +680,6 @@ Your suggested time of: Your suggested time of
 conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
 
 ########################################
-# Page: edit_layer.php
-#
-Add Layer: Add Layer
-Edit Layer: Edit Layer
-Source: Source
-Duplicates: Duplicates
-Show layer events that are the same as your own: Show layer events that are the same as your own
-Add to Others: Add to Others
-Add to My Calendar: Add to My Calendar
-Delete layer: Delete layer
-
-########################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself.: You cannot create a layer for yourself.
-You can only create one layer for each user.: You can only create one layer for each user.
-
-########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
@@ -711,7 +708,6 @@ Required to View Remote Calendar: Required to View Remote Calendar
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Error
 Import Results: Import Results
 Events successfully imported: Events successfully imported
 Create a new layer to view this calendar.: Create a new layer to view this calendar.
@@ -722,7 +718,6 @@ There was an error parsing the import file or no events were returned.: There wa
 # Page: edit_report.php
 #
 Tomorrow: Tomorrow
-Today: Today
 Yesterday: Yesterday
 Day before yesterday: Day before yesterday
 Next week: Next week
@@ -800,6 +795,11 @@ You have not entered a password.: You have not entered a password.
 Username cannot be blank.: Username cannot be blank.
 
 ########################################
+# Page: events_ajax.php
+#
+Unknown error.: Unknown error.
+
+########################################
 # Page: export.php
 #
 Export: Export
@@ -828,8 +828,6 @@ Unnamed Group: Unnamed Group
 Add Group: Add Group
 Edit Group: Edit Group
 Group name: Group name
-Updated: Updated
-Created by: Created by
 
 ########################################
 # Page: group_edit_handler.php
@@ -918,8 +916,10 @@ Clicking the Edit Layers link in the admin section at the bottom of the page wil
 The text color of the new layer that will be displayed in your calendar.: The text color of the new layer that will be displayed in your calendar.
 Disabling: Disabling
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.
+Duplicates: Duplicates
 If checked, events that are duplicates of your events will be shown.: If checked, events that are duplicates of your events will be shown.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
+Source: Source
 Specifies the user that you would like to see displayed in your calendar.: Specifies the user that you would like to see displayed in your calendar.
 
 ########################################
@@ -985,21 +985,23 @@ The import file contained no data.: The import file contained no data.
 #
 Layer: Layer
 Edit layer: Edit layer
+Delete layer: Delete layer
 Are you sure you want to delete this layer?: Are you sure you want to delete this layer?
 Enable layers: Enable layers
 Layers are currently enabled.: Layers are currently <strong>enabled</strong>.
 Layers are currently disabled.: Layers are currently <strong>disabled</strong>.
 Disable Layers: Disable Layers
 Add layer: Add layer
-JSON error: JSON error
-no response from server: no response from server
+Add Layer: Add Layer
+Edit Layer: Edit Layer
 
 ########################################
 # Page: layers_ajax.php
 #
 Unable to update preference: Unable to update preference
 Invalid entry id.: Invalid entry id.
-Unknown error.: Unknown error.
+You cannot create a layer for yourself.: You cannot create a layer for yourself.
+You can only create one layer for each user.: You can only create one layer for each user.
 
 ########################################
 # Page: list_unapproved.php
@@ -1244,8 +1246,6 @@ by: by
 Percentage Complete: Percentage Complete
 External User: External User
 Update: Update
-Attachments: Attachments
-Comments: Comments
 at: at
 comments: comments
 Show: Show
@@ -1253,6 +1253,7 @@ Hide: Hide
 Approve/Confirm entry: Approve/Confirm entry
 Reject entry: Reject entry
 Set category: Set category
+Add to My Calendar: Add to My Calendar
 Copy entry: Copy entry
 This will delete this entry for all users.: This will delete this entry for all users.
 Edit entry: Edit entry
@@ -1588,7 +1589,6 @@ Until: Until
 Count: Count
 Inclusion Dates: Inclusion Dates
 Exclusion Dates: Exclusion Dates
-Unnamed Event: Unnamed Event
 Event Imported: Event Imported
 
 ########################################
@@ -1655,11 +1655,6 @@ Invalid Date: Invalid Date
 You have not entered a valid time of day: You have not entered a valid time of day
 
 ########################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Invalid color
-
-########################################
 # Page: includes/js/edit_nonuser.php
 #
 Calendar ID cannot be blank.: Calendar ID cannot be blank.
@@ -1668,6 +1663,7 @@ First and last names cannot both be blank.: First and last names cannot both be 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
+Invalid color: Invalid color
 URL cannot be blank.: URL cannot be blank.
 
 ########################################

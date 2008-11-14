@@ -135,7 +135,7 @@ if ( $action == 'get' ) {
   if ( $debug ) {
     echo "<pre>"; print_r ( $objects ); echo "</pre>\n";
   }
-  ajax_send_objects ( $objects, true );
+  ajax_send_objects ( $objects );
 } else if ( $action == 'eventinfo' ) {
   // TODO: enforce user access control here...
   $id = getIntValue ( 'id' );
@@ -191,6 +191,51 @@ if ( $action == 'get' ) {
   } else {
     ajax_send_error ( translate('Unknown error.') );
   }
+} else if ( $action == 'addevent' ) {
+  // This is a simple add event function.  It will be added as
+  // an untimed event, so we don't need to check for conflicts.
+  $date = getPostValue ( 'date' );
+  $cat_id = getPostValue ( 'cat_id' );
+  $name = getPostValue ( 'name' );
+  $description = getPostValue ( 'description' );
+  if ( $description == '' )
+    $description = $name;
+  $user = $login;
+  // Get new ID
+  $id = 1;
+  $res = dbi_query ( "SELECT MAX(cal_id) FROM webcal_entry" );
+  if ( $row = dbi_fetch_row ( $res ) ) {
+    $id = $row[0] + 1;
+  }
+  dbi_free_result ( $res );
+  $mod_date = gmdate ( 'Ymd' );
+  $mod_time = gmdate ( 'His' );
+  $sql = 'INSERT INTO webcal_entry ( cal_id, cal_create_by, cal_date, ' .
+    'cal_time, cal_mod_date, cal_mod_time, ' .
+    'cal_duration, cal_priority, cal_access, cal_type, cal_name, ' .
+    'cal_description ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+  $values = array ( $id, $login, $date, -1, $mod_date, $mod_time,
+    0, 5, 'P', 'E', $name, $description );
+  if ( ! dbi_execute ( $sql, $values ) ) {
+    ajax_send_error ( translate('Database error') . ": " . dbi_error () );
+    exit;
+  }
+  if ( $cat_id > 0 ) {
+    $sql =
+      'INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) ' .
+      'VALUES ( ?, ?, ? )';
+    $values = array ( $id, $cat_id, $user );
+    if ( ! dbi_execute ( $sql, $values ) ) {
+      ajax_send_error ( translate('Database error') . ": " . dbi_error () );
+      exit;
+    }
+  }
+  if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
+      cal_status ) VALUES ( ?, ?, ? )',
+        array ( $id, $user, 'A' ) ) ) {
+    ajax_send_error ( translate('Database error') . ": " . dbi_error () );
+  }
+  ajax_send_success ();
 } else {
   ajax_send_error ( translate('Unknown error.') );
 }
