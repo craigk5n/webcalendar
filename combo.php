@@ -496,6 +496,7 @@ function view_event ( key, location )
 
   viewDialog.onclose = function () {
     viewDialog = null;
+    return true;
   }
 
   $('name').innerHTML = myEvent._name;
