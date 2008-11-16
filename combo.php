@@ -703,7 +703,6 @@ function quickAddHandler ()
       // Successfully added :-)
       //alert('Event added');
       // force reload of data.
-      events = [];
       quickAddDialog.hide ();
       var monthKey = "" + currentYear + ( currentMonth < 10 ? "0" : "" ) + currentMonth;
       loadedMonths[monthKey] = 0;
