@@ -25,7 +25,7 @@ include 'includes/classes/DocList.class';
 include 'includes/classes/AttachmentList.class';
 include 'includes/classes/CommentList.class';
 
-send_no_cache_header ();
+//send_no_cache_header ();
 
 $LOADING = '<div style="height: 220px; padding-top: 190px;"><center><img src="images/loading_animation.gif" alt=""/></center></div>';
 $SMALL_LOADING = '<img src="images/loading_animation_small.gif" alt="..." width="16" height="16"/>';
@@ -69,6 +69,19 @@ $quick_add_width = empty ( $QUICK_ADD_DIALOG_WIDTH ) ? "450" :
   $QUICK_ADD_DIALOG_WIDTH;
 $quick_add_height = empty ( $QUICK_ADD_DIALOG_HEIGHT ) ? "200" :
   $QUICK_ADD_DIALOG_HEIGHT;
+
+$can_add = true;
+if ( $readonly == 'Y' )
+  $can_add = false;
+else if ( access_is_enabled () )
+  $can_add = access_can_access_function ( ACCESS_EVENT_EDIT );
+else {
+  if ( $login == '__public__' )
+    $can_add = ( $GLOBALS['PUBLIC_ACCESS_CAN_ADD'] == 'Y' );
+  else if ( $is_nonuser )
+    $can_add = false;
+}
+
 
 $BodyX = 'onload="load_content(' . $thisyear . ',' . $thismonth .
   ');"';
@@ -615,9 +628,21 @@ function prev_month_link ( year, month )
     m = month - 1;
     y = year;
   }
-  return "<span class=\"clickable fakebutton\" onclick=\"load_content(" +
+  return "<span id=\"prevmonth\" class=\"clickable fakebutton\" onclick=\"load_content(" +
     y + "," + m + ")\">&lt;</span>";
 }
+
+function prev_year_link ( year, month )
+{
+  return "<span id=\"prevyear\" class=\"clickable fakebutton\" onclick=\"load_content(" + ( year - 1 ) +
+    "," + month + ")\">&lt;&lt;</span>";
+}
+function next_year_link ( year, month )
+{
+  return "<span id=\"nextyear\" class=\"clickable fakebutton\" onclick=\"load_content(" + ( year + 1 ) +
+    "," + month + ")\">&gt;&gt;</span>";
+}
+
 function next_month_link ( year, month )
 {
   var m, y;
@@ -628,7 +653,7 @@ function next_month_link ( year, month )
     m = month + 1;
     y = year;
   }
-  return "<span class=\"clickable fakebutton\" onclick=\"load_content(" +
+  return "<span id=\"nextmonth\" class=\"clickable fakebutton\" onclick=\"load_content(" +
     y + "," + m + ")\">&gt;</span>";
 }
 function today_link ()
@@ -727,6 +752,12 @@ function addEventDetail ()
   return true;
 }
 
+function refresh ()
+{
+  loadedMonths = []; // forget all events...
+  load_content ( currentYear, currentMonth );
+}
+
 
 // Build the HTML for the month view
 function build_month_view ( year, month )
@@ -736,7 +767,12 @@ function build_month_view ( year, month )
     var dateYmd;
     ret = prev_month_link ( year, month ) +
       next_month_link ( year, month ) +
-      today_link () + "&nbsp;" +
+      prev_year_link ( year, month ) +
+      next_year_link ( year, month ) +
+      "<span id=\"refresh\" class=\"clickable fakebutton\" onclick=\"refresh()\">" +
+      '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>"/></span>' +
+      today_link () +
+      "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
       "<span id=\"monthstatus\"> </span>" +
       "<table id=\"month_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"1\"><tr>";
@@ -773,9 +809,11 @@ function build_month_view ( year, month )
           class = 'today';
         if ( eventArray && eventArray.length > 0 )
           class += ' entry hasevents';
-        ret += "<td class=\"" + class +
-          "\" onclick=\"return monthCellClickHandler(" + key + ")\">";
-        ret += "<span class=\"dayofmonth\">" + i + "</span><br/>";
+        ret += "<td class=\"" + class + "\"";
+<?php if ( $can_add ) { ?>
+        ret += " onclick=\"return monthCellClickHandler(" + key + ")\"";
+<?php } ?>
+        ret += "><span class=\"dayofmonth\">" + i + "</span><br/>";
         // If eventArray is null here, that means we have not loaded
         // event data for that date.
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
