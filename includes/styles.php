@@ -1399,6 +1399,9 @@ echo '  body {
   .fakebutton hover {
     background-color: #0ff;
   }
+  #combo #nextmonth { margin-right: 3px; }
+  #combo #refresh { margin-right: 3px; }
+  #combo #nextyear { margin-right: 3px; }
   #quickAddDiv {
     background-color: #ffffff;
     border: 1px solid #b0b0b0;
