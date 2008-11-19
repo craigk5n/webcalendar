@@ -448,8 +448,9 @@ function load_content (year,month)
   //$('contentWeek').innerHTML = '<?php echo $LOADING;?>';
   //$('contentMonth').innerHTML = '<?php echo $LOADING;?>';
   var o = $('monthstatus');
-  if ( o )
-    o.innerHTML = '<?php echo $SMALL_LOADING;?>';
+  if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
+  o = $('agendastatus');
+  if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
 <?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
   $('contentTasks').innerHTML = '<?php echo $LOADING;?>';
 <?php } ?>
@@ -881,7 +882,7 @@ function build_agenda_view ( year, month )
       today_link () +
       "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
-      "<span id=\"monthstatus\"> </span>" +
+      "<span id=\"agendastatus\"> </span>" +
       "<dl>\n";
 
     var d = new Date ();

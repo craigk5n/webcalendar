@@ -1129,9 +1129,7 @@ echo '  body {
     border: 1px solid #ccc;
     background-color: #ffa;
   }
-  #contentMonth #monthstatus {
-    margin-left: 20px;
-  }
+  #contentMonth #monthstatus { margin-left: 20px; }
   #contentMonth .monthtitle {
     font-size: 14pt;
     text-align: center;
@@ -1145,6 +1143,7 @@ echo '  body {
     /*height: 25px;*/
     margin-top: 1px;
   }
+  #contentAgenda #agendastatus { margin-left: 20px; }
   #contentAgenda dt {
     font-size: 10pt;
     background-color: #e0e0e0;
