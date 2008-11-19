@@ -1144,13 +1144,13 @@ echo '  body {
     margin-top: 1px;
   }
   #contentAgenda #agendastatus { margin-left: 20px; }
-  #contentAgenda dt {
+  #contentAgenda td.odd {
     font-size: 10pt;
-    background-color: #e0e0e0;
+    background-color: #E0E0E0;
   }
-  #contentAgenda dd {
+  #contentAgenda td.even {
     font-size: 10pt;
-    background-color: #c0c0c0;
+    background-color: #ffffff;
   }
   .topnav {
     border:0;
