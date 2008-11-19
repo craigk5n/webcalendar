@@ -157,11 +157,12 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 
 <ul id="viewtabs" class="shadetabs" style="margin-left: 10px;">
 
-<li><a href="#" rel="contentDay" class="selected">Day</a></li>
-<li><a href="#" rel="contentWeek">Week</a></li>
-<li><a href="#" rel="contentMonth">Month</a></li>
+<li><a href="#" rel="contentDay" class="selected"><?php etranslate('Day');?></a></li>
+<li><a href="#" rel="contentWeek"><?php etranslate('Week');?></a></li>
+<li><a href="#" rel="contentMonth"><?php etranslate('Month')?></a></li>
+<li><a href="#" rel="contentAgenda"><?php etranslate("Agenda");?></a></li>
 <?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
-<li><a href="#" rel="contentTasks">Tasks</a></li>
+<li><a href="#" rel="contentTasks"><?php etranslate('Tasks');?></a></li>
 <?php } ?>
 </ul>
 
@@ -179,11 +180,16 @@ Week content goes here...
 Month content goes here...
 </div>
 
+<div id="contentAgenda" class="tabcontent">
+Agenda content goes here...
+</div>
+
 <?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
 <div id="contentTasks" class="tabcontent">
 Tasks content goes here...
 </div>
 <?php } ?>
+
 
 </div>
 
@@ -613,6 +619,7 @@ function update_display ( year, month )
   $('contentDay').innerHTML = "Not yet implemented...";
   $('contentWeek').innerHTML = "Not yet implemented...";
   $('contentMonth').innerHTML = build_month_view ( year, month );
+  $('contentAgenda').innerHTML = build_agenda_view ( year, month );
 <?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
   $('contentTasks').innerHTML = "Not yet implemented...";
 <?php } ?>
@@ -854,6 +861,97 @@ function build_month_view ( year, month )
       if ( j % 7 == 6 ) ret += "</tr>\n";
     }
     ret += "</table>\n";
+  } catch ( err ) {
+    alert ( "JavaScript exception:\n" + err );
+  }
+  return ret;
+}
+
+// Build the HTML for the Agenda view
+function build_agenda_view ( year, month )
+{
+  var ret = "";
+  try {
+    ret = prev_month_link ( year, month ) +
+      next_month_link ( year, month ) +
+      prev_year_link ( year, month ) +
+      next_year_link ( year, month ) +
+      "<span id=\"refresh\" class=\"clickable fakebutton\" onclick=\"refresh()\">" +
+      '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>"/></span>' +
+      today_link () +
+      "&nbsp;" +
+      "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
+      "<span id=\"monthstatus\"> </span>" +
+      "<dl>\n";
+
+    var d = new Date ();
+    var today = new Date ();
+    d.setYear ( year );
+    d.setMonth ( month - 1 );
+    d.setDate ( 1 );
+
+    var wday = d.getDay ();
+    var startDay = 1 - wday;
+    var daysThisMonth = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
+      daysPerMonth[month];
+
+    for ( var i = 0; i < daysThisMonth; i++ ) {
+      var key = "" + year + ( month < 10 ? "0" : "" ) + month +
+        ( i < 10 ? "0": "" ) + i;
+      var dateYmd = key + ( i < 10 ? "0" : "" ) + i;
+      var eventArray = events[key];
+      var class = '';
+      var leadIn = '';
+      if ( eventArray && eventArray.length > 0 ) {
+        if ( year == ( today.getYear() + 1900 ) &&
+          ( month - 1 ) == today.getMonth() &&
+          i == today.getDate() )
+          class = 'today';
+        if ( eventArray && eventArray.length > 0 )
+          class += ' entry hasevents';
+        class += " clickable";
+        leadIn += "<dt class=\"" + class + "\"";
+<?php if ( $can_add ) { ?>
+        leadIn += " onclick=\"return monthCellClickHandler(" + dateYmd + ")\"";
+<?php } ?>
+        leadIn += ">" + format_date ( dateYmd, true ) + "</dt>\n";
+        for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
+          var myEvent = eventArray[l];
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+          // See if this event matches selected categories.
+          if ( ! allCatsSelected ) {
+            if ( ! eventMatchesSelectedCats ( myEvent ) )
+              continue;
+          }
+<?php } ?>
+          var id = 'popup-' + key + "-" + myEvent._id;
+          ret += leadIn + "<dd class=\"event clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
+            " onmouseout=\"hidePopUp('" + id + "')\"" +
+            " onclick=\"view_event('" + key + "'," + l + ")\">";
+          leadIn = '';
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+          if ( categories && categories.length ) {
+            var catId = myEvent._category;
+            if ( catId < 0 ) catId = 0 - catId;
+            if ( categories[catId] && categories[catId].icon ) {
+              ret += '<img src="' + categories[catId].icon + '"/>';
+            }
+          }
+<?php } ?>
+          ret += myEvent._name + "</dd>";
+          // Create popup
+          if ( ! document.getElementById ( id ) ) {
+            var popup = document.createElement('dl');
+            popup.setAttribute ( 'id', id );
+            popup.className = "popup";
+            popup.innerHTML = "<dt>" +
+              format_description ( myEvent._description ) + "</dt>";
+            document.body.appendChild ( popup );
+          }
+        }
+      }
+    }
+    ret += "</dl>\n";
   } catch ( err ) {
     alert ( "JavaScript exception:\n" + err );
   }
