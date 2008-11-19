@@ -1145,6 +1145,14 @@ echo '  body {
     /*height: 25px;*/
     margin-top: 1px;
   }
+  #contentAgenda dt {
+    font-size: 10pt;
+    background-color: #e0e0e0;
+  }
+  #contentAgenda dd {
+    font-size: 10pt;
+    background-color: #c0c0c0;
+  }
   .topnav {
     border:0;
   }
