@@ -837,15 +837,22 @@ function build_month_view ( year, month )
           ret += "<div class=\"event clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
             " onmouseout=\"hidePopUp('" + id + "')\"" +
             " onclick=\"view_event('" + key + "'," + l + ")\">";
+          var iconImg = '';
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
           if ( categories && categories.length ) {
             var catId = myEvent._category;
             if ( catId < 0 ) catId = 0 - catId;
             if ( categories[catId] && categories[catId].icon ) {
-              ret += '<img src="' + categories[catId].icon + '"/>';
+              iconImg += '<img src="' + categories[catId].icon + '"/>';
             }
           }
 <?php } ?>
+          if ( iconImg == '' ) {
+            ret += '<img src="images/event.gif" alt="."/>';
+          } else {
+            ret += iconImg;
+          }
+         
           ret += myEvent._name + "</div>";
           // Create popup
           if ( ! document.getElementById ( id ) ) {
@@ -883,7 +890,7 @@ function build_agenda_view ( year, month )
       "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
       "<span id=\"agendastatus\"> </span>" +
-      "<dl>\n";
+      "<table border=\"0\">\n";
 
     var d = new Date ();
     var today = new Date ();
@@ -896,26 +903,29 @@ function build_agenda_view ( year, month )
     var daysThisMonth = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
       daysPerMonth[month];
 
+    var cnt = 0;
     for ( var i = 0; i < daysThisMonth; i++ ) {
       var key = "" + year + ( month < 10 ? "0" : "" ) + month +
         ( i < 10 ? "0": "" ) + i;
       var dateYmd = key + ( i < 10 ? "0" : "" ) + i;
       var eventArray = events[key];
-      var class = '';
+      var class = cnt % 2 == 0 ? 'even' : 'odd';
       var leadIn = '';
       if ( eventArray && eventArray.length > 0 ) {
         if ( year == ( today.getYear() + 1900 ) &&
           ( month - 1 ) == today.getMonth() &&
           i == today.getDate() )
-          class = 'today';
+          class += ' today';
         if ( eventArray && eventArray.length > 0 )
           class += ' entry hasevents';
         class += " clickable";
-        leadIn += "<dt class=\"" + class + "\"";
+        leadIn += "<td valign=\"top\" align=\"right\" class=\"" + class + "\"";
 <?php if ( $can_add ) { ?>
-        leadIn += " onclick=\"return monthCellClickHandler(" + dateYmd + ")\"";
+        leadIn += ' title="<?php etranslate('Click to add entry');?>" ' +
+          " onclick=\"return monthCellClickHandler(" + dateYmd + ")\"";
 <?php } ?>
-        leadIn += ">" + format_date ( dateYmd, true ) + "</dt>\n";
+        leadIn += ">" + format_date ( dateYmd, true ) + "</td>\n" +
+          "<td valign=\"top\" class=\"" + class + "\">";
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
           var myEvent = eventArray[l];
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
@@ -926,20 +936,27 @@ function build_agenda_view ( year, month )
           }
 <?php } ?>
           var id = 'popup-' + key + "-" + myEvent._id;
-          ret += leadIn + "<dd class=\"event clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
+          ret += leadIn + "<div class=\"event clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
             " onmouseout=\"hidePopUp('" + id + "')\"" +
             " onclick=\"view_event('" + key + "'," + l + ")\">";
+          if ( leadIn != '' ) cnt++;
           leadIn = '';
+          var iconImg = '';
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
           if ( categories && categories.length ) {
             var catId = myEvent._category;
             if ( catId < 0 ) catId = 0 - catId;
             if ( categories[catId] && categories[catId].icon ) {
-              ret += '<img src="' + categories[catId].icon + '"/>';
+              iconImg += '<img src="' + categories[catId].icon + '"/>';
             }
           }
 <?php } ?>
-          ret += myEvent._name + "</dd>";
+          if ( iconImg == '' ) {
+            ret += '<img src="images/event.gif" alt="."/>';
+          } else {
+            ret += iconImg;
+          }
+          ret += myEvent._name + "</div>";
           // Create popup
           if ( ! document.getElementById ( id ) ) {
             var popup = document.createElement('dl');
@@ -950,9 +967,10 @@ function build_agenda_view ( year, month )
             document.body.appendChild ( popup );
           }
         }
+        ret += "</td></tr>\n";
       }
     }
-    ret += "</dl>\n";
+    ret += "</table>\n";
   } catch ( err ) {
     alert ( "JavaScript exception:\n" + err );
   }
