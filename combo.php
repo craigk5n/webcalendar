@@ -8,10 +8,8 @@
  * - Day view
  * - Week view
  * - Task view
- * - Category selection
  * - Layers
  * - Print layout
- * - Quick add event (like Google Calendar)
  * - Delete event
  *
  * Possibilities for later:
