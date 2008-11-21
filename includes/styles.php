@@ -1152,6 +1152,65 @@ echo '  body {
     font-size: 10pt;
     background-color: #ffffff;
   }
+  #contentDay #daystatus { margin-left: 20px; }
+  #contentDay .timeofday {
+    float: right;
+    margin-right: 2px;
+    font-size: 9px;
+  }
+  #contentDay #daydiv {
+    height: 400px;
+    overflow: auto;
+    scrollTop: 400;
+  }
+  #contentDay #dayuntimed {
+    margin-left: 50px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    border-top: 1px solid #a0a0a0;
+    border-left: 1px solid #a0a0a0;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    font-size: 10px;
+    color:' . $GLOBALS['MYEVENTS'] . ';
+  }
+  #contentDay .daytimedevent {
+    font-size: 10px;
+    /*background-color: #c0c0c0;*/
+    background-color:' . $GLOBALS['HASEVENTSBG'] . ';
+    color:' . $GLOBALS['MYEVENTS'] . ';
+    border-top: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    width: 250px;
+  }
+  #contentDay #dayinnerdiv {
+    height: 1200px;
+    position: relative;
+  }
+  #contentDay .hourblockleft {
+    position: absolute;
+    left: 0px;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #e0e0e0;
+    margin: 0;
+    padding 0;
+  }
+  #contentDay .hourblockright {
+    background-image: url(images/hour_in_day.gif);
+    position: absolute;
+    left: 50px;
+    height: 50px;
+    width: 500px;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    margin: 0;
+    padding 0;
+    /*overflow: auto;*/
+  }
   .topnav {
     border:0;
   }
@@ -1409,6 +1468,8 @@ echo '  body {
   #combo #nextmonth { margin-right: 3px; }
   #combo #refresh { margin-right: 3px; }
   #combo #nextyear { margin-right: 3px; }
+  #combo #nextday { margin-right: 3px; }
+  #combo #nextmonthdayview { margin-right: 3px; }
   #quickAddDiv {
     background-color: #ffffff;
     border: 1px solid #b0b0b0;
