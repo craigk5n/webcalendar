@@ -5,12 +5,10 @@
  * page with tabs.  Content is loaded dynamically with AJAX.
  *
  * TODO:
- * - Day view
  * - Week view
  * - Task view
- * - Layers
  * - Print layout
- * - Delete event
+ * - Delete event (?)
  *
  * Possibilities for later:
  * - Include tab for unapproved events where users could approve from
@@ -81,8 +79,8 @@ else {
 }
 
 
-$BodyX = 'onload="load_content(' . $thisyear . ',' . $thismonth .
-  ');"';
+$BodyX = 'onload="load_content(' . $thisyear . ',' . $thismonth . "," .
+  $thisday . ');"';
 
 // Add Modal Dialog javascript/CSS & Tab code
 $HEAD =
@@ -271,7 +269,7 @@ views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()
 // End init tabs
 
-var currentYear = null, currentMonth = null;
+var currentYear = null, currentMonth = null, currentDay = null;
 
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
 
@@ -424,12 +422,12 @@ function handleCategoryCheckboxChange()
   $('selectedcategories').innerHTML = newText;
 
   // Update display
-  update_display ( currentYear, currentMonth );
+  update_display ( currentYear, currentMonth, currentDay );
 }
 
 <?php } ?>
 
-function load_content (year,month)
+function load_content (year,month,day)
 {
   var startdate = "" + year + ( month < 10 ? "0" : "" ) + month + "01";
   // First, check to see if we already have loaded the content for
@@ -437,7 +435,7 @@ function load_content (year,month)
   var monthKey = "" + year + ( month < 10 ? "0" : "" ) + month;
   if ( loadedMonths[monthKey] > 0 ) {
     //alert ( "Already loaded " + monthKey );
-    update_display ( year, month );
+    update_display ( year, month, day );
     return;
   }
   //alert ( "Loading startdate=" + startdate );
@@ -448,6 +446,8 @@ function load_content (year,month)
   var o = $('monthstatus');
   if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
   o = $('agendastatus');
+  if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
+  o = $('daystatus');
   if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
 <?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
   $('contentTasks').innerHTML = '<?php echo $LOADING;?>';
@@ -479,7 +479,7 @@ function load_content (year,month)
         events[key] = response.dates[key];
       }
       loadedMonths[monthKey] = 1;
-      update_display ( year, month );
+      update_display ( year, month, day );
     },
     onFailure: function(){ alert('<?php etranslate("Error");?>') }
   });
@@ -611,17 +611,75 @@ function view_event ( key, location )
   });
 }
 
-function update_display ( year, month )
+function update_display ( year, month, day )
 {
   currentYear = year;
   currentMonth = month;
-  $('contentDay').innerHTML = "Not yet implemented...";
+  currentDay = day;
+  $('contentDay').innerHTML = build_day_view ( year, month, day );
+  // set scroll location to 8AM (50 pixels/hour)
+  $('daydiv').scrollTop = 400;
+  // TODO: save the position of the scrollbar so we can preserve on next/prev
+  // TODO: Use start work hour from preferences.
   $('contentWeek').innerHTML = "Not yet implemented...";
   $('contentMonth').innerHTML = build_month_view ( year, month );
   $('contentAgenda').innerHTML = build_agenda_view ( year, month );
 <?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
   $('contentTasks').innerHTML = "Not yet implemented...";
 <?php } ?>
+}
+
+function prev_day_link ( year, month, day )
+{
+  day--;
+  if ( day == 0 ) {
+    month--;
+    if ( month == 0 ) {
+      year--;
+      month = 12;
+    }
+    day = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
+      daysPerMonth[month];
+  }
+  return "<span id=\"prevday\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+    year + "," + month + "," + day + ")\">&lt;</span>";
+}
+
+function next_day_link ( year, month, day )
+{
+  day++;
+  var daysInMonth = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
+    daysPerMonth[month];
+  if ( day > daysInMonth ) {
+    day = 1;
+    month++;
+    if ( month > 12 ) {
+      year++;
+      month = 1;
+    }
+  }
+  return "<span id=\"nextday\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+    year + "," + month + "," + day + ")\">&gt;</span>";
+}
+function prev_month_link_dayview ( year, month, day )
+{
+  month--;
+  if ( month < 1 ) {
+    month = 12;
+    year--;
+  }
+  return "<span id=\"prevmonthdayview\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+    year + "," + month + "," + day + ")\">&lt;&lt;</span>";
+}
+function next_month_link_dayview ( year, month, day )
+{
+  month++;
+  if ( month > 12 ) {
+    month = 1;
+    year++;
+  }
+  return "<span id=\"nextmonthdayview\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+    year + "," + month + "," + day + ")\">&gt;&gt;</span>";
 }
 
 function prev_month_link ( year, month )
@@ -635,18 +693,7 @@ function prev_month_link ( year, month )
     y = year;
   }
   return "<span id=\"prevmonth\" class=\"clickable fakebutton\" onclick=\"load_content(" +
-    y + "," + m + ")\">&lt;</span>";
-}
-
-function prev_year_link ( year, month )
-{
-  return "<span id=\"prevyear\" class=\"clickable fakebutton\" onclick=\"load_content(" + ( year - 1 ) +
-    "," + month + ")\">&lt;&lt;</span>";
-}
-function next_year_link ( year, month )
-{
-  return "<span id=\"nextyear\" class=\"clickable fakebutton\" onclick=\"load_content(" + ( year + 1 ) +
-    "," + month + ")\">&gt;&gt;</span>";
+    y + "," + m + ",1)\">&lt;</span>";
 }
 
 function next_month_link ( year, month )
@@ -660,15 +707,29 @@ function next_month_link ( year, month )
     y = year;
   }
   return "<span id=\"nextmonth\" class=\"clickable fakebutton\" onclick=\"load_content(" +
-    y + "," + m + ")\">&gt;</span>";
+    y + "," + m + ",1)\">&gt;</span>";
 }
+
+function prev_year_link ( year, month )
+{
+  return "<span id=\"prevyear\" class=\"clickable fakebutton\" onclick=\"load_content(" + ( year - 1 ) +
+    "," + month + ",1)\">&lt;&lt;</span>";
+}
+
+function next_year_link ( year, month )
+{
+  return "<span id=\"nextyear\" class=\"clickable fakebutton\" onclick=\"load_content(" + ( year + 1 ) +
+    "," + month + ",1)\">&gt;&gt;</span>";
+}
+
 function today_link ()
 {
   var today = new Date ();
+  var d = today.getDate ();
   var m = today.getMonth() + 1;
   var y = today.getYear () + 1900;
   return "<span class=\"clickable fakebutton\" onclick=\"load_content(" +
-    y + "," + m + ")\">" +
+    y + "," + m + "," + d + ")\">" +
    '<img src="includes/menu/icons/today.png" style="vertical-align: middle;"/>'
    + " <?php etranslate('Today');?></span>";
 }
@@ -737,7 +798,7 @@ function quickAddHandler ()
       quickAddDialog.hide ();
       var monthKey = "" + currentYear + ( currentMonth < 10 ? "0" : "" ) + currentMonth;
       loadedMonths[monthKey] = 0;
-      load_content ( currentYear, currentMonth );
+      load_content ( currentYear, currentMonth, currentDay );
     },
     onFailure: function(){ alert('<?php etranslate("Error");?>') }
   });
@@ -761,7 +822,7 @@ function addEventDetail ()
 function refresh ()
 {
   loadedMonths = []; // forget all events...
-  load_content ( currentYear, currentMonth );
+  load_content ( currentYear, currentMonth, currentDay );
 }
 
 
@@ -969,6 +1030,124 @@ function build_agenda_view ( year, month )
       }
     }
     ret += "</table>\n";
+  } catch ( err ) {
+    alert ( "JavaScript exception:\n" + err );
+  }
+  return ret;
+}
+
+
+// Build the HTML for the Day view
+function build_day_view ( year, month, day )
+{
+  var ret = "";
+  var dateYmd = year + ( month < 10 ? "0" : "" ) + month +
+    ( day < 10 ? "0" : "" ) + day;
+  var eventArray = events[dateYmd];
+
+  try {
+    ret = prev_day_link ( year, month, day ) +
+      next_day_link ( year, month, day ) +
+      prev_month_link_dayview ( year, month, day ) +
+      next_month_link_dayview ( year, month, day ) +
+      "<span id=\"refresh\" class=\"clickable fakebutton\" onclick=\"refresh()\">" +
+      '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>"/></span>' +
+      today_link () +
+      "&nbsp;" +
+      "<span class=\"monthtitle\">" + format_date ( dateYmd, false ) +"</span>" +
+      "<span id=\"daystatus\"> </span>";
+
+    var untimedEvents = '';
+    var timedEvents = '';
+    for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
+      var myEvent = eventArray[l];
+      var isTimed = ( myEvent._time >= 0 );
+      var thisEvent = '';
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+      // See if this event matches selected categories.
+      if ( ! allCatsSelected ) {
+        if ( ! eventMatchesSelectedCats ( myEvent ) )
+          continue;
+      }
+<?php } ?>
+      var id = 'popup-' + dateYmd + "-" + myEvent._id;
+      thisEvent += "<div class=\"event clickable" +
+        ( isTimed ? " daytimedevent" : "" ) +
+        "\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
+        " onmouseout=\"hidePopUp('" + id + "')\"" +
+        " onclick=\"view_event('" + dateYmd + "'," + l + ")\"";
+      if ( isTimed ) {
+        // TODO: handle overlapping events.  Right now, the <div>
+        // areas will overlap, possibly obscuring each other.
+        // Would be nice to allow mouse-over to raise the z-index to
+        // the top and have conflicting events shifted 50 pixels to
+        // the right so we could always mouse over some part of the <div>.
+        var y = ( myEvent._localTime / 100 ) * 50;
+        thisEvent += " style=\"position: absolute; left: 52px; top: " +
+          y + "px;";
+        if ( myEvent._duration > 0 ) {
+          var h = ( myEvent._duration / 60 ) * 50;
+          h = Math.ceil ( h ) - 2; // subtract 2 for border
+          thisEvent += " height: " + h + "px;";
+        }
+        thisEvent += "\"";
+      }
+      thisEvent += ">";
+      var iconImg = '';
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+      if ( categories && categories.length ) {
+        var catId = myEvent._category;
+        if ( catId < 0 ) catId = 0 - catId;
+        if ( categories[catId] && categories[catId].icon ) {
+          iconImg += '<img src="' + categories[catId].icon + '"/>';
+        }
+      }
+<?php } ?>
+      if ( iconImg == '' ) {
+        thisEvent += '<img src="images/event.gif" alt="."/>';
+      } else {
+        thisEvent += iconImg;
+      }
+      thisEvent += myEvent._name + "</div>";
+      // Create popup
+      if ( ! document.getElementById ( id ) ) {
+        var popup = document.createElement('dl');
+        popup.setAttribute ( 'id', id );
+        popup.className = "popup";
+        popup.innerHTML = "<dt>" +
+          format_description ( myEvent._description ) + "</dt>";
+        document.body.appendChild ( popup );
+      }
+      if ( isTimed ) {
+        // timed event
+        timedEvents += thisEvent;
+      } else {
+        // Untimed event
+        untimedEvents += thisEvent;
+      }
+    }
+
+    if ( untimedEvents != '' ) {
+      ret += "<div id=\"dayuntimed\">" + untimedEvents + "</div>\n";
+    }
+    ret += "<div id=\"daydiv\">\n" +
+      "<div id=\"dayinnerdiv\">";
+   
+    for ( var h = 0; h < 24; h++ ) {
+      var y = h * 50;
+      ret += "<div class=\"hourblockleft\" style=\"top: " + y + "px;\">" +
+        "<span class=\"timeofday\">";
+      if ( h == 0 ) ret += "12am";
+      else if ( h < 12 ) ret += h + "am";
+      else if ( h == 12 ) ret += "12pm";
+      else ret += ( h - 12 ) + "pm";
+      ret += "</span></div>\n";
+      ret += "<div class=\"hourblockright\" style=\"top: " + y + "px;\"></div>";
+    }
+    // Now add in event info...
+    ret += timedEvents;
+    // End event info
+    ret += "</div>\n</div>\n";
   } catch ( err ) {
     alert ( "JavaScript exception:\n" + err );
   }
