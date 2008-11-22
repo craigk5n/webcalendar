@@ -1130,7 +1130,7 @@ echo '  body {
     background-color: #ffa;
   }
   #contentMonth #monthstatus { margin-left: 20px; }
-  #contentMonth .monthtitle {
+  #contentMonth .monthtitle, #contentDay .daytitle {
     font-size: 14pt;
     text-align: center;
     margin: 0;
