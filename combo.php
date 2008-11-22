@@ -641,7 +641,7 @@ function prev_day_link ( year, month, day )
     day = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
       daysPerMonth[month];
   }
-  return "<span id=\"prevday\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+  return "<span id=\"prevday\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
     year + "," + month + "," + day + ")\">&lt;</span>";
 }
 
@@ -658,7 +658,7 @@ function next_day_link ( year, month, day )
       month = 1;
     }
   }
-  return "<span id=\"nextday\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+  return "<span id=\"nextday\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
     year + "," + month + "," + day + ")\">&gt;</span>";
 }
 function prev_month_link_dayview ( year, month, day )
@@ -668,7 +668,7 @@ function prev_month_link_dayview ( year, month, day )
     month = 12;
     year--;
   }
-  return "<span id=\"prevmonthdayview\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+  return "<span id=\"prevmonthdayview\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
     year + "," + month + "," + day + ")\">&lt;&lt;</span>";
 }
 function next_month_link_dayview ( year, month, day )
@@ -678,7 +678,7 @@ function next_month_link_dayview ( year, month, day )
     month = 1;
     year++;
   }
-  return "<span id=\"nextmonthdayview\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+  return "<span id=\"nextmonthdayview\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
     year + "," + month + "," + day + ")\">&gt;&gt;</span>";
 }
 
@@ -692,7 +692,7 @@ function prev_month_link ( year, month )
     m = month - 1;
     y = year;
   }
-  return "<span id=\"prevmonth\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+  return "<span id=\"prevmonth\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
     y + "," + m + ",1)\">&lt;</span>";
 }
 
@@ -706,19 +706,19 @@ function next_month_link ( year, month )
     m = month + 1;
     y = year;
   }
-  return "<span id=\"nextmonth\" class=\"clickable fakebutton\" onclick=\"load_content(" +
+  return "<span id=\"nextmonth\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
     y + "," + m + ",1)\">&gt;</span>";
 }
 
 function prev_year_link ( year, month )
 {
-  return "<span id=\"prevyear\" class=\"clickable fakebutton\" onclick=\"load_content(" + ( year - 1 ) +
+  return "<span id=\"prevyear\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" + ( year - 1 ) +
     "," + month + ",1)\">&lt;&lt;</span>";
 }
 
 function next_year_link ( year, month )
 {
-  return "<span id=\"nextyear\" class=\"clickable fakebutton\" onclick=\"load_content(" + ( year + 1 ) +
+  return "<span id=\"nextyear\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" + ( year + 1 ) +
     "," + month + ",1)\">&gt;&gt;</span>";
 }
 
@@ -728,7 +728,7 @@ function today_link ()
   var d = today.getDate ();
   var m = today.getMonth() + 1;
   var y = today.getYear () + 1900;
-  return "<span class=\"clickable fakebutton\" onclick=\"load_content(" +
+  return "<span class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
     y + "," + m + "," + d + ")\">" +
    '<img src="includes/menu/icons/today.png" style="vertical-align: middle;"/>'
    + " <?php etranslate('Today');?></span>";
@@ -836,7 +836,7 @@ function build_month_view ( year, month )
       next_month_link ( year, month ) +
       prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
-      "<span id=\"refresh\" class=\"clickable fakebutton\" onclick=\"refresh()\">" +
+      "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
       '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>"/></span>' +
       today_link () +
       "&nbsp;" +
@@ -943,7 +943,7 @@ function build_agenda_view ( year, month )
       next_month_link ( year, month ) +
       prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
-      "<span id=\"refresh\" class=\"clickable fakebutton\" onclick=\"refresh()\">" +
+      "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
       '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>"/></span>' +
       today_link () +
       "&nbsp;" +
@@ -1050,11 +1050,11 @@ function build_day_view ( year, month, day )
       next_day_link ( year, month, day ) +
       prev_month_link_dayview ( year, month, day ) +
       next_month_link_dayview ( year, month, day ) +
-      "<span id=\"refresh\" class=\"clickable fakebutton\" onclick=\"refresh()\">" +
+      "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
       '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>"/></span>' +
       today_link () +
       "&nbsp;" +
-      "<span class=\"monthtitle\">" + format_date ( dateYmd, false ) +"</span>" +
+      "<span class=\"daytitle\">" + format_date ( dateYmd, true ) +"</span>" +
       "<span id=\"daystatus\"> </span>";
 
     var untimedEvents = '';
@@ -1076,13 +1076,16 @@ function build_day_view ( year, month, day )
         "\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
         " onmouseout=\"hidePopUp('" + id + "')\"" +
         " onclick=\"view_event('" + dateYmd + "'," + l + ")\"";
+var pos = '0';
       if ( isTimed ) {
         // TODO: handle overlapping events.  Right now, the <div>
         // areas will overlap, possibly obscuring each other.
         // Would be nice to allow mouse-over to raise the z-index to
         // the top and have conflicting events shifted 50 pixels to
         // the right so we could always mouse over some part of the <div>.
-        var y = ( myEvent._localTime / 100 ) * 50;
+        var mins = myEvent._localTime % 100;
+        var y = ( ( myEvent._localTime - mins ) / 100 ) * 50;
+        y += ( mins / 60 ) * 50;
         thisEvent += " style=\"position: absolute; left: 52px; top: " +
           y + "px;";
         if ( myEvent._duration > 0 ) {
