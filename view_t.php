@@ -245,13 +245,13 @@ function print_header_timebar () {
 
 $date = ( empty ( $date ) ? date ( 'Ymd' ) : $date );
 // Initialize date to first of current month.
-if ( empty ( $timeb ) || $timeb == 0 )
+if ($view_type != 'S')
   $date = substr ( $date, 0, 6 ) . '01';
 
 set_today ( $date );
 
 // Week timebar.
-if ( ! empty ( $timeb ) && $timeb == 1 ) {
+if ($view_type == 'S') {
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
   $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
   $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
@@ -298,11 +298,11 @@ ob_start ();
 
 echo '
     <div style="width:99%;">
-      <a title="' . $prevStr . '" class="prev" href="view_t.php?timeb=' . $timeb
- . '&amp;id=' . $id . '&amp;date=' . $prevdate
+      <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
+	'&amp;date=' . $prevdate
  . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
-      <a title="' . $nextStr . '" class="next" href="view_t.php?timeb=' . $timeb
- . '&amp;id=' . $id . '&amp;date=' . $nextdate
+      <a title="' . $nextStr . '" class="next" href="view_t.php?id=' . $id .
+	'&amp;date=' . $nextdate
  . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
       <div class="title">
         <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )

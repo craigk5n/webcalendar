@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Patch [ 2261841 ] Fix timebar views
  - Fixed bug: The remember login checkbox on login page would not work
    unless register globals was enabled
  - Fixed bug [ 2157160 ] in week selector wrong weeks
