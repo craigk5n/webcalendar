@@ -4080,9 +4080,9 @@ function load_user_preferences ( $guest = '' ) {
       if ( $row[2] == 'E' )
         $url .= 'r.php?';
       elseif ( $row[2] == 'S' )
-        $url .= 't.php?timeb=1&amp;';
+        $url .= 't.php?';
       elseif ( $row[2] == 'T' )
-        $url .= 't.php?timeb=0&amp;';
+        $url .= 't.php?';
       else
         $url .= strtolower ( $row[2] ) . '.php?';
 
