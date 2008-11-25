@@ -1,6 +1,7 @@
 $Id$
 
 Version 1.2.1 (Not Yet Released -- CVS!)
+ - Patch [ 2261841 ] Fix timebar views
  - Fixed bug: The remember login checkbox on login page would not work
    unless register globals was enabled
  - Fixed bug [ 2157160 ] in week selector wrong weeks
