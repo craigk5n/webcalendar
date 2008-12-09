@@ -416,7 +416,7 @@ Reports: Reports
 Delete Events: Delete Events
 Activity Log: Activity Log
 System Log: System Log
-Security Audit: =
+Security Audit: Security Audit
 Public Preferences: Public Preferences
 Unapproved Public Events: Unapproved Public Events
 Administrative Tools: Administrative Tools
@@ -1174,29 +1174,29 @@ New Search: New Search
 ########################################
 # Page: security_audit.php
 #
-The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: =
-For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: =
-View your current PHP settings: =
-Security Issue: =
+The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.
+For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net;<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
+View your current PHP settings: View your current PHP settings
+Security Issue: Security Issue
 Status: Status
-You should change the password of the default admin user.: =
-Default admin user password: =
-The following item should not be writable: =
-File permissions: =
-Because you have email disabled, you should remove this file.: =
-File exists: =
-If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: =
-File location: =
-You may want to consider enabling User Access Control to set user privileges.: =
-It is recommended that public event submissions be approved: =
-CAPTCHA is recommended to guard againt automated event submissions.: =
-The database cache directory should be in a directory that cannot be accessed with a URL.: =
-Database cache directory location: =
-The recommended setting for magic quotes is Off.: =
-PHP setting: =
-The recommended setting for register_globals is Off.: =
-The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: =
-The recommended setting for allow_url_include is Off.: =
+You should change the password of the default admin user.: You should change the password of the default admin user.
+Default admin user password: Default admin user password
+The following item should not be writable: The following item should not be writable
+File permissions: File permissions
+Because you have email disabled, you should remove this file.: Because you have email disabled, you should remove this file.
+File exists: File exists
+If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: If you are not using this file, remove it.  Otherwise, it should be moved to a different location.
+File location: File location
+You may want to consider enabling User Access Control to set user privileges.: You may want to consider enabling User Access Control to set user privileges.
+It is recommended that public event submissions be approved: It is recommended that public event submissions be approved
+CAPTCHA is recommended to guard againt automated event submissions.: CAPTCHA is recommended to guard againt automated event submissions.
+The database cache directory should be in a directory that cannot be accessed with a URL.: The database cache directory should be in a directory that cannot be accessed with a URL.
+Database cache directory location: Database cache directory location
+The recommended setting for magic quotes is Off.: The recommended setting for magic quotes is Off.
+PHP setting: PHP setting
+The recommended setting for register_globals is Off.: The recommended setting for register_globals is Off.
+The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.
+The recommended setting for allow_url_include is Off.: The recommended setting for allow_url_include is Off.
 
 ########################################
 # Page: select_user.php
