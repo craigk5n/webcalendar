@@ -1290,10 +1290,6 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     // $_SESSION['old_program_version'] . '<br />
     // New Version: ' . $PROGRAM_VERSION;
   } else
-    /*
-translate ( 'This appears to be a new installation. If this is not correct, please')
-translate ( 'go back to the previous page and correct your settings' )
-*/
     $response_msg = ( $_SESSION['old_program_version'] == 'new_install'
       ? translate ( 'This appears to be a new installation...' )
       : ( empty ( $_SESSION['blank_database'] )
@@ -1310,12 +1306,6 @@ translate ( 'go back to the previous page and correct your settings' )
       </tr>
       <tr>
         <td colspan="2" width="50%">'
-  /*
-translate ( 'In this section we will perform the required database changes to bring your database up to the required level' )
-translate ( 'If you are using a fully supported database, this step will be performed automatically for you' )
-translate ( 'If not, the required SQL can be displayed and you should be able' )
-translate ( 'to cut &amp; paste it into your database server query window' )
-*/
    . translate ( 'In this section we will perform...' ) . '</td>
       </tr>
       <tr>
@@ -1450,12 +1440,6 @@ translate ( 'to cut &amp; paste it into your database server query window' )
         <td colspan="2">' . ( $_SESSION['tz_conversion'] != 'Success' ? '
           <form action="index.php?action=tz_convert" method="post">
             <ul><li>'
-      /*
-translate ( 'It appears that you have' ) translate ( 'NOT' )
-translate ( 'converted your existing WebCalendar event data to GMT.' )
-translate ( 'If you have, you may ignore this notice and not proceed with the conversion.' )
-translate ( 'If this is a new installation, you may also ignore this notice.' )
-*/
        . translate ( 'It appears that you have NOT converted...' ) . '</li></ul>
             <div align="center"><input type="submit" value="'
        . translate ( 'Convert Data to GMT' ) . ':" /></div>
@@ -1468,17 +1452,7 @@ translate ( 'If this is a new installation, you may also ignore this notice.' )
       <tr>
         <td colspan="2">
           <ul><li>' . ( empty ( $PHP_AUTH_USER )
-    /*
-translate ( 'HTTP-based authentication was not detected' )
-translate ( 'You will need to reconfigure your web server if you wish to' )
-translate ( 'select Web Server from the User Authentication choices below.' )
- */
     ? translate ( 'HTTP-based authentication was not detected...' )
-    /*
-translate ( 'HTTP-based authentication was detected.' )
-translate ( 'User authentication is being handled by your web server.' )
-translate ( 'You should select Web Server from the list of User Authentication choices below.' )
- */
     : translate ( 'HTTP-based authentication was detected...' ) )
    . '</li></ul>
         </td>
