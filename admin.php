@@ -165,8 +165,8 @@ if ( is_dir ( $dir ) ) {
 
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
-
-print_header( ['js/translate.js.php'],
+$INC = ['js/translate.js.php'];
+print_header( $INC,
   '<script type="text/javascript" src="includes/js/admin.js"></script>
     <script type="text/javascript" src="includes/js/visible.js"></script>', 
   'onload="init_admin();showTab( \'' . $currenttab . '\' );"' );
