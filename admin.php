@@ -164,11 +164,12 @@ if ( is_dir ( $dir ) ) {
 }
 
 $currenttab = getPostValue ( 'currenttab', 'settings' );
-$currenttab = ( ! empty ( $currenttab) ? $currenttab : 'settings' );
+$currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
 
-$BodyX = 'onload="init_admin();showTab( \'' . $currenttab . '\' );"';
-print_header (
-  array ( 'js/admin.php', 'js/visible.php' ), '', $BodyX );
+print_header( ['js/translate.js.php'],
+  '<script type="text/javascript" src="includes/js/admin.js"></script>
+    <script type="text/javascript" src="includes/js/visible.js"></script>', 
+  'onload="init_admin();showTab( \'' . $currenttab . '\' );"' );
 
 if ( ! $error ) {
   // Make sure globals values passed to styles.php are for this user.
