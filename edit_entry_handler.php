@@ -742,6 +742,12 @@ if ( empty ( $error ) ) {
     if ( empty ( $rem_before ) )
       $rem_before = 'Y';
 
+    // If entry has changed, reset the reminder.
+    if ($entry_changed) {
+      $rem_last_sent = '0';
+      $rem_times_sent = '0';
+    }
+
     if ( empty ( $rem_last_sent ) )
       $rem_last_sent = '0';
 
