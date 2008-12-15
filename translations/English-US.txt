@@ -170,8 +170,10 @@ enable-external-header-help: Allows the custom trailer to be loaded from an exte
 Allow external file for header/script/trailer: Allow external file for header/script/trailer
 Allow user to override header/trailer: Allow user to override header/trailer
 Date and Time: Date and Time
-tz-help: Specifies how many hours to adjust the time from server time to local time.
+tz-help: Specifies how many hours to adjust the time from UTC to local time.
+server-tz-help: Specifies how many hours to adjust the time from UTC to server time.
 Server Timezone Selection: Server Timezone Selection
+Default Client Timezone Selection: Default Client Timezone Selection
 display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
 Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
 date-format-help: Specifies the preferred date format.

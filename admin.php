@@ -426,9 +426,13 @@ if ( ! $error ) {
   /* Determine if we can set timezones.  If not don't display any options. */
    . ( set_env ( 'TZ', $s['SERVER_TIMEZONE'] ) ? '
             <p><label for="admin_SERVER_TIMEZONE" title="'
-     . tooltip ( 'tz-help' ) . '">' . translate ( 'Server Timezone Selection' )
-     . ':</label>' . print_timezone_select_html ( 'admin_', $s['SERVER_TIMEZONE'] )
+     . tooltip ( 'server-tz-help' ) . '">' . translate ( 'Server Timezone Selection' )
+     . ':</label>' . print_timezone_select_html ( 'admin_SERVER_', $s['SERVER_TIMEZONE'] )
      . '</p>' : '' ) . '
+            <p><label for="admin_TIMEZONE" title="'
+     . tooltip ( 'tz-help' ) . '">' . translate ( 'Default Client Timezone Selection' )
+     . ':</label>' . print_timezone_select_html ( 'admin_', $s['TIMEZONE'] )
+     . '</p>' . '
             <p><label title="' . tooltip ( 'display-general-use-gmt-help' )
    . '">' . translate ( 'Display Common Use Date/Times as GMT' ) . ':</label>'
    . print_radio ( 'GENERAL_USE_GMT' ) . '</p>

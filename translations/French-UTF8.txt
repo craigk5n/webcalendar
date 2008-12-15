@@ -2,7 +2,7 @@
 #
 # Translated by: Yves Moenner <yves.moenner@mailcity.com>
 # Checked by: Romuald Texier <romualdt@free.fr>
-# Updated by : G�rard Delafond
+# Updated by : Gérard Delafond
 # Updated by : Luc Capronnier, Wilfrid Hubert
 # Updated by : Mario Dragone <mario.dragone@reims.iufm.fr>
 # Updated by : erational <http://www.erational.org>
@@ -121,7 +121,8 @@ custom-header-help: Permet d'ajouter un code HTML personnalisé au haut de chaqu
 Custom header: En-tête personnalisé
 custom-trailer-help: Permet d'ajouter un code HTML personnalisé au bas de chaque page
 Custom trailer: Bas de page personnalisé
-tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure du serveur à l'heure locale.
+tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure universelle à l'heure locale.
+server-tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure universelle à l'heure du serveur.
 date-format-help: Spécifie le format d'affichage des dates.
 Date format: Format des dates
 display-week-starts-on: Spécifie par quel jour commence la semaine. Si Lundi est choisi, les numéros des semaines seront à la norme ISO.
