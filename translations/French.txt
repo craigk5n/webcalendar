@@ -180,8 +180,10 @@ enable-external-header-help: Permet de charger le bas de page à partir d'un fich
 Allow external file for header/script/trailer: Autoriser l'utilisation de fichier externe pour haut/bas de pages/script
 Allow user to override header/trailer: Autoriser l'utilisateur à écraser le haut et le pied de page
 Date and Time: Date et heure
-tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure du serveur à l'heure locale.
+tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure universelle à l'heure locale.
+server-tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure universelle à l'heure du serveur.
 Server Timezone Selection: Sélection du fuseau horaire du serveur
+Default Client Timezone Selection: Fuseau horaire par défaut du client
 display-general-use-gmt-help: Si activé, les dates et heures standards sont affichées au format GMT
 Display Common Use Date/Times as GMT: Afficher les dates/heures au format GMT
 date-format-help: Spécifie le format d'affichage des dates.

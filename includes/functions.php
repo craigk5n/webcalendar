@@ -4862,9 +4862,6 @@ function print_success ( $saved ) {
 */
 function print_timezone_select_html ( $prefix, $tz ) {
   $ret = '';
-  // Allows different SETTING names between SERVER and USER.
-  if ( $prefix == 'admin_' )
-    $prefix .= 'SERVER_';
   // We may be using php 4.x on Windows, so we can't use set_env () to
   // adjust the user's TIMEZONE. We'll need to reply on the old fashioned
   // way of using $tz_offset from the server's timezone.
