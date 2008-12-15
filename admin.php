@@ -165,7 +165,7 @@ if ( is_dir ( $dir ) ) {
 
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
-$INC = ['js/translate.js.php'];
+$INC = array( 'js/translate.js.php' );
 print_header( $INC,
   '<script type="text/javascript" src="includes/js/admin.js"></script>
     <script type="text/javascript" src="includes/js/visible.js"></script>', 
