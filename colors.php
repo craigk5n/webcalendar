@@ -12,7 +12,9 @@ $currentStr = translate ( 'Current Color' );
 $customStr = translate ( 'Custom Colors' );
 $oldStr = translate ( 'Old Color' );
 $okStr = '&nbsp;&nbsp;&nbsp;' . translate ( 'OK' ). '&nbsp;&nbsp;&nbsp;';
-print_header ( array ( 'js/colors.php/true' ), '',
+
+print_header( '',
+  '<script type="text/javascript" src="includes/js/colors.js"></script>',
   'onload="fillhtml(); setInit();"', true, false, true );
 
 /*
