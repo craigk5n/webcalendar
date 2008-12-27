@@ -201,13 +201,13 @@ function print_issue ( $description, $isOk, $help )
   } else {
     $img = '<img src="images/error.gif" alt="Warning" width="16" height="16"/>';
   }
-  if ( $count++ % 2 == 0 )
-    $class = 'odd';
-  else
-    $class = 'even';
-  echo '<tr><td class="' . $class .  '">' . $description . 
-    '</td><td class="' . $class . '">' . $img . '</td>' .
-    '<td class="' . $class . '">' . $help . "</td></tr>\n";
+
+  echo '
+       <tr' . ( $count++ % 2 == 0 ? ' class=\'odd\'' : '' ) . '>
+         <td>' . $description . '</td>
+         <td>' . $img . '</td>
+         <td>' . $help . '</td>
+       </tr>';
 }
 
 /* Get the full path to a file located in the webcalendar directory.
