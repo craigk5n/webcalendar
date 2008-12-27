@@ -1197,7 +1197,7 @@ echo '  body {
     width: 50px;
     border: 1px solid #e0e0e0;
     margin: 0;
-    padding 0;
+    padding: 0;
   }
   #contentDay .hourblockright {
     background-image: url(images/hour_in_day.gif);
@@ -1208,7 +1208,7 @@ echo '  body {
     border-left: 1px solid #e0e0e0;
     border-right: 1px solid #e0e0e0;
     margin: 0;
-    padding 0;
+    padding: 0;
     /*overflow: auto;*/
   }
   .topnav {
@@ -1392,11 +1392,8 @@ echo '  body {
   #securityAudit th {
     background-color: #d0d0d0;
   }
-  #securityAudit .odd {
-    background-color: #E0E0E0;
-  }
-  #securityAudit .even {
-    background-color: #ffffff;
+  #securityAudit tr.odd td {
+    background-color: #e0e0e0;
   }
   #securityAuditNotes {
     margin: 20px;
