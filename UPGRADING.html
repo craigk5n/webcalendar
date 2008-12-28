@@ -6,7 +6,7 @@
     <title>WebCalendar Upgrading Notes</title>
     <style type="text/css">
       body {
-        background: #FFF;
+        background: #fff;
         font-family: Arial, Helvetica, sans-serif;
       }
       a {
@@ -66,7 +66,7 @@
 
     <table border="0" style="margin-left: 50px;">
     <tr><th style="text-align: right;">WebCalendar Version:</th><td> 1.3.0 </td></tr>
-    <tr><th valign="top" style="text-align: right;">Document Version:</th><td> $Revision$ <br/> $Date$</td>
+    <tr><th valign="top" style="text-align: right;">Document Version:</th><td> $Revision$ <br /> $Date$</td>
     </table>
 
     <p style="margin-bottom: 0"><span class="note">Important News:</span>A major
@@ -141,9 +141,9 @@
 
              </ul> </li>
           <li>If you have access to a MySQL command line (typically via shell access on a
-              Linux server), you can use the mysqldump command:<br/>
+              Linux server), you can use the mysqldump command:<br />
              &nbsp;&nbsp;<tt>mysqldump -u<b>USERNAME</b> -p<b>PASSWORD</b> <b>DATABASE</b> > dumpfile.sql</tt>
-             <br/>Of course, replace USERNAME, PASSWORD and DATABASE from the values in
+             <br />Of course, replace USERNAME, PASSWORD and DATABASE from the values in
             your <tt>includes/settings.php</tt> file from your old WebCalendar install.
          </li>
          </ul></li>
@@ -164,13 +164,13 @@
         A good way to do this might be to rename your old webcalendar install to
         something like "webcalendar-oldinstall" and rename the new install to be
         the same name as your old one.
-        <br/><b>Note:</b> If you are planning on renaming the directory, it is best to do
+        <br /><b>Note:</b> If you are planning on renaming the directory, it is best to do
         this <i>before</i> you proceed to the automated install.
     </li>
 
     <li>Change the permissions the permissions of the <tt>includes</tt> directory.
         If you are doing this from FTP, change directories to the new webcalendar directory
-        and use the following command:<br/>
+        and use the following command:<br />
         &nbsp;&nbsp;<tt>chmod 777 includes</tt>
 
     <li>Download a copy of your old <tt>includes/settings.php</tt> file from the old
