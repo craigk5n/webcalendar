@@ -914,7 +914,7 @@ Color format should be RRGGBB.: Färgen skall skrivas som '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Da har inte angivit någon kort beskrivning
-The time you have entered begins before your preferred work hours. Is this correct?: Tidpunkten du har angivit ligger före din angivna arbetstid. Är detta korrekt?
+time prior to work hours...: Tidpunkten du har angivit ligger före din angivna arbetstid. Är detta korrekt?
 You have not entered a valid time of day: Du har inte angivit en giltig tid
 
 ########################################

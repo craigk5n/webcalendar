@@ -1173,8 +1173,8 @@ New Search: Neue Suche
 ########################################
 # Page: security_audit.php
 #
-The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: Die folgenden Informationen weisen auf m&ouml;gliche Probleme im Bezug mit Ihrer WebKalender-Installation hin. Diese k&ouml;nnen jedoch ge&auml;ndert werden, um Ihre Installation sicherer gegen etwaige Angriffe zu machen.
-For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.
+list potential security issues: Die folgenden Informationen weisen auf m&ouml;gliche Probleme im Bezug mit Ihrer WebKalender-Installation hin. Diese k&ouml;nnen jedoch ge&auml;ndert werden, um Ihre Installation sicherer gegen etwaige Angriffe zu machen.
+For questions about WebCalendar security see the forums: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.
 View your current PHP settings: Ihre PHP-Informationen anzeigen
 Security Issue: Sicherheitsoptionen
 Status: =
@@ -1186,16 +1186,16 @@ Because you have email disabled, you should remove this file.: Sie sollten diese
 File exists: Datei exisitert
 If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: Wenn Sie diese Datei nicht verwenden, k&ouml;nnen Sie diese entfernen oder an einem anderen Ort verschieben.
 File location: Ort der Datei
-You may want to consider enabling User Access Control to set user privileges.: Vielleicht m&ouml;chten Sie die &#39;Zugriffskontrolle&#39; f&uuml;r die Benutzerrechte aktivieren.
-It is recommended that public event submissions be approved: Es wird empfohlen, da&szlig; Eintr&auml;ge des &#39;&Ouml;ffentlichen&#39;-Kalenders genehmigt und &uuml;berpr&uuml;ft werden
-CAPTCHA is recommended to guard againt automated event submissions.: Es wird CAPTCHA empfohlen, zum Schutz gegen automatisierende eingegebende Eintr&auml;ge
-The database cache directory should be in a directory that cannot be accessed with a URL.: Das Datenbank-Cache-Verzeichnis soll in einem Verzeichnis angelegt werden, das &uuml;ber eine URL-Eingabe nicht direkt darauf zugegriffen werden kann.
+consider enabling UAC: Vielleicht m&ouml;chten Sie die &#39;Zugriffskontrolle&#39; f&uuml;r die Benutzerrechte aktivieren.
+recommend approving new public events: Es wird empfohlen, da&szlig; Eintr&auml;ge des &#39;&Ouml;ffentlichen&#39;-Kalenders genehmigt und &uuml;berpr&uuml;ft werden
+recommend using CAPTCHA: Es wird CAPTCHA empfohlen, zum Schutz gegen automatisierende eingegebende Eintr&auml;ge
+db cache should be inaccessable: Das Datenbank-Cache-Verzeichnis soll in einem Verzeichnis angelegt werden, das &uuml;ber eine URL-Eingabe nicht direkt darauf zugegriffen werden kann.
 Database cache directory location: Ort des Datenbank-Cache-Verzeichnis
-The recommended setting for magic quotes is Off.: Die empfohlene Einstellung f&uuml;r magic_quotes ist OFF.
+recommend setting XXX Off: Die empfohlene Einstellung f&uuml;r XXX ist OFF.
 PHP setting: PHP Einstellung
-The recommended setting for register_globals is Off.: Die empfohlene Einstellung f&uuml;r register_globals ist OFF.
-The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: Wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist, wird empfohlenen die Einstellung f&uuml;r allow_url_fopen auf OFF zu setzen. 
-The recommended setting for allow_url_include is Off.: Die empfohlene Einstellung f&uuml;r allow_url_include ist OFF.
+recommend setting register_globals Off: Die empfohlene Einstellung f&uuml;r register_globals ist OFF.
+recommend setting allow_url_fopen Off: Wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist, wird empfohlenen die Einstellung f&uuml;r allow_url_fopen auf OFF zu setzen. 
+recommend setting allow_url_include Off: Die empfohlene Einstellung f&uuml;r allow_url_include ist OFF.
 
 ########################################
 # Page: select_user.php
@@ -1647,7 +1647,7 @@ Change the date and time of this entry?: Datum und Uhrzeit f&uuml;r diesen Eintr
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
-The time you have entered begins before your preferred work hours. Is this correct?: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das richtig?
+time prior to work hours...: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das richtig?
 Invalid Event Date: Ung&uuml;tiges Datum f&uuml;r Termin
 Please add a participant: Bitte einen Teilnehmer hinzuf&uuml;gen
 Invalid Date: Ung&uuml;ltiges Datum

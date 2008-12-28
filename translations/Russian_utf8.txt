@@ -1418,7 +1418,7 @@ Change the date and time of this entry?: Изменить дату и время
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Вы не ввели краткое описание
-The time you have entered begins before your preferred work hours. Is this correct?: Время указанное вами начинается до начала ваших предпочтительных рабочих часов. Это правильно?
+time prior to work hours...: Время указанное вами начинается до начала ваших предпочтительных рабочих часов. Это правильно?
 Invalid Event Date: Недопустимая дата события
 Please add a participant: Пожалуйста добавьте участника
 Invalid Date: Недопустимая дата

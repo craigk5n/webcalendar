@@ -716,7 +716,7 @@ Color format should be RRGGBB.: Värvi esitusviis peab olema kujul '#RRGGBB'
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Sa ei ole kirjutanud lühikirjeldust
-The time you have entered begins before your preferred work hours. Is this correct?: Sisestatud aeg algab enne tööpäeva. Kas see on õige?
+time prior to work hours...: Sisestatud aeg algab enne tööpäeva. Kas see on õige?
 You have not entered a valid time of day: Sa ei ole kirjutanud õiget kellaaega
 
 ########################################

@@ -1040,11 +1040,11 @@ Because you have email disabled, you should remove this file.: “dqƒ[ƒ‹‚ğ–³Œø‚
 File exists: ƒtƒ@ƒCƒ‹‚Ì‘¶İ
 File location: ƒtƒ@ƒCƒ‹‚ÌêŠ
 Database cache directory location: ƒf[ƒ^ƒx[ƒX‚ÌƒLƒƒƒbƒVƒ…ƒfƒBƒŒƒNƒgƒŠ[‚ÌêŠ
-The recommended setting for magic quotes is Off.: magic quotes ‚Ì„§İ’è‚ÍuOffv‚Å‚·B
+recommend setting XXX Off: XXX ‚Ì„§İ’è‚ÍuOffv‚Å‚·B
 PHP setting: PHP ‚Ìİ’è
-The recommended setting for register_globals is Off.: register_globals ‚Ì„§İ’è‚ÍuOffv‚Å‚·B
-The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: ƒŠƒ‚[ƒgƒJƒŒƒ“ƒ_[‚ğ—LŒø‚É‚µ‚È‚¢‚Æ‚«‚ÍAallow_url_fopen ‚Ì„§İ’è‚ÍuOffv‚Å‚·B
-The recommended setting for allow_url_include is Off.: allow_url_include ‚Ìİ’è‚ÍuOffv‚ğ„§‚µ‚Ü‚·B
+recommend setting register_globals Off: register_globals ‚Ì„§İ’è‚ÍuOffv‚Å‚·B
+recommend setting allow_url_fopen Off: ƒŠƒ‚[ƒgƒJƒŒƒ“ƒ_[‚ğ—LŒø‚É‚µ‚È‚¢‚Æ‚«‚ÍAallow_url_fopen ‚Ì„§İ’è‚ÍuOffv‚Å‚·B
+recommend setting allow_url_include Off: allow_url_include ‚Ìİ’è‚ÍuOffv‚ğ„§‚µ‚Ü‚·B
 
 ########################################
 # Page: select_user.php
@@ -1403,7 +1403,7 @@ Change the date and time of this entry?: ‚±‚ÌƒGƒ“ƒgƒŠ[‚Ì“ú•t‚ÆŠÔ‚ğ•ÏX‚µ‚Ü‚·‚
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: ŠÈ’P‚Èà–¾‚ğ“ü—Í‚µ‚Ä‚¢‚Ü‚¹‚ñB
-The time you have entered begins before your preferred work hours. Is this correct?: ‹L“ü‚µ‚½ŠÔ‚Í’Êí‹Î–±ŠÔ‘Ñ‚æ‚è‚à‘‚¢‚Å‚·‚ª—Ç‚¢‚Å‚·‚©?
+time prior to work hours...: ‹L“ü‚µ‚½ŠÔ‚Í’Êí‹Î–±ŠÔ‘Ñ‚æ‚è‚à‘‚¢‚Å‚·‚ª—Ç‚¢‚Å‚·‚©?
 Invalid Event Date: ³‚µ‚­‚È‚¢ƒCƒxƒ“ƒg‚Ì“ú•t‚Å‚·
 Please add a participant: Q‰ÁÒ‚ğ’Ç‰Á‚µ‚Ä‚­‚¾‚³‚¢
 Invalid Date: –³Œø‚È“ú•t‚Å‚·
