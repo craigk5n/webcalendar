@@ -23,7 +23,7 @@ echo 'var
   ];
 
 // Page: includes/js/admin.js
-xlate[\'endServerURL\']   = \'' . translate( 'Server URL must end with a slash.', true ) . "\n';" . '
+xlate[\'endServerURL\']   = \'' . translate( 'Server URL must end with /.', true ) . "\n';" . '
 xlate[\'formatColorRGB\'] = \'' . translate( 'Color format should be RRGGBB.', true ) . "\n';" . '
 xlate[\'invalidCellBG\']  = \'' . translate( 'Invalid color for table cell background.', true ) . "\n';" . '
 xlate[\'invalidDocuBG\']  = \'' . translate( 'Invalid color for document background.', true ) . "\n';" . '
@@ -42,10 +42,10 @@ xlate[\'changeEntryDatetime\'] = \'' . translate( 'Change the date and time of t
 
 // Page: includes/js/edit_entry.js
 xlate[\'addParticipant\']    = \'' . translate( 'Please add a participant', true ) . '\';
-xlate[\'inputBriefDescipt\'] = \'' . translate( 'You have not entered a Brief Description.', true ) . '\';
-xlate[\'inputTimeOfDay\']    = \'' . translate( 'You have not entered a valid time of day.', true ) . '\';
+xlate[\'inputBriefDescipt\'] = \'' . translate( 'You have not entered a Brief Description', true ) . '\';
+xlate[\'inputTimeOfDay\']    = \'' . translate( 'You have not entered a valid time of day', true ) . '\';
 xlate[\'invalidDate\']       = \'' . translate( 'Invalid Date',true ) . '\';
-xlate[\'invalidEvtDate\']    = \'' . translate( 'Invalid Event Date.', true ) . '\';
+xlate[\'invalidEvtDate\']    = \'' . translate( 'Invalid Event Date', true ) . '\';
 xlate[\'timeB4WorkHours\']   = \'' . translate( 'time prior to work hours...', true ) . '\';
 
 // Page: includes/js/edit_nonuser.php

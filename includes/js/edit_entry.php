@@ -43,7 +43,7 @@ function validate_and_submit () {
       echo "if ( h < $WORK_DAY_START_HOUR && form.entry_ampmA.checked ) {";
     }
     ?>
-    if ( ! confirm ( "<?php etranslate ( 'The time you have entered begins before your preferred work hours. Is this correct?', true)?> "))
+    if ( ! confirm ( "<?php etranslate ( 'time prior to work hours...', true)?> "))
       return false;
    }
   }

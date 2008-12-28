@@ -1195,8 +1195,8 @@ New Search: Nuova ricerca
 ########################################
 # Page: security_audit.php
 #
-The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: Le seguenti informazioni elencano potenziali problemi con l'installazione del tuo Webcalendar che potrebbere essere modificati per rendere la tua installazione piu&ograve; sicura.
-For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: Per informazioni riguardanti la sicurezza di WebCalendar, per favore fai riferimento al forum su SourceForge.net.
+list potential security issues: Le seguenti informazioni elencano potenziali problemi con l'installazione del tuo Webcalendar che potrebbere essere modificati per rendere la tua installazione piu&ograve; sicura.
+For questions about WebCalendar security see the forums: Per informazioni riguardanti la sicurezza di WebCalendar, per favore fai riferimento al forum su SourceForge.net.
 View your current PHP settings: Visualizza la configurazione corrente di PHP
 Security Issue: Problemi di sicurezza
 Status: Stato
@@ -1208,16 +1208,16 @@ Because you have email disabled, you should remove this file.: Poich&egrave; hai
 File exists: File esistenti
 If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: Se non stai utilizzando questo file, rimuovilo. Altrimenti, potrebbe essere spostato in una diversa posizione.
 File location: percorso file
-You may want to consider enabling User Access Control to set user privileges.: Potreste voler prendere in considerazione la possibilit&agrave; di abilitare il controllo accesso utenti per impostare i privilegi.
-It is recommended that public event submissions be approved: Si raccomanda di sottoporre ad approvazione gli eventi pubblici
-CAPTCHA is recommended to guard againt automated event submissions.: Si raccomanda l'uso di CAPTCHA contro l'immisione automatica di eventi.
-The database cache directory should be in a directory that cannot be accessed with a URL.: La cache del database dovrebbe essere posta in una directory non accessibile tramite URL.
+consider enabling UAC: Potreste voler prendere in considerazione la possibilit&agrave; di abilitare il controllo accesso utenti per impostare i privilegi.
+recommend approving new public events: Si raccomanda di sottoporre ad approvazione gli eventi pubblici
+recommend using CAPTCHA: Si raccomanda l'uso di CAPTCHA contro l'immisione automatica di eventi.
+db cache should be inaccessable: La cache del database dovrebbe essere posta in una directory non accessibile tramite URL.
 Database cache directory location: Percorso della cache del database
-The recommended setting for magic quotes is Off.: L'opzione raccomandata per "magic quotes" &egrave; Off.:
+recommend setting XXX Off: L'opzione raccomandata per "XXX" &egrave; Off.:
 PHP setting: Opzione PHP
-The recommended setting for register_globals is Off.: L'opzione raccomandata per "register_globals" &egrave; Off.:
-The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: L'opzione raccomandata per "allow_url_fopen" &egrave; Off quando i calendari remoti non sono abilitati.:
-The recommended setting for allow_url_include is Off.: L'opzione raccomandata per "allow_url_fopen" &egrave; Off.
+recommend setting register_globals Off: L'opzione raccomandata per "register_globals" &egrave; Off.:
+recommend setting allow_url_fopen Off: L'opzione raccomandata per "allow_url_fopen" &egrave; Off quando i calendari remoti non sono abilitati.:
+recommend setting allow_url_include Off: L'opzione raccomandata per "allow_url_fopen" &egrave; Off.
 
 ########################################
 # Page: select_user.php

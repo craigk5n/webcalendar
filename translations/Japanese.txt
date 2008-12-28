@@ -1039,10 +1039,10 @@ Because you have email disabled, you should remove this file.: 電子メール�
 File exists: ファイルの存在
 File location: ファイルの場所
 Database cache directory location: データベースのキャッシュディレクトリーの場所
-The recommended setting for magic quotes is Off.: magic quotes の推奨設定は「Off」です。
+recommend setting XXX Off: XXX の推奨設定は「Off」です。
 PHP setting: PHP の設定
-The recommended setting for register_globals is Off.: register_globals の推奨設定は「Off」です。
-The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: リモートカレンダーを有効にしないときは、allow_url_fopen の推奨設定は「Off」です。
+recommend setting register_globals Off: register_globals の推奨設定は「Off」です。
+recommend setting allow_url_fopen Off: リモートカレンダーを有効にしないときは、allow_url_fopen の推奨設定は「Off」です。
 The recommended setting for allow_url_include is Off.: allow_url_include の設定は「Off」を推奨します。
 
 ########################################
@@ -1397,7 +1397,7 @@ Change the date and time of this entry?: このエントリーの日付と時間
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: 簡単な説明を入力していません。
-The time you have entered begins before your preferred work hours. Is this correct?: 記入した時間は通常勤務時間帯よりも早いですが良いですか?
+time prior to work hours...: 記入した時間は通常勤務時間帯よりも早いですが良いですか?
 Invalid Event Date: 正しくないイベントの日付です
 Please add a participant: 参加者を追加してください
 Invalid Date: 無効な日付です

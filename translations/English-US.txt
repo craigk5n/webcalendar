@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-14-2008
+# Translation last updated on 12-28-2008
 
 charset: iso-8859-1
 direction: ltr
@@ -170,9 +170,9 @@ enable-external-header-help: Allows the custom trailer to be loaded from an exte
 Allow external file for header/script/trailer: Allow external file for header/script/trailer
 Allow user to override header/trailer: Allow user to override header/trailer
 Date and Time: Date and Time
-tz-help: Specifies how many hours to adjust the time from UTC to local time.
 server-tz-help: Specifies how many hours to adjust the time from UTC to server time.
 Server Timezone Selection: Server Timezone Selection
+tz-help: Specifies how many hours to adjust the time from UTC to local time.
 Default Client Timezone Selection: Default Client Timezone Selection
 display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
 Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
@@ -506,6 +506,7 @@ Old Color: Old Color
 # Page: combo.php
 #
 Select None: Select None
+Agenda: Agenda
 Description: Description
 Date: Date
 Time: Time
@@ -530,6 +531,8 @@ Low: Low
 Today: Today
 Add Entry: Add Entry
 Unnamed Event: Unnamed Event
+Refresh: Refresh
+Click to add entry: Click to add entry
 pm: pm
 am: am
 
@@ -824,6 +827,11 @@ export format not defined or incorrect.: export format not defined or incorrect.
 No user specified.: No user specified.
 
 ########################################
+# Page: groups.php
+#
+Add New Group: Add New Group
+
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -835,11 +843,6 @@ Group name: Group name
 # Page: group_edit_handler.php
 #
 You must specify a group name: You must specify a group name
-
-########################################
-# Page: groups.php
-#
-Add New Group: Add New Group
 
 ########################################
 # Page: help_admin.php
@@ -1176,29 +1179,28 @@ New Search: New Search
 ########################################
 # Page: security_audit.php
 #
-The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.
-For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net;<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
+list potential security issues: The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.
+For questions about WebCalendar security see the forums: For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net;<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
 View your current PHP settings: View your current PHP settings
 Security Issue: Security Issue
 Status: Status
-You should change the password of the default admin user.: You should change the password of the default admin user.
 Default admin user password: Default admin user password
-The following item should not be writable: The following item should not be writable
-File permissions: File permissions
+You should change the password of the default admin user.: You should change the password of the default admin user.
+File permissions XXX: File permissions: XXX
+item XXX should not be writable: The following item should not be writable:<br /><tt>XXX</tt>
+File exists XXX: File exists: "XXX"
 Because you have email disabled, you should remove this file.: Because you have email disabled, you should remove this file.
-File exists: File exists
-If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: If you are not using this file, remove it.  Otherwise, it should be moved to a different location.
-File location: File location
-You may want to consider enabling User Access Control to set user privileges.: You may want to consider enabling User Access Control to set user privileges.
-It is recommended that public event submissions be approved: It is recommended that public event submissions be approved
-CAPTCHA is recommended to guard againt automated event submissions.: CAPTCHA is recommended to guard againt automated event submissions.
-The database cache directory should be in a directory that cannot be accessed with a URL.: The database cache directory should be in a directory that cannot be accessed with a URL.
+File location XXX: File location: "XXX"
+remove XXX if not using: If you are not using file "XXX", you should delete it. Or, at least, move it to a new directory.
+System Settings XXX: System Settings: "XXX"
+consider enabling UAC: You may want to consider enabling User Access Control to set user privileges.
+recommend approving new public events: We recommend that all public event submissions be approved.
+recommend using CAPTCHA: CAPTCHA is recommended to guard againt automated event submissions.
 Database cache directory location: Database cache directory location
-The recommended setting for magic quotes is Off.: The recommended setting for magic quotes is Off.
-PHP setting: PHP setting
-The recommended setting for register_globals is Off.: The recommended setting for register_globals is Off.
-The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.
-The recommended setting for allow_url_include is Off.: The recommended setting for allow_url_include is Off.
+db cache should be inaccessable: The database cache should be in a directory that cannot be accessed with a URL.
+PHP Settings XXX: PHP Settings: "XXX"
+recommend setting XXX Off: The recommended setting for "XXX" is Off.
+recommend setting allow_url_fopen Off: The recommended setting for "allow_url_fopen" is Off when remote calendars are not enabled.
 
 ########################################
 # Page: select_user.php
@@ -1230,6 +1232,33 @@ Add New User: Add New User
 form: form
 listid: listid
 Reset: Reset
+
+########################################
+# Page: views.php
+#
+Add New View: Add New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed View
+Add View: Add View
+Edit View: Edit View
+View Name: View Name
+View Type: View Type
+Day by Time: Day by Time
+Week (Users horizontal): Week (Users horizontal)
+Week by Time: Week by Time
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: You must specify a view name
 
 ########################################
 # Page: view_d.php
@@ -1281,33 +1310,6 @@ Palm Pilot: Palm Pilot
 # Page: view_m.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry.
-
-########################################
-# Page: views.php
-#
-Add New View: Add New View
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Unnamed View
-Add View: Add View
-Edit View: Edit View
-View Name: View Name
-View Type: View Type
-Day by Time: Day by Time
-Week (Users horizontal): Week (Users horizontal)
-Week by Time: Week by Time
-Week (Users vertical): Week (Users vertical)
-Week (Timebar): Week (Timebar)
-Month (Timebar): Month (Timebar)
-Month (side by side): Month (side by side)
-Month (on same calendar): Month (on same calendar)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: You must specify a view name
 
 ########################################
 # Page: week_details.php
@@ -1628,7 +1630,7 @@ Challenge/Response: Challenge/Response
 # Page: includes/js/admin.php
 #
 Server URL is required.: Server URL is required.
-Server URL must end with /.: Server URL must end with '/'.
+Server URL must end with /.: Server URL must end with a slash; "/".
 Invalid work hours.: Invalid work hours.
 Invalid color for document background.: Invalid color for document background.
 Invalid color for document title.: Invalid color for document title.
@@ -1649,12 +1651,12 @@ Change the date and time of this entry?: Change the date and time of this entry?
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: You have not entered a Brief Description
-The time you have entered begins before your preferred work hours. Is this correct?: The time you have entered begins before your preferred work hours. Is this correct?
+You have not entered a Brief Description: You have not entered a Brief Description.
+time prior to work hours...: The time you have entered begins before your preferred work hours. Is this correct?
 Invalid Event Date: Invalid Event Date
 Please add a participant: Please add a participant
 Invalid Date: Invalid Date
-You have not entered a valid time of day: You have not entered a valid time of day
+You have not entered a valid time of day: You have not entered a valid time of day.
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1674,9 +1676,16 @@ URL cannot be blank.: URL cannot be blank.
 File type does not match Import Format: File type does not match Import Format
 
 ########################################
-# Page: includes/js/visible.php
+# Page: includes/js/translate.js.php
 #
+Invalid color for table header text.: Invalid color for table header text.
 Invalid Color: Invalid Color
+Database Name: Database Name
+Full Path (no backslashes): Full Path (no backslashes)
+The password contains illegal characters.: The password contains illegal characters.
+Error you must specify a Single-User Login: Error: You must specify a\nSingle-User Login.
+Could not find XXX.: Could not find XXX.
+Could not find XXX in DOM.: Could not find XXX in DOM.
 
 ########################################
 # Page: includes/menu/index.php
@@ -1701,7 +1710,6 @@ Help Contents: Help Contents
 #
 Create New: Create New
 Database Cache Directory: Database Cache Directory
-Database Name: Database Name
 Failure Reason: <b>Failure Reason: </b>
 Single-User: Single-User
 Test Settings: Test Settings
@@ -1733,9 +1741,6 @@ Please change the file permissions of this file.: Please change the file permiss
 Please change includes dir permission: Please change the file permissions of your "includes" directory to allow writing by other users.
 Your settings have been saved.: Your settings have been saved.
 WebCalendar Setup Wizard: WebCalendar Setup Wizard
-Error you must specify a Single-User Login: Error: You must specify a\nSingle-User Login.
-Full Path (no backslashes): Full Path (no backslashes)
-The password contains illegal characters.: The password contains illegal characters.
 This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see:<br />
 System Administrators Guide: System Administrator's Guide
 Frequently Asked Questions: Frequently Asked Questions
@@ -1771,15 +1776,9 @@ Database Type: Database Type
 Server: Server
 Connection Persistence: Connection Persistence
 All your database tables appear to be up...: All your database tables appear to be up to date. You may proceed to the next page and complete your WebCalendar setup.
-This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
-go back to the previous page and correct your settings: go back to the previous page and correct your settings
 This appears to be a new installation...: This appears to be a new installation. If this is not correct, please go back to the previous page and correct your settings.
 This appears to be an upgrade...: This appears to be an upgrade from version&nbsp;XXX&nbsp;to&nbsp;YYY.
 The database requires some data input...: The database requires some data input Click <b>Update Database</b> to complete the upgrade.
-In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
-If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
-If not, the required SQL can be displayed and you should be able: If not, the required SQL can be displayed and you should be able
-to cut &amp; paste it into your database server query window: to cut &amp; paste it into your database server query window
 In this section we will perform...: In this section we will perform the changes to bring your database up to the required level. If you are using a fully supported database, this step will be performed automatically for you. If not, the required SQL can be displayed and you should be able to cut and paste it into your database server query window.
 No database actions are required.: No database actions are required.
 The following database actions are required: The following database actions are required
@@ -1792,21 +1791,10 @@ Display Required SQL: Display Required SQL
 Return to previous page after processing SQL.: After manually processing this SQL, you will need to return to the previous page and retest your database so that the script can detect the changes.
 This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
 Timezone Conversion: Timezone Conversion
-It appears that you have: It appears that you have
-NOT: NOT
-converted your existing WebCalendar event data to GMT.: converted your existing WebCalendar event data to GMT.
-If you have, you may ignore this notice and not proceed with the conversion.: If you have, you may ignore this notice and not proceed with the conversion.
-If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
 It appears that you have NOT converted...: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion. If this is a new installation, you may also ignore this notice.
 Convert Data to GMT: Convert Data to GMT
 Application Settings: Application Settings
-HTTP-based authentication was not detected: HTTP-based authentication was not detected
-You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
-select Web Server from the User Authentication choices below.: select 'Web Server' from the 'User Authentication' choices below
 HTTP-based authentication was not detected...: HTTP-based authentication was not detected. You will need to reconfigure your web server if you wish to select 'Web Server' from the 'User Authentication' choices below.
-HTTP-based authentication was detected.: HTTP-based authentication was detected.
-User authentication is being handled by your web server.: User authentication is being handled by your web server.
-You should select Web Server from the list of User Authentication choices below.: You should select 'Web Server' from the list of 'User Authentication' choices below.
 HTTP-based authentication was detected...: HTTP-based authentication was detected. User authentication is being handled by your web server. You should select 'Web Server' from the list of 'User Authentication' choices below.
 Create Default Admin Account: Create Default Admin Account
 (Admin Account Not Found): (Admin Account Not Found)
