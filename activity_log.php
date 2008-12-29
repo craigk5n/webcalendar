@@ -18,8 +18,8 @@
  */
 include_once 'includes/init.php';
 
-if ( ! $is_admin || ( access_is_enabled () && !
-      access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) )
+if ( ! $is_admin || ( access_is_enabled()
+    && ! access_can_access_function( ACCESS_ACTIVITY_LOG ) ) )
   die_miserable_death ( print_not_auth () );
 
 $eventsStr = translate ( 'Events' );
@@ -34,16 +34,14 @@ print_header ();
 
 ob_start ();
 
-echo generate_activity_log ( '', $sys, $startid );
-
-echo '
+echo generate_activity_log( '', $sys, $startid ) . '
     <div class="navigation">'
 // Go BACK in time.
- . ( ! empty ( $nextpage ) ? '
+  . ( ! empty ( $nextpage ) ? '
       <a title="' . $prevStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
-   . '" class="prev" href="activity_log.php?startid=' . $nextpage
-   . ( $sys ? '&amp;system=1' : '' ) . '">' . $prevStr . '&nbsp;' . $PAGE_SIZE
-   . '&nbsp;' . $eventsStr . '</a>' : '' );
+    . '" class="prev" href="activity_log.php?startid=' . $nextpage
+    . ( $sys ? '&amp;system=1' : '' ) . '">' . $prevStr . '&nbsp;' . $PAGE_SIZE
+    . '&nbsp;' . $eventsStr . '</a>' : '' );
 
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
@@ -53,10 +51,10 @@ if ( ! empty ( $startid ) ) {
       // Go FORWARD in time.
       echo '
       <a title="' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
-       . '" class="next" href="activity_log.php' . ( $row[0] <= $previd
-        ? ( $sys ? '?system=1' : '' )
-        : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) . '">'
-       . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br />';
+        . '" class="next" href="activity_log.php' . ( $row[0] <= $previd
+          ? ( $sys ? '?system=1' : '' )
+          : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) . '">'
+        . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br />';
 
     dbi_free_result ( $res );
   }
@@ -65,7 +63,6 @@ if ( ! empty ( $startid ) ) {
 ob_end_flush ();
 
 echo '
-    </div>
-    ' . print_trailer ();
+    </div>' . print_trailer();
 
 ?>
