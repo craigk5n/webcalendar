@@ -113,9 +113,8 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
 
   $appStr = generate_application_name ( true );
 
-  $ret .= send_doctype ( $appStr );
-
-  $ret .= ( ! $disableAJAX ? '
+  $ret .= send_doctype( $appStr ) . ( ! $disableAJAX ? '
+    <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js"></script><![endif]-->
     <script type="text/javascript" src="includes/js/prototype.js"></script>'
     : '' );
   // Includes needed for the top menu.

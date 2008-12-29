@@ -201,8 +201,8 @@ if ( empty ( $error ) && ! empty ( $control ) ) {
   }
 }
 
-echo send_doctype ( $appStr );
-echo '
+echo send_doctype( $appStr ) . '
+    <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js"></script><![endif]-->
     <script type="text/javascript" src="includes/js/prototype.js"></script>
     <script type="text/javascript">
       var validform = false;
