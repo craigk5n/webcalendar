@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Patch [ 2477178 ] New french translation
  - Patch [ 2269623 ] Configure default client timezone
  - Patch [ 2393257 ] Reset reminder upon event update
  - Patch [ 2261885 ] Missing shebang
