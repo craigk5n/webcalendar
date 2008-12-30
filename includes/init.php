@@ -1,5 +1,6 @@
 <?php
-/* Does various initialization tasks and includes all needed files.
+/**
+ * Does various initialization tasks and includes all needed files.
  *
  * This page is included by most WebCalendar pages as the only include file.
  * This greatly simplifies the other PHP pages since they don't need to worry
@@ -69,7 +70,8 @@ include_once 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase ();
 
-/* Prints the HTML header and opening HTML body tag.
+/**
+ * Prints the HTML header and opening HTML body tag.
  *
  * @param array  $includes     Array of additional files to include referenced
  *                             from the includes directory
@@ -88,10 +90,9 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   $disableAJAX = false, $disableUTIL = false ) {
   global $BGCOLOR, $browser, $charset, $CUSTOM_HEADER, $CUSTOM_SCRIPT,
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
-  $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
-  $POPUP_FG, $REQUEST_URI, $self, $TABLECELLFG, $TEXTCOLOR,
-  $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG, $SCRIPT, $PUBLIC_ACCESS_FULLNAME,
-  $PUBLIC_ACCESS, $is_admin;
+  $is_admin, $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
+  $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
+  $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
   $lang = $ret = '';
   // Remember this view if the file is a view_x.php script.
@@ -113,25 +114,26 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
 
   $appStr = generate_application_name ( true );
 
-  $ret .= send_doctype( $appStr ) . ( ! $disableAJAX ? '
-    <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js"></script><![endif]-->
-    <script type="text/javascript" src="includes/js/prototype.js"></script>'
-    : '' );
+  $ret .= send_doctype( $appStr ) . ( $disableAJAX ? '' : '
+    <!--[if IE 5]><script type="text/javascript" '
+      . 'src="includes/js/ie5.js"></script><![endif]-->
+    <script type="text/javascript" src="includes/js/prototype.js"></script>' );
+
   // Includes needed for the top menu.
   if ( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty ( $MENU_THEME ) && $MENU_THEME != 'none'
       ? $MENU_THEME : 'default' );
-    $menu_theme =  ( $SCRIPT == 'admin.php'
-		  && ! empty ( $GLOBALS['sys_MENU_THEME'] ) ? $GLOBALS['sys_MENU_THEME'] :
-      $MENU_THEME );
+    $menu_theme = ( $SCRIPT == 'admin.php'
+      && ! empty( $GLOBALS['sys_MENU_THEME'] )
+        ? $GLOBALS['sys_MENU_THEME'] : $MENU_THEME );
     $ret .= '
     <script type="text/javascript" src="includes/menu/JSCookMenu.js"></script>
     <script type="text/javascript" src="includes/menu/themes/' . $menu_theme
      . '/theme.js"></script>';
   }
 
-  $ret .= ( ! $disableUTIL ? '
-    <script type="text/javascript" src="includes/js/util.js"></script>' : '' );
+  $ret .= ( $disableUTIL ? '' : '
+    <script type="text/javascript" src="includes/js/util.js"></script>' );
   // Any other includes?
   if ( is_array ( $includes ) ) {
     foreach ( $includes as $inc ) {
@@ -152,65 +154,65 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   if ( $MENU_ENABLED == 'Y' ) {
     include_once 'includes/menu/index.php';
     $ret .= '
-    <link rel="stylesheet" type="text/css" href="includes/menu/themes/'
-     . $menu_theme . '/theme.css" />';
+    <link type="text/css" href="includes/menu/themes/'
+     . $menu_theme . '/theme.css" rel="stylesheet" />';
   }
   // Add RSS feed for unapproved events if approvals are required
-  if ( $GLOBALS['REQUIRE_APPROVALS'] == 'Y' && $login != '__public__' && $is_admin ) {
-
-  // Prh .. fix theme change for auth_http which does not set webcal*login
-  //        variables.
-  // 
-  //        Pass the logged in user id as login=<whatever> on the URL
-  //        Add css_cache=<cookie setting> to change the URL signature
-  //        to force a fetch from the server rather than from the 
-  //        browser cache when the style changes. 
+  if ( $GLOBALS['REQUIRE_APPROVALS'] == 'Y'
+       && $login != '__public__' && $is_admin ) {
+    // Prh .. fix theme change for auth_http which does not set webcal*login
+    //        variables.
+    // 
+    //        Pass the logged in user id as login=<whatever> on the URL
+    //        Add css_cache=<cookie setting> to change the URL signature
+    //        to force a fetch from the server rather than from the 
+    //        browser cache when the style changes. 
     // Note: we could do all the queries to add the RSS feed for every user
     // the current user has permissions to approve for, but I'm thinking
     // that's too many db requests to repeat on every page.
-    $ret .= '<link rel="alternate" type="application/rss+xml" title="' . $appStr
-      . ' - Unapproved Events - ' . $login . '" href="rss_unapproved.php"/>';
-    if ( $is_admin && $PUBLIC_ACCESS == 'Y' )
-      $ret .= '<link rel="alternate" type="application/rss+xml" title="' .
-        $appStr . ' - Unapproved Events - ' .
-        translate ( $PUBLIC_ACCESS_FULLNAME ) .
-        '" href="rss_unapproved.php?user=public"/>';
+    $ret .= '
+    <link type="application/rss+xml" href="rss_unapproved.php" rel="alternate" '
+      . 'title="' . $appStr . ' - Unapproved Events - ' . $login . '" />'
+      . ( $is_admin && $PUBLIC_ACCESS == 'Y' ? '
+    <link type="application/rss+xml" href="rss_unapproved.php?user=public" '
+        . 'rel="alternate" title="' . $appStr . ' - Unapproved Events - '
+        . translate( $PUBLIC_ACCESS_FULLNAME ) . '" />' : '' );
   }
   if ( $is_admin ) {
-    $ret .= '<link rel="alternate" type="application/rss+xml" title="' . $appStr
-      . ' - ' . translate('Activity Log') . '" href="rss_activity_log.php"/>';
+    $ret .= '
+    <link type="application/rss+xml" href="rss_activity_log.php" rel="alternate"'
+      . ' title="' . $appStr . ' - ' . translate('Activity Log') . '" />';
   }
-  // If loading admin.php, we will not use an exrternal file because we need to
+  // If loading admin.php, we will not use an external file because we need to
   // override the global colors and this is impossible if loading external file.
   // We will still increment the webcalendar_csscache cookie though.
   echo $ret . ( $disableStyle ? '' : '
-    <link rel="stylesheet" type="text/css" href="css_cacher.php?login='
-     . ( empty ( $_SESSION['webcal_tmp_login'] )
+    <link type="text/css" href="css_cacher.php?login='
+    . ( empty( $_SESSION['webcal_tmp_login'] )
       ? $login : $_SESSION['webcal_tmp_login'] )
-     . '&amp;css_cache=' . $webcalendar_csscache
-     . '" />' )
+    . '&amp;css_cache=' . $webcalendar_csscache
+    . '" rel="stylesheet" />' )
   // Add custom script/stylesheet if enabled.
-  . ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom
-    ? load_template ( $login, 'S' ) : '' )
+    . ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom
+      ? load_template ( $login, 'S' ) : '' )
   // Include includes/print_styles.css as a media="print" stylesheet. When the
   // user clicks on the "Printer Friendly" link, $friendly will be non-empty,
   // including this as a normal stylesheet so they can see how it will look
   // when printed. This maintains backwards-compatibility for browsers that
-  // don't support media="print" stylesheets
-  . ( empty ( $friendly ) ? '' : '
-    <link rel="stylesheet" type="text/css"'
-     . ( empty ( $friendly ) ? ' media="print"' : '' )
-     . ' href="includes/print_styles.css" />' )
+  // don't support media="print" stylesheets.
+    . ( empty ( $friendly ) ? '' : '
+    <link type="text/css" href="includes/print_styles.css" rel="stylesheet"'
+      . ( empty( $friendly ) ? ' media="print"' : '' ) . ' />' )
   // Add RSS feed if publishing is enabled.
-  . ( ! empty ( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y' &&
-    $login == '__public__' || ( ! empty ( $GLOBALS['USER_RSS_ENABLED'] ) &&
-    $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && ! $disableRSS ? '
-    <link rel="alternate" type="application/rss+xml" title="' . $appStr
-     . ' [RSS 2.0]" href="rss.php'
-     /* TODO: single-user mode, etc. */
-     . ( $login != '__public__' ? '?user=' . $login : '' ) . '" />' : '' ) . '
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />'
-   . ( $MENU_ENABLED == 'Y' ? $menuScript : '' ) . '
+    . ( ! empty( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y'
+        && $login == '__public__' || ( ! empty( $GLOBALS['USER_RSS_ENABLED'] )
+        && $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && ! $disableRSS ? '
+    <link type="application/rss+xml" href="rss.php'
+      /* TODO: single-user mode, etc. */
+      . ( $login != '__public__' ? '?user=' . $login : '' )
+      . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]" />' : '' ) . '
+    <link type="image/x-icon" href="favicon.ico" rel="shortcut icon" />'
+      . ( $MENU_ENABLED == 'Y' ? $menuScript : '' ) . '
   </head>
   <body'
   // Determine the page direction (left-to-right or right-to-left).
@@ -231,7 +233,8 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // TODO convert this to return value.
 }
 
-/* Prints the common trailer.
+/**
+ * Prints the common trailer.
  *
  * @param bool $include_nav_links Should the standard navigation links be
  *                                included in the trailer?
@@ -273,10 +276,9 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
     unset ( $c );
   }
 
-  return $ret
-    . "<!-- " . $GLOBALS['PROGRAM_NAME'] . "     "
-    . $GLOBALS['PROGRAM_URL'] . " -->\n"
-  // Adds an easy link to validate the pages.
+  return $ret . '
+<!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->
+' // Adds an easy link to validate the pages.
   . ( $DEMO_MODE == 'Y' ? '
     <p><a href="http://validator.w3.org/check?uri=referer">'
      . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
