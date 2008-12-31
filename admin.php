@@ -23,7 +23,7 @@ function save_pref ( $prefs, $src ) {
       if ( $key == 'currenttab' )
         continue;
 
-      // Validate key name.  Should start with "admin_" and not include
+      // Validate key name. Should start with "admin_" and not include
       // any unusual characters that might be an SQL injection attack.
       if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) )
         die_miserable_death ( str_replace ( 'XXX', $key,
@@ -56,7 +56,8 @@ function save_pref ( $prefs, $src ) {
   load_user_preferences ();
 }
 
-/* Generates HTML for color chooser options in admin pages.
+/**
+ * Generates HTML for color chooser options in admin pages.
  *
  * NOTE: This will be merged back into function print_color_input_html
  *       in includes/function.php when I remove the tables from pref.php.
@@ -165,8 +166,8 @@ if ( is_dir ( $dir ) ) {
 
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
-$INC = array( 'js/translate.js.php' );
-print_header( $INC,
+
+print_header( array( 'js/translate.js.php' ),
   '<script type="text/javascript" src="includes/js/admin.js"></script>
     <script type="text/javascript" src="includes/js/visible.js"></script>', 
   'onload="init_admin();showTab( \'' . $currenttab . '\' );"' );
@@ -364,7 +365,6 @@ if ( ! $error ) {
    . 'id="admin_APPLICATION_NAME" value="'
    . htmlspecialchars ( $s['APPLICATION_NAME'] ) . '" />'
    . ( $s['APPLICATION_NAME'] == 'Title'
-    /* translate ( 'Translated Name' ) */
     ? str_replace ( 'XXX', translate ( 'Title' ),
       translate ( 'Translated Name (XXX)' ) ) : '' ) . '</p>
             <p><label for="admin_SERVER_URL" title="'
@@ -702,7 +702,7 @@ if ( ! $error ) {
         <div id="tabscontent_other">
 <!-- BEGIN UPCOMING EVENTS -->
    <fieldset><legend>' . translate('Upcoming Events') . '</legend>
-   ' . htmlspecialchars ( $SERVER_URL ) . 'upcoming.php<br/>
+   ' . htmlspecialchars( $SERVER_URL ) . 'upcoming.php<br />
    <p><label title="' . tooltip ( 'upcoming-events-help' ) . '">'
    . translate ( 'Enabled' ) . ':</label>'
    . print_radio ( 'UPCOMING_EVENTS', '', '', 'N' ) . '</p>
@@ -753,7 +753,6 @@ if ( ! $error ) {
           <p><label title="' . tooltip ( 'icon_upload-enabled-help' ) . '">'
    . translate ( 'Category Icon Upload enabled' ) . ':</label>'
    . print_radio ( 'ENABLE_ICON_UPLOADS' ) . '' . ( ! is_dir ( 'icons/' )
-    /* translate ( 'Requires' ) translate ( 'folder to exist' ) */
     ? str_replace ( 'XXX', 'icons',
       translate ( '(Requires XXX folder to exist.)' ) ) : '' ) . '</p>
 
@@ -802,7 +801,7 @@ if ( ! $error ) {
    . translate ( 'Admin and owner can always add attachments if enabled.' )
    . '<br />' . print_checkbox ( array ( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
    . print_checkbox ( array ( 'ALLOW_ATTACH_ANY', 'Y', $anyoneStr ) )
-   . '</p><br/><p><label title="'
+   . '</p><br /><p><label title="'
    . tooltip ( 'allow-comments-help' ) . '">'
    . translate ( 'Allow comments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' )
@@ -926,6 +925,7 @@ if ( ! $error ) {
   ob_end_flush ();
 } else // if $error
   echo print_error ( $error, true );
-echo print_trailer ();
+
+echo print_trailer();
 
 ?>
