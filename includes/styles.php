@@ -651,7 +651,7 @@ echo '  body {
   }
    /* style for week hover highlight */
   tr.highlight td {
-    background-color:#ffb !important;
+    background:#ffb !important;
   }
   .minical {
     margin:0 0 5px 0;
@@ -1109,7 +1109,7 @@ echo '  body {
     border:0;
   }
   #combo div.headerinfo {
-    margin: 15px; border: 1px solid #000; background-color: #fff;
+    margin: 15px; border: 1px solid #000; background: #fff;
     color: #000; padding: 10px;
   }
   #combo div.headerinfo .username {
@@ -1127,7 +1127,7 @@ echo '  body {
   }
   #combo #categorylist {
     border: 1px solid #ccc;
-    background-color: #ffa;
+    background: #ffa;
   }
   #contentMonth #monthstatus { margin-left: 20px; }
   #contentMonth .monthtitle, #contentDay .daytitle {
@@ -1139,18 +1139,18 @@ echo '  body {
   }
   #combo .event {
     overflow: hidden;
-    /*background-color: #090;*/
+    /*background: #090;*/
     /*height: 25px;*/
     margin-top: 1px;
   }
   #contentAgenda #agendastatus { margin-left: 20px; }
   #contentAgenda td.odd {
     font-size: 10pt;
-    background-color: #E0E0E0;
+    background: #E0E0E0;
   }
   #contentAgenda td.even {
     font-size: 10pt;
-    background-color: #ffffff;
+    background: #ffffff;
   }
   #contentDay #daystatus { margin-left: 20px; }
   #contentDay .timeofday {
@@ -1171,14 +1171,14 @@ echo '  body {
     border-left: 1px solid #a0a0a0;
     border-bottom: 1px solid #e0e0e0;
     border-right: 1px solid #e0e0e0;
-    background-color: #ffffff;
+    background: #ffffff;
     font-size: 10px;
     color:' . $GLOBALS['MYEVENTS'] . ';
   }
   #contentDay .daytimedevent {
     font-size: 10px;
-    /*background-color: #c0c0c0;*/
-    background-color:' . $GLOBALS['HASEVENTSBG'] . ';
+    /*background: #c0c0c0;*/
+    background:' . $GLOBALS['HASEVENTSBG'] . ';
     color:' . $GLOBALS['MYEVENTS'] . ';
     border-top: 1px solid #e0e0e0;
     border-left: 1px solid #e0e0e0;
@@ -1390,10 +1390,10 @@ echo '  body {
     border: 1px solid #c0c0c0;
   }
   #securityAudit th {
-    background-color: #d0d0d0;
+    background: #d0d0d0;
   }
   #securityAudit tr.odd td {
-    background-color: #e0e0e0;
+    background: #e0e0e0;
   }
   #securityAuditNotes {
     margin: 20px;
@@ -1436,12 +1436,12 @@ echo '  body {
      text-align: center;
   }
   .layertable th {
-    background-color: ' . $GLOBALS['THBG'] . ';
+    background: ' . $GLOBALS['THBG'] . ';
     color: ' . $GLOBALS['THFG'] . ';
     padding: 5px 20px 5px 20px;
   }
   .layertable td {
-    background-color: ' . $GLOBALS['CELLBG'] . ';
+    background: ' . $GLOBALS['CELLBG'] . ';
     cursor: pointer;
     padding: 5px 20px 5px 20px;
   }
@@ -1451,7 +1451,7 @@ echo '  body {
   .fakebutton {
      color: #000;
      font-size: 10pt;
-     background-color: #d0d0d0;
+     background: #d0d0d0;
      border-top: 1px solid #e0e0e0;
      border-left: 1px solid #e0e0e0;
      border-bottom: 1px solid #808080;
@@ -1459,8 +1459,8 @@ echo '  body {
      padding-left: 5px;
      padding-right: 5px;
   }
-  .fakebutton hover {
-    background-color: #0ff;
+  .fakebutton:hover {
+    background: #0ff;
   }
   #combo #nextmonth { margin-right: 3px; }
   #combo #refresh { margin-right: 3px; }
@@ -1468,7 +1468,7 @@ echo '  body {
   #combo #nextday { margin-right: 3px; }
   #combo #nextmonthdayview { margin-right: 3px; }
   #quickAddDiv {
-    background-color: #ffffff;
+    background: #ffffff;
     border: 1px solid #b0b0b0;
     border-top: 1px solid #e0e0e0;
     border-left: 1px solid #e0e0e0;
