@@ -16,14 +16,15 @@
       'ffffff'],
 
     // Predefined Colors Cursor
-    blankImg      = cursorImg = new Image(),
-    blankImg.src  = 'images/blank.gif',
-    cursorImg.src = 'images/cursor.gif',
-    cursorPos     = 1,
+    blankImg  = cursorImg = new Image(),
+    cursorPos = 1,
 
     // Other Stuff
     hexchars = '0123456789ABCDEF',
     curcol, curhsl, currgb, oldcol, thisInput;
+
+  blankImg.src  = 'images/blank.gif';
+  cursorImg.src = 'images/cursor.gif';
 
   if ( !pcoc ) {
     pcoc = 'FFFFFF, FFFFFF, FFFFFF, FFFFFF, FFFFFF, FFFFFF, FFFFFF, FFFFFF,' +
@@ -89,7 +90,7 @@ function fillhtml() {
        + ' )"><img src="images/blank.gif" width="14" id="preimg' + i
        + '" height="14" border="0" alt="" /></td>' + nl;
     if ( i == 8 ) {
-      customhtml += '</tr>' + nl '<tr>';
+      customhtml += '</tr>' + nl + '<tr>';
     }
   }
   custom.innerHTML = customhtml + '</tr></table>' + nl;
