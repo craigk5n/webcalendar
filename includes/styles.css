@@ -1244,3 +1244,23 @@ tr.highlight td {
  border:0.0625em solid;
  padding:.25em;
 }
+#adminhome table {
+  border:0.0625em solid #000;
+  padding:0.3125em;
+}
+#adminhome table td {
+  padding:1.25em;
+}
+#adminhome table td,
+#adminhome td a {
+  text-align:center;
+}
+#adminhome td a {
+  border:0.0625em solid;
+  border-color:#eee #777 #777 #eee;
+  padding:0.625em;
+}
+#adminhome td a:hover {
+  border-color:#777 #eee #eee #777;
+  background:#aaa;
+}
