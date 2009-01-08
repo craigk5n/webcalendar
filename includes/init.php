@@ -190,8 +190,8 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
     <link type="text/css" href="css_cacher.php?login='
     . ( empty( $_SESSION['webcal_tmp_login'] )
       ? $login : $_SESSION['webcal_tmp_login'] )
-    . '&amp;css_cache=' . $webcalendar_csscache
-    . '" rel="stylesheet" />' )
+    . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet" />
+    <link type="text/css" href="includes/styles.css" rel="stylesheet" />' )
   // Add custom script/stylesheet if enabled.
     . ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom
       ? load_template ( $login, 'S' ) : '' )

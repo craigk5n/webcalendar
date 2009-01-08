@@ -41,7 +41,8 @@ if ( empty ( $SELF_REGISTRATION_FULL ) || $SELF_REGISTRATION_FULL != 'Y' )
 
 $form_control = ( $SELF_REGISTRATION_FULL == 'Y' ? 'email' : 'full' );
 
-/* See if new username is unique.
+/**
+ * See if new username is unique.
  *
  * Return true if all is OK.
  */
@@ -65,7 +66,8 @@ function check_username ( $user ) {
   return true;
 }
 
-/* See if  email is unique.
+/**
+ * See if  email is unique.
  *
  * Return true if all is OK.
  */
@@ -89,7 +91,8 @@ function check_email ( $uemail ) {
   return true;
 }
 
-/* Generate unique password.
+/**
+ *  Generate unique password.
  */
 function generate_password () {
   $pass = '';
@@ -253,7 +256,8 @@ echo send_doctype( $appStr ) . '
         }
       }
     </script>
-    <link rel="stylesheet" type="text/css" href="css_cacher.php?login=__public__" />'
+    <link type="text/css" href="css_cacher.php?login=__public__" rel="stylesheet" />
+    <link type="text/css" href="includes/styles.css" rel="stylesheet" />'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
