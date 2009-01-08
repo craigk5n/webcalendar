@@ -1,6 +1,6 @@
 <?php
 /* $Id$ */
-define ( '_ISVALID', true );
+define( '_ISVALID', true );
 
 include 'includes/translate.php';
 include 'includes/config.php';
@@ -8,49 +8,46 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-do_config ( 'includes/settings.php' );
+do_config( 'includes/settings.php' );
 include 'includes/' . $user_inc;
 include_once 'includes/access.php';
 include_once 'includes/validate.php';
 include_once 'includes/gradient.php';
 
-load_global_settings ();
+load_global_settings();
 
-@session_start ();
-$login = ( empty ( $_SESSION['webcal_login'] )
-  ? '__public__' : $_SESSION['webcal_login'] );
-$login = ( empty ( $_SESSION['webcal_tmp_login'] )
-  ? $login : $_SESSION['webcal_tmp_login'] );
+@session_start();
+$empTmp = ( ! empty( $_SESSION['webcal_tmp_login'] ) );
 
 // If calling script uses 'guest', we must also.
-if ( ! empty ( $_GET['login'] ) )
-  $login = $_GET['login'];
-else
-if ( ! empty ( $_REQUEST['login'] ) )
-  $login = $_REQUEST['login'];
+load_user_preferences( ! empty( $_GET['login'] )
+  ? $_GET['login']
+  : ( ! empty( $_REQUEST['login'] )
+    ? $_REQUEST['login']
+    : ( $empTmp
+      ? $_SESSION['webcal_tmp_login']
+      : ( empty( $_SESSION['webcal_login'] )
+        ? '__public__'
+        : $_SESSION['webcal_login'] ) ) ) );
 
-load_user_preferences ( $login );
+unset( $_SESSION['webcal_tmp_login'] );
 
-// We will cache CSS as default, but override from admin and pref
-// by incrementing the webcalendar_csscache cookie value.
-$cookie = ( isset ( $_COOKIE['webcalendar_csscache'] )
-  ? $_COOKIE['webcalendar_csscache'] : 0 );
+// If we are calling from admin or pref, expire CSS yesterday.
+// Otherwise, expire tomorrow.
+$expTime = gmmktime() + 86400;
+if ( $empTmp )
+  $expTime = gmmktime() - 86400;
 
-header ( 'Content-type: text/css' );
-header ( 'Last-Modified: ' . date ( 'r', mktime ( 0, 0, 0 ) + $cookie ) );
+ob_start( ini_get( 'zlib.output_compression' ) != 1 ? 'ob_gzhandler' : '' );
 
-// If we are calling from admin or pref, expire CSS now.
-if ( empty ( $_SESSION['webcal_tmp_login'] ) ) {
-  header ( 'Expires: ' . date ( 'D, j M Y H:i:s', time () + 86400 ) . ' UTC' );
-  header ( 'Cache-Control: Public' );
-  header ( 'Pragma: Public' );
-}
+header( 'Content-type: text/css' );
+header( 'Last-Modified: ' . gmdate( 'r', $expTime - 400 ) );
+header( 'Expires: ' . gmdate( 'D, j M Y H:i:s \U\TC', $expTime ) );
+header( 'Cache-Control: Public' );
+header( 'Pragma: Public' );
 
-if ( ini_get ( 'zlib.output_compression' ) != 1 )
-  ob_start( 'ob_gzhandler' );
+include_once 'includes/styles.php';
 
-include_once ( 'includes/styles.php' );
-
-unset ( $_SESSION['webcal_tmp_login'] );
+ob_end_flush();
 
 ?>
