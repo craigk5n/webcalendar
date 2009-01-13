@@ -28,13 +28,13 @@ ob_start( ini_get( 'zlib.output_compression' ) != 1
   && ! stristr( $_SERVER['HTTP_USER_AGENT'], 'MSIE 6' ) ? 'ob_gzhandler' : '' );
 
 header( 'Content-type: text/javascript' );
-header( 'Last-Modified: ' . gmdate( 'r' );
+header( 'Last-Modified: ' . gmdate( 'r' ) );
 header( 'Expires: ' . gmdate( 'D, j M Y H:i:s \U\TC', gmmktime() + 3600 ) );
 header( 'Cache-Control: Public' );
 header( 'Pragma: Public' );
 
 if ( ( ! empty( $arinc[2] ) && stristr( $arinc[2], 'true' ) ) ) {
-  header( 'Last-Modified: ' . gmdate( 'r', gmmktime() - 10000 );
+  header( 'Last-Modified: ' . gmdate( 'r', gmmktime() - 10000 ) );
   header( 'Expires: ' . gmdate( 'D, j M Y H:i:s \U\TC', gmmktime() - 3600 ) );
 } else {
   include_once 'includes/translate.php';
