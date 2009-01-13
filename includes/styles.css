@@ -1264,3 +1264,9 @@ tr.highlight td {
   border-color:#777 #eee #eee #777;
   background:#aaa;
 }
+#login label,
+#login textarea,
+#login tr,
+#login td {
+  font-size:1em;
+}
