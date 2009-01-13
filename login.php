@@ -169,7 +169,7 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
   ? load_template ( $login, 'S' ) : '' ) . '
   </head>
-  <body id="login"' . ( $logout ? '' : 'onload="myOnLoad();"' ) . '>'
+  <body id="login"' . ( $logout ? '' : ' onload="myOnLoad();"' ) . '>'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y'
