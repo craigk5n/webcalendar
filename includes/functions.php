@@ -2124,7 +2124,7 @@ function getOverLap ( $item, $i, $parent = true ) {
   $recurse = 0;
 
   $midnight = gmmktime ( - ( $item->getDate ( 'Z' ) / ONE_HOUR ),
-    0, 0, $lt[4] + 1, $lt[3] + 1, $lt[5] );
+    0, 0, $lt[4] + 1, $lt[3] + 1, 1900 + $lt[5] );
 
   $realEndTS = $item->getEndDate ();
   if ( $parent ) {
