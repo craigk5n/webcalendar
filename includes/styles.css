@@ -34,25 +34,25 @@ div {
   border:0;
 }
 h2 {
-  font-size:1.25em;
+  //font-size:1.875em;
 }
 h3 {
-  font-size:1.125em;
+  //font-size:1.500em;
 }
 fieldset {
   width:96%;
 }
 label {
   font-weight:bold;
-  font-size:0.6875em;
+  //font-size:0.6875em;
 }
 p,
 input,
 select {
-  font-size:0.75em;
+  //font-size:0.75em;
 }
 textarea {
-  font-size:0.75em;
+  //font-size:0.75em;
   overflow:auto;
 }
 table {
@@ -60,15 +60,15 @@ table {
   border-spacing:0;
 }
 th {
-  font-size:0.8125em;
+  //font-size:0.8125em;
   padding:0;
 }
 td {
-  font-size:0.6875em;
+  //font-size:0.6875em;
 }
 ul,
 ul a {
-  font-size:0.75em;
+  //font-size:0.75em;
 }
 .main {
   clear:both;
@@ -122,7 +122,7 @@ ul a {
 .tabfor a,
 .tabbak a {
   font-weight:bold;
-  font-size:0.875em;
+  //font-size:0.875em;
 }
 .tabbak a {
   color:#999;
@@ -176,7 +176,7 @@ ul a {
   padding:0 0.5em;
 }
 .weeknumber {
-  font-size:0.625em;
+  //font-size:0.625em;
   text-decoration:none;
 }
 img {
@@ -187,7 +187,7 @@ img.color {
   height:0.9375em;
 }
 #cat {
-  font-size:1.125em;
+  //font-size:1.125em;
 }
 #dateselector,
 #trailer {
@@ -218,7 +218,7 @@ img.color {
 #monthmenu,
 #yearmenu {
   margin-bottom:0;
-  font-size:0.5625em;
+  //font-size:0.5625em;
   text-align:right;
 }
 #yearform {
@@ -233,14 +233,14 @@ img.color {
 #menu a,
 .prefix,
 .printer {
-  font-size:0.875em;
+  //font-size:0.875em;
 }
 .prefix {
   font-weight:bold;
 }
 a#programname {
   margin-top:0.625em;
-  font-size:0.625em;
+  //font-size:0.625em;
 }
 .printer {
   clear:both;
@@ -257,17 +257,17 @@ a#programname {
 /* Remove comments to set unapproved in italics.
   font-style:italic;
 */
-  font-size:0.75em;
+  //font-size:0.75em;
   text-decoration:none;
 }
 .nounapproved {
   font-weight:bold;
-  font-size:0.875em;
+  //font-size:0.875em;
 }
 .entry,
 .layerentry {
   padding-right:0.1875em;
-  font-size:0.75em;
+  //font-size:0.75em;
   text-decoration:none;
 }
 .layerentry {
@@ -286,7 +286,7 @@ a#programname {
   font-weight:bold;
   text-decoration:none;
   vertical-align:top;
-  font-size: 0.75em;
+  //font-size: 0.75em;
 }
 .dayofmonth:hover {
   border-right:0.0625em solid #00f;
@@ -310,7 +310,7 @@ a#programname {
 #activitylog .prev {
   border:0;
   font-weight:bold;
-  font-size:0.875em;
+  //font-size:0.875em;
 }
 #day .next img,
 #day .prev img {
@@ -322,7 +322,7 @@ a#programname {
 }
 .dailymatrix {
   cursor:pointer;
-  font-size:0.75em;
+  //font-size:0.75em;
   text-align:right;
   text-decoration:none;
 }
@@ -373,7 +373,7 @@ a.matrix img {
   height:0.625em;
 }
 .nav {
-  font-size:0.875em;
+  //font-size:0.875em;
   text-decoration:none;
 }
 .popup {
@@ -382,7 +382,7 @@ a.matrix img {
   left:0;
   border:0.0625em solid;
   padding:0.1875em;
-  font-size:0.75em;
+  //font-size:0.75em;
   text-decoration:none;
   visibility:hidden;
   z-index:20;
@@ -403,7 +403,7 @@ a.matrix img {
 .tooltipselect {
   cursor:help;
   font-weight:bold;
-  font-size:0.6875em;
+  //font-size:0.6875em;
   text-decoration:none;
 }
 .tooltip {
@@ -414,7 +414,7 @@ a.matrix img {
 }
 .user,
 .categories {
-  font-size:1.125em;
+  //font-size:1.125em;
   text-align:center;
 }
 .asstmode {
@@ -434,7 +434,7 @@ a.matrix img {
   border:0.0625em solid #000;
 }
 .helpbody label {
-  font-size:1.1em;
+  //font-size:1.1em;
   vertical-align:top;
 }
 .helpbody p {
@@ -443,7 +443,7 @@ a.matrix img {
 .helplist {
   border:0;
   font-weight:bold;
-  font-size:1.2em;
+  //font-size:1.2em;
   text-align:center;
 }
 .helplist a {
@@ -474,12 +474,12 @@ img.help {
 }
 .standard {
   border:0.0625em solid;
-  font-size:0.75em;
+  //font-size:0.75em;
 }
 .standard th {
   border-bottom:0.0625em solid;
   padding:0;
-  font-size:1.125em;
+  //font-size:1.125em;
 }
  /* style for week hover highlight */
 tr.highlight td {
@@ -574,7 +574,7 @@ tr.highlight td {
 #admin .main th,
 #pref .main td,
 #pref .main th {
-  font-size:0.75em;
+  //font-size:0.75em;
 }
 #admin .empty,
 #pref .empty {
@@ -678,7 +678,7 @@ tr.highlight td {
   margin-right:auto;
   margin-left:auto;
   font-weight:bold;
-  font-size:2.9375em;
+  //font-size:2.9375em;
 }
 #day .minical td.selectedday {
   border:0.125em solid;
@@ -689,11 +689,11 @@ tr.highlight td {
   text-align:center;
 }
 .menuhref {
-  font-size:0.75em;
+  //font-size:0.75em;
   font-family: arial, verdana, sans-serif;
 }
 #datesel td.field {
-  font-size:0.75em;
+  //font-size:0.75em;
 }
 .glance {
   width:100%;
@@ -758,7 +758,7 @@ tr.highlight td {
 }
 #viewr th.small {
   background:none;
-  font-size:0.5em;
+  //font-size:0.5em;
 }
 #viewd .main th {
   border-right:0.0625em solid;
@@ -778,7 +778,7 @@ tr.highlight td {
 #month .main td.weekcell {
   width:1%;
   margin:0;
-  font-size:0.75em;
+  //font-size:0.75em;
   text-align:center;
   text-decoration:none;
   vertical-align:middle;
@@ -853,13 +853,13 @@ tr.highlight td {
 }
 #pref .main td {
   height:1.875em;
-  font-size:0.75em;
+  //font-size:0.75em;
 }
 #viewl .main td,
 #contentMonth .main td,
 #month .main td {
   height:4.6875em;
-  font-size:0.75em;
+  //font-size:0.75em;
   table-layout:fixed;
   vertical-align:top;
 }
@@ -868,7 +868,7 @@ tr.highlight td {
 #viewr .main td,
 #viewm .main td,
 #viewv .main td {
-  font-size:0.75em;
+  //font-size:0.75em;
   padding-left:0.1875em;
 }
 #viewl #prevmonth {
@@ -947,7 +947,7 @@ tr.highlight td {
 #contentDay .timeofday {
   float: right;
   margin-right: 0.125em;
-  font-size: 0.5625em;
+  //font-size: 0.5625em;
 }
 #contentDay #daydiv {
   height: 25em;
@@ -961,10 +961,10 @@ tr.highlight td {
   border: 0.0625em solid;
   border-color:#a0a0a0 #e0e0e0 #e0e0e0 #a0a0a0;
   background: #ffffff;
-  font-size: 0.625em;
+  //font-size: 0.625em;
 }
 #contentDay .daytimedevent {
-  font-size: 0.625em;
+  //font-size: 0.625em;
   border: 0.0625em solid;
   border-color:#e0e0e0 #a0a0a0 #a0a0a0 #e0e0e0;
   width: 15.625em;
@@ -1039,7 +1039,7 @@ tr.highlight td {
   width:90%;
   background:#fff;
   color:#999;
-  font-size:0.625em;
+  //font-size:0.625em;
   text-align:center;
 }
 #viewt .yardstick td {
@@ -1063,10 +1063,10 @@ tr.highlight td {
 #register table,
 #login table {
   border:0.0625em solid;
-  font-size:0.75em;
+  //font-size:0.75em;
 }
 .cookies {
-  font-size:0.8125em;
+  //font-size:0.8125em;
 }
 .strikethrough {
   text-decoration:line-through;
@@ -1104,7 +1104,7 @@ tr.highlight td {
   text-align:left;
 }
 .location {
- font-size:0.625em;
+ //font-size:0.625em;
 }
 .byxxx th,
 .byxxx td {
@@ -1155,10 +1155,10 @@ tr.highlight td {
 .layers p {
   margin:0;
   padding-left:0.3125em;
-  font-size:0.75em;
+  //font-size:0.75em;
 }
 .layers p label {
-  font-size:0.8125em;
+  //font-size:0.8125em;
 }
 #securityAudit {
   border: 0.0625em solid #c0c0c0;
@@ -1201,7 +1201,7 @@ tr.highlight td {
   margin-right: 1.5625em;
   border: 0.0625em solid;
   padding: 0.3125em;
-  font-size: 0.6875em;
+  //font-size: 0.6875em;
 }
 .layertable {
    text-align: center;
@@ -1268,5 +1268,5 @@ tr.highlight td {
 #login textarea,
 #login tr,
 #login td {
-  font-size:1em;
+  //font-size:1em;
 }
