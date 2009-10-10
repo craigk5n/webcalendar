@@ -1032,7 +1032,9 @@ function display_month ( $thismonth, $thisyear, $demo = false,
 
 
   $ret .= '
-    <table ' . $help . ' class="main" cellspacing="0" cellpadding="0" id="month_main" summary="">
+    <table ' . $help . ' class="main" cellspacing="0" cellpadding="0"'
+   . ' id="month_main" summary="calendar for ' . month_name( $thismonth - 1 )
+   . ' ' . $thisyear . '">
       <tr>' . ( $DISPLAY_WEEKNUMBER == 'Y' ? '
         <th class="empty"></th>' : '' );
 
