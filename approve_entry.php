@@ -8,7 +8,7 @@ $error = '';
 if ( $readonly == 'Y' )
   $error = print_not_auth ();
 // Give user a chance to add comments to approval email.
-if ( getPostValue ( 'comments' ) != '' ) {
+if ( getPostValue( 'comments' ) !== null ) {
   $comments = getPostValue ( 'comments' );
   $cancel = getPostValue ( 'cancel' );
 } else
@@ -33,8 +33,8 @@ if ( empty ( $ret ) ) {
           <td align="center">
             <input type="submit" value="' . translate ( 'Approve and Send' )
    . '" />&nbsp;&nbsp;&nbsp;
-            <input type="submit" value="' . translate ( 'Approve and Exit' )
-   . '" />
+            <input type="submit" id="cancel" name="cancel" value="'
+   . translate( 'Approve and Exit' ) . '" />
           </td>
         </tr>
         <tr>

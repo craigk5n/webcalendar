@@ -443,7 +443,7 @@ Email address XXX already exists.: L'adresse email "XXX" existe déjà.
 Additional Comments (optional): Commentaires additionnels (optionnel)
 Approve and Send: Approuver et envoyer
 Approve and Exit: Approuver et sortir
-(Your comments will be emailed to the event creator.): Votre commentaire sera envoyer par email au créteur de l'événnement)
+(Your comments will be emailed to the event creator.): (Votre commentaire sera envoyé par courriel au créateur de l'événement)
 Hello, XXX.: Bonjour, XXX
 XXX has approved an appointment and added comments.: Un rendez-vous a été approuvé et commenté par XXX.
 Subject XXX: Sujet : "XXX".
