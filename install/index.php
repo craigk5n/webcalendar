@@ -742,7 +742,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <title>' . translate ( 'WebCalendar Setup Wizard' ) . '</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset='
+ . translate( 'charset' ) . '" />
     ';
 include '../includes/js/visible.php';
 echo '
