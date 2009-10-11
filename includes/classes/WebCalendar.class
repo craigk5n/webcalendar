@@ -714,14 +714,20 @@ class WebCalendar {
           $lastname = $login_lastname;
           $fullname = $login_fullname;
           $is_admin = ( $login_is_admin == 'Y' );
-          $is_nonuser = ( ! empty ( $GLOBALS['login_is_nonuser'] ) &&
-            $GLOBALS['login_is_nonuser'] );
+          $is_nonuser = ( ! empty ( $GLOBALS['login_is_nonuser'] )
+              && $GLOBALS['login_is_nonuser'] );
           $user_email = $login_email;
         } else {
           // Invalid login.
-          if ( $use_http_auth )
-            send_http_login ();
-          else
+          if ( $use_http_auth ) {
+            if ( $pub_acc_enabled ) {
+              $login = '__public__';
+              $firstname = $lastname = $user_email = '';
+              $fullname = 'Public Access';
+              $is_admin = false;
+            } else
+              send_http_login();
+          } else
             // This shouldn't happen since login should be validated in validate.php.
             // If it does happen, it means we received an invalid login cookie.
             do_redirect ( $login_url . '&amp;error=Invalid+session+found.' );

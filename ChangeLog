@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.  Put code changes right
 below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - Patch [ 2802940 ] Allow public access in http authentication mode
  - Patch [ 2809120 ] Allow rejection of a previously approved event
  - Patch [ 2839645 ] Bugfix for the installation when language character != UTF-8
  - Patch [ 2840937 ] Better error reporting for Oracle support in dbi4php.php
