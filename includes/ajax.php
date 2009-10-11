@@ -21,10 +21,10 @@
  * AJAX request.  Using a common return structure for all of our AJAX
  * responses make them easier to handle in the client-side JavaScript.
  *
- * @param  string   $objectName	The name of the object we are sending
- * @param  object   $object	The object to send
+ * @param  string   $objectName    The name of the object we are sending
+ * @param  object   $object        The object to send
  * @param  boolean $sendPlainText  (Optional) Set to true to use plain/text
- *				as the Content-type.
+ *                                 as the Content-type.
  */
 function ajax_send_object ( $objectName, $object, $sendPlainText=false ) {
   // Plain text can be helpful for debugging in the browser.
@@ -47,10 +47,10 @@ function ajax_send_object ( $objectName, $object, $sendPlainText=false ) {
  * AJAX request.  Using a common return structure for all of our AJAX
  * responses make them easier to handle in the client-side JavaScript.
  *
- * @param  array   $objects	array of objects with the object name as
- *				the key.
+ * @param  array   $objects  array of objects with the object name as
+ *                           the key.
  * @param  boolean $sendPlainText  (Optional) Set to true to use plain/text
- *				as the Content-type.
+ *                           as the Content-type.
  */
 function ajax_send_objects ( $objectArray, $sendPlainText=false ) {
   // Plain text can be helpful for debugging in the browser.
@@ -76,7 +76,7 @@ function ajax_send_objects ( $objectArray, $sendPlainText=false ) {
  * responses make them easier to handle in the client-side JavaScript.
  *
  * @param  boolean $sendPlainText  (Optional) Set to true to use plain/text
- *				as the Content-type.
+ *        as the Content-type.
  */
 function ajax_send_success ( $sendPlainText=false ) {
   // Plain text can be helpful for debugging in the browser.
@@ -97,12 +97,12 @@ function ajax_send_success ( $sendPlainText=false ) {
 /* Send a failure/fault back to the AJAX request.  This represents a failed
  * AJAX request.
  *
- * @param  string   $errorMessage	The error message to send back to
- *				the user.  This may be displayed to the
- *				end user and should be translated into
- *				the proper user language.
+ * @param  string   $errorMessage  The error message to send back to
+ *        the user.  This may be displayed to the
+ *        end user and should be translated into
+ *        the proper user language.
  * @param  boolean $sendPlainText  (Optional) Set to true to use plain/text
- *				as the Content-type.
+ *        as the Content-type.
  */
 function ajax_send_error ( $errorMessage, $sendPlainText=false ) {
   // Plain text can be helpful for debugging in the browser.

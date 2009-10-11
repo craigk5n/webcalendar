@@ -103,8 +103,12 @@ $selected = ' selected="selected"';
 
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
-$magic = @get_magic_quotes_runtime ();
-@set_magic_quotes_runtime ( 0 );
+if ( function_exists( 'set_magic_quotes_runtime' ) ) {
+  $magic = @get_magic_quotes_runtime();
+  @set_magic_quotes_runtime( 0 );
+} else
+  unset( $magic );
+
 $fd = @fopen ( $file, 'rb', true );
 $settings = array ();
 $password = '';
@@ -122,7 +126,9 @@ if ( ! empty ( $fd ) ) {
   if ( empty ( $password ) )
     $forcePassword = true;
 }
-@set_magic_quotes_runtime ( $magic );
+
+if ( isset( $magic ) )
+  @set_magic_quotes_runtime( $magic );
 
 session_start ();
 $doLogin = false;
@@ -243,8 +249,12 @@ if ( file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
   exit;
 }
 
-$magic = @get_magic_quotes_runtime ();
-@set_magic_quotes_runtime ( 0 );
+if ( function_exists( 'set_magic_quotes_runtime' ) ) {
+  $magic = @get_magic_quotes_runtime();
+  @set_magic_quotes_runtime( 0 );
+} else
+  unset( $magic );
+
 $fd = @fopen ( $file, 'rb', false );
 if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
@@ -263,7 +273,9 @@ if ( ! empty ( $fd ) ) {
   }
   fclose ( $fd );
 }
-@set_magic_quotes_runtime ( $magic );
+
+if ( isset( $magic ) )
+  @set_magic_quotes_runtime( $magic );
 
 $action = getGetValue ( 'action' );
 // We were sent here because of a mismatch of $PROGRAM_VERSION.

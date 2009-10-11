@@ -46,8 +46,8 @@ function do_debug ( $msg ) {
  *
  * @return string  The text altered to have HTML links for any web links.
  */
-function activate_urls ( $text ) {
-  return ereg_replace ( '[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]',
+function activate_urls( $text ) {
+  return preg_replace( '/[a-z]+:\/\/[^<> \t\r\n]+[a-z0-9\/]/i',
     '<a href="\\0">\\0</a>', $text );
 }
 
@@ -2210,7 +2210,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
           } //end foreach bymonth
         } elseif ( isset ( $byyearday ) ) { // end if isset bymonth
           foreach ( $byyearday as $yearday ) {
-            ereg ( '([-\+]{0,1})?([0-9]{1,3})', $yearday, $match );
+            preg_match( '/([-+]?)(\d{1,3})/', $yearday, $match );
             if ( $match[1] == '-' && ( $cdate >= $date ) )
               $yret[] =
               mktime ( $hour, $minute, 0, 12, 31 - $match[2] - 1, $thisyear );
@@ -3038,14 +3038,18 @@ function get_users_event_ids ( $user ) {
  *
  * @ignore
  */
-function get_web_browser () {
-  $agent = getenv ( 'HTTP_USER_AGENT' );
-  if ( ereg ( 'MSIE [0-9]', $agent ) )
+function get_web_browser() {
+  $agent = getenv( 'HTTP_USER_AGENT' );
+
+  if ( preg_match( '/MSIE \d/', $agent ) )
     return 'MSIE';
-  if ( ereg ( 'Mozilla/[234]', $agent ) )
+
+  if ( preg_match( '/Mozilla\/[234]/', $agent ) )
     return 'Netscape';
-  if ( ereg ( 'Mozilla/[5678]', $agent ) )
+
+  if ( preg_match( '/Mozilla\/[5678]/', $agent ) )
     return 'Mozilla';
+
   return 'Unknown';
 }
 
@@ -4348,14 +4352,14 @@ function print_checkbox ( $vals, $id = '', $onchange = '' ) {
   if ( $SCRIPT == 'admin.php' ) {
     $setting = $s[$vals[0]];
     $variable = 'admin_' . $vals[0];
-	$hidden = '
-	  <input type="hidden" name="' . $variable . '" value="N" />';
+    $hidden = '
+    <input type="hidden" name="' . $variable . '" value="N" />';
   }
   if ( $SCRIPT == 'pref.php' ) {
     $setting = $prefarray[$vals[0]];
     $variable = 'pref_' . $vals[0];
-	$hidden = '
-	  <input type="hidden" name="' . $variable . '" value="N" />';
+    $hidden = '
+    <input type="hidden" name="' . $variable . '" value="N" />';
   }
   return $hidden . '
       <label><input type="checkbox" name="' . $variable . '" value="' . $vals[1]
@@ -5058,14 +5062,14 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
       }
 
       if ( $want_repeated && ! empty ( $row[20] ) ) // row[20] = cal_type
-        $item =& new RepeatingEvent ( $evt_name, $evt_descr, $row[2], $row[3],
+        $item = new RepeatingEvent( $evt_name, $evt_descr, $row[2], $row[3],
           $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10],
           $primary_cat, $row[11], $row[12], $row[13], $row[14], $row[15],
           $row[16], $row[17], $row[18], $row[19], $row[20], $row[21], $row[22],
           $row[23], $row[24], $row[25], $row[26], $row[27], $row[28], $row[29],
-          $row[30], $row[31], $row[32], array (), array (), array () );
+          $row[30], $row[31], $row[32], array(), array(), array() );
       else
-        $item =& new Event ( $evt_name, $evt_descr, $row[2], $row[3], $row[4],
+        $item = new Event( $evt_name, $evt_descr, $row[2], $row[3], $row[4],
           $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $primary_cat,
           $row[11], $row[12], $row[13], $row[14], $row[15], $row[16], $row[17],
           $row[18], $row[19] );

@@ -26,9 +26,9 @@ function getPostValue ( $name, $defVal=NULL ) {
   $postName = $defVal;
   if ( isset ( $_POST ) && is_array ( $_POST ) && isset ( $_POST[$name]) )
     $postName = ( get_magic_quotes_gpc () != 0
-      ? $_POST[$name] : (is_array ( $_POST[$name] ) 
-			? array_map ( 'addslashes',  
-			$_POST[$name] ): addslashes ( $_POST[$name] ) ) );
+      ? $_POST[$name] : ( is_array( $_POST[$name] ) 
+        ? array_map( 'addslashes', $_POST[$name] )
+        : addslashes( $_POST[$name] ) ) );
   return $postName;
 }
 

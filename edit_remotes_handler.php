@@ -174,7 +174,7 @@ function delete_events ( $nid ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
       WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
-	  $row = dbi_fetch_row ( $res );
+      $row = dbi_fetch_row ( $res );
       if ( ! empty ( $row ) && $row[0] == 1 )
         $delete_em[] = $events[$i];
 

@@ -104,7 +104,8 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $num_left = $USERS_PER_TABLE;
 
   $tdw = ( $num_left > 0
-    ? intval ( 90 / ( $num_left < $USERS_PER_TABLE ? $num_left : $USERS_PER_TABLE ) )
+    ? intval( 90 / ( $num_left < $USERS_PER_TABLE
+      ? $num_left : $USERS_PER_TABLE ) )
     : 5 );
 
   echo '
@@ -157,10 +158,10 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
         $class = '';
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
         $class = 'class="hasevents"';
-			else
+      else
       if (  $dateYmd == $todayYmd )
         $class = 'class="today"';
-			else
+      else
       if ( $is_weekend )
         $class = 'class="weekend"';
 

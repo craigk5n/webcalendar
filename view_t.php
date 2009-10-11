@@ -299,10 +299,10 @@ ob_start ();
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
-	'&amp;date=' . $prevdate
+  '&amp;date=' . $prevdate
  . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="view_t.php?id=' . $id .
-	'&amp;date=' . $nextdate
+  '&amp;date=' . $nextdate
  . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
       <div class="title">
         <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )

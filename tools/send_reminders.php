@@ -61,7 +61,7 @@ require_once __WC_INCLUDEDIR . '/classes/Event.class';
 require_once __WC_INCLUDEDIR . '/classes/RptEvent.class';
 require_once __WC_INCLUDEDIR . '/classes/WebCalMailer.class';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WebCalendar = new WebCalendar( __FILE__ );
 
 include __WC_INCLUDEDIR . '/translate.php';
 include __WC_INCLUDEDIR . '/config.php';
@@ -230,11 +230,11 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $is_task = false;
   // Get repeating events...tasks are not included at this time.
   if ( $debug )
-	  echo "getting repeating events for $date<br />";
+    echo "getting repeating events for $date<br />";
   $rep = my_get_repeating_entries ( '', $date );
   $repcnt = count ( $rep );
   if ( $debug )
-	  echo "found $repcnt repeating events for $date<br />";
+    echo "found $repcnt repeating events for $date<br />";
   for ( $i = 0; $i < $repcnt; $i++ ) {
     $id = $rep[$i]->getID ();
     if ( ! empty ( $completed_ids[$id] ) )
@@ -402,7 +402,7 @@ function send_reminder ( $id, $event_date ) {
       ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time' ) ) . ': '
        . display_time ( '', $display_tzid, $event_time, $userTformat ) . "\n"
       : ( ( $row[2] == 0 &&  $row[5] = 1440) ? translate ( 'Time' ) . ': ' 
-	  . translate ( 'All day event' ). "\n" : '' ) )
+       . translate( 'All day event' ). "\n" : '' ) )
      . ( $row[5] > 0 && ! $is_task
       ? translate ( 'Duration' ) . ': ' . $row[5] . ' '
        . translate ( 'minutes' ) . "\n"
@@ -614,19 +614,19 @@ function my_get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   $n = 0;
   $ret = array ();
   if ( $debug )
-     echo "Getting repeating entries for $dateYmd<br />";
+    echo "Getting repeating entries for $dateYmd<br />";
 
   for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
     $list = $repeated_events[$i]->getRepeatAllDates ();
     for ( $j = 0, $cnt_j = count ( $list ); $j < $cnt_j; $j++ ) {
-	    if ( $debug )
-	       echo "     checking $list[$j] = " . date ( 'Ymd', $list[$j]) . '<br />';
+      if ( $debug )
+        echo "     checking $list[$j] = " . date( 'Ymd', $list[$j]) . '<br />';
 
-	    if ( $dateYmd == date ( 'Ymd', $list[$j] ) ) {
-	      $ret[$n++] = $repeated_events[$i];
-	      if ( $debug )
-	         echo 'Added!<br />';
-	    }
+      if ( $dateYmd == date ( 'Ymd', $list[$j] ) ) {
+        $ret[$n++] = $repeated_events[$i];
+        if ( $debug )
+          echo 'Added!<br />';
+      }
     }
   }
   return $ret;

@@ -24,7 +24,7 @@ define ( '__WC_INCLUDEDIR', '../includes' );
   require_once __WC_INCLUDEDIR . '/classes/Event.class';
   require_once __WC_INCLUDEDIR . '/classes/RptEvent.class';
 
-  $WebCalendar =& new WebCalendar ( __FILE__ );
+  $WebCalendar = new WebCalendar( __FILE__ );
 
   include_once __WC_INCLUDEDIR . '/config.php';
   include_once __WC_INCLUDEDIR . '/dbi4php.php';

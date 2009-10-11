@@ -500,10 +500,10 @@ function get_admins () {
 //  returns: string - userid
 //
 //  ex: stripdn(uid=jeffh,ou=people,dc=example,dc=com) returns jeffh
-function stripdn($dn){
-  list ($uid,$trash) = split (',', $dn, 2);
-  list ($trash,$user) = split ('=', $uid);
-  return($user);
+function stripdn( $dn ) {
+  list( $uid, $trash ) = explode( ',', $dn, 2 );
+  list( $trash, $user ) = explode( '=', $uid );
+  return $user;
 }
 
 // Connects and binds to the LDAP server
