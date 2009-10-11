@@ -2,42 +2,42 @@
 /* $Id$
  *
  * Description:
- *	Generates RSS 2.0 output of the activity log.
+ *  Generates RSS 2.0 output of the activity log.
  *
- *	Like icalclient.php, this file does not use the standard web-based
- *	user authentication.  It always uses HTTP-based user authentication
- *	since that is what RSS readers will expect.
+ *  Like icalclient.php, this file does not use the standard web-based
+ *  user authentication.  It always uses HTTP-based user authentication
+ *  since that is what RSS readers will expect.
  *
- *	For details on the RSS 2.0 specification:
- *	  http://cyber.law.harvard.edu/rss/rss.html
+ *  For details on the RSS 2.0 specification:
+ *    http://cyber.law.harvard.edu/rss/rss.html
  *
  * Input parameters:
- *	None
+ *  None
  *
  * Security:
- *	If User Access Control is on, the user must have access to
- *	ACCESS_ACTIVITY_LOG or be an admin user.
- *	If User Access Control is off, the user must be an admin user.
+ *  If User Access Control is on, the user must have access to
+ *  ACCESS_ACTIVITY_LOG or be an admin user.
+ *  If User Access Control is off, the user must be an admin user.
  *
  * Notes:
- *	Changes in functionality should be coordinated with activity_log.php
- *	since there is common code in the two files.
+ *  Changes in functionality should be coordinated with activity_log.php
+ *  since there is common code in the two files.
  *
- *	If running as CGI, the following instructions should set the
- *	PHP_AUTH_xxxx variables. This has only been tested with apache2,
- *	so far. If using php as CGI, you'll need to include this in your
- *	httpd.conf file or possibly in an .htaccess file.
+ *  If running as CGI, the following instructions should set the
+ *  PHP_AUTH_xxxx variables. This has only been tested with apache2,
+ *  so far. If using php as CGI, you'll need to include this in your
+ *  httpd.conf file or possibly in an .htaccess file.
  *
- *	<IfModule mod_rewrite.c>
- *	  RewriteEngine on
- *	  RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
- *	</IfModule>
+ *  <IfModule mod_rewrite.c>
+ *    RewriteEngine on
+ *    RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
+ *  </IfModule>
  */
 
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WebCalendar = new WebCalendar( __FILE__ );
 
 include 'includes/config.php';
 include 'includes/dbi4php.php';

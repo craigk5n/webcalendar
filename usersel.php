@@ -21,7 +21,7 @@ if ( empty ( $listid ) ) {
 }
 
 // Parse $users.
-$exp = split ( ',', $users );
+$exp = explode( ',', $users );
 $groups = $selected = $sql_params = array ();
 for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
   $selected[$exp[$i]] = 1;

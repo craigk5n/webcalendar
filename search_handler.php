@@ -143,16 +143,16 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     $sql_params = array ();
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, weu.cal_login '
-      . ( ! empty ( $extra_filter ) ? ', wse.cal_data ' : '' )
+      . ( empty( $extra_filter ) ? '' : ', wse.cal_data ' )
       . 'FROM webcal_entry_user weu LEFT JOIN  webcal_entry we '
-      . ( ! empty ( $cat_filter ) ? ', webcal_entry_categories wec ' : '')
-      . ( ! empty ( $extra_filter ) ? ', webcal_site_extras wse ' : '')
-	  . 'ON weu.cal_id = we.cal_id
-        WHERE weu.cal_status in ( \'A\',\'W\' )
-      AND weu.cal_login IN ( ?';
+      . ( empty( $cat_filter ) ? '' : ', webcal_entry_categories wec ' )
+      . ( empty( $extra_filter ) ? '' : ', webcal_site_extras wse ' )
+      . 'ON weu.cal_id = we.cal_id WHERE weu.cal_status in ( \'A\',\'W\' )
+       AND weu.cal_login IN ( ?';
     if ( $search_others ) {
       if ( empty ( $users[0] ) )
         $sql_params[0] = $users[0] = $login;
+
       $user_cnt = count ( $users );
       for ( $j = 0; $j < $user_cnt; $j++ ) {
         if ( $j > 0 ) $sql .= ', ?';
@@ -215,8 +215,8 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $info[$matches]['id'] = $row[0];
-        $info[$matches]['text'] = $row[1] . ' ( ' . date_to_str ( $row[2] ) . ' )';
-		$info[$matches]['user'] = $row[3];
+        $info[$matches]['text'] = $row[1] . ' ( ' . date_to_str( $row[2] ) . ' )';
+        $info[$matches]['user'] = $row[3];
 
         $matches++;
       }
@@ -247,7 +247,7 @@ if ( empty ( $error ) ) {
   foreach ( $info as $result ) {
     echo '
       <li><a class="nav" href="view_entry.php?id=' . $result['id']
-	   . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>';
+     . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>';
   }
   echo '
     </ul>';

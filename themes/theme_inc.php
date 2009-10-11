@@ -10,7 +10,7 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) && !
 $no_preview = 'NO PREVIEW AVAILABLE';
 if ( function_exists ( 'translate' ) )
   $no_preview = translate ( 'NO PREVIEW AVAILABLE' );
-	
+
 if ( ! empty ( $PHP_SELF ) && preg_match ( '/\/themes\//', $PHP_SELF ) ) {
   $filename = basename ( $PHP_SELF, '.php' ) . '.gif';
   echo <<<EOT
@@ -23,8 +23,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( '/\/themes\//', $PHP_SELF ) ) {
 EOT;
   echo ( file_exists ( $filename )
     ? '<img src="' . $filename . '" />'
-    : '<h2>' . $no_preview. '</h2>' )
-		. '
+    : '<h2>' . $no_preview. '</h2>' ) . '
   </body>
 </html>';
 }

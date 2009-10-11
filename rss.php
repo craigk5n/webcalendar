@@ -58,7 +58,7 @@ require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WebCalendar = new WebCalendar( __FILE__ );
 
 include 'includes/formvars.php';
 include 'includes/functions.php';
@@ -282,10 +282,9 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
       if ( in_array ( $entries[$j]->getAccess (), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID ();
         $unixtime = $entries[$j]->getDateTimeTS ();
-        $dateinfo = ( $date_in_title
-          ? date ( $date_format, $unixtime )
-           . ( $entries[$j]->isTimed () ? $time_separator 
-		   . date ( $time_format, $unixtime ) : '' ) . ' ' : '' );
+        $dateinfo = ( $date_in_title ? date( $date_format, $unixtime )
+          . ( $entries[$j]->isTimed() ? $time_separator
+          . date( $time_format, $unixtime ) : '' ) . ' ' : '' );
 
         echo '
     <item>

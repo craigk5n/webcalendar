@@ -2,11 +2,11 @@
 /* $Id$
  *
  * Description:
- *	This page will take look for possible security issues with
- *	this installation of WebCalendar.
+ *  This page will take look for possible security issues with
+ *  this installation of WebCalendar.
  *
  * Input Parameters:
- *	None
+ *  None
  *
  * Security:
  *  User must be an admin user

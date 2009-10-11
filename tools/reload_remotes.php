@@ -49,7 +49,7 @@ ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 include_once __WC_INCLUDEDIR . '/translate.php';
 require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WebCalendar = new WebCalendar( __FILE__ );
 
 include __WC_INCLUDEDIR . '/config.php';
 include __WC_INCLUDEDIR . '/dbi4php.php';
