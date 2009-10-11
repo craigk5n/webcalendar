@@ -931,19 +931,26 @@ echo '
 if ( empty ( $friendly ) )
   echo $printerStr;
 
-if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve ) &&
-    $event_status == 'W' && $readonly == 'N' && $login != '__public__') {
-  $approveStr = translate ( 'Approve/Confirm entry' );
-  $rejectStr = translate ( 'Reject entry' );
-  echo '
-      <li><a title="' . $approveStr . '" class="nav" href="approve_entry.php?id='
-   . $id . $u_url . '&amp;type=E" onclick="return confirm( \''
-   . translate ( 'Approve this entry?', true ) . '\' );">' . $approveStr
-   . '</a></li>
-      <li><a title="' . $rejectStr . '"  class="nav" href="reject_entry.php?id='
-   . $id . $u_url . '&amp;type=E" onclick="return confirm( \''
-   . translate ( 'Reject this entry?', true ) . '\' );">' . $rejectStr
-   . '</a></li>';
+if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve )
+    && $readonly == 'N' && $login != '__public__') {
+  if ( $event_status != 'A' ) {
+    $approveStr = translate( 'Approve/Confirm entry' );
+    echo '
+        <li><a title="' . $approveStr
+     . '" class="nav" href="approve_entry.php?id=' . $id . $u_url
+     . '&amp;type=E" onclick="return confirm( \''
+     . translate( 'Approve this entry?', true ) . '\' );">'
+     . $approveStr . '</a></li>';
+  }
+  if ( $event_status != 'R' ) {
+    $rejectStr = translate( 'Reject entry' );
+    echo '
+        <li><a title="' . $rejectStr
+     . '" class="nav" href="reject_entry.php?id=' . $id . $u_url
+     . '&amp;type=E" onclick="return confirm( \''
+     . translate( 'Reject this entry?', true ) . '\' );">'
+     . $rejectStr . '</a></li>';
+  }
 }
 
 // TODO add these permissions to the UAC list
