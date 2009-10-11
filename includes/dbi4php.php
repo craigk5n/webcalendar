@@ -591,9 +591,12 @@ function dbi_error () {
   elseif ( strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0 )
     // No real mssql_error function. This is as good as it gets.
     $ret = mssql_get_last_message ();
-  elseif ( strcmp ( $GLOBALS['db_type'], 'oracle' ) == 0 )
-    $ret = OCIError ( $GLOBALS['oracle_connection'] );
-  elseif ( strcmp ( $GLOBALS['db_type'], 'postgresql' ) == 0 )
+  elseif ( strcmp( $GLOBALS['db_type'], 'oracle' ) == 0 ) {
+    $e = OCIError( $GLOBALS['oracle_connection'] 
+      ? $GLOBALS['oracle_connection'] : '' );
+
+    $ret = htmlentities( $e['message'] );
+  } elseif ( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
     $ret = pg_errormessage ( $GLOBALS['postgresql_connection'] );
   elseif ( strcmp ( $GLOBALS['db_type'], 'odbc' ) == 0 )
     // No way to get error from ODBC API.
