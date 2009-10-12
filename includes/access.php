@@ -103,7 +103,7 @@ $GLOBALS['page_lookup_ex'] = array (
  */
 $GLOBALS['page_lookup'] = array (
   ACCESS_EVENT_VIEW =>'(view_entry.php|select_user.php|purge.php|category*php|doc.php)',
-  ACCESS_EVENT_EDIT =>'(_entry|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
+  ACCESS_EVENT_EDIT =>'(add_entry|approve_entry|del_entry|edit_entry|edit_entry_handler|help_edit_entry|reject_entry|set_entry_cat|list_unapproved|usersel|availability|datesel|catsel|docadd|docdel)',
   ACCESS_DAY => 'day.php',
   ACCESS_WEEK => '(week.php|week_details.php)',
   ACCESS_MONTH => 'month.php',
