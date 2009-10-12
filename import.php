@@ -61,13 +61,52 @@ function print_user_list () {
   }
 }
 
+function print_categories() {
+  global $categories, $CATEGORIES_ENABLED;
+
+  if ( $CATEGORIES_ENABLED = 'Y' ) {
+    $cat_options = '
+              <option value="__import" selected="selected">'
+     . translate('import from file') . '</option>';
+
+    load_user_categories();
+    
+    $size = 0;
+    foreach ( $categories as $i => $value ) {
+      if ( $i != 0 ) {
+        $l = $categories[$i]['cat_name'];
+        $size++;
+        $cat_options .= '
+              <option value="' . $l . '">' . $l . '</option>';
+      }
+    }
+
+    if ( $size > 50 )
+      $size = 15;
+    elseif ( $size > 5 )
+      $size = 5;
+
+    echo '
+        <tr>
+          <td class="aligntop"><label for="importcat">'
+     . translate( 'Category' ) . ':</label></td>
+          <td>
+            <select name="importcat" id="importcat" size="' . $size . '">'
+     . $cat_options . '
+            </select>
+          </td>
+        </tr>';
+  }
+}
+
 $upload = ini_get ( 'file_uploads' );
-$upload_enabled = ( ! empty ( $upload ) &&
-  preg_match ( '/(On|1|true|yes)/i', $upload ) );
+$upload_enabled = ( ! empty( $upload )
+   && preg_match( '/(On|1|true|yes)/i', $upload ) );
+
+ob_start();
 
 print_header ( array ( 'js/export_import.php', 'js/visible.php' ),
   '', 'onload="toggle_import();"' );
-ob_start ();
 echo '
     <h2>' . translate ( 'Import' ) . '&nbsp;<img src="images/help.gif" alt="'
  . translate ( 'Help' ) . '" class="help" onclick="window.open( '
@@ -132,13 +171,14 @@ else {
           <td><input type="file" name="FileName" id="fileupload" size="45" '
    . 'maxlength="50" /></td>
         </tr>';
-  print_user_list ();
+  print_user_list();
+  print_categories();
   echo '
       </table><br />
       <input type="submit" value="' . translate ( 'Import' ) . '" />
     </form>';
 }
-ob_end_flush ();
-echo print_trailer ();
+echo print_trailer();
+ob_end_flush();
 
 ?>

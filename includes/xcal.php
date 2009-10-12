@@ -14,7 +14,8 @@
  *
  */
 function generate_prodid ( $type='' ) {
-  global $PROGRAM_VERSION, $PROGRAM_NAME;
+  global $PROGRAM_NAME, $PROGRAM_VERSION;
+
   $ret = 'PRODID:-//WebCalendar-' .$type . '-' ;
   if ( ! empty ( $PROGRAM_VERSION ) )
     $ret .= $PROGRAM_VERSION;
@@ -144,7 +145,7 @@ function search_users($arrInArray, $varSearchValue){
 }
 
 function export_get_attendee( $id, $export ) {
-  global $login, $EMAIL_FALLBACK_FROM;
+  global $EMAIL_FALLBACK_FROM, $login;
 
   $request = 'SELECT weu.cal_login, weu.cal_status, we.cal_create_by
     FROM webcal_entry_user weu LEFT JOIN  webcal_entry we
@@ -235,7 +236,8 @@ function export_get_attendee( $id, $export ) {
 // than just a DATE is needed to avoid a bug in Sunbird 0.7.  If the
 // DTSTART has a DATETIME and the DTEND is just DATE, then Sunbird locks up.
 function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
-  global $TIMEZONE, $vtimezone_data, $use_vtimezone;
+  global $TIMEZONE, $use_vtimezone, $vtimezone_data;
+
   $ret = $vtimezone_exists = '';
   $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), $time>0 );
   $eventend = $eventstart + ( $duration * 60 );
@@ -657,10 +659,9 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
 }
 
 function export_get_event_entry( $id = 'all', $attachment = false ) {
-  global $use_all_dates, $include_layers, $startdate,
-  $enddate, $moddate, $login, $user;
-  global $DISPLAY_UNAPPROVED, $layers, $type, $USER_REMOTE_ACCESS, $cat_filter;
-
+  global $cat_filter, $DISPLAY_UNAPPROVED, $enddate, $include_layers, $layers,
+  $login, $moddate, $startdate, $type, $user, $USER_REMOTE_ACCESS, $use_all_dates;
+ 
   $sql_params = array ();
   $sql = 'SELECT we.cal_id, we.cal_name, we.cal_priority, we.cal_date,
     we.cal_time, weu.cal_status, we.cal_create_by, we.cal_access, we.cal_duration,
@@ -733,7 +734,7 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
   return $res;
 } //end function export_get_event_entry($id)
 function generate_uid ( $id = '' ) {
-  global $SERVER_URL, $login;
+  global $login, $SERVER_URL;
 
   $uid = $SERVER_URL;
   if ( empty ( $uid ) )
@@ -750,7 +751,7 @@ function generate_uid ( $id = '' ) {
 // then figure out which webcalendar event goes with the UID so we can
 // update the correct event.
 function save_uid_for_event ( $importId, $id, $uid ) {
-  global $login, $error;
+  global $error, $login;
   // Note: We can get a duplicate key error here if this event was
   // created by an import from another calendar. Say someone invites you
   // to an event and sends along an ics attachement via email. You use
@@ -916,8 +917,8 @@ function export_vcal ( $id ) {
 } //end function
 
 function export_ical ( $id = 'all', $attachment = false ) {
-  global $publish_fullname, $login, $cal_type,
-    $cat_filter, $vtimezone_data, $use_vtimezone;
+  global $cal_type, $cat_filter, $login, $publish_fullname,
+  $use_vtimezone, $vtimezone_data;
 
   $exportId = -1;
   $ret = $Vret = $vtimezone_data = $use_vtimezone = '';
@@ -1211,10 +1212,9 @@ $Entry[Repeat][Count]      =  Number of occurances, may be used instead of UNTIL
 */
 
 function import_data ( $data, $overwrite, $type ) {
-  global $login, $count_con, $count_suc, $error_num, $ImportType;
-  global $single_user, $single_user_login, $numDeleted, $errormsg;
-  global $ALLOW_CONFLICTS, $ALLOW_CONFLICT_OVERRIDE, $H2COLOR;
-  global $calUser, $sqlLog;
+  global $ALLOW_CONFLICTS, $ALLOW_CONFLICT_OVERRIDE, $calUser, $count_con,
+  $count_suc, $errormsg, $error_num, $H2COLOR, $importcat, $ImportType,
+  $login, $numDeleted, $single_user, $single_user_login, $sqlLog;
 
   $oldUIDs = array ();
   $oldIds = array ();
@@ -1612,16 +1612,18 @@ function import_data ( $data, $overwrite, $type ) {
           array ( $id ) );
       }
       // update Categories
-      if ( ! empty ( $Entry['Categories'] ) ) {
-        $cat_ids = $Entry['Categories'];
+      if ( ! empty( $Entry['Categories'] ) || $importcat != '') {
+        $cat_ids = ( $importcat != ''
+          ? get_categories_id_byname( utf8_decode( $importcat ) )
+          : $Entry['Categories'] );
+
         $cat_order = 1;
         foreach ( $cat_ids as $cat_id ) {
-          $sql = 'INSERT INTO webcal_entry_categories
-            ( cal_id, cat_id, cat_order, cat_owner ) VALUES ( ?, ?, ?, ? )';
-
-          if ( ! dbi_execute ( $sql, array ( $id, $cat_id, $cat_order++, $login ) ) ) {
-            $error = db_error ();
-            // do_debug ( "Error: " . $error );
+          if ( ! dbi_execute( 'INSERT INTO webcal_entry_categories
+            ( cal_id, cat_id, cat_order, cat_owner ) VALUES ( ?, ?, ?, ? )',
+            array( $id, $cat_id, $cat_order++, $login ) ) ) {
+            $error = db_error();
+            // do_debug( 'Error: ' . $error );
             break;
           }
         }
@@ -1906,7 +1908,8 @@ function import_data ( $data, $overwrite, $type ) {
 // a problem with PHP 4.1.2 on Linux.
 // It did work correctly with PHP 5.0.2.
 function parse_ical ( $cal_file, $source = 'file' ) {
-  global $tz, $errormsg;
+  global $errormsg, $tz;
+
   $ical_data = array ();
   do_debug ( "in parse_ical, file=$cal_file, source=$source" );
   if ( $source == 'file' || $source == 'remoteics' ) {
@@ -2255,7 +2258,8 @@ function parse_ical ( $cal_file, $source = 'file' ) {
 }
 // Parse the hcal array
 function parse_hcal ( $hcal_array ) {
-  global $tz, $errormsg;
+  global $errormsg, $tz;
+
   $ical_data = array ();
 
   $error = false;
@@ -2378,7 +2382,8 @@ function RepeatType ( $type ) {
 // Convert ical format (yyyymmddThhmmssZ) to epoch time
 function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
   $plus_m = '0', $plus_y = '0' ) {
-  global $SERVER_TIMEZONE, $calUser;
+  global $calUser, $SERVER_TIMEZONE;
+
   $this_TIMEZONE = $Z = '';
   // Just in case, trim off leading/trailing whitespace.
   $vdate = trim ( $vdate );
@@ -2771,7 +2776,7 @@ function parse_ISO8601_duration ( $duration ) {
 // Functions from import_vcal.php
 // Parse the vcal file and return the data hash.
 function parse_vcal( $cal_file ) {
-  global $tz, $errormsg;
+  global $errormsg, $tz;
 
   $vcal_data = array ();
   // echo "Parsing vcal file...<br />\n";
@@ -3003,7 +3008,8 @@ function format_vcal( $event ) {
 }
 
 function get_categories_id_byname ( $cat_names ) {
-  global $login, $IMPORT_CATEGORIES;
+  global $IMPORT_CATEGORIES, $login;
+
   $categories = explode ( ',', $cat_names );
   foreach ( $categories as $cat_name ) {
     $res = dbi_execute ( 'SELECT cat_id FROM webcal_categories
