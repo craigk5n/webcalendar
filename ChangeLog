@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 12-Oct-09 bb Patch [ 2777127 ] Patch for bug 2318177, report options not saving/displaying
  - 12-Oct-09 bb Patch [ 2782298 ] Users selection shifts
  - 12-Oct-09 bb <script language="javascript" was deprecated years ago
  - 12-Oct-09 bb Patch [ 2794125 ] Import Categories

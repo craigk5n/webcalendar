@@ -246,41 +246,41 @@ if ( $show_participants ) {
 
 echo ( $is_admin ? '
         <tr>
-          <td><label>' . translate ( 'Global' ) . ':</label></td>
-          <td>' . print_radio ( 'is_global', '', '',
-    ( ! empty ( $report_is_global ) && ( $report_is_global == 'Y'
-        ? 'Y' : 'N' ) ) ) . '</td>
+          <td><label>' . translate( 'Global' ) . ':</label></td>
+          <td>' . print_radio( 'is_global', '', '',
+    ( ! empty( $report_is_global ) && $report_is_global == 'Y'
+      ? 'Y' : 'N' ) ) . '</td>
         </tr>'
 
   // The report will always be shown in the menu for the creator of the report.
   // For admin users who create a global report,
   // allow option of adding to all users menu.
-  . '
+ . '
         <tr>
-          <td><label>' . translate ( 'Include link in menu' ) . ':</label></td>
-          <td>' . print_radio ( 'show_in_trailer', '', '',
-    ( ! empty ( $report_show_in_menu ) && ( $report_show_in_menu == 'Y'
-        ? 'Y' : 'N' ) ) ) . '</td>
+          <td><label>' . translate( 'Include link in menu' ) . ':</label></td>
+          <td>' . print_radio( 'show_in_trailer', '', '',
+    ( ! empty( $report_show_in_menu ) && $report_show_in_menu == 'Y'
+      ? 'Y' : 'N' ) ) . '</td>
         </tr>' : '' ) . '
         <tr>
-          <td><label>' . translate ( 'Include standard header/trailer' )
+          <td><label>' . translate( 'Include standard header/trailer' )
  . ':</label></td>
-          <td>' . print_radio ( 'include_header', '', '',
-  ( ! empty ( $report_include_header ) &&
-    ( $report_include_header == 'Y' ? 'Y' : 'N' ) ) ) . '</td>
+          <td>' . print_radio( 'include_header', '', '',
+    ( ! empty( $report_include_header ) && $report_include_header == 'Y'
+      ? 'Y' : 'N' ) ) . '</td>
         </tr>
         <tr>
-          <td><label>' . translate ( 'Include previous/next links' )
+          <td><label>' . translate( 'Include previous/next links' )
  . ':</label></td>
-          <td>' . print_radio ( 'allow_nav', '', '',
-  ( ! empty ( $report_allow_nav ) && ( $report_allow_nav == 'Y' ? 'Y' : 'N' ) ) )
- . '</td>
+          <td>' . print_radio( 'allow_nav', '', '',
+    ( ! empty( $report_allow_nav ) && $report_allow_nav == 'Y'
+      ? 'Y' : 'N' ) ) . '</td>
         </tr>
         <tr>
-          <td><label>' . translate ( 'Include empty dates' ) . ':</label></td>
-          <td>' . print_radio ( 'include_empty', '', '',
-  ( ! empty ( $report_include_empty ) &&
-    ( $report_include_empty == 'Y' ? 'Y' : 'N' ) ) ) . '</td>
+          <td><label>' . translate( 'Include empty dates' ) . ':</label></td>
+          <td>' . print_radio( 'include_empty', '', '',
+    ( ! empty( $report_include_empty ) && $report_include_empty == 'Y'
+      ? 'Y' : 'N' ) ) . '</td>
         </tr>
         <tr>
           <td><label for="rpt_time_range">' . translate ( 'Date range' )

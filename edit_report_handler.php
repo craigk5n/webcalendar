@@ -35,19 +35,25 @@
 include_once 'includes/init.php';
 load_user_categories ();
 
-$error = ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
-  ? print_not_auth () : '' );
-$report_id = getValue ( 'report_id', '-?[0-9]+', true );
-$public = getPostValue ( 'public' );
-$report_name = getPostValue ( 'report_name' );
-$report_user = getPostValue ( 'report_user' );
-$time_range = getPostValue ( 'time_range' );
-$cat_id = getPostValue ( 'cat_id' );
-$page_template = getPostValue ( 'page_template' );
-$day_template = getPostValue ( 'day_template' );
-$event_template = getPostValue ( 'event_template' );
-$delete = getPostValue ( 'delete' );
-$updating_public = ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' );
+$error = ( empty( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
+  ? print_not_auth() : '' );
+$allow_nav      = getPostValue( 'allow_nav' );
+$cat_id         = getPostValue( 'cat_id' );
+$day_template   = getPostValue( 'day_template' );
+$delete         = getPostValue( 'delete' );
+$event_template = getPostValue( 'event_template' );
+$include_empty  = getPostValue( 'include_empty' );
+$include_header = getPostValue( 'include_header' );
+$is_global      = getPostValue( 'is_global' );
+$page_template  = getPostValue( 'page_template' );
+$public         = getPostValue( 'public' );
+$report_id      = getValue( 'report_id', '-?[0-9]+', true );
+$report_name    = getPostValue( 'report_name' );
+$report_user    = getPostValue( 'report_user' );
+$show_in_trailer= getPostValue( 'show_in_trailer' );
+$time_range     = getPostValue( 'time_range' );
+
+$updating_public = ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS == 'Y' );
 
 if ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y' )
   $report_user = '';
