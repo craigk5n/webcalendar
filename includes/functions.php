@@ -140,6 +140,28 @@ function add_duration ( $time, $duration ) {
   return sprintf ( "%d%02d00", $minutes / 60, $minutes % 60 );
 }
 
+/**
+ * Bump UNIX local timestamp with the given duration.
+ *
+ * param int $ts		input timestamp
+ * param int $hour		hour duration
+ * param int $minute		minute duration
+ * param int $second		second duration
+ * param int $month		month duration
+ * param int $day		day duration
+ * param int $year		year duration
+ *
+ * This function overcomes problems due to daylight saving change dates;
+ *  it is based on the fact that function mktime() accepts out of range data.
+ */
+
+function bump_local_timestamp( $ts, $hour = 0, $minute = 0, $second = 0,
+	$month = 0, $day = 0, $year = 0 ) {
+	return mktime( date( 'G', $ts ) + $hour, date( 'i', $ts ) + $minute,
+		date( 's', $ts ) + $second, date( 'n', $ts ) + $month,
+		date( 'j', $ts ) + $day, date( 'Y', $ts ) + $year);
+}
+
 /* Builds the HTML for the event label.
  *
  * @param string  $can_access

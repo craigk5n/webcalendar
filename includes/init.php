@@ -404,13 +404,13 @@ function print_menu_dates ( $menu = false ) {
             <select name="date" id="weekselect" '
    . 'onchange="document.SelectWeek.submit()">';
 
-  $y = ( empty ( $thisyear ) ? date ( 'Y' ) : $thisyear );
+  $y = ( empty ( $thisyear ) ? date( 'Y' ) : $thisyear );
   for ( $i = -5; $i <= 9; $i++ ) {
-    $twkstart = 604800 * $i + $wkstart;
-    $twkend = 86400 * $lastDay + $twkstart;
-    $dateSYmd = date ( 'Ymd', $twkstart );
-    $dateEYmd = date ( 'Ymd', $twkend );
-    $dateW = date ( 'W', $twkstart + 86400 );
+    $twkstart = bump_local_timestamp( $wkstart, 0, 0, 0, 0, 7 * $i, 0 );
+    $twkend = bump_local_timestamp( $twkstart, 0, 0, 0, 0, $lastDay, 0 );
+    $dateSYmd = date( 'Ymd', $twkstart );
+    $dateEYmd = date( 'Ymd', $twkend );
+    $dateW = date( 'W', $twkstart + 86400 );
     if ( $twkstart > 0 && $twkend < 2146021200 )
       $ret .= $option . $dateSYmd . '"'
        . ( $dateW == $thisweek ? $selected : '' ) . '>'
