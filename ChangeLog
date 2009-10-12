@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 12-Oct-09 bb Patch [ 2877076 ] Fix some off by one dates due to daylight saving
  - 12-Oct-09 bb Patch [ 2666115 ] Patch for bug#2666101, icalclient htaccess method
  - 12-Oct-09 bb Patch [ 2697525 ] German translation corrections
  - 12-Oct-09 bb Patch [ 2770045 ] Access.php error - You are not authorized

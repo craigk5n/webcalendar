@@ -34,18 +34,18 @@ set_today ( $date );
 $nextdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
 $prevdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
 
-$wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
-
-$wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ) );
-$thisdate = date ( 'Ymd', $wkstart );
+$wkstart = get_weekday_before( $thisyear, $thismonth, $thisday + 1 );
+$wkend = bump_local_timestamp( $wkstart, 0, 0, 0, 0,
+	( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ), 0 ) - 1 ;
+$thisdate = date( 'Ymd', $wkstart );
 
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
-print_header ( array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
-ob_start ();
+ob_start();
+print_header( array( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_v.php?id=' . $id
@@ -76,12 +76,12 @@ if ( $viewusercnt == 0 )
   // this user is not a member of any group assigned to this view.
   $error = translate( 'No users for this view.' );
 
-if ( ! empty ( $error ) ) {
-  echo print_error ( $error ) . print_trailer ();
+if ( ! empty( $error ) ) {
+  echo print_error( $error ) . print_trailer();
   exit;
 }
 
-$e_save = $re_save = array ();
+$e_save = $re_save = array();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quicker access */
   $re_save[$i] = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
@@ -114,8 +114,10 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     $body .= '
       <tr>
         <th class="row" style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
-    for ( $date = $wkstart; $date < $wkend; $date += 86400 ) {
-      $is_weekend = is_weekend ( $date );
+    for ( $date = $wkstart; $date <= $wkend;
+     $date = bump_local_timestamp( $date, 0, 0, 0, 0, 1, 0 ) ) {
+      $is_weekend = is_weekend( $date );
+
       if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
         continue;
 
@@ -153,10 +155,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
 $user = ''; // reset
 
-echo ( empty ( $eventinfo ) ? '' : $eventinfo );
-
-ob_end_flush ();
-
-echo $printerStr . print_trailer ();
+echo ( empty ( $eventinfo ) ? '' : $eventinfo ) .$printerStr . print_trailer();
+ob_end_flush();
 
 ?>
