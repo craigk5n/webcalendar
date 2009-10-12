@@ -19,7 +19,7 @@
  * attendee info. This improves the performance considerably, BTW.
  *
  * ERROR !!!!!
- * There seems to be a bug in certain versions of PHP where the fgets () returns
+ * There seems to be a bug in certain versions of PHP where the fgets() returns
  * a blank string when reading stdin. I found this to be a problem with
  * PHP 4.1.2 on Linux. If this is true for your PHP, you will not be able to
  * import the events back from the ical client.
@@ -60,7 +60,7 @@
  * This will translate into a 'D' in webcal_entry_user.cal_status.
  *
  * TODO:
- * Security!  If an event update comes back from an iCal client, we need to make
+ * Security! If an event update comes back from an iCal client, we need to make
  * sure that the remote user has the authority to modify the event. (If they are
  * only a participant and not the creator of the event or an admin, then they
  * should not be able to update an event.)
@@ -92,7 +92,7 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 
@@ -101,9 +101,9 @@ include 'includes/site_extras.php';
 
 include_once 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-$appStr = generate_application_name ();
+$appStr = generate_application_name();
 // If WebCalendar is using http auth, then $login will be set in validate.php.
 /*
 
@@ -111,21 +111,45 @@ If running as CGI, the following instructions should set the PHP_AUTH_xxxx
 variables. This has only been tested with apache2, so far. If using php as CGI,
 you'll need to include this in your httpd.conf file or possibly in an .htaccess file.
 
+Method 1: If this method fails, try method 2
+
   <IfModule mod_rewrite.c>
     RewriteEngine on
     RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
   </IfModule>
 
+Method 2: 
+  <IfModule mod_rewrite.c>
+    RewriteEngine on
+  
+    RewriteCond %{QUERY_STRING} ^$
+    RewriteRule ([^\s]+).php$ $1.php?BAD_HOSTING=%{HTTP:Authorization}
+  
+    RewriteCond %{QUERY_STRING} ^(.+)$
+    RewriteRule ([^\s]+).php $1.php?%1&BAD_HOSTING=%{HTTP:Authorization}
+  </IfModule>
+
 */
-if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ) {
-  list ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
-  explode ( ':', base64_decode ( substr ( $_ENV['REMOTE_USER'], 6 ) ) );
+
+//Method 1
+if ( empty( $_SERVER['PHP_AUTH_USER'] ) && ! empty( $_ENV['REMOTE_USER'] ) ) {
+  list( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
+  explode( ':', base64_decode( substr( $_ENV['REMOTE_USER'], 6 ) ) );
 
   $_SERVER['PHP_AUTH_USER'] = trim ( $_SERVER['PHP_AUTH_USER'] );
   $_SERVER['PHP_AUTH_PW'] = trim ( $_SERVER['PHP_AUTH_PW'] );
 }
 
-unset ( $_ENV['REMOTE_USER'] );
+//Method 2
+if ( ( empty( $_SERVER['PHP_AUTH_USER'] )
+    or empty( $_SERVER['PHP_AUTH_PW'] ) )
+    and isset( $_REQUEST['BAD_HOSTING'] )
+    and preg_match( '/Basic\s+(.*)$/i', $_REQUEST['BAD_HOSTING'], $matc ) )
+  list( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
+    explode( ':', base64_decode( $matc[1] ) );
+
+unset( $_ENV['REMOTE_USER'] );
+
 if ( empty ( $login ) ) {
   if ( isset ( $_SERVER['PHP_AUTH_USER'] ) &&
       user_valid_login ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'], true ) )
@@ -141,10 +165,10 @@ if ( empty ( $login ) ) {
   }
 }
 
-load_global_settings ();
-load_user_preferences ();
+load_global_settings();
+load_user_preferences();
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
@@ -165,7 +189,7 @@ $prodid = 'Unnamed iCal client';
 // Load user name, etc.
 user_load_variables ( $login, 'publish_' );
 
-function dump_globals () {
+function dump_globals() {
   foreach ( $GLOBALS as $K => $V ) {
     do_debug ( "GLOBALS[$K] => " . ( strlen ( $V ) < 70 ? $V : '(too long)' ) );
   }
@@ -191,7 +215,7 @@ switch ( $_SERVER['REQUEST_METHOD'] ) {
     header ( 'Content-Type: text/calendar' );
     header ( 'Content-Disposition: attachment; filename="' . $login . '.ics"' );
     $use_all_dates = true;
-    echo export_ical ();
+    echo export_ical();
     break;
 
   case 'OPTIONS';
