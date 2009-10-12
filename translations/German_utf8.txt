@@ -6,7 +6,7 @@
 # Last update: 19. November 2008
 #
 # $Id$
-# Translation last updated on 11-26-2008
+# Translation last updated on 10-12-2009
 
 
 ################################################################################
@@ -70,7 +70,7 @@ Calendar: Kalender
 View Event: Termin ansehen
 View: Ansicht
 Edit: &Auml;ndern
-Approve/Reject: Genehmigen&#47;Zur&uuml;ckweisen
+Approve/Reject: Best&auml;tigen&#47;Ablehnen
 Events: Termine
 Tasks: Aufgaben
 Journals: Journale
@@ -93,8 +93,8 @@ Previous: Vorherige
 ########################################
 # Page: add_entry.php
 #
-Event XXX is already on your calendar.: Der Termin XXX ist schon auf Ihrem Kalender vorhanden.
-Invalid entry id XXX.: Ung&uuml;tige Eintrags ID XXX.
+Event XXX is already on your calendar.: Der Termin XXX ist schon auf Ihrem Kalender vorhanden
+Invalid entry id XXX.: Ung&uuml;tige Eintrags ID XXX
 a XXX event may not be added to your calendar: Das ist ein XXX Termin, und wird Ihrem Kalender nicht hinzugef&uuml;gt
 confidential: Vertraulich
 private: Privat
@@ -139,7 +139,6 @@ Help: Hilfe
 System options: Systemeinstellungen
 app-name-help: Gibt den Titel f&uuml;r die Titelleiste des Browsers, f&uuml;r alle Seiten des Kalenders und die Startseite des Kalenders an. Der Titel wird in die Sprachdatei eingetragen und kann f&uuml;r andere Spracheinstellungen abge&auml;ndert werden.
 Application Name: Anwendungsbezeichnung
-Translated Name: &Uuml;bersetzte Bezeichung
 Translated Name (XXX): &Uuml;bersetzter Name (XXX)
 server-url-help: Gibt die Standard Server-Url an und steht in der Betreffzeile von Erinnerungen sowie von Emails die &uuml;ber den Kalender verschickt werden.
 Server URL: Serveradresse
@@ -166,8 +165,16 @@ enable-external-header-help: Erlaubt das hochladen von einer externen Datei f&uu
 Allow external file for header/script/trailer: Externe Datei f&uuml;r Kopfzeile&#47;Script&#47;Fu&szlig;zeile
 Allow user to override header/trailer: Benutzer d&uuml;rfen Kopf- und Fu&szlig;zeilen &uuml;berschreiben
 Date and Time: Datum und Uhrzeit
-tz-help: Hilfe f&uuml;r Zeitzonen
+#
+# << MISSING >>
+# server-tz-help:
+# English text: Specifies how many hours to adjust the time from UTC to server time.
+#
 Server Timezone Selection: Zeitzonenauswahl am Server
+tz-help: Hilfe f&uuml;r Zeitzonen
+#
+# << MISSING >>
+# Default Client Timezone Selection:
 display-general-use-gmt-help: Falls aktiv, werden allg. Datums&#47;Zeiten als GMT angezeigt
 Display Common Use Date/Times as GMT: Allg. Datums&#47;Zeiten als GMT
 date-format-help: Legt ein spezielles Datumsformat fest.
@@ -326,8 +333,6 @@ categories-enabled-help: Aktiviert Unterst&uuml;tzung f&uuml;r Terminkategorien.
 Categories enabled: Kategorien aktivieren
 icon_upload-enabled-help: Wenn aktiviert, k&ouml;nnen Benutzer Icons f&uuml;r Kategorien hochladen
 Category Icon Upload enabled: Icons hochladen f&uuml;r Kategorien
-Requires: Ben&ouml;tigt
-folder to exist: vorhandener Ordner
 (Requires XXX folder to exist.): (Ben&ouml;tigt vorhandenen Ordner von XXX.)
 display-tasks-help: Zeigt eine kleine Aufgabenliste bei Monats- und Tagesansicht
 Display small task list: Kleine Aufgabenliste anzeigen
@@ -421,24 +426,24 @@ Administrative Tools: Administrative Werkzeuge
 # Page: ajax.php
 #
 Duplicate Name XXX: Doppelter Name XXX
-Username XXX already exists.: Der Benutzername XXX existiert bereits.
+Username XXX already exists.: Der Benutzername XXX existiert bereits
 Email address XXX already exists.: Die Emailadresse &#34;XXX&#34; existiert bereits.
 
 ########################################
 # Page: approve_entry.php
 #
 Additional Comments (optional): Zus&auml;tzliche Anmerkungen (optional)
-Approve and Send: Genehmigen und Senden
-Approve and Exit: Genehmigen und Schlie&szlig;en
+Approve and Send: Best&auml;tigen und Senden
+Approve and Exit: Best&auml;tigen und Schlie&szlig;en
 (Your comments will be emailed to the event creator.): (Ihre Anmerkungen werden per Mail an dem Einladenden gesendet.)
-Hello, XXX.: Guten Tag, XXX.
-XXX has approved an appointment and added comments.: XXX hat den Termin &uuml;berpr&uuml;ft mit zus&auml;tzlichen Anmerkungen.
+Hello, XXX.: Guten Tag, XXX
+XXX has approved an appointment and added comments.: XXX hat den Termin mit zus&auml;tzlichen Anmerkungen best&auml;tigt.
 Subject XXX: Betrifft XXX
 Description XXX: Beschreibung XXX
 Date XXX: Datum XXX
 Time XXX: Zeit XXX
 Comments XXX: Anmerkungen XXX
-Approved w/Comments by XXX.: Genehmigte w&#47;Anmerkungen von XXX
+Approved w/Comments by XXX.: Best&auml;tigt w&#47;Anmerkungen von XXX
 
 ########################################
 # Page: assistant_edit.php
@@ -469,7 +474,7 @@ gif 3kb max: gif max. 3kb gro&szlig;
 Search for existing icons: Suche nach bereits vorhandenen Icons
 Add: Hinzuf&uuml;gen
 Delete: L&ouml;schen
-Are you sure you want to delete this entry?: Sind Sie sicher, da&szlig; Sie diesen Eintrag l&ouml;schen wollen?
+Are you sure you want to delete this entry?: Sind sie sicher, da&szlig; sie diesen Eintrag l&ouml;schen wollen?
 Make New Category: Neue Kategorie erstellen
 
 ########################################
@@ -818,7 +823,7 @@ export format not defined or incorrect.: Exportiertes Format nicht definiert ode
 ########################################
 # Page: freebusy.php
 #
-No user specified.: Kein Benutzer ausgew&auml;hlt
+No user specified.: Kein Benutzer ausgew&auml;hlt.
 
 ########################################
 # Page: groups.php
@@ -860,7 +865,7 @@ colors-help: Alle Farben k&ouml;nnen im Format &#34;#RRGGBB&#34; eingegeben werd
 #
 Report Bug: Fehlermeldung
 Please include all the information below when reporting a bug.: Wenn Sie einen Fehler melden wollen, f&uuml;gen Sie die unten aufgef&uuml;hrten Informationen bei.
-Also, please use English rather than XXX.: Bitte verwenden Sie <b>Englisch</b> anstatt XXX.
+Also, please use English rather than XXX.: Bitte verwenden Sie <strong>Englisch</strong> anstatt XXX.
 
 ########################################
 # Page: help_docs.php
@@ -929,7 +934,7 @@ default-category-help: Legt eine Standardkategorie f&uuml;r einen neuen Termin f
 When I am the boss: Wenn ich der Chef bin
 Email me event notification: Benachrichtigen bei Terminbest&auml;tigung
 email-boss-notifications-help: Legt fest ob Chefs Terminbenachrichtigungen als Email bekommen.
-I want to approve events: Ich m&ouml;chte Termine &uuml;berpr&uuml;fen
+I want to approve events: Ich m&ouml;chte Termine best&auml;tigen
 boss-approve-event-help: Legt fest ob der Chef die eingetragenen Termine des Assistenten best&auml;tigen (genehmigen) mu&szlig;
 Subscribe/Publish: Abonnieren&#47;Ver&ouml;ffentlichen
 Allow remote publishing: Erlaube das Ver&ouml;ffentlichen von &#39;REMOTE&#39;-Terminen
@@ -965,6 +970,9 @@ Current Icons on Server: Derzeitige Icons am Server
 ########################################
 # Page: import.php
 #
+#
+# << MISSING >>
+# import from file:
 Disabled: Inaktiv
 Import format: Importformat
 Exclude private records: Private Eintr&auml;ge ausschlie&szlig;en
@@ -1005,15 +1013,15 @@ You can only create one layer for each user.: Sie k&ouml;nnen nur jeweils EINEN 
 ########################################
 # Page: list_unapproved.php
 #
-Approve/Confirm: Eintrag Best&auml;tigen&#47;R&uuml;ckmelden
-Approve Selected: Best&auml;tige Auswahl
+Approve/Confirm: Eintrag best&auml;tigen&#47;zusagen
+Approve Selected: Auswahl best&auml;tigen
 Check All: Alles markieren
 Emails Will Not Be Sent: Emails werden nicht versendet
 Reject Selected: Auswahl ablehnen
 Reject: Ablehnen
 Uncheck All: Nichts markieren
 View this entry: Eintrag ansehen
-No unapproved entries for XXX.: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r &#39;XXX&#39;
+No unapproved entries for XXX.: Keine unbest&auml;tigte Eintr&auml;ge f&uuml;r &#39;XXX&#39;
 Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
 Not authorized: Keine Berechtigung
 Approve this entry?: Diesen Eintrag best&auml;tigen?
@@ -1178,24 +1186,51 @@ For questions about WebCalendar security see the forums: F&uuml;r Fragen rund um
 View your current PHP settings: Ihre PHP-Informationen anzeigen
 Security Issue: Sicherheitsoptionen
 Status: =
-You should change the password of the default admin user.: Sie sollten das Passwort des admin user &auml;ndern.
 Default admin user password: Grundeinstellung des admin user Passwortes
-The following item should not be writable: Der folgende Eintrag soll als &#39;schreibgesch&uuml;tzt&#39; gesetzt werden
-File permissions: Dateirechte
+You should change the password of the default admin user.: Sie sollten das Passwort des admin user &auml;ndern.
+#
+# << MISSING >>
+# File permissions XXX:
+# English text: File permissions: XXX
+#
+#
+# << MISSING >>
+# item XXX should not be writable:
+# English text: The following item should not be writable:<br /><tt>XXX</tt>
+#
+#
+# << MISSING >>
+# File exists XXX:
+# English text: File exists: "XXX"
+#
 Because you have email disabled, you should remove this file.: Sie sollten diese Datei l&ouml;schen, da Sie die Emailfunktion deaktiviert haben.
-File exists: Datei exisitert
-If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: Wenn Sie diese Datei nicht verwenden, k&ouml;nnen Sie diese entfernen oder an einem anderen Ort verschieben.
-File location: Ort der Datei
+#
+# << MISSING >>
+# File location XXX:
+# English text: File location: "XXX"
+#
+#
+# << MISSING >>
+# remove XXX if not using:
+# English text: If you are not using file "XXX", you should delete it. Or, at least, move it to a new directory.
+#
+#
+# << MISSING >>
+# System Settings XXX:
+# English text: System Settings: "XXX"
+#
 consider enabling UAC: Vielleicht m&ouml;chten Sie die &#39;Zugriffskontrolle&#39; f&uuml;r die Benutzerrechte aktivieren.
 recommend approving new public events: Es wird empfohlen, da&szlig; Eintr&auml;ge des &#39;&Ouml;ffentlichen&#39;-Kalenders genehmigt und &uuml;berpr&uuml;ft werden
 recommend using CAPTCHA: Es wird CAPTCHA empfohlen, zum Schutz gegen automatisierende eingegebende Eintr&auml;ge
-db cache should be inaccessable: Das Datenbank-Cache-Verzeichnis soll in einem Verzeichnis angelegt werden, das &uuml;ber eine URL-Eingabe nicht direkt darauf zugegriffen werden kann.
 Database cache directory location: Ort des Datenbank-Cache-Verzeichnis
+db cache should be inaccessable: Das Datenbank-Cache-Verzeichnis soll in einem Verzeichnis angelegt werden, das &uuml;ber eine URL-Eingabe nicht direkt darauf zugegriffen werden kann.
+#
+# << MISSING >>
+# PHP Settings XXX:
+# English text: PHP Settings: "XXX"
+#
 recommend setting XXX Off: Die empfohlene Einstellung f&uuml;r XXX ist OFF.
-PHP setting: PHP Einstellung
-recommend setting register_globals Off: Die empfohlene Einstellung f&uuml;r register_globals ist OFF.
 recommend setting allow_url_fopen Off: Wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist, wird empfohlenen die Einstellung f&uuml;r allow_url_fopen auf OFF zu setzen. 
-recommend setting allow_url_include Off: Die empfohlene Einstellung f&uuml;r allow_url_include ist OFF.
 
 ########################################
 # Page: select_user.php
@@ -1276,7 +1311,7 @@ at: am
 comments: Anmerkung(en)
 Show: Zeigen
 Hide: Verstecken
-Approve/Confirm entry: Eintrag genehmigen&#47;best&auml;tigen?
+Approve/Confirm entry: Eintrag best&auml;tigen&#47;zusagen
 Reject entry: Eintrag ablehnen?
 Set category: Kategorie zuweisen
 Add to My Calendar: Zu meinem Kalender hinzuf&uuml;gen
@@ -1378,7 +1413,7 @@ Schedule an appointment for XXX.: Einen Termin festlegen f&uuml;r XXX.
 date_select: =
 Event approved: Termin best&auml;tigt
 Journal approved: Journal best&auml;tigt
-Task approved: Aufgabe genehmigt
+Task approved: Aufgabe best&auml;tigt
 Attachment: Anhang
 Event created: Termin hinzugef&uuml;gt
 Journal created: Journal erstellt
@@ -1516,7 +1551,7 @@ French: Franz&ouml;sisch
 Galician: G&auml;lisch
 German: Deutsch
 Greek: Griechisch
-Hebrew: Hebr&auml;isch
+Hebrew: Hebr$auml;isch
 Holo (Taiwanese): Taiwanesisch
 Hungarian: Ungarisch
 Icelandic: Isl&auml;ndisch
@@ -1671,9 +1706,22 @@ URL cannot be blank.: URL darf nicht leer sein.
 File type does not match Import Format: Dateityp passt nicht mit dem Import-Format &uuml;berein
 
 ########################################
-# Page: includes/js/visible.php
+# Page: includes/js/translate.js.php
 #
+#
+# << MISSING >>
+# Invalid color for table header text.:
 Invalid Color: Ung&uuml;ltige Farbe
+Database Name: Datenbankname
+Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
+The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
+Error you must specify a Single-User Login: Sie m&uuml;ssen ein\nSingle-User Login festlegen.
+#
+# << MISSING >>
+# Could not find XXX.:
+#
+# << MISSING >>
+# Could not find XXX in DOM.:
 
 ########################################
 # Page: includes/menu/index.php
@@ -1698,7 +1746,6 @@ Help Contents: Hilfe Inhaltsverzeichnis
 #
 Create New: Neu erstellen
 Database Cache Directory: Cache-Verzeichnis der Datenbank
-Database Name: Datenbankname
 Failure Reason: Fehlerbegr&uuml;ndung
 Single-User: Einzelbenutzer
 Test Settings: Einstellungen testen
@@ -1730,9 +1777,6 @@ Please change the file permissions of this file.: Bitte &auml;ndern Sie die Rech
 Please change includes dir permission: Bitte &auml;ndern Sie die Dateiberechtigungen von Ihrem &#39;includes&#39;-Verzeichnis um &#39;Schreibrechte&#39; f&uuml;r &#39;andere Benutzer&#39; zu haben.
 Your settings have been saved.: Ihre Einstellungen wurden gespeichert.
 WebCalendar Setup Wizard: WebKalender Installationsassistent
-Error you must specify a Single-User Login: Sie m&uuml;ssen ein\nSingle-User Login festlegen.
-Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
-The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
 System Administrators Guide: Systemverwalter-Anleitung (in Englisch)
 Frequently Asked Questions: H&auml;ufig gestellte Fragen und Antworten (in Englisch)
@@ -1768,15 +1812,9 @@ Database Type: Art der Datenbank
 Server: =
 Connection Persistence: Permanente Verbindung
 All your database tables appear to be up...: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
-This appears to be a new installation. If this is not correct, please: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte
-go back to the previous page and correct your settings: Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen
 This appears to be a new installation...: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen.
 This appears to be an upgrade...: Dieses scheint ein Upgrade zu sein von der Version&nbsp;XXX&nbsp;auf&nbsp;YYY.
 The database requires some data input...: Die Datenbank erfodert einige Dateneingaben. Klicken Sie auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen.
-In this section we will perform the required database changes to bring your database up to the required level: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch, um Ihre Datenbank auf den aktuellen Stand zu bringen.
-If you are using a fully supported database, this step will be performed automatically for you: Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt.
-If not, the required SQL can be displayed and you should be able: Wenn nicht, kann das ben&ouml;tigte SQL-Skript angezeigt werden und sollten dann in der Lage sein,
-to cut &amp; paste it into your database server query window: dieses zu kopieren und danach in Ihrem Datenbankabfragefenster einzuf&uuml;gen und auszuf&uuml;hren
 In this section we will perform...: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch um Ihre Datenbank auf den aktuellen Stand zu bringen. Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt. Wenn nicht, kann das ben&ouml;tigte SQL-Skript angezeigt werden und sollten dann in der Lage sein, dieses in Ihr Datenbankabfragefenster zu kopieren und danach auszuf&uuml;hren.
 No database actions are required.: Kein Datenbankeingriff erforderlich
 The following database actions are required: Folgende Datenbankt&auml;tigkeiten sind erforderlich
@@ -1789,21 +1827,10 @@ Display Required SQL: Ben&ouml;tigte SQL anzeigen
 Return to previous page after processing SQL.: Nach der Verarbeitung dieses SQL-Skripts, m&uuml;ssen Sie zur vorigen Seite zur&uuml;ckkehren um Ihre Datenbank erneut zu testen (&uuml;berpr&uuml;fen), damit die &Auml;nderungen ermittelt werden k&ouml;nnen.
 This is the final step in setting up your WebCalendar Installation.: Das ist der letzte Schritt um Ihre Webkalenderinstallation abzuschliessen.
 Timezone Conversion: Zeitzonenkonvertierung
-It appears that you have: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noch
-NOT: NICHT
-converted your existing WebCalendar event data to GMT.: &nbsp;in GMT (Greenwich Mean Time) umgewandelt zu haben.
-If you have, you may ignore this notice and not proceed with the conversion.: Wenn Sie dies bereits getan haben, k&ouml;nnen Sie diese Nachricht ignorieren und ohne der Umwandlung fortfahren.
-If this is a new installation, you may also ignore this notice.: Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren. Wenn dies eine NEUE Installation ist, d&uuml;rfen Sie diese Meldung auch ignorieren.
 It appears that you have NOT converted...: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noch NICHT in GMT (Greenwich Mean Time) umgewandelt zu haben.
 Convert Data to GMT: Umwandeln auf GMT
 Application Settings: Anwendungseinstellung
-HTTP-based authentication was not detected: HTTP-basierende Authentisierung wurde nicht erkannt
-You will need to reconfigure your web server if you wish to: Sie m&uuml;ssen Ihren Webserver nochmals konfigurieren.
-select Web Server from the User Authentication choices below.: W&auml;hlen Sie unten den &#39;Web Server&#39; von &#39;Benutzer Authentisierung&#39; aus.
 HTTP-based authentication was not detected...: HTTP-basierende Authentisierung wurde nicht erkannt. W&auml;hlen Sie den &#39;Web Server&#39; von &#39;Benutzer Authentisierung&#39; unten aus.
-HTTP-based authentication was detected.: HTTP-basierende Authentisierung wurde erkannt.
-User authentication is being handled by your web server.: Benutzer Authentisierung wird durch Ihren Web Server abgehandelt.
-You should select Web Server from the list of User Authentication choices below.: Sie sollten &#39;Web Server&#39; von der Liste &#39;Benutzer Authentisierung&#39; von unten ausw&auml;hlen.
 HTTP-based authentication was detected...: HTTP-basierende Authentisierung wurde erkannt. Sie sollten &#39;Web Server&#39; von der Liste &#39;Benutzer Authentisierung&#39; von unten ausw&auml;hlen.
 Create Default Admin Account: Ein Administratorkonto einrichten
 (Admin Account Not Found): (Administratorkonto nicht gefunden)
@@ -1849,7 +1876,7 @@ Remote Calendars not enabled: &#39;Externer&#39;-Kalender (Remote) nicht aktiv
 could not find event id: kann id-Eintrag nicht finden
 could not find event id XXX in database.: kann den id-Eintrag XXX in der Datenbank nicht finden
 task: Aufgabe
-This is a reminder for the XXX detailed below.: Dies ist eine Erinnerung f&uuml;r XXX wie unten beschrieben.
+This is a reminder for the XXX detailed below.: Dies ist eine Erinnerung f&uuml;r XXX wie unten beschrieben
 Pecentage Complete: Prozentsatz abgeschlossen
 Reminder: Erinnerung
 
@@ -1882,7 +1909,7 @@ Reminders for user XXX, login YYY.: Erinnerung f&uuml;r Benutzer &#34;XXX&#34;, 
 ########################################
 # Page: ws/get_unapproved.php
 #
-Getting unapproved for user XXX.: Erhaltene &#39;zu &uuml;berpr&uuml;fende&#39; f&uuml;r Benutzer XXX.
+Getting unapproved for user XXX.: Erhaltene &#39;unbest&auml;tigte&#39; Eintr&auml;ge f&uuml;r Benutzer XXX.
 Event id=XXX YYY already sent.: Termin-Id=XXX &#34;YYY&#34; schon gesendet.
 
 ########################################
