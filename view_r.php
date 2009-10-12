@@ -571,7 +571,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 ?>
 
 </table>
-<script language="javascript" type="text/javascript">
+<script type="text/javascript">
 <!-- <![CDATA[
 function dblclick ( date, name, hour, minute ) {
 

@@ -439,7 +439,7 @@ if ( ! empty ( $otheruser ) ) {
   ob_end_flush ();
 
   ?>
-    <script language="javascript" type="text/javascript">
+    <script type="text/javascript">
 <!-- <![CDATA[
       function selectAll ( limit ) {
         if ( limit == 0 )

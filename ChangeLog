@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - <script language="javascript" was deprecated years ago
  - Patch [ 2794125 ] Import Categories
  - Patch [ 2801019 ] Fix bug that prevent event approval
  - Patch [ 2802940 ] Allow public access in http authentication mode
