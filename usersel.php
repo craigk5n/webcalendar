@@ -27,14 +27,13 @@ for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
   $selected[$exp[$i]] = 1;
 }
 
-$groups = get_groups ( $user );
+$groups = get_groups( $user );
 
-print_header ( '', '', '', true, false, true );
-
-ob_start ();
+ob_start();
+print_header( '', '', '', true, false, true );
 
 echo '
-    <script language="javascript" type="text/javascript">';
+    <script type="text/javascript">';
 
 include 'includes/js/usersel.php';
 
@@ -46,23 +45,7 @@ echo '
           <tr>
             <td class="aligntop">
               <b>' . translate ( 'Users' ) . ':</b><br />
-              <select name="users" size="15" multiple="multiple">';
-
-$users = get_my_users ();
-if ( $NONUSER_ENABLED == 'Y' ) {
-  $nonusers = get_my_nonusers ( $login, true );
-  $users = ( $NONUSER_AT_TOP == 'Y'
-    ? array_merge ( $nonusers, $users ) : array_merge ( $users, $nonusers ) );
-}
-for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
-  $u = $users[$i]['cal_login'];
-  echo '
-                <option value="' . $u . '"'
-   . ( ! empty ( $selected[$u] ) ? ' selected="selected"' : '' )
-   . '>' . $users[$i]['cal_fullname'] . '</option>';
-}
-
-echo '
+              <select name="users" size="15" multiple="multiple">
               </select><br />
               <input type="button" value="' . translate ( 'All' )
  . '" onclick="selectAll( true )" />
