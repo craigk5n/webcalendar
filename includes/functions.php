@@ -1143,8 +1143,11 @@ function display_month ( $thismonth, $thisyear, $demo = false,
           }
         }
         $class = trim ( $class );
-        $class .= ( ! empty ( $ret_events ) &&
-          strstr ( $ret_events, 'class="entry"' ) ? ' hasevents' : '' );
+        $class .= ( ! empty( $ret_events )
+            && strstr( $ret_events, 'class="entry"' )
+// If we decide we don't like it, just remove the next 1 line.
+            || strstr( $ret_events, 'class="layerentry"' )
+          ? ' hasevents' : '' );
 
         $ret .= ( strlen ( $class ) ? ' class="' . $class . '"' : '' )
          . '>' . $ret_events . '</td>';
