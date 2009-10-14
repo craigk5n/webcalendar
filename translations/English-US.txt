@@ -1803,6 +1803,7 @@ Web-based via WebCalendar (default): Web-based via WebCalendar (default)
 Web Server (not detected): Web Server (not detected)
 Web Server (detected): Web Server (detected)
 None (Single-User): None (Single-User)
+Case-insensitive user name: Case-insensitive user name
 Read-Only: Read-Only
 Environment: Environment
 Production: Production

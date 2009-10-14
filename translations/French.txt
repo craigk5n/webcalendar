@@ -1772,6 +1772,7 @@ Web-based via WebCalendar (default): =
 Web Server (not detected): =
 Web Server (detected): =
 None (Single-User): =
+Case-insensitive user name: =
 Read-Only: =
 Environment: =
 Production: =
