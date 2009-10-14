@@ -77,9 +77,10 @@ function get_full_include_path ( $filename ) {
 
 function do_config ( $fileLoc ) {
   global $db_database, $db_host, $db_login, $db_password, $db_persistent,
-  $db_type, $NONUSER_PREFIX, $phpdbiVerbose, $PROGRAM_DATE, $PROGRAM_NAME,
-  $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings, $single_user,
-  $single_user_login, $TROUBLE_URL, $use_http_auth, $user_inc;
+  $db_type, $ignore_user_case, $NONUSER_PREFIX, $phpdbiVerbose, $PROGRAM_DATE,
+  $PROGRAM_NAME, $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode,
+  $settings, $single_user, $single_user_login, $TROUBLE_URL, $user_inc,
+  $use_http_auth;
 
   // When changing PROGRAM VERSION, also change it in install/default_config.php
   $PROGRAM_VERSION = 'v1.1.3';
@@ -206,6 +207,10 @@ function do_config ( $fileLoc ) {
 
   $use_http_auth = ( preg_match ( '/(1|yes|true|on)/i',
       $settings['use_http_auth'] ) ? true : false );
+
+  // Whether user name is case-insensitive.
+  $ignore_user_case = isset( $settings['ignore_user_case'] )
+    && preg_match( '/(1|yes|true|on)/i', $settings['ignore_user_case'] );
 
   // Type of user authentication.
   $user_inc = $settings['user_inc'];

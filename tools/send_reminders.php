@@ -103,6 +103,10 @@ $allusercnt = count ( $allusers );
 for ( $i = 0; $i < $allusercnt; $i++ ) {
   $names[$allusers[$i]['cal_login']] = $allusers[$i]['cal_fullname'];
   $emails[$allusers[$i]['cal_login']] = $allusers[$i]['cal_email'];
+
+  if ( $ignore_user_case )
+    $names[$allusers[$i]['cal_login']] =
+      strtolower( $names[$allusers[$i]['cal_login']] );
 }
 
 $attachics = $htmlmail = $languages = $noemail = $t_format = $tz = array ();
@@ -253,9 +257,9 @@ if ( $debug )
 // the event who have accepted as well as those who have not yet approved.
 // But, don't send to users who rejected (cal_status='R' ).
 function send_reminder ( $id, $event_date ) {
-  global $ALLOW_EXTERNAL_USERS, $debug, $def_tz, $emails,
-  $EXTERNAL_REMINDERS, $attachics, $htmlmail, $is_task, $LANGUAGE, $languages, $names,
-  $only_testing, $SERVER_URL, $site_extras, $t_format, $tz;
+  global $ALLOW_EXTERNAL_USERS, $attachics, $debug, $def_tz, $emails,
+  $EXTERNAL_REMINDERS, $htmlmail, $ignore_user_case, $is_task, $LANGUAGE,
+  $languages, $names, $only_testing, $SERVER_URL, $site_extras, $tz, $t_format;
 
   $ext_participants = $participants = array ();
   $num_ext_participants = $num_participants = 0;
@@ -271,7 +275,9 @@ function send_reminder ( $id, $event_date ) {
 
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $participants[$num_participants++] = $row[0];
+      $participants[$num_participants++] =
+        ( $ignore_user_case ? strtolower( $row[0] ) : $row[0] );
+
       $percentage[$row[0]] = $row[1];
     }
   }

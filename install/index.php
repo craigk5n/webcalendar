@@ -620,16 +620,20 @@ $x = getPostValue ( 'form_db_type' );
 if ( empty ( $x ) ) {
   // No form was posted. Set defaults if none set yet.
   if ( ! file_exists ( $file ) || count ( $settings ) == 1 ) {
-    $settings['db_cachedir'] = '/tmp';
-    $settings['db_database'] = 'intranet';
-    $settings['db_host'] = 'localhost';
-    $settings['db_login'] = 'webcalendar';
-    $settings['db_password'] = 'webcal01';
-    $settings['db_persistent'] = $settings['readonly'] = 'false';
-    $settings['single_user'] = $settings['use_http_auth'] = 'false';
-    $settings['db_type'] = 'mysql';
-    $settings['install_password'] = $settings['single_user_login'] = '';
-    $settings['user_inc'] = 'user.php';
+    $settings['db_cachedir']      = '/tmp';
+    $settings['db_database']      = 'intranet';
+    $settings['db_host']          = 'localhost';
+    $settings['db_login']         = 'webcalendar';
+    $settings['db_password']      = 'webcal01';
+    $settings['db_persistent']    =
+    $settings['ignore_user_case'] =
+    $settings['readonly']         =
+    $settings['single_user']      =
+    $settings['use_http_auth']    = 'false';
+    $settings['db_type']          = 'mysql';
+    $settings['install_password'] =
+    $settings['single_user_login']= '';
+    $settings['user_inc']         = 'user.php';
   }
 } else {
   $settings['db_cachedir'] = getPostValue ( 'form_db_cachedir' );
@@ -654,13 +658,14 @@ if ( empty ( $x ) ) {
 }
 $y = getPostValue ( 'app_settings' );
 if ( ! empty ( $y ) ) {
-  $settings['mode'] = getPostValue ( 'form_mode' );
-  $settings['readonly'] = getPostValue ( 'form_readonly' );
-  $settings['single_user'] = $settings['use_http_auth'] = 'false';
-  $settings['single_user_login'] = getPostValue ( 'form_single_user_login' );
-  $settings['user_inc'] = 'user.php';
+  $formUserStr                  = getPostValue( 'form_user_inc' );
+  $settings['ignore_user_case'] = getPostValue( 'form_ignore_user_case' );
+  $settings['mode']             = getPostValue( 'form_mode' );
+  $settings['readonly']         = getPostValue( 'form_readonly' );
+  $settings['single_user']      = $settings['use_http_auth']= 'false';
+  $settings['single_user_login']= getPostValue( 'form_single_user_login' );
+  $settings['user_inc']         = 'user.php';
 
-  $formUserStr = getPostValue ( 'form_user_inc' );
   if ( $formUserStr == 'http' )
     $settings['use_http_auth'] = 'true';
   elseif ( $formUserStr == 'none' )
@@ -733,6 +738,10 @@ if ( ! empty ( $x ) || ! empty ( $y ) ) {
     @chmod ( $file, 0644 );
   }
 }
+$noStr = translate( 'No' );
+$offStr = translate( 'OFF' );
+$onStr = translate( 'ON' );
+$yesStr = translate( 'Yes' );
 
 ob_start ();
 
@@ -803,9 +812,11 @@ echo '
             listid = i;
         }
         if ( form.form_user_inc.options[listid].selected ) {
-          makeVisible ( \'singleuser\' );
+          makeVisible( \'singleuser\' );
+          makeInvisible( \'usercase\' );
         } else {
-          makeInvisible ( \'singleuser\' );
+          makeInvisible( \'singleuser\' );
+          makeVisible( \'usercase\' );
         }
       }
       function db_type_handler () {
@@ -963,9 +974,8 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td class="prompt">' . $constant[0] . '</td>
         <td class="' . $class . '"><img alt="" src="'
      . ( $class == 'recommended'
-      ? 'recommended.gif" />&nbsp;' . translate ( 'ON')
-      : 'not_recommended.jpg" />&nbsp;' . translate ( 'OFF') )
-     . '</td>
+      ? 'recommended.gif" />&nbsp;' . $onStr
+      : 'not_recommended.jpg" />&nbsp;' . $offStr ) . '</td>
       </tr>';
   }
   foreach ( $php_modules as $module ) {
@@ -1533,17 +1543,30 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <td class="prompt">&nbsp;&nbsp;&nbsp;' . $singleUserStr . ' '
    . $loginStr . ':</td>
               <td><input name="form_single_user_login" size="20" value="'
-   . ( empty ( $settings['single_user_login'] ) ? '' : $settings['single_user_login'] ) . '" /></td>
+   . ( empty( $settings['single_user_login'] )
+     ? '' : $settings['single_user_login'] ) . '" /></td>
+            </tr>
+            <tr id="usercase">
+              <td class="prompt">' . translate( 'Case-insensitive user name' )
+      . '</td>
+              <td>
+                <input name="form_ignore_user_case" value="true" type="radio"'
+      . ( $settings['ignore_user_case'] == 'true' ? $checked : '' )
+      . ' />' . $yesStr
+      . '&nbsp;&nbsp;&nbsp;&nbsp;<input name="form_ignore_user_case"'
+      . ' value="false" type="radio"'
+      . ( $settings['ignore_user_case'] != 'true' ? $checked : '' ) . ' />'
+      . $noStr . '
+              </td>
             </tr>
             <tr>
               <td class="prompt">' . translate ( 'Read-Only' ) . ':</td>
               <td>
                 <input name="form_readonly" value="true" type="radio"'
    . ( $settings['readonly'] == 'true' ? $checked : '' ) . ' />'
-   . translate ( 'Yes' ) . '&nbsp;&nbsp;&nbsp;&nbsp;
+   . $yesStr . '&nbsp;&nbsp;&nbsp;&nbsp;
                 <input name="form_readonly" value="false" type="radio"'
-   . ( $settings['readonly'] != 'true' ? $checked : '' ) . ' />'
-   . translate ( 'No' ) . '
+   . ( $settings['readonly'] != 'true' ? $checked : '' ) . ' />' . $noStr . '
               </td>
             </tr>
             <tr>

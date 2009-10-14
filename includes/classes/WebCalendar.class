@@ -134,7 +134,8 @@ class WebCalendar {
    */
   function _initInitSecondPhase () {
     global $ALLOW_VIEW_OTHER, $can_add, $can_add, $cat_id, $CATEGORIES_ENABLED,
-    $CATEGORY_VIEW, $caturl, $date, $DMW, $friendly, $override, $fullname, $GROUPS_ENABLED,
+    $CATEGORY_VIEW, $caturl, $date, $DMW, $friendly, $ignore_user_case,
+    $override, $fullname, $GROUPS_ENABLED,
     $hour, $id, $is_admin, $is_assistant, $is_nonuser, $login, $minute, $month,
     $NONUSER_ENABLED, $nonusers, $ovrd, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
     $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS_OTHERS, $readonly, $u_url, $user,
@@ -160,6 +161,9 @@ class WebCalendar {
     $year = getValue ( 'year', '[0-9]+' );
     if ( empty ( $PUBLIC_ACCESS ) )
       $PUBLIC_ACCESS = 'N';
+
+    if ( $ignore_user_case )
+      $user = strtolower( $user );
 
     // Initialize access settings ($user_access string)
     // and make sure user is allowed to view the current page.
@@ -415,10 +419,10 @@ class WebCalendar {
    */
   function _initValidate () {
     global $c, $cryptpw, $db_database, $db_host, $db_login, $db_password,
-    $encoded_login, $HTTP_ENV_VARS, $HTTP_SERVER_VARS, $is_nonuser, $login,
-    $login_return_path, $PHP_AUTH_USER, $REMOTE_USER, $SCRIPT,
-    $session_not_found, $settings, $single_user, $single_user_login,
-    $use_http_auth, $user_inc, $validate_redirect, $webcalendar_session;
+    $encoded_login, $HTTP_ENV_VARS, $HTTP_SERVER_VARS, $ignore_user_case,
+    $is_nonuser, $login, $login_return_path, $PHP_AUTH_USER, $REMOTE_USER,
+    $SCRIPT, $session_not_found, $settings, $single_user, $single_user_login,
+    $user_inc, $use_http_auth, $validate_redirect, $webcalendar_session;
 
     /* If WebCalendar is configured to use http authentication, then we can
      * use _initValidate (). If we are not using http auth, icalclient.php will
@@ -561,6 +565,10 @@ class WebCalendar {
         }
       }
     }
+
+    // If login is not case-sensitive, map it to lowercase now.
+    if ( $ignore_user_case )
+     $login = strtolower( $login );
   }
 
   /* Initializations from includes/connect.php.
