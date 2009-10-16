@@ -24,9 +24,6 @@ body {
 a {
   text-decoration:none;
 }
-a:hover {
-  color:#00f;
-}
 abbr {
   cursor:help;
 }
@@ -291,7 +288,6 @@ a#programname {
 .dayofmonth:hover {
   border-right:0.0625em solid #00f;
   border-bottom:0.0625em solid #00f;
-  color:#00f;
 }
 .next img,
 #activitylog .next {
@@ -492,9 +488,6 @@ tr.highlight td {
 }
 .minical caption a {
   font-weight:bold;
-}
-.minical caption a:hover {
-  color:#00f;
 }
 .minical th {
   border:0 solid;
@@ -841,11 +834,6 @@ tr.highlight td {
 #viewr .main th.today,
 #week .main th.today {
   width:14%;
-}
-#viewr .main th a:hover,
-#week .main th a:hover,
-#weekdetails .main th a:hover {
-  color:#00f;
 }
 #year .minical td {
   text-align:center;
@@ -1269,4 +1257,7 @@ tr.highlight td {
 #login tr,
 #login td {
   //font-size:1em;
+}
+a:hover {
+  color:#00f;
 }
