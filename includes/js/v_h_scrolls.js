@@ -1,11 +1,11 @@
 /* $Id$ */
-
+/* This function needs to be seperate for each page that has scrollers.
 function start() {
   // Code each vertical scroller as follows:
   // startScroll( 'id of scroller div', 'scroll content' );
   // As many as needed
 
-  startScroll( 'creds', scrollcontent ); // about.php
+  startScroll( 'creds', scrollcontent ); // about.php example
   //startScroll('twoscroll','<p>Yet another scroller!</p>');
 
   // Start new mq() for each marquee.
@@ -16,7 +16,7 @@ function start() {
   // new mq( 'm2' );
   // mqRotate( mqr ); // must come last
 }
-
+*/
 var dR = false;
 var mqr = [];
 var speed = 15;

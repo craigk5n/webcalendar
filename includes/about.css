@@ -1,4 +1,4 @@
-/* $Id */
+/* $Id$ */
 
 #creds {
 /* mandatory */
@@ -18,7 +18,9 @@
   font-size:16px;
 }
 .Vscroll {
+/* mandatory */
   position:absolute;
+/* change to suit */
   left:4px;
 }
 h2 {

@@ -22,7 +22,9 @@ if ( empty( $data ) ) {
 
 ob_start();
 print_header( '', ( empty( $credits ) ? '' : '<script type="text/javascript">
-      var scrollcontent = \'' . $data . '\';
+      function start() {
+        startScroll( \'creds\', \'' . $data . '\' );
+      }
     </script>
     <script type="text/javascript" src="includes/js/v_h_scrolls.js"></script>
 ' ) . '<link type="text/css" href="includes/about.css" rel="stylesheet" />',
