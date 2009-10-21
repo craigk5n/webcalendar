@@ -74,7 +74,7 @@ array ( "INSERT INTO webcal_timezones ( tzid ) VALUES ( 'zzz' )",
         'v1.1.2', 'upgrade_v1.1.3'),
 array ( "INSERT INTO webcal_timezones ( tzid ) VALUES ( 'zzz' )",
         "DELETE FROM webcal_timezones WHERE tzid = 'zzz'",
-        'v1.1.3', 'upgrade_v1.3.0'),
+        'v1.1.3', 'upgrade_v1.2.0'),
 
 //don't change this array element
 array ( '','', $PROGRAM_VERSION, '' )
