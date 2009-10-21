@@ -1,10 +1,11 @@
 <?php
-/* $Id$
+/**
+ * $Id$
  *
  * The file contains a listing of all the current WebCalendar config settings
  * and their default values.
  */
-$webcalConfig = array (
+$webcalConfig = array(
   'ADD_LINK_IN_VIEWS' => 'N',
   'ADMIN_OVERRIDE_UAC' => 'Y',
   'ALLOW_ATTACH' => 'N',
@@ -151,7 +152,7 @@ $webcalConfig = array (
   'USER_RSS_ENABLED' => 'N',
   'USER_SEES_ONLY_HIS_GROUPS' => 'Y',
   'USER_SORT_ORDER' => 'cal_lastname, cal_firstname',
-  'WEBCAL_PROGRAM_VERSION' => 'v1.1.3',
+  'WEBCAL_PROGRAM_VERSION' => 'v1.2.0',
   'WEEK_START' => '0',
   'WEEKEND_START' => '6',
   'WEEKENDBG' => '#d0d0d0',
@@ -160,24 +161,25 @@ $webcalConfig = array (
   'WORK_DAY_START_HOUR' => '8'
   );
 
-/* This function is defined here because admin.php calls it during startup.
+/*
+ * This function is defined here because admin.php calls it during startup.
  */
-function db_load_config () {
+function db_load_config() {
   global $webcalConfig;
 
   $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
 
-  while ( list ( $key, $val ) = each ( $webcalConfig ) ) {
-    $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-      WHERE cal_setting = ?', array ( $key ), false, false );
-    if ( ! $res )
-      dbi_execute ( $sql, array ( $key, $val ) );
+  while( list( $key, $val ) = each( $webcalConfig ) ) {
+    $res = dbi_execute( 'SELECT cal_value FROM webcal_config
+      WHERE cal_setting = ?', array( $key ), false, false );
+    if( ! $res )
+      dbi_execute( $sql, array( $key, $val ) );
     else { // SQLite returns $res always.
-      $row = dbi_fetch_row ( $res );
-      if ( ! isset ( $row[0] ) )
-        dbi_execute ( $sql, array ( $key, $val ) );
+      $row = dbi_fetch_row( $res );
+      if( ! isset( $row[0] ) )
+        dbi_execute( $sql, array( $key, $val ) );
 
-      dbi_free_result ( $res );
+      dbi_free_result( $res );
     }
   }
 }
