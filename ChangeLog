@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 21-Oct-09 bb Updating includes/config.php to V1.2.0
  - 19-Oct-09 bb Patch [ 2880387 ] Viewing other user's calendar when user access cntrl is off
  - 19-Oct-09 bb Extracting CSS & Javascript from about.php to external files.
    New script file js/v_h_scrolls.js allows multiple scrollers.
