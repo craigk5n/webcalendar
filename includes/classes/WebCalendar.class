@@ -162,8 +162,10 @@ class WebCalendar {
     if ( empty ( $PUBLIC_ACCESS ) )
       $PUBLIC_ACCESS = 'N';
 
-    if ( $ignore_user_case )
+    if ( $ignore_user_case ) {
+      $login = strtolower( $login );
       $user = strtolower( $user );
+    }
 
     // Initialize access settings ($user_access string)
     // and make sure user is allowed to view the current page.
