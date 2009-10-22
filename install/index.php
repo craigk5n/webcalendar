@@ -118,7 +118,7 @@ $forcePassword = false;
 
 if( ! empty( $fd ) ) {
   while( ! feof( $fd ) ) {
-    $buffer = trim( fgets( $fd, 4096 ), "\r\n " );
+    $buffer = trim( fgets( $fd, 4096 ) );
 
     if( preg_match( '/^(\S+):\s*(.*)/', $buffer, $matches ) ) {
       if( $matches[1] == 'install_password' )
@@ -270,7 +270,7 @@ if( ! empty( $fd ) ) {
     if( preg_match( '/^#|\/\*/', $buffer ) // comments
         || preg_match( '/^<\?/', $buffer ) // start php code
         || preg_match( '/^\?>/', $buffer ) // end php code
-      ) } 
+      ) {
         continue;
     }
     if( preg_match( '/(\S+):\s*(.*)/', $buffer, $matches ) )
@@ -299,14 +299,14 @@ if( ! empty( $action ) && $action == 'switch' ) {
       }
       break;
     case 3:
-      if( ! empty( $_SESSION['validuser'] ) && !
-          empty( $_SESSION['db_success'] ) )
+      if( ! empty( $_SESSION['validuser'] )
+          && ! empty( $_SESSION['db_success'] ) )
         $_SESSION['step'] = $page;
       break;
     case 4:
-      if( ! empty( $_SESSION['validuser'] ) && !
-          empty( $_SESSION['db_success'] ) &&
-          empty( $_SESSION['db_create'] ) ) {
+      if( ! empty( $_SESSION['validuser'] )
+          && ! empty( $_SESSION['db_success'] )
+          && empty( $_SESSION['db_create'] ) ) {
         $_SESSION['step'] = $page;
         $onload = 'auth_handler();';
       }
@@ -339,19 +339,15 @@ if( ! empty( $action ) && $action == 'install' ) {
     $install_filename = ( $sess_install == 'tables' ? 'tables-' : 'upgrade-' );
     switch( $db_type ) {
       case 'ibase':
-        $install_filename .= 'ibase.sql';
+      case 'mssql':
+      case 'oracle':
+        $install_filename .= $db_type . '.sql';
         break;
       case 'ibm_db2':
         $install_filename .= 'db2.sql';
         break;
-      case 'mssql':
-        $install_filename .= 'mssql.sql';
-        break;
       case 'odbc':
         $install_filename .= $_SESSION['odbc_db'] . '.sql';
-        break;
-      case 'oracle':
-        $install_filename .= 'oracle.sql';
         break;
       case 'postgresql':
         $install_filename .= 'postgres.sql';
@@ -363,7 +359,6 @@ if( ! empty( $action ) && $action == 'install' ) {
         break;
       default:
         $install_filename .= 'mysql.sql';
-        break;
     }
     db_populate( $install_filename, $display_sql );
   }
