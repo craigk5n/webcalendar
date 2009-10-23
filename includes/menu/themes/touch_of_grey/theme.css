@@ -1,268 +1,217 @@
 /* ThemeMenu Style Sheet */
 
 /*
-menubar: #F1F3F5
-menu dropdown left side: #DDE1E6
-highlight border: #000080
-highlight background: #B6BDD2
+menubar:#f1f3f5
+menu dropdown left side:#dde1e6
+highlight border:#000080
+highlight background:#b6bdd2
 
 lighter blue
-#30559C - highlight border
-#B5CDE8 - highlight background
+#30559c - highlight border
+#b5cde8 - highlight background
 */
 
 .ThemeMenubar {
-  width: 100%;
-  padding-bottom:  2px;
+  width:100%;
+  padding-bottom:2px;
 }
 
 .ThemeMenubackgr {
-  background: #F1F3F5;
-  border-bottom: 1px solid #cccccc;
+  border-bottom:1px solid #ccc;
+  background:#f1f3f5;
 }
 
 .ThemeMenu, .ThemeMenubar a, .ThemeMenubar td {
-  color: #000000;
+  color:#000;
 }
 
-.ThemeMenu,.ThemeSubMenuTable {
-  font-family:  arial, verdana, sans-serif;
-  font-size:  1em;
-  padding:  0;
-  white-space:  nowrap;
-  cursor:    default;
-  height: 25px;
+.ThemeMenu, .ThemeSubMenuTable {
+  height:25px;
+  padding:0;
+  cursor:default;
+  font:1em arial, verdana, sans-serif;
   vertical-align:middle;
+  white-space:nowrap;
 }
 
 .ThemeSubMenu {
-  position:  absolute;
-  visibility:  hidden;
+  position:absolute;
+  border:1px solid #8c867b;
+  padding:1px;
+  background-color:#f1f3f5;
+  overflow:visible;
+  visibility:hidden;
   /*
-     Netscape/Mozilla renders borders by increasing
-     their z-index.  The following line is necessary
-     to cover any borders underneath
+     Netscape/Mozilla renders borders by increasing their z-index.
+     The following line is necessary to cover any borders underneath
   */
-  z-index:  100;
-  border:    0;
-  padding:  1px;
-  background-color:  #F1F3F5;
-  overflow:  visible;
-  border:    1px solid #8C867B;
+  z-index:100;
 }
 
 .ThemeSubMenuTable {
-  overflow:  visible;
+  overflow:visible;
 }
 
-.ThemeMainItem,.ThemeMainItemHover,.ThemeMainItemActive,
-.ThemeMenuItem,.ThemeMenuItemHover,.ThemeMenuItemActive {
-  border:    0;
-  cursor:    default;
-  white-space:  nowrap;
-}
-
-.ThemeMainItem {
-  /*  jgh - no longer needed
-  background-color:  #EFEBDE;
-  */
-}
-
-.ThemeMainItemHover,.ThemeMainItemActive {
-  background-color:  #B6BDD2;
+.ThemeMainItem, .ThemeMainItemHover, .ThemeMainItemActive,
+.ThemeMenuItem, .ThemeMenuItemHover, .ThemeMenuItemActive {
+  border:0;
+  cursor:default;
+  white-space:nowrap;
 }
 
 .ThemeMenuItem {
-  background-color:  #F1F3F5;
+  background-color:#f1f3f5;
 }
 
-.ThemeMenuItemHover,.ThemeMenuItemActive {
-  background-color:  #B6BDD2;
+.ThemeMainItemHover, .ThemeMainItemActive,
+.ThemeMenuItemHover, .ThemeMenuItemActive {
+  background-color:#b6bdd2;
 }
 
 /* horizontal main menu */
 
 .ThemeMainItem {
-  padding: 1px;
-  border: 0;
+  border:0;
+  padding:1px;
 }
 
-td.ThemeMainItemHover,td.ThemeMainItemActive {
-  padding:  0px;
-  border:  1px solid #000080;
+td.ThemeMainItemHover, td.ThemeMainItemActive {
+  border:1px solid #000080;
+  padding:0;
 }
 
-.ThemeMainFolderLeft,.ThemeMainItemLeft,
-.ThemeMainFolderText,.ThemeMainItemText,
-.ThemeMainFolderRight,.ThemeMainItemRight {
-  background-color:  inherit;
+.ThemeMainFolderLeft, .ThemeMainItemLeft,
+.ThemeMainFolderText, .ThemeMainItemText,
+.ThemeMainFolderRight, .ThemeMainItemRight {
+  background-color:inherit;
 }
 
 /* vertical main menu sub components */
 
-td.ThemeMainFolderLeft,td.ThemeMainItemLeft {
-  padding-top:  2px;
-  padding-bottom:  2px;
-  padding-left:  0px;
-  padding-right:  2px;
-  border-top:  1px solid #000080;
-  border-bottom:  1px solid #000080;
-  border-left:  1px solid #000080;
-  background-color:  inherit;
+td.ThemeMainFolderLeft, td.ThemeMainItemLeft {
+  border-top:1px solid #000080;
+  border-bottom:1px solid #000080;
+  border-left:1px solid #000080;
+  padding:2px 2px 2px 0;
+  background-color:inherit;
 }
 
-td.ThemeMainFolderText,td.ThemeMainItemText {
-  padding-top:  2px;
-  padding-bottom:  2px;
-  padding-left:  5px;
-  padding-right:  5px;
-  border-top:  1px solid #000080;
-  border-bottom:  1px solid #000080;
-  background-color:  inherit;
-  white-space:  nowrap;
+td.ThemeMainFolderText, td.ThemeMainItemText {
+  border-top:1px solid #000080;
+  border-bottom:1px solid #000080;
+  padding:2px 5px;
+  background-color:inherit;
+  white-space:nowrap;
 }
 
-td.ThemeMainFolderRight,td.ThemeMainItemRight {
-  padding-top:  2px;
-  padding-bottom:  2px;
-  padding-left:  0px;
-  padding-right:  0px;
-  border-top:  1px solid #000080;
-  border-bottom:  1px solid #000080;
-  border-right:  1px solid #000080;
-  background-color:  inherit;
+td.ThemeMainFolderRight, td.ThemeMainItemRight {
+  border-top:1px solid #000080;
+  border-right:1px solid #000080;
+  border-bottom:1px solid #000080;
+  padding:2px 0;
+  background-color:inherit;
 }
 
 tr.ThemeMainItem td.ThemeMainFolderLeft,
 tr.ThemeMainItem td.ThemeMainItemLeft {
-  padding-top:  3px;
-  padding-bottom:  3px;
-  padding-left:  1px;
-  padding-right:  2px;
-  white-space:  nowrap;
-  border:    0;
-  background-color:  inherit;
+  border:0;
+  padding:3px 2px 3px 1px;
+  background-color:inherit;
+  white-space:nowrap;
 }
 
 tr.ThemeMainItem td.ThemeMainFolderText,
 tr.ThemeMainItem td.ThemeMainItemText {
-  padding-top:  3px;
-  padding-bottom:  3px;
-  padding-left:  5px;
-  padding-right:  5px;
-  border:    0;
-  background-color:  inherit;
+  border:0;
+  padding:3px 5px;
+  background-color:inherit;
 }
 
 tr.ThemeMainItem td.ThemeMainItemRight,
 tr.ThemeMainItem td.ThemeMainFolderRight {
-  padding-top:  3px;
-  padding-bottom:  3px;
-  padding-left:  0px;
-  padding-right:  1px;
-  border:    0;
-  background-color:  inherit;
+  border:0;
+  padding:3px 1px 3px 0;
+  background-color:inherit;
 }
 
 /* sub menu sub components */
 
-.ThemeMenuFolderLeft,.ThemeMenuItemLeft {
-  padding-top:  2px;
-  padding-bottom:  2px;
-  padding-left:  1px;
-  padding-right:  3px;
-  border-top:  1px solid #000080;
-  border-bottom:  1px solid #000080;
-  border-left:  1px solid #000080;
-  background-color:  inherit;
-  white-space:  nowrap;
+.ThemeMenuFolderLeft, .ThemeMenuItemLeft {
+  border-top:1px solid #000080;
+  border-bottom:1px solid #000080;
+  border-left:1px solid #000080;
+  padding:2px 3px 2px 1px;
+  background-color:inherit;
+  white-space:nowrap;
 }
 
-.ThemeMenuFolderText,.ThemeMenuItemText {
-  padding-top:  2px;
-  padding-bottom:  2px;
-  padding-left:  5px;
-  padding-right:  5px;
-  border-top:  1px solid #000080;
-  border-bottom:  1px solid #000080;
-  background-color:  inherit;
-  white-space:  nowrap;
+.ThemeMenuFolderText, .ThemeMenuItemText {
+  border-top:1px solid #000080;
+  border-bottom:1px solid #000080;
+  padding:2px 5px;
+  background-color:inherit;
+  white-space:nowrap;
 }
 
-.ThemeMenuFolderRight,.ThemeMenuItemRight {
-  padding-top:  2px;
-  padding-bottom:  2px;
-  padding-left:  0px;
-  padding-right:  0px;
-  border-top:  1px solid #000080;
-  border-bottom:  1px solid #000080;
-  border-right:  1px solid #000080;
-  background-color:  inherit;
-  white-space:  nowrap;
+.ThemeMenuFolderRight, .ThemeMenuItemRight {
+  border-top:1px solid #000080;
+  border-right:1px solid #000080;
+  border-bottom:1px solid #000080;
+  padding:2px 0;
+  background-color:inherit;
+  white-space:nowrap;
 }
 
 .ThemeMenuItem .ThemeMenuFolderLeft,
 .ThemeMenuItem .ThemeMenuItemLeft {
-  padding-top:  3px;
-  padding-bottom:  3px;
-  padding-left:  2px;
-  padding-right:  3px;
-  white-space:  nowrap;
-  border:   0px;
-  background-color:  #DDE1E6;
+  border:0;
+  padding:3px 3px 3px 2px;
+  background-color:#dde1e6;
+  white-space:nowrap;
 }
 
 .ThemeMenuItem .ThemeMenuFolderText,
 .ThemeMenuItem .ThemeMenuItemText {
-  padding-top:  3px;
-  padding-bottom:  3px;
-  padding-left:  5px;
-  padding-right:  5px;
-  border:    0px;
-  background-color:  inherit;
+  border:0;
+  padding:3px 5px;
+  background-color:inherit;
 }
 
 .ThemeMenuItem .ThemeMenuFolderRight,
 .ThemeMenuItem .ThemeMenuItemRight {
-  padding-top:  3px;
-  padding-bottom:  3px;
-  padding-left:  0px;
-  padding-right:  1px;
-  border:    0;
-  background-color:  inherit;
+  border:0;
+  padding:3px 1px 3px 0;
+  background-color:inherit;
 }
 
 /* menu splits */
 
 .ThemeMenuSplit {
-  margin:    2px;
-  height:    1px;
-  overflow:  hidden;
-  background-color:  inherit;
-  border-top:  1px solid #C6C3BD;
+  height:1px;
+  margin:2px;
+  border-top:1px solid #c6c3bd;
+  background-color:inherit;
+  overflow:hidden;
 }
 
 /* image shadow animation */
 
 /*
-  seq1:  image for normal
-  seq2:  image for hover and active
+  seq1:image for normal
+  seq2:image for hover and active
 
   To use, in the icon field, input the following:
   <img class="seq1" src="normal.gif" /><img class="seq2" src="hover.gif" />
 */
 
-.ThemeMenuItem img.seq1 {
-  display:  inline;
-}
-
+.ThemeMenuItem img.seq1,
 .ThemeMenuItemHover seq2,
 .ThemeMenuItemActive seq2 {
-  display:  inline;
+  display:inline;
 }
 
 .ThemeMenuItem .seq2,
 .ThemeMenuItemHover .seq1,
 .ThemeMenuItemActive .seq1 {
-  display:  none;
+  display:none;
 }
