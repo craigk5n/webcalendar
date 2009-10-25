@@ -190,7 +190,7 @@ if ( $single_user == 'N' ) {
 </div>
 
 
-<script language="JavaScript">
+<script type="text/javascript">
 var layers = Array ();
 // Set the LAYER_STATUS value in webcal_user_pref for either the current
 // user or the public user ('__public__') with an AJAX call to

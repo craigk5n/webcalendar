@@ -328,7 +328,7 @@ function jscMenu_divider () {
 ----------------------------------------------------------------------------- */
 
 $menuScript .= '
-    <script language="JavaScript" type="text/javascript">
+    <script type="text/javascript">
 <!-- <![CDATA[
       var myMenu =
 ['

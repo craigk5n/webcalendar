@@ -764,7 +764,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     ';
 include '../includes/js/visible.php';
 echo '
-    <script language="JavaScript" type="text/javascript">
+    <script type="text/javascript">
 <!-- <![CDATA[' . ( empty( $_SESSION['validuser'] ) ? '' : '
       function testPHPInfo() {
         var url = "index.php?action=phpinfo";
