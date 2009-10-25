@@ -877,7 +877,7 @@ if ( Doc::commentsEnabled () ) {
     // we need it until after would need to include it.
     // So, we will include it here instead.
     ?>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 <!-- <![CDATA[
 function showComments () {
   var x = document.getElementById ( "comtext" )

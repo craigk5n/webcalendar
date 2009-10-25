@@ -35,7 +35,7 @@ if ( $d = dir ( $icon_path ) ) {
   $title_str = translate ( 'Click to Select' );
 
   ?>
-  <script language="JavaScript" type="text/javascript">
+  <script type="text/javascript">
   <!-- <![CDATA[
   function sendURL ( url ) {
     var
