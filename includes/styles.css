@@ -1247,3 +1247,6 @@ tr.highlight td {
 a:hover {
   color:#00f;
 }
+table.ThemeMenubar {
+  table-layout:auto;
+}
