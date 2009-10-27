@@ -10,15 +10,15 @@
  *   - Update WEBCAL_PROGRAM_VERSION default value in default_config.php
  *     This should be of the format "v1.0.0"
  *   - Make sure the last entry in all the upgrade-*.sql files reference
- *     this same version.  For example, for "v1.0.0", there should be a
+ *     this same version. For example, for "v1.0.0", there should be a
  *     comment of the format:    /*upgrade_v1.0.0 */
        /* ( Don't remove this line as it leads to nested C-Style comments )
  *     If there are NO db changes, then you should just modify the
- *     the last comment to be the new version number.  If there are
+ *     the last comment to be the new version number. If there are
  *     db changes, you should create a new entry in the *.sql files
  *     that detail the SQL to upgrade.
  *   - Update the $PROGRAM_VERSION and $PROGRAM_DATE variables defined
- *     in includes/config.php.  The $PROGRAM_VERSION needs to be the
+ *     in includes/config.php. The $PROGRAM_VERSION needs to be the
  *     same value (e.g. "v1.0.0") that was defined above.
  *   - Update the version/date in ChangeLog and NEWS files.
  *   - Update UPGRADING.html documentation.
@@ -207,8 +207,8 @@ $php_settings = array(
   );
 
 //Add 'Safe Mode Allowed Vars' if 'Safe Mode' is enabled
-if( get_php_setting( 'safe_mode' )== 'ON' )
-  $php_settings[] =  array(
+if( get_php_setting( 'safe_mode' ) == 'ON' )
+  $php_settings[] = array(
     translate('Safe Mode Allowed Vars'),
       'safe_mode_allowed_env_vars', 'TZ', 'TZ');
 

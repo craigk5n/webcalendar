@@ -367,7 +367,7 @@ function mousemove ( e ) {
 }
 // Initialize after loading the page.
 if ( typeof addLoadHandler == 'undefined' ) {
-  function addLoadHandler ( handler )  {
+  function addLoadHandler( handler ) {
     if ( window.addEventListener ) {
       window.addEventListener ( 'load',handler,false);
     } else

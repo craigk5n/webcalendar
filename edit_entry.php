@@ -1092,7 +1092,7 @@ if ( $can_edit ) {
       }
     }
 
-    if ( $GROUPS_ENABLED == 'Y'  ) {
+    if ( $GROUPS_ENABLED == 'Y' ) {
       for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
         $grouplist .= '
           <option value="' . $groups[$i]['cal_group_id'] . '">'
@@ -1139,7 +1139,8 @@ if ( $can_edit ) {
             . $addStr . ' onclick="selResource( this );" />
           </td>
         <td valign="top"  class="boxbottom boxright">'
-        .  ( $GROUPS_ENABLED == 'Y' ? '&nbsp;&nbsp;<label>' . translate ( 'Groups' ) .'</label><br/>
+        . ( $GROUPS_ENABLED == 'Y' ? '&nbsp;&nbsp;<label>'
+        . translate( 'Groups' ) . '</label><br/>
           <select class="fixed" name="groups" id="groups" size="'
      . $size . '" onclick="addGroup()" >' . $grouplist . '
             </select><br/>

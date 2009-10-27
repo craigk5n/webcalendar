@@ -299,7 +299,7 @@ function setCol( value ) {
       break;
     }
   curcol = value;
-  currgb = [fromhex( curcol.substr( 0, 2  ) ),
+  currgb = [fromhex( curcol.substr( 0, 2 ) ),
     fromhex( curcol.substr( 2, 2 ) ), fromhex( curcol.substr( 4, 2 ) )];
   curhsl = RGBtoHSL( currgb[0], currgb[1], currgb[2] );
   update();

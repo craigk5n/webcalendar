@@ -5,7 +5,7 @@
  *  Generates RSS 2.0 output of the activity log.
  *
  *  Like icalclient.php, this file does not use the standard web-based
- *  user authentication.  It always uses HTTP-based user authentication
+ *  user authentication. It always uses HTTP-based user authentication
  *  since that is what RSS readers will expect.
  *
  *  For details on the RSS 2.0 specification:
@@ -191,19 +191,17 @@ function rss_activity_log ( $sys, $entries ) {
     $unixtime = date_to_epoch ( $l_date . $l_time );
     $subject = display_activity_log ( $l_type, $l_text, "\n" );
     $ret .=
-      "<item>\n" .
-      '  <title><![CDATA[' . $subject . ': ' . htmlspecialchars ( $l_ename ) . ']]></title>' .        "\n  <link>" . $SERVER_URL .
-      'view_entry.php?id=' . $l_eid . "</link>\n" .
-      '  <description><![CDATA[' . $l_description  . ']]></description>' . "\n";
-    //$ret .=
-    //  '  <category><![CDATA[' . $category . ']]></category>' . "\n";
-      /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */
-    $ret .= '<pubDate>' .
-      gmdate ( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>' . "\n" .
-      '  <guid>' . $SERVER_URL . 'view_entry.php?id=' . $l_eid .
-      '&amp;friendly=1&amp;rssuser=' . $login .
-     '&amp;date=' . $l_date . "</guid>\n";
-    $ret .= "</item>\n\n";
+      "<item>\n" . '  <title><![CDATA[' . $subject . ': '
+      . htmlspecialchars( $l_ename ) . ']]></title>' . "\n  <link>"
+      . $SERVER_URL . 'view_entry.php?id=' . $l_eid . "</link>\n"
+      . '  <description><![CDATA[' . $l_description  . ']]></description>'
+      . "\n"
+    // . '  <category><![CDATA[' . $category . ']]></category>' . "\n"
+    /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */
+      . '<pubDate>' . gmdate( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>'
+      . "\n" . '  <guid>' . $SERVER_URL . 'view_entry.php?id=' . $l_eid
+      . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $l_date
+      . "</guid>\n" . "</item>\n\n";
   }
 
   return $ret;

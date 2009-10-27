@@ -36,7 +36,7 @@ $report_id = getValue ( 'report_id', '-?[0-9]+', true );
 $selected = ' selected="selected"';
 $show_participants = ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y'
   ? false : true );
-$updating_public =  ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' );
+$updating_public = ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS == 'Y' );
 
 $report_user = ( $updating_public ? '__public__' : '');
 

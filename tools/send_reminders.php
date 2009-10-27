@@ -595,8 +595,9 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
   repeats = ' . $repeats . '
   time = ' . date ( 'His', time () ). ' 
   remind_time = ' . date ( 'His', $remind_time ). ' 
-  lastsent = ' . ( $lastsent > 0 ? date ( 'Ymd His', $lastsent  ): " NEVER " ) . ' 
-  pointless = ' .date ( 'Ymd His',  $pointless  ). ' 
+  lastsent = '
+       . ( $lastsent > 0 ? date( 'Ymd His', $lastsent ) : ' NEVER ' ) . '
+  pointless = ' . date( 'Ymd His', $pointless ) . ' 
   is_task = ' . ( $is_task ? 'true' : 'false' ) . '<br />';
 
     if ( $times_sent < ( $repeats + 1 ) &&

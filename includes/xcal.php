@@ -16,7 +16,7 @@
 function generate_prodid ( $type='' ) {
   global $PROGRAM_NAME, $PROGRAM_VERSION;
 
-  $ret = 'PRODID:-//WebCalendar-' .$type . '-' ;
+  $ret = 'PRODID:-//WebCalendar-' . $type . '-';
   if ( ! empty ( $PROGRAM_VERSION ) )
     $ret .= $PROGRAM_VERSION;
   else if ( preg_match ( "/WebCalendar v(\S+)/", $PROGRAM_NAME, $match ) )
@@ -135,8 +135,8 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
   return $res;
 } //end function wc_export_fold_lines ($string, $encoding="none", $limit=76)
 
-function search_users($arrInArray, $varSearchValue){
-  foreach ($arrInArray as $key => $row){
+function search_users( $arrInArray, $varSearchValue ) {
+  foreach ( $arrInArray as $key => $row ) {
     if ($row['cal_login'] == $varSearchValue) {
       return $key;
     }
@@ -204,24 +204,19 @@ function export_get_attendee( $id, $export ) {
         if ( empty ( $user['cal_firstname'] ) && empty ( $user['cal_lastname'] ) )
           $attendee[$count] .= $user['cal_login'] .'"';
         else
-          $attendee[$count] .= $user['cal_firstname']
-           . ' ' .  $user['cal_lastname'];  
-        if ( ! empty ( $user['cal_email'] ) )
-          $attendee[$count]  .= '<' . $user['cal_email'] . '>'; 
-        else 
-          $attendee[$count]  .= '<' . $EMAIL_FALLBACK_FROM . '>';   
+          $attendee[$count] .= $user['cal_firstname'] . ' '
+           . $user['cal_lastname'] . '<' . ( empty( $user['cal_email'] )
+            ? $EMAIL_FALLBACK_FROM : $user['cal_email'] ) . '>';
       } else {
-      // Use "Full Name <email>" if we have it, just "login" if that's all
-      // we have.
-      if ( empty ( $user['cal_firstname'] ) && empty ( $user['cal_lastname'] ) )
-          $attendee[$count] .= ';CN="' . $user['cal_login'] .'"';
-      else
-        $attendee[$count] .= ';CN="' . utf8_encode($user['cal_firstname']) 
-          . ' ' .  utf8_encode($user['cal_lastname']).'"';
-      if ( ! empty ( $user['cal_email'] ) )
-        $attendee[$count]  .= ':MAILTO:' . $user['cal_email'];
-        else 
-          $attendee[$count]  .= ':MAILTO:' . $EMAIL_FALLBACK_FROM;
+        // Use "Full Name <email>" if we have it,
+        // Just "login" if that's all we have.
+        $attendee[$count] .= ';CN="'
+         . ( empty( $user['cal_firstname'] ) && empty( $user['cal_lastname'] )
+           ? $user['cal_login']
+           : utf8_encode( $user['cal_firstname'] ) . ' '
+             . utf8_encode( $user['cal_lastname'] ) ) . '"'
+         . ':MAILTO:' . ( empty( $user['cal_email'] )
+           ? $EMAIL_FALLBACK_FROM : $user['cal_email'] );
       }
       $count++;
     } //end if ( count ( $user ) > 0 )
@@ -233,7 +228,7 @@ function export_get_attendee( $id, $export ) {
 // other than formatting
 //
 // NOTE: Forcing the DTEND to include a 'T000000' as a DATETIME rather
-// than just a DATE is needed to avoid a bug in Sunbird 0.7.  If the
+// than just a DATE is needed to avoid a bug in Sunbird 0.7. If the
 // DTSTART has a DATETIME and the DTEND is just DATE, then Sunbird locks up.
 function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   global $TIMEZONE, $use_vtimezone, $vtimezone_data;
@@ -241,7 +236,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   $ret = $vtimezone_exists = '';
   $eventstart = date_to_epoch ( $date . ( $time > 0 ? $time : 0 ), $time>0 );
   $eventend = $eventstart + ( $duration * 60 );
-  if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0  ) {
+  if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0 ) {
     // all day.
     if ( $use_vtimezone && ( $vtimezone_data = get_vtimezone ( $TIMEZONE, $dtstart ) ) ) {
       $vtimezone_exists = true;
@@ -492,7 +487,7 @@ function export_recurrence_vcal( $id, $date ) {
   $sql = 'SELECT wer.cal_type, wer.cal_end,
     wer.cal_endtime, wer.cal_frequency,
     we.cal_date, we.cal_time, wer.cal_bymonth,
-    wer.cal_bymonthday,  wer.cal_byday,
+    wer.cal_bymonthday, wer.cal_byday,
     wer.cal_bysetpos, wer.cal_byweekno,
     wer.cal_byyearday, wer.cal_wkst,
     wer.cal_count  FROM webcal_entry we, webcal_entry_repeats wer
@@ -597,7 +592,7 @@ function export_ts_utc_date ( $timestamp ) {
 
 function export_alarm_vcal( $id, $date ) {
   // Don't send reminder for event in the past
-  if ( $date < date ( 'Ymd' )  )
+  if ( $date < date( 'Ymd' ) )
     return;
   // get reminders
   $reminder = getReminders ( $id );
@@ -1003,7 +998,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     }
     // get recurrance info
     $recurrance = export_recurrence_ical ( $id );
-    if ( ! empty ( $recurrance  ) )
+    if ( ! empty( $recurrance ) )
       $use_vtimezone = true;
 
     /* snippet from RFC2445
@@ -1093,7 +1088,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
       $Vret .= "$value\r\n";
     }
 
-    /* CLASS either "PRIVATE", "CONFIDENTIAL",  or "PUBLIC" (the default) */
+    /* CLASS either "PRIVATE", "CONFIDENTIAL", or "PUBLIC" (the default) */
     if ( $access == 'R' ) {
       $Vret .= "CLASS:PRIVATE\r\n";
     } else if ( $access == 'C' ) {
@@ -1275,18 +1270,17 @@ function import_data ( $data, $overwrite, $type ) {
       $Entry['Duration'] = '1440';
     }
 
-    $priority = ( ! empty (  $Entry['Priority'] ) ?
-      $Entry['Priority'] : 5 );
+    $priority = ( empty( $Entry['Priority'] )
+      ? 5 : $Entry['Priority'] );
 
-    if ( ! empty ( $Entry['Completed'] ) ) {
-      $cal_completed = substr ( $Entry['Completed'], 0, 8 );
-    } else {
+    $cal_completed = ( empty( $Entry['Completed'] )
+      ? '' : substr( $Entry['Completed'], 0, 8 ) );
+
+    if ( strlen( $cal_completed < 8 ) )
       $cal_completed = '';
-    }
-    if ( strlen ( $cal_completed < 8 ) ) $cal_completed = '';
 
-    $months = ( ! empty ( $Entry['Repeat']['ByMonth'] ) ) ?
-    $Entry['Repeat']['ByMonth'] : '';
+    $months = ( empty( $Entry['Repeat']['ByMonth'] )
+      ? '' : $Entry['Repeat']['ByMonth'] );
 
     $updateMode = false;
     // See if event already is there from prior import.
@@ -1296,13 +1290,12 @@ function import_data ( $data, $overwrite, $type ) {
     // existing events that correspond to the UID.
     // NOTE:(cek) commented out 'publish'. Will not work if event
     // was originally created from importing.
-    if ( ! empty ( $Entry['UID'] ) ) {
-      $res = dbi_execute ( 'SELECT wid.cal_id '
-         . 'FROM webcal_import_data wid, webcal_entry_user weu WHERE '
-        // "cal_import_type = 'publish' AND " .
-        . 'wid.cal_id = weu.cal_id AND '
-         . 'weu.cal_login = ? AND '
-         . 'cal_external_id = ?', array ( $login, $Entry['UID'] ) );
+    if ( ! empty( $Entry['UID'] ) ) {
+      $res = dbi_execute( 'SELECT wid.cal_id
+        FROM webcal_import_data wid, webcal_entry_user weu WHERE '
+        // . "cal_import_type = 'publish' AND "
+        . 'wid.cal_id = weu.cal_id AND weu.cal_login = ?
+        AND cal_external_id = ?', array( $login, $Entry['UID'] ) );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
           if ( ! empty ( $row[0] ) ) {
@@ -3088,7 +3081,7 @@ function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
 }
 
 function save_vtimezone ( $event ) {
-  //do_debug ( print_r ( $event, true ) ) ;
+  //do_debug( print_r( $event, true ) );
   $tzidLong = parse_tzid ( $event['tzid'] );
   $tzid = ( ! empty ( $event['tzlocation'] ) ? $event['tzlocation'] :
     ( ! empty ( $tzidLong ) ? $tzidLong : '' ) );

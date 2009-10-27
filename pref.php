@@ -17,8 +17,8 @@ function save_pref( $prefs, $src) {
       $prefix = substr ( $key, 0, 5 );
       if ( $prefix != 'pref_')
         continue;
-      // validate key name.  should start with "pref_" and not include
-      // any unusual characters that might cause SQL injection
+      // Validate key name. Should start with "pref_" and not include
+      // any unusual characters that might be an SQL injection attack.
       if ( ! preg_match ( '/pref_[A-Za-z0-9_]+$/', $key ) )
         die_miserable_death ( str_replace ( 'XXX', $key,
             translate ( 'Invalid setting name XXX.' ) ) );
@@ -212,12 +212,11 @@ echo display_admin_link ();
 // If user is admin of a non-user cal, and non-user cal is "public"
 // (meaning it is a public calendar that requires no login), then allow
 // the current user to modify prefs for that nonuser cal
-if ( $is_admin && ! $updating_public  ) {
+if ( $is_admin && ! $updating_public ) {
   if ( empty ( $public ) && ! empty ( $PUBLIC_ACCESS ) &&
     $PUBLIC_ACCESS == 'Y' ) {
-    $public_option =  '<option value="pref.php?public=1">' .
-      translate ( 'Public Access calendar' ) .
-      "</option>\n";
+      $public_option = '<option value="pref.php?public=1">'
+        . translate( 'Public Access calendar' ) . "</option>\n";
   }
 }
 
@@ -278,7 +277,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  define_languages (); //load the language list
  reset ( $languages );
  while ( list ( $key, $val ) = each ( $languages ) ) {
-   // Don't allow users to select browser-defined.  We want them to pick
+   // Don't allow users to select browser-defined. We want them to pick
    // a language so that when we send reminders (done without the benefit
    // of a browser-preferred language), we'll know which language to use.
    // DO let them select browser-defined for the public user or NUC.
@@ -357,7 +356,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
   }
 ?>
 </select>&nbsp;<?php echo translate ( 'Small Task Date' ) . ' ' .
-  date_to_str ( $dateYmd,  $DATE_FORMAT_TASK, false, false );?>
+  date_to_str( $dateYmd, $DATE_FORMAT_TASK, false, false );?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip ( 'time-format-help' )?>">
@@ -423,7 +422,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 etranslate ( 'Preferred view' )?>:</td><td>
 <select name="pref_STARTVIEW">
 <?php
-// For backwards compatibility.  We used to store without the .php extension
+// For backwards compatibility. We used to store without the .php extension
 if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
   $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
   $prefarray['STARTVIEW'] .= '.php';
@@ -538,7 +537,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
  <select name="pref_CATEGORY_VIEW" id="pref_cat">
 <?php
  if ( ! empty ( $categories ) ) {
-  foreach ( $categories as $K => $V ){
+  foreach ( $categories as $K => $V ) {
    echo "<option value=\"$K\"";
    if ( ! empty ( $prefarray['CATEGORY_VIEW'] ) &&
     $prefarray['CATEGORY_VIEW'] == $K ) echo $selected;
@@ -727,8 +726,8 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <table cellspacing="1" cellpadding="2" summary="">
 <?php if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y') { ?>
 <tr><td class="tooltipselect" title="<?php etooltip ( 'allow-view-subscriptions-help' )?>"><?php etranslate ( 'Allow remote viewing of' );
-$publish_access =  ( empty  ( $prefarray['USER_REMOTE_ACCESS'] ) ? 0 :
-   $prefarray['USER_REMOTE_ACCESS'] );
+$publish_access = ( empty( $prefarray['USER_REMOTE_ACCESS'] )
+   ? 0 : $prefarray['USER_REMOTE_ACCESS'] );
 ?>:</td><td>
   <select name="pref_USER_REMOTE_ACCESS">
    <option value="0" <?php echo ( $publish_access == '0' ?
@@ -752,7 +751,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
   <td>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
-      'publish.php/' . ( $updating_public ? '__public__' : $user ) .  '.ics';
+      'publish.php/' . ( $updating_public ? '__public__' : $user ) . '.ics';
     echo "<br />\n";
     echo htmlspecialchars ( $SERVER_URL ) .
       'publish.php?user=' . ( $updating_public ? '__public__' : $user );
@@ -830,7 +829,7 @@ if ( $CUSTOM_HEADER == 'Y' ) { ?>
  </td></tr>
 <?php }
 
-if ( $CUSTOM_TRAILER == 'Y'  ) { ?>
+if ( $CUSTOM_TRAILER == 'Y' ) { ?>
  <tr><td class="tooltip" title="<?php etooltip ( 'custom-trailer-help' );?>">
   <?php etranslate ( 'Custom trailer' )?>:</td><td>
   <input type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php

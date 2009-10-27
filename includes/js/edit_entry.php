@@ -440,7 +440,7 @@ function add_exception (which) {
       {
          for (i = 0; i < length; i++)
          {
-            if (options[i].text ==  "-" + exceptDate || options[i].text ==  "+" + exceptDate){
+            if ( options[i].text == "-" + exceptDate || options[i].text == "+" + exceptDate ) {
          isUnique = false;
          }
      }
@@ -459,7 +459,7 @@ function del_selected () {
       {
          for (i = 0; i < length; i++)
          {
-            if (options[i].selected){
+            if ( options[i].selected ) {
          options[i] = null;
          }
          } // end for loop
@@ -471,7 +471,7 @@ function del_selected () {
    } // end with document
 }
 
-function toggle_byday(ele){
+function toggle_byday( ele ) {
   var bydaytext = bydayTrans[ele.id.substr(2,1)];
   var bydayVal = bydayLabels[ele.id.substr(2,1)];
   var tmp = '';
@@ -481,9 +481,9 @@ function toggle_byday(ele){
     tmp = ele.id.substr(1,1) + bydayVal;
   } else if (ele.value == ele.id.substr(1,1) + bydaytext) {
     //positive value
-    ele.value =  (parseInt(ele.id.substr(1,1)) -6 ) + bydaytext;
-    tmp = (parseInt(ele.id.substr(1,1)) -6 ) +  bydayVal;
-  } else if (ele.value ==  (parseInt(ele.id.substr(1,1)) -6 ) +  bydaytext) {
+    ele.value = ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydaytext;
+    tmp = ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydayVal;
+  } else if ( ele.value == ( parseInt( ele.id.substr( 1,1 ) ) -6 ) + bydaytext ) {
     //negative value
   ele.value = "        ";
   tmp = '';
@@ -491,15 +491,15 @@ function toggle_byday(ele){
   bydayAr[ele.id.substr(1)] = tmp;
 }
 
-function toggle_bymonthday(ele){
+function toggle_bymonthday( ele ) {
   var tmp = '';
   if (ele.value .length > 3) {
     //blank
   ele.value = tmp = ele.id.substr(10);
   } else if (ele.value == ele.id.substr(10)) {
     //positive value
-  ele.value =  tmp = parseInt(ele.id.substr(10)) -32;
-  } else if (ele.value ==  (parseInt(ele.id.substr(10)) -32 )) {
+  ele.value = tmp = parseInt( ele.id.substr( 10 ) ) -32;
+  } else if ( ele.value == ( parseInt( ele.id.substr( 10 ) ) -32 ) ) {
     //negative value
   ele.value = "     ";
   tmp = '';
@@ -507,7 +507,7 @@ function toggle_bymonthday(ele){
   bymonthdayAr[ele.id.substr(10)] = tmp;
 }
 
-function toggle_bysetpos(ele){
+function toggle_bysetpos( ele ) {
   var tmp = '';
   if (ele.value .length > 3) {
     //blank
@@ -515,8 +515,8 @@ function toggle_bysetpos(ele){
 
   } else if (ele.value == ele.id.substr(8)) {
     //positive value
-  ele.value =  tmp = parseInt(ele.id.substr(8)) -32;
-  } else if (ele.value ==  (parseInt(ele.id.substr(8)) -32 )) {
+  ele.value = tmp = parseInt( ele.id.substr( 8 ) ) -32;
+  } else if ( ele.value == ( parseInt( ele.id.substr( 8 ) ) -32 ) ) {
     //negative value
   ele.value = "    ";
   tmp = '';
@@ -598,7 +598,7 @@ function toggle_reminders () {
   }
 }
 
-function toggle_rem_rep (){
+function toggle_rem_rep() {
  elements['rem_rep_days'].disabled =
  elements['rem_rep_hours'].disabled =
  elements['rem_rep_minutes'].disabled =
@@ -755,7 +755,7 @@ function onLoad () {
         if ( key == isNumeric ( key ) )
           bysetposAr[bysetposList[key]] = bysetposList[key];
       }
-    } else if ( bysetposList.length > 0 ){
+    } else if ( bysetposList.length > 0 ) {
       bysetposAr[bysetposList] = bysetposList;
     }
   }
@@ -768,7 +768,7 @@ function onLoad () {
   completed_handler ();
 }
 
-function selAdd(btn){
+function selAdd( btn ) {
   with (form)
   {
     with (form.entry_part)
@@ -792,14 +792,14 @@ function selAdd(btn){
 function is_unique ( val ) {
    unique = true;
    var sel = form.sel_part;
-   for (j = 0; j < sel.length; j++){
+   for ( j = 0; j < sel.length; j++ ) {
      if ( sel.options[j].value == val )
        unique = false;
    } 
    return unique;
 }
 
-function selResource(btn){ 
+function selResource( btn ) { 
   with (form)
   {
     with (form.res_part)
@@ -819,14 +819,14 @@ function selResource(btn){
     } 
   } // end with document
 }
-function selRemove(btn){
+function selRemove( btn ) {
    with (form)
    { 
       with (form.sel_part)
       {
          for (i = 0; i < length; i++)
          {   
-            if(options[i].selected){
+            if( options[i].selected ) {
               options[i] = null;
          }      
          } // end for loop
@@ -834,9 +834,9 @@ function selRemove(btn){
    } // end with document
 }
 
-function lookupName(){
+function lookupName() {
   var selectid = -1;
-  var x =  stringLength(form.lookup.value);
+  var x = stringLength( form.lookup.value );
     var lower = stringToLowercase(form.lookup.value );
   form.entry_part.selectedIndex = -1;
   form.res_part.selectedIndex = -1;
@@ -845,9 +845,9 @@ function lookupName(){
   //check userlist
   for ( i = 0; i < form.entry_part.length; i++ ) {
     str = form.entry_part.options[i].text;
-    if ( stringToLowercase(str.substring(0,x)) == lower){
+    if ( stringToLowercase( str.substring( 0,x ) ) == lower ) {
       selectid = i;
-    i =  form.entry_part.length;
+    i = form.entry_part.length;
    }
   }
   if ( selectid  > -1) {
@@ -857,9 +857,9 @@ function lookupName(){
   //check resource list
   for ( i = 0; i < form.res_part.length; i++ ) {
     str = form.res_part.options[i].text;
-    if ( stringToLowercase(str.substring(0,x)) == lower){
+    if ( stringToLowercase( str.substring( 0,x ) ) == lower ) {
       selectid = i;
-    i =  form.res_part.length;
+    i = form.res_part.length;
    }
   }    
   if ( selectid > -1 ) {
@@ -870,9 +870,9 @@ function lookupName(){
   if ( form.groups ) {
     for ( i = 0; i < form.groups.length; i++ ) {
       str = form.groups.options[i].text;
-      if ( stringToLowercase(str.substring(0,x)) == lower){
+      if ( stringToLowercase( str.substring( 0,x ) ) == lower ) {
         selectid = i;
-      i =  form.groups.length;
+      i = form.groups.length;
      }
     }
     if ( selectid > -1) {

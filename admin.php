@@ -113,7 +113,7 @@ if ( ! empty ( $_POST ) && empty ( $error ) ) {
   }
 }
 
-// Load any new config settings.  Existing ones will not be affected.
+// Load any new config settings. Existing ones will not be affected.
 // This function is in the install/default_config.php file.
 if ( function_exists ( 'db_load_config' ) && empty ( $_POST ) )
   db_load_config ();
@@ -424,7 +424,7 @@ if ( ! $error ) {
           </fieldset>
           <fieldset>
             <legend>' . translate ( 'Date and Time' ) . '</legend>'
-  /* Determine if we can set timezones.  If not don't display any options. */
+  /* Determine if we can set timezones. If not don't display any options. */
    . ( set_env ( 'TZ', $s['SERVER_TIMEZONE'] ) ? '
             <p><label for="admin_SERVER_TIMEZONE" title="'
      . tooltip ( 'server-tz-help' ) . '">' . translate ( 'Server Timezone Selection' )
@@ -707,23 +707,23 @@ if ( ! $error ) {
    . translate ( 'Enabled' ) . ':</label>'
    . print_radio ( 'UPCOMING_EVENTS', '', '', 'N' ) . '</p>
 
-   <p><label title="' . tooltip ( 'upcoming-events-allow-override' ) .  '">'
+   <p><label title="' . tooltip( 'upcoming-events-allow-override' ) . '">'
    . translate ( 'Allow user override' ) . ':</label>'
    . print_radio ( 'UPCOMING_ALLOW_OVR', '', '', 'N' ) . '</p>
 
-   <p><label title="' . tooltip ( 'upcoming-events-display-caticons' ) .  '">'
+   <p><label title="' . tooltip( 'upcoming-events-display-caticons' ) . '">'
    . translate ( 'Display category icons' ) . ':</label>'
    . print_radio ( 'UPCOMING_DISPLAY_CAT_ICONS', '', '', 'Y' ) . '</p>
 
-     <p><label title="' . tooltip ( 'upcoming-events-display-layers' ) .  '">'
+     <p><label title="' . tooltip( 'upcoming-events-display-layers' ) . '">'
    . translate ( 'Display layers' ) . ':</label>'
    . print_radio ( 'UPCOMING_DISPLAY_LAYERS', '', '', 'N' ) . '</p>
 
-     <p><label title="' . tooltip ( 'upcoming-events-display-links' ) .  '">'
+     <p><label title="' . tooltip( 'upcoming-events-display-links' ) . '">'
    . translate ( 'Display links to events' ) . ':</label>'
    . print_radio ( 'UPCOMING_DISPLAY_LINKS', '', '', 'Y' ) . '</p>
 
-     <p><label title="' . tooltip ( 'upcoming-events-display-popups' ) .  '">'
+     <p><label title="' . tooltip( 'upcoming-events-display-popups' ) . '">'
    . translate ( 'Display event popups' ) . ':</label>'
    . print_radio ( 'UPCOMING_DISPLAY_POPUPS', '', '', 'Y' ) . '</p>
    </fieldset>
@@ -859,7 +859,7 @@ if ( ! $error ) {
    . translate ( 'Email format preference' ) . ':</label>'
    . print_radio ( 'EMAIL_HTML',
      array ( 'Y'=> translate ( 'HTML' ),
-             'N'=>translate ( 'Plain Text' ) )  ) . '</p>' 
+             'N'=>translate( 'Plain Text' ) ) ) . '</p>' 
    . '<p><label title="' . tooltip ( 'email-include-ics' ) . '">'
    . translate ( 'Include iCalendar attachments' ) . ':</label>'
    . print_radio ( 'EMAIL_ATTACH_ICS' ) . '</p>' 

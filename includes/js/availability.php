@@ -54,7 +54,7 @@ function schedule_event(hours, minutes) {
         parentForm.entry_ampmP.checked = true;
       }
     } else {
-      if ( hours ==  12 &&  parentForm.entry_ampmP )  {
+      if ( hours == 12 && parentForm.entry_ampmP ) {
         parentForm.entry_ampmP.checked = true;
       } else {
         if ( parentForm.entry_ampmA ) {

@@ -50,7 +50,7 @@ $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
-$wkend = $wkstart + ( 86400 * 6 );
+$wkend = $wkstart + 518400;
 
 $startdate = date ( 'Ymd', $wkstart );
 $enddate = date ( 'Ymd', $wkend );

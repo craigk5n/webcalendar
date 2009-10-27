@@ -113,7 +113,7 @@ define ( 'EXTRA_DISPLAY_ALL', 511 );
      "Department",     // how this field will be described to users
      EXTRA_RADIO,      // type of field
                        // List of options val->disp pair required for each option
-     array ( 'HR'=>'Human Resources', 'PR'=>'Purchasing', 'IT'=>'IT Services'  ),
+     array( 'HR'=>'Human Resources', 'PR'=>'Purchasing', 'IT'=>'IT Services' ),
      'IT',             // default item
      EXTRA_DISPLAY_VIEW //Display in view_entry only
    ),

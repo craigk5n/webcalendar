@@ -97,7 +97,7 @@ if ( ! empty ( $error ) ) {
  </td></tr>
 <?php }
 // An admin can't change their own Admin or Enabled status
-if ( $is_admin && ( empty ( $user ) || ( $user != $login ) )  ) { ?>
+if ( $is_admin && ( empty( $user ) || $user != $login ) ) { ?>
  <tr><td class="bold">
   <?php etranslate ( 'Admin' )?>:</td><td>
   <?php

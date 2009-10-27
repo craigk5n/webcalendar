@@ -105,7 +105,7 @@ else {
       $encoded_login = encode_string ( $login . '|' . crypt( $password ) );
       // If $remember, set login to expire in 365 days.
       $timeStr = ( ! empty ( $remember ) && $remember == 'yes'
-        ? time () + ( 86400 * 365 ) : 0 );
+        ? time() + 31536000 : 0 );
       SetCookie ( 'webcalendar_session', $encoded_login, $timeStr, $cookie_path );
 
       // The cookie "webcalendar_login" is provided as a convenience to other

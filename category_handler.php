@@ -101,7 +101,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
     // Save icon if uploaded.
     if ( ! empty ( $file['tmp_name'] ) ) {
       if ( $file['type'] == 'image/gif' && $file['size'] <= $icon_max_size ) {
-        // $icon_props = getimagesize ( $file['tmp_name']  );
+        // $icon_props = getimagesize( $file['tmp_name'] );
         // print_r ($icon_props );
         $path_parts = pathinfo ( $_SERVER['SCRIPT_FILENAME'] );
         $fullIcon = $path_parts['dirname'] . '/'

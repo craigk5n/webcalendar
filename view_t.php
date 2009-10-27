@@ -255,7 +255,7 @@ if ($view_type == 'S') {
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
   $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
   $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
-  $wkend = $wkstart + ( 86400 * 6 );
+  $wkend = $wkstart + 518400;
   $val_boucle = 7;
 } else {
   $next = mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear );
@@ -324,7 +324,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   $re_save = array_merge ( $re_save, $repeated_events );
   /* Pre-load the non-repeating events for quicker access
-      subtracting ONE_WEEK to allow cross-day events to display*/
+     subtracting ONE_WEEK to allow cross-day events to display. */
   $events = read_events ( $viewusers[$i], $wkstart - 604800, $wkend );
   $e_save = array_merge ( $e_save, $events );
 }

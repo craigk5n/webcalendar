@@ -250,7 +250,7 @@ if ( empty ( $error ) && ! $can_view && !
     $can_view = true;
 }
 
-// Final case.  If 'public visible by default' is on and 'public' is
+// Final case. If 'public visible by default' is on and 'public' is
 // a participant to this event, then anyone can view the event.
 if ( ! $can_view && ! empty ( $PUBLIC_ACCESS_DEFAULT_VISIBLE ) &&
   $PUBLIC_ACCESS_DEFAULT_VISIBLE == 'Y' ) {
@@ -606,7 +606,7 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
     elseif ( $extra_type == EXTRA_USER || $extra_type == EXTRA_SELECTLIST
       || $extra_type == EXTRA_CHECKBOX )
       echo $extras[$extra_name]['cal_data'];
-    elseif ( $extra_type == EXTRA_RADIO  )
+    elseif ( $extra_type == EXTRA_RADIO )
       echo $extra_arg1[$extras[$extra_name]['cal_data']];
 
     echo '</td>
@@ -956,11 +956,11 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve )
 // TODO add these permissions to the UAC list
 $can_add_attach = ( Doc::attachmentsEnabled () && $login != '__public__'
   && ( ( $login == $create_by ) || ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
-  ( $ALLOW_ATTACH_ANY == 'Y' ) || $is_admin  ) );
+  ( $ALLOW_ATTACH_ANY == 'Y' ) || $is_admin ) );
 
 $can_add_comment = ( Doc::commentsEnabled() && $login != '__public__'
   && ( ( $login == $create_by ) ||  ( $is_my_event && $ALLOW_COMMENTS_PART == 'Y' ) ||
-  ( $ALLOW_COMMENTS_ANY == 'Y' ) || $is_admin  ) );
+  ( $ALLOW_COMMENTS_ANY == 'Y' ) || $is_admin ) );
 
 if ( $can_add_attach && $event_status != 'D' ) {
   $addAttchStr = translate ( 'Add Attachment' );

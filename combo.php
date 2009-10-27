@@ -2,7 +2,7 @@
 /* $Id$
  *
  * This page handles displaying the Day/Week/Month/Year views in a single
- * page with tabs.  Content is loaded dynamically with AJAX.
+ * page with tabs. Content is loaded dynamically with AJAX.
  *
  * TODO:
  * - Week view
@@ -457,7 +457,7 @@ function load_content (year,month,day)
   {
     method:'get',
     parameters: { action: 'get', startdate: startdate },
-    onSuccess: function(transport){
+    onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
         return;
@@ -481,7 +481,7 @@ function load_content (year,month,day)
       loadedMonths[monthKey] = 1;
       update_display ( year, month, day );
     },
-    onFailure: function(){ alert('<?php etranslate("Error");?>') }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
   return true;
 }
@@ -554,7 +554,7 @@ function view_event ( key, location )
   {
     method:'get',
     parameters: { action: 'eventinfo', id: myEvent._id },
-    onSuccess: function(transport){
+    onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
         return;
@@ -607,7 +607,7 @@ function view_event ( key, location )
         text = '<?php etranslate('None');?>';
       $('comments').innerHTML = text;
     },
-    onFailure: function(){ alert('<?php etranslate("Error");?>') }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
 }
 
@@ -685,7 +685,7 @@ function next_month_link_dayview ( year, month, day )
 function prev_month_link ( year, month )
 {
   var m, y;
-  if ( month == 1 )  {
+  if ( month == 1 ) {
     m = 12;
     y = year - 1;
   } else {
@@ -699,7 +699,7 @@ function prev_month_link ( year, month )
 function next_month_link ( year, month )
 {
   var m, y;
-  if ( month == 12 )  {
+  if ( month == 12 ) {
     m = 1;
     y = year + 1;
   } else {
@@ -736,7 +736,7 @@ function today_link ()
 
 function monthCellClickHandler ( dateYmd )
 {
-  // Make sure user has not opened the view dialog.  When a user clicks
+  // Make sure user has not opened the view dialog. When a user clicks
   // on an event to view it, we will still receive the onclick event for
   // the td cell onclick handler below it.
   if ( viewDialog != null )
@@ -774,7 +774,7 @@ function quickAddHandler ()
     method:'post',
     parameters: { action: 'addevent', date: dateYmd,
       name: name, description: description<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
-    onSuccess: function(transport){
+    onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
         return;
@@ -800,7 +800,7 @@ function quickAddHandler ()
       loadedMonths[monthKey] = 0;
       load_content ( currentYear, currentMonth, currentDay );
     },
-    onFailure: function(){ alert('<?php etranslate("Error");?>') }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
 }
 
@@ -859,7 +859,7 @@ function build_month_view ( year, month )
     var daysThisMonth = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
       daysPerMonth[month];
 
-    for ( var i = startDay, j = 0; i <= daysThisMonth || j % 7 != 0 ; i++, j++ ) {
+    for ( var i = startDay, j = 0; i <= daysThisMonth || j % 7 != 0; i++, j++ ) {
       if ( j % 7 == 0 ) ret += "<tr>";
       if ( i < 1 ) {
         ret += "<td class=\"othermonth\">&nbsp;</td>\n";
@@ -1078,7 +1078,7 @@ function build_day_view ( year, month, day )
         " onclick=\"view_event('" + dateYmd + "'," + l + ")\"";
 var pos = '0';
       if ( isTimed ) {
-        // TODO: handle overlapping events.  Right now, the <div>
+        // TODO: handle overlapping events. Right now, the <div>
         // areas will overlap, possibly obscuring each other.
         // Would be nice to allow mouse-over to raise the z-index to
         // the top and have conflicting events shifted 50 pixels to

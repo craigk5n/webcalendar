@@ -104,9 +104,9 @@ $end_month = getPostValue ( 'until_month' );
 $end_year = getPostValue ( 'until_year' );
 if ( $end_year < 1970 )
   $end_year = 1970;
-$startDate =  gmdate ( 'Ymd', gmmktime ( 0, 0, 0,
+$startDate = gmdate( 'Ymd', gmmktime( 0, 0, 0,
   $start_month, $start_day, $start_year ) );
-$endDate =  gmdate ( 'Ymd', gmmktime ( 23, 59, 59,
+$endDate = gmdate( 'Ymd', gmmktime( 23, 59, 59,
   $end_month, $end_day, $end_year ) );
 
 print_header ();

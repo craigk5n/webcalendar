@@ -204,7 +204,7 @@ function set_layer_status (enable)
     parameters: { action: status<?php
       if ( $updating_public ) { echo ", public: 1"; }
     ?> },
-    onSuccess: function(transport){
+    onSuccess: function( transport ) {
       var response = transport.responseText || "no response text";
       try  {
         //var response = transport.responseText.evalJSON ();
@@ -231,7 +231,7 @@ function set_layer_status (enable)
         }
       }
     },
-    onFailure: function(){ alert('<?php etranslate("Error");?>') }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
   return true;
 }
@@ -246,7 +246,7 @@ function load_layers ()
     parameters: { action: 'list'<?php
       if ( $updating_public ) { echo ", public: 1"; }
     ?> },
-    onSuccess: function(transport){
+    onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
         return;
@@ -279,7 +279,7 @@ function load_layers ()
       x += '</table>\n';
       $('layerlist').innerHTML = x;
     },
-    onFailure: function(){ alert('<?php etranslate("Error");?>') }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
   return true;
 }
@@ -338,7 +338,7 @@ function edit_layer (id)
       method:'post',
       parameters: { action: action, id: id, layeruser: layeruser,
         source: source, color: color, dups: dups },
-      onSuccess: function(transport){
+      onSuccess: function( transport ) {
         var response = transport.responseText || "no response text";
         try  {
           //var response = transport.responseText.evalJSON ();
@@ -356,7 +356,7 @@ function edit_layer (id)
           load_layers ();
         }
       },
-      onFailure: function(){ alert('<?php etranslate("Error");?>') }
+      onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
     });
     return true;
   }

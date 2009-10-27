@@ -72,7 +72,7 @@ $encoded_login = encode_string ( $login . '|nonuser' );
 // set login to expire in 365 days
 SetCookie ( 'webcalendar_session', $encoded_login,
   ( ! empty ( $remember ) && $remember == 'yes' ?
-  86400 * 365 + time () : 0 ), $cookie_path );
+  31536000 + time() : 0 ), $cookie_path );
 
 do_redirect ( $url );
 

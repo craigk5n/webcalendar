@@ -251,7 +251,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
          . $logout_url . '">' . $logoutStr
         : // For public user (who did not actually login).
         $publicStr . '&nbsp;(<a title="' . $loginStr . '" href="' . $login_url
-         . '">' . $loginStr ) . "</a>)\n" ;
+         . '">' . $loginStr ) . "</a>)\n";
   }
 
   // Manage Calendar links.
