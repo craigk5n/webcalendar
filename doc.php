@@ -128,7 +128,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       }
       // If we didn't indicate we need to check groups, then this user
       // can't view this event.
-      if ( ! $check_group && ! access_is_enabled ()  )
+      if ( ! $check_group && ! access_is_enabled() )
         $can_view = false;
     }
   }

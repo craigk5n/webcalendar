@@ -105,15 +105,15 @@ if ( $show_advanced ) {
           <td>&nbsp;&nbsp;<label>' . translate ( 'Start date' )
    . ':</label></td>
           <td>'
-   . date_selection ( 'from_', $dateYmd )
-   .      '</td>
+   . date_selection( 'from_', $dateYmd ) . '
+          </td>
         </tr>
         <tr id="endDate" style="visibility:hidden">
           <td>&nbsp;&nbsp;<label>' . translate ( 'End date' )
    . ':</label></td>
           <td>'
-   . date_selection ( 'until_', $dateYmd )
-   .      '</td>
+   . date_selection( 'until_', $dateYmd ) . '
+          </td>
         </tr>';
 }
 if ( $show_others ) {

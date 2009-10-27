@@ -218,7 +218,7 @@ function print_upcoming_event ( $e, $date ) {
     echo '<span class="location">' . $e->getLocation () . "</span>\n";
     $categories = get_categories_by_id ( $e->getId (), $username );
     $category = implode ( ', ', $categories);
-    if ( strlen ( $category  ) > 0 )
+    if ( strlen( $category ) > 0 )
       echo '<span class="categories">' . $category . "</span>\n";
     if ( strlen ( $e->getUrl () ) > 0 )
       echo '<span class="url">' . $e->getUrl () . "</span>\n";
@@ -381,17 +381,17 @@ if ( $error == '' ) {
     }
 
     $x = getGetValue ( 'showMore', true );
-    if ( strlen(  $x ) > 0 ) {
+    if ( strlen( $x ) > 0 ) {
       $showMore= $x;
     }
 
     $x = getGetValue ( 'showTime', true );
-    if ( strlen(  $x ) > 0 ) {
+    if ( strlen( $x ) > 0 ) {
       $showTime= $x;
     }
 
     $x = getGetValue ( 'showTitle', true );
-    if ( strlen(  $x ) > 0 ) {
+    if ( strlen( $x ) > 0 ) {
       $showTitle = $x;
     }
 
@@ -565,7 +565,7 @@ $eventinfo = '';
 $numEvents = 0;
 $endDateYmd = date ( 'Ymd', $endDate );
 for ( $i = $startDate; date ( 'Ymd', $i ) <= $endDateYmd &&
-  $numEvents < $maxEvents; $i += ONE_DAY ) {
+  $numEvents < $maxEvents; $i += 86400 ) {
   $d = date ( 'Ymd', $i );
   $entries = get_entries ( $d, $get_unapproved );
   $rentries = get_repeating_entries ( $username, $d, $get_unapproved );
@@ -578,7 +578,8 @@ for ( $i = $startDate; date ( 'Ymd', $i ) <= $endDateYmd &&
 
   if ( $ev_cnt > 0 ) {
     echo "<!-- XXX -->\n";
-    //print "<dt>" . date_to_str ( $d,  translate ( '__month__ __dd__' ), true, true ) . "</dt>\n<dd>";
+    //print "<dt>" . date_to_str( $d, translate( '__month__ __dd__' ),
+    //  true, true ) . "</dt>\n<dd>";
     echo '<dt>' . date_to_str ( $d ) . "</dt>\n<dd>";
     for ( $j = 0; $j < $ev_cnt && $numEvents < $maxEvents; $j++ ) {
       print_upcoming_event ( $ev[$j], $d );

@@ -159,7 +159,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
         $class = 'class="hasevents"';
       else
-      if (  $dateYmd == $todayYmd )
+      if ( $dateYmd == $todayYmd )
         $class = 'class="today"';
       else
       if ( $is_weekend )

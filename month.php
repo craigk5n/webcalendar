@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 
 //check UAC
 if ( ! access_can_access_function ( ACCESS_MONTH ) || 
-  ( ! empty ( $user ) && ! access_user_calendar ( 'view', $user ) )  )
+  ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view ();
 
 if ( ( $user != $login ) && $is_nonuser_admin )
@@ -65,7 +65,7 @@ if ( empty ( $DISPLAY_TASKS ) || $DISPLAY_TASKS == 'N' &&
 }
 
 if ( $DISPLAY_TASKS == 'Y' && $friendly != 1 ) {
-  if (  $DISPLAY_SM_MONTH != 'N' ) {
+  if ( $DISPLAY_SM_MONTH != 'N' ) {
     $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false,
       'nextmonth', $monthURL ) . '<br />';
     $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false,

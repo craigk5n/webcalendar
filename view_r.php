@@ -115,7 +115,7 @@ $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
-$wkend = $wkstart + ( ONE_DAY * 7 );
+$wkend = $wkstart + 604800;
 
 if ( ! $fit_to_window )
   $time_w = '100px';
@@ -147,7 +147,7 @@ if ( $is_day_view ) {
 // Generate the column headers for each day and the unix datetime
 // values for each date.
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
-  $days[$i] = ( $wkstart + ONE_DAY * $i ) + ( 12 * 3600 );
+  $days[$i] = ( $wkstart + 86400 * $i ) + 43200;
   $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS );
   $header[$i] = $weekdays[$i] . '<br />' .
      month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
@@ -219,8 +219,8 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   $re_save[$i] = $repeated_events;
   /* Pre-load the non-repeating events for quicker access
-      subtracting ONE_WEEK to allow cross-day events to display*/
-  $events = read_events ( $viewusers[$i], $wkstart - ONE_WEEK, $wkend );
+     subtracting ONE_WEEK to allow cross-day events to display. */
+  $events = read_events( $viewusers[$i], $wkstart - 604800, $wkend );
   $e_save[$i] = $events;
   user_load_variables ( $viewusers[$i], 'temp' );
   $uheader .= "<th class=\"small\" width=\"$uwf\" style=\"width:$uwf;\">" .
@@ -233,10 +233,8 @@ $num_users = $viewusercnt;
 if ( empty ( $TIME_SLOTS ) )
   $TIME_SLOTS = 24;
 $interval = 1440 / $TIME_SLOTS;
-$first_slot = (int)( ( ( $WORK_DAY_START_HOUR  ) * 60 ) /
-  $interval );
-$last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
-  $interval );
+$first_slot = (int)( ( $WORK_DAY_START_HOUR * 60 ) / $interval );
+$last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 
 ?>
 
@@ -257,7 +255,7 @@ $last_slot = (int)( ( ( $WORK_DAY_END_HOUR ) * 60 ) /
 <?php
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
     echo "<br />\n<span class=\"titleweek\">(" .
-      translate ( 'Week' ) . ' ' . date('W', $wkstart + ONE_DAY ) . ')</span>';
+      translate( 'Week' ) . ' ' . date( 'W', $wkstart + 86400 ) . ')</span>';
   }
 ?>
 </div></div><br />
@@ -573,19 +571,10 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 </table>
 <script type="text/javascript">
 <!-- <![CDATA[
-function dblclick ( date, name, hour, minute ) {
-
- if ( ! minute )
-  minute = 0;
- if ( hour ){
-   time = "&hour=" + hour + "&minute=" + minute;
- } else {
-   time = "&duration=1440";
- }
- var url = 'edit_entry.php?date=' + date
-   + '&defusers=' + name + time;
-
- window.location.href  = url;
+function dblclick( date, name, hour, minute ) {
+ window.location.href  = 'edit_entry.php?date=' + date + '&defusers=' + name
+   + ( hour ? '&hour=' + hour + '&minute='
+     + ( minute ? minute : 0 ) : '&duration=1440' );
 }
 //]]> -->
 </script>

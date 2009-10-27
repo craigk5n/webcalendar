@@ -4,7 +4,7 @@ include_once 'includes/init.php';
 
 //check UAC
 if ( ! access_can_access_function ( ACCESS_WEEK ) || 
-  ( ! empty ( $user ) && ! access_user_calendar ( 'view', $user ) )  )
+  ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view ();
   
 load_user_layers ( ( $user != $login ) && $is_nonuser_admin ? $user : '' );
@@ -194,7 +194,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
               <td' . $class;
         if ( $can_add )
           $eventsStr .= " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
-        $eventsStr .=  '>' . $save_hour_arr[$d][$i] . '</td>';
+
+        $eventsStr .= '>' . $save_hour_arr[$d][$i] . '</td>';
       }
 
       $rowspan_day[$d]--;
@@ -208,7 +209,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         $eventsStr .= ( $rowspan_day[$d] > 1
           ? ' rowspan="' . $rowspan_day[$d]  .'"': '' )
-         . '>' .  $save_hour_arr[$d][$i];
+         . '>' . $save_hour_arr[$d][$i];
       }
       $eventsStr .= '</td>';
     }

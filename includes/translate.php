@@ -269,7 +269,7 @@ function get_browser_language ( $pref = false ) {
   else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0, $cnt = count ( $langs ); $i < $cnt; $i++ ) {
-      $l = strtolower( trim( preg_replace( '/;.*/', '', $langs[$i] ) ) );;
+      $l = strtolower( trim( preg_replace( '/;.*/', '', $langs[$i] ) ) );
 
       if ( ! empty( $browser_languages[$l] ) )
         return $browser_languages[$l];

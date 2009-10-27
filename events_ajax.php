@@ -123,7 +123,7 @@ if ( $action == 'get' ) {
       $date = $i + ( $j * 86400 + 43200 );
       $dateYmd = date ( 'Ymd', $date );
       $myEvents = get_entries ( $dateYmd, $get_unapproved );
-      $myRepEvents =  get_repeating_entries ( $user, $dateYmd );
+      $myRepEvents = get_repeating_entries( $user, $dateYmd );
       $ev = combine_and_sort_events ( $myEvents, $myRepEvents );
       setLocalTimes ( $ev );
       setCategories ( $ev );
@@ -192,7 +192,7 @@ if ( $action == 'get' ) {
     ajax_send_error ( translate('Unknown error.') );
   }
 } else if ( $action == 'addevent' ) {
-  // This is a simple add event function.  It will be added as
+  // This is a simple add event function. It will be added as
   // an untimed event, so we don't need to check for conflicts.
   $date = getPostValue ( 'date' );
   $cat_id = getPostValue ( 'cat_id' );
@@ -241,7 +241,7 @@ if ( $action == 'get' ) {
 }
 
 // For each event in our list, also set the local time for the current
-// user.  This way, the client-side javascript will not need to worry
+// user. This way, the client-side javascript will not need to worry
 // about converting times between timezones.
 function setLocalTimes ( $eventList )
 {

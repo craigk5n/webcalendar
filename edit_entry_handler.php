@@ -143,7 +143,7 @@ $description =
 
 // Don't allow certain HTML tags in description.
 // Malicious users can use meta refresh to redirect users to another
-// site (possibly a malware site).  This could be form a public submission
+// site (possibly a malware site). This could be from a public submission
 // on an event calendar, and the admin gets sent to the malware site when
 // viewing the event to approve/reject it.
 $bannedTags = array ( 'HTML', 'HEAD', 'TITLE', 'BODY',
@@ -266,7 +266,7 @@ if ( $eType == 'task' ) {
 if ( $TIMED_EVT_LEN == 'E' ) {
   //User might have entered midnight as an end time
   //if so, we need to jump to next day
-  if ( $end_hour === 0 && $end_ampm == 0  )
+  if ( $end_hour === 0 && $end_ampm == 0 )
     $day++;
   $eventstophour = $end_hour + $duration_h;
   $eventstopmin = $end_minute + $duration_m;

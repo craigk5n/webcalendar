@@ -137,7 +137,7 @@ function export_pilot_csv ( $id ) {
     // repeatEnd (time)
     // repeatFrequency (int)
     // repeatDay (int: day# or 0..6=Sun..Sat 1st, 7..13 2nd, 14..20 3rd,
-    // 21..27 4th,  28-34 last week)
+    // 21..27 4th, 28-34 last week)
     // repeatWeekdays (int: add - 1=Sun,2=Mon,4=Tue,8=Wed,16=Thu,32=Fri,64=Sat)
     // repeatWeekstart (int)
     $ext = get_cal_ent_extras ( $row[0], 'webcal_entry_repeats' );
@@ -181,7 +181,7 @@ function export_pilot_csv ( $id ) {
           break;
         case 3: // monthly/weekday
           // repeatDay (0..6=Sun..Sat 1st, 7..13 2nd, 14..20 3rd,
-          // 21..27 4th,  28-34 last week)
+          // 21..27 4th, 28-34 last week)
           echo floor ( substr ( $row[3], 6, 2 ) / 7 ) * 7 + date ( 'w',
             date_to_epoch ( $row[3] ) ), ",0,0\n";
           break;

@@ -81,7 +81,7 @@ $menuExtras = array ();
 
 //Builds a new menu with submenu elements that will appear
 //in the third menu location
-$menuExtras[2] =  array ( 'menu', 'My Example', '',
+$menuExtras[2] = array( 'menu', 'My Example', '',
   array (
     array ( 'item', 'todo.png', 'New Todo', 'edit_entry.php?eType=task', ''),
     array ( 'item', 'week.png', 'View Week', 'week.php', ''),
@@ -97,6 +97,6 @@ $menuExtras[2] =  array ( 'menu', 'My Example', '',
 );
 //Builds an icon menu item without any submenu options that will appear
 //after all other menus
-$menuExtras[7] =  array ( 'item', 'home.png', '', 'http://www.home.com', '_blank' )
+$menuExtras[7] = array( 'item', 'home.png', '', 'http://www.home.com', '_blank' )
 */
 ?>

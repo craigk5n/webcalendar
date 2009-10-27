@@ -108,8 +108,8 @@ class Event {
    * @access private
    */
   var $_category;
-  /** Array of categories... not set by default.  Must be set with
-    * setCategories first.
+  /** Array of categories... not set by default.
+    * Must be set with setCategories first.
     */
   var $_categories;
   /**

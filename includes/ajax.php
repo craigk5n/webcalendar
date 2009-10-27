@@ -2,8 +2,8 @@
 /*
  * All functions related to AJAX and JSON processing.
  * We are currently using the JSON.php file found in the includes directory
- * for JSON support.  PHP before version 5.2 does not have native JSON
- * support.  So, we are using the external implementation for now.  We
+ * for JSON support. PHP before version 5.2 does not have native JSON
+ * support. So, we are using the external implementation for now. We
  * may switch to using the native PHP implementation for supported versions
  * at some time in the future.
  *
@@ -17,8 +17,8 @@
  */
 
 
-/* Send an object back to the AJAX request.  This represents a successful
- * AJAX request.  Using a common return structure for all of our AJAX
+/* Send an object back to the AJAX request. This represents a successful
+ * AJAX request. Using a common return structure for all of our AJAX
  * responses make them easier to handle in the client-side JavaScript.
  *
  * @param  string   $objectName    The name of the object we are sending
@@ -43,8 +43,8 @@ function ajax_send_object ( $objectName, $object, $sendPlainText=false ) {
   return true;
 }
 
-/* Send a objects back to the AJAX request.  This represents a successful
- * AJAX request.  Using a common return structure for all of our AJAX
+/* Send a objects back to the AJAX request. This represents a successful
+ * AJAX request. Using a common return structure for all of our AJAX
  * responses make them easier to handle in the client-side JavaScript.
  *
  * @param  array   $objects  array of objects with the object name as
@@ -94,11 +94,11 @@ function ajax_send_success ( $sendPlainText=false ) {
   return true;
 }
 
-/* Send a failure/fault back to the AJAX request.  This represents a failed
+/* Send a failure/fault back to the AJAX request. This represents a failed
  * AJAX request.
  *
  * @param  string   $errorMessage  The error message to send back to
- *        the user.  This may be displayed to the
+ *        the user. This may be displayed to the
  *        end user and should be translated into
  *        the proper user language.
  * @param  boolean $sendPlainText  (Optional) Set to true to use plain/text

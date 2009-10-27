@@ -386,7 +386,7 @@ class WebCalendar {
       ? $settings['install_password'] : md5 ( $db_login ) );
     $salt_len = strlen ( $salt );
 
-    $salt2 =  md5 ( empty ( $db_password ) ? 'oogabooga' : $db_password );
+    $salt2 = md5( empty( $db_password ) ? 'oogabooga' : $db_password );
     $salt2_len = strlen ( $salt2 );
 
     $offsets = array ();

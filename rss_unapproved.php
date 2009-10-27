@@ -5,7 +5,7 @@
  *  Generates RSS 2.0 output of unapproved events for a user.
  *
  *  Like icalclient.php, this file does not use the standard web-based
- *  user authentication.  It always uses HTTP-based user authentication
+ *  user authentication. It always uses HTTP-based user authentication
  *  since that is what RSS readers will expect.
  *
  *  For details on the RSS 2.0 specification:
@@ -95,7 +95,7 @@ $user = getGetValue ( 'user' );
 if ( $user == 'public' )
   $user = '__public__';
 // Make sure the current user has proper permissions to see unapproved
-// events for the specified user.  We're not checking to see if
+// events for the specified user. We're not checking to see if
 if ( $user != '' ) {
   if ( access_is_enabled () ) {
      if ( ! access_user_calendar ( 'approve', $user ) ) {

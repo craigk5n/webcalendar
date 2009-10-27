@@ -252,7 +252,7 @@ echo send_doctype( $appStr ) . '
 
           validform = false;
         } else {
-          validform =  true;
+          validform = true;
         }
       }
     </script>

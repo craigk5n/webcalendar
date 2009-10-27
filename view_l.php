@@ -29,7 +29,7 @@ view_init ( $id );
 
 $error = $printerStr = $unapprovedStr = '';
 if ( empty ( $friendly ) ) {
-  $unapprovedStr = display_unapproved_events (  $is_assistant || $is_nonuser_admin
+  $unapprovedStr = display_unapproved_events( $is_assistant || $is_nonuser_admin
    ? $user : $login );
   $printerStr = generate_printer_friendly ( 'month.php' );
 }

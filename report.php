@@ -119,7 +119,7 @@ function event_to_text ( $event, $date ) {
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       $str = str_replace ( '&', '&amp;', $tempDesc );
       //fix any broken special characters
-      $str =  preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str);
+      $str = preg_replace( "/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str );
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
       if ( strstr ( $description_str, '<' ) && strstr ( $description_str, '>' ) ) {
         // Found some HTML.
@@ -361,12 +361,12 @@ if ( $report_time_range >= 0 && $report_time_range < 10 ) {
 if ( $report_time_range > 9 && $report_time_range < 20 ) {
   $week_offset = 11 - $report_time_range + $offset;
   $start_date = $wkstart + ( $week_offset * 604800 );
-  $end_date = $start_date + ( 86400 * 6 );
+  $end_date = $start_date + 518400;
 } else
 if ( $report_time_range > 19 && $report_time_range < 30 ) {
   $week_offset = 21 - $report_time_range + $offset;
   $start_date = $wkstart + ( $week_offset * 604800 );
-  $end_date = $start_date + ( 86400 * 13 );
+  $end_date = $start_date + 1123200;
 } else
 if ( $report_time_range > 29 && $report_time_range < 40 ) {
   $thismonth = $datem;

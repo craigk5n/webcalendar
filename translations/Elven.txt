@@ -5,7 +5,7 @@
 # http://www.grey-company.org/Circle/language/search/Wordsearch.cgi?Language=Elven
 #
 # Note:  This is a 'graphical fantasy language' and is much better with a
-# special font installed on your personal computer.  You can find one at:
+# special font installed on your personal computer. You can find one at:
 #
 # Writing with Elvish Fonts, http://www.sci.fi/~alboin/tengwartutorial.htm
 #

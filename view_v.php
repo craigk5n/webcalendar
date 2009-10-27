@@ -36,7 +36,7 @@ $prevdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear 
 
 $wkstart = get_weekday_before( $thisyear, $thismonth, $thisday + 1 );
 $wkend = bump_local_timestamp( $wkstart, 0, 0, 0, 0,
-	( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ), 0 ) - 1 ;
+  ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ), 0 ) - 1;
 $thisdate = date( 'Ymd', $wkstart );
 
 $nextStr = translate ( 'Next' );
@@ -86,7 +86,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quicker access */
   $re_save[$i] = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   /* Pre-load the non-repeating events for quicker access
-     subtracting ONE_WEEK to allow cross-dat events to display*/
+     subtracting ONE_WEEK to allow cross-day events to display. */
   $e_save[$i] = read_events ( $viewusers[$i], $wkstart - 604800, $wkend );
 }
 

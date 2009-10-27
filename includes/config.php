@@ -200,7 +200,7 @@ function do_config( $fileLoc ) {
     $settings['mode'] = 'prod';
 
   $run_mode = ( preg_match( '/(dev)/i', $settings['mode'] ) ? 'dev' : 'prod' );
-  $phpdbiVerbose = ( $run_mode == 'dev' ) ;
+  $phpdbiVerbose = ( $run_mode == 'dev' );
   $single_user = preg_match( '/(1|yes|true|on)/i',
     $settings['single_user'] ) ? 'Y' : 'N';
 

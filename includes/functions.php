@@ -143,23 +143,23 @@ function add_duration ( $time, $duration ) {
 /**
  * Bump UNIX local timestamp with the given duration.
  *
- * param int $ts		input timestamp
- * param int $hour		hour duration
- * param int $minute		minute duration
- * param int $second		second duration
- * param int $month		month duration
- * param int $day		day duration
- * param int $year		year duration
+ * param int $ts      input timestamp
+ * param int $hour    hour duration
+ * param int $minute  minute duration
+ * param int $second  second duration
+ * param int $month   month duration
+ * param int $day     day duration
+ * param int $year    year duration
  *
  * This function overcomes problems due to daylight saving change dates;
  *  it is based on the fact that function mktime() accepts out of range data.
  */
 
 function bump_local_timestamp( $ts, $hour = 0, $minute = 0, $second = 0,
-	$month = 0, $day = 0, $year = 0 ) {
-	return mktime( date( 'G', $ts ) + $hour, date( 'i', $ts ) + $minute,
-		date( 's', $ts ) + $second, date( 'n', $ts ) + $month,
-		date( 'j', $ts ) + $day, date( 'Y', $ts ) + $year);
+  $month = 0, $day = 0, $year = 0 ) {
+  return mktime( date( 'G', $ts ) + $hour, date( 'i', $ts ) + $minute,
+    date( 's', $ts ) + $second, date( 'n', $ts ) + $month,
+    date( 'j', $ts ) + $day, date( 'Y', $ts ) + $year );
 }
 
 /* Builds the HTML for the event label.
@@ -816,7 +816,7 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
  *
  * @return int  Timestamp representing, in UTC or LOCAL time.
  */
-function date_to_epoch ( $d , $gmt=true) {
+function date_to_epoch( $d, $gmt = true ) {
   if ( $d == 0 )
     return 0;
 
@@ -855,7 +855,7 @@ function date_to_epoch ( $d , $gmt=true) {
  * @param bool    $short_months  Should the abbreviated month names be used
  *                               instead of the full month names?
  * @param bool   $forceTranslate Check to see if there is a translation for
- *                    the specified data format.  If there is, then use
+ *                    the specified data format. If there is, then use
  *                    the translated format from the language file, but
  *                    only if $DATE_FORMAT is language-defined.
  *
@@ -995,7 +995,8 @@ function display_activity_log ( $cal_type, $cal_text = '', $break = '<br/>&nbsp;
   else
     $ret = '???';
   //fix any broken special characters
-  $cal_text =  preg_replace("/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", htmlentities ( $cal_text ));
+  $cal_text = preg_replace( "/&amp;(#[0-9]+|[a-z]+);/i", "&$1;",
+    htmlentities( $cal_text ) );
   return $ret
    . ( empty ( $cal_text ) ? '' : $break . $cal_text );
 }
@@ -1082,7 +1083,7 @@ function display_month ( $thismonth, $thisyear, $demo = false,
     $ret .= '
       <tr>';
     if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-      $tmp = date ( 'W', $i + 86400 * 2 );
+      $tmp = date( 'W', $i + 172800 );
       $ret .= '
         <td class="weekcell"><a title="' . $weekStr . ' ' . $tmp . '" href="'
        . ( $demo ? '' : 'week.php?date=' . date ( 'Ymd', $i + 86400 ) )
@@ -2110,7 +2111,8 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
             $td = $cdate + ( $i * 86400 );
             $tdDay = date ( 'w', $td );
             //echo $Count . '  ' . $n . '  ' .$WkstDay .'<br>';
-            if ( in_array ( $byday_names[$tdDay], $byday  ) && $td >= $date && $td <= $realend && $n < $Count)
+            if ( in_array( $byday_names[$tdDay], $byday ) && $td >= $date
+                && $td <= $realend && $n < $Count )
               $ret[$n++] = $td;
           }
         } else {
@@ -2496,10 +2498,10 @@ function get_entries ( $date, $get_unapproved = true ) {
  * @return array  Array of Groups.
  */
 function get_groups ( $user ) {
-  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS ,
+  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS,
   $is_nonuser_admin, $is_assistant, $login;
 
-  if ( empty ( $GROUPS_ENABLED  ) || $GROUPS_ENABLED != 'Y' )
+  if ( empty( $GROUPS_ENABLED ) || $GROUPS_ENABLED != 'Y' )
     return false;
 
   $owner = ( $is_nonuser_admin || $is_assistant ? $user : $login );
@@ -3975,7 +3977,7 @@ function load_template ( $login, $type ) {
   }
 
 
-  // Strip leading and trailing white spaces in file name cnadidate
+  // Strip leading and trailing white space in file name candidate.
   $file = preg_replace ('/^\s*/', '', $ret);
   $file = preg_replace ('/\s*$/', '', $file);
 
@@ -4312,7 +4314,7 @@ function nonuser_load_variables ( $login, $prefix ) {
 function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   global $categories, $login, $user, $CATEGORIES_ENABLED;
 
-  if ( empty ( $CATEGORIES_ENABLED  ) || $CATEGORIES_ENABLED == 'N' )
+  if ( empty( $CATEGORIES_ENABLED ) || $CATEGORIES_ENABLED == 'N' )
     return false;
 
   $catStr = translate ( 'Category' );
@@ -4622,7 +4624,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
         if ( $can_add )
           $ret .=
             " ondblclick=\"dblclick_add('$date','$user',$time_h,$time_m)\"";
-        $ret .=  '>&nbsp;';
+        $ret .= '>&nbsp;';
       } else {
         $rowspan = ( empty ( $rowspan_arr[$i] ) ? '' : $rowspan_arr[$i] );
 
@@ -5191,12 +5193,12 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           // TODO get this to work
           // C heck if this event id has been cached.
           // $file = '';
-          // if ( ! empty ( $db_connection_info['cachedir'] ) ){
+          // if ( ! empty( $db_connection_info['cachedir'] ) ) {
           // $hash = md5 ( $result[$i]->getId () . $until . $jump );
           // $file = $db_connection_info['cachedir'] . '/' . $hash . '.dat';
           // }
           // if ( file_exists ( $file ) ) {
-          // $dates =  unserialize ( file_get_contents ( $file ) );
+          // $dates = unserialize( file_get_contents( $file ) );
           // } else {
           $dates = get_all_dates ( $date,
             $result[$i]->getRepeatType (), $result[$i]->getRepeatFrequency (),
@@ -5226,7 +5228,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
             for ( $j = 0, $parentRepeatscnt = count ( $parentRepeats );
               $j < $parentRepeatscnt; $j++ ) {
               $cloneRepeats[] = gmdate ( 'Ymd',
-                date_to_epoch ( $parentRepeats[$j] ) + ONE_DAY );
+                date_to_epoch( $parentRepeats[$j] ) + 86400 );
             }
             $result[$i]->addRepeatAllDates ( $cloneRepeats );
           }

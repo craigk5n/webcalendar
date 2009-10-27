@@ -47,8 +47,8 @@ function showResponse(originalRequest) {
     //this causes jacascript errors in Firefox, but these can be ignored
     alert (text);
     document.prefform.nid.focus ();
-    validform =  false;
+    validform = false;
   } else {
-    validform =  true;
+    validform = true;
   }
 }

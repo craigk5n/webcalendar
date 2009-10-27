@@ -264,7 +264,8 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
   $sql = 'UPDATE webcal_user SET cal_lastname = ?,
     cal_firstname = ?, cal_email = ?,
     cal_is_admin = ? WHERE cal_login = ?';
-  if ( ! dbi_execute ( $sql, array ( $ulastname, $ufirstname, $uemail, $admin, $user  ) ) ) {
+  if ( ! dbi_execute( $sql,
+      array( $ulastname, $ufirstname, $uemail, $admin, $user ) ) ) {
     $error = db_error ();
     return false;
   }
@@ -326,19 +327,19 @@ function user_delete_user ( $user ) {
     dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
       array ( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
-      array ( $delete_em[$i] )  );
+      array( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
-      array ( $delete_em[$i] )  );
+      array( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
-      array ( $delete_em[$i] )  );
+      array( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
-      array ( $delete_em[$i] )  );
+      array( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?',
-      array ( $delete_em[$i] )  );
+      array( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
-      array ( $delete_em[$i] )  );
+      array( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
-      array ( $delete_em[$i] )  );
+      array( $delete_em[$i] ) );
   }
 
   // Delete user participation from events

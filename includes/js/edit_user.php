@@ -70,8 +70,8 @@ function showResponse ( originalRequest ) {
     if ( formfield == 'uemail' )
       document.edituser.uemail.focus ();
 
-    validform =  false;
+    validform = false;
   } else {
-    validform =  true;
+    validform = true;
   }
 }
