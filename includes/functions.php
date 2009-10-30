@@ -4462,7 +4462,9 @@ function print_date_entries ( $date, $user, $ssi = false,
   $ret = '';
 
   $can_add = ( $readonly == 'N' || $is_admin );
-  if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y' && $login == '__public__' )
+
+  if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y'
+      && $login == '__public__' )
     $can_add = false;
 
   if ( $readonly == 'Y' )
@@ -4480,7 +4482,7 @@ function print_date_entries ( $date, $user, $ssi = false,
    */
     $userCatStr = ( strcmp ( $user, $login ) ? 'user=' . $user . '&amp;' : '' )
      . ( empty ( $cat_id ) ? '' : 'cat_id=' . $cat_id . '&amp;' );
-    $tmp = ( ! empty ( $moons[$date] ) ? $moons[$date] : '' );
+    $tmp = ( empty( $moons[$date] ) ? '' : $moons[$date] );
     $moon_title = ( empty ( $tmp ) ? '' : translate ( ucfirst ( $tmp )
      . ( strpos ( 'fullnew', $tmp ) !== false ? '' : ' Quarter' ) . ' Moon' ) );
     $ret = ( $can_add ? '

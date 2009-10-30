@@ -634,7 +634,6 @@ if( empty( $x ) ) {
     $settings['db_login']         = 'webcalendar';
     $settings['db_password']      = 'webcal01';
     $settings['db_persistent']    =
-    $settings['ignore_user_case'] =
     $settings['readonly']         =
     $settings['single_user']      =
     $settings['use_http_auth']    = 'false';
@@ -667,7 +666,6 @@ if( empty( $x ) ) {
 $y = getPostValue( 'app_settings' );
 if( ! empty( $y ) ) {
   $formUserStr                  = getPostValue( 'form_user_inc' );
-  $settings['ignore_user_case'] = getPostValue( 'form_ignore_user_case' );
   $settings['mode']             = getPostValue( 'form_mode' );
   $settings['readonly']         = getPostValue( 'form_readonly' );
   $settings['single_user']      = $settings['use_http_auth']= 'false';
@@ -821,10 +819,8 @@ echo '
         }
         if( form.form_user_inc.options[listid].selected ) {
           makeVisible( \'singleuser\' );
-          makeInvisible( \'usercase\' );
         } else {
           makeInvisible( \'singleuser\' );
-          makeVisible( \'usercase\' );
         }
       }
       function db_type_handler() {
@@ -1554,19 +1550,6 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <td><input name="form_single_user_login" size="20" value="'
    . ( empty( $settings['single_user_login'] )
      ? '' : $settings['single_user_login'] ) . '" /></td>
-            </tr>
-            <tr id="usercase">
-              <td class="prompt">' . translate( 'Case-insensitive user name' )
-      . '</td>
-              <td>
-                <input name="form_ignore_user_case" value="true" type="radio"'
-      . ( $settings['ignore_user_case'] == 'true' ? $checked : '' )
-      . ' />' . $yesStr
-      . '&nbsp;&nbsp;&nbsp;&nbsp;<input name="form_ignore_user_case"'
-      . ' value="false" type="radio"'
-      . ( $settings['ignore_user_case'] != 'true' ? $checked : '' ) . ' />'
-      . $noStr . '
-              </td>
             </tr>
             <tr>
               <td class="prompt">' . translate( 'Read-Only' ) . ':</td>

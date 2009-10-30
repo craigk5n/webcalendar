@@ -72,11 +72,6 @@ use_http_auth: false
 
 user_inc: user.php
 
-# Set the following to true if the user name authentication is not
-# case-sensitive. This results in translating all authenticated user names
-# to lowercase.
-ignore_user_case: false
-
 # end */
 
 ?>

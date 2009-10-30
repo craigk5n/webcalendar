@@ -149,23 +149,19 @@ class WebCalendar {
       load_user_preferences ();
 
     // Error-check some commonly used form variable names.
-    $cat_id = getValue ( 'cat_id', '[\-0-9]+' );
-    $date = getValue ( 'date', '[0-9]+' );
-    $friendly = getValue ( 'friendly', '[01]' );
-    $override = getValue ( 'override', '[01]' );
-    $hour = getValue ( 'hour', '[0-9]+' );
-    $id = getValue ( 'id', '[0-9]+', true );
-    $minute = getValue ( 'minute', '[0-9]+' );
-    $month = getValue ( 'month', '[0-9]+' );
-    $user = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
-    $year = getValue ( 'year', '[0-9]+' );
+    $cat_id  = getValue ( 'cat_id', '[\-0-9]+' );
+    $date    = getValue ( 'date', '[0-9]+' );
+    $friendly= getValue ( 'friendly', '[01]' );
+    $override= getValue ( 'override', '[01]' );
+    $hour    = getValue ( 'hour', '[0-9]+' );
+    $id      = getValue ( 'id', '[0-9]+', true );
+    $minute  = getValue ( 'minute', '[0-9]+' );
+    $month   = getValue ( 'month', '[0-9]+' );
+    $user    = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
+    $year    = getValue ( 'year', '[0-9]+' );
+
     if ( empty ( $PUBLIC_ACCESS ) )
       $PUBLIC_ACCESS = 'N';
-
-    if ( $ignore_user_case ) {
-      $login = strtolower( $login );
-      $user = strtolower( $user );
-    }
 
     // Initialize access settings ($user_access string)
     // and make sure user is allowed to view the current page.
@@ -567,11 +563,6 @@ class WebCalendar {
         }
       }
     }
-
-    // If login is not case-sensitive, map it to lowercase now.
-    if ( $ignore_user_case )
-     $login = strtolower( $login );
-  }
 
   /* Initializations from includes/connect.php.
    *

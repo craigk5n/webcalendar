@@ -103,10 +103,6 @@ $allusercnt = count ( $allusers );
 for ( $i = 0; $i < $allusercnt; $i++ ) {
   $names[$allusers[$i]['cal_login']] = $allusers[$i]['cal_fullname'];
   $emails[$allusers[$i]['cal_login']] = $allusers[$i]['cal_email'];
-
-  if ( $ignore_user_case )
-    $names[$allusers[$i]['cal_login']] =
-      strtolower( $names[$allusers[$i]['cal_login']] );
 }
 
 $attachics = $htmlmail = $languages = $noemail = $t_format = $tz = array ();
@@ -275,9 +271,7 @@ function send_reminder ( $id, $event_date ) {
 
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $participants[$num_participants++] =
-        ( $ignore_user_case ? strtolower( $row[0] ) : $row[0] );
-
+      $participants[$num_participants++] = $row[0];
       $percentage[$row[0]] = $row[1];
     }
   }
