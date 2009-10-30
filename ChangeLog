@@ -4,6 +4,8 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 30-Oct-09 bb I had changed things to v1.2.0 because that's what most files showed.
+   But, I think we're really working on v1.3.0 in HEAD.
  - 30-Oct-09 bb Back out Patch [ 1425442 ] case-insensitive user names
    Incomplete. Pre-existing usernames with Uppercase are not retrieved correctly.
  - 21-Oct-09 bb Updating includes/config.php and the SQL files to V1.2.0

@@ -85,7 +85,7 @@ function do_config( $fileLoc ) {
   $single_user, $single_user_login, $TROUBLE_URL, $user_inc, $use_http_auth;
 
   // When changing PROGRAM VERSION, also change it in install/default_config.php
-  $PROGRAM_VERSION = 'v1.2.0';
+  $PROGRAM_VERSION = 'v1.3.0';
   $PROGRAM_DATE = '28 Sep 2008';
 
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
