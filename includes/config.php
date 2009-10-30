@@ -214,10 +214,6 @@ function do_config( $fileLoc ) {
   $use_http_auth = ( preg_match( '/(1|yes|true|on)/i',
       $settings['use_http_auth'] ) ? true : false );
 
-  // Whether user name is case-insensitive.
-  $ignore_user_case = isset( $settings['ignore_user_case'] )
-    && preg_match( '/(1|yes|true|on)/i', $settings['ignore_user_case'] );
-
   // Type of user authentication.
   $user_inc = $settings['user_inc'];
 
