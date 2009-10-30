@@ -563,7 +563,7 @@ class WebCalendar {
         }
       }
     }
-
+  }
   /* Initializations from includes/connect.php.
    *
    * @access private
