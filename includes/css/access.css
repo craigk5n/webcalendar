@@ -1,0 +1,12 @@
+#accessform {
+  margin-top:.25em;
+  border:.0625em solid #888;
+  padding:.25em;
+}
+#accessform table {
+  border:0;
+}
+#accessform table td {
+  margin:.625em;
+  vertical-align:top;
+}
