@@ -1,11 +1,11 @@
 <?php
-/* $Id$ */
+// $Id$
 include_once 'includes/init.php';
 
 $credits = getPostValue( 'Credits' );
 static $data;
 
-if ( empty( $data ) ) {
+if( empty( $data ) ) {
   //  Read in and format AUTHORS file.
   if( $fd = @fopen( 'AUTHORS', 'r' ) ) {
     while( ! feof( $fd ) && empty( $error ) ) {
@@ -26,8 +26,10 @@ print_header( '', ( empty( $credits ) ? '' : '<script type="text/javascript">
         startScroll( \'creds\', \'' . $data . '\' );
       }
     </script>
-    <script type="text/javascript" src="includes/js/v_h_scrolls.js"></script>
-' ) . '<link type="text/css" href="includes/about.css" rel="stylesheet" />',
+    <script type="text/javascript" src="includes/js/v_h_scrolls.js?'
+  . filemtime( 'includes/js/v_h_scrolls.js' ) . '"></script>
+' ) . '<link type="text/css" href="includes/css/about.css?'
+  . filemtime( 'includes/css/about.css' ) . '" rel="stylesheet" />',
   '', true, false, true );
 echo '    <div id="creds">' . ( empty( $credits ) ? '
       <a title="' . $PROGRAM_NAME . '" href="' . $PROGRAM_URL
