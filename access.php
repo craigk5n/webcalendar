@@ -158,8 +158,10 @@ if( ! empty( $otheruser ) ) {
 ob_start();
 
 print_header( '',
-  '<script type="text/javascript" src="includes/js/access.js"></script>
-    <link type="text/css" href="includes/css/access.css" rel="stylesheet" />',
+  '<script type="text/javascript" src="includes/js/access.js?'
+ . filemtime( 'includes/js/access.js' ) . '"></script>
+    <link type="text/css" href="includes/css/access.css?'
+ . filemtime( 'includes/css/access.css' ) . '" rel="stylesheet" />',
   ( ! empty( $op['time'] ) && $op['time'] == 'Y'
     ? 'onload="enableAll( true );"' : '' ) );
 
@@ -176,7 +178,7 @@ if( $is_admin ) {
   echo '
     <h2>' . translate( 'User Access Control' )
    . ( empty( $user_fullname ) ? '' : ': ' . $user_fullname ) . '</h2>
-    ' . display_admin_link ( false ) . '
+    ' . display_admin_link( false ) . '
     <form action="access.php" method="post" name="SelectUser">
       <select name="guser" onchange="document.SelectUser.submit()">'
   // Add a DEFAULT CONFIGURATION to be used as a mask.
