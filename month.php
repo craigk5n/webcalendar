@@ -87,10 +87,11 @@ if ( empty ( $friendly ) ) {
 $trailerStr = print_trailer();
 
 $HeadX = generate_refresh_meta()
-  . '<script type="text/javascript" src="includes/js/weekHover.js"></script>';
+  . '<script type="text/javascript" src="includes/js/weekHover.js?'
+  . filemtime( 'includes/js/weekHover.js' ) . '"></script>';
 
-print_header (
-  array ( 'js/popups.php/true', 'js/visible.php', 'js/dblclick_add.js/true' ),
+print_header(
+  array( 'js/popups.js/true', 'js/visible.php', 'js/dblclick_add.js/true' ),
   $HeadX, '', false, false, false, false );
 
 echo <<<EOT

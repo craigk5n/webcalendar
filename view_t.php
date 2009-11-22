@@ -286,7 +286,7 @@ if ( $viewusercnt == 0 )
 
 $printerStr = generate_printer_friendly ( 'view_t.php' );
 
-print_header ( array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
+print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 
 if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();

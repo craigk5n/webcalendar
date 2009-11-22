@@ -45,7 +45,7 @@ $thisdate = date ( 'Ymd', $startdate );
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-print_header ( array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
+print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 
 echo '
     <div style="width:99%;">

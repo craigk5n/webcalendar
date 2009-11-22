@@ -137,13 +137,13 @@ function print_header ( $includes = '', $HeadX = '', $BodyX = '',
   // Any other includes?
   if ( is_array ( $includes ) ) {
     foreach ( $includes as $inc ) {
-      if ( substr ( $inc, 0, 13 ) == 'js/popups.php' && !
-          empty ( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
-        // Don't load popups.php javascript if DISABLE_POPUPS.
+      if ( substr ( $inc, 0, 13 ) == 'js/popups.js'
+          && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
+        // Don't load popups.js if DISABLE_POPUPS.
       } else
         $ret .= '
-    <script type="text/javascript" src="js_cacher.php?inc='
-         . $inc . '"></script>';
+    <script type="text/javascript" src="js_cacher.php?inc=' . $inc
+     . '?' . filemtime( $inc ) . '"></script>';
     }
   }
   // Do we need anything else inside the header tag?

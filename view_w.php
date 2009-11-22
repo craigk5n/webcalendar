@@ -41,7 +41,7 @@ $prevStr = translate ( 'Previous' );
 
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
-print_header ( array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
+print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );

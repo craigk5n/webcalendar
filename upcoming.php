@@ -528,11 +528,10 @@ a:hover {
 
 <?php
 if ( ! empty ( $showPopups ) && empty ( $error ) ) {
-  echo '<script type="text/javascript" src="includes/js/util.js"></script>' . "\n";
-
-  echo '<script type="text/javascript">' . "\n";
-  include_once 'includes/js/popups.php';
-  echo "</script>\n";
+  echo '<script type="text/javascript" src="includes/js/util.js?'
+   . filemtime( 'includes/js/util.js' ) . '"></script>
+    <script type="text/javascript" src="includes/js/popups.js?'
+   . filemtime( 'includes/js/popups.js' ) . '</script>';
 }
 ?>
 </head>

@@ -44,7 +44,7 @@ $prevStr = translate ( 'Previous' );
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
 ob_start();
-print_header( array( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
+print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_v.php?id=' . $id
