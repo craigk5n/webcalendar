@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * Display a month view with users side by side.
  *
@@ -78,12 +77,12 @@ if ( count ( $viewusers ) == 0 )
   $error = translate( 'No users for this view.' );
 
 if ( ! empty ( $error ) ) {
-  echo print_error ( $error ) . print_trailer ();
+  echo print_error ( $error ) . print_trailer();
   exit;
 }
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
-$e_save = $re_save = array ();
+$e_save = $re_save = array();
 $viewusercnt = count ( $viewusers );
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
@@ -180,6 +179,6 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
 
 $user = ''; // reset
 
-echo ( empty ( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer ();
+echo ( empty ( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
 
 ?>

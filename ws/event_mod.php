@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Web Service functionality to update, delete or add events.
  *
@@ -33,7 +32,7 @@ $error = '';
 require_once 'ws.php';
 
 // Initialize...
-ws_init ();
+ws_init();
 
 // header ( 'Content-type: text/xml' );
 header ( 'Content-type: text/plain' );
@@ -67,7 +66,7 @@ if ( empty ( $error ) && $PUBLIC_ACCESS == 'Y' && $user == '__public__' && !
 
 if ( empty ( $error ) && ! $is_admin && $user != $login ) {
   // Non-admin user has request to modify event on someone else's calendar.
-  if ( access_is_enabled () ) {
+  if ( access_is_enabled() ) {
     if ( ! access_user_calendar ( 'approve', $user ) )
       $error = translate ( 'Not authorized' );
   } else

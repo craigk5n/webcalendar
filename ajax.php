@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description
  * This is the handler for Ajax httpXmlRequests.
  */
@@ -14,17 +13,17 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include 'includes/access.php';
 include 'includes/validate.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-load_global_settings ();
-load_user_preferences ();
-$WebCalendar->setLanguage ();
+load_global_settings();
+load_user_preferences();
+$WebCalendar->setLanguage();
 
 $cat_id = getPostValue ( 'cat_id' );
 $name = getPostValue ( 'name' );

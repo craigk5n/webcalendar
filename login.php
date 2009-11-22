@@ -1,6 +1,5 @@
-<?php
-/* $Id$ */
-@session_start ();
+<?php // $Id$
+@session_start();
 foreach ( $_SESSION as $key => $value ) {
   $dummy[$key] = $value; // Copy to a dummy array.
 }
@@ -24,15 +23,15 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include_once 'includes/access.php';
 include 'includes/gradient.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-load_global_settings ();
+load_global_settings();
 
 // Set this true to show "no such user" or "invalid password" on login failures.
 $showLoginFailureReason = true;
@@ -48,7 +47,7 @@ if ( $REMEMBER_LAST_LOGIN == 'Y' && empty ( $login ) )
 
 load_user_preferences ( 'guest' );
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
 // Look for action=logout.
 $logout = false;
@@ -71,7 +70,7 @@ else
 
 // If Application Name is set to "Title" then get translation.
 // If not, use the Admin defined Application Name.
-$appStr = generate_application_name ();
+$appStr = generate_application_name();
 
 $login = getPostValue ( 'login' );
 $password = getPostValue ( 'password' );
@@ -88,7 +87,7 @@ if ( $single_user == 'Y' || $use_http_auth )
   do_redirect ( 'index.php' );
 else {
   if ( ! empty ( $login ) && ! empty ( $password ) && ! $logout ) {
-    if ( get_magic_quotes_gpc () ) {
+    if ( get_magic_quotes_gpc() ) {
       $login = stripslashes ( $login );
       $password = stripslashes ( $password );
     }
@@ -144,7 +143,7 @@ else {
   if ( substr ( $cookie_path, -1 ) == '/' )
     SetCookie ( 'webcalendar_session', '', 0, substr ( $cookie_path, 0, -1 ) );
 }
-ob_start ();
+ob_start();
 echo send_doctype ( $appStr ) . ( $logout ? '' : '
     <script type="text/javascript">
     // Error check login/password.
@@ -156,9 +155,9 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
         }
         return true;
       }
-      function myOnLoad () {
-        document.login_form.login.focus ();' . ( empty ( $login ) ? '' : '
-        document.login_form.login.select ();' ) . ( empty ( $error ) ? '' : '
+      function myOnLoad() {
+        document.login_form.login.focus();' . ( empty ( $login ) ? '' : '
+        document.login_form.login.select();' ) . ( empty ( $error ) ? '' : '
         alert ( \'' . $error . '\' );' ) . '
       }
     </script>' ) . '
@@ -220,7 +219,7 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
     <a class="nav" href="index.php">' . translate ( 'Access public calendar' )
    . '</a><br />' : '' );
 
-$nulist = get_nonuser_cals ();
+$nulist = get_nonuser_cals();
 $accessStr = translate ( 'Access XXX calendar' );
 
 for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
@@ -238,7 +237,7 @@ echo ( $DEMO_MODE == 'Y'
 if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
   // We can limit what domain is allowed to self register.
   // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
-  $valid_ip = validate_domain ();
+  $valid_ip = validate_domain();
 
   if ( ! empty ( $valid_ip ) )
     echo '

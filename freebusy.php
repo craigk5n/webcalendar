@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * Creates the iCal free/busy schedule a single user.
  * Free/busy schedules are specified in the iCal RFC 2445.
@@ -53,14 +52,14 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include 'includes/validate.php';
 include 'includes/site_extras.php';
 include 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
 // Calculate username.
 // If using http_auth, use those credentials.
@@ -77,21 +76,21 @@ if ( empty ( $user ) ) {
 if ( $user == 'public' )
   $user = '__public__';
 
-load_global_settings ();
+load_global_settings();
 
 // Load user preferences (to get the DISPLAY_UNAPPROVED and
 // FREEBUSY_ENABLED pref for this user).
 $login = $user;
-load_user_preferences ();
+load_user_preferences();
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
 // Load user name, etc.
 user_load_variables ( $user, 'publish_' );
 
 if ( empty ( $FREEBUSY_ENABLED ) || $FREEBUSY_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo 'user=' . $user . "\n" . print_not_auth ();
+  echo 'user=' . $user . "\n" . print_not_auth();
   exit;
 }
 
@@ -123,14 +122,14 @@ for ( $d = $startdate; $d <= $enddate; $d += 86400 ) {
   $ev = get_entries ( $dYmd, $get_unapproved );
   $evcnt = count ( $ev );
   for ( $i = 0; $i < $evcnt; $i++ ) {
-    $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration (),
-      $ev[$i]->getTime (), 'ical' );
+    $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration(),
+      $ev[$i]->getTime(), 'ical' );
   }
   $revents = get_repeating_entries ( $user, $dYmd, $get_unapproved );
   $recnt = count ( $revents );
   for ( $i = 0; $i < $recnt; $i++ ) {
-    $event_text .= fb_export_time ( $dYmd, $revents[$i]->getDuration (),
-      $revents[$i]->getTime (), 'ical' );
+    $event_text .= fb_export_time ( $dYmd, $revents[$i]->getDuration(),
+      $revents[$i]->getTime(), 'ical' );
   }
 }
 
@@ -139,7 +138,7 @@ header ( 'Content-Disposition: attachment; filename="' . $login . '.ifb"' );
 echo 'BEGIN:VCALENDAR' . "\r\n"
  . 'X-WR-CALNAME;VALUE=TEXT:' . str_replace ( ',', '\\,',
   ( empty ( $publish_fullname ) ? $user : translate ( $publish_fullname ) ) ) . "\r\n"
- . generate_prodid ()
+ . generate_prodid()
  . 'VERSION:2.0' . "\r\n"
  . 'METHOD:PUBLISH' . "\r\n"
  . 'BEGIN:VFREEBUSY' . "\r\n"

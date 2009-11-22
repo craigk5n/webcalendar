@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {
@@ -14,7 +13,7 @@ if ( $user != $login )
 print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
   '<script type="text/javascript" src="includes/js/assistant_edit.js"></script>' );
 
-ob_start ();
+ob_start();
 
 echo '
     <form action="assistant_edit_handler.php" method="post" '
@@ -31,7 +30,7 @@ if ( $is_nonuser_admin ) {
   echo translate ( 'Your assistants' );
 
 echo '</h2>
-      ' . display_admin_link () . '
+      ' . display_admin_link() . '
       <table summary="">
         <tr>
           <td class="aligntop"><label for="users">'
@@ -40,7 +39,7 @@ echo '</h2>
             <select name="users[]" id="users" size="10" multiple="multiple">';
 
 // Get list of all users.
-$users = get_my_users ();
+$users = get_my_users();
 // Get list of users for this view.
 $res = dbi_execute ( 'SELECT cal_boss, cal_assistant FROM webcal_asst
    WHERE cal_boss = ?', array ( $user ) );
@@ -77,8 +76,8 @@ echo '
     </form>
     ';
 
-ob_end_flush ();
+ob_end_flush();
 
-echo print_trailer ();
+echo print_trailer();
 
 ?>

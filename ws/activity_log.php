@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Web Service functionality to get the activity log.
  *  Uses REST-style Web Services.
@@ -26,7 +25,7 @@ $MAX_ENTRIES = 1000; // Do not allow a client to ask for more than this.
 require_once 'ws.php';
 
 // Initialize...
-ws_init ();
+ws_init();
 
 $num = getGetValue ( 'num' );
 $startid = getGetValue ( 'startid' );
@@ -53,7 +52,7 @@ if ( $login == '__public__' && $login != $user ) {
 }
 
 // TODO: Move this SQL along with the SQL in activity_log.php to a shared function.
-$sql_params = array ();
+$sql_params = array();
 $sql = 'SELECT wel.cal_login, wel.cal_user_cal, wel.cal_type, wel.cal_date,
   wel.cal_time, we.cal_name, wel.cal_log_id
   FROM webcal_entry_log wel, webcal_entry we WHERE wel.cal_entry_id = we.cal_id ';
@@ -92,7 +91,7 @@ if ( $res ) {
   dbi_free_result ( $res );
 } else
   $out .= '
-  <error>' . ws_escape_xml ( dbi_error () ) . '</error>';
+  <error>' . ws_escape_xml ( dbi_error() ) . '</error>';
 
 $out .= '
 </activitylog>

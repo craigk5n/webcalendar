@@ -34,7 +34,9 @@ class Event {
    * @access private
    */
   var $_date;
-  /** The event's date in the local user's timezone */
+  /**
+   * The event's date in the local user's timezone
+   */
   var $_localDate;
   /**
    * The event's time (in HHMMSS format).
@@ -42,7 +44,9 @@ class Event {
    * @access private
    */
   var $_time;
-  /** The event's modified date (in YYYYMMDD format). */
+  /**
+   * The event's modified date (in YYYYMMDD format).
+   */
   var $_localTime;
   /**
    * The event's modified date (in YYYYMMDD format).
@@ -108,9 +112,10 @@ class Event {
    * @access private
    */
   var $_category;
-  /** Array of categories... not set by default.
-    * Must be set with setCategories first.
-    */
+  /**
+   *   Array of categories... not set by default.
+   * Must be set with setCategories first.
+   */
   var $_categories;
   /**
    * The event's owner.
@@ -273,7 +278,7 @@ class Event {
    *
    * @access public
    */
-  function getName () {
+  function getName() {
     return $this->_name;
   }
 
@@ -284,7 +289,7 @@ class Event {
    *
    * @access public
    */
-  function getDescription () {
+  function getDescription() {
     return $this->_description;
   }
 
@@ -295,11 +300,11 @@ class Event {
    *
    * @access public
    */
-  function getDate () {
+  function getDate() {
     return $this->_date;
   }
 
-  function getDateTimeAdjusted () {
+  function getDateTimeAdjusted() {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
@@ -320,7 +325,7 @@ class Event {
    *
    * @access public
    */
-  function getTime () {
+  function getTime() {
     return $this->_time;
   }
 
@@ -331,7 +336,7 @@ class Event {
    *
    * @access public
    */
-  function getModDate () {
+  function getModDate() {
     return $this->_moddate;
   }
 
@@ -342,7 +347,7 @@ class Event {
    *
    * @access public
    */
-  function getModTime () {
+  function getModTime() {
     return $this->_modtime;
   }
 
@@ -353,7 +358,7 @@ class Event {
    *
    * @access public
    */
-  function getDueTime () {
+  function getDueTime() {
       return $this->_dueTime;
   }
 
@@ -364,7 +369,7 @@ class Event {
    *
    * @access public
    */
-  function getDueDate () {
+  function getDueDate() {
       return $this->_dueDate;
   }
 
@@ -375,7 +380,7 @@ class Event {
    *
    * @access public
    */
-  function getDueDateTimeTS () {
+  function getDueDateTimeTS() {
     $year = substr ( $this->_dueDate, 0, 4 );
     $month = substr ( $this->_dueDate, 4, 2 );
     $day = substr ( $this->_dueDate, 6, 2 );
@@ -396,7 +401,7 @@ class Event {
    *
    * @access public
    */
-  function getDateTime () {
+  function getDateTime() {
     $time = ($this->_time > 0? $this->_time: 0);
     $this->_DateTime = $this->_date . sprintf ( "%06d", $time );
     return $this->_DateTime;
@@ -409,7 +414,7 @@ class Event {
    *
    * @access public
    */
-  function getDateTimeTS () {
+  function getDateTimeTS() {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
@@ -431,7 +436,7 @@ class Event {
    *
    * @access public
    */
-  function getID () {
+  function getID() {
     return $this->_id;
   }
 
@@ -442,7 +447,7 @@ class Event {
    *
    * @access public
    */
-  function getExtForID () {
+  function getExtForID() {
     return $this->_extForID;
   }
 
@@ -453,7 +458,7 @@ class Event {
    *
    * @access public
    */
-  function getPriority () {
+  function getPriority() {
     return $this->_priority;
   }
 
@@ -464,7 +469,7 @@ class Event {
    *
    * @access public
    */
-  function getAccess () {
+  function getAccess() {
     return $this->_access;
   }
 
@@ -475,7 +480,7 @@ class Event {
    *
    * @access public
    */
-  function getDuration () {
+  function getDuration() {
     return $this->_duration;
   }
 
@@ -486,7 +491,7 @@ class Event {
    *
    * @access public
    */
-  function getStatus () {
+  function getStatus() {
     return $this->_status;
   }
 
@@ -497,7 +502,7 @@ class Event {
    *
    * @access public
    */
-  function getOwner () {
+  function getOwner() {
     return $this->_owner;
   }
 
@@ -508,7 +513,7 @@ class Event {
    *
    * @access public
    */
-  function getCategory () {
+  function getCategory() {
     return $this->_category;
   }
 
@@ -517,7 +522,7 @@ class Event {
     $this->_categories = $cats;
   }
 
-  function getCategories () {
+  function getCategories() {
     return $this->_categories;
   }
 
@@ -528,7 +533,7 @@ class Event {
    *
    * @access public
    */
-  function getLogin () {
+  function getLogin() {
     return $this->_login;
   }
 
@@ -539,7 +544,7 @@ class Event {
    *
    * @access public
    */
-  function getCalType () {
+  function getCalType() {
     return $this->_calType;
   }
 
@@ -550,7 +555,7 @@ class Event {
    *
    * @access public
    */
-  function getCalTypeName () {
+  function getCalTypeName() {
     if ( isset ( $this->_calTypeName ) )
       return $this->_calTypeName;
     if ( $this->_calType == 'E' || $this->_calType == 'M' )
@@ -569,7 +574,7 @@ class Event {
    *
    * @access public
    */
-  function getLocation () {
+  function getLocation() {
     return $this->_location;
   }
   /**
@@ -579,7 +584,7 @@ class Event {
    *
    * @access public
    */
-  function getUrl () {
+  function getUrl() {
     return $this->_url;
   }
   /**
@@ -589,7 +594,7 @@ class Event {
    *
    * @access public
    */
-  function getDue () {
+  function getDue() {
     return $this->_due;
   }
   /**
@@ -599,7 +604,7 @@ class Event {
    *
    * @access public
    */
-  function getPercent () {
+  function getPercent() {
     return $this->_percent;
   }
 
@@ -610,7 +615,7 @@ class Event {
    *
    * @access public
    */
-  function getEndDate () {
+  function getEndDate() {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
@@ -632,7 +637,7 @@ class Event {
    *
    * @access public
    */
-  function getEndTime () {
+  function getEndTime() {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
@@ -654,8 +659,8 @@ class Event {
    *
    * @access public
    */
-  function getEndDateTime () {
-    $this->_endDateTime = gmdate ( 'YmdHis', $this->getEndDateTimeTS () );
+  function getEndDateTime() {
+    $this->_endDateTime = gmdate ( 'YmdHis', $this->getEndDateTimeTS() );
     return $this->_endDateTime;
   }
 
@@ -666,7 +671,7 @@ class Event {
    *
    * @access public
    */
-  function getEndDateTimeTS () {
+  function getEndDateTimeTS() {
     $year = substr ( $this->_date, 0, 4 );
     $month = substr ( $this->_date, 4, 2 );
     $day = substr ( $this->_date, 6, 2 );
@@ -688,7 +693,7 @@ class Event {
    *
    * @access public
    */
-  function isAllDay () {
+  function isAllDay() {
    $this->_allDay = ( $this->_time == 0 && $this->_duration == 1440? true : false);
     return $this->_allDay;
   }
@@ -700,7 +705,7 @@ class Event {
    *
    * @access public
    */
-  function isTimed () {
+  function isTimed() {
    $this->_timed = ( $this->_time > 0 || ( $this->_time == 0
      && $this->_duration != 1440 )? true : false);
     return $this->_timed;
@@ -713,7 +718,7 @@ class Event {
    *
    * @access public
    */
-  function isUntimed () {
+  function isUntimed() {
    $this->_untimed = ( $this->_time == -1 && $this->_duration == 0? true : false);
     return $this->_untimed;
   }
@@ -782,7 +787,7 @@ class Event {
    *
    * @access public
    */
-  function getClone () {
+  function getClone() {
     return $this->_clone;
   }
  /**

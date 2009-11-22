@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description
  *   Handler for AJAX requests from layers.php.
  *   We use JSON for some of the data we send back to the AJAX request.
@@ -10,14 +9,14 @@
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WebCalendar = new WebCalendar( __FILE__ );
 
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include 'includes/access.php';
@@ -25,11 +24,11 @@ include 'includes/validate.php';
 include 'includes/JSON.php';
 include 'includes/ajax.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-load_global_settings ();
-load_user_preferences ();
-$WebCalendar->setLanguage ();
+load_global_settings();
+load_user_preferences();
+$WebCalendar->setLanguage();
 
 $action = getValue ( 'action' );
 $public = getValue ( 'public' );
@@ -50,15 +49,15 @@ if ( $action == 'enable' || $action == 'disable' ) {
   VALUES ( ?, \'LAYERS_STATUS\', ? )';
   if ( ! dbi_execute ( $sql, array ( $layer_user,
       ( $action == 'enable' ? 'Y': 'N' ) ) ) ) {
-    ajax_send_error ( translate ( 'Unable to update preference' ) . ': ' . dbi_error () );
+    ajax_send_error ( translate ( 'Unable to update preference' ) . ': ' . dbi_error() );
   } else {
     // Success
-    ajax_send_success ();
+    ajax_send_success();
   }
 } else if ( $action == 'list' ) {
   // Use JSON to encode our list of layers.
   load_user_layers ( $layer_user, 1 );
-  $ret_layers = array ();
+  $ret_layers = array();
   foreach ( $layers as $layer ) {
     user_load_variables ( $layer['cal_layeruser'], 'layer' );
     $ret_layers[] = array ( 'id' => $layer['cal_layerid'],
@@ -80,7 +79,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
       getPostValue('id') );
   }
   if ( $error == '' )
-    ajax_send_success ();
+    ajax_send_success();
   else
     ajax_send_error ( $error );
 } else if ( $action == 'delete' ) {
@@ -97,7 +96,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
     }
   }
   if ( $error == '' )
-    ajax_send_success ();
+    ajax_send_success();
   else
     ajax_send_error ( $error );
 } else {
@@ -112,7 +111,7 @@ function delete_layer ( $user, $id ) {
   if ( ! dbi_execute ( 'DELETE FROM webcal_user_layers ' .
    ' WHERE cal_layerid = ? AND cal_login = ?',
    array ( $id, $user ) ) ) {
-    $error = translate ( "Database error" ) . ": " . dbi_error ();
+    $error = translate ( "Database error" ) . ": " . dbi_error();
   }
 }
 

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Generates RSS 2.0 output of unapproved events for a user.
  *
@@ -44,7 +43,7 @@ include 'includes/formvars.php';
 include 'includes/functions.php';
 include 'includes/access.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 
@@ -53,9 +52,9 @@ include 'includes/site_extras.php';
 
 include_once 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-$appStr = generate_application_name ();
+$appStr = generate_application_name();
 // If WebCalendar is using http auth, then $login will be set in validate.php.
 if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ) {
   list ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
@@ -81,10 +80,10 @@ if ( empty ( $login ) || $login == '__public__' ) {
   }
 }
 
-load_global_settings ();
-load_user_preferences ();
+load_global_settings();
+load_user_preferences();
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
 // Load user name, etc.
 user_load_variables ( $login, '' );
@@ -97,13 +96,13 @@ if ( $user == 'public' )
 // Make sure the current user has proper permissions to see unapproved
 // events for the specified user. We're not checking to see if
 if ( $user != '' ) {
-  if ( access_is_enabled () ) {
+  if ( access_is_enabled() ) {
      if ( ! access_user_calendar ( 'approve', $user ) ) {
        // not allowed
        $user = login;
      }
   } else if ( ! $is_admin && $user != $login && ! $is_assistant &&
-    ! access_is_enabled () ) {
+    ! access_is_enabled() ) {
     $user = $login;
   }
 }
@@ -121,7 +120,7 @@ if ( $lang == 'en' )
   $lang = 'en-us'; //the RSS 2.0 default.
 
 user_load_variables ( $user, 'temp_' );
-$appStr = generate_application_name ();
+$appStr = generate_application_name();
 $descr = $appStr . ' - ' . translate ( 'Unapproved Entries' ) . ' - ' .
   $temp_fullname;
 
@@ -148,7 +147,8 @@ echo "  </channel>\n</rss>\n";
 
 exit;
 
-/* List all unapproved events for the specified user.
+/**
+ * List all unapproved events for the specified user.
  * Exclude "extension" events (used when an event goes past midnight).
  * TODO: Only include delete link if they have permission to delete
  *       when user access control is enabled.
@@ -229,6 +229,6 @@ function list_unapproved ( $user ) {
     }
   }
   return $ret;
-} //end list_unapproved ()
+} //end list_unapproved()
 
 ?>

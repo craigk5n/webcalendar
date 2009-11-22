@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id$
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 global $GROUPS_ENABLED, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
@@ -62,7 +62,7 @@ xlate[\'noMatchImport\'] = \'' . translate( 'File type does not match Import For
 // Page: includes/js/visible.php
 xlate[\'invalidColor\'] = \'' . translate( 'Invalid Color', true ) . '\';
 
-// So far, the rest already get listed by page in the translations/*.txt files.
+// So far, the rest already get listed by page in the translations/.txt files.
 xlate[\'Categories\']       = \'' . translate( 'Categories', true ) . '\';
 xlate[\'dbNameStr\']        = \'' . translate( 'Database Name', true ) . ':\';
 xlate[\'error\']            = \'' . translate( 'Error', true ) . ":\n\n';" . '

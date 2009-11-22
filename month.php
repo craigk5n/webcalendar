@@ -1,20 +1,19 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 //check UAC
 if ( ! access_can_access_function ( ACCESS_MONTH ) || 
   ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
-  send_to_preferred_view ();
+  send_to_preferred_view();
 
 if ( ( $user != $login ) && $is_nonuser_admin )
   load_user_layers ( $user );
 else
 if ( empty ( $user ) )
-  load_user_layers ();
+  load_user_layers();
 
 $cat_id = getGetValue ( 'cat_id' );
-load_user_categories ();
+load_user_categories();
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextYmd = date ( 'Ymd', $next );
@@ -85,9 +84,9 @@ if ( empty ( $friendly ) ) {
     ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
-$trailerStr = print_trailer ();
+$trailerStr = print_trailer();
 
-$HeadX = generate_refresh_meta ()
+$HeadX = generate_refresh_meta()
   . '<script type="text/javascript" src="includes/js/weekHover.js"></script>';
 
 print_header (

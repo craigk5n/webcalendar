@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 
 include_once 'includes/init.php';
 // Is this user allowed to search the calendars of other users?
@@ -10,7 +9,7 @@ if ( $single_user == 'Y' )
 if ( $is_admin )
   $show_others = true;
 else
-if ( access_is_enabled () )
+if ( access_is_enabled() )
   $show_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
 else
 if ( $login != '__public__' && ! $is_nonuser && ! empty ( $ALLOW_VIEW_OTHER ) &&
@@ -24,21 +23,21 @@ if ( $login == '__public__' && !
 $show_advanced = getValue ( 'adv', '[01]' );
 $show_advanced = $show_advanced == '1' ? '1' : '0';
 $avdStyle = array ( 'hidden', 'visible' );
-if ( access_is_enabled () &&
+if ( access_is_enabled() &&
   ! access_can_access_function ( ACCESS_ADVANCED_SEARCH ) )
   $show_advanced = false;
 
-load_user_categories ();
+load_user_categories();
 $selected = ' selected="selected" ';
 
 $advSearchStr = translate ( 'Advanced Search' );
 $searchStr = translate ( 'Search' );
-$INC = array ();
+$INC = array();
 if ( $show_advanced ) $INC[] = 'js/visible.php';
 if ( $show_others ) $INC[] = 'js/search.php/true';
 print_header ( $INC );
 
-ob_start ();
+ob_start();
 
 echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
     <form action="search_handler.php" method="post" id="searchformentry" '
@@ -161,10 +160,10 @@ if ( $show_others ) {
           </td>
         </tr>';
 }
-ob_end_flush ();
+ob_end_flush();
 
 echo '
     </table></form>
-    ' . print_trailer ();
+    ' . print_trailer();
 
 ?>

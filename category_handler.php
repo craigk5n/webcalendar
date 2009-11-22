@@ -1,11 +1,12 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 $icon_max_size = '3000';
 $icon_path = 'icons/';
 
-/* Rename any icons associated with this cat_id. */
+/**
+ * Rename any icons associated with this cat_id.
+ */
 function renameIcon ( $id ) {
   global $icon_path;
   $bakIcon = $catIcon = $icon_path . 'cat-';
@@ -35,7 +36,7 @@ else {
 
     dbi_free_result ( $res );
   } else
-    $error = db_error ();
+    $error = db_error();
 }
 
 if ( ! empty ( $_FILES['FileName'] ) )
@@ -46,7 +47,7 @@ if ( ! empty ( $file['tmp_name'] ) && $file['tmp_name'] == 'none' )
   $file = '';
 
 if ( ! $is_my_event )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $delete ) ) {
@@ -55,14 +56,14 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
     WHERE cat_id = ? AND ( cat_owner = ?'
        . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
         array ( $id, $login ) ) ) {
-    $error = db_error ();
+    $error = db_error();
   }
 
   if ( ! dbi_execute ( 'DELETE FROM webcal_entry_categories
     WHERE cat_id = ? AND ( cat_owner = ?'
        . ( $is_admin ? ' OR cat_owner IS NULL )' : ' )' ),
         array ( $id, $login ) ) ) {
-    $error = db_error ();
+    $error = db_error();
   }
   // Rename any icons associated with this cat_id.
   renameIcon ( $id );
@@ -72,7 +73,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
     if ( ! dbi_execute ( 'UPDATE webcal_categories
       SET cat_name = ?, cat_color = ? WHERE cat_id = ?',
         array ( $catname, $catcolor, $id ) ) )
-      $error = db_error ();
+      $error = db_error();
 
     if ( ! empty ( $delIcon ) && $delIcon == 'Y' )
       renameIcon ( $id );
@@ -91,9 +92,9 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
       if ( ! dbi_execute ( 'INSERT INTO webcal_categories ( cat_id, cat_owner,
         cat_name, cat_color ) VALUES ( ?, ?, ?, ? )',
           array ( $id, $catowner, $catname, $catcolor ) ) )
-        $error = db_error ();
+        $error = db_error();
     } else
-      $error = db_error ();
+      $error = db_error();
   }
   if ( empty ( $delIcon ) && is_dir( $icon_path ) && ( !
         empty ( $ENABLE_ICON_UPLOADS ) && $ENABLE_ICON_UPLOADS == 'Y' ||
@@ -126,7 +127,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
 if ( empty ( $error ) )
   do_redirect ( 'category.php' );
 
-print_header ();
-echo print_error ( $error ) . print_trailer ();
+print_header();
+echo print_error ( $error ) . print_trailer();
 
 ?>

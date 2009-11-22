@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * This page will handle the form submission from edit_report.php
  * and either add, update or delete a report.
@@ -33,7 +32,7 @@
  * or you are an admin user.
  */
 include_once 'includes/init.php';
-load_user_categories ();
+load_user_categories();
 
 $error = ( empty( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
   ? print_not_auth() : '' );
@@ -72,14 +71,14 @@ if ( empty ( $error ) && $single_user != 'N' && !
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] != $login )
-        $error = print_not_auth ();
+        $error = print_not_auth();
     } else
       $error = str_replace ( 'XXX', $report_id,
         translate ( 'No such report id XXX.' ) );
 
     dbi_free_result ( $res );
   } else
-    $error = db_error ();
+    $error = db_error();
 }
 
 // Validate templates to make sure the required variables are found.
@@ -106,11 +105,11 @@ $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $delete ) ) {
   if ( ! dbi_execute ( 'DELETE FROM webcal_report_template WHERE cal_report_id = ?',
       array ( $report_id ) ) )
-    $error = db_error ();
+    $error = db_error();
 
   if ( empty ( $error ) && ! dbi_execute ( 'DELETE FROM webcal_report
     WHERE cal_report_id = ?', array ( $report_id ) ) )
-    $error = db_error ();
+    $error = db_error();
   // Send back to main report listing page.
   if ( empty ( $error ) )
     do_redirect ( 'report.php' );
@@ -173,28 +172,28 @@ if ( empty ( $error ) ) {
 }
 
 if ( empty ( $error ) && ! dbi_execute ( $sql, $values ) )
-  $error = db_error ();
+  $error = db_error();
 
 if ( empty ( $error ) ) {
   if ( ! $adding_report ) {
     if ( ! dbi_execute ( 'DELETE FROM webcal_report_template
       WHERE cal_report_id = ?', array ( $report_id ) ) )
-      $error = db_error ();
+      $error = db_error();
   }
   $ins_sql = 'INSERT INTO webcal_report_template
     ( cal_report_id, cal_template_type, cal_template_text ) VALUES ( ?, ?, ? )';
 
   if ( empty ( $error ) && ! dbi_execute ( $ins_sql,
         array ( $report_id, 'D', $day_template ) ) )
-    $error = db_error ();
+    $error = db_error();
 
   if ( empty ( $error ) && ! dbi_execute ( $ins_sql,
         array ( $report_id, 'E', $event_template ) ) )
-    $error = db_error ();
+    $error = db_error();
 
   if ( empty ( $error ) && ! dbi_execute ( $ins_sql,
         array ( $report_id, 'P', $page_template ) ) )
-    $error = db_error ();
+    $error = db_error();
 }
 
 if ( empty ( $error ) ) {
@@ -202,7 +201,7 @@ if ( empty ( $error ) ) {
   exit;
 }
 
-print_header ();
-echo print_error ( $error ) . print_trailer ();
+print_header();
+echo print_error ( $error ) . print_trailer();
 
 ?>

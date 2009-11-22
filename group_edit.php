@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 $groupname = $groupowner = $groupupdated = '';
@@ -25,14 +24,14 @@ else {
 
 print_header ( '', '', '', true );
 
-ob_start ();
+ob_start();
 
 echo '
     <form action="group_edit_handler.php" method="post">
       <h2>';
 
 if ( $newgroup ) {
-  $v = array ();
+  $v = array();
   echo translate ( 'Add Group' ) . '</h2>
       <input type="hidden" name="add" value="1';
 } else
@@ -62,9 +61,9 @@ echo '" />
             <select name="users[]" id="users" size="10" multiple="multiple">';
 
 // Get list of all users.
-$users = user_get_users ();
+$users = user_get_users();
 if ( $NONUSER_ENABLED == 'Y' ) {
-  $nonusers = get_nonuser_cals ();
+  $nonusers = get_nonuser_cals();
   $users = ( $NONUSER_AT_TOP == 'Y' )
   ? array_merge ( $nonusers, $users ) : array_merge ( $users, $nonusers );
 }
@@ -107,7 +106,7 @@ echo '
     </form>
     ';
 
-ob_end_flush ();
+ob_end_flush();
 
 echo print_trailer ( false, true, true );
 

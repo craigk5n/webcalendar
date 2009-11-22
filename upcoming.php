@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * Show a list of upcoming events (and possibly tasks).
  *
@@ -79,7 +78,7 @@ if ( empty ($upcoming_initialized)) {
 //and then changes the working directory to the dir that this file is currently
 //in. That allows this file to load its includes normally even if called
 //from some other directory.
-$save_current_working_dir= getcwd ();
+$save_current_working_dir= getcwd();
 chdir(dirname(__FILE__));
 
 include_once 'includes/translate.php';
@@ -94,7 +93,7 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include 'includes/site_extras.php';
@@ -110,7 +109,7 @@ if ( empty ( $hcalendar_output ) )
 if ( $hcalendar_output )
  include 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 //This must contain the file name that this file is saved under. It is
 //used to determine whether the file is being run independently or
 //as an include file. Change as necessary!
@@ -125,35 +124,37 @@ $name_of_this_file='/upcoming.php/';
 
 //echo "$showTitle $showMore $maxEvents $numDays $cat_id<p>";
 
-load_global_settings ();
+load_global_settings();
 
 $error = '';
 
 // Make sure 'Upcoming Events' is enabled in System Settings.
 if ( empty ( $UPCOMING_EVENTS ) || $UPCOMING_EVENTS != 'Y' ) {
-  $error = print_not_auth ();
+  $error = print_not_auth();
 }
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
-// Print the details of an upcoming event
-// This function is here, inside the 'if' that runs only the first time this
-// file is included within an external document, so that the function isn't
-// declared twice in case of this file being included twice or more within the same doc.
+/**
+ * Print the details of an upcoming event
+ * This function is here, inside the 'if' that runs only the first time this
+ * file is included within an external document, so that the function isn't
+ * declared twice in case of this file being included twice or more within the same doc.
+ */
 function print_upcoming_event ( $e, $date ) {
   global $display_link, $link_target, $SERVER_URL, $charset, $login,
     $display_tzid, $showTime, $showPopups, $eventinfo, $username,
     $hcalendar_output, $UPCOMING_DISPLAY_CAT_ICONS;
 
-  $popupid = 'pop' . $e->getId () . '-' . $date;
+  $popupid = 'pop' . $e->getId() . '-' . $date;
 
   $private = $confidential = false;
   // Access: P=Public, R=Private, C=Confidential
-  if ( $e->getAccess () == 'R' ) {
+  if ( $e->getAccess() == 'R' ) {
     // not a public event, so we will just display "Private"
     $private = true;
   }
-  else if ( $e->getAccess () == 'C' ) {
+  else if ( $e->getAccess() == 'C' ) {
     // not a public event, so we will just display "Confidential"
     $confidential = true;
   }
@@ -163,34 +164,34 @@ function print_upcoming_event ( $e, $date ) {
       if ( $display_link ) {
     if ( $showPopups ) {
       $timestr = '';
-      if ( $e->isAllDay () ) {
+      if ( $e->isAllDay() ) {
         $timestr = translate ( 'All day event' );
-      } else if ( $e->getTime () >= 0 ) {
-        $timestr = display_time ( $e->getDatetime () );
-        if ( $e->getDuration () > 0 ) {
-          $timestr .= ' - ' . display_time ( $e->getEndDateTime () );
+      } else if ( $e->getTime() >= 0 ) {
+        $timestr = display_time ( $e->getDatetime() );
+        if ( $e->getDuration() > 0 ) {
+          $timestr .= ' - ' . display_time ( $e->getEndDateTime() );
         }
       }
       $eventinfo .= build_entry_popup ( 'eventinfo-' . $popupid, $username,
-        $e->getDescription (), $timestr, site_extras_for_popup ( $e->getId () ),
-        $e->getLocation (), $e->getName (), $e->getId () );
+        $e->getDescription(), $timestr, site_extras_for_popup ( $e->getId() ),
+        $e->getLocation(), $e->getName(), $e->getId() );
     }
     $link = "<a class=\"entry\" id=\"$popupid\" title=\"" .
-      htmlspecialchars ( $e->getName () ) . '" href="' .
+      htmlspecialchars ( $e->getName() ) . '" href="' .
       $SERVER_URL . 'view_entry.php?id=' .
-      $e->getID () . "&amp;date=$date&amp;user=" . $e->getLogin ();
+      $e->getID() . "&amp;date=$date&amp;user=" . $e->getLogin();
     if ( ! empty ( $link_target ) ) {
       $link .= "\" target=\"$link_target\"";
     }
     $link .= '>';
     if ( empty ( $UPCOMING_DISPLAY_CAT_ICONS ) ||
       $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
-      $catNum = abs ( $e->getCategory () );
+      $catNum = abs ( $e->getCategory() );
       if ( $catNum > 0 ) {
         $catIcon = 'icons/cat-' . $catNum . '.gif';
         if ( file_exists ( $catIcon ) )
           echo $link .
-            '<img src="' . $catIcon . '" alt="category icon" border="0"/></a>';
+            '<img src="' . $catIcon . '" alt="category icon" border="0" /></a>';
       }
     }
     echo $link;
@@ -201,7 +202,7 @@ function print_upcoming_event ( $e, $date ) {
   } else if ( $confidential ) {
     echo '[' . translate ( 'Confidential' ) . ']';
   } else {
-    echo '<span class="summary">' . htmlspecialchars ( $e->getName () ) . '</span>';
+    echo '<span class="summary">' . htmlspecialchars ( $e->getName() ) . '</span>';
   }
   if ( $display_link && ! empty ( $SERVER_URL ) && ! $private ) {
     echo '</a>';
@@ -209,29 +210,29 @@ function print_upcoming_event ( $e, $date ) {
 
   //added for hCalendar
   if ( $hcalendar_output ) {
-    echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTImeTS () )
-      .'">' . $e->getDateTIme () . "</abbr>\n";
-    echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTImeTS () )
-      . '">' . $e->getEndDateTImeTS () . "</abbr>\n";
-    echo '<span class="description">' . $e->getDescription () . "</span>\n";
-    if ( strlen ( $e->getLocation () ) > 0 )
-    echo '<span class="location">' . $e->getLocation () . "</span>\n";
-    $categories = get_categories_by_id ( $e->getId (), $username );
+    echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTImeTS() )
+      .'">' . $e->getDateTIme() . "</abbr>\n";
+    echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTImeTS() )
+      . '">' . $e->getEndDateTImeTS() . "</abbr>\n";
+    echo '<span class="description">' . $e->getDescription() . "</span>\n";
+    if ( strlen ( $e->getLocation() ) > 0 )
+    echo '<span class="location">' . $e->getLocation() . "</span>\n";
+    $categories = get_categories_by_id ( $e->getId(), $username );
     $category = implode ( ', ', $categories);
     if ( strlen( $category ) > 0 )
       echo '<span class="categories">' . $category . "</span>\n";
-    if ( strlen ( $e->getUrl () ) > 0 )
-      echo '<span class="url">' . $e->getUrl () . "</span>\n";
-    $rrule = export_recurrence_ical( $e->getId () );
+    if ( strlen ( $e->getUrl() ) > 0 )
+      echo '<span class="url">' . $e->getUrl() . "</span>\n";
+    $rrule = export_recurrence_ical( $e->getId() );
     if ( strlen ( $rrule ) > 6 )
       echo '<span class="rrule">' . substr ( $rrule, 6 ) . "</span>\n";
   }
 
   if ( $showTime ) {  //show event time if requested (default=don't show)
-    if ( $e->isAllDay () ) {
+    if ( $e->isAllDay() ) {
       echo ' (' . translate ( 'All day event' ) . ")\n";
-    } else if ( $e->getTime () != -1 ) {
-      echo ' (' . display_time ( $e->getDateTime (), $display_tzid ) . ")\n";
+    } else if ( $e->getTime() != -1 ) {
+      echo ' (' . display_time ( $e->getDateTime(), $display_tzid ) . ")\n";
     }
   }
 
@@ -242,7 +243,6 @@ function print_upcoming_event ( $e, $date ) {
 } //end condition initialization
 
 /*
- *
  * Configurable settings for this file. You may change the settings
  * below to change the default settings.
  * This settings will likely move into the System Settings in the
@@ -338,7 +338,7 @@ if ( $allow_user_override ) {
   if (empty ($username)) $username = '__public__';
 } else {
   if ( getValue ( 'user' ) != '' ) {
-    $error = print_not_auth ();
+    $error = print_not_auth();
   }
 }
 
@@ -346,10 +346,10 @@ if ( $allow_user_override ) {
 // Set for use elsewhere as a global
 $login = $username;
 // Load user preferences for DISPLAY_UNAPPROVED
-load_user_preferences ();
+load_user_preferences();
 
 if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' ) {
-  $error = print_not_auth ();
+  $error = print_not_auth();
 }
 
 if ( $error == '' ) {
@@ -399,7 +399,7 @@ if ( $error == '' ) {
     load_user_layers ( $username );
   }
 
-  //load_user_categories ();
+  //load_user_categories();
 
   // Calculate date range
   $date = getValue ( 'date', '-?[0-9]+', true );
@@ -429,7 +429,7 @@ if ( $error == '' ) {
   $tasks_only = ( $show_events == '0' );
 
   if ( $tasks_only ) {
-    $repeated_events = $events = array ();
+    $repeated_events = $events = array();
   } else {
 
     /* Pre-Load the repeated events for quckier access */
@@ -455,7 +455,7 @@ if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) &&
 // If called directly print  header stuff.
 if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) {
 // Print header without custom header and no style sheet.
-echo send_doctype ( generate_application_name () );
+echo send_doctype ( generate_application_name() );
 
 ?>
 <!-- This style sheet is here mostly to make it easier for others

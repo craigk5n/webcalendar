@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Web Service functionality to get events.
  *  Uses XML (but not SOAP at this point since that would be
@@ -21,7 +20,7 @@ $WS_DEBUG = false;
 require_once 'ws.php';
 
 // Initialize...
-ws_init ();
+ws_init();
 
 // header ( 'Content-type: text/xml' );
 header ( 'Content-type: text/plain' );
@@ -116,30 +115,30 @@ $endtime = mktime ( 0, 0, 0,
   substr ( $enddate, 0, 4 ) );
 
 for ( $d = $starttime; $d <= $endtime; $d += 86400 ) {
-  $completed_ids = array ();
+  $completed_ids = array();
   $date = date ( 'Ymd', $d );
   // $out .= "Date: $date\n";
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
   $ev = get_entries ( $date );
   // Keep track of duplicates.
-  $completed_ids = array ();
+  $completed_ids = array();
   for ( $i = 0, $evCnt = count ( $ev ); $i < $evCnt; $i++ ) {
-    $id = $ev[$i]->getID ();
+    $id = $ev[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $ev[$i]->getName (), $date,
-      $ev[$i]->getTime () );
+    $out .= process_event( $id, $ev[$i]->getName(), $date,
+      $ev[$i]->getTime() );
   }
   $rep = get_repeating_entries ( $user, $date );
   for ( $i = 0, $repCnt = count ( $rep ); $i < $repCnt; $i++ ) {
-    $id = $rep[$i]->getID ();
+    $id = $rep[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $rep[$i]->getName (), $date,
-      $rep[$i]->getTime () );
+    $out .= process_event( $id, $rep[$i]->getName(), $date,
+      $rep[$i]->getTime() );
   }
 }
 

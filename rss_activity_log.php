@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Generates RSS 2.0 output of the activity log.
  *
@@ -45,7 +44,7 @@ include 'includes/formvars.php';
 include 'includes/functions.php';
 include 'includes/access.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 
@@ -53,9 +52,9 @@ include_once 'includes/validate.php';
 include 'includes/site_extras.php';
 
 // This next step will send a redirect to login.php, which we don't want.
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-$appStr = generate_application_name ();
+$appStr = generate_application_name();
 
 if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ) {
   list ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
@@ -80,16 +79,16 @@ if ( empty ( $login ) ) {
     exit;
   }
 }
-load_global_settings ();
-load_user_preferences ();
+load_global_settings();
+load_user_preferences();
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
 // Load user name, etc.
 user_load_variables ( $login, '' );
 
 // Make sure the have privileges to access the activity log
-if ( ! $is_admin || ( access_is_enabled () && !
+if ( ! $is_admin || ( access_is_enabled() && !
   access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) )
   die_miserable_death ( print_not_auth (2) );
 
@@ -101,7 +100,7 @@ $lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
 if ( $lang == 'en' )
   $lang = 'en-us'; //the RSS 2.0 default.
 
-$appStr = generate_application_name ();
+$appStr = generate_application_name();
 $descr = $appStr . ' - ' . translate ( 'Activity Log' );
 
 // header ( 'Content-type: application/rss+xml');
@@ -131,12 +130,13 @@ echo "  </channel>\n</rss>\n";
 
 exit;
 
-/* Generate the activity log.
+/**
+ * Generate the activity log.
 */
 function rss_activity_log ( $sys, $entries ) {
   global $SERVER_URL, $login;
 
-  $sql_params = array ();
+  $sql_params = array();
 
   $limit = $where = '';
   switch ( $GLOBALS['db_type'] ) {
@@ -182,7 +182,7 @@ function rss_activity_log ( $sys, $entries ) {
       $l_id = $row[8];
       $l_etype = $row[9];
       $l_description = $row[10];
-      // convert lines to <br> if no HTML formatting found
+      // convert lines to <br /> if no HTML formatting found
       if ( strpos ( $l_description, "</" ) == false ) {
         $l_description = nl2br ( $l_description );
       }

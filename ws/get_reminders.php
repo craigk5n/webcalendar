@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Web Service functionality for reminders.
  *  Uses XML (but not SOAP at this point since that would be
@@ -38,7 +37,7 @@ $WS_DEBUG = false;
 require_once 'ws.php';
 
 // Initialize...
-ws_init ();
+ws_init();
 
 header ( 'Content-type: text/xml' );
 // header ( "Content-type: text/plain" );
@@ -88,7 +87,7 @@ if ( $login != $user ) {
 // exit;
 // }
 
-$startdate = mktime ();
+$startdate = mktime();
 $enddate = $startdate + ( $DAYS_IN_ADVANCE * 86400 );
 
 // Now read all the repeating events.
@@ -101,7 +100,8 @@ if ( $WS_DEBUG )
   ws_log_message ( str_replace ( 'XXX', count ( $events ),
       translate ( 'Found XXX events in time range.' ) ) );
 
-/* Send a reminder for a single event for a single day.
+/**
+ * Send a reminder for a single event for a single day.
  */
 function process_reminder ( $id, $event_date, $remind_time ) {
   global $DISABLE_ACCESS_FIELD, $DISABLE_PARTICIPANTS_FIELD,
@@ -112,13 +112,14 @@ function process_reminder ( $id, $event_date, $remind_time ) {
 <reminder>
   <remindDate>' . date ( 'Ymd', $remind_time ) . '</remindDate>
   <remindTime>' . date ( 'Hi', $remind_time ) . '</remindTime>
-  <untilRemind>' . ( $remind_time - time () ) . '</untilRemind>
+  <untilRemind>' . ( $remind_time - time() ) . '</untilRemind>
   ' . ws_print_event_xml ( $id, $event_date ) . '
 </reminder>
 ';
 }
 
-/*
+/**
+ *
  * Process an event for a single day. Check to see if it has a reminder,
  * when it needs to be sent and when the last time it was sent.
  */
@@ -169,7 +170,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
   ' . str_replace ( 'XXX', date ( 'm/d/Y H:i', $remind_time ),
         translate ( 'Remind time is XXX.' ) );
       // Send a reminder.
-      if ( time () >= $remind_time - ( $CUTOFF * 86400 ) ) {
+      if ( time() >= $remind_time - ( $CUTOFF * 86400 ) ) {
         if ( $debug )
           $debug .= '
   SENDING REMINDER!';
@@ -189,31 +190,31 @@ $out .= '
   translate ( 'Reminders for user XXX, login YYY.' ) ) . ' -->
 ';
 
-$startdate = time (); // today
+$startdate = time(); // today
 for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
-  $date = date ( 'Ymd', time () + ( $d * 86400 ) );
+  $date = date ( 'Ymd', time() + ( $d * 86400 ) );
   // echo "Date: $date\n";
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
   $ev = get_entries ( $date );
   // Keep track of duplicates.
-  $completed_ids = array ();
+  $completed_ids = array();
   for ( $i = 0, $evCnt = count ( $ev ); $i < $evCnt; $i++ ) {
-    $id = $ev[$i]->getID ();
+    $id = $ev[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $ev[$i]->getName (),
-      $date, $ev[$i]->getTime () );
+    $out .= process_event ( $id, $ev[$i]->getName(),
+      $date, $ev[$i]->getTime() );
   }
   $rep = get_repeating_entries ( $user, $date );
   for ( $i = 0, $repCnt = count ( $rep ); $i < $repCnt; $i++ ) {
-    $id = $rep[$i]->getID ();
+    $id = $rep[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $rep[$i]->getName (), $date,
-      $rep[$i]->getTime () );
+    $out .= process_event ( $id, $rep[$i]->getName(), $date,
+      $rep[$i]->getTime() );
   }
 }
 

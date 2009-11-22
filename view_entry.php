@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * Presents page to view an event with links to edit, delete
  * confirm, copy, add event
@@ -89,7 +88,7 @@ if ( ! empty ( $_POST ) && $is_my_event ) {
   $others_complete = getPostValue ( 'others_complete' );
   if ( $upercent == 100 && $others_complete == 'yes' ) {
     dbi_execute ( 'UPDATE webcal_entry SET cal_completed = ?
-      WHERE cal_id = ?', array ( gmdate ( 'Ymd', time () ), $id ) );
+      WHERE cal_id = ?', array ( gmdate ( 'Ymd', time() ), $id ) );
     activity_log ( $id, $login, $creator, LOG_UPDATE_T,
       translate ( 'Completed' ) );
   }
@@ -155,7 +154,7 @@ if ( empty ( $error ) ) {
   $euser = ( empty ( $user ) ? ( $is_my_event ? $login : $create_by ) : $user );
   $time_only = 'N';
 
-  if ( access_is_enabled () ) {
+  if ( access_is_enabled() ) {
     $can_approve =
      access_user_calendar ( 'approve', $euser, $login, $cal_type, $cal_access );
     $can_edit =
@@ -196,10 +195,10 @@ if ( empty ( $error ) ) {
     // describe this scenario? Would confuse 99.9% of users.
     // In summary, make sure at least one event participant is in one of
     // this user's groups.
-    $my_users = get_my_users ();
+    $my_users = get_my_users();
     $my_usercnt = count ( $my_users );
     if ( is_array ( $my_users ) && $my_usercnt ) {
-      $sql_params = array ();
+      $sql_params = array();
       $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
         WHERE we.cal_id = weu.cal_id AND we.cal_id = ? AND weu.cal_login IN ( ';
       $sql_params[] = $id;
@@ -218,7 +217,7 @@ if ( empty ( $error ) ) {
     }
     // If we didn't indicate we need to check groups,
     // then this user can't view this event.
-    if ( ! $check_group || access_is_enabled () )
+    if ( ! $check_group || access_is_enabled() )
       $can_view = false;
   }
 } //end $error test
@@ -227,8 +226,8 @@ if ( empty ( $error ) ) {
 // calendar event where the nonuser is the _only_ participant.
 if ( empty ( $error ) && ! $can_view && !
     empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
-  $nonusers = get_nonuser_cals ();
-  $nonuser_lookup = array ();
+  $nonusers = get_nonuser_cals();
+  $nonuser_lookup = array();
   for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
     $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
   }
@@ -246,7 +245,7 @@ if ( empty ( $error ) && ! $can_view && !
   }
   // Does this event contain only nonuser calendars as participants?
   // If so, then grant access.
-  if ( $found_nonuser_cal && ! $found_reg_user && ! access_is_enabled () )
+  if ( $found_nonuser_cal && ! $found_reg_user && ! access_is_enabled() )
     $can_view = true;
 }
 
@@ -271,10 +270,10 @@ if ( ! $can_view && ! empty ( $PUBLIC_ACCESS_DEFAULT_VISIBLE ) &&
 
 $printerStr = generate_printer_friendly ( 'view_entry.php' );
 
-print_header ();
+print_header();
 
 if ( ! empty ( $error ) ) {
-  echo print_error ( $error ) . print_trailer ();
+  echo print_error ( $error ) . print_trailer();
   exit;
 }
 
@@ -310,7 +309,7 @@ if ( ! empty ( $user ) && $login != $user ) {
 // Check to make sure that it hasn't been deleted from everyone's calendar.
 //if ( empty ( $event_status ) ) {
 //  $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
-//    WHERE cal_status <> "D" ORDER BY cal_status', array () );
+//    WHERE cal_status <> "D" ORDER BY cal_status', array() );
  // if ( $res ) {
 //    if ( $row = dbi_fetch_row ( $res ) )
 //      $event_status = $row[0];
@@ -322,13 +321,13 @@ if ( ! empty ( $user ) && $login != $user ) {
 // If we have no event status yet, it must have been deleted.
 if ( ( empty ( $event_status ) && ! $is_admin ) ||
     ( ! $can_view && empty ( $rss_view ) ) ) {
-  echo print_not_auth ( true ) . print_trailer ();
+  echo print_not_auth ( true ) . print_trailer();
   exit;
 }
 
 // We can bypass $can_view if coming from RSS
 if ( ( ! $can_view && empty ( $rss_view ) ) ) {
-  echo print_not_auth ( 8, true ) . print_trailer ();
+  echo print_not_auth ( 8, true ) . print_trailer();
   exit;
 }
 // save date so the trailer links are for the same time period
@@ -336,7 +335,7 @@ $thisyear = intval ( $orig_date / 10000 );
 $thismonth = ( $orig_date / 100 ) % 100;
 $thisday = $orig_date % 100;
 // $subject is used for mailto URLs.
-$subject = generate_application_name () . ': ' . $name;
+$subject = generate_application_name() . ': ' . $name;
 // Remove the '"' character since it causes some mailers to barf
 $subject = str_replace ( ' "', '', $subject );
 $subject = htmlspecialchars ( $subject );
@@ -366,11 +365,11 @@ $email_addr = empty ( $createby_email ) ? '' : $createby_email;
 // Confidential and not user's and not assistant,
 // then they cannot see name or description.
 // if ( $row[8] == "R" && ! $is_my_event && ! $is_admin ) {
-if ( $cal_access == 'R' && ! $is_my_event && ! access_is_enabled () ) {
+if ( $cal_access == 'R' && ! $is_my_event && ! access_is_enabled() ) {
   $is_private = true;
   $description = $name = '[' . translate ( 'Private' ) . ']';
 } else if ( $cal_access == 'C' && ! $is_my_event && ! $is_assistant && !
-  access_is_enabled () ) {
+  access_is_enabled() ) {
   $is_confidential = true;
   $description = $name = '[' . translate ( 'Confidential' ) . ']';
 }
@@ -533,15 +532,15 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname ) ) {
       <tr>
         <td class="aligntop bold">' . translate ( 'Created by' ) . ':</td>
         <td>';
-  if ( $is_private && ! access_is_enabled () )
+  if ( $is_private && ! access_is_enabled() )
     echo '[' . translate ( 'Private' ) . ']</td>
       </tr>';
   else
-  if ( $is_confidential && ! access_is_enabled () )
+  if ( $is_confidential && ! access_is_enabled() )
     echo '[' . translate ( 'Confidential' ) . ']</td>
       </tr>';
   else {
-    if ( access_is_enabled () )
+    if ( access_is_enabled() )
       $can_email = access_user_calendar ( 'email', $create_by );
 
     $pubAccStr = ( $row[0] == '__public__'
@@ -615,7 +614,7 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
 }
 // participants
 // Only ask for participants if we are multi-user.
-$allmails = array ();
+$allmails = array();
 $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
 if ( $is_admin )
   $show_participants = true;
@@ -631,10 +630,10 @@ if ( $single_user == 'N' && $show_participants ) {
         <td>';
 
   $num_app = $num_rej = $num_wait = 0;
-  if ( $is_private && ! access_is_enabled () )
+  if ( $is_private && ! access_is_enabled() )
     echo '[' . translate ( 'Private' ) . ']';
   else
-  if ( $is_confidential && ! access_is_enabled () )
+  if ( $is_confidential && ! access_is_enabled() )
     echo '[' . translate ( 'Confidential' ) . ']';
   else {
     $res = dbi_execute ( 'SELECT cal_login, cal_status, cal_percent
@@ -656,7 +655,7 @@ if ( $single_user == 'N' && $show_participants ) {
       }
       dbi_free_result ( $res );
     } else
-      db_error () . '<br />';
+      db_error() . '<br />';
   }
   if ( $eType == 'task' ) {
     echo '
@@ -667,7 +666,7 @@ if ( $single_user == 'N' && $show_participants ) {
     $others_complete = 'yes';
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
       user_load_variables ( $participants[$i][0], 'temp' );
-      if ( access_is_enabled () )
+      if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
       $spacer = 100 - $participants[$i][2];
       $percentage = $participants[$i][2];
@@ -702,7 +701,7 @@ if ( $single_user == 'N' && $show_participants ) {
   } else {
     for ( $i = 0; $i < $num_app; $i++ ) {
       user_load_variables ( $approved[$i], 'temp' );
-      if ( access_is_enabled () )
+      if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
       echo '
           ';
@@ -733,7 +732,7 @@ if ( $single_user == 'N' && $show_participants ) {
     }
     for ( $i = 0; $i < $num_wait; $i++ ) {
       user_load_variables ( $waiting[$i], 'temp' );
-      if ( access_is_enabled () )
+      if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
       echo '
           ';
@@ -748,7 +747,7 @@ if ( $single_user == 'N' && $show_participants ) {
     }
     for ( $i = 0; $i < $num_rej; $i++ ) {
       user_load_variables ( $rejected[$i], 'temp' );
-      if ( access_is_enabled () )
+      if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
 
       echo '
@@ -805,27 +804,27 @@ if ( $eType == 'task' ) {
   }
 }
 
-if ( Doc::attachmentsEnabled () && $rss_view == false ) {
+if ( Doc::attachmentsEnabled() && $rss_view == false ) {
   echo '
       <tr>
         <td class="aligntop bold">' . translate ( 'Attachments' ) . ':</td>
         <td>';
 
   $attList = new AttachmentList( $id );
-  for ( $i = 0; $i < $attList->getSize (); $i++ ) {
+  for ( $i = 0; $i < $attList->getSize(); $i++ ) {
     $a = $attList->getDoc ( $i );
     echo '
-          ' . $a->getSummary ()
+          ' . $a->getSummary()
     // show delete link if user can delete
-    . ( $is_admin || $login == $a->getLogin () ||
-      user_is_assistant ( $login, $a->getLogin () ) || $login == $create_by ||
-      user_is_assistant ( $login, $create_by )
-      ? ' [<a href="docdel.php?blid=' . $a->getId ()
+    . ( $is_admin || $login == $a->getLogin()
+        || user_is_assistant( $login, $a->getLogin() ) || $login == $create_by
+        || user_is_assistant( $login, $create_by )
+      ? ' [<a href="docdel.php?blid=' . $a->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
        . translate ( 'Delete' ) . '</a>]' : '' ) . '<br />';
   }
   $num_app = $num_rej = $num_wait = 0;
-  $num_attach = $attList->getSize ();
+  $num_attach = $attList->getSize();
 
   echo ( $num_attach == 0 ? '
           ' . translate ( 'None' ) . '<br />' :'' ) . '
@@ -833,32 +832,33 @@ if ( Doc::attachmentsEnabled () && $rss_view == false ) {
       </tr>';
 }
 
-if ( Doc::commentsEnabled () ) {
+if ( Doc::commentsEnabled() ) {
   echo '
       <tr>
         <td class="aligntop bold">' . translate ( 'Comments' ) . ':</td>
         <td>';
 
   $comList = new CommentList( $id );
-  $num_comment = $comList->getSize ();
+  $num_comment = $comList->getSize();
   $comment_text = '';
   for ( $i = 0; $i < $num_comment; $i++ ) {
     $cmt = $comList->getDoc ( $i );
-    user_load_variables ( $cmt->getLogin (), 'cmt_' );
+    user_load_variables ( $cmt->getLogin(), 'cmt_' );
     $comment_text .= '
-          <strong>' . htmlspecialchars ( $cmt->getDescription () )
+          <strong>' . htmlspecialchars ( $cmt->getDescription() )
      . '</strong> - ' . $cmt_fullname . ' ' . translate ( 'at' ) . ' '
-     . date_to_str ( $cmt->getModDate (), '', false, true ) . ' '
-     . display_time ( $cmt->getModTime (), 2 )
+     . date_to_str ( $cmt->getModDate(), '', false, true ) . ' '
+     . display_time ( $cmt->getModTime(), 2 )
     // show delete link if user can delete
-    . ( $is_admin || $login == $cmt->getLogin () ||
-      user_is_assistant ( $login, $cmt->getLogin () ) || $login == $create_by ||
-      user_is_assistant ( $login, $create_by ) ? ' [<a href="docdel.php?blid='
-       . $cmt->getId () . '" onclick="return confirm( \'' . $areYouSureStr
+    . ( $is_admin || $login == $cmt->getLogin()
+        || user_is_assistant( $login, $cmt->getLogin() ) || $login == $create_by
+        || user_is_assistant( $login, $create_by )
+      ? ' [<a href="docdel.php?blid=' . $cmt->getId()
+       . '" onclick="return confirm( \'' . $areYouSureStr
        . '\' );">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
      . '<br />
           <blockquote id="eventcomment">' . nl2br ( activate_urls (
-        htmlspecialchars ( $cmt->getData () ) ) ) . '
+        htmlspecialchars( $cmt->getData() ) ) ) . '
         </blockquote><div style="clear:both"></div>';
   }
 
@@ -879,7 +879,7 @@ if ( Doc::commentsEnabled () ) {
     ?>
 <script type="text/javascript">
 <!-- <![CDATA[
-function showComments () {
+function showComments() {
   var x = document.getElementById ( "comtext" )
   if ( x ) {
     x.style.display = "block";
@@ -893,7 +893,7 @@ function showComments () {
     x.style.display = "block";
   }
 }
-function hideComments () {
+function hideComments() {
   var x = document.getElementById ( "comtext" )
   if ( x ) {
     x.style.display = "none";
@@ -907,7 +907,7 @@ function hideComments () {
     x.style.display = "none";
   }
 }
-hideComments ();
+hideComments();
 //]]> -->
 </script>
     <?php
@@ -954,7 +954,7 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve )
 }
 
 // TODO add these permissions to the UAC list
-$can_add_attach = ( Doc::attachmentsEnabled () && $login != '__public__'
+$can_add_attach = ( Doc::attachmentsEnabled() && $login != '__public__'
   && ( ( $login == $create_by ) || ( $is_my_event && $ALLOW_ATTACH_PART == 'Y' ) ||
   ( $ALLOW_ATTACH_ANY == 'Y' ) || $is_admin ) );
 
@@ -1093,7 +1093,7 @@ if ( $login != '__public__' && count ( $allmails ) > 0 ) {
 }
 
 $can_show_log = $is_admin; // default if access control is not enabled
-if ( access_is_enabled () )
+if ( access_is_enabled() )
   $can_show_log = access_can_access_function ( ACCESS_ACTIVITY_LOG );
 
 if ( $can_show_log ) {
@@ -1117,12 +1117,12 @@ if ( $can_show_log && $show_log ) {
 }
 
 if ( access_can_access_function ( ACCESS_EXPORT ) &&
-    ( ( ! $is_private && ! $is_confidential ) || ! access_is_enabled () ) && !
+    ( ( ! $is_private && ! $is_confidential ) || ! access_is_enabled() ) && !
     $hide_details ) {
   $exportStr = translate ( 'Export' );
   $exportThisStr = translate ( 'Export this entry to' );
   $palmStr = translate ( 'Palm Pilot' );
-  $selectStr = generate_export_select ();
+  $selectStr = generate_export_select();
   $userStr = ( ! empty ( $user ) ? '<input type="hidden" name="user" value="' .
     $user . '" />' : '' );
   echo <<<EOT

@@ -1,5 +1,6 @@
 <?php
-/* Allows a user to specify a remote calendar by URL that can be imported
+/**
+ * Allows a user to specify a remote calendar by URL that can be imported
  * manually into the NUC calendar specified. The user will also be allowed to
  * create a layer to display this calendar on top of their own calendar.
  *
@@ -23,9 +24,9 @@ $error = '';
 if ( ! $NONUSER_PREFIX )
   $error = translate ( 'NONUSER_PREFIX not set' );
 
-if ( $REMOTES_ENABLED != 'Y' || ( access_is_enabled () && !
+if ( $REMOTES_ENABLED != 'Y' || ( access_is_enabled() && !
       access_can_access_function ( ACCESS_IMPORT ) ) )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 if ( $error ) {
   echo print_error ( $error ) . '

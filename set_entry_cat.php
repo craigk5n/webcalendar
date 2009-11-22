@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Allows the setting of categories by each participant of an event.
  *
  * Multiple categories can be added by each participant and stored separately
@@ -8,7 +7,7 @@
  * but can only be added/removed by the owner or an admin in the edit-entry form.
  */
 include_once 'includes/init.php';
-load_user_categories ();
+load_user_categories();
 
 $error = '';
 
@@ -16,7 +15,7 @@ if ( empty ( $id ) )
   $error = translate ( 'Invalid entry id.' );
 else
 if ( $CATEGORIES_ENABLED != 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 else
 if ( empty ( $categories ) )
   $error = translate ( 'You have not added any categories.' );
@@ -27,17 +26,17 @@ $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     if ( $row[0] == 'D' ) // User deleted themself.
-      $error = print_not_auth ();
+      $error = print_not_auth();
   } else
     // Not a participant for this event.
-    $error = print_not_auth ();
+    $error = print_not_auth();
 
   dbi_free_result ( $res );
 } else
-  $error = db_error ();
+  $error = db_error();
 
 $cat_id = getPostValue ( 'cat_id' );
-$cat_ids = $cat_name = array ();
+$cat_ids = $cat_name = array();
 $catNames = '';
 
 // Get user's categories for this event.
@@ -65,7 +64,7 @@ if ( $res ) {
 
   dbi_free_result ( $res );
 } else
-  $error = db_error ();
+  $error = db_error();
 
 // If this is the form handler, then save now
 if ( ! empty ( $cat_id ) && empty ( $error ) ) {
@@ -73,7 +72,7 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
     AND ( cat_owner = ? )', array ( $id, $login ) );
   $categories = explode ( ',', $cat_id );
 
-  $names = $sql_params = $values = array ();
+  $names = $sql_params = $values = array();
   for ( $i = 0, $cnt = count ( $categories ); $i < $cnt; $i++ ) {
     // Don't process Global Categories.
     if ( $categories[$i] > 0 ) {
@@ -95,7 +94,7 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
   if ( ! dbi_execute ( 'INSERT INTO webcal_entry_categories ( '
        . implode ( ', ', $names ) . ' ) VALUES ( '
        . implode ( ', ', $values ) . ' )', $sql_params ) )
-    $error = db_error ();
+    $error = db_error();
   else
     do_redirect ( 'view_entry.php?id=' . $id
        . ( empty ( $date ) ? '' : '&amp;date=' . $date ) );
@@ -146,6 +145,6 @@ else {
     </form>
 EOT;
 }
-echo print_trailer ();
+echo print_trailer();
 
 ?>

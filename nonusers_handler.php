@@ -1,7 +1,7 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
-load_user_layers ();
+load_user_layers();
 
 $nid = getValue ( 'nid' );
 $old_admin = getValue ( 'old_admin' );
@@ -13,7 +13,7 @@ $action = getValue ( 'action' );
 $delete = getValue ( 'delete' );
 
 if ( ! $is_admin ) {
-  echo print_not_auth ( true ) . print_trailer ();
+  echo print_not_auth ( true ) . print_trailer();
   exit;
 }
 $error = '';
@@ -27,7 +27,7 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted.
-  $delete_em = array ();
+  $delete_em = array();
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
       WHERE cal_id = ?', array ( $events[$i] ) );
@@ -54,11 +54,11 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
   // Delete user
   if ( ! dbi_execute ( 'DELETE FROM webcal_nonuser_cals WHERE cal_login = ?',
       array ( $user ) ) )
-    $error = db_error ();
+    $error = db_error();
 } else {
   if ( $action == 'Save' || $action == translate ( 'Save' ) ) {
     // Updating
-    $sql_params = array ();
+    $sql_params = array();
     $sql = 'UPDATE webcal_nonuser_cals SET';
     if ( $nlastname ) {
       $sql .= ' cal_lastname = ?,';
@@ -72,7 +72,7 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
     $sql_params[] = $nid;
     if ( ! dbi_execute ( $sql . ' cal_admin = ? WHERE cal_login = ?',
         $sql_params ) )
-      $error = db_error ();
+      $error = db_error();
   } else {
     // Adding
     if ( preg_match ( '/^[\w]+$/', $nid ) ) {
@@ -80,7 +80,7 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
       if ( ! dbi_execute ( 'INSERT INTO webcal_nonuser_cals ( cal_login,
         cal_firstname, cal_lastname, cal_admin ) VALUES ( ?, ?, ?, ? )',
           array ( $nid, $nfirstname, $nlastname, $nadmin ) ) )
-        $error = db_error ();
+        $error = db_error();
     } else
       $error = translate ( 'Calendar ID' ) . ' '
        . translate ( 'word characters only' ) . '.';
@@ -89,7 +89,7 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
 if ( empty ( $error ) )
   do_redirect ( 'nonusers.php' );
 
-print_header ();
-echo print_error ( $error ) . print_trailer ();
+print_header();
+echo print_error ( $error ) . print_trailer();
 
 ?>

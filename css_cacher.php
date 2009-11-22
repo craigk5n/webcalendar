@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 define( '_ISVALID', true );
 
 include 'includes/translate.php';
@@ -38,11 +37,12 @@ $expTime = gmmktime() + 86400;
 if ( $empTmp )
   $expTime = gmmktime() - 86400;
 
+$fmt = 'D, d M Y H:i:s \G\M\T'
 ob_start( ini_get( 'zlib.output_compression' ) != 1 ? 'ob_gzhandler' : '' );
 
 header( 'Content-type: text/css' );
-header( 'Last-Modified: ' . gmdate( 'r', $expTime - 400 ) );
-header( 'Expires: ' . gmdate( 'D, j M Y H:i:s \U\TC', $expTime ) );
+header( 'Last-Modified: ' . gmdate( $fmt, $expTime - 600 ) );
+header( 'Expires: ' . gmdate( $fmt, $expTime ) );
 header( 'Cache-Control: Public' );
 header( 'Pragma: Public' );
 

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Calculate the moonphases for a given year and month.
  *
  * Code borrowed from http://www.zend.com/codex.php?id=830&single=1
@@ -92,8 +91,10 @@ function calculateMoonPhases ( $year, $month = 1 ) {
   return $phases;
 } //End MoonPhase
 
-// Function borrowed from http://us3.php.net/manual/en/function.jdtogregorian.php
-// Used if calendar functions are not compiled in php.
+/**
+ * Function borrowed from http://us3.php.net/manual/en/function.jdtogregorian.php
+ * Used if calendar functions are not compiled in php.
+ */
 function jd_to_greg ( $julian ) {
   $julian -= 1721119;
   $calc1 = 4 * $julian - 1;

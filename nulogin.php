@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * This page handles logins for nonuser calendars.
  */
 include_once 'includes/translate.php';
@@ -13,21 +12,21 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include_once 'includes/access.php';
 include 'includes/gradient.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-load_global_settings ();
+load_global_settings();
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
 if ( $single_user == 'Y'/* No login for single-user mode.*/ ||
     $use_http_auth )/* No web login for HTTP-based authentication.*/
-  die_miserable_death ( print_not_auth () );
+  die_miserable_death ( print_not_auth() );
 
 $login = getValue ( 'login' );
 if ( empty ( $login ) )
@@ -49,14 +48,14 @@ if ( ! nonuser_load_variables ( $login, 'temp_' ) )
      . ": $login" );
 
 if ( empty ( $temp_is_public ) || $temp_is_public != 'Y' )
-  die_miserable_death ( print_not_auth () );
+  die_miserable_death ( print_not_auth() );
 // calculate path for cookie
 if ( empty ( $PHP_SELF ) )
   $PHP_SELF = $_SERVER['PHP_SELF'];
 
 $cookie_path = str_replace ( 'nulogin.php', '', $PHP_SELF );
 // echo "Cookie path: $cookie_path\n";
-if ( get_magic_quotes_gpc () )
+if ( get_magic_quotes_gpc() )
   $login = stripslashes ( $login );
 
 $login = trim ( $login );

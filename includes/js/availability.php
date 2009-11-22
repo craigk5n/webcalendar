@@ -1,4 +1,4 @@
-<?php /* $Id$  */
+<?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $month = $arinc[3];
@@ -12,7 +12,10 @@ NS4 = (document.layers) ? 1 : 0;
 IE4 = (document.all) ? 1 : 0;
 // W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
 W3C = (document.getElementById) ? 1 : 0;
-//Function is similar to visible.php, but effects the parent
+
+/*
+ * Function is similar to visible.php, but effects the parent
+ */
 function makeVisible ( name ) {
   var ele;
 
@@ -30,7 +33,6 @@ function makeVisible ( name ) {
     ele.style.visibility = "visible";
   }
 }
-
 function schedule_event(hours, minutes) {
   var year =<?php echo $year ?>;
   var month =<?php echo $month ?>;
@@ -71,6 +73,6 @@ function schedule_event(hours, minutes) {
         parentForm.year.selectedIndex = i;
       }
     }
-    window.close ();
+    window.close();
   }
 }

@@ -1,7 +1,7 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 
-/* Parse the datebook file.
+/**
+ * Parse the datebook file.
  *
  * @return the data hash.
  */
@@ -9,14 +9,15 @@ function parse_palmdesktop ( $file, $exc_private = 1 ) {
   $file = EscapeShellArg ( $file );
   $exc_private = EscapeShellArg ( $exc_private );
   exec ( 'perl tools/palm_datebook.pl ' . "$file $exc_private", $Entries );
-  $data = array ();
+  $data = array();
   while ( list ( $line_num, $line ) = each ( $Entries ) ) {
     $data[] = ParseLine ( $line );
   }
   return $data;
 }
 
-/* Delete all Palm Events for $login to clear any events deleted in the palm.
+/**
+ * Delete all Palm Events for $login to clear any events deleted in the palm.
  *
  * @return 1 if successful.
  */

@@ -1,20 +1,18 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * The file contains a listing of all the current help files in an array.
  * This should make it easier to add new help screens without having to
  * touch each file every time.
 */
 defined ( '_ISVALID' ) or ( 'You cannot access this file directly!' );
 // DO NOT DELETE translate ( 'Index' ) translate ( 'Documentation' )
-$help_list = array ();
+$help_list = array();
 $help_list['Index'] = 'help_index.php';
 
 $can_add = true;
 if ( $readonly == 'Y' )
   $can_add = false;
-else
-if ( access_is_enabled () )
+elseif( access_is_enabled() )
   $can_add = access_can_access_function ( ACCESS_EVENT_EDIT );
 else {
   if ( $login == '__public__' )
@@ -26,22 +24,22 @@ else {
 if ( $can_add )
   $help_list['Adding/Editing Calendar Entries'] = 'help_edit_entry.php';
 
-if ( ! access_is_enabled () && $login != '__public__' ||
-  access_can_access_function ( ACCESS_LAYERS ) )
+if( ! access_is_enabled() && $login != '__public__'
+    || access_can_access_function( ACCESS_LAYERS ) )
   $help_list['Layers'] = 'help_layers.php';
-if ( ( ! access_is_enabled () && $login != '__public__' ) ||
-  access_can_access_function ( ACCESS_IMPORT ) )
+if( ( ! access_is_enabled() && $login != '__public__' )
+    || access_can_access_function( ACCESS_IMPORT ) )
   $help_list['Import'] = 'help_import.php';
 
-if ( ( ! access_is_enabled () && $login != '__public__' ) ||
-  access_can_access_function ( ACCESS_PREFERENCES ) )
+if( ( ! access_is_enabled() && $login != '__public__' )
+    || access_can_access_function( ACCESS_PREFERENCES ) )
   $help_list['Preferences'] = 'help_pref.php';
 
-if ( access_is_enabled () && $login != '__public__' )
+if( access_is_enabled() && $login != '__public__' )
   $help_list['User Access Control'] = 'help_uac.php';
 
-if ( ( $is_admin && ! access_is_enabled () ) ||
-  access_can_access_function ( ACCESS_IMPORT ) )
+if( ( $is_admin && ! access_is_enabled() )
+    || access_can_access_function( ACCESS_IMPORT ) )
   $help_list['System Settings'] = 'help_admin.php';
 
 $help_list['Documentation'] = 'help_docs.php';
@@ -63,10 +61,11 @@ foreach ( $help_list as $key => $val ) {
 $helpListStr .= '
     </div>';
 
-/* Just to print out the help pages.
-*
-* @params $help_array   The array of things to print.
-*/
+/**
+ * Just to print out the help pages.
+ *
+ * @params $help_array   The array of things to print.
+ */
 function list_help ( $help_array ) {
   foreach ( $help_array as $lab => $val ) {
     echo '

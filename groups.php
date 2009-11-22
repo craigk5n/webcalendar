@@ -1,12 +1,11 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $count = $lastrow = 0;
 $newGroupStr = translate ( 'Add New Group' );
 $targetStr = 'target="grpiframe" onclick="showFrame( \'grpiframe\' );">';
 
-ob_start ();
+ob_start();
 
 echo '
     <a name="tabgroups"></a>
@@ -38,6 +37,6 @@ echo '
  . 'height: 325px;"></iframe>
     </div>';
 
-ob_end_flush ();
+ob_end_flush();
 
 ?>

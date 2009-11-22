@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * This page will present the user with forms for submitting a data file to import.
  *
@@ -14,21 +13,22 @@
  */
 include_once 'includes/init.php';
 
-/* Generate the selection list for calendar user selection.
+/**
+ * Generate the selection list for calendar user selection.
  * Only ask for calendar user if user is an administrator.
  *
  * We may enhance this in the future to allow:
  *  - selection of more than one user
  *  - non-admin users this functionality
  */
-function print_user_list () {
+function print_user_list() {
   global $is_admin, $is_assistant, $is_nonuser_admin, $login,
   $NONUSER_AT_TOP, $NONUSER_ENABLED, $single_user;
 
   if ( $single_user == 'N' && $is_admin ) {
-    $userlist = user_get_users ();
+    $userlist = user_get_users();
     if ( $NONUSER_ENABLED == 'Y' ) {
-      $nonusers = get_nonuser_cals ();
+      $nonusers = get_nonuser_cals();
       $userlist = ( ! empty ( $NONUSER_AT_TOP ) && $NONUSER_AT_TOP == 'Y' )
       ? array_merge ( $nonusers, $userlist ) : array_merge ( $userlist, $nonusers );
     }

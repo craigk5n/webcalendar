@@ -34,7 +34,7 @@
  *   - include_once 'includes/access.php';
  *
  * Also, for month.php, day.php, week.php, week_details.php:
- *   - {@link send_no_cache_header ()};
+ *   - {@link send_no_cache_header()};
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
@@ -60,7 +60,7 @@ include_once 'includes/dbi4php.php';
 include_once 'includes/formvars.php';
 include_once 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include_once 'includes/' . $user_inc;
 include_once 'includes/validate.php';
@@ -68,7 +68,7 @@ include_once 'includes/site_extras.php';
 include_once 'includes/access.php';
 include_once 'includes/gradient.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
 /**
  * Prints the HTML header and opening HTML body tag.
@@ -258,7 +258,7 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
 
   if ( $include_nav_links && ! $friendly ) {
     if ( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' )
-      $ret .= '<div id="dateselector">' . print_menu_dates () . '</div>';
+      $ret .= '<div id="dateselector">' . print_menu_dates() . '</div>';
 
     if ( $MENU_ENABLED == 'N' )
       include_once 'includes/trailer.php';
@@ -287,7 +287,9 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
 </html>
 ';
 }
-
+/**
+ * print_menu_dates (needs description)
+ */
 function print_menu_dates ( $menu = false ) {
   global $cat_id, $CATEGORIES_ENABLED, $custom_view, $DATE_FORMAT_MD,
   $DATE_FORMAT_MY, $DISPLAY_WEEKENDS, $id, $login, $SCRIPT, $thisday,

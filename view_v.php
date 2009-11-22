@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * This page will display the month "view" with all users's events on the same
  * calendar. (The other month "view" displays each user calendar in a separate

@@ -1,9 +1,8 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 // load user and global cats
-load_user_categories ();
+load_user_categories();
 
 $catList = $catNames = $error = '';
 
@@ -29,7 +28,7 @@ print_header( array( 'js/catsel.php/false/' . $form ),
   '<script type=text/javascript" src="includes/js/catsel.js"></script>',
   '', true, false, true );
 
-ob_start ();
+ob_start();
 
 echo '
     <table align="center" border="0" width="90%" summary="">
@@ -82,7 +81,7 @@ if ( strlen ( $cats ) ) {
   }
 }
 
-ob_end_flush ();
+ob_end_flush();
 
 echo '
           </select>

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * Display a timebar view of a single day.
  *
@@ -20,7 +19,7 @@
  * then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
-// $start = microtime ();
+// $start = microtime();
 include_once 'includes/init.php';
 include_once 'includes/views.php';
 
@@ -40,7 +39,7 @@ if ( count ( $participants ) == 0 ) {
   // this user is not a member of any group assigned to this view.
   $error = translate( 'No users for this view.' );
 
-  echo print_error ( $error ) . print_trailer ();
+  echo print_error ( $error ) . print_trailer();
   exit;
 }
 
@@ -55,7 +54,7 @@ $prevdate = date ( 'Ymd', $now - 86400 );
 
 $matrixStr = daily_matrix ( $date, $participants );
 $partStr = implode ( ',', $participants );
-$trailerStr = print_trailer ();
+$trailerStr = print_trailer();
 $wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 
 $nextStr = translate ( 'Next' );

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Display either the "Activity Log" (for events/tasks) or the
  *  "System Log" (entries not associated with an event).
@@ -20,7 +19,7 @@ include_once 'includes/init.php';
 
 if ( ! $is_admin || ( access_is_enabled()
     && ! access_can_access_function( ACCESS_ACTIVITY_LOG ) ) )
-  die_miserable_death ( print_not_auth () );
+  die_miserable_death ( print_not_auth() );
 
 $eventsStr = translate ( 'Events' );
 $nextStr = translate ( 'Next' );
@@ -30,9 +29,9 @@ $PAGE_SIZE = 25; // Number of entries to show at once.
 $startid = getValue ( 'startid', '-?[0-9]+', true );
 $sys = ( $is_admin && getGetValue ( 'system' ) != '' );
 
-print_header ();
+print_header();
 
-ob_start ();
+ob_start();
 
 echo generate_activity_log( '', $sys, $startid ) . '
     <div class="navigation">'
@@ -60,7 +59,7 @@ if ( ! empty ( $startid ) ) {
   }
 }
 
-ob_end_flush ();
+ob_end_flush();
 
 echo '
     </div>' . print_trailer();

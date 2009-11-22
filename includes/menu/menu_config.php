@@ -1,15 +1,12 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * This file contains a listing of all top menu config settings
  * Items can be enabled/disabled, or menuExtras can be added
- *
- *
 */
 
-//To disable a menu item, simply set it's value to 0
-//If you disable a root menu item, all it's
-//children (item's indented directly below it) will also be disabled
+// To disable a menu item, simply set it's value to 0
+// If you disable a root menu item, all it's
+// children (item's indented directly below it) will also be disabled
 $menuConfig = array (
 'My Calendar'=>1,
   'Home'=>1,
@@ -59,13 +56,13 @@ $menuConfig = array (
   'About WebCalendar'=>1,
 'Unapproved Icon'=>1,
 'Printer'=>1,
-'Login Fullname'=>1,  //Display user's fullname
-'MENU_DATE_TOP'=>1,   //Display Month/Week/Year Selectors See also $MENU_DATE_TOP
+'Login Fullname'=>1,  // Display user's fullname
+'MENU_DATE_TOP'=>1,   // Display Month/Week/Year Selectors See also $MENU_DATE_TOP
 'Login'=>1,
-'Above Custom Header'=>0 //Display Menu before custom header
+'Above Custom Header'=>0 // Display Menu before custom header
  );
 
-$menuExtras = array ();
+$menuExtras = array();
 /* Define your custom menu items using the syntax below
    Allowable menu types are listed below followed by their parameters
    parameters marked with * are optional
@@ -79,8 +76,8 @@ $menuExtras = array ();
   1-6 = inside existing menu
   7 = after exiting menu
 
-//Builds a new menu with submenu elements that will appear
-//in the third menu location
+// Builds a new menu with submenu elements that will appear
+// in the third menu location
 $menuExtras[2] = array( 'menu', 'My Example', '',
   array (
     array ( 'item', 'todo.png', 'New Todo', 'edit_entry.php?eType=task', ''),
@@ -95,8 +92,9 @@ $menuExtras[2] = array( 'menu', 'My Example', '',
    )
  )
 );
-//Builds an icon menu item without any submenu options that will appear
-//after all other menus
+// Builds an icon menu item without any submenu options that will appear
+// after all other menus
 $menuExtras[7] = array( 'item', 'home.png', '', 'http://www.home.com', '_blank' )
 */
+
 ?>

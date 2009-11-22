@@ -1,8 +1,7 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
-//force the css cache to clear by incrementing webcalendar_csscache cookie
+// Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 $webcalendar_csscache = 1;
 if  ( isset ( $_COOKIE['webcalendar_csscache'] ) ) {
   $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
@@ -40,7 +39,7 @@ function save_pref( $prefs, $src) {
           '( cal_login, cal_setting, cal_value ) VALUES ' .
           '( ?, ?, ? )';
         if ( ! dbi_execute ( $sql, array ( $prefuser, $setting, $value ) ) ) {
-          $error = 'Unable to update preference: ' . dbi_error () .
+          $error = 'Unable to update preference: ' . dbi_error() .
    '<br /><br /><span class="bold">SQL:</span>' . $sql;
           break;
         }
@@ -52,7 +51,7 @@ $currenttab = '';
 $public = getGetValue ('public');
 $user = getGetValue ('user');
 $updating_public = false;
-  load_global_settings ();
+  load_global_settings();
 
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
@@ -64,7 +63,7 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 } else {
   $prefuser = $login;
   // Reload preferences so any css changes will take effect
-  load_user_preferences ();
+  load_user_preferences();
 }
 
 if ( ! empty ( $_POST ) && empty ( $error )) {
@@ -78,7 +77,7 @@ if ( ! empty ( $_POST ) && empty ( $error )) {
     save_pref ( $webcal_theme, 'theme' );
   }
   // Reload preferences
-  load_user_preferences ();
+  load_user_preferences();
 }
 
 
@@ -86,11 +85,11 @@ if ($user != $login)
   $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
 
 // Load categories only if editing our own calendar
-//if (!$user || $user == $login) load_user_categories ();
-load_user_categories ();
+//if (!$user || $user == $login) load_user_categories();
+load_user_categories();
 // Reload preferences into $prefarray[].
 // Get system settings first.
-$prefarray = array ();
+$prefarray = array();
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config ' );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
@@ -116,7 +115,7 @@ reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
 include 'includes/date_formats.php';
 
 //get list of theme files from /themes directory
-$themes = array ();
+$themes = array();
 $dir = 'themes/';
 if (is_dir ($dir)) {
    if ($dh = opendir ($dir)) {
@@ -130,7 +129,7 @@ if (is_dir ($dir)) {
 }
 
 //get list of menu themes
-$menuthemes = array ();
+$menuthemes = array();
 $dir = 'includes/menu/themes/';
 if ( is_dir ( $dir ) ) {
    if ( $dh = opendir ( $dir ) ) {
@@ -166,7 +165,7 @@ $selected = ' selected="selected" ';
 $minutesStr = translate ( 'minutes' );
 
 //allow css_cache to display public or NUC values
-@session_start ();
+@session_start();
 $_SESSION['webcal_tmp_login'] = $prefuser;
 //Prh ... add user to edit_template to get/set correct template 
 $openStr ="\"window.open( 'edit_template.php?type=%s&user=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";
@@ -200,7 +199,7 @@ $formaction = substr ($self, strrpos($self, '/') + 1) . $qryStr;
  if ($user)
   echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
 
-echo display_admin_link ();
+echo display_admin_link();
 ?>
 <input type="submit" value="<?php etranslate ( 'Save Preferences' )?>" name="" />
 &nbsp;&nbsp;&nbsp;
@@ -274,7 +273,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  <label for="pref_lang"><?php etranslate ( 'Language' )?>:</label></td><td>
  <select name="pref_LANGUAGE" id="pref_lang">
 <?php
- define_languages (); //load the language list
+ define_languages(); //load the language list
  reset ( $languages );
  while ( list ( $key, $val ) = each ( $languages ) ) {
    // Don't allow users to select browser-defined. We want them to pick
@@ -426,8 +425,8 @@ etranslate ( 'Preferred view' )?>:</td><td>
 if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
   $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
   $prefarray['STARTVIEW'] .= '.php';
-$choices = array ();
-$choices_text = array ();
+$choices = array();
+$choices_text = array();
 if ( access_can_access_function ( ACCESS_DAY, $user ) ) {
   $choices[] = 'day.php';
   $choices_text[] = translate ( 'Day' );
@@ -942,5 +941,5 @@ echo display_month ( date ( 'm' ), date( 'Y' ), true );
 </div>
 </form>
 
-<?php echo print_trailer (); ?>
+<?php echo print_trailer(); ?>
 

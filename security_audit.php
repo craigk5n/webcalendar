@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  This page will take look for possible security issues with
  *  this installation of WebCalendar.
@@ -170,7 +169,9 @@ ob_end_flush();
 exit;
 
 /* functions ... */
-
+/**
+ * print_issue (needs description)
+ */
 function print_issue( $description, $isOk, $help ) {
   global $count;
 
@@ -191,7 +192,8 @@ function print_issue( $description, $isOk, $help ) {
       </tr>';
 }
 
-/* Get the full path to a file located in the webcalendar directory.
+/**
+ * Get the full path to a file located in the webcalendar directory.
  */
 function get_wc_path( $filename ) {
   if ( preg_match( '/(.*)security_audit.php/', __FILE__, $matches ) )
@@ -200,7 +202,9 @@ function get_wc_path( $filename ) {
     // Oops. This file is not named security_audit.php
     die_miserable_death( 'Crap! Someone renamed security_audit.php' );
 }
-
+/**
+ * Determine if a directory or file is writable
+ */
 function is__writable( $path ) {
 //Will work despite Windows ACLs bug.
 //NOTE: use a trailing slash for folders!!!

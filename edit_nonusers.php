@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 print_header( array( 'js/translate.js.php' ),
   '<script type="text/javascript" src="includes/js/edit_nonusers.js"></script>',
@@ -22,7 +21,7 @@ $nid = getValue ( 'nid' );
 
 // Adding/Editing nonuser calendar.
 if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
-  $userlist = user_get_users ();
+  $userlist = user_get_users();
   $button = translate ( 'Add' );
     $buttonAction = 'Add';
   $nid = clean_html ( $nid );
@@ -41,7 +40,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
      . 'onchange="check_name();" maxlength="20" /> '
      . translate ( 'word characters only' );
 
-  ob_start ();
+  ob_start();
 
   echo '
     <form action="edit_nonusers_handler.php" name="editnonuser" method="post" '
@@ -128,7 +127,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     ';
 }
 
-ob_end_flush ();
+ob_end_flush();
 
 echo print_trailer ( false, true, true );
 

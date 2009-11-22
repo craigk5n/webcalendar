@@ -1,7 +1,6 @@
 #!/usr/local/bin/php -q
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * This is a command-line script that will reload all user's remote calendars.
  *
@@ -56,12 +55,12 @@ include __WC_INCLUDEDIR . '/dbi4php.php';
 include __WC_INCLUDEDIR . '/formvars.php';
 include __WC_INCLUDEDIR . '/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include __WC_INCLUDEDIR . '/' . $user_inc;
 include __WC_INCLUDEDIR . '/xcal.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 // Used for hCal parsing.
 require_once __WC_INCLUDEDIR . '/classes/hKit/hkit.class.php';
 
@@ -70,12 +69,12 @@ $debug = false; // Set to true to print debug info...
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
 if ( ! $c ) {
-  echo translate ( 'Error connecting to database' ) . ': ' . dbi_error ();
+  echo translate ( 'Error connecting to database' ) . ': ' . dbi_error();
   exit;
 }
 
-load_global_settings ();
-$WebCalendar->setLanguage ();
+load_global_settings();
+$WebCalendar->setLanguage();
 
 if ( $debug )
   echo "<br />\n" . translate ( 'Include Path' )
@@ -87,7 +86,7 @@ if ( $REMOTES_ENABLED == 'Y' ) {
   $cnt = 0;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $data = array ();
+      $data = array();
       $cnt++;
       $calUser = $row[0];
       $cal_url = $row[1];
@@ -139,14 +138,16 @@ if ( $REMOTES_ENABLED == 'Y' ) {
   echo "<br />\n" . translate ( 'Remote Calendars not enabled' );
 // just in case
 $login = '';
-
+/**
+ * delete_events (needs description)
+ */
 function delete_events ( $nid ) {
   // Get event ids for all events this user is a participant
   $events = get_users_event_ids ( $nid );
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
-  $delete_em = array ();
+  $delete_em = array();
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
       WHERE cal_id = ?', array ( $events[$i] ) );

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  *  This page will handle deletion of an entry in webcal_blob.
  *  This could be a comment or an attachment.
@@ -29,14 +28,14 @@ if ( $is_admin )
 
 $res = dbi_execute ( Doc::getSQLForDocId ( $blid ) );
 if ( ! $res )
-  $error = db_error ();
+  $error = db_error();
 else {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $doc = new Doc( $row );
-    $event_id = $doc->getEventId ();
-    $name = $doc->getName ();
-    $owner = $doc->getLogin ();
-    $type = $doc->getType ();
+    $event_id = $doc->getEventId();
+    $name = $doc->getName();
+    $owner = $doc->getLogin();
+    $type = $doc->getType();
     if ( $owner == $login || user_is_assistant ( $login, $owner ) )
       $can_delete = true;
   } else
@@ -61,12 +60,12 @@ if ( empty ( $error ) && ! $can_delete && $event_id > 0 ) {
 }
 
 if ( empty ( $error ) && ! $can_delete )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 if ( empty ( $error ) && $can_delete ) {
   if ( ! dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_blob_id = ?',
       array ( $blid ) ) )
-    $error = db_error ();
+    $error = db_error();
   else {
     if ( $event_id > 0 ) {
       $removeStr = translate ( 'Removed' );
@@ -79,11 +78,11 @@ if ( empty ( $error ) && $can_delete ) {
     if ( $event_id > 0 )
       do_redirect ( 'view_entry.php?id=' . $event_id );
 
-    do_redirect ( get_preferred_view () );
+    do_redirect ( get_preferred_view() );
   }
 }
 // Some kind of error...
-print_header ();
-echo print_error ( $error ) . print_trailer ();
+print_header();
+echo print_error ( $error ) . print_trailer();
 
 ?>

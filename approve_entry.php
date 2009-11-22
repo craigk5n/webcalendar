@@ -1,12 +1,11 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 require ( 'includes/classes/WebCalMailer.class' );
 
 $error = '';
 
 if ( $readonly == 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 // Give user a chance to add comments to approval email.
 if ( getPostValue( 'comments' ) !== null ) {
   $comments = getPostValue ( 'comments' );
@@ -16,7 +15,7 @@ if ( empty ( $ret ) ) {
   $q_string = ( ! empty ( $_SERVER['QUERY_STRING'] )
     ? '?' . $_SERVER['QUERY_STRING'] : '' );
 
-  print_header ();
+  print_header();
   echo '
     <form action="approve_entry.php' . $q_string
    . '" method="post" name="add_comments">
@@ -58,7 +57,7 @@ $app_user = ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin
   ? '__public__' : ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
 // If User Access Control is enabled, we check to see if they are
 // allowed to approve for the specified user.
-if ( access_is_enabled () && ! empty ( $user ) && $user != $login &&
+if ( access_is_enabled() && ! empty ( $user ) && $user != $login &&
     access_user_calendar ( 'approve', $user ) )
   $app_user = $user;
 
@@ -84,7 +83,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $eventstart = date_to_epoch ( $fmtdate . $time );
   // TODO figure out if creator wants approved comment email.
   // Check UAC.
-  $send_user_mail = ( access_is_enabled ()
+  $send_user_mail = ( access_is_enabled()
     ? access_user_calendar ( 'email', $creator, $login ) : 'Y' );
 
   $htmlmail = get_pref_setting ( $creator, 'EMAIL_HTML' );

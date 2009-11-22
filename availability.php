@@ -1,14 +1,13 @@
-<?php
-/* $Id$
+<?php // $Id$
+/**
  * Page Description:
  * Display a timebar view of a single day.
  *
- * Input Parameters:
- * month (*) - specify the starting month of the timebar
- * day (*)   - specify the starting day of the timebar
- * year (*)  - specify the starting year of the timebar
- * users (*) - csv of users to include
- * (*) required field
+ * Input Parameters: (all are required)
+ * month - specify the starting month of the timebar
+ * day   - specify the starting day of the timebar
+ * year  - specify the starting year of the timebar
+ * users - csv of users to include
  *
  * Security:
  * Must have "allow view others" enabled ($ALLOW_VIEW_OTHER) in

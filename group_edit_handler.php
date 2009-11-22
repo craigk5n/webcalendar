@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 $id = getPostValue ( 'id' );
@@ -7,7 +6,7 @@ $groupname = getPostValue ( 'groupname' );
 $users = getPostValue ( 'users' );
 
 if ( ! $is_admin )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 else {
   $delete = getPostValue ( 'delete' );
   if ( ! empty ( $delete ) ) {
@@ -26,7 +25,7 @@ else {
       if ( ! dbi_execute ( 'UPDATE webcal_group SET cal_name = ?,
         cal_last_update = ? WHERE cal_group_id = ?',
           array ( $groupname, $dateYmd, $id ) ) )
-        $error = db_error ();
+        $error = db_error();
     } else {
       # new... get new id first
       $res = dbi_execute ( 'SELECT MAX( cal_group_id ) FROM webcal_group' );
@@ -38,9 +37,9 @@ else {
         if ( ! dbi_execute ( 'INSERT INTO webcal_group ( cal_group_id, cal_owner,
           cal_name, cal_last_update ) VALUES ( ?, ?, ?, ? )',
             array ( $id, $login, $groupname, $dateYmd ) ) )
-          $error = db_error ();
+          $error = db_error();
       } else
-        $error = db_error ();
+        $error = db_error();
     }
     # update user list
     if ( empty ( $error ) && ! empty ( $users ) ) {

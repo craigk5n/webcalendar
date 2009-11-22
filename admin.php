@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 include_once 'includes/date_formats.php';
 if ( file_exists ( 'install/default_config.php' ) )
@@ -52,8 +51,8 @@ function save_pref ( $prefs, $src ) {
     }
   }
   // Reload preferences so any CSS changes will take effect.
-  load_global_settings ();
-  load_user_preferences ();
+  load_global_settings();
+  load_user_preferences();
 }
 
 /**
@@ -99,7 +98,7 @@ function admin_print_color_input_html ( $varname, $title, $varval = '' ) {
 }
 
 $currenttab = '';
-$error = ( $is_admin ? '' : print_not_auth () );
+$error = ( $is_admin ? '' : print_not_auth() );
 
 if ( ! empty ( $_POST ) && empty ( $error ) ) {
   $currenttab = getPostValue ( 'currenttab' );
@@ -116,9 +115,9 @@ if ( ! empty ( $_POST ) && empty ( $error ) ) {
 // Load any new config settings. Existing ones will not be affected.
 // This function is in the install/default_config.php file.
 if ( function_exists ( 'db_load_config' ) && empty ( $_POST ) )
-  db_load_config ();
+  db_load_config();
 
-$menuthemes = $s = $themes = array ();
+$menuthemes = $s = $themes = array();
 
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
 
@@ -192,7 +191,7 @@ if ( ! $error ) {
   $GLOBALS['WEEKENDBG'] = $s['WEEKENDBG'];
   $GLOBALS['WEEKNUMBER'] = $s['WEEKNUMBER'];
 
-  define_languages (); // Load the language list.
+  define_languages(); // Load the language list.
   reset ( $languages );
 
   $checked = ' checked="checked"';
@@ -200,7 +199,7 @@ if ( ! $error ) {
   $select = translate ( 'Select' ) . '...';
 
   // Allow css_cache of webcal_config values.
-  @session_start ();
+  @session_start();
   $_SESSION['webcal_tmp_login'] = 'blahblahblah';
 
   $editStr = '<input type="button" value="' . translate ( 'Edit' )
@@ -332,7 +331,7 @@ if ( ! $error ) {
   }
 
   set_today ( date ( 'Ymd' ) );
-  ob_start ();
+  ob_start();
 
   echo '
     <h2>' . translate ( 'System Settings' )
@@ -342,7 +341,7 @@ if ( ! $error ) {
    . 'outerWidth=420\' );" /></h2>
     <form action="admin.php" method="post" onsubmit="return valid_form( this );"'
    . ' name="prefform">'
-   . display_admin_link () . '
+   . display_admin_link() . '
       <input type="hidden" name="currenttab" id="currenttab" value="'
    . $currenttab . '" />
       <input type="submit" value="' . $saveStr
@@ -922,7 +921,7 @@ if ( ! $error ) {
         <input type="submit" value="' . $saveStr . '" name="" />
       </div>
     </form>';
-  ob_end_flush ();
+  ob_end_flush();
 } else // if $error
   echo print_error ( $error, true );
 

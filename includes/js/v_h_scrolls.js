@@ -1,4 +1,5 @@
-/* $Id$ */
+// $Id$
+
 /* This function needs to be seperate for each page that has scrollers.
 function start() {
   // Code each vertical scroller as follows:

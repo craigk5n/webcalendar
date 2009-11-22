@@ -1,32 +1,21 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
 print_header ( '', '', '', true );
 
-ob_start ();
+ob_start();
 
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Import' ) . '</h2>
     <h3>' . translate ( 'Palm Desktop' ) . '</h3>
-    <p>'
- /*
-translate ( 'This form will allow you to import entries from the Palm Desktop Datebook.' )
-translate ( 'It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.' )
- */
-     . translate ( 'allow you to import entries from the Palm...' ) . '</p>
+    <p>' . translate ( 'allow you to import entries from the Palm...' ) . '</p>
     <p>' . translate ( 'The following entries will not be imported' ) . '</p>
     <ul>
       <li>' . translate ( 'Entries older than the current date' ) . '</li>
       <li>' . translate ( 'Entries created in the Palm Desktop...' ) . '</li>
     </ul>
-    <p>'
- /*
-translate ( 'Anything imported from Palm will be overwritten during the next import (unless the event date has passed).' )
-translate ( 'Therefore, updates should be made in the Palm Desktop.' )
- */
-     . translate ( 'Anything imported from Palm...' ) . '</p>
+    <p>' . translate ( 'Anything imported from Palm...' ) . '</p>
     <h3>' . translate ( 'vCal' ) . '</h3>
     <p>' . translate ( 'This form will import vCalendar (.vcs) 1.0 events.' )
  . '</p>
@@ -41,7 +30,7 @@ translate ( 'Therefore, updates should be made in the Palm Desktop.' )
  . translate ( 'Enabling' ) . ' <b>' . translate ( 'Overwrite Prior Import' )
  . '</b>, ' . translate ( 'will cause events imported previously...' ) . '</p>';
 
-ob_end_flush ();
+ob_end_flush();
 
 echo print_trailer ( false, true, true );
 

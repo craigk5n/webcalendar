@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * This is the "Week by Time" and "Week by Day" view.
  * This view will show either a week's worth of events (type='R')
@@ -178,7 +177,7 @@ if ( $viewusercnt == 0 ) {
 
 if ( ! empty ( $error ) ) {
   echo print_error ( $error );
-  echo print_trailer ();
+  echo print_trailer();
   exit;
 }
 
@@ -207,8 +206,8 @@ if ( $user == '__public__' && $PUBLIC_ACCESS_VIEW_UNAPPROVED != 'Y' )
 
 // Step through each user and load events for that user.
 // Store in $e_save[] (normal events) and $re_save[] (repeating events).
-$e_save = array ();
-$re_save = array ();
+$e_save = array();
+$re_save = array();
 if ( ! $fit_to_window )
   $uwf = $col_pixels . 'px';
 else
@@ -309,7 +308,7 @@ if ( ! $fit_to_window ) { ?>
 // We need to store all the events and where they go before we begin
 // printing any output.
 
-$all_day = array ();
+$all_day = array();
 
 //<long-winded-explanation>
 // We loop through the events once checking for the start time. If we
@@ -321,10 +320,10 @@ $all_day = array ();
 // would change the first_slot value. There is then a gap above the all-day
 // event.
 //</long-winded-explanation>
-$am_part = array (); // am I a participant array
+$am_part = array(); // am I a participant array
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   for ( $u = 0; $u < $viewusercnt; $u++ ) {
-    $untimed = array ();
+    $untimed = array();
     $user = $viewusers[$u];
     $events = $e_save[$u];
     $repeated_events = $re_save[$u];
@@ -333,14 +332,13 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $rep = get_repeating_entries ( $user, $dateYmd );
     $repcnt = count ( $rep );
     for ( $j = 0; $j < $repcnt; $j++ ) {
-      if ( ! isset ( $am_part[$rep[$j]->getID ()] ) ) {
-        $am_part[$rep[$j]->getID ()] =
-          user_is_participant ( $rep[$j]->getID (), $login );
+      if( ! isset( $am_part[$rep[$j]->getID()] ) ) {
+        $am_part[$rep[$j]->getID()] =
+          user_is_participant( $rep[$j]->getID(), $login );
       }
-      if ( $get_unapproved || $rep[$j]->getStatus () == 'A' ) {
-        if ( $rep[$j]->getDuration () > 0 &&
-          $rep[$j]->getDuration () != 1440 ) {
-          $slot = calc_time_slot ( $rep[$j]->getTime (), false );
+      if( $get_unapproved || $rep[$j]->getStatus() == 'A' ) {
+        if ( $rep[$j]->getDuration() > 0 && $rep[$j]->getDuration() != 1440 ) {
+          $slot = calc_time_slot( $rep[$j]->getTime(), false );
           if ( $slot < $first_slot ) {
             $first_slot = $slot;
           }
@@ -350,13 +348,12 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $ev = get_entries ( $dateYmd, $get_unapproved, 1, 1);
     $evcnt = count ( $ev );
     for ( $j = 0; $j < $evcnt; $j++ ) {
-      if ( ! isset ( $am_part[$ev[$j]->getID ()] ) ) {
-        $am_part[$ev[$j]->getID ()] =
-          user_is_participant ( $ev[$j]->getID (), $login );
+      if( ! isset( $am_part[$ev[$j]->getID()] ) ) {
+        $am_part[$ev[$j]->getID()] =
+          user_is_participant( $ev[$j]->getID(), $login );
       }
-      if ( $ev[$j]->getDuration () > 0 &&
-        $ev[$j]->getDuration () != 1440 ) {
-        $slot = calc_time_slot ( $ev[$j]->getTime (), false );
+      if( $ev[$j]->getDuration() > 0 && $ev[$j]->getDuration() != 1440 ) {
+        $slot = calc_time_slot( $ev[$j]->getTime(), false );
         if ( $slot < $first_slot ) {
           $first_slot = $slot;
         }
@@ -367,7 +364,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
 for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
   for ( $u = 0; $u < $viewusercnt; $u++ ) {
-    $untimed = array ();
+    $untimed = array();
     $user = $viewusers[$u];
     $events = $e_save[$u];
     $repeated_events = $re_save[$u];
@@ -378,23 +375,23 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
     // Get static non-repeating events
     $ev = get_entries ( $dateYmd, $get_unapproved, 1, 1 );
-    $hour_arr = array ();
-    $rowspan_arr = array ();
+    $hour_arr = array();
+    $rowspan_arr = array();
     $evcnt = count ( $ev );
     $repcnt = count ( $rep );
     for ( $i = 0; $i < $evcnt; $i++ ) {
       // print out any repeating events that are before this one...
       while ( $cur_rep < $repcnt &&
-        $rep[$cur_rep]->getTime () < $ev[$i]->getTime () ) {
-        if ( $get_unapproved || $rep[$cur_rep]->getStatus () == 'A' ) {
-          if ( $rep[$cur_rep]->getDuration () == 1440 )
+        $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
+        if( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
+          if( $rep[$cur_rep]->getDuration() == 1440 )
             $all_day[$d] = 1;
           html_for_event_week_at_a_glance ( $rep[$cur_rep], $dateYmd, 'small', $show_time );
         }
         $cur_rep++;
       }
-      if ( $get_unapproved || $ev[$i]->getStatus () == 'A' ) {
-        if ( $ev[$i]->getDuration () == 1440 )
+      if( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
+        if( $ev[$i]->getDuration() == 1440 )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $ev[$i], $dateYmd, 'small', $show_time );
         //echo "Found event date=$dateYmd name='$viewname'<br />\n";
@@ -403,8 +400,8 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     }
     // print out any remaining repeating events
     while ( $cur_rep < $repcnt ) {
-      if ( $get_unapproved || $rep[$cur_rep]->getStatus () == 'A' ) {
-        if ( $rep[$cur_rep]->getDuration () == 1440 )
+      if( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
+        if( $rep[$cur_rep]->getDuration() == 1440 )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $rep[$cur_rep], $dateYmd, 'small', $show_time );
       }
@@ -491,7 +488,7 @@ if ( $untimed_found || $show_untimed_row_always ) {
   echo "</tr>\n";
 }
 
-$rowspan_day = array ();
+$rowspan_day = array();
 for ( $u = 0; $u < $viewusercnt; $u++ ) {
   for ( $d = $start_ind; $d <= $end_ind; $d++ )
     $rowspan_day[$u][$d] = 0;
@@ -585,5 +582,5 @@ $user = ''; // reset
 if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
 echo $printerStr;
-echo print_trailer (); ?>
+echo print_trailer(); ?>
 

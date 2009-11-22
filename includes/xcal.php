@@ -9,9 +9,9 @@
 * @package WebCalendar
 */
 
-/*
- * Generate Product ID string
+/**
  *
+ * Generate Product ID string
  */
 function generate_prodid ( $type='' ) {
   global $PROGRAM_NAME, $PROGRAM_VERSION;
@@ -27,7 +27,8 @@ function generate_prodid ( $type='' ) {
   $ret .= "\r\n";
   return $ret;
 }
-/*
+/**
+ *
  * Export a quoted Printable String
  */
 
@@ -77,7 +78,7 @@ function mb_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
 function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
   $len = strlen ( $string );
   $fold = $limit;
-  $res = array ();
+  $res = array();
   $row = '';
   $enc = '';
   $lwsp = 0; // position of the last linear whitespace (where to fold)
@@ -156,8 +157,8 @@ function export_get_attendee( $id, $export ) {
 
   $count = 0;
 
-  $attendee = array ();
-  $entry_array = array ();
+  $attendee = 
+  $entry_array = array();
 
   while ( $entry = dbi_fetch_row( $att_res ) ) {
     $entry_array[$count++] = $entry;
@@ -167,7 +168,7 @@ function export_get_attendee( $id, $export ) {
 
   $count = 0;
 
-  $userlist = user_get_users ();
+  $userlist = user_get_users();
 
   while ( list ( $key, $row ) = each ( $entry_array ) ) {
     // $user[0] = cal_firstname, cal_lastname, cal_email, cal_login
@@ -260,7 +261,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
     }
   }
   if ( strcmp( $texport, 'ical' ) == 0 ) {
-    $utc_dtstamp = export_ts_utc_date ( time () );
+    $utc_dtstamp = export_ts_utc_date( time() );
     $ret .= "DTSTAMP:$utc_dtstamp\r\n";
     // We don' want DTEND for VTODOs
     if ( $vtype == 'T' || $vtype == 'N' ) return $ret;
@@ -304,7 +305,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
   $res = dbi_execute ( $sql, array ( $id ) );
 
   if ( $res ) {
-    $exdate = $rdate = array ();
+    $exdate = $rdate = array();
     while ( $row = dbi_fetch_row( $res ) ) {
       if ( $row[1] == 1 )
         $exdate[] = $row[0];
@@ -472,8 +473,8 @@ function export_recurrence_vcal( $id, $date ) {
   $res = dbi_execute ( $sql, array ( $id ) );
 
   if ( $res ) {
-    $exdate = array ();
-    $rdate = array ();
+    $exdate =
+    $rdate = array();
     while ( $row = dbi_fetch_row( $res ) ) {
       if ( $row[1] == 1 ) {
         $exdate[] = $row[0];
@@ -570,7 +571,8 @@ function export_recurrence_vcal( $id, $date ) {
   }
 }
 
-/*
+/**
+ *
  * Create a date-time format (e.g. "20041130T123000Z") that is
  * Times are now stored in GMT so no conversion is needed
  */
@@ -581,7 +583,8 @@ function export_get_utc_date ( $date, $time = 0 ) {
   return $utc;
 }
 
-/*
+/**
+ *
  * Create a date-time format (e.g. "20041130T123000Z") that is
  * Times are now stored in GMT so no conversion is needed
  */
@@ -607,7 +610,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
   global $cal_type;
 
   $ret = '';
-  $reminder = array ();
+  $reminder = array();
   // Don't send reminder for event in the past
   // unless this is a task that may be overdue
   if ( $date < date ( 'Ymd' ) && $task_complete == true )
@@ -657,7 +660,7 @@ function export_get_event_entry( $id = 'all', $attachment = false ) {
   global $cat_filter, $DISPLAY_UNAPPROVED, $enddate, $include_layers, $layers,
   $login, $moddate, $startdate, $type, $user, $USER_REMOTE_ACCESS, $use_all_dates;
  
-  $sql_params = array ();
+  $sql_params = array();
   $sql = 'SELECT we.cal_id, we.cal_name, we.cal_priority, we.cal_date,
     we.cal_time, weu.cal_status, we.cal_create_by, we.cal_access, we.cal_duration,
     we.cal_description, weu.cal_percent, we.cal_completed, we.cal_due_date,
@@ -760,7 +763,7 @@ function save_uid_for_event ( $importId, $id, $uid ) {
     cal_login, cal_import_type, cal_external_id ) VALUES ( ?, ?, ?, ?, ? )';
   // do_debug ( "SQL: $sql" );
   if ( ! dbi_execute ( $sql, array ( $importId, $id, $login, 'publish', $uid ) ) ) {
-    $error = db_error ();
+    $error = db_error();
     // do_debug ( $error );
   }
   // do_debug ( "leaving func" );
@@ -768,7 +771,7 @@ function save_uid_for_event ( $importId, $id, $uid ) {
 // Add an entry in webcal_import. For each import or publish request,
 // we create a single webcal_import row that goes with the many
 // webcal_import_data rows (one for each event).
-function create_import_instance () {
+function create_import_instance() {
   global $login, $prodid;
 
   $name = $prodid;
@@ -786,7 +789,7 @@ function create_import_instance () {
     cal_date, cal_type, cal_login ) VALUES ( ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $importId, $name, date ( 'Ymd' ),
     'publish', $login ) ) ) {
-    $error = db_error ();
+    $error = db_error();
     return;
   }
   return ( $importId );
@@ -799,7 +802,7 @@ function export_vcal ( $id ) {
   // header ( "Content-Type: text/plain" );
   $res = export_get_event_entry( $id );
 
-  $entry_array = array ();
+  $entry_array = array();
   $count = 0;
 
   while ( $entry = dbi_fetch_row( $res ) ) {
@@ -814,7 +817,7 @@ function export_vcal ( $id ) {
     echo "VERSION:1.0\r\n";
   } while ( list ( $key, $row ) = each ( $entry_array ) ) {
     $id = $row[0];
-    $export_uid = generate_uid ();
+    $export_uid = generate_uid();
     $name = $row[1];
     $priority = $row[2];
     $date = $row[3];
@@ -894,9 +897,8 @@ function export_vcal ( $id ) {
     //}
 
     /* Time - all times are utc */
-    echo export_time ( $date, $duration, $time, 'vcal' );
-
-    echo export_recurrence_vcal( $id, $date );
+    echo export_time ( $date, $duration, $time, 'vcal' )
+     . export_recurrence_vcal( $id, $date );
 
     export_alarm_vcal( $id, $date );
 
@@ -919,7 +921,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   $ret = $Vret = $vtimezone_data = $use_vtimezone = '';
 
   $res = export_get_event_entry( $id, $attachment );
-  $entry_array = array ();
+  $entry_array = array();
   $count = 0;
   while ( $entry = dbi_fetch_row( $res ) ) {
     $entry_array[$count++] = $entry;
@@ -989,7 +991,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
           // or where the remote cal subscription is coming from in case
           // they update some of our events. But, I cannot see a way to
           // do that.
-          $exportId = create_import_instance ();
+          $exportId = create_import_instance();
         }
         if ( $attachment == false )
           save_uid_for_event ( $exportId, $id, $event_uid );
@@ -1157,7 +1159,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     }
   }
   
-  /* VTIMEZONE Set in export_time () if needed */
+  /* VTIMEZONE Set in export_time() if needed */
   $ret .= $vtimezone_data  . $Vret;
 
 
@@ -1211,8 +1213,8 @@ function import_data ( $data, $overwrite, $type ) {
   $count_suc, $errormsg, $error_num, $H2COLOR, $importcat, $ImportType,
   $login, $numDeleted, $single_user, $single_user_login, $sqlLog;
 
-  $oldUIDs = array ();
-  $oldIds = array ();
+  $oldUIDs =
+  $oldIds = array();
   $firstEventId = $count_suc = 0;
   // $importId = -1;
   $importId = 1;
@@ -1238,7 +1240,7 @@ function import_data ( $data, $overwrite, $type ) {
     cal_date, cal_type, cal_login ) VALUES ( ?, NULL, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $importId, date ( 'Ymd' ),
     $type, $login ) ) ) {
-    $errormsg = db_error ();
+    $errormsg = db_error();
     return;
   }
   if ( ! is_array ( $data ) )
@@ -1311,13 +1313,13 @@ function import_data ( $data, $overwrite, $type ) {
       // first check for any schedule conflicts
       if ( ( $ALLOW_CONFLICT_OVERRIDE == 'N' && $ALLOW_CONFLICTS == 'N' ) &&
           ( $Entry['Duration'] != 0 ) ) {
-        $ex_days = array ();
+        $ex_days = array();
         if ( ! empty ( $Entry['Repeat']['Exceptions'] ) ) {
           foreach ( $Entry['Repeat']['Exceptions'] as $ex_date ) {
             $ex_days[] = gmdate ( 'Ymd', $ex_date );
           }
         }
-        $inc_days = array ();
+        $inc_days = array();
         if ( ! empty ( $Entry['Repeat']['Inclusions'] ) ) {
           foreach ( $Entry['Repeat']['Inclusions'] as $inc_date ) {
             $inc_days[] = gmdate ( 'Ymd', $inc_date );
@@ -1377,8 +1379,8 @@ function import_data ( $data, $overwrite, $type ) {
       if ( $firstEventId == 0 )
         $firstEventId = $id;
 
-      $names = array ();
-      $values = array ();
+      $names =
+      $values = array();
       $names[] = 'cal_id';
       $values[] = $id;
       if ( ! $updateMode ) {
@@ -1471,7 +1473,7 @@ function import_data ( $data, $overwrite, $type ) {
       $names[] = 'cal_description';
       $values[] = $Entry['Description'];
       // do_debug ( "descr='" . $Entry['Description'] . "'" );
-      $sql_params = array ();
+      $sql_params = array();
       $namecnt = count ( $names );
       if ( $updateMode ) {
         $sql = 'UPDATE webcal_entry SET ';
@@ -1501,7 +1503,7 @@ function import_data ( $data, $overwrite, $type ) {
       // do_debug ( "SQL> $sql" );
       if ( empty ( $error ) ) {
         if ( ! dbi_execute ( $sql, $sql_params ) ) {
-          $error .= db_error ();
+          $error .= db_error();
           // do_debug ( $error );
           break;
         } else if ( $ImportType == 'RMTICS' ) {
@@ -1528,7 +1530,7 @@ function import_data ( $data, $overwrite, $type ) {
         $uid = generate_uid ( $id );
         $uid = empty ( $Entry['UID'] ) ? $uid : $Entry['UID'];
         if ( $importId < 0 ) {
-          $importId = create_import_instance ();
+          $importId = create_import_instance();
         }
 
         if ( $ImportType == 'PALMDESKTOP' ) {
@@ -1538,7 +1540,7 @@ function import_data ( $data, $overwrite, $type ) {
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_execute ( $sql, array ( $importId, $id,
                 $calUser, 'palm', $Entry['RecordID'] ) ) ) {
-            $error = db_error ();
+            $error = db_error();
             break;
           }
         } else if ( $ImportType == 'VCAL' ) {
@@ -1550,7 +1552,7 @@ function import_data ( $data, $overwrite, $type ) {
             VALUES ( ?, ?, ?, ?, ? )';
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_execute ( $sql, array ( $importId, $id, $calUser, 'vcal', $uid ) ) ) {
-            $error = db_error ();
+            $error = db_error();
             break;
           }
         } else if ( $ImportType == 'ICAL' ) {
@@ -1563,7 +1565,7 @@ function import_data ( $data, $overwrite, $type ) {
             VALUES ( ?, ?, ?, ?, ? )';
           $sqlLog .= $sql . "<br />\n";
           if ( ! dbi_execute ( $sql, array ( $importId, $id, $calUser, 'ical', $uid ) ) ) {
-            $error = db_error ();
+            $error = db_error();
             break;
           }
         }
@@ -1578,7 +1580,7 @@ function import_data ( $data, $overwrite, $type ) {
         // do_debug ( "SQL> $sql" );
         if ( ! dbi_execute ( $sql, array ( $id, $participants[0], $status,
           $percent ) ) ) {
-          $error = db_error ();
+          $error = db_error();
           // do_debug ( "Error: " . $error );
           break;
         }
@@ -1587,7 +1589,7 @@ function import_data ( $data, $overwrite, $type ) {
         $sql = 'UPDATE webcal_entry_user SET cal_status = ?
           WHERE cal_id = ?';
         if ( ! dbi_execute ( $sql, array ( $status, $id ) ) ) {
-          $error = db_error ();
+          $error = db_error();
           // do_debug ( "Error: " . $error );
           break;
         }
@@ -1596,7 +1598,7 @@ function import_data ( $data, $overwrite, $type ) {
           $sql = 'UPDATE webcal_entry_user SET cal_percent = ?
             WHERE cal_id = ?';
           if ( ! dbi_execute ( $sql, array ( $percent, $id ) ) ) {
-            $error = db_error ();
+            $error = db_error();
             // do_debug ( "Error: " . $error );
             break;
           }
@@ -1629,8 +1631,8 @@ function import_data ( $data, $overwrite, $type ) {
         dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
           array ( $id ) );
       }
-      $names = array ();
-      $values = array ();
+      $names =
+      $values = array();
       if ( ! empty ( $Entry['Repeat']['Frequency'] ) ) {
         $names[] = 'cal_id';
         $values[] = $id;
@@ -1695,7 +1697,7 @@ function import_data ( $data, $overwrite, $type ) {
 
         $string_names = '';
         $string_values = '';
-        $sql_params = array ();
+        $sql_params = array();
         $namecnt = count ( $names );
         for ( $f = 0; $f < $namecnt; $f++ ) {
           if ( $f > 0 ) {
@@ -1711,7 +1713,7 @@ function import_data ( $data, $overwrite, $type ) {
 
         if ( ! dbi_execute ( $sql, $sql_params ) ) {
           $error = 'Unable to add to webcal_entry_repeats: '
-           . dbi_error () . "<br /><br />\n<b>SQL:</b> $sql";
+           . dbi_error() . "<br /><br />\n<b>SQL:</b> $sql";
           break;
         }
         // Repeating Exceptions...
@@ -1723,7 +1725,7 @@ function import_data ( $data, $overwrite, $type ) {
 
             if ( ! dbi_execute ( $sql, array ( $id, $ex_date, 1 ) ) ) {
               $error = 'Unable to add to webcal_entry_repeats_not: ' .
-              dbi_error () . "<br /><br />\n<b>SQL:</b> $sql";
+              dbi_error() . "<br /><br />\n<b>SQL:</b> $sql";
               break;
             }
           }
@@ -1737,7 +1739,7 @@ function import_data ( $data, $overwrite, $type ) {
 
             if ( ! dbi_execute ( $sql, array ( $id, $inc_date, 0 ) ) ) {
               $error = 'Unable to add to webcal_entry_repeats_not: ' .
-              dbi_error () . "<br /><br />\n<b>SQL:</b> $sql";
+              dbi_error() . "<br /><br />\n<b>SQL:</b> $sql";
               break;
             }
           }
@@ -1749,8 +1751,8 @@ function import_data ( $data, $overwrite, $type ) {
          array ( $id ) );
 
       if ( ! empty ( $Entry['AlarmSet'] ) && $Entry['AlarmSet'] == 1 ) {
-        $names = array ();
-        $values = array ();
+        $names =
+        $values = array();
 
         $names[] = 'cal_id';
         $values[] = $id;
@@ -1784,7 +1786,7 @@ function import_data ( $data, $overwrite, $type ) {
         }
         $string_names = '';
         $string_values = '';
-        $sql_params = array ();
+        $sql_params = array();
         $namecnt = count ( $names );
         for ( $f = 0; $f < $namecnt; $f++ ) {
           if ( $f > 0 ) {
@@ -1798,7 +1800,7 @@ function import_data ( $data, $overwrite, $type ) {
         $sql = 'INSERT INTO webcal_reminders (' . $string_names . ' ) '
          . ' VALUES ( ' . $string_values . ' )';
         if ( ! dbi_execute ( $sql, $sql_params ) )
-          $error = db_error ();
+          $error = db_error();
       }
     }
     // here to end not in icalclient
@@ -1869,7 +1871,7 @@ function import_data ( $data, $overwrite, $type ) {
           }
           dbi_free_result ( $res );
         } else {
-          echo db_error () . "<br />\n";
+          echo db_error() . "<br />\n";
         }
       }
       $oldidcnt = count ( $oldIds );
@@ -1884,7 +1886,7 @@ function import_data ( $data, $overwrite, $type ) {
   }
 }
 
-/*Functions from import_ical.php
+/* Functions from import_ical.php
  * This file incudes functions for parsing iCal data files during
  * an import.
  *
@@ -1894,21 +1896,23 @@ function import_data ( $data, $overwrite, $type ) {
  * http://www.ietf.org/rfc/rfc2445.txt
  *
  */
-// Parse the ical file and return the data hash.
-// NOTE!!!!!
-// There seems to be a bug in certain versions of PHP where the fgets ()
-// returns a blank string when reading stdin. I found this to be
-// a problem with PHP 4.1.2 on Linux.
-// It did work correctly with PHP 5.0.2.
+/**
+ * Parse the ical file and return the data hash.
+ * NOTE!!!!!
+ * There seems to be a bug in certain versions of PHP where the fgets()
+ * returns a blank string when reading stdin. I found this to be
+ * a problem with PHP 4.1.2 on Linux.
+ * It did work correctly with PHP 5.0.2.
+ */
 function parse_ical ( $cal_file, $source = 'file' ) {
   global $errormsg, $tz;
 
-  $ical_data = array ();
+  $ical_data = array();
   do_debug ( "in parse_ical, file=$cal_file, source=$source" );
   if ( $source == 'file' || $source == 'remoteics' ) {
     if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
       $errormsg .= "Can't read temporary file: $cal_file\n";
-      exit ();
+      exit();
     } else {
       // Read in contents of entire file first
       $data = '';
@@ -1938,9 +1942,9 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       $data .= $line;
       if ( $cnt > 10 && strlen ( $data ) == 0 ) {
         do_debug ( "Read $cnt lines of data, but got no data :-(" );
-        do_debug ( "Informing user of PHP server bug (PHP v" . phpversion () . ")" );
+        do_debug( "Informing user of PHP server bug (PHP v" . phpversion() . ")" );
         // Note: Mozilla Calendar does not display this error for some reason.
-        echo '<br /><b>Error:</b> Your PHP server ' . phpversion ()
+        echo '<br /><b>Error:</b> Your PHP server ' . phpversion()
          . ' seems to have a bug reading stdin. '
          . 'Try upgrading to a newer PHP release.<br />';
         exit;
@@ -1954,7 +1958,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       do_debug ( "Read $cnt lines of data, but got no data :-(" );
       do_debug ( "Informing user of PHP server bug" );
       header ( 'Content-Type: text/plain' );
-      echo 'Error: Your PHP server ' . phpversion ()
+      echo 'Error: Your PHP server ' . phpversion()
        . ' seems to have a bug reading stdin.' . "\n"
        . 'Try upgrading to a newer release.' . "\n";
       exit;
@@ -2249,11 +2253,13 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   } // End while
   return $ical_data;
 }
-// Parse the hcal array
+/**
+ * Parse the hcal array
+ */
 function parse_hcal ( $hcal_array ) {
   global $errormsg, $tz;
 
-  $ical_data = array ();
+  $ical_data = array();
 
   $error = false;
   $event = '';
@@ -2364,15 +2370,18 @@ function parse_hcal ( $hcal_array ) {
   } // End foreach $hcal_array
   return $hcal_data;
 }
-// Convert interval to webcal repeat type
+/**
+ * Convert interval to webcal repeat type
+ */
 function RepeatType ( $type ) {
   $Repeat = array ( 0, 'daily', 'weekly', 'monthlyByDay', 'monthlyByDate',
     'monthlyBySetPos', 'yearly', 'manual' );
   return $Repeat[$type];
 }
 
-
-// Convert ical format (yyyymmddThhmmssZ) to epoch time
+/**
+ * Convert ical format (yyyymmddThhmmssZ) to epoch time
+ */
 function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
   $plus_m = '0', $plus_y = '0' ) {
   global $calUser, $SERVER_TIMEZONE;
@@ -2436,7 +2445,9 @@ function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
   set_env ( 'TZ', $user_TIMEZONE );
   return $TS;
 }
-// Put all ical data into import hash structure
+/**
+ * Put all ical data into import hash structure
+ */
 function format_ical ( $event ) {
   global $login;
 
@@ -2626,7 +2637,7 @@ function format_ical ( $event ) {
     $fevent['Percent'] = $event['percent'];
   }
   // Repeating exceptions
-  $fevent['Repeat']['Exceptions'] = array ();
+  $fevent['Repeat']['Exceptions'] = array();
   if ( ! empty ( $event['exdate'] ) && $event['exdate'] ) {
     $EX = explode ( ',', $event['exdate'] );
     foreach ( $EX as $exdate ) {
@@ -2634,7 +2645,7 @@ function format_ical ( $event ) {
     }
     $fevent['Repeat']['Frequency'] = 7; //manual, this can be changed later
   } // Repeating inclusions
-  $fevent['Repeat']['Inclusions'] = array ();
+  $fevent['Repeat']['Inclusions'] = array();
   if ( ! empty ( $event['rdate'] ) && $event['rdate'] ) {
     $R = explode ( ',', $event['rdate'] );
     foreach ( $R as $rdate ) {
@@ -2726,17 +2737,19 @@ function format_ical ( $event ) {
   } // end if rrule
   return $fevent;
 }
-// Figure out days of week for BYDAY values
-// If value has no numeric offset, then set it's corresponding
-// day value to  f. This selection is arbritary but gives
-// plenty of room on either side to adjust because we need
-// to allow values from -5 to +5
-// For example  MO = f, -1MO = e, -2MO = d, +2MO - g, +3MO =h
-// Note: f = chr(102) and 'n' is still a not present value
+/**
+ * Figure out days of week for BYDAY values
+ * If value has no numeric offset, then set it's corresponding
+ * day value to  f. This selection is arbritary but gives
+ * plenty of room on either side to adjust because we need
+ * to allow values from -5 to +5
+ * For example  MO = f, -1MO = e, -2MO = d, +2MO - g, +3MO =h
+ * Note: f = chr(102) and 'n' is still a not present value
+ */
 function rrule_repeat_days ( $RA ) {
   global $byday_names;
 
-  $ret = array ();
+  $ret = array();
   foreach ( $RA as $item ) {
     $item = strtoupper ( $item );
     if ( in_array ( $item, $byday_names ) )
@@ -2745,7 +2758,9 @@ function rrule_repeat_days ( $RA ) {
 
   return ( empty ( $ret ) ? false : implode ( ',', $ret ) );
 }
-// Convert PYMDTHMS format to minutes
+/**
+ * Convert PYMDTHMS format to minutes
+ */
 function parse_ISO8601_duration ( $duration ) {
   // we'll skip Years and Months
   $const = array ( 'M' => 1,
@@ -2766,16 +2781,18 @@ function parse_ISO8601_duration ( $duration ) {
   return $ret;
 }
 
-// Functions from import_vcal.php
-// Parse the vcal file and return the data hash.
+/**
+ * Functions from import_vcal.php
+ * Parse the vcal file and return the data hash.
+ */
 function parse_vcal( $cal_file ) {
   global $errormsg, $tz;
 
-  $vcal_data = array ();
+  $vcal_data = array();
   // echo "Parsing vcal file...<br />\n";
   if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
-    exit ();
+    exit();
   } else {
     // reflect the section where we are in the file:
     // VCALENDAR, TZ/DAYLIGHT, VEVENT, ALARM
@@ -2885,7 +2902,9 @@ function parse_vcal( $cal_file ) {
 
   return $vcal_data;
 }
-// Convert vcal format (yyyymmddThhmmssZ) to epoch time
+/**
+ * Convert vcal format (yyyymmddThhmmssZ) to epoch time
+ */
 function vcaldate_to_timestamp( $vdate, $plus_d = '0', $plus_m = '0', $plus_y = '0' ) {
   $y = substr ( $vdate, 0, 4 ) + $plus_y;
   $m = substr ( $vdate, 4, 2 ) + $plus_m;
@@ -2903,7 +2922,9 @@ function vcaldate_to_timestamp( $vdate, $plus_d = '0', $plus_m = '0', $plus_y = 
 
   return $TS;
 }
-// Put all vcal data into import hash structure
+/**
+ * Put all vcal data into import hash structure
+ */
 function format_vcal( $event ) {
   // Start and end time
 
@@ -2988,7 +3009,7 @@ function format_vcal( $event ) {
     //.
     // Repeating exceptions?
     if ( ! empty ( $event['exdate'] ) ) {
-      $fevent['Repeat']['Exceptions'] = array ();
+      $fevent['Repeat']['Exceptions'] = array();
       $EX = explode ( ',', $event['exdate'] );
       foreach ( $EX as $exdate ) {
         $fevent['Repeat']['Exceptions'][] = vcaldate_to_timestamp( $exdate );
@@ -2999,7 +3020,9 @@ function format_vcal( $event ) {
   // $fevent[Category];
   return $fevent;
 }
-
+/**
+ * get_categories_id_byname (needs description)
+ */
 function get_categories_id_byname ( $cat_names ) {
   global $IMPORT_CATEGORIES, $login;
 
@@ -3022,7 +3045,7 @@ function get_categories_id_byname ( $cat_names ) {
           $sql = 'INSERT INTO webcal_categories '
            . '( cat_id, cat_owner, cat_name ) ' . 'VALUES ( ?,?,? )';
           if ( ! dbi_execute ( $sql, array ( $id, $login, $cat_name ) ) ) {
-            $error = db_error ();
+            $error = db_error();
             // do_debug ( $error );
           } else {
             $ret[] = $id;
@@ -3032,13 +3055,15 @@ function get_categories_id_byname ( $cat_names ) {
         $ret = '';
       } // end if row
     } else { // no res
-      $error = db_error ();
+      $error = db_error();
       // do_debug ( $error );
     }
   } //end foreach
   return $ret;
 }
-// Generate the FREEBUSY line of text for a single event
+/**
+ * Generate the FREEBUSY line of text for a single event
+ */
 function fb_export_time ( $date, $duration, $time, $texport ) {
   $ret = '';
   $time = sprintf ( "%06d", $time );
@@ -3067,19 +3092,23 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
   }
   return $ret;
 }
-// Generate export select.
+/**
+ * Generate export select.
+ */
 function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
   $palmStr = translate ( 'Palm Pilot' );
   return '
       <select name="format" id="' . $name . '"'
-   . ( empty ( $jsaction ) ? '' : 'onchange="' . $jsaction . '();"' ) . '>
+   . ( empty( $jsaction ) ? '' : 'onchange="' . $jsaction . '();"' ) . '>
         <option value="ical">iCalendar</option>
         <option value="vcal">vCalendar</option>
         <option value="pilot-csv">Pilot-datebook CSV (' . $palmStr . ')</option>
         <option value="pilot-text">Install-datebook (' . $palmStr . ')</option>
       </select>';
 }
-
+/**
+ * save_vtimezone (needs description)
+ */
 function save_vtimezone ( $event ) {
   //do_debug( print_r( $event, true ) );
   $tzidLong = parse_tzid ( $event['tzid'] );
@@ -3093,12 +3122,14 @@ function save_vtimezone ( $event ) {
   $sql = 'INSERT INTO webcal_timezones ( tzid, dtstart, dtend, vtimezone )
     VALUES ( ?, ?, ?, ?)';
   if ( ! dbi_execute ( $sql, array ( $tzid, $dtstart, $dtend, $event['VTIMEZONE'] ) ) ) {
-    $error = db_error ();
+    $error = db_error();
     // do_debug ( $error );
   }
 
 }
-
+/**
+ * get_vtimezone (needs description)
+ */
 function get_vtimezone ( $tzid, $dtstart, $dtend='' ) {
   $ret = '';
   $sql = 'SELECT vtimezone FROM webcal_timezones
@@ -3115,7 +3146,9 @@ function get_vtimezone ( $tzid, $dtstart, $dtend='' ) {
 
   return $ret;
 }
-
+/**
+ * parse_tzid (needs description)
+ */
 function parse_tzid ( $tzid ) {
   // if we get a complex TZID we try to parse it
   if ( strstr ( $tzid, 'ozilla.org' ) or strstr ( $tzid, 'softwarestudio.org' ) ) {
@@ -3129,4 +3162,5 @@ function parse_tzid ( $tzid ) {
   }
   return $tzid;
 }
+
 ?>

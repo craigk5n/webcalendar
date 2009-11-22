@@ -8,7 +8,8 @@
  * @package WebCalendar
  */
 
-/* The WebCalendar.
+/**
+ * The WebCalendar.
  *
  * Right now this class's functionality is limited to initialization routines.
  *
@@ -16,7 +17,8 @@
  * @todo Organize initialization steps more logically.
  */
 class WebCalendar {
-  /* Filename of the page the user is viewing.
+  /**
+   * Filename of the page the user is viewing.
    *
    * @var string
    *
@@ -24,7 +26,8 @@ class WebCalendar {
    */
   var $_filename;
 
-  /* WebCalendar install directory.
+  /**
+   * WebCalendar install directory.
    *
    * @var string
    *
@@ -32,7 +35,8 @@ class WebCalendar {
    */
   var $_directory;
 
-  /* A map from filenames to initialization phases.
+  /**
+   * A map from filenames to initialization phases.
    *
    * This array holds the initialization steps for each page. Steps are
    * separated into phases, and listed in the order they should be executed,
@@ -58,7 +62,7 @@ class WebCalendar {
     '/^convert_passwords\.php$/' =>
     array (
       array ( 'Config', 'PHPDBI' ),
-      array () ),
+      array() ),
     '/^send_reminders|reload_remotes\.php$/' =>
     array (
       array ( 'Config', 'PHPDBI', 'Functions' ),
@@ -70,7 +74,8 @@ class WebCalendar {
       array ( 'User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase' ) )
     );
 
-  /* WebCalendar constructor.
+  /**
+   * WebCalendar constructor.
    *
    * @param string $path Full path of file being viewed.
    *
@@ -91,11 +96,12 @@ class WebCalendar {
     $this->_filePhaseMap[$pattern] = $initArray;
   }
 
-  /* First part of initializations from includes/init.php.
+  /**
+   * First part of initializations from includes/init.php.
    *
    * @access private
    */
-  function _initInitFirstPhase () {
+  function _initInitFirstPhase() {
     global $DMW, $HTTP_GET_VARS, $HTTP_POST_VARS, $PHP_SELF, $SCRIPT, $self,
     $special, $user_inc;
 
@@ -128,11 +134,12 @@ class WebCalendar {
     unset ( $user_inc );
   }
 
-  /* Second part of initializations from includes/init.php.
+  /**
+   * Second part of initializations from includes/init.php.
    *
    * @access private
    */
-  function _initInitSecondPhase () {
+  function _initInitSecondPhase() {
     global $ALLOW_VIEW_OTHER, $can_add, $can_add, $cat_id, $CATEGORIES_ENABLED,
     $CATEGORY_VIEW, $caturl, $date, $DMW, $friendly, $ignore_user_case,
     $override, $fullname, $GROUPS_ENABLED,
@@ -141,12 +148,12 @@ class WebCalendar {
     $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS_OTHERS, $readonly, $u_url, $user,
     $user_fullname, $USER_SEES_ONLY_HIS_GROUPS, $userlist, $valid_user, $year;
 
-    load_global_settings ();
+    load_global_settings();
 
-    $this->setLanguage ();
+    $this->setLanguage();
 
     if ( empty ( $ovrd ) )
-      load_user_preferences ();
+      load_user_preferences();
 
     // Error-check some commonly used form variable names.
     $cat_id  = getValue ( 'cat_id', '[\-0-9]+' );
@@ -165,12 +172,12 @@ class WebCalendar {
 
     // Initialize access settings ($user_access string)
     // and make sure user is allowed to view the current page.
-    access_init ();
-    if ( ! access_can_view_page () ) {
+    access_init();
+    if ( ! access_can_view_page() ) {
       $user_BGCOLOR = get_pref_setting ( $login, 'BGCOLOR' );
       echo '<html>
   <head>
-    <title>' . generate_application_name () . ' ' . translate ( 'Error' ) . '</title>
+    <title>' . generate_application_name() . ' ' . translate ( 'Error' ) . '</title>
   </head>
   <body bgcolor="' . $user_BGCOLOR . '">
     ' . print_not_auth ( true ) . '
@@ -183,7 +190,7 @@ class WebCalendar {
     // Load if $SCRIPT is in $special array:
     if ( $DMW ) {
       // Tell the browser not to cache.
-      // send_no_cache_header ();
+      // send_no_cache_header();
 
       if ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin && ! $is_assistant )
         $user = '';
@@ -200,7 +207,7 @@ class WebCalendar {
         $can_add = false;
 
       if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! $is_admin ) {
-        $userlist = get_my_users ();
+        $userlist = get_my_users();
         $valid_user = false;
         if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
           $nonusers = get_my_nonusers ( $login, true );
@@ -227,7 +234,7 @@ class WebCalendar {
 
       set_today ( $date );
 
-      remember_this_view ();
+      remember_this_view();
 
       if ( $CATEGORIES_ENABLED == 'Y' ) {
         if ( ! empty ( $cat_id ) ) {
@@ -242,29 +249,32 @@ class WebCalendar {
     }
   }
 
-  /* Initializations from includes/assert.php.
+  /**
+   * Initializations from includes/assert.php.
    *
    * @access private
    */
-  function _initAssert () {
+  function _initAssert() {
     // Initialize assert options.
     assert_options ( ASSERT_CALLBACK, 'assert_handler' );
     assert_options ( ASSERT_ACTIVE, 1 );
   }
 
-  /* Initializations from includes/config.php.
+  /**
+   * Initializations from includes/config.php.
    *
    * @access private
    */
-  function _initConfig () {
+  function _initConfig() {
     do_config ( $this->absolutePath ( 'includes/settings.php' ) );
   }
 
-  /* Initializations from includes/dbi4php.php.
+  /**
+   * Initializations from includes/dbi4php.php.
    *
    * @access private
    */
-  function _initPHPDBI () {
+  function _initPHPDBI() {
     global $phpdbiVerbose;
 
     // Enable the following to show the actual database error in the browser.
@@ -274,11 +284,12 @@ class WebCalendar {
       $phpdbiVerbose = false;
   }
 
-  /* Initializations from includes/functions.php.
+  /**
+   * Initializations from includes/functions.php.
    *
    * @access private
    */
-  function _initFunctions () {
+  function _initFunctions() {
     global $byday_names, $byday_values, $days_per_month, $db_login, $db_password,
     $ldays_per_month,
     $offsets, $PHP_SELF, $settings, $weekday_names;
@@ -313,13 +324,15 @@ class WebCalendar {
     define ( 'LOG_USER_UPDATE',   'u' );
     /**#@-*/
 
-    /* Number of seconds in:
+    /**
+     * Number of seconds in:
      */
     define ( 'ONE_HOUR', 3600 );
     define ( 'ONE_DAY',  86400 );
     define ( 'ONE_WEEK', 604800 );
 
-    /* Arrays containing the number of days in each month
+    /**
+     * Arrays containing the number of days in each month
      * in a leap year and a non-leap year.
      *
      * @global array $ldays_per_month
@@ -329,25 +342,29 @@ class WebCalendar {
     $days_per_month = array ( 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
     $ldays_per_month[2] = 29;
 
-    /* Array containing the short names for the days of the week.
+    /**
+     * Array containing the short names for the days of the week.
      *
      * @global array $weekday_names
      */
     $weekday_names = array ( 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' );
 
-    /* Array containing the BYDAY names for the days of the week.
+    /**
+     * Array containing the BYDAY names for the days of the week.
      *
      * @global array $byday_name
      */
     $byday_names = array ( 'SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA' );
 
-    /* Array containing the number value of the days of the week.
+    /**
+     * Array containing the number value of the days of the week.
      *
      * @global array $days_per_week
      */
     $days_of_week = array_flip ( $weekday_names );
 
-    /* Array containing the number value of the ical ByDay abbreviations.
+    /**
+     * Array containing the number value of the ical ByDay abbreviations.
      *
      * @global array $byday_values
      */
@@ -385,7 +402,7 @@ class WebCalendar {
     $salt2 = md5( empty( $db_password ) ? 'oogabooga' : $db_password );
     $salt2_len = strlen ( $salt2 );
 
-    $offsets = array ();
+    $offsets = array();
     for ( $i = 0; $i < $salt_len || $i < $salt2_len; $i++ ) {
       $offsets[$i] = 0;
       if ( $i < $salt_len )
@@ -398,7 +415,8 @@ class WebCalendar {
     }
   }
 
-  /* Initializations from includes/user*.php.
+  /**
+   * Initializations from includes/user*.php.
    *
    * This is a placeholder for now. We are letting includes/user*.php handle
    * its own initialization.
@@ -408,14 +426,15 @@ class WebCalendar {
    * @todo Make an Authentication interface class and create a subclass for
    *       each user*.php page.
    */
-  function _initUser () {
+  function _initUser() {
   }
 
-  /* Initializations from includes/validate.php.
+  /**
+   * Initializations from includes/validate.php.
    *
    * @access private
    */
-  function _initValidate () {
+  function _initValidate() {
     global $c, $cryptpw, $db_database, $db_host, $db_login, $db_password,
     $encoded_login, $HTTP_ENV_VARS, $HTTP_SERVER_VARS, $ignore_user_case,
     $is_nonuser, $login, $login_return_path, $PHP_AUTH_USER, $REMOTE_USER,
@@ -423,7 +442,7 @@ class WebCalendar {
     $user_inc, $use_http_auth, $validate_redirect, $webcalendar_session;
 
     /* If WebCalendar is configured to use http authentication, then we can
-     * use _initValidate (). If we are not using http auth, icalclient.php will
+     * use _initValidate(). If we are not using http auth, icalclient.php will
      * create its own http auth since an iCal client cannot login via a
      * web-based login. Publish.php does need to validate if not http_auth.
      */
@@ -490,13 +509,13 @@ class WebCalendar {
         $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
         if ( ! $c )
           die_miserable_death ( 'Error connecting to database:<blockquote>'
-             . dbi_error () . '</blockquote>' );
+             . dbi_error() . '</blockquote>' );
 
         // Use another application's authentication.
-        if ( ! $login = user_logged_in () )
+        if ( ! $login = user_logged_in() )
           $session_not_found = true;
       } else {
-        @session_start ();
+        @session_start();
         if ( ! empty ( $_SESSION['webcal_login'] ) )
           $login = $_SESSION['webcal_login'];
 
@@ -538,9 +557,9 @@ class WebCalendar {
             $c = @dbi_connect ( $db_host, $db_login, $db_password, $db_database );
             if ( ! $c )
               die_miserable_death ( 'Error connecting to database:<blockquote>'
-                 . dbi_error () . '</blockquote>' );
+                 . dbi_error() . '</blockquote>' );
 
-            doDbSanityCheck ();
+            doDbSanityCheck();
             if ( $cryptpw == 'nonuser' ) {
               if ( ! nonuser_load_variables ( $login, 'nutemp_' ) )
                 // No such nonuser cal.
@@ -556,7 +575,7 @@ class WebCalendar {
               do_redirect ( 'login.php' . ( empty ( $login_return_path )
                   ? '' : '?return_path=' . $login_return_path ) );
 
-            @session_start ();
+            @session_start();
             $_SESSION['webcal_login'] = $login;
             $_SESSION['webcalendar_session'] = $webcalendar_session;
           }
@@ -564,11 +583,12 @@ class WebCalendar {
       }
     }
   }
-  /* Initializations from includes/connect.php.
+  /**
+   * Initializations from includes/connect.php.
    *
    * @access private
    */
-  function _initConnect () {
+  function _initConnect() {
     global $c, $db_database, $db_host, $db_login, $db_password, $firstname,
     $fullname, $is_admin, $is_nonuser, $LANGUAGE, $lastname, $login,
     $login_email, $login_firstname, $login_fullname, $login_is_admin,
@@ -586,12 +606,12 @@ class WebCalendar {
       $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
       if ( ! $c )
         die_miserable_death ( 'Error connecting to database:<blockquote>'
-           . dbi_error () . '</blockquote>' );
+           . dbi_error() . '</blockquote>' );
 
       // Do a sanity check on the database,
       // making sure we can at least access the webcal_config table.
       if ( function_exists ( 'doDbSanityCheck' ) )
-        doDbSanityCheck ();
+        doDbSanityCheck();
 
       // Check the current installation version.
       // Redirect user to install page if it is different from stored value.
@@ -620,7 +640,7 @@ class WebCalendar {
       $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_user
         WHERE cal_login = ?', array ( $single_user_login ) );
       if ( ! $res ) {
-        echo 'Database error: ' . dbi_error ();
+        echo 'Database error: ' . dbi_error();
         exit;
       }
       $row = dbi_fetch_row ( $res );
@@ -631,7 +651,7 @@ class WebCalendar {
             array ( $single_user_login, md5 ( $single_user_login ), 'Y' ) ) )
           die_miserable_death ( 'User <tt>' . $single_user_login
              . '</tt> does not exist in <tt>webcal_user</tt> table and we were '
-             . 'not able to add it for you:<br /><blockquote>' . dbi_error ()
+             . 'not able to add it for you:<br /><blockquote>' . dbi_error()
              . '</blockquote>' );
 
         // User was added... should we tell them?
@@ -668,7 +688,7 @@ class WebCalendar {
     $em = getGetValue ( 'em' );
         $view_via_email = false;
     if ( ! empty ( $em ) && empty ( $login ) ) {
-      remember_this_view ();
+      remember_this_view();
       $view_via_email = true;
     }
 
@@ -697,7 +717,7 @@ class WebCalendar {
       if ( strstr ( $PHP_SELF, "login.php" ) ) {
         // Ignore since login.php will redirect to index.php.
       } else
-        send_http_login ();
+        send_http_login();
     } else
     if ( ! empty ( $login ) ) {
       // They are already logged in ($login is set in validate.php).
@@ -817,14 +837,15 @@ class WebCalendar {
 
     // An attempt will be made to translate
     if ( $not_auth ) {
-      load_user_preferences ();
+      load_user_preferences();
       $error = ( function_exists ( 'translate' )
         ? translate ( 'You are not authorized.' ) : 'You are not authorized.' );
       die_miserable_death ( $error );
     }
   }
 
-  /* Initializations from includes/site-extras.php.
+  /**
+   * Initializations from includes/site-extras.php.
    *
    * This is a placeholder for now.
    *
@@ -832,25 +853,27 @@ class WebCalendar {
    *
    * @todo Figure out what should go here.
    */
-  function _initSiteExtras () {
+  function _initSiteExtras() {
   }
 
-  /* Initializations from includes/access.php.
+  /**
+   * Initializations from includes/access.php.
    *
    * @access private
    */
-  function _initAccess () {
+  function _initAccess() {
     global $access_other_cals;
 
     // Global variable used to cache permissions
-    $access_other_cals = array ();
+    $access_other_cals = array();
   }
 
-  /* Initializations from includes/translate.php.
+  /**
+   * Initializations from includes/translate.php.
    *
    * @access private
    */
-  function _initTranslate () {
+  function _initTranslate() {
     global $lang, $lang_file, $LANGUAGE, $PUBLIC_ACCESS_FULLNAME,
     $translation_loaded, $enable_mbstring;
 
@@ -861,7 +884,7 @@ class WebCalendar {
     // use the user's language preferences from their browser.
     $lang = $LANGUAGE;
     if ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none' ) {
-      $lang = get_browser_language ();
+      $lang = get_browser_language();
       if ( $lang == 'none' )
         $lang = '';
     }
@@ -884,13 +907,14 @@ class WebCalendar {
     $PUBLIC_ACCESS_FULLNAME = 'Public Access'; // default
   }
 
-  /* Gets the initialization phases for the page being viewed.
+  /**
+   * Gets the initialization phases for the page being viewed.
    *
    * @return array Array of initialization phases.
    *
    * @access private
    */
-  function _getPhases () {
+  function _getPhases() {
     global $user_inc;
 
     foreach ( $this->_filePhaseMap as $pattern => $phases ) {
@@ -901,7 +925,8 @@ class WebCalendar {
        . '\' in _filePhaseMap.' );
   }
 
-  /* Gets the initialization steps for the current page and phase.
+  /**
+   * Gets the initialization steps for the current page and phase.
    *
    * @param int $phase Initialization phase number
    *
@@ -910,12 +935,13 @@ class WebCalendar {
    * @access private
    */
   function _getSteps ( $phase ) {
-    $phases = $this->_getPhases ();
+    $phases = $this->_getPhases();
 
     return $phases[$phase - 1];
   }
 
-  /* Performs initialization steps.
+  /**
+   * Performs initialization steps.
    *
    * @param int $phase Which step of initialization should we perform?
    *
@@ -925,44 +951,48 @@ class WebCalendar {
     $steps = $this->_getSteps ( $phase );
     foreach ( $steps as $step ) {
       $function = "_init$step";
-      $this->$function ();
+      $this->$function();
     }
   }
 
-  /* Begins initialization of WebCalendar.
+  /**
+   * Begins initialization of WebCalendar.
    *
    * @param string $path Full path of page being viewed
    *
    * @access public
    */
-  function initializeFirstPhase () {
+  function initializeFirstPhase() {
     $this->_doInit ( 1 );
   }
 
-  /* Continues initialization of WebCalendar.
+  /**
+   * Continues initialization of WebCalendar.
    *
    * @param string $path Full path of page being viewed
    *
    * @access public
    */
-  function initializeSecondPhase () {
+  function initializeSecondPhase() {
     $this->_doInit ( 2 );
   }
 
-  /* Sets the translation language.
+  /**
+   * Sets the translation language.
    *
    * @access public
    */
-  function setLanguage () {
-    $this->_initTranslate ();
+  function setLanguage() {
+    $this->_initTranslate();
   }
 
-  /* Construct an absolute path.
-   *
-   * @param string $path The path relative to the WebCalendar install directory
-   *
-   * @return string The absolute path
-   */
+ /**
+  * Construct an absolute path.
+  *
+  * @param string $path The path relative to the WebCalendar install directory
+  *
+  * @return string The absolute path
+  */
   function absolutePath ( $path ) {
     return $this->_directory . $path;
   }

@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 
 //Program Version for this release
 $PROGRAM_VERSION = 'v1.3.0';

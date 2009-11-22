@@ -1,5 +1,4 @@
-<?php
-/* $Id$  */
+<?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $errStr = translate ( 'Error', true ) . ' ';
@@ -17,7 +16,7 @@ function valid_form ( form ) {
  . translate ( 'Username cannot be blank.', true )?>" );
     return false;
   }
-  check_name ();
+  check_name();
 
   return validform;
 
@@ -43,7 +42,7 @@ function valid_form2 ( form ) {
 
 }
 
-function check_name () {
+function check_name() {
   formfield = 'user';
   var ajax = new Ajax.Request ( 'ajax.php',
     {method: 'post',
@@ -51,7 +50,7 @@ function check_name () {
     onComplete: showResponse});
 }
 
-function check_uemail () {
+function check_uemail() {
   formfield = 'uemail';
   var ajax = new Ajax.Request ( 'ajax.php',
     {method: 'post',
@@ -65,10 +64,10 @@ function showResponse ( originalRequest ) {
     // This causes javascript errors in Firefox, but these can be ignored.
     alert ( text );
     if ( formfield == 'user' )
-      document.edituser.user.focus ();
+      document.edituser.user.focus();
 
     if ( formfield == 'uemail' )
-      document.edituser.uemail.focus ();
+      document.edituser.uemail.focus();
 
     validform = false;
   } else {

@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $newRemoteStr = translate ( 'Add New Remote Calendar' );
@@ -7,7 +6,7 @@ $targetStr =
 'target="remotesiframe" onclick="showFrame( \'remotesiframe\' );">';
 
 if ( ! $NONUSER_PREFIX ) {
-  echo print_error_header () . translate ( 'NONUSER_PREFIX not set' ) . '
+  echo print_error_header() . translate ( 'NONUSER_PREFIX not set' ) . '
   </body>
 </html>';
   exit;

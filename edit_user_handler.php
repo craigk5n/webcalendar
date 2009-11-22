@@ -1,11 +1,10 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 
 // There is the potential for a lot of mischief from users trying to access this
 // file in ways they shouldn't. Users may try to type in a URL to get around
 // functions that are not being displayed on the web page to them.
 include_once 'includes/init.php';
-load_user_layers ();
+load_user_layers();
 
 $delete = getPostValue ( 'delete' );
 $formtype = getPostValue ( 'formtype' );
@@ -23,7 +22,7 @@ $error = '';
 if ( ! $is_admin )
   $user = $login;
 
-$notAuthStr = print_not_auth ();
+$notAuthStr = print_not_auth();
 $deleteStr = translate ( 'Deleting users not supported.' );
 $notIdenticalStr = translate ( 'The passwords were not identical.' );
 $noPasswordStr = translate ( 'You have not entered a password.' );
@@ -33,17 +32,17 @@ $blankUserStr = translate ( 'Username cannot be blank.' );
 if ( empty ( $user ) ) {
   // Asking to create a new user. Must be admin...
   if ( ! $is_admin && ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) )
-    send_to_preferred_view ();
+    send_to_preferred_view();
 
   if ( ! $admin_can_add_user ) {
     // If adding users is not allowed...
-    send_to_preferred_view ();
+    send_to_preferred_view();
     exit;
   }
 } else {
   // User is editing their account info.
   if ( ! access_can_access_function ( ACCESS_ACCOUNT_INFO ) )
-    send_to_preferred_view ();
+    send_to_preferred_view();
 }
 
 // Handle delete.

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Web Service functionality to add, delete or update a user.
  *
@@ -48,7 +47,7 @@ $error = '';
 require_once 'ws.php';
 
 // Initialize...
-ws_init ();
+ws_init();
 
 // header ( "Content-type: text/xml" );
 header ( 'Content-type: text/plain' );
@@ -112,7 +111,7 @@ if ( empty ( $error ) && $add && empty ( $user_password ) )
 if ( empty ( $error ) && ! $add && ! $delete && empty ( $user_password ) )
   $user_password = $old_password;
 
-// admin must be 'Y' or 'N' for call to user_add_user ()
+// admin must be 'Y' or 'N' for call to user_add_user()
 $user_admin = ( empty ( $user_admin ) || $user_admin != '1' ? 'N' : 'Y' );
 
 // If user is editing themself, do not let them take away admin setting.

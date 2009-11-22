@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
@@ -10,18 +9,18 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include_once 'includes/access.php';
 include 'includes/gradient.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-load_global_settings ();
+load_global_settings();
 load_user_preferences ( 'guest' );
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
 // Look for action=logout.
 $action = getGetValue ( 'action' );
@@ -35,17 +34,17 @@ if ( ! empty ( $action ) && $action == 'logout' ) {
 } else
 if ( empty ( $return_path ) ) {
   // See if a return path was set.
-  $return_path = get_last_view ();
+  $return_path = get_last_view();
   if ( ! empty ( $return_path ) )
     SetCookie ( 'webcalendar_last_view', '', 0 );
 }
 
-$appStr = generate_application_name ();
+$appStr = generate_application_name();
 
 // Set return page.
 $login_return_path = $SERVER_URL . $return_path;
 
-ob_start ();
+ob_start();
 
 echo send_doctype ( $appStr ) . ( ! $logout ? '
     <script type="text/javascript">
@@ -60,9 +59,9 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
         return true;
       }
 
-      function myOnLoad () {
-        document.login_form.login.focus ();' . ( empty ( $login ) ? '' : '
-        document.login_form.login.select ();' ) . ( empty ( $error ) ? '' : '
+      function myOnLoad() {
+        document.login_form.login.focus();' . ( empty ( $login ) ? '' : '
+        document.login_form.login.select();' ) . ( empty ( $error ) ? '' : '
         alert ( \'' . $error . '\' );' ) . '
       }
     </script>' : '' ) . '
@@ -131,7 +130,7 @@ echo '
     translate ( 'public' ), translate ( 'Access XXX calendar' ) )
    . '</a><br />' : '' );
 
-$nulist = get_nonuser_cals ();
+$nulist = get_nonuser_cals();
 for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
   if ( $nulist[$i]['cal_is_public'] == 'Y' )
     echo '
@@ -152,7 +151,7 @@ echo ( $DEMO_MODE == 'Y'
  . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'
   ? load_template ( $login, 'T' ) : '' );
 
-ob_end_flush ();
+ob_end_flush();
 
 ?>
   </body>

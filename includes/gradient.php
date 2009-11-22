@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Generate a gradient image for use as a background image.
  *  Requires gd module.
@@ -103,7 +102,8 @@ if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
     $direction, $numcolors, $color1, $color2 );
 }
 
-/* Turn an HTML color (like 'AABBCC') into an array of decimal RGB values.
+/**
+ * Turn an HTML color (like 'AABBCC') into an array of decimal RGB values.
  *
  * Parameters:
  *  $color - HTML color specification in 'RRGGBB' or 'RGB' format
@@ -131,11 +131,13 @@ function colorToRGB ( $color ) {
 
   return array ( 'red' => $red, 'green' => $green, 'blue' => $blue );
 }
-
+/**
+ * can_write_to_dir (needs description)
+ */
 function can_write_to_dir ($path)
 {
   if ( $path { strlen ( $path ) - 1 } == '/' ) //Start function again with tmp file...
-    return can_write_to_dir ( $path.uniqid ( mt_rand () ) . '.tmp');
+    return can_write_to_dir ( $path.uniqid ( mt_rand() ) . '.tmp');
   else if ( preg_match( '/\.tmp$/', $path ) ) { //Check tmp file for read/write capabilities
     if ( ! ( $f = @fopen ( $path, 'w+' ) ) )
       return false;
@@ -147,7 +149,9 @@ function can_write_to_dir ($path)
   else //We have a path error.
    return 0; // Or return error - invalid path...
 }
-
+/**
+ * background_css (needs description)
+ */
 function background_css ( $base, $height = '', $percent = '' ) {
   global $ENABLE_GRADIENTS;
 
@@ -180,7 +184,9 @@ function background_css ( $base, $height = '', $percent = '' ) {
 
   return $ret . ';';
 }
-
+/**
+ * create_image (needs description)
+ */
 function create_image ( $file_name, $base = '', $height = '', $percent = '',
   $width = '', $direction = '', $numcolors = '', $color1 = '', $color2 = '' ) {
   global $DEFAULTS, $MAX_COLORS, $MAX_HEIGHT, $MAX_WIDTH, $MIN_COLORS;
@@ -258,7 +264,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
 
   $image = imagecreate ( $width, $height );
   // Allocate array of colors
-  $colors = array ();
+  $colors = array();
 
   $deltared = $color2['red'] - $color1['red'];
   $deltagreen = $color2['green'] - $color1['green'];
@@ -350,7 +356,9 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
   return;
 }
 
-//General purpose functions to convert RGB to HSL and HSL to RBG
+/**
+ * General purpose functions to convert RGB to HSL and HSL to RBG
+ */
 function  rgb2hsl ( $rgb ) {
   if ( substr ($rgb, 0,1 ) == '#' )
      $rgb = substr ( $rgb,1,6);
@@ -431,8 +439,10 @@ function Hue_2_RGB( $v1, $v2, $vH ) {
    return ( $v1 );
 }
 
-//Given an RGB value, return it's luminance adjusted by scale
-// scale range = 0 to 9
+/**
+ * Given an RGB value, return it's luminance adjusted by scale
+ * scale range = 0 to 9
+ */
 function rgb_luminance ( $rgb, $scale=5) {
   $luminance = array( .44, .50, .56, .62, .68, .74, .80, .86, .92, .98 );
   if ( $scale < 0 ) $scale = 0;
@@ -442,4 +452,5 @@ function rgb_luminance ( $rgb, $scale=5) {
   $newColor = hsl2rgb( $new );
   return $newColor;
 }
+
 ?>

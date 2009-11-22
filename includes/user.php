@@ -81,7 +81,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
       $error = ( ! $silent ? translate('Account disabled', true) : '' );
     }
   } else if ( ! $silent ) {
-    $error = db_error ();
+    $error = db_error();
   }
 
   return $ret;
@@ -120,7 +120,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = 'Database error: ' . dbi_error ();
+    $error = 'Database error: ' . dbi_error();
   }
 
   return $ret;
@@ -140,7 +140,7 @@ function user_load_variables ( $login, $prefix ) {
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
-  $cached_user_var = array ();
+  $cached_user_var = array();
 
   //help prevent spoofed username attempts from disclosing fullpath
   $GLOBALS[$prefix . 'fullname'] = '';
@@ -232,7 +232,7 @@ function user_add_user ( $user, $password, $firstname,
     'VALUES ( ?, ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $user, $ulastname,
     $ufirstname, $admin, $upassword, $uemail, $enabled ) ) ) {
-    $error = db_error ();
+    $error = db_error();
     return false;
   }
   return true;
@@ -282,7 +282,7 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabl
     'cal_is_admin = ?,cal_enabled = ? WHERE cal_login = ?';
   if ( ! dbi_execute ( $sql,
     array( $ulastname, $ufirstname, $uemail, $admin, $enabled, $user ) ) ) {
-    $error = db_error ();
+    $error = db_error();
     return false;
   }
   return true;
@@ -303,7 +303,7 @@ function user_update_user_password ( $user, $password ) {
 
   $sql = 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?';
   if ( ! dbi_execute ( $sql, array ( md5 ( $password ), $user ) ) ) {
-    $error = db_error ();
+    $error = db_error();
     return false;
   }
   return true;
@@ -324,7 +324,7 @@ function user_delete_user ( $user ) {
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
-  $delete_em = array ();
+  $delete_em = array();
   $evcnt = count ( $events );
   for ( $i = 0; $i < $evcnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user ' .
@@ -375,7 +375,7 @@ function user_delete_user ( $user ) {
   dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_assistant = ?',
     array ( $user ) );
   // Delete user's views
-  $delete_em = array ();
+  $delete_em = array();
   $res = dbi_execute ( 'SELECT cal_view_id FROM webcal_view WHERE cal_owner = ?',
     array ( $user ) );
   if ( $res ) {
@@ -417,7 +417,7 @@ function user_delete_user ( $user ) {
   dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cat_owner = ?',
     array ( $user ) );
   // Delete user's reports
-  $delete_em = array ();
+  $delete_em = array();
   $res = dbi_execute ( 'SELECT cal_report_id FROM webcal_report WHERE cal_login = ?',
     array ( $user ) );
   if ( $res ) {
@@ -452,7 +452,7 @@ function user_get_users ( $publicOnly=false ) {
   $USER_SORT_ORDER;
 
   $count = 0;
-  $ret = array ();
+  $ret = array();
   if ( $PUBLIC_ACCESS == 'Y' )
     $ret[$count++] = array (
        'cal_login' => '__public__',
@@ -488,7 +488,7 @@ function user_get_users ( $publicOnly=false ) {
     }
     dbi_free_result ( $res );
   }
-  //no need to call sort_users () as the sql can sort for us
+  // No need to call sort_users() as the SQL can sort for us.
   return $ret;
 }
 ?>
