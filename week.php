@@ -242,8 +242,8 @@ if ( $DISPLAY_TASKS == 'Y' ) {
         </td>';
 }
 
-print_header (
-  array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ),
+print_header(
+  array( 'js/popups.js/true', 'js/dblclick_add.js/true' ),
   generate_refresh_meta(), '', false, false, false, false );
 
 echo <<<EOT

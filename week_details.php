@@ -48,7 +48,7 @@ $nextStr = translate ( 'Next' );
 $newEntryStr = translate ( 'New Entry' );
 $prevStr = translate ( 'Previous' );
 
-print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta() );
+print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
 
 ob_start();
 

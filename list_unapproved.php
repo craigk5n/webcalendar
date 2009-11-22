@@ -174,7 +174,7 @@ function list_unapproved ( $user ) {
 
   return $ret;
 } //end list_unapproved()
-print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta() );
+print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
 
 ob_start();
 

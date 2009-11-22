@@ -96,10 +96,9 @@ $HEAD =
     <link type="text/css" href="includes/js/dhtmlmodal/modalfiles/modal.css?'
  . filemtime( 'includes/js/dhtmlmodal/modalfiles/modal.css' ) . '" rel="stylesheet" />';
 
-$INC =
-  array ( 'js/popups.php/true', 'js/visible.php', 'js/dblclick_add.js/true' );
-
-print_header ( $INC, $HEAD, $BodyX );
+print_header(
+  array( 'js/popups.js/true', 'js/visible.php', 'js/dblclick_add.js/true' ),
+  $HEAD, $BodyX );
 
 ob_start();
 
