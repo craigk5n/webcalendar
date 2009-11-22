@@ -291,8 +291,8 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 ?>
  </select>
  <br />
- <?php echo translate ( 'Your browser default language is' ) . ' ' .
-   translate ( get_browser_language ( true ) )  . '.'; ?>
+<?php echo str_replace( 'XXX', translate( get_browser_language( true ) ),
+    translate( 'Your browser default language is XXX.' ) ); ?>
 </td></tr>
 </table>
 </fieldset>

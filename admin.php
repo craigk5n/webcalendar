@@ -382,9 +382,9 @@ if ( ! $error ) {
             <p><label for="admin_LANGUAGE" title="' . tooltip ( 'language-help' )
    . '">' . translate ( 'Language' ) . ':</label>
               <select name="admin_LANGUAGE" id="admin_LANGUAGE">' . $lang_list . '
-              </select>'/* translate ( 'Your browser default language is' ) */
-   . str_replace ( 'XXX', translate ( get_browser_language ( true ) ),
-    translate ( 'Your browser default language is XXX.' ) ) . '</p>
+              </select>'
+   . str_replace( 'XXX', translate( get_browser_language( true ) ),
+    translate( 'Your browser default language is XXX.' ) ) . '</p>
             <p><label>' . translate ( 'Allow user to use themes' ) . ':</label>'
    . print_radio ( 'ALLOW_USER_THEMES' ) . '</p>
             <p><label for="admin_THEME" title="' . tooltip ( 'themes-help' )

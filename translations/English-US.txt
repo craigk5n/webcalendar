@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 12-28-2008
+# Translation last updated on 11-22-2009
 
 charset: iso-8859-1
 direction: ltr
@@ -143,7 +143,6 @@ Help: Help
 System options: System options
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page. The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name
-Translated Name: Translated Name
 Translated Name (XXX): Translated Name (XXX)
 server-url-help: Specifies the base URL for the application. This will be included when sending out email reminders and notifications.
 Server URL: Server URL
@@ -151,7 +150,6 @@ home-url-help: Specifies the home URL for the application. This can be an absolu
 Home URL: Home URL
 language-help: Specifies which language to use.
 Language: Language
-Your browser default language is: Your browser default language is
 Your browser default language is XXX.: Your browser default language is "XXX".
 Allow user to use themes: Allow user to use themes
 themes-help: Allows mass update of configuration settings. Lower case labels are user pref only.
@@ -332,8 +330,6 @@ categories-enabled-help: Enables support for event categories.
 Categories enabled: Categories enabled
 icon_upload-enabled-help: If enabled, users can upload category icons
 Category Icon Upload enabled: Category Icon Upload enabled
-Requires: Requires
-folder to exist: folder to exist
 (Requires XXX folder to exist.): (Requires XXX folder to exist.)
 display-tasks-help: Display small task window on month and day calendar
 Display small task list: Display small task list
@@ -971,6 +967,7 @@ Current Icons on Server: Current Icons on Server
 ########################################
 # Page: import.php
 #
+import from file: import from file
 Disabled: Disabled
 Import format: Import format
 Exclude private records: Exclude private records
@@ -995,6 +992,7 @@ Are you sure you want to delete this layer?: Are you sure you want to delete thi
 Enable layers: Enable layers
 Layers are currently enabled.: Layers are currently <strong>enabled</strong>.
 Layers are currently disabled.: Layers are currently <strong>disabled</strong>.
+Click to modify layers settings for XXX: Click here to modify the layers settings for the XXX calendar.
 Disable Layers: Disable Layers
 Add layer: Add layer
 Add Layer: Add Layer
@@ -1708,14 +1706,14 @@ Help Contents: Help Contents
 ########################################
 # Page: install/index.php
 #
-Create New: Create New
 Database Cache Directory: Database Cache Directory
+Create New: Create New
 Failure Reason: <b>Failure Reason: </b>
+You must manually create database: You must manually create database.
 Single-User: Single-User
 Test Settings: Test Settings
 Timezone Conversion Successful: Timezone Conversion Successful
 WebCalendar Installation Wizard Step XXX: WebCalendar Installation Wizard Step XXX
-You must manually create database: You must manually create database.
 Password Accepted: Password Accepted
 Successful Login: Successful Login
 Password Incorrect: Password Incorrect
@@ -1740,6 +1738,8 @@ Error Unable to write to file XXX.: Error Unable to write to file XXX.
 Please change the file permissions of this file.: Please change the file permissions of this file.
 Please change includes dir permission: Please change the file permissions of your "includes" directory to allow writing by other users.
 Your settings have been saved.: Your settings have been saved.
+OFF: OFF
+ON: ON
 WebCalendar Setup Wizard: WebCalendar Setup Wizard
 This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see:<br />
 System Administrators Guide: System Administrator's Guide
@@ -1754,8 +1754,6 @@ Check to see if PHP 4.1.0 or greater is installed.: Check to see if PHP 4.1.0 or
 PHP version: PHP version
 PHP Settings: PHP Settings
 Detailed PHP Info: Detailed PHP Info
-ON: ON
-OFF: OFF
 settings.php Status: "settings.php" Status
 Session Check: Session Check
 To test the proper operation of sessions...: To test the proper operation of sessions, reload this page. You should see the session counter increment each time.
@@ -1803,7 +1801,6 @@ Web-based via WebCalendar (default): Web-based via WebCalendar (default)
 Web Server (not detected): Web Server (not detected)
 Web Server (detected): Web Server (detected)
 None (Single-User): None (Single-User)
-Case-insensitive user name: Case-insensitive user name
 Read-Only: Read-Only
 Environment: Environment
 Production: Production
