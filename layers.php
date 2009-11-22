@@ -46,8 +46,8 @@ $disabledStr = translate ( 'Disabled' );
 $enableLayersStr = translate ( 'Enable layers' );
 $LAYERS_ENABLED = translate ( 'Layers are currently enabled.' );
 $LAYERS_DISABLED = translate ( 'Layers are currently disabled.' );
-$public_link = str_replace ( 'XXX', $PUBLIC_ACCESS_FULLNAME, translate (
-  'Click here to modify the layers settings for the XXX calendar.' ) );
+$public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
+  translate( 'Click to modify layers settings for XXX' ) );
 $LOADING = '<center><img src="images/loading_animation.gif" alt=""/></center>';
 
 
