@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * This page will display a timebar for a week or month as specified by timeb.
  *
@@ -39,7 +38,8 @@ $width = ( 100 / $totalHours );
 $yardWidth = round ( $width / $yardSlots, 3 ); //Percentage width of each division.
 $totalSlots = ( $totalHours * $yardSlots ); //Number of divisions full page.
 
-/* Prints all the entries in a time bar format for the specified user for the
+/**
+ * Prints all the entries in a time bar format for the specified user for the
  * specified date.
  *
  * If we are displaying data from someone other than the logged in user,
@@ -73,7 +73,7 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
     get_repeating_entries ( $user, $date ) );
   $evcnt = count ( $ev );
   for ( $i = 0; $i < $evcnt; $i++ ) {
-    if ( $get_unapproved || $ev[$i]->getStatus () == 'A' ) {
+    if( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
       $ret .= print_entry_timebar ( $ev[$i], $date );
       $cnt++;
     }
@@ -85,7 +85,8 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
     : '' );
 }
 
-/* Prints the HTML for an event with a timebar.
+/**
+ * Prints the HTML for an event with a timebar.
  *
  * @param Event  $event The event
  * @param string $date  Date for which we're printing in YYYYMMDD format
@@ -100,17 +101,17 @@ function print_entry_timebar ( $event, $date ) {
 
   $insidespan = false;
   $ret = '';
-  if ( access_is_enabled () ) {
-    $temp = $event->getLogin ();
+  if( access_is_enabled() ) {
+    $temp = $event->getLogin();
     $can_access = access_user_calendar ( 'view', $temp, '',
-      $event->getCalType (), $event->getAccess () );
+      $event->getCalType(), $event->getAccess() );
     $time_only = access_user_calendar ( 'time', $temp );
   } else {
     $can_access = CAN_DOALL;
     $time_only = 'N';
   }
-  $id = $event->getID ();
-  $name = $event->getName ();
+  $id = $event->getID();
+  $name = $event->getName();
 
   $linkid = "pop$id-$key";
   $key++;
@@ -119,15 +120,15 @@ function print_entry_timebar ( $event, $date ) {
   $day_end = $WORK_DAY_END_HOUR * 60;
   if ( $day_end <= $day_start )
     $day_end = $day_start + 60; //Avoid exceptions.
-  $time = date ( 'His', $event->getDateTimeTS () );
+  $time = date( 'His', $event->getDateTimeTS() );
   $startminutes = time_to_minutes ( $time );
-  $endminutes = time_to_minutes ( date ( 'His', $event->getEndDateTimeTS () ) );
-  $duration = $event->getDuration ();
-  if ( $event->isAllDay () ) {
+  $endminutes = time_to_minutes( date( 'His', $event->getEndDateTimeTS() ) );
+  $duration = $event->getDuration();
+  if( $event->isAllDay() ) {
     // All day event.
     $ev_duration = $totalSlots;
     $start_padding = 0;
-  } else if ( $event->isUntimed () )
+  } elseif( $event->isUntimed() )
     $ev_duration = $start_padding = 0;
   else { // Must be timed.
     $start_padding = round ( ( $startminutes - $day_start ) / $slotValue );
@@ -168,7 +169,7 @@ function print_entry_timebar ( $event, $date ) {
             <tr class="entrycont">' . ( $start_padding > 0 ? '
               <td class="alignright" colspan="' . $start_padding . '">' : '' );
   if ( $pos > 0 ) {
-    if ( ! $event->isUntimed () ) {
+    if( ! $event->isUntimed() ) {
       $ret .= ( $start_padding > 0 ? '&nbsp;</td>': '' ) . '
               <td class="entry" colspan="' . $ev_duration . '">'
        . ( $pos > 1 ? '&nbsp;</td>
@@ -177,8 +178,8 @@ function print_entry_timebar ( $event, $date ) {
       $ret .= '
               <td colspan="' . $totalSlots . '">';
   }
-  $tempClone = $event->getClone ();
-  $tempPri = ( $event->getPriority () < 4 );
+  $tempClone = $event->getClone();
+  $tempPri = ( $event->getPriority() < 4 );
 
   return $ret . ( $tempPri ? '<strong>' : '' )
   // Make sure clones have parents URL date.
@@ -186,14 +187,14 @@ function print_entry_timebar ( $event, $date ) {
           <a class="entry" id="' . $linkid . '" href="view_entry.php?id='
      . $id . '&amp;date=' . ( $tempClone ? $tempClone: $date )
      . ( strlen ( $user ) > 0 ? '&amp;user=' . $user : '' ) . '">' : '' ) . '['
-   . ( $event->getLogin () == '__public__'
-    ? $PUBLIC_ACCESS_FULLNAME : $event->getLogin () )
+   . ( $event->getLogin() == '__public__'
+    ? $PUBLIC_ACCESS_FULLNAME : $event->getLogin() )
    . ']&nbsp;' . build_entry_label ( $event, 'eventinfo-' . $linkid, $can_access,
-    ( $event->isAllDay ()
-      ? translate ( 'All day event' )
-      : ( ! $event->isUntimed () ? display_time ( $event->getDatetime () )
-         . ( $event->getDuration () > 0
-          ? ' - ' . display_time ( $event->getEndDateTime (), 2 ) : '' ) : '' ) ),
+    ( $event->isAllDay()
+      ? translate( 'All day event' )
+      : ( ! $event->isUntimed() ? display_time( $event->getDatetime() )
+         . ( $event->getDuration() > 0
+          ? ' - ' . display_time( $event->getEndDateTime(), 2 ) : '' ) : '' ) ),
     $time_only ) . ( $insidespan ? '</span>' : '' ) // end color span
   . '</a>' . ( $tempPri ? '</strong>' : '' ) // end font-weight span
   . '</td>' . ( $pos < 2 ? ( $pos < 1 ? '
@@ -206,9 +207,10 @@ function print_entry_timebar ( $event, $date ) {
       </tr>';
 }
 
-/* Prints the header for the timebar.
+/**
+ * Prints the header for the timebar.
  */
-function print_header_timebar () {
+function print_header_timebar() {
   global $ENTRY_SLOTS, $entrySlots, $TIME_FORMAT, $totalHours, $totalSlots,
   $width, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR, $yardSlots, $yardWidth;
   // sh   ...   eh
@@ -287,14 +289,14 @@ $printerStr = generate_printer_friendly ( 'view_t.php' );
 print_header ( array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ) );
 
 if ( ! empty ( $error ) ) {
-  echo print_error ( $error ) . print_trailer ();
+  echo print_error( $error ) . print_trailer();
   exit;
 }
 
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-ob_start ();
+ob_start();
 
 echo '
     <div style="width:99%;">
@@ -318,7 +320,7 @@ echo '
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
 
-$e_save = $re_save = array ();
+$e_save = $re_save = array();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
@@ -330,7 +332,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
 }
 $events = $e_save;
 $repeated_events = $re_save;
-$timeBarHeader = print_header_timebar ();
+$timeBarHeader = print_header_timebar();
 
 echo '
     <table class="main" summary="">';
@@ -359,10 +361,10 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
 
 $user = ''; // reset
 
-ob_end_flush ();
+ob_end_flush();
 
 echo '
     </table>'
- . ( empty ( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer ();
+ . ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
 
 ?>

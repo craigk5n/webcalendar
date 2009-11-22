@@ -1,5 +1,6 @@
 <?php
-/* The Doc class represents an attachment/comment. This class provides a
+/**
+ * The Doc class represents an attachment/comment. This class provides a
  * convenient way to load and access both attachments and comments without the
  * caller needing to know about the underlying database schema.
  *
@@ -11,96 +12,113 @@
  * @subpackage Doc
  */
 
-/* A Document object.
+/**
+ * A Document object.
  * This can represent an event attachment or comment. Currently, a Doc must be
  * associated with an event, but this may change down the road.
  * We could use this object to support category or user icons, for example.
  */
 class Doc {
-  /* The unique id
+  /**
+ * The unique id
    * @var int
    * @access private
    */
   var $_blob_id;
 
-  /* Associated event's id (if any)
+  /**
+ * Associated event's id (if any)
    * @var int
    * @access private
    */
   var $_event_id;
 
-  /* The user login of user who created this Doc
+  /**
+ * The user login of user who created this Doc
    * @var string
    * @access private
    */
   var $_login;
 
-  /* Filename of the doc (not used for comments)
+  /**
+ * Filename of the doc (not used for comments)
    * @var string
    * @access private
    */
   var $_name;
 
-  /* The description of the doc
+  /**
+ * The description of the doc
    * @var string
    * @access private
    */
   var $_description;
 
-  /* The size of the doc (in bytes)
+  /**
+ * The size of the doc (in bytes)
    * (not used for comments)
    * @var int
    * @access private
    */
   var $_size;
 
-  /* The MIME type of the doc
+  /**
+ * The MIME type of the doc
    * @var string
    * @access private
    */
   var $_mime_type;
 
-  /* Type of object (C=Comment, A=Attachment)
+  /**
+ * Type of object (C=Comment, A=Attachment)
    * @var string
    * @access private
    */
   var $_type;
 
-  /* Date last modified (in YYYYMMDD format)
+  /**
+ * Date last modified (in YYYYMMDD format)
    * @var int
    * @access private
    */
   var $_mod_date;
 
-  /* Time last modified (in HHMMSS format)
+  /**
+ * Time last modified (in HHMMSS format)
    * @var int
    * @access private
    */
   var $_mod_time;
 
-  /* Are attachments enabled? */
-  function attachmentsEnabled () {
+  /**
+   * Are attachments enabled?
+   */
+  function attachmentsEnabled() {
     global $ALLOW_ATTACH;
 
     return ( ! empty ( $ALLOW_ATTACH ) && $ALLOW_ATTACH == 'Y' );
   }
 
-  /* Are comments enabled? */
-  function commentsEnabled () {
+  /**
+   * Are comments enabled?
+   */
+  function commentsEnabled() {
     global $ALLOW_COMMENTS;
 
     return ( ! empty ( $ALLOW_COMMENTS ) && $ALLOW_COMMENTS == 'Y' );
   }
 
-  /* Provide a list of comma-separated column names
+  /**
+   * Provide a list of comma-separated column names
    * for use in a SQL query to the webcal_blob table.
    */
-  function getColumnList () {
+  function getColumnList() {
     return 'cal_blob_id, cal_id, cal_login, cal_name, cal_description, '
      . 'cal_size, cal_mime_type, cal_type, cal_mod_date, cal_mod_time';
   }
 
-  /* Create an SQL query to load either attachment or comment meta data
+  /**
+   * Create an SQL query to load either attachment or comment meta data
    * for the specified event id.
    *
    * @param int    $event_id  The event id
@@ -111,24 +129,26 @@ class Doc {
    * @access public
    */
   function getSQL ( $event_id, $type = 'A' ) {
-    return 'SELECT ' . Doc::getColumnList ()
+    return 'SELECT ' . Doc::getColumnList()
      . ' FROM webcal_blob WHERE cal_id = '
      . $event_id . ' AND cal_type = \'' . $type
      . '\' ORDER BY cal_mod_date DESC, cal_mod_time DESC';
   }
 
-  /* Generate the SQL to load a single doc specified by its unique ID.
+  /**
+   * Generate the SQL to load a single doc specified by its unique ID.
    *
    * @param int blid  Unique doc id
    *
    * @return string  The SQL to load the Doc
    */
   function getSQLForDocId ( $blid ) {
-    return 'SELECT ' . Doc::getColumnList ()
+    return 'SELECT ' . Doc::getColumnList()
      . ' FROM webcal_blob WHERE cal_blob_id = ' . $blid;
   }
 
-  /* Creates a new Doc object.
+  /**
+   * Creates a new Doc object.
    * Typical usage (error-checking not shown here): <blockquote><pre>
    *   $res = dbi_execute ( Doc::getSQLForDocId ( $doc_id ) );
    *   $row = dbi_fetch_row ( $res );
@@ -172,107 +192,118 @@ class Doc {
     $this->_mod_time = $row[$i++];
   }
 
-  /* Gets the Doc's unique identifier
+  /**
+   * Gets the Doc's unique identifier
    *
    * @return int The Doc's unique identifier
    *
    * @access public
    */
-  function getId () {
+  function getId() {
     return $this->_blob_id;
   }
 
-  /* Gets the Doc's event id
+  /**
+   * Gets the Doc's event id
    *
    * @return int The Doc's event id
    *
    * @access public
    */
-  function getEventId () {
+  function getEventId() {
     return $this->_event_id;
   }
 
-  /* Gets the Doc creator's user login
+  /**
+   * Gets the Doc creator's user login
    *
    * @return string The Doc creator's user login
    *
    * @access public
    */
-  function getLogin () {
+  function getLogin() {
     return $this->_login;
   }
 
-  /* Gets the Doc's name
+  /**
+   * Gets the Doc's name
    *
    * @return string The Doc's name
    *
    * @access public
    */
-  function getName () {
+  function getName() {
     return $this->_name;
   }
 
-  /* Gets the Doc's description
+  /**
+   * Gets the Doc's description
    *
    * @return string The Doc's description
    *
    * @access public
    */
-  function getDescription () {
+  function getDescription() {
     return $this->_description;
   }
 
-  /* Gets the size of the object
+  /**
+   * Gets the size of the object
    *
    * @return int The size (in bytes)
    *
    * @access public
    */
-  function getSize () {
+  function getSize() {
     return $this->_size;
   }
 
-  /* Gets the Doc's MIME type
+  /**
+   * Gets the Doc's MIME type
    *
    * @return string The Doc's MIME type
    *
    * @access public
    */
-  function getMimeType () {
+  function getMimeType() {
     return $this->_mime_type;
   }
 
-  /* Gets the Doc's type ('A' or 'C')
+  /**
+   * Gets the Doc's type ('A' or 'C')
    *
    * @return string The Doc's type
    *
    * @access public
    */
-  function getType () {
+  function getType() {
     return $this->_type;
   }
 
-  /* Gets the modification date
+  /**
+   * Gets the modification date
    *
    * @return int The modification date (in YYYYMMDD format)
    *
    * @access public
    */
-  function getModDate () {
+  function getModDate() {
     return $this->_mod_date;
   }
 
-  /* Gets the modification time
+  /**
+   * Gets the modification time
    *
    * @return int The modification time (in YYYYMMDD format)
    *
    * @access public
    */
-  function getModTime () {
+  function getModTime() {
     return $this->_mod_time;
   }
 
-  /* Get a summary of this object
+  /**
+   * Get a summary of this object
    *
    * @return string  A summary of the object
    */
@@ -292,13 +323,14 @@ class Doc {
     return $ret . ', ' . date_to_str ( $this->_mod_date, '', false, true ) . ' )';
   }
 
-  /* Get the binary data of the document.
+  /**
+   * Get the binary data of the document.
    * This is NOT cached and is only loaded when this function is called.
    * Repeated calls to this function will make repeated calls to the database.
    *
    * @return mixed  binary data of the blob
    */
-  function getData () {
+  function getData() {
     return dbi_get_blob ( 'webcal_blob', 'cal_blob', 'cal_blob_id = '
        . $this->_blob_id );
   }

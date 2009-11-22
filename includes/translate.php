@@ -1,5 +1,6 @@
 <?php
-/* Language translation functions.
+/**
+ * Language translation functions.
  *
  * The idea is very much stolen from the GNU translate C library.
  *
@@ -8,7 +9,7 @@
  * and store it as a file in the cache dir. The next call will unserialize the
  * cached file rather than re-parse the file.
  *
- * Although there is a PHP gettext () function, I prefer to use this home-grown
+ * Although there is a PHP gettext() function, I prefer to use this home-grown
  * translate function since it is simpler to work with.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
@@ -18,7 +19,8 @@
  * @package WebCalendar
  */
 
-/* Performs html_entity_decode style conversion for php < 4.3
+/**
+ * Performs html_entity_decode style conversion for php < 4.3
  * Borrowed from http://us2.php.net/manual/en/function.html-entity-decode.php
  *
  * @param string $string Text to convert
@@ -44,7 +46,8 @@ function unhtmlentities ( $string ) {
       array_flip ( get_html_translation_table ( HTML_ENTITIES, ENT_QUOTES ) ) );
   }
 }
-/* Read in a language file and cache it if we can.
+/**
+ * Read in a language file and cache it if we can.
  *
  * @param string $in_file   The name of the language file to read.
  * @param string $out_file  Name of the cache file.
@@ -60,7 +63,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
     die_miserable_death ( 'Could not open language file: ' . $in_file );
 
   $inInstallTrans = false;
-  $installationTranslations = array ();
+  $installationTranslations = array();
 
   while ( ! feof ( $fp ) ) {
     $buffer = trim ( fgets ( $fp, 4096 ) );
@@ -120,7 +123,8 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
     $translations = array_merge ( $translations, $installationTranslations );
 }
 
-/* Unloads $translations so we can translate a different language.
+/**
+ * Unloads $translations so we can translate a different language.
  *
  * @param string $new_language New language file to load (just the base filename,
  *                             no directory or file suffix. Example:  "French")
@@ -130,25 +134,26 @@ function reset_language ( $new_language ) {
   $PUBLIC_ACCESS_FULLNAME, $translation_loaded, $translations;
 
   if ( $new_language == 'none' || $new_language == 'Browser-defined' )
-    $new_language = get_browser_language ();
+    $new_language = get_browser_language();
 
   if ( $new_language != $lang || ! $translation_loaded ) {
     $lang = $new_language;
     $lang_file = 'translations/' . $lang . '.txt';
     $translation_loaded = false;
-    load_translation_text ();
+    load_translation_text();
   }
   $PUBLIC_ACCESS_FULLNAME = translate ( 'Public Access' );
   if ( $fullname == 'Public Access' )
     $fullname = $PUBLIC_ACCESS_FULLNAME;
 }
 
-/* Loads all the language translation into an array for quick lookup.
+/**
+ * Loads all the language translation into an array for quick lookup.
  *
  * <b>Note:</b> There is no need to call this manually.
- * It will be invoked by {@link translate () } the first time it is called.
+ * It will be invoked by {@link translate() } the first time it is called.
  */
-function load_translation_text () {
+function load_translation_text() {
   global $lang_file, $settings, $translation_loaded, $translations;
 
   if ( $translation_loaded ) // No need to run this twice.
@@ -213,7 +218,7 @@ function load_translation_text () {
   }
 
   $new_install = ( ! strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
-  $translations = array ();
+  $translations = array();
 
   // First set default $translations[]
   // by reading the base English-US.txt file or it's cache.
@@ -247,7 +252,8 @@ function load_translation_text () {
   $translation_loaded = true;
 }
 
-/* Gets browser-specified language preference.
+/**
+ * Gets browser-specified language preference.
  *
  * param bool $pref true is we want to simply display value
  *                  without affecting translations.
@@ -288,10 +294,11 @@ function translation_exists ( $str )
   return ( empty ( $translations[$str] ) ? false : true );
 }
 
-/* Translates a string from the default English usage to another language.
+/**
+ * Translates a string from the default English usage to another language.
  *
  * The first time that this is called, the translation file will be loaded
- * (with {@link load_translation_text () }).
+ * (with {@link load_translation_text() }).
  *
  * @param string   $str     Text to translate
  * @param string   $decode  Do we want to envoke html_entity_decode?
@@ -306,7 +313,7 @@ function translate ( $str, $decode = '', $type = '' ) {
   global $LANGUAGE, $translation_loaded, $translations;
 
   if ( ! $translation_loaded )
-    load_translation_text ();
+    load_translation_text();
 
   if ( $type == '' || $type == 'A' ) {
     // Translate these because even English may be abbreviated.
@@ -359,7 +366,8 @@ function translate ( $str, $decode = '', $type = '' ) {
   return $str;
 }
 
-/* Translates text and prints it.
+/**
+ * Translates text and prints it.
  *
  * This is just an abbreviation for:
  *
@@ -376,11 +384,12 @@ function etranslate ( $str, $decode = '', $type = 'A', $date = '' ) {
   echo translate ( $str, $decode, $type, $date );
 }
 
-/* Translates and removes HTML from text, and returns it.
+/**
+ * Translates and removes HTML from text, and returns it.
  *
  * This is useful for tooltips, which barf on HTML.
  *
- * <b>Note:</b>  {@link etooltip ()} prints the result
+ * <b>Note:</b>  {@link etooltip()} prints the result
  * rather than return the value.
  *
  * @param string $str Text to translate
@@ -392,11 +401,12 @@ function tooltip( $str, $decode = '' ) {
   return preg_replace( '/"/', "'", $ret );
 }
 
-/* Translates and removes HTML from text, and prints it.
+/**
+ * Translates and removes HTML from text, and prints it.
  *
  * This is useful for tooltips, which barf on HTML.
  *
- * <b>Note:</b>  {@link tooltip ()} returns the result
+ * <b>Note:</b> {@link tooltip()} returns the result
  * rather than print the value.
  *
  * @param string $str Text to translate and print
@@ -406,7 +416,8 @@ function etooltip ( $str, $decode = '' ) {
   echo tooltip ( $str, $decode );
 }
 
-/* Generate translated array of language names
+/**
+ * Generate translated array of language names
  *
  * The first is the name presented to users while the second is the filename
  * (without the ".txt") that must exist in the translations subdirectory.
@@ -414,7 +425,7 @@ function etooltip ( $str, $decode = '' ) {
  *
  * @uses translate
  */
-function define_languages () {
+function define_languages() {
   global $languages;
 
   $languages = array (
@@ -476,7 +487,8 @@ function define_languages () {
     $languages = array_merge ( $browser_defined, $languages );
 }
 
-/* Converts language names to their abbreviation.
+/**
+ * Converts language names to their abbreviation.
  *
  * @param string $name Name of the language (such as "French")
  *
@@ -492,7 +504,8 @@ function languageToAbbrev ( $name ) {
   return false;
 }
 
-/*
+/**
+ *
 If the user sets "Browser-defined" as their language setting, then use the
 $HTTP_ACCEPT_LANGUAGE settings to determine the language. The array below
 maps browser language abbreviations into our available language files.

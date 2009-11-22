@@ -1,15 +1,14 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 //check UAC
 if ( ! access_can_access_function ( ACCESS_DAY ) || 
   ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
-  send_to_preferred_view ();
+  send_to_preferred_view();
   
 load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );
 
-load_user_categories ();
+load_user_categories();
 
 $wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 $now = mktime ( 23, 59, 59, $thismonth, $thisday, $thisyear );
@@ -63,9 +62,9 @@ if ( empty ( $friendly ) ) {
   $printerStr = generate_printer_friendly ( 'day.php' );
 }
 $eventinfo = ( empty ( $eventinfo ) ? '' : $eventinfo );
-$trailerStr = print_trailer ();
+$trailerStr = print_trailer();
 print_header ( array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ),
-  generate_refresh_meta (), '', false, false, false, false );
+  generate_refresh_meta(), '', false, false, false, false );
 
 echo <<<EOT
 

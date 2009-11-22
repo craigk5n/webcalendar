@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 $error = '';
@@ -17,17 +16,17 @@ if ( empty ( $user ) ) {
   if ( ! $is_admin ) {
     // must be admin...
     if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) {
-      $error = print_not_auth ();
+      $error = print_not_auth();
     }
   }
   if ( ! $admin_can_add_user ) {
     // if adding users is not allowed...
-    $error = print_not_auth ();
+    $error = print_not_auth();
   }
 } else {
   // User is editing their account info
   if ( ! access_can_access_function ( ACCESS_ACCOUNT_INFO ) )
-    $error = print_not_auth ();
+    $error = print_not_auth();
 }
 
 $disableCustom = true;

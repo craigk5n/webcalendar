@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 if ( ! $is_admin ) {
@@ -9,7 +8,7 @@ if ( ! $is_admin ) {
   exit;
 }
 if ( ! $NONUSER_PREFIX ) {
-  echo print_error_header () . translate ( 'NONUSER_PREFIX not set' ) . '
+  echo print_error_header() . translate ( 'NONUSER_PREFIX not set' ) . '
   </body>
 </html>';
   exit;
@@ -20,7 +19,7 @@ $newNonUserStr = translate ( 'Add New NonUser Calendar' );
 $targetStr =
 'target="nonusersiframe" onclick="showFrame( \'nonusersiframe\' );">';
 
-ob_start ();
+ob_start();
 
 echo '
   <a name="tabnonusers"></a>
@@ -31,7 +30,7 @@ if ( empty ( $error ) ) {
     <a title="' . $newNonUserStr . '" href="edit_nonusers.php?add=1"'
    . $targetStr . $newNonUserStr . '</a><br />';
   // Displaying NonUser Calendars
-  $userlist = get_nonuser_cals ();
+  $userlist = get_nonuser_cals();
   if ( ! empty ( $userlist ) ) {
     echo '
     <ul>';
@@ -51,6 +50,6 @@ echo '
  . 'border: 0; height: 250px;"></iframe>
   </div>';
 
-ob_end_flush ();
+ob_end_flush();
 
 ?>

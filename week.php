@@ -1,14 +1,13 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 //check UAC
 if ( ! access_can_access_function ( ACCESS_WEEK ) || 
   ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
-  send_to_preferred_view ();
+  send_to_preferred_view();
   
 load_user_layers ( ( $user != $login ) && $is_nonuser_admin ? $user : '' );
-load_user_categories ();
+load_user_categories();
 
 $nextYmd =
 date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
@@ -95,7 +94,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     $header[$i] . '</a></p></th>';
 
   $date = date ( 'Ymd', $days[$i] );
-  $hour_arr = $rowspan_arr = $tk = array ();
+  $hour_arr = $rowspan_arr = $tk = array();
 
   // Get, combine and sort, static and repeating events for this date.
   $ev = combine_and_sort_events ( get_entries ( $date, $get_unapproved ),
@@ -107,7 +106,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
       ? get_tasks ( $date, $get_unapproved ) : $tk ) );
 
   for ( $j = 0, $cnt = count ( $ev ); $j < $cnt; $j++ ) {
-    if ( $get_unapproved || $ev[$j]->getStatus () == 'A' )
+    if ( $get_unapproved || $ev[$j]->getStatus() == 'A' )
       html_for_event_week_at_a_glance ( $ev[$j], $date );
   }
 
@@ -228,7 +227,7 @@ if ( empty ( $friendly ) ) {
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
 
-$trailerStr = print_trailer ();
+$trailerStr = print_trailer();
 if ( $DISPLAY_TASKS == 'Y' ) {
   $tableWidth = '80%';
   $filler = '<td></td>';
@@ -245,7 +244,7 @@ if ( $DISPLAY_TASKS == 'Y' ) {
 
 print_header (
   array ( 'js/popups.php/true', 'js/dblclick_add.js/true' ),
-  generate_refresh_meta (), '', false, false, false, false );
+  generate_refresh_meta(), '', false, false, false, false );
 
 echo <<<EOT
     <table width="100%" cellpadding="1" summary="">

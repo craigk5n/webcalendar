@@ -1,19 +1,18 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
-send_no_cache_header ();
+send_no_cache_header();
 
 //check UAC
 if ( ! access_can_access_function ( ACCESS_YEAR ) || 
   ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
-  send_to_preferred_view ();
+  send_to_preferred_view();
   
 if ( ( $user != $login ) && $is_nonuser_admin )
   load_user_layers ( $user );
 else
-  load_user_layers ();
+  load_user_layers();
 
-load_user_categories ();
+load_user_categories();
 
 if ( empty ( $year ) )
   $year = date ( 'Y' );
@@ -102,8 +101,8 @@ for ( $r = 1; $r <= $yr_rows; $r++ ) {
         </tr>';
 }
 
-$trailerStr = print_trailer ();
-print_header ();
+$trailerStr = print_trailer();
+print_header();
 echo <<<EOT
     <div class="title">
       <a title="{$prevStr}" class="prev" href="year.php?year={$prevYear}{$userStr}">

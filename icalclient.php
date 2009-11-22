@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  *               WARNING * WARNING * WARNING * WARNING * WARNING
  *                 This script is still considered alpha level.
  *                 Please backup your database before using it.

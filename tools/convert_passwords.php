@@ -1,8 +1,6 @@
 #!/usr/local/bin/php -q
-<?php
-/*
- * $Id$
- *
+<?php // $Id$
+/**
  * This script will alter the webcal_user table to allow 32 character passwords
  * and convert user passwords to PHP md5 passwords.
  *
@@ -29,7 +27,7 @@ $WebCalendar->initializeSecondPhase();
 
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database );
 if ( ! $c ) {
-  echo "Error connecting to database: " . dbi_error ();
+  echo "Error connecting to database: " . dbi_error();
   exit;
 }
 
@@ -46,7 +44,7 @@ if ( $res ) {
   }
   dbi_free_result ( $res );
 } else {
-  echo "Database error: " . dbi_error ();
+  echo "Database error: " . dbi_error();
   exit;
 }
 

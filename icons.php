@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 $icon_path = 'icons/';
 
@@ -11,10 +10,10 @@ if ( ! $can_edit )
 
 print_header ( array ( 'js/visible.php' ), '', '', true );
 
-$icons = array ();
+$icons = array();
 
 if ( $d = dir ( $icon_path ) ) {
-  while ( false !== ( $entry = $d->read () ) ) {
+  while ( false !== ( $entry = $d->read() ) ) {
     if ( substr ( $entry, -3, 3 ) == 'gif' ) {
       $data = '';
       // We''ll compare the files to eliminate duplicates.
@@ -27,7 +26,7 @@ if ( $d = dir ( $icon_path ) ) {
       fclose ( $fd );
     }
   }
-  $d->close ();
+  $d->close();
   // Remove duplicates and replace keys with 0...n.
   $icons = array_unique ( $icons );
   //Convert associative array into numeric array
@@ -47,13 +46,13 @@ if ( $d = dir ( $icon_path ) ) {
     thisPic.src = url;
     thistr1.style.visibility =
     thistr2.style.visibility = "visible";
-    window.close ();
+    window.close();
   }
   //]]> -->
   </script>
 
 <?php
-  ob_start ();
+  ob_start();
   echo '
     <table align="center" border="0" summary="">
       <tr>
@@ -79,7 +78,7 @@ if ( $d = dir ( $icon_path ) ) {
   </body>
 </html>';
 
-  ob_end_flush ();
+  ob_end_flush();
 }
 
 ?>

@@ -1,12 +1,11 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 
 include_once 'includes/init.php';
 // Load user and global cats.
-load_user_categories ();
+load_user_categories();
 
 if ( $CATEGORIES_ENABLED == 'N' ) {
-  send_to_preferred_view ();
+  send_to_preferred_view();
   exit;
 }
 
@@ -33,11 +32,11 @@ $showIcon = ( ! empty ( $catIcon ) && file_exists ( $catIcon )
 
 print_header ( array ( 'js/visible.php' ) );
 
-ob_start ();
+ob_start();
 
 echo '
     <h2>' . translate ( 'Categories' ) . '</h2>
-    ' . display_admin_link ();
+    ' . display_admin_link();
 
 $add = getGetValue ( 'add' );
 if ( empty ( $add ) )
@@ -149,7 +148,7 @@ if ( empty ( $error ) ) {
     <p><a href="category.php?add=1">' . translate ( 'Make New Category' )
    . '</a></p><br />';
 }
-ob_end_flush ();
-echo ( ! empty ( $error ) ? print_error ( $error ) : '' ) . print_trailer ();
+ob_end_flush();
+echo ( ! empty ( $error ) ? print_error ( $error ) : '' ) . print_trailer();
 
 ?>

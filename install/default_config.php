@@ -1,7 +1,5 @@
-<?php
+<?php // $Id$
 /**
- * $Id$
- *
  * The file contains a listing of all the current WebCalendar config settings
  * and their default values.
  */
@@ -161,7 +159,9 @@ $webcalConfig = array(
   'WORK_DAY_START_HOUR' => '8'
   );
 
-/*
+/**
+ * db_load_config (needs description)
+ *
  * This function is defined here because admin.php calls it during startup.
  */
 function db_load_config() {

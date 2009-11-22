@@ -1,5 +1,6 @@
 <?php
-/* Class to over load PHPMailer class to utilize
+/**
+ * Class to over load PHPMailer class to utilize
  * WebCalendar's translation function.
  *
  * PHPMailer's homepage http://phpmailer.sourceforge.net/
@@ -19,8 +20,10 @@ require ( 'phpmailer/class.phpmailer.php' );
 class WebCalMailer extends phpmailer {
   var $WordWrap = 75;
 
-  /* Constructor */
-  function WebCalMailer () {
+  /**
+   * Constructor
+   */
+  function WebCalMailer() {
     global $EMAIL_MAILER, $mailerError,
     $SMTP_AUTH, $SMTP_HOST, $SMTP_PASSWORD, $SMTP_USERNAME;
     $mailerError = '';
@@ -34,7 +37,9 @@ class WebCalMailer extends phpmailer {
     $this->Password = $SMTP_PASSWORD; // SMTP password.
   }
 
-  /* Build email from single via single class call. */
+  /**
+   * Build email from single via single class call.
+   */
   function WC_Send ( $from_name, $to_email,
     $to_name, $subject, $msg, $html = 'N', $from_email = '', $id = '' ) {
     if ( strlen ( $from_email ) ) {
@@ -49,16 +54,20 @@ class WebCalMailer extends phpmailer {
     $this->Body ( $msg );
     if ( ! empty ( $id ) )
       $this->IcsAttach ( $id );
-    $this->Send ();
-    $this->ClearAll ();
+    $this->Send();
+    $this->ClearAll();
   }
 
-  /* Replace the default language handler to use WebCalendar's function. */
+  /**
+   * Replace the default language handler to use WebCalendar's function.
+   */
   function Lang ( $key ) {
     return translate ( $key );
   }
 
-  /* Replace the default error handler so we can add our own trailer. */
+  /**
+   * Replace the default error handler so we can add our own trailer.
+   */
   function SetError ( $msg ) {
     global $mailerError;
     $this->error_count++;
@@ -67,49 +76,59 @@ class WebCalMailer extends phpmailer {
     $mailerError .= $msg . '<br />';
   }
 
-  /* Strip slashes from subject and pass thru unhtmlentities. */
+  /**
+   * Strip slashes from subject and pass thru unhtmlentities.
+   */
   function WCSubject ( $subject ) {
     $this->Subject = unhtmlentities ( generate_application_name ( false ) . ' '
        . translate ( 'Notification' ) . ': ' . stripslashes ( $subject ) );
   }
 
-  /* Clean up msg as needed. */
+  /**
+   * Clean up msg as needed.
+   */
   function Body ( $msg ) {
     $msg = stripslashes ( $msg );
     $this->Body = ( $this->ContentType == 'text/html'
       ? nl2br ( $msg ) : unhtmlentities ( $msg ) );
   }
 
-  /* Send ics file Attachment. */
+  /**
+   * Send ics file Attachment.
+   */
   function IcsAttach ( $id ) {
     if ( function_exists ( 'export_ical' ) )
       $this->AddStringAttachment ( export_ical ( $id, true ),
         'WebCalendar.ics', 'base64', 'text/ical' );
   }
 
-  /* New function to clear ALL attributes. */
-  function ClearAll () {
-    $this->ClearAddresses ();
-    $this->ClearAllRecipients ();
-    $this->ClearAttachments ();
-    $this->ClearCustomHeaders ();
+  /**
+   * New function to clear ALL attributes.
+   */
+  function ClearAll() {
+    $this->ClearAddresses();
+    $this->ClearAllRecipients();
+    $this->ClearAttachments();
+    $this->ClearCustomHeaders();
   }
 
-  /* Locate common error function here. */
+  /**
+   * Locate common error function here.
+   */
   function MailError ( $mailerError, $error ) {
-    print_header ();
+    print_header();
     echo ( ! empty ( $mailerError ) ? '
     <h2>' . translate ( 'Email' ) . ' ' . translate ( 'Error' ) . '</h2>
     <blockquote>' . $mailerError
        . ( empty ( $error ) ? translate ( 'Changes successfully saved' ) : '' )
        . '</blockquote>'
       : print_error ( $error ) )
-     . print_trailer ();
+     . print_trailer();
   }
 }
 /*
- The following comments will be picked up by update_translation.pl so
- translators will find them.
+ The following comments will be picked up by update_translation.pl
+ so translators will find them.
  translate ( 'authenticate' ) translate ( 'connect_host' )
  translate ( 'data_not_accepted' ) translate ( 'encoding' )
  translate ( 'execute' ) translate ( 'file_access' ) translate ( 'file_open' )

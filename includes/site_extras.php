@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  *  This file can be used to define extra information associated with a
  *  calender entry.
@@ -148,4 +147,5 @@ define ( 'EXTRA_DISPLAY_ALL', 511 );
 */
 $site_extras = array (
 );
+
 ?>

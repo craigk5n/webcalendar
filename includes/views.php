@@ -25,7 +25,7 @@ function view_init ( $view_id )
   if ( ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER == 'N' )
     && ! $is_admin ) {
     // not allowed...
-    send_to_preferred_view ();
+    send_to_preferred_view();
   }
   if ( empty ( $view_id ) ) {
     do_redirect ( 'views.php' );
@@ -45,7 +45,7 @@ function view_init ( $view_id )
   // If view_name not found, then the specified view id does not
   // belong to current user.
   if ( empty ( $view_name ) ) {
-    $error = print_not_auth ();
+    $error = print_not_auth();
   }
 }
 
@@ -61,7 +61,7 @@ function view_get_user_list ( $view_id ) {
   // get users in this view
   $res = dbi_execute (
     'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?', array ( $view_id ) );
-  $ret = array ();
+  $ret = array();
   $all_users = false;
   if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -71,11 +71,11 @@ function view_get_user_list ( $view_id ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = db_error ();
+    $error = db_error();
   }
   if ( $all_users ) {
     $users = get_my_users ( '', 'view' );
-    $ret = array ();
+    $ret = array();
     $usercnt = count ( $users );
     for ( $i = 0; $i < $usercnt; $i++ ) {
       $ret[] = $users[$i]['cal_login'];
@@ -91,12 +91,12 @@ function view_get_user_list ( $view_id ) {
     // is not allowed to see.
     if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
       $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-      $userlookup = array ();
+      $userlookup = array();
       $myusercnt = count ( $myusers );
       for ( $i = 0; $i < $myusercnt; $i++ ) {
         $userlookup[$myusers[$i]['cal_login']] = 1;
       }
-      $newlist = array ();
+      $newlist = array();
       $retcnt = count ( $ret );
       for ( $i = 0; $i < $retcnt; $i++ ) {
         if ( ! empty ( $userlookup[$ret[$i]] ) )
@@ -106,7 +106,7 @@ function view_get_user_list ( $view_id ) {
     }
 
     //Sort user list...
-    $sortlist = array ();
+    $sortlist = array();
     $myusercnt = count ( $myusers );
     $retcnt = count ( $ret );
     for ( $i = 0; $i < $myusercnt; $i++ ) {
@@ -121,8 +121,8 @@ function view_get_user_list ( $view_id ) {
   }
 
   // If user access control enabled, check against that as well.
-  if ( access_is_enabled () && ! $is_admin ) {
-    $newlist = array ();
+  if( access_is_enabled() && ! $is_admin ) {
+    $newlist = array();
     $retcnt = count ( $ret );
     for ( $i = 0; $i < $retcnt; $i++ ) {
       if ( access_user_calendar ( 'view', $ret[$i] ) )

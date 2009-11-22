@@ -1,10 +1,9 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
 
-load_user_categories ();
+load_user_categories();
 
 $error = '';
 
@@ -19,7 +18,8 @@ $subjStr = translate ( 'Subject XXX' );
 $timeStr = translate ( 'Time XXX' );
 $updAppStr = translate ( 'XXX has updated an appointment.' );
 
-/* Put byday values in logical sequence.
+/**
+ * Put byday values in logical sequence.
  */
 function sort_byday ( $a, $b ) {
   global $byday_values;
@@ -57,7 +57,7 @@ if ( ! empty ( $override ) && ! empty ( $override_date ) ) {
 // Remember previous cal_goup_id if present.
 $parent = getPostValue ( 'parent' );
 $old_id = ( empty ( $parent ) ? $old_id : $parent );
-$old_status = array ();
+$old_status = array();
 
 // Pass all string values through getPostValue.
 $access = getPostValue ( 'access' );
@@ -319,13 +319,13 @@ else {
       $can_edit = true;
     dbi_free_result ( $res );
   } else
-    $error = $dberror . dbi_error ();
+    $error = $dberror . dbi_error();
 }
 
 if ( $is_admin )
   $can_edit = true;
 else
-if ( access_is_enabled () && ! empty ( $old_create_by ) )
+if ( access_is_enabled() && ! empty ( $old_create_by ) )
   $can_edit = access_user_calendar ( 'edit', $old_create_by, $login );
 
 if ( empty ( $error ) && ! $can_edit ) {
@@ -339,18 +339,18 @@ if ( empty ( $error ) && ! $can_edit ) {
       $can_edit = true; // Is participant.
     dbi_free_result ( $res );
   } else
-    $error = $dberror . dbi_error ();
+    $error = $dberror . dbi_error();
 }
 
 if ( ! $can_edit && empty ( $error ) )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 // CAPTCHA
 if ( file_exists ( 'includes/classes/captcha/captcha.php' ) && $login == '__public__' && !
     empty ( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA == 'Y' ) {
   if ( function_exists ( 'imagecreatetruecolor' ) ) {
     include_once 'includes/classes/captcha/captcha.php';
-    $res = captcha::check ();
+    $res = captcha::check();
     if ( ! $res )
       $error =
       translate ( 'You must enter the anti-spam text on the previous page.' );
@@ -437,9 +437,9 @@ if ( empty ( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
     mktime ( $rpt_hour, $rpt_minute, 0, $rpt_month, $rpt_day, $rpt_year );
   }
 
-  $exception_list = $inclusion_list = array ();
+  $exception_list = $inclusion_list = array();
   if ( empty ( $exceptions ) )
-    $exceptions = array ();
+    $exceptions = array();
   else {
     foreach ( $exceptions as $exception ) {
       if ( substr ( $exception, 0, 1 ) == '+' )
@@ -497,7 +497,7 @@ if ( $ALLOW_CONFLICTS != 'Y' && empty ( $confirm_conflicts ) &&
   if ( empty ( $dates ) )
     $dates[0] = $eventstart;
 
-  // Make sure $thismonth and $thisyear are set for use in query_events ().
+  // Make sure $thismonth and $thisyear are set for use in query_events().
   $thismonth = $month;
   $thisyear = $year;
   $conflicts = check_for_conflicts ( $dates, $duration, $eventstart,
@@ -532,7 +532,7 @@ if ( empty ( $error ) ) {
       }
       dbi_free_result ( $res );
     } else
-      $error = $dberror . dbi_error ();
+      $error = $dberror . dbi_error();
 
     if ( empty ( $error ) ) {
       dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
@@ -553,10 +553,10 @@ if ( empty ( $error ) ) {
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_repeats_not
       ( cal_id, cal_date, cal_exdate ) VALUES ( ?, ?, ? )',
         array ( $old_id, $override_date, 1 ) ) )
-      $error = $dberror . dbi_error ();
+      $error = $dberror . dbi_error();
   }
 
-  $query_params = array ();
+  $query_params = array();
   $query_params[] = $id;
   if ( $old_id > 0 )
     $query_params[] = $old_id;
@@ -612,7 +612,7 @@ if ( empty ( $error ) ) {
          . '?, ?, ?, ?, ?, ?, ?, ?, ?, ? '
          . ( empty ( $location ) ? '' : ',? ' )
          . ( empty ( $entry_url ) ? '' : ',? ' ) . ')', $query_params ) )
-    $error = $dberror . dbi_error ();
+    $error = $dberror . dbi_error();
 
   // Log add/update.
   if ( $eType == 'task' ) {
@@ -641,7 +641,7 @@ if ( empty ( $error ) ) {
     $categories = explode ( ',', $cat_id );
     $categorycnt = count ( $categories );
     for ( $i = 0; $i < $categorycnt; $i++ ) {
-      $names = $values = array ();
+      $names = $values = array();
 
       $names[] = 'cal_id';
       $values[] = $id;
@@ -672,7 +672,7 @@ if ( empty ( $error ) ) {
       if ( ! dbi_execute ( 'INSERT INTO webcal_entry_categories ( '
            . implode ( ', ', $names )
              . ' ) VALUES ( ' . $placeholders . ' )', $values ) ) {
-        $error = $dberror . dbi_error ();
+        $error = $dberror . dbi_error();
         break;
       }
     }
@@ -695,7 +695,7 @@ if ( empty ( $error ) ) {
     //$value = $$extra_name;
     $value = getPostValue ( $extra_name );
     $sql = '';
-    $query_params = array ();
+    $query_params = array();
 
     if ( strlen ( $extra_name ) || $extra_type == EXTRA_DATE ) {
       if ( $extra_type == EXTRA_URL || $extra_type == EXTRA_EMAIL ||
@@ -729,14 +729,14 @@ if ( empty ( $error ) ) {
     }
     if ( strlen ( $sql ) && empty ( $error ) ) {
       if ( ! dbi_execute ( $sql, $query_params ) )
-        $error = $dberror . dbi_error ();
+        $error = $dberror . dbi_error();
     }
   } //end for site_extras loop
 
   // Process reminder.
   if ( ! dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?',
       array ( $id ) ) )
-    $error = $dberror . dbi_error ();
+    $error = $dberror . dbi_error();
 
   if ( $DISABLE_REMINDER_FIELD != 'Y' && $reminder == true ) {
     if ( empty ( $rem_before ) )
@@ -774,18 +774,18 @@ if ( empty ( $error ) ) {
         array ( $id, $reminder_date, $reminder_offset, $rem_related, $rem_before,
           $reminder_repeats, $reminder_duration, $rem_action, $rem_last_sent,
           $rem_times_sent ) ) )
-      $error = $dberror . dbi_error ();
+      $error = $dberror . dbi_error();
   }
 
   // Clearly, we want to delete the old repeats, before inserting new...
   if ( empty ( $error ) ) {
     if ( ! dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
         array ( $id ) ) )
-      $error = $dberror . dbi_error ();
+      $error = $dberror . dbi_error();
 
     if ( ! dbi_execute ( 'DELETE FROM webcal_entry_repeats_not
       WHERE cal_id = ?', array ( $id ) ) )
-      $error = $dberror . dbi_error ();
+      $error = $dberror . dbi_error();
 
     // Add repeating info.
     if ( ! empty ( $rpt_type ) && strlen ( $rpt_type ) && $rpt_type != 'none' ) {
@@ -853,7 +853,7 @@ if ( empty ( $error ) ) {
           ( cal_id, cal_date, cal_exdate ) VALUES ( ?, ?, ? )',
             array ( $id, substr ( $exceptions[$i], 1, 8 ),
                 ( ( substr ( $exceptions[$i], 0, 1 ) == '+' ) ? 0 : 1 ) ) ) )
-          $error = $dberror . dbi_error ();
+          $error = $dberror . dbi_error();
       }
     } //end exceptions
   }
@@ -876,7 +876,7 @@ if ( empty ( $error ) ) {
 
       // Check UAC.
       $can_email = 'Y';
-      if ( access_is_enabled () )
+      if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $old_participant, $login );
 
       $is_nonuser_admin = user_is_nonuser_admin ( $login, $old_participant );
@@ -989,12 +989,12 @@ if ( empty ( $error ) ) {
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status, cal_percent ) VALUES ( ?, ?, ?, ? )',
         array ( $id, $participants[$i], $status, $new_percent ) ) ) {
-      $error = $dberror . dbi_error ();
+      $error = $dberror . dbi_error();
       break;
     } else {
       // Check UAC.
       $can_email = 'Y';
-      if ( access_is_enabled () )
+      if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $participants[$i], $login );
 
       // Don't send mail if we are editing a non-user calendar and are the admin.
@@ -1032,7 +1032,7 @@ if ( empty ( $error ) ) {
               $timeStr ) . "\n" )
           // Add Site Extra Date if permitted.
           . $extra_email_data
-          . str_replace ( 'XXX', generate_application_name (),
+          . str_replace ( 'XXX', generate_application_name(),
             ( $REQUIRE_APPROVALS == 'Y'
               ? translate ( 'Please look on XXX to accept or reject this appointment.' )
               : translate ( 'Please look on XXX to view this appointment.' ) ) );
@@ -1059,7 +1059,7 @@ if ( empty ( $error ) ) {
   } //end for loop participants
 
   // Add external participants.
-  $ext_emails = $ext_names = $matches = array ();
+  $ext_emails = $ext_names = $matches = array();
   $ext_count = 0;
   $externalparticipants = getPostValue ( 'externalparticipants' );
   if ( $single_user == 'N' && !
@@ -1121,7 +1121,7 @@ if ( empty ( $error ) ) {
           ( cal_id, cal_fullname, cal_email ) VALUES ( ?, ?, ? )',
             array ( $id, $ext_names[$i],
               ( strlen ( $ext_emails[$i] ) ? $ext_emails[$i] : null ) ) ) )
-          $error = $dberror . dbi_error ();
+          $error = $dberror . dbi_error();
 
         // Send mail notification if enabled.
         // TODO:  Move this code into a function...
@@ -1164,7 +1164,7 @@ if ( empty ( $error ) ) {
 // If this is a new event,
 // then go to the preferred view for the date range where this event was added.
 if ( empty ( $error ) && empty ( $mailerError ) ) {
-  $return_view = get_last_view ();
+  $return_view = get_last_view();
   if ( ! empty ( $return_view ) )
     do_redirect ( $return_view );
   else {
@@ -1175,9 +1175,9 @@ if ( empty ( $error ) && empty ( $mailerError ) ) {
 }
 
 if ( ! empty ( $conflicts ) ) {
-  print_header ();
+  print_header();
 
-  ob_start ();
+  ob_start();
   echo '
     <h2>' . translate ( 'Scheduling Conflict' ) . '</h2>
     ' . translate ( 'Your suggested time of' ) . '
@@ -1203,14 +1203,14 @@ if ( ! empty ( $conflicts ) ) {
     if ( is_array ( $xval ) ) {
       $xkey .= "[]";
       foreach ( $xval as $ykey => $yval ) {
-        if ( get_magic_quotes_gpc () )
+        if ( get_magic_quotes_gpc() )
           $yval = stripslashes ( $yval );
         // $yval = htmlentities ( $yval );
         echo '
       <input type="hidden" name="' . $xkey . '" value="' . $yval . '" />';
       }
     } else {
-      if ( get_magic_quotes_gpc () )
+      if ( get_magic_quotes_gpc() )
         $xval = stripslashes ( $xval );
       // $xval = htmlentities ( $xval );
       echo '
@@ -1231,7 +1231,7 @@ if ( ! empty ( $conflicts ) ) {
       </table>
     </form>';
 
-  ob_end_flush ();
+  ob_end_flush();
 } else
   // Process errors.
   $mail->MailError ( $mailerError, $error );

@@ -1,12 +1,11 @@
-<?php
-/* $Id$
-
- Page Description:
-  Serves as the home page for administrative functions.
- Input Parameters:
-  None
- Security:
-  Users will see different options available on this page.
+<?php // $Id$
+/**
+ * Page Description:
+ *   Serves as the home page for administrative functions.
+ *  Input Parameters:
+ *   None
+ *  Security:
+ *   Users will see different options available on this page.
  */
 include_once 'includes/init.php';
 
@@ -15,7 +14,7 @@ define ( 'COLUMNS', 3 );
 $accessEnabled = access_is_enabled();
 $assistStr = translate ( 'Assistants' );
 $prefStr = translate ( 'Preferences' );
-$names = $links = array ();
+$names = $links = array();
 /* Disabled for now...will move to menu when working properly
 if ( $is_admin && ! empty ( $SERVER_URL ) &&
     access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) ) {

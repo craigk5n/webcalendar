@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
@@ -7,13 +6,13 @@ $mail = new WebCalMailer;
 $error = '';
 
 if ( $readonly == 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 // Give user a chance to add comments to rejection email.
 if ( ! empty ( $_POST ) )
   $comments = getPostValue ( 'comments' );
 else {
-  print_header ();
+  print_header();
   echo '
     <form action="reject_entry.php'
    . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : '?' . $_SERVER['QUERY_STRING'] )
@@ -52,7 +51,7 @@ $app_user = ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin
 
 // If User Access Control is enabled,
 // we check to see if they are allowed to approve for the specified user.
-if ( access_is_enabled () && ! empty ( $user ) && $user != $login ) {
+if ( access_is_enabled() && ! empty ( $user ) && $user != $login ) {
   if ( access_user_calendar ( 'approve', $user ) )
     $app_user = $user;
 }
@@ -90,7 +89,7 @@ if ( empty ( $error ) && $id > 0 ) {
       'EMAIL_EVENT_REJECTED' );
     // Check UAC.
     $can_mail = 'Y';
-    if ( access_is_enabled () )
+    if ( access_is_enabled() )
       $can_mail = access_user_calendar ( 'email', $partlogin[$i], $login );
 
     $htmlmail = get_pref_setting ( $partlogin[$i], 'EMAIL_HTML' );

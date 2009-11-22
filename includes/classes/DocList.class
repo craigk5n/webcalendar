@@ -23,7 +23,7 @@ class DocList {
     * Get the number of Doc objects in this list.
     * @return int  The number of objects in this list
     */
-  function getSize ()
+  function getSize()
   {
     return $this->_count;
   }
@@ -54,7 +54,7 @@ class DocList {
   {
     $this->_event_id = $event_id;
     $this->_type = $type;
-    $this->_arr = array ();
+    $this->_arr = array();
 
     if ( $type != 'A' && $type != 'C' )
       die_miserable_death ( "Invalid DocList type '$type'" );
@@ -78,7 +78,7 @@ class DocList {
    * @return int event ID
    * @access public
    */
-  function getEventId () {
+  function getEventId() {
     return $this->_event_id;
   }
 
@@ -89,7 +89,7 @@ class DocList {
    *
    * @access public
    */
-  function getDescription () {
+  function getDescription() {
     return $this->_description;
   }
 

@@ -1,5 +1,6 @@
 <?php
-/* This file contains the date formats that are used within
+/**
+ * This file contains the date formats that are used within
  * admin.php and pref.php to populate the 'Date format' selects.
  *
  * <b>Note:</b>
@@ -26,7 +27,7 @@
 // This will force $LANGUAGE to the current value
 // and eliminate having to double click the 'SAVE' button.
 reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
-define_languages (); // Load the language list.
+define_languages(); // Load the language list.
 reset ( $languages );
 
 $DecemberStr = translate ( 'December' );

@@ -8,9 +8,10 @@
  * @package WebCalendar
  */
 
-/* Initialize web service. This will take care of user validation.
+/**
+ * Initialize web service. This will take care of user validation.
  */
-function ws_init () {
+function ws_init() {
   global $admin_can_add_user, $admin_can_delete_user,
   $site_extras, $user_inc;
 
@@ -31,21 +32,22 @@ define ( '__WC_INCLUDEDIR', '../includes' );
   include_once __WC_INCLUDEDIR . '/access.php';
   include_once __WC_INCLUDEDIR . '/functions.php';
 
-  $WebCalendar->initializeFirstPhase ();
+  $WebCalendar->initializeFirstPhase();
 
   include_once __WC_INCLUDEDIR . '/' . $user_inc;
   include_once __WC_INCLUDEDIR . '/validate.php';
   include_once __WC_INCLUDEDIR . '/site_extras.php';
 
-  $WebCalendar->initializeSecondPhase ();
+  $WebCalendar->initializeSecondPhase();
 
-  load_global_settings ();
-  load_user_preferences ();
+  load_global_settings();
+  load_user_preferences();
 
-  $WebCalendar->setLanguage ();
+  $WebCalendar->setLanguage();
 }
 
-/* Format a text string for use in the XML returned to the client.
+/**
+ * Format a text string for use in the XML returned to the client.
  */
 function ws_escape_xml ( $str ) {
   $str = str_replace ( "\r\n", "\\n", $str );
@@ -58,7 +60,8 @@ function ws_escape_xml ( $str ) {
   return ( str_replace ( '<', '&lt;', str_replace ( '>', '&gt;', $str ) ) );
 }
 
-/* Send a single event. This will include all participants (with status).
+/**
+ * Send a single event. This will include all participants (with status).
  */
 function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   global $ALLOW_EXTERNAL_USERS, $DISABLE_PARTICIPANTS_FIELD,
@@ -69,7 +72,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user
     WHERE cal_id = ? AND cal_status IN (\'A\',\'W\') ORDER BY cal_login',
     array ( $id ) );
-  $participants = array ();
+  $participants = array();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[] = array (
@@ -80,7 +83,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   }
 
   // Get external participants.
-  $ext_participants = array ();
+  $ext_participants = array();
   $num_ext_participants = 0;
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' && !
       empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == 'Y' ) {

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * Loads appropriate import file parser and processes the data returned.
  *    Currently supported:
@@ -26,7 +25,7 @@
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
 $error = $sqlLog = '';
-print_header ();
+print_header();
 
 $overwrite = getValue ( 'overwrite' );
 $doOverwrite = ( empty ( $overwrite ) || $overwrite != 'Y' ) ? false : true;
@@ -119,6 +118,6 @@ if ( $file['size'] > 0 ) {
     <b>' . translate ( 'Error' ) . ':</b> '
    . translate( 'The import file contained no data.' ) . '<br />';
 // echo "<hr />$sqlLog\n";
-echo print_trailer ();
+echo print_trailer();
 
 ?>

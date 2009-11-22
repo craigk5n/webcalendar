@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * Display view of a week with users side by side.
  *
@@ -53,11 +52,11 @@ if ( $viewusercnt == 0 )
   $error = translate( 'No users for this view.' );
 
 if ( ! empty ( $error ) ) {
-  echo print_error ( $error ) . print_trailer ();
+  echo print_error( $error ) . print_trailer();
   exit;
 }
 
-ob_start ();
+ob_start();
 
 echo '
     <div style="width:99%;">
@@ -83,7 +82,7 @@ echo '
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
 
-$e_save = $re_save = array ();
+$e_save = $re_save = array();
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access. */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
@@ -169,10 +168,10 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     </table>';
 }
 
-ob_end_flush ();
+ob_end_flush();
 
 $user = ''; // reset
 
-echo ( empty ( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer ();
+echo ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
 
 ?>

@@ -1,11 +1,10 @@
-<?php
+<?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // This file contains some convenient functions for editing rows in a table.
 // You need to define the tables (typically this is done in tables.php).
 
-/*
- *
+/**
  * @param $tablear   - array that defines table (see tables.php)
    @param $fieldname - name of field
  */
@@ -21,7 +20,8 @@ function dbtable_get_field_index ( $tablear, $fieldname ) {
   return -1;
 }
 
-/* Create a table for editing a database table entry
+/**
+ * Create a table for editing a database table entry
  *
  * @param $tablear     - array that defines table (see tables.php)
  * @param $valuesar    - array of current values
@@ -145,7 +145,8 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
     </table>';
 }
 
-/* Print rows of a table into an HTML table.
+/**
+ * Print rows of a table into an HTML table.
  * The first column will include (optionally) href links to a page
  * which can show further details.
  *
@@ -193,7 +194,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   }
   $ret .= '
                   </tr>';
-  $query_params = array ();
+  $query_params = array();
   $sql = 'SELECT ' . $fields[0];
 
   for ( $i = 1; $i < $fieldcnt; $i++ ) {
@@ -276,7 +277,8 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
     </table>';
 }
 
-/* Load a single row of a db table
+/**
+ * Load a single row of a db table
  *
  * @param $tablear   - db table (defined in tables.php)
  * @param $tablename - db table name
@@ -284,7 +286,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
  */
 function dbtable_load ( $tablear, $tablename, $keys ) {
   $cnt = count ( $tablear );
-  $query_params = array ();
+  $query_params = array();
   $ret = false;
   $sql = 'SELECT ';
 
@@ -332,7 +334,7 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
   $res = dbi_execute ( $sql, $query_params );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      $ret = array ();
+      $ret = array();
       for ( $i = 0; $i < $cnt; $i++ ) {
         $ret[$i] = $row[$i];
       }
@@ -345,7 +347,8 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
   return $ret;
 }
 
-/* Delete a single row of a db table
+/**
+ * Delete a single row of a db table
  *
  * @param $tablear   - db table (defined in tables.php)
  * @param $tablename - db table name
@@ -364,7 +367,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
     exit;
   }
   $first = 1;
-  $query_params = array ();
+  $query_params = array();
   $sql = 'DELETE FROM ' . $tablename . ' WHERE ';
   for ( $i = 0; $i < $cnt; $i++ ) {
     if ( ! empty ( $tablear[$i]['iskey'] ) ) {
@@ -390,7 +393,8 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
   return $ret;
 }
 
-/* Add a row into a table (SQL insert)
+/**
+ * Add a row into a table (SQL insert)
  *
  * @param $tablear   - db table (defined in tables.php)
  * @param $tablename - db table name
@@ -399,7 +403,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
 function dbtable_add ( $tablear, $tablename, $valuesar ) {
   global $error;
 
-  $query_params = array ();
+  $query_params = array();
   $ret = false;
   $sql = 'INSERT INTO ' . $tablename . ' (';
   if ( ! is_array ( $tablear ) ) {
@@ -439,13 +443,14 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
 
   if ( ! dbi_execute ( $sql, $query_params ) ) {
     // Shouldn't happen... complain if it does.
-    $error = db_error ();
+    $error = db_error();
     return false;
   }
   return true;
 }
 
-/* Update a row in a table (SQL update)
+/**
+ * Update a row in a table (SQL update)
  *
  * @param $tablear   - db table (defined in tables.php)
  * @param $tablename - db table name
@@ -454,7 +459,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
 function dbtable_update ( $tablear, $tablename, $valuesar ) {
   global $error;
 
-  $query_params = array ();
+  $query_params = array();
   $sql = 'UPDATE ' . $tablename . ' SET';
   if ( ! is_array ( $tablear ) ) {
     echo 'Error: dbtable_update parameter 1 is not an array!<br />' . "\n";
@@ -504,13 +509,14 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
 
   if ( ! dbi_execute ( $sql, $query_params ) ) {
     // Shouldn't happen... complain if it does.
-    $error = db_error ();
+    $error = db_error();
     return false;
   }
   return true;
 }
 
-/* Generate a new ID
+/**
+ * Generate a new ID
  */
 function dbtable_genid ( $tablename, $field ) {
   $ret = 1;
@@ -526,14 +532,15 @@ function dbtable_genid ( $tablename, $field ) {
   return $ret;
 }
 
-/* Convert an array of db values (with index values 0,1,2,...
+/**
+ * Convert an array of db values (with index values 0,1,2,...
  * into an associative array (with index values of table column names).
  *
  * @param $tablear  - db table (defined in tables.php)
  * @param $valuesar - array of values
  */
 function dbtable_build_name_index ( $tablear, $valuesar ) {
-  $ret = array ();
+  $ret = array();
   for ( $i = 0, $cnt = count ( $tablear ); $i < $cnt; $i++ ) {
     $ret[$tablear[$i]['name']] = $valuesar[$i];
   }

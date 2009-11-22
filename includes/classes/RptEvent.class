@@ -208,7 +208,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatType () {
+  function getRepeatType() {
     return $this->_repeatType;
   }
 
@@ -220,7 +220,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatEnd () {
+  function getRepeatEnd() {
     return $this->_repeatEnd;
   }
 
@@ -232,7 +232,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatEndTime () {
+  function getRepeatEndTime() {
     return $this->_repeatEndTime;
   }
 
@@ -243,7 +243,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatEndDateTime () {
+  function getRepeatEndDateTime() {
     $time = ($this->_repeatEndTime ? $this->_repeatEndTime: 0);
     $this->_repeatEndDateTime = $this->_repeatEnd . sprintf ( "%06d", $time );
     return $this->_repeatEndDateTime;
@@ -255,7 +255,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatEndDateTimeTS () {
+  function getRepeatEndDateTimeTS() {
     if ( $this->_repeatEnd > 0 ) {
       $year = substr ( $this->_repeatEnd, 0, 4 );
       $month = substr ( $this->_repeatEnd, 4, 2 );
@@ -284,7 +284,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatFrequency () {
+  function getRepeatFrequency() {
     return $this->_repeatFrequency;
   }
 
@@ -295,7 +295,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatDays () {
+  function getRepeatDays() {
     return $this->_repeatDays;
   }
   /**
@@ -305,7 +305,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatByMonth () {
+  function getRepeatByMonth() {
     return $this->_repeatByMonth;
   }
   /**
@@ -315,7 +315,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatByMonthDay () {
+  function getRepeatByMonthDay() {
     return $this->_repeatByMonthDay;
   }
   /**
@@ -325,7 +325,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatByDay () {
+  function getRepeatByDay() {
     return $this->_repeatByDay;
   }
   /**
@@ -335,7 +335,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatBySetPos () {
+  function getRepeatBySetPos() {
     return $this->_repeatBySetPos;
   }
   /**
@@ -345,7 +345,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatByWeekNo () {
+  function getRepeatByWeekNo() {
     return $this->_repeatByWeekNo;
   }
   /**
@@ -355,7 +355,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatByYearDay () {
+  function getRepeatByYearDay() {
     return $this->_repeatByYearDay;
   }
   /**
@@ -365,7 +365,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatWkst () {
+  function getRepeatWkst() {
     return $this->_repeatWkst;
   }
   /**
@@ -375,7 +375,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatCount () {
+  function getRepeatCount() {
     return $this->_repeatCount;
   }
   /**
@@ -385,7 +385,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatExceptions () {
+  function getRepeatExceptions() {
     return $this->_repeatExceptions;
   }
 
@@ -410,7 +410,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatInclusions () {
+  function getRepeatInclusions() {
     return $this->_repeatInclusions;
   }
 
@@ -432,7 +432,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function getRepeatAllDates () {
+  function getRepeatAllDates() {
     return $this->_repeatAllDates;
   }
 

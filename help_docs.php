@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 

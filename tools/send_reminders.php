@@ -1,7 +1,6 @@
 #!/usr/local/bin/php -q
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * This is a command-line script that will send out any email
  * reminders that are due.
@@ -69,12 +68,12 @@ include __WC_INCLUDEDIR . '/dbi4php.php';
 include __WC_INCLUDEDIR . '/formvars.php';
 include __WC_INCLUDEDIR . '/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include __WC_INCLUDEDIR . '/' .$user_inc;
 include __WC_INCLUDEDIR . '/site_extras.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
 $debug = false;// Set to true to print debug info...
 $only_testing = false; // Just pretend to send -- for debugging.
@@ -82,15 +81,15 @@ $only_testing = false; // Just pretend to send -- for debugging.
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
 if ( ! $c ) {
-  echo translate ( 'Error connecting to database' ) . ': ' . dbi_error ();
+  echo translate( 'Error connecting to database' ) . ': ' . dbi_error();
   exit;
 }
 
-load_global_settings ();
+load_global_settings();
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
-set_today ();
+set_today();
 
 if ( $debug )
   echo '<br />Include Path=' . ini_get ( 'include_path' ) . "<br />\n";
@@ -98,14 +97,14 @@ if ( $debug )
 // Get a list of the email users in the system.
 // They must also have an email address.
 // Otherwise, we can't send them mail, so what's the point?
-$allusers = user_get_users ();
+$allusers = user_get_users();
 $allusercnt = count ( $allusers );
 for ( $i = 0; $i < $allusercnt; $i++ ) {
   $names[$allusers[$i]['cal_login']] = $allusers[$i]['cal_fullname'];
   $emails[$allusers[$i]['cal_login']] = $allusers[$i]['cal_email'];
 }
 
-$attachics = $htmlmail = $languages = $noemail = $t_format = $tz = array ();
+$attachics = $htmlmail = $languages = $noemail = $t_format = $tz = array();
 
 $res = dbi_execute ( 'SELECT cal_login, cal_value, cal_setting
   FROM webcal_user_pref
@@ -192,7 +191,7 @@ if ( $debug )
 
 $is_task = false;
 for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
-  $dateTS = time () + ( $d * 86400 );
+  $dateTS = time() + ( $d * 86400 );
   $date = date ( 'Ymd', $dateTS );
 
   // Get non-repeating events for this date.
@@ -200,32 +199,32 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $ev = get_entries ( $date );
 
   // Keep track of duplicates.
-  $completed_ids = array ();
+  $completed_ids = array();
   $evcnt = count ( $ev );
   for ( $i = 0; $i < $evcnt; $i++ ) {
-    $id = $ev[$i]->getID ();
+    $id = $ev[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
 
     $completed_ids[$id] = 1;
-    process_event ( $id, $ev[$i]->getName (), $ev[$i]->getDateTimeTS (),
-      $ev[$i]->getEndDateTimeTS () );
+    process_event( $id, $ev[$i]->getName(), $ev[$i]->getDateTimeTS(),
+      $ev[$i]->getEndDateTimeTS() );
   }
   // Get tasks for this date.
   // A task will be included one time for each participant.
   $tks = get_tasks ( $date );
   // Keep track of duplicates.
-  $completed_ids = array ();
+  $completed_ids = array();
   $tkscnt = count ( $tks );
   for ( $i = 0; $i < $tkscnt; $i++ ) {
-    $id = $tks[$i]->getID ();
+    $id = $tks[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
 
     $completed_ids[$id] = 1;
     $is_task = true;
-    process_event ( $id, $tks[$i]->getName (), $tks[$i]->getDateTimeTS (),
-      $tks[$i]->getDueDateTimeTS (), $dateTS );
+    process_event( $id, $tks[$i]->getName(), $tks[$i]->getDateTimeTS(),
+      $tks[$i]->getDueDateTimeTS(), $dateTS );
   }
   $is_task = false;
   // Get repeating events...tasks are not included at this time.
@@ -236,13 +235,13 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   if ( $debug )
     echo "found $repcnt repeating events for $date<br />";
   for ( $i = 0; $i < $repcnt; $i++ ) {
-    $id = $rep[$i]->getID ();
+    $id = $rep[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
 
     $completed_ids[$id] = 1;
-    process_event ( $id, $rep[$i]->getName (), $rep[$i]->getDateTimeTS (),
-      $rep[$i]->getEndDateTimeTS (), $date );
+    process_event( $id, $rep[$i]->getName(), $rep[$i]->getDateTimeTS(),
+      $rep[$i]->getEndDateTimeTS(), $date );
   }
 }
 
@@ -257,7 +256,7 @@ function send_reminder ( $id, $event_date ) {
   $EXTERNAL_REMINDERS, $htmlmail, $ignore_user_case, $is_task, $LANGUAGE,
   $languages, $names, $only_testing, $SERVER_URL, $site_extras, $tz, $t_format;
 
-  $ext_participants = $participants = array ();
+  $ext_participants = $participants = array();
   $num_ext_participants = $num_participants = 0;
 
   $pri[1] = translate ( 'High' );
@@ -316,7 +315,7 @@ function send_reminder ( $id, $event_date ) {
 
   // Send mail. We send one user at a time so that we can switch
   // languages between users if needed (as well as HTML vs plain text).
-  $mailusers = $recipients = array ();
+  $mailusers = $recipients = array();
   if ( isset ( $single_user ) && $single_user == 'Y' ) {
     $mailusers[] = $emails[$single_user_login];
     $recipients[] = $single_user_login;
@@ -507,18 +506,22 @@ From:' . $adminStr . '
   }
 }
 
-// Keep track of the fact that we sent the reminder, so we don't do it again.
+/**
+ * Keep track of the fact that we sent the reminder, so we don't do it again.
+ */
 function log_reminder ( $id, $times_sent ) {
   global $debug, $only_testing;
 
   if ( ! $only_testing )
     dbi_execute ( 'UPDATE webcal_reminders
       SET cal_last_sent = ?, cal_times_sent = ? WHERE cal_id = ?',
-      array ( time (), $times_sent, $id ) );
+      array( time(), $times_sent, $id ) );
 }
 
-// Process an event for a single day. Check to see if it has a reminder,
-// when it needs to be sent and when the last time it was sent.
+/**
+ * Process an event for a single day. Check to see if it has a reminder,
+ * when it needs to be sent and when the last time it was sent.
+ */
 function process_event ( $id, $name, $start, $end, $new_date = '' ) {
   global $debug, $is_task, $only_testing;
 
@@ -587,16 +590,16 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
        . '<br /><br />
   times_sent = ' . $times_sent . '
   repeats = ' . $repeats . '
-  time = ' . date ( 'His', time () ). ' 
+  time = ' . date( 'His', time() ). ' 
   remind_time = ' . date ( 'His', $remind_time ). ' 
   lastsent = '
        . ( $lastsent > 0 ? date( 'Ymd His', $lastsent ) : ' NEVER ' ) . '
   pointless = ' . date( 'Ymd His', $pointless ) . ' 
   is_task = ' . ( $is_task ? 'true' : 'false' ) . '<br />';
 
-    if ( $times_sent < ( $repeats + 1 ) &&
-        time () >= $remind_time && $lastsent <= $remind_time &&
-        ( time () <= $pointless || $is_task ) ) {
+    if( $times_sent < ( $repeats + 1 )
+        && time() >= $remind_time && $lastsent <= $remind_time
+        && ( time() <= $pointless || $is_task ) ) {
       // Send a reminder.
       if ( $debug )
         echo ' SENDING REMINDER!<br />' . "\n";
@@ -608,17 +611,19 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
     }
   }
 } //end function process_event
-
+/**
+ * my_get_repeating_entries (needs description)
+ */
 function my_get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   global $debug, $repeated_events;
 
   $n = 0;
-  $ret = array ();
+  $ret = array();
   if ( $debug )
     echo "Getting repeating entries for $dateYmd<br />";
 
   for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
-    $list = $repeated_events[$i]->getRepeatAllDates ();
+    $list = $repeated_events[$i]->getRepeatAllDates();
     for ( $j = 0, $cnt_j = count ( $list ); $j < $cnt_j; $j++ ) {
       if ( $debug )
         echo "     checking $list[$j] = " . date( 'Ymd', $list[$j]) . '<br />';

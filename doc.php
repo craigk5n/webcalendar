@@ -1,13 +1,11 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Obtain a binary object from the database and send it back to
  *  the browser using the correct mime type.
  *
  * Input Parameters:
- *  blid(*) - The unique identifier for this blob
- * (*) required field
+ *  blid - The unique identifier for this blob (required)
  */
 include_once 'includes/init.php';
 include_once 'includes/classes/Doc.class';
@@ -21,7 +19,7 @@ if ( empty ( $blid ) )
 else {
   $res = dbi_execute ( Doc::getSQLForDocId ( $blid ) );
   if ( ! $res )
-   $error = db_error ();
+   $error = db_error();
 }
 
 if ( empty ( $error ) ) {
@@ -30,14 +28,14 @@ if ( empty ( $error ) ) {
     $error = str_replace ( 'XXX', $blid, $invalidIDStr );
   else {
     $doc = new Doc( $row );
-    $description = $doc->getDescription ();
-    $filedata = $doc->getData ();
-    $filename = $doc->getName ();
-    $id = $doc->getId ();
-    $mimetype = $doc->getMimeType ();
-    $owner = $doc->getLogin ();
-    $size = $doc->getSize ();
-    $type = $doc->getType ();
+    $description = $doc->getDescription();
+    $filedata = $doc->getData();
+    $filename = $doc->getName();
+    $id = $doc->getId();
+    $mimetype = $doc->getMimeType();
+    $owner = $doc->getLogin();
+    $size = $doc->getSize();
+    $type = $doc->getType();
   }
   dbi_free_result ( $res );
 }
@@ -102,13 +100,13 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       // 99.9% of users.
       // In summary, make sure at least one event participant is in one of
       // this user's groups.
-      $my_users = get_my_users ();
+      $my_users = get_my_users();
       $cnt = count ( $my_users );
       if ( is_array ( $my_users ) && $cnt ) {
         $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
           WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
           AND weu.cal_login IN ( ';
-        $query_params = array ();
+        $query_params = array();
       $query_params[] = $id;
       for ( $i = 0; $i < $cnt; $i++ ) {
           if ( $i > 0 ) {
@@ -139,8 +137,8 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
   // calendar event where the nonuser is the _only_ participant.
   if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
     $NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_nonuser_cals ();
-    $nonuser_lookup = array ();
+    $nonusers = get_nonuser_cals();
+    $nonuser_lookup = array();
     for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
       $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
     }
@@ -162,12 +160,12 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       $can_view = true;
   }
   if ( empty ( $error ) && ! $can_view )
-    $error = print_not_auth ();
+    $error = print_not_auth();
 }
 
 if ( ! empty ( $error ) ) {
-  print_header ();
-  echo print_error ( $error, true) . print_trailer ();
+  print_header();
+  echo print_error ( $error, true) . print_trailer();
   exit;
 }
 

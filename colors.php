@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 $color = getGetValue ( 'color' );
 if ( empty ( $color ) )

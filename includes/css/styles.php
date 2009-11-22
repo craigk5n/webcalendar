@@ -1,5 +1,6 @@
 <?php
-/* Dynamic CSS styles used in WebCalendar.
+/**
+ * Dynamic CSS styles used in WebCalendar.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen

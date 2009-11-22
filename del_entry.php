@@ -1,7 +1,6 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
-require ( 'includes/classes/WebCalMailer.class' );
+require 'includes/classes/WebCalMailer.class';
 $mail = new WebCalMailer;
 
 $can_edit = $my_event = false;
@@ -13,7 +12,7 @@ if ( $id > 0 ) {
   $can_edit = ( $is_admin || $readonly != 'Y' );
 
   // If assistant is doing this, then we need to switch login to user in the SQL.
-  $query_params = array ();
+  $query_params = array();
   $query_params[] = $id;
   $sql = 'SELECT we.cal_id, we.cal_type FROM webcal_entry we,
     webcal_entry_user weu WHERE we.cal_id = weu.cal_id AND we.cal_id = ? ';
@@ -52,7 +51,7 @@ if ( $res ) {
     $can_edit = $my_event = true;
 
   // Check UAC.
-  if ( access_is_enabled () && ! $is_admin )
+  if ( access_is_enabled() && ! $is_admin )
     $can_edit = access_user_calendar ( 'edit', $owner );
 }
 
@@ -68,12 +67,12 @@ if ( $readonly == 'Y' )
 
 // If User Access Control is enabled, check to see if the current
 // user is allowed to delete events from the other user's calendar.
-if ( ! $can_edit && access_is_enabled () && ! empty ( $user ) &&
+if ( ! $can_edit && access_is_enabled() && ! empty ( $user ) &&
     access_user_calendar ( 'edit', $user ) )
   $can_edit = true;
 
 if ( ! $can_edit )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 // Is this a repeating event?
 $event_repeats = false;
@@ -112,7 +111,7 @@ if ( $id > 0 && empty ( $error ) ) {
     // First, get list of participants (with status Approved or Waiting on approval).
     $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
       WHERE cal_id = ? AND cal_status IN ( \'A\', \'W\' )', array ( $id ) );
-    $partlogin = array ();
+    $partlogin = array();
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $partlogin[] = $row[0];
@@ -136,7 +135,7 @@ if ( $id > 0 && empty ( $error ) ) {
       // Log the deletion.
       activity_log ( $id, $login, $partlogin[$i], $log_delete, '' );
       // Check UAC.
-      $can_email = ( access_is_enabled ()
+      $can_email = ( access_is_enabled()
         ? access_user_calendar ( 'email', $partlogin[$i], $login ) : false );
 
       // Don't email the logged in user.
@@ -182,7 +181,7 @@ if ( $id > 0 && empty ( $error ) ) {
         $res = dbi_execute ( 'SELECT cal_id FROM webcal_entry WHERE cal_group_id = ?',
           array ( $id ) );
         if ( $res ) {
-          $ex_events = array ();
+          $ex_events = array();
           while ( $row = dbi_fetch_row ( $res ) ) {
             $ex_events[] = $row[0];
           }
@@ -191,7 +190,7 @@ if ( $id > 0 && empty ( $error ) ) {
             $res = dbi_execute ( 'SELECT cal_login FROM
               webcal_entry_user WHERE cal_id = ?', array ( $ex_events[$i] ) );
             if ( $res ) {
-              $delusers = array ();
+              $delusers = array();
               while ( $row = dbi_fetch_row ( $res ) ) {
                 $delusers[] = $row[0];
               }
@@ -223,12 +222,12 @@ if ( $id > 0 && empty ( $error ) ) {
     $del_user = ( ! empty ( $other_user ) ? $other_user : $login );
     if ( ! empty ( $user ) && $user != $login ) {
       if ( $is_admin || $my_event || ( $can_edit && $is_assistant ) ||
-          ( access_is_enabled () &&
+          ( access_is_enabled() &&
             access_user_calendar ( 'edit', $user ) ) ) {
         $del_user = $user;
       } else
         // Error: user cannot delete from other user's calendar.
-        $error = print_not_auth ();
+        $error = print_not_auth();
     }
     if ( empty ( $error ) ) {
       if ( $override_repeat ) {
@@ -246,7 +245,7 @@ if ( $id > 0 && empty ( $error ) ) {
 }
 
 $ret = getValue ( 'ret' );
-$return_view = get_last_view ();
+$return_view = get_last_view();
 
 if ( ! empty ( $ret ) ) {
   if ( $ret == 'listall' )

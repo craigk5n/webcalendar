@@ -1,11 +1,12 @@
 <?php
-/* $Id$
+/**
+ * $Id$
  *
  * This page handles managing a user's layers and works with
  * layer_ajax.php to make changes.
  */
 include_once 'includes/init.php';
-send_no_cache_header ();
+send_no_cache_header();
 
 $layer_user = $login;
 $u_url = '';
@@ -48,7 +49,7 @@ $LAYERS_ENABLED = translate ( 'Layers are currently enabled.' );
 $LAYERS_DISABLED = translate ( 'Layers are currently disabled.' );
 $public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
   translate( 'Click to modify layers settings for XXX' ) );
-$LOADING = '<center><img src="images/loading_animation.gif" alt=""/></center>';
+$LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
 
 
 $BodyX = 'onload="load_layers();"';
@@ -62,10 +63,10 @@ $HEAD =
 
 print_header ( array ( 'js/visible.php' ), $HEAD, $BodyX );
 
-ob_start ();
+ob_start();
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
-  echo print_not_auth ();
+  echo print_not_auth();
 else {
   if ( $is_admin && empty ( $public ) &&
     ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) ) {
@@ -96,17 +97,17 @@ else {
   <input type="button" onclick="return set_layer_status(false);" value=<?php etranslate("Disable Layers");?>" <?php echo $layers_enabled ? '' : 'disabled="true"';?> id="disablebutton" />
   </div>
 
-<br/><br/>
+<br /><br />
 
 <div id="layerlist" style="margin-left: 25px;"> <?php echo $LOADING;?> </div>
 
-<br/>
+<br />
 
 <div class="layerButtons" style="margin-left: 25px;">
 <input type="button" value="<?php etranslate('Add layer');?>..."
   onclick="return edit_layer(-1)" />
 </div>
-<br/>
+<br />
 
 <!--
 <input type="button" value="Refresh"
@@ -117,7 +118,7 @@ else {
 }
 
 // Create list of users for edit layer dialog.
-$userlist = Array ();
+$userlist = Array();
 if ( $single_user == 'N' ) {
   $otherlist = $userlist = get_my_users ( '', 'view' );
   if ( $NONUSER_ENABLED == 'Y' ) {
@@ -176,7 +177,7 @@ if ( $single_user == 'N' ) {
         <td><input type="checkbox" name="editLayerDups" id="editLayerDups" />
         </td></tr>
     </table>
-    <br/>
+    <br />
     <center>
       <input id="editLayerDeleteButton" type="button" value="<?php etranslate("Delete");?>"
       onclick="if ( confirm ( '<?php echo $areYouSureStr;?>' ) ) {
@@ -191,7 +192,7 @@ if ( $single_user == 'N' ) {
 
 
 <script type="text/javascript">
-var layers = Array ();
+var layers = Array();
 // Set the LAYER_STATUS value in webcal_user_pref for either the current
 // user or the public user ('__public__') with an AJAX call to
 // layers_ajax.php.
@@ -207,7 +208,7 @@ function set_layer_status (enable)
     onSuccess: function( transport ) {
       var response = transport.responseText || "no response text";
       try  {
-        //var response = transport.responseText.evalJSON ();
+        //var response = transport.responseText.evalJSON();
         // Hmmm... The Prototype JSON above doesn't seem to work!
         var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
@@ -236,9 +237,9 @@ function set_layer_status (enable)
   return true;
 }
 
-function load_layers ()
+function load_layers()
 {
-  layers = Array ();
+  layers = Array();
   $('layerlist').innerHTML = '<?php echo $LOADING;?>';
   new Ajax.Request('layers_ajax.php',
   {
@@ -253,7 +254,7 @@ function load_layers ()
       }
       //alert ( "Response:\n" + transport.responseText );
       try  {
-        //var response = transport.responseText.evalJSON ();
+        //var response = transport.responseText.evalJSON();
         // Hmmm... The Prototype JSON above doesn't seem to work!
         var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
@@ -319,7 +320,7 @@ function edit_layer (id)
   else
     $('editLayerDups').removeAttribute ( "checked" );
 
-  modalEditLayerDialog.onclose = function () {
+  modalEditLayerDialog.onclose = function() {
     // NOTE: Cannot seem to use Prototype format of $('id') here.
     // It causes the code to just stop (without error) on FF3... not sure why.
     // Maybe a conflict with the dhtmlwindow code....
@@ -341,7 +342,7 @@ function edit_layer (id)
       onSuccess: function( transport ) {
         var response = transport.responseText || "no response text";
         try  {
-          //var response = transport.responseText.evalJSON ();
+          //var response = transport.responseText.evalJSON();
           // Hmmm... The Prototype JSON above doesn't seem to work!
           var response = eval('(' + response + ')');
         } catch ( err ) {
@@ -353,7 +354,7 @@ function edit_layer (id)
         } else {
           //alert("Success! \n\n" + response);
           // Reload layers
-          load_layers ();
+          load_layers();
         }
       },
       onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
@@ -366,8 +367,8 @@ function edit_layer (id)
 
 <?php
 
-ob_end_flush ();
+ob_end_flush();
 
-echo print_trailer ();
+echo print_trailer();
 
 ?>

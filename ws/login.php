@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *   Provides login mechanism for web service clients.
  */
@@ -18,13 +17,13 @@ include __WC_INCLUDEDIR . '/config.php';
 include __WC_INCLUDEDIR . '/dbi4php.php';
 include __WC_INCLUDEDIR . '/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include __WC_INCLUDEDIR . '/' . $user_inc;
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-load_global_settings ();
+load_global_settings();
 
 if ( ! empty ( $last_login ) )
   $login = '';
@@ -58,7 +57,7 @@ else {
     if ( user_valid_login ( $login, $password ) ) {
       user_load_variables ( $login, '' );
       // Set login to expire in 365 days.
-      srand ( ( double ) microtime () * 1000000 );
+      srand ( ( double ) microtime() * 1000000 );
       $salt = chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) )
        . chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) );
       $encoded_login = encode_string ( $login . '|'
@@ -68,7 +67,7 @@ else {
   <cookieName>webcalendar_session</cookieName>
   <cookieValue>$encoded_login</cookieValue>' . ( $is_admin ? '
   <admin>1</admin>' : '' ) . '
-  <calendarName>' . generate_application_name () . '</calendarName>
+  <calendarName>' . generate_application_name() . '</calendarName>
   <appName>' . htmlspecialchars ( $PROGRAM_NAME ) . '</appName>
   <appVersion>' . htmlspecialchars ( $PROGRAM_VERSION ) . '</appVersion>
   <appDate>' . htmlspecialchars ( $PROGRAM_DATE ) . '</appDate>';

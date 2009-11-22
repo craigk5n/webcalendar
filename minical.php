@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * This script is intended to be used inside an IFRAME on another website
  * It can be embedded like so
@@ -25,7 +24,7 @@
  */
 include_once 'includes/init.php';
 
-load_global_settings ();
+load_global_settings();
 
 // These values will be used by styles.php to customize the size of this calendar.
 $DISPLAY_WEEKENDS = true;
@@ -34,7 +33,7 @@ $MINICALWIDTH = '160px';
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth();
   exit;
 }
 
@@ -71,7 +70,7 @@ $cat_id = ( empty ( $cat_id ) ? '' : $cat_id );
 $login = $user;
 
 if ( $public_must_be_enabled && $PUBLIC_ACCESS != 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 if ( $allow_user_override ) {
   $u = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]+', true );
@@ -80,7 +79,7 @@ if ( $allow_user_override ) {
   // We also set $login since some functions assume that it is set.
 }
 
-load_user_preferences ();
+load_user_preferences();
 
 user_load_variables ( $login, 'minical_' );
 
@@ -106,7 +105,7 @@ $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
 // Don't display custom header.
-print_header ( '', generate_refresh_meta (), '', true );
+print_header ( '', generate_refresh_meta(), '', true );
 
 /* Pre-Load the repeated events for quicker access. */
 $repeated_events = read_repeated_events ( $user, $startdate, $enddate, $cat_id );

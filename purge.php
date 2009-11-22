@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * Purge events page and handler.
  * When an event is deleted from a user's calendar, it is marked
@@ -12,7 +11,6 @@
  * Events will only be deleted if they were created by the selected
  * user. Events where the user was a participant (but not did not
  * create) will remain unchanged.
- *
  */
 include_once 'includes/init.php';
 
@@ -61,7 +59,7 @@ echo '<h2>' . translate ( 'Delete Events' );
 if ( $preview )
   echo '[ ' . $previewStr . ']';
 echo "</h2>\n";
-echo display_admin_link ();
+echo display_admin_link();
 
 if ( $do_purge ) {
   if ( $preview )
@@ -123,9 +121,9 @@ onclick="history.back()" /></form
   <?php echo translate ( 'User' );?>:</label></td>
  <td><select name="username">
 <?php
-  $userlist = get_my_users ();
+  $userlist = get_my_users();
   if ($NONUSER_ENABLED == 'Y' ) {
-    $nonusers = get_nonuser_cals ();
+    $nonusers = get_nonuser_cals();
     $userlist = ($NONUSER_AT_TOP == 'Y' ? array_merge ($nonusers, $userlist) : array_merge ($userlist, $nonusers));
   }
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
@@ -169,8 +167,10 @@ onclick="history.back()" /></form
 <?php } ?>
 </td></tr></table>
 
-<?php echo print_trailer ();
-
+<?php echo print_trailer();
+/**
+ * purge_events (needs description)
+ */
 function purge_events ( $ids ) {
   global $preview, $previewStr, $c; // db connection
   global $sqlLog, $allStr;
@@ -190,7 +190,7 @@ function purge_events ( $ids ) {
   );
 
   //var_dump($tables);exit;
-  $num = array ();
+  $num = array();
   $cnt = count ( $tables );
   for ( $i = 0; $i < $cnt; $i++ ) {
     $num[$i] = 0;
@@ -229,11 +229,13 @@ function purge_events ( $ids ) {
       "<br />\n";
   }
 }
-
+/**
+ * get_ids (needs description)
+ */
 function get_ids ( $sql, $ALL = '' ) {
   global $sqlLog;
 
-  $ids = array ();
+  $ids = array();
   $sqlLog .= $sql . "<br />\n";
   $res = dbi_execute ( $sql );
   if ( $res ) {
@@ -258,4 +260,5 @@ function get_ids ( $sql, $ALL = '' ) {
   dbi_free_result ( $res );
   return $ids;
 }
+
 ?>

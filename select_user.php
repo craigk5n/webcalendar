@@ -1,14 +1,13 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
-print_header ();
+print_header();
 echo '
     <h2>' . translate ( 'View Another Users Calendar' ) . '</h2>';
 
 if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
     ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
       $PUBLIC_ACCESS_OTHERS != 'Y' ) ) {
-  $error = print_not_auth ();
+  $error = print_not_auth();
   echo '
     <blockquote>' . $error . '</blockquote>';
 } else {
@@ -28,7 +27,7 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
       $url .= '.php';
   }
 
-  ob_start ();
+  ob_start();
 
   echo '
     <form action="' . $url . '" method="get" name="SelectUser">
@@ -48,10 +47,10 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
       <input type="submit" value="' . translate ( 'Go' ) . '" />
     </form>';
 
-  ob_end_flush ();
+  ob_end_flush();
 }
 
 echo '<br /><br />
-    ' . print_trailer ();
+    ' . print_trailer();
 
 ?>

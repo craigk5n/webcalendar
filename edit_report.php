@@ -1,5 +1,6 @@
 <?php
-/* Presents a HTML form to add or edit a report.
+/**
+ * Presents a HTML form to add or edit a report.
  *
  * Input Parameters:
  * - <var>report_id</var> (optional) - the report id of the report to edit. If
@@ -24,14 +25,14 @@
  */
 
 include_once 'includes/init.php';
-load_user_categories ();
+load_user_categories();
 
 $adding_report = false;
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 $checked = ' checked="checked"';
 $error =
  ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' || $login == '__public__'
-   ? print_not_auth () : '' );
+   ? print_not_auth() : '' );
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
 $selected = ' selected="selected"';
 $show_participants = ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y'
@@ -111,7 +112,8 @@ $event_options = array ( 'name', 'description', 'date', 'fulldate', 'time',
 
 $page_options = array ( 'days', 'report_id' );
 
-/* Generate clickable option lists.
+/**
+ * Generate clickable option lists.
  */
 function print_options ( $textarea, $option ) {
   // Use ASCII values for ${}.
@@ -151,11 +153,11 @@ if ( empty ( $error ) && $report_id >= 0 ) {
             $user_is_in_list = true;
         }
         if ( ! $user_is_in_list && $report_login != $login && ! $is_admin )
-          $error = print_not_auth ();
+          $error = print_not_auth();
       }
       if ( ! $is_admin && $login != $report_login )
         // Only creator or an admin can edit/delete the event.
-        $error = print_not_auth ();
+        $error = print_not_auth();
 
       // If we are editing a public user report we need to set $updating_public.
       if ( $is_admin && $report_login == '__public__' )
@@ -166,7 +168,7 @@ if ( empty ( $error ) && $report_id >= 0 ) {
 
     dbi_free_result ( $res );
   } else
-    $error = db_error ();
+    $error = db_error();
 
   $res = dbi_execute ( 'SELECT cal_template_type, cal_template_text
     FROM webcal_report_template WHERE cal_report_id = ?', array ( $report_id ) );
@@ -194,14 +196,14 @@ if ( empty ( $error ) && $report_id >= 0 ) {
   // $report_user already set.
 }
 
-print_header ();
+print_header();
 
 if ( ! empty ( $error ) ) {
   echo $error . print_trailer ( false );
   exit;
 }
 
-ob_start ();
+ob_start();
 
 echo '
     <h2>'
@@ -393,7 +395,7 @@ echo '
    . translate( 'Are you sure you want to delete this report?' )
    . '\');" />' );
 
-ob_end_flush ();
+ob_end_flush();
 
 ?>
           </td>
@@ -407,8 +409,8 @@ ob_end_flush ();
         var textarea = document.reportform.elements[areaname];
         // IE support.
         if ( document.selection ) {
-          textarea.focus ();
-          sel = document.selection.createRange ();
+          textarea.focus();
+          sel = document.selection.createRange();
           sel.text = myValue;
         }
         // MOZILLA/NETSCAPE support.
@@ -426,6 +428,6 @@ ob_end_flush ();
       }
 //]]> -->
     </script>
-<?php echo print_trailer ();
+<?php echo print_trailer();
 
 ?>

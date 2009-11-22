@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 // If the javascript doesn't need any input from php,
 // then we can cache it and not run init.php.
 define( '_ISVALID', true );

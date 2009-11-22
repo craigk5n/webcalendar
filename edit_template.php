@@ -1,6 +1,6 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+
+/**
  * Page Description:
  * This page will present the HTML form to edit an entry in the cal_report table,
  * and this page will also process the form.
@@ -28,7 +28,7 @@ if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) {
 }
 
 if ( $user == '__system__' )
-  assert ( '($is_admin && ! access_is_enabled () ) ||
+  assert ( '($is_admin && ! access_is_enabled() ) ||
     access_can_access_function ( ACCESS_SYSTEM_SETTINGS )' );
 
 // Get existing value.
@@ -87,7 +87,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
         WHERE cal_template_type = ? AND cal_report_id = 0 ', array ( $type ) );
   }
   if ( ! dbi_execute ( $sql, $query_params ) )
-    $error = db_error ();
+    $error = db_error();
   else {
     echo '<html>
   <head></head>
@@ -101,7 +101,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
 
 print_header ( '', '', '', true );
 /*
- echo 'report_id: ' . $report_id . '<br />
+echo 'report_id: ' . $report_id . '<br />
 report_name: ' . $report_name . '<br />
 report_user: ' . $report_user . '<br />
 ';

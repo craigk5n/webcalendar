@@ -1,14 +1,14 @@
-/* $Id$
- *
+/* $Id$ */
+/**
  * Description:
- * This file is used to create all tables used by WebCalendar and
- * initialize some of those tables with the required data.
+ * This file is used to create all tables used by WebCalendar
+ * and initialize some of those tables with the required data.
  *
  * The comments in the table definitions will be parsed to
  * generate a document (in HTML) that describes these tables.
  */
 
-/*
+/**
  * Defines a WebCalendar user.
  */
 CREATE TABLE webcal_user (
@@ -45,7 +45,7 @@ INSERT INTO webcal_user
   VALUES ( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator',
   'Default', 'Y' );
 
-/*
+/**
  * Defines a calendar event.  Each event in the system has one entry in
  * this table unless the event starts before midnight and ends after
  * midnight. In that case a secondary event will be created with
@@ -115,7 +115,7 @@ CREATE TABLE webcal_entry (
   PRIMARY KEY ( cal_id )
 );
 
-/*
+/**
  * Contains category foreign keys
  * to enable multiple categories for each event or task
  */
@@ -131,7 +131,7 @@ CREATE TABLE webcal_entry_categories (
   cat_owner varchar(25) DEFAULT NULL
 );
 
-/*
+/**
  * Defines repeating info about an event.
  * The event is defined in <a href="#webcal_entry">webcal_entry</a>.
  */
@@ -169,7 +169,7 @@ CREATE TABLE webcal_entry_repeats (
   PRIMARY KEY (cal_id)
 );
 
-/*
+/**
  * This table specifies which dates in a repeating event have either been
  * deleted, included, or replaced with a replacement event for that day.
  * When replaced, the cal_group_id (I know... not the best name, but it
@@ -187,7 +187,7 @@ CREATE TABLE webcal_entry_repeats_not (
   PRIMARY KEY ( cal_id, cal_date )
 );
 
-/*
+/**
  * This table associates one or more users with an event by the event id.
  * The event can be found in <a href="#webcal_entry">webcal_entry</a>.
  */
@@ -213,7 +213,7 @@ CREATE TABLE webcal_entry_user (
   PRIMARY KEY ( cal_id, cal_login )
 );
 
-/*
+/**
  * This table associates one or more external users (people who do not
  * have a WebCalendar login) with an event by the event id.  An event must
  * still have at least one WebCalendar user associated with it.  This table
@@ -230,7 +230,7 @@ CREATE TABLE webcal_entry_ext_user (
   PRIMARY KEY ( cal_id, cal_fullname )
 );
 
-/*
+/**
  * Specify preferences for a user.
  * Most preferences are set via pref.php.
  * Values in this table are loaded after system settings
@@ -246,7 +246,7 @@ CREATE TABLE webcal_user_pref (
   PRIMARY KEY ( cal_login, cal_setting )
 );
 
-/*
+/**
  * Define layers for a user.
  */
 CREATE TABLE webcal_user_layers (
@@ -263,7 +263,7 @@ CREATE TABLE webcal_user_layers (
   PRIMARY KEY ( cal_login, cal_layeruser )
 );
 
-/*
+/**
  * This table holds data for site extra fields
  * (customized in site_extra.php).
  */
@@ -282,7 +282,7 @@ CREATE TABLE webcal_site_extras (
   cal_data TEXT
 );
 
-/*
+/**
  * Stores information about reminders
  */
 CREATE TABLE webcal_reminders (
@@ -309,7 +309,7 @@ CREATE TABLE webcal_reminders (
   PRIMARY KEY ( cal_id )
 );
 
-/*
+/**
  * Define a group.  Group members can be found in
  * <a href="#webcal_group_user">webcal_group_user</a>.
  */
@@ -325,7 +325,7 @@ CREATE TABLE webcal_group (
   PRIMARY KEY ( cal_group_id )
 );
 
-/*
+/**
  * Specify users in a group.  The group is defined in
  * <a href="#webcal_group">webcal_group</a>.
  */
@@ -337,7 +337,7 @@ CREATE TABLE webcal_group_user (
   PRIMARY KEY ( cal_group_id, cal_login )
 );
 
-/*
+/**
  * A "view" allows a user to put the calendars of multiple users all on one
  * page.  A "view" is valid only for the owner (cal_owner) of the view.
  * Users for the view are in
@@ -357,7 +357,7 @@ CREATE TABLE webcal_view (
   PRIMARY KEY ( cal_view_id )
 );
 
-/*
+/**
  * Specify users in a view. See <a href="#webcal_view">webcal_view</a>.
  */
 CREATE TABLE webcal_view_user (
@@ -368,7 +368,7 @@ CREATE TABLE webcal_view_user (
   PRIMARY KEY ( cal_view_id, cal_login )
 );
 
-/*
+/**
  * System settings (set by the admin interface in admin.php)
  */
 CREATE TABLE webcal_config (
@@ -379,7 +379,7 @@ CREATE TABLE webcal_config (
   PRIMARY KEY ( cal_setting )
 );
 
-/*
+/**
  * Activity log for an event.
  */
 CREATE TABLE webcal_entry_log (
@@ -410,7 +410,7 @@ CREATE TABLE webcal_entry_log (
   PRIMARY KEY ( cal_log_id )
 );
 
-/*
+/**
  * Defines user categories.  Categories can be specific to a user or global.
  * When a category is global, the cat_owner field will be NULL.
  * (Only an admin user can create a global category.)
@@ -428,7 +428,7 @@ CREATE TABLE webcal_categories (
   PRIMARY KEY ( cat_id )
 );
 
-/*
+/**
  * Define assitant/boss relationship.
  */
 CREATE TABLE webcal_asst (
@@ -439,7 +439,7 @@ CREATE TABLE webcal_asst (
   PRIMARY KEY ( cal_boss, cal_assistant )
 );
 
-/*
+/**
  * Defines non-user calendars.
  */
 CREATE TABLE webcal_nonuser_cals (
@@ -458,7 +458,7 @@ CREATE TABLE webcal_nonuser_cals (
   PRIMARY KEY ( cal_login )
 );
 
-/*
+/**
  * Used to track import data (one row per import)
  */
 CREATE TABLE webcal_import (
@@ -475,7 +475,7 @@ CREATE TABLE webcal_import (
   PRIMARY KEY ( cal_import_id )
 );
 
-/*
+/**
  * Used to track import data (one row per event)
  */
 CREATE TABLE webcal_import_data (
@@ -493,7 +493,7 @@ CREATE TABLE webcal_import_data (
   PRIMARY KEY  ( cal_id, cal_login )
 );
 
-/*
+/**
  * Defines a custom report created by a user.
  */
 CREATE TABLE webcal_report (
@@ -552,7 +552,7 @@ CREATE TABLE webcal_report (
   PRIMARY KEY ( cal_report_id )
 );
 
-/*
+/**
  * Defines one of the templates used for a report.
  * Each report has three templates:
  * <ol>
@@ -603,7 +603,7 @@ CREATE TABLE webcal_report_template (
   PRIMARY KEY ( cal_report_id, cal_template_type )
 );
 
-/*
+/**
  * Specifies which users can access another user's calendar.
  */
 CREATE TABLE webcal_access_user (
@@ -627,7 +627,7 @@ CREATE TABLE webcal_access_user (
   PRIMARY KEY ( cal_login, cal_other_user )
 );
 
-/*
+/**
  * Specifies what WebCalendar functions a user can access.  Each function
  * has a corresponding numeric value (specified in the file
  * includes/access.php).  For example, view event is 0, so the very first
@@ -642,7 +642,7 @@ CREATE TABLE webcal_access_function (
   PRIMARY KEY ( cal_login )
 );
 
-/*
+/**
  * This table stores the custom header/stylesheet/trailer.  If configured
  * properly, each user (or nonuser cal) can have their own custom
  * header/trailer.
@@ -658,7 +658,7 @@ CREATE TABLE webcal_user_template (
   PRIMARY KEY ( cal_login, cal_type )
 );
 
-/*
+/**
  * This table stores event attachments and comments.
  */
 CREATE TABLE webcal_blob (
@@ -687,6 +687,9 @@ CREATE TABLE webcal_blob (
   cal_blob LONGBLOB,
   PRIMARY KEY ( cal_blob_id )
 );
+/**
+ * This table stores timezones of the world.
+ */
 CREATE TABLE webcal_timezones (
   /* Unique name of timezone, try to use Olsen naming conventions */
   tzid varchar(100) NOT NULL default '',

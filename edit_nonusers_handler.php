@@ -1,11 +1,9 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
-load_user_layers ();
+load_user_layers();
 
 if ( ! $is_admin ) {
-  echo print_not_auth ( true );
-  echo "</body>\n</html>";
+  echo print_not_auth( true ) . '</body></html>';
   exit;
 }
 $error = '';
@@ -29,7 +27,7 @@ if ( ! empty ( $delete ) ) {
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
-  $delete_em = array ();
+  $delete_em = array();
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * )
       FROM webcal_entry_user WHERE cal_id = ?', array ( $events[$i] ) );
@@ -82,12 +80,12 @@ if ( ! empty ( $delete ) ) {
   // Delete user
   if ( ! dbi_execute ( 'DELETE FROM webcal_nonuser_cals WHERE cal_login = ?',
     array ( $nid ) ) )
-    $error = db_error ();
+    $error = db_error();
 
 } else {
   if ( ! empty ( $save ) ) {
     // Updating
-    $query_params = array ();
+    $query_params = array();
     $sql = 'UPDATE webcal_nonuser_cals SET ';
     if ($nlastname) {
       $sql .= ' cal_lastname = ?, ';
@@ -107,7 +105,7 @@ if ( ! empty ( $delete ) ) {
 
     if ( ! dbi_execute ( $sql . 'cal_admin = ? WHERE cal_login = ?',
       $query_params ) )
-      $error = db_error ();
+      $error = db_error();
   } else {
     // Adding
     if ( preg_match ( '/^[\w]+$/', $nid ) ) {
@@ -116,7 +114,7 @@ if ( ! empty ( $delete ) ) {
         cal_firstname, cal_lastname, cal_admin, cal_is_public )
         VALUES ( ?, ?, ?, ?, ? )',
         array ( $nid, $nfirstname, $nlastname, $nadmin, $ispublic ) ) ) {
-        $error = db_error ();
+        $error = db_error();
       }
     } else {
       $error = translate ( 'Calendar ID' ).' '.translate ( 'word characters only' ).'.';
@@ -130,7 +128,7 @@ if ( ! empty ( $delete ) ) {
     cal_other_user, cal_can_view, cal_can_edit, cal_can_approve, cal_can_invite,
     cal_can_email, cal_see_time_only ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
     array ( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) ) {
-    die_miserable_death ( translate ( 'Database error' ) . ': ' . dbi_error () );
+    die_miserable_death ( translate ( 'Database error' ) . ': ' . dbi_error() );
   }
   // Delete old admin...
   //TODO Make this an optional step

@@ -1,5 +1,6 @@
 <?php
-/* This page produces search results.
+/**
+ * This page produces search results.
  *
  * "Advanced Search" adds the ability to search other users' calendars.
  * We do a number of security checks to make sure this is allowed.
@@ -17,9 +18,9 @@ $error = '';
 // Disable if public access and OVERRIDE_PUBLIC in use
 if ( $login == '__public__' && ! empty ( $OVERRIDE_PUBLIC ) &&
   $OVERRIDE_PUBLIC == 'Y' ) {
-  print_header ();
-  echo print_not_auth ();
-  print_trailer ();
+  print_header();
+  echo print_not_auth();
+  print_trailer();
   exit;
 }
 
@@ -38,7 +39,7 @@ if ( $single_user == 'Y' )
 if ( $is_admin )
   $search_others = true;
 else
-if ( access_is_enabled () )
+if ( access_is_enabled() )
   $search_others = access_can_access_function ( ACCESS_ADVANCED_SEARCH );
 else
 if ( $login != '__public__' && ! empty ( $ALLOW_VIEW_OTHER ) &&
@@ -60,11 +61,11 @@ if ( $search_others ) {
       $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! empty ( $GROUPS_ENABLED ) &&
       $GROUPS_ENABLED == 'Y' ) {
     $myusers = get_my_users ( '', 'view' );
-    $userlookup = array ();
+    $userlookup = array();
     for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {
       $userlookup[$myusers[$i]['cal_login']] = 1;
     }
-    $newlist = array ();
+    $newlist = array();
     $cnt = count ( $users );
     for ( $i = 0; $i < $cnt; $i++ ) {
       if ( ! empty ( $userlookup[$users[$i]] ) )
@@ -73,14 +74,14 @@ if ( $search_others ) {
     $users = $newlist;
   }
   // Now, use access control to remove more users :-)
-  if ( access_is_enabled () && ! $is_admin ) {
-    $newlist = array ();
+  if ( access_is_enabled() && ! $is_admin ) {
+    $newlist = array();
     for ( $i = 0; $i < count ( $users ); $i++ ) {
       if ( access_user_calendar ( 'view', $users[$i] ) ) {
         $newlist[] = $users[$i];
-        //echo "can access $users[$i] <br>";
+        //echo "can access $users[$i] <br />";
       } else {
-        //echo "cannot access $users[$i] <br>";
+        //echo "cannot access $users[$i] <br />";
       }
     }
     $users = $newlist;
@@ -109,7 +110,7 @@ $startDate = gmdate( 'Ymd', gmmktime( 0, 0, 0,
 $endDate = gmdate( 'Ymd', gmmktime( 23, 59, 59,
   $end_month, $end_day, $end_year ) );
 
-print_header ();
+print_header();
 echo '
     <h2>' . translate ( 'Search Results' ) . '</h2>';
 
@@ -140,7 +141,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
   $order = 'DESC';
   $word_cnt = count ( $words );
   for ( $i = 0; $i < $word_cnt; $i++ ) {
-    $sql_params = array ();
+    $sql_params = array();
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, weu.cal_login '
       . ( empty( $extra_filter ) ? '' : ', wse.cal_data ' )
@@ -225,7 +226,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
   }
 }
 
-ob_start ();
+ob_start();
 echo '
     <p><strong>';
 if ( $matches > 0 ) {
@@ -257,7 +258,7 @@ echo '
         . '"  style="margin-left: 13px;" method="post">
        <input type="submit" value="'
         . translate ( 'New Search' ) . '" /></form>';
-ob_end_flush ();
-echo print_trailer ();
+ob_end_flush();
+echo print_trailer();
 
 ?>

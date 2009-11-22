@@ -1,11 +1,10 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
 print_header ( '', '', '', true );
 
-ob_start ();
+ob_start();
 
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Preferences' ) . '</h2>
@@ -110,7 +109,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' )
 echo '
     </div>';
 
-ob_end_flush ();
+ob_end_flush();
 
 echo print_trailer ( false, true, true );
 

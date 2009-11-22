@@ -1,4 +1,4 @@
-<?php /* $Id$  */
+<?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
  global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
@@ -18,9 +18,9 @@ var bydayTrans = new Array( "<?php etranslate ( 'SU' ) ?>"
 , "<?php etranslate ( 'SA' ) ?>"
 );
 // do a little form verifying
-function validate_and_submit () {
+function validate_and_submit() {
   if ( form.name.value == "" ) {
-    form.name.select ();
+    form.name.select();
 <?php
     if ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ||
       $GLOBALS['EVENT_EDIT_TABS'] == 'Y' ) { ?>
@@ -80,7 +80,7 @@ function validate_and_submit () {
   }
 
 //Add code to make HTMLArea code stick in TEXTAREA
- if (typeof editor != "undefined") editor._textArea.value = editor.getHTML ();
+ if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
 
  //Check if Event date is valid
   var d = form.day.selectedIndex;
@@ -90,9 +90,9 @@ function validate_and_submit () {
   var y = form.year.selectedIndex;
   var valy = form.year.options[y].value;
   var c = new Date(valy,valm -1,vald);
- if ( c.getDate () != vald ) {
+ if ( c.getDate() != vald ) {
    alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
-  form.day.focus ();
+  form.day.focus();
    return false;
  }
  //Repeat Tab enabled, Select all of them
@@ -111,9 +111,9 @@ function validate_and_submit () {
    var y = form.due_year.selectedIndex;
    var valy = form.due_year.options[y].value;
    var c = new Date(valy,valm -1,vald);
-   if ( c.getDate () != vald ) {
+   if ( c.getDate() != vald ) {
      alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
-     form.due_day.focus ();
+     form.due_day.focus();
      return false;
    }
  }
@@ -152,7 +152,7 @@ function validate_and_submit () {
    }
  }
  
- form.submit ();
+ form.submit();
  return true;
 }
 
@@ -182,7 +182,7 @@ function selectByLogin ( login ) {
   }
 }
 
-function addGroup () {
+function addGroup() {
   var
     list = document.editentryform.groups,
     selNum = list.selectedIndex;
@@ -209,7 +209,7 @@ function addGroup () {
  // the times & duration fields are hidden.
  // If they change their mind & switch it back, the original
  // values are restored for them
-?>function timetype_handler () {
+?>function timetype_handler() {
   if ( ! form.timetype )
    return true;
   var i = form.timetype.selectedIndex;
@@ -246,7 +246,7 @@ function addGroup () {
   }
 }
 
-function rpttype_handler () {
+function rpttype_handler() {
   //Repeat Tab disabled
   if ( ! form.rpttype ) {
     return;
@@ -348,7 +348,7 @@ function rpttype_handler () {
   }
 }
 
-function rpttype_weekly () {
+function rpttype_weekly() {
   var i = form.rpttype.selectedIndex;
   var val = form.rpttype.options[i].text;
  if ( val == "Weekly" ) {
@@ -360,7 +360,7 @@ function rpttype_weekly () {
    var y = form.year.selectedIndex;
    var valy = form.year.options[y].value;
    var c = new Date(valy,valm,vald);
-   var dayOfWeek = c.getDay ();
+   var dayOfWeek = c.getDay();
    var rpt_day = bydayLabels[dayOfWeek];
    elements[rpt_day].checked = true;
  }
@@ -368,7 +368,7 @@ function rpttype_weekly () {
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
 ?>
-var tabs = new Array ();
+var tabs = new Array();
 tabs[0] = "details";
 tabs[1] = "participants";
 tabs[2] = "pete";
@@ -377,8 +377,8 @@ tabs[3] = "reminder";
 var sch_win;
 
 // Show Availability for the first selection
-function showSchedule () {
-  //var agent=navigator.userAgent.toLowerCase ();
+function showSchedule() {
+  //var agent=navigator.userAgent.toLowerCase();
   //var agent_isIE=(agent.indexOf("msie") > -1);
   var userlist = form.elements['selectedPart[]'];
   var delim = '';
@@ -426,12 +426,12 @@ function add_exception (which) {
  var y = form.except_year.selectedIndex;
  var valy = form.except_year.options[y].value;
  var c = new Date(valy,valm -1,vald);
- if ( c.getDate () != vald ) {
+ if ( c.getDate() != vald ) {
    alert ("<?php etranslate ( 'Invalid Date',true ) ?>");
    return false;
  }
- //alert ( c.getFullYear () + " "  + c.getMonth () + " " + c.getDate ());
- var exceptDate = String((c.getFullYear () * 100 + c.getMonth () +1) * 100 + c.getDate ());
+ //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
+ var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
  var isUnique = true;
  //Test to see if this date is already in the list
   with (form)
@@ -452,7 +452,7 @@ function add_exception (which) {
     makeInvisible ( "select_exceptions_not" );
  }
 }
-function del_selected () {
+function del_selected() {
    with (form)
    {
       with (elements['exceptions[]'])
@@ -524,7 +524,7 @@ function toggle_bysetpos( ele ) {
   bysetposAr[ele.id.substr(8)] = tmp;
 }
 
-function toggle_until () {
+function toggle_until() {
   //Repeat Tab disabled
   if ( ! form.rpttype ) {
     return;
@@ -552,7 +552,7 @@ function toggle_until () {
   }
 }
 
-function toggle_rem_when () {
+function toggle_rem_when() {
   //Reminder Tab disabled
   if ( ! form.rem_when ) {
     return;
@@ -584,12 +584,12 @@ function toggle_rem_when () {
   ( elements['rem_when_date'].checked != true );
 }
 
-function toggle_reminders () {
+function toggle_reminders() {
   //Reminder Tab disabled
   if ( ! form.rem_when ) {
     return;
   }
-  toggle_rem_when ();
+  toggle_rem_when();
   makeInvisible ( "reminder_when",true );
   makeInvisible ( "reminder_repeat", true );
   if ( elements['reminderYes'].checked == true ) {
@@ -617,7 +617,7 @@ function editCats ( evt ) {
   var selected_ids = cat_ids.split ( ',' );
 
 <?php
-  load_user_categories ();
+  load_user_categories();
   foreach ( $categories as $catid => $cat ) {
     if ( $catid == 0 || $catid == -1 )
       continue; // Ignore these special cases (0=All, -1=None)
@@ -639,7 +639,7 @@ function editCats ( evt ) {
   }
   ?>
 
-  modalEditCatDialog.onclose = function () {
+  modalEditCatDialog.onclose = function() {
     // Get selected categories
     var catIds = '', catNames = '';
 <?php
@@ -680,8 +680,8 @@ function editCats ( evt ) {
 function displayInValid(myvar)
 {
   alert ( "<?php etranslate ( 'You have not entered a valid time of day', true)?>.");
-  myvar.select ();
-  myvar.focus ();
+  myvar.select();
+  myvar.focus();
 }
 
 function isNumeric(sText)
@@ -702,7 +702,7 @@ function isNumeric(sText)
    return sText;
 }
 
-function completed_handler () {
+function completed_handler() {
   if ( form.percent ) {
     elements['completed_day'].disabled =
       elements['completed_month'].disabled =
@@ -712,7 +712,7 @@ function completed_handler () {
   }
 }
 
-function onLoad () {
+function onLoad() {
   if ( ! document.editentryform )
     return false;
   //define these variables here so they are valid
@@ -760,12 +760,12 @@ function onLoad () {
     }
   }
 
-  timetype_handler ();
-  rpttype_handler ();
-  toggle_until ();
-  toggle_reminders ();
-  toggle_rem_rep ();
-  completed_handler ();
+  timetype_handler();
+  rpttype_handler();
+  toggle_until();
+  toggle_reminders();
+  toggle_rem_rep();
+  completed_handler();
 }
 
 function selAdd( btn ) {

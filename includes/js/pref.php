@@ -1,4 +1,4 @@
-<?php /* $Id$  */
+<?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
   global $ALLOW_COLOR_CUSTOMIZATION;
@@ -39,10 +39,10 @@ function validWorkHours ( form ) {
     parseInt ( form.pref_WORK_DAY_END_HOUR.value ) );
 }
 
-function showPreview () {
+function showPreview() {
   var theme = document.forms['prefform'].pref_THEME.value;
   if (theme == 'none' ) return false;
-  url = "themes/" + theme.toLowerCase ()  + "_pref.php";
+  url = "themes/" + theme.toLowerCase()  + "_pref.php";
   var previewWindow = window.open (url,"Preview","resizable=yes,scrollbars=yes");
 }
 
@@ -56,7 +56,7 @@ function setTab( tab ) {
 
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
-?>var tabs = new Array ();
+?>var tabs = new Array();
 tabs[1] = "settings";
 tabs[2] = "themes";
 tabs[3] = "email";

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * This page will display the month "view" with all users's events on the same
  * calendar. (The other month "view" displays each user calendar in a separate
@@ -36,7 +35,7 @@ if ( empty ( $friendly ) ) {
 set_today ( $date );
 print_header ( array ( 'js/popups.php/true' ),
   '<script type="text/javascript" src="includes/js/weekHover.js"></script>' );
-$trailerStr = print_trailer ();
+$trailerStr = print_trailer();
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( 'Y', $next );
@@ -70,11 +69,11 @@ if ( count ( $viewusers ) == 0 )
   $error = translate( 'No users for this view.' );
 
 if ( ! empty ( $error ) ) {
-  echo print_error ( $error ) . print_trailer ();
+  echo print_error ( $error ) . print_trailer();
   exit;
 }
 
-$e_save = $re_save = array ();
+$e_save = $re_save = array();
 for ( $i = 0, $cnt = count ( $viewusers ); $i < $cnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
@@ -83,12 +82,12 @@ for ( $i = 0, $cnt = count ( $viewusers ); $i < $cnt; $i++ ) {
   $events = read_events ( $viewusers[$i], $startdate, $enddate );
   $e_save = array_merge ( $e_save, $events );
 }
-$events = $repeated_events = array ();
+$events = $repeated_events = array();
 
 for ( $i = 0, $cnt = count ( $e_save ); $i < $cnt; $i++ ) {
   $should_add = 1;
   for ( $j = 0, $cnt_j = count ( $events ); $j < $cnt_j && $should_add; $j++ ) {
-    if ( ! $e_save[$i]->getClone () && $e_save[$i]->getID () == $events[$j]->getID () )
+    if ( ! $e_save[$i]->getClone() && $e_save[$i]->getID() == $events[$j]->getID() )
       $should_add = 0;
   }
   if ( $should_add )
@@ -98,8 +97,8 @@ for ( $i = 0, $cnt = count ( $e_save ); $i < $cnt; $i++ ) {
 for ( $i = 0, $cnt = count ( $re_save ); $i < $cnt; $i++ ) {
   $should_add = 1;
   for ( $j = 0, $cnt_j = count ( $repeated_events ); $j < $cnt_j && $should_add; $j++ ) {
-    if ( ! $re_save[$i]->getClone () &&
-      $re_save[$i]->getID () == $repeated_events[$j]->getID () )
+    if( ! $re_save[$i]->getClone()
+        && $re_save[$i]->getID() == $repeated_events[$j]->getID() )
       $should_add = 0;
   }
   if ( $should_add )

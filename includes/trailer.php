@@ -1,5 +1,4 @@
-<?php
-/* $Id$*/
+<?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // NOTE: This file is included within the print_trailer function found in
@@ -11,7 +10,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     <div id="trailer">
       <div id="menu">' . "\n";
 
-  $goto_link = $manage_calendar_link = $reports_link = $views_link = array ();
+  $goto_link = $manage_calendar_link = $reports_link = $views_link = array();
 
   $myCalStr = translate ( 'My Calendar' );
   $todayStr = translate ( 'Today' );
@@ -33,8 +32,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   $can_add = true;
   if ( $readonly == 'Y' )
     $can_add = false;
-  else
-  if ( access_is_enabled () )
+  elseif( access_is_enabled() )
     $can_add = access_can_access_function ( ACCESS_EVENT_EDIT );
   else {
     if ( $login == '__public__' )
@@ -85,9 +83,9 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     }
     if ( $login != '__public__' ) {
       if ( ! $is_nonuser && $readonly == 'N' ) {
-        if ( ( ! access_is_enabled () ||
-              access_can_access_function ( ACCESS_ADMIN_HOME ) ||
-              access_can_access_function ( ACCESS_PREFERENCES ) ) )
+        if( ( ! access_is_enabled()
+            || access_can_access_function( ACCESS_ADMIN_HOME )
+            || access_can_access_function( ACCESS_PREFERENCES ) ) )
           $goto_link[] = '<a title="' . $adminStr
            . '" class="bold" href="adminhome.php'
            . ( $is_nonuser_admin ? '?user=' . $user : '' )
@@ -99,18 +97,16 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
            . ( $is_nonuser_admin ? '?user=' . getValue ( 'user' ) : '' )
            . "\">$unapprovedStr" . '</a>';
       }
-    } else
-    if ( $PUBLIC_ACCESS_OTHERS != 'Y' ||
-      ( $is_nonuser && ! access_is_enabled () ) ) {
+    } elseif( $PUBLIC_ACCESS_OTHERS != 'Y'
+        || ( $is_nonuser && ! access_is_enabled() ) ) {
       // Don't allow them to see other people's calendar.
-    } else
-    if ( ( $ALLOW_VIEW_OTHER == 'Y' || $is_admin ) &&
+    } elseif ( ( $ALLOW_VIEW_OTHER == 'Y' || $is_admin )
         // Also, make sure they able to access either day/week/month/year view.
         // If not, the only way to view another user's calendar is a custom view.
-        ( ! access_is_enabled () ||
-          access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) ) {
+        && ( ! access_is_enabled()
+          || access_can_access_function( ACCESS_ANOTHER_CALENDAR ) ) ) {
       // Get count of users this user can see. If > 1, then...
-      $ulist = array_merge ( get_my_users (), get_my_nonusers ( $login, true ) );
+      $ulist = array_merge( get_my_users(), get_my_nonusers( $login, true ) );
       if ( count ( $ulist ) > 1 ) {
         $calStr = translate ( 'Another Users Calendar' );
         $goto_link[] = '<a title="' . $calStr . '" href="select_user.php">'
@@ -159,7 +155,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
          . '">' . $addNewTaskStr . '</a>';
     }
   }
-  $showHelp = ( access_is_enabled ()
+  $showHelp = ( access_is_enabled()
     ? access_can_access_function ( ACCESS_HELP )
     : ( $login != '__public__' && ! $is_nonuser ) );
 
@@ -200,7 +196,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
   if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
       access_can_access_function ( ACCESS_REPORT ) ) {
-    $reports_link = array ();
+    $reports_link = array();
     $rows = dbi_get_cached_rows ( 'SELECT cal_report_name, cal_report_id
       FROM webcal_report WHERE cal_login = ? OR ( cal_is_global = \'Y\'
       AND cal_show_in_trailer = \'Y\' ) ORDER BY cal_report_id',
@@ -316,12 +312,12 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
    . "</a>\n" . '</div></div>
 <!-- /TRAILER -->' . "\n";
 }
-$tret .= '<!-- Db queries: ' . dbi_num_queries () . '   Cached queries: '
- . dbi_num_cached_queries () . " -->\n";
-if ( dbi_get_debug () ) {
+$tret .= '<!-- Db queries: ' . dbi_num_queries() . '   Cached queries: '
+ . dbi_num_cached_queries() . " -->\n";
+if( dbi_get_debug() ) {
   $tret .= '<blockquote style="border:1px solid #ccc; background:#eee;">
-<b>Executed queries:' . dbi_num_queries ()
-   . '&nbsp;&nbsp; <b>Cached queries:</b>' . dbi_num_cached_queries ()
+<b>Executed queries:' . dbi_num_queries()
+   . '&nbsp;&nbsp; <b>Cached queries:</b>' . dbi_num_cached_queries()
    . "<br /><ol>\n";
   $log = $GLOBALS['SQLLOG'];
   // $log=0;

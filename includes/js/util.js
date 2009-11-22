@@ -1,8 +1,8 @@
-function openHelp () {
+function openHelp() {
  window.open ( 'help_index.php', 'cal_help','dependent,menubar,scrollbars,height=500,width=600,innerHeight=520,outerWidth=620' );
 }
 
-function openAbout () {
+function openAbout() {
   var mX = (screen.width / 2) -123, mY = 200;
   var MyPosition = 'left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
   window.open ( 'about.php', 'cal_about','dependent,toolbar=0, height=300,width=245,innerHeight=310,outerWidth=255,location=0,' + MyPosition );

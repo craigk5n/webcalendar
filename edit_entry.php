@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * Presents page to edit/add an event/task/journal
  *
@@ -13,12 +12,13 @@
  */
 include_once 'includes/init.php';
 
-/* Generate HTML for a time selection for use in a form.
+/**
+ * Generate HTML for a time selection for use in a form.
  *
  * @param string  $prefix   Prefix to use in front of form element names
  * @param string  $time     Currently selected time in HHMMSS
  * @param bool    $trigger  Add onchange event trigger that
- *                          calls javascript function $prefix_timechanged ()
+ *                          calls javascript function $prefix_timechanged()
  *
  * @return string HTML for the selection box
  */
@@ -97,7 +97,7 @@ $hoursStr = translate ( 'hours' );
 $minutStr = translate ( 'minutes' );
 $saveStr = translate ( 'Save' );
 
-load_user_categories ();
+load_user_categories();
 
 // Default for using tabs is enabled.
 if ( empty ( $EVENT_EDIT_TABS ) )
@@ -162,14 +162,18 @@ if ( $ALLOW_HTML_DESCRIPTION == 'Y' ) {
 
 // Add Modal Dialog javascript/CSS
 $HEAD =
-  '<link rel="stylesheet" href="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css" type="text/css" />' . "\n" .
-  '<script type="text/javascript" src="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js"></script>' . "\n" .
-  '<link rel="stylesheet" href="includes/js/dhtmlmodal/modalfiles/modal.css" type="text/css" />' . "\n" .
-  '<script type="text/javascript" src="includes/js/dhtmlmodal/modalfiles/modal.js"></script>' . "\n";
+  '<script type="text/javascript" src="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js?'
+ . filemtime( 'includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js' ) . '"></script>
+    <script type="text/javascript" src="includes/js/dhtmlmodal/modalfiles/modal.js?'
+ . filemtime( 'includes/js/dhtmlmodal/modalfiles/modal.js' ) . '"></script>
+    <link type="text/css" href="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css?'
+ . filemtime( 'includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css' ) . '" rel="stylesheet" />
+    <link type="text/css" href="includes/js/dhtmlmodal/modalfiles/modal.css?'
+ . filemtime( 'includes/js/dhtmlmodal/modalfiles/modal.css' ) . '" rel="stylesheet" />';
 
 
-$byday = $bymonth = $bymonthday = $bysetpos = $participants = array ();
-$exceptions = $inclusions = $reminder = array ();
+$byday = $bymonth = $bymonthday = $bysetpos = $participants =
+$exceptions = $inclusions = $reminder = array();
 $byweekno = $byyearday = $catList = $catNames = $external_users = $rpt_count = '';
 
 $create_by = $login;
@@ -183,7 +187,7 @@ $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
 
 print_header ( $INC, $HEAD, $BodyX, false, false, false, true );
 
-ob_start ();
+ob_start();
 
 if ( $readonly == 'Y' || $is_nonuser )
   $can_edit = false;
@@ -253,7 +257,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
       etranslate( 'You are not authorized to edit this task.' );
 
     // Check UAC.
-    if ( access_is_enabled () )
+    if ( access_is_enabled() )
       $can_edit =
       access_user_calendar ( 'edit', $create_by, $login, $type, $access );
 
@@ -395,7 +399,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $due_hour = $WORK_DAY_END_HOUR;
   $due_minute = $task_percent = 0;
   $due_time = $WORK_DAY_END_HOUR . '0000';
-  $overall_percent = array ();
+  $overall_percent = array();
 
   // Get category if passed in URL as cat_id.
   $cat_id = getGetValue ( 'cat_id' );
@@ -683,7 +687,7 @@ if ( $can_edit ) {
      . '" onclick="editCats( event )" />
                     </td>
                     <td valign="top">
-                      <span name="catnames" id="entry_categories" " onclick="editCats( event )" style="cursor: pointer;"/>' . $catNames . '</span>
+                      <span name="catnames" id="entry_categories" " onclick="editCats( event )" style="cursor: pointer;" />' . $catNames . '</span>
                       <input type="hidden" id="cat_id" name="cat_id" value="' . $catList
      . '" />
                     </td>
@@ -929,7 +933,7 @@ if ( $can_edit ) {
       $userlist = get_my_users ( get_my_users );
       $usercnt = count ( $userlist );
       for ( $j = 0; $j < $usercnt; $j++ ) {
-        if ( access_is_enabled () && !
+        if ( access_is_enabled() && !
             access_user_calendar ( 'view', $userlist[$j]['cal_login'] ) )
           continue; // Cannot view calendar so cannot add to their cal.
 
@@ -1123,27 +1127,27 @@ if ( $can_edit ) {
         </tr>
         <tr>
           <td valign="top" width="160px" class="boxbottom boxleft">
-          <label>' .translate ( 'Users' ) . '</label><br/>
+          <label>' . translate( 'Users' ) . '</label><br />
             <select class="fixed" name="participants[]" id="entry_part" size="' . $size
      . '" multiple="multiple">' . $users . '
-            </select><br/>
+            </select><br />
             <input name="movert" type="button" value='
             . $addStr . ' onclick="selAdd( this );" /></td>
             </td>
         <td class="boxbottom">
-        <label>' .translate ( 'Resources' ) . '</label><br/>
+        <label>' . translate( 'Resources' ) . '</label><br />
             <select class="fixed" name="nonuserPart[]" id="res_part" size="'
      . $size . '" multiple="multiple">' . $nonusers . '
-            </select><br/>
+            </select><br />
             <input name="movert" type="button" value='
             . $addStr . ' onclick="selResource( this );" />
           </td>
         <td valign="top"  class="boxbottom boxright">'
         . ( $GROUPS_ENABLED == 'Y' ? '&nbsp;&nbsp;<label>'
-        . translate( 'Groups' ) . '</label><br/>
+        . translate( 'Groups' ) . '</label><br />
           <select class="fixed" name="groups" id="groups" size="'
      . $size . '" onclick="addGroup()" >' . $grouplist . '
-            </select><br/>
+            </select><br />
             <input name="movert" type="button" value='
        . $addStr . ' onclick="selAdd( this );" />' : '&nbsp;' ) . '
           </td>
@@ -1159,7 +1163,7 @@ if ( $can_edit ) {
           <td class="boxtop boxright boxbottom" colspan="2">
             <select class="fixed" name="selectedPart[]" id="sel_part" size="7" multiple="multiple">'
      . $myusers . '
-            </select><br/>'
+            </select><br />'
             . '<input name="movelt" type="button" value="'
             . translate ( 'Remove' ) .'" '
             . 'onclick="selRemove( this );" />
@@ -1224,7 +1228,7 @@ if ( $can_edit ) {
      . 'type="checkbox" name="rptmode" id="rptmode" value="y" '
      . 'onclick="rpttype_handler()" '
      . ( empty ( $expert_mode ) ? '' : $checked )
-     . '/>' . translate ( 'Expert Mode' ) . '</label>
+     . ' />' . translate( 'Expert Mode' ) . '</label>
           </td>
         </tr>
         <tr id="rptenddate1" style="visibility:hidden;">
@@ -1686,7 +1690,7 @@ if ( $can_edit ) {
       empty ( $ENABLE_CAPTCHA ) && $ENABLE_CAPTCHA == 'Y' ) {
     if ( function_exists ( 'imagecreatetruecolor' ) ) {
       include_once 'includes/classes/captcha/captcha.php';
-      echo captcha::form ();
+      echo captcha::form();
     } else
       etranslate ( 'CAPTCHA Warning' );
   }
@@ -1721,7 +1725,7 @@ if ( $can_edit ) {
         myFCKeditor.BasePath = \'includes/FCKeditor-2.0/\';
         myFCKeditor.ToolbarSet = \'Medium\';
         myFCKeditor.Config[\'SkinPath\'] = \'./skins/office2003/\';
-        myFCKeditor.ReplaceTextarea ();
+        myFCKeditor.ReplaceTextarea();
       </script>' : '' ) . '
     </form>';
 
@@ -1734,7 +1738,7 @@ if ( $can_edit ) {
   etranslate( 'You are not authorized to edit this entry.' );
 // end if ( $can_edit )
 
-ob_end_flush ();
+ob_end_flush();
 
 // Create a hidden div tag for editing categories...
 ?>
@@ -1754,7 +1758,7 @@ ob_end_flush ();
           htmlentities ( $V['cat_name'] );
          if ( empty ( $V['cat_owner'] ) )
            echo '<sup>*</sup>';
-        echo "</label><br/>\n";
+        echo "</label><br />\n";
       }
     }
   }
@@ -1768,6 +1772,6 @@ ob_end_flush ();
 </div>
 <?php
 
-echo print_trailer ();
+echo print_trailer();
 
 ?>

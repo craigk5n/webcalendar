@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * This script is intended to be used outside of normal WebCalendar use,
  * as an RSS 2.0 feed to a RSS client.
@@ -65,7 +64,7 @@ include 'includes/functions.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 
@@ -74,15 +73,15 @@ include 'includes/site_extras.php';
 
 include_once 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-load_global_settings ();
+load_global_settings();
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
 if ( empty ( $RSS_ENABLED ) || $RSS_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth();
   exit;
 }
 /* Configurable settings for this file. You may change the settings below to
@@ -146,7 +145,7 @@ if ( $allow_user_override ) {
   }
 }
 
-load_user_preferences ();
+load_user_preferences();
 
   // public entries only
   $allow_access = array ( 'P' );
@@ -167,7 +166,7 @@ $creator = ( $username == '__public__' ) ? 'Public' : $rss_fullname;
 if ( $username != '__public__' &&
   ( empty ( $USER_RSS_ENABLED ) || $USER_RSS_ENABLED != 'Y' ) ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth();
   exit;
 }
 
@@ -175,7 +174,7 @@ $cat_id = '';
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   $x = getValue ( 'cat_id', '-?[0-9]+', true );
   if ( ! empty ( $x ) ) {
-    load_user_categories ();
+    load_user_categories();
     $cat_id = $x;
     $category = $categories[$cat_id]['cat_name'];
   }
@@ -236,9 +235,9 @@ $lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
 if ( $lang == 'en' )
   $lang = 'en-us'; //the RSS 2.0 default.
 
-$appStr = generate_application_name ();
+$appStr = generate_application_name();
 
-ob_start ();
+ob_start();
 // header ( 'Content-type: application/rss+xml');
 header ( 'Content-type: text/xml' );
 echo '<?xml version="1.0" encoding="' . $charset . '"?>
@@ -258,11 +257,11 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>
 
 $endtimeYmd = date ( 'Ymd', $endTime );
 $numEvents = 0;
-$reventIds = array ();
+$reventIds = array();
 for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd && $numEvents < $maxEvents;
   $i += 86400 ) {
   $d = date ( 'Ymd', $i );
-  $eventIds = array ();
+  $eventIds = array();
   $pubDate = gmdate ( 'D, d M Y', $i );
 
   $entries = get_entries ( $d, false );
@@ -279,25 +278,25 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
   if ( $entrycnt > 0 || $rentrycnt > 0 ) {
     for ( $j = 0; $j < $entrycnt && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
-      if ( in_array ( $entries[$j]->getAccess (), $allow_access ) ) {
-        $eventIds[] = $entries[$j]->getID ();
-        $unixtime = $entries[$j]->getDateTimeTS ();
+      if ( in_array ( $entries[$j]->getAccess(), $allow_access ) ) {
+        $eventIds[] = $entries[$j]->getID();
+        $unixtime = $entries[$j]->getDateTimeTS();
         $dateinfo = ( $date_in_title ? date( $date_format, $unixtime )
           . ( $entries[$j]->isTimed() ? $time_separator
           . date( $time_format, $unixtime ) : '' ) . ' ' : '' );
 
         echo '
     <item>
-      <title><![CDATA[' . $dateinfo . $entries[$j]->getName () . ']]></title>
-      <link>' . $SERVER_URL . 'view_entry.php?id=' . $entries[$j]->getID ()
+      <title><![CDATA[' . $dateinfo . $entries[$j]->getName() . ']]></title>
+      <link>' . $SERVER_URL . 'view_entry.php?id=' . $entries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</link>
-      <description><![CDATA[' . $entries[$j]->getDescription () . ']]></description>'
+      <description><![CDATA[' . $entries[$j]->getDescription() . ']]></description>'
          . ( empty ( $category ) ? '' : '
       <category><![CDATA[' . $category . ']]></category>' )
         // . '<creator><![CDATA[' . $creator . ']]></creator>'
         /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */. '
       <pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>
-      <guid>' . $SERVER_URL . 'view_entry.php?id=' . $entries[$j]->getID ()
+      <guid>' . $SERVER_URL . 'view_entry.php?id=' . $entries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</guid>
     </item>';
         $numEvents++;
@@ -307,45 +306,45 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
       // To allow repeated daily entries to be suppressed. Step below is
       // necessary because 1st occurence of repeating events shows up in
       // $entries AND $rentries & we suppress display of it in $rentries.
-      if ( in_array ( $rentries[$j]->getID (),
-            $eventIds ) && $rentries[$j]->getrepeatType () == 'daily' )
-        $reventIds[] = $rentries[$j]->getID ();
+      if ( in_array ( $rentries[$j]->getID(),
+            $eventIds ) && $rentries[$j]->getrepeatType() == 'daily' )
+        $reventIds[] = $rentries[$j]->getID();
 
       // Prevent non-Public events from feeding.
       // Prevent a repeating event from displaying if the original event has
       // already been displayed; prevent 2nd & later recurrence of daily events
       // from displaying if that option has been selected.
-      if ( ! in_array ( $rentries[$j]->getID (), $eventIds ) &&
-          ( ! $show_daily_events_only_once || ! in_array ( $rentries[$j]->getID (),
-              $reventIds ) ) &&
-          ( in_array ( $rentries[$j]->getAccess (), $allow_access ) ) ) {
+      if( ! in_array( $rentries[$j]->getID(), $eventIds )
+          && ( ! $show_daily_events_only_once
+            || ! in_array( $rentries[$j]->getID(), $reventIds ) )
+          && ( in_array( $rentries[$j]->getAccess(), $allow_access ) ) ) {
 
         // Show repeating events only once.
-        if ( $rentries[$j]->getrepeatType () == 'daily' )
-          $reventIds[] = $rentries[$j]->getID ();
+        if ( $rentries[$j]->getrepeatType() == 'daily' )
+          $reventIds[] = $rentries[$j]->getID();
 
         echo '
     <item>';
-        $unixtime = $rentries[$j]->getDateTimeTS ();
+        $unixtime = $rentries[$j]->getDateTimeTS();
         // Constructing the TS for the current repeating event
         $unixtime = strtotime( date ( 'D, d M Y ', $i ) . date ( 'H:i:s', $unixtime ) ); 
         $dateinfo = ( $date_in_title
           ? date ( $date_format, $unixtime )
-           . ( $rentries[$j]->isTimed ()
+           . ( $rentries[$j]->isTimed()
             ? $time_separator . date ( $time_format, $unixtime ) : '' ) . ' '
           : '' );
 
         echo '
-      <title><![CDATA[' . $dateinfo . $rentries[$j]->getName () . ']]></title>
-      <link>' . $SERVER_URL . "view_entry.php?id=" . $rentries[$j]->getID ()
+      <title><![CDATA[' . $dateinfo . $rentries[$j]->getName() . ']]></title>
+      <link>' . $SERVER_URL . "view_entry.php?id=" . $rentries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</link>
-      <description><![CDATA[' . $rentries[$j]->getDescription () . ']]></description>'
+      <description><![CDATA[' . $rentries[$j]->getDescription() . ']]></description>'
          . ( empty ( $category ) ? '' : '
       <category><![CDATA[' . $category . ']]></category>' )
         // . '<creator><![CDATA[' . $creator . ']]></creator>'
         . '
       <pubDate>' . gmdate ( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>
-      <guid>' . $SERVER_URL . 'view_entry.php?id=' . $rentries[$j]->getID ()
+      <guid>' . $SERVER_URL . 'view_entry.php?id=' . $rentries[$j]->getID()
          . '&amp;friendly=1&amp;rssuser=' . $login . '&amp;date=' . $d . '</guid>
     </item>';
         $numEvents++;
@@ -356,7 +355,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
 echo '
   </channel>
 </rss>';
-ob_end_flush ();
+ob_end_flush();
 // Clear login...just in case.
 $login = '';
 exit;

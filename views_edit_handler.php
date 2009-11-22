@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 $error = '';
@@ -26,11 +25,11 @@ else {
     if ( ! dbi_execute ( 'UPDATE webcal_view SET cal_name = ?, cal_view_type = ?,
       cal_is_global = ? WHERE cal_view_id = ? AND cal_owner = ?',
         array ( $viewname, $viewtype, $viewisglobal, $id, $login ) ) )
-      $error = db_error ();
+      $error = db_error();
   } else {
     # new... Get new id first.
     $res = dbi_execute ( 'SELECT MAX( cal_view_id ) FROM webcal_view',
-      array () );
+      array() );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $id = $row[0];
@@ -40,9 +39,9 @@ else {
       if ( ! dbi_execute ( 'INSERT INTO webcal_view ( cal_view_id, cal_owner,
         cal_name, cal_view_type, cal_is_global ) VALUES ( ?, ?, ?, ?, ? )',
           $sql_params ) )
-        $error = db_error ();
+        $error = db_error();
     } else
-      $error = db_error ();
+      $error = db_error();
   }
   # update user list
   if ( $error == '' ) {

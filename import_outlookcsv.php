@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * File Description:
  * This file incudes functions for parsing CSV files generated from MS Outlook.
  *
@@ -11,16 +10,17 @@
  * during the export from Outlook.
  */
 
-/* Parse the Outlook CSV file and return the data hash.
+/**
+ * Parse the Outlook CSV file and return the data hash.
  */
 function parse_outlookcsv ( $cal_file ) {
   global $errormsg, $tz;
 
-  $outlookcsv_data = array ();
+  $outlookcsv_data = array();
 
   if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
     $errormsg .= 'Cannot read temporary file: ' . "$cal_file\n";
-    exit ();
+    exit();
   } else {
 
     # Burn First Row of Headers

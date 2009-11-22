@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  * This page displays the views that the user currently owns and
  * allows new ones to be created
@@ -58,7 +57,7 @@ if ( empty ( $id ) ) {
 // If view_name not found, then the specified view id does not
 // belong to current user.
 if ( empty ( $viewname ) ) {
-  $error = print_not_auth ();
+  $error = print_not_auth();
 }
 
 // get list of users for this view
@@ -74,17 +73,17 @@ if ( ! $newview ) {
       }
       dbi_free_result ( $res );
     } else
-      $error = db_error ();
+      $error = db_error();
 
 }
 
-if ( ! empty ( $error ) ) {
-  echo print_error ( $error ) . print_trailer ();
+if ( ! empty( $error ) ) {
+  echo print_error( $error ) . print_trailer();
   exit;
 }
 
 if ( $newview ) {
-  $v = array ();
+  $v = array();
   echo '<h2>' . translate ( 'Add View' ) . "</h2>\n";
   echo '<input type="hidden" name="add" value="1" />' . "\n";
 } else {

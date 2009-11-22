@@ -23,7 +23,7 @@ function sendCats( cats ) {
   woda.cat_id.value   = parentid;
   woda.catnames.value = parenttext;
 
-  window.close ();
+  window.close();
 }
 
 function updateList( ele ) {

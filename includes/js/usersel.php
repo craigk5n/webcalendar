@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 global $form, $groups, $listid;
 

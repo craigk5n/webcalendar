@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description
  *   Handler for AJAX requests for viewing events in the
  *   Day/Week/Month/Year views.
@@ -18,14 +17,14 @@ require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WebCalendar = new WebCalendar( __FILE__ );
 
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include 'includes/access.php';
@@ -39,13 +38,13 @@ include 'includes/classes/DocList.class';
 include 'includes/classes/AttachmentList.class';
 include 'includes/classes/CommentList.class';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-load_global_settings ();
-load_user_preferences ();
-$WebCalendar->setLanguage ();
+load_global_settings();
+load_user_preferences();
+$WebCalendar->setLanguage();
 
-load_user_layers ();
+load_user_layers();
 
 $debug = getValue ( 'debug' );
 $debug = ! empty ( $debug );
@@ -83,30 +82,30 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 }
 
 if ( $action == 'get' ) {
-  $dates = array ();
-  $eventCats = array ();
+  $dates = array();
+  $eventCats = array();
   /* Pre-Load the repeated events for quicker access */
   $wkstart = get_weekday_before ( $startyear, $startmonth );
   $startTime = $wkstart;
-  //echo "startdate: $startdate <br>enddate: $enddate<br>startTime: $startTime<br>";
+  //echo "startdate: $startdate <br />enddate: $enddate<br />startTime: $startTime<br />";
   $repeated_events = read_repeated_events ( $user, $startTime, $endTime );
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $user, $startTime, $endTime );
-  $tasks = array ();
+  $tasks = array();
   if ( $DISPLAY_TASKS_IN_GRID == 'Y' )
     $tasks = read_tasks ( $user, $enddate );
   // Gather the category IDs for each
-  $ids = array ();
+  $ids = array();
   for ( $i = 0; $i < count ( $events ); $i++ ) {
-    $id = $events[$i]->getID ();
+    $id = $events[$i]->getID();
     $ids[$id] = $id;
   }
   for ( $i = 0; $i < count ( $repeated_events ); $i++ ) {
-    $id = $repeated_events[$i]->getID ();
+    $id = $repeated_events[$i]->getID();
     $ids[$id] = $id;
   }
   for ( $i = 0; $i < count ( $tasks ); $i++ ) {
-    $id = $tasks[$i]->getID ();
+    $id = $tasks[$i]->getID();
     $ids[$id] = $id;
   }
   // Load all category IDs for the specified event IDs
@@ -141,11 +140,11 @@ if ( $action == 'get' ) {
   $id = getIntValue ( 'id' );
   $res = dbi_execute ( 'SELECT cal_login, cal_status ' .
     'FROM webcal_entry_user WHERE cal_id = ?', array ( $id ) );
-  $parts = array ();
-  $comments = array ();
-  $attachments = array ();
+  $parts = array();
+  $comments = array();
+  $attachments = array();
   if ( ! $res ) {
-    $error = translate("Database error") . ': ' . dbi_error ();
+    $error = translate("Database error") . ': ' . dbi_error();
   } else {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $parts[] = array ( 'login' => $row[0],
@@ -154,19 +153,19 @@ if ( $action == 'get' ) {
     dbi_free_result ( $res );
   }
   // Get list of attachments.
-  if ( Doc::attachmentsEnabled () ) {
+  if ( Doc::attachmentsEnabled() ) {
     $attList =& new AttachmentList ( $id );
-    for ( $i = 0; $i < $attList->getSize (); $i++ ) {
+    for ( $i = 0; $i < $attList->getSize(); $i++ ) {
       $a = $attList->getDoc ( $i );
       // Set link target to '_blank' so that we don't lose our place.
       // If we go to another page, the back button will re-init the page
       // so the user loses his place.
       $attachments[] = array ( 'summary' => $a->getSummary ( '_blank' ),
-        'id' => $a->getId (),
-        'owner' => $a->getLogin () );
+        'id' => $a->getId(),
+        'owner' => $a->getLogin() );
     }
   }
-  if ( Doc::commentsEnabled () ) {
+  if ( Doc::commentsEnabled() ) {
     $comList =& new CommentList ( $id );
     $comment_text = '';
     for ( $i = 0; $i < $comList->getSize(); $i++ ) {
@@ -174,10 +173,10 @@ if ( $action == 'get' ) {
       $comments[] = array (
         'description' => htmlspecialchars ( $cmt->getDescription() ),
         'owner' => $cmt->getLogin(),
-        'datetime' => date_to_str ( $cmt->getModDate (), '', false, true ) . ' '
-          . display_time ( $cmt->getModTime (), 2 ),
+        'datetime' => date_to_str ( $cmt->getModDate(), '', false, true ) . ' '
+          . display_time ( $cmt->getModTime(), 2 ),
         'text' => nl2br ( activate_urls (
-           htmlspecialchars ( $cmt->getData () ) ) ),
+           htmlspecialchars ( $cmt->getData() ) ) ),
         );
     }
   }
@@ -217,7 +216,7 @@ if ( $action == 'get' ) {
   $values = array ( $id, $login, $date, -1, $mod_date, $mod_time,
     0, 5, 'P', 'E', $name, $description );
   if ( ! dbi_execute ( $sql, $values ) ) {
-    ajax_send_error ( translate('Database error') . ": " . dbi_error () );
+    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     exit;
   }
   if ( $cat_id > 0 ) {
@@ -226,16 +225,16 @@ if ( $action == 'get' ) {
       'VALUES ( ?, ?, ? )';
     $values = array ( $id, $cat_id, $user );
     if ( ! dbi_execute ( $sql, $values ) ) {
-      ajax_send_error ( translate('Database error') . ": " . dbi_error () );
+      ajax_send_error ( translate('Database error') . ": " . dbi_error() );
       exit;
     }
   }
   if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status ) VALUES ( ?, ?, ? )',
         array ( $id, $user, 'A' ) ) ) {
-    ajax_send_error ( translate('Database error') . ": " . dbi_error () );
+    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
   }
-  ajax_send_success ();
+  ajax_send_success();
 } else {
   ajax_send_error ( translate('Unknown error.') );
 }
@@ -269,7 +268,7 @@ function setCategories ( $eventList )
 
   for ( $i = 0; $i < count ( $eventList ); $i++ ) {
     $event = $eventList[$i];
-    $id = $event->getID ();
+    $id = $event->getID();
     if ( ! empty ( $eventCats[$id] ) ) {
       $event->setCategories ( $eventCats[$id] );
     }
@@ -286,9 +285,9 @@ function load_category_ids ( $ids )
     'WHERE cal_id IN (' . $idList . ') AND ' .
     '(cat_owner = \'' . $user . '\' OR cat_owner IS NULL) ' .
     'ORDER BY cat_order';
-  //echo "SQL: $sql <br>";
-  $res = dbi_execute ( $sql, array () );
-  $eventCats = array ();
+  //echo "SQL: $sql <br />";
+  $res = dbi_execute ( $sql, array() );
+  $eventCats = array();
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $eventId = $row[0];
@@ -301,11 +300,11 @@ function load_category_ids ( $ids )
     }
     dbi_free_result ( $res );
   } else {
-    ajax_send_error ( translate('Database error') . ": " . dbi_error () );
+    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     exit;
   }
   //echo "<pre>"; print_r ( $ids ); echo "</pre>"; exit;
-  //echo "idList: $idList <br><pre>"; print_r ( $eventCats ); echo "</pre>"; exit;
+  //echo "idList: $idList <br /><pre>"; print_r ( $eventCats ); echo "</pre>"; exit;
 }
 
 exit;

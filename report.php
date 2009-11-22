@@ -1,5 +1,6 @@
 <?php
-/* Lists a user's reports or displays a specific report.
+/**
+ * Lists a user's reports or displays a specific report.
  *
  * Input Parameters:
  * - <var>report_id</var> (optional) - specified report id in webcal_report table
@@ -34,19 +35,20 @@
 
 include_once 'includes/init.php';
 
-/* Replaces all site_extras placeholders in a template with the actual data.
+/**
+ * Replaces all site_extras placeholders in a template with the actual data.
  *
  * All occurences of '${extra:ExtraName}' (where 'ExtraName' is the unique name
  * of a site_extra) will be replaced with that extra's data.
  *
  * @param string $template The template
  * @param array  $extras   The formatted site_extras as returned by
- *                         {@link format_site_extras ()}
+ *                         {@link format_site_extras()}
  *
  * @return string The template with site_extras replaced
  */
 function replace_site_extras_in_template ( $template, $extras ) {
-  $extra_names = get_site_extras_names ();
+  $extra_names = get_site_extras_names();
 
   $ret = $template;
 
@@ -58,7 +60,8 @@ function replace_site_extras_in_template ( $template, $extras ) {
   return $ret;
 }
 
-/* Generates the HTML for one event for a report.
+/**
+ * Generates the HTML for one event for a report.
  *
  * @param Event  $event The event
  * @param string $date  The date for which we're printing (in YYYYMMDD format)
@@ -74,39 +77,39 @@ function event_to_text ( $event, $date ) {
 
   $end_time_str = $start_time_str = $time_str = '';
 
-  $tempAllDay = $event->isAllDay ();
-  $tempDurStr = $event->getDuration ();
+  $tempAllDay = $event->isAllDay();
+  $tempDurStr = $event->getDuration();
 
   if ( $tempAllDay )
     $time_str = $allDayStr;
   else
-  if ( $event->isUntimed () )
+  if ( $event->isUntimed() )
     $time_str = translate ( 'Untimed event' );
   else {
-    $start_time_str = $time_str = display_time ( $event->getDateTime () );
+    $start_time_str = $time_str = display_time ( $event->getDateTime() );
     $time_short = getShortTime ( $time_str );
     if ( $tempDurStr > 0 ) {
       if ( $tempAllDay )
         $time_str = $allDayStr;
       else {
-        $tempEDT = $event->getEndDateTime ();
+        $tempEDT = $event->getEndDateTime();
         $end_time_str = display_time ( $tempEDT );
         $time_str .= ' - ' . display_time ( $tempEDT );
       }
     }
   }
 
-  $name = $event->getName ();
-  $tempAcc = $event->getAccess ();
-  $tempDesc = $event->getDescription ();
-  $tempExtForID = $event->getExtForID ();
-  $tempLog = $event->getLogin ();
+  $name = $event->getName();
+  $tempAcc = $event->getAccess();
+  $tempDesc = $event->getDescription();
+  $tempExtForID = $event->getExtForID();
+  $tempLog = $event->getLogin();
 
   if ( $tempExtForID != '' ) {
     $id = $tempExtForID;
     $name .= ' ' . translate ( '(cont.)' );
   } else
-    $id = $event->getID ();
+    $id = $event->getID();
 
   if ( $tempAcc == 'R' ) {
     if ( ( $login != $user && strlen ( $user ) ) ||
@@ -137,13 +140,13 @@ function event_to_text ( $event, $date ) {
   $duration_str = ( $tempDurStr > 0
     ? $tempDurStr . ' ' . translate ( 'minutes' ) : '' );
 
-  $temp = $event->getPriority ();
+  $temp = $event->getPriority();
   $pri_str = ( $temp > 6
     ? translate ( 'Low' )
     : ( $temp < 4
       ? translate ( 'High' ) : translate ( 'Medium' ) ) );
 
-  $temp = $event->getStatus ();
+  $temp = $event->getStatus();
   if ( $temp == 'A' )
     $status_str = translate ( 'Approved' );
   elseif ( $temp == 'D' )
@@ -155,8 +158,8 @@ function event_to_text ( $event, $date ) {
   else
     $status_str = translate ( 'Unknown' );
 
-  $location = $event->getLocation ();
-  $url = $event->getUrl ();
+  $location = $event->getLocation();
+  $url = $event->getUrl();
   $href_str = 'view_entry.php?id=' . $id;
 
   // Get user's fullname.
@@ -189,7 +192,7 @@ if ( ! empty ( $user ) && $user != $login &&
 }
 
 if ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 $updating_public = false;
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
@@ -205,14 +208,14 @@ $report_id = getValue ( 'report_id', '-?[0-9]+', true );
 // If no report id is specified,
 // then generate a list of reports from which the user may choose.
 if ( empty ( $error ) && empty ( $report_id ) && $login == '__public__' )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 $invalidID = translate ( 'Invalid report id.' );
 if ( empty ( $error ) && empty ( $report_id ) ) {
   $list = '';
   $sql = 'SELECT cal_report_id, cal_report_name FROM webcal_report
     WHERE cal_login = ';
-  $sql_params = array ();
+  $sql_params = array();
   if ( $is_admin ) {
     if ( ! $updating_public ) {
       if ( $PUBLIC_ACCESS == 'Y' ) {
@@ -265,7 +268,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[2] != 'Y' && $login != $row[0] )
-        $error = print_not_auth ();
+        $error = print_not_auth();
       else {
         $i = 0;
         $report_login = $row[$i++];
@@ -291,7 +294,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
 
     dbi_free_result ( $res );
   } else
-    $error = db_error ();
+    $error = db_error();
 }
 
 if ( empty ( $report_user ) )
@@ -326,7 +329,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
     }
     dbi_free_result ( $res );
   } else
-    $error = db_error ();
+    $error = db_error();
 }
 
 $include_header =
@@ -335,7 +338,7 @@ $include_header =
 if ( $include_header || ! empty ( $list ) || ! empty ( $error ) ) {
   $printerStr = ( empty ( $report_id )
     ? '' : generate_printer_friendly ( 'report.php' ) );
-  print_header ();
+  print_header();
 }
 
 if ( empty ( $offset ) || empty ( $report_allow_nav ) || $report_allow_nav != 'Y' )
@@ -438,7 +441,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
       get_entries ( $dateYmd ),
       get_repeating_entries ( $report_user, $dateYmd ) );
     for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
-      if ( $get_unapproved || $ev[$i]->getStatus () == 'A' )
+      if ( $get_unapproved || $ev[$i]->getStatus() == 'A' )
         $event_str .= event_to_text ( $ev[$i], $dateYmd );
     }
 
@@ -454,7 +457,7 @@ if ( empty ( $error ) && empty ( $list ) ) {
   }
 }
 if ( ! empty ( $error ) ) {
-  echo print_error ( $error ) . print_trailer ();
+  echo print_error ( $error ) . print_trailer();
   exit;
 }
 
@@ -478,12 +481,12 @@ if ( empty ( $list ) ) {
     str_replace ( '${report_id}', $report_id, $page_template ) );
   $trailerStr = print_trailer ( $include_header );
 } else {
-  $adminLinkStr = display_admin_link ();
+  $adminLinkStr = display_admin_link();
   $manageStr = '
     <h2>'
    . ( $updating_public ? translate ( $PUBLIC_ACCESS_FULLNAME ) . ' ' : '' )
    . translate ( 'Manage Reports' ) . '</h2>';
-  $trailerStr = print_trailer ();
+  $trailerStr = print_trailer();
 }
 
 echo <<<EOT

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Web Service functionality to get unapproved events. This will list events
  *  for the current user and for any other user for whom the current user is
@@ -21,7 +20,7 @@ $WS_DEBUG = false;
 require_once 'ws.php';
 
 // Initialize...
-ws_init ();
+ws_init();
 
 // header ( 'Content-type: text/xml' );
 header ( 'Content-type: text/plain' );
@@ -49,10 +48,10 @@ if ( $login != $user && $ALLOW_VIEW_OTHER != 'Y' ) {
     exit;
 }
 
-$sentIds = array ();
+$sentIds = array();
 
 // Get users that this user can approve.
-$userList = get_users_to_approve ();
+$userList = get_users_to_approve();
 
 $out = '
 <unapproved>
@@ -83,7 +82,8 @@ if ( ! empty ( $WS_DEBUG ) && $WS_DEBUG )
 // Send output now...
 echo $out;
 
-/* Process an event. For unapproved events, we may find that the same event is
+/**
+ * Process an event. For unapproved events, we may find that the same event is
  * listed more than once (if two participants are not yet approved.)
  * In that case, we send the event just once since the participant list
  * (with status) is sent with the event.
@@ -141,10 +141,10 @@ function get_unapproved ( $user ) {
 
 // Get an array of users for whom the current user has event approval permission.
 // Returns an array of logins.
-function get_users_to_approve () {
+function get_users_to_approve() {
   global $is_admin, $login, $NONUSER_ENABLED, $PUBLIC_ACCESS, $user;
-  $app_user_hash = $app_users = $my_non_users = array ();
-  $non_users = get_nonuser_cals ();
+  $app_user_hash = $app_users = $my_non_users = array();
+  $non_users = get_nonuser_cals();
   foreach ( $non_users as $nonuser ) {
     if ( user_is_nonuser_admin ( $login, $nonuser['cal_login'] ) ) {
       $my_non_users[]['cal_login'] = $nonuser['cal_login'];
@@ -155,9 +155,9 @@ function get_users_to_approve () {
   // First, we list ourself.
   $app_users[] = $login;
   $app_user_hash[$login] = 1;
-  if ( access_is_enabled () ) {
+  if ( access_is_enabled() ) {
     $all = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y'
-      ? array_merge ( get_my_users (), $my_non_users ) : get_my_users () );
+      ? array_merge ( get_my_users(), $my_non_users ) : get_my_users() );
     for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
       $x = $all[$j]['cal_login'];
       if ( access_user_calendar ( 'approve', $x ) ) {

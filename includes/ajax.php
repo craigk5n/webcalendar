@@ -17,7 +17,8 @@
  */
 
 
-/* Send an object back to the AJAX request. This represents a successful
+/**
+ * Send an object back to the AJAX request. This represents a successful
  * AJAX request. Using a common return structure for all of our AJAX
  * responses make them easier to handle in the client-side JavaScript.
  *
@@ -43,7 +44,8 @@ function ajax_send_object ( $objectName, $object, $sendPlainText=false ) {
   return true;
 }
 
-/* Send a objects back to the AJAX request. This represents a successful
+/**
+ * Send a objects back to the AJAX request. This represents a successful
  * AJAX request. Using a common return structure for all of our AJAX
  * responses make them easier to handle in the client-side JavaScript.
  *
@@ -71,7 +73,8 @@ function ajax_send_objects ( $objectArray, $sendPlainText=false ) {
   return true;
 }
 
-/* Send a success message back to our AJAX client.
+/**
+ * Send a success message back to our AJAX client.
  * Using a common return structure for all of our AJAX
  * responses make them easier to handle in the client-side JavaScript.
  *
@@ -94,7 +97,8 @@ function ajax_send_success ( $sendPlainText=false ) {
   return true;
 }
 
-/* Send a failure/fault back to the AJAX request. This represents a failed
+/**
+ * Send a failure/fault back to the AJAX request. This represents a failed
  * AJAX request.
  *
  * @param  string   $errorMessage  The error message to send back to

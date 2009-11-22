@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 $fday = getGetValue ( 'fday' );
@@ -106,7 +105,7 @@ echo <<<EOT
         syear.selectedIndex = i;
       }
     }
-    window.close ();
+    window.close();
   }
   //]]> -->
   </script>

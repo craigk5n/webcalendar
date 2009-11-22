@@ -1,10 +1,9 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
-send_no_cache_header ();
+send_no_cache_header();
 
 load_user_layers ( $user != $login && $is_nonuser_admin ? $user : '' );
-load_user_categories ();
+load_user_categories();
 
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
@@ -49,9 +48,9 @@ $nextStr = translate ( 'Next' );
 $newEntryStr = translate ( 'New Entry' );
 $prevStr = translate ( 'Previous' );
 
-print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta () );
+print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta() );
 
-ob_start ();
+ob_start();
 
 echo '
     <div class="title">
@@ -113,11 +112,12 @@ echo '
     </center>
     ' . ( empty ( $eventinfo ) ? '' : $eventinfo ) . '<br />';
 
-ob_end_flush ();
+ob_end_flush();
 
-echo $printerStr . print_trailer ();
+echo $printerStr . print_trailer();
 
-/* Prints the HTML for one event in detailed view.
+/**
+ * Prints the HTML for one event in detailed view.
  *
  * @param Event  $event The event
  * @param string $date  The date for which we're printing (in YYYYMMDD format)
@@ -126,21 +126,21 @@ function print_detailed_entry ( $event, $date ) {
   global $eventinfo, $layers, $login, $user;
   static $key = 0;
 
-  $descStr = $event->getDescription ();
-  $evAccessStr = $event->getAccess ();
-  $evPri = ( $event->getPriority () < 4 );
-  $getExtStr = $event->getExtForID ();
-  $loginStr = $event->getLogin ();
-  $name = $event->getName ();
+  $descStr = $event->getDescription();
+  $evAccessStr = $event->getAccess();
+  $evPri = ( $event->getPriority() < 4 );
+  $getExtStr = $event->getExtForID();
+  $loginStr = $event->getLogin();
+  $name = $event->getName();
 
   $class = ( $login != $loginStr && strlen ( $loginStr )
-    ? 'layer' : ( $event->getStatus () == 'W' ? 'unapproved' : '' ) ) . 'entry';
+    ? 'layer' : ( $event->getStatus() == 'W' ? 'unapproved' : '' ) ) . 'entry';
 
   if ( $getExtStr != '' ) {
     $id = $getExtStr;
     $name .= ' (' . translate ( 'cont.' ) . ')';
   } else
-    $id = $event->getID ();
+    $id = $event->getID();
 
   $linkid = 'pop' . "$id-$key";
   $key++;
@@ -172,12 +172,12 @@ function print_detailed_entry ( $event, $date ) {
 
   $timestr = '';
 
-  if ( $event->isAllDay () )
+  if ( $event->isAllDay() )
     $timestr = translate ( 'All day event' );
   else
-  if ( $event->getDuration () > 0 ) {
-    $timestr = display_time ( $event->getDateTime () ) . ' - '
-     . display_time ( $event->getEndDateTime () );
+  if ( $event->getDuration() > 0 ) {
+    $timestr = display_time ( $event->getDateTime() ) . ' - '
+     . display_time ( $event->getEndDateTime() );
 
     echo $timestr . '&raquo;&nbsp;';
   }
@@ -206,7 +206,8 @@ function print_detailed_entry ( $event, $date ) {
     $descStr, $timestr, site_extras_for_popup ( $id ) );
 }
 
-/* Print all the calendar entries for the specified user for the specified date.
+/**
+ * Print all the calendar entries for the specified user for the specified date.
  * If we are displaying data from someone other than the logged in user,
  * then check the access permission of the entry.
  *
@@ -225,7 +226,7 @@ function print_det_date_entries ( $date, $user, $ssi ) {
     get_repeating_entries ( $user, $date ) );
   for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
     if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) ||
-      $ev[$i]->getStatus () == 'A' )
+      $ev[$i]->getStatus() == 'A' )
       print_detailed_entry ( $ev[$i], $date );
   }
 }

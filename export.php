@@ -1,5 +1,5 @@
-<?php
-/* $Id$
+<?php // $Id$
+/**
  * Page Description:
  * This page will present the user with forms for exporting calendar events.
  *
@@ -15,7 +15,7 @@ if ( empty ( $login ) || $login == '__public__' ) {
   exit;
 }
 
-load_user_categories ();
+load_user_categories();
 
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
@@ -23,7 +23,7 @@ $selected = ' selected="selected" ';
 
 print_header ( array ( 'js/export_import.php', 'js/visible.php' ) );
 
-ob_start ();
+ob_start();
 
 echo '
     <h2>' . translate ( 'Export' ) . '</h2>
@@ -115,8 +115,8 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
     </form>
     ';
 
-ob_end_flush ();
+ob_end_flush();
 
-echo print_trailer ();
+echo print_trailer();
 
 ?>

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Page Description:
  *  This page will handle adding blobs into the database. It will
  *  present the form page on a GET and handle updating the database
@@ -75,31 +74,31 @@ if ( empty ( $error ) && ! empty ( $id ) ) {
 
 if ( $type == 'A' ) {
   if ( empty ( $ALLOW_ATTACH ) || $ALLOW_ATTACH != 'Y' )
-    $error = print_not_auth ();
+    $error = print_not_auth();
   else if ( empty ( $error ) && $ALLOW_ATTACH_PART == 'Y' && $is_my_event )
     $can_add = true;
   else if ( $ALLOW_ATTACH_ANY == 'Y' )
     $can_add = true;
 } else if ( $type == 'C' ) {
   if ( empty ( $ALLOW_COMMENTS ) || $ALLOW_COMMENTS != 'Y' )
-    $error = print_not_auth ();
+    $error = print_not_auth();
   else if ( empty ( $error ) && $ALLOW_COMMENTS_PART == 'Y' && $is_my_event )
     $can_add = true;
   else if ( $ALLOW_COMMENTS_ANY == 'Y' )
     $can_add = true;
 }
 //check UAC
-if ( access_is_enabled () ) {
+if ( access_is_enabled() ) {
   $can_add = $can_add || access_user_calendar ( 'edit', $user );
 }
 
 if ( ! $can_add )
-  $error = print_not_auth ();
+  $error = print_not_auth();
 
 if ( ! empty ( $error ) ) {
-  print_header ();
+  print_header();
   echo print_error ( $error );
-  echo print_trailer ();
+  echo print_trailer();
   exit;
 }
 
@@ -111,7 +110,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   // get next id first
   $res = dbi_execute ( 'SELECT MAX( cal_blob_id ) FROM webcal_blob' );
   if ( ! $res )
-    die_miserable_death ( str_replace ( 'XXX', dbi_error (),
+    die_miserable_death ( str_replace ( 'XXX', dbi_error(),
       translate ( 'Database error XXX.' ) ) );
        $row = dbi_fetch_row ( $res );
   $nextid = ( ! empty ( $row ) ? $row[0] + 1 :  1 );
@@ -127,11 +126,11 @@ if ( $REQUEST_METHOD == 'POST' ) {
       VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', array ( $nextid, $id, $login,
         NULL, $description, 0, 'text/plain', 'C', date ( 'Ymd' ), date ( 'His' ),
         NULL ) ) )
-      $error = db_error ();
+      $error = db_error();
     else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $comment ) )
-        $error = db_error ();
+        $error = db_error();
       else {
         // success!  redirect to view event page
         activity_log ( $id, $login, $login, LOG_COMMENT, '' );
@@ -172,11 +171,11 @@ if ( $REQUEST_METHOD == 'POST' ) {
       VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', array ( $nextid, $id, $login,
         $filename, $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
         date ( 'His' ), NULL ) ) )
-      $error = db_error ();
+      $error = db_error();
     else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
         "cal_blob_id = $nextid", $data ) ) {
-        $error = db_error ();
+        $error = db_error();
       } else {
         // success!  redirect to view event page
         activity_log ( $id, $login, $login, LOG_ATTACHMENT, $filename );
@@ -188,14 +187,14 @@ if ( $REQUEST_METHOD == 'POST' ) {
   }
 
   if ( ! empty ( $error ) ) {
-    print_header ();
+    print_header();
     echo print_error ( $error );
-    echo print_trailer ();
+    echo print_trailer();
     exit;
   }
 }
 
-print_header ();
+print_header();
 ?>
 <h2><?php echo $title;?></h2>
 
@@ -241,5 +240,5 @@ print_header ();
 </form>
 
 <?php }
-echo print_trailer (); ?>
+echo print_trailer(); ?>
 

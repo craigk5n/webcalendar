@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * Handler for exporting webcalendar events to various formats.
  *
@@ -18,7 +17,7 @@ include_once 'includes/xcal.php';
 
 $user = getPostValue ( 'user' );
 if ( empty ( $user ) || $user == $login )
-  load_user_layers ();
+  load_user_layers();
 
 // Convert time in ("hhmmss") format, plus duration (as a number of minutes),
 // to end time ($hour = number of hours, $min = number of minutes).
@@ -77,8 +76,10 @@ function get_cal_ent_extras ( $id, $from, $where = false ) {
      . ( $where ? ' AND ( ' . $where . ' )' : '' ), array ( $id ) );
   return ( $res ? ( dbi_fetch_row ( $res ) ) : ( false ) );
 }
-
-function export_pilot_csv ( $id ) {
+/**
+ * export_pilot_csv (needs description)
+ */
+function export_pilot_csv( $id ) {
   /* To be imported to a Palm with:
    * pilot-datebook -r csv -f webcalendar-export.txt -w hotsync
    */
@@ -194,8 +195,10 @@ function export_pilot_csv ( $id ) {
       echo "0,0,,0,0,0,0\n";
   } //end if ( $repType )
 }
-
-function transmit_header ( $mime, $file ) {
+/**
+ * transmit_header (needs description)
+ */
+function transmit_header( $mime, $file ) {
   // header ( 'Content-Type: application/octet-stream' );
   header ( 'Content-Type: ' . $mime );
   header ( 'Content-Disposition: attachment; filename="' . $file . '"' );
@@ -243,7 +246,7 @@ $startdate = sprintf ( "%04d%02d%02d", $fromyear, $frommonth, $fromday );
 $enddate = sprintf ( "%04d%02d%02d", $endyear, $endmonth, $endday );
 $moddate = sprintf ( "%04d%02d%02d", $modyear, $modmonth, $modday );
 
-mt_srand ( ( float ) microtime () * 1000000 );
+mt_srand ( ( float ) microtime() * 1000000 );
 
 if ( empty ( $id ) )
   $id = 'all';
@@ -262,13 +265,13 @@ if ( substr ( $format, 0, 4 ) == 'ical' ) {
   transmit_header ( 'text/plain', $outputName . '.txt' );
   export_install_datebook ( $id );
 } else {
-  print_header ();
+  print_header();
   $errorStr = translate ( 'Error' );
   echo '
     <h2>' . translate ( 'Export' ) . ' ' . $errorStr . '</h2>
     <span class="bold">' . $errorStr . ':</span> '
    . translate( 'export format not defined or incorrect.' ) . '<br />
-    ' . print_trailer ();
+    ' . print_trailer();
 } //end if ($format == "ical")
 
 ?>

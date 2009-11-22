@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  *  Web Service functionality to get a list of all users.
  *  Uses XML (but not SOAP at this point since that would be
@@ -21,7 +20,7 @@ $WS_DEBUG = false;
 require_once 'ws.php';
 
 // Initialize...
-ws_init ();
+ws_init();
 
 // header ( 'Content-type: text/xml' );
 header ( 'Content-type: text/plain' );
@@ -40,7 +39,7 @@ if ( $login == '__public__' && $login != $user && $PUBLIC_ACCESS_OTHERS != 'Y' )
   exit;
 }
 
-$userlist = get_my_users ();
+$userlist = get_my_users();
 
 for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
   $out .= '

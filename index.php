@@ -1,13 +1,12 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 // If not yet logged in, you will be redirected to login.php before
 // we get to this point (by init.php included above).
 if ( ! empty ( $STARTVIEW ) ) {
-  $page = get_preferred_view ();
+  $page = get_preferred_view();
   if ( access_can_view_page ( $page ) )
-    send_to_preferred_view ();
+    send_to_preferred_view();
   else {
     // User's preferences need to be updated to their preferred view.
     if ( access_can_access_function ( ACCESS_PREFERENCES ) )

@@ -1,6 +1,5 @@
-<?php
-/* $Id$
- *
+<?php // $Id$
+/**
  * Description:
  * Creates the iCal output for a single user's calendar so that remote users can
  * "subscribe" to a WebCalendar calendar. Both Apple iCal and Mozilla's calendar
@@ -34,7 +33,7 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include 'includes/validate.php';
@@ -42,7 +41,7 @@ include 'includes/validate.php';
 include 'includes/site_extras.php';
 include_once 'includes/xcal.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
 // Calculate username.
 // If using http_auth, use those credentials.
@@ -62,13 +61,13 @@ if ( $user == 'publish.php' )
 if ( $user == 'public' )
   $user = '__public__';
 
-load_global_settings ();
+load_global_settings();
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
 if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth();
   exit;
 }
 
@@ -91,11 +90,11 @@ EOT;
 // Load user preferences (to get the USER_PUBLISH_ENABLED and
 // DISPLAY_UNAPPROVED setting for this user).
 $login = $user;
-load_user_preferences ();
+load_user_preferences();
 
 if ( empty ( $USER_PUBLISH_ENABLED ) || $USER_PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo print_not_auth ();
+  echo print_not_auth();
   exit;
 }
 
@@ -107,6 +106,6 @@ header ( 'Content-Type: text/calendar' );
 header ( 'Content-Disposition: attachment; filename="' . $user . '.ics"' );
 $use_all_dates = true;
 $type = 'publish';
-export_ical ();
+export_ical();
 
 ?>

@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 if ( ! $is_admin )
@@ -7,9 +6,9 @@ if ( ! $is_admin )
 
 print_header ( array ( 'js/views.php/true', 'js/visible.php' ) );
 
-ob_start ();
+ob_start();
 
-echo display_admin_link () . '
+echo display_admin_link() . '
 <!-- TABS -->
     <div id="tabs">
       <span class="tabfor" id="tab_views"><a href="#tabviews" onclick="return '
@@ -42,7 +41,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   }
 }
 
-ob_end_flush ();
+ob_end_flush();
 
 echo '
         </ul>' . ( $global_found ? '<br />
@@ -51,6 +50,6 @@ echo '
  . ' height: 343px;"></iframe>
       </div>
     </div>
-    ' . print_trailer ();
+    ' . print_trailer();
 
 ?>

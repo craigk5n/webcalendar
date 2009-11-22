@@ -1,21 +1,20 @@
-<?php
-/* $Id$
-
- NOTE:
- There are THREE components that make up the functionality of users.php.
- 1. users.php
-  - contains the tabs
-  - lists users
-  - has an iframe for adding/editing users
-  - include statements for groups.php and nonusers.php
- 2. edit_user.php
-  - the contents of the iframe (i.e. a form for adding/editing users)
- 3. edit_user_handler.php
-  - handles form submittal from edit_user.php
-  - provides user with confirmation of successful operation
-  - refreshes the parent frame (users.php)
-
- This structure is mirrored for groups & nonusers
+<?php // $Id$
+/**
+ * NOTE:
+ * There are THREE components that make up the functionality of users.php.
+ * 1. users.php
+ *  - contains the tabs
+ *  - lists users
+ *  - has an iframe for adding/editing users
+ *  - include statements for groups.php and nonusers.php
+ * 2. edit_user.php
+ *  - the contents of the iframe (i.e. a form for adding/editing users)
+ * 3. edit_user_handler.php
+ *  - handles form submittal from edit_user.php
+ *  - provides user with confirmation of successful operation
+ *  - refreshes the parent frame (users.php)
+ *
+ * This structure is mirrored for groups & nonusers
  */
 
 include_once 'includes/init.php';
@@ -27,13 +26,13 @@ if ( empty ( $login ) || $login == '__public__' ) {
 }
 
 $doUser = $doUsers = $doGroups = $doNUCS = false;
-$doUser = ( ! access_is_enabled () ||
+$doUser = ( ! access_is_enabled() ||
   access_can_access_function ( ACCESS_ACCOUNT_INFO ) );
 $doUsers = ( $is_admin ||
-  ( access_is_enabled () &&
+  ( access_is_enabled() &&
   access_can_access_function ( ACCESS_USER_MANAGEMENT ) ) );
 $doRemotes = ( ! empty ( $REMOTES_ENABLED ) && $REMOTES_ENABLED == 'Y' &&
-  ( ! access_is_enabled () || access_can_access_function ( ACCESS_IMPORT ) ) );
+  ( ! access_is_enabled() || access_can_access_function ( ACCESS_IMPORT ) ) );
 if ( $is_admin ) {
   $doGroups = ( ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' );
   $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
@@ -46,9 +45,9 @@ print_header ( array ( 'js/visible.php', 'js/users.php/true' ), '',
 
 $taborder = array ( 'tabfor', 'tabbak','tabbak','tabbak','tabbak');
 $i=0;
-ob_start ();
+ob_start();
 
-echo display_admin_link () . '
+echo display_admin_link() . '
 <!-- TABS -->
     <div id="tabs">'
  .( $doUser || $doUsers? '
@@ -81,7 +80,7 @@ if ( $doUsers ) {
        . '</a><br />' : '' ) . '
           <ul>';
 
-    $userlist = user_get_users ();
+    $userlist = user_get_users();
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       if ( $userlist[$i]['cal_login'] != '__public__' )
         echo '
@@ -118,10 +117,10 @@ if ( $doUsers && $doNUCS )
 if ( $doRemotes )
   include_once 'remotes.php';
 
-ob_end_flush ();
+ob_end_flush();
 
 echo '
     </div>
-    ' . print_trailer ();
+    ' . print_trailer();
 
 ?>

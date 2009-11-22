@@ -1,6 +1,7 @@
 <?php
-/* This file implements the assertion handler.
- * This is called anytime a WebCalendar call to assert () fails.
+/**
+ * This file implements the assertion handler.
+ * This is called anytime a WebCalendar call to assert() fails.
  *
  * @todo Create a link that will pass all the bug details to a form hosted on
  *       k5n.us so that it can be easily submitted.
@@ -18,7 +19,8 @@
 if ( ! empty ( $run_mode ) &&  $run_mode == 'dev' )
   assert_options( ASSERT_CALLBACK, 'assert_handler');
 
-/* Gets the CVS file version for a specific file.
+/**
+ * Gets the CVS file version for a specific file.
  *
  * Searches through the file and looks for the CVS Id tag.
  *
@@ -49,13 +51,14 @@ function assert_get_cvs_file_version ( $file ) {
   return $version;
 }
 
-/* Return a backtrace.
+/**
+ * Return a backtrace.
  *
  * Each entry is separated by a newline. This function requires PHP 4.3/5.0.
  *
  * @return string Backtrace
  */
-function assert_backtrace () {
+function assert_backtrace() {
   global $settings;
 
   if ( empty ( $settings ) ||
@@ -64,10 +67,10 @@ function assert_backtrace () {
 
   if ( ! function_exists ( 'debug_backtrace' ) )
     return '[stacktrack requires PHP 4.3/5.0. Not available in PHP '
-     . phpversion () . ']';
-  $bt = debug_backtrace ();
+     . phpversion() . ']';
+  $bt = debug_backtrace();
   // print_r ( $bt );
-  $file = array ();
+  $file = array();
   for ( $i = 2, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
     // skip the first two, since it's always this func and assert_handler
     $afile = $bt[$i];
@@ -104,7 +107,8 @@ function assert_backtrace () {
   return implode ( "\n", $out );
 }
 
-/* Report an assertion failure.
+/**
+ * Report an assertion failure.
  *
  * Abort execution, print the specified error message along with a stack trace.
  *
@@ -116,7 +120,7 @@ function assert_handler ( $script, $line, $msg='' ) {
   if ( empty ( $msg ) )
     $msg = 'Assertion failed<br />' . "\n";
   $trace = ( function_exists ( 'debug_backtrace' )
-    ? assert_backtrace () : basename ( $script ) . ': ' . $line . ' ' . $msg );
+    ? assert_backtrace() : basename( $script ) . ': ' . $line . ' ' . $msg );
   $msg .= ( function_exists ( 'debug_backtrace' ) ? '<b>Stack Trace:</b><br /><br />' : '' )
     . '<blockquote><tt>' . nl2br ( $trace ) . '</tt></blockquote>';
   if ( function_exists ( 'die_miserable_death' ) )

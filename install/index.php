@@ -1,7 +1,5 @@
-<?php
+<?php // $Id$
 /**
- * $Id$
- *
  * Page Description:
  * Main page for install/config of db settings.
  * This page is used to create/update includes/settings.php.

@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/init.php';
 
 // input args in URL
@@ -22,7 +21,7 @@ if ( empty ( $listid ) ) {
 
 // Parse $users.
 $exp = explode( ',', $users );
-$groups = $selected = $sql_params = array ();
+$groups = $selected = $sql_params = array();
 for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
   $selected[$exp[$i]] = 1;
 }
@@ -83,7 +82,7 @@ echo '
       </form
     </center>';
 
-ob_end_flush ();
+ob_end_flush();
 
 echo print_trailer ( false, true, true );
 

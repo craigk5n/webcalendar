@@ -1,5 +1,6 @@
 <?php
-/* This file lists unapproved entries for one or more users.
+/**
+ * This file lists unapproved entries for one or more users.
  *
  * Optional parameters in URL:
  * url=user specifies that we should only display unapproved
@@ -16,7 +17,7 @@
  */
 
 include_once 'includes/init.php';
-send_no_cache_header ();
+send_no_cache_header();
 
 if ( empty ( $user ) )
   $user = $login;
@@ -37,15 +38,16 @@ if ( ! empty ( $_POST ) ) {
 }
 
 // Only admin user or assistant can specify a username other than his own.
-if ( ! $is_admin && $user != $login && ! $is_assistant && ! access_is_enabled () )
+if ( ! $is_admin && $user != $login && ! $is_assistant && ! access_is_enabled() )
   $user = $login;
 // Make sure we return after editing an event via this page.
-remember_this_view ();
+remember_this_view();
 
 $key = 0;
 $eventinfo = $noret = '';
 
-/* List all unapproved events for the specified user.
+/**
+ * List all unapproved events for the specified user.
  * Exclude "extension" events (used when an event goes past midnight).
  * TODO: Only include delete link if they have permission to delete
  *       when user access control is enabled.
@@ -59,7 +61,7 @@ function list_unapproved ( $user ) {
 
   $rssLink = '<a href="rss_unapproved.php?user=' .
     htmlspecialchars ( $user ) . '"><img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - ' .
-    htmlspecialchars ( $temp_fullname ) . '" border="0"/></a>';
+    htmlspecialchars ( $temp_fullname ) . '" border="0" /></a>';
 
   $count = 0;
   $ret = '';
@@ -120,7 +122,7 @@ function list_unapproved ( $user ) {
       </tr>' : '' ) . '
       <tr ' . ( $count % 2 == 0 ? '' : 'class="odd"' ) . '>
         <td width="5%" align="right"><input type="checkbox" name="'
-       . $entryID . '" value="' . $user . '"/></td>
+       . $entryID . '" value="' . $user . '" /></td>
         <td><a title="' . $viewStr . '" class="entry" id="' . $linkid
        . '" href="' . $view_link . '.php?id=' . $id . '&amp;user=' . $cal_user
        . '">' . htmlspecialchars ( $name ) . '</a> (' . $eventdate . '):</td>'
@@ -133,7 +135,7 @@ function list_unapproved ( $user ) {
        . $rejectStr . '" onclick="return do_confirm( \'reject\', \''
        . $cal_user . '\', \'' . $entryID . '\' );" /></td>'
       /* delete */
-       . ( ! access_is_enabled () || access_user_calendar ( 'edit', $user ) ? '
+       . ( ! access_is_enabled() || access_user_calendar ( 'edit', $user ) ? '
         <td align="center"><input type="image" src="images/delete.png" title="'
          . $deleteStr . '" onclick="return do_confirm( \'delete\', \''
          . $cal_user . '\', \'' . $entryID . '\' );\" /></td>' : '' ) . '
@@ -171,16 +173,16 @@ function list_unapproved ( $user ) {
       </tr>';
 
   return $ret;
-} //end list_unapproved ()
-print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta () );
+} //end list_unapproved()
+print_header ( array ( 'js/popups.php/true' ), generate_refresh_meta() );
 
-ob_start ();
+ob_start();
 
 echo '
     <h2>' . translate ( 'Unapproved Entries' ) . '</h2>';
 
-$app_user_hash = $app_users = $my_non_users = array ();
-$non_users = get_nonuser_cals ();
+$app_user_hash = $app_users = $my_non_users = array();
+$non_users = get_nonuser_cals();
 foreach ( $non_users as $nonuser ) {
   if ( user_is_nonuser_admin ( $login, $nonuser['cal_login'] ) )
     $my_non_users[]['cal_login'] = $nonuser['cal_login'];
@@ -188,8 +190,8 @@ foreach ( $non_users as $nonuser ) {
 
 // If a user is specified, we list just that user.
 if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
-    access_is_enabled () ) && ! empty ( $user ) && $user != $login ) {
-  if ( ! access_is_enabled () ||
+    access_is_enabled() ) && ! empty ( $user ) && $user != $login ) {
+  if ( ! access_is_enabled() ||
       access_user_calendar ( 'approve', $user ) ) {
     $app_user_hash[$user] = 1;
     $app_users[] = $user;
@@ -200,10 +202,10 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
   // First, we list ourself.
   $app_user_hash[$login] = 1;
   $app_users[] = $login;
-  if ( access_is_enabled () ) {
+  if ( access_is_enabled() ) {
     $all = ( $NONUSER_ENABLED == 'Y'
-      ? array_merge ( get_my_users (), $my_non_users )
-      : get_my_users () );
+      ? array_merge ( get_my_users(), $my_non_users )
+      : get_my_users() );
 
     for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
       $x = $all[$j]['cal_login'];
@@ -310,7 +312,7 @@ echo '
 //]]> -->
     </script>
     ';
-ob_end_flush ();
-echo print_trailer ();
+ob_end_flush();
+echo print_trailer();
 
 ?>

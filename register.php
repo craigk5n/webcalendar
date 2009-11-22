@@ -1,5 +1,4 @@
-<?php
-/* $Id$ */
+<?php // $Id$
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
@@ -10,28 +9,28 @@ include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
 
-$WebCalendar->initializeFirstPhase ();
+$WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
 include_once 'includes/access.php';
 include 'includes/gradient.php';
 
-$WebCalendar->initializeSecondPhase ();
+$WebCalendar->initializeSecondPhase();
 
-load_global_settings ();
+load_global_settings();
 
 // TODO make this an option for external users.
 $htmlmail = false;
 
 load_user_preferences ( 'guest' );
 
-$WebCalendar->setLanguage ();
+$WebCalendar->setLanguage();
 
-require ( 'includes/classes/WebCalMailer.class' );
+require 'includes/classes/WebCalMailer.class';
 $mail = new WebCalMailer;
 
-$appStr = generate_application_name ();
-$notauth = print_not_auth ();
+$appStr = generate_application_name();
+$notauth = print_not_auth();
 
 $error = ( empty ( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != 'Y'
   ? $notauth : '' );
@@ -94,14 +93,14 @@ function check_email ( $uemail ) {
 /**
  *  Generate unique password.
  */
-function generate_password () {
+function generate_password() {
   $pass = '';
   $pass_length = 8;
   $salt = 'abchefghjkmnpqrstuvwxyz0123456789';
-  srand ( ( double ) microtime () * 1000000 );
+  srand ( ( double ) microtime() * 1000000 );
   $i = 0;
   while ( $i < $pass_length ) {
-    $pass .= substr ( $salt, rand () % 33, 1 );
+    $pass .= substr ( $salt, rand() % 33, 1 );
     $i++;
   }
   return $pass;
@@ -111,7 +110,7 @@ $uemail = $ufirstname = $ulastname = $upassword1 = $upassword2 = $user = '';
 
 // We can limit what domain is allowed to self register.
 // $self_registration_domain should have this format "192.168.220.0:255.255.240.0";
-$valid_ip = validate_domain ();
+$valid_ip = validate_domain();
 if ( empty ( $valid_ip ) )
   $error = $notauth;
 
@@ -143,7 +142,7 @@ if ( empty ( $error ) && ! empty ( $control ) ) {
     $upassword2 = getPostValue ( 'upassword2' );
     // Do some checking of user info.
     if ( ! empty ( $user ) && ! empty ( $upassword1 ) ) {
-      if ( get_magic_quotes_gpc () ) {
+      if ( get_magic_quotes_gpc() ) {
         $upassword1 = stripslashes ( $upassword1 );
         $user = stripslashes ( $user );
       }
@@ -165,7 +164,7 @@ if ( empty ( $error ) && ! empty ( $control ) ) {
   } elseif ( $control == 'email' ) {
     // Process account info for email submission.
     // Need to generate unique passwords and email them to the new user.
-    $new_pass = generate_password ();
+    $new_pass = generate_password();
     // TODO allow admin to approve account and emails prior to processing.
     user_add_user ( $user, $new_pass, $ufirstname, $ulastname,
       $uemail, $uis_admin );
@@ -210,7 +209,7 @@ echo send_doctype( $appStr ) . '
     <script type="text/javascript">
       var validform = false;
 
-      function valid_form () {
+      function valid_form() {
         if ( document.selfreg.upassword1.value.length == 0 ) {
           alert ( "'
            . translate ( 'You have not entered a password.', true ) . '" );
@@ -245,10 +244,10 @@ echo send_doctype( $appStr ) . '
           '// This causes javascript errors in Firefox, but these can be ignored.
  . 'alert ( text );
           if ( formfield == \'user\' )
-            document.selfreg.user.focus ();
+            document.selfreg.user.focus();
 
           if ( formfield == \'uemail\' )
-            document.selfreg.uemail.focus ();
+            document.selfreg.uemail.focus();
 
           validform = false;
         } else {
@@ -354,5 +353,6 @@ if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
 }
 
 ?>
- </body>
+
+  </body>
 </html>
