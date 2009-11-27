@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 27-Nov-09 bb Fix bug [ 2903004 ] Warning message after successfully login
  - 22-Nov-09 bb Since js/popups.php is all javascript, I'm changing the name to popups.js
  - 22-Nov-09 bb I seem to have broken the PHPDocumentor functionality some months ago.
    Glad it's not used very often. Let's see if I can fix it.
