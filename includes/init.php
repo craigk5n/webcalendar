@@ -219,7 +219,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
      . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]" />' : '' )
   // Do we need anything else inside the header tag?
   // $HeadX moved here because linked CSS may override standard styles.
-    ( $HeadX ? '
+   . ( $HeadX ? '
      ' . $HeadX : '' ) . '
     <link type="image/x-icon" href="favicon.ico?'
    . filemtime( 'favicon.ico' ) . '" rel="shortcut icon" />'
