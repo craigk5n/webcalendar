@@ -167,8 +167,14 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
         $ret .= '
     <script type="text/javascript" src="';
 
-        if( ( ! empty( $arinc[2] ) && stristr( $arinc[2], 'true' ) ) ) {
-          $i = 'includes/' . $arinc[0] . '/' . $arinc[1];
+        if( stristr( $inc, '/true' ) ) {
+          $i = 'includes';
+          foreach( $arinc as $a ) {
+            if( $a == 'true' )
+              break;
+
+            $i .= '/' . $a;
+          }
           $ret .= $i . '?' . filemtime( $i );
         } else {
           $ret .= 'js_cacher.php?inc=' . $inc;
