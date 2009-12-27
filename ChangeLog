@@ -4,6 +4,8 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 26-Dec-09 bb Removing PHP from JavaScript and vice versa 
+   and some cleanup for consistancy - register.php
  - 27-Nov-09 bb Fix bug [ 2903004 ] Warning message after successfully login
  - 22-Nov-09 bb Since js/popups.php is all javascript, I'm changing the name to popups.js
  - 22-Nov-09 bb I seem to have broken the PHPDocumentor functionality some months ago.
