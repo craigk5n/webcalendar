@@ -42,7 +42,8 @@
  * @version $Id$
  * @package WebCalendar
  */
-if( empty( $_SERVER['PHP_SELF'] )
+
+ if( empty( $_SERVER['PHP_SELF'] )
      || ( ! empty( $_SERVER['PHP_SELF'] )
        && preg_match( '/\/includes\//', $_SERVER['PHP_SELF'] ) ) )
   die( 'You cannot access this file directly!' );
@@ -94,70 +95,96 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
-  $lang = '';
+  $cs_ret = $lang = $menuHtml = $menuScript = '';
+
   // Remember this view if the file is a view_x.php script.
   if( ! strstr( $REQUEST_URI, 'view_entry' ) )
     remember_this_view( true );
 
-  // Check the CSS version for cache clearing if needed.
-  if( ! $disableStyle ) {
-    if( isset( $_COOKIE['webcalendar_csscache'] ) )
-      $webcalendar_csscache = $_COOKIE['webcalendar_csscache'];
-    else {
-      $webcalendar_csscache = 1;
-      SetCookie( 'webcalendar_csscache', $webcalendar_csscache );
-    }
-  }
   // Menu control.
   if( ! empty( $friendly ) || $disableCustom )
     $MENU_ENABLED = 'N';
 
   $appStr = generate_application_name( true );
+  // Include includes/css/print_styles.css as a media="print" stylesheet.
+  // When the user clicks on the "Printer Friendly" link, $friendly will be
+  // non-empty, including this as a normal stylesheet so they can see how it
+  // will look when printed. This maintains backwards-compatibility for browsers
+  // that don't support media="print" stylesheets.
+  $cs_ar = array( 'css/styles.css', 'css/print_styles.css' );
+  $js_ar = array();
 
-  $ret = send_doctype( $appStr ) . ( $disableAJAX ? '' : '
+  $ret = send_doctype( $appStr );
+
+  if( ! $disableAJAX ) {
+    $ret .= '
     <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js?'
-   . filemtime( 'includes/js/ie5.js' ) . '"></script><![endif]-->
-    <script type="text/javascript" src="includes/js/prototype.js?'
-   . filemtime( 'includes/js/prototype.js' ) . '"></script>' );
+     . filemtime( 'includes/js/ie5.js' ) . '"></script><![endif]-->';
+    $js_ar[] = 'js/prototype.js';
+  }
 
-  // Includes needed for the top menu.
+  // CSS and JS includes needed for the top menu.
   if( $MENU_ENABLED == 'Y' ) {
     $MENU_THEME = ( ! empty( $MENU_THEME ) && $MENU_THEME != 'none'
       ? $MENU_THEME : 'default' );
     $menu_theme = ( $SCRIPT == 'admin.php'
       && ! empty( $GLOBALS['sys_MENU_THEME'] )
         ? $GLOBALS['sys_MENU_THEME'] : $MENU_THEME );
-    $ret .= '
-    <script type="text/javascript" src="includes/menu/JSCookMenu.js?'
-     . filemtime( 'includes/menu/JSCookMenu.js' ) . '"></script>
-    <script type="text/javascript" src="includes/menu/themes/' . $menu_theme
-     . '/theme.js?' . filemtime( 'includes/menu/themes/' . $menu_theme
-     . '/theme.js' ) . '"></script>';
+
+    include_once 'includes/menu/index.php';
+
+    $cs_ar[] = 'menu/themes/' . $menu_theme . '/theme.css';
+    $js_ar[] = 'menu/JSCookMenu.js';
+    $js_ar[] = 'menu/themes/' . $menu_theme . '/theme.js';
   }
 
-  $ret .= ( $disableUTIL ? '' : '
-    <script type="text/javascript" src="includes/js/util.js?'
-   . filemtime( 'includes/js/util.js' ) . '"></script>' );
+  if( ! $disableUTIL )
+    $js_ar[] = 'js/util.js';
+
+  if( ! empty( $js_ar ) )
+    foreach( $js_ar as $j ) {
+      $i = 'includes/' . $j;
+      $ret .= '
+    <script type="text/javascript" src="'
+       . $i . '?' . filemtime( $i ) . '"></script>';
+    }
+
   // Any other includes?
   if( is_array( $includes ) ) {
     foreach( $includes as $inc ) {
-      if( substr( $inc, 0, 13 ) == 'js/popups.js'
+      if( stristr( $inc, '.css' ) {
+        $i = 'includes/' . $inc;
+        // Not added to $cs_ar because I think we want these,
+        // even if $disableStyle.
+        $cs_ret .= '
+    <link type="text/css" href="' . $i . '?' . filemtime( $i )
+         . '" rel="stylesheet" />'
+      } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
           && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
-      } else
+      } else {
+        $arinc = explode( '/', $inc );
         $ret .= '
-    <script type="text/javascript" src="js_cacher.php?inc=' . $inc
-        . '&' . gmmktime() . '"></script>';
+    <script type="text/javascript" src="';
+
+        if( ( ! empty( $arinc[2] ) && stristr( $arinc[2], 'true' ) ) ) {
+          $i = 'includes/' . $arinc[0] . '/' . $arinc[1];
+          $ret .= $i . '?' . filemtime( $i );
+        } else {
+          $ret .= 'js_cacher.php?inc=' . $inc;
+        }
+        $ret .= '"></script>';
+      }
     }
   }
-  // Include the CSS needed for the top menu and themes.
-  if( $MENU_ENABLED == 'Y' ) {
-    include_once 'includes/menu/index.php';
-    $ret .= '
-    <link type="text/css" href="includes/menu/themes/'
-     . $menu_theme . '/theme.css?' . filemtime( 'includes/menu/themes/'
-     . $menu_theme . '/theme.css' ) . '" rel="stylesheet" />';
-  }
+  // There has to be a way to make "$menuScript" an external file.
+  $ret .= $menuScript;
+
+  $tmp   = '" rel="alternate" title="' . $appStr . ' - Unapproved Events - ';
+  $tmp_f = 'rss_unapproved.php';
+  $tmp_l = '
+    <link type="application/rss+xml" href="';
+
   // Add RSS feed for unapproved events if approvals are required
   if( $GLOBALS['REQUIRE_APPROVALS'] == 'Y'
        && $login != '__public__' && $is_admin ) {
@@ -171,59 +198,57 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     // Note: we could do all the queries to add the RSS feed for every user
     // the current user has permissions to approve for, but I'm thinking
     // that's too many db requests to repeat on every page.
-    $ret .= '
-    <link type="application/rss+xml" href="rss_unapproved.php?'
-     . filemtime( 'rss_unapproved.php' ) . '" rel="alternate" '
-     . 'title="' . $appStr . ' - Unapproved Events - ' . $login . '" />'
-     . ( $is_admin && $PUBLIC_ACCESS == 'Y' ? '
-    <link type="application/rss+xml" href="rss_unapproved.php?user=public&'
-     . filemtime( 'rss_unapproved.php' ) . '" '
-     . 'rel="alternate" title="' . $appStr . ' - Unapproved Events - '
-     . translate( $PUBLIC_ACCESS_FULLNAME ) . '" />' : '' );
+
+    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '" />'
+     . ( $is_admin && $PUBLIC_ACCESS == 'Y' ? $tmp_l . $tmp_f . '?user=public&'
+     . filemtime( $tmp_f ) . $tmp . translate( $PUBLIC_ACCESS_FULLNAME )
+     . '" />' : '' );
   }
   if( $is_admin ) {
-    $ret .= '
-    <link type="application/rss+xml" href="rss_activity_log.php?'
-     . filemtime( 'rss_activity_log.php' ) . '" rel="alternate"'
+    $tmp_f = 'rss_activity_log.php';
+    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . '" rel="alternate"'
      . ' title="' . $appStr . ' - ' . translate('Activity Log') . '" />';
   }
-  // If loading admin.php, we will not use an external file because we need to
-  // override the global colors and this is impossible if loading external file.
-  // We will still increment the webcalendar_csscache cookie though.
-  echo $ret . ( $disableStyle ? '' : '
+  if( ! $disableStyle ) {
+    // Check the CSS version for cache clearing if needed.
+    if( isset( $_COOKIE['webcalendar_csscache'] ) )
+      $webcalendar_csscache = $_COOKIE['webcalendar_csscache'];
+    else {
+      $webcalendar_csscache = 1;
+      SetCookie( 'webcalendar_csscache', $webcalendar_csscache );
+    }
+    $ret .= '
     <link type="text/css" href="css_cacher.php?login='
-   . ( empty( $_SESSION['webcal_tmp_login'] )
-     ? $login : $_SESSION['webcal_tmp_login'] )
-   . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet" />
-    <link type="text/css" href="includes/css/styles.css?'
-   . filemtime( 'includes/css/styles.css' ) . '" rel="stylesheet" />' )
+     . ( empty( $_SESSION['webcal_tmp_login'] )
+       ? $login : $_SESSION['webcal_tmp_login'] )
+     . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet" />';
+    foreach( $cs_ar as $c ) {
+      $i = 'includes/' . $c;
+      $ret .= '
+    <link type="text/css" href="' . $i . '?' . filemtime( $i )
+       . '" rel="stylesheet"'
+       . ( $c == 'css/print_styles.css' && empty( $friendly )
+         ? ' media="print"' : '' ) . ' />'
+    }
+  }
+  echo $ret . $cs_ret
   // Add custom script/stylesheet if enabled.
    . ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom
      ? load_template( $login, 'S' ) : '' )
-  // Include includes/print_styles.css as a media="print" stylesheet. When the
-  // user clicks on the "Printer Friendly" link, $friendly will be non-empty,
-  // including this as a normal stylesheet so they can see how it will look
-  // when printed. This maintains backwards-compatibility for browsers that
-  // don't support media="print" stylesheets.
-   . '
-    <link type="text/css" href="includes/css/print_styles.css?'
-   . filemtime( 'includes/css/print_styles.css' ) . '" rel="stylesheet"'
-   . ( empty( $friendly ) ? ' media="print"' : '' ) . ' />'
   // Add RSS feed if publishing is enabled.
    . ( ! empty( $GLOBALS['RSS_ENABLED'] ) && $GLOBALS['RSS_ENABLED'] == 'Y'
        && $login == '__public__' || ( ! empty( $GLOBALS['USER_RSS_ENABLED'] )
-       && $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && ! $disableRSS ? '
-    <link type="application/rss+xml" href="rss.php'
+       && $GLOBALS['USER_RSS_ENABLED'] == 'Y' ) && ! $disableRSS ?
+    $tmp_l . 'rss.php?' . filemtime( 'rss.php' )
       /* TODO: single-user mode, etc. */
-     . ( $login != '__public__' ? '?user=' . $login : '' )
+     . ( $login != '__public__' ? '&user=' . $login : '' )
      . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]" />' : '' )
   // Do we need anything else inside the header tag?
   // $HeadX moved here because linked CSS may override standard styles.
    . ( $HeadX ? '
      ' . $HeadX : '' ) . '
     <link type="image/x-icon" href="favicon.ico?'
-   . filemtime( 'favicon.ico' ) . '" rel="shortcut icon" />'
-   . ( $MENU_ENABLED == 'Y' ? $menuScript : '' ) . '
+   . filemtime( 'favicon.ico' ) . '" rel="shortcut icon" />
   </head>
   <body'
   // Determine the page direction (left-to-right or right-to-left).
@@ -301,7 +326,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 /**
  * print_menu_dates (needs description)
  */
-function print_menu_dates ( $menu = false ) {
+function print_menu_dates( $menu = false ) {
   global $cat_id, $CATEGORIES_ENABLED, $custom_view, $DATE_FORMAT_MD,
   $DATE_FORMAT_MY, $DISPLAY_WEEKENDS, $id, $login, $SCRIPT, $thisday,
   $thismonth, $thisyear, $user, $WEEK_START;
