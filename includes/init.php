@@ -152,13 +152,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // Any other includes?
   if( is_array( $includes ) ) {
     foreach( $includes as $inc ) {
-      if( stristr( $inc, '.css' ) {
+      if( stristr( $inc, '.css' ) ) {
         $i = 'includes/' . $inc;
         // Not added to $cs_ar because I think we want these,
         // even if $disableStyle.
         $cs_ret .= '
     <link type="text/css" href="' . $i . '?' . filemtime( $i )
-         . '" rel="stylesheet" />'
+         . '" rel="stylesheet" />';
       } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
           && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
@@ -234,7 +234,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     <link type="text/css" href="' . $i . '?' . filemtime( $i )
        . '" rel="stylesheet"'
        . ( $c == 'css/print_styles.css' && empty( $friendly )
-         ? ' media="print"' : '' ) . ' />'
+         ? ' media="print"' : '' ) . ' />';
     }
   }
   echo $ret . $cs_ret
