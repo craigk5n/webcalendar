@@ -14,7 +14,6 @@ include_once 'includes/validate.php';
 include_once 'includes/gradient.php';
 
 load_global_settings();
-
 @session_start();
 $empTmp = ( ! empty( $_SESSION['webcal_tmp_login'] ) );
 
@@ -34,19 +33,19 @@ unset( $_SESSION['webcal_tmp_login'] );
 // If we are calling from admin or pref, expire CSS yesterday.
 // Otherwise, expire tomorrow.
 $expTime = gmmktime() + 86400;
-if ( $empTmp )
+if( $empTmp )
   $expTime = gmmktime() - 86400;
 
-$fmt = 'D, d M Y H:i:s \G\M\T'
-ob_start( ini_get( 'zlib.output_compression' ) != 1 ? 'ob_gzhandler' : '' );
+// IE can handle compressed CSS OK.
+ob_start();
 
 header( 'Content-type: text/css' );
-header( 'Last-Modified: ' . gmdate( $fmt, $expTime - 600 ) );
-header( 'Expires: ' . gmdate( $fmt, $expTime ) );
 header( 'Cache-Control: Public' );
 header( 'Pragma: Public' );
 
-include_once 'includes/styles.php';
+send_no_cache_header();
+
+include_once 'includes/css/styles.php';
 
 ob_end_flush();
 
