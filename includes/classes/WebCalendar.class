@@ -533,7 +533,7 @@ class WebCalendar {
             // Invalid session cookie.
             $session_not_found = true;
           else {
-            $login_pw = split( '\|', decode_string ( $encoded_login ) );
+            $login_pw = explode( '\|', decode_string( $encoded_login ) );
             $login = $login_pw[0];
             $cryptpw = $login_pw[1];
 

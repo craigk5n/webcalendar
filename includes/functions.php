@@ -5590,7 +5590,7 @@ function set_env ( $val, $setting ) {
 function set_today ( $date = '' ) {
   global $day, $month, $thisdate, $thisday, $thismonth, $thisyear, $today, $year;
 
-  $today = mktime();
+  $today = time();
 
   if ( empty ( $date ) ) {
     $thisyear = ( empty ( $year ) ? date ( 'Y', $today ) : $year );
