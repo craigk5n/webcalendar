@@ -32,9 +32,10 @@ $advSearchStr = translate( 'Advanced Search' );
 $searchStr    = translate( 'Search' );
 $INC = array();
 
-if( $show_advanced )
+if( $show_advanced ) {
   $INC[] = 'js/translate.js.php';
-  $INC[] = 'js/visible.js/true',
+  $INC[] = 'js/visible.js/true';
+}
 
 if( $show_others )
   $INC[] = 'js/search.js/true';
