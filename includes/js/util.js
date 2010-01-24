@@ -222,7 +222,7 @@ function showResponse(originalRequest) {
 function altrows() {  
    if(!document.getElementsByTagName) return false;  
    var rows = $$('div tbody tr');      
-   for (var i=0; i<rows .length; i++) { 
+   for (var i=0; i<rows.length; i++) { 
      if ( ! rows[i].hasClassName('ignore') ) {
        rows[i].onmouseover = function() { $(this).addClassName('alt');}  
        rows[i].onmouseout = function() { $(this).removeClassName('alt');} 
@@ -233,7 +233,7 @@ function altrows() {
 function altps() {  
    if(!document.getElementsByTagName) return false;  
    var rows = $$('div p');      
-   for (var i=0; i<rows .length; i++) { 
+   for (var i=0; i<rows.length; i++) { 
      if ( ! rows[i].hasClassName('ignore') ) {
        rows[i].onmouseover = function() { $(this).addClassName('alt');}  
        rows[i].onmouseout = function() { $(this).removeClassName('alt');} 
