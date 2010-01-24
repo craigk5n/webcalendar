@@ -99,7 +99,7 @@ if ( $SEND_EMAIL != 'Y' ) {
   print_issue( str_replace( 'XXX', 'tools/send_reminders.php',
       translate( 'File location XXX' ) ), $isOk,
     str_replace( 'XXX', get_wc_path( 'tools/send_reminders.php' ),
-      translate( 'remove XXX if not using' ) );
+      translate( 'remove XXX if not using' ) ) );
 }
 
 $sysSettingsXXX = translate( 'System Settings XXX' );
