@@ -91,11 +91,12 @@ if ( $doUsers ) {
            . $denotesStr . '">*</abbr>' : '' )
          . '</li>';
     }
+    echo '
+          </ul>';
   }
 }
 if ( $is_admin ) {
     echo '
-          </ul>
           *&nbsp;' . $denotesStr . '.<br />
           <iframe name="useriframe" id="useriframe"></iframe>';
 }
