@@ -110,7 +110,7 @@ if ( $res ) {
 //this will force $LANGUAGE to to the current value and eliminate having
 //to double click the 'SAVE' buton
 $translation_loaded = false;
-reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
+
 //move this include here to allow proper translation
 include 'includes/date_formats.php';
 
