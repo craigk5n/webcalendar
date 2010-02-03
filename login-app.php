@@ -66,7 +66,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
       }
     </script>' : '' ) . '
     <link type="text/css" href="css_cacher.php?login=__public__" rel="stylesheet" />
-    <link type="text/css" href="includes/styles.css" rel="stylesheet" />'
+    <link type="text/css" href="includes/css/styles.css" rel="stylesheet" />'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
