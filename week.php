@@ -64,7 +64,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
     ? $user : $login, $wkend, $cat_id );
 
 if ( $can_add ) {
-  $help = 'title="' .
+  $help = ' title="' .
     translate ( 'Double-click on empty cell to add new entry' ) . '"';
 } else {
   $help = '';
@@ -249,14 +249,14 @@ print_header(
 echo <<<EOT
     <table width="100%" cellpadding="1" summary="">
       <tr>
-        <td id="printarea" style="vertical-align:top; width:{$tableWidth};" >
+        <td id="printarea" style="vertical-align:top; width:{$tableWidth};">
         {$navStr}
         </td>
         {$filler}
       </tr>
       <tr>
         <td>
-          <table class="main" summary="" $help >
+          <table class="main" summary=""{$help}>
             <tr>
               <th class="empty">&nbsp;</th>{$headerStr}
             </tr>{$untimedStr}{$eventsStr}
