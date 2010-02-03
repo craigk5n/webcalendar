@@ -142,8 +142,8 @@ if ( is_dir ( $dir ) ) {
    }
 }
 
-//make globals values passed to styles.php are for this user
-//makes the demo calendar accurate
+// Make sure global values passed to styles.php are for this user.
+// Makes the demo calendar accurate.
 $GLOBALS['BGCOLOR'] = $prefarray['BGCOLOR'];
 $GLOBALS['H2COLOR'] = $prefarray['H2COLOR'];
 $GLOBALS['MENU_THEME'] = $prefarray['MENU_THEME'];

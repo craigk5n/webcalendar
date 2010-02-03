@@ -95,7 +95,7 @@
  *  img.color            - transparent images used for visual color-selection
  *  img.help             - question mark img linking to help sections
  *
- * display: none; is unhidden by includes/print_styles.css
+ * display: none; is unhidden by includes/css/print_styles.css
  * for printer-friendly pages and where else needed.
  *
  *                            PHP FUNCTION CALLS
