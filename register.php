@@ -29,7 +29,7 @@ $WebCalendar->setLanguage();
 require 'includes/classes/WebCalMailer.class';
 $mail = new WebCalMailer;
 
-$appStr = generate_application_name();
+$appStr  = generate_application_name();
 $notauth = print_not_auth();
 
 $error = ( empty( $ALLOW_SELF_REGISTRATION ) || $ALLOW_SELF_REGISTRATION != 'Y'
@@ -41,53 +41,33 @@ if( empty( $SELF_REGISTRATION_FULL ) || $SELF_REGISTRATION_FULL != 'Y' )
 $form_control = ( $SELF_REGISTRATION_FULL == 'Y' ? 'email' : 'full' );
 
 /**
- * See if new username is unique.
+ * See if username and email are unique.
+ *
+ * param: $isWhat  string  What are we looking for; user login or user email?
+ * param: $isWher  string  Where are we looking; "login" or "email"?
  *
  * Return true if all is OK.
  */
-function check_username( $user ) {
+function checks( $isWhat, $isWher ) {
   global $control, $error;
 
-  if( strlen( $user ) == 0 ) {
-    $error = translate( 'Username cannot be blank.' );
+  if( ! strlen( $isWhat ) ) {
+    $error = ( $isWher == 'login'
+      ? translate( 'Username cannot be blank.' )
+      : translate( 'Email address cannot be blank.' ) );
     return false;
   }
-  $res = dbi_execute( 'SELECT cal_login FROM webcal_user WHERE cal_login = ?',
-    array( $user ) );
+  $res = dbi_execute( 'SELECT cal_' . $isWher . ' FROM webcal_user
+    WHERE cal_' . $isWher . ' = ?', array( $isWhat ) );
 
   if( $res ) {
     $row = dbi_fetch_row( $res );
 
-    if( $row[0] == $user ) {
+    if( $row[0] == $isWhat ) {
       $control = '';
-      $error = translate( 'Username already exists.' );
-      return false;
-    }
-  }
-  return true;
-}
-
-/**
- * See if  email is unique.
- *
- * Return true if all is OK.
- */
-function check_email( $uemail ) {
-  global $control, $error;
-
-  if( ! strlen( $uemail ) ) {
-    $error = translate( 'Email address cannot be blank.' );
-    return false;
-  }
-  $res = dbi_execute( 'SELECT cal_email FROM webcal_user WHERE cal_email = ?',
-    array( $uemail ) );
-
-  if( $res ) {
-    $row = dbi_fetch_row( $res );
-
-    if( $row[0] == $uemail ) {
-      $control = '';
-      $error = translate( 'Email address already exists.' );
+      $error = ( $isWher == 'login'
+        ? translate( 'Username already exists.' )
+        : translate( 'Email address already exists.' ) );
       return false;
     }
   }
@@ -110,7 +90,12 @@ function generate_password() {
   return $pass;
 }
 
-$uemail = $ufirstname = $ulastname = $upassword1 = $upassword2 = $user = '';
+$uemail =
+$ufirstname =
+$ulastname =
+$upassword1 =
+$upassword2 =
+$user = '';
 
 // We can limit what domain is allowed to self register.
 // $self_registration_domain should have this format "192.168.220.0:255.255.240.0";
@@ -134,10 +119,10 @@ if( empty( $error ) && ! empty( $control ) ) {
     $error = str_replace( 'XXX', htmlentities( $user ), $illegalCharStr );
 
   // Check to make sure user doesn't already exist.
-  check_username( $user );
+  checks( $user, 'login' );
 
   // Check to make sure email address doesn't already exist.
-  check_email( $uemail );
+  checks( $uemail, 'email' );
 }
 
 if( empty( $error ) && ! empty( $control ) ) {
@@ -203,7 +188,7 @@ if( empty( $error ) && ! empty( $control ) ) {
      . "\n\n" . translate( 'If you received this email in error' ) . "\n\n";
     $adminStr = translate( 'Administrator', true );
     $name = $appStr . ' ' . translate( 'Welcome' ) . ': ' . $ufirstname;
-    // Send  via WebCalMailer class.
+    // Send via WebCalMailer class.
     $mail->WC_Send( $adminStr, $uemail, $ufirstname . ' '
        . $ulastname, $name, $msg, $htmlmail, $EMAIL_FALLBACK_FROM );
     activity_log( 0, 'system', $user, LOG_NEWUSER_EMAIL,
@@ -230,7 +215,7 @@ echo send_doctype( $appStr ) . '
     <link type="text/css" href="css_cacher.php?login=__public__" rel="stylesheet" />
     <link type="text/css" href="includes/css/styles.css" rel="stylesheet" />'
 
-// Print custom header(since we do not call print_header function).
+// Print custom header (since we do not call print_header function).
  . ( ! empty( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
   ? load_template( $login, 'S' ) : '' ) . '
   </head>

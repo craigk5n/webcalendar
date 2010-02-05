@@ -4,6 +4,8 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 04-Feb-10 bb In register.php, combine some nearly identical functions.
+   And a liitle cleanup.
  - 24-Jan-10 bb Patch [ 2938327 ] Get rid of two more PHP 5.3 deprecations
  - 24-Jan-10 bb Patch [ 2938298 ] error message: stat failed for includes/js/views.php
  - 27-Dec-09 bb In includes/init.php, moving some of the CSS links into print_header($INC)
