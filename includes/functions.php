@@ -4428,7 +4428,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
 }
 
 /**
- * Generates HTML to for checkbox form controls.
+ * Generates HTML for checkbox form controls.
  *
  * @param array  $vals      (name, value, display, setting)
  * @param string $id        the id of the control
@@ -4436,37 +4436,35 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
  *
  * @return string  HTML for the checkbox control.
  */
-function print_checkbox ( $vals, $id = '', $onchange = '' ) {
+function print_checkbox( $vals, $id = '', $onchange = '' ) {
   global $prefarray, $s, $SCRIPT;
   static $checked, $No, $Yes;
 
-  $setting = ( empty ( $vals[3] ) ? $vals[0] : $vals[3] );
+  $hidden = ( stripos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
+    <input type="hidden" name="' . $variable . '" value="N" />' );
+  $setting  = ( empty( $vals[3] ) ? $vals[0] : $vals[3] );
   $variable = $vals[0];
-  $hidden = '';
-  if ( ! empty ( $id ) && $id = 'dito' )
+
+  if( ! empty( $id ) && $id = 'dito' )
     $id = $vals[0];
 
-  if ( empty ( $checked ) ) {
+  if( empty( $checked ) ) {
     $checked = ' checked="checked"';
-    $No = translate ( 'No' );
-    $Yes = translate ( 'Yes' );
+    $No  = translate( 'No' );
+    $Yes = translate( 'Yes' );
   }
 
-  if ( $SCRIPT == 'admin.php' ) {
-    $setting = $s[$vals[0]];
+  if( $SCRIPT == 'admin.php' ) {
+    $setting  = $s[$vals[0]];
     $variable = 'admin_' . $vals[0];
-    $hidden = '
-    <input type="hidden" name="' . $variable . '" value="N" />';
   }
-  if ( $SCRIPT == 'pref.php' ) {
-    $setting = $prefarray[$vals[0]];
+  if( $SCRIPT == 'pref.php' ) {
+    $setting  = $prefarray[$vals[0]];
     $variable = 'pref_' . $vals[0];
-    $hidden = '
-    <input type="hidden" name="' . $variable . '" value="N" />';
   }
   return $hidden . '
       <label><input type="checkbox" name="' . $variable . '" value="' . $vals[1]
-   . '" ' . ( empty ( $id ) ? '' : 'id="' . $id . '" ' )
+   . '" ' . ( empty( $id ) ? '' : 'id="' . $id . '" ' )
    . ( $setting == $vals[1] ? $checked : '' )
    . ( empty( $onchange ) ? '' : ' onchange="' . $onchange . '()"' )
    . ' />&nbsp;' . $vals[2] . '</label>';
