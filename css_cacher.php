@@ -32,9 +32,10 @@ unset( $_SESSION['webcal_tmp_login'] );
 
 // If we are calling from admin or pref, expire CSS yesterday.
 // Otherwise, expire tomorrow.
-$expTime = gmmktime() + 86400;
+$expTime = time() + 86400;
+
 if( $empTmp )
-  $expTime = gmmktime() - 86400;
+  $expTime = time() - 86400;
 
 // IE can handle compressed CSS OK.
 ob_start();
