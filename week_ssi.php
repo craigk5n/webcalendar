@@ -32,7 +32,7 @@ if ( strlen ( $login ) == 0 ) {
 
 $view = 'week';
 // TODO This is suspect
-$today = mktime();
+$today = time();
 
 if ( ! empty ( $date ) && ! empty ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );
@@ -45,8 +45,8 @@ if ( ! empty ( $date ) && ! empty ( $date ) ) {
   $thisyear = ( empty ( $year ) || $year == 0 ? date ( 'Y', $today ) : $year );
 }
 
-$next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
-$prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
+$next = mktime( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
+$prev = mktime( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
 $wkend = $wkstart + 518400;
