@@ -4440,7 +4440,7 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
   global $prefarray, $s, $SCRIPT;
   static $checked, $No, $Yes;
 
-  $hidden = ( stripos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
+  $hidden = ( strpos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
     <input type="hidden" name="' . $variable . '" value="N" />' );
   $setting  = ( empty( $vals[3] ) ? $vals[0] : $vals[3] );
   $variable = $vals[0];
@@ -5286,16 +5286,23 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           // if ( file_exists ( $file ) ) {
           // $dates = unserialize( file_get_contents( $file ) );
           // } else {
-          $dates = get_all_dates ( $date,
-            $result[$i]->getRepeatType(), $result[$i]->getRepeatFrequency(),
-            $result[$i]->getRepeatByMonth(), $result[$i]->getRepeatByWeekNo(),
+          $dates = get_all_dates(
+            $date,
+            $result[$i]->getRepeatType(),
+            $result[$i]->getRepeatFrequency(),
+            $result[$i]->getRepeatByMonth(),
+            $result[$i]->getRepeatByWeekNo(),
             $result[$i]->getRepeatByYearDay(),
             $result[$i]->getRepeatByMonthDay(),
-            $result[$i]->getRepeatByDay(), $result[$i]->getRepeatBySetPos(),
-            $rpt_count, $until, $result[$i]->getRepeatWkst(),
+            $result[$i]->getRepeatByDay(),
+            $result[$i]->getRepeatBySetPos(),
+            $rpt_count,
+            $until,
+            $result[$i]->getRepeatWkst(),
             $result[$i]->getRepeatExceptions(),
-            $result[$i]->getRepeatInclusions(), $jumpdate );
-          $result[$i]->addRepeatAllDates ( $dates );
+            $result[$i]->getRepeatInclusions(),
+            $jumpdate );
+          $result[$i]->addRepeatAllDates( $dates );
           // Serialize and save in cache for later use.
           // if ( ! empty ( $db_connection_info['cachedir'] ) ) {
           // $fd = @fopen ( $file, 'w+b', false );
@@ -5311,12 +5318,12 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           if( count( $result[$i-1]->getRepeatAllDates() ) > 0 ) {
             $parentRepeats = $result[$i-1]->getRepeatAllDates();
             $cloneRepeats = array();
-            for ( $j = 0, $parentRepeatscnt = count ( $parentRepeats );
-              $j < $parentRepeatscnt; $j++ ) {
-              $cloneRepeats[] = gmdate ( 'Ymd',
+            for( $j = 0, $parentRepeatscnt = count( $parentRepeats );
+                $j < $parentRepeatscnt; $j++ ) {
+              $cloneRepeats[] = gmdate( 'Ymd',
                 date_to_epoch( $parentRepeats[$j] ) + 86400 );
             }
-            $result[$i]->addRepeatAllDates ( $cloneRepeats );
+            $result[$i]->addRepeatAllDates( $cloneRepeats );
           }
         }
       }
