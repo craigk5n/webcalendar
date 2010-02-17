@@ -1107,9 +1107,9 @@ function display_month ( $thismonth, $thisyear, $demo = false,
       $tmp = date( 'W', $i + 172800 );
       $ret .= '
         <td class="weekcell"><a title="' . $weekStr . ' ' . $tmp . '" href="'
-       . ( $demo ? '' : 'week.php?date=' . date ( 'Ymd', $i + 86400 ) )
-       . ( ! empty ( $user ) && $user != $login ? '&amp;user=' . $user : '' )
-       . ( empty ( $cat_id ) ? '' : '&amp;cat_id=' . $cat_id ) . '"' . '>';
+       . ( $demo ? '' : 'week.php?date=' . date ( 'Ymd', $i + 86400 )
+         . ( ! empty ( $user ) && $user != $login ? '&amp;user=' . $user : '' )
+         . ( empty ( $cat_id ) ? '' : '&amp;cat_id=' . $cat_id ) ) . '"' . '>';
 
       $wkStr = $WKStr . $tmp;
       $wkStr2 = '';
