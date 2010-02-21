@@ -1741,7 +1741,7 @@ Your settings have been saved.: Your settings have been saved.
 OFF: OFF
 ON: ON
 WebCalendar Setup Wizard: WebCalendar Setup Wizard
-This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see:<br />
+This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation.<br />For help and troubleshooting see:<br />
 System Administrators Guide: System Administrator's Guide
 Frequently Asked Questions: Frequently Asked Questions
 FAQ: FAQ
