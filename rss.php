@@ -327,7 +327,8 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
     <item>';
         $unixtime = $rentries[$j]->getDateTimeTS();
         // Constructing the TS for the current repeating event
-        $unixtime = strtotime( date ( 'D, d M Y ', $i ) . date ( 'H:i:s', $unixtime ) ); 
+        $unixtime = strtotime( date( 'D, d M Y ', $i )
+         . date( 'H:i:s', $unixtime ) );
         $dateinfo = ( $date_in_title
           ? date ( $date_format, $unixtime )
            . ( $rentries[$j]->isTimed()

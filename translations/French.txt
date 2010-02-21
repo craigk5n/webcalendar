@@ -916,7 +916,7 @@ allow-remote-publishing-help: Précise si un client iCal distant peut republier s
 remote-publishing-url-help: Affiche l'URL à utiliser dans l'application cliente iCal pour s'abonner et pour publier dans WebCalendar
 allow-remote-subscriptions-help: Détermine si les usagers distants peuvent s'abonner à votre agenda, leur permettant de consulter vos événements à l'aide d'une application compatible iCal (Apple iCal ouMozilla Calendar par exemple)
 remote-subscriptions-url-help: Affiche l'URL avec lequel les utilisateurs distants peuvent s'abonner à votre agenda
-Enable FreeBusy publishing: Permettre publication FreeBusy 
+Enable FreeBusy publishing: Permettre publication FreeBusy
 freebusy-enabled-help: Spécifie si le temps disponible de l'utilisateur peut être obtenu en utilisant le standard iCal FreeBusy.
 freebusy-url-help: L'URL pour accéder à la liste FreeBusy de l'utilisateur
 rss-feed-url-help: L'URL pour accéder au flux RSS
@@ -1056,7 +1056,7 @@ Page may need to be reloaded for new Theme to take effect: La page peut avoir be
 display_byproxy-help: Afficher le créateur réel sur la page "view_entry"
 Display if created by Assistant: Afficher si créé par un assistant
 allow-view-subscriptions-help: Permet de restreindre l'accès distant des entrées privées ou confidentielles
-Allow remote viewing of: Permet la visualiation distante de 
+Allow remote viewing of: Permet la visualiation distante de
 entries: entrées
 
 ########################################
@@ -1296,7 +1296,7 @@ cont.: =
 Another Users Calendar: Agenda d'un autre utilisateur
 Category Management: Gestion des catégories
 Day View: Vue journalière
-Edit Event: Editer un événement 
+Edit Event: Editer un événement
 Month View: Vue mensuelle
 Common Trailer: Pied de page standard
 User Management: Gestion des utilisateurs
@@ -1721,7 +1721,7 @@ User Supported Wiki: =
 PHP Version Check: Vérification version PHP
 Check to see if PHP 4.1.0 or greater is installed.: Vérifiez que PHP 4.1.0 ou supérieur est installé.
 PHP version: Version PHP
-PHP Settings: Paramêtres PHP 
+PHP Settings: Paramêtres PHP
 Detailed PHP Info: Information détaillé PHP
 ON: =
 OFF: =

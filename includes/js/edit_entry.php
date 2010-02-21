@@ -147,11 +147,11 @@ function validate_and_submit() {
  //select allusers in selectedPart
  if ( form.elements['selectedPart[]'] ) {
    var userlist = form.elements['selectedPart[]'];
-   for ( i = 0; i < userlist.length; i++ ) { 
+   for( i = 0; i < userlist.length; i++ ) {
      userlist.options[i].selected = true;
    }
  }
- 
+
  form.submit();
  return true;
 }
@@ -777,7 +777,7 @@ function selAdd( btn ) {
       {
         if(options[i].selected) {
           with (options[i])
-          {  
+          {
             if(is_unique(value)) {
               form.sel_part.options[form.sel_part.length]  = new Option( text, value );
             }
@@ -795,11 +795,11 @@ function is_unique ( val ) {
    for ( j = 0; j < sel.length; j++ ) {
      if ( sel.options[j].value == val )
        unique = false;
-   } 
+   }
    return unique;
 }
 
-function selResource( btn ) { 
+function selResource( btn ) {
   with (form)
   {
     with (form.res_part)
@@ -816,19 +816,19 @@ function selResource( btn ) {
           } //end with options
         }
       } // end for loop
-    } 
+    }
   } // end with document
 }
 function selRemove( btn ) {
    with (form)
-   { 
+   {
       with (form.sel_part)
       {
          for (i = 0; i < length; i++)
-         {   
+         {
             if( options[i].selected ) {
               options[i] = null;
-         }      
+         }
          } // end for loop
      }
    } // end with document
@@ -861,7 +861,7 @@ function lookupName() {
       selectid = i;
     i = form.res_part.length;
    }
-  }    
+  }
   if ( selectid > -1 ) {
     form.res_part.selectedIndex = selectid;
     return true;
@@ -878,8 +878,8 @@ function lookupName() {
     if ( selectid > -1) {
       form.groups.selectedIndex = selectid;
       return true;
-    }  
-  }    
+    }
+  }
 }
 
 function stringLength(inputString)

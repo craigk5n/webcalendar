@@ -117,13 +117,13 @@ Method 1: If this method fails, try method 2
     RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
   </IfModule>
 
-Method 2: 
+Method 2:
   <IfModule mod_rewrite.c>
     RewriteEngine on
-  
+
     RewriteCond %{QUERY_STRING} ^$
     RewriteRule ([^\s]+).php$ $1.php?BAD_HOSTING=%{HTTP:Authorization}
-  
+
     RewriteCond %{QUERY_STRING} ^(.+)$
     RewriteRule ([^\s]+).php $1.php?%1&BAD_HOSTING=%{HTTP:Authorization}
   </IfModule>

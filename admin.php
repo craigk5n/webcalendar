@@ -168,7 +168,7 @@ $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
 
 print_header( array( 'js/translate.js.php' ),
   '<script type="text/javascript" src="includes/js/admin.js"></script>
-    <script type="text/javascript" src="includes/js/visible.js"></script>', 
+    <script type="text/javascript" src="includes/js/visible.js"></script>',
   'onload="init_admin();showTab( \'' . $currenttab . '\' );"' );
 
 if ( ! $error ) {
@@ -858,13 +858,13 @@ if ( ! $error ) {
    . translate ( 'Email format preference' ) . ':</label>'
    . print_radio ( 'EMAIL_HTML',
      array ( 'Y'=> translate ( 'HTML' ),
-             'N'=>translate( 'Plain Text' ) ) ) . '</p>' 
+             'N'=>translate( 'Plain Text' ) ) ) . '</p>'
    . '<p><label title="' . tooltip ( 'email-include-ics' ) . '">'
    . translate ( 'Include iCalendar attachments' ) . ':</label>'
-   . print_radio ( 'EMAIL_ATTACH_ICS' ) . '</p>' 
+   . print_radio( 'EMAIL_ATTACH_ICS' ) . '</p>'
    . '<p><label title="' . tooltip ( 'email-event-reminders-help' ) . '">'
    . translate ( 'Event reminders' ) . ':</label>'
-   . print_radio ( 'EMAIL_REMINDER' ) . '</p>' 
+   . print_radio( 'EMAIL_REMINDER' ) . '</p>'
    . '<p><label title="' . tooltip ( 'email-event-added' ) . '">'
    . translate ( 'Events added to my calendar' ) . ':</label>'
    . print_radio ( 'EMAIL_EVENT_ADDED' ) . '</p>

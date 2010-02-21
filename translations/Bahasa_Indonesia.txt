@@ -176,7 +176,7 @@ remember-last-login-help: Jika dinyalakan, maka log masuk pengguna pada halaman 
 Remember last login: Ingat log masuk terakhir
 allow-public-access-help: Jika dinyalakan, maka kalender dapat digunakan sebagai sebuah kalender umum baca-saja yang tidak membutuhkan pengguna untuk log masuk.
 Allow public access: Perkenankan akses umum
-public-access-default-visible: Acara-acara pada kalender umum akan muncul pada kalender semua pengguna secara otomatis. 
+public-access-default-visible: Acara-acara pada kalender umum akan muncul pada kalender semua pengguna secara otomatis.
 Public access visible by default: Secara asali akses umum dapat terlihat
 public-access-default-selected: Ketika menambahkan sebuah acara, pengguna umum akan dipilih secara asali sebagai seorang partisipan.
 Public access is default participant: Akses umum adalah partisipan asali

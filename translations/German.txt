@@ -1230,7 +1230,7 @@ db cache should be inaccessable: Das Datenbank-Cache-Verzeichnis soll in einem V
 # English text: PHP Settings: "XXX"
 #
 recommend setting XXX Off: Die empfohlene Einstellung f&uuml;r XXX ist OFF.
-recommend setting allow_url_fopen Off: Wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist, wird empfohlenen die Einstellung f&uuml;r allow_url_fopen auf OFF zu setzen. 
+recommend setting allow_url_fopen Off: Wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist, wird empfohlenen die Einstellung f&uuml;r allow_url_fopen auf OFF zu setzen.
 
 ########################################
 # Page: select_user.php

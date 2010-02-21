@@ -1044,21 +1044,24 @@ function display_admin_link ( $break = true ) {
  * If $enableDblClick is set to true, the file js/dblclick_add.js should
  * be included in the array of includes passed to print_header().
  */
-function display_month ( $thismonth, $thisyear, $demo = false,
+function display_month( $thismonth, $thisyear, $demo = false,
   $enableDblClick = false ) {
   global $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS, $DISPLAY_WEEKNUMBER,
-    $login, $today, $user, $WEEK_START, $WEEKENDBG, $is_nonuser,
-    $readonly, $is_admin, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD;
+  $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
+  $readonly, $today, $user, $WEEKENDBG, $WEEK_START;
 
   $ret = '';
 
   if ( $enableDblClick ) {
     $can_add = ( $readonly == 'N' || $is_admin );
+
     if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y'
-       && $login == '__public__' )
+        && $login == '__public__' )
       $can_add = false;
+
     if ( $readonly == 'Y' )
       $can_add = false;
+
     if ( $is_nonuser )
       $can_add = false;
   } else {
@@ -4501,7 +4504,7 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
 
   return '
             <p><label for="' . $name . '">' . $title
-   . ( $title == '' ? '' : ':' ) 
+   . ( $title == '' ? '' : ':' )
    . '</label><input type="text" name="' . $name . '" id="' . $name
    . '" size="7" maxlength="7" value="' . $setting
    . '" onchange="updateColor( this, \'' . $varname

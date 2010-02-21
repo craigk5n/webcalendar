@@ -279,7 +279,7 @@ echo send_doctype( $appStr ) . '
         </tr>
         <tr>
           <td align="right" colspan="2"><label>'
-           . translate( 'Password (again)' )     . ':</label></td>
+           . translate( 'Password (again)' ) . '</label></td>
           <td align="left"><input name="upassword2" value="' . $upassword2
      . '" size="15" type="password" />'
     : 'colspan="3" align="center"><label>'

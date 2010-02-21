@@ -217,7 +217,7 @@ function list_unapproved ( $user ) {
         $view_link . '.php?id=' . $id .
         '&amp;user=' . $cal_user . "</link>\n" .
         '  <description><![CDATA[' . $description  . ']]></description>' . "\n";
-      $ret .= 
+      $ret .=
         '  <category><![CDATA[' . $category . ']]></category>' . "\n";
         /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */
       $ret .= '<pubDate>' .

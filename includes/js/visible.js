@@ -21,7 +21,7 @@ function makeVisible( name, hide ) {
 
   if ( NS4 ) {
     ele.visibility = 'show';
-  } 
+  }
   else { // IE4 & W3C & Mozilla
     ele.style.visibility = 'visible';
     if ( hide ) {
@@ -142,10 +142,10 @@ function selectDate( day, month, year, current, evt, form ) {
   mX += 40;
   var colorWindow =
     window.open( 'datesel.php?form=' + form.id + '&fday=' + day
-      + '&fmonth=' + month + '&fyear=' + year + '&date=' 
-      + yearobj.options[yearobj.selectedIndex].value 
+      + '&fmonth=' + month + '&fyear=' + year + '&date='
+      + yearobj.options[yearobj.selectedIndex].value
       + ( curmonth < 10 ? '0' : '' ) + curmonth + '01', 'DateSelection',
-      'width=300,height=180,scrollbars=no,toolbar=no,screenx=' + mX 
+      'width=300,height=180,scrollbars=no,toolbar=no,screenx=' + mX
       + ',screeny=' + mY + ',left=' + mX + ',top=' + mY );
 }
 

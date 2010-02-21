@@ -6,7 +6,7 @@
 #
 # Note: I Tried to use the existing translation file Portuguese_BR Rev. 1.0 but
 # I believe it was working with previous versions and was missing too many
-# translations that the tools/udate_translation.pl tool couldn't add (or I 
+# translations that the tools/udate_translation.pl tool couldn't add (or I
 # didn't use it correctly...) so I started a new file based on the distributed
 # v1.2 b1 (25 feb 2008) English-US.txt file.
 #
@@ -653,7 +653,7 @@ Delete Selected: Apagar selecão
 Send Reminder: Enviar lembrete
 When: Quando
 Use Date/Time: Usar Data/Hora
-Use Offset: Usar tempo pré-determindado 
+Use Offset: Usar tempo pré-determindado
 Before: Antes
 After: Depois
 Start: Início
@@ -1068,7 +1068,7 @@ A login must be specified.: Um login deve ser especificado
 #
 Save Preferences: Gravar Preferências
 Public Access calendar: Calendário de Acesso Público
-Modify Non User Calendar Preferences: Modificar preferências de Calendário de não-usuário 
+Modify Non User Calendar Preferences: Modificar preferências de Calendário de não-usuário
 Return to My Preferences: Voltar às minhas preferências
 Custom Scripts: Scripts Customizados
 Timezone Selection: Seleção de fuso horário
