@@ -614,7 +614,7 @@ function dbi_free_result( $res ) {
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 ) {
     // Not supported
   }
-  elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
+  elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 )
     return sqlite3_query_close( $res );
   else
     dbi_fatal_error( 'dbi_free_result(): '
