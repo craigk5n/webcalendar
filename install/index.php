@@ -351,7 +351,7 @@ if( ! empty( $action ) && $action == 'install' ) {
         $install_filename .= 'postgres.sql';
         break;
       case 'sqlite':
-      case: 'sqlite3'
+      case 'sqlite3':
         include_once 'sql/tables-sqlite.php';
         populate_sqlite_db( $real_db, $c );
         $install_filename = '';
