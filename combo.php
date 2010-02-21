@@ -543,7 +543,7 @@ function view_event ( key, location )
     $('access').innerHTML = '<?php etranslate('Private');?>';
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
 <?php } ?>
- 
+
   $('eventlink').innerHTML = '<a href="view_entry.php?id=' + myEvent._id +
 <?php if ( ! empty ( $user ) && $login != $user ) { echo "'&amp;user=$user' + "; } ?>
     '" class="fakebutton"><?php etranslate('View Event')?></a>';
@@ -915,7 +915,7 @@ function build_month_view ( year, month )
           } else {
             ret += iconImg;
           }
-         
+
           ret += myEvent._name + "</div>";
           // Create popup
           if ( ! document.getElementById ( id ) ) {
@@ -1139,7 +1139,7 @@ var pos = '0';
     }
     ret += "<div id=\"daydiv\">\n" +
       "<div id=\"dayinnerdiv\">";
-   
+
     for ( var h = 0; h < 24; h++ ) {
       var y = h * 50;
       ret += "<div class=\"hourblockleft\" style=\"top: " + y + "px;\">" +
@@ -1230,7 +1230,7 @@ function format_time ( timeStr )
 
 <?php if ( $TIME_FORMAT == '12' ) { ?>
   if ( h < 0 )
-    h += 24; 
+    h += 24;
   var ampm = ( h >= 12 ? '<?php etranslate('pm')?>' : '<?php etranslate('am')?>' );
   h %= 12;
   if ( h == 0 )

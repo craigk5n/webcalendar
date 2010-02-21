@@ -70,7 +70,7 @@ function print_categories() {
      . translate('import from file') . '</option>';
 
     load_user_categories();
-    
+
     $size = 0;
     foreach ( $categories as $i => $value ) {
       if ( $i != 0 ) {

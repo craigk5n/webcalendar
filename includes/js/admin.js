@@ -49,37 +49,37 @@ function valid_form( form ) {
     err = xlate['invalidTitleFG'];
     form.admin_H2COLOR.select();
     form.admin_H2COLOR.focus();
-  } 
+  }
   else if ( !valid_color( form.admin_CELLBG.value ) ) {
     err = xlate['invalidCellBG'];
     form.admin_CELLBG.select();
     form.admin_CELLBG.focus();
-  } 
+  }
   else if ( !valid_color( form.admin_TABLEBG.value ) ) {
     err = xlate['invalidGridFG'];
     form.admin_TABLEBG.select();
     form.admin_TABLEBG.focus();
-  } 
+  }
   else if ( !valid_color( form.admin_THBG.value ) ) {
     err = xlate['invalidTHBG'];
     form.admin_THBG.select();
     form.admin_THBG.focus();
-  } 
+  }
   else if ( !valid_color( form.admin_THFG.value ) ) {
     err = xlate['invalidTextFG'];
     form.admin_THFG.select();
     form.admin_THFG.focus();
-  } 
+  }
   else if ( !valid_color( form.admin_POPUP_BG.value ) ) {
     err = xlate['invalidPopupBG'];
     form.admin_POPUP_BG.select();
     form.admin_POPUP_BG.focus();
-  } 
+  }
   else if ( !valid_color( form.admin_POPUP_FG.value ) ) {
     err = xlate['invalidPopupFG'];
     form.admin_POPUP_FG.select();
     form.admin_POPUP_FG.focus();
-  } 
+  }
   else if ( !valid_color( form.admin_TODAYCELLBG.value ) ) {
     err = xlate['invalidTodayBG'];
     form.admin_TODAYCELLBG.select();
@@ -183,7 +183,7 @@ function email_handler() {
 //See the showTab function in includes/js/visible.js
 //for common code shared by all pages using the tabbed GUI.
 var tabs = ['', 'settings', 'public', 'uac',
-  'groups', 'nonuser', 'other', 'email', 'colors']; 
+  'groups', 'nonuser', 'other', 'email', 'colors'];
 
 function showPreview() {
   var theme = document.forms['prefform'].admin_THEME.value.toLowerCase();

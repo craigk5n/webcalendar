@@ -424,7 +424,7 @@ days: dager
 hours: timer
 minutes: minutter
 You are not authorized to edit this task.: Du er ikke autorsiert til å redigere denne oppgaven
-is in a different timezone than you are. Currently: er i en annen tidssone enn deg. Er 
+is in a different timezone than you are. Currently: er i en annen tidssone enn deg. Er
 hour ahead of you: time foran deg
 hour behind you: time etter deg
 hours ahead of you: timer foran deg
@@ -1397,14 +1397,14 @@ My Reports: Mine rapporter
 My Profile: Min profil
 Public Calendar: Offentlig kalender
 Unapproved Events: Ikke-godkjente aktiviteter
-User Manager: Brukeradministrasjon 
+User Manager: Brukeradministrasjon
 Help Contents: Innhold
 
 ########################################
 # Page: install/index.php
 #
 Create New: Opprett ny
-Database Cache Directory: Hurtiglagermappe for databasen 
+Database Cache Directory: Hurtiglagermappe for databasen
 Database Name: Databasenavn
 Failure Reason: Feilet fordi
 Single-User: Enkelbruker
@@ -1434,7 +1434,7 @@ Remote Calendars not enabled: Eksterne kalendere er ikke aktivert
 # Page: tools/send_reminders.php
 #
 could not find event id: klarte ikke finne ID for aktivitet
-could not find event id XXX in database.: klarte ikke finne ID XX for aktivitet i databasen. 
+could not find event id XXX in database.: klarte ikke finne ID XX for aktivitet i databasen.
 task: oppgave
 This is a reminder for the XXX detailed below.: Dette er en påminnelse om XXX beskrevet nedenfor.
 Pecentage Complete: Prosent fullført

@@ -1117,7 +1117,7 @@ Registration: Registration
 Welcome to WebCalendar: Welcome to WebCalendar
 Your email should arrive shortly.: Your email should arrive shortly.
 Return to Login screen: Return to Login screen
-Password (again): Password (again)
+Password (again): Password (again):
 Your account information will be emailed to you.: Your account information will be emailed to you.
 Submit: Submit
 

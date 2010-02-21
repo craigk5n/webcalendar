@@ -217,8 +217,8 @@ function do_config( $fileLoc ) {
   // Type of user authentication.
   $user_inc = $settings['user_inc'];
 
-  // If sqlite, the db file is in the include directory
-  if( $db_type == 'sqlite' )
+  // If SQLite, the db file is in the includes directory.
+  if( $db_type == 'sqlite' || $db_type == 'sqlite3' )
     $db_database = get_full_include_path( $db_database );
 
   // &amp; does not work here...leave it as &.

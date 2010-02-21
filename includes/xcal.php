@@ -157,7 +157,7 @@ function export_get_attendee( $id, $export ) {
 
   $count = 0;
 
-  $attendee = 
+  $attendee =
   $entry_array = array();
 
   while ( $entry = dbi_fetch_row( $att_res ) ) {
@@ -181,7 +181,8 @@ function export_get_attendee( $id, $export ) {
       if ( strcmp( $export, 'vcal' ) == 0 )
       $attendee[$count] .= ( $row[0] == $row[2] ) ? 'OWNER;': 'ATTENDEE;';
       else
-        $attendee[$count] .= ( $row[0] == $row[2] ) ? 'CHAIR;': 'REQ-PARTICIPANT;';      
+        $attendee[$count] .=
+          ( $row[0] == $row[2] ) ? 'CHAIR;' : 'REQ-PARTICIPANT;';
       if ( strcmp( $export, 'vcal' ) == 0 )
         $attendee[$count] .= 'STATUS=';
       else
@@ -274,7 +275,7 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
         $ret .= 'DTEND;VALUE=DATE:' . gmdate ( 'Ymd', $eventend ) . "\r\n";
       }
     else  if ( $time == -1 )
-    // untimed event   
+    // untimed event
      $ret .= "DTEND;VALUE=DATE:$date\r\n";
     else if ( $time > 0 ) {
       // timed  event
@@ -659,7 +660,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
 function export_get_event_entry( $id = 'all', $attachment = false ) {
   global $cat_filter, $DISPLAY_UNAPPROVED, $enddate, $include_layers, $layers,
   $login, $moddate, $startdate, $type, $user, $USER_REMOTE_ACCESS, $use_all_dates;
- 
+
   $sql_params = array();
   $sql = 'SELECT we.cal_id, we.cal_name, we.cal_priority, we.cal_date,
     we.cal_time, weu.cal_status, we.cal_create_by, we.cal_access, we.cal_duration,
@@ -870,7 +871,7 @@ function export_vcal ( $id ) {
       while ( list ( $key, $value ) = each ( $array ) )
       echo "$value\r\n";
     } //end if ($description != '')
-    
+
     /* CATEGORIES if any (folded to 76 char) */
     if ( isset ( $categories ) && count ( $categories ) ) {
       $categories = 'CATEGORIES:' . implode ( ';', $categories );
@@ -878,7 +879,7 @@ function export_vcal ( $id ) {
       while ( list ( $key, $value ) = each ( $array ) )
       $ret .= "$value\r\n";
     }
-    
+
     /* CLASS either "PRIVATE", "CONFIDENTIAL, or "PUBLIC" (the default) */
     if ( $access == 'R' ) {
       echo "CLASS:PRIVATE\r\n";
@@ -1022,7 +1023,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
         ! array_key_exists ( $cat_filter, $categories ) )
         continue;
     }
-   
+
     if ( $cal_type == 'E' || $cal_type == 'M' ) {
       $exporting_event = true;
       /* Start of event */
@@ -1158,7 +1159,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
       $Vret .= "END:VJOURNAL\r\n";
     }
   }
-  
+
   /* VTIMEZONE Set in export_time() if needed */
   $ret .= $vtimezone_data  . $Vret;
 
@@ -1844,7 +1845,7 @@ function import_data ( $data, $overwrite, $type ) {
         $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
         $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
         echo htmlspecialchars ( $Entry['Summary'] ). '</a> ( ' . $dd;
-        
+
         if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
           echo '&nbsp; ' . translate ( 'All day event' );
         else if ( ! empty ( $time ) )
@@ -2932,11 +2933,11 @@ function format_vcal( $event ) {
   $fevent['CalendarType'] = $event['state'];
 
   $fevent['Untimed'] = $fevent['AllDay'] = 0;
-  
+
   $fevent['StartTime'] = vcaldate_to_timestamp( $event['dtstart'] );
   if ( $fevent['StartTime'] == '-1' ) return false;
   $fevent['EndTime'] = vcaldate_to_timestamp( $event['dtend'] );
-  
+
   if ( $fevent['StartTime'] == $fevent['EndTime'] ) {
     $fevent['Untimed'] = 1;
     $fevent['Duration'] = 0;

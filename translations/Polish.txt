@@ -119,7 +119,7 @@ Year: Rok
 Bottom: Dó³
 Top: Góra
 Anyone: Wszyscy
-Participant: Uczestnik 
+Participant: Uczestnik
 Settings: Ustawienia
 Groups: Grupy
 NonUser Calendars: Kalendarze bez w³a¶cicieli
@@ -205,7 +205,7 @@ menu-themes-help: Ustawienia kolorów i stylów górnego menu
 Menu theme: Skórka ("theme") menu
 fonts-help: Okre¶la liste czcionek systemowych do u¿ycia (np. "Arial, Helvetica")
 Fonts: Czcionki
-display-sm_month-help: W widoku miesi±ca, wy¶wietla ma³e widoki miesiêcy 
+display-sm_month-help: W widoku miesi±ca, wy¶wietla ma³e widoki miesiêcy
 Display small months: Wy¶wietl ma³e widoki miesiêcy
 display-weekends-help: W czasie ogl±dania tygodnia wy¶wietla tak¿e weekendy
 Display weekends: Poka¿ weekendy
@@ -614,7 +614,7 @@ Week Start: Pocz±tek tygodnia
 repeat-bydayextended-help: Umo¿liwia wybór dnia wyst±pienia jako dnia tygodnia.
 ByDay: Dzieñ tygodnia
 All: Wszystko
-repeat-month-help: Okre¶la, w których miesi±cach zdarzenie ma byæ ponawiane. 
+repeat-month-help: Okre¶la, w których miesi±cach zdarzenie ma byæ ponawiane.
 ByMonth: Miesi±c
 repeat-bysetpos-help: Umo¿liwia wybór dnia wyst±pienia w oparciu o pozycjê w miesi±cu.
 BySetPos: Pozycja w miesi±cu
@@ -857,7 +857,7 @@ colors-help: Wszystkie kolory powinny bya okre¶lone w heksagonalnym formacie "#R
 #
 Report Bug: B³±d raportu
 Please include all the information below when reporting a bug.: Proszê za³±czyæ wszystkie informacje poni¿ej w zawiadomieniu o b³êdzie w programie.
-Also, please use English rather than: Bardzo proszê, by jêzykiem raportu by³ <strong>angielski</strong>, nie 
+Also, please use English rather than: Bardzo proszê, by jêzykiem raportu by³ <strong>angielski</strong>, nie
 Also, please use English rather than XXX.: Bardzo proszê, by jêzykiem raportu by³ <strong>angielski</strong>, nie XXX.
 
 ########################################

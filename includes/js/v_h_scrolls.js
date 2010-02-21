@@ -52,7 +52,7 @@ function scrF( i, sH, eH ) {
   var x = parseInt( i.top,10 ) + ( dR ? step : - step );
 
   if ( dR && x > sH )
-    x =- eH;  
+    x =- eH;
   else if ( x < 2 - eH )
     x = sH;
 

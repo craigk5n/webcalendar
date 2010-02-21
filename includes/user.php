@@ -276,7 +276,7 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabl
 
   if ( $enabled != 'Y' )
     $enabled = 'N';
-    
+
   $sql = 'UPDATE webcal_user SET cal_lastname = ?, ' .
     'cal_firstname = ?, cal_email = ?,' .
     'cal_is_admin = ?,cal_enabled = ? WHERE cal_login = ?';

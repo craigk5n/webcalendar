@@ -397,10 +397,10 @@ function send_reminder ( $id, $event_date ) {
      . ":\n" . $padding . $description . "\n"
      . ( $is_task ? translate ( 'Start Date' ) : translate ( 'Date' ) )
      . ': ' . date_to_str ( ( $row[2] > 0? date ( 'Ymd', $event_date ) : gmdate ( 'Ymd', $event_date ) ) ) . "\n"
-     . ( $row[2] > 0 
+     . ( $row[2] > 0
       ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time' ) ) . ': '
        . display_time ( '', $display_tzid, $event_time, $userTformat ) . "\n"
-      : ( ( $row[2] == 0 &&  $row[5] = 1440) ? translate ( 'Time' ) . ': ' 
+      : ( ( $row[2] == 0 &&  $row[5] = 1440) ? translate( 'Time' ) . ': '
        . translate( 'All day event' ). "\n" : '' ) )
      . ( $row[5] > 0 && ! $is_task
       ? translate ( 'Duration' ) . ': ' . $row[5] . ' '
@@ -541,7 +541,7 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
     if ( ! empty ( $new_date ) ) {
       if ( $times_sent == $repeats + 1 ) {
         if ( ! $is_task ||
-          ( $related == 'E' && date ( 'Ymd', $new_date ) 
+          ( $related == 'E' && date( 'Ymd', $new_date )
             != date ( 'Ymd', $end ) ) ) // Tasks only.
           $times_sent = 0;
       }
@@ -590,11 +590,11 @@ function process_event ( $id, $name, $start, $end, $new_date = '' ) {
        . '<br /><br />
   times_sent = ' . $times_sent . '
   repeats = ' . $repeats . '
-  time = ' . date( 'His', time() ). ' 
-  remind_time = ' . date ( 'His', $remind_time ). ' 
+  time = ' . date( 'His', time() ) . '
+  remind_time = ' . date( 'His', $remind_time ) . '
   lastsent = '
        . ( $lastsent > 0 ? date( 'Ymd His', $lastsent ) : ' NEVER ' ) . '
-  pointless = ' . date( 'Ymd His', $pointless ) . ' 
+  pointless = ' . date( 'Ymd His', $pointless ) . '
   is_task = ' . ( $is_task ? 'true' : 'false' ) . '<br />';
 
     if( $times_sent < ( $repeats + 1 )

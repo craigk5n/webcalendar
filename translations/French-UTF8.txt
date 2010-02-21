@@ -621,7 +621,7 @@ The import file contained no data.: Le fichier à importer ne contient aucune do
 #
 Layer: Calque
 Edit layer: Modifier un calque
-Are you sure you want to delete this layer?: êtes vous certain de détruire ce calque ? 
+Are you sure you want to delete this layer?: êtes vous certain de détruire ce calque ?
 Disable Layers: Désactiver les calques
 Add layer: Ajouter un calque
 

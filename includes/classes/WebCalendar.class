@@ -701,7 +701,7 @@ class WebCalendar {
       $is_admin = false;
       $login = '__public__';
     } else
-    if ( $view_via_email || ( ! $pub_acc_enabled && $session_not_found 
+    if ( $view_via_email || ( ! $pub_acc_enabled && $session_not_found
           && ! $use_http_auth ) ) {
       if ( substr ( $user_inc, 0, 9 ) == 'user-app-' )
         app_login_screen ( clean_whitespace ( $SCRIPT ) );

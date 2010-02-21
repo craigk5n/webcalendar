@@ -323,7 +323,7 @@ if( ! empty( $action ) && $action == 'install' ) {
   $db_password  = $settings['db_password'];
   $db_persistent= false;
   $db_type      = $settings['db_type'];
-  $real_db      = ( $db_type== 'sqlite'
+  $real_db      = ( $db_type== 'sqlite' || $db_type == 'sqlite3'
     ? get_full_include_path( $db_database ) : $db_database );
 
   // We might be displaying SQL only.
@@ -351,6 +351,7 @@ if( ! empty( $action ) && $action == 'install' ) {
         $install_filename .= 'postgres.sql';
         break;
       case 'sqlite':
+      case: 'sqlite3'
         include_once 'sql/tables-sqlite.php';
         populate_sqlite_db( $real_db, $c );
         $install_filename = '';
@@ -419,7 +420,7 @@ if( ! empty( $post_action ) && $post_action == $testSettingsStr && !
   // Disable warnings.
   show_errors();
 
-  $real_db =( $db_type == 'sqlite'
+  $real_db =( $db_type == 'sqlite' || $db_type == 'sqlite3'
     ? get_full_include_path( $db_database ) : $db_database );
 
   $c = dbi_connect( $db_host, $db_login, $db_password, $real_db, false );
@@ -572,7 +573,7 @@ if( ! empty( $action ) && $action == 'tz_convert' && !
 
   // Avoid false visibilty of single user login.
   $onload = 'auth_handler();';
-  $real_db=( $db_type == 'sqlite'
+  $real_db=( $db_type == 'sqlite' || $db_type == 'sqlite3'
     ? get_full_include_path( $db_database ) : $db_database );
 
   $c = dbi_connect( $db_host, $db_login, $db_password, $real_db, false );
@@ -683,7 +684,7 @@ if( ! empty( $y ) ) {
   $db_persistent = false;
   $db_type = $settings['db_type'];
 
-  $db_database = ( $db_type == 'sqlite'
+  $db_database = ( $db_type == 'sqlite' || $db_type == 'sqlite3'
     ? get_full_include_path( $settings['db_database'] )
     : $settings['db_database'] );
 
@@ -827,7 +828,8 @@ echo '
           listid = 0,
           selectvalue = form.form_db_type.value;
 
-        if( selectvalue == \'sqlite\' || selectvalue == \'ibase\' ) {
+        if( selectvalue == \'sqlite\' || $db_type == \'sqlite3\'
+            || selectvalue == \'ibase\' ) {
           form.form_db_database.size = 65;
           document.getElementById( \'db_name\' ).innerHTML = \''
  . $databaseNameStr . ': ' . translate( 'Full Path (no backslashes)' ) . '\';
@@ -1077,7 +1079,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td><input name="password1" type="password" /></td>
               </tr>
               <tr>
-                <th>' . translate( 'Password (again)' ) . ':</th>
+                <th>' . translate( 'Password (again)' ) . '</th>
                 <td><input name="password2" type="password" /></td>
               </tr>
               <tr>
@@ -1198,6 +1200,9 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
   if( function_exists( 'sqlite_open' ) )
     $supported['sqlite'] = 'SQLite';
+
+  if( function_exists( 'sqlite3_open' ) )
+    $supported['sqlite3'] = 'SQLite3';
 
   foreach( $supported as $key => $value ) {
     echo '
@@ -1402,8 +1407,9 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
           </form>' ) . '
         </td>
       </tr>'
-     . ( ! empty( $settings['db_type'] ) && $settings['db_type'] != 'sqlite' &&
-      empty( $_SESSION['blank_database'] ) ? '
+     . ( ! empty( $settings['db_type'] ) && $settings['db_type'] != 'sqlite'
+       && $settings['db_type'] != 'sqlite3'
+       && empty( $_SESSION['blank_database'] ) ? '
       <tr>
         <td align="center">
           <form action="index.php?action=install" method="post" name="display">
