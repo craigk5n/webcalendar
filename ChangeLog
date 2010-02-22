@@ -4,6 +4,8 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 21-Feb-10 bb Patch [ 2954494 ] Event reminder am/pm setting not remembered
+   And extensive reworking of edit_entry_handler.php for efficiency and readability.
  - 21-Feb-10 bb Patch [ 1805743 ] Debian patch for php5-sqlite3
    This patch was not complete. And it was deleting ordinary SQLite.
    I think I've got in now. Someone with SQLite3 needs to test it though.
