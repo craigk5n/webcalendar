@@ -154,7 +154,7 @@ $description = ( strlen( $description ) == 0 || $description == '<br />'
 // on an event calendar, and the admin gets sent to the malware site when
 // viewing the event to approve/reject it.
 foreach( array(
-    'APPLET'
+    'APPLET',
     'BODY',
     'HEAD',
     'HTML',
