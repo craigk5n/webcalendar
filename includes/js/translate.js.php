@@ -3,24 +3,23 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 global $GROUPS_ENABLED, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
 
+$tmp1 =
+$tmp2 = '';
+
+foreach( array( 'SU','MO','TU','WE','TH','FR','SA' ) as $b ) {
+  $tmp1 .= '\'' . $b . '\',';
+  $tmp2 .= '\'' . translate( $b ) . '\',';
+}
 echo 'var
   allowCustomColors= ' . $ALLOW_COLOR_CUSTOMIZATION . ',
-  bydayLabels      = [\'SU\', \'MO\', \'TU\', \'WE\', \'TH\', \'FR\', \'SA\'],
+  bydayLabels      = [' . $tmp1 . '],
+  bydayTrans       = [' . $tmp2 . '],
   evtEditTabs      = ' . $GLOBALS['EVENT_EDIT_TABS'] . ',
   groupsEnabled    = ' . $GROUPS_ENABLED . ',
   timeFormat       = ' . $GLOBALS['TIME_FORMAT'] . ',
   workEndHour      = ' . $WORK_DAY_END_HOUR . ',
   workStartHour    = ' . $WORK_DAY_START_HOUR . ',
-  xlate            = [],
-  bydayTrans       = [
-    \'' . translate( 'SU', true ) . '\',
-    \'' . translate( 'MO', true ) . '\',
-    \'' . translate( 'TU', true ) . '\',
-    \'' . translate( 'WE', true ) . '\',
-    \'' . translate( 'TH', true ) . '\',
-    \'' . translate( 'FR', true ) . '\',
-    \'' . translate( 'SA', true ) . '\'
-  ];
+  xlate            = [];
 
 // Page: includes/js/admin.js
 xlate[\'endServerURL\']   = \'' . translate( 'Server URL must end with /.', true ) . "\n';" . '
@@ -59,7 +58,7 @@ xlate[\'noBlankURL\']  = \'' . translate( 'URL cannot be blank.', true ) . '\';
 // Page: includes/js/export_import.php
 xlate[\'noMatchImport\'] = \'' . translate( 'File type does not match Import Format', true ) . '\';
 
-// Page: includes/js/visible.php
+// Page: includes/js/visible.js
 xlate[\'invalidColor\'] = \'' . translate( 'Invalid Color', true ) . '\';
 
 // So far, the rest already get listed by page in the translations/.txt files.

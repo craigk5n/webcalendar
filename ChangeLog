@@ -4,6 +4,16 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 06-Mar-10 bb Removed the comments from "font-size" in css/styles.css.
+   I'm not seeing any problem with these.
+   Both my web host and my PC with WAMP look fine with both IE and Firefox.
+   Clean up the CSS a bit.
+ - 06-Mar-10 bb Bug [ 2954781 ] "Color options" are not set on the left margin
+ - 06-Mar-10 bb Fix bugs when empty( $settings['db_password']
+ - 06-Mar-10 bb Patch [ 2954502 ] Problems with hinding duplicate entries in layers
+   The code has changed quite a bit since this patch was submitted. I think I got everything.
+ - 06-Mar-10 bb Bug [ 2962773 ] $end_file path failure in load_translation_text()
+ - 06-Mar-10 bb Fix some typos and cleanup.
  - 21-Feb-10 bb Patch [ 2954494 ] Event reminder am/pm setting not remembered
    And extensive reworking of edit_entry_handler.php for efficiency and readability.
  - 21-Feb-10 bb Patch [ 1805743 ] Debian patch for php5-sqlite3

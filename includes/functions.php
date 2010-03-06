@@ -5128,9 +5128,9 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
     // Force no rows to be returned. No matching entries in category.
     $sql .= 'AND 1 = 0 ';
 
-  $sql .= 'AND we.cal_type IN '
+  $sql .= 'AND we.cal_type IN ( '
    . ( $is_task == false
-    ? '( \'E\',\'M\' ) ' : '( \'N\',\'T\' ) AND ( we.cal_completed IS NULL ) ' )
+    ? '\'E\',\'M\' ) ' : '\'N\',\'T\' ) AND ( we.cal_completed IS NULL ) ' )
    . ( strlen ( $user ) > 0 ? 'AND ( weu.cal_login = ? ' : '' );
 
   $query_params[] = $user;
@@ -5148,13 +5148,16 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
     }
   }
 
-  $rows = dbi_get_cached_rows ( $sql . ( $user == $login &&
-      strlen ( $user ) && $PUBLIC_ACCESS_DEFAULT_VISIBLE == 'Y'
+  $rows = dbi_get_cached_rows( $sql . ( $user == $login && strlen( $user )
+    && $PUBLIC_ACCESS_DEFAULT_VISIBLE == 'Y'
       ? 'OR weu.cal_login = \'__public__\' ' : '' )
-     . ( strlen ( $user ) > 0 ? ') ' : '' ) . $date_filter
+   . ( strlen( $user ) > 0 ? ') ' : '' ) . $date_filter . ' ORDER BY '
+    // Order the results by time, then name if not tasks.
+    // Must also order by cal_id, in case there are more than
+    // one event in a month with the same name and time.
+   . ( $is_task ? '' : 'we.cal_time, we.cal_name, ' )
+   . 'we.cal_id', $query_params );
 
-    // Now order the results by time, then name if not tasks.
-    . ( ! $is_task ? ' ORDER BY we.cal_time, we.cal_name' : '' ), $query_params );
   if ( $rows ) {
     $i = 0;
     $checkdup_id = $first_i_this_id = -1;
@@ -5196,28 +5199,28 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
       }
 
       if( $item->getLogin() == $user ) {
-        // Insert this one before all other ones with this ID.
+        // Insert this one before all others with this ID.
         array_splice ( $result, $first_i_this_id, 0, array ( $item ) );
         $i++;
 
         if ( $first_i_this_id + 1 < $i ) {
           // There's another one with the same ID as the one we inserted.
-          // Check for dup and if so, delete it.
+          // Check for dupe and if so, delete it.
           $other_item = $result[$first_i_this_id + 1];
-          if( ! empty( $layers_byuser[$other_item->getLogin()] )
-              && $layers_byuser[$other_item->getLogin()] == 'N' ) {
-            // NOTE:  array_splice requires PHP4
-            array_splice ( $result, $first_i_this_id + 1, 1 );
+          $tmp = $layers_byuser[$other_item->getLogin()];
+
+          if( empty( $tmp ) || $tmp == 'N' ) {
+            array_splice( $result, $first_i_this_id + 1, 1 );
             $i--;
           }
         }
       } else {
-        if( $i == $first_i_this_id
-            || ( ! empty( $layers_byuser[$item->getLogin()] )
-              && $layers_byuser[$item->getLogin()] != 'N' ) )
-          // This item either is the first one with its ID, or allows dups.
+        $tmp = $layers_byuser[$item->getLogin()];
+
+        if( $i == $first_i_this_id || ( ! empty( $tmp ) && $tmp == 'Y' ) )
+          // This item is either the first one with its ID, or dupes allowed.
           // Add it to the end of the array.
-          $result [$i++] = $item;
+          $result[$i++] = $item;
       }
       // Does event go past midnight?
       if( date ( 'Ymd', $item->getDateTimeTS() )
@@ -5359,7 +5362,7 @@ function read_events ( $user, $startdate, $enddate, $cat_id = '' ) {
   // Shift date/times to UTC.
   $start_date = gmdate ( 'Ymd', $startdate );
   $end_date = gmdate ( 'Ymd', $enddate );
-  return query_events ( $user, false, ' AND ( ( we.cal_date >= ' . $start_date
+  return query_events( $user, false, 'AND ( ( we.cal_date >= ' . $start_date
      . ' AND we.cal_date <= ' . $end_date
      . ' AND we.cal_time = -1 ) OR ( we.cal_date > ' . $start_date
      . ' AND we.cal_date < ' . $end_date . ' ) OR ( we.cal_date = ' . $start_date
@@ -5425,7 +5428,7 @@ function read_repeated_events ( $user, $date = '', $enddate = '', $cat_id = '' )
  */
 function read_tasks ( $user, $duedate, $cat_id = '' ) {
   $due_date = gmdate ( 'Ymd', $duedate );
-  return query_events ( $user, false, ' AND ( ( we.cal_due_date <= ' . $due_date
+  return query_events( $user, false, 'AND ( ( we.cal_due_date <= ' . $due_date
      . ' ) OR ( we.cal_due_date = ' . $due_date . ' AND we.cal_due_time <= '
      . gmdate ( 'His', $duedate ) . ' ) )', $cat_id, true );
 }

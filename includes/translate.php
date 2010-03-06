@@ -163,11 +163,14 @@ function load_translation_text() {
     $lang_file = "translations/English-US.txt";
 
   $lang_cache = substr ( $lang_file, strrpos ( $lang_file, '/' ) + 1 );
+  $cached_base_file =
+  $cached_file =
+  $cachedir =
   $lang_file_2 = '';
 
   if ( defined ( '__WC_BASEDIR' ) ) {
     if ( ! file_exists ( $lang_file ) )
-      $lang_file_2 = __WC_BASEDIR . '/' . $lang_file;
+      $lang_file_2 = __WC_BASEDIR . $lang_file;
 
     if ( file_exists ( $lang_file_2 ) )
       $lang_file = $lang_file_2;
@@ -178,12 +181,11 @@ function load_translation_text() {
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
 
-  $cached_base_file = $cached_file = $cachedir = '';
   $can_save = false;
 
   $eng_file = 'translations/English-US.txt';
   if ( ! file_exists ( $eng_file ) )
-    $eng_file = '../' . $eng_file;
+    $eng_file = __WC_BASEDIR . $eng_file;
 
   // Check for 'cachedir' in settings. If found, then we will save
   // the parsed translation file there as a serialized array.
