@@ -150,16 +150,18 @@ function do_config( $fileLoc ) {
     if( preg_match( '/(\S+):\s*(\S+)/', $buffer, $matches ) )
       $settings[$matches[1]] = $matches[2];
   }
-  $configLines = $data = '';
+  $configLines =
+  $data = '';
 
   // Extract db settings into global vars.
-  $db_database  = $settings['db_database'];
-  $db_host      = $settings['db_host'];
-  $db_login     = $settings['db_login'];
-  $db_password  = $settings['db_password'];
-  $db_persistent= ( preg_match( '/(1|yes|true|on)/i',
+  $db_database = $settings['db_database'];
+  $db_host     = $settings['db_host'];
+  $db_login    = $settings['db_login'];
+  $db_password = ( empty( $settings['db_password'] )
+    ? '' : $settings['db_password'] );
+  $db_persistent = ( preg_match( '/(1|yes|true|on)/i',
     $settings['db_persistent'] ) ? '1' : '0' );
-  $db_type      = $settings['db_type'];
+  $db_type = $settings['db_type'];
 
   // If no db settings, then user has likely started install but not yet
   // completed. So, send them back to the install script.
@@ -182,7 +184,7 @@ function do_config( $fileLoc ) {
       && preg_match( '/(1|true|yes|enable|on)/i', $settings['db_debug'] ) )
     dbi_set_debug( true );
 
-  foreach( array( 'db_type', 'db_host', 'db_login', 'db_password' ) as $s ) {
+  foreach( array( 'db_type', 'db_host', 'db_login' ) as $s ) {
     if( empty( $settings[$s] ) )
       die_miserable_death( str_replace( 'XXX', $s,
           translate( 'Could not find XXX defined in...' ) ) );
@@ -191,7 +193,8 @@ function do_config( $fileLoc ) {
   // Allow special settings of 'none' in some settings[] values.
   // This can be used for db servers not using TCP port for connection.
   $db_host = ( $db_host == 'none' ? '' : $db_host );
-  $db_password = ( $db_password == 'none' ? '' : $db_password );
+  $db_password = ( empty( $db_password ) || $db_password == 'none'
+    ? '' : $db_password );
 
   $readonly = preg_match( '/(1|yes|true|on)/i',
     $settings['readonly'] ) ? 'Y' : 'N';

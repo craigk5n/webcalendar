@@ -1,18 +1,15 @@
-<?php
+<?php // $Id$
 /**
- * $Id$
- *
- * This page handles managing a user's layers and works with
- * layer_ajax.php to make changes.
+ * This page handles managing a user's layers
+ * and works with layer_ajax.php to make changes.
  */
 include_once 'includes/init.php';
 send_no_cache_header();
 
 $layer_user = $login;
+$public = getValue( 'public' );
 $u_url = '';
 $updating_public = false;
-
-$public = getValue ( 'public' );
 
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $layer_user = '__public__';
@@ -26,50 +23,53 @@ $layers_enabled = 0;
 $res = dbi_execute ( 'SELECT cal_value FROM webcal_user_pref
   WHERE cal_setting = \'LAYERS_STATUS\' AND cal_login = ?',
   array ( $layer_user ) );
+
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
   $layers_enabled = ( $row[0] == 'Y' ? 1 : 0 );
   dbi_free_result ( $res );
 }
 
-$layerStr = translate ( 'Layer' );
-$editLayerStr = translate ( 'Edit layer' );
-$editStr = translate ( 'Edit' );
-$deleteStr = translate ( 'Delete' );
-$deleteLayerStr = translate ( 'Delete layer' );
-$areYouSureStr = translate ( 'Are you sure you want to delete this layer?' );
-$sourceStr = translate ( 'Source' );
-$colorStr = translate ( 'Color' );
-$duplicatesStr = translate ( 'Duplicates' );
-$noStr = translate ( 'No' );
-$yesStr = translate ( 'Yes' );
-$disabledStr = translate ( 'Disabled' );
-$enableLayersStr = translate ( 'Enable layers' );
-$LAYERS_ENABLED = translate ( 'Layers are currently enabled.' );
-$LAYERS_DISABLED = translate ( 'Layers are currently disabled.' );
+$areYouSureStr   = translate( 'Are you sure you want to delete this layer?' );
+$colorStr        = translate( 'Color' );
+$deleteLayerStr  = translate( 'Delete layer' );
+$deleteStr       = translate( 'Delete' );
+$disabledStr     = translate( 'Disabled' );
+$duplicatesStr   = translate( 'Duplicates' );
+$editLayerStr    = translate( 'Edit layer' );
+$editStr         = translate( 'Edit' );
+$enableLayersStr = translate( 'Enable layers' );
+$layerStr        = translate( 'Layer' );
+$LAYERS_DISABLED = translate( 'Layers are currently disabled.' );
+$LAYERS_ENABLED  = translate( 'Layers are currently enabled.' );
+$noStr           = translate( 'No' );
+$sourceStr       = translate( 'Source' );
+$yesStr          = translate( 'Yes' );
+
+$LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
 $public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
   translate( 'Click to modify layers settings for XXX' ) );
-$LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
-
-
-$BodyX = 'onload="load_layers();"';
-
-// Add Modal Dialog javascript/CSS
-$HEAD =
-  '<link rel="stylesheet" href="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css" type="text/css" />' . "\n" .
-  '<script type="text/javascript" src="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js"></script>' . "\n" .
-  '<link rel="stylesheet" href="includes/js/dhtmlmodal/modalfiles/modal.css" type="text/css" />' . "\n" .
-  '<script type="text/javascript" src="includes/js/dhtmlmodal/modalfiles/modal.js"></script>' . "\n";
-
-print_header ( array ( 'js/visible.php' ), $HEAD, $BodyX );
 
 ob_start();
+print_header(
+// $INC
+  array( 'js/translate.js.php', 'js/visible.js/true' ),
+// $HEAD
+// Add Modal Dialog javascript/CSS
+  '<script type="text/javascript" src="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js"></script>
+    <script type="text/javascript" src="includes/js/dhtmlmodal/modalfiles/modal.js"></script>
+    <link type="text/css" href="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css" rel="stylesheet" />
+    <link type="text/css" href="includes/js/dhtmlmodal/modalfiles/modal.css" rel="stylesheet" />',
+// $BodyX
+  'onload="load_layers();"' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
   echo print_not_auth();
 else {
-  if ( $is_admin && empty ( $public ) &&
-    ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' ) ) {
+  if( empty( $PUBLIC_ACCESS ) )
+    $PUBLIC_ACCESS = 'N';
+
+  if( $is_admin && empty( $public ) && $PUBLIC_ACCESS == 'Y' ) {
     ?>
     <div class="rightsidetip">
       <a href="layers.php?public=1"><?php echo $public_link;?></a>
@@ -366,9 +366,7 @@ function edit_layer (id)
 </script>
 
 <?php
-
-ob_end_flush();
-
 echo print_trailer();
+ob_end_flush();
 
 ?>

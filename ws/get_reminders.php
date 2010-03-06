@@ -92,7 +92,7 @@ $enddate = $DAYS_IN_ADVANCE * 86400 + $startdate;
 
 // Now read all the repeating events.
 $repeated_events = query_events ( $user, true,
-  'AND ( wer.cal_end > ' . $startdate . ' OR wer.cal_end IS NULL ) ' );
+  'AND ( wer.cal_end > ' . $startdate . ' OR wer.cal_end IS NULL )' );
 
 // Read non-repeating events.
 $events = read_events ( $user, $startdate, $enddate );

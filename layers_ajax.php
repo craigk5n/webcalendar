@@ -43,12 +43,12 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 
 if ( $action == 'enable' || $action == 'disable' ) {
   // Toggle LAYER_STATUS in the user's preferences between N and Y.
-  dbi_execute ( 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
-    'AND cal_setting = \'LAYERS_STATUS\'', array ( $layer_user ) );
-  $sql = 'INSERT INTO webcal_user_pref ( cal_login, cal_setting, cal_value )
-  VALUES ( ?, \'LAYERS_STATUS\', ? )';
-  if ( ! dbi_execute ( $sql, array ( $layer_user,
-      ( $action == 'enable' ? 'Y': 'N' ) ) ) ) {
+  dbi_execute( 'DELETE FROM webcal_user_pref WHERE cal_login = ?
+    AND cal_setting = \'LAYERS_STATUS\'', array( $layer_user ) );
+
+  if( ! dbi_execute( 'INSERT INTO webcal_user_pref ( cal_login, cal_setting,
+      cal_value ) VALUES ( ?, \'LAYERS_STATUS\', ? )',
+      array( $layer_user, ( $action == 'enable' ? 'Y': 'N' ) ) ) ) {
     ajax_send_error ( translate ( 'Unable to update preference' ) . ': ' . dbi_error() );
   } else {
     // Success
@@ -68,7 +68,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   }
   ajax_send_object ( 'layers', $ret_layers );
 } else if ( $action == 'save' ) {
-  // TODO: we should so some additional checking here to make
+  // TODO: we should do some additional checking here to make
   // sure someone isn't asking for a layer they are not authorized to view.
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
     $error = print_not_auth (7);

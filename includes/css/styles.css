@@ -32,25 +32,25 @@ div {
   border:0;
 }
 h2 {
-  //font-size:1.875em;
+  font-size:1.875em;
 }
 h3 {
-  //font-size:1.500em;
+  font-size:1.500em;
 }
 fieldset {
   width:96%;
 }
 label {
   font-weight:bold;
-  //font-size:0.6875em;
+  font-size:.6875em;
 }
 p,
 input,
 select {
-  //font-size:0.75em;
+  font-size:.75em;
 }
 textarea {
-  //font-size:0.75em;
+  font-size:.75em;
   overflow:auto;
 }
 table {
@@ -60,34 +60,34 @@ table {
   table-layout:fixed;
 }
 th {
-  //font-size:0.8125em;
   padding:0;
+  font-size:.8125em;
 }
 td {
-  //font-size:0.6875em;
+  font-size:.6875em;
 }
 ul,
 ul a {
-  //font-size:0.75em;
+  font-size:.75em;
 }
 .main {
   clear:both;
   width:100%;
-  border-right:0.0625em solid;
-  border-bottom:0.0625em solid;
+  border-right:.0625em solid;
+  border-bottom:.0625em solid;
 }
 .main th,
 .main td {
   width:14%;
-  border-top:0.0625em solid;
-  border-left:0.0625em solid;
+  border-top:.0625em solid;
+  border-left:.0625em solid;
   vertical-align:top;
 }
 .underline {
  text-decoration:underline;
 }
 .fixed {
-  width: 10em;
+  width:10em;
   margin-right:0;
 }
 .cursoradd a {
@@ -99,25 +99,25 @@ ul a {
   width:96%;
 }
 #tabscontent {
-  margin:-0.0625em 0.125em;
-  border:0.125em groove #c0c0c0;
+  margin:-.0625em .125em;
+  border:.125em groove #c0c0c0;
   padding:.5em;
   background:#f8f8ff;
   z-index:50;
 }
 .tabfor,
 .tabbak  {
-  margin:0 0 0 .1em;
-  border:0.125em ridge #c0c0c0;
-  border-bottom:0.125em solid #f8f8ff;
-  padding:.2em .2em .1em;
   position:relative;
+  margin:0 0 0 .1em;
+  border:.125em ridge #c0c0c0;
+  border-bottom:.125em solid #f8f8ff;
+  padding:.2em .2em .1em;
   -moz-border-radius:.75em .75em 0 0;
 }
 .tabfor a,
 .tabbak a {
   font-weight:bold;
-  //font-size:0.875em;
+  font-size:.875em;
 }
 .tabbak a {
   color:#999;
@@ -166,23 +166,23 @@ ul a {
 }
 #tabscontent_colors p span,
 .sample {
-  margin:0 0.0625em;
+  margin:0 .0625em;
   border-style:groove;
-  padding:0 0.5em;
+  padding:0 .5em;
 }
 .weeknumber {
-  //font-size:0.625em;
+  font-size:.625em;
   text-decoration:none;
 }
 img {
   border:0;
 }
 img.color {
-  width:0.9375em;
-  height:0.9375em;
+  width:.9375em;
+  height:.9375em;
 }
 #cat {
-  //font-size:1.125em;
+  font-size:1.125em;
 }
 #dateselector,
 #trailer {
@@ -192,9 +192,9 @@ img.color {
 #dateselector form {
   float:left;
   width:33%;
-  margin-top:0.3125em;
+  margin-top:.3125em;
   margin-bottom:1.5625em;
-  padding-top:0.3125em;
+  padding-top:.3125em;
 }
 #dateselector label,
 #trailer label {
@@ -213,7 +213,7 @@ img.color {
 #monthmenu,
 #yearmenu {
   margin-bottom:0;
-  //font-size:0.5625em;
+  font-size:.5625em;
   text-align:right;
 }
 #yearform {
@@ -228,41 +228,41 @@ img.color {
 #menu a,
 .prefix,
 .printer {
-  //font-size:0.875em;
+  font-size:.875em;
 }
 .prefix {
   font-weight:bold;
 }
 a#programname {
-  margin-top:0.625em;
-  //font-size:0.625em;
+  margin-top:.625em;
+  font-size:.625em;
 }
 .printer {
   clear:both;
   width:15ex;
-  text-decoration:none;
   display:block;
+  text-decoration:none;
 }
 .new {
   float:right;
 }
 .unapprovedentry {
-  padding-right:0.1875em;
+  padding-right:.1875em;
   color:#800000;
 /* Remove comments to set unapproved in italics.
   font-style:italic;
 */
-  //font-size:0.75em;
+  font-size:.75em;
   text-decoration:none;
 }
 .nounapproved {
   font-weight:bold;
-  //font-size:0.875em;
+  font-size:.875em;
 }
 .entry,
 .layerentry {
-  padding-right:0.1875em;
-  //font-size:0.75em;
+  padding-right:.1875em;
+  font-size:.75em;
   text-decoration:none;
 }
 .layerentry {
@@ -271,21 +271,21 @@ a#programname {
 .entry img,
 .layerentry img,
 .unapprovedentry img {
-  margin-right:0.125em;
-  margin-left:0.125em;
+  margin-right:.125em;
+  margin-left:.125em;
 }
 .dayofmonth {
-  border-width:0 0.0625em 0.0625em 0;
+  border-width:0 .0625em .0625em 0;
   border-style:solid;
-  padding:0 0.125em 0 0.1875em;
+  padding:0 .125em 0 .1875em;
   font-weight:bold;
+  font-size:.75em;
   text-decoration:none;
   vertical-align:top;
-  //font-size: 0.75em;
 }
 .dayofmonth:hover {
-  border-right:0.0625em solid #00f;
-  border-bottom:0.0625em solid #00f;
+  border-right:.0625em solid #00f;
+  border-bottom:.0625em solid #00f;
 }
 .next img,
 #activitylog .next {
@@ -297,14 +297,14 @@ a#programname {
 }
 .next img,
 .prev img {
-  margin-top:0.4375em;
-  margin-right:0.1875em;
+  margin-top:.4375em;
+  margin-right:.1875em;
 }
 #activitylog .next,
 #activitylog .prev {
   border:0;
   font-weight:bold;
-  //font-size:0.875em;
+  font-size:.875em;
 }
 #day .next img,
 #day .prev img {
@@ -316,7 +316,7 @@ a#programname {
 }
 .dailymatrix {
   cursor:pointer;
-  //font-size:0.75em;
+  font-size:.75em;
   text-align:right;
   text-decoration:none;
 }
@@ -333,54 +333,54 @@ td.matrixappts:hover {
   background:#cfc;
 }
 td.matrix {
-  height:0.0625em;
+  height:.0625em;
   background:#000;
 }
 .matrix img {
   width:100%;
-  height:0.0625em;
+  height:.0625em;
 }
 a.matrix img {
   width:100%;
-  height:0.5em;
+  height:.5em;
 }
 .matrixd {
   margin-right:auto;
   margin-left:auto;
-  border-right:0.0625em solid;
-  border-left:0.0625em solid;
+  border-right:.0625em solid;
+  border-left:.0625em solid;
 }
 .matrixledge {
-  border-left:0.0625em solid #000;
+  border-left:.0625em solid #000;
 }
 .matrixlegend {
   margin-top:1.5625em;
   margin-right:auto;
   margin-left:auto;
-  border:0.0625em solid #000;
-  padding:0.3125em;
+  border:.0625em solid #000;
+  padding:.3125em;
   background:#fff;
   text-align:center;
 }
 .matrixlegend img {
-  width:0.625em;
-  height:0.625em;
+  width:.625em;
+  height:.625em;
 }
 .nav {
-  //font-size:0.875em;
+  font-size:.875em;
   text-decoration:none;
 }
 .popup {
   position:absolute;
   top:0;
   left:0;
-  border:0.0625em solid;
-  padding:0.1875em;
-  //font-size:0.75em;
+  border:.0625em solid;
+  padding:.1875em;
+  font-size:.75em;
   text-decoration:none;
   visibility:hidden;
   z-index:20;
-  -moz-border-radius:0.375em;
+  -moz-border-radius:.375em;
 }
 .popup dl,
 .popup dt {
@@ -397,7 +397,7 @@ a.matrix img {
 .tooltipselect {
   cursor:help;
   font-weight:bold;
-  //font-size:0.6875em;
+  font-size:.6875em;
   text-decoration:none;
 }
 .tooltip {
@@ -408,7 +408,7 @@ a.matrix img {
 }
 .user,
 .categories {
-  //font-size:1.125em;
+  font-size:1.125em;
   text-align:center;
 }
 .asstmode {
@@ -425,10 +425,10 @@ a.matrix img {
   vertical-align:top;
 }
 .helpbody div {
-  border:0.0625em solid #000;
+  border:.0625em solid #000;
 }
 .helpbody label {
-  //font-size:1.1em;
+  font-size:1.1em;
   vertical-align:top;
 }
 .helpbody p {
@@ -437,7 +437,7 @@ a.matrix img {
 .helplist {
   border:0;
   font-weight:bold;
-  //font-size:1.2em;
+  font-size:1.2em;
   text-align:center;
 }
 .helplist a {
@@ -463,32 +463,32 @@ img.help {
   cursor:help;
 }
 .sample {
-  text-align: left;
-  width: 1em;
+  text-align:left;
+  width:1em;
 }
 .standard {
-  border:0.0625em solid;
-  //font-size:0.75em;
+  border:.0625em solid;
+  font-size:.75em;
 }
 .standard th {
-  border-bottom:0.0625em solid;
+  border-bottom:.0625em solid;
   padding:0;
-  //font-size:1.125em;
+  font-size:1.125em;
 }
  /* style for week hover highlight */
 tr.highlight td {
   background:#ffb !important;
 }
 .minical {
-  margin:0 0 0.3125em 0;
-  font-size:0.625em;
+  margin:0 0 .3125em 0;
+  font-size:.625em;
 }
 .minical caption a {
   font-weight:bold;
 }
 .minical th {
   border:0 solid;
-  padding:0 0.125em;
+  padding:0 .125em;
 }
 .minical th,
 .minical td.empty {
@@ -498,28 +498,28 @@ tr.highlight td {
   background:transparent;
 }
 .minical td {
-  border:0.0625em solid;
-  padding:0 0.125em;
+  border:.0625em solid;
+  padding:0 .125em;
 }
 .minical td a {
   margin:0;
-  padding:0.1875em;
-  text-align:center;
+  padding:.1875em;
   display:block;
+  text-align:center;
 }
 .minical td.hasevents {
   font-weight:bold;
 }
 .minitask {
   width:98%;
-  margin-left:0.0625em;
-  border:0.0625em solid #000;
+  margin-left:.0625em;
+  border:.0625em solid #000;
 }
 .minitask tr.header th,
 .minitask tr.header td {
-  border-bottom:0.125em solid #000;
+  border-bottom:.125em solid #000;
   padding:0;
-  font-size:0.75em;
+  font-size:.75em;
   text-align:center;
 }
 .minitask tr.header td {
@@ -534,12 +534,12 @@ tr.highlight td {
   text-align:left !important;
 }
 .sorterbottom {
- border-bottom:0.0625em solid #000 !important;
+ border-bottom:.0625em solid #000 !important;
 }
 .minitask  td {
-  border-bottom:0.0625em solid #000;
+  border-bottom:.0625em solid #000;
   padding:0;
-  font-size:0.75em;
+  font-size:.75em;
   text-align:center;
 }
 .minitask td.filler {
@@ -554,7 +554,7 @@ tr.highlight td {
 #admin select,
 #pref input,
 #pref select {
-  margin:0 0.1875em;
+  margin:0 .1875em;
 }
 #admin .main td,
 #pref .main td {
@@ -564,7 +564,7 @@ tr.highlight td {
 #admin .main th,
 #pref .main td,
 #pref .main th {
-  //font-size:0.75em;
+  font-size:.75em;
 }
 #admin .empty,
 #pref .empty {
@@ -592,23 +592,13 @@ tr.highlight td {
 #pref .main th.weekcell {
   width:1%;
 }
-#admin #tabscontent p,
-#pref #tabscontent p {
-  padding:0 .25em;
-  clear:both;
-}
 #admin #tabscontent p label,
 #pref #tabscontent p label {
-  clear:both;
+  clear:left;
   float:left;
   width:25%;
   margin:0;
-}
-#admin #tabscontent_colors p,
-#admin #tabscontent_colors p label,
-#pref #tabscontent_colors p,
-#pref #tabscontent_colors p label {
-  clear:none;
+  padding:0 .25em;
 }
 #admin #saver {
   clear:both;
@@ -629,8 +619,8 @@ tr.highlight td {
 }
 .embactlog {
   width:100%;
-  border-right:0.0625em solid;
-  border-bottom:0.0625em solid;
+  border-right:.0625em solid;
+  border-bottom:.0625em solid;
   border-spacing:0;
 }
 .embactlog tr {
@@ -641,10 +631,10 @@ tr.highlight td {
 }
 .embactlog th {
   width:14%;
-  border-top:0.0625em solid;
-  border-bottom:0.0625em solid;
-  border-left:0.0625em solid;
-  padding:0.0625em 0.1875em;
+  border-top:.0625em solid;
+  border-bottom:.0625em solid;
+  border-left:.0625em solid;
+  padding:.0625em .1875em;
 }
 .embactlog th.action,
 .embactlog th.cal,
@@ -652,12 +642,12 @@ tr.highlight td {
   width:7%;
 }
 .embactlog td {
-  border-left:0.0625em solid;
-  padding:0.0625em 0.1875em;
+  border-left:.0625em solid;
+  padding:.0625em .1875em;
 }
 #day div.minicalcontainer {
-  border:0.0625em solid #000;
-  padding:0.1875em;
+  border:.0625em solid #000;
+  padding:.1875em;
   vertical-align:top;
 }
 #day table.minical {
@@ -668,43 +658,43 @@ tr.highlight td {
   margin-right:auto;
   margin-left:auto;
   font-weight:bold;
-  //font-size:2.9375em;
+  font-size:2.9375em;
 }
 #day .minical td.selectedday {
-  border:0.125em solid;
+  border:.125em solid;
 }
 #day .monthnav th {
   border:0;
-  padding:0.1875em;
+  padding:.1875em;
   text-align:center;
 }
 .menuhref {
-  //font-size:0.75em;
-  font-family: arial, verdana, sans-serif;
+  font-size:.75em;
+  font-family:arial, verdana, sans-serif;
 }
 #datesel td.field {
-  //font-size:0.75em;
+  font-size:.75em;
 }
 .glance {
   width:100%;
-  border-right:0.0625em solid;
-  border-bottom:0.0625em solid;
+  border-right:.0625em solid;
+  border-bottom:.0625em solid;
 }
 .glance th.empty {
-  border-top:0.0625em solid;
-  border-left:0.0625em solid;
+  border-top:.0625em solid;
+  border-left:.0625em solid;
 }
 .glance th.row {
   width:14%;
   height:2.5em;
-  border-top:0.0625em solid;
-  border-left:0.0625em solid;
+  border-top:.0625em solid;
+  border-left:.0625em solid;
   vertical-align:middle;
 }
 .glance td {
-  border-top:0.0625em solid;
-  border-left:0.0625em solid;
-  padding-left:0.1875em;
+  border-top:.0625em solid;
+  border-left:.0625em solid;
+  padding-left:.1875em;
   vertical-align:top;
 }
 #day .glance td {
@@ -723,7 +713,7 @@ tr.highlight td {
   padding-left:1.25em;
 }
 #year #monthgrid td {
-  padding:0 0.3125em;
+  padding:0 .3125em;
   vertical-align:top;
 }
 #year .minical tr {
@@ -741,11 +731,11 @@ tr.highlight td {
 }
 #viewr th.small {
   background:none;
-  //font-size:0.5em;
+  font-size:.5em;
 }
 #viewd .main th {
-  border-right:0.0625em solid;
-  padding:0.0625em;
+  border-right:.0625em solid;
+  padding:.0625em;
 }
 #pref .main th.weekcell,
 #viewl .main th.empty,
@@ -761,7 +751,7 @@ tr.highlight td {
 #month .main td.weekcell {
   width:1%;
   margin:0;
-  //font-size:0.75em;
+  font-size:.75em;
   text-align:center;
   text-decoration:none;
   vertical-align:middle;
@@ -782,8 +772,8 @@ tr.highlight td {
 #viewr .main th.empty,
 #week .main th.empty {
   width:5%;
-  border-top:0.0625em solid;
-  border-left:0.0625em solid;
+  border-top:.0625em solid;
+  border-left:.0625em solid;
   background:none;
   background:transparent;
 }
@@ -804,7 +794,7 @@ tr.highlight td {
   vertical-align:top;
 }
 #viewv .main th.row {
-  padding:0 0.3125em;
+  padding:0 .3125em;
   text-align:left;
 }
 #viewd .main th.row {
@@ -831,13 +821,13 @@ tr.highlight td {
 }
 #pref .main td {
   height:1.875em;
-  //font-size:0.75em;
+  font-size:.75em;
 }
 #viewl .main td,
 #contentMonth .main td,
 #month .main td {
   height:4.6875em;
-  //font-size:0.75em;
+  font-size:.75em;
   vertical-align:top;
 }
 #vieww .main td,
@@ -845,8 +835,8 @@ tr.highlight td {
 #viewr .main td,
 #viewm .main td,
 #viewv .main td {
-  //font-size:0.75em;
-  padding-left:0.1875em;
+  font-size:.75em;
+  padding-left:.1875em;
 }
 #viewl #prevmonth {
   float:left;
@@ -866,110 +856,110 @@ tr.highlight td {
 }
 #viewl .minical,
 #month .minical {
-  margin:0 0.25em;
+  margin:0 .25em;
   border:0;
 }
 #combo div.headerinfo {
-  margin: 0.9375em;
-  border: 0.0625em solid #000;
-  background: #fff;
-  color: #000; padding: 0.625em;
+  margin:.9375em;
+  border:.0625em solid #000;
+  padding:.625em;
+  background:#fff;
+  color:#000;
 }
 #combo div.headerinfo .username {
-  font-size: 16pt;
-  font-weight: bold;
+  font-weight:bold;
+  font-size:16pt;
 }
 #combo div.headerinfo #categoryselection {
-  padding-left: 1.875em;
-  font-size: 12pt;
-  font-weight: plain;
+  padding-left:1.875em;
+  font-weight:normal;
+  font-size:12pt;
 }
 #combo div.headerinfo #selectedcategories {
-  font-size: 12pt;
-  font-weight: plain;
+  font-weight:normal;
+  font-size:12pt;
 }
 #combo #categorylist {
-  border: 0.0625em solid #ccc;
-  background: #ffa;
+  border:.0625em solid #ccc;
+  background:#ffa;
 }
 #contentMonth #monthstatus {
-  margin-left: 1.25em;
+  margin-left:1.25em;
 }
 #contentMonth .monthtitle,
 #contentDay .daytitle {
-  font-size: 14pt;
-  text-align: center;
-  margin: 0;
-  margin-left: 0.3125em;
-  padding: 0;
+  margin:0 0 0 .3125em;
+  padding:0;
+  font-size:14pt;
+  text-align:center;
 }
 #combo .event {
-  overflow: hidden;
-  margin-top: 0.0625em;
+  margin-top:.0625em;
+  overflow:hidden;
 }
 #contentAgenda #agendastatus {
-  margin-left: 1.25em;
+  margin-left:1.25em;
 }
 #contentAgenda td.odd {
-  background: #e0e0e0;
-  font-size: 10pt;
+  background:#e0e0e0;
+  font-size:10pt;
 }
 #contentAgenda td.even {
-  background: #ffffff;
-  font-size: 10pt;
+  background:#ffffff;
+  font-size:10pt;
 }
 #contentDay #daystatus {
-  margin-left: 1.25em;
+  margin-left:1.25em;
 }
 #contentDay .timeofday {
-  float: right;
-  margin-right: 0.125em;
-  //font-size: 0.5625em;
+  float:right;
+  margin-right:.125em;
+  font-size:.5625em;
 }
 #contentDay #daydiv {
-  height: 25em;
-  overflow: auto;
-  scrollTop: 400;
+  height:25em;
+  scrollTop:400;
+  overflow:auto;
 }
 #contentDay #dayuntimed {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
-  margin-left: 3.125em;
-  border: 0.0625em solid;
+  margin-top:.25em;
+  margin-bottom:.25em;
+  margin-left:3.125em;
+  border:.0625em solid;
   border-color:#a0a0a0 #e0e0e0 #e0e0e0 #a0a0a0;
-  background: #ffffff;
-  //font-size: 0.625em;
+  background:#ffffff;
+  font-size:.625em;
 }
 #contentDay .daytimedevent {
-  //font-size: 0.625em;
-  border: 0.0625em solid;
+  width:15.625em;
+  border:.0625em solid;
   border-color:#e0e0e0 #a0a0a0 #a0a0a0 #e0e0e0;
-  width: 15.625em;
+  font-size:.625em;
 }
 #contentDay #dayinnerdiv {
-  height: 75em;
-  position: relative;
+  position:relative;
+  height:75em;
 }
 #contentDay .hourblockleft {
-  position: absolute;
-  left: 0;
-  height: 3.125em;
-  width: 3.125em;
-  margin: 0;
-  border: 0.0625em solid #e0e0e0;
-  padding: 0;
+  position:absolute;
+  left:0;
+  width:3.125em;
+  height:3.125em;
+  margin:0;
+  border:.0625em solid #e0e0e0;
+  padding:0;
 }
 #contentDay .hourblockright {
-  background-image: url( images/hour_in_day.gif );
-  position: absolute;
-  left: 3.125em;
-  height: 3.125em;
-  width: 31.25em;
-  margin: 0;
-  border-right: 0.0625em solid #e0e0e0;
-  border-left: 0.0625em solid #e0e0e0;
-  padding: 0;
-  /*overflow: auto;*/
+  position:absolute;
+  left:3.125em;
+  width:31.25em;
+  height:3.125em;
+  margin:0;
+  border-right:.0625em solid #e0e0e0;
+  border-left:.0625em solid #e0e0e0;
+  padding:0;
+  background-image:url( images/hour_in_day.gif );
+  /*overflow:auto;*/
 }
 .topnav {
   border:0;
@@ -979,7 +969,7 @@ tr.highlight td {
   text-align:center;
 }
 #day .title {
-  margin-top:0.1875em;
+  margin-top:.1875em;
   text-align:center;
 }
 #day .title .date,
@@ -1003,7 +993,7 @@ tr.highlight td {
 }
 #weekdetails .main th {
   width:100%;
-  padding:0.125em;
+  padding:.125em;
 }
 #weekdetails .main td {
   height:4.6875em;
@@ -1015,11 +1005,11 @@ tr.highlight td {
   width:90%;
   background:#fff;
   color:#999;
-  //font-size:0.625em;
+  font-size:.625em;
   text-align:center;
 }
 #viewt .yardstick td {
-  border:0.0625em solid #999;
+  border:.0625em solid #999;
   padding:0;
 }
 #viewt td.entry {
@@ -1038,11 +1028,11 @@ tr.highlight td {
 }
 #register table,
 #login table {
-  border:0.0625em solid;
-  //font-size:0.75em;
+  border:.0625em solid;
+  font-size:.75em;
 }
 .cookies {
-  //font-size:0.8125em;
+  font-size:.8125em;
 }
 .strikethrough {
   text-decoration:line-through;
@@ -1060,35 +1050,35 @@ tr.highlight td {
   text-align:center;
 }
 .boxtop {
-  border-top:0.0625em solid #888;
+  border-top:.0625em solid #888;
 }
 .boxright {
-  border-right:0.0625em solid #888;
+  border-right:.0625em solid #888;
 }
 .boxbottom {
-  border-bottom:0.0625em solid #888;
+  border-bottom:.0625em solid #888;
 }
 .boxleft {
-  border-left:0.0625em solid #888;
+  border-left:.0625em solid #888;
 }
 .boxall {
-  border:0.0625em solid #888;
-  padding-left:0.1875em;
+  border:.0625em solid #888;
+  padding-left:.1875em;
 }
 .leftpadded {
   padding-left:3.125em;
   text-align:left;
 }
 .location {
- //font-size:0.625em;
+ font-size:.625em;
 }
 .byxxx th,
 .byxxx td {
   text-align:center;
 }
 .icon_text {
-  width:0.625em;
-  height:0.625em;
+  width:.625em;
+  height:.625em;
   border:0;
 }
 .minitask td.pct,
@@ -1113,7 +1103,7 @@ tr.highlight td {
   background-repeat:no-repeat;
 }
 #about p {
-  margin:0.0625em;
+  margin:.0625em;
   color:#333;
 }
 #scroller {
@@ -1122,36 +1112,36 @@ tr.highlight td {
 }
 .layers {
   float:left;
-  margin:0.125em 0.0625em;
-  padding:0.3125em;
+  margin:.125em .0625em;
+  padding:.3125em;
 }
 .layers h4{
-  margin:0 0 0.3125em;
+  margin:0 0 .3125em;
 }
 .layers p {
   margin:0;
-  padding-left:0.3125em;
-  //font-size:0.75em;
+  padding-left:.3125em;
+  font-size:.75em;
 }
 .layers p label {
-  //font-size:0.8125em;
+  font-size:.8125em;
 }
 #securityAudit {
-  border: 0.0625em solid #c0c0c0;
+  border:.0625em solid #c0c0c0;
 }
 #securityAudit th {
-  background: #d0d0d0;
+  background:#d0d0d0;
 }
 #securityAudit tr.odd td {
-  background: #e0e0e0;
+  background:#e0e0e0;
 }
 #securityAuditNotes {
-  margin: 1.25em;
-  border:0.0625em solid;
+  margin:1.25em;
+  border:.0625em solid;
 }
 #securityAuditNotes li {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
+  margin-top:.25em;
+  margin-bottom:.25em;
 }
 #accountiframe,
 #useriframe {
@@ -1165,62 +1155,62 @@ tr.highlight td {
   height:17.5em;
 }
 .note {
-  margin: 0 1.5625em;
-  border:0.0625em solid;
-  padding: 0.625em;
+  margin:0 1.5625em;
+  border:.0625em solid;
+  padding:.625em;
 }
 .rightsidetip {
-  float: right;
-  text-align: center;
-  width: 15.625em;
-  margin-top: 0.625em;
-  margin-right: 1.5625em;
-  border: 0.0625em solid;
-  padding: 0.3125em;
-  //font-size: 0.6875em;
+  float:right;
+  width:15.625em;
+  margin-top:.625em;
+  margin-right:1.5625em;
+  border:.0625em solid;
+  padding:.3125em;
+  font-size:.6875em;
+  text-align:center;
 }
 .layertable {
-   text-align: center;
+   text-align:center;
 }
 .layertable th,
 .layertable td {
-  padding: 0.3125em 1.25em;
+  padding:.3125em 1.25em;
 }
 .layertable td,
 .clickable {
-  cursor: pointer;
+  cursor:pointer;
 }
 .fakebutton {
-   color: #000;
-   font-size: 10pt;
-   background: #d0d0d0;
-   border: 0.0625em solid;
+   border:.0625em solid;
    border-color:#e0e0e0 #808080 #808080 #e0e0e0;
-   padding-right: 0.3125em;
-   padding-left: 0.3125em;
+   padding-right:.3125em;
+   padding-left:.3125em;
+   background:#d0d0d0;
+   color:#000;
+   font-size:10pt;
 }
 .fakebutton:hover {
-  background: #0ff;
+  background:#0ff;
 }
 #combo #nextmonth,
 #combo #refresh,
 #combo #nextyear,
 #combo #nextday,
 #combo #nextmonthdayview {
-  margin-right: 0.1875em;
+  margin-right:.1875em;
 }
 #quickAddDiv {
-  background: #ffffff;
-  border: 0.0625em solid;
+  border:.0625em solid;
   border-color:#e0e0e0 #808080 #808080 #e0e0e0;
+  background:#ffffff;
 }
 #eventcomment {
- border:0.0625em solid;
+ border:.0625em solid;
  padding:.25em;
 }
 #adminhome table {
-  border:0.0625em solid #000;
-  padding:0.3125em;
+  border:.0625em solid #000;
+  padding:.3125em;
 }
 #adminhome table td {
   padding:1.25em;
@@ -1230,9 +1220,9 @@ tr.highlight td {
   text-align:center;
 }
 #adminhome td a {
-  border:0.0625em solid;
+  border:.0625em solid;
   border-color:#eee #777 #777 #eee;
-  padding:0.625em;
+  padding:.625em;
 }
 #adminhome td a:hover {
   border-color:#777 #eee #eee #777;
@@ -1242,7 +1232,7 @@ tr.highlight td {
 #login textarea,
 #login tr,
 #login td {
-  //font-size:1em;
+  font-size:1em;
 }
 a:hover {
   color:#00f;

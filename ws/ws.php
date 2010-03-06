@@ -16,27 +16,28 @@ function ws_init() {
   $site_extras, $user_inc;
 
   // Load include files.
-define ( '__WC_BASEDIR', '..' ); // Points to the base WebCalendar directory
+  define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
                  // relative to current working directory.
-define ( '__WC_INCLUDEDIR', '../includes' );
+  define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
+  define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 
-  include_once __WC_INCLUDEDIR . '/translate.php';
-  require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
-  require_once __WC_INCLUDEDIR . '/classes/Event.class';
-  require_once __WC_INCLUDEDIR . '/classes/RptEvent.class';
+  include_once __WC_INCLUDEDIR . 'translate.php';
+  require_once __WC_CLASSDIR . 'WebCalendar.class';
+  require_once __WC_CLASSDIR . 'Event.class';
+  require_once __WC_CLASSDIR . 'RptEvent.class';
 
   $WebCalendar = new WebCalendar( __FILE__ );
 
-  include_once __WC_INCLUDEDIR . '/config.php';
-  include_once __WC_INCLUDEDIR . '/dbi4php.php';
-  include_once __WC_INCLUDEDIR . '/access.php';
-  include_once __WC_INCLUDEDIR . '/functions.php';
+  include_once __WC_INCLUDEDIR . 'config.php';
+  include_once __WC_INCLUDEDIR . 'dbi4php.php';
+  include_once __WC_INCLUDEDIR . 'access.php';
+  include_once __WC_INCLUDEDIR . 'functions.php';
 
   $WebCalendar->initializeFirstPhase();
 
-  include_once __WC_INCLUDEDIR . '/' . $user_inc;
-  include_once __WC_INCLUDEDIR . '/validate.php';
-  include_once __WC_INCLUDEDIR . '/site_extras.php';
+  include_once __WC_INCLUDEDIR . $user_inc;
+  include_once __WC_INCLUDEDIR . 'validate.php';
+  include_once __WC_INCLUDEDIR . 'site_extras.php';
 
   $WebCalendar->initializeSecondPhase();
 

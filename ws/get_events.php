@@ -68,7 +68,7 @@ if ( empty ( $enddate ) )
 
 // Now read all the repeating events (for all users).
 $repeated_events = query_events ( $user, true,
-  'AND ( wer.cal_end > ' . $startdate . ' OR wer.cal_end IS NULL ) ' );
+  'AND ( wer.cal_end > ' . $startdate . ' OR wer.cal_end IS NULL )' );
 
 // Read non-repeating events (for all users).
 if ( $WS_DEBUG )

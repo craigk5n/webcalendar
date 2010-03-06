@@ -60,9 +60,9 @@ include_once 'default_config.php';
 include_once 'install_functions.php';
 include_once 'sql/upgrade_matrix.php';
 
-define( '__WC_BASEDIR', '..' );
-$file = '../includes/settings.php';
-$fileDir = '../includes';
+define( '__WC_BASEDIR', '../' );
+$fileDir = __WC_BASEDIR . 'includes';
+$file    = $fileDir . '/settings.php';
 
 clearstatcache();
 
@@ -317,13 +317,14 @@ if( ! empty( $action ) && $action == 'switch' ) {
 // We're doing a database installation yea ha!
 if( ! empty( $action ) && $action == 'install' ) {
   // We'll grab database settings from settings.php.
-  $db_database  = $settings['db_database'];
-  $db_host      = $settings['db_host'];
-  $db_login     = $settings['db_login'];
-  $db_password  = $settings['db_password'];
-  $db_persistent= false;
-  $db_type      = $settings['db_type'];
-  $real_db      = ( $db_type== 'sqlite' || $db_type == 'sqlite3'
+  $db_database = $settings['db_database'];
+  $db_host     = $settings['db_host'];
+  $db_login    = $settings['db_login'];
+  $db_password = ( empty( $settings['db_password'] )
+    ? '' : $settings['db_password'] );
+  $db_persistent = false;
+  $db_type       = $settings['db_type'];
+  $real_db       = ( $db_type== 'sqlite' || $db_type == 'sqlite3'
     ? get_full_include_path( $db_database ) : $db_database );
 
   // We might be displaying SQL only.
@@ -398,21 +399,21 @@ if( ! empty( $action ) && $action == 'install' ) {
 if( ! empty( $action ) && $action == 'set_odbc_db' )
   $_SESSION['odbc_db'] = getPostValue( 'odbc_db' );
 
-$post_action = getPostValue( 'action' );
+$post_action  = getPostValue( 'action' );
 $post_action2 = getPostValue( 'action2' );
 // Is this a db connection test?
 // If so, just test the connection, show the result and exit.
 if( ! empty( $post_action ) && $post_action == $testSettingsStr && !
     empty( $_SESSION['validuser'] ) ) {
   $_SESSION['db_success'] = false;
-  $db_cachedir  = getPostValue( 'form_db_cachedir' );
-  $db_database  = getPostValue( 'form_db_database' );
-  $db_host      = getPostValue( 'form_db_host' );
-  $db_login     = getPostValue( 'form_db_login' );
-  $db_password  = getPostValue( 'form_db_password' );
-  $db_persistent= getPostValue( 'db_persistent' );
-  $db_type      = getPostValue( 'form_db_type' );
-  $response_msg = $response_msg2= '';
+  $db_cachedir   = getPostValue( 'form_db_cachedir' );
+  $db_database   = getPostValue( 'form_db_database' );
+  $db_host       = getPostValue( 'form_db_host' );
+  $db_login      = getPostValue( 'form_db_login' );
+  $db_password   = getPostValue( 'form_db_password' );
+  $db_persistent = getPostValue( 'db_persistent' );
+  $db_type       = getPostValue( 'form_db_type' );
+  $response_msg  = $response_msg2= '';
 
   // Allow field length to change if needed.
   $onload = 'db_type_handler();';
@@ -442,7 +443,7 @@ if( ! empty( $post_action ) && $post_action == $testSettingsStr && !
     // TODO figure out how to remove this hardcoded link.
     if( $db_type == 'ibase' )
       $c =
-      dbi_connect( $db_host, $db_login, $db_password, $firebird_path, false );
+        dbi_connect( $db_host, $db_login, $db_password, $firebird_path, false );
     elseif( $db_type == 'mssql' )
       $c = mssql_connect( $db_host, $db_login, $db_password );
     elseif( $db_type == 'mysql' )
@@ -451,13 +452,13 @@ if( ! empty( $post_action ) && $post_action == $testSettingsStr && !
       $c = dbi_connect( $db_host, $db_login, $db_password, $db_database );
     elseif( $db_type == 'postgresql' )
       $c =
-      dbi_connect( $db_host, $db_login, $db_password, 'template1', false );
+        dbi_connect( $db_host, $db_login, $db_password, 'template1', false );
 
-    // TODO Code remaining database types.
+    // TODO: Code remaining database types.
 
     if( $c ) { // Credentials are valid, but database doesn't exist.
       $response_msg =
-      translate( 'Correct your entries or click the Create New...' );
+        translate( 'Correct your entries or click the Create New...' );
       $_SESSION['db_noexist'] = true;
     } else
       $response_msg = $failure .( $db_type == 'ibase'
@@ -627,19 +628,19 @@ $x = getPostValue( 'form_db_type' );
 if( empty( $x ) ) {
   // No form was posted. Set defaults if none set yet.
   if( ! file_exists( $file ) || count( $settings ) == 1 ) {
-    $settings['db_cachedir']      = '/tmp';
-    $settings['db_database']      = 'intranet';
-    $settings['db_host']          = 'localhost';
-    $settings['db_login']         = 'webcalendar';
-    $settings['db_password']      = 'webcal01';
-    $settings['db_persistent']    =
-    $settings['readonly']         =
-    $settings['single_user']      =
-    $settings['use_http_auth']    = 'false';
-    $settings['db_type']          = 'mysql';
-    $settings['install_password'] =
-    $settings['single_user_login']= '';
-    $settings['user_inc']         = 'user.php';
+    $settings['db_cachedir']       = '/tmp';
+    $settings['db_database']       = 'intranet';
+    $settings['db_host']           = 'localhost';
+    $settings['db_login']          = 'webcalendar';
+    $settings['db_password']       = 'webcal01';
+    $settings['db_persistent']     =
+    $settings['readonly']          =
+    $settings['single_user']       =
+    $settings['use_http_auth']     = 'false';
+    $settings['db_type']           = 'mysql';
+    $settings['install_password']  =
+    $settings['single_user_login'] = '';
+    $settings['user_inc']          = 'user.php';
   }
 } else {
   $settings['db_cachedir']      = getPostValue( 'form_db_cachedir' );
@@ -651,25 +652,25 @@ if( empty( $x ) ) {
   $settings['db_type']          = getPostValue( 'form_db_type' );
   $settings['install_password'] = ( isset( $settings['install_password'] )
     ? $settings['install_password'] : '' );
-  $settings['readonly']         = ( isset( $settings['readonly'] )
+  $settings['readonly'] = ( isset( $settings['readonly'] )
     ? $settings['readonly'] : 'false' );
-  $settings['single_user']      = ( isset( $settings['single_user'] )
+  $settings['single_user'] = ( isset( $settings['single_user'] )
     ? $settings['single_user'] : 'false' );
-  $settings['single_user_login']= ( isset( $settings['single_user_login'] )
+  $settings['single_user_login'] = ( isset( $settings['single_user_login'] )
     ? $settings['single_user_login'] : '' );
-  $settings['use_http_auth']    = ( isset( $settings['use_http_auth'] )
+  $settings['use_http_auth'] = ( isset( $settings['use_http_auth'] )
     ? $settings['use_http_auth'] : 'false' );
-  $settings['user_inc']         = ( isset( $settings['user_inc'] )
+  $settings['user_inc'] = ( isset( $settings['user_inc'] )
     ? $settings['user_inc'] : 'user.php' );
 }
 $y = getPostValue( 'app_settings' );
 if( ! empty( $y ) ) {
-  $formUserStr                  = getPostValue( 'form_user_inc' );
-  $settings['mode']             = getPostValue( 'form_mode' );
-  $settings['readonly']         = getPostValue( 'form_readonly' );
-  $settings['single_user']      = $settings['use_http_auth']= 'false';
-  $settings['single_user_login']= getPostValue( 'form_single_user_login' );
-  $settings['user_inc']         = 'user.php';
+  $formUserStr                   = getPostValue( 'form_user_inc' );
+  $settings['mode']              = getPostValue( 'form_mode' );
+  $settings['readonly']          = getPostValue( 'form_readonly' );
+  $settings['single_user']       = $settings['use_http_auth']= 'false';
+  $settings['single_user_login'] = getPostValue( 'form_single_user_login' );
+  $settings['user_inc']          = 'user.php';
 
   if( $formUserStr == 'http' )
     $settings['use_http_auth'] = 'true';
@@ -680,7 +681,7 @@ if( ! empty( $y ) ) {
 
   // Save Application Name and Server URL.
   $_SESSION['application_name'] = getPostValue( 'form_application_name' );
-  $_SESSION['server_url'] = getPostValue( 'form_server_url' );
+  $_SESSION['server_url']       = getPostValue( 'form_server_url' );
   $db_persistent = false;
   $db_type = $settings['db_type'];
 
@@ -688,8 +689,12 @@ if( ! empty( $y ) ) {
     ? get_full_include_path( $settings['db_database'] )
     : $settings['db_database'] );
 
+  if( empty( $settings['db_password'] ) )
+    $settings['db_password'] = '';
+
   $c = dbi_connect( $settings['db_host'], $settings['db_login'],
     $settings['db_password'], $db_database, false );
+
   if( $c ) {
     if( isset( $_SESSION['application_name'] ) ) {
       dbi_execute( 'DELETE FROM webcal_config
@@ -706,6 +711,7 @@ if( ! empty( $y ) ) {
     }
   }
   $do_load_admin = getPostValue( 'load_admin' );
+
   if( ! empty( $do_load_admin ) ) {
     // Add default admin user if not exists.
     db_load_admin();
@@ -717,6 +723,7 @@ if( ! empty( $y ) ) {
 // Save settings to file now.
 if( ! empty( $x ) || ! empty( $y ) ) {
   $fd = @fopen( $file, 'w+b', false );
+
   if( empty( $fd ) )
     $onload = 'alert( \'' . str_replace( 'XXX', $file,
       translate( 'Error Unable to write to file XXX.', true ) ) . "\\n"
@@ -732,6 +739,7 @@ if( ! empty( $x ) || ! empty( $y ) ) {
     }
     fwrite( $fd, '# end settings.php */' . "\r\n?>\r\n" );
     fclose( $fd );
+
     if( $post_action != $testSettingsStr && $post_action2 != $createNewStr )
       $onload .= 'alert( \''
        . translate( 'Your settings have been saved.', true ) . "\\n\\n' );";
@@ -743,13 +751,12 @@ if( ! empty( $x ) || ! empty( $y ) ) {
     @chmod( $file, 0644 );
   }
 }
-$noStr = translate( 'No' );
+$noStr  = translate( 'No' );
 $offStr = translate( 'OFF' );
-$onStr = translate( 'ON' );
+$onStr  = translate( 'ON' );
 $yesStr = translate( 'Yes' );
 
 ob_start();
-
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
@@ -758,11 +765,11 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <title>' . translate( 'WebCalendar Setup Wizard' ) . '</title>
     <meta http-equiv="Content-Type" content="text/html; charset='
  . translate( 'charset' ) . '" />
-    ';
-include '../includes/js/visible.php';
-echo '
     <script type="text/javascript">
-<!-- <![CDATA[' . ( empty( $_SESSION['validuser'] ) ? '' : '
+<!-- <![CDATA[
+      var xlate = [];
+      xlate[\'invalidColor\'] = \'' . translate( 'Invalid Color', true ) . '\';
+' . ( empty( $_SESSION['validuser'] ) ? '' : '
       function testPHPInfo() {
         var url = "index.php?action=phpinfo";
 
@@ -856,6 +863,7 @@ echo '
       }
 //]]> -->
     </script>
+    <script type="text/javascript" src="../includes/js/visible.js"></script>
     <style type="text/css">
       body {
         margin:0;
@@ -1453,6 +1461,9 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       </tr>
     </table>';
 } elseif( $_SESSION['step'] == 4 ) {
+  if( empty( $settings['mode'] ) )
+    $settings['mode'] = 'prod';
+
   $mode = ( preg_match( '/dev/', $settings['mode'] )
     ? 'dev' // development
     : 'prod' ); // production
