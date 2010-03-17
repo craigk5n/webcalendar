@@ -1,12 +1,4 @@
-# See translations/English-US.txt for instructions.
-#
-# Translator: Ralph Bo&szlig;ler <vertrieb'at'sylphen.com>,
-# Peter Huetmannsberger <huetmann'at'site38.ping.at>
-# Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 19. November 2008
-#
-# $Id$
-# Translation last updated on 10-12-2009
+# Translation last updated on 03-17-2010
 
 
 ################################################################################
@@ -70,7 +62,7 @@ Calendar: Kalender
 View Event: Termin ansehen
 View: Ansicht
 Edit: &Auml;ndern
-Approve/Reject: Best&auml;tigen&#47;Ablehnen
+Approve/Reject: Best&auml;tigen&#47;Zur&uuml;ckweisen
 Events: Termine
 Tasks: Aufgaben
 Journals: Journale
@@ -93,8 +85,8 @@ Previous: Vorherige
 ########################################
 # Page: add_entry.php
 #
-Event XXX is already on your calendar.: Der Termin XXX ist schon auf Ihrem Kalender vorhanden
-Invalid entry id XXX.: Ung&uuml;tige Eintrags ID XXX
+Event XXX is already on your calendar.: Der Termin XXX ist schon auf Ihrem Kalender vorhanden.
+Invalid entry id XXX.: Ung&uuml;tige Eintrags ID XXX.
 a XXX event may not be added to your calendar: Das ist ein XXX Termin, und wird Ihrem Kalender nicht hinzugef&uuml;gt
 confidential: Vertraulich
 private: Privat
@@ -146,7 +138,6 @@ home-url-help: Definiert die Haupt-URL (=home URL) f&uuml;r diese Anwendung. Die
 Home URL: Haupt-URL
 language-help: Gibt die Standard Sprache an.
 Language: Sprache
-Your browser default language is: Ihre derzeitige Browser-Sprache ist
 Your browser default language is XXX.: Ihre derzeitige Browsersprache ist &#34;XXX&#34;.
 Allow user to use themes: &#39;Themen&#39; f&uuml;r Benutzer
 themes-help: Erlaubt eine Vielzahl von Updates f&uuml;r Konfigurationseinstellungen. Kleingeschriebene Eintr&auml;ge sind nur benutzereigene Voreinstellungen
@@ -165,16 +156,10 @@ enable-external-header-help: Erlaubt das hochladen von einer externen Datei f&uu
 Allow external file for header/script/trailer: Externe Datei f&uuml;r Kopfzeile&#47;Script&#47;Fu&szlig;zeile
 Allow user to override header/trailer: Benutzer d&uuml;rfen Kopf- und Fu&szlig;zeilen &uuml;berschreiben
 Date and Time: Datum und Uhrzeit
-#
-# << MISSING >>
-# server-tz-help:
-# English text: Specifies how many hours to adjust the time from UTC to server time.
-#
+server-tz-help: Gibt an wieviele Stunden man zur UTC-Zeitzone einstellen muss.
 Server Timezone Selection: Zeitzonenauswahl am Server
 tz-help: Hilfe f&uuml;r Zeitzonen
-#
-# << MISSING >>
-# Default Client Timezone Selection:
+Default Client Timezone Selection: Grundeinstellung Zeitzonenauswahl
 display-general-use-gmt-help: Falls aktiv, werden allg. Datums&#47;Zeiten als GMT angezeigt
 Display Common Use Date/Times as GMT: Allg. Datums&#47;Zeiten als GMT
 date-format-help: Legt ein spezielles Datumsformat fest.
@@ -426,7 +411,7 @@ Administrative Tools: Administrative Werkzeuge
 # Page: ajax.php
 #
 Duplicate Name XXX: Doppelter Name XXX
-Username XXX already exists.: Der Benutzername XXX existiert bereits
+Username XXX already exists.: Der Benutzername XXX existiert bereits.
 Email address XXX already exists.: Die Emailadresse &#34;XXX&#34; existiert bereits.
 
 ########################################
@@ -435,15 +420,15 @@ Email address XXX already exists.: Die Emailadresse &#34;XXX&#34; existiert bere
 Additional Comments (optional): Zus&auml;tzliche Anmerkungen (optional)
 Approve and Send: Best&auml;tigen und Senden
 Approve and Exit: Best&auml;tigen und Schlie&szlig;en
-(Your comments will be emailed to the event creator.): (Ihre Anmerkungen werden per Mail an dem Einladenden gesendet.)
-Hello, XXX.: Guten Tag, XXX
+(Your comments will be emailed to the event creator.): (Ihre Anmerkungen wurden per Mail an dem Einladenden gesendet.)
+Hello, XXX.: Guten Tag, XXX.
 XXX has approved an appointment and added comments.: XXX hat den Termin mit zus&auml;tzlichen Anmerkungen best&auml;tigt.
 Subject XXX: Betrifft XXX
 Description XXX: Beschreibung XXX
 Date XXX: Datum XXX
 Time XXX: Zeit XXX
 Comments XXX: Anmerkungen XXX
-Approved w/Comments by XXX.: Best&auml;tigt w&#47;Anmerkungen von XXX
+Approved w/Comments by XXX.: Best&auml;tigte w&#47;Anmerkungen von XXX
 
 ########################################
 # Page: assistant_edit.php
@@ -474,7 +459,7 @@ gif 3kb max: gif max. 3kb gro&szlig;
 Search for existing icons: Suche nach bereits vorhandenen Icons
 Add: Hinzuf&uuml;gen
 Delete: L&ouml;schen
-Are you sure you want to delete this entry?: Sind sie sicher, da&szlig; sie diesen Eintrag l&ouml;schen wollen?
+Are you sure you want to delete this entry?: Sind Sie sicher, da&szlig; Sie diesen Eintrag l&ouml;schen wollen?
 Make New Category: Neue Kategorie erstellen
 
 ########################################
@@ -823,7 +808,7 @@ export format not defined or incorrect.: Exportiertes Format nicht definiert ode
 ########################################
 # Page: freebusy.php
 #
-No user specified.: Kein Benutzer ausgew&auml;hlt.
+No user specified.: Kein Benutzer ausgew&auml;hlt
 
 ########################################
 # Page: groups.php
@@ -865,7 +850,7 @@ colors-help: Alle Farben k&ouml;nnen im Format &#34;#RRGGBB&#34; eingegeben werd
 #
 Report Bug: Fehlermeldung
 Please include all the information below when reporting a bug.: Wenn Sie einen Fehler melden wollen, f&uuml;gen Sie die unten aufgef&uuml;hrten Informationen bei.
-Also, please use English rather than XXX.: Bitte verwenden Sie <strong>Englisch</strong> anstatt XXX.
+Also, please use English rather than XXX.: Bitte verwenden Sie <b>Englisch</b> anstatt XXX.
 
 ########################################
 # Page: help_docs.php
@@ -888,14 +873,10 @@ repeat-day-help: Gibt an, an welchen Wochentagen der Termin wiederholt werden so
 #
 Import: =
 Palm Desktop: =
-This form will allow you to import entries from the Palm Desktop Datebook.: Dieses Formular erlaubt das Importieren der Kalendereintr&auml;ge ihres Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Es sollte in ihrem Palm Ordner <tt>datebook&#47;datebook.dat</tt> in einem Unterverzeichnis mit Ihrem Usernamen sein.
 allow you to import entries from the Palm...: Diese Maske erm&ouml;glicht das Importieren von Eintr&auml;gen aus dem Palm Desktop Datebook. Diese sollten in einem Unterverzeichnis (benannt nach Ihrem Benutzernamen) Ihres Palm in <tt>datebook/datebook.dat</tt> sich befinden.
 The following entries will not be imported: Folgende Eintr&auml;ge werden nicht importiert
 Entries older than the current date: Eintr&auml;ge die &auml;lter als das aktuelle Datum sind
 Entries created in the Palm Desktop...: Hinzugef&uuml;gte Eintr&auml;ge im Palm Desktop die nicht synchronisiert wurden (HotSync&#39;d)
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er das Datum des Termines ist vorbei).
-Therefore, updates should be made in the Palm Desktop.: Deshalb sollten &Auml;nderungen auf dem Palm&#47;Desktop durchgef&uuml;hrt werden.
 Anything imported from Palm...: Alles was Sie von ihrem Palm importiert haben, wird beim n&auml;chstenmal &uuml;berschrieben (au&szlig;er Termine die abgelaufen sind). Deshalb sollten &Auml;nderungen auf dem Palm&#47;Desktop durchgef&uuml;hrt werden.
 vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Dieses Formular importiert vCalendar (.vcs) 1.0 - Eintr&auml;ge.
@@ -970,9 +951,7 @@ Current Icons on Server: Derzeitige Icons am Server
 ########################################
 # Page: import.php
 #
-#
-# << MISSING >>
-# import from file:
+import from file: Datei importieren von
 Disabled: Inaktiv
 Import format: Importformat
 Exclude private records: Private Eintr&auml;ge ausschlie&szlig;en
@@ -990,13 +969,14 @@ The import file contained no data.: Die importierte Datei enthielt keine Daten
 ########################################
 # Page: layers.php
 #
-Layer: =
-Edit layer: Layer &auml;ndern
-Delete layer: Layer l&ouml;schen
 Are you sure you want to delete this layer?: Sind Sie sicher, da&szlig; Sie diesen Layer l&ouml;schen wollen?
+Delete layer: Layer l&ouml;schen
+Edit layer: Layer &auml;ndern
 Enable layers: Layers aktivieren
-Layers are currently enabled.: Layers sind derzeit <b>aktiv</b>.
+Layer: =
 Layers are currently disabled.: Layers sind derzeit <b>inaktiv</b>.
+Layers are currently enabled.: Layers sind derzeit <b>aktiv</b>.
+Click to modify layers settings for XXX: Hier klicken um die Layereinstellungen f&uuml;r den XXX-Kalender zu &auml;ndern.
 Disable Layers: Layers abschalten
 Add layer: Layer hinzuf&uuml;gen
 Add Layer: Layer hinzuf&uuml;gen
@@ -1013,7 +993,7 @@ You can only create one layer for each user.: Sie k&ouml;nnen nur jeweils EINEN 
 ########################################
 # Page: list_unapproved.php
 #
-Approve/Confirm: Eintrag best&auml;tigen&#47;zusagen
+Approve/Confirm: Eintrag Best&auml;tigen&#47;Zusagen
 Approve Selected: Auswahl best&auml;tigen
 Check All: Alles markieren
 Emails Will Not Be Sent: Emails werden nicht versendet
@@ -1021,7 +1001,7 @@ Reject Selected: Auswahl ablehnen
 Reject: Ablehnen
 Uncheck All: Nichts markieren
 View this entry: Eintrag ansehen
-No unapproved entries for XXX.: Keine unbest&auml;tigte Eintr&auml;ge f&uuml;r &#39;XXX&#39;
+No unapproved entries for XXX.: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r &#39;XXX&#39;
 Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
 Not authorized: Keine Berechtigung
 Approve this entry?: Diesen Eintrag best&auml;tigen?
@@ -1104,8 +1084,8 @@ Records deleted from XXX: Eintr&auml;ge wurden von &#39;XXX&#39; gel&ouml;scht.
 ########################################
 # Page: register.php
 #
-Username already exists.: Benutername existiert bereits.
 Email address cannot be blank.: Emailadresse darf nicht leer sein.
+Username already exists.: Benutername existiert bereits.
 Email address already exists.: Emailadresse existiert bereits.
 New user via self-registration.: Neuer Benutzer via Selbstregistrierung.
 A new WebCalendar account has been set up for you.: Ein neues Webkalenderkonto wurde f&uuml;r Sie eingerichtet.
@@ -1147,7 +1127,7 @@ This event is confidential.: Dieser Termin ist vertraulich
 Approved: Best&auml;tigt
 Deleted: Gel&ouml;scht
 Rejected: Eintrag abgelehnt, wird nicht teilnehmen
-Waiting for approval: Warten auf &Uuml;berpr&uuml;fung
+Waiting for approval: Warten auf Best&auml;tigung
 Unknown: Unbekannt
 Invalid report id.: Ung&uuml;tige Bericht ID.
 Click here to manage reports for the Public Access calendar.: <u>Hier klicken</u> um die Berichte des &Ouml;ffentlichen Kalenders zu verwalten
@@ -1182,55 +1162,27 @@ New Search: Neue Suche
 # Page: security_audit.php
 #
 list potential security issues: Die folgenden Informationen weisen auf m&ouml;gliche Probleme im Bezug mit Ihrer WebKalender-Installation hin. Diese k&ouml;nnen jedoch ge&auml;ndert werden, um Ihre Installation sicherer gegen etwaige Angriffe zu machen.
-For questions about WebCalendar security see the forums: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.
+For questions about WebCalendar security see the forums: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
 View your current PHP settings: Ihre PHP-Informationen anzeigen
 Security Issue: Sicherheitsoptionen
 Status: =
 Default admin user password: Grundeinstellung des admin user Passwortes
 You should change the password of the default admin user.: Sie sollten das Passwort des admin user &auml;ndern.
-#
-# << MISSING >>
-# File permissions XXX:
-# English text: File permissions: XXX
-#
-#
-# << MISSING >>
-# item XXX should not be writable:
-# English text: The following item should not be writable:<br /><tt>XXX</tt>
-#
-#
-# << MISSING >>
-# File exists XXX:
-# English text: File exists: "XXX"
-#
+File permissions XXX: Dateirechte: XXX
+item XXX should not be writable: Der folgende Eintrag soll als &#39;schreibgesch&uuml;tzt&#39; gesetzt werden: <br /><tt>XXX</tt>
+File exists XXX: Datei exisitert: "XXX"
 Because you have email disabled, you should remove this file.: Sie sollten diese Datei l&ouml;schen, da Sie die Emailfunktion deaktiviert haben.
-#
-# << MISSING >>
-# File location XXX:
-# English text: File location: "XXX"
-#
-#
-# << MISSING >>
-# remove XXX if not using:
-# English text: If you are not using file "XXX", you should delete it. Or, at least, move it to a new directory.
-#
-#
-# << MISSING >>
-# System Settings XXX:
-# English text: System Settings: "XXX"
-#
+File location XXX: Ort der Datei: "XXX"
+remove XXX if not using: Wenn sie die Datei "XXX" nicht verwenden, so l&ouml;schen Sie diese. Oder verschieben die Datei in ein neues Verzeichnis.
+System Settings XXX: Systemeinstellungen: "XXX"
 consider enabling UAC: Vielleicht m&ouml;chten Sie die &#39;Zugriffskontrolle&#39; f&uuml;r die Benutzerrechte aktivieren.
-recommend approving new public events: Es wird empfohlen, da&szlig; Eintr&auml;ge des &#39;&Ouml;ffentlichen&#39;-Kalenders genehmigt und &uuml;berpr&uuml;ft werden
-recommend using CAPTCHA: Es wird CAPTCHA empfohlen, zum Schutz gegen automatisierende eingegebende Eintr&auml;ge
+recommend approving new public events: Wir empfehlen, dass alle &ouml;ffentlichen Eintr&auml;ge genehmigt werden.
+recommend using CAPTCHA: Es wird CAPTCHA empfohlen, zum Schutz gegen automatisierende eingegebende Eintr&auml;ge (SPAM).
 Database cache directory location: Ort des Datenbank-Cache-Verzeichnis
-db cache should be inaccessable: Das Datenbank-Cache-Verzeichnis soll in einem Verzeichnis angelegt werden, das &uuml;ber eine URL-Eingabe nicht direkt darauf zugegriffen werden kann.
-#
-# << MISSING >>
-# PHP Settings XXX:
-# English text: PHP Settings: "XXX"
-#
-recommend setting XXX Off: Die empfohlene Einstellung f&uuml;r XXX ist OFF.
-recommend setting allow_url_fopen Off: Wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist, wird empfohlenen die Einstellung f&uuml;r allow_url_fopen auf OFF zu setzen.
+db cache should be inaccessable: Das Datenbank-Cache-Verzeichnis soll in einem Verzeichnis angelegt werden, das &uuml;ber eine URL-Eingabe nicht direkt aufgerufen werden kann.
+PHP Settings XXX: PHP Einstellungen: "XXX"
+recommend setting XXX Off: Die empfohlene Einstellung f&uuml;r "XXX" ist <b>Aus (Off)</b>.
+recommend setting allow_url_fopen Off: Die empfohlene Einstellung f&uuml;r "<b>allow_url_fopen</b>" ist <b>Aus (Off)</b>, wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist.
 
 ########################################
 # Page: select_user.php
@@ -1311,7 +1263,7 @@ at: am
 comments: Anmerkung(en)
 Show: Zeigen
 Hide: Verstecken
-Approve/Confirm entry: Eintrag best&auml;tigen&#47;zusagen
+Approve/Confirm entry: Eintrag best&auml;tigen&#47;zusagen?
 Reject entry: Eintrag ablehnen?
 Set category: Kategorie zuweisen
 Add to My Calendar: Zu meinem Kalender hinzuf&uuml;gen
@@ -1380,13 +1332,14 @@ LANGUAGE DEFINED: SPRACHDEFINIERT
 ########################################
 # Page: includes/dbi4php.php
 #
-Error connecting to database: Datenbank Verbindungsfehler
+Error connecting to database XXX: Fehler beim verbinden zur Datenbank XXX
 db_type not defined.: db_type nicht definiert
-invalid db_type: ung&uuml;tige db_type
+invalid db_type XXX: Ung&uuml;ltiger db_type XXX
 Cache cleared from previous SQL!: Cache wird von voriger SQL geleert!
 Error executing query.: Fehler beim Ausf&uuml;hren des Query
 Unfortunately, XXX is not implemented for YYY: Ungew&ouml;hnlich, &#34;XXX&#34; ist nicht (f&uuml;r YYY) implementiert.
 Unknown ODBC error.: Unbekannter ODBC Fehler
+Cannot execute SQLite3 command XXX: kann SQLite3 Befehl XXX nicht ausf&uuml;hren
 write: schreiben
 Cache error Could not XXX file YYY.: Cache-Fehler, kann Datei YYY nicht XXX.
 Error opening cache dir XXX.: Fehler beim &Ouml;ffnen des Cache-Verzeichnisses &#34;XXX&#34;.
@@ -1551,7 +1504,7 @@ French: Franz&ouml;sisch
 Galician: G&auml;lisch
 German: Deutsch
 Greek: Griechisch
-Hebrew: Hebr$auml;isch
+Hebrew: Hebr&auml;isch
 Holo (Taiwanese): Taiwanesisch
 Hungarian: Ungarisch
 Icelandic: Isl&auml;ndisch
@@ -1657,23 +1610,6 @@ Enter the correct letters and numbers...: Geben Sie die am Bild angezigten richt
 Challenge/Response: Aufforderung/Beantwortung
 
 ########################################
-# Page: includes/js/admin.php
-#
-Server URL is required.: Server URL wird ben&ouml;tigt.
-Server URL must end with /.: Server URL mu&szlig; mit einem &#39;&#47;&#39; enden.
-Invalid work hours.: Ung&uuml;ltige Arbeitszeit.
-Invalid color for document background.: Ung&uuml;ltige Farbe f&uuml;r Hintergrund.
-Invalid color for document title.: Ung&uuml;ltige Farbe f&uuml;r Titel.
-Invalid color for table cell background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund.
-Invalid color for table grid.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Gitter.
-Invalid color for table header background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Kopfzeile Hintergrund.
-Invalid color for table text background.: Ung&uuml;ltige Farbe f&uuml;r Tabellentext Hintergrund.
-Invalid color for event popup background.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Hintergrund.
-Invalid color for event popup text.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Text.
-Invalid color for table cell background for today.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund &#39;Heute&#39;.
-Color format should be RRGGBB.: Farbformat sollte &#39;#RRGGBB&#39; sein.
-
-########################################
 # Page: includes/js/availability.php
 #
 Change the date and time of this entry?: Datum und Uhrzeit f&uuml;r diesen Eintrag &auml;ndern?
@@ -1698,6 +1634,7 @@ First and last names cannot both be blank.: Beide, Vor- und Nachname, d&uuml;rfe
 # Page: includes/js/edit_remotes.php
 #
 Invalid color: Ung&uuml;ltige Farbe
+Color format should be RRGGBB.: Farbformat sollte &#39;#RRGGBB&#39; sein.
 URL cannot be blank.: URL darf nicht leer sein.
 
 ########################################
@@ -1706,22 +1643,31 @@ URL cannot be blank.: URL darf nicht leer sein.
 File type does not match Import Format: Dateityp passt nicht mit dem Import-Format &uuml;berein
 
 ########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Ung&uuml;ltige Farbe f&uuml;r Hintergrund.
+Invalid color for document title.: Ung&uuml;ltige Farbe f&uuml;r Titel.
+Invalid color for table cell background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund.
+Invalid color for table cell background for today.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Hintergrund &#39;Heute&#39;.
+Invalid work hours.: Ung&uuml;ltige Arbeitszeit.
+
+########################################
 # Page: includes/js/translate.js.php
 #
-#
-# << MISSING >>
-# Invalid color for table header text.:
+Server URL must end with /.: Server URL mu&szlig; mit einem &#39;&#47;&#39; enden.
+Invalid color for table grid.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Gitter.
+Invalid color for event popup background.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Hintergrund.
+Invalid color for event popup text.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Text.
+Invalid color for table header text.: Ung&uuml;ltige Farbe f&uuml;r den Kopfzeilentext
+Invalid color for table header background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Kopfzeile Hintergrund.
+Server URL is required.: Server URL wird ben&ouml;tigt.
 Invalid Color: Ung&uuml;ltige Farbe
 Database Name: Datenbankname
 Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
 The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
 Error you must specify a Single-User Login: Sie m&uuml;ssen ein\nSingle-User Login festlegen.
-#
-# << MISSING >>
-# Could not find XXX.:
-#
-# << MISSING >>
-# Could not find XXX in DOM.:
+Could not find XXX.: Kann XXX nicht finden.
+Could not find XXX in DOM.: Kann XXX im DOM nicht finden.
 
 ########################################
 # Page: includes/menu/index.php
@@ -1744,14 +1690,14 @@ Help Contents: Hilfe Inhaltsverzeichnis
 ########################################
 # Page: install/index.php
 #
-Create New: Neu erstellen
 Database Cache Directory: Cache-Verzeichnis der Datenbank
+Create New: Neu erstellen
 Failure Reason: Fehlerbegr&uuml;ndung
+You must manually create database: Sie m&uuml;ssen die Datenbank manuell einrichten
 Single-User: Einzelbenutzer
 Test Settings: Einstellungen testen
 Timezone Conversion Successful: Konvertierung der Zeitzone erfolgreich abgeschlossen
 WebCalendar Installation Wizard Step XXX: Webkalender Installationsassistent Schritt XXX
-You must manually create database: Sie m&uuml;ssen die Datenbank manuell einrichten
 Password Accepted: Kennwort akzeptiert
 Successful Login: Erfolgreiches Login
 Password Incorrect: Kennwort falsch
@@ -1776,6 +1722,8 @@ Error Unable to write to file XXX.: Fehler beim Schreiben auf Datei XXX.
 Please change the file permissions of this file.: Bitte &auml;ndern Sie die Rechte dieser Datei.
 Please change includes dir permission: Bitte &auml;ndern Sie die Dateiberechtigungen von Ihrem &#39;includes&#39;-Verzeichnis um &#39;Schreibrechte&#39; f&uuml;r &#39;andere Benutzer&#39; zu haben.
 Your settings have been saved.: Ihre Einstellungen wurden gespeichert.
+OFF: AUS
+ON: EIN
 WebCalendar Setup Wizard: WebKalender Installationsassistent
 This installation wizard will guide you...: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
 System Administrators Guide: Systemverwalter-Anleitung (in Englisch)
@@ -1790,8 +1738,6 @@ Check to see if PHP 4.1.0 or greater is installed.: &Uuml;berpr&uuml;fung ob PHP
 PHP version: PHP Version
 PHP Settings: PHP Einstellungen
 Detailed PHP Info: Detailierte PHP Information
-ON: EIN
-OFF: AUS
 settings.php Status: &#39;settings.php&#39; Status
 Session Check: Session &Uuml;berpr&uuml;fung
 To test the proper operation of sessions...: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie diese Seite neu. Kontrollieren Sie ob der Sessionz&auml;hler jedesmal weiterz&auml;hlt
@@ -1862,6 +1808,7 @@ NO PREVIEW AVAILABLE: KEINE VORSCHAU VERF&Uuml;GBAR
 ########################################
 # Page: tools/reload_remotes.php
 #
+Error connecting to database: Datenbank Verbindungsfehler
 Include Path: Include Pfad
 Deleting events for: Gel&ouml;schte Termine f&uuml;r
 Importing events for: Importierte Termine f&uuml;r
@@ -1876,7 +1823,7 @@ Remote Calendars not enabled: &#39;Externer&#39;-Kalender (Remote) nicht aktiv
 could not find event id: kann id-Eintrag nicht finden
 could not find event id XXX in database.: kann den id-Eintrag XXX in der Datenbank nicht finden
 task: Aufgabe
-This is a reminder for the XXX detailed below.: Dies ist eine Erinnerung f&uuml;r XXX wie unten beschrieben
+This is a reminder for the XXX detailed below.: Dies ist eine Erinnerung f&uuml;r XXX wie unten beschrieben.
 Pecentage Complete: Prozentsatz abgeschlossen
 Reminder: Erinnerung
 
