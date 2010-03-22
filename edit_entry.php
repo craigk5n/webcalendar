@@ -110,19 +110,21 @@ $others_complete = 'yes';
 $checked = ' checked="checked"';
 $selected = ' selected="selected"';
 
+$eType = getGetValue( 'eType' );
+$id    = getGetValue( 'id' );
+
+$copy  = getValue( 'copy', '[01]' );
+$date  = getValue( 'date', '-?[0-9]+' );
+$day   = getValue( 'day', '-?[0-9]+' );
+$month = getValue( 'month', '-?[0-9]+' );
+$year  = getValue( 'year', '-?[0-9]+' );
+
 // Public access can only add events, not edit.
 if ( empty ( $login ) || ( $login == '__public__' && $id > 0 ) )
   $id = 0;
 
-$eType = getGetValue ( 'eType' );
 if ( empty ( $eType ) )
   $eType = 'event';
-
-$copy = getValue ( 'copy', '[01]' );
-$date = getValue ( 'date', '-?[0-9]+' );
-$day = getValue ( 'day', '-?[0-9]+' );
-$month = getValue ( 'month', '-?[0-9]+' );
-$year = getValue ( 'year', '-?[0-9]+' );
 
 if ( empty ( $date ) && empty ( $month ) ) {
   if ( empty ( $year ) )
