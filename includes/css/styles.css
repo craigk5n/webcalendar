@@ -20,7 +20,7 @@ body {
   margin:0;
   padding:0;
   /* Change this one font-size and everything else should scale. */
-  /*font-size:24px;*/
+  font-size:16px;
 }
 a {
   text-decoration:none;
@@ -32,25 +32,25 @@ div {
   border:0;
 }
 h2 {
-  /*font-size:1.875em;*/
+  font-size:1.875em;
 }
 h3 {
-  /*font-size:1.500em;*/
+  font-size:1.500em;
 }
 fieldset {
   width:96%;
 }
 label {
   font-weight:bold;
-  /*font-size:.6875em;*/
+  font-size:.6875em;
 }
 p,
 input,
 select {
-  /*font-size:.75em;*/
+  font-size:.75em;
 }
 textarea {
-  /*font-size:.75em;*/
+  font-size:.75em;
   overflow:auto;
 }
 table {
@@ -61,14 +61,14 @@ table {
 }
 th {
   padding:0;
-  /*font-size:.8125em;*/
+  font-size:.8125em;
 }
 td {
   /*font-size:.6875em;*/
 }
 ul,
 ul a {
-  /*font-size:.75em;*/
+  font-size:.75em;
 }
 .main {
   clear:both;
@@ -117,7 +117,7 @@ ul a {
 .tabfor a,
 .tabbak a {
   font-weight:bold;
-  /*font-size:.875em;*/
+  font-size:.875em;
 }
 .tabbak a {
   color:#999;
@@ -171,7 +171,7 @@ ul a {
   padding:0 .5em;
 }
 .weeknumber {
-  /*font-size:.625em;*/
+  font-size:.625em;
   text-decoration:none;
 }
 img {
@@ -182,7 +182,7 @@ img.color {
   height:.9375em;
 }
 #cat {
-  /*font-size:1.125em;*/
+  font-size:1.125em;
 }
 #dateselector,
 #trailer {
@@ -213,7 +213,7 @@ img.color {
 #monthmenu,
 #yearmenu {
   margin-bottom:0;
-  /*font-size:.5625em;*/
+  font-size:.5625em;
   text-align:right;
 }
 #yearform {
@@ -228,14 +228,14 @@ img.color {
 #menu a,
 .prefix,
 .printer {
-  /*font-size:.875em;*/
+  font-size:.875em;
 }
 .prefix {
   font-weight:bold;
 }
 a#programname {
   margin-top:.625em;
-  /*font-size:.625em;*/
+  font-size:.625em;
 }
 .printer {
   clear:both;
@@ -252,17 +252,17 @@ a#programname {
 /* Remove comments to set unapproved in italics.
   font-style:italic;
 */
-  /*font-size:.75em;*/
+  font-size:.75em;
   text-decoration:none;
 }
 .nounapproved {
   font-weight:bold;
-  /*font-size:.875em;*/
+  font-size:.875em;
 }
 .entry,
 .layerentry {
   padding-right:.1875em;
-  /*font-size:.75em;*/
+  font-size:.75em;
   text-decoration:none;
 }
 .layerentry {
@@ -279,7 +279,7 @@ a#programname {
   border-style:solid;
   padding:0 .125em 0 .1875em;
   font-weight:bold;
-  /*font-size:.75em;*/
+  font-size:.75em;
   text-decoration:none;
   vertical-align:top;
 }
@@ -304,7 +304,7 @@ a#programname {
 #activitylog .prev {
   border:0;
   font-weight:bold;
-  /*font-size:.875em;*/
+  font-size:.875em;
 }
 #day .next img,
 #day .prev img {
@@ -316,7 +316,7 @@ a#programname {
 }
 .dailymatrix {
   cursor:pointer;
-  /*font-size:.75em;*/
+  font-size:.75em;
   text-align:right;
   text-decoration:none;
 }
@@ -367,7 +367,7 @@ a.matrix img {
   height:.625em;
 }
 .nav {
-  /*font-size:.875em;*/
+  font-size:.875em;
   text-decoration:none;
 }
 .popup {
@@ -376,7 +376,7 @@ a.matrix img {
   left:0;
   border:.0625em solid;
   padding:.1875em;
-  /*font-size:.75em;*/
+  font-size:.75em;
   text-decoration:none;
   visibility:hidden;
   z-index:20;
@@ -397,7 +397,7 @@ a.matrix img {
 .tooltipselect {
   cursor:help;
   font-weight:bold;
-  /*font-size:.6875em;*/
+  font-size:.6875em;
   text-decoration:none;
 }
 .tooltip {
@@ -408,7 +408,7 @@ a.matrix img {
 }
 .user,
 .categories {
-  /*font-size:1.125em;*/
+  font-size:1.125em;
   text-align:center;
 }
 .asstmode {
@@ -428,7 +428,7 @@ a.matrix img {
   border:.0625em solid #000;
 }
 .helpbody label {
-  /*font-size:1.1em;*/
+  font-size:1.1em;
   vertical-align:top;
 }
 .helpbody p {
@@ -437,7 +437,7 @@ a.matrix img {
 .helplist {
   border:0;
   font-weight:bold;
-  /*font-size:1.2em;*/
+  font-size:1.2em;
   text-align:center;
 }
 .helplist a {
@@ -468,12 +468,12 @@ img.help {
 }
 .standard {
   border:.0625em solid;
-  /*font-size:.75em;*/
+  font-size:.75em;
 }
 .standard th {
   border-bottom:.0625em solid;
   padding:0;
-  /*font-size:1.125em;*/
+  font-size:1.125em;
 }
  /* style for week hover highlight */
 tr.highlight td {
@@ -481,7 +481,7 @@ tr.highlight td {
 }
 .minical {
   margin:0 0 .3125em 0;
-  /*font-size:.625em;*/
+  font-size:.625em;
 }
 .minical caption a {
   font-weight:bold;
@@ -519,7 +519,7 @@ tr.highlight td {
 .minitask tr.header td {
   border-bottom:.125em solid #000;
   padding:0;
-  /*font-size:.75em;*/
+  font-size:.75em;
   text-align:center;
 }
 .minitask tr.header td {
@@ -539,7 +539,7 @@ tr.highlight td {
 .minitask  td {
   border-bottom:.0625em solid #000;
   padding:0;
-  /*font-size:.75em;*/
+  font-size:.75em;
   text-align:center;
 }
 .minitask td.filler {
@@ -564,7 +564,7 @@ tr.highlight td {
 #admin .main th,
 #pref .main td,
 #pref .main th {
-  /*font-size:.75em;*/
+  font-size:.75em;
 }
 #admin .empty,
 #pref .empty {
@@ -658,7 +658,7 @@ tr.highlight td {
   margin-right:auto;
   margin-left:auto;
   font-weight:bold;
-  /*font-size:2.9375em;*/
+  font-size:2.9375em;
 }
 #day .minical td.selectedday {
   border:.125em solid;
@@ -669,11 +669,11 @@ tr.highlight td {
   text-align:center;
 }
 .menuhref {
-  /*font-size:.75em;*/
+  font-size:.75em;
   font-family:arial, verdana, sans-serif;
 }
 #datesel td.field {
-  /*font-size:.75em;*/
+  font-size:.75em;
 }
 .glance {
   width:100%;
@@ -731,7 +731,7 @@ tr.highlight td {
 }
 #viewr th.small {
   background:none;
-  /*font-size:.5em;*/
+  font-size:.5em;
 }
 #viewd .main th {
   border-right:.0625em solid;
@@ -751,7 +751,7 @@ tr.highlight td {
 #month .main td.weekcell {
   width:1%;
   margin:0;
-  /*font-size:.75em;*/
+  font-size:.75em;
   text-align:center;
   text-decoration:none;
   vertical-align:middle;
@@ -821,13 +821,13 @@ tr.highlight td {
 }
 #pref .main td {
   height:1.875em;
-  /*font-size:.75em;*/
+  font-size:.75em;
 }
 #viewl .main td,
 #contentMonth .main td,
 #month .main td {
   height:4.6875em;
-  /*font-size:.75em;*/
+  font-size:.75em;
   vertical-align:top;
 }
 #vieww .main td,
@@ -835,7 +835,7 @@ tr.highlight td {
 #viewr .main td,
 #viewm .main td,
 #viewv .main td {
-  /*font-size:.75em;*/
+  font-size:.75em;
   padding-left:.1875em;
 }
 #viewl #prevmonth {
@@ -868,16 +868,16 @@ tr.highlight td {
 }
 #combo div.headerinfo .username {
   font-weight:bold;
-  /*font-size:16pt;*/
+  font-size:16pt;
 }
 #combo div.headerinfo #categoryselection {
   padding-left:1.875em;
   font-weight:normal;
-  /*font-size:12pt;*/
+  font-size:12pt;
 }
 #combo div.headerinfo #selectedcategories {
   font-weight:normal;
-  /*font-size:12pt;*/
+  font-size:12pt;
 }
 #combo #categorylist {
   border:.0625em solid #ccc;
@@ -890,7 +890,7 @@ tr.highlight td {
 #contentDay .daytitle {
   margin:0 0 0 .3125em;
   padding:0;
-  /*font-size:14pt;*/
+  font-size:14pt;
   text-align:center;
 }
 #combo .event {
@@ -902,11 +902,11 @@ tr.highlight td {
 }
 #contentAgenda td.odd {
   background:#e0e0e0;
-  /*font-size:10pt;*/
+  font-size:10pt;
 }
 #contentAgenda td.even {
   background:#ffffff;
-  /*font-size:10pt;*/
+  font-size:10pt;
 }
 #contentDay #daystatus {
   margin-left:1.25em;
@@ -914,7 +914,7 @@ tr.highlight td {
 #contentDay .timeofday {
   float:right;
   margin-right:.125em;
-  /*font-size:.5625em;*/
+  font-size:.5625em;
 }
 #contentDay #daydiv {
   height:25em;
@@ -928,13 +928,13 @@ tr.highlight td {
   border:.0625em solid;
   border-color:#a0a0a0 #e0e0e0 #e0e0e0 #a0a0a0;
   background:#ffffff;
-  /*font-size:.625em;*/
+  font-size:.625em;
 }
 #contentDay .daytimedevent {
   width:15.625em;
   border:.0625em solid;
   border-color:#e0e0e0 #a0a0a0 #a0a0a0 #e0e0e0;
-  /*font-size:.625em;*/
+  font-size:.625em;
 }
 #contentDay #dayinnerdiv {
   position:relative;
@@ -975,17 +975,17 @@ tr.highlight td {
 #day .title .date,
 .title .date {
   font-weight:bold;
-  /*font-size:1.5em;*/
+  font-size:1.5em;
   text-align:center;
 }
 .title .titleweek {
-  /*font-size:1.25em;*/
+  font-size:1.25em;
 }
 .title .viewname,
 #day .title .user,
 .title .user {
   font-weight:bold;
-  /*font-size:1.125em;*/
+  font-size:1.125em;
   text-align:center;
 }
 #weekdetails .main {
@@ -1005,7 +1005,7 @@ tr.highlight td {
   width:90%;
   background:#fff;
   color:#999;
-  /*font-size:.625em;*/
+  font-size:.625em;
   text-align:center;
 }
 #viewt .yardstick td {
@@ -1029,10 +1029,10 @@ tr.highlight td {
 #register table,
 #login table {
   border:.0625em solid;
-  /*font-size:.75em;*/
+  font-size:.75em;
 }
 .cookies {
-  /*font-size:.8125em;*/
+  font-size:.8125em;
 }
 .strikethrough {
   text-decoration:line-through;
@@ -1070,7 +1070,7 @@ tr.highlight td {
   text-align:left;
 }
 .location {
- /*font-size:.625em;*/
+ font-size:.625em;
 }
 .byxxx th,
 .byxxx td {
@@ -1121,10 +1121,10 @@ tr.highlight td {
 .layers p {
   margin:0;
   padding-left:.3125em;
-  /*font-size:.75em;*/
+  font-size:.75em;
 }
 .layers p label {
-  /*font-size:.8125em;*/
+  font-size:.8125em;
 }
 #securityAudit {
   border:.0625em solid #c0c0c0;
@@ -1166,7 +1166,7 @@ tr.highlight td {
   margin-right:1.5625em;
   border:.0625em solid;
   padding:.3125em;
-  /*font-size:.6875em;*/
+  font-size:.6875em;
   text-align:center;
 }
 .layertable {
@@ -1187,7 +1187,7 @@ tr.highlight td {
    padding-left:.3125em;
    background:#d0d0d0;
    color:#000;
-   /*font-size:10pt;*/
+   font-size:10pt;
 }
 .fakebutton:hover {
   background:#0ff;
@@ -1232,7 +1232,7 @@ tr.highlight td {
 #login textarea,
 #login tr,
 #login td {
-  /*font-size:1em;*/
+  font-size:1em;
 }
 a:hover {
   color:#00f;
