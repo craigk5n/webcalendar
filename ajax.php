@@ -26,7 +26,7 @@ load_global_settings ();
 load_user_preferences ();
 $WebCalendar->setLanguage ();
 
-$cat_id = getPostValue ( 'cat_id' );
+$cat_id = getValue ( 'cat_id', '-?[0-9]+', true );
 $name = getPostValue ( 'name' );
 $page = getPostValue ( 'page' );
 
