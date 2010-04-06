@@ -35,7 +35,7 @@ if ( $res ) {
 } else
   $error = db_error();
 
-$cat_id = getPostValue ( 'cat_id' );
+$cat_id = getValue ( 'cat_id', '-?[0-9]+', true );
 $cat_ids = $cat_name = array();
 $catNames = '';
 
