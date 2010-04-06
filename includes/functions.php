@@ -1605,13 +1605,38 @@ function display_unapproved_events ( $user ) {
  * @global resource  Database connection
  */
 function do_redirect ( $url ) {
-  global $_SERVER, $c, $SERVER_SOFTWARE;
+  global $_SERVER, $c, $SERVER_SOFTWARE, $SERVER_URL;
 
   // Replace any '&amp;' with '&' since we don't want that in the HTTP header.
   $url = str_replace ( '&amp;', '&', $url );
 
   if ( empty ( $SERVER_SOFTWARE ) )
     $SERVER_SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
+
+  // $SERVER_URL should end in '/', but we may not have it yet if we are
+  // redirecting to the login.  If not, then pull it from the database.
+  if ( empty ( $SERVER_URL ) && ! empty ( $c ) ) {
+    $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
+      "WHERE cal_setting = 'SERVER_URL'" );
+    if ( $res ) { 
+      if ( $row = dbi_fetch_row ( $res ) ) {
+        $SERVER_URL = $row[0];
+      }
+    }
+    dbi_free_result ( $res );
+  }
+
+  // If we have the server URL, then use a full URL, which is technically
+  // required (but all browsers accept relative URLs here).
+  // BUT, only do this if our URL does not start with '/' because then
+  // we could end up with a URL like:
+  //   http://www.k5n.us/webcalendar/webcalendar/month.php
+  if ( ! empty ( $SERVER_URL ) && substr ( $url, 0, 1 ) != '/' ) {
+    $url = $SERVER_URL . $url;
+  }
+
+//echo "<pre>"; print_r ( debug_backtrace() ); echo "\n</pre>\n";
+//echo "URL: $url <br>"; exit;
 
   $meta = '';
   if ( ( substr ( $SERVER_SOFTWARE, 0, 5 ) == 'Micro' ) ||
@@ -1861,7 +1886,7 @@ function generate_printer_friendly ( $hrefin = '' ) {
 
   // Set this to enable printer icon in top menu.
   $href = ( empty ( $href ) ? $SCRIPT : $hrefin ) . '?'
-   . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : $_SERVER['QUERY_STRING'] );
+   . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : addslashes(htmlentities($_SERVER['QUERY_STRING'])) );
   $href .= ( substr ( $href, -1 ) == '?' ? '' : '&' ) . 'friendly=1';
   $show_printer = true;
   if ( empty ( $hrefin ) ) // Menu will call this function without parameter.
@@ -1892,7 +1917,7 @@ function generate_refresh_meta () {
     ? '
     <meta http-equiv="refresh" content="'
      . $AUTO_REFRESH_TIME * 60 // Convert to seconds.
-     . '; url=' . $REQUEST_URI . '" />' : '' );
+     . '; url=' . addslashes(htmlentities($REQUEST_URI)) . '" />' : '' );
 }
 
 /* Returns all the dates a specific event will fall on
