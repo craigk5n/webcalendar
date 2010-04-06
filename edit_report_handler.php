@@ -37,7 +37,7 @@ load_user_categories();
 $error = ( empty( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
   ? print_not_auth() : '' );
 $allow_nav      = getPostValue( 'allow_nav' );
-$cat_id         = getValue ( 'cat_id', '-?[0-9]+', true );
+$cat_id         = getValue ( 'cat_id', '-?[0-9]*', true );
 $day_template   = getPostValue( 'day_template' );
 $delete         = getPostValue( 'delete' );
 $event_template = getPostValue( 'event_template' );
