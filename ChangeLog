@@ -4,6 +4,9 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 06-Apr-10 cek Security Fix: Fixes for cross-site scripting and denial
+   of service.  For details of issues:
+   http://tasecuritygroup.com/download/SCL-2010-001.txt
  - 17-Mar-10 bb Patch [ 2971855 ] German updated translation
  - 06-Mar-10 bb Removed the comments from "font-size" in css/styles.css.
    I'm not seeing any problem with these.

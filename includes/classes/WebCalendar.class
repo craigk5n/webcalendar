@@ -124,6 +124,15 @@ class WebCalendar {
 
     preg_match ( '/\/(\w+\.php)/', $self, $match );
     $SCRIPT = $match[1];
+    // Security precaution.  Don't allow <script> to be included in
+    // a URL in any way.
+    if ( preg_match ( '/\s*script/i', $_SERVER['QUERY_STRING'] ) ) {
+      // No need to have a graceful exit for this since it should only
+      // happen to malicioius crapweasels.
+      echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
+      exit;
+    }
+
 
     // Several files need a no-cache header and some of the same code.
     $special = array ( 'month.php', 'day.php', 'week.php',
