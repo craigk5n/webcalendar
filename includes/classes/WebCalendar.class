@@ -124,6 +124,15 @@ class WebCalendar {
       'week_details.php', 'year.php', 'minical.php' );
     $DMW = in_array ( $SCRIPT, $special );
 
+    // Security precaution.  Don't allow <script> to be included in
+    // a URL in any way.
+    if ( preg_match ( '/\s*script/i', $_SERVER['QUERY_STRING'] ) ) {
+      // No need to have a graceful exit for this since it should only
+      // happen to malicioius crapweasels.
+      echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
+      exit;
+    }
+
     // Unset some variables that shouldn't be set.
     unset ( $user_inc );
   }

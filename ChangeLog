@@ -1,6 +1,9 @@
 $Id$
 
 Version 1.2.1 (Not Yet Released -- CVS!)
+ - Security Fix: Fixes for cross-site scripting and denial of service.  For
+   details of issues:
+   http://tasecuritygroup.com/download/SCL-2010-001.txt
  - Removed CSS "overflow:auto" setting for month table cells since it was
    causing unnecessary scrollbars in Chrome.
  - Patch [ 2534090 ] PHP 5.2.8/Seg fault/blank page/Internal Server Error/untimed
