@@ -1,6 +1,8 @@
 $Id$
 
 Version 1.2.1 (Not Yet Released -- CVS!)
+ - Removed CSS "overflow:auto" setting for month table cells since it was
+   causing unnecessary scrollbars in Chrome.
  - Patch [ 2534090 ] PHP 5.2.8/Seg fault/blank page/Internal Server Error/untimed
  - Patch [ 2261885 ] Missing shebang
  - Patch [ 2261841 ] Fix timebar views
