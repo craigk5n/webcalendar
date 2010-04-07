@@ -79,8 +79,8 @@ ul a {
 .main th,
 .main td {
   width:14%;
-  border-top:.0625em solid;
-  border-left:.0625em solid;
+  border-top: 1px solid;
+  border-left: 1px solid;
   vertical-align:top;
 }
 .underline {
