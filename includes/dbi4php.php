@@ -753,15 +753,8 @@ function dbi_get_cached_rows ( $sql, $params = array (),
     if ( ! empty ( $file ) && $save_query ) {
       $fd = @fopen ( $file, 'w+b', false );
       if ( empty ( $fd ) ) {
-        if ( function_exists ( "translate" ) ) {
-          dbi_fatal_error ( translate ( 'Cache error' ) . ': '
-             . str_replace ( 'XXX', translate ( 'write' ),
-              translate ( 'Could not XXX file' ) ) . " $file." );
-        } else {
-          dbi_fatal_error ( 'Cache error' . ': '
-             . str_replace ( 'XXX', 'write',
-              'Could not XXX file' ) . " $file." );
-        }
+        die_miserable_death ( "Cache Error.<br/><br/>The permissions for the db_cachedir will not allow creation of the following file:<br/><blockquote>" .
+          $file . "</blockquote>", 'dbCacheError' );
       }
 
       fwrite ( $fd, serialize ( $rows ) );
@@ -819,19 +812,29 @@ function dbi_clear_cache () {
        . $db_connection_info['cachedir'] );
 
   $b = 0;
+  $errcnt = 0;
+  $errstr = '';
   while ( false !== ( $file = readdir ( $fd ) ) ) {
     if ( preg_match ( '/^\S\S\S\S\S\S\S\S\S\S+.dat$/', $file ) ) {
       // echo 'Deleting ' . $file . '<br />';
       $cnt++;
       $fullpath = $db_connection_info['cachedir'] . '/' . $file;
       $b += filesize ( $fullpath );
-      if ( ! unlink ( $fullpath ) )
-        echo '<!-- ' . translate ( 'Error' ) . ': '
+      if ( ! @unlink ( $fullpath ) ) {
+        $errcnt++;
+        $errstr .= '<!-- ' . translate ( 'Error' ) . ': '
          . str_replace ( 'XXX', translate ( 'delete' ),
           translate ( 'Could not XXX file' ) ) . " $file. -->\n";
-      // TODO: log this somewhere???
+        // TODO: log this somewhere???
+      }
     }
   }
+  if ( $errcnt > 10 ) {
+    // They don't have correct permissions set.
+    die_miserable_death ( "Error removing temporary file.<br/><br/>The permissions for the following directory do not support the db_cachedir option in includes/settings.php:<br/><blockquote>" .
+      $db_connection_info['cachedir'] . "</blockquote>", 'dbCacheError' );
+  }
+
   return $cnt;
 }
 

@@ -1,6 +1,7 @@
 $Id$
 
 Version 1.2.1 (Not Yet Released -- CVS!)
+ - Added better error message for unlink error in db_cachedir.
  - Fixed bug [ 2769084 ] xss vulnerability with cat_id in month.php
  - Security Fix: Fixes for cross-site scripting and denial of service.  For
    details of issues:
