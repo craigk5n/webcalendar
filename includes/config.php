@@ -24,6 +24,8 @@
  * Execution is aborted.
  *
  * @param string  $error  The error message to display
+ * @param string  $anchor The section in WebCalendar-SysAdmin.html to
+ *		display (should be marked with <a name="XXX">
  * @internal We don't normally put functions in this file. But, since this
  *           file is included before some of the others, this function either
  *           goes here or we repeat this code in multiple files.
@@ -33,11 +35,17 @@
  * NOTE: Don't call translate from here.
  *       This function is often called before translation stuff is initialized!
  */
-function die_miserable_death( $error ) {
+function die_miserable_death( $error, $anchor='' ) {
   global $APPLICATION_NAME, $LANGUAGE, $login, $TROUBLE_URL;
 
   // Make sure app name is set.
   $appStr = ( empty( $APPLICATION_NAME ) ? 'WebCalendar' : $APPLICATION_NAME );
+  $url = $TROUBLE_URL;
+  if ( ! empty ( $anchor ) ) {
+    $args = split ( '#', $TROUBLE_URL );
+    $url = $args[0] . '#' . $anchor;
+  }
+
 
   echo <<<EOT
 <html>
@@ -45,7 +53,7 @@ function die_miserable_death( $error ) {
   <body>
     <h2>{$appStr} Error</h2>
     <p>{$error}</p><hr />
-    <p><a href="{$TROUBLE_URL}" target="_blank">Troubleshooting Help</a></p>
+    <p><a href="{$url}" target="_blank">Troubleshooting Help</a></p>
   </body>
 </html>
 EOT;

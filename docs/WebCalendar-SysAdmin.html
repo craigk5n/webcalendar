@@ -1345,6 +1345,19 @@ and the event has been approved.
     Alternately, you can disable any error messages from being displayed
     in the browser and have them logged to a file. (See the comments
     included in the <tt>php.ini</tt> file for instructions on how to do this.)</dd>
+ <dt><a name="dbCacheError">I receive an error message saying "Error removing temporary file" or "Cache error".</a></dt>
+   <dd>This indicates that a file in your database cache directory could not be
+   deleted or created.
+   The quickest solution to this problem is to not use the database
+   cache.  Simply remote the <tt>db_cachedir</tt> line from
+   <tt>includes/settings.php</tt> with a simple text editor.
+   This error is most common when the <tt>send_reminders.php</tt> script
+   is run from a cron job under a different system account than the
+   PHP application server is running under.  This causes files created by
+   the <tt>send_reminders.php</tt> script to be owned by a different
+   user than normal, preventing the PHP application from being able to
+   remove the files when needed.
+</dd>
  <dt>I receive an error message saying "Failed opening 'includes/...' for inclusion ..."</dt>
    <dd>You may have to modify the <tt>include_path</tt> setting
        in your <tt>php.ini</tt> file. Most users do not need to do this,
