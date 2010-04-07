@@ -275,7 +275,7 @@ a#programname {
   margin-left:.125em;
 }
 .dayofmonth {
-  border-width:0 .0625em .0625em 0;
+  border-width:0 1px 1px 0;
   border-style:solid;
   padding:0 .125em 0 .1875em;
   font-weight:bold;
