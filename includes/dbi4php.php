@@ -823,14 +823,8 @@ function dbi_get_cached_rows( $sql, $params = array(),
       $fd = @fopen( $file, 'w+b', false );
 
       if( empty( $fd ) ) {
-        if( function_exists( 'translate' ) ) {
-          dbi_fatal_error( str_replace( array( 'XXX', 'YYY' ),
-              array( translate( 'write' ), $file ),
-              translate( 'Cache error Could not XXX file YYY.' ) ) );
-        } else {
-          dbi_fatal_error( 'Cache error: Could not write file "'
-            . $file . '".' );
-        }
+        die_miserable_death ( "Cache Error.<br/><br/>The permissions for the db_cachedir will not allow creation of the following file:<br/><blockquote>" .
+          $file . "</blockquote>", 'dbCacheError' );
       }
 
       fwrite( $fd, serialize( $rows ) );
@@ -896,6 +890,8 @@ function dbi_clear_cache() {
       translate( 'Error opening cache dir XXX.' ) ) );
 
   $b = 0;
+  $errcnt = 0;
+  $errstr = '';
   while( false !== ( $file = readdir( $fd ) ) ) {
     if( preg_match( '/^\S\S\S\S\S\S\S\S\S\S+.dat$/', $file ) ) {
       // echo 'Deleting ' . $file . '<br />';
@@ -903,13 +899,22 @@ function dbi_clear_cache() {
       $fullpath = $db_connection_info['cachedir'] . '/' . $file;
       $b += filesize ( $fullpath );
 
-      if( ! unlink( $fullpath ) )
-        echo '<!-- ' . str_replace( array( 'XXX', 'YYY' ),
-          array( translate( 'delete' ), $file ),
-          translate( 'Cache error Could not XXX file YYY.' ) ) . " -->\n";
-      // TODO: log this somewhere???
+      if( ! @unlink( $fullpath ) ) {
+         $errcnt++;
+         $errstr .= '<!-- ' . str_replace( array( 'XXX', 'YYY' ),
+           array( translate( 'delete' ), $file ),
+           translate( 'Cache error Could not XXX file YYY.' ) ) . " -->\n";
+        // TODO: log this somewhere???
+      }
     }
   }
+  if ( $errcnt > 10 ) {
+    // They don't have correct permissions set.
+    die_miserable_death ( "Error removing temporary file.<br/><br/>The permissions for the following directory do not support the db_cachedir option in includes/settings.php:<br/><blockquote>" .
+      $db_connection_info['cachedir'] . "</blockquote>", 'dbCacheError' );
+  }
+
+
   return $cnt;
 }
 
