@@ -374,7 +374,7 @@ a.matrix img {
   position:absolute;
   top:0;
   left:0;
-  border:.0625em solid;
+  border:1px solid;
   padding:.1875em;
   font-size:.75em;
   text-decoration:none;
