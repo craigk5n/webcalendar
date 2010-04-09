@@ -73,8 +73,8 @@ ul a {
 .main {
   clear:both;
   width:100%;
-  border-right:.0625em solid;
-  border-bottom:.0625em solid;
+  border-right:1px solid;
+  border-bottom:1px solid;
 }
 .main th,
 .main td {
@@ -213,7 +213,7 @@ img.color {
 #monthmenu,
 #yearmenu {
   margin-bottom:0;
-  font-size:.5625em;
+  font-size: small;
   text-align:right;
 }
 #yearform {
@@ -284,8 +284,8 @@ a#programname {
   vertical-align:top;
 }
 .dayofmonth:hover {
-  border-right:.0625em solid #00f;
-  border-bottom:.0625em solid #00f;
+  border-right:1px solid #00f;
+  border-bottom:1px solid #00f;
 }
 .next img,
 #activitylog .next {
@@ -333,12 +333,12 @@ td.matrixappts:hover {
   background:#cfc;
 }
 td.matrix {
-  height:.0625em;
+  height:1px;
   background:#000;
 }
 .matrix img {
   width:100%;
-  height:.0625em;
+  height:1px;
 }
 a.matrix img {
   width:100%;
@@ -347,17 +347,17 @@ a.matrix img {
 .matrixd {
   margin-right:auto;
   margin-left:auto;
-  border-right:.0625em solid;
-  border-left:.0625em solid;
+  border-right:1px solid;
+  border-left:1px solid;
 }
 .matrixledge {
-  border-left:.0625em solid #000;
+  border-left:1px solid #000;
 }
 .matrixlegend {
   margin-top:1.5625em;
   margin-right:auto;
   margin-left:auto;
-  border:.0625em solid #000;
+  border:1px solid #000;
   padding:.3125em;
   background:#fff;
   text-align:center;
@@ -425,7 +425,7 @@ a.matrix img {
   vertical-align:top;
 }
 .helpbody div {
-  border:.0625em solid #000;
+  border:1px solid #000;
 }
 .helpbody label {
   font-size:1.1em;
@@ -467,11 +467,11 @@ img.help {
   width:1em;
 }
 .standard {
-  border:.0625em solid;
+  border:1px solid;
   font-size:.75em;
 }
 .standard th {
-  border-bottom:.0625em solid;
+  border-bottom:1px solid;
   padding:0;
   font-size:1.125em;
 }
@@ -498,7 +498,7 @@ tr.highlight td {
   background:transparent;
 }
 .minical td {
-  border:.0625em solid;
+  border:1px solid;
   padding:0 .125em;
 }
 .minical td a {
@@ -512,8 +512,8 @@ tr.highlight td {
 }
 .minitask {
   width:98%;
-  margin-left:.0625em;
-  border:.0625em solid #000;
+  margin-left:1px;
+  border:1px solid #000;
 }
 .minitask tr.header th,
 .minitask tr.header td {
@@ -534,10 +534,10 @@ tr.highlight td {
   text-align:left !important;
 }
 .sorterbottom {
- border-bottom:.0625em solid #000 !important;
+ border-bottom:1px solid #000 !important;
 }
 .minitask  td {
-  border-bottom:.0625em solid #000;
+  border-bottom:1px solid #000;
   padding:0;
   font-size:.75em;
   text-align:center;
@@ -619,8 +619,8 @@ tr.highlight td {
 }
 .embactlog {
   width:100%;
-  border-right:.0625em solid;
-  border-bottom:.0625em solid;
+  border-right:1px solid;
+  border-bottom:1px solid;
   border-spacing:0;
 }
 .embactlog tr {
@@ -631,9 +631,9 @@ tr.highlight td {
 }
 .embactlog th {
   width:14%;
-  border-top:.0625em solid;
-  border-bottom:.0625em solid;
-  border-left:.0625em solid;
+  border-top:1px solid;
+  border-bottom:1px solid;
+  border-left:1px solid;
   padding:.0625em .1875em;
 }
 .embactlog th.action,
@@ -642,11 +642,11 @@ tr.highlight td {
   width:7%;
 }
 .embactlog td {
-  border-left:.0625em solid;
+  border-left:1px solid;
   padding:.0625em .1875em;
 }
 #day div.minicalcontainer {
-  border:.0625em solid #000;
+  border:1px solid #000;
   padding:.1875em;
   vertical-align:top;
 }
@@ -677,23 +677,23 @@ tr.highlight td {
 }
 .glance {
   width:100%;
-  border-right:.0625em solid;
-  border-bottom:.0625em solid;
+  border-right:1px solid;
+  border-bottom:1px solid;
 }
 .glance th.empty {
-  border-top:.0625em solid;
-  border-left:.0625em solid;
+  border-top:1px solid;
+  border-left:1px solid;
 }
 .glance th.row {
   width:14%;
   height:2.5em;
-  border-top:.0625em solid;
-  border-left:.0625em solid;
+  border-top:1px solid;
+  border-left:1px solid;
   vertical-align:middle;
 }
 .glance td {
-  border-top:.0625em solid;
-  border-left:.0625em solid;
+  border-top:1px solid;
+  border-left:1px solid;
   padding-left:.1875em;
   vertical-align:top;
 }
@@ -734,7 +734,7 @@ tr.highlight td {
   font-size:.5em;
 }
 #viewd .main th {
-  border-right:.0625em solid;
+  border-right:1px solid;
   padding:.0625em;
 }
 #pref .main th.weekcell,
@@ -772,8 +772,8 @@ tr.highlight td {
 #viewr .main th.empty,
 #week .main th.empty {
   width:5%;
-  border-top:.0625em solid;
-  border-left:.0625em solid;
+  border-top:1px solid;
+  border-left:1px solid;
   background:none;
   background:transparent;
 }
@@ -861,7 +861,7 @@ tr.highlight td {
 }
 #combo div.headerinfo {
   margin:.9375em;
-  border:.0625em solid #000;
+  border:1px solid #000;
   padding:.625em;
   background:#fff;
   color:#000;
@@ -880,7 +880,7 @@ tr.highlight td {
   font-size:12pt;
 }
 #combo #categorylist {
-  border:.0625em solid #ccc;
+  border:1px solid #ccc;
   background:#ffa;
 }
 #contentMonth #monthstatus {
@@ -925,14 +925,14 @@ tr.highlight td {
   margin-top:.25em;
   margin-bottom:.25em;
   margin-left:3.125em;
-  border:.0625em solid;
+  border:1px solid;
   border-color:#a0a0a0 #e0e0e0 #e0e0e0 #a0a0a0;
   background:#ffffff;
   font-size:.625em;
 }
 #contentDay .daytimedevent {
   width:15.625em;
-  border:.0625em solid;
+  border:1px solid;
   border-color:#e0e0e0 #a0a0a0 #a0a0a0 #e0e0e0;
   font-size:.625em;
 }
@@ -946,7 +946,7 @@ tr.highlight td {
   width:3.125em;
   height:3.125em;
   margin:0;
-  border:.0625em solid #e0e0e0;
+  border:1px solid #e0e0e0;
   padding:0;
 }
 #contentDay .hourblockright {
@@ -955,8 +955,8 @@ tr.highlight td {
   width:31.25em;
   height:3.125em;
   margin:0;
-  border-right:.0625em solid #e0e0e0;
-  border-left:.0625em solid #e0e0e0;
+  border-right:1px solid #e0e0e0;
+  border-left:1px solid #e0e0e0;
   padding:0;
   background-image:url( images/hour_in_day.gif );
   /*overflow:auto;*/
@@ -1009,7 +1009,7 @@ tr.highlight td {
   text-align:center;
 }
 #viewt .yardstick td {
-  border:.0625em solid #999;
+  border:1px solid #999;
   padding:0;
 }
 #viewt td.entry {
@@ -1028,7 +1028,7 @@ tr.highlight td {
 }
 #register table,
 #login table {
-  border:.0625em solid;
+  border:1px solid;
   font-size:.75em;
 }
 .cookies {
@@ -1050,19 +1050,19 @@ tr.highlight td {
   text-align:center;
 }
 .boxtop {
-  border-top:.0625em solid #888;
+  border-top:1px solid #888;
 }
 .boxright {
-  border-right:.0625em solid #888;
+  border-right:1px solid #888;
 }
 .boxbottom {
-  border-bottom:.0625em solid #888;
+  border-bottom:1px solid #888;
 }
 .boxleft {
-  border-left:.0625em solid #888;
+  border-left:1px solid #888;
 }
 .boxall {
-  border:.0625em solid #888;
+  border:1px solid #888;
   padding-left:.1875em;
 }
 .leftpadded {
@@ -1127,7 +1127,7 @@ tr.highlight td {
   font-size:.8125em;
 }
 #securityAudit {
-  border:.0625em solid #c0c0c0;
+  border:1px solid #c0c0c0;
 }
 #securityAudit th {
   background:#d0d0d0;
@@ -1137,7 +1137,7 @@ tr.highlight td {
 }
 #securityAuditNotes {
   margin:1.25em;
-  border:.0625em solid;
+  border:1px solid;
 }
 #securityAuditNotes li {
   margin-top:.25em;
@@ -1156,7 +1156,7 @@ tr.highlight td {
 }
 .note {
   margin:0 1.5625em;
-  border:.0625em solid;
+  border:1px solid;
   padding:.625em;
 }
 .rightsidetip {
@@ -1164,7 +1164,7 @@ tr.highlight td {
   width:15.625em;
   margin-top:.625em;
   margin-right:1.5625em;
-  border:.0625em solid;
+  border:1px solid;
   padding:.3125em;
   font-size:.6875em;
   text-align:center;
@@ -1181,7 +1181,7 @@ tr.highlight td {
   cursor:pointer;
 }
 .fakebutton {
-   border:.0625em solid;
+   border:1px solid;
    border-color:#e0e0e0 #808080 #808080 #e0e0e0;
    padding-right:.3125em;
    padding-left:.3125em;
@@ -1200,16 +1200,16 @@ tr.highlight td {
   margin-right:.1875em;
 }
 #quickAddDiv {
-  border:.0625em solid;
+  border:1px solid;
   border-color:#e0e0e0 #808080 #808080 #e0e0e0;
   background:#ffffff;
 }
 #eventcomment {
- border:.0625em solid;
+ border:1px solid;
  padding:.25em;
 }
 #adminhome table {
-  border:.0625em solid #000;
+  border:1px solid #000;
   padding:.3125em;
 }
 #adminhome table td {
@@ -1220,7 +1220,7 @@ tr.highlight td {
   text-align:center;
 }
 #adminhome td a {
-  border:.0625em solid;
+  border:1px solid;
   border-color:#eee #777 #777 #eee;
   padding:.625em;
 }
