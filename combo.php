@@ -550,8 +550,12 @@ function view_event ( key, location )
 
   // For now, blank out participants.
   $('participants').innerHTML = '<?php echo $SMALL_LOADING;?>';
+<?php if ( Doc::attachmentsEnabled() ) { ?>
   $('attachments').innerHTML = '<?php echo $SMALL_LOADING;?>';
+<?php } ?>
+<?php if ( Doc::commentsEnabled() ) { ?>
   $('comments').innerHTML = '<?php echo $SMALL_LOADING;?>';
+<?php } ?>
 
   // Load participants via AJAX
   new Ajax.Request('events_ajax.php',
@@ -588,6 +592,7 @@ function view_event ( key, location )
       }
       $('participants').innerHTML = text;
 
+<?php if ( Doc::attachmentsEnabled() ) { ?>
       text = '';
       for ( var i = 0; i < response.attachments.length; i++ ) {
         var attachment = response.attachments[i];
@@ -598,7 +603,9 @@ function view_event ( key, location )
       if ( response.attachments.length == 0 )
         text = '<?php etranslate('None');?>';
       $('attachments').innerHTML = text;
+<?php } ?>
 
+<?php if ( Doc::commentsEnabled() ) { ?>
       text = '<dl style="margin-top: 0;">';
       for ( var i = 0; i < response.comments.length; i++ ) {
         var comment = response.comments[i];
@@ -610,6 +617,7 @@ function view_event ( key, location )
       if ( response.comments.length == 0 )
         text = '<?php etranslate('None');?>';
       $('comments').innerHTML = text;
+<?php } ?>
     },
     onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
@@ -1190,9 +1198,9 @@ function format_date ( dateStr, showWeekday )
 {
   var fmt = '<?php echo $DATE_FORMAT;?>';
 
-  var y = dateStr.substring ( 0, 4 );
-  var m = dateStr.substring ( 4, 6 );
-  var d = dateStr.substring ( 6, 8 );
+  var y = dateStr.substr ( 0, 4 );
+  var m = dateStr.substr ( 4, 2 );
+  var d = dateStr.substr ( 6, 2 );
 
   var ret = fmt;
   ret = ret.replace ( /__dd__/, d );
@@ -1224,8 +1232,8 @@ function format_time ( timeStr )
   if ( timeStr < 0 )
     return '';
 
-  var h = timeStr.substring ( 0, 2 );
-  var m = timeStr.substring ( 2, 4 );
+  var h = timeStr.substr ( 0, 2 );
+  var m = timeStr.substr ( 2, 2 );
   var ret;
 
 <?php if ( $TIME_FORMAT == '12' ) { ?>
