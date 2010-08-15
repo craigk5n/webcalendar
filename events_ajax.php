@@ -110,7 +110,8 @@ if ( $action == 'get' ) {
   }
   // Load all category IDs for the specified event IDs
   // echo "<pre>"; print_r ( $ids ); echo "</pre>";
-  load_category_ids ( $ids );
+  if ( ! empty ( $id ) )
+    load_category_ids ( $ids );
 
   // TODO:  We need to be able to start a week on ANY day.
   $monthend = date ( 'Ymd',
