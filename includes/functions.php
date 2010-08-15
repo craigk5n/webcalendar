@@ -3812,6 +3812,7 @@ function load_global_settings () {
     $GLOBALS['TIMEZONE'] = $GLOBALS['SERVER_TIMEZONE'];
 
   set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
+  date_default_timezone_set ( $GLOBALS['TIMEZONE'] );
 
   // If app name not set.... default to "Title". This gets translated later
   // since this function is typically called before translate.php is included.
