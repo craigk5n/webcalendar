@@ -1026,19 +1026,22 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
        . '</a></li>';
     }
   } else {
+    if ( ! empty( $user ) && $user != $login && ! $is_assistant ) {
+      user_load_variables( $user, 'temp_' );
+      $delete_str = str_replace( 'XXX', $temp_fullname,
+                                translate( 'Delete entry from calendar of XXX' ) );
+    } else {
+      $delete_str = $deleteEntryStr;
+    }
     echo '
       <li><a title="' . $editEntryStr . '" class="nav" href="edit_entry.php?id='
      . $id . $u_url . '">' . $editEntryStr . '</a></li>
-      <li><a title="' . $deleteEntryStr . '" class="nav" href="del_entry.php?id='
+      <li><a title="' . $delete_str . '" class="nav" href="del_entry.php?id='
      . $id . $u_url . $rdate . '" onclick="return confirm( \'' . $areYouSureStr
      . "\\n\\n"
      . ( empty ( $user ) || $user == $login || $is_assistant
       ? $deleteAllStr : '' )
-     . '\' );">' . $deleteEntryStr;
-    if ( ! empty ( $user ) && $user != $login && ! $is_assistant ) {
-      user_load_variables ( $user, 'temp_' );
-      echo ' ' . translate ( 'from calendar of' ) . ' ' . $temp_fullname;
-    }
+     . '\' );">' . $delete_str;
     echo '</a></li>';
   }
   echo '

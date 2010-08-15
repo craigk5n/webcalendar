@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 09-05-2008
+# Translation last updated on 08-14-2010
 
 
 ################################################################################
@@ -854,11 +854,6 @@ export format not defined or incorrect: export format not defined or incorrect
 No user specified.: No user specified.
 
 ########################################
-# Page: groups.php
-#
-Add New Group: Add New Group
-
-########################################
 # Page: group_edit.php
 #
 Unnamed Group: Unnamed Group
@@ -872,6 +867,11 @@ Created by: Created by
 # Page: group_edit_handler.php
 #
 You must specify a group name: You must specify a group name
+
+########################################
+# Page: groups.php
+#
+Add New Group: Add New Group
 
 ########################################
 # Page: help_admin.php
@@ -1264,33 +1264,6 @@ listid: listid
 Reset: Reset
 
 ########################################
-# Page: views.php
-#
-Add New View: Add New View
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Unnamed View
-Add View: Add View
-Edit View: Edit View
-View Name: View Name
-View Type: View Type
-Day by Time: Day by Time
-Week (Users horizontal): Week (Users horizontal)
-Week by Time: Week by Time
-Week (Users vertical): Week (Users vertical)
-Week (Timebar): Week (Timebar)
-Month (Timebar): Month (Timebar)
-Month (side by side): Month (side by side)
-Month (on same calendar): Month (on same calendar)
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: You must specify a view name
-
-########################################
 # Page: view_d.php
 #
 No users for this view: No users for this view
@@ -1322,7 +1295,7 @@ Edit repeating entry for all dates: Edit repeating entry for all dates
 Delete repeating event for all dates: Delete repeating event for all dates
 Edit entry for this date: Edit entry for this date
 Delete entry only for this date: Delete entry only for this date
-from calendar of: from calendar of
+Delete entry from calendar of XXX: Delete entry from calendar of XXX
 This will delete the entry from your XXX calendar.: This will delete the entry from your XXX calendar.
 boss: boss'
 This will delete the entry from your boss calendar.: This will delete the entry from your boss' calendar.
@@ -1340,6 +1313,33 @@ Palm Pilot: Palm Pilot
 # Page: view_r.php
 #
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
+
+########################################
+# Page: views.php
+#
+Add New View: Add New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed View
+Add View: Add View
+Edit View: Edit View
+View Name: View Name
+View Type: View Type
+Day by Time: Day by Time
+Week (Users horizontal): Week (Users horizontal)
+Week by Time: Week by Time
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: You must specify a view name
 
 ########################################
 # Page: week_details.php
@@ -1387,11 +1387,9 @@ Error executing query.: Error executing query.
 Unfortunately, XXX is not implemented for: Unfortunately, XXX is not implemented for
 Unknown ODBC error.: Unknown ODBC error.
 Unknown error.: Unknown error.
-Cache error: Cache error
-write: write
-Could not XXX file: Could not XXX file
 Error opening cache dir: Error opening cache dir
 delete: delete
+Could not XXX file: Could not XXX file
 
 ########################################
 # Page: includes/formvars.php
