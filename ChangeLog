@@ -4,6 +4,7 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 14-Aug-10 cek Fixes for PHP warnings about default timezone not being set.
  - 07-Apr-10 cek Added better error message for unlink error in db_cachedir.
  - 06-Apr-10 cek Fixed bug [ 2769084 ] xss vulnerability with cat_id in month.php
  - 06-Apr-10 cek Security Fix: Fixes for cross-site scripting and denial
