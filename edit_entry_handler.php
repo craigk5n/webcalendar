@@ -84,7 +84,7 @@ $bysetposList   = getPostValue( 'bysetposList' );
 $byweekno       = getPostValue( 'byweekno' );
 $byyearday      = getPostValue( 'byyearday' );
 
-$cat_id           = getValue ( 'cat_id', '-?[0-9]*', true );
+$cat_id           = getValue ( 'cat_id', '-?[0-9,\-]*', true );
 $completed_day    = getPostValue( 'completed_day' );
 $completed_hour   = getPostValue( 'completed_hour' );
 $completed_minute = getPostValue( 'completed_minute' );

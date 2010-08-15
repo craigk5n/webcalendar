@@ -165,7 +165,7 @@ class WebCalendar {
       load_user_preferences();
 
     // Error-check some commonly used form variable names.
-    $cat_id  = getValue ( 'cat_id', '[\-0-9]+' );
+    $cat_id  = getValue ( 'cat_id', '[\-0-9,]+' );
     $date    = getValue ( 'date', '[0-9]+' );
     $friendly= getValue ( 'friendly', '[01]' );
     $override= getValue ( 'override', '[01]' );
