@@ -8,6 +8,10 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
+Version 1.2.2 (14 Aug 2010)
+ - Fixes for PHP warnings about default timezone not being set.
+ - Fixed bug: could not save events with more than one category
+
 Version 1.2.1 (09 Apr 2010)
  - Addressed some published security vulnerabilities related to
    cross site scripting (XSS).
