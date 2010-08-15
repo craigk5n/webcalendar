@@ -818,7 +818,7 @@ function addEventDetail()
     url += '&cat_id=' + category;
 <?php } ?>
   url += '&name=' + escape($('quickAddName').value) +
-    '&description=' + escape($('quickAddDescription').value);
+    '&desc=' + escape($('quickAddDescription').value);
   window.location.href = url;
   return true;
 }

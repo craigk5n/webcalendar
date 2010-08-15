@@ -118,6 +118,8 @@ $date  = getValue( 'date', '-?[0-9]+' );
 $day   = getValue( 'day', '-?[0-9]+' );
 $month = getValue( 'month', '-?[0-9]+' );
 $year  = getValue( 'year', '-?[0-9]+' );
+$name  = getValue( 'name' );
+$description  = getValue( 'desc' );
 
 // Public access can only add events, not edit.
 if ( empty ( $login ) || ( $login == '__public__' && $id > 0 ) )
@@ -404,7 +406,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $overall_percent = array();
 
   // Get category if passed in URL as cat_id.
-  $cat_id = getValue ( 'cat_id', '-?[0-9]*', true );
+  $cat_id = getValue ( 'cat_id', '-?[0-9,\-]*', true );
   if ( ! empty ( $cat_id ) ) {
     $res = dbi_execute ( 'SELECT cat_name FROM webcal_categories
       WHERE cat_id = ? AND ( cat_owner = ? OR cat_owner IS NULL )',
