@@ -66,10 +66,10 @@ function assert_backtrace () {
     return '[stacktrack requires PHP 4.3/5.0. Not available in PHP '
      . phpversion () . ']';
   $bt = debug_backtrace ();
-  // print_r ( $bt );
+  // echo "<pre>"; print_r ( $bt ); echo "</pre>\n";
   $file = array ();
-  for ( $i = 2, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
-    // skip the first two, since it's always this func and assert_handler
+  for ( $i = 1, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
+    // skip the first, since it's always this function
     $afile = $bt[$i];
 
     $line = basename ( $afile['file'] ) . ':' . $afile['line']

@@ -1,9 +1,12 @@
 $Id$
 
-Version 1.2.2 (09 Apr 2010)
+Version 1.2.3 (14 Aug 2010)
+ - Include backtrace in fatal errors if set to development mode
+ - Fixed bug: could not save events with more than one category
+
+Version 1.2.2 (14 Aug 2010)
  - Patch [ 3017187 ] Changed text for better translation into Japanese
  - Fixes for PHP warnings about default timezone not being set.
- - Fixed bug: could not save events with more than one category
 
 Version 1.2.1 (09 Apr 2010)
  - Added better error message for unlink error in db_cachedir.

@@ -269,3 +269,5 @@ CREATE TABLE webcal_timezones (
 /*upgrade_v1.2.1*/
 
 /*upgrade_v1.2.2*/
+
+/*upgrade_v1.2.3*/

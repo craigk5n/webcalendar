@@ -14,7 +14,7 @@ else
 if ( empty ( $user ) )
   load_user_layers ();
 
-$cat_id = getValue ( 'cat_id', '-?[0-9]*', true );
+$cat_id = getValue ( 'cat_id', '-?[0-9,\-]*', true );
 load_user_categories ();
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
