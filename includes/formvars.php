@@ -82,6 +82,7 @@ function getGetValue ( $name ) {
  * @uses getPostValue
  */
 function getValue ( $name, $format = '', $fatal = false ) {
+  global $settings;
 
   $val = getPostValue ( $name );
   if ( ! isset ( $val ) )
@@ -95,8 +96,12 @@ function getValue ( $name, $format = '', $fatal = false ) {
   if ( ! empty ( $format ) && ! preg_match ( '/^' . $format . '$/', $val ) ) {
     // does not match
     if ( $fatal ) {
+      if ( $settings['mode'] == 'dev' )
+        $error_str = ' "' . $val . '"';
+      else
+        $error_str = '';
       die_miserable_death ( translate ( 'Fatal Error' ) . ': '
-         . translate ( 'Invalid data format for' ) . $name );
+         . translate ( 'Invalid data format for' ) . ' ' . $name . $error_str );
     }
     // ignore value
     return '';

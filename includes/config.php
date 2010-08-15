@@ -34,7 +34,7 @@
  * before translation stuff is initialized!
  */
 function die_miserable_death ( $error, $anchor='' ) {
-  global $APPLICATION_NAME, $LANGUAGE, $login, $TROUBLE_URL;
+  global $APPLICATION_NAME, $LANGUAGE, $login, $TROUBLE_URL, $settings;
   // Make sure app name is set.
   $appStr = ( empty ( $APPLICATION_NAME ) ? 'WebCalendar' : $APPLICATION_NAME );
   $url = $TROUBLE_URL;
@@ -48,12 +48,24 @@ function die_miserable_death ( $error, $anchor='' ) {
   $trouble_label = 'Troubleshooting Help';
   $user_BGCOLOR = '#FFFFFF';
 
+  // Include a stack trace if mode is set to dev
+  $trace = '';
+  if ( $settings['mode'] == 'dev' ) {
+    if ( function_exists ( "assert_backtrace" ) ) {
+      $trace = "<div style=\"border: 1px solid black\; margin: 20px;\">" .
+        "<b>Stack Trace:</b><br/><blockquote>" .
+        "<pre>" . assert_backtrace () . "</pre></blockquote></div>\n";
+    }
+  }
+
   echo <<<EOT
 <html>
   <head><title>{$title}</title></head>
   <body bgcolor ="{$user_BGCOLOR}">
     <h2>{$h2_label}</h2>
-    <p>{$error}</p><hr />
+    <p>{$error}</p>
+    {$trace}
+    <hr />
     <p><a href="{$url}" target="_blank">{$trouble_label}</a></p>
   </body>
 </html>
@@ -96,7 +108,7 @@ function do_config ( $fileLoc ) {
   $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings, $single_user,
   $single_user_login, $TROUBLE_URL, $use_http_auth, $user_inc;
 
-  $PROGRAM_VERSION = 'v1.2.2';
+  $PROGRAM_VERSION = 'v1.2.3';
   $PROGRAM_DATE = '14 Aug 2010';
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
