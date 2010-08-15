@@ -3,10 +3,10 @@
 # Translator: Ralph Bo&szligler <vertrieb'at'sylphen.com>,
 # Peter Huetmannsberger <huetmann'at'site38.ping.at>
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 17. March 2010
+# Last update: 13. April 2010
 #
 # $Id$
-# Translation last updated on 03-17-2010
+# Translation last updated on 04-13-2010
 
 
 ################################################################################
@@ -1171,7 +1171,7 @@ New Search: Neue Suche
 #
 list potential security issues: Die folgenden Informationen weisen auf m&ouml;gliche Probleme im Bezug mit Ihrer WebKalender-Installation hin. Diese k&ouml;nnen jedoch ge&auml;ndert werden, um Ihre Installation sicherer gegen etwaige Angriffe zu machen.
 For questions about WebCalendar security see the forums: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
-View your current PHP settings: Ihre PHP-Informationen anzeigen
+View your current PHP settings: Anzeigen ihrer PHP-Informationen
 Security Issue: Sicherheitsoptionen
 Status: =
 Default admin user password: Grundeinstellung des admin user Passwortes
@@ -1181,7 +1181,7 @@ item XXX should not be writable: Der folgende Eintrag soll als &#39;schreibgesch
 File exists XXX: Datei exisitert: "XXX"
 Because you have email disabled, you should remove this file.: Sie sollten diese Datei l&ouml;schen, da Sie die Emailfunktion deaktiviert haben.
 File location XXX: Ort der Datei: "XXX"
-remove XXX if not using: Wenn sie die Datei "XXX" nicht verwenden, so l&ouml;schen Sie diese. Oder verschieben die Datei in ein neues Verzeichnis.
+remove XXX if not using: Wenn sie die Datei "XXX" nicht verwenden, so l&ouml;schen Sie diese, oder verschieben die Datei in ein anderes Verzeichnis.
 System Settings XXX: Systemeinstellungen: "XXX"
 consider enabling UAC: Vielleicht m&ouml;chten Sie die &#39;Zugriffskontrolle&#39; f&uuml;r die Benutzerrechte aktivieren.
 recommend approving new public events: Wir empfehlen, dass alle &ouml;ffentlichen Eintr&auml;ge genehmigt werden.
@@ -1753,7 +1753,7 @@ SESSION COUNTER: Sessionz&auml;hler
 The file permissions of settings.php are set...: Die Dateirechte von <b>settings.php</b> sind so gesetzt, da&szlig; der Installer keine Rechte zur &Auml;nderung besitzt. Bitte &auml;ndern Sie die Zugriffsrechte der Datei um fortzufahren
 The file permissions of the includes directory are set...: Die Zugriffsrechte von <b>includes</b> Verzeichnis sind so gesetzt, da&szlig; der Installer keine Rechte zum Erstellen von neuen Dateien hat. Bitte &auml;ndern Sie die Zugriffsrechte des Verzeichnisses um fortzufahren.
 Your settings.php file appears to be valid.: Ihre <b>settings.php</b> Datei scheint g&uuml;ltig zu sein.
-Configuration Wizard Password: Assitenten - Konfigurationspasswort
+Configuration Wizard Password: Assistenten - Konfigurationspasswort
 Create Settings File Password: Erzeuge Kennwort f&uuml;r die Settings Datei
 db setup directions...: In diesem Abschnitt stellen (und &uuml;berpr&uuml;fen) Sie die Verbindung zum Datenbankserver her. Die gelieferten Kontoinformationen sollten VOLLE Erlaubnis haben um Datenbanken, Tabellen und Benutzer zu erstellen. Wenn dies nicht m&ouml;glich oder Ihr Datenbankzugriff begrenzt ist, m&uuml;ssen Sie manuell Ihre Datenbank justieren.
 Database Status: Datenbank Status
@@ -1782,7 +1782,7 @@ Return to previous page after processing SQL.: Nach der Verarbeitung dieses SQL-
 This is the final step in setting up your WebCalendar Installation.: Das ist der letzte Schritt um Ihre Webkalenderinstallation abzuschliessen.
 Timezone Conversion: Zeitzonenkonvertierung
 It appears that you have NOT converted...: Es scheint Sie haben Ihre Webkalendereintr&auml;ge noch NICHT in GMT (Greenwich Mean Time) umgewandelt zu haben.
-Convert Data to GMT: Umwandeln auf GMT
+Convert Data to GMT: Zeiten umwandeln auf GMT
 Application Settings: Anwendungseinstellung
 HTTP-based authentication was not detected...: HTTP-basierende Authentisierung wurde nicht erkannt. W&auml;hlen Sie den &#39;Web Server&#39; von &#39;Benutzer Authentisierung&#39; unten aus.
 HTTP-based authentication was detected...: HTTP-basierende Authentisierung wurde erkannt. Sie sollten &#39;Web Server&#39; von der Liste &#39;Benutzer Authentisierung&#39; von unten ausw&auml;hlen.
