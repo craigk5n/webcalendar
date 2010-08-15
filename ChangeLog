@@ -1,6 +1,8 @@
 $Id$
 
 Version 1.2.1 (09 Apr 2010)
+ - Patch [ 3017187 ] Changed text for better translation into Japanese
+ - Fixes for PHP warnings about default timezone not being set.
  - Added better error message for unlink error in db_cachedir.
  - Fixed bug [ 2769084 ] xss vulnerability with cat_id in month.php
  - Security Fix: Fixes for cross-site scripting and denial of service.  For
