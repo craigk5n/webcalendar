@@ -731,7 +731,8 @@ if( ! empty( $x ) || ! empty( $y ) ) {
       ? translate( 'Please change the file permissions of this file.', true )
       : translate( 'Please change includes dir permission', true ) ) . '\' );';
   else {
-    date_default_timezone_set ( "America/New_York");
+    if ( function_exists ( "date_default_timezone_set" ) )
+      date_default_timezone_set ( "America/New_York");
     fwrite( $fd, '<?php' . "\r\n" . '/* updated via install/index.php on '
        . date( 'r' ) . "\r\n" );
     foreach( $settings as $k => $v ) {
