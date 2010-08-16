@@ -247,9 +247,10 @@ function setLocalTimes ( $eventList )
 {
   for ( $i = 0; $i < count ( $eventList ); $i++ ) {
     $event = $eventList[$i];
-    $localDate = date_to_str ( $event->getDate(), '__yyyy__ __mm__ __dd__',
+    $d = date_to_str ( $event->getDate(), '__yyyy__,__n__,__dd__',
       false );
-    $localDate = str_replace ( ' ', '', $localDate );
+    $args = split ( ',', $d );
+    $localDate = sprintf ( "%04d%02d%02d", $args[0], $args[1], $args[2] );
     $event->setLocalDate ( $localDate );
     if ( $event->getTime() <= 0 ) {
       $event->setLocalTime ( $event->getTime() );

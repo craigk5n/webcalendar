@@ -887,6 +887,7 @@ tr.highlight td {
   margin-left:1.25em;
 }
 #contentMonth .monthtitle,
+#contentYear .yeartitle,
 #contentDay .daytitle {
   margin:0 0 0 .3125em;
   padding:0;
@@ -896,6 +897,27 @@ tr.highlight td {
 #combo .event {
   margin-top:.0625em;
   overflow:hidden;
+}
+#contentYear #year_main,
+#contentYear .monthblock {
+  background: #fff;
+  border: 0;
+}
+#contentYear .monthtable {
+  margin-bottom: 10px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+#contentYear .empty {
+  background-color: #e0e0e0;
+}
+#contentYear th {
+  font-size: 70%;
+  padding: 2px;
+}
+#contentYear .dom {
+  font-size: 70%;
+  text-align: center;
 }
 #contentAgenda #agendastatus {
   margin-left:1.25em;
