@@ -2,6 +2,7 @@
 /**
  * This page handles displaying the Day/Week/Month/Year views in a single
  * page with tabs. Content is loaded dynamically with AJAX.
+ * So, requests for previous & next will not force a page reload.
  *
  * TODO:
  * - Week view
@@ -105,9 +106,7 @@ ob_start();
 ?>
 
 <div style="margin: 15px; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 10px; text-align: center;">
-<!--
-<img align="left" src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Circle-style-warning.svg/400px-Circle-style-warning.svg.png" width="40" height="40" />
--->
+<img align="left" src="images/warning.png" width="40" height="40" alt="Warning" />
 This page is a prototype that will hopefully evolve into a replacement
 for all four of the main views (day.php, week.php, month.php, year.php).
 </div>
@@ -160,6 +159,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 <li><a href="#" rel="contentDay" class="selected"><?php etranslate('Day');?></a></li>
 <li><a href="#" rel="contentWeek"><?php etranslate('Week');?></a></li>
 <li><a href="#" rel="contentMonth"><?php etranslate('Month')?></a></li>
+<li><a href="#" rel="contentYear"><?php etranslate('Year')?></a></li>
 <li><a href="#" rel="contentAgenda"><?php etranslate("Agenda");?></a></li>
 <?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
 <li><a href="#" rel="contentTasks"><?php etranslate('Tasks');?></a></li>
@@ -178,6 +178,10 @@ Week content goes here...
 
 <div id="contentMonth" class="tabcontent">
 Month content goes here...
+</div>
+
+<div id="contentYear" class="tabcontent">
+Year content goes here...
 </div>
 
 <div id="contentAgenda" class="tabcontent">
@@ -447,7 +451,10 @@ function load_content (year,month,day)
   //$('contentDay').innerHTML = '<?php echo $LOADING;?>';
   //$('contentWeek').innerHTML = '<?php echo $LOADING;?>';
   //$('contentMonth').innerHTML = '<?php echo $LOADING;?>';
+  //$('contentYear').innerHTML = '<?php echo $LOADING;?>';
   var o = $('monthstatus');
+  if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
+  var o = $('yearstatus');
   if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
   o = $('agendastatus');
   if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
@@ -635,6 +642,7 @@ function update_display ( year, month, day )
   // TODO: Use start work hour from preferences.
   $('contentWeek').innerHTML = "Not yet implemented...";
   $('contentMonth').innerHTML = build_month_view ( year, month );
+  $('contentYear').innerHTML = build_year_view ( year, month );
   $('contentAgenda').innerHTML = build_agenda_view ( year, month );
 <?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
   $('contentTasks').innerHTML = "Not yet implemented...";
@@ -940,6 +948,73 @@ function build_month_view ( year, month )
       if ( j % 7 == 6 ) ret += "</tr>\n";
     }
     ret += "</table>\n";
+  } catch ( err ) {
+    alert ( "JavaScript exception:\n" + err );
+  }
+  return ret;
+}
+
+// Build the HTML for the year view
+function build_year_view ( year, month )
+{
+  var ret = "";
+  try {
+    var dateYmd;
+    ret = prev_year_link ( year, month ) +
+      next_year_link ( year, month ) +
+      "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
+      '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
+      today_link() +
+      "&nbsp;" +
+      "<span class=\"yeartitle\">" + year + "</span>" +
+      "<span id=\"yearstatus\"> </span>" +
+      "<table id=\"year_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"0\">";
+
+    var d = new Date();
+    var today = new Date();
+    d.setYear ( year );
+    for ( var n = 0; n < 12; n++ ) {
+      if ( n % 4 == 0 )
+        ret += "<tr>";
+      ret += "<td class=\"monthblock\" valign=\"top\" align=\"center\" width=\"25%\">";
+      ret += '<a href="#" onclick="load_content('+year+','+(n+1)+',1);views.expandit(2);">' +
+         months[n] + "</a><br/>\n";
+      ret += "<table class=\"monthtable\" border=\"0\">";
+
+      d.setMonth ( n );
+      month = n + 1;
+      d.setDate ( 1 );
+
+      var wday = d.getDay();
+      var startDay = 1 - wday;
+      var daysThisMonth = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
+        daysPerMonth[month];
+
+      ret += "<tr>\n";
+      for ( var i = 0; i < 7; i++ ) {
+        ret += "<th>" + shortWeekdays[i] + "</th>";
+      }
+      ret += "</tr>\n";
+      for ( var i = startDay, j = 0; i <= daysThisMonth || j % 7 != 0; i++, j++ ) {
+        if ( j % 7 == 0 ) ret += "<tr>";
+        if ( i < 1 ) {
+          ret += "<td class=\"empty dom\">&nbsp;</td>\n";
+        } else if ( i > daysThisMonth ) {
+          ret += "<td class=\"empty dom\">&nbsp;</td>\n";
+        } else {
+          ret += "<td class=\"dom\">" + i + "</td>";
+        }
+        if ( j % 7 == 6 ) ret += "</tr>\n";
+      }
+
+      ret += "</table>\n";
+      ret += "</td>\n";
+      if ( n % 4 == 3 )
+        ret += "</tr>\n";
+    }
+    ret += "</table>\n";
+
+
   } catch ( err ) {
     alert ( "JavaScript exception:\n" + err );
   }
