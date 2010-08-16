@@ -1,5 +1,8 @@
 $Id$
 
+Version 1.2.4 (?? ??? 2010)
+ - Bug fix: undefined function date_default_timezone_set in older versions
+   of PHP.
 Version 1.2.3 (14 Aug 2010)
  - Include backtrace in fatal errors if set to development mode
  - Fixed bug: could not save events with more than one category

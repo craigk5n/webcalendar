@@ -29,7 +29,8 @@ if ( ( ! empty ( $arinc[2] ) && stristr ( $arinc[2], 'true' ) ) ) {
 
   // Kludge - we don't have access to the db from this script (for performance
   // reasons... so just use EST for the timezone.
-  date_default_timezone_set ( "America/New_York");
+  if ( function_exists ( "date_default_timezone_set" ) )
+    date_default_timezone_set ( "America/New_York");
   header ( 'Last-Modified: ' . date ( 'r', mktime ( 0, 0, 0 ) + $cookie ) );
   header ( 'Expires: ' . date ( 'D, j M Y H:i:s', time () + 86400 ) . ' UTC' );
   header ( 'Cache-Control: Public' );

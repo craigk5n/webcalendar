@@ -734,7 +734,8 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     $onload = "alert('" . $errorFileWriteStr . $file. "\\n" .
       $onloadDetailStr . ".');";
   } else {
-    date_default_timezone_set ( "America/New_York");
+    if ( function_exists ( "date_default_timezone_set" ) )
+      date_default_timezone_set ( "America/New_York");
     fwrite ( $fd, "<?php\r\n" );
     fwrite ( $fd, '/* updated via install/index.php on ' . date ( 'r' ) . "\r\n" );
     foreach ( $settings as $k => $v ) {
