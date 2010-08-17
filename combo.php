@@ -475,9 +475,9 @@ function load_content (year,month,day)
       }
       //alert ( "Response:\n" + transport.responseText );
       try  {
-        //var response = transport.responseText.evalJSON();
+        var response = transport.responseText.evalJSON();
         // Hmmm... The Prototype JSON above doesn't seem to work!
-        var response = eval('(' + transport.responseText + ')');
+        //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
@@ -576,9 +576,9 @@ function view_event ( key, location )
       }
       //alert ( "Response:\n" + transport.responseText );
       try  {
-        //var response = transport.responseText.evalJSON();
+        var response = transport.responseText.evalJSON();
         // Hmmm... The Prototype JSON above doesn't seem to work!
-        var response = eval('(' + transport.responseText + ')');
+        //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
@@ -801,9 +801,9 @@ function quickAddHandler()
       }
       //alert ( "Response:\n" + transport.responseText );
       try  {
-        //var response = transport.responseText.evalJSON();
+        var response = transport.responseText.evalJSON();
         // Hmmm... The Prototype JSON above doesn't seem to work!
-        var response = eval('(' + transport.responseText + ')');
+        //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
