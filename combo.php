@@ -535,9 +535,9 @@ function view_event ( key, location )
   $('name').innerHTML = myEvent._name;
   $('description').innerHTML = format_description ( myEvent._description );
   $('date').innerHTML = format_date ( myEvent._localDate, true );
-  $('time').innerHTML = format_time ( myEvent._localTime );
+  $('time').innerHTML = format_time ( myEvent._localTime, false );
   $('updated').innerHTML = format_date ( myEvent._localDate, false ) + ' ' +
-    format_time ( myEvent._modtime ) + ' GMT';
+    format_time ( myEvent._modtime, false ) + ' GMT';
   $('createdby').innerHTML = users[myEvent._owner] ?
     users[myEvent._owner] : myEvent._owner;
   if ( myEvent._priority < 4 )
@@ -941,6 +941,10 @@ function build_month_view ( year, month )
             ret += iconImg;
           }
 
+          // Display time of event
+          if ( myEvent._localTime > 0 )
+            ret += format_time ( myEvent._localTime, true ) + '<?php echo $TIME_SPACER;?>';
+
           ret += myEvent._name + "</div>";
           // Create popup
           if ( ! document.getElementById ( id ) ) {
@@ -1311,7 +1315,7 @@ function format_date ( dateStr, showWeekday )
 
 // TODO: modify this to handle different time formats, timezones, etc...
 // The code for different timezones could get ugly here...
-function format_time ( timeStr )
+function format_time ( timeStr, abbreviate )
 {
   if ( timeStr < 0 )
     return '';
@@ -1327,7 +1331,10 @@ function format_time ( timeStr )
   h %= 12;
   if ( h == 0 )
     h = 12;
-  ret = h + ':' + m + ampm;
+  if ( m == 0 && abbreviate )
+    ret = h + ampm;
+  else
+    ret = h + ':' + m + ampm;
 <?php } else { ?>
   ret = h + ':' + m;
 <?php } ?>
