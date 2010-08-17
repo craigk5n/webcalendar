@@ -1,0 +1,6 @@
+$Id$
+
+This directory contains Modalbox code downlaoded from git.
+The prototype.js file from WebCalendar is used instead of a separate one.
+The scriptaculous files were moved into a "scriptaculous" directory.
+One bugfix was added marked with a "cek" in the comment.

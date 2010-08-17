@@ -983,6 +983,10 @@ tr.highlight td {
   background-image:url( images/hour_in_day.gif );
   /*overflow:auto;*/
 }
+#combo #viewEventDiv table {
+  padding: 10px;
+  margin: 10px;
+}
 .topnav {
   border:0;
 }

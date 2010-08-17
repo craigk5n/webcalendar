@@ -61,7 +61,7 @@ $view_height = empty ( $VIEW_EVENT_DIALOG_HEIGHT ) ? "300" :
   $VIEW_EVENT_DIALOG_HEIGHT;
 
 // Get width/height settings for modal dialog used for "quick add"
-$quick_add_width = empty ( $QUICK_ADD_DIALOG_WIDTH ) ? "450" :
+$quick_add_width = empty ( $QUICK_ADD_DIALOG_WIDTH ) ? "550" :
   $QUICK_ADD_DIALOG_WIDTH;
 $quick_add_height = empty ( $QUICK_ADD_DIALOG_HEIGHT ) ? "200" :
   $QUICK_ADD_DIALOG_HEIGHT;
@@ -82,23 +82,19 @@ else {
 $BodyX = 'onload="load_content(' . $thisyear . ',' . $thismonth . "," .
   $thisday . ');"';
 
-// Add Modal Dialog javascript/CSS & Tab code
-$HEAD =
-  '<script type="text/javascript" src="includes/tabcontent/tabcontent.js?'
- . filemtime( 'includes/tabcontent/tabcontent.js' ). '"></script>
-    <script type="text/javascript" src="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js?'
- . filemtime( 'includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js' ) . '"></script>
-    <script type="text/javascript" src="includes/js/dhtmlmodal/modalfiles/modal.js?'
- . filemtime( 'includes/js/dhtmlmodal/modalfiles/modal.js' ) . '"></script>
-    <link type="text/css" href="includes/tabcontent/tabcontent.css?'
- . filemtime( 'includes/tabcontent/tabcontent.css' ) . '" rel="stylesheet" />
-    <link type="text/css" href="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css?'
- . filemtime( 'includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css' ) . '" rel="stylesheet" />
-    <link type="text/css" href="includes/js/dhtmlmodal/modalfiles/modal.css?'
- . filemtime( 'includes/js/dhtmlmodal/modalfiles/modal.css' ) . '" rel="stylesheet" />';
+// Add ModalBox javascript/CSS & Tab code
+$HEAD = '
+<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
+<link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
+<script type="text/javascript" src="includes/js/scriptaculous/scriptaculous.js?¬load=builder,effects"></script>
+<script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
+<link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css" 
+media="screen" />
+';
+
 
 print_header(
-  array( 'js/popups.js/true', 'js/visible.php', 'js/dblclick_add.js/true' ),
+  array( 'js/popups.js/true', 'js/visible.php' ),
   $HEAD, $BodyX );
 
 ob_start();
@@ -199,7 +195,7 @@ Tasks content goes here...
 
 
 <div id="viewEventDiv" style="display: none;">
-<table border="0" width="100%">
+<table border="0">
   <tr><td colspan="2"><h2 id="name">  </h2></td></tr>
   <tr><td class="aligntop bold"><?php etranslate("Description")?>:</td>
     <td id="description">  </td></tr>
@@ -231,14 +227,14 @@ Tasks content goes here...
   <tr><td class="aligntop bold"><?php etranslate("Comments")?>:</td>
     <td id="comments">  </td></tr>
 <?php } ?>
-
+  <tr><td colspan="2">&nbsp;</td></tr>
   <tr><td colspan="2" id="eventlink" align="center">  </td></tr>
 </table>
 </div>
 
 <!-- Hidden div tag for Quick Add dialog -->
 <div id="quickAddDiv" style="display: none;">
-<table border="0" width="100%">
+<table border="0">
 <tr><td class="aligntop bold"><?php etranslate('Date');?>:</td>
   <td><span id="quickAddDateFormatted"></span>
   <input type="hidden" id="quickAddDate" name="quickAddDate" /></td></tr>
@@ -261,6 +257,7 @@ Tasks content goes here...
      ?>
      </select></td></tr>
 <?php } ?>
+<tr><td colspan="2">&nbsp;</td></tr>
 <tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="quickAddHandler()" /><br />
 <span class="clickable" onclick="addEventDetail()"><?php etranslate("Add event detail");?></span>
 </td></tr>
@@ -302,8 +299,8 @@ var categories = [];
   }
 ?>
 <?php } ?>
-var viewDialog = null;
-var quickAddDialog = null;
+var viewDialogIsVisible = false;
+var quickAddDialogIsVisible = null;
 var catsVisible = false;
 var events = new Array();
 var loadedMonths = new Array(); // Key will be format "200801" For Jan 2008
@@ -518,15 +515,22 @@ function view_event ( key, location )
   // Use the modal dialog to display the event.
   // First update the <div> content with the information from this
   // event.
-  viewDialog = dhtmlmodal.open ( 'viewEventDialog', 'div',
-    'viewEventDiv', '<?php etranslate('View Event');?>',
-    'width=<?php echo $view_width;?>px,height=<?php echo $view_height;?>px' +
-    'resize=1,scrolling=1,center=1' );
+  //viewDialog = dhtmlmodal.open ( 'viewEventDialog', 'div',
+  //  'viewEventDiv', '<?php etranslate('View Event');?>',
+  //  'width=<?php echo $view_width;?>px,height=<?php echo $view_height;?>px' +
+  //  'resize=1,scrolling=1,center=1' );
 
-  viewDialog.onclose = function() {
-    viewDialog = null;
-    return true;
+  function viewWindowClosed() {
+    viewDialogIsVisible = false;
   }
+  Modalbox.show($('viewEventDiv'), {title: '<?php etranslate('View Event');?>', width: 450, onHide: viewWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+  //Modalbox.resizeToContent();
+  viewDialogIsVisible = true;
+
+  //viewDialog.onclose = function() {
+  //  viewDialog = null;
+  //  return true;
+  //}
 
   $('name').innerHTML = myEvent._name;
   $('description').innerHTML = format_description ( myEvent._description );
@@ -759,12 +763,17 @@ function monthCellClickHandler ( dateYmd )
   // Make sure user has not opened the view dialog. When a user clicks
   // on an event to view it, we will still receive the onclick event for
   // the td cell onclick handler below it.
-  if ( viewDialog != null )
+  if ( viewDialogIsVisible )
     return;
-  quickAddDialog = dhtmlmodal.open ( 'quickAddDialog', 'div',
-    'quickAddDiv', '<?php etranslate('Add Entry');?>',
-    'width=<?php echo $quick_add_width;?>px,height=<?php echo $quick_add_height;?>px,' +
-    'resize=1,scrolling=1,center=1' );
+  function addWindowClosed() {
+    quickAddDialogIsOpen = false;
+  }
+  Modalbox.show($('quickAddDiv'), {title: '<?php etranslate('Add Entry');?>', width: <?php echo $quick_add_width;?>, onHide: addWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+
+  //quickAddDialog = dhtmlmodal.open ( 'quickAddDialog', 'div',
+  //  'quickAddDiv', '<?php etranslate('Add Entry');?>',
+  //  'width=<?php echo $quick_add_width;?>px,height=<?php echo $quick_add_height;?>px,' +
+  //  'resize=1,scrolling=1,center=1' );
 
   $('quickAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Event');?>" );
   $('quickAddName').select();
@@ -815,7 +824,7 @@ function quickAddHandler()
       // Successfully added :-)
       //alert('Event added');
       // force reload of data.
-      quickAddDialog.hide();
+      Modalbox.hide ();
       var monthKey = "" + currentYear + ( currentMonth < 10 ? "0" : "" ) + currentMonth;
       loadedMonths[monthKey] = 0;
       load_content ( currentYear, currentMonth, currentDay );
