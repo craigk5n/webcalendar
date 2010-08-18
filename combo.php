@@ -942,8 +942,15 @@ function build_month_view ( year, month )
           }
 
           // Display time of event
-          if ( myEvent._localTime > 0 )
-            ret += format_time ( myEvent._localTime, true ) + '<?php echo $TIME_SPACER;?>';
+          if ( myEvent._localTime > 0 ) {
+            ret += format_time ( myEvent._localTime, true );
+<?php if ( $DISPLAY_END_TIMES == 'Y' ) { ?>
+            ret += '-' + format_time (
+              add_time_duration ( myEvent._localTime, myEvent._duration ),
+              true );
+<?php } ?>
+            ret += '<?php echo $TIME_SPACER;?>';
+          }
 
           ret += myEvent._name + "</div>";
           // Create popup
@@ -1338,6 +1345,39 @@ function format_time ( timeStr, abbreviate )
 <?php } else { ?>
   ret = h + ':' + m;
 <?php } ?>
+  return ret;
+}
+
+// Take a HHMM formatted time and add the specified duration (in minutes)
+// Return time in HHMM format
+function add_time_duration ( timeStr, duration )
+{
+  if ( timeStr < 0 )
+    return '';
+
+  var h = timeStr.substr ( 0, 2 );
+  var m = timeStr.substr ( 2, 2 );
+
+  while ( duration > 60 ) {
+    h++;
+    duration -= 60;
+  }
+  m += duration;
+  if ( m >= 60 ) {
+    h++;
+    m -= 60;
+  }
+  if ( h >= 24 )
+    h -= 24;
+
+  var ret = '';
+  if ( h < 10 )
+    ret = '0';
+  ret += "" + h;
+  if ( m < 10 )
+    ret += "0";
+  ret += "" + m;
+
   return ret;
 }
 
