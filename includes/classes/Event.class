@@ -45,7 +45,7 @@ class Event {
    */
   var $_time;
   /**
-   * The event's modified date (in YYYYMMDD format).
+   * The event's time in local timezone (in HHMM format)
    */
   var $_localTime;
   /**
