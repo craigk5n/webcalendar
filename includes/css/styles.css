@@ -1238,6 +1238,13 @@ tr.highlight td {
   background:#ffffff;
   font-size: 80%;
 }
+#combo .event {
+  //background-color: #a00;
+}
+#combo #contentMonth .event {
+  margin-bottom: 2px;
+  padding-left: 2px;
+}
 #eventcomment {
  border:1px solid;
  padding:.25em;
@@ -1274,3 +1281,4 @@ a:hover {
 table.ThemeMenubar {
   table-layout:auto;
 }
+

@@ -328,3 +328,28 @@ th,
 ' : '' );
 
 ?>
+// Category colors
+<?php
+load_user_categories ();
+// Default color is $MYEVENTS.  Add a bogus array 'none' element for it.
+$categories['none'] = array ( 'cat_color' => $MYEVENTS );
+foreach ( $categories as $catId => $cat ) {
+  $color = $cat['cat_color'];
+  $fg = '#000000';
+  if ( $catId < 0 )
+    $catId = 0 - $catId;
+  if ( ! empty ( $color ) ) {
+    if ( preg_match ( "/#(.)(.)(.)(.)(.)(.)/", $color, $matches ) ) {
+      // If any of red, green or blue are less than 50%, then we will
+      // assume this color is dark enough to use a white text foreground.
+      if ( hextoint ( $matches[1] ) < 8 ||
+        hextoint ( $matches[3] ) < 8 || hextoint ( $matches[5] ) < 8 ) {
+        $fg = '#ffffff';
+      }
+      //echo "// " . hextoint ( $matches[1] ) . ',' . hextoint ( $matches[3]).','. hextoint ( $matches[5] )  . " $fg\n";
+    }
+    echo ".cat_{$catId} { "
+      . background_css( $color, 15 ) . ' color: ' . $fg . "; }\n";
+  }
+}
+?>
