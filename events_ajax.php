@@ -87,7 +87,8 @@ if ( $action == 'get' ) {
   /* Pre-Load the repeated events for quicker access */
   $wkstart = get_weekday_before ( $startyear, $startmonth );
   $startTime = $wkstart;
-  //echo "startdate: $startdate <br />enddate: $enddate<br />startTime: $startTime<br />";
+  if ( $debug )
+    echo "startdate: $startdate <br />enddate: $enddate<br />startTime: $startTime<br />";
   $repeated_events = read_repeated_events ( $user, $startTime, $endTime );
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $user, $startTime, $endTime );
@@ -96,6 +97,7 @@ if ( $action == 'get' ) {
     $tasks = read_tasks ( $user, $enddate );
   // Gather the category IDs for each
   $ids = array();
+  //echo "<pre>"; print_r ( $events ); echo "</pre>";
   for ( $i = 0; $i < count ( $events ); $i++ ) {
     $id = $events[$i]->getID();
     $ids[$id] = $id;
@@ -109,7 +111,7 @@ if ( $action == 'get' ) {
     $ids[$id] = $id;
   }
   // Load all category IDs for the specified event IDs
-  // echo "<pre>"; print_r ( $ids ); echo "</pre>";
+  //echo "<pre>"; print_r ( $ids ); echo "</pre>";
   if ( ! empty ( $id ) )
     load_category_ids ( $ids );
 
@@ -280,14 +282,17 @@ function setCategories ( $eventList )
 // Get all categories for each event.
 function load_category_ids ( $ids )
 {
-  global $eventCats, $user;
+  global $eventCats, $user, $debug;
   //$ids = array_unique ( sort ( $ids, SORT_NUMERIC ) );
   $idList = implode ( ",", $ids );
+  if ( $debug )
+    echo "load_category_ids: $idList <br>\n\n";
   $sql = 'SELECT cal_id, cat_id FROM webcal_entry_categories ' .
     'WHERE cal_id IN (' . $idList . ') AND ' .
     '(cat_owner = \'' . $user . '\' OR cat_owner IS NULL) ' .
     'ORDER BY cat_order';
-  //echo "SQL: $sql <br />";
+  if ( $debug )
+    echo "SQL: $sql <br />";
   $res = dbi_execute ( $sql, array() );
   $eventCats = array();
   if ( $res ) {
@@ -305,8 +310,9 @@ function load_category_ids ( $ids )
     ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     exit;
   }
-  //echo "<pre>"; print_r ( $ids ); echo "</pre>"; exit;
-  //echo "idList: $idList <br /><pre>"; print_r ( $eventCats ); echo "</pre>"; exit;
+  if ( $debug ) {
+    echo "<pre>"; print_r ( $eventCats ); echo "</pre>";
+  }
 }
 
 exit;

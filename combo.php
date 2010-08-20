@@ -275,6 +275,7 @@ views.init()
 // End init tabs
 
 var currentYear = null, currentMonth = null, currentDay = null;
+var switchingToDayView = false;
 
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
 
@@ -491,6 +492,7 @@ function load_content (year,month,day)
     },
     onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
+  switchingToDayView = false;
   return true;
 }
 
@@ -765,6 +767,10 @@ function monthCellClickHandler ( dateYmd )
   // the td cell onclick handler below it.
   if ( viewDialogIsVisible )
     return;
+  // If user clicked on the day in the month view, we are switching to
+  // the day view, so ignore the click event.
+  if ( switchingToDayView )
+    return;
   function addWindowClosed() {
     quickAddDialogIsOpen = false;
   }
@@ -903,13 +909,16 @@ function build_month_view ( year, month )
           ( month - 1 ) == today.getMonth() &&
           i == today.getDate() )
           class = 'today';
-        if ( eventArray && eventArray.length > 0 )
-          class += ' entry hasevents';
+        // The following two lines will change the cell background to indicate
+        // that there are events on that day.
+        //if ( eventArray && eventArray.length > 0 )
+        //  class += ' entry hasevents';
         ret += "<td class=\"" + class + "\"";
 <?php if ( $can_add ) { ?>
         ret += " onclick=\"return monthCellClickHandler(" + key + ")\"";
 <?php } ?>
-        ret += "><span class=\"dayofmonth\">" + i + "</span><br />";
+        ret += "><span class=\"dayofmonth\">" +
+          '<a href="#" onclick="switchingToDayView=true;load_content('+year+','+month+','+i+');views.expandit(0);">' + i + "</a></span><br />";
         // If eventArray is null here, that means we have not loaded
         // event data for that date.
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
@@ -921,11 +930,8 @@ function build_month_view ( year, month )
               continue;
           }
 <?php } ?>
-          var id = 'popup-' + key + "-" + myEvent._id;
-          ret += "<div class=\"event clickable\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
-            " onmouseout=\"hidePopUp('" + id + "')\"" +
-            " onclick=\"view_event('" + key + "'," + l + ")\">";
           var iconImg = '';
+          var catColorClass = 'cat_none';
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
           if ( categories && categories.length ) {
             var catId = myEvent._category;
@@ -933,10 +939,22 @@ function build_month_view ( year, month )
             if ( categories[catId] && categories[catId].icon ) {
               iconImg += '<img src="' + categories[catId].icon + '" />';
             }
+            if ( categories[catId] && categories[catId].color ) {
+              catColorClass = "cat_" + catId;
+            }
           }
 <?php } ?>
+          var id = 'popup-' + key + "-" + myEvent._id;
+
+          ret += "<div class=\"event clickable " + catColorClass +
+            "\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
+            " onmouseout=\"hidePopUp('" + id + "')\"" +
+            " onclick=\"view_event('" + key + "'," + l + ")\"";
+          //if ( catColor.length )
+          //  ret += ' "style=background-color:' + catColor + ';"';
+          ret += ">";
           if ( iconImg == '' ) {
-            ret += '<img src="images/event.gif" alt="." />';
+            //ret += '<img src="images/event.gif" alt="." />';
           } else {
             ret += iconImg;
           }
@@ -952,7 +970,9 @@ function build_month_view ( year, month )
             ret += '<?php echo $TIME_SPACER;?>';
           }
 
-          ret += myEvent._name + "</div>";
+          ret += myEvent._name;
+          //ret += "cat=" + myEvent._category;
+          ret += "</div>";
           // Create popup
           if ( ! document.getElementById ( id ) ) {
             var popup = document.createElement('dl');
