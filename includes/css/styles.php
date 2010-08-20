@@ -340,10 +340,10 @@ foreach ( $categories as $catId => $cat ) {
     $catId = 0 - $catId;
   if ( ! empty ( $color ) ) {
     if ( preg_match ( "/#(.)(.)(.)(.)(.)(.)/", $color, $matches ) ) {
-      // If any of red, green or blue are less than 50%, then we will
+      // If red+green+blue is less than 50% (24 of 48), then we will
       // assume this color is dark enough to use a white text foreground.
-      if ( hextoint ( $matches[1] ) < 8 ||
-        hextoint ( $matches[3] ) < 8 || hextoint ( $matches[5] ) < 8 ) {
+      if ( hextoint ( $matches[1] ) + hextoint ( $matches[3] ) +
+        hextoint ( $matches[5] ) < 24 ) {
         $fg = '#ffffff';
       }
       //echo "// " . hextoint ( $matches[1] ) . ',' . hextoint ( $matches[3]).','. hextoint ( $matches[5] )  . " $fg\n";
