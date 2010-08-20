@@ -946,33 +946,34 @@ function build_month_view ( year, month )
 <?php } ?>
           var id = 'popup-' + key + "-" + myEvent._id;
 
-          ret += "<div class=\"event clickable " + catColorClass +
+          var eventRet = "<div class=\"event clickable " + catColorClass +
             "\" onmouseover=\"showPopUp(event,'" + id + "')\"" +
             " onmouseout=\"hidePopUp('" + id + "')\"" +
             " onclick=\"view_event('" + key + "'," + l + ")\"";
           //if ( catColor.length )
-          //  ret += ' "style=background-color:' + catColor + ';"';
-          ret += ">";
+          //  eventRet += ' "style=background-color:' + catColor + ';"';
+          eventRet += ">";
           if ( iconImg == '' ) {
-            //ret += '<img src="images/event.gif" alt="." />';
+            //eventRet += '<img src="images/event.gif" alt="." />';
           } else {
-            ret += iconImg;
+            eventRet += iconImg;
           }
 
           // Display time of event
           if ( myEvent._localTime > 0 ) {
-            ret += format_time ( myEvent._localTime, true );
+            eventRet += format_time ( myEvent._localTime, true );
 <?php if ( $DISPLAY_END_TIMES == 'Y' ) { ?>
-            ret += '-' + format_time (
+            eventRet += '-' + format_time (
               add_time_duration ( myEvent._localTime, myEvent._duration ),
               true );
 <?php } ?>
-            ret += '<?php echo $TIME_SPACER;?>';
+            eventRet += '<?php echo $TIME_SPACER;?>';
           }
 
-          ret += myEvent._name;
-          //ret += "cat=" + myEvent._category;
-          ret += "</div>";
+          eventRet += myEvent._name;
+          //eventRet += "cat=" + myEvent._category;
+          eventRet += "</div>";
+          ret += month_view_event ( eventRet );
           // Create popup
           if ( ! document.getElementById ( id ) ) {
             var popup = document.createElement('dl');
@@ -992,6 +993,13 @@ function build_month_view ( year, month )
     alert ( "JavaScript exception:\n" + err );
   }
   return ret;
+}
+
+// Right now this doesn't do much.  We may use it in the future to
+// add rounded corners.  Most I've tried don't work well in this layout :-(
+function month_view_event ( content )
+{
+  return content;
 }
 
 // Build the HTML for the year view
