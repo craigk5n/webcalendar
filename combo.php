@@ -904,16 +904,16 @@ function build_month_view ( year, month )
         var key = "" + year + ( month < 10 ? "0" : "" ) + month +
           ( i < 10 ? "0": "" ) + i;
         var eventArray = events[key];
-        var class = ( j % 7 == 0 || j % 7 == 6 ) ? 'weekend' : '';
+        var className = ( j % 7 == 0 || j % 7 == 6 ) ? 'weekend' : '';
         if ( year == ( today.getYear() + 1900 ) &&
           ( month - 1 ) == today.getMonth() &&
           i == today.getDate() )
-          class = 'today';
+          className = 'today';
         // The following two lines will change the cell background to indicate
         // that there are events on that day.
         //if ( eventArray && eventArray.length > 0 )
-        //  class += ' entry hasevents';
-        ret += "<td class=\"" + class + "\"";
+        //  className += ' entry hasevents';
+        ret += "<td class=\"" + className + "\"";
 <?php if ( $can_add ) { ?>
         ret += " onclick=\"return monthCellClickHandler(" + key + ")\"";
 <?php } ?>
@@ -1103,23 +1103,23 @@ function build_agenda_view ( year, month )
         ( i < 10 ? "0": "" ) + i;
       var dateYmd = key + ( i < 10 ? "0" : "" ) + i;
       var eventArray = events[key];
-      var class = cnt % 2 == 0 ? 'even' : 'odd';
+      var className = cnt % 2 == 0 ? 'even' : 'odd';
       var leadIn = '';
       if ( eventArray && eventArray.length > 0 ) {
         if ( year == ( today.getYear() + 1900 ) &&
           ( month - 1 ) == today.getMonth() &&
           i == today.getDate() )
-          class += ' today';
+          className += ' today';
         if ( eventArray && eventArray.length > 0 )
-          class += ' entry hasevents';
-        class += " clickable";
-        leadIn += "<td valign=\"top\" align=\"right\" class=\"" + class + "\"";
+          className += ' entry hasevents';
+        className += " clickable";
+        leadIn += "<td valign=\"top\" align=\"right\" class=\"" + className + "\"";
 <?php if ( $can_add ) { ?>
         leadIn += ' title="<?php etranslate('Click to add entry');?>" ' +
           " onclick=\"return monthCellClickHandler(" + dateYmd + ")\"";
 <?php } ?>
         leadIn += ">" + format_date ( dateYmd, true ) + "</td>\n" +
-          "<td valign=\"top\" class=\"" + class + "\">";
+          "<td valign=\"top\" class=\"" + className + "\">";
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
           var myEvent = eventArray[l];
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
