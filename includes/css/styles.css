@@ -93,6 +93,12 @@ ul a {
 .cursoradd a {
   cursor:pointer;
 }
+.warningBox {
+  background-color: #ffc0c0;
+  border: 1px solid #a04040;
+  color: #000;
+  margin: 20px;
+}
 #tabs,
 #tabscontent {
   position:relative;

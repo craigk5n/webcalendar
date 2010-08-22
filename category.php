@@ -9,6 +9,21 @@ if ( $CATEGORIES_ENABLED == 'N' ) {
   exit;
 }
 
+// Verify that permissions allow writing to the "icons" directory.
+$canWrite = false;
+$permError = false;
+if ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) {
+  $testFile = "icons/testWrite.txt";
+  $testFd = @fopen ( $testFile, "w+b", false );
+  @fclose ( $testFd );
+  $canWrite = file_exists ( $testFile );
+  if ( ! $canWrite ) {
+    $permError = true;
+  } else {
+    @unlink ( $testFile );
+  }
+}
+
 $catIcon = $catname = $error = $idStr = '';
 $catIconStr = translate ( 'Category Icon' );
 $globalStr = translate ( 'Global' );
@@ -23,12 +38,15 @@ if ( ! empty ( $id ) ) {
   $catname = $categories[$id]['cat_name'];
   $catowner = $categories[$id]['cat_owner'];
   $catIcon = $icon_path . 'cat-' . $id . '.gif';
+  // Try PNG if GIF not found
+  if ( ! file_exists ( $catIcon ) )
+    $catIcon = $icon_path . 'cat-' . $id . '.png';
   $idStr = '<input name="id" type="hidden" value="' . $id . '" />';
 } else
   $catcolor = '#000000';
 
-$showIcon = ( ! empty ( $catIcon ) && file_exists ( $catIcon )
-  ? 'visible' : 'hidden' );
+$showIconStyle = ( ! empty ( $catIcon ) && file_exists ( $catIcon )
+  ? '' : 'display: none;' );
 
 print_header ( array ( 'js/visible.php' ) );
 
@@ -36,7 +54,13 @@ ob_start();
 
 echo '
     <h2>' . translate ( 'Categories' ) . '</h2>
-    ' . display_admin_link();
+    ' . display_admin_link( false );
+
+// Display permission error if found above.
+if ( $permError && $is_admin ) {
+  print_error_box (
+    translate('The permissions for the icons directory are set to read-only') );
+}
 
 $add = getGetValue ( 'add' );
 if ( empty ( $add ) )
@@ -69,12 +93,12 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
    . print_color_input_html ( 'catcolor', translate ( 'Color' ), $catcolor )
    . '</td>
         </tr>
-        <tr id="cat_icon" style="visibility: ' . $showIcon . '">
+        <tr id="cat_icon" style="' . $showIconStyle . '">
           <td><label>' . $catIconStr . ':</label></td>
           <td colspan="3"><img src="' . $catIcon
    . '" name="urlpic" id="urlpic" alt="' . $catIconStr . '" /></td>
         </tr>
-        <tr id="remove_icon" style="visibility: ' . $showIcon . '">
+        <tr id="remove_icon" style="' . $showIconStyle . '">
           <td><label for="delIcon">' . translate ( 'Remove Icon' )
    . '</label></td>
           <td colspan="3"><input type="checkbox" name="delIcon" value="Y" /></td>
@@ -82,10 +106,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
         <tr>
           <td colspan="4">
             <label for="FileName">' . ( is_dir ( $icon_path ) &&
-    ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin )
+    ( ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) && $canWrite )
     ? translate ( 'Add Icon to Category' ) . '</label><br />&nbsp;&nbsp;&nbsp;'
      . translate ( 'Upload' ) . '&nbsp;<span style="font-size:small;">'
-     . translate ( 'gif 3kb max' ) . '</span>:
+     . translate ( 'GIF or PNG 3kb max' ) . '</span>:
             <input type="file" name="FileName" id="fileupload" size="45" '
      . 'maxlength="50" value=""/>
           </td>
@@ -125,6 +149,8 @@ if ( empty ( $error ) ) {
       if ( $K < 1 )
         continue;
       $catIcon = $icon_path . 'cat-' . $K . '.gif';
+      if ( ! file_exists ( $catIcon ) )
+        $catIcon = $icon_path . 'cat-' . $K . '.png';
       $catStr = '<span style="color: '
        . ( ! empty ( $V['cat_color'] ) ? $V['cat_color'] : '#000000' )
        . ';">' . $V['cat_name'] . '</span>';

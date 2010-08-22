@@ -189,6 +189,8 @@ function print_upcoming_event ( $e, $date ) {
       $catNum = abs ( $e->getCategory() );
       if ( $catNum > 0 ) {
         $catIcon = 'icons/cat-' . $catNum . '.gif';
+        if ( ! file_exists ( $catIcon ) )
+          $catIcon = 'icons/cat-' . $catNum . '.png';
         if ( file_exists ( $catIcon ) )
           echo $link .
             '<img src="' . $catIcon . '" alt="category icon" border="0" /></a>';

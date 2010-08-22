@@ -3515,6 +3515,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $view_text = translate ( 'View this event' );
 
   $catIcon = 'icons/cat-' . $getCat . '.gif';
+  if ( ! file_exists ( $catIcon ) )
+    $catIcon = 'icons/cat-' . $getCat . '.png';
   $key++;
 
   if( access_is_enabled() ) {
@@ -3669,6 +3671,8 @@ function html_for_event_week_at_a_glance ( $event, $date,
   $title = '<a title="';
 
   $catIcon = 'icons/cat-' . $getCat . '.gif';
+  if ( ! file_exists ( $catIcon ) )
+    $catIcon = 'icons/cat-' . $getCat . '.png';
   $key++;
 
   if( access_is_enabled() ) {
@@ -4836,7 +4840,8 @@ function print_entry ( $event, $date ) {
   $icon = $cal_type . '.gif';
   if ( $catNum > 0 ) {
     $catIcon = 'icons/cat-' . $catNum . '.gif';
-
+    if ( ! file_exists ( $catIcon ) )
+      $catIcon = 'icons/cat-' . $catNum . '.png';
     if ( ! file_exists ( $catIcon ) )
       $catIcon = '';
   }
@@ -6309,6 +6314,58 @@ function site_extras_for_popup ( $id ) {
   }
 
   return $ret;
+}
+
+// Print a box with an error message and a nice error icon.
+function print_error_box ( $msg )
+{
+  echo '<div class="warningBox">' .
+    '<table border="0"><tr><td valign="middle">' .
+    '<img src="images/warning.png" width="40" height="40" align="middle" alt="' .
+    translate('Error') . '" /></td><td valign="middle">' .
+    translate('The permissions for the icons directory are set to read-only') .
+    "</td></tr></table></div>\n";
+}
+
+// Convert an HTML color ('#ff00ff') into an array of red/green/blue values
+// of 0 to 255.
+function html2rgb($color)
+{
+  if ($color[0] == '#')
+    $color = substr($color, 1);
+
+  if (strlen($color) == 6) {
+    list($r, $g, $b) = array($color[0].$color[1],
+      $color[2].$color[3], $color[4].$color[5]);
+  } elseif (strlen($color) == 3) {
+    list($r, $g, $b) = array($color[0].$color[0], $color[1].$color[1],
+      $color[2].$color[2]);
+  } else {
+    return false;
+  }
+
+  $r = hexdec($r); $g = hexdec($g); $b = hexdec($b);
+
+  return array($r, $g, $b);
+}
+
+// Convert RGB values (0-255) into HTML color ('#ffffff')
+function rgb2html($r, $g=-1, $b=-1)
+{
+  if (is_array($r) && sizeof($r) == 3)
+    list($r, $g, $b) = $r;
+
+  $r = intval($r); $g = intval($g);
+  $b = intval($b);
+
+  $r = dechex($r<0?0:($r>255?255:$r));
+  $g = dechex($g<0?0:($g>255?255:$g));
+  $b = dechex($b<0?0:($b>255?255:$b));
+
+  $color = (strlen($r) < 2?'0':'').$r;
+  $color .= (strlen($g) < 2?'0':'').$g;
+  $color .= (strlen($b) < 2?'0':'').$b;
+  return '#'.$color;
 }
 
 ?>

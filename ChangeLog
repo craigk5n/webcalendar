@@ -4,6 +4,9 @@ NOTE: This is the 1.3.X development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2007)
+ - 21-Aug-10 cek Added support for PNG category icons; improvements to
+   category icon uploading; display error when permissions of icons
+   directory is read-only
  - 15-Aug-10 cek Added modalbox code to combo.php
  - 15-Aug-10 cek Update Prototype library from 1.5 to 1.6.1
  - 14-Aug-10 cek Fixes for PHP warnings about default timezone not being set.

@@ -12,6 +12,8 @@ function renameIcon ( $id ) {
   $bakIcon = $catIcon = $icon_path . 'cat-';
   $bakIcon .= date ( 'YmdHis' ) . '.gif';
   $catIcon .= $id . '.gif';
+  if ( ! file_exists ( $catIcon ) )
+    $catIcon = 'icons/cat-' . $id . '.png';
   if ( file_exists ( $catIcon ) )
     rename ( $catIcon, $bakIcon );
 }
@@ -101,26 +103,36 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
         $is_admin ) ) {
     // Save icon if uploaded.
     if ( ! empty ( $file['tmp_name'] ) ) {
-      if ( $file['type'] == 'image/gif' && $file['size'] <= $icon_max_size ) {
+      if ( ( $file['type'] == 'image/gif' || $file['type'] == 'image/png' )
+        && $file['size'] <= $icon_max_size ) {
         // $icon_props = getimagesize( $file['tmp_name'] );
         // print_r ($icon_props );
         $path_parts = pathinfo ( $_SERVER['SCRIPT_FILENAME'] );
         $fullIcon = $path_parts['dirname'] . '/'
-         . $icon_path . 'cat-' . $id . '.gif';
+         . $icon_path . 'cat-' . $id;
+        if ( $file['type'] == 'image/gif' )
+          $fullIcon .= '.gif';
+        else
+          $fullIcon .= '.png';
         renameIcon ( $id );
         $file_result = move_uploaded_file ( $file['tmp_name'], $fullIcon );
         // echo "Upload Result:" . $file_result;
-      } else
-      if ( $file['size'] > $icon_max_size )
+      } else if ( $file['size'] > $icon_max_size ) {
         $error = translate ( 'File size exceeds maximum.' );
-      else
-      if ( $file['type'] != 'image/gif' )
-        $error = translate ( 'File is not a gif image.' );
+      } else if ( $file['type'] != 'image/gif' &&
+        $file['type'] != 'image/png' ) {
+        $error = translate ( 'File is not a GIF or PNG image' ) . ': '
+          . $file['type'];
+      }
     }
     // Copy icon if local file specified.
     $urlname = getPostvalue ( 'urlname' );
-    if ( ! empty ( $urlname ) && file_exists ( $icon_path . $urlname ) )
-      copy ( $icon_path . $urlname, $icon_path . 'cat-' . $id . '.gif' );
+    if ( ! empty ( $urlname ) && file_exists ( $icon_path . $urlname ) ) {
+      if ( preg_match ( '/.(gif|GIF)$/', $urlname ) )
+        copy ( $icon_path . $urlname, $icon_path . 'cat-' . $id . '.gif' );
+      else
+        copy ( $icon_path . $urlname, $icon_path . 'cat-' . $id . '.png' );
+    }
   }
 }
 

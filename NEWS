@@ -14,6 +14,9 @@ Version 1.3.0 (?? ??? 2007)
       needed.  This will improve security.
   - New Features / Enhancements:
     = User Interface
+      + New combo.php view for day/week/month/year/agenda view is
+        AJAX-based replacement for day.php, week.php, month.php, year.php.
+        (Still under development, so no links to it yet.)
       + User accounts can now be disabled via the User Manager page
       + Added new RSS feed for Activity Log.  This will allow you to be
         notified via RSS of event approvals/rejections, email notification,
@@ -23,6 +26,9 @@ Version 1.3.0 (?? ??? 2007)
       + New Security Audit report
       + Moved hard-coded upcoming.php config setting to System Settings.
       + Category icons can now be displayed next to events in upcoming.php
+        Category icons can now be either GIF or PNG images.  If "icons"
+        directory is not writable, admin users will see an error message
+        when editing/adding categories.
   - The following translations were updated:
     French, Indonesian, Italian
 
