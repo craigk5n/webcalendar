@@ -9,10 +9,17 @@
  * - Task view
  * - Print layout
  * - Delete event (?)
+ * - Honor access_can_access_function ( ACCESS_WEEK/ACCESS_MONTH/ACCESS_DAY )
  *
  * Possibilities for later:
  * - Include tab for unapproved events where users could approve from
  *   this page.
+ *
+ * Note: some of the icons for this page were downloaded from the following
+ * page.  If you want to add more icons, check there first.
+ *	http://rrze-icon-set.berlios.de/gallery.html
+ * License info (Creative Commons 3.0)
+ *	http://rrze-icon-set.berlios.de/licence.html
  */
 include_once 'includes/init.php';
 // Load Doc classes for attachments and comments
@@ -720,7 +727,7 @@ function prev_month_link ( year, month )
     y = year;
   }
   return "<span id=\"prevmonth\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
-    y + "," + m + ",1)\">&lt;</span>";
+    y + "," + m + ",1)\">" + shortMonths[m-1] + "<img src=\"images/combo-prev.png\" border=\"0\"></span>";
 }
 
 function next_month_link ( year, month )
@@ -734,19 +741,62 @@ function next_month_link ( year, month )
     y = year;
   }
   return "<span id=\"nextmonth\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
-    y + "," + m + ",1)\">&gt;</span>";
+    y + "," + m + ",1)\">" + shortMonths[m-1] + "<img src=\"images/combo-next.png\" border=\"0\"></span>";
+}
+
+// Build a table of quick links to all the months in the current
+// year and a link to the next and previous years.
+function month_view_nav_links ( year, month )
+{
+  var ret, i;
+
+  ret = '<table class="noprint monthnavlinks" border="0">';
+  ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="load_content(' + (year-1) +
+      ',' + month + ',1)">' +
+    '<img src="images/combo-prev.png" border="0"/><br/>' + (year-1) + '</td>';
+  for ( i = 1; i <= 6; i++ ) {
+    ret += '<td class="';
+    if ( i == month )
+      ret += 'currentMonthLink ';
+    ret += 'clickable" onclick="load_content(' + year +
+      ',' + i + ',1)">' + shortMonths[i-1] + '</td>';
+  }
+  ret += '<td align="center" rowspan="2" class="clickable" onclick="load_content(' + (year+1) +
+      ',' + month + ',1)">' +
+    '<img src="images/combo-next.png" border="0"/><br/>' + (year+1) + '</td>';
+  // Add link to today
+  var today = new Date();
+  var d = today.getDate();
+  var m = today.getMonth() + 1;
+  var y = today.getYear() + 1900;
+  ret += '<td align="center" rowspan="2" class="clickable" onclick="load_content(' +
+    y + ',' + m + ',' + d + ')">' +
+   '<img src="images/combo-today.png" style="vertical-align: middle;" />'
+   + "<br/><?php etranslate('Today');?></td></tr>";
+  // Jul - Dec
+  for ( i = 7; i <= 12; i++ ) {
+    ret += '<td class="';
+    if ( i == month )
+      ret += 'currentMonthLink ';
+    ret += 'clickable" onclick="load_content(' + year +
+      ',' + i + ',1)">' + shortMonths[i-1] + '</td>';
+  }
+
+  ret += '</table>';
+
+  return ret;
 }
 
 function prev_year_link ( year, month )
 {
   return "<span id=\"prevyear\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" + ( year - 1 ) +
-    "," + month + ",1)\">&lt;&lt;</span>";
+    "," + month + ",1)\">&lt;&lt;" + ( year -1  ) + "</span>";
 }
 
 function next_year_link ( year, month )
 {
   return "<span id=\"nextyear\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" + ( year + 1 ) +
-    "," + month + ",1)\">&gt;&gt;</span>";
+    "," + month + ",1)\">" + ( year + 1 ) + "&gt;&gt;</span>";
 }
 
 function today_link()
@@ -757,7 +807,7 @@ function today_link()
   var y = today.getYear() + 1900;
   return "<span class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
     y + "," + m + "," + d + ")\">" +
-   '<img src="includes/menu/icons/today.png" style="vertical-align: middle;" />'
+   '<img src="images/combo-today.png" style="vertical-align: middle;" />'
    + " <?php etranslate('Today');?></span>";
 }
 
@@ -868,16 +918,12 @@ function build_month_view ( year, month )
   var ret = "";
   try {
     var dateYmd;
-    ret = prev_month_link ( year, month ) +
-      next_month_link ( year, month ) +
-      prev_year_link ( year, month ) +
-      next_year_link ( year, month ) +
-      "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
-      today_link() +
-      "&nbsp;" +
-      "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
-      "<span id=\"monthstatus\"> </span>" +
+    ret = '<table border="0" width="100%"><tr><td align="middle" width="70%">' +
+      '<span class="monthtitle">' + months[month-1] + " " + year + "</span>" +
+      '<span id="monthstatus"> </span>' +
+      '</td><td align="right">' +
+       month_view_nav_links ( year, month ) +
+      '</td></tr></table>' +
       "<table id=\"month_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"1\"><tr>";
     for ( var i = 0; i < 7; i++ ) {
       ret += "<th>" + weekdays[i] + "</th>";
@@ -1013,7 +1059,7 @@ function build_year_view ( year, month )
     ret = prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"yeartitle\">" + year + "</span>" +
@@ -1081,7 +1127,7 @@ function build_agenda_view ( year, month )
       prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
@@ -1188,7 +1234,7 @@ function build_day_view ( year, month, day )
       prev_month_link_dayview ( year, month, day ) +
       next_month_link_dayview ( year, month, day ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/refresh.gif" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"daytitle\">" + format_date ( dateYmd, true ) +"</span>" +
