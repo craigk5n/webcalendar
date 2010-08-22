@@ -27,7 +27,6 @@ $GLOBALS['user'] = ! empty( $_GET['login'] )
       : ( empty( $_SESSION['webcal_login'] )
         ? '__public__'
         : $_SESSION['webcal_login'] ) ) );
-echo "// user: $user \n";
 load_user_preferences( $GLOBALS['user'] );
 
 unset( $_SESSION['webcal_tmp_login'] );
