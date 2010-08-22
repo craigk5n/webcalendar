@@ -330,51 +330,38 @@ th,
 ?>
 // Category colors
 <?php
-load_user_categories ();
-// Default color is $MYEVENTS.  Add a bogus array 'none' element for it.
-$categories['none'] = array ( 'cat_color' => $MYEVENTS );
-foreach ( $categories as $catId => $cat ) {
-  $color = $cat['cat_color'];
-  $fg = '#000000';
-  if ( $catId < 0 )
-    $catId = 0 - $catId;
-  $rgb = array ( 255, 255, 255 );
-  if ( ! empty ( $color ) ) {
-    if ( preg_match ( "/#(.)(.)(.)(.)(.)(.)/", $color ) ) {
-      $rgb = html2rgb ( $color );
-      // If red+green+blue is less than 50%, then we will
-      // assume this color is dark enough to use a white text foreground.
-      if ( $rgb[0] + $rgb[1] + $rgb[2] < 384 ) {
-        $fg = '#ffffff';
+if ( $CATEGORIES_ENABLED == 'Y' ) {
+  // Need to load user variables so that $is_admin is set before we load
+  // categories.
+  user_load_variables ( $user, '' );
+  load_user_categories ();
+
+  // Default color is $MYEVENTS.  Add a bogus array 'none' element for it.
+  $categories['none'] = array ( 'cat_color' => $MYEVENTS );
+  foreach ( $categories as $catId => $cat ) {
+    if ( $catId == 0 || $catId == -1 ) next;
+    //echo "\n// cat id = $catId\n";
+    $color = $cat['cat_color'];
+    $fg = '#000000';
+    if ( $catId < 0 )
+      $catId = 0 - $catId;
+    $rgb = array ( 255, 255, 255 );
+    if ( ! empty ( $color ) ) {
+      if ( preg_match ( "/#(.)(.)(.)(.)(.)(.)/", $color ) ) {
+        $rgb = html2rgb ( $color );
+        // If red+green+blue is less than 50%, then we will
+        // assume this color is dark enough to use a white text foreground.
+        if ( $rgb[0] + $rgb[1] + $rgb[2] < 384 ) {
+          $fg = '#ffffff';
+        }
+        //echo "// " . hextoint ( $matches[1] ) . ',' . hextoint ( $matches[3]).','. hextoint ( $matches[5] )  . " $fg\n";
       }
-      //echo "// " . hextoint ( $matches[1] ) . ',' . hextoint ( $matches[3]).','. hextoint ( $matches[5] )  . " $fg\n";
-    }
     // Gradient
-    echo ".cat_{$catId} { "
-      . background_css( $color, 15 ) . ' color: ' . $fg . "; }\n";
-    echo ".cat_{$catId} { background-color: $color; border: 1px outset $color; }\n";
+      echo ".cat_{$catId} { "
+        . background_css( $color, 15 ) . ' color: ' . $fg . "; }\n";
+      echo ".cat_{$catId} { background-color: $color; border: 1px outset $color; }\n";
+    }
   }
 }
 
-function topShadow ( $r, $g, $b )
-{
-  $r -= 32;
-  if ( $r < 0 ) $r = 0;
-  $g -= 32;
-  if ( $g < 0 ) $g = 0;
-  $b -= 32;
-  if ( $b < 0 ) $b = 0;
-  return rgb2html ( $r, $g, $b );
-}
-
-function bottomShadow ( $r, $g, $b )
-{
-  $r += 32;
-  if ( $r > 255 ) $r = 255;
-  $g += 32;
-  if ( $g > 255 ) $g = 255;
-  $b += 32;
-  if ( $b > 255 ) $b = 255;
-  return rgb2html ( $r, $g, $b );
-}
 ?>

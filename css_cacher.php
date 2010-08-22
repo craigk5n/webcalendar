@@ -18,7 +18,7 @@ load_global_settings();
 $empTmp = ( ! empty( $_SESSION['webcal_tmp_login'] ) );
 
 // If calling script uses 'guest', we must also.
-load_user_preferences( ! empty( $_GET['login'] )
+$GLOBALS['user'] = ! empty( $_GET['login'] )
   ? $_GET['login']
   : ( ! empty( $_REQUEST['login'] )
     ? $_REQUEST['login']
@@ -26,7 +26,9 @@ load_user_preferences( ! empty( $_GET['login'] )
       ? $_SESSION['webcal_tmp_login']
       : ( empty( $_SESSION['webcal_login'] )
         ? '__public__'
-        : $_SESSION['webcal_login'] ) ) ) );
+        : $_SESSION['webcal_login'] ) ) );
+echo "// user: $user \n";
+load_user_preferences( $GLOBALS['user'] );
 
 unset( $_SESSION['webcal_tmp_login'] );
 
