@@ -443,6 +443,9 @@ if ( access_can_access_function ( ACCESS_YEAR, $user ) ) {
   $choices[] = 'year.php';
   $choices_text[] = translate ( 'Year' );
 }
+// combo.php contains day, week, month and agenda views..
+$choices[] = 'combo.php';
+$choices_text[] = translate ( 'Multiview' );
 for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
   echo '<option value="' . $choices[$i] . '" ';
   if ( $prefarray['STARTVIEW'] == $choices[$i] )

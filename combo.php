@@ -293,7 +293,8 @@ var categories = [];
         ', color: "' . $categories[$catId]['cat_color'] . '"' .
         ', global: ' . ( $categories[$catId]['cat_global'] ? '0' : '1' );
       $catIconFile = 'icons/cat-' . $catId . '.gif';
-      if ( file_exists ( $catIconFile ) )
+      if ( ! file_exists ( $catIconFile ) )
+        $catIconFile = 'icons/cat-' . $catId . '.png';
         echo ', icon: "' . $catIconFile . '"';
       echo " };\n";
     }
