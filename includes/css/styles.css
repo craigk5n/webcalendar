@@ -904,6 +904,12 @@ tr.highlight td {
   margin-top:.0625em;
   overflow:hidden;
 }
+#combo #contentMonth .eventname {
+  vertical-align: top;
+}
+#combo #contentMonth .event {
+  vertical-align: middle;
+}
 #contentYear #year_main,
 #contentYear .monthblock {
   background: #fff;

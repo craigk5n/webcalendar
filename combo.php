@@ -959,6 +959,7 @@ function build_month_view ( year, month )
           } else {
             eventRet += iconImg;
           }
+          eventRet += '<span class="eventname">';
 
           // Display time of event
           if ( myEvent._localTime > 0 ) {
@@ -973,7 +974,7 @@ function build_month_view ( year, month )
 
           eventRet += myEvent._name;
           //eventRet += "cat=" + myEvent._category;
-          eventRet += "</div>";
+          eventRet += "</span></div>";
           ret += month_view_event ( eventRet );
           // Create popup
           if ( ! document.getElementById ( id ) ) {
