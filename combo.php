@@ -86,7 +86,7 @@ else {
 }
 
 
-$BodyX = 'onload="load_content(' . $thisyear . ',' . $thismonth . "," .
+$BodyX = 'onload="ajax_get_events(' . $thisyear . ',' . $thismonth . "," .
   $thisday . ');"';
 
 // Add ModalBox javascript/CSS & Tab code
@@ -164,9 +164,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 <li><a href="#" rel="contentMonth"><?php etranslate('Month')?></a></li>
 <li><a href="#" rel="contentYear"><?php etranslate('Year')?></a></li>
 <li><a href="#" rel="contentAgenda"><?php etranslate("Agenda");?></a></li>
-<?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
 <li><a href="#" rel="contentTasks"><?php etranslate('Tasks');?></a></li>
-<?php } ?>
 </ul>
 
 <div style="border:1px solid gray; width:95%; margin-bottom: 1em; margin-left: 10px; margin-right: 10px; padding: 10px">
@@ -441,7 +439,7 @@ function handleCategoryCheckboxChange()
 
 <?php } ?>
 
-function load_content (year,month,day)
+function ajax_get_events (year,month,day)
 {
   var startdate = "" + year + ( month < 10 ? "0" : "" ) + month + "01";
   // First, check to see if we already have loaded the content for
@@ -454,21 +452,10 @@ function load_content (year,month,day)
   }
   //alert ( "Loading startdate=" + startdate );
 
-  //$('contentDay').innerHTML = '<?php echo $LOADING;?>';
-  //$('contentWeek').innerHTML = '<?php echo $LOADING;?>';
-  //$('contentMonth').innerHTML = '<?php echo $LOADING;?>';
-  //$('contentYear').innerHTML = '<?php echo $LOADING;?>';
-  var o = $('monthstatus');
-  if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
-  var o = $('yearstatus');
-  if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
-  o = $('agendastatus');
-  if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
-  o = $('daystatus');
-  if ( o ) o.innerHTML = '<?php echo $SMALL_LOADING;?>';
-<?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
-  $('contentTasks').innerHTML = '<?php echo $LOADING;?>';
-<?php } ?>
+  $('contentDay').innerHTML = '<?php echo $LOADING;?>';
+  $('contentWeek').innerHTML = '<?php echo $LOADING;?>';
+  $('contentMonth').innerHTML = '<?php echo $LOADING;?>';
+  $('contentYear').innerHTML = '<?php echo $LOADING;?>';
 
   new Ajax.Request('events_ajax.php',
   {
@@ -675,7 +662,7 @@ function prev_day_link ( year, month, day )
     day = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
       daysPerMonth[month];
   }
-  return "<span id=\"prevday\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
+  return "<span id=\"prevday\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     year + "," + month + "," + day + ")\">&lt;</span>";
 }
 
@@ -692,7 +679,7 @@ function next_day_link ( year, month, day )
       month = 1;
     }
   }
-  return "<span id=\"nextday\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
+  return "<span id=\"nextday\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     year + "," + month + "," + day + ")\">&gt;</span>";
 }
 function prev_month_link_dayview ( year, month, day )
@@ -702,7 +689,7 @@ function prev_month_link_dayview ( year, month, day )
     month = 12;
     year--;
   }
-  return "<span id=\"prevmonthdayview\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
+  return "<span id=\"prevmonthdayview\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     year + "," + month + "," + day + ")\">&lt;&lt;</span>";
 }
 function next_month_link_dayview ( year, month, day )
@@ -712,7 +699,7 @@ function next_month_link_dayview ( year, month, day )
     month = 1;
     year++;
   }
-  return "<span id=\"nextmonthdayview\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
+  return "<span id=\"nextmonthdayview\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     year + "," + month + "," + day + ")\">&gt;&gt;</span>";
 }
 
@@ -726,7 +713,7 @@ function prev_month_link ( year, month )
     m = month - 1;
     y = year;
   }
-  return "<span id=\"prevmonth\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
+  return "<span id=\"prevmonth\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     y + "," + m + ",1)\">" + shortMonths[m-1] + "<img src=\"images/combo-prev.png\" border=\"0\"></span>";
 }
 
@@ -740,7 +727,7 @@ function next_month_link ( year, month )
     m = month + 1;
     y = year;
   }
-  return "<span id=\"nextmonth\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
+  return "<span id=\"nextmonth\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     y + "," + m + ",1)\">" + shortMonths[m-1] + "<img src=\"images/combo-next.png\" border=\"0\"></span>";
 }
 
@@ -751,17 +738,17 @@ function month_view_nav_links ( year, month )
   var ret, i;
 
   ret = '<table class="noprint monthnavlinks" border="0">';
-  ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="load_content(' + (year-1) +
+  ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (year-1) +
       ',' + month + ',1)">' +
     '<img src="images/combo-prev.png" border="0"/><br/>' + (year-1) + '</td>';
   for ( i = 1; i <= 6; i++ ) {
     ret += '<td class="';
     if ( i == month )
       ret += 'currentMonthLink ';
-    ret += 'clickable" onclick="load_content(' + year +
+    ret += 'clickable" onclick="ajax_get_events(' + year +
       ',' + i + ',1)">' + shortMonths[i-1] + '</td>';
   }
-  ret += '<td align="center" rowspan="2" class="clickable" onclick="load_content(' + (year+1) +
+  ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (year+1) +
       ',' + month + ',1)">' +
     '<img src="images/combo-next.png" border="0"/><br/>' + (year+1) + '</td>';
   // Add link to today
@@ -769,7 +756,7 @@ function month_view_nav_links ( year, month )
   var d = today.getDate();
   var m = today.getMonth() + 1;
   var y = today.getYear() + 1900;
-  ret += '<td align="center" rowspan="2" class="clickable" onclick="load_content(' +
+  ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' +
     y + ',' + m + ',' + d + ')">' +
    '<img src="images/combo-today.png" style="vertical-align: middle;" />'
    + "<br/><?php etranslate('Today');?></td></tr>";
@@ -778,7 +765,7 @@ function month_view_nav_links ( year, month )
     ret += '<td class="';
     if ( i == month )
       ret += 'currentMonthLink ';
-    ret += 'clickable" onclick="load_content(' + year +
+    ret += 'clickable" onclick="ajax_get_events(' + year +
       ',' + i + ',1)">' + shortMonths[i-1] + '</td>';
   }
 
@@ -789,13 +776,13 @@ function month_view_nav_links ( year, month )
 
 function prev_year_link ( year, month )
 {
-  return "<span id=\"prevyear\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" + ( year - 1 ) +
+  return "<span id=\"prevyear\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" + ( year - 1 ) +
     "," + month + ",1)\">&lt;&lt;" + ( year -1  ) + "</span>";
 }
 
 function next_year_link ( year, month )
 {
-  return "<span id=\"nextyear\" class=\"clickable fakebutton noprint\" onclick=\"load_content(" + ( year + 1 ) +
+  return "<span id=\"nextyear\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" + ( year + 1 ) +
     "," + month + ",1)\">" + ( year + 1 ) + "&gt;&gt;</span>";
 }
 
@@ -805,7 +792,7 @@ function today_link()
   var d = today.getDate();
   var m = today.getMonth() + 1;
   var y = today.getYear() + 1900;
-  return "<span class=\"clickable fakebutton noprint\" onclick=\"load_content(" +
+  return "<span class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     y + "," + m + "," + d + ")\">" +
    '<img src="images/combo-today.png" style="vertical-align: middle;" />'
    + " <?php etranslate('Today');?></span>";
@@ -884,7 +871,7 @@ function quickAddHandler()
       Modalbox.hide ();
       var monthKey = "" + currentYear + ( currentMonth < 10 ? "0" : "" ) + currentMonth;
       loadedMonths[monthKey] = 0;
-      load_content ( currentYear, currentMonth, currentDay );
+      ajax_get_events ( currentYear, currentMonth, currentDay );
     },
     onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
@@ -908,7 +895,7 @@ function addEventDetail()
 function refresh()
 {
   loadedMonths = []; // forget all events...
-  load_content ( currentYear, currentMonth, currentDay );
+  ajax_get_events ( currentYear, currentMonth, currentDay );
 }
 
 
@@ -965,7 +952,7 @@ function build_month_view ( year, month )
         ret += " onclick=\"return monthCellClickHandler(" + key + ")\"";
 <?php } ?>
         ret += "><span class=\"dayofmonth\">" +
-          '<a href="#" onclick="switchingToDayView=true;load_content('+year+','+month+','+i+');views.expandit(0);">' + i + "</a></span><br />";
+          '<a href="#" onclick="switchingToDayView=true;ajax_get_events('+year+','+month+','+i+');views.expandit(0);">' + i + "</a></span><br />";
         // If eventArray is null here, that means we have not loaded
         // event data for that date.
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
@@ -1073,7 +1060,7 @@ function build_year_view ( year, month )
       if ( n % 4 == 0 )
         ret += "<tr>";
       ret += "<td class=\"monthblock\" valign=\"top\" align=\"center\" width=\"25%\">";
-      ret += '<a href="#" onclick="load_content('+year+','+(n+1)+',1);views.expandit(2);">' +
+      ret += '<a href="#" onclick="ajax_get_events('+year+','+(n+1)+',1);views.expandit(2);">' +
          months[n] + "</a><br/>\n";
       ret += "<table class=\"monthtable\" border=\"0\">";
 
