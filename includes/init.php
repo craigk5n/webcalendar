@@ -125,6 +125,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   // CSS and JS includes needed for the top menu.
   if( $MENU_ENABLED == 'Y' ) {
+    $saveBodyX = $BodyX;
+    $BodyX = '';
     $MENU_THEME = ( ! empty( $MENU_THEME ) && $MENU_THEME != 'none'
       ? $MENU_THEME : 'default' );
     $menu_theme = ( $SCRIPT == 'admin.php'
@@ -136,6 +138,16 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $cs_ar[] = 'menu/themes/' . $menu_theme . '/theme.css';
     $js_ar[] = 'menu/JSCookMenu.js';
     $js_ar[] = 'menu/themes/' . $menu_theme . '/theme.js';
+    if ( preg_match ( '/cmDraw/', $BodyX ) ) {
+      // menu code overwrote our BodyX
+      if ( preg_match ( '/onload="(\S+)"/i', $saveBodyX, $matches ) ) {
+        $BodyX = 'onload="' . $matches[1] . '; ' .
+         "cmDraw( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
+      } else {
+        die_miserable_death ( 'BodyX error in print_header.  Menu and ' .
+          $SERVER['PHP_SELF'] . ' are both setting onload callbak.' );
+      }
+    }
   }
 
   if( ! $disableUTIL )
