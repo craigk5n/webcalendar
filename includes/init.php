@@ -138,7 +138,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $cs_ar[] = 'menu/themes/' . $menu_theme . '/theme.css';
     $js_ar[] = 'menu/JSCookMenu.js';
     $js_ar[] = 'menu/themes/' . $menu_theme . '/theme.js';
-    if ( preg_match ( '/cmDraw/', $BodyX ) ) {
+    if ( ! empty ( $saveBodyX ) && preg_match ( '/cmDraw/', $BodyX ) ) {
       // menu code overwrote our BodyX
       if ( preg_match ( '/onload="(\S+)"/i', $saveBodyX, $matches ) ) {
         $BodyX = 'onload="' . $matches[1] . '; ' .
