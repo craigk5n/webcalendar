@@ -960,8 +960,8 @@ function refresh()
 function build_month_view ( year, month )
 {
   var ret = "";
-  if ( month.charAt ( 0 ) == '0' )
-    month = month.substring ( 1 );
+  //if ( month.substring ( 0, 1 ) == '0' )
+  //  month = month.substring ( 1 );
   try {
     var dateYmd;
     ret = '<table border="0" width="100%"><tr><td align="middle" width="70%">' +
