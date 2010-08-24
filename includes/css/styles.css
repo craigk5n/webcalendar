@@ -995,6 +995,21 @@ tr.highlight td {
   background-image:url( images/hour_in_day.gif );
   /*overflow:auto;*/
 }
+#combo #contentTasks #tasktable th {
+  background-color: #000060;
+  border: 1px outset #000060;
+  color: #ffffff;
+}
+#combo #contentTasks #tasktable td.odd {
+  background-color: #c0c0c0;
+  border: 1px outset #c0c0c0;
+  color: #000000;
+}
+#combo #contentTasks #tasktable td.even {
+  background-color: #d8d8d8;
+  border: 1px outset #d8d8d8;
+  color: #000000;
+}
 #combo #viewEventDiv table {
   padding: 10px;
   margin: 10px;

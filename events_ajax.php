@@ -1,8 +1,9 @@
 <?php // $Id$
 /**
  * Description
- *   Handler for AJAX requests for viewing events in the
- *   Day/Week/Month/Year views.
+ *   Handler for AJAX requests for viewing events in combo.php,
+ *   which provides views for day, week, month, year and agenda and
+ *   a view of the task list.
  *
  *   We use JSON for some of the data we send back to the AJAX request.
  *   Because JSON support was not built-in to PHP until 5.2, we have our
@@ -55,6 +56,12 @@ if ( empty ( $action ) )
 if ( empty ( $user ) )
   $user = $login;
 $get_unapproved = true;
+
+$sendPlainText = false;
+$format = getValue ( 'format' );
+if ( ! empty ( $format ) &&
+ ( $format == 'text' || $format == 'plain' ) );
+$sendPlainText = true;
 
 $startdate = getIntValue ( 'startdate' );
 if ( empty ( $startdate ) )
@@ -137,7 +144,41 @@ if ( $action == 'get' ) {
   if ( $debug ) {
     echo "<pre>"; print_r ( $objects ); echo "</pre>\n";
   }
-  ajax_send_objects ( $objects );
+  ajax_send_objects ( $objects, $sendPlainText );
+} else if ( $action == 'gett' ) { // Get Tasks
+  $tasks = array ();
+  $thisyear = date ( 'Y' );
+  $thismonth = date ( 'm' );
+  $tasks = array();
+  $eventCats = array();
+  $task_list = query_events ( $user, false, '', '', true );
+  $ids = array ();
+
+  foreach ( $task_list as $E ) {
+    // Check UAC.
+    $task_owner = $E->getLogin();
+    if ( access_is_enabled() ) {
+      $can_access = access_user_calendar ( 'view', $task_owner, '',
+        $E->getCalType(), $E->getAccess() );
+      if ( $can_access == 0 )
+        continue;
+    }
+    $tasks[] = $E;
+    $id = $E->getID();
+    $ids[$id] = $id;
+  }
+  // TODO: include repeated tasks????
+  // Load all category IDs for the specified event IDs
+  //echo "<pre>"; print_r ( $ids ); echo "</pre>";
+  if ( ! empty ( $id ) )
+    load_category_ids ( $ids );
+  setLocalTimes ( $tasks );
+  setCategories ( $tasks );
+  $objects = array ( 'tasks' => $tasks );
+  if ( $debug ) {
+    echo "<h2>Return</h2><pre>"; print_r ( $objects ); echo "</pre>\n";
+  }
+  ajax_send_objects ( $objects, $sendPlainText );
 } else if ( $action == 'eventinfo' ) {
   // TODO: enforce user access control here...
   $id = getIntValue ( 'id' );
@@ -189,7 +230,7 @@ if ( $action == 'get' ) {
     'attachments' => $attachments,
   );
   if ( empty ( $error ) ) {
-    ajax_send_objects ( $objects, true );
+    ajax_send_objects ( $objects, $sendPlainText );
   } else {
     ajax_send_error ( translate('Unknown error.') );
   }

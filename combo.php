@@ -86,25 +86,23 @@ else {
 }
 
 
-$BodyX = 'onload="ajax_get_events(' . $thisyear . ',' . $thismonth . "," .
-  $thisday . ');"';
+$bodyExtras = 'onload="onLoadInit()"';
 
 // Add ModalBox javascript/CSS & Tab code
-$HEAD = '
+$headExtras = '
 <script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
 <link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
-<script type="text/javascript" src="includes/js/scriptaculous/scriptaculous.js?¬load=builder,effects"></script>
+<script type="text/javascript" src="includes/js/scriptaculous/scriptaculous.js?load=builder,effects"></script>
 <script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
 <link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css" 
 media="screen" />
 ';
 
-
 print_header(
   array( 'js/popups.js/true', 'js/visible.php' ),
-  $HEAD, $BodyX );
+  $headExtras, $bodyExtras );
 
-ob_start();
+//ob_start();
 
 ?>
 
@@ -189,11 +187,9 @@ Year content goes here...
 Agenda content goes here...
 </div>
 
-<?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
 <div id="contentTasks" class="tabcontent">
 Tasks content goes here...
 </div>
-<?php } ?>
 
 
 </div>
@@ -272,6 +268,13 @@ Tasks content goes here...
 
 <script type="text/javascript">
 
+function onLoadInit ()
+{
+  ajax_get_events('<?php echo $thisyear;?>','<?php echo intval($thismonth);?>',
+    '<?php echo intval($thisday);?>');
+  ajax_get_tasks();
+}
+
 // Initialize tabs
 var views=new ddtabcontent("viewtabs")
 views.setpersist(true)
@@ -310,7 +313,9 @@ var viewDialogIsVisible = false;
 var quickAddDialogIsVisible = null;
 var catsVisible = false;
 var events = new Array();
+var tasks = new Array ();
 var loadedMonths = new Array(); // Key will be format "200801" For Jan 2008
+var loadedTasks = false;
 var months = [
   <?php
     for ( $i = 0; $i < 12; $i++ ) {
@@ -456,6 +461,7 @@ function ajax_get_events (year,month,day)
   $('contentWeek').innerHTML = '<?php echo $LOADING;?>';
   $('contentMonth').innerHTML = '<?php echo $LOADING;?>';
   $('contentYear').innerHTML = '<?php echo $LOADING;?>';
+  $('contentAgenda').innerHTML = '<?php echo $LOADING;?>';
 
   new Ajax.Request('events_ajax.php',
   {
@@ -463,7 +469,7 @@ function ajax_get_events (year,month,day)
     parameters: { action: 'get', startdate: startdate },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=get' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -488,6 +494,50 @@ function ajax_get_events (year,month,day)
     onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
   switchingToDayView = false;
+  return true;
+}
+
+function ajax_get_tasks ()
+{
+  if ( loadedTasks ) {
+    //alert ( "Already loaded " + monthKey );
+    update_task_display ();
+    return;
+  }
+  $('contentTasks').innerHTML = '<?php echo $LOADING;?>';
+
+  new Ajax.Request('events_ajax.php',
+  {
+    method:'get',
+    parameters: { action: 'gett' },
+    onSuccess: function( transport ) {
+      if ( ! transport.responseText ) {
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=gett' );
+        return;
+      }
+      //alert ( "Get Tasks Response:\n" + transport.responseText );
+      try  {
+        var response = transport.responseText.evalJSON();
+        // Hmmm... The Prototype JSON above doesn't seem to work!
+        //var response = eval('(' + transport.responseText + ')');
+      } catch ( err ) {
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        return;
+      }
+      if ( response.error ) {
+        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        return;
+      }
+      tasks = new Array ();
+      var i = 0;
+      for ( var key in response.tasks ) {
+        tasks[i++] = response.tasks[key];
+      }
+      loadedTasks = true;
+      update_task_display ();
+    },
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+  });
   return true;
 }
 
@@ -572,7 +622,7 @@ function view_event ( key, location )
     parameters: { action: 'eventinfo', id: myEvent._id },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=eventinfo&id=' + myEvent._id );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -631,6 +681,8 @@ function view_event ( key, location )
   });
 }
 
+// Update the day, week, month and agenda content (but not the tasks which
+// are loaded be a different ajax call).
 function update_display ( year, month, day )
 {
   currentYear = year;
@@ -645,9 +697,12 @@ function update_display ( year, month, day )
   $('contentMonth').innerHTML = build_month_view ( year, month );
   $('contentYear').innerHTML = build_year_view ( year, month );
   $('contentAgenda').innerHTML = build_agenda_view ( year, month );
-<?php if ( $DISPLAY_TASKS_IN_GRID == 'Y' ) { ?>
-  $('contentTasks').innerHTML = "Not yet implemented...";
-<?php } ?>
+}
+
+// Update the task display.
+function update_task_display ()
+{
+  $('contentTasks').innerHTML = build_task_view ();
 }
 
 function prev_day_link ( year, month, day )
@@ -849,7 +904,7 @@ function quickAddHandler()
       name: name, description: description<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=addevent' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -903,6 +958,8 @@ function refresh()
 function build_month_view ( year, month )
 {
   var ret = "";
+  if ( month.charAt ( 0 ) == '0' )
+    month = month.substring ( 1 );
   try {
     var dateYmd;
     ret = '<table border="0" width="100%"><tr><td align="middle" width="70%">' +
@@ -1206,6 +1263,32 @@ function build_agenda_view ( year, month )
   return ret;
 }
 
+// Build the HTML for the Task view
+function build_task_view ( year, month )
+{
+  var ret = "";
+  try {
+    ret = '<table id="tasktable">' +
+      '<tr><th><?php etranslate('Due Date');?></th>' +
+      '<th><?php etranslate('Priority');?></th>' +
+      '<th><?php etranslate('Name');?></th>' +
+      '<th><?php etranslate('Category');?></th>' +
+      '</tr>' + "\n";
+    for ( var i = 0; i < tasks.length; i++ ) {
+      var task = tasks[i];
+      var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
+      ret += '<tr><td class="' + cl + '">' + 
+        task._dueDate + '</td><td class="' + cl +
+        '">' + task._priority + '</td><td class="' + cl +
+        '">' + task._name + '</td><td class="' + cl +
+        '">' + task._category + '</td></tr>' + "\n";
+    }
+    ret += "</table>\n";
+  } catch ( err ) {
+    alert ( "JavaScript exception:\n" + err );
+  }
+  return ret;
+}
 
 // Build the HTML for the Day view
 function build_day_view ( year, month, day )
@@ -1468,7 +1551,7 @@ function format_description ( desc )
 
 <?php
 
-ob_end_flush();
+//ob_end_flush();
 
 echo print_trailer();
 
