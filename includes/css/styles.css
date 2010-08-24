@@ -996,19 +996,25 @@ tr.highlight td {
   /*overflow:auto;*/
 }
 #combo #contentTasks #tasktable th {
-  background-color: #000060;
-  border: 1px outset #000060;
+  background-color: #000080;
+  border: 2px outset #000060;
   color: #ffffff;
+  font-size: 1.0em;
+  padding: 4px;
 }
 #combo #contentTasks #tasktable td.odd {
   background-color: #c0c0c0;
-  border: 1px outset #c0c0c0;
+  border: 2px outset #c0c0c0;
   color: #000000;
+  font-size: 1.0em;
+  padding: 4px;
 }
 #combo #contentTasks #tasktable td.even {
   background-color: #d8d8d8;
-  border: 1px outset #d8d8d8;
+  border: 2px outset #d8d8d8;
   color: #000000;
+  font-size: 1.0em;
+  padding: 4px;
 }
 #combo #viewEventDiv table {
   padding: 10px;
