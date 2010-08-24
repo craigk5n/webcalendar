@@ -763,9 +763,9 @@ function prev_month_link ( year, month )
   var m, y;
   if ( month == 1 ) {
     m = 12;
-    y = year - 1;
+    y = parseInt(year) - 1;
   } else {
-    m = month - 1;
+    m = parseInt(month) - 1;
     y = year;
   }
   return "<span id=\"prevmonth\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
@@ -777,9 +777,9 @@ function next_month_link ( year, month )
   var m, y;
   if ( month == 12 ) {
     m = 1;
-    y = year + 1;
+    y = parseInt(year) + 1;
   } else {
-    m = month + 1;
+    m = parseInt(month) + 1;
     y = year;
   }
   return "<span id=\"nextmonth\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
@@ -831,12 +831,14 @@ function month_view_nav_links ( year, month )
 
 function prev_year_link ( year, month )
 {
+  year = parseInt(year);
   return "<span id=\"prevyear\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" + ( year - 1 ) +
     "," + month + ",1)\">&lt;&lt;" + ( year -1  ) + "</span>";
 }
 
 function next_year_link ( year, month )
 {
+  year = parseInt(year);
   return "<span id=\"nextyear\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" + ( year + 1 ) +
     "," + month + ",1)\">" + ( year + 1 ) + "&gt;&gt;</span>";
 }
