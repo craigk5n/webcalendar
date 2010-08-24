@@ -1276,12 +1276,31 @@ function build_task_view ( year, month )
       '</tr>' + "\n";
     for ( var i = 0; i < tasks.length; i++ ) {
       var task = tasks[i];
+      if ( ! tasks[i] || ! tasks[i]._name )
+        continue;
       var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
       ret += '<tr><td class="' + cl + '">' + 
-        task._dueDate + '</td><td class="' + cl +
-        '">' + task._priority + '</td><td class="' + cl +
+        format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">';
+      if ( task._priority < 4 )
+        ret += '<?php etranslate('High');?>';
+      else if ( task._priority < 7 )
+        ret += '<?php etranslate('Medium');?>';
+      else
+        ret += '<?php etranslate('Low');?>';
+      ret += '</td><td class="' + cl +
         '">' + task._name + '</td><td class="' + cl +
-        '">' + task._category + '</td></tr>' + "\n";
+        '">';
+        var catId = task._category;
+        if ( catId < 0 ) catId = 0 - catId;
+        if ( catId == 0 ) {
+          ret += "&nbsp;";
+        } else {
+          if ( categories[catId] )
+            ret += categories[catId].name;
+          else
+            ret += "Unknown category (" + catId + ")";
+        }
+        ret += '</td></tr>' + "\n";
     }
     ret += "</table>\n";
   } catch ( err ) {
