@@ -188,7 +188,8 @@ Agenda content goes here...
 </div>
 
 <div id="contentTasks" class="tabcontent">
-Tasks content goes here...
+<table id="tasktable">
+</table>
 </div>
 
 
@@ -284,6 +285,11 @@ views.init()
 
 var currentYear = null, currentMonth = null, currentDay = null;
 var switchingToDayView = false;
+// Sort mode for task table
+var SORT_BY_DUE_DATE = 0, SORT_BY_NAME = 1, SORT_BY_PRIORITY = 2,
+  SORT_BY_CATEGORY = 3;
+var taskSortAsc = false;
+var taskSortCol = SORT_BY_DUE_DATE;
 
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
 
@@ -504,7 +510,7 @@ function ajax_get_tasks ()
     update_task_display ();
     return;
   }
-  $('contentTasks').innerHTML = '<?php echo $LOADING;?>';
+  //$('contentTasks').innerHTML = '<?php echo $LOADING;?>';
 
   new Ajax.Request('events_ajax.php',
   {
@@ -702,7 +708,7 @@ function update_display ( year, month, day )
 // Update the task display.
 function update_task_display ()
 {
-  $('contentTasks').innerHTML = build_task_view ();
+  build_task_view ();
 }
 
 function prev_day_link ( year, month, day )
@@ -1265,51 +1271,129 @@ function build_agenda_view ( year, month )
   return ret;
 }
 
-// Build the HTML for the Task view
-function build_task_view ( year, month )
+function task_sort_handler ( col )
 {
-  var ret = "";
-  try {
-    ret = '<table id="tasktable">' +
-      '<tr><th><?php etranslate('Due Date');?></th>' +
-      '<th><?php etranslate('Priority');?></th>' +
-      '<th><?php etranslate('Name');?></th>' +
-      '<th><?php etranslate('Category');?></th>' +
-      '</tr>' + "\n";
-    for ( var i = 0; i < tasks.length; i++ ) {
-      var task = tasks[i];
-      if ( ! tasks[i] || ! tasks[i]._name )
-        continue;
-      var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
-      ret += '<tr><td class="' + cl + '">' + 
-        format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">';
-      if ( task._priority < 4 )
-        ret += '<?php etranslate('High');?>';
-      else if ( task._priority < 7 )
-        ret += '<?php etranslate('Medium');?>';
-      else
-        ret += '<?php etranslate('Low');?>';
-      ret += '</td><td class="' + cl +
-        '">' + task._name + '</td><td class="' + cl +
-        '">';
-        var catId = task._category;
-        if ( catId < 0 ) catId = 0 - catId;
-        if ( catId == 0 ) {
-          ret += "&nbsp;";
-        } else {
-          if ( categories[catId] )
-            ret += categories[catId].name;
-          else
-            ret += "Unknown category (" + catId + ")";
-        }
-        ret += '</td></tr>' + "\n";
-    }
-    ret += "</table>\n";
-  } catch ( err ) {
-    alert ( "JavaScript exception:\n" + err );
+  if ( taskSortCol != col ) {
+    taskSortAsc = false;
+  } else {
+    taskSortAsc = ! taskSortAsc;
   }
-  return ret;
+  taskSortCol = col;
+  build_task_view ();
 }
+
+function strcmp ( string1, string2 )
+{
+  var str1 = string1.toLowerCase ();
+  var str2 = string2.toLowerCase ();
+  if ( str1 == str2 ) return 0;
+
+  for ( var i = 0; i < str1.length && i < str2.length; i++ ) {
+    if ( str1.charAt ( i ) < str2.charAt ( i ) )
+      return -1;
+    else if ( str1.charAt ( i ) > str2.charAt ( i ) )
+      return 1;
+  }
+  if ( str1.length < str2.length )
+    return -1;
+  else if ( str1.length > str2.length )
+    return 1;
+  // Shouldn't ever reach here...
+  alert ( 'strcmp bug! string1= "' + str1 + '", string2= "' + str2 + '"' );
+}
+
+function intcmp ( int1, int2 )
+{
+  if ( int1 == int2 )
+    return 0;
+  if ( int1 < int2 )
+    return -1;
+  else
+    return 1;
+}
+
+function compare_tasks ( task1, task2 )
+{
+  if ( taskSortCol == SORT_BY_DUE_DATE ) {
+    if ( taskSortAsc ) {
+      return intcmp ( task1._dueDate, task2._dueDate );
+    } else {
+      return intcmp ( task2._dueDate, task2._dueDate );
+    }
+  } else if ( taskSortCol == SORT_BY_PRIORITY ) {
+    if ( taskSortAsc ) {
+      return intcmp ( task1._priority, task2._priority );
+    } else {
+      return intcmp ( task2._priority, task1._priority );
+    }
+  } else if ( taskSortCol == SORT_BY_NAME ) {
+    if ( taskSortAsc ) {
+      strcmp ( task1._name, task2._name );
+    } else {
+      strcmp ( task2._name, task1._name );
+    }
+  } else if ( taskSortCol == SORT_BY_CATEGORY ) {
+    if ( taskSortAsc ) {
+      return intcmp ( task1._category, task2._category );
+    } else {
+      return intcmp ( task2._category, task2._category );
+    }
+  }
+}
+
+// Build the HTML for the Task view
+function build_task_view ()
+{
+  // Sort tasks first
+  tasks.sort ( compare_tasks );
+
+  var img = new Array ( 'sort-none', 'sort-none', 'sort-none', 'sort-none' );
+  img[taskSortCol] = ( taskSortAsc ? 'sort-up' : 'sort-down' );
+
+  var content =
+    '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php etranslate('Due Date');?><img src="images/' + img[0] + '.png"/></th>' +
+    '<th class="clickable" onclick="task_sort_handler(1)"><?php etranslate('Priority');?><img src="images/' + img[1] + '.png"/></th>' +
+    '<th class="clickable" onclick="task_sort_handler(2)"><?php etranslate('Name');?><img src="images/' + img[2] + '.png"/></th>' +
+    '<th class="clickable" onclick="task_sort_handler(3)"><?php etranslate('Category');?><img src="images/' + img[3] + '.png"/></th>' +
+    '</tr>' + "\n";
+  for ( var i = 0; i < tasks.length; i++ ) {
+    var task = tasks[i];
+    if ( ! tasks[i] || ! tasks[i]._name )
+      continue;
+    var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
+    content += '<tr><td class="' + cl + '">' + 
+      format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">';
+    if ( task._priority < 4 )
+      content += '<?php etranslate('High');?>';
+    else if ( task._priority < 7 )
+      content += '<?php etranslate('Medium');?>';
+    else
+      content += '<?php etranslate('Low');?>';
+    content += '</td><td class="' + cl +
+      '">' + task._name + '</td><td class="' + cl +
+      '">';
+      var catId = task._category;
+      if ( catId < 0 ) catId = 0 - catId;
+      if ( catId == 0 ) {
+        content += "&nbsp;";
+      } else {
+        if ( categories[catId] )
+          content += categories[catId].name;
+        else
+          content += "Unknown category (" + catId + ")";
+      }
+      content += '</td></tr>' + "\n";
+  }
+  $('tasktable').innerHTML = content;
+
+  //alert ( 'strcmp(AAA,BBB) = ' + strcmp('AAA','BBB' ) + "\n" +
+  //  'strcmp(BBB,AAA) = ' + strcmp('BBB','AAA' ) + "\n" +
+  //  'strcmp(abc,ABC) = ' + strcmp('abc','ABC' ) + "\n" +
+  //  'strcmp(B,AAA) = ' + strcmp('B','A' ) + "\n" +
+  //  'strcmp(BBB,aaa) = ' + strcmp('BBB','aaa' ) + "\n" +
+  //  'strcmp(ABC,DEF) = ' + strcmp('ABC','DEF' ) + "\n" );
+}
+
 
 // Build the HTML for the Day view
 function build_day_view ( year, month, day )
