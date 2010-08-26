@@ -286,7 +286,7 @@ views.init()
 var currentYear = null, currentMonth = null, currentDay = null;
 var switchingToDayView = false;
 // Sort mode for task table
-var SORT_BY_DUE_DATE = 0, SORT_BY_NAME = 1, SORT_BY_PRIORITY = 2,
+var SORT_BY_NAME = 0, SORT_BY_DUE_DATE = 1, SORT_BY_PRIORITY = 2,
   SORT_BY_CATEGORY = 3;
 var taskSortAsc = true;
 var taskSortCol = SORT_BY_DUE_DATE;
@@ -1279,7 +1279,7 @@ function build_agenda_view ( year, month )
 function task_sort_handler ( col )
 {
   if ( taskSortCol != col ) {
-    if ( col == SORT_BY_DUE_DATE || col == SORT_BY_NAME )
+    if ( col == SORT_BY_DUE_DATE || col == SORT_BY_NAME || col == SORT_BY_CATEGORY )
       taskSortAsc = true;
     else
       taskSortAsc = false;
@@ -1290,12 +1290,19 @@ function task_sort_handler ( col )
   build_task_view ();
 }
 
+// Emulate the C strcmp function (and why doesn't JavaScript have a
+// strcmp function???)
+// -1 if string1 comes first, 1 if string2 comes first, 0 if equal
 function strcmp ( string1, string2 )
 {
+  // Handle null values first
+  if ( string1 == null && string2 == null )
+    return 0;
   if ( string1 == null )
     return -1;
   else if ( string2 == null )
     return 1;
+  // Compare non-null values
   var str1 = string1.toLowerCase ();
   var str2 = string2.toLowerCase ();
   if ( str1 == str2 ) return 0;
@@ -1326,23 +1333,23 @@ function intcmp ( int1, int2 )
 
 function compare_tasks ( task1, task2 )
 {
-  if ( taskSortCol == SORT_BY_DUE_DATE ) {
-    if ( taskSortAsc ) {
-      return intcmp ( task1._dueDate, task2._dueDate );
-    } else {
-      return intcmp ( task2._dueDate, task1._dueDate );
-    }
-  } else if ( taskSortCol == SORT_BY_NAME ) {
+  if ( taskSortCol == SORT_BY_NAME ) {
     if ( taskSortAsc ) {
       return strcmp ( task1._name, task2._name );
     } else {
       return strcmp ( task2._name, task1._name );
     }
+  } else if ( taskSortCol == SORT_BY_DUE_DATE ) {
+    if ( taskSortAsc ) {
+      return intcmp ( task1._dueDate, task2._dueDate );
+    } else {
+      return intcmp ( task2._dueDate, task1._dueDate );
+    }
   } else if ( taskSortCol == SORT_BY_PRIORITY ) {
     if ( taskSortAsc ) {
-      return intcmp ( task1._priority, task2._priority );
-    } else {
       return intcmp ( task2._priority, task1._priority );
+    } else {
+      return intcmp ( task1._priority, task2._priority );
     }
   } else if ( taskSortCol == SORT_BY_CATEGORY ) {
     if ( taskSortAsc ) {
@@ -1363,8 +1370,8 @@ function build_task_view ()
   img[taskSortCol] = ( taskSortAsc ? 'sort-up' : 'sort-down' );
 
   var content =
-    '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php etranslate('Due Date');?><img src="images/' + img[0] + '.png"/></th>' +
-    '<th class="clickable" onclick="task_sort_handler(1)"><?php etranslate('Name');?><img src="images/' + img[1] + '.png"/></th>' +
+    '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php etranslate('Name');?><img src="images/' + img[0] + '.png"/></th>' +
+    '<th class="clickable" onclick="task_sort_handler(1)"><?php etranslate('Due Date');?><img src="images/' + img[1] + '.png"/></th>' +
     '<th class="clickable" onclick="task_sort_handler(2)"><?php etranslate('Priority');?><img src="images/' + img[2] + '.png"/></th>' +
     '<th class="clickable" onclick="task_sort_handler(3)"><?php etranslate('Category');?><img src="images/' + img[3] + '.png"/></th>' +
     '</tr>' + "\n";
@@ -1373,9 +1380,9 @@ function build_task_view ()
     if ( ! tasks[i] || ! tasks[i]._name )
       continue;
     var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
-    content += '<tr><td class="' + cl + '">' + 
-      format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">' +
-      task._name + '</td><td class="' + cl + '">';
+    content += '<tr><td class="' + cl + '">' +
+      task._name + '</td><td class="' + cl + '">' + 
+      format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">';
     if ( task._priority < 4 )
       content += '<?php etranslate('High');?>';
     else if ( task._priority < 7 )
