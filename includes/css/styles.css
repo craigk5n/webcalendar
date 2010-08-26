@@ -1001,6 +1001,7 @@ tr.highlight td {
   color: #ffffff;
   font-size: 1.0em;
   padding: 4px;
+  padding-left: 20px;
 }
 #combo #contentTasks #tasktable td.odd {
   background-color: #c0c0c0;
