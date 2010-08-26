@@ -1379,9 +1379,14 @@ function build_task_view ()
     var task = tasks[i];
     if ( ! tasks[i] || ! tasks[i]._name )
       continue;
+    var iconImg = '';
+    var catId = task._category;
+    if ( catId && catId > 0 && categories[catId] && categories[catId].icon ) {
+      iconImg += '<img src="' + categories[catId].icon + '" />';
+    }
     var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
     content += '<tr><td class="' + cl + '">' +
-      task._name + '</td><td class="' + cl + '">' + 
+      iconImg + task._name + '</td><td class="' + cl + '">' + 
       format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">';
     if ( task._priority < 4 )
       content += '<?php etranslate('High');?>';
