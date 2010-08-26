@@ -536,8 +536,8 @@ function ajax_get_tasks ()
       }
       tasks = new Array ();
       var i = 0;
-      for ( var key in response.tasks ) {
-        tasks[i++] = response.tasks[key];
+      for ( var i = 0; i < response.tasks.length; i++ ) {
+        tasks[i] = response.tasks[i];
       }
       loadedTasks = true;
       update_task_display ();
