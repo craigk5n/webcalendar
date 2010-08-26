@@ -41,3 +41,6 @@ a {
 #printarea {
  width: 100% !important;
 }
+.noprint {
+  display: none !important;
+}
