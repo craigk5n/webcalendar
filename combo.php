@@ -970,9 +970,14 @@ function build_month_view ( year, month )
   //  month = month.substring ( 1 );
   try {
     var dateYmd;
-    ret = '<table border="0" width="100%"><tr><td align="middle" width="70%">' +
+    ret = '<table border="0" width="100%"><tr><td align="center" width="70%">' +
+      '<table border="0" width="100%"><tr><td width="20%" align="right">' +
+      prev_month_link ( year, month ) + '</td><td width="60%" align="center">' +
       '<span class="monthtitle">' + months[month-1] + " " + year + "</span>" +
       '<span id="monthstatus"> </span>' +
+      '</td><td width="20%" align="left">' +
+      next_month_link ( year, month ) +
+      '</td></tr></table>' +
       '</td><td align="right">' +
        month_view_nav_links ( year, month ) +
       '</td></tr></table>' +

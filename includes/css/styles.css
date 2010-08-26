@@ -897,7 +897,7 @@ tr.highlight td {
 #contentDay .daytitle {
   margin:0 0 0 .3125em;
   padding:0;
-  font-size:14pt;
+  font-size:16pt;
   text-align:center;
 }
 #combo #contentMonth #month_main td {
@@ -1248,12 +1248,14 @@ tr.highlight td {
    //border-color:#e0e0e0 #808080 #808080 #e0e0e0;
    padding-right:.3125em;
    padding-left:.3125em;
+   padding:.25em;
    background:#d0d0d0;
    color:#000;
    font-size:11pt;
 }
 .fakebutton:hover {
-  background:#0ff;
+   background:#a0a0a0;
+   border:2px #c0c0c0 outset;
 }
 #combo #nextmonth,
 #combo #refresh,
