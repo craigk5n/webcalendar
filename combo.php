@@ -106,7 +106,7 @@ print_header(
 
 ?>
 
-<div style="margin: 15px; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 10px; text-align: center;">
+<div style="margin: 10px; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 10px; text-align: center; vertical-align: top;">
 <img align="left" src="images/warning.png" width="40" height="40" alt="Warning" />
 This page is a prototype that will hopefully evolve into a replacement
 for all four of the main views (day.php, week.php, month.php, year.php).
