@@ -288,7 +288,7 @@ var switchingToDayView = false;
 // Sort mode for task table
 var SORT_BY_DUE_DATE = 0, SORT_BY_NAME = 1, SORT_BY_PRIORITY = 2,
   SORT_BY_CATEGORY = 3;
-var taskSortAsc = false;
+var taskSortAsc = true;
 var taskSortCol = SORT_BY_DUE_DATE;
 
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
@@ -1274,7 +1274,10 @@ function build_agenda_view ( year, month )
 function task_sort_handler ( col )
 {
   if ( taskSortCol != col ) {
-    taskSortAsc = false;
+    if ( col == SORT_BY_DUE_DATE || col == SORT_BY_NAME )
+      taskSortAsc = true;
+    else
+      taskSortAsc = false;
   } else {
     taskSortAsc = ! taskSortAsc;
   }
@@ -1284,6 +1287,10 @@ function task_sort_handler ( col )
 
 function strcmp ( string1, string2 )
 {
+  if ( string1 == null )
+    return -1;
+  else if ( string2 == null )
+    return 1;
   var str1 = string1.toLowerCase ();
   var str2 = string2.toLowerCase ();
   if ( str1 == str2 ) return 0;
@@ -1318,7 +1325,13 @@ function compare_tasks ( task1, task2 )
     if ( taskSortAsc ) {
       return intcmp ( task1._dueDate, task2._dueDate );
     } else {
-      return intcmp ( task2._dueDate, task2._dueDate );
+      return intcmp ( task2._dueDate, task1._dueDate );
+    }
+  } else if ( taskSortCol == SORT_BY_NAME ) {
+    if ( taskSortAsc ) {
+      return strcmp ( task1._name, task2._name );
+    } else {
+      return strcmp ( task2._name, task1._name );
     }
   } else if ( taskSortCol == SORT_BY_PRIORITY ) {
     if ( taskSortAsc ) {
@@ -1326,17 +1339,11 @@ function compare_tasks ( task1, task2 )
     } else {
       return intcmp ( task2._priority, task1._priority );
     }
-  } else if ( taskSortCol == SORT_BY_NAME ) {
-    if ( taskSortAsc ) {
-      strcmp ( task1._name, task2._name );
-    } else {
-      strcmp ( task2._name, task1._name );
-    }
   } else if ( taskSortCol == SORT_BY_CATEGORY ) {
     if ( taskSortAsc ) {
       return intcmp ( task1._category, task2._category );
     } else {
-      return intcmp ( task2._category, task2._category );
+      return intcmp ( task2._category, task1._category );
     }
   }
 }
@@ -1352,8 +1359,8 @@ function build_task_view ()
 
   var content =
     '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php etranslate('Due Date');?><img src="images/' + img[0] + '.png"/></th>' +
-    '<th class="clickable" onclick="task_sort_handler(1)"><?php etranslate('Priority');?><img src="images/' + img[1] + '.png"/></th>' +
-    '<th class="clickable" onclick="task_sort_handler(2)"><?php etranslate('Name');?><img src="images/' + img[2] + '.png"/></th>' +
+    '<th class="clickable" onclick="task_sort_handler(1)"><?php etranslate('Name');?><img src="images/' + img[1] + '.png"/></th>' +
+    '<th class="clickable" onclick="task_sort_handler(2)"><?php etranslate('Priority');?><img src="images/' + img[2] + '.png"/></th>' +
     '<th class="clickable" onclick="task_sort_handler(3)"><?php etranslate('Category');?><img src="images/' + img[3] + '.png"/></th>' +
     '</tr>' + "\n";
   for ( var i = 0; i < tasks.length; i++ ) {
@@ -1362,7 +1369,8 @@ function build_task_view ()
       continue;
     var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
     content += '<tr><td class="' + cl + '">' + 
-      format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">';
+      format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">' +
+      task._name + '</td><td class="' + cl + '">';
     if ( task._priority < 4 )
       content += '<?php etranslate('High');?>';
     else if ( task._priority < 7 )
@@ -1370,7 +1378,6 @@ function build_task_view ()
     else
       content += '<?php etranslate('Low');?>';
     content += '</td><td class="' + cl +
-      '">' + task._name + '</td><td class="' + cl +
       '">';
       var catId = task._category;
       if ( catId < 0 ) catId = 0 - catId;
@@ -1391,6 +1398,7 @@ function build_task_view ()
   //  'strcmp(abc,ABC) = ' + strcmp('abc','ABC' ) + "\n" +
   //  'strcmp(B,AAA) = ' + strcmp('B','A' ) + "\n" +
   //  'strcmp(BBB,aaa) = ' + strcmp('BBB','aaa' ) + "\n" +
+  //  'strcmp(20100801,20110801) = ' + strcmp('20100801','20110801' ) + "\n" +
   //  'strcmp(ABC,DEF) = ' + strcmp('ABC','DEF' ) + "\n" );
 }
 
