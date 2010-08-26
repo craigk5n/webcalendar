@@ -900,6 +900,9 @@ tr.highlight td {
   font-size:16pt;
   text-align:center;
 }
+#combo #contentMonth #month_main {
+  margin-top: 10px;
+}
 #combo #contentMonth #month_main td {
   height:90px;
 }
