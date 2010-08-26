@@ -774,8 +774,8 @@ function prev_month_link ( year, month )
     m = parseInt(month) - 1;
     y = year;
   }
-  return "<span id=\"prevmonth\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
-    y + "," + m + ",1)\">" + shortMonths[m-1] + "<img src=\"images/combo-prev.png\" border=\"0\"></span>";
+  return "<span id=\"prevmonth\" class=\"clickable noprint\" onclick=\"ajax_get_events(" +
+    y + "," + m + ",1)\"><img src=\"images/combo-prev.png\" border=\"0\" alt=\"" + shortMonths[m-1] + "\"/></span>";
 }
 
 function next_month_link ( year, month )
@@ -788,8 +788,8 @@ function next_month_link ( year, month )
     m = parseInt(month) + 1;
     y = year;
   }
-  return "<span id=\"nextmonth\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
-    y + "," + m + ",1)\">" + shortMonths[m-1] + "<img src=\"images/combo-next.png\" border=\"0\"></span>";
+  return "<span id=\"nextmonth\" class=\"clickable noprint\" onclick=\"ajax_get_events(" +
+    y + "," + m + ",1)\"><img src=\"images/combo-next.png\" border=\"0\" alt=\"" + shortMonths[m-1] + "\"/></span>";
 }
 
 // Build a table of quick links to all the months in the current
@@ -971,11 +971,11 @@ function build_month_view ( year, month )
   try {
     var dateYmd;
     ret = '<table border="0" width="100%"><tr><td align="center" width="70%">' +
-      '<table border="0" width="100%"><tr><td width="20%" align="right">' +
-      prev_month_link ( year, month ) + '</td><td width="60%" align="center">' +
+      '<table border="0" width="100%"><tr><td width="30%" align="right">' +
+      prev_month_link ( year, month ) + '</td><td width="40%" align="center">' +
       '<span class="monthtitle">' + months[month-1] + " " + year + "</span>" +
       '<span id="monthstatus"> </span>' +
-      '</td><td width="20%" align="left">' +
+      '</td><td width="30%" align="left">' +
       next_month_link ( year, month ) +
       '</td></tr></table>' +
       '</td><td align="right">' +
