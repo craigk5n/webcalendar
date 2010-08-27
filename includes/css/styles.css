@@ -1331,4 +1331,11 @@ a:hover {
 table.ThemeMenubar {
   table-layout:auto;
 }
+#editCatsDiv #innerDiv {
+  border:1px solid;
+  border-color:#e0e0e0 #808080 #808080 #e0e0e0;
+  background:#ffffff;
+  padding: 5px;
+  font-size: 80%;
+}
 

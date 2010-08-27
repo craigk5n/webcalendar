@@ -166,15 +166,11 @@ if ( $ALLOW_HTML_DESCRIPTION == 'Y' ) {
 
 // Add Modal Dialog javascript/CSS
 $HEAD =
-  '<script type="text/javascript" src="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js?'
- . filemtime( 'includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js' ) . '"></script>
-    <script type="text/javascript" src="includes/js/dhtmlmodal/modalfiles/modal.js?'
- . filemtime( 'includes/js/dhtmlmodal/modalfiles/modal.js' ) . '"></script>
-    <link type="text/css" href="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css?'
- . filemtime( 'includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css' ) . '" rel="stylesheet" />
-    <link type="text/css" href="includes/js/dhtmlmodal/modalfiles/modal.css?'
- . filemtime( 'includes/js/dhtmlmodal/modalfiles/modal.css' ) . '" rel="stylesheet" />';
-
+'<script type="text/javascript" src="includes/js/scriptaculous/scriptaculous.js?load=builder,effects"></script>
+<script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
+<link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css"
+media="screen" />
+';
 
 $byday = $bymonth = $bymonthday = $bysetpos = $participants =
 $exceptions = $inclusions = $reminder = array();
@@ -189,7 +185,8 @@ $wkst = 'MO';
 $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
   ( $is_assistant || $is_admin ) ) ? $user : $login;
 
-print_header ( $INC, $HEAD, $BodyX, false, false, false, true );
+//print_header ( $INC, $HEAD, $BodyX, false, false, false, true );
+print_header ( $INC, $HEAD, $BodyX );
 
 ob_start();
 
@@ -1747,9 +1744,8 @@ ob_end_flush();
 // Create a hidden div tag for editing categories...
 ?>
 <div id="editCatsDiv" style="display: none;">
-  <div style="background-color: <?php echo $BGCOLOR;?>; border: 1px solid <?php echo $TABLEBG;?>; color: <?php echo $TEXTCOLOR;?>">
+  <div id="innerDiv">
   <form name="editCatForm" id="editCatForm">
-  <div id="scrollCatDiv" style="overflow: auto; height: 370px; width: 340px;">
   <?php
   if ( ! empty ( $categories ) ) {
     foreach ( $categories as $K => $V ) {
@@ -1767,9 +1763,8 @@ ob_end_flush();
     }
   }
   ?>
-  </div>
   <center>
-  <input type="button" value="<?php etranslate("Save");?>" onclick="modalEditCatDialog.hide()" />
+  <input type="button" value="<?php etranslate("Save");?>" onclick="catOkHandler()" />
   </center>
   </form>
   </div>
