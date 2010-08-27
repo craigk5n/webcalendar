@@ -53,6 +53,15 @@ $prevYmd = date ( 'Ymd', $prev );
 $prevyear = substr ( $prevYmd, 0, 4 );
 $prevmonth = substr ( $prevYmd, 4, 2 );
 
+$user    = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
+if ( ! empty ( $user ) ) {
+  // Make sure this user has permission to view the other user's calendar
+  if ( ! access_user_calendar( 'view', $user ) ) {
+     // Not allowed.
+     $user = $login;
+  } 
+} 
+
 // Can the user see event participants?
 $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
 if ( $is_admin )
@@ -283,6 +292,8 @@ views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()
 // End init tabs
 
+var login = '<?php echo $login;?>';
+var user = '<?php echo $user;?>';
 var currentYear = null, currentMonth = null, currentDay = null;
 var switchingToDayView = false;
 // Sort mode for task table
@@ -472,7 +483,7 @@ function ajax_get_events (year,month,day)
   new Ajax.Request('events_ajax.php',
   {
     method:'get',
-    parameters: { action: 'get', startdate: startdate },
+    parameters: { action: 'get', startdate: startdate, user: user },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=get' );
@@ -515,7 +526,7 @@ function ajax_get_tasks ()
   new Ajax.Request('events_ajax.php',
   {
     method:'get',
-    parameters: { action: 'gett' },
+    parameters: { action: 'gett', user: user },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=gett' );
