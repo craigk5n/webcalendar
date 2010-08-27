@@ -4,7 +4,6 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
  global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
  $user = $arinc[3];
 ?>
-var editCatPanel = null;
 var bydayAr = new Array();
 var bymonthdayAr = new Array();
 var bysetposAr = new Array();
@@ -608,10 +607,9 @@ function toggle_rem_rep() {
 function editCats ( evt ) {
   var obj;
 
-  modalEditCatDialog = dhtmlmodal.open ( "modalEditCatsDiv", "div",
-    "editCatsDiv",
-    "<?php etranslate("Categories");?>",
-    "width=350,height=400px,resize=0,scrolling=0,center=1" );
+  function catWindowClosed () {
+  }
+  Modalbox.show($('editCatsDiv'), {title: '<?php etranslate('Categories');?>', width: 350, onHide: catWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
 
   var cat_ids = elements['cat_id'].value;
   var selected_ids = cat_ids.split ( ',' );
@@ -639,42 +637,39 @@ function editCats ( evt ) {
   }
   ?>
 
-  modalEditCatDialog.onclose = function() {
-    // Get selected categories
-    var catIds = '', catNames = '';
+}
+
+function catOkHandler () {
+  // Get selected categories
+  var catIds = '', catNames = '';
 <?php
   foreach ( $categories as $catid => $cat ) {
     if ( $catid == 0 || $catid == -1 )
       continue; // Ignore these special cases (0=All, -1=None)
     ?>
-    var checkboxId = 'cat_<?php echo $catid;?>';
-    var nameId = 'cat_<?php echo $catid;?>_text';
-    obj = document.getElementById ( checkboxId );
-    if ( obj ) {
-      if ( obj.checked ) {
-        if ( catIds.length > 0 ) {
-          catIds += ',';
-          catNames += ', ';
-        }
-        catIds += '<?php echo $catid;?>';
-        catNames += '<?php echo $cat['cat_name'];?>';
+  var checkboxId = 'cat_<?php echo $catid;?>';
+  var nameId = 'cat_<?php echo $catid;?>_text';
+  obj = document.getElementById ( checkboxId );
+  if ( obj ) {
+    if ( obj.checked ) {
+      if ( catIds.length > 0 ) {
+        catIds += ',';
+        catNames += ', ';
       }
-    } else {
-      if ( ! obj ) alert ( "Could not find " + checkboxId );
-      else alert ( "Could not find " + nameId );
+      catIds += '<?php echo $catid;?>';
+      catNames += '<?php echo $cat['cat_name'];?>';
     }
+  } else {
+    if ( ! obj ) alert ( "Could not find " + checkboxId );
+    else alert ( "Could not find " + nameId );
+  }
 <?php
   }
 ?>
-    obj = document.getElementById ( 'entry_categories' );
-    if ( obj )
-      obj.innerHTML = catNames;
-    obj = document.getElementById ( 'cat_id' );
-    if ( obj ) {
-      obj.value = catIds;
-    }
-    return true;
-  }
+  $('entry_categories').innerHTML = catNames;
+  $('cat_id').value = catIds;
+  Modalbox.hide ();
+  return true;
 }
 
 function displayInValid(myvar)
