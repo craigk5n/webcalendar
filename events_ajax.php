@@ -12,6 +12,8 @@
  *   Most of the event handling is identical to the non-AJAX PHP pages except
  *   that we store the local user's version of each event's date and time
  *   in the Event and RptEvent classes.
+ *
+ * TODO: hide private events of other users.
  */
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
@@ -52,7 +54,16 @@ $debug = ! empty ( $debug );
 $action = getValue ( 'action' );
 if ( empty ( $action ) )
   $action = 'get';
-// $user will be set in WebCalendar.class
+$user    = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
+if ( ! empty ( $user ) ) {
+  // Make sure this user has permission to view the other user's calendar
+  if ( ! access_user_calendar( 'view', $user ) ) {
+     // Not allowed.
+     $user = $login;
+     ajax_send_error ( translate('Not authorized') );
+     exit;
+  }
+}
 if ( empty ( $user ) )
   $user = $login;
 $get_unapproved = true;
