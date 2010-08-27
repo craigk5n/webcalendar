@@ -143,9 +143,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
       if ( preg_match ( '/onload="(\S+)"/i', $saveBodyX, $matches ) ) {
         $BodyX = 'onload="' . $matches[1] . '; ' .
          "cmDraw( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
+      } else if ( preg_match ( '/cmDraw/', $BodyX ) ) {
+         // handled...  wasn't clobbered
       } else {
         die_miserable_death ( 'BodyX error in print_header.  Menu and ' .
-          $SERVER['PHP_SELF'] . ' are both setting onload callbak.' );
+          $self . ' are both setting onload callback.<br/>Old: ' .
+          htmlentities ( $saveBodyX ) . '<br/><br/>New: ' .
+          htmlentities ( $BodyX ) );
       }
     }
   }
