@@ -568,11 +568,6 @@ function view_event ( key, location )
   // Use the modal dialog to display the event.
   // First update the <div> content with the information from this
   // event.
-  //viewDialog = dhtmlmodal.open ( 'viewEventDialog', 'div',
-  //  'viewEventDiv', '<?php etranslate('View Event');?>',
-  //  'width=<?php echo $view_width;?>px,height=<?php echo $view_height;?>px' +
-  //  'resize=1,scrolling=1,center=1' );
-
   function viewWindowClosed() {
     viewDialogIsVisible = false;
   }
@@ -876,11 +871,6 @@ function monthCellClickHandler ( dateYmd )
     quickAddDialogIsOpen = false;
   }
   Modalbox.show($('quickAddDiv'), {title: '<?php etranslate('Add Entry');?>', width: <?php echo $quick_add_width;?>, onHide: addWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
-
-  //quickAddDialog = dhtmlmodal.open ( 'quickAddDialog', 'div',
-  //  'quickAddDiv', '<?php etranslate('Add Entry');?>',
-  //  'width=<?php echo $quick_add_width;?>px,height=<?php echo $quick_add_height;?>px,' +
-  //  'resize=1,scrolling=1,center=1' );
 
   $('quickAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Event');?>" );
   $('quickAddName').select();
