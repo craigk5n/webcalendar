@@ -100,6 +100,7 @@ $saveStr = translate ( 'Save' );
 load_user_categories();
 
 // Default for using tabs is enabled.
+//$EVENT_EDIT_TABS = 'N';
 if ( empty ( $EVENT_EDIT_TABS ) )
   $EVENT_EDIT_TABS = 'Y'; // default
 
@@ -170,6 +171,8 @@ $HEAD =
 <script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
 <link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css"
 media="screen" />
+<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
+<link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
 ';
 
 $byday = $bymonth = $bymonthday = $bysetpos = $participants =
@@ -561,29 +564,30 @@ echo '
  . 'innerHeight=420,outerWidth=420\' );" /></h2>';
 
 if ( $can_edit ) {
-  $tabs_ar = array ( 'details', translate ( 'Details' ) );
+  $tabs_name = array ( 'details' );
+  $tabs_title = array ( translate ( 'Details' ) );
   if ( $DISABLE_PARTICIPANTS_FIELD != 'Y' ) {
-    $tabs_ar[] = 'participants';
-    $tabs_ar[] = translate ( 'Participants' );
+    $tabs_name[] = 'participants';
+    $tabs_title[] = translate ( 'Participants' );
   }
   if ( $DISABLE_REPEATING_FIELD != 'Y' ) {
-    $tabs_ar[] = 'pete';
-    $tabs_ar[] = translate ( 'Repeat' );
+    $tabs_name[] = 'pete';
+    $tabs_title[] = translate ( 'Repeat' );
   }
   if ( $DISABLE_REMINDER_FIELD != 'Y' ) {
-    $tabs_ar[] = 'reminder';
-    $tabs_ar[] = translate ( 'Reminders' );
+    $tabs_name[] = 'reminder';
+    $tabs_title[] = translate ( 'Reminders' );
   }
 
-  $tabs = '';
-  for ( $i = 0, $cnt = count ( $tabs_ar ); $i < $cnt; $i++ ) {
-    $tabs .= '
-        <span class="tab'
-     . ( $i > 0 ? 'bak' : 'for' )
-     . '" id="tab_' . $tabs_ar[$i]
-     . '"><a href="#tab' . $tabs_ar[$i] . '" onclick="return showTab( \''
-     . $tabs_ar[$i] . '\' )">' . $tabs_ar[++$i] . '</a></span>';
+  $tabs = '<ul id="viewtabs" class="shadetabs" style="margin-left: 10px;">';
+  for ( $i = 0, $cnt = count ( $tabs_name ); $i < $cnt; $i++ ) {
+    $tabs .= '<li><a href="#" rel="' . $tabs_name[$i] .
+      '"' . ( $i == 0 ? ' class="selected"' : '' ) .
+      '>' . $tabs_title[$i] . '</a></li>' . "\n";
   }
+  $tabs .= "</ul>\n" .
+    '<div style="border:1px solid gray; width:95%; margin-bottom: 1em; margin-left: 10px; margin-right: 10px; padding: 10px">';
+  $tabI = 0;
   echo '
     <form action="edit_entry_handler.php" method="post" name="editentryform" '
    . 'id="editentryform">
@@ -603,15 +607,10 @@ if ( $can_edit ) {
   . ( empty ( $parent ) ? '' : '
       <input type="hidden" name="parent" value="' . $parent . '" />' ) . '
 
-<!-- TABS -->' . ( $useTabs ? '
-      <div id="tabs">' . $tabs . '
-      </div>' : '' ) . '
-
+<!-- TABS -->' . ( $useTabs ? $tabs : '' ) . '
 <!-- TABS BODY -->' . ( $useTabs ? '
-      <div id="tabscontent">
-<!-- DETAILS -->
-        <a name="tabdetails"></a>
-        <div id="tabscontent_details">' : '
+  <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">
+<!-- DETAILS -->' : '
       <fieldset>
         <legend>' . translate ( 'Details' ) . '</legend>' ) . '
           <table border="0" summary="">
@@ -997,8 +996,7 @@ if ( $can_edit ) {
   if ( $site_extracnt ) {
     echo '
           </table>' . ( empty ( $site_extras[0]['FIELDSET'] ) ? '' : '
-        </fieldset>
-      </div>' );
+        </fieldset>' );
   }
   // end site-specific extra fields
 
@@ -1007,8 +1005,7 @@ if ( $can_edit ) {
     </fieldset>' ) . '
 
 <!-- PARTICIPANTS -->' . ( $useTabs ? '
-    <a name="tabparticipants"></a>
-    <div id="tabscontent_participants">' : '
+    <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
     <fieldset>
       <legend>' . translate ( 'Participants' ) . '</legend>' ) . '
       <table border="0" summary="" cellpadding="10">';
@@ -1192,8 +1189,7 @@ if ( $can_edit ) {
 
   if ( $DISABLE_REPEATING_FIELD != 'Y' ) {
     echo ( $useTabs ? '
-    <a name="tabpete"></a>
-    <div id="tabscontent_pete">' : '
+    <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
     <fieldset>
       <legend>' . translate ( 'Repeat' ) . '</legend>' ) . '
       <table border="0" cellspacing="0" cellpadding="3" summary="">
@@ -1569,8 +1565,7 @@ if ( $can_edit ) {
     $rem_rep_minutes -= ( $rem_rep_hours * 60 );
 
     echo ( $useTabs ? '
-    <a name="tabreminder"></a>
-    <div id="tabscontent_reminder">' : '
+    <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
     <fieldset>
       <legend>' . translate ( 'Reminders' ) . '</legend>' ) . '
       <table border="0" cellspacing="0" cellpadding="3" summary="">
@@ -1685,6 +1680,7 @@ if ( $can_edit ) {
 <!-- End tabscontent_pete -->' : '
     </fieldset>' );
   }
+  echo $useTabs ? "</div>\n" : '';
 
   if ( file_exists ( 'includes/classes/captcha/captcha.php' ) &&
       $login == '__public__' && !
@@ -1695,9 +1691,6 @@ if ( $can_edit ) {
     } else
       etranslate ( 'CAPTCHA Warning' );
   }
-  echo '
-    </div>
-<!-- End tabscontent -->';
 
   echo '
       <table summary="">
@@ -1769,6 +1762,18 @@ ob_end_flush();
   </form>
   </div>
 </div>
+<?php if ( $useTabs ) { ?>
+
+<script type="text/javascript">
+// Initialize tabs
+var views=new ddtabcontent("viewtabs")
+views.setpersist(true)
+views.setselectedClassTarget("link") //"link" or "linkparent"
+views.init()
+// End init tabs
+</script>
+
+<?php } ?>
 <?php
 
 echo print_trailer();
