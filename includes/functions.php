@@ -748,6 +748,29 @@ EOT;
 }
 
 /**
+ * Date selection via DHTML.
+ * This will create two HTML elements:
+ * - a form element of type hidden that will hold the date value in
+ *   YYYYMMDD format
+ * - a span element that will display the nicely formatted date to the user
+ * The CSS ids will be the datename parameter with '_fmt' and '_YMD'
+ * appended.
+ */
+function datesel_Print ( $datename, $ymdValue='' )
+{
+  if ( empty ( $ymdValue ) )
+    $ymdValue = date ( 'Ymd' );
+
+  return '<input type="hidden" name="' . $datename .
+    '_YMD" id="' . $datename . '_YMD" value="' . $ymdValue . '"/>' .
+    '<span id="' . $datename . '_fmt">' .
+    date_to_str ( $ymdValue ) . '</span> ' .
+    '<span class="fakebutton clickable" onclick="datesel_SelectDate(event,\'' .
+    $datename . "', " . $ymdValue . ' );" />' . "..." . '</span>';
+}
+
+
+/**
  * Generate HTML for a date selection for use in a form.
  *
  * @param string $prefix   Prefix to use in front of form element names
