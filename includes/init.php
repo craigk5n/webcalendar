@@ -60,7 +60,6 @@ include_once 'includes/config.php';
 include_once 'includes/dbi4php.php';
 include_once 'includes/formvars.php';
 include_once 'includes/functions.php';
-include_once 'includes/datesel.php';
 
 $WebCalendar->initializeFirstPhase();
 
@@ -162,9 +161,10 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   if( ! empty( $js_ar ) )
     foreach( $js_ar as $j ) {
       $i = 'includes/' . $j;
+      $timeStr = ( @filemtime ( $i ) > 0 ? "?" . filemtime ( $i ) : '' );
       $ret .= '
     <script type="text/javascript" src="'
-       . $i . '?' . filemtime( $i ) . '"></script>';
+       . $i . $timeStr . '"></script>';
     }
 
   // Any other includes?
