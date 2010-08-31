@@ -60,6 +60,7 @@ include_once 'includes/config.php';
 include_once 'includes/dbi4php.php';
 include_once 'includes/formvars.php';
 include_once 'includes/functions.php';
+include_once 'includes/datesel.php';
 
 $WebCalendar->initializeFirstPhase();
 
@@ -121,6 +122,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js?'
      . filemtime( 'includes/js/ie5.js' ) . '"></script><![endif]-->';
     $js_ar[] = 'js/prototype.js';
+    $js_ar[] = 'js/scriptaculous/scriptaculous.js?load=builder,effects';
   }
 
   // CSS and JS includes needed for the top menu.

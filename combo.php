@@ -101,14 +101,13 @@ $bodyExtras = 'onload="onLoadInit()"';
 $headExtras = '
 <script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
 <link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
-<script type="text/javascript" src="includes/js/scriptaculous/scriptaculous.js?load=builder,effects"></script>
 <script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
 <link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css" 
 media="screen" />
 ';
 
 print_header(
-  array( 'js/popups.js/true', 'js/visible.php' ),
+  array( 'js/popups.js/true', 'js/visible.php', 'js/datesel.php' ),
   $headExtras, $bodyExtras );
 
 //ob_start();
@@ -199,6 +198,9 @@ Agenda content goes here...
 <div id="contentTasks" class="tabcontent">
 <table id="tasktable">
 </table>
+<br/>
+<span id="addtask" class="clickable fakebutton"
+  onclick="taskAddPopup()"/><?php etranslate('Add Task');?></span>
 </div>
 
 
@@ -275,6 +277,45 @@ Agenda content goes here...
 </table>
 </div>
 
+<!-- Hidden div tag for Add Task dialog -->
+<div id="taskAddDiv" style="display: none;">
+<form name="taskAddForm" id="taskAddForm">
+<table border="0">
+<tr><td class="aligntop bold"><?php etranslate('Start Date');?>:</td>
+  <td><?php echo datesel_Print ( 'task_due_date_', $date );?></td></tr>
+<tr><td class="aligntop bold"><?php etranslate('Due Date');?>:</td>
+  <td><?php echo datesel_Print('task_due_date', $date); ?></td></tr>
+<tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
+  <td><input id="taskAddName" name="taskAddName" /></td></tr>
+<tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
+  <td><textarea id="taskAddDescription" name="taskAddDescription"
+       rows="4" cols="40" wrap="virtual"></textarea></td></tr>
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+<tr><td class="aligntop bold"><?php etranslate('Category');?>:</td>
+  <td><select id="taskAddCategory" name="taskAddCategory">
+     <option value="-1"><?php etranslate('None');?></option>
+     <?php
+     foreach ( $categories as $K => $V ) {
+       if ( $K > 1 ) {
+         echo '<option value="' . $K . '">' .
+           htmlspecialchars ( $categories[$K]['cat_name'] ) . "</option>\n";
+       }
+     }
+     ?>
+     </select></td></tr>
+<?php } ?>
+<tr><td colspan="2">&nbsp;</td></tr>
+<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="taskAddHandler()" /><br />
+<span class="clickable" onclick="taskAddDetail()"><?php etranslate("Add task detail");?></span>
+</td></tr>
+</table>
+</form>
+</div>
+
+<!-- hidden div for date selection -->
+<div id="XXXdateselDiv">
+<p>XXXXX</p>
+</div>
 
 <script type="text/javascript">
 
@@ -301,6 +342,7 @@ var SORT_BY_NAME = 0, SORT_BY_DUE_DATE = 1, SORT_BY_PRIORITY = 2,
   SORT_BY_CATEGORY = 3;
 var taskSortAsc = true;
 var taskSortCol = SORT_BY_DUE_DATE;
+var dateYmd = '';
 
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
 
@@ -709,6 +751,15 @@ function update_display ( year, month, day )
   $('contentMonth').innerHTML = build_month_view ( year, month );
   $('contentYear').innerHTML = build_year_view ( year, month );
   $('contentAgenda').innerHTML = build_agenda_view ( year, month );
+
+  var today = new Date ();
+  dateYmd = "" + year;
+  if ( month() < 10 )
+    dateYmd += '0';
+  dateYmd += "" + month;
+  if ( day < 10 )
+    dateYmd += '0';
+  dateYmd += "" + day;
 }
 
 // Update the task display.
@@ -954,6 +1005,32 @@ function addEventDetail()
     '&desc=' + escape($('quickAddDescription').value);
   window.location.href = url;
   return true;
+}
+
+/// ZZZZ  XXXX
+function taskAddPopup ()
+{
+  var today = new Date ();
+  var ymd = "" + ( today.getYear () + 1900 );
+  if ( today.getMonth() - 1 < 10 )
+    ymd += '0';
+  ymd += ( today.getMonth() + 1 );
+  if ( today.getDate() < 10 )
+    ymd += '0';
+  ymd += today.getDate ();
+
+  Modalbox.show($('taskAddDiv'), {title: '<?php etranslate('Add Task');?>', width: <?php echo $quick_add_width;?>, closeString: '<?php etranslate('Cancel');?>' });
+
+  $('taskAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Task');?>" );
+  $('taskAddName').select();
+  $('taskAddName').focus();
+  $('taskAddDescription').innerHTML = "";
+  var dateStr = "" + ( today.getMonth() + 1 ) + "/" + today.getDate() +
+    "/" + ( today.getYear() + 1900 );
+  //$('taskAddStartDate').setAttribute ( 'value', dateStr );
+  //$('taskAddDueDate').setAttribute ( 'value', dateStr );
+  //$('taskAddDateFormatted').innerHTML = format_date ( "" + dateYmd, true );
+  $('taskAddCategory').selectedIndex = 0;
 }
 
 function refresh()
@@ -1534,33 +1611,33 @@ var pos = '0';
     // Now add in event info...
     ret += timedEvents;
     // End event info
-    ret += "</div>\n</div>\n";
-  } catch ( err ) {
-    alert ( "JavaScript exception:\n" + err );
-  }
-  return ret;
+ret += "</div>\n</div>\n";
+} catch ( err ) {
+alert ( "JavaScript exception:\n" + err );
+}
+return ret;
 }
 
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
 function eventMatchesSelectedCats ( event ) {
-  if ( ! event._categories || event._categories.length == 0 )
-    return false;
-  for ( var i = 0; i < event._categories.length; i++ ) {
-    var catId = event._categories[i];
-    if ( isInArray ( catId, selectedCats ) ) {
-      return true;
-    }
-  }
-  return false;
+if ( ! event._categories || event._categories.length == 0 )
+return false;
+for ( var i = 0; i < event._categories.length; i++ ) {
+var catId = event._categories[i];
+if ( isInArray ( catId, selectedCats ) ) {
+return true;
+}
+}
+return false;
 }
 
 function isInArray ( val, searchArr )
 {
-  for ( var i = 0; i < searchArr.length; i++ ) {
-    if ( searchArr[i] == val )
-      return true;
-  }
-  return false;
+for ( var i = 0; i < searchArr.length; i++ ) {
+if ( searchArr[i] == val )
+return true;
+}
+return false;
 }
 <?php } ?>
 
@@ -1568,114 +1645,114 @@ function isInArray ( val, searchArr )
 // includes/functions.php.
 function format_date ( dateStr, showWeekday )
 {
-  var fmt = '<?php echo $DATE_FORMAT;?>';
+var fmt = '<?php echo $DATE_FORMAT;?>';
 
-  var y = dateStr.substr ( 0, 4 );
-  var m = dateStr.substr ( 4, 2 );
-  var d = dateStr.substr ( 6, 2 );
+var y = dateStr.substr ( 0, 4 );
+var m = dateStr.substr ( 4, 2 );
+var d = dateStr.substr ( 6, 2 );
 
-  var ret = fmt;
-  ret = ret.replace ( /__dd__/, d );
-  ret = ret.replace ( /__j__/, d );
-  ret = ret.replace ( /__mm__/, m );
-  ret = ret.replace ( /__mon__/, shortMonths[m-1] );
-  ret = ret.replace ( /__month__/, months[m-1] );
-  ret = ret.replace ( /__n__/, m );
-  ret = ret.replace ( /__yy__/, y % 100 );
-  ret = ret.replace ( /__yyyy__/, y );
+var ret = fmt;
+ret = ret.replace ( /__dd__/, d );
+ret = ret.replace ( /__j__/, d );
+ret = ret.replace ( /__mm__/, m );
+ret = ret.replace ( /__mon__/, shortMonths[m-1] );
+ret = ret.replace ( /__month__/, months[m-1] );
+ret = ret.replace ( /__n__/, m );
+ret = ret.replace ( /__yy__/, y % 100 );
+ret = ret.replace ( /__yyyy__/, y );
 
-  var w = '';
-  if ( showWeekday ) {
-    var myD = new Date();
-    myD.setYear ( y );
-    myD.setMonth ( m - 1 );
-    myD.setDate ( d );
-    wday = myD.getDay();
-    w = weekdays[wday] + ', ';
-  }
+var w = '';
+if ( showWeekday ) {
+var myD = new Date();
+myD.setYear ( y );
+myD.setMonth ( m - 1 );
+myD.setDate ( d );
+wday = myD.getDay();
+w = weekdays[wday] + ', ';
+}
 
-  return w + ret;
+return w + ret;
 }
 
 // TODO: modify this to handle different time formats, timezones, etc...
 // The code for different timezones could get ugly here...
 function format_time ( timeStr, abbreviate )
 {
-  if ( timeStr < 0 )
-    return '';
+if ( timeStr < 0 )
+return '';
 
-  var h = timeStr.substr ( 0, 2 );
-  var m = timeStr.substr ( 2, 2 );
-  var ret;
+var h = timeStr.substr ( 0, 2 );
+var m = timeStr.substr ( 2, 2 );
+var ret;
 
 <?php if ( $TIME_FORMAT == '12' ) { ?>
-  if ( h < 0 )
-    h += 24;
-  var ampm = ( h >= 12 ? '<?php etranslate('pm')?>' : '<?php etranslate('am')?>' );
-  h %= 12;
-  if ( h == 0 )
-    h = 12;
-  if ( m == 0 && abbreviate )
-    ret = h + ampm;
-  else
-    ret = h + ':' + m + ampm;
+if ( h < 0 )
+h += 24;
+var ampm = ( h >= 12 ? '<?php etranslate('pm')?>' : '<?php etranslate('am')?>' );
+h %= 12;
+if ( h == 0 )
+h = 12;
+if ( m == 0 && abbreviate )
+ret = h + ampm;
+else
+ret = h + ':' + m + ampm;
 <?php } else { ?>
-  ret = h + ':' + m;
+ret = h + ':' + m;
 <?php } ?>
-  return ret;
+return ret;
 }
 
 // Take a HHMM formatted time and add the specified duration (in minutes)
 // Return time in HHMM format
 function add_time_duration ( timeStr, duration )
 {
-  if ( timeStr < 0 )
-    return '';
+if ( timeStr < 0 )
+return '';
 
-  var h = timeStr.substr ( 0, 2 );
-  var m = timeStr.substr ( 2, 2 );
+var h = timeStr.substr ( 0, 2 );
+var m = timeStr.substr ( 2, 2 );
 
-  while ( duration > 60 ) {
-    h++;
-    duration -= 60;
-  }
-  m += duration;
-  if ( m >= 60 ) {
-    h++;
-    m -= 60;
-  }
-  if ( h >= 24 )
-    h -= 24;
+while ( duration > 60 ) {
+h++;
+duration -= 60;
+}
+m += duration;
+if ( m >= 60 ) {
+h++;
+m -= 60;
+}
+if ( h >= 24 )
+h -= 24;
 
-  var ret = '';
-  if ( h < 10 )
-    ret = '0';
-  ret += "" + h;
-  if ( m < 10 )
-    ret += "0";
-  ret += "" + m;
+var ret = '';
+if ( h < 10 )
+ret = '0';
+ret += "" + h;
+if ( m < 10 )
+ret += "0";
+ret += "" + m;
 
-  return ret;
+return ret;
 }
 
 function format_description ( desc )
 {
-  var ret;
+var ret;
 <?php if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) &&
-  $ALLOW_HTML_DESCRIPTION == 'Y' ) { ?>
-  // HTML is allowed in description
-  if ( desc.indexOf ( '<' ) >= 0 ) {
-    ret = desc;
-  } else {
-    // No HTML found, replace \n with line breaks
-    ret = desc.replace (/\n/g,"<br />");
-  }
+$ALLOW_HTML_DESCRIPTION == 'Y' ) { ?>
+// HTML is allowed in description
+if ( desc.indexOf ( '<' ) >= 0 ) {
+ret = desc;
+} else {
+// No HTML found, replace \n with line breaks
+ret = desc.replace (/\n/g,"<br />");
+}
 <?php } else { ?>
-  // HTML not allowed in description
-  // TODO: convert URLs into active links
-  ret = desc.replace (/\n/g,"<br />");
+// HTML not allowed in description
+// TODO: convert URLs into active links
+ret = desc.replace (/\n/g,"<br />");
 <?php } ?>
-  return ret;
+return ret;
 }
 
 </script>
