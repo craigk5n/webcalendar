@@ -312,11 +312,6 @@ Agenda content goes here...
 </form>
 </div>
 
-<!-- hidden div for date selection -->
-<div id="XXXdateselDiv">
-<p>XXXXX</p>
-</div>
-
 <script type="text/javascript">
 
 function onLoadInit ()
