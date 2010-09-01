@@ -95,16 +95,29 @@ if ( empty ( $users ) || empty ( $users[0] ) )
 $cat_filter = getPostValue ( 'cat_filter' );
 $extra_filter = getPostValue ( 'extra_filter' );
 $date_filter = getPostValue ( 'date_filter' );
-$start_day = getPostValue ( 'from_day' );
-$start_month = getPostValue ( 'from_month' );
-$start_year = getPostValue ( 'from_year' );
-if ( $start_year < 1970 )
-  $start_year = 1970;
-$end_day = getPostValue ( 'until_day' );
-$end_month = getPostValue ( 'until_month' );
-$end_year = getPostValue ( 'until_year' );
-if ( $end_year < 1970 )
-  $end_year = 1970;
+
+$from_YMD = getPostValue ( 'from__YMD' );
+if ( empty ( $from_YMD ) ) {
+  $start_day = $start_month = $start_year = '';
+} else {
+  $start_year = substr ( $from_YMD, 0, 4 );
+  $start_month = substr ( $from_YMD, 4, 2 );
+  $start_day = substr ( $from_YMD, 6, 2 );
+  if ( $start_year < 1970 )
+    $start_year = 1970;
+}
+
+$end_YMD = getPostValue ( 'until__YMD' );
+if ( empty ( $end_YMD ) ) {
+  $end_day = $end_month = $end_year = '';
+} else {
+  $end_year = substr ( $end_YMD, 0, 4 );
+  $end_month = substr ( $end_YMD, 4, 2 );
+  $end_day = substr ( $end_YMD, 6, 2 );
+  if ( $end_year < 1970 )
+    $end_year = 1970;
+}
+
 $startDate = gmdate( 'Ymd', gmmktime( 0, 0, 0,
   $start_month, $start_day, $start_year ) );
 $endDate = gmdate( 'Ymd', gmmktime( 23, 59, 59,
@@ -242,7 +255,7 @@ echo ": " . htmlentities ( $keywords ) . '</strong>.</p>';
 
 
 // now sort by number of hits
-if ( empty ( $error ) && empty ( $result ) ) {
+if ( empty ( $error ) && empty ( $info ) ) {
   // no mtaches
 } else if ( empty ( $error ) ) {
   echo '

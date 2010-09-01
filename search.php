@@ -35,6 +35,7 @@ $INC = array();
 if( $show_advanced ) {
   $INC[] = 'js/translate.js.php';
   $INC[] = 'js/visible.js/true';
+  $INC[] = 'js/datesel.php';
 }
 
 if( $show_others )
@@ -108,14 +109,14 @@ if( $show_advanced ) {
           <td>&nbsp;&nbsp;<label>' . translate( 'Start date' )
    . ':</label></td>
           <td>'
-   . date_selection( 'from_', $dateYmd ) . '
+   . datesel_Print( 'from_', $dateYmd ) . '
           </td>
         </tr>
         <tr id="endDate" style="visibility:hidden">
           <td>&nbsp;&nbsp;<label>' . translate( 'End date' )
    . ':</label></td>
           <td>'
-   . date_selection( 'until_', $dateYmd ) . '
+   . datesel_Print( 'until_', $dateYmd ) . '
           </td>
         </tr>';
 }
