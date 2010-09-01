@@ -14,7 +14,8 @@ echo 'var
   allowCustomColors= ' . $ALLOW_COLOR_CUSTOMIZATION . ',
   bydayLabels      = [' . $tmp1 . '],
   bydayTrans       = [' . $tmp2 . '],
-  evtEditTabs      = ' . $GLOBALS['EVENT_EDIT_TABS'] . ',
+  evtEditTabs      = ' .
+    ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ? 'Y' : $GLOBALS['EVENT_EDIT_TABS'] ) . ',
   groupsEnabled    = ' . $GROUPS_ENABLED . ',
   timeFormat       = ' . $GLOBALS['TIME_FORMAT'] . ',
   workEndHour      = ' . $WORK_DAY_END_HOUR . ',
