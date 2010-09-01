@@ -1371,13 +1371,8 @@ table.ThemeMenubar {
   top: 10px;
 }
 
-.dateselTable {
-  background-color: #ff0000;
-  font-size: 12pt;
-  padding-right: 25px;
-}
-
 .dateselTable #dateselMonthName {
+  font-size: 10pt;
   text-align: center;
   font-weight: bold;
   background-color: #000080;
@@ -1392,6 +1387,7 @@ table.ThemeMenubar {
   text-align: center;
   font-size: 10pt;
   background-color: #c0c0c0;
+  padding: 1px;
 }
 
 .dateselTable td.today {
@@ -1402,5 +1398,7 @@ table.ThemeMenubar {
 }
 .dateselTable td.wdayname {
   font-size: 8pt;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
