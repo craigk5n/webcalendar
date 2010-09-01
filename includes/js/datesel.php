@@ -56,11 +56,14 @@ var shortWeekdays = [
 
 
 // Bring up the date selection dialog
-function datesel_SelectDate ( event, datename, curYMD )
+// The current date setting will be pulled from the
+// "xxxxx_YMD".value attribute, where xxxxx is the value of datename.
+function datesel_SelectDate ( event, datename )
 {
   // Look for the datesel div tag.  If not found, then add it
   // programatically.
   var o = $ ('dateselDiv');
+  var curYMD = $(datename + '_YMD').value;
   if ( ! o ) {
     // Add new div tag
     var divElement = document.createElement("div");
@@ -276,6 +279,18 @@ function datesel_FormatDate ( dateStr, showWeekday )
 // Add a new HTML element as the last element of the body tag.
 function datesel_AddElementToBody(el) {
   eval("document.getElementsByTagName('body')[0].appendChild(el)");
+}
+
+// Update date selection object (generated from the PHP datesel_Print
+// function) to have a different date.
+// This is useful if a div tag is re-used and each
+// use has a different date setting.
+function datsesel_UpdateCurrentDate ( datename, newYMD )
+{
+  var id = 'dateselIcon_' + datename;
+  $(id).click = new function () {
+    datesel_SelectDate(event, datename, newYMD);
+  }
 }
 
 // end of datesel

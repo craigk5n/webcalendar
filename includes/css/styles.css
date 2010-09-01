@@ -1396,7 +1396,7 @@ table.ThemeMenubar {
 }
 
 .dateselTable td.today {
-  background-color: #808000;
+  background-color: #ffff88;
 }
 .dateselTable td.selected {
   background-color: #00ff00;
