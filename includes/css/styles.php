@@ -328,7 +328,6 @@ th,
 ' : '' );
 
 ?>
-// Category colors
 <?php
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   // Need to load user variables so that $is_admin is set before we load
@@ -357,9 +356,9 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
         //echo "// " . hextoint ( $matches[1] ) . ',' . hextoint ( $matches[3]).','. hextoint ( $matches[5] )  . " $fg\n";
       }
     // Gradient
-      echo ".cat_{$catId} { "
-        . background_css( $color, 15 ) . ' color: ' . $fg . "; }\n";
-      echo ".cat_{$catId} { background-color: $color; border: 1px outset $color; }\n";
+    //  echo ".cat_{$catId} { "
+    //    . background_css( $color, 15 ) . ' color: ' . $fg . "; }\n";
+      echo ".cat_{$catId} { background-color: $color; border: 1px outset $color; color: $fg }\n";
     }
   }
 }
