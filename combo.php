@@ -249,8 +249,8 @@ Agenda content goes here...
 <div id="quickAddDiv" style="display: none;">
 <table border="0">
 <tr><td class="aligntop bold"><?php etranslate('Date');?>:</td>
-  <td><span id="quickAddDateFormatted"></span>
-  <input type="hidden" id="quickAddDate" name="quickAddDate" /></td></tr>
+  <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
+  </td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
   <td><input id="quickAddName" name="quickAddName" /></td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
@@ -933,8 +933,8 @@ function monthCellClickHandler ( dateYmd )
   $('quickAddName').select();
   $('quickAddName').focus();
   $('quickAddDescription').innerHTML = "";
-  $('quickAddDate').setAttribute ( 'value', dateYmd );
-  $('quickAddDateFormatted').innerHTML = format_date ( "" + dateYmd, true );
+  $('quickAddDate_YMD').setAttribute ( 'value', dateYmd );
+  $('quickAddDate_fmt').innerHTML = format_date ( "" + dateYmd, true );
   $('quickAddCategory').selectedIndex = 0;
 }
 
@@ -945,7 +945,7 @@ function quickAddHandler()
 {
   var name = $('quickAddName').value;
   var description = $('quickAddDescription').value;
-  var dateYmd = $('quickAddDate').value;
+  var dateYmd = $('quickAddDate_YMD').value;
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
   var catObj = $('quickAddCategory');
   var category = catObj.options[catObj.selectedIndex].value;
@@ -989,7 +989,7 @@ function quickAddHandler()
 
 function addEventDetail()
 {
-  var url = 'edit_entry.php?date=' + $('quickAddDate').value;
+  var url = 'edit_entry.php?date=' + $('quickAddDate_YMD').value;
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
   var catObj = $('quickAddCategory');
   var category = catObj.options[catObj.selectedIndex].value;
@@ -1002,7 +1002,6 @@ function addEventDetail()
   return true;
 }
 
-/// ZZZZ  XXXX
 function taskAddPopup ()
 {
   var today = new Date ();

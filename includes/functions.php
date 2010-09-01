@@ -765,8 +765,8 @@ function datesel_Print ( $datename, $ymdValue='' )
     '_YMD" id="' . $datename . '_YMD" value="' . $ymdValue . '"/>' .
     '<span id="' . $datename . '_fmt">' .
     date_to_str ( $ymdValue ) . '</span> ' .
-    '<span class="fakebutton clickable" onclick="datesel_SelectDate(event,\'' .
-    $datename . "', " . $ymdValue . ' );" />' . "..." . '</span>';
+    '<img class="dateselIcon" onclick="datesel_SelectDate(event,\'' .
+    $datename . "', " . $ymdValue . ' );" src="images/datesel.gif" />';
 }
 
 
