@@ -242,7 +242,9 @@ echo ": " . htmlentities ( $keywords ) . '</strong>.</p>';
 
 
 // now sort by number of hits
-if ( empty ( $error ) ) {
+if ( empty ( $error ) && empty ( $result ) ) {
+  // no mtaches
+} else if ( empty ( $error ) ) {
   echo '
     <ul>';
   foreach ( $info as $result ) {
