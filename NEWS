@@ -8,7 +8,7 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
-Version 1.3.0 (?? ??? 2007)
+Version 1.3.0 (?? ??? 2010)
   - Fixes:
     + Removed old hack for register_globals work-around that is no longer
       needed.  This will improve security.
@@ -17,6 +17,8 @@ Version 1.3.0 (?? ??? 2007)
       + New combo.php view for day/week/month/year/agenda view is
         AJAX-based replacement for day.php, week.php, month.php, year.php.
         (Still under development, so no links to it yet.)
+      + New date selection popup is DHTML-driven, so it is faster and does
+        not popup a new window.
       + User accounts can now be disabled via the User Manager page
       + Added new RSS feed for Activity Log.  This will allow you to be
         notified via RSS of event approvals/rejections, email notification,
