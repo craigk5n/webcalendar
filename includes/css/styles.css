@@ -1027,8 +1027,13 @@ tr.highlight td {
   padding: 10px;
   margin: 10px;
 }
-#combo #taskAddDiv .fakebutton {
+#combo #taskAddDiv .fakebutton,
+#combo #quickAddDiv .fakebutton {
   padding: 0;
+}
+.dateselIcon {
+  cursor: pointer;
+  margin-left: 5px;
 }
 .topnav {
   border:0;
