@@ -927,6 +927,7 @@ function monthCellClickHandler ( dateYmd )
   function addWindowClosed() {
     quickAddDialogIsOpen = false;
   }
+  // Display quick add popup
   Modalbox.show($('quickAddDiv'), {title: '<?php etranslate('Add Entry');?>', width: <?php echo $quick_add_width;?>, onHide: addWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
 
   $('quickAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Event');?>" );
