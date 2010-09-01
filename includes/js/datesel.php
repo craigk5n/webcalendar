@@ -135,12 +135,12 @@ function datesel_DateSelected ( datename, year, month, day )
 
   // Hide date selection table
   //$('dateselDiv').style.display = 'none';
-  Effect.Fade('dateselDiv', { duration: 1.5 });
+  Effect.Fade('dateselDiv', { duration: 0.5 });
 }
 
 function datesel_Cancel ()
 {
-  Effect.Fade('dateselDiv', { duration: 1.5 });
+  Effect.Fade('dateselDiv', { duration: 0.5 });
 }
 
 function datesel_UpdateDisplay ( div, datename, year, month, day, curYMD )
@@ -183,7 +183,7 @@ function datesel_UpdateDisplay ( div, datename, year, month, day, curYMD )
   var prevDay = day;
 
   var ret = 
-    '<div style="width: 100%; text-align: right;">' +
+    '<div style="width: 100%">' +
     '<span class="clickable" onclick="datesel_Cancel()"/><img id="cancelImage" src="images/cancel.png" alt="x" /></span></div>' +
     '<table border="0" class="dateselTable">' +
     '<tr><td colspan="7" id="dateselMonthName">' +
