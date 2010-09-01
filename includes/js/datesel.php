@@ -90,13 +90,14 @@ function datesel_SelectDate ( event, datename, curYMD )
   if ( d.substring ( 0, 1 ) == '0' )
     d = d.substring ( 1 );
 
+  // Update table contents
   datesel_UpdateDisplay ( o, datename, y, m, d, curYMD );
-  //o.style.position = 'absolute';
-  var style = { position: "absolute", left: "200px", width: "200px", height: "200px", display: "block" };
-  o.setStyle(style);
+
+  // Move date popup to just below where the user clicked the mouse.
   var xpos = event.clientX - 100;
   var ypos = event.clientY + 15;
-  new Effect.Move(o, { x: xpos, y: ypos, mode: 'absolute' } );
+  var style = { position: "absolute", left: xpos + "px", top: ypos + "px", width: "200px", height: "200px", display: "block" };
+  o.setStyle(style);
 }
 
 function eventHandlerFunction(e) {  
