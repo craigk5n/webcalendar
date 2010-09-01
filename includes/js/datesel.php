@@ -41,7 +41,7 @@ var weekdays = [
   <?php
     for ( $i = 0; $i < 7; $i++ ) {
       if ( $i ) echo ", ";
-      echo "'" . weekday_name ( $i, 'L' ) . "'";
+      echo "'" . weekday_name ( $i, 'l' ) . "'";
     }
   ?>
   ];
@@ -276,40 +276,6 @@ function datesel_FormatDate ( dateStr, showWeekday )
 // Add a new HTML element as the last element of the body tag.
 function datesel_AddElementToBody(el) {
   eval("document.getElementsByTagName('body')[0].appendChild(el)");
-}
-
-
-// TODO: Move this function to a common js/utils.php file since it is now
-// here and in combo.php.
-function datesel_FormatDate ( dateStr, showWeekday )
-{
-  var fmt = '<?php echo $DATE_FORMAT;?>';
-
-  var y = dateStr.substr ( 0, 4 );
-  var m = dateStr.substr ( 4, 2 );
-  var d = dateStr.substr ( 6, 2 );
-
-  var ret = fmt;
-  ret = ret.replace ( /__dd__/, d );
-  ret = ret.replace ( /__j__/, d );
-  ret = ret.replace ( /__mm__/, m );
-  ret = ret.replace ( /__mon__/, shortMonths[m-1] );
-  ret = ret.replace ( /__month__/, months[m-1] );
-  ret = ret.replace ( /__n__/, m );
-  ret = ret.replace ( /__yy__/, y % 100 );
-  ret = ret.replace ( /__yyyy__/, y );
-
-  var w = '';
-  if ( showWeekday ) {
-    var myD = new Date();
-    myD.setYear ( y );
-    myD.setMonth ( m - 1 );
-    myD.setDate ( d );
-    wday = myD.getDay();
-    w = weekdays[wday] + ', ';
-  }
-
-  return w + ret;
 }
 
 // end of datesel
