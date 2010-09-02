@@ -114,9 +114,10 @@ print_header(
 
 ?>
 
-<div id="comboIntroNote" style="margin: 10px; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 10px; text-align: center;">
+<div id="comboIntroNote" style="margin: 10px; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 10px; text-align: center;"><span>
 This page is a prototype that will hopefully evolve into a replacement
 for all four of the main views (day.php, week.php, month.php, year.php).
+</span>
 </div>
 
 <div class="headerinfo">
@@ -321,7 +322,7 @@ function onLoadInit ()
 }
 
 function hideIntroNote ( ) {
-  Effect.SlideUp ('comboIntroNote', { duration: 2.0 } );
+  Effect.Fade ('comboIntroNote', { duration: 3.0 } );
 }
 
 // Initialize tabs
