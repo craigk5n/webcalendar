@@ -249,7 +249,7 @@ if ( $action == 'get' ) {
   // This is a simple add event function. It will be added as
   // an untimed event, so we don't need to check for conflicts.
   $date = getPostValue ( 'date' );
-  $cat_id = getPostValue ( 'cat_id' );
+  $cat_id = getPostValue ( 'category' );
   $name = getPostValue ( 'name' );
   $description = getPostValue ( 'description' );
   if ( $description == '' )
