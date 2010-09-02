@@ -1256,7 +1256,7 @@ tr.highlight td {
 }
 .fakebutton {
    border:2px #d0d0d0 outset;
-   //border-color:#e0e0e0 #808080 #808080 #e0e0e0;
+   /*border-color:#e0e0e0 #808080 #808080 #e0e0e0;*/
    padding-right:.3125em;
    padding-left:.3125em;
    padding:.25em;
@@ -1297,7 +1297,7 @@ tr.highlight td {
   font-size: 80%;
 }
 #combo .event {
-  //background-color: #a00;
+  /*background-color: #a00;*/
 }
 #combo #contentMonth .event {
   margin-bottom: 2px;
@@ -1347,7 +1347,7 @@ table.ThemeMenubar {
   font-size: 80%;
 }
 
-// date selection "popup"
+/*date selection "popup"*/
 #dateselOverlay {
   position: absolute;
   margin: auto;
@@ -1362,11 +1362,11 @@ table.ThemeMenubar {
 #dateselDiv {
   display: none;
   width: 150px;
-  //height: 300px;
-  //background-color: #d0d0d0;
-  //padding: 10px;
+  /*height: 300px;*/
+  /*background-color: #d0d0d0;*/
+  /*padding: 10px;*/
   padding: 0;
-  z-index: 11000; // modalbox uses 10000
+  z-index: 11000; /* modalbox uses 10000 */
   border: 1px solid green;
 }
 
