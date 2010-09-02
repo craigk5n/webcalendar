@@ -1299,9 +1299,12 @@ tr.highlight td {
 #combo .event {
   /*background-color: #a00;*/
 }
-#combo #contentMonth .event {
+#combo #contentMonth div.event {
   margin-bottom: 2px;
   padding-left: 2px;
+}
+#combo #contentMonth div.event img {
+  float: left;
 }
 #eventcomment {
  border:1px solid;
