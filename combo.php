@@ -114,8 +114,7 @@ print_header(
 
 ?>
 
-<div style="margin: 10px; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 10px; text-align: center; vertical-align: top;">
-<img align="left" src="images/warning.png" width="40" height="40" alt="Warning" />
+<div id="comboIntroNote" style="margin: 10px; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 10px; text-align: center;">
 This page is a prototype that will hopefully evolve into a replacement
 for all four of the main views (day.php, week.php, month.php, year.php).
 </div>
@@ -321,12 +320,19 @@ function onLoadInit ()
   ajax_get_tasks();
 }
 
+function hideIntroNote ( ) {
+  Effect.SlideUp ('comboIntroNote', { duration: 2.0 } );
+}
+
 // Initialize tabs
 var views=new ddtabcontent("viewtabs")
 views.setpersist(true)
 views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()
 // End init tabs
+
+// Slide away our intro note after 15 seconds
+setTimeout ( hideIntroNote, 15000 );
 
 var login = '<?php echo $login;?>';
 var user = '<?php echo $user;?>';
