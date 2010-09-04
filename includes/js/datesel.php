@@ -2,7 +2,14 @@
 /************************************************************************
  * $Id$
  *
- * Date selection via DHTML.  We use PHP to provide the translations.
+ * Date selection via DHTML.  We use PHP to provide the translations and
+ * a few user preferences (date format, language).  Otherwise, this could
+ * be just javascript... in which case we could have re-used any number of
+ * open source alternatives 8-)
+ *
+ * There is a corresponding datesel_Print function in functions.php that
+ * will generate the necessary HTML.
+ *
  * This will create two HTML elements:
  * - a form element of type hidden that will hold the date value in
  *   YYYYMMDD format
@@ -12,6 +19,8 @@
  *
  * Requires:
  *	prototype.js, scriptaculous.js
+ *	(Both will be included by print_header unless you override with
+ *	the disableAJAX parameter.)
  ************************************************************************/
 
 $ldays_per_month = $days_per_month =
@@ -55,9 +64,11 @@ var shortWeekdays = [
   ];
 
 // Handle the user clicking somewhere else on the page than the
-// date selection box.
+// date selection box.  This will cancel the date selection.
 function handleBackgroundClick ()
 {
+  // We make it disappear instantly rather than fade just cause it
+  // provides quicker feedback in case it was an accident.
   $('dateselOverlay').setStyle ( { display: "none" } );
 }
 
