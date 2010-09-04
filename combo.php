@@ -271,7 +271,7 @@ Agenda content goes here...
      </select></td></tr>
 <?php } ?>
 <tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="quickAddHandler()" /><br />
+<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="eventAddHandler()" /><br />
 <span class="clickable" onclick="addEventDetail()"><?php etranslate("Add event detail");?></span>
 </td></tr>
 </table>
@@ -282,7 +282,7 @@ Agenda content goes here...
 <form name="taskAddForm" id="taskAddForm">
 <table border="0">
 <tr><td class="aligntop bold"><?php etranslate('Start Date');?>:</td>
-  <td><?php echo datesel_Print ( 'task_due_date_', $date );?></td></tr>
+  <td><?php echo datesel_Print ( 'task_start_date', $date );?></td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Due Date');?>:</td>
   <td><?php echo datesel_Print('task_due_date', $date); ?></td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
@@ -949,7 +949,7 @@ function monthCellClickHandler ( dateYmd )
 
 // Handler for user click the "Save" button in the Add Event dialog
 // window.
-function quickAddHandler()
+function eventAddHandler()
 {
   var name = $('quickAddName').value;
   var description = $('quickAddDescription').value;
@@ -1033,6 +1033,59 @@ function taskAddPopup ()
   //$('taskAddDueDate').setAttribute ( 'value', dateStr );
   //$('taskAddDateFormatted').innerHTML = format_date ( "" + dateYmd, true );
   $('taskAddCategory').selectedIndex = 0;
+}
+
+// Handler for user click the "Save" button in the Add Task dialog
+// window.
+function taskAddHandler()
+{
+  var name = $('taskAddName').value;
+  var description = $('taskAddDescription').value;
+  var startDate = $('task_start_date_YMD').value;
+  var dueDate = $('task_due_date_YMD').value;
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+  var catObj = $('taskAddCategory');
+  var category = catObj.options[catObj.selectedIndex].value;
+<?php } ?>
+  //alert ( 'name: ' + name + '\ndescription: ' + description +
+  //  '\ndate: ' + dateYmd + '\ncategory: ' + category );
+  new Ajax.Request('events_ajax.php',
+  {
+    method:'post',
+    parameters: { action: 'addtask', startdate: startDate,
+      duedate: dueDate, name: name,
+      description: description<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
+    onSuccess: function( transport ) {
+      if ( ! transport.responseText ) {
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=addtask' );
+        return;
+      }
+      //alert ( "Response:\n" + transport.responseText );
+      try  {
+        var response = transport.responseText.evalJSON();
+      } catch ( err ) {
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        return;
+      }
+      if ( response.error ) {
+        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        return;
+      }
+      // Successfully added :-)
+      //alert('Task added');
+      Modalbox.hide ();
+
+      // force reload of data.
+      // may need to get tasks when we start showing task due dates
+      // in calendar...
+      //var monthKey = "" + currentYear + ( currentMonth < 10 ? "0" : "" ) + currentMonth;
+      //loadedMonths[monthKey] = 0;
+      //ajax_get_events ( currentYear, currentMonth, currentDay );
+      loadedTasks = false;
+      ajax_get_tasks ();
+    },
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+  });
 }
 
 function refresh()

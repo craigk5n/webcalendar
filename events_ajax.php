@@ -290,6 +290,54 @@ if ( $action == 'get' ) {
     ajax_send_error ( translate('Database error') . ": " . dbi_error() );
   }
   ajax_send_success();
+  activity_log ( $id, $login, $user, LOG_CREATE_E, '' );
+} else if ( $action == 'addtask' ) {
+  // This is a simple add task function. It will be added as
+  // an untimed task, so we don't need to check for conflicts.
+  $startdate = getPostValue ( 'startdate' );
+  $duedate = getPostValue ( 'duedate' );
+  $cat_id = getPostValue ( 'category' );
+  $name = getPostValue ( 'name' );
+  $description = getPostValue ( 'description' );
+  if ( $description == '' )
+    $description = $name;
+  $user = $login;
+  // Get new ID
+  $id = 1;
+  $res = dbi_query ( "SELECT MAX(cal_id) FROM webcal_entry" );
+  if ( $row = dbi_fetch_row ( $res ) ) {
+    $id = $row[0] + 1;
+  }
+  dbi_free_result ( $res );
+  $mod_date = gmdate ( 'Ymd' );
+  $mod_time = gmdate ( 'His' );
+  $sql = 'INSERT INTO webcal_entry ( cal_id, cal_create_by, cal_date, ' .
+    'cal_time, cal_due_date, cal_due_time, cal_mod_date, cal_mod_time, ' .
+    'cal_duration, cal_priority, cal_access, cal_type, cal_name, ' .
+    'cal_description ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+  $values = array ( $id, $login, $startdate, -1, $duedate, -1,
+    $mod_date, $mod_time, 0, 5, 'P', 'T', $name, $description );
+  if ( ! dbi_execute ( $sql, $values ) ) {
+    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+    exit;
+  }
+  if ( $cat_id > 0 ) {
+    $sql =
+      'INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) ' .
+      'VALUES ( ?, ?, ? )';
+    $values = array ( $id, $cat_id, $user );
+    if ( ! dbi_execute ( $sql, $values ) ) {
+      ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+      exit;
+    }
+  }
+  if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
+      cal_status ) VALUES ( ?, ?, ? )',
+        array ( $id, $user, 'A' ) ) ) {
+    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+  }
+  ajax_send_success();
+  activity_log ( $id, $login, $user, LOG_CREATE_T, '' );
 } else {
   ajax_send_error ( translate('Unknown error.') );
 }
