@@ -1359,6 +1359,10 @@ table.ThemeMenubar {
   width: 100%;
   height: 100%;
   z-index: 10001;
+/*
+  background: #fff;
+  opacity: 0.50;
+*/
 }
 
 #dateselDiv {
