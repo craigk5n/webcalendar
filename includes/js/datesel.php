@@ -69,6 +69,7 @@ function datesel_SelectDate ( event, datename )
     var divElement = document.createElement("div");
     divElement.name = 'dateselOverlay';
     divElement.id = 'dateselOverlay';
+    divElement.onclick = function () { $('dateselOverlay').setStyle ( { display: "none" } ); }
     datesel_AddElementToBody ( divElement );
 
     var div2 = document.createElement("div");
@@ -76,6 +77,8 @@ function datesel_SelectDate ( event, datename )
     div2.id = 'dateselDiv';
     divElement.appendChild ( div2 );
     o = div2;
+  } else {
+    $('dateselOverlay').setStyle ( { display: "block" } );
   }
 
   // Pull the current date from the YMDId object
