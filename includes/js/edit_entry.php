@@ -101,22 +101,6 @@ function validate_and_submit() {
    }
  }
 
- if ( form.due_day ) {
-   //Check if Event due date is valid
-   var d = form.due_day.selectedIndex;
-   var vald = form.due_day.options[d].value;
-   var m = form.due_month.selectedIndex;
-   var valm = form.due_month.options[m].value;
-   var y = form.due_year.selectedIndex;
-   var valy = form.due_year.options[y].value;
-   var c = new Date(valy,valm -1,vald);
-   if ( c.getDate() != vald ) {
-     alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
-     form.due_day.focus();
-     return false;
-   }
- }
-
  //set byxxxList values for submission
  var bydayStr = '';
  for ( bydayKey in bydayAr ) {
@@ -418,19 +402,23 @@ function add_exception (which) {
  if (which ) {
     sign = "+";
  }
- var d = form.except_day.selectedIndex;
- var vald = form.except_day.options[d].value;
- var m = form.except_month.selectedIndex;
- var valm = form.except_month.options[m].value;
- var y = form.except_year.selectedIndex;
- var valy = form.except_year.options[y].value;
- var c = new Date(valy,valm -1,vald);
- if ( c.getDate() != vald ) {
+ var ymd = $('except_YMD').value;
+ var y = ymd.substr ( 0, 4 );
+ var m = ymd.substr ( 4, 2 );
+ if ( m.substr ( 0, 1 ) == '0' )
+   m = m.substr = ( 1, 1 );
+ var d = ymd.substr ( 6, 2 );
+ if ( d.substr ( 0, 1 ) == '0' )
+   d = d.substr = ( 1, 1 );
+
+ var c = new Date(parseInt(y),parseInt(m)-1,parseInt(d));
+ if ( c.getDate() != d ) {
    alert ("<?php etranslate ( 'Invalid Date',true ) ?>");
    return false;
  }
  //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
- var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
+ //var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
+ var exceptDate = ymd;
  var isUnique = true;
  //Test to see if this date is already in the list
   with (form)
@@ -529,10 +517,7 @@ function toggle_until() {
     return;
   }
  //use date
- elements['rpt_day'].disabled =
-  elements['rpt_month'].disabled =
-  elements['rpt_year'].disabled =
-  elements['rpt_btn'].disabled =
+ $('dateselIcon_rpt').disabled =
   elements['rpt_hour'].disabled =
   elements['rpt_minute'].disabled =
   ( form.rpt_untilu.checked != true );
@@ -574,10 +559,7 @@ function toggle_rem_when() {
    elements['rem_relatedE'].disabled =
    elements['rem_when_date'].checked;
 
- elements['reminder_day'].disabled =
-   elements['reminder_month'].disabled =
-   elements['reminder_year'].disabled =
-   elements['reminder_btn'].disabled =
+ $('dateselIcon_reminder').disabled =
    elements['reminder_hour'].disabled =
    elements['reminder_minute'].disabled =
   ( elements['rem_when_date'].checked != true );
@@ -699,10 +681,7 @@ function isNumeric(sText)
 
 function completed_handler() {
   if ( form.percent ) {
-    elements['completed_day'].disabled =
-      elements['completed_month'].disabled =
-      elements['completed_year'].disabled =
-      elements['completed_btn'].disabled =
+    elements['dateselIcon_completed'].disabled =
       ( form.percent.selectedIndex != 10 || form.others_complete.value != 'yes' );
   }
 }

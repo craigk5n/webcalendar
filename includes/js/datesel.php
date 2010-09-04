@@ -54,6 +54,12 @@ var shortWeekdays = [
   ?>
   ];
 
+// Handle the user clicking somewhere else on the page than the
+// date selection box.
+function handleBackgroundClick ()
+{
+  $('dateselOverlay').setStyle ( { display: "none" } );
+}
 
 // Bring up the date selection dialog
 // The current date setting will be pulled from the
@@ -69,7 +75,7 @@ function datesel_SelectDate ( event, datename )
     var divElement = document.createElement("div");
     divElement.name = 'dateselOverlay';
     divElement.id = 'dateselOverlay';
-    divElement.onclick = function () { $('dateselOverlay').setStyle ( { display: "none" } ); }
+    divElement.onclick = handleBackgroundClick;
     datesel_AddElementToBody ( divElement );
 
     var div2 = document.createElement("div");
@@ -106,25 +112,16 @@ function datesel_SelectDate ( event, datename )
   o.setStyle(style);
 }
 
-function eventHandlerFunction(e) {  
- // the element that triggered the event  
- var element = Event.element(e);  
- // gets the mouse position  
- var mouseX = Event.pointerX(e),  
-     mouseY = Event.pointerY(e);  
- // stop default behaviour and event propagation  
- Event.stop(e);  
-}
-
-function datesel_goto ( datename, year, month, day, curYMD )
+function datesel_goto ( event, datename, year, month, day, curYMD )
 {
   datesel_UpdateDisplay ( $('dateselDiv'), datename, year, month, day, curYMD );
+  Event.stop ( event );  
 }
 
 // Handle the user selecting a date.
 // Update the calling HTML elements to reflect the new date
 // and close/hide the date selection.
-function datesel_DateSelected ( datename, year, month, day )
+function datesel_DateSelected ( event, datename, year, month, day )
 {
   var fmtEle = datename + '_fmt';
   var ymdEle = datename + '_YMD';
@@ -142,12 +139,12 @@ function datesel_DateSelected ( datename, year, month, day )
 
   // Hide date selection table
   //$('dateselDiv').style.display = 'none';
-  Effect.Fade('dateselDiv', { duration: 0.5 });
+  Effect.Fade('dateselOverlay', { duration: 0.5 });
 }
 
 function datesel_Cancel ()
 {
-  Effect.Fade('dateselDiv', { duration: 0.5 });
+  Effect.Fade('dateselOverlay', { duration: 0.5 });
 }
 
 function datesel_UpdateDisplay ( div, datename, year, month, day, curYMD )
@@ -195,10 +192,10 @@ function datesel_UpdateDisplay ( div, datename, year, month, day, curYMD )
     '<table border="0" class="dateselTable">' +
     '<tr><td colspan="7" id="dateselMonthName">' +
     '<img src="images/combo-prev.png" align="left" class="clickable" ' +
-    'onclick="datesel_goto(' + "'" + datename + "'" + ',' + prevYear + ',' +
+    'onclick="datesel_goto(event,' + "'" + datename + "'" + ',' + prevYear + ',' +
     prevMonth + ',' + prevDay + ',' + curYMD + ')" />' + months[month-1] + ' ' + year +
     '<img src="images/combo-next.png" align="right" class="clickable" ' +
-    'onclick="datesel_goto(' + "'" + datename + "'" + ',' + nextYear + ',' +
+    'onclick="datesel_goto(event,' + "'" + datename + "'" + ',' + nextYear + ',' +
     nextMonth + ',' + nextDay + ',' + curYMD + ')" />' + '</td></tr>';
 
   ret += '<tr>';
@@ -236,7 +233,7 @@ function datesel_UpdateDisplay ( div, datename, year, month, day, curYMD )
         i == today.getDate () )
         cl += ' today';
       ret += "<td id=\"dom_" + i + "\" class=\"" + cl +
-        "\" onclick=\"datesel_DateSelected('" +
+        "\" onclick=\"datesel_DateSelected(event,'" +
         datename + "'," + year + "," + month + "," + i +
         ")\">" + i + "</td>";
     }
