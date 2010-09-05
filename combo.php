@@ -252,7 +252,7 @@ Agenda content goes here...
   <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
   </td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
-  <td><input id="quickAddName" name="quickAddName" /></td></tr>
+  <td><input id="quickAddName" name="quickAddName" onfocus="this.select();" /></td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
   <td><textarea id="quickAddDescription" name="quickAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
@@ -756,7 +756,7 @@ function update_display ( year, month, day )
 
   var today = new Date ();
   dateYmd = "" + year;
-  if ( month() < 10 )
+  if ( month < 10 )
     dateYmd += '0';
   dateYmd += "" + month;
   if ( day < 10 )
@@ -945,7 +945,6 @@ function monthCellClickHandler ( dateYmd )
   $('quickAddDate_fmt').innerHTML = format_date ( "" + dateYmd, true );
   $('quickAddCategory').selectedIndex = 0;
 }
-
 
 // Handler for user click the "Save" button in the Add Event dialog
 // window.
