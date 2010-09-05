@@ -92,11 +92,20 @@ $endTime = mktime ( 3, 0, 0, $endmonth, $endday, $endyear );
 
 $error = '';
 
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
-  $updating_public = true;
-  $layer_user = '__public__';
-} else {
-  $layer_user = $login;
+$can_edit = false;
+if ( $readonly == 'Y' || $is_nonuser ) {
+  $can_edit = false;
+} else if ( $is_admin ) {
+  $can_edit = true;
+} else if ( $login == '__public__' ) {
+  // Is public allowed to add events?
+  if ( $PUBLIC_ACCESS_CAN_ADD == 'Y' )
+    $can_edit = true;
+}
+// Allow user access control to override permissions
+if ( $can_edit && access_is_enabled () ) {
+  if ( ! access_user_calendar ( 'edit', $user, $login ) )
+    $can_edit = false;
 }
 
 if ( $action == 'get' ) {
@@ -248,6 +257,10 @@ if ( $action == 'get' ) {
 } else if ( $action == 'addevent' ) {
   // This is a simple add event function. It will be added as
   // an untimed event, so we don't need to check for conflicts.
+  if ( ! $can_edit ) {
+    ajax_send_error ( translate('Not authorized') );
+    exit;
+  }
   $date = getPostValue ( 'date' );
   $cat_id = getPostValue ( 'category' );
   $name = getPostValue ( 'name' );
@@ -294,6 +307,10 @@ if ( $action == 'get' ) {
 } else if ( $action == 'addtask' ) {
   // This is a simple add task function. It will be added as
   // an untimed task, so we don't need to check for conflicts.
+  if ( ! $can_edit ) {
+    ajax_send_error ( translate('Not authorized') );
+    exit;
+  }
   $startdate = getPostValue ( 'startdate' );
   $duedate = getPostValue ( 'duedate' );
   $cat_id = getPostValue ( 'category' );
