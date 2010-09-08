@@ -1,8 +1,10 @@
-<?php // $Id$
+<?php
 /**
  * This page handles displaying the Day/Week/Month/Year views in a single
  * page with tabs. Content is loaded dynamically with AJAX.
  * So, requests for previous & next will not force a page reload.
+ *
+ * Version: $Id$
  *
  * TODO:
  * - Week view
@@ -314,6 +316,9 @@ Agenda content goes here...
 
 <script type="text/javascript">
 
+// Called when page is loaded.
+// Load events for the current month.
+// Load all tasks.
 function onLoadInit ()
 {
   ajax_get_events('<?php echo $thisyear;?>','<?php echo intval($thismonth);?>',
@@ -321,6 +326,7 @@ function onLoadInit ()
   ajax_get_tasks();
 }
 
+// Make intro note disappear
 function hideIntroNote ( ) {
   Effect.Fade ('comboIntroNote', { duration: 3.0 } );
 }
@@ -332,7 +338,7 @@ views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()
 // End init tabs
 
-// Slide away our intro note after 15 seconds
+// Set timeout to slide away our intro note after 15 seconds
 setTimeout ( hideIntroNote, 15000 );
 
 var login = '<?php echo $login;?>';
@@ -352,6 +358,8 @@ var allCatsSelected = true;
 var selectedCats = [];
 var categories = [];
 <?php
+  // Create a javascript array of all categories this user can see that
+  // includes category name, owner, colors, global status, icon.
   foreach ( $categories as $catId => $val ) {
     if ( $catId > 0 ) {
       echo 'categories[' . $catId . '] = ' .
@@ -375,10 +383,17 @@ var quickAddDialogIsVisible = null;
 var catsVisible = false;
 var events = new Array();
 var tasks = new Array ();
+// loadedMonths is used to keep track of which months we have loaded events
+// for.  This prevents us from re-loading a month's events that we
+// previously loaded.
 var loadedMonths = new Array(); // Key will be format "200801" For Jan 2008
+// loadedTasks set to true when tasks have been loaded.  We don't load tasks
+// based on date, so it is a single scalar variable rather than an array.
 var loadedTasks = false;
 var months = [
   <?php
+    // Create javascript array of month names localized to the user's
+    // language preference.
     for ( $i = 0; $i < 12; $i++ ) {
       if ( $i ) echo ", ";
       echo "'" . month_name ( $i ) . "'";
@@ -387,6 +402,8 @@ var months = [
   ];
 var shortMonths = [
   <?php
+    // Create javascript array of shortened month names localized to the user's
+    // language preference.
     for ( $i = 0; $i < 12; $i++ ) {
       if ( $i ) echo ", ";
       echo "'" . month_name ( $i, 'M' ) . "'";
@@ -395,6 +412,8 @@ var shortMonths = [
   ];
 var weekdays = [
   <?php
+    // Create javascript array of weekday names localized to the user's
+    // language preference.
     for ( $i = 0; $i < 7; $i++ ) {
       if ( $i ) echo ", ";
       echo "'" . weekday_name ( $i, 'l' ) . "'";
@@ -403,6 +422,8 @@ var weekdays = [
   ];
 var shortWeekdays = [
   <?php
+    // Create javascript array of shortened weekday names localized to the
+    // user's language preference.
     for ( $i = 0; $i < 7; $i++ ) {
       if ( $i ) echo ", ";
       echo "'" . weekday_name ( $i, 'D' ) . "'";
@@ -413,6 +434,8 @@ var daysPerMonth = [ <?php echo implode ( ", ", $days_per_month ); ?> ];
 var leapDaysPerMonth = [ <?php echo implode ( ", ", $ldays_per_month ); ?> ];
 var users = [];
 <?php
+  // Create a javascript array of all users this user has access to see.
+  // Note: not using this yet in the javascript anywhere....
   $users = user_get_users();
   for ( $i = 0; $i < count ( $users ); $i++ ) {
     $fname = $users[$i]['cal_fullname'];
@@ -505,7 +528,11 @@ function handleCategoryCheckboxChange()
 
 <?php } ?>
 
-function ajax_get_events (year,month,day)
+// Load events for the specified month AND update ALL the event tabs
+// (year, month, day, agenda).  We pass in the day so we know
+// which day of the month to put in the day view.
+// NOTE: This does not affect the "Tasks" tab.
+function ajax_get_events ( year, month, day )
 {
   var startdate = "" + year + ( month < 10 ? "0" : "" ) + month + "01";
   // First, check to see if we already have loaded the content for
@@ -558,6 +585,8 @@ function ajax_get_events (year,month,day)
   return true;
 }
 
+// Load all tasks and update the "Tasks" tab accordingly.
+// Note: this does not affect the event tabs (year, month, day, agenda).
 function ajax_get_tasks ()
 {
   if ( loadedTasks ) {
@@ -603,7 +632,7 @@ function ajax_get_tasks ()
 }
 
 // View the event
-// key is the arring index of the events[] object (which returns an array)
+// key is the array index of the events[] object (which returns an array)
 // location is the index in the array
 function view_event ( key, location )
 {
@@ -629,11 +658,6 @@ function view_event ( key, location )
   Modalbox.show($('viewEventDiv'), {title: '<?php etranslate('View Event');?>', width: 450, onHide: viewWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
   //Modalbox.resizeToContent();
   viewDialogIsVisible = true;
-
-  //viewDialog.onclose = function() {
-  //  viewDialog = null;
-  //  return true;
-  //}
 
   $('name').innerHTML = myEvent._name;
   $('description').innerHTML = format_description ( myEvent._description );
@@ -738,7 +762,9 @@ function view_event ( key, location )
 }
 
 // Update the day, week, month and agenda content (but not the tasks which
-// are loaded be a different ajax call).
+// are loaded by a different ajax call).
+// This is called from ajax_get_events (which loads new event data) and
+// the callbacks for selecting categories.
 function update_display ( year, month, day )
 {
   currentYear = year;
@@ -920,6 +946,8 @@ function today_link()
    + " <?php etranslate('Today');?></span>";
 }
 
+// Callback for the user clicking on a cell in the month view, which
+// will allow the user to create a new event.
 function monthCellClickHandler ( dateYmd )
 {
   // Make sure user has not opened the view dialog. When a user clicks
@@ -946,7 +974,7 @@ function monthCellClickHandler ( dateYmd )
   $('quickAddCategory').selectedIndex = 0;
 }
 
-// Handler for user click the "Save" button in the Add Event dialog
+// Handler for user clicking the "Save" button in the Add Event dialog
 // window.
 function eventAddHandler()
 {
@@ -994,6 +1022,8 @@ function eventAddHandler()
   });
 }
 
+// Send the user to a new page where they can create an event with more
+// advanced options (select other participants, repeating, reminders, etc.)
 function addEventDetail()
 {
   var url = 'edit_entry.php?date=' + $('quickAddDate_YMD').value;
@@ -1009,6 +1039,8 @@ function addEventDetail()
   return true;
 }
 
+// Callback for the user pressing the "Add Task" button.
+// Show the "Add Task" popup dialog allowing the user to create a new task.
 function taskAddPopup ()
 {
   var today = new Date ();
@@ -1087,6 +1119,8 @@ function taskAddHandler()
   });
 }
 
+// Forget all events, reload events for the current month, and update
+// the display accordingly.
 function refresh()
 {
   loadedMonths = []; // forget all events...
@@ -1234,12 +1268,17 @@ function build_month_view ( year, month )
 
 // Right now this doesn't do much.  We may use it in the future to
 // add rounded corners.  Most I've tried don't work well in this layout :-(
+// Most rounded corner implementations want static content 8-(
 function month_view_event ( content )
 {
   return content;
 }
 
-// Build the HTML for the year view
+// Build the HTML for the year view.
+// Right now we are just showing dates and no event info.
+// We may add event info later, but I'm not sure I want to ask for a year's
+// worth of events for every user every time the come to the combo.php page.
+// That could have some significant performance implications.
 function build_year_view ( year, month )
 {
   var ret = "";
@@ -1307,6 +1346,10 @@ function build_year_view ( year, month )
 }
 
 // Build the HTML for the Agenda view
+// This will display a list of all events for the specified month.
+// We may want to adopt the google calendar approach where we display
+// just events from today forward and give them the option to load months
+// further into the future with a "More events" button at the bottom.
 function build_agenda_view ( year, month )
 {
   var ret = "";
@@ -1408,6 +1451,9 @@ function build_agenda_view ( year, month )
   return ret;
 }
 
+// Callback handler for the user clicking on the column header in the task
+// table.  If it is a new column, sort asc/desc dependent on the column type
+// (see below).  If same column, toggle between ascending and descending.
 function task_sort_handler ( col )
 {
   if ( taskSortCol != col ) {
@@ -1423,7 +1469,7 @@ function task_sort_handler ( col )
 }
 
 // Emulate the C strcmp function (and why doesn't JavaScript have a
-// strcmp function???)
+// strcmp function???)  Lame, lame, lame...
 // -1 if string1 comes first, 1 if string2 comes first, 0 if equal
 function strcmp ( string1, string2 )
 {
@@ -1463,6 +1509,7 @@ function intcmp ( int1, int2 )
     return 1;
 }
 
+// Compare two tasks (used to sort tasks).
 function compare_tasks ( task1, task2 )
 {
   if ( taskSortCol == SORT_BY_NAME ) {
@@ -1542,6 +1589,7 @@ function build_task_view ()
   }
   $('tasktable').innerHTML = content;
 
+  // some test code for testing the strcmp function.
   //alert ( 'strcmp(AAA,BBB) = ' + strcmp('AAA','BBB' ) + "\n" +
   //  'strcmp(BBB,AAA) = ' + strcmp('BBB','AAA' ) + "\n" +
   //  'strcmp(abc,ABC) = ' + strcmp('abc','ABC' ) + "\n" +
@@ -1553,6 +1601,8 @@ function build_task_view ()
 
 
 // Build the HTML for the Day view
+// TODO: Handle events that overlap.  Right now, they will just cover
+// each other up.
 function build_day_view ( year, month, day )
 {
   var ret = "";
@@ -1665,33 +1715,35 @@ var pos = '0';
     // Now add in event info...
     ret += timedEvents;
     // End event info
-ret += "</div>\n</div>\n";
-} catch ( err ) {
-alert ( "JavaScript exception:\n" + err );
-}
-return ret;
+    ret += "</div>\n</div>\n";
+  } catch ( err ) {
+    alert ( "JavaScript exception:\n" + err );
+  }
+  return ret;
 }
 
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+// Does the specified event match the list of currently selected categories?
 function eventMatchesSelectedCats ( event ) {
-if ( ! event._categories || event._categories.length == 0 )
-return false;
-for ( var i = 0; i < event._categories.length; i++ ) {
-var catId = event._categories[i];
-if ( isInArray ( catId, selectedCats ) ) {
-return true;
-}
-}
-return false;
+  if ( ! event._categories || event._categories.length == 0 )
+    return false;
+  for ( var i = 0; i < event._categories.length; i++ ) {
+    var catId = event._categories[i];
+    if ( isInArray ( catId, selectedCats ) ) {
+      return true;
+    }
+  }
+  return false;
 }
 
+// Convenience function...
 function isInArray ( val, searchArr )
 {
-for ( var i = 0; i < searchArr.length; i++ ) {
-if ( searchArr[i] == val )
-return true;
-}
-return false;
+  for ( var i = 0; i < searchArr.length; i++ ) {
+    if ( searchArr[i] == val )
+      return true;
+  }
+  return false;
 }
 <?php } ?>
 
@@ -1699,114 +1751,114 @@ return false;
 // includes/functions.php.
 function format_date ( dateStr, showWeekday )
 {
-var fmt = '<?php echo $DATE_FORMAT;?>';
+  var fmt = '<?php echo $DATE_FORMAT;?>';
 
-var y = dateStr.substr ( 0, 4 );
-var m = dateStr.substr ( 4, 2 );
-var d = dateStr.substr ( 6, 2 );
+  var y = dateStr.substr ( 0, 4 );
+  var m = dateStr.substr ( 4, 2 );
+  var d = dateStr.substr ( 6, 2 );
 
-var ret = fmt;
-ret = ret.replace ( /__dd__/, d );
-ret = ret.replace ( /__j__/, d );
-ret = ret.replace ( /__mm__/, m );
-ret = ret.replace ( /__mon__/, shortMonths[m-1] );
-ret = ret.replace ( /__month__/, months[m-1] );
-ret = ret.replace ( /__n__/, m );
-ret = ret.replace ( /__yy__/, y % 100 );
-ret = ret.replace ( /__yyyy__/, y );
+  var ret = fmt;
+  ret = ret.replace ( /__dd__/, d );
+  ret = ret.replace ( /__j__/, d );
+  ret = ret.replace ( /__mm__/, m );
+  ret = ret.replace ( /__mon__/, shortMonths[m-1] );
+  ret = ret.replace ( /__month__/, months[m-1] );
+  ret = ret.replace ( /__n__/, m );
+  ret = ret.replace ( /__yy__/, y % 100 );
+  ret = ret.replace ( /__yyyy__/, y );
 
-var w = '';
-if ( showWeekday ) {
-var myD = new Date();
-myD.setYear ( y );
-myD.setMonth ( m - 1 );
-myD.setDate ( d );
-wday = myD.getDay();
-w = weekdays[wday] + ', ';
-}
+  var w = '';
+  if ( showWeekday ) {
+    var myD = new Date();
+    myD.setYear ( y );
+    myD.setMonth ( m - 1 );
+    myD.setDate ( d );
+    wday = myD.getDay();
+    w = weekdays[wday] + ', ';
+  }
 
-return w + ret;
+  return w + ret;
 }
 
 // TODO: modify this to handle different time formats, timezones, etc...
 // The code for different timezones could get ugly here...
 function format_time ( timeStr, abbreviate )
 {
-if ( timeStr < 0 )
-return '';
+  if ( timeStr < 0 )
+    return '';
 
-var h = timeStr.substr ( 0, 2 );
-var m = timeStr.substr ( 2, 2 );
-var ret;
+  var h = timeStr.substr ( 0, 2 );
+  var m = timeStr.substr ( 2, 2 );
+  var ret;
 
 <?php if ( $TIME_FORMAT == '12' ) { ?>
-if ( h < 0 )
-h += 24;
-var ampm = ( h >= 12 ? '<?php etranslate('pm')?>' : '<?php etranslate('am')?>' );
-h %= 12;
-if ( h == 0 )
-h = 12;
-if ( m == 0 && abbreviate )
-ret = h + ampm;
-else
-ret = h + ':' + m + ampm;
+  if ( h < 0 )
+    h += 24;
+  var ampm = ( h >= 12 ? '<?php etranslate('pm')?>' : '<?php etranslate('am')?>' );
+  h %= 12;
+  if ( h == 0 )
+    h = 12;
+  if ( m == 0 && abbreviate )
+    ret = h + ampm;
+  else
+    ret = h + ':' + m + ampm;
 <?php } else { ?>
-ret = h + ':' + m;
+  ret = h + ':' + m;
 <?php } ?>
-return ret;
+  return ret;
 }
 
 // Take a HHMM formatted time and add the specified duration (in minutes)
 // Return time in HHMM format
 function add_time_duration ( timeStr, duration )
 {
-if ( timeStr < 0 )
-return '';
+  if ( timeStr < 0 )
+  return '';
 
-var h = timeStr.substr ( 0, 2 );
-var m = timeStr.substr ( 2, 2 );
+  var h = timeStr.substr ( 0, 2 );
+  var m = timeStr.substr ( 2, 2 );
 
-while ( duration > 60 ) {
-h++;
-duration -= 60;
-}
-m += duration;
-if ( m >= 60 ) {
-h++;
-m -= 60;
-}
-if ( h >= 24 )
-h -= 24;
+  while ( duration > 60 ) {
+    h++;
+    duration -= 60;
+  }
+  m += duration;
+  if ( m >= 60 ) {
+    h++;
+    m -= 60;
+  }
+  if ( h >= 24 )
+    h -= 24;
 
-var ret = '';
-if ( h < 10 )
-ret = '0';
-ret += "" + h;
-if ( m < 10 )
-ret += "0";
-ret += "" + m;
+  var ret = '';
+  if ( h < 10 )
+    ret = '0';
+  ret += "" + h;
+  if ( m < 10 )
+    ret += "0";
+  ret += "" + m;
 
-return ret;
+  return ret;
 }
 
 function format_description ( desc )
 {
-var ret;
+  var ret;
 <?php if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) &&
-$ALLOW_HTML_DESCRIPTION == 'Y' ) { ?>
-// HTML is allowed in description
-if ( desc.indexOf ( '<' ) >= 0 ) {
-ret = desc;
-} else {
-// No HTML found, replace \n with line breaks
-ret = desc.replace (/\n/g,"<br />");
-}
+  $ALLOW_HTML_DESCRIPTION == 'Y' ) { ?>
+  // HTML is allowed in description
+  if ( desc.indexOf ( '<' ) >= 0 ) {
+    ret = desc;
+  } else {
+    // No HTML found, replace \n with line breaks
+    ret = desc.replace (/\n/g,"<br />");
+  }
 <?php } else { ?>
-// HTML not allowed in description
-// TODO: convert URLs into active links
-ret = desc.replace (/\n/g,"<br />");
+  // HTML not allowed in description
+  // TODO: convert URLs into active links
+  ret = desc.replace (/\n/g,"<br />");
 <?php } ?>
-return ret;
+  return ret;
 }
 
 </script>
