@@ -517,7 +517,9 @@ function toggle_until() {
     return;
   }
  //use date
- $('dateselIcon_rpt').disabled =
+  elements['rpt_year'].disabled =
+  elements['rpt_month'].disabled =
+  elements['rpt_day'].disabled =
   elements['rpt_hour'].disabled =
   elements['rpt_minute'].disabled =
   ( form.rpt_untilu.checked != true );
@@ -559,7 +561,10 @@ function toggle_rem_when() {
    elements['rem_relatedE'].disabled =
    elements['rem_when_date'].checked;
 
- $('dateselIcon_reminder').disabled =
+ //$('dateselIcon_reminder').disabled =
+ elements['reminder_year'].disabled =
+   elements['reminder_month'].disabled =
+   elements['reminder_day'].disabled =
    elements['reminder_hour'].disabled =
    elements['reminder_minute'].disabled =
   ( elements['rem_when_date'].checked != true );
@@ -681,7 +686,10 @@ function isNumeric(sText)
 
 function completed_handler() {
   if ( form.percent ) {
-    elements['dateselIcon_completed'].disabled =
+    //elements['dateselIcon_completed'].disabled =
+    elements['completed_year'].disabled =
+    elements['completed_month'].disabled =
+    elements['completed_day'].disabled =
       ( form.percent.selectedIndex != 10 || form.others_complete.value != 'yes' );
   }
 }
