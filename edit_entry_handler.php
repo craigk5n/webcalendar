@@ -467,7 +467,7 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
 
   $bymonth = ( empty( $bymonth ) ? '' : implode( ',', $bymonth ) );
 
-  if( ! empty( $rpt_year ) ) {
+  if( ! empty( $rpt_end_use ) ) {
     $rpt_hour += $rpt_ampm;
     $rpt_until =
       mktime( $rpt_hour, $rpt_minute, 0, $rpt_month, $rpt_day, $rpt_year );
@@ -861,9 +861,10 @@ if( empty( $error ) ) {
         $values[] = $rpt_count;
       }
       if( ! empty( $rpt_until ) ) {
-        $names  += array( 'cal_end', 'cal_endtime' );
-        $values += array( gmdate( 'Ymd', $rpt_until ),
-          gmdate( 'His', $rpt_until ) );
+        $names[] = 'cal_end';
+        $values[] = gmdate( 'Ymd', $rpt_until );
+        $names[] = 'cal_endtime';
+        $values[] = gmdate( 'His', $rpt_until );
       }
       $sql = 'INSERT INTO webcal_entry_repeats ( '
        . implode( ',', $names ) . ' ) VALUES ( ?'
