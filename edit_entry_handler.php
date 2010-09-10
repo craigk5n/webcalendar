@@ -860,7 +860,7 @@ if( empty( $error ) ) {
         $names[]  = 'cal_count';
         $values[] = $rpt_count;
       }
-      if( ! empty( $rpt_until ) ) {
+      if( ! empty ( $rpt_end_use ) && $rpt_end_use == 'u' && ! empty( $rpt_until ) ) {
         $names[] = 'cal_end';
         $values[] = gmdate( 'Ymd', $rpt_until );
         $names[] = 'cal_endtime';
