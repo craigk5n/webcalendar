@@ -1628,7 +1628,7 @@ Challenge/Response: Challenge/Response
 # Page: includes/js/admin.php
 #
 Server URL is required.: Server URL is required.
-Server URL must end with /.: Server URL must end with a slash; "/".
+Server URL must end with /.: Server URL must end with a slash(/).
 Invalid work hours.: Invalid work hours.
 Invalid color for document background.: Invalid color for document background.
 Invalid color for document title.: Invalid color for document title.
