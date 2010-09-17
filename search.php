@@ -32,6 +32,8 @@ $advSearchStr = translate( 'Advanced Search' );
 $searchStr    = translate( 'Search' );
 $INC = array();
 
+$INC[] = 'js/autocomplete.js';
+
 if( $show_advanced ) {
   $INC[] = 'js/translate.js.php';
   $INC[] = 'js/visible.js/true';
@@ -167,8 +169,14 @@ if( $show_others ) {
 }
 ob_end_flush();
 
-echo '
-    </table></form>
-    ' . print_trailer();
+echo '</table></form>';
+?>
+<script language="JavaScript">
+<!-- <![CDATA[
+new Autocomplete('keywordsadv', { serviceUrl:'autocomplete_ajax.php' });
 
+//]]> -->
+</script>
+<?php
+print_trailer ();
 ?>
