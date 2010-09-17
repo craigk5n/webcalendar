@@ -88,6 +88,7 @@ if ( $action == 'search' ) {
   $words = explode ( ' ', $query );
   
   $ret = array ();
+  $eventTitles = array ();
   $word_cnt = count ( $words );
   for ( $i = 0; $i < $word_cnt; $i++ ) {
     $sql_params = array();
@@ -116,11 +117,16 @@ if ( $action == 'search' ) {
     $res = dbi_execute ( $sql . ' ORDER BY we.cal_date ' . $order
        . ', we.cal_name', $sql_params );
     if ( $res ) {
-       while ( $row = dbi_fetch_row ( $res ) ) {
-        $ret[$matches]['id'] = $row[0];
-        $ret[$matches]['name'] = $row[1];
-        $ret[$matches]['text'] = $row[1] . ' ( ' . date_to_str( $row[2] ) . ' )';
-        $matches++;
+      while ( $row = dbi_fetch_row ( $res ) ) {
+        $utitle = str_replace ( ' ', '', strtoupper ( $row[1] ) );
+        if ( empty ( $eventTitles[$utitle] ) ) {
+          $ret[$matches]['id'] = $row[0];
+          $ret[$matches]['name'] = $row[1];
+          $ret[$matches]['text'] = $row[1] . ' ( ' . date_to_str( $row[2] ) . ' )';
+          $eventTitles[$utitle] = 1;
+          $matches++;
+          //echo "utitle = \"$utitle\" \n";
+        }
       }
     }
     dbi_free_result ( $res );
