@@ -1,0 +1,55 @@
+* {
+display: block;
+}
+
+:root {
+margin: 50px;
+}
+
+channel > title {
+font-size: x-large;
+text-align: center;
+}
+
+item {
+margin: 25px 0 20px 0;
+padding: 5px;
+background-color: #f0f0f0;
+border: 1px solid #c0c0c0;
+}
+
+item > title {
+font-size: medium;
+margin-bottom: 20px;
+}
+
+item > link {
+font-size: small;
+margin-top: 6px;
+margin-bottom: 6px;
+}
+
+item > description {
+font-size: small;
+}
+
+item > pubDate {
+font-size: small;
+}
+
+/*
+Of course, the feeds also contain a lot of other information. I don't want to display that stuff, so we use CSS to turn it off.
+*/
+channel > link,
+channel > copyright, 
+channel > lastBuildDate, 
+channel > generator, 
+channel > docs, 
+language, 
+lastBuildDate, 
+ttl, 
+guid, 
+category {
+display: none;
+}
+

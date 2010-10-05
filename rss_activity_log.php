@@ -103,9 +103,10 @@ if ( $lang == 'en' )
 $appStr = generate_application_name();
 $descr = $appStr . ' - ' . translate ( 'Activity Log' );
 
-// header ( 'Content-type: application/rss+xml');
+//header ( 'Content-type: application/rss+xml');
 header ( 'Content-type: text/xml' );
 echo '<?xml version="1.0" encoding="' . $charset . '"?>
+<?xml-stylesheet type="text/css" href="rss-style.css" ?>
 <rss version="2.0" xml:lang="' . $lang . '">
   <channel>
     <title><![CDATA[' . $appStr . ']]></title>
@@ -134,7 +135,7 @@ exit;
  * Generate the activity log.
 */
 function rss_activity_log ( $sys, $entries ) {
-  global $SERVER_URL, $login;
+  global $SERVER_URL, $ALLOW_HTML_DESCRIPTION, $login;
 
   $sql_params = array();
 
@@ -194,8 +195,15 @@ function rss_activity_log ( $sys, $entries ) {
       "<item>\n" . '  <title><![CDATA[' . $subject . ': '
       . htmlspecialchars( $l_ename ) . ']]></title>' . "\n  <link>"
       . $SERVER_URL . 'view_entry.php?id=' . $l_eid . "</link>\n"
-      . '  <description><![CDATA[' . $l_description  . ']]></description>'
-      . "\n"
+      . '  <description>';
+    if ( $ALLOW_HTML_DESCRIPTION == 'Y' ) {
+      $x = str_replace ( '&', '&amp;', $l_description );
+      $x = str_replace ( '&amp;amp;', '&amp;', $x );
+      $ret .= $x;
+    } else
+      $ret .= '<![CDATA[' . $l_description  . ']]>';
+    $ret .= '</description>';
+    $ret .= "\n"
     // . '  <category><![CDATA[' . $category . ']]></category>' . "\n"
     /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */
       . '<pubDate>' . gmdate( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>'

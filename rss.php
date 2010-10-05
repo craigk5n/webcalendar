@@ -241,6 +241,7 @@ ob_start();
 // header ( 'Content-type: application/rss+xml');
 header ( 'Content-type: text/xml' );
 echo '<?xml version="1.0" encoding="' . $charset . '"?>
+<?xml-stylesheet type="text/css" href="rss-style.css" ?>
 <rss version="2.0" xml:lang="' . $lang . '">
   <channel>
     <title><![CDATA[' . $appStr . ']]></title>
