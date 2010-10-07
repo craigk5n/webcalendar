@@ -1639,7 +1639,7 @@ Invalid color for table text background.: Invalid color for table text backgroun
 Invalid color for event popup background.: Invalid color for event popup background.
 Invalid color for event popup text.: Invalid color for event popup text.
 Invalid color for table cell background for today.: Invalid color for table cell background for today.
-Color format should be RRGGBB.: Color format should be '#RRGGBB'.
+Color format should be RRGGBB.: Color format should be #RRGGBB.
 
 ########################################
 # Page: includes/js/availability.php
