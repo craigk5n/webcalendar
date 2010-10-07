@@ -183,7 +183,7 @@ if ( $single_user == 'N' ) {
       <input id="editLayerDeleteButton" type="button" value="<?php etranslate("Delete");?>"
       onclick="if ( confirm ( '<?php echo $areYouSureStr;?>' ) ) {
         $('editLayerDelete').setAttribute ( 'value', '1' );
-        Modalbox.hide ();
+        edit_window_closed (); Modalbox.hide ();
         }" />
     <input type="button" value="<?php etranslate("Save");?>"
       onclick="edit_window_closed(); Modalbox.hide() " /></center>
