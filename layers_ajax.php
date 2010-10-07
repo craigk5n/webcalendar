@@ -32,6 +32,13 @@ $WebCalendar->setLanguage();
 
 $action = getValue ( 'action' );
 $public = getValue ( 'public' );
+
+$sendPlainText = false;
+$format = getValue ( 'format' );
+if ( ! empty ( $format ) &&
+ ( $format == 'text' || $format == 'plain' ) );
+$sendPlainText = true;
+
 $error = '';
 
 if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
@@ -66,7 +73,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
       'dups' => $layer['cal_dups'],
       'fullname' => $layerfullname );
   }
-  ajax_send_object ( 'layers', $ret_layers );
+  ajax_send_object ( 'layers', $ret_layers, $sendPlainText );
 } else if ( $action == 'save' ) {
   // TODO: we should do some additional checking here to make
   // sure someone isn't asking for a layer they are not authorized to view.

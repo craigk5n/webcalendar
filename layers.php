@@ -51,17 +51,18 @@ $public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
   translate( 'Click to modify layers settings for XXX' ) );
 
 ob_start();
-print_header(
-// $INC
-  array( 'js/translate.js.php', 'js/visible.js/true' ),
-// $HEAD
-// Add Modal Dialog javascript/CSS
-  '<script type="text/javascript" src="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.js"></script>
-    <script type="text/javascript" src="includes/js/dhtmlmodal/modalfiles/modal.js"></script>
-    <link type="text/css" href="includes/js/dhtmlmodal/windowfiles/dhtmlwindow.css" rel="stylesheet" />
-    <link type="text/css" href="includes/js/dhtmlmodal/modalfiles/modal.css" rel="stylesheet" />',
-// $BodyX
-  'onload="load_layers();"' );
+
+// Add ModalBox javascript/CSS & Tab code
+$headExtras = '
+<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
+<link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
+<script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
+<link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css"
+media="screen" />
+';
+
+print_header( array( 'js/translate.js.php', 'js/visible.js/true' ),
+  $headExtras, 'onload="load_layers();"' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
   echo print_not_auth();
@@ -159,7 +160,7 @@ if ( $single_user == 'N' ) {
 
 </form>
 
-<div id="editCatsDiv" style="display: none;">
+<div id="editLayerDiv" style="display: none;">
   <div style="background-color: <?php echo $BGCOLOR;?>; color: <?php echo $TEXTCOLOR;?>; padding: 10px;">
   <form name="editLayerForm" id="editLayerForm">
     <input type="hidden" name="editLayerId" id="editLayerId" value="" />
@@ -181,11 +182,11 @@ if ( $single_user == 'N' ) {
     <center>
       <input id="editLayerDeleteButton" type="button" value="<?php etranslate("Delete");?>"
       onclick="if ( confirm ( '<?php echo $areYouSureStr;?>' ) ) {
-        document.getElementById('editLayerDelete').setAttribute ( 'value', '1' );
-        modalEditLayerDialog.hide();
+        $('editLayerDelete').setAttribute ( 'value', '1' );
+        Modalbox.hide ();
         }" />
     <input type="button" value="<?php etranslate("Save");?>"
-      onclick="modalEditLayerDialog.hide()" /></center>
+      onclick="edit_window_closed(); Modalbox.hide() " /></center>
   </form>
   </div>
 </div>
@@ -208,9 +209,7 @@ function set_layer_status (enable)
     onSuccess: function( transport ) {
       var response = transport.responseText || "no response text";
       try  {
-        //var response = transport.responseText.evalJSON();
-        // Hmmm... The Prototype JSON above doesn't seem to work!
-        var response = eval('(' + transport.responseText + ')');
+        response = transport.responseText.evalJSON();
       } catch ( err ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
@@ -254,9 +253,7 @@ function load_layers()
       }
       //alert ( "Response:\n" + transport.responseText );
       try  {
-        //var response = transport.responseText.evalJSON();
-        // Hmmm... The Prototype JSON above doesn't seem to work!
-        var response = eval('(' + transport.responseText + ')');
+        response = transport.responseText.evalJSON();
       } catch ( err ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
@@ -265,15 +262,17 @@ function load_layers()
         alert ( '<?php etranslate('Error');?>: '  + response.message );
         return;
       }
-      var x = '<table class="layertable" border="1" cellspacing="0" cellpadding="0" summary=""><th><?php echo $sourceStr;?></th><th><?php echo $colorStr;?></th><th><?php echo $duplicatesStr;?></th></tr>\n';
+      var x = '<table id="layertable" border="1" cellspacing="0" cellpadding="0" summary=""><th><?php echo $sourceStr;?></th><th><?php echo $colorStr;?></th><th><?php echo $duplicatesStr;?></th></tr>\n';
       for ( var i = 0; i < response.layers.length; i++ ) {
+        var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
         var l = response.layers[i];
         layers[l.id] = { id: l.id, source: l.source, color: l.color,
           dups: l.dups, fullname: l.fullname };
-        x += '<tr onclick="return edit_layer(' + l.id + ')"'
-          + ' style="color:' + l.color + '">'
-          + '<td>' + l.fullname + '</td><td>' + l.color
-          + '</td><td>' +
+        x += '<tr onclick="return edit_layer(' + l.id + ')">' +
+          '<td class="' + cl + '">' + l.fullname + '</td><td class="' +
+          cl + '">' + l.color +
+          '<span class="colorsample" style="background-color: ' + l.color +
+          '">&nbsp;</span></td><td class="' + cl + '">' +
           ( l.dups == 'Y' ? '<?php echo $yesStr;?>' : '<?php echo $noStr;?>' ) +
           '</td></tr>\n';
       }
@@ -285,13 +284,57 @@ function load_layers()
   return true;
 }
 
+function edit_window_closed () {
+  var layeruser = '<?php echo $layer_user;?>';
+  var o = $('editLayerSource');
+  var source = o.options[o.selectedIndex].value;
+  var color = $('editLayerColor').value;
+  var dups = $('editLayerDups').checked ? 'Y' : 'N';
+  var del = $('editLayerDelete').value;
+  var id = $('editLayerId').value;
+  var action = ( del > 0 ) ? 'delete' : 'save';
+  //alert ( "Sending save...\nid: " + id + "\nlayeruser: " + layeruser +
+  //  "\nsource: " + source + "\ncolor: " + color + "\ndups: " + dups +
+  //  "\ndelete: " + del );
+  new Ajax.Request('layers_ajax.php',
+  {
+    method:'post',
+    parameters: { action: action, id: id, layeruser: layeruser,
+      source: source, color: color, dups: dups },
+    onSuccess: function( transport ) {
+      var response = transport.responseText || "no response text";
+      try  {
+        response = transport.responseText.evalJSON();
+      } catch ( err ) {
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + response );
+        return;
+      }
+      if ( response.error ) {
+        alert ( '<?php etranslate("Error");?>:\n\n' + response.message );
+      } else {
+        //alert("Success! \n\n" + response);
+        // Reload layers
+        load_layers();
+      }
+    },
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+  });
+  return true;
+}
+
 function edit_layer (id)
 {
-  modalEditLayerDialog = dhtmlmodal.open ( "modalEditLayerDialog", "div",
-    "editCatsDiv",
-    ( id < 0 ? '<?php etranslate('Add Layer');?>' :
-    '<?php etranslate("Edit Layer");?>' ),
-    "width=375px,height=150px,resize=1,scrolling=1,center=1" );
+  var titleStr = '';
+  if ( id < 0 )
+    titleStr = '<?php etranslate('Add Layer');?>';
+  else
+    titleStr = '<?php etranslate('Edit Layer');?>';
+
+  // While I like the visual effects that you get with transitions enabled,
+  // it causes some of the javascript (setting selectedIndex) to fail for
+  // some reason.  So, it is disabled here.
+  Modalbox.show($('editLayerDiv'), {title: titleStr, width: 375, transitions: false, closeString: '<?php etranslate('Cancel');?>' });
+
   if ( id < 0 ) {
     $('editLayerDeleteButton').setAttribute ( 'disabled', 'true' );
   } else {
@@ -300,6 +343,7 @@ function edit_layer (id)
   $('editLayerDelete').setAttribute ( "value", 0 );
   // Find correct user in select list
   var o = $('editLayerSource');
+  var found = false;
   if ( id > 0 ) {
     var n = layers[id]['source'];
     for ( var i = 0; i < o.options.length; i++ ) {
@@ -319,48 +363,6 @@ function edit_layer (id)
     $('editLayerDups').setAttribute ( "checked", "checked" );
   else
     $('editLayerDups').removeAttribute ( "checked" );
-
-  modalEditLayerDialog.onclose = function() {
-    // NOTE: Cannot seem to use Prototype format of $('id') here.
-    // It causes the code to just stop (without error) on FF3... not sure why.
-    // Maybe a conflict with the dhtmlwindow code....
-    var layeruser = '<?php echo $layer_user;?>';
-    var o = document.getElementById('editLayerSource');
-    var source = o.options[o.selectedIndex].value;
-    var color = document.getElementById('editLayerColor').value;
-    var dups = document.getElementById('editLayerDups').checked ? 'Y' : 'N';
-    var del = document.getElementById('editLayerDelete').value;
-    var action = ( del > 0 ) ? 'delete' : 'save';
-    //alert ( "Sending save...\nid: " + id + "\nlayeruser: " + layeruser +
-    //  "\nsource: " + source + "\ncolor: " + color + "\ndups: " + dups +
-    //  "\ndelete: " + del );
-    new Ajax.Request('layers_ajax.php',
-    {
-      method:'post',
-      parameters: { action: action, id: id, layeruser: layeruser,
-        source: source, color: color, dups: dups },
-      onSuccess: function( transport ) {
-        var response = transport.responseText || "no response text";
-        try  {
-          //var response = transport.responseText.evalJSON();
-          // Hmmm... The Prototype JSON above doesn't seem to work!
-          var response = eval('(' + response + ')');
-        } catch ( err ) {
-          alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + response );
-          return;
-        }
-        if ( response.error ) {
-          alert ( '<?php etranslate("Error");?>:\n\n' + response.message );
-        } else {
-          //alert("Success! \n\n" + response);
-          // Reload layers
-          load_layers();
-        }
-      },
-      onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
-    });
-    return true;
-  }
 }
 
 </script>
