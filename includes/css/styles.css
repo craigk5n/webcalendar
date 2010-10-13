@@ -1457,9 +1457,9 @@ table.ThemeMenubar {
  * Autocomplete CSS
  * See includes/js/autocomplete.js for more info.
  */
-.autocomplete-w1 { background:url(../../images/shadow.png) no-repeat bottom right; position:absolute; top:4px; left:3px; /* IE6 fix: */ _background:none; _top:1px; }
+.autocomplete-w1 { background:url(../../images/shadow.png) no-repeat bottom right; position:absolute; top:4px; left:3px; /* IE6 fix: */ _background:none; _top:1px; z-index: 11000; }
 .autocomplete-w2 { padding:0 6px 6px 0; }
-.autocomplete { width:300px; border:1px solid #999; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE specific: */ _height:350px;  _margin:0px 6px 6px 0; overflow-x:hidden; }
+.autocomplete { width:300px !important; border:1px solid #999; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE specific: */ _height:350px;  _margin:0px 6px 6px 0; overflow-x:hidden; }
 .autocomplete .selected { background:#F0F0F0; }
 .autocomplete div { padding:2px 5px; white-space:nowrap; }
 .autocomplete strong { font-weight:normal; color:#3399FF; }
