@@ -42,15 +42,15 @@ fieldset {
 }
 label {
   font-weight:bold;
-  font-size:.6875em;
+  /*font-size:.6875em;*/
 }
 p,
 input,
 select {
-  font-size:.75em;
+  /*font-size:.75em;*/
 }
 textarea {
-  font-size:.75em;
+  /*font-size:.75em;*/
   overflow:auto;
 }
 table {
@@ -61,14 +61,14 @@ table {
 }
 th {
   padding:0;
-  font-size:.8125em;
+  /*font-size:.8125em;*/
 }
 td {
   /*font-size:.6875em;*/
 }
 ul,
 ul a {
-  font-size:.75em;
+  /*font-size:.75em;*/
 }
 .main {
   clear:both;
@@ -123,7 +123,7 @@ ul a {
 .tabfor a,
 .tabbak a {
   font-weight:bold;
-  font-size:.875em;
+  /*font-size:.875em;*/
 }
 .tabbak a {
   color:#999;
@@ -219,7 +219,7 @@ img.color {
 #monthmenu,
 #yearmenu {
   margin-bottom:0;
-  font-size: small;
+  /*font-size: small;*/
   text-align:right;
 }
 #yearform {
@@ -258,7 +258,7 @@ a#programname {
 /* Remove comments to set unapproved in italics.
   font-style:italic;
 */
-  font-size:.75em;
+  /*font-size:.75em;*/
   text-decoration:none;
 }
 .nounapproved {
@@ -268,7 +268,7 @@ a#programname {
 .entry,
 .layerentry {
   padding-right:.1875em;
-  font-size:.75em;
+  /*font-size:.75em;*/
   text-decoration:none;
 }
 .layerentry {
@@ -675,7 +675,6 @@ tr.highlight td {
   text-align:center;
 }
 .menuhref {
-  font-size:.75em;
   font-family:arial, verdana, sans-serif;
 }
 #datesel td.field {
@@ -1315,13 +1314,11 @@ tr.highlight td {
   border-color:#e0e0e0 #808080 #808080 #e0e0e0;
   background:#ffffff;
   padding: 5px;
-  font-size: 80%;
 }
 #combo #viewEventDiv {
   border:1px solid;
   border-color:#e0e0e0 #808080 #808080 #e0e0e0;
   background:#ffffff;
-  font-size: 80%;
 }
 #combo .event {
   /*background-color: #a00;*/
@@ -1382,6 +1379,10 @@ a:hover {
 }
 table.ThemeMenubar {
   table-layout:auto;
+  font-size: 80% !important;
+}
+table.ThemeMenubar select {
+  font-size: 1.0em !important;
 }
 #editCatsDiv #innerDiv {
   border:1px solid;
@@ -1451,6 +1452,12 @@ table.ThemeMenubar {
   font-size: 8pt;
   padding-left: 2px;
   padding-right: 2px;
+}
+
+
+/* for modalbox */
+#MB_caption {
+  font-size: 16pt !important;
 }
 
 /*
