@@ -1,6 +1,9 @@
 /*
  * WebCalendar Integration
  * 15-Sep-2010	Craig Knudsen
+ * Added localServiceFunction, which allows local javascript function to be
+ * used for autocomplete search instead of making an ajax call.  This is
+ * useful for things like username searches.
  * I moved the shadow.png file into the "images" directory.
  * The style.css contents were added to WebCalendar's main style.css
  * file in includes/css/style.css.
@@ -35,6 +38,9 @@ var Autocomplete = function(el, options){
   this.onChangeInterval = null;
   this.ignoreValueChange = false;
   this.serviceUrl = options.serviceUrl;
+  // cek: Added localServiceFunction which will query local javascript function
+  // rather than sending AJAX request to serviceUrl.
+  this.localServiceFunction = options.localServiceFunction;
   this.options = {
     autoSubmit:false,
     minChars:1,
@@ -193,6 +199,11 @@ Autocomplete.prototype = {
     if (cr && Object.isArray(cr.suggestions)) {
       this.suggestions = cr.suggestions;
       this.data = cr.data;
+      this.suggest();
+    } else if (this.localServiceFunction) {
+      var resp = this.localServiceFunction(this.currentValue);
+      this.suggestions = resp.suggestions;
+      this.data = resp.data;
       this.suggest();
     } else if (!this.isBadQuery(this.currentValue)) {
       new Ajax.Request(this.serviceUrl, {
