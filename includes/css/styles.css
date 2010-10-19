@@ -1331,6 +1331,7 @@ tr.highlight td {
   float: left;
 }
 #combo .participant {
+  font-size: 80%;
   background-color: #d0d0d0;
   border: 1px solid #b0b0b0;
   padding: 2px;
