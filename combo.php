@@ -99,13 +99,14 @@ else {
 
 $bodyExtras = 'onload="onLoadInit()"';
 
-// Add ModalBox javascript/CSS & Tab code
+// Add ModalBox javascript/CSS & Tab code, Auto-complete
 $headExtras = '
 <script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
 <link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
 <script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
 <link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css" 
 media="screen" />
+<script type="text/javascript" src="includes/js/autocomplete.js"></script>
 ';
 
 print_header(
@@ -115,12 +116,6 @@ print_header(
 //ob_start();
 
 ?>
-
-<div id="comboIntroNote" style="margin: 10px; border: 1px solid #000; background-color: #e0e0e0; color: #000; padding: 10px; text-align: center;"><span>
-This page is a prototype that will hopefully evolve into a replacement
-for all four of the main views (day.php, week.php, month.php, year.php).
-</span>
-</div>
 
 <div class="headerinfo">
 <table border="0">
@@ -211,7 +206,7 @@ Agenda content goes here...
 
 <div id="viewEventDiv" style="display: none;">
 <table border="0">
-  <tr><td colspan="2"><h2 id="name">  </h2></td></tr>
+  <tr><td colspan="2"><h3 id="name" class="eventName"> </h3></td></tr>
   <tr><td class="aligntop bold"><?php etranslate("Description")?>:</td>
     <td id="description">  </td></tr>
   <tr><td class="aligntop bold"><?php etranslate("Date")?>:</td>
@@ -249,6 +244,7 @@ Agenda content goes here...
 
 <!-- Hidden div tag for Quick Add dialog -->
 <div id="quickAddDiv" style="display: none;">
+<input type="hidden" name="quickAddParticipants" id="quickAddParticipants" value="" />
 <table border="0">
 <tr><td class="aligntop bold"><?php etranslate('Date');?>:</td>
   <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
@@ -272,6 +268,10 @@ Agenda content goes here...
      ?>
      </select></td></tr>
 <?php } ?>
+<tr><td class="aligntop bold"><?php etranslate('Participants');?>:</td>
+  <td><span id="quickAddParticipantList"></span>
+      &nbsp;&nbsp;
+      <input type="text" id="quickAddNewParticipant" name="quickAddNewParticipant" size="20" /></td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
 <tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="eventAddHandler()" /><br />
 <span class="clickable" onclick="addEventDetail()"><?php etranslate("Add event detail");?></span>
@@ -326,20 +326,12 @@ function onLoadInit ()
   ajax_get_tasks();
 }
 
-// Make intro note disappear
-function hideIntroNote ( ) {
-  Effect.Fade ('comboIntroNote', { duration: 3.0 } );
-}
-
 // Initialize tabs
 var views=new ddtabcontent("viewtabs")
 views.setpersist(true)
 views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()
 // End init tabs
-
-// Set timeout to slide away our intro note after 15 seconds
-setTimeout ( hideIntroNote, 15000 );
 
 var login = '<?php echo $login;?>';
 var user = '<?php echo $user;?>';
@@ -432,6 +424,8 @@ var shortWeekdays = [
   ];
 var daysPerMonth = [ <?php echo implode ( ", ", $days_per_month ); ?> ];
 var leapDaysPerMonth = [ <?php echo implode ( ", ", $ldays_per_month ); ?> ];
+var userLogins = [];
+var userNames = [];
 var users = [];
 <?php
   // Create a javascript array of all users this user has access to see.
@@ -442,10 +436,43 @@ var users = [];
     if ( empty ( $fname ) )
       $fname = $users[$i]['cal_login'];
     $fname = str_replace ( "'", "", $fname );
-    echo 'users[\'' . $users[$i]['cal_login'] . '\'] = \'' . $fname . '\'' .
-      "\n";
+    echo 'userLogins[' . $i . '] = \'' . $users[$i]['cal_login'] . "';\n";
+    echo 'userNames[' . $i . '] = \'' . $fname . "';\n";
+    echo 'users["' . $users[$i]['cal_login'] . '"] = \'' . $fname . "';\n";
   }
 ?>
+
+// Callback for autocomplete on usernames.  We return an object
+// that includes matching user logins and names.
+function autocompleteUserSearch ( q )
+{
+  var suggestions = [];
+  var data = [];
+  var cnt = 0;
+
+  var words = q.toLowerCase().split ( ' ' );
+  for ( var i = 0; i < userLogins.length; i++ ) {
+    var match = 0;
+    for ( var j = 0; j < words.length && ! match; j++ ) {
+      var q1 = words[j];
+      if ( q1.length == 0 ) {
+        // ignore
+      } else if ( userLogins[i].toLowerCase().indexOf ( q1 ) >= 0 ) {
+        match = 1;
+      } else if ( userNames[i].toLowerCase().indexOf ( q1 ) >= 0 ) {
+        match = 1;
+      }
+    }
+    if ( match ) {
+      suggestions[cnt] = userNames[i];
+      data[cnt] = userLogins[i];
+      cnt++;
+    }
+  }
+  var resp = { suggestions: suggestions, data: data };
+  //alert('resp.suggestions=' + resp.suggestions + ", cnt=" + cnt );
+  return resp;
+}
 
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
 function setCategoryVisibility (newIsVisible)
@@ -859,8 +886,9 @@ function prev_month_link ( year, month )
     m = parseInt(month) - 1;
     y = year;
   }
-  return "<span id=\"prevmonth\" class=\"clickable noprint\" onclick=\"ajax_get_events(" +
-    y + "," + m + ",1)\"><img src=\"images/combo-prev.png\" border=\"0\" alt=\"" + shortMonths[m-1] + "\"/></span>";
+  return '<span id="prevmonth" class="clickable noprint" onclick="ajax_get_events(' +
+    y + ',' + m + ',1)"><img src="images/combo-prev.png" border="0" alt="' +
+    shortMonths[m-1] + '"/></span>';
 }
 
 function next_month_link ( year, month )
@@ -873,8 +901,8 @@ function next_month_link ( year, month )
     m = parseInt(month) + 1;
     y = year;
   }
-  return "<span id=\"nextmonth\" class=\"clickable noprint\" onclick=\"ajax_get_events(" +
-    y + "," + m + ",1)\"><img src=\"images/combo-next.png\" border=\"0\" alt=\"" + shortMonths[m-1] + "\"/></span>";
+  return '<span id="nextmonth" class="clickable noprint" onclick="ajax_get_events(' +
+    y + ',' + m + ',1)"><img src="images/combo-next.png" border="0" alt="' + shortMonths[m-1] + '"/></span>';
 }
 
 // Build a table of quick links to all the months in the current
@@ -963,7 +991,8 @@ function monthCellClickHandler ( dateYmd )
     quickAddDialogIsOpen = false;
   }
   // Display quick add popup
-  Modalbox.show($('quickAddDiv'), {title: '<?php etranslate('Add Entry');?>', width: <?php echo $quick_add_width;?>, onHide: addWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+  Modalbox.show($('quickAddDiv'), {title: '<?php etranslate('Add Entry');?>', width: <?php echo $quick_add_width;?>, transitions: false, onHide: addWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+  Modalbox.resizeToContent();
 
   $('quickAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Event');?>" );
   $('quickAddName').select();
@@ -972,6 +1001,75 @@ function monthCellClickHandler ( dateYmd )
   $('quickAddDate_YMD').setAttribute ( 'value', dateYmd );
   $('quickAddDate_fmt').innerHTML = format_date ( "" + dateYmd, true );
   $('quickAddCategory').selectedIndex = 0;
+  $('quickAddParticipants').value = '<?php echo $login;?>';
+  buildHiddenParticipantList ();
+  // Initialize auto-complete of username
+  new Autocomplete('quickAddNewParticipant', {
+    //serviceUrl:'users_ajax.php',
+    localServiceFunction: autocompleteUserSearch,
+    maxHeight:400,
+    width:300,
+    deferRequestBy:100,
+    // callback function:
+    onSelect: function(value, data){
+        //alert('data= "' + data + '", value="' + value + '"' );
+        quickAddNewParticipant ( data );
+      }
+  });
+}
+
+// Add the specified user to the list of participants.
+function quickAddNewParticipant ( username )
+{
+  var value = $('quickAddParticipants').value;
+  if ( value.length > 0 )
+    value += ',';
+  value += username;
+  $('quickAddParticipants').value = value;
+  buildHiddenParticipantList ();
+  // Clear out text input
+  $('quickAddNewParticipant').value = '';
+}
+
+function buildHiddenParticipantList ()
+{
+  var html = '';
+  var ar = $('quickAddParticipants').value.split ( ',' );
+  ar.sort ();
+  for ( var i = 0; i < ar.length; i++ ) {
+    if ( ar[i].length > 0 )
+      html += quickAddBuildUserElement ( ar[i] );
+  }
+  $('quickAddParticipantList').innerHTML = html;
+}
+
+// Remove the specified login from the list of participants in
+// the quick add dialog.
+function quickAddRemoveUser ( login )
+{
+  var newv = [];
+  var cnt = 0;
+
+  var value = $('quickAddParticipants').value;
+  var logins = value.split ( ',' );
+  for ( var i = 0; i < logins.length; i++ ) {
+    if ( logins[i] != login ) {
+      newv[cnt] = logins[i];
+      cnt++;
+    }
+  }
+  $('quickAddParticipants').value = newv;
+  buildHiddenParticipantList ();
+}
+
+function quickAddBuildUserElement ( login )
+{
+  var ret = '<span class="participant" id="p_' + login +
+    '">' + login + '<span class="partX">' +
+    '<img src="images/close.png" onclick="quickAddRemoveUser(\'' +
+    login + '\')" alt="x" />' +
+    '</span></span>';
+  return ret;
 }
 
 // Handler for user clicking the "Save" button in the Add Event dialog
@@ -981,6 +1079,7 @@ function eventAddHandler()
   var name = $('quickAddName').value;
   var description = $('quickAddDescription').value;
   var dateYmd = $('quickAddDate_YMD').value;
+  var participants = $('quickAddParticipants').value;
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
   var catObj = $('quickAddCategory');
   var category = catObj.options[catObj.selectedIndex].value;
@@ -991,7 +1090,8 @@ function eventAddHandler()
   {
     method:'post',
     parameters: { action: 'addevent', date: dateYmd,
-      name: name, description: description<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
+      name: name, description: description,
+      participants: participants<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
         alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=addevent' );
@@ -1052,7 +1152,8 @@ function taskAddPopup ()
     ymd += '0';
   ymd += today.getDate ();
 
-  Modalbox.show($('taskAddDiv'), {title: '<?php etranslate('Add Task');?>', width: <?php echo $quick_add_width;?>, closeString: '<?php etranslate('Cancel');?>' });
+  Modalbox.show($('taskAddDiv'), {title: '<?php etranslate('Add Task');?>', width: <?php echo $quick_add_width;?>, transitions: false, closeString: '<?php etranslate('Cancel');?>' });
+  Modalbox.resizeToContent();
 
   $('taskAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Task');?>" );
   $('taskAddName').select();
@@ -1746,6 +1847,20 @@ function isInArray ( val, searchArr )
   return false;
 }
 <?php } ?>
+
+
+function getUserSuggestion ( str )
+{
+  var ret = [];
+  var cnt = 0;
+
+  for ( var i = 0; i < userLogins.length; i++ ) {
+    if ( userLogins[i].match(/str/i) ) {
+      ret[cnt++] = userLogins[i];
+    }
+  }
+  return ret;
+}
 
 // This function mimics the date_to_str PHP function found in
 // includes/functions.php.
