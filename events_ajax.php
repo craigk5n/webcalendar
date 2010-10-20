@@ -267,7 +267,10 @@ if ( $action == 'get' ) {
   $description = getPostValue ( 'description' );
   if ( $description == '' )
     $description = $name;
-  $user = $login;
+  $participants = getPostValue ( 'participants' );
+  if ( empty ( $participants ) )
+    $participants = $login;
+  //$user = $login;
   // Get new ID
   $id = 1;
   $res = dbi_query ( "SELECT MAX(cal_id) FROM webcal_entry" );
@@ -297,13 +300,23 @@ if ( $action == 'get' ) {
       exit;
     }
   }
-  if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
-      cal_status ) VALUES ( ?, ?, ? )',
-        array ( $id, $user, 'A' ) ) ) {
-    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+  // Add to each participant
+  $userList = explode ( ',', $participants );
+  for ( $i = 0; $i < count ( $userList ); $i++ ) {
+    $user = $userList[$i];
+    $status = ( $user != $login &&
+      boss_must_approve_event ( $login, $user ) &&
+      $REQUIRE_APPROVALS == 'Y' &&
+      ! $is_nonuser_admin ) ? 'W' : 'A';
+    if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
+        cal_status ) VALUES ( ?, ?, ? )',
+          array ( $id, $user, $status ) ) ) {
+      ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+    }
+    activity_log ( $id, $login, $user, LOG_CREATE, '' );
+    // TODO: send email notification!
   }
   ajax_send_success();
-  activity_log ( $id, $login, $user, LOG_CREATE_E, '' );
 } else if ( $action == 'addtask' ) {
   // This is a simple add task function. It will be added as
   // an untimed task, so we don't need to check for conflicts.

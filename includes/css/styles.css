@@ -1336,14 +1336,14 @@ tr.highlight td {
   border: 1px solid #b0b0b0;
   padding: 2px;
 }
-#combo .partX {
+#combo #quickAddDiv #quickAddParticipantList .partX {
   padding: 0;
-  margin-left: 3px;
-  margin-right: 2px;
   cursor:pointer;
 }
-#combo .partX img {
+#combo #quickAddDiv #quickAddParticipantList .partX img {
   vertical-align: top;
+  margin-top: 3px;
+  margin-left: 2px;
 }
 #eventcomment {
  border:1px solid;
