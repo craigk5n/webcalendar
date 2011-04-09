@@ -6,6 +6,15 @@
 include_once 'includes/init.php';
 load_user_layers();
 
+$referer = '';
+if ( ! empty ( $_SERVER['HTTP_REFERER']) )
+  $referer = strrchr($_SERVER['HTTP_REFERER'], '/edit_user.php' );
+
+if (  $referer != '/edit_user.php' ) {
+  activity_log( 0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:edit_user' );
+  exit; 
+}
+
 $delete = getPostValue ( 'delete' );
 $formtype = getPostValue ( 'formtype' );
 $add = getPostValue ( 'add' );
