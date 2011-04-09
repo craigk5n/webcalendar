@@ -162,9 +162,11 @@ foreach( array(
     'META',
     'OBJECT',
     'SCRIPT',
-    'TITLE', ) as $i ) {
-  if( preg_match( "/<\s*$i/i", $description ) ) {
+    'TITLE',
+	'Ajax.Request' ) as $i ) {
+  if( preg_match( "/<\s*$i/i", $description ) | preg_match( "/\s*$i/i", $description ) ) {
     $error = translate( 'Security violation!' );
+    activity_log( 0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:edit_entry' );
   }
 }
 
