@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WebCalendar's functions to retrieve Predefined Variables
  *
@@ -24,14 +25,25 @@
  *
  * @see getGetValue
  */
-function getPostValue ( $name, $defVal=NULL ) {
+function getPostValue($name, $defVal=NULL) {
+  global $login;
+  $chkXSS = false;
+  $cleanXSS = true;
+//if we set $defVal to XSS then check $name for possible XSS attacks
+  if (strstr('XSS', $defVal)) {
+    $chkXSS = true;
+    $defVal = str_replace('XSS', '', $defVal);
+  }
+
   $postName = $defVal;
-  if ( isset ( $_POST ) && is_array ( $_POST ) && isset ( $_POST[$name]) )
-    $postName = ( get_magic_quotes_gpc() != 0
-      ? $_POST[$name] : ( is_array( $_POST[$name] )
-        ? array_map( 'addslashes', $_POST[$name] )
-        : addslashes( $_POST[$name] ) ) );
-  return $postName;
+  if (isset($_POST) && is_array($_POST) && isset($_POST[$name]))
+    $postName = ( get_magic_quotes_gpc() != 0 ? $_POST[$name] :
+                    ( is_array($_POST[$name]) ? array_map('addslashes', $_POST[$name]) :
+                            addslashes($_POST[$name]) ) );
+  if ($chkXSS)
+    $cleanXSS = chkXSS($postName);
+
+  return $cleanXSS ? $postName : NULL;
 }
 
 /**
@@ -52,11 +64,10 @@ function getPostValue ( $name, $defVal=NULL ) {
  *
  * @see getPostValue
  */
-function getGetValue ( $name ) {
+function getGetValue($name) {
   $getName = null;
-  if ( isset ( $_GET ) && is_array ( $_GET ) && isset ( $_GET[$name] ) )
-    $getName = ( get_magic_quotes_gpc() != 0
-      ? $_GET[$name] : addslashes ( $_GET[$name] ) );
+  if (isset($_GET) && is_array($_GET) && isset($_GET[$name]))
+    $getName = ( get_magic_quotes_gpc() != 0 ? $_GET[$name] : addslashes($_GET[$name]) );
   return $getName;
 }
 
@@ -85,22 +96,22 @@ function getGetValue ( $name ) {
  * @uses getGetValue
  * @uses getPostValue
  */
-function getValue ( $name, $format = '', $fatal = false ) {
+function getValue($name, $format = '', $fatal = false) {
 
-  $val = getPostValue ( $name );
-  if ( ! isset ( $val ) )
-    $val = getGetValue ( $name );
-  // for older PHP versions...
-  if( ! isset( $val ) && get_magic_quotes_gpc() == 1
-      && ! empty( $GLOBALS[$name] ) )
+  $val = getPostValue($name);
+  if (!isset($val))
+    $val = getGetValue($name);
+// for older PHP versions...
+  if (!isset($val) && get_magic_quotes_gpc() == 1
+          && !empty($GLOBALS[$name]))
     $val = $GLOBALS[$name];
-  if ( ! isset ( $val ) )
+  if (!isset($val))
     return '';
-  if ( ! empty ( $format ) && ! preg_match ( '/^' . $format . '$/', $val ) ) {
+  if (!empty($format) && !preg_match('/^' . $format . '$/', $val)) {
     // does not match
-    if ( $fatal ) {
-      die_miserable_death ( translate ( 'Fatal Error' ) . ': '
-         . translate ( 'Invalid data format for' ) . $name );
+    if ($fatal) {
+      die_miserable_death(translate('Fatal Error') . ': '
+              . translate('Invalid data format for') . $name);
     }
     // ignore value
     return '';
@@ -123,8 +134,38 @@ function getValue ( $name, $format = '', $fatal = false ) {
  *
  * @uses getValue
  */
-function getIntValue ( $name, $fatal = false ) {
-  return getValue ( $name, '-?[0-9]+', $fatal );
+function getIntValue($name, $fatal = false) {
+  return getValue($name, '-?[0-9]+', $fatal);
+}
+
+/**
+ * Checks string for certain XSS attack strings.
+ *
+ *
+ * @param string $name  Name used in the HTML form or found in the URL
+ * @param bool   $fatal Is it considered a fatal error requiring execution to
+ *                      stop if the value retrieved does not match the format
+ *                      regular expression?
+ *
+ * @return string The value used in the HTML form (or URL)
+ *
+ * @uses getValue
+ */
+function chkXSS($name) {
+  global $login;
+  $cleanXSS = true;
+    //add more array elements as needed
+    foreach (array(
+'Ajax.Request',
+ 'onerror') as $i) {
+      if (preg_match("/$i/i", $name)) {
+        activity_log(0, $login, $login, SECURITY_VIOLATION,
+                'Hijack attempt:' . $i);
+        $cleanXSS = false;
+      }
+    }
+
+  return $cleanXSS;
 }
 
 ?>
