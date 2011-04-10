@@ -60,8 +60,8 @@ $old_status = array();
 
 // Pass all string values through getPostValue.
 $access   = getPostValue( 'access' );
-$location = getPostValue( 'location' );
-$name     = getPostValue( 'name' );
+$location = getPostValue( 'location', 'XSS' );
+$name     = getPostValue( 'name', 'XSS' );
 $priority = getPostValue( 'priority' );
 $user     = getPostValue( 'user' );
 
@@ -90,7 +90,7 @@ $completed_hour   = getPostValue( 'completed_hour' );
 $completed_minute = getPostValue( 'completed_minute' );
 $completed_month  = getPostValue( 'completed_month' );
 $completed_year   = getPostValue( 'completed_year' );
-$description      = getPostValue( 'description' );
+$description      = getPostValue( 'description', 'XSS' );
 
 $due_ampm   = getPostValue( 'due_ampm' );
 $due_day    = getPostValue( 'due_day' );
@@ -162,9 +162,8 @@ foreach( array(
     'META',
     'OBJECT',
     'SCRIPT',
-    'TITLE',
-	'Ajax.Request' ) as $i ) {
-  if( preg_match( "/<\s*$i/i", $description ) | preg_match( "/\s*$i/i", $description ) ) {
+    'TITLE' ) as $i ) {
+  if( preg_match( "/<\s*$i/i", $description ) ) {
     $error = translate( 'Security violation!' );
     activity_log( 0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:edit_entry' );
   }
