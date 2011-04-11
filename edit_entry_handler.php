@@ -60,8 +60,8 @@ $old_status = array();
 
 // Pass all string values through getPostValue.
 $access   = getPostValue( 'access' );
-$location = getPostValue( 'location', 'XSS' );
-$name     = getPostValue( 'name', 'XSS' );
+$location = getPostValue( 'location', '', 'XSS' );
+$name     = getPostValue( 'name', '', 'XSS' );
 $priority = getPostValue( 'priority' );
 $user     = getPostValue( 'user' );
 
@@ -90,7 +90,7 @@ $completed_hour   = getPostValue( 'completed_hour' );
 $completed_minute = getPostValue( 'completed_minute' );
 $completed_month  = getPostValue( 'completed_month' );
 $completed_year   = getPostValue( 'completed_year' );
-$description      = getPostValue( 'description', 'XSS' );
+$description      = getPostValue( 'description', '', 'XSS' );
 
 $due_ampm   = getPostValue( 'due_ampm' );
 $due_day    = getPostValue( 'due_day' );

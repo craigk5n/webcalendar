@@ -20,28 +20,21 @@
  * <var>magic_quotes_gpc</var> in the php.ini file.
  *
  * @param string $name Name used in the HTML form
+ * @param string $defVal Value to return if form field is empty
+ * @param string $chkXSS Switch to control XSS checking
  *
  * @return string The value used in the HTML form
  *
  * @see getGetValue
  */
-function getPostValue($name, $defVal=NULL) {
-  global $login;
-  $chkXSS = false;
-  $cleanXSS = true;
-//if we set $defVal to XSS then check $name for possible XSS attacks
-  if (strstr('XSS', $defVal)) {
-    $chkXSS = true;
-    $defVal = str_replace('XSS', '', $defVal);
-  }
-
+function getPostValue($name, $defVal=NULL, $chkXSS=false) {
   $postName = $defVal;
   if (isset($_POST) && is_array($_POST) && isset($_POST[$name]))
     $postName = ( get_magic_quotes_gpc() != 0 ? $_POST[$name] :
-                    ( is_array($_POST[$name]) ? array_map('addslashes', $_POST[$name]) :
-                            addslashes($_POST[$name]) ) );
-  if ($chkXSS)
-    $cleanXSS = chkXSS($postName);
+      ( is_array($_POST[$name]) ? array_map('addslashes', $_POST[$name]) :
+      addslashes($_POST[$name]) ) );
+
+  $cleanXSS = $chkXSS? chkXSS($postName) : true;
 
   return $cleanXSS ? $postName : NULL;
 }
