@@ -1628,7 +1628,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
 
     $ret = sprintf ( "%d:%02d%s", $hour, $min, $ampm );
   } else
-    $ret = sprintf ( "%02d:%02d", $hour, $min );
+    $ret = sprintf ( "%02d&#58;%02d", $hour, $min );
 
   if ( $control & 2 )
     $ret .= $tzid;
@@ -2030,6 +2030,7 @@ function generate_printer_friendly ( $hrefin = '' ) {
    . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : addslashes(htmlentities($_SERVER['QUERY_STRING'])) );
   $href .= ( substr ( $href, -1 ) == '?' ? '' : '&' ) . 'friendly=1';
   $show_printer = true;
+  $href = str_replace ( '&amp;', '&', $href );
   if ( empty ( $hrefin ) ) // Menu will call this function without parameter.
     return $href;
 
@@ -4498,10 +4499,22 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
   global $prefarray, $s, $SCRIPT;
   static $checked, $No, $Yes;
 
-  $hidden = ( strpos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
-    <input type="hidden" name="' . $variable . '" value="N" />' );
   $setting  = ( empty( $vals[3] ) ? $vals[0] : $vals[3] );
   $variable = $vals[0];
+
+   if( $SCRIPT == 'admin.php' ) {
+    $setting  = $s[$vals[0]];
+    $variable = 'admin_' . $vals[0];
+  }
+  
+  if( $SCRIPT == 'pref.php' ) {
+    $setting  = $prefarray[$vals[0]];
+    $variable = 'pref_' . $vals[0];
+  }
+    
+  $hidden = ( strpos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
+    <input type="hidden" name="' . $variable . '" value="N" />' );
+
 
   if( ! empty( $id ) && $id = 'dito' )
     $id = $vals[0];
@@ -4512,14 +4525,6 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
     $Yes = translate( 'Yes' );
   }
 
-  if( $SCRIPT == 'admin.php' ) {
-    $setting  = $s[$vals[0]];
-    $variable = 'admin_' . $vals[0];
-  }
-  if( $SCRIPT == 'pref.php' ) {
-    $setting  = $prefarray[$vals[0]];
-    $variable = 'pref_' . $vals[0];
-  }
   return $hidden . '
       <label><input type="checkbox" name="' . $variable . '" value="' . $vals[1]
    . '" ' . ( empty( $id ) ? '' : 'id="' . $id . '" ' )
