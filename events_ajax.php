@@ -218,7 +218,7 @@ if ( $action == 'get' ) {
   }
   // Get list of attachments.
   if ( Doc::attachmentsEnabled() ) {
-    $attList =& new AttachmentList ( $id );
+    $attList = new AttachmentList ( $id );
     for ( $i = 0; $i < $attList->getSize(); $i++ ) {
       $a = $attList->getDoc ( $i );
       // Set link target to '_blank' so that we don't lose our place.
@@ -230,7 +230,7 @@ if ( $action == 'get' ) {
     }
   }
   if ( Doc::commentsEnabled() ) {
-    $comList =& new CommentList ( $id );
+    $comList = new CommentList ( $id );
     $comment_text = '';
     for ( $i = 0; $i < $comList->getSize(); $i++ ) {
       $cmt = $comList->getDoc ( $i );
