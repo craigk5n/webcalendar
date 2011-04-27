@@ -1,6 +1,8 @@
 $Id$
 
 Version 1.2.4 (?? ??? 2010)
+ - Fixed pass by reference warnings when running PHP 5.3
+ - Fixed bug [ 3289986 ] Deprecated: Function ereg_replace() is deprecated
  - Fixed bug [ 3095745 ] Invalid table structure for MS SQL
  - Fixed bug [ 3061175 ] Search: Warning: Invalid argument supplied for foreach()
  - Bug fix: undefined function date_default_timezone_set in older versions

@@ -266,7 +266,7 @@ function get_browser_language ( $pref = false ) {
   else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0, $cnt = count ( $langs ); $i < $cnt; $i++ ) {
-      $l = strtolower ( trim ( ereg_replace ( ';.*', '', $langs[$i] ) ) );
+      $l = strtolower ( trim ( preg_replace ( '/;.*/', '', $langs[$i] ) ) );
       $ret .= "\"$l\" ";
       if ( ! empty ( $browser_languages[$l] ) )
         return $browser_languages[$l];
@@ -337,10 +337,10 @@ function etranslate ( $str, $decode = '' ) {
  * @param string $str Text to translate
  * @return string The translated text with all HTML removed
  */
-function tooltip ( $str, $decode = '' ) {
-  $ret = translate ( $str, $decode );
-  $ret = eregi_replace ( '<[^>]+>', '', $ret );
-  return eregi_replace ( '"', "'", $ret );
+function tooltip( $str, $decode = '' ) {
+  $ret = translate( $str, $decode );
+  $ret = preg_replace( '/<[^>]+>/', '', $ret );
+  return preg_replace( '/"/', "'", $ret );
 }
 
 /* Translates and removes HTML from text, and prints it.

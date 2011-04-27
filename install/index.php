@@ -647,6 +647,7 @@ if ( empty ( $x ) ) {
     $settings['single_user_login'] = '';
     $settings['use_http_auth'] = 'false';
     $settings['single_user'] = 'false';
+    $settings['mode'] = 'prod';
   }
 } else {
   $settings['db_type'] = getPostValue ( 'form_db_type' );
@@ -656,6 +657,7 @@ if ( empty ( $x ) ) {
   $settings['db_password'] = getPostValue ( 'form_db_password' );
   $settings['db_persistent'] = getPostValue ( 'form_db_persistent' );
   $settings['db_cachedir'] = getPostValue ( 'form_db_cachedir' );
+  $settings['mode'] = getPostValue ( 'form_mode' );
   $settings['readonly'] =( ! isset ( $settings['readonly'] )?
     'false':$settings['readonly']);
   $settings['user_inc'] =( ! isset ( $settings['user_inc'] )?
@@ -673,7 +675,6 @@ $y = getPostValue ( 'app_settings' );
 if ( ! empty ( $y ) ) {
   $settings['single_user_login'] = getPostValue ( 'form_single_user_login' );
   $settings['readonly'] = getPostValue ( 'form_readonly' );
-  $settings['mode'] = getPostValue ( 'form_mode' );
   if ( getPostValue ( 'form_user_inc' ) == 'http' ) {
     $settings['use_http_auth'] = 'true';
     $settings['single_user'] = 'false';
@@ -1497,7 +1498,11 @@ translate ( 'You should select Web Server from the list of User Authentication c
     <td class="prompt"><?php etranslate ( 'Environment' ) ?>:</td>
     <td>
      <select name="form_mode">
-     <?php if ( preg_match ( "/dev/", $settings['mode'] ) )
+
+     <?php if( empty( $settings['mode'] ) )
+        $settings['mode'] = 'prod';
+
+     if ( preg_match ( "/dev/", $settings['mode'] ) )
          $mode = 'dev'; // development
         else
          $mode = 'prod'; //production

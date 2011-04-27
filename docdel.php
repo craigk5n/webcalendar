@@ -32,7 +32,7 @@ if ( ! $res )
   $error = db_error ();
 else {
   if ( $row = dbi_fetch_row ( $res ) ) {
-    $doc =& new Doc ( $row );
+    $doc = new Doc ( $row );
     $event_id = $doc->getEventId ();
     $name = $doc->getName ();
     $owner = $doc->getLogin ();
