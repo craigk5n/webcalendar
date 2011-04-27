@@ -6,7 +6,7 @@
  */
 require_once 'includes/classes/WebCalendar.class';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WebCalendar = new WebCalendar ( __FILE__ );
 
 include 'includes/translate.php';
 include 'includes/config.php';

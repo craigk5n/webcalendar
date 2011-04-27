@@ -7,7 +7,7 @@ file_exists ( SIMPLETEST_ROOT . 'unit_tester.php' ) or
 require_once ( SIMPLETEST_ROOT . 'unit_tester.php' );
 require_once ( SIMPLETEST_ROOT . 'reporter.php' );
 
-$test =& new GroupTest ( 'All tests' );
+$test = new GroupTest ( 'All tests' );
 $test->addTestFile ( 'add_duration_test.php' );
 $test->run ( new HtmlReporter () );
 

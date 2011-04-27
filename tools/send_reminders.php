@@ -61,7 +61,7 @@ require_once __WC_INCLUDEDIR . '/classes/Event.class';
 require_once __WC_INCLUDEDIR . '/classes/RptEvent.class';
 require_once __WC_INCLUDEDIR . '/classes/WebCalMailer.class';
 
-$WebCalendar =& new WebCalendar ( __FILE__ );
+$WebCalendar = new WebCalendar ( __FILE__ );
 
 include __WC_INCLUDEDIR . '/translate.php';
 include __WC_INCLUDEDIR . '/config.php';

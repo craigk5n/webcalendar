@@ -29,7 +29,7 @@ if ( empty ( $error ) ) {
   if ( ! $row )
     $error = str_replace ( 'XXX', $blid, $invalidIDStr );
   else {
-    $doc =& new Doc ( $row );
+    $doc = new Doc ( $row );
     $description = $doc->getDescription ();
     $filedata = $doc->getData ();
     $filename = $doc->getName ();
