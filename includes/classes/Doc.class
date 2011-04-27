@@ -152,7 +152,7 @@ class Doc {
    * Typical usage (error-checking not shown here): <blockquote><pre>
    *   $res = dbi_execute ( Doc::getSQLForDocId ( $doc_id ) );
    *   $row = dbi_fetch_row ( $res );
-   *   $doc =& new Doc ( $row );
+   *   $doc = new Doc ( $row );
    *   dbi_free_result ( $res );
    * </pre></blockquote>
    *
