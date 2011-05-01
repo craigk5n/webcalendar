@@ -1495,7 +1495,7 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
 
     $ret = sprintf ( "%d:%02d%s", $hour, $min, $ampm );
   } else
-    $ret = sprintf ( "%02d:%02d", $hour, $min );
+    $ret = sprintf ( "%02d&#58;%02d", $hour, $min );
 
   if ( $control & 2 )
     $ret .= $tzid;
