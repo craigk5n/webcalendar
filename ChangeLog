@@ -1,16 +1,15 @@
 $Id$
 
-NOTE: This is the 2.0 development branch.
-Put code changes right below the 2.0 label below.
+NOTE: This is the 1.3.0 development branch.
+Put code changes right below the 1.3.0+CVS label below.
 
-Version 2.0 (?? ??? 2011)
+Version 1.3.0+CVS (?? ??? 2007)
+ - 1-May-11 roj  Bug [ 3136643 ] php error when trying to log with wrong password. postgresql
  - 1-May-11 roj  Bug [ 3136643 ] php error when trying to log with wrong password. postgresql
  - 26-Apr-11 roj Fixed pass by reference warnings when running PHP 5.3
  - 26-Apr-11 roj Bug [ 3095745 ] Invalid table structure for MS SQL
  - 17-Apr-11 roj Bug [ 3131513 ] View id lost when using next and previous arrows
  - 17-Apr-11 roj Bug [ 3131543 ]Time is not displayed correctly when min = 0
-
-Version 1.3.0+CVS (?? ??? 2007)
  - 07-Oct-10 cek Updated layers.php with new Modalbox code and UI improvements.
  - 21-Aug-10 cek Added support for PNG category icons; improvements to
    category icon uploading; display error when permissions of icons
