@@ -86,7 +86,7 @@ function can_write_to_dir ($path)
 {
   if ($path{strlen($path)-1}=='/') //Start function again with tmp file...
     return can_write_to_dir($path.uniqid(mt_rand()).'.tmp');
-  else if (ereg('.tmp', $path)) { //Check tmp file for read/write capabilities
+  else if ( preg_match( '/\.tmp$/', $path ) ) { //Check tmp file for read/write capabilities
     if (!($f = @fopen($path, 'w+')))
       return false;
     fclose($f);
@@ -327,7 +327,7 @@ function  rgb2hsl ( $rgb ) {
   
   if ( $deltaMax == 0 )      //This is a gray, no chroma...
   {
-     $H = 0;                  //HSL results = 0 ÷ 1
+     $H = 0;                  //HSL results = 0 ï¿½ 1
      $S = 0;
   }
   else                        //Chromatic data...
