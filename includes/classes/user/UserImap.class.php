@@ -58,7 +58,7 @@ function UserImap () {
  */
 function quoteIMAP($str)
 {
-    return ereg_replace('(["\\])', '\\\\1', $str);
+    return preg_replace("/\\\\/", "\\\\\\", $str);
 }
 
 /**

@@ -50,8 +50,8 @@ function do_debug ( $msg ) {
  *
  * @return string  The text altered to have HTML links for any web links.
  */
-function activate_urls ( $text ) {
-  return ereg_replace ( '[[:alpha:]]+://[^<>[:space:]]+[[:alnum:]/]',
+function activate_urls( $text ) {
+  return preg_replace( '/[a-z]+:\/\/[^<> \t\r\n]+[a-z0-9\/]/i',
     '<a href="\\0">\\0</a>', $text );
 }
 
@@ -686,7 +686,7 @@ function display_time ( $intime, $control = 0, $format = '' ) {
 
     $ret = sprintf ( "%d:%02d%s", $hour, $min, $ampm );
   } else
-    $ret = sprintf ( "%02d:%02d", $hour, $min );
+    $ret = sprintf ( "%02d&#58;%02d", $hour, $min );
 
   if ( $control & 2 )
     $ret .= $tzid;
@@ -1204,7 +1204,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
           } //end foreach bymonth
         } elseif ( isset ( $byyearday ) ) { // end if isset bymonth
           foreach ( $byyearday as $yearday ) {
-            ereg ( '([-\+]{0,1})?([0-9]{1,3})', $yearday, $match );
+            preg_match( '/([-+]?)(\d{1,3})/', $yearday, $match );
             if ( $match[1] == '-' && ( $cdate >= $date ) )
               $yret[] =
               mktime ( $hour, $minute, 0, 12, 31 - $match[2] - 1, $thisyear );
@@ -2057,13 +2057,13 @@ function get_event_ids ( $sql_params, $unique=true, $sql='' ) {
  *
  * @ignore
  */
-function get_web_browser () {
-  $agent = getenv ( 'HTTP_USER_AGENT' );
-  if ( ereg ( 'MSIE [0-9]', $agent ) )
+function get_web_browser() {
+  $agent = getenv( 'HTTP_USER_AGENT' );
+  if ( preg_match( '/MSIE \d/', $agent ) )
     return 'MSIE';
-  if ( ereg ( 'Mozilla/[234]', $agent ) )
+  if ( preg_match( '/Mozilla\/[234]/', $agent ) )
     return 'Netscape';
-  if ( ereg ( 'Mozilla/[5678]', $agent ) )
+  if ( preg_match( '/Mozilla\/[5678]/', $agent ) )
     return 'Mozilla';
   return 'Unknown';
 }

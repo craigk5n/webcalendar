@@ -187,7 +187,7 @@ function get_browser_language ( $pref = false ) {
   else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0, $cnt = count ( $langs ); $i < $cnt; $i++ ) {
-      $l = strtolower ( trim ( ereg_replace ( ';.*', '', $langs[$i] ) ) );
+      $l = strtolower ( trim ( preg_replace( '/;.*/', '', $langs[$i] ) ) );
       $ret .= "\"$l\" ";
       if ( ! empty ( $browser_languages[$l] ) )
         return $browser_languages[$l];
@@ -217,7 +217,9 @@ function translate ( $str, $options = '' ) {
   global $translation_loaded;
 
   static $translations;
-  //Set $blink to true to aid in finding missing translations
+  //Set $blink to true to aid in finding missing
+  if ( ! defined ( _WC_RUN_MODE ))
+    define ( _WC_RUN_MODE, 'dev');
   $blink = ( true & ( _WC_RUN_MODE == 'dev' ) );
 
   $decode = ( strpos ( $options, 'D' ) ? true : false );
@@ -235,8 +237,8 @@ function translate ( $str, $options = '' ) {
     : ( $blink ? '<blink>' . $str . '</blink>': $str ) );
 
   if ( $tooltip && ! $blink  ) {
-    $retval = eregi_replace ( '<[^>]+>', '', $retval );
-    $retval = eregi_replace ( '"', "'", $retval );
+    $retval = preg_replace( '/<[^>]+>/', '', $retval );
+    $retval = preg_replace( '/"/', "'", $retval );
   }
 
   if ( $options ) {
@@ -300,10 +302,10 @@ function etranslate ( $str, $decode = '' ) {
  * @param string $str Text to translate
  * @return string The translated text with all HTML removed
  */
-function tooltip ( $str, $decode = '') {
-  $ret = translate ( $str, $decode );
-  $ret = eregi_replace ( '<[^>]+>', '', $ret );
-  return eregi_replace ( '"', "'", $ret );
+function tooltip( $str, $decode = '' ) {
+  $ret = translate( $str, $decode );
+  $ret = preg_replace( '/<[^>]+>/', '', $ret );
+  return preg_replace( '/"/', "'", $ret );
 }
 
 
