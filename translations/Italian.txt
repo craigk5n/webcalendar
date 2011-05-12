@@ -25,7 +25,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: = iso-8859-15
+charset: iso-8859-15
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
