@@ -79,14 +79,14 @@ class Doc {
   var $_mod_time;
 
   /* Are attachments enabled? */
-  function attachmentsEnabled () {
+  public static function attachmentsEnabled () {
     global $ALLOW_ATTACH;
 
     return ( ! empty ( $ALLOW_ATTACH ) && $ALLOW_ATTACH == 'Y' );
   }
 
   /* Are comments enabled? */
-  function commentsEnabled () {
+  public static function commentsEnabled () {
     global $ALLOW_COMMENTS;
 
     return ( ! empty ( $ALLOW_COMMENTS ) && $ALLOW_COMMENTS == 'Y' );
@@ -95,7 +95,7 @@ class Doc {
   /* Provide a list of comma-separated column names
    * for use in a SQL query to the webcal_blob table.
    */
-  function getColumnList () {
+  public static function getColumnList () {
     return 'cal_blob_id, cal_id, cal_login, cal_name, cal_description, '
      . 'cal_size, cal_mime_type, cal_type, cal_mod_date, cal_mod_time';
   }
@@ -110,7 +110,7 @@ class Doc {
    *
    * @access public
    */
-  function getSQL ( $event_id, $type = 'A' ) {
+  public static function getSQL ( $event_id, $type = 'A' ) {
     return 'SELECT ' . Doc::getColumnList ()
      . ' FROM webcal_blob WHERE cal_id = '
      . $event_id . ' AND cal_type = \'' . $type

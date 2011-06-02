@@ -1,8 +1,9 @@
 $Id$
 
 Version 1.2.4 (?? ??? 2010)
- - Fixed  bug [ 3131543 ]Time is not displayed correctly when min = 0
- - Fixed  bug [ 3136643 ] php error when trying to log with wrong password. postgresql
+ - Fixed bug [ 3307633 ] Non-static method Doc::attachmentsEnabled
+ - Fixed bug [ 3131543 ]Time is not displayed correctly when min = 0
+ - Fixed bug [ 3136643 ] php error when trying to log with wrong password. postgresql
  - Fixed pass by reference warnings when running PHP 5.3
  - Fixed bug [ 3289986 ] Deprecated: Function ereg_replace() is deprecated
  - Fixed bug [ 3095745 ] Invalid table structure for MS SQL
