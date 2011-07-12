@@ -414,11 +414,11 @@ echo '</td>
       <tr>
         <td class="aligntop bold">' . translate ( 'Location' ) . ':</td>
         <td>' . $location . '</td>
-      <tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' && ! empty ( $url ) ? '
+      </tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' && ! empty ( $url ) ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'URL' ) . ':</td>
         <td>' . activate_urls ( $url ) . '</td>
-      <tr>' : '' );
+      </tr>' : '' );
 
 if ( $event_status != 'A' && ! empty ( $event_status ) ) {
   echo '
