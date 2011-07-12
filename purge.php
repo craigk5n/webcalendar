@@ -221,11 +221,11 @@ function purge_events ( $ids ) {
       }
     }
   }
+  $xxxStr = translate( 'Records deleted from XXX' );
   for ( $i = 0; $i < $cnt; $i++ ) {
     $table = $tables[$i][0];
     echo '[' . $previewStr . '] ' .
-      str_replace( 'XXX', " $table: {$num[$i]}" .
-      translate( 'Records deleted from XXX' ) ) .
+      str_replace( 'XXX', " $table: {$num[$i]}" , $xxxStr ) .
       "<br />\n";
   }
 }
