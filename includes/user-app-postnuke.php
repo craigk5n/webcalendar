@@ -239,7 +239,7 @@ function user_get_users ( $publicOnly=false ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      list ( $fname, $lname ) = split ( ' ',$row[1] );
+      list ( $fname, $lname ) = explode ( ' ',$row[1] );
       $ret[$count++] = array (
         'cal_login' => $row[2],
         'cal_lastname' => $lname,
@@ -290,7 +290,7 @@ function user_load_variables ( $login, $prefix ) {
   $res = dbi_query ( $sql );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      list ( $fname, $lname ) = split ( ' ',$row[1] );
+      list ( $fname, $lname ) = explode ( ' ',$row[1] );
       $GLOBALS[$prefix . 'login'] = $login;
       $GLOBALS[$prefix . 'firstname'] = $fname;
       $GLOBALS[$prefix . 'lastname'] = $lname;

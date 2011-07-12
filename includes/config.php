@@ -39,7 +39,7 @@ function die_miserable_death ( $error, $anchor='' ) {
   $appStr = ( empty ( $APPLICATION_NAME ) ? 'WebCalendar' : $APPLICATION_NAME );
   $url = $TROUBLE_URL;
   if ( ! empty ( $anchor ) ) {
-    $args = split ( '#', $TROUBLE_URL );
+    $args = explode ( '#', $TROUBLE_URL );
     $url = $args[0] . '#' . $anchor;
   }
 
