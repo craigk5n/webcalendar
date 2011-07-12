@@ -41,7 +41,7 @@ class captcha {
    /* gets parameter from $_REQUEST[] array (POST vars) and so can
       verify input, @returns boolean
    */
-   function check () {
+   public static  function check () {
       $to = (int)(time ()/1000000);
       if ( ! empty ( $_COOKIE[CAPTCHA_COOKIE] ) && $_COOKIE[CAPTCHA_COOKIE] == $to) {
          return(true);
@@ -60,10 +60,10 @@ class captcha {
    /* yields <input> fields html string (no complete form), with captcha
       image already embedded as data:-URI
    */
-   function form () {
+   public static function form ($save=true) {
 
       #-- stop if user already verified
-      if ( ! empty ( $_COOKIE[CAPTCHA_COOKIE] ) &&
+      if ( $save && ! empty ( $_COOKIE[CAPTCHA_COOKIE] ) &&
         $_COOKIE[CAPTCHA_COOKIE] == (int)(time ()/1000000)) {
          return "";
       }
@@ -171,7 +171,7 @@ class captcha {
    /* returns jpeg file stream with unscannable letters encoded
       in front of colorful disturbing background
    */
-   function image($phrase, $width=200, $height=60, $inverse=0, $maxsize=0xFFFFF) {
+   public static function image($phrase, $width=200, $height=60, $inverse=0, $maxsize=0xFFFFF) {
 
       #-- initialize in-memory image with gd library
       srand(microtime ()*21017);
@@ -271,13 +271,13 @@ class captcha {
 
 
    /* helper code */
-   function random_color($img, $a,$b) {
+   public static function random_color($img, $a,$b) {
       return imagecolorallocate($img, rand($a,$b), rand($a,$b), rand($a,$b));
    }
 
 
    /* creates temporary file, returns basename */
-   function store_image($data) {
+   public static function store_image($data) {
       $dir = CAPTCHA_TEMP_DIR;
       $id = md5($data);
 
@@ -315,7 +315,7 @@ class captcha {
 
 
    /* unreversable hash from passphrase, with time () slice encoded */
-   function hash($text, $dtime=0) {
+   public static function hash($text, $dtime=0) {
       $text = strtolower($text);
       $pfix = (int) (time () / CAPTCHA_TIMEOUT) + $dtime;
       return md5("captcha::$pfix:$text::".__FILE__.":$_SERVER[SERVER_NAME]:80");
@@ -325,7 +325,7 @@ class captcha {
    /* makes string of random letters for embedding into image and for
       encoding as hash, later verification
    */
-   function mkpass () {
+   public static function mkpass () {
       $s = "";
       for ($n=0; $n<10; $n++) {
          $s .= chr(rand(0, 255));
