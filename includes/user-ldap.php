@@ -504,8 +504,8 @@ function get_admins () {
 //
 //  ex: stripdn(uid=jeffh,ou=people,dc=example,dc=com) returns jeffh
 function stripdn($dn){
-  list ($uid,$trash) = split (',', $dn, 2);
-  list ($trash,$user) = split ('=', $uid);
+  list ($uid,$trash) = explode (',', $dn, 2);
+  list ($trash,$user) = explode ('=', $uid);
   return($user);
 }
 
