@@ -118,7 +118,6 @@ $GLOBALS['page_lookup'] = array(
   ACCESS_SEARCH => 'search',
   ACCESS_ADVANCED_SEARCH => 'search',
   ACCESS_ACTIVITY_LOG => 'activity_log.php',
-  ACCESS_SECURITY_AUDIT => 'security_audit.php',
   ACCESS_USER_MANAGEMENT => '(edit.*user.*.php|nonusers.*php|group.*php|users.php)',
   ACCESS_ACCOUNT_INFO => '(users.php|XYZXYZ_special_case)',
   ACCESS_ACCESS_MANAGEMENT => '(access.*php)',
