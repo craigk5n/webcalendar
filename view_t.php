@@ -180,15 +180,14 @@ function print_entry_timebar ( $event, $date ) {
   }
   $tempClone = $event->getClone();
   $tempPri = ( $event->getPriority() < 4 );
-
+  user_load_variables ( $event->getLogin (), 'temp' );
   return $ret . ( $tempPri ? '<strong>' : '' )
   // Make sure clones have parents URL date.
   . ( $can_access != 0 && $time_only != 'Y' ? '
           <a class="entry" id="' . $linkid . '" href="view_entry.php?id='
      . $id . '&amp;date=' . ( $tempClone ? $tempClone: $date )
      . ( strlen ( $user ) > 0 ? '&amp;user=' . $user : '' ) . '">' : '' ) . '['
-   . ( $event->getLogin() == '__public__'
-    ? $PUBLIC_ACCESS_FULLNAME : $event->getLogin() )
+   . $GLOBALS['tempfullname']
    . ']&nbsp;' . build_entry_label ( $event, 'eventinfo-' . $linkid, $can_access,
     ( $event->isAllDay()
       ? translate( 'All day event' )
