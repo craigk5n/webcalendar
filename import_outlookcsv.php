@@ -24,9 +24,9 @@ function parse_outlookcsv ( $cal_file ) {
   } else {
 
     # Burn First Row of Headers
-    $data = fgetcsv ( $fd, filesize ( $cal_file ), ',' );
+    $data = fgetcsv ( $fd, @filesize ( $cal_file ), ',' );
 
-    while ( $data = fgetcsv ( $fd, filesize ( $cal_file ) ) ) {
+    while ( $data = fgetcsv ( $fd, @filesize ( $cal_file ) ) ) {
       $subject = addslashes ( $data[0] );
       $start = icaldate_to_timestamp ( date ( 'Ymd\THis', strtotime ( $data[1]
              . ' ' . $data[2] ) ) );
