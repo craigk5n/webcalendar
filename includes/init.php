@@ -274,9 +274,12 @@ function print_trailer ( $include_nav_links = true, $closeDb = true,
     unset ( $c );
   }
 
-  return $ret
-    . "<!-- " . $GLOBALS['PROGRAM_NAME'] . "     "
-    . $GLOBALS['PROGRAM_URL'] . " -->\n"
+  // Only include version info if user is admin.  No need to publicize
+  // version to would-be hackers.
+  return $ret .
+    ( $is_admin ?
+    "<!-- " . $GLOBALS['PROGRAM_NAME'] . "     "
+    . $GLOBALS['PROGRAM_URL'] . " -->\n" : '' )
   // Adds an easy link to validate the pages.
   . ( $DEMO_MODE == 'Y' ? '
     <p><a href="http://validator.w3.org/check?uri=referer">'

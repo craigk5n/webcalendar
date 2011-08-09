@@ -8,6 +8,15 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
+Version 1.2.4 (08 Aug 2011)
+ - Fixed XSS vulnerability: malicious javascript in event descriptions submitted
+   by public can do bad things (create admin account, delete events, etc.)
+   when the pending event is viewed by the admin.
+ - Fixed bug: PHP warnings on search
+ - Removed PHP warnings
+ - Bug fix: undefined function date_default_timezone_set in older versions
+   of PHP.
+
 Version 1.2.3 (14 Aug 2010)
  - Fixed bug: could not save events with more than one category
  - Include backtrace in fatal errors when in development mode
