@@ -1,6 +1,10 @@
 $Id$
 
-Version 1.2.4 (?? ??? 2010)
+Version 1.2.4 (08 Aug 2011)
+ - Don't display program version as HTML comment unless user is an admin.
+ - Fixed XSS vulnerability: malicious javascript in event descriptions submitted
+   by public can do bad things (create admin account, delete events, etc.)
+   when the pending event is viewed by the admin.
  - Fixed bug [ 3307633 ] Non-static method Doc::attachmentsEnabled
  - Fixed bug [ 3131543 ]Time is not displayed correctly when min = 0
  - Fixed bug [ 3136643 ] php error when trying to log with wrong password. postgresql

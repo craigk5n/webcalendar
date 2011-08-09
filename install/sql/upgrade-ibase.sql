@@ -318,3 +318,5 @@ CREATE INDEX IWEBCAL_TIMEZONESNEWINDEX ON WEBCAL_TIMEZONES(TZID);
 /*upgrade_v1.2.2*/
 
 /*upgrade_v1.2.3*/
+
+/*upgrade_v1.2.4*/
