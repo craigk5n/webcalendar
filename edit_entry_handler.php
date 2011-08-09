@@ -148,6 +148,18 @@ $wkst          = getPostValue( 'wkst' );
 $description = ( strlen( $description ) == 0 || $description == '<br />'
   ? $name : $description );
 
+// For public events, we don't EVER allow HTML tags.  There is just too
+// many bad things a malicious user can do.
+// See this for an example of how someone could create an admin account in
+// webcalendar:
+//   https://www.upsploit.com/index.php/advisories/download/UPS-2010-0011
+// This same technique could be used to delete all events and other bad stuff.
+if ( $login == '__public__' ) {
+  $name = strip_tags ( $name );
+  $description = strip_tags ( $description );
+  $location = strip_tags ( $location );
+}
+
 // Don't allow certain HTML tags in description.
 // Malicious users could use meta refresh to redirect users to another
 // site (possibly a malware site). This could be from a public submission
