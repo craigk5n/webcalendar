@@ -662,7 +662,7 @@ class WebCalendar {
             array ( $single_user_login, md5 ( $single_user_login ), 'Y' ) ) )
           die_miserable_death ( 'User <tt>' . $single_user_login
              . '</tt> does not exist in <tt>webcal_user</tt> table and we were '
-             . 'not able to add it for you:<br /><blockquote>' . dbi_error()
+             . 'not able to add it for you:<br><blockquote>' . dbi_error()
              . '</blockquote>' );
 
         // User was added... should we tell them?

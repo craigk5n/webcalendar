@@ -41,8 +41,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 }
 
 echo '
-        </ul>' . ( $global_found ? '<br />
-        *&nbsp;' . translate ( 'Global' ) : '' ) . '<br />
+        </ul>' . ( $global_found ? '<br>
+        *&nbsp;' . translate( 'Global' ) : '' ) . '<br>
         <iframe name="viewiframe" id="viewiframe" style="width: 90%; border: 0;'
  . ' height: 343px;"></iframe>
       </div>

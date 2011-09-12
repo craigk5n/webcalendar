@@ -127,7 +127,7 @@ date-format-help: Spécifie le format d'affichage des dates.
 Date format: Format des dates
 display-week-starts-on: Spécifie par quel jour commence la semaine. Si Lundi est choisi, les numéros des semaines seront à la norme ISO.
 Week starts on: La semaine commence le
-time-format-help: Spécifie quel format utiliser pour l'heure :<br /><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.<br /><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
+time-format-help: Spécifie quel format utiliser pour l'heure :<br><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.<br><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
 Time format: Format de l'heure
 12 hour: 12 heures
 24 hour: 24 heures
@@ -156,7 +156,7 @@ allow-view-other-help: Spécifie si un utilisateur peut visualiser l'agenda d'un
 Allow viewing other users calendars: Autoriser la visualisation des agendas des autres personnes
 require-approvals-help: Activé, un utilisateur doit approuver un événement avant qu'il ne soit affiché dans l'agenda (à moins que « Afficher les événements en attente » ne soit activé). Notez que le réglage sur « Non » désactivera les approbations pour l'agenda à accès public (si l'accès public à l'agenda est activé).
 Require event approvals: Réclamer l'approbation des événements
-display-unapproved-help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br /> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br /> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
+display-unapproved-help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
 Display unapproved: Afficher les événements en attente
 conflict-check-help: Vérifier les conflits d'événements (deux événements prévus au même moment pour la même personne). Si vous positionnez cette valeur à « Oui », vous pourrez introduire deux événements qui se chevauchent après confirmation. Si vous choisissez « Non », il ne sera effectué aucune vérification de conflit. Vous choisirez probablement « Oui » pour activer la vérification des conflits.
 Check for event conflicts: Vérifier les conflits d'événements
@@ -319,7 +319,7 @@ brief-description-help: Ceci doit être un résumé (environ 20 caractères) de 
 Brief Description: Description résumée
 full-description-help: Ceci doit être une description détaillée de l'événement. Cette information sera vue par l'utilisateur quand celui-ci cliquera sur l'événement.
 Full Description: Description détaillée
-access-help: Spécification du niveau d'accès de l'événement.<br /> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br /><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
+access-help: Spécification du niveau d'accès de l'événement.<br> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
 Access: Accès
 priority-help: Spécification de la priorité de l'événement. Une haute priorité sera affichée en gras.
 Priority: Priorité
@@ -334,15 +334,15 @@ Untimed event: événement intemporel
 Timed event: événement temporel
 All day event: événement permanent
 Timezone Offset: Décalage horaire
-time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
-duration-help: Spécification de la durée (en minutes) de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
+time-help: Spécification de l'heure de l'événement.<br><i>Ce champ peut être laissé vide.</i>
+duration-help: Spécification de la durée (en minutes) de l'événement.<br><i>Ce champ peut être laissé vide.</i>
 end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
 participants-help: Liste des participants pour cet événement.
 Selected: Sélection
 Availability: Disponibilité
 external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un à un par ligne avec éventuellement leur adresse de couriel. Si une adresse de couriel est spécifiée, l'utilisateur peut recevoir par couriel les notifications et rappels.
 External Participants: Participants extérieurs
-repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br /><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc.<br /><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
+repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc.<br><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
 Daily: Quotidienne
 Weekly: Hebdomadaire
 Monthly: Mensuelle

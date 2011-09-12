@@ -564,8 +564,8 @@ hour ahead of you: Stunde vor Ihnen
 hour behind you: Stunde nach Ihnen
 hours ahead of you: Stunden vor Ihnen
 hours behind you: Stunden nach Ihnen
-XXX is in a different timezone (ahead): (XXX ist in einer anderen Zeitzone; YYY vor Ihrer.<br />&nbsp;ZZZ)
-XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; YYY hinter Ihrer.<br />&nbsp;ZZZ)
+XXX is in a different timezone (ahead): (XXX ist in einer anderen Zeitzone; YYY vor Ihrer.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; YYY hinter Ihrer.<br>&nbsp;ZZZ)
 Time entered here is based on your Timezone.: Die eingegebene Zeit basiert auf <b>Ihre</b> Zeitzone.
 Edit Entry: Eintrag &auml;ndern
 Details: Beschreibung
@@ -657,7 +657,7 @@ Start: Beginn
 End/Due: Ende&#47;Bis
 Times: Wie oft
 Every: Jeden
-CAPTCHA Warning: <b>Warnung:</b> CAPTCHA ben&ouml;tigt die PHP-Erweiterung &#39;GD&#39;!<br />
+CAPTCHA Warning: <b>Warnung:</b> CAPTCHA ben&ouml;tigt die PHP-Erweiterung &#39;GD&#39;!<br>
 Delete entry: Eintrag l&ouml;schen
 You are not authorized to edit this entry.: Sie haben keine Berechtigung diesen Eintrag zu &auml;ndern.
 
@@ -1170,14 +1170,14 @@ New Search: Neue Suche
 # Page: security_audit.php
 #
 list potential security issues: Die folgenden Informationen weisen auf m&ouml;gliche Probleme im Bezug mit Ihrer WebKalender-Installation hin. Diese k&ouml;nnen jedoch ge&auml;ndert werden, um Ihre Installation sicherer gegen etwaige Angriffe zu machen.
-For questions about WebCalendar security see the forums: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
+For questions about WebCalendar security see the forums: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.<br><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
 View your current PHP settings: Anzeigen ihrer PHP-Informationen
 Security Issue: Sicherheitsoptionen
 Status: =
 Default admin user password: Grundeinstellung des admin user Passwortes
 You should change the password of the default admin user.: Sie sollten das Passwort des admin user &auml;ndern.
 File permissions XXX: Dateirechte: XXX
-item XXX should not be writable: Der folgende Eintrag soll als &#39;schreibgesch&uuml;tzt&#39; gesetzt werden: <br /><tt>XXX</tt>
+item XXX should not be writable: Der folgende Eintrag soll als &#39;schreibgesch&uuml;tzt&#39; gesetzt werden: <br><tt>XXX</tt>
 File exists XXX: Datei exisitert: "XXX"
 Because you have email disabled, you should remove this file.: Sie sollten diese Datei l&ouml;schen, da Sie die Emailfunktion deaktiviert haben.
 File location XXX: Ort der Datei: "XXX"

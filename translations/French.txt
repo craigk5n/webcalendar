@@ -190,7 +190,7 @@ display-week-starts-on: Spécifie par quel jour commence la semaine. Si Lundi est
 Week starts on: La semaine commence le
 display-weekend-starts-on: Paramètre le jour de la semaine de début de week-end
 Weekend starts on: Le week-end commence un
-time-format-help: Spécifie quel format utiliser pour l'heure :<br /><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.<br /><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
+time-format-help: Spécifie quel format utiliser pour l'heure :<br><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.<br><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
 Time format: Format de l'heure
 12 hour: 12 heures
 24 hour: 24 heures
@@ -238,7 +238,7 @@ allow-view-other-help: Spécifie si un utilisateur peut visualiser l'agenda d'un 
 Allow viewing other users calendars: Autoriser la visualisation des agendas des autres personnes
 require-approvals-help: Activé, un utilisateur doit approuver un événement avant qu'il ne soit affiché dans l'agenda (à moins que « Afficher les événements en attente » ne soit activé). Notez que le réglage sur « Non » désactivera les approbations pour l'agenda à accès public (si l'accès public à l'agenda est activé).
 Require event approvals: Réclamer l'approbation des événements
-display-unapproved-help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br /> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br /> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
+display-unapproved-help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
 Display unapproved: Afficher les événements en attente
 conflict-check-help: Vérifier les conflits d'événements (deux événements prévus au même moment pour la même personne). Si vous positionnez cette valeur à « Oui », vous pourrez introduire deux événements qui se chevauchent après confirmation. Si vous choisissez « Non », il ne sera effectué aucune vérification de conflit. Vous choisirez probablement « Oui » pour activer la vérification des conflits.
 Check for event conflicts: Vérifier les conflits d'événements
@@ -545,8 +545,8 @@ hour ahead of you: heure devant vous
 hour behind you: heure derrière vous
 hours ahead of you: heures devant vous
 hours behind you: heures derrière vous
-XXX is in a different timezone (ahead): (XXX est dans un fuseau horaire différent; XXX devant vous<br />&nbsp;XXX)
-XXX is in a different timezone (behind): (XXX est dans un fuseau horaire différent; XXX derrière vous<br />&nbsp;XXX)
+XXX is in a different timezone (ahead): (XXX est dans un fuseau horaire différent; XXX devant vous<br>&nbsp;XXX)
+XXX is in a different timezone (behind): (XXX est dans un fuseau horaire différent; XXX derrière vous<br>&nbsp;XXX)
 Time entered here is based on your Timezone.: L'heure entrée ici est basée sur votre fuseau horaire
 Edit Entry: Modification de l'événement
 Details: Détails
@@ -554,7 +554,7 @@ Repeat: Répétition
 Reminders: Rappels
 brief-description-help: Ceci doit être un résumé (environ 20 caractères) de l'événement. Cette information représentera l'événement quand vous visualiserez l'agenda.
 full-description-help: Ce sont les détails de l'événement. Cette information peut être vue quand un utilisateur affiche l'événement.
-access-help: Spécification du niveau d'accès de l'événement.<br /> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br /><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
+access-help: Spécification du niveau d'accès de l'événement.<br> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
 priority-help: Spécification de la priorité de l'événement. Une haute priorité sera affichée en gras.
 category-help: Définir la catégorie associée à un événement.
 completed-help: Achèvement de la tâche. Activée seulement lorsque tous les pourcentages des participants ont atteind 100%.
@@ -572,8 +572,8 @@ Untimed event: événement intemporel
 Timed event: événement temporel
 All day event: événement permanent
 Timezone Offset: Décalage horaire
-time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
-duration-help: Spécification de la durée (en minutes) de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
+time-help: Spécification de l'heure de l'événement.<br><i>Ce champ peut être laissé vide.</i>
+duration-help: Spécification de la durée (en minutes) de l'événement.<br><i>Ce champ peut être laissé vide.</i>
 end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
 Start Time: Heure de début
 Due Date: Date de fin
@@ -588,7 +588,7 @@ Selected: Sélectionné
 Availability: Disponibilité
 external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un à un par ligne avec éventuellement leur adresse de couriel. Si une adresse de couriel est spécifiée, l'utilisateur peut recevoir par couriel les notifications et rappels.
 External Participants: Participants extérieurs
-repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br /><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc.<br /><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
+repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc.<br><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
 Daily: Quotidienne
 Weekly: Hebdomadaire
 Monthly: Mensuelle
@@ -638,7 +638,7 @@ Start: Début
 End/Due: Fin
 Times: Fois
 Every: Chaque
-CAPTCHA Warning: <b>Attention:</b> Impossible d'utiliser le CAPTCHA sans l'extension GD de PHP !<br />
+CAPTCHA Warning: <b>Attention:</b> Impossible d'utiliser le CAPTCHA sans l'extension GD de PHP !<br>
 Delete entry: Supprimer l'événement
 You are not authorized to edit this entry.: Vous n'êtes pas autorisé à modifier cet événement
 
@@ -1153,14 +1153,14 @@ New Search: Nouvelle recherche
 # Page: security_audit.php
 #
 list potential security issues: L'information ci-dessous liste les problèmes potentiels avec l'installation de votre Webcalendar à corriger pour votre installation plus sécurisée.
-For questions about WebCalendar security see the forums: Pour les questions de sécurité concernant WebCalendar, Veuillez utiliser les forums hébergés chez SourceForge.net;<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
+For questions about WebCalendar security see the forums: Pour les questions de sécurité concernant WebCalendar, Veuillez utiliser les forums hébergés chez SourceForge.net;<br><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
 View your current PHP settings: visualiser vos paramètres PHP
 Security Issue: Problème de sécurité
 Status: Statut
 Default admin user password: Mot de passe par défaut pour l'utilisateur admin
 You should change the password of the default admin user.: Vous devez changer le mot de passe de l'utilisateur admin.
 File permissions XXX: Permissions fichier : XXX
-item XXX should not be writable: Cet item ne doit pas avoir les droits en écriture :<br /><tt>XXX</tt>
+item XXX should not be writable: Cet item ne doit pas avoir les droits en écriture :<br><tt>XXX</tt>
 File exists XXX: Ce fichier existe : "XXX"
 Because you have email disabled, you should remove this file.: Les emails sont désactivés, vous pouvez détruire ce fichier.
 File location XXX: Emplacement fichier : "XXX"
@@ -1308,7 +1308,7 @@ Invalid function id: Id de fonction invalide
 ########################################
 # Page: includes/config.php
 #
-Could not find settings.php file...: Impossible de trouver le fichier "settings.php".<br />S.V.P. copier "settings.php.orig" vers "settings.php" et éditer pour votre site.
+Could not find settings.php file...: Impossible de trouver le fichier "settings.php".<br>S.V.P. copier "settings.php.orig" vers "settings.php" et éditer pour votre site.
 Incomplete settings.php file...: Fichier "settings.php" incomplet.
 Could not find XXX defined in...: Ne peut trouver "XXX" définit dans le fichier "settings.php".
 You must define XXX in: Vous devez définir "XXX" dans le fichier "settings.php".
@@ -1710,7 +1710,7 @@ Please change the file permissions of this file.: Veuillez changer les permissio
 Please change includes dir permission: Veuillez changer les permissions du répertoire "includes" pour être autoriser en écriture pour les autres utilisateurs.
 Your settings have been saved.: Vos paramètres ont été sauvés.
 WebCalendar Setup Wizard: WebCalendar Installation Wizard
-This installation wizard will guide you...: Cet installeur wizard va vous guider pour paramétrer un WebCalendar basic. Pour l'aide et les problèmes voyez :<br />
+This installation wizard will guide you...: Cet installeur wizard va vous guider pour paramétrer un WebCalendar basic. Pour l'aide et les problèmes voyez :<br>
 System Administrators Guide: Guide de l'administrateur système
 Frequently Asked Questions: questions fréquemment posées (FAQ)
 FAQ: =

@@ -34,7 +34,7 @@ if ( $d = dir ( $icon_path ) ) {
   $title_str = translate ( 'Click to Select' );
 
   ?>
-  <script type="text/javascript">
+  <script>
   <!-- <![CDATA[
   function sendURL ( url ) {
     var
@@ -64,7 +64,7 @@ if ( $d = dir ( $icon_path ) ) {
     echo '
         <td><a href="#" onclick="sendURL( \'' . $icon_path . $icons[$i]
      . '\' )" ><img src="' . $icon_path . $icons[$i] . '" border="0" title="'
-     . $title_str . '" alt="' . $title_str . '" /></a></td>'
+     . $title_str . '" alt="' . $title_str . '"></a></td>'
      . ( $i > 0 && $i % 8 == 0 ? '
       </tr>
       <tr>' : '' );

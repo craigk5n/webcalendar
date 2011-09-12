@@ -84,7 +84,7 @@ Table cell background: 테이블 셀 배경 색상
 Table cell background for current day: 오늘 날짜 표시 색상
 Help: 도움말
 Language: 언어
-time-format-help: 시간 표시 형식을 명시합니다.<br /><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br /><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
+time-format-help: 시간 표시 형식을 명시합니다.<br><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
 Time format: 시간 표시 형식
 Duration: 기간
 work-hours-help: 일별 화면에서 표시대상시간을 명시
@@ -93,7 +93,7 @@ From: 시작
 to: 종료
 display-week-number-help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명시.
 Display week number: 몇주차인가 표시
-display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다.<br /> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<br />"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
+display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다.<br> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<br>"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
 Display unapproved: 승인안된 행사 표시
 Yes: 예
 No: 아니오
@@ -134,7 +134,7 @@ brief-description-help: 행사의 간략한 설명(약 20자)입니다. 달력상의 행사를 나타�
 Brief Description: 요약 설명
 full-description-help: 행사의 자세한 설명입니다.
 Full Description: 상세 설명
-access-help: 행사의 접근 수준을 명시.<br /> <i>공용</i>: 모든 사람이 행사의 세부 내용까지 볼 수 있음.<br /><i>비밀</i>: 타 사용자는 일자와 시각을 볼 수 있으나 세부 사항은 볼 수 없음.
+access-help: 행사의 접근 수준을 명시.<br> <i>공용</i>: 모든 사람이 행사의 세부 내용까지 볼 수 있음.<br><i>비밀</i>: 타 사용자는 일자와 시각을 볼 수 있으나 세부 사항은 볼 수 없음.
 Access: 접근
 priority-help: 행사 우선순위 명시. 높은 우선순위의 행사는 굵은 글씨로 표시됩니다.
 Priority: 우선 순위
@@ -142,8 +142,8 @@ High: 높음
 Medium: 중간
 Low: 낮음
 date-help: 행사일을 나타냅니다.
-time-help: 행사 시각입니다.<br /><i>이 항목은 비워둘 수 있습니다.</i>
-duration-help: 행사기간 명시(분단위)<br /><i>이 항목은 비워둘 수 있습니다.</i>
+time-help: 행사 시각입니다.<br><i>이 항목은 비워둘 수 있습니다.</i>
+duration-help: 행사기간 명시(분단위)<br><i>이 항목은 비워둘 수 있습니다.</i>
 participants-help: 참가자의 목록 표시.
 Delete entry: 항목 지우기
 You are not authorized to edit this entry.: 이 항목을 편집할 권한이 없습니다.

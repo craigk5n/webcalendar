@@ -99,7 +99,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
 
   // Lazy connections... do not connect until 1st call to dbi_query.
   if( $lazy )
-    // echo "<!-- Waiting on db connection made (lazy) -->\nRETURN!<br />";
+    // echo "<!-- Waiting on db connection made (lazy) -->\nRETURN!<br>";
     return true;
 
   if( strcmp( $GLOBALS['db_type'], 'ibase' ) == 0 ) {
@@ -335,7 +335,7 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
   if( ! empty( $db_connection_info['debug'] ) )
     $SQLLOG[] = $sql;
 
-  // echo "dbi_query!: " . htmlentities( $sql ) . "<br />";
+  // echo "dbi_query!: " . htmlentities( $sql ) . "<br>";
   // Connect now if not connected.
   if( is_array( $db_connection_info ) && ! $db_connection_info['connected'] ) {
     $c = dbi_connect(
@@ -386,7 +386,7 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
     if( false === $GLOBALS['oracle_statement'] =
         OCIParse( $GLOBALS['oracle_connection'], $sql ) )
       dbi_fatal_error( translate( 'Error executing query.' )
-       . $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : ''
+       . $phpdbiVerbose ? ( dbi_error() . "\n\n<br>\n" . $sql ) : ''
        . '', $fatalOnError, $showError );
       return OCIExecute( $GLOBALS['oracle_statement'], OCI_COMMIT_ON_SUCCESS );
   } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 ) {
@@ -403,7 +403,7 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
   if( $found_db_type ) {
     if( ! $res )
       dbi_fatal_error( translate( 'Error executing query.' )
-       . ( $phpdbiVerbose ? ( dbi_error() . "\n\n<br />\n" . $sql ) : '' ),
+       . ( $phpdbiVerbose ? ( dbi_error() . "\n\n<br>\n" . $sql ) : '' ),
          $fatalOnError, $showError );
 
     return $res;
@@ -823,7 +823,7 @@ function dbi_get_cached_rows( $sql, $params = array(),
       $fd = @fopen( $file, 'w+b', false );
 
       if( empty( $fd ) ) {
-        die_miserable_death ( "Cache Error.<br/><br/>The permissions for the db_cachedir will not allow creation of the following file:<br/><blockquote>" .
+        die_miserable_death( "Cache Error.<br><br>The permissions for the db_cachedir will not allow creation of the following file:<br><blockquote>" .
           $file . "</blockquote>", 'dbCacheError' );
       }
 
@@ -894,7 +894,7 @@ function dbi_clear_cache() {
   $errstr = '';
   while( false !== ( $file = readdir( $fd ) ) ) {
     if( preg_match( '/^\S\S\S\S\S\S\S\S\S\S+.dat$/', $file ) ) {
-      // echo 'Deleting ' . $file . '<br />';
+      // echo 'Deleting ' . $file . '<br>';
       $cnt++;
       $fullpath = $db_connection_info['cachedir'] . '/' . $file;
       $b += filesize ( $fullpath );
@@ -910,7 +910,7 @@ function dbi_clear_cache() {
   }
   if ( $errcnt > 10 ) {
     // They don't have correct permissions set.
-    die_miserable_death ( "Error removing temporary file.<br/><br/>The permissions for the following directory do not support the db_cachedir option in includes/settings.php:<br/><blockquote>" .
+    die_miserable_death( "Error removing temporary file.<br><br>The permissions for the following directory do not support the db_cachedir option in includes/settings.php:<br><blockquote>" .
       $db_connection_info['cachedir'] . "</blockquote>", 'dbCacheError' );
   }
 

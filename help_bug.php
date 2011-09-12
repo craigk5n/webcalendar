@@ -20,10 +20,10 @@ if ( empty ( $HTTP_USER_AGENT ) )
      . str_replace ('XXX', translate ( get_browser_language ( true ) ),
      translate ( 'Also, please use English rather than XXX.' ) ) : '' ) . '</p>
     <form action="http://sourceforge.net/tracker/" target="_new">
-      <input type="hidden" name="func" value="add" />
-      <input type="hidden" name="group_id" value="3870" />
-      <input type="hidden" name="atid" value="103870" />
-      <input type="submit" value="' . translate ( 'Report Bug' ) . '" />
+      <input type="hidden" name="func" value="add">
+      <input type="hidden" name="group_id" value="3870">
+      <input type="hidden" name="atid" value="103870">
+      <input type="submit" value="' . translate ( 'Report Bug' ) . '">
     </form>
     <h3>' . translate ( 'System Settings' ) . '</h3>
     <div>';

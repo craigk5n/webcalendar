@@ -655,7 +655,7 @@ if ( $single_user == 'N' && $show_participants ) {
       }
       dbi_free_result ( $res );
     } else
-      db_error() . '<br />';
+      db_error() . '<br>';
   }
   if ( $eType == 'task' ) {
     echo '
@@ -712,7 +712,7 @@ if ( $single_user == 'N' && $show_participants ) {
       } else
         echo $tempfullname;
 
-      echo '<br />';
+      echo '<br>';
     }
     // show external users here...
     if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ) {
@@ -723,7 +723,7 @@ if ( $single_user == 'N' && $show_participants ) {
         for ( $i = 0, $cnt = count ( $ext_users ); $i < $cnt; $i++ ) {
           if ( ! empty ( $ext_users[$i] ) ) {
             echo '
-          ' . $ext_users[$i] . ' (' . $externUserStr . ')<br />';
+          ' . $ext_users[$i] . ' (' . $externUserStr . ')<br>';
             if ( preg_match ( '/mailto: (\S+)"/', $ext_users[$i], $match ) )
               $allmails[] = $match[1];
           }
@@ -743,7 +743,7 @@ if ( $single_user == 'N' && $show_participants ) {
       } else
         echo $tempfullname;
 
-      echo ' (?)<br />';
+      echo ' (?)<br>';
     }
     for ( $i = 0; $i < $num_rej; $i++ ) {
       user_load_variables ( $rejected[$i], 'temp' );
@@ -754,7 +754,7 @@ if ( $single_user == 'N' && $show_participants ) {
           <strike>' . ( strlen ( $tempemail ) > 0 && $can_email != 'N'
         ? '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
          . $tempfullname . '</a>'
-        : $tempfullname ) . '</strike> (' . translate ( 'Rejected' ) . ')<br />';
+        : $tempfullname ) . '</strike> (' . translate( 'Rejected' ) . ')<br>';
     }
   }
 
@@ -786,7 +786,7 @@ if ( $eType == 'task' ) {
           <form action="view_entry.php?id=' . $id
      . '" method="post" name="setpercentage">
             <input type="hidden" name="others_complete" value="'
-     . $others_complete . '" />' . translate ( 'Update Task Percentage' ) . '
+     . $others_complete . '">' . translate( 'Update Task Percentage' ) . '
         </td>
         <td>
             <select name="upercent" id="task_percent">';
@@ -797,7 +797,7 @@ if ( $eType == 'task' ) {
     }
     echo '
             </select>&nbsp;
-            <input type="submit" value="' . translate ( 'Update' ) . '" />
+            <input type="submit" value="' . translate( 'Update' ) . '">
           </form>
         </td>
       <tr>';
@@ -821,13 +821,13 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
         || user_is_assistant( $login, $create_by )
       ? ' [<a href="docdel.php?blid=' . $a->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
-       . translate ( 'Delete' ) . '</a>]' : '' ) . '<br />';
+       . translate( 'Delete' ) . '</a>]' : '' ) . '<br>';
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize();
 
   echo ( $num_attach == 0 ? '
-          ' . translate ( 'None' ) . '<br />' :'' ) . '
+          ' . translate( 'None' ) . '<br>' :'' ) . '
         </td>
       </tr>';
 }
@@ -856,28 +856,28 @@ if ( Doc::commentsEnabled() ) {
       ? ' [<a href="docdel.php?blid=' . $cmt->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr
        . '\' );">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
-     . '<br />
+     . '<br>
           <blockquote id="eventcomment">' . nl2br ( activate_urls (
         htmlspecialchars( $cmt->getData() ) ) ) . '
         </blockquote><div style="clear:both"></div>';
   }
 
   if ( $num_comment == 0 )
-    echo translate ( 'None' ) . '<br />';
+    echo translate( 'None' ) . '<br>';
   else {
     echo '
           ' . $num_comment . ' ' . translate ( 'comments' ) . '
           <input id="showbutton" type="button" value="' . translate ( 'Show' )
-     . '" onclick="showComments();" />
+     . '" onclick="showComments();">
           <input id="hidebutton" type="button" value="' . translate ( 'Hide' )
-     . '" onclick="hideComments();" /><br />
+     . '" onclick="hideComments();"><br>
           <div id="comtext">' . $comment_text . '</div>';
     // We could put the following JS in includes/js/view_entry.php,
     // but we won't need it in many cases and we don't know whether
     // we need it until after would need to include it.
     // So, we will include it here instead.
     ?>
-<script type="text/javascript">
+<script>
 <!-- <![CDATA[
 function showComments() {
   var x = document.getElementById ( "comtext" )
@@ -1124,15 +1124,15 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
   $palmStr = translate ( 'Palm Pilot' );
   $selectStr = generate_export_select();
   $userStr = ( ! empty ( $user ) ? '<input type="hidden" name="user" value="' .
-    $user . '" />' : '' );
+    $user . '">' : '' );
   echo <<<EOT
-    <br />
+    <br>
     <form method="post" name="exportform" action="export_handler.php">
       <label for="exformat">{$exportThisStr}:&nbsp;</label>
       {$selectStr}
-      <input type="hidden" name="id" value="{$id}" />
+      <input type="hidden" name="id" value="{$id}">
           {$userStr}
-      <input type="submit" value="{$exportStr}" />
+      <input type="submit" value="{$exportStr}">
     </form>
 EOT;
 }

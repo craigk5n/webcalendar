@@ -11,20 +11,20 @@ if ( $user != $login )
   $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
 
 print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
-  '<script type="text/javascript" src="includes/js/assistant_edit.js"></script>' );
+  '<script src="includes/js/assistant_edit.js"></script>' );
 
 ob_start();
 
 echo '
     <form action="assistant_edit_handler.php" method="post" '
  . 'name="assistanteditform">' . ( $user ? '
-      <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
+      <input type="hidden" name="user" value="' . $user . '">' : '' ) . '
       <h2>';
 
 $assistStr = translate ( 'Assistants' );
 if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo $nonuserfullname . ' ' . $assistStr . '<br />
+  echo $nonuserfullname . ' ' . $assistStr . '<br>
       -- ' . translate ( 'Admin mode' ) . ' --';
 } else
   echo translate ( 'Your assistants' );
@@ -64,12 +64,12 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 echo '
             </select>' . ( $GROUPS_ENABLED == 'Y' ? '
             <input type="button" onclick="selectUsers()" value="'
-   . translate ( 'Select' ) . '..." />' : '' ) . '
+   . translate( 'Select' ) . '...">' : '' ) . '
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="aligncenter"><br /><input type="submit" '
- . 'name="action" value="' . translate ( 'Save' ) . '" />
+          <td colspan="2" class="aligncenter"><br><input type="submit" '
+ . 'name="action" value="' . translate( 'Save' ) . '">
           </td>
         </tr>
       </table>

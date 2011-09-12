@@ -61,7 +61,7 @@ function list_unapproved ( $user ) {
 
   $rssLink = '<a href="rss_unapproved.php?user=' .
     htmlspecialchars ( $user ) . '"><img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - ' .
-    htmlspecialchars ( $temp_fullname ) . '" border="0" /></a>';
+    htmlspecialchars( $temp_fullname ) . '" border="0"></a>';
 
   $count = 0;
   $ret = '';
@@ -122,23 +122,23 @@ function list_unapproved ( $user ) {
       </tr>' : '' ) . '
       <tr ' . ( $count % 2 == 0 ? '' : 'class="odd"' ) . '>
         <td width="5%" align="right"><input type="checkbox" name="'
-       . $entryID . '" value="' . $user . '" /></td>
+       . $entryID . '" value="' . $user . '"></td>
         <td><a title="' . $viewStr . '" class="entry" id="' . $linkid
        . '" href="' . $view_link . '.php?id=' . $id . '&amp;user=' . $cal_user
        . '">' . htmlspecialchars ( $name ) . '</a> (' . $eventdate . '):</td>'
       /* approve */ . '
         <td align="center"><input type="image" src="images/check.gif" title="'
        . $appConStr . '" onclick="return do_confirm( \'approve\', \''
-       . $cal_user . '\', \'' . $entryID . '\' );" /></td>'
+       . $cal_user . '\', \'' . $entryID . '\' );"></td>'
       /* reject */ . '
         <td align="center"><input type="image" src="images/rejected.gif" title="'
        . $rejectStr . '" onclick="return do_confirm( \'reject\', \''
-       . $cal_user . '\', \'' . $entryID . '\' );" /></td>'
+       . $cal_user . '\', \'' . $entryID . '\' );"></td>'
       /* delete */
        . ( ! access_is_enabled() || access_user_calendar ( 'edit', $user ) ? '
         <td align="center"><input type="image" src="images/delete.png" title="'
          . $deleteStr . '" onclick="return do_confirm( \'delete\', \''
-         . $cal_user . '\', \'' . $entryID . '\' );\" /></td>' : '' ) . '
+         . $cal_user . '\', \'' . $entryID . '\' );\"></td>' : '' ) . '
       </tr>';
 
       $eventinfo .= build_entry_popup ( 'eventinfo-' . $linkid, $cal_user,
@@ -149,17 +149,17 @@ function list_unapproved ( $user ) {
       $ret .= '
       <tr>
         <td colspan="5" nowrap="nowrap">&nbsp;
-          <img src="images/select.gif" border="0" alt="" />
+          <img src="images/select.gif" border="0" alt="">
           <label><a title="' . $checkAllStr . '" onclick="check_all( \''
        . $user . '\' );">' . $checkAllStr . '</a> / <a title="' . $uncheckAllStr
        . '" onclick="uncheck_all( \'' . $user . '\' );">' . $uncheckAllStr
        . '</a></label>&nbsp;&nbsp;&nbsp;
           <input type="image" src="images/check.gif" title="' . $appSelStr
        . '" onclick="return do_confirm( \'approveSelected\', \'' . $cal_user
-       . '\' );" />&nbsp;&nbsp;&nbsp;
+       . '\' );">&nbsp;&nbsp;&nbsp;
           <input type="image" src="images/rejected.gif" title="' . $rejectSelStr
        . '" onclick="return do_confirm( \'rejectSelected\', \'' . $cal_user
-       . '\' );" />&nbsp;&nbsp;&nbsp;( ' . $emailStr . ' )
+       . '\' );">&nbsp;&nbsp;&nbsp;( ' . $emailStr . ' )
         </td>
       </tr>';
   }
@@ -247,10 +247,10 @@ echo '
         </tr>' // List users with no events.
 . $noret . '
       </table>
-      <input type="hidden" name="process_action" value="" />
-      <input type="hidden" name="process_user" value="" />
+      <input type="hidden" name="process_action" value="">
+      <input type="hidden" name="process_user" value="">
     </form>' . ( ! empty ( $eventinfo ) ? $eventinfo : '' ) . '
-    <script type="text/javascript">
+    <script>
 <!-- <![CDATA[
       function check_all ( user ) {
         var

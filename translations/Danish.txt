@@ -343,8 +343,8 @@ Untimed event: Ikke tidsbestemt aftale
 Timed event: Tidsbestemt aftale
 All day event: Aftale for hele dagen
 Timezone Offset: Tidszone forskydning
-time-help: Angiver tidspunktet for aftalen.<br /><i>Dette felt behøver ikke at være udfyldt.</i>
-duration-help: I dette felt kan du angive varigheden af aftalen<br /><i>Dette felt behøver ikke at være udfyldt.</i>
+time-help: Angiver tidspunktet for aftalen.<br><i>Dette felt behøver ikke at være udfyldt.</i>
+duration-help: I dette felt kan du angive varigheden af aftalen<br><i>Dette felt behøver ikke at være udfyldt.</i>
 end-time-help: Angiver sluttidspunktet for aftalen.
 participants-help: Vis deltagerne i denne aftale.
 Selected: Valgt

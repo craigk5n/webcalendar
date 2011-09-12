@@ -79,9 +79,9 @@ if ( $search_others ) {
     for ( $i = 0; $i < count ( $users ); $i++ ) {
       if ( access_user_calendar ( 'view', $users[$i] ) ) {
         $newlist[] = $users[$i];
-        //echo "can access $users[$i] <br />";
+        //echo "can access $users[$i] <br>";
       } else {
-        //echo "cannot access $users[$i] <br />";
+        //echo "cannot access $users[$i] <br>";
       }
     }
     $users = $newlist;
@@ -272,7 +272,7 @@ echo '
       <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
         . '"  style="margin-left: 13px;" method="post">
        <input type="submit" value="'
-        . translate ( 'New Search' ) . '" /></form>';
+        . translate( 'New Search' ) . '"></form>';
 ob_end_flush();
 echo print_trailer();
 

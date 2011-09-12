@@ -48,21 +48,26 @@
  * TODO:
  * Change all references from postgresql to pgsql
  */
-$show_all_errors = false;
-// Change this path as needed.
-$firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.fdb';
-
-include_once '../includes/translate.php';
-include_once '../includes/dbi4php.php';
-include_once '../includes/config.php';
-include_once '../includes/formvars.php';
-include_once 'default_config.php';
-include_once 'install_functions.php';
-include_once 'sql/upgrade_matrix.php';
 
 define( '__WC_BASEDIR', '../' );
 $fileDir = __WC_BASEDIR . 'includes';
 $file    = $fileDir . '/settings.php';
+
+$show_all_errors = false;
+// Change this path as needed.
+$firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.fdb';
+
+foreach( array(
+    $fileDir . '/config',
+    $fileDir . '/dbi4php',
+    $fileDir . '/formvars',
+    $fileDir . '/functions',
+    $fileDir . '/translate',
+    'default_config',
+    'install_functions',
+    'sql/upgrade_matrix', ) as $i ) {
+  include_once $i . '.php';
+}
 
 clearstatcache();
 
@@ -97,9 +102,6 @@ $tzSuccessStr   = translate( 'Timezone Conversion Successful' );
 $wizardStr      = translate( 'WebCalendar Installation Wizard Step XXX' );
 
 $failure = $failureStr . '<blockquote>';
-
-$checked = ' checked="checked"';
-$selected= ' selected="selected"';
 
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
@@ -178,13 +180,13 @@ if( file_exists( $file ) && ! empty( $pwd ) ) {
   if( md5( $pwd ) == $password ) {
     $_SESSION['validuser'] = $password;
     echo translate( 'Password Accepted' ) . '</title>
-    <meta http-equiv="refresh" content="0; index.php" />
+    <meta http-equiv="refresh" content="0; index.php">
   </head>
   <body onLoad="alert( \'' . translate( 'Successful Login', true ) . '\' );">';
   } else
     // Invalid password.
     echo translate( 'Password Incorrect' ) . '</title>
-    <meta http-equiv="refresh" content="0; index.php" />
+    <meta http-equiv="refresh" content="0; index.php">
   </head>
   <body onLoad="alert( \'' . translate( 'Invalid Login', true )
      . '\' ); document.go(-1)">';
@@ -227,7 +229,7 @@ $pwd1 = getPostValue( 'password1' );
 $pwd2 = getPostValue( 'password2' );
 if( file_exists( $file ) && $forcePassword && ! empty( $pwd1 ) ) {
   if( $pwd1 != $pwd2 ) {
-    echo translate( 'Passwords do not match!' ) . '<br />' . "\n";
+    echo translate( 'Passwords do not match!' ) . '<br>' . "\n";
     exit;
   }
   $fd = @fopen( $file, 'a+b', false );
@@ -245,7 +247,7 @@ if( file_exists( $file ) && $forcePassword && ! empty( $pwd1 ) ) {
 <html>
   <head>
     <title>' . translate( 'Password Updated' ) . '</title>
-    <meta http-equiv="refresh" content="0; index.php" />
+    <meta http-equiv="refresh" content="0; index.php">
   </head>
   <body onLoad="alert( \''
    . translate( 'Password has been set', true ) . '\' );">
@@ -736,7 +738,7 @@ if( ! empty( $x ) || ! empty( $y ) ) {
     fwrite( $fd, '<?php' . "\r\n" . '/* updated via install/index.php on '
        . date( 'r' ) . "\r\n" );
     foreach( $settings as $k => $v ) {
-      if( $v != '<br />' && $v != '' )
+      if( $v != '<br>' && $v != '' )
         fwrite( $fd, $k . ': ' . $v . "\r\n" );
     }
     fwrite( $fd, '# end settings.php */' . "\r\n?>\r\n" );
@@ -759,15 +761,8 @@ $onStr  = translate( 'ON' );
 $yesStr = translate( 'Yes' );
 
 ob_start();
-echo '<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <title>' . translate( 'WebCalendar Setup Wizard' ) . '</title>
-    <meta http-equiv="Content-Type" content="text/html; charset='
- . translate( 'charset' ) . '" />
-    <script type="text/javascript">
+echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
+    <script>
 <!-- <![CDATA[
       var xlate = [];
       xlate[\'invalidColor\'] = \'' . translate( 'Invalid Color', true ) . '\';
@@ -865,8 +860,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
       }
 //]]> -->
     </script>
-    <script type="text/javascript" src="../includes/js/visible.js"></script>
-    <style type="text/css">
+    <script src="../includes/js/visible.js"></script>
+    <style>
       body {
         margin:0;
         background:#fff;
@@ -960,7 +955,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td>'
    . translate( 'Check to see if PHP 4.1.0 or greater is installed.' ) . '</td>
         <td class="' . $class . '"><img src="' . ( $class == 'recommended'
-    ? 'recommended.gif' : 'not_recommended.jpg' ) . '" alt="" />&nbsp;'
+    ? 'recommended.gif' : 'not_recommended.jpg' ) . '" alt="">&nbsp;'
    . translate( 'PHP version' ) . ' ' . phpversion() . '</td>
       </tr>
       <tr>
@@ -968,7 +963,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . ( empty( $_SESSION['validuser'] )
     ? '' : '&nbsp;<input name="action" type="button" value="'
      . translate( 'Detailed PHP Info' )
-     . '" onClick="testPHPInfo()" />' ) . '</th>
+     . '" onClick="testPHPInfo()">' ) . '</th>
       </tr>';
   foreach( $php_settings as $setting ) {
     $ini_get_result = get_php_setting( $setting[1], $setting[3] );
@@ -978,7 +973,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td class="prompt">' . $setting[0] . '</td>
         <td class="' . $class . '"><img src="'
      . ( $class == 'recommended' ? 'recommended.gif' : 'not_recommended.jpg' )
-     . '" alt="" />&nbsp;' . $ini_get_result . '</td>
+     . '" alt="">&nbsp;' . $ini_get_result . '</td>
       </tr>';
   }
   foreach( $php_constants as $constant ) {
@@ -988,8 +983,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td class="prompt">' . $constant[0] . '</td>
         <td class="' . $class . '"><img alt="" src="'
      . ( $class == 'recommended'
-      ? 'recommended.gif" />&nbsp;' . $onStr
-      : 'not_recommended.jpg" />&nbsp;' . $offStr ) . '</td>
+      ? 'recommended.gif">&nbsp;' . $onStr
+      : 'not_recommended.jpg">&nbsp;' . $offStr ) . '</td>
       </tr>';
   }
   foreach( $php_modules as $module ) {
@@ -1000,7 +995,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td class="prompt">' . $module[0] . '</td>
         <td class="' . $class . '"><img src="'
      . ( $class == 'recommended' ? 'recommended.gif"' : 'not_recommended.jpg"' )
-     . ' alt="" />&nbsp;' . get_php_modules( $module[1] ) . '</td>
+     . ' alt="">&nbsp;' . get_php_modules( $module[1] ) . '</td>
       </tr>';
   }
   $settingsStatStr = translate( 'settings.php Status' );
@@ -1015,7 +1010,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td class="' . ( $_SESSION['check'] > 0 ? '' : 'not' ) . 'recommended'
    . '"><img src="'
    . ( $_SESSION['check'] > 0 ? 'recommended.gif"' : 'not_recommended.jpg"' )
-   . ' alt="" />&nbsp;' . translate( 'SESSION COUNTER' ) . ': '
+   . ' alt="">&nbsp;' . translate( 'SESSION COUNTER' ) . ': '
    . $_SESSION['check'] . '</td>
       </tr>
       <tr>
@@ -1032,7 +1027,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td';
   // If the settings file exists, but we can't write to it...
   if( $exists && ! $canWrite )
-    echo '><img src="not_recommended.jpg" alt="" />&nbsp;'
+    echo '><img src="not_recommended.jpg" alt="">&nbsp;'
      . translate( 'The file permissions of settings.php are set...' ) . ':</td>
         <td><blockquote><b>' . realpath( $file ) . '</b></blockquote></td>
       </tr>';
@@ -1041,7 +1036,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   else
   if( ! $exists && ! $canWrite )
     echo ' colspan="2">
-          <img src="not_recommended.jpg" alt="" />&nbsp;'
+          <img src="not_recommended.jpg" alt="">&nbsp;'
      . translate( 'The file permissions of the includes directory are set...' )
      . ': <blockquote><b>' . realpath( $fileDir ) . '</b></blockquote></td>
       </tr>';
@@ -1049,7 +1044,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   else {
     echo '>'
      . translate( 'Your settings.php file appears to be valid.' ) . '</td>
-        <td class="recommended"><img src="recommended.gif" alt="" />&nbsp;'
+        <td class="recommended"><img src="recommended.gif" alt="">&nbsp;'
      . translate( 'OK' ) . '</td>
       </tr>';
 
@@ -1069,8 +1064,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <tr>
                 <th>' . $passwordStr . ':</th>
                 <td>
-                  <input name="password" type="password" />
-                  <input type="submit" value="' . $loginStr . '" />
+                  <input name="password" type="password">
+                  <input type="submit" value="' . $loginStr . '">
                 </td>
               </tr>
             </table>
@@ -1086,15 +1081,15 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               </tr>
               <tr>
                 <th>' . $passwordStr . ':</th>
-                <td><input name="password1" type="password" /></td>
+                <td><input name="password1" type="password"></td>
               </tr>
               <tr>
                 <th>' . translate( 'Password (again)' ) . '</th>
-                <td><input name="password2" type="password" /></td>
+                <td><input name="password2" type="password"></td>
               </tr>
               <tr>
                 <td colspan="2" align="center"><input type="submit" value="'
-         . translate( 'Set Password' ) . '" /></td>
+         . translate( 'Set Password' ) . '"></td>
               </tr>
             </table>
           </form>';
@@ -1108,7 +1103,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td align="center">
           <form action="index.php?action=switch&amp;page=2" method="post">
-            <input type="submit" value="' . $nextStr . ' ->" />
+            <input type="submit" value="' . $nextStr . ' ->">
           </form>
         </td>
       </tr>
@@ -1140,29 +1135,29 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
   if( ! empty( $_SESSION['db_success'] ) && $_SESSION['db_success'] ) {
     echo '
-            <li class="recommended"><img src="recommended.gif" alt="" />&nbsp;'
+            <li class="recommended"><img src="recommended.gif" alt="">&nbsp;'
      . translate( 'Your current database settings are able to access the database.' )
      . '</li>';
     if( ! empty( $response_msg ) && empty( $response_msg2 ) )
       echo '
-            <li class="recommended"><img src="recommended.gif" alt="" />&nbsp;'
+            <li class="recommended"><img src="recommended.gif" alt="">&nbsp;'
        . $response_msg . '</li>';
     elseif( empty( $response_msg2 ) && empty( $_SESSION['db_success'] ) )
       echo '
             <li class="notrecommended"><img src="not_recommended.jpg" '
-       . 'alt="" />&nbsp;' . translate( 'Please Test Settings' ) . '</li>';
+       . 'alt="">&nbsp;' . translate( 'Please Test Settings' ) . '</li>';
   } else
     echo '
             <li class="notrecommended"><img src="not_recommended.jpg" '
-     . 'alt="" />&nbsp;'
+     . 'alt="">&nbsp;'
      . translate( 'Your current database settings are not able...' ) . '</li>'
      . ( empty( $response_msg ) ? '' : '
             <li class="notrecommended"><img src="not_recommended.jpg" '
-       . 'alt="" />&nbsp;' . $response_msg . '</li>' );
+       . 'alt="">&nbsp;' . $response_msg . '</li>' );
 
   echo ( empty( $response_msg2 ) ? '' : '
             <li class="notrecommended"><img src="not_recommended.jpg" '
-     . 'alt="" />&nbsp;<b>' . $response_msg2 . '</b></li>' ) . '
+     . 'alt="">&nbsp;<b>' . $response_msg2 . '</b></li>' ) . '
           </ul>
         </td>
       </tr>
@@ -1217,8 +1212,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   foreach( $supported as $key => $value ) {
     echo '
                     <option value="' . $key . '" '
-     . ( $settings['db_type'] == $key ? $selected : '' )
-     . '>' . $value . '</option>';
+     . ( $settings['db_type'] == $key ? ' selected>' : '>' )
+     . $value . '</option>';
   }
   $supported = array();
 
@@ -1230,25 +1225,25 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td class="prompt"><label for="server">'
    . translate( 'Server' ) . ':</label></td>
                 <td colspan="2"><input name="form_db_host" id="server" '
-   . 'size="20" value="' . $settings['db_host'] . '" /></td>
+   . 'size="20" value="' . $settings['db_host'] . '"></td>
               </tr>
               <tr>
                 <td class="prompt"><label for="login">'
    . $loginStr . ':</label></td>
                 <td colspan="2"><input name="form_db_login" id="login" '
-   . 'size="20" value="' . $settings['db_login'] . '" /></td>
+   . 'size="20" value="' . $settings['db_login'] . '"></td>
               </tr>
               <tr>
                 <td class="prompt"><label for="pass">'
    . $passwordStr . ':</label></td>
                 <td colspan="2"><input name="form_db_password" id="pass" '
-   . 'size="20" value="' . $settings['db_password'] . '" /></td>
+   . 'size="20" value="' . $settings['db_password'] . '"></td>
               </tr>
               <tr>
                 <td class="prompt" id="db_name"><label for="database">'
    . $databaseNameStr . ':</label></td>
                 <td colspan="2"><input name="form_db_database" id="database" '
-   . 'size="20" value="' . $settings['db_database'] . '" /></td>
+   . 'size="20" value="' . $settings['db_database'] . '"></td>
               </tr>'
   /* This a workaround for postgresql. The db_type should be 'pgsql'
      but 'postgresql' is used in a lot of places...
@@ -1262,14 +1257,14 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td colspan="2">
                   <label><input name="form_db_persistent" value="true" '
      . 'type="radio"' . ( $settings['db_persistent'] == 'true'
-      ? $checked : '' ) . ' />'
+       ? ' checked>' : '>' )
      . translate( 'Enabled' ) . '</label>&nbsp;&nbsp;&nbsp;&nbsp;
                   <label><input name="form_db_persistent" value="false" '
      . 'type="radio"' . ( $settings['db_persistent'] != 'true'
-      ? $checked : '' ) . ' />' . translate( 'Disabled' ) . '</label>
+      ? ' checked>' : '>' ) . translate( 'Disabled' ) . '</label>
                 </td>
               </tr>' :/* Need to set a default value. */ '
-              <input name="form_db_persistent" value="false" type="hidden" />' );
+              <input name="form_db_persistent" value="false" type="hidden">' );
 
   if( function_exists( 'file_get_contents' ) ) {
     if( empty( $settings['db_cachedir'] ) )
@@ -1279,7 +1274,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <tr>
                 <td class="prompt">' . $cachedirStr . ':</td>
                 <td><input type="text" size="70" name="form_db_cachedir" '
-     . 'id="form_db_cachedir" value="' . $settings['db_cachedir'] . '" /></td>
+     . 'id="form_db_cachedir" value="' . $settings['db_cachedir'] . '"></td>
               </tr>';
   } //end test for file_get_contents
 
@@ -1288,10 +1283,10 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td align="center" colspan="3">
                   <input name="action" type="submit" value="' . $testSettingsStr
      . '" class="' . ( empty( $_SESSION['db_success'] ) ? 'not' : '' )
-     . 'recommended' . '" />' . ( ! empty( $_SESSION['db_noexist'] ) &&
+     . 'recommended' . '">' . ( ! empty( $_SESSION['db_noexist'] ) &&
       empty( $_SESSION['db_success'] ) ? '
                   <input name="action2" type="submit" value="' . $createNewStr
-       . '" class="recommended" />' : '' ) . '
+       . '" class="recommended">' : '' ) . '
                 </td>
               </tr>
             </table>
@@ -1303,20 +1298,20 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td align="right" width="40%">
           <form action="index.php?action=switch&amp;page=1" method="post">
-            <input type="submit" value="<- ' . $backStr . '" />
+            <input type="submit" value="<- ' . $backStr . '">
           </form>
         </td>
         <td align="center" width="20%">
           <form action="index.php?action=switch&amp;page=3" method="post">
             <input type="submit" value="' . $nextStr . ' ->" '
-   . ( empty( $_SESSION['db_success'] ) ? 'disabled' : '' ) . ' />
+   . ( empty( $_SESSION['db_success'] ) ? 'disabled' : '' ) . '>
           </form>
         </td>
         <td align="left" width="40%">
           <form action="" method="post">
             <input type="button" value="' . $logoutStr . '" '
    . ( empty( $_SESSION['validuser'] ) ? 'disabled' : '' )
-   . ' onclick="document.location.href=\'index.php?action=logout\'" />
+   . ' onclick="document.location.href=\'index.php?action=logout\'">
           </form>
         </td>
       </tr>
@@ -1327,8 +1322,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     empty( $_SESSION['blank_database'] ) ) {
     $response_msg = translate( 'All your database tables appear to be up...' );
     $_SESSION['db_updated'] = true;
-    // $response_msg .= '<br />Previous Version: ' .
-    // $_SESSION['old_program_version'] . '<br />
+    // $response_msg .= '<br>Previous Version: ' .
+    // $_SESSION['old_program_version'] . '<br>
     // New Version: ' . $PROGRAM_VERSION;
   } else
     $response_msg = ( $_SESSION['old_program_version'] == 'new_install'
@@ -1378,18 +1373,19 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
        . 'name="set_odbc_db">' . translate( 'ODBC Underlying Database' ) . '
             <select name="odbc_db" onchange="document.set_odbc_db.submit();">
               <option value="ibase"'
-       . ( $_SESSION['odbc_db'] == 'ibase' ? $selected : '' )
+       . ( $_SESSION['odbc_db'] == 'ibase' ? ' selected' : '' )
        . '>Interbase</option>
               <option value="mssql"'
-       . ( $_SESSION['odbc_db'] == 'mssql' ? $selected : '' )
+       . ( $_SESSION['odbc_db'] == 'mssql' ? ' selected' : '' )
        . '>MS SQL</option>
               <option value="mysql"'
-       . ( $_SESSION['odbc_db'] == 'mysql' ? $selected : '' ) . '>MySQL</option>
+       . ( $_SESSION['odbc_db'] == 'mysql' ? ' selected' : '' )
+       . '>MySQL</option>
               <option value="oracle"'
-       . ( $_SESSION['odbc_db'] == 'oracle' ? $selected : '' )
+       . ( $_SESSION['odbc_db'] == 'oracle' ? ' selected' : '' )
        . '>Oracle</option>
               <option value="postgresql"'
-       . ( $_SESSION['odbc_db'] == 'postgresql' ? $selected : '' )
+       . ( $_SESSION['odbc_db'] == 'postgresql' ? ' selected' : '' )
        . '>PostgreSQL</option>
             </select>
           </form>
@@ -1411,9 +1407,9 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         empty( $_SESSION['blank_database'] )
         ? 'submit" value="' . translate( 'Install Database' )
         :/* We're doing an upgrade. */ 'hidden" name="install_file" value="'
-         . $_SESSION['install_file'] . '" />
+         . $_SESSION['install_file'] . '">
             <input type="submit" value="'
-         . translate( 'Update Database' ) ) . '" />
+         . translate( 'Update Database' ) ) . '">
           </form>' ) . '
         </td>
       </tr>'
@@ -1424,12 +1420,12 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td align="center">
           <form action="index.php?action=install" method="post" name="display">
             <input type="hidden" name="install_file" value="'
-       . $_SESSION['install_file'] . '" />
-            <input type="hidden" name="display_sql" value="1" />
+       . $_SESSION['install_file'] . '">
+            <input type="hidden" name="display_sql" value="1">
             <input type="submit" value="' . translate ( 'Display Required SQL' )
-       . '" /><br />' . ( empty( $str_parsed_sql ) ? '' : '
+       . '"><br>' . ( empty( $str_parsed_sql ) ? '' : '
             <textarea name="displayed_sql" cols="100" rows="12">'
-         . $str_parsed_sql . '</textarea><br />
+         . $str_parsed_sql . '</textarea><br>
             <p class="recommended">'
          . translate( 'Return to previous page after processing SQL.' )
          . '</p>' ) . '
@@ -1444,20 +1440,20 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td align="right" width="40%">
           <form action="index.php?action=switch&amp;page=2" method="post">
-            <input type="submit" value="<- ' . $backStr . '" />
+            <input type="submit" value="<- ' . $backStr . '">
           </form>
         </td>
         <td align="center" width="20%">
           <form action="index.php?action=switch&amp;page=4" method="post">
             <input type="submit" value="' . $nextStr . ' ->" '
-   . ( empty( $_SESSION['db_updated'] ) ? 'disabled' : '' ) . ' />
+   . ( empty( $_SESSION['db_updated'] ) ? 'disabled' : '' ) . '>
           </form>
         </td>
         <td align="left" width="40%">
           <form action="" method="post">
             <input type="button" value="' . $logoutStr . '" '
    . ( empty( $_SESSION['validuser'] ) ? 'disabled' : '' )
-   . ' onclick="document.location.href=\'index.php?action=logout\'" />
+   . ' onclick="document.location.href=\'index.php?action=logout\'">
           </form>
         </td>
       </tr>
@@ -1487,7 +1483,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
             <ul><li>'
        . translate( 'It appears that you have NOT converted...' ) . '</li></ul>
             <div align="center"><input type="submit" value="'
-       . translate( 'Convert Data to GMT' ) . ':" /></div>
+       . translate( 'Convert Data to GMT' ) . ':"></div>
           </form>' : '
           <ul><li>' . $tzSuccessStr . '</li></ul>' ) . '
         </td>
@@ -1508,13 +1504,13 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
             <tr>
             <form action="index.php?action=switch&amp;page=4" method="post" '
    . 'enctype=\'multipart/form-data\' name="form_app_settings">
-              <input type="hidden" name="app_settings" value="1" />
+              <input type="hidden" name="app_settings" value="1">
               <td class="prompt">' . translate( 'Create Default Admin Account' )
    . ':</td>
               <td>
                 <input type="checkbox" name="load_admin" value="Yes"'
    . ( ( $_SESSION['old_program_version'] == 'new_install' )
-    ? $checked : '' ) . ' />' . ( $_SESSION['admin_exists'] == 0 ? '
+    ? ' checked>' : '>' ) . ( $_SESSION['admin_exists'] == 0 ? '
                 <span class="notrecommended"> '
     . translate( '(Admin Account Not Found)' ) . '</span>' : '' ) . '
               </td>
@@ -1523,12 +1519,12 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <td class="prompt">' . translate( 'Application Name' ) . ':</td>
               <td><input type="text" size="40" name="form_application_name" '
    . 'id="form_application_name" value="' . $_SESSION['application_name']
-   . '" /></td>
+   . '"></td>
             </tr>
             <tr>
               <td class="prompt">' . translate( 'Server URL' ) . ':</td>
               <td><input type="text" size="40" name="form_server_url" '
-   . 'id="form_server_url" value="' . $_SESSION['server_url'] . '" /></td>
+   . 'id="form_server_url" value="' . $_SESSION['server_url'] . '"></td>
             </tr>
             <tr>
               <td class="prompt">'
@@ -1537,27 +1533,27 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <select name="form_user_inc" onChange="auth_handler()">
                   <option value="user.php"'
    . ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] != 'true'
-    ? $selected : '' ) . '>'
+     ? ' selected>' : '>' )
    . translate( 'Web-based via WebCalendar (default)' )
    . '</option>
                   <option value="http"'
    . ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] == 'true'
-    ? $selected : '' ) . '>'
+     ? ' selected>' : '>' )
   . ( empty( $PHP_AUTH_USER ) ? translate( 'Web Server (not detected)' )
     : translate( 'Web Server (detected)' ) ) . '</option>'
    . ( function_exists( 'ldap_connect' ) ? '
                   <option value="user-ldap.php"'
-     . ( $settings['user_inc'] == 'user-ldap.php' ? $selected : '' )
+     . ( $settings['user_inc'] == 'user-ldap.php' ? ' selected' : '' )
      . '>LDAP</option>' : '' ) . ( function_exists( 'yp_match' ) ? '
                   <option value="user-nis.php"'
-     . ( $settings['user_inc'] == 'user-nis.php' ? $selected : '' )
+     . ( $settings['user_inc'] == 'user-nis.php' ? ' selected' : '' )
      . '>NIS</option>' : '' ) . '
                   <option value="user-imap.php"'
-   . ( $settings['user_inc'] == 'user-imap.php' ? $selected : '' )
+   . ( $settings['user_inc'] == 'user-imap.php' ? ' selected' : '' )
    . '>IMAP</option>
                   <option value="none" '
    . ( $settings['user_inc'] == 'user.php' && $settings['single_user'] == 'true'
-    ? $selected : '' ) . '>' . translate( 'None (Single-User)' ) . '</option>
+     ? ' selected>' : '>' ) . translate( 'None (Single-User)' ) . '</option>
                 </select>
               </td>
             </tr>
@@ -1566,26 +1562,27 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . $loginStr . ':</td>
               <td><input name="form_single_user_login" size="20" value="'
    . ( empty( $settings['single_user_login'] )
-     ? '' : $settings['single_user_login'] ) . '" /></td>
+     ? '' : $settings['single_user_login'] ) . '"></td>
             </tr>
             <tr>
               <td class="prompt">' . translate( 'Read-Only' ) . ':</td>
               <td>
                 <input name="form_readonly" value="true" type="radio"'
-   . ( $settings['readonly'] == 'true' ? $checked : '' ) . ' />'
+   . ( $settings['readonly'] == 'true' ? ' checked>' : '>' )
    . $yesStr . '&nbsp;&nbsp;&nbsp;&nbsp;
                 <input name="form_readonly" value="false" type="radio"'
-   . ( $settings['readonly'] != 'true' ? $checked : '' ) . ' />' . $noStr . '
+   . ( $settings['readonly'] != 'true' ? ' checked>' : '>' ) . $noStr . '
               </td>
             </tr>
             <tr>
               <td class="prompt">' . translate( 'Environment' ) . ':</td>
               <td>
                 <select name="form_mode">
-                  <option value="prod"' . ( $mode == 'prod' ? $selected : '' )
-   . '>' . translate( 'Production' ) . '</option>
-                  <option value="dev"' . ( $mode == 'dev' ? $selected : '' )
-   . '>' . translate( 'Development' ) . '</option>
+                  <option value="prod"'
+   . ( $mode == 'prod' ? ' selected>' : '>' )
+   . translate( 'Production' ) . '</option>
+                  <option value="dev"' . ( $mode == 'dev' ? ' selected>' : '>' )
+   . translate( 'Development' ) . '</option>
                 </select>
               </td>
             </tr>
@@ -1599,16 +1596,16 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . ( ! empty( $_SESSION['db_success'] ) && $_SESSION['db_success'] &&
     empty( $dologin ) ? '
               <input name="action" type="button" value="'
-     . translate( 'Save Settings' ) . '" onClick="return validate();" />'
+     . translate( 'Save Settings' ) . '" onClick="return validate();">'
      . ( ! empty( $_SESSION['old_program_version'] ) &&
       ( $_SESSION['old_program_version'] == $PROGRAM_VERSION ) && !
       empty( $setup_complete ) ? '
               <input type="button" name="action2" value="'
        . translate( 'Launch WebCalendar' )
-       . '" onClick="window.open( \'../index.php\', \'webcalendar\' );" />'
+       . '" onClick="window.open( \'../index.php\', \'webcalendar\' );">'
       : '' ) : '' ) . ( ! empty( $_SESSION['validuser'] ) ? '
               <input type="button" value="' . $logoutStr
-     . '" onclick="document.location.href=\'index.php?action=logout\'" />'
+     . '" onclick="document.location.href=\'index.php?action=logout\'">'
     : '' ) . '
             </form>
         </td>

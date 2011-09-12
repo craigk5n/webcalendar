@@ -318,8 +318,8 @@ Untimed event: Icke tidsbestämd aktivitet
 Timed event: Tidsbestämd aktivitet
 All day event: Heldagsaktivitet
 Timezone Offset: Lokal tid
-time-help: Anger tidpunkt för aktiviteten.<br /><i>Det här fältet behöver inte vara ifyllt.</i>
-duration-help: I detta fält anger du aktivitetens varaktighet<br /><i>Det här fältet behöver inte vara ifyllt.</i>
+time-help: Anger tidpunkt för aktiviteten.<br><i>Det här fältet behöver inte vara ifyllt.</i>
+duration-help: I detta fält anger du aktivitetens varaktighet<br><i>Det här fältet behöver inte vara ifyllt.</i>
 end-time-help: Anger den tid aktiviteten förväntas sluta.
 participants-help: Visa deltagare för denna händelse.
 external-participants-help: Anger en lista på deltagare till händelsen som inte är kalenderanvändare. Användarna bör listas en per rad och kan innehålla e-postadress. Om en e-postadress angetts, är användaren berättigad att få meddelande och påminnelser.

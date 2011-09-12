@@ -34,8 +34,7 @@ if ( empty ( $friendly ) ) {
 }
 set_today ( $date );
 print_header( array( 'js/popups.php/true' ),
-  '<script type="text/javascript" src="includes/js/weekHover.js?'
- . filemtime( 'includes/js/weekHover.js' ) . '"></script>' );
+  '<script src="includes/js/weekHover.js"></script>' );
 $trailerStr = print_trailer();
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
@@ -124,9 +123,9 @@ echo <<<EOT
      {$prevMonth}{$nextMonth}
     </div>
     {$navStr}
-    <span class="viewname"><br />{$view_name}</span>
+    <span class="viewname"><br>{$view_name}</span>
   </div>
-  <br />
+  <br>
   {$monthStr}
   {$eventinfo}
   {$unapprovedStr}

@@ -4,6 +4,9 @@ NOTE: This is the 1.3.0 development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2011)
+ - 11-Sep-11 bb Begin updating to HTML5 / CSS 3
+   HTML5 takes the minimalist approach - What is the bare minimum code to make
+   all browsers since NS4 / IE4 display the same in standards mode.
  - 8-Jul-11 cek Fixed XSS vulnerability: malicious javascript in event
    descriptions submitted by public can do bad things (create admin account,
    delete events, etc.) when the pending event is viewed by the admin.

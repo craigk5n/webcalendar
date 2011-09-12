@@ -46,7 +46,7 @@ $noStr           = translate( 'No' );
 $sourceStr       = translate( 'Source' );
 $yesStr          = translate( 'Yes' );
 
-$LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
+$LOADING = '<center><img src="images/loading_animation.gif" alt=""></center>';
 $public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
   translate( 'Click to modify layers settings for XXX' ) );
 
@@ -54,11 +54,11 @@ ob_start();
 
 // Add ModalBox javascript/CSS & Tab code
 $headExtras = '
-<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
-<link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
-<script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
-<link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css"
-media="screen" />
+<script src="includes/tabcontent/tabcontent.js"></script>
+<link href="includes/tabcontent/tabcontent.css" rel="stylesheet">
+<script src="includes/js/modalbox/modalbox.js"></script>
+<link rel="stylesheet" href="includes/js/modalbox/modalbox.css"
+media="screen">
 ';
 
 print_header( array( 'js/translate.js.php', 'js/visible.js/true' ),
@@ -83,7 +83,7 @@ else {
    . translate ( 'Layers' ) . '&nbsp;<img src="images/help.gif" alt="'
    . translate ( 'Help' ) . '" class="help" onclick="window.open( '
    . '\'help_layers.php\', \'cal_help\', \'dependent,menubar,scrollbars,'
-   . 'height=400,width=400,innerHeight=420,outerWidth=420\' );" /></h2>
+   . 'height=400,width=400,innerHeight=420,outerWidth=420\' );"></h2>
     ' . display_admin_link();
 
   ?>
@@ -94,25 +94,25 @@ else {
   </span>
   &nbsp;&nbsp;
   &nbsp;&nbsp;
-  <input type="button" onclick="return set_layer_status(true);" value=<?php echo $enableLayersStr;?>" id="enablebutton" <?php echo $layers_enabled ? 'disabled="true"' : '';?> />
-  <input type="button" onclick="return set_layer_status(false);" value=<?php etranslate("Disable Layers");?>" <?php echo $layers_enabled ? '' : 'disabled="true"';?> id="disablebutton" />
+  <input type="button" onclick="return set_layer_status(true);" value=<?php echo $enableLayersStr;?>" id="enablebutton" <?php echo $layers_enabled ? ' disabled' : '';?>>
+  <input type="button" onclick="return set_layer_status(false);" value=<?php etranslate("Disable Layers");?>" <?php echo $layers_enabled ? '' : ' disabled';?> id="disablebutton">
   </div>
 
-<br /><br />
+<br><br>
 
 <div id="layerlist" style="margin-left: 25px;"> <?php echo $LOADING;?> </div>
 
-<br />
+<br>
 
 <div class="layerButtons" style="margin-left: 25px;">
 <input type="button" value="<?php etranslate('Add layer');?>..."
-  onclick="return edit_layer(-1)" />
+  onclick="return edit_layer(-1)">
 </div>
-<br />
+<br>
 
 <!--
 <input type="button" value="Refresh"
-  onclick="return load_layers()" /> <br />
+  onclick="return load_layers()"> <br>
 -->
 
 <?php
@@ -163,8 +163,8 @@ if ( $single_user == 'N' ) {
 <div id="editLayerDiv" style="display: none;">
   <div style="background-color: <?php echo $BGCOLOR;?>; color: <?php echo $TEXTCOLOR;?>; padding: 10px;">
   <form name="editLayerForm" id="editLayerForm">
-    <input type="hidden" name="editLayerId" id="editLayerId" value="" />
-    <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0" />
+    <input type="hidden" name="editLayerId" id="editLayerId" value="">
+    <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0">
     <table border="0">
       <tr><td class="tooltip" title="<?php etranslate('Specifies the user that you would like to see displayed in your calendar.');?>"><label><?php echo $sourceStr;?>:</label></td>
         <td><select id="editLayerSource" name="editLayerSource">
@@ -175,24 +175,24 @@ if ( $single_user == 'N' ) {
             '#000000' );?>
         </td></tr>
       <tr><td class="tooltip" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.');?>"><label><?php echo $duplicatesStr;?>:</label></td>
-        <td><input type="checkbox" name="editLayerDups" id="editLayerDups" />
+        <td><input type="checkbox" name="editLayerDups" id="editLayerDups">
         </td></tr>
     </table>
-    <br />
+    <br>
     <center>
       <input id="editLayerDeleteButton" type="button" value="<?php etranslate("Delete");?>"
       onclick="if ( confirm ( '<?php echo $areYouSureStr;?>' ) ) {
         $('editLayerDelete').setAttribute ( 'value', '1' );
         edit_window_closed (); Modalbox.hide ();
-        }" />
+        }">
     <input type="button" value="<?php etranslate("Save");?>"
-      onclick="edit_window_closed(); Modalbox.hide() " /></center>
+      onclick="edit_window_closed(); Modalbox.hide() "></center>
   </form>
   </div>
 </div>
 
 
-<script type="text/javascript">
+<script>
 var layers = Array();
 // Set the LAYER_STATUS value in webcal_user_pref for either the current
 // user or the public user ('__public__') with an AJAX call to

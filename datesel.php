@@ -77,11 +77,11 @@ echo <<<EOT
               <tr>
                 <td><a title="{$previousStr}" class="prev" {$prevdate}>
                   <img src="images/leftarrowsmall.gif"
-                     alt="{$previousStr}" /></a></td>
+                     alt="{$previousStr}"></a></td>
                 <th colspan="5">&nbsp;{$monthStr}&nbsp;{$thisyear}&nbsp;</th>
                 <td><a title="{$nextStr}"class="next" {$nextdate}>
                   <img src="images/rightarrowsmall.gif"
-                     alt="{$nextStr}" /></a></td>
+                     alt="{$nextStr}"></a></td>
               </tr>
               <tr class="day">
                {$wkdys}
@@ -89,7 +89,7 @@ echo <<<EOT
               {$mdays}
 
   <!--We'll leave this javascript here to speed things up. -->
-  <script type="text/javascript">
+  <script>
   <!-- <![CDATA[
   function sendDate ( date ) {
     year = date.substring ( 0, 4 );

@@ -193,7 +193,7 @@ function print_upcoming_event ( $e, $date ) {
           $catIcon = 'icons/cat-' . $catNum . '.png';
         if ( file_exists ( $catIcon ) )
           echo $link .
-            '<img src="' . $catIcon . '" alt="category icon" border="0" /></a>';
+            '<img src="' . $catIcon . '" alt="category icon" border="0"></a>';
       }
     }
     echo $link;
@@ -465,7 +465,7 @@ echo send_doctype ( generate_application_name() );
      In the not too distant future, the admin UI will allow configuration
      of the stylesheet elements on this page.
 -->
-<style type="text/css">
+<style>
 body {
   background-color: #ffffff;
 }
@@ -530,10 +530,8 @@ a:hover {
 
 <?php
 if ( ! empty ( $showPopups ) && empty ( $error ) ) {
-  echo '<script type="text/javascript" src="includes/js/util.js?'
-   . filemtime( 'includes/js/util.js' ) . '"></script>
-    <script type="text/javascript" src="includes/js/popups.js?'
-   . filemtime( 'includes/js/popups.js' ) . '"</script>';
+  echo '<script src="includes/js/util.js"></script>
+    <script src="includes/js/popups.js"</script>';
 }
 ?>
 </head>

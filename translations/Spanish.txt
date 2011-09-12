@@ -130,7 +130,7 @@ date-format-help: Especifica el formato de fecha preferido
 Date format: Formato de fecha
 display-week-starts-on: Especifica si la semana comienza en domingo o lunes. Si se especifica Lunes, los números de semana serán números ISO.
 Week starts on: Semana comienza en
-time-format-help: Especifica qué formato de hora se usará:<br /><i>12 horas:</i> Muestra tiempos como 3am, 8:30pm, etc.<br /><i>24 horas:</i> Muestra horas como 3:00, 20:30, etc.
+time-format-help: Especifica qué formato de hora se usará:<br><i>12 horas:</i> Muestra tiempos como 3am, 8:30pm, etc.<br><i>24 horas:</i> Muestra horas como 3:00, 20:30, etc.
 Time format: Formato de Hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -159,7 +159,7 @@ allow-view-other-help: Especifica si un usuario puede ver los eventos de otro us
 Allow viewing other users calendars: Permitir ver los calendarios de otros usuarios
 require-approvals-help: Cuando se activa, un usuario debe aprobar un evento antes de que se muestre en su calendario (excepto si está activado "Mostrar no aprobados"). "No" impide el acceso público al calendario (si el acceso público al calendario está activado).
 Require event approvals: Requerir aprobación de eventos
-display-unapproved-help: Especifica si eventos no aprobados se mostraran en su calendario.<br /> Si se elige "Sí", los eventos no aprobados se mostrarán en su calendario (en un color de texto diferente).<br /> Si elige "No", los eventos no aprobados deben ser aprobados antes de que se muestren en su calendario.
+display-unapproved-help: Especifica si eventos no aprobados se mostraran en su calendario.<br> Si se elige "Sí", los eventos no aprobados se mostrarán en su calendario (en un color de texto diferente).<br> Si elige "No", los eventos no aprobados deben ser aprobados antes de que se muestren en su calendario.
 Display unapproved: Mostrar no aprobados
 conflict-check-help: Revisar conflictos de eventos (dos eventos programados a la misma hora para la misma persona). Si lo ajustas a 'Sí', podrás programar dos eventos al mismo tiempos después de confirmar un aviso. Si lo ajustas a "No", no se comprobarán los conflictos. Problablemente querrás ajustarlo a "Sí" para que se realice la comprobación.
 Check for event conflicts: Revisar existencia de conflictos
@@ -322,7 +322,7 @@ brief-description-help: Esta debe ser una descripción corta (20 caracteres aprox
 Brief Description: Breve Descripción
 full-description-help: Descripción completa y detallada del evento. Esta información puede ser vista por un usuario cuando ve el evento.
 Full Description: Descripción Ampliada
-access-help: Especifica el nivel de acceso del evento.<br /> <i>Público</i>: Cualquiera puede ver los detalles del evento.<br /><i>Confidencial</i>: Otros pueden ver que tienes una entrada para ese día y esa hora, pero no los detalles de qué es.
+access-help: Especifica el nivel de acceso del evento.<br> <i>Público</i>: Cualquiera puede ver los detalles del evento.<br><i>Confidencial</i>: Otros pueden ver que tienes una entrada para ese día y esa hora, pero no los detalles de qué es.
 Access: Acceso
 priority-help: Especifica la prioridad del evento. Eventos de Alta Prioridad se mostrarán en negrita.
 Priority: Prioridad
@@ -337,8 +337,8 @@ Untimed event: Evento sin hora
 Timed event: Evento con hora
 All day event: Evento para todo el día
 Timezone Offset: Desplazamiento de zona horaria
-time-help: Especifica la hora del evento.<br />Selecciona "Evento con hora" (para un evento planificado a una hora especifica del día), "Evento sin hora" (para un evento que no tiene hora, como un festivo) o "Evento para todo el día" (para un evento que dura todo el día, como estar fuera de la oficina).
-duration-help: Especifica la duración (en horas:minutos) del evento.<br /><i>Este campo puede dejarse vacío.</i>
+time-help: Especifica la hora del evento.<br>Selecciona "Evento con hora" (para un evento planificado a una hora especifica del día), "Evento sin hora" (para un evento que no tiene hora, como un festivo) o "Evento para todo el día" (para un evento que dura todo el día, como estar fuera de la oficina).
+duration-help: Especifica la duración (en horas:minutos) del evento.<br><i>Este campo puede dejarse vacío.</i>
 end-time-help: Especifica la hora a la que se espera que acabe el evento.
 participants-help: Lista de participantes en esta entrada.
 external-participants-help: Especifica una lista de participantes en el evento que no son usuarios del calentario. Los usuario deben ser listados uno por línea y pueden incluir su dirección de email. Si la dirección de email se especifica, el usuario es elegible para recibir notications y recordatorios.

@@ -38,13 +38,13 @@ if ( $newgroup ) {
   echo translate ( 'Edit Group' ) . '</h2>
       <input type="hidden" name="id" value="' . $id;
 
-echo '" />
+echo '">
       <table summary="">
         <tr>
           <td class="bold"><label for="groupname">'
  . translate ( 'Group name' ) . ':</label></td>
           <td><input type="text" name="groupname" id="groupname" size="20" '
- . 'value="' . htmlspecialchars ( $groupname ) . '" /></td>
+ . 'value="' . htmlspecialchars( $groupname ) . '"></td>
         </tr>' . ( ! $newgroup ? '
         <tr>
           <td class="aligntop bold">' . translate ( 'Updated' ) . ':</td>
@@ -92,14 +92,14 @@ echo '
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="aligncenter"><br />
+          <td colspan="2" class="aligncenter"><br>
             <input type="submit" name="action" value="'
- . ( $newgroup ? translate ( 'Add' ) : translate ( 'Save' ) ) . '" />'
+ . ( $newgroup ? translate( 'Add' ) : translate( 'Save' ) ) . '">'
  . ( ! $newgroup ? '
             <input type="submit" name="delete" value="'
    . translate ( 'Delete' ) . '" onclick="return confirm( \''
    . translate( 'Are you sure you want to delete this entry?' )
-   . '\')" />' : '' ) . '
+   . '\')">' : '' ) . '
           </td>
         </tr>
       </table>

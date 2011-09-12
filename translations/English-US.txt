@@ -181,7 +181,7 @@ display-week-starts-on: Specifies day of week that the week starts on. If Monday
 Week starts on: Week starts on
 display-weekend-starts-on: Sets the day of the week for weekends to start
 Weekend starts on: Weekend starts on
-time-format-help: Specifies which time format to use:<br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.<br /><em>24 hour:</em> Display times as 300, 2030, etc.
+time-format-help: Specifies which time format to use:<br><em>12 hour:</em> Display times as 3am, 8:30pm, etc.<br><em>24 hour:</em> Display times as 300, 2030, etc.
 Time format: Time format
 12 hour: 12 hour
 24 hour: 24 hour
@@ -229,7 +229,7 @@ allow-view-other-help: Specifies whether one user may view another user's calend
 Allow viewing other users calendars: Allow viewing other user's calendars
 require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled). Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals
-display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: Display unapproved
 conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person). If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done. You probably want to set this to "Yes", so conflict checking occurs.
 Check for event conflicts: Check for event conflicts
@@ -568,8 +568,8 @@ hour ahead of you: hour ahead of you
 hour behind you: hour behind you
 hours ahead of you: hours ahead of you
 hours behind you: hours behind you
-XXX is in a different timezone (ahead): (XXX is in a different timezone; YYY ahead of you.<br />&nbsp;ZZZ)
-XXX is in a different timezone (behind): (XXX is in a different timezone; YYY behind you.<br />&nbsp;ZZZ)
+XXX is in a different timezone (ahead): (XXX is in a different timezone; YYY ahead of you.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX is in a different timezone; YYY behind you.<br>&nbsp;ZZZ)
 Time entered here is based on your Timezone.: Time entered here is based on <b>your</b> Timezone.
 Edit Entry: Edit Entry
 Details: Details
@@ -661,7 +661,7 @@ Start: Start
 End/Due: End/Due
 Times: Times
 Every: Every
-CAPTCHA Warning: <b>Warning:</b> Cannot use CAPTCHA without PHP's GD extension!<br />
+CAPTCHA Warning: <b>Warning:</b> Cannot use CAPTCHA without PHP's GD extension!<br>
 Delete entry: Delete entry
 You are not authorized to edit this entry.: You are not authorized to edit this entry.
 
@@ -976,7 +976,7 @@ Repeated items are imported separately. Prior imports are not overwritten.: Repe
 ########################################
 # Page: import_handler.php
 #
-No file: No file
+No file: No file!
 Error deleting palm events from webcalendar.: Error deleting palm events from webcalendar.
 Events from prior import marked as deleted: Events from prior import marked as deleted
 Conflicting events: Conflicting events
@@ -1178,14 +1178,14 @@ New Search: New Search
 # Page: security_audit.php
 #
 list potential security issues: The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.
-For questions about WebCalendar security see the forums: For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net;<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
+For questions about WebCalendar security see the forums: For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net;<br><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
 View your current PHP settings: View your current PHP settings
 Security Issue: Security Issue
 Status: Status
 Default admin user password: Default admin user password
 You should change the password of the default admin user.: You should change the password of the default admin user.
 File permissions XXX: File permissions: XXX
-item XXX should not be writable: The following item should not be writable:<br /><tt>XXX</tt>
+item XXX should not be writable: The following item should not be writable:<br><tt>XXX</tt>
 File exists XXX: File exists: "XXX"
 Because you have email disabled, you should remove this file.: Because you have email disabled, you should remove this file.
 File location XXX: File location: "XXX"
@@ -1333,7 +1333,7 @@ Invalid function id: Invalid function id
 ########################################
 # Page: includes/config.php
 #
-Could not find settings.php file...: Could not find "settings.php" file.<br />Please copy "settings.php.orig" to "settings.php" and edit for your site.
+Could not find settings.php file...: Could not find "settings.php" file.<br>Please copy "settings.php.orig" to "settings.php" and edit for your site.
 Incomplete settings.php file...: Incomplete settings.php file...
 Could not find XXX defined in...: Could not find "XXX" defined in your "settings.php" file.
 You must define XXX in: You must define "XXX" in the "settings.php" file.
@@ -1741,7 +1741,7 @@ Your settings have been saved.: Your settings have been saved.
 OFF: OFF
 ON: ON
 WebCalendar Setup Wizard: WebCalendar Setup Wizard
-This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation.<br />For help and troubleshooting see:<br />
+This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation.<br>For help and troubleshooting see:<br>
 System Administrators Guide: System Administrator's Guide
 Frequently Asked Questions: Frequently Asked Questions
 FAQ: FAQ
@@ -1894,3 +1894,9 @@ Unknown error saving user: Unknown error saving user.
 No participants found for event id XXX.: No participants found for event id: XXX.
 Db error Could not find event id XXX.: Db error: Could not find event id XXX.
 Error Could not find event id XXX in database.: Error: Could not find event id XXX in database.
+
+
+
+Public entries: Public entries
+Public and Confidential entries: Public and Confidential entries
+All entries: All entries

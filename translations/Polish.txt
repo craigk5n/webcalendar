@@ -184,7 +184,7 @@ display-week-starts-on: Okre¶la czy pierwszym dniem tygodnia jest niedziela czy 
 Week starts on: Tydzieñ zaczyna siê w
 display-weekend-starts-on: Ustaw dzieñ tygodnia rozpoczynaj±cy weekend
 Weekend starts on: Weekend zaczyna siê w
-time-format-help: Okre¶la którego formatu czasu u¿ywaæ<br /><i>12 godz.:</i> Wy¶wietla czas jako ³am, 8:³0pm, itd.<br /><i>24 godz.:</i> Wy¶wietla czas jako ³00, 20³0 itd.
+time-format-help: Okre¶la którego formatu czasu u¿ywaæ<br><i>12 godz.:</i> Wy¶wietla czas jako ³am, 8:³0pm, itd.<br><i>24 godz.:</i> Wy¶wietla czas jako ³00, 20³0 itd.
 Time format: Format czasu
 12 hour: 12 godzin
 24 hour: 24 godziny
@@ -232,7 +232,7 @@ allow-view-other-help: W³±cza mo¿liwo¶æ ogl±dania kalendarzy innych u¿ytkowników
 Allow viewing other users calendars: Zezwalaj na ogladanie kalendarzy innych u¿ytkowników
 require-approvals-help: Wymaga zatwierdzenia zdarzenia przez u¿ytkownika
 Require event approvals: Wymagaj zatwierdzania zdarzeñ
-display-unapproved-help: Okre¶la czy niezatwierdzone wydarzenia bed± wy¶wietlane w twoim kalendarzu.<br /> Je¶li "tak" wtedy niezatwierdzone wydarzenia bed± wy¶wietlane (innym kolorem).<br /> Je¶li "Nie" wtedy najpierw bed± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
+display-unapproved-help: Okre¶la czy niezatwierdzone wydarzenia bed± wy¶wietlane w twoim kalendarzu.<br> Je¶li "tak" wtedy niezatwierdzone wydarzenia bed± wy¶wietlane (innym kolorem).<br> Je¶li "Nie" wtedy najpierw bed± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
 Display unapproved: Wy¶wietlaj niezatwierdzone
 conflict-check-help: Sprawdzaj czy nie ma konfliktów zdarzeñ (dwóch zdarzeñ tego samego u¿ytkownika w tym samym czasie)
 Check for event conflicts: Sprawdzaj czy nie ma konfliktów zdarzeñ
@@ -554,7 +554,7 @@ brief-description-help: Powinien to bya krótki opis (oko³o 20 znaków) wydarzenia
 Brief Description: Krótki opis
 full-description-help: Powinien to bya pe³ny opis wydarzenia. Bedzie wy¶wietlany podczas ogl±dania wydarznia.
 Full Description: Pe³ny opis
-access-help: Okre¶la poziom dostepu do wydarzenia.<br /><i>Publiczny</i>: Ka¿dy mo¿e ogl±daæ wszystkie szczegó³y wydarzenia.<br /><i>Poufny</i>: Inni u¿ytkownicy widz± ¿e masz taki wpis ale nie mog± ogl±daæ jego szczegó³ów.
+access-help: Okre¶la poziom dostepu do wydarzenia.<br><i>Publiczny</i>: Ka¿dy mo¿e ogl±daæ wszystkie szczegó³y wydarzenia.<br><i>Poufny</i>: Inni u¿ytkownicy widz± ¿e masz taki wpis ale nie mog± ogl±daæ jego szczegó³ów.
 Access: Dostep
 priority-help: Okre¶la priorytet wydarzenia. Wysoki priorytet bedzie wy¶wietlany pogrubion± czcionk±.
 Priority: Priorytet
@@ -578,8 +578,8 @@ Untimed event: Zdarzenie nieokre¶lone czasowo
 Timed event: Zdarzenie okre¶lone czasowo
 All day event: Zdarzenie ca³odniowe
 Timezone Offset: przesuniecie strefy czasowej
-time-help: Okre¶la czas wydarzenia.<br /><i>Mo¿e zostaæ puste.</i>
-duration-help: Okre¶la (w minutach) czas trwania wydarzenia.<br /><i>Mo¿e zostaæ puste.</i>
+time-help: Okre¶la czas wydarzenia.<br><i>Mo¿e zostaæ puste.</i>
+duration-help: Okre¶la (w minutach) czas trwania wydarzenia.<br><i>Mo¿e zostaæ puste.</i>
 end-time-help: Okre¶la godzinê, o której zdarzenie powinno siê skoñczyæ
 Start Time: Data rozpoczêcia
 Due Date: Data zakoñczenia
@@ -640,7 +640,7 @@ Start: Rozpoczêcie
 End/Due: Zakoñczenie
 Times: Ile razy
 Every: Co
-CAPTCHA Warning: <b>Uwaga:</b> Nie mo¿na zastosowaæ CAPTCHA bez rozszerzenia GD dla PHP!<br />
+CAPTCHA Warning: <b>Uwaga:</b> Nie mo¿na zastosowaæ CAPTCHA bez rozszerzenia GD dla PHP!<br>
 Delete entry: Skasuj wpis
 You are not authorized to edit this entry.: Nie masz autoryzacji by skasowaæ ten wpis
 
@@ -1289,7 +1289,7 @@ Invalid function id: Niepoprawne id funkcji
 ########################################
 # Page: includes/config.php
 #
-Could not find settings.php file...: Nie mo¿na odnale¼æ pliku "settings.php".<br />Proszê zrobiæ kopiê pliku "settings.php.orig" o nazwie "settings.php" i wyedytowaæ odpowiednio dla swojej strony WWW.
+Could not find settings.php file...: Nie mo¿na odnale¼æ pliku "settings.php".<br>Proszê zrobiæ kopiê pliku "settings.php.orig" o nazwie "settings.php" i wyedytowaæ odpowiednio dla swojej strony WWW.
 Incomplete settings.php file...: Plik "settings.php" jest niekompletny...
 Could not find XXX defined in...: Nie mo¿na odnale¼æ definicji "XXX" w Twoim pliku "settings.php".
 You must define XXX in: Musisz zdefiniowaæ "XXX" w pliku "settings.php".

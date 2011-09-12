@@ -28,7 +28,7 @@ echo '
 if ( empty ( $error ) ) {
   echo '
     <a title="' . $newNonUserStr . '" href="edit_nonusers.php?add=1"'
-   . $targetStr . $newNonUserStr . '</a><br />';
+   . $targetStr . $newNonUserStr . '</a><br>';
   // Displaying NonUser Calendars
   $userlist = get_nonuser_cals();
   if ( ! empty ( $userlist ) ) {

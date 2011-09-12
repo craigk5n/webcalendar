@@ -33,12 +33,11 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
   $actionlabel = '', $hidden = '' ) {
   global $CELLBG;
 
-  $checked = ' checked="checked"';
   $noStr = translate ( 'No' );
   $yesStr = translate ( 'Yes' );
 
   if ( ! is_array ( $tablear ) ) {
-    return 'Error: dbtable_to_html parameter 1 is not an array!<br />' . "\n";
+    return 'Error: dbtable_to_html parameter 1 is not an array!<br>' . "\n";
   }
 
   $ret = '
@@ -58,7 +57,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
       for ( $i = 0, $cnt = count ( $hidden ); $i < $cnt; $i += 2 ) {
         $ret .= '
                     <input type="hidden" name="' . $hidden[$i] . '" value="'
-         . $hidden[$i + 1] . '" />';
+         . $hidden[$i + 1] . '">';
       }
     }
   }
@@ -94,15 +93,16 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
           ? '' : ' size="' . $tablear[$i]['length'] . '"' )
          . ( empty ( $valuesar[$i] ) ? '' : ' value="'
            . htmlspecialchars ( $valuesar[$i] ) . '"' )
-         . ' />';
+         . '>';
       elseif ( $tablear[$i]['type'] == 'boolean' )
         $ret .= '
                         <input type="radio" value="Y" name="'
-         . $tablear[$i]['name'] . '"' . ( $valuesar[$i] == 'Y' ? $checked : '' )
-         . '>' . $yesStr . '&nbsp;&nbsp;&nbsp;
+         . $tablear[$i]['name'] . '"'
+         . ( $valuesar[$i] == 'Y' ? ' checked>' : '>' )
+         . $yesStr . '&nbsp;&nbsp;&nbsp;
                         <input type="radio" value="N" name="'
-         . $tablear[$i]['name'] . '"' . ( $valuesar[$i] != 'Y' ? $checked : '' )
-         . '>' . $noStr;
+         . $tablear[$i]['name'] . '"'
+         . ( $valuesar[$i] != 'Y' ? ' checked>' : '>' ) . $noStr;
       elseif ( $tablear[$i]['type'] == 'date' )
         $ret .= date_selection ( $tablear[$i]['name'], $valuesar[$i] );
       elseif ( $tablear[$i]['type'] == 'dbdate' )
@@ -133,7 +133,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
   return $ret . ( empty ( $actionlabel ) ? '' : '
                     <tr>
                       <td colspan="2" style="text-align:center;"><input '
-     . 'type="submit" value="' . htmlspecialchars ( $actionlabel ) . '" /></td>
+     . 'type="submit" value="' . htmlspecialchars( $actionlabel ) . '"></td>
                     </tr>
                   </form>' ) . '
                 </table>
@@ -162,13 +162,13 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   global $CELLBG, $THBG, $THFG;
 
   if ( ! is_array ( $tablear ) )
-    return 'Error: dbtable_to_html_list parameter 1 is not an array!<br />' . "\n";
+    return 'Error: dbtable_to_html_list parameter 1 is not an array!<br>' . "\n";
 
   if ( ! is_array ( $fields ) )
-    return 'Error: dbtable_to_html_list parameter 2 is not an array!<br />' . "\n";
+    return 'Error: dbtable_to_html_list parameter 2 is not an array!<br>' . "\n";
 
   if ( ! is_array ( $keys ) )
-    return 'Error: dbtable_to_html_list parameter 3 is not an array!<br />' . "\n";
+    return 'Error: dbtable_to_html_list parameter 3 is not an array!<br>' . "\n";
 
   $ret = '
     <table summary="">
@@ -291,11 +291,11 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
   $sql = 'SELECT ';
 
   if ( ! is_array ( $tablear ) ) {
-    echo 'Error: dbtable_load parameter 1 is not an array!<br />' . "\n";
+    echo 'Error: dbtable_load parameter 1 is not an array!<br>' . "\n";
     exit;
   }
   if ( ! is_array ( $keys ) ) {
-    echo 'Error: dbtable_load parameter 3 is not an array!<br />' . "\n";
+    echo 'Error: dbtable_load parameter 3 is not an array!<br>' . "\n";
     exit;
   }
   $first = 1;
@@ -359,11 +359,11 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
   $ret = false;
 
   if ( ! is_array ( $tablear ) ) {
-    echo 'Error: dbtable_delete parameter 1 is not an array!<br />' . "\n";
+    echo 'Error: dbtable_delete parameter 1 is not an array!<br>' . "\n";
     exit;
   }
   if ( ! is_array ( $keys ) ) {
-    echo 'Error: dbtable_delete parameter 3 is not an array!<br />' . "\n";
+    echo 'Error: dbtable_delete parameter 3 is not an array!<br>' . "\n";
     exit;
   }
   $first = 1;
@@ -407,11 +407,11 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
   $ret = false;
   $sql = 'INSERT INTO ' . $tablename . ' (';
   if ( ! is_array ( $tablear ) ) {
-    echo 'Error: dbtable_add parameter 1 is not an array!<br />' . "\n";
+    echo 'Error: dbtable_add parameter 1 is not an array!<br>' . "\n";
     exit;
   }
   if ( ! is_array ( $valuesar ) ) {
-    echo 'Error: dbtable_add parameter 3 is not an array!<br />' . "\n";
+    echo 'Error: dbtable_add parameter 3 is not an array!<br>' . "\n";
     exit;
   }
   $first = 1;
@@ -462,11 +462,11 @@ function dbtable_update ( $tablear, $tablename, $valuesar ) {
   $query_params = array();
   $sql = 'UPDATE ' . $tablename . ' SET';
   if ( ! is_array ( $tablear ) ) {
-    echo 'Error: dbtable_update parameter 1 is not an array!<br />' . "\n";
+    echo 'Error: dbtable_update parameter 1 is not an array!<br>' . "\n";
     exit;
   }
   if ( ! is_array ( $valuesar ) ) {
-    echo 'Error: dbtable_update parameter 3 is not an array!<br />' . "\n";
+    echo 'Error: dbtable_update parameter 3 is not an array!<br>' . "\n";
     exit;
   }
   $first = 1;

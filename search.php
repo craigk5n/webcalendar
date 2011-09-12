@@ -26,7 +26,6 @@ if( access_is_enabled()
   $show_advanced = false;
 
 load_user_categories();
-$selected = ' selected="selected" ';
 
 $advSearchStr = translate( 'Advanced Search' );
 $searchStr    = translate( 'Search' );
@@ -49,11 +48,11 @@ print_header( $INC );
 echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
     <form action="search_handler.php" method="post" id="searchformentry" '
  . 'name="searchformentry" style="margin-left: 13px;">
-      <input type="hidden" name="advanced" value="' . $show_advanced . '" />
+      <input type="hidden" name="advanced" value="' . $show_advanced . '">
       <table summary=""><tr><td><label for="keywordsadv">' . translate( 'Keywords' )
  . ':&nbsp;</label></td>
-        <td><input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
-        <input type="submit" value="' . $searchStr . '" /></td></tr>';
+        <td><input type="text" name="keywords" id="keywordsadv" size="30">&nbsp;
+        <input type="submit" value="' . $searchStr . '"></td></tr>';
 
 echo '<tr height="30px"><td>&nbsp;</td><td valign="top">(' .
   translate( 'Enter % for all entries' ) . ')</td></tr>';
@@ -66,7 +65,7 @@ if( is_array( $categories ) && $show_advanced ) {
    . ':</label></td>
           <td>
             <select name="cat_filter" id="cat_filter">
-              <option value=""' . $selected . '>' . translate( 'All' )
+              <option value="" selected>' . translate( 'All' )
    . '</option>';
 
   foreach( $categories as $K => $V ) {
@@ -85,9 +84,9 @@ if( count( $site_extras ) > 0 ) {
         <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
           <td><label for="extra_filter">'
-   . translate( 'Include' ) . '<br />' . translate( 'Site Extras' )
+   . translate( 'Include' ) . '<br>' . translate( 'Site Extras' )
    . ':</label></td>
-          <td><input type="checkbox" name="extra_filter" value="Y" />
+          <td><input type="checkbox" name="extra_filter" value="Y">
           </td></tr>';
 }
 if( $show_advanced ) {
@@ -99,7 +98,7 @@ if( $show_advanced ) {
    . ':</label></td>
           <td>
             <select name="date_filter" id="date_filter" onchange="toggleDateRange()">
-              <option value="0"' . $selected . '>' . translate( 'All Dates' )
+              <option value="0" selected>' . translate( 'All Dates' )
    . '</option>
               <option value="1">' . translate( 'Past' ) . '</option>
               <option value="2">' . translate( 'Upcoming' ) . '</option>
@@ -163,7 +162,7 @@ if( $show_others ) {
             </select>'
    . ( $GROUPS_ENABLED == 'Y'
     ? '<input type="button" onclick="selectUsers()" value="'
-     . translate( 'Select' ) . '..." />' : '' ) . '
+     . translate( 'Select' ) . '...">' : '' ) . '
           </td>
         </tr>';
 }

@@ -33,8 +33,6 @@ print_header ( $INC, '', $BodyX, $disableCustom );
 $newview = true;
 $viewname = $viewtype = '';
 $viewisglobal = 'N';
-$checked = ' checked="checked"';
-$selected = ' selected="selected"';
 
 $unnameViewStr = translate ( 'Unnamed View' );
 
@@ -85,39 +83,39 @@ if ( ! empty( $error ) ) {
 if ( $newview ) {
   $v = array();
   echo '<h2>' . translate ( 'Add View' ) . "</h2>\n";
-  echo '<input type="hidden" name="add" value="1" />' . "\n";
+  echo '<input type="hidden" name="add" value="1">' . "\n";
 } else {
   echo '<h2>' . translate ( 'Edit View' ) . "</h2>\n";
-  echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+  echo "<input type=\"hidden\" name=\"id\" value=\"$id\">\n";
 }
 ?>
 
 <table summary="">
 <tr><td>
  <label for="viewname"><?php etranslate ( 'View Name' )?>:</label></td><td colspan="3">
- <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" />
+ <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars( $viewname );?>">
 </td></tr>
 <tr><td>
  <label for="viewtype"><?php etranslate ( 'View Type' )?>:</label></td><td colspan="3">
  <select name="viewtype" id="viewtype">
   <option value="D" <?php if ( $viewtype == 'D' )
-  echo $selected;?>><?php etranslate ( 'Day' ); ?></option>
+  echo ' selected>' . translate( 'Day' ); ?></option>
   <option value="E" <?php if ( $viewtype == 'E' )
-  echo $selected;?>><?php etranslate ( 'Day by Time' ); ?></option>
+  echo ' selected>' . translate( 'Day by Time' ); ?></option>
   <option value="W" <?php if ( $viewtype == 'W' )
-  echo $selected;?>><?php etranslate ( 'Week (Users horizontal)' ); ?></option>
+  echo ' selected>' . translate( 'Week (Users horizontal)' ); ?></option>
   <option value="R" <?php if ( $viewtype == 'R' )
-  echo $selected;?>><?php etranslate ( 'Week by Time' ); ?></option>
+  echo ' selected>' . translate( 'Week by Time' ); ?></option>
   <option value="V" <?php if ( $viewtype == 'V' )
-  echo $selected;?>><?php etranslate ( 'Week (Users vertical)' ); ?></option>
+  echo ' selected>' . translate( 'Week (Users vertical)' ); ?></option>
   <option value="S" <?php if ( $viewtype == 'S' )
-  echo $selected;?>><?php etranslate ( 'Week (Timebar)' ); ?></option>
+  echo ' selected>' . translate( 'Week (Timebar)' ); ?></option>
   <option value="T" <?php if ( $viewtype == 'T' )
-  echo $selected;?>><?php etranslate ( 'Month (Timebar)' ); ?></option>
+  echo ' selected>' . translate( 'Month (Timebar)' ); ?></option>
   <option value="M" <?php if ( $viewtype == 'M' )
-  echo $selected;?>><?php etranslate ( 'Month (side by side)' ); ?></option>
+  echo ' selected>' . translate( 'Month (side by side)' ); ?></option>
   <option value="L" <?php if ( $viewtype == 'L' )
-  echo $selected;?>><?php etranslate ( 'Month (on same calendar)' ); ?></option>
+  echo ' selected>' . translate( 'Month (on same calendar)' ); ?></option>
       </select>&nbsp;
   </td></tr>
 
@@ -153,23 +151,23 @@ echo '<tr><td><label>'
     $u = $users[$i]['cal_login'];
     echo "<option value=\"$u\"";
     if ( ! empty ( $viewuser[$u] ) ) {
-      echo $selected;
+      echo ' selected';
     }
     echo '>' . $users[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
 </select>
 <?php if ( $GROUPS_ENABLED == 'Y' ) { ?>
- <input type="button" onclick="selectUsers()" value="<?php etranslate ( 'Select' );?>..." />
+ <input type="button" onclick="selectUsers()" value="<?php etranslate( 'Select' );?>...">
 <?php } ?>
 </div>
 </td></tr>
 <tr><td colspan="4" class="aligncenter">
-<br />
-<input type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>" />
+<br>
+<input type="submit" name="action" value="<?php if ( $newview ) etranslate( 'Add' ); else etranslate( 'Save' ); ?>">
 <?php if ( ! $newview ) { ?>
  <input type="submit" name="delete" value="<?php etranslate( 'Delete' )?>" onclick="return confirm( '<?php
-  translate( 'Are you sure you want to delete this entry?' ); ?>' )" />
+  translate( 'Are you sure you want to delete this entry?' ); ?>' )">
 <?php } ?>
 </td></tr>
 </table>

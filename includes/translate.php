@@ -211,7 +211,7 @@ function load_translation_text() {
       if ( ! is_dir ( $cache_tran_dir ) )
         die_miserable_death ( 'Error creating translation cache directory: "'
            . $cache_tran_dir
-           . '"<br /><br />Please check the permissions of the directory: "'
+           . '"<br><br>Please check the permissions of the directory: "'
            . $cachedir . '"' );
  */
     }

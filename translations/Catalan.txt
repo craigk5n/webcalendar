@@ -130,7 +130,7 @@ date-format-help: Especifica el format preferit de la data.
 Date format: Format de la data
 display-week-starts-on: Especifica si la setmana comença diumenge o dilluns Si s'especifica dilluns, aleshores els números de setmana seran un número de setmana ISO.
 Week starts on: La setmana comença
-time-format-help: Especifica el format d'hora que s'utilitza:<br /><i>12 hores:</i> Mostra les hores com a 3am, 8:30pm, etc.<br /><i>24 hores:</i> Mostra les hores com a 300, 2030, etc.
+time-format-help: Especifica el format d'hora que s'utilitza:<br><i>12 hores:</i> Mostra les hores com a 3am, 8:30pm, etc.<br><i>24 hores:</i> Mostra les hores com a 300, 2030, etc.
 Time format: Format d'hora
 12 hour: 12 hores
 24 hour: 24 hores
@@ -155,7 +155,7 @@ allow-view-other-help: Especifica si un usuari pot visualitzar el calendari d'un
 Allow viewing other users calendars: Permet veure els calendaris d'altres usuaris
 require-approvals-help: Si està activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar). Fixeu-vos que configurar-ho a "No", no ocultarà les aprovacions per al calendari d'Accés Públic (si el calendari d'Accés Públic està habilitat).
 Require event approvals: Requereix aprovació d'esdeveniments
-display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br /> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent).<br /> Si s'ajusta a "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
+display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent).<br> Si s'ajusta a "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
 Display unapproved: Mostra pendents d'aprovar
 conflict-check-help: Comprova els conflictes entre esdeveniments (dos esdeveniments programats per a la mateixa hora i la mateixa persona). Si ho configures com a "Sí", podràs planificar igualment dos esdeveniments alhora després de confirmar un avís. Si ho configures com a "no", no es comprovaran els possibles conflictes entre esdeveniments. Probablement vulguis posar "Sí", a fi que es produeixin les comprovacions.
 Check for event conflicts: Comprova conflictes entre esdeveniments
@@ -305,7 +305,7 @@ brief-description-help: Aquest camp permet una descripció breu (d'uns 20 caràcte
 Brief Description: Descripció breu
 full-description-help: Aquí cal completar els detalls de l'esdeveniment. Es pot veure aquesta informació quan un usuari visualitza l'esdeveniment.
 Full Description: Descripció completa
-access-help: Especifica el nivell d'accés de l'esdeveniment.<br /> <i>Públic</i>: Tothom pot veure tots els detalls de l'esdeveniment.<br /><i>Confidencial</i>: Els altres poden veure la teva entrada per a aquella data i hora, però no poden veure'n els detalls.
+access-help: Especifica el nivell d'accés de l'esdeveniment.<br> <i>Públic</i>: Tothom pot veure tots els detalls de l'esdeveniment.<br><i>Confidencial</i>: Els altres poden veure la teva entrada per a aquella data i hora, però no poden veure'n els detalls.
 Access: Accés
 priority-help: Especifica la prioritat de l'esdeveniment. Els esdeveniments de prioritat alta es mostraran en negreta.
 Priority: Prioritat
@@ -320,8 +320,8 @@ Untimed event: Esdeveniment sense hora
 Timed event: Esdeveniment amb hora
 All day event: Esdeveniment de dia complet
 Timezone Offset: Franja horària
-time-help: Especifica l'hora de l'esdeveniment.<br />Seleccioneu "Esdeveniment amb hora" (per a un esdeveniment programat per a una hora determinada del dia), o bé "Esdeveniment sense hora" (per a un esdeveniment sense hora determinada (com ara un festiu), o bé "Esdeveniment dia complet" (per a un esdeveniment que ocupa tot el dia, com ara haver de sortir fora de l'oficina).
-duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.<br /><i>Aquest camp es pot deixar en blanc.</i>
+time-help: Especifica l'hora de l'esdeveniment.<br>Seleccioneu "Esdeveniment amb hora" (per a un esdeveniment programat per a una hora determinada del dia), o bé "Esdeveniment sense hora" (per a un esdeveniment sense hora determinada (com ara un festiu), o bé "Esdeveniment dia complet" (per a un esdeveniment que ocupa tot el dia, com ara haver de sortir fora de l'oficina).
+duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.<br><i>Aquest camp es pot deixar en blanc.</i>
 participants-help: Mostra la llista de participants en aquesta entrada.
 external-participants-help: Especifica una llista de participants per a l'esdeveniment que no són usuaris de calendari. S'indicaran un usuari per línia i s'en pot incloure una adreça de correu electrònic. Si s'especifica una adreça electrònica, l'usuari podrà rebre notificacions i recordatoris
 External Participants: Participants externs

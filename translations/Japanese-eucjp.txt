@@ -172,7 +172,7 @@ Small Task Date: 小さなタスクの日付
 display-week-starts-on: 週が日曜日か月曜日でスタートするかどうか指定します。月曜が指定されれば、週番号は ISO 週番号になるでしょう。
 Week starts on: 週の始まり
 Weekend starts on: 週末の開始
-time-format-help: 使用する時間の書式を指定します:<br /><i>12 時下:</i> 例えば時間表示は「3am」「8:30pm」などです。<br /><i>24 時間:</i> 例えば時間表示は「300」「2030」などです。
+time-format-help: 使用する時間の書式を指定します:<br><i>12 時下:</i> 例えば時間表示は「3am」「8:30pm」などです。<br><i>24 時間:</i> 例えば時間表示は「300」「2030」などです。
 Time format: 時間の書式
 12 hour: 12時間
 24 hour: 24時間
@@ -213,7 +213,7 @@ Restrictions: 制限
 allow-view-other-help: ユーザーが他のユーザーのカレンダーを見てもいいかどうか指定します。
 Allow viewing other users calendars: 他のユーザーのカレンダーを見ることを許可する
 Require event approvals: イベントの承認を必要とする
-display-unapproved-help: 承認が済んでいないイベントをカレンダーに表示するかどうか指定します。<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+display-unapproved-help: 承認が済んでいないイベントをカレンダーに表示するかどうか指定します。<br> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: 未承認イベントの表示
 conflict-check-help: イベントの衝突を確認します(同一人物の同じ時間で予定される 2 つのイベントスケジュール)これを「はい」に設定した場合、警告を確認した後に、同時に 2 つのイベントを予定することができるでしょう。これを「いいえ」に設定した場合、衝突の確認をしないでしょう。したがっておそらく衝突の発生を確認するためにこれを「はい」に設定したいでしょう。
 Check for event conflicts: イベント衝突を確認する
@@ -499,7 +499,7 @@ brief-description-help: これはイベントの短い説明を提供しなければなりません(約 20
 Brief Description: 簡単な説明
 full-description-help: これは、出来事の詳細を仕上げるするべきです。ユーザーがイベントを見たとき、この情報は見ることができます。
 Full Description: 詳しい説明
-access-help: イベントのアクセスレベルを指定します。<br /> <i>公開</i>: 誰でも、イベントの全詳細を見ることができます。<br /><i>機密</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
+access-help: イベントのアクセスレベルを指定します。<br> <i>公開</i>: 誰でも、イベントの全詳細を見ることができます。<br><i>機密</i>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: アクセス
 priority-help: イベントの優先度を指定します。高い優先度のイベントはボールドで表示されるでしょう。
 Priority: 優先順位
@@ -522,8 +522,8 @@ Untimed event: 非時限イベント
 Timed event: 時限イベント
 All day event: 全日イベント
 Timezone Offset: タイムゾーン時差
-time-help: イベントの時間を指定します。<br /><i>このフィールドは空に出来ます。</i>
-duration-help: イベントの間隔(時:分)を指定します)<br /><i>このフィールドは空に出来ます。</i>
+time-help: イベントの時間を指定します。<br><i>このフィールドは空に出来ます。</i>
+duration-help: イベントの間隔(時:分)を指定します)<br><i>このフィールドは空に出来ます。</i>
 end-time-help: イベントが終了すると予想される時間(期間)を指定します。
 Start Time: 開始時間
 Due Date: 予定日

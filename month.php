@@ -66,11 +66,11 @@ if ( empty ( $DISPLAY_TASKS ) || $DISPLAY_TASKS == 'N' &&
 if ( $DISPLAY_TASKS == 'Y' && $friendly != 1 ) {
   if ( $DISPLAY_SM_MONTH != 'N' ) {
     $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false,
-      'nextmonth', $monthURL ) . '<br />';
+      'nextmonth', $monthURL ) . '<br>';
     $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false,
-      'prevmonth', $monthURL ) . '<br />';
+      'prevmonth', $monthURL ) . '<br>';
   } else {
-    $nextMonth2 =  $prevMonth2 = '<br /><br /><br /><br />';
+    $nextMonth2 =  $prevMonth2 = '<br><br><br><br>';
   }
   $smallTasks = display_small_tasks ( $cat_id );
   $tableWidth = '80%';
@@ -87,8 +87,7 @@ if ( empty ( $friendly ) ) {
 $trailerStr = print_trailer();
 
 $HeadX = generate_refresh_meta()
-  . '<script type="text/javascript" src="includes/js/weekHover.js?'
-  . filemtime( 'includes/js/weekHover.js' ) . '"></script>';
+  . '<script src="includes/js/weekHover.js"></script>';
 
 print_header(
   array( 'js/popups.js/true', 'js/visible.php', 'js/dblclick_add.js/true' ),

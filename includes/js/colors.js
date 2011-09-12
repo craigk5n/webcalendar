@@ -78,7 +78,7 @@ function fillhtml() {
       choicehtml += '<td height="14" width="14" bgcolor="#' + colorList[ctr]
       + '" onclick="setCol( \'' + colorList[ctr] + '\' )">'
       + '<img src="images/blank.gif" width="14" height="14" border="0" '
-      + 'alt="" /></a></td>' + nl;
+      + 'alt=""></a></td>' + nl;
     }
     choicehtml += '</tr>' + nl;
   }
@@ -88,7 +88,7 @@ function fillhtml() {
     customhtml += '<td id="precell' + i
        + '" bgcolor="#ffffff" onclick="preset( ' + i
        + ' )"><img src="images/blank.gif" width="14" id="preimg' + i
-       + '" height="14" border="0" alt="" /></td>' + nl;
+       + '" height="14" border="0" alt=""></td>' + nl;
     if ( i == 8 ) {
       customhtml += '</tr>' + nl + '<tr>';
     }

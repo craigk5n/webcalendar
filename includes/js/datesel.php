@@ -199,15 +199,15 @@ function datesel_UpdateDisplay ( div, datename, year, month, day, curYMD )
 
   var ret = 
     '<div style="width: 100%">' +
-    '<span class="clickable" onclick="datesel_Cancel()"/><img id="cancelImage" src="images/cancel.png" alt="x" /></span></div>' +
+    '<span class="clickable" onclick="datesel_Cancel()"><img id="cancelImage" src="images/cancel.png" alt="x"></span></div>' +
     '<table border="0" class="dateselTable">' +
     '<tr><td colspan="7" id="dateselMonthName">' +
     '<img src="images/combo-prev.png" align="left" class="clickable" ' +
     'onclick="datesel_goto(event,' + "'" + datename + "'" + ',' + prevYear + ',' +
-    prevMonth + ',' + prevDay + ',' + curYMD + ')" />' + months[month-1] + ' ' + year +
+    prevMonth + ',' + prevDay + ',' + curYMD + ')">' + months[month-1] + ' ' + year +
     '<img src="images/combo-next.png" align="right" class="clickable" ' +
     'onclick="datesel_goto(event,' + "'" + datename + "'" + ',' + nextYear + ',' +
-    nextMonth + ',' + nextDay + ',' + curYMD + ')" />' + '</td></tr>';
+    nextMonth + ',' + nextDay + ',' + curYMD + ')">' + '</td></tr>';
 
   ret += '<tr>';
   for ( var w = 0; w < 7; w++ ) {
