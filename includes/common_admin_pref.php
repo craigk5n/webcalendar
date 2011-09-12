@@ -20,10 +20,9 @@ $choices = $choices_text = $menuthemes = $prefarray = $s = $themes = array ();
 $editStr = '<input type="button" value="' . translate ( 'Edit' )
  . "...\" onclick=\"window.open( 'edit_template.php?type=%s','cal_template','"
  . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
- . 'outerWidth=520\' );" name="" /></p>';
+ . 'outerWidth=520\' );" name=""></p>';
 $option = '
             <option value="';
-$selected = ' selected="selected"';
 
 // Get system settings.
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
@@ -164,60 +163,58 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   if ( $prad ||
     ( ! $prad &&
       ( $key != 'Browser-defined' || $updating_public || $is_admin || $is_nonuser_admin ) ) )
-    $lang_list .= $option . $val . '"' . ( $val == $tmp ? $selected : '' )
-     . '>' . translate ( $key ) . '</option>';
+    $lang_list .= $option . $val . '"' . ( $val == $tmp ? ' selected>' : '>' )
+     . translate( $key ) . '</option>';
 }
 $tmp = ( $prad ? $s['DATE_FORMAT'] : $prefarray['DATE_FORMAT'] );
 for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i++ ) {
   $datestyle_ymd .= $option . $datestyles[$i] . '"'
-   . ( $tmp == $datestyles[$i] ? $selected : '' )
-   . '>' . $datestyles[++$i] . '</option>';
+   . ( $tmp == $datestyles[$i] ? ' selected>' : '>' )
+   . $datestyles[++$i] . '</option>';
 }
 $tmp = ( $prad ? $s['DATE_FORMAT_MY'] : $prefarray['DATE_FORMAT_MY'] );
 for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i++ ) {
   $datestyle_my .= $option . $datestyles_my[$i] . '"'
-   . ( $tmp == $datestyles_my[$i] ? $selected : '' )
-   . '>' . $datestyles_my[++$i] . '</option>';
+   . ( $tmp == $datestyles_my[$i] ? ' selected>' : '>' )
+   . $datestyles_my[++$i] . '</option>';
 }
 $tmp = ( $prad ? $s['DATE_FORMAT_MD'] : $prefarray['DATE_FORMAT_MD'] );
 for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i++ ) {
   $datestyle_md .= $option . $datestyles_md[$i] . '"'
-   . ( $tmp == $datestyles_md[$i] ? $selected : '' )
-   . '>' . $datestyles_md[++$i] . '</option>';
+   . ( $tmp == $datestyles_md[$i] ? ' selected>' : '>' )
+   . $datestyles_md[++$i] . '</option>';
 }
 $tmp = ( $prad ? $s['DATE_FORMAT_TASK'] : $prefarray['DATE_FORMAT_TASK'] );
 for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i++ ) {
   $datestyle_tk .= $option . $datestyles_task[$i] . '"'
-   . ( $tmp == $datestyles_task[$i] ? $selected : '' )
-   . '>' . $datestyles_task[++$i] . '</option>';
+   . ( $tmp == $datestyles_task[$i] ? ' selected>' : '>' )
+   . $datestyles_task[++$i] . '</option>';
 }
 $tmp_wk = ( $prad ? $s['WEEK_START'] : $prefarray['WEEK_START'] );
 $tmp_en = ( $prad ? $s['WEEKEND_START'] :$prefarray['WEEKEND_START'] );
 for ( $i = 0; $i < 7; $i++ ) {
   $start_wk_on .= $option . "$i\""
-   . ( $i == $tmp_wk ? $selected : '' )
-   . '>' . weekday_name ( $i ) . '</option>';
+   . ( $i == $tmp_wk ? ' selected>' : '>' )
+   . weekday_name( $i ) . '</option>';
   $j = ( $i == 0 ? 6 : $i - 1 ); // Make sure to start with Saturday.
   $start_wkend_on .= $option . "$j\""
-   . ( $j == $tmp_en ? $selected : '' )
-   . '>' . weekday_name ( $j ) . '</option>';
+   . ( $j == $tmp_en ? ' selected>' : '>' )
+   . weekday_name( $j ) . '</option>';
 }
 $tmp_st = ( $prad ? $s['WORK_DAY_START_HOUR'] : $prefarray['WORK_DAY_START_HOUR'] );
 $tmp_en = ( $prad ? $s['WORK_DAY_END_HOUR'] : $prefarray['WORK_DAY_END_HOUR'] );
 for ( $i = 0; $i < 24; $i++ ) {
   $tmp = display_time ( $i * 10000, 1 );
   $work_hr_start .= $option . "$i\""
-   . ( $i == $tmp_st ? $selected : '' )
-   . '>' . $tmp . '</option>';
+   . ( $i == $tmp_st ? ' selected>' : '>' ) . $tmp . '</option>';
   $work_hr_end .= $option . "$i\""
-   . ( $i == $tmp_en ? $selected : '' )
-   . '>' . $tmp . '</option>';
+   . ( $i == $tmp_en ? ' selected>' : '>' ) . $tmp . '</option>';
 }
 $tmp = ( $prad ? $s['STARTVIEW'] : $prefarray['STARTVIEW'] );
 for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
   $prefer_vu .= $option . $choices[$i] . '"'
-   . ( $tmp == $choices[$i] ? $selected : '' )
-   . '>' . htmlspecialchars ( $choices_text[$i] ) . '</option>';
+   . ( $tmp == $choices[$i] ? ' selected>' : '>' )
+   . htmlspecialchars( $choices_text[$i] ) . '</option>';
 }
 // Allow user to select a view also.
 $tmp = ( $prad ? $s['STARTVIEW'] : $prefarray['STARTVIEW'] );
@@ -229,8 +226,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
   $xurl = $views[$i]['url'];
   $xurl_strip = str_replace ( '&amp;', '&', $xurl );
   $user_vu .= $option . $xurl . '"'
-   . ( $tmp == $xurl_strip ? $selected : '' )
-   . '>' . htmlspecialchars ( $views[$i]['cal_name'] ) . '</option>';
+   . ( $tmp == $xurl_strip ? ' selected>' : '>' )
+   . htmlspecialchars( $views[$i]['cal_name'] ) . '</option>';
 }
 foreach ( array (
     'BGCOLOR' => translate ( 'Document background' ),
@@ -322,7 +319,7 @@ function save_pref ( $prefs, $src ) {
             cal_value ) VALUES ( ?, ?, ? )';
           if ( ! dbi_execute ( $sql, array ( $prefuser, $setting, $value ) ) ) {
             $error = 'Unable to update preference: ' . dbi_error ()
-             . '<br /><br /><span class="bold">SQL:</span>' . $sql;
+             . '<br><br><span class="bold">SQL:</span>' . $sql;
             break;
           }
         }

@@ -191,7 +191,7 @@ display-week-starts-on: Specifica se la settimana inizia Domenica o Luned&igrave
 Week starts on: La settimana inizia di
 display-weekend-starts-on: Imposta giorno di inizio del fine settimana
 Weekend starts on: Il fine settimana inizia di
-time-format-help: Specifica quale formato orario usare: <br /><i>12 ore:</i> Mostra le ore come 3am, 8:30pm, ecc.  <br /><i>24 ore:</i> Mostra le ore come 3:00, 20:30, ecc.
+time-format-help: Specifica quale formato orario usare: <br><i>12 ore:</i> Mostra le ore come 3am, 8:30pm, ecc.  <br><i>24 ore:</i> Mostra le ore come 3:00, 20:30, ecc.
 Time format: Formato ora
 12 hour: 12 ore
 24 hour: 24 ore
@@ -239,7 +239,7 @@ allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calenda
 Allow viewing other users calendars: Permetti la visione dei calendari degli altri utenti
 require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad Accesso Pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
 Require event approvals: Richiedi che gli eventi siano approvati
-display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br /> Se impostato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br /> Se impostato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
+display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br> Se impostato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br> Se impostato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
 Display unapproved: Mostra eventi non approvati
 conflict-check-help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo imposti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo imposti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia impostare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
 Check for event conflicts: Controlla se esistono conflitti fra gli eventi
@@ -562,8 +562,8 @@ hour ahead of you: ora in avanti rispetto a te
 hour behind you: ora indietro rispetto a te
 hours ahead of you: ore in avanti rispetto a te
 hours behind you: ore indietro rispetto a te
-XXX is in a different timezone (ahead): (XXX &egrave; in un fuso orario differente; YYY avanti rispetto a te.<br />&nbsp;ZZZ)
-XXX is in a different timezone (behind): (XXX &egrave; in un fuso orario differente; YYY indietro rispetto a te.<br />&nbsp;ZZZ)
+XXX is in a different timezone (ahead): (XXX &egrave; in un fuso orario differente; YYY avanti rispetto a te.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX &egrave; in un fuso orario differente; YYY indietro rispetto a te.<br>&nbsp;ZZZ)
 Time entered here is based on your Timezone.: L'orario inserito qui &egrave; basato sul <b>tuo</b> fuso orario.
 Edit Entry: Modifica Nota
 Add Entry: Aggiungi Nota
@@ -575,7 +575,7 @@ brief-description-help: Questo dovrebbe dare una breve descrizione (circa 20 car
 Brief Description: Descrizione Breve
 full-description-help: Questo dovrebbe dare dettagli completi dell'evento. Questa informazione sar&agrave; mostrata quando l'utente visualizza l'evento.
 Full Description: Descrizione Completa
-access-help: Specifica il livello di accesso dell'evento.<br /> <i>Pubblico</i>: Chiunque pu&ograve; vedere tutti i dettagli dell'evento.  <br /><i>Confidenziale</i>: Gli altri possono vedere che &egrave; presente una nota per quella data e ora, ma non i dettagli relativi.
+access-help: Specifica il livello di accesso dell'evento.<br> <i>Pubblico</i>: Chiunque pu&ograve; vedere tutti i dettagli dell'evento.  <br><i>Confidenziale</i>: Gli altri possono vedere che &egrave; presente una nota per quella data e ora, ma non i dettagli relativi.
 Access: Accesso
 priority-help: Specifica la priorit&agrave; dell'evento. Eventi con un alta priorit&agrave; saranno mostrati in grassetto.
 Priority: Priorit&agrave;
@@ -599,8 +599,8 @@ Untimed event: Evento senza tempo
 Timed event: Evento temporizzato
 All day event: Evento giornaliero
 Timezone Offset: Scostamento della Timezone
-time-help: Specifica l'ora di un evento.<br /><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
-duration-help: Specifica la durata (in minuti) dell'evento. <br /><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
+time-help: Specifica l'ora di un evento.<br><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
+duration-help: Specifica la durata (in minuti) dell'evento. <br><i>Questo campo pu&ograve; essere lasciato in bianco.</i>
 end-time-help: Specifica il tempo previsto per la fine dell'evento
 Start Time: Ora inizio
 Due Date: Data fine
@@ -666,7 +666,7 @@ Start: Inizio
 End/Due: Fine/Termine
 Times: Volte
 Every: Ogni
-CAPTCHA Warning: <b>Attenzione:</b> Impossibile usare <i>CAPTCHA</i> senza l'estensione GD di PHP!<br />
+CAPTCHA Warning: <b>Attenzione:</b> Impossibile usare <i>CAPTCHA</i> senza l'estensione GD di PHP!<br>
 Delete entry: Cancella nota
 You are not authorized to edit this entry.: Non sei autorizzato a modificare questa nota
 
@@ -1351,7 +1351,7 @@ Invalid function id: Id funzione non valido
 ########################################
 # Page: includes/config.php
 #
-Could not find settings.php file...: Impossibile trovare "settings.php".<br />Copia "settings.php.orig" in "settings.php" e modificalo per il tuo sito.
+Could not find settings.php file...: Impossibile trovare "settings.php".<br>Copia "settings.php.orig" in "settings.php" e modificalo per il tuo sito.
 Incomplete settings.php file...: "settings.php" incompleto ...
 Could not find XXX defined in...: "XXX" non pare definito nel tuo "settings.php".
 You must define XXX in: Devi definire "XXX" in "settings.php".
@@ -1771,7 +1771,7 @@ WebCalendar Setup Wizard: Impostazione guidata di WebCalendar
 Error you must specify a Single-User Login: Errore: devi specificare un accesso a singolo-utente.
 Full Path (no backslashes): Percorso completo (no barra-inversa)
 The password contains illegal characters.: La parola chiave contiene caratteri non ammessi.
-This installation wizard will guide you...: L'installazione guidata ti condurr&agrave; attraverso una impostazione base di WebCalendar. Per aiuto e soluzione dei problemi vedi:<br />
+This installation wizard will guide you...: L'installazione guidata ti condurr&agrave; attraverso una impostazione base di WebCalendar. Per aiuto e soluzione dei problemi vedi:<br>
 System Administrators Guide: Guida per l'amministratore di sistema
 Frequently Asked Questions: Domande Frequenti (FAQ)
 FAQ: =

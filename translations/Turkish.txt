@@ -80,7 +80,7 @@ Help: Yardim
 Language: Lisan
 None: Hic
 Week starts on: Hafta baslangici
-time-format-help: Hangi saat özelligi kullanildigini gösterir:<br /><i>12-saatlik:</i> Saati 3am, 8:30pm vs. diye gösterir.<br /><i>24-saatlik:</i> Saati 3.00, 20.30 vs. diye gösterir.
+time-format-help: Hangi saat özelligi kullanildigini gösterir:<br><i>12-saatlik:</i> Saati 3am, 8:30pm vs. diye gösterir.<br><i>24-saatlik:</i> Saati 3.00, 20.30 vs. diye gösterir.
 Time format: Saat
 12 hour: 12-saatlik
 24 hour: 24-saatlik
@@ -92,7 +92,7 @@ to: Kime
 Preferred view: Asil kullanim/gösteri
 display-week-number-help: Kacinci Hafta oldugunu (1-52) Aylik ve Haftalik görünümlerinde gösterir.
 Display week number: Kacinci Hafta
-display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<br /> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<br /> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir.
+display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<br> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<br> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir.
 Display unapproved: Onaylanmamis Termin'leri gör
 Yes: Evet
 No: Hayir
@@ -135,7 +135,7 @@ brief-description-help: Termin icin kisa Özet (20 Isaret). Takvimde bu görünür.
 Brief Description: Özel Anlami
 full-description-help: Terminin tamamen aciklamasi. Bu aciklamayi Kullanici Termin'de görür.
 Full Description: Tüm Anlam
-access-help: Termine giris özelliklerini gösterir.<br /> <i>Acik</i>: Herkes her Detayli görebilir.<br /><i>Özel</i>: Termin'in varligini görebilir, ama hicbir Detayli göremez.
+access-help: Termine giris özelliklerini gösterir.<br> <i>Acik</i>: Herkes her Detayli görebilir.<br><i>Özel</i>: Termin'in varligini görebilir, ama hicbir Detayli göremez.
 Access: Giris
 priority-help: Termin'in Prioritesini gösterir. Prioritesi yüksek olan Termin'ler kalin yazi olarak gösterilir.
 Priority: Priorite
@@ -143,8 +143,8 @@ High: yüksek
 Medium: orta
 Low: alcak
 date-help: Termin'in tarihini gösterir.
-time-help: Termin'in saatini gösterir.<br /><i>Bos birakilabilir.</i>
-duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<br /><i>Bos birakilabilir.</i>
+time-help: Termin'in saatini gösterir.<br><i>Bos birakilabilir.</i>
+duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<br><i>Bos birakilabilir.</i>
 participants-help: Termine katilanlari gösterir.
 Daily: Günliük
 Weekly: Haftalik

@@ -66,7 +66,7 @@ function quoteIMAP($str)
 function user_valid_login ( $login, $password ) {
   global $error,$auth, $imap_host, $imap_port, $allow_auto_create, $PHP_SELF;
   $ret = false;
-//  do_debug ("in imap/user_valid_login...<br />\nl=$login p=$password<br />\n");
+//  do_debug("in imap/user_valid_login...<br>\nl=$login p=$password<br>\n");
 
   $all_imap_hosts = array ();
   $all_imap_ports = array ();

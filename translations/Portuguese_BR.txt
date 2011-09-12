@@ -134,7 +134,7 @@ date-format-help: Especifique um formato de data preferido.
 Date format: Formato da Data
 display-week-starts-on: Especifica se a semana começa em uma Segunda ou um Domingo. Se a Segunda for especificada, os números de semana serão números ISO.
 Week starts on: Semana começa em
-time-format-help: Especifica o formato da hora a ser utilizada:<br /><i>12 horas
+time-format-help: Especifica o formato da hora a ser utilizada:<br><i>12 horas
 Time format: Formato da Hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -163,7 +163,7 @@ allow-view-other-help: Especifica um usuário que poderá visualizar o calendário
 Allow viewing other users calendars: Permitir visualização do calendário de outro usuário
 require-approvals-help: Quando habilitada, um usuário precisa aprovar um evento antes dele ser exibido no seu calendário (a não ser que Exibir não-aprovados esteja habilitado). Configurar aqui para "Não" não desligará as aprovações para o calendário de Acesso Público (se o claendário público estiver habilitado).
 Require event approvals: Requer aprovação do evento
-display-unapproved-help: Especifica se eventos não-aprovados são exibidos em seu calendário.<br /> Se configurado para "Sim", então eventos não-aprovados serão exibidos em seu calendário (em uma cor de texto diferente.<br /> Se configurado para "Não", então eventos precisam ser aprovados antes deles serem exibidos no seu calendário.
+display-unapproved-help: Especifica se eventos não-aprovados são exibidos em seu calendário.<br> Se configurado para "Sim", então eventos não-aprovados serão exibidos em seu calendário (em uma cor de texto diferente.<br> Se configurado para "Não", então eventos precisam ser aprovados antes deles serem exibidos no seu calendário.
 Display unapproved: Visualizar não-aprovados
 conflict-check-help: Verificar se o evento está em conflito (dois eventos agendado no mesmo horário)
 Check for event conflicts: Verificar eventos conflitantes
@@ -326,7 +326,7 @@ brief-description-help: Esta deve oferecer uma breve descição (em torno de 20 ca
 Brief Description: Descrição breve
 full-description-help: Esta deve completar os detalhes do evento. Esta informação pode ser vista quando o usuário vê o evento.
 Full Description: Descrição completa
-access-help: Especifica o nível de acesso de um evento.<br /> <i>Publico</i>: Todos podem ver os detalhes do evento.<br /><i>Confidencial</i>: Os outros podem ver que você tem uma entrada para aquele dia e hora, mas não os detalhes do evento.
+access-help: Especifica o nível de acesso de um evento.<br> <i>Publico</i>: Todos podem ver os detalhes do evento.<br><i>Confidencial</i>: Os outros podem ver que você tem uma entrada para aquele dia e hora, mas não os detalhes do evento.
 Access: Accesso
 priority-help: Especifica a prioridade do evento. Eventos de Alta Prioridade serão exibidos em negrito.
 Priority: Prioridade
@@ -340,8 +340,8 @@ Untimed event: Evento sem hora
 Timed event: Eventos com Hora
 All day event: Evento no dia todo
 Timezone Offset: Diferença de Fuso Horário
-time-help: Especifica a hora do evento<br /><i>Este campo é opcional.</i>
-duration-help: Especifica a duração (em minutos) do evento.<br /><i>Este campo
+time-help: Especifica a hora do evento<br><i>Este campo é opcional.</i>
+duration-help: Especifica a duração (em minutos) do evento.<br><i>Este campo
 end-time-help: Especifica a hora em que um evento terminará.
 participants-help: Lista os participantes desse evento
 Availability: Disponibilidade

@@ -19,7 +19,7 @@ echo '
 if ( empty ( $error ) ) {
   echo '
       <a title="' . $newRemoteStr . '" href="edit_remotes.php?add=1"'
-   . $targetStr . $newRemoteStr . '</a><br />';
+   . $targetStr . $newRemoteStr . '</a><br>';
   // Displaying Remote Calendars
   $userlist = get_nonuser_cals ( $login, true );
   if ( ! empty ( $userlist ) ) {

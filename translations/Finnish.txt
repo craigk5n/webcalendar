@@ -125,7 +125,7 @@ date-format-help: M‰‰ritt‰‰ p‰iv‰n esitysmuodon.
 Date format: P‰iv‰yksen muoto
 display-week-starts-on: M‰‰rittelee viikon alkamisp‰iv‰ksi joko sunnuntai tai maanantai. Jos maanantai valittu, niin viikonnumero lasketaan ISO-j‰rjestelm‰n mukaisesti.
 Week starts on: Viikon ensimm‰inen p‰iv‰
-time-format-help: M‰‰rittelee ajan esitysmuodon,<br /><i>12 tuntia</i><br /><i>24 tuntia</i>
+time-format-help: M‰‰rittelee ajan esitysmuodon,<br><i>12 tuntia</i><br><i>24 tuntia</i>
 Time format: Ajan esitystapa
 12 hour: 12 tuntia
 24 hour: 24 tuntia
@@ -150,7 +150,7 @@ allow-view-other-help: M‰‰ritt‰‰, salliiko kalenteri k‰ytt‰j‰n tarkastella toise
 Allow viewing other users calendars: Salli muiden henkilˆiden kalenterien tarkastelu
 require-approvals-help: Jos p‰‰ll‰, k‰ytt‰j‰n on vahvistettava tapahtuma ennenkuin se n‰kyy kalenterissa.
 Require event approvals: Vaadi tapahtumien vahvistus
-display-unapproved-help: M‰‰rittelee n‰ytet‰‰nkˆ hyv‰ksym‰ttˆm‰t tapahtumat kalenterissa.<br />Jos valittu "Kyll‰", niin hyv‰ksym‰ttˆm‰t tapahtumat n‰ytet‰‰n (eri v‰rill‰).<br />Jos valittu "Ei", niin tapahtumat tulee hyv‰ksy‰ ennenkuin ne n‰kyv‰t kalenterissa.
+display-unapproved-help: M‰‰rittelee n‰ytet‰‰nkˆ hyv‰ksym‰ttˆm‰t tapahtumat kalenterissa.<br>Jos valittu "Kyll‰", niin hyv‰ksym‰ttˆm‰t tapahtumat n‰ytet‰‰n (eri v‰rill‰).<br>Jos valittu "Ei", niin tapahtumat tulee hyv‰ksy‰ ennenkuin ne n‰kyv‰t kalenterissa.
 Display unapproved: N‰yt‰ hyv‰ksym‰ttˆm‰t tapahtumat
 conflict-check-help: Tarkista tapahtumien konfliktit
 Check for event conflicts: Tarkista tapahtumien konfliktit
@@ -295,7 +295,7 @@ brief-description-help: Kalenterimerkinn‰n otsikko (noin 20 merkki‰). N‰ytet‰‰n 
 Brief Description: Selite
 full-description-help: Sis‰lt‰‰ tapahtuman tiedot. N‰m‰ n‰ytet‰‰n kun k‰ytt‰j‰ katsoo kalenterimerkinn‰n tietoja.
 Full Description: Selitys
-access-help: M‰‰rittelee tapahtuman n‰kyvyyden.<br /> <i>Julkinen</i>: Kaikki n‰kev‰t kaikki tapahtuman tiedot.<br /><i>Luottamuksellinen</i>: Muut n‰kev‰t vain tapahtuman p‰iv‰m‰‰r‰n ja ajan, mutta ei muita tietoja.
+access-help: M‰‰rittelee tapahtuman n‰kyvyyden.<br> <i>Julkinen</i>: Kaikki n‰kev‰t kaikki tapahtuman tiedot.<br><i>Luottamuksellinen</i>: Muut n‰kev‰t vain tapahtuman p‰iv‰m‰‰r‰n ja ajan, mutta ei muita tietoja.
 Access: Saantioikeus
 priority-help: M‰‰rittelee tapahtuman t‰rkeyden. T‰rkeimm‰t n‰ytet‰‰n lihavoituna.
 Priority: T‰rkeys
@@ -310,8 +310,8 @@ Untimed event: Ajoittamaton tapahtuma
 Timed event: Ajoitettu tapahtuma
 All day event: Koko p‰iv‰n kest‰v‰ tapahtuma
 Timezone Offset: Aikaero
-time-help: M‰‰rittelee tapahtuman ajan.<br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
-duration-help: M‰‰rittelee tapahtuman keston (tunteina ja minuutteina).<br /><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
+time-help: M‰‰rittelee tapahtuman ajan.<br><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
+duration-help: M‰‰rittelee tapahtuman keston (tunteina ja minuutteina).<br><i>(Voidaan j‰tt‰‰ tyhj‰ksi)</i>
 participants-help: Luetteloi tapahtuman osanottajat.
 external-participants-help: M‰‰ritt‰‰ listan ulkoisista tapahtuman osallistujista.
 External Participants: Ulkoisia osallistujia

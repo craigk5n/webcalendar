@@ -65,13 +65,13 @@ echo <<<EOT
       <a title="{$previousStr}" class="prev"
         href="view_d.php?id={$id}&amp;date={$prevdate}">
         <img src="images/leftarrow.gif" class="prev"
-          alt="{$previousStr}" /></a>
+          alt="{$previousStr}"></a>
       <a title="{$nextStr}" class="next"
         href="view_d.php?id={$id}&amp;date={$nextdate}">
         <img src="images/rightarrow.gif" class="next"
-          alt="{$nextStr}" /></a>
+          alt="{$nextStr}"></a>
       <div class="title">
-        <span class="date">{$nowStr}</span><br />
+        <span class="date">{$nowStr}</span><br>
         <span class="viewname">{$view_name}</span>
       </div>
     </div>
@@ -80,10 +80,10 @@ echo <<<EOT
     <!-- Hidden form for booking events -->
     <form action="edit_entry.php" method="post" name="schedule">
       <input type="hidden" name="date"
-        value="{$thisyear}{$thismonth}{$thisday}" />
-      <input type="hidden" name="defusers" value="{$partStr}" />
-      <input type="hidden" name="hour" value="" />
-      <input type="hidden" name="minute" value="" />
+        value="{$thisyear}{$thismonth}{$thisday}">
+      <input type="hidden" name="defusers" value="{$partStr}">
+      <input type="hidden" name="hour" value="">
+      <input type="hidden" name="minute" value="">
     </form>
 
     {$printerStr}

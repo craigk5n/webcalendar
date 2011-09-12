@@ -115,7 +115,7 @@ if ( $action == 'get' ) {
   $wkstart = get_weekday_before ( $startyear, $startmonth );
   $startTime = $wkstart;
   if ( $debug )
-    echo "startdate: $startdate <br />enddate: $enddate<br />startTime: $startTime<br />";
+    echo "startdate: $startdate <br>enddate: $enddate<br>startTime: $startTime<br>";
   $repeated_events = read_repeated_events ( $user, $startTime, $endTime );
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $user, $startTime, $endTime );
@@ -422,7 +422,7 @@ function load_category_ids ( $ids )
     '(cat_owner = \'' . $user . '\' OR cat_owner IS NULL) ' .
     'ORDER BY cat_order';
   if ( $debug )
-    echo "SQL: $sql <br />";
+    echo "SQL: $sql <br>";
   $res = dbi_execute ( $sql, array() );
   $eventCats = array();
   if ( $res ) {

@@ -173,7 +173,7 @@ brief-description-help: 佇遮簡單描述這個活動（約略二十字以內）。佇行事曆面頂是用
 Brief Description: 概要描述
 full-description-help: 活動 e 詳細說明。用者檢視活動內涵 e 時陣，會看著這部分。
 Full Description: 完整描述
-access-help: 活動 e 顯示設定。<br /> <i>公眾 e </i>: 所有人都看會著活動 e 詳細資料。<br /><i>機密 e </i>: 別人看會著你佇某日某時陣有活動記事，但是看 be 著詳細資料。
+access-help: 活動 e 顯示設定。<br> <i>公眾 e </i>: 所有人都看會著活動 e 詳細資料。<br><i>機密 e </i>: 別人看會著你佇某日某時陣有活動記事，但是看 be 著詳細資料。
 Access: 顯示設定
 priority-help: 活動 e 優先等級。高等級 e 活動會用粗體字型特別表示。
 Priority: 優先等級
@@ -186,8 +186,8 @@ date-help: 活動舉辦 e 日期。
 Untimed event: 無定時間 e 活動
 Timed event: 有定時間 e 活動
 All day event: 歸工 e 活動
-time-help: 活動舉辦 e 時間。<br /><i>這項會使免添。</i>
-duration-help: 活動前後 e 長度（按分鐘算）。<br /><i>這項會使免添。</i>
+time-help: 活動舉辦 e 時間。<br><i>這項會使免添。</i>
+duration-help: 活動前後 e 長度（按分鐘算）。<br><i>這項會使免添。</i>
 participants-help: 列出這項記事 e 參與者。
 external-participants-help: 非行事曆用者 e 本活動參與者名單。一 choa 應該列一位，會使包括電子郵便住址。有列住址 e 參與者通收著通知函及提醒函。
 External Participants: 外面參與者

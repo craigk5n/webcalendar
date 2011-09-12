@@ -106,7 +106,7 @@ date-format-help: Mae hwn yn dynodi y fformat dyddiad arferol.
 Date format: Fformat dyddiad
 display-week-starts-on: Mae hwn yn dynodi a yw wythnosau i ddechrau ar ddydd Sul neu Llun. Os dynoder dydd Llun, yna defnyddir rhifau wythnos system ISO.
 Week starts on: Wythnos yn dechrau ar ddydd
-time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio:<br /><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.<br /><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
+time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio:<br><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.<br><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
 Time format: Fformat amser
 12 hour: 12 awr
 24 hour: 24 awr
@@ -126,7 +126,7 @@ allow-view-other-help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio
 Allow viewing other users calendars: Caniatad i wylio calendr rhywun arall
 require-approvals-help: Pan mae hwn yn cael ei ddefnyddio rhaid i'r defnyddwr cymeradwyo digwyddiad cyn iddo gael ei ddangos ar ei calendr (os nad yw 'Dangos heb Cymeradwyaeth' ymlaen) Noder wrth gosod hwn i 'Na' ni fydd hwn yn hepgor ar yr angen i cymeradwyo digwyddiadau i'r Calendr Cyhoeddus (os yw'r Calendr Cyhoeddus wedi ei 'alluogi').
 Require event approvals: Cymeradwyaeth i ddigwyddiadau'n angenrheidiol
-display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br /> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br /> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
+display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
 Display unapproved: Dangoser digwyddiadau heb cymeradwyaeth
 conflict-check-help: Mae hwn yn rhybuddio am gwrthdrawiadau rhwng digwyddiadau (dau digwyddiad wedi eu dynodi am yr un amser ar calendr un person). Os y dewisir "Ie", mi fydd hi dal yn bosib i drefnu dau digwyddiad ar yr un amser os y rhoddir cadarnhad ar ol rhybudd. Os y dewisir "Na", ni fydd yna unrhyw rybudd o gwrthdrawiadau rhwng digwyddiadau. Mae hi'n arferol yn well i gosod hwn i "Ie", felly bod modd osgoi gwrthdrawiadau.
 Check for event conflicts: Edrycher am gwrthdrawiadau rhwng digwyddiadau
@@ -236,7 +236,7 @@ brief-description-help: Defnyddir hwn i roi disgrifiad byr (tua 20 llythyren) o'
 Brief Description: Disgrifiad Byr
 full-description-help: Defnyddir hwn i gwblhau manylion y digwyddiad. Mi all y defnyddiwr weld y wybodaeth yma wrth iddynt glicio ar y digwyddiad neu trwy symud y llygoden dros y digwyddiad.
 Full Description: Disgrifiad llawn
-access-help: Mae hwn yn dynodi lefel caniatad y digwyddiad.<br /> <i>Cyhoeddus</i>: Mae pawb yn gallu gweld holl fanylion y digwyddiad.<br /><i>Cyfrinachol</i>: Gall eraill gweld fod ganddoch digwyddiad am amser a dyddiad penodol, ond nid ydynt yn gallu gweld y manylion.
+access-help: Mae hwn yn dynodi lefel caniatad y digwyddiad.<br> <i>Cyhoeddus</i>: Mae pawb yn gallu gweld holl fanylion y digwyddiad.<br><i>Cyfrinachol</i>: Gall eraill gweld fod ganddoch digwyddiad am amser a dyddiad penodol, ond nid ydynt yn gallu gweld y manylion.
 Access: Caniatad
 priority-help: Mae hwn yn dynodi blaenoriaeth y digwyddiad. Mi fydd digwyddiadau gyda blaenoriaeth uchel yn cael ei dangos gyda llythrennau bras.
 Priority: Blaenoriaeth
@@ -246,8 +246,8 @@ Low: Isel
 category-help: Mae hwn yn dynodi dosbarth y digwyddiad.
 Category: Dosbarth
 date-help: Mae hwn yn dynodi dyddiad y digwyddiad.
-time-help: Mae hwn yn dynodi amser y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
-duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
+time-help: Mae hwn yn dynodi amser y digwyddiad.<br><i>Mi ellir gadael hwn yn wag.</i>
+duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad.<br><i>Mi ellir gadael hwn yn wag.</i>
 participants-help: Rhestrir y defnyddwyr sydd a cofnod o'r digwyddiad.
 repeat-type-help: Dewiswch pa more aml y dylsai'r digwyddiad ailgyflawni. Wrth dewis <i>Misol (wrth dydd o'r wythnos)</i> mi all digwyddiad ailgyflawni ar y Llun 1af o'r mis, 3ydd Iau o'r mis, ayyb. Wrth dewis <i>Misol (wrth dyddiad)</i> mi all digwyddiad ailgyflawni ar yr un diwrnod o'r mis (e.e. y 3ydd)
 Daily: Dyddiol

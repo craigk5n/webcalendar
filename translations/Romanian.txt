@@ -126,7 +126,7 @@ date-format-help: Specific&#259; formatul preferat pentru dat&#259;.
 Date format: Formatul datei
 display-week-starts-on: Specific&#259; dac&#259; s&#259;pt&#259;m&#226;na &#238;ncepe duminica sau lunea. Dac&#259; "Luni" este specificat, atunci numerele s&#259;pt&#259;m&#226;nilor vor fi numerele ISO.
 Week starts on: S&#259;pt&#259;m&#226;na &#238;ncepe
-time-format-help: Specific&#259; ce format s&#259; se foloseasc&#259;:<br /><i>12 ore:</i> Afi&#351;eaz&#259; orele ca 3am, 8:30pm, etc.<br /><i>24 ore:</i> Afi&#351;eaz&#259; orele ca 300, 2030, etc.
+time-format-help: Specific&#259; ce format s&#259; se foloseasc&#259;:<br><i>12 ore:</i> Afi&#351;eaz&#259; orele ca 3am, 8:30pm, etc.<br><i>24 ore:</i> Afi&#351;eaz&#259; orele ca 300, 2030, etc.
 Time format: Formatul orei
 12 hour: 12 ore
 24 hour: 24 ore
@@ -155,7 +155,7 @@ allow-view-other-help: Specific&#259; dac&#259; un utilizator poate s&#259; vad&
 Allow viewing other users calendars: Permite vizualizarea calendarelor altor utilizatori
 require-approvals-help: C&#226;nd activat&#259;, utilizatorul trebuie s&#259; aprobe evenimentele care vor fie afi&#351;ate in calendarul sau (&#238;n afar&#259; de cazul c&#226;nd "afi&#351;eaz&#259; neaprobatele" este activat). Nepun&#226;nd aici "Nu" va dezactiva aprobarile pentru calendarul cu access public (&#238;n cazul &#238;n care calendarul cu access public este activat).
 Require event approvals: Necesit&#259; aprobare pentru evenimente
-display-unapproved-help: Specific&#259; daca evenimentele neaprobate sunt afi&#351;ate &#238;n calendarul t&#259;u.<br /> Dac&#259; aici este "Da", atunci evenimentele neaprobate for fi afi&#351;ate &#238;n calendarul t&#259;u (intr-o alta culoare).<br /> Dac&#259; aici este "Nu", atunci evenimentele neaprobate trebuie aprobate &#238;nainte de a ap&#259;rea &#238;n calendarul t&#259;u.
+display-unapproved-help: Specific&#259; daca evenimentele neaprobate sunt afi&#351;ate &#238;n calendarul t&#259;u.<br> Dac&#259; aici este "Da", atunci evenimentele neaprobate for fi afi&#351;ate &#238;n calendarul t&#259;u (intr-o alta culoare).<br> Dac&#259; aici este "Nu", atunci evenimentele neaprobate trebuie aprobate &#238;nainte de a ap&#259;rea &#238;n calendarul t&#259;u.
 Display unapproved: Afi&#351;eaz&#259; neaprobatele
 conflict-check-help: Verific&#259; dac&#259; sunt conflicte de evenimente (dou&#259; evenimente &#238;n acela&#351;i timp pentru aceea&#351;i persoan&#259;). Dac&#259; la&#351;i aici "Da", vei fii totu&#351;i capabil s&#259; programezi dou&#259; evenimente &#238;n acela&#351;i timp dar cu confirmare special&#259;. Dac&#259; pui aici "Nu", atunci nu se va verifica dac&#259; sunt conflicte. Op&#355;iunea recomandat&#259; este "Da".
 Check for event conflicts: Verific&#259; dac&#259; sunt conflicte de evenimente
@@ -316,7 +316,7 @@ brief-description-help: Aceasta ar trebui s&#259; fie o scurt&#259; descriere (c
 Brief Description: Scurt&#259; descriere
 full-description-help: Aceasta ar trebui s&#259; descrie complet evenimentul. Aceste informa&#355;tii pot fi v&#259;zute c&#226;nd utilizatorul cite&#351;te despre eveniment.
 Full Description: Descriere detaliat&#259;
-access-help: Specific&#259; nivelul de acces pentru un eveniment dat.<br /> <i>Public</i>: Oricine poate vedea toate detaliile evenimentului.<br /><i>Confidential</i>: Al&#355;ii pot vedea c&#259; ai notat&#259; o data &#351;i or&#259;, dar nu pot citi detaliile.
+access-help: Specific&#259; nivelul de acces pentru un eveniment dat.<br> <i>Public</i>: Oricine poate vedea toate detaliile evenimentului.<br><i>Confidential</i>: Al&#355;ii pot vedea c&#259; ai notat&#259; o data &#351;i or&#259;, dar nu pot citi detaliile.
 Access: Acces
 priority-help: Specific&#259; prioritatea evenimentului. Evenimentele cu prioritate ridicat&#259; vor fi afi&#351;ate cu litere ingro&#351;ate.
 Priority: Prioritate
@@ -332,7 +332,7 @@ Timed event: Eveniment cu ora fixat&#259;
 All day event: Eveniment cuprinz&#226;nd toat&#259; ziua
 Timezone Offset: Diferen&#355;a de fus orar
 time-help: Specific&#259; ora evenimentului. Selecteaz&#259; fie "Eveniment cu ora fixat&#259;" (pentru evenimente programate la moment anume din zi), fie "Eveniment fara or&#259; fixat&#259;" (pentru evenimente care nu se petrec la o or&#259; anume - ca de exemplu o zi liber&#259;), fie "Cuprinz&#226;nd toat&#259; ziua" (pentru evenimente care iau toat&#259; ziua - de exemplu o aniversare).
-duration-help: Specific&#259; durata (in ore:minute) a evenimentului.<br /><i>Poate fi l&#259;sat gol.</i>
+duration-help: Specific&#259; durata (in ore:minute) a evenimentului.<br><i>Poate fi l&#259;sat gol.</i>
 end-time-help: Specific&#259; ora la care se a&#351;teapt&#259; ca evenimentul s&#259; se termine.
 participants-help: Listeaz&#259; participan&#355;ii din aceast&#259; &#238;nregistrare.
 external-participants-help: Specific&#259; o list&#259; de participan&#355;i la eveniment care nu sunt utilizatori ai calendarului. Ace&#351;ti utilizatori trebuie listati c&#226;te unul pe linie &#351;i se pot include cu adrese de email. Daca adresa de email este specificata, utilizatorul poate primi notificari &#351;i aduceri-aminte.

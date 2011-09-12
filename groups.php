@@ -11,7 +11,7 @@ echo '
     <a name="tabgroups"></a>
     <div id="tabscontent_groups">
       <a title="' . $newGroupStr . '" href="group_edit.php"' . $targetStr
- . $newGroupStr . '</a><br />';
+ . $newGroupStr . '</a><br>';
 
 $res = dbi_execute ( 'SELECT cal_group_id, cal_name FROM webcal_group
   ORDER BY cal_name' );

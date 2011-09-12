@@ -92,9 +92,9 @@ function admin_print_color_input_html ( $varname, $title, $varval = '' ) {
    . ':</label><input type="text" name="' . $name . '" id="' . $name
    . '" size="7" maxlength="7" value="' . $setting
    . '" onchange="updateColor( this, \'' . $varname
-   . '_sample\' );" /><span id="' . $varname . '_sample" style="background:'
+   . '_sample\' );"><span id="' . $varname . '_sample" style="background:'
    . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor( \''
-   . $name . '\', event )" value="' . $select . '" /></p>';
+   . $name . '\', event )" value="' . $select . '"></p>';
 }
 
 $currenttab = '';
@@ -167,8 +167,8 @@ $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
 
 print_header( array( 'js/translate.js.php' ),
-  '<script type="text/javascript" src="includes/js/admin.js"></script>
-    <script type="text/javascript" src="includes/js/visible.js"></script>',
+  '<script src="includes/js/admin.js"></script>
+    <script src="includes/js/visible.js"></script>',
   'onload="init_admin();showTab( \'' . $currenttab . '\' );"' );
 
 if ( ! $error ) {
@@ -194,8 +194,6 @@ if ( ! $error ) {
   define_languages(); // Load the language list.
   reset ( $languages );
 
-  $checked = ' checked="checked"';
-  $selected = ' selected="selected"';
   $select = translate ( 'Select' ) . '...';
 
   // Allow css_cache of webcal_config values.
@@ -205,7 +203,7 @@ if ( ! $error ) {
   $editStr = '<input type="button" value="' . translate ( 'Edit' )
    . "...\" onclick=\"window.open( 'edit_template.php?type=%s','cal_template','"
    . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
-   . 'outerWidth=520\' );" name="" />';
+   . 'outerWidth=520\' );" name="">';
   $choices = array ( 'day.php', 'week.php', 'month.php', 'year.php' );
   $choices_text = array ( translate ( 'Day' ), translate ( 'Week' ),
     translate ( 'Month' ), translate ( 'Year' ) );
@@ -245,54 +243,53 @@ if ( ! $error ) {
   // Move the loops here and combine a few.
   while ( list ( $key, $val ) = each ( $languages ) ) {
     $lang_list .= $option . $val . '"'
-     . ( $val == $s['LANGUAGE'] ? $selected : '' )
-     . '>' . $key . '</option>';
+     . ( $val == $s['LANGUAGE'] ? ' selected>' : '>' ) . $key . '</option>';
   }
   for ( $i = 0, $cnt = count ( $themes[0] ); $i < $cnt; $i++ ) {
     $theme_list .= $option . $themes[1][$i] . '">' . $themes[0][$i] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
     $datestyle_ymd .= $option . $datestyles[$i] . '"'
-     . ( $s['DATE_FORMAT'] == $datestyles[$i] ? $selected : '' )
-     . '>' . $datestyles[$i + 1] . '</option>';
+     . ( $s['DATE_FORMAT'] == $datestyles[$i] ? ' selected>' : '>' )
+     . $datestyles[$i + 1] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
     $datestyle_my .= $option . $datestyles_my[$i] . '"'
-     . ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] ? $selected : '' )
-     . '>' . $datestyles_my[$i + 1] . '</option>';
+     . ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] ? ' selected>' : '>' )
+     . $datestyles_my[$i + 1] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
     $datestyle_md .= $option . $datestyles_md[$i] . '"'
-     . ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] ? $selected : '' )
-     . '>' . $datestyles_md[$i + 1] . '</option>';
+     . ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] ? ' selected>' : '>' )
+     . $datestyles_md[$i + 1] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
     $datestyle_tk .= $option . $datestyles_task[$i] . '"'
-     . ( $s['DATE_FORMAT_TASK'] == $datestyles_task[$i] ? $selected : '' )
-     . '>' . $datestyles_task[$i + 1] . '</option>';
+     . ( $s['DATE_FORMAT_TASK'] == $datestyles_task[$i] ? ' selected>' : '>' )
+     . $datestyles_task[$i + 1] . '</option>';
   }
   for ( $i = 0; $i < 7; $i++ ) {
     $start_wk_on .= $option . "$i\""
-     . ( $i == $s['WEEK_START'] ? $selected : '' )
-     . '>' . weekday_name ( $i ) . '</option>';
+     . ( $i == $s['WEEK_START'] ? ' selected>' : '>' )
+     . weekday_name( $i ) . '</option>';
     $j = ( $i == 0 ? 6 : $i - 1 ); // Make sure to start with Saturday.
     $start_wkend_on .= $option . "$j\""
-     . ( $j == $s['WEEKEND_START'] ? $selected : '' )
-     . '>' . weekday_name ( $j ) . '</option>';
+     . ( $j == $s['WEEKEND_START'] ? ' selected>' : '>' )
+     . weekday_name( $j ) . '</option>';
   }
   for ( $i = 0; $i < 24; $i++ ) {
     $tmp = display_time ( $i * 10000, 1 );
     $work_hr_start .= $option . "$i\""
-     . ( $i == $s['WORK_DAY_START_HOUR'] ? $selected : '' )
-     . '>' . $tmp . '</option>';
+     . ( $i == $s['WORK_DAY_START_HOUR'] ? ' selected>' : '>' )
+     . $tmp . '</option>';
     $work_hr_end .= $option . "$i\""
-     . ( $i == $s['WORK_DAY_END_HOUR'] ? $selected : '' )
-     . '>' . $tmp . '</option>';
+     . ( $i == $s['WORK_DAY_END_HOUR'] ? ' selected>' : '>' )
+     . $tmp . '</option>';
   }
   for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
     $prefer_vu .= $option . $choices[$i] . '"'
-     . ( $s['STARTVIEW'] == $choices[$i] ? $selected : '' )
-     . '>' . $choices_text[$i] . '</option>';
+     . ( $s['STARTVIEW'] == $choices[$i] ? ' selected>' : '>' )
+     . $choices_text[$i] . '</option>';
   }
   // Allow user to select a view also.
   for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
@@ -302,13 +299,13 @@ if ( ! $error ) {
     $xurl = $views[$i]['url'];
     $xurl_strip = str_replace ( '&amp;', '&', $xurl );
     $user_vu .= $option . $xurl . '"'
-     . ( $s['STARTVIEW'] == $xurl_strip ? $selected : '' )
-     . '>' . $views[$i]['cal_name'] . '</option>';
+     . ( $s['STARTVIEW'] == $xurl_strip ? ' selected>' : '>' )
+     . $views[$i]['cal_name'] . '</option>';
   }
   foreach ( $menuthemes as $menutheme ) {
     $menu_theme_list .= $option . $menutheme . '"'
-     . ( $s['MENU_THEME'] == $menutheme ? $selected : '' )
-     . '>' . $menutheme . '</option>';
+     . ( $s['MENU_THEME'] == $menutheme ? ' selected>' : '>' )
+     . $menutheme . '</option>';
   }
   foreach ( array ( // Document color choices.
       'BGCOLOR' => translate ( 'Document background' ),
@@ -338,14 +335,14 @@ if ( ! $error ) {
    . '<img src="images/help.gif" alt="' . translate ( 'Help' )
    . '" class="help" onclick="window.open( \'help_admin.php\', \'cal_help\', '
    . '\'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,'
-   . 'outerWidth=420\' );" /></h2>
+   . 'outerWidth=420\' );"></h2>
     <form action="admin.php" method="post" onsubmit="return valid_form( this );"'
    . ' name="prefform">'
    . display_admin_link() . '
       <input type="hidden" name="currenttab" id="currenttab" value="'
-   . $currenttab . '" />
+   . $currenttab . '">
       <input type="submit" value="' . $saveStr
-   . '" name="" /><br /><br />
+   . '" name=""><br><br>
 
 <!-- TABS -->
       <div id="tabs">' . $tabs . '
@@ -362,7 +359,7 @@ if ( ! $error ) {
    . ':</label>
               <input type="text" size="40" name="admin_APPLICATION_NAME" '
    . 'id="admin_APPLICATION_NAME" value="'
-   . htmlspecialchars ( $s['APPLICATION_NAME'] ) . '" />'
+   . htmlspecialchars( $s['APPLICATION_NAME'] ) . '">'
    . ( $s['APPLICATION_NAME'] == 'Title'
     ? str_replace ( 'XXX', translate ( 'Title' ),
       translate ( 'Translated Name (XXX)' ) ) : '' ) . '</p>
@@ -371,13 +368,13 @@ if ( ! $error ) {
    . ':</label>
               <input type="text" size="70" name="admin_SERVER_URL" '
    . 'id="admin_SERVER_URL" value="' . htmlspecialchars ( $s['SERVER_URL'] )
-   . '" /></p>
+   . '"></p>
             <p><label for="admin_HOME_LINK" title="'
    . tooltip ( 'home-url-help' ) . '">' . translate ( 'Home URL' ) . ':</label>
               <input type="text" size="40" name="admin_HOME_LINK" '
    . 'id="admin_HOME_LINK" value="'
    . ( empty ( $s['HOME_LINK'] ) ? '' : htmlspecialchars ( $s['HOME_LINK'] ) )
-   . '" /></p>
+   . '"></p>
             <p><label for="admin_LANGUAGE" title="' . tooltip ( 'language-help' )
    . '">' . translate ( 'Language' ) . ':</label>
               <select name="admin_LANGUAGE" id="admin_LANGUAGE">' . $lang_list . '
@@ -389,13 +386,13 @@ if ( ! $error ) {
             <p><label for="admin_THEME" title="' . tooltip ( 'themes-help' )
    . '">' . translate ( 'Themes' ) . ':</label>
               <select name="admin_THEME" id="admin_THEME">
-                <option disabled="disabled">' . translate ( 'AVAILABLE THEMES' )
+                <option disabled>' . translate( 'AVAILABLE THEMES' )
    . '</option>'
   /* Always use 'none' as default so we don't overwrite manual settings. */
-   . $option . 'none"' . $selected . '>' . translate ( 'None' ) . '</option>'
+   . $option . 'none" selected>' . translate( 'None' ) . '</option>'
    . $theme_list . '
               </select><input type="button" name="preview" value="'
-   . translate ( 'Preview' ) . '" onclick="return showPreview()" />
+   . translate( 'Preview' ) . '" onclick="return showPreview()">
             </p>
           </fieldset>
           <fieldset>
@@ -496,13 +493,13 @@ if ( ! $error ) {
    . tooltip ( 'menu-themes-help' ) . '">' . translate ( 'Menu theme' )
    . ':</label>
               <select name="admin_MENU_THEME" id="admin_MENU_THEME">' . $option
-   . 'none"' . $selected . '>' . translate ( 'None' ) . '</option>'
+   . 'none" selected>' . translate( 'None' ) . '</option>'
    . $menu_theme_list . '
               </select></p>
             <p><label for="admin_FONTS" title="' . tooltip ( 'fonts-help' )
    . '">' . translate ( 'Fonts' )
    . ':</label><input type="text" size="40" name="admin_FONTS" id="admin_FONTS" value="'
-   . htmlspecialchars ( $s['FONTS'] ) . '" /></p>
+   . htmlspecialchars( $s['FONTS'] ) . '"></p>
             <p><label title="' . tooltip ( 'display-sm_month-help' ) . '">'
    . translate ( 'Display small months' ) . ':</label>'
    . print_radio ( 'DISPLAY_SM_MONTH' ) . '</p>
@@ -557,7 +554,7 @@ if ( ! $error ) {
    . translate ( 'Conflict checking months' ) . ':</label>
               <input type="text" size="3" '
    . 'name="admin_CONFLICT_REPEAT_MONTHS" value="'
-   . htmlspecialchars ( $s['CONFLICT_REPEAT_MONTHS'] ) . '" /></p>
+   . htmlspecialchars( $s['CONFLICT_REPEAT_MONTHS'] ) . '"></p>
             <p><label title="' . tooltip ( 'conflict-check-override-help' )
    . '">' . translate ( 'Allow users to override conflicts' ) . ':</label>'
    . print_radio ( 'ALLOW_CONFLICT_OVERRIDE' ) . '</p>
@@ -567,7 +564,7 @@ if ( ! $error ) {
             <p><label title="' . tooltip ( 'limit-appts-number-help' ) . '">'
    . translate ( 'Maximum timed events per day' ) . ':</label>
               <input type="text" size="3" name="admin_LIMIT_APPTS_NUMBER" value="'
-   . htmlspecialchars ( $s['LIMIT_APPTS_NUMBER'] ) . '" /></p>
+   . htmlspecialchars( $s['LIMIT_APPTS_NUMBER'] ) . '"></p>
             <p><label title="' . tooltip ( 'crossday-help' ) . '">'
    . translate ( 'Disable Cross-Day Events' ) . ':</label>'
    . print_radio ( 'DISABLE_CROSSDAY_EVENTS' ) . '</p>
@@ -618,17 +615,19 @@ if ( ! $error ) {
             <p><label title="' . tooltip ( 'summary_length-help' ) . '">'
    . translate ( 'Brief Description Length' )
    . ':</label><input type="text" size="3" name="admin_SUMMARY_LENGTH" value="'
-   . $s['SUMMARY_LENGTH'] . '" /></p>
+   . $s['SUMMARY_LENGTH'] . '"></p>
             <p><label for="admin_USER_SORT_ORDER" title="'
    . tooltip ( 'user_sort-help' ) . '">' . translate ( 'User Sort Order' )
    . ':</label>
               <select name="admin_USER_SORT_ORDER" id="admin_USER_SORT_ORDER">'
    . $option . 'cal_lastname, cal_firstname" '
-   . ( $s['USER_SORT_ORDER'] == 'cal_lastname, cal_firstname' ? $selected : '' )
-   . '>' . translate ( 'Lastname, Firstname' ) . '</option>' . $option
+   . ( $s['USER_SORT_ORDER'] == 'cal_lastname, cal_firstname'
+     ? ' selected>' : '>' )
+   . translate( 'Lastname, Firstname' ) . '</option>' . $option
    . 'cal_firstname, cal_lastname" '
-   . ( $s['USER_SORT_ORDER'] == 'cal_firstname, cal_lastname' ? $selected : '' )
-   . '>' . translate ( 'Firstname, Lastname' ) . '</option>
+   . ( $s['USER_SORT_ORDER'] == 'cal_firstname, cal_lastname'
+     ? ' selected>' : '>' )
+   . translate( 'Firstname, Lastname' ) . '</option>
               </select></p>
           </fieldset>
         </div>
@@ -664,7 +663,7 @@ if ( ! $error ) {
             <p><label title="' . tooltip ( 'public-access-override-text-help' )
    . '">' . translate ( 'Text to display to public access' )
    . ':</label><input name="admin_OVERRIDE_PUBLIC_TEXT" value="'
-   . $s['OVERRIDE_PUBLIC_TEXT'] . '" size="25" /></p>
+   . $s['OVERRIDE_PUBLIC_TEXT'] . '" size="25"></p>
             <p><label title="' . tooltip ( 'public-access-captcha-help' ) . '">'
    . translate ( 'Require CAPTCHA validation for public access new events' )
    . ':</label>' . print_radio ( 'ENABLE_CAPTCHA' ) . '</p>
@@ -701,7 +700,7 @@ if ( ! $error ) {
         <div id="tabscontent_other">
 <!-- BEGIN UPCOMING EVENTS -->
    <fieldset><legend>' . translate('Upcoming Events') . '</legend>
-   ' . htmlspecialchars( $SERVER_URL ) . 'upcoming.php<br />
+   ' . htmlspecialchars( $SERVER_URL ) . 'upcoming.php<br>
    <p><label title="' . tooltip ( 'upcoming-events-help' ) . '">'
    . translate ( 'Enabled' ) . ':</label>'
    . print_radio ( 'UPCOMING_EVENTS', '', '', 'N' ) . '</p>
@@ -786,7 +785,7 @@ if ( ! $error ) {
    . print_radio ( 'SELF_REGISTRATION_BLACKLIST' ) . '</p>
             <p><label title="' . tooltip ( 'allow-self-registration-full-help' )
    . '">' . translate ( 'Use self-registration email notifications' )
-   . ':</label>' . print_radio ( 'SELF_REGISTRATION_FULL' ) . '</p><br />
+   . ':</label>' . print_radio( 'SELF_REGISTRATION_FULL' ) . '</p><br>
           </div>
 
 <!-- TODO add account aging feature. -->
@@ -798,17 +797,17 @@ if ( ! $error ) {
    . print_radio ( 'ALLOW_ATTACH', '', 'attach_handler' )
     . '</p><p id="at1" style="margin-left:25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add attachments if enabled.' )
-   . '<br />' . print_checkbox ( array ( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
+   . '<br>' . print_checkbox( array( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
    . print_checkbox ( array ( 'ALLOW_ATTACH_ANY', 'Y', $anyoneStr ) )
-   . '</p><br /><p><label title="'
+   . '</p><br><p><label title="'
    . tooltip ( 'allow-comments-help' ) . '">'
    . translate ( 'Allow comments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' )
    . '</p><p id="com1" style="margin-left:25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add comments if enabled.' )
-   . '<br />' . print_checkbox ( array ( 'ALLOW_COMMENTS_PART', 'Y', $partyStr ) )
+   . '<br>' . print_checkbox( array( 'ALLOW_COMMENTS_PART', 'Y', $partyStr ) )
    . print_checkbox ( array ( 'ALLOW_COMMENTS_ANY', 'Y', $anyoneStr ) )
-   . '</p><br /></div></div>
+   . '</p><br></div></div>
 
 <!-- BEGIN EMAIL -->
         <div id="tabscontent_email">
@@ -819,25 +818,26 @@ if ( ! $error ) {
             <p><label title="' . tooltip ( 'email-default-sender' ) . '">'
    . translate ( 'Default sender address' )
    . ':</label><input type="text" size="30" name="admin_EMAIL_FALLBACK_FROM" value="'
-   . htmlspecialchars ( $EMAIL_FALLBACK_FROM ) . '" /></p>
+   . htmlspecialchars( $EMAIL_FALLBACK_FROM ) . '"></p>
             <p><label title="' . tooltip ( 'email-mailer' ) . '">'
    . translate ( 'Email Mailer' ) . ':</label>
               <select name="admin_EMAIL_MAILER" onchange="email_handler()">'
-   . $option . 'smtp" ' . ( $s['EMAIL_MAILER'] == 'smtp' ? $selected : '' )
+   . $option . 'smtp" ' . ( $s['EMAIL_MAILER'] == 'smtp' ? ' selected' : '' )
    . '>SMTP</option>' . $option . 'mail" '
-   . ( $s['EMAIL_MAILER'] == 'mail' ? $selected : '' ) . '>PHP mail</option>'
+   . ( $s['EMAIL_MAILER'] == 'mail' ? ' selected' : '' ) . '>PHP mail</option>'
    . $option . 'sendmail" '
-   . ( $s['EMAIL_MAILER'] == 'sendmail' ? $selected : '' ) . '>sendmail</option>
+   . ( $s['EMAIL_MAILER'] == 'sendmail' ? ' selected' : '' )
+   . '>sendmail</option>
               </select></p>
             <div id="em_smtp">
               <p><label title="' . tooltip ( 'email-smtp-host' ) . '">'
    . translate ( 'SMTP Host name(s)' )
    . ':</label><input type="text" size="50" name="admin_SMTP_HOST" value="'
-   . $s['SMTP_HOST'] . '" /></p>
+   . $s['SMTP_HOST'] . '"></p>
               <p><label title="' . tooltip ( 'email-smtp-port' ) . '">'
    . translate ( 'SMTP Port Number' )
    . ':</label><input type="text" size="4" name="admin_SMTP_PORT" value="'
-   . $s['SMTP_PORT'] . '" /></p>
+   . $s['SMTP_PORT'] . '"></p>
               <p><label title="' . tooltip ( 'email-smtp-auth' ) . '">'
    . translate ( 'SMTP Authentication' ) . ':</label>'
    . print_radio ( 'SMTP_AUTH', '', 'email_handler' ) . '</p>
@@ -845,11 +845,11 @@ if ( ! $error ) {
                 <p><label title="' . tooltip ( 'email-smtp-username' ) . '">'
    . translate ( 'SMTP Username' )
    . ':</label><input type="text" size="30" name="admin_SMTP_USERNAME" value="'
-   . ( empty ( $s['SMTP_USERNAME'] ) ? '' : $s['SMTP_USERNAME'] ) . '" /></p>
+   . ( empty( $s['SMTP_USERNAME'] ) ? '' : $s['SMTP_USERNAME'] ) . '"></p>
                 <p><label title="' . tooltip ( 'email-smtp-password' ) . '">'
    . translate ( 'SMTP Password' )
    . ':</label><input type="text" size="30" name="admin_SMTP_PASSWORD" value="'
-   . ( empty ( $s['SMTP_PASSWORD'] ) ? '' : $s['SMTP_PASSWORD'] ) . '" /></p>
+   . ( empty( $s['SMTP_PASSWORD'] ) ? '' : $s['SMTP_PASSWORD'] ) . '"></p>
               </div>
             </div>
             <p class="bold">' . translate ( 'Default user settings' ) . ':</p>'
@@ -902,23 +902,23 @@ if ( ! $error ) {
    . translate ( 'Enable gradient images for background colors' ) . ':</label>'
    . ( function_exists ( 'imagepng' ) || function_exists ( 'imagegif' )
     ? print_radio ( 'ENABLE_GRADIENTS' ) : translate ( 'Not available' ) )
-   . '</p><br />' . $color_sets . '
+   . '</p><br>' . $color_sets . '
           </fieldset>
           <fieldset>
             <legend>' . translate ( 'Background Image options' ) . '</legend>
             <p><label for="admin_BGIMAGE" title="' . tooltip ( 'bgimage-help' )
    . '">' . translate ( 'Background Image' )
    . ':</label><input type="text" size="75" name="admin_BGIMAGE" id="admin_BGIMAGE" value="'
-   . ( empty ( $s['BGIMAGE'] ) ? '' : htmlspecialchars ( $s['BGIMAGE'] ) ) . '" /></p>
+   . ( empty( $s['BGIMAGE'] ) ? '' : htmlspecialchars( $s['BGIMAGE'] ) ) . '"></p>
             <p><label for="admin_BGREPEAT" title="' . tooltip ( 'bgrepeat-help' )
    . '">' . translate ( 'Background Repeat' )
    . ':</label><input type="text" size="30" name="admin_BGREPEAT" id="admin_BGREPEAT" value="'
-   . ( empty ( $s['BGREPEAT'] ) ? '' : $s['BGREPEAT'] ) . '" /></p>
+   . ( empty( $s['BGREPEAT'] ) ? '' : $s['BGREPEAT'] ) . '"></p>
           </fieldset>
         </div>
       </div>
       <div style="clear:both;">
-        <input type="submit" value="' . $saveStr . '" name="" />
+        <input type="submit" value="' . $saveStr . '" name="">
       </div>
     </form>';
   ob_end_flush();

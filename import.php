@@ -111,7 +111,7 @@ echo '
     <h2>' . translate ( 'Import' ) . '&nbsp;<img src="images/help.gif" alt="'
  . translate ( 'Help' ) . '" class="help" onclick="window.open( '
  . "'help_import.php', 'cal_help', '"
- . 'dependent,menubar,scrollbars,height=400,width=400\' );" /></h2>';
+ . 'dependent,menubar,scrollbars,height=400,width=400\' );"></h2>';
 
 if ( ! $upload_enabled )
   // The php.ini file does not have file_uploads enabled,
@@ -143,9 +143,9 @@ else {
         <tr id="palm">
           <td><label>' . translate ( 'Exclude private records' ) . ':</label></td>
           <td>
-            <label><input type="radio" name="exc_private" value="1" checked="checked" />'
+            <label><input type="radio" name="exc_private" value="1" checked>'
    . $yesStr . '</label>
-            <label><input type="radio" name="exc_private" value="0" />'
+            <label><input type="radio" name="exc_private" value="0">'
    . $noStr . '</label>
           </td>
         </tr>
@@ -154,9 +154,9 @@ else {
         <tr id="ivcal">
           <td><label>' . translate ( 'Overwrite Prior Import' ) . ':</label></td>
           <td>
-            <label><input type="radio" name="overwrite" value="Y" checked="checked" />&nbsp;'
+            <label><input type="radio" name="overwrite" value="Y" checked>&nbsp;'
    . $yesStr . '</label>
-            <label><input type="radio" name="overwrite" value="N" />&nbsp;'
+            <label><input type="radio" name="overwrite" value="N">&nbsp;'
    . $noStr . '</label>
           </td>
         </tr>
@@ -169,13 +169,13 @@ else {
         <tr class="browse">
           <td><label for="fileupload">' . translate ( 'Upload file' ) . ':</label></td>
           <td><input type="file" name="FileName" id="fileupload" size="45" '
-   . 'maxlength="50" /></td>
+   . 'maxlength="50"></td>
         </tr>';
   print_user_list();
   print_categories();
   echo '
-      </table><br />
-      <input type="submit" value="' . translate ( 'Import' ) . '" />
+      </table><br>
+      <input type="submit" value="' . translate( 'Import' ) . '">
     </form>';
 }
 echo print_trailer();

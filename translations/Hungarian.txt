@@ -157,7 +157,7 @@ date-format-help: Megadja a kívánt dátumformátumot.
 Date format: Dátumformátum
 display-week-starts-on: Megadja, hogy a hetek Vasárnap vagy Hétfõn kezdõdjenek. Hétfõ esetén a hetek számozása ISO szerint történik.
 Week starts on: Hetek elsõ napja
-time-format-help: Megadja, hogy melyik formátumot használod:<br /><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.<br /><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
+time-format-help: Megadja, hogy melyik formátumot használod:<br><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.<br><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
 Time format: Idõpont formátum
 12 hour: 12 órás
 24 hour: 24 órás
@@ -196,7 +196,7 @@ allow-view-other-help: Megadja, hogy egyik felhasználó láthatja-e a másik na
 Allow viewing other users calendars: Más felhasználók naptárának megtekintése
 require-approvals-help: Bekapcsolva a felhasználónak jóvá kell hagynia az eseményt, mielõtt megjelenne a naptárában (hacsak a jóváhagyás nélküliek megjelenítése nincs bekapcsolva). Megjegyzés: ha ezt kikapcsolod, attól még a nyilvános naptár eseményeit jóvá kell hagynod (már ha a nyilvános naptár be van kapcsolva).
 Require event approvals: Események jóváhagyásának megkövetelése
-display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<br /> Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<br /> Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
+display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<br> Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<br> Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
 Display unapproved: Jóváhagyás nélküliek megjelenítése
 conflict-check-help: Esemény-ütközések ellenõrzése (ugyanazon felhasználó két eseménye idõben fedi egymást). Ha "Igen"-re állítod, csak egy jóváhagyás után vehetsz fel két eseményt ugyanarra az idõre. Ha "Nem"-re állítod, nem lesz ilyen ellenõrzés. Valószínûleg "Igen"-re akarod állítani, hogy legyen ellenõrzés.
 Check for event conflicts: Esemény-ütközések ellenõrzése
@@ -452,7 +452,7 @@ brief-description-help: Ez az esemény rövid leírása (kb. 20 karakter).
 Brief Description: Rövid leírás
 full-description-help: Ez az esemény teljes leírása. Ez fog megjelenni, ha valaki megnézni az eseményt.
 Full Description: Teljes leírás
-access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.<br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
+access-help: Specifies the access level of the event.<br> <em>Public</em>: Everyone can see the full details of the event.<br><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
 Access: Hozzáférés
 Priority: Prioritás
 High: Magas

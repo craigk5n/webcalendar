@@ -28,7 +28,7 @@ else {
         </tr>
         <tr>
           <td align="center"><input type="submit" value="'
-   . translate ( 'Continue' ) . '" /></td>
+   . translate( 'Continue' ) . '"></td>
         </tr>
         <tr>
           <td>'

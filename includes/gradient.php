@@ -350,7 +350,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
     } else
       imagegif ( $image, $file_name );
   } else
-    echo 'No image formats supported!<br />' . "\n";
+    echo 'No image formats supported!<br>' . "\n";
 
   imagedestroy ( $image );
   return;

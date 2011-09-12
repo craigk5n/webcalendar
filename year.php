@@ -106,20 +106,20 @@ print_header();
 echo <<<EOT
     <div class="title">
       <a title="{$prevStr}" class="prev" href="year.php?year={$prevYear}{$userStr}">
-        <img src="images/leftarrow.gif" alt="{$prevStr}" /></a>
+        <img src="images/leftarrow.gif" alt="{$prevStr}"></a>
       <a title="{$nextStr}" class="next" href="year.php?year={$nextYear}{$userStr}">
-        <img src="images/rightarrow.gif" alt="{$nextStr}" /></a>
-      <span class="date">{$thisyear}</span><br />
-      <span class="user">{$fullnameStr}</span><br />
+        <img src="images/rightarrow.gif" alt="{$nextStr}"></a>
+      <span class="date">{$thisyear}</span><br>
+      <span class="user">{$fullnameStr}</span><br>
       {$asstModeStr}
       {$catSelectStr}
-    </div><br />
+    </div><br>
     <div align="center">
       <table id="monthgrid" summary="">
         {$gridOmonths}
       </table>
-    </div><br />
-    {$unapprovedStr}<br />
+    </div><br>
+    {$unapprovedStr}<br>
     {$printerStr}
     {$trailerStr}
 EOT;
