@@ -44,7 +44,7 @@ echo '
           <tr>
             <td class="aligntop">
               <b>' . translate( 'Users' ) . ':</b><br>
-              <select name="users" size="15" multiple="multiple">
+              <select name="users" size="15" multiple>
               </select><br>
               <input type="button" value="' . translate ( 'All' )
  . '" onclick="selectAll( true )">

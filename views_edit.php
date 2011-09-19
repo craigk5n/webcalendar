@@ -138,7 +138,7 @@ echo '<tr><td><label>'
 <tr><td colspan="4">
 <div id="viewuserlist">
 &nbsp;&nbsp;
- <select name="users[]" id="viewusers" size="10" multiple="multiple">
+ <select name="users[]" id="viewusers" size="10" multiple>
 <?php
   // get list of all users
   $users = get_my_users ( '', 'view' );

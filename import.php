@@ -38,10 +38,10 @@ function print_user_list() {
       $l = $userlist[$i]['cal_login'];
       $size++;
       $users .= '
-              <option value="' . $l . '"'
+              <option value="' . $l
        . ( $l == $login && ! $is_assistant && ! $is_nonuser_admin
-        ? ' selected="selected"' : '' )
-       . '>' . $userlist[$i]['cal_fullname'] . '</option>';
+        ? '" selected>' : '">' )
+       . $userlist[$i]['cal_fullname'] . '</option>';
     }
 
     if ( $size > 50 )
@@ -66,7 +66,7 @@ function print_categories() {
 
   if ( $CATEGORIES_ENABLED = 'Y' ) {
     $cat_options = '
-              <option value="__import" selected="selected">'
+              <option value="__import" selected>'
      . translate('import from file') . '</option>';
 
     load_user_categories();

@@ -127,10 +127,9 @@ onclick="history.back()"></form
     $userlist = ($NONUSER_AT_TOP == 'Y' ? array_merge ($nonusers, $userlist) : array_merge ($userlist, $nonusers));
   }
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    echo '<option value="' . $userlist[$i]['cal_login'] . '"';
-    if ( $login == $userlist[$i]['cal_login'] )
-      echo ' selected="selected"';
-    echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
+    echo '<option value="' . $userlist[$i]['cal_login']
+     . ( $login == $userlist[$i]['cal_login'] ? '" selected>' : '">' )
+     . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
 <option value="ALL"><?php echo $allStr ?></option>

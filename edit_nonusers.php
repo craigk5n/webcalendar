@@ -79,10 +79,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
 
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '
-              <option value="' . $userlist[$i]['cal_login'] . '"'
+              <option value="' . $userlist[$i]['cal_login']
      . ( ! empty ( $nonusertemp_admin ) &&
       $nonusertemp_admin == $userlist[$i]['cal_login']
-      ? ' selected="selected"' : '' ) . '>' . $userlist[$i]['cal_fullname']
+      ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname']
      . '</option>';
   }
 

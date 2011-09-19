@@ -149,13 +149,13 @@ if( $show_others ) {
    . translate( 'Users' ) . ':&nbsp;</label></td>
           <td>
             <select name="users[]" id="usersadv" size="' . $size
-   . '" multiple="multiple">';
+   . '" multiple>';
 
   for( $i = 0; $i < $cnt; $i++ ) {
     echo '
-              <option value="' . $users[$i]['cal_login'] . '"'
-     . ( $users[$i]['cal_login'] == $login ? ' selected="selected"' : '' )
-     . '>' . $users[$i]['cal_fullname'] . '</option>';
+              <option value="' . $users[$i]['cal_login']
+     . ( $users[$i]['cal_login'] == $login ? '" selected>' : '">' )
+     . $users[$i]['cal_fullname'] . '</option>';
   }
 
   echo '

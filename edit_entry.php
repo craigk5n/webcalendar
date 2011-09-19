@@ -951,8 +951,8 @@ if ( $can_edit ) {
       if ( is_array ( $extra_arg1 ) ) {
         $extra_arg1cnt = count ( $extra_arg1 );
         if ( $extra_arg2 > 0 ) {
-          $multiselect = ' multiple="multiple" size="'
-           . min ( $extra_arg2, $extra_arg1cnt ) . '" ';
+          $multiselect = ' size="'
+           . min( $extra_arg2, $extra_arg1cnt ) . '" multiple';
           $isMultiple = '[]';
           if ( ! empty ( $extras ) )
             $extraSelectArr = explode ( ',', $extras[$extra_name]['cal_data'] );
@@ -1126,7 +1126,7 @@ if ( $can_edit ) {
           <td valign="top" width="160px" class="boxbottom boxleft">
           <label>' . translate( 'Users' ) . '</label><br>
             <select class="fixed" name="participants[]" id="entry_part" size="' . $size
-     . '" multiple="multiple">' . $users . '
+     . '" multiple>' . $users . '
             </select><br>
             <input name="movert" type="button" value='
             . $addStr . ' onclick="selAdd( this );"></td>
@@ -1134,7 +1134,7 @@ if ( $can_edit ) {
         <td class="boxbottom">
         <label>' . translate( 'Resources' ) . '</label><br>
             <select class="fixed" name="nonuserPart[]" id="res_part" size="'
-     . $size . '" multiple="multiple">' . $nonusers . '
+     . $size . '" multiple>' . $nonusers . '
             </select><br>
             <input name="movert" type="button" value='
             . $addStr . ' onclick="selResource( this );">
@@ -1158,7 +1158,7 @@ if ( $can_edit ) {
             . translate ( 'Participants' ) . ':</label></td>
           <td align="left" valign="bottom" class="boxtop boxleft boxbottom">&nbsp;</td>
           <td class="boxtop boxright boxbottom" colspan="2">
-            <select class="fixed" name="selectedPart[]" id="sel_part" size="7" multiple="multiple">'
+            <select class="fixed" name="selectedPart[]" id="sel_part" size="7" multiple>'
      . $myusers . '
             </select><br>'
             . '<input name="movelt" type="button" value="'
@@ -1514,10 +1514,10 @@ if ( $can_edit ) {
               <td align="right" valign="top" width="100">
                 <label id="select_exceptions_not" style="visibility:'
      . ( empty ( $excepts ) ? 'visible' : 'hidden' ) . ';"></label>
-                <select id="select_exceptions" name="exceptions[]" '
-     . 'multiple="multiple" style="visibility:'
+                <select id="select_exceptions" name="exceptions[]"'
+     . ' style="visibility:'
      . ( empty ( $excepts ) ? 'hidden' : 'visible' )
-     . ';" size="4">' . $excepts . '
+     . ';" size="4" multiple>' . $excepts . '
                 </select>
               </td>
               <td valign="top">

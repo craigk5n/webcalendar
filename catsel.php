@@ -25,7 +25,7 @@ if ( strlen ( $entryCatStr ) < 30 )
   $entryCatStr = $entryCatFiller . $entryCatStr . $entryCatFiller;
 
 print_header( array( 'js/catsel.php/false/' . $form ),
-  '<script type=text/javascript" src="includes/js/catsel.js"></script>',
+  '<script src="includes/js/catsel.js"></script>',
   '', true, false, true );
 
 ob_start();
@@ -63,7 +63,7 @@ echo '
         <td valign="center"><input type="button" value=">>" onclick="selAdd()"'
  . '></td>
         <td align="center" valign="top">
-          <select name="eventcats[]" size="9"  multiple="multiple">
+          <select name="eventcats[]" size="9" multiple>
             <option disabled>' . $entryCatStr . '</option>';
 
 if ( strlen ( $cats ) ) {

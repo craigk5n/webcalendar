@@ -4468,13 +4468,13 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
       if ( ( ! empty ( $user ) && strlen ( $user ) ? $user : $login ) ||
           empty ( $categories[$K]['cat_owner'] ) ) {
         $ret .= '
-        <option value="' . $K . '"';
+        <option value="' . $K;
         if ( $cat_id == $K ) {
           $printerStr .= '
     <span id="cat">' . $catStr . ': ' . $categories[$K]['cat_name'] . '</span>';
-          $ret .= ' selected="selected"';
+          $ret .= '" selected';
         }
-        $ret .= ">{$V['cat_name']}</option>";
+        $ret .= "\">{$V['cat_name']}</option>";
       }
     }
   }
@@ -5059,8 +5059,8 @@ function print_timezone_select_html ( $prefix, $tz ) {
     $text_sub = translate ( 'Subtract N hours from' );
     for ( $i = -12; $i <= 13; $i++ ) {
       $ret .= '
-          <option value="WebCalendar/' . $i . '"'
-       . ( $tz_value == $i ? ' selected="selected"' : '' ) . '>' . ( $i < 0
+          <option value="WebCalendar/' . $i
+       . ( $tz_value == $i ? '" selected>' : '">' ) . ( $i < 0
         ? str_replace ( 'N', - $i, $text_sub ) : ( $i == 0
           ? translate ( 'same as' ) : str_replace ( 'N', $i, $text_add ) ) )
        . '</option>';
@@ -5091,8 +5091,8 @@ function print_timezone_select_html ( $prefix, $tz ) {
         <select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
     for ( $i = 0, $cnt = count ( $timezones ); $i < $cnt; $i++ ) {
       $ret .= '
-          <option value="' . $timezones[$i] . '"'
-       . ( $timezones[$i] == $tz ? ' selected="selected" ' : '' ) . '>'
+          <option value="' . $timezones[$i]
+       . ( $timezones[$i] == $tz ? '" selected>' : '">' )
        . unhtmlentities ( $timezones[$i] ) . '</option>';
     }
     $ret .= '
