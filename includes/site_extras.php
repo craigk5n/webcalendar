@@ -123,7 +123,7 @@ define ( 'EXTRA_DISPLAY_ALL', 511 );
                         // List of options (first will be default)
      array ( "None", "Room 101", "Room 102", "Conf Room 8", "Conf Room 12" ),
      12,                // 0=single  >1=multiple && also the maximum size
-                        // <select name="RoomLocation" multiple="multiple" size="12">
+                        // <select name="RoomLocation" size="12" multiple>
      EXTRA_DISPLAY_ALL //Display in all places
    ),
    array (

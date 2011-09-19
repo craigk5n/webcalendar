@@ -58,7 +58,7 @@ echo '">
           <td class="aligntop bold"><label for="users">'
  . translate ( 'Users' ) . ':</label></td>
           <td>
-            <select name="users[]" id="users" size="10" multiple="multiple">';
+            <select name="users[]" id="users" size="10" multiple>';
 
 // Get list of all users.
 $users = user_get_users();
@@ -82,9 +82,9 @@ if ( ! $newgroup ) {
 for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
   $u = $users[$i]['cal_login'];
   echo '
-              <option value="' . $u . '" '
-   . ( ! empty ( $groupuser[$u] ) ? ' selected="selected"' : '' )
-   . '>' . $users[$i]['cal_fullname'] . '</option>';
+              <option value="' . $u
+   . ( ! empty ( $groupuser[$u] ) ? '" selected>' : '">' )
+   . $users[$i]['cal_fullname'] . '</option>';
 }
 
 echo '

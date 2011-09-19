@@ -36,7 +36,7 @@ echo '</h2>
           <td class="aligntop"><label for="users">'
  . $assistStr . ':</label></td>
           <td>
-            <select name="users[]" id="users" size="10" multiple="multiple">';
+            <select name="users[]" id="users" size="10" multiple>';
 
 // Get list of all users.
 $users = get_my_users();
@@ -56,8 +56,8 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
   if ( $u == $login || $u == '__public__' )
     continue;
   echo '
-              <option value="' . $u . '"'
-   . ( ! empty ( $assistantuser[$u] ) ? ' selected="selected"' : '' ) . '>'
+              <option value="' . $u
+   . ( ! empty ( $assistantuser[$u] ) ? '" selected>' : '">' )
    . $users[$i]['cal_fullname'] . '</option>';
 }
 

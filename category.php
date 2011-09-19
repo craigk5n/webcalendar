@@ -80,11 +80,11 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
         <tr>
           <td><label for="isglobal">' . $globalStr . ':</label></td>
           <td colspan="3">
-            <label><input type="radio" name="isglobal" value="N" '
-     . ( ! empty ( $catowner ) || empty ( $id ) ? ' checked = "checked"' : '' )
+            <label><input type="radio" name="isglobal" value="N"'
+     . ( ! empty ( $catowner ) || empty ( $id ) ? ' checked' : '' )
      . '>&nbsp;' . translate( 'No' ) . '</label>&nbsp;&nbsp;
-            <label><input type="radio" name="isglobal" value="Y" '
-     . ( empty ( $catowner ) && ! empty ( $id ) ? ' checked = "checked"' : '' )
+            <label><input type="radio" name="isglobal" value="Y"'
+     . ( empty ( $catowner ) && ! empty ( $id ) ? ' checked' : '' )
      . '>&nbsp;' . translate( 'Yes' ) . '</label>
           </td>
         </tr>' : '' ) . '

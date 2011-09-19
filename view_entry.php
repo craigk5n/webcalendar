@@ -792,8 +792,8 @@ if ( $eType == 'task' ) {
             <select name="upercent" id="task_percent">';
     for ( $i = 0; $i <= 100; $i += 10 ) {
       echo '
-              <option value="' . "$i\" " . ( $login_percentage == $i
-        ? ' selected="selected"':'' ) . ' >' . $i . '</option>';
+              <option value="' . $i . ( $login_percentage == $i
+        ? '" selected>' : '">' ) . $i . '</option>';
     }
     echo '
             </select>&nbsp;
