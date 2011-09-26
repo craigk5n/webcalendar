@@ -18,7 +18,7 @@ if ( ! $is_admin ) {
 }
 $error = '';
 
-if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
+if ( $action == 'Delete' || $action == $deleteStr ) {
   // delete this nonuser calendar
   $user = $nid;
 
@@ -56,7 +56,7 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
       array ( $user ) ) )
     $error = db_error();
 } else {
-  if ( $action == 'Save' || $action == translate ( 'Save' ) ) {
+  if ( $action == 'Save' || $action == $saveStr ) {
     // Updating
     $sql_params = array();
     $sql = 'UPDATE webcal_nonuser_cals SET';

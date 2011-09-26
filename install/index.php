@@ -755,10 +755,8 @@ if( ! empty( $x ) || ! empty( $y ) ) {
     @chmod( $file, 0644 );
   }
 }
-$noStr  = translate( 'No' );
 $offStr = translate( 'OFF' );
 $onStr  = translate( 'ON' );
-$yesStr = translate( 'Yes' );
 
 ob_start();
 echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
@@ -836,11 +834,11 @@ echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
             || selectvalue == \'ibase\' ) {
           form.form_db_database.size = 65;
           document.getElementById( \'db_name\' ).innerHTML = \''
- . $databaseNameStr . ': ' . translate( 'Full Path (no backslashes)' ) . '\';
+ . $databaseNameStr . ' ' . translate( 'Full Path (no backslashes)' ) . '\';
         } else {
           form.form_db_database.size = 20;
           document.getElementById( \'db_name\' ).innerHTML = \''
- . $databaseNameStr . ': \';
+ . $databaseNameStr . ' \';
         }
       }
       function chkPassword() {
@@ -916,7 +914,7 @@ echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
       }
     </style>
   </head>
-  <body' . ( empty( $onload ) ? '' : ' onload="' . $onload . '"' ) . '>';
+  <body' . ( empty( $onload ) ? '>' : ' onload="' . $onload . '">' );
 
 if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   $class = ( version_compare( phpversion(), '4.1.0', '>=' ) ? '' : 'not' )
@@ -1241,7 +1239,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               </tr>
               <tr>
                 <td class="prompt" id="db_name"><label for="database">'
-   . $databaseNameStr . ':</label></td>
+   . $databaseNameStr . '</label></td>
                 <td colspan="2"><input name="form_db_database" id="database" '
    . 'size="20" value="' . $settings['db_database'] . '"></td>
               </tr>'

@@ -9,15 +9,17 @@ define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
 define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
 define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 
-include_once __WC_INCLUDEDIR . 'translate.php';
+foreach( array(
+    'config',
+    'dbi4php',
+    'functions',
+    'translate',
+  ) as $i ) {
+  include_once __WC_INCLUDEDIR . $i . '.php';
+}
 require_once __WC_CLASSDIR . 'WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include __WC_INCLUDEDIR . 'config.php';
-include __WC_INCLUDEDIR . 'dbi4php.php';
-include __WC_INCLUDEDIR . 'functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include __WC_INCLUDEDIR . $user_inc;
@@ -63,7 +65,7 @@ else {
        . chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) );
       $encoded_login = encode_string ( $login . '|'
        . crypt ( $password, $salt ) );
-      // SetCookie ( 'webcalendar_session', $encoded_login, 0, $cookie_path );
+      // setcookie( 'webcalendar_session', $encoded_login, 0, $cookie_path );
       $out .= '
   <cookieName>webcalendar_session</cookieName>
   <cookieValue>$encoded_login</cookieValue>' . ( $is_admin ? '

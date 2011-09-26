@@ -1,42 +1,39 @@
 <?php // $Id$
 define( '_ISVALID', true );
 
-include 'includes/translate.php';
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-
+foreach( array(
+    'access',
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'translate',
+    'validate',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
 do_config( 'includes/settings.php' );
-include 'includes/' . $user_inc;
-include_once 'includes/access.php';
-include_once 'includes/validate.php';
+
+include_once 'includes/' . $user_inc;
 include_once 'includes/gradient.php';
 
 load_global_settings();
 @session_start();
-$empTmp = ( ! empty( $_SESSION['webcal_tmp_login'] ) );
 
 // If calling script uses 'guest', we must also.
 $GLOBALS['user'] = ! empty( $_GET['login'] )
   ? $_GET['login']
   : ( ! empty( $_REQUEST['login'] )
     ? $_REQUEST['login']
-    : ( $empTmp
+    : ( ( ! empty( $_SESSION['webcal_tmp_login'] ) )
       ? $_SESSION['webcal_tmp_login']
       : ( empty( $_SESSION['webcal_login'] )
         ? '__public__'
         : $_SESSION['webcal_login'] ) ) );
+
 load_user_preferences( $GLOBALS['user'] );
 
 unset( $_SESSION['webcal_tmp_login'] );
-
-// If we are calling from admin or pref, expire CSS yesterday.
-// Otherwise, expire tomorrow.
-$expTime = time() + 86400;
-
-if( $empTmp )
-  $expTime = time() - 86400;
 
 // IE can handle compressed CSS OK.
 ob_start();

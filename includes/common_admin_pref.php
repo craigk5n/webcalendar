@@ -8,16 +8,16 @@ $webcalendar_csscache = 1;
 if ( isset ( $_COOKIE['webcalendar_csscache'] ) )
   $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
 
-SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
+setcookie( 'webcalendar_csscache', $webcalendar_csscache );
 
-$catStr = $color_sets = $currenttab = $datestyle_md = $datestyle_my = '';
+$catColStr = $color_sets = $currenttab = $datestyle_md = $datestyle_my = '';
 $datestyle_tk = $datestyle_ymd = $lang_list = $menu_theme_list = '';
 $theme_list = $prefer_vu = $start_wk_on = $start_wkend_on = $tabs = $tmp = '';
 $user_vu = $work_hr_end = $work_hr_start = '';
 
 $choices = $choices_text = $menuthemes = $prefarray = $s = $themes = array ();
 
-$editStr = '<input type="button" value="' . translate ( 'Edit' )
+$editInStr = '<input type="button" value="' . $editStr
  . "...\" onclick=\"window.open( 'edit_template.php?type=%s','cal_template','"
  . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
  . 'outerWidth=520\' );" name=""></p>';
@@ -163,57 +163,55 @@ while ( list ( $key, $val ) = each ( $languages ) ) {
   if ( $prad ||
     ( ! $prad &&
       ( $key != 'Browser-defined' || $updating_public || $is_admin || $is_nonuser_admin ) ) )
-    $lang_list .= $option . $val . '"' . ( $val == $tmp ? ' selected>' : '>' )
+    $lang_list .= $option . $val . ( $val == $tmp ? '" selected>' : '">' )
      . translate( $key ) . '</option>';
 }
 $tmp = ( $prad ? $s['DATE_FORMAT'] : $prefarray['DATE_FORMAT'] );
 for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i++ ) {
-  $datestyle_ymd .= $option . $datestyles[$i] . '"'
-   . ( $tmp == $datestyles[$i] ? ' selected>' : '>' )
+  $datestyle_ymd .= $option . $datestyles[$i]
+   . ( $tmp == $datestyles[$i] ? '" selected>' : '">' )
    . $datestyles[++$i] . '</option>';
 }
 $tmp = ( $prad ? $s['DATE_FORMAT_MY'] : $prefarray['DATE_FORMAT_MY'] );
 for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i++ ) {
-  $datestyle_my .= $option . $datestyles_my[$i] . '"'
-   . ( $tmp == $datestyles_my[$i] ? ' selected>' : '>' )
+  $datestyle_my .= $option . $datestyles_my[$i]
+   . ( $tmp == $datestyles_my[$i] ? '" selected>' : '">' )
    . $datestyles_my[++$i] . '</option>';
 }
 $tmp = ( $prad ? $s['DATE_FORMAT_MD'] : $prefarray['DATE_FORMAT_MD'] );
 for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i++ ) {
-  $datestyle_md .= $option . $datestyles_md[$i] . '"'
-   . ( $tmp == $datestyles_md[$i] ? ' selected>' : '>' )
+  $datestyle_md .= $option . $datestyles_md[$i]
+   . ( $tmp == $datestyles_md[$i] ? '" selected>' : '">' )
    . $datestyles_md[++$i] . '</option>';
 }
 $tmp = ( $prad ? $s['DATE_FORMAT_TASK'] : $prefarray['DATE_FORMAT_TASK'] );
 for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i++ ) {
-  $datestyle_tk .= $option . $datestyles_task[$i] . '"'
-   . ( $tmp == $datestyles_task[$i] ? ' selected>' : '>' )
+  $datestyle_tk .= $option . $datestyles_task[$i]
+   . ( $tmp == $datestyles_task[$i] ? '" selected>' : '">' )
    . $datestyles_task[++$i] . '</option>';
 }
 $tmp_wk = ( $prad ? $s['WEEK_START'] : $prefarray['WEEK_START'] );
 $tmp_en = ( $prad ? $s['WEEKEND_START'] :$prefarray['WEEKEND_START'] );
 for ( $i = 0; $i < 7; $i++ ) {
-  $start_wk_on .= $option . "$i\""
-   . ( $i == $tmp_wk ? ' selected>' : '>' )
+  $start_wk_on .= $option . $i . ( $i == $tmp_wk ? '" selected>' : '">' )
    . weekday_name( $i ) . '</option>';
   $j = ( $i == 0 ? 6 : $i - 1 ); // Make sure to start with Saturday.
-  $start_wkend_on .= $option . "$j\""
-   . ( $j == $tmp_en ? ' selected>' : '>' )
+  $start_wkend_on .= $option . $j . ( $j == $tmp_en ? '" selected>' : '">' )
    . weekday_name( $j ) . '</option>';
 }
 $tmp_st = ( $prad ? $s['WORK_DAY_START_HOUR'] : $prefarray['WORK_DAY_START_HOUR'] );
 $tmp_en = ( $prad ? $s['WORK_DAY_END_HOUR'] : $prefarray['WORK_DAY_END_HOUR'] );
 for ( $i = 0; $i < 24; $i++ ) {
   $tmp = display_time ( $i * 10000, 1 );
-  $work_hr_start .= $option . "$i\""
-   . ( $i == $tmp_st ? ' selected>' : '>' ) . $tmp . '</option>';
-  $work_hr_end .= $option . "$i\""
-   . ( $i == $tmp_en ? ' selected>' : '>' ) . $tmp . '</option>';
+  $work_hr_start .= $option . $i
+   . ( $i == $tmp_st ? '" selected>' : '">' ) . $tmp . '</option>';
+  $work_hr_end .= $option . $i
+   . ( $i == $tmp_en ? '" selected>' : '">' ) . $tmp . '</option>';
 }
 $tmp = ( $prad ? $s['STARTVIEW'] : $prefarray['STARTVIEW'] );
 for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
-  $prefer_vu .= $option . $choices[$i] . '"'
-   . ( $tmp == $choices[$i] ? ' selected>' : '>' )
+  $prefer_vu .= $option . $choices[$i]
+   . ( $tmp == $choices[$i] ? '" selected>' : '">' )
    . htmlspecialchars( $choices_text[$i] ) . '</option>';
 }
 // Allow user to select a view also.
@@ -225,8 +223,8 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
   $xurl = $views[$i]['url'];
   $xurl_strip = str_replace ( '&amp;', '&', $xurl );
-  $user_vu .= $option . $xurl . '"'
-   . ( $tmp == $xurl_strip ? ' selected>' : '>' )
+  $user_vu .= $option . $xurl
+   . ( $tmp == $xurl_strip ? '" selected>' : '">' )
    . htmlspecialchars( $views[$i]['cal_name'] ) . '</option>';
 }
 foreach ( array (

@@ -416,7 +416,7 @@ echo '</td>
         <td>' . $location . '</td>
       </tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' && ! empty ( $url ) ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'URL' ) . ':</td>
+        <td class="aligntop bold">' . $urlStr . '</td>
         <td>' . activate_urls ( $url ) . '</td>
       </tr>' : '' );
 
@@ -505,7 +505,7 @@ echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
       : translate ( 'Private' ) ) ) . '</td>
       </tr>' : '' ) . ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Category' ) . ':</td>
+        <td class="aligntop bold">' . $cat_Str . '</td>
         <td>' . $category . '</td>
       </tr>' : '' );
 
@@ -821,13 +821,13 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
         || user_is_assistant( $login, $create_by )
       ? ' [<a href="docdel.php?blid=' . $a->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
-       . translate( 'Delete' ) . '</a>]' : '' ) . '<br>';
+       . $deleteStr . '</a>]' : '' ) . '<br>';
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize();
 
   echo ( $num_attach == 0 ? '
-          ' . translate( 'None' ) . '<br>' :'' ) . '
+          ' . $noneStr . '<br>' : '' ) . '
         </td>
       </tr>';
 }
@@ -855,7 +855,7 @@ if ( Doc::commentsEnabled() ) {
         || user_is_assistant( $login, $create_by )
       ? ' [<a href="docdel.php?blid=' . $cmt->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr
-       . '\' );">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
+       . '\' );">' . $deleteStr . '</a>]' : '' )// end show delete link
      . '<br>
           <blockquote id="eventcomment">' . nl2br ( activate_urls (
         htmlspecialchars( $cmt->getData() ) ) ) . '
@@ -863,7 +863,7 @@ if ( Doc::commentsEnabled() ) {
   }
 
   if ( $num_comment == 0 )
-    echo translate( 'None' ) . '<br>';
+    echo $noneStr . '<br>';
   else {
     echo '
           ' . $num_comment . ' ' . translate ( 'comments' ) . '
@@ -1122,14 +1122,14 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
   $exportStr = translate ( 'Export' );
   $exportThisStr = translate ( 'Export this entry to' );
   $palmStr = translate ( 'Palm Pilot' );
-  $selectStr = generate_export_select();
+  $geSelectStr = generate_export_select();
   $userStr = ( ! empty ( $user ) ? '<input type="hidden" name="user" value="' .
     $user . '">' : '' );
   echo <<<EOT
     <br>
     <form method="post" name="exportform" action="export_handler.php">
       <label for="exformat">{$exportThisStr}:&nbsp;</label>
-      {$selectStr}
+      {$geSelectStr}
       <input type="hidden" name="id" value="{$id}">
           {$userStr}
       <input type="submit" value="{$exportStr}">

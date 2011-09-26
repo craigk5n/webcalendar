@@ -23,23 +23,24 @@
  * $USER_PUBLISH_ENABLED is not 'Y' (set in each user's Preferences).
  */
 
-include_once 'includes/translate.php';
+foreach( array(
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'site_extras',
+    'translate',
+    'validate',
+    'xcal',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
-include 'includes/validate.php';
-
-include 'includes/site_extras.php';
-include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 

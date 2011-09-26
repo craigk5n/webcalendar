@@ -4,18 +4,8 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
  global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
  $user = $arinc[3];
 ?>
-var bydayAr = new Array();
-var bymonthdayAr = new Array();
-var bysetposAr = new Array();
-var bydayLabels = new Array("SU","MO","TU","WE","TH","FR","SA");
-var bydayTrans = new Array( "<?php etranslate ( 'SU' ) ?>"
-, "<?php etranslate ( 'MO' ) ?>"
-, "<?php etranslate ( 'TU' ) ?>"
-, "<?php etranslate ( 'WE' ) ?>"
-, "<?php etranslate ( 'TH' ) ?>"
-, "<?php etranslate ( 'FR' ) ?>"
-, "<?php etranslate ( 'SA' ) ?>"
-);
+var bydayAr = bymonthdayAr = bysetposAr = [];
+
 // do a little form verifying
 function validate_and_submit() {
   if ( form.name.value == "" ) {
@@ -348,16 +338,17 @@ function rpttype_weekly() {
    elements[rpt_day].checked = true;
  }
 }
-<?php //see the showTab function in includes/js/visible.php for common code shared by all pages
+<?php //see the showTab function in includes/js/visible.js for common code shared by all pages
  //using the tabbed GUI.
 ?>
-var tabs = new Array();
-tabs[0] = "details";
-tabs[1] = "participants";
-tabs[2] = "pete";
-tabs[3] = "reminder";
+var sch_win,
+  tabs = [
+    'details',
+    'participants',
+    'pete',
+    'reminder'
+  ];
 
-var sch_win;
 
 // Show Availability for the first selection
 function showSchedule() {
@@ -617,7 +608,7 @@ function editCats ( evt ) {
           sel = true;
       }
       obj.checked = sel;
-    } else {
+    } else { //translate( 'Could not find XXX in DOM.' )
       alert ( "Could not find '" + checkboxId + "' in DOM" );
     }
   <?php
@@ -646,7 +637,7 @@ function catOkHandler () {
       catIds += '<?php echo $catid;?>';
       catNames += '<?php echo $cat['cat_name'];?>';
     }
-  } else {
+  } else { // translate( 'Could not find XXX.' )
     if ( ! obj ) alert ( "Could not find " + checkboxId );
     else alert ( "Could not find " + nameId );
   }

@@ -32,7 +32,6 @@ if ( ! $is_admin )
   $user = $login;
 
 $notAuthStr = print_not_auth();
-$deleteStr = translate ( 'Deleting users not supported.' );
 $notIdenticalStr = translate ( 'The passwords were not identical.' );
 $noPasswordStr = translate ( 'You have not entered a password.' );
 $blankUserStr = translate ( 'Username cannot be blank.' );
@@ -61,7 +60,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
       user_delete_user ( $user ); // Will also delete user's events.
       activity_log ( 0, $login, $user, LOG_USER_DELETE, '' );
     } else
-      $error = $deleteStr;
+      $error = translate( 'Deleting users not supported.' );
   } else
     $error = $notAuthStr;
 } else {

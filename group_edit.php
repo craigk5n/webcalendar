@@ -94,10 +94,10 @@ echo '
         <tr>
           <td colspan="2" class="aligncenter"><br>
             <input type="submit" name="action" value="'
- . ( $newgroup ? translate( 'Add' ) : translate( 'Save' ) ) . '">'
+ . ( $newgroup ? $addStr : $saveStr ) . '">'
  . ( ! $newgroup ? '
             <input type="submit" name="delete" value="'
-   . translate ( 'Delete' ) . '" onclick="return confirm( \''
+   . $deleteStr . '" onclick="return confirm( \''
    . translate( 'Are you sure you want to delete this entry?' )
    . '\')">' : '' ) . '
           </td>

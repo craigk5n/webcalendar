@@ -13,20 +13,22 @@ if ( ! empty ( $dummy ) ) {
 unset ( $_SESSION['webcal_login'] );
 unset ( $_SESSION['webcalendar_session'] );
 
-include_once 'includes/translate.php';
+ foreach( array(
+    'access',
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'translate',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
-include_once 'includes/access.php';
 include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
@@ -55,8 +57,8 @@ $action = getGetValue ( 'action' );
 if ( ! empty ( $action ) && $action == 'logout' ) {
   $logout = true;
   $return_path = '';
-  SetCookie ( 'webcalendar_login', '', 0 );
-  SetCookie ( 'webcalendar_last_view', '', 0 );
+  setcookie( 'webcalendar_login', '', 0 );
+  setcookie( 'webcalendar_last_view', '', 0 );
 } else
 if ( empty ( $return_path ) ) {
   // See if a return path was set.
@@ -105,7 +107,7 @@ else {
       // If $remember, set login to expire in 365 days.
       $timeStr = ( ! empty ( $remember ) && $remember == 'yes'
         ? time() + 31536000 : 0 );
-      SetCookie ( 'webcalendar_session', $encoded_login, $timeStr, $cookie_path );
+      setcookie( 'webcalendar_session', $encoded_login, $timeStr, $cookie_path );
 
       // The cookie "webcalendar_login" is provided as a convenience to other
       // apps that may wish to know what was the last calendar login,
@@ -114,7 +116,7 @@ else {
       // used to allow logins within this app. It is used to load user
       // preferences on the login page (before anyone has logged in)
       // if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
-      SetCookie ( 'webcalendar_login', $login, $timeStr, $cookie_path );
+      setcookie( 'webcalendar_login', $login, $timeStr, $cookie_path );
 
       if ( ! empty ( $GLOBALS['newUserUrl'] ) )
         $url = $GLOBALS['newUserUrl'];
@@ -135,13 +137,13 @@ else {
     // $error = "Start";
   }
   // Delete current user.
-  SetCookie ( 'webcalendar_session', '', 0, $cookie_path );
+  setcookie( 'webcalendar_session', '', 0, $cookie_path );
   // In older versions, the cookie path had no trailing slash and NS 4.78
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we also delete the
   // cookie with the trailing slash removed.
   if ( substr ( $cookie_path, -1 ) == '/' )
-    SetCookie ( 'webcalendar_session', '', 0, substr ( $cookie_path, 0, -1 ) );
+    setcookie( 'webcalendar_session', '', 0, substr( $cookie_path, 0, -1 ) );
 }
 ob_start();
 echo send_doctype ( $appStr ) . ( $logout ? '' : '

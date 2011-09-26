@@ -327,8 +327,6 @@ th,
 }
 ' : '' );
 
-?>
-<?php
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   // Need to load user variables so that $is_admin is set before we load
   // categories.

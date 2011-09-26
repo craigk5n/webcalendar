@@ -15,32 +15,41 @@
  *
  * TODO: hide private events of other users.
  */
-include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
 
+foreach( array(
+    'access',
+    'ajax',
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'translate',
+    'validate',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
+foreach( array(
+    'WebCalendar',
+    'Event',
+    'RptEvent',
+  ) as $i ) {
+  require_once 'includes/classes/' . $i . '.class';
+}
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
-include 'includes/access.php';
-include 'includes/validate.php';
 include 'includes/JSON.php';
-include 'includes/ajax.php';
 
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.class';
-include 'includes/classes/DocList.class';
-include 'includes/classes/AttachmentList.class';
-include 'includes/classes/CommentList.class';
-
+foreach( array(
+    'Doc',
+    'DocList',
+    'AttachmentList',
+    'CommentList',
+  ) as $i ) {
+  include_once 'includes/classes/' . $i . '.class';
+}
 $WebCalendar->initializeSecondPhase();
 
 load_global_settings();

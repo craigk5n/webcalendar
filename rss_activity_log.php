@@ -33,23 +33,24 @@
  *  </IfModule>
  */
 
-include_once 'includes/translate.php';
+foreach( array(
+    'access',
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'site_extras',
+    'translate',
+    'validate',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-include 'includes/access.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
-
-include_once 'includes/validate.php';
-include 'includes/site_extras.php';
 
 // This next step will send a redirect to login.php, which we don't want.
 $WebCalendar->initializeSecondPhase();

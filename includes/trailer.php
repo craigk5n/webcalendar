@@ -24,7 +24,6 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   $loginStr = translate ( 'Login' );
   $logoutStr = translate ( 'Logout' );
   $currentUserStr = translate ( 'Current User' );
-  $helpStr = translate ( 'Help' );
   $publicStr = $PUBLIC_ACCESS_FULLNAME;
   if ( empty ( $readonly ) || $readonly != 'Y' )
     $readonly = 'N';

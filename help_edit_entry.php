@@ -2,13 +2,11 @@
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
-
 ob_start();
+print_header( '', '', '', true );
 
 echo $helpListStr . '
-    <h2>' . translate ( 'Help' ) . ': '
- . translate ( 'Adding/Editing Calendar Entries' ) . '</h2>';
+    <h2>' . translate( 'Help Adding/Editing Calendar Entries' ) . '</h2>';
 
 $tmp_arr = array (
   translate ( 'Brief Description' ) => translate ( 'brief-description-help' ),
@@ -46,8 +44,7 @@ if ( $DISABLE_REPEATING_FIELD != 'Y' ) {
   list_help ( $tmp_arr );
 }
 
-ob_end_flush();
-
 echo print_trailer ( false, true, true );
+ob_end_flush();
 
 ?>

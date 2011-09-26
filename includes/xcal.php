@@ -215,9 +215,11 @@ function export_get_attendee( $id, $export ) {
         $attendee[$count] .= ';CN="'
          . ( empty( $user['cal_firstname'] ) && empty( $user['cal_lastname'] )
            ? $user['cal_login']
-           : utf8_encode( $user['cal_firstname'] ) . ' '
-             . utf8_encode( $user['cal_lastname'] ) ) . '"'
-         . ':MAILTO:' . ( empty( $user['cal_email'] )
+           // http://us.php.net/manual/en/function.utf8-encode.php
+           // utf8_encode only works from iso-8859-1
+           // Maybe we need to find a better way?
+           : utf8_encode( $user['cal_firstname'] . ' ' . $user['cal_lastname'] ) )
+         . '":MAILTO:' . ( empty( $user['cal_email'] )
            ? $EMAIL_FALLBACK_FROM : $user['cal_email'] );
       }
       $count++;
@@ -3099,8 +3101,8 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
 function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
   $palmStr = translate ( 'Palm Pilot' );
   return '
-      <select name="format" id="' . $name . '"'
-   . ( empty( $jsaction ) ? '' : 'onchange="' . $jsaction . '();"' ) . '>
+      <select name="format" id="' . $name
+   . ( empty( $jsaction ) ? '"' : '" onchange="' . $jsaction . '();"' ) . '>
         <option value="ical">iCalendar</option>
         <option value="vcal">vCalendar</option>
         <option value="pilot-csv">Pilot-datebook CSV (' . $palmStr . ')</option>

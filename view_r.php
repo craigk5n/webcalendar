@@ -237,9 +237,9 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 ?>
 
 <div style="width:99%;">
-<a title="<?php etranslate( 'Previous' )?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php etranslate( 'Previous' )?>"></a>
+<a title="<?php echo $prevStr;?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php echo $prevStr;?>"></a>
 
-<a title="<?php etranslate( 'Next' )?>" class="next" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate( 'Next' )?>"></a>
+<a title="<?php echo $nextStr;?>" class="next" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php echo $nextStr?>"></a>
 <div class="title">
 <span class="date"><?php
   if ( $is_day_view ) {
@@ -457,31 +457,22 @@ if ( $untimed_found || $show_untimed_row_always ) {
     $is_weekend = is_weekend ( $days[$d] );
     if ( $is_weekend  && $DISPLAY_WEEKENDS == 'N' ) continue;
     if ( $dateYmd == $todayYmd )
-      $class .= 'class="today"';
+      $class .= ' class="today"';
     else if ( $is_weekend )
-      $class .= 'class="weekend"';
+      $class .= ' class="weekend"';
     else
       $class = '';
     for ( $u = 0; $u < $viewusercnt; $u++ ) {
       $untimed = $save_untimed[$u][$d];
-      // Use the class 'hasevents' for any hour block that has events
-      // in it.
+      // Use the class 'hasevents' for any hour block that contains events.
       if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
-        $class = 'class="hasevents"';
+        $class = ' class="hasevents"';
       }
 
-      echo "<td $class ";
-      if ( $can_add ) {
-        echo " ondblclick=\"dblclick( '$dateYmd', '$viewusers[$u]' )\"";
-      }
-      echo '>';
-
-      if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
-        echo $untimed[$d];
-      } else {
-        echo '&nbsp;';
-      }
-      echo "</td>\n";
+      echo '<td' . $class . ( $can_add
+        ? " ondblclick=\"dblclick( '$dateYmd', '$viewusers[$u]' )\">" : '>' )
+       . ( empty( $untimed[$d] ) && strlen ( $untimed[$d] )
+         ? '&nbsp;' : $untimed[$d] ) . "</td>\n";
     }
   }
   echo "</tr>\n";
@@ -508,53 +499,34 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       $rowspan_arr = $save_rowspan_arr[$u][$d];
       $is_weekend = is_weekend ( $days[$d] );
       if ( $dateYmd == $todayYmd )
-        $class .= 'class="today"';
+        $class .= ' class="today"';
       else if ( $is_weekend )
-        $class .= 'class="weekend"';
+        $class .= ' class="weekend"';
       else
         $class = '';
-      // Use the class 'hasevents' for any hour block that has events
-      // in it.
+      // Use the class 'hasevents' for any hour block that contains events.
       if ( ! empty ( $hour_arr[$i] ) && strlen ( $hour_arr[$i] ) ) {
-        $class = 'class="hasevents"';
+        $class = ' class="hasevents"';
       }
 
       if ( $rowspan_day[$u][$d] > 1 ) {
         // this might mean there's an overlap, or it could mean one event
         // ends at 11:15 and another starts at 11:30.
         if ( !empty ( $hour_arr[$i] ) ) {
-          echo "<td $class>" . $hour_arr[$i]. "</td>\n";
+          echo '<td' .  $class . '>' . $hour_arr[$i]. "</td>\n";
         }
         $rowspan_day[$u][$d]--;
       } else {
         if ( empty ( $hour_arr[$i] ) ) {
-          echo "<td $class ";
-          if ( $can_add ) {
-            echo " ondblclick=\"dblclick( '$dateYmd', "
-              . "'$viewusers[$u]', '$time_h', '$time_m' )\"";
-          }
-          echo '>';
-          echo "&nbsp;</td>\n";
+          echo '<td' . $class . ( $can_add
+            ? " ondblclick=\"dblclick( '$dateYmd', '$viewusers[$u]', '$time_h',"
+              . " '$time_m' )\"" : '' ) . ">&nbsp;</td>\n";
         } else {
           $rowspan_day[$u][$d] = $save_rowspan_arr[$u][$d][$i];
-          if ( $rowspan_day[$u][$d] > 1 ) {
-            echo "<td $class ";
-            echo ' rowspan="' . $rowspan_day[$u][$d] . '"';
-            if ( $can_add ) {
-              echo " ondblclick=\"dblclick( '$dateYmd', "
-                . "'$user', '$time_h', '$time_m' )\"";
-            }
-            echo '>';
-            echo $hour_arr[$i]."</td>\n";
-          } else {
-            echo "<td $class ";
-            if ( $can_add ) {
-              echo " ondblclick=\"dblclick( '$dateYmd', "
-                . "'$user', '$time_h', '$time_m' )\"";
-            }
-            echo '>';
-            echo $hour_arr[$i]."</td>\n";
-          }
+          echo "<td $class " . ( $rowspan_day[$u][$d] > 1
+            ? 'rowspan="' . $rowspan_day[$u][$d] . '"' : '' )
+           . ( $can_add ? "ondblclick=\"dblclick( '$dateYmd', '$user', "
+           . "'$time_h', '$time_m' )\">" : '>' ) . $hour_arr[$i] . "</td>\n";
         }
       }
     }
