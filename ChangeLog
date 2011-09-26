@@ -9,7 +9,14 @@ Version 1.3.0+CVS (?? ??? 2011)
    Shrink a few bits of code.
    Put "// translate(phrases)" back in .js files instead of translate.js.php to better show where they are used.
    Upload some javascript that will be useful with HTML5/CSS3.
- - 12-Sep-11 bb Begin updating to HTML5 / CSS 3.
+     See "about.php" and "includes/js/about.js" for an example of one new function.
+   Consolidated some duplicate functions into one file; "js/base.js".
+   Moved call for "js/translate.js.php" into function print_header.
+     No sense in calling it from several places.
+   Checking filemtime to get the newest files is not working as well as I had hoped.
+     So, removing them from init.php.
+   I think I've fixed the problems with the top menu.
+  - 12-Sep-11 bb Begin updating to HTML5 / CSS 3.
    HTML5 takes the minimalist approach - What is the bare minimum code to make
    all browsers since NS4 / IE4 display the same in standards mode.
  - 8-Jul-11 cek Fixed XSS vulnerability: malicious javascript in event
