@@ -59,7 +59,7 @@ __month__ __yyyy__: =
 Title: Titolo
 version: versione
 version XXX: versione XXX
-WebCalendar is a PHP application used...: WebCalendar &egrave; una applicazione PHP intesa per gestire il calendario per un singolo utente o per un gruppo di utenti in intranet / internet.  Pu&ograve; essere configurato anche come agenda.
+WebCalendar a PHP app: WebCalendar &egrave; una applicazione PHP intesa per gestire il calendario per un singolo utente o per un gruppo di utenti in intranet / internet.  Pu&ograve; essere configurato anche come agenda.
 Credits: Crediti
 About: A proposito
 OK: =
@@ -1953,4 +1953,4 @@ Unknown error saving user: Errore sconosciuto registrando l'utente.
 #
 No participants found for event id XXX.: Nessun partecipante trovato per l'evento con id: XXX.
 Db error Could not find event id XXX.: Errore base dati: non trovato evento con id XXX.
-Error Could not find event id XXX in database.: Errore: non trovato evento con id XXX nella base dati.
+id XXX not found in db: Errore: non trovato evento con id XXX nella base dati.
