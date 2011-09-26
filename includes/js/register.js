@@ -6,15 +6,15 @@ var
 
 function valid_form() {
   if( ds.upassword1.value.length == 0 ) {
-    alert( xlate['inputPassword'] );
+    alert( xlate['inputPassword'] ); // translate( 'You have not entered a password.' )
     return false;
   }
   if( ds.user.value.length == 0 ) {
-    alert( xlate['noBlankUsername'] );
+    alert( xlate['noBlankUsername'] ); // translate( 'Username cannot be blank.' )
     return false;
   }
   if( ds.upassword1.value != ds.upassword2.value ) {
-    alert( xlate['passwordsNoMatch'] );
+    alert( xlate['passwordsNoMatch'] ); // translate( 'The passwords were not identical.' )
     return false;
   }
 
