@@ -581,6 +581,31 @@ Because not everyone uses these symbols for numbers:
 translate ( '0' ) translate ( '1' ) translate ( '2' ) translate ( '3' )
 translate ( '4' ) translate ( '5' ) translate ( '6' ) translate ( '7' )
 translate ( '8' ) translate ( '9' )
+
+To use as masks to get language appropriate separators. Eventually.
+translate( '9,999.99' ) translate('time is 140000')
 */
+
+/**
+ * Init some common translations that are used a lot.
+ * There are many more that could be moved here eventually.
+ * They are here because this is the only file guaranteed to load if translating.
+ */
+$addStr   = translate( 'Add' );
+$cat_Str  = translate( 'Category_' );
+$deleteStr= translate( 'Delete' );
+$editStr  = translate( 'Edit' );
+$groupsStr= translate( 'Groups' );
+$helpStr  = translate( 'Help' );
+$nextStr  = translate( 'Next' );
+$noStr    = translate( 'No' );
+$noneStr  = translate( 'None' );
+$okStr    = translate( 'OK' );
+$prevStr  = translate( 'Previous' );
+$saveStr  = translate( 'Save' );
+$selectStr= translate( 'Select' );
+$setsStr  = translate( 'Settings' );
+$urlStr   = translate( 'URL' );
+$yesStr   = translate( 'Yes' );
 
 ?>
