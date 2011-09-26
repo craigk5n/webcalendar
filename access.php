@@ -34,7 +34,6 @@ $goStr = '
       </select>
       <input type="submit" value="' . translate( 'Go' ) . '">
     </form>';
-$saveStr = translate( 'Save' );
 $undoStr = translate( 'Undo' );
 
 $saved = '';
@@ -78,7 +77,7 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
       break;
 
     $approve_total = $edit_total = $view_total = 0;
-    for( $i = 1; $i <= 256; ) {
+    for( $i = 1; $i < 257; ) {
       $approve_total += getPostValue( 'a_' . $i );
       $edit_total    += getPostValue( 'e_' . $i );
       $view_total    += getPostValue( 'v_' . $i );
@@ -154,12 +153,8 @@ if( ! empty( $otheruser ) ) {
   }
 }
 ob_start();
-
-print_header( '',
-  '<script src="includes/js/access.js"></script>
-    <link href="includes/css/access.css" rel="stylesheet">',
-  ( ! empty( $op['time'] ) && $op['time'] == 'Y'
-    ? 'onload="enableAll( true );"' : '' ) );
+setcookie( 'enAll', ( ! empty( $op['time'] ) && $op['time'] == 'Y' ) );
+print_header();
 
 echo print_success( $saved );
 
@@ -184,14 +179,14 @@ if( $is_admin ) {
    . $defConfigStr . '</option>';
   for( $i = 0, $cnt = count( $userlist ); $i < $cnt; $i++ ) {
     echo '
-        <option value="' . $userlist[$i]['cal_login'] . '"'
-     . ( $guser == $userlist[$i]['cal_login'] ? ' selected>' : '>' )
+        <option value="' . $userlist[$i]['cal_login']
+     . ( $guser == $userlist[$i]['cal_login'] ? '" selected>' : '">' )
      . $userlist[$i]['cal_fullname'] . '</option>';
   }
   for( $i = 0, $cnt = count( $nonuserlist ); $i < $cnt; $i++ ) {
     echo '
-        <option value="' . $nonuserlist[$i]['cal_login'] . '"'
-     . ( $guser == $nonuserlist[$i]['cal_login'] ? ' selected>' : '>' )
+        <option value="' . $nonuserlist[$i]['cal_login']
+     . ( $guser == $nonuserlist[$i]['cal_login'] ? '" selected>' : '">' )
      . $nonuserlist[$i]['cal_fullname'] . ' '
      . ( $nonuserlist[$i]['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
   }
@@ -294,9 +289,9 @@ if( ! empty( $guser ) || ! $is_admin ) {
     for( $i = 0, $cnt = count( $userlist ); $i < $cnt; $i++ ) {
       if( $userlist[$i]['cal_login'] != $guser )
         echo '
-        <option value="' . $userlist[$i]['cal_login'] . '"'
+        <option value="' . $userlist[$i]['cal_login']
          . ( ! empty( $otheruser ) && $otheruser == $userlist[$i]['cal_login']
-          ? ' selected>' : '>' )
+          ? '" selected>' : '">' )
          . $userlist[$i]['cal_fullname'] . '</option>';
     }
     echo $goStr;
@@ -313,18 +308,18 @@ if( ! empty( $otheruser ) ) {
       <table cellpadding="5" cellspacing="0" summary="">
         <tbody>
           <tr>
-            <th class="boxleft boxtop boxbottom" width='
+            <th class="boxtop boxbottom boxleft" width='
      . ( $guser == '__public__'
       ? '"60%" align="center">' . translate( 'Calendar' ) . '</th>
             <th class="boxtop boxbottom" width="20%">' . $typeStr . '</th>
-            <th class="boxtop boxbottom boxright" colspan="3" width="20%">'
+            <th class="boxtop boxright boxbottom" colspan="3" width="20%">'
        . translate( 'View Event' )
       : '"25%">' . $otheruser_fullname . '</th>
             <th class="boxtop boxbottom" width="15%">' . $typeStr . '</th>
             <th width="15%" colspan="3" class="boxtop boxbottom">'
        . translate( 'View' ) . '</th>
             <th width="15%" colspan="3" class="boxtop boxbottom">'
-       . translate( 'Edit' ) . '</th>
+       . $editStr . '</th>
             <th width="15%" colspan="3" class="boxtop boxright boxbottom">'
        . translate( 'Approve/Reject' ) ) . '</th>
           </tr>';
@@ -343,8 +338,8 @@ if( ! empty( $otheruser ) ) {
         continue;
       echo '
           <tr>
-            <td class="boxleft leftpadded' . ( $j > 3 ? ' boxbottom' : '' )
-       . '"><input type="checkbox" value="Y" name=';
+            <td class="' . ( $j > 3 ? ' boxbottom' : '' )
+       . 'boxleft leftpadded"><input type="checkbox" value="Y" name=';
       if( $j == 1 )
         echo '"invite"'
          . ( ! empty( $op['invite'] ) && $op['invite'] == 'N'
@@ -361,45 +356,46 @@ if( ! empty( $otheruser ) ) {
         $bottomedge = 'boxbottom';
       }
       echo '</td>
-            <td align="center" class="boxleft ' . $bottomedge . '">'
+            <td align="center" class="' . $bottomedge . ' boxleft">'
        . $access_type[$j] . '</td>
-            <td align="center" class="boxleft pub ' . $bottomedge . '">'
-       . '<input type="checkbox" value="' . $j . '" name="v_' . $j . '"'
-       . ( ! empty( $op['view'] ) && ( $op['view'] & $j ) ? ' checked' : '' )
+            <td align="center" class="' . $bottomedge . ' boxleft pub">'
+       . '<input type="checkbox" value="' . $j . '" name="v_' . $j
+       . ( ! empty( $op['view'] ) && ( $op['view'] & $j ) ? '" checked' : '"' )
        . '></td>
-            <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
-       . $j * 8 . '" name="v_' . $j * 8 . '"'
+            <td class="' . $bottomedge . ' conf"><input type="checkbox" value="'
+       . $j * 8 . '" name="v_' . $j * 8
        . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 8 ) )
-         ? ' checked' : '' ) . '></td>
-            <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
-       . $j * 64 . '" name="v_' . $j * 64 . '"'
+         ? '" checked' : '"' ) . '></td>
+            <td class="' . $bottomedge . ' priv"><input type="checkbox" value="'
+       . $j * 64 . '" name="v_' . $j * 64
        . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 64 ) )
-         ? ' checked' : '' ) . '></td>'
+         ? '" checked' : '"' ) . '></td>'
        . ( $guser != '__public__' ? '
-            <td align="center" class="boxleft pub ' . $bottomedge . '"><input '
-         . 'type="checkbox" value="' . $j . '" name="e_' . $j . '"'
-         . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j ) ? ' checked' : '' )
+            <td align="center" class="' . $bottomedge . ' boxleft pub"><input '
+         . 'type="checkbox" value="' . $j . '" name="e_' . $j
+         . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j ) ? '" checked' : '"' )
          . '></td>
-            <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
-         . $j * 8 . '" name="e_' . $j * 8 . '"'
+            <td class="' . $bottomedge . ' conf"><input type="checkbox" value="'
+         . $j * 8 . '" name="e_' . $j * 8
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 8 ) )
-           ? ' checked' : '' ) . '></td>
-            <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
-         . $j * 64 . '" name="e_' . $j * 64 . '"'
+           ? '" checked' : '"' ) . '></td>
+            <td class="' . $bottomedge . ' priv"><input type="checkbox" value="'
+         . $j * 64 . '" name="e_' . $j * 64
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 64 ) )
-           ? ' checked' : '' ) . '></td>
-            <td align="center" class="boxleft pub ' . $bottomedge . '"><input '
-         . 'type="checkbox" value="' . $j . '" name="a_' . $j . '"'
+           ? '" checked' : '"' ) . '></td>
+            <td align="center" class="' . $bottomedge . ' boxleft pub"><input '
+         . 'type="checkbox" value="' . $j . '" name="a_' . $j
          . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j )
-           ? ' checked' : '' ) . '></td>
-            <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
-         . $j * 8 . '" name="a_' . $j * 8 . '"'
+           ? '" checked' : '"' ) . '></td>
+            <td class="' . $bottomedge . ' conf"><input type="checkbox" value="'
+         . $j * 8 . '" name="a_' . $j * 8
          . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 8 ) )
-           ? ' checked' : '' ) . '></td>
-            <td class="boxright priv ' . $bottomedge
-         . '"><input type="checkbox" value="' . $j * 64 . '" name="a_' . $j * 64
-         . '"' . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 64 ) )
-           ? ' checked' : '' ) . '></td>'
+           ? '" checked' : '"' ) . '></td>
+            <td class="boxright ' . $bottomedge
+         . ' priv"><input type="checkbox" value="'
+         . $j * 64 . '" name="a_' . $j * 64
+         . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 64 ) )
+           ? '" checked' : '"' ) . '></td>'
         : '' ) . '
           </tr>';
     }
@@ -429,7 +425,7 @@ if( ! empty( $otheruser ) ) {
 
   echo '
           <tr>
-            <td colspan="11" class="boxleft boxbottom boxright">
+            <td colspan="11" class="boxright boxbottom boxleft">
               <input type="submit" value="' . $undoStr . '">
               <input type="submit" name="submit" value="' . $saveStr . '">
             </td>

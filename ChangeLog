@@ -16,6 +16,10 @@ Version 1.3.0+CVS (?? ??? 2011)
    Checking filemtime to get the newest files is not working as well as I had hoped.
      So, removing them from init.php.
    I think I've fixed the problems with the top menu.
+   I'm running most .js files through a formatter.
+     It helps, IMMENSELY, in finding bugs. :)
+     Though it does mess with the whitespace.  :(
+     Well, maybe it won't change so much in the future.
   - 12-Sep-11 bb Begin updating to HTML5 / CSS 3.
    HTML5 takes the minimalist approach - What is the bare minimum code to make
    all browsers since NS4 / IE4 display the same in standards mode.
