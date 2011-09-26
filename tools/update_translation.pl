@@ -40,14 +40,19 @@
 #  (which will create update_translation.pl.tdy, the new version)
 #
 ####################################################################
+$program_version = 'v1.3.0';
+$program_date    = '28 Sep 2008';
+
 use File::Copy;
 use File::Find;
 
 sub find_pgm_files {
 # Skipping non WebCalendar plugins,
-# if the filename ends in .class or .php, add it to @files.
+# and the file "includes/js/translate.js.php" which contains duplicates from .js files,
+# if the filename ends in .class, .js or .php, add it to @files.
   push( @files, "$File::Find::name" )
-    if ( $_ =~ /\.(class|php)$/i
+    if ( $_ ne 'translate.js.php'
+    && $_ =~ /\.(class|js|php)$/i
     && $File::Find::dir !~ /(fckeditor|htmlarea|phpmailer)/i );
 }
 
@@ -57,7 +62,7 @@ $trans_dir = '../translations';
 $base_trans_file = "$trans_dir/English-US.txt";
 $plugin          = '';
 
-$save_backup  = 0; # set to 1 to create backups
+$save_backup  = 1; # set to 1 to create backups
 $show_dups    = 0; # set to 0 to minimize translation file.
 $show_missing = 1; # set to 0 to minimize translation file.
 $verbose      = 0;
@@ -188,6 +193,11 @@ if ( -f $infile ) {
   }
 }
 
+$trans{ 'PROGRAM_DATE' }    = $program_date;
+$trans{ 'PROGRAM_VERSION' } = $program_version;
+$trans{ 'PROGRAM_NAME' }    = $trans{ 'Title' }
+ . " $program_version ($program_date)";
+
 $trans{ 'charset' }   = '=' if ( !defined( $trans{ 'charset' } ) );
 $trans{ 'direction' } = '=' if ( !defined( $trans{ 'direction' } ) );
 $trans{ '__mm__/__dd__/__yyyy__' } = '='
@@ -219,8 +229,9 @@ $header .=
   '# Translation last updated on '
   . sprintf( "%02d-%02d-%04d", $mon + 1, $day, $year + 1900 ) . "\n";
 
-print "\nFinding WebCalendar class and php files.\n\n" if ( $verbose );
+print "\nFinding WebCalendar class, js and php files.\n\n" if ( $verbose );
 find \&find_pgm_files, $base_dir;
+@files = sort( @files );
 
 #
 # Write new translation file.
@@ -229,21 +240,32 @@ $notfound = 0;
 open( OUT, ">$infile" ) || die "Error writing $infile: ";
 print OUT $header;
 if ( $plugin eq '' ) {
-  $foundin{ 'charset' }                  = $foundin{ 'direction' } =
-    $foundin{ '__mm__/__dd__/__yyyy__' } = $foundin{ '__month__ __dd__' } =
-    $foundin{ '__month__ __dd__, __yyyy__' } =
-    $foundin{ '__month__ __yyyy__' } = ' top of this file';
+  $foundin{ 'charset' } =
+  $foundin{ 'direction' } =
+  $foundin{ '__mm__/__dd__/__yyyy__' } =
+  $foundin{ '__month__ __dd__' } =
+  $foundin{ '__month__ __dd__, __yyyy__' } =
+  $foundin{ '__month__ __yyyy__' } =
+  $foundin{ 'PROGRAM_NAME' } =
+  $foundin{ 'PROGRAM_DATE' } =
+  $foundin{ 'PROGRAM_VERSION' } = ' top of this file';
 
-  $text{ 'charset' }                      = $text{ 'direction' } =
-    $text{ '__mm__/__dd__/__yyyy__' }     = $text{ '__month__ __dd__' } =
-    $text{ '__month__ __dd__, __yyyy__' } = $text{ '__month__ __yyyy__' } = 1;
+  $text{ 'charset' } =
+  $text{ 'direction' } =
+  $text{ '__mm__/__dd__/__yyyy__' } =
+  $text{ '__month__ __dd__' } =
+  $text{ '__month__ __dd__, __yyyy__' } =
+  $text{ '__month__ __yyyy__' } =
+  $text{ 'PROGRAM_NAME' } =
+  $text{ 'PROGRAM_DATE' } =
+  $text{ 'PROGRAM_VERSION' } = 1;
 
   print OUT ( $infile !~ /english-us/i ? '
-
 ' . ( '#' x 80 ) . '
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
-' . ( '#' x 80 ) . '
-
+' . ( '#' x 80 ) : '
+PROGRAM_NAME: ' . $trans{ 'PROGRAM_NAME' } ) . '
+' . ( $infile !~ /english-us/i ? '
 # A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
 
@@ -261,8 +283,8 @@ direction: ' . $trans{ 'direction' } . ( $infile !~ /english-us/i ? '
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 
 #  Select elements for date specification.
-#  ex)2008-10-13
-#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+#  ex)2011-10-13
+#     __yyyy__ ... 2011, __mm__ ... 10, __month__ ... October, __dd__ ... 13
 ' : '' ) . '
 __mm__/__dd__/__yyyy__: ' . $trans{ '__mm__/__dd__/__yyyy__' } . '
 __month__ __dd__: ' . $trans{ '__month__ __dd__' } . '
@@ -271,7 +293,6 @@ __month__ __yyyy__: ' . $trans{ '__month__ __yyyy__' } . '
 ' . ( $infile !~ /english-us/i ? '
 ' . ('#' x 80).'
 ' . ('#' x 80).'
-
 ' : '' );
 }
 
