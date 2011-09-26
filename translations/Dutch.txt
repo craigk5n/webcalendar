@@ -48,7 +48,7 @@ __month__ __yyyy__: =
 Title: =
 version: versie
 version XXX: versie XXX
-WebCalendar is a PHP application used...: Webcalendar is een PHP-toepassing die dient om de agenda van een enkele gebruiker of van een internet- of intranetgebruikersgroep bij te houden.
+WebCalendar a PHP app: Webcalendar is een PHP-toepassing die dient om de agenda van een enkele gebruiker of van een internet- of intranetgebruikersgroep bij te houden.
 Credits: Medewerkers
 About: Over
 OK: =

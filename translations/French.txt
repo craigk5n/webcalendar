@@ -58,7 +58,7 @@ __month__ __yyyy__: =
 #
 Title: WebCalendar, Agenda partagé
 version XXX: =
-WebCalendar is a PHP application used...: WebCalendar est une application PHP utilisée pour maintenir un calendrier   en mode usagé simple ou multiple. WebCalendar peut aussi être configuré comme un calendrier d'événements.
+WebCalendar a PHP app: WebCalendar est une application PHP utilisée pour maintenir un calendrier   en mode usagé simple ou multiple. WebCalendar peut aussi être configuré comme un calendrier d'événements.
 Credits: Crédits
 About: A propos
 OK: =
@@ -1865,4 +1865,4 @@ Unknown error saving user: Erreur inconnue sur la sauvegarde utilisateur.
 #
 No participants found for event id XXX.: Pas de participant trouvé pour l'événement Id : XXX.
 Db error Could not find event id XXX.: Db erreur: Ne trouve pas l'événement id XXX.
-Error Could not find event id XXX in database.: Erreur: Impossible de trouver l'id XXX en base de données.
+id XXX not found in db: Erreur: Impossible de trouver l'id XXX en base de données.

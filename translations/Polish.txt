@@ -52,7 +52,7 @@ __month__ __yyyy__: =
 Title: Tytu³
 version: wersja
 version XXX: wersja XXX
-WebCalendar is a PHP application used...: WebCalendar to aplikacja kalendarzowa PHP dla pojedynczego u¿ytkownika lub grupy u¿ytkowników po³±czonych przez internet / intranet. Mo¿na j± tak¿e skonfigurowaæ jako kalendarz zdarzeñ.
+WebCalendar a PHP app: WebCalendar to aplikacja kalendarzowa PHP dla pojedynczego u¿ytkownika lub grupy u¿ytkowników po³±czonych przez internet / intranet. Mo¿na j± tak¿e skonfigurowaæ jako kalendarz zdarzeñ.
 Credits: Autorzy
 About: O programie
 OK: =
@@ -1851,4 +1851,4 @@ Unknown error saving user: Nieznany b³±d przy próbie zapisania danych o u¿ytkown
 #
 No participants found for event id XXX.: Brak uczestników dla zdarzenia o id: XXX.
 Db error Could not find event id XXX.: B³±d bazy: Nie znaleziono wydarzenia o id XXX.
-Error Could not find event id XXX in database.: B³±d: Nie znaleziono wydarzenia o id XXX w bazie.
+id XXX not found in db: B³±d: Nie znaleziono wydarzenia o id XXX w bazie.
