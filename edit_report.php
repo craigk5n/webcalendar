@@ -233,9 +233,9 @@ if ( $show_participants ) {
 
   for ( $i = 0; $i < $userlistcnt; $i++ ) {
     echo '
-              <option value="' . $userlist[$i]['cal_login'] . '"'
+              <option value="' . $userlist[$i]['cal_login']
      . ( ! empty ( $report_user ) && $report_user == $userlist[$i]['cal_login']
-      ? ' selected>' : '>' ) . $userlist[$i]['cal_fullname'] . '</option>';
+      ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname'] . '</option>';
   }
 
   echo '
@@ -290,8 +290,8 @@ echo ( $is_admin ? '
 
 while ( list ( $num, $descr ) = each ( $ranges ) ) {
   echo '
-              <option value="' . $num . '"'
-   . ( $report_time_range == $num ? ' selected>' : '>' ) . $descr . '</option>';
+              <option value="' . $num
+   . ( $report_time_range == $num ? '" selected>' : '">' ) . $descr . '</option>';
 }
 
 echo '
@@ -302,16 +302,15 @@ echo '
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   echo '
         <tr>
-          <td><label for="rpt_cat_id">' . translate ( 'Category' )
-   . ':</label></td>
+          <td><label for="rpt_cat_id">' . $cat_Str . '</label></td>
           <td>
             <select name="cat_id" id="rpt_cat_id">
-              <option value="">' . translate ( 'None' ) . '</option>';
+              <option value="">' . $noneStr . '</option>';
 
   while ( list ( $K, $V ) = each ( $categories ) ) {
     echo '
-              <option value="' . $K . '"'
-     . ( $report_cat_id == $K ? ' selected>' : '>' )
+              <option value="' . $K
+     . ( $report_cat_id == $K ? '" selected>' : '">' )
      . $V['cat_name'] . '</option>';
   }
 
@@ -386,10 +385,10 @@ echo '
         </tr>
         <tr>
           <td colspan="4">
-            <input type="submit" value="' . translate( 'Save' ) . '">'
+            <input type="submit" value="' . $saveStr . '">'
  . ( $adding_report ? '' : '&nbsp;&nbsp;
             <input type="submit" name="delete" value="'
-   . translate ( 'Delete' ) . '" onclick="return confirm( \''
+   . $deleteStr . '" onclick="return confirm( \''
    . translate( 'Are you sure you want to delete this report?' )
    . '\');">' );
 

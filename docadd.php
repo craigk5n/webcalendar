@@ -227,7 +227,7 @@ print_header();
 <input type="hidden" name="type" value="A">
 <table summary="">
 <tr class="browse"><td>
- <label for="fileupload"><?php etranslate ( 'Upload file' );?>:</label></td><td>
+ <label for="fileupload"><?php etranslate( 'Upload file' );?></label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50">
 <tr><td class="aligntop"><label for="description">
   <?php etranslate ( 'Description' )?>:</label></td>

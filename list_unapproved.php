@@ -78,7 +78,6 @@ function list_unapproved ( $user ) {
     $appConStr = translate ( 'Approve/Confirm' );
     $appSelStr = translate ( 'Approve Selected' );
     $checkAllStr = translate ( 'Check All' );
-    $deleteStr = translate ( 'Delete' );
     $emailStr = translate ( 'Emails Will Not Be Sent' );
     $rejectSelStr = translate ( 'Reject Selected' );
     $rejectStr = translate ( 'Reject' );

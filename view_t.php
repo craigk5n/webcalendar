@@ -292,9 +292,6 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
-
 ob_start();
 
 echo '
@@ -343,17 +340,14 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
     continue;
 
   echo '<tr' . ( $dateYmd == date ( 'Ymd', $today ) ? '>
-      <th class="today"' :
-      ( $is_weekend ? ' class="weekend"><th class="weekend"' :
-      '><th class="row"' ) );
-  if ( $can_add )
-    echo " ondblclick=\"dblclick_add( '$dateYmd', '$login' )\"" .
-      " title=\"" . translate ( 'Double-click on empty cell to add new entry' ) . "\"";
-  echo '>';
-  echo weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS ) . '&nbsp;' .
+      <th class="today"' : ( $is_weekend ? ' class="weekend">
+      <th class="weekend"' : '>
+      <th class="row"' ) ) . ( $can_add
+    ? " ondblclick=\"dblclick_add( '$dateYmd', '$login' )\" title=\""
+     . translate( 'Double-click on empty cell to add new entry' ) . "\">"
+    : '>' ) . weekday_name( date( 'w', $date ), $DISPLAY_LONG_DAYS ) . '&nbsp;' .
     date ( 'd', $date ) . '</th><td class="timebar">' . $timeBarHeader .
-    print_date_entries_timebar ( $dateYmd, $login, true ) .
-    '</table>
+    print_date_entries_timebar( $dateYmd, $login, true ) . '</table>
         </td>
       </tr>';
 }

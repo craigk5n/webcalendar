@@ -21,23 +21,28 @@ function ws_init() {
   define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
   define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 
-  include_once __WC_INCLUDEDIR . 'translate.php';
-  require_once __WC_CLASSDIR . 'WebCalendar.class';
-  require_once __WC_CLASSDIR . 'Event.class';
-  require_once __WC_CLASSDIR . 'RptEvent.class';
-
+  foreach( array(
+      'access',
+      'config',
+      'dbi4php',
+      'functions',
+      'site_extras',
+      'translate',
+      'validate',
+    ) as $i ) {
+    include_once __WC_INCLUDEDIR . $i . '.php';
+  }
+  foreach( array(
+      'WebCalendar',
+      'Event',
+      'RptEvent',
+    ) as $i ) {
+    require_once __WC_CLASSDIR . $i . '.class';
+  }
   $WebCalendar = new WebCalendar( __FILE__ );
-
-  include_once __WC_INCLUDEDIR . 'config.php';
-  include_once __WC_INCLUDEDIR . 'dbi4php.php';
-  include_once __WC_INCLUDEDIR . 'access.php';
-  include_once __WC_INCLUDEDIR . 'functions.php';
-
   $WebCalendar->initializeFirstPhase();
 
   include_once __WC_INCLUDEDIR . $user_inc;
-  include_once __WC_INCLUDEDIR . 'validate.php';
-  include_once __WC_INCLUDEDIR . 'site_extras.php';
 
   $WebCalendar->initializeSecondPhase();
 
@@ -66,8 +71,8 @@ function ws_escape_xml ( $str ) {
  */
 function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   global $ALLOW_EXTERNAL_USERS, $DISABLE_PARTICIPANTS_FIELD,
-  $DISABLE_PRIORITY_FIELD, $EXTERNAL_REMINDERS, $SERVER_URL, $single_user,
-  $single_user_login, $site_extras, $WS_DEBUG;
+  $DISABLE_PRIORITY_FIELD, $EXTERNAL_REMINDERS, $noStr, $SERVER_URL,
+  $single_user, $single_user_login, $site_extras, $WS_DEBUG, $yesStr;
 
   // Get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user
@@ -121,7 +126,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   if ( ! ( $row = dbi_fetch_row ( $res ) ) ) {
     $out .= '
 ' . str_replace ( 'XXX', $id,
-      translate ( 'Error Could not find event id XXX in database.' ) );
+      translate ( 'id XXX not found in db' ) );
     return;
   }
 
@@ -196,7 +201,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
         $se .= ws_escape_xml ( $extras[$extra_name]['cal_data'] );
       elseif ( $extra_type == EXTRA_REMINDER )
         $se .= ( $extras[$extra_name]['cal_remind'] > 0
-          ? translate ( 'Yes' ) : translate ( 'No' ) );
+          ? $yesStr : $noStr );
       else
         // Default method for EXTRA_URL, EXTRA_TEXT, etc...
         $se .= ws_escape_xml ( $extras[$extra_name]['cal_data'] );

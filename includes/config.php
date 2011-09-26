@@ -17,6 +17,15 @@
  * @package WebCalendar
  */
 
+// How about we set these once, in "tools/update_translation.pl",
+// instead of multiple files?
+// However, this does require that "translations/English-US.txt",
+// at least, is current.
+// translate() for these is always English at this point.
+// We're just loading the perl variables.
+$PROGRAM_VERSION = translate( 'PROGRAM_VERSION' );
+$PROGRAM_DATE    = translate( 'PROGRAM_DATE' );
+
 /**
  * Prints a fatal error message to the user along with a link to the
  * Troubleshooting section of the WebCalendar System Administrator's Guide.
@@ -32,9 +41,9 @@
  *           Additionally, we don't want to call too many external functions
  *           from here since we could end up calling the function that called
  *           this one. Infinite loops === "bad"!
- * NOTE: Don't call translate from here.
- *       This function is often called before translation stuff is initialized!
+ *           So, call translate(), for example, before you get here.
  */
+
 function die_miserable_death( $error, $anchor='' ) {
   global $APPLICATION_NAME, $LANGUAGE, $login, $TROUBLE_URL;
 
@@ -92,11 +101,9 @@ function do_config( $fileLoc ) {
   $PROGRAM_NAME, $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings,
   $single_user, $single_user_login, $TROUBLE_URL, $user_inc, $use_http_auth;
 
-  // When changing PROGRAM VERSION, also change it in install/default_config.php
-  $PROGRAM_VERSION = 'v1.3.0';
-  $PROGRAM_DATE = '28 Sep 2008';
+  // The "WebCalendar" part should already be translated.
+  $PROGRAM_NAME = translate( 'PROGRAM_NAME', false, 'D' );
 
-  $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
   $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
 
@@ -130,8 +137,7 @@ function do_config( $fileLoc ) {
       die_miserable_death( translate( 'Could not find settings.php file...' ) );
   }
 
-  // We don't use fgets() since it seems to have problems with Mac-formatted
-  // text files. Instead, we read in the entire file, and split the lines manually.
+  // We read in the entire file, and split the lines manually.
   $data = '';
   while( ! feof( $fd ) ) {
     $data .= fgets( $fd, 4096 );

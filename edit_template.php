@@ -130,9 +130,9 @@ echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
    . '</textarea><br>
       <input type="button" value="' . translate ( 'Cancel' )
    . '" onclick="window.close();">
-      <input name="action" type="submit" value="' . translate( 'Save' ) . '">'
+      <input name="action" type="submit" value="' . $saveStr . '">'
    . ( ! empty ( $user ) ? '
-      <input name="delete" type="submit" value="' . translate ( 'Delete' )
+      <input name="delete" type="submit" value="' . $deleteStr
      . '" onclick="return confirm( \''
      . translate( 'Are you sure you want to delete this entry?' ) . '\');">'
     : '' ) . '

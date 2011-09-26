@@ -31,10 +31,7 @@ function dbtable_get_field_index ( $tablear, $fieldname ) {
  */
 function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
   $actionlabel = '', $hidden = '' ) {
-  global $CELLBG;
-
-  $noStr = translate ( 'No' );
-  $yesStr = translate ( 'Yes' );
+  global $CELLBG, $noStr, $yesStr;
 
   if ( ! is_array ( $tablear ) ) {
     return 'Error: dbtable_to_html parameter 1 is not an array!<br>' . "\n";
@@ -51,8 +48,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
   if ( ! empty ( $action ) ) {
     $ret .= '
                   <form action="' . $action . '" method="post"'
-     . ( empty ( $formname ) ? '' : ' name="' . $formname . '"' )
-     . '>';
+     . ( empty( $formname ) ? '>' : ' name="' . $formname . '">' );
     if ( is_array ( $hidden ) ) {
       for ( $i = 0, $cnt = count ( $hidden ); $i < $cnt; $i += 2 ) {
         $ret .= '
@@ -80,29 +76,28 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
                       <td style="vertical-align:top;">'
      . ( empty ( $tablear[$i]['prompt'] ) ? '&nbsp;' : '<b'
        . ( empty ( $tablear[$i]['tooltip'] )
-        ? '' : ' class="tooltip" title="' . $tablear[$i]['tooltip'] . '"' )
-       . '>' . $tablear[$i]['prompt'] . ':</b>' ) . '</td>
+        ? '>' : ' class="tooltip" title="' . $tablear[$i]['tooltip'] . '">' )
+       . $tablear[$i]['prompt'] . ':</b>' ) . '</td>
                       <td style="vertical-align:top;">';
     if ( empty ( $tablear[$i]['noneditable'] ) && ! empty ( $action ) ) {
       if ( in_array ( $tablear[$i]['type'], array ( 'float', 'int', 'text' ) ) )
         $ret .= '
-                        <input type="text" name="' . $tablear[$i]['name'] . '"'
+                        <input type="text" name="' . $tablear[$i]['name']
          . ( empty ( $tablear[$i]['maxlength'] )
-          ? '' : ' maxlength="' . $tablear[$i]['maxlength'] . '"' )
+          ? '' : '" maxlength="' . $tablear[$i]['maxlength'] )
          . ( empty ( $tablear[$i]['length'] )
-          ? '' : ' size="' . $tablear[$i]['length'] . '"' )
-         . ( empty ( $valuesar[$i] ) ? '' : ' value="'
-           . htmlspecialchars ( $valuesar[$i] ) . '"' )
-         . '>';
+          ? '"' : '" size="' . $tablear[$i]['length'] )
+         . ( empty( $valuesar[$i] ) ? '">' : '" value="'
+           . htmlspecialchars ( $valuesar[$i] ) . '">' );
       elseif ( $tablear[$i]['type'] == 'boolean' )
         $ret .= '
                         <input type="radio" value="Y" name="'
-         . $tablear[$i]['name'] . '"'
-         . ( $valuesar[$i] == 'Y' ? ' checked>' : '>' )
+         . $tablear[$i]['name']
+         . ( $valuesar[$i] == 'Y' ? '" checked>' : '">' )
          . $yesStr . '&nbsp;&nbsp;&nbsp;
                         <input type="radio" value="N" name="'
-         . $tablear[$i]['name'] . '"'
-         . ( $valuesar[$i] != 'Y' ? ' checked>' : '>' ) . $noStr;
+         . $tablear[$i]['name']
+         . ( $valuesar[$i] != 'Y' ? '" checked>' : '">' ) . $noStr;
       elseif ( $tablear[$i]['type'] == 'date' )
         $ret .= date_selection ( $tablear[$i]['name'], $valuesar[$i] );
       elseif ( $tablear[$i]['type'] == 'dbdate' )

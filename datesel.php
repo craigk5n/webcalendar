@@ -20,10 +20,8 @@ $href = 'href="datesel.php?form=' . $form . '&amp;fday=' . $fday
  . '&amp;fmonth=' . $fmonth . '&amp;fyear=' . $fyear . '&amp;date=';
 
 $nextdate = $href . date ( 'Ym01"', mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
-$nextStr = translate ( 'Next' );
 
 $prevdate = $href . date ( 'Ym01"', mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear ));
-$previousStr = translate ( 'Previous' );
 
 $monthStr = month_name ( $thismonth - 1 );
 
@@ -75,9 +73,9 @@ echo <<<EOT
             <table class="aligncenter" cellpadding="3" cellspacing="2"
               summary="">
               <tr>
-                <td><a title="{$previousStr}" class="prev" {$prevdate}>
+                <td><a title="{$prevStr}" class="prev" {$prevdate}>
                   <img src="images/leftarrowsmall.gif"
-                     alt="{$previousStr}"></a></td>
+                     alt="{$prevStr}"></a></td>
                 <th colspan="5">&nbsp;{$monthStr}&nbsp;{$thisyear}&nbsp;</th>
                 <td><a title="{$nextStr}"class="next" {$nextdate}>
                   <img src="images/rightarrowsmall.gif"

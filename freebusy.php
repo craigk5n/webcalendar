@@ -40,24 +40,31 @@
  * If $FREEBUSY_ENABLED is not 'Y' (set in each user' Preferences), do not allow.
  */
 
-include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
+foreach( array(
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'site_extras',
+    'translate',
+    'validate',
+    'xcal',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
+
+foreach( array(
+    'WebCalendar',
+    'Event',
+    'RptEvent',
+  ) as $i ) {
+  require_once 'includes/classes/' . $i . '.class';
+}
 
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
-include 'includes/validate.php';
-include 'includes/site_extras.php';
-include 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 

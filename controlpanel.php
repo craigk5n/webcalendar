@@ -19,18 +19,23 @@
  *
  **************************************************************************/
 
-include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
-
+foreach( array(
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'translate',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
+foreach( array(
+    'WebCalendar',
+    'Event',
+    'RptEvent',
+  ) as $i ) {
+  require_once 'includes/classes/' . $i . '.class';
+}
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-
 $WebCalendar->initializeFirstPhase ();
 
 include 'includes/' . $user_inc;

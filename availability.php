@@ -55,9 +55,6 @@ $span = ( $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ) * 3 + 1;
 
 $users = explode ( ',', $users );
 
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
-
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="' . $prev_url

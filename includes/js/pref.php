@@ -20,7 +20,7 @@ function valid_form ( form ) {
   if ( err.length > 0 )
     colorErr = true;
   if ( ! validWorkHours ( form ) ) {
-    err += "<?php etranslate ( 'Invalid work hours.', true); ?>.\n";
+    err += "<?php etranslate ( 'Invalid work hours.', true); ?>\n";
     err += form.pref_WORK_DAY_START_HOUR.value + " > " + form.pref_WORK_DAY_END_HOUR.value + "\n";
   }
   if ( colorErr ) {
@@ -54,14 +54,14 @@ function setTab( tab ) {
 
 
 
-<?php //see the showTab function in includes/js/visible.php for common code shared by all pages
+<?php //see the showTab function in includes/js/visible.js for common code shared by all pages
  //using the tabbed GUI.
-?>var tabs = new Array();
-tabs[1] = "settings";
-tabs[2] = "themes";
-tabs[3] = "email";
-tabs[4] = "boss";
-tabs[5] = "subscribe";
-tabs[6] = "header";
-tabs[7] = "colors";
-
+?>var tabs = ['',
+  'settings',
+  'themes',
+  'email',
+  'boss',
+  'subscribe',
+  'header',
+  'colors',
+];

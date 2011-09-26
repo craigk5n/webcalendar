@@ -2,13 +2,12 @@
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
-
 ob_start();
+print_header( '', '', '', true );
 
 echo $helpListStr . '
-    <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Preferences' ) . '</h2>
-    <h3>' . translate ( 'Settings' ) . '</h3>
+    <h2>' . translate( 'Help Preferences' ) . '</h2>
+    <h3>' . $setsStr . '</h3>
     <div class="helpbody">
       <div>';
 
@@ -84,15 +83,15 @@ if ( $PUBLISH_ENABLED == 'Y' ) {
   $tmp_arr = array (
     translate ( 'Allow remote publishing' ) =>
     translate ( 'allow-remote-publishing-help' ),
-    translate ( 'URL' ) => translate ( 'remote-publishing-url-help' ),
+    $urlStr => translate( 'remote-publishing-url-help' ),
     translate ( 'Allow remote subscriptions' ) =>
     translate ( 'allow-remote-subscriptions-help' ),
-    translate ( 'URL' ) => translate ( 'remote-subscriptions-url-help' ),
+    $urlStr => translate( 'remote-subscriptions-url-help' ),
     translate ( 'Enable FreeBusy publishing' ) =>
     translate ( 'freebusy-enabled-help' ),
-    translate ( 'URL' ) => translate ( 'freebusy-url-help' ),
+    $urlStr => translate( 'freebusy-url-help' ),
     translate ( 'Enable RSS feed' ) => translate ( 'rss-enabled-help' ),
-    translate ( 'URL' ) => translate ( 'rss-feed-url-help' ),
+    $urlStr => translate( 'rss-feed-url-help' ),
     );
 
   list_help ( $tmp_arr );
@@ -107,10 +106,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' )
       <p>' . translate ( 'colors-help' ) . '</p>';
 
 echo '
-    </div>';
-
+    </div>' . print_trailer( false, true, true );
 ob_end_flush();
-
-echo print_trailer ( false, true, true );
 
 ?>

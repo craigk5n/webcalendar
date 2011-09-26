@@ -139,8 +139,6 @@ define ( 'EXTRA_DISPLAY_ALL', 511 );
  END EXAMPLES
 
  Define your stuff here...
- Below translate calls are here so they get picked up by update_translation.pl.
- They are never executed in PHP.
  Make sure you add translations in the translations file for anything
  you need to translate to another language.
  Use tools/check_translation.pl to verify you have all your translations.

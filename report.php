@@ -238,7 +238,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   $list .= '
     <ul>';
   if ( $res ) {
-    $addStr = translate ( 'Add new report' );
+    $addNewRepStr = translate ( 'Add new report' );
     $unnamesStr = translate ( 'Unnamed Report' );
     while ( $row = dbi_fetch_row ( $res ) ) {
       $rep_name = trim ( $row[1] );
@@ -253,8 +253,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
     </ul>';
     $addurl = 'edit_report.php' . ( $updating_public ? '?public=1' : '' );
     $list .= '
-    <p><a title="' . $addStr . '" href="' . $addurl . '" class="nav">'
-     . $addStr . '</a></p>';
+    <p><a href="' . $addurl . '" class="nav">' . $addNewRepStr . '</a></p>';
     dbi_free_result ( $res );
   } else
     $error = $invalidID;
@@ -462,8 +461,6 @@ if ( ! empty ( $error ) ) {
 }
 
 $adminLinkStr = $manageStr = $nextLinkStr = $prevLinkStr = $textStr = '';
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
 $reportNameStr = ( $include_header ? '
     <h2>' . $report_name . '</h2>' : '' );
 

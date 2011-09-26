@@ -46,20 +46,22 @@ $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
-include_once __WC_INCLUDEDIR . 'translate.php';
+foreach( array(
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'translate',
+    'xcal',
+  ) as $i ) {
+  include_once __WC_INCLUDEDIR . $i . '.php';
+}
 require_once __WC_CLASSDIR . 'WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include __WC_INCLUDEDIR . 'config.php';
-include __WC_INCLUDEDIR . 'dbi4php.php';
-include __WC_INCLUDEDIR . 'formvars.php';
-include __WC_INCLUDEDIR . 'functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include __WC_INCLUDEDIR . $user_inc;
-include __WC_INCLUDEDIR . 'xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 // Used for hCal parsing.

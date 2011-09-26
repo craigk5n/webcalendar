@@ -2,20 +2,23 @@
 /**
  * This page handles logins for nonuser calendars.
  */
-include_once 'includes/translate.php';
+
+foreach( array(
+    'access',
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'translate',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
-include_once 'includes/access.php';
 include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
@@ -69,7 +72,7 @@ if ( $login != addslashes ( $login ) )
 $encoded_login = encode_string ( $login . '|nonuser' );
 
 // set login to expire in 365 days
-SetCookie ( 'webcalendar_session', $encoded_login,
+setcookie( 'webcalendar_session', $encoded_login,
   ( ! empty ( $remember ) && $remember == 'yes' ?
   31536000 + time() : 0 ), $cookie_path );
 

@@ -2,12 +2,11 @@
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
 ob_start();
+print_header( '', '', '', true );
 echo $helpListStr . '
-    <h2>' . translate ( 'Help' ) . ': ' . translate ( 'System Settings' )
- . '</h2>
-    <h3>' . translate ( 'Settings' ) . '</h3>
+    <h2>' . translate ( 'Help System Settings' ) . '</h2>
+    <h3>' . $setsStr . '</h3>
     <div class="helpbody">
       <div>';
 $tmp_arr = array (
@@ -95,7 +94,7 @@ $tmp_arr = array (
 list_help ( $tmp_arr );
 echo '
       </div>
-      <h3>' . translate ( 'Groups' ) . '</h3>
+      <h3>' . $groupsStr . '</h3>
       <div>';
 $tmp_arr = array (
   translate ( 'Groups enabled' ) => translate ( 'groups-enabled-help' ),
@@ -161,10 +160,9 @@ $tmp_arr = array (
   translate ( 'Manually entering color values' ) => translate ( 'colors-help' ),
   );
 list_help ( $tmp_arr );
-ob_end_flush();
 echo '
       </div>
-    </div>
-    ' . print_trailer ( false, true, true );
+    </div>' . print_trailer( false, true, true );
+ob_end_flush();
 
 ?>

@@ -56,23 +56,28 @@ $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
-require_once __WC_CLASSDIR . 'WebCalendar.class';
-require_once __WC_CLASSDIR . 'Event.class';
-require_once __WC_CLASSDIR . 'RptEvent.class';
-require_once __WC_CLASSDIR . 'WebCalMailer.class';
-
+foreach( array(
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'site_extras',
+    'translate',
+  ) as $i ) {
+  include_once __WC_INCLUDEDIR . $i . '.php';
+}
+foreach( array(
+    'WebCalendar',
+    'Event',
+    'RptEvent',
+    'WebCalMailer',
+  ) as $i ) {
+  require_once __WC_CLASSDIR . $i . '.class';
+}
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include __WC_INCLUDEDIR . 'translate.php';
-include __WC_INCLUDEDIR . 'config.php';
-include __WC_INCLUDEDIR . 'dbi4php.php';
-include __WC_INCLUDEDIR . 'formvars.php';
-include __WC_INCLUDEDIR . 'functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include __WC_INCLUDEDIR . $user_inc;
-include __WC_INCLUDEDIR . 'site_extras.php';
 
 $WebCalendar->initializeSecondPhase();
 

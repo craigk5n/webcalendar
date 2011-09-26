@@ -63,12 +63,8 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user ) && $is_assistant
     ? $user : $login, $wkend, $cat_id );
 
-if ( $can_add ) {
-  $help = ' title="' .
-    translate ( 'Double-click on empty cell to add new entry' ) . '"';
-} else {
-  $help = '';
-}
+$help = ( $can_add ? ' title="'
+ . translate( 'Double-click on empty cell to add new entry' ) . '"' : '' );
 
 $eventsStr = $filler = $headerStr = $minical_tasks = $untimedStr = '';
 $navStr = display_navigation ( 'week' );
@@ -190,25 +186,24 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       // or it could mean one event ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $save_hour_arr[$d][$i] ) ) {
         $eventsStr .= '
-              <td' . $class;
-        if ( $can_add )
-          $eventsStr .= " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
-
-        $eventsStr .= '>' . $save_hour_arr[$d][$i] . '</td>';
+              <td' . $class . ( $can_add
+          ? " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\">"
+          : '>' ) . $save_hour_arr[$d][$i] . '</td>';
       }
 
       $rowspan_day[$d]--;
     } else {
-      $eventsStr .= '<td' . $class;
-      if ( $can_add )
-        $eventsStr .= " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
+      $eventsStr .= '<td' . $class . ( $can_add
+        ? " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\""
+        : '' );
+
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
         $eventsStr .= '>' . '&nbsp;';
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         $eventsStr .= ( $rowspan_day[$d] > 1
-          ? ' rowspan="' . $rowspan_day[$d]  .'"': '' )
-         . '>' . $save_hour_arr[$d][$i];
+          ? ' rowspan="' . $rowspan_day[$d]  .'">' : '>' )
+         . $save_hour_arr[$d][$i];
       }
       $eventsStr .= '</td>';
     }

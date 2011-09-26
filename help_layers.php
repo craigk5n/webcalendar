@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 print_header ( '', '', '', true );
 echo $helpListStr . '
-    <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Layers' ) . '</h2>
+    <h2>' . translate( 'Help Layers' ) . '</h2>
     <p>' .
 translate ( 'Layers are useful for displaying...' )
  . '</p>';

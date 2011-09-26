@@ -38,9 +38,6 @@ $wkend = bump_local_timestamp( $wkstart, 0, 0, 0, 0,
   ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ), 0 ) - 1;
 $thisdate = date( 'Ymd', $wkstart );
 
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
-
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
 ob_start();
@@ -95,11 +92,8 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
   $tdw = 12; // Column width percent.
   echo '
-    <table class="main" summary=""';
-  if ( $can_add )
-    echo 'title="' .
-      translate ( 'Double-click on empty cell to add new entry' ) . '"';
-  echo '>
+    <table class="main" summary=""' . ( $can_add ? 'title="' .
+      translate( 'Double-click on empty cell to add new entry' ) . '">' : '>' ) . '
       <tr>
         <th class="empty">&nbsp;</th>';
 
@@ -136,10 +130,9 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
          . date ( 'd', $date ) . '</th>';
       }
 
-      $body .= '<td' . $class;
-      if ( $can_add )
-        $body .= " ondblclick=\"dblclick_add( '$dateYmd', '$user' )\"";
-      $body .= '>' . $entryStr . '
+      $body .= '<td' . $class . ( $can_add
+        ? " ondblclick=\"dblclick_add( '$dateYmd', '$user' )\">" : '>' )
+       . $entryStr . '
         </td>';
     }
     $body .= '

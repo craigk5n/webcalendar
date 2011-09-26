@@ -59,8 +59,6 @@ $SHOW_EMPTY_WEEKENDS = true;
 // Include unapproved events?
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
 $userStr = ( empty ( $user ) ? '' : '&amp;user=' . $user );
 
 if ( $single_user == 'N' ) {
