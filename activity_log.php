@@ -22,8 +22,6 @@ if ( ! $is_admin || ( access_is_enabled()
   die_miserable_death ( print_not_auth() );
 
 $eventsStr = translate ( 'Events' );
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
 
 $PAGE_SIZE = 25; // Number of entries to show at once.
 $startid = getValue ( 'startid', '-?[0-9]+', true );

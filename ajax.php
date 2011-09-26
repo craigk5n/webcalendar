@@ -3,21 +3,25 @@
  * Description
  * This is the handler for Ajax httpXmlRequests.
  */
-include_once 'includes/translate.php';
+
+foreach( array(
+    'access',
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'translate',
+    'validate',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
+
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
-include 'includes/access.php';
-include 'includes/validate.php';
+include_once 'includes/' . $user_inc;
 
 $WebCalendar->initializeSecondPhase();
 
