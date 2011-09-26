@@ -9,7 +9,7 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 // Configure your menu using this file.
 include_once 'includes/menu/menu_config.php';
 
-global $ALLOW_VIEW_OTHER, $BodyX, $CATEGORIES_ENABLED, $DISPLAY_TASKS,
+global $ALLOW_VIEW_OTHER, $CATEGORIES_ENABLED, $DISPLAY_TASKS,
 $DISPLAY_TASKS_IN_GRID, $fullname, $has_boss, $HOME_LINK, $is_admin,
 $is_assistant, $is_nonuser, $is_nonuser_admin, $login, $login_return_path,
 $menuHtml, $menuScript, $MENU_DATE_TOP, $NONUSER_ENABLED, $OVERRIDE_PUBLIC,
@@ -63,10 +63,11 @@ if ( $can_add ) {
 if ( $single_user != 'Y' ) {
   // Today
   if ( ! empty ( $user ) && $user != $login ) {
-    $month_url .= '?user=' . $user;
-    $today_url .= '?user=' . $user;
-    $week_url .= '?user=' . $user;
-    $year_url .= '?user=' . $user;
+    $tmp = '?user=' . $user;
+    $month_url .= $tmp;
+    $today_url .= $tmp;
+    $week_url .= $tmp;
+    $year_url .= $tmp;
 
     if ( ! empty ( $new_entry_url ) )
       $new_entry_url .= '&user=' . $user;
@@ -86,7 +87,7 @@ if ( $single_user != 'Y' ) {
     // Don't allow them to see other people's calendar.
   } else
   if ( $ALLOW_VIEW_OTHER == 'Y' || $is_admin ) {
-    // Also, make sure they able to access either day/week/month/year view.
+    // Also, make sure they're able to access either day/week/month/year view.
     // If not, the only way to view another user's calendar is a custom view.
     if ( ! access_is_enabled() ||
         access_can_access_function ( ACCESS_ANOTHER_CALENDAR ) ) {
@@ -187,9 +188,9 @@ if ( ! $use_http_auth && $single_user != 'Y' ) {
 // Manage Calendar links.
 if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' )
   $admincals = get_nonuser_cals ( $login );
-// Make sure they have access to either month/week/day view. If they do not,
-// then we cannot create a URL that shows just the boss' events. So, we would
-// not include any of the "manage calendar of" links.
+// Make sure they have access to either month/week/day view.
+// If they do not, then we cannot create a URL that shows just the boss' events.
+// So, we would not include any of the "manage calendar of" links.
 $have_boss_url = true;
 if ( ! access_can_access_function ( ACCESS_MONTH, $user ) && !
     access_can_access_function ( ACCESS_WEEK, $user ) && !
@@ -211,8 +212,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     array_unshift ( $grouplist, $public );
   }
   $groups = '';
-  $grouplistcnt = count ( $grouplist );
-  for ( $i = 0; $i < $grouplistcnt; $i++ ) {
+  for ( $i = 0, $j = count( $grouplist ); $i < $j; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];
     // Don't display current $user in group list.
@@ -262,7 +262,6 @@ Custom actions inside a menu can be done with:
 
 For full menu options see JSCookMenu documentation.
 */
-$menuHtml = $menuScript = '';
 
 /**
  * A menu link.
@@ -332,12 +331,6 @@ function jscMenu_divider() {
 /* -----------------------------------------------------------------------------
                         Now we need to print the menu
 ----------------------------------------------------------------------------- */
-
-$menuScript .= '
-    <script>
-<!-- <![CDATA[
-      var myMenu =
-['
 
 // Add Menu Extra if defined.
  . ( empty ( $menuExtras[0] ) ? '' : parse_menu_extras ( $menuExtras[0] ) );
@@ -658,10 +651,6 @@ if ( $show_printer && $menuConfig['Printer'] )
 if ( ! empty ( $menuExtras[7] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[7] );
 
-$menuScript .= '];
-//]]> -->
-    </script>' . "\n";
-
 $loginStr = translate ( 'Login' );
 $logoutStr = translate ( 'Logout' );
 
@@ -686,10 +675,6 @@ $menuHtml .= '
   ) . '&nbsp;</td>
         </tr>
       </table>';
-
-// Add function to onload string as needed.
-$BodyX = ( empty ( $BodyX ) ? 'onload="' : substr ( $BodyX, 0, -1 ) )
- . "cmDraw( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
 
 /**
  * This function allows admins to add static content to their menu.
