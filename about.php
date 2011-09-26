@@ -20,30 +20,28 @@ if( empty( $data ) ) {
 }
 
 ob_start();
-print_header( '', ( empty( $credits ) ? '' : '<script>
-      function start() {
-        startScroll( \'creds\', \'' . $data . '\' );
+print_header( '', '<script>
+      // $data is too big for a cookie. Let's see if HTML5 works.
+      if (Modernizr.localstorage) {
+        localStorage[data] = ' . $data . ';
+      } else {
+        var data = ' . $data . ';          
       }
-    </script>
-    <script src="includes/js/v_h_scrolls.js"></script>
-' ) . '<link href="includes/css/about.css" rel="stylesheet">',
-  '', true, false, true );
+    </script>', '', true, false, true );
 echo '    <div id="creds">' . ( empty( $credits ) ? '
-      <a title="' . $PROGRAM_NAME . '" href="' . $PROGRAM_URL
-    . '" target="_blank">
+      <a href="' . $PROGRAM_URL . '">
       <h2>' . translate( 'Title' ) . '</h2>
-      <p>' . str_replace( 'XXX', translate( $PROGRAM_VERSION , false, 'N' ),
+      <p>' . str_replace( 'XXX',
+        translate( substr( $PROGRAM_VERSION, 1 ), false, 'N' ),
         translate( 'version XXX' ) ) . '<br>'
-    . translate( $PROGRAM_DATE, false, 'D' ) . '</p></a>
-      <br>
-      <p>' . translate( 'WebCalendar is a PHP application used...' ) . '</p>' : '' ) . '
+    . translate( $PROGRAM_DATE, false, 'D' ) . '</p></a><br>
+      <p>' . translate( 'WebCalendar a PHP app' ) . '</p>' : '' ) . '
     </div><br>
-    <form action="about.php" name="aboutform" id="aboutform" method="post">
+    <form action="about.php" method="post" id="aboutform" name="aboutform">
       <input type="submit" name="' . ( empty( $credits )
   ? 'Credits" value="' . translate( 'Credits' )
   : 'About" value="' . translate( 'About' ) ) . '">
-      <input type="button" id="ok" name="ok" value="' . translate( 'OK' )
- . '" onclick="window.close()">
+      <input type="button" id="ok" name="ok" value="' . $okStr . '">
     </form>
     ' . print_trailer( false, true, true );
 
