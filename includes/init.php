@@ -8,7 +8,10 @@
  *
  * <b>Comments:</b>
  * The following scripts do not use this file:
+ *   - freebusy.php
+ *   - install/index.php
  *   - login.php
+ *   - register.php
  *   - week_ssi.php
  *   - upcoming.php
  *   - tools/send_reminders.php
@@ -18,20 +21,20 @@
  *   2. call any other functions or includes not in this file that you need
  *   3. call the print_header function with proper arguments
  *
- * What gets called:
- *   - include_once 'includes/translate.php';
- *   - require_once 'includes/classes/WebCalendar.class';
- *   - require_once 'includes/classes/Event.class';
- *   - require_once 'includes/classes/RptEvent.class';
+ * What gets called (although not generally in this order.):
+ *   - include_once "includes/$user_inc";
+ *   - include_once 'includes/access.php';
  *   - include_once 'includes/assert.php';
  *   - include_once 'includes/config.php';
  *   - include_once 'includes/dbi4php.php';
  *   - include_once 'includes/formvars.php';
  *   - include_once 'includes/functions.php';
- *   - include_once "includes/$user_inc";
- *   - include_once 'includes/validate.php';
  *   - include_once 'includes/site_extras.php';
- *   - include_once 'includes/access.php';
+ *   - include_once 'includes/translate.php';
+ *   - include_once 'includes/validate.php';
+ *   - require_once 'includes/classes/Event.class';
+ *   - require_once 'includes/classes/RptEvent.class';
+ *   - require_once 'includes/classes/WebCalendar.class';
  *
  * Also, for month.php, day.php, week.php, week_details.php:
  *   - {@link send_no_cache_header()};
@@ -48,28 +51,57 @@
        && preg_match( '/\/includes\//', $_SERVER['PHP_SELF'] ) ) )
   die( 'You cannot access this file directly!' );
 
-include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
-
+// These are just collections of functions.
+// They don't run any code on load.
+// Well, some of them define() some things and set up arrays
+// but, I dont' think that counts as "code". :) bb
+foreach( array(
+    'access',
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'site_extras',
+    'translate',
+    'validate',
+  ) as $f ) {
+  include_once 'includes/'. $f . '.php';
+}
+foreach( array(
+    'WebCalendar',
+    'Event',
+    'RptEvent',
+  ) as $f ) {
+  require_once 'includes/classes/'. $f . '.class';
+}
 $WebCalendar = new WebCalendar( __FILE__ );
 
+// I haven't determined if this must go here,
+// or if it could go in the first foreach loop above. bb
 include_once 'includes/assert.php';
-include_once 'includes/config.php';
-include_once 'includes/dbi4php.php';
-include_once 'includes/formvars.php';
-include_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
 include_once 'includes/' . $user_inc;
-include_once 'includes/validate.php';
-include_once 'includes/site_extras.php';
-include_once 'includes/access.php';
 include_once 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
+
+/* ==================================
+ * Initialize some variables that get used a lot.
+ * Avoids errors for 'undefined' later.
+ */
+$byday = $bymonth = $bymonthday = $bysetpos = $exceptions = $INC = array();
+$inclusions = $menuthemes = $participants = $reminder = $themes = array();
+
+$access = $BodyX = $byweekno = $byyearday = $cal_date = $cal_url = $catList = '';
+$catNames = $currenttab = $due_date = $duration = $external_users = $HEAD = '';
+$location = $name = $priority = $rpt_count = $rpt_end_date = $rpt_end_time = '';
+$rpt_freq = $thisyear = '';
+
+/**
+ * End init vars.
+ */
 
 /**
  * Prints the HTML header and opening HTML body tag.
@@ -80,9 +112,13 @@ $WebCalendar->initializeSecondPhase();
  *                             script, etc)
  * @param string $BodyX        Data to be printed inside the Body tag (onload
  *                             for example)
+ *
+ * NOTE: I'm trying to remove $includes, $HeadX and $BodyX as parameters.
+ *       by moving the calls into external .js files. bb
+ *
  * @param bool   $disbleCustom Do not include custom header? (useful for small
  *                             popup windows, such as color selection)
- * @param bool   $disableStyle Do not include the standard css?
+ * @param bool   $disableStyle Do not include the standard css
  * @param bool   $disableRSS   Do not include the RSS link
  * @param bool   $disableAJAX  Do not include the prototype.js link
  */
@@ -95,15 +131,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
-  $cs_ret = $lang = $menuHtml = $menuScript = '';
+  $cs_ret = $lang = $menuHtml = $menuScript = $rs_ret = '';
+  $js_ret = '
+    <script src="js_cacher.php?inc=js/translate.js.php"></script>';
 
   // Remember this view if the file is a view_x.php script.
   if( ! strstr( $REQUEST_URI, 'view_entry' ) )
     remember_this_view( true );
-
-  // Menu control.
-  if( ! empty( $friendly ) || $disableCustom )
-    $MENU_ENABLED = 'N';
 
   $appStr = generate_application_name( true );
   // Include includes/css/print_styles.css as a media="print" stylesheet.
@@ -112,21 +146,22 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // will look when printed. This maintains backwards-compatibility for browsers
   // that don't support media="print" stylesheets.
   $cs_ar = array( 'css/styles.css', 'css/print_styles.css' );
-  $js_ar = array();
 
-  $ret = send_doctype( $appStr );
+  // Some functions that are going to be used  by almost everything very shortly.
+  $js_ar = array( 'js/base.js' ); // See comments in file.
 
   if( ! $disableAJAX ) {
-    $ret .= '
+    $js_ret .= '
     <!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->';
     $js_ar[] = 'js/prototype.js';
     $js_ar[] = 'js/scriptaculous/scriptaculous.js?load=builder,effects';
   }
 
+  // Menu control.
+  $MENU_ENABLED = ( ! empty( $friendly ) || $disableCustom ? 'N' : 'Y' );
+
   // CSS and JS includes needed for the top menu.
   if( $MENU_ENABLED == 'Y' ) {
-    $saveBodyX = $BodyX;
-    $BodyX = '';
     $MENU_THEME = ( ! empty( $MENU_THEME ) && $MENU_THEME != 'none'
       ? $MENU_THEME : 'default' );
     $menu_theme = ( $SCRIPT == 'admin.php'
@@ -135,22 +170,30 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
     include_once 'includes/menu/index.php';
 
+    $HeadX .= '
+    <script>
+      var myMenu = [
+' . $menuScript . '
+      ];
+
+      addLoadListener( function () {
+          cmDraw( \'myMenuID\', myMenu, \'hbr\', cmTheme, \'Theme\' );
+        });
+    </script>
+';
+
+    // To shorten the code a bit, start with "default" CSS
+    // then load in just the changes to that.
+    $cs_ar[] = 'menu/themes/default/theme.css';
     $cs_ar[] = 'menu/themes/' . $menu_theme . '/theme.css';
     $js_ar[] = 'menu/JSCookMenu.js';
-    $js_ar[] = 'menu/themes/' . $menu_theme . '/theme.js';
-    if ( ! empty ( $saveBodyX ) && preg_match ( '/cmDraw/', $BodyX ) ) {
-      // menu code overwrote our BodyX
-      if ( preg_match ( '/onload="(\S+)"/i', $saveBodyX, $matches ) ) {
-        $BodyX = 'onload="' . $matches[1] . '; ' .
-         "cmDraw( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
-      } else if ( preg_match ( '/cmDraw/', $BodyX ) ) {
-         // handled...  wasn't clobbered
-      } else {
-        die_miserable_death ( 'BodyX error in print_header.  Menu and ' .
-          $self . ' are both setting onload callback.<br>Old: ' .
-          htmlentities ( $saveBodyX ) . '<br><br>New: ' .
-          htmlentities ( $BodyX ) );
-      }
+    // The various "theme.js" are almost all identical.
+    // Why have so many duplicates?
+    $js_ar[] = 'menu/themes/default/theme.js';
+    // Then just load in the piece of one (so far) that's different.
+    $tmp = 'menu/themes/' . $menu_theme . '/theme.js';
+    if(file_exists $tmp ) {
+      $js_ar[] = $tmp;
     }
   }
 
@@ -159,49 +202,51 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   if( ! empty( $js_ar ) )
     foreach( $js_ar as $j ) {
-      $i = 'includes/' . $j;
-      $timeStr = ( @filemtime ( $i ) > 0 ? "?" . filemtime ( $i ) : '' );
-      $ret .= '
-    <script src="'
-       . $i . $timeStr . '"></script>';
+      $js_ret .= '
+    <script src="includes/' . $j . '"></script>';
     }
 
   // Any other includes?
   if( is_array( $includes ) ) {
     foreach( $includes as $inc ) {
       if( stristr( $inc, '.css' ) ) {
-        $i = 'includes/' . $inc;
         // Not added to $cs_ar because I think we want these,
-        // even if $disableStyle.
+        // even if $disableStyle?
         $cs_ret .= '
-    <link href="' . $i . '" rel="stylesheet">';
+    <link href="includes/' . $inc . '" rel="stylesheet">';
       } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
           && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
       } else {
         $arinc = explode( '/', $inc );
-        $ret .= '
+        $js_ret .= '
     <script src="';
 
-        if( stristr( $inc, '/true' ) ) {
+        if( stristr( $inc, '/true' ) ) { // File is all JavaScript, no PHP.
+                                         // Even if the extension is ".php" for now.
           $i = 'includes';
+          $delim = '/';
           foreach( $arinc as $a ) {
-            if( $a == 'true' )
-              break;
-
-            $i .= '/' . $a;
+            if( $a == 'true' ) {
+              // Not using it now but, we may want to send things in later?
+              $delim = '?';
+              continue;
+            }
+            $i .= $delim . $a;
+            if( $delim == '?' ) {
+              $delim = '&';
+            }
           }
-          $ret .= $i;
+          $js_ret .= $i;
         } else {
-          $ret .= 'js_cacher.php?inc=' . $inc;
+          $js_ret .= 'js_cacher.php?inc=' . $inc;
         }
-        $ret .= '"></script>';
+        $js_ret .= '"></script>';
       }
     }
   }
-  // There has to be a way to make "$menuScript" an external file.
-  $ret .= $menuScript;
 
+  // Craig, shouldn't this be translated?
   $tmp   = '" rel="alternate" title="' . $appStr . ' - Unapproved Events - ';
   $tmp_f = 'rss_unapproved.php';
   $tmp_l = '
@@ -221,14 +266,14 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     // the current user has permissions to approve for, but I'm thinking
     // that's too many db requests to repeat on every page.
 
-    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '">'
+    $rs_ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '">'
      . ( $is_admin && $PUBLIC_ACCESS == 'Y' ? $tmp_l . $tmp_f . '?user=public&'
      . filemtime( $tmp_f ) . $tmp . translate( $PUBLIC_ACCESS_FULLNAME )
      . '">' : '' );
   }
   if( $is_admin ) {
     $tmp_f = 'rss_activity_log.php';
-    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . '" rel="alternate"'
+    $rs_ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . '" rel="alternate"'
      . ' title="' . $appStr . ' - ' . translate('Activity Log') . '">';
   }
   if( ! $disableStyle ) {
@@ -237,22 +282,23 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
       $webcalendar_csscache = $_COOKIE['webcalendar_csscache'];
     else {
       $webcalendar_csscache = 1;
-      SetCookie( 'webcalendar_csscache', $webcalendar_csscache );
+      setcookie( 'webcalendar_csscache', $webcalendar_csscache );
     }
-    $ret .= '
+    $cs_ret .= '
     <link href="css_cacher.php?login='
      . ( empty( $_SESSION['webcal_tmp_login'] )
        ? $login : $_SESSION['webcal_tmp_login'] )
      . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet">';
     foreach( $cs_ar as $c ) {
-      $i = 'includes/' . $c;
-      $ret .= '
-    <link href="' . $i . '" rel="stylesheet"'
+      $cs_ret .= '
+    <link href="includes/' . $c . '" rel="stylesheet"'
        . ( $c == 'css/print_styles.css' && empty( $friendly )
-         ? ' media="print"' : '' ) . '>';
+         ? ' media="print">' : '>' );
     }
   }
-  echo $ret . $cs_ret
+  echo send_doctype( $appStr )
+   // Experimenting with the output sequence.
+   . $cs_ret . $js_ret . $rs_ret
   // Add custom script/stylesheet if enabled.
    . ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom
      ? load_template( $login, 'S' ) : '' )
@@ -274,9 +320,10 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // Determine the page direction (left-to-right or right-to-left).
   . ( translate( 'direction' ) == 'rtl' ? ' dir="rtl"' : '' )
   /* Add <body> id. */ . ' id="' . preg_replace( '/(_|.php)/', '',
-    substr( $self, strrpos( $self, '/' ) + 1 ) ) . '"'
+    substr( $self, strrpos( $self, '/' ) + 1 ) )
   // Add any extra parts to the <body> tag.
-  . ( empty( $BodyX ) ? '' : " $BodyX" ) . '>' . "\n"
+  // However, I'm trying to move "onload" and such into the .js files. bb
+  . ( empty( $BodyX ) ? '"' : "\" $BodyX" ) . ">\n"
   // If menu is enabled, place menu above custom header if desired.
   . ( $MENU_ENABLED == 'Y' && $menuConfig['Above Custom Header']
     ? $menuHtml : '' )
@@ -334,8 +381,10 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 
   return $ret . '
 <!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->
-' // Adds an easy link to validate the pages.
+'
 /*
+ // Adds an easy link to validate the pages.
+ // (But, needs to be updated for HTML5.)
   . ( $DEMO_MODE == 'Y' ? '
     <p><a href="http://validator.w3.org/check?uri=referer">'
      . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
@@ -365,6 +414,7 @@ function print_menu_dates( $menu = false ) {
   // TODO add this to admin and pref.
   // Change this value to 'Y' to enable staying in custom views.
   $STAY_IN_VIEW = 'N';
+
   if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) ) {
     $include_id = true;
     $monthUrl = $SCRIPT;
@@ -420,8 +470,8 @@ function print_menu_dates( $menu = false ) {
     }
     if( $y > 1969 && $y < 2038 ) {
       $dateYmd = date( 'Ymd', mktime( 0, 0, 0, $m, 1, $y ) );
-      $ret .= $option . $dateYmd . '"'
-       . ( $dateYmd == $thisdate ? ' selected>' : '?' )
+      $ret .= $option . $dateYmd
+       . ( $dateYmd == $thisdate ? '" selected>' : '">' )
        . date_to_str( $dateYmd, $DATE_FORMAT_MY, false, true ) . '</option>';
     }
   }
@@ -472,8 +522,8 @@ function print_menu_dates( $menu = false ) {
     $dateEYmd = date( 'Ymd', $twkend );
     $dateW = date( 'W', $twkstart + 86400 );
     if( $twkstart > 0 && $twkend < 2146021200 )
-      $ret .= $option . $dateSYmd . '"'
-       . ( $dateW == $thisweek ? ' selected>' : '>' )
+      $ret .= $option . $dateSYmd
+       . ( $dateW == $thisweek ? '" selected>' : '">' )
        . ( ! empty( $GLOBALS['PULLDOWN_WEEKNUMBER'] )
          && $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
         ? '(' . $dateW . ')&nbsp;&nbsp;' : '' ) . sprintf( '%s - %s',
@@ -521,8 +571,8 @@ function print_menu_dates( $menu = false ) {
 
   for( $i = $y - 2, $cnt = $y + 6; $i < $cnt; $i++ ) {
     if( $i > 1969 && $i < 2038 )
-      $ret .= $option . $i . '"'
-       . ( $i == $y ? ' selected>' : '>' ) . $i . '</option>';
+      $ret .= $option . $i
+       . ( $i == $y ? '" selected>' : '">' ) . $i . '</option>';
   }
 
   return $ret . $goStr;
