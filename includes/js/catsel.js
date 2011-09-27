@@ -1,5 +1,15 @@
 // $Id$
 
+addLoadListener(function () {
+    attachEventListener(document.getElementById('editCategories'), 'submit',
+      function () {
+        sendCats(this);
+      });
+    attachEventListener(document.getElementById('selAdd'), 'click', selAdd);
+    attachEventListener(document.getElementById('selRem'), 'click', selRemove);
+    attachEventListener(document.getElementById('sendCat'), 'click', sendCats);
+    attachEventListener(document.getElementById('canCat'), 'click', window.close);
+  });
 function sendCats(cats) {
   var frm = wc_getCookie('frm');
   var dfe = document.forms[0].elements,

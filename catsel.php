@@ -33,8 +33,7 @@ echo '
       <tr>
         <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>
-      <form action="" method="post" name="editCategories" '
- . 'onSubmit="sendCats( this )">
+      <form action="" method="post" id="editCategories" name="editCategories">
       <tr>
         <td valign="top">';
 
@@ -58,8 +57,7 @@ if ( ! empty ( $categories ) ) {
 }
 echo '
         </td>
-        <td valign="center"><input type="button" value=">>" onclick="selAdd()"'
- . '></td>
+        <td valign="center"><input type="button" id="selAdd" value=">>"></td>
         <td align="center" valign="top">
           <select name="eventcats[]" size="9" multiple>
             <option disabled>' . $entryCatStr . '</option>';
@@ -81,16 +79,15 @@ if ( strlen ( $cats ) ) {
 
 echo '
           </select>
-          <input type="button" value="' . translate ( 'Remove' )
- . '" onclick="selRemove()">
+          <input type="button" id="selRem" value="' . translate( 'Remove' ) . '>
         </td>
       </tr>
       <tr>
         <td valign="top" align="right">*' . translate ( 'Global Category' )
- . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . $okStr
- . '" onclick="sendCats()"></td>
-        <td colspan="2" align="left">&nbsp;&nbsp;<input type="button" value="'
- . translate( 'Cancel' ) . '" onclick="window.close()"></td>
+ . '&nbsp;&nbsp;&nbsp;<input type="button" id="sendCat" value="' . $okStr
+ . '"></td>
+        <td colspan="2" align="left">&nbsp;&nbsp;<input type="button" id="canCat"'
+ . ' value="' . translate( 'Cancel' ) . '"></td>
       </tr>
       </form>
     </table>' . print_trailer( false, true, true );
