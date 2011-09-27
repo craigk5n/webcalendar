@@ -10,10 +10,8 @@ if ( empty ( $login ) || $login == '__public__' ) {
 if ( $user != $login )
   $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
 
-print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
-  '<script src="includes/js/assistant_edit.js"></script>' );
-
 ob_start();
+print_header();
 
 echo '
     <form action="assistant_edit_handler.php" method="post" '
@@ -64,20 +62,16 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 echo '
             </select>' . ( $GROUPS_ENABLED == 'Y' ? '
             <input type="button" onclick="selectUsers()" value="'
-   . translate( 'Select' ) . '...">' : '' ) . '
+   . $selectStr . '...">' : '' ) . '
           </td>
         </tr>
         <tr>
           <td colspan="2" class="aligncenter"><br><input type="submit" '
- . 'name="action" value="' . translate( 'Save' ) . '">
+ . 'name="action" value="' . $saveStr . '">
           </td>
         </tr>
       </table>
-    </form>
-    ';
-
+    </form>' . print_trailer();
 ob_end_flush();
-
-echo print_trailer();
 
 ?>

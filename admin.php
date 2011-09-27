@@ -10,7 +10,7 @@ $webcalendar_csscache = 1;
 if ( isset ( $_COOKIE['webcalendar_csscache'] ) )
   $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
 
-SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
+setcookie( 'webcalendar_csscache', $webcalendar_csscache );
 
 function save_pref ( $prefs, $src ) {
   global $error, $my_theme;
@@ -68,14 +68,10 @@ function save_pref ( $prefs, $src ) {
  * @return string  HTML for the color selector.
  */
 function admin_print_color_input_html ( $varname, $title, $varval = '' ) {
-  global $prefarray, $s, $SCRIPT;
-  static $select;
+  global $prefarray, $s, $selectStr, $SCRIPT;
 
   $name = '';
   $setting = $varval;
-
-  if ( empty ( $select ) )
-    $select = translate ( 'Select' ) . '...';
 
   if ( $SCRIPT == 'admin.php' ) {
     $name = 'admin_';
@@ -94,7 +90,7 @@ function admin_print_color_input_html ( $varname, $title, $varval = '' ) {
    . '" onchange="updateColor( this, \'' . $varname
    . '_sample\' );"><span id="' . $varname . '_sample" style="background:'
    . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor( \''
-   . $name . '\', event )" value="' . $select . '"></p>';
+   . $name . '\', event )" value="' . $selectStr . '..."></p>';
 }
 
 $currenttab = '';
@@ -166,10 +162,8 @@ if ( is_dir ( $dir ) ) {
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
 
-print_header( array( 'js/translate.js.php' ),
-  '<script src="includes/js/admin.js"></script>
-    <script src="includes/js/visible.js"></script>',
-  'onload="init_admin();showTab( \'' . $currenttab . '\' );"' );
+setcookie( 'currenttab', $currenttab );
+print_header();
 
 if ( ! $error ) {
   // Make sure globals values passed to styles.php are for this user.
@@ -194,13 +188,11 @@ if ( ! $error ) {
   define_languages(); // Load the language list.
   reset ( $languages );
 
-  $select = translate ( 'Select' ) . '...';
-
   // Allow css_cache of webcal_config values.
   @session_start();
   $_SESSION['webcal_tmp_login'] = 'blahblahblah';
 
-  $editStr = '<input type="button" value="' . translate ( 'Edit' )
+  $editInStr = '<input type="button" value="' . $editStr
    . "...\" onclick=\"window.open( 'edit_template.php?type=%s','cal_template','"
    . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
    . 'outerWidth=520\' );" name="">';
@@ -214,8 +206,6 @@ if ( ! $error ) {
   $anyoneStr = translate ( 'Anyone' );
   $partyStr = translate ( 'Participant' );
 
-  $saveStr = translate ( 'Save' );
-
   $option = '
                 <option value="';
   $color_sets = $datestyle_md = $datestyle_my = $datestyle_tk = '';
@@ -225,10 +215,10 @@ if ( ! $error ) {
 
   // This should be easier to add more tabs if needed.
   $tabs_ar = array (
-    'settings', translate ( 'Settings' ),
+    'settings', $setsStr,
     'public', translate ( 'Public Access' ),
     'uac', translate ( 'User Access Control' ),
-    'groups', translate ( 'Groups' ),
+    'groups', $groupsStr,
     'nonuser', translate ( 'NonUser Calendars' ),
     'other', translate ( 'Other' ),
     'email', translate ( 'Email' ),
@@ -242,30 +232,30 @@ if ( ! $error ) {
   }
   // Move the loops here and combine a few.
   while ( list ( $key, $val ) = each ( $languages ) ) {
-    $lang_list .= $option . $val . '"'
-     . ( $val == $s['LANGUAGE'] ? ' selected>' : '>' ) . $key . '</option>';
+    $lang_list .= $option . $val
+     . ( $val == $s['LANGUAGE'] ? '" selected>' : '">' ) . $key . '</option>';
   }
   for ( $i = 0, $cnt = count ( $themes[0] ); $i < $cnt; $i++ ) {
     $theme_list .= $option . $themes[1][$i] . '">' . $themes[0][$i] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
-    $datestyle_ymd .= $option . $datestyles[$i] . '"'
-     . ( $s['DATE_FORMAT'] == $datestyles[$i] ? ' selected>' : '>' )
+    $datestyle_ymd .= $option . $datestyles[$i]
+     . ( $s['DATE_FORMAT'] == $datestyles[$i] ? '" selected>' : '">' )
      . $datestyles[$i + 1] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
-    $datestyle_my .= $option . $datestyles_my[$i] . '"'
-     . ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] ? ' selected>' : '>' )
+    $datestyle_my .= $option . $datestyles_my[$i]
+     . ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] ? '" selected>' : '">' )
      . $datestyles_my[$i + 1] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
-    $datestyle_md .= $option . $datestyles_md[$i] . '"'
-     . ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] ? ' selected>' : '>' )
+    $datestyle_md .= $option . $datestyles_md[$i]
+     . ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] ? '" selected>' : '">' )
      . $datestyles_md[$i + 1] . '</option>';
   }
   for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
-    $datestyle_tk .= $option . $datestyles_task[$i] . '"'
-     . ( $s['DATE_FORMAT_TASK'] == $datestyles_task[$i] ? ' selected>' : '>' )
+    $datestyle_tk .= $option . $datestyles_task[$i]
+     . ( $s['DATE_FORMAT_TASK'] == $datestyles_task[$i] ? '" selected>' : '">' )
      . $datestyles_task[$i + 1] . '</option>';
   }
   for ( $i = 0; $i < 7; $i++ ) {
@@ -287,8 +277,8 @@ if ( ! $error ) {
      . $tmp . '</option>';
   }
   for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
-    $prefer_vu .= $option . $choices[$i] . '"'
-     . ( $s['STARTVIEW'] == $choices[$i] ? ' selected>' : '>' )
+    $prefer_vu .= $option . $choices[$i]
+     . ( $s['STARTVIEW'] == $choices[$i] ? '" selected>' : '">' )
      . $choices_text[$i] . '</option>';
   }
   // Allow user to select a view also.
@@ -298,31 +288,31 @@ if ( ! $error ) {
 
     $xurl = $views[$i]['url'];
     $xurl_strip = str_replace ( '&amp;', '&', $xurl );
-    $user_vu .= $option . $xurl . '"'
-     . ( $s['STARTVIEW'] == $xurl_strip ? ' selected>' : '>' )
+    $user_vu .= $option . $xurl
+     . ( $s['STARTVIEW'] == $xurl_strip ? '" selected>' : '">' )
      . $views[$i]['cal_name'] . '</option>';
   }
   foreach ( $menuthemes as $menutheme ) {
-    $menu_theme_list .= $option . $menutheme . '"'
-     . ( $s['MENU_THEME'] == $menutheme ? ' selected>' : '>' )
+    $menu_theme_list .= $option . $menutheme
+     . ( $s['MENU_THEME'] == $menutheme ? '" selected>' : '">' )
      . $menutheme . '</option>';
   }
   foreach ( array ( // Document color choices.
-      'BGCOLOR' => translate ( 'Document background' ),
-      'H2COLOR' => translate ( 'Document title' ),
-      'TEXTCOLOR' => translate ( 'Document text' ),
-      'MYEVENTS' => translate ( 'My event text' ),
-      'TABLEBG' => translate ( 'Table grid color' ),
-      'THBG' => translate ( 'Table header background' ),
-      'THFG' => translate ( 'Table header text' ),
-      'CELLBG' => translate ( 'Table cell background' ),
-      'TODAYCELLBG' => translate ( 'Table cell background for current day' ),
-      'HASEVENTSBG' => translate ( 'Table cell background for days with events' ),
-      'WEEKENDBG' => translate ( 'Table cell background for weekends' ),
-      'OTHERMONTHBG' => translate ( 'Table cell background for other month' ),
-      'WEEKNUMBER' => translate ( 'Week number color' ),
-      'POPUP_BG' => translate ( 'Event popup background' ),
-      'POPUP_FG' => translate ( 'Event popup text' )
+      'BGCOLOR'     => translate( 'Document background' ),
+      'CELLBG'      => translate( 'Table cell background' ),
+      'H2COLOR'     => translate( 'Document title' ),
+      'HASEVENTSBG' => translate( 'Table cell background for days with events' ),
+      'MYEVENTS'    => translate( 'My event text' ),
+      'OTHERMONTHBG'=> translate( 'Table cell background for other month' ),
+      'POPUP_BG'    => translate( 'Event popup background' ),
+      'POPUP_FG'    => translate( 'Event popup text' ),
+      'TABLEBG'     => translate( 'Table grid color' ),
+      'TEXTCOLOR'   => translate( 'Document text' ),
+      'THBG'        => translate( 'Table header background' ),
+      'THFG'        => translate( 'Table header text' ),
+      'TODAYCELLBG' => translate( 'Table cell background for current day' ),
+      'WEEKENDBG'   => translate( 'Table cell background for weekends' ),
+      'WEEKNUMBER'  => translate( 'Week number color' ),
       ) as $k => $v ) {
     $color_sets .= admin_print_color_input_html ( $k, $v );
   }
@@ -332,17 +322,12 @@ if ( ! $error ) {
 
   echo '
     <h2>' . translate ( 'System Settings' )
-   . '<img src="images/help.gif" alt="' . translate ( 'Help' )
-   . '" class="help" onclick="window.open( \'help_admin.php\', \'cal_help\', '
-   . '\'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,'
-   . 'outerWidth=420\' );"></h2>
-    <form action="admin.php" method="post" onsubmit="return valid_form( this );"'
-   . ' name="prefform">'
+   . '<img src="images/help.gif" alt="' . $helpStr  . '" class="help"></h2>
+    <form action="admin.php" method="post" id="prefform" name="prefform">'
    . display_admin_link() . '
-      <input type="hidden" name="currenttab" id="currenttab" value="'
+      <input type="hidden" id="currenttab" name="currenttab" value="'
    . $currenttab . '">
-      <input type="submit" value="' . $saveStr
-   . '" name=""><br><br>
+      <input type="submit" value="' . $saveStr . '" name=""><br><br>
 
 <!-- TABS -->
       <div id="tabs">' . $tabs . '
@@ -389,7 +374,7 @@ if ( ! $error ) {
                 <option disabled>' . translate( 'AVAILABLE THEMES' )
    . '</option>'
   /* Always use 'none' as default so we don't overwrite manual settings. */
-   . $option . 'none" selected>' . translate( 'None' ) . '</option>'
+   . $option . 'none" selected>' . $noneStr . '</option>'
    . $theme_list . '
               </select><input type="button" name="preview" value="'
    . translate( 'Preview' ) . '" onclick="return showPreview()">
@@ -400,17 +385,17 @@ if ( ! $error ) {
             <p><label title="' . tooltip ( 'custom-script-help' ) . '">'
    . translate ( 'Custom script/stylesheet' ) . ':</label>'
    . print_radio ( 'CUSTOM_SCRIPT' );
-  printf ( $editStr, 'S' );
+  printf( $editInStr, 'S' );
   echo '</p>
             <p><label title="' . tooltip ( 'custom-header-help' ) . '">'
    . translate ( 'Custom header' ) . ':</label>'
    . print_radio ( 'CUSTOM_HEADER' );
-  printf ( $editStr, 'H' );
+  printf( $editInStr, 'H' );
   echo '</p>
             <p><label title="' . tooltip ( 'custom-trailer-help' ) . '">'
    . translate ( 'Custom trailer' ) . ':</label>'
    . print_radio ( 'CUSTOM_TRAILER' );
-  printf ( $editStr, 'T' );
+  printf( $editInStr, 'T' );
   echo '</p>
             <p><label title="' . tooltip ( 'enable-external-header-help' ) . '">'
    . translate ( 'Allow external file for header/script/trailer' ) . ':</label>'
@@ -493,7 +478,7 @@ if ( ! $error ) {
    . tooltip ( 'menu-themes-help' ) . '">' . translate ( 'Menu theme' )
    . ':</label>
               <select name="admin_MENU_THEME" id="admin_MENU_THEME">' . $option
-   . 'none" selected>' . translate( 'None' ) . '</option>'
+   . 'none" selected>' . $noneStr . '</option>'
    . $menu_theme_list . '
               </select></p>
             <p><label for="admin_FONTS" title="' . tooltip ( 'fonts-help' )
@@ -549,7 +534,7 @@ if ( ! $error ) {
    . translate ( 'Check for event conflicts' ) . ':</label>'
   /* This control is logically reversed. */
    . print_radio ( 'ALLOW_CONFLICTS',
-    array ( 'N' => translate ( 'Yes' ), 'Y' => translate ( 'No' ) ) ) . '</p>
+    array( 'N' => $yesStr, 'Y' => $noStr ) ) . '</p>
             <p><label title="' . tooltip ( 'conflict-months-help' ) . '">'
    . translate ( 'Conflict checking months' ) . ':</label>
               <input type="text" size="3" '
