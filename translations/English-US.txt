@@ -461,6 +461,7 @@ Add Icon to Category: Add Icon to Category
 Upload: Upload
 GIF or PNG 3kb max: GIF or PNG 3kb max
 Search for existing icons: Search for existing icons
+reallyDeleteEntry: Are you sure you want to delete this entry?
 Are you sure you want to delete this entry?: Are you sure you want to delete this entry?
 Make New Category: Make New Category
 
@@ -1914,3 +1915,7 @@ Unknown error saving user: Unknown error saving user.
 No participants found for event id XXX.: No participants found for event id: XXX.
 Db error Could not find event id XXX.: Db error: Could not find event id XXX.
 id XXX not found in db: Error: Could not find event id XXX in database.
+
+
+Global_:Global:
+Category Icon_: Category Icon:
