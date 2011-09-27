@@ -60,6 +60,7 @@ xlate[\'noMatchImport\']      = \'' . translate( 'File type does not match Impor
 xlate[\'notFind\']            = \'' . translate( 'Could not find XXX.', true ) . '\';
 xlate[\'notInDom\']           = \'' . translate( 'Could not find XXX in DOM.', true ) . '\';
 xlate[\'passwordsNoMatch\']   = \'' . translate( 'The passwords were not identical.', true ) . '\';
+xlate[\'reallyDeleteEntry\']  = \'' . translate( 'reallyDeleteEntry', true ) . '\';
 xlate[\'reqServerURL\']       = \'' . translate( 'Server URL is required.', true ) . '\';
 xlate[\'timeB4WorkHours\']    = \'' . translate( 'time prior to work hours...', true ) . '\';
 ';
