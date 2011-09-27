@@ -6,6 +6,7 @@ Put code changes right below the 1.3.0+CVS label below.
 Version 1.3.0+CVS (?? ??? 2011)
  - 27-Sep-11 Remove includes/js/assistant_edit.php.
    Replaced with includes/js/assistant_edit.js some time ago.
+   Remove includes/js/catsel.php. Use a cookie for that variable.
    Add includes/js/category.js. Move some javascript out of category.php.
    And more changes like yesterday.
    Starting to move punctuation out of the code and into English-US.txt.

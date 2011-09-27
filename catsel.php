@@ -24,11 +24,9 @@ $entryCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $entryCatStr ) ) / 2 );
 if ( strlen ( $entryCatStr ) < 30 )
   $entryCatStr = $entryCatFiller . $entryCatStr . $entryCatFiller;
 
-print_header( array( 'js/catsel.php/false/' . $form ),
-  '<script src="includes/js/catsel.js"></script>',
-  '', true, false, true );
-
 ob_start();
+setcookie( 'frm', $form );
+print_header( '', '', '', true, false, true );
 
 echo '
     <table align="center" border="0" width="90%" summary="">
@@ -89,15 +87,13 @@ echo '
       </tr>
       <tr>
         <td valign="top" align="right">*' . translate ( 'Global Category' )
- . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . translate ( 'OK' )
+ . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . $okStr
  . '" onclick="sendCats()"></td>
         <td colspan="2" align="left">&nbsp;&nbsp;<input type="button" value="'
  . translate( 'Cancel' ) . '" onclick="window.close()"></td>
       </tr>
       </form>
-    </table>
-    ' . print_trailer ( false, true, true );
-
+    </table>' . print_trailer( false, true, true );
 ob_end_flush();
 
 ?>
