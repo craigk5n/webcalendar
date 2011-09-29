@@ -90,7 +90,7 @@ $HeadX = generate_refresh_meta()
   . '<script src="includes/js/weekHover.js"></script>';
 
 print_header(
-  array( 'js/popups.js/true', 'js/visible.php', 'js/dblclick_add.js/true' ),
+  array( 'js/popups.js/true', 'js/visible.js/true', 'js/dblclick_add.js/true' ),
   $HeadX, '', false, false, false, false );
 
 echo <<<EOT

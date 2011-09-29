@@ -61,7 +61,7 @@ $headExtras = '
 media="screen">
 ';
 
-print_header( array( 'js/translate.js.php', 'js/visible.js/true' ),
+print_header( array( 'js/visible.js/true' ),
   $headExtras, 'onload="load_layers();"' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )

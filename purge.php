@@ -47,7 +47,7 @@ $username = getPostValue ( 'username' );
 $preview = getPostValue ( 'preview' );
 $preview = ( empty ( $preview ) ? false : true );
 
-$INC = array ( 'js/visible.php' );
+$INC = array ( 'js/visible.js/true' );
 
 print_header ( $INC );
 ?>

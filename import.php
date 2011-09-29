@@ -104,8 +104,7 @@ $upload_enabled = ( ! empty( $upload )
    && preg_match( '/(On|1|true|yes)/i', $upload ) );
 
 ob_start();
-
-print_header ( array ( 'js/export_import.php', 'js/visible.php' ),
+print_header ( array ( 'js/export_import.php', 'js/visible.js/true' ),
   '', 'onload="toggle_import();"' );
 echo '
     <h2>' . translate ( 'Import' ) . '&nbsp;<img src="images/help.gif" alt="'

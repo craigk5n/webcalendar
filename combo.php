@@ -110,7 +110,7 @@ media="screen">
 ';
 
 print_header(
-  array( 'js/popups.js/true', 'js/visible.php', 'js/datesel.php' ),
+  array( 'js/popups.js/true', 'js/visible.js/true', 'js/datesel.php' ),
   $headExtras, $bodyExtras );
 
 //ob_start();

@@ -20,9 +20,8 @@ load_user_categories();
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
 
-print_header ( array ( 'js/export_import.php', 'js/visible.php' ) );
-
 ob_start();
+print_header ( array ( 'js/export_import.php', 'js/visible.js/true' ) );
 
 echo '
     <h2>' . translate ( 'Export' ) . '</h2>

@@ -1,8 +1,6 @@
 <?php // $Id$
 include_once 'includes/init.php';
-print_header( array( 'js/translate.js.php' ),
-  '<script src="includes/js/edit_nonusers.js"></script>',
-  '', true, '', true, false );
+print_header( '', '', '', true, '', true, false );
 
 if ( ! $is_admin ) {
   echo print_not_auth ( true ) . '

@@ -173,7 +173,7 @@ $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( ! empty ( $currenttab) ? $currenttab : 'settings' );
 
 $BodyX = 'onload="altrows();showTab( \'' . $currenttab . '\' );"';
-$INC = array ('js/visible.php', 'js/pref.php');
+$INC = array ('js/visible.js/true', 'js/pref.php');
 print_header($INC, '', $BodyX);
 ?>
 
