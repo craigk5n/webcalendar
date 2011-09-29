@@ -5,7 +5,7 @@ if ( ! $is_admin )
   $user = $login;
 
 ob_start();
-print_header( array( 'js/visible.php' ) );
+print_header( array( 'js/visible.js/true' ) );
 
 echo display_admin_link() . '
 <!-- TABS -->

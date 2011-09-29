@@ -39,11 +39,8 @@ if( $show_advanced ) {
   $INC[] = 'js/datesel.php';
 }
 
-if( $show_others )
-  $INC[] = 'js/search.js/true';
-
 ob_start();
-print_header( $INC );
+print_header();
 
 echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
     <form action="search_handler.php" method="post" id="searchformentry" '

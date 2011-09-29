@@ -48,9 +48,8 @@ $nextStr = translate ( 'Next' );
 $newEntryStr = translate ( 'New Entry' );
 $prevStr = translate ( 'Previous' );
 
-print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
-
 ob_start();
+print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
 
 echo '
     <div class="title">
@@ -112,9 +111,8 @@ echo '
     </center>
     ' . ( empty( $eventinfo ) ? '' : $eventinfo ) . '<br>';
 
-ob_end_flush();
-
 echo $printerStr . print_trailer();
+ob_end_flush();
 
 /**
  * Prints the HTML for one event in detailed view.
