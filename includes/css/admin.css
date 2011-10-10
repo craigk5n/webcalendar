@@ -1,0 +1,51 @@
+// $Id$
+
+table {
+  vertical-align:top;
+}
+input,
+select {
+  margin:0 .1875em;
+}
+.main td {
+  height:1.875em;
+}
+.main td,
+.main th {
+  font-size:.75em;
+}
+.empty {
+  border-top:transparent;
+  border-left:transparent;
+}
+.main td.weekcell {
+  margin:0;
+  text-align:center;
+  text-decoration:none;
+  vertical-align:middle;
+}
+.main th.weekcell {
+  background:transparent;
+}
+.main td.empty,
+.main td.weekcell,
+.main th.empty,
+.main th.weekcell,
+  width:1%;
+}
+#tabscontent p label {
+  clear:left;
+  float:left;
+  width:25%;
+  margin:0;
+  padding:0 .25em;
+}
+#saver {
+  clear:both;
+  margin-top:1em;
+}
+
+#at1,
+#com1 {
+  margin-left:25%;
+}
