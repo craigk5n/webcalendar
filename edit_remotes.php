@@ -16,8 +16,7 @@
  * if UAC is enabled, then the user must be allowed to ACCESS_IMPORT.
 */
 include_once 'includes/init.php';
-print_header ( array ( 'js/edit_remotes.php/true', 'js/visible.js/true' ),
-  '', '', true );
+print_header( '', '', '', true );
 
 $error = '';
 
