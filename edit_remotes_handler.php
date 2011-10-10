@@ -75,8 +75,7 @@ if ( ! empty ( $delete ) ) {
           array ( $nid, $nfirstname, $nlastname, $nadmin, 'N', $nurl ) ) )
         $error = db_error();
     } else
-      $error = translate( 'Calendar ID' )
-        . translate( 'word characters only' );
+      $error = translate ( 'Cal ID word chars only' );
 
     // Add new layer if requested.
     if ( ! empty ( $nlayer ) && $nlayer == 'Y' ) {
@@ -128,7 +127,7 @@ if ( ! empty ( $reload ) ) {
   }
 
   $errorStr = '<br><br>
-    <b>' . translate ( 'Error' ) . ':</b> ';
+    <b>' . $err_Str . '</b>';
 
   print_header ( '', '', '', true, false, true );
   if ( count ( $data ) && empty ( $errormsg ) ) {
@@ -138,8 +137,8 @@ if ( ! empty ( $reload ) ) {
     import_data ( $data, $overwrite, $type );
     echo '
     <p>' . translate( 'Import Results' ) . '</p><br><br>
-    ' . translate ( 'Events successfully imported' ) . ': ' . $count_suc
-     . '<br>';
+    ' . str_replace( 'XXX', $count_suc,
+      translate ( 'success importing XXX events' ) ) . '<br>';
     if ( $layer_found == false ) { // We may have just added layer.
       load_user_layers();
       foreach ( $layers as $layer ) {
@@ -149,15 +148,13 @@ if ( ! empty ( $reload ) ) {
     }
     if ( $layer_found == false )
       echo '
-    <p>' . translate( 'Create a new layer to view this calendar.' ) . '</p>';
+    <p>' . translate( 'Create layer to view cal' ) . '</p>';
   } elseif ( ! empty ( $errormsg ) ) {
     echo '
-    ' . translate( 'Errors' ) . ': ' . $error_num . '<br><br>
+    ' . $err_Str . $error_num . '<br><br>
     ' . $errorStr . $errormsg . '<br>';
   } else {
-    echo $errorStr .
-    translate( 'There was an error parsing the import file or no events were returned.' )
-     . '<br>';
+    echo $errorStr . translate( 'error parsing import file' ) . '<br>';
   }
   echo print_trailer ( false, true, true );
 }

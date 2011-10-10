@@ -121,8 +121,6 @@ if ( ! $upload_enabled )
     <p>' . translate ( 'Disabled' ) . ' (php.ini file_uploads)</p>';
 else {
   // File uploads enabled.
-  $noStr = translate ( 'No' );
-  $yesStr = translate ( 'Yes' );
   echo '
     <form action="import_handler.php" method="post" name="importform" '
    . 'enctype="multipart/form-data" onsubmit="return checkExtension()">
@@ -151,7 +149,7 @@ else {
 <!-- /PALM -->
 <!-- Not valid for Outlook CSV as it doesn\'t generate UID for import tracking. -->
         <tr id="ivcal">
-          <td><label>' . translate ( 'Overwrite Prior Import' ) . ':</label></td>
+          <td><label>' . translate ( 'Overwrite Prior Import_' ) . '</label></td>
           <td>
             <label><input type="radio" name="overwrite" value="Y" checked>&nbsp;'
    . $yesStr . '</label>
@@ -162,8 +160,7 @@ else {
 <!-- /IVCAL -->
         <tr id="outlookcsv">
           <td colspan="2"><label>'
-   . translate ( 'Repeated items are imported separately. Prior imports are not overwritten.' )
-   . '</label></td>
+   . translate ( 'Repeat items imported separately' ) . '</label></td>
         </tr>
         <tr class="browse">
           <td><label for="fileupload">' . translate ( 'Upload file' ) . ':</label></td>

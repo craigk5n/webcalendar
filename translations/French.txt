@@ -66,7 +66,7 @@ OK: =
 ########################################
 # Page: access.php
 #
-Database error XXX.: Erreur sur la base de données : XXX
+DB error XXX: Erreur sur la base de données : XXX
 DEFAULT CONFIGURATION: CONFIGURATION PAR DEFAUT
 Go: Afficher
 Save: Sauvegarder
@@ -74,8 +74,8 @@ Undo: Annuler
 Public Access: Accès public
 Admin: Administration
 User Access Control: Contrôle d'accès Utilisateur
-Allow Access to Other Users Calendar: Autoriser l'accès de l'agenda aux autres utilisateurs
-Grant This User Access to My Calendar: Autoriser l'accès à cet utilisateur
+may access others cals: Autoriser l'accès de l'agenda aux autres utilisateurs
+this user may access my cal: Autoriser l'accès à cet utilisateur
 Type: =
 Calendar: Agenda
 View Event: Voir l'événement
@@ -104,9 +104,9 @@ Previous: Précédent
 ########################################
 # Page: add_entry.php
 #
-Event XXX is already on your calendar.: L'événement XXX est déjà dans votre agenda
+Event XXX already on cal: L'événement XXX est déjà dans votre agenda
 Invalid entry id XXX.: ID d'entrée invalide : "XXX"
-a XXX event may not be added to your calendar: Ceci est un événement XXX qui ne peut pas être ajouté à votre agenda.
+cant add XXX to cal: Ceci est un événement XXX qui ne peut pas être ajouté à votre agenda.
 confidential: confidentiel
 private: privé
 Error adding event XXX.: Erreur lors de l'ajout de l'événement : XXX.
@@ -126,24 +126,24 @@ Anyone: Tout le monde
 Participant: =
 Settings: Réglages
 Groups: Groupes
-NonUser Calendars: Agendas Non-Utilisateurs
+NUCs: Agendas Non-Utilisateurs
 Other: Autre
 Email: Courrier électronique
 Colors: Couleurs
-Document background: Fond
+Document BG: Fond
 Document title: Titre du document
 Document text: Texte du document
 My event text: Texte de mon événement
 Table grid color: Couleur de quadrillage de tableau
-Table header background: Fond d'en-tête de tableau
+Table header BG: Fond d'en-tête de tableau
 Table header text: Texte d'en-tête de tableau
-Table cell background: Fond de cellule
-Table cell background for current day: Fond de cellule pour aujourd'hui
-Table cell background for days with events: Couleur de fond pour les jours avec événements
-Table cell background for weekends: Couleur de fond pour les week-ends
-Table cell background for other month: Couleur de fond pour les autres mois
+Table cell BG: Fond de cellule
+Table cell today BG: Fond de cellule pour aujourd'hui
+Table cell events BG: Couleur de fond pour les jours avec événements
+Table cell weekends BG: Couleur de fond pour les week-ends
+Table cell other month BG: Couleur de fond pour les autres mois
 Week number color: Couleur de numéros de semaine
-Event popup background: Fond des détails d'événements
+Event popup BG: Fond des détails d'événements
 Event popup text: Texte surgissant des événements
 System Settings: Réglages du système
 Help: Aide
@@ -159,7 +159,7 @@ Home URL: URL racine
 language-help: Spécifie la langue à utiliser.
 Language: Langue
 Your browser default language is: La langue utilisée par défaut par votre navigateur est
-Your browser default language is XXX.: La langue par défaut de votre navigateur est XXX.
+browser default language XXX: La langue par défaut de votre navigateur est XXX.
 Allow user to use themes: Autoriser les utilisateurs à utiliser les thèmes
 themes-help: Permet la mise à jour en masse des paramètres de configuration. Les libellés en minuscule sont des préférences utilisateurs uniquement.
 Themes: Thèmes
@@ -174,15 +174,15 @@ Custom header: En-tête personnalisé
 custom-trailer-help: Permet d'ajouter un code HTML personnalisé au bas de chaque page
 Custom trailer: Bas de page personnalisé
 enable-external-header-help: Permet de charger le bas de page à partir d'un fichier externe
-Allow external file for header/script/trailer: Autoriser l'utilisation de fichier externe pour haut/bas de pages/script
-Allow user to override header/trailer: Autoriser l'utilisateur à écraser le haut et le pied de page
+externals head/script/trail: Autoriser l'utilisation de fichier externe pour haut/bas de pages/script
+may user override head/trail: Autoriser l'utilisateur à écraser le haut et le pied de page
 Date and Time: Date et heure
 server-tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure universelle à l'heure du serveur.
-Server Timezone Selection: Sélection du fuseau horaire du serveur
+Server TZ Selection: Sélection du fuseau horaire du serveur
 tz-help: Spécifie le nombre d'heures entre l'heure locale et l'heure universelle.
-Default Client Timezone Selection: Fuseau horaire par défaut du client
+Default Client TZ Selection: Fuseau horaire par défaut du client
 display-general-use-gmt-help: Si activé, les dates et heures standards sont affichées au format GMT
-Display Common Use Date/Times as GMT: Afficher les dates/heures au format GMT
+GMT Common Use Date/Times: Afficher les dates/heures au format GMT
 date-format-help: Spécifie le format d'affichage des dates.
 Date format: Format des dates
 Small Task Date: Date courte pour la tâche
@@ -222,9 +222,9 @@ Display all days in month view: Afficher tous les jours dans la vue mensuelle
 display-week-number-help: Spécifie si le numéro de la semaine (1-52) doit être affiché.
 Display week number: Afficher le numéro de semaine
 display-desc-print-day-help: Inclure les descriptions d'événements dans la version imprimable de la vue journalière.
-Display description in printer day view: Descriptions dans la version imprimable de la vue journalière
+desc in printer day view: Descriptions dans la version imprimable de la vue journalière
 yearly-shows-events-help: Sur la vue par année, affiche les jours contenant des événements en caractères gras
-Display days with events in bold in month and year views: Sur les vues par mois et par année, affiche les jours contenant des événements en caractères gras
+bold events month/year views: Sur les vues par mois et par année, affiche les jours contenant des événements en caractères gras
 display-minutes-help: Si activé, les minutes finissant par :00 seront toujours affichées
 Display 00 minutes always: Toujours afficher les minutes 00
 display-end-times-help: Afficher la date de fin de l'événement si événements temporel
@@ -235,21 +235,21 @@ lunar-help: Si activé, affiche de petites icônes représentant les phases de lune
 Display Lunar Phases in month view: Afficher les phases de la lune sur la vue mensuelle
 Restrictions: =
 allow-view-other-help: Spécifie si un utilisateur peut visualiser l'agenda d'un autre utilisateur.
-Allow viewing other users calendars: Autoriser la visualisation des agendas des autres personnes
+may view others cals: Autoriser la visualisation des agendas des autres personnes
 require-approvals-help: Activé, un utilisateur doit approuver un événement avant qu'il ne soit affiché dans l'agenda (à moins que « Afficher les événements en attente » ne soit activé). Notez que le réglage sur « Non » désactivera les approbations pour l'agenda à accès public (si l'accès public à l'agenda est activé).
 Require event approvals: Réclamer l'approbation des événements
 display-unapproved-help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
 Display unapproved: Afficher les événements en attente
 conflict-check-help: Vérifier les conflits d'événements (deux événements prévus au même moment pour la même personne). Si vous positionnez cette valeur à « Oui », vous pourrez introduire deux événements qui se chevauchent après confirmation. Si vous choisissez « Non », il ne sera effectué aucune vérification de conflit. Vous choisirez probablement « Oui » pour activer la vérification des conflits.
-Check for event conflicts: Vérifier les conflits d'événements
+Check for conflicts: Vérifier les conflits d'événements
 Yes: Oui
 No: Non
 conflict-months-help: Si la vérification des conflits est activée (« Vérifier les conflits pour les événements » est positionné sur « Oui »), ceci spécifie sur combien de mois dans le futur les conflits seront vérifiés. Si vous trouvez que l'ajout d'événements prend trop de temps, réduisez ce nombre.
 Conflict checking months: Période de vérification des conflits en mois
 conflict-check-override-help: Permet aux utilisateurs de passer outre les conflits d'agenda et de plannifier deux (ou plus) événements au même moment.
-Allow users to override conflicts: Permet aux utilisateurs de passer outre les conflits
+may users override conflicts: Permet aux utilisateurs de passer outre les conflits
 limit-appts-help: Permet à l'administrateur de fixer la limite générale du nombre d'événements par utilisateur et par jour.
-Limit number of timed events per day: Nombre maximum d'événements temporels par jour
+Limit timed events per day: Nombre maximum d'événements temporels par jour
 limit-appts-number-help: Détermine le nombre maximum d'événements temporels qu'un utilisateur peut avoir dans une journée.
 Maximum timed events per day: Nombre maximum d'événements temporels par jour
 crossday-help: Si activé, les événements de plus d'une journée seronts affichés sur des jours différents
@@ -287,23 +287,23 @@ Firstname, Lastname: Prénom, nom
 allow-public-access-help: Activé, l'agenda peut être utilisé comme un agenda public en lecture seule ne requierant pas de connexion par les utilisateurs.
 Allow public access: Autoriser l'accès public
 public-access-default-visible: Les événements de l'agenda public s'afficheront automatiquement sur les agenda de tous les autres usagers.
-Public access visible by default: Accès public visible par défaut
+Public visible by default: Accès public visible par défaut
 public-access-default-selected: À l'ajout d'un événement, l'utilisateur public sera sélectionné par défaut comme participant.
-Public access is default participant: L'accès public est le participant par défaut
+is public default party: L'accès public est le participant par défaut
 public-access-view-others-help: Lors d'un accès en mode « accès public », spécifie si l'utilisateur peut visualiser les agendas des autres utilisateurs.
-Public access can view other users: L'accès public peut visualiser les autres utilisateurs
+may public view others: L'accès public peut visualiser les autres utilisateurs
 public-access-can-add-help: Activé, les utilisateurs qui accédent au système via un accès public pourront ajouter de nouveaux événements, mais ceux-ci ne s'afficheront pas dans l'agenda tant qu'un administrateur ne les aura pas approuvés.
-Public access can add events: Autorise un accès public à ajouter des événements
+may public add events: Autorise un accès public à ajouter des événements
 public-access-add-requires-approval-help: Indique si les événements ajoutés par l'accès public nécéssitent d'être approuvés avant d'être affichés
-Public access new events require approval: Les nouveaux événements publiques doivent être approuvés
+must approve public events: Les nouveaux événements publiques doivent être approuvés
 public-access-sees-participants-help: Si coché, les utilisateurs consultant l'agenda à partir du compte public pourront voir la liste des participants en visualisant les détails d'un événement
-Public access can view participants: Les utilisateurs publiques peuvent afficher les participants
+may public see participants: Les utilisateurs publiques peuvent afficher les participants
 public-access-override-help: Permet de cacher les noms et descriptions des événements sur l'agenda public
-Override event name/description for public access: Changer les nom/description d'évenement pour l'accès public
+Override public event name/desc: Changer les nom/description d'évenement pour l'accès public
 public-access-override-text-help: Le texte à afficher si l'option ci-dessus est active.
-Text to display to public access: Le texte à afficher pour l'accès public
+public text display: Le texte à afficher pour l'accès public
 public-access-captcha-help: Si activé, les événéments ajoutés par Public requierent une validation par CAPTCHA
-Require CAPTCHA validation for public access new events: Recquiert une validation par CAPTCHA pour les nouveaux événements en accès public
+require public CAPTCHA: Recquiert une validation par CAPTCHA pour les nouveaux événements en accès public
 uac-enabled-help: Autorise le contrôle d'accès au niveau de l'utilisateur
 User Access Control enabled: Contrôle d'accès Utilisateur actif
 groups-enabled-help: Active le support des groupes, autorisant les utilisateurs à sélectionner les utilisateurs par groupe.
@@ -311,9 +311,9 @@ Groups enabled: Groupes activés
 user-sees-his-group-help: Si activé, les utilisateurs ne visualiseront pas l'agenda des autres utilisateurs n'appartenant pas au moins à leur groupe.
 User sees only his groups: L'utilisateur ne visualise que ses groupes
 nonuser-enabled-help: Si activé, les administrateurs auront la possibilité d'ajouter des agendas non-utilisateurs
-Nonuser enabled: Agenda des non-utilisateurs activé
+NUCs enabled: Agenda des non-utilisateurs activé
 nonuser-list-help: Indique où afficher l'agenda des non-utilisateurs dans la liste des participants
-Nonuser list: Afficher la liste des participants
+list NUCs at: Afficher la liste des participants
 Upcoming Events: Evènements à venir
 upcoming-events-help: Activer upcoming.php
 Enabled: activés
@@ -349,21 +349,21 @@ Display tasks in Calendars: Afficher les tâches dans les agendas
 allow-external-users-help: Indique si un utilisateur extérieur à l'agenda peut être ajouté à un événement. Celà permet aux utilisateurs extérieurs à l'agenda d'y figurer comme participants.
 Allow external users: Autoriser les utilisateurs extérieurs
 external-can-receive-notification-help: Lorsque des utilisateurs extérieurs bénéficient de la possibilité d'adresser des courriers électroniques, ils peuvent recevoir une notification par couriel lors de l'ajout, de la modification ou de la suppression d'un événement (à condition que l'adresse de couriel de l'utilisateur extérieur soit spécifiée)
-External users can receive email notifications: Les utilisateurs extérieurs peuvent recevoir une notification par couriel
+may notify externals by email: Les utilisateurs extérieurs peuvent recevoir une notification par couriel
 external-can-receive-reminder-help: Lorsque des utilisateurs extérieurs bénéficient de la possibilité d'adresser des courriers électroniques, ils peuvent recevoir un rappel (à condition que l'adresse de couriel de l'utilisateur extérieur soit spécifiée)
-External users can receive email reminders: Les utilisateurs extérieurs peuvent recevoir des rappels par couriel
+may remind externals by email: Les utilisateurs extérieurs peuvent recevoir des rappels par couriel
 allow-self-registration-help: Permet aux nouveaux utilisateurs de s'auto-enregistrer
 Allow self-registration: Autorise l'auto-enregistrement
 use-blacklist-help: Limite l'accès aux fonctions de WebCalendar d'après l'adresse IP
-Restrict self-registration to blacklist: Interdit l'auto-enregistrement à la liste noire
-allow-self-registration-full-help: Autorise les nouveaux utilisateurs à complèter le processus d'auto-enregistrement en ligne
-Use self-registration email notifications: Générer des mots de passe et envoyer aux nouveaux utilisateurs
+Restrict self-reg to blacklist: Interdit l'auto-enregistrement à la liste noire
+allow-self-reg-full-help: Autorise les nouveaux utilisateurs à complèter le processus d'auto-enregistrement en ligne
+send self-reg emails: Générer des mots de passe et envoyer aux nouveaux utilisateurs
 allow-attachment-help: Autoriser les utilisateurs à ajouter des fchiers joints aux événements
 Allow file attachments to events: Autorise les fichiers joints pour les événements
-Admin and owner can always add attachments if enabled.: L'administrateur et le propriétaire peuvent toujours ajouter des fichiers joints si activé.
+owner can attach if enabled: L'administrateur et le propriétaire peuvent toujours ajouter des fichiers joints si activé.
 allow-comments-help: Autoriser les utilisateurs à ajouter des commentaires aux événements
 Allow comments to events: Autoriser les commentaires sur les événements
-Admin and owner can always add comments if enabled.: L'administrateur et le propriétaire peuvent toujours ajouter des fichiers joints si activé.
+owner can comment if enabled: L'administrateur et le propriétaire peuvent toujours ajouter des fichiers joints si activé.
 email-enabled-help: Active/Désactive l'envoi de couriel pour la notification et les rappels. Positionnez-le sur « Non » si votre serveur n'est pas configuré pour l'adressage des courriers électroniques.
 Email enabled: Courrier électronique activé
 email-default-sender: Spécifie l'adresse de courrier électronique à indiquer pour l'expéditeur lors de l'envoi de rappels.
@@ -402,7 +402,7 @@ Event that I create: Evénement que je crée
 Color options: Options de couleurs
 Allow user to customize colors: Autoriser les utilisateurs à personnaliser leurs couleurs
 gradient-colors: Si activé, les couleurs en dégradé seront utilisées. Ceci peut avoir un impact sur performances
-Enable gradient images for background colors: Autoriser les images en dégradés comme images de fond
+Enable gradient images for BG: Autoriser les images en dégradés comme images de fond
 Not available: Non disponible
 Background Image options: Options des images de fond
 bgimage-help: URL de l'image de fond. Peut être un lien relatif.
@@ -435,7 +435,7 @@ Administrative Tools: Outils d'administration
 #
 Duplicate Name XXX: Nom en double : "XXX".
 Username XXX already exists.: Le nom d'utilisateur "XXX" existe déjà.
-Email address XXX already exists.: L'adresse email "XXX" existe déjà.
+Email XXX already exists: L'adresse email "XXX" existe déjà.
 
 ########################################
 # Page: approve_entry.php
@@ -443,9 +443,9 @@ Email address XXX already exists.: L'adresse email "XXX" existe déjà.
 Additional Comments (optional): Commentaires additionnels (optionnel)
 Approve and Send: Approuver et envoyer
 Approve and Exit: Approuver et sortir
-(Your comments will be emailed to the event creator.): (Votre commentaire sera envoyé par courriel au créateur de l'événement)
+comments emailed to creator: (Votre commentaire sera envoyé par courriel au créateur de l'événement)
 Hello, XXX.: Bonjour, XXX
-XXX has approved an appointment and added comments.: Un rendez-vous a été approuvé et commenté par XXX.
+XXX approve/comment appointment: Un rendez-vous a été approuvé et commenté par XXX.
 Subject XXX: Sujet : "XXX".
 Description XXX: =
 Date XXX: =
@@ -482,13 +482,13 @@ gif 3kb max: (gif 3ko max)
 Search for existing icons: Rechercher des icônes existantes
 Add: Ajouter
 Delete: Supprimer
-Are you sure you want to delete this entry?: Etes-vous sur de vouloir supprimer cette saisie ?
+really delete entry: Etes-vous sur de vouloir supprimer cette saisie ?
 Make New Category: Ajouter une nouvelle catégorie
 
 ########################################
 # Page: category_handler.php
 #
-File size exceeds maximum.: La taille du fichier dépasse le maximum autorisé.
+File size exceeds max: La taille du fichier dépasse le maximum autorisé.
 File is not a gif image.: Le fichier n'est pas une image gif.
 
 ########################################
@@ -512,7 +512,7 @@ Old Color: Ancienne couleur
 ########################################
 # Page: del_entry.php
 #
-XXX has canceled an appointment.: XXX a annulé un rendez-vous.
+XXX canceled an appointment: XXX a annulé un rendez-vous.
 
 ########################################
 # Page: doc.php
@@ -539,15 +539,15 @@ Removed: Supprimée
 days: jours
 hours: heures
 minutes: =
-You are not authorized to edit this task.: Vous n'êtes pas autorisé à modifier cette tâche.
-is in a different timezone than you are. Currently: est dans un fuseau horaire différent du votre. Actuellement
+not authorized to edit task: Vous n'êtes pas autorisé à modifier cette tâche.
+is in a different TZ: est dans un fuseau horaire différent du votre. Actuellement
 hour ahead of you: heure devant vous
 hour behind you: heure derrière vous
 hours ahead of you: heures devant vous
 hours behind you: heures derrière vous
-XXX is in a different timezone (ahead): (XXX est dans un fuseau horaire différent; XXX devant vous<br>&nbsp;XXX)
-XXX is in a different timezone (behind): (XXX est dans un fuseau horaire différent; XXX derrière vous<br>&nbsp;XXX)
-Time entered here is based on your Timezone.: L'heure entrée ici est basée sur votre fuseau horaire
+XXX is in TZ ahead: (XXX est dans un fuseau horaire différent; XXX devant vous<br>&nbsp;XXX)
+XXX is in TZ behind: (XXX est dans un fuseau horaire différent; XXX derrière vous<br>&nbsp;XXX)
+Time here is based on your TZ: L'heure entrée ici est basée sur votre fuseau horaire
 Edit Entry: Modification de l'événement
 Details: Détails
 Repeat: Répétition
@@ -571,7 +571,7 @@ Start Date: Date de début
 Untimed event: événement intemporel
 Timed event: événement temporel
 All day event: événement permanent
-Timezone Offset: Décalage horaire
+TZ Offset: Décalage horaire
 time-help: Spécification de l'heure de l'événement.<br><i>Ce champ peut être laissé vide.</i>
 duration-help: Spécification de la durée (en minutes) de l'événement.<br><i>Ce champ peut être laissé vide.</i>
 end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
@@ -640,22 +640,22 @@ Times: Fois
 Every: Chaque
 CAPTCHA Warning: <b>Attention:</b> Impossible d'utiliser le CAPTCHA sans l'extension GD de PHP !<br>
 Delete entry: Supprimer l'événement
-You are not authorized to edit this entry.: Vous n'êtes pas autorisé à modifier cet événement
+not authorized to edit entry: Vous n'êtes pas autorisé à modifier cet événement
 
 ########################################
 # Page: edit_entry_handler.php
 #
-XXX has made a new appointment.: XXX a créé un nouveau rendez-vous.
-XXX has updated an appointment.: XXX a modifié un rendez-vous.
+XXX made an appointment: XXX a créé un nouveau rendez-vous.
+XXX updated an appointment: XXX a modifié un rendez-vous.
 Security violation!: Violation de sécurité !
-You must enter the anti-spam text on the previous page.: Vous devez saisir le texte anti-spam sur la page précédente
-The following conflicts with the suggested time: Cet événement est en conflit avec l'heure suggérée.
-User removed from participants list.: Utilisateur retiré des participants
-Please look on XXX to accept or reject this appointment.: Merci de regarder sur XXX pour accepter ou rejeter ce rendez-vous
-Please look on XXX to view this appointment.: Merci de regarder sur XXX pour visualiser ce rendez-vous
+must enter anti-spam text: Vous devez saisir le texte anti-spam sur la page précédente
+conflicts with suggested time: Cet événement est en conflit avec l'heure suggérée.
+user removed from party list: Utilisateur retiré des participants
+see XXX to acc/rej appointment: Merci de regarder sur XXX pour accepter ou rejeter ce rendez-vous
+see XXX to view appointment: Merci de regarder sur XXX pour visualiser ce rendez-vous
 Scheduling Conflict: Conflit entre agendas
 Your suggested time of: Votre suggestion de
-conflicts with the following existing calendar entries: est en conflit avec les événements suivants
+conflicts with existing entries: est en conflit avec les événements suivants
 
 ########################################
 # Page: edit_nonusers.php
@@ -688,9 +688,9 @@ Required to View Remote Calendar: Requis pour visualiser l'agenda distant
 #
 Import Results: Résultat de l'importation
 Events successfully imported: Evénements importés avec succès
-Create a new layer to view this calendar.: Créer un nouveau calque pour visualiser cet agenda
+Create layer to view cal: Créer un nouveau calque pour visualiser cet agenda
 Errors: Erreurs
-There was an error parsing the import file or no events were returned.: Erreur lors de l'analyse du fichier d'importation - ou - aucun événement n'a été détecté
+error parsing import file: Erreur lors de l'analyse du fichier d'importation - ou - aucun événement n'a été détecté
 
 ########################################
 # Page: edit_report.php
@@ -736,7 +736,7 @@ Template variables: Variables disponibles
 Page template: Options de présentation
 Day template: Options de présentation pour une journée
 Event template: Options de présentation pour un événement
-Are you sure you want to delete this report?: Etes-vous sûr de vouloir détruire de rapport ?
+really delete report: Etes-vous sûr de vouloir détruire de rapport ?
 
 ########################################
 # Page: edit_report_handler.php
@@ -759,7 +759,7 @@ E-mail address: Adresse de couriel
 Password: Mot de passe
 again: confirmer
 Disabled for demo: Désactivé pour la démo
-Are you sure you want to delete this user?: Etes-vous sûr de vouloir détruire cet utilisateur ?
+really delete user: Etes-vous sûr de vouloir détruire cet utilisateur ?
 Change Password: Changer de mot de passe
 New Password: Nouveau mot de passe
 Set Password: Modifier le mot de passe
@@ -768,9 +768,9 @@ Set Password: Modifier le mot de passe
 # Page: edit_user_handler.php
 #
 Deleting users not supported.: La suppression des utilisateurs n'est pas possible
-The passwords were not identical.: Les mots de passe saisis ne sont pas identiques
-You have not entered a password.: Vous n'avez pas saisi de mot de passe
-Username cannot be blank.: Le nom d'utilisateur ne peut être laissé non renseigné
+passwords not identical: Les mots de passe saisis ne sont pas identiques
+must enter a password: Vous n'avez pas saisi de mot de passe
+no blank username: Le nom d'utilisateur ne peut être laissé non renseigné
 
 ########################################
 # Page: events_ajax.php
@@ -792,7 +792,7 @@ Modified since: Modifié depuis
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect.: Le format d'exportation n'est pas défini ou est incorrect
+incorrect export format: Le format d'exportation n'est pas défini ou est incorrect
 
 ########################################
 # Page: freebusy.php
@@ -824,7 +824,7 @@ Auto-refresh calendars: Rafraichissement automatique de l'agenda
 auto-refresh-help: Activé, les pages de visualisation par jour, semaine, mois et la liste des événements en attente seront automatiquement périodiquement rafraichies.
 Auto-refresh time: Période de rafraichissement
 auto-refresh-time-help: Spécifie la période de rafraichissement des pages.
-Display days with events in bold in year view: Afficher les jours avec événements en gras dans la vue annuelle
+bold events in year view: Afficher les jours avec événements en gras dans la vue annuelle
 Display weekends in week view: Afficher les week-ends dans la représentation de la semaine
 Time interval: Intervalle de temps (vues semaine et jour)
 time-interval-help: Spécifie l'intervalle de temps pour l'affichage des vues par semaine et par jour.
@@ -838,8 +838,8 @@ colors-help: Toutes les couleurs doivent être au format hexadécimal « #RRVVBB » 
 # Page: help_bug.php
 #
 Report Bug: Signaler un problème
-Please include all the information below when reporting a bug.: Merci d'inclure toutes les informations ci-dessous quand vous rapportez un bug.
-Also, please use English rather than XXX.: Merci également d'utiliser <strong>l'anglais</strong> plutôt que XXX
+include info to report bugs: Merci d'inclure toutes les informations ci-dessous quand vous rapportez un bug.
+please use English not XXX: Merci également d'utiliser <strong>l'anglais</strong> plutôt que XXX
 
 ########################################
 # Page: help_docs.php
@@ -862,22 +862,20 @@ repeat-day-help: Spécifie quels jours de la semaine l'événement doit être répété
 #
 Import: Importer
 Palm Desktop: =
-This form will allow you to import entries from the Palm Desktop Datebook.: Ce formulaire vous permet d'importer les données de votre logiciel Palm Desktop gérant votre ordinateur personnel Palm.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Les données sont implémentées dans un fichier <tt>datebook.dat</tt> placé dans le répertoire <tt>datebook/</tt> de votre Palm (cf. sous-répertoire généralement à votre nom). Sélectionner sur votre disque dur, dans l'arborescence Palm Desktop, le fichier <tt>datebook.dat</tt> pour l'importation.
-allow you to import entries from the Palm...: Ce formulaire vous permet d'importer des entrées en provenance de votre Palm Desktop Datebook. c'est supposé être dans le répertoire de votre Palm <tt>datebook/datebook.dat</tt> dans un sous-répertoire à votre nom.
-The following entries will not be imported: Les entrées suivantes ne seront pas importées
-Entries older than the current date: Entrées antérieures à la date courante
-Entries created in the Palm Desktop...: Entrées crées dans le logiciel Palm Desktop qui n'ont pas été synchronisées via HotSync
+to import entries from Palm: Ce formulaire vous permet d'importer les données de votre logiciel Palm Desktop gérant votre ordinateur personnel Palm. Les données sont implémentées dans un fichier <tt>datebook.dat</tt> placé dans le répertoire <tt>datebook/</tt> de votre Palm (cf. sous-répertoire généralement à votre nom). Sélectionner sur votre disque dur, dans l'arborescence Palm Desktop, le fichier <tt>datebook.dat</tt> pour l'importation.
+these entries not imported: Les entrées suivantes ne seront pas importées
+Entries older than current date: Entrées antérieures à la date courante
+Entries created in Palm: Entrées crées dans le logiciel Palm Desktop qui n'ont pas été synchronisées via HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Tout événement importé du Palm sera écrasé dans votre agenda partagé WebCalendar lors de la prochaine importation (sauf si la date de l'événement en question est antérieure).
 Therefore, updates should be made in the Palm Desktop.: Les mises à jour doivent donc au préalable être effectuées via le logiciel Palm Desktop (HotSync).
-Anything imported from Palm...: tout ce qui a été importé de votre Palm sera écrasé lors du prochain import (tant que la date de l'événement n'est pas passée). A présent les mises à jour doivent être faites sur le Palm
+things imported from Palm: tout ce qui a été importé de votre Palm sera écrasé lors du prochain import (tant que la date de l'événement n'est pas passée). A présent les mises à jour doivent être faites sur le Palm
 vCal: =
-This form will import vCalendar (.vcs) 1.0 events.: Ce formulaire importera les événementx vCalendar (.vcs) 1.0.
-The following formats have been tested: Les formats suivants ont été testés
-This form will import iCalendar (.ics) events.: Ce formulaire importera les événements iCalendar (.ics).
+This will import (.vcs): Ce formulaire importera les événementx vCalendar (.vcs) 1.0.
+These formats have been tested: Les formats suivants ont été testés
+This will import (.ics): Ce formulaire importera les événements iCalendar (.ics).
 Enabling: Activer
 Overwrite Prior Import: Remplacer l'importation précédente
-will cause events imported previously...: =
+causes events imported previously: =
 
 ########################################
 # Page: help_index.php
@@ -888,17 +886,17 @@ About WebCalendar: A propos de WebCalendar
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying...: Les calques sont utiles pour afficher les événements des autres utilisateurs dans votre propre agenda. Vous pouvez spécifier quel utilisateur et la couleur avec laquelle les événements seront affichés.
+Layers are useful to display: Les calques sont utiles pour afficher les événements des autres utilisateurs dans votre propre agenda. Vous pouvez spécifier quel utilisateur et la couleur avec laquelle les événements seront affichés.
 Add/Edit/Delete: Ajouter/Modifier/Supprimer
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Cliquer sur le lien « Modifier les calques » dans la section administration, au bas de la page, vous permet d'ajouter/modifier/supprimer les calques.
-The text color of the new layer that will be displayed in your calendar.: La couleur à utiliser pour l'affichage du texte d'un nouveau calque dans votre agenda.
+Edit Layers link in admin: Cliquer sur le lien « Modifier les calques » dans la section administration, au bas de la page, vous permet d'ajouter/modifier/supprimer les calques.
+text color of new layer: La couleur à utiliser pour l'affichage du texte d'un nouveau calque dans votre agenda.
 Disabling: Désactiver
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Sélectionner le lien « Désactiver » pour supprimer le mode calque.
+Disable Layers link in admin: Sélectionner le lien « Désactiver » pour supprimer le mode calque.
 Duplicates: Doublons
-If checked, events that are duplicates of your events will be shown.: Activer les événements en double des vôtres seront affichés.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Sélectionner le lien « Activer » pour bénéficier du mode calque.
+show duplicate events: Activer les événements en double des vôtres seront affichés.
+Enable Layers link in admin: Sélectionner le lien « Activer » pour bénéficier du mode calque.
 Source: =
-Specifies the user that you would like to see displayed in your calendar.: Défini l'utilisateur que vous désirez voir afficher dans votre agenda.
+user to display on your cal: Défini l'utilisateur que vous désirez voir afficher dans votre agenda.
 
 ########################################
 # Page: help_pref.php
@@ -924,10 +922,10 @@ rss-feed-url-help: L'URL pour accéder au flux RSS
 ########################################
 # Page: help_uac.php
 #
-Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Permet un contrôle précis des accès et persmissions des utilisateurs. Les utilisateurs peuvent aussi donner des droits par défaut et/ou sur une base individuel si permit par l'administrateur.
-If disabled, this user cannot send you emails.: Si désactivé, cet utilisateur ne pourra pas vous envoyer d'email.
-If disabled, this user cannot see you in the participants list.: Si désactivé, cet utilisateur ne pourra pas vous voir dans la liste des participants
-If enabled, this user cannot view the details of any of your entries.: Si activé, cet utilisateur ne pourra voir le détail d'aucune de vos entrée.
+fine control of UAC and permissions: Permet un contrôle précis des accès et persmissions des utilisateurs. Les utilisateurs peuvent aussi donner des droits par défaut et/ou sur une base individuel si permit par l'administrateur.
+If disabled no email from user: Si désactivé, cet utilisateur ne pourra pas vous envoyer d'email.
+If disabled user cant see you: Si désactivé, cet utilisateur ne pourra pas vous voir dans la liste des participants
+If enabled user cant see details: Si activé, cet utilisateur ne pourra voir le détail d'aucune de vos entrée.
 
 ########################################
 # Page: icalclient.php
@@ -947,16 +945,16 @@ Current Icons on Server: Icônes présentes sur le serveur
 Disabled: désactivés
 Import format: Format d'importation
 Exclude private records: Exclure les enregistrements privés
-Repeated items are imported separately. Prior imports are not overwritten.: Les éléments répétés sont importés séparément. Les imports précédents ne sont pas écrasés
+Repeat items imported separately: Les éléments répétés sont importés séparément. Les imports précédents ne sont pas écrasés
 
 ########################################
 # Page: import_handler.php
 #
 No file: Aucun fichier
-Error deleting palm events from webcalendar.: Erreur lors de l'effacement d'événements palm de webcalendar
-Events from prior import marked as deleted: Les événements importés précédemment sont marqués supprimés
+Error deleting palm from webcal: Erreur lors de l'effacement d'événements palm de webcalendar
+prior imports marked deleted: Les événements importés précédemment sont marqués supprimés
 Conflicting events: Evénements en conflits
-The import file contained no data.: Le fichier à importer ne contient aucune donnée exploitable
+import file had no data: Le fichier à importer ne contient aucune donnée exploitable
 
 ########################################
 # Page: layers.php
@@ -964,7 +962,7 @@ The import file contained no data.: Le fichier à importer ne contient aucune don
 Layer: Calque
 Edit layer: Modifier un calque
 Delete layer: Supprimer le calque
-Are you sure you want to delete this layer?: Etes-vous sûr de vouloir supprimer ce calque ?
+really delete layer: Etes-vous sûr de vouloir supprimer ce calque ?
 Enable layers: Activer les calques
 Layers are currently enabled.: Les calques sont actuellement <strong>activés</strong>.
 Layers are currently disabled.: Les calques sont actuellement <strong>désactivés</strong>.
@@ -978,8 +976,8 @@ Edit Layer: Editer un calque
 #
 Unable to update preference: Impossible de mettre à jour les préférences
 Invalid entry id.: Id invalide.
-You cannot create a layer for yourself.: Vous ne pouvez pas créer un calque pour vous.
-You can only create one layer for each user.: Vous pouvez créer un seul calque par utilisateur.
+no layers for yourself: Vous ne pouvez pas créer un calque pour vous.
+only one layer per user: Vous pouvez créer un seul calque par utilisateur.
 
 ########################################
 # Page: list_unapproved.php
@@ -1003,8 +1001,8 @@ Reject Selected entries?: Rejeter les entrées sélectionnées ?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: Vous devez saisir un login et un mot de passe valides
-Save login via cookies so I dont have to login next time.: Sauvegarder l'identifiant dans un cookie, pour ne plus le saisir la prochaine fois
+must enter login/password: Vous devez saisir un login et un mot de passe valides
+Save login via cookies: Sauvegarder l'identifiant dans un cookie, pour ne plus le saisir la prochaine fois
 Login: Connexion
 public: =
 Access XXX calendar: Accéder à l'agenda de XXX
@@ -1013,19 +1011,19 @@ cookies-note: <b>Note:</b> Cette application nécessite l'activation des cookies
 ########################################
 # Page: login.php
 #
-Illegal characters in login XXX.: Caractères non autorisés dans le nom d'utilisateur "XXX".
+Illegal chars in login XXX: Caractères non autorisés dans le nom d'utilisateur "XXX".
 Invalid login: Identifiant utilisateur incorrect
 Activity login failure: Utilisateur : "XXX", IP: "YYY".
 Error XXX: Erreur : "XXX".
-You have been logged out.: Vous avez été déconnecté(e)
+You logged out: Vous avez été déconnecté(e)
 Access public calendar: Accès public au calendrier
-Not yet registered? Register here!: Pas encore enregistré(e) ? Enregistrez-vous ici !
+Not registered: Pas encore enregistré(e) ? Enregistrez-vous ici !
 
 ########################################
 # Page: minical.php
 #
-No such nonuser calendar XXX.: Agenda non utilisateur introuvable : "XXX";
-This Calendar is not Public.: Cet agenda n'est pas public.
+No NUC XXX: Agenda non utilisateur introuvable : "XXX";
+not a public calendar: Cet agenda n'est pas public.
 
 ########################################
 # Page: nonusers.php
@@ -1035,7 +1033,7 @@ Add New NonUser Calendar: Ajouter un nouvel utilisateur générique
 ########################################
 # Page: nulogin.php
 #
-A login must be specified.: Vous devez spécifier un nom d'utilisateur
+must specify login: Vous devez spécifier un nom d'utilisateur
 No such nonuser calendar: Pas de calendrier Non-utilisateur
 
 ########################################
@@ -1043,7 +1041,7 @@ No such nonuser calendar: Pas de calendrier Non-utilisateur
 #
 Save Preferences: Sauvegarder les préférences
 Public Access calendar: Calendrier à accès public
-Modify Non User Calendar Preferences: Modifier les préférences du calendrier Non-Utilisateur
+Modify NUC Preferences: Modifier les préférences du calendrier Non-Utilisateur
 Return to My Preferences: Retourner à Mes Préférences
 Custom Scripts: Scripts personnalisés
 Timezone Selection: Sélection du fuseau horaire
@@ -1052,7 +1050,7 @@ Entry interval: Intervalle de l'entrée
 hour: heure
 minute: =
 theme-reload-help: A cause de la mise en cache des CSS, le rechargement de la page pourra être nécessaire
-Page may need to be reloaded for new Theme to take effect: La page peut avoir besoin d'être rechargée pour prendre en compte le nouveau thème
+reload page to show Theme: La page peut avoir besoin d'être rechargée pour prendre en compte le nouveau thème
 display_byproxy-help: Afficher le créateur réel sur la page "view_entry"
 Display if created by Assistant: Afficher si créé par un assistant
 allow-view-subscriptions-help: Permet de restreindre l'accès distant des entrées privées ou confidentielles
@@ -1069,39 +1067,39 @@ Check box to delete ALL events for a user: Cocher la case pour supprimer <b>TOUS
 Delete all events before: Supprimer les événements antérieurs au
 Purge deleted only: Nettoyer les éléments supprimés seulement
 Preview delete: Aperçu de la suppression
-Are you sure you want to delete events for: Etes-vous certain de vouloir supprimer les événements de
+really delete events for: Etes-vous certain de vouloir supprimer les événements de
 Records deleted from XXX: Enregistrements détruits "XXX".
 
 ########################################
 # Page: register.php
 #
 Username already exists.: Cet utilisateur existe déjà.
-Email address cannot be blank.: L'adresse email ne peut pas être vide.
+no blank email: L'adresse email ne peut pas être vide.
 Email address already exists.: Cette adresse Email existe déjà.
-New user via self-registration.: Nouvel utilisateur par auto-enregistrement.
-A new WebCalendar account has been set up for you.: Un nouveau compte webcalendar a été créé pour vous.
+New user via self-reg: Nouvel utilisateur par auto-enregistrement.
+you have a WebCal account: Un nouveau compte webcalendar a été créé pour vous.
 Your username is XXX.: Votre nom d'utilisateur est "XXX".
 Your password is XXX.: Votre mot de passe est "XXX"
-Please visit XXX to log in and start using your account!: Merci de visiter "XXX"
-You may change your password after logging in the first time.: Vous devriez changer votre mot de passe après votre première connexion.
-If you received this email in error: Si vous avez reçu ce mail par erreur et n'avez pas demander l'ouverture d'un compte WebCalendar, merci de ne pas tenir compte de ce mail, ou répondez-y avec une courte note
+login to your account at XXX: Merci de visiter "XXX"
+change pwd after 1st login: Vous devriez changer votre mot de passe après votre première connexion.
+If email received in error: Si vous avez reçu ce mail par erreur et n'avez pas demander l'ouverture d'un compte WebCalendar, merci de ne pas tenir compte de ce mail, ou répondez-y avec une courte note
 Administrator: Administrateur
 Welcome: Bienvenue
 New user via email.: Nouvel utilisateur par email
 Registration: Enregistrement
 Welcome to WebCalendar: Bienvenue sur WebCalendar
-Your email should arrive shortly.: L'email devrait vous parvenir très prochainement.
+should get email soon: L'email devrait vous parvenir très prochainement.
 Return to Login screen: Retourner à la page d'identification
 Password (again): Mot de passe (confirmation)
-Your account information will be emailed to you.: Les informations sur votre compte vont vous être envoyées par email.
+you get info by email: Les informations sur votre compte vont vous être envoyées par email.
 Submit: Soumettre
 
 ########################################
 # Page: reject_entry.php
 #
 Continue: Continuer
-(Your comments will be emailed to the other participants.): (Vos commentaires vont être envoyés par email aux autres participants.)
-XXX has rejected an appointment.: XXX a rejeté un événement.
+comments emailed to others: (Vos commentaires vont être envoyés par email aux autres participants.)
+XXX rejected an appointment: XXX a rejeté un événement.
 Rejected by XXX.: Rejeté par XXX.
 
 ########################################
@@ -1112,7 +1110,7 @@ Add New Remote Calendar: Ajouter un nouvel agenda distant
 ########################################
 # Page: report.php
 #
-This event is confidential.: Cet événement est confidentiel
+confidential event: Cet événement est confidentiel
 (Private): (Privé)
 (cont.): (suite)
 Approved: Approuvé
@@ -1121,7 +1119,7 @@ Rejected: Rejeté
 Waiting for approval: En attente de validation
 Unknown: Inconnu
 Invalid report id.: Rapport invalide pour id.
-Click here to manage reports for the Public Access calendar.: Cliquez ici pour gérer les rapports pour l'agenda public
+manage pubic reports: Cliquez ici pour gérer les rapports pour l'agenda public
 Add new report: Ajouter un nouveau rapport
 Manage Reports: Gérer les rapports
 
@@ -1142,7 +1140,7 @@ Range: Etendue
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: Vous devez indiquer un ou plusieurs mot(s) clé(s) pour la recherche
+must enter search keywords: Vous devez indiquer un ou plusieurs mot(s) clé(s) pour la recherche
 Search Results: Résultats de la recherche
 match found: événement correspond à votre recherche
 matches found: événements correspondent à votre recherche
@@ -1153,23 +1151,23 @@ New Search: Nouvelle recherche
 # Page: security_audit.php
 #
 list potential security issues: L'information ci-dessous liste les problèmes potentiels avec l'installation de votre Webcalendar à corriger pour votre installation plus sécurisée.
-For questions about WebCalendar security see the forums: Pour les questions de sécurité concernant WebCalendar, Veuillez utiliser les forums hébergés chez SourceForge.net;<br><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
+WebCal security questions: Pour les questions de sécurité concernant WebCalendar, Veuillez utiliser les forums hébergés chez SourceForge.net;<br><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
 View your current PHP settings: visualiser vos paramètres PHP
 Security Issue: Problème de sécurité
 Status: Statut
 Default admin user password: Mot de passe par défaut pour l'utilisateur admin
-You should change the password of the default admin user.: Vous devez changer le mot de passe de l'utilisateur admin.
+change default admin password: Vous devez changer le mot de passe de l'utilisateur admin.
 File permissions XXX: Permissions fichier : XXX
 item XXX should not be writable: Cet item ne doit pas avoir les droits en écriture :<br><tt>XXX</tt>
 File exists XXX: Ce fichier existe : "XXX"
-Because you have email disabled, you should remove this file.: Les emails sont désactivés, vous pouvez détruire ce fichier.
+email disabled remove this file: Les emails sont désactivés, vous pouvez détruire ce fichier.
 File location XXX: Emplacement fichier : "XXX"
 remove XXX if not using: si vous n'utilisez pas ce fichier "XXX", vous pouvez le détruire. ou le déplacer dans un autre répertoire.
 System Settings XXX: Paramètres système : "XXX"
 consider enabling UAC: =
-recommend approving new public events: Nous vous recommendons que tous les événements publics soient approuvés.
+recommend approve new publics: Nous vous recommendons que tous les événements publics soient approuvés.
 recommend using CAPTCHA: CAPTCHA est recommandé pour prévenir contre l'ajout d'événements automatique.
-Database cache directory location: Emplacement du répertoire cache de la base de données
+DB cache dir location: Emplacement du répertoire cache de la base de données
 db cache should be inaccessable: Le cache de la base de données doit être dans un répertoire qui ne peut pas être accessible par une URL.
 PHP Settings XXX: Paramètres PHP : "XXX"
 recommend setting XXX Off: Le paramètre pour "XXX" est à Off.
@@ -1183,9 +1181,9 @@ View Another Users Calendar: Visualiser l'agenda d'un autre utilisateur
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: Vous n'avez pas défini de catégories
+no categories added: Vous n'avez pas défini de catégories
 Set Category: Choisir la catégorie
-Global Categories cannot be changed.: Les catégories globales ne peuvent pas être modifiées
+cant change Global Cats: Les catégories globales ne peuvent pas être modifiées
 
 ########################################
 # Page: upcoming.php
@@ -1236,7 +1234,7 @@ You must specify a view name: Vous devez indiquer une vue
 ########################################
 # Page: view_d.php
 #
-No users for this view.: Aucun utilisateur pour cette vue
+No users for view: Aucun utilisateur pour cette vue
 
 ########################################
 # Page: view_entry.php
@@ -1259,20 +1257,20 @@ Reject entry: Rejeter l'événement
 Set category: Choisir une catégorie
 Add to My Calendar: Ajouter à mon calendrier
 Copy entry: Dupliquer l'événement
-This will delete this entry for all users.: Ceci va supprimer cet événement pour tous les utilisateurs.
+will delete entry for all: Ceci va supprimer cet événement pour tous les utilisateurs.
 Edit entry: Modification de l'événement
-Edit repeating entry for all dates: Modifier l'événement répétitif pour toutes les dates
-Delete repeating event for all dates: Supprimer l'événement répétitif pour toutes les dates
+Edit repeating entry all dates: Modifier l'événement répétitif pour toutes les dates
+Dele repeating event all dates: Supprimer l'événement répétitif pour toutes les dates
 Edit entry for this date: Modifier l'événement pour cette date
 Delete entry only for this date: Supprimer l'événement pour cette date
-Delete entry from calendar of XXX: Supprimer l'entrée du calendrier de XXX
-This will delete the entry from your XXX calendar.: Ceci va supprimer l'entrée de votre agenda XXX.
+Delete entry from XXX calendar: Supprimer l'entrée du calendrier de XXX
+will delete entry from your XXX cal: Ceci va supprimer l'entrée de votre agenda XXX.
 boss: patron
-This will delete the entry from your boss calendar.: Ceci va supprimer l'entrée de l'agenda de votre patron.
-This will delete the entry from your calendar.: Ceci supprimera un événement de votre agenda.
+will delete entry from your boss cal: Ceci va supprimer l'entrée de l'agenda de votre patron.
+will delete entry from your cal: Ceci supprimera un événement de votre agenda.
 from your boss calendar: de l'agenda de votre patron
-Do you want to add this entry to your calendar?: Voulez-vous ajouter cet événement à votre agenda ?
-This will add the entry to your calendar.: Ceci ajoutera un événement à votre agenda.
+want to add entry to your cal: Voulez-vous ajouter cet événement à votre agenda ?
+will add entry to your cal: Ceci ajoutera un événement à votre agenda.
 Email all participants: Envoyer un courriel à tous les participants
 Hide activity log: Masquer le journal de suivi
 Show activity log: Visualiser le journal de suivi
@@ -1282,7 +1280,7 @@ Palm Pilot: =
 ########################################
 # Page: view_m.php
 #
-Double-click on empty cell to add new entry: Double-cliquez sur une cellule vide pour ajouter une nouvelle entrée
+Double-click to add entry: Double-cliquez sur une cellule vide pour ajouter une nouvelle entrée
 
 ########################################
 # Page: week_details.php
@@ -1308,10 +1306,10 @@ Invalid function id: Id de fonction invalide
 ########################################
 # Page: includes/config.php
 #
-Could not find settings.php file...: Impossible de trouver le fichier "settings.php".<br>S.V.P. copier "settings.php.orig" vers "settings.php" et éditer pour votre site.
-Incomplete settings.php file...: Fichier "settings.php" incomplet.
+settings.php not found: Impossible de trouver le fichier "settings.php".<br>S.V.P. copier "settings.php.orig" vers "settings.php" et éditer pour votre site.
+Incomplete settings.php: Fichier "settings.php" incomplet.
 Could not find XXX defined in...: Ne peut trouver "XXX" définit dans le fichier "settings.php".
-You must define XXX in: Vous devez définir "XXX" dans le fichier "settings.php".
+define XXX in settings: Vous devez définir "XXX" dans le fichier "settings.php".
 
 ########################################
 # Page: includes/date_formats.php
@@ -1323,10 +1321,10 @@ LANGUAGE DEFINED: LANGAGE DÉFINI
 ########################################
 # Page: includes/dbi4php.php
 #
-Error connecting to database: Erreur pendant la connexion à la base de donnée
+Error connecting to DB: Erreur pendant la connexion à la base de donnée
 db_type not defined.: db_type pas défini.
 invalid db_type: db_type invalid
-Cache cleared from previous SQL!: Cache effacé par la requête SQL précédente!
+previous SQL cache cleared: Cache effacé par la requête SQL précédente!
 Error executing query.: Erreur durant l'exécution de la requête SQL.
 Unknown ODBC error.: Erreur ODBC inconnu.
 write: écrire
@@ -1341,10 +1339,10 @@ Invalid data format for: Format de données invalide pour
 ########################################
 # Page: includes/functions.php
 #
-Error Type not set for activity log!: Erreur: Le type n'est pas défini pour le journal d'activité !
+Type not set for activity log: Erreur: Le type n'est pas défini pour le journal d'activité !
 This event is XXX.: Cet événement est  XXX.
 Conf.: =
-exceeds limit of XXX events per day: dépasse la limite de XXX événements par jour
+exceeds XXX events/day limit: dépasse la limite de XXX événements par jour
 on: sur
 All Attendees: Tous les participants
 Busy: Indisponible
@@ -1361,7 +1359,7 @@ Task created: Tâche créée
 Event deleted: événement supprimé
 Journal deleted: Journal supprimé
 Task deleted: tâche supprimée
-New user via email (self registration): Nouvel utilisateur par email (auto-enregistrement)
+New user via email self reg: Nouvel utilisateur par email (auto-enregistrement)
 New user (self registration): Nouvel utilisateur (auto-enregistrement)
 Notification sent: Notification envoyée
 Event rejected: événement rejeté
@@ -1417,15 +1415,15 @@ First Quarter Moon: Premier quartier de lune
 Full Moon: Pleine lune
 Last Quarter Moon: Dernier quartier de lune
 New Moon: Nouvelle lune
-Error TIME_SLOTS undefined!: Erreur: TIME_SLOTS indéfinie!
+TIME_SLOTS undefined: Erreur: TIME_SLOTS indéfinie!
 The following error occurred: L'erreur suivante est survenue
 You are not authorized.: Vous n'êtes pas autorisé(e)
 Add N hours to: Ajouter N heure(s) à
 Subtract N hours from: Déduire N heure(s) de
 same as: Aucun - identique à
 server time: l'heure du serveur
-Cannot read timezone file XXX.: Ne peut lire le fichier de zone de temps: XXX.
-Your current GMT offset is XXX hours.: Votre décalage GMT est de XXX heures.
+Cannot read TZ file XXX: Ne peut lire le fichier de zone de temps: XXX.
+GMT offset is XXX: Votre décalage GMT est de XXX heures.
 Unauthorized: Non autorisé
 Error approving event XXX.: Erreur lors de l'approbation de l'événement : XXX
 Error deleting event XXX.: Erreur à la suppression de l'événement : XXX.
@@ -1592,7 +1590,7 @@ recipients_failed: SMTP Erreur: Les destinataires suivants sont en erreur:
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: Entrez les caractères présents sur l'image
-Enter the correct letters and numbers...: Entrez les lettres et chiffres présents dans l'image dans le champ de saisie. The test sert de restriction d'accès pour des robots. Rechargez la page si le graphique est trop difficile à lire.
+Enter correct letters/numbers: Entrez les lettres et chiffres présents dans l'image dans le champ de saisie. The test sert de restriction d'accès pour des robots. Rechargez la page si le graphique est trop difficile à lire.
 Challenge/Response: Protocole/réponse
 
 ########################################
@@ -1601,58 +1599,58 @@ Challenge/Response: Protocole/réponse
 Server URL is required.: L'URL du serveur n'est pas spécifiée
 Server URL must end with /.: L'URL du serveur doit se terminer par '/'
 Invalid work hours.: Plage horaire invalide
-Invalid color for document background.: Couleur de fond incorrecte
-Invalid color for document title.: Couleur de titre de document incorrecte
-Invalid color for table cell background.: Couleur de fond de cellule incorrecte
-Invalid color for table grid.: Couleur de quadrillage incorrecte
-Invalid color for table header background.: Couleur de fond de cellule d'en-tête de tableau incorrecte
-Invalid color for table text background.: Couleur de texte de tableau incorrecte
-Invalid color for event popup background.: Couleur de fond de fenêtre d'alerte incorrecte
-Invalid color for event popup text.: Couleur de texte de fenêtre d'alerte incorrecte
-Invalid color for table cell background for today.: Couleur de fond de cellule du jour courant incorrecte
-Color format should be RRGGBB.: Le format de couleur devrait être du type '#RRGGBB'
+Invalid doc BG color: Couleur de fond incorrecte
+Invalid doc title color: Couleur de titre de document incorrecte
+Invalid table cell BG color: Couleur de fond de cellule incorrecte
+Invalid table grid color: Couleur de quadrillage incorrecte
+Invalid table header BG color: Couleur de fond de cellule d'en-tête de tableau incorrecte
+Invalid table cell BG color: Couleur de texte de tableau incorrecte
+Invalid popup BG color: Couleur de fond de fenêtre d'alerte incorrecte
+Invalid popup text color: Couleur de texte de fenêtre d'alerte incorrecte
+Invalid table cell today BG: Couleur de fond de cellule du jour courant incorrecte
+Color format should be RGB: Le format de couleur devrait être du type '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php
 #
-Change the date and time of this entry?: Modifier la date et l'heure de cet événement ?
+Change entry date/time: Modifier la date et l'heure de cet événement ?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Vous n'avez pas saisi de description résumée
-time prior to work hours...: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
+must enter Brief Description: Vous n'avez pas saisi de description résumée
+time before work hours: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
 Invalid Event Date: Date de l'événement invalide
 Please add a participant: Veuillez ajouter un participant
 Invalid Date: Date invalide
-You have not entered a valid time of day: Vous n'avez pas saisi une heure appropriée
+must enter valid time: Vous n'avez pas saisi une heure appropriée
 
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID cannot be blank.: L'ID de l'agenda ne doit pas être vide.
-First and last names cannot both be blank.: Prénom et nom ne doivent pas être vides.
+no blank cal ID: L'ID de l'agenda ne doit pas être vide.
+both names cannot be blank: Prénom et nom ne doivent pas être vides.
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
 Invalid color: Couleur invalide
-URL cannot be blank.: L'URL ne doit pas être vide.
+no blank URLs: L'URL ne doit pas être vide.
 
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: Le type de fichier ne correspond pas au format d'import
+Import Format type mismatch: Le type de fichier ne correspond pas au format d'import
 
 ########################################
 # Page: includes/js/translate.js.php
 #
-Invalid color for table header text.: Couleur invalide pour le texte de l'entête de la table.
+Invalid table head text color: Couleur invalide pour le texte de l'entête de la table.
 Invalid Color: Couleur invalide
 Database Name: nom de la base de données
 Full Path (no backslashes): Répertoire complet (sans antislashes)
-The password contains illegal characters.: Le mot de passe comporte des caractères illégaux.
-Error you must specify a Single-User Login: Erreur : Vous devez spécifier\nSingle-User Login.
+illegal chars in password: Le mot de passe comporte des caractères illégaux.
+specify Single-User login: Erreur : Vous devez spécifier\nSingle-User Login.
 Could not find XXX.: Impossible de trouver XXX.
 Could not find XXX in DOM.: Impossible de trouver XXX dans DOM.
 
@@ -1682,9 +1680,9 @@ Database Cache Directory: Répertoire cache de base de données
 Failure Reason: <b>Raison d'Échec :</b>
 Single-User: Mode Simple Utilisateur
 Test Settings: Essais des paramêtres
-Timezone Conversion Successful: Succès conversion fuseau horaire
-WebCalendar Installation Wizard Step XXX: Installation de WebCalendar Etape XXX
-You must manually create database: Vous devez manuelement créer la base de données
+TZ Conversion Successful: Succès conversion fuseau horaire
+Install Wizard Step XXX: Installation de WebCalendar Etape XXX
+must manually create DB: Vous devez manuelement créer la base de données
 Password Accepted: Mot de passe accepté
 Successful Login: Connexion acceptée
 Password Incorrect: Mot de passe incorrect
@@ -1696,21 +1694,21 @@ Safe Mode: =
 Safe Mode Allowed Vars: =
 GD: =
 Passwords do not match!: Les mots de passe ne correspondent pas !
-Unable to write password to settings.php file: Impossible d'écrire le mot de passe dans le fichier "settings.php".
+cant write pwd to settings.php: Impossible d'écrire le mot de passe dans le fichier "settings.php".
 Password Updated: Mot de passe mis à jour
 Password has been set: Le mot de passe a été initialisé.
 Connection Successful...: <b>connection acceptée</b> allez sur la page suivante pour continuer l'installation.
-Correct your entries or click the Create New...: corrigez vos entrées ou cliquez sur le bouton <b>Créer nouveau</b> pour continuer l'installation.
-Correct your entries and try again.: Corrigez vos entrées et réessayez.
+Correct entries or click Create: corrigez vos entrées ou cliquez sur le bouton <b>Créer nouveau</b> pour continuer l'installation.
+Correct entries and try again: Corrigez vos entrées et réessayez.
 XXX does not exist: XXX n'existe pas
 XXX is not writable: XXX n'a pas les droits en écriture
 Error Converting Timezone: Erreur de conversion des fuseaux horaire
-Error Unable to write to file XXX.: Erreur impossible d'écrire le fichier XXX.
-Please change the file permissions of this file.: Veuillez changer les permissions de ce fichier.
-Please change includes dir permission: Veuillez changer les permissions du répertoire "includes" pour être autoriser en écriture pour les autres utilisateurs.
+Unable to write to file XXX: Erreur impossible d'écrire le fichier XXX.
+change the file permissions: Veuillez changer les permissions de ce fichier.
+change includes dir permission: Veuillez changer les permissions du répertoire "includes" pour être autoriser en écriture pour les autres utilisateurs.
 Your settings have been saved.: Vos paramètres ont été sauvés.
 WebCalendar Setup Wizard: WebCalendar Installation Wizard
-This installation wizard will guide you...: Cet installeur wizard va vous guider pour paramétrer un WebCalendar basic. Pour l'aide et les problèmes voyez :<br>
+wizard guide: Cet installeur wizard va vous guider pour paramétrer un WebCalendar basic. Pour l'aide et les problèmes voyez :<br>
 System Administrators Guide: Guide de l'administrateur système
 Frequently Asked Questions: questions fréquemment posées (FAQ)
 FAQ: =
@@ -1719,7 +1717,7 @@ Getting Help: Avoir de l'aide
 Upgrading Guide: guide de mise à jour
 User Supported Wiki: =
 PHP Version Check: Vérification version PHP
-Check to see if PHP 4.1.0 or greater is installed.: Vérifiez que PHP 4.1.0 ou supérieur est installé.
+is PHP >= 4.2.0 installed: Vérifiez que PHP 4.2.0 ou supérieur est installé.
 PHP version: Version PHP
 PHP Settings: Paramêtres PHP
 Detailed PHP Info: Information détaillé PHP
@@ -1727,48 +1725,48 @@ ON: =
 OFF: =
 settings.php Status: "settings.php" Statut
 Session Check: =
-To test the proper operation of sessions...: =
+test sessions operation: =
 SESSION COUNTER: =
-The file permissions of settings.php are set...: =
-The file permissions of the includes directory are set...: =
-Your settings.php file appears to be valid.: =
+settings.php file permissions: =
+includes dir permissions: =
+settings.php appears valid: =
 Configuration Wizard Password: =
 Create Settings File Password: =
 db setup directions...: =
 Database Status: Statut de la base de données
-Supported databases for your PHP installation: =
-Your current database settings are able to access the database.: =
+your PHP supported DBs: =
+current settings can access DB: =
 Please Test Settings: Veuillez tester les paramètres
-Your current database settings are not able...: =
+current settings cannot access DB: =
 Database Settings: Paramètres de la base de données
 Database Type: Type de base de données
 Server: Serveur
 Connection Persistence: Persistence de la connexion
-All your database tables appear to be up...: =
-This appears to be a new installation...: =
-This appears to be an upgrade...: =
-The database requires some data input...: =
-In this section we will perform...: =
-No database actions are required.: =
-The following database actions are required: =
+DB tables look current: =
+looks like a new install: =
+looks like an upgrade: =
+DB requires some input: =
+this section will perform: =
+no DB actions required: =
+These DB actions are required: =
 ODBC Underlying Database: =
-Automatic installation not supported: =
-This may take several minutes to complete: Ceci peut prendre plusieurs minutes pour être fini.
+Auto install not supported: =
+may take minutes: Ceci peut prendre plusieurs minutes pour être fini.
 Install Database: Installer la base de données
 Update Database: Mise à jour de la base de données
 Display Required SQL: =
-Return to previous page after processing SQL.: =
-This is the final step in setting up your WebCalendar Installation.: =
+go back after processing SQL: =
+the final step in WebCal Install: =
 Timezone Conversion: =
-It appears that you have NOT converted...: =
+looks like you have NOT converted: =
 Convert Data to GMT: =
 Application Settings: Paramètres de l'application
-HTTP-based authentication was not detected...: =
-HTTP-based authentication was detected...: =
+HTTP-based auth NOT detected: =
+HTTP-based auth WAS detected: =
 Create Default Admin Account: =
 (Admin Account Not Found): =
 User Authentication: =
-Web-based via WebCalendar (default): =
+Web-based via WebCal default: =
 Web Server (not detected): =
 Web Server (detected): =
 None (Single-User): =
@@ -1786,7 +1784,7 @@ Launch WebCalendar: =
 Error updating table XXX: =
 Conversion Successful: =
 Perl script required: =
-previous version requires updating several tables: =
+version needs tables updated: =
 
 ########################################
 # Page: themes/theme_inc.php
@@ -1808,9 +1806,9 @@ Remote Calendars not enabled: =
 # Page: tools/send_reminders.php
 #
 could not find event id: Impossible de trouver l'événement id
-could not find event id XXX in database.: Impossible de trouver l'événement id XXX en base de données.
+event XXX not found in DB: Impossible de trouver l'événement id XXX en base de données.
 task: =
-This is a reminder for the XXX detailed below.: Ceci est un rappel pour XXX détaillé ci-dessous.
+reminder for XXX below: Ceci est un rappel pour XXX détaillé ci-dessous.
 Pecentage Complete: Pourcentage Complèté
 Reminder: Rappel
 
@@ -1824,45 +1822,45 @@ Not authorized (not admin).: Pas autorisé (pas admin).
 ########################################
 # Page: ws/get_events.php
 #
-Checking for events for XXX from date YYY to date ZZZ.: =
+find XXX events from YYY to ZZZ: =
 Found XXX events in time range.: trouvé XXX événements dans les heures choisies.
 Event id=XXX YYY at ZZZ on AAA.: Evénement id=XXX "YYY" à ZZZ on AAA.
 
 ########################################
 # Page: ws/get_reminders.php
 #
-Allowing XXX user to view other users calendar.: Autorise l'utilisateur XXX pour visualiser les calendriers des autres utilisateurs.
-Error Email reminders disabled for user XXX.: Erreur: Rappel par email désactivé pour l'utilisateur "XXX".
+XXX may see other users cal: Autorise l'utilisateur XXX pour visualiser les calendriers des autres utilisateurs.
+XXX disabled email reminders: Erreur: Rappel par email désactivé pour l'utilisateur "XXX".
 Number of site_extras XXX.: =
 Reminder set for event.: Rappel activé pour cet événement.
 Mins Before XXX.: Minutes avant : XXX.
 Event time is XXX.: L'heure de l'événement est : XXX.
 Remind time is XXX.: L'heure de rappel est : XXX.
-Reminders for user XXX, login YYY.: Rappels pour l'utilisateur "XXX", login "YYY".
+Reminders for XXX login YYY: Rappels pour l'utilisateur "XXX", login "YYY".
 
 ########################################
 # Page: ws/get_unapproved.php
 #
-Getting unapproved for user XXX.: =
+Get unapproved for XXX: =
 Event id=XXX YYY already sent.: Evénement id=XXX "YYY" déjà envoyé.
 
 ########################################
 # Page: ws/login.php
 #
-No login required for single-user mode.: =
-No login required for HTTP authentication.: =
+No login required for single-user: =
+No login required for HTTP auth: =
 
 ########################################
 # Page: ws/user_mod.php
 #
 Invalid characters in login: Caractères invalides dans le login.
 Username XXX does not exist.: L'utilisateur "XXX" n'existe pas.
-You cannot remove admin rights from yourself!: Vous ne pouvez pas enlever les droits administrateurs pour vous même !
+You are stuck with admin: Vous ne pouvez pas enlever les droits administrateurs pour vous même !
 Unknown error saving user: Erreur inconnue sur la sauvegarde utilisateur.
 
 ########################################
 # Page: ws/ws.php
 #
-No participants found for event id XXX.: Pas de participant trouvé pour l'événement Id : XXX.
-Db error Could not find event id XXX.: Db erreur: Ne trouve pas l'événement id XXX.
+No party found for event XXX: Pas de participant trouvé pour l'événement Id : XXX.
+Db error event XXX not found: Db erreur: Ne trouve pas l'événement id XXX.
 id XXX not found in db: Erreur: Impossible de trouver l'id XXX en base de données.

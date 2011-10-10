@@ -208,7 +208,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
 
     if( ! $c ) {
       echo str_replace( 'XXX', $db_sqlite_error_str,
-        translate( 'Error connecting to database XXX' ) ) . "\n";
+        translate( 'Error connecting to DB XXX' ) ) . "\n";
       exit;
     }
     $db_connection_info['connected']  = true;
@@ -220,7 +220,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
 
     if( ! $c ) {
       echo str_replace( 'XXX', $db_sqlite_error_str,
-        translate( 'Error connecting to database XXX' ) ) . "\n";
+        translate( 'Error connecting to DB XXX' ) ) . "\n";
       exit;
     }
     $db_connection_info['connected']  = true;
@@ -358,7 +358,7 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
       dbi_clear_cache();
 
       if( ! empty( $db_connection_info['debug'] ) )
-        $SQLLOG[] = translate( 'Cache cleared from previous SQL!' );
+        $SQLLOG[] = translate( 'previous SQL cache cleared' );
     }
   }
 
@@ -512,7 +512,7 @@ function dbi_update_blob( $table, $column, $key, $data ) {
 
   $unavail_DBI_Update_blob = str_replace( array( 'XXX', 'YYY' ),
     array( '"dbi_update_blob"', $GLOBALS['db_type'] ),
-    translate( 'Unfortunately, XXX is not implemented for YYY' ) );
+    translate( 'XXX not implemented for YYY' ) );
 
   assert( '! empty( $table )' );
   assert( '! empty( $column )' );
@@ -776,7 +776,7 @@ function dbi_execute( $sql, $params = array(), $fatalOnError = true,
   if( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 )
     if( ! sqlite3_exec( $GLOBALS['sqlite_c'], $prepared ) )
       dbi_fatal_error( str_replace( 'XXX', $prepared,
-        translate( 'Cannot execute SQLite3 command XXX' ) ),
+        translate( 'Cant execute SQLite3 cmd XXX' ) ),
         $fatalOnError, $showError );
 
   return dbi_query( $prepared, $fatalOnError, $showError );
@@ -903,7 +903,7 @@ function dbi_clear_cache() {
          $errcnt++;
          $errstr .= '<!-- ' . str_replace( array( 'XXX', 'YYY' ),
            array( translate( 'delete' ), $file ),
-           translate( 'Cache error Could not XXX file YYY.' ) ) . " -->\n";
+           translate( 'Could not XXX file YYY' ) ) . " -->\n";
         // TODO: log this somewhere???
       }
     }

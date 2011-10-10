@@ -55,8 +55,8 @@ Save: שמור
 Public Access: גישה ציבורית
 Admin: מנהל
 User Access Control: בקרת גישת משתמשים
-Allow Access to Other Users Calendar: הרשה גישה ללוחות שנה של משתמשים אחרים
-Grant This User Access to My Calendar: הרשה למשתמש זה גישה ללוח השנה שלי
+may access others cals: הרשה גישה ללוחות שנה של משתמשים אחרים
+this user may access my cal: הרשה למשתמש זה גישה ללוח השנה שלי
 Type: סוג
 Calendar: לוח שנה
 View Event: הצג ארוע
@@ -99,24 +99,24 @@ Anyone: כל אחד
 Participant: משתתף
 Settings: הגדרות
 Groups: קבוצות
-NonUser Calendars: לוחות שנה ללא משתמש
+NUCs: לוחות שנה ללא משתמש
 Other: אחר
 Email: דוא"ל
 Colors: צבעים
-Document background: רקע למסמכים
+Document BG: רקע למסמכים
 Document title: כותרת המסמך
 Document text: טקסט המסמך
 My event text: הטקסט של הארוע שלי
 Table grid color: צבע הרשת בטבלה
-Table header background: רקע לכותרת טבלה
+Table header BG: רקע לכותרת טבלה
 Table header text: טקסט כותרת טבלה
-Table cell background: רקע לתא בטבלה
-Table cell background for current day: רקע לתא בטבלה ליום הנוכחי
-Table cell background for days with events: צבע רקע התא של ימים בהם יש ארועים
-Table cell background for weekends: רקע לתא בטבלה לסופי שבוע
-Table cell background for other month: צבע רקע התא של חודש אחר
+Table cell BG: רקע לתא בטבלה
+Table cell today BG: רקע לתא בטבלה ליום הנוכחי
+Table cell events BG: צבע רקע התא של ימים בהם יש ארועים
+Table cell weekends BG: רקע לתא בטבלה לסופי שבוע
+Table cell other month BG: צבע רקע התא של חודש אחר
 Week number color: צבע מספר השבוע
-Event popup background: רקע לחלונית ארוע קופצת
+Event popup BG: רקע לחלונית ארוע קופצת
 Event popup text: טקסט לחלונית ארוע קופצת
 System Settings: הגדרות מערכת
 Help: עזרה
@@ -143,12 +143,12 @@ Custom header: כותרת מותאמת אישית
 custom-trailer-help: מאפשר לכלול קטע HTML המותאם אישית בתחתית כל דף.
 Custom trailer: סיומת המותאמת אישית
 enable-external-header-help: מאפשר טעינת סיומת מותאמת אישית מקובץ חיצוני
-Allow external file for header/script/trailer: מאפשר שימוש בקובץ חיצוני עבור כותרת/סקריפט/סיומת
-Allow user to override header/trailer: מותר למשתמש לדרוס כותרת/סיומת
+externals head/script/trail: מאפשר שימוש בקובץ חיצוני עבור כותרת/סקריפט/סיומת
+may user override head/trail: מותר למשתמש לדרוס כותרת/סיומת
 tz-help: קובע את השעון המקומי (לעומת השעון בשרת).
-Server Timezone Selection: בחירת איזור זמן של השרת
+Server TZ Selection: בחירת איזור זמן של השרת
 display-general-use-gmt-help: אם נבחר, תאריכים/שעות משותפים מוצגים בשעון גרניץ'
-Display Common Use Date/Times as GMT: הצג שימוש בתאריכים/שעות משותפים בשעון גרניץ'
+GMT Common Use Date/Times: הצג שימוש בתאריכים/שעות משותפים בשעון גרניץ'
 date-format-help: קובע את תצורת התאריך המעודפת.
 Date format: תצורת תאריך
 Small Task Date: תאריך משימה בקטן
@@ -183,9 +183,9 @@ Display all days in month view: מציג את כל הימים בתצוגה חו�
 display-week-number-help: קובע אם להציג את מספר הסידורי של השבוע (1-52) בתצוגה חודשית ושבועית
 Display week number: הצג מספר סידורי של השבוע
 display-desc-print-day-help: לכלול תאור הארוע בתצוגה ידידותית למדפסת.
-Display description in printer day view: לכלול תאור בתצוגה יומית מודפסת
+desc in printer day view: לכלול תאור בתצוגה יומית מודפסת
 yearly-shows-events-help: בתצוגה שנתית, הצג ימים בהם יש ארועים בטקסט מודגש.
-Display days with events in bold in month and year views: בתצוגה שנתית וחודשית, הצג ימים בהם יש ארועים בטקסט מודגש.
+bold events month/year views: בתצוגה שנתית וחודשית, הצג ימים בהם יש ארועים בטקסט מודגש.
 display-minutes-help: אם נבחר, תמיד יוצגו דקות עם סיומת 00
 Display 00 minutes always: תמיד הצג 00 דקות
 allow-view-add-help: צלמית "+" יכלל בתצוגות, ויאפשר למשתמשים להוסיף ארועים ללוחות שנה של משתמשים אחרים במהירות.
@@ -193,21 +193,21 @@ Include add event link in views: לכלול קישור הוספת ארועים �
 lunar-help: אם נבחר, יציג צלמיות קטנות המייצגות את פאזת הירח כל חודש
 Display Lunar Phases in month view: הצג פאזות הירח בתצוגה חודשית
 allow-view-other-help: קובע אם למשתמש אחד מותר לצפות בלוח שנה של משתמש אחר.
-Allow viewing other users calendars: אפשר צפייה בלוחות שנה של אחרים
+may view others cals: אפשר צפייה בלוחות שנה של אחרים
 require-approvals-help: כאשר מאופשר, על המשתמש לאשר ארוע לפני שהוא יוצג בלוח השנה שלו (אלא אם הצג לא מאושרים מופעל). הערה: כאשר זה במצב "לא", זה לא ייכבה אישורים ללוחות בעלי גישה ציבורית (אם מאופשרים לוחות שנה עם גישה ציבורית).
 Require event approvals: לחייב אישורי אירועים
 display-unapproved-help: קובע אם ארועים לא מאושרים מוצגים בלוח השנה שלך.<br>כאשר נבחר "כן", אזי ארועים לא מאושרים יוצגו בלוח שלך (בצבע שונה).<br>אם נבחר "לא", אזי חייבים לאשר אירוע לפני שיוצג בלוח השנה שלך.
 Display unapproved: הצג לא מאושרים
 conflict-check-help: בדוק התנגשויות ארועים (שני ארועים מתוכננים לאותה שעה לאותו אדם). אם תבחר "כן", עדיין תוכל לזמן שני ארועים לאותה שעה לאחר אישור אזהרה. אם תבחר "לא" התנגשיות לא ייבדקו. מן הסתם תרצה לבחור "כן" כדי לבדוק אם יש התנגשויות.
-Check for event conflicts: בדוק התנגשויות ארועים
+Check for conflicts: בדוק התנגשויות ארועים
 Yes: כן
 No: לא
 conflict-months-help: אם קיימת בדיקת התנגשויות (בדוק התנגשויות ארועים הוא "כן"), זה קובע כמה חודשים קדימה לחפש התנגשויות. אם הוספת ארועים לוקח הרבה זמן, הקטן ערך זה.
 Conflict checking months: הודשים לבדיקת התנגשויות
 conflict-check-override-help: אפשר למשתמשים להתעלם מהתנגשויות ולזמן שני ארועים או יותר לאותה השעה.
-Allow users to override conflicts: אפשר למשתמשים להתעלם מהתנגשויות
+may users override conflicts: אפשר למשתמשים להתעלם מהתנגשויות
 limit-appts-help: מאפשר למנהל המערכת לקבוע גבול לכמות הפגישות המותרות למשתמש מסוים ביום אחד.
-Limit number of timed events per day: הגבל כמות ארועים לפי שעה ביום
+Limit timed events per day: הגבל כמות ארועים לפי שעה ביום
 limit-appts-number-help: קובע את כמות המירבית של ארועים לפי שעה שאפשר למשתמש לקבוע ביום אחד.
 Maximum timed events per day: כמות המירבית של ארועים לפי שעה ליום אחד
 crossday-help: אם נבחר, ארוע החוצה גבול יום יוצג בימים נפרדים
@@ -237,21 +237,21 @@ Brief Description Length: אורך תאור קצר
 allow-public-access-help: כאשר נבחר, ניתן להשתמש בלוח השנה כלוח ציבורי לקריאה בלבד אשר לא מחייב אימות משתמשים.
 Allow public access: אפשר גישה ציבורית
 public-access-default-visible: ארועים בלוח הציבורי יופיעו אוטומטית בלוחות השנה של כל המשתמשים.
-Public access visible by default: גישה ציבורית נראית כברירת מחדל
+Public visible by default: גישה ציבורית נראית כברירת מחדל
 public-access-default-selected: בהוספת ארוע חדש, ייבחר המשתמש הציבורי כמשתתף כברירת מחדל.
-Public access is default participant: גישה ציבורית הינה משתתף כברירת מחדל
+is public default party: גישה ציבורית הינה משתתף כברירת מחדל
 public-access-view-others-help: כאשר ניגשים למערכת בגישה ציבורית, קובע אם למשתמש אפשר לצפות בלוח שנה של משתמש אחר.
-Public access can view other users: גישה ציבורית יכולה לצפות בלוחות של אחרים
+may public view others: גישה ציבורית יכולה לצפות בלוחות של אחרים
 public-access-can-add-help: כאשר מאופשר, משתמשים הניגשים למערכת באמצעות גישה ציבורית יוכלו להוסיף ארועים חדשים, אבל הארועים הללו לא יופיעו בלוח עד לאחר אישור מנהל.
-Public access can add events: לגישה ציבורית מותר להוסיף ארועים
+may public add events: לגישה ציבורית מותר להוסיף ארועים
 public-access-add-requires-approval-help: קובע אם ארועים שנוספו בעזרת חשבון גישה ציבורית מחייבים אישור לפני תצוגתם.
-Public access new events require approval: ארועים חדשים מגישה ציבורית חייבים אישור
+must approve public events: ארועים חדשים מגישה ציבורית חייבים אישור
 public-access-sees-participants-help: אם מאופשר, משתמשים הניגשים ללוח מחשבון גישה ציבורית יוכלו לצפות במשתתפים אם הם בוחרים לצפות בפרטים של ארוע.
-Public access can view participants: גישה ציבורית יכולה לראות משתתפים
+may public see participants: גישה ציבורית יכולה לראות משתתפים
 public-access-override-help: מאפשר הסתרת שמות ותאורים של ארועים בלוח השנה הציבורי
-Override event name/description for public access: דרוס שם/תאור ארוע בגישה ציבורית
+Override public event name/desc: דרוס שם/תאור ארוע בגישה ציבורית
 public-access-override-text-help: הצג טקסט זה כאשר האופציה לעיל מופעלת. אם 'Not Available' הוא יתורגם
-Text to display to public access: הטקסט להציג לגישה ציבורית
+public text display: הטקסט להציג לגישה ציבורית
 uac-enabled-help: מאפשר בקרת גישה ברמת המשתמש
 User Access Control enabled: בקרת גישה ברמת המשתמש מופעלת
 groups-enabled-help: אפשר תמיכה בקבוצות, דבר שיאפשר למשתמשים לבחור משתמשים לפי קבוצות.
@@ -259,9 +259,9 @@ Groups enabled: קבוצות מאופשרות
 user-sees-his-group-help: אם מאופשר, משתמשים לא יוכלו לצפות במשתמשי לוחות שנה שלא נמצאים בלפחות אחת הקבוצות שלהם.
 User sees only his groups: משתמש רואה רק קבוצות שלו
 nonuser-enabled-help: אם מאופשר, למנהל אפשרות להוסיף לוחות שנה ללא משתמש
-Nonuser enabled: אפשור לוחות שנה ללא משתמש
+NUCs enabled: אפשור לוחות שנה ללא משתמש
 nonuser-list-help: היכן להציג את לוחות השנה ללא משתמשים ברשימת משתתפים
-Nonuser list: הצג ברשימת משתתפים ב-
+list NUCs at: הצג ברשימת משתתפים ב-
 Enabled: מאופשרות
 reports-enabled-help: אם מאופשר, משתמשים ייראו מחלקה של "דוחות" בתחתית כל דף והם יוכלו ליצור דוחות מותאמים אישית. בנוסף, מנהלים יוכלו ליצור דו"חות גלובליים שיוצגו בתחתית הדף של כל משתמש.
 Reports enabled: דו"חות מאופשרים
@@ -282,21 +282,21 @@ Display tasks in Calendars: הצג משימות בלוח השנה
 allow-external-users-help: קובע אם מותר להוסיף משתמש שאינו משתמש לוח שנה, לארוע. זה מאפשר הוספת משתמשים חיצוניים כמשתתפים בארוע.
 Allow external users: אפשר משתמשים חיצוניים
 external-can-receive-notification-help: כאשר מאפשרים משתמשים חיצוניים ומאפשרים דוא"ל, ניתן לשלוח הודעות לשמשתמשים חיצוניים כאשר הארוע נוסף, מעודכן או נמחק (אם נקבע הכתובת של המשתמש החיצוני, כמובן),
-External users can receive email notifications: מותר לממשתמשים חיצוניים לקבל הודעות דואר
+may notify externals by email: מותר לממשתמשים חיצוניים לקבל הודעות דואר
 external-can-receive-reminder-help: כאשר משתמשים חיצוניים מאופשרים ומשלוח דואר מאופשר, ניתן לשלוח תזכורות למשתמשים חיצוניים (אם נקבע את הכתובת שלו).
-External users can receive email reminders: למשתמשים חיצוניים מותר לקבל תזכורות בדואר אלקטרוני
+may remind externals by email: למשתמשים חיצוניים מותר לקבל תזכורות בדואר אלקטרוני
 allow-self-registration-help: אפשר למשתמשים חדשים להרשם בעצמם
 Allow self-registration: אפשר רישום עצמי
 use-blacklist-help: הגבל גישה אל פונקציות לוח השנה על בסיס כתובת IP
-Restrict self-registration to blacklist: הגבל רישום עצמי לרשימה שחורה
-allow-self-registration-full-help: אפשר למשתמשים חדשים להשלים רישום עצמי במקוון
-Use self-registration email notifications: חולל סיסמאות ושלח אותם בדוא"ל אל משתמשים חדשים. זה אמור למנוע רישום שולחי דואר זבל.
+Restrict self-reg to blacklist: הגבל רישום עצמי לרשימה שחורה
+allow-self-reg-full-help: אפשר למשתמשים חדשים להשלים רישום עצמי במקוון
+send self-reg emails: חולל סיסמאות ושלח אותם בדוא"ל אל משתמשים חדשים. זה אמור למנוע רישום שולחי דואר זבל.
 allow-attachment-help: אפשר למשתמשים להוסיף קבצים מצורפים לארועים
 Allow file attachments to events: אפשר קבצים מצורפים בארועים
-Admin and owner can always add attachments if enabled.: המנהל והבעלים יכולים תמיד להוסיף מצורפים באם מאופשר.
+owner can attach if enabled: המנהל והבעלים יכולים תמיד להוסיף מצורפים באם מאופשר.
 allow-comments-help: אפשר למשתמשים להוסיף הערות לארועים
 Allow comments to events: אפשר הערות בארועים
-Admin and owner can always add comments if enabled.: המנהל והבעלים תמיד יכולים להוסיף הערות, באם מאופשר.
+owner can comment if enabled: המנהל והבעלים תמיד יכולים להוסיף הערות, באם מאופשר.
 email-enabled-help: הדלק וכבה כל משלוחי דוא"ל עבור הודעות ותזכרות. ציין "לא" אם שרת הדואר שלך לא שולח דואר כשורה.
 Email enabled: דואר אלקטרוני מאופשר
 email-default-sender: קובע את כתובת השולח במשלוח תזכורות.
@@ -329,7 +329,7 @@ email-event-rejected: קובע אם לשלוח הודעות דוא"ל כאשר �
 Event rejected by participant: משתתף דוחה ארוע בלוח שלי
 Allow user to customize colors: אפשר למשתמשים לשנות צבעים
 gradient-colors: אם מופעל משתמשים בצבעים גרדיאנטים. זה יכול להשפיע מאוד על ביצועים.
-Enable gradient images for background colors: אפשר צבעים גרדיאנטים כצבעי רקע
+Enable gradient images for BG: אפשר צבעים גרדיאנטים כצבעי רקע
 Not available: לא זמין
 
 ########################################
@@ -396,13 +396,13 @@ gif 3kb max: gif מקסימום 3kb
 Search for existing icons: חפש צלמיות קיימות
 Add: הוסף
 Delete: מחק
-Are you sure you want to delete this entry?: בטוח שהנך רוצה למחוק רשומה זו?
+really delete entry: בטוח שהנך רוצה למחוק רשומה זו?
 Make New Category: הוסף סיווג חדש
 
 ########################################
 # Page: category_handler.php
 #
-File size exceeds maximum.: גודל הקובץ מעל הוגדל המירבי המותר
+File size exceeds max: גודל הקובץ מעל הוגדל המירבי המותר
 File is not a gif image.: הצלמית אינו תמונת גיפ
 
 ########################################
@@ -447,13 +447,13 @@ pm: אחה"צ
 days: ימים
 hours: שעות
 minutes: דקות
-You are not authorized to edit this task.: אינך רשאי לערוך משימה זו.
-is in a different timezone than you are. Currently: הנו באיזור זמן שונה ממך. כרגע
+not authorized to edit task: אינך רשאי לערוך משימה זו.
+is in a different TZ: הנו באיזור זמן שונה ממך. כרגע
 hour ahead of you: שעה מוקדמת ממך
 hour behind you: שעה מאוחרת ממך
 hours ahead of you: שעות מוקדמות ממך
 hours behind you: שעות מאוחרות ממך
-Time entered here is based on your Timezone.: השעה כאן מבוססת על איזור הזמן שלך
+Time here is based on your TZ: השעה כאן מבוססת על איזור הזמן שלך
 Edit Entry: ערוך רשומה
 Add Entry: הוסף רשומה
 Details: פרטים
@@ -486,7 +486,7 @@ Start Date: תאריך התחלה
 Untimed event: ארוע לא לפי זמן
 Timed event: ארוע לפי זמן
 All day event: ארוע של יום שלם
-Timezone Offset: היסט איזור זמן
+TZ Offset: היסט איזור זמן
 time-help: קובע את שעת הארוע.<br> בחר "ארוע לפי זמן" (עבור ארוע שמזומן לשעה מסויימת באותו יום), "ארוע לא לפי זמן" (עבור ארוע שלא קשור לשעה (כמו חופשה)), או "ארוע של יום שלם" עבור ארוע שלוקח את כל היום (כמו להיות מחוץ למשרד).
 duration-help: קובע את משך הארוע (בשעות:דקות).<br><i>ניתן להשאיר שדה זה ריק.</i>
 end-time-help: קובע את שעת סיום הצפוי של הארוע.
@@ -547,20 +547,20 @@ End/Due: סיום/יעד
 Times: פעמים
 Every: כל
 Delete entry: מחק רשומה
-You are not authorized to edit this entry.: אינך רשאי לערוך רשומה זו
+not authorized to edit entry: אינך רשאי לערוך רשומה זו
 
 ########################################
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: פגישה חדשה נקבעה לך על ידי
 An appointment has been updated by: פגישה קיימת עודכנה עבורך על ידי
-The following conflicts with the suggested time: הרשום מטה מתנגש עם השעה המוצעת
+conflicts with suggested time: הרשום מטה מתנגש עם השעה המוצעת
 Please look on: נא להמשיך לצפות
 to accept or reject this appointment: כדי לקבל או לדחות פגישה זו
 to view this appointment: כדי לצפות בפגישה זו
 Scheduling Conflict: התנגשות זימונים
 Your suggested time of: השעה המוצעת שלך
-conflicts with the following existing calendar entries: מתנגשת עם רשומות לוח השנה הרשומות מטה.
+conflicts with existing entries: מתנגשת עם רשומות לוח השנה הרשומות מטה.
 
 ########################################
 # Page: edit_layer.php
@@ -577,8 +577,8 @@ Delete layer: מחק שכבה
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself.: אי אפשר ליצור שכבה עבור עצמך
-You can only create one layer for each user.: אפשר ליצור רק שכבה אחת לכל משתמש
+no layers for yourself: אי אפשר ליצור שכבה עבור עצמך
+only one layer per user: אפשר ליצור רק שכבה אחת לכל משתמש
 
 ########################################
 # Page: edit_nonusers.php
@@ -607,9 +607,9 @@ Required to View Remote Calendar: צריך כדי לצפות בלוח שנה מ�
 Error: שגיאה
 Import Results: תוצאות הייבוא
 Events successfully imported: הארועים הובוא בהצלחה
-Create a new layer to view this calendar.: צור שכבה חדשה כדי לצפות בלוח שנה זה.
+Create layer to view cal: צור שכבה חדשה כדי לצפות בלוח שנה זה.
 Errors: שגיאות
-There was an error parsing the import file or no events were returned.: ארעה שגיאה בקריאת קובץ הייבוא או שלא נמצאו ארועים כל שהם.
+error parsing import file: ארעה שגיאה בקריאת קובץ הייבוא או שלא נמצאו ארועים כל שהם.
 
 ########################################
 # Page: edit_report.php
@@ -655,7 +655,7 @@ Template variables: משתני התבנית
 Page template: תבנית הדף
 Day template: תבנית היום
 Event template: תבנית ארוע
-Are you sure you want to delete this report?: בטוח שהנך רוצש למחוק דו"ח זה?
+really delete report: בטוח שהנך רוצש למחוק דו"ח זה?
 
 ########################################
 # Page: edit_report_handler.php
@@ -677,7 +677,7 @@ E-mail address: כתובת דוא"ל
 Password: סיסמא
 again: שוב
 Disabled for demo: לא פעיל לצורך ההדגמה
-Are you sure you want to delete this user?: בטוח שהנך רוצה למחוק משתמש זה?
+really delete user: בטוח שהנך רוצה למחוק משתמש זה?
 Change Password: שנה סיסמא
 New Password: סיסמא חדשה
 Set Password: קבע סיסמא
@@ -686,9 +686,9 @@ Set Password: קבע סיסמא
 # Page: edit_user_handler.php
 #
 Deleting users not supported.: מחיקת משתמשים אינה נתמכת
-The passwords were not identical.: הסיסמות לא זהות
-You have not entered a password.: לא הקלדת סיסמא
-Username cannot be blank.: שם משתמש לא יכול להיות ריק
+passwords not identical: הסיסמות לא זהות
+must enter a password: לא הקלדת סיסמא
+no blank username: שם משתמש לא יכול להיות ריק
 
 ########################################
 # Page: export.php
@@ -704,7 +704,7 @@ Modified since: שהשתנו מאז
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect.: תצורת ייצוא לא מוגדרת או שגויה
+incorrect export format: תצורת ייצוא לא מוגדרת או שגויה
 
 ########################################
 # Page: freebusy.php
@@ -738,7 +738,7 @@ Auto-refresh calendars: רענון לוחות שנה באופן אוטומטי
 auto-refresh-help: כאשר מאופשר, דפי תצוגה היומית, השבועית, החודשית ורישימת הלא מאושרים יתרעננו בצורה אוטומטית לפרקים
 Auto-refresh time: זמן רענון אוטומטי
 auto-refresh-time-help: באם רענון אוטומטי מאופשר, קובע את פרק הזמן בין רענונים.
-Display days with events in bold in year view: הצג ימים עם ארועים מודגשים בתצוגה שנתית
+bold events in year view: הצג ימים עם ארועים מודגשים בתצוגה שנתית
 Display weekends in week view: הצג סופי שבוע בתצוגה שבועית
 Time interval: אורך בלוק השעות
 time-interval-help: קובע את אורך בלוק השעות בתצוגה שבועית ובתצוגה היומית.
@@ -766,16 +766,15 @@ repeat-day-help: קובע באיזה מימי השבוע על הארוע להו�
 # Page: help_import.php
 #
 Import: ייבוא
-This form will allow you to import entries from the Palm Desktop Datebook.: טופס זה יאפשר לך לייבא רשומות מפינקס התאריכים של שולחן העבודה של Palm
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: הוא אמור להמצא במחיצה ב-Palm שלך ב- <tt>datebook/datebook.dat</tt> בתת ספריה על שם שם המשתמש שלך
-The following entries will not be imported: הרשומות הבאות לא ייובוא
-Entries older than the current date: רשומות ישנות מהתאריך של היום
-Entries created in the Palm Desktop...: רשומות בשולחן העבודה של ה-Palm שלא סונכרנו
+to import entries from Palm: טופס זה יאפשר לך לייבא רשומות מפינקס התאריכים של שולחן העבודה של Palm הוא אמור להמצא במחיצה ב-Palm שלך ב- <tt>datebook/datebook.dat</tt> בתת ספריה על שם שם המשתמש שלך
+these entries not imported: הרשומות הבאות לא ייובוא
+Entries older than current date: רשומות ישנות מהתאריך של היום
+Entries created in Palm: רשומות בשולחן העבודה של ה-Palm שלא סונכרנו
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: כל דבר שמיובא מה-Palm יישכתב מחדש בפעולת הייבוא הבא (אלא אם עבר תאריך הארוע).
 Therefore, updates should be made in the Palm Desktop.: לכן יש לעדכן אותם בשולחן העבודה של ה-Palm.
-This form will import vCalendar (.vcs) 1.0 events.: טופס זה יאפשר ייבוא של ארועים של vCalendar (.vcs) 1.0
-The following formats have been tested: נבדקו התצורות הבאות
-This form will import iCalendar (.ics) events.: טופס זה מאפשר ייבוא של ארועים של iCalendar (.ics)
+This will import (.vcs): טופס זה יאפשר ייבוא של ארועים של vCalendar (.vcs) 1.0
+These formats have been tested: נבדקו התצורות הבאות
+This will import (.ics): טופס זה מאפשר ייבוא של ארועים של iCalendar (.ics)
 Enabling: אפשור
 Overwrite Prior Import: דרוס ייבוא קודם
 
@@ -787,15 +786,15 @@ Help Index: אינדקס העזרה
 ########################################
 # Page: help_layers.php
 #
-Layers are useful for displaying...: שכבות משמשות לתצוגת ארועים של משתמשים אחרים בלוח השנה שלך. ניתן לציין את המשתמש ואת צבע הצגת הארועים שלו.
+Layers are useful to display: שכבות משמשות לתצוגת ארועים של משתמשים אחרים בלוח השנה שלך. ניתן לציין את המשתמש ואת צבע הצגת הארועים שלו.
 Add/Edit/Delete: הוסף/ערוך/מחק
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: הקלקה על קישור עריכת שכבות באזור הנהול בתחתית הדף תאפשר הוספה/עריכה/מחיקה של שכבות.
-The text color of the new layer that will be displayed in your calendar.: צבע הטקסט של השכבה החדשה שתוצג בלוח השנה שלך.
+Edit Layers link in admin: הקלקה על קישור עריכת שכבות באזור הנהול בתחתית הדף תאפשר הוספה/עריכה/מחיקה של שכבות.
+text color of new layer: צבע הטקסט של השכבה החדשה שתוצג בלוח השנה שלך.
 Disabling: ביטול
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: לחץ על קישור ביטול שכבות באיזור הניהול בתחתית הדף כדי לכבות שכבות.
-If checked, events that are duplicates of your events will be shown.: אם נבחר, יוצגו הארועים שהנם כפולים של ארועים בלוח השנה שלך.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: לחץ על קישור אפשר שכבות באיזור הניהול בתחתית הדף כדי להדליק שכבות.
-Specifies the user that you would like to see displayed in your calendar.: קובע את המשתמש שהנך רוצה להציג בלוח השנה שלך.
+Disable Layers link in admin: לחץ על קישור ביטול שכבות באיזור הניהול בתחתית הדף כדי לכבות שכבות.
+show duplicate events: אם נבחר, יוצגו הארועים שהנם כפולים של ארועים בלוח השנה שלך.
+Enable Layers link in admin: לחץ על קישור אפשר שכבות באיזור הניהול בתחתית הדף כדי להדליק שכבות.
+user to display on your cal: קובע את המשתמש שהנך רוצה להציג בלוח השנה שלך.
 
 ########################################
 # Page: help_pref.php
@@ -821,10 +820,10 @@ rss-feed-url-help: כתובת URL לגישה לזרם RSS
 ########################################
 # Page: help_uac.php
 #
-Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: בקרת גישת משתמשים מאפשרת בקרה טובה יותר על גישת משתמשים וניהול הרשאות מאשר היה אפשר בעבר. גם משתמשים יכולים לנהל גישת משתמשים והרשאות באם המנהל אפשר זאת.
-If disabled, this user cannot send you emails.: אם לא מאופשר, משתמש זה לא יוכל לשלוח לך דוא"ל.
-If disabled, this user cannot see you in the participants list.: אם לא מאופשר, משתמש זה לא יוכל לראות אותך ברשימת המשתתפים.
-If enabled, this user cannot view the details of any of your entries.: אם מאופשר, משתמש זה לא יוכל לצפות בפרטים של הרשומות שלך.
+fine control of UAC and permissions: בקרת גישת משתמשים מאפשרת בקרה טובה יותר על גישת משתמשים וניהול הרשאות מאשר היה אפשר בעבר. גם משתמשים יכולים לנהל גישת משתמשים והרשאות באם המנהל אפשר זאת.
+If disabled no email from user: אם לא מאופשר, משתמש זה לא יוכל לשלוח לך דוא"ל.
+If disabled user cant see you: אם לא מאופשר, משתמש זה לא יוכל לראות אותך ברשימת המשתתפים.
+If enabled user cant see details: אם מאופשר, משתמש זה לא יוכל לצפות בפרטים של הרשומות שלך.
 
 ########################################
 # Page: icalclient.php
@@ -844,21 +843,21 @@ Current Icons on Server: הצלמיות הנוכחיות בשרת
 Disabled: לא מופעל
 Import format: פורמאט ייבוא
 Exclude private records: ללא רשומות פרטיות
-Repeated items are imported separately. Prior imports are not overwritten.: פרטים עם חזרה מיובאים בנפרד. ייבואים קודמים אינם נדרסים.
+Repeat items imported separately: פרטים עם חזרה מיובאים בנפרד. ייבואים קודמים אינם נדרסים.
 
 ########################################
 # Page: import_handler.php
 #
-Events from prior import marked as deleted: ארועים מייבוא קודם סומנו כמחוקים
+prior imports marked deleted: ארועים מייבוא קודם סומנו כמחוקים
 Conflicting events: ארועים מתנגשים
-The import file contained no data.: קובץ הייבוא לא מכיל מידע.
+import file had no data: קובץ הייבוא לא מכיל מידע.
 
 ########################################
 # Page: layers.php
 #
 Layer: שכבה
 Edit layer: ערוך שכבה
-Are you sure you want to delete this layer?: בטוח שהנך רוצה למחוק שכבה זו?
+really delete layer: בטוח שהנך רוצה למחוק שכבה זו?
 Disable Layers: בטל שכבות
 Add layer: הוסף שכבה
 
@@ -884,8 +883,8 @@ Reject Selected entries?: לדחות רשומות מסומנות?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: עליך להקליד שם משתמש וסיסמא
-Save login via cookies so I dont have to login next time.: שמור שם משתמש בעזרת עוגיות כדי שלא אצטרך להקליד אותו בפעם הבאה
+must enter login/password: עליך להקליד שם משתמש וסיסמא
+Save login via cookies: שמור שם משתמש בעזרת עוגיות כדי שלא אצטרך להקליד אותו בפעם הבאה
 Login: כניסה
 Access public calendar: גישה ללוח שנה ציבורית
 calendar: לוח השנה
@@ -896,14 +895,14 @@ cookies-note: <b>הערה:</b> יישום זה מחייב שימוש בעוגי�
 #
 Illegal characters in login: ישנם תווים לא חוקיים בשם המשתמש
 Invalid login: כניסה לא חוקית
-You have been logged out.: יצאת מהמערכת
-Not yet registered? Register here!: עוד לא רשמת? הרשם כאן!
+You logged out: יצאת מהמערכת
+Not registered: עוד לא רשמת? הרשם כאן!
 
 ########################################
 # Page: minical.php
 #
 No such nonuser calendar: אין לוח שנה ללא משתמש בשם זה
-This Calendar is not Public.: לוח שנה זה אינו ציבורי
+not a public calendar: לוח שנה זה אינו ציבורי
 
 ########################################
 # Page: nonusers.php
@@ -915,7 +914,7 @@ Add New NonUser Calendar: הוסף לוח שנה ללא משתמש
 #
 Save Preferences: שמור עדיפויות
 Public Access calendar: לוח שנה לגישה ציבורית
-Modify Non User Calendar Preferences: שנה העדיפויות עבור לוחות שנה ללא משתמש
+Modify NUC Preferences: שנה העדיפויות עבור לוחות שנה ללא משתמש
 Return to My Preferences: חזור להעדיפויות שלי
 Custom Scripts: סקריפטים המותאמים אישית
 Timezone Selection: בחירת איזור זמן
@@ -924,7 +923,7 @@ Entry interval: פרק הזמן של ארוע
 hour: שעה
 minute: דקה
 theme-reload-help: בגלל המטמון של CSS, יתכן שצריך לרענן את הדף
-Page may need to be reloaded for new Theme to take effect: יתכן שצריך לרענן את הדף כדי שערכת הצבעים החדשה תתחיל לפעול.
+reload page to show Theme: יתכן שצריך לרענן את הדף כדי שערכת הצבעים החדשה תתחיל לפעול.
 display_byproxy-help: בטל את היוצר האמיתי בדף התצוגת רשומות
 Display if created by Assistant: הצג אם נוצר על ידי עוזר
 allow-view-subscriptions-help: מאפשר הגבלת הגישה אל רשומות פרטיות וסודיות בגישה מרחוק
@@ -944,29 +943,29 @@ Preview delete: תצוגה מקדימה של המחיקה
 ########################################
 # Page: register.php
 #
-Email address cannot be blank.: כתובת דוא"ל לא יכולה להיות ריקה
-A new WebCalendar account has been set up for you.: חשבון לוח שנה חדש הוגדר עבורך
+no blank email: כתובת דוא"ל לא יכולה להיות ריקה
+you have a WebCal account: חשבון לוח שנה חדש הוגדר עבורך
 Your username is: שם המשתמש שלך הינו
 Your password is: הסיסמא שלך הוא
 Please visit: נא לבקר
 to log in and start using your account: כדי להכנס ולהתחיל להשתמש בחשבונך
-You may change your password after logging in the first time.: ניתן לשנות את הסיסמא אחרי הכניסה הראשונה לחשבונך.
-If you received this email in error: אם קיבלת את המסר הזה בטעות ולא נרשמת לקבל חשבון לוח שנה, אתה יכול להתעלם מדוא"ל זה או לענות לו עם הערה קצרה.
+change pwd after 1st login: ניתן לשנות את הסיסמא אחרי הכניסה הראשונה לחשבונך.
+If email received in error: אם קיבלת את המסר הזה בטעות ולא נרשמת לקבל חשבון לוח שנה, אתה יכול להתעלם מדוא"ל זה או לענות לו עם הערה קצרה.
 Administrator: מנהל
 Welcome: ברוך בואך
 Registration: רישום
 Welcome to WebCalendar: ברוך בואך אל לוח השנה
-Your email should arrive shortly.: הדוא"ל צריך להגיע אליך מיד.
+should get email soon: הדוא"ל צריך להגיע אליך מיד.
 Return to Login screen: חזרה למסך הכניסה
 Password (again): סיסמא (שוב)
-Your account information will be emailed to you.: מידע אודות החשבון שלך יישלח אליך בדוא"ל
+you get info by email: מידע אודות החשבון שלך יישלח אליך בדוא"ל
 Submit: הגש
 
 ########################################
 # Page: reject_entry.php
 #
 Continue: המשך
-(Your comments will be emailed to the other participants.): )הערותיך היכללו בדוא"ל למשתתפים האחרים)
+comments emailed to others: )הערותיך היכללו בדוא"ל למשתתפים האחרים)
 An appointment has been rejected by: פגישה נדחתה (סירוב) על ידי
 
 ########################################
@@ -977,7 +976,7 @@ Add New Remote Calendar: הוסף לוח מרוחק חדש
 ########################################
 # Page: report.php
 #
-This event is confidential.: ארוע זה הינו פרטי
+confidential event: ארוע זה הינו פרטי
 cont.: המשך
 Approved: מאושר
 Deleted: נמחק
@@ -999,7 +998,7 @@ Keywords: מילות מפתח
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: עליך להקליד מלת מפתח אחת לפחות
+must enter search keywords: עליך להקליד מלת מפתח אחת לפחות
 Search Results: תוצאות החיפוש
 match found: נמצאה התאמה
 matches found: נמצאו התאמות
@@ -1018,9 +1017,9 @@ View Another Users Calendar: צפה בלוח שנה של משתמש אחר
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: לא הוספת סיווגים כלשהם
+no categories added: לא הוספת סיווגים כלשהם
 Set Category: קבע סיווג
-Global Categories cannot be changed.: לא ניתן לשנות סיווגים גלובאליים
+cant change Global Cats: לא ניתן לשנות סיווגים גלובאליים
 
 ########################################
 # Page: upcoming.php
@@ -1069,7 +1068,7 @@ You must specify a view name: עליך לציין שם לתצוגה
 ########################################
 # Page: view_d.php
 #
-No users for this view.: אין משתמשים בתצוגה זו
+No users for view: אין משתמשים בתצוגה זו
 
 ########################################
 # Page: view_entry.php
@@ -1091,16 +1090,16 @@ Approve/Confirm entry: אשר רשומה
 Reject entry: דחה רשומה
 Set category: קבע סיווג
 Copy entry: העתק רשומה
-This will delete this entry for all users.: זה ימחוק את הרשומה עבור כל המשתמשים.
+will delete entry for all: זה ימחוק את הרשומה עבור כל המשתמשים.
 Edit entry: ערוך רשומה
-Edit repeating entry for all dates: ערוך רשומה חוזרת עבור כל התאריכים
-Delete repeating event for all dates: מחק רשומה חוזרת עבור כל התאריכים
+Edit repeating entry all dates: ערוך רשומה חוזרת עבור כל התאריכים
+Dele repeating event all dates: מחק רשומה חוזרת עבור כל התאריכים
 Edit entry for this date: ערוך רשומה עבור תאריך זה בלבד
 Delete entry only for this date: מחק רשומה עבור תאריך זה בלבד
-This will delete the entry from your calendar.: זה ימחוק את הרשומה מלוח השנה שלך.
+will delete entry from your cal: זה ימחוק את הרשומה מלוח השנה שלך.
 from your boss calendar: מלוח השנה של המנהל שלך
-Do you want to add this entry to your calendar?: האם ברצונך להוסיף את הרשומה ללוח השנה שלך?
-This will add the entry to your calendar.: זה יוסיף את הרשומה ללוח השנה שלך.
+want to add entry to your cal: האם ברצונך להוסיף את הרשומה ללוח השנה שלך?
+will add entry to your cal: זה יוסיף את הרשומה ללוח השנה שלך.
 Email all participants: שלח דוא"ל לכל המשתתפים
 Hide activity log: הסתר יומן פעילויות
 Show activity log: הצג יומן פעילויות
@@ -1110,7 +1109,7 @@ Palm Pilot: =
 ########################################
 # Page: view_m.php
 #
-Double-click on empty cell to add new entry: הקלק הקלקה כפולה בתא ריק כדי להוסיף רשומה
+Double-click to add entry: הקלק הקלקה כפולה בתא ריק כדי להוסיף רשומה
 
 ########################################
 # Page: week_details.php
@@ -1148,7 +1147,7 @@ Fatal Error: שגיאה חמורה
 #
 This event is private: ארוע זה הינו פרטי
 Conf.: סודי
-exceeds limit of XXX events per day: חורג מהמגבלה של XXX ארועים ליום
+exceeds XXX events/day limit: חורג מהמגבלה של XXX ארועים ליום
 All Attendees: כל המשתתפים
 Busy: תפוס
 Tentative: לא סופי
@@ -1316,31 +1315,31 @@ recipients_failed: שגיאת SNMT~ הנמענים הבאים נכשלו~
 Server URL is required.: URL של השרת חובה
 Server URL must end with /.: URL של השרת חייב להסתיים ב-'/'
 Invalid work hours.: שעות עבודה לא חוקיות
-Invalid color for document background.: צבע רקע מסמך לא חוקי
-Invalid color for document title.: צבע כותרת מסמך לא חוקי
-Invalid color for table cell background.: צבע רקע התא של טבלה לא חוקי
-Invalid color for table grid.: צבע רשת הטבלה לא חוקי
-Invalid color for table header background.: צבע רקע הכותרת של טבלה לא חוקי
-Invalid color for table text background.: צבע רקע הטקסט של טבלה לט חוקי
-Invalid color for event popup background.: צבע רקע חלונית ארוע קופצת לא חוקי
-Invalid color for event popup text.: צבע טקסט של חלונית ארוע קופצת לא חוקי
-Invalid color for table cell background for today.: צבע רקע טבלה של היום לא חוקי
-Color format should be RRGGBB.: תצורת הצבע צריכה להיות '#RRGGBB'
+Invalid doc BG color: צבע רקע מסמך לא חוקי
+Invalid doc title color: צבע כותרת מסמך לא חוקי
+Invalid table cell BG color: צבע רקע התא של טבלה לא חוקי
+Invalid table grid color: צבע רשת הטבלה לא חוקי
+Invalid table header BG color: צבע רקע הכותרת של טבלה לא חוקי
+Invalid table cell BG color: צבע רקע הטקסט של טבלה לט חוקי
+Invalid popup BG color: צבע רקע חלונית ארוע קופצת לא חוקי
+Invalid popup text color: צבע טקסט של חלונית ארוע קופצת לא חוקי
+Invalid table cell today BG: צבע רקע טבלה של היום לא חוקי
+Color format should be RGB: תצורת הצבע צריכה להיות '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php
 #
-Change the date and time of this entry?: שנה את השעה והתאריך של רשומה זו?
+Change entry date/time: שנה את השעה והתאריך של רשומה זו?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: לא הכנסת תאור קצר
-time prior to work hours...: ציינת שעה לפני תחילת יום העבודה שלך. האם זה נכון?
+must enter Brief Description: לא הכנסת תאור קצר
+time before work hours: ציינת שעה לפני תחילת יום העבודה שלך. האם זה נכון?
 Invalid Event Date: תאריך ארוע לא חוקי
 Please add a participant: נא להוסיף משתתף
 Invalid Date: תאריך לא חוקי
-You have not entered a valid time of day: לא הכנסת שעה חוקית
+must enter valid time: לא הכנסת שעה חוקית
 
 ########################################
 # Page: includes/js/edit_layer.php
@@ -1350,18 +1349,18 @@ Invalid color: צבע לא חוקי
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID cannot be blank.: זיהוי לוח השנה לא יכול ליהות ריק
-First and last names cannot both be blank.: אין אפשרות שגם שם הפרטי וגם שם המשפחה יהיו ריקים
+no blank cal ID: זיהוי לוח השנה לא יכול ליהות ריק
+both names cannot be blank: אין אפשרות שגם שם הפרטי וגם שם המשפחה יהיו ריקים
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
-URL cannot be blank.: כתובת URL לא יכול להיות ריקה
+no blank URLs: כתובת URL לא יכול להיות ריקה
 
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: סוג הקובץ אינו תואם לפורמאט הייבוא
+Import Format type mismatch: סוג הקובץ אינו תואם לפורמאט הייבוא
 
 ########################################
 # Page: includes/menu/index.php
@@ -1387,33 +1386,33 @@ Create New: צור חדש
 Database Cache Directory: מחיצת מטמון של בסיס הנתונים
 Database Name: שם בסיס הנתונים
 Failure Reason: סיבת הכשלון
-Timezone Conversion Successful: המרת איזור זמן הצליחה
+TZ Conversion Successful: המרת איזור זמן הצליחה
 WebCalendar Installation Wizard: אשף ההתקנה של לוח השנה
 Step: צעד
-You must manually create database: עליך ליצור את בסיס הנתונים ידנית
+must manually create DB: עליך ליצור את בסיס הנתונים ידנית
 Successful Login: כניסה מוצלחת
 Invalid Login: כניסה לא מוצלחת
 required only if Remote Calendars are used: דרוש רק אם משתמשים בלוחות שנה מרוחקים.
 required only if Safe Mode is On: דרוש רק אם עובדים במצב בטוח.
 needed for Gradient Image Backgrounds: דרוש לתמונות רקע עם צבעים גרדיאנטים
-Passwords do not match: הסיסמאות לא תואמות
-Unable to write password to settings.php file: לא הצלחתי לכתוב את הסיסמא לקובץ settings.php
+Passwords do not match!: הסיסמאות לא תואמות
+cant write pwd to settings.php: לא הצלחתי לכתוב את הסיסמא לקובץ settings.php
 Password has been set: הסיסמא נקבעה
 Connection Successful: החיבור הצליח
 Please go to next page to continue installation: נא להתקדם לדף הבא כדי להמשיך בהתקנה
-Correct your entries or click the Create New...: תקן את התשובות שלך או הלקל על כפתור <b>צור חדש</b> כדי להמשיך את ההתקנה
-Correct your entries and try again.: תקן את התשובות שלך ונסה שוב
+Correct entries or click Create: תקן את התשובות שלך או הלקל על כפתור <b>צור חדש</b> כדי להמשיך את ההתקנה
+Correct entries and try again: תקן את התשובות שלך ונסה שוב
 Error Converting Timezone: שגיאה בהמרת איזור הזמן
 Error Unable to write to file: שגיאה, לא הצלחתי לכתוב לקובץ
-Please change the file permissions of this file.: נא לשנות את ההרשאות של הקובץ הזה
-Please change includes dir permission: נא לשנות את ההרשאות של מחיצת includes כדי לאפשר כתיבה על ידי משתמשים אחרים
+change the file permissions: נא לשנות את ההרשאות של הקובץ הזה
+change includes dir permission: נא לשנות את ההרשאות של מחיצת includes כדי לאפשר כתיבה על ידי משתמשים אחרים
 Your settings have been saved.: העדיפויות שלך נשמרו
-Error you must specify a Single-User Login: שגיאה, עליך לציין \\nכניסת משתמש יחיד
+specify Single-User login: שגיאה, עליך לציין \\nכניסת משתמש יחיד
 Full Path (no backslashes): מסלול מלא (ללא קו נתוי הפוך)
-The password contains illegal characters.: הסיסמא מכילה תווים לא חוקיים.
-This installation wizard will guide you...: אשף ההתקנה יוביל אותך דרך ההתקנה הבסיסית של לוח השנה. עבור עזרה ואיתור תקלות ראה
+illegal chars in password: הסיסמא מכילה תווים לא חוקיים.
+wizard guide: אשף ההתקנה יוביל אותך דרך ההתקנה הבסיסית של לוח השנה. עבור עזרה ואיתור תקלות ראה
 PHP Version Check: בדיקת גרסת PHP
-Check to see if PHP 4.1.0 or greater is installed.: בודק לוודא שמותקן PHP בגרסה 4.1.0 או יותר
+is PHP >= 4.2.0 installed: בודק לוודא שמותקן PHP בגרסה 4.2.0 או יותר
 PHP version: גרסת PHP
 Detailed PHP Info: מידע PHP מפורט
 settings.php Status: מצב Settings.php
@@ -1421,17 +1420,17 @@ Session Check: בדיקת סשן
 To test the proper operation of sessions, reload this page: כדי לבדוק את הפעולה התקינה של הסשן, טען דף זה מחדש
 You should see the session counter increment each time: אתה אמור לראות את מונה הסשן מתקדם בכל פעם
 SESSION COUNTER: מונה הסשן
-The file permissions of settings.php are set...: הרשאות הקובץ של <b>settings.php</b> נקבעו כך שלמתקין אין הרשאה לשנותו. נא לשנות את הרשאות הקובץ של הקובץ הבא כדי להמשיך.
-The file permissions of the includes directory are set...: הרשאות הקובץ של מחיצת <b>includes</b> כך שלמתקין אין הרשאה ליצור בה קובץ חדש. נא לשנות את ההרשאות של המחיצה הבאה כדי להמשיך.
-Your settings.php file appears to be valid.: קובץ <b>settings.php</b> שלך נראה תקין
+settings.php file permissions: הרשאות הקובץ של <b>settings.php</b> נקבעו כך שלמתקין אין הרשאה לשנותו. נא לשנות את הרשאות הקובץ של הקובץ הבא כדי להמשיך.
+includes dir permissions: הרשאות הקובץ של מחיצת <b>includes</b> כך שלמתקין אין הרשאה ליצור בה קובץ חדש. נא לשנות את ההרשאות של המחיצה הבאה כדי להמשיך.
+settings.php appears valid: קובץ <b>settings.php</b> שלך נראה תקין
 Configuration Wizard Password: סיסמת אשף ההתקנה
 Create Settings File Password: צור סיסמא בקובץ ההגדרות
 db setup directions...: בחלק זה תגדיר ותבדוק חיבור לשרת בסיס הנתונים שלך. החשבון המסופק צריך להיות בעל הרשאות מלאות ליצור את בסיס נתונים, טבלאות ומשתמשים. אם דבר זה לא אפשרי, או שיש לך גישה מוגבלת לבסיס הנתונים שלך, תאלץ להגדיר את בסיס הנתונים שלך ידנית.
 Database Status: מצב בסיס הנתונים
-Supported databases for your PHP installation: בסיסי נתונים הנתמכים עבור תצורת ה-PHP שלך
-Your current database settings are able to access the database.: ניתן לגשת לבסיס הנתונים בעזרת ההגדרות הנוכחיות שלך
+your PHP supported DBs: בסיסי נתונים הנתמכים עבור תצורת ה-PHP שלך
+current settings can access DB: ניתן לגשת לבסיס הנתונים בעזרת ההגדרות הנוכחיות שלך
 Please Test Settings: נא לבדוק את ההגדרות
-Your current database settings are not able...: ההגדרות הנוכחיות שלך <b>אינן</b> מאפשרות גישה אל בסיס הנתונים שלך או שעדיין לא נבדקו
+current settings cannot access DB: ההגדרות הנוכחיות שלך <b>אינן</b> מאפשרות גישה אל בסיס הנתונים שלך או שעדיין לא נבדקו
 Database Settings: הגדרות בסיס הנתונים
 Database Type: סוג בסיס הנתונים
 Server: שרת
@@ -1446,16 +1445,16 @@ Click Update Database to complete the upgrade: הקלק על <b>עדכן בסי�
 In this section we will perform the required database changes to bring your database up to the required level: בחלק זה נבצע את השינויים המתבקשים לבסיס הנתונים כדי להביא את בסיס הנתונים שלך אל הרמה הדרושה
 If you are using a fully supported database, this step will be performed automatically for you: אם הנך משתמש בבסיס נתונים עם תמיכה מלאה, צעד זה יתבצע באופן אוטומטי
 If not, the required SQL can be displayed and you should be able: אם לא, יוצג ה-SQL הדרוש, ואתה אמור להיות מסוגללחתוך &amp; הדבק אותו אל תוך חלון השאילתות של בסיס הנתונים שלך
-No database actions are required.: לא נדרשות כל פעולות בבסיס הנתונים
-The following database actions are required: פעולות בסיס הנתונים הבאות נדרשות
+no DB actions required: לא נדרשות כל פעולות בבסיס הנתונים
+These DB actions are required: פעולות בסיס הנתונים הבאות נדרשות
 ODBC Underlying Database: בסיס נתונים על בסיס ODBC
-Automatic installation not supported: עוד לא יישמנו התקנה אוטומטית עבור סוג בסיס הנתונים שלך. עליך ליצור את הטבלאות הדרושות ידינית בעזרת ה-SQL המסופק. נא הקלק על <b>הצג SQL</b> כדי להמשיך. חתוך &amp; הדבק אותו אל תוך חלון ה-SQL של בסיס הנתונים שלך.
-This may take several minutes to complete: זה יכול לקחת מספר דקות כדי לסיים
+Auto install not supported: עוד לא יישמנו התקנה אוטומטית עבור סוג בסיס הנתונים שלך. עליך ליצור את הטבלאות הדרושות ידינית בעזרת ה-SQL המסופק. נא הקלק על <b>הצג SQL</b> כדי להמשיך. חתוך &amp; הדבק אותו אל תוך חלון ה-SQL של בסיס הנתונים שלך.
+may take minutes: זה יכול לקחת מספר דקות כדי לסיים
 Install Database: התקן בסיס נתונים
 Update Database: עדכן בסיס נתונים
 Display Required SQL: הצג SQL נדרש
-Return to previous page after processing SQL.: לאחר טיפול ידני ב-SQL, עליך לחזור לדף הקודם כדי לבדוק את בסיס הנתונים שלך כדי שהסקריפט יגלה את השינויים.
-This is the final step in setting up your WebCalendar Installation.: זהו הצעד האחרון בהגדרת התקנת לוח השנה שלך
+go back after processing SQL: לאחר טיפול ידני ב-SQL, עליך לחזור לדף הקודם כדי לבדוק את בסיס הנתונים שלך כדי שהסקריפט יגלה את השינויים.
+the final step in WebCal Install: זהו הצעד האחרון בהגדרת התקנת לוח השנה שלך
 Timezone Conversion: המרת איזור זמן
 It appears that you have: כנראה ש-
 NOT: לא
@@ -1472,7 +1471,7 @@ User authentication is being handled by your web server.: שרת הווב שלך
 You should select Web Server from the list of User Authentication choices below.: עליך לבחור ב'שרת ווב' מרשימת בחירות ,אימות משתמשים' בהמשך
 Create Default Admin Account: צור חשבון מנהל ברירת מחדל
 User Authentication: אימות משתמשים
-Web-based via WebCalendar (default): מבוסס ווב באמצעות לוח השנה (ברירת המחדל)
+Web-based via WebCal default: מבוסס ווב באמצעות לוח השנה (ברירת המחדל)
 None (Single-User): ללא (משתמש יחיד)
 Read-Only: לקריאה בלבד
 Environment: סביבה
@@ -1485,7 +1484,7 @@ Launch WebCalendar: הפעל את לוח השנה
 # Page: install/install_functions.php
 #
 Perl script required: הגירסה הקודמת של לוח השנה שלך מחייבת הרצת סקריפט של PERL כדי להמיר את המידע שלך.נא להריץ את /tools/upgrade_to_0.9.7.pl ואחרי זה חזור לדף הזה.
-previous version requires updating several tables: הגירסה הקודמת של לוח השנה שלך מחייבת עדכון מספר טבלאות בבסיס הנתונים שלך.
+version needs tables updated: הגירסה הקודמת של לוח השנה שלך מחייבת עדכון מספר טבלאות בבסיס הנתונים שלך.
 
 ########################################
 # Page: tools/reload_remotes.php

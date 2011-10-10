@@ -60,7 +60,7 @@ echo display_admin_link() . '
    . '</a></span>' : '' ) . ( $doUsers && $doNUCS ? '
       <span class="'.$taborder[$i++].'" id="tab_nonusers"><a href="#tabnonusers" '
    . 'onclick="return showTab( \'nonusers\' )">'
-   . translate ( 'NonUser Calendars' ) . '</a></span>' : '' )
+   . translate ( 'NUCs' ) . '</a></span>' : '' )
  . ( $doRemotes ? '
       <span class="'.$taborder[$i++].'" id="tab_remotes"><a href="#tabremotes" '
    . 'onclick="return showTab( \'remotes\' )">'

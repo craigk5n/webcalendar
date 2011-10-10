@@ -107,7 +107,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   if ( count ( $participants ) == 0 && ! $num_ext_participants && $WS_DEBUG ) {
     $out .= '
 <!-- ' . str_replace ( 'XXX', $id,
-      translate ( 'No participants found for event id XXX.' ) ) . ' -->';
+      translate ( 'No party for XXX' ) ) . ' -->';
     return;
   }
 
@@ -119,7 +119,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   if ( ! $res ) {
     $out .= '
 ' . str_replace ( 'XXX', $id,
-      translate ( 'Db error Could not find event id XXX.' ) );
+      translate ( 'Db error event XXX not found' ) );
     return;
   }
 

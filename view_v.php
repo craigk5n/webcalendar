@@ -70,7 +70,7 @@ $viewusercnt = count ( $viewusers );
 if ( $viewusercnt == 0 )
   // This could happen if user_sees_only_his_groups = Y and
   // this user is not a member of any group assigned to this view.
-  $error = translate( 'No users for this view.' );
+  $error = $noVuUsers;
 
 if ( ! empty( $error ) ) {
   echo print_error( $error ) . print_trailer();
@@ -93,7 +93,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
   $tdw = 12; // Column width percent.
   echo '
     <table class="main" summary=""' . ( $can_add ? 'title="' .
-      translate( 'Double-click on empty cell to add new entry' ) . '">' : '>' ) . '
+      $dblClickAdd . '"' : '' ) . '>
       <tr>
         <th class="empty">&nbsp;</th>';
 

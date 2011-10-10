@@ -56,7 +56,7 @@ echo '
 // Display permission error if found above.
 if ( $permError && $is_admin ) {
   print_error_box (
-    translate('The permissions for the icons directory are set to read-only') );
+    translate('icons dir is read-only') );
 }
 
 $add = getGetValue ( 'add' );

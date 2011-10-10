@@ -1,7 +1,7 @@
 <?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-$errStr = translate ( 'Error', true ) . ' ';
+$errStr = translate ( 'Error_', true );
 
 ?>
 var
@@ -13,7 +13,7 @@ function valid_form ( form ) {
 
   if ( ! name ) {
     alert ( "<?php echo $errStr
- . translate ( 'Username cannot be blank.', true )?>" );
+ . translate ( 'no blank username', true )?>" );
     return false;
   }
   check_name();
@@ -29,12 +29,12 @@ function valid_form2 ( form ) {
 
   if ( ! pass1 || ! pass2 ) {
     alert ( "<?php echo $errStr
- . translate ( 'You have not entered a password.', true )?>" );
+ . translate ( 'must enter a password', true )?>" );
     return false;
   }
   if ( pass1 != pass2 ) {
     alert ( "<?php echo $errStr
- . translate ( 'The passwords were not identical.', true )?>" );
+ . translate ( 'passwords not identical', true )?>" );
     return false;
   }
 

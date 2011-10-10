@@ -30,25 +30,20 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-$areYouSureStr   = translate( 'Are you sure you want to delete this layer?' );
-$colorStr        = translate( 'Color' );
+$areYouSureStr   = translate( 'really delete layer' );
 $deleteLayerStr  = translate( 'Delete layer' );
 $deleteStr       = translate( 'Delete' );
 $disabledStr     = translate( 'Disabled' );
-$duplicatesStr   = translate( 'Duplicates' );
 $editLayerStr    = translate( 'Edit layer' );
 $editStr         = translate( 'Edit' );
 $enableLayersStr = translate( 'Enable layers' );
 $layerStr        = translate( 'Layer' );
 $LAYERS_DISABLED = translate( 'Layers are currently disabled.' );
 $LAYERS_ENABLED  = translate( 'Layers are currently enabled.' );
-$noStr           = translate( 'No' );
-$sourceStr       = translate( 'Source' );
-$yesStr          = translate( 'Yes' );
 
 $LOADING = '<center><img src="images/loading_animation.gif" alt=""></center>';
 $public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
-  translate( 'Click to modify layers settings for XXX' ) );
+  translate( 'modify XXX layers settings' ) );
 
 ob_start();
 
@@ -166,15 +161,15 @@ if ( $single_user == 'N' ) {
     <input type="hidden" name="editLayerId" id="editLayerId" value="">
     <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0">
     <table border="0">
-      <tr><td class="tooltip" title="<?php etranslate('Specifies the user that you would like to see displayed in your calendar.');?>"><label><?php echo $sourceStr;?>:</label></td>
+      <tr><td class="tooltip" title="<?php etranslate('user to display on your cal');?>"><label><?php echo translate( 'Source_' );?></label></td>
         <td><select id="editLayerSource" name="editLayerSource">
             <?php echo $users;?>
         </td></tr>
-      <tr><td class="tooltip" title="<?php etranslate('The text color of the new layer that will be displayed in your calendar.');?>"><label><?php echo $colorStr;?>:</label></td>
+      <tr><td class="tooltip" title="<?php etranslate('text color of new layer');?>"><label><?php echo translate( 'Color_' );?></label></td>
         <td><?php echo print_color_input_html ( 'editLayerColor', '',
             '#000000' );?>
         </td></tr>
-      <tr><td class="tooltip" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.');?>"><label><?php echo $duplicatesStr;?>:</label></td>
+      <tr><td class="tooltip" title="<?php etranslate('show duplicate events');?>"><label><?php echo translate( 'Duplicates_' );?></label></td>
         <td><input type="checkbox" name="editLayerDups" id="editLayerDups">
         </td></tr>
     </table>
@@ -185,7 +180,7 @@ if ( $single_user == 'N' ) {
         $('editLayerDelete').setAttribute ( 'value', '1' );
         edit_window_closed (); Modalbox.hide ();
         }">
-    <input type="button" value="<?php etranslate("Save");?>"
+    <input type="button" value="<?php echo $saveStr;?>"
       onclick="edit_window_closed(); Modalbox.hide() "></center>
   </form>
   </div>
@@ -202,7 +197,7 @@ function set_layer_status (enable)
   var status = ( enable ? 'enable' : 'disable' );
   new Ajax.Request('layers_ajax.php',
   {
-    method:'post',
+    method: 'post',
     parameters: { action: status<?php
       if ( $updating_public ) { echo ", public: 1"; }
     ?> },
@@ -211,7 +206,7 @@ function set_layer_status (enable)
       try  {
         response = transport.responseText.evalJSON();
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
@@ -248,21 +243,21 @@ function load_layers()
     ?> },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
+        alert ( '<?php echo $err_Str . translate('no response from server');?>' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
       try  {
         response = transport.responseText.evalJSON();
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        alert ( '<?php echo $err_Str;?>' + response.message );
         return;
       }
-      var x = '<table id="layertable" border="1" cellspacing="0" cellpadding="0" summary=""><th><?php echo $sourceStr;?></th><th><?php echo $colorStr;?></th><th><?php echo $duplicatesStr;?></th></tr>\n';
+      var x = '<table id="layertable" border="1" cellspacing="0" cellpadding="0" summary=""><th><?php echo translate( 'Source' );?></th><th><?php echo translate( 'Color' );?></th><th><?php echo translate( 'Duplicates' );?></th></tr>\n';
       for ( var i = 0; i < response.layers.length; i++ ) {
         var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
         var l = response.layers[i];
@@ -306,11 +301,11 @@ function edit_window_closed () {
       try  {
         response = transport.responseText.evalJSON();
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + response );
+        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + response );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php etranslate("Error");?>:\n\n' + response.message );
+        alert ( '<?php echo $err_Str;?>\n\n' + response.message );
       } else {
         //alert("Success! \n\n" + response);
         // Reload layers

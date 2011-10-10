@@ -72,7 +72,7 @@ EOT;
 function db_error( $doExit = false, $sql = '' ) {
   global $settings;
 
-  $ret = str_replace( 'XXX', dbi_error(), translate( 'Database error XXX.' ) )
+  $ret = str_replace( 'XXX', dbi_error(), $dbErrXXXStr )
    . ( ! empty( $settings['mode'] ) && $settings['mode'] == 'dev'
     && ! empty( $sql ) ? '<br>SQL:<br>' . $sql : '' );
 
@@ -134,7 +134,7 @@ function do_config( $fileLoc ) {
       header( 'Location: install/index.php' );
       exit;
     } else
-      die_miserable_death( translate( 'Could not find settings.php file...' ) );
+      die_miserable_death( translate( 'settings.php not found' ) );
   }
 
   // We read in the entire file, and split the lines manually.
@@ -184,7 +184,7 @@ function do_config( $fileLoc ) {
       header( 'Location: install/index.php' );
       exit;
     } else
-      die_miserable_death( translate( 'Incomplete settings.php file...' ) );
+      die_miserable_death( translate( 'Incomplete settings.php' ) );
   }
 
   // Use 'db_cachedir' if found, otherwise look for 'cachedir'.
@@ -226,7 +226,7 @@ function do_config( $fileLoc ) {
 
   if( $single_user == 'Y' && empty( $single_user_login ) )
     die_miserable_death( str_replace( 'XXX', 'single_user_login',
-        translate( 'You must define XXX in' ) ) );
+        translate( 'define XXX in settings' ) ) );
 
   $use_http_auth = ( preg_match( '/(1|yes|true|on)/i',
       $settings['use_http_auth'] ) ? true : false );

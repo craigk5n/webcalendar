@@ -44,13 +44,13 @@ $out = '
 if ( ! empty ($single_user) && $single_user == 'Y' )
   // No login for single-user mode.
   $out .= '
-  <error>' . translate ( 'No login required for single-user mode.' )
+  <error>' . translate ( 'No login required for single-user' )
    . '</error>';
 else
 if ( $use_http_auth )
   // There is no login page when using HTTP authorization.
   $out .= '
-  <error>' . translate ( 'No login required for HTTP authentication.' )
+  <error>' . translate ( 'No login required for HTTP auth' )
    . '</error>';
 else {
   $login = getValue ( 'login' );

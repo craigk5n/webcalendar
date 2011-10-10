@@ -1,27 +1,24 @@
-<?php // $Id$
-defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
-?>
+// $Id$
+
 var validform = true;
 
 function valid_form ( form ) {
   var err = "";
   if ( form.layercolor && ! valid_color ( form.layercolor.value ) )
-    err += "<?php etranslate ( 'Invalid color', true)?>.\n";
+    err += xlate['invalidColor']; // translate ( 'Invalid color' )
 
   if ( err.length > 0 ) {
-    alert ( "<?php etranslate ( 'Error', true) ?>:\n\n" + err + "\n\n<?php
-  etranslate ( 'Color format should be RRGGBB.', true)?>" );
+    alert (xlate['noBlankURL'].replace(/XXX/, err)
+      + "\n\n + xlate['formatColorRGB']; // translate ( 'Color format should be RGB' )
     return false;
   }
   if ( ! form.nurl.value ) {
-    alert ( "<?php etranslate ( 'Error', true) ?>:\n\n" + "<?php
-      etranslate ( 'URL cannot be blank.', true)?>" );
+    alert (xlate['noBlankURL']); // translate( 'no blank URLs' )
     return false;
   }
   check_name();
 
   return validform;
-
 }
 
 function toggle_layercolor() {
@@ -44,7 +41,7 @@ function check_name() {
 function showResponse(originalRequest) {
   if (originalRequest.responseText) {
     text = originalRequest.responseText;
-    //this causes jacascript errors in Firefox, but these can be ignored
+    // This causes javascript errors in Firefox, but these can be ignored.
     alert (text);
     document.prefform.nid.focus();
     validform = false;

@@ -69,7 +69,7 @@ if ( $file['size'] > 0 ) {
     case 'PALMDESKTOP':
       include 'import_palmdesktop.php';
       if ( delete_palm_events ( $login ) != 1 )
-        $errormsg = translate ( 'Error deleting palm events from webcalendar.' );
+        $errormsg = translate ( 'Error deleting palm from webcal' );
       $data = parse_palmdesktop ( $file['tmp_name'], $exc_private );
       $type = 'palm';
       break;
@@ -95,28 +95,23 @@ if ( $file['size'] > 0 ) {
     import_data ( $data, $doOverwrite, $type );
     echo '
     <p>' . translate( 'Import Results' ) . '</p><br><br>
-    ' . translate ( 'Events successfully imported' ) . ': ' . $count_suc
+    ' . translate ( 'Events successfully imported' ) . ' ' . $count_suc
      . '<br>
-    ' . translate ( 'Events from prior import marked as deleted' ) . ': '
+    ' . translate ( 'prior imports marked deleted' ) . ' '
      . $numDeleted . '<br>
     ' . ( empty ( $ALLOW_CONFLICTS )
       ? translate( 'Conflicting events' ) . ': ' . $count_con . '<br>
-    ' : '' ) . translate( 'Errors' ) . ': ' . $error_num . '<br><br>';
+    ' : '' ) . $err_Str . $error_num . '<br><br>';
   } elseif ( ! empty ( $errormsg ) )
     echo '
     <br><br>
-    <b>' . translate( 'Error' ) . ':</b> ' . $errormsg . '<br>';
+    <b>' . $err_Str . '</b> ' . $errormsg . '<br>';
   else
-    echo '
-    <br><br>
-    <b>' . translate ( 'Error' ) . ':</b> '
-     . translate( 'There was an error parsing the import file or no events were returned.' )
-     . '<br>';
+    echo '<br><br>
+    <b>' . $err_Str . '</b>' . translate( 'error parsing import file' ) . '<br>';
 } else
-  echo '
-    <br><br>
-    <b>' . translate ( 'Error' ) . ':</b> '
-   . translate( 'The import file contained no data.' ) . '<br>';
+  echo '<br><br>
+    <b>' . $err_Str . '</b>' . translate( 'import file had no data' ) . '<br>';
 // echo "<hr>$sqlLog\n";
 echo print_trailer();
 

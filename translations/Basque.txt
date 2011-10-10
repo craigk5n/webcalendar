@@ -87,16 +87,16 @@ Settings: Aukerak
 Groups: Taldeak
 Email: E-posta
 Colors: Koloreak
-Document background: Dokumentuaren atzea
+Document BG: Dokumentuaren atzea
 Document title: Izenburua
 Document text: Dokumentuaren testua
 Table grid color: Taularen kolorea
-Table header background: Taularen burukoaren atzea
+Table header BG: Taularen burukoaren atzea
 Table header text: Taularen burukoaren testua
-Table cell background: Taulako gelaxken atzea
-Table cell background for current day: Gaurko egunaren gelaxkaren atzea
-Table cell background for weekends: Astebukaerako gelaxken atzea
-Event popup background: Gertaera popup-aren atzea
+Table cell BG: Taulako gelaxken atzea
+Table cell today BG: Gaurko egunaren gelaxkaren atzea
+Table cell weekends BG: Astebukaerako gelaxken atzea
+Event popup BG: Gertaera popup-aren atzea
 Event popup text: Gertaera popup-aren testua
 System Settings: Sistemaren aukerak
 Help: Laguntza
@@ -130,14 +130,14 @@ Fonts: Tipografiak
 display-weekends-help: Astebukaerak erakusten ditu asteroko ikus aukeran
 display-week-number-help: Asteari dagokion zenbakia erakutsiko den adierazten du
 Display week number: Aste zenbakia erakutsi
-Display description in printer day view: Egunaren inprimatzeko ikus eran deskribapena adierazi
+desc in printer day view: Egunaren inprimatzeko ikus eran deskribapena adierazi
 allow-view-other-help: Beste erabiltzaileen egutegia ikusi daiteken ala ez adierazten du
-Allow viewing other users calendars: Beste erabiltzaileen egutegiak ikustea baimendu
+may view others cals: Beste erabiltzaileen egutegiak ikustea baimendu
 require-approvals-help: Aktibatu ez gero, onespena behar da.
 Require event approvals: Gertaeraren onespena eskatu
 display-unapproved-help: Onetsi gabeko gertaerak erakutsiko diren adierazten du.
 Display unapproved: Onespengabekoak erakutsi
-Check for event conflicts: Gertaera talkak antzeman
+Check for conflicts: Gertaera talkak antzeman
 Yes: Bai
 No: Ez
 conflict-months-help: Hilak aztertzean talkak
@@ -155,9 +155,9 @@ Remember last login: Login informazioa gogoratu
 allow-public-access-help: Egutegiak atzipen publikoa izan dezaken edo ez adierazten du.
 Allow public access: Atzipen publikoa baimendu
 public-access-view-others-help: Beste erabiltzaile batzuen egutegiak ikus daitezken adierazten du
-Public access can view other users: Beste erabiltzaileen gertaerak ikus daitezke
+may public view others: Beste erabiltzaileen gertaerak ikus daitezke
 public-access-can-add-help: Aukeratuz gero erabiltzaile publikoak gertaerak gehi ditzazke
-Public access can add events: Erabiltzaile publikoak gertaerak gehi ditzazke
+may public add events: Erabiltzaile publikoak gertaerak gehi ditzazke
 groups-enabled-help: Taldekako antolaketa ahalbideratzen du
 Groups enabled: Taldeak gaituak
 user-sees-his-group-help: Taldekideek bere taldearen gertaerak soilik ikusiko dituzte
@@ -212,7 +212,7 @@ Category Name: Atalaren izena
 Color: Kolorea
 Add: Gehitu
 Delete: Ezabatu
-Are you sure you want to delete this entry?: Seguru al zaude sarrera hau ezabatu nahi duzula?
+really delete entry: Seguru al zaude sarrera hau ezabatu nahi duzula?
 Make New Category: Atal berria gehitu
 
 ########################################
@@ -279,20 +279,20 @@ Frequency: Maiztasuna
 All: Denak
 Send Reminder: Gogorarazteko abixua bidali
 Delete entry: Sarrera ezabatu
-You are not authorized to edit this entry.: Ez zaude baimenduta gertaera hau editatzeko
+not authorized to edit entry: Ez zaude baimenduta gertaera hau editatzeko
 
 ########################################
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: Bilera bat ezartzen dizu
 An appointment has been updated by: Bilera bat eguneratu du
-The following conflicts with the suggested time: Hondokoa ez dator bat gomendatutako orduarekin
+conflicts with suggested time: Hondokoa ez dator bat gomendatutako orduarekin
 Please look on: Mesedez bilatu
 to accept or reject this appointment: bilera hau onartzeko edo uko egiteko
 to view this appointment: bilera hau ikusteko
 Scheduling Conflict: Bilera arteko talka
 Your suggested time of: Zure ordu gomendatua da
-conflicts with the following existing calendar entries: hondoko sarrerekin egiten du talka
+conflicts with existing entries: hondoko sarrerekin egiten du talka
 
 ########################################
 # Page: edit_layer.php
@@ -308,8 +308,8 @@ Delete layer: Geruza ezabatu
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself.: Ezin duzu zeuretzako geruza bat sortu
-You can only create one layer for each user.: Erabiltzaile bakoitzeko geruza bakarra osa dezakezu
+no layers for yourself: Ezin duzu zeuretzako geruza bat sortu
+only one layer per user: Erabiltzaile bakoitzeko geruza bakarra osa dezakezu
 
 ########################################
 # Page: edit_nonusers.php
@@ -349,8 +349,8 @@ Set Password: Pasahitza jarri
 # Page: edit_user_handler.php
 #
 Deleting users not supported.: Erabiltzaileak ezabatzea debekatua
-The passwords were not identical.: Pasahitza hauek ez dira berdinak
-You have not entered a password.: Ez duzu pasahitz bat sartu
+passwords not identical: Pasahitza hauek ez dira berdinak
+must enter a password: Ez duzu pasahitz bat sartu
 
 ########################################
 # Page: export.php
@@ -418,10 +418,10 @@ Help Index: Laguntza
 # Page: help_layers.php
 #
 Add/Edit/Delete: Gehitu/Editatu/Ezabatu
-The text color of the new layer that will be displayed in your calendar.: Geruza berriaren textuaren kolorea
+text color of new layer: Geruza berriaren textuaren kolorea
 Disabling: Desgaitzen
-If checked, events that are duplicates of your events will be shown.: Gaitu ez gero zure gertaeren berdinak diren gertaerak ere erakutsi dira
-Specifies the user that you would like to see displayed in your calendar.: Zure egutegian azaltzea gustatuko litzaizuken erabiltzailea adierazten du
+show duplicate events: Gaitu ez gero zure gertaeren berdinak diren gertaerak ere erakutsi dira
+user to display on your cal: Zure egutegian azaltzea gustatuko litzaizuken erabiltzailea adierazten du
 
 ########################################
 # Page: help_pref.php
@@ -441,7 +441,7 @@ Disabled: Desgaitua
 #
 Layer: Geruza
 Edit layer: Geruza editatu
-Are you sure you want to delete this layer?: Seguru al zaude geruza hau ezabatu nahi duzula?
+really delete layer: Seguru al zaude geruza hau ezabatu nahi duzula?
 Disable Layers: Geruzak desgaitu
 Add layer: Geruza gehitu
 
@@ -457,8 +457,8 @@ Reject this entry?: Gaitzetsi sarrera hau?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: Erabiltzaile eta pasahitz bat sartu behar dituzu
-Save login via cookies so I dont have to login next time.: Datuak gorde
+must enter login/password: Erabiltzaile eta pasahitz bat sartu behar dituzu
+Save login via cookies: Datuak gorde
 Login: Sartu
 Access public calendar: Egutegi publikora joan
 cookies-note: <b>Oharra:</b> Aplikazio honek cookiak gaituak egotea behar du.
@@ -482,7 +482,7 @@ An appointment has been rejected by: Gertaera bat gaitzetsia izan da
 ########################################
 # Page: report.php
 #
-This event is confidential.: Gertaera hau konfidentziala da
+confidential event: Gertaera hau konfidentziala da
 Deleted: Ezabatuak
 Rejected: Gaitzetsiak
 Waiting for approval: Onespenaren zai
@@ -498,7 +498,7 @@ Keywords: Hitz gakoa
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: Hitz gako bat edo gehiago sartu behar duzu
+must enter search keywords: Hitz gako bat edo gehiago sartu behar duzu
 Search Results: Bilaketaren emaitzak
 match found: asmatze topatua
 matches found: asmatze topatuak
@@ -512,7 +512,7 @@ Status: Egoera
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: Ez duzu atalik gehitu
+no categories added: Ez duzu atalik gehitu
 Set Category: Atala ezarri
 
 ########################################
@@ -547,15 +547,15 @@ Approve/Confirm entry: Onetsi/Konfirmatu erregistroa
 Reject entry: Erregistroa gaitzetsi
 Set category: Atala ezarri
 Copy entry: Sarrera kopiatu
-This will delete this entry for all users.: Ekintza honek gertaera hau ezabatuko du egun baterako
+will delete entry for all: Ekintza honek gertaera hau ezabatuko du egun baterako
 Edit entry: Sarrera editatu
-Edit repeating entry for all dates: Data guztietarako errepikatutako gertaera editatu
-Delete repeating event for all dates: Errepikatutako gertaera data guztietarako ezabatu
+Edit repeating entry all dates: Data guztietarako errepikatutako gertaera editatu
+Dele repeating event all dates: Errepikatutako gertaera data guztietarako ezabatu
 Edit entry for this date: Egun honetarako sarrera editatu
 Delete entry only for this date: Data honetako sarrera ezabatu
-This will delete the entry from your calendar.: Ekintza honek sarrera ezabatuko du egutegitik
-Do you want to add this entry to your calendar?: Sarrera hau gehitu nahi al duzu zure egutegian?
-This will add the entry to your calendar.: Ekintza honek sarrera gehituko du zure egutegian
+will delete entry from your cal: Ekintza honek sarrera ezabatuko du egutegitik
+want to add entry to your cal: Sarrera hau gehitu nahi al duzu zure egutegian?
+will add entry to your cal: Ekintza honek sarrera gehituko du zure egutegian
 Email all participants: Partaide guztiei e-posta bidez jakinarazi
 Hide activity log: Jardunaren erregistroa ezkutatu
 Show activity log: Mostrar bitácora de actividad
@@ -662,21 +662,21 @@ Notification: Abixua
 #
 Server URL is required.: Zerbitzariaren URL-a falta da
 Server URL must end with /.: Zerbitzariaren URL-a '/'-z bukatu behar du
-Invalid color for document background.: Kolore desegokia dokumentuaren atzerako
-Invalid color for document title.: Kolore desegokia dokumentuaren izenbururako
-Invalid color for table cell background.: Kolore desegokia taulako gelaxken atzerako
-Invalid color for table grid.: Kolore desegokia taularentzako
-Invalid color for table text background.: Kolore desegokia taularen textuaren atzerako
-Invalid color for event popup background.: Kolore desegokia gertaera popup-aren atzerako
-Invalid color for event popup text.: Kolore desegokia gertaera popup-aren texturako
-Invalid color for table cell background for today.: Kolore desegokia gaurko egunaren atzerako
-Color format should be RRGGBB.: Kolorearen formatua hamaseitarra izan beharko luke adibidez, '#RRGGB
+Invalid doc BG color: Kolore desegokia dokumentuaren atzerako
+Invalid doc title color: Kolore desegokia dokumentuaren izenbururako
+Invalid table cell BG color: Kolore desegokia taulako gelaxken atzerako
+Invalid table grid color: Kolore desegokia taularentzako
+Invalid table cell BG color: Kolore desegokia taularen textuaren atzerako
+Invalid popup BG color: Kolore desegokia gertaera popup-aren atzerako
+Invalid popup text color: Kolore desegokia gertaera popup-aren texturako
+Invalid table cell today BG: Kolore desegokia gaurko egunaren atzerako
+Color format should be RGB: Kolorearen formatua hamaseitarra izan beharko luke adibidez, '#RRGGB
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Ez duzu deskribapen laburrik sartu
-You have not entered a valid time of day: Ez duzu ordu egoki bat sartu
+must enter Brief Description: Ez duzu deskribapen laburrik sartu
+must enter valid time: Ez duzu ordu egoki bat sartu
 
 ########################################
 # Page: includes/js/edit_layer.php

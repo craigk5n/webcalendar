@@ -12,15 +12,15 @@ echo $helpListStr . '
 $tmp_arr = array (
   translate ( 'Allow HTML in Description' ) =>
   translate ( 'allow-html-description-help' ),
-  translate ( 'Allow users to override conflicts' ) =>
+  translate ( 'may users override conflicts' ) =>
   translate ( 'conflict-check-override-help' ),
-  translate ( 'Allow viewing other users calendars' ) =>
+  translate ( 'may view others cals' ) =>
   translate ( 'allow-view-other-help' ),
   translate ( 'Application Name' ) =>
   translate ( 'app-name-help' ),
   translate ( 'Auto-refresh calendars' ) => translate ( 'auto-refresh-help' ),
   translate ( 'Auto-refresh time' ) => translate ( 'auto-refresh-time-help' ),
-  translate ( 'Check for event conflicts' ) =>
+  translate ( 'Check for conflicts' ) =>
   translate ( 'conflict-check-help' ),
   translate ( 'Conflict checking months' ) =>
   translate ( 'conflict-months-help' ),
@@ -37,9 +37,9 @@ $tmp_arr = array (
   translate ( 'disable-priority-field-help' ),
   translate ( 'Disable Repeating field' ) =>
   translate ( 'disable-repeating-field-help' ),
-  translate ( 'Display days with events in bold in year view' ) =>
+  translate ( 'bold events in year view' ) =>
   translate ( 'yearly-shows-events-help' ),
-  translate ( 'Display description in printer day view' ) =>
+  translate ( 'desc in printer day view' ) =>
   translate ( 'display-desc-print-day-help' ),
   translate ( 'Display Site Extras in popup' ) =>
   translate ( 'popup-includes-siteextras-help' ),
@@ -52,8 +52,8 @@ $tmp_arr = array (
   translate ( 'Home URL' ) => translate ( 'home-url-help' ),
   translate ( 'Include add event link in views' ) =>
   translate ( 'allow-view-add-help' ),
-  translate ( 'Language' ) => translate ( 'language-help' ),
-  translate ( 'Limit number of timed events per day' ) =>
+  translate ( 'Language_' ) => translate ( 'language-help' ),
+  translate ( 'Limit timed events per day' ) =>
   translate ( 'limit-appts-help' ),
   translate ( 'Maximum timed events per day' ) =>
   translate ( 'limit-appts-number-help' ),
@@ -62,7 +62,7 @@ $tmp_arr = array (
   translate ( 'remember-last-login-help' ),
   translate ( 'Require event approvals' ) =>
   translate ( 'require-approvals-help' ),
-  translate ( 'Server URL' ) => translate ( 'server-url-help' ),
+  translate ( 'Server URL_' ) => translate ( 'server-url-help' ),
   translate ( 'Specify timed event length by' ) =>
   translate ( 'timed-evt-len-help' ),
   translate ( 'Time format' ) => translate ( 'time-format-help' ),
@@ -78,17 +78,17 @@ echo '
 $tmp_arr = array (
   translate ( 'Allow public access' ) =>
   translate ( 'allow-public-access-help' ),
-  translate ( 'Public access can add events' ) =>
+  translate ( 'may public add events' ) =>
   translate ( 'public-access-can-add-help' ),
-  translate ( 'Public access can view other users' ) =>
+  translate ( 'may public view others' ) =>
   translate ( 'public-access-view-others-help' ),
-  translate ( 'Public access can view participants' ) =>
+  translate ( 'may public see participants' ) =>
   translate ( 'public-access-sees-participants-help' ),
-  translate ( 'Public access is default participant' ) =>
+  translate ( 'is public default party' ) =>
   translate ( 'public-access-default-selected' ),
-  translate ( 'Public access new events require approval' ) =>
+  translate ( 'must approve public events' ) =>
   translate ( 'public-access-add-requires-approval-help' ),
-  translate ( 'Public access visible by default' ) =>
+  translate ( 'Public visible by default' ) =>
   translate ( 'public-access-default-visible' ),
   );
 list_help ( $tmp_arr );
@@ -107,8 +107,8 @@ echo '
       <h3>' . translate ( 'Nonuser' ) . '</h3>
       <div>';
 $tmp_arr = array (
-  translate ( 'Nonuser enabled' ) => translate ( 'nonuser-enabled-help' ),
-  translate ( 'Nonuser list' ) => translate ( 'nonuser-list-help' ),
+  translate ( 'NUCs enabled' ) => translate ( 'nonuser-enabled-help' ),
+  translate ( 'list NUCs at' ) => translate ( 'nonuser-list-help' ),
   );
 list_help ( $tmp_arr );
 echo '
@@ -121,9 +121,9 @@ $tmp_arr = array (
   translate ( 'Allow remote subscriptions' ) =>
   translate ( 'subscriptions-enabled-help' ),
   translate ( 'Categories enabled' ) => translate ( 'categories-enabled-help' ),
-  translate ( 'External users can receive email notifications' ) =>
+  translate ( 'may notify externals by email' ) =>
   translate ( 'external-can-receive-notification-help' ),
-  translate ( 'External users can receive email reminders' ) =>
+  translate ( 'may remind externals by email' ) =>
   translate ( 'external-can-receive-reminder-help' ),
   translate ( 'Reports enabled' ) => translate ( 'reports-enabled-help' ),
   );
@@ -155,7 +155,7 @@ echo '
 $tmp_arr = array (
   translate ( 'Allow user to customize colors' ) =>
   translate ( 'user-customize-color' ),
-  translate ( 'Enable gradient images for background colors' ) =>
+  translate ( 'Enable gradient images for BG' ) =>
   translate ( 'enable-gradient-help' ),
   translate ( 'Manually entering color values' ) => translate ( 'colors-help' ),
   );

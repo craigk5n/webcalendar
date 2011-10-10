@@ -37,8 +37,7 @@ if ( empty ( $ret ) ) {
           </td>
         </tr>
         <tr>
-          <td>'
-  . translate ( '(Your comments will be emailed to the event creator.)' ) . '</td>
+          <td>' . translate ( 'comments emailed to creator' ) . '</td>
         </tr>
       </table>
     </form>
@@ -97,7 +96,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
 
     $msg = str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) )
     . "\n\n" . str_replace ( 'XXX', $login_fullname,
-      translate ( 'XXX has approved an appointment and added comments.' ) ) . "\n\n"
+      translate ( 'XXX approve/comment appointment' ) ) . "\n\n"
     . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . "\n"
     . str_replace ( 'XXX', $description, translate ( 'Description XXX' ) ) . "\n"
     . str_replace ( 'XXX', date_to_str ( $fmtdate ), translate ( 'Date XXX' ) )

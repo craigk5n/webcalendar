@@ -16,7 +16,7 @@
  * if UAC is enabled, then the user must be allowed to ACCESS_IMPORT.
 */
 include_once 'includes/init.php';
-print_header ( array ( 'js/edit_remotes.php/false', 'js/visible.php' ),
+print_header ( array ( 'js/edit_remotes.php/true', 'js/visible.js/true' ),
   '', '', true );
 
 $error = '';
@@ -50,7 +50,7 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
     $nid = clean_html ( $nid );
     nonuser_load_variables ( $nid, 'remotestemp_' );
 
-    $button = translate ( 'Save' );
+    $button = $saveStr;
     $buttonAction = 'Save';
     $id_display = $nid . ' <input type="hidden" name="nid" id="nid" value="'
      . $nid . '">';
@@ -62,15 +62,13 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
   $buttonAction = 'Add';
   $calIdStr = translate ( 'Calendar ID' );
   $colorStr = translate ( 'Color' );
-  $confirmStr = translate( 'Are you sure you want to delete this entry?' );
+  $confirmStr = translate( 'really delete entry' );
   $createLayerStr = translate ( 'Create Layer' );
   $deleteStr = translate ( 'Delete' );
   $firstNameStr = translate ( 'First Name' );
   $lastNameStr = translate ( 'Last Name' );
   $reloadStr = translate ( 'Reload' );
   $requiredStr = translate ( 'Required to View Remote Calendar' );
-  $selectStr = translate ( 'Select' );
-  $urlStr = translate ( 'URL' );
 
   $firstNameValue = ( empty ( $remotestemp_firstname )
     ? '' : htmlspecialchars ( $remotestemp_firstname ) );
@@ -85,21 +83,21 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
       onsubmit="return valid_form( this );">
       <table cellspacing="0" cellpadding="2" summary="">
         <tr>
-          <td><label for="calid">{$calIdStr}:</label></td>
+          <td><label for="calid">{$calIdStr}</label></td>
           <td colspan="3">{$id_display}</td>
         </tr>
         <tr>
-          <td><label for="nfirstname">{$firstNameStr}:</label></td>
+          <td><label for="nfirstname">{$firstNameStr}</label></td>
           <td colspan="3"><input type="text" name="nfirstname" id="nfirstname"
             size="20" maxlength="25" value="{$firstNameValue}"></td>
         </tr>
         <tr>
-          <td><label for="nlastname">{$lastNameStr}:</label></td>
+          <td><label for="nlastname">{$lastNameStr}</label></td>
           <td colspan="3"><input type="text" name="nlastname" id="nlastname"
             size="20" maxlength="25" value="{$lastNameValue}"></td>
         </tr>
         <tr>
-          <td><label for="nurl">{$urlStr}:</label></td>
+          <td><label for="nurl">{$urlStr}</label></td>
           <td colspan="3"><input type="text" name="nurl" id="nurl" size="75"
             maxlength="255" value="{$urlValue}"></td>
         </tr>

@@ -283,8 +283,7 @@ echo '
             action = \'R\';
             break;
           case "delete":
-            str = "'
- . translate( 'Are you sure you want to delete this entry?' ) . '";
+            str = "' . translate( 'really delete entry' ) . '";
             action = \'D\';
             break;
           case "approveSelected":
@@ -308,7 +307,7 @@ echo '
         return conf;
       }
 //]]> -->
-    </script>' .print_trailer();
+    </script>' . print_trailer();
 ob_end_flush();
 
 ?>

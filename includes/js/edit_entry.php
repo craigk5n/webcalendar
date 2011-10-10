@@ -16,7 +16,7 @@ function validate_and_submit() {
     showTab( 'details' );
 <?php } ?>
     form.name.focus();
-    alert ( "<?php etranslate ( 'You have not entered a Brief Description', true)?>.");
+    alert ( "<?php etranslate ( 'must enter Brief Description', true)?>");
     return false;
   }
   if ( form.timetype &&
@@ -32,7 +32,7 @@ function validate_and_submit() {
       echo "if ( h < $WORK_DAY_START_HOUR && form.entry_ampmA.checked ) {";
     }
     ?>
-    if ( ! confirm ( "<?php etranslate ( 'time prior to work hours...', true)?> "))
+    if ( ! confirm ( "<?php etranslate ( 'time before work hours', true)?> "))
       return false;
    }
   }
@@ -603,13 +603,14 @@ function editCats ( evt ) {
     if ( obj ) {
       // Is this selected??
       var sel = false;
-      for ( i = 0; i < selected_ids.length; i++ ) {
+      for ( var i = selected_ids.length; i >= 0; i-- ) {
         if ( selected_ids[i] == <?php echo $catid;?> )
           sel = true;
       }
       obj.checked = sel;
-    } else { //translate( 'Could not find XXX in DOM.' )
-      alert ( "Could not find '" + checkboxId + "' in DOM" );
+    } else { // translate( 'Could not find XXX in DOM.' )
+      alert ( xlate['noXXXInDom'].replace(/XXX/, checkboxId);
+//      "Could not find '" + checkboxId + "' in DOM" );
     }
   <?php
   }
@@ -638,8 +639,9 @@ function catOkHandler () {
       catNames += '<?php echo $cat['cat_name'];?>';
     }
   } else { // translate( 'Could not find XXX.' )
-    if ( ! obj ) alert ( "Could not find " + checkboxId );
-    else alert ( "Could not find " + nameId );
+//    if ( ! obj ) alert ( "Could not find " + checkboxId );
+//    else alert ( "Could not find " + nameId );
+    alert ( xlate['notFind'].replace(/XXX/, ( obj ? nameId : checkboxId)));
   }
 <?php
   }
@@ -652,7 +654,7 @@ function catOkHandler () {
 
 function displayInValid(myvar)
 {
-  alert ( "<?php etranslate ( 'You have not entered a valid time of day', true)?>.");
+  alert ( "<?php etranslate ( 'must enter valid time', true)?>");
   myvar.select();
   myvar.focus();
 }

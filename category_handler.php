@@ -118,7 +118,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
         $file_result = move_uploaded_file ( $file['tmp_name'], $fullIcon );
         // echo "Upload Result:" . $file_result;
       } else if ( $file['size'] > $icon_max_size ) {
-        $error = translate ( 'File size exceeds maximum.' );
+        $error = translate ( 'File size exceeds max' );
       } else if ( $file['type'] != 'image/gif' &&
         $file['type'] != 'image/png' ) {
         $error = translate ( 'File is not a GIF or PNG image' ) . ': '

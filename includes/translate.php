@@ -583,7 +583,7 @@ translate ( '4' ) translate ( '5' ) translate ( '6' ) translate ( '7' )
 translate ( '8' ) translate ( '9' )
 
 To use as masks to get language appropriate separators. Eventually.
-translate( '9,999.99' ) translate('time is 140000')
+translate( '9,999.99' ) translate( 'time is 140000' )
 */
 
 /**
@@ -591,21 +591,25 @@ translate( '9,999.99' ) translate('time is 140000')
  * There are many more that could be moved here eventually.
  * They are here because this is the only file guaranteed to load if translating.
  */
-$addStr   = translate( 'Add' );
-$cat_Str  = translate( 'Category_' );
-$deleteStr= translate( 'Delete' );
-$editStr  = translate( 'Edit' );
-$groupsStr= translate( 'Groups' );
-$helpStr  = translate( 'Help' );
-$nextStr  = translate( 'Next' );
-$noStr    = translate( 'No' );
-$noneStr  = translate( 'None' );
-$okStr    = translate( 'OK' );
-$prevStr  = translate( 'Previous' );
-$saveStr  = translate( 'Save' );
-$selectStr= translate( 'Select' );
-$setsStr  = translate( 'Settings' );
-$urlStr   = translate( 'URL' );
-$yesStr   = translate( 'Yes' );
+$addStr     = translate( 'Add' );
+$cat_Str    = translate( 'Category_' );
+$dblClickAdd= translate( 'Double-click to add entry' );
+$dbErrXXXStr= translate( 'DB error XXX' );
+$deleteStr  = translate( 'Delete' );
+$editStr    = translate( 'Edit' );
+$err_Str    = translate( 'Error_' );
+$groupsStr  = translate( 'Groups' );
+$helpStr    = translate( 'Help' );
+$nextStr    = translate( 'Next' );
+$noStr      = translate( 'No' );
+$noneStr    = translate( 'None' );
+$noVuUsers  = translate( 'No users for view' );
+$okStr      = translate( 'OK' );
+$prevStr    = translate( 'Previous' );
+$saveStr    = translate( 'Save' );
+$selectStr  = translate( 'Select' );
+$setsStr    = translate( 'Settings' );
+$urlStr     = translate( 'URL' );
+$yesStr     = translate( 'Yes' );
 
 ?>

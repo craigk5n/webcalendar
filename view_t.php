@@ -281,7 +281,7 @@ $viewusercnt = count ( $viewusers );
 if ( $viewusercnt == 0 )
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view.
-  $error = translate( 'No users for this view.' );
+  $error = $noVuUsers;
 
 $printerStr = generate_printer_friendly ( 'view_t.php' );
 
@@ -344,7 +344,7 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
       <th class="weekend"' : '>
       <th class="row"' ) ) . ( $can_add
     ? " ondblclick=\"dblclick_add( '$dateYmd', '$login' )\" title=\""
-     . translate( 'Double-click on empty cell to add new entry' ) . "\">"
+     . $dblClickAdd . "\">"
     : '>' ) . weekday_name( date( 'w', $date ), $DISPLAY_LONG_DAYS ) . '&nbsp;' .
     date ( 'd', $date ) . '</th><td class="timebar">' . $timeBarHeader .
     print_date_entries_timebar( $dateYmd, $login, true ) . '</table>
@@ -354,10 +354,10 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
 
 $user = ''; // reset
 
-ob_end_flush();
-
 echo '
     </table>'
  . ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
+
+ob_end_flush();
 
 ?>

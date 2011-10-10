@@ -157,7 +157,7 @@ onclick="history.back()"></form
  <tr><td colspan="2">
   <input type="submit" name="delete" value="<?php
     echo $deleteStr?>" onclick="return confirm( '<?php
-    etranslate ( 'Are you sure you want to delete events for', true);
+    etranslate ( 'really delete events for', true);
     ?> ' + document.forms[0].username.value + '?' )">
  </td></tr>
 </table>

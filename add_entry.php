@@ -13,7 +13,7 @@ if ( $id > 0 ) {
     if ( $row[0] == $id ) {
       $is_my_event = true;
       echo str_replace ( 'XXX', $id,
-        translate ( 'Event XXX is already on your calendar.' ) );
+        translate ( 'Event XXX already on cal' ) );
       exit;
     }
     dbi_free_result ( $res );
@@ -26,7 +26,7 @@ if ( $id > 0 ) {
     exit;
   }
   $mayNotAddStr =
-  translate ( 'a XXX event may not be added to your calendar' );
+  translate ( 'cant add XXX to cal' );
   $row = dbi_fetch_row ( $res );
 
   if ( ! $is_my_event ) {

@@ -106,7 +106,7 @@ if ( empty ( $error ) ) {
 
 // If adding a user, make sure a password was provided
 if ( empty ( $error ) && $add && empty ( $user_password ) )
-  $error = translate ( 'You have not entered a password.' );
+  $error = translate ( 'must enter a password' );
 
 if ( empty ( $error ) && ! $add && ! $delete && empty ( $user_password ) )
   $user_password = $old_password;
@@ -117,7 +117,7 @@ $user_admin = ( empty ( $user_admin ) || $user_admin != '1' ? 'N' : 'Y' );
 // If user is editing themself, do not let them take away admin setting.
 // We don't want them to accidentally have no admin users left.
 if ( empty ( $error ) && $user_login == $login && $user_admin == 'N' )
-  $error = translate ( 'You cannot remove admin rights from yourself!' );
+  $error = translate ( 'You are stuck with admin' );
 
 if ( empty ( $error ) && $delete )
   user_delete_user ( $user_login );

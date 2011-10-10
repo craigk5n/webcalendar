@@ -15,7 +15,7 @@ foreach ( $help_list as $key => $val ) {
   $page++;
   $transStr = translate ( $key );
   echo '
-      <li><a title="' . $transStr . '" href="' . $val . '?thispage=' . $page
+      <li><a href="' . $val . '?thispage=' . $page
    . '">' . $transStr . '</a></li>';
 }
 echo '

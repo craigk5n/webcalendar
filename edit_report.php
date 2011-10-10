@@ -94,8 +94,8 @@ $day_template = '<dt><b>${date}</b></dt>
 <dd><dl>${events}</dl></dd>';
 
 $event_template = '<dt>${name}</dt>
-<dd><b>' . translate( 'Date' ) . ':</b> ${date}<br>
-<b>' . translate( 'Time' ) . ':</b> ${time}<br>
+<dd><b>' . translate( 'Date_' ) . '</b> ${date}<br>
+<b>' . translate( 'Time_' ) . '</b> ${time}<br>
 ${description}</dd>
 ';
 
@@ -389,7 +389,7 @@ echo '
  . ( $adding_report ? '' : '&nbsp;&nbsp;
             <input type="submit" name="delete" value="'
    . $deleteStr . '" onclick="return confirm( \''
-   . translate( 'Are you sure you want to delete this report?' )
+   . translate( 'really delete report' )
    . '\');">' );
 
 ob_end_flush();

@@ -245,8 +245,7 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
   if ( $is_day_view ) {
     echo date_to_str ( date ( 'Ymd', $thistime ), false );
   } else {
-    echo $first_date . "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
-      $last_date;
+    echo $first_date . "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" . $last_date;
   }
 ?></span><br>
 <span class="viewname"><?php echo htmlspecialchars ( $view_name ) ?></span>
@@ -259,8 +258,7 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 </div></div><br>
 
 <?php
-$help = ( $can_add ? 'title="' .
-    translate ( 'Double-click on empty cell to add new entry' ) . '"' : '' );
+$help = ( $can_add ? 'title="' . $dblClickAdd . '"' : '' );
 
 if ( ! $fit_to_window ) { ?>
 <table <?php echo $help;?> class="main" style="width:<?php

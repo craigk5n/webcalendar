@@ -33,7 +33,7 @@ if ( $single_user == 'Y'/* No login for single-user mode.*/ ||
 
 $login = getValue ( 'login' );
 if ( empty ( $login ) )
-  die_miserable_death( translate( 'A login must be specified.' ) );
+  die_miserable_death( translate( 'must specify login' ) );
 
 $date = getValue ( 'date' );
 $return_path = getValue ( 'return_path' );
@@ -62,7 +62,7 @@ if ( get_magic_quotes_gpc() )
   $login = stripslashes ( $login );
 
 $login = trim ( $login );
-$badLoginStr = translate ( 'Illegal characters in login XXX.' );
+$badLoginStr = translate ( 'Illegal chars in login XXX' );
 
 if ( $login != addslashes ( $login ) )
   die_miserable_death (

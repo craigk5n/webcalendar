@@ -31,9 +31,7 @@ else {
    . translate( 'Continue' ) . '"></td>
         </tr>
         <tr>
-          <td>'
-   . translate ( '(Your comments will be emailed to the other participants.)' )
-   . '</td>
+          <td>' . translate ( 'comments emailed to others' ) . '</td>
         </tr>
       </table>
     </form>
@@ -107,7 +105,7 @@ if ( empty ( $error ) && $id > 0 ) {
       str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) ) . '
 
 ' . str_replace ( 'XXX', $login_fullname,
-        translate ( 'XXX has rejected an appointment.' ) ) . '
+        translate ( 'XXX rejected an appointment' ) ) . '
 
 ' . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . '
 ' . str_replace ( 'XXX', $description, translate ( 'Description XXX' ) ) . '

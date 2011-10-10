@@ -86,11 +86,11 @@ user_load_variables ( $login, 'minical_' );
 if ( $user != '__public__' && ! nonuser_load_variables ( $login, 'minica_' ) )
   die_miserable_death (
     str_replace ( 'XXX', $login,
-      translate ( 'No such nonuser calendar XXX.' ) ) );
+      translate ( 'No NUC XXX' ) ) );
 
 if ( $user != '__public__' &&
   ( empty ( $minical_is_public ) || $minical_is_public != 'Y' ) )
-  die_miserable_death ( translate ( 'This Calendar is not Public.' ) );
+  die_miserable_death ( translate ( 'not a public calendar' ) );
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextmonth = date ( 'm', $next );

@@ -72,10 +72,10 @@ Month: Ay
 Year: Sene
 Settings: Ayar
 Colors: Renkler
-Document background: Sayfa-arkasi
+Document BG: Sayfa-arkasi
 Document title: Baslik
-Table cell background: Tabela Sayfa-arkasi
-Table cell background for current day: Tabela-arkasi 'Bugün' icin
+Table cell BG: Tabela Sayfa-arkasi
+Table cell today BG: Tabela-arkasi 'Bugün' icin
 Help: Yardim
 Language: Lisan
 None: Hic
@@ -115,7 +115,7 @@ Time: Saat
 # Page: category.php
 #
 Delete: Sil
-Are you sure you want to delete this entry?: Islemi sahiden silmek istiyormusunuz?
+really delete entry: Islemi sahiden silmek istiyormusunuz?
 
 ########################################
 # Page: docadd.php
@@ -155,19 +155,19 @@ Yearly: Senelik
 Use end date: Bugün bitiyor
 Frequency: defa
 Delete entry: Islemi sil
-You are not authorized to edit this entry.: Sizin bu Islemi silmek icin hak sahibiz yok.
+not authorized to edit entry: Sizin bu Islemi silmek icin hak sahibiz yok.
 
 ########################################
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: Sizin icin bir Termin eklendi -->
-The following conflicts with the suggested time: Önerilen Terminde saat carpismasi
+conflicts with suggested time: Önerilen Terminde saat carpismasi
 Please look on: Bakiniz
 to accept or reject this appointment: Termini onaylamak/ret etmek.
 to view this appointment: Termini gör
 Scheduling Conflict: Termin carpismasi
 Your suggested time of: Isleminiz
-conflicts with the following existing calendar entries: takiben Takvimde baska bir Islemle carpisiyor.
+conflicts with existing entries: takiben Takvimde baska bir Islemle carpisiyor.
 
 ########################################
 # Page: edit_nonusers.php
@@ -201,8 +201,8 @@ Set Password: Sifreyi kullan
 ########################################
 # Page: edit_user_handler.php
 #
-The passwords were not identical.: Verilen Sifreler esit degil
-You have not entered a password.: Sifre vermediniz
+passwords not identical: Verilen Sifreler esit degil
+must enter a password: Sifre vermediniz
 
 ########################################
 # Page: export.php
@@ -249,8 +249,8 @@ Reject this entry?: Isleme ret?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: Kullanici Adi ve Sifre vermeniz gerekiyor.
-Save login via cookies so I dont have to login next time.: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
+must enter login/password: Kullanici Adi ve Sifre vermeniz gerekiyor.
+Save login via cookies: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
 Login: Giris
 cookies-note: <b>Not:</b> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
 
@@ -262,7 +262,7 @@ Save Preferences: Ayarlari kayit et
 ########################################
 # Page: report.php
 #
-This event is confidential.: özel Termin
+confidential event: özel Termin
 Rejected: Islem onaylanmadi, eklenmeyecek
 
 ########################################
@@ -274,7 +274,7 @@ Keywords: Kelimeler
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: En az bir Kelime girmeniz gerekiyor
+must enter search keywords: En az bir Kelime girmeniz gerekiyor
 Search Results: Arama sonucu
 match found: Bulunan
 matches found: Bulunan
@@ -296,7 +296,7 @@ Add New User: Yeni Kullanici ekle
 #
 Approve/Confirm entry: Islem onaylansin?
 Reject entry: Isleme ret?
-This will delete this entry for all users.: Bu Islem tüt Kullanicilar icin siliniyor.
+will delete entry for all: Bu Islem tüt Kullanicilar icin siliniyor.
 Edit entry: Islem degistir
 
 ########################################
@@ -400,17 +400,17 @@ recipients_failed: SMTP Hatasý: alýcýlara ulaþmadý:
 ########################################
 # Page: includes/js/admin.php
 #
-Invalid color for document background.: Renk Sayfa-arkasi icin gecerli degil
-Invalid color for document title.: Renk Baslik icin gecerli degil
-Invalid color for table cell background.: Renk Tabela-arkasi icin gecerli degil
-Invalid color for table cell background for today.: Renk Tabela-arkasi 'Bugün' icin gecerli degil
-Color format should be RRGGBB.: Renkler sadece '#RRGGBB' seklinde verilebilir.
+Invalid doc BG color: Renk Sayfa-arkasi icin gecerli degil
+Invalid doc title color: Renk Baslik icin gecerli degil
+Invalid table cell BG color: Renk Tabela-arkasi icin gecerli degil
+Invalid table cell today BG: Renk Tabela-arkasi 'Bugün' icin gecerli degil
+Color format should be RGB: Renkler sadece '#RRGGBB' seklinde verilebilir.
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Özet Anlami vermediniz
-You have not entered a valid time of day: Gecerli saat vermediniz
+must enter Brief Description: Özet Anlami vermediniz
+must enter valid time: Gecerli saat vermediniz
 
 ########################################
 # Page: includes/menu/index.php

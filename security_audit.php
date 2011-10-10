@@ -26,13 +26,13 @@ if ( $phpinfo == '1' ) {
   exit;
 }
 clearstatcache();
-print_header();
 ob_start();
+print_header();
 echo '
     <h2>' . translate( 'Security Audit' ) . '</h2>
     <ul id="securityAuditNotes">
       <li>' . translate( 'list potential security issues') . '</li>
-      <li>' . translate( 'For questions about WebCalendar security see the forums' )
+      <li>' . translate( 'WebCal security questions' )
   . '<a href="https://sourceforge.net/forum/?group_id=3870" target="_blank">'
   . '<img src="docs/newwin.gif" alt="SourceForge.net" border="0"></a></li>
       <li><a href="#" onclick="window.open( \'security_audit.php?phpinfo=1\', '
@@ -50,7 +50,7 @@ echo '
 // Make sure they aren't still using the default admin username/password.
 print_issue( translate( 'Default admin user password' ),
   ( user_valid_login( 'admin', 'admin' ) == false ),
-  translate( 'You should change the password of the default admin user.' ) );
+  translate( 'change default admin password' ) );
 
 // Is the main directory still writable?
 // Just see if we get an error trying to append to it.
@@ -93,7 +93,7 @@ if ( $SEND_EMAIL != 'Y' ) {
   // Reminders are disabled!
   print_issue( str_replace( 'XXX', 'tools/send_reminders.php',
       translate( 'File exists XXX' ) ), $isOk,
-    translate( 'Because you have email disabled, you should remove this file.' ) );
+    translate( 'email disabled remove this file' ) );
 } else {
   // Is tools/send_reminders.php in the 'standard' location?
   print_issue( str_replace( 'XXX', 'tools/send_reminders.php',
@@ -112,13 +112,12 @@ print_issue(
 // If Public Access enabled, make sure approvals are on
 if ( $PUBLIC_ACCESS == 'Y' ) {
   print_issue( str_replace( 'XXX',
-      translate( 'Public access new events require approval' ), $sysSettingsXXX ),
+      translate( 'must approve public events' ), $sysSettingsXXX ),
     ( $PUBLIC_ACCESS_CAN_ADD != 'Y' || $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y' ),
-    translate( 'recommend approving new public events' ) );
+    translate( 'recommend approve new publics' ) );
 
   print_issue( str_replace( 'XXX',
-      translate( 'Require CAPTCHA validation for public access new events' ),
-      $sysSettingsXXX ),
+      translate( 'require public CAPTCHA' ), $sysSettingsXXX ),
     ( $ENABLE_CAPTCHA == 'Y' ), translate( 'recommend using CAPTCHA' ) );
 }
 
@@ -133,7 +132,7 @@ if ( ! empty( $settings['db_cachedir'] ) && $wcDir != '.' ) {
     $isOk = false;
   }
 }
-print_issue( translate( 'Database cache directory location' ), $isOk,
+print_issue( translate( 'DB cache dir location' ), $isOk,
   translate( 'db cache should be inaccessable' ) );
 
 $phpSettingsXXX  = translate( 'PHP Settings XXX' );

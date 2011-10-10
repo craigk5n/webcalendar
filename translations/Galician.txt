@@ -74,10 +74,10 @@ Year: Ano
 Settings: Configuración
 Email: correo electrónico
 Colors: Cores
-Document background: Fondo do documento
+Document BG: Fondo do documento
 Document title: Título do documento
-Table cell background: Fondo da cela da táboa
-Table cell background for current day: Fondo da cela para hoxe
+Table cell BG: Fondo da cela da táboa
+Table cell today BG: Fondo da cela para hoxe
 Help: Axuda
 language-help: Especifica o idioma que se empregará.
 Language: Idioma
@@ -135,7 +135,7 @@ Time: Hora
 #
 Color: Cor
 Delete: Borrar
-Are you sure you want to delete this entry?: ¿Está seguro de que quere borrar esta entrada?
+really delete entry: ¿Está seguro de que quere borrar esta entrada?
 
 ########################################
 # Page: catsel.php
@@ -190,20 +190,20 @@ Use end date: Data final de uso
 repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento. O 1 por defecto indica que debería ter lugar cada vez. Se se especifica 2, o evento terá lugar nas outras semanas (se en <i>Tipo de Repetición</i> se selecciona <i>Semanalmente</i>), terá lugar nos outros meses (se en <i>Tipo de Repetición</i> se selecciona <i>Mensualmente</i>), etc.
 Frequency: Frecuencia
 Delete entry: Borrar entrada
-You are not authorized to edit this entry.: Non está autorizado para modificar esta entrada
+not authorized to edit entry: Non está autorizado para modificar esta entrada
 
 ########################################
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: Foille engadida unha nova cita por
 An appointment has been updated by: Foille actualizada unha cita por
-The following conflicts with the suggested time: O seguinte entra en conflicto coa hora suxerida
+conflicts with suggested time: O seguinte entra en conflicto coa hora suxerida
 Please look on: Por favor mire en
 to accept or reject this appointment: para aceptar ou rexeitar esta cita
 to view this appointment: para ver esta cita
 Scheduling Conflict: Conflicto de horario
 Your suggested time of: A súa hora suxerida de
-conflicts with the following existing calendar entries: entra en conflicto coas seguintes entradas existentes no calendario
+conflicts with existing entries: entra en conflicto coas seguintes entradas existentes no calendario
 
 ########################################
 # Page: edit_layer.php
@@ -250,8 +250,8 @@ Set Password: Fixar contrasinal
 ########################################
 # Page: edit_user_handler.php
 #
-The passwords were not identical.: Os contrasinais non eran idénticos
-You have not entered a password.: Non introduciu ningún contrasinal
+passwords not identical: Os contrasinais non eran idénticos
+must enter a password: Non introduciu ningún contrasinal
 
 ########################################
 # Page: export.php
@@ -298,7 +298,7 @@ Disabled: Desactivado
 #
 Layer: Capa
 Edit layer: Modificar capa
-Are you sure you want to delete this layer?: ¿Está seguro de que quere borrar esta capa?
+really delete layer: ¿Está seguro de que quere borrar esta capa?
 Disable Layers: Desactivar Capas
 Add layer: Engadir capa
 
@@ -314,8 +314,8 @@ Reject this entry?: ¿Rexeitar esta entrada?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: Debe introducir un login e un contrasinal
-Save login via cookies so I dont have to login next time.: Gravar login mediante cookies para non ter que volver introducilo a próxima vez
+must enter login/password: Debe introducir un login e un contrasinal
+Save login via cookies: Gravar login mediante cookies para non ter que volver introducilo a próxima vez
 Login: Entrar
 cookies-note: <b>Nota:</b> Este programa necesita que as cookies estean activadas.
 
@@ -337,7 +337,7 @@ An appointment has been rejected by: Foille rexeitada unha cita por
 ########################################
 # Page: report.php
 #
-This event is confidential.: Este evento é confidencial
+confidential event: Este evento é confidencial
 Rejected: Rexeitada
 
 ########################################
@@ -349,7 +349,7 @@ Keywords: Palabras clave
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: Debe introducir unha ou máis palabras clave para a busca
+must enter search keywords: Debe introducir unha ou máis palabras clave para a busca
 Search Results: Resultados da busca
 match found: coincidencia atopada
 matches found: coincidencias atopadas
@@ -371,11 +371,11 @@ Add New User: Engadir Novo Usuario
 #
 Approve/Confirm entry: Aprobar/Confirmar entrada
 Reject entry: Rexeitar entrada
-This will delete this entry for all users.: Esto borrará esta entrada para tódolos usuarios.
+will delete entry for all: Esto borrará esta entrada para tódolos usuarios.
 Edit entry: Modificar entrada
-This will delete the entry from your calendar.: Esto borrará a entrada do seu calendario.
-Do you want to add this entry to your calendar?: ¿Quere engadir esta entrada ó seu calendario?
-This will add the entry to your calendar.: Esto engadirá a entrada ó seu calendario.
+will delete entry from your cal: Esto borrará a entrada do seu calendario.
+want to add entry to your cal: ¿Quere engadir esta entrada ó seu calendario?
+will add entry to your cal: Esto engadirá a entrada ó seu calendario.
 Palm Pilot: =
 
 ########################################
@@ -466,18 +466,18 @@ Notification: Notificación
 ########################################
 # Page: includes/js/admin.php
 #
-Invalid color for document background.: Color non válido para o fondo do documento
-Invalid color for document title.: Color non válido para o título do documento
-Invalid color for table cell background.: Color non válido para o fondo da cela
-Invalid color for table cell background for today.: Color non válido para o fondo da cela de hoxe
-Color format should be RRGGBB.: O formato da cor debería ser '#RRGGBB'
+Invalid doc BG color: Color non válido para o fondo do documento
+Invalid doc title color: Color non válido para o título do documento
+Invalid table cell BG color: Color non válido para o fondo da cela
+Invalid table cell today BG: Color non válido para o fondo da cela de hoxe
+Color format should be RGB: O formato da cor debería ser '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Non introduciu ningunha descrición breve
-The time you have entered begins before your preferred work hours. Is this correct?: A hora que introduciu comeza antes das súas horas de traballo indicadas. ¿Está ben?
-You have not entered a valid time of day: Non introduciu unha hora válida do día
+must enter Brief Description: Non introduciu ningunha descrición breve
+time before work hours: A hora que introduciu comeza antes das súas horas de traballo indicadas. ¿Está ben?
+must enter valid time: Non introduciu unha hora válida do día
 
 ########################################
 # Page: includes/js/edit_layer.php

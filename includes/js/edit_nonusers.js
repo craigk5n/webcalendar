@@ -8,12 +8,12 @@ function valid_form(form) {
   lname = form.nlastname.value;
 
   if (!name) {
-    alert(xlate['error'] + xlate['noBlankCalId']); // translate( 'Calendar ID cannot be blank.' )
+    alert(xlate['noBlankCalId']); // translate( 'no blank cal ID' )
     document.editnonuser.nid.focus();
     return false;
   }
   if (!fname && !lname) {
-    alert(xlate['error'] + xlate['noBlankNames']); // translate( 'First and last names cannot both be blank.')
+    alert(xlate['noBlankNames']); // translate( 'both names cannot be blank')
     document.editnonuser.nfirstname.focus();
     return false;
   }

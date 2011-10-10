@@ -106,7 +106,7 @@ if ( $prad ) {
     'public', '', translate ( 'Public Access' ),
     'uac', '', translate ( 'User Access Control' ),
     'groups', '', translate ( 'Groups' ),
-    'nonuser', '', translate ( 'NonUser Calendars' ),
+    'nonuser', '', translate ( 'NUCs' ),
     'other', '', translate ( 'Other' ),
     'email', '', translate ( 'Email' ),
     'colors', '', translate ( 'Colors' )
@@ -228,20 +228,20 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
    . htmlspecialchars( $views[$i]['cal_name'] ) . '</option>';
 }
 foreach ( array (
-    'BGCOLOR' => translate ( 'Document background' ),
+    'BGCOLOR' => translate ( 'Document BG' ),
     'H2COLOR' => translate ( 'Document title' ),
     'TEXTCOLOR' => translate ( 'Document text' ),
     'MYEVENTS' => translate ( 'My event text' ),
     'TABLEBG' => translate ( 'Table grid color' ),
-    'THBG' => translate ( 'Table header background' ),
+    'THBG' => translate ( 'Table header BG' ),
     'THFG' => translate ( 'Table header text' ),
-    'CELLBG' => translate ( 'Table cell background' ),
-    'TODAYCELLBG' => translate ( 'Table cell background for current day' ),
-    'HASEVENTSBG' => translate ( 'Table cell background for days with events' ),
-    'WEEKENDBG' => translate ( 'Table cell background for weekends' ),
-    'OTHERMONTHBG' => translate ( 'Table cell background for other month' ),
+    'CELLBG' => translate ( 'Table cell BG' ),
+    'TODAYCELLBG' => translate ( 'Table cell today BG' ),
+    'HASEVENTSBG' => translate ( 'Table cell events BG' ),
+    'WEEKENDBG' => translate ( 'Table cell weekends BG' ),
+    'OTHERMONTHBG' => translate ( 'Table cell other month BG' ),
     'WEEKNUMBER' => translate ( 'Week number color' ),
-    'POPUP_BG' => translate ( 'Event popup background' ),
+    'POPUP_BG' => translate ( 'Event popup BG' ),
     'POPUP_FG' => translate ( 'Event popup text' ),
     ) as $k => $v ) {
   $color_sets .= print_color_input_html ( $k, $v );
