@@ -96,7 +96,6 @@ function time_selection ( $prefix, $time = '', $trigger = false ) {
 $daysStr = translate ( 'days' );
 $hoursStr = translate ( 'hours' );
 $minutStr = translate ( 'minutes' );
-$saveStr = translate ( 'Save' );
 
 load_user_categories();
 
@@ -256,7 +255,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 
     // Public access has no access to tasks.
     if ( $login == '__public__' && $eType == 'task' )
-      etranslate( 'You are not authorized to edit this task.' );
+      etranslate( 'not authorized to edit task' );
 
     // Check UAC.
     if ( access_is_enabled() )
@@ -532,20 +531,23 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
     user_load_variables ( $user, 'temp' );
     $tz_diff = ( $user_tz_offset - $tz_offset ) / 3600;
     $abs_diff = abs ( $tz_diff );
-    // translate ( 'is in a different timezone than you are. Currently' )
+// TODO:
+// Replace all this with translate( 'Time at XXX location is 1400')
+// or something similar.
+    // translate ( 'is in a different TZ' )
     // translate ( 'hour ahead of you' ) translate ( 'hour behind you' )
     // translate ( 'hours ahead of you' ) translate ( 'hours behind you' )
-    // translate ( 'XXX is in a different timezone (ahead)' )
-    // translate ( 'XXX is in a different timezone (behind)' )
+    // translate ( 'XXX is in TZ ahead' )
+    // translate ( 'XXX is in TZ behind' )
     // Line breaks in translates below are to bypass update_translation.pl.
     $TZ_notice = str_replace ( 'XXX',
       array ( $tempfullname,
         // TODO show hh:mm instead of abs.
         $abs_diff . ' ' . translate ( 'hour'
            . ( $abs_diff == 1 ? '' : 's' ) ),
-        translate ( 'Time entered here is based on your Timezone.' ) ),
-      translate ( 'XXX is in a different timezone ('
-         . ( $tz_diff > 0 ? 'ahead)' : 'behind)' ) ) );
+        translate ( 'Time here is based on your TZ' ) ),
+      translate ( 'XXX is in TZ '
+         . ( $tz_diff > 0 ? 'ahead' : 'behind' ) ) );
   }
   // Return to $login TIMEZONE.
   set_env ( 'TZ', $TIMEZONE );
@@ -615,14 +617,14 @@ if ( $can_edit ) {
             <tr>
               <td class="tooltip" title="'
    . tooltip ( 'brief-description-help' ) . '"><label for="entry_brief">'
-   . translate ( 'Brief Description' ) . ':</label></td>
+   . translate ( 'Brief Description' ) . '</label></td>
               <td colspan="2"><input type="text" name="name" id="entry_brief" '
    . 'size="25" value="' . htmlspecialchars( $name ) . '"></td>
             </tr>
             <tr>
               <td class="tooltip aligntop" title="'
    . tooltip ( 'full-description-help' ) . '"><label for="entry_full">'
-   . translate ( 'Full Description' ) . ':</label></td>
+   . translate ( 'Full Description' ) . '</label></td>
               <td><textarea name="description" id="entry_full" rows="'
    . $textareasize . '" cols="50"' . '>' . htmlspecialchars ( $description )
    . '</textarea></td>' . ( $use_fckeditor || $use_htmlarea ? '
@@ -637,7 +639,7 @@ if ( $can_edit ) {
    . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
                   <tr>
                     <td class="tooltip" title="' . tooltip ( 'access-help' )
-     . '"><label for="entry_access">' . translate ( 'Access' ) . ':</label></td>
+     . '"><label for="entry_access">' . translate ( 'Access' ) . '</label></td>
                     <td width="80%">
                       <select name="access" id="entry_access">
                         <option value="P"' . ( $access == 'P' || !
@@ -657,8 +659,8 @@ if ( $can_edit ) {
     echo '
                   <tr>
                     <td class="tooltip" title="' . tooltip ( 'priority-help' )
-     . '"><label for="entry_prio">' . translate ( 'Priority' )
-     . ':&nbsp;</label></td>
+     . '"><label for="entry_prio">' . translate ( 'Priority_' )
+     . '&nbsp;</label></td>
                     <td>
                       <select name="priority" id="entry_prio">';
     $pri = array ( '',
@@ -776,8 +778,8 @@ if ( $can_edit ) {
             <tr>
               <td class="tooltip" title="' . tooltip ( 'date-help' )
    . '"><label>'
-   . ( $eType == 'task' ? translate ( 'Start Date' ) : translate ( 'Date' ) )
-   . ':</label></td>
+   . ( $eType == 'task' ? translate ( 'Start Date' ) : translate ( 'Date_' ) )
+   . '</label></td>
               <td colspan="2">' . date_selection ( '', $cal_date ) . '</td>
             </tr>
             <tr>
@@ -803,13 +805,13 @@ if ( $can_edit ) {
             </tr>' . ( empty ( $TZ_notice ) ? '' : '
             <tr id="timezonenotice">
               <td class="tooltip" title="'
-       . tooltip ( 'Time entered here is based on your Timezone.' ) . '">'
-       . translate ( 'Timezone Offset' ) . ':</td>
+       . tooltip ( 'Time here is based on your TZ' ) . '">'
+       . translate ( 'TZ Offset' ) . '</td>
               <td colspan="2">' . $TZ_notice . '</td>
             </tr>' ) . '
             <tr id="timeentrystart" style="visibility:hidden;">
               <td class="tooltip" title="' . tooltip ( 'time-help' ) . '">'
-     . translate ( 'Time' ) . ':' . '</td>
+     . translate ( 'Time_' ) . '</td>
               <td colspan="2">' . time_selection ( 'entry_', $cal_time );
 
     if ( $TIMED_EVT_LEN != 'E' ) {
@@ -818,7 +820,7 @@ if ( $can_edit ) {
             </tr>
             <tr id="timeentryduration" style="visibility:hidden;">
               <td><span class="tooltip" title="' . tooltip ( 'duration-help' )
-       . '">' . translate ( 'Duration' ) . ':&nbsp;</span></td>
+       . '">' . translate ( 'Duration' ) . '&nbsp;</span></td>
               <td colspan="2">
                 <input type="text" name="duration_h" id="duration_h" size="2" '
        . 'maxlength="2" value="';
@@ -846,7 +848,7 @@ if ( $can_edit ) {
         </tr>';
   } else { // eType == task
     echo ' class="tooltip" title="' . tooltip ( 'time-help' ) . '">'
-     . translate ( 'Start Time' ) . ':</td>
+     . translate ( 'Start Time' ) . '</td>
           <td colspan="2">' . time_selection ( 'entry_', $cal_time ) . '</td>
         </tr>
         <tr>
@@ -854,7 +856,7 @@ if ( $can_edit ) {
         </tr>
         <tr>
           <td class="tooltip" title="' . tooltip ( 'date-help' ) . '">'
-     . translate ( 'Due Date' ) . ':</td>
+     . translate ( 'Due Date' ) . '</td>
           <td colspan="2">' . date_selection ( 'due_', $due_date ) . '</td>
         </tr>
         <tr>
@@ -1115,7 +1117,7 @@ if ( $can_edit ) {
         <tr title="' . tooltip ( 'avail_participants-help' ) . '">
           <td class="tooltip aligntop" rowspan="2"><label>'
      . translate( 'Available' ) . '<br>'
-     . translate ( 'Participants' ) . ':</label></td>
+     . translate ( 'Participants_' ) . '</label></td>
           <td class="boxleft boxtop">&nbsp;</td>
           <td colspan="2"class="boxtop boxright">' . translate( 'Find Name' )
           . '<input type="text" size="20" name="lookup" id="lookup" '
@@ -1154,7 +1156,7 @@ if ( $can_edit ) {
         <tr title="' . tooltip ( 'participants-help' ) . '">
           <td class="tooltip aligntop"><label>'
             . translate( 'Selected' ) . '<br>'
-            . translate ( 'Participants' ) . ':</label></td>
+            . translate ( 'Participants_' ) . '</label></td>
           <td align="left" valign="bottom" class="boxtop boxleft boxbottom">&nbsp;</td>
           <td class="boxtop boxright boxbottom" colspan="2">
             <select class="fixed" name="selectedPart[]" id="sel_part" size="7" multiple>'
@@ -1258,7 +1260,7 @@ if ( $can_edit ) {
         <tr id="rptfreq" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-frequency-help' ) . '">
           <td class="tooltip"><label for="entry_freq">'
-     . translate ( 'Frequency' ) . ':</label></td>
+     . translate ( 'Frequency' ) . '</label></td>
           <td colspan="2">
             <input type="text" name="rpt_freq" id="entry_freq" size="4" '
      . 'maxlength="4" value="' . $rpt_freq . '">&nbsp;&nbsp;&nbsp;&nbsp;
@@ -1584,11 +1586,11 @@ if ( $can_edit ) {
                 <label><input type="radio" name="reminder" '
      . 'id="reminderYes" value="1"'
      . ( $rem_status ? ' checked' : '' ) . ' onclick="toggle_reminders()">'
-     . translate ( 'Yes' ) . '</label>&nbsp;
+     . $yesStr . '</label>&nbsp;
                 <label><input type="radio" name="reminder" '
      . 'id="reminderNo" value="0"'
      . ( $rem_status ? '' : ' checked' ) . ' onclick="toggle_reminders()">'
-     . translate ( 'No' ) . '</label>
+     . $noStr . '</label>
             </td>
           </tr>
         </thead>
@@ -1726,10 +1728,10 @@ if ( $can_edit ) {
   if ( $id > 0 && ( $login == $create_by || $single_user == 'Y' || $is_admin ) )
     echo '
     <a href="del_entry.php?id=' . $id . '" onclick="return confirm( \''
-     . translate( 'Are you sure you want to delete this entry?' ) . '\' );">'
+     . translate( 'really delete entry' ) . '\' );">'
      . translate( 'Delete entry' ) . '</a><br>';
 } else
-  etranslate( 'You are not authorized to edit this entry.' );
+  etranslate( 'not authorized to edit entry' );
 // end if ( $can_edit )
 
 // Create a hidden div tag for editing categories...
@@ -1755,7 +1757,7 @@ if ( $can_edit ) {
   }
   ?>
   <center>
-  <input type="button" value="<?php etranslate("Save");?>" onclick="catOkHandler()">
+  <input type="button" value="<?php echo $saveStr;?>" onclick="catOkHandler()">
   </center>
   </form>
   </div>

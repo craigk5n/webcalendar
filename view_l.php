@@ -66,7 +66,7 @@ $viewusers = view_get_user_list ( $id );
 if ( count ( $viewusers ) == 0 )
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view.
-  $error = translate( 'No users for this view.' );
+  $error = $noVuUsers;
 
 if ( ! empty ( $error ) ) {
   echo print_error ( $error ) . print_trailer();

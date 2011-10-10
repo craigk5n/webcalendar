@@ -72,7 +72,7 @@ $debug = false; // Set to true to print debug info...
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
 if ( ! $c ) {
-  echo translate ( 'Error connecting to database' ) . ': ' . dbi_error();
+  echo translate ( 'Error connecting to DB' ) . ' ' . dbi_error();
   exit;
 }
 
@@ -122,7 +122,7 @@ if ( $REMOTES_ENABLED == 'Y' ) {
         import_data ( $data, $overwrite, $type );
         if ( $debug )
           echo translate ( 'Events successfully imported' )
-           . ": $count_suc<br><br>\n";
+           . " $count_suc<br><br>\n";
       } else { // we didn't receive any data and/or there was an error
         if ( ! empty ( $errormsg ) )
           echo $errormsg . "<br>\n";

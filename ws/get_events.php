@@ -75,7 +75,7 @@ if ( $WS_DEBUG )
   $out .= '
 <!-- ' . str_replace ( array ( 'XXX', 'YYY', 'ZZZ' ),
     array ( $user, $startdate, $enddate ),
-    translate ( 'Checking for events for XXX from date YYY to date ZZZ.' ) )
+    translate ( 'find XXX events from YYY to ZZZ' ) )
    . ' -->
 ';
 

@@ -28,7 +28,7 @@ $keywords = getValue ( 'keywords' );
 $advanced = getValue ( 'advanced' );
 
 if ( strlen ( $keywords ) == 0 )
-  $error = translate( 'You must enter one or more search keywords.' );
+  $error = translate( 'must enter search keywords' );
 
 $matches = 0;
 // Determine if this user is allowed to search the calendar of other users

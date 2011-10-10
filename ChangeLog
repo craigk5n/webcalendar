@@ -4,6 +4,11 @@ NOTE: This is the 1.3.0 development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2011)
+ - 10-Oct-11 This update is mostly cosmetic.
+   I've shortened several translate(phrases), combined a few, added a couple and modified some to be more accurate.
+   I've also moved more punctuation and some "literal" phrases from the code into English-US.txt.
+   Added includes/css/admin.css and moved the "#admin" styles out of styles.css.
+     It makes the overall file size smaller and the CSS easier to work with.
  - 27-Sep-11 Remove includes/js/assistant_edit.php.
    Replaced with includes/js/assistant_edit.js some time ago.
    Remove includes/js/catsel.php. Use a cookie for that variable.

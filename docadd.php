@@ -110,9 +110,8 @@ if ( $REQUEST_METHOD == 'POST' ) {
   // get next id first
   $res = dbi_execute ( 'SELECT MAX( cal_blob_id ) FROM webcal_blob' );
   if ( ! $res )
-    die_miserable_death ( str_replace ( 'XXX', dbi_error(),
-      translate ( 'Database error XXX.' ) ) );
-       $row = dbi_fetch_row ( $res );
+    die_miserable_death ( str_replace ( 'XXX', dbi_error(), $dbErrXXXStr ) );
+  $row = dbi_fetch_row ( $res );
   $nextid = ( ! empty ( $row ) ? $row[0] + 1 :  1 );
   dbi_free_result ( $res );
 

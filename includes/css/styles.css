@@ -552,63 +552,45 @@ tr.highlight td {
   border-bottom:0;
   padding:0;
 }
-#admin table,
 #pref table {
   vertical-align:top;
 }
-#admin input,
-#admin select,
 #pref input,
 #pref select {
   margin:0 .1875em;
 }
-#admin .main td,
 #pref .main td {
   height:1.875em;
 }
-#admin .main td,
-#admin .main th,
 #pref .main td,
 #pref .main th {
   font-size:.75em;
 }
-#admin .empty,
 #pref .empty {
   border-top:transparent;
   border-left:transparent;
 }
-#admin .main td.weekcell,
 #pref .main td.weekcell {
   margin:0;
   text-align:center;
   text-decoration:none;
   vertical-align:middle;
 }
-#admin .main th.weekcell,
 #pref .main th.weekcell {
   background:transparent;
 }
-#admin .main td.empty,
-#admin .main td.weekcell,
-#admin .main th.empty,
-#admin .main th.weekcell,
 #pref .main td.empty,
 #pref .main td.weekcell,
 #pref .main th.empty,
 #pref .main th.weekcell {
   width:1%;
 }
-#admin #tabscontent p label,
 #pref #tabscontent p label {
   clear:left;
   float:left;
   width:25%;
   margin:0;
   padding:0 .25em;
-}
-#admin #saver {
-  clear:both;
-  margin-top:1em;
 }
 #example_month {
   float:right;

@@ -37,7 +37,7 @@ $participants = view_get_user_list ( $id );
 if ( count ( $participants ) == 0 ) {
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any group assigned to this view.
-  $error = translate( 'No users for this view.' );
+  $error = $noVuUsers;
 
   echo print_error ( $error ) . print_trailer();
   exit;
@@ -57,19 +57,14 @@ $partStr = implode ( ',', $participants );
 $trailerStr = print_trailer();
 $wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 
-$nextStr = translate ( 'Next' );
-$previousStr = translate ( 'Previous' );
-
 echo <<<EOT
     <div class="viewnav">
-      <a title="{$previousStr}" class="prev"
+      <a title="{$prevStr}" class="prev"
         href="view_d.php?id={$id}&amp;date={$prevdate}">
-        <img src="images/leftarrow.gif" class="prev"
-          alt="{$previousStr}"></a>
+        <img src="images/leftarrow.gif" class="prev" alt="{$prevStr}"></a>
       <a title="{$nextStr}" class="next"
         href="view_d.php?id={$id}&amp;date={$nextdate}">
-        <img src="images/rightarrow.gif" class="next"
-          alt="{$nextStr}"></a>
+        <img src="images/rightarrow.gif" class="next" alt="{$nextStr}"></a>
       <div class="title">
         <span class="date">{$nowStr}</span><br>
         <span class="viewname">{$view_name}</span>

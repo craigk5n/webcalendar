@@ -117,7 +117,7 @@ if ( ! empty ( $delete ) ) {
         $error = db_error();
       }
     } else {
-      $error = translate ( 'Calendar ID' ).' '.translate ( 'word characters only' ).'.';
+      $error = translate ( 'Cal ID word chars only' );
     }
   }
   //Add entry in UAC access table for new admin and remove for of admin

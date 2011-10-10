@@ -18,7 +18,7 @@ if ( $CATEGORIES_ENABLED != 'Y' )
   $error = print_not_auth();
 else
 if ( empty ( $categories ) )
-  $error = translate ( 'You have not added any categories.' );
+  $error = translate ( 'no categories added' );
 
 // Make sure user is a participant.
 $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
@@ -107,8 +107,7 @@ $catHelpStr = tooltip ( 'category-help' );
 $catStr = translate ( 'Category' );
 $editStr = translate ( 'Edit' );
 $globalNoteStr = ( $globals_found
-  ? translate ( 'Global Categories cannot be changed.' ) : '' );
-$saveStr = translate ( 'Save' );
+  ? translate ( 'cant change Global Cats' ) : '' );
 
 print_header ( array ( 'js/set_entry_cat.php/true' ) );
 
@@ -122,7 +121,7 @@ else {
       <input type="hidden" name="id" value="{$id}">
       <table border="0" cellpadding="5" summary="">
         <tr class="aligntop">
-          <td class="bold">{$briefStr}:</td>
+          <td class="bold">{$briefStr}</td>
           <td>{$event_name}</td>
         </tr>
         <tr>

@@ -316,13 +316,11 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
   // Delete any existing entry.
   if ( ! dbi_execute ( 'DELETE FROM webcal_config
     WHERE cal_setting = \'WEBCAL_TZ_CONVERSION\'' ) )
-    return str_replace( 'XXX', dbi_error(),
-      translate ( 'Database error XXX.' ) );
+    return str_replace( 'XXX', dbi_error(), $dbErrXXXStr );
 
   if ( ! dbi_execute ( 'INSERT INTO webcal_config ( cal_setting, cal_value )
     VALUES ( \'WEBCAL_TZ_CONVERSION\', \'Y\' )' ) )
-    return str_replace( 'XXX', dbi_error(),
-      translate ( 'Database error XXX.' ) );
+    return str_replace( 'XXX', dbi_error(), $dbErrXXXStr );
 
   return $error;
 }
@@ -360,7 +358,7 @@ function get_installed_version ( $postinstall = false ) {
   }
   $response_msg = ( $_SESSION['old_program_version'] == 'pre-v0.9.07'
     ? translate ( 'Perl script required' )
-    : translate ( 'previous version requires updating several tables' ) );
+    : translate ( 'version needs tables updated' ) );
   // v1.1 and after will have an entry in webcal_config to make this easier
   // $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
   //   WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'', array(), false, false );

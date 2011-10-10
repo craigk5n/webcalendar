@@ -87,7 +87,7 @@ $only_testing = false; // Just pretend to send -- for debugging.
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
 if ( ! $c ) {
-  echo translate( 'Error connecting to database' ) . ': ' . dbi_error();
+  echo translate( 'Error connecting to DB' ) . ' ' . dbi_error();
   exit;
 }
 
@@ -258,7 +258,7 @@ if ( $debug )
 // the event who have accepted as well as those who have not yet approved.
 // But, don't send to users who rejected (cal_status='R' ).
 function send_reminder ( $id, $event_date ) {
-  global $ALLOW_EXTERNAL_USERS, $attachics, $debug, $def_tz, $emails,
+  global $ALLOW_EXTERNAL_USERS, $attachics, $debug, $def_tz, $emails, $err_Str
   $EXTERNAL_REMINDERS, $htmlmail, $ignore_user_case, $is_task, $LANGUAGE,
   $languages, $names, $only_testing, $SERVER_URL, $site_extras, $tz, $t_format;
 
@@ -314,8 +314,8 @@ function send_reminder ( $id, $event_date ) {
   }
 
   if ( ! ( $row = dbi_fetch_row ( $res ) ) ) {
-    echo translate ( 'Error' ) . ': ' . str_replace ( 'XXX', $id,
-      translate ( 'could not find event id XXX in database.' ) ) . "\n";
+    echo $err_Str . str_replace ( 'XXX', $id,
+      translate ( 'event XXX not found in DB' ) ) . "\n";
     return;
   }
 
@@ -380,7 +380,7 @@ function send_reminder ( $id, $event_date ) {
     $padding = ( ! empty ( $htmlmail[$user] ) ? '&nbsp;&nbsp;&nbsp;' : '   ' );
     $body = str_replace ( 'XXX',
       ( $is_task ? translate ( 'task' ) : translate ( 'event' ) ),
-      translate ( 'This is a reminder for the XXX detailed below.' ) ) . "\n\n";
+      translate ( 'reminder for XXX below' ) ) . "\n\n";
 
     $create_by = $row[0];
     $event_time = date_to_epoch ( $row[1] . ( $row[2] != -1 ? sprintf ( "%06d", $row[2] ): '' ) );
@@ -401,37 +401,37 @@ function send_reminder ( $id, $event_date ) {
     }
     $body .= strtoupper ( $name ) . "\n\n" . translate ( 'Description' )
      . ":\n" . $padding . $description . "\n"
-     . ( $is_task ? translate ( 'Start Date' ) : translate ( 'Date' ) )
-     . ': ' . date_to_str ( ( $row[2] > 0? date ( 'Ymd', $event_date ) : gmdate ( 'Ymd', $event_date ) ) ) . "\n"
+     . ( $is_task ? translate ( 'Start Date' ) : translate ( 'Date_' ) )
+     . ' ' . date_to_str ( ( $row[2] > 0 ? date ( 'Ymd', $event_date ) : gmdate ( 'Ymd', $event_date ) ) ) . "\n"
      . ( $row[2] > 0
-      ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time' ) ) . ': '
+      ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time_' ) ) . ' '
        . display_time ( '', $display_tzid, $event_time, $userTformat ) . "\n"
-      : ( ( $row[2] == 0 &&  $row[5] = 1440) ? translate( 'Time' ) . ': '
+      : ( ( $row[2] == 0 &&  $row[5] = 1440) ? translate( 'Time_' ) . ' '
        . translate( 'All day event' ). "\n" : '' ) )
      . ( $row[5] > 0 && ! $is_task
-      ? translate ( 'Duration' ) . ': ' . $row[5] . ' '
+      ? translate ( 'Duration' ) . ' ' . $row[5] . ' '
        . translate ( 'minutes' ) . "\n"
-      : ( $is_task ? translate ( 'Due Date' ) . ': ' . date_to_str ( $row[11] )
+      : ( $is_task ? translate ( 'Due Date_' ) . ' ' . date_to_str ( $row[11] )
        . "\n" . translate ( 'Due Time' ) . ': ' . display_time ( $row[12],
          $display_tzid, '', $userTformat ) . "\n" : '' ) )
      . ( $is_task && isset ( $percentage[$user] )
       ? translate ( 'Pecentage Complete' ) . ': ' . $percentage[$user] . "%\n" : '' )
      . ( empty ( $DISABLE_PRIORITY_FIELD ) || $DISABLE_PRIORITY_FIELD != 'Y'
-      ? translate ( 'Priority' ) . ': ' . $row[6] . '-'
+      ? translate ( 'Priority_' ) . ' ' . $row[6] . '-'
        . $pri[ceil( $row[6] / 3 )] . "\n" : '' );
 
     if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
-      $body .= translate ( 'Access' ) . ': ';
+//      $body .= translate ( 'Access' ) . ' ';
       if ( $row[8] == 'C' )
-        $body .= translate ( 'Confidential' ) . "\n";
+        $body .= translate ( 'Access Confidential' ) . "\n";
       elseif ( $row[8] == 'P' )
-        $body .= translate ( 'Public' ) . "\n";
+        $body .= translate ( 'Access Public' ) . "\n";
       elseif ( $row[8] == 'R' )
-        $body .= translate ( 'Private' ) . "\n";
+        $body .= translate ( 'Access Private' ) . "\n";
     }
 
     $body .= ( ! empty ( $single_user_login ) && ! $single_user_login
-      ? translate ( 'Created by' ) . ': ' . $row[0] . "\n" : '' )
+      ? translate ( 'Created by' ) . ' ' . $row[0] . "\n" : '' )
      . translate ( 'Updated' ) . ': ' . date_to_str ( $row[3] ) . ' '
      . display_time ( $row[3] . sprintf ( "%06d", $row[4] ), $display_tzid, '',
       $userTformat ) . "\n";
@@ -469,7 +469,7 @@ function send_reminder ( $id, $event_date ) {
     if ( ( empty ( $single_user ) || $single_user != 'Y' ) &&
         ( empty ( $DISABLE_PARTICIPANTS_FIELD ) ||
           $DISABLE_PARTICIPANTS_FIELD != 'N' ) ) {
-      $body .= translate ( 'Participants' ) . ":\n";
+      $body .= translate ( 'Participants_' ) . "\n";
 
       for ( $i = 0; $i < $partcnt; $i++ ) {
         $body .= $padding . $names[$participants[$i]] . "\n";

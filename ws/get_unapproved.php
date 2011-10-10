@@ -57,7 +57,7 @@ $out = '
 <unapproved>
   <userlist>';
 $out2 = '';
-$unapprovedStr = translate ( 'Getting unapproved for user XXX.' );
+$unapprovedStr = translate ( 'Get unapproved for XXX' );
 
 for ( $i = 0, $cnt = count ( $userList ); $i < $cnt; $i++ ) {
   $out .= '

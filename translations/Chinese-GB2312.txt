@@ -85,16 +85,16 @@ Settings: 设置
 Groups: 组
 Email: 邮件
 Colors: 颜色
-Document background: 文件背景
+Document BG: 文件背景
 Document title: 文件标题
 Document text: 文档文本
 Table grid color: 表栅格颜色
-Table header background: 表头背景颜色
+Table header BG: 表头背景颜色
 Table header text: 表头文本颜色
-Table cell background: 表格背景
-Table cell background for current day: 当天颜色
-Table cell background for weekends: 设置周末背景色
-Event popup background: 事件弹出背景颜色
+Table cell BG: 表格背景
+Table cell today BG: 当天颜色
+Table cell weekends BG: 设置周末背景色
+Event popup BG: 事件弹出背景颜色
 Event popup text: 事件弹出文本颜色
 System Settings: 系统设置
 Help: 说明
@@ -124,18 +124,18 @@ display-weekends-help: 显示-周末-帮助
 Display week number: 显示周数(以年計算)
 Include add event link in views: 包括在视图中添加事件联接
 allow-view-other-help: 允许-其它-视图-帮助
-Allow viewing other users calendars: 允许查看其他用户日历
+may view others cals: 允许查看其他用户日历
 require-approvals-help: 是否需要核准事件
 Require event approvals: 需要事件核准
 Display unapproved: 显示未核准的
 conflict-check-help: 冲突-检查-帮助
-Check for event conflicts: 检查事件冲突
+Check for conflicts: 检查事件冲突
 Yes: 是
 No: 否
 conflict-months-help: 冲突-月-帮助
 Conflict checking months: 冲突检查月数
-Allow users to override conflicts: 允许用户修改冲突
-Limit number of timed events per day: 限制每天已安排事件的数量
+may users override conflicts: 允许用户修改冲突
+Limit timed events per day: 限制每天已安排事件的数量
 Maximum timed events per day: 每天最大已安排时间实践的数量
 disable-priority-field-help: 关闭-优先级-域-帮助
 Disable Priority field: 关闭优先级域
@@ -148,22 +148,22 @@ Remember last login: 记住最后一次登录
 allow-public-access-help: 允许-公共-进入-帮助
 Allow public access: 允许公共登录
 public-access-view-others-help: 可以为公共日历添加其他视图
-Public access can view other users: 公共登录能查询其他用户
+may public view others: 公共登录能查询其他用户
 public-access-can-add-help: 可以设置为公共的
-Public access can add events: 公共登录能添加事件
+may public add events: 公共登录能添加事件
 groups-enabled-help: 组-开放-帮助
 Groups enabled: 使用组
 user-sees-his-group-help: 察看-所在组-帮助
 User sees only his groups: 用户只能看见自己的组
-Nonuser enabled: 允许非日历用户
-Nonuser list: 非日历用户清单
+NUCs enabled: 允许非日历用户
+list NUCs at: 非日历用户清单
 Enabled: 已使用
 Reports enabled: 允许报告
 Allow remote subscriptions: 允许远程投递
 categories-enabled-help: 允许-分类-帮助
 Categories enabled: 允许分类
 Allow external users: 允许其他用户
-External users can receive email notifications: 其他用户能接受邮件提醒
+may notify externals by email: 其他用户能接受邮件提醒
 email-enabled-help: 邮件-允许-帮助
 Email enabled: 使用邮件已启用
 email-default-sender: 邮件-默认-发送者
@@ -217,7 +217,7 @@ Category Name: 分类名称
 Color: 颜色
 Add: 添加
 Delete: 删除
-Are you sure you want to delete this entry?: 您确定删除此事件吗?
+really delete entry: 您确定删除此事件吗?
 Make New Category: 新增分类
 
 ########################################
@@ -259,7 +259,7 @@ Category: 分类
 Untimed event: 无时间的事件
 Timed event: 有时间的事件
 All day event: 全天事件
-Timezone Offset: 时区设置
+TZ Offset: 时区设置
 External Participants: 其他参与者
 Daily: 每日的
 Weekly: 每周的
@@ -277,13 +277,13 @@ Delete entry: 删除事件
 #
 A new appointment has been made for you by: 您有一个新事件, 提交者是
 An appointment has been updated by: 一个约会已经更新,更新人:
-The following conflicts with the suggested time: 在指定的时间内有下面的冲突
+conflicts with suggested time: 在指定的时间内有下面的冲突
 Please look on: 请查看
 to accept or reject this appointment: 决定接受或拒绝这个事件
 to view this appointment: 察看此约会
 Scheduling Conflict: 日程冲突
 Your suggested time of: 您指定的时间
-conflicts with the following existing calendar entries: 同下面已存在的日历事件冲突
+conflicts with existing entries: 同下面已存在的日历事件冲突
 
 ########################################
 # Page: edit_layer.php
@@ -299,8 +299,8 @@ Delete layer: 删除层
 ########################################
 # Page: edit_layer_handler.php
 #
-You cannot create a layer for yourself.: 您不能您自己创建一个层
-You can only create one layer for each user.: 您只能为一个用户来源设置一个层
+no layers for yourself: 您不能您自己创建一个层
+only one layer per user: 您只能为一个用户来源设置一个层
 
 ########################################
 # Page: edit_nonusers.php
@@ -355,7 +355,7 @@ Template variables: 临时变量
 Page template: 页面模版
 Day template: 日模版
 Event template: 事件模版
-Are you sure you want to delete this report?: 您确认删除这份报告吗？
+really delete report: 您确认删除这份报告吗？
 
 ########################################
 # Page: edit_report_handler.php
@@ -378,8 +378,8 @@ Set Password: 设置密码
 # Page: edit_user_handler.php
 #
 Deleting users not supported.: 不支持删除用户功能
-The passwords were not identical.: 密码不一样
-You have not entered a password.: 您没有输入密码
+passwords not identical: 密码不一样
+must enter a password: 您没有输入密码
 
 ########################################
 # Page: export.php
@@ -394,7 +394,7 @@ Modified since: 更改自
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect.: 导出格式未定义或不正确
+incorrect export format: 导出格式未定义或不正确
 
 ########################################
 # Page: groups.php
@@ -456,11 +456,11 @@ Help Index: 辅助索引
 # Page: help_layers.php
 #
 Add/Edit/Delete: 添加/编辑/删除
-The text color of the new layer that will be displayed in your calendar.: 你的日历中显示的新层次的文本颜色
+text color of new layer: 你的日历中显示的新层次的文本颜色
 Disabling: 正在关闭
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: 点击页面下端管理部分的停用层次架构不显示层次架构
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: 点击页面下端管理部分的启用层次架构显示层次架构
-Specifies the user that you would like to see displayed in your calendar.: 选择用户使在你的日历中显示他的事件
+Disable Layers link in admin: 点击页面下端管理部分的停用层次架构不显示层次架构
+Enable Layers link in admin: 点击页面下端管理部分的启用层次架构显示层次架构
+user to display on your cal: 选择用户使在你的日历中显示他的事件
 
 ########################################
 # Page: help_pref.php
@@ -487,7 +487,7 @@ Conflicting events: 冲突事件
 #
 Layer: 层次
 Edit layer: 编辑层次
-Are you sure you want to delete this layer?: 您确定要删除这个层吗?
+really delete layer: 您确定要删除这个层吗?
 Disable Layers: 停用层
 Add layer: 新增层次
 
@@ -503,8 +503,8 @@ Reject this entry?: 拒绝此事件?
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: 您必须输入用户名称及密码
-Save login via cookies so I dont have to login next time.: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
+must enter login/password: 您必须输入用户名称及密码
+Save login via cookies: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
 Login: 登录
 Access public calendar: 进入公共日历
 cookies-note: <b>注意:</b> 本程序需要 cookies 才能使用.
@@ -533,7 +533,7 @@ An appointment has been rejected by: 约会已经被拒绝, 拒绝者是
 ########################################
 # Page: report.php
 #
-This event is confidential.: 这个事件是机密的
+confidential event: 这个事件是机密的
 cont.: 继续
 Approved: 有效的
 Deleted: 已经删除
@@ -555,7 +555,7 @@ Keywords: 关键字
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: 您至少要输入一个搜寻文字或句子
+must enter search keywords: 您至少要输入一个搜寻文字或句子
 Search Results: 查询结果
 match found: 笔符合查询
 matches found: 笔符合查询
@@ -574,7 +574,7 @@ View Another Users Calendar: 查看其他用户的日历
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: 您还没有添加任何分类
+no categories added: 您还没有添加任何分类
 Set Category: 设置分类
 
 ########################################
@@ -620,15 +620,15 @@ External User: 其他用户
 Approve/Confirm entry: 核准/确定 事件
 Reject entry: 拒绝事件
 Set category: 设置种类
-This will delete this entry for all users.: 对所有的用户也將會删除这个事件.
+will delete entry for all: 对所有的用户也將會删除这个事件.
 Edit entry: 编辑事件
-Edit repeating entry for all dates: 编辑所有日期的重复条目
-Delete repeating event for all dates: 删除所有时间的这个重复事件
+Edit repeating entry all dates: 编辑所有日期的重复条目
+Dele repeating event all dates: 删除所有时间的这个重复事件
 Edit entry for this date: 编辑这个日期的条目
 Delete entry only for this date: 只有这个日期删除条目
-This will delete the entry from your calendar.: 这將會從您的日历删除这个事件.
-Do you want to add this entry to your calendar?: 您要新增这个事件到您的日历吗?
-This will add the entry to your calendar.: 这將會新增这个事件到您的日历.
+will delete entry from your cal: 这將會從您的日历删除这个事件.
+want to add entry to your cal: 您要新增这个事件到您的日历吗?
+will add entry to your cal: 这將會新增这个事件到您的日历.
 Email all participants: 邮寄给所有的题者
 Hide activity log: 隐藏活动日志
 Show activity log: 显示活动日志
@@ -655,7 +655,7 @@ Dec: 12月
 ########################################
 # Page: includes/functions.php
 #
-exceeds limit of XXX events per day: 超过每天XXX个事件
+exceeds XXX events/day limit: 超过每天XXX个事件
 Event approved: 事件已到达
 Event created: 事件已创建
 Event deleted: 事件已删除
@@ -746,23 +746,23 @@ Notification: 通告
 #
 Server URL is required.: 填写系统URL
 Server URL must end with /.: 系统URL必须以'/'结尾
-Invalid color for document background.: 无效的文档背景颜色
-Invalid color for document title.: 无效的文档标题颜色
-Invalid color for table cell background.: 无效的表格单元背景颜色
-Invalid color for table grid.: 无效的表格网格颜色
-Invalid color for table header background.: 无效的表头背景颜色
-Invalid color for table text background.: 无效的表头文本颜色
-Invalid color for event popup background.: 无效的背景颜色
-Invalid color for event popup text.: 无效的文本颜色
-Invalid color for table cell background for today.: 无效的当天表格单元背景颜色
-Color format should be RRGGBB.: 颜色格式需要是 '#RRGGBB'
+Invalid doc BG color: 无效的文档背景颜色
+Invalid doc title color: 无效的文档标题颜色
+Invalid table cell BG color: 无效的表格单元背景颜色
+Invalid table grid color: 无效的表格网格颜色
+Invalid table header BG color: 无效的表头背景颜色
+Invalid table cell BG color: 无效的表头文本颜色
+Invalid popup BG color: 无效的背景颜色
+Invalid popup text color: 无效的文本颜色
+Invalid table cell today BG: 无效的当天表格单元背景颜色
+Color format should be RGB: 颜色格式需要是 '#RRGGBB'
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: 您没有输入概要描述
-time prior to work hours...: 这个时段不在您自定的工作时间內. 这是正确的吗?
-You have not entered a valid time of day: 您没有输入正确的时间
+must enter Brief Description: 您没有输入概要描述
+time before work hours: 这个时段不在您自定的工作时间內. 这是正确的吗?
+must enter valid time: 您没有输入正确的时间
 
 ########################################
 # Page: includes/js/edit_layer.php

@@ -28,7 +28,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     nonuser_load_variables ( $nid, 'nonusertemp_' );
     $id_display = $nid . '
       <input type="hidden" name="nid" value="' . $nid . '">';
-    $button = translate ( 'Save' );
+    $button = $saveStr;
         $buttonAction = 'Save';
    // $nonusertemp_login = substr ( $nonusertemp_login,
    //   strlen ( $NONUSER_PREFIX ) );
@@ -51,12 +51,12 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
       <table summary="">
         <tr>
           <td><label for="calid">' . translate ( 'Calendar ID' )
-   . ':</label></td>
+   . '</label></td>
           <td>' . $id_display . '</td>
         </tr>
         <tr>
           <td><label for="nfirstname">' . translate ( 'First Name' )
-   . ':</label></td>
+   . '</label></td>
           <td><input type="text" name="nfirstname" id="nfirstname" size="20" '
    . 'maxlength="25" value="'
    . ( empty ( $nonusertemp_firstname )
@@ -64,14 +64,14 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
         </tr>
         <tr>
           <td><label for="nlastname">' . translate ( 'Last Name' )
-   . ':</label></td>
+   . '</label></td>
           <td><input type="text" name="nlastname" id="nlastname" size="20" '
    . 'maxlength="25" value="'
    . ( empty ( $nonusertemp_lastname )
     ? '' : htmlspecialchars( $nonusertemp_lastname ) ) . '"></td>
         </tr>
         <tr>
-          <td><label for="nadmin">' . translate ( 'Admin' ) . ':</label></td>
+          <td><label for="nadmin">' . translate ( 'Admin_' ) . '</label></td>
           <td>
             <select name="nadmin" id="nadmin">';
 
@@ -80,8 +80,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
               <option value="' . $userlist[$i]['cal_login']
      . ( ! empty ( $nonusertemp_admin ) &&
       $nonusertemp_admin == $userlist[$i]['cal_login']
-      ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname']
-     . '</option>';
+      ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname'] . '</option>';
   }
 
   echo '
@@ -93,14 +92,14 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     echo '
         <tr>
           <td valign="top"><label for="ispublic">'
-     . translate ( 'Is public calendar' ) . ':</td>
+     . translate ( 'Is public calendar' ) . '</td>
           <td>
             <input type="radio" name="ispublic" value="Y" '
      . ( ! empty ( $nonusertemp_is_public ) && $nonusertemp_is_public == 'Y'
-      ? ' checked>' : '>' ) . translate( 'Yes' )
+      ? ' checked>' : '>' ) . $yesStr
      . '&nbsp;&nbsp;<input type="radio" name="ispublic" value="N" '
      . ( empty ( $nonusertemp_is_public ) || $nonusertemp_is_public != 'Y'
-      ? ' checked>' : '>' ) . translate( 'No' ) . '<br>';
+      ? ' checked>' : '>' ) . $noStr . '<br>';
 
     if ( ! empty ( $nonusertemp_login ) ) {
       $nu_url = $SERVER_URL . 'nulogin.php?login=' . $nonusertemp_login;
@@ -114,19 +113,16 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
 
   echo '
       </table><br>
-      <input type="submit" name="' . $buttonAction
-            . '" value="' . $button . '">'
-            . ( empty ( $nid ) ? '' : '
+      <input type="submit" name="' . $buttonAction . '" value="' . $button
+   . '">' . ( empty ( $nid ) ? '' : '
       <input type="submit" name="delete" value="' . translate ( 'Delete' )
-     . '" onclick="return confirm( \''
-     . translate( 'Are you sure you want to delete this entry?' )
+     . '" onclick="return confirm( \'' . translate( 'really delete entry' )
      . '\')">' ) . '
     </form>
     ';
 }
 
-ob_end_flush();
-
 echo print_trailer ( false, true, true );
+ob_end_flush();
 
 ?>

@@ -24,6 +24,7 @@
  *	http://rrze-icon-set.berlios.de/licence.html
  */
 include_once 'includes/init.php';
+
 // Load Doc classes for attachments and comments
 include 'includes/classes/Doc.class';
 include 'includes/classes/DocList.class';
@@ -249,9 +250,9 @@ Agenda content goes here...
 <tr><td class="aligntop bold"><?php etranslate('Date');?>:</td>
   <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
   </td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
+<tr><td class="aligntop bold"><?php etranslate('Brief Description');?></td>
   <td><input id="quickAddName" name="quickAddName" onfocus="this.select();"></td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
+<tr><td class="aligntop bold"><?php etranslate('Full Description');?></td>
   <td><textarea id="quickAddDescription" name="quickAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
@@ -268,7 +269,7 @@ Agenda content goes here...
      ?>
      </select></td></tr>
 <?php } ?>
-<tr><td class="aligntop bold"><?php etranslate('Participants');?>:</td>
+<tr><td class="aligntop bold"><?php etranslate('Participants_');?></td>
   <td><span id="quickAddParticipantList"></span>
       &nbsp;&nbsp;
       <input type="text" id="quickAddNewParticipant" name="quickAddNewParticipant" size="20"></td></tr>
@@ -283,13 +284,13 @@ Agenda content goes here...
 <div id="taskAddDiv" style="display: none;">
 <form name="taskAddForm" id="taskAddForm">
 <table border="0">
-<tr><td class="aligntop bold"><?php etranslate('Start Date');?>:</td>
+<tr><td class="aligntop bold"><?php etranslate('Start Date');?></td>
   <td><?php echo datesel_Print ( 'task_start_date', $date );?></td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Due Date');?>:</td>
+<tr><td class="aligntop bold"><?php etranslate('Due Date_');?></td>
   <td><?php echo datesel_Print('task_due_date', $date); ?></td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
+<tr><td class="aligntop bold"><?php etranslate('Brief Description');?></td>
   <td><input id="taskAddName" name="taskAddName"></td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
+<tr><td class="aligntop bold"><?php etranslate('Full Description');?></td>
   <td><textarea id="taskAddDescription" name="taskAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
@@ -584,7 +585,7 @@ function ajax_get_events ( year, month, day )
     parameters: { action: 'get', startdate: startdate, user: user },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=get' );
+        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=get' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -593,11 +594,11 @@ function ajax_get_events ( year, month, day )
         // Hmmm... The Prototype JSON above doesn't seem to work!
         //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        alert ( '<?php echo $err_Str;?>' + response.message );
         return;
       }
       for ( var key in response.dates ) {
@@ -629,7 +630,7 @@ function ajax_get_tasks ()
     parameters: { action: 'gett', user: user },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=gett' );
+        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=gett' );
         return;
       }
       //alert ( "Get Tasks Response:\n" + transport.responseText );
@@ -638,11 +639,11 @@ function ajax_get_tasks ()
         // Hmmm... The Prototype JSON above doesn't seem to work!
         //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        alert ( '<?php echo $err_Str;?>' + response.message );
         return;
       }
       tasks = new Array ();
@@ -729,7 +730,7 @@ function view_event ( key, location )
     parameters: { action: 'eventinfo', id: myEvent._id },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=eventinfo&id=' + myEvent._id );
+        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=eventinfo&id=' + myEvent._id );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -738,11 +739,11 @@ function view_event ( key, location )
         // Hmmm... The Prototype JSON above doesn't seem to work!
         //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        alert ( '<?php echo $err_Str;?>' + response.message );
         return;
       }
       var text = '';
@@ -1094,7 +1095,7 @@ function eventAddHandler()
       participants: participants<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=addevent' );
+        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=addevent' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -1103,11 +1104,11 @@ function eventAddHandler()
         // Hmmm... The Prototype JSON above doesn't seem to work!
         //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        alert ( '<?php echo $err_Str;?>' + response.message );
         return;
       }
       // Successfully added :-)
@@ -1189,18 +1190,18 @@ function taskAddHandler()
       description: description<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=addtask' );
+        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=addtask' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
       try  {
         var response = transport.responseText.evalJSON();
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        alert ( '<?php echo $err_Str;?>' + response.message );
         return;
       }
       // Successfully added :-)

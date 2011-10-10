@@ -28,10 +28,11 @@ $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
 $can_email = 'Y';
 
-$areYouSureStr = translate( 'Are you sure you want to delete this entry?' );
-$pri[1] = translate ( 'High' );
-$pri[2] = translate ( 'Medium' );
-$pri[3] = translate ( 'Low' );
+$areYouSureStr = translate( 'really delete entry' );
+$pri = ['',
+  translate ( 'High' ),
+  translate ( 'Medium' ),
+  translate ( 'Low' )];
 
 if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
   $error = translate ( 'Invalid entry id.' );
@@ -442,18 +443,18 @@ if ( $event_status != 'A' && ! empty ( $event_status ) ) {
 echo '
       <tr>
         <td class="aligntop bold">'
- . ( $eType == 'task' ? translate ( 'Start Date' ) : translate ( 'Date' ) )
- . ':</td>
+ . ( $eType == 'task' ? translate ( 'Start Date' ) : translate ( 'Date_' ) )
+ . '</td>
         <td>' . date_to_str ( $display_date ) . ( $eType == 'task' ? '</td>
       </tr>' . ( $event_time >= 0 ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Start Time' ) . ':</td>
+        <td class="aligntop bold">' . translate ( 'Start Time' ) . '</td>
         <td>'
      . display_time ( $display_date . sprintf ( "%06d", $event_time ), 2 )
      . '</td>
       </tr>' : '' ) . '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Due Date' ) . ':</td>
+        <td class="aligntop bold">' . translate ( 'Due Date' ) . '</td>
         <td>' . date_to_str ( $due_date ) . '</td>
       </tr>
       <tr>
@@ -466,11 +467,11 @@ echo '
         <td>' . date_to_str ( $cal_completed ) : '' ) : '' ) . '</td>
       </tr>' . ( $event_repeats ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Repeat Type' ) . ':</td>
+        <td class="aligntop bold">' . translate ( 'Repeat Type' ) . '</td>
         <td>' . export_recurrence_ical ( $id, true ) . '</td>
       </tr>' : '' ) . ( $eType != 'task' && $event_time >= 0 ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Time' ) . ':</td>
+        <td class="aligntop bold">' . translate ( 'Time_' ) . '</td>
         <td>' . ( $duration == 1440 && $event_time == 0
     ? translate ( 'All day event' )
     : display_time ( $display_date . sprintf ( "%06d", $event_time ),
@@ -484,7 +485,7 @@ if ( $duration > 0 && $duration != 1440 ) {
   $dur_m = $duration - ( $dur_h * 60 );
   echo '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Duration' ) . ':</td>
+        <td class="aligntop bold">' . translate ( 'Duration' ) . '</td>
         <td>' . ( $dur_h > 0 ? $dur_h . ' ' . translate ( 'hour'
        . ( $dur_h == 1 ? '' : 's' ) ) . ' ' : '' )
    . ( $dur_m > 0 ? $dur_m . ' ' . translate ( 'minutes' ) : '' ) . '</td>
@@ -493,11 +494,11 @@ if ( $duration > 0 && $duration != 1440 ) {
 
 echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Priority' ) . ':</td>
+        <td class="aligntop bold">' . translate ( 'Priority_' ) . '</td>
         <td>' . $cal_priority . '-' . $pri[ceil($cal_priority/3)] .'</td>
       </tr>' : '' ) . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Access' ) . ':</td>
+        <td class="aligntop bold">' . translate ( 'Access' ) . '</td>
         <td>' . ( $cal_access == "P"
     ? translate ( 'Public' )
     : ( $cal_access == 'C'
@@ -626,7 +627,7 @@ if ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
 if ( $single_user == 'N' && $show_participants ) {
   echo '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Participants' ) . ':</td>
+        <td class="aligntop bold">' . translate ( 'Participants_' ) . '</td>
         <td>';
 
   $num_app = $num_rej = $num_wait = 0;
@@ -994,7 +995,7 @@ if ( empty ( $user ) && $CATEGORIES_ENABLED == 'Y' && $readonly != 'Y' &&
 
 $addToMineStr = translate ( 'Add to My Calendar' );
 $copyStr = translate ( 'Copy entry' );
-$deleteAllStr = translate ( 'This will delete this entry for all users.', true );
+$deleteAllStr = translate ( 'will delete entry for all', true );
 $deleteEntryStr = translate ( 'Delete entry' );
 $editEntryStr = translate ( 'Edit entry' );
 
@@ -1002,8 +1003,8 @@ $editEntryStr = translate ( 'Edit entry' );
 // This will be easier with UAC always on
 if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
   if ( $event_repeats ) {
-    $editAllDatesStr = translate ( 'Edit repeating entry for all dates' );
-    $deleteAllDatesStr = translate ( 'Delete repeating event for all dates' );
+    $editAllDatesStr = translate ( 'Edit repeating entry all dates' );
+    $deleteAllDatesStr = translate ( 'Dele repeating event all dates' );
     echo '
       <li><a title="' . $editAllDatesStr
      . '" class="nav" href="edit_entry.php?id=' . $id . $u_url . '">'
@@ -1034,7 +1035,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
     if ( ! empty( $user ) && $user != $login && ! $is_assistant ) {
       user_load_variables( $user, 'temp_' );
       $delete_str = str_replace( 'XXX', $temp_fullname,
-                                translate( 'Delete entry from calendar of XXX' ) );
+                                translate( 'Delete entry from XXX calendar' ) );
     } else {
       $delete_str = $deleteEntryStr;
     }
@@ -1056,7 +1057,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
   ( $is_my_event || $is_nonuser_admin || $can_edit ) &&
     ( $login != '__public__' ) && ! $is_nonuser && $event_status != 'D' ) {
   $delFromCalStr =
-  translate ( 'This will delete the entry from your XXX calendar.', true );
+  translate ( 'will delete entry from your XXX cal', true );
   echo '
       <li><a title="' . $deleteEntryStr . '" class="nav" href="del_entry.php?id='
    . $id . $u_url . $rdate . '" onclick="return confirm( \'' . $areYouSureStr
@@ -1064,8 +1065,8 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
    . str_replace ( 'XXX ',
     ( $is_assistant ? translate ( 'boss' ) . ' ' : '' ), $delFromCalStr )
   // ( $is_assistant
-  // ? translate ( 'This will delete the entry from your boss calendar.', true )
-  // : translate ( 'This will delete the entry from your calendar.', true ) )
+  // ? translate ( 'will delete entry from your boss cal', true )
+  // : translate ( 'will delete entry from your cal', true ) )
   . '\' );">'
    . $deleteEntryStr
    . ( $is_assistant ? ' ' . translate ( 'from your boss calendar' ) : '' )
@@ -1078,10 +1079,9 @@ if ( $readonly != 'Y' && ! $is_my_event && ! $is_private && !
   $is_confidential && $event_status != 'D' && $login != '__public__' && !
   $is_nonuser )
   echo '
-      <li><a title="' . $addToMineStr . '" class="nav" href="add_entry.php?id='
+      <li><a class="nav" href="add_entry.php?id='
    . $id . '" onclick="return confirm( \''
-   . translate ( 'Do you want to add this entry to your calendar?', true )
-   . "\\n\\n" . translate ( 'This will add the entry to your calendar.', true )
+   . translate ( 'will add entry to your cal', true )
    . '\' );">' . $addToMineStr . '</a></li>';
 
 if ( $login != '__public__' && count ( $allmails ) > 0 ) {

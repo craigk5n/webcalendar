@@ -266,12 +266,10 @@ if ( substr ( $format, 0, 4 ) == 'ical' ) {
   export_install_datebook ( $id );
 } else {
   print_header();
-  $errorStr = translate ( 'Error' );
   echo '
-    <h2>' . translate ( 'Export' ) . ' ' . $errorStr . '</h2>
-    <span class="bold">' . $errorStr . ':</span> '
-   . translate( 'export format not defined or incorrect.' ) . '<br>
-    ' . print_trailer();
+    <h2>' . translate ( 'Export Error' ) . '</h2>
+    <span class="bold">' . $err_Str . '</span>'
+   . translate( 'incorrect export format' ) . '<br>' . print_trailer();
 } //end if ($format == "ical")
 
 ?>

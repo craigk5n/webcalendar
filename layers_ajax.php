@@ -129,7 +129,7 @@ function save_layer ( $user, $source, $layercolor, $dups, $id ) {
   global $error, $layers;
 
   if ( $user == $source )
-    $error = translate ( 'You cannot create a layer for yourself.' );
+    $error = translate ( 'no layers for yourself' );
 
   load_user_layers ( $user, 1 );
 
@@ -151,7 +151,7 @@ function save_layer ( $user, $source, $layercolor, $dups, $id ) {
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
         if ( $row[0] > 0 )
-          $error = translate ( 'You can only create one layer for each user.' );
+          $error = translate ( 'only one layer per user' );
 
         dbi_free_result ( $res );
       }

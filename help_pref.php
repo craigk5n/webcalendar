@@ -16,7 +16,7 @@ $tmp_arr = array (
   translate ( 'Auto-refresh time' ) => translate ( 'auto-refresh-time-help' ),
   translate ( 'Date format' ) => translate ( 'date-format-help' ),
   translate ( 'Default Category' ) => translate ( 'default-category-help' ),
-  translate ( 'Display description in printer day view' ) =>
+  translate ( 'desc in printer day view' ) =>
   translate ( 'display-desc-print-day-help' ),
   translate ( 'Display unapproved' ) =>
   translate ( 'display-unapproved-help' ),
@@ -31,7 +31,7 @@ $tmp_arr = array (
   translate ( 'timed-evt-len-help' ),
   translate ( 'Time format' ) => translate ( 'time-format-help' ),
   translate ( 'Time interval' ) => translate ( 'time-interval-help' ),
-  translate ( 'Timezone Offset' ) => translate ( 'tz-help' ),
+  translate ( 'TZ Offset' ) => translate ( 'tz-help' ),
   translate ( 'Week starts on' ) => translate ( 'display-week-starts-on' ),
   translate ( 'Work hours' ) => translate ( 'work-hours-help' ),
   );

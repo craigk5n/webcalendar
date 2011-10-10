@@ -11,9 +11,9 @@ addLoadListener(function () {
     popup_handler();
     public_handler();
     sr_handler();
-    
+
     showTab(wc_getCookie('currenttab'));
-    
+
     attachEventListener(document.getElementsByTagName('img'), 'click',
       function () {
         window.open('help_admin.php', 'cal_help',
@@ -26,7 +26,7 @@ addLoadListener(function () {
   });
 function valid_form(form) {
   var err = '';
-  
+
   if (form.admin_SERVER_URL.value == '') {
     err = xlate['reqServerURL']; // translate( 'Server URL is required.' )
     form.admin_SERVER_URL.select();
@@ -37,59 +37,60 @@ function valid_form(form) {
     form.admin_SERVER_URL.select();
     form.admin_SERVER_URL.focus();
   }
-  
+
   if (parseInt(form.admin_WORK_DAY_START_HOUR.value) >=
     parseInt(form.admin_WORK_DAY_END_HOUR.value)) {
     err += xlate['invalidHours']; // translate( 'Invalid work hours.' )
     form.admin_WORK_DAY_START_HOUR.select();
     form.admin_WORK_DAY_START_HOUR.focus();
   }
-  
+
   if (err != '') {
-    alert(xlate['error'] + err); // translate( 'Error')
+    alert(xlate['errorXXX'].replace(/XXX/, err)); // translate( 'Error XXX' )
     return false;
   }
-  
+
   if (!valid_color(form.admin_BGCOLOR.value)) {
-    err = xlate['invalidDocuBG']; // translate( 'Invalid color for document background.' )
+    err = xlate['invalidDocuBG']; // translate( 'Invalid doc BG color' )
     form.admin_BGCOLOR.select();
     form.admin_BGCOLOR.focus();
   } else if (!valid_color(form.admin_H2COLOR.value)) {
-    err = xlate['invalidTitleFG']; // translate( 'Invalid color for document title.' )
+    err = xlate['invalidTitleFG']; // translate( 'Invalid doc title color' )
     form.admin_H2COLOR.select();
     form.admin_H2COLOR.focus();
   } else if (!valid_color(form.admin_CELLBG.value)) {
-    err = xlate['invalidCellBG']; // translate( 'Invalid color for table cell background.' )
+    err = xlate['invalidCellBG']; // translate( 'Invalid table cell BG color' )
     form.admin_CELLBG.select();
     form.admin_CELLBG.focus();
   } else if (!valid_color(form.admin_TABLEBG.value)) {
-    err = xlate['invalidGridFG']; // translate( 'Invalid color for table grid.' )
+    err = xlate['invalidGridFG']; // translate( 'Invalid table grid color' )
     form.admin_TABLEBG.select();
     form.admin_TABLEBG.focus();
   } else if (!valid_color(form.admin_THBG.value)) {
-    err = xlate['invalidTHBG']; // translate( 'Invalid color for table header background.' )
+    err = xlate['invalidTHBG']; // translate( 'Invalid table header BG color' )
     form.admin_THBG.select();
     form.admin_THBG.focus();
   } else if (!valid_color(form.admin_THFG.value)) {
-    err = xlate['invalidTextFG']; // translate( 'Invalid color for table header text.' )
+    err = xlate['invalidTextFG']; // translate( 'Invalid table head text color' )
     form.admin_THFG.select();
     form.admin_THFG.focus();
   } else if (!valid_color(form.admin_POPUP_BG.value)) {
-    err = xlate['invalidPopupBG']; // translate( 'Invalid color for event popup background.' )
+    err = xlate['invalidPopupBG']; // translate( 'Invalid popup BG color' )
     form.admin_POPUP_BG.select();
     form.admin_POPUP_BG.focus();
   } else if (!valid_color(form.admin_POPUP_FG.value)) {
-    err = xlate['invalidPopupFG']; // translate( 'Invalid color for event popup text.' )
+    err = xlate['invalidPopupFG']; // translate( 'Invalid popup text color' )
     form.admin_POPUP_FG.select();
     form.admin_POPUP_FG.focus();
   } else if (!valid_color(form.admin_TODAYCELLBG.value)) {
-    err = xlate['invalidTodayBG']; // translate( 'Invalid color for table cell background for today.' )
+    err = xlate['invalidTodayBG']; // translate( 'Invalid table cell today BG' )
     form.admin_TODAYCELLBG.select();
     form.admin_TODAYCELLBG.focus();
   }
-  
+
   if (err.length > 0) {
-    alert(xlate['error'] + err + "\n\n" + xlate['formatColorRGB']); // translate( 'Color format should be RRGGBB.' )
+    alert(xlate['errorXXX'].replace(/XXX/, err) + "\n\n"
+      + xlate['formatColorRGB']); // translate( 'Color format should be RGB' )
     return false;
   }
   return true;
@@ -182,14 +183,14 @@ function email_handler() {
   }
 }
 
-//See the showTab function in includes/js/visible.js
-//for common code shared by all pages using the tabbed GUI.
+// See the showTab function in includes/js/visible.js
+// for common code shared by all pages using the tabbed GUI.
 var tabs = ['', 'settings', 'public', 'uac',
   'groups', 'nonuser', 'other', 'email', 'colors'];
 
 function showPreview() {
   var theme = document.forms['prefform'].admin_THEME.value.toLowerCase();
-  
+
   if (theme == 'none') {
     return false;
   }
@@ -203,4 +204,3 @@ function setTab(tab) {
   showTab(tab);
   return false;
 }
- 

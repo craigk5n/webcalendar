@@ -44,9 +44,7 @@ for ( $i = 0; $i < 7; $i++ ) {
    . date_to_str ( date ( 'Ymd', $days[$i] ), $DATE_FORMAT_MD, false );
 }
 
-$nextStr = translate ( 'Next' );
 $newEntryStr = translate ( 'New Entry' );
-$prevStr = translate ( 'Previous' );
 
 ob_start();
 print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
@@ -109,9 +107,8 @@ for ( $d = 0; $d < 7; $d++ ) {
 echo '
       </table>
     </center>
-    ' . ( empty( $eventinfo ) ? '' : $eventinfo ) . '<br>';
-
-echo $printerStr . print_trailer();
+    ' . ( empty( $eventinfo ) ? '' : $eventinfo ) . '<br>'
+ . $printerStr . print_trailer();
 ob_end_flush();
 
 /**
@@ -136,7 +133,7 @@ function print_detailed_entry ( $event, $date ) {
 
   if ( $getExtStr != '' ) {
     $id = $getExtStr;
-    $name .= ' (' . translate ( 'cont.' ) . ')';
+    $name .= ' ' . translate ( '(cont.)' );
   } else
     $id = $event->getID();
 

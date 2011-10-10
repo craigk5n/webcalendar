@@ -12,10 +12,10 @@ $old_id = -1;
 $dateStr   = translate( 'Date XXX' );
 $descStr   = translate( 'Description XXX' );
 $helloStr  = translate( 'Hello, XXX.' );
-$newAppStr = translate( 'XXX has made a new appointment.' );
+$newAppStr = translate( 'XXX made an appointment' );
 $subjStr   = translate( 'Subject XXX' );
 $timeStr   = translate( 'Time XXX' );
-$updAppStr = translate( 'XXX has updated an appointment.' );
+$updAppStr = translate( 'XXX updated an appointment' );
 
 /**
  * Put byday values in logical sequence.
@@ -397,7 +397,7 @@ if( file_exists( 'includes/classes/captcha/captcha.php' )
 
     if( ! $res )
       $error =
-      translate( 'You must enter the anti-spam text on the previous page.' );
+      translate( 'must enter anti-spam text' );
   } else {
     // Should have seen warning on edit_entry.php, so no warning here...
   }
@@ -556,8 +556,8 @@ if( $ALLOW_CONFLICTS != 'Y' && empty( $confirm_conflicts )
 } //end check for any schedule conflicts
 
 if( empty( $error ) && ! empty( $conflicts ) )
-  $error = translate( 'The following conflicts with the suggested time' )
-   . ': <ul>$conflicts</ul>';
+  $error = translate( 'conflicts with suggested time' ) . '
+    <ul>$conflicts</ul>';
 
 $msg = '';
 
@@ -944,7 +944,7 @@ if( empty( $error ) ) {
             ? date( 'Ymd', $eventstart ) : gmdate( 'Ymd', $eventstart ) );
           $msg = str_replace( 'XXX', $tempfullname, $helloStr ) . "\n\n"
            . str_replace( 'XXX', $login_fullname,
-             translate( 'XXX has canceled an appointment.' ) ) . "\n"
+             translate( 'XXX canceled an appointment' ) ) . "\n"
            . str_replace( 'XXX', $name, $subjStr ) . "\n\n"
            . str_replace( 'XXX', $description, $descStr ) . "\n"
            . str_replace( 'XXX', date_to_str( $fmtdate ), $dateStr ) . "\n"
@@ -968,7 +968,7 @@ if( empty( $error ) ) {
             ( get_pref_setting( $old_participant,
               'EMAIL_ATTACH_ICS', 'N' ) == 'Y' ? $id : '' ) );
           activity_log( $id, $login, $old_participant, LOG_NOTIFICATION,
-            translate( 'User removed from participants list.' ) );
+            translate( 'user removed from party list' ) );
         }
       }
     }
@@ -1078,8 +1078,8 @@ if( empty( $error ) ) {
           // Add Site Extra Date if permitted.
           . $extra_email_data . str_replace( 'XXX', generate_application_name(),
             ( $REQUIRE_APPROVALS == 'Y'
-              ? translate( 'Please look on XXX to accept or reject this appointment.' )
-              : translate( 'Please look on XXX to view this appointment.' ) ) );
+              ? translate( 'see XXX to acc/rej appointment' )
+              : translate( 'see XXX to view appointment' ) ) );
 
               // Add URL to event, if we can figure it out.
           if( ! empty( $SERVER_URL ) ) {
@@ -1244,7 +1244,7 @@ if( ! empty( $conflicts ) ) {
   }
 
   echo '</span>
-    ' . translate( 'conflicts with the following existing calendar entries' ) . ':
+    ' . translate( 'conflicts with existing entries' ) . '
     <ul>' . $conflicts . '
     </ul>
     ' // User can confirm conflicts.

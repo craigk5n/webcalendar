@@ -72,7 +72,7 @@ function event_to_text ( $event, $date ) {
   global $ALLOW_HTML_DESCRIPTION, $event_template, $login, $report_id, $user;
 
   $allDayStr = translate ( 'All day event' );
-  $confStr = translate ( 'This event is confidential.' );
+  $confStr = translate ( 'confidential event' );
   $privStr = translate ( '(Private)' );
 
   $end_time_str = $start_time_str = $time_str = '';
@@ -220,7 +220,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
     if ( ! $updating_public ) {
       if ( $PUBLIC_ACCESS == 'Y' ) {
         $clickStr =
-        translate ( 'Click here to manage reports for the Public Access calendar.' );
+        translate ( 'manage pubic reports' );
         $list .= '
     <p><a title="' . $clickStr . '" href="report.php?public=1">'
          . $clickStr . '</a></p>';
@@ -303,8 +303,8 @@ if ( empty ( $report_user ) )
 $day_str = $printerStr = '';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt>
-<dd><b>' . translate( 'Date' ) . ':</b> ${date}<br>
-<b>' . translate( 'Time' ) . ':</b> ${time}<br>
+<dd><b>' . translate( 'Date_' ) . '</b> ${date}<br>
+<b>' . translate( 'Time_' ) . '</b> ${time}<br>
 ${description}</dd>';
 $page_template = '<dl>${days}</dl>';
 

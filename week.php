@@ -63,8 +63,7 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user ) && $is_assistant
     ? $user : $login, $wkend, $cat_id );
 
-$help = ( $can_add ? ' title="'
- . translate( 'Double-click on empty cell to add new entry' ) . '"' : '' );
+$help = ( $can_add ? ' title="' . $dblClickAdd . '"' : '' );
 
 $eventsStr = $filler = $headerStr = $minical_tasks = $untimedStr = '';
 $navStr = display_navigation ( 'week' );
@@ -82,12 +81,9 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     : ( is_weekend ( $days[$i] ) ? ' class="weekend"' : '' ) );
 
   $headerStr .= '<th ' . $class .
-    ( $can_add ? " ondblclick=\"dblclick_add('$dateYmd','$user',0,0)\"" : '' ) .
-    ">";
-  $headerStr .=
-    '<p style="margin:.75em 0 0 0"><a href="day.php?' . $u_url .
-    'date=' . $dateYmd . $caturl . '">' .
-    $header[$i] . '</a></p></th>';
+    ( $can_add ? " ondblclick=\"dblclick_add('$dateYmd','$user',0,0)\">" : '>' )
+   . '<p style="margin:.75em 0 0 0"><a href="day.php?' . $u_url
+   . 'date=' . $dateYmd . $caturl . '">' . $header[$i] . '</a></p></th>';
 
   $date = date ( 'Ymd', $days[$i] );
   $hour_arr = $rowspan_arr = $tk = array();

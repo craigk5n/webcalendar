@@ -42,9 +42,6 @@ $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
 $thisdate = date ( 'Ymd', $startdate );
 
-$nextStr = translate ( 'Next' );
-$prevStr = translate ( 'Previous' );
-
 print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 
 echo '
@@ -74,7 +71,7 @@ $viewusers = view_get_user_list ( $id );
 if ( count ( $viewusers ) == 0 )
   // This could happen if user_sees_only_his_groups  = Y and
   // this user is not a member of any  group assigned to this view.
-  $error = translate( 'No users for this view.' );
+  $error = $noVuUsers;
 
 if ( ! empty ( $error ) ) {
   echo print_error ( $error ) . print_trailer();
@@ -107,13 +104,9 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       ? $num_left : $USERS_PER_TABLE ) )
     : 5 );
 
-  echo '
-    <br><br>
-    <table class="main" summary=""';
-  if ( $can_add )
-    echo ' title="' .
-      translate ( 'Double-click on empty cell to add new entry' ) . '"';
-  echo '>
+  echo '<br><br>
+    <table class="main" summary=""'
+   . ( $can_add ? ' title="' . $dblClickAdd . '"' : '' ) . '>
       <tr>
         <th class="empty">&nbsp;</th>';
 
@@ -138,14 +131,14 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       continue;
 
     $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS );
-    $class = 'class="' . ( $dateYmd == $todayYmd
+    $class = ' class="' . ( $dateYmd == $todayYmd
       ? 'today"'
       : ( $is_weekend ? 'weekend"' : 'row"' ) );
 
     // Non-breaking space below keeps event from wrapping prematurely.
     echo '
       <tr>
-        <th ' . $class . '>' . $weekday . '&nbsp;' . date ( 'd', $date ) . '</th>';
+        <th' . $class . '>' . $weekday . '&nbsp;' . date ( 'd', $date ) . '</th>';
     for ( $i = $j, $k = 0;
       $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $events = $e_save[$i];
@@ -153,21 +146,21 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       $user = $viewusers[$i];
       $entryStr = print_date_entries ( $dateYmd, $user, true );
       // Unset class from above if needed.
-      if ( $class == 'class="row"' ||  $class == 'class="hasevents"' )
+      if ( $class == ' class="row"' ||  $class == ' class="hasevents"' )
         $class = '';
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
-        $class = 'class="hasevents"';
+        $class = ' class="hasevents"';
       else
       if ( $dateYmd == $todayYmd )
-        $class = 'class="today"';
+        $class = ' class="today"';
       else
       if ( $is_weekend )
-        $class = 'class="weekend"';
+        $class = ' class="weekend"';
 
-      echo '<td ' . $class . ' style="width:' . $tdw . '%;"';
-      if ( $can_add )
-        echo " ondblclick=\"dblclick_add( '$dateYmd', '$user', 0, 0 )\"";
-      echo '>' . $entryStr . '</td>';
+      echo '<td' . $class . ' style="width:' . $tdw . '%;"'
+       . ( $can_add
+         ? " ondblclick=\"dblclick_add( '$dateYmd', '$user', 0, 0 )\">" : '>' )
+       . $entryStr . '</td>';
     } //end for
     echo '
       </tr>';

@@ -29,12 +29,10 @@ load_user_categories();
 
 $advSearchStr = translate( 'Advanced Search' );
 $searchStr    = translate( 'Search' );
-$INC = array();
 
-$INC[] = 'js/autocomplete.js';
+$INC = array( 'js/autocomplete.js' );
 
 if( $show_advanced ) {
-  $INC[] = 'js/translate.js.php';
   $INC[] = 'js/visible.js/true';
   $INC[] = 'js/datesel.php';
 }
@@ -51,8 +49,8 @@ echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
         <td><input type="text" name="keywords" id="keywordsadv" size="30">&nbsp;
         <input type="submit" value="' . $searchStr . '"></td></tr>';
 
-echo '<tr height="30px"><td>&nbsp;</td><td valign="top">(' .
-  translate( 'Enter % for all entries' ) . ')</td></tr>';
+echo '<tr height="30px"><td>&nbsp;</td><td valign="top">' .
+  translate( 'Enter % for all entries' ) . '</td></tr>';
 
 if( is_array( $categories ) && $show_advanced ) {
   echo '
@@ -140,8 +138,7 @@ if( $show_others ) {
    . ';"><td colspan="2"><a title="' . $advSearchStr
    . '" href="search.php?adv=1">'
    . $advSearchStr . '</a></td></tr>
-        <tr  id="adv" style="visibility:' . $avdStyle[$show_advanced]
-   . ';">
+        <tr  id="adv" style="visibility:' . $avdStyle[$show_advanced] . ';">
           <td class="aligntop"><label for="usersadv">'
    . translate( 'Users' ) . ':&nbsp;</label></td>
           <td>
@@ -159,11 +156,10 @@ if( $show_others ) {
             </select>'
    . ( $GROUPS_ENABLED == 'Y'
     ? '<input type="button" onclick="selectUsers()" value="'
-     . translate( 'Select' ) . '...">' : '' ) . '
+     . $selectStr . '...">' : '' ) . '
           </td>
         </tr>';
 }
-ob_end_flush();
 
 echo '</table></form>';
 ?>
@@ -175,4 +171,6 @@ new Autocomplete('keywordsadv', { serviceUrl:'autocomplete_ajax.php' });
 </script>
 <?php
 print_trailer ();
+ob_end_flush();
+
 ?>

@@ -6,13 +6,13 @@ ob_start();
 print_header( '', '', '', true );
 
 echo $helpListStr . '
-    <h2>' . translate( 'Help Adding/Editing Calendar Entries' ) . '</h2>';
+    <h2>' . translate( 'Help Add/Edit Cal Entries' ) . '</h2>';
 
 $tmp_arr = array (
   translate ( 'Brief Description' ) => translate ( 'brief-description-help' ),
   translate ( 'Full Description' ) => translate ( 'full-description-help' ),
-  translate ( 'Date' ) => translate ( 'date-help' ),
-  translate ( 'Time' ) => translate ( 'time-help' ),
+  translate ( 'Date_' ) => translate ( 'date-help' ),
+  translate ( 'Time_' ) => translate ( 'time-help' ),
   );
 
 if ( $TIMED_EVT_LEN != 'E' )
@@ -21,7 +21,7 @@ else
   $tmp_arr[ translate ( 'End Time' ) ] = translate ( 'end-time-help' );
 
 if ( $DISABLE_PRIORITY_FIELD != 'Y' )
-  $tmp_arr[ translate ( 'Priority' ) ] = translate ( 'priority-help' );
+  $tmp_arr[ translate ( 'Priority_' ) ] = translate ( 'priority-help' );
 
 if ( $DISABLE_ACCESS_FIELD != 'Y' )
   $tmp_arr[ translate ( 'Access' ) ] = translate ( 'access-help' );

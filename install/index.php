@@ -93,13 +93,12 @@ $databaseNameStr= translate( 'Database Name' );
 $failureStr     = translate( 'Failure Reason' );
 $loginStr       = translate( 'Login' );
 $logoutStr      = translate( 'Logout' );
-$manualStr      = translate( 'You must manually create database' );
-$nextStr        = translate( 'Next' );
+$manualStr      = translate( 'must manually create DB' );
 $passwordStr    = translate( 'Password' );
 $singleUserStr  = translate( 'Single-User' );
 $testSettingsStr= translate( 'Test Settings' );
-$tzSuccessStr   = translate( 'Timezone Conversion Successful' );
-$wizardStr      = translate( 'WebCalendar Installation Wizard Step XXX' );
+$tzSuccessStr   = translate( 'TZ Conversion Successful' );
+$wizardStr      = translate( 'Install Wizard Step XXX' );
 
 $failure = $failureStr . '<blockquote>';
 
@@ -235,7 +234,8 @@ if( file_exists( $file ) && $forcePassword && ! empty( $pwd1 ) ) {
   $fd = @fopen( $file, 'a+b', false );
   if( empty( $fd ) ) {
     echo '<html><body>'
-     . translate( 'Unable to write password to settings.php file' )
+     . str_replace( 'XXX', 'settings.php',
+     . translate( 'Unable to write to file XXX' ) )
      . '</body></html>';
     exit;
   }
@@ -460,13 +460,13 @@ if( ! empty( $post_action ) && $post_action == $testSettingsStr && !
 
     if( $c ) { // Credentials are valid, but database doesn't exist.
       $response_msg =
-        translate( 'Correct your entries or click the Create New...' );
+        translate( 'Correct entries or click Create' );
       $_SESSION['db_noexist'] = true;
     } else
       $response_msg = $failure .( $db_type == 'ibase'
         ? $manualStr . '</blockquote>' . "\n"
         : dbi_error() . '</blockquote>' . "\n"
-         . translate( 'Correct your entries and try again.' ) );
+         . translate( 'Correct entries and try again' ) );
   } //end if($c)
 
   // Test db_cachedir directory for write permissions.
@@ -728,10 +728,10 @@ if( ! empty( $x ) || ! empty( $y ) ) {
 
   if( empty( $fd ) )
     $onload = 'alert( \'' . str_replace( 'XXX', $file,
-      translate( 'Error Unable to write to file XXX.', true ) ) . "\\n"
+      translate( 'Unable to write to file XXX', true ) ) . "\\n"
      . ( file_exists( $file )
-      ? translate( 'Please change the file permissions of this file.', true )
-      : translate( 'Please change includes dir permission', true ) ) . '\' );';
+      ? translate( 'change the file permissions', true )
+      : translate( 'change includes dir permission', true ) ) . '\' );';
   else {
     if ( function_exists ( "date_default_timezone_set" ) )
       date_default_timezone_set ( "America/New_York");
@@ -766,7 +766,7 @@ echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
       xlate[\'invalidColor\'] = \'' . translate( 'Invalid Color', true ) . '\';
 ' . ( empty( $_SESSION['validuser'] ) ? '' : '
       function testPHPInfo() {
-        var url = "index.php?action=phpinfo";
+        var url = 'index.php?action=phpinfo';
 
         window.open( url, \'wcTestPHPInfo\', '
    . '\'width=800,height=600,resizable=yes,scrollbars=yes\' );
@@ -787,7 +787,7 @@ echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
           if( form.form_single_user_login.value.length == 0 ) {
             // No single user login specified.
             alert( \''
- . translate( 'Error you must specify a Single-User Login', true ) . '\' );
+ . translate( 'specify Single-User login', true ) . '\' );
             form.form_single_user_login.focus();
             return false;
           }
@@ -804,7 +804,7 @@ echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
           form.form_server_url.focus();
         }
         if( err != \'\' ) {
-          alert( "' . translate( 'Error', true ) . ':\n\n" + err );
+          alert( "' . translate( 'Error_', true ) . '\n\n" + err );
           return false;
         }
         // Submit form...
@@ -849,8 +849,7 @@ echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
           // Do not allow #.../\#/ would stop all non-alphanumeric.
 
         if( illegalChars.test( db_pass ) ) {
-          alert( \''
- . translate( 'The password contains illegal characters.', true ) . '\' );
+          alert( \'' . translate( 'illegal chars in password', true ) . '\' );
           form.form_db_password.select();
           form.form_db_password.focus();
           return false;
@@ -917,7 +916,7 @@ echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
   <body' . ( empty( $onload ) ? '>' : ' onload="' . $onload . '">' );
 
 if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
-  $class = ( version_compare( phpversion(), '4.1.0', '>=' ) ? '' : 'not' )
+  $class = ( version_compare( phpversion(), '4.2.0', '>=' ) ? '' : 'not' )
    . 'recommended';
   echo '
     <table border="1" width="90%" align="center" summary="Wizard Step 1">
@@ -926,13 +925,12 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . str_replace( 'XXX', translate( '1' ), $wizardStr ) . '</th>
       </tr>
       <tr>
-        <td colspan="2" width="50%">'
-   . translate( 'This installation wizard will guide you...' ) . '
+        <td colspan="2" width="50%">' . translate( 'wizard guide' ) . '
           <ul>
             <li><a href="../docs/WebCalendar-SysAdmin.html" target="_docs">'
    . translate( 'System Administrators Guide' ) . '</a></li>
             <li><a href="../docs/WebCalendar-SysAdmin.html#faq" target="_docs"'
-   . '">' . '<acronym title="' . translate( 'Frequently Asked Questions' )
+   . '"><acronym title="' . translate( 'Frequently Asked Questions' )
    . '">' . translate( 'FAQ' ) . '</acronym></a></li>
             <li><a href="../docs/WebCalendar-SysAdmin.html#trouble" '
    . 'target="_docs">' . translate( 'Troubleshooting' ) . '</a></li>
@@ -950,8 +948,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . translate( 'PHP Version Check' ) . '</th>
       </tr>
       <tr>
-        <td>'
-   . translate( 'Check to see if PHP 4.1.0 or greater is installed.' ) . '</td>
+        <td>' . translate( 'is PHP >= 4.2.0 installed' ) . '</td>
         <td class="' . $class . '"><img src="' . ( $class == 'recommended'
     ? 'recommended.gif' : 'not_recommended.jpg' ) . '" alt="">&nbsp;'
    . translate( 'PHP version' ) . ' ' . phpversion() . '</td>
@@ -996,15 +993,13 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
      . ' alt="">&nbsp;' . get_php_modules( $module[1] ) . '</td>
       </tr>';
   }
-  $settingsStatStr = translate( 'settings.php Status' );
   echo '
       <tr>
         <th class="header" colspan="2">'
    . translate( 'Session Check' ) . '</th>
       </tr>
       <tr>
-        <td>'
-  . translate( 'To test the proper operation of sessions...' ) . '</td>
+        <td>' . translate( 'test sessions operation' ) . '</td>
         <td class="' . ( $_SESSION['check'] > 0 ? '' : 'not' ) . 'recommended'
    . '"><img src="'
    . ( $_SESSION['check'] > 0 ? 'recommended.gif"' : 'not_recommended.jpg"' )
@@ -1016,9 +1011,9 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   // If the settings file doesn't exist or we can't write to it,
   // echo an error header...
   . ( ! $exists || ! $canWrite
-    ? 'redheader">' . $settingsStatStr . ': ' . translate( 'Error' )
+    ? 'redheader">' . translate( 'settings.php Status_' )
     // otherwise, echo a regular header.
-    : 'header">' . $settingsStatStr )
+    : 'header">' . translate( 'settings.php Status' ) )
    . '</th>
       </tr>
       <tr>
@@ -1026,7 +1021,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   // If the settings file exists, but we can't write to it...
   if( $exists && ! $canWrite )
     echo '><img src="not_recommended.jpg" alt="">&nbsp;'
-     . translate( 'The file permissions of settings.php are set...' ) . ':</td>
+     . translate( 'settings.php file permissions' ) . '</td>
         <td><blockquote><b>' . realpath( $file ) . '</b></blockquote></td>
       </tr>';
   // or, if the settings file doesn't exist
@@ -1035,13 +1030,13 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   if( ! $exists && ! $canWrite )
     echo ' colspan="2">
           <img src="not_recommended.jpg" alt="">&nbsp;'
-     . translate( 'The file permissions of the includes directory are set...' )
-     . ': <blockquote><b>' . realpath( $fileDir ) . '</b></blockquote></td>
+     . translate( 'includes dir permissions' )
+     . ' <blockquote><b>' . realpath( $fileDir ) . '</b></blockquote></td>
       </tr>';
   // If settings.php DOES exist & we CAN write to it...
   else {
     echo '>'
-     . translate( 'Your settings.php file appears to be valid.' ) . '</td>
+     . translate( 'settings.php appears valid' ) . '</td>
         <td class="recommended"><img src="recommended.gif" alt="">&nbsp;'
      . translate( 'OK' ) . '</td>
       </tr>';
@@ -1060,7 +1055,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
           <form action="index.php" method="post" name="dblogin">
             <table summary="">
               <tr>
-                <th>' . $passwordStr . ':</th>
+                <th>' . $passwordStr . '</th>
                 <td>
                   <input name="password" type="password">
                   <input type="submit" value="' . $loginStr . '">
@@ -1078,7 +1073,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
          . translate( 'Create Settings File Password' ) . '</th>
               </tr>
               <tr>
-                <th>' . $passwordStr . ':</th>
+                <th>' . $passwordStr . '</th>
                 <td><input name="password1" type="password"></td>
               </tr>
               <tr>
@@ -1126,16 +1121,12 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td>
           <ul>
-<!--
-            <li>'
-   . translate( 'Supported databases for your PHP installation' ) . ':</li>
--->';
+<!--        <li>' . translate( 'your PHP supported DBs' ) . '</li> -->';
 
   if( ! empty( $_SESSION['db_success'] ) && $_SESSION['db_success'] ) {
     echo '
             <li class="recommended"><img src="recommended.gif" alt="">&nbsp;'
-     . translate( 'Your current database settings are able to access the database.' )
-     . '</li>';
+     . translate( 'current settings can access DB' ) . '</li>';
     if( ! empty( $response_msg ) && empty( $response_msg2 ) )
       echo '
             <li class="recommended"><img src="recommended.gif" alt="">&nbsp;'
@@ -1148,7 +1139,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     echo '
             <li class="notrecommended"><img src="not_recommended.jpg" '
      . 'alt="">&nbsp;'
-     . translate( 'Your current database settings are not able...' ) . '</li>'
+     . translate( 'current settings cannot access DB' ) . '</li>'
      . ( empty( $response_msg ) ? '' : '
             <li class="notrecommended"><img src="not_recommended.jpg" '
        . 'alt="">&nbsp;' . $response_msg . '</li>' );
@@ -1233,7 +1224,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               </tr>
               <tr>
                 <td class="prompt"><label for="pass">'
-   . $passwordStr . ':</label></td>
+   . $passwordStr . '</label></td>
                 <td colspan="2"><input name="form_db_password" id="pass" '
    . 'size="20" value="' . $settings['db_password'] . '"></td>
               </tr>
@@ -1318,19 +1309,19 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   $_SESSION['db_updated'] = false;
   if( $_SESSION['old_program_version'] == $PROGRAM_VERSION &&
     empty( $_SESSION['blank_database'] ) ) {
-    $response_msg = translate( 'All your database tables appear to be up...' );
+    $response_msg = translate( 'DB tables look current' );
     $_SESSION['db_updated'] = true;
     // $response_msg .= '<br>Previous Version: ' .
     // $_SESSION['old_program_version'] . '<br>
     // New Version: ' . $PROGRAM_VERSION;
   } else
     $response_msg = ( $_SESSION['old_program_version'] == 'new_install'
-      ? translate( 'This appears to be a new installation...' )
+      ? translate( 'looks like a new install' )
       : ( empty( $_SESSION['blank_database'] )
         ? str_replace( array('XXX', 'YYY'),
           array( $_SESSION['old_program_version'], $PROGRAM_VERSION ),
-          translate( 'This appears to be an upgrade...' ) )
-        : translate( 'The database requires some data input...' ) ) );
+          translate( 'looks like an upgrade' ) )
+        : translate( 'DB requires some input' ) ) );
 
   echo '
     <table border="1" width="90%" align="center" summary="Wizard Step 3">
@@ -1340,7 +1331,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       </tr>
       <tr>
         <td colspan="2" width="50%">'
-   . translate( 'In this section we will perform...' ) . '</td>
+   . translate( 'this section will perform' ) . '</td>
       </tr>
       <tr>
         <th colspan="2" class="header">'
@@ -1353,11 +1344,10 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <th colspan="2" class="';
 
   if( ! empty( $_SESSION['db_updated'] ) )
-    echo 'header">' . translate( 'No database actions are required.' ) . '</th>
+    echo 'header">' . translate( 'no DB actions required' ) . '</th>
       </tr>';
   else {
-    echo 'redheader">'
-     . translate( 'The following database actions are required' ) . ':</th>
+    echo 'redheader">' . translate( 'These DB actions are required' ) . '</th>
       </tr>';
 
     if( $settings['db_type'] == 'odbc' && empty( $_SESSION['db_updated'] ) ) {
@@ -1397,8 +1387,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
      . ( ! empty( $settings['db_type'] ) &&
       empty( $_SESSION['blank_database'] ) &&
       ( $settings['db_type'] == 'ibase' || $settings['db_type'] == 'oracle' )
-      ? translate( 'Automatic installation not supported' )
-      : translate( 'This may take several minutes to complete' ) . '
+      ? translate( 'Auto install not supported' )
+      : translate( 'may take minutes' ) . '
           <form action="index.php?action=install" method="post">
             <input type="'
        . ( $_SESSION['old_program_version'] == 'new_install' &&
@@ -1425,8 +1415,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
             <textarea name="displayed_sql" cols="100" rows="12">'
          . $str_parsed_sql . '</textarea><br>
             <p class="recommended">'
-         . translate( 'Return to previous page after processing SQL.' )
-         . '</p>' ) . '
+         . translate( 'go back after processing SQL' ) . '</p>' ) . '
           </form>
         </td>
       </tr>' : '' );
@@ -1469,8 +1458,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . str_replace( 'XXX', translate( '4' ), $wizardStr ) . '</th>
       <tr>
         <td colspan="2" width="50%">'
-   . translate( 'This is the final step in setting up your WebCalendar Installation.' )
-   . '</td>
+   . translate( 'the final step in WebCal Install' ) . '</td>
       </tr>'
    . ( ! empty( $_SESSION['tz_conversion'] ) && $_SESSION['tz_conversion'] != 'Y' ? '
       <th class="header" colspan="2">'
@@ -1479,7 +1467,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td colspan="2">' . ( $_SESSION['tz_conversion'] != 'Success' ? '
           <form action="index.php?action=tz_convert" method="post">
             <ul><li>'
-       . translate( 'It appears that you have NOT converted...' ) . '</li></ul>
+       . translate( 'looks like you have NOT converted' ) . '</li></ul>
             <div align="center"><input type="submit" value="'
        . translate( 'Convert Data to GMT' ) . ':"></div>
           </form>' : '
@@ -1491,8 +1479,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td colspan="2">
           <ul><li>' . ( empty( $PHP_AUTH_USER )
-    ? translate( 'HTTP-based authentication was not detected...' )
-    : translate( 'HTTP-based authentication was detected...' ) )
+    ? translate( 'HTTP-based auth NOT detected' )
+    : translate( 'HTTP-based auth WAS detected' ) )
    . '</li></ul>
         </td>
       </tr>
@@ -1514,7 +1502,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               </td>
             </tr>
             <tr>
-              <td class="prompt">' . translate( 'Application Name' ) . ':</td>
+              <td class="prompt">' . translate( 'Application Name' ) . '</td>
               <td><input type="text" size="40" name="form_application_name" '
    . 'id="form_application_name" value="' . $_SESSION['application_name']
    . '"></td>
@@ -1532,7 +1520,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                   <option value="user.php"'
    . ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] != 'true'
      ? ' selected>' : '>' )
-   . translate( 'Web-based via WebCalendar (default)' )
+   . translate( 'Web-based via WebCal default' )
    . '</option>
                   <option value="http"'
    . ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] == 'true'
@@ -1601,10 +1589,9 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <input type="button" name="action2" value="'
        . translate( 'Launch WebCalendar' )
        . '" onClick="window.open( \'../index.php\', \'webcalendar\' );">'
-      : '' ) : '' ) . ( ! empty( $_SESSION['validuser'] ) ? '
+       : '' ) : '' ) . ( empty( $_SESSION['validuser'] ) ? '' : '
               <input type="button" value="' . $logoutStr
-     . '" onclick="document.location.href=\'index.php?action=logout\'">'
-    : '' ) . '
+     . '" onclick="document.location.href=\'index.php?action=logout\'">' ) . '
             </form>
         </td>
       </tr>

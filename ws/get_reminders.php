@@ -58,7 +58,7 @@ if ( $login == '__public__' && $login != $user ) {
   }
   $out .= '
 <!-- ' . str_replace ( 'XXX', translate ( 'public' ),
-    translate ( 'Allowing XXX user to view other users calendar.' ) )
+    translate ( 'XXX may see other users cal' ) )
    . ' -->';
 }
 
@@ -76,13 +76,13 @@ if ( $login != $user ) {
   }
   $out .= '
 <!-- ' . str_replace ( 'XXX ', '',
-    translate ( 'Allowing XXX user to view other users calendar.' ) ) . ' -->';
+    translate ( 'XXX may see other users cal' ) ) . ' -->';
 }
 
 // Make sure this user has enabled email reminders.
 // if ( $EMAIL_REMINDER == 'N' ) {
 // $out .= str_replace ('XXX', $user,
-// translate ( 'Error Email reminders disabled for user XXX.' ) );
+// translate ( 'XXX disabled email reminders' ) );
 // dbi_close ( $c );
 // exit;
 // }
@@ -187,7 +187,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 
 $out .= '
 <!-- ' . str_replace ( array ( 'XXX', 'YYY' ), array ( $user, $login ),
-  translate ( 'Reminders for user XXX, login YYY.' ) ) . ' -->
+  translate ( 'Reminders for XXX login YYY' ) ) . ' -->
 ';
 
 $startdate = time(); // today

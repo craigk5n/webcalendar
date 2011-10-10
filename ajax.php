@@ -61,7 +61,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $name )
       echo str_replace ( 'XXX', $name,
-        translate ( 'Email address XXX already exists.', true ) );
+        translate ( 'Email XXX already exists', true ) );
   }
 } elseif ( $page == 'minitask' ) {
   $name = ( empty ( $name ) ? 0 : $name );

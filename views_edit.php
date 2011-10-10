@@ -28,7 +28,7 @@ $disableCustom = true;
 print_header ( $INC, '', $BodyX, $disableCustom );
 ?>
 
-<form action="views_edit_handler.php" method="post" name="editviewform">
+    <form action="views_edit_handler.php" method="post" name="editviewform">
 <?php
 $newview = true;
 $viewname = $viewtype = '';
@@ -61,8 +61,8 @@ if ( empty ( $viewname ) ) {
 // get list of users for this view
 $all_users = false;
 if ( ! $newview ) {
-    $res = dbi_execute ( 'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?',
-     array ( $id ) );
+    $res = dbi_execute ( 'SELECT cal_login FROM webcal_view_user
+      WHERE cal_view_id = ?', array ( $id ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $viewuser[$row[0]] = 1;
@@ -80,13 +80,16 @@ if ( ! empty( $error ) ) {
   exit;
 }
 
+echo '
+      <h2>';
+
 if ( $newview ) {
   $v = array();
-  echo '<h2>' . translate ( 'Add View' ) . "</h2>\n";
-  echo '<input type="hidden" name="add" value="1">' . "\n";
+  echo translate ( 'Add View' ) . '</h2>
+      <input type="hidden" name="add" value="1">';
 } else {
-  echo '<h2>' . translate ( 'Edit View' ) . "</h2>\n";
-  echo "<input type=\"hidden\" name=\"id\" value=\"$id\">\n";
+  echo translate ( 'Edit View' ) . '</h2>
+      <input type="hidden" name="id" value="' . $id . '">';
 }
 ?>
 
@@ -129,7 +132,7 @@ if ( $newview ) {
 
 $defIdx = ( ! empty ( $all_users ) && $all_users == true ? 'Y' : 'N' );
 echo '<tr><td><label>'
-  . translate ( 'Users' ) . ":</label></td>\n<td>"
+  . translate ( 'Users_' ) . "</label></td>\n<td>"
   . print_radio ( 'viewuserall', array ( 'N'=>'Selected', 'Y'=>'All'),
     'usermode_handler', $defIdx, '</td><td>' )
   . "</td></tr>\n";
@@ -149,25 +152,24 @@ echo '<tr><td><label>'
   }
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
     $u = $users[$i]['cal_login'];
-    echo "<option value=\"$u\"";
-    if ( ! empty ( $viewuser[$u] ) ) {
-      echo ' selected';
-    }
-    echo '>' . $users[$i]['cal_fullname'] . "</option>\n";
+    echo '<option value=' . $u
+     . ( ! empty ( $viewuser[$u] ) ? '" selected>' : '">' )
+     . $users[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
 </select>
 <?php if ( $GROUPS_ENABLED == 'Y' ) { ?>
- <input type="button" onclick="selectUsers()" value="<?php etranslate( 'Select' );?>...">
+ <input type="button" onclick="selectUsers()" value="<?php echo $selectStr;?>...">
 <?php } ?>
 </div>
 </td></tr>
 <tr><td colspan="4" class="aligncenter">
 <br>
-<input type="submit" name="action" value="<?php if ( $newview ) etranslate( 'Add' ); else etranslate( 'Save' ); ?>">
+<input type="submit" name="action" value="<?php
+echo ( $newview ? $addStr : $saveStr ); ?>">
 <?php if ( ! $newview ) { ?>
- <input type="submit" name="delete" value="<?php etranslate( 'Delete' )?>" onclick="return confirm( '<?php
-  translate( 'Are you sure you want to delete this entry?' ); ?>' )">
+ <input type="submit" name="delete" value="<?php echo $deleteStr?>" onclick="return confirm( '<?php
+  translate( 'really delete entry' ); ?>' )">
 <?php } ?>
 </td></tr>
 </table>
@@ -175,4 +177,3 @@ echo '<tr><td><label>'
 </form>
 
 <?php echo print_trailer ( false, true, true ); ?>
-

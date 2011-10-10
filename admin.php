@@ -219,7 +219,7 @@ if ( ! $error ) {
     'public', translate ( 'Public Access' ),
     'uac', translate ( 'User Access Control' ),
     'groups', $groupsStr,
-    'nonuser', translate ( 'NonUser Calendars' ),
+    'nonuser', translate ( 'NUCs' ),
     'other', translate ( 'Other' ),
     'email', translate ( 'Email' ),
     'colors', translate ( 'Colors' )
@@ -298,20 +298,20 @@ if ( ! $error ) {
      . $menutheme . '</option>';
   }
   foreach ( array ( // Document color choices.
-      'BGCOLOR'     => translate( 'Document background' ),
-      'CELLBG'      => translate( 'Table cell background' ),
+      'BGCOLOR'     => translate( 'Document BG' ),
+      'CELLBG'      => translate( 'Table cell BG' ),
       'H2COLOR'     => translate( 'Document title' ),
-      'HASEVENTSBG' => translate( 'Table cell background for days with events' ),
+      'HASEVENTSBG' => translate( 'Table cell events BG' ),
       'MYEVENTS'    => translate( 'My event text' ),
-      'OTHERMONTHBG'=> translate( 'Table cell background for other month' ),
-      'POPUP_BG'    => translate( 'Event popup background' ),
+      'OTHERMONTHBG'=> translate( 'Table cell other month BG' ),
+      'POPUP_BG'    => translate( 'Event popup BG' ),
       'POPUP_FG'    => translate( 'Event popup text' ),
       'TABLEBG'     => translate( 'Table grid color' ),
       'TEXTCOLOR'   => translate( 'Document text' ),
-      'THBG'        => translate( 'Table header background' ),
+      'THBG'        => translate( 'Table header BG' ),
       'THFG'        => translate( 'Table header text' ),
-      'TODAYCELLBG' => translate( 'Table cell background for current day' ),
-      'WEEKENDBG'   => translate( 'Table cell background for weekends' ),
+      'TODAYCELLBG' => translate( 'Table cell today BG' ),
+      'WEEKENDBG'   => translate( 'Table cell weekends BG' ),
       'WEEKNUMBER'  => translate( 'Week number color' ),
       ) as $k => $v ) {
     $color_sets .= admin_print_color_input_html ( $k, $v );
@@ -341,7 +341,7 @@ if ( ! $error ) {
             <legend>' . translate ( 'System options' ) . '</legend>
             <p><label for="admin_APPLICATION_NAME" title="'
    . tooltip ( 'app-name-help' ) . '">' . translate ( 'Application Name' )
-   . ':</label>
+   . '</label>
               <input type="text" size="40" name="admin_APPLICATION_NAME" '
    . 'id="admin_APPLICATION_NAME" value="'
    . htmlspecialchars( $s['APPLICATION_NAME'] ) . '">'
@@ -355,21 +355,21 @@ if ( ! $error ) {
    . 'id="admin_SERVER_URL" value="' . htmlspecialchars ( $s['SERVER_URL'] )
    . '"></p>
             <p><label for="admin_HOME_LINK" title="'
-   . tooltip ( 'home-url-help' ) . '">' . translate ( 'Home URL' ) . ':</label>
+   . tooltip ( 'home-url-help' ) . '">' . translate ( 'Home URL' ) . '</label>
               <input type="text" size="40" name="admin_HOME_LINK" '
    . 'id="admin_HOME_LINK" value="'
    . ( empty ( $s['HOME_LINK'] ) ? '' : htmlspecialchars ( $s['HOME_LINK'] ) )
    . '"></p>
             <p><label for="admin_LANGUAGE" title="' . tooltip ( 'language-help' )
-   . '">' . translate ( 'Language' ) . ':</label>
+   . '">' . translate ( 'Language_' ) . '</label>
               <select name="admin_LANGUAGE" id="admin_LANGUAGE">' . $lang_list . '
               </select>'
    . str_replace( 'XXX', translate( get_browser_language( true ) ),
-    translate( 'Your browser default language is XXX.' ) ) . '</p>
+    translate( 'browser default language XXX' ) ) . '</p>
             <p><label>' . translate ( 'Allow user to use themes' ) . ':</label>'
    . print_radio ( 'ALLOW_USER_THEMES' ) . '</p>
             <p><label for="admin_THEME" title="' . tooltip ( 'themes-help' )
-   . '">' . translate ( 'Themes' ) . ':</label>
+   . '">' . translate ( 'Themes_' ) . '</label>
               <select name="admin_THEME" id="admin_THEME">
                 <option disabled>' . translate( 'AVAILABLE THEMES' )
    . '</option>'
@@ -383,43 +383,43 @@ if ( ! $error ) {
           <fieldset>
             <legend>' . translate ( 'Site customization' ) . '</legend>
             <p><label title="' . tooltip ( 'custom-script-help' ) . '">'
-   . translate ( 'Custom script/stylesheet' ) . ':</label>'
+   . translate ( 'Custom script/stylesheet' ) . '</label>'
    . print_radio ( 'CUSTOM_SCRIPT' );
   printf( $editInStr, 'S' );
   echo '</p>
             <p><label title="' . tooltip ( 'custom-header-help' ) . '">'
-   . translate ( 'Custom header' ) . ':</label>'
+   . translate ( 'Custom header' ) . '</label>'
    . print_radio ( 'CUSTOM_HEADER' );
   printf( $editInStr, 'H' );
   echo '</p>
             <p><label title="' . tooltip ( 'custom-trailer-help' ) . '">'
-   . translate ( 'Custom trailer' ) . ':</label>'
+   . translate ( 'Custom trailer' ) . '</label>'
    . print_radio ( 'CUSTOM_TRAILER' );
   printf( $editInStr, 'T' );
   echo '</p>
             <p><label title="' . tooltip ( 'enable-external-header-help' ) . '">'
-   . translate ( 'Allow external file for header/script/trailer' ) . ':</label>'
+   . translate ( 'externals head/script/trail' ) . '</label>'
    . print_radio ( 'ALLOW_EXTERNAL_HEADER' ) . '</p>
-            <p><label>' . translate ( 'Allow user to override header/trailer' )
-   . ':</label>' . print_radio ( 'ALLOW_USER_HEADER' ) . '</p>
+            <p><label>' . translate ( 'may user override head/trail' )
+   . '</label>' . print_radio ( 'ALLOW_USER_HEADER' ) . '</p>
           </fieldset>
           <fieldset>
             <legend>' . translate ( 'Date and Time' ) . '</legend>'
   /* Determine if we can set timezones. If not don't display any options. */
    . ( set_env ( 'TZ', $s['SERVER_TIMEZONE'] ) ? '
             <p><label for="admin_SERVER_TIMEZONE" title="'
-     . tooltip ( 'server-tz-help' ) . '">' . translate ( 'Server Timezone Selection' )
-     . ':</label>' . print_timezone_select_html ( 'admin_SERVER_', $s['SERVER_TIMEZONE'] )
+     . tooltip ( 'server-tz-help' ) . '">' . translate ( 'Server TZ Selection' )
+     . '</label>' . print_timezone_select_html ( 'admin_SERVER_', $s['SERVER_TIMEZONE'] )
      . '</p>' : '' ) . '
             <p><label for="admin_TIMEZONE" title="'
-     . tooltip ( 'tz-help' ) . '">' . translate ( 'Default Client Timezone Selection' )
-     . ':</label>' . print_timezone_select_html ( 'admin_', $s['TIMEZONE'] )
+     . tooltip ( 'tz-help' ) . '">' . translate ( 'Default Client TZ Selection' )
+     . '</label>' . print_timezone_select_html ( 'admin_', $s['TIMEZONE'] )
      . '</p>' . '
             <p><label title="' . tooltip ( 'display-general-use-gmt-help' )
-   . '">' . translate ( 'Display Common Use Date/Times as GMT' ) . ':</label>'
+   . '">' . translate ( 'GMT Common Use Date/Times' ) . '</label>'
    . print_radio ( 'GENERAL_USE_GMT' ) . '</p>
             <p><label title="' . tooltip ( 'date-format-help' ) . '">'
-   . translate ( 'Date format' ) . ':</label>
+   . translate ( 'Date format' ) . '</label>
               <select name="admin_DATE_FORMAT">' . $datestyle_ymd . '
               </select>' . $choices_text[2] . ' ' . $choices_text[0] . ' '
    . $choices_text[3] . '</p>
@@ -433,7 +433,7 @@ if ( ! $error ) {
               <select name="admin_DATE_FORMAT_TASK">' . $datestyle_tk . '
               </select>' . translate ( 'Small Task Date' ) . '</p>
             <p><label title="' . tooltip ( 'display-week-starts-on' ) . '">'
-   . translate ( 'Week starts on' ) . ':</label>
+   . translate ( 'Week starts on' ) . '</label>
               <select name="admin_WEEK_START" id="admin_WEEK_START">'
    . $start_wk_on . '
               </select></p>
@@ -443,17 +443,17 @@ if ( ! $error ) {
    . $start_wkend_on . '
               </select></p>
             <p><label title="' . tooltip ( 'time-format-help' ) . '">'
-   . translate ( 'Time format' ) . ':</label>' . print_radio ( 'TIME_FORMAT',
+   . translate ( 'Time format' ) . '</label>' . print_radio ( 'TIME_FORMAT',
     array ( '12' => translate ( '12 hour' ), '24' => translate ( '24 hour' ) ) )
    . '</p>
             <p><label title="' . tooltip ( 'timed-evt-len-help' ) . '">'
-   . translate ( 'Specify timed event length by' ) . ':</label>'
+   . translate ( 'Specify timed event length by' ) . '</label>'
    . print_radio ( 'TIMED_EVT_LEN',
     array ( 'D' => translate ( 'Duration' ), 'E' => translate ( 'End Time' ) ) )
    . '</p>
             <p><label for="admin_WORK_DAY_START_HOUR" title="'
    . tooltip ( 'work-hours-help' ) . '">' . translate ( 'Work hours' )
-   . ':</label>' . translate ( 'From' ) . '
+   . '</label>' . translate ( 'From' ) . '
               <select name="admin_WORK_DAY_START_HOUR" id="admin_WORK_DAY_START_HOUR">'
    . $work_hr_start . '
               </select>' . translate ( 'to' ) . '
@@ -465,7 +465,7 @@ if ( ! $error ) {
             <legend>' . translate ( 'Appearance' ) . '</legend>
             <p><label for="admin_STARTVIEW" title="'
    . tooltip ( 'preferred-view-help' ) . '">' . translate ( 'Preferred view' )
-   . ':</label>
+   . '</label>
               <select name="admin_STARTVIEW" id="admin_STARTVIEW">' . $prefer_vu
    . $user_vu . '
               </select></p>
@@ -483,7 +483,7 @@ if ( ! $error ) {
               </select></p>
             <p><label for="admin_FONTS" title="' . tooltip ( 'fonts-help' )
    . '">' . translate ( 'Fonts' )
-   . ':</label><input type="text" size="40" name="admin_FONTS" id="admin_FONTS" value="'
+   . '</label><input type="text" size="40" name="admin_FONTS" id="admin_FONTS" value="'
    . htmlspecialchars( $s['FONTS'] ) . '"></p>
             <p><label title="' . tooltip ( 'display-sm_month-help' ) . '">'
    . translate ( 'Display small months' ) . ':</label>'
@@ -498,14 +498,14 @@ if ( ! $error ) {
    . translate ( 'Display all days in month view' ) . ':</label>'
    . print_radio ( 'DISPLAY_ALL_DAYS_IN_MONTH' ) . '</p>
             <p><label title="' . tooltip ( 'display-week-number-help' ) . '">'
-   . translate ( 'Display week number' ) . ':</label>'
+   . translate ( 'Display week number' ) . '</label>'
    . print_radio ( 'DISPLAY_WEEKNUMBER' ) . '</p>
             <p><label title="' . tooltip ( 'display-desc-print-day-help' ) . '">'
-   . translate ( 'Display description in printer day view' ) . ':</label>'
+   . translate ( 'desc in printer day view' ) . '</label>'
    . print_radio ( 'DISPLAY_DESC_PRINT_DAY' ) . '</p>
             <p><label title="' . tooltip ( 'yearly-shows-events-help' ) . '">'
-   . translate ( 'Display days with events in bold in month and year views' )
-   . ':</label>' . print_radio ( 'BOLD_DAYS_IN_YEAR' ) . '</p>
+   . translate ( 'bold events month/year views' )
+   . '</label>' . print_radio ( 'BOLD_DAYS_IN_YEAR' ) . '</p>
             <p><label title="' . tooltip ( 'display-minutes-help' ) . '">'
    . translate ( 'Display 00 minutes always' ) . ':</label>'
    . print_radio ( 'DISPLAY_MINUTES' ) . '</p>
@@ -513,7 +513,7 @@ if ( ! $error ) {
    . translate ( 'Display end times on calendars' ) . ':</label>'
    . print_radio ( 'DISPLAY_END_TIMES' ) . '</p>
             <p><label title="' . tooltip ( 'allow-view-add-help' ) . '">'
-   . translate ( 'Include add event link in views' ) . ':</label>'
+   . translate ( 'Include add event link in views' ) . '</label>'
    . print_radio ( 'ADD_LINK_IN_VIEWS' ) . '</p>
             <p><label title="' . tooltip ( 'lunar-help' ) . '">'
    . translate ( 'Display Lunar Phases in month view' ) . ':</label>'
@@ -522,32 +522,32 @@ if ( ! $error ) {
           <fieldset>
             <legend>' . translate ( 'Restrictions' ) . '</legend>
             <p><label title="' . tooltip ( 'allow-view-other-help' ) . '">'
-   . translate ( 'Allow viewing other users calendars' ) . ':</label>'
+   . translate ( 'may view others cals' ) . '</label>'
    . print_radio ( 'ALLOW_VIEW_OTHER' ) . '</p>
             <p><label title="' . tooltip ( 'require-approvals-help' ) . '">'
-   . translate ( 'Require event approvals' ) . ':</label>'
+   . translate ( 'Require event approvals' ) . '</label>'
    . print_radio ( 'REQUIRE_APPROVALS' ) . '</p>
             <p><label title="' . tooltip ( 'display-unapproved-help' ) . '">'
-   . translate ( 'Display unapproved' ) . ':</label>'
+   . translate ( 'Display unapproved' ) . '</label>'
    . print_radio ( 'DISPLAY_UNAPPROVED' ) . '</p>
             <p><label title="' . tooltip ( 'conflict-check-help' ) . '">'
-   . translate ( 'Check for event conflicts' ) . ':</label>'
+   . translate ( 'Check for conflicts' ) . '</label>'
   /* This control is logically reversed. */
    . print_radio ( 'ALLOW_CONFLICTS',
     array( 'N' => $yesStr, 'Y' => $noStr ) ) . '</p>
             <p><label title="' . tooltip ( 'conflict-months-help' ) . '">'
-   . translate ( 'Conflict checking months' ) . ':</label>
+   . translate ( 'Conflict checking months' ) . '</label>
               <input type="text" size="3" '
    . 'name="admin_CONFLICT_REPEAT_MONTHS" value="'
    . htmlspecialchars( $s['CONFLICT_REPEAT_MONTHS'] ) . '"></p>
             <p><label title="' . tooltip ( 'conflict-check-override-help' )
-   . '">' . translate ( 'Allow users to override conflicts' ) . ':</label>'
+   . '">' . translate ( 'may users override conflicts' ) . '</label>'
    . print_radio ( 'ALLOW_CONFLICT_OVERRIDE' ) . '</p>
             <p><label title="' . tooltip ( 'limit-appts-help' ) . '">'
-   . translate ( 'Limit number of timed events per day' ) . ':</label>'
+   . translate ( 'Limit timed events per day' ) . '</label>'
    . print_radio ( 'LIMIT_APPTS' ) . '</p>
             <p><label title="' . tooltip ( 'limit-appts-number-help' ) . '">'
-   . translate ( 'Maximum timed events per day' ) . ':</label>
+   . translate ( 'Maximum timed events per day' ) . '</label>
               <input type="text" size="3" name="admin_LIMIT_APPTS_NUMBER" value="'
    . htmlspecialchars( $s['LIMIT_APPTS_NUMBER'] ) . '"></p>
             <p><label title="' . tooltip ( 'crossday-help' ) . '">'
@@ -563,19 +563,19 @@ if ( ! $error ) {
    . translate ( 'Disable URL field' ) . ':</label>'
    . print_radio ( 'DISABLE_URL_FIELD' ) . '</p>
             <p><label title="' . tooltip ( 'disable-priority-field-help' ) . '">'
-   . translate ( 'Disable Priority field' ) . ':</label>'
+   . translate ( 'Disable Priority field' ) . '</label>'
    . print_radio ( 'DISABLE_PRIORITY_FIELD' ) . '</p>
             <p><label title="' . tooltip ( 'disable-access-field-help' ) . '">'
-   . translate ( 'Disable Access field' ) . ':</label>'
+   . translate ( 'Disable Access field' ) . '</label>'
    . print_radio ( 'DISABLE_ACCESS_FIELD' ) . '</p>
             <p><label title="' . tooltip ( 'disable-participants-field-help' )
-   . '">' . translate ( 'Disable Participants field' ) . ':</label>'
+   . '">' . translate ( 'Disable Participants field' ) . '</label>'
    . print_radio ( 'DISABLE_PARTICIPANTS_FIELD' ) . '</p>
             <p><label title="' . tooltip ( 'disable-repeating-field-help' )
-   . '">' . translate ( 'Disable Repeating field' ) . ':</label>'
+   . '">' . translate ( 'Disable Repeating field' ) . '</label>'
    . print_radio ( 'DISABLE_REPEATING_FIELD' ) . '</p>
             <p><label title="' . tooltip ( 'allow-html-description-help' )
-   . '">' . translate ( 'Allow HTML in Description' ) . ':</label>'
+   . '">' . translate ( 'Allow HTML in Description' ) . '</label>'
    . print_radio ( 'ALLOW_HTML_DESCRIPTION' ) . '</p>
           </fieldset>
           <fieldset>
@@ -585,7 +585,7 @@ if ( ! $error ) {
    . print_radio ( 'DISABLE_POPUPS', '', 'popup_handler' ) . '</p>
             <div id="pop">
               <p><label title="' . tooltip ( 'popup-includes-siteextras-help' )
-   . '">' . translate ( 'Display Site Extras in popup' ) . ':</label>'
+   . '">' . translate ( 'Display Site Extras in popup' ) . '</label>'
    . print_radio ( 'SITE_EXTRAS_IN_POPUP' ) . '</p>
               <p><label title="' . tooltip ( 'popup-includes-participants-help' )
    . '">' . translate ( 'Display Participants in popup' ) . ':</label>'
@@ -595,7 +595,7 @@ if ( ! $error ) {
           <fieldset>
             <legend>' . translate ( 'Miscellaneous' ) . '</legend>
             <p><label title="' . tooltip ( 'remember-last-login-help' ) . '">'
-   . translate ( 'Remember last login' ) . ':</label>'
+   . translate ( 'Remember last login' ) . '</label>'
    . print_radio ( 'REMEMBER_LAST_LOGIN' ) . '</p>
             <p><label title="' . tooltip ( 'summary_length-help' ) . '">'
    . translate ( 'Brief Description Length' )
@@ -621,37 +621,37 @@ if ( ! $error ) {
 <!-- BEGIN PUBLIC ACCESS -->
         <div id="tabscontent_public">
           <p><label title=" ' . tooltip ( 'allow-public-access-help' ) . '">'
-   . translate ( 'Allow public access' ) . ':</label>'
+   . translate ( 'Allow public access' ) . '</label>'
    . print_radio ( 'PUBLIC_ACCESS', '', 'public_handler' ) . '</p>
           <div id="pa">
             <p><label title="' . tooltip ( 'public-access-default-visible' )
-   . '">' . translate ( 'Public access visible by default' ) . ':</label>'
+   . '">' . translate ( 'Public visible by default' ) . '</label>'
    . print_radio ( 'PUBLIC_ACCESS_DEFAULT_VISIBLE' ) . '</p>
             <p><label title="' . tooltip ( 'public-access-default-selected' )
-   . '">' . translate ( 'Public access is default participant' ) . ':</label>'
+   . '">' . translate ( 'is public default party' ) . '</label>'
    . print_radio ( 'PUBLIC_ACCESS_DEFAULT_SELECTED' ) . '</p>
             <p><label title="' . tooltip ( 'public-access-view-others-help' )
-   . '">' . translate ( 'Public access can view other users' ) . ':</label>'
+   . '">' . translate ( 'may public view others' ) . '</label>'
    . print_radio ( 'PUBLIC_ACCESS_OTHERS' ) . '</p>
             <p><label title="' . tooltip ( 'public-access-can-add-help' ) . '">'
-   . translate ( 'Public access can add events' ) . ':</label>'
+   . translate ( 'may public add events' ) . '</label>'
    . print_radio ( 'PUBLIC_ACCESS_CAN_ADD' ) . '</p>
             <p><label title="' . tooltip ( 'public-access-add-requires-approval-help' )
-   . '">' . translate ( 'Public access new events require approval' ) . ':</label>'
+   . '">' . translate ( 'must approve public events' ) . '</label>'
    . print_radio ( 'PUBLIC_ACCESS_ADD_NEEDS_APPROVAL' ) . '</p>
             <p><label title="' . tooltip ( 'public-access-sees-participants-help' )
-   . '">' . translate ( 'Public access can view participants' ) . ':</label>'
+   . '">' . translate ( 'may public see participants' ) . '</label>'
    . print_radio ( 'PUBLIC_ACCESS_VIEW_PART' ) . '</p>
             <p><label title="' . tooltip ( 'public-access-override-help' ) . '">'
-   . translate ( 'Override event name/description for public access' )
-   . ':</label>' . print_radio ( 'OVERRIDE_PUBLIC' ) . '</p>
+   . translate ( 'Override public event name/desc' )
+   . '</label>' . print_radio ( 'OVERRIDE_PUBLIC' ) . '</p>
             <p><label title="' . tooltip ( 'public-access-override-text-help' )
-   . '">' . translate ( 'Text to display to public access' )
-   . ':</label><input name="admin_OVERRIDE_PUBLIC_TEXT" value="'
+   . '">' . translate ( 'public text display' )
+   . '</label><input name="admin_OVERRIDE_PUBLIC_TEXT" value="'
    . $s['OVERRIDE_PUBLIC_TEXT'] . '" size="25"></p>
             <p><label title="' . tooltip ( 'public-access-captcha-help' ) . '">'
-   . translate ( 'Require CAPTCHA validation for public access new events' )
-   . ':</label>' . print_radio ( 'ENABLE_CAPTCHA' ) . '</p>
+   . translate ( 'require public CAPTCHA' )
+   . '</label>' . print_radio ( 'ENABLE_CAPTCHA' ) . '</p>
            <div style="clear:both;"></div>
           </div>
         </div>
@@ -664,20 +664,20 @@ if ( ! $error ) {
 <!-- BEGIN GROUPS -->
         <div id="tabscontent_groups">
           <p><label title="' . tooltip ( 'groups-enabled-help' ) . '">'
-   . translate ( 'Groups enabled' ) . ':</label>'
+   . translate ( 'Groups enabled' ) . '</label>'
    . print_radio ( 'GROUPS_ENABLED' ) . '</p>
           <p><label title="' . tooltip ( 'user-sees-his-group-help' ) . '">'
-   . translate ( 'User sees only his groups' ) . ':</label>'
+   . translate ( 'User sees only his groups' ) . '</label>'
    . print_radio ( 'USER_SEES_ONLY_HIS_GROUPS' ) . '</p>
         </div>
 
 <!-- BEGIN NONUSER -->
         <div id="tabscontent_nonuser">
           <p><label title="' . tooltip ( 'nonuser-enabled-help' ) . '">'
-   . translate ( 'Nonuser enabled' ) . ':</label>'
+   . translate ( 'NUCs enabled' ) . '</label>'
    . print_radio ( 'NONUSER_ENABLED' ) . '</p>
           <p><label title="' . tooltip ( 'nonuser-list-help' ) . '">'
-   . translate ( 'Nonuser list' ) . ':</label>'
+   . translate ( 'list NUCs at' ) . '</label>'
    . print_radio ( 'NONUSER_AT_TOP', array ( 'Y' => $topStr, 'N' => $bottomStr ) )
    . '</p>
         </div>
@@ -687,7 +687,7 @@ if ( ! $error ) {
    <fieldset><legend>' . translate('Upcoming Events') . '</legend>
    ' . htmlspecialchars( $SERVER_URL ) . 'upcoming.php<br>
    <p><label title="' . tooltip ( 'upcoming-events-help' ) . '">'
-   . translate ( 'Enabled' ) . ':</label>'
+   . translate ( 'Enabled_' ) . '</label>'
    . print_radio ( 'UPCOMING_EVENTS', '', '', 'N' ) . '</p>
 
    <p><label title="' . tooltip( 'upcoming-events-allow-override' ) . '">'
@@ -713,12 +713,12 @@ if ( ! $error ) {
 
 <!-- BEGIN REPORTS -->
           <p><label title="' . tooltip ( 'reports-enabled-help' ) . '">'
-   . translate ( 'Reports enabled' ) . ':</label>'
+   . translate ( 'Reports enabled' ) . '</label>'
    . print_radio ( 'REPORTS_ENABLED' ) . '</p>
 
 <!-- BEGIN PUBLISHING -->
           <p><label title="' . tooltip ( 'subscriptions-enabled-help' ) . '">'
-   . translate ( 'Allow remote subscriptions' ) . ':</label>'
+   . translate ( 'Allow remote subscriptions' ) . '</label>'
    . print_radio ( 'PUBLISH_ENABLED' ) . '</p>'
   /* Determine if allow_url_fopen is enabled. */
    . ( preg_match ( '/(On|1|true|yes)/i', ini_get ( 'allow_url_fopen' ) ) ? '
@@ -726,12 +726,12 @@ if ( ! $error ) {
      . translate ( 'Allow remote calendars' ) . ':</label>'
      . print_radio ( 'REMOTES_ENABLED' ) . '</p>' : '' ) . '
           <p><label title="' . tooltip ( 'rss-enabled-help' ) . '">'
-   . translate ( 'Enable RSS feed' ) . ':</label>'
+   . translate ( 'Enable RSS feed' ) . '</label>'
    . print_radio ( 'RSS_ENABLED' ) . '</p>
 
 <!-- BEGIN CATEGORIES -->
           <p><label title="' . tooltip ( 'categories-enabled-help' ) . '">'
-   . translate ( 'Categories enabled' ) . ':</label>'
+   . translate ( 'Categories enabled' ) . '</label>'
    . print_radio ( 'CATEGORIES_ENABLED' ) . '</p>
           <p><label title="' . tooltip ( 'icon_upload-enabled-help' ) . '">'
    . translate ( 'Category Icon Upload enabled' ) . ':</label>'
@@ -749,15 +749,15 @@ if ( ! $error ) {
 
 <!-- BEGIN EXT PARTICIPANTS -->
           <p><label title="' . tooltip ( 'allow-external-users-help' ) . '">'
-   . translate ( 'Allow external users' ) . ':</label>'
+   . translate ( 'Allow external users' ) . '</label>'
    . print_radio ( 'ALLOW_EXTERNAL_USERS', '', 'eu_handler' ) . '</p>
           <div id="eu">
             <p><label title="' . tooltip ( 'external-can-receive-notification-help' )
-   . '">' . translate ( 'External users can receive email notifications' )
-   . ':</label>' . print_radio ( 'EXTERNAL_NOTIFICATIONS' ) . '</p>
+   . '">' . translate ( 'may notify externals by email' )
+   . '</label>' . print_radio ( 'EXTERNAL_NOTIFICATIONS' ) . '</p>
             <p><label title="' . tooltip ( 'external-can-receive-reminder-help' )
-   . '">' . translate ( 'External users can receive email reminders' )
-   . ':</label>' . print_radio ( 'EXTERNAL_REMINDERS' ) . '</p>
+   . '">' . translate ( 'may remind externals by email' )
+   . '</label>' . print_radio ( 'EXTERNAL_REMINDERS' ) . '</p>
           </div>
 
  <!-- BEGIN SELF REGISTRATION -->
@@ -766,11 +766,11 @@ if ( ! $error ) {
    . print_radio ( 'ALLOW_SELF_REGISTRATION', '', 'sr_handler' ) . '</p>
           <div id="sr">
             <p><label title="' . tooltip ( 'use-blacklist-help' ) . '">'
-   . translate ( 'Restrict self-registration to blacklist' ) . ':</label>'
+   . translate ( 'Restrict self-reg to blacklist' ) . '</label>'
    . print_radio ( 'SELF_REGISTRATION_BLACKLIST' ) . '</p>
-            <p><label title="' . tooltip ( 'allow-self-registration-full-help' )
-   . '">' . translate ( 'Use self-registration email notifications' )
-   . ':</label>' . print_radio( 'SELF_REGISTRATION_FULL' ) . '</p><br>
+            <p><label title="' . tooltip ( 'allow-self-reg-full-help' )
+   . '">' . translate ( 'send self-reg emails' )
+   . '</label>' . print_radio( 'SELF_REGISTRATION_FULL' ) . '</p><br>
           </div>
 
 <!-- TODO add account aging feature. -->
@@ -778,18 +778,16 @@ if ( ! $error ) {
 <!-- BEGIN ATTACHMENTS/COMMENTS -->
         <div><p><label title="'
    . tooltip ( 'allow-attachment-help' ) . '">'
-   . translate ( 'Allow file attachments to events' ) . ':</label>'
+   . translate ( 'Allow file attachments to events' ) . '</label>'
    . print_radio ( 'ALLOW_ATTACH', '', 'attach_handler' )
-    . '</p><p id="at1" style="margin-left:25%"><strong>Note: </strong>'
-   . translate ( 'Admin and owner can always add attachments if enabled.' )
+   . '</p><p id="at1">' . translate ( 'owner can attach if enabled' )
    . '<br>' . print_checkbox( array( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
    . print_checkbox ( array ( 'ALLOW_ATTACH_ANY', 'Y', $anyoneStr ) )
    . '</p><br><p><label title="'
    . tooltip ( 'allow-comments-help' ) . '">'
    . translate ( 'Allow comments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' )
-   . '</p><p id="com1" style="margin-left:25%"><strong>Note: </strong>'
-   . translate ( 'Admin and owner can always add comments if enabled.' )
+   . '</p><p id="com1">' . translate ( 'owner can comment if enabled' )
    . '<br>' . print_checkbox( array( 'ALLOW_COMMENTS_PART', 'Y', $partyStr ) )
    . print_checkbox ( array ( 'ALLOW_COMMENTS_ANY', 'Y', $anyoneStr ) )
    . '</p><br></div></div>
@@ -797,12 +795,12 @@ if ( ! $error ) {
 <!-- BEGIN EMAIL -->
         <div id="tabscontent_email">
           <p><label title="' . tooltip ( 'email-enabled-help' ) . '">'
-   . translate ( 'Email enabled' ) . ':</label>'
+   . translate ( 'Email enabled' ) . '</label>'
    . print_radio ( 'SEND_EMAIL', '', 'email_handler' ) . '</p>
           <div id="em">
             <p><label title="' . tooltip ( 'email-default-sender' ) . '">'
    . translate ( 'Default sender address' )
-   . ':</label><input type="text" size="30" name="admin_EMAIL_FALLBACK_FROM" value="'
+   . '</label><input type="text" size="30" name="admin_EMAIL_FALLBACK_FROM" value="'
    . htmlspecialchars( $EMAIL_FALLBACK_FROM ) . '"></p>
             <p><label title="' . tooltip ( 'email-mailer' ) . '">'
    . translate ( 'Email Mailer' ) . ':</label>
@@ -848,19 +846,19 @@ if ( ! $error ) {
    . translate ( 'Include iCalendar attachments' ) . ':</label>'
    . print_radio( 'EMAIL_ATTACH_ICS' ) . '</p>'
    . '<p><label title="' . tooltip ( 'email-event-reminders-help' ) . '">'
-   . translate ( 'Event reminders' ) . ':</label>'
+   . translate ( 'Event reminders' ) . '</label>'
    . print_radio( 'EMAIL_REMINDER' ) . '</p>'
    . '<p><label title="' . tooltip ( 'email-event-added' ) . '">'
-   . translate ( 'Events added to my calendar' ) . ':</label>'
+   . translate ( 'Events added to my calendar' ) . '</label>'
    . print_radio ( 'EMAIL_EVENT_ADDED' ) . '</p>
             <p><label title="' . tooltip ( 'email-event-updated' ) . '">'
-   . translate ( 'Events updated on my calendar' ) . ':</label>'
+   . translate ( 'Events updated on my calendar' ) . '</label>'
    . print_radio ( 'EMAIL_EVENT_UPDATED' ) . '</p>
             <p><label title="' . tooltip ( 'email-event-deleted' ) . '">'
-   . translate ( 'Events removed from my calendar' ) . ':</label>'
+   . translate ( 'Events removed from my calendar' ) . '</label>'
    . print_radio ( 'EMAIL_EVENT_DELETED' ) . '</p>
             <p><label title="' . tooltip ( 'email-event-rejected' ) . '">'
-   . translate ( 'Event rejected by participant' ) . ':</label>'
+   . translate ( 'Event rejected by participant' ) . '</label>'
    . print_radio ( 'EMAIL_EVENT_REJECTED' ) . '</p>
             <p><label title="' . tooltip ( 'email-event-create' ) . '">'
    . translate ( 'Event that I create' ) . ':</label>'
@@ -882,9 +880,9 @@ if ( ! $error ) {
             </div>
 <!-- END EXAMPLE MONTH -->
             <p><label>' . translate ( 'Allow user to customize colors' )
-   . ':</label>' . print_radio ( 'ALLOW_COLOR_CUSTOMIZATION' ) . '</p>
+   . '</label>' . print_radio ( 'ALLOW_COLOR_CUSTOMIZATION' ) . '</p>
             <p><label title="' . tooltip ( 'gradient-colors' ) . '">'
-   . translate ( 'Enable gradient images for background colors' ) . ':</label>'
+   . translate ( 'Enable gradient images for BG' ) . '</label>'
    . ( function_exists ( 'imagepng' ) || function_exists ( 'imagegif' )
     ? print_radio ( 'ENABLE_GRADIENTS' ) : translate ( 'Not available' ) )
    . '</p><br>' . $color_sets . '

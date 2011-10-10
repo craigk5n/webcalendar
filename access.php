@@ -28,7 +28,6 @@ if( ! access_is_enabled() ) {
   exit;
 }
 
-$dbErrStr = translate( 'Database error XXX.' );
 $defConfigStr = translate( 'DEFAULT CONFIGURATION' );
 $goStr = '
       </select>
@@ -53,7 +52,7 @@ if( getPostValue( 'auser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
 
   if( ! dbi_execute( 'INSERT INTO webcal_access_function( cal_login,
       cal_permissions ) VALUES ( ?, ? )', array( $auser, $perm ) ) )
-    die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
+    die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrXXXStr ) );
 
   $saved = true;
 }
@@ -101,7 +100,7 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
           ( strlen( $invite ) ? $invite : 'N' ),
           ( strlen( $email ) ? $email : 'N' ),
           ( strlen( $time ) ? $time : 'N' ) ) ) )
-      die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
+      die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrXXXStr ) );
 
     $saved = true;
   }
@@ -259,13 +258,13 @@ if( ! empty( $guser ) || ! $is_admin ) {
       <input type="submit" name="submit" value="' . $saveStr . '">
     </form>';
 
-    $pagetitle = translate( 'Allow Access to Other Users Calendar' );
+    $pagetitle = translate( 'may access others cals' );
   } else {
     // Get list of users that this user can see (may depend on group settings)
     // along with all nonuser calendars.
     // if( $guser != '__default__' ) {
     $guser = $login;
-    $pagetitle = translate( 'Grant This User Access to My Calendar' );
+    $pagetitle = translate( 'this user may access my cal' );
   }
 
   if( $guser == '__default__' ) {

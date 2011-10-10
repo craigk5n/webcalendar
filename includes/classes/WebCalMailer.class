@@ -125,7 +125,7 @@ class WebCalMailer extends phpmailer{
   function MailError( $mailerError, $error ) {
     print_header();
     echo ( ! empty( $mailerError ) ? '
-    <h2>' . translate( 'Email' ) . ' ' . translate( 'Error' ) . '</h2>
+    <h2>' . translate( 'Email Error' ) . '</h2>
     <blockquote>' . $mailerError
        . ( empty( $error ) ? translate( 'Changes successfully saved' ) : '' )
        . '</blockquote>'

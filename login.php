@@ -94,7 +94,7 @@ else {
       $password = stripslashes ( $password );
     }
     $login = trim ( $login );
-    $badLoginStr = translate ( 'Illegal characters in login XXX.' );
+    $badLoginStr = translate ( 'Illegal chars in login XXX' );
 
     if ( $login != addslashes ( $login ) )
       die_miserable_death (
@@ -152,7 +152,7 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
       function valid_form ( form ) {
         if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
           alert ( \''
-   . translate ( 'You must enter a login and password.', true ) . '\' );
+   . translate ( 'must enter login/password', true ) . '\' );
           return false;
         }
         return true;
@@ -179,7 +179,7 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
     <span style="color:#f00; font-weight:bold;">'
    . str_replace ( 'XXX', $error, translate ( 'Error XXX' ) ) . '</span>' )
  . '<br>' . ( $logout ? '
-    <p>' . translate( 'You have been logged out.' ) . '</p><br><br>
+    <p>' . translate( 'You logged out' ) . '</p><br><br>
     <a class="nav" href="login.php' . ( empty ( $return_path )
     ? '' : '?return_path=' . htmlentities ( $return_path ) ) . '">'
    . translate( 'Login' ) . '</a><br><br><br>' : '
@@ -191,13 +191,13 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
         <tr>
           <td rowspan="2"><img src="images/login.gif" alt="Login"></td>
           <td align="right"><label for="user">' . translate ( 'Username' )
-   . ':</label></td>
+   . '</label></td>
           <td><input name="login" id="user" size="15" maxlength="25" value="'
    . ( empty( $last_login ) ? '' : $last_login ) . '" tabindex="1"></td>
         </tr>
         <tr>
           <td class="alignright"><label for="password">'
-   . translate ( 'Password' ) . ':</label></td>
+   . translate ( 'Password' ) . '</label></td>
           <td><input name="password" id="password" type="password" size="15" '
    . 'maxlength="30" tabindex="2"></td>
         </tr>
@@ -207,8 +207,7 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
    . 'value="yes"' . ( ! empty ( $remember ) && $remember == 'yes'
     ? 'checked>' : '>' ) . '
             <label for="remember">&nbsp;'
-   . translate ( 'Save login via cookies so I dont have to login next time.' )
-   . '</label>
+   . translate ( 'Save login via cookies' ) . '</label>
           </td>
         </tr>
         <tr>
@@ -244,7 +243,7 @@ if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
   if ( ! empty ( $valid_ip ) )
     echo '
     <b><a href="register.php">'
-     . translate( 'Not yet registered? Register here!' ) . '</a></b><br>';
+     . translate ( 'Not registered' ) . '</a></b><br>';
 }
 echo '
      <span class="cookies">' . translate( 'cookies-note' ) . '</span><br>

@@ -5,30 +5,31 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 ?>
 
 function valid_form ( form ) {
-  var err = "";
+  var err = '';
   var colorErr = false;
   <?php if ( $ALLOW_COLOR_CUSTOMIZATION ) { ?>
   if ( ! valid_color ( form.pref_BGCOLOR.value ) )
-    err += "<?php etranslate ( 'Invalid color for document background.', true)?>.\n";
+    err += xlate['formatColorRGB']; // translate ( 'Invalid doc BG color' )
   if ( ! valid_color ( form.pref_H2COLOR.value ) )
-    err += "<?php etranslate ( 'Invalid color for document title.', true)?>.\n";
+    err += xlate['invalidTitleFG']; // translate ( 'Invalid doc title color' )
   if ( ! valid_color ( form.pref_CELLBG.value ) )
-    err += "<?php etranslate ( 'Invalid color for table cell background.', true)?>.\n";
+    err += xlate['invalidCellBG'];  // translate ( 'Invalid table cell BG color' )
   if ( ! valid_color ( form.pref_TODAYCELLBG.value ) )
-    err += "<?php etranslate ( 'Invalid color for table cell background for today.', true)?>.\n";
+    err += xlate['invalidTodayBG']; // translate ( 'Invalid table cell today BG' )
   <?php } ?>
   if ( err.length > 0 )
     colorErr = true;
   if ( ! validWorkHours ( form ) ) {
-    err += "<?php etranslate ( 'Invalid work hours.', true); ?>\n";
-    err += form.pref_WORK_DAY_START_HOUR.value + " > " + form.pref_WORK_DAY_END_HOUR.value + "\n";
+    err += xlate['invalidHours'] // translate ( 'Invalid work hours.' )
+      + form.pref_WORK_DAY_START_HOUR.value + ' > '
+      + form.pref_WORK_DAY_END_HOUR.value + "\n";
   }
   if ( colorErr ) {
-    alert ( "<?php etranslate ( 'Error', true) ?>:\n\n" + err + "\n\n<?php
-  etranslate ( 'Color format should be RRGGBB.', true)?>" );
+    alert ( xlate['errorXXX'].replace(/XXX/, err) // translate ( 'Error XXX' )
+     + "\n\n" + xlate['formatColorRGB']; // translate ( 'Color format should be RGB' )
     return false;
   } else if ( err.length > 0 ) {
-    alert ( "<?php etranslate ( 'Error', true) ?>:\n\n" + err );
+    alert ( xlate['errorXXX'].replace(/XXX/, err);
     return false;
   }
   return true;
@@ -42,8 +43,8 @@ function validWorkHours ( form ) {
 function showPreview() {
   var theme = document.forms['prefform'].pref_THEME.value;
   if (theme == 'none' ) return false;
-  url = "themes/" + theme.toLowerCase()  + "_pref.php";
-  var previewWindow = window.open (url,"Preview","resizable=yes,scrollbars=yes");
+  url = 'themes/' + theme.toLowerCase()  + '_pref.php';
+  var previewWindow = window.open (url,'Preview','resizable=yes,scrollbars=yes');
 }
 
 function setTab( tab ) {

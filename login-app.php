@@ -55,8 +55,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
     // Error check login/password.
       function valid_form ( form ) {
         if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
-          alert ( \''
-   . translate ( 'You must enter a login and password.', true ) . '\' );
+          alert ( \'' . translate ( 'must enter login/password', true ) . '\' );
           return false;
         }
         return true;
@@ -80,8 +79,8 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
  . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y'
   ? load_template ( $login, 'H' ) : '' ) . '
     <h2>' . $appStr . '</h2>' . ( empty ( $error ) ? '' : '
-    <span style="color:#F00;" class="bold">' . translate ( 'Error' )
-   . ": $error" . '</span>' ) . '<br>
+    <span style="color:#F00;" class="bold">' . $err_Str
+   . $error . '</span>' ) . '<br>
     <form name="login_form" id="login" action="' . $app_login_page['action']
  . '" method="post" onsubmit="return valid_form( this )">
       <input type="hidden" name="' . $app_login_page['return'] . '" value="'
@@ -90,13 +89,13 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
         <tr>
           <td rowspan="2"><img src="images/login.gif" alt="Login"></td>
           <td align="right"><label for="user">' . translate ( 'Username' )
- . ':</label></td>
+ . '</label></td>
           <td><input name="' . $app_login_page['username']
  . '" id="user" size="15" maxlength="25" tabindex="1"></td>
         </tr>
         <tr>
           <td class"alignright"><label for="password">'
- . translate ( 'Password' ) . ':</label></td>
+ . translate ( 'Password' ) . '</label></td>
           <td><input name="' . $app_login_page['password']
  . '" id="password" type="password" size="15" maxlength="30" tabindex="2"></td>
         </tr>' . ( ! empty ( $app_login_page['remember'] ) ? '
@@ -106,8 +105,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
    . '" id="remember" tabindex="3" value="yes" '
    . ( ! empty ( $remember ) && $remember == 'yes' ? 'checked>' : '>' ) . '
             <label for="remember">&nbsp;'
-   . translate ( 'Save login via cookies so I dont have to login next time.' )
-   . '</label>
+   . translate ( 'Save login via cookies' ) . '</label>
           </td>
         </tr>' : '' ) . '
         <tr>

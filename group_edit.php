@@ -98,16 +98,12 @@ echo '
  . ( ! $newgroup ? '
             <input type="submit" name="delete" value="'
    . $deleteStr . '" onclick="return confirm( \''
-   . translate( 'Are you sure you want to delete this entry?' )
-   . '\')">' : '' ) . '
+   . translate( 'really delete entry' ) . '\')">' : '' ) . '
           </td>
         </tr>
       </table>
-    </form>
-    ';
+    </form>' . print_trailer ( false, true, true );
 
 ob_end_flush();
-
-echo print_trailer ( false, true, true );
 
 ?>

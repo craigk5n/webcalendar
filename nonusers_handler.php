@@ -82,8 +82,7 @@ if ( $action == 'Delete' || $action == $deleteStr ) {
           array ( $nid, $nfirstname, $nlastname, $nadmin ) ) )
         $error = db_error();
     } else
-      $error = translate ( 'Calendar ID' ) . ' '
-       . translate ( 'word characters only' ) . '.';
+      $error = translate ( 'Cal ID word chars only' );
   }
 }
 if ( empty ( $error ) )

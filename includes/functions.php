@@ -88,7 +88,7 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
   $next_id = 1;
 
   if ( empty ( $type ) ) {
-    echo translate ( 'Error Type not set for activity log!' );
+    echo translate ( 'Type not set for activity log' );
     // But don't exit since we may be in mid-transaction.
     return;
   }
@@ -208,7 +208,7 @@ function build_entry_label ( $event, $popupid,
   if ( $not_my_entry && $tmpAccess == 'C' && !
     ( $can_access &CONF_WT ) ) {
     if ( $time_only != 'Y' )
-      $ret = '(' . translate ( 'Conf.' ) . ')';
+      $ret = translate ( 'Conf.' );
 
     $eventinfo .= build_entry_popup ( $popupid, $tmpLogin,
       str_replace ( 'XXX', translate ( 'confidential' ),
@@ -306,7 +306,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
 
   $allDayStr = translate ( 'All day event' );
   $confidentialStr = translate ( 'Confidential' );
-  $exceedsStr = translate ( 'exceeds limit of XXX events per day' );
+  $exceedsStr = translate ( 'exceeds XXX events/day limit' );
   $onStr = translate ( 'on' );
   $privateStr = translate ( 'Private' );
 
@@ -1011,7 +1011,7 @@ function display_activity_log( $cal_type, $cal_text = '', $break = '<br>&nbsp;' 
   elseif ( $cal_type == LOG_LOGIN_FAILURE )
     $ret = translate ( 'Invalid login' );
   elseif ( $cal_type == LOG_NEWUSER_EMAIL )
-    $ret = translate ( 'New user via email (self registration)' );
+    $ret = translate ( 'New user via email self reg' );
   elseif ( $cal_type == LOG_NEWUSER_FULL )
     $ret = translate ( 'New user (self registration)' );
   elseif ( $cal_type == LOG_NOTIFICATION )
@@ -1095,8 +1095,7 @@ function display_month( $thismonth, $thisyear, $demo = false,
   }
 
   // Add mouse-over help for table.
-  $help = ( $can_add ? 'title="'
-   . translate( 'Double-click on empty cell to add new entry' ) . '"' : '' );
+  $help = ( $can_add ? 'title="' . $dblClickAdd . '"' : '' );
 
   $ret .= '
     <table ' . $help . ' class="main" cellspacing="0" cellpadding="0"'
@@ -1485,7 +1484,6 @@ function display_small_tasks ( $cat_id ) {
         <td></td>' );
   }
 
-  $priorityStr = translate ( 'Priority' );
   $dateFormatStr = $DATE_FORMAT_TASK;
   $task_list = query_events ( $task_user, false,
     ( empty ( $task_filter ) ? '' : $task_filter ), $cat_id, true );
@@ -1529,7 +1527,7 @@ function display_small_tasks ( $cat_id ) {
     $task_html .= '
       <tr class="task" id="' . $linkid . '" style="background-color:'
      . rgb_luminance( $GLOBALS['BGCOLOR'], $E->getPriority() ) . '">
-        <td colspan="2">' . $link . ' title="' . $priorityStr . '">'
+        <td colspan="2">' . $link . ' title="' . translate ( 'Priority' ) . '">'
      . $E->getPriority() . '</a></td>
         <td class="name" colspan="2" width="50%">&nbsp;' . $link . ' title="'
      . translate( 'Task Name' ) . ': ' . $E->getName() . '">'
@@ -1548,9 +1546,9 @@ function display_small_tasks ( $cat_id ) {
     $eventinfo .= build_entry_popup( 'eventinfo-' . $linkid, $E->getLogin(),
       $E->getDescription(), translate( 'Due Time' ) . ':'
        . display_time( '', 0, $E->getDueDateTimeTS() ) . '</dd><dd>'
-       . translate ( 'Due Date' ) . ':'
+       . translate ( 'Due Date_' )
        . date_to_str( $E->getDueDate(), '', false )
-       . "</dd>\n<dt>" . $priorityStr . ":</dt>\n<dd>" . $E->getPriority()
+       . "</dd>\n<dt>" . translate ( 'Priority_' ) . "</dt>\n<dd>" . $E->getPriority()
        . '-' . $pri[ceil( $E->getPriority() / 3 )] . "</dd>\n<dt>"
        . translate( 'Percent Complete' ) . ":</dt>\n<dd>" . $E->getPercent()
        . '%', '', $E->getLocation(), $E->getName(), $cal_id );
@@ -3275,8 +3273,8 @@ function getOverLap ( $item, $i, $parent = true ) {
     $result[$i]->setDuration ( $new_duration );
     $result[$i]->setTime ( gmdate ( 'G0000', $midnight ) );
     $result[$i]->setDate ( gmdate ( 'Ymd', $midnight ) );
-    $result[$i]->setName( $originalItem->getName() . ' ('
-       . translate ( 'cont.' ) . ')' );
+    $result[$i]->setName( $originalItem->getName() . ' '
+     . translate ( 'cont.' ) );
 
     $i++;
     if ( $parent )
@@ -3863,8 +3861,8 @@ function icon_text ( $id, $can_edit, $can_delete ) {
    . ( $can_delete && ( $readonly == 'N' || $is_admin ) ? '
         <a title="' . $delEntryStr . '" href="del_entry.php?id=' . $id
      . '" onclick="return confirm( \''
-     . translate( 'Are you sure you want to delete this entry?' ) . ' '
-     . translate ( 'This will delete this entry for all users.' )
+     . translate( 'really delete entry' ) . ' '
+     . translate ( 'will delete entry for all' )
      . '\' );"><img src="images/delete.gif" alt="' . $delEntryStr
      . '" class="icon_text"></a>' : '' );
 }
@@ -4654,7 +4652,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   $TIME_SLOTS, $today, $TODAYCELLBG, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
 
   if ( empty ( $TIME_SLOTS ) )
-    return translate( 'Error TIME_SLOTS undefined!' ) . "<br>\n";
+    return translate( 'TIME_SLOTS undefined' ) . "<br>\n";
 
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
   // Get, combine and sort the events for this date.
@@ -4941,7 +4939,7 @@ function print_error_header() {
  */
 function print_not_auth ( $full = false ) {
   $ret = ( $full ? print_error_header() : '' )
-   . '!!!' . translate ( 'You are not authorized.' ) . "\n";
+   . translate ( '!not authorized' ) . "\n";
   return $ret;
 }
 
@@ -5043,7 +5041,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
     $tz_file = 'includes/zone.tab';
     if ( ! $fd = @fopen ( $tz_file, 'r', false ) )
       return str_replace ( 'XXX', $tz_file,
-        translate ( 'Cannot read timezone file XXX.' ) );
+        translate ( 'Cannot read TZ file XXX' ) );
     else {
       while ( ( $data = fgets ( $fd, 1000 ) ) !== false ) {
         if ( ( substr ( trim ( $data ), 0, 1 ) == '#' ) || strlen ( $data ) <= 2 )
@@ -5068,7 +5066,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
     $ret .= '
         </select>&nbsp;&nbsp;' . str_replace (' XXX ',
          '&nbsp;' . date ( 'Z' ) / 3600 . '&nbsp;',
-         translate ( 'Your current GMT offset is XXX hours.' ) );
+         translate ( 'GMT offset is XXX' ) );
   }
   return $ret;
 }
@@ -5819,8 +5817,7 @@ function user_is_participant ( $id, $user ) {
     WHERE cal_id = ? AND cal_login = ? AND cal_status IN ( \'A\',\'W\' )',
     array ( $id, $user ) );
   if ( ! $rows )
-    die_miserable_death( str_replace( 'XXX', dbi_error(),
-        translate ( 'Database error XXX.' ) ) );
+    die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrXXXStr ) );
 
   if ( ! empty ( $rows[0] ) ) {
     $row = $rows[0];
@@ -6136,14 +6133,14 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
   $ret .= ( $SUMMARY_LENGTH < 80 && strlen ( $name ) && $details
     ? '<dt>' . htmlspecialchars ( substr ( $name, 0, 40 ) ) . "</dt>\n" : '' )
    . ( strlen ( $time )
-    ? '<dt>' . translate ( 'Time' ) . ":</dt>\n<dd>$time</dd>\n" : '' )
+    ? '<dt>' . translate ( 'Time_' ) . "</dt>\n<dd>$time</dd>\n" : '' )
    . ( ! empty ( $location ) && $details
     ? '<dt>' . translate ( 'Location' ) . ":</dt>\n<dd> $location</dd>\n" : '' )
    . ( ! empty ( $reminder ) && $details
     ? '<dt>' . translate ( 'Send Reminder' ) . ":</dt>\n<dd> $reminder</dd>\n" : '' );
 
   if ( ! empty ( $partList ) && $details ) {
-    $ret .= '<dt>' . translate ( 'Participants' ) . ":</dt>\n";
+    $ret .= '<dt>' . translate ( 'Participants_' ) . "</dt>\n";
     foreach ( $partList as $parts ) {
       $ret .= "<dd> $parts</dd>\n";
     }
@@ -6315,8 +6312,7 @@ function print_error_box ( $msg )
     '<table border="0"><tr><td valign="middle">' .
     '<img src="images/warning.png" width="40" height="40" align="middle" alt="' .
     translate('Error') . '"></td><td valign="middle">' .
-    translate('The permissions for the icons directory are set to read-only') .
-    "</td></tr></table></div>\n";
+    translate('icons dir is read-only') . "</td></tr></table></div>\n";
 }
 
 // Convert an HTML color ('#ff00ff') into an array of red/green/blue values

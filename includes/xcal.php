@@ -1826,13 +1826,10 @@ function import_data ( $data, $overwrite, $type ) {
         $dd = date ( 'm-d-Y', $Entry['StartTime'] );
         $Entry['Summary'] = str_replace ( "''", "'", $Entry['Summary'] );
         $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
-        echo htmlspecialchars ( $Entry['Summary'] );
-        echo ' (' . $dd;
-        if ( ! empty ( $time ) )
-          echo '&nbsp; ' . $time;
-        echo ")<br>\n";
-        etranslate ( 'conflicts with the following existing calendar entries' );
-        echo ":<ul>\n" . $overlap . "</ul>\n";
+        echo htmlspecialchars ( $Entry['Summary'] ) . ' (' . $dd
+         . ( empty ( $time ) ? '' : '&nbsp; ' . $time . ")<br>\n"
+         . translate ( 'conflicts with existing entries' )
+         . "<ul>\n" . $overlap . "</ul>\n";
       } else {
         // No Conflict
         if ( $count_suc == 0 ) {

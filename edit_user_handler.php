@@ -32,11 +32,11 @@ if ( ! $is_admin )
   $user = $login;
 
 $notAuthStr = print_not_auth();
-$notIdenticalStr = translate ( 'The passwords were not identical.' );
-$noPasswordStr = translate ( 'You have not entered a password.' );
-$blankUserStr = translate ( 'Username cannot be blank.' );
+$notIdenticalStr = translate ( 'passwords not identical' );
+$noPasswordStr = translate ( 'must enter a password' );
+$blankUserStr = translate ( 'no blank username' );
 
-// Don't let them edit users if they'e not authorized.
+// Don't let them edit users if they're not authorized.
 if ( empty ( $user ) ) {
   // Asking to create a new user. Must be admin...
   if ( ! $is_admin && ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) )
