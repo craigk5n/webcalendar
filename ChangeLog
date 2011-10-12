@@ -4,14 +4,15 @@ NOTE: This is the 1.3.0 development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2011)
- - 10-Oct-11 This update is mostly cosmetic.
+ - 12-Oct-11 bb Updating the CSS/JS for themes. Consolidating dupe code, mostly.
+ - 10-Oct-11 bb This update is mostly cosmetic.
    I've shortened several translate(phrases), combined a few, added a couple and modified some to be more accurate.
    I've also moved more punctuation and some "literal" phrases from the code into English-US.txt.
    Added includes/css/admin.css and moved the "#admin" styles out of styles.css.
      It makes the overall file size smaller and the CSS easier to work with.
    Change js/edit_remotes.php to js/edit_remotes.js.
- - 27-Sep-11 Remove includes/js/assistant_edit.php.
-   Replaced with includes/js/assistant_edit.js some time ago.
+ - 27-Sep-11 bb Remove includes/js/assistant_edit.php.
+     Replaced with includes/js/assistant_edit.js some time ago.
    Remove includes/js/catsel.php. Use a cookie for that variable.
    Add includes/js/category.js. Move some javascript out of category.php.
    And more changes like yesterday.
@@ -19,7 +20,7 @@ Version 1.3.0+CVS (?? ??? 2011)
      Not everyone uses "()", ":" and such as in English.
      This is going to do things like "admin", "(admin)", "[admin]" and "admin:"
      but, until we get the universal translator from Star Fleet... :)
- - 26-Sep-11 Init some often used "$Str = translate(phrase)" in translate.php.
+ - 26-Sep-11 bb Init some often used "$Str = translate(phrase)" in translate.php.
    Use foreach() to shorten a few files a bit.
    Shrink a few bits of code.
    Put "// translate(phrases)" back in .js files instead of translate.js.php to better show where they are used.

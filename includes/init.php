@@ -186,11 +186,12 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     // then load in just the changes to that.
     $cs_ar[] = 'menu/themes/default/theme.css';
     $cs_ar[] = 'menu/themes/' . $menu_theme . '/theme.css';
+
     $js_ar[] = 'menu/JSCookMenu.js';
     // The various "theme.js" are almost all identical.
     // Why have so many duplicates?
     $js_ar[] = 'menu/themes/default/theme.js';
-    // Then just load in the piece of one (so far) that's different.
+    // Then just load in the piece that's different.
     $tmp = 'menu/themes/' . $menu_theme . '/theme.js';
     if(file_exists $tmp ) {
       $js_ar[] = $tmp;

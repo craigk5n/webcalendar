@@ -1,20 +1,19 @@
 /* ThemeMenu Style Sheet */
-
 .ThemeMenubar {
   width:100%;
   padding-bottom:2px;
 }
-
 .ThemeMenubackgr {
-  border-bottom:1px solid #d0d0d0;
   background:#d0d0d0;
+  border-bottom:1px solid #d0d0d0;
 }
-
-.ThemeMenu, .ThemeMenubar a, .ThemeMenubar td {
+.ThemeMenu,
+.ThemeMenubar a,
+.ThemeMenubar td {
   color:#000;
 }
-
-.ThemeMenu,.ThemeSubMenuTable {
+.ThemeMenu,
+.ThemeSubMenuTable {
   height:25px;
   padding:0;
   cursor:default;
@@ -22,12 +21,11 @@
   vertical-align:middle;
   white-space:nowrap;
 }
-
 .ThemeSubMenu {
   position:absolute;
+  background-color:#d0d0d0;
   border:1px solid #8c867b;
   padding:1px;
-  background-color:#d0d0d0;
   overflow:visible;
   visibility:hidden;
   /*
@@ -36,171 +34,158 @@
   */
   z-index:100;
 }
-
 .ThemeSubMenuTable {
   overflow:visible;
 }
-
-.ThemeMainItem, .ThemeMainItemHover, .ThemeMainItemActive,
-.ThemeMenuItem, .ThemeMenuItemHover, .ThemeMenuItemActive {
+.ThemeMainItem,
+.ThemeMainItemActive,
+.ThemeMainItemHover,
+.ThemeMenuItem,
+.ThemeMenuItemActive,
+.ThemeMenuItemHover {
   border:0;
   cursor:default;
   white-space:nowrap;
 }
-
 .ThemeMenuItem {
   background-color:#d0d0d0;
 }
-
-.ThemeMainItemHover, .ThemeMainItemActive,
-.ThemeMenuItemHover, .ThemeMenuItemActive {
+.ThemeMainItemActive,
+.ThemeMainItemHover,
+.ThemeMenuItemActive,
+.ThemeMenuItemHover {
   background-color:#c0c0c0;
 }
-
 /* horizontal main menu */
-
 .ThemeMainItem {
   border:0;
   padding:1px;
 }
-
-td.ThemeMainItemHover, td.ThemeMainItemActive {
+td.ThemeMainItemActive,
+td.ThemeMainItemHover {
   border:1px solid #fff;
   padding:0;
 }
-
-.ThemeMainFolderLeft, .ThemeMainItemLeft,
-.ThemeMainFolderText, .ThemeMainItemText,
-.ThemeMainFolderRight, .ThemeMainItemRight {
+.ThemeMainFolderLeft,
+.ThemeMainFolderRight,
+.ThemeMainFolderText,
+.ThemeMainItemLeft,
+.ThemeMainItemRight,
+.ThemeMainItemText {
   background-color:inherit;
 }
-
 /* vertical main menu sub components */
-
-td.ThemeMainFolderLeft, td.ThemeMainItemLeft {
+td.ThemeMainFolderLeft,
+td.ThemeMainItemLeft {
+  background-color:inherit;
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   border-left:1px solid #fff;
   padding:2px 2px 2px 0;
-  background-color:inherit;
 }
-
-td.ThemeMainFolderText, td.ThemeMainItemText {
+td.ThemeMainFolderText,
+td.ThemeMainItemText {
+  background-color:inherit;
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   padding:2px 5px;
-  background-color:inherit;
   white-space:nowrap;
 }
-
-td.ThemeMainFolderRight, td.ThemeMainItemRight {
+td.ThemeMainFolderRight,
+td.ThemeMainItemRight {
+  background-color:inherit;
   border-top:1px solid #fff;
   border-right:1px solid #fff;
   border-bottom:1px solid #fff;
   padding:2px 0;
-  background-color:inherit;
 }
-
 tr.ThemeMainItem td.ThemeMainFolderLeft,
 tr.ThemeMainItem td.ThemeMainItemLeft {
+  background-color:inherit;
   border:0;
   padding:3px 2px 3px 1px;
-  background-color:inherit;
   white-space:nowrap;
 }
-
 tr.ThemeMainItem td.ThemeMainFolderText,
 tr.ThemeMainItem td.ThemeMainItemText {
+  background-color:inherit;
   border:0;
   padding:3px 5px;
-  background-color:inherit;
 }
-
-tr.ThemeMainItem td.ThemeMainItemRight,
-tr.ThemeMainItem td.ThemeMainFolderRight {
+tr.ThemeMainItem td.ThemeMainFolderRight,
+tr.ThemeMainItem td.ThemeMainItemRight {
+  background-color:inherit;
   border:0;
   padding:3px 1px 3px 0;
-  background-color:inherit;
 }
-
 /* sub menu sub components */
-
-.ThemeMenuFolderLeft, .ThemeMenuItemLeft {
+.ThemeMenuFolderLeft,
+.ThemeMenuItemLeft {
+  background-color:inherit;
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   border-left:1px solid #fff;
   padding:2px 3px 2px 1px;
-  background-color:inherit;
   white-space:nowrap;
 }
-
-.ThemeMenuFolderText, .ThemeMenuItemText {
+.ThemeMenuFolderText,
+.ThemeMenuItemText {
+  background-color:inherit;
   border-top:1px solid #fff;
   border-bottom:1px solid #fff;
   padding:2px 5px;
-  background-color:inherit;
   white-space:nowrap;
 }
-
-.ThemeMenuFolderRight, .ThemeMenuItemRight {
+.ThemeMenuFolderRight,
+.ThemeMenuItemRight {
+  background-color:inherit;
   border-top:1px solid #fff;
   border-right:1px solid #fff;
   border-bottom:1px solid #fff;
   padding:2px 0;
-  background-color:inherit;
   white-space:nowrap;
 }
-
 .ThemeMenuItem .ThemeMenuFolderLeft,
 .ThemeMenuItem .ThemeMenuItemLeft {
+  background-color:#c0c0c0;
   border:0;
   padding:3px 3px 3px 2px;
-  background-color:#c0c0c0;
   white-space:nowrap;
 }
-
 .ThemeMenuItem .ThemeMenuFolderText,
 .ThemeMenuItem .ThemeMenuItemText {
+  background-color:inherit;
   border:0;
   padding:3px 5px;
-  background-color:inherit;
 }
-
 .ThemeMenuItem .ThemeMenuFolderRight,
 .ThemeMenuItem .ThemeMenuItemRight {
+  background-color:inherit;
   border:0;
   padding:3px 1px 3px 0;
-  background-color:inherit;
 }
-
 /* menu splits */
-
 .ThemeMenuSplit {
   height:1px;
+  background-color:inherit;
   margin:2px;
   border-top:1px solid #8c867b;
-  background-color:inherit;
   overflow:hidden;
 }
-
 /* image shadow animation */
-
 /*
   seq1:image for normal
   seq2:image for hover and active
-
   To use, in the icon field, input the following:
   <img class="seq1" src="normal.gif"><img class="seq2" src="hover.gif">
 */
-
 .ThemeMenuItem img.seq1,
-.ThemeMenuItemHover seq2,
-.ThemeMenuItemActive seq2 {
+.ThemeMenuItemActive seq2,
+.ThemeMenuItemHover seq2 {
   display:inline;
 }
-
 .ThemeMenuItem .seq2,
-.ThemeMenuItemHover .seq1,
-.ThemeMenuItemActive .seq1 {
+.ThemeMenuItemActive .seq1,
+.ThemeMenuItemHover .seq1 {
   display:none;
 }
