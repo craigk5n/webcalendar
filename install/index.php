@@ -5,8 +5,9 @@
  * This page is used to create/update includes/settings.php.
  *
  * NEW RELEASE UPDATE PROCEDURES:
- *   - Update WEBCAL_PROGRAM_VERSION default value in default_config.php
- *     This should be of the format "v1.0.0"
+ *   - Update variable $program_version in "tools/update_translations.pl"
+ *     (this should be of the format "v1.0.0")
+ *     and run it to update "translations/English-US.txt", at least.
  *   - Make sure the last entry in all the upgrade-*.sql files reference
  *     this same version. For example, for "v1.0.0", there should be a
  *     comment of the format:    /*upgrade_v1.0.0 */

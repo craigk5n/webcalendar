@@ -8,7 +8,7 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
-Version 1.3.0 (?? ??? 2010)
+Version 1.3.0 (?? ??? 2011)
   - Fixes:
     + Removed old hack for register_globals work-around that is no longer
       needed.  This will improve security.
