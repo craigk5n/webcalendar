@@ -74,16 +74,16 @@ for ( $i = 0; $i < @ARGV; $i++ ) {
     $plugin = $ARGV[ ++$i ];
   }
   elsif ( $ARGV[ $i ] eq '-b' ) {
-    $save_backup++;
+    $save_backup = ( $save_backup == '0' ? '1' : '0' );
   }
   elsif ( $ARGV[ $i ] eq '-d' ) {
-    $show_dups++;
+    $show_dups = ( $show_dups == '0' ? '1' : '0' );
   }
   elsif ( $ARGV[ $i ] eq '-m' ) {
-    $show_missing--;
+    $show_missing = ( $show_missing == '0' ? '1' : '0' );
   }
   elsif ( $ARGV[ $i ] eq '-v' ) {
-    $verbose++;
+    $verbose = ( $verbose == '0' ? '1' : '0' );
   }
   else {
     $infile = $ARGV[ $i ];

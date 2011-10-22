@@ -4,6 +4,7 @@ NOTE: This is the 1.3.0 development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2011)
+ - 21-Oct-11 bb Make the parameters in "tools/update_translation.pl" actually toggle. Again.
  - 12-Oct-11 bb Updating the CSS/JS for themes. Consolidating dupe code, mostly.
  - 10-Oct-11 bb This update is mostly cosmetic.
    I've shortened several translate(phrases), combined a few, added a couple and modified some to be more accurate.
