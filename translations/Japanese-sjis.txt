@@ -61,7 +61,7 @@ Save: 保存
 Undo: 取り消し
 Public Access: 公開アクセス
 Admin: 管理
-User Access Control: ユーザーアクセス制御
+UAC: ユーザーアクセス制御
 may access others cals: 他のユーザーのカレンダーへのアクセスを許可する
 this user may access my cal: 自分のカレンダーへのこのユーザーのアクセスを許可する
 Type: 種類
@@ -266,7 +266,7 @@ public-access-override-text-help: もし下のオプションが有効ならテキストを表示しま
 public text display: 公開アクセスで表示するテキスト
 require public CAPTCHA: 公開アクセスでの新規イベントは CAPTCHA での確認を要求する
 uac-enabled-help: ユーザーレベルでのアクセス制御を有効にします
-User Access Control enabled: ユーザーアクセス制御を有効にする
+UAC enabled: ユーザーアクセス制御を有効にする
 groups-enabled-help: グループサポートを有効にしたら、ユーザーはグループでユーザーを選択することを許可します。
 Groups enabled: グループ有効
 User sees only his groups: ユーザーは自分のグループのみを見る

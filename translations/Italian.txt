@@ -75,7 +75,7 @@ Save: Salva
 Undo: Annulla
 Public Access: Accesso Pubblico
 Admin: Amministratore
-User Access Control: Controllo Accesso Utente
+UAC: Controllo Accesso Utente
 may access others cals: Consenti accesso al calendario di altri utenti
 this user may access my cal: Concedi l'accesso al mio calendario a questo utente
 Type: Tipo
@@ -306,7 +306,7 @@ public text display: Testo da mostrare per Accesso Pubblico
 public-access-captcha-help: Se impostato, l'aggiunta di eventi da parte di 'Accesso Pubblico' richiede validazione CAPTCHA.
 require public CAPTCHA: Richiede validazione CAPTCHA per 'nuovo evento' da 'Accesso Pubblico'
 uac-enabled-help: Abilita controllo accesso a livello utente
-User Access Control enabled: Controllo accesso utenti abilitato
+UAC enabled: Controllo accesso utenti abilitato
 groups-enabled-help: Abilita il supporto dei gruppi, permettendo agli utenti di scegliere gli utenti per gruppi
 Groups enabled: Abilita Gruppi
 user-sees-his-group-help: Se abilitato, gli utenti non vedranno gli utenti di calendari che non siano in almeno uno dei loro gruppi

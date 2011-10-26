@@ -55,7 +55,7 @@ Database error: Chyba databáze
 Go: Jdi
 Save: Uložit
 Public Access: Veřejný přístup
-User Access Control: Správa uživatelských práv
+UAC: Správa uživatelských práv
 Calendar: Kalendář
 Edit: Uprav
 Events: Události

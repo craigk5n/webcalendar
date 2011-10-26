@@ -251,7 +251,7 @@ Override public event name/desc: Események nevének és leírásának elrejtés
 public-access-override-text-help: A megjelenő szöveg a fenti opció bekapcsolásakor. Ha 'Nem elérhető', le lesz fordítva.
 public text display: Szöveg publikus hozzáféréshez
 uac-enabled-help: Engedélyezi a felhasználónkénti hozzáférés-szabályozást
-User Access Control enabled: Felhasználói jogok kezelésének bekapcsolása
+UAC enabled: Felhasználói jogok kezelésének bekapcsolása
 groups-enabled-help: Csoporttámogatás engedélyezése, mely lehetõvé teszi felhasználók csoportonkénti kiválasztását.
 Groups enabled: Csoportok engedélyezése
 user-sees-his-group-help: Bekapcsolva nem láthatóak azon felhasználók, akik nincsenek benne legalább egy csoportodban.
