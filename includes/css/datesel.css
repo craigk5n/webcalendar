@@ -1,0 +1,78 @@
+// $Id$
+
+div,
+table {
+  width:100%;
+  text-align:center;
+}
+table table td {
+  padding:3px;
+}
+div img {
+  cursor:pointer;
+}
+div table {
+  border:0;
+}
+div + table td {
+  background-color: #c0c0c0;
+  padding: 1px;
+  font-size: 10pt;
+  text-align: center;
+}
+#dateselMonthName {
+  position:relative;
+  background-color: #000080;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 10pt;
+  text-align: center;
+}
+#dateselMonthName img {
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor:pointer;
+}
+#dateselMonthName img:first-child {
+  float:left;
+}
+#dateselMonthName img:last-child {
+  float:right;
+}
+.selected {
+  background-color: #00ff00;
+}
+.today {
+  background-color: #ffff88;
+}
+.wdayname td {
+  padding-left: 2px;
+  padding-right: 2px;
+  font-size: 8pt;
+}
+.field {
+  font-size:.75em;
+}
+#dateselDiv {
+  width: 150px;
+  /*height: 300px;*/
+  /*background-color: #d0d0d0;*/
+  /*padding: 10px;*/
+  padding: 0;
+  z-index: 11000; /* modalbox uses 10000 */
+  display: none;
+}
+/*date selection "popup"*/
+#dateselOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  z-index: 10001;
+/*
+  background: #fff;
+  opacity: 0.50;
+*/
+}

@@ -139,7 +139,6 @@ echo ( $DISPLAY_TASKS != 'Y' ? '#month #nextmonth{
   border-top:0.0625em solid ' . $GLOBALS['TABLEBG'] . ';
 }
 ' : '' ) . '#day .minical td.selectedday,
-#eventcomment,
 #login table,
 #register table,
 #securityAuditNotes,
@@ -224,7 +223,7 @@ th,
 td.matrixappts,
 #adminhome table,
 #adminhome td a,
-#eventcomment,
+#view_entry blockquote,
 .alt,
 .layers,
 .layertable td,
@@ -233,6 +232,9 @@ td.matrixappts,
 .minitask tr.header td,
 .standard{
   background:' . $GLOBALS['CELLBG'] . ';
+}
+.minitask tr.task {
+  background-color:' . rgb_luminance( $GLOBALS['BGCOLOR'], $E->getPriority() ) . ';
 }
 #editentry th.weekend,
 .minical td.weekend{

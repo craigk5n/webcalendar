@@ -37,7 +37,7 @@ function assert_get_cvs_file_version ( $file ) {
       $fd = @fopen ( $newfile, 'rb', false );
       if ( $fd ) {
         while ( ! feof ( $fd ) ) {
-          $data = fgets ( $fd, 1024 );
+          $data = fgets( $fd );
           if ( preg_match ( "/Id: (\S+),v (\d\S+)/", $data, $match ) ) {
             $version = 'v' . $match[2];
             break;

@@ -29,8 +29,7 @@ $icon_path = 'icons/';
 // If editing, make sure they are editing their own (or they are an admin user).
 if ( ! empty ( $id ) ) {
   if ( empty ( $categories[$id] ) )
-    $error =
-    str_replace ( 'XXX', $id, translate ( 'Invalid entry id XXX.' ) );
+    $error = str_replace( 'XXX', $id, $badEntryStr );
 
   $catcolor = $categories[$id]['cat_color'];
   $catname = $categories[$id]['cat_name'];
@@ -164,7 +163,7 @@ if ( empty ( $error ) ) {
     </ul>';
   }
   echo ( $global_found ? '<br><br>
-    <sup>*</sup> ' . translate( 'Global' ) : '' ) . '
+    <sup>*</sup> ' . $globalStr : '' ) . '
     <p><a href="category.php?add=1">' . translate ( 'Make New Category' )
    . '</a></p><br>';
 }

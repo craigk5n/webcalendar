@@ -27,11 +27,9 @@ function valid_form ( form ) {
 }
 
 function check_name () {
-  var url = 'ajax.php';
-  var params = 'page=edit_nonuser&name=' + $F('calid');
-  var ajax = new Ajax.Request(url,
+  var ajax = new Ajax.Request('ajax.php',
     {method: 'post',
-    parameters: params,
+    parameters: 'page=edit_nonuser&name=' + $F('calid'),
     onComplete: showResponse});
 }
 

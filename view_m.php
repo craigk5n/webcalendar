@@ -17,15 +17,11 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = '';
 $USERS_PER_TABLE = 6;
 
 $printerStr = generate_printer_friendly ( 'view_m.php' );
-set_today ( $date );
-view_init ( $id );
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextyear = date ( 'Y', $next );
@@ -42,23 +38,21 @@ $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
 $thisdate = date ( 'Ymd', $startdate );
 
-print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
-
 echo '
-    <div style="width:99%;">
-      <a title="' . $prevStr . '" class="prev" href="view_m.php?id=' . $id
+      <div style="width:99%;">
+        <a title="' . $prevStr . '" class="prev" href="view_m.php?id=' . $id
  . '&amp;date=' . $prevdate . '"><img src="images/leftarrow.gif" alt="'
  . $prevStr . '"></a>
-      <a title="' . $nextStr . '" class="next" href="view_m.php?id=' . $id
+        <a title="' . $nextStr . '" class="next" href="view_m.php?id=' . $id
  . '&amp;date=' . $nextdate . '"><img src="images/rightarrow.gif" alt="'
  . $nextStr . '"></a>
-      <div class="title">
-        <span class="date">';
+        <div class="title">
+          <span class="date">';
 printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
 echo '</span><br>
-        <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
-      </div>
-    </div><br>';
+          <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
+        </div>
+      </div><br>';
 
 // The table has names across the top and dates for rows. Since we need to spit
 // out an entire row before we can move to the next date, we'll save up all the
@@ -66,15 +60,9 @@ echo '</span><br>
 // Additionally, we only want to put at most 6 users in one table
 // since any more than that doesn't really fit in the page.
 
-// Get users in this view.
-$viewusers = view_get_user_list ( $id );
-if ( count ( $viewusers ) == 0 )
-  // This could happen if user_sees_only_his_groups  = Y and
-  // this user is not a member of any  group assigned to this view.
-  $error = $noVuUsers;
-
 if ( ! empty ( $error ) ) {
   echo print_error ( $error ) . print_trailer();
+  ob_end_flush();
   exit;
 }
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
@@ -105,10 +93,10 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     : 5 );
 
   echo '<br><br>
-    <table class="main" summary=""'
+      <table class="main" summary=""'
    . ( $can_add ? ' title="' . $dblClickAdd . '"' : '' ) . '>
-      <tr>
-        <th class="empty">&nbsp;</th>';
+        <tr>
+          <th class="empty">&nbsp;</th>';
 
   // $j points to start of this table/row.
   // $k is counter starting at 0.
@@ -118,10 +106,10 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
     echo '
-        <th style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
+          <th style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
   } //end for
   echo '
-      </tr>';
+        </tr>';
 
   for ( $date = $startdate; $date <= $enddate; $date += 86400 ) {
     $dateYmd = date ( 'Ymd', $date );
@@ -137,8 +125,8 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
 
     // Non-breaking space below keeps event from wrapping prematurely.
     echo '
-      <tr>
-        <th' . $class . '>' . $weekday . '&nbsp;' . date ( 'd', $date ) . '</th>';
+        <tr>
+          <th' . $class . '>' . $weekday . '&nbsp;' . date( 'd', $date ) . '</th>';
     for ( $i = $j, $k = 0;
       $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $events = $e_save[$i];
@@ -151,27 +139,29 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
         $class = ' class="hasevents"';
       else
-      if ( $dateYmd == $todayYmd )
-        $class = ' class="today"';
-      else
       if ( $is_weekend )
         $class = ' class="weekend"';
+      else if ( $dateYmd == $todayYmd )
+        $class = ' class="today"';
 
-      echo '<td' . $class . ' style="width:' . $tdw . '%;"'
+      echo '
+          <td' . $class . ' style="width:' . $tdw . '%;"'
        . ( $can_add
          ? " ondblclick=\"dblclick_add( '$dateYmd', '$user', 0, 0 )\">" : '>' )
        . $entryStr . '</td>';
     } //end for
     echo '
-      </tr>';
+        </tr>';
   }
 
   echo '
-    </table>';
+      </table>';
 }
 
 $user = ''; // reset
 
 echo ( empty ( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
+
+ob_end_flush();
 
 ?>

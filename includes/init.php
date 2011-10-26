@@ -99,6 +99,9 @@ $catNames = $currenttab = $due_date = $duration = $external_users = $HEAD = '';
 $location = $name = $priority = $rpt_count = $rpt_end_date = $rpt_end_time = '';
 $rpt_freq = $thisyear = '';
 
+$option = '
+                <option value="';
+
 /**
  * End init vars.
  */
@@ -132,6 +135,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
   $cs_ret = $lang = $menuHtml = $menuScript = $rs_ret = '';
+
+  // No point in calling this from a dozen places.
   $js_ret = '
     <script src="js_cacher.php?inc=js/translate.js.php"></script>';
 
@@ -188,10 +193,11 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $cs_ar[] = 'menu/themes/' . $menu_theme . '/theme.css';
 
     $js_ar[] = 'menu/JSCookMenu.js';
+
     // The various "theme.js" are almost all identical.
     // Why have so many duplicates?
     $js_ar[] = 'menu/themes/default/theme.js';
-    // Then just load in the piece that's different.
+    // Then just load in the pieces that are different.
     $tmp = 'menu/themes/' . $menu_theme . '/theme.js';
     if(file_exists $tmp ) {
       $js_ar[] = $tmp;
@@ -248,6 +254,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   }
 
   // Craig, shouldn't this be translated?
+  // Maybe "translate( 'XXX Unapproved Events' )" or something?
   $tmp   = '" rel="alternate" title="' . $appStr . ' - Unapproved Events - ';
   $tmp_f = 'rss_unapproved.php';
   $tmp_l = '
@@ -314,7 +321,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // Do we need anything else inside the header tag?
   // $HeadX moved here because linked CSS may override standard styles.
    . ( $HeadX ? '
-     ' . $HeadX : '' ) . '
+    ' . $HeadX : '' ) . '
     <link type="image/x-icon" href="favicon.ico" rel="shortcut icon">
   </head>
   <body'
@@ -362,7 +369,8 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 
   if( $include_nav_links && ! $friendly ) {
     if( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' )
-      $ret .= '<div id="dateselector">' . print_menu_dates() . '</div>';
+      $ret .= '
+    <div id="dateselector">' . print_menu_dates() . '</div>';
 
     if( $MENU_ENABLED == 'N' )
       include_once 'includes/trailer.php';
@@ -409,8 +417,6 @@ function print_menu_dates( $menu = false ) {
             <input type="submit" value="' . translate( 'Go' ) . '">' ) . '
           </form>';
   $include_id = false;
-  $option = '
-              <option value="';
   $ret = $urlArgs = '';
   // TODO add this to admin and pref.
   // Change this value to 'Y' to enable staying in custom views.
@@ -435,7 +441,7 @@ function print_menu_dates( $menu = false ) {
   $ret .= '
           <form action="' . $monthUrl
    . '" method="get" name="SelectMonth" id="month'
-   . ( $menu ? 'menu' : 'form' ) . '"> ' . $urlArgs
+   . ( $menu ? 'menu"> ' : 'form"> ' ) . $urlArgs
    . ( ! empty( $user ) && $user != $login ? '
             <input type="hidden" name="user" value="' . $user . '">' : '' )
    . ( ! empty( $id ) && $include_id ? '
@@ -534,7 +540,7 @@ function print_menu_dates( $menu = false ) {
 
   $ret .= $goStr . ( $menu ? '
         </td>
-        <td class="ThemeMenubackgr ThemeMenu" align="right">' : '' );
+        <td class="ThemeMenubackgr ThemeMenu">' : '' );
 
   if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) )
     $yearUrl = $SCRIPT;

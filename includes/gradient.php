@@ -88,14 +88,14 @@ if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
     $percent   = getGetValue ( 'percent' );
     $width     = getGetValue ( 'width' );
   } else {
-    $base      = ( ! empty ( $_GET['base'] ) ? $_GET['base'] : '' );
-    $color1    = ( ! empty ( $_GET['color1'] ) ? $_GET['color1'] : '' );
-    $color2    = ( ! empty ( $_GET['color2'] ) ? $_GET['color2'] : '' );
-    $direction = ( ! empty ( $_GET['direction'] ) ? $_GET['direction'] : '' );
-    $height    = ( ! empty ( $_GET['height'] ) ? $_GET['height'] : '' );
-    $numcolors = ( ! empty ( $_GET['colors'] ) ? $_GET['colors'] : '' );
-    $percent   = ( ! empty ( $_GET['percent'] ) ? $_GET['percent'] : '' );
-    $width     = ( ! empty ( $_GET['width'] ) ? $_GET['width'] : '' );
+    $base      = ( empty( $_GET['base'] ) ? '' : $_GET['base'] );
+    $color1    = ( empty( $_GET['color1'] ) ? '' : $_GET['color1'] );
+    $color2    = ( empty( $_GET['color2'] ) ? '' : $_GET['color2'] );
+    $direction = ( empty( $_GET['direction'] ) ? '' : $_GET['direction'] );
+    $height    = ( empty( $_GET['height'] ) ? '' : $_GET['height'] );
+    $numcolors = ( empty( $_GET['colors'] ) ? '' : $_GET['colors'] );
+    $percent   = ( empty( $_GET['percent'] ) ? '' : $_GET['percent'] );
+    $width     = ( empty( $_GET['width'] ) ? '' : $_GET['width'] );
   }
 
   create_image ( '', $base, $height, $percent, $width,

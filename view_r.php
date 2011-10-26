@@ -44,10 +44,8 @@
  * enabled, then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = '';
 $can_add = true; // include '+' add icons in this view?
 
 // Set this to true to allow the table to be larger than the browser's
@@ -78,8 +76,6 @@ $DISPLAY_TZ = 2;
 // this row around in all cases.
 $show_untimed_row_always = true;
 
-view_init ( $id );
-
 // view type 'E' = Day by Time, 'R' = Week by Time
 $is_day_view = ( $view_type == 'E' );
 $col_pixels = ( $is_day_view ? $col_pixels_day : $col_pixels_week );
@@ -87,9 +83,6 @@ $fit_to_window = ( $is_day_view ? $fit_to_window_day : $fit_to_window_week );
 $show_time = ( $is_day_view ? $show_time_day : $show_time_week );
 
 $printerStr = generate_printer_friendly ( 'view_r.php' );
-set_today ( $date );
-
-print_header( array( 'js/popups.js/true' ) );
 
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 
@@ -97,6 +90,7 @@ if ( $is_day_view )
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
 else
   $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
+
 $nextyear = date ( 'Y', $next );
 $nextmonth = date ( 'm', $next );
 $nextday = date ( 'd', $next );
@@ -106,6 +100,7 @@ if ( $is_day_view )
   $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 1, $thisyear );
 else
   $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
+
 $prevyear = date ( 'Y', $prev );
 $prevmonth = date ( 'm', $prev );
 $prevday = date ( 'd', $prev );
@@ -160,23 +155,15 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 // save up all the HTML for each cell and then print it out when we're
 // done.
 
-$viewusers = view_get_user_list ( $id );
-$viewusercnt = count ( $viewusers );
-//echo "<pre>"; print_r ( $viewusers ); echo "</pre>\n";
-
 // Make sure we have at least one user in our view.
 // If this is a global view, we may have removed all the users if
 // the current user does not have permission to view any of the
 // users in the view.
 // In theory, we whould always at least have ourselves in the view, right?
-if ( $viewusercnt == 0 ) {
-  // I don't think we need to translate this.
-  $error = 'No users for this view.';
-}
 
 if ( ! empty ( $error ) ) {
-  echo print_error ( $error );
-  echo print_trailer();
+  echo print_error( $error ) . print_trailer();
+  ob_end_flush();
   exit;
 }
 
@@ -211,6 +198,7 @@ if ( ! $fit_to_window )
   $uwf = $col_pixels . 'px';
 else
   $uwf = sprintf ( "%0.2f", $tdw / $viewusercnt ) . '%';
+
 $uheader = '';
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
@@ -550,6 +538,9 @@ $user = ''; // reset
 
 if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
-echo $printerStr;
-echo print_trailer(); ?>
+echo $printerStr . print_trailer();
+
+ob_end_flush();
+
+?>
 

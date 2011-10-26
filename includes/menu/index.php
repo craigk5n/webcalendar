@@ -569,7 +569,7 @@ if ( $login != '__public__' && ! $is_nonuser && $readonly
     if( $menuConfig['User Access Control'] && access_is_enabled()
         && ( $is_admin
           || access_can_access_function ( ACCESS_ACCESS_MANAGEMENT, $user ) ) )
-      jscMenu_item ( 'access.png', 'User Access Control', 'access.php' );
+      jscMenu_item ( 'access.png', 'UAC', 'access.php' );
 
     if( $is_admin && $menuConfig['User Manager']
         && ( ( ! access_is_enabled() || ( access_is_enabled()
@@ -594,7 +594,7 @@ if ( ( $search_url != '' && $menuConfig['Search'] ) &&
 
   $doAdv = false;
   if ( ! empty ( $menuConfig['Advanced Search'] ) ) {
-    // Use UAC if enabled...
+    // Use User Access Control if enabled...
     if( access_is_enabled()
         && access_can_access_function( ACCESS_ADVANCED_SEARCH ) )
       $doAdv = true;
@@ -652,25 +652,23 @@ if ( ! empty ( $menuExtras[7] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[7] );
 
 $loginStr = translate ( 'Login' );
-$logoutStr = translate ( 'Logout' );
 
 $menuHtml .= '
-      <table width="100%" class="ThemeMenubar" cellspacing="0" cellpadding="0" summary="">
+      <table class="ThemeMenubar" cellspacing="0" summary="">
         <tr>
           <td class="ThemeMenubackgr"><div id="myMenuID"></div></td>'
  . ( $MENU_DATE_TOP == 'Y' && $menuConfig['MENU_DATE_TOP'] ? '
-          <td class="ThemeMenubackgr ThemeMenu" align="right">
+          <td class="ThemeMenubackgr ThemeMenu">
             ' . print_menu_dates ( true ) . '
           </td>' : '' ) . '
-          <td class="ThemeMenubackgr ThemeMenu" align="right">'
+          <td class="ThemeMenubackgr ThemeMenu">'
  . ( ! empty ( $logout_url ) && $menuConfig['Login'] // Using http_auth.
-  ? '<a class="menuhref" title="'
+  ? '<a class="menuhref" href="'
    . ( strlen ( $login ) && $login != '__public__'
-    ? $logoutStr . '" href="' . $logout_url . '">' . $logoutStr
-     . ':</a>&nbsp;<label>'
+    ? $logout_url . '">' . translate( 'Logout_' ) . '</a>&nbsp;<label>'
      . ( $menuConfig['Login Fullname'] ? $fullname : $login ) . '</label>'
     : // For public user.
-    $loginStr . '" href="' . $login_url . '">' . $loginStr . '</a>' )
+    $login_url . '">' . $loginStr . '</a>' )
   : '&nbsp;&nbsp;&nbsp;' // TODO replace with something???
   ) . '&nbsp;</td>
         </tr>

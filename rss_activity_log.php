@@ -114,8 +114,7 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>
     <link>' . $SERVER_URL . '</link>
     <description><![CDATA[' . $descr . ']]></description>
     <language>' . $lang . '</language>
-    <generator>WebCalendar ' . $PROGRAM_VERSION
- . '</generator>
+    <generator>WebCalendar ' . $PROGRAM_VERSION . '</generator>
     <image>
       <title><![CDATA[' . $appStr . ']]></title>
       <link>' . $SERVER_URL . '</link>

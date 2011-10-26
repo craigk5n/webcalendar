@@ -490,7 +490,7 @@ function db_populate ( $install_filename, $display_sql ) {
 
   // Discard everything up to the required point in the upgrade file.
   while ( ! feof ( $fd ) && empty ( $current_pointer ) ) {
-    $data = trim ( fgets ( $fd, 4096 ), "\r\n " );
+    $data = trim( fgets( $fd ), "\r\n " );
     if ( strpos ( strtoupper ( $data ),
           strtoupper ( $_SESSION['install_file'] ) ) ||
         substr ( $_SESSION['install_file'], 0, 6 ) == 'tables' )
@@ -505,7 +505,7 @@ function db_populate ( $install_filename, $display_sql ) {
 
   // We need to strip out the comments from upgrade files.
   while ( ! feof ( $fd ) ) {
-    $data = trim ( fgets ( $fd, 4096 ), "\r\n " );
+    $data = trim( fgets( $fd ), "\r\n " );
     if ( substr ( $data, 0, 2 ) == '/*' &&
         substr ( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
       // Do nothing...We skip over comments in upgrade files.

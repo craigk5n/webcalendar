@@ -9,7 +9,7 @@ if( empty( $data ) ) {
   //  Read in and format AUTHORS file.
   if( $fd = @fopen( 'AUTHORS', 'r' ) ) {
     while( ! feof( $fd ) && empty( $error ) ) {
-      $data .= fgets( $fd, 4096 );
+      $data .= fgets( $fd );
     }
     fclose( $fd );
   }
@@ -42,8 +42,7 @@ echo '    <div id="creds">' . ( empty( $credits ) ? '
   ? 'Credits" value="' . translate( 'Credits' )
   : 'About" value="' . translate( 'About' ) ) . '">
       <input type="button" id="ok" name="ok" value="' . $okStr . '">
-    </form>
-    ' . print_trailer( false, true, true );
+    </form>' . print_trailer( false, true, true );
 
 ob_end_flush();
 

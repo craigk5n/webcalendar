@@ -20,21 +20,15 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-view_init ( $id );
-
-$error = $printerStr = $unapprovedStr = '';
+$printerStr = $unapprovedStr = '';
 if ( empty ( $friendly ) ) {
   $unapprovedStr = display_unapproved_events( $is_assistant || $is_nonuser_admin
    ? $user : $login );
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
-set_today ( $date );
-print_header( array( 'js/popups.php/true' ),
-  '<script src="includes/js/weekHover.js"></script>' );
+
 $trailerStr = print_trailer();
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
@@ -61,20 +55,14 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
 
 $thisdate = date ( 'Ymd', $startdate );
 
-// Get users in this view.
-$viewusers = view_get_user_list ( $id );
-if ( count ( $viewusers ) == 0 )
-  // This could happen if user_sees_only_his_groups  = Y and
-  // this user is not a member of any  group assigned to this view.
-  $error = $noVuUsers;
-
 if ( ! empty ( $error ) ) {
   echo print_error ( $error ) . print_trailer();
+  ob_end_flush();
   exit;
 }
 
 $e_save = $re_save = array();
-for ( $i = 0, $cnt = count ( $viewusers ); $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = $viewusercnt; $i < $cnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
   $re_save = array_merge ( $re_save, $repeated_events );
@@ -118,17 +106,21 @@ $monthStr = display_month ( $thismonth, $thisyear );
 $eventinfo = ( empty ( $eventinfo ) ? '' : $eventinfo );
 
 echo <<<EOT
-  <div class="title">
-    <div class="minical">
-     {$prevMonth}{$nextMonth}
+    <div class="title">
+      <div class="minical">
+       {$prevMonth}{$nextMonth}
+      </div>
+      {$navStr}
+      <span class="viewname"><br>{$view_name}</span>
     </div>
-    {$navStr}
-    <span class="viewname"><br>{$view_name}</span>
-  </div>
-  <br>
-  {$monthStr}
-  {$eventinfo}
-  {$unapprovedStr}
-  {$printerStr}
-  {$trailerStr}
+    <br>
+    {$monthStr}
+    {$eventinfo}
+    {$unapprovedStr}
+    {$printerStr}
+    {$trailerStr}
 EOT;
+
+ob_end_flush();
+
+?>

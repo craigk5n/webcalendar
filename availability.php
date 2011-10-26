@@ -20,10 +20,10 @@ if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
   // not allowed...
   exit;
 
-$users = getGetValue ( 'users' );
-$year = getGetValue ( 'year' );
-$month = getGetValue ( 'month' );
-$day = getGetValue ( 'day' );
+$day  = getGetValue( 'day' );
+$month= getGetValue( 'month' );
+$users= getGetValue( 'users' );
+$year = getGetValue( 'year' );
 
 // Input args in URL.
 // users: list of comma-separated users.
@@ -42,9 +42,11 @@ if ( empty ( $users ) ) {
   exit;
 }
 
-print_header (
-  array ( 'js/availability.php/false/' . "$month/$day/$year/"
-   . getGetValue ( 'form' ) ), '', 'onload="focus();"', true, false, true );
+setcookie( 'day', $day );
+setcookie( 'month', $month );
+setcookie( 'year', $year );
+setcookie( 'frm', getGetValue( 'form' ) );
+print_header( '', '', '', true, false, true );
 
 $next_url = $prev_url = '?users=' . $users;
 $time = mktime ( 0, 0, 0, $month, $day, $year );
@@ -58,11 +60,9 @@ $users = explode ( ',', $users );
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="' . $prev_url
- . '"><img src="images/leftarrow.gif" class="prev" alt="'
- . $prevStr . '"></a>
+ . '"><img src="images/leftarrow.gif" class="prev" alt="' . $prevStr . '"></a>
       <a title="' . $nextStr . '" class="next" href="' . $next_url
- . '"><img src="images/rightarrow.gif" class="next" alt="'
- . $nextStr . '"></a>
+ . '"><img src="images/rightarrow.gif" class="next" alt="' . $nextStr . '"></a>
       <div class="title">
         <span class="date">';
 printf ( "%s, %s %d, %d", weekday_name ( strftime ( "%w", $time ) ),
@@ -72,7 +72,6 @@ echo '</span><br>
     </div><br>
     <form action="availability.php" method="post">
       ' . daily_matrix ( $date, $users ) . '
-    </form>
-    ' . print_trailer ( false, true, true );
+    </form>' . print_trailer( false, true, true );
 
 ?>

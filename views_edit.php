@@ -125,7 +125,7 @@ if ( $newview ) {
 <?php if ( $is_admin ) {
   $defIdx = ( ! empty ( $viewisglobal ) && $viewisglobal == 'Y' ? 'Y' : 'N' );
   echo '<tr><td><label>'
-  . translate ( 'Global' ) . ":</label></td>\n<td>"
+  . translate ( 'Global_' ) . "</label></td>\n<td>"
   . print_radio ( 'is_global', '', '', $defIdx, '</td><td>' )
   . "</td></tr>\n";
  }

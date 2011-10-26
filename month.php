@@ -6,7 +6,7 @@ if( ! access_can_access_function( ACCESS_MONTH )
     || ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view();
 
-if ( ( $user != $login ) && $is_nonuser_admin )
+if ( $user != $login && $is_nonuser_admin )
   load_user_layers ( $user );
 else
 if ( empty ( $user ) )
@@ -84,25 +84,20 @@ if ( empty ( $friendly ) ) {
     ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
-$trailerStr = print_trailer();
 
-$HeadX = generate_refresh_meta()
-  . '<script src="includes/js/weekHover.js"></script>';
-
-print_header(
-  array( 'js/popups.js/true', 'js/visible.js/true', 'js/dblclick_add.js/true' ),
-  $HeadX, '', false, false, false, false );
+print_header( '', generate_refresh_meta() );
 
 echo <<<EOT
-    <table border="0" width="100%" cellpadding="1" summary="">
+    <table summary="' . "$thismonth $thisyear" . '">
       <tr>
-        <td id="printarea" valign="top" width="{$tableWidth}" rowspan="2">
+        <td id="printarea" width="{$tableWidth}" rowspan="2">
           {$prevMonth1}{$nextMonth1}
           {$navStr}
           {$monthStr}
         </td>
         <td valign="top" align="center">
-          {$prevMonth2}{$nextMonth2}<div id="minitask">{$smallTasks}</div>
+          {$prevMonth2}{$nextMonth2}
+          <div id="minitask">{$smallTasks}</div>
         </td>
       </tr>
     </table>

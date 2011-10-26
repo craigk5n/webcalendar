@@ -119,15 +119,15 @@ function user_valid_login ( $login, $password ) {
 
     // Connect to IMAP-server
     $stream = fsockopen ( $host, $all_imap_ports[$idx], $error_number, $error_string, 15 );
-    $response = fgets( $stream, 1024 );
+    $response = fgets( $stream );
     if ( $stream ) {
       $logon_str = 'a001 LOGIN "' . quoteIMAP( $login ) .
         '" "' . quoteIMAP( $password ) . "\"\r\n";
       fputs( $stream, $logon_str );
-      $response = fgets( $stream, 1024 );
+      $response = fgets( $stream );
       if ( substr ( $response, 5, 2 ) == 'OK' ) {
         fputs( $stream, "a001 LOGOUT\r\n" );
-        $response = fgets( $stream, 1024 );
+        $response = fgets( $stream );
         $ret = true;
         if ( $allow_auto_create && ! empty ( $PHP_SELF ) &&
           preg_match ( "/\/login.php/", $PHP_SELF )) {

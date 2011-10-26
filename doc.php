@@ -12,7 +12,6 @@ include_once 'includes/classes/Doc.class';
 
 $blid = getValue ( 'blid', '-?[0-9]+', true );
 $error = $res = '';
-$invalidIDStr = translate ( 'Invalid entry id XXX.' );
 
 if ( empty ( $blid ) )
   $error = translate ( 'Invalid blob id' );
@@ -25,7 +24,7 @@ else {
 if ( empty ( $error ) ) {
   $row = dbi_fetch_row ( $res );
   if ( ! $row )
-    $error = str_replace ( 'XXX', $blid, $invalidIDStr );
+    $error = str_replace( 'XXX', $blid, $badEntryStr );
   else {
     $doc = new Doc( $row );
     $description = $doc->getDescription();
@@ -45,9 +44,8 @@ if ( empty ( $error ) ) {
 // to view the event in order to access this file.
 // TODO: move all this code (and code in view_entry.php) to a common
 // function named can_view_event or something similar.
-$can_view = false;
-$is_my_event = false;
-$is_private = $is_confidential = false;
+$can_view = $is_confidential = $is_my_event = $is_private = false;
+
 $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
 
@@ -59,7 +57,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     $can_view = true;
 
   if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
-    $error = str_replace ( 'XXX', $id, $invalidIDStr );
+    $error = str_replace( 'XXX', $id, $badEntryStr );
 
   if ( empty ( $error ) ) {
     // is this user a participant or the creator of the event?

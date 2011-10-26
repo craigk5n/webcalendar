@@ -21,7 +21,7 @@ $datem = date ( 'm' );
 $dateY = date ( 'Y' );
 
 ob_start();
-print_header ( array ( 'js/export_import.php', 'js/visible.js/true' ) );
+print_header();
 
 echo '
     <h2>' . translate ( 'Export' ) . '</h2>
@@ -29,19 +29,19 @@ echo '
       <table summary="">
         <tr>
           <td><label for="exformat">' . translate ( 'Export format' )
- . ':</label></td>
-          <td>' . generate_export_select ( 'toggel_catfilter' ) . '
+ . '</label></td>
+          <td>' . generate_export_select() . '
           </td>
         </tr>';
 
 if ( is_array ( $categories ) ) {
   echo '
         <tr id="catfilter">
-          <td><label for="cat_filter">' . translate ( 'Categories' )
-   . ':</label></td>
+          <td><label for="cat_filter">' . translate( 'Categories_' )
+   . '</label></td>
           <td>
             <select name="cat_filter" id="cat_filter">
-              <option value="" selected>' . translate( 'All' ) . '</option>';
+              <option value="" selected>' . $allStr . '</option>';
 
   foreach ( $categories as $K => $V ) {
     if ( $K > 0 )
@@ -79,25 +79,23 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
         <tr>
           <td>&nbsp;</td>
           <td>
-            <input type="checkbox" name="use_all_dates" id="exportall" '
- . 'value="y" onclick="toggle_datefields( \'dateArea\', this );">
-            <label for="exportall">' . translate ( 'Export all dates' )
- . '</label>
+            <input type="checkbox" id="exportall" name="use_all_dates" value="y">
+            <label for="exportall">' . translate( 'Export all dates' ) . '</label>
           </td>
         </tr>
         <tr>
           <td colspan="2">
             <table id="dateArea" summary="">
               <tr>
-                <td><label>' . translate ( 'Start date' ) . ':</label></td>
+                <td><label>' . translate( 'Start date_' ) . '</label></td>
                 <td>' . date_selection ( 'from', $dateYmd ) . '</td>
               </tr>
               <tr>
-                <td><label>' . translate ( 'End date' ) . ':</label></td>
+                <td><label>' . translate( 'End date_' ) . '</label></td>
                 <td>' . date_selection ( 'end', $dateYmd ) . '</td>
               </tr>
               <tr>
-                <td><label>' . translate ( 'Modified since' ) . ':</label></td>
+                <td><label>' . translate( 'Modified since_' ) . '</label></td>
                 <td>' . date_selection ( 'mod', mktime ( 0, 0, 0,
                   $datem, date ( 'd' ) - 7, $dateY ) ) . '</td>
               </tr>
@@ -109,8 +107,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
  . translate( 'Export' ) . '"></td>
         </tr>
       </table>
-    </form>
-    ' . print_trailer();
+    </form>' . print_trailer();
 
 ob_end_flush();
 

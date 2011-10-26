@@ -139,8 +139,7 @@ if ( empty ( $date ) && empty ( $month ) ) {
   $date = sprintf ( "%04d%02d%02d", $year, $month, $day );
 }
 
-$BodyX = 'onload="onLoad();"';
-$INC = array ( 'js/edit_entry.php/false/' . $user, 'js/visible.js/true' );
+$INC = array ( 'js/edit_entry.php/false/' . $user, );
 $textareasize = '15';
 
 // Can we use HTMLArea or FCKEditor? (Relax! That's the authors initials.)
@@ -156,22 +155,12 @@ if ( $ALLOW_HTML_DESCRIPTION == 'Y' ) {
     $use_fckeditor = true;
   } else
   if ( file_exists ( 'includes/htmlarea/htmlarea.php' ) ) {
-    $BodyX = 'onload="onLoad();initEditor();';
+    $HEAD = '<script>addLoadListener(initEditor);</script>';
     $INC[] = 'htmlarea/core.php/true';
     $INC[] = 'htmlarea/htmlarea.php/true';
     $use_htmlarea = true;
   }
 }
-
-// Add Modal Dialog javascript/CSS
-$HEAD =
-'<script src="includes/js/scriptaculous/scriptaculous.js?load=builder,effects"></script>
-<script src="includes/js/modalbox/modalbox.js"></script>
-<link rel="stylesheet" href="includes/js/modalbox/modalbox.css"
-media="screen">
-<script src="includes/tabcontent/tabcontent.js"></script>
-<link href="includes/tabcontent/tabcontent.css" rel="stylesheet">
-';
 
 $byday = $bymonth = $bymonthday = $bysetpos = $participants =
 $exceptions = $inclusions = $reminder = array();
@@ -187,8 +176,7 @@ $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
   ( $is_assistant || $is_admin ) ) ? $user : $login;
 
 ob_start();
-//print_header ( $INC, $HEAD, $BodyX, false, false, false, true );
-print_header ( $INC, $HEAD, $BodyX );
+print_header( $INC, $HEAD );
 
 if ( $readonly == 'Y' || $is_nonuser )
   $can_edit = false;

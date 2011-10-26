@@ -1,10 +1,11 @@
 <?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
+// I'm slowly moving this into edit_entry.js
+
  global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
  $user = $arinc[3];
 ?>
-var bydayAr = bymonthdayAr = bysetposAr = [];
 
 // do a little form verifying
 function validate_and_submit() {
@@ -16,7 +17,8 @@ function validate_and_submit() {
     showTab( 'details' );
 <?php } ?>
     form.name.focus();
-    alert ( "<?php etranslate ( 'must enter Brief Description', true)?>");
+    // translate( 'must enter Brief Description' )
+    alert(xlate['inputBriefDescipt']);
     return false;
   }
   if ( form.timetype &&
@@ -32,7 +34,8 @@ function validate_and_submit() {
       echo "if ( h < $WORK_DAY_START_HOUR && form.entry_ampmA.checked ) {";
     }
     ?>
-    if ( ! confirm ( "<?php etranslate ( 'time before work hours', true)?> "))
+    if ( ! confirm ( xlate['timeB4WorkHours']))
+    // translate( 'time before work hours' )
       return false;
    }
   }
@@ -80,7 +83,7 @@ function validate_and_submit() {
   var valy = form.year.options[y].value;
   var c = new Date(valy,valm -1,vald);
  if ( c.getDate() != vald ) {
-   alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
+   alert (xlate['invalidEvtDate']); // translate( 'Invalid Event Date' )
   form.day.focus();
    return false;
  }
@@ -338,8 +341,8 @@ function rpttype_weekly() {
    elements[rpt_day].checked = true;
  }
 }
-<?php //see the showTab function in includes/js/visible.js for common code shared by all pages
- //using the tabbed GUI.
+<?php //see the showTab function in "includes/js/visible.js"
+// for common code shared by all pages using the tabbed GUI.
 ?>
 var sch_win,
   tabs = [
@@ -367,7 +370,7 @@ function showSchedule() {
       h += 18;
     }
   if (users == '') {
-    alert("<?php etranslate ( 'Please add a participant', true)?>" );
+    alert(xlate['addParticipant'] ); // translate( 'Please add a participant' )
     return false;
   }
   var mX = 100, mY = 200;
@@ -404,7 +407,7 @@ function add_exception (which) {
 
  var c = new Date(parseInt(y),parseInt(m)-1,parseInt(d));
  if ( c.getDate() != d ) {
-   alert ("<?php etranslate ( 'Invalid Date',true ) ?>");
+   alert (xlate['invalidDate']); // translate( 'Invalid Date' )
    return false;
  }
  //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
@@ -587,7 +590,8 @@ function editCats ( evt ) {
 
   function catWindowClosed () {
   }
-  Modalbox.show($('editCatsDiv'), {title: '<?php etranslate('Categories');?>', width: 350, onHide: catWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+  // translate( 'Categories') translate( 'Cancel' )
+  Modalbox.show($('editCatsDiv'), {title: 'xlate[\'Categories\']', width: 350, onHide: catWindowClosed, closeString: 'xlate[\'cancel\']' });
 
   var cat_ids = elements['cat_id'].value;
   var selected_ids = cat_ids.split ( ',' );
@@ -610,7 +614,6 @@ function editCats ( evt ) {
       obj.checked = sel;
     } else { // translate( 'Could not find XXX in DOM.' )
       alert ( xlate['noXXXInDom'].replace(/XXX/, checkboxId);
-//      "Could not find '" + checkboxId + "' in DOM" );
     }
   <?php
   }
@@ -650,218 +653,4 @@ function catOkHandler () {
   $('cat_id').value = catIds;
   Modalbox.hide ();
   return true;
-}
-
-function displayInValid(myvar)
-{
-  alert ( "<?php etranslate ( 'must enter valid time', true)?>");
-  myvar.select();
-  myvar.focus();
-}
-
-function isNumeric(sText)
-{
-   //allow blank values. these will become 0
-   if ( sText.length == 0 )
-     return sText;
-   var validChars = "0123456789";
-   var Char;
-   for (i = 0; i < sText.length && sText != 99; i++)
-   {
-      Char = sText.charAt(i);
-      if (validChars.indexOf(Char) == -1)
-      {
-        sText = 99;
-      }
-   }
-   return sText;
-}
-
-function completed_handler() {
-  if ( form.percent ) {
-    //elements['dateselIcon_completed'].disabled =
-    elements['completed_year'].disabled =
-    elements['completed_month'].disabled =
-    elements['completed_day'].disabled =
-      ( form.percent.selectedIndex != 10 || form.others_complete.value != 'yes' );
-  }
-}
-
-function onLoad() {
-  if ( ! document.editentryform )
-    return false;
-  //define these variables here so they are valid
-  form = document.editentryform;
-  elements = document.editentryform.elements;
-  elementlength = document.editentryform.elements.length;
-
-  //initialize byxxxAr Objects
-  if ( form.bydayList ) {
-    bydayList = form.bydayList.value;
-    if ( bydayList.search( /,/ ) > -1 ) {
-      bydayList = bydayList.split ( ',' );
-      for ( key in bydayList ) {
-        if ( key == isNumeric ( key ) )
-        bydayAr[bydayList[key]] = bydayList[key];
-      }
-    } else if ( bydayList.length > 0 ) {
-      bydayAr[bydayList] = bydayList;
-    }
-  }
-
-  if ( form.bymonthdayList ) {
-    bymonthdayList = form.bymonthdayList.value;
-    if ( bymonthdayList.search( /,/ ) > -1 ) {
-      bymonthdayList = bymonthdayList.split ( ',' );
-      for ( key in bymonthdayList ) {
-        if ( key == isNumeric ( key ) )
-          bymonthdayAr[bymonthdayList[key]] = bymonthdayList[key];
-      }
-    } else if ( bymonthdayList.length > 0 ) {
-      bymonthdayAr[bymonthdayList] = bymonthdayList;
-    }
-  }
-
-  if ( form.bysetposList ) {
-    bysetposList = form.bysetposList.value;
-    if ( bysetposList.search( /,/ ) > -1 ) {
-      bysetposList = bysetposList.split ( ',' );
-      for ( key in bysetposList ) {
-        if ( key == isNumeric ( key ) )
-          bysetposAr[bysetposList[key]] = bysetposList[key];
-      }
-    } else if ( bysetposList.length > 0 ) {
-      bysetposAr[bysetposList] = bysetposList;
-    }
-  }
-
-  timetype_handler();
-  rpttype_handler();
-  toggle_until();
-  toggle_reminders();
-  toggle_rem_rep();
-  completed_handler();
-}
-
-function selAdd( btn ) {
-  with (form)
-  {
-    with (form.entry_part)
-    {
-      for (i = 0; i < length; i++)
-      {
-        if(options[i].selected) {
-          with (options[i])
-          {
-            if(is_unique(value)) {
-              form.sel_part.options[form.sel_part.length]  = new Option( text, value );
-            }
-            options[i].selected = false;
-          } //end with options
-        }
-      } // end for loop
-    } // end with islist1
-  } // end with document
-}
-
-function is_unique ( val ) {
-   unique = true;
-   var sel = form.sel_part;
-   for ( j = 0; j < sel.length; j++ ) {
-     if ( sel.options[j].value == val )
-       unique = false;
-   }
-   return unique;
-}
-
-function selResource( btn ) {
-  with (form)
-  {
-    with (form.res_part)
-    {
-      for (r = 0; r < length; r++)
-      {
-        if(options[r].selected) {
-          with (options[r])
-          {
-            if(is_unique(value)) {
-              form.sel_part.options[form.sel_part.length]  = new Option( text, value );
-            }
-            options[r].selected = false;
-          } //end with options
-        }
-      } // end for loop
-    }
-  } // end with document
-}
-function selRemove( btn ) {
-   with (form)
-   {
-      with (form.sel_part)
-      {
-         for (i = 0; i < length; i++)
-         {
-            if( options[i].selected ) {
-              options[i] = null;
-         }
-         } // end for loop
-     }
-   } // end with document
-}
-
-function lookupName() {
-  var selectid = -1;
-  var x = stringLength( form.lookup.value );
-    var lower = stringToLowercase(form.lookup.value );
-  form.entry_part.selectedIndex = -1;
-  form.res_part.selectedIndex = -1;
-  if ( form.groups )
-    form.groups.selectedIndex = -1;
-  //check userlist
-  for ( i = 0; i < form.entry_part.length; i++ ) {
-    str = form.entry_part.options[i].text;
-    if ( stringToLowercase( str.substring( 0,x ) ) == lower ) {
-      selectid = i;
-    i = form.entry_part.length;
-   }
-  }
-  if ( selectid  > -1) {
-    form.entry_part.selectedIndex = selectid;
-    return true;
-  }
-  //check resource list
-  for ( i = 0; i < form.res_part.length; i++ ) {
-    str = form.res_part.options[i].text;
-    if ( stringToLowercase( str.substring( 0,x ) ) == lower ) {
-      selectid = i;
-    i = form.res_part.length;
-   }
-  }
-  if ( selectid > -1 ) {
-    form.res_part.selectedIndex = selectid;
-    return true;
-  }
-  //check groups if enabled
-  if ( form.groups ) {
-    for ( i = 0; i < form.groups.length; i++ ) {
-      str = form.groups.options[i].text;
-      if ( stringToLowercase( str.substring( 0,x ) ) == lower ) {
-        selectid = i;
-      i = form.groups.length;
-     }
-    }
-    if ( selectid > -1) {
-      form.groups.selectedIndex = selectid;
-      return true;
-    }
-  }
-}
-
-function stringLength(inputString)
-{
-  return inputString.length;
-}
-function stringToLowercase(inputString)
-{
-  return inputString.toLowerCase();
 }

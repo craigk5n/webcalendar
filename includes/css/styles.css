@@ -11,6 +11,9 @@
 /* This file could be a lot smaller if all selectors with identical declarations
  * were combined. However, running it through something like
  * http://www.cssoptimiser.com/ doesn't work as it screws up the cascading.
+ *
+ * A useful site to see what CSS works in which browsers.
+ * http://kimblim.dk/css-tests/selectors/
  */
 
 html,
@@ -144,30 +147,7 @@ ul a {
 #viewsedit {
   background:#f8f8ff;
 }
-#cat,
-#day dl.desc,
-#grpiframe,
-#nonusersiframe,
-#remotesiframe,
-#tabscontent_boss,
-#tabscontent_colors,
-#tabscontent_email,
-#tabscontent_groups,
-#tabscontent_header,
-#tabscontent_nonuser,
-#tabscontent_nonusers,
-#tabscontent_other,
-#tabscontent_participants,
-#tabscontent_pete,
-#tabscontent_public,
-#tabscontent_reminder,
-#tabscontent_remotes,
-#tabscontent_sched,
-#tabscontent_subscribe,
-#tabscontent_themes,
-#tabscontent_uac,
-#useriframe,
-#viewiframe {
+#cat {
   display:none;
 }
 #tabscontent_colors p span,
@@ -186,6 +166,12 @@ img {
 img.color {
   width:.9375em;
   height:.9375em;
+}
+img.help {
+  cursor:help;
+}
+img.new {
+  vertical-align:middle;
 }
 #cat {
   font-size:1.125em;
@@ -293,32 +279,16 @@ a#programname {
   border-right:1px solid #00f;
   border-bottom:1px solid #00f;
 }
-.next img,
-#activitylog .next {
+.next img {
   float:right;
 }
-.prev img,
-#activitylog .prev {
+.prev img {
   float:left;
 }
 .next img,
 .prev img {
   margin-top:.4375em;
   margin-right:.1875em;
-}
-#activitylog .next,
-#activitylog .prev {
-  border:0;
-  font-weight:bold;
-  font-size:.875em;
-}
-#day .next img,
-#day .prev img {
-  margin-top:2.3125em;
-}
-#day .monthnav .next img,
-#day .monthnav .prev img {
-  margin:0;
 }
 .dailymatrix {
   cursor:pointer;
@@ -347,7 +317,6 @@ td.matrix {
   height:1px;
 }
 a.matrix img {
-  width:100%;
   height:.5em;
 }
 .matrixd {
@@ -465,9 +434,6 @@ a.matrix img {
 #helpbug p {
   margin:0 1em;
 }
-img.help {
-  cursor:help;
-}
 .sample {
   text-align:left;
   width:1em;
@@ -522,35 +488,41 @@ tr.highlight td {
   border:1px solid #000;
 }
 .minitask tr.header th,
-.minitask tr.header td {
+.minitask td {
   border-bottom:.125em solid #000;
   padding:0;
   font-size:.75em;
   text-align:center;
 }
+.minitask td {
+  border-bottom-width:1px;
+}
 .minitask tr.header td {
   margin:0;
-  border-bottom:0;
   text-align:right;
+}
+.minitask tr.header td,
+.minitask td.filler,
+.sorter {
+  border-bottom:0;
+}
+.minitask td.pct {
+  width:50%;
+  text-align:right;
+}
+.minitask td.name {
+  text-align:left;
 }
 .sorter {
   margin:0;
-  border-bottom:0;
   cursor:pointer;
   text-align:left !important;
 }
 .sorterbottom {
  border-bottom:1px solid #000 !important;
 }
-.minitask  td {
-  border-bottom:1px solid #000;
-  padding:0;
-  font-size:.75em;
-  text-align:center;
-}
-.minitask td.filler {
-  border-bottom:0;
-  padding:0;
+.sorterbottom img {
+  vertical-align:top;
 }
 #pref table {
   vertical-align:top;
@@ -633,71 +605,8 @@ tr.highlight td {
   border-left:1px solid;
   padding:.0625em .1875em;
 }
-#day div.minicalcontainer {
-  border:1px solid #000;
-  padding:.1875em;
-  vertical-align:top;
-}
-#day table.minical {
-  margin-right:auto;
-  margin-left:auto;
-}
-#day .minical caption {
-  margin-right:auto;
-  margin-left:auto;
-  font-weight:bold;
-  font-size:2.9375em;
-}
-#day .minical td.selectedday {
-  border:.125em solid;
-}
-#day .monthnav th {
-  border:0;
-  padding:.1875em;
-  text-align:center;
-}
 .menuhref {
   font-family:arial, verdana, sans-serif;
-}
-#datesel td.field {
-  font-size:.75em;
-}
-.glance {
-  width:100%;
-  border-right:1px solid;
-  border-bottom:1px solid;
-}
-.glance th.empty {
-  border-top:1px solid;
-  border-left:1px solid;
-}
-.glance th.row {
-  width:14%;
-  height:2.5em;
-  border-top:1px solid;
-  border-left:1px solid;
-  vertical-align:middle;
-}
-.glance td {
-  border-top:1px solid;
-  border-left:1px solid;
-  padding-left:.1875em;
-  vertical-align:top;
-}
-#day .glance td {
-  width:86%;
-  height:2.5em;
-}
-#day dl.desc {
-  margin:0;
-  padding:0;
-}
-#day dl.desc dt {
-  font-weight:bold;
-}
-#day dl.desc dd {
-  margin:0;
-  padding-left:1.25em;
 }
 #year #monthgrid td {
   padding:0 .3125em;
@@ -707,13 +616,10 @@ tr.highlight td {
   vertical-align:top;
 }
 #pref .main th,
-#viewv .main th,
-#viewl .main th,
-#month .main th {
+#viewv .main th {
   width:14%;
 }
-#vieww .main th,
-#week .main th {
+#vieww .main th {
   width:12%;
 }
 #viewr th.small {
@@ -724,18 +630,13 @@ tr.highlight td {
   border-right:1px solid;
   padding:.0625em;
 }
-#pref .main th.weekcell,
-#viewl .main th.empty,
-#day .main th.empty,
-#month .main th.empty{
+#pref .main th.weekcell {
   width:1%;
   border-top:0;
   border-left:0;
   background:transparent;
 }
-#pref .main td.weekcell,
-#viewl .main td.weekcell,
-#month .main td.weekcell {
+#pref .main td.weekcell {
   width:1%;
   margin:0;
   font-size:.75em;
@@ -756,18 +657,12 @@ tr.highlight td {
 #viewv .main th.empty,
 #viewm .main th.empty,
 #vieww .main th.empty,
-#viewr .main th.empty,
-#week .main th.empty {
+#viewr .main th.empty {
   width:5%;
   border-top:1px solid;
   border-left:1px solid;
   background:none;
   background:transparent;
-}
-#week .main th.row {
-  width:5%;
-  height:2.5em;
-  vertical-align:top;
 }
 #viewt.main {
   margin:0;
@@ -798,8 +693,7 @@ tr.highlight td {
   width:10%;
 }
 #pref .main th.today,
-#viewr .main th.today,
-#week .main th.today {
+#viewr .main th.today {
   width:14%;
 }
 #year .minical td {
@@ -810,41 +704,23 @@ tr.highlight td {
   height:1.875em;
   font-size:.75em;
 }
-#viewl .main td,
-#contentMonth .main td,
-#month .main td {
+#contentMonth .main td {
   height:6.0em;
   font-size:.75em;
   vertical-align:top;
 }
 #vieww .main td,
-#week .main td,
 #viewr .main td,
 #viewm .main td,
 #viewv .main td {
   font-size:.75em;
   padding-left:.1875em;
 }
-#viewl #prevmonth {
-  float:left;
-}
-#viewl #nextmonth {
-  float:right;
-}
-#month .minical caption,
-#viewl .minical caption {
-  margin-left:4ex;
-}
 #year .minical {
   display:block;
 }
 #year .minical caption {
   margin:0 auto;
-}
-#viewl .minical,
-#month .minical {
-  margin:0 .25em;
-  border:0;
 }
 #combo div.headerinfo {
   margin:.9375em;
@@ -1023,11 +899,6 @@ tr.highlight td {
   width:99%;
   text-align:center;
 }
-#day .title {
-  margin-top:.1875em;
-  text-align:center;
-}
-#day .title .date,
 .title .date {
   font-weight:bold;
   font-size:1.5em;
@@ -1036,9 +907,7 @@ tr.highlight td {
 .title .titleweek {
   font-size:1.25em;
 }
-.title .viewname,
-#day .title .user,
-.title .user {
+.title .viewname {
   font-weight:bold;
   font-size:1.125em;
   text-align:center;
@@ -1136,11 +1005,9 @@ tr.highlight td {
   height:.625em;
   border:0;
 }
-.minitask td.pct,
 .alignright {
   text-align:right;
 }
-.minitask td.name,
 .alignleft {
   text-align:left;
 }
@@ -1152,18 +1019,6 @@ tr.highlight td {
 }
 .bold {
   font-weight:bold;
-}
-#about {
-  background-image:url( images/kn5.jpg );
-  background-repeat:no-repeat;
-}
-#about p {
-  margin:.0625em;
-  color:#333;
-}
-#scroller {
-  position:absolute;
-  width:100%;
 }
 .layers {
   float:left;
@@ -1327,30 +1182,6 @@ tr.highlight td {
   margin-top: 3px;
   margin-left: 2px;
 }
-#eventcomment {
- border:1px solid;
- padding:.25em;
-}
-#adminhome table {
-  border:1px solid #000;
-  padding:.3125em;
-}
-#adminhome table td {
-  padding:1.25em;
-}
-#adminhome table td,
-#adminhome td a {
-  text-align:center;
-}
-#adminhome td a {
-  border:1px solid;
-  border-color:#eee #777 #777 #eee;
-  padding:.625em;
-}
-#adminhome td a:hover {
-  border-color:#777 #eee #eee #777;
-  background:#aaa;
-}
 #login label,
 #login textarea,
 #login tr,
@@ -1375,74 +1206,14 @@ table.ThemeMenubar select {
   font-size: 80%;
 }
 
-/*date selection "popup"*/
-#dateselOverlay {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10001;
-/*
-  background: #fff;
-  opacity: 0.50;
-*/
-}
-
-#dateselDiv {
-  display: none;
-  width: 150px;
-  /*height: 300px;*/
-  /*background-color: #d0d0d0;*/
-  /*padding: 10px;*/
-  padding: 0;
-  z-index: 11000; /* modalbox uses 10000 */
-}
-
-#dateselDiv #cancelImage {
-  position: relative;
-  left: -20px;
-  top: 10px;
-}
-
-.dateselTable #dateselMonthName {
-  font-size: 10pt;
-  text-align: center;
-  font-weight: bold;
-  background-color: #000080;
-  color: #ffffff;
-}
-.dateselTable #dateselMonthName img.clickable {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.dateselTable td {
-  text-align: center;
-  font-size: 10pt;
-  background-color: #c0c0c0;
-  padding: 1px;
-}
-
-.dateselTable td.today {
-  background-color: #ffff88;
-}
-.dateselTable td.selected {
-  background-color: #00ff00;
-}
-.dateselTable td.wdayname {
-  font-size: 8pt;
-  padding-left: 2px;
-  padding-right: 2px;
-}
-
-
 /* for modalbox */
 #MB_caption {
   font-size: 16pt !important;
 }
-
+#trailbq {
+  background:#eee;
+  border:1px solid #ccc;
+}
 /*
  * Autocomplete CSS
  * See includes/js/autocomplete.js for more info.

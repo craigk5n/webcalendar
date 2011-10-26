@@ -206,10 +206,7 @@ if ( ! $error ) {
   $anyoneStr = translate ( 'Anyone' );
   $partyStr = translate ( 'Participant' );
 
-  $option = '
-                <option value="';
-  $color_sets = $datestyle_md = $datestyle_my = $datestyle_tk = '';
-  $datestyle_ymd = $lang_list = $menu_theme_list = $prefer_vu = '';
+  $color_sets = $lang_list = $menu_theme_list = $prefer_vu = '';
   $start_wk_on = $start_wkend_on = $tabs = $theme_list = $user_vu = '';
   $work_hr_end = $work_hr_start = '';
 
@@ -217,7 +214,7 @@ if ( ! $error ) {
   $tabs_ar = array (
     'settings', $setsStr,
     'public', translate ( 'Public Access' ),
-    'uac', translate ( 'User Access Control' ),
+    'uac', translate( 'UAC' ),
     'groups', $groupsStr,
     'nonuser', translate ( 'NUCs' ),
     'other', translate ( 'Other' ),
@@ -237,26 +234,6 @@ if ( ! $error ) {
   }
   for ( $i = 0, $cnt = count ( $themes[0] ); $i < $cnt; $i++ ) {
     $theme_list .= $option . $themes[1][$i] . '">' . $themes[0][$i] . '</option>';
-  }
-  for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
-    $datestyle_ymd .= $option . $datestyles[$i]
-     . ( $s['DATE_FORMAT'] == $datestyles[$i] ? '" selected>' : '">' )
-     . $datestyles[$i + 1] . '</option>';
-  }
-  for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
-    $datestyle_my .= $option . $datestyles_my[$i]
-     . ( $s['DATE_FORMAT_MY'] == $datestyles_my[$i] ? '" selected>' : '">' )
-     . $datestyles_my[$i + 1] . '</option>';
-  }
-  for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
-    $datestyle_md .= $option . $datestyles_md[$i]
-     . ( $s['DATE_FORMAT_MD'] == $datestyles_md[$i] ? '" selected>' : '">' )
-     . $datestyles_md[$i + 1] . '</option>';
-  }
-  for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
-    $datestyle_tk .= $option . $datestyles_task[$i]
-     . ( $s['DATE_FORMAT_TASK'] == $datestyles_task[$i] ? '" selected>' : '">' )
-     . $datestyles_task[$i + 1] . '</option>';
   }
   for ( $i = 0; $i < 7; $i++ ) {
     $start_wk_on .= $option . "$i\""
@@ -658,7 +635,7 @@ if ( ! $error ) {
 
 <!-- BEGIN USER ACCESS CONTROL -->
         <p id="tabscontent_uac"><label title="' . tooltip ( 'uac-enabled-help' )
-   . '">' . translate ( 'User Access Control enabled' ) . ':</label>'
+   . '">' . translate( 'UAC enabled' ) . '</label>'
    . print_radio ( 'UAC_ENABLED' ) . '</p>
 
 <!-- BEGIN GROUPS -->

@@ -7,6 +7,17 @@ Version 1.3.0+CVS (?? ??? 2011)
  - 26-Oct-11 bb TRANSLATORS! When you run "tools/update_translation.pl",
      keep at least the first backup file for awhile.
      Phrases are being moved and updated A LOT! And some got skipped by accident.
+   Rename more js/.*php files to js/*.js;
+   Add more external css and js files.
+   Continue to move javascript and styles to external files.
+   fgets() length became optional in PHP 4.2.0.
+   Update more translate(phrases) and move more punctuation to English-US.txt.
+   Trying to find ways to eliminate "class=" and "id=" when I can see how to use
+     the basic HTML tags already available.
+     Some things may not work in some versions of Internet Exploder
+     but, most browsers play nice.
+   Having an "<a title>" identical to what's already on screen seems redundant.
+   Cut some dupe code and fix typos.
    25-Oct-11 bb Remove currently unused file "common_admin_pref.php".
      Though I may try that again later.
  - 22-Oct-11 bb Make the parameters in "tools/update_translation.pl" actually toggle. Again.

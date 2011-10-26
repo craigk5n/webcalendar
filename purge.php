@@ -27,45 +27,35 @@ if ( ! $is_admin ) {
 
 $ALL = 0;
 
-$previewStr = translate ( 'Preview' );
-$allStr = translate ( 'All' );
-$purgingStr = translate ( 'Purging events for' );
-$deleteStr = translate ( 'Delete' );
+$boxPreviewStr = translate( '[Preview]' );
+$purgingStr = translate( 'Purging events for XXX' );
 
-$delete = getPostValue ( 'delete' );
-$do_purge = false;
-if ( ! empty ( $delete ) ) {
- $do_purge = true;
-}
+$delete       = getPostValue( 'delete' );
+$end_day      = getPostValue( 'end_day' );
+$end_month    = getPostValue( 'end_month' );
+$end_year     = getPostValue( 'end_year' );
+$preview      = getPostValue( 'preview' );
+$purge_all    = getPostValue( 'purge_all' );
+$purge_deleted= getPostValue( 'purge_deleted' );
+$username     = getPostValue( 'username' );
 
-$purge_all = getPostValue ( 'purge_all' );
-$purge_deleted = getPostValue ( 'purge_deleted' );
-$end_year = getPostValue ( 'end_year' );
-$end_month = getPostValue ( 'end_month' );
-$end_day = getPostValue ( 'end_day' );
-$username = getPostValue ( 'username' );
-$preview = getPostValue ( 'preview' );
-$preview = ( empty ( $preview ) ? false : true );
+$do_purge= ! empty( $delete );
+$preview = ! empty( $preview );
 
-$INC = array ( 'js/visible.js/true' );
-
-print_header ( $INC );
-?>
-
-<table summary="">
-<tr><td style="vertical-align:top; width:50%;">
-<?php
-echo '<h2>' . translate ( 'Delete Events' );
-if ( $preview )
-  echo '[ ' . $previewStr . ']';
-echo "</h2>\n";
-echo display_admin_link();
+print_header();
+echo '
+    <table summary="">
+      <tr>
+        <td style="vertical-align:top; width:50%;">
+          <h2>' . translate( 'Delete Events' ) . ( $preview ? $boxPreviewStr : '' )
+ . '</h2>
+          ' . display_admin_link();
 
 if ( $do_purge ) {
-  if ( $preview )
-    echo '<h2> [' . $previewStr . '] ' . $purgingStr . " $username...</h2>\n";
-  else
-    echo '<h2>' . $purgingStr . ": $username</h2>\n";
+  echo '
+          <h2>' . ( $preview ? $boxPreviewStr . ' ' : '' )
+   . str_replace( 'XXX', $username . ( $preview ? '...' : '' ), $purgingStr )
+   . '</h2>';
 
   $end_date = sprintf ( "%04d%02d%02d", $end_year, $end_month, $end_day );
   $ids = $tail = '';
@@ -76,38 +66,36 @@ if ( $do_purge ) {
     if ( $username == 'ALL' ) {
       $ids = array ( 'ALL' );
     } else {
-      $ids = get_ids ( 'SELECT cal_id FROM webcal_entry '
-        . " WHERE cal_create_by = '$username' $tail" );
+      $ids = get_ids( 'SELECT cal_id FROM webcal_entry
+        WHERE cal_create_by = ' . "'$username' $tail" );
     }
   } elseif ( $end_date ) {
     if ( $username != 'ALL' ) {
-      $tail = " AND we.cal_create_by = '$username' $tail";
+      $tail = ' AND we.cal_create_by = ' . "'$username' $tail";
     } else {
       $tail = '';
-      $ALL = 1;  // Need this to tell get_ids to ignore participant check
+      $ALL = 1; // Tell get_ids to ignore participant check.
     }
-    $E_ids = get_ids ( 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu ' .
-      "WHERE cal_type = 'E' AND cal_date < '$end_date' $tail",
-      $ALL );
+    $E_ids = get_ids( 'SELECT we.cal_id FROM webcal_entry we,
+      webcal_entry_user weu WHERE cal_type = \'E\'
+      AND cal_date < ' . "'$end_date' $tail", $ALL );
     $M_ids = get_ids ( 'SELECT DISTINCT(we.cal_id) FROM webcal_entry we,
       webcal_entry_user weu, webcal_entry_repeats wer
       WHERE we.cal_type = \'M\'
-      AND we.cal_id = wer.cal_id AND we.cal_id = wer.cal_id '
-      . "AND cal_end IS NOT NULL AND cal_end < '$end_date' $tail",
-      $ALL );
+      AND we.cal_id = wer.cal_id AND we.cal_id = wer.cal_id
+      AND cal_end IS NOT NULL AND cal_end < ' . "'$end_date' $tail", $ALL );
     $ids = array_merge ( $E_ids, $M_ids );
   }
   //echo "event ids: <ul><li>" . implode ( "</li><li>", $ids ) . "</li></ul>\n";
   if ( count ( $ids ) > 0 ) {
     purge_events ( $ids );
   } else {
-    echo translate ( 'None' );
+    echo $noneStr;
   }
-  echo '<h2>...' . translate ( 'Finished' ) . ".</h2>\n";
-?>
-  <form><input type="button" value="<?php etranslate ( 'Back' )?>"
-onclick="history.back()"></form
-><?php
+  echo '
+          <h2>' . translate( 'Finished' ) . '</h2>
+          <form><input type="button" id="backBtn" value="' . translate( 'Back' )
+   . '></form>';
   if ( $purgeDebug ) {
     echo '<div style="border: 1px solid #000;background-color: #ffffff;"><tt>' .
   $sqlLog . '</tt></div>' ."\n";
@@ -118,7 +106,7 @@ onclick="history.back()"></form
 <form action="purge.php" method="post" name="purgeform" id="purgeform">
 <table>
  <tr><td><label for="user">
-  <?php echo translate ( 'User' );?>:</label></td>
+  <?php echo translate( 'User_' );?></label></td>
  <td><select name="username">
 <?php
   $userlist = get_my_users();
@@ -171,7 +159,7 @@ onclick="history.back()"></form
  * purge_events (needs description)
  */
 function purge_events ( $ids ) {
-  global $preview, $previewStr, $c; // db connection
+  global $preview, $boxPreviewStr, $c; // db connection
   global $sqlLog, $allStr;
 
   $tables = array (
@@ -223,7 +211,7 @@ function purge_events ( $ids ) {
   $xxxStr = translate( 'Records deleted from XXX' );
   for ( $i = 0; $i < $cnt; $i++ ) {
     $table = $tables[$i][0];
-    echo '[' . $previewStr . '] ' .
+    echo $boxPreviewStr . ' ' .
       str_replace( 'XXX', " $table: {$num[$i]}" , $xxxStr ) .
       "<br>\n";
   }

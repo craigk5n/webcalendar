@@ -105,8 +105,7 @@ if ( $SEND_EMAIL != 'Y' ) {
 $sysSettingsXXX = translate( 'System Settings XXX' );
 
 // Is UAC enabled?
-print_issue(
-  str_replace( 'XXX', translate( 'User Access Control' ), $sysSettingsXXX ),
+print_issue( str_replace( 'XXX', translate( 'UAC' ), $sysSettingsXXX ),
   access_is_enabled(), translate( 'consider enabling UAC' ) );
 
 // If Public Access enabled, make sure approvals are on

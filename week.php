@@ -223,7 +223,7 @@ if ( $DISPLAY_TASKS == 'Y' ) {
   $tableWidth = '80%';
   $filler = '<td></td>';
   $minical_tasks .= '
-        <td id="minicolumn" rowspan="2" valign="top">
+        <td id="minicolumn" rowspan="2">
 <!-- START MINICAL -->
           <div class="minicontainer">' . ( $DISPLAY_SM_MONTH == 'Y' ? '
             <div class="minicalcontainer">'
@@ -233,14 +233,12 @@ if ( $DISPLAY_TASKS == 'Y' ) {
         </td>';
 }
 
-print_header(
-  array( 'js/popups.js/true', 'js/dblclick_add.js/true' ),
-  generate_refresh_meta(), '', false, false, false, false );
+print_header( '', generate_refresh_meta() );
 
 echo <<<EOT
     <table width="100%" cellpadding="1" summary="">
       <tr>
-        <td id="printarea" style="vertical-align:top; width:{$tableWidth};">
+        <td id="printarea" width:{$tableWidth};">
         {$navStr}
         </td>
         {$filler}

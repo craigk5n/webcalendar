@@ -104,7 +104,6 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
 $setCatStr = translate ( 'Set Category' );
 $briefStr = translate ( 'Brief Description' );
 $catHelpStr = tooltip ( 'category-help' );
-$catStr = translate ( 'Category' );
 $editStr = translate ( 'Edit' );
 $globalNoteStr = ( $globals_found
   ? translate ( 'cant change Global Cats' ) : '' );
@@ -126,7 +125,7 @@ else {
         </tr>
         <tr>
           <td class="tooltip" title="{$catHelpStr}" valign="top">
-            <label for="entry_categories">{$catStr}:<br></label>
+            <label for="entry_categories">{$cat_Str}<br></label>
             <input type="button" value="{$editStr}" onclick="editCats( event )">
           </td>
           <td valign="top">

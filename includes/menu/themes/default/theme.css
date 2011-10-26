@@ -1,7 +1,12 @@
 /* ThemeMenu Style Sheet */
 .ThemeMenubar {
   width:100%;
+  border-collapse:collapse;
+  border-spacing:0;
   padding-bottom:2px;
+}
+.ThemeMenubar td {
+  padding:0;
 }
 .ThemeMenubackgr {
   background:#d0d0d0;
@@ -20,6 +25,9 @@
   font:1em arial, verdana, sans-serif;
   vertical-align:middle;
   white-space:nowrap;
+}
+.ThemeMenu {
+  text-align:right;
 }
 .ThemeSubMenu {
   position:absolute;
