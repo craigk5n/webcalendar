@@ -1,0 +1,29 @@
+// $Id$
+
+.main th {
+  width:12%;
+}
+.main th.empty {
+  background:none;
+  background:transparent;
+  border-top:1px solid;
+  border-left:1px solid;
+}
+.main th.empty,
+.main th.row {
+  width:5%;
+}
+.main th.row {
+  height:2.5em;
+}
+.main th.today {
+  width:14%;
+}
+.main td {
+  font-size:.75em;
+  padding-left:.1875em;
+}
+#minicolumn,
+.main th.row {
+  vertical-align:top;
+}

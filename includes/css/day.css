@@ -1,0 +1,97 @@
+// $Id$
+
+.glance {
+  width:100%;
+}
+.glance td,
+.glance th.row {
+  height:2.5em;
+}
+.prev img,
+.next img {
+  margin-top:2.3125em;
+}
+.monthnav .next img,
+.monthnav .prev img,
+dl.desc dd,
+dl.desc {
+  margin:0;
+}
+.minical caption,
+table.minical {
+  margin-right:auto;
+  margin-left:auto;
+}
+.title {
+  margin-top:.1875em;
+}
+.glance {
+  border-right:1px solid;
+  border-bottom:1px solid;
+}
+.glance td,
+.glance th.row,
+.glance th.empty {
+  border-top:1px solid;
+  border-left:1px solid;
+}
+div.minicalcontainer {
+  border:1px solid #000;
+}
+.minical td.selectedday {
+  border:.125em solid;
+}
+.monthnav th {
+  border:0;
+}
+div.minicalcontainer,
+.monthnav th {
+  padding:.1875em;
+}
+.glance td,
+dl.desc {
+  padding:0;
+}
+dl.desc dd {
+  padding-left:1.25em;
+}
+.glance th.row {
+  width:14%;
+  vertical-align:middle;
+}
+.glance td {
+  width:86%;
+  padding-left:.1875em;
+}
+.main th.empty {
+  width:1%;
+  border-top:0;
+  border-left:0;
+  background:transparent;
+}
+.minical caption,
+.title .user,
+.title .date,
+dl.desc dt {
+  font-weight:bold;
+}
+.minical caption {
+  font-size:2.9375em;
+}
+.title .date {
+  font-size:1.5em;
+}
+.title .user {
+  font-size:1.125em;
+}
+.title,
+.monthnav th {
+  text-align:center;
+}
+div.minicalcontainer,
+.glance td {
+  vertical-align:top;
+}
+dl.desc {
+  display:none;
+}

@@ -1,0 +1,12 @@
+// $Id$
+
+table tr td:first-child {
+  font-weight:bold;
+}
+table tr + tr td:first-child {
+  vertical-align:top;
+}
+table tr:last-child td {
+  text-align:center;
+  vertical-align:middle;
+}
