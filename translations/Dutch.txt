@@ -64,7 +64,7 @@ Save: Opslaan
 Undo: Ongedaan maken
 Public Access: Open Agenda
 Admin: Beheer
-User Access Control: Gebruikerstoegang controle
+UAC: Gebruikerstoegang controle
 may access others cals: Sta toegang toe tot agenda van andere gebruikers
 this user may access my cal: Geef deze gebruiker toegang tot mijn agenda
 Type: =
@@ -285,7 +285,7 @@ Override public event name/desc: Domineer afspraak naam/omschrijving voor Open A
 public-access-override-text-help: De tekst bij bovenstaande optie staat aan. Indien 'niet beschikbaar', zal hij vertaald worden.
 public text display: Tekst om te tonen bij Open Agenda
 uac-enabled-help: Sta UAC toe (user-level access control, toegang en bevoegdheden per gebruiker regelen)
-User Access Control enabled: Gebruikerstoegang controle ingeschakeld
+UAC enabled: Gebruikerstoegang controle ingeschakeld
 groups-enabled-help: Maakt groepsondersteuning mogelijk, zodat gebruikers andere gebruikers per groep kunnen selecteren.
 Groups enabled: Activeer groepen
 user-sees-his-group-help: Indien geactiveerd hebben gebruikers geen inzake in de agenda van gebruikers buiten hun groep(en).

@@ -68,7 +68,7 @@ Save: Zapisz
 Undo: Cofnij
 Public Access: Dostep Publiczny
 Admin: Administrator
-User Access Control: Kontrola dostêpu u¿ytkownika
+UAC: Kontrola dostêpu u¿ytkownika
 may access others cals: Udostêpniaj kalendarze innych u¿ytkowników
 this user may access my cal: Udostêpnij mój kalendarz temu u¿ytkownikowi
 Type: Typ
@@ -299,7 +299,7 @@ public text display: Tekst do wy¶wietlenia
 public-access-captcha-help: Je¶li w³±czone, dodanie wpisu przez u¿ytkownika publicznego wymaga weryfikacji CAPTCHA.
 require public CAPTCHA: Wymagaj weryfikacji CAPTCHA dla nowych zdarzeñ dostêpnych publicznie
 uac-enabled-help: W³±cza kontrolê dostêpu z poziomu u¿ytkownika
-User Access Control enabled: W³±cz kontrolê dostêpu u¿ytkownika
+UAC enabled: W³±cz kontrolê dostêpu u¿ytkownika
 groups-enabled-help: W³±cza obs³uge grup, pozwalaj±c u¿ytkownikom na wybieranie u¿ytkonikówna podstawie grup do których nale¿±
 Groups enabled: Grupy w³±czone
 user-sees-his-group-help: Je¿eli w³±czone, u¿ytkownicy nie bed± mogli ogl±daæ klendarzyuzytkowników, którzy nie nale¿± do ¿adnej z ich grup

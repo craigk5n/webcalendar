@@ -54,7 +54,7 @@ Go: בצע
 Save: שמור
 Public Access: גישה ציבורית
 Admin: מנהל
-User Access Control: בקרת גישת משתמשים
+UAC: בקרת גישת משתמשים
 may access others cals: הרשה גישה ללוחות שנה של משתמשים אחרים
 this user may access my cal: הרשה למשתמש זה גישה ללוח השנה שלי
 Type: סוג
@@ -253,7 +253,7 @@ Override public event name/desc: דרוס שם/תאור ארוע בגישה צי
 public-access-override-text-help: הצג טקסט זה כאשר האופציה לעיל מופעלת. אם 'Not Available' הוא יתורגם
 public text display: הטקסט להציג לגישה ציבורית
 uac-enabled-help: מאפשר בקרת גישה ברמת המשתמש
-User Access Control enabled: בקרת גישה ברמת המשתמש מופעלת
+UAC enabled: בקרת גישה ברמת המשתמש מופעלת
 groups-enabled-help: אפשר תמיכה בקבוצות, דבר שיאפשר למשתמשים לבחור משתמשים לפי קבוצות.
 Groups enabled: קבוצות מאופשרות
 user-sees-his-group-help: אם מאופשר, משתמשים לא יוכלו לצפות במשתמשי לוחות שנה שלא נמצאים בלפחות אחת הקבוצות שלהם.

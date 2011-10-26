@@ -73,7 +73,7 @@ Save: Sauvegarder
 Undo: Annuler
 Public Access: Accès public
 Admin: Administration
-User Access Control: Contrôle d'accès Utilisateur
+UAC: Contrôle d'accès Utilisateur
 may access others cals: Autoriser l'accès de l'agenda aux autres utilisateurs
 this user may access my cal: Autoriser l'accès à cet utilisateur
 Type: =
@@ -305,7 +305,7 @@ public text display: Le texte à afficher pour l'accès public
 public-access-captcha-help: Si activé, les événéments ajoutés par Public requierent une validation par CAPTCHA
 require public CAPTCHA: Recquiert une validation par CAPTCHA pour les nouveaux événements en accès public
 uac-enabled-help: Autorise le contrôle d'accès au niveau de l'utilisateur
-User Access Control enabled: Contrôle d'accès Utilisateur actif
+UAC enabled: Contrôle d'accès Utilisateur actif
 groups-enabled-help: Active le support des groupes, autorisant les utilisateurs à sélectionner les utilisateurs par groupe.
 Groups enabled: Groupes activés
 user-sees-his-group-help: Si activé, les utilisateurs ne visualiseront pas l'agenda des autres utilisateurs n'appartenant pas au moins à leur groupe.
@@ -1263,7 +1263,7 @@ Edit repeating entry all dates: Modifier l'événement répétitif pour toutes les d
 Dele repeating event all dates: Supprimer l'événement répétitif pour toutes les dates
 Edit entry for this date: Modifier l'événement pour cette date
 Delete entry only for this date: Supprimer l'événement pour cette date
-Delete entry from XXX calendar: Supprimer l'entrée du calendrier de XXX
+Delete entry from XXX cal: Supprimer l'entrée du calendrier de XXX
 will delete entry from your XXX cal: Ceci va supprimer l'entrée de votre agenda XXX.
 boss: patron
 will delete entry from your boss cal: Ceci va supprimer l'entrée de l'agenda de votre patron.

@@ -37,16 +37,16 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-10-2011
+# Translation last updated on 10-26-2011
 
 PROGRAM_NAME: WebCalendar v1.3.0 (28 Sep 2008)
 
 charset: iso-8859-1
 direction: ltr
-__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-__month__ __dd__: __month__ __dd__
 __month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __dd__: __month__ __dd__
 __month__ __yyyy__: __month__ __yyyy__
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
 
 ########################################
 # Page: about.php
@@ -64,8 +64,8 @@ DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
 Go: Go
 Undo: Undo
 Public Access: Public Access
-Admin: Admin
-User Access Control: User Access Control
+UAC: User Access Control
+UAC XXX: User Access Control: XXX
 may access others cals: Allow Access to Other Users' Calendar
 this user may access my cal: Grant This User Access to my Calendar
 Type: Type
@@ -90,7 +90,6 @@ Private: Private
 # Page: add_entry.php
 #
 Event XXX already on cal: Event XXX is already on your calendar.
-Invalid entry id XXX.: Invalid entry id: "XXX".
 cant add XXX to cal: This is a XXX event and may not be added to your calendar.
 confidential: confidential
 private: private
@@ -281,7 +280,7 @@ public text display: Text to display to public access:
 public-access-captcha-help: If enabled, new events added by Public require passing a CAPTCHA validation.
 require public CAPTCHA: Require CAPTCHA validation for public access new events:
 uac-enabled-help: Enables user-level access control
-User Access Control enabled: User Access Control enabled
+UAC enabled: User Access Control enabled
 groups-enabled-help: Enables group support, allowing users to select users by groups.
 Groups enabled: Groups enabled:
 user-sees-his-group-help: If enabled, users will not see calendar users that are not in at least one of their groups.
@@ -387,21 +386,21 @@ Background Repeat: Background Repeat
 ########################################
 # Page: adminhome.php
 #
-Assistants: Assistants
+Assistants: Assistants:
 Preferences: Preferences
-Control Panel: Control Panel
+Control Panel: Control Panel:
 Users: Users
 Account: Account
 Categories: Categories
 Views: Views
 Layers: Layers
-Reports: Reports
+Reports: Reports:
 Delete Events: Delete Events
 Activity Log: Activity Log
 System Log: System Log
 Security Audit: Security Audit
-Public Preferences: Public Preferences
-Unapproved Public Events: Unapproved Public Events
+Public Preferences: Public Preferences:
+Unapproved Public Events: Unapproved Public Events:
 Administrative Tools: Administrative Tools
 
 ########################################
@@ -430,8 +429,10 @@ Approved w/Comments by XXX.: Approved w/Comments by: XXX.
 ########################################
 # Page: assistant_edit.php
 #
-Admin mode: Admin mode
+XXX Assistants: XXX Assistants
+-Admin mode-: -- Admin mode --
 Your assistants: Your assistants
+Assistants_: Assistants:
 
 ########################################
 # Page: autocomplete_ajax.php
@@ -461,7 +462,6 @@ Add Icon to Category: Add Icon to Category
 Upload: Upload
 GIF or PNG 3kb max: GIF or PNG 3kb max
 Search for existing icons: Search for existing icons
-Global: Global
 Make New Category: Make New Category
 
 ########################################
@@ -501,13 +501,12 @@ Time: Time
 Priority: Priority
 Access: Access:
 Created by: Created by:
-Updated: Updated
+Updated: Updated:
 Participants: Participants
-Attachments: Attachments
-Comments: Comments
+Attachments: Attachments:
+Comments: Comments:
 Brief Description: Brief Description:
 Full Description: Full Description:
-Category: Category
 None: None
 Participants_: Participants:
 Save: Save
@@ -515,7 +514,6 @@ Add event detail: Add event detail
 Start Date: Start Date:
 Due Date_: Due Date:
 Add task detail: Add task detail
-All: All
 no response from server: Error: No response from server:
 Error: Error
 High: High
@@ -529,8 +527,14 @@ Refresh: Refresh
 Click to add entry: Click to add entry
 Name: Name
 Due Date: Due Date
+Category: Category
 pm: pm
 am: am
+
+########################################
+# Page: controlpanel.php
+#
+Control Panel_: Control Panel:
 
 ########################################
 # Page: del_entry.php
@@ -550,6 +554,7 @@ Add Attachment: Add Attachment
 Subject: Subject
 Comment: Comment
 Upload file: Upload file:
+Description_: Description:
 
 ########################################
 # Page: docdel.php
@@ -585,12 +590,12 @@ Priority_: Priority:
 category-help: Specifies the category of the event.
 Edit: Edit
 completed-help: Date task is completed. Only enabled when all participants percentage equals 100%.
-Date Completed: Date Completed
+Date Completed: Date Completed:
 percent-help: Task completion percentage for this user
-Percent Complete: Percent Complete
+Percent Complete: Percent Complete:
 All Percentages: All Percentages
 location-help: Event location
-Location: Location
+Location: Location:
 url-help: Event URL
 URL: URL:
 date-help: Specifies the date of the event.
@@ -604,7 +609,7 @@ Time_: Time:
 duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time:
-Due Time: Due Time
+Due Time: Due Time:
 Site Extras: Site Extras
 Add: Add
 avail_participants-help: Lists the available participants of this entry.
@@ -641,6 +646,7 @@ Weekdays Only: Weekdays Only
 Week Start: Week Start
 repeat-bydayextended-help: Allows date selection based on day of week.
 ByDay: ByDay
+All: All
 repeat-month-help: Specifies which months the event should repeat in.
 ByMonth: ByMonth
 repeat-bysetpos-help: Allows date selection based on position withing the month.
@@ -657,7 +663,7 @@ Inclusions: Inclusions
 Add Exception: Add Exception
 Add Inclusion: Add Inclusion
 Delete Selected: Delete Selected
-Send Reminder: Send Reminder
+Send Reminder: Send Reminder:
 When: When
 Use Date/Time: Use Date/Time
 Use Offset: Use Offset
@@ -815,12 +821,13 @@ Not authorized: Not authorized
 #
 Export: Export
 Export format: Export format:
+Categories_: Categories:
 Include all layers: Include all layers
 Include deleted entries: Include deleted entries
 Export all dates: Export all dates
-Start date: Start date
-End date: End date
-Modified since: Modified since
+Start date_: Start date:
+End date_: End date:
+Modified since_: Modified since:
 
 ########################################
 # Page: export_handler.php
@@ -839,7 +846,8 @@ No user specified.: No user specified.
 Unnamed Group: Unnamed Group
 Add Group: Add Group
 Edit Group: Edit Group
-Group name: Group name
+Group name: Group name:
+Users_: Users:
 
 ########################################
 # Page: group_edit_handler.php
@@ -987,11 +995,12 @@ Current Icons on Server: Current Icons on Server
 #
 import from file: import from file
 Import: Import
-Disabled: Disabled
+Disabled XXX: Disabled (XXX)
 Import format: Import format:
 Exclude private records: Exclude private records:
 Overwrite Prior Import_: Overwrite Prior Import:
 Repeat items imported separately: Repeated items are imported separately. Prior imports are not overwritten.
+Upload file_: Upload file:
 
 ########################################
 # Page: import_handler.php
@@ -1006,19 +1015,34 @@ import file had no data: The import file contained no data.
 ########################################
 # Page: includes/access.php
 #
-Advanced Search: Advanced Search
-Another Users Calendar: Another User's Calendar
-Category Management: Category Management
-Day View: Day View
-Edit Event: Edit Event
-Month View: Month View
-Search: Search
-Common Trailer: Common Trailer
-User Management: User Management
-Manage Views: Manage Views
-Week View: Week View
-Year View: Year View
-Invalid function id: Invalid function id
+UAC_: User Access Control:
+Account_: Account:
+Activity Log_: Activity Log:
+Security Audit_: Security Audit:
+Administrative Tools_: Administrative Tools:
+Advanced Search_: Advanced Search:
+Another Users Calendar_: Another Users Calendar:
+Category Management_: Category Management:
+Day View_: Day View:
+Edit Event_: Edit Event:
+View Event_: View Event:
+Export_: Export:
+Help_: Help:
+Import_: Import:
+Layers_: Layers:
+Month View_: Month View:
+Preferences_: Preferences:
+Subscribe/Publish_: Subscribe/Publish:
+Reports_: Reports:
+Search_: Search:
+System Settings_: System Settings:
+Common Trailer_: Common Trailer:
+User Management_: User Management:
+Views_: Views:
+Manage Views_: Manage Views:
+Week View_: Week View:
+Year View_: Year View:
+Invalid function id XXX: Invalid function id: "XXX".
 
 ########################################
 # Page: includes/classes/Doc.class
@@ -1059,25 +1083,20 @@ Enter the correct letters and numbers...: Enter the correct letters and numbers 
 Challenge/Response: Challenge/Response
 
 ########################################
-# Page: includes/common_admin_pref.php
-#
-Settings: Settings
-Themes: Themes
-Custom Scripts: Custom Scripts
-
-########################################
 # Page: includes/config.php
 #
 settings.php not found: Could not find "settings.php" file.<br>Please copy "settings.php.orig" to "settings.php" and edit for your site.
 Incomplete settings.php: Your "settings.php" file is incomplete. Please compare "settings.php.orig" to "settings.php" and add the missing items with the appropriate information for your site.
-Could not find XXX defined in...: Could not find "XXX" defined in your "settings.php" file.
+Could not find XXX defined in...: "XXX" is not defined in your "settings.php" file.
 define XXX in settings: You must define "XXX" in the "settings.php" file.
 
 ########################################
 # Page: includes/date_formats.php
 #
-December: December
-Dec: Dec
+DATE_FORMAT: F d, Y
+DATE_FORMAT_MD: F d
+DATE_FORMAT_MY: F Y
+DATE_FORMAT_TASK: m/d/Y
 LANGUAGE DEFINED: LANGUAGE DEFINED
 
 ########################################
@@ -1114,6 +1133,7 @@ Busy: Busy
 Tentative: Tentative
 Schedule an appointment for XXX.: Schedule an appointment for XXX:YYY.
 View this entry: View this entry
+percent: XXX%
 date_select: __dd__ __month__ __yyyy__
 Event approved: Event approved
 Journal approved: Journal approved
@@ -1138,13 +1158,13 @@ Journal updated: Journal updated
 Task updated: Task updated
 Delete User: Delete User
 WK: WK
-Assistant mode: Assistant mode
+-Assistant mode-: -- Assistant mode --
 TASKS: TASKS
 Task_Title: Title
 Due: Due
-Task Name: Task Name
+Task Name XXX: Task Name: XXX
 Task Due Date: Task Due Date
-Completed: Completed
+percent Completed: $ Completed
 You have XXX unapproved entries: You have XXX unapproved entries
 Event: Event
 Action: Action
@@ -1172,6 +1192,7 @@ August: August
 September: September
 October: October
 November: November
+December: December
 Jan: Jan
 Feb: Feb
 Mar: Mar
@@ -1183,6 +1204,7 @@ Aug: Aug
 Sep: Sep
 Oct: Oct
 Nov: Nov
+Dec: Dec
 unknown-month: unknown-month
 New Entry: New Entry
 First Quarter Moon: First Quarter Moon
@@ -1218,13 +1240,20 @@ Fri: Fri
 Sat: Sat
 unknown-weekday: unknown-weekday
 External User: External User
+User_: User:
 
 ########################################
 # Page: includes/help_list.php
 #
 Index: Index
+Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
 Documentation: Documentation
-Page: Page
+Page_: Page:
+
+########################################
+# Page: includes/init.php
+#
+XXX Unapproved Events: XXX - Unapproved Events -
 
 ########################################
 # Page: includes/js/admin.js
@@ -1245,7 +1274,7 @@ Invalid table cell today BG: Invalid color for table cell background for today.
 Color format should be RGB: Color format should be #RRGGBB.
 
 ########################################
-# Page: includes/js/availability.php
+# Page: includes/js/availability.js
 #
 Change entry date/time: Change the date and time of this entry?
 
@@ -1253,6 +1282,16 @@ Change entry date/time: Change the date and time of this entry?
 # Page: includes/js/category.js
 #
 reallyDeleteEntry: Are you sure you want to delete this entry?
+
+########################################
+# Page: includes/js/datesel.js
+#
+No such object for YMD XXX: No such object for YMD XXX
+
+########################################
+# Page: includes/js/edit_entry.js
+#
+must enter valid time: You have not entered a valid time of day.
 
 ########################################
 # Page: includes/js/edit_entry.php
@@ -1264,7 +1303,6 @@ Please add a participant: Please add a participant
 Invalid Date: Invalid Date
 Could not find XXX in DOM.: Could not find XXX in DOM.
 Could not find XXX.: Could not find "XXX".
-must enter valid time: You have not entered a valid time of day.
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1284,9 +1322,18 @@ no blank URLs: Error: URL cannot be blank.
 Error_: Error:&nbsp;
 
 ########################################
-# Page: includes/js/export_import.php
+# Page: includes/js/export_import.js
 #
 Import Format type mismatch: File type does not match Import Format
+
+########################################
+# Page: includes/js/view_entry.js
+#
+will add entry to your cal: This will add the entry to your calendar. Proceed?
+Approve this entry?: Approve this entry?
+Reject this entry?: Reject this entry?
+Hide: Hide
+Show: Show
 
 ########################################
 # Page: includes/js/visible.js
@@ -1309,9 +1356,10 @@ My Profile: My Profile
 Public Calendar: Public Calendar
 Unapproved Events: Unapproved Events
 User Manager: User Manager
+Search: Search
 Help Contents: Help Contents
 Login: Login
-Logout: Logout
+Logout_: Logout:
 
 ########################################
 # Page: includes/trailer.php
@@ -1320,10 +1368,13 @@ My Calendar: My Calendar
 Unapproved Entries: Unapproved Entries
 Add New Entry: Add New Entry
 Add New Task: Add New Task
+Logout: Logout
+Current User_: Current User:
 Home: Home
 Back to My Calendar: Back to My Calendar
-Go to: Go to
-Manage calendar of: Manage calendar of
+Another Users Calendar: Another User's Calendar
+Go to: Go to:
+Manage calendar of: Manage calendar of:
 
 ########################################
 # Page: includes/translate.php
@@ -1388,14 +1439,18 @@ journal: journal
 9: 9
 9,999.99: 9,999.99
 time is 140000: The time is now 14:00:00
+Admin: Admin
+Invalid entry id XXX.: Invalid entry id: "XXX".
 Category_: Category:
 Double-click to add entry: Double-click on empty cell to add new entry.
 DB error XXX: Database error: "XXX".
+Global: Global
 Next: Next
 No: No
 No users for view: No users for this view.
 Previous: Previous
 Select: Select
+Settings: Settings
 Yes: Yes
 
 ########################################
@@ -1513,6 +1568,7 @@ Database Type: Database Type
 Server: Server
 Connection Persistence: Connection Persistence
 Enabled: Enabled
+Disabled: Disabled
 DB tables look current: All your database tables appear to be up to date. You may proceed to the next page and complete your WebCalendar setup.
 looks like a new install: This appears to be a new installation. If this is not correct, please go back to the previous page and correct your settings.
 looks like an upgrade: This appears to be an upgrade from version&nbsp;XXX&nbsp;to&nbsp;YYY.
@@ -1594,8 +1650,6 @@ Reject Selected: Reject Selected
 Reject: Reject
 Uncheck All: Uncheck All
 No unapproved entries for XXX.: No unapproved entries for: "XXX".
-Approve this entry?: Approve this entry?
-Reject this entry?: Reject this entry?
 Approve Selected entries?: Approve Selected entries?
 Reject Selected entries?: Reject Selected entries?
 
@@ -1637,10 +1691,13 @@ No such nonuser calendar: No such nonuser calendar
 ########################################
 # Page: pref.php
 #
+Admin mode XXX: <strong>-- Admin mode: XXX --</strong>
 Save Preferences: Save Preferences
 Public Access calendar: Public Access calendar
 Modify NUC Preferences: Modify Non User Calendar Preferences
 Return to My Preferences: Return to My Preferences
+Themes: Themes
+Custom Scripts: Custom Scripts
 Timezone Selection: Timezone Selection
 Multiview: Multiview
 entry-interval-help: Sets minute interval when editing entry times
@@ -1658,8 +1715,9 @@ All entries: All entries
 ########################################
 # Page: purge.php
 #
-Purging events for: Purging events for
-Finished: Finished
+[Preview]: [Preview]
+Purging events for XXX: Purging events for: "XXX".
+Finished: ...Finished.
 Check box to delete ALL events for a user: Check box to delete <b>ALL</b> events for a user
 Delete all events before: Delete all events before
 Purge deleted only: Purge deleted only
@@ -1722,10 +1780,12 @@ Manage Reports: Manage Reports
 ########################################
 # Page: search.php
 #
-Keywords: Keywords
+Advanced Search: Advanced Search
+Keywords: Keywords:
 Enter % for all entries: (Enter % for all entries)
 Include: Include
-Filter by Date: Filter by Date
+Site Extras_: Site Extras:
+Filter by Date: Filter by Date:
 All Dates: All Dates
 Past: Past
 Upcoming: Upcoming
@@ -1803,11 +1863,22 @@ could not find event id: could not find event id
 event XXX not found in DB: could not find event id XXX in database.
 task: task
 reminder for XXX below: This is a reminder for the XXX detailed below.
-Pecentage Complete: Pecentage Complete
+start date XXX: Start Date: XXX
+date XXX: Date: XXX
+start time XXX: Start Time: XXX
+time XXX: Time: XXX
+time all day: Time: All day event
+Duration XXX: Duration: XXX minutes
+due date XXX: Due Date: XXX
+due time XXX: Due Time: XXX
+Percentage Complete XXX: Percentage Complete: XXX%
+priority XXX: Priority: XXX
 Access Confidential: Access Confidential
 Access Public: Access Public
 Access Private: Access Private
-Reminder: Reminder
+Created by XXX: Created by: XXX
+XXX External User: XXX (External User)
+Reminder XXX: Reminder: XXX
 
 ########################################
 # Page: upcoming.php
@@ -1831,36 +1902,43 @@ Reset: Reset
 ########################################
 # Page: view_entry.php
 #
-Update Task Percentage: Update Task Percentage
+[Delete]: [Delete]
+[Private]: [Private]
+[Confidential]: [Confidential]
+Update Task Percent XXX: Update Task Percentage XXX%
+Completed: Completed
+(Admin mode): (Admin mode)
+(Assistant mode): (Assistant mode)
+Status_: Status:
 Declined: Declined
 Needs-Action: Needs-Action
+Completed_: Completed:
 by: by
 Percentage Complete: Percentage Complete
+(Rejected): (Rejected)
+Update Task Percentage: Update Task Percentage
 Update: Update
 at: at
-comments: comments
-Show: Show
-Hide: Hide
+XXX comments: XXX comments
 Approve/Confirm entry: Approve/Confirm entry
 Reject entry: Reject entry
 Set category: Set category
-Add to My Calendar: Add to My Calendar
 Copy entry: Copy entry
 Edit repeating entry all dates: Edit repeating entry for all dates
-Dele repeating event all dates: Delete repeating event for all dates
 Edit entry for this date: Edit entry for this date
+Dele repeating event all dates: Delete repeating event for all dates
 Delete entry only for this date: Delete entry only for this date
-Delete entry from XXX calendar: Delete entry from calendar "XXX"
-will delete entry from your XXX cal: This will delete the entry from your XXX calendar.
+Delete entry from XXX cal: Delete entry from calendar "XXX"
 boss: boss'
+will delete entry from your XXX cal: This will delete the entry from your XXX calendar.
 will delete entry from your boss cal: This will delete the entry from your boss' calendar.
 will delete entry from your cal: This will delete the entry from your calendar.
 from your boss calendar: from your boss' calendar
-will add entry to your cal: This will add the entry to your calendar. Proceed?
+Add to My Calendar: Add to My Calendar
 Email all participants: Email all participants
 Hide activity log: Hide activity log
 Show activity log: Show activity log
-Export this entry to: Export this entry to
+Export this entry to: Export this entry to:
 
 ########################################
 # Page: views.php
@@ -1883,7 +1961,6 @@ Week (Timebar): Week (Timebar)
 Month (Timebar): Month (Timebar)
 Month (side by side): Month (side by side)
 Month (on same calendar): Month (on same calendar)
-Users_: Users:
 
 ########################################
 # Page: views_edit_handler.php
@@ -1942,3 +2019,8 @@ Unknown error saving user: Unknown error saving user.
 No party for XXX: No participants found for event id: "XXX".
 Db error event XXX not found: Database error: Could not find event id "XXX".
 id XXX not found in db: Error: Could not find event id XXX in database.
+
+########################################
+# Page: year.php
+#
+Assistant mode: Assistant mode

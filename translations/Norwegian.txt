@@ -64,7 +64,7 @@ Save: Lagre
 Undo: Angre
 Public Access: Offentlig tilgang
 Admin: =
-User Access Control: Brukertilgangskontroll
+UAC: Brukertilgangskontroll
 may access others cals: Tillat tilgang til andre brukeres kalendere
 this user may access my cal: Gi denne brukeren tilgang til min kalender
 Type: =

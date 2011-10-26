@@ -62,7 +62,7 @@ Save: Speichern
 Undo: R&uuml;cksetzen
 Public Access: &Ouml;ffentlicher Zugang
 Admin: Administration
-User Access Control: Zugriffskontrolle
+UAC: Zugriffskontrolle
 may access others cals: Erlaube Zugriff auf andere Benutzerkalender
 this user may access my cal: Erlaube Benutzerzugriff auf meinen Kalender
 Type: Art
@@ -292,7 +292,7 @@ public text display: Text der im &ouml;ffentlichen Kalender angzeigt werden soll
 public-access-captcha-help: Falls aktiv, erfordern neue Termine des &ouml;ffentlichen Kalender, eine CAPTCHA-G&uuml;ltigkeits&uuml;berpr&uuml;fung
 require public CAPTCHA: CAPTCHA-&Uuml;berpr&uuml;fung f&uuml;r neue Termine des &ouml;ffentlichen Kalenders aktivieren
 uac-enabled-help: Aktiviert die Zugriffskontrolle f&uuml;r den Benutzer
-User Access Control enabled: Zugriffskontrolle f&uuml;r Benutzer aktivieren
+UAC enabled: Zugriffskontrolle f&uuml;r Benutzer aktivieren
 groups-enabled-help: Diese Einstellung erlaubt Benutzern andere Benutzer &uuml;ber Benutzergruppen auszuw&auml;hlen
 Groups enabled: Benutzergruppen aktivieren
 user-sees-his-group-help: Diese Einstellung verhindert, da&szlig; Benutzer Teilnehmer sehen, die nicht zu ihrer Benutzergruppe geh&ouml;ren.
@@ -1282,7 +1282,7 @@ Edit repeating entry all dates: &Auml;ndern ALLER wiederkehrenden Termine des Ei
 Dele repeating event all dates: L&ouml;schen ALLER wiederkehrenden Termine des Eintrages
 Edit entry for this date: &Auml;ndern des Termines f&uuml;r DIESES Datum
 Delete entry only for this date: L&ouml;schen des Termines nur f&uuml;r DIESES Datum
-Delete entry from XXX calendar: L&ouml;sche Termin nur f&uuml;r den Kalender XXX
+Delete entry from XXX cal: L&ouml;sche Termin nur f&uuml;r den Kalender XXX
 will delete entry from your XXX cal: Dieser Eintrag wird von Ihrem XXX Kalender gel&ouml;scht.
 boss: Boss&#39;
 will delete entry from your boss cal: Dieser Eintrag wird von Ihrem Boss&#39; Kalender gel&ouml;scht.
