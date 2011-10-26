@@ -97,8 +97,7 @@ if ( ! $can_add )
 
 if ( ! empty ( $error ) ) {
   print_header();
-  echo print_error ( $error );
-  echo print_trailer();
+  echo print_error( $error ) . print_trailer();
   exit;
 }
 
@@ -158,7 +157,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
       die_miserable_death ( "Error reading temp file: $tmpfile" );
     if ( ! empty ( $error ) ) {
       while ( ! feof ( $fd ) ) {
-        $data .= fgets ( $fd, 4096 );
+        $data .= fgets( $fd );
       }
     }
     fclose ( $fd );
@@ -229,7 +228,7 @@ print_header();
  <label for="fileupload"><?php etranslate( 'Upload file' );?></label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50">
 <tr><td class="aligntop"><label for="description">
-  <?php etranslate ( 'Description' )?>:</label></td>
+  <?php etranslate( 'Description_' )?></label></td>
   <td><input type="text" name="description" size="50" maxlength="127"></td></tr>
 
 <tr><td colspan="2">

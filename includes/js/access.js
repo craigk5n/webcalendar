@@ -1,10 +1,27 @@
 // $Id$
 
-if (wc_getCookie('enAll')) {
-  addLoadListener(function () {
+addLoadListener(function () {
+    if (wc_getCookie('enAll')) {
       enableAll(true);
-    });
-}
+      wc_setCookie('enAll', '', 0);
+    }
+    attachEventListener(document.getElementById('guser'), 'change',
+      document.SelectUser.submit);
+    attachEventListener(document.getElementById('ouser'), 'change',
+      document.SelectOther.submit);
+    attachEventListener(document.getElementById('enAll'), 'click', function () {
+        enableAll(this.checked);
+      });
+    attachEventListener(document.getElementById('assistBtn'), 'click', function () {
+        selectAll(63);
+      });
+    attachEventListener(document.getElementById('selAllBtn'), 'click', function () {
+        selectAll(256);
+      });
+    attachEventListener(document.getElementById('clrAllBtn'), 'click', function () {
+        selectAll(0);
+      });
+  });
 function selectAll(limit) {
   if (limit == 0)
     document.EditOther.time.checked = false;

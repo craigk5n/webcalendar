@@ -52,7 +52,7 @@ if ( $is_nonuser_admin ) {
 
   if ( $accessEnabled
       && access_can_access_function( ACCESS_ACCESS_MANAGEMENT ) ) {
-    $names[] = translate ( 'User Access Control' );
+    $names[] = translate( 'UAC' );
     $links[] = 'access.php';
   }
 
@@ -137,11 +137,9 @@ echo '
     <table summary="admin options">';
 
 for ( $i = 0, $cnt = count( $names ); $i < $cnt; $i++ ) {
-  $empLink = empty( $links[$i] );
   echo ( $i % COLUMNS == 0 ? '
       <tr>' : '' ) . '
-        <td>' . ( $empLink ? '' : '<a href="' . $links[$i] . '">' )
-   . $names[$i] . ( $empLink ? '' : '</a>' ) . '</td>'
+        <td> <a href="' . $links[$i] . '">' . $names[$i] . '</a></td>'
    . ( $i % COLUMNS == COLUMNS - 1 ? '
       </tr>' : '' );
 }
@@ -154,8 +152,7 @@ while ( $i % COLUMNS != 0 ) {
 
 echo '
       </tr>
-    </table>
-    ' . print_trailer();
+    </table>' . print_trailer();
 ob_end_flush();
 
 ?>

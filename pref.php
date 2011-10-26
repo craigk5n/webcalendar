@@ -183,8 +183,8 @@ print_header($INC, '', $BodyX);
  etranslate ( 'Preferences' );
  if ( $is_nonuser_admin || ( $is_admin && substr ( $prefuser, 0, 5 ) == '_NUC_' ) ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo '<br><strong>-- ' .
-   translate ( 'Admin mode' ) . ': '.$nonuserfullname." --</strong>\n";
+  echo '<br>' . str_replace( 'XXX', $nonuserfullname, 
+    translate( 'Admin mode XXX' ) ) . "\n";
  }
 $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'] : '' );
 $formaction = substr ($self, strrpos($self, '/') + 1) . $qryStr;
@@ -310,48 +310,28 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  <?php etranslate ( 'Date format' )?></td><td>
  <select name="pref_DATE_FORMAT">
   <?php
-  for ( $i = 0, $cnt = count ( $datestyles ); $i < $cnt; $i += 2 ) {
-    echo '<option value="' . $datestyles[$i] . '"';
-    if ( $prefarray['DATE_FORMAT'] == $datestyles[$i] )
-      echo ' selected';
-    echo '>' . $datestyles[$i + 1] . "</option>\n";
-  }
+    echo $datestyle_ymd;
   ?>
 </select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT, false, false );?>
 <br>
 <select name="pref_DATE_FORMAT_MY">
 <?php
-  for ( $i = 0, $cnt = count ( $datestyles_my ); $i < $cnt; $i += 2 ) {
-    echo '<option value="' . $datestyles_my[$i] . '"';
-    if ( $prefarray['DATE_FORMAT_MY'] == $datestyles_my[$i] )
-      echo ' selected';
-    echo '>' . $datestyles_my[$i + 1] . "</option>\n";
-  }
+    echo $datestyle_my;
 ?>
 </select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT_MY, false, false );?>
 <br>
 <select name="pref_DATE_FORMAT_MD">
 <?php
-  for ( $i = 0, $cnt = count ( $datestyles_md ); $i < $cnt; $i += 2 ) {
-    echo '<option value="' . $datestyles_md[$i] . '"';
-    if ( $prefarray['DATE_FORMAT_MD'] == $datestyles_md[$i] )
-      echo ' selected';
-    echo '>' . $datestyles_md[$i + 1] . "</option>\n";
-  }
+    echo $datestyle_md;
 ?>
 </select>&nbsp;<?php echo date_to_str ( $dateYmd,
     $DATE_FORMAT_MD, false, false );?>
 <br>
 <select name="pref_DATE_FORMAT_TASK">
 <?php
-  for ( $i = 0, $cnt = count ( $datestyles_task ); $i < $cnt; $i += 2 ) {
-    echo '<option value="' . $datestyles_task[$i] . '"';
-    if ( $prefarray['DATE_FORMAT_TASK'] == $datestyles_task[$i] )
-      echo ' selected';
-    echo '>' . $datestyles_task[$i + 1] . "</option>\n";
-  }
+    echo $datestyle_tk;
 ?>
 </select>&nbsp;<?php echo translate ( 'Small Task Date' ) . ' ' .
   date_to_str( $dateYmd, $DATE_FORMAT_TASK, false, false );?>

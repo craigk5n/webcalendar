@@ -20,7 +20,7 @@ if ( $d = dir ( $icon_path ) ) {
       $fd = @fopen ( $icon_path . $entry, 'rb' );
       if ( $fd ) {
         // We only need to compare the first 1kb.
-        $data .= fgets ( $fd, 1024 );
+        $data .= fgets( $fd );
         $icons[md5 ( $data )] = $entry;
       }
       fclose ( $fd );

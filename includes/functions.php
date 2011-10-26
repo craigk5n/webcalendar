@@ -533,29 +533,32 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $THFG, $thismonth, $thisyear, $TIME_FORMAT, $TODAYCELLBG, $user_fullname,
   $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
 
-  $allAttendeesStr = translate ( 'All Attendees' );
-  $busy = translate ( 'Busy' );
+  $allAttendeesStr = translate( 'All Attendees' );
+  $busy = translate( 'Busy' );
+  $tentative = translate( 'Tentative' );
+  $titleStr = ' title="' . translate( 'Schedule an appointment for XXX.' ) . '">';
+  $viewMsg = translate( 'View this entry' );
+
   $cnt = count ( $participants );
   $dateTS = date_to_epoch ( $date );
   $first_hour = $WORK_DAY_START_HOUR;
-  $increment = intval ( 1440 /
-    ( $ENTRY_SLOTS > 288 ? 288 : ( $ENTRY_SLOTS < 72 ? 72 : $ENTRY_SLOTS ) ) );
+  $increment = intval( 1440 / ( $ENTRY_SLOTS > 288
+    ? 288 : ( $ENTRY_SLOTS < 72 ? 72 : $ENTRY_SLOTS ) ) );
   $last_hour = $WORK_DAY_END_HOUR;
   $master = array();
+// What are $MouseOut and $MouseOver supposed to do? They never get set.
   $MouseOut = $MouseOver = $str = '';
   $participant_pct = '20%'; //Use percentage.
-
-  $tentative = translate ( 'Tentative' );
-  $titleStr = ' title="' . translate ( 'Schedule an appointment for XXX.' ) . '">';
-  $viewMsg = translate ( 'View this entry' );
 
   $hours = $last_hour - $first_hour;
   $interval = intval ( 60 / $increment );
   $cell_pct = intval ( 80 / ( $hours * $interval ) );
-  $style_width = ( $cell_pct > 0 ? 'style="width:' . $cell_pct . '%;"' : '' );
-  $thismonth = date ( 'm', $dateTS );
-  $thisyear = date ( 'Y', $dateTS );
   $cols = ( ( $hours * $interval ) + 1 );
+  $style_width = ( $cell_pct > 0 ? 'style="width:' . str_replace( 'XXX',
+      translate( $cell_pct, false, 'N' ), translate( 'percent' ) ) : '' );
+  $thismonth = date( 'm', $dateTS );
+  $thisyear = date( 'Y', $dateTS );
+
   $ret = <<<EOT
     <br>
     <table align="center" class="matrixd" style="width:'80%';" cellspacing="0"
@@ -566,18 +569,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
       <tr>
         <th style="width:{$participant_pct};">
 EOT;
-   $ret .= translate ( 'Participants' ) . '</th>';
-  $tentative = translate ( 'Tentative' );
-  $titleStr = ' title="' . translate ( 'Schedule an appointment for XXX.' ) . '">';
-  $viewMsg = translate ( 'View this entry' );
 
-  $hours = $last_hour - $first_hour;
-  $interval = intval ( 60 / $increment );
-  $cell_pct = intval ( 80 / ( $hours * $interval ) );
-  $cols = ( ( $hours * $interval ) + 1 );
-  $style_width = ( $cell_pct > 0 ? 'style="width:' . $cell_pct . '%;"' : '' );
-  $thismonth = date ( 'm', $dateTS );
-  $thisyear = date ( 'Y', $dateTS );
+  $ret .= translate( 'Participants' ) . '</th>';
 
   // Build a master array containing all events for $participants.
   for ( $i = 0; $i < $cnt; $i++ ) {
@@ -649,7 +642,8 @@ EOT;
       $str .= '
         <td id="C' . ( $j + 1 ) . '" class="dailymatrix" ';
       $tmpTitle = 'onmousedown="schedule_event( ' . $i . ','
-       . sprintf ( "%02d", $inc_x_j ) . ' );"' . $MouseOver . $MouseOut
+       . sprintf ( "%02d", $inc_x_j ) . ' );"'
+       . $MouseOver . $MouseOut
        . str_replace ( 'XXX', sprintf ( $hourfmt, $hour ) . ':' .
           ( $inc_x_j <= 9 ? '0' : '' ) . $inc_x_j, $titleStr );
       switch ( $j ) {
@@ -723,7 +717,8 @@ EOT;
          . $style_width . ( $space == '&nbsp;'
            ? ' onmousedown="schedule_event( ' . $j . ','
              . sprintf( "%02d", ( $increment * $k ) ) . ' );"'
-             . " $MouseOver $MouseOut>"
+             . " $MouseOver $MouseOut"
+             . '>'
            : '>' ) . $space . '</td>';
         $col++;
       }
@@ -915,6 +910,8 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   // If they have not set a preference yet...
   if ( $DATE_FORMAT == '' || $DATE_FORMAT == 'LANGUAGE_DEFINED' )
     $DATE_FORMAT = translate ( '__month__ __dd__, __yyyy__' );
+// If $DATE_FORMAT == 'LANGUAGE_DEFINED', "else" will never run.
+// But, not sure what it was supposed to do.
   else if ( $DATE_FORMAT == 'LANGUAGE_DEFINED' &&
     $forceTranslate && $format != '' && translation_exists ( $format ) ) {
     $format = translate ( $format );
@@ -923,30 +920,19 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   if ( empty ( $format ) )
     $format = $DATE_FORMAT;
 
-  $y = intval ( $indate / 10000 );
-  $m = intval ( $indate / 100 ) % 100;
-  $d = $indate % 100;
-  $wday = strftime ( "%w", mktime ( 0, 0, 0, $m, $d, $y ) );
-  if ( $short_months ) {
-    $month = month_name ( $m - 1, 'M' );
-    $weekday = weekday_name ( $wday, 'D' );
-  } else {
-    $month = month_name ( $m - 1 );
-    $weekday = weekday_name ( $wday );
-  }
+  $weekday = ( $short_months ? 'D' : 'l' );
 
-  $ret = str_replace ( '__dd__', $d, $format );
-  $ret = str_replace ( '__j__', intval ( $d ), $ret );
-  $ret = str_replace ( '__mm__', $m, $ret );
-  $ret = str_replace ( '__mon__', $month, $ret );
-  $ret = str_replace ( '__month__', $month, $ret );
-  $ret = str_replace ( '__n__', sprintf ( "%02d", $m ), $ret );
-  $ret = str_replace ( '__yy__', sprintf ( "%02d", $y % 100 ), $ret );
+  $ret = ( $show_weekday ? weekday  . ', ' : '' )
+   . str_replace( '__dd__', 'd', $format );
+  $ret = str_replace( '__j__', 'j', $ret );
+  $ret = str_replace( '__mm__', 'm', $ret );
+  $ret = str_replace( '__mon__', 'M', $ret );
+  $ret = str_replace( '__month__', 'F', $ret );
+  $ret = str_replace( '__n__', 'n', $ret );
+  $ret = str_replace( '__yy__', 'y', $ret );
+  $ret = str_replace( '__yyyy__', 'Y', $ret );
 
-  return ( $show_weekday
-    ? weekday_name ( strftime ( '%w', mktime ( 0, 0, 0, $m, $d, $y ) ),
-      ( $short_months ? 'D' : '' ) ) . ', '
-    : '' ) . str_replace ( '__yyyy__', $y, $ret );
+  return translate( date( $ret, $indate ), false, 'D' );
 }
 
 /**
@@ -1054,9 +1040,7 @@ function display_activity_log( $cal_type, $cal_text = '', $break = '<br>&nbsp;' 
  * @global string  (Y/N) Is the Top Menu Enabled
  */
 function display_admin_link ( $break = true ) {
-  global $MENU_ENABLED;
-
-  $adminStr = translate ( 'Admin' );
+  global $adminStr, $MENU_ENABLED;
 
   return ( $break ? '<br>' . "\n" : '' )
    . ( $MENU_ENABLED == 'N' ? '<a title="' . $adminStr
@@ -1255,9 +1239,9 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
   . ( $single_user == 'N' ? '<br>' . $user_fullname : '' )
    . ( $is_nonuser_admin ||
     ( $is_admin && ! empty ( $user ) && $user == '__public__' )
-    ? '<br>-- ' . translate( 'Admin mode' ) . ' --' : '' )
+    ? '<br>' . translate( '-Admin mode-' ) : '' )
    . ( $is_assistant
-    ? '<br>-- ' . translate( 'Assistant mode' ) . ' --' : '' ) . '</span>'
+    ? '<br>' . translate( '-Assistant mode-' ) : '' ) . '</span>'
    . ( $CATEGORIES_ENABLED == 'Y' && $show_cats &&
     ( ! $user || ( $user == $login || $is_assistant ) ) ? '<br><br>'
      . print_category_menu ( $name,
@@ -1290,75 +1274,56 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   $thisday, // Needed for day.php
   $today, $use_http_auth, $user, $WEEK_START;
 
+  $isScriptDay = ( $SCRIPT== 'day.php' );
+
+  $tmpcat = ( $isScriptDay ? $caturl : '' );
+  $tmpday = ( $isScriptDay  ? '1' : $thisday );
+
+  $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
+
   $u_url = ( $user != $login && ! empty ( $user )
     ? 'user=' . $user . '&amp;' : '' );
-  $weekStr = translate ( 'Week' );
 
-  // Start the minical table for each month.
-  $ret = '
-    <table class="minical"'
-   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' ) . ' summary="">';
-
-  $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
-  $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
+  $href   = ' href="' . ( $isScriptDay ? 'day' : 'minical' ) . '.php?'
+   . $u_url . 'date=';
+  $weekStr= translate( 'Week' );
   // Determine if the week starts on Sunday or Monday.
   // TODO:  We need to be able to start a week on ANY day.
   $wkstart = get_weekday_before ( $thisyear, $thismonth );
 
-  if ( $SCRIPT == 'day.php' ) {
-    $month_ago =
-    date ( 'Ymd', mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear ) );
-    $month_ahead =
-    date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
-
-    $ret .= '<caption>' . $thisday . '</caption>
-      <thead>
-        <tr class="monthnav">
-          <th colspan="' . ( $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) . '">
-            <a title="' . $prevStr . '" class="prev" href="day.php?' . $u_url
-     . 'date=' . $month_ago . $caturl
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '"></a>
-            <a title="' . $nextStr . '" class="next" href="day.php?' . $u_url
-     . 'date=' . $month_ahead . $caturl
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '"></a>'
-     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
-      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
-          </th>
-        </tr>';
-  } elseif ( $SCRIPT == 'minical.php' ) {
-    $month_ago =
-    date ( 'Ymd', mktime ( 0, 0, 0, $thismonth - 1, $thisday, $thisyear ) );
-    $month_ahead =
-    date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, $thisday, $thisyear ) );
-
-    $ret .= '
-      <thead>
-        <tr class="monthnav">
-          <th colspan="7">
-            <a title="' . $prevStr . '" class="prev" href="minical.php?'
-     . $u_url . 'date=' . $month_ago
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '"></a>
-            <a title="' . $nextStr . '" class="next" href="minical.php?'
-     . $u_url . 'date=' . $month_ahead
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '"></a>'
-     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
-      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
-          </th>
-        </tr>';
-  } else // Not day or minical script. Print the month name.
-    $ret .= '
+  // Start the minical table for each month.
+  $ret = '
+    <table class="minical"'
+   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' )
+   . ' summary="mini calendar">' .  ( $isScriptDay  ? '
+      <caption>' . $thisday . '</caption>
+      <thead>'
+     : ( $SCRIPT != 'minical.php' ? '
       <caption><a href="' . $month_link . $u_url . 'year=' . $thisyear
-     . '&amp;month=' . $thismonth . '">'
-     . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
-      ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false )
-     . '</a></caption>
-      <thead>';
-
-  $ret .= '
+      . '&amp;month=' . $thismonth . '">'
+      . date_to_str( sprintf( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+         ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false )
+      . '</a></caption>
+      <thead>' : '' ) ) . ( $isScriptDay || $SCRIPT == 'minical.php' ? '
+        <tr class="monthnav">
+          <th colspan="'
+      . ( $isScriptDay && $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) .  '">
+            <a title="' . $prevStr . '" class="prev"' . $href
+      . date( 'Ymd', mktime( 0, 0, 0, $thismonth - 1,
+        $tmpday, $thisyear ) ) . $tmpcat
+      . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '"></a>
+            <a title="' . $nextStr . '" class="next"' . $href
+      . date( 'Ymd', mktime( 0, 0, 0, $thismonth + 1,
+        $tmpday, $thisyear ) ) . $tmpcat
+      . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '"></a>'
+      . date_to_str( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
+       ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
+          </th>
+        </tr>' : '' ) . '
         <tr>'
   // Print the headers to display the day of the week (Sun, Mon, Tues, etc.).
   // If we're showing week numbers we need an extra column.
-  . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
+   . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
           <th class="empty">&nbsp;</th>' : '' );
 
   for ( $i = 0; $i < 7; $i++ ) {
@@ -1376,8 +1341,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
     $tmp = $i + 172800; // 48 hours.
     $ret .= '
         <tr>' . ( $show_weeknums && $DISPLAY_WEEKNUMBER == 'Y' ? '
-          <td><a class="weeknumber" ' . 'title="' . $weekStr . '&nbsp;'
-       . date ( 'W', $i + 86400 ) . '" ' . 'href="week.php?' . $u_url . 'date='
+          <td><a class="weeknumber" title="' . $weekStr . '&nbsp;'
+       . date( 'W', $i + 86400 ) . '" href="week.php?' . $u_url . 'date='
        . date ( 'Ymd', $tmp ) . '">(' . date ( 'W', $tmp ) . ')</a></td>' : '' );
 
     for ( $j = 0; $j < 7; $j++ ) {
@@ -1402,14 +1367,14 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           }
         }
       }
-      if ( ( $dateYmd >= $monthstart && $dateYmd <= $monthend ) ||
-          ( ! empty ( $DISPLAY_ALL_DAYS_IN_MONTH ) &&
-            $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
+      if ( ( $dateYmd >= date( 'Ymd', mktime( 0, 0, 0, $thismonth, 1, $thisyear ) )
+          && $dateYmd <= $monthend ) || ( ! empty( $DISPLAY_ALL_DAYS_IN_MONTH )
+          && $DISPLAY_ALL_DAYS_IN_MONTH == 'Y' ) ) {
         $class =
         // If it's a weekend.
         ( is_weekend ( $date ) ? 'weekend' : '' )
         // If the day being viewed is today AND script = day.php.
-        . ( $dateYmd == $thisyear . $thismonth . $thisday && $SCRIPT == 'day.php'
+        . ( $dateYmd == $thisyear . $thismonth . $thisday && $isScriptDay
           ? ' selectedday' : '' )
         // Are there any events scheduled for this date?
         . ( $hasEvents ? ' hasevents' : '' );
@@ -1446,17 +1411,13 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
  */
 function display_small_tasks ( $cat_id ) {
   global $caturl, $DATE_FORMAT_TASK, $eventinfo,
-  $is_assistant, $login, $task_filter, $user;
+  $is_assistant, $login, $pri, $task_filter, $user;
   static $key = 0;
 
   if ( ! empty ( $user ) && $user != $login && ! $is_assistant )
     return false;
 
   $SORT_TASKS = 'Y';
-
-  $pri[1] = translate ( 'High' );
-  $pri[2] = translate ( 'Medium' );
-  $pri[3] = translate ( 'Low' );
   $task_user = $login;
   $u_url = '';
 
@@ -1472,11 +1433,10 @@ function display_small_tasks ( $cat_id ) {
     for ( $i = 0; $i < 4; $i++ ) {
       $ajax[$i] = '
         <td class="sorter" onclick="sortTasks( ' . $i . ', ' . $task_cat
-       . ', this )"><img src="images/up.png" style="vertical-align:bottom"></td>';
+       . ', this )"><img src="images/up.png"></td>';
       $ajax[$i + 4] = '
-        <td  class="sorter sorterbottom" onclick="sortTasks( ' .
-      ( $i + 4 ) . ', ' . $task_cat
-       . ', this )"><img src="images/down.png" style="vertical-align:top"></td>';
+        <td class="sorter sorterbottom" onclick="sortTasks( ' . ( $i + 4 )
+       . ', ' . $task_cat . ', this )"><img src="images/down.png"></td>';
     }
   } else {
     $dueSpacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -1489,7 +1449,7 @@ function display_small_tasks ( $cat_id ) {
     ( empty ( $task_filter ) ? '' : $task_filter ), $cat_id, true );
   $row_cnt = 1;
   $task_html = '
-    <table class="minitask" cellspacing="0" cellpadding="2" summary="">
+    <table class="minitask" cellspacing="0" cellpadding="2" summary="task list">
       <tr class="header">
         <th colspan="6">' . translate ( 'TASKS' ) . '</th>
         <th align="right" colspan="2"><a href="edit_entry.php?' . $u_url
@@ -1499,8 +1459,7 @@ function display_small_tasks ( $cat_id ) {
       <tr class="header">
         <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
         <td rowspan="2" width="20%" class="sorterbottom">'
-   . translate ( 'Task_Title' )
-   . '&nbsp;</td>' . $ajax[1] . '
+   . translate( 'Task_Title' ) . '&nbsp;</td>' . $ajax[1] . '
         <td rowspan="2" class="sorterbottom">' . translate ( 'Due' )
    . $dueSpacer . '</td>'
    . $ajax[2] . '
@@ -1525,39 +1484,43 @@ function display_small_tasks ( $cat_id ) {
      . ( $task_owner != $login ? 'user=' . $task_owner . '&amp;' : '' )
      . 'id=' . $cal_id . '"';
     $task_html .= '
-      <tr class="task" id="' . $linkid . '" style="background-color:'
-     . rgb_luminance( $GLOBALS['BGCOLOR'], $E->getPriority() ) . '">
+      <tr class="task" id="' . $linkid // . '"
+// This should work in styles.php but "should" keeps biting me. :( bb
+// style="background-color:' . rgb_luminance( $GLOBALS['BGCOLOR'], $E->getPriority() )
+ . '">
         <td colspan="2">' . $link . ' title="' . translate ( 'Priority' ) . '">'
      . $E->getPriority() . '</a></td>
-        <td class="name" colspan="2" width="50%">&nbsp;' . $link . ' title="'
-     . translate( 'Task Name' ) . ': ' . $E->getName() . '">'
+        <td class="name" colspan="2">&nbsp;' . $link . ' title="'
+     . str_replace( 'XXX', $E->getName(), translate( 'Task Name XXX' ) ) . '">'
      . substr( $E->getName(), 0, 15 )
      . ( strlen( $E->getName() ) > 15 ? '...' : '' ) . '</a></td>
         <td colspan="2">' . $link . ' title="' . translate ( 'Task Due Date' )
-     . '">'
-     . date_to_str( $E->getDueDate(), $dateFormatStr, false, false ) . '</a>'
-     . '</td>
-        <td class="pct" colspan="2">' . $link . ' title="% '
-     . translate( 'Completed' ) . '">' . $E->getPercent() . '</a></td>
+     . '">' . date_to_str( $E->getDueDate(), $dateFormatStr, false, false )
+     . '</a></td>
+        <td class="pct" colspan="2">' . $link . ' title="'
+     . translate( 'percent Completed' ) . '">'
+     . translate( $E->getPercent(), false, 'N' ) . '</a></td>
       </tr>';
     $row_cnt++;
     // Build special string to pass to popup.
     // TODO: Move this logic into build_entry_popup().
     $eventinfo .= build_entry_popup( 'eventinfo-' . $linkid, $E->getLogin(),
-      $E->getDescription(), translate( 'Due Time' ) . ':'
+      $E->getDescription(), translate( 'Due Time' )
        . display_time( '', 0, $E->getDueDateTimeTS() ) . '</dd><dd>'
        . translate ( 'Due Date_' )
        . date_to_str( $E->getDueDate(), '', false )
        . "</dd>\n<dt>" . translate ( 'Priority_' ) . "</dt>\n<dd>" . $E->getPriority()
        . '-' . $pri[ceil( $E->getPriority() / 3 )] . "</dd>\n<dt>"
-       . translate( 'Percent Complete' ) . ":</dt>\n<dd>" . $E->getPercent()
-       . '%', '', $E->getLocation(), $E->getName(), $cal_id );
+       . translate( 'Percent Complete' ) . "</dt>\n<dd>"
+       . str_replace( 'XXX', translate( $E->getPercent(), false, 'N' ),
+       translate( 'percent' ) ), '', $E->getLocation(), $E->getName(), $cal_id );
   }
   for ( $i = 7; $i > $row_cnt; $i-- ) {
-    $task_html .= '<tr><td colspan="8" class="filler">&nbsp;</td></tr>' . "\n";
+    $task_html .= '
+      <tr><td colspan="8" class="filler">&nbsp;</td></tr>';
   }
-  $task_html .= "</table>\n";
-  return $task_html;
+  return $task_html . '
+    </table>';
 }
 
 /**
@@ -1909,10 +1872,10 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
 
   $sql_params[] = $startid;
   $ret = "<$size>"
-   . ( $sys ? translate ( 'System Log' ) : translate ( 'Activity Log' ) )
-   . ( $sys ? '' : ' &nbsp;<a href="rss_activity_log.php">'
-   . '<img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - '
-   . translate( 'Activity Log' ) . '" border="0"></a>' )
+   . ( $sys ? translate( 'System Log' ) : translate( 'Activity Log' )
+     . ' &nbsp;<a href="rss_activity_log.php">'
+     . '<img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - '
+     . translate( 'Activity Log' ) . '" border="0"></a>' )
    . "</$size>" . display_admin_link() . '
     <table class="embactlog" summary="">
       <tr>
@@ -3643,7 +3606,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
    . ( $getPri == 3 ? '</strong>' : '' ) . '</a>'
    . ( $DISPLAY_DESC_PRINT_DAY == 'Y' ? '
     <dl class="desc">
-      <dt>' . translate ( 'Description' ) . ':</dt>
+      <dt>' . translate( 'Description_' ) . '</dt>
       <dd>'
      . ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y'
       ? $getDesc : strip_tags ( $getDesc ) ) . '</dd>
@@ -4117,12 +4080,12 @@ function load_template ( $login, $type ) {
  * @param string $ex_global Don't include global categories ('' or '1')
  */
 function load_user_categories ( $ex_global = '' ) {
-  global $categories, $CATEGORIES_ENABLED,
+  global $allStr, $categories, $CATEGORIES_ENABLED,
   $is_admin, $is_assistant, $login, $noneStr, $user;
 
   $categories = array();
   // These are default values.
-  $categories[0]['cat_name'] = translate ( 'All' );
+  $categories[0]['cat_name'] = $allStr;
   $categories[-1]['cat_name'] = $noneStr;
   if ( $CATEGORIES_ENABLED == 'Y' ) {
     $query_params = array();
@@ -4480,11 +4443,10 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
  *
  * @param array  $vals      (name, value, display, setting)
  * @param string $id        the id of the control
- * @param string $onchange  javascript function to call if needed
  *
  * @return string  HTML for the checkbox control.
  */
-function print_checkbox( $vals, $id = '', $onchange = '' ) {
+function print_checkbox( $vals, $id = '' ) {
   global $noStr, $prefarray, $s, $SCRIPT, $yesStr;
 
   $setting  = ( empty( $vals[3] ) ? $vals[0] : $vals[3] );
@@ -4509,9 +4471,8 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
 
   return $hidden . '
       <label><input type="checkbox" name="' . $variable . '" value="' . $vals[1]
-   . '" ' . ( empty( $id ) ? '' : 'id="' . $id . '" ' )
+   . '"' . ( empty( $id ) ? '' : ' id="' . $id . '"' )
    . ( $setting == $vals[1] ? ' checked' : '' )
-   . ( empty( $onchange ) ? '' : ' onchange="' . $onchange . '()"' )
    . '>&nbsp;' . $vals[2] . '</label>';
 }
 
@@ -4711,7 +4672,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
     }
   }
   $ret .= '
-    <table class="main glance" cellspacing="0" cellpadding="0" summary="">'
+    <table class="main glance" cellspacing="0" summary="">'
    . ( empty ( $hour_arr[9999] ) ? '' : '
       <tr>
         <th class="empty">&nbsp;</th>
@@ -4722,13 +4683,16 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     $time_h = intval ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
-    $ret .= '<tr><th class="row">'
+    $ret .= '
+      <tr>
+        <th class="row">'
      . display_time ( ( $time_h * 100 + $time_m ) * 100 ) . '</th>';
     if ( $rowspan > 1 ) {
       // This might mean there's an overlap, or it could mean one event
       // ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $hour_arr[$i] ) ) {
-        $ret .= '<td class="hasevents"'
+        $ret .= '
+        <td class="hasevents"'
          . ( $can_add ? " ondblclick=\"dblclick_add('$date','$user',$time_h,"
          . "$time_m)\">" : '>' ) . $hour_arr[$i] . '</td>';
       }
@@ -5043,7 +5007,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
       return str_replace ( 'XXX', $tz_file,
         translate ( 'Cannot read TZ file XXX' ) );
     else {
-      while ( ( $data = fgets ( $fd, 1000 ) ) !== false ) {
+      while ( ( $data = fgets( $fd ) ) !== false ) {
         if ( ( substr ( trim ( $data ), 0, 1 ) == '#' ) || strlen ( $data ) <= 2 )
           continue;
         else {
@@ -5848,12 +5812,10 @@ function validate_domain() {
   $rmt_long = ip2long ( $_SERVER['REMOTE_ADDR'] );
   $fd = @fopen ( 'includes/blacklist.php', 'rb', false );
   if ( ! empty ( $fd ) ) {
-    // We don't use fgets() since it seems to have problems with Mac-formatted
-    // text files.
-    // Instead, we read in the entire file, then split the lines manually.
+    // We read in the entire file, then split the lines manually.
     $data = '';
     while ( ! feof ( $fd ) ) {
-      $data .= fgets ( $fd, 4096 );
+      $data .= fgets( $fd );
     }
     fclose ( $fd );
 
@@ -6127,8 +6089,8 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
       user_load_variables ( $user, 'popuptemp_' );
       $popup_fullnames[$user] = $popuptemp_fullname;
     }
-    $ret .= '<dt>' . translate ( 'User' )
-     . ":</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
+    $ret .= '<dt>' . translate( 'User_' )
+     . "</dt>\n<dd>$popup_fullnames[$user]</dd>\n";
   }
   $ret .= ( $SUMMARY_LENGTH < 80 && strlen ( $name ) && $details
     ? '<dt>' . htmlspecialchars ( substr ( $name, 0, 40 ) ) . "</dt>\n" : '' )
@@ -6137,7 +6099,7 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
    . ( ! empty ( $location ) && $details
     ? '<dt>' . translate ( 'Location' ) . ":</dt>\n<dd> $location</dd>\n" : '' )
    . ( ! empty ( $reminder ) && $details
-    ? '<dt>' . translate ( 'Send Reminder' ) . ":</dt>\n<dd> $reminder</dd>\n" : '' );
+    ? '<dt>' . translate( 'Send Reminder' ) . "</dt>\n<dd> $reminder</dd>\n" : '' );
 
   if ( ! empty ( $partList ) && $details ) {
     $ret .= '<dt>' . translate ( 'Participants_' ) . "</dt>\n";
@@ -6147,7 +6109,7 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
   }
 
   if ( ! empty ( $description ) && $details ) {
-    $ret .= '<dt>' . translate ( 'Description' ) . ":</dt>\n<dd>";
+    $ret .= '<dt>' . translate( 'Description_' ) . "</dt>\n<dd>";
     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
       // Replace &s and decode special characters.
       $str = unhtmlentities (

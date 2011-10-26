@@ -1,6 +1,6 @@
 <?php // $Id$
 include_once 'includes/init.php';
-print_header( '', '', '', true, '', true, false );
+print_header( '', '', '', true, false, true );
 
 if ( ! $is_admin ) {
   echo print_not_auth ( true ) . '

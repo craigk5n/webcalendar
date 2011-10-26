@@ -140,7 +140,7 @@ function do_config( $fileLoc ) {
   // We read in the entire file, and split the lines manually.
   $data = '';
   while( ! feof( $fd ) ) {
-    $data .= fgets( $fd, 4096 );
+    $data .= fgets( $fd );
   }
   fclose( $fd );
 

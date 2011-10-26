@@ -118,7 +118,7 @@ $forcePassword = false;
 
 if( ! empty( $fd ) ) {
   while( ! feof( $fd ) ) {
-    $buffer = trim( fgets( $fd, 4096 ) );
+    $buffer = trim( fgets( $fd ) );
 
     if( preg_match( '/^(\S+):\s*(.*)/', $buffer, $matches ) ) {
       if( $matches[1] == 'install_password' )
@@ -266,7 +266,7 @@ if( function_exists( 'set_magic_quotes_runtime' ) ) {
 $fd = @fopen( $file, 'rb', false );
 if( ! empty( $fd ) ) {
   while( ! feof( $fd ) ) {
-    $buffer = trim( fgets( $fd, 4096 ) );
+    $buffer = trim( fgets( $fd ) );
 
     if( preg_match( '/^#|\/\*/', $buffer ) // comments
         || preg_match( '/^<\?/', $buffer ) // start php code

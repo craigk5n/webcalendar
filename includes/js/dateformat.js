@@ -7,6 +7,9 @@
 // provided that all of the code below in this script (including these
 // comments) is used without any alteration.
 
+// When used in conjunction with "includes/js/translate.js.php"
+// we can get the translated Month and Weekday names.
+
 Date.prototype.getMDay = function () {
   return (this.getDay() + 6) % 7;
 };
@@ -27,22 +30,24 @@ Date.prototype.getJulian = function () {
      - (this.getTimezoneOffset() / 1440) + 2440587.5);
 };
 Date.prototype.getMonthName = function () {
-  var m = ['January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'];
+  var m = (typeof months != 'undefined' ? months : ['January', 'February',
+      'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+      'November', 'December']);
   return m[this.getMonth()];
 };
 Date.prototype.getMonthShort = function () {
-  var m = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var m = (typeof shortMonths != 'undefined' ? shortMonths : ['Jan', 'Feb',
+      'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
   return m[this.getMonth()];
 };
 Date.prototype.getDayName = function () {
-  var d = ['Sunday', 'Monday', 'Tuesday', 'Wednesday',
-    'Thursday', 'Friday', 'Saturday'];
+  var d = (typeof weekdays != 'undefined' ? weekdays : ['Sunday', 'Monday',
+      'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
   return d[this.getDay()];
 };
 Date.prototype.getDayShort = function () {
-  var d = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var d = (typeof shortWeekdays != 'undefined' ? shortWeekdays : ['Sun', 'Mon',
+      'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
   return d[this.getDay()];
 };
 Date.prototype.getOrdinal = function () {
@@ -84,9 +89,9 @@ Date.prototype.getDST = function () {
   return this.getTimezoneOffset() < this.getStdTimezoneOffset();
 };
 Date.prototype.getSwatch = function () {
-  var swatch = ((this.getUTCHours() + 1) % 24) + this.getUTCMinutes() / 60
-   + this.getUTCSeconds() / 3600;
-  return Math.floor(swatch * 1000 / 24);
+  return Math.floor((((this.getUTCHours() + 1) % 24)
+       + this.getUTCMinutes() / 60
+       + this.getUTCSeconds() / 3600) * 1000 / 24);
 };
 function _daysInMonth(month, year) {
   var dd = new Date(year, month, 0);

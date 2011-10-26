@@ -20,15 +20,11 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
 $DAYS_PER_TABLE = 7;
-$error = '';
 
-view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_v.php' );
-set_today ( $date );
 
 $nextdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear ) );
 $prevdate = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear ) );
@@ -40,23 +36,21 @@ $thisdate = date( 'Ymd', $wkstart );
 
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
-ob_start();
-print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 echo '
-    <div style="width:99%;">
-      <a title="' . $prevStr . '" class="prev" href="view_v.php?id=' . $id
+      <div style="width:99%;">
+        <a title="' . $prevStr . '" class="prev" href="view_v.php?id=' . $id
  . '&amp;date=' . $prevdate . '"><img src="images/leftarrow.gif" alt="'
  . $prevStr . '"></a>
-      <a title="' . $nextStr . '" class="next" href="view_v.php?id=' . $id
+        <a title="' . $nextStr . '" class="next" href="view_v.php?id=' . $id
  . '&amp;date=' . $nextdate . '"><img src="images/rightarrow.gif" alt="'
  . $nextStr . '"></a>
-      <div class="title">
-        <span class="date">' . date_to_str ( $thisdate, '', false )
+        <div class="title">
+          <span class="date">' . date_to_str( $thisdate, '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
  . date_to_str( date( 'Ymd', $wkend ), '', false ) . '</span><br>
-        <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
-      </div>
-    </div><br>';
+          <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
+        </div>
+      </div><br>';
 
 // The table has names across the top and dates for rows. Since we need to spit
 // out an entire row before we can move to the next date, we'll save up all the
@@ -64,16 +58,9 @@ echo '
 // Additionally, we only want to put at most 6 users in one table since
 // any more than that doesn't really fit in the page.
 
-// Get users in this view.
-$viewusers = view_get_user_list ( $id );
-$viewusercnt = count ( $viewusers );
-if ( $viewusercnt == 0 )
-  // This could happen if user_sees_only_his_groups = Y and
-  // this user is not a member of any group assigned to this view.
-  $error = $noVuUsers;
-
 if ( ! empty( $error ) ) {
   echo print_error( $error ) . print_trailer();
+  ob_end_flush();
   exit;
 }
 
@@ -92,10 +79,10 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
   $tdw = 12; // Column width percent.
   echo '
-    <table class="main" summary=""' . ( $can_add ? 'title="' .
+      <table class="main" summary=""' . ( $can_add ? 'title="' .
       $dblClickAdd . '"' : '' ) . '>
-      <tr>
-        <th class="empty">&nbsp;</th>';
+        <tr>
+          <th class="empty">&nbsp;</th>';
 
   $body = $header = '';
   $todayYmd = date ( 'Ymd', $today );
@@ -105,8 +92,8 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
     $body .= '
-      <tr>
-        <th class="row" style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
+        <tr>
+          <th class="row" style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
     for ( $date = $wkstart; $date <= $wkend;
      $date = bump_local_timestamp( $date, 0, 0, 0, 0, 1, 0 ) ) {
       $is_weekend = is_weekend( $date );
@@ -130,24 +117,26 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
          . date ( 'd', $date ) . '</th>';
       }
 
-      $body .= '<td' . $class . ( $can_add
+      $body .= '
+          <td' . $class . ( $can_add
         ? " ondblclick=\"dblclick_add( '$dateYmd', '$user' )\">" : '>' )
        . $entryStr . '
-        </td>';
+          </td>';
     }
     $body .= '
-      </tr>';
+        </tr>';
   }
 
   // Output all.
   echo $header . '
-      </tr>' . $body . '
-    </table>';
+        </tr>' . $body . '
+      </table>';
 }
 
 $user = ''; // reset
 
 echo ( empty ( $eventinfo ) ? '' : $eventinfo ) .$printerStr . print_trailer();
+
 ob_end_flush();
 
 ?>

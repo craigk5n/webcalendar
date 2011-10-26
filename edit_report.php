@@ -246,7 +246,7 @@ if ( $show_participants ) {
 
 echo ( $is_admin ? '
         <tr>
-          <td><label>' . translate( 'Global' ) . ':</label></td>
+          <td><label>' . translate( 'Global_' ) . '</label></td>
           <td>' . print_radio( 'is_global', '', '',
     ( ! empty( $report_is_global ) && $report_is_global == 'Y'
       ? 'Y' : 'N' ) ) . '</td>

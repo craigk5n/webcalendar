@@ -40,7 +40,7 @@ else {
       $can_delete = true;
   } else
     // document not found
-    $error = str_replace ( 'XXX', $blid, translate ( 'Invalid entry id XXX.' ) );
+    $error = str_replace( 'XXX', $blid, $badEntryStr );
 
   dbi_free_result ( $res );
 }

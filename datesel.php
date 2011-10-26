@@ -1,12 +1,11 @@
 <?php // $Id$
 include_once 'includes/init.php';
 
-$fday = getGetValue ( 'fday' );
-$fmonth = getGetValue ( 'fmonth' );
-$fyear = getGetValue ( 'fyear' );
-
-$form = getGetValue ( 'form' );
-$date = getGetValue ( 'date' );
+$date  = getGetValue( 'date' );
+$fday  = getGetValue( 'fday' );
+$fmonth= getGetValue( 'fmonth' );
+$fyear = getGetValue( 'fyear' );
+$form  = getGetValue( 'form' );
 
 if ( strlen ( $date ) > 0 ) {
   $thisyear = substr ( $date, 0, 4 );
@@ -21,7 +20,7 @@ $href = 'href="datesel.php?form=' . $form . '&amp;fday=' . $fday
 
 $nextdate = $href . date ( 'Ym01"', mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear ) );
 
-$prevdate = $href . date ( 'Ym01"', mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear ));
+$prevdate = $href . date ( 'Ym01"', mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear ) );
 
 $monthStr = month_name ( $thismonth - 1 );
 
@@ -30,85 +29,61 @@ $wkstart = get_weekday_before ( $thisyear, $thismonth );
 $monthstartYmd = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
 $monthendYmd = date ( 'Ymd', mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear ) );
 
-print_header ( '','', '', true, false, true, true, true );
+$mdays = $wkdys = '';
 
-//build weekday names
-$wkdys = '';
+// build weekday names
 for ( $i = 0; $i < 7; $i++ ) {
-  $wkdys .= '<td>' . weekday_name ( ( $i + $WEEK_START ) % 7, 'D' ) . '</td>';
+  $wkdys .= '
+        <td>' . weekday_name ( ( $i + $WEEK_START ) % 7, 'D' ) . '</td>';
 }
-//build month grid
-$mdays = '';
+// build month grid
 for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthendYmd; $i += 604800 ) {
   $mdays .= '
-             <tr>';
+              <tr>';
   for ( $j = 0; $j < 7; $j++ ) {
     $date = $i + ( $j * 86400 ) + 43200;
     $dateYmd = date ( 'Ymd', $date );
     $mdays .= '
-               <td'
-     . ( ( $dateYmd >= $monthstartYmd && $dateYmd <= $monthendYmd ) ||
-      $DISPLAY_ALL_DAYS_IN_MONTH == 'Y'
+                <td' . ( ( $dateYmd >= $monthstartYmd
+        && $dateYmd <= $monthendYmd ) || $DISPLAY_ALL_DAYS_IN_MONTH == 'Y'
       ? ' class="field"><a href="javascript:sendDate(\''
-       . $dateYmd . '\')">' . date ( 'j', $date ) . '</a>'
+       . $dateYmd . '\')">' . date( 'j', $date ) . '</a>'
       : '>' ) . '</td>';
   }
   $mdays .= '
-             </tr>';
+              </tr>';
 }
 
-$mdays .= '
-             </table>
-            </td>
-          </tr>
-      </table>
-    </div>
-    ';
+ob_start();
+setcookie( 'fday', $fday );
+setcookie( 'fmonth', $fmonth );
+setcookie( 'fyear', $fyear );
+setcookie( 'fform', $form );
+print_header( '','', '', true, false, true, true, true );
 
 echo <<<EOT
-    <div align="center">
-      <table class="aligncenter" width="100%" summary="">
+    <div>
+      <table summary="">
         <tr>
           <td align="center" valign="top">
-            <table class="aligncenter" cellpadding="3" cellspacing="2"
-              summary="">
+            <table cellspacing="2" summary="">
               <tr>
-                <td><a title="{$prevStr}" class="prev" {$prevdate}>
-                  <img src="images/leftarrowsmall.gif"
-                     alt="{$prevStr}"></a></td>
+                <td><a {$prevdate} class="prev" title="{$prevStr}">
+                  <img src="images/leftarrowsmall.gif" alt="{$prevStr}"></a></td>
                 <th colspan="5">&nbsp;{$monthStr}&nbsp;{$thisyear}&nbsp;</th>
-                <td><a title="{$nextStr}"class="next" {$nextdate}>
-                  <img src="images/rightarrowsmall.gif"
-                     alt="{$nextStr}"></a></td>
+                <td><a {$nextdate} class="next" title="{$nextStr}">
+                  <img src="images/rightarrowsmall.gif" alt="{$nextStr}"></a></td>
               </tr>
-              <tr class="day">
-               {$wkdys}
-              </tr>
-              {$mdays}
-
-  <!--We'll leave this javascript here to speed things up. -->
-  <script>
-  <!-- <![CDATA[
-  function sendDate ( date ) {
-    year = date.substring ( 0, 4 );
-    month = date.substring ( 4, 6 );
-    day = date.substring ( 6, 8 );
-    sday = window.opener.document.{$form}.{$fday};
-    smonth = window.opener.document.{$form}.{$fmonth};
-    syear = window.opener.document.{$form}.{$fyear};
-    sday.selectedIndex = day - 1;
-    smonth.selectedIndex = month - 1;
-    for ( i = 0; i < syear.length; i++ ) {
-      if ( syear.options[i].value == year ) {
-        syear.selectedIndex = i;
-      }
-    }
-    window.close();
-  }
-  //]]> -->
-  </script>
+              <tr class="day">{$wkdys}
+              </tr>{$mdays}
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>';
 EOT;
 
 echo print_trailer ( false, true, true );
+ob_end_flush();
 
 ?>

@@ -26,10 +26,14 @@
 include_once 'includes/init.php';
 
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.class';
-include 'includes/classes/DocList.class';
-include 'includes/classes/AttachmentList.class';
-include 'includes/classes/CommentList.class';
+foreach( array(
+    'Doc',
+    'DocList',
+    'AttachmentList',
+    'CommentList',
+    ) as $i ) {
+    include_once 'includes/classes/' . $i . '.class';
+}
 
 //send_no_cache_header();
 
@@ -97,24 +101,8 @@ else {
     $can_add = false;
 }
 
-
-$bodyExtras = 'onload="onLoadInit()"';
-
-// Add ModalBox javascript/CSS & Tab code, Auto-complete
-$headExtras = '
-<script src="includes/tabcontent/tabcontent.js"></script>
-<link href="includes/tabcontent/tabcontent.css" rel="stylesheet">
-<script src="includes/js/modalbox/modalbox.js"></script>
-<link rel="stylesheet" href="includes/js/modalbox/modalbox.css" 
-media="screen">
-<script src="includes/js/autocomplete.js"></script>
-';
-
-print_header(
-  array( 'js/popups.js/true', 'js/visible.js/true', 'js/datesel.php' ),
-  $headExtras, $bodyExtras );
-
 //ob_start();
+print_header();
 
 ?>
 
@@ -256,7 +244,7 @@ Agenda content goes here...
   <td><textarea id="quickAddDescription" name="quickAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
-<tr><td class="aligntop bold"><?php etranslate('Category');?>:</td>
+<tr><td class="aligntop bold"><?php echo $cat_Str;?></td>
   <td><select id="quickAddCategory" name="quickAddCategory">
      <option value="-1"><?php etranslate('None');?></option>
      <?php
@@ -294,7 +282,7 @@ Agenda content goes here...
   <td><textarea id="taskAddDescription" name="taskAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
-<tr><td class="aligntop bold"><?php etranslate('Category');?>:</td>
+<tr><td class="aligntop bold"><?php echo $cat_Str;?></td>
   <td><select id="taskAddCategory" name="taskAddCategory">
      <option value="-1"><?php etranslate('None');?></option>
      <?php
@@ -383,6 +371,8 @@ var loadedMonths = new Array(); // Key will be format "200801" For Jan 2008
 // loadedTasks set to true when tasks have been loaded.  We don't load tasks
 // based on date, so it is a single scalar variable rather than an array.
 var loadedTasks = false;
+/*
+  These are set up in "includes/js/translate.js.php".
 var months = [
   <?php
     // Create javascript array of month names localized to the user's
@@ -423,6 +413,7 @@ var shortWeekdays = [
     }
   ?>
   ];
+*/
 var daysPerMonth = [ <?php echo implode ( ", ", $days_per_month ); ?> ];
 var leapDaysPerMonth = [ <?php echo implode ( ", ", $ldays_per_month ); ?> ];
 var userLogins = [];
@@ -540,7 +531,7 @@ function handleCategoryCheckboxChange()
   }
 ?>
   if ( cnt == 0 || cntOff == 0 ) {
-    newText = '<?php etranslate('All');?>';
+    newText = '<?php echo $allStr;?>';
     for ( var catId in categories ) {
       categories[catId].state = 1;
     }
@@ -833,8 +824,7 @@ function prev_day_link ( year, month, day )
       year--;
       month = 12;
     }
-    day = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
-      daysPerMonth[month];
+    day = _daysInMonth(month,year);
   }
   return "<span id=\"prevday\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     year + "," + month + "," + day + ")\">&lt;</span>";
@@ -843,9 +833,7 @@ function prev_day_link ( year, month, day )
 function next_day_link ( year, month, day )
 {
   day++;
-  var daysInMonth = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
-    daysPerMonth[month];
-  if ( day > daysInMonth ) {
+  if ( day > _daysInMonth(month,year) ) {
     day = 1;
     month++;
     if ( month > 12 ) {
@@ -1249,7 +1237,7 @@ function build_month_view ( year, month )
       '</td><td align="right">' +
        month_view_nav_links ( year, month ) +
       '</td></tr></table>' +
-      "<table id=\"month_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"1\"><tr>";
+      "<table id=\"month_main\" class=\"main\" width=\"100%\" border=\"1\"><tr>";
     for ( var i = 0; i < 7; i++ ) {
       ret += "<th>" + weekdays[i] + "</th>";
     }
@@ -1394,7 +1382,7 @@ function build_year_view ( year, month )
       "&nbsp;" +
       "<span class=\"yeartitle\">" + year + "</span>" +
       "<span id=\"yearstatus\"> </span>" +
-      "<table id=\"year_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"0\">";
+      "<table id=\"year_main\" class=\"main\" width=\"100%\" border=\"0\">";
 
     var d = new Date();
     var today = new Date();
@@ -1867,33 +1855,17 @@ function getUserSuggestion ( str )
 // includes/functions.php.
 function format_date ( dateStr, showWeekday )
 {
-  var fmt = '<?php echo $DATE_FORMAT;?>';
+  var date = new Date(dateStr);
 
-  var y = dateStr.substr ( 0, 4 );
-  var m = dateStr.substr ( 4, 2 );
-  var d = dateStr.substr ( 6, 2 );
+  var ret = (showWeekday ? 'D, ' : '') + dateFmt.replace(/__dd__/, 'd');
+  ret = ret.replace(/__j__/, 'j');
+  ret = ret.replace(/__mm__/, 'm');
+  ret = ret.replace(/__mon__/, 'M');
+  ret = ret.replace(/__month__/, 'F');
+  ret = ret.replace(/__n__/, 'n');
+  ret = ret.replace(/__yy__/, 'y');
 
-  var ret = fmt;
-  ret = ret.replace ( /__dd__/, d );
-  ret = ret.replace ( /__j__/, d );
-  ret = ret.replace ( /__mm__/, m );
-  ret = ret.replace ( /__mon__/, shortMonths[m-1] );
-  ret = ret.replace ( /__month__/, months[m-1] );
-  ret = ret.replace ( /__n__/, m );
-  ret = ret.replace ( /__yy__/, y % 100 );
-  ret = ret.replace ( /__yyyy__/, y );
-
-  var w = '';
-  if ( showWeekday ) {
-    var myD = new Date();
-    myD.setYear ( y );
-    myD.setMonth ( m - 1 );
-    myD.setDate ( d );
-    wday = myD.getDay();
-    w = weekdays[wday] + ', ';
-  }
-
-  return w + ret;
+  return date.format(ret.replace(/__yyyy__/, 'Y'));
 }
 
 // TODO: modify this to handle different time formats, timezones, etc...

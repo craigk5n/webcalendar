@@ -1,5 +1,13 @@
 // $Id$
 
+body {
+  background-image:url( images/kn5.jpg );
+  background-repeat:no-repeat;
+}
+p {
+  margin:.0625em;
+  color:#333;
+}
 #creds {
 /* mandatory */
   position:relative;
@@ -7,13 +15,13 @@
 /* required but, change to suit */
   width:100%;
   height:16em;
-/* optional */
+/* all below optional */
+  background:#def;
 /*
   margin:.25em;
 */
   border:.5em solid #def;
 /*  padding:.25em 5px .25em .25em; */
-  background:#def;
   font-weight:bold;
   font-size:16px;
 }

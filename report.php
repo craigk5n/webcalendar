@@ -468,9 +468,9 @@ if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
   $temp = '" href="report.php?report_id=' . $report_id . $u_url . '&amp;offset=';
 
   $nextLinkStr = $prevLinkStr = '
-    <a class="nav" title="';
-  $nextLinkStr .= $nextStr . $temp . $next . '">' . $nextStr . '</a>';
-  $prevLinkStr .= $prevStr . $temp . $prev . '">' . $prevStr . '</a>&nbsp;&nbsp;';
+    <a class="nav"' . temp;
+  $nextLinkStr .= $next . '">' . $nextStr . '</a>';
+  $prevLinkStr .= $prev . '">' . $prevStr . '</a>&nbsp;&nbsp;';
 }
 
 if ( empty ( $list ) ) {

@@ -22,41 +22,39 @@ else {
   }
 }
 
-print_header ( '', '', '', true );
-
 ob_start();
+print_header( '', '', '', true );
 
 echo '
     <form action="group_edit_handler.php" method="post">
-      <h2>';
+      <input type="hidden" name="';
 
 if ( $newgroup ) {
   $v = array();
-  echo translate ( 'Add Group' ) . '</h2>
-      <input type="hidden" name="add" value="1';
+  echo 'add" value="1">
+      <h2>' .  translate( 'Add Group' ) . '</h2>
 } else
-  echo translate ( 'Edit Group' ) . '</h2>
-      <input type="hidden" name="id" value="' . $id;
+  echo 'id" value="' . $id">
+      <h2>' . translate( 'Edit Group' ) . '</h2>';
 
-echo '">
+echo '
       <table summary="">
         <tr>
-          <td class="bold"><label for="groupname">'
- . translate ( 'Group name' ) . ':</label></td>
+          <td><label for="groupname">'
+ . translate( 'Group name' ) . '</label></td>
           <td><input type="text" name="groupname" id="groupname" size="20" '
  . 'value="' . htmlspecialchars( $groupname ) . '"></td>
-        </tr>' . ( ! $newgroup ? '
+        </tr>' . ( $newgroup ? '' : '
         <tr>
-          <td class="aligntop bold">' . translate ( 'Updated' ) . ':</td>
+          <td>' . translate( 'Updated' ) . '</td>
           <td>' . date_to_str ( $groupupdated ) . '</td>
         </tr>
         <tr>
-          <td class="aligntop bold">' . translate ( 'Created by' ) . ':</td>
+          <td>' . translate( 'Created by' ) . '</td>
           <td>' . $groupowner . '</td>
-        </tr>' : '' ) . '
+        </tr>' ) . '
         <tr>
-          <td class="aligntop bold"><label for="users">'
- . translate ( 'Users' ) . ':</label></td>
+          <td><label for="users">' . translate( 'Users_' ) . '</label></td>
           <td>
             <select name="users[]" id="users" size="10" multiple>';
 
@@ -83,7 +81,7 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
   $u = $users[$i]['cal_login'];
   echo '
               <option value="' . $u
-   . ( ! empty ( $groupuser[$u] ) ? '" selected>' : '">' )
+   . ( empty( $groupuser[$u] ) ?  '">' : '" selected>' )
    . $users[$i]['cal_fullname'] . '</option>';
 }
 
@@ -92,13 +90,11 @@ echo '
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="aligncenter"><br>
+          <td colspan="2"><br>
             <input type="submit" name="action" value="'
- . ( $newgroup ? $addStr : $saveStr ) . '">'
- . ( ! $newgroup ? '
-            <input type="submit" name="delete" value="'
-   . $deleteStr . '" onclick="return confirm( \''
-   . translate( 'really delete entry' ) . '\')">' : '' ) . '
+ . ( $newgroup ? $addStr . '">' : $saveStr . '">
+            <input type="submit" id="delGrpEntry" name="delete" value="'
+   . $deleteStr . '">' ) . '
           </td>
         </tr>
       </table>

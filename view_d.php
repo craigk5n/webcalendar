@@ -20,31 +20,15 @@
  * (except for nonuser calendars... which we allow regardless of group).
  */
 // $start = microtime();
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = '';
-
-view_init ( $id );
-
 $printerStr = generate_printer_friendly ( 'view_d.php' );
-set_today ( $date );
 
-print_header ( array ( 'js/view_d.php/true' ) );
-
-// get users in this view
-$participants = view_get_user_list ( $id );
-if ( count ( $participants ) == 0 ) {
-  // This could happen if user_sees_only_his_groups  = Y and
-  // this user is not a member of any group assigned to this view.
-  $error = $noVuUsers;
-
+if ( ! empty( $error ) ) {
   echo print_error ( $error ) . print_trailer();
+  ob_end_flush();
   exit;
 }
-
-if ( ! $date )
-  $date = $thisdate;
 
 $now = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 $nowStr = date_to_str ( date ( 'Ymd', $now ) );
@@ -52,10 +36,10 @@ $nowStr = date_to_str ( date ( 'Ymd', $now ) );
 $nextdate = date ( 'Ymd', $now + 86400 );
 $prevdate = date ( 'Ymd', $now - 86400 );
 
-$matrixStr = daily_matrix ( $date, $participants );
-$partStr = implode ( ',', $participants );
+$matrixStr = daily_matrix( $date, $viewusers );
+$partStr = implode( ',', $viewusers );
 $trailerStr = print_trailer();
-$wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
+$wday = strftime( '%w', $now );
 
 echo <<<EOT
     <div class="viewnav">
@@ -74,8 +58,7 @@ echo <<<EOT
 
     <!-- Hidden form for booking events -->
     <form action="edit_entry.php" method="post" name="schedule">
-      <input type="hidden" name="date"
-        value="{$thisyear}{$thismonth}{$thisday}">
+      <input type="hidden" name="date" value="{$thisyear}{$thismonth}{$thisday}">
       <input type="hidden" name="defusers" value="{$partStr}">
       <input type="hidden" name="hour" value="">
       <input type="hidden" name="minute" value="">
@@ -84,3 +67,7 @@ echo <<<EOT
     {$printerStr}
     {$trailerStr}
 EOT;
+
+ob_end_flush();
+
+?>

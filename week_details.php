@@ -64,9 +64,9 @@ echo '
       <span class="titleweek">(' . translate ( 'Week' ) . ' '
    . date ( 'W', $wkstart + 86400 ) . ')</span>' : '' ) . '
       <span class="user">' . ( $single_user == 'N' ? '<br>
-      ' . $user_fullname : '' ) . ( $is_nonuser_admin ? '<br>-- '
-   . translate( 'Admin mode' ) . ' --' : '' ) . ( $is_assistant ? '<br>-- '
-   . translate ( 'Assistant mode' ) . ' --' : '' ) . '</span>'
+      ' . $user_fullname : '' ) . ( $is_nonuser_admin ? '<br>'
+   . translate( '-Admin mode-' ) : '' ) . ( $is_assistant ? '<br>'
+   . translate ( '-Assistant mode-' ) : '' ) . '</span>'
  . ( $CATEGORIES_ENABLED == 'Y' ? '<br><br>'
    . print_category_menu( 'week', sprintf ( "%04d%02d%02d", $thisyear,
       $thismonth, $thisday ), $cat_id ) : '' ) . '

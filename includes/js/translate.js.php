@@ -6,17 +6,30 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 global $GROUPS_ENABLED, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
 
-$tmp1 =
-$tmp2 = '';
+$tmp1 = $tmp2 = $tmpm = $tmpsm = $tmpw = $tmpsw = '';
 
 foreach( array( 'SU','MO','TU','WE','TH','FR','SA' ) as $b ) {
   $tmp1 .= '\'' . $b . '\',';
   $tmp2 .= '\'' . translate( $b ) . '\',';
 }
-echo 'var
+for ( $i = 0; $i < 12; $i++ ) {
+  $tmpm .= "'" . month_name( $i ) . "',";
+  $tmpsm .= "'" . month_name( $i, 'M' ) . "',";
+}
+for ( $i = 0; $i < 7; $i++ ) {
+  $tmpw = "'" . weekday_name( $i ) . "',";
+  $tmpsw =  "'" . weekday_name( $i, 'D' ) . "',";
+}
+
+echo 'var months = [' . $tmpm . '],
+  shortMonths = [' . $tmpsm . '],
+  weekdays = [' . $tmpw . '],
+  shortWeekdays = [' . $tmpsw . '],
+
   allowCustomColors= "' . $ALLOW_COLOR_CUSTOMIZATION . '",
   bydayLabels      = [' . $tmp1 . '],
   bydayTrans       = [' . $tmp2 . '],
+  dateFmt          = ' . $DATE_FORMAT . ',
   evtEditTabs      = "' .
     ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ? 'Y' : $GLOBALS['EVENT_EDIT_TABS'] ) . '",
   groupsEnabled    = "' . $GROUPS_ENABLED . '",
@@ -25,14 +38,20 @@ echo 'var
   workStartHour    = "' . $WORK_DAY_START_HOUR . '",
   xlate            = [];
 
-xlate[\'addParticipant\']     = \'' . translate( 'Please add a participant', true ) . '\';
 xlate[\'Categories\']         = \'' . translate( 'Categories', true ) . '\';
+xlate[\'Hide\']               = \'' . translate( 'Hide', true ) . '\';
+xlate[\'JSONerrXXX\']         = \'' . translate( 'JSON error XXX', true ) . '\';
+xlate[\'Show\']               = \'' . translate( 'Show', true ) . '\';
+xlate[\'addCalEntry\']        = \'' . translate( 'will add entry to your cal', true ). '\';
+xlate[\'addParticipant\']     = \'' . translate( 'Please add a participant', true ) . '\';
+xlate[\'approveEntry\']       = \'' . translate( 'Approve this entry?', true ) . '\';
+xlate[\'cancel\']             = \'' . translate( 'Cancel', true ) . '\';
 xlate[\'changeEntryDatetime\']= \'' . translate( 'Change entry date/time', true ) . '\';
 xlate[\'colorInvalid\']       = \'' . translate( 'Invalid color', true ) . '\';
 xlate[\'dbNameStr\']          = \'' . translate( 'Database Name', true ) . '\';
 xlate[\'endServerURL\']       = \'' . translate( 'Server URL must end with /.', true ) . '\';
-xlate[\'error\']              = \'' . translate( 'Error', true ) . ' \';
 xlate[\'errorXXX\']           = \'' . translate( 'Error XXX', true ) . ' \';
+xlate[\'error\']              = \'' . translate( 'Error', true ) . ' \';
 xlate[\'formatColorRGB\']     = \'' . translate( 'Color format should be RGB', true ) . '\';
 xlate[\'fullPath\']           = \'' . translate( 'Full Path (no backslashes)', true ) . '\';
 xlate[\'illegalPwdChr\']      = \'' . translate( 'illegal chars in password', true ) . '\';
@@ -49,22 +68,25 @@ xlate[\'invalidGridFG\']      = \'' . translate( 'Invalid table grid color', tru
 xlate[\'invalidHours\']       = \'' . translate( 'Invalid work hours.', true ) . '\';
 xlate[\'invalidPopupBG\']     = \'' . translate( 'Invalid popup BG color', true ) . '\';
 xlate[\'invalidPopupFG\']     = \'' . translate( 'Invalid popup text color', true ) . '\';
-xlate[\'invalidTextFG\']      = \'' . translate( 'Invalid table head text color', true ) . '\';
 xlate[\'invalidTHBG\']        = \'' . translate( 'Invalid table header BG color', true ) . '\';
+xlate[\'invalidTextFG\']      = \'' . translate( 'Invalid table head text color', true ) . '\';
 xlate[\'invalidTitleFG\']     = \'' . translate( 'Invalid doc title color', true ) . '\';
 xlate[\'invalidTodayBG\']     = \'' . translate( 'Invalid table cell today BG', true ) . '\';
-xlate[\'JSONerrXXX\']         = \'' . translate( 'JSON error XXX', true ) . '\';
 xlate[\'noBlankCalId\']       = \'' . translate( 'no blank cal ID', true ) . '\';
 xlate[\'noBlankNames\']       = \'' . translate( 'both names cannot be blank', true) . '\';
 xlate[\'noBlankURL\']         = \'' . translate( 'no blank URLs', true ) . '\';
 xlate[\'noBlankUsername\']    = \'' . translate( 'no blank username', true ) . '\';
 xlate[\'noMatchImport\']      = \'' . translate( 'Import Format type mismatch', true ) . '\';
-xlate[\'notFind\']            = \'' . translate( 'Could not find XXX.', true ) . '\';
 xlate[\'noXXXInDom\']         = \'' . translate( 'Could not find XXX in DOM.', true ) . '\';
+xlate[\'noYMDXXX\']           = \'' . translate( 'No such object for YMD XXX', true ) . '\';
+xlate[\'notFind\']            = \'' . translate( 'Could not find XXX.', true ) . '\';
 xlate[\'passwordsNoMatch\']   = \'' . translate( 'passwords not identical', true ) . '\';
 xlate[\'reallyDeleteEntry\']  = \'' . translate( 'really delete entry', true ) . '\';
+xlate[\'rejThisEntry\']       = \'' . translate( 'Reject this entry?', true ) . '\';
 xlate[\'reqServerURL\']       = \'' . translate( 'Server URL is required.', true ) . '\';
 xlate[\'timeB4WorkHours\']    = \'' . translate( 'time before work hours', true ) . '\';
+
+
 ';
 
 ?>

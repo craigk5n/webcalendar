@@ -19,11 +19,11 @@ echo '
       <input type="hidden" name="user" value="' . $user . '">' : '' ) . '
       <h2>';
 
-$assistStr = translate ( 'Assistants' );
 if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo $nonuserfullname . ' ' . $assistStr . '<br>
-      -- ' . translate ( 'Admin mode' ) . ' --';
+  echo str_replace( 'XXX', $nonuserfullname,
+    translate( 'XXX Assistants' ) ) . '<br>
+      ' . translate( '-Admin mode-' );
 } else
   echo translate ( 'Your assistants' );
 
@@ -32,7 +32,7 @@ echo '</h2>
       <table summary="">
         <tr>
           <td class="aligntop"><label for="users">'
- . $assistStr . ':</label></td>
+ . translate( 'Assistants_' ) . '</label></td>
           <td>
             <select name="users[]" id="users" size="10" multiple>';
 

@@ -30,8 +30,8 @@ if ( empty ( $user ) ) {
 }
 
 $disableCustom = true;
-$INC = array ('js/edit_user.php/false');
-print_header ( $INC, '', '', $disableCustom, '', true, false );
+$INC = array('js/edit_user.php');
+print_header( $INC, '', '', $disableCustom, '', true );
 
 if ( ! empty ( $error ) ) {
   echo print_error ( $error );

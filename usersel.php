@@ -43,10 +43,10 @@ echo '
         <table style="border: 0; width: 100%;" summary="">
           <tr>
             <td class="aligntop">
-              <b>' . translate( 'Users' ) . ':</b><br>
+              <b>' . translate( 'Users_' ) . '</b><br>
               <select name="users" size="15" multiple>
               </select><br>
-              <input type="button" value="' . translate ( 'All' )
+              <input type="button" value="' . $allStr
  . '" onclick="selectAll( true )">
               <input type="button" value="' . $noneStr
  . '" onclick="selectAll( false )">

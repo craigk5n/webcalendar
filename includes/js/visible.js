@@ -5,6 +5,32 @@ IE4 = (document.all ? 1 : 0);
 // W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
 W3C = (document.getElementById ? 1 : 0);
 
+addLoadListener(function () {
+    // If we turn them on with javascript,
+    // we should turn them off initially with javascript, too.
+    // Or people without javascript will never see them.
+    for (var i in[
+       'tabscontent_boss',
+       'tabscontent_colors',
+       'tabscontent_email',
+       'tabscontent_groups',
+       'tabscontent_header',
+       'tabscontent_nonuser',
+       'tabscontent_nonusers',
+       'tabscontent_other',
+       'tabscontent_participants',
+       'tabscontent_pete',
+       'tabscontent_public',
+       'tabscontent_reminder',
+       'tabscontent_remotes',
+       'tabscontent_sched',
+       'tabscontent_subscribe',
+       'tabscontent_themes',
+       'tabscontent_uac', ])
+      (
+        document.getElementById(i).style.display = 'none'; )
+  });
+
 function makeVisible(name, hide) {
   var ele;
   if (W3C) {
@@ -67,7 +93,7 @@ function showTab(name) {
   return false;
 }
 function visByClass(classname, state) {
-  var  inc = 0,
+  var inc = 0,
   alltags = (document.all ? document.all : document.getElementsByTagName('*'));
   for (var i = alltags.length - 1; i >= 0; i--) {
     var str = alltags[i].className;

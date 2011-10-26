@@ -63,11 +63,11 @@ if ( empty ( $friendly ) ) {
 }
 $eventinfo = ( empty ( $eventinfo ) ? '' : $eventinfo );
 $trailerStr = print_trailer();
-print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ),
-  generate_refresh_meta(), '', false, false, false, false );
+
+ob_start();
+print_header( '', generate_refresh_meta() );
 
 echo <<<EOT
-
     <table width="100%" cellpadding="1" summary="">
       <tr>
         <td width="80%">
@@ -92,5 +92,7 @@ echo <<<EOT
     {$printerStr}
     {$trailerStr}
 EOT;
+
+ob_end_flush();
 
 ?>

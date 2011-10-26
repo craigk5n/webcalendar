@@ -19,13 +19,9 @@
  * then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$error = '';
 $USERS_PER_TABLE = 6;
-
-view_init ( $id );
 
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
@@ -275,40 +271,29 @@ $prevmonth = date ( 'm', $prev );
 $prevday = date ( 'd', $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
-// Get users in this view.
-$viewusers = view_get_user_list ( $id );
-$viewusercnt = count ( $viewusers );
-if ( $viewusercnt == 0 )
-  // This could happen if user_sees_only_his_groups  = Y and
-  // this user is not a member of any  group assigned to this view.
-  $error = $noVuUsers;
-
 $printerStr = generate_printer_friendly ( 'view_t.php' );
-
-print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 
 if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
+  ob_end_flush();
   exit;
 }
 
-ob_start();
-
 echo '
-    <div style="width:99%;">
-      <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
+      <div style="width:99%;">
+        <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
   '&amp;date=' . $prevdate
  . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '"></a>
-      <a title="' . $nextStr . '" class="next" href="view_t.php?id=' . $id .
+        <a title="' . $nextStr . '" class="next" href="view_t.php?id=' . $id .
   '&amp;date=' . $nextdate
  . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '"></a>
-      <div class="title">
-        <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
+        <div class="title">
+          <span class="date">' . date_to_str( date( 'Ymd', $wkstart ), '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
  . date_to_str( date( 'Ymd', $wkend ), '', false ) . '</span><br>
-        <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
-      </div>
-    </div><br><br>';
+          <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
+        </div>
+      </div><br><br>';
 
 // The table has names across the top and dates for rows. Since we need to
 // spit out an entire row before we can move to the next date, we'll save up all
@@ -331,7 +316,7 @@ $repeated_events = $re_save;
 $timeBarHeader = print_header_timebar();
 
 echo '
-    <table class="main" summary="">';
+      <table class="main" summary="">';
 
 for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
   $dateYmd = date ( 'Ymd', $date );
@@ -339,23 +324,25 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
   if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
     continue;
 
-  echo '<tr' . ( $dateYmd == date ( 'Ymd', $today ) ? '>
-      <th class="today"' : ( $is_weekend ? ' class="weekend">
-      <th class="weekend"' : '>
-      <th class="row"' ) ) . ( $can_add
+  echo '
+        <tr' . ( $dateYmd == date( 'Ymd', $today ) ? '>
+          <th class="today"' : ( $is_weekend ? ' class="weekend">
+          <th class="weekend"' : '>
+          <th class="row"' ) ) . ( $can_add
     ? " ondblclick=\"dblclick_add( '$dateYmd', '$login' )\" title=\""
      . $dblClickAdd . "\">"
     : '>' ) . weekday_name( date( 'w', $date ), $DISPLAY_LONG_DAYS ) . '&nbsp;' .
-    date ( 'd', $date ) . '</th><td class="timebar">' . $timeBarHeader .
+    date ( 'd', $date ) . '</th>
+          <td class="timebar">' . $timeBarHeader .
     print_date_entries_timebar( $dateYmd, $login, true ) . '</table>
-        </td>
-      </tr>';
+          </td>
+        </tr>';
 }
 
 $user = ''; // reset
 
 echo '
-    </table>'
+      </table>'
  . ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
 
 ob_end_flush();

@@ -22,11 +22,10 @@ if ( $id > 0 ) {
   $res = dbi_execute ( 'SELECT cal_access FROM webcal_entry WHERE cal_id = ?',
     array ( $id ) );
   if ( ! $res ) {
-    echo str_replace ( 'XXX', $id, translate ( 'Invalid entry id XXX.' ) );
+    echo str_replace( 'XXX', $id, $badEntryStr );
     exit;
   }
-  $mayNotAddStr =
-  translate ( 'cant add XXX to cal' );
+  $mayNotAddStr = translate( 'cant add XXX to cal' );
   $row = dbi_fetch_row ( $res );
 
   if ( ! $is_my_event ) {

@@ -5,9 +5,8 @@
  * touch each file every time.
 */
 defined ( '_ISVALID' ) or ( 'You cannot access this file directly!' );
-// DO NOT DELETE translate ( 'Index' ) translate ( 'Documentation' )
-$help_list = array();
-$help_list['Index'] = 'help_index.php';
+
+$help_list = array( translate( 'Index' ) => 'help_index.php' );
 
 $can_add = true;
 if ( $readonly == 'Y' )
@@ -22,41 +21,40 @@ else {
     $can_add = false;
 }
 if ( $can_add )
-  $help_list['Adding/Editing Calendar Entries'] = 'help_edit_entry.php';
+  $help_list[translate( 'Adding/Editing Calendar Entries' )] = 'help_edit_entry.php';
 
 if( ! access_is_enabled() && $login != '__public__'
     || access_can_access_function( ACCESS_LAYERS ) )
-  $help_list['Layers'] = 'help_layers.php';
+  $help_list[translate( 'Layers' )] = 'help_layers.php';
 if( ( ! access_is_enabled() && $login != '__public__' )
     || access_can_access_function( ACCESS_IMPORT ) )
-  $help_list['Import'] = 'help_import.php';
+  $help_list[translate( 'Import' )] = 'help_import.php';
 
 if( ( ! access_is_enabled() && $login != '__public__' )
     || access_can_access_function( ACCESS_PREFERENCES ) )
-  $help_list['Preferences'] = 'help_pref.php';
+  $help_list[translate( 'Preferences' )] = 'help_pref.php';
 
 if( access_is_enabled() && $login != '__public__' )
-  $help_list['User Access Control'] = 'help_uac.php';
+  $help_list[translate( 'UAC' )] = 'help_uac.php';
 
 if( ( $is_admin && ! access_is_enabled() )
     || access_can_access_function( ACCESS_IMPORT ) )
-  $help_list['System Settings'] = 'help_admin.php';
+  $help_list[translate( 'System Settings' )] = 'help_admin.php';
 
-$help_list['Documentation'] = 'help_docs.php';
-$help_list['Report Bug'] = 'help_bug.php';
+$help_list[translate( 'Documentation' )] = 'help_docs.php';
+$help_list[translate( 'Report Bug' )] = 'help_bug.php';
 
 $helpListStr = '
     <div class="helplist">
-      ' . translate ( 'Page' ) . ': ';
+      ' . translate( 'Page_' ) . ' ';
 $page = 0;
 if ( empty ( $thispage ) )
   $thispage = 0;
-foreach ( $help_list as $key => $val ) {
+foreach ( $help_list as $k => $v ) {
   $page++;
   $helpListStr .= '
-      <a' . ( $page == $thispage ? ' class="current"' : '' ) . ' title="'
-   . translate ( $key ) . '" href="' . $val . '?thispage=' . $page . '">'
-   . $page . '</a>';
+      <a href="' . "$v?thispage=$page\"" . ( $page == $thispage
+    ? ' class="current"' : '' ) . ' title="' . "$k\">$page" . '</a>';
 }
 $helpListStr .= '
     </div>';
@@ -67,10 +65,10 @@ $helpListStr .= '
  * @params $help_array   The array of things to print.
  */
 function list_help ( $help_array ) {
-  foreach ( $help_array as $lab => $val ) {
+  foreach ( $help_array as $l => $v ) {
     echo '
-        <p><label>' . $lab . '</label> '
-     . ( $val == '0' ? '0' : empty ( $val ) ? '&nbsp;' : $val ) . '</p>';
+        <p><label>' . $l . '</label> '
+     . ( $v == '0' ? '0' : empty( $v ) ? '&nbsp;' : $v ) . '</p>';
   }
 }
 

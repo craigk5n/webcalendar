@@ -1919,7 +1919,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       $line = 0;
       while ( ! feof( $fd ) && empty ( $error ) ) {
         $line++;
-        $data .= fgets( $fd, 4096 );
+        $data .= fgets( $fd );
       }
       fclose ( $fd );
     }
@@ -1934,7 +1934,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
     $data = '';
     $cnt = 0;
     while ( ! feof ( $stdin ) ) {
-      $line = fgets ( $stdin, 1024 );
+      $line = fgets( $stdin );
       //fwrite ( $tmp, $line );
       $cnt++;
       do_debug ( "read: " . $line );
@@ -2809,7 +2809,7 @@ function parse_vcal( $cal_file ) {
         // we are probably not reading a vcs file
         return false;
       }
-      $buff = fgets( $fd, 4096 );
+      $buff = fgets( $fd );
       $buff = chop( $buff );
       if ( $state == 'VEVENT' ) {
         if ( ! empty ( $subsubstate ) ) {
@@ -3095,11 +3095,10 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
 /**
  * Generate export select.
  */
-function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
-  $palmStr = translate ( 'Palm Pilot' );
+function generate_export_select() {
+  $palmStr = translate( 'Palm Pilot' );
   return '
-      <select name="format" id="' . $name
-   . ( empty( $jsaction ) ? '"' : '" onchange="' . $jsaction . '();"' ) . '>
+      <select name="format" id="exformat">
         <option value="ical">iCalendar</option>
         <option value="vcal">vCalendar</option>
         <option value="pilot-csv">Pilot-datebook CSV (' . $palmStr . ')</option>
