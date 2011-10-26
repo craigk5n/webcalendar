@@ -71,7 +71,7 @@ function ws_escape_xml ( $str ) {
  */
 function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   global $ALLOW_EXTERNAL_USERS, $DISABLE_PARTICIPANTS_FIELD,
-  $DISABLE_PRIORITY_FIELD, $EXTERNAL_REMINDERS, $noStr, $SERVER_URL,
+  $DISABLE_PRIORITY_FIELD, $EXTERNAL_REMINDERS, $noStr, $pri, $SERVER_URL,
   $single_user, $single_user_login, $site_extras, $WS_DEBUG, $yesStr;
 
   // Get participants first...
@@ -159,9 +159,6 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   <duration>' . $row[5] . '</duration>' : '' );
 
   if ( ! empty ( $DISABLE_PRIORITY_FIELD ) && $DISABLE_PRIORITY_FIELD == 'Y' ) {
-    $pri[1] = translate ( 'High' );
-    $pri[2] = translate ( 'Medium' );
-    $pri[3] = translate ( 'Low' );
     $out .= '
   <priority>' . $row[6] . '-' . $pri[ceil ( $row[6] / 3 )] . '</priority>';
   }

@@ -66,7 +66,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
   $installationTranslations = array();
 
   while ( ! feof ( $fp ) ) {
-    $buffer = trim ( fgets ( $fp, 4096 ) );
+    $buffer = trim( fgets( $fp ) );
     if ( strlen ( $buffer ) == 0 )
       continue;
 
@@ -592,12 +592,16 @@ translate( '9,999.99' ) translate( 'time is 140000' )
  * They are here because this is the only file guaranteed to load if translating.
  */
 $addStr     = translate( 'Add' );
+$adminStr   = translate( 'Admin' );
+$allStr     = translate( 'All' )
+$badEntryStr= translate( 'Invalid entry id XXX.' );
 $cat_Str    = translate( 'Category_' );
 $dblClickAdd= translate( 'Double-click to add entry' );
 $dbErrXXXStr= translate( 'DB error XXX' );
 $deleteStr  = translate( 'Delete' );
 $editStr    = translate( 'Edit' );
 $err_Str    = translate( 'Error_' );
+$globalStr  = translate( 'Global' );
 $groupsStr  = translate( 'Groups' );
 $helpStr    = translate( 'Help' );
 $nextStr    = translate( 'Next' );
@@ -606,6 +610,7 @@ $noneStr    = translate( 'None' );
 $noVuUsers  = translate( 'No users for view' );
 $okStr      = translate( 'OK' );
 $prevStr    = translate( 'Previous' );
+$pri = array('',translate( 'High' ),translate( 'Medium' ),translate( 'Low' ) );
 $saveStr    = translate( 'Save' );
 $selectStr  = translate( 'Select' );
 $setsStr    = translate( 'Settings' );
