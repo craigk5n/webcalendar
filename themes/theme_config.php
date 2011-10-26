@@ -94,7 +94,7 @@ $webcal_theme = array(
   'SELF_REGISTRATION_BLACKLIST'     => 'N',
   'SELF_REGISTRATION_FULL'          => 'Y',
   'SEND_EMAIL'                      => 'N',
-// Could we use the abbreviation, date('T'), here and convert it later?
+// Could we use date('T') here and convert it later?
   'SERVER_TIMEZONE'                 => 'America/New_York',
   'SITE_EXTRAS_IN_POPUP'            => 'N',
   'SMTP_AUTH'                       => 'N',
