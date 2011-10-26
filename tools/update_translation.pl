@@ -285,11 +285,19 @@ direction: ' . $trans{ 'direction' } . ( $infile !~ /english-us/i ? '
 #  Select elements for date specification.
 #  ex)2011-10-13
 #     __yyyy__ ... 2011, __mm__ ... 10, __month__ ... October, __dd__ ... 13
-' : '' ) . '
-__mm__/__dd__/__yyyy__: ' . $trans{ '__mm__/__dd__/__yyyy__' } . '
-__month__ __dd__: ' . $trans{ '__month__ __dd__' } . '
+' : '' )
+
+# Replace the date formats below with these. Soon, I hope. bb
+# DATE_FORMAT: F d, Y
+# DATE_FORMAT_MD: F d
+# DATE_FORMAT_MY: F Y
+# DATE_FORMAT_TASK: m/d/Y
+
+ . '
 __month__ __dd__, __yyyy__: ' . $trans{ '__month__ __dd__, __yyyy__' } . '
+__month__ __dd__: ' . $trans{ '__month__ __dd__' } . '
 __month__ __yyyy__: ' . $trans{ '__month__ __yyyy__' } . '
+__mm__/__dd__/__yyyy__: ' . $trans{ '__mm__/__dd__/__yyyy__' } . '
 ' . ( $infile !~ /english-us/i ? '
 ' . ('#' x 80).'
 ' . ('#' x 80).'

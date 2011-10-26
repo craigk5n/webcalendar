@@ -260,14 +260,11 @@ if ( $debug )
 function send_reminder ( $id, $event_date ) {
   global $ALLOW_EXTERNAL_USERS, $attachics, $debug, $def_tz, $emails, $err_Str
   $EXTERNAL_REMINDERS, $htmlmail, $ignore_user_case, $is_task, $LANGUAGE,
-  $languages, $names, $only_testing, $SERVER_URL, $site_extras, $tz, $t_format;
+  $languages, $names, $only_testing, $pri, $SERVER_URL, $site_extras, $tz,
+  $t_format;
 
   $ext_participants = $participants = array();
   $num_ext_participants = $num_participants = 0;
-
-  $pri[1] = translate ( 'High' );
-  $pri[2] = translate ( 'Medium' );
-  $pri[3] = translate ( 'Low' );
 
   // Get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_percent FROM webcal_entry_user
@@ -399,29 +396,37 @@ function send_reminder ( $id, $event_date ) {
 
       $body .= $eventURL . "\n\n";
     }
-    $body .= strtoupper ( $name ) . "\n\n" . translate ( 'Description' )
-     . ":\n" . $padding . $description . "\n"
-     . ( $is_task ? translate ( 'Start Date' ) : translate ( 'Date_' ) )
-     . ' ' . date_to_str ( ( $row[2] > 0 ? date ( 'Ymd', $event_date ) : gmdate ( 'Ymd', $event_date ) ) ) . "\n"
+    $body .= strtoupper( $name ) . "\n\n" . translate( 'Description_' )
+     . "\n" . $padding . $description . "\n"
+     . str_replace( 'XXX', date_to_str( ( $row[2] > 0
+       ? date : gmdate )( 'Ymd', $event_date ) ),
+       ( $is_task ? translate( 'start date XXX' ) : translate( 'date XXX' ) ) )
+     . "\n"
      . ( $row[2] > 0
-      ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time_' ) ) . ' '
-       . display_time ( '', $display_tzid, $event_time, $userTformat ) . "\n"
-      : ( ( $row[2] == 0 &&  $row[5] = 1440) ? translate( 'Time_' ) . ' '
-       . translate( 'All day event' ). "\n" : '' ) )
+       ? str_replace( 'XXX',
+           display_time( '', $display_tzid, $event_time, $userTformat ),
+           ( $is_task
+             ? translate( 'start time XXX' ) : translate( 'time XXX' ) ) ) . "\n"
+      : ( $row[2] == 0 &&  $row[5] = 1440
+        ? translate( 'time all day' ) . "\n" : '' ) )
      . ( $row[5] > 0 && ! $is_task
-      ? translate ( 'Duration' ) . ' ' . $row[5] . ' '
-       . translate ( 'minutes' ) . "\n"
-      : ( $is_task ? translate ( 'Due Date_' ) . ' ' . date_to_str ( $row[11] )
-       . "\n" . translate ( 'Due Time' ) . ': ' . display_time ( $row[12],
-         $display_tzid, '', $userTformat ) . "\n" : '' ) )
-     . ( $is_task && isset ( $percentage[$user] )
-      ? translate ( 'Pecentage Complete' ) . ': ' . $percentage[$user] . "%\n" : '' )
+       ? str_replace( 'XXX', $row[5], translate( 'Duration XXX' ) ) . "\n"
+       : ( $is_task
+         ? str_replace( 'XXX', date_to_str( $row[11] ),
+             translate( 'due date XXX' ) ) . "\n"
+           . str_replace( 'XXX',
+               display_time( $row[12], $display_tzid, '', $userTformat ),
+               translate( 'due time XXX' ) ) . "\n"
+           . ( isset( $percentage[$user] )
+             ? str_replace( 'XXX', $percentage[$user],
+               translate( 'Percentage Complete XXX' ) )
+             : '' )
+         : '' ) )
      . ( empty ( $DISABLE_PRIORITY_FIELD ) || $DISABLE_PRIORITY_FIELD != 'Y'
-      ? translate ( 'Priority_' ) . ' ' . $row[6] . '-'
-       . $pri[ceil( $row[6] / 3 )] . "\n" : '' );
+      ? str_replace( 'XXX', $row[6] . '-' . $pri[ceil( $row[6] / 3 )],
+        translate( 'priority XXX' ) ) . "\n" : '' );
 
     if ( empty ( $DISABLE_ACCESS_FIELD ) || $DISABLE_ACCESS_FIELD != 'Y' ) {
-//      $body .= translate ( 'Access' ) . ' ';
       if ( $row[8] == 'C' )
         $body .= translate ( 'Access Confidential' ) . "\n";
       elseif ( $row[8] == 'P' )
@@ -431,8 +436,9 @@ function send_reminder ( $id, $event_date ) {
     }
 
     $body .= ( ! empty ( $single_user_login ) && ! $single_user_login
-      ? translate ( 'Created by' ) . ' ' . $row[0] . "\n" : '' )
-     . translate ( 'Updated' ) . ': ' . date_to_str ( $row[3] ) . ' '
+      ? str_replace( 'XXX', $row[0], translate( 'Created by XXX' ) ) . "\n"
+      : '' )
+     . translate( 'Updated' ) . ' ' . date_to_str( $row[3] ) . ' '
      . display_time ( $row[3] . sprintf ( "%06d", $row[4] ), $display_tzid, '',
       $userTformat ) . "\n";
 
@@ -475,12 +481,13 @@ function send_reminder ( $id, $event_date ) {
         $body .= $padding . $names[$participants[$i]] . "\n";
       }
       for ( $i = 0; $i < $ext_partcnt; $i++ ) {
-        $body .= $padding . $ext_participants[$i] . ' ( '
-         . translate ( 'External User' ) . ")\n";
+        $body .= $padding . str_replace( 'XXX', $ext_participants[$i],
+          translate( 'XXX External User' ) ) . "\n";
       }
     }
 
-    $subject = translate ( 'Reminder' ) . ': ' . stripslashes ( $name );
+    $subject = str_replace( 'XXX', stripslashes( $name ),
+      translate( 'Reminder XXX' ) );
 
     if ( $debug )
       echo "Sending mail to $recip (in $userlang).<br>\n";
@@ -501,7 +508,7 @@ From:' . $adminStr . '
       $mail = new WebCalMailer;
       user_load_variables ( $user, 'temp' );
       $recipName = ( $isExt ? $user : $GLOBALS ['tempfullname'] );
-      // Send ics attachment to External Users or
+      // Send ics attachment to External Users
       // or users who explicitly chose to receive it.
       $attach = ( ($isExt || isset($attachics[$user])) ? $id : '' );
       $mail->WC_Send ( $adminStr, $recip, $recipName, $subject,
