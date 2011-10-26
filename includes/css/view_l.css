@@ -1,0 +1,37 @@
+// $Id$
+
+#prevmonth {
+  float:left;
+}
+#nextmonth {
+  float:right;
+}
+.main th {
+  width:14%;
+}
+.main th.empty {
+  width:1%;
+  border-top:0;
+  border-left:0;
+  background:transparent;
+}
+.main td.weekcell {
+  width:1%;
+  margin:0;
+  font-size:.75em;
+  text-align:center;
+  text-decoration:none;
+  vertical-align:middle;
+}
+.main td {
+  height:6em;
+  font-size:.75em;
+  vertical-align:top;
+}
+.minical {
+  margin:0 .25em;
+  border:0;
+}
+.minical caption {
+  margin-left:4ex;
+}

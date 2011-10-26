@@ -1,0 +1,22 @@
+// $Id$
+
+table {
+  border:1px solid #000;
+  padding:.3125em;
+}
+td {
+  padding:1.25em;
+}
+td,
+td a {
+  text-align:center;
+}
+td a {
+  border:1px solid;
+  border-color:#eee #777 #777 #eee;
+  padding:.625em;
+}
+td a:hover {
+  border-color:#777 #eee #eee #777;
+  background:#aaa;
+}

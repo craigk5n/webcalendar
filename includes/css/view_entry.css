@@ -1,0 +1,46 @@
+// $Id$
+
+blockquote {
+  border:1px solid;
+  padding:.25em;
+}
+blockquote,
+table + ul {
+  clear:both;
+}
+img {
+  height:10px;
+}
+li a {
+  font-size:.875em;
+  text-decoration:none;
+}
+table {
+  width:100%;
+}
+table tr td:first-child { // Not supported in IE6
+  width:10%;
+  font-weight:bold;
+  vertical-align:top;
+}
+table table {
+  width:80%;
+  border:1px solid black;
+}
+table table th {
+  text-align:center;
+}
+table table td {
+  font-weight:normal;
+  vertical-align:normal;
+}
+table table tr td:first-child {
+  width:30%;
+}
+table table tr td:nth-child(2) { // Not supported in IE < 9
+  width:5%;
+  text-align:center;
+}
+table table tr td:last-child { // Not supported in IE < 9
+  width:65%;
+}
