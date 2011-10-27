@@ -18,7 +18,9 @@ $viewusercnt = count( $viewusers );
 $error = ( $viewusercnt == 0 ? $noVuUsers : '' );
 
 ob_start();
-print_header();
+// Since this file is included in the "view_?.php" files,
+// this is easier than having several 1-line .js files.
+print_header( $SCRIPT != 'views.php' ? array( 'js/views.js/true' ) : '' );
 
 echo display_admin_link() . '
 <!-- TABS -->
