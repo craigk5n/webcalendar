@@ -114,7 +114,7 @@ function get_unapproved ( $user ) {
   $count = 0;
   $ret = '';
   user_load_variables ( $user, 'temp_' );
-  // echo 'Listing events for ' . $user . '<br />';
+  // echo 'Listing events for ' . $user . '<br>';
 
   $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, we.cal_time
     FROM webcal_entry we, webcal_entry_user weu
@@ -148,7 +148,7 @@ function get_users_to_approve() {
   foreach ( $non_users as $nonuser ) {
     if ( user_is_nonuser_admin ( $login, $nonuser['cal_login'] ) ) {
       $my_non_users[]['cal_login'] = $nonuser['cal_login'];
-      // echo $nonuser['cal_login'] . "<br />";
+      // echo $nonuser['cal_login'] . "<br>";
     }
   }
 

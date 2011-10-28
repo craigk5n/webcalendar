@@ -5,8 +5,9 @@
  * This page is used to create/update includes/settings.php.
  *
  * NEW RELEASE UPDATE PROCEDURES:
- *   - Update variable $program_version in "tools/update_translations.pl"
- *     (this should be of the format "v1.0.0")
+ *   - Update the variables $program_version and $program_date
+ *     in "tools/update_translations.pl"
+ *     (they should be of the format "v1.0.0" and "dd-mon-yyyy")
  *     and run it to update "translations/English-US.txt", at least.
  *   - Make sure the last entry in all the upgrade-*.sql files reference
  *     this same version. For example, for "v1.0.0", there should be a
@@ -16,9 +17,6 @@
  *     the last comment to be the new version number. If there are
  *     db changes, you should create a new entry in the *.sql files
  *     that detail the SQL to upgrade.
- *   - Update the $PROGRAM_VERSION and $PROGRAM_DATE variables defined
- *     in includes/config.php. The $PROGRAM_VERSION needs to be the
- *     same value (e.g. "v1.0.0") that was defined above.
  *   - Update the version/date in ChangeLog and NEWS files.
  *   - Update UPGRADING.html documentation.
  *
@@ -75,9 +73,6 @@ clearstatcache();
 // We may need time to run extensive database loads.
 if ( ! get_php_setting( 'safe_mode' ) )
   set_time_limit( 240 );
-
-// If we're using SQLLite, it seems that magic_quotes_sybase must be on.
-// ini_set( 'magic_quotes_sybase', 'On' );
 
 // Check for proper auth settings.
 if( ! empty( $_SERVER['PHP_AUTH_USER'] ) )

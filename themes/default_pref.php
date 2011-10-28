@@ -37,6 +37,6 @@ $webcal_theme = array (
   'WEEKENDBG'             => '#D0D0D0',
   );
 
-include 'theme_inc.php';
+include_once 'theme_inc.php';
 
 ?>

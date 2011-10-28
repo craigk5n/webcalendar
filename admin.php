@@ -93,7 +93,6 @@ function admin_print_color_input_html ( $varname, $title, $varval = '' ) {
    . $name . '\', event )" value="' . $selectStr . '..."></p>';
 }
 
-$currenttab = '';
 $error = ( $is_admin ? '' : print_not_auth() );
 
 if ( ! empty ( $_POST ) && empty ( $error ) ) {
@@ -113,7 +112,7 @@ if ( ! empty ( $_POST ) && empty ( $error ) ) {
 if ( function_exists ( 'db_load_config' ) && empty ( $_POST ) )
   db_load_config();
 
-$menuthemes = $s = $themes = array();
+$s = array();
 
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
 
