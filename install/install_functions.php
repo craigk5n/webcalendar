@@ -91,7 +91,7 @@ function do_v11b_updates() {
   dbi_execute ( 'UPDATE webcal_entry_user SET cal_category = NULL' );
   // Mark existing exclusions as new exclusion type.
   dbi_execute ( 'UPDATE webcal_entry_repeats_not SET cal_exdate = 1' );
-  // Change cal_days format to cal_cal_byday format.
+  // Change cal_days format to cal_byday format.
   // Deprecate monthlyByDayR to simply monthlyByDay.
   dbi_execute ( 'UPDATE webcal_entry_repeats SET cal_type = \'monthlyByDay\'
     WHERE cal_type = \'monthlybByDayR\'' );
@@ -181,7 +181,7 @@ function do_v11e_updates() {
         $reminder_log_exists = true;
         $row2 = dbi_fetch_row ( $res2 );
         $times_sent = 1;
-        $last_sent = ( ! empty ( $row2[0] ) ? $row2[0] : 0 );
+        $last_sent = ( empty( $row2[0] ) ? 0 : $row2[0] );
         dbi_free_result ( $res2 );
       }
       dbi_execute ( 'INSERT INTO webcal_reminders ( cal_id, cal_date,

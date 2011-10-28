@@ -6,7 +6,7 @@ $webcalendar_csscache = 1;
 if  ( isset ( $_COOKIE['webcalendar_csscache'] ) ) {
   $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
 }
-SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
+setcookie( 'webcalendar_csscache', $webcalendar_csscache );
 
 function save_pref( $prefs, $src) {
   global $my_theme, $prefuser;
@@ -30,14 +30,13 @@ function save_pref( $prefs, $src) {
     if ( strlen ( $setting ) > 0 && $prefix == 'pref_' ) {
       if ( $setting == 'THEME' &&  $value != 'none' )
         $my_theme = strtolower ( $value );
-      $sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
-        'AND cal_setting = ?';
-      dbi_execute ( $sql, array ( $prefuser, $setting ) );
+
+      dbi_execute( 'DELETE FROM webcal_user_pref WHERE cal_login = ?
+        AND cal_setting = ?', array( $prefuser, $setting ) );
       if ( strlen ( $value ) > 0 ) {
-      $setting = strtoupper ( $setting );
-        $sql = 'INSERT INTO webcal_user_pref ' .
-          '( cal_login, cal_setting, cal_value ) VALUES ' .
-          '( ?, ?, ? )';
+        $setting = strtoupper( $setting );
+        $sql = 'INSERT INTO webcal_user_pref
+          ( cal_login, cal_setting, cal_value ) VALUES ( ?, ?, ? )';
         if ( ! dbi_execute ( $sql, array ( $prefuser, $setting, $value ) ) ) {
           $error = 'Unable to update preference: ' . dbi_error() .
    '<br><br><span class="bold">SQL:</span>' . $sql;
@@ -47,7 +46,6 @@ function save_pref( $prefs, $src) {
     }
   }
 }
-$currenttab = '';
 $public = getGetValue ('public');
 $user = getGetValue ('user');
 $updating_public = false;
@@ -112,10 +110,9 @@ if ( $res ) {
 $translation_loaded = false;
 
 //move this include here to allow proper translation
-include 'includes/date_formats.php';
+include_once 'includes/date_formats.php';
 
 //get list of theme files from /themes directory
-$themes = array();
 $dir = 'themes/';
 if (is_dir ($dir)) {
    if ($dh = opendir ($dir)) {
@@ -144,18 +141,17 @@ if ( is_dir ( $dir ) ) {
 
 // Make sure global values passed to styles.php are for this user.
 // Makes the demo calendar accurate.
-$GLOBALS['BGCOLOR'] = $prefarray['BGCOLOR'];
-$GLOBALS['H2COLOR'] = $prefarray['H2COLOR'];
-$GLOBALS['MENU_THEME'] = $prefarray['MENU_THEME'];
+$GLOBALS['BGCOLOR']     = $prefarray['BGCOLOR'];
+$GLOBALS['CELLBG']      = $prefarray['CELLBG'];
+$GLOBALS['FONTS']       = $prefarray['FONTS'];
+$GLOBALS['H2COLOR']     = $prefarray['H2COLOR'];
+$GLOBALS['MENU_THEME']  = $prefarray['MENU_THEME'];
+$GLOBALS['MYEVENTS']    = $prefarray['MYEVENTS'];
+$GLOBALS['OTHERMONTHBG']= $prefarray['OTHERMONTHBG'];
+$GLOBALS['TABLEBG']     = $prefarray['TABLEBG'];
+$GLOBALS['THBG']        = $prefarray['THBG'];
 $GLOBALS['TODAYCELLBG'] = $prefarray['TODAYCELLBG'];
-$GLOBALS['TABLEBG'] = $prefarray['TABLEBG'];
-$GLOBALS['TABLEBG'] = $prefarray['TABLEBG'];
-$GLOBALS['THBG'] = $prefarray['THBG'];
-$GLOBALS['CELLBG'] = $prefarray['CELLBG'];
-$GLOBALS['WEEKENDBG'] = $prefarray['WEEKENDBG'];
-$GLOBALS['OTHERMONTHBG'] = $prefarray['OTHERMONTHBG'];
-$GLOBALS['FONTS'] = $prefarray['FONTS'];
-$GLOBALS['MYEVENTS'] = $prefarray['MYEVENTS'];
+$GLOBALS['WEEKENDBG']   = $prefarray['WEEKENDBG'];
 
 //determine if we can set timezones, if not don't display any options
 $can_set_timezone = set_env ( 'TZ', $prefarray['TIMEZONE'] );
@@ -170,7 +166,7 @@ $_SESSION['webcal_tmp_login'] = $prefuser;
 $openStr ="\"window.open( 'edit_template.php?type=%s&user=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";
 
 $currenttab = getPostValue ( 'currenttab', 'settings' );
-$currenttab = ( ! empty ( $currenttab) ? $currenttab : 'settings' );
+$currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
 
 $BodyX = 'onload="altrows();showTab( \'' . $currenttab . '\' );"';
 $INC = array ('js/visible.js/true', 'js/pref.php');
