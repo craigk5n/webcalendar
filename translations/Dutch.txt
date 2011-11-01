@@ -146,7 +146,7 @@ Home URL: Thuis URL
 language-help: Specificeert welke taal gebruikt dient te worden.
 Language: Taal
 Your browser default language is: De standaard-browsertaal is
-Allow user to use themes: Permitteer gebruiker stijlen te gebruiken
+Allow user themes: Permitteer gebruiker stijlen te gebruiken
 themes-help: Dit laat een gelijktijdige aanpassing van vele configuratie-instellingen toe. Eigenschappen in kleine letters worden enkel in de gerbuikersinstellingen aangepast.
 Themes: Stijlen
 AVAILABLE THEMES: BESCHIKBARE STIJLEN
@@ -326,10 +326,10 @@ Restrict self-reg to blacklist: Beperk zelf-registratie tot zwarte lijst
 allow-self-reg-full-help: Sta nieuwe gebruikers toe hun zelfregistratie on-line te vervolledigen
 send self-reg emails: Gebruik zelf-registratie email-notificaties
 allow-attachment-help: Met deze functie wordt het mogelijk om bijlagen aan afspraken toe te voegen.
-Allow file attachments to events: Permitteer bestandsbijlagen bij afspraken
+Allow event attachments: Permitteer bestandsbijlagen bij afspraken
 owner can attach if enabled: Indien ingesteld kunnen de Admin en eigenaar altijd bijlagen toevoegen.
 allow-comments-help: Met deze functie wordt het mogelijk om opmerkingen aan afspraken toe te voegen.
-Allow comments to events: Permitteer opmerkingen bij afspraken
+Allow event comments: Permitteer opmerkingen bij afspraken
 owner can comment if enabled: Indien ingesteld kunnen de Admin en eigenaar altijd opmerkingen toevoegen.
 email-enabled-help: Activeer of deactiveer hier het verzenden van email-notificaties en herinneringen bij een afspraak
 Email enabled: Activeer gebruik van email
@@ -851,7 +851,7 @@ causes events imported previously: zal vroeger geïmporteerde afspraken als <i>ve
 # Page: help_index.php
 #
 Help Index: Overzicht help-onderwerpen
-About WebCalendar: Over WebCalendar
+About WebCal: Over WebCalendar
 
 ########################################
 # Page: help_layers.php
@@ -1019,7 +1019,7 @@ entries: afspraken
 Purging events for: Afspraken geheel verwijderen voor
 Finished: Klaar
 Back: Terug
-Check box to delete ALL events for a user: Vinkje om <b>ALLE</b> afspraken van een gebruiker te verwijderen
+to delete ALL events for user: Vinkje om <b>ALLE</b> afspraken van een gebruiker te verwijderen
 Delete all events before: Alle afspraken verwijderen voor
 Purge deleted only: Alleen de geschrapte afspraken definitief verwijderen
 Preview delete: Preview verwijderen
@@ -1039,7 +1039,7 @@ If email received in error: Indien u deze mail onterecht ontvangt
 Administrator: Beheerder
 Welcome: Welkom
 Registration: Registratie
-Welcome to WebCalendar: Welkom bij de WebKalender
+Welcome to WebCal: Welkom bij de WebKalender
 should get email soon: Uw E-mail moet zodra aankomen
 Return to Login screen: Terugkeren naar login-scherm
 Password (again): Wachtwoord (herhalen)
@@ -1663,7 +1663,7 @@ Environment: Omgeving
 Production: Productie
 Development: Ontwikkeling
 Save Settings: Instellingen Opslaan
-Launch WebCalendar: Lanceer WebKalender
+Launch WebCal: Lanceer WebKalender
 
 ########################################
 # Page: install/install_functions.php

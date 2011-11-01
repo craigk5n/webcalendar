@@ -147,7 +147,7 @@ Home URL: Haupt-URL
 language-help: Gibt die Standard Sprache an.
 Language: Sprache
 browser default language XXX: Ihre derzeitige Browsersprache ist &#34;XXX&#34;.
-Allow user to use themes: &#39;Themen&#39; f&uuml;r Benutzer
+Allow user themes: &#39;Themen&#39; f&uuml;r Benutzer
 themes-help: Erlaubt eine Vielzahl von Updates f&uuml;r Konfigurationseinstellungen. Kleingeschriebene Eintr&auml;ge sind nur benutzereigene Voreinstellungen
 Themes: Thema
 AVAILABLE THEMES: VERF&Uuml;GBARE THEMEN
@@ -344,10 +344,10 @@ Restrict self-reg to blacklist: Einschr&auml;nkung der Selbstregistrierung durch
 allow-self-reg-full-help: Erlaube Selbstregistrierungshilfe (Komplett)
 send self-reg emails: Verwende Benachrichtigungsemail bei Selbstregistrierung
 allow-attachment-help: Erlaubt den Benutzern das Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen
-Allow file attachments to events: Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen erlauben
+Allow event attachments: Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen erlauben
 owner can attach if enabled: Falls aktiviert, k&ouml;nnen Administrator und Besitzer jederzeit Dateianh&auml;nge hinzuf&uuml;gen.
 allow-comments-help: Erlaubt das Hinzuf&uuml;gen von Anmerkungen zu Terminen
-Allow comments to events: Hinzuf&uuml;gen von Anmerkungen zu Terminen erlauben
+Allow event comments: Hinzuf&uuml;gen von Anmerkungen zu Terminen erlauben
 owner can comment if enabled: Falls aktiviert, k&ouml;nnen Administrator und Besitzer jederzeit Anmerkungen hinzuf&uuml;gen.
 email-enabled-help: Die Option &#34;JA&#34; erm&ouml;glicht das Versenden von Emails sowie von Erinnerungen &uuml;ber den Kalender. Wenn Sie keinen Mailserver installiert haben setzen Sie diese Option auf &#34;NEIN&#34;.
 Email enabled: Email aktivieren
@@ -863,7 +863,7 @@ please use English not XXX: Bitte verwenden Sie <b>Englisch</b> anstatt XXX.
 ########################################
 # Page: help_docs.php
 #
-WebCalendar Documentation: Webkalender Dokumentation
+WebCal Docs: Webkalender Dokumentation
 Currently in English only.: derzeit nur in Englisch
 
 ########################################
@@ -898,7 +898,7 @@ causes events imported previously: bewirkt, da&szlig; vorige <b>&#34;importierte
 # Page: help_index.php
 #
 Help Index: Hilfe-Index
-About WebCalendar: &Uuml;ber Webkalender
+About WebCal: &Uuml;ber Webkalender
 
 ########################################
 # Page: help_layers.php
@@ -1082,7 +1082,7 @@ entries: Eintr&auml;ge
 Purging events for: L&ouml;sche Termine f&uuml;r
 Finished: Abgeschlossen
 Back: Zur&uuml;ck
-Check box to delete ALL events for a user: Aktivieren zum L&ouml;schen <b>ALLER</b> Termine f&uuml;r diesen Teilnehmer
+to delete ALL events for user: Aktivieren zum L&ouml;schen <b>ALLER</b> Termine f&uuml;r diesen Teilnehmer
 Delete all events before: L&ouml;sche alle Termine vor dem
 Purge deleted only: L&ouml;sche nur die &#39;markiert gel&ouml;schten Eintr&auml;ge&#39; endg&uuml;ltig
 Preview delete: Nur Vorschau der zu l&ouml;schenden Termine
@@ -1106,7 +1106,7 @@ Administrator: =
 Welcome: Willkommen
 New user via email.: Neuer Benutzer via Email.
 Registration: Registrierung
-Welcome to WebCalendar: Willkommen beim Webkalender
+Welcome to WebCal: Willkommen beim Webkalender
 should get email soon: Ihre Email sollte in k&uuml;rze eintreffen.
 Return to Login screen: Zur&uuml;ck zum Loginschirm
 Password (again): Kennwort (wiederholen)
@@ -1732,7 +1732,7 @@ change includes dir permission: Bitte &auml;ndern Sie die Dateiberechtigungen vo
 Your settings have been saved.: Ihre Einstellungen wurden gespeichert.
 OFF: AUS
 ON: EIN
-WebCalendar Setup Wizard: WebKalender Installationsassistent
+WebCal Setup Wizard: WebKalender Installationsassistent
 wizard guide: Dieser Installationsassistent hilft Ihnen bei der Erstellung/Update eines Webkalenders (Grundeinstellung). F&uuml;r Hilfe und die Fehlersuche beachten Sie auch folgende Dokumente
 System Administrators Guide: Systemverwalter-Anleitung (in Englisch)
 Frequently Asked Questions: H&auml;ufig gestellte Fragen und Antworten (in Englisch)
@@ -1798,7 +1798,7 @@ Environment: Umgebung
 Production: Produktion
 Development: Entwicklung
 Save Settings: Einstellung speichern
-Launch WebCalendar: Webkalender starten
+Launch WebCal: Webkalender starten
 
 ########################################
 # Page: install/install_functions.php

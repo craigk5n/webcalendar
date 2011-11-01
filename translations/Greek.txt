@@ -664,7 +664,7 @@ minute: λεπτό
 #
 Purging events for: Εκκαθάριση γεγονότων για το χρήστη:
 Finished: Ολοκληρώθηκε
-Check box to delete ALL events for a user: Επιλέξτε το για να διαγραφούν <b>ΟΛΑ</b> τα γεγονότα για το χρήστη
+to delete ALL events for user: Επιλέξτε το για να διαγραφούν <b>ΟΛΑ</b> τα γεγονότα για το χρήστη
 Delete all events before: Διαγραφή όλων των γεγονότων πριν τις
 Preview delete: Προεπισκόπηση διαγραφής
 really delete events for: Είστε σίγουρος οτι θέλετε να διαγραφούν τα γεγονότα για το χρήστη:

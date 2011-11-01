@@ -136,7 +136,7 @@ Home URL: Alap URL
 language-help: Megadja, hogy milyen nyelvet akarsz használni.
 Language: Nyelv
 Your browser default language is: A böngészõd alapértelmezett nyelve
-Allow user to use themes: A felhasználó használhat témákat
+Allow user themes: A felhasználó használhat témákat
 themes-help: Beállítások tömeges módosítása. A kisbetűs cimkék csak felhasználó színtűek.
 Themes: Témák
 AVAILABLE THEMES: ELÉRHETŐ TÉMÁK
@@ -288,10 +288,10 @@ Restrict self-reg to blacklist: A regisztráció korlátozása IP cím alapján
 allow-self-reg-full-help: A felhasználók a teljes regisztrációt elvégezhetik
 send self-reg emails: Felhasználónevek és jelszavak küldése emailben
 allow-attachment-help: Mellékletek csatolhatók az eseményekhez
-Allow file attachments to events: Mellékletek csatolhatók az eseményekhez
+Allow event attachments: Mellékletek csatolhatók az eseményekhez
 owner can attach if enabled: Admin és a tulajdonos csatolhat mellékletet
 allow-comments-help: Megjegyzések írhatók az eseményekhez
-Allow comments to events: Megjegyzések engedélyezése
+Allow event comments: Megjegyzések engedélyezése
 owner can comment if enabled: Admin és a tulajdonos mindig írhat megjegyzést
 email-enabled-help: Be- vagy kikapcsolhatod az összes email-értesítést és emlékeztetést. Kapcsold ki, ha a szervereden nincs rendesen beállítva a levélküldés.
 Email enabled: Email engedélyezése
@@ -862,7 +862,7 @@ Display if created by Assistant: Megjelenítés, ha titkár hozta létre
 Purging events for: A következõ eseményeinek törlése:
 Finished: Kész
 Back: =
-Check box to delete ALL events for a user: Jelöld be a felhasználó <b>ÖSSZES</b> eseményének törléséhez
+to delete ALL events for user: Jelöld be a felhasználó <b>ÖSSZES</b> eseményének törléséhez
 Delete all events before: Az összes ezelõtti esemény törlése
 Preview delete: Törlendők előnézete
 really delete events for: Biztosan törölni akarod a következõ felhasználó eseményeit:
@@ -881,7 +881,7 @@ If email received in error: Ha tévedésből kaptad ezt a levelet és nem íratk
 Administrator: Adminisztrátor
 Welcome: Üdvözöllek
 Registration: Regisztráció
-Welcome to WebCalendar: Üdvözöllek a WebNaptárban
+Welcome to WebCal: Üdvözöllek a WebNaptárban
 should get email soon: Az emailed hamaorsan megérkezik
 Return to Login screen: Vissza bejelentkezéshez
 Password (again): =

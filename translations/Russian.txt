@@ -137,7 +137,7 @@ Home URL: Домашний адрес
 language-help: Определяет какой язык должен быть использован.
 Language: Язык
 Your browser default language is: Язык вашего браузера по умолчанию
-Allow user to use themes: Разрешить пользователям темы
+Allow user themes: Разрешить пользователям темы
 themes-help: Разрешить массовое обновление настроек конфигурации. Настройках пользователя маленькими буквами.
 Themes: Темы
 AVAILABLE THEMES: ДОСТУПНЫЕ ТЕМЫ
@@ -313,10 +313,10 @@ Restrict self-reg to blacklist: Ограничить регистрацию черному листу
 allow-self-reg-full-help: Разрешить новым пользователям завершать прошесс регистрации онлайн.
 send self-reg emails: Генерирует пароли и рассылает их новым пользователям. Это должно помочь против спамеров.
 allow-attachment-help: Разрешить пользователям загружать вложения к событиям
-Allow file attachments to events: Разрешить присоединять файлы к событиям
+Allow event attachments: Разрешить присоединять файлы к событиям
 owner can attach if enabled: Администратор и владелец всегда могут загружать вложения если включено
 allow-comments-help: Разрешить пользователям комментировать события
-Allow comments to events: Разрешить комментировать события
+Allow event comments: Разрешить комментировать события
 owner can comment if enabled: Администратор и владелец всегда могут добавлять комментарии если включено
 email-enabled-help: Включить или выключитть всю рассылку уведомлений и напоминаний. Выберите "Нет", если ваш сервер не настроен для отсылки сообщений.
 Email enabled: Электронная почта включена
@@ -958,7 +958,7 @@ entries: записи
 Purging events for: Удалить события для
 Finished: Закончено
 Back: Назад
-Check box to delete ALL events for a user: Отметить для удаления <b>ВСЕХ</b> событий пользователя
+to delete ALL events for user: Отметить для удаления <b>ВСЕХ</b> событий пользователя
 Delete all events before: Удалить все события до
 Preview delete: Предпросмотр удаления
 really delete events for: Вы уверены, что хотите удалить события для
@@ -977,7 +977,7 @@ If email received in error: Если вы получили это письмо по ошибке и не подписыва
 Administrator: Администратор
 Welcome: Добро пожаловать
 Registration: Регистрация
-Welcome to WebCalendar: Добро пожаловать в WebCalendar
+Welcome to WebCal: Добро пожаловать в WebCalendar
 should get email soon: Ваше письмо должно быть скоро доставлено
 Return to Login screen: Вернуться на страницу входа
 Password (again): Пароль (повторить)
@@ -1567,7 +1567,7 @@ Environment: Окружение
 Production: Производство
 Development: Разработка
 Save Settings: Сохранить настройки
-Launch WebCalendar: Запустить WebCalendar
+Launch WebCal: Запустить WebCalendar
 
 ########################################
 # Page: install/install_functions.php

@@ -117,7 +117,7 @@ if ( $single_user == 'N' ) {
 }
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   ?>
-  <td valign="top" id="categoryselection">Categories:</td>
+  <td valign="top" id="categoryselection"><?php translate( 'Categories_';?></td>
   <td valign="top" onmouseover="setCategoryVisibility(true)" onmouseout="setCategoryVisibility(false)">
   <img id="catexpand" src="images/expand.gif">
   <span id="selectedcategories">All</span><br>
@@ -196,34 +196,34 @@ Agenda content goes here...
 <div id="viewEventDiv" style="display: none;">
 <table border="0">
   <tr><td colspan="2"><h3 id="name" class="eventName"> </h3></td></tr>
-  <tr><td class="aligntop bold"><?php etranslate("Description")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Description_' )?></td>
     <td id="description">  </td></tr>
-  <tr><td class="aligntop bold"><?php etranslate("Date")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Date_' )?></td>
     <td id="date">  </td></tr>
-  <tr><td class="aligntop bold"><?php etranslate("Time")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Time_' )?></td>
     <td id="time">  </td></tr>
 <?php if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate("Priority")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Priority_' )?></td>
     <td id="priority">  </td></tr>
 <?php } ?>
-  <tr><td class="aligntop bold"><?php etranslate("Access")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Access' )?></td>
     <td id="access">  </td></tr>
 <?php if ( $single_user == 'N' ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate("Created by")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Created by' )?></td>
     <td id="createdby">  </td></tr>
 <?php } ?>
-  <tr><td class="aligntop bold"><?php etranslate("Updated")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Updated' )?></td>
     <td id="updated">  </td></tr>
 <?php if ( $show_participants ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate("Participants")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Participants_' )?></td>
     <td id="participants">  </td></tr>
 <?php } ?>
 <?php if ( Doc::attachmentsEnabled() ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate("Attachments")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Attachments' )?></td>
     <td id="attachments">  </td></tr>
 <?php } ?>
 <?php if ( Doc::commentsEnabled() ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate("Comments")?>:</td>
+  <tr><td class="aligntop bold"><?php etranslate( 'Comments' )?></td>
     <td id="comments">  </td></tr>
 <?php } ?>
   <tr><td colspan="2">&nbsp;</td></tr>
@@ -235,7 +235,7 @@ Agenda content goes here...
 <div id="quickAddDiv" style="display: none;">
 <input type="hidden" name="quickAddParticipants" id="quickAddParticipants" value="">
 <table border="0">
-<tr><td class="aligntop bold"><?php etranslate('Date');?>:</td>
+<tr><td class="aligntop bold"><?php etranslate( 'Date_' );?></td>
   <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
   </td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Brief Description');?></td>

@@ -199,7 +199,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $js_ar[] = 'menu/themes/default/theme.js';
     // Then just load in the pieces that are different.
     $tmp = 'menu/themes/' . $menu_theme . '/theme.js';
-    if(file_exists $tmp ) {
+    if ( file_exists( $tmp ) ) {
       $js_ar[] = $tmp;
     }
   }

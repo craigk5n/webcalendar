@@ -656,7 +656,7 @@ minute: minuto
 #
 Purging events for: Eliminando eventos para
 Finished: Terminado
-Check box to delete ALL events for a user: Marcar la casilla para borrar <b>TODOS</b> los eventos de un usuario
+to delete ALL events for user: Marcar la casilla para borrar <b>TODOS</b> los eventos de un usuario
 Delete all events before: Borrar todos los eventos antes de
 really delete events for: ¿Estás seguro de querer borrar los eventos de
 

@@ -176,7 +176,7 @@ language-help: Especifica o idioma a usar.
 Language: Idioma
 Your browser default language is: O idioma default do seu browser é
 browser default language XXX: O idioma default do seu browser é "XXX".
-Allow user to use themes: Permitir o uso de Temas pelo usuário
+Allow user themes: Permitir o uso de Temas pelo usuário
 themes-help: Permitir modificação em bloco das configurações. Título em caixa baixa são somente preferências de usuário.
 Themes: Temas
 AVAILABLE THEMES: TEMAS DISPONÍVEIS
@@ -361,10 +361,10 @@ Restrict self-reg to blacklist: Restringir auto-registro para lista negra
 allow-self-reg-full-help: Permitir que novos usuários façam auto-registro on-line
 send self-reg emails: Gerar senhas e enviar para novos usuários
 allow-attachment-help: Permitir que usuários enviem anexos aos eventos.
-Allow file attachments to events: Permitir envio de anexos
+Allow event attachments: Permitir envio de anexos
 owner can attach if enabled: Se habilitado, Administradores e Criadores podem sempre enviar anexos.
 allow-comments-help: Permitir que comentários sejam enviados para os eventos.
-Allow comments to events: Permitir comentários
+Allow event comments: Permitir comentários
 owner can comment if enabled: Se habilitado, Administradores e Criadores sempre podem enviar comentários.
 email-enabled-help: habilita ou desabilita o envio de email para notificações e lembretes. Especifique "Não" se o servidor não está configurado para enviar emails.
 Email enabled: Habilitar Email
@@ -884,7 +884,7 @@ please use English not XXX: =
 ########################################
 # Page: help_docs.php
 #
-WebCalendar Documentation: Documentação WebCalendar
+WebCal Docs: Documentação WebCalendar
 Currently in English only.: Atualmente somente em Inglês.
 
 ########################################
@@ -917,7 +917,7 @@ Overwrite Prior Import: Sobreescrever importação anterior
 # Page: help_index.php
 #
 Help Index: =
-About WebCalendar: =
+About WebCal: =
 
 ########################################
 # Page: help_layers.php
@@ -1089,7 +1089,7 @@ entries: entradas
 Purging events for: Limpando eventos de
 Finished: Terminado
 Back: Voltar
-Check box to delete ALL events for a user: Selecionar para eliminar <b>TODOS</b> os eventos do usuário
+to delete ALL events for user: Selecionar para eliminar <b>TODOS</b> os eventos do usuário
 Delete all events before: Apagar todos os eventos anteriores a
 Purge deleted only: Eliminar somentes os apagados
 Preview delete: Simula apagar
@@ -1114,7 +1114,7 @@ Administrator: Administrador
 Welcome: Bemvindo
 New user via email.: Novo usuário por email.
 Registration: Registro
-Welcome to WebCalendar: Bemvindo ao nosso WebCalendar
+Welcome to WebCal: Bemvindo ao nosso WebCalendar
 should get email soon: Seu email deve chegar em breve.
 Return to Login screen: Voltar à tela de Login
 Password (again): Senha (de novo)
@@ -1780,7 +1780,7 @@ Environment: =
 Production: =
 Development: =
 Save Settings: =
-Launch WebCalendar: =
+Launch WebCal: =
 
 ########################################
 # Page: install/install_functions.php

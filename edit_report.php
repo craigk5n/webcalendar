@@ -217,7 +217,7 @@ echo '
       <table summary="">
         <tr>
           <td><label for="rpt_name">' . translate ( 'Report name' )
- . ':</label></td>
+ . '</label></td>
           <td><input type="text" name="report_name" id="rpt_name" size="40" '
  . 'maxlength="50" value="' . $report_name . '"></td>
         </tr>';
@@ -225,7 +225,7 @@ echo '
 if ( $show_participants ) {
   echo '
         <tr>
-          <td><label for="rpt_user">' . translate ( 'User' ) . ':</label></td>
+          <td><label for="rpt_user">' . translate( 'User_' ) . '</label></td>
           <td>
             <select name="report_user" id="rpt_user" size="1">
               <option value=""' . ( empty( $report_user ) ? ' selected>' : '>' )
@@ -257,34 +257,34 @@ echo ( $is_admin ? '
   // allow option of adding to all users menu.
  . '
         <tr>
-          <td><label>' . translate( 'Include link in menu' ) . ':</label></td>
+          <td><label>' . translate( 'Include link in menu' ) . '</label></td>
           <td>' . print_radio( 'show_in_trailer', '', '',
     ( ! empty( $report_show_in_menu ) && $report_show_in_menu == 'Y'
       ? 'Y' : 'N' ) ) . '</td>
         </tr>' : '' ) . '
         <tr>
           <td><label>' . translate( 'Include standard header/trailer' )
- . ':</label></td>
+ . '</label></td>
           <td>' . print_radio( 'include_header', '', '',
     ( ! empty( $report_include_header ) && $report_include_header == 'Y'
       ? 'Y' : 'N' ) ) . '</td>
         </tr>
         <tr>
           <td><label>' . translate( 'Include previous/next links' )
- . ':</label></td>
+ . '</label></td>
           <td>' . print_radio( 'allow_nav', '', '',
     ( ! empty( $report_allow_nav ) && $report_allow_nav == 'Y'
       ? 'Y' : 'N' ) ) . '</td>
         </tr>
         <tr>
-          <td><label>' . translate( 'Include empty dates' ) . ':</label></td>
+          <td><label>' . translate( 'Include empty dates' ) . '</label></td>
           <td>' . print_radio( 'include_empty', '', '',
     ( ! empty( $report_include_empty ) && $report_include_empty == 'Y'
       ? 'Y' : 'N' ) ) . '</td>
         </tr>
         <tr>
           <td><label for="rpt_time_range">' . translate ( 'Date range' )
- . ':</label></td>
+ . '</label></td>
           <td>
             <select name="time_range" id="rpt_time_range">';
 
@@ -329,8 +329,8 @@ echo '
  . '</label></td>
         </tr>
         <tr>
-          <td valign="top"><label>' . translate ( 'Page template' )
- . ':</label></td>
+          <td valign="top"><label>' . translate( 'Page template_' )
+ . '</label></td>
           <td><textarea rows="12" cols="60" name="page_template">'
  . htmlentities ( $page_template, ENT_COMPAT, $charset ) . '</textarea></td>
           <td class="aligntop cursoradd" colspan="2">';
@@ -343,8 +343,8 @@ echo '
           </td>
         </tr>
         <tr>
-          <td valign="top"><label>' . translate ( 'Day template' )
- . ':</label></td>
+          <td valign="top"><label>' . translate( 'Day template_' )
+ . '</label></td>
           <td><textarea rows="12" cols="60" name="day_template">'
  . htmlentities ( $day_template, ENT_COMPAT, $charset ) . '</textarea></td>
           <td class="aligntop cursoradd" colspan="2">';
@@ -357,8 +357,8 @@ echo '
           </td>
         </tr>
         <tr>
-          <td valign="top"><label>' . translate ( 'Event template' )
- . ':</label></td>
+          <td valign="top"><label>' . translate( 'Event template_' )
+ . '</label></td>
           <td><textarea rows="12" cols="60" name="event_template" id="event_template">'
  . htmlentities ( $event_template, ENT_COMPAT, $charset ) . '</textarea></td>
           <td class="aligntop cursoradd" width="150px">';

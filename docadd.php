@@ -206,11 +206,11 @@ print_header();
 <table summary="">
 
 <tr><td class="aligntop"><label for="description">
-  <?php etranslate ( 'Subject' )?>:</label></td>
+  <?php etranslate( 'Subject_' )?></label></td>
   <td><input type="text" name="description" size="50" maxlength="127"></td></tr>
 <!-- TODO: htmlarea or fckeditor support -->
 <tr><td class="aligntop"><label for="comment">
-  <?php etranslate ( 'Comment' )?>:</label></td>
+  <?php etranslate ( 'Comment_' )?></label></td>
   <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>
 <tr><td colspan="2">
 <input type="submit" value="<?php etranslate( 'Add Comment' )?>"></td></tr>

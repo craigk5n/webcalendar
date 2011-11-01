@@ -665,7 +665,7 @@ minute: =
 #
 Purging events for: Supprimer les événements de
 Finished: Terminé
-Check box to delete ALL events for a user: Cocher la case pour supprimer <b>TOUS</b> les événements d'un utilisateur
+to delete ALL events for user: Cocher la case pour supprimer <b>TOUS</b> les événements d'un utilisateur
 Delete all events before: Supprimer les événements antérieurs au
 Preview delete: Aperçu de la suppression
 

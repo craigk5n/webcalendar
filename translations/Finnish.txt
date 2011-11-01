@@ -621,7 +621,7 @@ hour: tuntia
 #
 Purging events for: Tuhotaan tapahtumia kohteesta
 Finished: Valmis
-Check box to delete ALL events for a user: Laita rasti ruutuun poistaaksesi <b>KAIKKI</b> käyttäjän tapahtumat
+to delete ALL events for user: Laita rasti ruutuun poistaaksesi <b>KAIKKI</b> käyttäjän tapahtumat
 Delete all events before: Poista tapahtumat ennen
 really delete events for: Haluatko varmasti poistaa kaikki tapahtumat käyttäjältä
 

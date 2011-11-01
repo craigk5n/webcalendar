@@ -17,15 +17,6 @@
  * @package WebCalendar
  */
 
-// How about we set these once, in "tools/update_translation.pl",
-// instead of multiple files?
-// However, this does require that "translations/English-US.txt",
-// at least, is current.
-// translate() for these is always English at this point.
-// We're just loading the perl variables.
-$PROGRAM_VERSION = translate( 'PROGRAM_VERSION' );
-$PROGRAM_DATE    = translate( 'PROGRAM_DATE' );
-
 /**
  * Prints a fatal error message to the user along with a link to the
  * Troubleshooting section of the WebCalendar System Administrator's Guide.
@@ -101,9 +92,6 @@ function do_config( $fileLoc ) {
   $PROGRAM_NAME, $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings,
   $single_user, $single_user_login, $TROUBLE_URL, $user_inc, $use_http_auth;
 
-  // The "WebCalendar" part should already be translated.
-  $PROGRAM_NAME = translate( 'PROGRAM_NAME', false, 'D' );
-
   $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
   $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
 
@@ -122,7 +110,7 @@ function do_config( $fileLoc ) {
   // If still empty.... use __FILE__.
   if( empty( $fd ) ) {
     $testName = get_full_include_path( 'settings.php' );
-    $fd = @fopen( $fileLoc, 'rb', true );
+    $fd = @fopen( $testName, 'rb', true );
 
     if( $fd )
       $fileLoc = $testName;

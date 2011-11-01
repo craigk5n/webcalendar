@@ -4,6 +4,10 @@ NOTE: This is the 1.3.0 development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2011)
+ - 1-Nov-11 bb Begin ending support for Netscape 4 and Internet Explorer 4.
+   Moving more CSS/JS and punctuation out of the code.
+   Fix typos and other bugs.
+   Shorten some dupe code.
  - 26-Oct-11 bb TRANSLATORS! When you run "tools/update_translation.pl",
      keep at least the first backup file for awhile.
      Phrases are being moved and updated A LOT! And some got skipped by accident.

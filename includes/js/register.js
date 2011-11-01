@@ -16,10 +16,10 @@ function valid_form() {
     alert(xlate['passwordsNoMatch']); // translate( 'passwords not identical' )
     return false;
   }
-  
+
   checkers('user', 'register');
   checkers('uemail', 'email');
-  
+
   return validform;
 }
 
@@ -35,13 +35,13 @@ function showResponse(originalRequest) {
   if (originalRequest.responseText) {
     // This causes javascript errors in Firefox, but these can be ignored.
     alert(originalRequest.responseText);
-    
+
     if (formfield == 'user')
       ds.user.focus();
-    
+
     if (formfield == 'uemail')
       ds.uemail.focus();
-    
+
     validform = false;
   } else {
     validform = true;

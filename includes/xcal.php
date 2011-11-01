@@ -1834,7 +1834,7 @@ function import_data ( $data, $overwrite, $type ) {
         // No Conflict
         if ( $count_suc == 0 ) {
           echo '<b><h2>' .
-          translate( 'Event Imported' ) . ":</h2></b><br>\n";
+          translate( 'Event Imported' ) . "</h2></b><br>\n";
         }
         $count_suc++;
 

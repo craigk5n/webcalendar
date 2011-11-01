@@ -4,7 +4,7 @@
 
 var u = location.href,
 d = (u.indexOf('install') >= 0 ? '../' : ''),
-p = u.substring(u.lastIndexOf('\/'));
+p = u.substring(u.lastIndexOf('\/') + 1);
 
 p = p.substring(0, p.indexOf('.'));
 
@@ -12,14 +12,13 @@ p = p.substring(0, p.indexOf('.'));
 // And other files that are going to see extensive use later,
 // with HTML5 and CSS3 especially.
 linkFile(d + 'includes/css/' + p + '.css', 'link');
-
-for (var i in[
-    p,
+for (var i in Array(
     'dateformat',
     'geturl',
     'jquery',    // Complements "prototype.js" and works with
     'modernizr', // to make older browsers do HTML5/CSS3 things with minimal code from us.
-  ]) {
+    p,           // Loads the CSS/JS for the page that called this.
+  )) {
   linkFile(d + 'includes/js/' + i + '.js');
 }
 function addLoadListener(fn) {
@@ -31,7 +30,7 @@ function addLoadListener(fn) {
     window.attachEvent('onload', fn);
   } else {
     var oldfn = window.onload;
-    
+
     if (typeof window.onload != 'function') {
       window.onload = fn;
     } else {
@@ -49,13 +48,13 @@ function attachEventListener(target, eventType, functionRef, capture) {
     target.attachEvent('on' + eventType, functionRef);
   } else {
     eventType = 'on' + eventType;
-    
+
     if (typeof target[eventType] == 'function') {
       var oldListener = target[eventType];
-      
+
       target[eventType] = function () {
         oldListener();
-        
+
         return functionRef();
       }
     } else {
@@ -66,14 +65,14 @@ function attachEventListener(target, eventType, functionRef, capture) {
 }
 function getElementsByAttribute(attribute, attributeValue) {
   var elementArray = matchedArray = [];
-  
+
   elementArray = (document.all
      ? document.all : document.getElementsByTagName('*'));
-  
+
   for (var i = elementArray.length - 1; i >= 0; i--) {
     if (attribute == 'class') {
       var pattern = new RegExp('(^| )' + attributeValue + '( |$)');
-      
+
       if (pattern.test(elementArray[i].className)) {
         matchedArray[matchedArray.length] = elementArray[i];
       }
@@ -95,27 +94,27 @@ if (typeof document.getElementsBySelector == 'undefined') {
   - returns an array of element objects from the current document
   matching the CSS selector. Selectors can contain element names,
   class names and ids and can be nested. For example:
-  
+
   elements = document.getElementsBySelect('div#main p a.external')
-  
+
   Will return an array of all 'a' elements with 'external' in their
   class attribute that are contained inside 'p' elements that are
   contained inside the 'div' element which has id="main".
-  
+
   New in version 0.4: Support for CSS2 and CSS3 attribute selectors:
   See http://www.w3.org/TR/css3-selectors/#attribute-selectors
-  
+
   Version 0.4 - Simon Willison, March 25th 2003
   -- Works in Phoenix 0.5, Mozilla 1.3, Opera 7, Internet Explorer 6,
   Internet Explorer 5 on Windows.
   -- Opera 7 fails.
    */
-  
+
   function getAllChildren(e) {
     // Returns all children of element. Workaround required for IE5/Windows. Ugh.
     return (e.all ? e.all : e.getElementsByTagName('*'));
   }
-  
+
   document.getElementsBySelector = function (selector) {
     // Attempt to fail gracefully in lesser browsers.
     if (!document.getElementsByTagName) {
@@ -124,17 +123,17 @@ if (typeof document.getElementsBySelector == 'undefined') {
     // Split selector in to tokens.
     var tokens = selector.split(' ');
     var currentContext = [document];
-    
+
     for (var i = 0, l = tokens.length; i < l; i++) {
       token = tokens[i].replace(/^\s+/, '').replace(/\s+$/, '');
-      
+
       if (token.indexOf('#') > -1) {
         // Token is an ID selector.
         var bits = token.split('#');
         var tagName = bits[0],
         id = bits[1],
         element = document.getElementById(id);
-        
+
         if (tagName && element.nodeName.toLowerCase() != tagName) {
           // Tag with that ID not found, return false.
           return new Array();
@@ -148,28 +147,28 @@ if (typeof document.getElementsBySelector == 'undefined') {
         var bits = token.split('.');
         var tagName = bits[0],
         className = bits[1];
-        
+
         if (!tagName) {
           tagName = '*';
         }
         // Get elements matching tag, filter them for class selector.
         var found = [],
         foundCount = 0;
-        
+
         for (var h = 0, m = currentContext.length; h < m; h++) {
           var elements;
           elements = (tagName == '*'
              ? getAllChildren(currentContext[h])
              : currentContext[h].getElementsByTagName(tagName));
-          
+
           for (var j = 0, n = elements.length; j < n; j++) {
             found[foundCount++] = elements[j];
           }
         }
         currentContext = [];
-        
+
         var currentContextIndex = 0;
-        
+
         for (var k = 0, o = found.length; k < o; k++) {
           if (found[k].className && found[k].className.match(new RegExp('\\b' + className + '\\b')))
             currentContext[currentContextIndex++] = found[k];
@@ -191,30 +190,30 @@ if (typeof document.getElementsBySelector == 'undefined') {
         attrName = RegExp.$2,
         attrOperator = RegExp.$3,
         attrValue = RegExp.$4;
-        
+
         if (!tagName) {
           tagName = '*';
         }
         // Grab all of the tagName elements within current context.
         var found = [],
         foundCount = 0;
-        
+
         for (var h = 0, m = currentContext.length; h < m; h++) {
           var elements;
-          
+
           elements = (tagName == '*'
              ? getAllChildren(currentContext[h])
              : currentContext[h].getElementsByTagName(tagName));
-          
+
           for (var j = 0, n = elements.length; j < n; j++) {
             found[foundCount++] = elements[j];
           }
         }
         currentContext = [];
-        
+
         var currentContextIndex = 0,
         checkFunction; // This function will be used to filter the elements.
-        
+
         switch (attrOperator) {
         case '=': // Equality
           checkFunction = function (e) {
@@ -252,9 +251,9 @@ if (typeof document.getElementsBySelector == 'undefined') {
           };
         }
         currentContext = [];
-        
+
         var currentContextIndex = 0;
-        
+
         for (var k = 0, o = found.length; k < o; k++) {
           if (checkFunction(found[k])) {
             currentContext[currentContextIndex++] = found[k];
@@ -264,13 +263,13 @@ if (typeof document.getElementsBySelector == 'undefined') {
       }
       // If we get here, token is JUST an element (not a class or ID selector).
       tagName = token;
-      
+
       var found = [],
       foundCount = 0;
-      
+
       for (var h = 0, m = currentContext.length; h < m; h++) {
         var elements = currentContext[h].getElementsByTagName(tagName);
-        
+
         for (var j = 0, n = elements.length; j < n; j++) {
           found[foundCount++] = elements[j];
         }
@@ -284,7 +283,7 @@ function linkFile(wher, what, desc, medi) {
   /**
   Link in an external file (CSS or JavaScript) from JavaScript.
   And, load it in the background while the main program continues on.
-  
+
   params:
   wher = string: Where is the file? (required)
   what = string: 'script' for javascript (default) or 'link' for CSS.
@@ -293,7 +292,7 @@ function linkFile(wher, what, desc, medi) {
   the default stylesheet should be titled as 'default'.
   medi = string: What media (screen, print, etc.).
    */
-  
+
   if (typeof wher == 'undefined') {
     return;
   }
@@ -306,9 +305,9 @@ function linkFile(wher, what, desc, medi) {
   if (typeof medi == 'undefined') {
     medi = false;
   }
-  
+
   var s = document.createElement(what);
-  
+
   // To make IE < 9 play nice.
   // First, use setAttribute() with '' 2nd param,
   // then use DOM0 to set the real value.
@@ -320,7 +319,7 @@ function linkFile(wher, what, desc, medi) {
     s.setAttribute('rel', '');
     s.href = wher;
     s.rel = (desc && desc != 'default' ? 'alternative ' : '') + 'stylesheet';
-    
+
     if (medi) {
       s.setAttribute('media', '');
       s.media = medi;
@@ -336,7 +335,7 @@ function rbetween(min, max) {
 }
 function stopDefaultAction(event) {
   event.returnValue = false;
-  
+
   if (typeof event.preventDefault != 'undefined') {
     event.preventDefault();
   }
@@ -346,29 +345,47 @@ function targeTo(targ, aId) {
   /**
   Target Links to New Window.
    */
-  
+
   if (!document.getElementsByTagName) {
     return;
   }
   var a,
   anchors;
-  
+
   a = (typeof aId === 'undefined'
      ? document : document.getElementById(aId));
   anchors = a.getElementsByTagName('a');
-  
+
   for (var i = anchors.length - 1; i >= 0; i--) {
     a = anchors[i];
     a.setAttribute('target', '');
     a.target = targ; // If '', turn target off.
   }
 }
+// Combining functions MakeVisible (x2), MakeInvisible, showFrame and hideFrame.
+function toggleVisible(name, v, d, mom) {
+  var ele;
+
+  if (typeof mom != 'undefined')
+    ele = window.opener.document.getElementById(name).style;
+  else
+    ele = document.getElementById(name).style;
+
+  if (v == 'undefined') {
+    v = (ele.display == 'visible' ? 'hidden' : 'visible');
+  }
+
+  ele.visibility = v;
+  if (d) {
+    ele.display = d;
+  }
+}
 function wc_getCookie(Name) {
   var cookies = document.cookie.split(';');
-  
+
   for (var i = cookies.length - 1; i >= 0; i--) {
     var crumbs = cookies[i].split('=');
-    
+
     if (crumbs[0] == Name) {
       return crumbs[1];
     }
@@ -379,4 +396,3 @@ function wc_setCookie(name, value, expire) {
   document.cookie = name + '=' + escape(value)
      + (expire == null ? '' : '; expires=' + e.toGMTString());
 }
- 

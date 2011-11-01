@@ -62,7 +62,7 @@ list_help( array(
   translate ( 'remember-last-login-help' ),
   translate ( 'Require event approvals' ) =>
   translate ( 'require-approvals-help' ),
-  translate ( 'Server URL_' ) => translate ( 'server-url-help' ),
+  translate ( 'Server URL' ) => translate( 'server-url-help' ),
   translate ( 'Specify timed event length by' ) =>
   translate ( 'timed-evt-len-help' ),
   translate ( 'Time format' ) => translate ( 'time-format-help' ),

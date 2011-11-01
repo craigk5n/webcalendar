@@ -662,7 +662,7 @@ minute: minuto
 #
 Purging events for: Eliminando eventos de
 Finished: Finalizado
-Check box to delete ALL events for a user: Marcar para excluir <b>TODOS</b> os eventos de um usuário
+to delete ALL events for user: Marcar para excluir <b>TODOS</b> os eventos de um usuário
 Delete all events before: Excluir todos os eventos ateriores
 Preview delete: Excluir Visualização
 really delete events for: Você tem certeza que deseja excluir os eventos para

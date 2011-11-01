@@ -619,18 +619,19 @@ if ( ! empty ( $menuExtras[6] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[6] );
 
 // Help Menu (Link)
-// translate ( 'Help Contents' )  translate ( 'About WebCalendar' )
+// translate( 'Help Contents' )  translate( 'About WebCal' )
 if ( $menuConfig['Help'] ) {
   jscMenu_menu ( 'Help' );
 
   if ( $menuConfig['Help Contents'] )
     jscMenu_item( 'help.png', 'Help Contents', 'javascript:openHelp()' );
 
-  if ( $menuConfig['About WebCalendar'] && $menuConfig['Help Contents'] )
-    jscMenu_divider();
+  if ( $menuConfig['About WebCalendar'] ) {
+    if ( $menuConfig['Help Contents'] )
+      jscMenu_divider();
 
-  if ( $menuConfig['About WebCalendar'] )
-    jscMenu_item( 'k5n.png', 'About WebCalendar', 'javascript:openAbout()' );
+    jscMenu_item( 'k5n.png', 'About WebCal', 'javascript:openAbout()' );
+  }
 
   jscMenu_close();
 }

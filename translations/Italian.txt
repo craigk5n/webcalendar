@@ -163,7 +163,7 @@ language-help: Specifica quale lingua utilizzare
 Language: Lingua
 Your browser default language is: La lingua preferita per il tuo navigatore &egrave;:
 browser default language XXX: La lingua preferita del tuo navigatore &egrave; "XXX".
-Allow user to use themes: Consenti agli utenti di usare i temi
+Allow user themes: Consenti agli utenti di usare i temi
 themes-help: Consente aggiornamento di massa delle impostazioni di configurazione. Le etichette in minuscolo sono solo pref utente.
 Themes: Temi
 AVAILABLE THEMES: TEMI DISPONIBILI
@@ -360,10 +360,10 @@ Restrict self-reg to blacklist: Limita auto-registrazione da lista nera
 allow-self-reg-full-help: Consenti ai nuovi utenti di completare l'auto-registrazione in-linea
 send self-reg emails: Genera parola chiave e inviala a nuovi utenti
 allow-attachment-help: Consenti agli utenti di allegare documenti agli eventi
-Allow file attachments to events: Consenti allegati per eventi
+Allow event attachments: Consenti allegati per eventi
 owner can attach if enabled: Amministratore e proprietario possono sempre aggiungere allegati, se abilitato.
 allow-comments-help: Consenti agli utenti di aggiungere commenti agli eventi
-Allow comments to events: Consenti commenti in eventi
+Allow event comments: Consenti commenti in eventi
 owner can comment if enabled: Amministratore e proprietario possono sempre aggiungere commenti, se abilitato.
 email-enabled-help: Attiva o disattiva l'invio di e-mail di notifica ed avviso. Impostalo a "No", se il tuo server non &egrave; propriamente configurato per l'invio di e-mail
 Email enabled: Abilita e-mail
@@ -892,7 +892,7 @@ please use English not XXX: Inoltre usa l'<strong>inglese</strong> piuttosto che
 ########################################
 # Page: help_docs.php
 #
-WebCalendar Documentation: Documentazione WebCalendar
+WebCal Docs: Documentazione WebCalendar
 Currently in English only.: Attualmente solo in inglese.
 
 ########################################
@@ -929,7 +929,7 @@ causes events imported previously: marcher&agrave; come cancellati gli eventi im
 # Page: help_index.php
 #
 Help Index: Indice della Guida
-About WebCalendar: A proposito di WebCalendar
+About WebCal: A proposito di WebCalendar
 
 ########################################
 # Page: help_layers.php
@@ -1104,7 +1104,7 @@ entries: elementi
 Purging events for: Cancellando gli eventi per
 Finished: Finito
 Back: Indietro
-Check box to delete ALL events for a user: Abilita la casella per cancellare <b>TUTTI</b> gli eventi per un utente
+to delete ALL events for user: Abilita la casella per cancellare <b>TUTTI</b> gli eventi per un utente
 Delete all events before: Cancella tutti gli eventi prima del
 Purge deleted only: Elimina solo cancellati
 Preview delete: Anteprima cancellazione
@@ -1129,7 +1129,7 @@ Administrator: Amministratore
 Welcome: Benvenuto
 New user via email.: Nuovo utente via post@.
 Registration: Registrazione
-Welcome to WebCalendar: Benvenuto su WebCalendar
+Welcome to WebCal: Benvenuto su WebCalendar
 should get email soon: Il tuo messaggio dovrebbe arrivare a breve.
 Return to Login screen: Torna alla schermata di accesso
 Password (again): Parola chiave (di nuovo)
@@ -1765,7 +1765,7 @@ Unable to write to file XXX: Errore: impossibile scrivere nell'archivio "XXX".
 change the file permissions: Cambia i permessi di questo archivio.
 change includes dir permission: Cambia i permessi della cartella "includes" per consentire scrittura ad altri utenti.
 Your settings have been saved.: Impostazioni salvate.
-WebCalendar Setup Wizard: Impostazione guidata di WebCalendar
+WebCal Setup Wizard: Impostazione guidata di WebCalendar
 specify Single-User login: Errore: devi specificare un accesso a singolo-utente.
 Full Path (no backslashes): Percorso completo (no barra-inversa)
 illegal chars in password: La parola chiave contiene caratteri non ammessi.
@@ -1861,7 +1861,7 @@ Environment: Ambiente
 Production: Produzione
 Development: Sviluppo
 Save Settings: Salva impostazioni
-Launch WebCalendar: Avvia WebCalendar
+Launch WebCal: Avvia WebCalendar
 
 ########################################
 # Page: install/install_functions.php

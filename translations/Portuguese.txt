@@ -618,7 +618,7 @@ minute: minuto
 #
 Purging events for: Removendo eventos de
 Finished: Terminado
-Check box to delete ALL events for a user: Seleccione caixa para remover <b>TODOS</b> os eventos do utilizador
+to delete ALL events for user: Seleccione caixa para remover <b>TODOS</b> os eventos do utilizador
 Delete all events before: Remover todos os eventos antes de
 really delete events for: Tem a certeza que quer apagar entradas para
 

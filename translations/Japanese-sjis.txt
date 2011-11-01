@@ -145,7 +145,7 @@ language-help: 使用する言語を指定します。
 Language: 言語
 Your browser default language is: あなたのブラウザの標準言語
 browser default language XXX: ブラウザーの標準言語は「XXX」です。
-Allow user to use themes: ユーザーがテーマを使うことを許可する
+Allow user themes: ユーザーがテーマを使うことを許可する
 themes-help: 設定の一括更新を許可します。小文字のラベルはユーザー設定のみです。
 Themes: テーマ
 AVAILABLE THEMES: 利用可能なテーマ
@@ -303,10 +303,10 @@ Restrict self-reg to blacklist: 自己登録の制限をブラックリストへ
 allow-self-reg-full-help: 新規のユーザがオン・ライン自己登録手続を完了することを許可します。
 send self-reg emails: 自己登録の電子メール通知を使う
 allow-attachment-help: ユーザーがイベントへの添付ファイルの追加をすることを許可します。
-Allow file attachments to events: イベントへのファイル添付を許可する
+Allow event attachments: イベントへのファイル添付を許可する
 owner can attach if enabled: 有効にした場合、管理者と所有者は常に添付を追加できます。
 allow-comments-help: ユーザーがイベントにコメントを追加することを許可します。
-Allow comments to events: イベントへのコメントを許可する
+Allow event comments: イベントへのコメントを許可する
 owner can comment if enabled: 有効にした場合、管理者と所有者は常にコメントを追加できます。
 email-enabled-help: すべてのリマインダーと通知の電子メールを送信を切り替えます。サーバーが適切にメールの送信設定がされていない場合「いいえ」に設定します。
 Email enabled: 電子メール有効
@@ -799,7 +799,7 @@ Overwrite Prior Import: インポート先を上書きする
 # Page: help_index.php
 #
 Help Index: ヘルプ索引
-About WebCalendar: WebCalendar について
+About WebCal: WebCalendar について
 
 ########################################
 # Page: help_layers.php
@@ -951,7 +951,7 @@ entries: エントリー
 Purging events for: 右ユーザーのイベントを消去しています
 Finished: 完了しました
 Back: 戻る
-Check box to delete ALL events for a user: 1 ユーザーのイベントを<b>すべて</b>削除する場合はチェックしてください
+to delete ALL events for user: 1 ユーザーのイベントを<b>すべて</b>削除する場合はチェックしてください
 Delete all events before: 次の日付以前のイベントをすべて削除する
 Preview delete: 削除をプレビューする
 really delete events for: 右ユーザーのイベントをすべて削除して良いですか?：
@@ -969,7 +969,7 @@ change pwd after 1st login: 最初をログインした後にパスワードを変更するでしょう。
 Administrator: 管理者
 Welcome: ようこそ
 Registration: 登録
-Welcome to WebCalendar: ようこそ WebCalendar へ
+Welcome to WebCal: ようこそ WebCalendar へ
 should get email soon: 電子メールはまもなく到着するはずです。
 Return to Login screen: ログイン画面に戻る
 Password (again): パスワード (確認)
@@ -1569,7 +1569,7 @@ Environment: 環境
 Production: 本番
 Development: 開発
 Save Settings: 設定を保存する
-Launch WebCalendar: WebCalendar を起動する
+Launch WebCal: WebCalendar を起動する
 
 ########################################
 # Page: install/install_functions.php

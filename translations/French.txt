@@ -160,7 +160,7 @@ language-help: Spécifie la langue à utiliser.
 Language: Langue
 Your browser default language is: La langue utilisée par défaut par votre navigateur est
 browser default language XXX: La langue par défaut de votre navigateur est XXX.
-Allow user to use themes: Autoriser les utilisateurs à utiliser les thèmes
+Allow user themes: Autoriser les utilisateurs à utiliser les thèmes
 themes-help: Permet la mise à jour en masse des paramètres de configuration. Les libellés en minuscule sont des préférences utilisateurs uniquement.
 Themes: Thèmes
 AVAILABLE THEMES: THEMES DISPONIBLES
@@ -359,10 +359,10 @@ Restrict self-reg to blacklist: Interdit l'auto-enregistrement à la liste noire
 allow-self-reg-full-help: Autorise les nouveaux utilisateurs à complèter le processus d'auto-enregistrement en ligne
 send self-reg emails: Générer des mots de passe et envoyer aux nouveaux utilisateurs
 allow-attachment-help: Autoriser les utilisateurs à ajouter des fchiers joints aux événements
-Allow file attachments to events: Autorise les fichiers joints pour les événements
+Allow event attachments: Autorise les fichiers joints pour les événements
 owner can attach if enabled: L'administrateur et le propriétaire peuvent toujours ajouter des fichiers joints si activé.
 allow-comments-help: Autoriser les utilisateurs à ajouter des commentaires aux événements
-Allow comments to events: Autoriser les commentaires sur les événements
+Allow event comments: Autoriser les commentaires sur les événements
 owner can comment if enabled: L'administrateur et le propriétaire peuvent toujours ajouter des fichiers joints si activé.
 email-enabled-help: Active/Désactive l'envoi de couriel pour la notification et les rappels. Positionnez-le sur « Non » si votre serveur n'est pas configuré pour l'adressage des courriers électroniques.
 Email enabled: Courrier électronique activé
@@ -844,7 +844,7 @@ please use English not XXX: Merci également d'utiliser <strong>l'anglais</strong
 ########################################
 # Page: help_docs.php
 #
-WebCalendar Documentation: Documentation de Webcalendar
+WebCal Docs: Documentation de Webcalendar
 Currently in English only.: Uniquement en anglais pour le moment
 
 ########################################
@@ -881,7 +881,7 @@ causes events imported previously: =
 # Page: help_index.php
 #
 Help Index: Index de l'aide
-About WebCalendar: A propos de WebCalendar
+About WebCal: A propos de WebCalendar
 
 ########################################
 # Page: help_layers.php
@@ -1063,7 +1063,7 @@ entries: entrées
 Purging events for: Supprimer les événements de
 Finished: Terminé
 Back: Retour
-Check box to delete ALL events for a user: Cocher la case pour supprimer <b>TOUS</b> les événements d'un utilisateur
+to delete ALL events for user: Cocher la case pour supprimer <b>TOUS</b> les événements d'un utilisateur
 Delete all events before: Supprimer les événements antérieurs au
 Purge deleted only: Nettoyer les éléments supprimés seulement
 Preview delete: Aperçu de la suppression
@@ -1087,7 +1087,7 @@ Administrator: Administrateur
 Welcome: Bienvenue
 New user via email.: Nouvel utilisateur par email
 Registration: Enregistrement
-Welcome to WebCalendar: Bienvenue sur WebCalendar
+Welcome to WebCal: Bienvenue sur WebCalendar
 should get email soon: L'email devrait vous parvenir très prochainement.
 Return to Login screen: Retourner à la page d'identification
 Password (again): Mot de passe (confirmation)
@@ -1707,7 +1707,7 @@ Unable to write to file XXX: Erreur impossible d'écrire le fichier XXX.
 change the file permissions: Veuillez changer les permissions de ce fichier.
 change includes dir permission: Veuillez changer les permissions du répertoire "includes" pour être autoriser en écriture pour les autres utilisateurs.
 Your settings have been saved.: Vos paramètres ont été sauvés.
-WebCalendar Setup Wizard: WebCalendar Installation Wizard
+WebCal Setup Wizard: WebCalendar Installation Wizard
 wizard guide: Cet installeur wizard va vous guider pour paramétrer un WebCalendar basic. Pour l'aide et les problèmes voyez :<br>
 System Administrators Guide: Guide de l'administrateur système
 Frequently Asked Questions: questions fréquemment posées (FAQ)
@@ -1776,7 +1776,7 @@ Environment: =
 Production: =
 Development: =
 Save Settings: =
-Launch WebCalendar: =
+Launch WebCal: =
 
 ########################################
 # Page: install/install_functions.php

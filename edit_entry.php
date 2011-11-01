@@ -173,7 +173,7 @@ $create_by = $login;
 $wkst = 'MO';
 
 $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
-  ( $is_assistant || $is_admin ) ) ? $user : $login;
+  ( $is_assistant || $is_admin ) ? $user : $login );
 
 ob_start();
 print_header( $INC, $HEAD );
@@ -671,8 +671,7 @@ if ( $can_edit ) {
                   <tr>
                     <td class="tooltip" title="' . tooltip ( 'category-help' )
      . '" valign="top">
-                      <label for="entry_categories">' . translate ( 'Category' )
-     . ':<br></label>
+                      <label for="entry_categories">' . $cat_Str . '<br></label>
                       <input type="button" value="' . translate ( 'Edit' )
      . '" onclick="editCats( event )">
                     </td>
@@ -752,14 +751,14 @@ if ( $can_edit ) {
             <tr>
               <td class="tooltip" title="' . tooltip ( 'location-help' )
      . '"><label for="entry_location">' . translate ( 'Location' )
-     . ':</label></td>
+     . '</label></td>
               <td colspan="2"><input type="text" name="location" '
      . 'id="entry_location" size="55" value="' . htmlspecialchars ( $location )
      . '"></td>
             </tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' ? '
             <tr>
               <td class="tooltip" title="' . tooltip ( 'url-help' )
-     . '"><label for="entry_url">' . translate ( 'URL' ) . ':</label></td>
+     . '"><label for="entry_url">' . $urlStr . '</label></td>
               <td colspan="2"><input type="text" name="entry_url" id="entry_url"'
      . ' size="100" value="' . htmlspecialchars( $cal_url ) . '"></td>
             </tr>' : '' ) . '
@@ -849,7 +848,7 @@ if ( $can_edit ) {
         </tr>
         <tr>
           <td class="tooltip" title="' . tooltip ( 'time-help' ) . '">'
-     . translate ( 'Due Time' ) . ':</td>
+     . translate( 'Due Time' ) . '</td>
           <td colspan="2">' . time_selection ( 'due_', $due_time ) . '</td>
         </tr>';
   }
@@ -1090,7 +1089,7 @@ if ( $can_edit ) {
      }
 
     }
-    $addStr = '"     ' . translate ( 'Add' ) . '    "';
+    $add_Str = '"     ' . $addStr . '    "';
 
     if ( $size > 50 )
       $size = 15;
@@ -1118,7 +1117,7 @@ if ( $can_edit ) {
      . '" multiple>' . $users . '
             </select><br>
             <input name="movert" type="button" value='
-            . $addStr . ' onclick="selAdd( this );"></td>
+            . $add_Str . ' onclick="selAdd( this );"></td>
             </td>
         <td class="boxbottom">
         <label>' . translate( 'Resources' ) . '</label><br>
@@ -1126,7 +1125,7 @@ if ( $can_edit ) {
      . $size . '" multiple>' . $nonusers . '
             </select><br>
             <input name="movert" type="button" value='
-            . $addStr . ' onclick="selResource( this );">
+            . $add_Str . ' onclick="selResource( this );">
           </td>
         <td valign="top"  class="boxbottom boxright">'
         . ( $GROUPS_ENABLED == 'Y' ? '&nbsp;&nbsp;<label>'
@@ -1135,7 +1134,7 @@ if ( $can_edit ) {
      . $size . '" onclick="addGroup()" >' . $grouplist . '
             </select><br>
             <input name="movert" type="button" value='
-       . $addStr . ' onclick="selAdd( this );">' : '&nbsp;' ) . '
+       . $add_Str . ' onclick="selAdd( this );">' : '&nbsp;' ) . '
           </td>
         </tr>
         <tr>
@@ -1161,7 +1160,7 @@ if ( $can_edit ) {
     . ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ? '
         <tr title="' . tooltip ( 'external-participants-help' ) . '">
           <td class="tooltip aligntop"><label for="entry_extpart">'
-       . translate ( 'External Participants' ) . ':</label></td>
+       . translate( 'External Participants' ) . '</label></td>
           <td colspan="6"><textarea name="externalparticipants" id="entry_extpart" rows="5"'
        . ' cols="75">' . $external_users . '</textarea></td>
         </tr>' : '' );
@@ -1183,7 +1182,7 @@ if ( $can_edit ) {
       <table border="0" cellspacing="0" cellpadding="3" summary="">
         <tr>
           <td class="tooltip" title="' . tooltip ( 'repeat-type-help' )
-     . '"><label for="rpttype">' . translate ( 'Type' ) . ':</label></td>
+     . '"><label for="rpttype">' . translate( 'Type_' ) . '</label></td>
           <td colspan="2">
             <select name="rpt_type" id="rpttype" '
      . 'onchange="rpttype_handler(); rpttype_weekly()">
@@ -1219,7 +1218,7 @@ if ( $can_edit ) {
         <tr id="rptenddate1" style="visibility:hidden;">
           <td class="tooltip" title="' . tooltip ( 'repeat-end-date-help' )
      . '" rowspan="3"><label for="rpt_day">' . translate ( 'Ending' )
-     . ':</label></td>
+     . '</label></td>
           <td colspan="2" class="boxtop boxright boxleft"><input type="radio" '
      . 'name="rpt_end_use" id="rpt_untilf" value="f" '
      . ( empty( $rpt_end ) && empty( $rpt_count ) ? ' checked' : '' )
@@ -1276,7 +1275,7 @@ if ( $can_edit ) {
         </tr>
         <tr id="rptbydayextended" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-bydayextended-help' ) . '">
-          <td class="tooltip"><label>' . translate ( 'ByDay' ) . ':</label></td>
+          <td class="tooltip"><label>' . translate( 'ByDay' ) . '</label></td>
           <td colspan="2" class="boxall">
             <input type="hidden" name="bydayList" value="'
      . ( empty( $bydayStr ) ? '' : $bydayStr ) . '">
@@ -1478,20 +1477,20 @@ if ( $can_edit ) {
       </tr>
       <tr id="rptbyweekno" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-byweekno-help' ) . '">
-        <td class="tooltip">' . translate ( 'ByWeekNo' ) . ':</td>
+        <td class="tooltip">' . translate( 'ByWeekNo' ) . '</td>
         <td colspan="2"><input type="text" name="byweekno" id="byweekno" '
      . 'size="50" maxlength="100" value="' . $byweekno . '"></td>
       </tr>
       <tr id="rptbyyearday" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-byyearday-help' ) . '">
-        <td class="tooltip">' . translate ( 'ByYearDay' ) . ':</td>
+        <td class="tooltip">' . translate( 'ByYearDay' ) . '</td>
         <td colspan="2"><input type="text" name="byyearday" id="byyearday" '
      . 'size="50" maxlength="100" value="' . $byyearday . '"></td>
       </tr>
       <tr id="rptexceptions" style="visibility:visible;" title="'
      . tooltip ( 'repeat-exceptions-help' ) . '">
         <td class="tooltip"><label>' . translate( 'Exclusions' ) . '/<br>'
-     . translate ( 'Inclusions' ) . ':</label></td>
+     . translate( 'Inclusions' ) . '</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
           <table border="0" width="250px" summary="">
             <tr>
@@ -1562,7 +1561,7 @@ if ( $can_edit ) {
         <thead>
           <tr>
             <td class="tooltip"><label>' . translate ( 'Send Reminder' )
-     . ':</label></td>
+     . '</label></td>
             <td colspan="3">
               <input type="hidden" name="rem_action" value="'
      . ( empty( $reminder['action'] ) ? 'EMAIL' : $reminder['action'] ) . '">
@@ -1585,7 +1584,7 @@ if ( $can_edit ) {
         <tbody id="reminder_when">
           <tr>
             <td class="tooltip" rowspan="6"><label>' . translate ( 'When' )
-     . ':</label></td>
+     . '</label></td>
             <td class="boxtop boxleft" width="20%"><label><input type="radio" '
      . 'name="rem_when" id="rem_when_date" value="Y" '
      . ( $rem_use_date ? ' checked' : '' ) . ' onclick="toggle_rem_when()">'
@@ -1644,8 +1643,8 @@ if ( $can_edit ) {
         </tbody>
         <tbody id="reminder_repeat">
           <tr>
-            <td class="tooltip" rowspan="2"><label>' . translate ( 'Repeat' )
-     . ':</label></td>
+            <td class="tooltip" rowspan="2"><label>' . translate( 'Repeat_' )
+     . '</label></td>
             <td class="boxtop boxleft">&nbsp;&nbsp;&nbsp;<label>'
      . translate ( 'Times' ) . '</label></td>
             <td class="boxtop boxright" colspan="2"><input type="text" '
@@ -1761,8 +1760,7 @@ views.init()
 // End init tabs
 </script>
 
-<?php } ?>
-<?php
+<?php }
 
 echo print_trailer();
 

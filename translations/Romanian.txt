@@ -649,7 +649,7 @@ minute: minut
 #
 Purging events for: Cura&#355;&#226;nd evenimente pentru
 Finished: Terminat
-Check box to delete ALL events for a user: Bifeaz&#259; aceast&#259; casu&#355;&#259; ca s&#259; &#351;tergi <b>TOATE</b> evenimentele utilizatorului
+to delete ALL events for user: Bifeaz&#259; aceast&#259; casu&#355;&#259; ca s&#259; &#351;tergi <b>TOATE</b> evenimentele utilizatorului
 Delete all events before: &#350;terge toate evenimentele dinainte de
 really delete events for: Sigur vrei s&#259; &#351;tergi evenimentele lui
 

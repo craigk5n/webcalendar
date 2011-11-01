@@ -660,7 +660,7 @@ minute: minutter
 #
 Purging events for: Sletter aftaler for
 Finished: Færdig
-Check box to delete ALL events for a user: Afkryds for at slette <b>ALLE</b> aftaler for en bruger
+to delete ALL events for user: Afkryds for at slette <b>ALLE</b> aftaler for en bruger
 Delete all events before: Slet alle aftaler før
 Preview delete: Vis aftaler som slettes
 really delete events for: Er du sikker på du vil slette aftaler for

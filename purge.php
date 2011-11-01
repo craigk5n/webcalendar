@@ -124,21 +124,21 @@ if ( $do_purge ) {
   </select>
  </td></tr>
  <tr><td><label for="purge_all">
-  <?php etranslate ( 'Check box to delete ALL events for a user' )?>:</label></td>
+  <?php etranslate( 'to delete ALL events for user' )?></label></td>
   <td valign="bottom">
   <input type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );">
  </td></tr>
  <tr id="dateArea"><td><label>
-  <?php etranslate ( 'Delete all events before' );?>:</label></td><td>
+  <?php etranslate( 'Delete all events before' )?></label></td><td>
   <?php echo date_selection ( 'end_', date ( 'Ymd' ) ) ?>
  </td></tr>
  <tr><td><label for="purge_deleted">
-  <?php etranslate ( 'Purge deleted only' )?>:</label></td>
+  <?php etranslate( 'Purge deleted only' )?></label></td>
   <td valign="bottom">
   <input type="checkbox" name="purge_deleted" value="Y">
  </td></tr>
  <tr><td><label for="preview">
-  <?php etranslate ( 'Preview delete' )?>:</label></td>
+  <?php etranslate( 'Preview delete' )?></label></td>
   <td valign="bottom">
   <input type="checkbox" name="preview" value="Y" checked>
  </td></tr>

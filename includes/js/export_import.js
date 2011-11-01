@@ -3,25 +3,13 @@
 function toggle_import() {
   var i = document.importform.ImportType.selectedIndex;
 
-  if (i == 1) { // Palm
-    makeVisible('palm');
-  } else {
-    makeInvisible('palm');
-  }
-  if (i == 3) { // Outlook CSV
-    makeInvisible('ivcal');
-    makeVisible('outlookcsv');
-  } else {
-    makeVisible('ivcal');
-    makeInvisible('outlookcsv');
-  }
+  toggleVisible('ivcal', (i == 3 ? 'hidden' : 'visible'));
+  toggleVisible('outlookcsv', (i == 3 ? 'visible' : 'hidden'));
+  toggleVisible('palm', (i == 1 ? 'visible' : 'hidden'));
 }
-function toggel_catfilter() {
-  if (document.exportform.format.selectedIndex == 0) { // ICAL
-    makeVisible('catfilter');
-  } else {
-    makeInvisible('catfilter');
-  }
+function toggel_catfilter() { // ICAL
+  toggleVisible('catfilter',
+    (document.exportform.format.selectedIndex == 0 ? 'visible' : 'hidden'));
 }
 function checkExtension() {
   var filename = document.importform.FileName.value;
