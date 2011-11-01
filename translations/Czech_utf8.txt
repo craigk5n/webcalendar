@@ -549,7 +549,7 @@ Overwrite Prior Import: Přepsat data předchozího importu
 # Page: help_index.php
 #
 Help Index: Index nápovědy
-About WebCalendar: O aplikaci WebCalendar
+About WebCal: O aplikaci WebCalendar
 
 ########################################
 # Page: help_layers.php
@@ -640,7 +640,7 @@ minute: minuta
 #
 Purging events for: Čištění událostí pro
 Finished: Dokončeno
-Check box to delete ALL events for a user: Zaškrtnout pro smazání <b>VŠECH</b> událostí a záznam? uživatele
+to delete ALL events for user: Zaškrtnout pro smazání <b>VŠECH</b> událostí a záznam? uživatele
 Delete all events before: Smazat všechny události před
 really delete events for: Opravdu si přeješ smazat události uživatele
 

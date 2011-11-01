@@ -28,12 +28,6 @@ xoffset = 8,     // popup distance from cursor x coordinate
 yoffset = 12;    // popup distance from cursor y coordinate
 
 addLoadListener(function () {
-    ns4 = (document.layers);
-    ie4 = (document.all);
-    ie5 = (ie4
-       && (navigator.userAgent.indexOf('MSIE 5') > 0
-         || navigator.userAgent.indexOf('MSIE 6') > 0
-         || navigator.userAgent.indexOf('MSIE 7') > 0));
     kon = (navigator.userAgent.indexOf('konqueror') > 0);
     idiv = null;
     winW = 800;
@@ -43,17 +37,10 @@ addLoadListener(function () {
     if (followMe) {
       document.onmousemove = mousemove;
 
-      if (ns4 && document.captureEvents)
-        document.captureEvents(Event.MOUSEMOVE);
-    }
-    // Workaround for another Netscape bug: Fix browser confusion on resize.
-    // Obviously Konqueror has a similar problem. :-(
-    if (ns4 || kon) {
+    // Workaround for Konqueror bug: Fix browser confusion on resize.
+    if (kon) {
       setTimeout('window.onresize = rebrowse', 2000);
     }
-
-    if (ns4)
-      px = '';
 
     var entries = document.getElementsBySelector('a.entry');
 
@@ -78,20 +65,16 @@ function rebrowse() {
 }
 
 function hidePopUp(name) {
-  idiv.style.visibility = (ns4 ? 'hide' : 'hidden');
+  idiv.style.visibility = 'hidden';
   idiv = null;
 }
 
 function gettip(name) {
-  return (document.layers && document.layers[name]
-     ? document.layers[name]
-     : (document.all && document.all[name]
-       ? document.all[name]
-       : (document[name]
+  return (document[name]
          ? document[name]
          : (document.getElementById(name)
            ? document.getElementById(name)
-           : 0))));
+           : 0));
 }
 
 function showPopUp(evt, name) {
@@ -177,7 +160,7 @@ function showtip(e) {
        : y + yoffset) + px;
     idiv.style.left = (x + popupW + xoffset > winW - xoffset
        ? x - popupW - xoffset : x + xoffset) + px;
-    idiv.style.visibility = (ns4 ? 'show' : 'visible');
+    idiv.style.visibility = 'visible';
   }
 }
 

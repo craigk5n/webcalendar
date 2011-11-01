@@ -51,8 +51,8 @@ function print_user_list() {
 
     echo '
         <tr>
-          <td class="aligntop"><label for="caluser">' . translate ( 'Calendar' )
-     . ':</label></td>
+          <td class="aligntop"><label for="caluser">' . translate( 'Calendar_' )
+     . '</label></td>
           <td>
             <select name="calUser" id="caluser" size="' . $size . '">' . $users . '
             </select>

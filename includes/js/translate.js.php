@@ -30,10 +30,10 @@ echo 'var months = [' . $tmpm . '],
   bydayLabels      = [' . $tmp1 . '],
   bydayTrans       = [' . $tmp2 . '],
   dateFmt          = ' . $DATE_FORMAT . ',
+  timeFmt          = ' . $GLOBALS['TIME_FORMAT'] . ',
   evtEditTabs      = "' .
     ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ? 'Y' : $GLOBALS['EVENT_EDIT_TABS'] ) . '",
   groupsEnabled    = "' . $GROUPS_ENABLED . '",
-  timeFormat       = "' . $GLOBALS['TIME_FORMAT'] . '",
   workEndHour      = "' . $WORK_DAY_END_HOUR . '",
   workStartHour    = "' . $WORK_DAY_START_HOUR . '",
   xlate            = [];
@@ -85,7 +85,6 @@ xlate[\'reallyDeleteEntry\']  = \'' . translate( 'really delete entry', true ) .
 xlate[\'rejThisEntry\']       = \'' . translate( 'Reject this entry?', true ) . '\';
 xlate[\'reqServerURL\']       = \'' . translate( 'Server URL is required.', true ) . '\';
 xlate[\'timeB4WorkHours\']    = \'' . translate( 'time before work hours', true ) . '\';
-
 
 ';
 

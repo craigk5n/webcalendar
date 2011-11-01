@@ -124,7 +124,8 @@ function list_unapproved ( $user ) {
        . $entryID . '" value="' . $user . '"></td>
         <td><a title="' . $viewStr . '" class="entry" id="' . $linkid
        . '" href="' . $view_link . '.php?id=' . $id . '&amp;user=' . $cal_user
-       . '">' . htmlspecialchars ( $name ) . '</a> (' . $eventdate . '):</td>'
+       . '">' . htmlspecialchars( $name ) . '</a> '
+       . str_replace( 'XXX', $eventdate, translate( '(XXX)_' ) . '</td>'
       /* approve */ . '
         <td align="center"><input type="image" src="images/check.gif" title="'
        . $appConStr . '" onclick="return do_confirm( \'approve\', \''

@@ -631,7 +631,7 @@ hour: timme
 #
 Purging events for: Rensa bort aktiviteter för
 Finished: Klar
-Check box to delete ALL events for a user: Markera boxen för att ta bort <b>ALLA</b> aktiviteter för användare
+to delete ALL events for user: Markera boxen för att ta bort <b>ALLA</b> aktiviteter för användare
 Delete all events before: Ta bort alla aktiviteter före
 really delete events for: Är du säker på att du vill ta bort aktiviteter för
 

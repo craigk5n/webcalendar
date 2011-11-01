@@ -4,8 +4,24 @@ var validform = true;
 
 linkFile('includes/js/visible.js');
 
+addLoadListener(function () {
+  toggleVisible('nlayercolor', 'visible', 'none');
+
+  attachEventListener(document.getElementById('deleEntry'), 'click',
+    function () {
+    // translate( 'really delete entry' )
+    return confirm(xlate['reallyDeleteEntry']);
+  });
+  attachEventListener(document.getElementById('nid'), 'change', check_name);
+  attachEventListener(document.getElementById('nlayer'), 'change',
+    toggle_layercolor);
+  attachEventListener(document.getElementById('prefform'), 'submit', function () {
+    return valid_form(this);
+  });
+});
 function valid_form(form) {
   var err = '';
+
   if (form.layercolor && !valid_color(form.layercolor.value))
     err += xlate['invalidColor']; // translate ( 'Invalid color' )
 
@@ -22,23 +38,13 @@ function valid_form(form) {
 
   return validform;
 }
-
-function toggle_layercolor() {
-  if (document.prefform.nlayer.checked == true) {
-    makeVisible('nlayercolor', true);
-  } else {
-    makeInvisible('nlayercolor');
-  }
-}
-
 function check_name() {
   var ajax = new Ajax.Request('ajax.php', {
-        method: 'post',
-        parameters: 'page=edit_remotes&name=' + $F('nid'),
-        onComplete: showResponse
-      });
+      method: 'post',
+      parameters: 'page=edit_remotes&name=' + $F('nid'),
+      onComplete: showResponse
+    });
 }
-
 function showResponse(originalRequest) {
   if (originalRequest.responseText) {
     text = originalRequest.responseText;
@@ -49,4 +55,8 @@ function showResponse(originalRequest) {
   } else {
     validform = true;
   }
+}
+function toggle_layercolor() {
+  toggleVisible('nlayercolor', 'visible',
+    (document.prefform.nlayer.checked ? 'block' : 'none'));
 }

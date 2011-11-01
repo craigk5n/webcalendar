@@ -632,7 +632,7 @@ hour: hora
 #
 Purging events for: Depura els esdeveniments per a
 Finished: Ha finalitzat
-Check box to delete ALL events for a user: Marca la casella per suprimir <b>TOTS</b> els esdeveniments d'un usuari
+to delete ALL events for user: Marca la casella per suprimir <b>TOTS</b> els esdeveniments d'un usuari
 Delete all events before: Suprimeix tots els esdeveniments abans de
 really delete events for: Esteu segur que voleu suprimir els esdeveniments per a
 

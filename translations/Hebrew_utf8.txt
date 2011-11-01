@@ -130,7 +130,7 @@ Home URL: URL הבית
 language-help: קובע את שפת ממשק המשתמש
 Language: שפה
 Your browser default language is: שפת ברירת המחדל של הדפדפן שלך הינה
-Allow user to use themes: מותר למשתמשים להשתמש בערכות תצורה
+Allow user themes: מותר למשתמשים להשתמש בערכות תצורה
 themes-help: מאפשר עדכון מסיבי של הגדרות תצורה. תוויות באותיות קטנות הן העדיפויות משתמש בלבד.
 Themes: ערכות תצורה
 AVAILABLE THEMES: ערכות תצורה זמינות
@@ -292,10 +292,10 @@ Restrict self-reg to blacklist: הגבל רישום עצמי לרשימה שחו
 allow-self-reg-full-help: אפשר למשתמשים חדשים להשלים רישום עצמי במקוון
 send self-reg emails: חולל סיסמאות ושלח אותם בדוא"ל אל משתמשים חדשים. זה אמור למנוע רישום שולחי דואר זבל.
 allow-attachment-help: אפשר למשתמשים להוסיף קבצים מצורפים לארועים
-Allow file attachments to events: אפשר קבצים מצורפים בארועים
+Allow event attachments: אפשר קבצים מצורפים בארועים
 owner can attach if enabled: המנהל והבעלים יכולים תמיד להוסיף מצורפים באם מאופשר.
 allow-comments-help: אפשר למשתמשים להוסיף הערות לארועים
-Allow comments to events: אפשר הערות בארועים
+Allow event comments: אפשר הערות בארועים
 owner can comment if enabled: המנהל והבעלים תמיד יכולים להוסיף הערות, באם מאופשר.
 email-enabled-help: הדלק וכבה כל משלוחי דוא"ל עבור הודעות ותזכרות. ציין "לא" אם שרת הדואר שלך לא שולח דואר כשורה.
 Email enabled: דואר אלקטרוני מאופשר
@@ -936,7 +936,7 @@ entries: רשומות
 Purging events for: מוחק ארועים עבור
 Finished: סיימתי
 Back: חזור
-Check box to delete ALL events for a user: סמן משבצת כדי למחוק את <b>כל</b> הארועים של משתמש אחד
+to delete ALL events for user: סמן משבצת כדי למחוק את <b>כל</b> הארועים של משתמש אחד
 Delete all events before: מחק את כל הארועים מלפני
 Preview delete: תצוגה מקדימה של המחיקה
 
@@ -954,7 +954,7 @@ If email received in error: אם קיבלת את המסר הזה בטעות ול
 Administrator: מנהל
 Welcome: ברוך בואך
 Registration: רישום
-Welcome to WebCalendar: ברוך בואך אל לוח השנה
+Welcome to WebCal: ברוך בואך אל לוח השנה
 should get email soon: הדוא"ל צריך להגיע אליך מיד.
 Return to Login screen: חזרה למסך הכניסה
 Password (again): סיסמא (שוב)
@@ -1478,7 +1478,7 @@ Environment: סביבה
 Production: ייצור
 Development: פיתוח
 Save Settings: שמור הגדרות
-Launch WebCalendar: הפעל את לוח השנה
+Launch WebCal: הפעל את לוח השנה
 
 ########################################
 # Page: install/install_functions.php

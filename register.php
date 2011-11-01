@@ -232,7 +232,7 @@ echo send_doctype( $appStr ) . '
       <table align="center" cellspacing="10" cellpadding="10" summary="">
         <tr>
           <td rowspan="3"><img src="images/register.gif"></td>
-          <td>' . translate( 'Welcome to WebCalendar' ) . '</td>
+          <td>' . translate( 'Welcome to WebCal' ) . '</td>
         </tr>' . ( $SELF_REGISTRATION_FULL == 'Y' ? '
         <tr>
           <td colspan="3" align="center"><label>'

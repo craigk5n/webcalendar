@@ -95,11 +95,11 @@ if ( $newview ) {
 
 <table summary="">
 <tr><td>
- <label for="viewname"><?php etranslate ( 'View Name' )?>:</label></td><td colspan="3">
+ <label for="viewname"><?php etranslate( 'View Name' )?></label></td><td colspan="3">
  <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars( $viewname );?>">
 </td></tr>
 <tr><td>
- <label for="viewtype"><?php etranslate ( 'View Type' )?>:</label></td><td colspan="3">
+ <label for="viewtype"><?php etranslate( 'View Type' )?></label></td><td colspan="3">
  <select name="viewtype" id="viewtype">
   <option value="D" <?php if ( $viewtype == 'D' )
   echo ' selected>' . translate( 'Day' ); ?></option>

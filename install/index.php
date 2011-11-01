@@ -7,7 +7,7 @@
  * NEW RELEASE UPDATE PROCEDURES:
  *   - Update the variables $program_version and $program_date
  *     in "tools/update_translations.pl"
- *     (they should be of the format "v1.0.0" and "dd-mon-yyyy")
+ *     (they should be of the format "v1.0.0" and "dd mon yyyy")
  *     and run it to update "translations/English-US.txt", at least.
  *   - Make sure the last entry in all the upgrade-*.sql files reference
  *     this same version. For example, for "v1.0.0", there should be a
@@ -48,20 +48,27 @@
  * Change all references from postgresql to pgsql
  */
 
-define( '__WC_BASEDIR', '../' );
-$fileDir = __WC_BASEDIR . 'includes';
-$file    = $fileDir . '/settings.php';
+if( is_dir( 'includes' ) )
+  $path = '';
+elseif( is_dir( '../includes' ) )
+  $path = '../';
+elseif( is_dir( '../../includes' ) )
+  $path = '../../';
+
+define( '__WC_BASEDIR', $path );
+$fileDir = __WC_BASEDIR . 'includes/';
+$file    = $fileDir . 'settings.php';
 
 $show_all_errors = false;
 // Change this path as needed.
 $firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.fdb';
 
 foreach( array(
-    $fileDir . '/config',
-    $fileDir . '/dbi4php',
-    $fileDir . '/formvars',
-    $fileDir . '/functions',
-    $fileDir . '/translate',
+    $fileDir . 'config',
+    $fileDir . 'dbi4php',
+    $fileDir . 'formvars',
+    $fileDir . 'functions',
+    $fileDir . 'translate',
     'default_config',
     'install_functions',
     'sql/upgrade_matrix', ) as $i ) {
@@ -85,9 +92,8 @@ reset_language( 'none' );
 $backStr        = translate( 'Back' );
 $cachedirStr    = translate( 'Database Cache Directory' );
 $createNewStr   = translate( 'Create New' );
-$databaseNameStr= translate( 'Database Name' );
 $failureStr     = translate( 'Failure Reason' );
-$loginStr       = translate( 'Login' );
+$loginStr       = translate( 'Login_' );
 $logoutStr      = translate( 'Logout' );
 $manualStr      = translate( 'must manually create DB' );
 $passwordStr    = translate( 'Password' );
@@ -98,19 +104,18 @@ $wizardStr      = translate( 'Install Wizard Step XXX' );
 
 $failure = $failureStr . '<blockquote>';
 
-// First pass at settings.php.
-// We need to read it first in order to get the md5 password.
 if( function_exists( 'set_magic_quotes_runtime' ) ) {
   $magic = @get_magic_quotes_runtime();
   @set_magic_quotes_runtime( 0 );
 } else
   unset( $magic );
 
-$fd = @fopen( $file, 'rb', true );
-$settings = array();
 $password = '';
-$forcePassword = false;
+$settings = array();
 
+// First pass at settings.php.
+// We need to read it first in order to get the md5 password.
+$fd = @fopen( $file, 'rb', true );
 if( ! empty( $fd ) ) {
   while( ! feof( $fd ) ) {
     $buffer = trim( fgets( $fd ) );
@@ -122,16 +127,14 @@ if( ! empty( $fd ) ) {
   }
   fclose( $fd );
 
-  // File exists, but no password. Force them to create a password.
-  if( empty( $password ) )
-    $forcePassword = true;
 }
+// Force them to create a password if they haven't.
+$forcePassword = empty( $password );
 
 if( isset( $magic ) )
   @set_magic_quotes_runtime( $magic );
 
 session_start();
-$doLogin = false;
 
 // Set default Application Name.
 if( ! isset( $_SESSION['application_name'] ) )
@@ -158,10 +161,8 @@ if( 'logout' == getGetValue( 'action' ) ) {
 }
 
 // If password already exists, check for valid session.
-if( file_exists( $file ) && ! empty( $password ) &&
-    ( empty( $_SESSION['validuser'] ) || $_SESSION['validuser'] != $password ) )
-  // Make user login.
-  $doLogin = true;
+$doLogin = ( file_exists( $file ) && ! empty( $password )
+  && ( empty( $_SESSION['validuser'] ) || $_SESSION['validuser'] != $password ) );
 
 $pwd = getPostValue( 'password' );
 
@@ -204,8 +205,8 @@ $php_settings = array(
 //Add 'Safe Mode Allowed Vars' if 'Safe Mode' is enabled
 if( get_php_setting( 'safe_mode' ) == 'ON' )
   $php_settings[] = array(
-    translate('Safe Mode Allowed Vars'),
-      'safe_mode_allowed_env_vars', 'TZ', 'TZ');
+    translate( 'Safe Mode Allowed Vars' ),
+    'safe_mode_allowed_env_vars', 'TZ', 'TZ' );
 
 // Set up array to test for some constants
 // (display name, constant name, preferred value )
@@ -231,7 +232,7 @@ if( file_exists( $file ) && $forcePassword && ! empty( $pwd1 ) ) {
   if( empty( $fd ) ) {
     echo '<html><body>'
      . str_replace( 'XXX', 'settings.php',
-     . translate( 'Unable to write to file XXX' ) )
+       translate( 'Unable to write to file XXX' ) )
      . '</body></html>';
     exit;
   }
@@ -325,7 +326,10 @@ if( ! empty( $action ) && $action == 'install' ) {
   $real_db       = ( $db_type== 'sqlite' || $db_type == 'sqlite3'
     ? get_full_include_path( $db_database ) : $db_database );
 
-  // We might be displaying SQL only.
+  if ( $db_type == 'postgresql' )
+    $db_type = 'pgsql';
+ 
+ // We might be displaying SQL only.
   $display_sql = getPostValue( 'display_sql' );
 
   $c = dbi_connect( $db_host, $db_login, $db_password, $real_db, false );
@@ -338,16 +342,17 @@ if( ! empty( $action ) && $action == 'install' ) {
       case 'ibase':
       case 'mssql':
       case 'oracle':
-        $install_filename .= $db_type . '.sql';
+        $install_filename .= $db_type;
         break;
       case 'ibm_db2':
-        $install_filename .= 'db2.sql';
+        $install_filename .= 'db2';
         break;
       case 'odbc':
-        $install_filename .= $_SESSION['odbc_db'] . '.sql';
+        $install_filename .= $_SESSION['odbc_db'];
         break;
       case 'postgresql':
-        $install_filename .= 'postgres.sql';
+      case 'pgsql':
+        $install_filename .= 'postgres';
         break;
       case 'sqlite':
       case 'sqlite3':
@@ -356,9 +361,10 @@ if( ! empty( $action ) && $action == 'install' ) {
         $install_filename = '';
         break;
       default:
-        $install_filename .= 'mysql.sql';
+        $install_filename .= 'mysql';
     }
-    db_populate( $install_filename, $display_sql );
+    if ( $install_filename != '' )
+      db_populate( $install_filename . '.sql', $display_sql );
   }
   if( empty( $display_sql ) ) {
     // Convert passwords to md5 hashes if needed.
@@ -448,7 +454,7 @@ if( ! empty( $post_action ) && $post_action == $testSettingsStr && !
       $c = mysql_connect( $db_host, $db_login, $db_password );
     elseif( $db_type == 'mysqli' )
       $c = dbi_connect( $db_host, $db_login, $db_password, $db_database );
-    elseif( $db_type == 'postgresql' )
+    elseif( $db_type == 'pgsql' )
       $c =
         dbi_connect( $db_host, $db_login, $db_password, 'template1', false );
 
@@ -536,7 +542,7 @@ if( ! empty( $post_action2 ) && $post_action2 == $createNewStr && !
       }
     } else
       $response_msg = $failure . dbi_error() . '</blockquote>' . "\n";
-  } elseif( $db_type == 'postgresql' ) {
+  } elseif( $db_type == 'pgsql' ) {
     $c = dbi_connect( $db_host, $db_login, $db_password, 'template1', false );
     if( $c ) {
       dbi_execute( $sql, array(), false, $show_all_errors );
@@ -742,7 +748,7 @@ if( ! empty( $x ) || ! empty( $y ) ) {
 
     if( $post_action != $testSettingsStr && $post_action2 != $createNewStr )
       $onload .= 'alert( \''
-       . translate( 'Your settings have been saved.', true ) . "\\n\\n' );";
+       . translate( 'Your settings have been saved.', true ) . '\' );';
 
     // Change to read/write by us only (only applies if we created file)
     // and read-only by all others. Would be nice to make it 600,
@@ -755,161 +761,23 @@ $offStr = translate( 'OFF' );
 $onStr  = translate( 'ON' );
 
 ob_start();
-echo send_doctype( translate( 'WebCalendar Setup Wizard' ) ) . '
+echo send_doctype( translate( 'WebCal Setup Wizard' ) ) . '
+    <script src="../includes/js/base.js"></script>
+    <script src="../js_cacher.php?inc=js/translate.js.php"></script>
     <script>
-<!-- <![CDATA[
-      var xlate = [];
-      xlate[\'invalidColor\'] = \'' . translate( 'Invalid Color', true ) . '\';
-' . ( empty( $_SESSION['validuser'] ) ? '' : '
+    // Does it even get here?'
+ . ( empty( $_SESSION['validuser'] ) ? '' : '
       function testPHPInfo() {
-        var url = 'index.php?action=phpinfo';
-
-        window.open( url, \'wcTestPHPInfo\', '
-   . '\'width=800,height=600,resizable=yes,scrollbars=yes\' );
-      }' ) . '
-      function validate( form ) {
-        // Only check to make sure single-user login is specified
-        // if in single-user mode.
-        var
-          err = \'\',
-          form = document.form_app_settings,
-          listid = 0; // Find id of single user object.
-
-        for( i = 0; i < form.form_user_inc.length; i++ ) {
-          if( form.form_user_inc.options[i].value == \'none\' )
-            listid = i;
-        }
-        if( form.form_user_inc.options[listid].selected ) {
-          if( form.form_single_user_login.value.length == 0 ) {
-            // No single user login specified.
-            alert( \''
- . translate( 'specify Single-User login', true ) . '\' );
-            form.form_single_user_login.focus();
-            return false;
-          }
-        }
-        if( form.form_server_url.value == \'\' ) {
-          err += "' . translate( 'Server URL is required.', true ) . '\n";
-          form.form_server_url.select();
-          form.form_server_url.focus();
-        }
-        else if( form.form_server_url.value.charAt(
-          form.form_server_url.value.length - 1 ) != \'/\' ) {
-          err += "' . translate( 'Server URL must end with /.', true ) . '\n";
-          form.form_server_url.select();
-          form.form_server_url.focus();
-        }
-        if( err != \'\' ) {
-          alert( "' . translate( 'Error_', true ) . '\n\n" + err );
-          return false;
-        }
-        // Submit form...
-        form.submit();
-      }
-      function auth_handler() {
-        var
-          form = document.form_app_settings,
-          listid = 0; // Find id of single user object.
-        for( i = 0; i < form.form_user_inc.length; i++ ) {
-          if( form.form_user_inc.options[i].value == \'none\' )
-            listid = i;
-        }
-        if( form.form_user_inc.options[listid].selected ) {
-          makeVisible( \'singleuser\' );
-        } else {
-          makeInvisible( \'singleuser\' );
-        }
-      }
-      function db_type_handler() {
-        var
-          form = document.dbform,
-          listid = 0,
-          selectvalue = form.form_db_type.value;
-
-        if( selectvalue == \'sqlite\' || $db_type == \'sqlite3\'
-            || selectvalue == \'ibase\' ) {
-          form.form_db_database.size = 65;
-          document.getElementById( \'db_name\' ).innerHTML = \''
- . $databaseNameStr . ' ' . translate( 'Full Path (no backslashes)' ) . '\';
-        } else {
-          form.form_db_database.size = 20;
-          document.getElementById( \'db_name\' ).innerHTML = \''
- . $databaseNameStr . ' \';
-        }
-      }
-      function chkPassword() {
-        var
-          form = document.dbform,
-          db_pass = form.form_db_password.value,
-          illegalChars = /\#/;
-          // Do not allow #.../\#/ would stop all non-alphanumeric.
-
-        if( illegalChars.test( db_pass ) ) {
-          alert( \'' . translate( 'illegal chars in password', true ) . '\' );
-          form.form_db_password.select();
-          form.form_db_password.focus();
-          return false;
-        }
-      }
-//]]> -->
+        window.open( \'index.php?action=phpinfo\', \'wcTestPHPInfo\',
+          \'width=800,height=600,resizable=yes,scrollbars=yes\' );
+      }' )
+    . ( empty( $onload ) ? '' : '
+      addLoadListener(function() {
+        ' . $onload . '
+        });' ) . '
     </script>
-    <script src="../includes/js/visible.js"></script>
-    <style>
-      body {
-        margin:0;
-        background:#fff;
-        font-family:Arial, Helvetica, sans-serif;
-      }
-      table {
-        border:0;
-      }
-      th.header,
-      th.pageheader,
-      th.redheader {
-        background:#eee;
-      }
-      th.pageheader {
-        padding:10px;
-        font-size:18px;
-      }
-      th.header,
-      th.redheader {
-        font-size:14px;
-      }
-      th.redheader,
-      .notrecommended {
-        color:red;
-      }
-      td {
-        padding:5px;
-      }
-      td.prompt,
-      td.subprompt {
-        padding-right:20px;
-        font-weight:bold;
-      }
-      td.subprompt {
-        font-size:12px;
-      }
-      div.nav {
-        margin:0;
-        border-bottom:1px solid #000;
-      }
-      div.main {
-        margin:10px;
-      }
-      li {
-        margin-top:10px;
-      }
-      doc.li {
-        margin-top:5px;
-      }
-      .recommended {
-        color:green;
-      }
-    </style>
   </head>
-  <body' . ( empty( $onload ) ? '>' : ' onload="' . $onload . '">' );
+  <body>';
 
 if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   $class = ( version_compare( phpversion(), '4.2.0', '>=' ) ? '' : 'not' )
@@ -1054,7 +922,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <th>' . $passwordStr . '</th>
                 <td>
                   <input name="password" type="password">
-                  <input type="submit" value="' . $loginStr . '">
+                  <input type="submit" value="' . translate( 'Login' ) . '">
                 </td>
               </tr>
             </table>
@@ -1158,7 +1026,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <tr>
                 <td rowspan="7" width="20%">&nbsp;</td>
                 <td class="prompt" width="25%" valign="bottom">'
-   . '<label for="db_type">' . translate( 'Database Type' ) . ':</label></td>
+   . '<label for="db_type">' . translate( 'Database Type' ) . '</label></td>
                 <td valign="bottom">
                   <select name="form_db_type" id="db_type" '
    . 'onChange="db_type_handler();">';
@@ -1186,7 +1054,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     $supported['oracle'] = 'Oracle (OCI)';
 
   if( function_exists( 'pg_pconnect' ) )
-    $supported['postgresql'] = 'PostgreSQL';
+    $supported['pgsql'] = 'PostgreSQL';
 
   if( function_exists( 'sqlite_open' ) )
     $supported['sqlite'] = 'SQLite';
@@ -1194,11 +1062,11 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   if( function_exists( 'sqlite3_open' ) )
     $supported['sqlite3'] = 'SQLite3';
 
-  foreach( $supported as $key => $value ) {
+  foreach( $supported as $k => $v ) {
     echo '
-                    <option value="' . $key . '" '
-     . ( $settings['db_type'] == $key ? ' selected>' : '>' )
-     . $value . '</option>';
+                    <option value="' . $k . '" '
+     . ( $settings['db_type'] == $k ? ' selected>' : '>' )
+     . $v . '</option>';
   }
   $supported = array();
 
@@ -1208,13 +1076,13 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               </tr>
               <tr>
                 <td class="prompt"><label for="server">'
-   . translate( 'Server' ) . ':</label></td>
+   . translate( 'Server' ) . '</label></td>
                 <td colspan="2"><input name="form_db_host" id="server" '
    . 'size="20" value="' . $settings['db_host'] . '"></td>
               </tr>
               <tr>
                 <td class="prompt"><label for="login">'
-   . $loginStr . ':</label></td>
+   . $loginStr . '</label></td>
                 <td colspan="2"><input name="form_db_login" id="login" '
    . 'size="20" value="' . $settings['db_login'] . '"></td>
               </tr>
@@ -1226,19 +1094,20 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               </tr>
               <tr>
                 <td class="prompt" id="db_name"><label for="database">'
-   . $databaseNameStr . '</label></td>
+   . translate( 'Database Name' ) . '</label></td>
                 <td colspan="2"><input name="form_db_database" id="database" '
    . 'size="20" value="' . $settings['db_database'] . '"></td>
               </tr>'
   /* This a workaround for postgresql. The db_type should be 'pgsql'
      but 'postgresql' is used in a lot of places...
      so this is easier for now :( */
-   . ( substr( php_sapi_name(), 0, 3 ) <> 'cgi' &&
-    ini_get( ( $settings['db_type'] == 'postgresql'
-        ? 'pgsql' : $settings['db_type'] ) . '.allow_persistent' ) ? '
+   . ( substr( php_sapi_name(), 0, 3 ) <> 'cgi'
+     && ini_get( ( $settings['db_type'] == 'postgresql'
+     || $settings['db_type'] == 'pgsql'
+      ? 'pgsql' : $settings['db_type'] ) . '.allow_persistent' ) ? '
               <tr>
                 <td class="prompt"><label for="conn_pers">'
-     . translate( 'Connection Persistence' ) . ':</label></td>
+     . translate( 'Connection Persistence' ) . '</label></td>
                 <td colspan="2">
                   <label><input name="form_db_persistent" value="true" '
      . 'type="radio"' . ( $settings['db_persistent'] == 'true'
@@ -1257,7 +1126,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
     echo '
               <tr>
-                <td class="prompt">' . $cachedirStr . ':</td>
+                <td class="prompt">' . translate( 'DB Cache Directory_' ) . '</td>
                 <td><input type="text" size="70" name="form_db_cachedir" '
      . 'id="form_db_cachedir" value="' . $settings['db_cachedir'] . '"></td>
               </tr>';
@@ -1369,7 +1238,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
        . ( $_SESSION['odbc_db'] == 'oracle' ? ' selected' : '' )
        . '>Oracle</option>
               <option value="postgresql"'
-       . ( $_SESSION['odbc_db'] == 'postgresql' ? ' selected' : '' )
+       . ( $_SESSION['odbc_db'] == 'postgresql'
+        || $_SESSION['odbc_db'] == 'pgsql' ? ' selected' : '' )
        . '>PostgreSQL</option>
             </select>
           </form>
@@ -1488,7 +1358,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . 'enctype=\'multipart/form-data\' name="form_app_settings">
               <input type="hidden" name="app_settings" value="1">
               <td class="prompt">' . translate( 'Create Default Admin Account' )
-   . ':</td>
+   . '</td>
               <td>
                 <input type="checkbox" name="load_admin" value="Yes"'
    . ( ( $_SESSION['old_program_version'] == 'new_install' )
@@ -1504,13 +1374,12 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . '"></td>
             </tr>
             <tr>
-              <td class="prompt">' . translate( 'Server URL' ) . ':</td>
+              <td class="prompt">' . translate( 'Server URL' ) . '</td>
               <td><input type="text" size="40" name="form_server_url" '
    . 'id="form_server_url" value="' . $_SESSION['server_url'] . '"></td>
             </tr>
             <tr>
-              <td class="prompt">'
-   . translate( 'User Authentication' ) . ':</td>
+              <td class="prompt">' . translate( 'User Authentication' ) . '</td>
               <td>
                 <select name="form_user_inc" onChange="auth_handler()">
                   <option value="user.php"'
@@ -1541,13 +1410,13 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
             </tr>
             <tr id="singleuser">
               <td class="prompt">&nbsp;&nbsp;&nbsp;' . $singleUserStr . ' '
-   . $loginStr . ':</td>
+   . $loginStr . '</td>
               <td><input name="form_single_user_login" size="20" value="'
    . ( empty( $settings['single_user_login'] )
      ? '' : $settings['single_user_login'] ) . '"></td>
             </tr>
             <tr>
-              <td class="prompt">' . translate( 'Read-Only' ) . ':</td>
+              <td class="prompt">' . translate( 'Read-Only' ) . '</td>
               <td>
                 <input name="form_readonly" value="true" type="radio"'
    . ( $settings['readonly'] == 'true' ? ' checked>' : '>' )
@@ -1557,7 +1426,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               </td>
             </tr>
             <tr>
-              <td class="prompt">' . translate( 'Environment' ) . ':</td>
+              <td class="prompt">' . translate( 'Environment' ) . '</td>
               <td>
                 <select name="form_mode">
                   <option value="prod"'
@@ -1583,7 +1452,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       ( $_SESSION['old_program_version'] == $PROGRAM_VERSION ) && !
       empty( $setup_complete ) ? '
               <input type="button" name="action2" value="'
-       . translate( 'Launch WebCalendar' )
+       . translate( 'Launch WebCal' )
        . '" onClick="window.open( \'../index.php\', \'webcalendar\' );">'
        : '' ) : '' ) . ( empty( $_SESSION['validuser'] ) ? '' : '
               <input type="button" value="' . $logoutStr

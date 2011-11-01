@@ -1,32 +1,12 @@
 // $Id$
 
-// detect browser
-NS4 = (document.layers ? 1 : 0);
-IE4 = (document.all ? 1 : 0);
-// W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
-W3C = (document.getElementById ? 1 : 0);
-
 addLoadListener('focus');
 
 /*
- * Similar to function in "js/visible.js" but, effects the parent.
+ * Similar to function in "js/visible.js" but, affects the parent.
  */
-function makeVisible(name) {
-  var ele;
-
-  if (W3C) {
-    ele = window.opener.document.getElementById(name);
-  } else if (NS4) {
-    ele = window.opener.document.layers[name];
-  } else { // IE4
-    ele = window.opener.document.all[name];
-  }
-
-  if (NS4) {
-    ele.visibility = 'show';
-  } else { // IE4 & W3C & Mozilla
-    ele.style.visibility = 'visible';
-  }
+function makeVisible(id) {
+  window.opener.document.getElementById(id).style.visibility = 'visible';
 }
 function schedule_event(hours, minutes) {
   var year = wc_getCookie('year');
@@ -42,12 +22,7 @@ function schedule_event(hours, minutes) {
       parentForm.timetype.selectedIndex = 1;
       // Make time controls visible on parent.
       makeVisible('timeentrystart');
-
-      if (parentForm.duration_h) {
-        makeVisible('timeentryduration');
-      } else {
-        makeVisible('timeentryend');
-      }
+      makeVisible('timeentry' + (parentForm.duration_h ? 'duration' : 'end'));
     }
     parentForm.entry_hour.value = hours;
     if (hours > 12) {

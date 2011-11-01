@@ -7,19 +7,15 @@ echo '
     <ul>';
 $page = 0;
 //display About WebCalendar link only on index page
-$aboutStr = translate ( 'About WebCalendar' );
 echo '
-      <li><a title="' . $aboutStr . '" href="" onclick="javascript:openAbout()">'
-      . $aboutStr . '</a></li>';
-foreach ( $help_list as $key => $val ) {
+      <li><a href="" onclick="javascript:openAbout()">'
+ . translate( 'About WebCal' ) . '</a></li>';
+foreach ( $help_list as $k => $v ) {
   $page++;
-  $transStr = translate ( $key );
   echo '
-      <li><a href="' . $val . '?thispage=' . $page
-   . '">' . $transStr . '</a></li>';
+      <li><a href="' . $v . '?thispage=' . $page . '">' . $k . '</a></li>';
 }
 echo '
-    </ul>
-    ' . print_trailer ( false, true, true );
+    </ul>' . print_trailer( false, true, true );
 
 ?>

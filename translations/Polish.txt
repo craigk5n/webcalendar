@@ -156,7 +156,7 @@ language-help: Okre¶la którego jezyka u¿ywaæ.
 Language: Jezyk
 Your browser default language is: Domy¶lnym jezykiem twojej przegl±darki jest
 browser default language XXX: Domy¶lnym jêzykiem twojej przegl±darki jest "XXX".
-Allow user to use themes: Zezwalaj u¿ytkownikowi na korzystanie ze skórek ("themes")
+Allow user themes: Zezwalaj u¿ytkownikowi na korzystanie ze skórek ("themes")
 themes-help: Zezwalaj na jednoczesn± aktualizacjê wielu ustawieñ w konfiguracji. Etykiety napisane ma³ymi literami s± jedynie preferencjami u¿utkownika.
 Themes: Skórki ("Themes")
 AVAILABLE THEMES: DOSTÊPNE SKÓRKI ("Themes")
@@ -341,10 +341,10 @@ Restrict self-reg to blacklist: W³±cz czarn± listê IP
 allow-self-reg-full-help: Pozwól nowym u¿ytkownikom na dokoñczenie procesu rejestracji online.
 send self-reg emails: W³±cz zabezpieczenia email podczas samodzielnej rejestracji (antyspam)
 allow-attachment-help: Zezwala uzytkownikom na dodawania za³±czników do zdarzeñ.
-Allow file attachments to events: Zezwól na za³±czniki w zdarzeniach
+Allow event attachments: Zezwól na za³±czniki w zdarzeniach
 owner can attach if enabled: Je¶li w³±czone, Administrator i w³a¶ciciel bêd± mogli dodawaæ za³±czniki.
 allow-comments-help: Pozwól u¿ytkownikom dodawaæ komentarze do zdarzeñ.
-Allow comments to events: Zezwól na komentarze do zdarzeñ
+Allow event comments: Zezwól na komentarze do zdarzeñ
 owner can comment if enabled: Je¶li w³±czone, administrator i w³a¶ciciel mog± zawsze dodaæ komentarz.
 email-enabled-help: W³±cza wysy³anie emaili z informacjami i przypominaczami. Ustaw "nie", je¶li Twój serwer nie jest odpowiednio skonfigurowany do wysy³ania poczty.
 Email enabled: Emaile w³±czone
@@ -863,7 +863,7 @@ please use English not XXX: Bardzo proszê, by jêzykiem raportu by³ <strong>angie
 ########################################
 # Page: help_docs.php
 #
-WebCalendar Documentation: Dokumentacja programu WebCalendar
+WebCal Docs: Dokumentacja programu WebCalendar
 Currently in English only.: Aktualnie dostêpne jedynie w jêz. angielskim.
 
 ########################################
@@ -898,7 +898,7 @@ Overwrite Prior Import: Otwórz przed zaimportowaniem
 # Page: help_index.php
 #
 Help Index: Indeks pomocy
-About WebCalendar: O programie WebCalendar
+About WebCal: O programie WebCalendar
 
 ########################################
 # Page: help_layers.php
@@ -1065,7 +1065,7 @@ entries: wpisy
 Purging events for: Wyczy¶æ zdarzenia dla
 Finished: Zakonczone
 Back: Wstecz
-Check box to delete ALL events for a user: Zaznacz aby skasowa <b>WSZYSTKIE</b> zdarzenia dla u¿ytkownika
+to delete ALL events for user: Zaznacz aby skasowa <b>WSZYSTKIE</b> zdarzenia dla u¿ytkownika
 Delete all events before: Kasuj wszystkie zdarzenia przed
 Purge deleted only: Wyczy¶æ trwale ('purge') wcze¶niej skasowane
 Preview delete: Usuniecie podgl±du
@@ -1090,7 +1090,7 @@ Administrator: =
 Welcome: Witaj
 New user via email.: Nowy u¿ytkownik utworzony przez email.
 Registration: Rejestracja
-Welcome to WebCalendar: Witaj w WebCalendarze
+Welcome to WebCal: Witaj w WebCalendarze
 should get email soon: Email powinien wkrótce dotrzeæ.
 Return to Login screen: Powrót do ekranu logowania
 Password (again): Has³o (ponownie)
@@ -1764,7 +1764,7 @@ Environment: ¦rodowisko
 Production: Produkcja
 Development: Rozwój
 Save Settings: Zapisz ustawienia
-Launch WebCalendar: Uruchom WebCalendar
+Launch WebCal: Uruchom WebCalendar
 
 ########################################
 # Page: install/install_functions.php

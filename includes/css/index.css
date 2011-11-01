@@ -1,0 +1,54 @@
+// $Id$
+
+body {
+  margin:0;
+  background:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+}
+table {
+  border:0;
+}
+th.header,
+th.pageheader,
+th.redheader {
+  background:#eee;
+}
+th.pageheader {
+  padding:10px;
+  font-size:18px;
+}
+th.header,
+th.redheader {
+  font-size:14px;
+}
+th.redheader,
+.notrecommended {
+  color:red;
+}
+td {
+  padding:5px;
+}
+td.prompt,
+td.subprompt {
+  padding-right:20px;
+  font-weight:bold;
+}
+td.subprompt {
+  font-size:12px;
+}
+div.nav {
+  margin:0;
+  border-bottom:1px solid #000;
+}
+div.main {
+  margin:10px;
+}
+li {
+  margin-top:10px;
+}
+doc.li {
+  margin-top:5px;
+}
+.recommended {
+  color:green;
+}

@@ -717,7 +717,7 @@ Report Bug: Rapporter feil
 ########################################
 # Page: help_docs.php
 #
-WebCalendar Documentation: Dokumentasjon for WebCalendar
+WebCal Docs: Dokumentasjon for WebCalendar
 Currently in English only.: For øyeblikket kun på engelsk
 
 ########################################
@@ -750,7 +750,7 @@ Overwrite Prior Import: Skriv over tidligere importering
 # Page: help_index.php
 #
 Help Index: Hjelpoversikt
-About WebCalendar: Om WebCalendar
+About WebCal: Om WebCalendar
 
 ########################################
 # Page: help_layers.php
@@ -885,7 +885,7 @@ minute: minutt
 #
 Purging events for: Sletter aktiviteter for
 Finished: Ferdig
-Check box to delete ALL events for a user: Marker i boksen hvis <b>ALLE</b> aktiviteter skal slettes
+to delete ALL events for user: Marker i boksen hvis <b>ALLE</b> aktiviteter skal slettes
 Delete all events before: Slett alle aktiviteter før
 Preview delete: Forhåndsvisning for sletting
 really delete events for: Er du sikker
@@ -907,7 +907,7 @@ Administrator: =
 Welcome: Velkommen
 New user via email.: Ny bruker via e-post.
 Registration: Registrering
-Welcome to WebCalendar: Velkommen til WebCalendar
+Welcome to WebCal: Velkommen til WebCalendar
 should get email soon: E-posten din bør komme om en kort stund.
 Return to Login screen: Gå tilbake til innloggingsskjermen
 Password (again): Passord (igjen)

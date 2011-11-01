@@ -195,8 +195,7 @@ if ( -f $infile ) {
 
 $trans{ 'PROGRAM_DATE' }    = $program_date;
 $trans{ 'PROGRAM_VERSION' } = $program_version;
-$trans{ 'PROGRAM_NAME' }    = $trans{ 'Title' }
- . " $program_version ($program_date)";
+$trans{ 'PROGRAM_NAME' }    = $trans{ 'Title' };
 
 $trans{ 'charset' }   = '=' if ( !defined( $trans{ 'charset' } ) );
 $trans{ 'direction' } = '=' if ( !defined( $trans{ 'direction' } ) );
@@ -264,7 +263,9 @@ if ( $plugin eq '' ) {
 ' . ( '#' x 80 ) . '
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ' . ( '#' x 80 ) : '
-PROGRAM_NAME: ' . $trans{ 'PROGRAM_NAME' } ) . '
+PROGRAM_NAME: ' . $trans{ 'PROGRAM_NAME' } . '
+PROGRAM_VERSION: ' . $trans{ 'PROGRAM_VERSION' } . '
+PROGRAM_DATE: ' . $trans{ 'PROGRAM_DATE' } ) . '
 ' . ( $infile !~ /english-us/i ? '
 # A lone equal sign "=" to the right of the colon, such as "charset: =",
 # indicates that the "translation" is identical to the English text.
@@ -288,10 +289,10 @@ direction: ' . $trans{ 'direction' } . ( $infile !~ /english-us/i ? '
 ' : '' )
 
 # Replace the date formats below with these. Soon, I hope. bb
-# DATE_FORMAT: F d, Y
-# DATE_FORMAT_MD: F d
-# DATE_FORMAT_MY: F Y
-# DATE_FORMAT_TASK: m/d/Y
+# DATE_FORMAT: 'F d, Y'
+# DATE_FORMAT_MD: 'F d'
+# DATE_FORMAT_MY: 'F Y'
+# DATE_FORMAT_TASK: 'm/d/Y'
 
  . '
 __month__ __dd__, __yyyy__: ' . $trans{ '__month__ __dd__, __yyyy__' } . '

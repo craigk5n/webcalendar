@@ -168,9 +168,10 @@ $openStr ="\"window.open( 'edit_template.php?type=%s&user=%s','cal_template','de
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
 
-$BodyX = 'onload="altrows();showTab( \'' . $currenttab . '\' );"';
-$INC = array ('js/visible.js/true', 'js/pref.php');
-print_header($INC, '', $BodyX);
+ob_start();
+setcookie( 'currenttab', $currenttab );
+setcookie( 'useColors', $ALLOW_COLOR_CUSTOMIZATION );
+print_header();
 ?>
 
 <h2><?php
@@ -295,7 +296,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <table cellspacing="1" cellpadding="2" border="0" summary="">
 <?php if ( $can_set_timezone == true ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip ( 'tz-help' )?>">
-  <label for="pref_TIMEZONE"><?php etranslate ( 'Timezone Selection' )?>:</label></td><td>
+  <label for="pref_TIMEZONE"><?php etranslate( 'Timezone Selection' )?></label></td><td>
   <?php
    if ( empty ( $prefarray['TIMEZONE'] ) ) $prefarray['TIMEZONE'] = $SERVER_TIMEZONE;
    echo print_timezone_select_html ( 'pref_', $prefarray['TIMEZONE']);
@@ -351,7 +352,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
  </select>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip ( 'display-weekend-starts-on' )?>">
- <?php etranslate ( 'Weekend starts on' )?>:</td><td>
+ <?php etranslate( 'Weekend starts on' )?></td><td>
  <select name="pref_WEEKEND_START" id="pref_WEEKEND_START">
 <?php
  for ( $i = -1; $i < 6; $i++ ) {
@@ -449,45 +450,45 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip ( 'display-sm_month-help' );?>">
- <?php etranslate ( 'Display small months' )?>:</td><td>
+ <?php etranslate( 'Display small months' )?></td><td>
  <?php echo print_radio ( 'DISPLAY_SM_MONTH' ) ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip ( 'display-weekends-help' );?>">
- <?php etranslate ( 'Display weekends' )?>:</td><td>
+ <?php etranslate( 'Display weekends' )?></td><td>
  <?php echo print_radio ( 'DISPLAY_WEEKENDS' ) ?>
 </td></tr>
  <tr><td class="tooltip" title="<?php etooltip ( 'display-long-daynames-help' );?>">
-  <?php etranslate ( 'Display long day names' )?>:</td><td>
+  <?php etranslate( 'Display long day names' )?></td><td>
   <?php echo print_radio ( 'DISPLAY_LONG_DAYS' ) ?>
  </td></tr>
 <tr><td class="tooltip" title="<?php etooltip ("display-minutes-help")?>">
- <?php etranslate ( 'Display 00 minutes always' )?>:</td><td>
+ <?php etranslate( 'Display 00 minutes always' )?></td><td>
  <?php echo print_radio ( 'DISPLAY_MINUTES' ) ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip ("display-end-times-help")?>">
- <?php etranslate ( 'Display end times on calendars' )?>:</td><td>
+ <?php etranslate( 'Display end times on calendars' )?></td><td>
  <?php echo print_radio ( 'DISPLAY_END_TIMES' ) ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip ( 'display-alldays-help' );?>">
-  <?php etranslate ( 'Display all days in month view' )?>:</td><td>
-  <?php echo print_radio ( 'DISPLAY_ALL_DAYS_IN_MONTH' ) ?>
+ <?php etranslate( 'Display all days in month view' )?></td><td>
+ <?php echo print_radio( 'DISPLAY_ALL_DAYS_IN_MONTH' ) ?>
  </td></tr>
 <tr><td class="tooltip" title="<?php etooltip ( 'display-week-number-help' )?>">
  <?php etranslate ( 'Display week number' )?></td><td>
  <?php echo print_radio ( 'DISPLAY_WEEKNUMBER' ) ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip ( 'display-tasks-help' )?>">
- <?php etranslate ( 'Display small task list' )?>:</td><td>
+ <?php etranslate( 'Display small task list' )?></td><td>
  <?php echo print_radio ( 'DISPLAY_TASKS' ) ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip ( 'display-tasks-in-grid-help' )?>">
- <?php etranslate ( 'Display tasks in Calendars' )?>:</td><td>
+ <?php etranslate( 'Display tasks in Calendars' )?></td><td>
  <?php echo print_radio ( 'DISPLAY_TASKS_IN_GRID' ) ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip ( 'lunar-help' )?>">
- <?php etranslate ( 'Display Lunar Phases in month view' )?>:</td><td>
+ <?php etranslate( 'Display Lunar Phases in month view' )?></td><td>
  <?php echo print_radio ( 'DISPLAY_MOON_PHASES' ) ?>
 </td></tr>
 
@@ -526,7 +527,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </td></tr>
 <?php } //end if (! empty ($categories ) ) ?>
 <tr><td class="tooltip" title="<?php etooltip ( 'crossday-help' )?>">
- <?php etranslate ( 'Disable Cross-Day Events' )?>:</td><td>
+ <?php etranslate( 'Disable Cross-Day Events' )?></td><td>
  <?php echo print_radio ( 'DISABLE_CROSSDAY_EVENTS' ) ?>
 </td></tr>
 <tr><td class="tooltip" title="<?php etooltip ( 'display-desc-print-day-help' );?>">
@@ -535,7 +536,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip ( 'entry-interval-help' )?>">
- <?php etranslate ( 'Entry interval' )?>:</td><td>
+ <?php etranslate( 'Entry interval' )?></td><td>
  <select name="pref_ENTRY_SLOTS">
   <option value="24" <?php if ( $prefarray['ENTRY_SLOTS'] == "24" )
     echo ' selected>1 ' . translate( 'hour' )?></option>
@@ -610,7 +611,7 @@ etranslate ( 'reload page to show Theme' )?></td></tr>
 </td></tr>
 <?php if ( $MENU_ENABLED == 'Y' ) { ?>
  <tr><td  class="tooltip" title="<?php etooltip ( 'menu-themes-help' );?>">
- <label for="pref_MENU_THEME"><?php etranslate ( 'Menu theme' )?>:</label></td><td>
+ <label for="pref_MENU_THEME"><?php etranslate( 'Menu theme' )?></label></td><td>
  <select name="pref_MENU_THEME" id="pref_MENU_THEME">
 <?php
   echo '<option value="default" ' . ($prefarray['MENU_THEME'] == 'default' ?
@@ -635,13 +636,13 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <table cellspacing="1" cellpadding="2" summary="">
 <tr><td class="tooltip">
 <tr><td class="tooltip" title="<?php etooltip('email-format');?>">
- <?php etranslate ( 'Email format preference' )?>:</td><td>
+ <?php etranslate( 'Email format preference' )?></td><td>
  <?php echo print_radio ( 'EMAIL_HTML',
    array ( 'Y'=> translate ( 'HTML' ), 'N'=>translate ( 'Plain Text' ) ) ) ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip('email-include-ics');?>">
- <?php etranslate ( 'Include iCalendar attachments' )?>:</td><td>
+ <?php etranslate( 'Include iCalendar attachments' )?></td><td>
  <?php echo print_radio ( 'EMAIL_ATTACH_ICS', '', '', 0 ) ?>
 </td></tr>
 
@@ -671,7 +672,7 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 </td></tr>
 
 <tr><td class="tooltip" title="<?php etooltip('email-event-create');?>">
- <?php etranslate ( 'Event that I create' )?>:</td><td>
+ <?php etranslate( 'Event that I create' )?></td><td>
  <?php echo print_radio ( 'EMAIL_EVENT_CREATE' ) ?>
 </td></tr>
 </table>
@@ -690,9 +691,9 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
  <?php echo print_radio ( 'APPROVE_ASSISTANT_EVENT' ) ?>
 </td></tr>
 
-<tr><td class="tooltip" title="<?php etooltip ( 'display_byproxy-help' )?>"><?php
-  etranslate ( 'Display if created by Assistant' )?>:</td><td>
-  <?php echo print_radio ( 'DISPLAY_CREATED_BYPROXY' ) ?>
+<tr><td class="tooltip" title="<?php etooltip( 'display_byproxy-help' )?>">
+ <?php etranslate( 'Display if created by Assistant' )?></td><td>
+ <?php echo print_radio( 'DISPLAY_CREATED_BYPROXY' ) ?>
 </td></tr>
 </table>
 </div>
@@ -705,7 +706,7 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip ( 'allow-view-subscriptions-help' )?>"><?php etranslate ( 'Allow remote viewing of' );
 $publish_access = ( empty( $prefarray['USER_REMOTE_ACCESS'] )
    ? 0 : $prefarray['USER_REMOTE_ACCESS'] );
-?>:</td><td>
+?></td><td>
   <select name="pref_USER_REMOTE_ACCESS">
    <option value="0" <?php echo ( $publish_access == '0' ?
      ' selected>' : '>' ) . translate( 'Public entries' )?></option>
@@ -722,7 +723,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
   <?php echo print_radio ( 'USER_PUBLISH_ENABLED' ) ?>
 </td></tr>
 <?php if ( ! empty ( $SERVER_URL ) ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip ( 'remote-subscriptions-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate ( 'URL' )?>:</td>
+<tr><td class="tooltipselect" title="<?php etooltip( 'remote-subscriptions-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $urlStr?></td>
   <td>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
@@ -740,7 +741,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) { ?>
   <?php echo print_radio ( 'USER_PUBLISH_RW_ENABLED' ) ?>
 </td></tr>
 <?php if ( ! empty ( $SERVER_URL ) ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip ( 'remote-publishing-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate ( 'URL' )?>:</td>
+<tr><td class="tooltipselect" title="<?php etooltip( 'remote-publishing-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $urlStr?></td>
   <td>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
@@ -757,7 +758,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
   <?php echo print_radio ( 'USER_RSS_ENABLED' ) ?>
 </td></tr>
 <?php if ( ! empty ( $SERVER_URL ) ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip ( 'rss-feed-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate ( 'URL' )?>:</td>
+<tr><td class="tooltipselect" title="<?php etooltip( 'rss-feed-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $urlStr?></td>
   <td>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
@@ -771,7 +772,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
   <?php echo print_radio ( 'FREEBUSY_ENABLED' ) ?>
 </td></tr>
 <?php if ( ! empty ( $SERVER_URL ) ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip ( 'freebusy-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate ( 'URL' )?>:</td>
+<tr><td class="tooltipselect" title="<?php etooltip( 'freebusy-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $urlStr?></td>
   <td>
   <?php
     echo htmlspecialchars ( $SERVER_URL ) .
@@ -917,5 +918,7 @@ echo display_month ( date ( 'm' ), date( 'Y' ), true );
 </div>
 </form>
 
-<?php echo print_trailer(); ?>
+<?php echo print_trailer();
+ob_end_flush();
 
+?>

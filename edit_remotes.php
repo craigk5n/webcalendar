@@ -40,9 +40,25 @@ $nid = getValue ( 'nid' );
 if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
   $userlist = get_nonuser_cals ( $login, true );
 
+  $button        = $addStr;
+  $buttonAction  = 'Add';
+  $calIdStr      = translate( 'Calendar ID' );
+  $colorStr      = translate( 'Color' );
+  $createLayerStr= translate( 'Create Layer' );
+  $firstNameStr  = translate( 'First Name' );
+  $lastNameStr   = translate( 'Last Name' );
+  $reloadStr     = translate( 'Reload' );
+  $requiredStr   = translate( 'Required to View Remote Calendar' );
+  
+  $firstNameValue = ( empty( $remotestemp_firstname )
+    ? '' : htmlspecialchars( $remotestemp_firstname ) );
+  $lastNameValue = ( empty( $remotestemp_lastname )
+    ? '' : htmlspecialchars( $remotestemp_lastname ) );
+  $urlValue = ( empty( $remotestemp_url )
+    ? '' : htmlspecialchars( $remotestemp_url ) );
+
   if ( empty ( $nid ) ) {
-    $id_display = '<input type="text" name="nid" id="nid" size="20" '
-     . 'maxlength="20" onchange="check_name();"> '
+    $id_display = '<input type="text" id="nid" name="nid" size="20" maxlength="20"> '
      . translate ( 'word characters only' );
     $lableStr = translate ( 'Add Remote Calendar' );
   } else {
@@ -51,35 +67,15 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
 
     $button = $saveStr;
     $buttonAction = 'Save';
-    $id_display = $nid . ' <input type="hidden" name="nid" id="nid" value="'
+    $id_display = $nid . ' <input type="hidden" id="nid" name="nid" value="'
      . $nid . '">';
     $lableStr = translate ( 'Edit Remote Calendar' );
     $remotestemp_login = substr ( $remotestemp_login, strlen ( $NONUSER_PREFIX ) );
   }
 
-  $button = translate ( 'Add' );
-  $buttonAction = 'Add';
-  $calIdStr = translate ( 'Calendar ID' );
-  $colorStr = translate ( 'Color' );
-  $confirmStr = translate( 'really delete entry' );
-  $createLayerStr = translate ( 'Create Layer' );
-  $deleteStr = translate ( 'Delete' );
-  $firstNameStr = translate ( 'First Name' );
-  $lastNameStr = translate ( 'Last Name' );
-  $reloadStr = translate ( 'Reload' );
-  $requiredStr = translate ( 'Required to View Remote Calendar' );
-
-  $firstNameValue = ( empty ( $remotestemp_firstname )
-    ? '' : htmlspecialchars ( $remotestemp_firstname ) );
-  $lastNameValue = ( empty ( $remotestemp_lastname )
-    ? '' : htmlspecialchars ( $remotestemp_lastname ) );
-  $urlValue = ( empty ( $remotestemp_url )
-    ? '' : htmlspecialchars ( $remotestemp_url ) );
-
   echo <<<EOT
     <h2>{$lableStr}</h2>
-    <form action="edit_remotes_handler.php" method="post" name="prefform"
-      onsubmit="return valid_form( this );">
+    <form action="edit_remotes_handler.php" method="post" id="prefform" name="prefform">
       <table cellspacing="0" cellpadding="2" summary="">
         <tr>
           <td><label for="calid">{$calIdStr}</label></td>
@@ -104,14 +100,14 @@ EOT;
   if ( empty ( $nid ) ) {
     echo <<<EOT
         <tr>
-          <td><label for="nlayer">{$createLayerStr}:</label></td>
+          <td><label for="nlayer">{$createLayerStr}</label></td>
           <td colspan="3">
             <input type="hidden" name="reload" id="reload" value="true">
-            <input type="checkbox" name="nlayer" id="nlayer" value="Y"
-              onchange="toggle_layercolor();">{$requiredStr}
+            <input type="checkbox" name="nlayer" id="nlayer" value="Y">
+            {$requiredStr}
           </td>
         </tr>
-        <tr id="nlayercolor" style="visibility:hidden" >
+        <tr id="nlayercolor">
           <td>
 EOT;
     echo print_color_input_html ( 'layercolor', $colorStr, '#000000' ) . '
@@ -126,8 +122,7 @@ EOT;
 
   if ( ! empty ( $nid ) )
     echo <<<EOT
-      <input type="submit" name="delete" value="{$deleteStr}"
-        onclick="return confirm( '{$confirmStr}' )">
+      <input type="submit" id="deleEntry" name="delete" value="{$deleteStr}">
       <input type="submit" name="reload" value="{$reloadStr}">
 EOT;
 

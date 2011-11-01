@@ -21,13 +21,3 @@ function selectUsers () {
     "width=500,height=500,resizable=yes,scrollbars=yes" );
 }
 
-function usermode_handler ()
-{
-  var show = ( document.editviewform.viewuserall[0].checked );
-  if ( show ) {
-    makeVisible ( "viewuserlist" );
-  } else {
-    makeInvisible ( "viewuserlist" );
-  }
-}
-

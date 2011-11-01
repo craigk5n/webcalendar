@@ -593,7 +593,7 @@ translate( '9,999.99' ) translate( 'time is 140000' )
  */
 $addStr     = translate( 'Add' );
 $adminStr   = translate( 'Admin' );
-$allStr     = translate( 'All' )
+$allStr     = translate( 'All' );
 $badEntryStr= translate( 'Invalid entry id XXX.' );
 $cat_Str    = translate( 'Category_' );
 $dblClickAdd= translate( 'Double-click to add entry' );
@@ -616,5 +616,19 @@ $selectStr  = translate( 'Select' );
 $setsStr    = translate( 'Settings' );
 $urlStr     = translate( 'URL' );
 $yesStr     = translate( 'Yes' );
+
+// This wasn't working well in config.php so...
+// How about we set these once, in "tools/update_translation.pl",
+// instead of multiple files?
+// However, this does require that "translations/English-US.txt",
+// at least, is current.
+// translate() for these is always English at this point.
+// We're just loading the variables set in "tools/update_translation.pl",
+$PROGRAM_VERSION = translate( 'PROGRAM_VERSION' );
+$PROGRAM_DATE    = translate( 'PROGRAM_DATE' );
+
+$PROGRAM_NAME = translate( 'WebCal' )
+ // We could translate this as translate( string, false, 'D' ) if needed.
+ . " $PROGRAM_VERSION $PROGRAM_DATE";
 
 ?>
