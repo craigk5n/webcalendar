@@ -13,10 +13,7 @@
 // You can copy/modify and distribute this code under the conditions
 // of the GNU GENERAL PUBLIC LICENSE Version 2.
 
-var ns4,         // Are we using Netscape4?
-ie4,             // Are we using Internet Explorer Version 4?
-ie5,             // Are we using Internet Explorer Version 5 and up?
-kon,             // Are we using KDE Konqueror?
+var kon,         // Are we using KDE Konqueror?
 followMe = 1,    // allow popup to follow cursor...turn off for better performance
 idiv = null,     // Pointer to infodiv container
 maxwidth = 300,  // maximum width of popup window
@@ -58,8 +55,8 @@ addLoadListener(function () {
         return true;
       }
     }
-  });
-
+  }
+});
 function rebrowse() {
   window.location.reload();
 }
@@ -105,9 +102,7 @@ function showPopUp(evt, name) {
        : document.body.offsetWidth - 20);
     winH = (window.innerHeight
        ? window.innerHeight
-       : (ie5
-         ? 500
-         : document.body.offsetHeight)) + scrollY;
+       : document.body.offsetHeight) + scrollY;
 
     popupW = idiv.offsetWidth;
     popupH = idiv.offsetHeight;
