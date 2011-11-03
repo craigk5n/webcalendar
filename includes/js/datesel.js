@@ -277,7 +277,7 @@ function datesel_UpdateDisplay(div, datename, year, month, day, curYMD) {
   attachEventListener(imgs[1], 'click', function () {
       datesel_goto(event, 'datename', nextYear, nextMonth, nextDay, curYMD);
     });
-  for (var i = daysThisMonth; i >= 0; i--) {
+  for (var i = daysThisMonth - 1; i >= 0; i--) {
     attachEventListener(document.getElementById('dom_' + i), 'click', function () {
         datesel_DateSelected(event, 'datename', year, month, i)
       });
