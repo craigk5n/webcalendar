@@ -12,14 +12,16 @@ p = p.substring(0, p.indexOf('.'));
 // And other files that are going to see extensive use later,
 // with HTML5 and CSS3 especially.
 linkFile(d + 'includes/css/' + p + '.css', 'link');
-for (var i in Array(
-    'dateformat',
-    'geturl',
-    'jquery',    // Complements "prototype.js" and works with
-    'modernizr', // to make older browsers do HTML5/CSS3 things with minimal code from us.
-    p,           // Loads the CSS/JS for the page that called this.
-  )) {
-  linkFile(d + 'includes/js/' + i + '.js');
+
+var tmp = [
+  'dateformat',
+  'geturl',
+  'jquery',    // Complements "prototype.js" and works with
+  'modernizr', // to make older browsers do HTML5/CSS3 things with minimal code from us.
+  p,           // Loads the CSS/JS for the page that called this.
+];
+for (var i = tmp.length - 1; i >= 0; i--) {
+  linkFile(d + 'includes/js/' + tmp[i] + '.js');
 }
 function addLoadListener(fn) {
   if (typeof window.addEventListener != 'undefined') {
