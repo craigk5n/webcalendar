@@ -24,7 +24,7 @@ addLoadListener(function () {
   if (!document.editentryform)
     return false;
 
-  for (var i = tabs.length - 1; i > 1; i++ ){
+  for (var i = tabs.length - 1; i > 1; i++) {
     toggleVisible(tabs[i], 'visible', 'none');
   }
 
@@ -240,8 +240,8 @@ function rpttype_handler() {
   if (!form.rpttype) {
     return;
   }
-  var expert = (document.getElementById('rptmode').checked);
-  var i = form.rpttype.selectedIndex,
+  var expert = (document.getElementById('rptmode').checked),
+  i = form.rpttype.selectedIndex,
   val = form.rpttype.options[i].text;
 
   //i == 0 none
@@ -251,46 +251,48 @@ function rpttype_handler() {
   //i == 6 yearly
   //i == 7 manual  Use only Exclusions/Inclusions
   //Turn all off initially
-  for (var i in Array(
-      'rpt_mode',
-      'rptwkst',
-      'weekdays_only',
-      )) {
-    toggleVisible(i, 'hidden');
+  var tmp = [
+    'rpt_mode',
+    'rptwkst',
+    'weekdays_only',
+  ];
+  for (var j = tmp.length - 1; j >= 0; j--) {
+    toggleVisible(tmp[j], 'hidden');
   }
-  for (var i in Array(
-      'rptbydayextended',
-      'rptbydayln',
-      'rptbydayln1',
-      'rptbydayln2',
-      'rptbydayln3',
-      'rptbydayln4',
-      'rptbymonth',
-      'rptbymonthdayextended',
-      'rptbysetpos',
-      'rptbyweekno',
-      'rptbyyearday',
-      // 'rptday',
+  tmp = [
+    'rptbydayextended',
+    'rptbydayln',
+    'rptbydayln1',
+    'rptbydayln2',
+    'rptbydayln3',
+    'rptbydayln4',
+    'rptbymonth',
+    'rptbymonthdayextended',
+    'rptbysetpos',
+    'rptbyweekno',
+    'rptbyyearday',
+    // 'rptday',
+    'rptenddate1',
+    'rptenddate2',
+    'rptenddate3',
+    'rptexceptions',
+    'rptfreq',
+    // 'select_exceptions_not',
+  ];
+  for (var j = tmp.length - 1; j >= 0; j--) {
+    toggleVisible(tmp[j], 'hidden', 'none');
+  }
+  if (i > 0 && i < 7) {
+    // always on
+    tmp = [
       'rptenddate1',
       'rptenddate2',
       'rptenddate3',
       'rptexceptions',
       'rptfreq',
-      // 'select_exceptions_not',
-    )) {
-    toggleVisible(i, 'hidden', 'none');
-  }
-
-  if (i > 0 && i < 7) {
-    // always on
-    for (var i in Array(
-        'rptenddate1',
-        'rptenddate2',
-        'rptenddate3',
-        'rptexceptions',
-        'rptfreq',
-        )) {
-      toggleVisible(i, 'visible', 'block');
+    ];
+    for (var j = tmp.length - 1; j >= 0; j--) {
+      toggleVisible(tmp[j], 'visible', 'block');
     }
     toggleVisible('rpt_mode', 'visible');
 
@@ -298,7 +300,7 @@ function rpttype_handler() {
       toggleVisible('weekdays_only', 'visible');
     }
 
-    if (i == 2) { // weekly
+    if (j == 2) { // weekly
       toggleVisible('rptbydayextended', 'visible', 'block');
 
       if (expert) {
@@ -307,14 +309,15 @@ function rpttype_handler() {
     }
     if (i == 3) { // monthly (by day)
       if (expert) {
-        for (var i in Array(
-            'rptbydayln',
-            'rptbydayln1',
-            'rptbydayln2',
-            'rptbydayln3',
-            'rptbydayln4',
-            )) {
-          toggleVisible(i, 'visible', 'block');
+        tmp = [
+          'rptbydayln',
+          'rptbydayln1',
+          'rptbydayln2',
+          'rptbydayln3',
+          'rptbydayln4',
+        ];
+        for (var j = tmp.length - 1; j >= 0; j--) {
+          toggleVisible(tmp[j], 'visible', 'block');
         }
         toggleVisible('rptwkst', 'visible');
       }
@@ -330,20 +333,19 @@ function rpttype_handler() {
     }
     if (i == 6) { // yearly
       if (expert) {
-        for (var i in Array(
-        'rptbydayln',
-        'rptbydayln1',
-        'rptbydayln2',
-        'rptbydayln3',
-        'rptbydayln4',
-        'rptbymonthdayextended',
-        'rptbyweekno',
-        'rptbyyearday',
-            )) {
-          toggleVisible(i, 'visible', 'block');
+        tmp = [
+          'rptbydayln',
+          'rptbydayln1',
+          'rptbydayln2',
+          'rptbydayln3',
+          'rptbydayln4',
+          'rptbymonthdayextended',
+          'rptbyweekno',
+          'rptbyyearday',
+        ];
+        for (var j = tmp.length - 1; j >= 0; j--) {
+          toggleVisible(tmp[j], 'visible', 'block');
         }
-        toggleVisible('rptwkst', 'visible');
-      }
         toggleVisible('rptwkst', 'visible');
       }
     }
@@ -498,8 +500,8 @@ function timetype_handler() {
 }
 function toggle_byday(ele) {
   var bydaytext = bydayTrans[ele.id.substr(2, 1)],
-   bydayVal = bydayLabels[ele.id.substr(2, 1)],
-   tmp = '';
+  bydayVal = bydayLabels[ele.id.substr(2, 1)],
+  tmp = '';
 
   if (ele.value.length > 4) {
     // blank
