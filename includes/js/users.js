@@ -33,8 +33,8 @@ addLoadListener(function () {
     for (var i = hrf.length - 1; i >= 0; i--) {
       if (substr(hrf[i], 0, 14) == 'edit_user.php') {
         attachEventListener(hrf[i], 'click', function () {
-            document.getElementById('useriframe').style.display = ('block'
-               ? 'none' : 'block');
+            dge = document.getElementById('useriframe').style.display;
+            dge = (dge == 'block' ? 'none' : 'block');
           });
       }
     }
