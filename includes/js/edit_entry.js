@@ -116,9 +116,10 @@ function add_exception(which) {
   // Test to see if this date is already in the list.
   with (form) {
     with (elements['exceptions[]']) {
-      for (i = 0; i < length; i++) {
+      for (var i = length - 1; i >= 0; i--) {
         if (options[i].text == '-' + exceptDate || options[i].text == '+' + exceptDate) {
           isUnique = false;
+          break; // Only need one.
         }
       }
     }
@@ -141,7 +142,7 @@ function completed_handler() {
 function del_selected() {
   with (form) {
     with (elements['exceptions[]']) {
-      for (i = 0; i < length; i++) {
+      for (var i = length - 1; i >= 0; i--) {
         if (options[i].selected) {
           options[i] = null;
         }
@@ -348,8 +349,8 @@ function rpttype_handler() {
     }
     if (expert) {
       toggleVisible('rptbydayextended', 'visible', 'block');
-      toggleVisible('weekdays_only', 'hidden');
       toggleVisible('rptbymonth', 'visible', 'block');
+      toggleVisible('weekdays_only', 'hidden');
     }
   }
   if (i == 7) {
