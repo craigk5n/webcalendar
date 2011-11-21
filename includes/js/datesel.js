@@ -21,6 +21,11 @@
  *    unless you override with the disableAJAX parameter.)
  ************************************************************************/
 
+ function datesel_Cancel() {
+  Effect.Fade('dateselOverlay', {
+    duration: 0.5
+  });
+}
 // Handle the user selecting a date.
 // Update the calling HTML elements to reflect the new date
 // and close/hide the date selection.
@@ -29,12 +34,11 @@ function datesel_DateSelected(event, datename, year, month, day) {
   ymdEle = datename + '_YMD'
 
     // Turn selected date green as the table fades away.
-  $('dom_' + day).setStyle({
-      background : '#00ff00'
+    $('dom_' + day).setStyle({
+      background: '#00ff00'
     });
 
-  var ymdVal = '' + year + (month < 10 ? '0' : '') + month +
-    (day < 10 ? '0' : '') + day;
+  var ymdVal = year + (month > 9 ? '' : '0') + month + (day > 9 ? '' : '0') + day;
 
   $(ymdEle).value = ymdVal;
 
@@ -46,8 +50,8 @@ function datesel_DateSelected(event, datename, year, month, day) {
 
   // Hide date selection table
   Effect.Fade('dateselOverlay', {
-      duration : 0.5
-    });
+    duration: 0.5
+  });
 }
 
 // This function mimics the date_to_str PHP function found in
@@ -71,7 +75,7 @@ function datesel_goto(event, datename, year, month, day, curYMD) {
   Event.stop(event);
 }
 
-// Bring up the date selection dialog
+// Bring up the date selection dialog.
 // The current date setting will be pulled from the
 // "xxxxx_YMD".value attribute, where xxxxx is the value of datename.
 function datesel_SelectDate(event, datename) {
@@ -99,8 +103,8 @@ function datesel_SelectDate(event, datename) {
     o = div2;
   } else {
     $('dateselOverlay').setStyle({
-        display : 'block'
-      });
+      display: 'block'
+    });
   }
 
   // Pull the current date from the YMDId object
@@ -111,11 +115,11 @@ function datesel_SelectDate(event, datename) {
     alert(xlate['noYMDXXX'].replace(/XXX/, YMDId));
     return;
   }
-  var ymd = $(YMDId).value,
+  var ymd = $(YMDId).value;
 
-  y = ymd.substr(0, 4),
-  m = ymd.substr(4, 2),
-  d = ymd.substr(6, 2);
+  var y = ymd.substr(0, 4);
+  var m = ymd.substr(4, 2);
+  var d = ymd.substr(6, 2);
 
   if (m.substring(0, 1) == '0')
     m = m.substring(1);
@@ -131,13 +135,13 @@ function datesel_SelectDate(event, datename) {
   ypos = event.clientY + 15;
 
   o.setStyle({
-      position : 'absolute',
-      left : xpos + 'px',
-      top : ypos + 'px',
-      width : '200px',
-      height : '200px',
-      display : 'block'
-    });
+    position: 'absolute',
+    left: xpos + 'px',
+    top: ypos + 'px',
+    width: '200px',
+    height: '200px',
+    display: 'block'
+  });
 }
 
 // Update date selection object (generated from the PHP datesel_Print
@@ -158,8 +162,8 @@ function handleBackgroundClick() {
   // We make it disappear instantly rather than fade just cause it
   // provides quicker feedback in case it was an accident.
   $('dateselOverlay').setStyle({
-      display : 'none'
-    });
+    display: 'none'
+  });
 }
 function sendDate(date) {
   var d = wc_getCookie('fday');
@@ -247,8 +251,7 @@ function datesel_UpdateDisplay(div, datename, year, month, day, curYMD) {
     if (i < 1 || i > daysThisMonth) {
       ret += nl + '<td class="othermonth">&nbsp;</td>';
     } else {
-      var key = '' + year + (month < 10 ? '0' : '') + month +
-        (i < 10 ? '0' : '') + i;
+      var key = year + (month > 9 ? '' : '0') + month + (i > 9 ? '' : '0') + i;
       var cl = 'clickable fakebutton';
 
       if (year == cury && month == curm && i == curd)
@@ -265,22 +268,22 @@ function datesel_UpdateDisplay(div, datename, year, month, day, curYMD) {
   $(div).innerHTML = ret + nl + '</table>';
 
   attachEventListener(document.getElementById('cancelImage'), 'click', function () {
-      Effect.Fade('dateselOverlay', {
-          duration : 0.5
-        });
+    Effect.Fade('dateselOverlay', {
+      duration: 0.5
     });
+  });
 
   var imgs = document.getElementById('dateselMonthName').getElementsByTagName('img');
   attachEventListener(imgs[0], 'click', function () {
-      datesel_goto(event, 'datename', prevYear, prevMonth, prevDay, curYMD);
-    });
+    datesel_goto(event, 'datename', prevYear, prevMonth, prevDay, curYMD);
+  });
   attachEventListener(imgs[1], 'click', function () {
-      datesel_goto(event, 'datename', nextYear, nextMonth, nextDay, curYMD);
-    });
+    datesel_goto(event, 'datename', nextYear, nextMonth, nextDay, curYMD);
+  });
   for (var i = daysThisMonth - 1; i >= 0; i--) {
     attachEventListener(document.getElementById('dom_' + i), 'click', function () {
-        datesel_DateSelected(event, 'datename', year, month, i)
-      });
+      datesel_DateSelected(event, 'datename', year, month, i)
+    });
   }
 }
 
