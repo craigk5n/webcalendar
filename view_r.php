@@ -86,20 +86,14 @@ $printerStr = generate_printer_friendly ( 'view_r.php' );
 
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 
-if ( $is_day_view )
-  $next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
-else
-  $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
+$next = mktime( 0, 0, 0, $thismonth, $thisday + ( $is_day_view ? 1 : 7 ), $thisyear );
 
 $nextyear = date ( 'Y', $next );
 $nextmonth = date ( 'm', $next );
 $nextday = date ( 'd', $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
-if ( $is_day_view )
-  $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 1, $thisyear );
-else
-  $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
+$prev = mktime( 0, 0, 0, $thismonth, $thisday - ( $is_day_view ? 1 : 7 ), $thisyear );
 
 $prevyear = date ( 'Y', $prev );
 $prevmonth = date ( 'm', $prev );
@@ -110,10 +104,7 @@ $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
 $wkend = $wkstart + 604800;
 
-if ( ! $fit_to_window )
-  $time_w = '100px';
-else
-  $time_w = '8%'; // 8% for time column
+$time_w = ( $fit_to_window ? '8%' : '100px' ); // 8% for time column
 
 // Set the day of week range (0=Sun, 6=Sat)
 // $start_ind = start of range
@@ -252,7 +243,7 @@ if ( ! $fit_to_window ) { ?>
 <table <?php echo $help;?> class="main" style="width:<?php
   echo $table_width;?>px;" width="<?php echo $table_width;?>">
 <?php } else { ?>
-<table <?php echo $help;?> class="main" width="100%">
+<table <?php echo $help;?> class="main">
 <?php } ?>
 
 <!-- table header -->
