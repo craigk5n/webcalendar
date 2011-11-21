@@ -37,8 +37,7 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
     // Don't list current user
     if ( $login == $userlist[$i]['cal_login'] )
       continue;
-    echo '
-        <option value="' . $userlist[$i]['cal_login'] . '">'
+    echo $option . $userlist[$i]['cal_login'] . '">'
      . $userlist[$i]['cal_fullname'] . '</option>';
   }
 

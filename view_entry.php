@@ -19,7 +19,7 @@ foreach( array(
     'DocList',
     'AttachmentList',
     'CommentList',
-    ) as $i ) {
+  ) as $i ) {
   include_once 'includes/classes/' . $i . '.class';
 }
 
@@ -664,7 +664,7 @@ if ( $single_user == 'N' && $show_participants ) {
   }
   if ( $eType == 'task' ) {
     echo '
-          <table cellspacing="0" cellpadding="1" summary="">
+          <table cellpadding="1" summary="">
             <th>' . translate( 'Participants' ) . '</th>
             <th colspan="2">' . translate( 'Percentage Complete' ) . '</th>';
     $others_complete = 'yes';
@@ -797,8 +797,7 @@ if ( $eType == 'task' ) {
         <td>
             <select name="upercent" id="task_percent">';
     for ( $i = 0; $i < 101; $i += 10 ) {
-      echo '
-              <option value="' . $i . ( $login_percentage == $i
+      echo $option . $i . ( $login_percentage == $i
         ? '" selected>' : '">' ) . $i . '</option>';
     }
     echo '

@@ -40,7 +40,7 @@ echo '
     </script>
     <center>
       <form action="#" name="userselform">
-        <table style="border: 0; width: 100%;" summary="">
+        <table summary="">
           <tr>
             <td class="aligntop">
               <b>' . translate( 'Users_' ) . '</b><br>
@@ -57,8 +57,7 @@ echo '
               <select name="groups" size="15">';
 
 for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
-  echo '
-                <option value="' . $groups[$i]['cal_group_id'] . '">'
+  echo $option . $groups[$i]['cal_group_id'] . '">'
    . $groups[$i]['cal_name'] . '</option>';
 }
 
