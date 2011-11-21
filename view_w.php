@@ -89,7 +89,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     : 5 );
 
   echo '
-      <table class="main" cellspacing="0" cellpadding="1" summary=""'
+      <table class="main" cellpadding="1" summary=""'
    . ( $can_add ? 'title="' . $dblClickAdd . '"' : '' ) . '>
         <tr>
           <th class="empty">&nbsp;</th>';

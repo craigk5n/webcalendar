@@ -236,7 +236,7 @@ if ( $DISPLAY_TASKS == 'Y' ) {
 print_header( '', generate_refresh_meta() );
 
 echo <<<EOT
-    <table width="100%" cellpadding="1" summary="">
+    <table cellpadding="1" summary="">
       <tr>
         <td id="printarea" width:{$tableWidth};">
         {$navStr}
