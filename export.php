@@ -40,13 +40,12 @@ if ( is_array ( $categories ) ) {
           <td><label for="cat_filter">' . translate( 'Categories_' )
    . '</label></td>
           <td>
-            <select name="cat_filter" id="cat_filter">
-              <option value="" selected>' . $allStr . '</option>';
+            <select name="cat_filter" id="cat_filter">'
+   . $option . '" selected>' . $allStr . '</option>';
 
   foreach ( $categories as $K => $V ) {
     if ( $K > 0 )
-      echo '
-              <option value="' . $K . '">' . $V['cat_name'] . '</option>';
+      echo $option . $K . '">' . $V['cat_name'] . '</option>';
   }
 
   echo '
