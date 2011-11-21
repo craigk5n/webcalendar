@@ -29,7 +29,7 @@ setcookie( 'frm', $form );
 print_header( '', '', '', true, false, true );
 
 echo '
-    <table align="center" border="0" width="90%" summary="">
+    <table align="center" width="90%" summary="">
       <tr>
         <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>
@@ -47,8 +47,7 @@ if ( ! empty ( $categories ) ) {
     if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
         substr ( $form, 0, 4 ) == 'edit' ) ) {
       $tmpStr = $K . '" name="' . $V['cat_name'] . '">' . $V['cat_name'];
-      echo '
-            <option value="' . ( empty ( $V['cat_owner'] )
+      echo $option . ( empty ( $V['cat_owner'] )
         ? "-$tmpStr" . '<sup>*</sup>' : $tmpStr ) . '</option>';
     }
   }
@@ -69,8 +68,7 @@ if ( strlen ( $cats ) ) {
     if ( empty ( $categories[abs ( $K )]['cat_owner'] ) ) {
       $show_ast = '*';
     }
-    echo '
-            <option value="' . $K
+    echo $option . $K
      .  ( empty( $categories[abs( $K )]['cat_owner'] )
       && substr( $form, 0, 4 ) != 'edit' ? '" disabled>' : '">' )
      . $categories[abs( $K )]['cat_name'] . $show_ast . '</option>';
