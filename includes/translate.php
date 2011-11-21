@@ -145,6 +145,52 @@ function reset_language ( $new_language ) {
   $PUBLIC_ACCESS_FULLNAME = translate ( 'Public Access' );
   if ( $fullname == 'Public Access' )
     $fullname = $PUBLIC_ACCESS_FULLNAME;
+
+  // Must work on not being quite so English centric. :( bb
+  /**
+   * Init some common translations that are used a lot.
+   * There are many more that could be moved here eventually.
+   * They are here because this is the only file guaranteed to load if translating.
+   */
+  $addStr     = translate( 'Add' );
+  $adminStr   = translate( 'Admin' );
+  $allStr     = translate( 'All' );
+  $badEntryStr= translate( 'Invalid entry id XXX.' );
+  $cat_Str    = translate( 'Category_' );
+  $dblClickAdd= translate( 'Double-click to add entry' );
+  $dbErrXXXStr= translate( 'DB error XXX' );
+  $deleteStr  = translate( 'Delete' );
+  $editStr    = translate( 'Edit' );
+  $err_Str    = translate( 'Error_' );
+  $globalStr  = translate( 'Global' );
+  $groupsStr  = translate( 'Groups' );
+  $helpStr    = translate( 'Help' );
+  $nextStr    = translate( 'Next' );
+  $noStr      = translate( 'No' );
+  $noneStr    = translate( 'None' );
+  $noVuUsers  = translate( 'No users for view' );
+  $okStr      = translate( 'OK' );
+  $prevStr    = translate( 'Previous' );
+  $pri = array('',translate( 'High' ),translate( 'Medium' ),translate( 'Low' ) );
+  $saveStr    = translate( 'Save' );
+  $selectStr  = translate( 'Select' );
+  $setsStr    = translate( 'Settings' );
+  $urlStr     = translate( 'URL' );
+  $yesStr     = translate( 'Yes' );
+
+  // This wasn't working well in config.php so...
+  // How about we set these once, in "tools/update_translation.pl",
+  // instead of multiple files?
+  // However, this does require that "translations/English-US.txt",
+  // at least, is current.
+  // translate() for these is always English at this point.
+  // We're just loading the variables set in "tools/update_translation.pl",
+  $PROGRAM_VERSION = translate( 'PROGRAM_VERSION' );
+  $PROGRAM_DATE    = translate( 'PROGRAM_DATE' );
+
+  $PROGRAM_NAME = translate( 'WebCal' )
+   // We could translate this as translate( string, false, 'D' ) if needed.
+   . " $PROGRAM_VERSION $PROGRAM_DATE";
 }
 
 /**
@@ -159,33 +205,29 @@ function load_translation_text() {
   if ( $translation_loaded ) // No need to run this twice.
     return;
 
-  if ( empty ( $lang_file ) )
-    $lang_file = "translations/English-US.txt";
+  $cached_base_file = $cached_file = $cachedir = $path = '';
+  $eng_file = 'translations/English-US.txt';
 
-  $lang_cache = substr ( $lang_file, strrpos ( $lang_file, '/' ) + 1 );
-  $cached_base_file =
-  $cached_file =
-  $cachedir =
-  $lang_file_2 = '';
+  if ( empty( $lang_file ) )
+    $lang_file = $eng_file;
 
-  if ( defined ( '__WC_BASEDIR' ) ) {
-    if ( ! file_exists ( $lang_file ) )
-      $lang_file_2 = __WC_BASEDIR . $lang_file;
+  $lang_cache = substr( $lang_file, strrpos( $lang_file, '/' ) + 1 );
 
-    if ( file_exists ( $lang_file_2 ) )
-      $lang_file = $lang_file_2;
+  if ( ! file_exists( $path . $eng_file ) )
+    $path = '../';
 
-    if ( ! file_exists ( $lang_file ) )
-      $lang_file = 'translations/' . $lang_cache;
+  if ( ! file_exists( $path . $eng_file ) )
+    $path = '../../';
+
+  if ( $path != '' ) {
+    $eng_file = $path . $eng_file;
+    $lang_file= $path . 'translations/' . $lang_cache;
   }
+
   if ( ! file_exists ( $lang_file ) )
     die_miserable_death ( 'Cannot find language file: ' . $lang_file );
 
   $can_save = false;
-
-  $eng_file = 'translations/English-US.txt';
-  if ( ! file_exists ( $eng_file ) )
-    $eng_file = __WC_BASEDIR . $eng_file;
 
   // Check for 'cachedir' in settings. If found, then we will save
   // the parsed translation file there as a serialized array.
@@ -283,17 +325,20 @@ function get_browser_language ( $pref = false ) {
         return $browser_languages[$l];
     }
   }
-  return ( strlen ( $HTTP_ACCEPT_LANGUAGE ) && $pref == true
-    ? $HTTP_ACCEPT_LANGUAGE . ' ' . translate ( '(not supported)' )
+  return ( strlen( $HTTP_ACCEPT_LANGUAGE ) && $pref == true
+    // hmmm... If it's "not supported" what did we translate?
+    // ? $HTTP_ACCEPT_LANGUAGE . ' ' . translate ( '(not supported)' )
+    ? $HTTP_ACCEPT_LANGUAGE . ' (not supported)'
     : 'English-US' );
 }
 
-function translation_exists ( $str )
-{
+function translation_exists( $str ) {
   global $translation_loaded, $translations;
+
   if ( ! $translation_loaded )
     return false;
-  return ( empty ( $translations[$str] ) ? false : true );
+
+  return ( ! empty( $translations[$str] ) );
 }
 
 /**
@@ -305,8 +350,7 @@ function translation_exists ( $str )
  * @param string   $str     Text to translate
  * @param string   $decode  Do we want to envoke html_entity_decode?
  *                          We currently only use this with javascript alerts.
- * @param string   $type    ('' = alphabetic, A = alphanumeric,
- *                          D = date, N = numeric)
+ * @param string   $type    ('' = alphabetic, D = date, N = numeric)
  *
  * @return string The translated text, if available. If no translation is
  *                avalailable, then the original untranslated text is returned.
@@ -317,7 +361,7 @@ function translate ( $str, $decode = '', $type = '' ) {
   if ( ! $translation_loaded )
     load_translation_text();
 
-  if ( $type == '' || $type == 'A' ) {
+  if ( $type == '' ) {
     // Translate these because even English may be abbreviated.
     $str = trim ( $str );
 
@@ -333,23 +377,23 @@ function translate ( $str, $decode = '', $type = '' ) {
   if ( strpos ( strtolower ( $LANGUAGE ), 'english' ) === false ) {
     // Only translate if not English.
     if ( $type == 'D' ) {
-      for ( $i = 0; $i < 12; $i++ ) {
+      for ( $i = 1; $i < 13; $i++ ) {
         // Translate month names. Full then abbreviation.
-        $tmp = date ( 'F', mktime ( 0, 0, 0, $i + 1 ) );
+        $tmp = date( 'F', mktime( 0, 0, 0, $i ) );
         if ( $tmp != $translations[$tmp] )
           $str = str_replace ( $tmp, $translations[$tmp], $str );
 
-        $tmp = date ( 'M', mktime ( 0, 0, 0, $i + 1 ) );
+        $tmp = date( 'M', mktime( 0, 0, 0, $i ) );
         if ( $tmp != $translations[$tmp] )
           $str = str_replace ( $tmp, $translations[$tmp], $str );
 
-        if ( $i < 7 ) {
+        if ( $i < 8 ) {
           // Might as well translate day names while we're here.
-          $tmp = date ( 'l', mktime ( 0, 0, 0, 1, $i + 1 ) );
+          $tmp = date( 'l', mktime( 0, 0, 0, 1, $i ) );
           if ( $tmp != $translations[$tmp] )
             $str = str_replace ( $tmp, $translations[$tmp], $str );
 
-          $tmp = date ( 'D', mktime ( 0, 0, 0, 1, $i + 1 ) );
+          $tmp = date( 'D', mktime( 0, 0, 0, 1, $i ) );
           if ( $tmp != $translations[$tmp] )
             $str = str_replace ( $tmp, $translations[$tmp], $str );
         }
@@ -485,8 +529,7 @@ function define_languages() {
     //Sort languages in translated order
     asort ( $languages );
     //make sure Browser Defined is first in list
-    $browser_defined = array ( translate ( 'Browser-defined' ) => 'none');
-    $languages = array_merge ( $browser_defined, $languages );
+    $languages = array_merge( array( translate( 'Browser-defined' ) => 'none' ), $languages );
 }
 
 /**
@@ -573,7 +616,7 @@ $browser_languages = array (
 
 /*
 General purpose translations that may be used elsewhere
-as variables and not picked up by update_translation.pl
+as variables and not picked up by "tools/update_translation.pl".
 
 translate ( 'event' ) translate ( 'journal' )
 
@@ -585,50 +628,5 @@ translate ( '8' ) translate ( '9' )
 To use as masks to get language appropriate separators. Eventually.
 translate( '9,999.99' ) translate( 'time is 140000' )
 */
-
-/**
- * Init some common translations that are used a lot.
- * There are many more that could be moved here eventually.
- * They are here because this is the only file guaranteed to load if translating.
- */
-$addStr     = translate( 'Add' );
-$adminStr   = translate( 'Admin' );
-$allStr     = translate( 'All' );
-$badEntryStr= translate( 'Invalid entry id XXX.' );
-$cat_Str    = translate( 'Category_' );
-$dblClickAdd= translate( 'Double-click to add entry' );
-$dbErrXXXStr= translate( 'DB error XXX' );
-$deleteStr  = translate( 'Delete' );
-$editStr    = translate( 'Edit' );
-$err_Str    = translate( 'Error_' );
-$globalStr  = translate( 'Global' );
-$groupsStr  = translate( 'Groups' );
-$helpStr    = translate( 'Help' );
-$nextStr    = translate( 'Next' );
-$noStr      = translate( 'No' );
-$noneStr    = translate( 'None' );
-$noVuUsers  = translate( 'No users for view' );
-$okStr      = translate( 'OK' );
-$prevStr    = translate( 'Previous' );
-$pri = array('',translate( 'High' ),translate( 'Medium' ),translate( 'Low' ) );
-$saveStr    = translate( 'Save' );
-$selectStr  = translate( 'Select' );
-$setsStr    = translate( 'Settings' );
-$urlStr     = translate( 'URL' );
-$yesStr     = translate( 'Yes' );
-
-// This wasn't working well in config.php so...
-// How about we set these once, in "tools/update_translation.pl",
-// instead of multiple files?
-// However, this does require that "translations/English-US.txt",
-// at least, is current.
-// translate() for these is always English at this point.
-// We're just loading the variables set in "tools/update_translation.pl",
-$PROGRAM_VERSION = translate( 'PROGRAM_VERSION' );
-$PROGRAM_DATE    = translate( 'PROGRAM_DATE' );
-
-$PROGRAM_NAME = translate( 'WebCal' )
- // We could translate this as translate( string, false, 'D' ) if needed.
- . " $PROGRAM_VERSION $PROGRAM_DATE";
 
 ?>
