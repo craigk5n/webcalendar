@@ -113,81 +113,81 @@ System Settings: Ajustes del sistema
 Help: Ayuda
 app-name-help: Especifica el nombre de la aplicación que aparecera en el título del navegador en todas las páginas y en la página de login. El valor especeficado aquí se buscará en el fichero de traducciones permitiendo diferentes títulos para diferentes idiomas.
 Application Name: Nombre de la aplicación
-server-url-help: Especifica la URL base para la aplicación. Se incluirá al enviar emails de recordatorios y notificaciones.
+server_url_help: Especifica la URL base para la aplicación. Se incluirá al enviar emails de recordatorios y notificaciones.
 Server URL: URL del servidor
 language-help: Especifica el idioma a usar.
 Language: Idioma
 Your browser default language is: El idioma por defecto de tu navegador es
 None: Ninguno
-custom-script-help: Permite la definición de código Javascript o una hoja de estilos de texto que se insertará en la sección "head" de cada página.
-Custom script/stylesheet: Código/Hoja de estilos personalizada
-custom-header-help: Permite definir un trozo de código HTML para incluir al principio de cada página.
+custom_script_help: Permite la definición de código Javascript o una hoja de estilos de texto que se insertará en la sección "head" de cada página.
+Custom script: Código/Hoja de estilos personalizada
+custom_header_help: Permite definir un trozo de código HTML para incluir al principio de cada página.
 Custom header: Cabecera personalizada
-custom-trailer-help: Permite definir un trozo de código HTML para incluir al final de cada página.
+custom_trailer_help: Permite definir un trozo de código HTML para incluir al final de cada página.
 Custom trailer: Final personalizado
-tz-help: Especifica cuántas horas para ajustar la hora del servidor con la hora local.
-date-format-help: Especifica el formato de fecha preferido
+tz_help: Especifica cuántas horas para ajustar la hora del servidor con la hora local.
+date_format_help: Especifica el formato de fecha preferido
 Date format: Formato de fecha
-display-week-starts-on: Especifica si la semana comienza en domingo o lunes. Si se especifica Lunes, los números de semana serán números ISO.
+display_week_starts_on: Especifica si la semana comienza en domingo o lunes. Si se especifica Lunes, los números de semana serán números ISO.
 Week starts on: Semana comienza en
-time-format-help: Especifica qué formato de hora se usará:<br><i>12 horas:</i> Muestra tiempos como 3am, 8:30pm, etc.<br><i>24 horas:</i> Muestra horas como 3:00, 20:30, etc.
+time_format_help: Especifica qué formato de hora se usará:<br><i>12 horas:</i> Muestra tiempos como 3am, 8:30pm, etc.<br><i>24 horas:</i> Muestra horas como 3:00, 20:30, etc.
 Time format: Formato de Hora
 12 hour: 12 horas
 24 hour: 24 horas
-timed-evt-len-help: Especifica el método de cálculo para determinar la longitud de un evento con horas.
+timed_evt_len_help: Especifica el método de cálculo para determinar la longitud de un evento con horas.
 Specify timed event length by: Especificar la longitud de un evento con horas usando
 Duration: Duración
 End Time: Hora final
-work-hours-help: Especifica el rango de horas a mostrar en la vista de día.
+work_hours_help: Especifica el rango de horas a mostrar en la vista de día.
 Work hours: Horas laborales
 From: De
 to: para
-preferred-view-help: Especifica la vista por defecto (Día, Semana, Mes, o Año)
+preferred_view_help: Especifica la vista por defecto (Día, Semana, Mes, o Año)
 Preferred view: Vista preferida
-fonts-help: Especifica la fuente del sistema a utilizar (como "Arial, Helvetica")
+fonts_help: Especifica la fuente del sistema a utilizar (como "Arial, Helvetica")
 Fonts: Fuentes
-display-weekends-help: Incluir los fines de semana al ver una semana
-display-week-number-help: Especifica si el número correspondiente a la semana (1-52) debe mostrarse en las vistas de mes y de semana.
+display_weekends_help: Incluir los fines de semana al ver una semana
+display_weeknumber_help: Especifica si el número correspondiente a la semana (1-52) debe mostrarse en las vistas de mes y de semana.
 Display week number: Mostrar número de la semana
-display-desc-print-day-help: Incluir las descripciones de eventos en la versión para imprimir de la vista diaria.
+display_desc_print_day_help: Incluir las descripciones de eventos en la versión para imprimir de la vista diaria.
 desc in printer day view: Mostrar la descripción en vista diaria para imprimir
-yearly-shows-events-help: En la vista anual, muestra en negrita los días que contienen eventos.
+display_bold_days_in_year_help: En la vista anual, muestra en negrita los días que contienen eventos.
 bold events month/year views: Mostrar en negrita días con eventos en las vistas anual y mensual
-allow-view-add-help: Un icono '+' se mostrará en las vistas, permitiendo a los usuarios añadir rápidamente eventos al calendario de otros usuarios.
+display_add_link_in_views_help: Un icono '+' se mostrará en las vistas, permitiendo a los usuarios añadir rápidamente eventos al calendario de otros usuarios.
 Include add event link in views: Inluir enlace para añadir evento en las vistas
-allow-view-other-help: Especifica si un usuario puede ver los eventos de otro usuario.
+allow_view_other_help: Especifica si un usuario puede ver los eventos de otro usuario.
 may view others cals: Permitir ver los calendarios de otros usuarios
-require-approvals-help: Cuando se activa, un usuario debe aprobar un evento antes de que se muestre en su calendario (excepto si está activado "Mostrar no aprobados"). "No" impide el acceso público al calendario (si el acceso público al calendario está activado).
+require_approvals_help: Cuando se activa, un usuario debe aprobar un evento antes de que se muestre en su calendario (excepto si está activado "Mostrar no aprobados"). "No" impide el acceso público al calendario (si el acceso público al calendario está activado).
 Require event approvals: Requerir aprobación de eventos
-display-unapproved-help: Especifica si eventos no aprobados se mostraran en su calendario.<br> Si se elige "Sí", los eventos no aprobados se mostrarán en su calendario (en un color de texto diferente).<br> Si elige "No", los eventos no aprobados deben ser aprobados antes de que se muestren en su calendario.
+display_unapproved_help: Especifica si eventos no aprobados se mostraran en su calendario.<br> Si se elige "Sí", los eventos no aprobados se mostrarán en su calendario (en un color de texto diferente).<br> Si elige "No", los eventos no aprobados deben ser aprobados antes de que se muestren en su calendario.
 Display unapproved: Mostrar no aprobados
-conflict-check-help: Revisar conflictos de eventos (dos eventos programados a la misma hora para la misma persona). Si lo ajustas a 'Sí', podrás programar dos eventos al mismo tiempos después de confirmar un aviso. Si lo ajustas a "No", no se comprobarán los conflictos. Problablemente querrás ajustarlo a "Sí" para que se realice la comprobación.
+allow_conflicts_help: Revisar conflictos de eventos (dos eventos programados a la misma hora para la misma persona). Si lo ajustas a 'Sí', podrás programar dos eventos al mismo tiempos después de confirmar un aviso. Si lo ajustas a "No", no se comprobarán los conflictos. Problablemente querrás ajustarlo a "Sí" para que se realice la comprobación.
 Check for conflicts: Revisar existencia de conflictos
 Yes: Sí
 No: =
-conflict-months-help: Si se habilita la revisión de conflictos, este campo especifica cuantos meses en el futuro se deben comprobar para comprobar los conflictos.
+conflict_months_help: Si se habilita la revisión de conflictos, este campo especifica cuantos meses en el futuro se deben comprobar para comprobar los conflictos.
 Conflict checking months: Meses para la comprobación de conflictos
-conflict-check-override-help: Permite a los usuarios invalidar conflictos y programar dos o más eventos a la vez.
+allow_conflict_override_help: Permite a los usuarios invalidar conflictos y programar dos o más eventos a la vez.
 may users override conflicts: Permitir a los usuarios invalidar conflictos
-limit-appts-help: Permite al administrador del sistema aplicar límite de citas para un usuario en un día para todo el sistema.
+limit_appts_help: Permite al administrador del sistema aplicar límite de citas para un usuario en un día para todo el sistema.
 Limit timed events per day: Número límite de eventos por día
-limit-appts-number-help: Especifica el número máximo de eventos planificados que un usuario puede tener en un día.
+limit_appts_number_help: Especifica el número máximo de eventos planificados que un usuario puede tener en un día.
 Maximum timed events per day: Máximo de eventos planificados por día
-disable-priority-field-help: Seleccionando "Sí", esconde el campo "Prioridad" de las páginas de información de eventos, facilitando una interfaz simple para novatos.
+disable_priority_field_help: Seleccionando "Sí", esconde el campo "Prioridad" de las páginas de información de eventos, facilitando una interfaz simple para novatos.
 Disable Priority field: Desactivar campo de Prioridad
-disable-access-field-help: Seleccionando "Sí", elimina el campo "Acceso" de las páginas de información de eventos, facilitando una interfaz simple para novatos.
+disable_access_field_help: Seleccionando "Sí", elimina el campo "Acceso" de las páginas de información de eventos, facilitando una interfaz simple para novatos.
 Disable Access field: Desactivar campo de Acceso
-disable-participants-field-help: Seleccionando "Sí", esconde el campo "Participantes" de las páginas de información de eventos, evitando que los usuarios añadan otros usuarios a sus eventos. Si activas esta opción, es posible que también desees desactivar el campo "Permitir ver calendarios de otros usuarios".
+disable_participants_field_help: Seleccionando "Sí", esconde el campo "Participantes" de las páginas de información de eventos, evitando que los usuarios añadan otros usuarios a sus eventos. Si activas esta opción, es posible que también desees desactivar el campo "Permitir ver calendarios de otros usuarios".
 Disable Participants field: Desactivar campo de Participantes
-disable-repeating-field-help: Seleccionando "Sí", esconde el campo "Repetición" al añadir nuevos eventos. Esto proporciona una interfaz simple para novatos.
+disable_repeating_field_help: Seleccionando "Sí", esconde el campo "Repetición" al añadir nuevos eventos. Esto proporciona una interfaz simple para novatos.
 Disable Repeating field: Deshabilitar campo de Repetición
-allow-html-description-help: Si se activa, los usuarios pueden usar código HTML en el campo de descripción del evento. Si no se activa, los marcadores HTML se inutilizarán, mostrándose como texto normal. Aviso: La activación de esta característica permitirá a los usuarios referir imágenes en otros sitios.
+allow_html_description_help: Si se activa, los usuarios pueden usar código HTML en el campo de descripción del evento. Si no se activa, los marcadores HTML se inutilizarán, mostrándose como texto normal. Aviso: La activación de esta característica permitirá a los usuarios referir imágenes en otros sitios.
 Allow HTML in Description: Permitir HTML en la descripción
-popup-includes-siteextras-help: Si se activa, se permite que los campos de evento personalizados del fichero site_extras.php se muestren en los eventos emergentes.
+site_extras_in_popup_help: Si se activa, se permite que los campos de evento personalizados del fichero site_extras.php se muestren en los eventos emergentes.
 Display Site Extras in popup: Mostrar campos extra en emergentes
-remember-last-login-help: Cuando se habilita, recuerda el último login (pero no la contraseña), y las preferencias del usuario se muestran (incluyendo sus colores e idioma).
+remember_last_login_help: Cuando se habilita, recuerda el último login (pero no la contraseña), y las preferencias del usuario se muestran (incluyendo sus colores e idioma).
 Remember last login: Recordar información de login
-allow-public-access-help: Si se selecciona, el calendario puede ser usado como un calendario público de sólo lectura que no exige login a los usuarios.
+allow_public_access_help: Si se selecciona, el calendario puede ser usado como un calendario público de sólo lectura que no exige login a los usuarios.
 Allow public access: Permitir usuario anónimo
 public-access-default-visible: Los eventos del calendario público aparecerán automáticamente en todos los calendarios de usuario
 Public visible by default: Usuario anónimo visible por defecto
@@ -227,15 +227,15 @@ Email enabled: Email habilitado
 email-default-sender: Especifica la dirección de correo de remite de los recordatorios.
 Default sender address: Dirección del remitente
 Default user settings: Preferencias por defecto del usuario
-email-event-reminders-help: Especifica si se envían recordatorios por medio de email o no.
+email_reminder_help: Especifica si se envían recordatorios por medio de email o no.
 Event reminders: Recordatorios de eventos
-email-event-added: Especifica si se notifica por medio de un email o no cuando un evento se añade a su calendario.
+email_event_added: Especifica si se notifica por medio de un email o no cuando un evento se añade a su calendario.
 Events added to my calendar: Eventos agregados a mi calendario
-email-event-updated: Especifica si se notifica por medio de un email o no cuando un evento es actualizado en su calendario.
+email_event_added: Especifica si se notifica por medio de un email o no cuando un evento es actualizado en su calendario.
 Events updated on my calendar: Eventos actualizados en mi calendario
-email-event-deleted: Especifica si se notifica por medio de un email o no cuando un evento es borrado de su calendario
+email_event_deleted: Especifica si se notifica por medio de un email o no cuando un evento es borrado de su calendario
 Events removed from my calendar: Eventos eliminados del calendario
-email-event-rejected: Especifica si se envían emails o no cuando un participante rechaza un evento que está en su calendario
+email_event_rejected: Especifica si se envían emails o no cuando un participante rechaza un evento que está en su calendario
 Event rejected by participant: Evento rechazado por el participante
 Allow user to customize colors: Permitir a los usuarios seleccionar colores
 Enable gradient images for BG: Activar imágenes en gradiente para colores de fondo

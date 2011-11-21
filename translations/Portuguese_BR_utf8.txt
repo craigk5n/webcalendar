@@ -168,7 +168,7 @@ app-name-help: Especifica o nome do aplicativo que aparece na barra de título d
 Application Name: Nome do Aplicativo
 Translated Name: Nome Traduzido
 Translated Name (XXX): Nome Traduzido (XXX)
-server-url-help: Especifica a URL do aplicativo. Será incluído nos emails de notificação e nos  lembretes.
+server_url_help: Especifica a URL do aplicativo. Será incluído nos emails de notificação e nos  lembretes.
 Server URL: URL do Servidor
 home-url-help: Especifica a URL do aplicativo. Pode ser absoluta ou relativa
 Home URL: =
@@ -183,122 +183,122 @@ AVAILABLE THEMES: TEMAS DISPONÍVEIS
 None: Nenhum
 Preview: Vizualizar
 Site customization: Customização do Site
-custom-script-help: Permitir a entrada de Javascript ou folhas de estilo inseridos na seção "head" do HTML de cada página.
-Custom script/stylesheet: script/stylesheet customizado
-custom-header-help: Permitir o uso de snippet HTML customizado no topo de cada página.
+custom_script_help: Permitir a entrada de Javascript ou folhas de estilo inseridos na seção "head" do HTML de cada página.
+Custom script: script/stylesheet customizado
+custom_header_help: Permitir o uso de snippet HTML customizado no topo de cada página.
 Custom header: Cabeçalho Customizado
-custom-trailer-help: Permitir o uso de snippet HTML customizado no rodapé de cada página.
+custom_trailer_help: Permitir o uso de snippet HTML customizado no rodapé de cada página.
 Custom trailer: Rodapé Customizado
-enable-external-header-help: Permitir que o cabeçalho seja carregado de um arquivo externo
+allow_external_header_help: Permitir que o cabeçalho seja carregado de um arquivo externo
 externals head/script/trail: Permitir arquivo externo para cabeçalho/script/rodapé
 may user override head/trail: Permitir que o usuário modifique o cabeçalho/rodapé
 Date and Time: Data e Hora
-tz-help: Especifica quantas horas devem ser ajustadas entre a hora do servidor e a hora local.
+tz_help: Especifica quantas horas devem ser ajustadas entre a hora do servidor e a hora local.
 Server TZ Selection: Seleção de fuso horário do servidor
-display-general-use-gmt-help: Se habilitado, horários comums serão mostrados como GMT
+display_general_use_gmt_help: Se habilitado, horários comums serão mostrados como GMT
 GMT Common Use Date/Times: Mostra horários como GMT
-date-format-help: Especifica formato preferido para data/hora.
+date_format_help: Especifica formato preferido para data/hora.
 Date format: Formato de Data
 Small Task Date: Data Tarefas
-display-week-starts-on: Especifica o dia inicial da semana. Se Segunda for especificado, então os números de semana serão no padrão ISO.
+display_week_starts_on: Especifica o dia inicial da semana. Se Segunda for especificado, então os números de semana serão no padrão ISO.
 Week starts on: Início da semana
-display-weekend-starts-on: Início do fim de semana
+display_weekend_starts_on: Início do fim de semana
 Weekend starts on: Início do fim de semana
-time-format-help: Especifica o formato de hora:<br><em>12 horas:</em> Mostra horas como 3am, 8:30pm, etc.<br><em>24 horas:</em> Mostra horas como 3:00, 20:30, etc.
+time_format_help: Especifica o formato de hora:<br><em>12 horas:</em> Mostra horas como 3am, 8:30pm, etc.<br><em>24 horas:</em> Mostra horas como 3:00, 20:30, etc.
 Time format: Formato de hora
 12 hour: 12 horas
 24 hour: 24 horas
-timed-evt-len-help: Especifica o método de entrada para duração de eventos.
+timed_evt_len_help: Especifica o método de entrada para duração de eventos.
 Specify timed event length by: Especifica fim de eventos por
 Duration: Duração
 End Time: Hora de término
-work-hours-help: Especifica a faixa de horário do dia a mostrar.
+work_hours_help: Especifica a faixa de horário do dia a mostrar.
 Work hours: Horário de trabalho
 From: De
 to: A
 Appearance: Aparência
-preferred-view-help: Especifica visualização default (Dia, Semana, Mês, ou Ano).
+preferred_view_help: Especifica visualização default (Dia, Semana, Mês, ou Ano).
 Preferred view: Visualização preferida
 Allow top menu: Permitir menu superior
 Date Selectors position: Posição dos seletores de data
-menu-themes-help: Especifica cores e estilo do Menu superior
+menu_themes_help: Especifica cores e estilo do Menu superior
 Menu theme: Tema do Menu
-fonts-help: Especifica a lista de fontes de sistema a usar (como "Arial, Helvetica")
+fonts_help: Especifica a lista de fontes de sistema a usar (como "Arial, Helvetica")
 Fonts: Fontes
-display-sm_month-help: Se habilitado, mostra fontes pequenas na visualização de Mês
+display_sm_month_help: Se habilitado, mostra fontes pequenas na visualização de Mês
 Display small months: Mostra fontes pequenas
-display-weekends-help: Incluir fins de semana quando mostra a semana.
+display_weekends_help: Incluir fins de semana quando mostra a semana.
 Display weekends: Mostrar fins de semana
-display-long-daynames-help: Se habilitado, mostra nomes longos
+display_long_days_help: Se habilitado, mostra nomes longos
 Display long day names: Mostra nomes longos
-display-alldays-help: Mostra meses anteriores e posteriores na visualização de Mês, preenchendo todas as células.
+display_all_days_in_month_help: Mostra meses anteriores e posteriores na visualização de Mês, preenchendo todas as células.
 Display all days in month view: Mostra todos os dias na visualização de Mês
-display-week-number-help: Especifica se o número da semana (1-52) deve ser mostrado nas visualizações de Mês e Semana.
+display_weeknumber_help: Especifica se o número da semana (1-52) deve ser mostrado nas visualizações de Mês e Semana.
 Display week number: Mostra número da semana
-display-desc-print-day-help: Incluir descrições na versão para impressão da visualização de Dia.
+display_desc_print_day_help: Incluir descrições na versão para impressão da visualização de Dia.
 desc in printer day view: Mostrar descrições na impressão da visualização de Dia
-yearly-shows-events-help: =
+display_bold_days_in_year_help: =
 bold events month/year views: Mostrar dias com eventos em negrito nas visualizações de Mês e Ano
-display-minutes-help: Se habilitado, os minutos terminando em :00 serão sempre mostrados
+display_minutes_help: Se habilitado, os minutos terminando em :00 serão sempre mostrados
 Display 00 minutes always: Mostrar minutos 00
-display-end-times-help: Mostrar horários de término de eventos
+display_end_times_help: Mostrar horários de término de eventos
 Display end times on calendars: Mostrar horários de término nos calendários
-allow-view-add-help: Um ícone '+' será adicionado nas visualizações, permitindo adição rápida de eventos nos calendários de outros usuários.
+display_add_link_in_views_help: Um ícone '+' será adicionado nas visualizações, permitindo adição rápida de eventos nos calendários de outros usuários.
 Include add event link in views: Incluir link para adicionar eventos
-lunar-help: Se habilitado, mostra ícones com as fases da Lua
+display_moon_phases_help: Se habilitado, mostra ícones com as fases da Lua
 Display Lunar Phases in month view: Mostrar fases da Lua
 Restrictions: Restrições
-allow-view-other-help: Especifica se um usuário pode ver o calendário de outro.
+allow_view_other_help: Especifica se um usuário pode ver o calendário de outro.
 may view others cals: Permitir ver calendários de outros usuários
-require-approvals-help: Quando habilitado, um usuário precisa aprovar um evento antes que seja mostrado (a menos que Mostrar não aprovados seja habilitado). Nota: especificando Não não vai eliminar a aprovação para eventos no calendário público (se habilitado).
+require_approvals_help: Quando habilitado, um usuário precisa aprovar um evento antes que seja mostrado (a menos que Mostrar não aprovados seja habilitado). Nota: especificando Não não vai eliminar a aprovação para eventos no calendário público (se habilitado).
 Require event approvals: Requer aprovação de eventos
-display-unapproved-help: Especifica se eventos não aprovados serão mostrados no seu calendário.<br> Se "Sim", eventos não aprovados serão mstrados no seu calendário (cor diferente).<br> Se "Não", eventos precisam ser aprovados antes de serem mostrados no seu calendário.
+display_unapproved_help: Especifica se eventos não aprovados serão mostrados no seu calendário.<br> Se "Sim", eventos não aprovados serão mstrados no seu calendário (cor diferente).<br> Se "Não", eventos precisam ser aprovados antes de serem mostrados no seu calendário.
 Display unapproved: Mostrar não aprovados
-conflict-check-help: Verificar conflitos (2 eventos agendados no mesmo horário para a mesma pessoa). Se "Sim", uma confirmação será necessária. Se "Não", nenhuma verificação será feita. Você provavelmente deve preferir "Sim" para que a verificação de conflitos ocorra.
+allow_conflicts_help: Verificar conflitos (2 eventos agendados no mesmo horário para a mesma pessoa). Se "Sim", uma confirmação será necessária. Se "Não", nenhuma verificação será feita. Você provavelmente deve preferir "Sim" para que a verificação de conflitos ocorra.
 Check for conflicts: Verificar conflitos de eventos
 Yes: Sim
 No: Não
-conflict-months-help: Se a verificação de conflitos está ativa, especifica até quantos meses no futuro a verificação deve ser feita. Se você acha que a adição de eventos está muito lenta, reduza este número.
+conflict_months_help: Se a verificação de conflitos está ativa, especifica até quantos meses no futuro a verificação deve ser feita. Se você acha que a adição de eventos está muito lenta, reduza este número.
 Conflict checking months: Meses para verificar conflitos
-conflict-check-override-help: Permitir ignorar conflitos e agendar 2 ou mais eventos no mesmo horário.
+allow_conflict_override_help: Permitir ignorar conflitos e agendar 2 ou mais eventos no mesmo horário.
 may users override conflicts: Permitir ignorar conflitos
-limit-appts-help: Permitir que o administrador do sistema limite o número de compromissos diários por usuário.
+limit_appts_help: Permitir que o administrador do sistema limite o número de compromissos diários por usuário.
 Limit timed events per day: Limite máximo de compromissos por dia
-limit-appts-number-help: Especifica a quantidade máxima de compromissos por usuário por dia.
+limit_appts_number_help: Especifica a quantidade máxima de compromissos por usuário por dia.
 Maximum timed events per day: Limite máximo de compromissos por dia por usuário
-crossday-help: Se habilitado, eventos que ultrapassam o fim do dia serão mostrados em vários dias
+disable_crossday_events_help: Se habilitado, eventos que ultrapassam o fim do dia serão mostrados em vários dias
 Disable Cross-Day Events: Desabilita eventos que ultrapassam o fim do dia
-disable-location-field-help: Selecionar "Sim" para remover o campo "Local" do evento
+disable_location_field_help: Selecionar "Sim" para remover o campo "Local" do evento
 Disable Location field: Remover o campo "Local"
-disable-url-field-help: Selecionar "Sim" para remover o campo "URL" do evento
+disable_url_field_help: Selecionar "Sim" para remover o campo "URL" do evento
 Disable URL field: Remover o campo "URL"
-disable-priority-field-help: Selecionar "Sim" para remover o campo "Prioridade" do evento, simplificando a interface para novatos.
+disable_priority_field_help: Selecionar "Sim" para remover o campo "Prioridade" do evento, simplificando a interface para novatos.
 Disable Priority field: Remover o campo "Prioridade"
-disable-access-field-help: Selecionar "Sim" para remover o campo "Acesso" do evento, simplificando a interface para novatos.
+disable_access_field_help: Selecionar "Sim" para remover o campo "Acesso" do evento, simplificando a interface para novatos.
 Disable Access field: Remover o campo "Acesso"
-disable-participants-field-help: Selecionar "Sim" para remover o campo "Participantes" do evento, impedindo os usuários de adicionar outros usuários nos eventos. Se você habilitar esta opção, você provavelmente vai querer desabilitar também a opção de "Permitir visualizar calendários de outros usuários".
+disable_participants_field_help: Selecionar "Sim" para remover o campo "Participantes" do evento, impedindo os usuários de adicionar outros usuários nos eventos. Se você habilitar esta opção, você provavelmente vai querer desabilitar também a opção de "Permitir visualizar calendários de outros usuários".
 Disable Participants field: Remover o campo "Participantes"
-disable-repeating-field-help: Selecionar "Sim" para remover o campo "Recorrência" do evento, simplificando a interface para novatos.
+disable_repeating_field_help: Selecionar "Sim" para remover o campo "Recorrência" do evento, simplificando a interface para novatos.
 Disable Repeating field: Remover o campo "Recorrência"
-allow-html-description-help: Se habilitado, os usuários podem entrar HTML na descrição do evento. Se não, o HTML será convertido para texto. Cuidado: Habilitar esta opção vai permitir que usuários referenciem imagens em outros sites.
+allow_html_description_help: Se habilitado, os usuários podem entrar HTML na descrição do evento. Se não, o HTML será convertido para texto. Cuidado: Habilitar esta opção vai permitir que usuários referenciem imagens em outros sites.
 Allow HTML in Description: Permitir HTML nas descrições
 Popups: =
-disable-popups-help: Desabilitar popups das visualizações
+disable_popups_help: Desabilitar popups das visualizações
 Disable Pop-Ups: Desabilitar popups
-popup-includes-siteextras-help: Se habilitado, Permitir customizar eventos usando o arquivo site_extras.php com popups.
+site_extras_in_popup_help: Se habilitado, Permitir customizar eventos usando o arquivo site_extras.php com popups.
 Display Site Extras in popup: Mostrar customizações extra em popup
-popup-includes-participants-help: Se habilitado, os participantes serão mostrados em popups.
+participants_in_popup_help: Se habilitado, os participantes serão mostrados em popups.
 Display Participants in popup: Mostrar participantes em popup
 Miscellaneous: Outros
-remember-last-login-help: Se habilitado, o login será preenchido na tela (mas não a senha), e as preferências do usuário serão carregadas (incluindo cores e idioma).
+remember_last_login_help: Se habilitado, o login será preenchido na tela (mas não a senha), e as preferências do usuário serão carregadas (incluindo cores e idioma).
 Remember last login: Lembrar do último login
-summary_length-help: Tamanho máximo do campo Descrição nas visualizações do calendário
+summary_length_help: Tamanho máximo do campo Descrição nas visualizações do calendário
 Brief Description Length: Tamanho da descrição rápida
-user_sort-help: Determina a ordenação das listas de usuários e não-usuários
+user_sort_help: Determina a ordenação das listas de usuários e não-usuários
 User Sort Order: Ordenação de usuários
 Lastname, Firstname: Último Nome, Primeiro Nome
 Firstname, Lastname: Primeiro Nome, Último Nome
-allow-public-access-help: Se habilitado, o calendário pode ser usados como calendário público (somente leitura) que pode ser acessado sem login.
+allow_public_access_help: Se habilitado, o calendário pode ser usados como calendário público (somente leitura) que pode ser acessado sem login.
 Allow public access: Permitir acesso público
 public-access-default-visible: Eventos público aparecem automaticamente nos calendários de todos os usuários
 Public visible by default: Evento público visível por default
@@ -316,7 +316,7 @@ public-access-override-help: Permitir que nomes e descrições sejam escondidas 
 Override public event name/desc: Substituir nome/descrição do evento para o acesso público
 public-access-override-text-help: O texo a mostrar quando a opção acima está selecionada. Se 'Not Available', será traduzido.
 public text display: Texto a mostrar para acesso público
-public-access-captcha-help: Se habilitado, novos eventos adicionados pelo acesso público requerem validação CAPTCHA.
+public_access_captcha_help: Se habilitado, novos eventos adicionados pelo acesso público requerem validação CAPTCHA.
 require public CAPTCHA: Requer validação CAPTCHA para novos eventos criados pelo acesso público
 uac-enabled-help: Habilitar o Controle de Acesso por Usuário
 UAC enabled: Habilitar Controle de Acesso
@@ -344,9 +344,9 @@ Category Icon Upload enabled: Permitir envio de ícones de categorias
 Requires: Requer
 folder to exist: Pasta existente
 (Requires XXX folder to exist.): (Requer que a pasta XXX exista.)
-display-tasks-help: Mostrar janela de tarefas nas visualizações de Mês e Dia
+display_tasks_help: Mostrar janela de tarefas nas visualizações de Mês e Dia
 Display small task list: Mostrar lista de Tarefas
-display-tasks-in-grid-help: Mostrar Tarefas nos Calendários junto com os eventos
+display_tasks_in_grid_help: Mostrar Tarefas nos Calendários junto com os eventos
 Display tasks in Calendars: Mostrar Tarefas nos Calendários
 allow-external-users-help: Especifica se um participante sem calendário (não usuário) pode ser adicionado a um evento. Isso permite que ele seja adicionado aos participantes.
 Allow external users: Permitir usuários externos
@@ -360,10 +360,10 @@ use-blacklist-help: Limitar acesso ao WebCalendar baseado em IP
 Restrict self-reg to blacklist: Restringir auto-registro para lista negra
 allow-self-reg-full-help: Permitir que novos usuários façam auto-registro on-line
 send self-reg emails: Gerar senhas e enviar para novos usuários
-allow-attachment-help: Permitir que usuários enviem anexos aos eventos.
+allow_attachment_help: Permitir que usuários enviem anexos aos eventos.
 Allow event attachments: Permitir envio de anexos
 owner can attach if enabled: Se habilitado, Administradores e Criadores podem sempre enviar anexos.
-allow-comments-help: Permitir que comentários sejam enviados para os eventos.
+allow_comments_help: Permitir que comentários sejam enviados para os eventos.
 Allow event comments: Permitir comentários
 owner can comment if enabled: Se habilitado, Administradores e Criadores sempre podem enviar comentários.
 email-enabled-help: habilita ou desabilita o envio de email para notificações e lembretes. Especifique "Não" se o servidor não está configurado para enviar emails.
@@ -387,19 +387,19 @@ email-format: Especificar preferência para mensagens HTML ou texto
 Email format preference: Formato preferido de Email
 HTML: =
 Plain Text: Texto pleno
-email-include-ics: Incluir arquivo iCalendar (ICS) na mensagem de email
+email_attach_ics: Incluir arquivo iCalendar (ICS) na mensagem de email
 Include iCalendar attachments: Incluir anexo iCalendar
-email-event-reminders-help: Especifica se envia lembretes.
+email_reminder_help: Especifica se envia lembretes.
 Event reminders: Lembretes
-email-event-added: Especifica se envia emails de notificação quando um evento é adicionado ao seu calendário.
+email_event_added: Especifica se envia emails de notificação quando um evento é adicionado ao seu calendário.
 Events added to my calendar: Eventos adicionados ao meu calendário
-email-event-updated: Especifica se envia emails de notificação quando um evento é modificado no seu calendário.
+email_event_added: Especifica se envia emails de notificação quando um evento é modificado no seu calendário.
 Events updated on my calendar: Eventos modificados no meu calendário
-email-event-deleted: Especifica se envia emails de notificação quando um evento é removido do seu calendário.
+email_event_deleted: Especifica se envia emails de notificação quando um evento é removido do seu calendário.
 Events removed from my calendar: Eventos removidos do meu calendário
-email-event-rejected: Especifica se envia emails de notificação quando um usuário rejeita um evento.
+email_event_rejected: Especifica se envia emails de notificação quando um usuário rejeita um evento.
 Event rejected by participant: Eventos rejeitados
-email-event-create: Especifica se o criador do evento recebe um email
+email_event_create: Especifica se o criador do evento recebe um email
 Event that I create: Eventos que eu crio
 Color options: Opções de cores
 Allow user to customize colors: Permitir customização de cores

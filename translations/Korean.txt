@@ -84,16 +84,16 @@ Table cell BG: 테이블 셀 배경 색상
 Table cell today BG: 오늘 날짜 표시 색상
 Help: 도움말
 Language: 언어
-time-format-help: 시간 표시 형식을 명시합니다.<br><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
+time_format_help: 시간 표시 형식을 명시합니다.<br><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
 Time format: 시간 표시 형식
 Duration: 기간
-work-hours-help: 일별 화면에서 표시대상시간을 명시
+work_hours_help: 일별 화면에서 표시대상시간을 명시
 Work hours: 근무 시간
 From: 시작
 to: 종료
-display-week-number-help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명시.
+display_weeknumber_help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명시.
 Display week number: 몇주차인가 표시
-display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다.<br> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<br>"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
+display_unapproved_help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다.<br> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<br>"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
 Display unapproved: 승인안된 행사 표시
 Yes: 예
 No: 아니오

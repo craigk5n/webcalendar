@@ -109,69 +109,69 @@ System Settings: Parâmetros Gerais
 Help: Ajuda
 app-name-help: Especifica o nome da aplicação que irá aparecer no título do navegador, para todas as páginas, incluindo a de entrada.
 Application Name: Nome da Aplicação
-server-url-help: Especifica o URL de base para esta aplicação. Ele será usado aquando do envio de lembretes e notificações.
+server_url_help: Especifica o URL de base para esta aplicação. Ele será usado aquando do envio de lembretes e notificações.
 Server URL: URL do Servidor
 language-help: Especifica a língua a ser utilizada.
 Language: Linguagem
 Your browser default language is: A linguagem do navegador, por omissão, é
 None: Nenhuma
-Custom script/stylesheet: Script/folha de estilo personalizada
+Custom script: Script/folha de estilo personalizada
 Custom header: Cabeçalho personalizado
 Custom trailer: Rodapé personalizado
-tz-help: Quantas horas para ajustar o tempo à hora local
-date-format-help: Especifica o formato preferido da data.
+tz_help: Quantas horas para ajustar o tempo à hora local
+date_format_help: Especifica o formato preferido da data.
 Date format: Formato da data
-display-week-starts-on: Especifica se a semana começa ao Domingo ou à Segunda-Feira.
+display_week_starts_on: Especifica se a semana começa ao Domingo ou à Segunda-Feira.
 Week starts on: Semana começa em
-time-format-help: Especifica o formato da hora a utilizar: <i>12 horas:</i> Mostra no formato 3am, 8:30pm, etc. <i>24 horas:</i> Mostra no formato 300, 2030, etc.
+time_format_help: Especifica o formato da hora a utilizar: <i>12 horas:</i> Mostra no formato 3am, 8:30pm, etc. <i>24 horas:</i> Mostra no formato 300, 2030, etc.
 Time format: Formato da hora
 12 hour: 12 horas
 24 hour: 24 horas
 Specify timed event length by: Especificar a duração dos eventos por
 Duration: Duração
 End Time: Tempo Final
-work-hours-help: Especifica as horas apresentadas para marcação de eventos.
+work_hours_help: Especifica as horas apresentadas para marcação de eventos.
 Work hours: Horário de trabalho
 From: De
 to: para
-preferred-view-help: Especifica a vista padrão (Dia, Semana, Mês, ou Ano).
+preferred_view_help: Especifica a vista padrão (Dia, Semana, Mês, ou Ano).
 Preferred view: Visualização preferida
-fonts-help: Especifica a lista de tipos de letra a usar (por exemplo, "Arial, Helvetica", etc).
+fonts_help: Especifica a lista de tipos de letra a usar (por exemplo, "Arial, Helvetica", etc).
 Fonts: Tipos de letra
-display-weekends-help: Incluir fins-de-semana na vista de semana.
-display-week-number-help: Especifica se o número da semana (1-52) deve ser mostrado na vista semanal e mensal.
+display_weekends_help: Incluir fins-de-semana na vista de semana.
+display_weeknumber_help: Especifica se o número da semana (1-52) deve ser mostrado na vista semanal e mensal.
 Display week number: Mostrar número da semana
 desc in printer day view: Mostrar descrição na vista de impressora (dia)
 bold events month/year views: Mostrar dias com eventos a negrito nas vistas mensais e anuais
 Include add event link in views: Incluir link para adicionar eventos nas vistas
-allow-view-other-help: Especifica se um utilizador pode ou não ver o calendário de outro utilizador.
+allow_view_other_help: Especifica se um utilizador pode ou não ver o calendário de outro utilizador.
 may view others cals: Permitir ver calendário de outro utilizador
-require-approvals-help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <i>Mostra não-aprovados</i> estiver activo).
+require_approvals_help: Quando activo, um utilizador deverá aprovar um evento antes de ser mostrado no seu calendário (excepto se <i>Mostra não-aprovados</i> estiver activo).
 Require event approvals: Requer aprovação de eventos
-display-unapproved-help: Especifica se os eventos não aprovados são mostrados no calendário
+display_unapproved_help: Especifica se os eventos não aprovados são mostrados no calendário
 Display unapproved: Mostrar não-aprovados
-conflict-check-help: Verificar conflito de eventos (dois eventos escalonados ao mesmo tempo pelo mesmo utilizador). Se escolher "Sim", será mostrado um aviso caso crie eventos que gerem conflito. Se escolher "Não", não será verificado o conflito de eventos. Recomenda-se a opção "Sim".
+allow_conflicts_help: Verificar conflito de eventos (dois eventos escalonados ao mesmo tempo pelo mesmo utilizador). Se escolher "Sim", será mostrado um aviso caso crie eventos que gerem conflito. Se escolher "Não", não será verificado o conflito de eventos. Recomenda-se a opção "Sim".
 Check for conflicts: Verificar o conflito de eventos
 Yes: Sim
 No: Não
-conflict-months-help: Quando está activa a verificação de conflitos, especifica quantos meses no futuro deverão ser tidos em conta nessa verificação. Se o sistema demora muito tempo a verificar conflitos, o valor deverá ser reduzido.
+conflict_months_help: Quando está activa a verificação de conflitos, especifica quantos meses no futuro deverão ser tidos em conta nessa verificação. Se o sistema demora muito tempo a verificar conflitos, o valor deverá ser reduzido.
 Conflict checking months: Meses a usar na verificação de conflitos
 may users override conflicts: Permitir ultrapassar conflitos
 Limit timed events per day: Limitar número de eventos temporizados por dia
 Maximum timed events per day: Número máximo de eventos temporizados por dia
-disable-priority-field-help: Seleccionar "Sim" irá remover o campo "Prioridade" das páginas de informação dos eventos, dando origem a uma interface mais simples para os utilizadores novatos.
+disable_priority_field_help: Seleccionar "Sim" irá remover o campo "Prioridade" das páginas de informação dos eventos, dando origem a uma interface mais simples para os utilizadores novatos.
 Disable Priority field: Desactivar campo "Prioridade"
-disable-access-field-help: Seleccionar "Sim" irá remover o campo "Acesso"
+disable_access_field_help: Seleccionar "Sim" irá remover o campo "Acesso"
 Disable Access field: Desactivar campo "Acesso"
-disable-participants-field-help: Seleccionar "Sim" irá remover o campo "Participantes" das páginas de informação dos eventos, impedindo que os utilizadores adicionem outros utilizadores aos seus eventos. Se activar esta opção, recomenda-se que desactive a opção "Permitir ver calendário de outros utilizadores".
+disable_participants_field_help: Seleccionar "Sim" irá remover o campo "Participantes" das páginas de informação dos eventos, impedindo que os utilizadores adicionem outros utilizadores aos seus eventos. Se activar esta opção, recomenda-se que desactive a opção "Permitir ver calendário de outros utilizadores".
 Disable Participants field: Desactivar campo "Participantes"
-disable-repeating-field-help: Seleccionar "Sim" irá remover o campo "Repetições" aquando da criação de eventos, dando origem a uma interface mais simples para os utilizadores novatos.
+disable_repeating_field_help: Seleccionar "Sim" irá remover o campo "Repetições" aquando da criação de eventos, dando origem a uma interface mais simples para os utilizadores novatos.
 Disable Repeating field: Desactivar campo "Repetições"
 Allow HTML in Description: Permitir HTML na descrição
 Display Site Extras in popup: Mostrar Extras num popup
-remember-last-login-help: Quando activo, o campo com o nome do utilizador será preenchido automaticamente, assim como as suas preferências.
+remember_last_login_help: Quando activo, o campo com o nome do utilizador será preenchido automaticamente, assim como as suas preferências.
 Remember last login: Usar preferências do último acesso
-allow-public-access-help: Quando activo, o calendário pode ser usado para acesso público (sem possibilidade de modificação).
+allow_public_access_help: Quando activo, o calendário pode ser usado para acesso público (sem possibilidade de modificação).
 Allow public access: Permitir acesso público
 public-access-default-visible: Eventos do calendário público irão aparecer em todos os calendários
 Public visible by default: Acesso público visível por omissão
@@ -202,15 +202,15 @@ Email enabled: Correio electrónico activado
 email-default-sender: Especifica o endereço email a usar como remetente aquando do envio de lembretes.
 Default sender address: Endereço remetente por omissão
 Default user settings: Parâmetros de utilizador por omissão
-email-event-reminders-help: Especifica se são ou não enviados lembretes.
+email_reminder_help: Especifica se são ou não enviados lembretes.
 Event reminders: Lembretes de eventos
-email-event-added: Especifica se são ou não enviadas notificações via email quando um evento é adicionado ao calendário.
+email_event_added: Especifica se são ou não enviadas notificações via email quando um evento é adicionado ao calendário.
 Events added to my calendar: Eventos adicionados ao meu calendário
-email-event-updated: Especifica se são ou não enviadas notificações via email quando um evento é actualizado.
+email_event_added: Especifica se são ou não enviadas notificações via email quando um evento é actualizado.
 Events updated on my calendar: Eventos actualizados no meu calendário
-email-event-deleted: Especifica se são ou não enviadas notificações via email quando um evento é apagado.
+email_event_deleted: Especifica se são ou não enviadas notificações via email quando um evento é apagado.
 Events removed from my calendar: Eventos apagados do meu calendário
-email-event-rejected: Especifica se são ou não enviadas notificações via email quando um participante rejeita um evento.
+email_event_rejected: Especifica se são ou não enviadas notificações via email quando um participante rejeita um evento.
 Event rejected by participant: Evento rejeitado por um participante
 Allow user to customize colors: Permitir ao utilizador redefinir cores
 

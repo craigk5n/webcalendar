@@ -100,13 +100,13 @@ System Settings: 系统设置
 Help: 说明
 app-name-help: 应用-名称-帮助
 Application Name: 应用名称
-server-url-help: 系统-URL-帮助
+server_url_help: 系统-URL-帮助
 Server URL: 系统URL
 language-help: 请选择使用的语言.
 Language: 语言
 Your browser default language is: 您的浏览器预设的语言是
 None: 无
-date-format-help: 描述合适的日期格式
+date_format_help: 描述合适的日期格式
 Date format: 日期格式
 Week starts on: 每周开始于
 Time format: 时间格式
@@ -116,36 +116,36 @@ Duration: 持续时间
 Work hours: 月历可显示之工作时间
 From: 自
 to: 至
-preferred-view-help: 描述默认的视图 (天, 周, 月, 或年).
+preferred_view_help: 描述默认的视图 (天, 周, 月, 或年).
 Preferred view: 查看选择
-fonts-help: 字体帮助
+fonts_help: 字体帮助
 Fonts: 字体
-display-weekends-help: 显示-周末-帮助
+display_weekends_help: 显示-周末-帮助
 Display week number: 显示周数(以年計算)
 Include add event link in views: 包括在视图中添加事件联接
-allow-view-other-help: 允许-其它-视图-帮助
+allow_view_other_help: 允许-其它-视图-帮助
 may view others cals: 允许查看其他用户日历
-require-approvals-help: 是否需要核准事件
+require_approvals_help: 是否需要核准事件
 Require event approvals: 需要事件核准
 Display unapproved: 显示未核准的
-conflict-check-help: 冲突-检查-帮助
+allow_conflicts_help: 冲突-检查-帮助
 Check for conflicts: 检查事件冲突
 Yes: 是
 No: 否
-conflict-months-help: 冲突-月-帮助
+conflict_months_help: 冲突-月-帮助
 Conflict checking months: 冲突检查月数
 may users override conflicts: 允许用户修改冲突
 Limit timed events per day: 限制每天已安排事件的数量
 Maximum timed events per day: 每天最大已安排时间实践的数量
-disable-priority-field-help: 关闭-优先级-域-帮助
+disable_priority_field_help: 关闭-优先级-域-帮助
 Disable Priority field: 关闭优先级域
-disable-access-field-help: 关闭-访问-域-帮助
+disable_access_field_help: 关闭-访问-域-帮助
 Disable Access field: 关闭访问域
-disable-repeating-field-help: 关闭-重复-域-帮助
+disable_repeating_field_help: 关闭-重复-域-帮助
 Disable Repeating field: 关闭重复域
-remember-last-login-help: 记录最后一次登录
+remember_last_login_help: 记录最后一次登录
 Remember last login: 记住最后一次登录
-allow-public-access-help: 允许-公共-进入-帮助
+allow_public_access_help: 允许-公共-进入-帮助
 Allow public access: 允许公共登录
 public-access-view-others-help: 可以为公共日历添加其他视图
 may public view others: 公共登录能查询其他用户
@@ -169,15 +169,15 @@ Email enabled: 使用邮件已启用
 email-default-sender: 邮件-默认-发送者
 Default sender address: 默认邮件地址
 Default user settings: 默认用户设置
-email-event-reminders-help: 描述是否允许发送事件提醒邮件
+email_reminder_help: 描述是否允许发送事件提醒邮件
 Event reminders: 事件发生时通知
-email-event-added: 邮件-事件-已添加
+email_event_added: 邮件-事件-已添加
 Events added to my calendar: 事件添加到我的日历时通知
-email-event-updated: 邮件-事件-已更新
+email_event_added: 邮件-事件-已更新
 Events updated on my calendar: 我的日历中事件更新时通知
-email-event-deleted: 邮件-事件-已删除
+email_event_deleted: 邮件-事件-已删除
 Events removed from my calendar: 我的日历中事件删除时通知
-email-event-rejected: 邮件-事件-已拒绝
+email_event_rejected: 邮件-事件-已拒绝
 Event rejected by participant: 事件审核未通过时通知
 Allow user to customize colors: 允许用户个性化颜色
 

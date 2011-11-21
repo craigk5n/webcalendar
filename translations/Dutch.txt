@@ -139,7 +139,7 @@ System options: Systeemopties
 app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam verschijnt in het browservenster op elke pagina en op de login-pagina.
 Application Name: Programmanaam
 Translated Name: Vertaalde naam
-server-url-help: Specificeert de basis URL van de applicatie, deze URL wordt gebruikt bij het verzenden van email notificaties en herinneringen.
+server_url_help: Specificeert de basis URL van de applicatie, deze URL wordt gebruikt bij het verzenden van email notificaties en herinneringen.
 Server URL: =
 home-url-help: Specifieert de home URL van het programma. Dit kan een absoluut of een relatief adres zijn.
 Home URL: Thuis URL
@@ -153,120 +153,120 @@ AVAILABLE THEMES: BESCHIKBARE STIJLEN
 None: Geen
 Preview: =
 Site customization: Aanpassing van de site
-custom-script-help: Sta eigen Javascripts en stylesheets die in de HTML "head" van iedere pagina worden geplaatst toe.
-Custom script/stylesheet: Eigen script/stylesheet
-custom-header-help: Sta toe dat een eigen stukje HTML bovenaan iedere pagina wordt geplaatst.
+custom_script_help: Sta eigen Javascripts en stylesheets die in de HTML "head" van iedere pagina worden geplaatst toe.
+Custom script: Eigen script/stylesheet
+custom_header_help: Sta toe dat een eigen stukje HTML bovenaan iedere pagina wordt geplaatst.
 Custom header: Eigen paginahoofd
-custom-trailer-help: Sta toe dat een eigen stukje HTML onderaan iedere pagina wordt gelaten
+custom_trailer_help: Sta toe dat een eigen stukje HTML onderaan iedere pagina wordt gelaten
 Custom trailer: Eigen pagina-onderschrift
-enable-external-header-help: Laat toe om de hoofding te laden vanuit een extern bestand.
+allow_external_header_help: Laat toe om de hoofding te laden vanuit een extern bestand.
 externals head/script/trail: Permitteer extern bestand voor kop/script/staart
 may user override head/trail: Permitteer de gebruiker controle over kop/staart
 Date and Time: Datum en tijd
-tz-help: Deze optie bepaalt het aantal uren tijdsverschil tussen de servertijd en de lokale tijd.
+tz_help: Deze optie bepaalt het aantal uren tijdsverschil tussen de servertijd en de lokale tijd.
 Server TZ Selection: Server tijdzone selectie
-display-general-use-gmt-help: Indien aangeduid, worden datums en tijden voor algemeen gebruik in GMT getoond.
+display_general_use_gmt_help: Indien aangeduid, worden datums en tijden voor algemeen gebruik in GMT getoond.
 GMT Common Use Date/Times: Toon data en tijden voor algemeen gebruik in GMT
-date-format-help: Hier geeft u aan hoe de datum wordt weergegeven.
+date_format_help: Hier geeft u aan hoe de datum wordt weergegeven.
 Date format: Datumweergave
 Small Task Date: Taakdatum klein
-display-week-starts-on: Specificeert of de week op zondag of maandag start. Indien wordt gekozen voor maandag worden ISO weeknummers getoond.
+display_week_starts_on: Specificeert of de week op zondag of maandag start. Indien wordt gekozen voor maandag worden ISO weeknummers getoond.
 Week starts on: De week begint op
-display-weekend-starts-on: Stelt de dag van de week in waarop weekends beginnen
+display_weekend_starts_on: Stelt de dag van de week in waarop weekends beginnen
 Weekend starts on: Weekend begint op
-time-format-help: Hier geeft u aan hoe tijden worden weergegeven:<br><i>12 uurs klok: </i> tijd wordt getoond als 3am, 8:30pm, etc.<br><i> 24 uurs klok:</i> tijd wordt getoond als 3:00, 20:30, etc.
+time_format_help: Hier geeft u aan hoe tijden worden weergegeven:<br><i>12 uurs klok: </i> tijd wordt getoond als 3am, 8:30pm, etc.<br><i> 24 uurs klok:</i> tijd wordt getoond als 3:00, 20:30, etc.
 Time format: Tijdweergave
 12 hour: 12 uur
 24 hour: 24 uur
-timed-evt-len-help: Bepaalt de invoermethode om de lengte van een tijdgebonden afspraak
+timed_evt_len_help: Bepaalt de invoermethode om de lengte van een tijdgebonden afspraak
 Specify timed event length by: Bepaal lengte tijdgebonden afspraak door
 Duration: Duur
 End Time: Einddtijd
-work-hours-help: Specificeert hoe laat een normale dag begint en eindigt.<br><b>N.B.</b>: het is wel mogelijk om afspraken buiten deze tijden te maken; indien u dit doet wordt u om een bevestiging gevraagd.
+work_hours_help: Specificeert hoe laat een normale dag begint en eindigt.<br><b>N.B.</b>: het is wel mogelijk om afspraken buiten deze tijden te maken; indien u dit doet wordt u om een bevestiging gevraagd.
 Work hours: Werktijden
 From: Van
 to: tot
 Appearance: Voorkomen
-preferred-view-help: Specificeert de standaard agendaview - dag, week, maand, jaar.
+preferred_view_help: Specificeert de standaard agendaview - dag, week, maand, jaar.
 Preferred view: Voorkeursweergave
 Allow top menu: Permitteer menu bovenin
 Date Selectors position: Datum positiekiezers
-menu-themes-help: Bepaalt kleuren en stijl van het hoofdmenu
+menu_themes_help: Bepaalt kleuren en stijl van het hoofdmenu
 Menu theme: Menu thema
-fonts-help: Specificeert een lijst van systeem-fonts die gebruikt kunnen worden, zoals Verdana, Arial, Helvetica, etc.
+fonts_help: Specificeert een lijst van systeem-fonts die gebruikt kunnen worden, zoals Verdana, Arial, Helvetica, etc.
 Fonts: Lettertypen
-display-sm_month-help: Toon kleine maandschema's in de maandview
+display_sm_month_help: Toon kleine maandschema's in de maandview
 Display small months: Toon kleine maanden
-display-weekends-help: Toon ook weekends in week-view
+display_weekends_help: Toon ook weekends in week-view
 Display weekends: Toon weekeinden
-display-long-daynames-help: Indien ingeschakeld worden lange dagnamen getoond.
+display_long_days_help: Indien ingeschakeld worden lange dagnamen getoond.
 Display long day names: Toon dagnamen voluit
-display-alldays-help: Toon vorige en volgende dagen bij de maandview, zodat alle cellen gevuld zijn
+display_all_days_in_month_help: Toon vorige en volgende dagen bij de maandview, zodat alle cellen gevuld zijn
 Display all days in month view: Alle dagen tonen in maandweergave
-display-week-number-help: Geeft aan of het weeknummer (1-52) moet worden weergeven.
+display_weeknumber_help: Geeft aan of het weeknummer (1-52) moet worden weergeven.
 Display week number: Weeknummer tonen
-display-desc-print-day-help: Als deze optie aan staat worden de beschrijvingen van afspraak in de printversie van de dag-view ook getoond
+display_desc_print_day_help: Als deze optie aan staat worden de beschrijvingen van afspraak in de printversie van de dag-view ook getoond
 desc in printer day view: Beschrijving weergeven in printversie dag-view
-yearly-shows-events-help: Als deze optie aan staat worden dagen met afspraken in de jaar-view vet gedruk weergegeven.
+display_bold_days_in_year_help: Als deze optie aan staat worden dagen met afspraken in de jaar-view vet gedruk weergegeven.
 bold events month/year views: Nummers van dagen met afspraken vet weergeven bij maand- en jaarweergave
-display-minutes-help: Toon altijd de minuten, ook bij :00
+display_minutes_help: Toon altijd de minuten, ook bij :00
 Display 00 minutes always: Altijd 00 minuten tonen
-allow-view-add-help: In alle views wordt een '+' getoond zodat sneller een afspraak in een andere agenda kan worden gezet.
+display_add_link_in_views_help: In alle views wordt een '+' getoond zodat sneller een afspraak in een andere agenda kan worden gezet.
 Include add event link in views: Toon icoon voor maken van afspraken in alle views
-lunar-help: Toon met kleine icoontjes de maanfasen van elke maand
+display_moon_phases_help: Toon met kleine icoontjes de maanfasen van elke maand
 Display Lunar Phases in month view: Maanfasen tonen in maandweergave
 Restrictions: Beperkingen
-allow-view-other-help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
+allow_view_other_help: Definieert of een gebruiker de agenda van andere gebruikers mag inzien.
 may view others cals: Inzage agenda andere gebruikers toestaan
-require-approvals-help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd.<br>Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
+require_approvals_help: Indien ingeschakeld dient een gebruiker een afspraak te bevestigen voordat deze in de agenda wordt getoond tenzij Weergave onbevestigde items is geactiveerd.<br>Let op: door deze optie te de-activeren worden alle bevestigingen voor de publiek toegankelijke agenda uitgeschakeld indien deze is geactiveerd.
 Require event approvals: Afspraakbevestigingen worden vereist
-display-unapproved-help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda.<br>Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven.<br>Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
+display_unapproved_help: Geeft aan of openstaande, onbevestigde afspraken moeten worden weergegeven in uw agenda.<br>Indien u [ja] kiest worden openstaande afspraken in een andere tekstkleur in uw agenda weergegeven.<br>Indien u [nee] kiest moeten openstaande afspraken eerst bevestigd worden voordat deze in uw agenda worden getoond.
 Display unapproved: Openstaande afspraken tonen
-conflict-check-help: Check op conflicterende afspraken (= afspraken van een persoon op hetzelfde tijdstip. Door [ja] te kiezen blijft het mogelijk om conflicterende afspraken in te stellen door de waarschuwing te bevestigen. Door [nee] te kiezen wordt geen check op conflicterende afspraken uitgevoerd.
+allow_conflicts_help: Check op conflicterende afspraken (= afspraken van een persoon op hetzelfde tijdstip. Door [ja] te kiezen blijft het mogelijk om conflicterende afspraken in te stellen door de waarschuwing te bevestigen. Door [nee] te kiezen wordt geen check op conflicterende afspraken uitgevoerd.
 Check for conflicts: Check op conflicterende afspraken
 Yes: Ja
 No: Nee
-conflict-months-help: Indien u bij optie Check op conflicterende afspraken [ja] heeft ingevoerd specificeert u hier het aantal maanden waarin deze check wordt uitgevoerd. Indien het toevoegen van afspraken teveel tijd kost is het advies om dit aantal te verlagen.
+conflict_months_help: Indien u bij optie Check op conflicterende afspraken [ja] heeft ingevoerd specificeert u hier het aantal maanden waarin deze check wordt uitgevoerd. Indien het toevoegen van afspraken teveel tijd kost is het advies om dit aantal te verlagen.
 Conflict checking months: Maanden op conflicten controleren
-conflict-check-override-help: Deze optie staat gebruikers toe om dubbele afspraken te overrulen en twee of meer afspraken op dezelfde tijd te maken.
+allow_conflict_override_help: Deze optie staat gebruikers toe om dubbele afspraken te overrulen en twee of meer afspraken op dezelfde tijd te maken.
 may users override conflicts: Sta overrulen dubbele afspraken toe
-limit-appts-help: Deze optie staat de Administrator toe om het aantal afspraken per dag voor alle gebruikers te beperken.
+limit_appts_help: Deze optie staat de Administrator toe om het aantal afspraken per dag voor alle gebruikers te beperken.
 Limit timed events per day: Stel beperking in voor het aantal tijdgebonden afspraken per gebruiker per dag
-limit-appts-number-help: Deze optie bepaalt het maximale aantal tijdgebonden afspraken per gebruiker per dag
+limit_appts_number_help: Deze optie bepaalt het maximale aantal tijdgebonden afspraken per gebruiker per dag
 Maximum timed events per day: Maximum aantal tijdgebonden afspraken per gebruiker per dag
-crossday-help: Indien aangeduid worden afspraken die meer dan één dag duren op de afzonderlijke dagen aangegeven.
+disable_crossday_events_help: Indien aangeduid worden afspraken die meer dan één dag duren op de afzonderlijke dagen aangegeven.
 Disable Cross-Day Events: Dagoverschrijdende afspraken uitschakelen
-disable-location-field-help: Hiermee voorkomt u dat het locatie-veld wordt getoond
+disable_location_field_help: Hiermee voorkomt u dat het locatie-veld wordt getoond
 Disable Location field: Locatie-veld uitschakelen
-disable-url-field-help: Als u "ja" kiest wordt het URL-veld niet getoond op pagina's met afspraakinformatie
+disable_url_field_help: Als u "ja" kiest wordt het URL-veld niet getoond op pagina's met afspraakinformatie
 Disable URL field: URL-veld uitschakelen
-disable-priority-field-help: Door ja te kiezen wordt het veld Priority niet getoond bij het maken van uw afspraken; uw agenda kan hierdoor overzichtelijk worden.
+disable_priority_field_help: Door ja te kiezen wordt het veld Priority niet getoond bij het maken van uw afspraken; uw agenda kan hierdoor overzichtelijk worden.
 Disable Priority field: De-activeer veld Priority
-disable-access-field-help: Door [ja] te kiezen wordt het veld Toegang niet getoond in de afspraak-view; uw agenda kan hierdoor overzichtelijker worden.
+disable_access_field_help: Door [ja] te kiezen wordt het veld Toegang niet getoond in de afspraak-view; uw agenda kan hierdoor overzichtelijker worden.
 Disable Access field: De-activeer veld Toegang
-disable-participants-field-help: Door [ja] te kiezen wordt het veld Aanwezigenniet getoond in de afspraak-view. Hierdoor voorkomt u dat andere gebruikers aanwezigen aan hun afspraken toevoegen. Indien u deze optie activeert wenst u wellicht ook om de optie [sta raadplegen agenda andere gebruikers toe] te de-activeren.
+disable_participants_field_help: Door [ja] te kiezen wordt het veld Aanwezigenniet getoond in de afspraak-view. Hierdoor voorkomt u dat andere gebruikers aanwezigen aan hun afspraken toevoegen. Indien u deze optie activeert wenst u wellicht ook om de optie [sta raadplegen agenda andere gebruikers toe] te de-activeren.
 Disable Participants field: De-activeer veld Aanwezigen
-disable-repeating-field-help: Door [ja] te kiezen wordt het veld [herhalingspatroon] niet getoond bij het toevoegen van afspraken; uw agenda kan hierdoor overzichtelijk worden.
+disable_repeating_field_help: Door [ja] te kiezen wordt het veld [herhalingspatroon] niet getoond bij het toevoegen van afspraken; uw agenda kan hierdoor overzichtelijk worden.
 Disable Repeating field: De-activeer veld Herhalingspatroon
-allow-html-description-help: Als deze optie aan staat kunnen gebruiker HTML gebruiken in de beschrijvingen bij afspraken. Als hij uit staat worden HTML-tags ge-escaped zodat ze als gewone tekst worden weergegeven. Let op: als deze optie aan staat is het mogelijk te verwijzen naar afbeeldingen op andere websites.
+allow_html_description_help: Als deze optie aan staat kunnen gebruiker HTML gebruiken in de beschrijvingen bij afspraken. Als hij uit staat worden HTML-tags ge-escaped zodat ze als gewone tekst worden weergegeven. Let op: als deze optie aan staat is het mogelijk te verwijzen naar afbeeldingen op andere websites.
 Allow HTML in Description: HTML toestaan in beschrijvingen
 Popups: Pop-ups
-disable-popups-help: Hiermee voorkomt u dat pop-ups worden getoond.
+disable_popups_help: Hiermee voorkomt u dat pop-ups worden getoond.
 Disable Pop-Ups: Pop-ups uitschakelen
-popup-includes-siteextras-help: Laat de eigen afspraak-velden, geconfigureerd in het bestand site_extras.php, zien in afspraak-popups.
+site_extras_in_popup_help: Laat de eigen afspraak-velden, geconfigureerd in het bestand site_extras.php, zien in afspraak-popups.
 Display Site Extras in popup: Toon Site Extra's in popup
-popup-includes-participants-help: Toon deelnemers in de pop-ups van afspraken
+participants_in_popup_help: Toon deelnemers in de pop-ups van afspraken
 Display Participants in popup: Toon deelnemers in pop-up
 Miscellaneous: Allerlei
-remember-last-login-help: Indien ingeschakeld zal, bij een volgend bezoek, de gebruikersnaam maar niet het password automatisch worden ingevoerd en worden de gebruikersinstellingen geladen inclusief kleurpatroon en taalselectie.
+remember_last_login_help: Indien ingeschakeld zal, bij een volgend bezoek, de gebruikersnaam maar niet het password automatisch worden ingevoerd en worden de gebruikersinstellingen geladen inclusief kleurpatroon en taalselectie.
 Remember last login: Onthoud loginnaam
-summary_length-help: Maximale lengte van de korte beschrijving in agenda overzichten
+summary_length_help: Maximale lengte van de korte beschrijving in agenda overzichten
 Brief Description Length: Lengte van korte omschrijving
-user_sort-help: Bepaalt de volgorde op lijsten van gebruikers en losse agenda's
+user_sort_help: Bepaalt de volgorde op lijsten van gebruikers en losse agenda's
 User Sort Order: Gebruikersvolgorde
 Lastname, Firstname: Achternaam, Voornaam
 Firstname, Lastname: Voornaam, Achternaam
-allow-public-access-help: Indien ingeschakeld kan de agenda worden gebruikt als read-only Open Agenda; gebruikers hoeven in dit geval niet in te loggen
+allow_public_access_help: Indien ingeschakeld kan de agenda worden gebruikt als read-only Open Agenda; gebruikers hoeven in dit geval niet in te loggen
 Allow public access: Publieke toegang tot agenda toestaan
 public-access-default-visible: Afspraken op de Open Agenda verschijnen automatisch op de kalenders van alle gebruikers
 Public visible by default: Publieke afspraken standaard zichtbaar
@@ -309,9 +309,9 @@ icon_upload-enabled-help: Sta het uploaden van categorie-icoontjes toe
 Category Icon Upload enabled: Uploaden categorie-ikoon toegestaan
 Requires: Behoeft
 folder to exist: map om te bestaan
-display-tasks-help: Toon klein taakvenster in maand- en dagagenda
+display_tasks_help: Toon klein taakvenster in maand- en dagagenda
 Display small task list: Kleine takenlijst tonen
-display-tasks-in-grid-help: Toon in de agenda's de taken samen met de gebeurtenissen
+display_tasks_in_grid_help: Toon in de agenda's de taken samen met de gebeurtenissen
 Display tasks in Calendars: In de kalenders taken weergeven
 allow-external-users-help: Hiermee kan een extern persoon als aanwezige bij een bepaalde afspraak worden gespecificeerd.
 Allow external users: Toon externe deelnemers
@@ -325,10 +325,10 @@ use-blacklist-help: Beperking van de toegang tot de webkalender gebaseerd op IP-
 Restrict self-reg to blacklist: Beperk zelf-registratie tot zwarte lijst
 allow-self-reg-full-help: Sta nieuwe gebruikers toe hun zelfregistratie on-line te vervolledigen
 send self-reg emails: Gebruik zelf-registratie email-notificaties
-allow-attachment-help: Met deze functie wordt het mogelijk om bijlagen aan afspraken toe te voegen.
+allow_attachment_help: Met deze functie wordt het mogelijk om bijlagen aan afspraken toe te voegen.
 Allow event attachments: Permitteer bestandsbijlagen bij afspraken
 owner can attach if enabled: Indien ingesteld kunnen de Admin en eigenaar altijd bijlagen toevoegen.
-allow-comments-help: Met deze functie wordt het mogelijk om opmerkingen aan afspraken toe te voegen.
+allow_comments_help: Met deze functie wordt het mogelijk om opmerkingen aan afspraken toe te voegen.
 Allow event comments: Permitteer opmerkingen bij afspraken
 owner can comment if enabled: Indien ingesteld kunnen de Admin en eigenaar altijd opmerkingen toevoegen.
 email-enabled-help: Activeer of deactiveer hier het verzenden van email-notificaties en herinneringen bij een afspraak
@@ -351,17 +351,17 @@ Default user settings: Standaard gebruikersinstellingen
 Email format preference: Email formaat voorkeur
 HTML: =
 Plain Text: Platte tekst
-email-event-reminders-help: Hiermee stelt u in of u per email een herinnering ontvangt indien u dit heeft ingesteld.<br> <b>N.B.</b>: dit vereist aanvullende serverinstellingen.
+email_reminder_help: Hiermee stelt u in of u per email een herinnering ontvangt indien u dit heeft ingesteld.<br> <b>N.B.</b>: dit vereist aanvullende serverinstellingen.
 Event reminders: Stuur mij per email een herinnering om mij aan een afspraak te herinneren
-email-event-added: Specificeert of er email-notificaties worden verzonden bij het toevoegen van een afspraak
+email_event_added: Specificeert of er email-notificaties worden verzonden bij het toevoegen van een afspraak
 Events added to my calendar: Stuur mij een email-notificatie als afspraken aan mijn agenda zijn toegevoegd
-email-event-updated: Specificeert of er email-notificaties worden verzonden bij het bijwerken van een afspraak
+email_event_added: Specificeert of er email-notificaties worden verzonden bij het bijwerken van een afspraak
 Events updated on my calendar: Stuur mij een email-notificatie als afspraken in mijn agenda zijn bijgewerkt
-email-event-deleted: Specificeert of er email-notificaties worden verzonden bij het verwijderen van een afspraak
+email_event_deleted: Specificeert of er email-notificaties worden verzonden bij het verwijderen van een afspraak
 Events removed from my calendar: Stuur mij een email-notificatie als afspraken uit mijn agenda zijn verwijderd
-email-event-rejected: Specificeert of er email-notificaties worden verzonden indien een genodigde een afsparak weigert
+email_event_rejected: Specificeert of er email-notificaties worden verzonden indien een genodigde een afsparak weigert
 Event rejected by participant: Stuur mij een email-notificatie als een afspraak door een genodigde wordt geweigerd
-email-event-create: Specificeert of er e-mailnotificaties worden verzonden bij het aanmaken van een afspraak
+email_event_create: Specificeert of er e-mailnotificaties worden verzonden bij het aanmaken van een afspraak
 Event that I create: Afspraken die ik zelf aanmaak
 Color options: Kleuropties
 Allow user to customize colors: Gebruikers mogen kleuren van eigen agenda aanpassen

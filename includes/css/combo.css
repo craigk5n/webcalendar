@@ -1,0 +1,244 @@
+// $Id$
+
+div.headerinfo,
+#contentAgenda td.even,
+#contentDay #dayuntimed,
+#contentYear .monthblock,
+#contentYear #year_main,
+#quickAddDiv,
+#viewEventDiv {
+  background:#fff;
+}
+div.headerinfo,
+#contentTasks #tasktable td.even,
+#contentTasks #tasktable td.odd {
+  color:#000;
+}
+div.headerinfo,
+.participant,
+#categorylist,
+#contentDay .daytimedevent,
+#contentDay .hourblockleft,
+#contentDay #dayuntimed,
+#quickAddDiv,
+#viewEventDiv {
+  border:1px solid;
+}
+div.headerinfo {
+  margin:.9375em;
+  border-color:#000;
+  padding:.625em;
+}
+div.headerinfo .username,
+#contentDay .daytitle,
+#contentMonth .monthtitle,
+#contentYear .yeartitle  {
+  font-size:16pt;
+}
+div.headerinfo #categoryselection {
+  padding-left:1.875em;
+}
+div.headerinfo #categoryselection,
+div.headerinfo #selectedcategories {
+  font-weight:normal;
+  font-size:12pt;
+}
+.event {
+  background:#a00;
+  margin-top:.0625em;
+  overflow:hidden;
+}
+.monthnavlinks td,
+#contentAgenda td.odd,
+#contentYear .empty {
+  background:#e0e0e0;
+}
+.monthnavlinks td,
+#contentTasks #tasktable th,
+#contentTasks #tasktable td.even,
+#contentTasks #tasktable td.odd {
+  border:2px outset;
+}
+.monthnavlinks td,
+#contentDay .hourblockleft {
+  border-color:#e0e0e0;
+}
+.monthnavlinks td {
+  font-size:.8em;
+}
+.monthnavlinks .currentMonthLink,
+#contentTasks #tasktable td.odd {
+  background:#c0c0c0;
+}
+.participant {
+  background:#d0d0d0;
+  border-color:#b0b0b0;
+  font-size:80%;
+}
+#categorylist {
+  background:#ffa;
+  border-color:#ccc;
+}
+#contentAgenda td.even,
+#contentAgenda td.odd {
+  font-size:10pt;
+}
+#contentAgenda #agendastatus,
+#contentDay #daystatus,
+#contentMonth #monthstatus {
+  margin-left:1.25em;
+}
+#contentDay .daytimedevent {
+  width:15.625em;
+  border-color:#e0e0e0 #a0a0a0 #a0a0a0 #e0e0e0;
+}
+#contentDay .daytimedevent,
+#contentDay #dayuntimed {
+  font-size:.625em;
+}
+#contentDay .daytitle,
+#contentMonth .monthtitle,
+#contentYear .yeartitle {
+  margin:0 0 0 .3125em;
+}
+#contentDay .daytitle,
+#contentDay .hourblockleft,
+#contentDay .hourblockright,
+#contentMonth .monthtitle,
+#contentYear .yeartitle,
+#quickAddDiv #quickAddParticipantList .partX,
+#quickAddDiv .fakebutton,
+#taskAddDiv .fakebutton {
+  padding:0;
+}
+#contentDay .daytitle,
+#contentMonth .monthtitle,
+#contentYear .dom,
+#contentYear .yeartitle {
+  text-align:center;
+}
+#contentDay .hourblockleft {
+  left:0;
+  width:3.125em;
+}
+#contentDay .hourblockleft,
+#contentDay .hourblockright {
+  height:3.125em;
+  margin:0;
+}
+#contentDay .hourblockright,
+#contentYear .monthtable {
+  border-right:1px solid;
+}
+#contentDay .hourblockright {
+  left:3.125em;
+  width:31.25em;
+  background:url( images/hour_in_day.gif );
+  border-right-color:#e0e0e0;
+  border-left:1px solid #e0e0e0;
+  //overflow:auto;
+}
+#contentDay .timeofday {
+  float:right;
+  margin-right:.125em;
+  font-size:.5625em;
+}
+#contentDay #daydiv {
+  height:25em;
+  overflow:auto;
+  scrollTop:400;
+}
+#contentDay #dayinnerdiv {
+  position:relative;
+  height:75em;
+}
+#contentDay #dayuntimed {
+  margin-top:.25em;
+  margin-bottom:.25em;
+  margin-left:3.125em;
+  border-color:#a0a0a0 #e0e0e0 #e0e0e0 #a0a0a0;
+}
+#contentMonth div.event {
+  margin-bottom:2px;
+  padding-left:2px;
+}
+#contentMonth div.event img {
+  float:left;
+}
+#contentMonth .event {
+  vertical-align:middle;
+}
+#contentMonth .eventname,
+#contentMonth .main td,
+#quickAddDiv #quickAddParticipantList .partX img {
+  vertical-align:top;
+}
+#contentMonth .main td {
+  font-size:.75em;
+  height:6em;
+}
+#contentMonth #month_main {
+  margin-top:10px;
+}
+#contentMonth #month_main td {
+  height:90px;
+}
+#contentTasks #tasktable th,
+#contentTasks #tasktable td.even,
+#contentTasks #tasktable td.odd {
+  padding:4px;
+  font-size:1em;
+}
+#contentTasks #tasktable th {
+  background:#000080;
+  color:#fff;
+  border-color:#000060;
+  padding-left:20px;
+}
+#contentTasks #tasktable td.even {
+  background:#d8d8d8;
+  border-color:#d8d8d8;
+}
+#contentTasks #tasktable td.odd {
+  border-color:#c0c0c0;
+}
+#contentYear .dom,
+#contentYear th {
+  font-size:70%;
+}
+#contentYear .monthblock,
+#contentYear #year_main {
+  border:0;
+}
+#contentYear .monthtable {
+  margin-bottom:10px;
+  border-bottom:1px solid;
+}
+#contentYear th {
+  padding:2px;
+}
+#nextday,
+#nextmonth,
+#nextmonthdayview,
+#nextyear,
+#refresh {
+  margin-right:.1875em;
+}
+#quickAddDiv,
+#viewEventDiv {
+  border-color:#e0e0e0 #808080 #808080 #e0e0e0;
+}
+#quickAddDiv {
+  padding:5px;
+}
+#quickAddDiv #quickAddParticipantList .partX {
+  cursor:pointer;
+}
+#quickAddDiv #quickAddParticipantList .partX img {
+  margin-top:3px;
+  margin-left:2px;
+}
+#viewEventDiv table {
+  margin:10px;
+  padding:10px;
+}

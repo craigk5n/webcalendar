@@ -113,80 +113,80 @@ System Settings: Nastavení systému
 Help: Nápovìda
 app-name-help: Urèuje jméno aplikace, které se na v¹ech stránkách zobrazí v záhlaví prohlí¾eèe. Zadaná hodnota se zkusí vyhledat v pøekladech, aby bylo mo¾no definovat její znìní ve v¹ech jazycích.
 Application Name: Název aplikace
-server-url-help: Urèuje základni URL k tomuto web kalendáøi. Tato URL bude pou¾ita jako základ pøi zasílání emailù s pøipomínkami a upozoròováním.
+server_url_help: Urèuje základni URL k tomuto web kalendáøi. Tato URL bude pou¾ita jako základ pøi zasílání emailù s pøipomínkami a upozoròováním.
 Server URL: URL Serveru
 language-help: Urèuje, jaký pou¾ívat jazyk.
 Language: Jazyk
 Your browser default language is: Výchozí jazyk tvého prohlí¾eèe je
 None: ¾ádný
-custom-script-help: Povolí vkládání vlastních Javascriptù a nebo stylù, které budou vlo¾eny do HTML hlavièky na ka¾dé stránce.
-Custom script/stylesheet: Vlastní styl/skripty
-custom-header-help: Umo¾òuje definovat vlastni HTML, které se pøidá na zaèátek ka¾dé stránky
+custom_script_help: Povolí vkládání vlastních Javascriptù a nebo stylù, které budou vlo¾eny do HTML hlavièky na ka¾dé stránce.
+Custom script: Vlastní styl/skripty
+custom_header_help: Umo¾òuje definovat vlastni HTML, které se pøidá na zaèátek ka¾dé stránky
 Custom header: Vlastní hlavièka
-custom-trailer-help: Umo¾nuje definovat vlastní HTML, které se pøidá na konec ka¾dé stránky.
+custom_trailer_help: Umo¾nuje definovat vlastní HTML, které se pøidá na konec ka¾dé stránky.
 Custom trailer: Vlastní patièka
-tz-help: Lze urèit, o kolik hodin má server upravovat èas vùèi místnímu èasu.
-date-format-help: Urèuje upøednostòovaný formát data.
+tz_help: Lze urèit, o kolik hodin má server upravovat èas vùèi místnímu èasu.
+date_format_help: Urèuje upøednostòovaný formát data.
 Date format: Formát data
-display-week-starts-on: Tímto lze urèit, zda týden zaèíná v nedìli a nebo v pondìlí. Pokud vybere¹ pondìlí, tak se pou¾ije pro èísla týdnù norma ISO.
+display_week_starts_on: Tímto lze urèit, zda týden zaèíná v nedìli a nebo v pondìlí. Pokud vybere¹ pondìlí, tak se pou¾ije pro èísla týdnù norma ISO.
 Week starts on: Zaèátek týdne
-time-format-help: Urèuje jaký formát èasu pou¾ívat: <br><i>12ti hodinový:</i> Zobratuje èasy jako je 3dop., 8:30odp., atp.  <br><i>24 hodinový:</i> Zobrazuje èasy napø. jako 300, 2030, atp.
+time_format_help: Urèuje jaký formát èasu pou¾ívat: <br><i>12ti hodinový:</i> Zobratuje èasy jako je 3dop., 8:30odp., atp.  <br><i>24 hodinový:</i> Zobrazuje èasy napø. jako 300, 2030, atp.
 Time format: Formát èasu
 12 hour: 12 hodin
 24 hour: 24 hodin
-timed-evt-len-help: Urèuje zpùsob zadávání, kterým se urèí délka naplánované události.
+timed_evt_len_help: Urèuje zpùsob zadávání, kterým se urèí délka naplánované události.
 Specify timed event length by: Zadávání délky plánovaných událostí
 Duration: Délka
 End Time: Koncovým èasem
-work-hours-help: Tímto urèí¹ rozsah èasu pro zobrazení dne v kalendáøi.
+work_hours_help: Tímto urèí¹ rozsah èasu pro zobrazení dne v kalendáøi.
 Work hours: Pracovní doba
 From: Od
 to: do
-preferred-view-help: Urèuje výchozí pohled na kalendáø (denní, týdení, mìsíèní a nebo roèní)
+preferred_view_help: Urèuje výchozí pohled na kalendáø (denní, týdení, mìsíèní a nebo roèní)
 Preferred view: Upøednostòovaný pohled
-fonts-help: Urèuje seznam systémových fontù, které se mají pou¾ívat (jako jsou "Arial, Helvetica").
+fonts_help: Urèuje seznam systémových fontù, které se mají pou¾ívat (jako jsou "Arial, Helvetica").
 Fonts: Písma
-display-weekends-help: Vypisuje také víkendové dny pøi prohlí¾ení týdne.
-display-week-number-help: Lze urèit, zda se má zobrazovat èíslo týdne (1-52) v týdením a mìsíèním pohledu na kalendáø.
+display_weekends_help: Vypisuje také víkendové dny pøi prohlí¾ení týdne.
+display_weeknumber_help: Lze urèit, zda se má zobrazovat èíslo týdne (1-52) v týdením a mìsíèním pohledu na kalendáø.
 Display week number: Zobrazovat èíslo týdne
-display-desc-print-day-help: Vypisuj popisy událostí v náhledu na den urèenému pro tisk.
+display_desc_print_day_help: Vypisuj popisy událostí v náhledu na den urèenému pro tisk.
 desc in printer day view: Zobrazuj popisy pøi tiskovém náhledu na den
-yearly-shows-events-help: V roèním pohledu bude zobrazovat události tuènými písmy.
+display_bold_days_in_year_help: V roèním pohledu bude zobrazovat události tuènými písmy.
 bold events month/year views: V mìsíèním a roèním pohledu zobrazovat dny s událostmi tuènì
-allow-view-add-help: V náhledu na kalendáøe jiných u¾ivatelù pøibude '+' pro rychlé vkládání nových událostí do jejich kalendáøù.
+display_add_link_in_views_help: V náhledu na kalendáøe jiných u¾ivatelù pøibude '+' pro rychlé vkládání nových událostí do jejich kalendáøù.
 Include add event link in views: Pøidej odkaz na vkládání v jiných pohledech
-allow-view-other-help: Urèuje, zda si mù¾e u¾ivatel prohlí¾et kalendáø nìkoho jiného.
-require-approvals-help: Pokud je povoleno, u¾ivatel bude muset danou událost nejprve potvrdit a teprve pak se mu zobrazí v kalendáøi (samozøejmì, pokud nemá povoleno zobrazování nepotvrzených). Poznemenejme, ¾e nastavením tohoto na "Ne" nevypne nutnost potvrzování událostí pro veøejnì pøístupné kalendáøe (pokud jsou veøejnì pøístupné kalendáøe povoleny...).
+allow_view_other_help: Urèuje, zda si mù¾e u¾ivatel prohlí¾et kalendáø nìkoho jiného.
+require_approvals_help: Pokud je povoleno, u¾ivatel bude muset danou událost nejprve potvrdit a teprve pak se mu zobrazí v kalendáøi (samozøejmì, pokud nemá povoleno zobrazování nepotvrzených). Poznemenejme, ¾e nastavením tohoto na "Ne" nevypne nutnost potvrzování událostí pro veøejnì pøístupné kalendáøe (pokud jsou veøejnì pøístupné kalendáøe povoleny...).
 Require event approvals: Vy¾aduj potvrzování událostí
-display-unapproved-help: Tímto urèí¹, jestli se mají v tvém kalendáøi zobrazovat nepotvrzené události<br> Pokud je nastaveno na "Ano", pak se nepotvrzené události zobrazí v kalendáøi (jinou barvou písma).<br> Pokud je nastaveno na "Ne", nebudou nepotvrzené události zobrazeny, dokud je nìkdo nepotvrdí.
+display_unapproved_help: Tímto urèí¹, jestli se mají v tvém kalendáøi zobrazovat nepotvrzené události<br> Pokud je nastaveno na "Ano", pak se nepotvrzené události zobrazí v kalendáøi (jinou barvou písma).<br> Pokud je nastaveno na "Ne", nebudou nepotvrzené události zobrazeny, dokud je nìkdo nepotvrdí.
 Display unapproved: Zobrazovat nepotvrzené události
-conflict-check-help: Kontroluje konflikty mezi událostmi (dvì události naplánované na stejnou dobu pro tuté¾ osobu). Pokud tuto kontrolu povolí¹, i tak bude mo¾no po potvrzení konfliktu naplánovat na stejnou dobu více událostí. Doporuèujeme nechat tuto kontrolu zapnutou.
+allow_conflicts_help: Kontroluje konflikty mezi událostmi (dvì události naplánované na stejnou dobu pro tuté¾ osobu). Pokud tuto kontrolu povolí¹, i tak bude mo¾no po potvrzení konfliktu naplánovat na stejnou dobu více událostí. Doporuèujeme nechat tuto kontrolu zapnutou.
 Check for conflicts: Kontrola na konflikty mezi událostmi
 Yes: Ano
 No: Ne
-conflict-months-help: Pokud je zapnuta kontrola konfliktù, tímto lze nastavit, kolik mìsícù do budoucnosti má být prohledáno na mo¾ný konflikt. Jestli¾e ti pøipadá, ¾e vkládání nových událostí trvá moc dlouho, zmen¹i toto èíslo.
+conflict_months_help: Pokud je zapnuta kontrola konfliktù, tímto lze nastavit, kolik mìsícù do budoucnosti má být prohledáno na mo¾ný konflikt. Jestli¾e ti pøipadá, ¾e vkládání nových událostí trvá moc dlouho, zmen¹i toto èíslo.
 Conflict checking months: Na konflikty kontrolovat mìsíce
-conflict-check-override-help: Umo¾ní u¾ivatelùm potlaèit konflikt mezi událostmi a naplánovat dvì a více události na stejný èas.
+allow_conflict_override_help: Umo¾ní u¾ivatelùm potlaèit konflikt mezi událostmi a naplánovat dvì a více události na stejný èas.
 may users override conflicts: Povol u¾ivatelùm potlaèit konflikty
-limit-appts-help: Umo¾ní administrátorovi nastavit systémové omezení poètu schùzek na jednoho u¾ivatele a den.
+limit_appts_help: Umo¾ní administrátorovi nastavit systémové omezení poètu schùzek na jednoho u¾ivatele a den.
 Limit timed events per day: Omez poèet naplánovaných události na jeden den
-limit-appts-number-help: Urèuje maximální poèet událostí, které si mù¾e daný u¾ivatel naplánovat na jeden den.
+limit_appts_number_help: Urèuje maximální poèet událostí, které si mù¾e daný u¾ivatel naplánovat na jeden den.
 Maximum timed events per day: Maximální poèet naplánovaných události za den
-disable-priority-field-help: Výbìrem 'Ano' odstraní¹ políèko 'Priorita' ze stránky události, èím¾ se zajistí jednodu¹í formuláø.
+disable_priority_field_help: Výbìrem 'Ano' odstraní¹ políèko 'Priorita' ze stránky události, èím¾ se zajistí jednodu¹í formuláø.
 Disable Priority field: Zaka¾ políèko priority
-disable-access-field-help: Výbìrem 'Ano' odstraní¹ políèko 'Pøístup' ze stránky události, èím¾ se zjednodu¹í formuláø.
+disable_access_field_help: Výbìrem 'Ano' odstraní¹ políèko 'Pøístup' ze stránky události, èím¾ se zjednodu¹í formuláø.
 Disable Access field: Zaka¾ políèko pro nastavení pøístupu
-disable-participants-field-help: Výbìrem 'Ano' odstraní¹ políèko pro nastavování úèastníkù události - tím také zabrání¹ pøidávání jiných u¾ivatelù k událostem. Pokud povolí¹ tuto volbu, pak bude¹ chtít asi taky zakázat 'Povolení prohlí¾ení kalendáøù jiných u¾ivatelù'.
+disable_participants_field_help: Výbìrem 'Ano' odstraní¹ políèko pro nastavování úèastníkù události - tím také zabrání¹ pøidávání jiných u¾ivatelù k událostem. Pokud povolí¹ tuto volbu, pak bude¹ chtít asi taky zakázat 'Povolení prohlí¾ení kalendáøù jiných u¾ivatelù'.
 Disable Participants field: Zaka¾ políèko pro úèastníky
-disable-repeating-field-help: Výbìrem 'Ano' se odstraní mo¾nost nastavovat opakování události. Tímto se pro nováèky zjednodu¹í formuláø.
+disable_repeating_field_help: Výbìrem 'Ano' se odstraní mo¾nost nastavovat opakování události. Tímto se pro nováèky zjednodu¹í formuláø.
 Disable Repeating field: Zaka¾ políèko pro opakování
-allow-html-description-help: Pokud je povoleno, u¾ivatelé si smí vkládat HTML kód do popisu události. Pokud je zakázáno, HTML bude 'oøíznuto', tak¾e bude vypadat jako èistý text bez formátování. POZOR: Povolením této vlastnosti umo¾ní¹ u¾ivatelùm napø. vkládat obrázky z jiných serverù. Tj. bezpeènostní riziko.
+allow_html_description_help: Pokud je povoleno, u¾ivatelé si smí vkládat HTML kód do popisu události. Pokud je zakázáno, HTML bude 'oøíznuto', tak¾e bude vypadat jako èistý text bez formátování. POZOR: Povolením této vlastnosti umo¾ní¹ u¾ivatelùm napø. vkládat obrázky z jiných serverù. Tj. bezpeènostní riziko.
 Allow HTML in Description: Povol HTML v popisu
-popup-includes-siteextras-help: Pokud je povoleno, umo¾ní vlastní údaje k událostem. Nastavitelné v souboru site_extras.php. Bude zobrazeno v popupu události.
+site_extras_in_popup_help: Pokud je povoleno, umo¾ní vlastní údaje k událostem. Nastavitelné v souboru site_extras.php. Bude zobrazeno v popupu události.
 Display Site Extras in popup: Zobrazuj roz¹íøené místní info k popupùm
-remember-last-login-help: Pokud je povoleno, login u¾ivatele bude pøedvyplnìn na pøihla¹ovací stránce (ne heslo) a bude i pou¾ito u¾ivatelské nastavení barev a jazyka.
+remember_last_login_help: Pokud je povoleno, login u¾ivatele bude pøedvyplnìn na pøihla¹ovací stránce (ne heslo) a bude i pou¾ito u¾ivatelské nastavení barev a jazyka.
 Remember last login: Zapamatuj si poslední pøihlá¹ení
-allow-public-access-help: Pokud je povoleno, bude mo¾no bez mo¾nosti zápisu pøistupovat do kalendáø bez nutnosti se pøihla¹ovat.
+allow_public_access_help: Pokud je povoleno, bude mo¾no bez mo¾nosti zápisu pøistupovat do kalendáø bez nutnosti se pøihla¹ovat.
 Allow public access: Povolit veøejný pøístup
 public-access-default-visible: Anonymní události se automaticky objeví v kalendáøích v¹ech u¾ivatelù
 Public visible by default: Anonymní pøíspìvky standardnì viditelné
@@ -226,15 +226,15 @@ Email enabled: Odesílání emailu povoleno
 email-default-sender: Urèuje emailovou adresu odesilatele pøipomínek.
 Default sender address: Výchozí adresa odesilatele
 Default user settings: Výchozí u¾ivatelské nastavení
-email-event-reminders-help: Urèuje, zda zasílat na email pøipomínky na události
+email_reminder_help: Urèuje, zda zasílat na email pøipomínky na události
 Event reminders: Pøipomínky na události
-email-event-added: Urèuje, zda se má a nebo nemá zasílat upozornìní na email v pøípadì, ¾e je pøidaná nová událost do mého kalendáøe.
+email_event_added: Urèuje, zda se má a nebo nemá zasílat upozornìní na email v pøípadì, ¾e je pøidaná nová událost do mého kalendáøe.
 Events added to my calendar: Pøidané události do mého kalendáøe
-email-event-updated: Urèuje, zda se má a nebo nemá zasílat upozornìní na email v pøípadì aktualizace události z mého kalendáøe.
+email_event_added: Urèuje, zda se má a nebo nemá zasílat upozornìní na email v pøípadì aktualizace události z mého kalendáøe.
 Events updated on my calendar: Aktualizované události z mého kalendáøe
-email-event-deleted: Urèuje, zda se má a nebo nemá zasílat upozornìní na odstranìnou událost z tvého kalendáøe.
+email_event_deleted: Urèuje, zda se má a nebo nemá zasílat upozornìní na odstranìnou událost z tvého kalendáøe.
 Events removed from my calendar: Odstranìné události z mého kalendáøe
-email-event-rejected: Urèuje, zda se má a nebo nemá zasílat upozornìní na email, kdy¾ jeden z úèastníkù zamítne událost z tvého kalendáøe.
+email_event_rejected: Urèuje, zda se má a nebo nemá zasílat upozornìní na email, kdy¾ jeden z úèastníkù zamítne událost z tvého kalendáøe.
 Event rejected by participant: Událost byla zamítnuta úèastníkem
 Allow user to customize colors: Povol u¾ivatelùm mìnit si barvy
 Enable gradient images for BG: Povol gradientová obrázky namísto barvy pozadí

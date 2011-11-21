@@ -1,0 +1,76 @@
+// $Id$
+
+#example {
+  float:right;
+  width:45%;
+  margin:0;
+}
+#example p {
+  margin:0 auto;
+  font-weight:bold;
+  text-align:center;
+}
+#tabscontent {
+  width: 98%;
+}
+#tabscontent p label {
+	clear:left;
+	float:left;
+	width:25%;
+	padding:0 .25em;
+}
+#tabscontent_themes {
+  width:35%;
+}
+.main th {
+	width:14%;
+}
+.main td.empty,
+.main td.weekcell,
+.main th.empty,
+.main th.weekcell {
+	width:1%;
+}
+div.tooltip {
+  width:100%;
+}
+.tooltip p {
+	width:14.6875em;
+  cursor:help;
+  font-weight:bold;
+  font-size:.6875em;
+  text-decoration:none;
+}
+.main td {
+	height:1.875em;
+}
+.main th.weekcell {
+	background-color:transparent;
+	border-top:0;
+	border-left:0;
+}
+input,
+select {
+	margin:0 .1875em;
+}
+.main td.weekcell,
+#tabscontent p label {
+	margin:0;
+}
+.empty {
+	border-top-color:transparent;
+	border-left-color:transparent;
+}
+.main td,
+.main td.weekcell,
+.main th {
+	font-size:.75em;
+}
+.main td.weekcell {
+	text-align:center;
+	text-decoration:none;
+	vertical-align:middle;
+}
+table {
+	vertical-align:top;
+}

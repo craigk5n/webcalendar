@@ -90,7 +90,7 @@ if ( $action == 'search' ) {
   // remove double quotes
   $query = str_replace ( '"', '', $query );
   $words = explode ( ' ', $query );
-  
+
   $ret = array ();
   $eventTitles = array ();
   $word_cnt = count ( $words );

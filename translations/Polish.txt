@@ -148,7 +148,7 @@ app-name-help: Okresla nazwe aplikacji która bedzie siê pojawia³a jako tytu³ prz
 Application Name: Nazwa aplikacji
 Translated Name: Przet³umaczona nazwa
 Translated Name (XXX): Przet³umaczona nazwa (XXX)
-server-url-help: Okre¶la adres bazowy dla aplikacji. Bedzie on dodany w momencie wysy³ania wiadomo¶ci email z powiadomieniami i pzypomnieniami
+server_url_help: Okre¶la adres bazowy dla aplikacji. Bedzie on dodany w momencie wysy³ania wiadomo¶ci email z powiadomieniami i pzypomnieniami
 Server URL: Adres internetowy serwera
 home-url-help: Okre¶la adres internetowy strony pocz±tkowej. ¦cie¿ka mo¿e byæ absolutna lub wzglêdna.
 Home URL: Adres internetowy (URL) strony g³ównej
@@ -163,122 +163,122 @@ AVAILABLE THEMES: DOSTÊPNE SKÓRKI ("Themes")
 None: ¯aden
 Preview: podgl±d
 Site customization: Ustawienia w³asne
-custom-script-help: Pozwala na wprowadzenie w³asnego Javascriptu lub kaskadowego arkusza stylów CSS, który zostanie dodany do nag³ówka ka¿dej strony.
-Custom script/stylesheet: W³asny skrypt/styl
-custom-header-help: Pozwala na wprowadzenie w³asnego kodu HTML, który bedzie dodany na górze ka¿dej strony
+custom_script_help: Pozwala na wprowadzenie w³asnego Javascriptu lub kaskadowego arkusza stylów CSS, który zostanie dodany do nag³ówka ka¿dej strony.
+Custom script: W³asny skrypt/styl
+custom_header_help: Pozwala na wprowadzenie w³asnego kodu HTML, który bedzie dodany na górze ka¿dej strony
 Custom header: W³asny nag³ówek
-custom-trailer-help: Pozwala na wprowadzenie w³asnego kodu HTML, który bedzie dodany na dole ka¿dej strony
+custom_trailer_help: Pozwala na wprowadzenie w³asnego kodu HTML, który bedzie dodany na dole ka¿dej strony
 Custom trailer: W³asna stopka
-enable-external-header-help: Pozwala na wprowadzanie w³asnych skryptów/stylów, nag³ówków i stopek z zewnêtrznego pliku
+allow_external_header_help: Pozwala na wprowadzanie w³asnych skryptów/stylów, nag³ówków i stopek z zewnêtrznego pliku
 externals head/script/trail: Skrpyt/styl, nag³ówek, stopka z zewnêtrznego pliku
 may user override head/trail: Pozwól ignorowaæ nag³ówek/stopkê
 Date and Time: Data i czas
-tz-help: Okre¶la ile godzin potrzeba do przystosowania czasu serwera do czasu lokalnego.
+tz_help: Okre¶la ile godzin potrzeba do przystosowania czasu serwera do czasu lokalnego.
 Server TZ Selection: Strefa czasowa serwera
-display-general-use-gmt-help: Je¶li zaznaczone, wspó³dzielone daty/czasy wy¶wietlane s± w czasie GMT
+display_general_use_gmt_help: Je¶li zaznaczone, wspó³dzielone daty/czasy wy¶wietlane s± w czasie GMT
 GMT Common Use Date/Times: Wy¶wietlaj wspó³dzielone daty/czasy w standardzie GMT
-date-format-help: Okre¶la preferowany format daty
+date_format_help: Okre¶la preferowany format daty
 Date format: Format daty
 Small Task Date: Krótka data zadania
-display-week-starts-on: Okre¶la czy pierwszym dniem tygodnia jest niedziela czy poniedzia³ek. Je¶li jest to poniedzia³ek, to numer tgodnia bedzie numerem ISO.
+display_week_starts_on: Okre¶la czy pierwszym dniem tygodnia jest niedziela czy poniedzia³ek. Je¶li jest to poniedzia³ek, to numer tgodnia bedzie numerem ISO.
 Week starts on: Tydzieñ zaczyna siê w
-display-weekend-starts-on: Ustaw dzieñ tygodnia rozpoczynaj±cy weekend
+display_weekend_starts_on: Ustaw dzieñ tygodnia rozpoczynaj±cy weekend
 Weekend starts on: Weekend zaczyna siê w
-time-format-help: Okre¶la którego formatu czasu u¿ywaæ<br><i>12 godz.:</i> Wy¶wietla czas jako ³am, 8:³0pm, itd.<br><i>24 godz.:</i> Wy¶wietla czas jako ³00, 20³0 itd.
+time_format_help: Okre¶la którego formatu czasu u¿ywaæ<br><i>12 godz.:</i> Wy¶wietla czas jako ³am, 8:³0pm, itd.<br><i>24 godz.:</i> Wy¶wietla czas jako ³00, 20³0 itd.
 Time format: Format czasu
 12 hour: 12 godzin
 24 hour: 24 godziny
-timed-evt-len-help: Metoda podawania d³ugo¶ci zdarzeñ
+timed_evt_len_help: Metoda podawania d³ugo¶ci zdarzeñ
 Specify timed event length by: Podawaj d³ugo¶æ zdarzenia jako
 Duration: Czas trwania
 End Time: Czas zakonczenia
-work-hours-help: Okre¶la czas wy¶wietlany w widoku dzieñnym.
+work_hours_help: Okre¶la czas wy¶wietlany w widoku dzieñnym.
 Work hours: Godziny pracy
 From: Od
 to: Do
 Appearance: Wygl±d
-preferred-view-help: Okre¶la preferowany widok (dzieñ, tydzieñ, miesi±c lub rok)
+preferred_view_help: Okre¶la preferowany widok (dzieñ, tydzieñ, miesi±c lub rok)
 Preferred view: Preferowany widok
 Allow top menu: Poka¿ menu górne
 Date Selectors position: Pozycja opcji wyboru daty
-menu-themes-help: Ustawienia kolorów i stylów górnego menu
+menu_themes_help: Ustawienia kolorów i stylów górnego menu
 Menu theme: Skórka ("theme") menu
-fonts-help: Okre¶la liste czcionek systemowych do u¿ycia (np. "Arial, Helvetica")
+fonts_help: Okre¶la liste czcionek systemowych do u¿ycia (np. "Arial, Helvetica")
 Fonts: Czcionki
-display-sm_month-help: W widoku miesi±ca, wy¶wietla ma³e widoki miesiêcy
+display_sm_month_help: W widoku miesi±ca, wy¶wietla ma³e widoki miesiêcy
 Display small months: Wy¶wietl ma³e widoki miesiêcy
-display-weekends-help: W czasie ogl±dania tygodnia wy¶wietla tak¿e weekendy
+display_weekends_help: W czasie ogl±dania tygodnia wy¶wietla tak¿e weekendy
 Display weekends: Poka¿ weekendy
-display-long-daynames-help: Je¶li w³±czone, wy¶wietlaj± siê d³ugie nazwy dni
+display_long_days_help: Je¶li w³±czone, wy¶wietlaj± siê d³ugie nazwy dni
 Display long day names: Wy¶wietl d³ugie nazwy dni
-display-alldays-help: Wy¶wietlaj dni poprzedniego i nastêpnego miesi±ca w trybie widoku miesi±ca.
+display_all_days_in_month_help: Wy¶wietlaj dni poprzedniego i nastêpnego miesi±ca w trybie widoku miesi±ca.
 Display all days in month view: Wy¶wietlaj wszystkie dni w trybie widoku miesi±ca
-display-week-number-help: Okre¶la czy numer tygodnia (1-52) powinien bya wy¶wietlany w widoku miesi±ca i tygodnia.
+display_weeknumber_help: Okre¶la czy numer tygodnia (1-52) powinien bya wy¶wietlany w widoku miesi±ca i tygodnia.
 Display week number: Wy¶wietl numery tygodni
-display-desc-print-day-help: Dodawaj opis wpisu w wersji widoku dzieñnego do druku
+display_desc_print_day_help: Dodawaj opis wpisu w wersji widoku dzieñnego do druku
 desc in printer day view: Wy¶wietl opis w widoku dzieñnym do druku
-yearly-shows-events-help: W widoku rocznym i miesiecznym, wy¶wietla dni które zawieraj± jakie¶ wydarzenia pogrubion± czciank±
+display_bold_days_in_year_help: W widoku rocznym i miesiecznym, wy¶wietla dni które zawieraj± jakie¶ wydarzenia pogrubion± czciank±
 bold events month/year views: Pogrubiaj dni z wpisami w widoku miesi±ca i roku
-display-minutes-help: Je¶li w³±czone, koñcówka :00 bêdzie zawsze wy¶wietlana dla pe³nych godzin
+display_minutes_help: Je¶li w³±czone, koñcówka :00 bêdzie zawsze wy¶wietlana dla pe³nych godzin
 Display 00 minutes always: Zawsze wy¶wietlaj :00 minut
-display-end-times-help: Wy¶wietlaj czas zakoñczenia zdarzeñ okre¶lonych czasowo
+display_end_times_help: Wy¶wietlaj czas zakoñczenia zdarzeñ okre¶lonych czasowo
 Display end times on calendars: Wy¶wietlaj czas zakoñczenia w kalendarzu
-allow-view-add-help: Dzieki wy¶wietlanej ikonie plusa ("+") bedzie mo¿na szybko dodawaæ zdarzenia do kalendarzy innych u¿ytkowników
+display_add_link_in_views_help: Dzieki wy¶wietlanej ikonie plusa ("+") bedzie mo¿na szybko dodawaæ zdarzenia do kalendarzy innych u¿ytkowników
 Include add event link in views: W³±cz przycisk dodawania zdarzenia
-lunar-help: Je¶li w³±czone, wy¶wietlaæ siê bêd± ikonki pokazujêce fazy Ksiê¿yca w ka¿dym miesi±cu
+display_moon_phases_help: Je¶li w³±czone, wy¶wietlaæ siê bêd± ikonki pokazujêce fazy Ksiê¿yca w ka¿dym miesi±cu
 Display Lunar Phases in month view: Wy¶wietlaj fazy Ksiê¿yca w widoku miesi±ca
 Restrictions: Ograniczenia
-allow-view-other-help: W³±cza mo¿liwo¶æ ogl±dania kalendarzy innych u¿ytkowników
+allow_view_other_help: W³±cza mo¿liwo¶æ ogl±dania kalendarzy innych u¿ytkowników
 may view others cals: Zezwalaj na ogladanie kalendarzy innych u¿ytkowników
-require-approvals-help: Wymaga zatwierdzenia zdarzenia przez u¿ytkownika
+require_approvals_help: Wymaga zatwierdzenia zdarzenia przez u¿ytkownika
 Require event approvals: Wymagaj zatwierdzania zdarzeñ
-display-unapproved-help: Okre¶la czy niezatwierdzone wydarzenia bed± wy¶wietlane w twoim kalendarzu.<br> Je¶li "tak" wtedy niezatwierdzone wydarzenia bed± wy¶wietlane (innym kolorem).<br> Je¶li "Nie" wtedy najpierw bed± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
+display_unapproved_help: Okre¶la czy niezatwierdzone wydarzenia bed± wy¶wietlane w twoim kalendarzu.<br> Je¶li "tak" wtedy niezatwierdzone wydarzenia bed± wy¶wietlane (innym kolorem).<br> Je¶li "Nie" wtedy najpierw bed± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
 Display unapproved: Wy¶wietlaj niezatwierdzone
-conflict-check-help: Sprawdzaj czy nie ma konfliktów zdarzeñ (dwóch zdarzeñ tego samego u¿ytkownika w tym samym czasie)
+allow_conflicts_help: Sprawdzaj czy nie ma konfliktów zdarzeñ (dwóch zdarzeñ tego samego u¿ytkownika w tym samym czasie)
 Check for conflicts: Sprawdzaj czy nie ma konfliktów zdarzeñ
 Yes: Tak
 No: Nie
-conflict-months-help: Sprawdzaj na ile miesiecy do przodu bed± sprawdzane konflikty zdarzeñ.
+conflict_months_help: Sprawdzaj na ile miesiecy do przodu bed± sprawdzane konflikty zdarzeñ.
 Conflict checking months: Ilo¶æ miesiecy do przodu do sprawdzenia
-conflict-check-override-help: Pozwala na akceptowanie konfliktów i przechowywanie dwóch zdarzeñ maj±cych miejsce w tym samym czasie
+allow_conflict_override_help: Pozwala na akceptowanie konfliktów i przechowywanie dwóch zdarzeñ maj±cych miejsce w tym samym czasie
 may users override conflicts: Pozwalaj u¿ytkownikom na akceptowanie konfliktów
-limit-appts-help: Pozwala na ustalenie globalnego limitu zdarzeñ dla ka¿dego u¿ytkownika jaki mo¿e ustalia na dany dzieñ.
+limit_appts_help: Pozwala na ustalenie globalnego limitu zdarzeñ dla ka¿dego u¿ytkownika jaki mo¿e ustalia na dany dzieñ.
 Limit timed events per day: Limit zdarzeñ na dzieñ
-limit-appts-number-help: Ustala dzieñny limit zdarzeñ ze sprecyzowanym czasem
+limit_appts_number_help: Ustala dzieñny limit zdarzeñ ze sprecyzowanym czasem
 Maximum timed events per day: Maksymalna ilo¶æ zdarzeñ dzieñnie
-crossday-help: Jesli w³±czone, wydarzenia trwaj±ce d³u¿ej ni¿ dzieñ bêd± pokazywane w osobnych dniach
+disable_crossday_events_help: Jesli w³±czone, wydarzenia trwaj±ce d³u¿ej ni¿ dzieñ bêd± pokazywane w osobnych dniach
 Disable Cross-Day Events: Nie pokazuj pe³nego zakresu wydarzeñ trwaj±cych d³u¿ej ni¿ dzieñ
-disable-location-field-help: Wybranie "Tak" usunie pole "Miejsce" ze stron z informacj± o zdarzeniu
+disable_location_field_help: Wybranie "Tak" usunie pole "Miejsce" ze stron z informacj± o zdarzeniu
 Disable Location field: Wy³±cz pole "Miejsce"
-disable-url-field-help: Wybranie "Tak" usunie pole "URL" ze stron z informacj± o zdarzeniu
+disable_url_field_help: Wybranie "Tak" usunie pole "URL" ze stron z informacj± o zdarzeniu
 Disable URL field: Wy³±cz pole "URL"
-disable-priority-field-help: Wy³±cza pole "Priorytet" ze strony z informacj± o zdarzeniu
+disable_priority_field_help: Wy³±cza pole "Priorytet" ze strony z informacj± o zdarzeniu
 Disable Priority field: Wy³±cz pole "Priorytet"
-disable-access-field-help: Wy³±cza pole "Dostep" ze strony z informacj± o zdarzeniu
+disable_access_field_help: Wy³±cza pole "Dostep" ze strony z informacj± o zdarzeniu
 Disable Access field: Wy³±cz pole "Dostep"
-disable-participants-field-help: Wy³±cza pole "Wspó³uczestnicy" ze strony z informacj± o zdarzeniu
+disable_participants_field_help: Wy³±cza pole "Wspó³uczestnicy" ze strony z informacj± o zdarzeniu
 Disable Participants field: Wy³±cz pole "Wspó³uczestnicy"
-disable-repeating-field-help: Wy³±cza pole "Powtarzanie" ze strony z informacj± o zdarzeniu
+disable_repeating_field_help: Wy³±cza pole "Powtarzanie" ze strony z informacj± o zdarzeniu
 Disable Repeating field: Wy³±cz pole "Powtarzanie"
-allow-html-description-help: Zezwalaj na HTML w opisie zdarzeñ, lub traktuj tekst jako preformatowany
+allow_html_description_help: Zezwalaj na HTML w opisie zdarzeñ, lub traktuj tekst jako preformatowany
 Allow HTML in Description: Zezwalaj na HTML w opisie
 Popups: Okienka pop-ups
-disable-popups-help: Wy³±cz okienka pop-ups w widoku kalendarza
+disable_popups_help: Wy³±cz okienka pop-ups w widoku kalendarza
 Disable Pop-Ups: Wy³±cz okienka pop-ups.
-popup-includes-siteextras-help: Je¶li w³±czone, okienka pop-up zdarzenia zawieraæ bêd± Dodatki Strony - odsy³acz do zdefiniowania w³asnych dodatkowych pól dla zdarzeñ w pliku site_extras.php.
+site_extras_in_popup_help: Je¶li w³±czone, okienka pop-up zdarzenia zawieraæ bêd± Dodatki Strony - odsy³acz do zdefiniowania w³asnych dodatkowych pól dla zdarzeñ w pliku site_extras.php.
 Display Site Extras in popup: Wyowietlaj Bonusy Strony w popup-ach
-popup-includes-participants-help: Je¶li w³±czone, uczestnicy s± wy¶wietlani w podgl±dzie pop-up zdarzenia.
+participants_in_popup_help: Je¶li w³±czone, uczestnicy s± wy¶wietlani w podgl±dzie pop-up zdarzenia.
 Display Participants in popup: Wy¶wietlaj uczestników w okienkach pop-up
 Miscellaneous: Ró¿ne
-remember-last-login-help: W³±cza zapamietywanie ostatnio u¿ytej nazwy u¿ytkownika na stronie logowania (lecz nie has³a) oraz preferencji (wliczaj±c kolory i jezyk).
+remember_last_login_help: W³±cza zapamietywanie ostatnio u¿ytej nazwy u¿ytkownika na stronie logowania (lecz nie has³a) oraz preferencji (wliczaj±c kolory i jezyk).
 Remember last login: Pamietaj ostatnie logowanie
-summary_length-help: Maksymalna d³ugo¶æ krótkiego opisu w widokach kalendarzowych
+summary_length_help: Maksymalna d³ugo¶æ krótkiego opisu w widokach kalendarzowych
 Brief Description Length: Maksymalna d³ugo¶æ krótkiego opisu
-user_sort-help: Okre¶la kolejno¶æ sortowania list u¿ytkownika oraz list bez w³a¶ciciela
+user_sort_help: Okre¶la kolejno¶æ sortowania list u¿ytkownika oraz list bez w³a¶ciciela
 User Sort Order: Kolejno¶æ sortowania zdefiniowana przez u¿ytkownika
 Lastname, Firstname: Nazwisko, imiê
 Firstname, Lastname: Imiê, nazwisko
-allow-public-access-help: Pozwalaj na dostep do publicznego kalendarza dla niezalogowanych
+allow_public_access_help: Pozwalaj na dostep do publicznego kalendarza dla niezalogowanych
 Allow public access: Zezwalaj na dostep publiczny
 public-access-default-visible: Ustala czy elementy kalendarza publicznego powinny bya widoczne dla wszystkich u¿ytkowników
 Public visible by default: Domy¶lny dostep do kalendarza publicznego
@@ -296,7 +296,7 @@ public-access-override-help: Pozwala na ukrywanie nazw i opisów zdarzeñ w public
 Override public event name/desc: Ukrywaj nazwy i opisy zdarzeñ w publicznym kalendarzu
 public-access-override-text-help: Tekst do wy¶wietlenia w kalendarzu publicznego dostêpu, je¶li powy¿sza opcja jest w³±czona
 public text display: Tekst do wy¶wietlenia
-public-access-captcha-help: Je¶li w³±czone, dodanie wpisu przez u¿ytkownika publicznego wymaga weryfikacji CAPTCHA.
+public_access_captcha_help: Je¶li w³±czone, dodanie wpisu przez u¿ytkownika publicznego wymaga weryfikacji CAPTCHA.
 require public CAPTCHA: Wymagaj weryfikacji CAPTCHA dla nowych zdarzeñ dostêpnych publicznie
 uac-enabled-help: W³±cza kontrolê dostêpu z poziomu u¿ytkownika
 UAC enabled: W³±cz kontrolê dostêpu u¿ytkownika
@@ -324,9 +324,9 @@ Category Icon Upload enabled: U¿ytkownicy mog± wysy³aæ w³asne ikonki dla kategor
 Requires: Wymaga
 folder to exist: istnienia katalogu
 (Requires XXX folder to exist.): (Wymaga istnienia katalogu XXX.)
-display-tasks-help: Wy¶wietlaj okienka z krótkimi listami zadañ w widoku kalendarzowym miesi±ca oraz dnia
+display_tasks_help: Wy¶wietlaj okienka z krótkimi listami zadañ w widoku kalendarzowym miesi±ca oraz dnia
 Display small task list: Wy¶wietlaj krótkie listy zadañ
-display-tasks-in-grid-help: Wy¶wietlaj tak¿e zadania w kalendarzach
+display_tasks_in_grid_help: Wy¶wietlaj tak¿e zadania w kalendarzach
 Display tasks in Calendars: Wy¶wietlaj zadania w kalendarzach
 allow-external-users-help: Pozwala na dodawanie u¿ytkowników bez kalendarzy (zewnetrznych), mo¿na dzieki temu wprowadzaæ ich do listy do listy wspó³uczestników
 Allow external users: Zezwalaj na zewnetrznych u¿ytkowników
@@ -340,10 +340,10 @@ use-blacklist-help: W³±cz limity dostêpu do kalendarza wzglêdem adresów IP
 Restrict self-reg to blacklist: W³±cz czarn± listê IP
 allow-self-reg-full-help: Pozwól nowym u¿ytkownikom na dokoñczenie procesu rejestracji online.
 send self-reg emails: W³±cz zabezpieczenia email podczas samodzielnej rejestracji (antyspam)
-allow-attachment-help: Zezwala uzytkownikom na dodawania za³±czników do zdarzeñ.
+allow_attachment_help: Zezwala uzytkownikom na dodawania za³±czników do zdarzeñ.
 Allow event attachments: Zezwól na za³±czniki w zdarzeniach
 owner can attach if enabled: Je¶li w³±czone, Administrator i w³a¶ciciel bêd± mogli dodawaæ za³±czniki.
-allow-comments-help: Pozwól u¿ytkownikom dodawaæ komentarze do zdarzeñ.
+allow_comments_help: Pozwól u¿ytkownikom dodawaæ komentarze do zdarzeñ.
 Allow event comments: Zezwól na komentarze do zdarzeñ
 owner can comment if enabled: Je¶li w³±czone, administrator i w³a¶ciciel mog± zawsze dodaæ komentarz.
 email-enabled-help: W³±cza wysy³anie emaili z informacjami i przypominaczami. Ustaw "nie", je¶li Twój serwer nie jest odpowiednio skonfigurowany do wysy³ania poczty.
@@ -367,19 +367,19 @@ email-format: Okre¶l preferowany format dla wiadomo¶ci email: HTML lub zwyk³y te
 Email format preference: Ustawienie preferowanego formatu dla wiadomo¶ci email
 HTML: =
 Plain Text: Zwyk³y tekst
-email-include-ics: Do³±czaj plik w formacie iCalendar (.ics) do wiadomo¶ci email
+email_attach_ics: Do³±czaj plik w formacie iCalendar (.ics) do wiadomo¶ci email
 Include iCalendar attachments: Stosuj za³±czniki iCalendar
-email-event-reminders-help: Ustala czy wysy³aæ przypominacze
+email_reminder_help: Ustala czy wysy³aæ przypominacze
 Event reminders: Wysy³aj przypominacze
-email-event-added: Ustala czy wysy³aæ informacje o dodaniu zdarzenia
+email_event_added: Ustala czy wysy³aæ informacje o dodaniu zdarzenia
 Events added to my calendar: Wysy³aj przypominacze o dodaniu nowego zdarzenia
-email-event-updated: Ustala czy wysy³aæ informacje o modyfikacji zdarzenia
+email_event_added: Ustala czy wysy³aæ informacje o modyfikacji zdarzenia
 Events updated on my calendar: Wysy³aj przypominacze o modyfikacji istniej±cego zdarzenia
-email-event-deleted: Ustala czy wysy³aæ informacje o usunieciu zdarzenia
+email_event_deleted: Ustala czy wysy³aæ informacje o usunieciu zdarzenia
 Events removed from my calendar: Wysy³aj przypominacze o usunieciu istniej±cego zdarzenia
-email-event-rejected: Ustala czy wysy³aæ informacje o odrzuceniu zdarzenia przez wspó³uczestnika
+email_event_rejected: Ustala czy wysy³aæ informacje o odrzuceniu zdarzenia przez wspó³uczestnika
 Event rejected by participant: Wysy³aj przypominacze o odrzuceniu istniej±cego zdarzenia
-email-event-create: Ustala, czy autor wpisu otrzyma zawiadomienie email
+email_event_create: Ustala, czy autor wpisu otrzyma zawiadomienie email
 Event that I create: Zdarzenie utworzone przeze mnie
 Color options: Opcje kolorów
 Allow user to customize colors: Pozwala u¿ytkownikowi na wybór kolorów

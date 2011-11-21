@@ -80,19 +80,19 @@ Help: Yardim
 Language: Lisan
 None: Hic
 Week starts on: Hafta baslangici
-time-format-help: Hangi saat özelligi kullanildigini gösterir:<br><i>12-saatlik:</i> Saati 3am, 8:30pm vs. diye gösterir.<br><i>24-saatlik:</i> Saati 3.00, 20.30 vs. diye gösterir.
+time_format_help: Hangi saat özelligi kullanildigini gösterir:<br><i>12-saatlik:</i> Saati 3am, 8:30pm vs. diye gösterir.<br><i>24-saatlik:</i> Saati 3.00, 20.30 vs. diye gösterir.
 Time format: Saat
 12 hour: 12-saatlik
 24 hour: 24-saatlik
 Duration: Zaman
-work-hours-help: Zaman bölüntüsü Günlük görünüm icin.
+work_hours_help: Zaman bölüntüsü Günlük görünüm icin.
 Work hours: Calisma zamani
 From: Kimden
 to: Kime
 Preferred view: Asil kullanim/gösteri
-display-week-number-help: Kacinci Hafta oldugunu (1-52) Aylik ve Haftalik görünümlerinde gösterir.
+display_weeknumber_help: Kacinci Hafta oldugunu (1-52) Aylik ve Haftalik görünümlerinde gösterir.
 Display week number: Kacinci Hafta
-display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<br> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<br> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir.
+display_unapproved_help: Onaylanmamis Terminler Takviminizde görülsünmü.<br> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<br> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir.
 Display unapproved: Onaylanmamis Termin'leri gör
 Yes: Evet
 No: Hayir

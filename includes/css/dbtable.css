@@ -1,0 +1,9 @@
+// $Id$
+
+table table td {
+  padding:2px;
+}
+
+table table table td {
+  padding:0;
+}

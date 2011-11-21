@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 10-31-2011
+# Translation last updated on 11-21-2011
 
 PROGRAM_NAME: WebCalendar
 PROGRAM_VERSION: v1.3.0
@@ -49,15 +49,6 @@ __month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
 __month__ __dd__: __month__ __dd__
 __month__ __yyyy__: __month__ __yyyy__
 __mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
-
-########################################
-# Page: about.php
-#
-Title: WebCalendar
-version XXX: vXXX
-WebCalendar a PHP app: WebCalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
-Credits: Credits
-About: About
 
 ########################################
 # Page: access.php
@@ -113,27 +104,28 @@ NUCs: NonUser Calendars
 Other: Other
 Email: Email
 Colors: Colors
+Document title: Document title:
 Document BG: Document background
-Table cell BG: Table cell background
-Document title: Document title
-Table cell events BG: Table cell background for days with events
-My event text: My event text
-Table cell other month BG: Table cell background for other month
-Event popup BG: Event popup background
-Event popup text: Event popup text
-Table grid color: Table grid color
-Document text: Document text
-Table header BG: Table header background
-Table header text: Table header text
-Table cell today BG: Table cell background for current day
-Table cell weekends BG: Table cell background for weekends
-Week number color: Week number color
+Document text: Document text:
+My event text_: My event text:
+Table header BG: Table header background:
+Table header text: Table header text:
+Table grid color: Table grid color:
+Table cell BG: Table cell background:
+Table cell events BG: Table cell background for days with events:
+Table cell other month BG: Table cell background for other month:
+Table cell today BG: Table cell background for current day:
+Table cell weekends BG: Table cell background for weekends:
+Event popup BG: Event popup background:
+Event popup text: Event popup text:
+Week number color: Week number color:
 System Settings: System Settings
 System options: System options
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page. The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name:
+Title: WebCalendar
 Translated Name (XXX): Translated Name (XXX)
-server-url-help: Specifies the base URL for the application. This will be included when sending out email reminders and notifications.
+server_url_help: Specifies the base URL for the application. This will be included when sending out email reminders and notifications.
 Server URL: Server URL:
 home-url-help: Specifies the home URL for the application. This can be an absolute or relative
 Home URL: Home URL:
@@ -146,122 +138,122 @@ Themes_: Themes:
 AVAILABLE THEMES: AVAILABLE THEMES
 Preview: Preview
 Site customization: Site customization
-custom-script-help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
-Custom script/stylesheet: Custom script/stylesheet:
-custom-header-help: Allows a custom HTML snippet to be included in the top of every page.
+custom_script_help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+Custom script: Custom script/stylesheet:
+custom_header_help: Allows a custom HTML snippet to be included in the top of every page.
 Custom header: Custom header:
-custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
+custom_trailer_help: Allows a custom HTML snippet to be included at the end of every page.
 Custom trailer: Custom trailer:
-enable-external-header-help: Allows the custom trailer to be loaded from an external file
+allow_external_header_help: Allows the custom trailer to be loaded from an external file
 externals head/script/trail: Allow external file for header/script/trailer:
 may user override head/trail: Allow user to override header/trailer:
 Date and Time: Date and Time
-server-tz-help: Specifies how many hours to adjust the time from UTC to server time.
+server_tz_help: Specifies how many hours to adjust the time from UTC to server time.
 Server TZ Selection: Server Timezone Selection
-tz-help: Specifies how many hours to adjust the time from UTC to local time.
+tz_help: Specifies how many hours to adjust the time from UTC to local time.
 Default Client TZ Selection: Default Client Timezone Selection:
-display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
+display_general_use_gmt_help: If enabled, common dates/times are displayed as GMT
 GMT Common Use Date/Times: Display Common Use Date/Times as GMT:
-date-format-help: Specifies the preferred date format.
+date_format_help: Specifies the preferred date format.
 Date format: Date format:
 Small Task Date: Small Task Date
-display-week-starts-on: Specifies day of week that the week starts on. If Monday is specified, then week numbers will be ISO week numbers.
+display_week_starts_on: Specifies day of week that the week starts on. If Monday is specified, then week numbers will be ISO week numbers.
 Week starts on: Week starts on:
-display-weekend-starts-on: Sets the day of the week for weekends to start
+display_weekend_starts_on: Sets the day of the week for weekends to start
 Weekend starts on: Weekend starts on:
-time-format-help: Specifies which time format to use:<br><em>12 hour:</em> Display times as 3am, 8:30pm, etc.<br><em>24 hour:</em> Display times as 300, 2030, etc.
+time_format_help: Specifies which time format to use:<br><em>12 hour:</em> Display times as 3am, 8:30pm, etc.<br><em>24 hour:</em> Display times as 300, 2030, etc.
 Time format: Time format:
 12 hour: 12 hour
 24 hour: 24 hour
-timed-evt-len-help: Specifies input method for determining the length of a timed event.
+timed_evt_len_help: Specifies input method for determining the length of a timed event.
 Specify timed event length by: Specify timed event length by:
 Duration: Duration:
 End Time: End Time:
-work-hours-help: Specifies the time range to display for the day view.
+work_hours_help: Specifies the time range to display for the day view.
 Work hours: Work hours:
 From: From
 to: to
 Appearance: Appearance
-preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
+preferred_view_help: Specifies the default view (Day, Week, Month, or Year).
 Preferred view: Preferred view:
 Allow top menu: Allow top menu:
 Date Selectors position: Date Selectors position:
-menu-themes-help: Sets the colors and style of the top menu
+menu_themes_help: Sets the colors and style of the top menu
 Menu theme: Menu theme:
-fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+fonts_help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
 Fonts: Fonts:
-display-sm_month-help: If enabled, displays small months in month views
+display_sm_month_help: If enabled, displays small months in month views
 Display small months: Display small months:
-display-weekends-help: Include weekends when viewing a week.
+display_weekends_help: Include weekends when viewing a week.
 Display weekends: Display weekends:
-display-long-daynames-help: If enabled, long day names are displayed
+display_long_days_help: If enabled, long day names are displayed
 Display long day names: Display long day names:
-display-alldays-help: Display previous and next months days in month views, filling all cells.
+display_all_days_in_month_help: Display previous and next months days in month views, filling all cells.
 Display all days in month view: Display all days in month view:
-display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month and week views.
+display_weeknumber_help: Specifies whether the week number (1-52) should be displayed in the month and week views.
 Display week number: Display week number:
-display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
+display_desc_print_day_help: Include event descriptions in printer-friendly version of day view.
 desc in printer day view: Display description in printer day view:
-yearly-shows-events-help: On the yearly view, display days that contain events in a bold font.
+display_bold_days_in_year_help: On the yearly view, display days that contain events in a bold font.
 bold events month/year views: Display days with events in bold in month and year views:
-display-minutes-help: If enabled, minutes ending with :00 will always be displayed
+display_minutes_help: If enabled, minutes ending with :00 will always be displayed
 Display 00 minutes always: Display 00 minutes always:
-display-end-times-help: Display event end times if timed event
+display_end_times_help: Display event end times if timed event
 Display end times on calendars: Display end times on calendars:
-allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+display_add_link_in_views_help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
 Include add event link in views: Include add event link in views:
-lunar-help: If enabled, will display small icons representing the lunar phases each month
+display_moon_phases_help: If enabled, will display small icons representing the lunar phases each month
 Display Lunar Phases in month view: Display Lunar Phases in month view:
 Restrictions: Restrictions
-allow-view-other-help: Specifies whether one user may view another user's calendar.
+allow_view_other_help: Specifies whether one user may view another user's calendar.
 may view others cals: Allow viewing other user's calendars:
-require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled). Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+require_approvals_help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled). Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
 Require event approvals: Require event approvals:
-display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+display_unapproved_help: Specifies whether unapproved events are displayed in your calendar.<br> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: Display unapproved:
-conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person). If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done. You probably want to set this to "Yes", so conflict checking occurs.
+allow_conflicts_help: Check for event conflicts (two events scheduled for the same time for the same person). If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done. You probably want to set this to "Yes", so conflict checking occurs.
 Check for conflicts: Check for event conflicts:
-conflict-months-help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts. If you find adding events is taking a long time to process, reduce this number.
+conflict_months_help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts. If you find adding events is taking a long time to process, reduce this number.
 Conflict checking months: Conflict checking months:
-conflict-check-override-help: Allows users to override event conflicts and schedule two or more events for the same time.
+allow_conflict_override_help: Allows users to override event conflicts and schedule two or more events for the same time.
 may users override conflicts: Allow users to override conflicts:
-limit-appts-help: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+limit_appts_help: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
 Limit timed events per day: Limit number of timed events per day:
-limit-appts-number-help: Specifies the maximum number of timed events a user can have in a single day.
+limit_appts_number_help: Specifies the maximum number of timed events a user can have in a single day.
 Maximum timed events per day: Maximum timed events per day:
-crossday-help: If enabled, events that span days will be displayed on separate days
+disable_crossday_events_help: If enabled, events that span days will be displayed on separate days
 Disable Cross-Day Events: Disable Cross-Day Events:
-disable-location-field-help: Selecting "Yes" will remove the "Location" field from event information pages
+disable_location_field_help: Selecting "Yes" will remove the "Location" field from event information pages
 Disable Location field: Disable Location field:
-disable-url-field-help: Selecting "Yes" will remove the "URL" field from event information pages
+disable_url_field_help: Selecting "Yes" will remove the "URL" field from event information pages
 Disable URL field: Disable URL field:
-disable-priority-field-help: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+disable_priority_field_help: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
 Disable Priority field: Disable Priority field:
-disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
+disable_access_field_help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
 Disable Access field: Disable Access field:
-disable-participants-field-help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events. If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+disable_participants_field_help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events. If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
 Disable Participants field: Disable Participants field:
-disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events. This will provide a simpler interface for novices.
+disable_repeating_field_help: Selecting "Yes" will remove the "Repeating" field when adding events. This will provide a simpler interface for novices.
 Disable Repeating field: Disable Repeating field:
-allow-html-description-help: If enabled, users can enter HTML in the event description field. If not enabled, the HTML tags will be escaped so as to appear as plain text. Warning: Enabling this feature will allow users to reference images on other websites.
+allow_html_description_help: If enabled, users can enter HTML in the event description field. If not enabled, the HTML tags will be escaped so as to appear as plain text. Warning: Enabling this feature will allow users to reference images on other websites.
 Allow HTML in Description: Allow HTML in Description:
 Popups: Popups
-disable-popups-help: Disable popups from calendar views
+disable_popups_help: Disable popups from calendar views
 Disable Pop-Ups: Disable Pop-Ups:
-popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+site_extras_in_popup_help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
 Display Site Extras in popup: Display Site Extras in popup:
-popup-includes-participants-help: If enabled, participants are displayed in event popups.
+participants_in_popup_help: If enabled, participants are displayed in event popups.
 Display Participants in popup: Display Participants in popup:
 Miscellaneous: Miscellaneous
-remember-last-login-help: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
+remember_last_login_help: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
 Remember last login: Remember last login:
-summary_length-help: Maximum length of Brief Description in calendar views
+summary_length_help: Maximum length of Brief Description in calendar views
 Brief Description Length: Brief Description Length:
-user_sort-help: Determines sort order for User, Nonuser lists
+user_sort_help: Determines sort order for User, Nonuser lists
 User Sort Order: User Sort Order:
 Lastname, Firstname: Lastname, Firstname
 Firstname, Lastname: Firstname, Lastname
-allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+allow_public_access_help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
 Allow public access: Allow public access:
 public-access-default-visible: Events from the public calendar will automatically appear on all users' calendars
 Public visible by default: Public access visible by default:
@@ -279,7 +271,7 @@ public-access-override-help: Allows event names and descriptions to be hidden on
 Override public event name/desc: Override event name/description for public access:
 public-access-override-text-help: The text to display if the above option is enabled. If 'Not Available', it will be translated.
 public text display: Text to display to public access:
-public-access-captcha-help: If enabled, new events added by Public require passing a CAPTCHA validation.
+public_access_captcha_help: If enabled, new events added by Public require passing a CAPTCHA validation.
 require public CAPTCHA: Require CAPTCHA validation for public access new events:
 uac-enabled-help: Enables user-level access control
 UAC enabled: User Access Control enabled
@@ -292,17 +284,17 @@ NUCs enabled: Nonuser Calendars Enabled:
 nonuser-list-help: Where to display the nonuser calendars in the participant list
 list NUCs at: Display in participants list at:
 Upcoming Events: Upcoming Events
-upcoming-events-help: Enable upcoming.php
+upcoming_events_help: Enable upcoming.php
 Enabled_: Enabled:
-upcoming-events-allow-override: Allow user paramter for upcoming.php
+upcoming_events_allow_override: Allow user paramter for upcoming.php
 Allow user override: Allow user override:
-upcoming-events-display-caticons: Include category icons in upcoming.php
+upcoming_events_display_caticons: Include category icons in upcoming.php
 Display category icons: Display category icons:
-upcoming-events-display-layers: Display layers in upcoming.php
+upcoming_events_display_layers: Display layers in upcoming.php
 Display layers: Display layers:
-upcoming-events-display-links: Display links in upcoming.php
+upcoming_events_display_links: Display links in upcoming.php
 Display links to events: Display links to events:
-upcoming-events-display-popups: Display event popups in upcoming.php
+upcoming_events_display_popups: Display event popups in upcoming.php
 Display event popups: Display event popups:
 reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports. Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
 Reports enabled: Reports enabled:
@@ -316,10 +308,10 @@ categories-enabled-help: Enables support for event categories.
 Categories enabled: Categories enabled:
 icon_upload-enabled-help: If enabled, users can upload category icons
 Category Icon Upload enabled: Category Icon Upload enabled:
-(Requires XXX folder to exist.): (Requires XXX folder to exist.)
-display-tasks-help: Display small task window on month and day calendar
+(Requires XXX folder to exist.): (Requires "XXX" folder to exist.)
+display_tasks_help: Display small task window on month and day calendar
 Display small task list: Display small task list:
-display-tasks-in-grid-help: Display tasks in calendars along with events
+display_tasks_in_grid_help: Display tasks in calendars along with events
 Display tasks in Calendars: Display tasks in Calendars:
 allow-external-users-help: Specifies whether a non-calendar user can be added to an event. This allows non-calendar users to be listed as event participants.
 Allow external users: Allow external users:
@@ -333,12 +325,12 @@ use-blacklist-help: Limit access to WebCalendar functions based on IP address
 Restrict self-reg to blacklist: Restrict self-registration to blacklist:
 allow-self-reg-full-help: Allow new users to complete the self-registration process on-line
 send self-reg emails: Generate passwords and send to new users:
-allow-attachment-help: Allow users to add file attachments to events.
+allow_attachment_help: Allow users to add file attachments to events.
 Allow event attachments: Allow users to add file attachments to events:
-owner can attach if enabled: <strong>Note:</strong> Admin and owner can always add attachments if enabled.
-allow-comments-help: Allow users to add comments to events.
+owner can attach if enabled: <strong>Note:</strong> Admin and owner can always add attachments if enabled.<br>
+allow_comments_help: Allow users to add comments to events.
 Allow event comments: Allow users to add comments to events:
-owner can comment if enabled: <strong>Note:</strong> Admin and owner can always add comments if enabled.
+owner can comment if enabled: <strong>Note:</strong> Admin and owner can always add comments if enabled.<br>
 email-enabled-help: Turn on or off all sending of email for notification and reminders. Set to "no", if your server is not properly setup to send mail.
 Email enabled: Email enabled:
 email-default-sender: Specifies the email address to specify as the sender when sending out reminders.
@@ -360,19 +352,19 @@ email-format: Specify preference for HTML or plain text messages
 Email format preference: Email format preference:
 HTML: HTML
 Plain Text: Plain Text
-email-include-ics: Include an iCalendar ICS file to email message
+email_attach_ics: Include an iCalendar ICS file with email message.
 Include iCalendar attachments: Include iCalendar attachments:
-email-event-reminders-help: Specifies whether or not to send event reminders.
+email_reminder_help: Specifies whether or not to send event reminders.
 Event reminders: Event reminders:
-email-event-added: Specifies whether or not to send email notifications when an event is added to your calendar.
+email_event_added: Specifies whether or not to send email notifications when an event is added to your calendar.
 Events added to my calendar: Events added to my calendar:
-email-event-updated: Specifies whether or not to send email notifications when an event is updated on your calendar.
+email_event_updated: Specifies whether or not to send email notifications when an event is updated on your calendar.
 Events updated on my calendar: Events updated on my calendar:
-email-event-deleted: Specifies whether or not to send email notifications when an event is removed from your calendar.
+email_event_deleted: Specifies whether or not to send email notifications when an event is removed from your calendar.
 Events removed from my calendar: Events removed from my calendar:
-email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
+email_event_rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
 Event rejected by participant: Event rejected by participant:
-email-event-create: Specifies whether the creator of entries will receive an email
+email_event_create: Specifies whether the creator of entries will receive an email
 Event that I create: Event that I create:
 Color options: Color options
 Allow user to customize colors: Allow user to customize colors:
@@ -489,7 +481,6 @@ Basic Colors: Basic Colors
 Current Color: Current Color
 Custom Colors: Custom Colors
 Old Color: Old Color
-OK: OK
 
 ########################################
 # Page: combo.php
@@ -609,7 +600,6 @@ end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time:
 Due Time: Due Time:
 Site Extras: Site Extras
-Add: Add
 avail_participants-help: Lists the available participants of this entry.
 Available: Available
 Find Name: Find Name
@@ -697,6 +687,7 @@ conflicts with existing entries: conflicts with the following existing calendar 
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
+Add: Add
 word characters only: (can only contain word characters; [a-zA-Z_0-9])
 Add User: Add User
 Edit User: Edit User
@@ -774,7 +765,6 @@ Template variables: Template variables
 Page template_: Page template:
 Day template_: Day template:
 Event template_: Event template:
-really delete report: Are you sure you want to delete this report?
 
 ########################################
 # Page: edit_report_handler.php
@@ -988,12 +978,6 @@ Can See Time Only_: Can See Time Only:
 If enabled user cant see details: If enabled, this user cannot view the details of any of your entries.
 
 ########################################
-# Page: icalclient.php
-#
-Publishing Disabled (Admin): Publishing Disabled (Admin)
-Publishing Disabled (User): Publishing Disabled (User)
-
-########################################
 # Page: icons.php
 #
 Click to Select: Click to Select
@@ -1086,16 +1070,8 @@ recipients_failed: SMTP Error: The following recipients failed:
 You are not authorized.: You are not authorized.
 
 ########################################
-# Page: includes/classes/captcha/captcha.php
-#
-Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
-Enter the correct letters and numbers...: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read
-Challenge/Response: Challenge/Response
-
-########################################
 # Page: includes/config.php
 #
-WebCal: WebCalendar
 settings.php not found: Could not find "settings.php" file.<br>Please copy "settings.php.orig" to "settings.php" and edit for your site.
 Incomplete settings.php: Your "settings.php" file is incomplete. Please compare "settings.php.orig" to "settings.php" and add the missing items with the appropriate information for your site.
 Could not find XXX defined in...: "XXX" is not defined in your "settings.php" file.
@@ -1170,6 +1146,7 @@ Journal updated: Journal updated
 Task updated: Task updated
 Delete User: Delete User
 WK: WK
+My event text: My event text
 -Assistant mode-: -- Assistant mode --
 TASKS: TASKS
 Task_Title: Title
@@ -1277,13 +1254,13 @@ Server URL must end with /.: Server URL must end with a slash (/).
 Invalid work hours.: Invalid work hours.
 Error XXX: Error: "XXX".
 Invalid doc BG color: Invalid color for document background.
-Invalid doc title color: Invalid color for document title.
 Invalid table cell BG color: Invalid color for table cell background.
+Invalid doc title color: Invalid color for document title.
+Invalid popup BG color: Invalid color for event popup background.
+Invalid popup text color: Invalid color for event popup text.
 Invalid table grid color: Invalid color for table grid.
 Invalid table header BG color: Invalid color for table header background.
 Invalid table head text color: Invalid color for table header text.
-Invalid popup BG color: Invalid color for event popup background.
-Invalid popup text color: Invalid color for event popup text.
 Invalid table cell today BG: Invalid color for table cell background for today.
 Color format should be RGB: Color format should be #RRGGBB.
 
@@ -1305,18 +1282,18 @@ No such object for YMD XXX: No such object for YMD XXX
 ########################################
 # Page: includes/js/edit_entry.js
 #
+Invalid Date: Invalid Date
 must enter valid time: You have not entered a valid time of day.
+Please add a participant: Please add a participant
+must enter Brief Description: You must enter a Brief Description.
+time before work hours: The time you have entered begins before your preferred work hours. Is this correct?
+Invalid Event Date: Invalid Event Date
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-must enter Brief Description: You must enter a Brief Description.
-time before work hours: The time you have entered begins before your preferred work hours. Is this correct?
-Invalid Event Date: Invalid Event Date
-Please add a participant: Please add a participant
-Invalid Date: Invalid Date
-Could not find XXX in DOM.: Could not find XXX in DOM.
 Could not find XXX.: Could not find "XXX".
+Could not find XXX in DOM.: Could not find XXX in DOM.
 
 ########################################
 # Page: includes/js/edit_nonuser.php
@@ -1331,6 +1308,11 @@ Invalid color: Invalid color
 no blank URLs: Error: URL cannot be blank.
 
 ########################################
+# Page: includes/js/edit_report.js
+#
+really delete report: Are you sure you want to delete this report?
+
+########################################
 # Page: includes/js/edit_user.php
 #
 Error_: Error:&nbsp;
@@ -1343,11 +1325,15 @@ Import Format type mismatch: File type does not match Import Format
 ########################################
 # Page: includes/js/index.js
 #
-Invalid Color: Invalid Color
 specify Single-User login: Error: You must specify a\nSingle-User Login.
 Database Name: Database Name:
 Full Path (no backslashes): Full Path (no backslashes)
 illegal chars in password: The password contains illegal characters.
+
+########################################
+# Page: includes/js/login.js
+#
+must enter login/password: You must enter a login and password.
 
 ########################################
 # Page: includes/js/view_entry.js
@@ -1397,6 +1383,22 @@ Manage calendar of: Manage calendar of:
 ########################################
 # Page: includes/translate.php
 #
+Admin: Admin
+Invalid entry id XXX.: Invalid entry id: "XXX".
+Category_: Category:
+Double-click to add entry: Double-click on empty cell to add new entry.
+DB error XXX: Database error: "XXX".
+Global: Global
+Next: Next
+No: No
+No users for view: No users for this view.
+OK: OK
+Previous: Previous
+Select: Select
+Settings: Settings
+URL: URL:
+Yes: Yes
+WebCal: WebCalendar
 Browser Language Not Found: Browser Language Not Found
 (not supported): (not supported)
 English: English
@@ -1457,20 +1459,6 @@ journal: journal
 9: 9
 9,999.99: 9,999.99
 time is 140000: The time is now 14:00:00
-Admin: Admin
-Invalid entry id XXX.: Invalid entry id: "XXX".
-Category_: Category:
-Double-click to add entry: Double-click on empty cell to add new entry.
-DB error XXX: Database error: "XXX".
-Global: Global
-Next: Next
-No: No
-No users for view: No users for this view.
-Previous: Previous
-Select: Select
-Settings: Settings
-URL: URL:
-Yes: Yes
 
 ########################################
 # Page: includes/user-imap.php
@@ -1680,7 +1668,6 @@ Reject Selected entries?: Reject Selected entries?
 ########################################
 # Page: login-app.php
 #
-must enter login/password: You must enter a login and password.
 Save login via cookies: Save login via cookies so I don't have to login next time
 public: public
 Access XXX calendar: Access XXX calendar
@@ -1693,7 +1680,7 @@ Illegal chars in login XXX: Illegal characters in login <tt>XXX</tt>.
 Activity login failure: Username: "XXX", IP: "YYY".
 You logged out: You have been logged out.
 Access public calendar: Access public calendar
-Not registered: Not yet registered? Register here!
+Not registered: <b>Not yet registered? Register here!</b>
 
 ########################################
 # Page: minical.php
@@ -1715,15 +1702,16 @@ No such nonuser calendar: No such nonuser calendar
 ########################################
 # Page: pref.php
 #
+Modify NUC Preferences: Modify Non User Calendar Preferences
+Public Access calendar: Public Access calendar
+Return to My Preferences: Return to My Preferences
+Multiview: Multiview
+Public Access Preferences: Public Access Preferences
 Admin mode XXX: <strong>-- Admin mode: XXX --</strong>
 Save Preferences: Save Preferences
-Public Access calendar: Public Access calendar
-Modify NUC Preferences: Modify Non User Calendar Preferences
-Return to My Preferences: Return to My Preferences
 Themes: Themes
 Custom Scripts: Custom Scripts
 Timezone Selection: Timezone Selection:
-Multiview: Multiview
 entry-interval-help: Sets minute interval when editing entry times
 Entry interval: Entry interval:
 theme-reload-help: Due to CSS caching, a page reload may be required
@@ -1807,8 +1795,7 @@ Manage Reports: Manage Reports
 Advanced Search: Advanced Search
 Keywords: Keywords:
 Enter % for all entries: (Enter % for all entries)
-Include: Include
-Site Extras_: Site Extras:
+Include Site Extras: Include<br>Site Extras:
 Filter by Date: Filter by Date:
 All Dates: All Dates
 Past: Past
@@ -1903,11 +1890,6 @@ Access Private: Access Private
 Created by XXX: Created by: XXX
 XXX External User: XXX (External User)
 Reminder XXX: Reminder: XXX
-
-########################################
-# Page: upcoming.php
-#
-more: more
 
 ########################################
 # Page: users.php

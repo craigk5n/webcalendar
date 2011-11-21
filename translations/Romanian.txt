@@ -109,81 +109,81 @@ System Settings: Configura&#355;ie de sistem
 Help: Ajutor
 app-name-help: Specific&#259; numele aplica&#355;iei care va ap&#259;rea &#238;n bara de titlu a browserului pentru toate paginile &#351;i pentru pagina de login. Valoarea specificat&#259; aici va fi c&#259;utat&#259; &#238;n dic&#355;ionar &#238;n a&#351;a fel &#238;nc&#226;t se pot folosi titluri diferite pentru diferite limbi.
 Application Name: Numele aplica&#355;iei
-server-url-help: Specific&#259; URL-ul de baz&#259; al aplica&#355;iei. Acesta va fi inclus c&#226;nd vor fi trimise aduceri-aminte sau notificari prin email.
+server_url_help: Specific&#259; URL-ul de baz&#259; al aplica&#355;iei. Acesta va fi inclus c&#226;nd vor fi trimise aduceri-aminte sau notificari prin email.
 Server URL: URL-ul serverului
 language-help: Specific&#259; ce limba s&#259; se foloseasc&#259;.
 Language: Limba
 Your browser default language is: Limba implicit&#259; a browserului t&#259;u este
 None: Nici una
-custom-script-help: Permite ad&#259;ugarea de text javascript/stylesheet care s&#259; fie inserat in sec&#355;iunea "head" a HTML-ului fiec&#259;rei pagini.
-Custom script/stylesheet: Folose&#351;te un script/stylesheet propriu
-custom-header-help: Permite ad&#259;ugarea unui fragment de HTML la &#238;nceputul fiecarei pagini.
+custom_script_help: Permite ad&#259;ugarea de text javascript/stylesheet care s&#259; fie inserat in sec&#355;iunea "head" a HTML-ului fiec&#259;rei pagini.
+Custom script: Folose&#351;te un script/stylesheet propriu
+custom_header_help: Permite ad&#259;ugarea unui fragment de HTML la &#238;nceputul fiecarei pagini.
 Custom header: Header propriu
-custom-trailer-help: Permite ad&#259;ugarea unui fragment de HTML la sf&#226;r&#351;itul fiecarei pagini.
+custom_trailer_help: Permite ad&#259;ugarea unui fragment de HTML la sf&#226;r&#351;itul fiecarei pagini.
 Custom trailer: Trailer propriu
-tz-help: Specific&#259; cu c&#238;te ore s&#259; trebuie ajustat&#259; ora serverului pentru ora local&#259;.
-date-format-help: Specific&#259; formatul preferat pentru dat&#259;.
+tz_help: Specific&#259; cu c&#238;te ore s&#259; trebuie ajustat&#259; ora serverului pentru ora local&#259;.
+date_format_help: Specific&#259; formatul preferat pentru dat&#259;.
 Date format: Formatul datei
-display-week-starts-on: Specific&#259; dac&#259; s&#259;pt&#259;m&#226;na &#238;ncepe duminica sau lunea. Dac&#259; "Luni" este specificat, atunci numerele s&#259;pt&#259;m&#226;nilor vor fi numerele ISO.
+display_week_starts_on: Specific&#259; dac&#259; s&#259;pt&#259;m&#226;na &#238;ncepe duminica sau lunea. Dac&#259; "Luni" este specificat, atunci numerele s&#259;pt&#259;m&#226;nilor vor fi numerele ISO.
 Week starts on: S&#259;pt&#259;m&#226;na &#238;ncepe
-time-format-help: Specific&#259; ce format s&#259; se foloseasc&#259;:<br><i>12 ore:</i> Afi&#351;eaz&#259; orele ca 3am, 8:30pm, etc.<br><i>24 ore:</i> Afi&#351;eaz&#259; orele ca 300, 2030, etc.
+time_format_help: Specific&#259; ce format s&#259; se foloseasc&#259;:<br><i>12 ore:</i> Afi&#351;eaz&#259; orele ca 3am, 8:30pm, etc.<br><i>24 ore:</i> Afi&#351;eaz&#259; orele ca 300, 2030, etc.
 Time format: Formatul orei
 12 hour: 12 ore
 24 hour: 24 ore
-timed-evt-len-help: Specific&#259; metoda de determinare a duratei unui eveniment programat.
+timed_evt_len_help: Specific&#259; metoda de determinare a duratei unui eveniment programat.
 Specify timed event length by: Specific&#259; durata unui eveniment prin
 Duration: Durat&#259;
 End Time: Ora de &#238;ncheiere
-work-hours-help: Specific&#259; intervalul de timp afi&#351;at dintr-o zi
+work_hours_help: Specific&#259; intervalul de timp afi&#351;at dintr-o zi
 Work hours: Ore de munc&#259;
 From: De la
 to: p&#226;n&#259; la
-preferred-view-help: Specific&#259; vizualizarea implicit&#259; (zi, s&#259;pt&#259;m&#226;na, lun&#259; sau an).
+preferred_view_help: Specific&#259; vizualizarea implicit&#259; (zi, s&#259;pt&#259;m&#226;na, lun&#259; sau an).
 Preferred view: Vizualizarea preferat&#259;
-fonts-help: Specific&#259; o list&#259; a fonturilor care pot fi folosite (de exemplu "Arial, Helvetica")
+fonts_help: Specific&#259; o list&#259; a fonturilor care pot fi folosite (de exemplu "Arial, Helvetica")
 Fonts: Fonturi
-display-weekends-help: Include weekendurile &#238;n s&#259;pt&#259;m&#226;na.
-display-week-number-help: Specific&#259; dac&#259; numarul s&#259;pt&#259;m&#226;nii (1-52) s&#259; va fi ar&#259;tat &#238;n vizualiz&#259;rile lunar&#259; &#351;i s&#259;pt&#259;m&#226;nal&#259;.
+display_weekends_help: Include weekendurile &#238;n s&#259;pt&#259;m&#226;na.
+display_weeknumber_help: Specific&#259; dac&#259; numarul s&#259;pt&#259;m&#226;nii (1-52) s&#259; va fi ar&#259;tat &#238;n vizualiz&#259;rile lunar&#259; &#351;i s&#259;pt&#259;m&#226;nal&#259;.
 Display week number: Afi&#351;eaz&#259; numarul s&#259;pt&#259;m&#226;nii
-display-desc-print-day-help: Include descrierea evenimentului &#238;n versiunea pentru tip&#259;rit a vizualizarii pe zile
+display_desc_print_day_help: Include descrierea evenimentului &#238;n versiunea pentru tip&#259;rit a vizualizarii pe zile
 desc in printer day view: Afi&#351;eaz&#259; descrierea &#238;n versiunea pentru tip&#259;rit a vizualizarii pe zile
-yearly-shows-events-help: &#206;n vizualizarea pe an, afi&#351;eaza cu litere ingro&#351;ate datele cu evenimente.
+display_bold_days_in_year_help: &#206;n vizualizarea pe an, afi&#351;eaza cu litere ingro&#351;ate datele cu evenimente.
 bold events month/year views: Afi&#351;eaza cu litere &#238;ngro&#351;ate datele cu evenimente &#238;n vizualizarile lunara &#351;i anuala
-allow-view-add-help: O iconi&#355;&#259; '+' va fi inclus&#259; &#238;n vizualiz&#259;ri, permi&#355;&#226;nd utilizatorilor s&#259; adauge u&#351;or evenimente la calendarele altora.
+display_add_link_in_views_help: O iconi&#355;&#259; '+' va fi inclus&#259; &#238;n vizualiz&#259;ri, permi&#355;&#226;nd utilizatorilor s&#259; adauge u&#351;or evenimente la calendarele altora.
 Include add event link in views: Include op&#355;iunea adauga evenimente &#238;n vizualiz&#259;ri
-allow-view-other-help: Specific&#259; dac&#259; un utilizator poate s&#259; vad&#259; calendarul altuia.
+allow_view_other_help: Specific&#259; dac&#259; un utilizator poate s&#259; vad&#259; calendarul altuia.
 may view others cals: Permite vizualizarea calendarelor altor utilizatori
-require-approvals-help: C&#226;nd activat&#259;, utilizatorul trebuie s&#259; aprobe evenimentele care vor fie afi&#351;ate in calendarul sau (&#238;n afar&#259; de cazul c&#226;nd "afi&#351;eaz&#259; neaprobatele" este activat). Nepun&#226;nd aici "Nu" va dezactiva aprobarile pentru calendarul cu access public (&#238;n cazul &#238;n care calendarul cu access public este activat).
+require_approvals_help: C&#226;nd activat&#259;, utilizatorul trebuie s&#259; aprobe evenimentele care vor fie afi&#351;ate in calendarul sau (&#238;n afar&#259; de cazul c&#226;nd "afi&#351;eaz&#259; neaprobatele" este activat). Nepun&#226;nd aici "Nu" va dezactiva aprobarile pentru calendarul cu access public (&#238;n cazul &#238;n care calendarul cu access public este activat).
 Require event approvals: Necesit&#259; aprobare pentru evenimente
-display-unapproved-help: Specific&#259; daca evenimentele neaprobate sunt afi&#351;ate &#238;n calendarul t&#259;u.<br> Dac&#259; aici este "Da", atunci evenimentele neaprobate for fi afi&#351;ate &#238;n calendarul t&#259;u (intr-o alta culoare).<br> Dac&#259; aici este "Nu", atunci evenimentele neaprobate trebuie aprobate &#238;nainte de a ap&#259;rea &#238;n calendarul t&#259;u.
+display_unapproved_help: Specific&#259; daca evenimentele neaprobate sunt afi&#351;ate &#238;n calendarul t&#259;u.<br> Dac&#259; aici este "Da", atunci evenimentele neaprobate for fi afi&#351;ate &#238;n calendarul t&#259;u (intr-o alta culoare).<br> Dac&#259; aici este "Nu", atunci evenimentele neaprobate trebuie aprobate &#238;nainte de a ap&#259;rea &#238;n calendarul t&#259;u.
 Display unapproved: Afi&#351;eaz&#259; neaprobatele
-conflict-check-help: Verific&#259; dac&#259; sunt conflicte de evenimente (dou&#259; evenimente &#238;n acela&#351;i timp pentru aceea&#351;i persoan&#259;). Dac&#259; la&#351;i aici "Da", vei fii totu&#351;i capabil s&#259; programezi dou&#259; evenimente &#238;n acela&#351;i timp dar cu confirmare special&#259;. Dac&#259; pui aici "Nu", atunci nu se va verifica dac&#259; sunt conflicte. Op&#355;iunea recomandat&#259; este "Da".
+allow_conflicts_help: Verific&#259; dac&#259; sunt conflicte de evenimente (dou&#259; evenimente &#238;n acela&#351;i timp pentru aceea&#351;i persoan&#259;). Dac&#259; la&#351;i aici "Da", vei fii totu&#351;i capabil s&#259; programezi dou&#259; evenimente &#238;n acela&#351;i timp dar cu confirmare special&#259;. Dac&#259; pui aici "Nu", atunci nu se va verifica dac&#259; sunt conflicte. Op&#355;iunea recomandat&#259; este "Da".
 Check for conflicts: Verific&#259; dac&#259; sunt conflicte de evenimente
 Yes: Da
 No: Nu
-conflict-months-help: Dac&#259; se alege verificarea conflictelor ("Verific&#259; dac&#259; sunt conflicte de evenimente" este "Da"), aceast&#259; valoare specific&#259; c&#226;te luni &#238;nainte s&#259; fie verificate conflictele. Dac&#259; ad&#259;ugarea de evenimente ia prea mult timp, &#238;ncearc&#259; s&#259; reduci acest numar.
+conflict_months_help: Dac&#259; se alege verificarea conflictelor ("Verific&#259; dac&#259; sunt conflicte de evenimente" este "Da"), aceast&#259; valoare specific&#259; c&#226;te luni &#238;nainte s&#259; fie verificate conflictele. Dac&#259; ad&#259;ugarea de evenimente ia prea mult timp, &#238;ncearc&#259; s&#259; reduci acest numar.
 Conflict checking months: C&#226;te luni &#238;n viitor s&#259; fie verificate conflictele
-conflict-check-override-help: Permite utilizatorilor s&#259; &#238;ncalce conflictele de evenimente &#351;i s&#259; programeze dou&#259; sau mai multe evenimente &#238;n acela&#351;i timp.
+allow_conflict_override_help: Permite utilizatorilor s&#259; &#238;ncalce conflictele de evenimente &#351;i s&#259; programeze dou&#259; sau mai multe evenimente &#238;n acela&#351;i timp.
 may users override conflicts: Permite utilizatorilor s&#259; &#238;ncalce conflictele
-limit-appts-help: Permite ca administratorul s&#259; poat&#259; fixa o limit&#259; maxim&#259; a numarului total de evenimente pe care un utilizator le poate programa pentru o singur&#259; zi.
+limit_appts_help: Permite ca administratorul s&#259; poat&#259; fixa o limit&#259; maxim&#259; a numarului total de evenimente pe care un utilizator le poate programa pentru o singur&#259; zi.
 Limit timed events per day: Limiteaza numarul de evenimente programate pentru o singur&#259; zi
-limit-appts-number-help: Specific&#259; numarul maxim number de evenimente pe care un utilizator le poate programa &#238;ntr-o zi.
+limit_appts_number_help: Specific&#259; numarul maxim number de evenimente pe care un utilizator le poate programa &#238;ntr-o zi.
 Maximum timed events per day: Numarul de maxim de evenimente ce pot fi programate pentru o singur&#259; zi
-disable-priority-field-help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Prioritate" din paginile cu informatie despre evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
+disable_priority_field_help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Prioritate" din paginile cu informatie despre evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
 Disable Priority field: Dezactiveaz&#259; op&#355;iunea "Prioritate"
-disable-access-field-help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Acces" din paginile cu informatie despre evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
+disable_access_field_help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Acces" din paginile cu informatie despre evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
 Disable Access field: Dezactiveaz&#259; op&#355;iunea "Acces"
-disable-participants-field-help: Selectand "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Participan&#355;i" din paginile cu informa&#355;ie despre evenimente, prevenind ca utilizatorii s&#259; adauge al&#355;i utilizatori la evenimentele proprii. Dac&#259; activezi aceast&#259; op&#355;iune ar trebui s&#259; dezactivezi &#351;i op&#355;iunea "Permite vizualizarea calendarelor altor utilizatori".
+disable_participants_field_help: Selectand "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Participan&#355;i" din paginile cu informa&#355;ie despre evenimente, prevenind ca utilizatorii s&#259; adauge al&#355;i utilizatori la evenimentele proprii. Dac&#259; activezi aceast&#259; op&#355;iune ar trebui s&#259; dezactivezi &#351;i op&#355;iunea "Permite vizualizarea calendarelor altor utilizatori".
 Disable Participants field: Dezactiveaz&#259; optiunea "Participan&#355;i"
-disable-repeating-field-help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Repeti&#355;ii" c&#226;nd se adaug&#259; evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
+disable_repeating_field_help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Repeti&#355;ii" c&#226;nd se adaug&#259; evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
 Disable Repeating field: Dezactiveaz&#259; op&#355;iunea "Repeti&#355;ii"
-allow-html-description-help: C&#226;nd aceast&#259; proprietate este activat&#259;, utilizatorii pot include HTML &#238;n descrierea evenimentelor. Dezactivat&#259;, simbolurile HTML vor fi transformate in a&#351;a fel &#238;nc&#226;t s&#259; apar&#259; ca simplu text. Aten&#355;ie! Activ&#226;nd aceast&#259; proprietate permite utilizatorilor s&#259; linkeze imagini de pe alte situri.
+allow_html_description_help: C&#226;nd aceast&#259; proprietate este activat&#259;, utilizatorii pot include HTML &#238;n descrierea evenimentelor. Dezactivat&#259;, simbolurile HTML vor fi transformate in a&#351;a fel &#238;nc&#226;t s&#259; apar&#259; ca simplu text. Aten&#355;ie! Activ&#226;nd aceast&#259; proprietate permite utilizatorilor s&#259; linkeze imagini de pe alte situri.
 Allow HTML in Description: Permite HTML &#238;n descrieri
-popup-includes-siteextras-help: C&#226;nd aceast&#259; op&#355;iune este activat&#259;, permite ca op&#355;iunile speciale din site_extras.php s&#259; fie ar&#259;tate &#238;n popup-uri.
+site_extras_in_popup_help: C&#226;nd aceast&#259; op&#355;iune este activat&#259;, permite ca op&#355;iunile speciale din site_extras.php s&#259; fie ar&#259;tate &#238;n popup-uri.
 Display Site Extras in popup: Afi&#351;eaz&#259; op&#355;iunile speciale &#238;n popup-uri
-remember-last-login-help: C&#226;nd aceast&#259; proprietate este activat&#259;, numele utilizatorului va fi auto-inserat &#238;n pagina de login (dar nu &#351;i parola), iar dup&#259; login preferin&#355;ele utilizatorului vor fi &#238;nc&#259;rcate (incluz&#226;nd culorile &#351;i limba selectate).
+remember_last_login_help: C&#226;nd aceast&#259; proprietate este activat&#259;, numele utilizatorului va fi auto-inserat &#238;n pagina de login (dar nu &#351;i parola), iar dup&#259; login preferin&#355;ele utilizatorului vor fi &#238;nc&#259;rcate (incluz&#226;nd culorile &#351;i limba selectate).
 Remember last login: &#354;ine minte ultimul login
-allow-public-access-help: C&#226;nd aceast&#259; op&#355;iune este activat&#259;, calendarul este deschis publicului (doar pentru citire) iar autentificarea nu mai este necesar&#259;.
+allow_public_access_help: C&#226;nd aceast&#259; op&#355;iune este activat&#259;, calendarul este deschis publicului (doar pentru citire) iar autentificarea nu mai este necesar&#259;.
 Allow public access: Permite accesul public
 public-access-default-visible: Evenimentele din calendarul public vor aparea automat &#238;n calendarele toturor utilizatorilor.
 Public visible by default: Acces public implicit
@@ -223,15 +223,15 @@ Email enabled: Email activat
 email-default-sender: Specific&#259; adresa de email implicit&#259; a expeditorului la trimiterea de aduceri-aminte.
 Default sender address: Adresa de email implicit&#259; a expeditorului
 Default user settings: Configuratia implicit&#259; pentru utilizatori
-email-event-reminders-help: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte.
+email_reminder_help: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte.
 Event reminders: Aduceri-aminte
-email-event-added: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte prin email c&#226;nd un eveniment este ad&#259;ugat &#238;n calendarul t&#259;u.
+email_event_added: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte prin email c&#226;nd un eveniment este ad&#259;ugat &#238;n calendarul t&#259;u.
 Events added to my calendar: Evenimente ad&#259;ugate &#238;n calendarul meu
-email-event-updated: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte prin email c&#226;nd un eveniment este actualizat &#238;n calendarul t&#259;u.
+email_event_added: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte prin email c&#226;nd un eveniment este actualizat &#238;n calendarul t&#259;u.
 Events updated on my calendar: Eveniments actualizate &#238;n calendarul meu
-email-event-deleted: Specific&#259; dac&#259; s&#259; se trimit&#259; notifica&#355;ii prin email c&#226;nd un eveniment este &#351;ters din calendarul t&#259;u.
+email_event_deleted: Specific&#259; dac&#259; s&#259; se trimit&#259; notifica&#355;ii prin email c&#226;nd un eveniment este &#351;ters din calendarul t&#259;u.
 Events removed from my calendar: Evenimente &#351;terse din calendarul meu.
-email-event-rejected: Specific&#259; dac&#259; s&#259; se trimit&#259; notifica&#355;ii prin email c&#226;nd un utilizator refuz&#259; un eveniment din calendarul t&#259;u.
+email_event_rejected: Specific&#259; dac&#259; s&#259; se trimit&#259; notifica&#355;ii prin email c&#226;nd un utilizator refuz&#259; un eveniment din calendarul t&#259;u.
 Event rejected by participant: Eveniment refuzat de c&#259;tre participant
 Allow user to customize colors: Permite utilizatorilor sa-&#351;i aleag&#259; culorile
 

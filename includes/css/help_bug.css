@@ -1,0 +1,11 @@
+form {
+  margin-bottom:1em;
+}
+label {
+  clear:left;
+  float:left;
+  width:32%;
+}
+p {
+  margin:0 1em;
+}

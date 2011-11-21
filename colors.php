@@ -4,119 +4,129 @@ $color = getGetValue ( 'color' );
 if ( empty ( $color ) )
   exit;
 
-$addcustomStr = translate ( 'Add Custom' );
-$basicStr = translate ( 'Basic Colors' );
-$cancelStr = translate ( 'Cancel' );
-$currentStr = translate ( 'Current Color' );
-$customStr = translate ( 'Custom Colors' );
-$oldStr = translate ( 'Old Color' );
-$okStr = '&nbsp;&nbsp;&nbsp;' . translate ( 'OK' ). '&nbsp;&nbsp;&nbsp;';
+$addcustomStr= translate( 'Add Custom' );
+$basicStr    = translate( 'Basic Colors' );
+$cancelStr   = translate( 'Cancel' );
+$currentStr  = translate( 'Current Color' );
+$customStr   = translate( 'Custom Colors' );
+$oldStr      = translate( 'Old Color' );
 
-print_header( '', '', 'onload="fillhtml(); setInit();"', true, false, true );
+$choicehtml = $customhtml = $slidehtml = '';
+
+for ( $i = 1; $i < 193; $i++ ) {
+  $slidehtml .= '
+                    <tr><td id="sc' . $i . '"></td></tr>';
+  if ( $i < 17 ) {
+    $customhtml .= '
+                <td id="precell' . $i
+     . '"><img src="images/blank.gif" id="preimg' . $i . '" alt=""></td>';
+    if ( $i == 8 ) {
+      $customhtml .= '
+              </tr>
+              <tr>';
+    }
+    if ( $i < 7 ) {
+      $choicehtml .= '
+              <tr>';
+      for ( $j = 1; $j < 9; $j++ ) {
+        $choicehtml .= '
+                <td><img src="images/blank.gif" alt=""></a></td>';
+      }
+      $choicehtml .= '
+              </tr>';
+
+    }
+  }
+}
+print_header( '', '', '', true, false, true );
 
 /*
   HTML Color Editor v1.2 (c) 2000 by Sebastian Weber <webersebastian@yahoo.de>
   Modified by Ray Jones for inclusion into WebCalendar.
-  NOTE: In-line CSS styles must remain in this file for proper operation
 */
 
 echo <<<EOT
     <form action="colors.php" name="colorpicker">
       <input type="hidden" id="colorcell" value="{$color}">
-      <table cellspacing="2" cellpadding="0" align="center" summary="">
-        <tr>
-          <td colspan="3">
-            <img height="1" src="images/blank.gif" border="0" alt=""></td>
-        </tr>
+      <table cellspacing="2" summary="">
+        <tr><td colspan="3"><img src="images/blank.gif" alt=""></td></tr>
         <tr>
           <td align="center">{$basicStr}</td>
 <!-- COLORS PICTURE -->
-          <td rowspan="5" width="220" align="center">
-            <img id="colorpic" height="192" width="192" src="images/colors.jpg"
-              onclick="setFromImage(event);" alt=""></td>
+          <td rowspan="5"><img src="images/colors.jpg" id="colorpic" alt=""></td>
 <!-- ***** SLIDER **** -->
           <td rowspan="5">
-            <table cellspacing="0" cellpadding="0" width="24" summary=""
-              onclick="setFromSlider(event);">
+            <table id="setSlide" summary="slide area">
               <tr>
-                <td id="slider"></td>
+                <td id="slider">
+                  <table summary="slide pointer">{$slidehtml}
+                  </table>
+                </td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
 <!--  BASIC COLORS PALETTE  -->
-          <td align="center" id="colorchoices"></td>
+          <td id="colorchoices">
+            <table summary="choose a color">{$choicehtml}
+            </table>
+          </td>
         </tr>
         <tr>
           <td align="center">{$customStr}</td>
         </tr>
         <tr>
 <!--  Custom Colors  -->
-          <td align="center" id="colorcustom"></td>
+          <td id="colorcustom">
+            <table summary="custom colors">
+              <tr>{$customhtml}
+              </tr>
+            </table>
+          </td>
         </tr>
         <tr>
-          <td align="center"><input type="button" value="{$addcustomStr}"
-            onclick="definePreColor()"></td>
+          <td><input type="button" value="{$addcustomStr}"
+//            onclick="definePreColor()"
+></td>
         </tr>
         <tr>
-          <td valign="top" colspan="3">
-            <table cellpadding="2" cellspacing="0" width="100%" summary="">
+          <td colspan="3" valign="top">
+            <table cellpadding="2" summary="">
               <tr align="center">
                 <td colspan="2" height="30" valign="bottom">{$currentStr}</td>
                 <td valign="bottom">{$oldStr}</td>
               </tr>
               <tr>
 <!-- RGB INPUT -->
-                <td class="boxtop boxleft boxbottom" valign="top" align="right">
-                  R: <input id="rgb_r" type="text" size="3" maxlength="3"
-                    value="255" onchange="setFromRGB()"><br>
-                  G: <input id="rgb_g" type="text" size="3" maxlength="3"
-                    value="255" onchange="setFromRGB()"><br>
-                  B: <input id="rgb_b" type="text" size="3" maxlength="3"
-                    value="255" onchange="setFromRGB()"><br>
-                  HTML: <input id="htmlcolor" type="text" size="6" maxlength="6"
-                    value="FFFFFF" onchange="setFromHTML()">
+                <td class="boxtop boxbottom boxleft" align="right" valign="top">
+                  R: <input type="text" id="rgb_r" size="3" maxlength="3" value="255"><br>
+                  G: <input type="text" id="rgb_g" size="3" maxlength="3" value="255"><br>
+                  B: <input type="text" id="rgb_b" size="3" maxlength="3" value="255"><br>
+                  HTML: <input type="text" id="htmlcolor" size="6" maxlength="6" value="FFFFFF">
                 </td>
-                <td class="boxtop boxright boxbottom" width="120">
-          <table id="thecell" bgcolor="#ffffff" align="center"
-            border="1" cellspacing="0" cellpadding="0" summary="">
-                    <tr>
-                      <td><img src="images/blank.gif" width="55" height="53"
-                        border="0" alt=""></td>
-                    </tr>
-                  </table>
-                </td>
-                <td valign="middle" align="center" class="boxtop boxright
-                  boxbottom">
+                <td id="thecell" class="boxtop boxright boxbottom">
+                  <img src="images/blank.gif" alt=""></td>
 <!--  Display New Color  -->
-        <table id="theoldcell" bgcolor="#ffffff" border="1" cellspacing="0"
-           cellpadding="0" summary="">
-                    <tr>
-            <td><img src="images/blank.gif" width="55" height="53"
-              border="0" alt=""></td>
-                    </tr>
-                  </table>
-                </td>
+                <td id="theoldcell" class="boxtop boxright boxbottom">
+                  <img src="images/blank.gif" alt=""></td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
           <td colspan="3" align="center" height="30">
-            <input type="button"
-              value="&nbsp;&nbsp;&nbsp;{$okStr}&nbsp;&nbsp;&nbsp;"
-              onclick="transferColor(); window.close()"
-             >&nbsp;&nbsp;&nbsp;<input type="button"
-              value="{$cancelStr}" onclick="window.close()">
+            <input type="button" value="{$okStr}"
+//              onclick="transferColor(); window.close()"
+><input type="button" value="{$cancelStr}"
+//              onclick="window.close()"
+>
           </td>
         </tr>
       </table>
     </form>
-<img id="cross" src="images/cross.gif" alt=""
-  style="position:absolute; left:0; top:0">
-<img id="sliderarrow" src="images/arrow.gif" alt=""
-  style="position:absolute; left:0; top:0">
+    <img src="images/cross.gif" id="cross" alt="">
+    <img src="images/arrow.gif" id="sliderarrow" alt="">
   </body>
 </html>
 EOT;

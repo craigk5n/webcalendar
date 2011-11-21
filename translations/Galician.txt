@@ -83,35 +83,35 @@ language-help: Especifica o idioma que se empregará.
 Language: Idioma
 Your browser default language is: O idioma por defecto do seu navegador é
 None: Ningunha
-display-week-starts-on: Especifica se a semana comeza o Domingo ou o Luns. Se se selecciona Luns, enton os números da semana amosaránse no formato ISO.
+display_week_starts_on: Especifica se a semana comeza o Domingo ou o Luns. Se se selecciona Luns, enton os números da semana amosaránse no formato ISO.
 Week starts on: A semana comeza o
-time-format-help: Especifica qué formato horario empregar:<br><i>12 horas:</i> Amosa-las horas co formato 3am, 8:30pm, etc.<br><i>24 horas:</i> Amosa-las horas co formato 300, 2030, etc.
+time_format_help: Especifica qué formato horario empregar:<br><i>12 horas:</i> Amosa-las horas co formato 3am, 8:30pm, etc.<br><i>24 horas:</i> Amosa-las horas co formato 300, 2030, etc.
 Time format: Formato da hora
 12 hour: 12 horas
 24 hour: 24 horas
 Duration: Duración
-work-hours-help: Especifica o devalo de horas que se amosarán na vista do día.
+work_hours_help: Especifica o devalo de horas que se amosarán na vista do día.
 Work hours: Horas de traballo
 From: De
 to: ata
-preferred-view-help: Especifica a vista por defecto (Día, Semana, Mes ou Ano).
+preferred_view_help: Especifica a vista por defecto (Día, Semana, Mes ou Ano).
 Preferred view: Vista preferida
-display-week-number-help: Especifica se o número da semana (1-52) debería amosarse na vista do mes e na vista da semana.
+display_weeknumber_help: Especifica se o número da semana (1-52) debería amosarse na vista do mes e na vista da semana.
 Display week number: Amosa-lo número da semana
-display-unapproved-help: Especifica se amosar ou non os eventos non aprobados no seu calendario.<br> Se selecciona "Si", entón amosaranse os eventos non aprobados no seu calendario (cunha cor de texto diferente).<br> Se selecciona "Non", entón deberanse aproba-los eventos antes de que poidan ser amosados no seu calendario.
+display_unapproved_help: Especifica se amosar ou non os eventos non aprobados no seu calendario.<br> Se selecciona "Si", entón amosaranse os eventos non aprobados no seu calendario (cunha cor de texto diferente).<br> Se selecciona "Non", entón deberanse aproba-los eventos antes de que poidan ser amosados no seu calendario.
 Display unapproved: Amosar non aprobados
 Yes: Si
 No: Non
 Enabled: Activado
-email-event-reminders-help: Especifica se enviar ou non recordatorios de evento.
+email_reminder_help: Especifica se enviar ou non recordatorios de evento.
 Event reminders: Recordatorios de eventos
-email-event-added: Especifica se enviar ou non notificacións por correo electrónico cando se engade un evento ó seu calendario.
+email_event_added: Especifica se enviar ou non notificacións por correo electrónico cando se engade un evento ó seu calendario.
 Events added to my calendar: Eventos engadidos no meu calendario
-email-event-updated: Especifica se enviar ou non notificacións por correo electrónico cando se actualiza un evento do seu calendario.
+email_event_added: Especifica se enviar ou non notificacións por correo electrónico cando se actualiza un evento do seu calendario.
 Events updated on my calendar: Eventos actualizados no meu calendario
-email-event-deleted: Especifica se enviar ou non notificacións por correo electrónico cando se borra un evento do seu calendario.
+email_event_deleted: Especifica se enviar ou non notificacións por correo electrónico cando se borra un evento do seu calendario.
 Events removed from my calendar: Eventos borrados do meu calendario
-email-event-rejected: Especifica se enviar ou non notificacións por correo electrónico cando un participante rexeita un evento do seu calendario.
+email_event_rejected: Especifica se enviar ou non notificacións por correo electrónico cando un participante rexeita un evento do seu calendario.
 Event rejected by participant: Evento rexeitado polo participante
 
 ########################################

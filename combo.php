@@ -31,8 +31,8 @@ foreach( array(
     'DocList',
     'AttachmentList',
     'CommentList',
-    ) as $i ) {
-    include_once 'includes/classes/' . $i . '.class';
+  ) as $i ) {
+  include_once 'includes/classes/' . $i . '.class';
 }
 
 //send_no_cache_header();
@@ -66,8 +66,8 @@ if ( ! empty ( $user ) ) {
   if ( ! access_user_calendar( 'view', $user ) ) {
      // Not allowed.
      $user = $login;
-  } 
-} 
+  }
+}
 
 // Can the user see event participants?
 $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
@@ -107,7 +107,7 @@ print_header();
 ?>
 
 <div class="headerinfo">
-<table border="0">
+<table>
 <tr>
 <?php
 if ( $single_user == 'N' ) {
@@ -194,7 +194,7 @@ Agenda content goes here...
 
 
 <div id="viewEventDiv" style="display: none;">
-<table border="0">
+<table>
   <tr><td colspan="2"><h3 id="name" class="eventName"> </h3></td></tr>
   <tr><td class="aligntop bold"><?php etranslate( 'Description_' )?></td>
     <td id="description">  </td></tr>
@@ -234,7 +234,7 @@ Agenda content goes here...
 <!-- Hidden div tag for Quick Add dialog -->
 <div id="quickAddDiv" style="display: none;">
 <input type="hidden" name="quickAddParticipants" id="quickAddParticipants" value="">
-<table border="0">
+<table>
 <tr><td class="aligntop bold"><?php etranslate( 'Date_' );?></td>
   <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
   </td></tr>
@@ -244,14 +244,14 @@ Agenda content goes here...
   <td><textarea id="quickAddDescription" name="quickAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
-<tr><td class="aligntop bold"><?php echo $cat_Str;?></td>
-  <td><select id="quickAddCategory" name="quickAddCategory">
-     <option value="-1"><?php etranslate('None');?></option>
+<tr><td class="aligntop bold"><?php echo $cat_Str . '</td>
+  <td><select id="quickAddCategory" name="quickAddCategory">'
+ . $option . '-1">' . translate( 'None' );?></option>
      <?php
      foreach ( $categories as $K => $V ) {
        if ( $K > 1 ) {
-         echo '<option value="' . $K . '">' .
-           htmlspecialchars ( $categories[$K]['cat_name'] ) . "</option>\n";
+         echo $option . $K . '">'
+          . htmlspecialchars( $categories[$K]['cat_name'] ) . '</option>';
        }
      }
      ?>
@@ -271,7 +271,7 @@ Agenda content goes here...
 <!-- Hidden div tag for Add Task dialog -->
 <div id="taskAddDiv" style="display: none;">
 <form name="taskAddForm" id="taskAddForm">
-<table border="0">
+<table>
 <tr><td class="aligntop bold"><?php etranslate('Start Date');?></td>
   <td><?php echo datesel_Print ( 'task_start_date', $date );?></td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Due Date_');?></td>
@@ -282,14 +282,14 @@ Agenda content goes here...
   <td><textarea id="taskAddDescription" name="taskAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
-<tr><td class="aligntop bold"><?php echo $cat_Str;?></td>
-  <td><select id="taskAddCategory" name="taskAddCategory">
-     <option value="-1"><?php etranslate('None');?></option>
-     <?php
+<tr><td class="aligntop bold"><?php echo $cat_Str . '</td>
+  <td><select id="taskAddCategory" name="taskAddCategory">'
+ . $option . '-1">' . translate( 'None' ) . '</option>';
+
      foreach ( $categories as $K => $V ) {
        if ( $K > 1 ) {
-         echo '<option value="' . $K . '">' .
-           htmlspecialchars ( $categories[$K]['cat_name'] ) . "</option>\n";
+         echo $option . $K . '">'
+          . htmlspecialchars( $categories[$K]['cat_name'] ) . '</option>';
        }
      }
      ?>
@@ -900,7 +900,7 @@ function month_view_nav_links ( year, month )
 {
   var ret, i;
 
-  ret = '<table class="noprint monthnavlinks" border="0">';
+  ret = '<table class="noprint monthnavlinks">';
   ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (year-1) +
       ',' + month + ',1)">' +
     '<img src="images/combo-prev.png" border="0"><br>' + (year-1) + '</td>';
@@ -1226,8 +1226,8 @@ function build_month_view ( year, month )
   //  month = month.substring ( 1 );
   try {
     var dateYmd;
-    ret = '<table border="0" width="100%"><tr><td align="center" width="70%">' +
-      '<table border="0" width="100%"><tr><td width="30%" align="right">' +
+    ret = '<table><tr><td align="center" width="70%">' +
+      '<table><tr><td width="30%" align="right">' +
       prev_month_link ( year, month ) + '</td><td width="40%" align="center">' +
       '<span class="monthtitle">' + months[month-1] + " " + year + "</span>" +
       '<span id="monthstatus"> </span>' +
@@ -1237,7 +1237,7 @@ function build_month_view ( year, month )
       '</td><td align="right">' +
        month_view_nav_links ( year, month ) +
       '</td></tr></table>' +
-      "<table id=\"month_main\" class=\"main\" width=\"100%\" border=\"1\"><tr>";
+      "<table id=\"month_main\" class=\"main\" border=\"1\"><tr>";
     for ( var i = 0; i < 7; i++ ) {
       ret += "<th>" + weekdays[i] + "</th>";
     }
@@ -1382,7 +1382,7 @@ function build_year_view ( year, month )
       "&nbsp;" +
       "<span class=\"yeartitle\">" + year + "</span>" +
       "<span id=\"yearstatus\"> </span>" +
-      "<table id=\"year_main\" class=\"main\" width=\"100%\" border=\"0\">";
+      "<table id=\"year_main\" class=\"main\">";
 
     var d = new Date();
     var today = new Date();
@@ -1393,7 +1393,7 @@ function build_year_view ( year, month )
       ret += "<td class=\"monthblock\" valign=\"top\" align=\"center\" width=\"25%\">";
       ret += '<a href="#" onclick="ajax_get_events('+year+','+(n+1)+',1);views.expandit(2);">' +
          months[n] + "</a><br>\n";
-      ret += "<table class=\"monthtable\" border=\"0\">";
+      ret += "<table class=\"monthtable\">";
 
       d.setMonth ( n );
       month = n + 1;
@@ -1454,7 +1454,7 @@ function build_agenda_view ( year, month )
       "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
       "<span id=\"agendastatus\"> </span>" +
-      "<table border=\"0\">\n";
+      "<table>\n";
 
     var d = new Date();
     var today = new Date();
@@ -1655,7 +1655,7 @@ function build_task_view ()
     }
     var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
     content += '<tr><td class="' + cl + '">' +
-      iconImg + task._name + '</td><td class="' + cl + '">' + 
+      iconImg + task._name + '</td><td class="' + cl + '">' +
       format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">';
     if ( task._priority < 4 )
       content += '<?php etranslate('High');?>';

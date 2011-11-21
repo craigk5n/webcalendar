@@ -102,57 +102,57 @@ System Settings: Sistemaren aukerak
 Help: Laguntza
 app-name-help: Izenburuan azalduko den testua adierazten du
 Application Name: Aplikazioaren izena
-server-url-help: Aplikazioaren oinarri URL-a adierazten du
+server_url_help: Aplikazioaren oinarri URL-a adierazten du
 Server URL: Zerbitzariaren URL-a
 language-help: Erabili beharreko hizkuntza adierazten du.
 Language: Hizkuntza
 Your browser default language is: Zure nabigatzailearen hizkuntza lehenetsia da
 None: Bat ere ez
-date-format-help: Dataren formatua adierazten du
+date_format_help: Dataren formatua adierazten du
 Date format: Data formatua
-display-week-starts-on: Astea Igande edo Astelehenean asten den adierazteko
+display_week_starts_on: Astea Igande edo Astelehenean asten den adierazteko
 Week starts on: Astea hasten da
-time-format-help: Erabiliko den ordu formatua adierazten du, 12 ordu edo 24 ordu
+time_format_help: Erabiliko den ordu formatua adierazten du, 12 ordu edo 24 ordu
 Time format: Ordu formatua
 12 hour: 12 ordukoa
 24 hour: 24 ordukoa
 Specify timed event length by: Bileren iraupena nola zehaztu
 Duration: Iraupena
 End Time: Amaitzeko ordua
-work-hours-help: Egutegi bakoitzean erakutsi beharreko orduak adierazten ditu.
+work_hours_help: Egutegi bakoitzean erakutsi beharreko orduak adierazten ditu.
 Work hours: Lan orduak
 From: Nork
 to: Nori
-preferred-view-help: Lehenetsitako ikus aukera (Eguna, Astea, Hilabetea, Urtea)
+preferred_view_help: Lehenetsitako ikus aukera (Eguna, Astea, Hilabetea, Urtea)
 Preferred view: Lehenetsitako ikus aukera
-fonts-help: Erabili beharreko tipografiak adierazten ditu ( Arial, Helvetica ...)
+fonts_help: Erabili beharreko tipografiak adierazten ditu ( Arial, Helvetica ...)
 Fonts: Tipografiak
-display-weekends-help: Astebukaerak erakusten ditu asteroko ikus aukeran
-display-week-number-help: Asteari dagokion zenbakia erakutsiko den adierazten du
+display_weekends_help: Astebukaerak erakusten ditu asteroko ikus aukeran
+display_weeknumber_help: Asteari dagokion zenbakia erakutsiko den adierazten du
 Display week number: Aste zenbakia erakutsi
 desc in printer day view: Egunaren inprimatzeko ikus eran deskribapena adierazi
-allow-view-other-help: Beste erabiltzaileen egutegia ikusi daiteken ala ez adierazten du
+allow_view_other_help: Beste erabiltzaileen egutegia ikusi daiteken ala ez adierazten du
 may view others cals: Beste erabiltzaileen egutegiak ikustea baimendu
-require-approvals-help: Aktibatu ez gero, onespena behar da.
+require_approvals_help: Aktibatu ez gero, onespena behar da.
 Require event approvals: Gertaeraren onespena eskatu
-display-unapproved-help: Onetsi gabeko gertaerak erakutsiko diren adierazten du.
+display_unapproved_help: Onetsi gabeko gertaerak erakutsiko diren adierazten du.
 Display unapproved: Onespengabekoak erakutsi
 Check for conflicts: Gertaera talkak antzeman
 Yes: Bai
 No: Ez
-conflict-months-help: Hilak aztertzean talkak
+conflict_months_help: Hilak aztertzean talkak
 Conflict checking months: Hilak aztertzean talkak
-disable-priority-field-help: Lehentasun eremua azaldu ala ez
+disable_priority_field_help: Lehentasun eremua azaldu ala ez
 Disable Priority field: Desgaitu lehentasun eremua
-disable-access-field-help: Atzipen informazioa azaldu ala ez
+disable_access_field_help: Atzipen informazioa azaldu ala ez
 Disable Access field: Desgaitu atzipen eremua
-disable-participants-field-help: Partaide eremua azaldu ala ez
+disable_participants_field_help: Partaide eremua azaldu ala ez
 Disable Participants field: Desgaitu partaide eremua
-disable-repeating-field-help: Gertaera errepikatuak kentzea ekidin ala ez
+disable_repeating_field_help: Gertaera errepikatuak kentzea ekidin ala ez
 Disable Repeating field: Desgaitu errepikapen ezabatzea
-remember-last-login-help: Aukeratzen bada azken login informazioa gogoratuko du
+remember_last_login_help: Aukeratzen bada azken login informazioa gogoratuko du
 Remember last login: Login informazioa gogoratu
-allow-public-access-help: Egutegiak atzipen publikoa izan dezaken edo ez adierazten du.
+allow_public_access_help: Egutegiak atzipen publikoa izan dezaken edo ez adierazten du.
 Allow public access: Atzipen publikoa baimendu
 public-access-view-others-help: Beste erabiltzaile batzuen egutegiak ikus daitezken adierazten du
 may public view others: Beste erabiltzaileen gertaerak ikus daitezke
@@ -171,15 +171,15 @@ Email enabled: E-posta gaitua
 email-default-sender: Defektuz postak zeinek bidaliko dituen adierazten du.
 Default sender address: Bidaltzailearen posta
 Default user settings: Erabiltzailearen aukerak
-email-event-reminders-help: Gertaerak e-posta bidez gogorarazten diren
+email_reminder_help: Gertaerak e-posta bidez gogorarazten diren
 Event reminders: Gertaeren gogoraraztea
-email-event-added: Gertaeren gehitzea e-posta bidez jakinarazten den ala ez.
+email_event_added: Gertaeren gehitzea e-posta bidez jakinarazten den ala ez.
 Events added to my calendar: Nire egutegira gehitutako gertaerak.
-email-event-updated: Gertaeren eguneratzea e-posta bidez jakinarazten den ala ez.
+email_event_added: Gertaeren eguneratzea e-posta bidez jakinarazten den ala ez.
 Events updated on my calendar: Nire egutegian eguneratutako gertaerak
-email-event-deleted: Gertaeren ezabatzea e-posta bidez jakinarazten den ala ez.
+email_event_deleted: Gertaeren ezabatzea e-posta bidez jakinarazten den ala ez.
 Events removed from my calendar: Egutegitik ezabatutako gertaerak.
-email-event-rejected: Kide batek gertaera bati uko egiten dionean e-posta bidezko notifikazioa.
+email_event_rejected: Kide batek gertaera bati uko egiten dionean e-posta bidezko notifikazioa.
 Event rejected by participant: Partaideak uko egindako gertaera
 Allow user to customize colors: Erabiltzaileei kolore esleipena egitea baimendu
 

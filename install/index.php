@@ -48,16 +48,10 @@
  * Change all references from postgresql to pgsql
  */
 
-if( is_dir( 'includes' ) )
-  $path = '';
-elseif( is_dir( '../includes' ) )
-  $path = '../';
-elseif( is_dir( '../../includes' ) )
-  $path = '../../';
-
-define( '__WC_BASEDIR', $path );
-$fileDir = __WC_BASEDIR . 'includes/';
+$fileDir = '../includes/';
 $file    = $fileDir . 'settings.php';
+$option  = '
+                <option value="';
 
 $show_all_errors = false;
 // Change this path as needed.
@@ -328,7 +322,7 @@ if( ! empty( $action ) && $action == 'install' ) {
 
   if ( $db_type == 'postgresql' )
     $db_type = 'pgsql';
- 
+
  // We might be displaying SQL only.
   $display_sql = getPostValue( 'display_sql' );
 
@@ -759,19 +753,15 @@ if( ! empty( $x ) || ! empty( $y ) ) {
 }
 $offStr = translate( 'OFF' );
 $onStr  = translate( 'ON' );
+define( '_ISVALID', true );
 
 ob_start();
 echo send_doctype( translate( 'WebCal Setup Wizard' ) ) . '
     <script src="../includes/js/base.js"></script>
-    <script src="../js_cacher.php?inc=js/translate.js.php"></script>
-    <script>
-    // Does it even get here?'
- . ( empty( $_SESSION['validuser'] ) ? '' : '
-      function testPHPInfo() {
-        window.open( \'index.php?action=phpinfo\', \'wcTestPHPInfo\',
-          \'width=800,height=600,resizable=yes,scrollbars=yes\' );
-      }' )
-    . ( empty( $onload ) ? '' : '
+    <script>';
+// Because it's not working with js_cacher from here.
+include_once '../includes/js/translate.js.php';
+echo ( empty( $onload ) ? '' : '
       addLoadListener(function() {
         ' . $onload . '
         });' ) . '
@@ -820,9 +810,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <th class="header" colspan="2">' . translate( 'PHP Settings' )
    . ( empty( $_SESSION['validuser'] )
-    ? '' : '&nbsp;<input name="action" type="button" value="'
-     . translate( 'Detailed PHP Info' )
-     . '" onClick="testPHPInfo()">' ) . '</th>
+    ? '' : '&nbsp;<input type="button" id="testPHPbtn" name="action" value="'
+     . translate( 'Detailed PHP Info' ) . '">' ) . '</th>
       </tr>';
   foreach( $php_settings as $setting ) {
     $ini_get_result = get_php_setting( $setting[1], $setting[3] );
@@ -931,7 +920,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       if( $forcePassword )
         echo '
           <form action="index.php" method="post" name="dbpassword">
-            <table border="0" summary="">
+            <table summary="">
               <tr>
                 <th colspan="2" class="header">'
          . translate( 'Create Settings File Password' ) . '</th>
@@ -956,7 +945,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         </td>
       </tr>
     </table>' . ( empty( $_SESSION['validuser'] ) ? '' : '
-    <table border="0" width="90%" align="center" summary="">
+    <table width="90%" align="center" summary="">
       <tr>
         <td align="center">
           <form action="index.php?action=switch&amp;page=2" method="post">
@@ -1022,7 +1011,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td>
           <form action="index.php" method="post" name="dbform" '
    . 'onSubmit="return chkPassword()">
-            <table align="right" width="100%" border="0" summary="">
+            <table align="right" summary="">
               <tr>
                 <td rowspan="7" width="20%">&nbsp;</td>
                 <td class="prompt" width="25%" valign="bottom">'
@@ -1063,9 +1052,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     $supported['sqlite3'] = 'SQLite3';
 
   foreach( $supported as $k => $v ) {
-    echo '
-                    <option value="' . $k . '" '
-     . ( $settings['db_type'] == $k ? ' selected>' : '>' )
+    echo $option . $k . ( $settings['db_type'] == $k ? '" selected>' : '">' )
      . $v . '</option>';
   }
   $supported = array();
@@ -1148,7 +1135,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         </td>
       </tr>
     </table>' ) . '
-    <table border="0" width="90%" align="center" summary="">
+    <table width="90%" align="center" summary="">
       <tr>
         <td align="right" width="40%">
           <form action="index.php?action=switch&amp;page=1" method="post">
@@ -1224,20 +1211,20 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td id="odbc_db" align="center" nowrap>
           <form action="index.php?action=set_odbc_db" method="post" '
        . 'name="set_odbc_db">' . translate( 'ODBC Underlying Database' ) . '
-            <select name="odbc_db" onchange="document.set_odbc_db.submit();">
-              <option value="ibase"'
+            <select id="odbc_db" name="odbc_db">'
+       . $option . 'ibase"'
        . ( $_SESSION['odbc_db'] == 'ibase' ? ' selected' : '' )
-       . '>Interbase</option>
-              <option value="mssql"'
+       . '>Interbase</option>'
+       . $option . 'mssql"'
        . ( $_SESSION['odbc_db'] == 'mssql' ? ' selected' : '' )
-       . '>MS SQL</option>
-              <option value="mysql"'
+       . '>MS SQL</option>'
+       . $option . 'mysql"'
        . ( $_SESSION['odbc_db'] == 'mysql' ? ' selected' : '' )
-       . '>MySQL</option>
-              <option value="oracle"'
+       . '>MySQL</option>'
+       . $option . 'oracle"'
        . ( $_SESSION['odbc_db'] == 'oracle' ? ' selected' : '' )
-       . '>Oracle</option>
-              <option value="postgresql"'
+       . '>Oracle</option>'
+       . $option . 'postgresql"'
        . ( $_SESSION['odbc_db'] == 'postgresql'
         || $_SESSION['odbc_db'] == 'pgsql' ? ' selected' : '' )
        . '>PostgreSQL</option>
@@ -1289,7 +1276,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
   echo '
     </table>
-    <table border="0" width="90%" align="center" summary="">
+    <table width="90%" align="center" summary="">
       <tr>
         <td align="right" width="40%">
           <form action="index.php?action=switch&amp;page=2" method="post">
@@ -1304,9 +1291,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         </td>
         <td align="left" width="40%">
           <form action="" method="post">
-            <input type="button" value="' . $logoutStr . '" '
-   . ( empty( $_SESSION['validuser'] ) ? 'disabled' : '' )
-   . ' onclick="document.location.href=\'index.php?action=logout\'">
+            <input type="button" id="logoutBtn" value="' . $logoutStr
+   . ( empty( $_SESSION['validuser'] ) ? '" disabled' : '"' ) . '>
           </form>
         </td>
       </tr>
@@ -1352,7 +1338,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       </tr>
       <tr>
         <td>
-          <table width="75%" align="center" border="0" summary="">
+          <table width="75%" align="center" summary="">
             <tr>
             <form action="index.php?action=switch&amp;page=4" method="post" '
    . 'enctype=\'multipart/form-data\' name="form_app_settings">
@@ -1375,34 +1361,32 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
             </tr>
             <tr>
               <td class="prompt">' . translate( 'Server URL' ) . '</td>
-              <td><input type="text" size="40" name="form_server_url" '
-   . 'id="form_server_url" value="' . $_SESSION['server_url'] . '"></td>
+              <td><input type="text"id="form_server_url" name="form_server_url" '
+   . ' size="40" value="' . $_SESSION['server_url'] . '"></td>
             </tr>
             <tr>
               <td class="prompt">' . translate( 'User Authentication' ) . '</td>
               <td>
-                <select name="form_user_inc" onChange="auth_handler()">
-                  <option value="user.php"'
+                <select id="form_user_inc" name="form_user_inc">'
+   . $option . 'user.php"'
    . ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] != 'true'
      ? ' selected>' : '>' )
-   . translate( 'Web-based via WebCal default' )
-   . '</option>
-                  <option value="http"'
+   . translate( 'Web-based via WebCal default' ) . '</option>'
+   . $option . 'http"'
    . ( $settings['user_inc'] == 'user.php' && $settings['use_http_auth'] == 'true'
      ? ' selected>' : '>' )
   . ( empty( $PHP_AUTH_USER ) ? translate( 'Web Server (not detected)' )
     : translate( 'Web Server (detected)' ) ) . '</option>'
-   . ( function_exists( 'ldap_connect' ) ? '
-                  <option value="user-ldap.php"'
+   . ( function_exists( 'ldap_connect' ) ? $option . 'user-ldap.php"'
      . ( $settings['user_inc'] == 'user-ldap.php' ? ' selected' : '' )
-     . '>LDAP</option>' : '' ) . ( function_exists( 'yp_match' ) ? '
-                  <option value="user-nis.php"'
+     . '>LDAP</option>' : '' ) . ( function_exists( 'yp_match' ) ? $option
+     . 'user-nis.php"'
      . ( $settings['user_inc'] == 'user-nis.php' ? ' selected' : '' )
-     . '>NIS</option>' : '' ) . '
-                  <option value="user-imap.php"'
+     . '>NIS</option>' : '' )
+     . $option . 'user-imap.php"'
    . ( $settings['user_inc'] == 'user-imap.php' ? ' selected' : '' )
-   . '>IMAP</option>
-                  <option value="none" '
+   . '>IMAP</option>'
+   . $option . 'none"'
    . ( $settings['user_inc'] == 'user.php' && $settings['single_user'] == 'true'
      ? ' selected>' : '>' ) . translate( 'None (Single-User)' ) . '</option>
                 </select>
@@ -1428,11 +1412,10 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
             <tr>
               <td class="prompt">' . translate( 'Environment' ) . '</td>
               <td>
-                <select name="form_mode">
-                  <option value="prod"'
-   . ( $mode == 'prod' ? ' selected>' : '>' )
-   . translate( 'Production' ) . '</option>
-                  <option value="dev"' . ( $mode == 'dev' ? ' selected>' : '>' )
+                <select name="form_mode">'
+   . $option . 'prod"' . ( $mode == 'prod' ? ' selected>' : '>' )
+   . translate( 'Production' ) . '</option>'
+   . $option . 'dev"' . ( $mode == 'dev' ? ' selected>' : '>' )
    . translate( 'Development' ) . '</option>
                 </select>
               </td>
@@ -1446,17 +1429,15 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td align="center">'
    . ( ! empty( $_SESSION['db_success'] ) && $_SESSION['db_success'] &&
     empty( $dologin ) ? '
-              <input name="action" type="button" value="'
-     . translate( 'Save Settings' ) . '" onClick="return validate();">'
+              <input type="button" id="saveBtn" name="action" value="'
+     . translate( 'Save Settings' ) . '">'
      . ( ! empty( $_SESSION['old_program_version'] ) &&
       ( $_SESSION['old_program_version'] == $PROGRAM_VERSION ) && !
       empty( $setup_complete ) ? '
-              <input type="button" name="action2" value="'
-       . translate( 'Launch WebCal' )
-       . '" onClick="window.open( \'../index.php\', \'webcalendar\' );">'
+              <input type="button" id="launchBtn" name="action2" value="'
+       . translate( 'Launch WebCal' ) . '">'
        : '' ) : '' ) . ( empty( $_SESSION['validuser'] ) ? '' : '
-              <input type="button" value="' . $logoutStr
-     . '" onclick="document.location.href=\'index.php?action=logout\'">' ) . '
+              <input type="button" id="logoutBtn" value="' . $logoutStr . '">' ) . '
             </form>
         </td>
       </tr>

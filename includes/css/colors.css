@@ -1,0 +1,70 @@
+// $Id$
+
+#cross,
+#sliderarrow {
+  position:absolute;
+}
+#colorchoices table td,
+#slider table,
+img {
+  width:14px;
+}
+#colorchoices table td,
+#colorchoices table tr,
+img {
+  height:14px;
+}
+img:first-child {
+  width:1px;
+  height:1px;
+}
+#colorpic {
+  width:192px;
+  height:192px;
+  margin:0 14px;
+}
+#thecell img,
+#theoldcell img {
+  width:55px;
+  height:53px;
+}
+#setSlide {
+  width:24px;
+}
+#slider table td {
+  height;1px;
+}
+#colorcustom td {
+  background-color:#fff;
+}
+#colorchoices,
+#colorcustom,
+#theoldcell img,
+input[type=button]:first-of-type,
+table:first-child {
+  margin:0 auto;
+}
+#thecell img {
+  margin:0 32px;
+}
+img {
+  border:0;
+}
+#colorchoices table,
+#colorcustom table,
+#thecell img,
+#theoldcell img {
+  border:1px solid black;
+}
+input[type=button]:nth-of-type(2) {
+  padding:0 6em;
+}
+input[type=button]:last-of-type {
+  padding-left:3em;
+}
+td {
+  padding:0;
+}
+#theoldcell {
+  vertical-align:middle;
+}

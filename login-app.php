@@ -48,41 +48,27 @@ $appStr = generate_application_name();
 $login_return_path = $SERVER_URL . $return_path;
 
 ob_start();
-
-echo send_doctype ( $appStr ) . ( ! $logout ? '
-    <script>
-
-    // Error check login/password.
-      function valid_form ( form ) {
-        if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
-          alert ( \'' . translate ( 'must enter login/password', true ) . '\' );
-          return false;
-        }
-        return true;
-      }
-
-      function myOnLoad() {
-        document.login_form.login.focus();' . ( empty ( $login ) ? '' : '
-        document.login_form.login.select();' ) . ( empty ( $error ) ? '' : '
-        alert ( \'' . $error . '\' );' ) . '
-      }
-    </script>' : '' ) . '
+setcookie( 'err', $error, 180 );
+setcookie( 'login', $login, 180 );
+echo send_doctype( $appStr ) . '
     <link href="css_cacher.php?login=__public__" rel="stylesheet">
-    <link href="includes/css/styles.css" rel="stylesheet">'
+    <link href="includes/css/styles.css" rel="stylesheet">'. ( $logout ? '' : '
+    <script src="includes/js/base.js"></script>
+    <script src="includes/js/login.js"></script>' )
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
   ? load_template ( $login, 'S' ) : '' ) . '
   </head>
-  <body onload="myOnLoad();">'
+  <body id="loginapp">'
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y'
   ? load_template ( $login, 'H' ) : '' ) . '
     <h2>' . $appStr . '</h2>' . ( empty ( $error ) ? '' : '
-    <span style="color:#F00;" class="bold">' . $err_Str
-   . $error . '</span>' ) . '<br>
-    <form name="login_form" id="login" action="' . $app_login_page['action']
- . '" method="post" onsubmit="return valid_form( this )">
+    <span class="error">'
+   . str_replace( 'XXX', $error, translate( 'Error XXX' ) ) . '</span>' ) . '<br>
+    <form action="' . $app_login_page['action']
+ . '" method="post" id="login_form" name="login">
       <input type="hidden" name="' . $app_login_page['return'] . '" value="'
  . $login_return_path . '">
       <table cellpadding="10" align="center" summary="">
@@ -90,15 +76,15 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
           <td rowspan="2"><img src="images/login.gif" alt="Login"></td>
           <td align="right"><label for="user">' . translate ( 'Username' )
  . '</label></td>
-          <td><input name="' . $app_login_page['username']
+          <td><input type="text" name="' . $app_login_page['username']
  . '" id="user" size="15" maxlength="25" tabindex="1"></td>
         </tr>
         <tr>
           <td class"alignright"><label for="password">'
  . translate ( 'Password' ) . '</label></td>
-          <td><input name="' . $app_login_page['password']
- . '" id="password" type="password" size="15" maxlength="30" tabindex="2"></td>
-        </tr>' . ( ! empty ( $app_login_page['remember'] ) ? '
+          <td><input type="password" name="' . $app_login_page['password']
+ . '" id="password" size="15" maxlength="30" tabindex="2"></td>
+        </tr>' . ( empty( $app_login_page['remember'] ) ? '' : '
         <tr>
           <td colspan="3" style="font-size: 10px;">
             <input type="checkbox" name="' . $app_login_page['remember']
@@ -107,14 +93,14 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
             <label for="remember">&nbsp;'
    . translate ( 'Save login via cookies' ) . '</label>
           </td>
-        </tr>' : '' ) . '
+        </tr>' ) . '
         <tr>
           <td colspan="4" class="aligncenter">';
 
 if ( ! empty ( $app_login_page['hidden'] ) ) {
-  foreach ( $app_login_page['hidden'] as $key => $val ) {
+  foreach ( $app_login_page['hidden'] as $k => $v ) {
     echo '
-            <input type="hidden" name="' . $key . '" value="' . $val . '">';
+            <input type="hidden" name="' . $k . '" value="' . $v . '">';
   }
 }
 
@@ -149,10 +135,10 @@ echo ( $DEMO_MODE == 'Y'
 
 // Print custom trailer (since we do not call print_trailer function).
  . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'
-  ? load_template ( $login, 'T' ) : '' );
+  ? load_template( $login, 'T' ) : '' ) . '
+  </body>
+</html>';
 
 ob_end_flush();
 
 ?>
-  </body>
-</html>

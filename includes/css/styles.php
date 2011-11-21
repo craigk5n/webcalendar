@@ -28,12 +28,12 @@
  * Each selector can contain multiple declarations.
  *   EXAMPLE:
  *     body {
- *       background: black;
+ *       background-color: black;
  *       color: red;
  *       font-size: 12px;
  *     }
  * In the example above, there are three declarations:
- *   background: black;
+ *   background-color: black;
  *   color: red;
  *   font-size: 12px;
  *
@@ -171,7 +171,7 @@ echo ( $DISPLAY_TASKS != 'Y' ? '#month #nextmonth{
   border-color:' . $GLOBALS['BGCOLOR'] . ';
 }
 body{
-  background:' . $GLOBALS['BGCOLOR'] . ( empty( $GLOBALS['BGIMAGE'] )
+  background-color:' . $GLOBALS['BGCOLOR'] . ( empty( $GLOBALS['BGIMAGE'] )
   ? '' : ' url( ' . $GLOBALS['BGIMAGE'] . ' ) ' . $GLOBALS['BGREPEAT'] ) . ';
   font-family:' . $GLOBALS['FONTS'] . ';
 }
@@ -193,7 +193,7 @@ th,
 #day .minical caption,
 .dailymatrix,
 .layertable th{
-  background:' . $GLOBALS['THBG'] . ';
+  background-color:' . $GLOBALS['THBG'] . ';
 }
 .main th,
 .main th.weekend{
@@ -231,24 +231,24 @@ td.matrixappts,
 .minitask tr.header th,
 .minitask tr.header td,
 .standard{
-  background:' . $GLOBALS['CELLBG'] . ';
+  background-color:' . $GLOBALS['CELLBG'] . ';
 }
 .minitask tr.task {
   background-color:' . rgb_luminance( $GLOBALS['BGCOLOR'], $E->getPriority() ) . ';
 }
 #editentry th.weekend,
 .minical td.weekend{
-  background:' . $GLOBALS['WEEKENDBG'] . ';
+  background-color:' . $GLOBALS['WEEKENDBG'] . ';
 }
 #example_month,
 .glance th.empty,
 .minical th,
 .minical td.empty{
-  background:' . $GLOBALS['BGCOLOR'] . ';
+  background-color:' . $GLOBALS['BGCOLOR'] . ';
 }
 #listunapproved .odd,
 .minical td#today{
-  background:' . $GLOBALS['TODAYCELLBG'] . ';
+  background-color:' . $GLOBALS['TODAYCELLBG'] . ';
 }
 .glance td,
 .note{
@@ -258,7 +258,7 @@ td.matrixappts,
   ' . background_css( $GLOBALS['WEEKENDBG'], 15 ) . '
 }
 #contentDay .daytimedevent{
-  background:' . $GLOBALS['HASEVENTSBG'] . ';
+  background-color:' . $GLOBALS['HASEVENTSBG'] . ';
 }
 #login table,
 #register table{

@@ -3,6 +3,15 @@
 var ds = document.selfreg,
 validform = false;
 
+linkFile('includes/js/prototype.js');
+
+addLoadListener(function () {
+  attachEventListener(document.getElementById('selfreg'), 'submit', function () {
+    return valid_form();
+  });
+  attachEventListener(document.getElementById('user'), 'change', check_name);
+  attachEventListener(document.getElementById('uemail'), 'change', check_uemail);
+});
 function valid_form() {
   if (ds.upassword1.value.length == 0) {
     alert(xlate['inputPassword']); // translate( 'must enter a password' )
@@ -25,10 +34,10 @@ function valid_form() {
 
 function checkers(formfield, params) {
   var ajax = new Ajax.Request('ajax.php', {
-        method: 'post',
-        parameters: 'page=' + params + '&name=' + $F(formfield),
-        onComplete: showResponse
-      });
+      method: 'post',
+      parameters: 'page=' + params + '&name=' + $F(formfield),
+      onComplete: showResponse
+    });
 }
 
 function showResponse(originalRequest) {

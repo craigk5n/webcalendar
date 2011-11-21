@@ -140,7 +140,7 @@ System options: Systemeinstellungen
 app-name-help: Gibt den Titel f&uuml;r die Titelleiste des Browsers, f&uuml;r alle Seiten des Kalenders und die Startseite des Kalenders an. Der Titel wird in die Sprachdatei eingetragen und kann f&uuml;r andere Spracheinstellungen abge&auml;ndert werden.
 Application Name: Anwendungsbezeichnung
 Translated Name (XXX): &Uuml;bersetzter Name (XXX)
-server-url-help: Gibt die Standard Server-Url an und steht in der Betreffzeile von Erinnerungen sowie von Emails die &uuml;ber den Kalender verschickt werden.
+server_url_help: Gibt die Standard Server-Url an und steht in der Betreffzeile von Erinnerungen sowie von Emails die &uuml;ber den Kalender verschickt werden.
 Server URL: Serveradresse
 home-url-help: Definiert die Haupt-URL (=home URL) f&uuml;r diese Anwendung. Diese kann &#39;Absolut&#39; oder auch &#39;Relativ&#39; sein
 Home URL: Haupt-URL
@@ -154,124 +154,124 @@ AVAILABLE THEMES: VERF&Uuml;GBARE THEMEN
 None: Keine
 Preview: Vorschau
 Site customization: Benutzerdefinierte Seiteneinstellungen
-custom-script-help: Erlaubt Eintr&auml;ge von benutzerdefinierten Javascript- oder Stylesheet Texten welche im HTML &#34;Kopf&#34;-Abschnitt auf jeder Seite eingef&uuml;gt werden.
-Custom script/stylesheet: Benutzerdefinierte Scripte&#47;Stylesheets
-custom-header-help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ANFANG jeder Seite
+custom_script_help: Erlaubt Eintr&auml;ge von benutzerdefinierten Javascript- oder Stylesheet Texten welche im HTML &#34;Kopf&#34;-Abschnitt auf jeder Seite eingef&uuml;gt werden.
+Custom script: Benutzerdefinierte Scripte&#47;Stylesheets
+custom_header_help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ANFANG jeder Seite
 Custom header: Benutzerdefinierte Kopfzeile
-custom-trailer-help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ENDE jeder Seite.
+custom_trailer_help: Erm&ouml;glicht benutzerdefinierte HTML-Abschnitte am ENDE jeder Seite.
 Custom trailer: Benutzerdefinierte Fu&szlig;zeile
-enable-external-header-help: Erlaubt das hochladen von einer externen Datei f&uuml;r eine benutzerdefinierte Fu&szlig;zeile
+allow_external_header_help: Erlaubt das hochladen von einer externen Datei f&uuml;r eine benutzerdefinierte Fu&szlig;zeile
 externals head/script/trail: Externe Datei f&uuml;r Kopfzeile&#47;Script&#47;Fu&szlig;zeile
 may user override head/trail: Benutzer d&uuml;rfen Kopf- und Fu&szlig;zeilen &uuml;berschreiben
 Date and Time: Datum und Uhrzeit
-server-tz-help: Gibt an wieviele Stunden man zur UTC-Zeitzone einstellen muss.
+server_tz_help: Gibt an wieviele Stunden man zur UTC-Zeitzone einstellen muss.
 Server TZ Selection: Zeitzonenauswahl am Server
-tz-help: Hilfe f&uuml;r Zeitzonen
+tz_help: Hilfe f&uuml;r Zeitzonen
 Default Client TZ Selection: Grundeinstellung Zeitzonenauswahl
-display-general-use-gmt-help: Falls aktiv, werden allg. Datums&#47;Zeiten als GMT angezeigt
+display_general_use_gmt_help: Falls aktiv, werden allg. Datums&#47;Zeiten als GMT angezeigt
 GMT Common Use Date/Times: Allg. Datums&#47;Zeiten als GMT
-date-format-help: Legt ein spezielles Datumsformat fest.
+date_format_help: Legt ein spezielles Datumsformat fest.
 Date format: Datumsformat
 Small Task Date: Kleines Datumsformat f&uuml;r Aufgaben
-display-week-starts-on: Gibt an ob die Wochenansicht am Sonntag oder Montag beginnen soll. Wenn Montag gew&auml;hlt wird, werden die Wochennummern als ISO Wochennummern ausgegeben.
+display_week_starts_on: Gibt an ob die Wochenansicht am Sonntag oder Montag beginnen soll. Wenn Montag gew&auml;hlt wird, werden die Wochennummern als ISO Wochennummern ausgegeben.
 Week starts on: Wochenbeginn am
-display-weekend-starts-on: Setzt den Tag an dem das Wochenende beginnt
+display_weekend_starts_on: Setzt den Tag an dem das Wochenende beginnt
 Weekend starts on: Das Wochenende beginnt am
-time-format-help: Gibt an welches Zeit-Format benutzt wird - 12-st&uuml;ndiges - Zeigt Zeiten als 3am, 8:30pm, etc. 24-st&uuml;ndiges - Zeigt Zeiten als 3:00, 20:30, etc.
+time_format_help: Gibt an welches Zeit-Format benutzt wird - 12-st&uuml;ndiges - Zeigt Zeiten als 3am, 8:30pm, etc. 24-st&uuml;ndiges - Zeigt Zeiten als 3:00, 20:30, etc.
 Time format: Zeit-Format
 12 hour: 12-st&uuml;ndig
 24 hour: 24-st&uuml;ndig
-timed-evt-len-help: Spezifiziert die Methode der Zeitangabe als Zeitdauer oder Endzeitpunkt
+timed_evt_len_help: Spezifiziert die Methode der Zeitangabe als Zeitdauer oder Endzeitpunkt
 Specify timed event length by: Zeitspanne eines Termins als
 Duration: Dauer
 End Time: Endzeitpunkt
-work-hours-help: Zeitabschnitt f&uuml;r die Anzeige der Tagessicht.
+work_hours_help: Zeitabschnitt f&uuml;r die Anzeige der Tagessicht.
 Work hours: Arbeitszeit
 From: Von
 to: bis
 Appearance: Erscheinungsbild
-preferred-view-help: Gibt die bevorzugte Ansicht an (Tag, Woche, Monat oder Jahr).
+preferred_view_help: Gibt die bevorzugte Ansicht an (Tag, Woche, Monat oder Jahr).
 Preferred view: Bevorzugte Ansicht
 Allow top menu: Erlaube Topmen&uuml;
 Date Selectors position: Datumsauswahl im Topmen&uuml; anzeigen
-menu-themes-help: Stellt die Farben und die Art des oberen Men&uuml;s ein
+menu_themes_help: Stellt die Farben und die Art des oberen Men&uuml;s ein
 Menu theme: Men&uuml; Thema
-fonts-help: Definiert die Standard-Schriftarten (z.B. &#34;Arial, Helvetica&#34;)
+fonts_help: Definiert die Standard-Schriftarten (z.B. &#34;Arial, Helvetica&#34;)
 Fonts: Schriftart
-display-sm_month-help: Falls aktiviert, werden kleine Monate in der Monatsansichten angezeigt
+display_sm_month_help: Falls aktiviert, werden kleine Monate in der Monatsansichten angezeigt
 Display small months: Kleine Monate anzeigen
-display-weekends-help: Zeigt die Wochenenden in der Wochenansicht an.
+display_weekends_help: Zeigt die Wochenenden in der Wochenansicht an.
 Display weekends: Wochenenden anzeigen
-display-long-daynames-help: Falls aktiviert, werden lange Wochentagsnamen angezeigt
+display_long_days_help: Falls aktiviert, werden lange Wochentagsnamen angezeigt
 Display long day names: Lange Wochentagsnamen anzeigen
-display-alldays-help: Zeigt und bef&uuml;llt die Tage des vorhergehenden und folgenden Monats in der aktuellen Monatsansichten
+display_all_days_in_month_help: Zeigt und bef&uuml;llt die Tage des vorhergehenden und folgenden Monats in der aktuellen Monatsansichten
 Display all days in month view: Anzeigen <b>aller</b> Tage in der Monatsansicht
-display-week-number-help: Gibt an, ob die Wochennummer (1-52) in der Monats- und Wochenansicht angezeigt werden soll.
+display_weeknumber_help: Gibt an, ob die Wochennummer (1-52) in der Monats- und Wochenansicht angezeigt werden soll.
 Display week number: Wochennummer anzeigen
-display-desc-print-day-help: Beinhaltet in der Druckansicht die Beschreibungen der Termine in der Tagesansicht
+display_desc_print_day_help: Beinhaltet in der Druckansicht die Beschreibungen der Termine in der Tagesansicht
 desc in printer day view: Beschreibungsanzeige von Terminen in der Druckansicht von Tagesansichten
-yearly-shows-events-help: Zeigt Tage mit Terminen in der Monats- und Jahresansicht HERVORGEHOBEN (FETT) an
+display_bold_days_in_year_help: Zeigt Tage mit Terminen in der Monats- und Jahresansicht HERVORGEHOBEN (FETT) an
 bold events month/year views: Zeigt Tage mit Terminen in der Monats- und Jahresansicht HERVORGEHOBEN (FETT) an
-display-minutes-help: Falls aktiviert, werden die ganzen Stunden auch mit :00 Minuten angezeigt
+display_minutes_help: Falls aktiviert, werden die ganzen Stunden auch mit :00 Minuten angezeigt
 Display 00 minutes always: Anzeigen auch von &#39;:00&#39; Minuten
-display-end-times-help: Anzeigen der Endzeit falls es ein gezeiteter Termin ist
+display_end_times_help: Anzeigen der Endzeit falls es ein gezeiteter Termin ist
 Display end times on calendars: Anzeigen der Endzeiten am Kalender
-allow-view-add-help: Ein &#34;+&#34; Icon wird bei Ansichten beigef&uuml;gt, welches Teilnehmern ein schnelles hinzuf&uuml;gen von Terminen bei anderen Kalendern erm&ouml;glicht
+display_add_link_in_views_help: Ein &#34;+&#34; Icon wird bei Ansichten beigef&uuml;gt, welches Teilnehmern ein schnelles hinzuf&uuml;gen von Terminen bei anderen Kalendern erm&ouml;glicht
 Include add event link in views: &Uuml;ber "Ansichten" Termine
-lunar-help: Falls aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
+display_moon_phases_help: Falls aktiv, werden kleine Mondphasen-Icons jedes Monat angezeigt
 Display Lunar Phases in month view: Anzeigen der Mondphasen in der Monatsansicht
 Restrictions: Einschr&auml;nkungen
-allow-view-other-help: Gibt an, ob die Benutzer die Kalender anderer Teilnehmer sehen kann.
+allow_view_other_help: Gibt an, ob die Benutzer die Kalender anderer Teilnehmer sehen kann.
 may view others cals: Kalenderansicht anderer Benutzer zulassen
-require-approvals-help: Wenn diese Option ausgew&auml;hlt ist, mu&szlig; der Benutzer den Termin best&auml;tigen, um auf seinem Kalender anzeigen zu lassen (vorausgesetzt &#34;unbest&auml;tigte Termine anzeigen&#34;). Anmerkung: Wenn diese Option auf &#34;Nein&#34; gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte &#34;&Ouml;ffentliche Kalender&#34; aus.
+require_approvals_help: Wenn diese Option ausgew&auml;hlt ist, mu&szlig; der Benutzer den Termin best&auml;tigen, um auf seinem Kalender anzeigen zu lassen (vorausgesetzt &#34;unbest&auml;tigte Termine anzeigen&#34;). Anmerkung: Wenn diese Option auf &#34;Nein&#34; gesetzt ist, wirkt sich dies nicht auf etwaige aktiverte &#34;&Ouml;ffentliche Kalender&#34; aus.
 Require event approvals: Terminbest&auml;tigung verlangen
-display-unapproved-help: Gibt an, ob unbest&auml;tigte Termine in Ihrem Kalender angezeigt werden sollen. Wenn &#34;Ja&#34;, werden unbest&auml;tigte Termine in einer anderen Farbe angezeigt. Wenn &#34;Nein&#34;, m&uuml;ssen unbest&auml;tigte Termine erst best&auml;tigt werden, um angezeigt zu werden.
+display_unapproved_help: Gibt an, ob unbest&auml;tigte Termine in Ihrem Kalender angezeigt werden sollen. Wenn &#34;Ja&#34;, werden unbest&auml;tigte Termine in einer anderen Farbe angezeigt. Wenn &#34;Nein&#34;, m&uuml;ssen unbest&auml;tigte Termine erst best&auml;tigt werden, um angezeigt zu werden.
 Display unapproved: Unbest&auml;tigte Termine anzeigen
-conflict-check-help: Pr&uuml;ft Termin&uuml;berschneidungen (Zwei Termine die f&uuml;r dieselbe Person zur gleichen Zeit gesetzt wurden). Wenn die Option auf &#34;JA&#34; gesetzt wurde kann man Termin&uuml;berschneidungen &uuml;ber ein Eingabefenster zulassen. Wenn Sie &#34;NEIN&#34; gew&auml;hlt wurde werden Konflikte nicht gepr&uuml;ft. Es wird empfohlen die Option auf &#34;JA&#34; zu setzen.
+allow_conflicts_help: Pr&uuml;ft Termin&uuml;berschneidungen (Zwei Termine die f&uuml;r dieselbe Person zur gleichen Zeit gesetzt wurden). Wenn die Option auf &#34;JA&#34; gesetzt wurde kann man Termin&uuml;berschneidungen &uuml;ber ein Eingabefenster zulassen. Wenn Sie &#34;NEIN&#34; gew&auml;hlt wurde werden Konflikte nicht gepr&uuml;ft. Es wird empfohlen die Option auf &#34;JA&#34; zu setzen.
 Check for conflicts: Termin&uuml;berschneidungen pr&uuml;fen
 Yes: Ja
 No: Nein
-conflict-months-help: Gibt an wie viele Monate im voraus auf Zeit&uuml;berschneidungen gepr&uuml;ft werden soll. Wenn das Hinzuf&uuml;gen von Eintr&auml;gen zu lange dauert verringern Sie die Anzahl der Monate die im voraus gepr&uuml;ft werden sollen.
+conflict_months_help: Gibt an wie viele Monate im voraus auf Zeit&uuml;berschneidungen gepr&uuml;ft werden soll. Wenn das Hinzuf&uuml;gen von Eintr&auml;gen zu lange dauert verringern Sie die Anzahl der Monate die im voraus gepr&uuml;ft werden sollen.
 Conflict checking months: Termin&uuml;berschneidungspr&uuml;fung (in Monaten)
-conflict-check-override-help: Erlaubt Teilnehmern Terminkonflikte zu &uuml;berschreiben und das Planen von zwei oder mehreren Terminen zu gleichen Zeit
+allow_conflict_override_help: Erlaubt Teilnehmern Terminkonflikte zu &uuml;berschreiben und das Planen von zwei oder mehreren Terminen zu gleichen Zeit
 may users override conflicts: Erlaubt Teilnehmern Konfikte zu &uuml;berschreiben
-limit-appts-help: Erlaubt dem Systemadministrator eine Anzahl systemweiter Limitierungen von Terminen f&uuml;r einzelne Teilnehmer zu setzen
+limit_appts_help: Erlaubt dem Systemadministrator eine Anzahl systemweiter Limitierungen von Terminen f&uuml;r einzelne Teilnehmer zu setzen
 Limit timed events per day: Anzahl der gezeiteten Termine pro Tag
-limit-appts-number-help: Definiert die max. Anzahl der gezeiteten Termine f&uuml;r einen Teilnehmer pro Tag
+limit_appts_number_help: Definiert die max. Anzahl der gezeiteten Termine f&uuml;r einen Teilnehmer pro Tag
 Maximum timed events per day: Maximale Anzahl der zu vergebenen Termine pro Tag
-crossday-help: Falls aktiv, werden tages&uuml;bergreifende Termine extra angezeigt
+disable_crossday_events_help: Falls aktiv, werden tages&uuml;bergreifende Termine extra angezeigt
 Disable Cross-Day Events: Tages&uuml;bergreifende Termine deaktivieren
-disable-location-field-help: W&auml;hlen Sie &#34;Ja&#34; um das Feld &#34;Ort&#34; bei der Termineingabe zu entfernen
+disable_location_field_help: W&auml;hlen Sie &#34;Ja&#34; um das Feld &#34;Ort&#34; bei der Termineingabe zu entfernen
 Disable Location field: Das Feld &#34;Ort&#34; bei der Termineingabe entfernen
-disable-url-field-help: Wenn &#34;JA&#34; ausgew&auml;hlt ist, wird das &#34;URL&#34; Feld von der Informationsseite entfernt
+disable_url_field_help: Wenn &#34;JA&#34; ausgew&auml;hlt ist, wird das &#34;URL&#34; Feld von der Informationsseite entfernt
 Disable URL field: &#34;URL&#34;-Feld deaktivieren
-disable-priority-field-help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Priorit&auml;tenfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
+disable_priority_field_help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Priorit&auml;tenfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
 Disable Priority field: Priorit&auml;tenfeld deaktivieren
-disable-access-field-help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Zugriffsfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
+disable_access_field_help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Zugriffsfeld von Ihren Termininformationsseiten entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
 Disable Access field: Zugriffsfeld deaktivieren
-disable-participants-field-help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Teilnehmerfeld von Ihren Termininformationsseiten entfernt, um zu verhindern das Benutzer Eintr&auml;ge anderer Teilnehmer zu Ihrem Kalender hinzuf&uuml;gen. Au&szlig;erdem k&ouml;nnen Sie mit der Option &#34;Ansicht anderer Benutzer-Kalender zulassen&#34; verhindern das Benutzer den Kalender anderer Teilnehmer sehen k&ouml;nnen.
+disable_participants_field_help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Teilnehmerfeld von Ihren Termininformationsseiten entfernt, um zu verhindern das Benutzer Eintr&auml;ge anderer Teilnehmer zu Ihrem Kalender hinzuf&uuml;gen. Au&szlig;erdem k&ouml;nnen Sie mit der Option &#34;Ansicht anderer Benutzer-Kalender zulassen&#34; verhindern das Benutzer den Kalender anderer Teilnehmer sehen k&ouml;nnen.
 Disable Participants field: Benutzerfeld deaktivieren
-disable-repeating-field-help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Wiederholungsfeld bei &#34;Eintr&auml;ge hinzuf&uuml;gen&#34; entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
+disable_repeating_field_help: Wenn sie mit &#34;JA&#34; best&auml;tigen wird das Wiederholungsfeld bei &#34;Eintr&auml;ge hinzuf&uuml;gen&#34; entfernt, um eine einfachere Handhabung zu gew&auml;hrleisten.
 Disable Repeating field: Terminwiederholungsfeld deaktivieren
-allow-html-description-help: Falls aktiviert -  Benutzer kann HTML in der Beschreibung der Termine eintragen. Wenn nicht aktiviert, werden die HTML-Tags als Plain Text angezeigt. Warnung, bei Aktivierung erm&ouml;glicht es dem Benutzer Bildverkn&uuml;pfungen auf andere Webseiten.
+allow_html_description_help: Falls aktiviert -  Benutzer kann HTML in der Beschreibung der Termine eintragen. Wenn nicht aktiviert, werden die HTML-Tags als Plain Text angezeigt. Warnung, bei Aktivierung erm&ouml;glicht es dem Benutzer Bildverkn&uuml;pfungen auf andere Webseiten.
 Allow HTML in Description: Erm&ouml;glicht HTML-Beschreibung der Termine
 Popups: Pop-Up&#39;s
-disable-popups-help: Deaktivieren der Pop-Up&#39;s von den Kalenderansichten
+disable_popups_help: Deaktivieren der Pop-Up&#39;s von den Kalenderansichten
 Disable Pop-Ups: Deaktivieren von Pop-Up&#39;s
-popup-includes-siteextras-help: Falls aktiviert - Erm&ouml;glicht die Anzeige benutzerdefinierter Felder die in &#39;site_extras.php&#39; aktiviert wurden.
+site_extras_in_popup_help: Falls aktiviert - Erm&ouml;glicht die Anzeige benutzerdefinierter Felder die in &#39;site_extras.php&#39; aktiviert wurden.
 Display Site Extras in popup: Anzeige der &#39;Site Extras&#39; im Pop-Up
-popup-includes-participants-help: Falls aktiviert, werden die Benutzer im allgemeinen Kalender und bei den pers&ouml;nlichen Eintragungen angezeigt
+participants_in_popup_help: Falls aktiviert, werden die Benutzer im allgemeinen Kalender und bei den pers&ouml;nlichen Eintragungen angezeigt
 Display Participants in popup: Anzeigen der Benutzer im Pop-Up
 Miscellaneous: Verschiedenes
-remember-last-login-help: Mit dieser Einstellung merkt sich der Kalender den Benutzernamen f&uuml;r das n&auml;chste Anmelden (nicht das Kennwort) sowie die benutzerdefinierten Voreinstellungen.
+remember_last_login_help: Mit dieser Einstellung merkt sich der Kalender den Benutzernamen f&uuml;r das n&auml;chste Anmelden (nicht das Kennwort) sowie die benutzerdefinierten Voreinstellungen.
 Remember last login: Letzte Anmeldung merken
-summary_length-help: Maximale L&auml;nge der Kurzbeschreibung in den Kalenderansichten
+summary_length_help: Maximale L&auml;nge der Kurzbeschreibung in den Kalenderansichten
 Brief Description Length: L&auml;nge der Kurzbeschreibung
-user_sort-help: Legt die Art der Sortierung von Teilnehmer- und &#39;Zentralen&#39;-Kalenderlisten fest
+user_sort_help: Legt die Art der Sortierung von Teilnehmer- und &#39;Zentralen&#39;-Kalenderlisten fest
 User Sort Order: Sortierung der Teilnehmerliste
 Lastname, Firstname: Zuname, Vorname
 Firstname, Lastname: Vorname, Zuname
-allow-public-access-help: Wenn diese Option gew&auml;hlt ist, kann der Kalender als &#34;&ouml;ffentlicher Kalender&#34; ohne Schreibzugriff und ohne Login verwendet werden.
+allow_public_access_help: Wenn diese Option gew&auml;hlt ist, kann der Kalender als &#34;&ouml;ffentlicher Kalender&#34; ohne Schreibzugriff und ohne Login verwendet werden.
 Allow public access: &ouml;ffentlichen Zugriff erlauben
 public-access-default-visible: Termine vom &ouml;ffentlichen Kalender werden automatisch bei jedem Benutzer angezeigt
 Public visible by default: &ouml;ffentlicher Zugang f&uuml;r ALLE Benutzer sichtbar
@@ -289,7 +289,7 @@ public-access-override-help: Erlaubt die M&ouml;glichkeit Terminnamen und Beschr
 Override public event name/desc: &Uuml;berschreiben von Terminnamen&#47;Beschreibung f&uuml;r &ouml;ffentlichen Zugang
 public-access-override-text-help: Der Text der angezeigt wird wenn die obere Option aktiviert ist
 public text display: Text der im &ouml;ffentlichen Kalender angzeigt werden soll
-public-access-captcha-help: Falls aktiv, erfordern neue Termine des &ouml;ffentlichen Kalender, eine CAPTCHA-G&uuml;ltigkeits&uuml;berpr&uuml;fung
+public_access_captcha_help: Falls aktiv, erfordern neue Termine des &ouml;ffentlichen Kalender, eine CAPTCHA-G&uuml;ltigkeits&uuml;berpr&uuml;fung
 require public CAPTCHA: CAPTCHA-&Uuml;berpr&uuml;fung f&uuml;r neue Termine des &ouml;ffentlichen Kalenders aktivieren
 uac-enabled-help: Aktiviert die Zugriffskontrolle f&uuml;r den Benutzer
 UAC enabled: Zugriffskontrolle f&uuml;r Benutzer aktivieren
@@ -302,17 +302,17 @@ NUCs enabled: &#39;Zentrale&#39;-Kalender aktivieren
 nonuser-list-help: Wo sollen die &#39;Zentralen&#39;-Kalender in der Teilnehmerliste angezeigt werden?
 list NUCs at: Wo sollen die &#39;Zentralen&#39; Kalender in der Teilnehmerliste angezeigt werden
 Upcoming Events: Demn&auml;chst anstehende Termine
-upcoming-events-help: Aktiviere upcoming.php
+upcoming_events_help: Aktiviere upcoming.php
 Enabled: Aktiv
-upcoming-events-allow-override: Erlaube benutzerdefinierte Parameter f&uuml;r upcoming.php
+upcoming_events_allow_override: Erlaube benutzerdefinierte Parameter f&uuml;r upcoming.php
 Allow user override: Benutzer die Einstellungen &uuml;berschreiben lassen
-upcoming-events-display-caticons: Inklusive des Kategorie-Icons in upcoming.php
+upcoming_events_display_caticons: Inklusive des Kategorie-Icons in upcoming.php
 Display category icons: Kategorie Icons anzeigen
-upcoming-events-display-layers: Anzeigen der Layers im upcoming.php
+upcoming_events_display_layers: Anzeigen der Layers im upcoming.php
 Display layers: Layers anzeigen
-upcoming-events-display-links: Anzeigen der Links im upcoming.php
+upcoming_events_display_links: Anzeigen der Links im upcoming.php
 Display links to events: Zeige Links zu den Terminen
-upcoming-events-display-popups: Anzeigen der Termin PopUps im upcoming.php
+upcoming_events_display_popups: Anzeigen der Termin PopUps im upcoming.php
 Display event popups: Anzeigen von Termin PopUps
 reports-enabled-help: Wenn aktiviert, finden die Benutzer am Ende jeder Seite einen Eintrag &#34;Berichte&#34; welcher f&uuml;r das Erstellen von Berichten verwendet werden kann. Zus&auml;tzlich kann der &#34;Administrator&#34; allgemeine Berichte erstellen, die f&uuml;r jeden Benutzer am Ende jeder Seite zur Verf&uuml;gung stehen.
 Reports enabled: Berichte aktivieren
@@ -327,9 +327,9 @@ Categories enabled: Kategorien aktivieren
 icon_upload-enabled-help: Wenn aktiviert, k&ouml;nnen Benutzer Icons f&uuml;r Kategorien hochladen
 Category Icon Upload enabled: Icons hochladen f&uuml;r Kategorien
 (Requires XXX folder to exist.): (Ben&ouml;tigt vorhandenen Ordner von XXX.)
-display-tasks-help: Zeigt eine kleine Aufgabenliste bei Monats- und Tagesansicht
+display_tasks_help: Zeigt eine kleine Aufgabenliste bei Monats- und Tagesansicht
 Display small task list: Kleine Aufgabenliste anzeigen
-display-tasks-in-grid-help: Anzeigen der Aufgaben zusammen mit den Terminen in den Kalendern
+display_tasks_in_grid_help: Anzeigen der Aufgaben zusammen mit den Terminen in den Kalendern
 Display tasks in Calendars: Aufgaben in den Kalendern anzeigen
 allow-external-users-help: Externer Benutzer k&ouml;nnen die Hilfe aufrufen
 Allow external users: Externe Benutzer zulassen
@@ -343,10 +343,10 @@ use-blacklist-help: Verwende Blacklisthilfe
 Restrict self-reg to blacklist: Einschr&auml;nkung der Selbstregistrierung durch die Blacklist
 allow-self-reg-full-help: Erlaube Selbstregistrierungshilfe (Komplett)
 send self-reg emails: Verwende Benachrichtigungsemail bei Selbstregistrierung
-allow-attachment-help: Erlaubt den Benutzern das Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen
+allow_attachment_help: Erlaubt den Benutzern das Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen
 Allow event attachments: Hinzuf&uuml;gen von Dateianh&auml;ngen zu Terminen erlauben
 owner can attach if enabled: Falls aktiviert, k&ouml;nnen Administrator und Besitzer jederzeit Dateianh&auml;nge hinzuf&uuml;gen.
-allow-comments-help: Erlaubt das Hinzuf&uuml;gen von Anmerkungen zu Terminen
+allow_comments_help: Erlaubt das Hinzuf&uuml;gen von Anmerkungen zu Terminen
 Allow event comments: Hinzuf&uuml;gen von Anmerkungen zu Terminen erlauben
 owner can comment if enabled: Falls aktiviert, k&ouml;nnen Administrator und Besitzer jederzeit Anmerkungen hinzuf&uuml;gen.
 email-enabled-help: Die Option &#34;JA&#34; erm&ouml;glicht das Versenden von Emails sowie von Erinnerungen &uuml;ber den Kalender. Wenn Sie keinen Mailserver installiert haben setzen Sie diese Option auf &#34;NEIN&#34;.
@@ -370,19 +370,19 @@ email-format: Legt die Einstellung fest, ob die Benachrichtigung in &#34;HTML&#3
 Email format preference: Emailformat Einstellungen
 HTML: =
 Plain Text: Reiner Text
-email-include-ics: F&uuml;gt eine &#34;iCalendar ICS&#34; Datei zu den Emailbenachrichtungen bei.
+email_attach_ics: F&uuml;gt eine &#34;iCalendar ICS&#34; Datei zu den Emailbenachrichtungen bei.
 Include iCalendar attachments: Inklusive iCalendar Anhang
-email-event-reminders-help: Gibt an ob Erinnerungen versendet werden sollen oder nicht.
+email_reminder_help: Gibt an ob Erinnerungen versendet werden sollen oder nicht.
 Event reminders: an Termin erinnern
-email-event-added: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Termin zu ihrem Kalender HINZUGEF&Uuml;GT wurde.
+email_event_added: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Termin zu ihrem Kalender HINZUGEF&Uuml;GT wurde.
 Events added to my calendar: Termine, die zu meinem Kalender HINZUGEF&Uuml;GT wurden
-email-event-updated: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Termin auf ihrem Kalender VER&Auml;NDERT wurde.
+email_event_added: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Termin auf ihrem Kalender VER&Auml;NDERT wurde.
 Events updated on my calendar: Termine, die auf meinem Kalender AKTUALISIERT wurden
-email-event-deleted: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Termin von ihrem Kalender ENTFERNT wurde.
+email_event_deleted: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Termin von ihrem Kalender ENTFERNT wurde.
 Events removed from my calendar: Termine, die von meinem Kalender ENTFERNT wurden
-email-event-rejected: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Benutzer die Teilnahme an einem Termin ABGELEHNT hat.
+email_event_rejected: Gibt an ob Emailbenachrichtigungen versendet werden sollen, wenn ein Benutzer die Teilnahme an einem Termin ABGELEHNT hat.
 Event rejected by participant: Termine, die von ANDEREN Benutzern ENTFERNT wurden
-email-event-create: Legt fest ob der Ersteller von Terminen Emails empf&auml;ngt
+email_event_create: Legt fest ob der Ersteller von Terminen Emails empf&auml;ngt
 Event that I create: Termine die ich erstelle
 Color options: Farbenauswahl
 Allow user to customize colors: Benutzer d&uuml;rfen Farbeinstellungen &auml;ndern
