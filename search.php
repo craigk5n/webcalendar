@@ -29,17 +29,10 @@ load_user_categories();
 $advSearchStr = translate( 'Advanced Search' );
 $searchStr    = translate( 'Search' );
 
+ob_start();
 setcookie( 'show_adv', $show_advanced );
 setcookie( 'vis', $avdStyle[$show_advanced] );
-
-$INC = array();
-if( $show_advanced ) {
-  // Eventually, this will move to "search.js", too.
-  $INC[] = 'js/datesel.php';
-}
-
-ob_start();
-print_header( $INC );
+print_header();
 
 echo '
     <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
@@ -80,8 +73,8 @@ if( is_array( $categories ) && $show_advanced ) {
 if( count( $site_extras ) > 0 ) {
   echo '
         <tr id="extrafilter">
-          <td><label for="extra_filter">' . translate( 'Include' ) . '<br>
-          ' . translate( 'Site Extras_' ) . '</label></td>
+          <td><label for="extra_filter">' . translate( 'Include Site Extras' )
+   . '</label></td>
           <td><input type="checkbox" name="extra_filter" value="Y"></td>
         </tr>';
 }

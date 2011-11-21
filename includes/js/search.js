@@ -2,36 +2,39 @@
 
 var show_adv = wc_getCookie('show_adv');
 
+if (show_adv) {
+  linkFile('includes/js/datesel.js');
+}
 linkFile('includes/js/visible.js');
 linkFile('includes/js/autocomplete.js');
 
 new Autocomplete('keywordsadv', {
-    serviceUrl: 'autocomplete_ajax.php'
-  });
+  serviceUrl: 'autocomplete_ajax.php'
+});
 
 addLoadListener(function () {
-    var vis = ['hidden', 'visible'],
-    v_ar;
+  var vis = ['hidden', 'visible'],
+  v_ar;
 
-    // If we're going to have javascript show them,
-    // then we need to have javascript hide them initially.
-    // Or people without javascript will never see them.
-    v_ar = [
-      ['adv', vis[show_adv]],
-      ['advlink', vis[!show_adv]],
-      ['catfilter', vis[show_adv]],
-      ['datefilter', vis[show_adv]],
-      ['endDate', 'hidden'],
-      ['extrafilter', vis[show_adv]],
-      ['startDate', 'hidden'],
-    ];
+  // If we're going to have javascript show them,
+  // then we need to have javascript hide them initially.
+  // Or people without javascript will never see them.
+  v_ar = [
+    ['adv', vis[show_adv]],
+    ['advlink', vis[!show_adv]],
+    ['catfilter', vis[show_adv]],
+    ['datefilter', vis[show_adv]],
+    ['endDate', 'hidden'],
+    ['extrafilter', vis[show_adv]],
+    ['startDate', 'hidden'],
+  ];
 
-    for (var i = 0; i < 7; i++) {
-      toggleVisible(v_ar[i][0], v_ar[i][1]);
-    }
-    attachEventListener(document.getElementById('date_filter'), 'change', toggleDateRange);
-    attachEventListener(document.getElementById('searchUsers'), 'click', selectUsers);
-  });
+  for (var i = 0; i < 7; i++) {
+    toggleVisible(v_ar[i][0], v_ar[i][1]);
+  }
+  attachEventListener(document.getElementById('date_filter'), 'change', toggleDateRange);
+  attachEventListener(document.getElementById('searchUsers'), 'click', selectUsers);
+});
 function selectUsers() {
   // Find id of user selection object.
   var dse = document.searchformentry.elements,
