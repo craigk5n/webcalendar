@@ -174,7 +174,8 @@ foreach( array(
     'META',
     'OBJECT',
     'SCRIPT',
-    'TITLE' ) as $i ) {
+    'TITLE',
+  ) as $i ) {
   if( preg_match( "/<\s*$i/i", $description ) ) {
     $error = translate( 'Security violation!' );
     activity_log( 0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:edit_entry' );
@@ -595,7 +596,8 @@ if( empty( $error ) ) {
           'entry_ext_user',
           'entry_repeats',
           'entry_user',
-          'site_extras' ) as $d ) {
+          'site_extras',
+        ) as $d ) {
         dbi_execute( 'DELETE FROM webcal_' . $d . ' WHERE cal_id = ?',
           array( $id ) );
       }
@@ -831,7 +833,8 @@ if( empty( $error ) ) {
     // Clearly, we want to delete the old repeats, before inserting new...
     foreach( array(
         'repeats',
-        'repeats_not' ) as $d ) {
+        'repeats_not',
+      ) as $d ) {
       if( ! dbi_execute( 'DELETE FROM webcal_entry_' . $d
        . ' WHERE cal_id = ?', array( $id ) ) )
         $error .= $dberror . dbi_error();
