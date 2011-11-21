@@ -155,7 +155,7 @@ app-name-help: Specifica il nome dell'applicazione che apparir&agrave; nella bar
 Application Name: Nome dell'applicazione
 Translated Name: Nome tradotto
 Translated Name (XXX): Nome tradotto (XXX)
-server-url-help: Specifica l'URL di base per l'applicazione. Questo sar&agrave; incluso quando si inviano memorandum e notifiche via e-mail
+server_url_help: Specifica l'URL di base per l'applicazione. Questo sar&agrave; incluso quando si inviano memorandum e notifiche via e-mail
 Server URL: URL del Server
 home-url-help: Specifica l'URL iniziale per l'applicazione. Questo pu&ograve; essere assoluto o relativo
 Home URL: URL inizio
@@ -170,122 +170,122 @@ AVAILABLE THEMES: TEMI DISPONIBILI
 None: Nessuna
 Preview: Anteprima
 Site customization: Personalizzazione sito
-custom-script-help: Permette di inserire il proprio codice Javascript o foglio di stile che sar&agrave; inserito nella sezione "head" del codice HTML di ogni pagina
-Custom script/stylesheet: Script/foglio di stile personale
-custom-header-help: Consente di includere un pezzettino di codice HTML all'inizio di ogni pagina
+custom_script_help: Permette di inserire il proprio codice Javascript o foglio di stile che sar&agrave; inserito nella sezione "head" del codice HTML di ogni pagina
+Custom script: Script/foglio di stile personale
+custom_header_help: Consente di includere un pezzettino di codice HTML all'inizio di ogni pagina
 Custom header: Intestazione personale
-custom-trailer-help: Consente di includere un pezzettino di codice HTML alla fine di ogni pagina
+custom_trailer_help: Consente di includere un pezzettino di codice HTML alla fine di ogni pagina
 Custom trailer: Fine pagina personale
-enable-external-header-help: Consenti carico piede documento da documento esterno
+allow_external_header_help: Consenti carico piede documento da documento esterno
 externals head/script/trail: Consenti carico di intestazione/script/piede da documento esterno
 may user override head/trail: Consenti all'utente di specificare intestazione/piede
 Date and Time: Data e Ora
-tz-help: Specifica di quante ore aggiustare il tempo del server per ottenere il tempo locale
+tz_help: Specifica di quante ore aggiustare il tempo del server per ottenere il tempo locale
 Server TZ Selection: Selezione fuso orario servente
-display-general-use-gmt-help: Se abilitato, date/orari comuni sono espressi come GMT
+display_general_use_gmt_help: Se abilitato, date/orari comuni sono espressi come GMT
 GMT Common Use Date/Times: Mostra date/orari comuni come GMT
-date-format-help: Specifica il formato preferito per la data
+date_format_help: Specifica il formato preferito per la data
 Date format: Formato della data
 Small Task Date: Data riquadro compiti
-display-week-starts-on: Specifica se la settimana inizia Domenica o Luned&igrave;.. Se si specifica Luned&igrave;, i numeri delle settimane saranno numeri di settimane secondo lo standard ISO.
+display_week_starts_on: Specifica se la settimana inizia Domenica o Luned&igrave;.. Se si specifica Luned&igrave;, i numeri delle settimane saranno numeri di settimane secondo lo standard ISO.
 Week starts on: La settimana inizia di
-display-weekend-starts-on: Imposta giorno di inizio del fine settimana
+display_weekend_starts_on: Imposta giorno di inizio del fine settimana
 Weekend starts on: Il fine settimana inizia di
-time-format-help: Specifica quale formato orario usare: <br><i>12 ore:</i> Mostra le ore come 3am, 8:30pm, ecc.  <br><i>24 ore:</i> Mostra le ore come 3:00, 20:30, ecc.
+time_format_help: Specifica quale formato orario usare: <br><i>12 ore:</i> Mostra le ore come 3am, 8:30pm, ecc.  <br><i>24 ore:</i> Mostra le ore come 3:00, 20:30, ecc.
 Time format: Formato ora
 12 hour: 12 ore
 24 hour: 24 ore
-timed-evt-len-help: Specifica il  metodo di input per determinare la lunghezza di un evento.
+timed_evt_len_help: Specifica il  metodo di input per determinare la lunghezza di un evento.
 Specify timed event length by: Specifica la lunghezza di un evento in
 Duration: Durata
 End Time: Tempo di fine
-work-hours-help: Specifica l'arco temporale da mostrare nella vista giornaliera.
+work_hours_help: Specifica l'arco temporale da mostrare nella vista giornaliera.
 Work hours: Ore lavorative
 From: Da
 to: a
 Appearance: Aspetto
-preferred-view-help: Specifica la vista predefinita (Giorno, Settimana, Mese, o Anno)
+preferred_view_help: Specifica la vista predefinita (Giorno, Settimana, Mese, o Anno)
 Preferred view: Vista preferita
 Allow top menu: Abilita men&ugrave; superiore
 Date Selectors position: Posizione selettori data
-menu-themes-help: Imposta colori e stile del men&ugrave; superiore
+menu_themes_help: Imposta colori e stile del men&ugrave; superiore
 Menu theme: Men&ugrave; temi
-fonts-help: Specifica una lista di font si sistema da utilizzare (ad esempio "Arial, Helvetica")
+fonts_help: Specifica una lista di font si sistema da utilizzare (ad esempio "Arial, Helvetica")
 Fonts: Caratteri
-display-sm_month-help: Se abilitato, mostra mini-calendari (mese prima/dopo) nella vista 'mese'
+display_sm_month_help: Se abilitato, mostra mini-calendari (mese prima/dopo) nella vista 'mese'
 Display small months: Mostra mini-calendari
-display-weekends-help: Include i weekend quando si guarda una settimana
+display_weekends_help: Include i weekend quando si guarda una settimana
 Display weekends: Mostra fine settimana
-display-long-daynames-help: Se abilitato, mostra nomi completi dei giorni
+display_long_days_help: Se abilitato, mostra nomi completi dei giorni
 Display long day names: Mostra nomi completi dei giorni
-display-alldays-help: Mostra i giorni dei mesi precedente e seguente, in vista mese, occupando tutte le celle
+display_all_days_in_month_help: Mostra i giorni dei mesi precedente e seguente, in vista mese, occupando tutte le celle
 Display all days in month view: Mostra tutti i giorni in vista mese
-display-week-number-help: Specifica se mostrare o meno il numero della settimana (1-52) quando il calendario viene visualizzato per mese o per settimana.
+display_weeknumber_help: Specifica se mostrare o meno il numero della settimana (1-52) quando il calendario viene visualizzato per mese o per settimana.
 Display week number: Mostra numero settimana
-display-desc-print-day-help: Include la descrizione dell'evento nel formato stampabile della vista giornaliera
+display_desc_print_day_help: Include la descrizione dell'evento nel formato stampabile della vista giornaliera
 desc in printer day view: Mostra la descrizione nella visualizzazione giornaliera stampabile
-yearly-shows-events-help: Nella visualizzazione annuale, mostra in grassetto i giorni con degli eventi
+display_bold_days_in_year_help: Nella visualizzazione annuale, mostra in grassetto i giorni con degli eventi
 bold events month/year views: Mostra i giorni con degli eventi in grassetto nella visualizzazione mensile ed annuale
-display-minutes-help: Se impostato, vengono sempre mostrati i minuti che terminano in ':00'
+display_minutes_help: Se impostato, vengono sempre mostrati i minuti che terminano in ':00'
 Display 00 minutes always: Mostra sempre i minuti '00'
-display-end-times-help: Mostra evento e orari per eventi temporizzati
+display_end_times_help: Mostra evento e orari per eventi temporizzati
 Display end times on calendars: Mostra (anche) orario di fine sul calendario
-allow-view-add-help: Un'icona raffigurante un '+'sar&agrave; inclusa nelle viste, permettendo agli utenti di aggiungere velocemente eventi ai calendari degli altri utenti
+display_add_link_in_views_help: Un'icona raffigurante un '+'sar&agrave; inclusa nelle viste, permettendo agli utenti di aggiungere velocemente eventi ai calendari degli altri utenti
 Include add event link in views: Includi il link che permette di aggiungere un evento nelle viste
-lunar-help: Se impostato, nella vista mese mostra icone che rappresentano le fasi lunari
+display_moon_phases_help: Se impostato, nella vista mese mostra icone che rappresentano le fasi lunari
 Display Lunar Phases in month view: Mostra fasi lunari nella vista mese
 Restrictions: Restrizioni
-allow-view-other-help: Specifica se un utente pu&ograve; visualizzare il calendario di un altro utente.
+allow_view_other_help: Specifica se un utente pu&ograve; visualizzare il calendario di un altro utente.
 may view others cals: Permetti la visione dei calendari degli altri utenti
-require-approvals-help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad Accesso Pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
+require_approvals_help: Se abilitato, un utente deve approvare un evento prima che sia visualizzato sul suo calendario (a meno che "Mostrare eventi non approvati" sia abilitato). Nota che impostare questo a "No" non disabiliter&agrave; la necessit&agrave; di approvare gli eventi nel calendario ad Accesso Pubblico (se il calendario ad accesso pubblico &egrave; abilitato)
 Require event approvals: Richiedi che gli eventi siano approvati
-display-unapproved-help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br> Se impostato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br> Se impostato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
+display_unapproved_help: Specifica se mostrare o meno nel proprio calendario gli eventi non approvati.<br> Se impostato su "S&igrave;", gli eventi non approvati saranno mostrati nel calendario (con un testo di colore differente).<br> Se impostato su "No", gli eventi saranno mostrati nel calendario solo se approvati.
 Display unapproved: Mostra eventi non approvati
-conflict-check-help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo imposti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo imposti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia impostare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
+allow_conflicts_help: Controlla se esistono conflitti fra gli eventi (due eventi programmati per lo stesso istante o per la stessa persona). Se lo imposti a "S&igrave;", sarai ancora in grado di programmare due eventi per lo stesso istante dopo aver dato conferma ad un avviso. Se lo imposti a "No", il controllo dei conflitti fra gli eventi sar&agrave; fatto. &Egrave; probabile che tu voglia impostare questo a "S&igrave;", cos&igrave; il controllo dei conflitti viene fatto
 Check for conflicts: Controlla se esistono conflitti fra gli eventi
 Yes: S&igrave;
 No: =
-conflict-months-help: Se il controllo dei conflitti &egrave; ablitato ("Controlla se esistono conflitti fra gli eventi" &egrave; impostato a "No"), questo specifica quanti mesi futuri  includere nel controllo. Se verifichi che l'aggiunta di un evento dura molto tempo, riduci questo numero
+conflict_months_help: Se il controllo dei conflitti &egrave; ablitato ("Controlla se esistono conflitti fra gli eventi" &egrave; impostato a "No"), questo specifica quanti mesi futuri  includere nel controllo. Se verifichi che l'aggiunta di un evento dura molto tempo, riduci questo numero
 Conflict checking months: Controllo dei conflitti mensile
-conflict-check-override-help: Permette agli utenti di sovrascrivere conflitti degli eventi e di programmare due o pi&ugrave; eventi per lo stesso istante
+allow_conflict_override_help: Permette agli utenti di sovrascrivere conflitti degli eventi e di programmare due o pi&ugrave; eventi per lo stesso istante
 may users override conflicts: Consenti agli utenti di sovrascrivere i conflitti
-limit-appts-help: Permette all'amministratore di sistema di impostare un limite globale sul numero di appuntamenti che un singolo utente pu&ograve; avere in un singolo giorno
+limit_appts_help: Permette all'amministratore di sistema di impostare un limite globale sul numero di appuntamenti che un singolo utente pu&ograve; avere in un singolo giorno
 Limit timed events per day: Limita il numero degli eventi del giorno
-limit-appts-number-help: Specifica il massimo numero di eventi che un utente pu&ograve; avere in un giorno
+limit_appts_number_help: Specifica il massimo numero di eventi che un utente pu&ograve; avere in un giorno
 Maximum timed events per day: Massimo numero di eventi al giorno
-crossday-help: Se impostato, mostra in giorni separati eventi estesi su pi&ugrave; giorni
+disable_crossday_events_help: Se impostato, mostra in giorni separati eventi estesi su pi&ugrave; giorni
 Disable Cross-Day Events: Disabilita eventi multidata
-disable-location-field-help: Imposta "S&igrave;" per rimuovere il campo "Locazione" dalla pagina info evento
+disable_location_field_help: Imposta "S&igrave;" per rimuovere il campo "Locazione" dalla pagina info evento
 Disable Location field: Disabilita campo Locazione
-disable-url-field-help: Imposta "S&igrave;" per rimuovere il campo "URL" dalla pagina info evento
+disable_url_field_help: Imposta "S&igrave;" per rimuovere il campo "URL" dalla pagina info evento
 Disable URL field: Disabilita campo URL
-disable-priority-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Priorit&agrave;" dalle pagine di informazione sugli eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
+disable_priority_field_help: Selezionare "S&igrave;" rimuover&agrave; il campo "Priorit&agrave;" dalle pagine di informazione sugli eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
 Disable Priority field: Disattiva il campo "priorit&agrave;"
-disable-access-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Accesso" dalle pagine di informazione sugli eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
+disable_access_field_help: Selezionare "S&igrave;" rimuover&agrave; il campo "Accesso" dalle pagine di informazione sugli eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
 Disable Access field: Disattiva il campo "accesso"
-disable-participants-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Partecipanti" dalle pagine di informazione sugli eventi, impedendo agli utenti di aggiungere altri utenti ai loro eventi. Se abiliti questa opzione, potresti anche voler disabilitare il campo "Permetti la visualizzazione dei calendari degli altri utenti"
+disable_participants_field_help: Selezionare "S&igrave;" rimuover&agrave; il campo "Partecipanti" dalle pagine di informazione sugli eventi, impedendo agli utenti di aggiungere altri utenti ai loro eventi. Se abiliti questa opzione, potresti anche voler disabilitare il campo "Permetti la visualizzazione dei calendari degli altri utenti"
 Disable Participants field: Disattiva il campo "partecipanti"
-disable-repeating-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Ripetizioni" quando si aggiungono eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
+disable_repeating_field_help: Selezionare "S&igrave;" rimuover&agrave; il campo "Ripetizioni" quando si aggiungono eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
 Disable Repeating field: Disattiva il campo "ripetizioni"
-allow-html-description-help: Se abilitato, gli utenti possono inserire HTML nel campo di descrizione di un evento. Se non abilitato, i tag HTML saranno saltati, in modo da farli apparire com testo semplice. Attenzione: Abilitare questa caratteristica permetter&agrave; agli utenti di fare riferimenti ad immagini di altri siti
+allow_html_description_help: Se abilitato, gli utenti possono inserire HTML nel campo di descrizione di un evento. Se non abilitato, i tag HTML saranno saltati, in modo da farli apparire com testo semplice. Attenzione: Abilitare questa caratteristica permetter&agrave; agli utenti di fare riferimenti ad immagini di altri siti
 Allow HTML in Description: Permetti HTML nella Descrizione
 Popups: Finestre transitorie
-disable-popups-help: Disablilita finestre transitorie nella vista calendario
+disable_popups_help: Disablilita finestre transitorie nella vista calendario
 Disable Pop-Ups: Disablilita finestre transitorie
-popup-includes-siteextras-help: Se abilitato nei popup degli eventi sar&agrave abilitato nel file site_extras.php l'impostazione del campo permetti eventi personalizzati
+site_extras_in_popup_help: Se abilitato nei popup degli eventi sar&agrave abilitato nel file site_extras.php l'impostazione del campo permetti eventi personalizzati
 Display Site Extras in popup: Mostra gli Extra per il Sito in un popup
-popup-includes-participants-help: Se impostato, la scheda evento mostra i partecipanti
+participants_in_popup_help: Se impostato, la scheda evento mostra i partecipanti
 Display Participants in popup: Mostra partecipanti in scheda evento
 Miscellaneous: Miscellanea
-remember-last-login-help: Quando abilitato, i campi di accesso dell'utente saranno riempiti automaticamente nella pagina di accesso (ma non la parola chiave) e saranno caricate le preferenze dell'utente (inclusi i colori preferiti e la scelta della lingua)
+remember_last_login_help: Quando abilitato, i campi di accesso dell'utente saranno riempiti automaticamente nella pagina di accesso (ma non la parola chiave) e saranno caricate le preferenze dell'utente (inclusi i colori preferiti e la scelta della lingua)
 Remember last login: Ricorda l'ultimo accesso
-summary_length-help: Lunghezza massima della 'descrizione breve' nelle viste calendario
+summary_length_help: Lunghezza massima della 'descrizione breve' nelle viste calendario
 Brief Description Length: Lunghezza 'descrizione breve'
-user_sort-help: Determina metodo di ordinamento per le liste Utenti / non-Utenti
+user_sort_help: Determina metodo di ordinamento per le liste Utenti / non-Utenti
 User Sort Order: Metodo ordinamento Utenti
 Lastname, Firstname: Cognome, Nome
 Firstname, Lastname: Nome, Cognome
-allow-public-access-help: Se abilitato, il calendario pu&ograve; essere utilizzato come un calendario pubblico in sola lettura che non richiede agli utenti di effettuare il login
+allow_public_access_help: Se abilitato, il calendario pu&ograve; essere utilizzato come un calendario pubblico in sola lettura che non richiede agli utenti di effettuare il login
 Allow public access: Permetti l'Accesso Pubblico
 public-access-default-visible: Eventi dal calendario pubblico appariranno automaticamente nel calendario di tutti gli utenti
 Public visible by default: Se non specificato, l'Accesso Pubblico &egrave; visibile
@@ -303,7 +303,7 @@ public-access-override-help: Consenti di nascondere nomi e descrizioni per Acces
 Override public event name/desc: Consenti cambio nome/descrizione per Accesso Pubblico
 public-access-override-text-help: Il testo da mostrare se l'opzione sopra &egrave; abilitata. Se &egrave; 'Not Available', viene tradotto.
 public text display: Testo da mostrare per Accesso Pubblico
-public-access-captcha-help: Se impostato, l'aggiunta di eventi da parte di 'Accesso Pubblico' richiede validazione CAPTCHA.
+public_access_captcha_help: Se impostato, l'aggiunta di eventi da parte di 'Accesso Pubblico' richiede validazione CAPTCHA.
 require public CAPTCHA: Richiede validazione CAPTCHA per 'nuovo evento' da 'Accesso Pubblico'
 uac-enabled-help: Abilita controllo accesso a livello utente
 UAC enabled: Controllo accesso utenti abilitato
@@ -316,17 +316,17 @@ NUCs enabled: Calendari abilitati per i non utenti
 nonuser-list-help: Dove mostrare i calendari dei non utenti nella lista dei partecipanti
 list NUCs at: Mostra nella lista dei partecipanti a
 Upcoming Events: Prossimi eventi
-upcoming-events-help: Abilita upcoming.php
+upcoming_events_help: Abilita upcoming.php
 Enabled: Abilitati
-upcoming-events-allow-override: Abilita i parametri utente per upcoming.php
+upcoming_events_allow_override: Abilita i parametri utente per upcoming.php
 Allow user override: Consenti sovrascrittura utente
-upcoming-events-display-caticons: Includi categoria icone in upcoming.php
+upcoming_events_display_caticons: Includi categoria icone in upcoming.php
 Display category icons: Mostra categoria icone
-upcoming-events-display-layers: Mostra livelli in upcoming.php
+upcoming_events_display_layers: Mostra livelli in upcoming.php
 Display layers: Mostra Livelli
-upcoming-events-display-links: Mostra link in upcoming.php
+upcoming_events_display_links: Mostra link in upcoming.php
 Display links to events: Mostra link agli eventi
-upcoming-events-display-popups: Mostra popup eventi in upcoming.php
+upcoming_events_display_popups: Mostra popup eventi in upcoming.php
 Display event popups: Mostra popup eventi
 reports-enabled-help: Se abilitato, gli utenti vedranno una sezione "Rapporti" alla fine di ogni pagina e saranno in grado di creare rapporti personalizzati. Inoltre, gli amministratori potranno creare rapporti globali che appariranno alla fine delle pagine di tutti gli utenti
 Reports enabled: Rapporti abilitati
@@ -343,9 +343,9 @@ Category Icon Upload enabled: Carico icone categorie abilitato
 Requires: Richiede
 folder to exist: esistenza cartella
 (Requires XXX folder to exist.): (Richiede l'esistenza della cartella XXX.)
-display-tasks-help: Mostra riquadro compiti nelle viste mese e giorno
+display_tasks_help: Mostra riquadro compiti nelle viste mese e giorno
 Display small task list: Mostra riquadro compiti
-display-tasks-in-grid-help: Mostra compiti in calendario insieme agli eventi
+display_tasks_in_grid_help: Mostra compiti in calendario insieme agli eventi
 Display tasks in Calendars: Mostra compiti nei calendari
 allow-external-users-help: Specifica se un non utente pu&ograve; essere aggiunto ad un evento. Questo permette ai non utenti di essere listati come  partecipanti all'evento.
 Allow external users: Permetti utenti esterni
@@ -359,10 +359,10 @@ use-blacklist-help: Limita accesso alle funzioni di WebCalendar in base all'indi
 Restrict self-reg to blacklist: Limita auto-registrazione da lista nera
 allow-self-reg-full-help: Consenti ai nuovi utenti di completare l'auto-registrazione in-linea
 send self-reg emails: Genera parola chiave e inviala a nuovi utenti
-allow-attachment-help: Consenti agli utenti di allegare documenti agli eventi
+allow_attachment_help: Consenti agli utenti di allegare documenti agli eventi
 Allow event attachments: Consenti allegati per eventi
 owner can attach if enabled: Amministratore e proprietario possono sempre aggiungere allegati, se abilitato.
-allow-comments-help: Consenti agli utenti di aggiungere commenti agli eventi
+allow_comments_help: Consenti agli utenti di aggiungere commenti agli eventi
 Allow event comments: Consenti commenti in eventi
 owner can comment if enabled: Amministratore e proprietario possono sempre aggiungere commenti, se abilitato.
 email-enabled-help: Attiva o disattiva l'invio di e-mail di notifica ed avviso. Impostalo a "No", se il tuo server non &egrave; propriamente configurato per l'invio di e-mail
@@ -386,19 +386,19 @@ email-format: Formato dei messaggi (HTML o testo)
 Email format preference: Preferenze formato post@
 HTML: HTML (sconsigliato)
 Plain Text: Testo semplice
-email-include-ics: Allega un file ICS iCalendar al messaggio email
+email_attach_ics: Allega un file ICS iCalendar al messaggio email
 Include iCalendar attachments: Allega iCalendar
-email-event-reminders-help: Specifica se inviare o  meno avvisi per gli eventi
+email_reminder_help: Specifica se inviare o  meno avvisi per gli eventi
 Event reminders: Segnala eventi in e-mail
-email-event-added: Segnala nuovo evento
+email_event_added: Segnala nuovo evento
 Events added to my calendar: Segnala nuovo evento aggiunto al mio calendario
-email-event-updated: Segnala aggiornamento di un evento
+email_event_added: Segnala aggiornamento di un evento
 Events updated on my calendar: Segnala aggiornamento di un evento del mio calendario
-email-event-deleted: Segnala un evento cancellato
+email_event_deleted: Segnala un evento cancellato
 Events removed from my calendar: Segnala un evento cancellato dal mio calendario
-email-event-rejected: Segnala un evento rifiutato
+email_event_rejected: Segnala un evento rifiutato
 Event rejected by participant: Segnala un evento rifiutato da un partecipante
-email-event-create: Specifica se l'autore di un evento ricever&agrave; una notifica via post@
+email_event_create: Specifica se l'autore di un evento ricever&agrave; una notifica via post@
 Event that I create: Evento creato da me
 Color options: Opzioni colre
 Allow user to customize colors: Consenti all'utente di personalizzare i colori

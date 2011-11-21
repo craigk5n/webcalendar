@@ -106,81 +106,81 @@ System Settings: Nastavení systému
 Help: Nápověda
 app-name-help: Určuje jméno aplikace, které se na všech stránkách zobrazí v záhlaví prohlížeče. Zadaná hodnota se zkusí vyhledat v překladech, aby bylo možno definovat její znění ve všech jazycích.
 Application Name: Název aplikace
-server-url-help: Určuje základní URL k tomuto web kalendáři. Tato URL bude použita jako základ při zasílání emailů s připomínkami a upozorňováním.
+server_url_help: Určuje základní URL k tomuto web kalendáři. Tato URL bude použita jako základ při zasílání emailů s připomínkami a upozorňováním.
 Server URL: URL Serveru
 language-help: Určuje, jaký používat jazyk.
 Language: Jazyk
 Your browser default language is: Výchozí jazyk tvého prohlížeče je
 None: žádný
-custom-script-help: Povolí vkládání vlastních kódů (Javascript) nebo stylů, které budou vloženy do HTML hlavičky na každé stránce.
-Custom script/stylesheet: Vlastní styl/skripty
-custom-header-help: Umožňuje definovat vlastni HTML, které se přidá na začátek každé stránky
+custom_script_help: Povolí vkládání vlastních kódů (Javascript) nebo stylů, které budou vloženy do HTML hlavičky na každé stránce.
+Custom script: Vlastní styl/skripty
+custom_header_help: Umožňuje definovat vlastni HTML, které se přidá na začátek každé stránky
 Custom header: Vlastní hlavička
-custom-trailer-help: Umožnuje definovat vlastní HTML, které se přidá na konec každé stránky.
+custom_trailer_help: Umožnuje definovat vlastní HTML, které se přidá na konec každé stránky.
 Custom trailer: Vlastní patička
-tz-help: Lze určit, o kolik hodin má server upravovat čas vůči místnímu času.
-date-format-help: Určuje upřednostňovaný formát data.
+tz_help: Lze určit, o kolik hodin má server upravovat čas vůči místnímu času.
+date_format_help: Určuje upřednostňovaný formát data.
 Date format: Formát data
-display-week-starts-on: Tímto lze určit, zda týden začíná v neděli a nebo v pondělí. Pokud vybereš pondělí, tak se použije pro čísla týdnu norma ISO.
+display_week_starts_on: Tímto lze určit, zda týden začíná v neděli a nebo v pondělí. Pokud vybereš pondělí, tak se použije pro čísla týdnu norma ISO.
 Week starts on: Začátek týdne
-time-format-help: Určuje jaký formát času používat:<br><i>12ti hodinový:</i> Zobrazuje časy jako je 3dop., 8:30odp., atp.<br><i>24 hodinový:</i> Zobrazuje časy např. jako 300, 2030, atp.
+time_format_help: Určuje jaký formát času používat:<br><i>12ti hodinový:</i> Zobrazuje časy jako je 3dop., 8:30odp., atp.<br><i>24 hodinový:</i> Zobrazuje časy např. jako 300, 2030, atp.
 Time format: Formát času
 12 hour: 12 hodin
 24 hour: 24 hodin
-timed-evt-len-help: Určuje způsob zadávání, kterým se určí délka naplánované události.
+timed_evt_len_help: Určuje způsob zadávání, kterým se určí délka naplánované události.
 Specify timed event length by: Zadávání délky plánovaných událostí
 Duration: Délka
 End Time: Koncovým časem
-work-hours-help: Tímto určíš rozsah času pro zobrazení dne v kalendáři.
+work_hours_help: Tímto určíš rozsah času pro zobrazení dne v kalendáři.
 Work hours: Pracovní doba
 From: Od
 to: do
-preferred-view-help: Určuje výchozí pohled na kalendář (denní, týdení, měsíční a nebo roční)
+preferred_view_help: Určuje výchozí pohled na kalendář (denní, týdení, měsíční a nebo roční)
 Preferred view: Upřednostnovaný pohled
-fonts-help: Určuje seznam systémových fontů, které se mají používat (jako jsou "Arial, Helvetica").
+fonts_help: Určuje seznam systémových fontů, které se mají používat (jako jsou "Arial, Helvetica").
 Fonts: Písma
-display-weekends-help: Vypisuje také víkendové dny při prohlížení týdne.
-display-week-number-help: Lze určit, zda se má zobrazovat číslo týdne (1-52) v týdením a měsíčním pohledu na kalendář.
+display_weekends_help: Vypisuje také víkendové dny při prohlížení týdne.
+display_weeknumber_help: Lze určit, zda se má zobrazovat číslo týdne (1-52) v týdením a měsíčním pohledu na kalendář.
 Display week number: Zobrazovat číslo týdne
-display-desc-print-day-help: Vypisuj popisy událostí v náhledu na den určenému pro tisk.
+display_desc_print_day_help: Vypisuj popisy událostí v náhledu na den určenému pro tisk.
 desc in printer day view: Zobrazuj popisy při tiskovém náhledu na den
-yearly-shows-events-help: V ročním pohledu bude zobrazovat události tučnými písmy.
+display_bold_days_in_year_help: V ročním pohledu bude zobrazovat události tučnými písmy.
 bold events month/year views: V mšsíčním a ročním pohledu zobrazovat dny s událostmi tučně
-allow-view-add-help: V náhledu na kalendáře jiných uživatelů přibude '+' pro rychlé vkládání nových událostí do jejich kalendářů.
+display_add_link_in_views_help: V náhledu na kalendáře jiných uživatelů přibude '+' pro rychlé vkládání nových událostí do jejich kalendářů.
 Include add event link in views: Přidej odkaz na vkládání v jiných pohledech
-allow-view-other-help: Určuje, zda si může uživatel prohlížet kalendář někoho jiného.
+allow_view_other_help: Určuje, zda si může uživatel prohlížet kalendář někoho jiného.
 may view others cals: Povol prohlížení kalendářů jiných uživatelů
-require-approvals-help: Pokud je povoleno, uživatel bude muset danou událost nejprve potvrdit a teprve pak se mu zobrazí v kalendáři (samozřejmě, pokud nemá povoleno zobrazování nepotvrzených). Poznemenejme, že nastavením tohoto na "Ne" nevypne nutnost potvrzování událostí pro veřejně přístupné kalendá?e (pokud jsou veřejně přístupné kalendáře povoleny...).
+require_approvals_help: Pokud je povoleno, uživatel bude muset danou událost nejprve potvrdit a teprve pak se mu zobrazí v kalendáři (samozřejmě, pokud nemá povoleno zobrazování nepotvrzených). Poznemenejme, že nastavením tohoto na "Ne" nevypne nutnost potvrzování událostí pro veřejně přístupné kalendá?e (pokud jsou veřejně přístupné kalendáře povoleny...).
 Require event approvals: Vyžaduj potvrzování událostí
-display-unapproved-help: Tímto určíš, jestli se mají v tvém kalendáři zobrazovat nepotvrzené události<br> Pokud je nastaveno na "Ano", pak se nepotvrzené události zobrazí v kalendáři (jinou barvou písma).<br> Pokud je nastaveno na "Ne", nebudou nepotvrzené události zobrazeny, dokud je někdo nepotvrdí.
+display_unapproved_help: Tímto určíš, jestli se mají v tvém kalendáři zobrazovat nepotvrzené události<br> Pokud je nastaveno na "Ano", pak se nepotvrzené události zobrazí v kalendáři (jinou barvou písma).<br> Pokud je nastaveno na "Ne", nebudou nepotvrzené události zobrazeny, dokud je někdo nepotvrdí.
 Display unapproved: Zobrazovat nepotvrzené události
-conflict-check-help: Kontroluje konflikty mezi událostmi (dvě události naplánované na stejnou dobu pro tutéž osobu). Pokud tuto kontrolu povolíš, i tak bude možno po potvrzení konfliktu naplánovat na stejnou dobu více událostí. Doporučujeme nechat tuto kontrolu zapnutou.
+allow_conflicts_help: Kontroluje konflikty mezi událostmi (dvě události naplánované na stejnou dobu pro tutéž osobu). Pokud tuto kontrolu povolíš, i tak bude možno po potvrzení konfliktu naplánovat na stejnou dobu více událostí. Doporučujeme nechat tuto kontrolu zapnutou.
 Check for conflicts: Kontrola na konflikty mezi událostmi
 Yes: Ano
 No: Ne
-conflict-months-help: Pokud je zapnuta kontrola konfliktů, tímto lze nastavit, kolik mšsíců do budoucnosti má být prohledáno na možný konflikt. Jestliže ti připadá, že vkládání nových událostí trvá moc dlouho, zmenši toto číslo.
+conflict_months_help: Pokud je zapnuta kontrola konfliktů, tímto lze nastavit, kolik mšsíců do budoucnosti má být prohledáno na možný konflikt. Jestliže ti připadá, že vkládání nových událostí trvá moc dlouho, zmenši toto číslo.
 Conflict checking months: Na konflikty kontolovat měsíců
-conflict-check-override-help: Umožní uživatelům potlačit konflikt mezi událostmi a naplánovat dvě a více události na stejný čas.
+allow_conflict_override_help: Umožní uživatelům potlačit konflikt mezi událostmi a naplánovat dvě a více události na stejný čas.
 may users override conflicts: Povol uživatlům potlačit konflikty
-limit-appts-help: Umožní administrátorovi nastavit systémové omezení počtu schůzek na jednoho uživatele a den.
+limit_appts_help: Umožní administrátorovi nastavit systémové omezení počtu schůzek na jednoho uživatele a den.
 Limit timed events per day: Omez počet naplánovaných události na jeden den
-limit-appts-number-help: Určuje maximální počet událostí, které si může daný uživatel naplánovat na jeden den.
+limit_appts_number_help: Určuje maximální počet událostí, které si může daný uživatel naplánovat na jeden den.
 Maximum timed events per day: Maximální počet naplánovaných události za den
-disable-priority-field-help: Výběrem 'Ano' odstraníš políčko 'Priorita' ze stránky události. Čímž se zajistí jednodušší formulá?.
+disable_priority_field_help: Výběrem 'Ano' odstraníš políčko 'Priorita' ze stránky události. Čímž se zajistí jednodušší formulá?.
 Disable Priority field: Zakaž políčko priority
-disable-access-field-help: Výběrem 'Ano' odstraníš políčko 'Přístup' ze stránky události. Čímž se zajistí jednodušší formulář.
+disable_access_field_help: Výběrem 'Ano' odstraníš políčko 'Přístup' ze stránky události. Čímž se zajistí jednodušší formulář.
 Disable Access field: Zakaž políčko pro nastavení přístupu
-disable-participants-field-help: Výběrem 'Ano' odstraníš políčko pro nastavování účastníků událostí - tím také zabráníš přidávání jiných uživatelů k událostem. Pokud povolíš tuto volbu, pak budeš chtít asi taky zakázat 'Povolení prohlížení si kalendářů jiných uživatelů'.
+disable_participants_field_help: Výběrem 'Ano' odstraníš políčko pro nastavování účastníků událostí - tím také zabráníš přidávání jiných uživatelů k událostem. Pokud povolíš tuto volbu, pak budeš chtít asi taky zakázat 'Povolení prohlížení si kalendářů jiných uživatelů'.
 Disable Participants field: Zakaž políčko pro účastníky
-disable-repeating-field-help: Výběrem 'Ano' se odstraní možnost nastavovat opakování události. Tímto se pro nováčky zjednoduší formulář.
+disable_repeating_field_help: Výběrem 'Ano' se odstraní možnost nastavovat opakování události. Tímto se pro nováčky zjednoduší formulář.
 Disable Repeating field: Zakaž políčko pro opakování
-allow-html-description-help: Pokud je povoleno, uživatelé si smí vkládat HTML kód do popisu události. Pokud je zakázáno, HTML bude 'oříznuto', takže bude vypadat jako čístý text bez formátování. POZOR: Povolením této vlastnosti umožníš uživatelům např. vkládat obrázky z jiných serverů. Tj. bezpečnostní riziko.
+allow_html_description_help: Pokud je povoleno, uživatelé si smí vkládat HTML kód do popisu události. Pokud je zakázáno, HTML bude 'oříznuto', takže bude vypadat jako čístý text bez formátování. POZOR: Povolením této vlastnosti umožníš uživatelům např. vkládat obrázky z jiných serverů. Tj. bezpečnostní riziko.
 Allow HTML in Description: Povol HTML v popisu
-popup-includes-siteextras-help: Pokud je povoleno, umožní vlastní údaje k událostem. Nastavitelné v souboru site_extras.php. Bude zobrazeno v popupu události.
+site_extras_in_popup_help: Pokud je povoleno, umožní vlastní údaje k událostem. Nastavitelné v souboru site_extras.php. Bude zobrazeno v popupu události.
 Display Site Extras in popup: Zobrazuj rozšířené místní info v pop-up oknech
-remember-last-login-help: Pokud je povoleno, login uživatele bude předvyplněn na přihlašovací stránce (ne heslo) a bude i použito uživatelské nastavení barev a jazyka.
+remember_last_login_help: Pokud je povoleno, login uživatele bude předvyplněn na přihlašovací stránce (ne heslo) a bude i použito uživatelské nastavení barev a jazyka.
 Remember last login: Zapamatuj si poslední přihlášení
-allow-public-access-help: Pokud je povoleno, bude možno bez možnosti zápisu přistupovat do kalendáře bez nutnosti se přihlašovat.
+allow_public_access_help: Pokud je povoleno, bude možno bez možnosti zápisu přistupovat do kalendáře bez nutnosti se přihlašovat.
 Allow public access: Povolit veřejný přístup
 public-access-default-visible: Události od anonymů se automaticky objeví v kalendářích všech uživatel?
 Public visible by default: Anonymní příspěvky standartně viditelné
@@ -220,15 +220,15 @@ Email enabled: Odesílání emailu povoleno
 email-default-sender: Určuje emailovou adresu odesilatele připomínek.
 Default sender address: Výchozí adresa odesilatele
 Default user settings: Výchozí uživatelské nastavení
-email-event-reminders-help: Určuje, zda zasílat na email připomínky na události
+email_reminder_help: Určuje, zda zasílat na email připomínky na události
 Event reminders: Připomínky na události
-email-event-added: Určuje, zda se má a nebo nemá zasílat upozornění na email v případě, že je přidaná nová událost do mého kalendáře.
+email_event_added: Určuje, zda se má a nebo nemá zasílat upozornění na email v případě, že je přidaná nová událost do mého kalendáře.
 Events added to my calendar: Přidané události do mého kalendáře
-email-event-updated: Určuje, zda se má a nebo nemá zasílat upozornění na email v případě aktualizace události z mého kalendáře.
+email_event_added: Určuje, zda se má a nebo nemá zasílat upozornění na email v případě aktualizace události z mého kalendáře.
 Events updated on my calendar: Aktualizované události z mého kalendáře
-email-event-deleted: Určuje, zda se má a nebo nemá zasílat upozornění na odstraněnou událost z tvého kalendáře.
+email_event_deleted: Určuje, zda se má a nebo nemá zasílat upozornění na odstraněnou událost z tvého kalendáře.
 Events removed from my calendar: Odstraněné události z mého kalendáře
-email-event-rejected: Určuje, zda se má a nebo nemá zasílat upozornění na email, když jeden z účastníků zamítne událost z tvého kalendáře.
+email_event_rejected: Určuje, zda se má a nebo nemá zasílat upozornění na email, když jeden z účastníků zamítne událost z tvého kalendáře.
 Event rejected by participant: Událost byla zamítnuta účastníkem
 Allow user to customize colors: Povol uživatelům měnit si barvy
 Enable gradient images for BG: Povol gradientová obrázky namísto barvy pozadí

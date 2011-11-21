@@ -100,81 +100,81 @@ System Settings: Pengaturan Sistem
 Help: Bantuan
 app-name-help: Tentukan nama aplikasi yang akan muncul pada bilah judul perambah untuk semua halaman dan pada halaman log masuk. Nilai yang Anda berikan disini akan dicari dalam berkas terjemahan-terjemahan sehingga akan memberikan Anda suatu cara untuk menyediakan judul-judul yang berbeda untuk bahasa-bahasa yang berbeda.
 Application Name: Nama Aplikasi
-server-url-help: Tentukan URL dasar untuk aplikasi. URL ini akan disertakan pada saat sistem mengirimkan pos-el pengingat dan pemberitahuan.
+server_url_help: Tentukan URL dasar untuk aplikasi. URL ini akan disertakan pada saat sistem mengirimkan pos-el pengingat dan pemberitahuan.
 Server URL: URL Server
 language-help: Tentukan bahasa yang ingin digunakan.
 Language: Bahasa
 Your browser default language is: Bahasa asali perambah Anda adalah
 None: Tanpa
 Preview: Pratinjau
-custom-script-help: Memperkenankan entri dari teks Javascript atau stylesheet spesial yang akan disisipkan ke dalam bagian "head" HTML dari setiap halaman.
-Custom script/stylesheet: Script/stylesheet spesial
-custom-header-help: Memperkenankan penambahan kode HTML spesial untuk disertakan pada bagian atas dari setiap halaman.
+custom_script_help: Memperkenankan entri dari teks Javascript atau stylesheet spesial yang akan disisipkan ke dalam bagian "head" HTML dari setiap halaman.
+Custom script: Script/stylesheet spesial
+custom_header_help: Memperkenankan penambahan kode HTML spesial untuk disertakan pada bagian atas dari setiap halaman.
 Custom header: Header spesial
-custom-trailer-help: Memperkenankan penambahan kode HTML spesial untuk disertakan pada bagian bawah dari setiap halaman.
+custom_trailer_help: Memperkenankan penambahan kode HTML spesial untuk disertakan pada bagian bawah dari setiap halaman.
 Custom trailer: Footer spesial
-tz-help: Menentukan berapa jam selisih antara waktu server dengan waktu lokal.
-date-format-help: Tentukan format tanggal yang dikehendaki.
+tz_help: Menentukan berapa jam selisih antara waktu server dengan waktu lokal.
+date_format_help: Tentukan format tanggal yang dikehendaki.
 Date format: Format tanggal
-display-week-starts-on: Menentukan apakah pekan dimulai pada hari Ahad atau Senin. Jika Anda menentukan hari Senin maka nomor-nomor pekan akan menggunakan nomor-nomor pekan ISO.
+display_week_starts_on: Menentukan apakah pekan dimulai pada hari Ahad atau Senin. Jika Anda menentukan hari Senin maka nomor-nomor pekan akan menggunakan nomor-nomor pekan ISO.
 Week starts on: Pekan dimulai pada
-time-format-help: Tentukan format waktu yang mana yang ingin digunakan: <br><i>12 jam:</i> Menampilkan waktu sebagai 3am, 8:30pm, dsb.  <br><i>24 jam:</i> Menampilkan waktu sebagai 300, 2030, dsb.
+time_format_help: Tentukan format waktu yang mana yang ingin digunakan: <br><i>12 jam:</i> Menampilkan waktu sebagai 3am, 8:30pm, dsb.  <br><i>24 jam:</i> Menampilkan waktu sebagai 300, 2030, dsb.
 Time format: Format waktu
 12 hour: 12 jam
 24 hour: 24 jam
-timed-evt-len-help: Menentukan metode input untuk menentukan panjang dari sebuah acara berdurasi.
+timed_evt_len_help: Menentukan metode input untuk menentukan panjang dari sebuah acara berdurasi.
 Specify timed event length by: Tentukan panjang acara berdurasi berdasarkan
 Duration: Durasi
 End Time: Waktu Akhir
-work-hours-help: Menentukan rentang waktu yang ditampilkan untuk tampilan pekan.
+work_hours_help: Menentukan rentang waktu yang ditampilkan untuk tampilan pekan.
 Work hours: Jam kerja
 From: Dari
 to: sampai
-preferred-view-help: Menetapkan tampilan asali (Hari, Pekan, Bulan, atau Tahun).
+preferred_view_help: Menetapkan tampilan asali (Hari, Pekan, Bulan, atau Tahun).
 Preferred view: Tampilan yang dikehendaki
-fonts-help: Ketikkan sebuah daftar dari huruf-huruf sistem yang ingin digunakan (misalnya "Arial, Helvetica")
+fonts_help: Ketikkan sebuah daftar dari huruf-huruf sistem yang ingin digunakan (misalnya "Arial, Helvetica")
 Fonts: Huruf
-display-weekends-help: Sertakan akhir pekan ketika melihat sebuah pekan.
-display-week-number-help: Menentukan apakah nomor pekan (1-52) akan ditampilkan atau tidak dalam tampilan bulan dan tampilan pekan.
+display_weekends_help: Sertakan akhir pekan ketika melihat sebuah pekan.
+display_weeknumber_help: Menentukan apakah nomor pekan (1-52) akan ditampilkan atau tidak dalam tampilan bulan dan tampilan pekan.
 Display week number: Tampilkan nomor pekan
-display-desc-print-day-help: Sertakan keterangan acara dalam versi cetak dari tampilan hari.
+display_desc_print_day_help: Sertakan keterangan acara dalam versi cetak dari tampilan hari.
 desc in printer day view: Tampilkan keterangan acara dalam versi cetak dari tampilan hari
-yearly-shows-events-help: Pada tampilan tahun, tampilkan hari-hari yang memiliki acara dalam huruf tebal.
+display_bold_days_in_year_help: Pada tampilan tahun, tampilkan hari-hari yang memiliki acara dalam huruf tebal.
 bold events month/year views: Tampilkan hari-hari yang memiliki acara dalam huruf tebal dalam tampilan bulan dan tahun
-allow-view-add-help: Sebuah gambar '+' akan disertakan dalam tampilan, dengan demikian akan memperkenankan pengguna untuk menambahkan acara-acara ke kalender pengguna yang lain secara cepat.
+display_add_link_in_views_help: Sebuah gambar '+' akan disertakan dalam tampilan, dengan demikian akan memperkenankan pengguna untuk menambahkan acara-acara ke kalender pengguna yang lain secara cepat.
 Include add event link in views: Sertakan tautan tambahkan acara dalam tampilan
-allow-view-other-help: Menentukan apakah seorang pengguna dapat melihat kalender pengguna yang lain atau tidak.
-require-approvals-help: Jika dinyalakan, maka seorang pengguna harus menyetuji sebuah acara sebelum acara tersebut ditampilkan pada kalender pribadi mereka (terkecuali jika Tampilkan acara yang belum disetujui dinyalakan). Harap diperhatikan bahwa dengan menyetel nilai ini ke "Tidak" tidak akan mematikan penyetujuan untuk kalender Akses Umum (jika kalender Akses Umum dinyalakan).
+allow_view_other_help: Menentukan apakah seorang pengguna dapat melihat kalender pengguna yang lain atau tidak.
+require_approvals_help: Jika dinyalakan, maka seorang pengguna harus menyetuji sebuah acara sebelum acara tersebut ditampilkan pada kalender pribadi mereka (terkecuali jika Tampilkan acara yang belum disetujui dinyalakan). Harap diperhatikan bahwa dengan menyetel nilai ini ke "Tidak" tidak akan mematikan penyetujuan untuk kalender Akses Umum (jika kalender Akses Umum dinyalakan).
 Require event approvals: Membutuhkan penyetujuan acara
-display-unapproved-help: Menentukan apakah acara-acara yang belum disetujui akan ditampilkan dalam kalender Anda.<br> Jika ditetapkan ke "Ya", maka acara-acara yang belum disetujui akan ditampilkan pada kalender Anda (dengan warna teks yang berbeda).<br> Jika ditetapkan ke "Tidak", maka acara-acara yang belum disetujui harus disetujui terlebih dahulu sebelum mereka ditampilkan dalam kalender Anda.
+display_unapproved_help: Menentukan apakah acara-acara yang belum disetujui akan ditampilkan dalam kalender Anda.<br> Jika ditetapkan ke "Ya", maka acara-acara yang belum disetujui akan ditampilkan pada kalender Anda (dengan warna teks yang berbeda).<br> Jika ditetapkan ke "Tidak", maka acara-acara yang belum disetujui harus disetujui terlebih dahulu sebelum mereka ditampilkan dalam kalender Anda.
 Display unapproved: Tampilkan acara yang belum disetujui
-conflict-check-help: Periksa konflik acara (dua buah acara dijadwalkan untuk waktu yang sama untuk orang yang sama). Jika Anda menyetel nilai ini ke "Ya", maka Anda masih akan tetap bisa untuk menjadwalkan dua buah acara pada waktu yang sama setelah mengkonfirmasikan sebuah peringatan. Jika Anda menyetel nilai ini ke "Tidak", maka tidak ada pemeriksaan konflik yang akan dilakukan. Anda mungkin ingin untuk menyetel nilai ini ke "Ya", agar pemeriksaan konflik dilakukan.
+allow_conflicts_help: Periksa konflik acara (dua buah acara dijadwalkan untuk waktu yang sama untuk orang yang sama). Jika Anda menyetel nilai ini ke "Ya", maka Anda masih akan tetap bisa untuk menjadwalkan dua buah acara pada waktu yang sama setelah mengkonfirmasikan sebuah peringatan. Jika Anda menyetel nilai ini ke "Tidak", maka tidak ada pemeriksaan konflik yang akan dilakukan. Anda mungkin ingin untuk menyetel nilai ini ke "Ya", agar pemeriksaan konflik dilakukan.
 Check for conflicts: Periksa konflik acara
 Yes: Ya
 No: Tidak
-conflict-months-help: Jika pemeriksaan konflik dimatikan ("Periksa konflik acara" disetel ke "Tidak"), maka nilai ini akan menentukan berapa banyak bulan ke depannya nanti kami harus memeriksa konflik. Jika Anda mengalami penambahan acara membutuhkan waktu yang lama untuk diproses, maka kurangi nilai ini.
+conflict_months_help: Jika pemeriksaan konflik dimatikan ("Periksa konflik acara" disetel ke "Tidak"), maka nilai ini akan menentukan berapa banyak bulan ke depannya nanti kami harus memeriksa konflik. Jika Anda mengalami penambahan acara membutuhkan waktu yang lama untuk diproses, maka kurangi nilai ini.
 Conflict checking months: Jumlah bulan pemeriksaan konflik
-conflict-check-override-help: Memperkenankan pengguna untuk mengabaikan konflik acara dan menjadwalkan dua atau lebih acara untuk waktu yang sama.
+allow_conflict_override_help: Memperkenankan pengguna untuk mengabaikan konflik acara dan menjadwalkan dua atau lebih acara untuk waktu yang sama.
 may users override conflicts: Perkenankan pengguna untuk mengabaikan konflik
-limit-appts-help: Memperkenankan administrator sistem untuk menyetel sebuah batasan umum sistem untuk jumlah perjanjian yang dapat dimiliki seorang pengguna dalam satu hari.
+limit_appts_help: Memperkenankan administrator sistem untuk menyetel sebuah batasan umum sistem untuk jumlah perjanjian yang dapat dimiliki seorang pengguna dalam satu hari.
 Limit timed events per day: Jumlah batasan acara berdurasi per hari
-limit-appts-number-help: Menentukan jumlah maksimum acara berdurasi yang dapat dimiliki seorang pengguna dalam satu hari.
+limit_appts_number_help: Menentukan jumlah maksimum acara berdurasi yang dapat dimiliki seorang pengguna dalam satu hari.
 Maximum timed events per day: Jumlah maksimum acara berdurasi per hari
-disable-priority-field-help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Prioritas" dari halaman-halaman informasi acara, dengan demikian akan memberikan antarmuka yang lebih mudah bagi para pemula.
+disable_priority_field_help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Prioritas" dari halaman-halaman informasi acara, dengan demikian akan memberikan antarmuka yang lebih mudah bagi para pemula.
 Disable Priority field: Matikan bidang isian Prioritas
-disable-access-field-help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Akses" dari halaman-halaman informasi acara, dengan demikian akan memberikan antarmuka yang lebih mudah bagi para pemula.
+disable_access_field_help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Akses" dari halaman-halaman informasi acara, dengan demikian akan memberikan antarmuka yang lebih mudah bagi para pemula.
 Disable Access field: Matikan bidang isian Akses
-disable-participants-field-help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Partisipan" dari halaman-halaman informasi acara, dengan demikian akan mencegah pengguna untuk menambahkan pengguna-pengguna lainnya ke acara mereka. Jika Anda menyalakan opsi ini, mungkin Anda juga ingin untuk mematikan bidang isian "Perkenankan untuk melihat kalender pengguna lainnya."
+disable_participants_field_help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Partisipan" dari halaman-halaman informasi acara, dengan demikian akan mencegah pengguna untuk menambahkan pengguna-pengguna lainnya ke acara mereka. Jika Anda menyalakan opsi ini, mungkin Anda juga ingin untuk mematikan bidang isian "Perkenankan untuk melihat kalender pengguna lainnya."
 Disable Participants field: Matikan bidang isian Partisipan
-disable-repeating-field-help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Pengulangan" pada saat menambahkan acara. Dengan demikian akan memberikan antarmuka yang lebih mudah bagi para pemula.
+disable_repeating_field_help: Jika Anda memilih "Ya" maka sistem akan menghapus bidang isian "Pengulangan" pada saat menambahkan acara. Dengan demikian akan memberikan antarmuka yang lebih mudah bagi para pemula.
 Disable Repeating field: Matikan bidang isian Pengulangan
-allow-html-description-help: Jika dinyalakan, maka pengguna akan dapat mengetikkan HTML dalam bidang isian keterangan acara. Jika tidak dinyalakan, maka tag-tag HTML akan diterjemahkan (escape) sehingga mereka akan muncul sebagai teks biasa. Peringatan: Jika Anda menyalakan fitur ini maka akan memperkenankan pengguna untuk membuat referensi ke gambar-gambar pada situs-situs web lain.
+allow_html_description_help: Jika dinyalakan, maka pengguna akan dapat mengetikkan HTML dalam bidang isian keterangan acara. Jika tidak dinyalakan, maka tag-tag HTML akan diterjemahkan (escape) sehingga mereka akan muncul sebagai teks biasa. Peringatan: Jika Anda menyalakan fitur ini maka akan memperkenankan pengguna untuk membuat referensi ke gambar-gambar pada situs-situs web lain.
 Allow HTML in Description: Perkenankan HTML dalam Keterangan
-popup-includes-siteextras-help: Jika dinyalakan, maka sistem akan memperkenankan pengaturan bidang-bidang isian spesial dalam berkas site_extras.php yang akan ditampilkan dalam pop-up acara.
+site_extras_in_popup_help: Jika dinyalakan, maka sistem akan memperkenankan pengaturan bidang-bidang isian spesial dalam berkas site_extras.php yang akan ditampilkan dalam pop-up acara.
 Display Site Extras in popup: Tampilkan Ekstra Situs dalam pop-up
-remember-last-login-help: Jika dinyalakan, maka log masuk pengguna pada halaman log masuk akan diisikan untuk mereka (tetapi tidak kata sandinya),dan preferensi pengguna akan dimuat (termasuk bahasa yang dipilih dan warna yang dikehendaki mereka).
+remember_last_login_help: Jika dinyalakan, maka log masuk pengguna pada halaman log masuk akan diisikan untuk mereka (tetapi tidak kata sandinya),dan preferensi pengguna akan dimuat (termasuk bahasa yang dipilih dan warna yang dikehendaki mereka).
 Remember last login: Ingat log masuk terakhir
-allow-public-access-help: Jika dinyalakan, maka kalender dapat digunakan sebagai sebuah kalender umum baca-saja yang tidak membutuhkan pengguna untuk log masuk.
+allow_public_access_help: Jika dinyalakan, maka kalender dapat digunakan sebagai sebuah kalender umum baca-saja yang tidak membutuhkan pengguna untuk log masuk.
 Allow public access: Perkenankan akses umum
 public-access-default-visible: Acara-acara pada kalender umum akan muncul pada kalender semua pengguna secara otomatis.
 Public visible by default: Secara asali akses umum dapat terlihat
@@ -214,15 +214,15 @@ Email enabled: Pos-el dinyalakan
 email-default-sender: Menentukan alamat pos-el untuk ditetapkan sebagai pengirim pada saat mengirim pengingat.
 Default sender address: Alamat pengirim asali
 Default user settings: Pengaturan pengguna asali
-email-event-reminders-help: Menentukan apakah mengirim pengingat acara atau tidak.
+email_reminder_help: Menentukan apakah mengirim pengingat acara atau tidak.
 Event reminders: Pengingat acara
-email-event-added: Menentukan apakah mengirim pos-el pemberitahuan atau tidak pada saat sebuah acara ditambahkan ke kalender Anda.
+email_event_added: Menentukan apakah mengirim pos-el pemberitahuan atau tidak pada saat sebuah acara ditambahkan ke kalender Anda.
 Events added to my calendar: Acara ditambahkan ke kalender saya
-email-event-updated: Menentukan apakah mengirim pos-el pemberitahuan atau tidak pada saat sebuah acara dimutakhirkan pada kalender Anda.
+email_event_added: Menentukan apakah mengirim pos-el pemberitahuan atau tidak pada saat sebuah acara dimutakhirkan pada kalender Anda.
 Events updated on my calendar: Acara dimutakhirkan pada kalender saya
-email-event-deleted: Menentukan apakah mengirim pos-el pemberitahuan atau tidak pada saat sebuah acara dihapus dari kalender Anda.
+email_event_deleted: Menentukan apakah mengirim pos-el pemberitahuan atau tidak pada saat sebuah acara dihapus dari kalender Anda.
 Events removed from my calendar: Acara dihapus dari kalender saya
-email-event-rejected: Menentukan apakah mengirim pos-el pemberitahuan atau tidak pada saat seorang partisipan menolak sebuah acara yang berada pada kalender Anda.
+email_event_rejected: Menentukan apakah mengirim pos-el pemberitahuan atau tidak pada saat seorang partisipan menolak sebuah acara yang berada pada kalender Anda.
 Event rejected by participant: Acara ditolak oleh partisipan
 Allow user to customize colors: Perkenankan pengguna untuk mengkustomisasikan warna
 Enable gradient images for BG: Nyalakan gambar gradasi untuk warna latar belakang

@@ -14,26 +14,26 @@ echo $helpListStr . '
 list_help( array(
   translate ( 'Auto-refresh calendars' ) => translate ( 'auto-refresh-help' ),
   translate ( 'Auto-refresh time' ) => translate ( 'auto-refresh-time-help' ),
-  translate ( 'Date format' ) => translate ( 'date-format-help' ),
+  translate ( 'Date format' ) => translate ( 'date_format_help' ),
   translate ( 'Default Category' ) => translate ( 'default-category-help' ),
   translate ( 'desc in printer day view' ) =>
-  translate ( 'display-desc-print-day-help' ),
+  translate ( 'display_desc_print_day_help' ),
   translate ( 'Display unapproved' ) =>
-  translate ( 'display-unapproved-help' ),
+  translate ( 'display_unapproved_help' ),
   translate ( 'Display week number' ) =>
-  translate ( 'display-week-number-help' ),
+  translate ( 'display_weeknumber_help' ),
   translate ( 'Display weekends in week view' ) =>
-  translate ( 'display-weekends-help' ),
-  translate ( 'Fonts' ) => translate ( 'fonts-help' ),
+  translate ( 'display_weekends_help' ),
+  translate ( 'Fonts' ) => translate ( 'fonts_help' ),
   translate ( 'Language' ) => translate ( 'language-help' ),
-  translate ( 'Preferred view' ) => translate ( 'preferred-view-help' ),
+  translate ( 'Preferred view' ) => translate ( 'preferred_view_help' ),
   translate ( 'Specify timed event length by' ) =>
-  translate ( 'timed-evt-len-help' ),
-  translate ( 'Time format' ) => translate ( 'time-format-help' ),
+  translate ( 'timed_evt_len_help' ),
+  translate ( 'Time format' ) => translate ( 'time_format_help' ),
   translate ( 'Time interval' ) => translate ( 'time-interval-help' ),
-  translate ( 'TZ Offset' ) => translate ( 'tz-help' ),
-  translate ( 'Week starts on' ) => translate ( 'display-week-starts-on' ),
-  translate ( 'Work hours' ) => translate ( 'work-hours-help' ),
+  translate ( 'TZ Offset' ) => translate ( 'tz_help' ),
+  translate ( 'Week starts on' ) => translate ( 'display_week_starts_on' ),
+  translate ( 'Work hours' ) => translate ( 'work_hours_help' ),
   )
 );
 
@@ -44,15 +44,15 @@ echo '
 
 list_help( array(
   translate ( 'Event rejected by participant' ) =>
-  translate ( 'email-event-rejected' ),
+  translate ( 'email_event_rejected' ),
   translate ( 'Event reminders' ) =>
-  translate ( 'email-event-reminders-help' ),
+  translate ( 'email_reminder_help' ),
   translate ( 'Events added to my calendar' ) =>
-  translate ( 'email-event-added' ),
+  translate ( 'email_event_added' ),
   translate ( 'Events removed from my calendar' ) =>
-  translate ( 'email-event-deleted' ),
+  translate ( 'email_event_deleted' ),
   translate ( 'Events updated on my calendar' ) =>
-  translate ( 'email-event-updated' ),
+  translate ( 'email_event_added' ),
   )
 );
 

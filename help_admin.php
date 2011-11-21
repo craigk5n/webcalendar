@@ -11,64 +11,64 @@ echo $helpListStr . '
       <div>';
 list_help( array(
   translate ( 'Allow HTML in Description' ) =>
-  translate ( 'allow-html-description-help' ),
+  translate ( 'allow_html_description_help' ),
   translate ( 'may users override conflicts' ) =>
-  translate ( 'conflict-check-override-help' ),
+  translate ( 'allow_conflict_override_help' ),
   translate ( 'may view others cals' ) =>
-  translate ( 'allow-view-other-help' ),
+  translate ( 'allow_view_other_help' ),
   translate ( 'Application Name' ) =>
   translate ( 'app-name-help' ),
   translate ( 'Auto-refresh calendars' ) => translate ( 'auto-refresh-help' ),
   translate ( 'Auto-refresh time' ) => translate ( 'auto-refresh-time-help' ),
   translate ( 'Check for conflicts' ) =>
-  translate ( 'conflict-check-help' ),
+  translate ( 'allow_conflicts_help' ),
   translate ( 'Conflict checking months' ) =>
-  translate ( 'conflict-months-help' ),
-  translate ( 'Custom header' ) => translate ( 'custom-header-help' ),
-  translate ( 'Custom script/stylesheet' ) =>
-  translate ( 'custom-script-help' ),
-  translate ( 'Custom trailer' ) => translate ( 'custom-trailer-help' ),
-  translate ( 'Date format' ) => translate ( 'date-format-help' ),
+  translate ( 'conflict_months_help' ),
+  translate ( 'Custom header' ) => translate ( 'custom_header_help' ),
+  translate ( 'Custom script' ) =>
+  translate ( 'custom_script_help' ),
+  translate ( 'Custom trailer' ) => translate ( 'custom_trailer_help' ),
+  translate ( 'Date format' ) => translate ( 'date_format_help' ),
   translate ( 'Disable Access field' ) =>
-  translate ( 'disable-access-field-help' ),
+  translate ( 'disable_access_field_help' ),
   translate ( 'Disable Participants field' ) =>
-  translate ( 'disable-participants-field-help' ),
+  translate ( 'disable_participants_field_help' ),
   translate ( 'Disable Priority field' ) =>
-  translate ( 'disable-priority-field-help' ),
+  translate ( 'disable_priority_field_help' ),
   translate ( 'Disable Repeating field' ) =>
-  translate ( 'disable-repeating-field-help' ),
+  translate ( 'disable_repeating_field_help' ),
   translate ( 'bold events in year view' ) =>
-  translate ( 'yearly-shows-events-help' ),
+  translate ( 'display_bold_days_in_year_help' ),
   translate ( 'desc in printer day view' ) =>
-  translate ( 'display-desc-print-day-help' ),
+  translate ( 'display_desc_print_day_help' ),
   translate ( 'Display Site Extras in popup' ) =>
-  translate ( 'popup-includes-siteextras-help' ),
-  translate ( 'Display unapproved' ) => translate ( 'display-unapproved-help' ),
+  translate ( 'site_extras_in_popup_help' ),
+  translate ( 'Display unapproved' ) => translate ( 'display_unapproved_help' ),
   translate ( 'Display week number' ) =>
-  translate ( 'display-week-number-help' ),
+  translate ( 'display_weeknumber_help' ),
   translate ( 'Display weekends in week view' ) =>
-  translate ( 'display-weekends-help' ),
-  translate ( 'Fonts' ) => translate ( 'fonts-help' ),
+  translate ( 'display_weekends_help' ),
+  translate ( 'Fonts' ) => translate ( 'fonts_help' ),
   translate ( 'Home URL' ) => translate ( 'home-url-help' ),
   translate ( 'Include add event link in views' ) =>
-  translate ( 'allow-view-add-help' ),
+  translate ( 'display_add_link_in_views_help' ),
   translate ( 'Language_' ) => translate ( 'language-help' ),
   translate ( 'Limit timed events per day' ) =>
-  translate ( 'limit-appts-help' ),
+  translate ( 'limit_appts_help' ),
   translate ( 'Maximum timed events per day' ) =>
-  translate ( 'limit-appts-number-help' ),
-  translate ( 'Preferred view' ) => translate ( 'preferred-view-help' ),
+  translate ( 'limit_appts_number_help' ),
+  translate ( 'Preferred view' ) => translate ( 'preferred_view_help' ),
   translate ( 'Remember last login' ) =>
-  translate ( 'remember-last-login-help' ),
+  translate ( 'remember_last_login_help' ),
   translate ( 'Require event approvals' ) =>
-  translate ( 'require-approvals-help' ),
-  translate ( 'Server URL' ) => translate( 'server-url-help' ),
+  translate ( 'require_approvals_help' ),
+  translate ( 'Server URL' ) => translate( 'server_url_help' ),
   translate ( 'Specify timed event length by' ) =>
-  translate ( 'timed-evt-len-help' ),
-  translate ( 'Time format' ) => translate ( 'time-format-help' ),
+  translate ( 'timed_evt_len_help' ),
+  translate ( 'Time format' ) => translate ( 'time_format_help' ),
   translate ( 'Time interval' ) => translate ( 'time-interval-help' ),
-  translate ( 'Week starts on' ) => translate ( 'display-week-starts-on' ),
-  translate ( 'Work hours' ) => translate ( 'work-hours-help' ),
+  translate ( 'Week starts on' ) => translate ( 'display_week_starts_on' ),
+  translate ( 'Work hours' ) => translate ( 'work_hours_help' ),
   )
 );
 echo '
@@ -77,7 +77,7 @@ echo '
       <div>';
 list_help( array(
   translate ( 'Allow public access' ) =>
-  translate ( 'allow-public-access-help' ),
+  translate ( 'allow_public_access_help' ),
   translate ( 'may public add events' ) =>
   translate ( 'public-access-can-add-help' ),
   translate ( 'may public view others' ) =>
@@ -137,15 +137,15 @@ list_help( array(
   translate ( 'email-default-sender' ),
   translate ( 'Email enabled' ) => translate ( 'email-enabled-help' ),
   translate ( 'Event rejected by participant' ) =>
-  translate ( 'email-event-rejected' ),
+  translate ( 'email_event_rejected' ),
   translate ( 'Event reminders' ) =>
-  translate ( 'email-event-reminders-help' ),
+  translate ( 'email_reminder_help' ),
   translate ( 'Events added to my calendar' ) =>
-  translate ( 'email-event-added' ),
+  translate ( 'email_event_added' ),
   translate ( 'Events removed from my calendar' ) =>
-  translate ( 'email-event-deleted' ),
+  translate ( 'email_event_deleted' ),
   translate ( 'Events updated on my calendar' ) =>
-  translate ( 'email-event-updated' ),
+  translate ( 'email_event_added' ),
   )
 );
 echo '

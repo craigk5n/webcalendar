@@ -1,112 +1,107 @@
 <?php // $Id$
 include_once 'includes/init.php';
 
-// Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
-$webcalendar_csscache = 1;
-if  ( isset ( $_COOKIE['webcalendar_csscache'] ) ) {
-  $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
-}
-setcookie( 'webcalendar_csscache', $webcalendar_csscache );
-
 function save_pref( $prefs, $src) {
   global $my_theme, $prefuser;
-  while ( list ( $key, $value ) = each ( $prefs ) ) {
+
+  while ( list( $k, $v ) = each( $prefs ) ) {
     if ( $src == 'post' ) {
-      $setting = substr ( $key, 5 );
-      $prefix = substr ( $key, 0, 5 );
+      $prefix = substr( $k, 0, 5 );
+
       if ( $prefix != 'pref_')
         continue;
+
+      $setting = substr( $k, 5 );
+
       // Validate key name. Should start with "pref_" and not include
       // any unusual characters that might be an SQL injection attack.
-      if ( ! preg_match ( '/pref_[A-Za-z0-9_]+$/', $key ) )
-        die_miserable_death ( str_replace ( 'XXX', $key,
-            translate ( 'Invalid setting name XXX.' ) ) );
+      if ( ! preg_match( '/pref_[A-Za-z0-9_]+$/', $k ) )
+        die_miserable_death( str_replace( 'XXX', $k,
+            translate( 'Invalid setting name XXX.' ) ) );
 
     } else {
-      $setting = $key;
       $prefix = 'pref_';
+      $setting= $k;
     }
-    //echo "Setting = $setting, key = $key, prefix = $prefix<br>\n";
-    if ( strlen ( $setting ) > 0 && $prefix == 'pref_' ) {
-      if ( $setting == 'THEME' &&  $value != 'none' )
-        $my_theme = strtolower ( $value );
+    if ( strlen( $setting ) > 0 && $prefix == 'pref_' ) {
+      if ( $setting == 'THEME' && $v != 'none' )
+        $my_theme = strtolower( $v );
 
       dbi_execute( 'DELETE FROM webcal_user_pref WHERE cal_login = ?
         AND cal_setting = ?', array( $prefuser, $setting ) );
-      if ( strlen ( $value ) > 0 ) {
+      if ( strlen( $v ) > 0 ) {
         $setting = strtoupper( $setting );
         $sql = 'INSERT INTO webcal_user_pref
-          ( cal_login, cal_setting, cal_value ) VALUES ( ?, ?, ? )';
-        if ( ! dbi_execute ( $sql, array ( $prefuser, $setting, $value ) ) ) {
-          $error = 'Unable to update preference: ' . dbi_error() .
-   '<br><br><span class="bold">SQL:</span>' . $sql;
+         ( cal_login, cal_setting, cal_value ) VALUES ( ?, ?, ? )';
+
+        if ( ! dbi_execute( $sql, array( $prefuser, $setting, $v ) ) ) {
+          $error = 'Unable to update preference: ' . dbi_error()
+           . '<br><br><span class="bold">SQL:</span>' . $sql;
           break;
         }
       }
     }
   }
 }
-$public = getGetValue ('public');
-$user = getGetValue ('user');
+$public= getGetValue( 'public' );
+$user  = getGetValue( 'user' );
+
+$prefuser = $login;
 $updating_public = false;
-  load_global_settings();
 
-if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
+load_global_settings();
+
+if ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   $updating_public = true;
-  load_user_preferences ( '__public__' );
   $prefuser = '__public__';
-} elseif ( ! empty ( $user ) && $user != $login && ($is_admin || $is_nonuser_admin)) {
+} elseif ( ! empty( $user ) && $user != $login && ( $is_admin || $is_nonuser_admin ) ) {
   $prefuser = $user;
-    load_user_preferences ( $user );
-} else {
-  $prefuser = $login;
-  // Reload preferences so any css changes will take effect
-  load_user_preferences();
 }
+load_user_preferences( $prefuser );
 
-if ( ! empty ( $_POST ) && empty ( $error )) {
+if ( ! empty( $_POST ) && empty( $error ) ) {
   $my_theme = '';
-  $currenttab = getPostValue ( 'currenttab' );
-  save_pref ( $_POST, 'post' );
+  $currenttab = getPostValue( 'currenttab' );
+  save_pref( $_POST, 'post' );
 
-  if ( ! empty ( $my_theme ) ) {
+  if ( ! empty( $my_theme ) ) {
     $theme = 'themes/'. $my_theme . '_pref.php';
     include_once $theme;
-    save_pref ( $webcal_theme, 'theme' );
+    save_pref( $webcal_theme, 'theme' );
   }
-  // Reload preferences
-  load_user_preferences();
 }
+if ( $user != $login )
+  $user = ( ( $is_admin || $is_nonuser_admin ) && $user ? $user : $login );
 
-
-if ($user != $login)
-  $user = (($is_admin || $is_nonuser_admin) && $user) ? $user : $login;
-
-// Load categories only if editing our own calendar
-//if (!$user || $user == $login) load_user_categories();
 load_user_categories();
 // Reload preferences into $prefarray[].
 // Get system settings first.
 $prefarray = array();
-$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config ' );
+$res = dbi_execute( 'SELECT cal_setting, cal_value FROM webcal_config ' );
+
 if ( $res ) {
-  while ( $row = dbi_fetch_row ( $res ) ) {
+  while ( $row = dbi_fetch_row( $res ) ) {
     $prefarray[$row[0]] = $row[1];
   }
-  dbi_free_result ( $res );
+  dbi_free_result( $res );
 }
 //get user settings
-$res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_user_pref
-  WHERE cal_login = ?', array ( $prefuser ) );
+$res = dbi_execute( 'SELECT cal_setting, cal_value FROM webcal_user_pref
+  WHERE cal_login = ?', array( $prefuser ) );
 if ( $res ) {
-  while ( $row = dbi_fetch_row ( $res ) ) {
+  while ( $row = dbi_fetch_row( $res ) ) {
     $prefarray[$row[0]] = $row[1];
   }
-  dbi_free_result ( $res );
+  dbi_free_result( $res );
 }
 
-//this will force $LANGUAGE to to the current value and eliminate having
-//to double click the 'SAVE' buton
+// For backwards compatibility. We used to store without the .php extension
+if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
+  $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
+  $prefarray['STARTVIEW'] .= '.php';
+
+// This will force $LANGUAGE to to the current value
+// and eliminate having to double click the 'SAVE' buton.
 $translation_loaded = false;
 
 //move this include here to allow proper translation
@@ -114,29 +109,31 @@ include_once 'includes/date_formats.php';
 
 //get list of theme files from /themes directory
 $dir = 'themes/';
-if (is_dir ($dir)) {
-   if ($dh = opendir ($dir)) {
-       while (($file = readdir ($dh)) !== false) {
-         if ( strpos ( $file, '_pref.php' ) )
-           $themes[] = str_replace ( '_pref.php', '', $file );
-       }
-       sort ( $themes );
-       closedir ($dh);
-   }
+if ( is_dir( $dir ) ) {
+  if ( $dh = opendir( $dir ) ) {
+    while ( ( $file = readdir( $dh ) ) !== false ) {
+      if ( strpos( $file, '_pref.php' ) )
+        $themes[] = str_replace( '_pref.php', '', $file );
+    }
+    sort( $themes );
+    closedir( $dh );
+  }
 }
 
 //get list of menu themes
 $menuthemes = array();
 $dir = 'includes/menu/themes/';
-if ( is_dir ( $dir ) ) {
-   if ( $dh = opendir ( $dir ) ) {
-       while ( ( $file = readdir ( $dh ) ) !== false ) {
-         if ( $file == '.' || $file == '..' || $file == 'CVS' ||
-           $file == 'default') continue;
-         if ( is_dir ( $dir.$file ) ) $menuthemes[] = $file;
-       }
-       closedir ($dh);
-   }
+if ( is_dir( $dir ) ) {
+  if ( $dh = opendir( $dir ) ) {
+    while ( ( $file = readdir( $dh ) ) !== false ) {
+      if ( $file == '.' || $file == '..' || $file == 'CVS' || $file == 'default' )
+        continue;
+
+        if ( is_dir( $dir.$file ) )
+          $menuthemes[] = $file;
+    }
+    closedir($dh);
+  }
 }
 
 // Make sure global values passed to styles.php are for this user.
@@ -153,11 +150,9 @@ $GLOBALS['THBG']        = $prefarray['THBG'];
 $GLOBALS['TODAYCELLBG'] = $prefarray['TODAYCELLBG'];
 $GLOBALS['WEEKENDBG']   = $prefarray['WEEKENDBG'];
 
-//determine if we can set timezones, if not don't display any options
-$can_set_timezone = set_env ( 'TZ', $prefarray['TIMEZONE'] );
-$dateYmd = date ( 'Ymd' );
+$dateYmd = date( 'Ymd' );
 
-$minutesStr = translate ( 'minutes' );
+$minutesStr = translate( 'minutes' );
 
 //allow css_cache to display public or NUC values
 @session_start();
@@ -165,760 +160,440 @@ $_SESSION['webcal_tmp_login'] = $prefuser;
 //Prh ... add user to edit_template to get/set correct template
 $openStr ="\"window.open( 'edit_template.php?type=%s&user=%s','cal_template','dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520' );\"";
 
-$currenttab = getPostValue ( 'currenttab', 'settings' );
+$currenttab = getPostValue( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
+
+if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
+  if ( ( empty( $user ) || $user == $login ) && ! $updating_public ) {
+    $nulist = get_my_nonusers( $login );
+    $nucs = '
+      <select id="selLoca">' . $option . '" disabled selected>'
+     . translate( 'Modify NUC Preferences') . '</option>'
+// If user is admin of a non-user cal, and non-user cal is "public"
+// (meaning it is a public calendar that requires no login),
+// then allow the current user to modify prefs for that nonuser cal.
+     . $( $is_admin && ! $updating_public
+         && ( empty( $public ) && ! empty( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' )
+       ? $option . 'pref.php?public=1">'
+         . translate( 'Public Access calendar' ) . '</option>' : '' );
+    for ( $i = 0, $cnt = count( $nulist ); $i < $cnt; $i++ ) {
+      $nucs .= $option . 'pref.php?user='. $nulist[$i]['cal_login']. '">'
+       . $nulist[$i]['cal_fullname'] . '</option>';
+    }
+    $nucs .= '
+      </select>';
+  } else {
+    $nucs = '
+      <a href="pref.php" class="nav">&laquo;&nbsp;'
+     . translate( 'Return to My Preferences' ) . '</a>';
+  }
+}
+define_languages(); //load the language list
+reset( $languages );
+$lang_list = '';
+while ( list( $k, $v ) = each( $languages ) ) {
+  // Don't allow users to select browser-defined. We want them to pick
+  // a language so that when we send reminders (done without the benefit
+  // of a browser-preferred language), we'll know which language to use.
+  // DO let them select browser-defined for the public user or NUC.
+  if ( $k != 'Browser-defined' || $updating_public || $is_admin
+      || $is_nonuser_admin ) {
+    $lang_list .= $option . $v
+     . ( $v == $prefarray['LANGUAGE'] ? '" selected>' : '">' )
+     . $k . '</option>';
+  }
+}
+$start_wk_on = $start_wkend_on = '';
+for ( $i = 0; $i < 7; $i++ ) {
+  $start_wk_on .= $option . $i
+   . ( $i == $prefarray['WEEK_START'] ? '" selected>' : '">' )
+   . weekday_name( $i ) . '</option>';
+  $j = ( $i == 0 ? 6 : $i - 1 ); // Make sure to start with Saturday.
+  $start_wkend_on .= $option . $j
+   . ( $j ==$prefarray['WEEKEND_START'] ? '" selected>' : '">' )
+   . weekday_name( $j ) . '</option>';
+}
+$work_hr_end = $work_hr_start = '';
+for ( $i = 0; $i < 24; $i++ ) {
+  $tmp = display_time ( $i * 10000, 1 );
+  $work_hr_start .= $option . $i
+   . ( $i == $prefarray['WORK_DAY_START_HOUR'] ? '" selected>' : '">' )
+   . $tmp . '</option>';
+  $work_hr_end .= $option . $i
+   . ( $i == $prefarray['WORK_DAY_END_HOUR'] ? '" selected>' : '">' )
+   . $tmp . '</option>';
+}
+$choices = array();
+if ( access_can_access_function( ACCESS_DAY, $user ) )
+  $choices['day.php'] = translate( 'Day' );
+
+if ( access_can_access_function( ACCESS_WEEK, $user ) )
+  $choices['week.php'] = translate( 'Week' );
+
+if ( access_can_access_function( ACCESS_MONTH, $user ) )
+  $choices['month.php'] = translate( 'Month' );
+
+if ( access_can_access_function( ACCESS_YEAR, $user ) )
+  $choices['year.php'] = translate( 'Year' );
+
+// combo.php contains day, week, month and agenda views..
+$choices['combo.php'] = translate( 'Multiview' );
+
+$prefer_vu = $user_vu = '';
+foreach ( $choices as $k => $v ) {
+  $prefer_vu .= $option . $k
+   . ( $sprefarray['STARTVIEW'] == $k ? '" selected>' : '">' )
+   . htmlspecialchars( $v ) . '</option>';
+}
+// Allow user to select a view also.
+for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
+if ( $views[$i]['cal_owner'] != $user && $views[$i]['cal_is_global'] != 'Y' )
+    continue;
+
+  $xurl = $views[$i]['url'];
+  $xurl_strip = str_replace ( '&amp;', '&', $xurl );
+  $user_vu .= $option . $xurl
+   . ( $prefarray['STARTVIEW'] == $xurl_strip ? '" selected>' : '">' )
+   . htmlspecialchars( $views[$i]['cal_name'] ) . '</option>';
+}
+$catList = '';
+if ( ! empty( $categories ) ) {
+  $catList = '
+            <p>
+              <label for="pref_cat">' . translate( 'Default Category' ) . '</label>
+              <select id="pref_cat" name="pref_CATEGORY_VIEW">';
+
+  foreach ( $categories as $k => $v ) {
+    $catList .= $option . $k
+     . ( ! empty( $prefarray['CATEGORY_VIEW'] ) && $prefarray['CATEGORY_VIEW'] == $k
+       ? '" selected>' : '">' ) . $v['cat_name'] . '</option>';
+  }
+  $catList .= '
+              </select></p>';
+}
+$entry_slots = $time_slots = '';
+$hourStr = translate( 'hour' );
+foreach ( array(
+    24  => '1',
+    48  => '30',
+    72  => '20',
+    96  => '15',
+    144 => '10',
+    288 => '5',
+    1440=> '1',
+  ) as $k => $v ) {
+  $entry_slots .= $ption . $k
+   . ( $prefarray['ENTRY_SLOTS'] == $k ? '" selected>' : '">' )
+   . $v . '&nbsp;' . ( $v != '1'
+     ? $minutesStr : ( $k = 24  ? $hourStr : translate( 'minute' ) ) ) . '</option>';
+  if ( $k < 288 )
+    $time_slots .= $ption . $k
+     . ( $prefarray['TIME_SLOTS'] == $k ? '" selected>' : '">' )
+     . $v . '&nbsp;' . ( $v != '1' ? $minutesStr : $hourStr ) . '</option>';
+}
+if ( empty( $prefarray['TIMEZONE'] ) )
+  $prefarray['TIMEZONE'] = $SERVER_TIMEZONE;
 
 ob_start();
 setcookie( 'currenttab', $currenttab );
 setcookie( 'useColors', $ALLOW_COLOR_CUSTOMIZATION );
 print_header();
-?>
-
-<h2><?php
- if ( $updating_public )
-  echo translate ($PUBLIC_ACCESS_FULLNAME) . '&nbsp;';
- etranslate ( 'Preferences' );
- if ( $is_nonuser_admin || ( $is_admin && substr ( $prefuser, 0, 5 ) == '_NUC_' ) ) {
-  nonuser_load_variables ( $user, 'nonuser' );
-  echo '<br>' . str_replace( 'XXX', $nonuserfullname, 
-    translate( 'Admin mode XXX' ) ) . "\n";
- }
-$qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'] : '' );
-$formaction = substr ($self, strrpos($self, '/') + 1) . $qryStr;
-
-?>&nbsp;<img src="images/help.gif" alt="<?php etranslate( 'Help' )?>" class="help" onclick="window.open( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );"></h2>
-
-
-<form action="<?php echo htmlspecialchars($formaction) ?>" method="post" onsubmit="return valid_form( this );" name="prefform">
-<input type="hidden" name="currenttab" id="currenttab" value="<?php echo $currenttab ?>">
-<?php
- if ($user)
-  echo "<input type=\"hidden\" name=\"user\" value=\"$user\">\n";
-
-echo display_admin_link();
-?>
-<input type="submit" value="<?php etranslate( 'Save Preferences' )?>" name="">
-&nbsp;&nbsp;&nbsp;
-<?php if ( $updating_public ) { ?>
- <input type="hidden" name="public" value="1">
-<?php } /*if ( $updating_public )*/
-
-
-// If user is admin of a non-user cal, and non-user cal is "public"
-// (meaning it is a public calendar that requires no login), then allow
-// the current user to modify prefs for that nonuser cal
-if ( $is_admin && ! $updating_public ) {
-  if ( empty ( $public ) && ! empty ( $PUBLIC_ACCESS ) &&
-    $PUBLIC_ACCESS == 'Y' ) {
-      $public_option = '<option value="pref.php?public=1">'
-        . translate( 'Public Access calendar' ) . "</option>\n";
-  }
+echo '
+    <h2>' . str_replace( 'Public Access ',
+   ( $updating_public ? translate( $PUBLIC_ACCESS_FULLNAME ) . '&nbsp;' : '' ),
+   translate( 'Public Access Preferences' ) );
+if ( $is_nonuser_admin || ( $is_admin && substr( $prefuser, 0, 5 ) == '_NUC_' ) ) {
+  nonuser_load_variables( $user, 'nonuser' );
+  echo '<br>' . str_replace( 'XXX', $nonuserfullname,
+    translate( 'Admin mode XXX' ) );
 }
-
-if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
-  if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
-    $nulist = get_my_nonusers ( $login );
-    echo '<select onchange="location=this.options[this.selectedIndex].value;">' ."\n";
-    echo "<option selected disabled value=\"\">" .
-      translate ( 'Modify NUC Preferences') . "</option>\n";
-    if ( ! empty ( $public_option ) ) echo $public_option . "\n";
-    for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
-      echo '<option value="pref.php?user='. $nulist[$i]['cal_login']. '">' .
-        $nulist[$i]['cal_fullname'] . "</option>\n";
-    }
-    echo "</select>\n";
-  } else {
-    $linktext = translate ( 'Return to My Preferences' );
-    echo "<a title=\"$linktext\" class=\"nav\" href=\"pref.php\">&laquo;&nbsp; $linktext </a>";
-  }
-}
-?>
-
-<br><br>
-
+echo '&nbsp;<img src="images/help.gif" alt="' . translate( 'Help' )
+ . '" class="help"></h2>
+    <form action="' . htmlspecialchars( $substr( $self, strrpos( $self, '/' ) + 1 ) . $( empty( $_SERVER['QUERY_STRING'] ) ? '' : '?' . $_SERVER['QUERY_STRING'] ) ) . '" method="post" id="prefform" name="prefform">
+      <input type="hidden" id="currenttab" name="currenttab" value="' . $currenttab . '">' . ( $user ? '
+      <input type="hidden" name="user" value="' . $user . '">' : '' ) . display_admin_link() . '
+      <input type="submit" value="' . translate( 'Save Preferences' ) . '" name="">&nbsp;&nbsp;&nbsp;' . ( $updating_public ? '
+      <input type="hidden" name="public" value="1">' : '' ) . $nucs . '<br><br>
 <!-- TABS -->
-<div id="tabs">
- <span class="tabfor" id="tab_settings"><a href="" onclick="return setTab( 'settings' );"><?php etranslate ( 'Settings' )?></a></span>
- <?php if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) { ?>
- <span class="tabbak" id="tab_themes"><a href="" onclick="return setTab( 'themes' );"><?php etranslate ( 'Themes' )?></a></span>
-<?php }
- if ( $SEND_EMAIL == 'Y' ) { ?>
- <span class="tabbak" id="tab_email"><a href="" onclick="return setTab( 'email' );"><?php etranslate ( 'Email' )?></a></span>
-<?php } ?>
- <span class="tabbak" id="tab_boss"><a href="" onclick="return setTab( 'boss' );"><?php etranslate ( 'When I am the boss' )?></a></span>
-<?php if ( $PUBLISH_ENABLED == 'Y'  || $RSS_ENABLED == 'Y' ) { ?>
- <span class="tabbak" id="tab_subscribe"><a href="" onclick="return setTab( 'subscribe' );"><?php etranslate ( 'Subscribe/Publish' )?></a></span>
-<?php }
-if ( $ALLOW_USER_HEADER == 'Y' && ( $CUSTOM_SCRIPT == 'Y' || $CUSTOM_HEADER == 'Y' ||
-   $CUSTOM_TRAILER == 'Y' ) ) { ?>
- <span class="tabbak" id="tab_header"><a href="" onclick="return setTab( 'header' );"><?php etranslate ( 'Custom Scripts' )?></a></span>
-<?php }
-if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
- <span class="tabbak" id="tab_colors" title="<?php etooltip ( 'colors-help' )?>"><a href="" onclick="return setTab( 'colors' );"><?php etranslate ( 'Colors' )?></a></span>
-<?php } ?>
-</div>
+      <div id="tabs">';
+$tabs_ar = array( 'settings' => translate( 'Settings' ) );
+
+if ( $ALLOW_USER_THEMES == 'Y' || $is_admin )
+  $tabs_ar['themes'] => translate( 'Themes' );
+
+if ( $SEND_EMAIL == 'Y' )
+  $tabs_ar['email'] => translate( 'Email' );
+
+$tabs_ar['boss'] => translate( 'When I am the boss' );
+
+if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y' )
+  $tabs_ar['subscribe'] => translate( 'Subscribe/Publish' );
+
+if ( $ALLOW_USER_HEADER == 'Y' && ( $CUSTOM_SCRIPT == 'Y'
+    || $CUSTOM_HEADER == 'Y' || $CUSTOM_TRAILER == 'Y' ) )
+  $tabs_ar['header'] => translate( 'Custom Scripts' );
+
+if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' )
+  $tabs_ar['colors'] => translate( 'Colors' );
+
+foreach ( $tabs_ar as $k => $v ) {
+  echo '
+        <span class="tab"' . ( $k != 'settings' ? 'bak' : 'for' ) . ' id="tab_"' . $k . ( $k != 'colors' ? '' : '" title="' . tooltip( 'colors-help' ) ) . "\">$v" . '</span>';
+}
+echo '
+      </div>
 
 <!-- TABS BODY -->
-<div id="tabscontent" style="width: 98%;">
- <!-- DETAILS -->
-<div id="tabscontent_settings">
-<fieldset>
- <legend><?php etranslate ('Language')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
-<tr><td class="tooltipselect" title="<?php etooltip ("language-help");?>">
- <label for="pref_lang"><?php etranslate ( 'Language_' )?></label></td><td>
- <select name="pref_LANGUAGE" id="pref_lang">
-<?php
- define_languages(); //load the language list
- reset ( $languages );
- while ( list ( $key, $val ) = each ( $languages ) ) {
-   // Don't allow users to select browser-defined. We want them to pick
-   // a language so that when we send reminders (done without the benefit
-   // of a browser-preferred language), we'll know which language to use.
-   // DO let them select browser-defined for the public user or NUC.
-   if ( $key != 'Browser-defined' || $updating_public || $is_admin ||
-              $is_nonuser_admin ) {
-     echo '<option value="' . $val . '"';
-     if ( $val == $prefarray['LANGUAGE'] ) echo ' selected';
-     echo '>' . $key . "</option>\n";
-   }
- }
-?>
- </select>
- <br>
-<?php echo str_replace( 'XXX', translate( get_browser_language( true ) ),
-    translate( 'browser default language XXX' ) ); ?>
-</td></tr>
-</table>
-</fieldset>
-<fieldset>
- <legend><?php etranslate ('Date and Time')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
-<?php if ( $can_set_timezone == true ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip ( 'tz-help' )?>">
-  <label for="pref_TIMEZONE"><?php etranslate( 'Timezone Selection' )?></label></td><td>
-  <?php
-   if ( empty ( $prefarray['TIMEZONE'] ) ) $prefarray['TIMEZONE'] = $SERVER_TIMEZONE;
-   echo print_timezone_select_html ( 'pref_', $prefarray['TIMEZONE']);
-  ?>
-</td></tr>
- <?php } //end $can_set_timezone ?>
-<tr><td class="tooltipselect" title="<?php etooltip ( 'date-format-help' );?>">
- <?php etranslate ( 'Date format' )?></td><td>
- <select name="pref_DATE_FORMAT">
-  <?php
-    echo $datestyle_ymd;
-  ?>
-</select>&nbsp;<?php echo date_to_str ( $dateYmd,
-    $DATE_FORMAT, false, false );?>
-<br>
-<select name="pref_DATE_FORMAT_MY">
-<?php
-    echo $datestyle_my;
-?>
-</select>&nbsp;<?php echo date_to_str ( $dateYmd,
-    $DATE_FORMAT_MY, false, false );?>
-<br>
-<select name="pref_DATE_FORMAT_MD">
-<?php
-    echo $datestyle_md;
-?>
-</select>&nbsp;<?php echo date_to_str ( $dateYmd,
-    $DATE_FORMAT_MD, false, false );?>
-<br>
-<select name="pref_DATE_FORMAT_TASK">
-<?php
-    echo $datestyle_tk;
-?>
-</select>&nbsp;<?php echo translate ( 'Small Task Date' ) . ' ' .
-  date_to_str( $dateYmd, $DATE_FORMAT_TASK, false, false );?>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip ( 'time-format-help' )?>">
- <?php etranslate ( 'Time format' )?></td><td>
- <?php echo print_radio ( 'TIME_FORMAT',
-   array ( '12'=>translate ( '12 hour' ), '24'=>translate ( '24 hour' ) ) ) ?>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip ( 'display-week-starts-on' )?>">
- <?php etranslate ( 'Week starts on' )?></td><td>
- <select name="pref_WEEK_START" id="pref_WEEK_START">
-<?php
- for ( $i = 0; $i < 7; $i++ ) {
-  echo "<option value=\"$i\""
-   . ( $i == $prefarray['WEEK_START'] ? ' selected>' : '>' )
-   . weekday_name( $i ) . "</option>\n";
- }
-?>
- </select>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip ( 'display-weekend-starts-on' )?>">
- <?php etranslate( 'Weekend starts on' )?></td><td>
- <select name="pref_WEEKEND_START" id="pref_WEEKEND_START">
-<?php
- for ( $i = -1; $i < 6; $i++ ) {
-  $j = ( $i == -1 ? 6 : $i ); //make sure start with Saturday
-  echo "<option value=\"$j\""
-   . ( $j == $prefarray['WEEKEND_START'] ? ' selected>' : '>' )
-   . weekday_name( $j ) . "</option>\n";
- }
-?>
- </select>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip ( 'work-hours-help' )?>">
- <?php etranslate ( 'Work hours' )?></td><td>
- <label for="pref_starthr"><?php etranslate ( 'From' )?></label>
- <select name="pref_WORK_DAY_START_HOUR" id="pref_starthr">
-<?php
-  for ( $i = 0; $i < 24; $i++ ) {
-    echo "<option value=\"$i\"" .
-      ( $i == $prefarray['WORK_DAY_START_HOUR'] ? ' selected>' :'>' )
-     . display_time( $i * 10000, 1 ) . "</option>\n";
-  }
-?>
- </select>
- <label for="pref_endhr"><?php etranslate ( 'to' )?></label>
- <select name="pref_WORK_DAY_END_HOUR" id="pref_endhr">
-<?php
- for ( $i = 0; $i < 24; $i++ ) {
-  echo "<option value=\"$i\""
-   . ( $i == $prefarray['WORK_DAY_END_HOUR'] ? ' selected>' : '>' )
-   . display_time( $i * 10000, 1 ) . "</option>\n";
- }
-?>
- </select>
-</td></tr>
-
-</table>
-</fieldset>
-<fieldset>
- <legend><?php etranslate ('Appearance')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
-<tr><td class="tooltip" title="<?php etooltip ( 'preferred-view-help' );?>"><?php
-etranslate ( 'Preferred view' )?></td><td>
-<select name="pref_STARTVIEW">
-<?php
-// For backwards compatibility. We used to store without the .php extension
-if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
-  $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
-  $prefarray['STARTVIEW'] .= '.php';
-$choices = array();
-$choices_text = array();
-if ( access_can_access_function ( ACCESS_DAY, $user ) ) {
-  $choices[] = 'day.php';
-  $choices_text[] = translate ( 'Day' );
+      <div id="tabscontent">
+<!-- DETAILS -->
+        <div id="tabscontent_settings" class="tooltip">
+          <fieldset>
+            <legend>' . translate( 'Language' ) . '</legend>
+            <p class="tooltipselect" title="' . tooltip( 'language-help' ) . '"><label for="pref_lang">' . translate( 'Language_' ) . '</label>
+              <select id="pref_lang" name="pref_LANGUAGE">' . $lang_list . '
+              </select><br>' . str_replace( 'XXX', translate( get_browser_language( true ) ),   translate( 'browser default language XXX' ) ) . '</p>
+          </fieldset>
+          <fieldset>
+            <legend>' . translate( 'Date and Time' ) . '</legend>'
+// Can we set timezones? If not don't display any options.
+ . ( set_env( 'TZ', $prefarray['TIMEZONE'] ) ? '
+              <p class="tooltipselect" title="' . tooltip( 'tz_help' ) . '"><label for="pref_TIMEZONE">' . translate( 'Timezone Selection' ) . '</label>' . print_timezone_select_html( 'pref_', $prefarray['TIMEZONE'] ) . '</p>' : '' ) . '
+              <p class="tooltipselect" title="' . tooltip( 'date_format_help' ) . '">' . translate( 'Date format' ) . '
+                <select name="pref_DATE_FORMAT">' . $datestyle_ymd . '
+                </select>&nbsp;' . date_to_str( $dateYmd, $DATE_FORMAT, false ) . '<br>
+                <select name="pref_DATE_FORMAT_MY">' . $datestyle_my . '
+                </select>&nbsp;' . date_to_str( $dateYmd, $DATE_FORMAT_MY, false ) . '<br>
+                <select name="pref_DATE_FORMAT_MD">' . $datestyle_md . '
+                </select>&nbsp;' . date_to_str( $dateYmd, $DATE_FORMAT_MD, false ) . '<br>
+                <select name="pref_DATE_FORMAT_TASK">' . $datestyle_tk . '
+                </select>&nbsp;' . translate( 'Small Task Date' ) . ' ' . date_to_str( $dateYmd, $DATE_FORMAT_TASK, false ) . '</p>
+              <p title="' . tooltip( 'time_format_help' ) . '">' . translate( 'Time format' ) . print_radio( 'TIME_FORMAT', array( '12'=>translate( '12 hour' ), '24'=>translate( '24 hour' ) ) ) . '</p>
+              <p title="' . tooltip( 'display_week_starts_on' ) . '">' . translate( 'Week starts on' ) . '
+                <select id="pref_WEEK_START" name="pref_WEEK_START">' . $start_wk_on . '
+                </select></p>
+              <p title="' . tooltip( 'display_weekend_starts_on' ) . '">' . translate( 'Weekend starts on' ) . '
+                <select id="pref_WEEKEND_START" name="pref_WEEKEND_START">' . $start_wkend_on . '
+                </select></p>
+              <p title="' . tooltip( 'work_hours_help' ) . '">' . translate( 'Work hours' ) . '
+                <label for="pref_starthr">' . translate( 'From' ) . '</label>
+                <select id="pref_starthr" name="pref_WORK_DAY_START_HOUR">' . $work_hr_start . '
+                </select>
+                <label for="pref_endhr">' . translate( 'to' ) . '</label>
+                <select id="pref_endhr" name="pref_WORK_DAY_END_HOUR">' . $work_hr_end . '
+                </select></p>
+          </fieldset>
+          <fieldset>
+            <legend>' . translate( 'Appearance' ) . '</legend>
+            <p title="' . tooltip( 'preferred_view_help' ) . '">' . translate( 'Preferred view' ) . '
+              <select name="pref_STARTVIEW">' . $prefer_vu . $user_vu . '
+              </select></p>
+            <p class="tooltipselect" title="' . tooltip( 'fonts_help' ) . '">
+              <label for="pref_font">' . translate( 'Fonts' ) . '</label>
+              <input type="text" id="pref_font" name="pref_FONTS" size="40" value="' . htmlspecialchars( $prefarray['FONTS'] ) . '"></p>';
+foreach ( array(
+    // tooltip( 'display_sm_month_help' )
+    'sm_month' => translate( 'Display small months' ),
+    // tooltip( 'display_weekends_help' )
+    'weekends' => translate( 'Display weekends' ),
+    // tooltip( 'display_long_days_help' )
+    'long_days' => translate( 'Display long day names' ),
+    // tooltip( 'display_minutes_help' )
+    'minutes' => translate( 'Display 00 minutes always' ),
+    // tooltip( 'display_end_times_help' )
+    'end_times' => translate( 'Display end times on calendars' ),
+    // tooltip( 'display_all_days_in_month_help' )
+    'all_days_in_month' => translate( 'Display all days in month view' ),
+    // tooltip( 'display_weeknumber_help' )
+    'weeknumber' => translate( 'Display week number' ),
+    // tooltip( 'display_tasks_help' )
+    'tasks' => translate( 'Display small task list' ),
+    // tooltip( 'display_tasks_in_grid_help' )
+    'tasks_in_grid' => translate( 'Display tasks in Calendars' ),
+    // tooltip( 'display_moon_phases_help' )
+    'moon_phases' => translate( 'Display Lunar Phases in month view' ),
+  ) as $k => $v ) } {
+  echo '
+            <p title="' . tooltip( // bypass update_translation.pl
+   'display_' . $k . '_help' ) . '">' . $v . print_radio( 'DISPLAY_' . strtoupper( $k ) ) . '</p>';
 }
-if ( access_can_access_function ( ACCESS_WEEK, $user ) ) {
-  $choices[] = 'week.php';
-  $choices_text[] = translate ( 'Week' );
-}
-if ( access_can_access_function ( ACCESS_MONTH, $user ) ) {
-  $choices[] = 'month.php';
-  $choices_text[] = translate ( 'Month' );
-}
-if ( access_can_access_function ( ACCESS_YEAR, $user ) ) {
-  $choices[] = 'year.php';
-  $choices_text[] = translate ( 'Year' );
-}
-// combo.php contains day, week, month and agenda views..
-$choices[] = 'combo.php';
-$choices_text[] = translate ( 'Multiview' );
-for ( $i = 0, $cnt = count ( $choices ); $i < $cnt; $i++ ) {
-  echo '<option value="' . $choices[$i] . '" ';
-  if ( $prefarray['STARTVIEW'] == $choices[$i] )
-    echo ' selected';
-  echo ' >' . htmlspecialchars ( $choices_text[$i] ) . "</option>\n";
-}
-// Allow user to select a view also
-for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
-  if ( $views[$i]['cal_owner'] != $user && $views[$i]['cal_is_global'] != 'Y' )
-    continue;
-  $xurl = $views[$i]['url'];
-  echo '<option value="';
-  echo $xurl . '" ';
-  $xurl_strip = str_replace ( '&amp;', '&', $xurl );
-  if ( $prefarray['STARTVIEW'] == $xurl_strip )
-    echo ' selected';
-  echo '>' . htmlspecialchars ( $views[$i]['cal_name'] ) . "</option>\n";
-}
-?>
-</select>
-</td></tr>
+echo '
+          </fieldset>
+          <fieldset>
+            <legend>' . translate( 'Events' ) . '</legend>
+            <p title="' . tooltip( 'display_unapproved_help' ) . '">' . translate( 'Display unapproved' ) . print_radio( 'DISPLAY_UNAPPROVED' ) . '</p>
+            <p title="' . tooltip( 'timed_evt_len_help' ) . '">' . translate( 'Specify timed event length by' ) . print_radio( 'TIMED_EVT_LEN', array( 'D' => translate( 'Duration' ), 'E' => translate( 'End Time' ) ) ) . '</p>' . $catList . '
+            <p title="' . tooltip( 'disable_crossday_events_help' ) . '">' . translate( 'Disable Cross-Day Events' ) . print_radio( 'DISABLE_CROSSDAY_EVENTS' ) . '</p>
+            <p title="' . tooltip( 'display_desc_print_day_help' ) . '">' . translate( 'desc in printer day view' ) . print_radio( 'DISPLAY_DESC_PRINT_DAY' ) . '</p>
+            <p title="' . tooltip( 'entry-interval-help' ) . '">' . translate( 'Entry interval' ) . '
+              <select name="pref_ENTRY_SLOTS">' . $entry_slots . '
+              </select></p>
+            <p title="' . tooltip( 'time-interval-help' ) . '">' . translate( 'Time interval' ) . '
+              <select name="pref_TIME_SLOTS">' . $time_slots . '
+              </select></p>
+          </fieldset>
+          <fieldset>
+            <legend>' . translate( 'Miscellaneous' ) . '</legend>
+            <p title="' . tooltip( 'auto-refresh-help' ) . '">' . translate( 'Auto-refresh calendars' ) . print_radio( 'AUTO_REFRESH' ) . '</p>
+            <p title="' . tooltip( 'auto-refresh-time-help' ) . '">&nbsp;&nbsp;&nbsp;&nbsp;' . translate( 'Auto-refresh time' ) . '
+              <input type="text" name="pref_AUTO_REFRESH_TIME" size="4" value="' . ( empty( $prefarray['AUTO_REFRESH_TIME'] ) ? 0 : $prefarray['AUTO_REFRESH_TIME'] ) . '">' .  $minutesStr . '</p>
+          </fieldset>
+        </div>
+<!-- END SETTINGS -->';
 
-<tr><td class="tooltipselect" title="<?php etooltip ( 'fonts-help' )?>">
- <label for="pref_font"><?php etranslate ( 'Fonts')?></label></td><td>
- <input type="text" size="40" name="pref_FONTS" id="pref_font" value="<?php echo htmlspecialchars( $prefarray['FONTS'] );?>">
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip ( 'display-sm_month-help' );?>">
- <?php etranslate( 'Display small months' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_SM_MONTH' ) ?>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip ( 'display-weekends-help' );?>">
- <?php etranslate( 'Display weekends' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_WEEKENDS' ) ?>
-</td></tr>
- <tr><td class="tooltip" title="<?php etooltip ( 'display-long-daynames-help' );?>">
-  <?php etranslate( 'Display long day names' )?></td><td>
-  <?php echo print_radio ( 'DISPLAY_LONG_DAYS' ) ?>
- </td></tr>
-<tr><td class="tooltip" title="<?php etooltip ("display-minutes-help")?>">
- <?php etranslate( 'Display 00 minutes always' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_MINUTES' ) ?>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip ("display-end-times-help")?>">
- <?php etranslate( 'Display end times on calendars' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_END_TIMES' ) ?>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip ( 'display-alldays-help' );?>">
- <?php etranslate( 'Display all days in month view' )?></td><td>
- <?php echo print_radio( 'DISPLAY_ALL_DAYS_IN_MONTH' ) ?>
- </td></tr>
-<tr><td class="tooltip" title="<?php etooltip ( 'display-week-number-help' )?>">
- <?php etranslate ( 'Display week number' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_WEEKNUMBER' ) ?>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip ( 'display-tasks-help' )?>">
- <?php etranslate( 'Display small task list' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_TASKS' ) ?>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip ( 'display-tasks-in-grid-help' )?>">
- <?php etranslate( 'Display tasks in Calendars' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_TASKS_IN_GRID' ) ?>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip ( 'lunar-help' )?>">
- <?php etranslate( 'Display Lunar Phases in month view' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_MOON_PHASES' ) ?>
-</td></tr>
-
-</table>
-</fieldset>
-<fieldset>
- <legend><?php etranslate ('Events')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
-
-<tr><td class="tooltip" title="<?php etooltip ( 'display-unapproved-help' );?>">
- <?php etranslate ( 'Display unapproved' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_UNAPPROVED' ) ?>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip ( 'timed-evt-len-help' );?>">
- <?php etranslate ( 'Specify timed event length by' )?></td><td>
- <?php echo print_radio ( 'TIMED_EVT_LEN',
-   array ( 'D'=>translate ( 'Duration' ), 'E'=>translate ( 'End Time' ) ) ) ?>
-</td></tr>
-
-<?php if ( ! empty ( $categories ) ) { ?>
-<tr><td>
- <label for="pref_cat"><?php etranslate ( 'Default Category' )?></label></td><td>
- <select name="pref_CATEGORY_VIEW" id="pref_cat">
-<?php
- if ( ! empty ( $categories ) ) {
-  foreach ( $categories as $K => $V ) {
-   echo "<option value=\"$K\"";
-   if ( ! empty ( $prefarray['CATEGORY_VIEW'] ) &&
-    $prefarray['CATEGORY_VIEW'] == $K ) echo ' selected';
-   echo ">{$V['cat_name']}</option>\n";
-  }
- }
-?>
- </select>
-</td></tr>
-<?php } //end if (! empty ($categories ) ) ?>
-<tr><td class="tooltip" title="<?php etooltip ( 'crossday-help' )?>">
- <?php etranslate( 'Disable Cross-Day Events' )?></td><td>
- <?php echo print_radio ( 'DISABLE_CROSSDAY_EVENTS' ) ?>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip ( 'display-desc-print-day-help' );?>">
- <?php etranslate ( 'desc in printer day view' )?></td><td>
- <?php echo print_radio ( 'DISPLAY_DESC_PRINT_DAY' ) ?>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip ( 'entry-interval-help' )?>">
- <?php etranslate( 'Entry interval' )?></td><td>
- <select name="pref_ENTRY_SLOTS">
-  <option value="24" <?php if ( $prefarray['ENTRY_SLOTS'] == "24" )
-    echo ' selected>1 ' . translate( 'hour' )?></option>
-  <option value="48" <?php if ( $prefarray['ENTRY_SLOTS'] == "48" )
-    echo ' selected>30 ' . $minutesStr ?></option>
-  <option value="72" <?php if ( $prefarray['ENTRY_SLOTS'] == "72" )
-    echo ' selected>20 ' . $minutesStr ?></option>
-  <option value="96" <?php if ( $prefarray['ENTRY_SLOTS'] == "96" )
-    echo ' selected>15 ' . $minutesStr ?></option>
-  <option value="144" <?php if ( $prefarray['ENTRY_SLOTS'] == "144" )
-    echo ' selected>10 ' . $minutesStr ?></option>
-  <option value="288" <?php if ( $prefarray['ENTRY_SLOTS'] == "288" )
-    echo ' selected>5 ' . $minutesStr ?></option>
-  <option value="1440" <?php if ( $prefarray['ENTRY_SLOTS'] == "1440" )
-    echo ' selected>1 ' . translate( 'minute' )?></option>
- </select>
-</td></tr>
-<tr><td class="tooltip" title="<?php etooltip ( 'time-interval-help' )?>">
- <?php etranslate ( 'Time interval' )?></td><td>
- <select name="pref_TIME_SLOTS">
-  <option value="24" <?php if ( $prefarray['TIME_SLOTS'] == "24" )
-  echo ' selected>1 ' . translate( 'hour' )?></option>
-  <option value="48" <?php if ( $prefarray['TIME_SLOTS'] == "48" )
-  echo ' selected>30 ' . $minutesStr ?></option>
-  <option value="72" <?php if ( $prefarray['TIME_SLOTS'] == "72" )
-  echo ' selected>20 ' . $minutesStr ?></option>
-  <option value="96" <?php if ( $prefarray['TIME_SLOTS'] == "96" )
-  echo ' selected>15 ' . $minutesStr ?></option>
-  <option value="144" <?php if ( $prefarray['TIME_SLOTS'] == "144" )
-  echo ' selected>10 ' . $minutesStr ?></option>
- </select>
-</td></tr>
-</table>
-</fieldset>
-<fieldset>
- <legend><?php etranslate ('Miscellaneous')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
-
-<tr><td class="tooltip" title="<?php etooltip ( 'auto-refresh-help' );?>">
- <?php etranslate ( 'Auto-refresh calendars' )?></td><td>
- <?php echo print_radio ( 'AUTO_REFRESH' ) ?>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip ( 'auto-refresh-time-help' );?>">
- &nbsp;&nbsp;&nbsp;&nbsp;<?php etranslate ( 'Auto-refresh time' )?></td><td>
- <input type="text" name="pref_AUTO_REFRESH_TIME" size="4" value="<?php echo ( empty( $prefarray['AUTO_REFRESH_TIME'] ) ? 0 : $prefarray['AUTO_REFRESH_TIME'] ); ?>"> <?php etranslate( 'minutes' )?>
-</td></tr>
-</table>
-</fieldset>
-</div>
-<!-- END SETTINGS -->
-
-<?php if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) { ?>
-<div id="tabscontent_themes">
-<table cellspacing="1" cellpadding="2" border="0" width="35%" summary="">
-<tr><td class="tooltip"  title="<?php etooltip ( 'theme-reload-help' );?>"colspan="3"><?php
-etranslate ( 'reload page to show Theme' )?></td></tr>
-<tr><td  class="tooltipselect" title="<?php etooltip ( 'themes-help' );?>">
- <label for="pref_THEME"><?php etranslate ( 'Themes_' )?></label></td><td>
- <select name="pref_THEME" id="pref_THEME">
-<?php
-  echo "<option value=\"none\" disabled selected'>" .
-    translate ( 'AVAILABLE THEMES' ) . "</option>\n";
-  //always use 'none' as default so we don't overwrite manual settings
-  // echo '<option value="none" selected' . translate( 'None' ) . "</option>\n";
+if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) {
+  echo '
+        <div id="tabscontent_themes" class="tooltip">
+          <p title="' . tooltip( 'theme-reload-help' ) . '" colspan="3">' . translate( 'reload page to show Theme' ) . '</p>
+          <p class="tooltipselect" title="' . tooltip( 'themes-help' ) . '"><label for="pref_THEME">' . translate( 'Themes_' ) . '</label>
+            <select id="pref_THEME" name="pref_THEME">' . $option . 'none" disabled selected>' . translate( 'AVAILABLE THEMES' ) . '</option>';
   foreach ( $themes as $theme ) {
-   echo '<option value="' . $theme . '">' . $theme . "</option>\n";
+    echo $option . $theme . '">' . $theme . '</option>';
   }
-?>
- </select></td><td>
- <input type="button" name="preview" value="<?php etranslate( 'Preview' ) ?>" onclick="return showPreview()">
-</td></tr>
-<?php if ( $MENU_ENABLED == 'Y' ) { ?>
- <tr><td  class="tooltip" title="<?php etooltip ( 'menu-themes-help' );?>">
- <label for="pref_MENU_THEME"><?php etranslate( 'Menu theme' )?></label></td><td>
- <select name="pref_MENU_THEME" id="pref_MENU_THEME">
-<?php
-  echo '<option value="default" ' . ($prefarray['MENU_THEME'] == 'default' ?
-    ' selected' : '' ) . ">default</option>\n";
-  foreach ( $menuthemes as $menutheme ) {
-     echo '<option value="' . $menutheme . '"';
-     if ($prefarray['MENU_THEME'] == $menutheme ) echo ' selected';
-     echo '>' . $menutheme . "</option>\n";
+  echo '
+            </select>
+            <input type="button" id="previewBtn" name="preview" value="' . translate( 'Preview' ) . '"></p>';
+  if ( $MENU_ENABLED == 'Y' ) {
+    echo '
+          <p title="' . tooltip( 'menu_themes_help' ) . '"><label for="pref_MENU_THEME">' . translate( 'Menu theme' ) . '</label>
+            <select id="pref_MENU_THEME" name="pref_MENU_THEME">' . $option . 'default"' . ( $prefarray['MENU_THEME'] == 'default' ? ' selected' : '' ) . '>default</option>';
+    foreach ( $menuthemes as $menutheme ) {
+      echo $option . $menutheme . ( $prefarray['MENU_THEME'] == $menutheme ? '" selected>' : '">' ) . $menutheme . '</option>';
+    }
+    echo '
+            </select></p>';
   }
-?>
- </select>
- </td></tr>
-<?php } //end Menu enabled test ?>
-</table>
-</div>
-<!-- END THEMES -->
-<?php }
+  echo '
+        </div>
+<!-- END THEMES -->';
+}
 
-if ( ! $updating_public ) {
-if ( $SEND_EMAIL == 'Y' ) { ?>
-<div id="tabscontent_email">
-<table cellspacing="1" cellpadding="2" summary="">
-<tr><td class="tooltip">
-<tr><td class="tooltip" title="<?php etooltip('email-format');?>">
- <?php etranslate( 'Email format preference' )?></td><td>
- <?php echo print_radio ( 'EMAIL_HTML',
-   array ( 'Y'=> translate ( 'HTML' ), 'N'=>translate ( 'Plain Text' ) ) ) ?>
-</td></tr>
+echo ( $updating_public ? '' : ( $SEND_EMAIL == 'Y' ? '
+        <div id="tabscontent_email" class="tooltip">
+          <p title="' . tooltip( 'email-format' ) . '">' . translate( 'Email format preference' ) . print_radio( 'EMAIL_HTML', array( 'Y' => translate( 'HTML' ), 'N' => translate( 'Plain Text' ) ) ) . '</p>
+          <p title="' . tooltip( 'email_attach_ics' ) . '">' . translate( 'Include iCalendar attachments' ) . print_radio( 'EMAIL_ATTACH_ICS', '', '', 0 ) . '</p>
+          <p title="' . tooltip( 'email_reminder_help' ) . '">' . translate( 'Event reminders' ) . print_radio( 'EMAIL_REMINDER' ) . '</p>
+          <p title="' . tooltip( 'email_event_added' ) . '">' . translate( 'Events added to my calendar' ) . print_radio( 'EMAIL_EVENT_ADDED' ) . '</p>
+          <p title="' . tooltip( 'email_event_updated' ) . '">' . translate( 'Events updated on my calendar' ) . print_radio( 'EMAIL_EVENT_UPDATED' ) . '</p>
+          <p title="' . tooltip( 'email_event_deleted' ) . '">' . translate( 'Events removed from my calendar' ) . print_radio( 'EMAIL_EVENT_DELETED' ) . '</p>
+          <p title="' . tooltip( 'email_event_rejected' ) . '">' . translate( 'Event rejected by participant' ) . print_radio( 'EMAIL_EVENT_REJECTED' ) . '</p>
+          <p title="' . tooltip( 'email_event_create' ) . '">' . translate( 'Event that I create' ) . print_radio( 'EMAIL_EVENT_CREATE' ) . '</p>
+        </div>
+<!-- END EMAIL -->' : '' ) . '
+        <div id="tabscontent_boss" class="tooltip">' . ( $SEND_EMAIL == 'Y' ? '
+          <p>' . translate( 'Email me event notification' ) . print_radio( 'EMAIL_ASSISTANT_EVENTS' ) . '</p>' : '' ) . '
+          <p>' . translate( 'I want to approve events' ) . print_radio( 'APPROVE_ASSISTANT_EVENT' ) . '</p>
+          <p title="' . tooltip( 'display_byproxy-help' ) . '">' . translate( 'Display if created by Assistant' ) . print_radio( 'DISPLAY_CREATED_BYPROXY' ) . '</p>
+        </div>
+<!-- END BOSS -->' );
 
-<tr><td class="tooltip" title="<?php etooltip('email-include-ics');?>">
- <?php etranslate( 'Include iCalendar attachments' )?></td><td>
- <?php echo print_radio ( 'EMAIL_ATTACH_ICS', '', '', 0 ) ?>
-</td></tr>
+if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y') {
+  $publish_access = ( empty( $prefarray['USER_REMOTE_ACCESS'] )
+    ? 0 : $prefarray['USER_REMOTE_ACCESS'] );
+  echo '
+        <div id="tabscontent_subscribe" class="tooltipselect">
+          <p title="' . tooltip( 'allow-view-subscriptions-help' ) . '">' . translate( 'Allow remote viewing of' ) . '
+            <select name="pref_USER_REMOTE_ACCESS">';
+  $tmp = array(
+    translate( 'Public entries' ),
+    translate( 'Public and Confidential entries' ),
+    translate( 'All entries' ),
+  );
+  for ( $i = 0; $i < 3; $i++ ) {
+    echo $option . $i . ( $publish_access == $i ? '" selected>' : '">' ) . $tmp[$i] . '</option>';
+  }
+  $empServ = empty( $SERVER_URL );
+  $upPub = ( $updating_public ? '__public__' : $user );
+  $htmlServURL = htmlspecialchars( $SERVER_URL );
+  $longURLStr = '&nbsp;&nbsp;&nbsp;&nbsp;' . $urlStr . $htmlServURL;
+  echo '
+            </select></p>' . ( $PUBLISH_ENABLED == 'Y' ? '
+          <p title="' . tooltip( 'allow-remote-subscriptions-help' ) . '">' . translate( 'Allow remote subscriptions' ) . print_radio( 'USER_PUBLISH_ENABLED' ) . '</p>' . ( $empServ ? '' : '
+          <p title="' . tooltip( 'remote-subscriptions-url-help' ) . '">' . $longURLStr . 'publish.php/' . $upPub . '.ics<br>' . $htmlServURL . 'publish.php?user=' . $upPub . '</p>' ) . '
+          <p title="' . tooltip( 'allow-remote-publishing-help' ) . '">' . translate( 'Allow remote publishing' ) . print_radio( 'USER_PUBLISH_RW_ENABLED' ) . '</p>' . ( $empServ ? '' : '
+          <p title="' . tooltip( 'remote-publishing-url-help' ) . '">' . $longURLStr . 'icalclient.php</p>' ) : '' ) . ( $RSS_ENABLED == 'Y' ? '
+          <p title="' . tooltip( 'rss-enabled-help' ) . '">' . translate( 'Enable RSS feed' ) . print_radio( 'USER_RSS_ENABLED' ) . '</p>' . ( $empServ ? '' : '
+          <p title="' . tooltip( 'rss-feed-url-help' ) . '">' . $longURLStr . 'rss.php?user=' . $upPub . '</p>' ) : '' ) . '
+          <p title="' . tooltip( 'freebusy-enabled-help' ) . '">' . translate( 'Enable FreeBusy publishing' ) . print_radio( 'FREEBUSY_ENABLED' ) . '</p>' . ( $empServ ? '' : '
+          <p title="' . tooltip( 'freebusy-url-help' ) . '">' . $longURLStr . 'freebusy.php/' . $upPub . '.ifb<br>' . $htmlServURL . 'freebusy.php?user=' .$upPub . '</p>' ) . '
+        </div>
+<!-- END SUBSCRIBE -->';
+}
+setcookie( 'user', '' );
 
-<tr><td class="tooltip" title="<?php etooltip('email-event-reminders-help');?>">
- <?php etranslate ( 'Event reminders' )?></td><td>
- <?php echo print_radio ( 'EMAIL_REMINDER' ) ?>
-</td></tr>
+if ( $ALLOW_USER_HEADER == 'Y' ) {
+  setcookie( 'user', $prefuser, 180 );
+  $tmp = array();
 
-<tr><td class="tooltip" title="<?php etooltip('email-event-added');?>">
- <?php etranslate ( 'Events added to my calendar' )?></td><td>
- <?php echo print_radio ( 'EMAIL_EVENT_ADDED' ) ?>
-</td></tr>
+  if ( $CUSTOM_SCRIPT == 'Y' )
+    // tooltip( 'custom_script_help' )
+    $tmp['script'] => translate( 'Custom script' );
 
-<tr><td class="tooltip" title="<?php etooltip('email-event-updated');?>">
- <?php etranslate ( 'Events updated on my calendar' )?></td><td>
- <?php echo print_radio ( 'EMAIL_EVENT_UPDATED' ) ?>
-</td></tr>
+  if ( $CUSTOM_HEADER == 'Y' )
+    // tooltip( 'custom_header_help' )
+    $tmp['header'] => translate( 'Custom header' );
 
-<tr><td class="tooltip" title="<?php etooltip('email-event-deleted');?>">
- <?php etranslate ( 'Events removed from my calendar' )?></td><td>
- <?php echo print_radio ( 'EMAIL_EVENT_DELETED' ) ?>
-</td></tr>
+  if ( $CUSTOM_TRAILER == 'Y' )
+    // tooltip( 'custom_trailer_help' )
+    $tmp['trailer'] => translate( 'Custom trailer' );
 
-<tr><td class="tooltip" title="<?php etooltip('email-event-rejected');?>">
- <?php etranslate ( 'Event rejected by participant' )?></td><td>
- <?php echo print_radio ( 'EMAIL_EVENT_REJECTED' ) ?>
-</td></tr>
+  foreach ( $tmp as $k => $v ) {
+    echo '
+          <p title="' . tooltip( // bypass update_translation.pl
+      'custom-' . $k . '-help' ) . '">' . $v . '
+            <input type="button" id="' . $k . 'Btn" value="' . $editStr . '" name=""></p>';
+  }
+  echo '
+        </div>
+<!-- END HEADER -->';
+}
+echo '
+<!-- BEGIN COLORS -->';
 
-<tr><td class="tooltip" title="<?php etooltip('email-event-create');?>">
- <?php etranslate( 'Event that I create' )?></td><td>
- <?php echo print_radio ( 'EMAIL_EVENT_CREATE' ) ?>
-</td></tr>
-</table>
-</div>
-<!-- END EMAIL -->
-<?php } ?>
-
-<div id="tabscontent_boss">
-<table cellspacing="1" cellpadding="2" summary="">
-<?php if ( $SEND_EMAIL == 'Y' ) { ?>
-<tr><td class="tooltip"><?php etranslate ( 'Email me event notification' )?></td><td>
- <?php echo print_radio ( 'EMAIL_ASSISTANT_EVENTS' ) ?>
-</td></tr>
-<?php } //end email ?>
-<tr><td class="tooltip"><?php etranslate ( 'I want to approve events' )?></td><td>
- <?php echo print_radio ( 'APPROVE_ASSISTANT_EVENT' ) ?>
-</td></tr>
-
-<tr><td class="tooltip" title="<?php etooltip( 'display_byproxy-help' )?>">
- <?php etranslate( 'Display if created by Assistant' )?></td><td>
- <?php echo print_radio( 'DISPLAY_CREATED_BYPROXY' ) ?>
-</td></tr>
-</table>
-</div>
-<!-- END BOSS -->
-
-<?php } /* if ( ! $updating_public ) */ ?>
-<div id="tabscontent_subscribe">
-<table cellspacing="1" cellpadding="2" summary="">
-<?php if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y') { ?>
-<tr><td class="tooltipselect" title="<?php etooltip ( 'allow-view-subscriptions-help' )?>"><?php etranslate ( 'Allow remote viewing of' );
-$publish_access = ( empty( $prefarray['USER_REMOTE_ACCESS'] )
-   ? 0 : $prefarray['USER_REMOTE_ACCESS'] );
-?></td><td>
-  <select name="pref_USER_REMOTE_ACCESS">
-   <option value="0" <?php echo ( $publish_access == '0' ?
-     ' selected>' : '>' ) . translate( 'Public entries' )?></option>
-   <option value="1" <?php echo ( $publish_access == '1' ?
-     ' selected>' : '>' ) . translate( 'Public and Confidential entries' )
-?></option>
-   <option value="2" <?php echo ( $publish_access == '2' ?
-     ' selected>' : '>' ) . translate( 'All entries' )?></option>
-  </select>
-  </td></tr>
-<?php }
-if ( $PUBLISH_ENABLED == 'Y' ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip ( 'allow-remote-subscriptions-help' )?>"><?php etranslate ( 'Allow remote subscriptions' )?></td><td>
-  <?php echo print_radio ( 'USER_PUBLISH_ENABLED' ) ?>
-</td></tr>
-<?php if ( ! empty ( $SERVER_URL ) ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip( 'remote-subscriptions-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $urlStr?></td>
-  <td>
-  <?php
-    echo htmlspecialchars ( $SERVER_URL ) .
-      'publish.php/' . ( $updating_public ? '__public__' : $user ) . '.ics';
-    echo "<br>\n";
-    echo htmlspecialchars ( $SERVER_URL ) .
-      'publish.php?user=' . ( $updating_public ? '__public__' : $user );
-  ?></td></tr>
-<?php } /* $SERVER_URL */ ?>
-
-<tr><td class="tooltipselect" title="<?php
- etooltip ( 'allow-remote-publishing-help' )?>"><?php
- etranslate ( 'Allow remote publishing' )?></td>
-  <td>
-  <?php echo print_radio ( 'USER_PUBLISH_RW_ENABLED' ) ?>
-</td></tr>
-<?php if ( ! empty ( $SERVER_URL ) ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip( 'remote-publishing-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $urlStr?></td>
-  <td>
-  <?php
-    echo htmlspecialchars ( $SERVER_URL ) .
-      'icalclient.php';
-  ?></td></tr>
-<?php } /* $SERVER_URL */
-
-} /* $PUBLISH_ENABLED */
-
-if ( $RSS_ENABLED == 'Y' ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip ( 'rss-enabled-help' )?>"><?php
-  etranslate ( 'Enable RSS feed' )?></td>
-  <td>
-  <?php echo print_radio ( 'USER_RSS_ENABLED' ) ?>
-</td></tr>
-<?php if ( ! empty ( $SERVER_URL ) ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip( 'rss-feed-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $urlStr?></td>
-  <td>
-  <?php
-    echo htmlspecialchars ( $SERVER_URL ) .
-      'rss.php?user=' . ( $updating_public ? '__public__' : $user );
-  ?></td></tr>
-<?php } /* $SERVER_URL */
-} /* $RSS_ENABLED */ ?>
-
-<tr><td class="tooltipselect" title="<?php etooltip ( 'freebusy-enabled-help' )?>"><?php etranslate ( 'Enable FreeBusy publishing' )?></td>
-  <td>
-  <?php echo print_radio ( 'FREEBUSY_ENABLED' ) ?>
-</td></tr>
-<?php if ( ! empty ( $SERVER_URL ) ) { ?>
-<tr><td class="tooltipselect" title="<?php etooltip( 'freebusy-url-help' )?>">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $urlStr?></td>
-  <td>
-  <?php
-    echo htmlspecialchars ( $SERVER_URL ) .
-      'freebusy.php/' . ( $updating_public ? '__public__' : $user ) . '.ifb';
-    echo "<br>\n";
-    echo htmlspecialchars ( $SERVER_URL ) .
-      'freebusy.php?user=' . ( $updating_public ? '__public__' : $user );
-  ?></td></tr>
-<?php } /* $SERVER_URL */ ?>
-</table>
-</div>
-<!-- END SUBSCRIBE -->
-
-<?php if ( $ALLOW_USER_HEADER == 'Y' ) { ?>
-<div id="tabscontent_header">
-<table cellspacing="1" cellpadding="2" summary="">
-<?php if ( $CUSTOM_SCRIPT == 'Y' ) { ?>
- <tr><td class="tooltip" title="<?php etooltip ( 'custom-script-help' );?>">
-  <?php etranslate ( 'Custom script/stylesheet' )?></td><td>
-  <input type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf( $openStr, 'S',$prefuser ) ?> name="">
- </td></tr>
-<?php }
-
-if ( $CUSTOM_HEADER == 'Y' ) { ?>
- <tr><td class="tooltip" title="<?php etooltip ( 'custom-header-help' );?>">
-  <?php etranslate ( 'Custom header' )?></td><td>
-  <input type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf( $openStr, 'H',$prefuser ) ?> name="">
- </td></tr>
-<?php }
-
-if ( $CUSTOM_TRAILER == 'Y' ) { ?>
- <tr><td class="tooltip" title="<?php etooltip ( 'custom-trailer-help' );?>">
-  <?php etranslate ( 'Custom trailer' )?></td><td>
-  <input type="button" value="<?php etranslate ( 'Edit' );?>..." onclick=<?php
-    printf( $openStr, 'T',$prefuser ) ?> name="">
- </td></tr>
-<?php } ?>
-</table>
-</div>
-<!-- END HEADER -->
-<?php } // if $ALLOW_USER_HEADER ?>
-
-<!-- BEGIN COLORS -->
-
-<?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
-<div id="tabscontent_colors">
-<table width="100%" summary="">
-<tr class="ignore"><td class="aligntop">
-<table cellspacing="0" cellpadding="0" summary="">
- <tr><td>
-  <?php echo print_color_input_html ( 'BGCOLOR',
-    translate ( 'Document BG' ) ) ?>
- </td></tr>
- <tr><td>
-  <?php echo print_color_input_html ( 'H2COLOR',
-    translate ( 'Document title' ) ) ?>
- </td></tr>
- <tr><td>
-  <?php echo print_color_input_html ( 'TEXTCOLOR',
-    translate ( 'Document text' ) ) ?>
-</td></tr>
- <tr><td>
-  <?php echo print_color_input_html ( 'MYEVENTS',
-    translate ( 'My event text' ) ) ?>
- </td></tr>
- <tr><td>
-  <?php echo print_color_input_html ( 'TABLEBG',
-    translate ( 'Table grid color' ) ) ?>
- </td></tr>
- <tr><td>
-  <?php echo print_color_input_html ( 'THBG',
-    translate ( 'Table header BG' ) ) ?>
- </td></tr>
- <tr><td>
-  <?php echo print_color_input_html ( 'THFG',
-    translate ( 'Table header text' ) ) ?>
- </td></tr>
- <tr><td>
-  <?php echo print_color_input_html ( 'CELLBG',
-    translate ( 'Table cell BG' ) ) ?>
- </td></tr>
- <tr><td>
-  <?php echo print_color_input_html ( 'TODAYCELLBG',
-    translate ( 'Table cell today BG' ) ) ?>
- </td></tr>
- <tr><td>
-  <?php echo print_color_input_html ( 'HASEVENTSBG',
-    translate ( 'Table cell events BG' ) ) ?>
-</td></tr>
- <tr><td>
-   <?php echo print_color_input_html ( 'WEEKENDBG',
-     translate ( 'Table cell weekends BG' ) ) ?>
- </td></tr>
-   <tr><td>
-  <?php echo print_color_input_html ( 'OTHERMONTHBG',
-    translate ( 'Table cell other month BG' ) ) ?>
-  </td></tr>
-<tr><td>
-  <?php echo print_color_input_html ( 'WEEKNUMBER',
-    translate ( 'Table cell other month BG' ) ) ?>
-</td></tr>
-   <tr><td>
-     <?php echo print_color_input_html ( 'POPUP_BG',
-       translate ( 'Event popup BG' ) ) ?>
-  </td></tr>
-   <tr><td>
-    <?php echo print_color_input_html ( 'POPUP_FG',
-      translate ( 'Event popup text' ) ) ?>
-  </td></tr>
-</table>
-
-</td><td class="aligncenter aligntop">
-<br>
+if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) {
+  set_today( $dateYmd );
+  $tmp = translate( 'Table cell other month BG' );
+  echo '
+        <div id="tabscontent_colors">';
+  foreach ( array(
+      'BGCOLOR'     => translate( 'Document BG' ),
+      'H2COLOR'     => translate( 'Document title' ),
+      'TEXTCOLOR'   => translate( 'Document text' ),
+      'MYEVENTS'    => translate( 'My event text' ),
+      'TABLEBG'     => translate( 'Table grid color' ),
+      'THBG'        => translate( 'Table header BG' ),
+      'THFG'        => translate( 'Table header text' ),
+      'CELLBG'      => translate( 'Table cell BG' ),
+      'TODAYCELLBG' => translate( 'Table cell today BG' ),
+      'HASEVENTSBG' => translate( 'Table cell events BG' ),
+      'WEEKENDBG'   => translate( 'Table cell weekends BG' ),
+      'OTHERMONTHBG'=> $tmp,
+      'WEEKNUMBER'  => $tmp,
+      'POPUP_BG'    => translate( 'Event popup BG' ),
+      'POPUP_FG'    => translate( 'Event popup text' ),
+    ) as $k => $v ) {
+    echo '
+          <p>' . print_color_input_html( $k, $v ) ) . '</p>';
+  }
+  echo '
 <!-- BEGIN EXAMPLE MONTH -->
-<table style="width:90%; background-color:<?php echo $BGCOLOR?>" summary=""><tr>
-<td width="1%" rowspan="3">&nbsp;</td>
-<td style="text-align:center; color:<?php
-  echo $H2COLOR?>; font-weight:bold;"><?php
-  echo date_to_str ( $dateYmd, $DATE_FORMAT_MY, false );?></td>
-<td width="1%" rowspan="3">&nbsp;</td></tr>
-<tr><td bgcolor="<?php echo $BGCOLOR?>">
-<?php
-set_today( $dateYmd );
-echo display_month ( date ( 'm' ), date( 'Y' ), true );
-?>
-</td></tr>
-<tr><td>&nbsp;</td></tr>
-</table>
+          <div id="example_month">
+            <p>' . date_to_str( date( 'Ymd' ), $DATE_FORMAT_MY, false ) . '</p>'
+   . display_month( date( 'm' ), date( 'Y' ), true ) . '
+          </div>
 <!-- END EXAMPLE MONTH -->
-</td></tr></table>
-</div>
+        </div>
 <!-- END COLORS -->
-<?php } // if $ALLOW_COLOR_CUSTOMIZATION ?>
-</div>
+}
+echo '
+      </div>
 
 <!-- END TABS -->
-<br><br>
-<div>
-<input type="submit" value="<?php etranslate( 'Save Preferences' )?>" name="">
-<br><br>
-</div>
-</form>
+      <br><br>
+      <div>
+        <input type="submit" value="' . translate( 'Save Preferences' ) . '" name=""><br><br>
+      </div>
+    </form>' .  print_trailer();
 
-<?php echo print_trailer();
 ob_end_flush();
 
 ?>

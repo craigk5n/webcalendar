@@ -20,6 +20,37 @@ addLoadListener(function () {
 
   for (var i = tabs.length - 1; i > 1; i--) {
     toggleVisible('tabscontent_' + tabs[i], 'visible', 'none');
+
+    attachEventListener(document.getElementById('tab_' + tabs[i]), 'click', function () {
+      return setTab(tabs[i]);
+    });
+  }
+  attachEventListener(document.getElementsByTagName('img'), 'click', function () {
+    window.open('help_pref.php', 'cal_help',
+      'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');
+  });
+  attachEventListener(document.getElementById('prefform'), 'submit', function () {
+    return valid_form(this);
+  });
+  attachEventListener(document.getElementById('selLoca'), 'change', function () {
+    location = this.options[this.selectedIndex].value;
+  });
+  attachEventListener(document.getElementById('previewBtn'), 'click', function () {
+    return showPreview();
+  });
+
+  var user = wc_getCookie('user');
+
+  if (user != '') {
+    wc_setCookie('user', '');
+    var btn = ['header', 'script', 'trailer'];
+    for (var i = 0; i < 3; i++) {
+      attachEventListener(document.getElementById(btn[i] + 'Btn'), 'click', function () {
+        window.open('edit_template.php?type=' + substr(btn[i], 0, 1).toUpperCase + '&user=' + user,
+          'cal_template',
+          'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');
+      });
+    }
   }
 });
 function setTab(tab) {

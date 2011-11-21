@@ -2,6 +2,21 @@
 
 linkFile('../includes/js/visible.js');
 
+addLoadListener(function () {
+  attachEventListener(document.getElementById('testPHPbtn'), 'click', testPHPInfo);
+  attachEventListener(document.getElementById('odbc_db'), 'change', document.set_odbc_db.submit);
+  attachEventListener(document.getElementById('logoutBtn'), 'click', function () {
+    document.location.href = 'index.php?action=logout'
+  });
+  attachEventListener(document.getElementById('form_user_inc'), 'change', auth_handler);
+  attachEventListener(document.getElementById('saveBtn'), 'click', function () {
+    return validate();
+  });
+  attachEventListener(document.getElementById('launchBtn'), 'click', function () {
+    window.open('../index.php', 'webcalendar');
+  });
+
+});
 function validate(form) {
   // Only check to make sure single-user login is specified
   // if in single-user mode.

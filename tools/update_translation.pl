@@ -10,7 +10,7 @@
 #
 # Example:
 #   << MISSING >>
-#   custom-script-help:
+#   custom_script_help:
 #   English text: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
 #
 # Note: you will lose any comments you put in the translation file

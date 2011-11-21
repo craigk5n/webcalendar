@@ -388,8 +388,6 @@ class WebCalendar {
       $GLOBALS['webcalendar_login'] = $_COOKIE['webcalendar_login'];
     if ( ! empty ( $_COOKIE['webcalendar_last_view'] ) )
       $GLOBALS['webcalendar_last_view'] = $_COOKIE['webcalendar_last_view'];
-    if ( ! empty ( $_COOKIE['webcalendar_csscache'] ) )
-      $GLOBALS['webcalendar_csscache'] = $_COOKIE['webcalendar_csscache'];
 
     // Don't allow a user to put "login=XXX" in the URL
     // if they are not coming from the login.php page.
@@ -460,10 +458,10 @@ class WebCalendar {
     if ( ! $use_http_auth &&
       ( $this->_filename == 'css_cacher.php' ||
         $this->_filename == 'icalclient.php' ||
-        $this->_filename == 'rss_unapproved.php' ||
-        $this->_filename == 'rss_activity_log.php' ||
         $this->_filename == 'js_cacher.php' ||
-        $this->_filename == 'publish.php' ) ) {
+        $this->_filename == 'publish.php' ||
+        $this->_filename == 'rss_activity_log.php' ||
+        $this->_filename == 'rss_unapproved.php' ) ) {
       return;
     }
 

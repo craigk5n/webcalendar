@@ -93,12 +93,7 @@ function generate_password() {
   return $pass;
 }
 
-$uemail =
-$ufirstname =
-$ulastname =
-$upassword1 =
-$upassword2 =
-$user = '';
+$uemail = $ufirstname = $ulastname = $upassword1 = $upassword2 = $user = '';
 
 // We can limit what domain is allowed to self register.
 // $self_registration_domain should have this format "192.168.220.0:255.255.240.0";
@@ -198,23 +193,10 @@ if( empty( $error ) && ! empty( $control ) ) {
 }
 
 echo send_doctype( $appStr ) . '
-    <!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->
-    <script src="includes/js/prototype.js"></script>
-    <script>
-      var
-        validform = false,
-        xlate = [];
-
-      xlate[\'inputPassword\']   = \''
- . translate( 'must enter a password', true ) . '\',
-      xlate[\'noBlankUsername\'] = \''
- . translate( 'no blank username', true ) . '\',
-      xlate[\'passwordsNoMatch\'] = \''
- . translate( 'passwords not identical', true ) . '\';
-    </script>
-    <script src="includes/js/register.js"></script>
     <link href="css_cacher.php?login=__public__" rel="stylesheet">
-    <link href="includes/css/styles.css" rel="stylesheet">'
+    <link href="includes/css/styles.css" rel="stylesheet">
+    <!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->
+    <script src="includes/js/base.js"></script>'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
@@ -224,12 +206,11 @@ echo send_doctype( $appStr ) . '
     <h2>' . $appStr . ' ' . translate( 'Registration' ) . '</h2>'
  . ( ! empty( $error )
   ? '
-    <span style="color:#FF0000; font-weight:bold;">' . $err_Str
-   . $error . '</span><br>'
+    <span class="error">' . $err_Str . $error . '</span><br>'
   : '<br><br>' . ( empty( $control ) ? '' : '
     <form action="login.php" method="post">
       <input type="hidden" name="login" value="' . $user . '">
-      <table align="center" cellspacing="10" cellpadding="10" summary="">
+      <table cellspacing="10" summary="">
         <tr>
           <td rowspan="3"><img src="images/register.gif"></td>
           <td>' . translate( 'Welcome to WebCal' ) . '</td>
@@ -244,46 +225,43 @@ echo send_doctype( $appStr ) . '
         </tr>
       </table>
     </form>' ) . '
-    <form action="register.php" method="post" onSubmit="return valid_form()"
-        name="selfreg">
+    <form action="register.php" method="post" id="selfreg" name="selfreg">
       <input type="hidden" name="control" value="' . $form_control . '">
-      <table align="center" cellpadding="10" cellspacing="10" summary="">
+      <table cellspacing="10" summary="">
         <tr>
           <td rowspan="3"><img src="images/register.gif" alt=""></td>
           <td align="right"><label>' . translate( 'Username' ) . '</label></td>
-          <td align="left"><input type="text" name="user" id="user" value="'
-   . $user . '" size="20" maxlength="20" onChange="check_name();"></td>
+          <td><input type="text" id="user" name="user" size="20" maxlength="20" '
+   . 'value="' . $user . '"></td>
         </tr>
         <tr>
-          <td align="right"><label>' . translate( 'First Name' )
-   . '</label></td>
-          <td align="left"><input type="text" name="ufirstname" value="'
-   . $ufirstname . '" size="25" maxlength="25"></td>
+          <td align="right"><label>' . translate( 'First Name' ) . '</label></td>
+          <td><input type="text" name="ufirstname" size="25" maxlength="25" value="'
+   . $ufirstname . '"></td>
         </tr>
         <tr>
           <td align="right"><label>' . translate( 'Last Name' ) . '</label></td>
-          <td align="left"><input type="text" name="ulastname" value="'
-   . $ulastname . '" size="25" maxlength="25"></td>
+          <td><input type="text" name="ulastname" size="25" maxlength="25" value="'
+   . $ulastname . '"></td>
         </tr>
         <tr>
           <td align="right" colspan="2"><label>' . translate( 'E-mail address' )
    . '</label></td>
-          <td align="left"><input type="text" name="uemail" id="uemail" value="'
-   . $uemail . '" size="40" maxlength="75" onChange="check_uemail();"></td>
+          <td><input type="text" id="uemail" name="uemail" size="40" maxlength="75" '
+   . 'value="' . $uemail . '"></td>
         </tr>
         <tr>
-          <td ' . ( $SELF_REGISTRATION_FULL != 'Y'
-    ? 'align="right" colspan="2"><label>' . translate( 'Password' )
-     . '</label></td>
-          <td align="left"><input name="upassword1" value="' . $upassword1
-     . '" size="15" type="password"></td>
+          <td colspan="' . ( $SELF_REGISTRATION_FULL != 'Y'
+    ? '2" align="right"><label>' . translate( 'Password' ) . '</label></td>
+          <td><input type="password" name="upassword1" size="15" value="'
+     . $upassword1 . '"></td>
         </tr>
         <tr>
-          <td align="right" colspan="2"><label>'
+          <td colspan="2" align="right"><label>'
            . translate( 'Password (again)' ) . '</label></td>
-          <td align="left"><input name="upassword2" value="' . $upassword2
-     . '" size="15" type="password">'
-    : 'colspan="3" align="center"><label>'
+          <td><input type="password" name="upassword2" size="15" value="'
+     . $upassword2 . '">'
+    : '3" align="center"><label>'
      . translate( 'you get info by email' ) . '</label>' ) . '</td>
         </tr>
         <tr>
@@ -291,7 +269,7 @@ echo send_doctype( $appStr ) . '
    . translate( 'Submit' ) . '"></td>
         </tr>
       </table>
-    </form>' ) . '<br><br><br><br><br><br><br><br>
+    </form>' ) . '
     <span class="cookies">' . translate( 'cookies-note' ) . '</span><br>
     <hr>
     <br><br>

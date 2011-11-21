@@ -129,7 +129,7 @@ Help: Súgó
 app-name-help: Megadhatsz egy programnevet, ami a böngészõ címsorában jelenik meg, illetve a bejelentkezéskor. Az itt megadott érték lefordításra kerül, így a különbözõ nyelvekhez különbözõ programnevet adhatsz meg.
 Application Name: Programnév
 Translated Name: Lefordított név
-server-url-help: A program alap URL-je, mely az email emlékeztetõkben és értesítésekben jelenik meg.
+server_url_help: A program alap URL-je, mely az email emlékeztetõkben és értesítésekben jelenik meg.
 Server URL: Szerver URL
 home-url-help: Az alkalmazás alap-URLjének beállítása. Abszolút vagy relatív útvonal lehet
 Home URL: Alap URL
@@ -142,97 +142,97 @@ Themes: Témák
 AVAILABLE THEMES: ELÉRHETŐ TÉMÁK
 None: Nincs
 Preview: Előnézet
-custom-script-help: Egyedi Javascript vagy stíluslap megadását teszi lehetõvé, amely minden HTML oldal "head" részébe kerül.
-Custom script/stylesheet: Egyedi szkript/stíluslap
-custom-header-help: Egy csipetnyi egyedi HTML beszúrását teszi lehetõvé minden oldal tetejére.
+custom_script_help: Egyedi Javascript vagy stíluslap megadását teszi lehetõvé, amely minden HTML oldal "head" részébe kerül.
+Custom script: Egyedi szkript/stíluslap
+custom_header_help: Egy csipetnyi egyedi HTML beszúrását teszi lehetõvé minden oldal tetejére.
 Custom header: Egyedi fejléc
-custom-trailer-help: Egy csipetnyi egyedi HTML beszúrását teszi lehetõvé minden oldal aljára.
+custom_trailer_help: Egy csipetnyi egyedi HTML beszúrását teszi lehetõvé minden oldal aljára.
 Custom trailer: Egyedi lábléc
-enable-external-header-help: Egyedi előzetes betöltése fájlból
+allow_external_header_help: Egyedi előzetes betöltése fájlból
 externals head/script/trail: Külső fájl engedélyezése a fejléchez/parancsokhoz/előzeteshez
-tz-help: Megadja a szerver és a helyi idõzóna közötti eltérést órában.
+tz_help: Megadja a szerver és a helyi idõzóna közötti eltérést órában.
 Server TZ Selection: Szerver időzóna választás
 GMT Common Use Date/Times: Dátumok/idők megjelenítése GMT szerint
-date-format-help: Megadja a kívánt dátumformátumot.
+date_format_help: Megadja a kívánt dátumformátumot.
 Date format: Dátumformátum
-display-week-starts-on: Megadja, hogy a hetek Vasárnap vagy Hétfõn kezdõdjenek. Hétfõ esetén a hetek számozása ISO szerint történik.
+display_week_starts_on: Megadja, hogy a hetek Vasárnap vagy Hétfõn kezdõdjenek. Hétfõ esetén a hetek számozása ISO szerint történik.
 Week starts on: Hetek elsõ napja
-time-format-help: Megadja, hogy melyik formátumot használod:<br><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.<br><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
+time_format_help: Megadja, hogy melyik formátumot használod:<br><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.<br><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
 Time format: Idõpont formátum
 12 hour: 12 órás
 24 hour: 24 órás
-timed-evt-len-help: Megadja az idõzített esemény hosszának beviteli módját
+timed_evt_len_help: Megadja az idõzített esemény hosszának beviteli módját
 Specify timed event length by: Megadja az idõzített események hosszának lépésközét
 Duration: Idõtartam
 End Time: Befejezési idõ
-work-hours-help: A napi nézetben megjelenõ idõintervallumot adja meg.
+work_hours_help: A napi nézetben megjelenõ idõintervallumot adja meg.
 Work hours: Munkaidõ
 From: Kezdete
 to: vége
-preferred-view-help: Az alapértelmezett nézetet adja meg (Napi, Heti, Havi vagy Éves).
+preferred_view_help: Az alapértelmezett nézetet adja meg (Napi, Heti, Havi vagy Éves).
 Preferred view: Kedvenc nézet
 Allow top menu: Felső menüsor bekapcsolása
-menu-themes-help: A felső menü színének és stílusának beállítása
+menu_themes_help: A felső menü színének és stílusának beállítása
 Menu theme: Menü téma
-fonts-help: A használandó betûkészletek listája (például "Arial, Helvetica").
+fonts_help: A használandó betûkészletek listája (például "Arial, Helvetica").
 Fonts: Betûtípusok
-display-sm_month-help: Ha engedélyezve van, rövid hónapok jelennek meg a hónap nézetben
+display_sm_month_help: Ha engedélyezve van, rövid hónapok jelennek meg a hónap nézetben
 Display small months: Rövid hónapok kiírása
-display-weekends-help: Hétvégék megjelennek-e heti nézetben.
+display_weekends_help: Hétvégék megjelennek-e heti nézetben.
 Display weekends: Hétvégék megjelenítése
-display-alldays-help: Megjelennek az előző és a következő hónap napjai, minden cella ki lesz töltve
+display_all_days_in_month_help: Megjelennek az előző és a következő hónap napjai, minden cella ki lesz töltve
 Display all days in month view: Minden nap megjelenítése hónap nézetben
-display-week-number-help: Megadja, hogy a havi és a heti nézetben megjelenjenek-e a hetek számai (1-52).
+display_weeknumber_help: Megadja, hogy a havi és a heti nézetben megjelenjenek-e a hetek számai (1-52).
 Display week number: Hetek számának kiírása
-display-desc-print-day-help: Eseményleírások megjelenítése a napi nyomtatási nézetben.
+display_desc_print_day_help: Eseményleírások megjelenítése a napi nyomtatási nézetben.
 desc in printer day view: Leírás megjelenítése napi nyomtatási nézetben
-yearly-shows-events-help: Éves nézetben vastag betûvel jelennek meg azok a napok, amelyeken van valami esemény.
+display_bold_days_in_year_help: Éves nézetben vastag betûvel jelennek meg azok a napok, amelyeken van valami esemény.
 bold events month/year views: Eseménnyel rendelkező napok kiemelése havi és éves nézetben megjelenítése
-allow-view-add-help: Minden nézetben megjelenik egy '+' ikon, mellyel másik felhasználók naptárába lehet gyorsan eseményeket felvenni.
+display_add_link_in_views_help: Minden nézetben megjelenik egy '+' ikon, mellyel másik felhasználók naptárába lehet gyorsan eseményeket felvenni.
 Include add event link in views: Esemény hozzáadása link minden nézetben
-lunar-help: A holdfázisok kis ikonok formájában jelennek meg
+display_moon_phases_help: A holdfázisok kis ikonok formájában jelennek meg
 Display Lunar Phases in month view: Holdfázisok megjelenítése hónap nézetben
-allow-view-other-help: Megadja, hogy egyik felhasználó láthatja-e a másik naptárát.
+allow_view_other_help: Megadja, hogy egyik felhasználó láthatja-e a másik naptárát.
 may view others cals: Más felhasználók naptárának megtekintése
-require-approvals-help: Bekapcsolva a felhasználónak jóvá kell hagynia az eseményt, mielõtt megjelenne a naptárában (hacsak a jóváhagyás nélküliek megjelenítése nincs bekapcsolva). Megjegyzés: ha ezt kikapcsolod, attól még a nyilvános naptár eseményeit jóvá kell hagynod (már ha a nyilvános naptár be van kapcsolva).
+require_approvals_help: Bekapcsolva a felhasználónak jóvá kell hagynia az eseményt, mielõtt megjelenne a naptárában (hacsak a jóváhagyás nélküliek megjelenítése nincs bekapcsolva). Megjegyzés: ha ezt kikapcsolod, attól még a nyilvános naptár eseményeit jóvá kell hagynod (már ha a nyilvános naptár be van kapcsolva).
 Require event approvals: Események jóváhagyásának megkövetelése
-display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<br> Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<br> Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
+display_unapproved_help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<br> Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<br> Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
 Display unapproved: Jóváhagyás nélküliek megjelenítése
-conflict-check-help: Esemény-ütközések ellenõrzése (ugyanazon felhasználó két eseménye idõben fedi egymást). Ha "Igen"-re állítod, csak egy jóváhagyás után vehetsz fel két eseményt ugyanarra az idõre. Ha "Nem"-re állítod, nem lesz ilyen ellenõrzés. Valószínûleg "Igen"-re akarod állítani, hogy legyen ellenõrzés.
+allow_conflicts_help: Esemény-ütközések ellenõrzése (ugyanazon felhasználó két eseménye idõben fedi egymást). Ha "Igen"-re állítod, csak egy jóváhagyás után vehetsz fel két eseményt ugyanarra az idõre. Ha "Nem"-re állítod, nem lesz ilyen ellenõrzés. Valószínûleg "Igen"-re akarod állítani, hogy legyen ellenõrzés.
 Check for conflicts: Esemény-ütközések ellenõrzése
 Yes: Igen
 No: Nem
-conflict-months-help: Ha az esemény-ütközések ellenõrzése be van kapcsolva, itt adhatod meg, hogy hány hónapra elõre ellenõrizzük az ütközéseket. Ha túl sok idõt vesz igénybe egy esemény hozzáadása, csökkentsd ezt az idõt.
+conflict_months_help: Ha az esemény-ütközések ellenõrzése be van kapcsolva, itt adhatod meg, hogy hány hónapra elõre ellenõrizzük az ütközéseket. Ha túl sok idõt vesz igénybe egy esemény hozzáadása, csökkentsd ezt az idõt.
 Conflict checking months: Ütközésellenõrzés hónapjai
-conflict-check-override-help: Bekapcsolva a felhasználók felülbírálhatják az ütközéseket, és felvehetnek két vagy több eseményt ugyanarra az idõre.
+allow_conflict_override_help: Bekapcsolva a felhasználók felülbírálhatják az ütközéseket, és felvehetnek két vagy több eseményt ugyanarra az idõre.
 may users override conflicts: Felhasználók felülbírálhatják az ütközéseket
-limit-appts-help: Lehetõvé teszi a rendszergazda számára, hogy mindenki számára korlátozza a felhasználónként felvehetõ napi találkozók számát.
+limit_appts_help: Lehetõvé teszi a rendszergazda számára, hogy mindenki számára korlátozza a felhasználónként felvehetõ napi találkozók számát.
 Limit timed events per day: Idõzített események számának korlátozása
-limit-appts-number-help: Megadja a felhasználónként felvehetõ napi események maximális számát.
+limit_appts_number_help: Megadja a felhasználónként felvehetõ napi események maximális számát.
 Maximum timed events per day: Idõzített események maximális száma
-disable-location-field-help: Ha Igen-re állítod, a Helyszín mező nem lesz elérhető
+disable_location_field_help: Ha Igen-re állítod, a Helyszín mező nem lesz elérhető
 Disable Location field: Helyszín mező kikapacsolása
-disable-priority-field-help: Bekapcsolása eltünteti a "prioritás" mezõt az esemény oldaláról, ezzel egyszerûbbé téve a felületet kezdõk számára.
+disable_priority_field_help: Bekapcsolása eltünteti a "prioritás" mezõt az esemény oldaláról, ezzel egyszerûbbé téve a felületet kezdõk számára.
 Disable Priority field: Prioritás mezõ letiltása
-disable-access-field-help: Bekapcsolása eltünteti az "elérés" mezõt az esemény oldaláról, ezzel egyszerûbbé téve a felületet kezdõk számára.
+disable_access_field_help: Bekapcsolása eltünteti az "elérés" mezõt az esemény oldaláról, ezzel egyszerûbbé téve a felületet kezdõk számára.
 Disable Access field: Elérés mezõ letiltása
-disable-participants-field-help: Bekapcsolása eltünteti a "résztvevõk" mezõt az esemény oldaláról, ezzel megakadályozva, hogy más felhasználókat rendelhess hozzá az eseményedhez. Ha bekapcsolod, valószínûleg a "Más felhasználók naptárának megtekintését" is ki akarod kapcsolni.
+disable_participants_field_help: Bekapcsolása eltünteti a "résztvevõk" mezõt az esemény oldaláról, ezzel megakadályozva, hogy más felhasználókat rendelhess hozzá az eseményedhez. Ha bekapcsolod, valószínûleg a "Más felhasználók naptárának megtekintését" is ki akarod kapcsolni.
 Disable Participants field: Résztvevõk mezõ letiltása
-disable-repeating-field-help: Bekapcsolása eltünteti az "ismétlõdõ" mezõt az események hozzáadásakor. Ez egyszerûbbé teszi a felületet kezdõk számára.
+disable_repeating_field_help: Bekapcsolása eltünteti az "ismétlõdõ" mezõt az események hozzáadásakor. Ez egyszerûbbé teszi a felületet kezdõk számára.
 Disable Repeating field: Ismétlõdõ mezõ letiltása
-allow-html-description-help: Bekapcsolva a felhasználól az esemény leírása mezõbe HTML kódot is írhatnak. Kikapcsolva a HTML kódok sima szövegként jelennek meg. Figyelem: ha bekapcsolod, más weboldalakon levõ képekre is lehet hivatkozni.
+allow_html_description_help: Bekapcsolva a felhasználól az esemény leírása mezõbe HTML kódot is írhatnak. Kikapcsolva a HTML kódok sima szövegként jelennek meg. Figyelem: ha bekapcsolod, más weboldalakon levõ képekre is lehet hivatkozni.
 Allow HTML in Description: HTML engedélyezése a leírásban
-disable-popups-help: Felugró ablakok kikapcsolása naptár nézetben
+disable_popups_help: Felugró ablakok kikapcsolása naptár nézetben
 Disable Pop-Ups: Felugró ablakok kikapcsolása
-popup-includes-siteextras-help: Bekapcsolva az események felbukkanó ablakaiban a site_extras.php fájlban beállított egyedi mezõk is megjelennek.
+site_extras_in_popup_help: Bekapcsolva az események felbukkanó ablakaiban a site_extras.php fájlban beállított egyedi mezõk is megjelennek.
 Display Site Extras in popup: Helyi extrák megjelenítése a felbukkanó ablakban
-popup-includes-participants-help: Résztvevők megjelenítése a felugrókban
+participants_in_popup_help: Résztvevők megjelenítése a felugrókban
 Display Participants in popup: Résztvevők kiírása felugróban
-remember-last-login-help: Bekapcsolva a bejelenkezési ablakban kitöltésre kerül a felhasználó neve (a jelszava nem), és a beállításai betöltõdnek (beleértve a színeket és a nyelvet).
+remember_last_login_help: Bekapcsolva a bejelenkezési ablakban kitöltésre kerül a felhasználó neve (a jelszava nem), és a beállításai betöltõdnek (beleértve a színeket és a nyelvet).
 Remember last login: Utolsó bejelentkezés megjegyzése
-summary_length-help: A rövid leírás mező hossza a naptárban
+summary_length_help: A rövid leírás mező hossza a naptárban
 Brief Description Length: Rövid leírás hossza
-allow-public-access-help: Bekapcsolva megjelenik egy csak olvasható nyilvános naptár jelenik meg, melyhez be sem kell jelentkezni.
+allow_public_access_help: Bekapcsolva megjelenik egy csak olvasható nyilvános naptár jelenik meg, melyhez be sem kell jelentkezni.
 Allow public access: Nyilvános elérés
 public-access-default-visible: A nyilvános naptár eseményei automatikusan megjelennek az összes felhasználó naptárában
 Public visible by default: Nyilvános naptár alapértelmezésben látható
@@ -271,9 +271,9 @@ categories-enabled-help: Eseménykategóriák támogatásának engedélyezése.
 Categories enabled: Kategóriák engedélyezése
 icon_upload-enabled-help: Ha bekapcsolod, a felhasználók feltölthetnek kategória-ikonokat
 Category Icon Upload enabled: Kategória ikon feltöltés engedélyezése
-display-tasks-help: Kis feladatlista megjelenítése havi és napi nézetben
+display_tasks_help: Kis feladatlista megjelenítése havi és napi nézetben
 Display small task list: Rövid feladatlista megjelenítése
-display-tasks-in-grid-help: Feladatok megjelenítése naptárakban
+display_tasks_in_grid_help: Feladatok megjelenítése naptárakban
 Display tasks in Calendars: Feladatok megjelenítése naptárakban
 allow-external-users-help: Megadja, hogy naptárrendszeren kívüli felhasználók felvehetõk-e egy esemény résztvevõjeként.
 Allow external users: Külsõ felhasználók engedélyezése
@@ -287,10 +287,10 @@ use-blacklist-help: A hozzáférés korlátozása IP cím alapján
 Restrict self-reg to blacklist: A regisztráció korlátozása IP cím alapján
 allow-self-reg-full-help: A felhasználók a teljes regisztrációt elvégezhetik
 send self-reg emails: Felhasználónevek és jelszavak küldése emailben
-allow-attachment-help: Mellékletek csatolhatók az eseményekhez
+allow_attachment_help: Mellékletek csatolhatók az eseményekhez
 Allow event attachments: Mellékletek csatolhatók az eseményekhez
 owner can attach if enabled: Admin és a tulajdonos csatolhat mellékletet
-allow-comments-help: Megjegyzések írhatók az eseményekhez
+allow_comments_help: Megjegyzések írhatók az eseményekhez
 Allow event comments: Megjegyzések engedélyezése
 owner can comment if enabled: Admin és a tulajdonos mindig írhat megjegyzést
 email-enabled-help: Be- vagy kikapcsolhatod az összes email-értesítést és emlékeztetést. Kapcsold ki, ha a szervereden nincs rendesen beállítva a levélküldés.
@@ -313,15 +313,15 @@ Default user settings: Alapértelmezett felhasználói beállítások
 Email format preference: Email formátum beállításai
 HTML: =
 Plain Text: Egyszerű szöveg
-email-event-reminders-help: Kérsz-e email emlékeztetõt az eseményrõl.
+email_reminder_help: Kérsz-e email emlékeztetõt az eseményrõl.
 Event reminders: Esemény emlékeztetõk
-email-event-added: Kérsz-e email emlékeztetõt a saját naptáradba bejegyzett új eseményrõl.
+email_event_added: Kérsz-e email emlékeztetõt a saját naptáradba bejegyzett új eseményrõl.
 Events added to my calendar: Esemény hozzáadása a saját naptárhoz
-email-event-updated: Kérsz-e email emlékeztetõt a saját naptáradban módosított eseményekrõl.
+email_event_added: Kérsz-e email emlékeztetõt a saját naptáradban módosított eseményekrõl.
 Events updated on my calendar: Esemény módosítása a saját naptárban
-email-event-deleted: Kérsz-e email emlékeztetõt a saját naptáradból törölt eseményekrõl.
+email_event_deleted: Kérsz-e email emlékeztetõt a saját naptáradból törölt eseményekrõl.
 Events removed from my calendar: Esemény törlése a saját naptárból
-email-event-rejected: Kérsz-e email emlékeztetõt a saját naptáradból elutasított eseményekrõl.
+email_event_rejected: Kérsz-e email emlékeztetõt a saját naptáradból elutasított eseményekrõl.
 Event rejected by participant: Esemény elutasítása a résztvevõk által
 Allow user to customize colors: Felhasználók beállíthatják a színeket
 gradient-colors: színátmenetek

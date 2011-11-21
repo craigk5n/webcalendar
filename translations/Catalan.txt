@@ -113,77 +113,77 @@ System Settings: Configuració del sistema
 Help: Ajuda
 app-name-help: Especifica el nom de l'aplicació que es mostrarà a la barra de títol del navegador a totes les pàgines i a la pàgina d'entrada. A l'arxiu de traduccions es mirarà el valor que s'especifiqui aquí per poder oferir títols diferents per a diverses llengües.
 Application Name: Nom de l'aplicació
-server-url-help: Especifica la URL principal de l'aplicació. Això s'inclourà en enviar recordatoris i notificacions per correu electrònic.
+server_url_help: Especifica la URL principal de l'aplicació. Això s'inclourà en enviar recordatoris i notificacions per correu electrònic.
 Server URL: URL del servidor
 language-help: Especifica l'idioma que s'utilitza.
 Language: Idioma
 Your browser default language is: L'idioma per defecte del teu navegador és
 None: Cap
-custom-script-help: Permet introduir JavaScript o text de full d'estil personalitzats que s'incerirà a la capçalera HTML de cada pàgina.
-Custom script/stylesheet: Script/full d'estil personalitzat
-custom-header-help: Permet incloure un fragment HTML personalitzat a l'inici de cada pàgina.
+custom_script_help: Permet introduir JavaScript o text de full d'estil personalitzats que s'incerirà a la capçalera HTML de cada pàgina.
+Custom script: Script/full d'estil personalitzat
+custom_header_help: Permet incloure un fragment HTML personalitzat a l'inici de cada pàgina.
 Custom header: Capçalera personalitzada
-custom-trailer-help: Permet incloure un fragment HTML personalitzat al peu de cada pàgina.
+custom_trailer_help: Permet incloure un fragment HTML personalitzat al peu de cada pàgina.
 Custom trailer: Peu personalitzat
-tz-help: Especifica les hores de diferència per ajustar l'hora del servidor a l'hora local
-date-format-help: Especifica el format preferit de la data.
+tz_help: Especifica les hores de diferència per ajustar l'hora del servidor a l'hora local
+date_format_help: Especifica el format preferit de la data.
 Date format: Format de la data
-display-week-starts-on: Especifica si la setmana comença diumenge o dilluns Si s'especifica dilluns, aleshores els números de setmana seran un número de setmana ISO.
+display_week_starts_on: Especifica si la setmana comença diumenge o dilluns Si s'especifica dilluns, aleshores els números de setmana seran un número de setmana ISO.
 Week starts on: La setmana comença
-time-format-help: Especifica el format d'hora que s'utilitza:<br><i>12 hores:</i> Mostra les hores com a 3am, 8:30pm, etc.<br><i>24 hores:</i> Mostra les hores com a 300, 2030, etc.
+time_format_help: Especifica el format d'hora que s'utilitza:<br><i>12 hores:</i> Mostra les hores com a 3am, 8:30pm, etc.<br><i>24 hores:</i> Mostra les hores com a 300, 2030, etc.
 Time format: Format d'hora
 12 hour: 12 hores
 24 hour: 24 hores
 Duration: Durada
-work-hours-help: Especifica l'interval de temps que es mostrarà a la visualització de dia.
+work_hours_help: Especifica l'interval de temps que es mostrarà a la visualització de dia.
 Work hours: Horari laboral
 From: Des de les
 to: a les
-preferred-view-help: Especifica la visualització per defecte (Dia, Setmana, Mes, o Any).
+preferred_view_help: Especifica la visualització per defecte (Dia, Setmana, Mes, o Any).
 Preferred view: Visualització preferida
-fonts-help: Especifica una llista de tipus de lletra del sistema que es vol fer servir (com ara "Arial,Helvetica")
+fonts_help: Especifica una llista de tipus de lletra del sistema que es vol fer servir (com ara "Arial,Helvetica")
 Fonts: Tipus de lletra
-display-weekends-help: Inclou caps de setmana quan es visualitzen les setmanes.
-display-week-number-help: Especifica si el número de setmana (1-52) es mostra a la visualització de mes i a la de setmana.
+display_weekends_help: Inclou caps de setmana quan es visualitzen les setmanes.
+display_weeknumber_help: Especifica si el número de setmana (1-52) es mostra a la visualització de mes i a la de setmana.
 Display week number: Mostra número de setmana
-display-desc-print-day-help: Inclou la descripció dels esdeveniments a la versió per imprimir de la visualització de dia.
+display_desc_print_day_help: Inclou la descripció dels esdeveniments a la versió per imprimir de la visualització de dia.
 desc in printer day view: Descripció a la versió per imprimir de la visualització de dia
-yearly-shows-events-help: En la visualització d'any, mostra en negreta els dies amb esdeveniments.
-allow-view-add-help: S'inclourà una icona '+' a les visualitzacions, permetent als usuaris afegir esdeveniments ràpidament als calendaris d'altres usuaris.
+display_bold_days_in_year_help: En la visualització d'any, mostra en negreta els dies amb esdeveniments.
+display_add_link_in_views_help: S'inclourà una icona '+' a les visualitzacions, permetent als usuaris afegir esdeveniments ràpidament als calendaris d'altres usuaris.
 Include add event link in views: Inclou a les visualitzacions enllaç per afegir esdeveniment
-allow-view-other-help: Especifica si un usuari pot visualitzar el calendari d'un altre usuari.
+allow_view_other_help: Especifica si un usuari pot visualitzar el calendari d'un altre usuari.
 may view others cals: Permet veure els calendaris d'altres usuaris
-require-approvals-help: Si està activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar). Fixeu-vos que configurar-ho a "No", no ocultarà les aprovacions per al calendari d'Accés Públic (si el calendari d'Accés Públic està habilitat).
+require_approvals_help: Si està activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar). Fixeu-vos que configurar-ho a "No", no ocultarà les aprovacions per al calendari d'Accés Públic (si el calendari d'Accés Públic està habilitat).
 Require event approvals: Requereix aprovació d'esdeveniments
-display-unapproved-help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent).<br> Si s'ajusta a "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
+display_unapproved_help: Especifica si els esdeveniments pendents d'aprovació es mostren al calendari.<br> Si s'ajusta a "Sí", els esdeveniments pendents d'aprovació es mostraran al calendari (amb el text en un color diferent).<br> Si s'ajusta a "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
 Display unapproved: Mostra pendents d'aprovar
-conflict-check-help: Comprova els conflictes entre esdeveniments (dos esdeveniments programats per a la mateixa hora i la mateixa persona). Si ho configures com a "Sí", podràs planificar igualment dos esdeveniments alhora després de confirmar un avís. Si ho configures com a "no", no es comprovaran els possibles conflictes entre esdeveniments. Probablement vulguis posar "Sí", a fi que es produeixin les comprovacions.
+allow_conflicts_help: Comprova els conflictes entre esdeveniments (dos esdeveniments programats per a la mateixa hora i la mateixa persona). Si ho configures com a "Sí", podràs planificar igualment dos esdeveniments alhora després de confirmar un avís. Si ho configures com a "no", no es comprovaran els possibles conflictes entre esdeveniments. Probablement vulguis posar "Sí", a fi que es produeixin les comprovacions.
 Check for conflicts: Comprova conflictes entre esdeveniments
 Yes: Sí
 No: =
-conflict-months-help: Si està posada la comprovació de conflictes ("Comprova conflictes entre esdeveniments" està configurat com a "No"), aquí s'especifica el nombre de mesos endavant que cal fer aquesta comprovació. Si trobes que afegir esdeveniments triga molt a processar-se, redueix aquest número.
+conflict_months_help: Si està posada la comprovació de conflictes ("Comprova conflictes entre esdeveniments" està configurat com a "No"), aquí s'especifica el nombre de mesos endavant que cal fer aquesta comprovació. Si trobes que afegir esdeveniments triga molt a processar-se, redueix aquest número.
 Conflict checking months: Mesos de comprovació de conflictes
-conflict-check-override-help: Permet als usuaris sobreescriure conflictes i programar dos o més esdeveniments alhora.
+allow_conflict_override_help: Permet als usuaris sobreescriure conflictes i programar dos o més esdeveniments alhora.
 may users override conflicts: Permet els usuaris sobreescriure conflictes
-limit-appts-help: Permet que l'administrador del sistema pugui marcar a tot el sistema un límit per al nombre d'esdeveniments que cada usuari pugui tenir en un sol dia.
+limit_appts_help: Permet que l'administrador del sistema pugui marcar a tot el sistema un límit per al nombre d'esdeveniments que cada usuari pugui tenir en un sol dia.
 Limit timed events per day: Nombre límit d'esdeveniments amb hora en un dia
-limit-appts-number-help: Especifica el nombre màxim d'esdeveniments amb hora que un usuari pot tenir en un sol dia.
+limit_appts_number_help: Especifica el nombre màxim d'esdeveniments amb hora que un usuari pot tenir en un sol dia.
 Maximum timed events per day: Màxim d'esdeveniments amb hora en un dia
-disable-priority-field-help: Si es selecciona "Sí", s'eliminarà el camp "Prioritat" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells.
+disable_priority_field_help: Si es selecciona "Sí", s'eliminarà el camp "Prioritat" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells.
 Disable Priority field: Desactiva el camp Prioritat
-disable-access-field-help: Si es selecciona "Sí", s'eliminarà el camp "Accés" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells.
+disable_access_field_help: Si es selecciona "Sí", s'eliminarà el camp "Accés" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells.
 Disable Access field: Desactiva el camp Accés
-disable-participants-field-help: Si es selecciona "Sí", s'eliminarà el camp "Participants" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells. Si habiliteu aquesta opció, potser també vulgueu desactivar el camp "Permet visualitzar els calendaris d'altres usuaris".
+disable_participants_field_help: Si es selecciona "Sí", s'eliminarà el camp "Participants" de les pàgines d'informació de l'esdeveniment, tot oferint una interfície més simple per als novells. Si habiliteu aquesta opció, potser també vulgueu desactivar el camp "Permet visualitzar els calendaris d'altres usuaris".
 Disable Participants field: Desactiva el camp Participants
-disable-repeating-field-help: Si es selecciona "Sí", s'eliminarà el camp "Repetició" en afegir esdeveniments. Això facilitarà una interfície més simple per als novells.
+disable_repeating_field_help: Si es selecciona "Sí", s'eliminarà el camp "Repetició" en afegir esdeveniments. Això facilitarà una interfície més simple per als novells.
 Disable Repeating field: Desactiva el camp Repetició
-allow-html-description-help: Si està habilitat, els usuaris poden introduir HTML al camp de descripció de l'esdeveniment. Si no s'habilita, s'ignoraran les etiquetes HTML i es mostrarà com a text net. Avís: Activar aquesta opció permet els usuaris vincular imatges d'altres llocs web.
+allow_html_description_help: Si està habilitat, els usuaris poden introduir HTML al camp de descripció de l'esdeveniment. Si no s'habilita, s'ignoraran les etiquetes HTML i es mostrarà com a text net. Avís: Activar aquesta opció permet els usuaris vincular imatges d'altres llocs web.
 Allow HTML in Description: Permet HTML a la Descripció
-popup-includes-siteextras-help: Si està habilitat, als missatges emergents es mostrarà la configuració de permetre personalitzar camps d'esdeveniment al fitxer site_extras.php.
+site_extras_in_popup_help: Si està habilitat, als missatges emergents es mostrarà la configuració de permetre personalitzar camps d'esdeveniment al fitxer site_extras.php.
 Display Site Extras in popup: Mostra els Extres del Lloc al requadre emergent
-remember-last-login-help: Quan està habilitat, la identificació de l'usuari s'omplirà automàticament a la pàgina d'entrada (però no la contrasenya), i es carregaran les preferències de l'usuari (incloent-hi les preferències de colors i idioma).
+remember_last_login_help: Quan està habilitat, la identificació de l'usuari s'omplirà automàticament a la pàgina d'entrada (però no la contrasenya), i es carregaran les preferències de l'usuari (incloent-hi les preferències de colors i idioma).
 Remember last login: Recorda la darrera identificació
-allow-public-access-help: Si està activat, el calendari es pot fer servir com un calendari públic només de lectura que no requereix identificació d'usuaris.
+allow_public_access_help: Si està activat, el calendari es pot fer servir com un calendari públic només de lectura que no requereix identificació d'usuaris.
 Allow public access: Permetre l'accés públic
 public-access-view-others-help: En cas d'accés públic, s'especifica si l'usuari pot veure el calendari d'un altre usuari.
 may public view others: L'accés públic pot visualitzar altres usuaris
@@ -219,15 +219,15 @@ Email enabled: Correu electrònic habilitat
 email-default-sender: Especifica l'adreça electrònica que constarà com a remitent en enviar recordatoris.
 Default sender address: Adreça remitent per defecte
 Default user settings: Paràmetres usuari per defecte
-email-event-reminders-help: Especifica si s'envien o no recordatoris d'esdeveniments.
+email_reminder_help: Especifica si s'envien o no recordatoris d'esdeveniments.
 Event reminders: Recordatoris d'esdeveniment
-email-event-added: Especifica si s'envien o no notificacions per correu electrònic quan s'afegeixi un esdeveniment al teu calendari.
+email_event_added: Especifica si s'envien o no notificacions per correu electrònic quan s'afegeixi un esdeveniment al teu calendari.
 Events added to my calendar: Esdeveniments afegits al meu calendari
-email-event-updated: Especifica si s'envien o no notificacions per correu electrònic quan s'actualitzi un esdeveniment al teu calendari.
+email_event_added: Especifica si s'envien o no notificacions per correu electrònic quan s'actualitzi un esdeveniment al teu calendari.
 Events updated on my calendar: Esdeveniments actualitzats al meu calendari
-email-event-deleted: Especifica si s'envien o no notificacions per correu electrònic quan s'esborra un esdeveniment del teu calendari.
+email_event_deleted: Especifica si s'envien o no notificacions per correu electrònic quan s'esborra un esdeveniment del teu calendari.
 Events removed from my calendar: Esdeveniments esborrats del meu calendari
-email-event-rejected: Especifica si s'envien o no notificacions per correu electrònic quan un participant rebutgi un esdeveniment del teu calendari.
+email_event_rejected: Especifica si s'envien o no notificacions per correu electrònic quan un participant rebutgi un esdeveniment del teu calendari.
 Event rejected by participant: Esdeveniment rebutjat pel participant
 Allow user to customize colors: Permet que l'usuari personalitzi els colors
 

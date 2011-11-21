@@ -23,8 +23,8 @@ if ( strlen ( $login ) == 0 ) {
   if ( strlen ( $webcalendar_login ) > 0 )
     $login = $user = $webcalendar_login;
   else {
-    echo '<span style="color:#F00;"><span style="font-weight: bold;">'
-     . $err_Str . '</span>' . translate( 'No user specified.' ) . '</span>';
+    echo '<span class="error">' . $err_Str
+     . translate( 'No user specified.' ) . '</span>';
     exit;
   }
 }
@@ -84,10 +84,10 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 
 echo '
-    <table width="100%" summary="">
+    <table summary="">
       <tr>
         <td style="background: ' . $TABLEBG . ';">
-          <table style="border: 0; width: 100%;" cellspacing="1" cellpadding="2" summary="">
+          <table cellspacing="1" cellpadding="2" summary="">
             <tr>' . $tmpOut1 . '
             </tr>
             <tr>' . $tmpOut2 . '

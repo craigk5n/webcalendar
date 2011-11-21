@@ -138,7 +138,7 @@ Help: Hjelp
 System options: Systemvalg
 app-name-help: Setter navnet på programmet. Dette vil vises i nettlesertittelen for alle sider.
 Application Name: Programnavn
-server-url-help: Setter base-URLen for programmet. Denne vil bli inkludert ved utsending av påminnelser på e-post.
+server_url_help: Setter base-URLen for programmet. Denne vil bli inkludert ved utsending av påminnelser på e-post.
 Server URL: URL for serveren
 language-help: Angir hvilket språk som skal brukes.
 Language: Språk
@@ -147,93 +147,93 @@ Themes: Tema
 AVAILABLE THEMES: TILGJENGELIGE TEMA
 None: Aldri
 Preview: Forhåndsvisning
-custom-script-help: Tillat innsetting av egendefinert skript eller stilsett i HTML "head"-seksjonen på hver side.
-Custom script/stylesheet: Egendefinert skript/stilsett
-custom-header-help: Tillatt innsetting av egendefinert HTML-kode på toppen av hver side.
+custom_script_help: Tillat innsetting av egendefinert skript eller stilsett i HTML "head"-seksjonen på hver side.
+Custom script: Egendefinert skript/stilsett
+custom_header_help: Tillatt innsetting av egendefinert HTML-kode på toppen av hver side.
 Custom header: Egendefinert hode
-custom-trailer-help: Tillatt innsetting av egendefinert HTML-kode på slutten av hver side.
+custom_trailer_help: Tillatt innsetting av egendefinert HTML-kode på slutten av hver side.
 Custom trailer: Egendefinert fot
 Date and Time: Dato og tid
-tz-help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
+tz_help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
 Server TZ Selection: Tidssonevalg for tjener
-date-format-help: Angir datoformatet.
+date_format_help: Angir datoformatet.
 Date format: Datoformat
-display-week-starts-on: Vis om uka starter mandag eller søndag.
+display_week_starts_on: Vis om uka starter mandag eller søndag.
 Week starts on: Uken starter på
 Weekend starts on: Helga starter på
-time-format-help: Skal tiden vises i 12 eller 24-timer.
+time_format_help: Skal tiden vises i 12 eller 24-timer.
 Time format: Tidsformat
 12 hour: 12 timer
 24 hour: 24 timer
-timed-evt-len-help: Angir input-metode for avgjøring av lengde for en tidsbegrenset aktivitet
+timed_evt_len_help: Angir input-metode for avgjøring av lengde for en tidsbegrenset aktivitet
 Specify timed event length by: Oppgi tidsbegrensede aktiviteters lengde ved
 Duration: Varighet
 End Time: Avslutningstidspunkt
-work-hours-help: Angir daglige arbeidstimer.
+work_hours_help: Angir daglige arbeidstimer.
 Work hours: Arbeidstimer
 From: Fra
 to: til
 Appearance: Utseende
-preferred-view-help: Angir standardvisning (dag, uke, måned eller år).
+preferred_view_help: Angir standardvisning (dag, uke, måned eller år).
 Preferred view: Foretrukket visning
 Allow top menu: Tillat toppmeny
 Date Selectors position: Posisjon for datovelger
 Menu theme: Menytema
-fonts-help: Angir en liste med systemskrifter som skal brukes (som "Arial, Helvetica")
+fonts_help: Angir en liste med systemskrifter som skal brukes (som "Arial, Helvetica")
 Fonts: Skrifter
 Display small months: Vis små måneder
-display-weekends-help: Inkluder helg når uker skal vises
+display_weekends_help: Inkluder helg når uker skal vises
 Display weekends: Vis helger
 Display long day names: Vis lange navn for dagene
 Display all days in month view: Vis alle dagene i månedvisning
-display-week-number-help: Angir om ukenumre skal være påklistret ukevisningene.
+display_weeknumber_help: Angir om ukenumre skal være påklistret ukevisningene.
 Display week number: Vis ukenummer
-display-desc-print-day-help: Inkluder aktivitetsbeskrivelser i utskriftsvennlig versjon av dagvisning.
+display_desc_print_day_help: Inkluder aktivitetsbeskrivelser i utskriftsvennlig versjon av dagvisning.
 desc in printer day view: Vis aktivitetsbeskrivelser i utskriftsvennlig dagvisning
-yearly-shows-events-help: Vis dager med aktiviteter i fetskrift for årsvisning.
+display_bold_days_in_year_help: Vis dager med aktiviteter i fetskrift for årsvisning.
 bold events month/year views: Vis dager med aktiviteter i fetskrift for måneds- og årsvisning.
-allow-view-add-help: Et '+' ikon vil bli inkludert i oversikter, slik at brukere fort kan legge til aktiviteter i andre brukere sine kalendere.
+display_add_link_in_views_help: Et '+' ikon vil bli inkludert i oversikter, slik at brukere fort kan legge til aktiviteter i andre brukere sine kalendere.
 Include add event link in views: Inkluder lenke for å legge til aktiviteter i oversikter
 Restrictions: Begrensninger
-allow-view-other-help: Setter om en bruker kan se en annen bruker sin kalender.
+allow_view_other_help: Setter om en bruker kan se en annen bruker sin kalender.
 may view others cals: Tillat visning av andre brukere sine kalendere
-require-approvals-help: Hvis aktivert, så må en bruker godkjenne en aktivitet før den vises i deres kalender (hvis ikke "Vis ikke-godkjent" er aktivert).
+require_approvals_help: Hvis aktivert, så må en bruker godkjenne en aktivitet før den vises i deres kalender (hvis ikke "Vis ikke-godkjent" er aktivert).
 Require event approvals: Krev godkjenning av aktiviteter
-display-unapproved-help: Angir om din kalender skal vise ikke-godkendte aktiviteter.
+display_unapproved_help: Angir om din kalender skal vise ikke-godkendte aktiviteter.
 Display unapproved: Vis ikke-godkjente.
-conflict-check-help: Sjekk for konflikter mellom aktiviteter, dvs to aktiviteter lagt til samme tid for samme bruker.
+allow_conflicts_help: Sjekk for konflikter mellom aktiviteter, dvs to aktiviteter lagt til samme tid for samme bruker.
 Check for conflicts: Sjekk for konflikter mellom aktiviteter
 Yes: Ja
 No: Nei
-conflict-months-help: Hvis sjekking for konflikter er aktivert, så vil denne sette hvor mange måneder frem i tid vi skal sjekke for konflikter. Hvis du oppdager at det tar lang tid å legge til en aktivitet, så bør du redusere dette tallet.
+conflict_months_help: Hvis sjekking for konflikter er aktivert, så vil denne sette hvor mange måneder frem i tid vi skal sjekke for konflikter. Hvis du oppdager at det tar lang tid å legge til en aktivitet, så bør du redusere dette tallet.
 Conflict checking months: Antall måneder med sjekking for konflikter
-conflict-check-override-help: Tillater brukere å overstyre aktivitetskonflikter og planlegge to eller flere aktiviteter på samme tid.
+allow_conflict_override_help: Tillater brukere å overstyre aktivitetskonflikter og planlegge to eller flere aktiviteter på samme tid.
 may users override conflicts: Tillat brukere å overstyre aktivitetskonflikter
-limit-appts-help: Tillater systemadministratoren å sette en øvre grense for antall aktiviteter en enkelt bruker ha på hver enkelt dag.
+limit_appts_help: Tillater systemadministratoren å sette en øvre grense for antall aktiviteter en enkelt bruker ha på hver enkelt dag.
 Limit timed events per day: Begrens antall aktiviteter med tidsangivelse per dag
-limit-appts-number-help: Angir maskimalt antall aktiviteter med tidsangivelse en bruker kan ha på en enkelt dag.
+limit_appts_number_help: Angir maskimalt antall aktiviteter med tidsangivelse en bruker kan ha på en enkelt dag.
 Maximum timed events per day: Maksimalt antall aktiviteter med tidsangivelse per dag
-disable-priority-field-help: Valget "Ja" vil fjerne prioritetsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
+disable_priority_field_help: Valget "Ja" vil fjerne prioritetsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
 Disable Priority field: Deaktiver prioritetsfeltet
-disable-access-field-help: Valget "Ja" vil fjerne tilgangsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
+disable_access_field_help: Valget "Ja" vil fjerne tilgangsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
 Disable Access field: Deaktiver tilgangsfeltet
-disable-participants-field-help: Valget "Ja" vil fjerne deltagerfeltet fra sider med aktivitetsinformasjon, og dermed hindre brukere fra å legge til andre bruker på deres aktiviteter. Hvis du aktiverer denne opsjonen, vil du kanskje også deaktivere feltet for "Tillat visning av andre brukere sine kalendere".
+disable_participants_field_help: Valget "Ja" vil fjerne deltagerfeltet fra sider med aktivitetsinformasjon, og dermed hindre brukere fra å legge til andre bruker på deres aktiviteter. Hvis du aktiverer denne opsjonen, vil du kanskje også deaktivere feltet for "Tillat visning av andre brukere sine kalendere".
 Disable Participants field: Deaktiver deltagerfeltet
-disable-repeating-field-help: Valget "Ja" vil fjerne repetisjonsfeltet når man legger til en aktivitet, og dermed gjøre det enklere for nybegynnere.
+disable_repeating_field_help: Valget "Ja" vil fjerne repetisjonsfeltet når man legger til en aktivitet, og dermed gjøre det enklere for nybegynnere.
 Disable Repeating field: Deaktiver repetisjonsfeltet
-allow-html-description-help: Setter om en bruker kan skrive HTML-kode i aktivitetsbeskrivelsene. Advarsel: Hvis tillat, kan brukere referere til bilder på andre nettsteder.
+allow_html_description_help: Setter om en bruker kan skrive HTML-kode i aktivitetsbeskrivelsene. Advarsel: Hvis tillat, kan brukere referere til bilder på andre nettsteder.
 Allow HTML in Description: Tillat HTML-kode i beskrivelser
 Popups: Sprettoppvinduer
-disable-popups-help: Slå av sprettoppvinduer fra kalendervisning
+disable_popups_help: Slå av sprettoppvinduer fra kalendervisning
 Disable Pop-Ups: Slå av sprettoppvinduer
-popup-includes-siteextras-help: Hvis aktivert, vil egendefinert felter i site_extras.php bli vist i aktivitetssprettopp.
+site_extras_in_popup_help: Hvis aktivert, vil egendefinert felter i site_extras.php bli vist i aktivitetssprettopp.
 Display Site Extras in popup: Vis nettstedstillegg i sprettoppvindu
-popup-includes-participants-help: Hvis aktivert, vises deltagere i sprettoppvinduene for aktiviteter
+participants_in_popup_help: Hvis aktivert, vises deltagere i sprettoppvinduene for aktiviteter
 Display Participants in popup: Vis deltagere i sprettoppvindu
 Miscellaneous: Diverse
-remember-last-login-help: Hvis aktivert, vil brukerens navn bli fylt ut på innloggingssiden og preferansene lastet inn.
+remember_last_login_help: Hvis aktivert, vil brukerens navn bli fylt ut på innloggingssiden og preferansene lastet inn.
 Remember last login: Husk siste innlogging
-allow-public-access-help: Hvis aktivert, vil kalender kunne bli brukt som en kun lesbar offentlig kalender som ikke krever innlogging.
+allow_public_access_help: Hvis aktivert, vil kalender kunne bli brukt som en kun lesbar offentlig kalender som ikke krever innlogging.
 Allow public access: Tillatt offentlig tilgang
 public-access-default-visible: Aktitiviteter i den offentlig kalenderen blir vist automatisk i alle brukere sine kalendere
 Public visible by default: Offentlig tilgang synlig som standard
@@ -275,15 +275,15 @@ Email enabled: E-post aktivert
 email-default-sender: Setter e-postadresse som skal brukes som avsender ved utsending av påminnelse
 Default sender address: Standard avsenderadresse
 Default user settings: Standard brukerinnstillinger
-email-event-reminders-help: Angir om det skal sendes aktivitetspåminnelser.
+email_reminder_help: Angir om det skal sendes aktivitetspåminnelser.
 Event reminders: Aktivitetspåminnelser
-email-event-added: Angir om e-postmelding skal sendes når en aktitivitet blir lagt til din kalender.
+email_event_added: Angir om e-postmelding skal sendes når en aktitivitet blir lagt til din kalender.
 Events added to my calendar: Aktiviteter lagt til min kalender
-email-event-updated: Angir om e-postmelding skal sendes når en aktitivitet blir oppdatert i din kalender.
+email_event_added: Angir om e-postmelding skal sendes når en aktitivitet blir oppdatert i din kalender.
 Events updated on my calendar: Aktiviteter oppdatert i min kalender
-email-event-deleted: Angir om e-postmelding skal sendes når en aktitivitet blir fjernet fra din kalender.
+email_event_deleted: Angir om e-postmelding skal sendes når en aktitivitet blir fjernet fra din kalender.
 Events removed from my calendar: Aktiviteter fjernet fra min kalender
-email-event-rejected: Angir om e-postmelding skal sendes når en deltager avviser en aktivitet som er i din kalender.
+email_event_rejected: Angir om e-postmelding skal sendes når en deltager avviser en aktivitet som er i din kalender.
 Event rejected by participant: Aktivitet avvist av deltager
 Color options: Fargevalg
 Allow user to customize colors: Tillat bruker å tilpasse farger

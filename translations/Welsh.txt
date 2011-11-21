@@ -96,55 +96,55 @@ System Settings: Gosodiad System
 Help: =
 app-name-help: Mae hwn yn dynodi enw'r cymwysiad (application) a fydd yn ymddangos ym mar teitl y porwr am bob tudalen a'r tudalen mewngofnodi yn ogystal. Mi fydd yr hyn yr ydych yn cofnodi yma yn cael ei gymharu a chynnwys y ffeil cyfieithiadiau gan ganiatau i chi roi teitlau amrywiol i ieithoedd gwahanol.
 Application Name: Enw'r Cymwysiad (Application)
-server-url-help: Mae hwn yn dynodi y URL sylfaen i'r cymwysiad (application). Cynnhywsir hwn wrth anfon e-byst sydd yn atgoffa neu yn nodi.
+server_url_help: Mae hwn yn dynodi y URL sylfaen i'r cymwysiad (application). Cynnhywsir hwn wrth anfon e-byst sydd yn atgoffa neu yn nodi.
 Server URL: URL y gweinydd
 language-help: Mae hwn yn dynodi pa iaith i'w defnyddio.
 Language: Iaith
 Your browser default language is: Iaith arferol eich porwr yw
 None: Dim
-date-format-help: Mae hwn yn dynodi y fformat dyddiad arferol.
+date_format_help: Mae hwn yn dynodi y fformat dyddiad arferol.
 Date format: Fformat dyddiad
-display-week-starts-on: Mae hwn yn dynodi a yw wythnosau i ddechrau ar ddydd Sul neu Llun. Os dynoder dydd Llun, yna defnyddir rhifau wythnos system ISO.
+display_week_starts_on: Mae hwn yn dynodi a yw wythnosau i ddechrau ar ddydd Sul neu Llun. Os dynoder dydd Llun, yna defnyddir rhifau wythnos system ISO.
 Week starts on: Wythnos yn dechrau ar ddydd
-time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio:<br><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.<br><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
+time_format_help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio:<br><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.<br><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
 Time format: Fformat amser
 12 hour: 12 awr
 24 hour: 24 awr
 Duration: Parhad
-work-hours-help: Mae hwn yn dynodi ystod yr amser a ddangosir yn y golwg dyddiol.
+work_hours_help: Mae hwn yn dynodi ystod yr amser a ddangosir yn y golwg dyddiol.
 Work hours: Oriau gweithio
 From: O
 to: hyd
-preferred-view-help: Mae hwn yn dynodi y golwg arferol (Dydd, Wythnos, Mis, neu Blwyddyn).
+preferred_view_help: Mae hwn yn dynodi y golwg arferol (Dydd, Wythnos, Mis, neu Blwyddyn).
 Preferred view: Golwg ffafriedig
-fonts-help: Mae hwn yn dangos rhestr o ffontiau'r system a ellir eu defnyddio (megis "Arial, Helvetica")
+fonts_help: Mae hwn yn dangos rhestr o ffontiau'r system a ellir eu defnyddio (megis "Arial, Helvetica")
 Fonts: Ffontiau
-display-weekends-help: Cynnhwysir penwythnosau yn y golwg wythnosol.
-display-week-number-help: Mae hwn yn dynodi os y dylid dangos rhif yr wythnos (1-52) yn y golwg misol neu wythnosol.
+display_weekends_help: Cynnhwysir penwythnosau yn y golwg wythnosol.
+display_weeknumber_help: Mae hwn yn dynodi os y dylid dangos rhif yr wythnos (1-52) yn y golwg misol neu wythnosol.
 Display week number: Dangoser rhif yr wythnos
-allow-view-other-help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio calendr defnyddiwr arall.
+allow_view_other_help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio calendr defnyddiwr arall.
 may view others cals: Caniatad i wylio calendr rhywun arall
-require-approvals-help: Pan mae hwn yn cael ei ddefnyddio rhaid i'r defnyddwr cymeradwyo digwyddiad cyn iddo gael ei ddangos ar ei calendr (os nad yw 'Dangos heb Cymeradwyaeth' ymlaen) Noder wrth gosod hwn i 'Na' ni fydd hwn yn hepgor ar yr angen i cymeradwyo digwyddiadau i'r Calendr Cyhoeddus (os yw'r Calendr Cyhoeddus wedi ei 'alluogi').
+require_approvals_help: Pan mae hwn yn cael ei ddefnyddio rhaid i'r defnyddwr cymeradwyo digwyddiad cyn iddo gael ei ddangos ar ei calendr (os nad yw 'Dangos heb Cymeradwyaeth' ymlaen) Noder wrth gosod hwn i 'Na' ni fydd hwn yn hepgor ar yr angen i cymeradwyo digwyddiadau i'r Calendr Cyhoeddus (os yw'r Calendr Cyhoeddus wedi ei 'alluogi').
 Require event approvals: Cymeradwyaeth i ddigwyddiadau'n angenrheidiol
-display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
+display_unapproved_help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
 Display unapproved: Dangoser digwyddiadau heb cymeradwyaeth
-conflict-check-help: Mae hwn yn rhybuddio am gwrthdrawiadau rhwng digwyddiadau (dau digwyddiad wedi eu dynodi am yr un amser ar calendr un person). Os y dewisir "Ie", mi fydd hi dal yn bosib i drefnu dau digwyddiad ar yr un amser os y rhoddir cadarnhad ar ol rhybudd. Os y dewisir "Na", ni fydd yna unrhyw rybudd o gwrthdrawiadau rhwng digwyddiadau. Mae hi'n arferol yn well i gosod hwn i "Ie", felly bod modd osgoi gwrthdrawiadau.
+allow_conflicts_help: Mae hwn yn rhybuddio am gwrthdrawiadau rhwng digwyddiadau (dau digwyddiad wedi eu dynodi am yr un amser ar calendr un person). Os y dewisir "Ie", mi fydd hi dal yn bosib i drefnu dau digwyddiad ar yr un amser os y rhoddir cadarnhad ar ol rhybudd. Os y dewisir "Na", ni fydd yna unrhyw rybudd o gwrthdrawiadau rhwng digwyddiadau. Mae hi'n arferol yn well i gosod hwn i "Ie", felly bod modd osgoi gwrthdrawiadau.
 Check for conflicts: Edrycher am gwrthdrawiadau rhwng digwyddiadau
 Yes: Ie
 No: Na
-conflict-months-help: Os yr edrycher am gwrthdrawiadau ("Edrycher am gwrthdrawiadau rhwng digwyddiadau" wedi ei osod i "Na"), mae hwn yn dynodi faint o fisoedd i'r dyfodol yr edrychir am wrthdrawiadau. Os yw ychwanegu digwyddiadau yn cymryd amser hir, yna gostyngwch y rhif yma.
+conflict_months_help: Os yr edrycher am gwrthdrawiadau ("Edrycher am gwrthdrawiadau rhwng digwyddiadau" wedi ei osod i "Na"), mae hwn yn dynodi faint o fisoedd i'r dyfodol yr edrychir am wrthdrawiadau. Os yw ychwanegu digwyddiadau yn cymryd amser hir, yna gostyngwch y rhif yma.
 Conflict checking months: Nifer y misoedd i edrych am gwrthdrawiadau
-disable-priority-field-help: Os y dewisir "Ie" yna ceir gwared a'r dewis o "Blaenoriaeth" o'r tudalennau gwybodaeth am digwyddiad, gan wneud pethau'n haws i bobl heb profiad o'r meddalwedd.
+disable_priority_field_help: Os y dewisir "Ie" yna ceir gwared a'r dewis o "Blaenoriaeth" o'r tudalennau gwybodaeth am digwyddiad, gan wneud pethau'n haws i bobl heb profiad o'r meddalwedd.
 Disable Priority field: Dim dewis o Blaenoriaeth
-disable-access-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Mynediad" oddi wrth tudalennau gwybodaeth am ddigwyddiad, gan wneud pethau'n haws i bobl heb brofiad o'r meddalwedd.
+disable_access_field_help: Wrth dewis "Ie" ceir gwared a'r optiwn "Mynediad" oddi wrth tudalennau gwybodaeth am ddigwyddiad, gan wneud pethau'n haws i bobl heb brofiad o'r meddalwedd.
 Disable Access field: Dim dewis o Mynediad
-disable-participants-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Cyfranogwyr" oddi wrth y tudalennau gwybodaeth am ddigwyddiad, gan atal defnyddwyr rhag ychwanegu digwyddiadau defnyddwyr eraill at eu calendrau. Os y dewisir yr optiwn yma, yna dylswch ystyried cael gwared o'r optiwn i "Caniatau dangos calendrau defnyddwyr eraill" yn ogystal.
+disable_participants_field_help: Wrth dewis "Ie" ceir gwared a'r optiwn "Cyfranogwyr" oddi wrth y tudalennau gwybodaeth am ddigwyddiad, gan atal defnyddwyr rhag ychwanegu digwyddiadau defnyddwyr eraill at eu calendrau. Os y dewisir yr optiwn yma, yna dylswch ystyried cael gwared o'r optiwn i "Caniatau dangos calendrau defnyddwyr eraill" yn ogystal.
 Disable Participants field: Dim Cyfranogwyr
-disable-repeating-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn i "Ailgyflawni" wrth ychwanegu digywddiadau. Mi fydd hyn yn gwneud pethau'n haws i bobl heb profiad o'r meddalwedd.
+disable_repeating_field_help: Wrth dewis "Ie" ceir gwared a'r optiwn i "Ailgyflawni" wrth ychwanegu digywddiadau. Mi fydd hyn yn gwneud pethau'n haws i bobl heb profiad o'r meddalwedd.
 Disable Repeating field: Dim Ailgyflawni
-remember-last-login-help: Pan y defnyddir hwn mi fydd mewngofnodiad y defnyddiwr yn cael ei lenwi drostynt ar y dudalen mewngofnodi (ond nid y gair cydd), a mi fydd hoff dewisiadau'r defnyddiwr yn cael eu llwytho (gan gynnwys ei hoff lliwiau a dewis o iaith).
+remember_last_login_help: Pan y defnyddir hwn mi fydd mewngofnodiad y defnyddiwr yn cael ei lenwi drostynt ar y dudalen mewngofnodi (ond nid y gair cydd), a mi fydd hoff dewisiadau'r defnyddiwr yn cael eu llwytho (gan gynnwys ei hoff lliwiau a dewis o iaith).
 Remember last login: Cofier y mewngofnodiad diwethaf
-allow-public-access-help: Pan y dewisir yr optiwn yma gall y calendr yma ond cael ei ddefnyddio fel calendr cyhoeddus a ellir ei ddarllen yn unig, a sydd ddim yn gofyn i ddefnyddwyr i mewngofnodi.
+allow_public_access_help: Pan y dewisir yr optiwn yma gall y calendr yma ond cael ei ddefnyddio fel calendr cyhoeddus a ellir ei ddarllen yn unig, a sydd ddim yn gofyn i ddefnyddwyr i mewngofnodi.
 Allow public access: Caniatewch mynediad i'r cyhoedd
 public-access-view-others-help: Wrth cael mynediad cyhoeddus i'r system, mae hwn yn dynodi a yw'r defnyddiwr yn gallu gwylio calendrau defnydwyr eraill.
 may public view others: Rhywrai gyda mynediad cyhoeddus yn gallu gwylio calendrau defnyddwyr eraill
@@ -162,15 +162,15 @@ Email enabled: Anfoner E-byst
 email-default-sender: Mae hwn yn dynodi cyfeiriad e-bost yr anfonwr wrth anfon e-byst atgoffa allan.
 Default sender address: Cyfeiriad e-bost danfonwr arferol
 Default user settings: Dewisiadau arferol y defnyddiwr
-email-event-reminders-help: Mae hwn yn dynodi a ddylid anfon e-byst i atgoffa defnyddwyr o ddigwyddiadau.
+email_reminder_help: Mae hwn yn dynodi a ddylid anfon e-byst i atgoffa defnyddwyr o ddigwyddiadau.
 Event reminders: Atgofion o ddigwyddiadau
-email-event-added: Mae hwn yn dynodi a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os yr ychwanegir digwyddiad i'ch calendr.
+email_event_added: Mae hwn yn dynodi a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os yr ychwanegir digwyddiad i'ch calendr.
 Events added to my calendar: Digwyddiadau wedi eu ychwanegu ar fy nghalendr
-email-event-updated: Mae hwn yn dynodi a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os y newidir digwyddiad ar eich calendr.
+email_event_added: Mae hwn yn dynodi a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os y newidir digwyddiad ar eich calendr.
 Events updated on my calendar: Digwyddiadau wedi eu newid ar fy nghalendr
-email-event-deleted: Mae hwn yn penderfynnu a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os y diddymir digwyddiad o'c calendr.
+email_event_deleted: Mae hwn yn penderfynnu a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os y diddymir digwyddiad o'c calendr.
 Events removed from my calendar: Digwyddiadau a ddiddymwyd o fy nghalendr
-email-event-rejected: Mae hwn yn penderfynnu a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os yw defnyddiwr yn gwrthod derbyn digwyddiad sydd ar eich calendr.
+email_event_rejected: Mae hwn yn penderfynnu a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os yw defnyddiwr yn gwrthod derbyn digwyddiad sydd ar eich calendr.
 Event rejected by participant: Digwyddiad wedi ei wrthod gan ddefnyddiwr
 Allow user to customize colors: Caniatad i ddefnyddwyr dewis eu lliwiau
 

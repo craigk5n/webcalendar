@@ -68,7 +68,7 @@ ob_start();
 print_header( '', generate_refresh_meta() );
 
 echo <<<EOT
-    <table width="100%" cellpadding="1" summary="">
+    <table summary="">
       <tr>
         <td width="80%">
           {$navStr}

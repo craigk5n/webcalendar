@@ -111,72 +111,72 @@ System Settings: Järjestelmän asetukset
 Help: Ohjeita
 app-name-help: Asettaa kalenterisovelluksen "titlen" joka näkyy sivulla, kun kalenteria käytetään
 Application Name: Sovelluksen nimi
-server-url-help: Asettaa perus-URL -osoitteen kalenterisovellukselle. Tätä käytetään lähetettäessä sähköpostia tapahtuman osallistujille.
+server_url_help: Asettaa perus-URL -osoitteen kalenterisovellukselle. Tätä käytetään lähetettäessä sähköpostia tapahtuman osallistujille.
 Server URL: Palvelimen URL
 language-help: Määrittelee käytettävän kielen.
 Language: Kieli
 Your browser default language is: Selaimen oletuskieli on
 None: Ei toistuva
-Custom script/stylesheet: Oma skripti/tyylisivu
+Custom script: Oma skripti/tyylisivu
 Custom header: Oma ylätunniste
 Custom trailer: Oma alatunniste
-tz-help: Määrittää aikavyöhykkeen
-date-format-help: Määrittää päivän esitysmuodon.
+tz_help: Määrittää aikavyöhykkeen
+date_format_help: Määrittää päivän esitysmuodon.
 Date format: Päiväyksen muoto
-display-week-starts-on: Määrittelee viikon alkamispäiväksi joko sunnuntai tai maanantai. Jos maanantai valittu, niin viikonnumero lasketaan ISO-järjestelmän mukaisesti.
+display_week_starts_on: Määrittelee viikon alkamispäiväksi joko sunnuntai tai maanantai. Jos maanantai valittu, niin viikonnumero lasketaan ISO-järjestelmän mukaisesti.
 Week starts on: Viikon ensimmäinen päivä
-time-format-help: Määrittelee ajan esitysmuodon,<br><i>12 tuntia</i><br><i>24 tuntia</i>
+time_format_help: Määrittelee ajan esitysmuodon,<br><i>12 tuntia</i><br><i>24 tuntia</i>
 Time format: Ajan esitystapa
 12 hour: 12 tuntia
 24 hour: 24 tuntia
 Specify timed event length by: Määritä tapahtuman kesto ilmoittamalla
 Duration: Kesto
 End Time: Päättymisaika
-work-hours-help: Määrittelee päivänäkymässä esitettävät tunnit.
+work_hours_help: Määrittelee päivänäkymässä esitettävät tunnit.
 Work hours: Työtunnit
 From: Alkaen
 to: ulottuen
-preferred-view-help: Määrittelee oletusnäkymän (Päivä, Viikko, Kuukausi tai Vuosi).
+preferred_view_help: Määrittelee oletusnäkymän (Päivä, Viikko, Kuukausi tai Vuosi).
 Preferred view: Oletusnäkymä
-fonts-help: Määrittää käytettävät järjestelmäfontit (esim. "Arial, Helvetica")
+fonts_help: Määrittää käytettävät järjestelmäfontit (esim. "Arial, Helvetica")
 Fonts: Fontit
-display-weekends-help: Näytä viikonloput viikkoa katseltaessa.
-display-week-number-help: Määrittelee näytetäänkö viikonnumero (1-52) kuukausi- ja viikkonäkymässä.
+display_weekends_help: Näytä viikonloput viikkoa katseltaessa.
+display_weeknumber_help: Määrittelee näytetäänkö viikonnumero (1-52) kuukausi- ja viikkonäkymässä.
 Display week number: Näytä viikonnumero
 desc in printer day view: Näytä kuvaus päivän tulostusnäkymässä
-allow-view-add-help: Asettaa '+'-merkin ilmestymään näkymiin, jolloin käyttäjä voi helposti lisätä uuden tapahtuman toisen(kin) käyttäjän kalenteriin.
+display_add_link_in_views_help: Asettaa '+'-merkin ilmestymään näkymiin, jolloin käyttäjä voi helposti lisätä uuden tapahtuman toisen(kin) käyttäjän kalenteriin.
 Include add event link in views: Lisää linkki "Lisää tapahtuma" kaikkiin näkymiin
-allow-view-other-help: Määrittää, salliiko kalenteri käyttäjän tarkastella toisen käyttäjän kalenteria.
+allow_view_other_help: Määrittää, salliiko kalenteri käyttäjän tarkastella toisen käyttäjän kalenteria.
 may view others cals: Salli muiden henkilöiden kalenterien tarkastelu
-require-approvals-help: Jos päällä, käyttäjän on vahvistettava tapahtuma ennenkuin se näkyy kalenterissa.
+require_approvals_help: Jos päällä, käyttäjän on vahvistettava tapahtuma ennenkuin se näkyy kalenterissa.
 Require event approvals: Vaadi tapahtumien vahvistus
-display-unapproved-help: Määrittelee näytetäänkö hyväksymättömät tapahtumat kalenterissa.<br>Jos valittu "Kyllä", niin hyväksymättömät tapahtumat näytetään (eri värillä).<br>Jos valittu "Ei", niin tapahtumat tulee hyväksyä ennenkuin ne näkyvät kalenterissa.
+display_unapproved_help: Määrittelee näytetäänkö hyväksymättömät tapahtumat kalenterissa.<br>Jos valittu "Kyllä", niin hyväksymättömät tapahtumat näytetään (eri värillä).<br>Jos valittu "Ei", niin tapahtumat tulee hyväksyä ennenkuin ne näkyvät kalenterissa.
 Display unapproved: Näytä hyväksymättömät tapahtumat
-conflict-check-help: Tarkista tapahtumien konfliktit
+allow_conflicts_help: Tarkista tapahtumien konfliktit
 Check for conflicts: Tarkista tapahtumien konfliktit
 Yes: Kyllä
 No: Ei
-conflict-months-help: Kuinka monen kuukauden päähän tarkistetaan konfliktit.
+conflict_months_help: Kuinka monen kuukauden päähän tarkistetaan konfliktit.
 Conflict checking months: Konfliktit, montako kuukautta tarkistetaan
-conflict-check-override-help: Salli konfliktien ylikirjoitus.
+allow_conflict_override_help: Salli konfliktien ylikirjoitus.
 may users override conflicts: Salli konfliktien ylikirjoitus
-limit-appts-help: Asettaa maksimiarvon päivän tapahtumien lukumäärälle.
+limit_appts_help: Asettaa maksimiarvon päivän tapahtumien lukumäärälle.
 Limit timed events per day: Salli max # tapahtumaa / päivä
-limit-appts-number-help: Asettaa maksimimäärän päivän ajoitetuille tapahtumille päivässä
+limit_appts_number_help: Asettaa maksimimäärän päivän ajoitetuille tapahtumille päivässä
 Maximum timed events per day: Salli max # ajoitettua tapahtumaa / päivä
-disable-priority-field-help: Poistaa tärkeys-kentän käytöstä.
+disable_priority_field_help: Poistaa tärkeys-kentän käytöstä.
 Disable Priority field: Poista tärkeys-kenttä käytöstä
-disable-access-field-help: Poistaa access-kentän käytöstä, jolloin näkymä on noviiseille selkeämpi
+disable_access_field_help: Poistaa access-kentän käytöstä, jolloin näkymä on noviiseille selkeämpi
 Disable Access field: Poista access-kenttä (selkeämpi aloittelijoille)
-disable-participants-field-help: Poistaa mahdollisuuden lisätä muita henkilöitä tapahtumaan osallisiksi.
+disable_participants_field_help: Poistaa mahdollisuuden lisätä muita henkilöitä tapahtumaan osallisiksi.
 Disable Participants field: Poista muiden henkilöiden lisäys tapahtumaan
-disable-repeating-field-help: Poistaa toistettavien tapahtumien mahdollisuuden.
+disable_repeating_field_help: Poistaa toistettavien tapahtumien mahdollisuuden.
 Disable Repeating field: Poista toistettavat tapahtumat käytöstä.
 Allow HTML in Description: Salli HTML kuvauksissa
 Display Site Extras in popup: Näytä palvelukohtaiset lisukkeet ponnahdusikkunassa
-remember-last-login-help: Muistaa edellisen kirjauksesi ja asetuksesi.
+remember_last_login_help: Muistaa edellisen kirjauksesi ja asetuksesi.
 Remember last login: Muista edellinen kirjaus
-allow-public-access-help: Sallii tapahtuman näkymisen kaikille
+allow_public_access_help: Sallii tapahtuman näkymisen kaikille
 Allow public access: Salli yleinen käyttö
 public-access-view-others-help: Määrittää, voiko käyttäjä katsella toisen henkilön tapahtumia.
 may public view others: Salli tapahtuman tarkastelu kaikille
@@ -208,15 +208,15 @@ Email enabled: Sähköpostitiedotteet käytössä
 email-default-sender: Lähettäjä sähköpostiviesteissä
 Default sender address: Lähettäjän oletusosoite
 Default user settings: Käyttäjän oletusasetukset
-email-event-reminders-help: Määrittelee lähetetäänkö tapahtumamuistutuksia vai ei
+email_reminder_help: Määrittelee lähetetäänkö tapahtumamuistutuksia vai ei
 Event reminders: Tapahtumamuistutukset
-email-event-added: Määrittelee lähetetäänkö sähköpostilla tiedote lisätyistä kalenterimerkinnöistä.
+email_event_added: Määrittelee lähetetäänkö sähköpostilla tiedote lisätyistä kalenterimerkinnöistä.
 Events added to my calendar: Kalenterimerkintöjä lisätty
-email-event-updated: Määrittelee lähetetäänkö sähköpostilla tiedote muutetuista kalenterimerkinnöistä.
+email_event_added: Määrittelee lähetetäänkö sähköpostilla tiedote muutetuista kalenterimerkinnöistä.
 Events updated on my calendar: Kalenterimerkintöjä muutettu
-email-event-deleted: Määrittelee lähetetäänkö sähköpostilla tiedote poistetuista kalenterimerkinnöistä.
+email_event_deleted: Määrittelee lähetetäänkö sähköpostilla tiedote poistetuista kalenterimerkinnöistä.
 Events removed from my calendar: Kalenterimerkintöjä poistettu
-email-event-rejected: Määrittelee lähetetäänkö sähköpostilla tiedote ryhmän jäsenten hylkäämistä kalenterimerkinnöistä.
+email_event_rejected: Määrittelee lähetetäänkö sähköpostilla tiedote ryhmän jäsenten hylkäämistä kalenterimerkinnöistä.
 Event rejected by participant: Ryhmän jäsen hylkäsi tapahtuman
 Allow user to customize colors: Salli käyttäjien muokata värejä
 

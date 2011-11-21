@@ -98,64 +98,64 @@ System Settings: Süsteemi seaded
 Help: Abiks
 app-name-help: Määrab ära rakenduse nime mis ilmub edaspidi lehitseja tiitli ribale
 Application Name: Rakenduse nimi
-server-url-help: määrab ära baasaadressi (URL-i) rakendusele. See lisatakse email meeldetuletustele.
+server_url_help: määrab ära baasaadressi (URL-i) rakendusele. See lisatakse email meeldetuletustele.
 Server URL: Serveri URL
 language-help: Määrab ära kasutuskeele
 Language: Keel
 Your browser default language is: Sinu lehitseja kodukeel on
 None: pole
-tz-help: Määrab kui palju erineb kohalik aeg serveri ajast
-date-format-help: Määrab eelistatud kuupäeva seaded.
+tz_help: Määrab kui palju erineb kohalik aeg serveri ajast
+date_format_help: Määrab eelistatud kuupäeva seaded.
 Date format: Kuupäeva seaded
-display-week-starts-on: Määrab kas nädal algab pühapäeval või esmaspäeval. Kui esmaspäeval, siis on nädala numbrid ISO standardi järgi.
+display_week_starts_on: Määrab kas nädal algab pühapäeval või esmaspäeval. Kui esmaspäeval, siis on nädala numbrid ISO standardi järgi.
 Week starts on: Nädal algab
-time-format-help: Määrab kasutatava aja eelistused :<br><i>12 tundi:</i> Näita aega nii: 3am, 8:30pm, etc.<br><i>24 tundi:</i> Näita aega nii: 300, 2030, jne.
+time_format_help: Määrab kasutatava aja eelistused :<br><i>12 tundi:</i> Näita aega nii: 3am, 8:30pm, etc.<br><i>24 tundi:</i> Näita aega nii: 300, 2030, jne.
 Time format: Aja eelistused
 12 hour: 12 tundi
 24 hour: 24 tundi
 Duration: Kestvus
-work-hours-help: Määrab näidatava tööaja vahemiku päeva vaates.
+work_hours_help: Määrab näidatava tööaja vahemiku päeva vaates.
 Work hours: Töö aeg
 From: Alates
 to: kuni
-preferred-view-help: Määrab ära vaikimisi valitud vaate (päev, nädal, kuu, aasta).
+preferred_view_help: Määrab ära vaikimisi valitud vaate (päev, nädal, kuu, aasta).
 Preferred view: Eelistatud vaade
-fonts-help: Määrab ära missuguseid kirjatüüpe kasutada (näiteks "Arial, Helvetica")
+fonts_help: Määrab ära missuguseid kirjatüüpe kasutada (näiteks "Arial, Helvetica")
 Fonts: Kirjatüübid
-display-weekends-help: lisa ka nädalavahetused kui vaatad nädalat
-display-week-number-help: Määrab kas nädala number (1-52) tuleb näidata kuu- ja nädala vaates.
+display_weekends_help: lisa ka nädalavahetused kui vaatad nädalat
+display_weeknumber_help: Määrab kas nädala number (1-52) tuleb näidata kuu- ja nädala vaates.
 Display week number: Näita nädala numbrit
-allow-view-add-help: '+' ikoon on lisatud vaadetesse lubamaks kasutajal kiiresti lisada sündmusi teiste kasutajate kalendritesse.
+display_add_link_in_views_help: '+' ikoon on lisatud vaadetesse lubamaks kasutajal kiiresti lisada sündmusi teiste kasutajate kalendritesse.
 Include add event link in views: Kaasa lisa sündmus viide vaadetesse
-allow-view-other-help: Määrab kas kasutaja saab näha teiste kalendreid.
+allow_view_other_help: Määrab kas kasutaja saab näha teiste kalendreid.
 may view others cals: Luba näha teiste kalendreid
-require-approvals-help: Kui on lubatud siis peab kasutaja sündmuse heaks kiitma enne kui seda näidatakse kalendris (kehtib, kui 'Näita heakskiitmatuid' on keelatud). Märkus - seade 'Ei' ei keela näitamist Avalikult Ligipääsetavas kalendris kui see on lubatud.
+require_approvals_help: Kui on lubatud siis peab kasutaja sündmuse heaks kiitma enne kui seda näidatakse kalendris (kehtib, kui 'Näita heakskiitmatuid' on keelatud). Märkus - seade 'Ei' ei keela näitamist Avalikult Ligipääsetavas kalendris kui see on lubatud.
 Require event approvals: Nõua sündmuse heakskiitu
-display-unapproved-help: Määrab kas heakskiitmata sündmused näidatakse kalendris.<br> Kui on 'Jah', siis näidatakse heakskiitmata sündmusi kalendris (erineva teksti värviga).<br> Kui on 'Ei', siis peab heakskiitmata sündmused enne kalendris näitamist lubama.
+display_unapproved_help: Määrab kas heakskiitmata sündmused näidatakse kalendris.<br> Kui on 'Jah', siis näidatakse heakskiitmata sündmusi kalendris (erineva teksti värviga).<br> Kui on 'Ei', siis peab heakskiitmata sündmused enne kalendris näitamist lubama.
 Display unapproved: Näita heakskiitmatuid
-conflict-check-help: Kontrolli sündmuste vastuolulisust (mitu sündmust samal ajal ühele isikule). Kui ütled "jah" siis saad siiski samaaegseid sündmusi planeerida kui kinnitad hoiatus teateid. Kui ütled "ei", siis mingeid kontrolle ei tehta. Arvatavasti tahad öelda "jah", et vastuolusid kontrollida.
+allow_conflicts_help: Kontrolli sündmuste vastuolulisust (mitu sündmust samal ajal ühele isikule). Kui ütled "jah" siis saad siiski samaaegseid sündmusi planeerida kui kinnitad hoiatus teateid. Kui ütled "ei", siis mingeid kontrolle ei tehta. Arvatavasti tahad öelda "jah", et vastuolusid kontrollida.
 Check for conflicts: Kontrolli sündmuste vastuolulisust
 Yes: jah
 No: ei
-conflict-months-help: Kui sündmuste vastuolulisuse kontrollimine on lubatud siis määrame kui mitu kuud ette peame kontrollima. Kui leiad, et kontrollimine võtab liiga kaua aega, siis vähenda seda numbrit
+conflict_months_help: Kui sündmuste vastuolulisuse kontrollimine on lubatud siis määrame kui mitu kuud ette peame kontrollima. Kui leiad, et kontrollimine võtab liiga kaua aega, siis vähenda seda numbrit
 Conflict checking months: Vastuolulisuse kontrollimise kuud
-conflict-check-override-help: Lubame kasutajal määrata mitmeid sündmusi samale ajale.
+allow_conflict_override_help: Lubame kasutajal määrata mitmeid sündmusi samale ajale.
 may users override conflicts: Lubame kasutajal samaaegseid sündmusi
-limit-appts-help: Lubab administraatoril seada kogu kalendrisüsteemi hõlmavat piiri kui mitu sündmust üks inimene päeavas saab omada.
+limit_appts_help: Lubab administraatoril seada kogu kalendrisüsteemi hõlmavat piiri kui mitu sündmust üks inimene päeavas saab omada.
 Limit timed events per day: Piira ajastatud sündmuste arvu päevas
-limit-appts-number-help: Määrab suurima ajastatud sündmuste arvu mida kasutaja saab päeavas omada.
+limit_appts_number_help: Määrab suurima ajastatud sündmuste arvu mida kasutaja saab päeavas omada.
 Maximum timed events per day: Suurim ajastatud sündmuste arv päeavas
-disable-priority-field-help: Valides "Jah" kaob "Tähtsuse" väli sündmuse lehelt ja algajatel on lihtsam lehekülg.
+disable_priority_field_help: Valides "Jah" kaob "Tähtsuse" väli sündmuse lehelt ja algajatel on lihtsam lehekülg.
 Disable Priority field: Keela Tähtsuse väli
-disable-access-field-help: Valides "Jah" kaob "Juurdepääs" väli sündmuse lehelt ja algajatel on lihtsam lehekülg.
+disable_access_field_help: Valides "Jah" kaob "Juurdepääs" väli sündmuse lehelt ja algajatel on lihtsam lehekülg.
 Disable Access field: Keela Juurdepääsu väli
-disable-participants-field-help: Valides "Jah" kaob "Osalejate" väli sündmuse lehelt ja pole võimalust kutsuda teisi kasutajaid oma sündmustele. Kui lubad selle võimaluse, siis tahad võib-olla keelata "Luban näha teiste kalendreid" ka.
+disable_participants_field_help: Valides "Jah" kaob "Osalejate" väli sündmuse lehelt ja pole võimalust kutsuda teisi kasutajaid oma sündmustele. Kui lubad selle võimaluse, siis tahad võib-olla keelata "Luban näha teiste kalendreid" ka.
 Disable Participants field: Keela Osalejate väli
-disable-repeating-field-help: Valides "Jah" kaob "Korduv" väli kui lisad sündmusi ja algajatel on lihtsam lehekülg.
+disable_repeating_field_help: Valides "Jah" kaob "Korduv" väli kui lisad sündmusi ja algajatel on lihtsam lehekülg.
 Disable Repeating field: Keela Korduv väli
-remember-last-login-help: Kui on lubatud, siis näidatakse kasutaja registreerimisandmed ilma salasõnata sisenemise lehel ja kasutaja seaded koos värvide ja keeltega laetakse automaatselt.
+remember_last_login_help: Kui on lubatud, siis näidatakse kasutaja registreerimisandmed ilma salasõnata sisenemise lehel ja kasutaja seaded koos värvide ja keeltega laetakse automaatselt.
 Remember last login: Mäleta viimast sisenemist
-allow-public-access-help: Kui on lubatud, siis saab kalendrit kasutada kirjutamise keeluga avaliku kalendrina kuhu ei nõuta sisse registreerimist.
+allow_public_access_help: Kui on lubatud, siis saab kalendrit kasutada kirjutamise keeluga avaliku kalendrina kuhu ei nõuta sisse registreerimist.
 Allow public access: Lubame avaliku ligipääsu
 public-access-view-others-help: Kui kalendrile saab avalikult ligi, siis määrab kas kasutaja saab ka teiste kalendreid näha.
 may public view others: Avalik ligipääs näeb teisi kasutajaid
@@ -181,15 +181,15 @@ Email enabled: Email lubatud
 email-default-sender: Määrab emaili saatja aadressi meeldetuletustele.
 Default sender address: Vaikimisi määratud saatja aadress
 Default user settings: Vaikimisi kasutaja määrangud
-email-event-reminders-help: Määrab kas saata sündmuste meeldetuletusi
+email_reminder_help: Määrab kas saata sündmuste meeldetuletusi
 Event reminders: Sündmuste meeldetuletajad
-email-event-added: Määrab kas saata emaili teadet kui sündmus on kalendrisse lisatud.
+email_event_added: Määrab kas saata emaili teadet kui sündmus on kalendrisse lisatud.
 Events added to my calendar: Minu kalendrisse lisatud sündmused
-email-event-updated: Määrab kas saata emailiga teade kui sündmust on kalendrist uuendatud.
+email_event_added: Määrab kas saata emailiga teade kui sündmust on kalendrist uuendatud.
 Events updated on my calendar: Minu kalendri uuendatud sündmused
-email-event-deleted: Määrab kas saata emailiga teade kui sündmus on kalendrist kustutatud.
+email_event_deleted: Määrab kas saata emailiga teade kui sündmus on kalendrist kustutatud.
 Events removed from my calendar: Minu kalendrist eemaldatud sündmused
-email-event-rejected: Määrab kas saata emailiga teade kui kutsutu lükkab sündmuse tagasi
+email_event_rejected: Määrab kas saata emailiga teade kui kutsutu lükkab sündmuse tagasi
 Event rejected by participant: Osaleja poolt tagasi lükatud sündmus
 Allow user to customize colors: Lubame kasutajal muuta värve
 

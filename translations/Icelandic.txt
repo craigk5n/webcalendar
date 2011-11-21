@@ -79,22 +79,22 @@ Help: Hjálp
 language-help: Tilgreinir tungumál.
 Language: Tungumál
 None: Engin
-display-week-starts-on: Tilgreinir hvort vikan byrjar á sunnudegi eða mánudegi. Ef mánudagur er valinn munu vikunúmerin á ISO viku númer.
+display_week_starts_on: Tilgreinir hvort vikan byrjar á sunnudegi eða mánudegi. Ef mánudagur er valinn munu vikunúmerin á ISO viku númer.
 Week starts on: Vika byrjar á
-time-format-help: Tilgreinir á hvaða tímasnið á að nota:<br><i>12 tíma:</i> Birtir tíma sem 3fh, 8:30eh, o.s.frv.<br><i>24 tíma:</i> Birtir tíma sem 300, 2030, o.s.frv.
+time_format_help: Tilgreinir á hvaða tímasnið á að nota:<br><i>12 tíma:</i> Birtir tíma sem 3fh, 8:30eh, o.s.frv.<br><i>24 tíma:</i> Birtir tíma sem 300, 2030, o.s.frv.
 Time format: Klukka
 12 hour: 12 tíma
 24 hour: 24 tíma
 Duration: Lengd
-work-hours-help: Tilgreinir vinnutíma sem á að birta.
+work_hours_help: Tilgreinir vinnutíma sem á að birta.
 Work hours: Vinnutími
 From: Frá
 to: til
-preferred-view-help: Tilgreinir sjálfgefið val (Dagur, vika, mánuður eða ár).
+preferred_view_help: Tilgreinir sjálfgefið val (Dagur, vika, mánuður eða ár).
 Preferred view: Birting
-display-week-number-help: Tilgreinir hvort vikunúmer (1-52) eigi að birtast í mánaðar og viku vali.
+display_weeknumber_help: Tilgreinir hvort vikunúmer (1-52) eigi að birtast í mánaðar og viku vali.
 Display week number: Birta númer viku
-display-unapproved-help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali.<br> Ef "Já", eru ósamþykkt atriði birt á dagatali (í öðrum lit).<br> Ef "Nei", verður að samþykkta atriði til þess að þau birtist á dagatali.
+display_unapproved_help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali.<br> Ef "Já", eru ósamþykkt atriði birt á dagatali (í öðrum lit).<br> Ef "Nei", verður að samþykkta atriði til þess að þau birtist á dagatali.
 Display unapproved: Birta ósamþykkt
 Yes: Já
 No: Nei

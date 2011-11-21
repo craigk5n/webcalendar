@@ -1,6 +1,6 @@
 // $Id$
 
-// See the showTab function in includes/js/visible.js
+// See the showTab function in "includes/js/visible.js"
 // for common code shared by all pages using the tabbed GUI.
 var tabs = ['',
   'settings',
@@ -18,6 +18,10 @@ linkFile('includes/js/visible.js');
 addLoadListener(function () {
   for (var i = tabs.length - 1; i > 0; i--) {
     toggleVisible('tabscontent_' + tabs[i], 'visible', 'none');
+
+    attachEventListener(document.getElementById('tab_' + tabs[i]), 'click', function () {
+      return setTab(tabs[i]);
+    });
   }
   altps();
   attach_handler();
@@ -34,10 +38,19 @@ addLoadListener(function () {
     window.open('help_admin.php', 'cal_help',
       'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');
   });
-  attachEventListener(document.getElementById('prefform'), 'submit',
-    function () {
+  attachEventListener(document.getElementById('prefform'), 'submit', function () {
     return valid_form(this);
   });
+  attachEventListener(document.getElementById('previewBtn'), 'click', function () {
+    return showPreview();
+  });
+  var tmp = ['H', 'S', 'T'];
+  for (var i = 0; i < 3; i++) {
+    attachEventListener(document.getElementById('btn' + tmp[i]), 'click', function () {
+      window.open('edit_template.php?type=' + tmp[i], 'cal_template',
+        'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');
+    });
+  }
 });
 function valid_form(form) {
   var err = '';
@@ -82,7 +95,7 @@ function valid_form(form) {
   }
   if (err.length > 0) {
     alert(xlate['errorXXX'].replace(/XXX/, err) + "\n\n"
-      + xlate['formatColorRGB']); // translate( 'Color format should be RGB' )
+       + xlate['formatColorRGB']); // translate( 'Color format should be RGB' )
     return false;
   }
   return true;

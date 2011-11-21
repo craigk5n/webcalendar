@@ -23,7 +23,7 @@ include_once 'includes/init.php';
  * @return string HTML for the selection box
  */
 function time_selection ( $prefix, $time = '', $trigger = false ) {
-  global $ENTRY_SLOTS, $TIME_FORMAT, $WORK_DAY_START_HOUR;
+  global $ENTRY_SLOTS, $option, $TIME_FORMAT, $WORK_DAY_START_HOUR;
 
   $amsel = $pmsel = $ret = '';
   $trigger_str = ( $trigger ? 'onchange="' . $prefix . 'timechanged() ' : '' );
@@ -58,8 +58,7 @@ function time_selection ( $prefix, $time = '', $trigger = false ) {
     if ( $i == 0 && $TIME_FORMAT == '12' )
       $ihour = 12;
 
-    $ret .= '
-              <option value="' . "$i\"" . ( $ihour == $hour ? ' selected>' : '>' )
+    $ret .= $option . $i . ( $ihour == $hour ? '" selected>' : '">' )
      . $ihour . '</option>';
   }
   $ret .= '
@@ -75,13 +74,11 @@ function time_selection ( $prefix, $time = '', $trigger = false ) {
       $found = true;
       $isselected = ' selected';
     }
-    $ret .= '
-              <option value="' . "$i\"$isselected>$imin" . '</option>';
+    $ret .= $option . "$i\"$isselected>$imin" . '</option>';
     $i += ( 1440 / $ENTRY_SLOTS );
   }
   // We'll add an option with the exact time if not found above.
-  return $ret . ( $found ? '' : '
-              <option value="' . $minute . '" selected>' . $minute
+  return $ret . ( $found ? '' : $option . $minute . '" selected>' . $minute
      . '</option>' ) . '
             </select>' . ( $TIME_FORMAT == '12' ? '
             <label><input type="radio" name="' . $prefix . 'ampm" id="'
@@ -431,10 +428,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 
   if ( $readonly == 'N' ) {
     // Is public allowed to add events?
-    if ( $login == '__public__' && $PUBLIC_ACCESS_CAN_ADD != 'Y' )
-      $can_edit = false;
-    else
-      $can_edit = true;
+    $can_edit =  ( $login != '__public__' || $PUBLIC_ACCESS_CAN_ADD == 'Y' );
   }
 }
 $dateYmd = date ( 'Ymd' );
@@ -601,7 +595,7 @@ if ( $can_edit ) {
 <!-- DETAILS -->' : '
       <fieldset>
         <legend>' . translate ( 'Details' ) . '</legend>' ) . '
-          <table border="0" summary="">
+          <table summary="">
             <tr>
               <td class="tooltip" title="'
    . tooltip ( 'brief-description-help' ) . '"><label for="entry_brief">'
@@ -623,21 +617,19 @@ if ( $can_edit ) {
    . ( ! empty ( $categories ) || $DISABLE_ACCESS_FIELD != 'Y' ||
     ( $DISABLE_PRIORITY_FIELD != 'Y' )
     /* New table for extra fields. */ ? '
-                <table border="0" width="90%" summary="">' : '' )
+                <table width="90%" summary="">' : '' )
    . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
                   <tr>
                     <td class="tooltip" title="' . tooltip ( 'access-help' )
      . '"><label for="entry_access">' . translate ( 'Access' ) . '</label></td>
                     <td width="80%">
-                      <select name="access" id="entry_access">
-                        <option value="P"' . ( $access == 'P' || !
-      strlen( $access ) ? ' selected>' : '>' ) . translate( 'Public' )
-     . '</option>
-                        <option value="R"'
-     . ( $access == 'R' ? ' selected>' : '>' )
-     . translate( 'Private' ) . '</option>
-                        <option value="C"'
-     . ( $access == 'C' ? ' selected>' : '>' )
+                      <select id="access" name="entry_access">'
+     . $option . 'P"'
+     . ( $access == 'P' || ! strlen( $access ) ? ' selected>' : '>' )
+     . translate( 'Public' ) . '</option>'
+     . $option . 'R"' . ( $access == 'R' ? ' selected>' : '>' )
+     . translate( 'Private' ) . '</option>'
+     . $option . 'C"' . ( $access == 'C' ? ' selected>' : '>' )
      . translate( 'Confidential' ) . '</option>
                       </select>
                     </td>
@@ -651,15 +643,9 @@ if ( $can_edit ) {
      . '&nbsp;</label></td>
                     <td>
                       <select name="priority" id="entry_prio">';
-    $pri = array ( '',
-      translate ( 'High' ),
-      translate ( 'Medium' ),
-      translate ( 'Low' ) );
 
     for ( $i = 1; $i <= 9; $i++ ) {
-      echo '
-                        <option value="' . $i . '"'
-       . ( $priority == $i ? ' selected>' : '>' )
+      echo $option . $i . ( $priority == $i ? '" selected>' : '">' )
        . $i . '-' . $pri[ceil( $i / 3 )] . '</option>';
     }
     echo '
@@ -688,7 +674,7 @@ if ( $can_edit ) {
   if ( $eType == 'task' ) { // Only for tasks.
     $completed_visible = ( strlen ( $completed ) ? 'visible' : 'hidden' );
     echo '<br>
-                <table border="0" summary="">
+                <table summary="">
                   <tr id="completed">
                     <td class="tooltip" title="' . tooltip ( 'completed-help' )
      . '"><label for="task_percent">' . translate ( 'Date Completed' )
@@ -703,9 +689,8 @@ if ( $can_edit ) {
                       <select name="percent" id="task_percent" '
      . 'onchange="completed_handler()">';
     for ( $i = 0; $i < 101; $i += 10 ) {
-      echo '
-                        <option value="' . "$i\" "
-       . ( $task_percent == $i ? ' selected>' : '>' ) . $i . '</option>';
+      echo $option . $i . ( $task_percent == $i ? '" selected>' : '">' ) . $i
+       . '</option>';
     }
     echo '
                       </select>
@@ -716,8 +701,7 @@ if ( $can_edit ) {
       echo '
                   <tr>
                     <td colspan="2">
-                      <table width="100%" border="0" cellpadding="2" '
-       . 'cellspacing="5" summary="">
+                      <table cellspacing="5" cellpadding="2" summary="">
                         <tr>
                           <td colspan="2">' . translate ( 'All Percentages' )
        . '</td>
@@ -777,16 +761,13 @@ if ( $can_edit ) {
 
     echo '>&nbsp;</td>
               <td colspan="2">
-                <select name="timetype" onchange="timetype_handler()">
-                  <option value="U" '
-     . ( $allday != 'Y' && $hour == -1 ? ' selected>' : '>' )
-     . translate ( 'Untimed event' ) . '</option>
-                  <option value="T" '
-     . ( $allday != 'Y' && $hour >= 0 ? ' selected>' : '>' )
-     . translate ( 'Timed event' ) . '</option>
-                  <option value="A" '
-     . ( $allday == 'Y' ? ' selected>' : '>' )
-     . translate ( 'All day event' ) . '</option>
+                <select name="timetype" onchange="timetype_handler()">'
+     . $option . 'U"' . ( $allday != 'Y' && $hour == -1 ? ' selected>' : '>' )
+     . translate( 'Untimed event' ) . '</option>'
+     . $option . 'T"' . ( $allday != 'Y' && $hour >= 0 ? ' selected>' : '>' )
+     . translate( 'Timed event' ) . '</option>'
+     . $option . 'A"' . ( $allday == 'Y' ? ' selected>' : '>' )
+     . translate( 'All day event' ) . '</option>
                 </select>
               </td>
             </tr>' . ( empty ( $TZ_notice ) ? '' : '
@@ -916,8 +897,8 @@ if ( $can_edit ) {
     elseif ( $extra_type == EXTRA_USER ) {
       // Show list of calendar users...
       echo '
-                <select name="' . $extra_name . '">
-                  <option value="">None</option>';
+                <select name="' . $extra_name . '">'
+       . $option . '">None</option>';
       $userlist = get_my_users ( get_my_users );
       $usercnt = count ( $userlist );
       for ( $j = 0; $j < $usercnt; $j++ ) {
@@ -925,11 +906,10 @@ if ( $can_edit ) {
             access_user_calendar ( 'view', $userlist[$j]['cal_login'] ) )
           continue; // Cannot view calendar so cannot add to their cal.
 
-        echo '
-                  <option value="' . $userlist[$j]['cal_login'] . '"'
+        echo $option . $userlist[$j]['cal_login']
          . ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
           ( $userlist[$j]['cal_login'] == $extras[$extra_name]['cal_data'] )
-           ? ' selected>' : '>' ) . $userlist[$j]['cal_fullname'] . '</option>';
+           ? '" selected>' : '">' ) . $userlist[$j]['cal_fullname'] . '</option>';
       }
       echo '
                 </select>';
@@ -950,19 +930,18 @@ if ( $can_edit ) {
                 <select name="' . $extra_name . $isMultiple . '"'
          . $multiselect . '>';
         for ( $j = 0; $j < $extra_arg1cnt; $j++ ) {
-          echo '
-                  <option value="' . $extra_arg1[$j] . '" ';
+          echo $option . $extra_arg1[$j];
 
           if ( ! empty ( $extras[$extra_name]['cal_data'] ) ) {
             if ( $extra_arg2 == 0 &&
               $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
-              echo ' selected>';
+              echo '" selected>';
             else
             if ( $extra_arg2 > 0 &&
               in_array ( $extra_arg1[$j], $extraSelectArr ) )
-              echo ' selected>';
+              echo '" selected>';
           } else
-            echo ( $j == 0 ? ' selected>' : '>' );
+            echo ( $j == 0 ? '" selected>' : '">' );
 
           echo $extra_arg1[$j] . '</option>';
         }
@@ -995,7 +974,7 @@ if ( $can_edit ) {
     <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
     <fieldset>
       <legend>' . translate ( 'Participants' ) . '</legend>' ) . '
-      <table border="0" summary="" cellpadding="10">';
+      <table cellpadding="10" summary="">';
 
   // Only ask for participants if we are multi-user.
   $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
@@ -1018,40 +997,31 @@ if ( $can_edit ) {
       $q = ( ! empty ( $selectedStatus[$l] ) && $selectedStatus[$l] == 'W'
         ? ' (?)' : '' );
       $size++;
-      $users .= '
-              <option value="' . $l . '">' . $f . '</option>';
+      $users .= $option . $l . '">' . $f . '</option>';
 
       if ( $id > 0 ) {
         if ( ! empty ( $participants[$l] ) ) {
-          $myusers .= '
-            <option value="' . $l . '">'
-            . $f . $q . '</option>';
+          $myusers .= $option . $l . '">' . $f . $q . '</option>';
         }
       } else {
         if ( ! empty ( $defusers ) && ! empty ( $userlist[$l] ) ) {
           // Default selection of participants was in the URL.
-          $myusers .= '
-            <option value="' . $l . '">'
-            . $f . $q . '</option>';
+          $myusers .= $option . $l . '">' . $f . $q . '</option>';
         }
 
         if ( ! empty ( $user ) && ! empty ( $userlist[$l] ) ) {
           // Default selection of participants was in the URL.
-          $myusers .= '
-            <option value="' . $l . '">'
-            . $f . $q . '</option>';
+          $myusers .= $option . $l . '">' . $f . $q . '</option>';
         }
         if ( ( $l == $login && ! $is_assistant && ! $is_nonuser_admin ) ||
             ( ! empty ( $user ) && $l == $user ) )
            // Default selection of participants is logged in user.
-          $myusers .= ' <option value="' . $l . '">' . $f . '</option>';
+          $myusers .= $option . $l . '">' . $f . '</option>';
 
         if ( $l == '__public__' && !
           empty ( $PUBLIC_ACCESS_DEFAULT_SELECTED ) &&
             $PUBLIC_ACCESS_DEFAULT_SELECTED == 'Y' )
-         $myusers .= '
-           <option value="' . $l . '">'
-           . $f . $q . '</option>';
+         $myusers .= $option . $l . '">' . $f . $q . '</option>';
       }
     }
 
@@ -1064,27 +1034,21 @@ if ( $can_edit ) {
         $q = ( ! empty ( $selectedStatus[$l] ) && $selectedStatus[$l] == 'W'
           ? ' (?)' : '' );
 
-        $nonusers .= '
-              <option value="' . $l . '"> ' . $n . '</option>';
+        $nonusers .= $option . $l . '">' . $n . '</option>';
 
         if ( ! empty ( $participants[$l] ) ) {
-          $myusers .= '
-              <option value="' . $l . '">'
-                . $n . $q .'</option>';
+          $myusers .= $option . $l . '">' . $n . $q . '</option>';
 
         } else if ( ! empty ( $user ) && ! empty ( $mynonusers[$l] ) ) {
           // Default selection of participants was in the URL.
-          $myusers .= '
-              <option value="' . $l . '">'
-                . $n . $q . '</option>';
+          $myusers .= $option . $l . '">' . $n . $q . '</option>';
         }
       }
     }
 
     if ( $GROUPS_ENABLED == 'Y' ) {
       for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
-        $grouplist .= '
-          <option value="' . $groups[$i]['cal_group_id'] . '">'
+        $grouplist .= $option . $groups[$i]['cal_group_id'] . '">'
             . $groups[$i]['cal_name'] . '</option>';
      }
 
@@ -1179,33 +1143,33 @@ if ( $can_edit ) {
     <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
     <fieldset>
       <legend>' . translate ( 'Repeat' ) . '</legend>' ) . '
-      <table border="0" cellspacing="0" cellpadding="3" summary="">
+      <table cellpadding="3" summary="">
         <tr>
           <td class="tooltip" title="' . tooltip ( 'repeat-type-help' )
      . '"><label for="rpttype">' . translate( 'Type_' ) . '</label></td>
           <td colspan="2">
             <select name="rpt_type" id="rpttype" '
-     . 'onchange="rpttype_handler(); rpttype_weekly()">
-              <option value="none"' . ( strcmp ( $rpt_type, 'none' ) == 0
-      ? ' selected>' : '>' ) . translate( 'None' ) . '</option>
-              <option value="daily"' . ( strcmp ( $rpt_type, 'daily' ) == 0
-      ? ' selected>' : '>' ) . translate( 'Daily' ) . '</option>
-              <option value="weekly"' . ( strcmp ( $rpt_type, 'weekly' ) == 0
-      ? ' selected>' : '>' ) . translate( 'Weekly' ) . '</option>
-              <option value="monthlyByDay"'
+     . 'onchange="rpttype_handler(); rpttype_weekly()">'
+     . $option . 'none"' . ( strcmp( $rpt_type, 'none' ) == 0
+      ? ' selected>' : '>' ) . translate( 'None' ) . '</option>'
+     . $option . 'daily"' . ( strcmp( $rpt_type, 'daily' ) == 0
+      ? ' selected>' : '>' ) . translate( 'Daily' ) . '</option>'
+    . $option . 'weekly"' . ( strcmp( $rpt_type, 'weekly' ) == 0
+      ? ' selected>' : '>' ) . translate( 'Weekly' ) . '</option>'
+    . $option . 'monthlyByDay"'
      . ( strcmp( $rpt_type, 'monthlyByDay' ) == 0 ? ' selected>' : '>' )
     // translate ( 'Monthly' ) translate ( 'by day' ) translate ( 'by date' )
     // translate ( 'by position' )
-    . translate( 'Monthly (by day)' ) . '</option>
-              <option value="monthlyByDate"'
+    . translate( 'Monthly (by day)' ) . '</option>'
+    . $option . 'monthlyByDate"'
      . ( strcmp( $rpt_type, 'monthlyByDate' ) == 0 ? ' selected>' : '>' )
-     . translate( 'Monthly (by date)' ) . '</option>
-              <option value="monthlyBySetPos"'
+     . translate( 'Monthly (by date)' ) . '</option>'
+     . $option . 'monthlyBySetPos"'
      . ( strcmp( $rpt_type, 'monthlyBySetPos' ) == 0 ? ' selected>' : '>' )
-     . translate( 'Monthly (by position)' ) . '</option>
-              <option value="yearly"' . ( strcmp ( $rpt_type, 'yearly' ) == 0
-      ? ' selected>' : '>' ) . translate( 'Yearly' ) . '</option>
-              <option value="manual"'
+     . translate( 'Monthly (by position)' ) . '</option>'
+     . $option . 'yearly"' . ( strcmp( $rpt_type, 'yearly' ) == 0
+      ? ' selected>' : '>' ) . translate( 'Yearly' ) . '</option>'
+      . $option . 'manual"'
      . ( strcmp( $rpt_type, 'manual' ) == 0 ? ' selected>' : '>' )
      . translate( 'Manual' ) . '</option>
             </select>&nbsp;&nbsp;&nbsp;<label id="rpt_mode"><input '
@@ -1259,9 +1223,8 @@ if ( $can_edit ) {
             <span id="rptwkst">
               <select name="wkst">';
     for ( $i = 0; $i < 7; $i++ ) {
-      echo '
-                <option value="' . $byday_names[$i] . '" '
-       . ( $wkst == $byday_names[$i] ? ' selected>' : '>' )
+      echo $option . $byday_names[$i]
+       . ( $wkst == $byday_names[$i] ? '" selected>' : '">' )
        . translate( $byday_names[$i] ) . '</option>';
     }
     echo '
@@ -1283,8 +1246,8 @@ if ( $can_edit ) {
      . ( empty( $bymonthdayStr ) ? '' : $bymonthdayStr ) . '">
             <input type="hidden" name="bysetposList" value="'
      . ( empty( $bysetposStr ) ? '' : $bysetposStr ) . '">
-            <table class="byxxx" cellpadding="2" cellspacing="2" '
-     . 'border="1" summary="">
+            <table class="byxxx" cellspacing="2" border="1" cellpadding="2" '
+     . 'summary="">
               <tr>
                 <td></td>';
     // Display byday extended selection.
@@ -1309,8 +1272,8 @@ if ( $can_edit ) {
       echo '
                 <td><input type="checkbox" name="bydayAll[]" id="'
        . $byday_names[$rpt_byday_mod] . '" value="'
-       . "$byday_names[$rpt_byday_mod]\""
-       . ( in_array( $byday_names[$rpt_byday_mod], $byday ) ? ' checked' : '' )
+       . $byday_names[$rpt_byday_mod]
+       . ( in_array( $byday_names[$rpt_byday_mod], $byday ) ? '" checked' : '"' )
        . '></td>';
     }
     echo '
@@ -1354,7 +1317,7 @@ if ( $can_edit ) {
           <td class="tooltip">' . translate ( 'ByMonth' ) . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bymonth selection. */ . '
-            <table cellpadding="5" cellspacing="0" summary="">
+            <table cellpadding="5" summary="">
               <tr>';
     for ( $rpt_month = 1; $rpt_month < 13; $rpt_month++ ) {
       echo '
@@ -1381,8 +1344,7 @@ if ( $can_edit ) {
      . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bysetpos selection. */ . '
-            <table class="byxxx" cellpadding="2" cellspacing="0" '
-     . 'border="1" summary="">
+            <table class="byxxx" border="1" cellpadding="2" summary="">
               <tr>
                 <td></td>';
     for ( $rpt_bysetpos_label = 1; $rpt_bysetpos_label < 11;
@@ -1423,8 +1385,7 @@ if ( $can_edit ) {
      . ':&nbsp;</td>
         <td colspan="2" class="boxall">'
     /* Display bymonthday extended selection. */ . '
-          <table class="byxxx" cellpadding="2" cellspacing="0" '
-     . 'border="1" summary="">
+          <table class="byxxx" border="1" cellpadding="2" summary="">
             <tr>
               <td></td>';
     for ( $rpt_bymonthday_label = 1; $rpt_bymonthday_label < 11;
@@ -1460,15 +1421,13 @@ if ( $can_edit ) {
     $excepts = '';
     $exceptcnt = count ( $exceptions );
     for ( $i = 0; $i < $exceptcnt; $i++ ) {
-      $excepts .= '
-                  <option value="-' . $exceptions[$i] . '">-' . $exceptions[$i]
+      $excepts .= $option . '-' . $exceptions[$i] . '">-' . $exceptions[$i]
        . '</option>';
     }
     // Populate Repeat Inclusions data for later use
     $includecnt = count ( $inclusions );
     for ( $i = 0; $i < $includecnt; $i++ ) {
-      $excepts .= '
-                  <option value="+' . $inclusions[$i] . '">+' . $inclusions[$i]
+      $excepts .= $option . '+' . $inclusions[$i] . '">+' . $inclusions[$i]
        . '</option>';
     }
 
@@ -1492,7 +1451,7 @@ if ( $can_edit ) {
         <td class="tooltip"><label>' . translate( 'Exclusions' ) . '/<br>'
      . translate( 'Inclusions' ) . '</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
-          <table border="0" width="250px" summary="">
+          <table width="250px" summary="">
             <tr>
               <td colspan="2">'
      . date_selection ( 'except_', $rpt_end_date ? $rpt_end_date : $cal_date )
@@ -1557,7 +1516,7 @@ if ( $can_edit ) {
     <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
     <fieldset>
       <legend>' . translate ( 'Reminders' ) . '</legend>' ) . '
-      <table border="0" cellspacing="0" cellpadding="3" summary="">
+      <table cellpadding="3" summary="">
         <thead>
           <tr>
             <td class="tooltip"><label>' . translate ( 'Send Reminder' )

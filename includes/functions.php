@@ -289,8 +289,8 @@ function calc_time_slot ( $time, $round_down = false ) {
  */
 function check_for_conflicts ( $dates, $duration, $eventstart,
   $participants, $login, $id ) {
-  global $LIMIT_APPTS, $LIMIT_APPTS_NUMBER, $repeated_events,
-  $single_user, $single_user_login, $jumpdate;
+  global $jumpdate, $LIMIT_APPTS, $LIMIT_APPTS_NUMBER, $repeated_events,
+  $single_user, $single_user_login;
 
   $datecnt = count ( $dates );
   if ( ! $datecnt )
@@ -561,8 +561,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
 
   $ret = <<<EOT
     <br>
-    <table align="center" class="matrixd" style="width:'80%';" cellspacing="0"
-      cellpadding="0">
+    <table align="center" class="matrixd" style="width:'80%';">
       <tr>
         <td class="matrix" colspan="{$cols}"></td>
       </tr>
@@ -779,7 +778,7 @@ function datesel_Print ( $datename, $ymdValue='' )
  * @return string  HTML for the selection box.
  */
 function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
-  global $selectStr;
+  global $option, $selectStr;
   $trigger_str = ( empty( $trigger ) ? '' : $prefix . 'datechanged();' );
   $onchange = ( empty ( $trigger_str ) ? '' : 'onchange="$trigger_str"' );
   if ( strlen ( $date ) != 8 )
@@ -795,9 +794,8 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
       <select name="' . $prefix . 'day" id="' . $prefix . 'day"'
    . $onchange . '>';
   for ( $i = 1; $i < 32; $i++ ) {
-    $dd_select .= '
-        <option value="' . "$i\""
-     . ( $i == substr( $date, 6, 2 ) ? ' selected>' : '>' ) . $i . '</option>';
+    $dd_select .= $option . $i
+     . ( $i == substr( $date, 6, 2 ) ? '" selected>' : '">' ) . $i . '</option>';
   }
   $dd_select .= '
       </select>';
@@ -808,14 +806,12 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   $mm_select = '
       <select name="' . $prefix . 'month"' . $onchange . '>';
   for ( $i = 1; $i < 13; $i++ ) {
-    $month_select .= '
-        <option value="' . "$i\""
-     . ( $i == substr( $date, 4, 2 ) ? ' selected>' : '>' )
+    $month_select .= $option . $i
+     . ( $i == substr( $date, 4, 2 ) ? '" selected>' : '">' )
      . month_name( $i - 1, 'M' ) . '</option>';
 
-    $mm_select .= '
-        <option value="' . "$i\""
-     . ( $i == substr( $date, 4, 2 ) ? ' selected>' : '>' )
+    $mm_select .= $option . $i
+     . ( $i == substr( $date, 4, 2 ) ? '" selected>' : '">' )
      . $i . '</option>';
   }
   $month_select .= '
@@ -826,8 +822,7 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
       <select name="' . $prefix . 'year"' . $onchange . '>';
   for ( $i = -10; $i < $num_years; $i++ ) {
     $y = $thisyear + $i;
-    $yyyy_select .= '
-        <option value="' . $y . ( $y == $thisyear ? '" selected>' : '">' )
+    $yyyy_select .= $option . $y . ( $y == $thisyear ? '" selected>' : '">' )
      . $y . '</option>';
   }
   $yyyy_select .= '
@@ -910,20 +905,12 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
   // If they have not set a preference yet...
   if ( $DATE_FORMAT == '' || $DATE_FORMAT == 'LANGUAGE_DEFINED' )
     $DATE_FORMAT = translate ( '__month__ __dd__, __yyyy__' );
-// If $DATE_FORMAT == 'LANGUAGE_DEFINED', "else" will never run.
-// But, not sure what it was supposed to do.
-  else if ( $DATE_FORMAT == 'LANGUAGE_DEFINED' &&
-    $forceTranslate && $format != '' && translation_exists ( $format ) ) {
+  else if ( $forceTranslate && $format != '' && translation_exists( $format ) ) {
     $format = translate ( $format );
   }
 
-  if ( empty ( $format ) )
-    $format = $DATE_FORMAT;
-
-  $weekday = ( $short_months ? 'D' : 'l' );
-
-  $ret = ( $show_weekday ? weekday  . ', ' : '' )
-   . str_replace( '__dd__', 'd', $format );
+  $ret = ( $show_weekday ? ( $short_months ? 'D, ' : 'l, ' ) : '' )
+   . str_replace( '__dd__', 'd', ( empty( $format ) ? $DATE_FORMAT : $format ) );
   $ret = str_replace( '__j__', 'j', $ret );
   $ret = str_replace( '__mm__', 'm', $ret );
   $ret = str_replace( '__mon__', 'M', $ret );
@@ -1055,9 +1042,9 @@ function display_admin_link ( $break = true ) {
  */
 function display_month( $thismonth, $thisyear, $demo = false,
   $enableDblClick = false ) {
-  global $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS, $DISPLAY_WEEKNUMBER,
-  $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
-  $readonly, $today, $user, $WEEKENDBG, $WEEK_START;
+  global $dblClickAdd, $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS,
+  $DISPLAY_WEEKNUMBER, $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS,
+  $PUBLIC_ACCESS_CAN_ADD, $readonly, $today, $user, $WEEKENDBG, $WEEK_START;
 
   $ret = '';
 
@@ -1082,9 +1069,9 @@ function display_month( $thismonth, $thisyear, $demo = false,
   $help = ( $can_add ? 'title="' . $dblClickAdd . '"' : '' );
 
   $ret .= '
-    <table ' . $help . ' class="main" cellspacing="0" cellpadding="0"'
+    <table ' . $help . ' class="main"'
    . ' id="month_main" summary="calendar for ' . month_name( $thismonth - 1 )
-   . ' ' . $thisyear . '">
+   . ' ' . translate( $thisyear, false, 'N' ) . '">
       <tr>' . ( $DISPLAY_WEEKNUMBER == 'Y' ? '
         <th class="empty"></th>' : '' );
 
@@ -1449,7 +1436,7 @@ function display_small_tasks ( $cat_id ) {
     ( empty ( $task_filter ) ? '' : $task_filter ), $cat_id, true );
   $row_cnt = 1;
   $task_html = '
-    <table class="minitask" cellspacing="0" cellpadding="2" summary="task list">
+    <table class="minitask" cellpadding="2" summary="task list">
       <tr class="header">
         <th colspan="6">' . translate ( 'TASKS' ) . '</th>
         <th align="right" colspan="2"><a href="edit_entry.php?' . $u_url
@@ -1706,7 +1693,7 @@ function do_redirect ( $url ) {
   if ( empty ( $SERVER_URL ) && ! empty ( $c ) ) {
     $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
       "WHERE cal_setting = 'SERVER_URL'" );
-    if ( $res ) { 
+    if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         $SERVER_URL = $row[0];
       }
@@ -2543,8 +2530,8 @@ function get_entries ( $date, $get_unapproved = true ) {
  * @return array  Array of Groups.
  */
 function get_groups ( $user ) {
-  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS,
-  $is_nonuser_admin, $is_assistant, $login;
+  global $GROUPS_ENABLED, $is_assistant, $is_nonuser_admin, $login,
+  $USER_SEES_ONLY_HIS_GROUPS;
 
   if ( empty( $GROUPS_ENABLED ) || $GROUPS_ENABLED != 'Y' )
     return false;
@@ -4203,8 +4190,7 @@ function load_user_preferences ( $guest = '' ) {
       if ( $setting == 'LANGUAGE' )
         $lang_found = true;
 
-      if ( $ALLOW_COLOR_CUSTOMIZATION == 'N' &&
-        isset ( $colors[$setting] ) )
+      if ( $ALLOW_COLOR_CUSTOMIZATION == 'N' && isset( $colors[$setting] ) )
         continue;
 
       // $sys_setting = 'sys_' . $setting;
@@ -4233,23 +4219,16 @@ function load_user_preferences ( $guest = '' ) {
     $views = array();
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
-      $url = 'view_';
-      if ( $row[2] == 'E' )
-        $url .= 'r.php?';
-      elseif ( $row[2] == 'S' )
-        $url .= 't.php?';
-      elseif ( $row[2] == 'T' )
-        $url .= 't.php?';
-      else
-        $url .= strtolower ( $row[2] ) . '.php?';
-
       $v = array (
         'cal_view_id' => $row[0],
         'cal_name' => $row[1],
         'cal_view_type' => $row[2],
         'cal_is_global' => $row[3],
         'cal_owner' => $row[4],
-        'url' => $url . 'id=' . $row[0]
+        'url' => 'view_' . ( $row[2] == 'E'
+          ? 'r' : ( $row[2] == 'S' || $row[2] == 'T'
+            ? 't' : strtolower( $row[2] ) ) )
+         . '.php?id=' . $row[0]
         );
       $views[] = $v;
     }
@@ -4287,7 +4266,6 @@ function load_user_preferences ( $guest = '' ) {
   $is_nonuser_admin = ( $user
     ? user_is_nonuser_admin ( $tmp_login, $user ) : false );
   // if ( $is_nonuser_admin ) load_nonuser_preferences ($user);
-
 }
 
 /**
@@ -4399,7 +4377,7 @@ function nonuser_load_variables ( $login, $prefix ) {
  * @param int    $cat_id  Category id that should be pre-selected
  */
 function print_category_menu ( $form, $date = '', $cat_id = '' ) {
-  global $cat_Str, $categories, $login, $user, $CATEGORIES_ENABLED;
+  global $categories, $CATEGORIES_ENABLED, $cat_Str, $login, $option, $user;
 
   if ( empty( $CATEGORIES_ENABLED ) || $CATEGORIES_ENABLED == 'N' )
     return false;
@@ -4420,8 +4398,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
     foreach ( $categories as $K => $V ) {
       if ( ( ! empty ( $user ) && strlen ( $user ) ? $user : $login ) ||
           empty ( $categories[$K]['cat_owner'] ) ) {
-        $ret .= '
-        <option value="' . $K;
+        $ret .= $option . $K;
         if ( $cat_id == $K ) {
           $printerStr .= '
     <span id="cat">' . $cat_Str . ' ' . $categories[$K]['cat_name'] . '</span>';
@@ -4456,12 +4433,12 @@ function print_checkbox( $vals, $id = '' ) {
     $setting  = $s[$vals[0]];
     $variable = 'admin_' . $vals[0];
   }
-  
+
   if( $SCRIPT == 'pref.php' ) {
     $setting  = $prefarray[$vals[0]];
     $variable = 'pref_' . $vals[0];
   }
-    
+
   $hidden = ( strpos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
     <input type="hidden" name="' . $variable . '" value="N">' );
 
@@ -4486,7 +4463,7 @@ function print_checkbox( $vals, $id = '' ) {
  * @return string  HTML for the color selector.
  */
 function print_color_input_html ( $varname, $title, $varval = '' ) {
-  global $prefarray, $s, $selectStr, $SCRIPT;
+  global $prefarray, $s, $SCRIPT, $selectStr;
 
   $name = '';
   $setting = $varval;
@@ -4503,7 +4480,6 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
 
   return '
             <p><label for="' . $name . '">' . $title
-   . ( $title == '' ? '' : ':' )
    . '</label><input type="text" name="' . $name . '" id="' . $name
    . '" size="7" maxlength="7" value="' . $setting
    . '" onchange="updateColor( this, \'' . $varname
@@ -4672,7 +4648,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
     }
   }
   $ret .= '
-    <table class="main glance" cellspacing="0" summary="">'
+    <table class="main glance" summary="">'
    . ( empty ( $hour_arr[9999] ) ? '' : '
       <tr>
         <th class="empty">&nbsp;</th>
@@ -4941,10 +4917,10 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
     $variable = 'pref_' . $variable;
   }
   $onclickStr = ( empty( $onclick ) ? '' : ' onclick="' . $onclick . '()"' );
-  foreach ( $vals as $K => $V ) {
+  foreach ( $vals as $k => $v ) {
     $ret .= '
-      <input type="radio" name="' . $variable . '" value="' . $K
-     . ( $setting == $K ? '" checked' : '"' ) . $onclickStr . '>' . $V;
+      <input type="radio" name="' . $variable . '" value="' . $k
+     . ( $setting == $k ? '" checked' : '"' ) . $onclickstr . '>' . $v . $sep;
   }
   return $ret;
 }
@@ -4974,6 +4950,8 @@ function print_success ( $saved ) {
  * @return string $ret  HTML for select control.
 */
 function print_timezone_select_html ( $prefix, $tz ) {
+  global $option;
+
   $ret = '';
   // We may be using php 4.x on Windows, so we can't use set_env() to
   // adjust the user's TIMEZONE. We'll need to reply on the old fashioned
@@ -4992,8 +4970,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
     $text_add = translate ( 'Add N hours to' );
     $text_sub = translate ( 'Subtract N hours from' );
     for ( $i = -12; $i <= 13; $i++ ) {
-      $ret .= '
-          <option value="WebCalendar/' . $i
+      $ret .= $option . 'WebCalendar/' . $i
        . ( $tz_value == $i ? '" selected>' : '">' ) . ( $i < 0
         ? str_replace ( 'N', - $i, $text_sub ) : ( $i == 0
           ? translate ( 'same as' ) : str_replace ( 'N', $i, $text_add ) ) )
@@ -5024,8 +5001,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
     $ret = '
         <select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
     for ( $i = 0, $cnt = count ( $timezones ); $i < $cnt; $i++ ) {
-      $ret .= '
-          <option value="' . $timezones[$i]
+      $ret .= $option . $timezones[$i]
        . ( $timezones[$i] == $tz ? '" selected>' : '">' )
        . unhtmlentities ( $timezones[$i] ) . '</option>';
     }
@@ -5057,8 +5033,8 @@ function print_timezone_select_html ( $prefix, $tz ) {
 function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   $is_task = false ) {
   global $db_connection_info, $jumpdate, $layers, $login, $max_until,
-  $PUBLIC_ACCESS_DEFAULT_VISIBLE, $result, $thismonth, $thisyear;
-  global $OVERRIDE_PUBLIC, $OVERRIDE_PUBLIC_TEXT;
+  $OVERRIDE_PUBLIC, $OVERRIDE_PUBLIC_TEXT, $PUBLIC_ACCESS_DEFAULT_VISIBLE,
+  $result, $thismonth, $thisyear;
 
   // New multiple categories requires some checking to see if this cat_id is
   // valid for this cal_id. It could be done with nested SQL,
@@ -5516,8 +5492,8 @@ function send_http_login() {
  *               to the browser.
  */
 function send_no_cache_header() {
-  header ( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
   header ( 'Last-Modified: ' . gmdate ( 'D, d M Y H:i:s' ) . ' GMT' );
+  header ( 'Expires: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
   header ( 'Cache-Control: no-store, no-cache, must-revalidate' );
   header ( 'Cache-Control: post-check=0, pre-check=0', false );
   header ( 'Pragma: no-cache' );
@@ -6270,17 +6246,14 @@ function site_extras_for_popup ( $id ) {
 }
 
 // Print a box with an error message and a nice error icon.
-function print_error_box ( $msg )
-{
-  echo '<div class="warningBox">' .
-    '<table border="0"><tr><td valign="middle">' .
-    '<img src="images/warning.png" width="40" height="40" align="middle" alt="' .
-    translate('Error') . '"></td><td valign="middle">' .
-    translate('icons dir is read-only') . "</td></tr></table></div>\n";
+function print_error_box( $msg ) {
+  echo '<div class="warningBox"><table><tr><td><img src="images/warning.png" alt="'
+   . translate( 'Error' ) . '"></td><td>' . translate( 'icons dir is read-only' )
+   . "</td></tr></table></div>\n";
 }
 
-// Convert an HTML color ('#ff00ff') into an array of red/green/blue values
-// of 0 to 255.
+// Convert an HTML color ('#ff00ff')
+// into an array of red/green/blue values of 0 to 255.
 function html2rgb($color)
 {
   if ($color[0] == '#')

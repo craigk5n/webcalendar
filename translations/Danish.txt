@@ -118,82 +118,82 @@ System Settings: System indstillinger
 Help: Hjælp
 app-name-help: Angiver navnet på kalenderen. Dette fremgår i browserens titellinie for samtlige sider samt på login-siden.
 Application Name: Kalender navn
-server-url-help: Angiver basis URL'en for applikationen. Denne bliver inkluderet når der udsendes email påmindelser og notifikationer.
+server_url_help: Angiver basis URL'en for applikationen. Denne bliver inkluderet når der udsendes email påmindelser og notifikationer.
 Server URL: =
 language-help: Angiver hvilket sprog, der skal bruges.
 Language: Sprog
 Your browser default language is: Din browsers standardsprog er
 None: Alle
 Preview: Vis
-custom-script-help: Tilføjelse af brugertilpasset Javascript eller stylesheet tekst som indsættes HTML "head" sektionen på hver side
-Custom script/stylesheet: Bruger tilpasset script/stylesheet
-custom-header-help: Tilføjelse af brugertilpasset HTML kode som indsættes i toppen af hver side
+custom_script_help: Tilføjelse af brugertilpasset Javascript eller stylesheet tekst som indsættes HTML "head" sektionen på hver side
+Custom script: Bruger tilpasset script/stylesheet
+custom_header_help: Tilføjelse af brugertilpasset HTML kode som indsættes i toppen af hver side
 Custom header: Brugertilpasset sidehoved
-custom-trailer-help: Tilføjelse af brugertilpasset HTML kode som indsættes i bunden af hver side
+custom_trailer_help: Tilføjelse af brugertilpasset HTML kode som indsættes i bunden af hver side
 Custom trailer: Brugertilpasset sidefod
-tz-help: Angiver hvor mange timer tiden skal justeres fra serverens tid til den lokale tid.
-date-format-help: Angiver det foretrukne dato format.
+tz_help: Angiver hvor mange timer tiden skal justeres fra serverens tid til den lokale tid.
+date_format_help: Angiver det foretrukne dato format.
 Date format: Dato format
-display-week-starts-on: Hvorvidt ugen starter mandag eller søndag.
+display_week_starts_on: Hvorvidt ugen starter mandag eller søndag.
 Week starts on: Ugen starter på
-time-format-help: Skal tiden vises pr 12 eller 24-timer.
+time_format_help: Skal tiden vises pr 12 eller 24-timer.
 Time format: Tidsformat
 12 hour: 12 timer
 24 hour: 24 timer
-timed-evt-len-help: Angiver hvordan længden af en tidsbetemt aftale skal indtastes.
+timed_evt_len_help: Angiver hvordan længden af en tidsbetemt aftale skal indtastes.
 Specify timed event length by: Angiv længde af tidsbestemt aftale ved
 Duration: Varighed
 End Time: Sluttid
-work-hours-help: Specificer den daglige arbejdstid.
+work_hours_help: Specificer den daglige arbejdstid.
 Work hours: Arbejdstid
 From: Fra
 to: til
-preferred-view-help: Angiver den foretrukne opstilling (dag, uge, måned eller år).
+preferred_view_help: Angiver den foretrukne opstilling (dag, uge, måned eller år).
 Preferred view: Foretrukken opstilling
-fonts-help: Angiver en liste over skrifttyper systemet kan benytte (f.eks. "Arial, Helvetica")
+fonts_help: Angiver en liste over skrifttyper systemet kan benytte (f.eks. "Arial, Helvetica")
 Fonts: Skrifttyper
-display-weekends-help: Inkluderer weekender i uge-visning
-display-week-number-help: Angiver hvorvidt ugenumre skal vises i uge-visninger.
+display_weekends_help: Inkluderer weekender i uge-visning
+display_weeknumber_help: Angiver hvorvidt ugenumre skal vises i uge-visninger.
 Display week number: Vis ugenummer
-display-desc-print-day-help: Vis aftalebeskivelser i printervenlig version af dags-visning
+display_desc_print_day_help: Vis aftalebeskivelser i printervenlig version af dags-visning
 desc in printer day view: Vis beskrivelse i printervenlig dags-visning
-yearly-shows-events-help: På års-visning, brug fed skrift for dage med aftaler
+display_bold_days_in_year_help: På års-visning, brug fed skrift for dage med aftaler
 bold events month/year views: Brug fed skrift for dage med aftaler på måneds- og årsvisning
-allow-view-add-help: A '+' ikon bliver inkluderet i visninger. Dette gøre brugere i stand til hurtigt at tilføje nye aftaler til andre brugeres kalendere.
+display_add_link_in_views_help: A '+' ikon bliver inkluderet i visninger. Dette gøre brugere i stand til hurtigt at tilføje nye aftaler til andre brugeres kalendere.
 Include add event link in views: Inkluder "Tilføj aftale" i visninger
-allow-view-other-help: Angiver om en bruger må se i andre brugeres kalendere
+allow_view_other_help: Angiver om en bruger må se i andre brugeres kalendere
 may view others cals: Tillad visning af andres kalendere
-require-approvals-help: Når dette er slået til skal brugere acceptere en aftale før den vises i deres kalender (pånær hvis "Vis ikke-accepterede aftaler" er slået til. Bemærk at hvis denne indstilling slåes fra, vil det samtidig slå acceptering i den offentlige kalender fra (hvis dette er slået til).
+require_approvals_help: Når dette er slået til skal brugere acceptere en aftale før den vises i deres kalender (pånær hvis "Vis ikke-accepterede aftaler" er slået til. Bemærk at hvis denne indstilling slåes fra, vil det samtidig slå acceptering i den offentlige kalender fra (hvis dette er slået til).
 Require event approvals: Kræv acceptering af aftaler
-display-unapproved-help: Specificér her hvorvidt din kalender skal vise ikke-accepterede aftaler.
+display_unapproved_help: Specificér her hvorvidt din kalender skal vise ikke-accepterede aftaler.
 Display unapproved: Vis ikke-accepterede aftaler
-conflict-check-help: Kontroller aftale-konflikter (2 aftaler der er oprettet til samme tid for den samme person). Hvis denne sættes til "ja" kan du stadig oprettet flere aftaler på samme tid hvis du godkender advarslen. HVis denne sættes til "nej" bliver der ikke kontrolleret efter aftale konflikter. Du bør sætte denne til "ja" så der bliver tjekket efter konflikter.
+allow_conflicts_help: Kontroller aftale-konflikter (2 aftaler der er oprettet til samme tid for den samme person). Hvis denne sættes til "ja" kan du stadig oprettet flere aftaler på samme tid hvis du godkender advarslen. HVis denne sættes til "nej" bliver der ikke kontrolleret efter aftale konflikter. Du bør sætte denne til "ja" så der bliver tjekket efter konflikter.
 Check for conflicts: Check for aftale-konflikter
 Yes: Ja
 No: Nej
-conflict-months-help: Hvis konflikt-kontrol er slået til ("Kontroller aftale konflikter"), angiver dette hvor mange måneder frem der skal tjekkes for konflikter. Hvis det tager lang tid at tilføje nye aftaler, så sæt denne værdi ned.
+conflict_months_help: Hvis konflikt-kontrol er slået til ("Kontroller aftale konflikter"), angiver dette hvor mange måneder frem der skal tjekkes for konflikter. Hvis det tager lang tid at tilføje nye aftaler, så sæt denne værdi ned.
 Conflict checking months: Kontroller månedskonflikter
-conflict-check-override-help: Gør det muligt for brugere at ignorere konflikter og oprette flere aftaler på samme tidspunkt.
+allow_conflict_override_help: Gør det muligt for brugere at ignorere konflikter og oprette flere aftaler på samme tidspunkt.
 may users override conflicts: Tillad brugere at ignorere aftale-konflikter
-limit-appts-help: Gør det muligt for en administrator at sætte begrænsning på antallet af aftaler en bruger må have pr. dag.
+limit_appts_help: Gør det muligt for en administrator at sætte begrænsning på antallet af aftaler en bruger må have pr. dag.
 Limit timed events per day: Begræns antal aftaler pr. dag
-limit-appts-number-help: Angiver det maksimale antal aftaler en bruger kan have pr. dag.
+limit_appts_number_help: Angiver det maksimale antal aftaler en bruger kan have pr. dag.
 Maximum timed events per day: Maximum antal aftaler pr. dag
-disable-priority-field-help: Hvis der vælges "ja" fjernes feltet "Prioritet" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
+disable_priority_field_help: Hvis der vælges "ja" fjernes feltet "Prioritet" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
 Disable Priority field: Fjern Prioritets-felt
-disable-access-field-help: Hvis der vælges "ja" fjernes feltet "Adgang" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
+disable_access_field_help: Hvis der vælges "ja" fjernes feltet "Adgang" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
 Disable Access field: Fjern Adgangs-felt
-disable-participants-field-help: Hvis der vælges "ja" fjernes feltet "Deltagere" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
+disable_participants_field_help: Hvis der vælges "ja" fjernes feltet "Deltagere" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
 Disable Participants field: Fjern Deltagere-felt
-disable-repeating-field-help: Hvis der vælges "ja" fjernes feltet "Gentagelse" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
+disable_repeating_field_help: Hvis der vælges "ja" fjernes feltet "Gentagelse" fra sider med aftale-informationer. Dette giver en mere simpel brugerflade for begyndere.
 Disable Repeating field: Fjern Gentagelses-felt
-allow-html-description-help: Vis slået til, kan brugere indtaste HTML i aftalebeskrivelsen. Hvis ikke slået til, vil HTML-kode vises som alm. tekst. Advarsel: Hvis dette slåes til kan bruger linke til billeder på andre websider
+allow_html_description_help: Vis slået til, kan brugere indtaste HTML i aftalebeskrivelsen. Hvis ikke slået til, vil HTML-kode vises som alm. tekst. Advarsel: Hvis dette slåes til kan bruger linke til billeder på andre websider
 Allow HTML in Description: Tillad HTML i beskrivelsen
-popup-includes-siteextras-help: Hvis slået til, vis brugertilpasset aftale opsætning fra site_extras.php i aftale popup-besked.
+site_extras_in_popup_help: Hvis slået til, vis brugertilpasset aftale opsætning fra site_extras.php i aftale popup-besked.
 Display Site Extras in popup: Vis Site Extras i popup-besked
-remember-last-login-help: Når slået til bliver brugerens sidste login automatisk udfyldt på login-siden (ikke password) og brugerens indstillinger bliver automatisk hentet (inkl. deres foretrukne farver og sprogvalg).
+remember_last_login_help: Når slået til bliver brugerens sidste login automatisk udfyldt på login-siden (ikke password) og brugerens indstillinger bliver automatisk hentet (inkl. deres foretrukne farver og sprogvalg).
 Remember last login: Husk sidste login
-allow-public-access-help: Når slået til kan kalenderen bruges som en offentlig kalender der ikke kræver login.
+allow_public_access_help: Når slået til kan kalenderen bruges som en offentlig kalender der ikke kræver login.
 Allow public access: Tillad offentlig adgang
 public-access-default-visible: Aftaler i den offentlige kalender vil automatisk optræde i alle brugeres kalendere
 Public visible by default: Offentlig adgang vises altid
@@ -233,15 +233,15 @@ Email enabled: Email aktiveret
 email-default-sender: Angiver email-adressen der skal benyttes når der afsendes påmindelser.
 Default sender address: Standard afsender-adresse
 Default user settings: Standard brugerindstillinger
-email-event-reminders-help: Angiver om der skal sendes påmindelser
+email_reminder_help: Angiver om der skal sendes påmindelser
 Event reminders: Aftale-påmindelser
-email-event-added: Angiver om der skal sendes en email notofikation når en aftale tilføjes din kalender.
+email_event_added: Angiver om der skal sendes en email notofikation når en aftale tilføjes din kalender.
 Events added to my calendar: Aftaler tilføjet til min kalender
-email-event-updated: Angiver om der skal sendes en email notifikation når en aftale opdateres i din kalender.
+email_event_added: Angiver om der skal sendes en email notifikation når en aftale opdateres i din kalender.
 Events updated on my calendar: Aftaler opdateret i min kalender
-email-event-deleted: Angiver om der skal sendes en email notifikation når en aftale fjernes fra din kalender.
+email_event_deleted: Angiver om der skal sendes en email notifikation når en aftale fjernes fra din kalender.
 Events removed from my calendar: Aftaler fjernet fra min kalender
-email-event-rejected: Angiver om der skal sendes en email notifikation når en deltager afviser en aftale der findes i din kalender.
+email_event_rejected: Angiver om der skal sendes en email notifikation når en deltager afviser en aftale der findes i din kalender.
 Event rejected by participant: Aftale afvist af deltager
 Allow user to customize colors: Tillad bruger at ændre farver
 Enable gradient images for BG: Slå farvegraduering til på baggrundsfarver

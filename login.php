@@ -13,7 +13,7 @@ if ( ! empty ( $dummy ) ) {
 unset ( $_SESSION['webcal_login'] );
 unset ( $_SESSION['webcalendar_session'] );
 
- foreach( array(
+foreach( array(
     'access',
     'config',
     'dbi4php',
@@ -146,45 +146,32 @@ else {
     setcookie( 'webcalendar_session', '', 0, substr( $cookie_path, 0, -1 ) );
 }
 ob_start();
-echo send_doctype ( $appStr ) . ( $logout ? '' : '
-    <script>
-    // Error check login/password.
-      function valid_form ( form ) {
-        if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
-          alert ( \''
-   . translate ( 'must enter login/password', true ) . '\' );
-          return false;
-        }
-        return true;
-      }
-      function myOnLoad() {
-        document.login_form.login.focus();' . ( empty ( $login ) ? '' : '
-        document.login_form.login.select();' ) . ( empty ( $error ) ? '' : '
-        alert ( \'' . $error . '\' );' ) . '
-      }
-    </script>' ) . '
+setcookie( 'err', $error, 180 );
+setcookie( 'login', $login, 180 );
+echo send_doctype ( $appStr ) . '
     <link href="css_cacher.php?login=__public__" rel="stylesheet">
-    <link href="includes/css/styles.css" rel="stylesheet">'
+    <link href="includes/css/styles.css" rel="stylesheet">'. ( $logout ? '' : '
+    <script src="includes/js/base.js"></script>' )
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
   ? load_template ( $login, 'S' ) : '' ) . '
   </head>
-  <body id="login"' . ( $logout ? '' : ' onload="myOnLoad();"' ) . '>'
+  <body id="login">'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y'
   ? load_template ( $login, 'H' ) : '' ) . '
     <h2>' . $appStr . '</h2>' . ( empty ( $error ) ? '' : '
-    <span style="color:#f00; font-weight:bold;">'
+    <span class="error">'
    . str_replace ( 'XXX', $error, translate ( 'Error XXX' ) ) . '</span>' )
  . '<br>' . ( $logout ? '
     <p>' . translate( 'You logged out' ) . '</p><br><br>
-    <a class="nav" href="login.php' . ( empty ( $return_path )
-    ? '' : '?return_path=' . htmlentities ( $return_path ) ) . '">'
-   . translate( 'Login' ) . '</a><br><br><br>' : '
-    <form name="login_form" id="login" action="login.php" method="post" '
-   . ' onsubmit="return valid_form( this )">' . ( empty ( $return_path ) ? '' : '
+    <a href="login.php' . ( empty( $return_path )
+    ? '' : '?return_path=' . htmlentities ( $return_path ) ) . '" class="nav">'
+ . translate( 'Login' ) . '</a><br><br><br>' : '
+    <form action="login.php" method="post" name="login_form" id="login">'
+ . ( empty( $return_path ) ? '' : '
       <input type="hidden" name="return_path" value="'
      . htmlentities( $return_path ) . '">' ) . '
       <table align="center" cellspacing="10" cellpadding="10" summary="">
@@ -198,7 +185,7 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
         <tr>
           <td class="alignright"><label for="password">'
    . translate ( 'Password' ) . '</label></td>
-          <td><input name="password" id="password" type="password" size="15" '
+          <td><input type="password" id="password" name="password" size="15" '
    . 'maxlength="30" tabindex="2"></td>
         </tr>
         <tr>
@@ -242,8 +229,7 @@ if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
 
   if ( ! empty ( $valid_ip ) )
     echo '
-    <b><a href="register.php">'
-     . translate ( 'Not registered' ) . '</a></b><br>';
+    <a href="register.php">' . translate( 'Not registered' ) . '</a><br>';
 }
 echo '
      <span class="cookies">' . translate( 'cookies-note' ) . '</span><br>

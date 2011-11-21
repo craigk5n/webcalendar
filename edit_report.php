@@ -3,8 +3,8 @@
  * Presents a HTML form to add or edit a report.
  *
  * Input Parameters:
- * - <var>report_id</var> (optional) - the report id of the report to edit. If
- *   blank, user is adding a new report.
+ * - <var>report_id</var> (optional) - the report id of the report to edit.
+ *   If blank, user is adding a new report.
  * - <var>public</var> (optional) - If set to '1' and user is an admin user,
  *   then we are creating a report for the public user.
  *
@@ -113,11 +113,11 @@ $page_options = array ( 'days', 'report_id' );
 /**
  * Generate clickable option lists.
  */
-function print_options ( $textarea, $option ) {
+function print_options( $textarea, $optn ) {
   // Use ASCII values for ${}.
   echo '
-            <a onclick="addMe( \'' . $textarea . '\', \'${' . $option
-   . '}\' )">${' . $option . '}</a><br>';
+            <a onclick="addMe( \'' . $textarea . '\', \'${' . $optn
+   . '}\' )">${' . $optn . '}</a><br>';
 }
 
 if ( empty ( $error ) && $report_id >= 0 ) {
@@ -211,9 +211,8 @@ echo '
     <form action="edit_report_handler.php" method="post" name="reportform">'
  . ( $updating_public ? '
       <input type="hidden" name="public" value="1">' : '' )
- . ( ! $adding_report ? '
-      <input type="hidden" name="report_id" value="'
-   . $report_id . '">' : '' ) . '
+ . ( $adding_report ? '' : '
+      <input type="hidden" name="report_id" value="' . $report_id . '">' ) . '
       <table summary="">
         <tr>
           <td><label for="rpt_name">' . translate ( 'Report name' )
@@ -227,13 +226,12 @@ if ( $show_participants ) {
         <tr>
           <td><label for="rpt_user">' . translate( 'User_' ) . '</label></td>
           <td>
-            <select name="report_user" id="rpt_user" size="1">
-              <option value=""' . ( empty( $report_user ) ? ' selected>' : '>' )
+            <select id="report_user" name="rpt_user" size="1">'
+   . $option . ( empty( $report_user ) ? '" selected>' : '">' )
    . translate( 'Current User' ) . '</option>';
 
   for ( $i = 0; $i < $userlistcnt; $i++ ) {
-    echo '
-              <option value="' . $userlist[$i]['cal_login']
+    echo $option . $userlist[$i]['cal_login']
      . ( ! empty ( $report_user ) && $report_user == $userlist[$i]['cal_login']
       ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname'] . '</option>';
   }
@@ -289,8 +287,7 @@ echo ( $is_admin ? '
             <select name="time_range" id="rpt_time_range">';
 
 while ( list ( $num, $descr ) = each ( $ranges ) ) {
-  echo '
-              <option value="' . $num
+  echo $option . $num
    . ( $report_time_range == $num ? '" selected>' : '">' ) . $descr . '</option>';
 }
 
@@ -304,13 +301,11 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
         <tr>
           <td><label for="rpt_cat_id">' . $cat_Str . '</label></td>
           <td>
-            <select name="cat_id" id="rpt_cat_id">
-              <option value="">' . $noneStr . '</option>';
+            <select id="cat_id" name="rpt_cat_id">'
+   . $option . '">' . $noneStr . '</option>';
 
   while ( list ( $K, $V ) = each ( $categories ) ) {
-    echo '
-              <option value="' . $K
-     . ( $report_cat_id == $K ? '" selected>' : '">' )
+    echo $option . $K . ( $report_cat_id == $K ? '" selected>' : '">' )
      . $V['cat_name'] . '</option>';
   }
 
@@ -335,8 +330,8 @@ echo '
  . htmlentities ( $page_template, ENT_COMPAT, $charset ) . '</textarea></td>
           <td class="aligntop cursoradd" colspan="2">';
 
-foreach ( $page_options as $option ) {
-  print_options ( 'page_template', $option );
+foreach ( $page_options as $optn ) {
+  print_options( 'page_template', $optn );
 }
 
 echo '
@@ -349,8 +344,8 @@ echo '
  . htmlentities ( $day_template, ENT_COMPAT, $charset ) . '</textarea></td>
           <td class="aligntop cursoradd" colspan="2">';
 
-foreach ( $day_options as $option ) {
-  print_options ( 'day_template', $option );
+foreach ( $day_options as $optn ) {
+  print_options( 'day_template', $optn );
 }
 
 echo '
@@ -363,8 +358,8 @@ echo '
  . htmlentities ( $event_template, ENT_COMPAT, $charset ) . '</textarea></td>
           <td class="aligntop cursoradd" width="150px">';
 
-foreach ( $event_options as $option ) {
-  print_options ( 'event_template', $option );
+foreach ( $event_options as $optn ) {
+  print_options( 'event_template', $optn );
 }
 
 echo '
@@ -387,44 +382,13 @@ echo '
           <td colspan="4">
             <input type="submit" value="' . $saveStr . '">'
  . ( $adding_report ? '' : '&nbsp;&nbsp;
-            <input type="submit" name="delete" value="'
-   . $deleteStr . '" onclick="return confirm( \''
-   . translate( 'really delete report' )
-   . '\');">' );
-
-ob_end_flush();
-
-?>
+            <input type="submit" id="edRepDelete" name="delete" value="'
+   . $deleteStr . '">' ) . '
           </td>
         </tr>
       </table>
-    </form>
-    <script >
-<!-- <![CDATA[
-    // This script borrowed from phpMyAdmin with some mofification.
-      function addMe ( areaname, myValue ) {
-        var textarea = document.reportform.elements[areaname];
-        // IE support.
-        if ( document.selection ) {
-          textarea.focus();
-          sel = document.selection.createRange();
-          sel.text = myValue;
-        }
-        // MOZILLA/NETSCAPE support.
-        else if ( textarea.selectionStart || textarea.selectionStart == '0' ) {
-          var
-            startPos = textarea.selectionStart,
-            endPos = textarea.selectionEnd;
+    </form>' . print_trailer();
 
-          textarea.value = textarea.value.substring ( 0, startPos ) + myValue
-            + textarea.value.substring ( endPos, textarea.value.length );
-        }
-        else {
-          textarea.value += myValue;
-        }
-      }
-//]]> -->
-    </script>
-<?php echo print_trailer();
+ob_end_flush();
 
 ?>

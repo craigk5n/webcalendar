@@ -137,7 +137,7 @@ System options: システムオプション
 app-name-help: ログインページとすべてのページのブラウザータイトルバーの中で使用するアプリケーションの名前を指定します。The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: アプリケーション名
 Translated Name: ウェブカレンダー
-server-url-help: アプリケーションのベース URL を指定します。これはリマインダーと通知の電子メールの送信にも含まれます。
+server_url_help: アプリケーションのベース URL を指定します。これはリマインダーと通知の電子メールの送信にも含まれます。
 Server URL: サーバー URL
 home-url-help: アプリケーションのホーム URL を指定します。これは絶対と相対で指定できます。
 Home URL: ホーム URL
@@ -152,106 +152,106 @@ AVAILABLE THEMES: 利用可能なテーマ
 None: なし
 Preview: プレビュー
 Site customization: サイトカスタマイズ
-custom-script-help: 各ページのHTMLで<head>に挿入するカスタム Javascript かスタイルシートテキストの入力を許可します。
-Custom script/stylesheet: カスタムスクリプト/スタイルシート
-custom-header-help: 各ページの上に HTML すにペットを含むことを許可します。
+custom_script_help: 各ページのHTMLで<head>に挿入するカスタム Javascript かスタイルシートテキストの入力を許可します。
+Custom script: カスタムスクリプト/スタイルシート
+custom_header_help: 各ページの上に HTML すにペットを含むことを許可します。
 Custom header: カスタムヘッダー
-custom-trailer-help: 各ページの最後に HTML すにペットを含むことを許可します。
+custom_trailer_help: 各ページの最後に HTML すにペットを含むことを許可します。
 Custom trailer: カスタムフッター
-enable-external-header-help: カスタムフッターを外部ファイルから読み込むことを許可します。
+allow_external_header_help: カスタムフッターを外部ファイルから読み込むことを許可します。
 externals head/script/trail: ヘッダー/スクリプト/フッターの外部ファイルを許可する
 may user override head/trail: ヘッダー/フッターをユーザーが上書きすることを許可する
 Date and Time: 日付と時間
-tz-help: サーバーの時間から現地の時間までの時間を調節すべきかどうかを指定します。
+tz_help: サーバーの時間から現地の時間までの時間を調節すべきかどうかを指定します。
 Server TZ Selection: サーバーのタイムゾーン選択
-display-general-use-gmt-help: 有効にした場合、GMT として共通の日付・時間を使って表示します
+display_general_use_gmt_help: 有効にした場合、GMT として共通の日付・時間を使って表示します
 GMT Common Use Date/Times: GMT として共通の日付・時間を使って表示する
-date-format-help: 実行する日付の書式を指定します。
+date_format_help: 実行する日付の書式を指定します。
 Date format: 日付の書式
 Small Task Date: 小さなタスクの日付
-display-week-starts-on: 週が日曜日か月曜日でスタートするかどうか指定します。月曜が指定されれば、週番号は ISO 週番号になるでしょう。
+display_week_starts_on: 週が日曜日か月曜日でスタートするかどうか指定します。月曜が指定されれば、週番号は ISO 週番号になるでしょう。
 Week starts on: 週の始まり
 Weekend starts on: 週末の開始
-time-format-help: 使用する時間の書式を指定します:<br><i>12 時下:</i> 例えば時間表示は「3am」「8:30pm」などです。<br><i>24 時間:</i> 例えば時間表示は「300」「2030」などです。
+time_format_help: 使用する時間の書式を指定します:<br><i>12 時下:</i> 例えば時間表示は「3am」「8:30pm」などです。<br><i>24 時間:</i> 例えば時間表示は「300」「2030」などです。
 Time format: 時間の書式
 12 hour: 12時間
 24 hour: 24時間
-timed-evt-len-help: 時限イベントを決定するための入力方法を指定します。
+timed_evt_len_help: 時限イベントを決定するための入力方法を指定します。
 Specify timed event length by: イベント時間の長さの指定
 Duration: 期間
 End Time: 終了時間
-work-hours-help: 日間表示の表示での時間範囲を指定します。
+work_hours_help: 日間表示の表示での時間範囲を指定します。
 Work hours: 勤務時間
 From: .
 to: 〜
 Appearance: 外観
-preferred-view-help: 標準の表示を指定します (日間、週間、月間もしくは年間)
+preferred_view_help: 標準の表示を指定します (日間、週間、月間もしくは年間)
 Preferred view: 優先する表示
 Allow top menu: トップメニューを許可する
-menu-themes-help: トップメニューのスタイルと色を設定します
+menu_themes_help: トップメニューのスタイルと色を設定します
 Menu theme: メニューテーマ
-fonts-help: 使用するシステムフォントの一覧を指定します("Arial, Helvetica"のように)
+fonts_help: 使用するシステムフォントの一覧を指定します("Arial, Helvetica"のように)
 Fonts: フォント
-display-sm_month-help: 有効の場合、月間表示で小さな月表示をします。
+display_sm_month_help: 有効の場合、月間表示で小さな月表示をします。
 Display small months: 小さい月表示
-display-weekends-help: 週間表示で週末の表示を含みます。
+display_weekends_help: 週間表示で週末の表示を含みます。
 Display weekends: 週表示
-display-long-daynames-help: 有効にすると、長い日付名で表示します。
+display_long_days_help: 有効にすると、長い日付名で表示します。
 Display long day names: 長い日付名で表示する
-display-alldays-help: 月間表示で前月と翌月のすべてのセルを表示します。
+display_all_days_in_month_help: 月間表示で前月と翌月のすべてのセルを表示します。
 Display all days in month view: 月間ビューですべての日を表示する
-display-week-number-help: 週番号(1-52)を月間表示と週間表示で表示するかどうか指定します。
+display_weeknumber_help: 週番号(1-52)を月間表示と週間表示で表示するかどうか指定します。
 Display week number: 週番号の表示
-display-desc-print-day-help: 印刷用の日間表示でイベントの説明を含みます。
+display_desc_print_day_help: 印刷用の日間表示でイベントの説明を含みます。
 desc in printer day view: 印刷用の日間ビューで説明を表示する
-yearly-shows-events-help: 年間表意jで強調フォントでイベントを含む日を表示します。
+display_bold_days_in_year_help: 年間表意jで強調フォントでイベントを含む日を表示します。
 bold events month/year views: 年間ビューと月間表示でイベント日を強調表示する
 Display 00 minutes always: 常に「00 分」を表示する
 Include add event link in views: ビュー内で追加したイベントを含む
 Display Lunar Phases in month view: 月間ビューで月齢を表示する
 Restrictions: 制限
-allow-view-other-help: ユーザーが他のユーザーのカレンダーを見てもいいかどうか指定します。
+allow_view_other_help: ユーザーが他のユーザーのカレンダーを見てもいいかどうか指定します。
 may view others cals: 他のユーザーのカレンダーを見ることを許可する
 Require event approvals: イベントの承認を必要とする
-display-unapproved-help: 承認が済んでいないイベントをカレンダーに表示するかどうか指定します。<br> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+display_unapproved_help: 承認が済んでいないイベントをカレンダーに表示するかどうか指定します。<br> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
 Display unapproved: 未承認イベントの表示
-conflict-check-help: イベントの衝突を確認します(同一人物の同じ時間で予定される 2 つのイベントスケジュール)これを「はい」に設定した場合、警告を確認した後に、同時に 2 つのイベントを予定することができるでしょう。これを「いいえ」に設定した場合、衝突の確認をしないでしょう。したがっておそらく衝突の発生を確認するためにこれを「はい」に設定したいでしょう。
+allow_conflicts_help: イベントの衝突を確認します(同一人物の同じ時間で予定される 2 つのイベントスケジュール)これを「はい」に設定した場合、警告を確認した後に、同時に 2 つのイベントを予定することができるでしょう。これを「いいえ」に設定した場合、衝突の確認をしないでしょう。したがっておそらく衝突の発生を確認するためにこれを「はい」に設定したいでしょう。
 Check for conflicts: イベント衝突を確認する
 Yes: はい
 No: いいえ
-conflict-check-override-help: イベントの衝突を無視し、同時に 2 つ以上のイベントを予定することをユーザーに許可します。
+allow_conflict_override_help: イベントの衝突を無視し、同時に 2 つ以上のイベントを予定することをユーザーに許可します。
 may users override conflicts: ユーザーの衝突の上書きを許可する
-limit-appts-help: ひとりのユーザーが任意の 1 日するができる予約数をシステム管理者がシステム全体に渡る制限を設定することを可能にします。
+limit_appts_help: ひとりのユーザーが任意の 1 日するができる予約数をシステム管理者がシステム全体に渡る制限を設定することを可能にします。
 Limit timed events per day: 1 日あたりの設定できるイベント数を制限する
-limit-appts-number-help: ユーザーが 1 日で指定できる、時限イベントの最大数を指定します。
+limit_appts_number_help: ユーザーが 1 日で指定できる、時限イベントの最大数を指定します。
 Maximum timed events per day: 1 日あたりの設定できる最大イベント
 Disable Cross-Day Events: 日をまたぐイベントを無効にする
-disable-location-field-help: 「はい」にすることで、イベント情報のページから項目「場所」を削除します。
+disable_location_field_help: 「はい」にすることで、イベント情報のページから項目「場所」を削除します。
 Disable Location field: 場所の項目を無効にする
 Disable URL field: URL の項目を無効にする
-disable-priority-field-help: 「はい」を選択することで項目「優先度」をイベント情報ページから削除し、初心者向けのシンプルなインターフェースを提供します。
+disable_priority_field_help: 「はい」を選択することで項目「優先度」をイベント情報ページから削除し、初心者向けのシンプルなインターフェースを提供します。
 Disable Priority field: 優先度フィールド無効
-disable-access-field-help: 「はい」を選択することで項目「アクセス」をイベント情報ページから削除し、初心者向けのシンプルなインターフェースを提供します。
+disable_access_field_help: 「はい」を選択することで項目「アクセス」をイベント情報ページから削除し、初心者向けのシンプルなインターフェースを提供します。
 Disable Access field: アクセス項目無効
 Disable Participants field: 参加者フィールド無効
-disable-repeating-field-help: 「はい」を選択した場合、イベントの追加時に「繰り返し」フィールドを削除するでしょう。
+disable_repeating_field_help: 「はい」を選択した場合、イベントの追加時に「繰り返し」フィールドを削除するでしょう。
 Disable Repeating field: 繰り返しフィールド無効
-allow-html-description-help: 有効にした場合、ユーザーはイベントの項目「説明」で HTML を入力できます。有効でない場合、HTML タグは普通のテキストに見えるよう取り除かれます。警告: この機能を有効にすることにより、他のサイトの画像参照をユーザーに許可するでしょう。
+allow_html_description_help: 有効にした場合、ユーザーはイベントの項目「説明」で HTML を入力できます。有効でない場合、HTML タグは普通のテキストに見えるよう取り除かれます。警告: この機能を有効にすることにより、他のサイトの画像参照をユーザーに許可するでしょう。
 Allow HTML in Description: 説明で HTML を許可する
 Popups: ポップアップ
-disable-popups-help: カレンダー表示からポップアップを無効にします。
+disable_popups_help: カレンダー表示からポップアップを無効にします。
 Disable Pop-Ups: ポップアップを無効にする
 Display Site Extras in popup: 外部サイトはポップアップ表示
-popup-includes-participants-help: 有効にした場合、イベントポップアップで参加者を表示します。
+participants_in_popup_help: 有効にした場合、イベントポップアップで参加者を表示します。
 Display Participants in popup: ポップアップで参加者を表示する
 Miscellaneous: その他
 Remember last login: 最終ログインを覚える
-summary_length-help: カレンダー表示での短い説明の最大長です。
+summary_length_help: カレンダー表示での短い説明の最大長です。
 Brief Description Length: 短い説明の長さ
 User Sort Order: ユーザーのソート基準
 Lastname, Firstname: 苗字 名前(ラストネーム，ファーストネーム)
 Firstname, Lastname: 名前 苗字(ファーストネーム，ラストネーム)
-allow-public-access-help: 有効の場合、カレンダーは、ユーザーにログインすることを要求せｚ読取専用公開カレンダーとして使用することができます。
+allow_public_access_help: 有効の場合、カレンダーは、ユーザーにログインすることを要求せｚ読取専用公開カレンダーとして使用することができます。
 Allow public access: 公開アクセス許可
 public-access-default-visible: 公開カレンダーのイベントは、自動的にすべてのユーザーのカレンダーで表示するでしょう。
 Public visible by default: 標準で公開アクセスが見える
@@ -289,7 +289,7 @@ categories-enabled-help: 有効にするとイベントカテゴリーをサポートします。
 Categories enabled: カテゴリー有効
 icon_upload-enabled-help: 有効の場合、ユーザーはカテゴリーアイコンをアップロードできます。
 Category Icon Upload enabled: カテゴリーアイコンのアップロードは有効
-display-tasks-help: 月間と日間カレンダーに小さなタスクウィンドウを表示します。
+display_tasks_help: 月間と日間カレンダーに小さなタスクウィンドウを表示します。
 Display small task list: 小さなタスク一覧の表示
 Display tasks in Calendars: カレンダーにタスクの表示
 allow-external-users-help: これは、非カレンダーユーザーがイベント参加者として記録されることを許可します。
@@ -302,10 +302,10 @@ use-blacklist-help: IPアドレスに基づいたWebCalendar機能へのアクセス制限
 Restrict self-reg to blacklist: 自己登録の制限をブラックリストへ
 allow-self-reg-full-help: 新規のユーザがオン・ライン自己登録手続を完了することを許可します。
 send self-reg emails: 自己登録の電子メール通知を使う
-allow-attachment-help: ユーザーがイベントへの添付ファイルの追加をすることを許可します。
+allow_attachment_help: ユーザーがイベントへの添付ファイルの追加をすることを許可します。
 Allow event attachments: イベントへのファイル添付を許可する
 owner can attach if enabled: 有効にした場合、管理者と所有者は常に添付を追加できます。
-allow-comments-help: ユーザーがイベントにコメントを追加することを許可します。
+allow_comments_help: ユーザーがイベントにコメントを追加することを許可します。
 Allow event comments: イベントへのコメントを許可する
 owner can comment if enabled: 有効にした場合、管理者と所有者は常にコメントを追加できます。
 email-enabled-help: すべてのリマインダーと通知の電子メールを送信を切り替えます。サーバーが適切にメールの送信設定がされていない場合「いいえ」に設定します。
@@ -329,15 +329,15 @@ email-format: HTML か通常のテキストメッセージかの設定を指定します
 Email format preference: 電子メールの書式設定
 HTML: =
 Plain Text: 通常のテキスト
-email-include-ics: 電子メールメッセージに iCalendar ICS ファイルを含む
+email_attach_ics: 電子メールメッセージに iCalendar ICS ファイルを含む
 Include iCalendar attachments: iCalendar 添付を含む
-email-event-reminders-help: イベントのお知らせを送るべきかどうか指定します。
+email_reminder_help: イベントのお知らせを送るべきかどうか指定します。
 Event reminders: イベントリマインダー
-email-event-added: カレンダーにイベントが追加された場合、電子メール通知を送るかどうか指定します。
+email_event_added: カレンダーにイベントが追加された場合、電子メール通知を送るかどうか指定します。
 Events added to my calendar: 自分のカレンダーにイベントの追加
-email-event-updated: カレンダーのイベントが更新された場合、電子メール通知を送るかどうか指定します。
+email_event_added: カレンダーのイベントが更新された場合、電子メール通知を送るかどうか指定します。
 Events updated on my calendar: 自分のカレンダーのイベントの更新
-email-event-deleted: カレンダーのイベントが削除された場合、電子メール通知を送るかどうか指定します。
+email_event_deleted: カレンダーのイベントが削除された場合、電子メール通知を送るかどうか指定します。
 Events removed from my calendar: 自分のカレンダーからイベントの削除
 Event rejected by participant: 参加者のイベント拒否
 Event that I create: 自分の作成するイベント
