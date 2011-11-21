@@ -4,8 +4,6 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 // Leave the "// translate(phrase)" in the *.js files
 // to give a better indication of where they actually get used.
 
-global $GROUPS_ENABLED, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
-
 $tmp1 = $tmp2 = $tmpm = $tmpsm = $tmpw = $tmpsw = '';
 
 foreach( array( 'SU','MO','TU','WE','TH','FR','SA' ) as $b ) {
@@ -15,28 +13,24 @@ foreach( array( 'SU','MO','TU','WE','TH','FR','SA' ) as $b ) {
 for ( $i = 0; $i < 12; $i++ ) {
   $tmpm .= "'" . month_name( $i ) . "',";
   $tmpsm .= "'" . month_name( $i, 'M' ) . "',";
-}
-for ( $i = 0; $i < 7; $i++ ) {
-  $tmpw = "'" . weekday_name( $i ) . "',";
-  $tmpsw =  "'" . weekday_name( $i, 'D' ) . "',";
-}
 
-echo 'var months = [' . $tmpm . '],
-  shortMonths = [' . $tmpsm . '],
-  weekdays = [' . $tmpw . '],
-  shortWeekdays = [' . $tmpsw . '],
+  if ( $i < 7 ) {
+    $tmpw .= "'" . weekday_name( $i ) . "',";
+    $tmpsw .=  "'" . weekday_name( $i, 'D' ) . "',";
+  }
+}
+echo 'var today= new Date();    // Examples using "js/dateformat.js".
+isDST    = today.format(\'I\'); // Is user in daylight saving time?
+tzOffSet = today.format(\'O\'); // User offset from UTC.
 
-  allowCustomColors= "' . $ALLOW_COLOR_CUSTOMIZATION . '",
-  bydayLabels      = [' . $tmp1 . '],
-  bydayTrans       = [' . $tmp2 . '],
-  dateFmt          = ' . $DATE_FORMAT . ',
-  timeFmt          = ' . $GLOBALS['TIME_FORMAT'] . ',
-  evtEditTabs      = "' .
-    ( empty ( $GLOBALS['EVENT_EDIT_TABS'] ) ? 'Y' : $GLOBALS['EVENT_EDIT_TABS'] ) . '",
-  groupsEnabled    = "' . $GROUPS_ENABLED . '",
-  workEndHour      = "' . $WORK_DAY_END_HOUR . '",
-  workStartHour    = "' . $WORK_DAY_START_HOUR . '",
-  xlate            = [];
+months       = [' . $tmpm . '],
+shortMonths  = [' . $tmpsm . '],
+weekdays     = [' . $tmpw . '],
+shortWeekdays= [' . $tmpsw . '],
+
+bydayLabels= [' . $tmp1 . '],
+bydayTrans = [' . $tmp2 . '],
+xlate      = [];
 
 xlate[\'Categories\']         = \'' . translate( 'Categories', true ) . '\';
 xlate[\'Hide\']               = \'' . translate( 'Hide', true ) . '\';
@@ -50,6 +44,7 @@ xlate[\'changeEntryDatetime\']= \'' . translate( 'Change entry date/time', true 
 xlate[\'colorInvalid\']       = \'' . translate( 'Invalid color', true ) . '\';
 xlate[\'dbNameStr\']          = \'' . translate( 'Database Name', true ) . '\';
 xlate[\'endServerURL\']       = \'' . translate( 'Server URL must end with /.', true ) . '\';
+xlate[\'enterLoginPwd\']      = \'' . translate( 'must enter login/password', true ) . '\';
 xlate[\'errorXXX\']           = \'' . translate( 'Error XXX', true ) . ' \';
 xlate[\'error\']              = \'' . translate( 'Error', true ) . ' \';
 xlate[\'formatColorRGB\']     = \'' . translate( 'Color format should be RGB', true ) . '\';
@@ -82,6 +77,7 @@ xlate[\'noYMDXXX\']           = \'' . translate( 'No such object for YMD XXX', t
 xlate[\'notFind\']            = \'' . translate( 'Could not find XXX.', true ) . '\';
 xlate[\'passwordsNoMatch\']   = \'' . translate( 'passwords not identical', true ) . '\';
 xlate[\'reallyDeleteEntry\']  = \'' . translate( 'really delete entry', true ) . '\';
+xlate[\'reallyDeleteReport\'] = \'' . translate( 'really delete report', true ) . '\';
 xlate[\'rejThisEntry\']       = \'' . translate( 'Reject this entry?', true ) . '\';
 xlate[\'reqServerURL\']       = \'' . translate( 'Server URL is required.', true ) . '\';
 xlate[\'timeB4WorkHours\']    = \'' . translate( 'time before work hours', true ) . '\';
