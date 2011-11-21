@@ -1,9 +1,9 @@
 <?php // $Id$
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-// NOTE: This file is included within the print_trailer function found in
-// includes/init.php. If you add a global variable somewhere in this file, be
-// sure to declare it global in the print_trailer function or use $GLOBALS[].
+// NOTE: This file is included by the print_trailer function in "includes/init.php".
+// If you add a global variable somewhere in this file,
+// be sure to declare it global in the print_trailer function or use $GLOBALS[].
 $tret = '';
 if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   $tret .= '
@@ -238,9 +238,9 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   // Manage Calendar links.
   if ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' )
     $admincals = get_nonuser_cals ( $login );
-  // Make sure they have access to either month/week/day view. If they do not,
-  // then we cannot create a URL that shows just the boss' events. So, we
-  // would not include any of the "manage calendar of" links.
+  // Make sure they have access to at least one of month/week/day view.
+  // If they do not, then we cannot create a URL that shows just the boss' events.
+  // So, we would not include any of the "manage calendar of" links.
   $have_boss_url = true;
   if ( ! access_can_access_function ( ACCESS_MONTH ) && !
       access_can_access_function ( ACCESS_WEEK ) && !
