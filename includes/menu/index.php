@@ -655,7 +655,7 @@ if ( ! empty ( $menuExtras[7] ) )
 $loginStr = translate ( 'Login' );
 
 $menuHtml .= '
-      <table class="ThemeMenubar" cellspacing="0" summary="">
+      <table class="ThemeMenubar" summary="">
         <tr>
           <td class="ThemeMenubackgr"><div id="myMenuID"></div></td>'
  . ( $MENU_DATE_TOP == 'Y' && $menuConfig['MENU_DATE_TOP'] ? '
