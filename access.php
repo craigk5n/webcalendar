@@ -280,8 +280,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
       if( $userlist[$i]['cal_login'] != $guser )
         echo $option . $userlist[$i]['cal_login']
          . ( ! empty( $otheruser ) && $otheruser == $userlist[$i]['cal_login']
-          ? '" selected>' : '">' )
-         . $userlist[$i]['cal_fullname'] . '</option>';
+          ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname'] . '</option>';
     }
     echo $goStr;
   }
@@ -291,26 +290,21 @@ if( ! empty( $otheruser ) ) {
   if( $allow_view_other ) {
     $typeStr = translate( 'Type' );
     echo '
-    <form action="access.php" method="post" name="EditOther">
+    <form action="access.php" method="post" id="EditOther" name="EditOther">
       <input type="hidden" name="guser" value="' . $guser . '">
-      <input type="hidden" name="otheruser" value="' . $otheruser . '"><br>
-      <table cellpadding="5" cellspacing="0" summary="">
+      <input type="hidden" name="otheruser" value="' . $otheruser . '">
+      <table summary="">
         <tbody>
           <tr>
-            <th class="boxtop boxbottom boxleft" width='
-     . ( $guser == '__public__'
+            <th width=' . ( $guser == '__public__'
       ? '"60%" align="center">' . translate( 'Calendar' ) . '</th>
-            <th class="boxtop boxbottom" width="20%">' . $typeStr . '</th>
-            <th class="boxtop boxright boxbottom" colspan="3" width="20%">'
-       . translate( 'View Event' )
+            <th width="20%">' . $typeStr . '</th>
+            <th colspan="3" width="20%">' . translate( 'View Event' )
       : '"25%">' . $otheruser_fullname . '</th>
-            <th class="boxtop boxbottom" width="15%">' . $typeStr . '</th>
-            <th width="15%" colspan="3" class="boxtop boxbottom">'
-       . translate( 'View' ) . '</th>
-            <th width="15%" colspan="3" class="boxtop boxbottom">'
-       . $editStr . '</th>
-            <th width="15%" colspan="3" class="boxtop boxright boxbottom">'
-       . translate( 'Approve/Reject' ) ) . '</th>
+            <th width="15%">' . $typeStr . '</th>
+            <th width="15%" colspan="3">' . translate( 'View' ) . '</th>
+            <th width="15%" colspan="3">' . $editStr . '</th>
+            <th width="15%" colspan="3">' . translate( 'Approve/Reject' ) ) . '</th>
           </tr>';
 
     $access_type = array(
@@ -319,7 +313,7 @@ if( ! empty( $otheruser ) ) {
       translate( 'Tasks' ),
       '',
       translate( 'Journals' )
-      );
+    );
 
     for( $j = 1; $j < 5; $j++ ) {
       // No reason to do the math 100 times.
@@ -331,17 +325,17 @@ if( ! empty( $otheruser ) ) {
       echo '
           <tr>
             <td class="' . ( $j > 3 ? ' boxbottom' : '' )
-       . 'boxleft leftpadded"><input type="checkbox" value="Y" name=';
+       . 'boxleft leftpadded"><input type="checkbox" value="Y" name="';
       if( $j == 1 )
-        echo '"invite"'
+        echo 'invite"'
          . ( ! empty( $op['invite'] ) && $op['invite'] == 'N'
            ? '>' : ' checked>' ) . translate( 'Can Invite' );
       elseif( $j == 2 )
-        echo '"email"'
+        echo 'email"'
          . ( ! empty( $op['email'] ) && $op['email'] == 'N'
            ? '>' : ' checked>' ) . translate( 'Can Email' );
       else {
-        echo '"time" id="enAll"'
+        echo 'time" id="enAll"'
          . ( ! empty( $op['time'] ) && $op['time'] == 'Y' ? ' checked>' : '>' )
          . translate( 'Can See Time Only' );
         $bottomedge = 'boxbottom';
@@ -401,14 +395,9 @@ if( ! empty( $otheruser ) ) {
      . translate( 'Clear All' ) . '">
             </td>
             <td colspan="9" class="boxright">
-              <table border="0" align="center" cellpadding="5" '
-     . 'cellspacing="2" summary="">
-                <tr>
-                  <td class="pub">' . translate( 'Public' ) . '</td>
-                  <td class="conf">' . translate( 'Confidential' ) . '</td>
-                  <td class="priv">' . translate( 'Private' ) . '</td>
-                </tr>
-              </table>
+              <span class="pub">' . translate( 'Public' ) . '</span>
+              <span class="conf">' . translate( 'Confidential' ) . '</span>
+              <span class="priv">' . translate( 'Private' ) . '</span>
             </td>
           </tr>';
   }
