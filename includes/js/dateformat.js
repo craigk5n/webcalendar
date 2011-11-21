@@ -107,7 +107,7 @@ Date.prototype.format = function (f) {
       break;
     case 'd':
       var d = this.getDate();
-      res += (d < 10 ? '0' + d : d);
+      res += (d > 9 ? d : '0' + d);
       break;
     case 'D':
       res += this.getDayShort();
@@ -138,7 +138,7 @@ Date.prototype.format = function (f) {
       break;
     case 'm':
       var m = this.getMonth() + 1;
-      res += (m < 10 ? '0' + m : m);
+      res += (m > 9 ? m : '0' + m);
       break;
     case 'M':
       res += this.getMonthShort();
@@ -157,7 +157,7 @@ Date.prototype.format = function (f) {
       break;
     case 'y':
       var y = this.getFullYear().toString().substr(3);
-      res += (y < 10 ? '0' + y : y);
+      res += (y > 9 ? y : '0' + y);
       break;
     case 'a':
       res += (this.getHours() > 11 ? 'pm' : 'am');
@@ -189,20 +189,13 @@ Date.prototype.format = function (f) {
       res += (s > 9 ? s : '0' + s);
       break;
     case 'O':
-      var m = this.getTimezoneOffset();
-      var s = (m < 0 ? '+' : '-');
-      m = Math.abs(m);
-      var h = Math.floor(m / 60);
-      m = m % 60;
-      res += s + (h > 9 ? h : '0' + h) + (m > 9 ? m : '0' + m);
-      break;
     case 'P':
       var m = this.getTimezoneOffset();
       var s = (m < 0 ? '+' : '-');
       m = Math.abs(m);
       var h = Math.floor(m / 60);
       m = m % 60;
-      res += s + (h > 9 ? h : '0' + h) + ':' + (m > 9 ? m : '0' + m);
+      res += s + (h > 9 ? h : '0' + h) + (fmt[i] == 'P' ? ':' : '') + (m > 9 ? m : '0' + m);
       break;
     case 'U':
       res += Math.floor(this.getTime() / 1000);
@@ -231,7 +224,7 @@ Date.prototype.format = function (f) {
       break;
     case 'x':
       var w = this.getWeek();
-      res += (w < 10 ? '0' + w : w);
+      res += (w > 9 ? w : '0' + w);
       break;
     case 'B':
       res += this.getSwatch();
