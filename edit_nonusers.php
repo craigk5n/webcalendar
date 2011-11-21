@@ -76,8 +76,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
             <select name="nadmin" id="nadmin">';
 
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    echo '
-              <option value="' . $userlist[$i]['cal_login']
+    echo $option . $userlist[$i]['cal_login']
      . ( ! empty ( $nonusertemp_admin ) &&
       $nonusertemp_admin == $userlist[$i]['cal_login']
       ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname'] . '</option>';
