@@ -41,10 +41,10 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
     <table summary="">
       <tr>
         <td style="background-color:#000000;">
-          <table style="border:0; width:100%;" cellspacing="1" cellpadding="2" summary="">
+          <table cellspacing="1" cellpadding="2" summary="">
             <tr>
               <td style="width:100%; background-color:' . $CELLBG . ';">
-                <table style="border:0; width:100%;" summary="">';
+                <table" summary="">';
   if ( ! empty ( $action ) ) {
     $ret .= '
                   <form action="' . $action . '" method="post"'
@@ -84,20 +84,20 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
         $ret .= '
                         <input type="text" name="' . $tablear[$i]['name']
          . ( empty ( $tablear[$i]['maxlength'] )
-          ? '' : '" maxlength="' . $tablear[$i]['maxlength'] )
+          ? '"' : '" maxlength="' . $tablear[$i]['maxlength'] )
          . ( empty ( $tablear[$i]['length'] )
           ? '"' : '" size="' . $tablear[$i]['length'] )
          . ( empty( $valuesar[$i] ) ? '">' : '" value="'
            . htmlspecialchars ( $valuesar[$i] ) . '">' );
       elseif ( $tablear[$i]['type'] == 'boolean' )
         $ret .= '
-                        <input type="radio" value="Y" name="'
-         . $tablear[$i]['name']
-         . ( $valuesar[$i] == 'Y' ? '" checked>' : '">' )
+                        <input type="radio" name="'
+         . $tablear[$i]['name'] . '" value="Y"'
+         . ( $valuesar[$i] == 'Y' ? ' checked>' : '>' )
          . $yesStr . '&nbsp;&nbsp;&nbsp;
-                        <input type="radio" value="N" name="'
-         . $tablear[$i]['name']
-         . ( $valuesar[$i] != 'Y' ? '" checked>' : '">' ) . $noStr;
+                        <input type="radio" name="'
+         . $tablear[$i]['name'] . '" value="N"'
+         . ( $valuesar[$i] != 'Y' ? ' checked>' : '>' ) . $noStr;
       elseif ( $tablear[$i]['type'] == 'date' )
         $ret .= date_selection ( $tablear[$i]['name'], $valuesar[$i] );
       elseif ( $tablear[$i]['type'] == 'dbdate' )
@@ -169,10 +169,10 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
     <table summary="">
       <tr>
         <td style="background-color:#000000;">
-          <table style="border:0; width:100%;" cellspacing="1" cellpadding="2" summary="">
+          <table cellspacing="1" cellpadding="2" summary="">
             <tr>
               <td style="width:100%; background-color:' . $CELLBG . ';">
-                <table style="border:0; width:100%;" summary="">
+                <table summary="">
                   <tr>'; // header
   $fieldcnt = count ( $fields );
   for ( $i = 0; $i < $fieldcnt; $i++ ) {
