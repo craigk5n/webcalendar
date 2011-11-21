@@ -2,12 +2,6 @@
 
 addLoadListener('focus');
 
-/*
- * Similar to function in "js/visible.js" but, affects the parent.
- */
-function makeVisible(id) {
-  window.opener.document.getElementById(id).style.visibility = 'visible';
-}
 function schedule_event(hours, minutes) {
   var year = wc_getCookie('year');
   var month = wc_getCookie('month');
@@ -21,8 +15,8 @@ function schedule_event(hours, minutes) {
     if (frm == 'editentryform') {
       parentForm.timetype.selectedIndex = 1;
       // Make time controls visible on parent.
-      makeVisible('timeentrystart');
-      makeVisible('timeentry' + (parentForm.duration_h ? 'duration' : 'end'));
+      toggleVisible('timeentrystart', 'visible', '', true);
+      toggleVisible('timeentry' + (parentForm.duration_h ? 'duration' : 'end'), 'visible', '', true; );
     }
     parentForm.entry_hour.value = hours;
     if (hours > 12) {
