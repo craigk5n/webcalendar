@@ -115,12 +115,11 @@ if ( $do_purge ) {
     $userlist = ($NONUSER_AT_TOP == 'Y' ? array_merge ($nonusers, $userlist) : array_merge ($userlist, $nonusers));
   }
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    echo '<option value="' . $userlist[$i]['cal_login']
+    echo $option . $userlist[$i]['cal_login']
      . ( $login == $userlist[$i]['cal_login'] ? '" selected>' : '">' )
      . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
-?>
-<option value="ALL"><?php echo $allStr ?></option>
+echo $option . 'ALL">' .  $allStr ?></option>
   </select>
  </td></tr>
  <tr><td><label for="purge_all">

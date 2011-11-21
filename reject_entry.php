@@ -17,7 +17,7 @@ else {
     <form action="reject_entry.php'
    . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : '?' . $_SERVER['QUERY_STRING'] )
    . '" method="post" name="add_comments">
-      <table border="0" cellspacing="5" summary="">
+      <table cellspacing="5" summary="">
         <tr>
           <td align="center" valign="bottom"><h3>'
    . translate ( 'Additional Comments (optional)' ) . '</h3></td>
