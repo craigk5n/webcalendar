@@ -38,7 +38,7 @@ define_languages(); // Load the language list.
 reset ( $languages );
 
 $datestyles = $datestyles_md = $datestyles_my = $datestyles_task =
-array ( 'LANGUAGE_DEFINED', translate ( 'LANGUAGE DEFINED' ) );
+array( 'LANGUAGE_DEFINED' => translate( 'LANGUAGE DEFINED' ) );
 
 // Day Month Year format
 $datestyles += array (
