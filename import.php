@@ -23,7 +23,7 @@ include_once 'includes/init.php';
  */
 function print_user_list() {
   global $is_admin, $is_assistant, $is_nonuser_admin, $login,
-  $NONUSER_AT_TOP, $NONUSER_ENABLED, $single_user;
+  $NONUSER_AT_TOP, $NONUSER_ENABLED, $option, $single_user;
 
   if ( $single_user == 'N' && $is_admin ) {
     $userlist = user_get_users();
@@ -37,8 +37,7 @@ function print_user_list() {
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       $l = $userlist[$i]['cal_login'];
       $size++;
-      $users .= '
-              <option value="' . $l
+      $users .= $option . $l
        . ( $l == $login && ! $is_assistant && ! $is_nonuser_admin
         ? '" selected>' : '">' )
        . $userlist[$i]['cal_fullname'] . '</option>';
@@ -62,11 +61,10 @@ function print_user_list() {
 }
 
 function print_categories() {
-  global $categories, $CATEGORIES_ENABLED;
+  global $categories, $CATEGORIES_ENABLED, $option;
 
   if ( $CATEGORIES_ENABLED = 'Y' ) {
-    $cat_options = '
-              <option value="__import" selected>'
+    $cat_options = $option . '__import" selected>'
      . translate('import from file') . '</option>';
 
     load_user_categories();
@@ -76,8 +74,7 @@ function print_categories() {
       if ( $i != 0 ) {
         $l = $categories[$i]['cat_name'];
         $size++;
-        $cat_options .= '
-              <option value="' . $l . '">' . $l . '</option>';
+        $cat_options .= $option . $l . '">' . $l . '</option>';
       }
     }
 
@@ -127,11 +124,11 @@ else {
           <td><label for="importtype">' . translate( 'Import format' )
    . '</label></td>
           <td>
-            <select id="importtype" name="ImportType">
-              <option value="ICAL">iCal</option>
-              <option value="PALMDESKTOP">Palm Desktop</option>
-              <option value="VCAL">vCal</option>
-              <option value="OUTLOOKCSV">Outlook (CSV)</option>
+            <select id="importtype" name="ImportType">'
+   . $option . 'ICAL">iCal</option>'
+   . $option . 'PALMDESKTOP">Palm Desktop</option>'
+   . $option . 'VCAL">vCal</option>'
+   . $option . 'OUTLOOKCSV">Outlook (CSV)</option>
             </select>
           </td>
         </tr>

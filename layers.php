@@ -136,15 +136,15 @@ if ( $single_user == 'N' ) {
 
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     if ( $userlist[$i]['cal_login'] != $layer_user ) {
-      $users .= '<option value="' . $userlist[$i]['cal_login'] . '"' .
-       '>' . $userlist[$i]['cal_fullname'] . '</option>';
+      $users .= $option . $userlist[$i]['cal_login'] . '">'
+       . $userlist[$i]['cal_fullname'] . '</option>';
     }
   }
 
   for ( $i = 0, $cnt = count ( $otherlist ); $i < $cnt; $i++ ) {
     if ( $otherlist[$i]['cal_login'] != $layer_user ) {
       $osize++;
-      $others .= '<option value="' . $otherlist[$i]['cal_login'] . '">'
+      $others .= '$option . $otherlist[$i]['cal_login'] . '">'
        . $otherlist[$i]['cal_fullname'] . '</option>';
     }
   }
@@ -160,7 +160,7 @@ if ( $single_user == 'N' ) {
   <form name="editLayerForm" id="editLayerForm">
     <input type="hidden" name="editLayerId" id="editLayerId" value="">
     <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0">
-    <table border="0">
+    <table>
       <tr><td class="tooltip" title="<?php etranslate('user to display on your cal');?>"><label><?php echo translate( 'Source_' );?></label></td>
         <td><select id="editLayerSource" name="editLayerSource">
             <?php echo $users;?>
@@ -257,7 +257,7 @@ function load_layers()
         alert ( '<?php echo $err_Str;?>' + response.message );
         return;
       }
-      var x = '<table id="layertable" border="1" cellspacing="0" cellpadding="0" summary=""><th><?php echo translate( 'Source' );?></th><th><?php echo translate( 'Color' );?></th><th><?php echo translate( 'Duplicates' );?></th></tr>\n';
+      var x = '<table id="layertable" border="1" summary=""><th><?php echo translate( 'Source' );?></th><th><?php echo translate( 'Color' );?></th><th><?php echo translate( 'Duplicates' );?></th></tr>\n';
       for ( var i = 0; i < response.layers.length; i++ ) {
         var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
         var l = response.layers[i];
