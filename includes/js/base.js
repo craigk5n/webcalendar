@@ -16,6 +16,9 @@ linkFile(d + 'includes/css/' + p + '.css', 'link');
 var tmp = [
   'dateformat',
   'geturl',
+// Not sure if we should call these from offsite or not.
+// 'http://code.jquery.com/jquery-1.7.min.js'
+// 'http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js'
   'jquery',    // Complements "prototype.js" and works with
   'modernizr', // to make older browsers do HTML5/CSS3 things with minimal code from us.
   p,           // Loads the CSS/JS for the page that called this.
@@ -68,8 +71,7 @@ function attachEventListener(target, eventType, functionRef, capture) {
 function getElementsByAttribute(attribute, attributeValue) {
   var elementArray = matchedArray = [];
 
-  elementArray = (document.all
-     ? document.all : document.getElementsByTagName('*'));
+  elementArray = document.getElementsByTagName('*');
 
   for (var i = elementArray.length - 1; i >= 0; i--) {
     if (attribute == 'class') {
@@ -113,8 +115,7 @@ if (typeof document.getElementsBySelector == 'undefined') {
    */
 
   function getAllChildren(e) {
-    // Returns all children of element. Workaround required for IE5/Windows. Ugh.
-    return (e.all ? e.all : e.getElementsByTagName('*'));
+    return e.getElementsByTagName('*');
   }
 
   document.getElementsBySelector = function (selector) {
@@ -395,6 +396,6 @@ function wc_getCookie(Name) {
   return false;
 }
 function wc_setCookie(name, value, expire) {
-  document.cookie = name + '=' + escape(value)
-     + (expire == null ? '' : '; expires=' + e.toGMTString());
+  var e = time() + (expire == null ? -10 : expire);
+  document.cookie = name + '=' + escape(value) + '; expires=' + e.toGMTString();
 }
