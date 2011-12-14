@@ -153,7 +153,7 @@ echo '<tr><td><label>'
   for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
     $u = $users[$i]['cal_login'];
     echo '<option value=' . $u
-     . ( ! empty ( $viewuser[$u] ) ? '" selected>' : '">' )
+     . ( empty( $viewuser[$u] ) ? '">' : '" selected>' )
      . $users[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
