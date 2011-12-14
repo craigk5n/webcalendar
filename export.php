@@ -11,7 +11,7 @@ include_once 'includes/xcal.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {
   // do not allow public access
-  do_redirect ( empty ( $STARTVIEW ) ? 'month.php' : "$STARTVIEW" );
+  do_redirect( empty( $STARTVIEW ) ? 'month.php' : $STARTVIEW );
   exit;
 }
 
