@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 11-21-2011
+# Translation last updated on 12-14-2011
 
 PROGRAM_NAME: WebCalendar
 PROGRAM_VERSION: v1.3.0
@@ -49,6 +49,15 @@ __month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
 __month__ __dd__: __month__ __dd__
 __month__ __yyyy__: __month__ __yyyy__
 __mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+
+########################################
+# Page: about.php
+#
+Title: WebCalendar
+version XXX: vXXX
+WebCalendar a PHP app: WebCalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
+Credits: Credits
+About: About
 
 ########################################
 # Page: access.php
@@ -123,7 +132,6 @@ System Settings: System Settings
 System options: System options
 app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page. The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
 Application Name: Application Name:
-Title: WebCalendar
 Translated Name (XXX): Translated Name (XXX)
 server_url_help: Specifies the base URL for the application. This will be included when sending out email reminders and notifications.
 Server URL: Server URL:
@@ -453,8 +461,7 @@ Color: Color
 Category Icon_: Category Icon:
 Remove Icon: Remove Icon:
 Add Icon to Category: Add Icon to Category
-Upload: Upload
-GIF or PNG 3kb max: GIF or PNG 3kb max
+Upload icon: Upload&nbsp;<span style="font-size:small;">GIF or PNG 3kb max</span>:
 Search for existing icons: Search for existing icons
 Make New Category: Make New Category
 
@@ -978,6 +985,12 @@ Can See Time Only_: Can See Time Only:
 If enabled user cant see details: If enabled, this user cannot view the details of any of your entries.
 
 ########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Publishing Disabled (Admin)
+Publishing Disabled (User): Publishing Disabled (User)
+
+########################################
 # Page: icons.php
 #
 Click to Select: Click to Select
@@ -1068,6 +1081,13 @@ recipients_failed: SMTP Error: The following recipients failed:
 # Page: includes/classes/WebCalendar.class
 #
 You are not authorized.: You are not authorized.
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
+Enter the correct letters and numbers...: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read
+Challenge/Response: Challenge/Response
 
 ########################################
 # Page: includes/config.php
@@ -1343,6 +1363,11 @@ Approve this entry?: Approve this entry?
 Reject this entry?: Reject this entry?
 Hide: Hide
 Show: Show
+
+########################################
+# Page: includes/js/visible.js
+#
+Invalid Color: Invalid Color
 
 ########################################
 # Page: includes/menu/index.php
@@ -1890,6 +1915,11 @@ Access Private: Access Private
 Created by XXX: Created by: XXX
 XXX External User: XXX (External User)
 Reminder XXX: Reminder: XXX
+
+########################################
+# Page: upcoming.php
+#
+more: more
 
 ########################################
 # Page: users.php
