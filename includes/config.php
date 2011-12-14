@@ -246,7 +246,7 @@ function do_config( $fileLoc ) {
       $row = $rows[0];
 
       if( empty( $row ) || $row[0] != $PROGRAM_VERSION ) {
-        header( $locateStr . '' . ( empty( $row ) ? 'UNKNOWN' : $row[0] ) );
+        header( $locateStr . ( empty( $row ) ? 'UNKNOWN' : $row[0] ) );
         exit;
       }
     }
