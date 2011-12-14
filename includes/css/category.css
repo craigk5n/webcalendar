@@ -1,0 +1,12 @@
+// $Id$
+
+table {
+  border-collapse:separate;
+  border-spacing:2px 4px;
+}
+td {
+  padding:3px;
+}
+#searchIcon {
+  margin-left:3em;
+}
