@@ -373,8 +373,8 @@ function send_reminder ( $id, $event_date ) {
     // This will allow date functions to use the proper TIMEZONE.
     set_env ( 'TZ', $user_TIMEZONE );
 
-    $useHtml = ( ! empty ( $htmlmail[$user] ) ? 'Y' : 'N' );
-    $padding = ( ! empty ( $htmlmail[$user] ) ? '&nbsp;&nbsp;&nbsp;' : '   ' );
+    $useHtml = ( empty( $htmlmail[$user] ) ? 'N' : 'Y' );
+    $padding = ( empty( $htmlmail[$user] ) ? '   ' : '&nbsp;&nbsp;&nbsp;' );
     $body = str_replace ( 'XXX',
       ( $is_task ? translate ( 'task' ) : translate ( 'event' ) ),
       translate ( 'reminder for XXX below' ) ) . "\n\n";

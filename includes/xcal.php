@@ -516,56 +516,42 @@ function export_recurrence_vcal( $id, $date ) {
       $wkst = $row[12];
       $count = $row[13];
 
+      $tmp = $interval . ( empty( $byday ) ? '' : " $byday" );
+
       echo 'RRULE:';
 
       /* recurrence frequency */
       switch ( $type ) {
-        case 'daily' :
-          echo "D$interval ";
+        case 'daily':
+          echo "D$interval";
           break;
-        case 'weekly' :
-          echo "W$interval ";
-          if ( ! empty ( $byday ) )
-            echo $byday . ' ';
+        case 'weekly':
+          echo 'W' . $tmp;
           break;
         case 'monthlyByDay':
-          echo "MP$interval ";
-          if ( ! empty ( $byday ) )
-            echo $byday . ' ';
+          echo 'MP' . $tmp;
           break;
         case 'monthlyBySetPos':
-          echo "MP$interval ";
-          if ( ! empty ( $bymonthday ) )
-            echo $bymonthday . ' ';
+          echo "MP$interval" . ( empty( $bymonthday ) ? '' : " $bymonthday" );
           break;
-        case 'monthlyByDate' :
-          echo "MD$interval ";
-          if ( ! empty ( $byday ) )
-            echo $byday . ' ';
+        case 'monthlyByDate':
+          echo 'MD' . $tmp;
           break;
-        case 'yearly' :
-          if ( ! empty ( $byyearday ) )
-            echo "YM$interval ";
-          else
-            echo "YD$interval ";
+        case 'yearly':
+          echo ( empty( $byyearday ) ? 'YD' : 'YM' ) . $interval;
           break;
       }
+      echo ( empty( $count )
+        ? ''
+        : ( $count > 0 || ( $count == 0 && empty( $end ) ) ? ' #' . $count : '' ) )
+       // End Date - For all types
+       . ( empty( $end ) ? '' : ' ' . export_get_utc_date( $end, $time ) ) . "\r\n";
 
-      if ( ! empty ( $count ) && $count > 0 ) {
-        echo '#' . $count . ' ';
-      } else if ( ! empty ( $count ) && $count == 0 && empty ( $end ) ) {
-        echo '#' . $count . ' ';
-      }
-      // End Date - For all types
-      if ( ! empty ( $end ) )
-        echo export_get_utc_date ( $end, $time );
-
-      echo "\r\n";
       // Repeating Exceptions
       $num = count ( $exdate );
       if ( $num > 0 ) {
         $string = 'EXDATE:';
-        for ( $i = 0;$i < $num;$i++ ) {
+        for ( $i = 0; $i < $num; $i++ ) {
           $string .= $exdate[$i] . 'T000000,';
         }
         echo rtrim( $string, ',' ) . "\r\n";
@@ -622,31 +608,24 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
   $reminder = getReminders ( $id );
 
   if ( ! empty ( $reminder ) ) {
-    // Sunbird requires this line
-    if ( ! empty ( $reminder['offset'] ) )
-      $ret .= 'X-MOZILLA-ALARM-DEFAULT-LENGTH:' . $reminder['offset'] . "\r\n";
-    $ret .= "BEGIN:VALARM\r\n";
-    $ret .= 'TRIGGER';
+    // Sunbird requires this next "if" line.
+    $ret .= ( empty( $reminder['offset'] )
+      ? '' : 'X-MOZILLA-ALARM-DEFAULT-LENGTH:' . $reminder['offset'] . "\r\n" )
+     . 'BEGIN:VALARM' . "\r\n" . 'TRIGGER'
+     . ( empty( $reminder['date'] ) ? '' : ';VALUE=DATE-TIME:' . $reminder['date'] )
+     . 'T' . $reminder['time'] . "Z\r\n"
+     // related to entry end/due date/time
+     . ( $reminder['related'] == 'E' ? ';RELATED=END' : '' );
 
-    if ( ! empty ( $reminder['date'] ) ) {
-      $ret .= ';VALUE=DATE-TIME:' . $reminder['date'] . 'T'
-       . $reminder['time'] . "Z\r\n";
-    }
-    // related to entry end/due date/time
-    if ( $reminder['related'] == 'E' ) {
-      $ret .= ';RELATED=END';
-    }
     if ( empty ( $reminder['date'] ) ) { // offset may be zero
       // before edge needs a '-'
       $sign = ( $reminder['before'] == 'Y' ? '-' : '' );
       $ret .= ':' . $sign . 'PT' . $reminder['offset'] . "M\r\n";
     }
-
-    if ( ! empty ( $reminder['repeats'] ) ) {
-      $ret .= 'REPEAT:' . $reminder['repeats'] . "\r\n";
-      $ret .= 'DURATION:PT' . $reminder['duration'] . "M\r\n";
-    }
-    $ret .= 'ACTION:' . $reminder['action'] . "\r\n";
+    $ret .= ( empty( $reminder['repeats'] )
+      ? '' : 'REPEAT:' . $reminder['repeats'] . "\r\n"
+       . 'DURATION:PT' . $reminder['duration'] . "M\r\n" )
+     . 'ACTION:' . $reminder['action'] . "\r\n";
 
     $array = export_fold_lines ( $description, 'utf8' );
     while ( list ( $key, $value ) = each ( $array ) ) {
@@ -1329,32 +1308,16 @@ function import_data ( $data, $overwrite, $type ) {
           }
         }
         // test if all Repeat Elements exist
-        $rep_interval = ( ! empty ( $Entry['Repeat']['Interval'] ) ?
-          $Entry['Repeat']['Interval'] : '' );
-        $rep_bymonth = ( ! empty ( $Entry['Repeat']['ByMonth'] ) ?
-          $Entry['Repeat']['ByMonth'] : '' );
-        $rep_byweekno = ( ! empty ( $Entry['Repeat']['ByWeekNo'] ) ?
-          $Entry['Repeat']['ByWeekNo'] : '' );
-        $rep_byyearday = ( ! empty ( $Entry['Repeat']['ByYearDay'] ) ?
-          $Entry['Repeat']['ByYearDay'] : '' );
-        $rep_byweekno = ( ! empty ( $Entry['Repeat']['ByWeekNo'] ) ?
-          $Entry['Repeat']['ByWeekNo'] : '' );
-        $rep_byweekno = ( ! empty ( $Entry['Repeat']['ByWeekNo'] ) ?
-          $Entry['Repeat']['ByWeekNo'] : '' );
-        $rep_byweekno = ( ! empty ( $Entry['Repeat']['ByWeekNo'] ) ?
-          $Entry['Repeat']['ByWeekNo'] : '' );
-        $rep_bymonthday = ( ! empty ( $Entry['Repeat']['ByMonthDay'] ) ?
-          $Entry['Repeat']['ByMonthDay'] : '' );
-        $rep_byday = ( ! empty ( $Entry['Repeat']['ByDay'] ) ?
-          $Entry['Repeat']['ByDay'] : '' );
-        $rep_bysetpos = ( ! empty ( $Entry['Repeat']['BySetPos'] ) ?
-          $Entry['Repeat']['BySetPos'] : '' );
-        $rep_count = ( ! empty ( $Entry['Repeat']['Count'] ) ?
-          $Entry['Repeat']['Count'] : '' );
-        $rep_until = ( ! empty ( $Entry['Repeat']['Until'] ) ?
-          $Entry['Repeat']['Until'] : '' );
-        $rep_wkst = ( ! empty ( $Entry['Repeat']['Wkst'] ) ?
-          $Entry['Repeat']['Wkst'] : '' );
+        $rep_byday = ( empty( $Entry['Repeat']['ByDay'] ) ? '' : $Entry['Repeat']['ByDay'] );
+        $rep_bymonth = ( empty( $Entry['Repeat']['ByMonth'] ) '' : $Entry['Repeat']['ByMonth'] );
+        $rep_bymonthday = ( empty( $Entry['Repeat']['ByMonthDay'] ) ? '' : $Entry['Repeat']['ByMonthDay'] );
+        $rep_bysetpos = ( empty( $Entry['Repeat']['BySetPos'] ) ? '' : $Entry['Repeat']['BySetPos'] );
+        $rep_byweekno = ( empty( $Entry['Repeat']['ByWeekNo'] ) ? '' : $Entry['Repeat']['ByWeekNo'] );
+        $rep_byyearday = ( empty( $Entry['Repeat']['ByYearDay'] ) ? '' : $Entry['Repeat']['ByYearDay'] );
+        $rep_count = ( empty( $Entry['Repeat']['Count'] ) ? '' : $Entry['Repeat']['Count'] );
+        $rep_interval = ( empty( $Entry['Repeat']['Interval'] ) ? '' : $Entry['Repeat']['Interval'] );
+        $rep_until = ( empty( $Entry['Repeat']['Until'] ) ? '' : $Entry['Repeat']['Until'] );
+        $rep_wkst = ( empty( $Entry['Repeat']['Wkst'] ) ? '' : $Entry['Repeat']['Wkst'] );
 
         $dates = get_all_dates( $Entry['StartTime'],
           RepeatType( $Entry['Repeat']['Frequency'] ), $rep_interval,
@@ -1382,10 +1345,9 @@ function import_data ( $data, $overwrite, $type ) {
       if ( $firstEventId == 0 )
         $firstEventId = $id;
 
-      $names =
-      $values = array();
-      $names[] = 'cal_id';
-      $values[] = $id;
+      $names = array( 'cal_id' );
+      $values = array( $id );
+
       if ( ! $updateMode ) {
         $names[] = 'cal_create_by';
         $values[] = ( $ImportType == 'RMTICS' ? $calUser : $login );
@@ -1394,7 +1356,7 @@ function import_data ( $data, $overwrite, $type ) {
       $values[] = $Entry['start_date'];
       $names[] = 'cal_time';
       $values[] = ( ! empty ( $Entry['Untimed'] ) && $Entry['Untimed'] == 1 )
-      ? '-1' : $Entry['start_time'];
+        ? '-1' : $Entry['start_time'];
       $names[] = 'cal_mod_date';
       $values[] = gmdate ( 'Ymd' );
       $names[] = 'cal_mod_time';
@@ -1406,20 +1368,17 @@ function import_data ( $data, $overwrite, $type ) {
 
       if ( ! empty ( $Entry['Class'] ) ) {
         $names[] = 'cal_access';
-        $entryclass = $Entry['Class'];
-        $values[] = $entryclass;
+        $values[] = $entryclass = $Entry['Class'];
       }
 
       if ( ! empty ( $Entry['Location'] ) ) {
         $names[] = 'cal_location';
-        $entryclass = $Entry['Location'];
-        $values[] = $entryclass;
+        $values[] = $entryclass = $Entry['Location'];
       }
 
       if ( ! empty ( $Entry['URL'] ) ) {
         $names[] = 'cal_url';
-        $entryclass = $Entry['URL'];
-        $values[] = $entryclass;
+        $values[] = $entryclass = $Entry['URL'];
       }
 
       if ( ! empty ( $cal_completed ) ) {
@@ -1435,21 +1394,23 @@ function import_data ( $data, $overwrite, $type ) {
       if ( ! empty ( $Entry['CalendarType'] ) ) {
         $names[] = 'cal_type';
         if ( $Entry['CalendarType'] == 'VEVENT' || $Entry['CalendarType'] == 'VFREEBUSY' ) {
-          $values[] = ( ! empty ( $Entry['Repeat'] ) )? 'M': 'E';
+          $values[] = ( empty( $Entry['Repeat'] ) ? 'E': 'M' );
         } else if ( $Entry['CalendarType'] == 'VTODO' ) {
-          $values[] = ( ! empty ( $Entry['Repeat'] ) )? 'N': 'T';
+          $values[] = ( empty( $Entry['Repeat'] ) ? 'T': 'N' );
         }
       }
       if ( strlen ( $Entry['Summary'] ) == 0 )
         $Entry['Summary'] = translate ( 'Unnamed Event' );
+
       if ( empty ( $Entry['Description'] ) )
         $Entry['Description'] = $Entry['Summary'];
+
+      $names[] = 'cal_name';
       $Entry['Summary'] = str_replace ( "\\n", "\n", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "\\'", "'", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "\\\"", "\"", $Entry['Summary'] );
-      $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
-      $names[] = 'cal_name';
-      $values[] = $Entry['Summary'];
+      $values[] = $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
+
       $Entry['Description'] = str_replace ( "\\n", "\n", $Entry['Description'] );
       $Entry['Description'] = str_replace ( "\\'", "'", $Entry['Description'] );
       $Entry['Description'] = str_replace ( "\\\"", "\"", $Entry['Description'] );
@@ -1468,7 +1429,7 @@ function import_data ( $data, $overwrite, $type ) {
       // TODO Add this option to preferences
       if ( empty ( $LIMIT_DESCRIPTION_SIZE ) || $LIMIT_DESCRIPTION_SIZE == 'Y' ) {
         // limit length to 1024 chars since we setup tables that way
-        if ( strlen ( $Entry['Description'] ) >= 1024 ) {
+        if ( strlen ( $Entry['Description'] ) > 1023 ) {
           $Entry['Description'] = substr ( $Entry['Description'], 0, 1019 )
            . '...';
         }
@@ -1481,16 +1442,13 @@ function import_data ( $data, $overwrite, $type ) {
       if ( $updateMode ) {
         $sql = 'UPDATE webcal_entry SET ';
         for ( $f = 0; $f < $namecnt; $f++ ) {
-          if ( $f > 0 )
-            $sql .= ', ';
-          $sql .= $names[$f] . ' = ?';
+          $sql .= ( $f > 0 ? ', ' : '' ) . $names[$f] . ' = ?';
           $sql_params[] = $values[$f];
         }
         $sql .= ' WHERE cal_id = ?';
         $sql_params[] = $id;
       } else {
-        $string_names = '';
-        $string_values = '';
+        $string_names = $string_values = '';
         for ( $f = 0; $f < $namecnt; $f++ ) {
           if ( $f > 0 ) {
             $string_names .= ', ';
@@ -1574,8 +1532,8 @@ function import_data ( $data, $overwrite, $type ) {
         }
       }
       // Now add participants
-      $status = ( ! empty ( $Entry['Status'] ) ? $Entry['Status'] : 'A' );
-      $percent = ( ! empty ( $Entry['Percent'] ) ? $Entry['Percent'] : '0' );
+      $status = ( empty( $Entry['Status'] ) ? 'A' : $Entry['Status'] );
+      $percent = ( empty( $Entry['Percent'] ) ? '0' : $Entry['Percent'] );
       if ( ! $updateMode ) {
         $sql = 'INSERT INTO webcal_entry_user
           ( cal_id, cal_login, cal_status, cal_percent )
@@ -1684,12 +1642,10 @@ function import_data ( $data, $overwrite, $type ) {
 
         if ( ! empty ( $Entry['Repeat']['Until'] ) ) {
           $REND = localtime ( $Entry['Repeat']['Until'] );
-          if ( ! empty ( $Entry['Repeat']['Count'] ) ) {
-            // Get end time from DTSTART
-            $RENDTIME = $Entry['start_time'];
-          } else {
-            $RENDTIME = gmdate ( 'His', $Entry['Repeat']['Until'] );
-          }
+          $RENDTIME = ( empty( $Entry['Repeat']['Count'] )
+            ? gmdate( 'His', $Entry['Repeat']['Until'] )
+            : $Entry['start_time'] ); // Get end time from DTSTART
+          
           $names[] = 'cal_end';
           $values[] = gmdate ( 'Ymd', $Entry['Repeat']['Until'] );
           // if ( $RENDTIME != '000000' ) {
@@ -1698,8 +1654,7 @@ function import_data ( $data, $overwrite, $type ) {
           // }
         }
 
-        $string_names = '';
-        $string_values = '';
+        $string_names = $string_values = '';
         $sql_params = array();
         $namecnt = count ( $names );
         for ( $f = 0; $f < $namecnt; $f++ ) {
@@ -2434,7 +2389,7 @@ function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
   } //end switch
   // Convert time from user's timezone to GMT if datetime value
   if ( empty ( $this_TIMEZONE ) ) {
-    $this_TIMEZONE = ( ! empty ( $user_TIMEZONE ) ? $user_TIMEZONE : $SERVER_TIMEZONE );
+    $this_TIMEZONE = ( empty( $user_TIMEZONE ) ? $SERVER_TIMEZONE : $user_TIMEZONE );
   }
   if ( empty ( $Z ) ) {
     putenv ( "TZ=$this_TIMEZONE" );
@@ -2452,7 +2407,7 @@ function format_ical ( $event ) {
   global $login;
 
   // Set Product ID
-  $fevent['Prodid'] = ( ! empty ( $event['prodid'] ) ? $event['prodid'] : '' );
+  $fevent['Prodid'] = ( empty( $event['prodid'] ) ? '' : $event['prodid'] );
 
   // Set Calendar Type for easier processing later
   $fevent['CalendarType'] = $event['state'];
@@ -2474,10 +2429,10 @@ function format_ical ( $event ) {
    "DTEND" property, the event ends on the same calendar date and time
    of day specified by the "DTSTART" property. */
 
-  $dtstartTzid = ( ! empty ( $event['dtstartTzid'] )?$event['dtstartTzid'] : '' );
+  $dtstartTzid = ( empty( $event['dtstartTzid'] ) ? '' : $event['dtstartTzid'] );
   $fevent['StartTime'] = icaldate_to_timestamp ( $event['dtstart'], $dtstartTzid );
   if ( isset ( $event['dtend'] ) ) {
-    $dtendTzid = ( ! empty ( $event['dtendTzid'] )?$event['dtendTzid'] : '' );
+    $dtendTzid = ( empty( $event['dtendTzid'] ) ? '' : $event['dtendTzid'] );
     $fevent['EndTime'] = icaldate_to_timestamp ( $event['dtend'], $dtendTzid );
     if ( $fevent['StartTime'] == $fevent['EndTime'] ) {
       $fevent['Untimed'] = 1;
@@ -2527,12 +2482,10 @@ function format_ical ( $event ) {
 
   if ( empty ( $event['summary'] ) )
     $event['summary'] = translate ( 'Unnamed Event' );
+
   $fevent['Summary'] = utf8_decode ( $event['summary'] );
-  if ( ! empty ( $event['description'] ) ) {
-    $fevent['Description'] = utf8_decode ( $event['description'] );
-  } else {
-    $fevent['Description'] = $fevent['Summary'];
-  }
+  $fevent['Description'] = ( empty( $event['description'] )
+    ? $fevent['Summary'] : utf8_decode( $event['description'] ) );
 
   if ( ! empty ( $event['class'] ) ) {
     // Added  Confidential as new CLASS
@@ -3113,10 +3066,11 @@ function generate_export_select() {
 function save_vtimezone ( $event ) {
   //do_debug( print_r( $event, true ) );
   $tzidLong = parse_tzid ( $event['tzid'] );
-  $tzid = ( ! empty ( $event['tzlocation'] ) ? $event['tzlocation'] :
-    ( ! empty ( $tzidLong ) ? $tzidLong : '' ) );
-  $dtstart = ( ! empty ( $event['dtstart'] ) ? $event['dtstart'] : '' );
-  $dtend = ( ! empty ( $event['dtend'] ) ? $event['dtend'] : '' );
+  $tzid = ( empty( $event['tzlocation'] )
+    ? ( empty( $tzidLong ) ? '' : $tzidLong )
+    : $event['tzlocation'] );
+  $dtstart = ( empty( $event['dtstart'] ) ? '' : $event['dtstart'] );
+  $dtend = ( empty( $event['dtend'] ) ? '' : $event['dtend'] );
   //delete any record already found for this tzid
   dbi_execute ( 'DELETE FROM webcal_timezones WHERE tzid = ? AND dtstart = ?',
     array ( $tzid, $dtstart ) );

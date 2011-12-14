@@ -137,9 +137,9 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   $out = '
 <event>
   <id>' . $id . '</id>
-  <name>' . ws_escape_xml ( $name ) . '</name>' . ( ! empty ( $SERVER_URL ) ? '
+  <name>' . ws_escape_xml ( $name ) . '</name>' . ( empty( $SERVER_URL ) ? '' : '
   <url>' . $SERVER_URL . ( substr ( $SERVER_URL, -1, 1 ) == '/' ? '' : '/' )
-     . 'view_entry.php?id=' . $id . '</url>' : '' ) . '
+     . 'view_entry.php?id=' . $id . '</url>' ) . '
   <description>' . ws_escape_xml ( $description ) . '</description>
   <dateFormatted>' . date_to_str ( $event_date ) . '</dateFormatted>
   <date>' . $event_date . '</date>
@@ -231,7 +231,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   </participants>';
   }
 
-  return $out . ( ! empty ( $extra_tags ) ? $extra_tags : '' ) . '
+  return $out . ( empty( $extra_tags ) ? '' : $extra_tags ) . '
 </event>
 ';
 }
