@@ -269,7 +269,7 @@ if ( empty ( $error ) && empty ( $info ) ) {
     </ul>';
 }
 echo '
-      <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
+      <form action="search.php' . ( empty( $advanced ) ? '' : '?adv=1' )
         . '"  style="margin-left: 13px;" method="post">
        <input type="submit" value="'
         . translate( 'New Search' ) . '"></form>';

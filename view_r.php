@@ -527,9 +527,7 @@ function dblclick( date, name, hour, minute ) {
 
 $user = ''; // reset
 
-if ( ! empty ( $eventinfo ) ) echo $eventinfo;
-
-echo $printerStr . print_trailer();
+echo ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
 
 ob_end_flush();
 
