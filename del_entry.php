@@ -219,7 +219,7 @@ if ( $id > 0 && empty ( $error ) ) {
   } else {
     // Not the owner of the event, but participant or noncal_admin.
     // Just  set the status to 'D' instead of deleting.
-    $del_user = ( ! empty ( $other_user ) ? $other_user : $login );
+    $del_user = ( empty( $other_user ) ? $login : $other_user );
     if ( ! empty ( $user ) && $user != $login ) {
       if ( $is_admin || $my_event || ( $can_edit && $is_assistant ) ||
           ( access_is_enabled() &&

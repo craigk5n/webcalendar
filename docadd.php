@@ -111,7 +111,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   if ( ! $res )
     die_miserable_death ( str_replace ( 'XXX', dbi_error(), $dbErrXXXStr ) );
   $row = dbi_fetch_row ( $res );
-  $nextid = ( ! empty ( $row ) ? $row[0] + 1 :  1 );
+  $nextid = ( empty( $row ) ? 1 : $row[0] + 1 );
   dbi_free_result ( $res );
 
   if ( $type == 'C' ) {
