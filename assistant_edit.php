@@ -54,7 +54,7 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
   if ( $u == $login || $u == '__public__' )
     continue;
   echo $option . $u
-   . ( ! empty ( $assistantuser[$u] ) ? '" selected>' : '">' )
+   . ( empty( $assistantuser[$u] ) ? '">' : '" selected>' )
    . $users[$i]['cal_fullname'] . '</option>';
 }
 

@@ -111,7 +111,7 @@ print_header();
 <tr>
 <?php
 if ( $single_user == 'N' ) {
-  user_load_variables ( ! empty ( $user ) ? $user : $login, 'user_' );
+  user_load_variables( empty( $user ) ? $login, 'user_' : $user );
   echo "<td valign=\"top\" class=\"username\"><nobr>" .
      htmlspecialchars ( $user_fullname ) . "</nobr></td>";
 }
