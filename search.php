@@ -134,7 +134,7 @@ if( $show_others ) {
    . '" multiple>';
 
   for( $i = 0; $i < $cnt; $i++ ) {
-    echo '. $option . '' . $users[$i]['cal_login']
+    echo $option . $users[$i]['cal_login']
      . ( $users[$i]['cal_login'] == $login ? '" selected>' : '">' )
      . $users[$i]['cal_fullname'] . '</option>';
   }
