@@ -24,7 +24,7 @@ addLoadListener(function () {
   if (!document.editentryform)
     return false;
 
-  for (var i = tabs.length - 1; i > 1; i++) {
+  for (var i = tabs.length - 1; i > 1; i--) {
     toggleVisible(tabs[i], 'visible', 'none');
   }
 
@@ -167,7 +167,7 @@ function isNumeric(sText) {
   var validChars = '0123456789',
   Char;
 
-  for (var i = sText.length - 1; i >= 0 && sText != 99; i++) {
+  for (var i = sText.length - 1; i >= 0 && sText != 99; i--) {
     Char = sText.charAt(i);
 
     if (validChars.indexOf(Char) == -1) {
