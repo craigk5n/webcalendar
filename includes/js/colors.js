@@ -262,7 +262,7 @@ function setCol(value) {
 }
 function setRGB(r, g, b) {
   if (r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0) {
-    r = currbg[0];
+    r = currgb[0];
     g = currgb[1];
     b = currgb[2];
   }
