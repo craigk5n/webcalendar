@@ -117,7 +117,7 @@ if ( $single_user == 'N' ) {
 }
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   ?>
-  <td valign="top" id="categoryselection"><?php translate( 'Categories_';?></td>
+  <td valign="top" id="categoryselection"><?php translate( 'Categories_'  );?></td>
   <td valign="top" onmouseover="setCategoryVisibility(true)" onmouseout="setCategoryVisibility(false)">
   <img id="catexpand" src="images/expand.gif">
   <span id="selectedcategories">All</span><br>
