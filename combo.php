@@ -1136,7 +1136,7 @@ function taskAddPopup ()
   var ymd = "" + ( today.getYear () + 1900 );
   if ( today.getMonth() - 1 < 10 )
     ymd += '0';
-  ymd += ( today.getMonth() + 1 );
+  ymd += ( today.getMonth() - 1 );
   if ( today.getDate() < 10 )
     ymd += '0';
   ymd += today.getDate ();
