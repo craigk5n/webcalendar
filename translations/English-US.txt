@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 12-14-2011
+# Translation last updated on 01-15-2012
 
 PROGRAM_NAME: WebCalendar
 PROGRAM_VERSION: v1.3.0
@@ -492,6 +492,7 @@ Old Color: Old Color
 ########################################
 # Page: combo.php
 #
+Categories_: Categories:
 Select None: Select None
 Agenda: Agenda
 Add Task: Add Task
@@ -821,7 +822,6 @@ Not authorized: Not authorized
 #
 Export: Export
 Export format: Export format:
-Categories_: Categories:
 Include all layers: Include all layers
 Include deleted entries: Include deleted entries
 Export all dates: Export all dates
@@ -1316,7 +1316,7 @@ Could not find XXX.: Could not find "XXX".
 Could not find XXX in DOM.: Could not find XXX in DOM.
 
 ########################################
-# Page: includes/js/edit_nonuser.php
+# Page: includes/js/edit_nonusers.js
 #
 no blank cal ID: Error: Calendar ID cannot be blank.
 both names cannot be blank: Error: First and last names cannot both be blank.
