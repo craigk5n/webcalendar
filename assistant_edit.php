@@ -60,8 +60,7 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
 
 echo '
             </select>' . ( $GROUPS_ENABLED == 'Y' ? '
-            <input type="button" onclick="selectUsers()" value="'
-   . $selectStr . '...">' : '' ) . '
+            <input type="button" value="' . $selectStr . '...">' : '' ) . '
           </td>
         </tr>
         <tr>
