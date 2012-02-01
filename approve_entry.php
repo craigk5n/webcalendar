@@ -1,6 +1,6 @@
 <?php // $Id$
 include_once 'includes/init.php';
-require ( 'includes/classes/WebCalMailer.class' );
+require_once 'includes/classes/WebCalMailer.class';
 
 $error = '';
 
@@ -10,8 +10,7 @@ if ( $readonly == 'Y' )
 if ( getPostValue( 'comments' ) !== null ) {
   $comments = getPostValue ( 'comments' );
   $cancel = getPostValue ( 'cancel' );
-} else
-if ( empty ( $ret ) ) {
+} else if ( empty( $ret ) ) {
   $q_string = ( ! empty ( $_SERVER['QUERY_STRING'] )
     ? '?' . $_SERVER['QUERY_STRING'] : '' );
 
@@ -19,19 +18,16 @@ if ( empty ( $ret ) ) {
   echo '
     <form action="approve_entry.php' . $q_string
    . '" method="post" name="add_comments">
-      <table cellspacing="5" summary="">
+      <table summary="">
         <tr>
-          <td align="center" valign="bottom"><h3>'
-   . translate ( 'Additional Comments (optional)' ) . '</h3></td>
+          <td><h3>' . translate( 'Additional Comments (optional)' ) . '</h3></td>
         <tr>
         <tr>
-          <td align="center"><textarea name="comments" rows="5" '
-   . 'cols="60"></textarea></td>
+          <td><textarea name="comments"></textarea></td>
         </tr>
         <tr>
-          <td align="center">
-            <input type="submit" value="' . translate ( 'Approve and Send' )
-   . '">&nbsp;&nbsp;&nbsp;
+          <td>
+            <input type="submit" value="' . translate( 'Approve and Send' ) . '">
             <input type="submit" id="cancel" name="cancel" value="'
    . translate( 'Approve and Exit' ) . '">
           </td>
@@ -54,8 +50,8 @@ $id = getValue ( 'id' );
 // Allow administrators to approve public events.
 $app_user = ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin
   ? '__public__' : ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
-// If User Access Control is enabled, we check to see if they are
-// allowed to approve for the specified user.
+// If User Access Control is enabled,
+// check to see if they are allowed to approve for the specified user.
 if ( access_is_enabled() && ! empty ( $user ) && $user != $login &&
     access_user_calendar ( 'approve', $user ) )
   $app_user = $user;

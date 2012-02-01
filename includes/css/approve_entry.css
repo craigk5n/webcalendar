@@ -1,0 +1,19 @@
+// $Id$
+
+submit + submit {
+  padding-left:3em;
+}
+table {
+  border-collapse:separate;
+  border-spacing:5px;
+}
+td {
+  text-align:center;
+}
+td:first-of-type {
+  vertical-align:bottom;
+}
+textarea {
+  width:60em;
+  height:5em;
+}
