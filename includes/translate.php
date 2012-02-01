@@ -130,8 +130,12 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
  *                             no directory or file suffix. Example:  "French")
  */
 function reset_language ( $new_language ) {
-  global $fullname, $lang, $lang_file,
-  $PUBLIC_ACCESS_FULLNAME, $translation_loaded, $translations;
+  global $addStr, $adminStr, $allStr, $badEntryStr, $cat_Str, $dbErrXXXStr,
+  $dblClickAdd, $deleteStr, $editStr, $err_Str, $fullname, $globalStr,
+  $groupsStr, $helpStr, $lang, $lang_file, $nextStr, $noneStr, $noStr,
+  $noVuUsers, $okStr, $prevStr, $pri, $PROGRAM_DATE, $PROGRAM_NAME,
+  $PROGRAM_VERSION, $PUBLIC_ACCESS_FULLNAME, $saveStr, $selectStr, $setsStr,
+  $translations, $translation_loaded, $urlStr, $yesStr;
 
   if ( $new_language == 'none' || $new_language == 'Browser-defined' )
     $new_language = get_browser_language();
