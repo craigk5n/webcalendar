@@ -850,7 +850,7 @@ if ( Doc::commentsEnabled() ) {
     user_load_variables ( $cmt->getLogin(), 'cmt_' );
     $comment_text .= '
           <strong>' . htmlspecialchars ( $cmt->getDescription() )
-     . '</strong> - ' . $cmt_fullname . ' ' . translate ( 'at' ) . ' '
+     . '</strong> - ' . $cmt->fullname . ' ' . translate( 'at' ) . ' '
      . date_to_str ( $cmt->getModDate(), '', false, true ) . ' '
      . display_time ( $cmt->getModTime(), 2 )
     // show delete link if user can delete
