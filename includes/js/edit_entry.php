@@ -13,23 +13,23 @@ function addGroup() {
 
   $groups = get_groups( $arinc[3] ); // $user
   for ( $i = 0, $j = count( $groups ); $i < $j; $i++ ) {
-    echo "
+    echo '
 
-  if (selNum == $i) {";
+  if (selNum == ' . $i . ') {';
     $res = dbi_execute ( 'SELECT cal_login from webcal_group_user
       WHERE cal_group_id = ?', array ( $groups[$i]['cal_group_id'] ) );
     if ( $res ) {
       while ( $row = dbi_fetch_row( $res ) ) {
-        echo "
-    selectByLogin('$row[0]');";
+        echo '
+    selectByLogin(\'' . $row[0] . '\');';
       } // end while
       dbi_free_result( $res );
       } // end if res
-      echo "
-  }" // end js if selnum
+      echo '
+  }'; // end js if selnum
   } // end for loop
-echo "
-}"; // end function
+echo '
+}'; // end function
 } // end if GROUPS_ENABLED
 ?>
 function catOkHandler () {
