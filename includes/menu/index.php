@@ -333,7 +333,7 @@ function jscMenu_divider() {
 ----------------------------------------------------------------------------- */
 
 // Add Menu Extra if defined.
- . ( empty ( $menuExtras[0] ) ? '' : parse_menu_extras ( $menuExtras[0] ) );
+$menuScript .= ( empty( $menuExtras[0] ) ? '' : parse_menu_extras( $menuExtras[0] ) );
 // My Calendar Menu
 // translate ( 'This Week' ) translate ( 'This Month' )
 // translate ( 'This Year' ) translate ( 'Exit' )
