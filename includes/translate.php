@@ -383,6 +383,7 @@ function define_languages () {
     translate ( 'Czech' ) . ' (UTF8)'  => 'Czech',
     translate ( 'Danish' ) => 'Danish',
     translate ( 'Dutch' ) => 'Dutch',
+    translate ( 'Dutch' ) . ' (UTF-8)' => 'Dutch_utf8',
     translate ( 'Elven' ) => 'Elven',
     translate ( 'Estonian' ) => 'Estonian',
     translate ( 'Finnish' ) => 'Finnish',
