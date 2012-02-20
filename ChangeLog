@@ -9,6 +9,7 @@ Version 1.2.5 (?? Feb 2012)
    via a direct request to a .php file, which reveals the installation path
    in an error message, as demonstrated by ws/user_mod.php and certain other
    files."
+ - Updated German and German-utf8 translations.
 
 Version 1.2.4 (08 Aug 2011)
  - Don't display program version as HTML comment unless user is an admin.
