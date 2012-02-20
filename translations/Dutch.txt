@@ -129,7 +129,7 @@ Table cell background for other month: Achtergrondkleur voor cellen in andere ma
 Week number color: Weeknummer kleur
 Event popup background: Achtergrondkleur afspraak-popup
 Event popup text: Tekstkleur afspraak-popup
-System Settings: Instellingen
+System Settings: Systeem instellingen
 Help: =
 System options: Systeemopties
 app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam verschijnt in het browservenster op elke pagina en op de login-pagina.
@@ -300,7 +300,7 @@ Allow remote calendars: Sta agenda's op afstand toe
 rss-enabled-help: Bepaalt of de agenda van een gebruiker verkregen kan worden via een RSS feed.
 Enable RSS feed: RSS-feed inschakelen
 categories-enabled-help: Sta ondersteuning toe voor afspraakcategorieën.
-Categories enabled: Activeer gebruik van categorieen
+Categories enabled: Activeer gebruik van categorieën
 icon_upload-enabled-help: Sta het uploaden van categorie-icoontjes toe
 Category Icon Upload enabled: Uploaden categorie-ikoon toegestaan
 Requires: Behoeft
@@ -367,7 +367,7 @@ Not available: Niet beschikbaar
 Background Image options: Opties achtergrondafbeelding
 bgimage-help: URL van de gewenste achtergrondafbeelding. Dit mag een relatieve link zijn.
 Background Image: Achtergrondafbeelding
-bgrepeat-help: Bepaalt het herhaalgedrag van een achtgrondafbeelding.
+bgrepeat-help: Bepaalt het herhaalgedrag van een achtergrondafbeelding.
 Background Repeat: Achtergrond bij herhaling
 
 ########################################
@@ -383,7 +383,7 @@ Views: Overzichten
 Layers: Lagen
 Reports: Rapportages
 Delete Events: Afspraken verwijderen
-Activity Log: Berwerkerslogboek
+Activity Log: Bewerkerslogboek
 System Log: Systeemlogboek
 Public Preferences: Publieke voorkeuren
 Unapproved Public Events: Openstaande publieke afspraken
@@ -664,7 +664,7 @@ Required to View Remote Calendar: Nodig om Kalender op afstand te bekijken
 #
 Error: fout
 Import Results: Resultaat van importeren
-Events successfully imported: Afspraken succesvol geimporteerd
+Events successfully imported: Afspraken succesvol geïmporteerd
 Create a new layer to view this calendar: Maak een nieuwe laag om deze kalender te bekijken
 Errors: Fouten
 There was an error parsing the import file or no events were returned: Er heeft zich een fout voorgedaan bij het verwerken van het importbestand of er zijn geen items aangetroffen
@@ -861,7 +861,7 @@ Specifies the user that you would like to see displayed in your calendar.: Speci
 ########################################
 # Page: help_pref.php
 #
-Default Category: Toon de volgende categorieen in mijn agenda
+Default Category: Toon de volgende categorieën in mijn agenda
 default-category-help: Hiermee wordt de standaard-categorie voor nieuwe afspraken ingesteld.
 When I am the boss: Als mijn agenda door een assistent wordt beheerd
 Email me event notification: Ik wil email-notificaties ontvangen van agendawijzigingen
@@ -905,12 +905,12 @@ Current Icons on Server: Hiudige ikonen op de server
 Disabled: niet weergegeven
 Import format: Te importeren formaat
 Exclude private records: Negeer privégegevens
-Repeated items are imported separately. Prior imports are not overwritten.: Herhaalde afspraken worden apart geimporteerd. Vorige imports worden niet overschreven.
+Repeated items are imported separately. Prior imports are not overwritten.: Herhaalde afspraken worden apart geïmporteerd. Vorige imports worden niet overschreven.
 
 ########################################
 # Page: import_handler.php
 #
-Error deleting palm events from webcalendar.: Fout bij het verwidjeren van palm afspraken uit de webkalender.
+Error deleting palm events from webcalendar.: Fout bij het verwijderen van palm afspraken uit de webkalender.
 Events from prior import marked as deleted: Afspraken van vorige import gemarkeerd als verwijderd
 Conflicting events: Conflicterende afspraken
 The import file contained no data: Het importbestand bevat geen gegevens.
@@ -949,7 +949,7 @@ Unapproved Entries: Openstaande vermeldingen
 Not authorized: Niet geauthoriseerd
 Approve this entry?: Afspraak bevestigen?
 Reject this entry?: Afspraak weigeren?
-Approve Selected entries?: Geselecteerde afpsraken goedkeuren?
+Approve Selected entries?: Geselecteerde afspraken goedkeuren?
 Reject Selected entries?: Verwerp geselecteerde afspraken
 
 ########################################
@@ -1006,6 +1006,8 @@ Display if created by Assistant: Markering weergeven indien aangemaakt door assi
 allow-view-subscriptions-help: Met deze functie wordt het mogelijk om geregistreerden te bekijken.
 Allow remote viewing of: Permitteer inzage op afstand
 entries: afspraken
+Your current GMT offset is: Uw huidige afwijking van GMT is
+hours.: uren.
 
 ########################################
 # Page: publish.php
@@ -1331,7 +1333,7 @@ Aug: aug
 Sep: sep
 Oct: okt
 Nov: nov
-unknown-month: ongekende maand
+unknown-month: onbekende maand
 The following error occurred: De volgende fout heeft zich voorgedaan
 You are not authorized.: U heeft geen toegang
 Add N hours to: Voeg N uren toe aan
@@ -1357,7 +1359,7 @@ Wed: wo
 Thu: do
 Fri: vr
 Sat: za
-unknown-weekday: ongekende weekdag
+unknown-weekday: onbekende weekdag
 
 ########################################
 # Page: includes/help_list.php
@@ -1459,7 +1461,7 @@ Count: Telling
 Inclusion Dates: Toe te voegen data
 Exclusion Dates: Uitgesloten data
 Unnamed Event: Naamloze afspraak
-Event Imported: Item geimporteerd
+Event Imported: Item geïmporteerd
 
 ########################################
 # Page: includes/classes/Doc.class
@@ -1481,8 +1483,8 @@ file_access: bestandstoegang
 file_open: bestand-open
 from_failed: van_fout
 instantiate: Instantiere
-mailer_not_supported: mailverstuurder-niet-ndersteund
-provide_address: Lever adres
+mailer_not_supported: mailverstuurder-niet-ondersteund
+provide_address: Specificeer een adres
 recipients_failed: Ontvangers faalden
 
 ########################################
@@ -1578,8 +1580,8 @@ Timezone Conversion Successful: Tijdzone conversie succesvol
 Error Unable to write to file: Fout Niet mogelijk om bestand te schrijven
 Successful Login: Succesvol ingelogd
 Invalid Login: Ongeldige login
-required only if Safe Mode is On: alleen nodig indie Veilige Modus aanstaan
-required only if Remote Calendars are used: alleen nodig indien kalenders op afstand wordt gebruikt
+required only if Safe Mode is On: alleen nodig indien [Veilige Modus] aanstaat
+required only if Remote Calendars are used: alleen nodig indien [Kalenders op afstand] wordt gebruikt
 needed for Gradient Image Backgrounds: benodigd voor kleuroverlopen in de achtergrond
 Passwords do not match: Wachtwoorden komen niet overeen
 Unable to write password to settings.php file: Niet mogelijk om wachtwoord in settings.php weg te schrijven
@@ -1609,7 +1611,7 @@ You should see the session counter increment each time: U moet de sessie-teller 
 SESSION COUNTER: SESSIE TELLER
 Settings.php Status: =
 The file permissions of settings.php are set...: De bestandspermissies van <b>settings.php</b> zijn gezet op...
-The file permissions of the includes directory are set...: De bestandspermissies van de map van <b>settings.php</b> zijn zo gezet dat de installateerder geen recht heeft om een nieuw bestand aan te maken. Verander de permissies van de volgende map alvorens verder te gaan.
+The file permissions of the includes directory are set...: De bestandspermissies van de map van <b>settings.php</b> zijn zo gezet dat de installateur geen rechten heeft om een nieuw bestand aan te maken. Verander de permissies van de volgende map alvorens verder te gaan.
 Your settings.php file appears to be valid: Uw <b>settings.php</b> bestand blijkt geldig te zijn
 Configuration Wizard Password: Configuratie wizard wachtwoord
 Create Settings File Password: Maak wachtwoord voor configuratiebestand
@@ -1631,7 +1633,7 @@ Click Update Database to complete the upgrade: Klik <b>Database bijwerken</b> om
 This appears to be an upgrade from version: Dit lijkt een opwaardering te zijn van versie
 In this section we will perform the required database changes to bring your database up to the required level: In deze sectie passen we uw database aan om deze op het benodigde niveau te krijgen
 If you are using a fully supported database, this step will be performed automatically for you: Indien u een volledig ondersteunde database gebruikt, zal deze stap automatisch worden uitgevoerd
-If not, the required SQL can be displayed and you should be able: Zoniet kan de gevraagde SQL getoond worden met u in staat zijn
+If not, the required SQL can be displayed and you should be able: Zoniet kan de gevraagde SQL getoond worden en zal u in staat zijn
 to cut &amp; paste it into your database server query window: om het de knippen &amp; plakken in uw database server query venster
 No database actions are required: Er zijn geen database-acties vereist
 The following database actions are required: De volgende database acties zijn benodigd
