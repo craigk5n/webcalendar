@@ -11,6 +11,8 @@ Version 1.2.5 (?? Feb 2012)
    files."
  - Updated German and German-utf8 translations.
  - Added Dutch-utf8 translation.  Updated Dutch translation.
+ - Fixed bug [ 3433913 ] Don't use the <blink> tag on text with missing
+   translations by default.
 
 Version 1.2.4 (08 Aug 2011)
  - Don't display program version as HTML comment unless user is an admin.
