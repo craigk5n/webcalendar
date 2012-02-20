@@ -2,6 +2,7 @@
 /* Consolidating parts of admin.php and pref.php.
  * $Id$
  */
+function_exists('translate') or die('You cannot access this file directly!');
 // .
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 $webcalendar_csscache = 1;
