@@ -183,7 +183,12 @@ function updateColor ( input, target ) {
   colorCell.style.backgroundColor = "#000000";
   input.select ();
   input.focus ();
-  alert ( '<?php etranslate ( 'Invalid Color', true ) ?>');
+  alert ( '<?php
+	$m = 'Invalid Color';
+	if (function_exists('etranslate'))	// Prevent CVE-2011-3814.
+		etranslate($m, true);
+	else 
+		echo $m; ?>');
  } else {
   colorCell.style.backgroundColor = color;
  }

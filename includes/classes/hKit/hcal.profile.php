@@ -2,6 +2,9 @@
   // hcal profile for hkit
   // hacked together by Ray Jones 06/26/2006
 
+  if (!isset($this))			// Prevent CVE-2011-3814.
+    die();
+
   $this->root_class = 'vevent';
 
   $this->classes = array (

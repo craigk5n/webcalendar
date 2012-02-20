@@ -5,7 +5,7 @@
  * This should make it easier to add new help screens without having to
  * touch each file every time.
 */
-defined ( '_ISVALID' ) or ( 'You cannot access this file directly!' );
+defined ( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 // DO NOT DELETE translate ( 'Index' ) translate ( 'Documentation' )
 $help_list = array ();
 $help_list['Index'] = 'help_index.php';

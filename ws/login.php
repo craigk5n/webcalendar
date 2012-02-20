@@ -9,14 +9,12 @@ define ( '__WC_BASEDIR', '..' ); // Points to the base WebCalendar directory
                           // relative to current working directory.
 define ( '__WC_INCLUDEDIR', '../includes' );
 
-include __WC_INCLUDEDIR . '/translate.php';
+foreach (array('config', 'dbi4php', 'formvars', 'functions', 'translate') as $i)
+  include_once __WC_INCLUDEDIR . '/' . $i . '.php';
+
 require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar ( __FILE__ );
-
-include __WC_INCLUDEDIR . '/config.php';
-include __WC_INCLUDEDIR . '/dbi4php.php';
-include __WC_INCLUDEDIR . '/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 

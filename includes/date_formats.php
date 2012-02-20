@@ -22,6 +22,7 @@
 // .
 // This will force $LANGUAGE to the current value
 // and eliminate having to double click the 'SAVE' button.
+function_exists('reset_language') or die('You cannot access this file directly!');
 reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
 define_languages (); // Load the language list.
 reset ( $languages );
