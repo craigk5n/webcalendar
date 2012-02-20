@@ -10,6 +10,7 @@ Version 1.2.5 (?? Feb 2012)
    in an error message, as demonstrated by ws/user_mod.php and certain other
    files."
  - Updated German and German-utf8 translations.
+ - Added Dutch-utf8 translation.
 
 Version 1.2.4 (08 Aug 2011)
  - Don't display program version as HTML comment unless user is an admin.
