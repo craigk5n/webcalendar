@@ -1372,7 +1372,7 @@ function display_small_tasks ( $cat_id ) {
         <th colspan="6">' . translate ( 'TASKS' ) . '</th>
         <th align="right" colspan="2"><a href="edit_entry.php?' . $u_url
    . 'eType=task' . $caturl
-   . '"><img src="images/new.gif" alt="+" class="new" /></a></th>
+   . '"><img src="images/new.png" alt="+" class="new" /></a></th>
       </tr>
       <tr class="header">
         <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
@@ -3339,7 +3339,7 @@ function html_for_add_icon ( $date = 0, $hour = '', $minute = '', $user = '' ) {
    . ( $minute > 0 ? '&amp;minute=' . $minute : '' )
    . ( empty ( $user ) ? '' : '&amp;defusers=' . $user )
    . ( empty ( $cat_id ) ? '' : '&amp;cat_id=' . $cat_id )
-   . '"><img src="images/new.gif" class="new" alt="' . $newEntryStr . '" /></a>';
+   . '"><img src="images/new.png" class="new" alt="' . $newEntryStr . '" /></a>';
 }
 
 /* Generates the HTML for an event to be viewed in the day-at-glance (day.php).
@@ -4433,7 +4433,7 @@ function print_date_entries ( $date, $user, $ssi = false ) {
      . ( strpos ( 'fullnew', $tmp ) !== false ? '' : ' Quarter' ) . ' Moon' ) );
     $ret = ( $can_add ? '
         <a title="' . $newEntryStr . '" href="edit_entry.php?' . $userCatStr
-       . 'date=' . $date . '"><img src="images/new.gif" alt="' . $newEntryStr
+       . 'date=' . $date . '"><img src="images/new.png" alt="' . $newEntryStr
        . '" class="new" /></a>' : '' ) . '
         <a class="dayofmonth" href="day.php?' . $userCatStr . 'date=' . $date
      . '">' . substr ( $date, 6, 2 ) . '</a>' . ( empty ( $tmp )
