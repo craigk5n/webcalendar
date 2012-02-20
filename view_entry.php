@@ -421,7 +421,7 @@ echo '</td>
       </tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' && ! empty ( $url ) ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'URL' ) . ':</td>
-        <td>' . activate_urls ( $url ) . '</td>
+        <td>' . activate_urls(htmlspecialchars($url)) . '</td>
       </tr>' : '' );
 
 if ( $event_status != 'A' && ! empty ( $event_status ) ) {
@@ -685,10 +685,10 @@ if ( $single_user == 'N' && $show_participants ) {
               <td width="30%">';
       if ( strlen ( $tempemail ) && $can_email != 'N' ) {
         echo '<a href="mailto:' . $tempemail . '?subject=' . $subject
-         . '">&nbsp;' . $tempfullname . '</a>';
+         . '">&nbsp;' . htmlspecialchars($tempfullname) . '</a>';
         $allmails[] = $tempemail;
       } else
-        echo '&nbsp;' . $tempfullname;
+        echo '&nbsp;' . htmlspecialchars($tempfullname);
 
       echo '</td>
               <td width="5%" align="center">' . $percentage . '%</td>
@@ -711,7 +711,7 @@ if ( $single_user == 'N' && $show_participants ) {
           ';
       if ( strlen ( $tempemail ) > 0 && $can_email != 'N' ) {
         echo '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
-         . $tempfullname . '</a>';
+         . htmlspecialchars($tempfullname) . '</a>';
         $allmails[] = $tempemail;
       } else
         echo $tempfullname;
@@ -727,7 +727,7 @@ if ( $single_user == 'N' && $show_participants ) {
         for ( $i = 0, $cnt = count ( $ext_users ); $i < $cnt; $i++ ) {
           if ( ! empty ( $ext_users[$i] ) ) {
             echo '
-          ' . $ext_users[$i] . ' (' . $externUserStr . ')<br />';
+          ' . htmlspecialchars($ext_users[$i]) . ' (' . $externUserStr . ')<br />';
             if ( preg_match ( '/mailto: (\S+)"/', $ext_users[$i], $match ) )
               $allmails[] = $match[1];
           }
