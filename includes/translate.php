@@ -301,7 +301,7 @@ function translate ( $str, $decode = '' ) {
   global $translation_loaded, $translations;
 
   //Set $blink to true to aid in finding missing translations
-  $blink = true;
+  $blink = false;
 
   if ( ! $translation_loaded )
     load_translation_text ();
