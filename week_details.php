@@ -94,7 +94,7 @@ for ( $d = 0; $d < 7; $d++ ) {
           <th' . $class . ( $can_add ? '
             <a title="' . $newEntryStr . '" href="edit_entry.php?' . $u_url
      . 'date=' . date ( 'Ymd', $days[$d] )
-     . '"><img src="images/new.gif" class="new" alt="' . $newEntryStr
+     . '"><img src="images/new.png" class="new" alt="' . $newEntryStr
      . '" /></a>' : '' ) . '
             <a title="' . $header[$d] . '" href="day.php?' . $u_url . 'date='
    . date ( 'Ymd', $days[$d] ) . $caturl . '">' . $header[$d] . '</a>
