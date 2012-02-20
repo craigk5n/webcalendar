@@ -152,16 +152,19 @@ if ( $login == '__public__' ) {
   $location = strip_tags ( $location );
 }
 
-// Don't allow certain HTML tags in description.
+// Don't allow certain HTML tags in name, description and location.
 // Malicious users can use meta refresh to redirect users to another
 // site (possibly a malware site).  This could be form a public submission
 // on an event calendar, and the admin gets sent to the malware site when
 // viewing the event to approve/reject it.
 $bannedTags = array ( 'HTML', 'HEAD', 'TITLE', 'BODY',
   'SCRIPT', 'META', 'LINK', 'OBJECT', 'APPLET' );
-for ( $i = 0; $i < count ( $bannedTags ); $i++ ) {
-  if ( preg_match ( "/<\s*$bannedTags[$i]/i", $description ) ) {
-    $error = translate('Security violation!');
+foreach (array($name, $description, $location) as $chkfld) {
+  for ( $i = 0; $i < count ( $bannedTags ); $i++ ) {
+    if ( preg_match ( "/<\s*$bannedTags[$i]/i", $chkfld ) ) {
+      $error = translate('Security violation!');
+      break 2;
+    }
   }
 }
 
