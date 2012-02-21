@@ -556,8 +556,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $cols = ( ( $hours * $interval ) + 1 );
   $style_width = ( $cell_pct > 0 ? 'style="width:' . str_replace( 'XXX',
       translate( $cell_pct, false, 'N' ), translate( 'percent' ) ) : '' );
-  $thismonth = date( 'm', $dateTS );
-  $thisyear = date( 'Y', $dateTS );
+  $thismonth = (int) date( 'm', $dateTS );
+  $thisyear = (int) date( 'Y', $dateTS );
 
   $ret = <<<EOT
     <br>
@@ -784,9 +784,9 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   if ( strlen ( $date ) != 8 )
     $date = date ( 'Ymd' );
 
-  $thisyear = $year = substr ( $date, 0, 4 );
-  $thismonth = $month = substr ( $date, 4, 2 );
-  $thisday = $day = substr ( $date, 6, 2 );
+  $thisyear = $year = (int) substr ( $date, 0, 4 );
+  $thismonth = $month = (int) substr ( $date, 4, 2 );
+  $thisday = $day = (int) substr ( $date, 6, 2 );
   if ( $thisyear - date ( 'Y' ) >= ( $num_years - 1 ) )
     $num_years = $thisyear - date ( 'Y' ) + 2;
 
@@ -1089,9 +1089,9 @@ function display_month( $thismonth, $thisyear, $demo = false,
 
   $wkstart = get_weekday_before ( $thisyear, $thismonth );
   // Generate values for first day and last day of month.
-  $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
-  $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
-  $monthend2 = date ( 'Ymd His', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
+  $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, (int)$thisyear ) );
+  $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, (int)$thisyear ) );
+  $monthend2 = date ( 'Ymd His', mktime ( 0, 0, 0, $thismonth + 1, 0, (int)$thisyear ) );
   $todayYmd = date ( 'Ymd', $today );
   for ( $i = $wkstart; date ( 'Ymd', $i + 43200 ) <= $monthend; $i += 604800 ) {
     $ret .= '
@@ -2039,9 +2039,9 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
 
   if ( $Until == null && $Count == 999 ) {
     // Check for $CONFLICT_REPEAT_MONTHS months into future for conflicts.
-    $thisyear = substr ( $dateYmd, 0, 4 );
-    $thismonth = substr ( $dateYmd, 4, 2 ) + $CONFLICT_REPEAT_MONTHS;
-    $thisday = substr ( $dateYmd, 6, 2 );
+    $thisyear = (int) substr ( $dateYmd, 0, 4 );
+    $thismonth = (int) substr ( $dateYmd, 4, 2 ) + $CONFLICT_REPEAT_MONTHS;
+    $thisday = (int) substr ( $dateYmd, 6, 2 );
     if ( $thismonth > 12 ) {
       $thisyear++;
       $thismonth -= 12;
@@ -2152,9 +2152,9 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
         $cdate = add_dstfree_time ( $cdate, 604800, $interval );
       }
     } elseif ( substr ( $rpt_type, 0, 7 ) == 'monthly' ) {
-      $thisyear = substr ( $dateYmd, 0, 4 );
-      $thismonth = substr ( $dateYmd, 4, 2 );
-      $thisday = substr ( $dateYmd, 6, 2 );
+      $thisyear = (int) substr ( $dateYmd, 0, 4 );
+      $thismonth = (int) substr ( $dateYmd, 4, 2 );
+      $thisday = (int) substr ( $dateYmd, 6, 2 );
       $hour = date ( 'H', $date );
       $minute = date ( 'i', $date );
       // Skip to this year if called from query_events and we don't need count.
@@ -2220,9 +2220,9 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       // BYDAY will be parsed relative to BYMONTH
       // if BYDAY is used without BYMONTH,
       // then it is relative to the current year (i.e 20MO).
-      $thisyear = substr ( $dateYmd, 0, 4 );
-      $thismonth = substr ( $dateYmd, 4, 2 );
-      $thisday = substr ( $dateYmd, 6, 2 );
+      $thisyear = (int) substr ( $dateYmd, 0, 4 );
+      $thismonth = (int) substr ( $dateYmd, 4, 2 );
+      $thisday = (int) substr ( $dateYmd, 6, 2 );
       // Skip to this year if called from query_events and we don't need count.
       if ( ! empty ( $jump ) && $Count == 999 ) {
         $jumpY = date ( 'Y', $jump );
@@ -3142,7 +3142,7 @@ function get_weekday_before ( $year, $month, $day = 2 ) {
   $laststr = 'last ' . $weekday_names[$WEEK_START];
   // We default day=2 so if the 1ast is Sunday or Monday it will return the 1st.
   $newdate = strtotime ( $laststr,
-    mktime ( 0, 0, 0, $month, $day, $year ) + $GLOBALS['tzOffset'] );
+    mktime ( 0, 0, 0, $month, $day, (int)$year ) + $GLOBALS['tzOffset'] );
   // Check DST and adjust newdate.
   while ( date ( 'w', $newdate ) == date ( 'w', $newdate + 86400 ) ) {
     $newdate += 3600;
@@ -5568,13 +5568,13 @@ function set_today ( $date = '' ) {
   $today = time();
 
   if ( empty ( $date ) ) {
-    $thisyear = ( empty ( $year ) ? date ( 'Y', $today ) : $year );
-    $thismonth = ( empty ( $month ) ? date ( 'm', $today ) : $month );
-    $thisday = ( empty ( $day ) ? date ( 'd', $today ) : $day );
+    $thisyear = (int) ( empty ( $year ) ? date ( 'Y', $today ) : $year );
+    $thismonth = (int) ( empty ( $month ) ? date ( 'm', $today ) : $month );
+    $thisday = (int) ( empty ( $day ) ? date ( 'd', $today ) : $day );
   } else {
-    $thisyear = substr ( $date, 0, 4 );
-    $thismonth = substr ( $date, 4, 2 );
-    $thisday = substr ( $date, 6, 2 );
+    $thisyear = (int) substr ( $date, 0, 4 );
+    $thismonth = (int) substr ( $date, 4, 2 );
+    $thisday = (int) substr ( $date, 6, 2 );
   }
   $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 }
