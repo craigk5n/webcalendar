@@ -37,7 +37,7 @@ if ( $is_admin ) {
   $doGroups = ( ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' );
   $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
 }
-$currenttab = getValue ( 'tab', 'users' );
+$currenttab = getValue ( 'tab', '^(users|groups|nonusers|remotes||)$', true );
 
 $BodyX = 'onload="showTab(\''. $currenttab . '\');"';
 print_header ( array ( 'js/visible.php', 'js/users.php/true' ), '',

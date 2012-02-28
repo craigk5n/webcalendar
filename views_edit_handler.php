@@ -1,5 +1,6 @@
 <?php // $Id$
 include_once 'includes/init.php';
+require_valid_referring_url ();
 
 $error = '';
 

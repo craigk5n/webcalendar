@@ -1,5 +1,6 @@
 <?php // $Id$
 include_once 'includes/init.php';
+require_valid_referring_url ();
 
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 $webcalendar_csscache = 1;
@@ -66,6 +67,34 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
   load_user_preferences();
 }
 
+//get list of theme files from /themes directory
+$themes = array();
+$dir = 'themes/';
+if (is_dir ($dir)) {
+   if ($dh = opendir ($dir)) {
+       while (($file = readdir ($dh)) !== false) {
+         if ( strpos ( $file, '_pref.php' ) )
+           $themes[] = str_replace ( '_pref.php', '', $file );
+       }
+       sort ( $themes );
+       closedir ($dh);
+   }
+}
+
+// Check for malicious 'pref_THEME' passed in (LFI vulnerability)
+if ( ! empty ( $_POST ) && empty ( $error ) ) {
+  $t = $_POST['pref_THEME'];
+  if ( ! empty ( $t ) ) {
+    $valid = false;
+    foreach ( $themes as $theme ) {
+      if ( $theme == $t )
+        $valid = true;
+    }
+    if ( ! $valid )
+      $error = translate('Invalid theme');
+  }
+}
+
 if ( ! empty ( $_POST ) && empty ( $error )) {
   $my_theme = '';
   $currenttab = getPostValue ( 'currenttab' );
@@ -113,20 +142,6 @@ $translation_loaded = false;
 
 //move this include here to allow proper translation
 include 'includes/date_formats.php';
-
-//get list of theme files from /themes directory
-$themes = array();
-$dir = 'themes/';
-if (is_dir ($dir)) {
-   if ($dh = opendir ($dir)) {
-       while (($file = readdir ($dh)) !== false) {
-         if ( strpos ( $file, '_pref.php' ) )
-           $themes[] = str_replace ( '_pref.php', '', $file );
-       }
-       sort ( $themes );
-       closedir ($dh);
-   }
-}
 
 //get list of menu themes
 $menuthemes = array();
