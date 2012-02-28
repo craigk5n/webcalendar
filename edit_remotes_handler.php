@@ -1,5 +1,6 @@
 <?php // $Id$
 include_once 'includes/init.php';
+require_valid_referring_url ();
 include_once 'includes/xcal.php';
 
 // Only available in php 5.x Used for hCalendar parsing.

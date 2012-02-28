@@ -1,5 +1,6 @@
 <?php // $Id$
 include_once 'includes/init.php';
+require_valid_referring_url ();
 include_once 'includes/date_formats.php';
 if ( file_exists ( 'install/default_config.php' ) )
   include_once 'install/default_config.php';

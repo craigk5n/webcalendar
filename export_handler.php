@@ -13,6 +13,7 @@
  *
  *********************************************************************/
 include_once 'includes/init.php';
+require_valid_referring_url ();
 include_once 'includes/xcal.php';
 
 $user = getPostValue ( 'user' );
