@@ -6106,4 +6106,30 @@ function site_extras_for_popup ( $id ) {
   return $ret;
 }
 
+/**
+  * Require a valid HTT_REFERER value in the HTTP header.  This will
+  * prevent XSRF (cross-site request forgery).
+  *
+  * For example, suppose a * a "bad guy" sends an email with a link that
+  * would delete an event in webcalendar to the admin.  If the admin user
+  * clicks on that link we don't want to actually delete the event.
+  */
+function require_valide_referring_url ()
+{
+  global $SERVER_URL;
+
+  if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
+    // Missing the REFERER value
+    die_miserable_death ( translate ( 'Invalid referring URL' ) );
+  }
+  if ( ! preg_match ( "@$SERVER_URL@i", $_SERVER['HTTP_REFERER'] ) ) {
+    // Gotcha.  URL of referring page is not the same as our server.
+    // This can be an instance of XSRF.
+    // (This may also happen when more than address is used for your server.
+    // However, you're not supposed to do that with this version of
+    // WebCalendar anyhow...)
+    die_miserable_death ( translate ( 'Invalid referring URL' ) );
+  }
+}
+
 ?>

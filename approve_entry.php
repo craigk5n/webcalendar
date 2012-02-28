@@ -1,6 +1,7 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
+require_valide_referring_url ();
 require ( 'includes/classes/WebCalMailer.class' );
 
 $error = '';

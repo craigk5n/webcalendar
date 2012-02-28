@@ -4,6 +4,8 @@ include_once 'includes/init.php';
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
 
+require_valide_referring_url ();
+
 $can_edit = $my_event = false;
 $other_user = '';
 

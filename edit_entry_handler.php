@@ -3,6 +3,7 @@
 include_once 'includes/init.php';
 require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
+require_valide_referring_url ();
 
 load_user_categories ();
 

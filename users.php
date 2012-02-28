@@ -39,7 +39,7 @@ if ( $is_admin ) {
   $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
 }
 
-$currenttab = getValue ( 'tab' );
+$currenttab = getValue ( 'tab', '^(users|groups|nonusers|remotes||)$', true );
 $currenttab = ( ! empty ( $currenttab) ? $currenttab : 'users' );
 
 $BodyX = 'onload="showTab(\'' . $currenttab . '\');"';
