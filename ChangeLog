@@ -19,10 +19,9 @@ Version 1.2.5 (?? Feb 2012)
    translations by default.
  - Fixed bug [ 3418570 ] Security vulnerability in saving user theme
    preference; Fix for install/index.php.  Security hole would allow
-   unauthenticated users.
-to overwrite settings.php file with arbitrary data.
-
+   unauthenticated users to overwrite settings.php file with arbitrary data.
  - Updated icon for adding events (new.png)
+ - Fixed bug [ 3445224 ] - Partipiciant Select Error
 
 Version 1.2.4 (08 Aug 2011)
  - Don't display program version as HTML comment unless user is an admin.
