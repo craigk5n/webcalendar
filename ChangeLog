@@ -1,9 +1,9 @@
 $Id$
 
-NOTE: This is the 1.3.0 development branch.
-Put code changes right below the 1.3.0+CVS label below.
+NOTE: This is the 2.0.0 development branch.
+Put code changes right below the 2.0.0+CVS label below.
 
-Version 1.3.0+CVS (?? ??? 2011)
+Version 2.0.0+CVS (?? ??? 2011)
  - 21-Nov-11 bb Cut dupe code and rearange some to try to get "translate.js.php"
    to work from "install/index.php".
    Fix typos.
