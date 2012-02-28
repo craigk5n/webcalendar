@@ -13,7 +13,11 @@ Version 1.2.5 (?? Feb 2012)
  - Added Dutch-utf8 translation.  Updated Dutch translation.
  - Fixed bug [ 3433913 ] Don't use the <blink> tag on text with missing
    translations by default.
- - Fixed bug [ 3418570 ] Security vulnerability in saving user theme preference.
+ - Fixed bug [ 3418570 ] Security vulnerability in saving user theme
+   preference; Fix for install/index.php.  Security hole would allow
+   unauthenticated users.
+to overwrite settings.php file with arbitrary data.
+
  - Updated icon for adding events (new.png)
 
 Version 1.2.4 (08 Aug 2011)

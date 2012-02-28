@@ -723,6 +723,10 @@ if ( ! empty ( $y ) ) {
 }
   // Save settings to file now.
 if ( ! empty ( $x ) || ! empty ( $y ) ){
+  if ( $doLogin ) {
+    // Hack attempt :-)
+    echo "Bugger off.<br>"; exit;
+  }
   $fd = @fopen ( $file, 'w+b', false );
   if ( empty ( $fd ) ) {
     if ( @file_exists ( $file ) ) {
