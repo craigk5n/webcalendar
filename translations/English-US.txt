@@ -514,6 +514,8 @@ Make New Category: Make New Category
 ########################################
 # Page: category_handler.php
 #
+#
+Category name is required: Category name is required
 File size exceeds maximum.: File size exceeds maximum.
 File is not a gif image.: File is not a gif image.
 
@@ -1087,7 +1089,6 @@ Illegal characters in login: Illegal characters in login
 
 ########################################
 # Page: pref.php
-#
 #
 Invalid theme: Invalid theme
 Save Preferences: Save Preferences

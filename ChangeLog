@@ -22,6 +22,7 @@ Version 1.2.5 (?? Feb 2012)
    unauthenticated users to overwrite settings.php file with arbitrary data.
  - Updated icon for adding events (new.png)
  - Fixed bug [ 3445224 ] - Partipiciant Select Error
+ - Fixed bug [ 3467051 ] - Don't allow empty category names.
 
 Version 1.2.4 (08 Aug 2011)
  - Don't display program version as HTML comment unless user is an admin.
