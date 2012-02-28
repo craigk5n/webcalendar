@@ -33,6 +33,7 @@
  * or you are an admin user.
  */
 include_once 'includes/init.php';
+require_valide_referring_url ();
 load_user_categories ();
 
 $error = ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'

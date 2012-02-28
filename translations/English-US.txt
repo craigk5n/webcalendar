@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated on 08-14-2010
+# Translation last updated on 02-27-2012
 
 
 ################################################################################
@@ -1088,6 +1088,8 @@ Illegal characters in login: Illegal characters in login
 ########################################
 # Page: pref.php
 #
+#
+Invalid theme: Invalid theme
 Save Preferences: Save Preferences
 Public Access calendar: Public Access calendar
 Modify Non User Calendar Preferences: Modify Non User Calendar Preferences
@@ -1509,6 +1511,7 @@ Thu: Thu
 Fri: Fri
 Sat: Sat
 unknown-weekday: unknown-weekday
+Invalid referring URL: Invalid referring URL
 
 ########################################
 # Page: includes/help_list.php
@@ -1709,11 +1712,6 @@ URL cannot be blank.: URL cannot be blank.
 # Page: includes/js/export_import.php
 #
 File type does not match Import Format: File type does not match Import Format
-
-########################################
-# Page: includes/js/visible.php
-#
-Invalid Color: Invalid Color
 
 ########################################
 # Page: includes/menu/index.php

@@ -5,6 +5,7 @@
  * This is the handler for Ajax httpXmlRequests.
  */
 require_once 'includes/classes/WebCalendar.class';
+require_valide_referring_url ();
 
 $WebCalendar = new WebCalendar ( __FILE__ );
 

@@ -2,6 +2,8 @@
 /* $Id$ */
 include_once 'includes/init.php';
 
+require_valide_referring_url ();
+
 //force the css cache to clear by incrementing webcalendar_csscache cookie
 $webcalendar_csscache = 1;
 if  ( isset ( $_COOKIE['webcalendar_csscache'] ) ) {

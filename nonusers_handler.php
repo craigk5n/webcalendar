@@ -1,6 +1,7 @@
 <?php
 /* $Id$ */
 include_once 'includes/init.php';
+require_valide_referring_url ();
 load_user_layers ();
 
 $nid = getValue ( 'nid' );

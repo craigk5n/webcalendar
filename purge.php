@@ -15,6 +15,7 @@
  *
  */
 include_once 'includes/init.php';
+require_valide_referring_url ();
 
 // Set this to true do show the SQL at the bottom of the page
 $purgeDebug = false;

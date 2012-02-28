@@ -9,6 +9,10 @@ Version 1.2.5 (?? Feb 2012)
    via a direct request to a .php file, which reveals the installation path
    in an error message, as demonstrated by ws/user_mod.php and certain other
    files."
+ - Fixed bug [ 2970095 ] - XSS vulnerability in users.php and 'tab' parameter.
+   Prevent XSRF by requiring HTTP_REFERER be same as WebCalendar URL.
+   Original notice:
+   http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2010-0637
  - Updated German and German-utf8 translations.
  - Added Dutch-utf8 translation.  Updated Dutch translation.
  - Fixed bug [ 3433913 ] Don't use the <blink> tag on text with missing
