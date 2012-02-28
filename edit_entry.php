@@ -1050,7 +1050,9 @@ if ( $can_edit ) {
     }
 
     if ( $size > 50 )
-      $size = 15;
+      $size = 50;
+    elseif ( $size > 20 )
+      $size = 20;
     elseif ( $size > 5 )
       $size = 5;
 
