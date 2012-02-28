@@ -81,22 +81,27 @@ if ( empty ($upcoming_initialized)) {
 $save_current_working_dir= getcwd();
 chdir(dirname(__FILE__));
 
-include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
-
+ foreach( array(
+    'config',
+    'dbi4php',
+    'formvars',
+    'functions',
+    'site_extras',
+    'translate',
+  ) as $i ) {
+  include_once 'includes/' . $i . '.php';
+}
+foreach( array(
+    'WebCalendar',
+    'Event',
+    'RptEvent',
+  ) as $i ) {
+  require_once 'includes/classes/' . $i . '.class';
+}
 $WebCalendar = new WebCalendar( __FILE__ );
-
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
-include 'includes/site_extras.php';
 
 //set default hCalendar but allow it to be overridden
 //this will include hidden values that can gleaned by hCalendar
@@ -179,11 +184,8 @@ function print_upcoming_event ( $e, $date ) {
     $link = "<a class=\"entry\" id=\"$popupid\" title=\"" .
       htmlspecialchars ( $e->getName() ) . '" href="' .
       $SERVER_URL . 'view_entry.php?id=' .
-      $e->getID() . "&amp;date=$date&amp;user=" . $e->getLogin();
-    if ( ! empty ( $link_target ) ) {
-      $link .= "\" target=\"$link_target\"";
-    }
-    $link .= '>';
+      $e->getID() . "&amp;date=$date&amp;user=" . $e->getLogin()
+       . ( empty( $link_target ) ? '>' : "\" target=\"$link_target\">" );
     if ( empty ( $UPCOMING_DISPLAY_CAT_ICONS ) ||
       $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
       $catNum = abs ( $e->getCategory() );
@@ -193,7 +195,7 @@ function print_upcoming_event ( $e, $date ) {
           $catIcon = 'icons/cat-' . $catNum . '.png';
         if ( file_exists ( $catIcon ) )
           echo $link .
-            '<img src="' . $catIcon . '" alt="category icon" border="0" /></a>';
+            '<img src="' . $catIcon . '" alt="category icon" border="0"></a>';
       }
     }
     echo $link;
@@ -465,7 +467,7 @@ echo send_doctype ( generate_application_name() );
      In the not too distant future, the admin UI will allow configuration
      of the stylesheet elements on this page.
 -->
-<style type="text/css">
+<style>
 body {
   background-color: #ffffff;
 }
@@ -530,10 +532,15 @@ a:hover {
 
 <?php
 if ( ! empty ( $showPopups ) && empty ( $error ) ) {
+<<<<<<< upcoming.php
   echo '<script type="text/javascript" src="includes/js/util.js?'
    . filemtime( 'includes/js/util.js' ) . '"></script>
     <script type="text/javascript" src="includes/js/popups.js?'
-   . filemtime( 'includes/js/popups.js' ) . '"</script>';
+   . filemtime( 'includes/js/popups.js' ) . '"></script>';
+=======
+  echo '<script src="includes/js/util.js"></script>
+    <script src="includes/js/popups.js"</script>';
+>>>>>>> 1.99
 }
 ?>
 </head>
