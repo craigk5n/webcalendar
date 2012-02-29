@@ -1,6 +1,6 @@
 $Id$
 
-Version 1.2.5 (?? Feb 2012)
+Version 1.2.5 (29 Feb 2012)
  - Patch 3488543: Fix XSS vulnerabilities to location variable to event edit
    page.
  - Patch 3414999: Security fix the following notice:
