@@ -759,6 +759,10 @@ if ( ! empty ( $x ) || ! empty ( $y ) ){
     // the send_reminders.php script is usually run under a different
     // user than the web server.
     @chmod ( $file, 0644 );
+
+    // Clear the db cache.  Otherwise, users may get bounced back to this
+    // install page even after the upgrade.
+    dbi_clear_cache ();
   }
 }
 //print_r ( $_SESSION);
