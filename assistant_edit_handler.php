@@ -6,7 +6,7 @@ $users = getPostValue ( 'users' );
 
 $error = '';
 if ( $user != $login )
-  $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
+  $user = ( ( $is_admin || $is_nonuser_admin ) && $user ? $user : $login );
 # update user list
 dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_boss = ?', array ( $user ) );
 if ( ! empty ( $users ) ) {
