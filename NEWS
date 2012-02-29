@@ -8,6 +8,12 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
+Version 1.2.5 (29 Feb 2012)
+ - Fixes for various security vulnerabilities include LFI (local file
+   inclusion), XSS (cross site scripting) and others.
+ - Updated translations: German, German-utf8, Dutch, Dutch-utf8
+ - Misc. minor bug fixes
+
 Version 1.2.4 (08 Aug 2011)
  - Fixed XSS vulnerability: malicious javascript in event descriptions submitted
    by public can do bad things (create admin account, delete events, etc.)
