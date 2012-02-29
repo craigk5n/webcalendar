@@ -47,7 +47,7 @@ for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthendYmd; $i += 604800 ) {
                 <td' . ( ( $dateYmd >= $monthstartYmd
         && $dateYmd <= $monthendYmd ) || $DISPLAY_ALL_DAYS_IN_MONTH == 'Y'
       ? ' class="field"><a href="javascript:sendDate(\''
-       . $dateYmd . '\')">' . date( 'j', $date ) . '</a>'
+       . $dateYmd . '\')">' . translate( date( 'j', $date ), false, 'N' ) . '</a>'
       : '>' ) . '</td>';
   }
   $mdays .= '
@@ -59,6 +59,7 @@ setcookie( 'fday', $fday );
 setcookie( 'fmonth', $fmonth );
 setcookie( 'fyear', $fyear );
 setcookie( 'fform', $form );
+$thisyear = translate( $thisyear, false, 'N' );
 print_header( '','', '', true, false, true, true, true );
 
 echo <<<EOT
