@@ -69,7 +69,7 @@
     <tr><th valign="top" style="text-align: right;">Document Version:</th><td> $Revision$ <br/> $Date$</td>
     </table>
 
-    <p style="margin-bottom: 0"><span class="note">Important News:</span>A major
+    <p style="margin-bottom: 0"><span class="note">Important News:</span> A major
     improvement beginning with Version 1.1 is the addition of an automated
     installation script. This script will guide you through the installation
     process and help identify any problem areas that might prevent successful
@@ -151,7 +151,7 @@
 
     <li>Make a backup of your current WebCalendar files on the server.  You would typically
         do this with an FTP client
-        (like <a hrer="http://filezilla.sourceforge.net/"FileZilla</a>).
+        (like <a href="http://filezilla.sourceforge.net/">FileZilla</a>).
     </li>
 
     <li>Install the new WebCalendar files in a <b>new</b> directory on your server.
@@ -173,10 +173,17 @@
         If you are doing this from FTP, change directories to the new webcalendar directory
         and use the following command:<br/>
         &nbsp;&nbsp;<tt>chmod 777 includes</tt>
+    <li>Change the permissions the permissions of the <tt>icons</tt> directory.
+        If you are doing this from FTP, change directories to the new webcalendar directory
+        and use the following command:<br/>
+        &nbsp;&nbsp;<tt>chmod 777 icons</tt>
 
     <li>Download a copy of your old <tt>includes/settings.php</tt> file from the old
         WebCalendar install and have it handy so you can enter the same values in your
         upgrade process. </li>
+    <li>Download all files in your old <tt>icons</tt> directory from your old
+        WebCalendar and copy the files into the <tt>icons</tt> directory in
+        the new install directory. </li>
 
    <li>You're now ready to start the install/upgrade wizard.  Point your browser to the
        web server where you have installed the files.   You only need to specify
