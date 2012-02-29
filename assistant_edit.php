@@ -8,7 +8,7 @@ if ( empty ( $login ) || $login == '__public__' ) {
 }
 
 if ( $user != $login )
-  $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
+  $user = ( ( $is_admin || $is_nonuser_admin ) && $user ? $user : $login );
 
 ob_start();
 print_header();
