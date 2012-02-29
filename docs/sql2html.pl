@@ -71,8 +71,8 @@ sub print_table {
 }
 
 # first, get WebCalendar version
-open( F, '../includes/classes/WebCalendar.class' )
-  || die 'Error reading WebCalendar.class:' . "$!\n";
+open( F, '../includes/config.php' )
+  || die 'Error reading config.php:' . "$!\n";
 while ( <F> ) {
   if ( /PROGRAM_VERSION =/ ) {
     if ( /'/ ) {
