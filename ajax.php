@@ -5,7 +5,6 @@
  * This is the handler for Ajax httpXmlRequests.
  */
 require_once 'includes/classes/WebCalendar.class';
-require_valide_referring_url ();
 
 $WebCalendar = new WebCalendar ( __FILE__ );
 
@@ -14,6 +13,7 @@ include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
+require_valide_referring_url ();
 
 $WebCalendar->initializeFirstPhase ();
 
