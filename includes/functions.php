@@ -6120,7 +6120,9 @@ function require_valide_referring_url ()
 
   if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
     // Missing the REFERER value
-    die_miserable_death ( translate ( 'Invalid referring URL' ) );
+    //die_miserable_death ( translate ( 'Invalid referring URL' ) );
+    // Unfortunately, some version of MSIE do not send this info.
+    return true;
   }
   if ( ! preg_match ( "@$SERVER_URL@i", $_SERVER['HTTP_REFERER'] ) ) {
     // Gotcha.  URL of referring page is not the same as our server.
