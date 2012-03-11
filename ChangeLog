@@ -4,6 +4,7 @@ Version 1.2.6 (?? ??? 2012)
  - Bug fix: ajax.php error on undefined function require_valide_referring_url
  - Bug fix: don't require HTTP_REFERER in HTTP header since some version of
    MSIE don't send it, causing some form submissions to fail.
+ - Updated Greek translation
 
 Version 1.2.5 (29 Feb 2012)
  - Patch 3488543: Fix XSS vulnerabilities to location variable to event edit
