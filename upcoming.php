@@ -26,7 +26,9 @@
  *
  * Input parameters:
  * You can override settings by changing the URL parameters:
- *   - days: number of days ahead to look for events
+ *   - days: number of days ahead to look for events (be sure to also
+ *     change "maxEvents" from its default of 10.
+ *   - maxEvents: max number of events to show (default is 10)
  *   - cat_id: specify a category id to filter on
  *   - user: login name of calendar to display (instead of public
  *     user), if allowed by System Settings. You must have the
@@ -559,7 +561,9 @@ if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate ($upcoming_tit
 <?php
 echo "<dl>\n";
 
-echo "<!-- \nstartTime: startDate\nendTime: $endDate\nstartDate: " .
+echo "<!-- \nstartTime: $startDate (" . date('Ymd H:i:s', $startDate ) . ")\n" .
+  "endTime: $endDate (" . date('Ymd H:i:s', $endDate ) . ")\n" .
+  "startDate: " .
   "$date\nnumDays: $numDays\nuser: $username\nevents: " .
   count ( $events ) . "\nrepeated_events: " .
   count ( $repeated_events ) . " -->\n";
@@ -569,6 +573,8 @@ $numEvents = 0;
 $endDateYmd = date ( 'Ymd', $endDate );
 for ( $i = $startDate; date ( 'Ymd', $i ) <= $endDateYmd &&
   $numEvents < $maxEvents; $i += 86400 ) {
+  echo "<!-- i = $i; startDate = $startDate; date(Ymd)= " .
+    date ( 'Ymd', $i ) . "; endDateYmd = $endDateYmd; numEvents: $numEvents; maxEvents: $maxEvents -->\n";
   $d = date ( 'Ymd', $i );
   $entries = get_entries ( $d, $get_unapproved );
   $rentries = get_repeating_entries ( $username, $d, $get_unapproved );
