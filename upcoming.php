@@ -556,7 +556,7 @@ if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate ($upcoming_tit
 <?php
 echo "<dl>\n";
 
-echo "<!-- \nstartTime: startDate\nendTime: $endDate\nstartDate: " .
+echo "<!-- \nstartTime: $startDate\nendTime: $endDate\nstartDate: " .
   "$date\nnumDays: $numDays\nuser: $username\nevents: " .
   count ( $events ) . "\nrepeated_events: " .
   count ( $repeated_events ) . " -->\n";
