@@ -1,4 +1,4 @@
-<!doctype html> // $Id$
+<!doctype html>  <!-- $Id$ -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -6,17 +6,24 @@
     <style>
       body {
         background: #fff;
+        font-size: 16px;
         font-family: Arial, Helvetica, sans-serif;
       }
       a {
         text-decoration: none;
       }
-      p {
-        margin: 10px;
-      }
       dl,
       ul {
         margin-left: 10px;
+      }
+      dt {
+        margin-top: 10px;
+      }
+      dt,
+      .note,
+      .tip,
+      .urgent {
+        font-weight: bold;
       }
       h2,
       h3 {
@@ -26,60 +33,82 @@
         background: #191970;
         color: #FFF;
       }
-      dt {
-        margin-top: 10px;
-        font-weight: bold;
-      }
-      pre {
-        margin-right: 25px;
-        margin-left: 25px;
-        border: 1px solid #00F;
-        padding: 4px;
-        background: #EEF;
-        font-size: 14px;
-        font-family: courier, monospace;
-      }
-      .tip {
-        padding: 2px;
-        background: #FF0;
-        font-weight: bold;
-      }
-      .note {
-        padding: 2px;
-        background: #87CEFA;
-        font-weight: bold;
-      }
       hr {
         margin-bottom: 7px;
       }
-      .valid {
-        border: 0;
+      img,
+      table {
+        border-width: 0;
       }
+      p {
+        margin: 10px;
+      }
+      p:first-of-type {
+       margin-bottom: 0;
+      }
+      pre {
+        margin: 2px 25px;
+        border: 1px solid #0000FF;
+        padding: 4px;
+        background: #EEEEFF;
+        font-size: 14px;
+      }
+      pre,
+      .tt {
+        font-family: courier, monospace;
+      }
+      table {
+         margin-left: 50px;
+      }
+       th:first-child,
       .top {
         text-align: right;
+      }
+      th:last-of-type {
+        vertical-align: top;
+      }
+      ul:first-of-type {
+         margin: 0;
+      }
+      ul:first-of-type li {
+        margin-left: 30px;
+      }
+      .note,
+      .tip {
+        padding: 2px;
+      }
+      .note {
+        background: #87CEFA;
+      }
+      .tip {
+        background: #FFFF000;
+      }
+      .urgent {
+        color: #FF0000;
       }
     </style>
   </head>
   <body>
     <h1>WebCalendar Upgrading Notes</h1>
 
-    <table border="0" style="margin-left: 50px;">
-    <tr><th style="text-align: right;">WebCalendar Version:</th><td> 1.3.0 </td></tr>
-    <tr><th valign="top" style="text-align: right;">Document Version:</th><td> $Revision$ <br> $Date$</td>
+    <table>
+      <tr><th>WebCalendar Version:</th><td>1.3.0</td></tr>
+      <tr><th>Document Version:</th>
+        <td>$Revision$br>$Date$</td></tr>
     </table>
 
-    <p style="margin-bottom: 0"><span class="note">Important News:</span>A major
+    <p><span class="note">Important News:</span> A major
     improvement beginning with Version 1.1 is the addition of an automated
     installation script. This script will guide you through the installation
     process and help identify any problem areas that might prevent successful
     installation or operation of WebCalendar.</p>
 
-    <ul style="margin-top: 0">
-      <li style="margin-left: 30px">If upgrading, the script will attempt to
+    <ul>
+      <li>If upgrading, the script will attempt to
       determine your current installation version and bring your database up to
       date.</li>
 
-      <li style="margin-left: 30px">If this is a new installation, the
+      <li>If this is a new installation, the
       installation script will create your database and setup the required
       tables for you. It can then create a default Administrator account and
       add the basic configuration data to get you up and running.</li>
@@ -89,7 +118,7 @@
     dedicated server. If using an ISP or a CPANEL installer, your mileage may
     vary. If problems arise, you can always follow the instruction below as in
     previous versions and setup your database manually. As with any upgrade,
-    it's always a good idea to <span style="color: #F00">backup your data prior
+    it's always a good idea to <span class="urgent">backup your data prior
     to installation</span>.</p>
 
     <p>Another major upgrade to WebCalendar for v1.1 is the implementation of
@@ -129,7 +158,7 @@
                <li>Startup phpMyAdmin </li>
                <li>Select the database from the pulldown on the left under the
                    label "Databases".  (This will be the same database name
-                   used in your <tt>includes/settings.php</tt> file in your
+                   used in your <span class="tt">includes/settings.php</span> file in your
                    old WebCalendar install.)</li>
                <li>Click on the "Export" tab.</li>
                <li>It's best to use "SQL" for the format so it can be easily imported again.</li>
@@ -141,9 +170,10 @@
              </ul> </li>
           <li>If you have access to a MySQL command line (typically via shell access on a
               Linux server), you can use the mysqldump command:<br>
-             &nbsp;&nbsp;<tt>mysqldump -u<b>USERNAME</b> -p<b>PASSWORD</b> <b>DATABASE</b> > dumpfile.sql</tt>
+             &nbsp;&nbsp;<span class="tt">mysqldump -u<b>USERNAME</b>
+             -p<b>PASSWORD DATABASE</b> > dumpfile.sql</span>
              <br>Of course, replace USERNAME, PASSWORD and DATABASE from the values in
-            your <tt>includes/settings.php</tt> file from your old WebCalendar install.
+            your <span class="tt">includes/settings.php</span> file from your old WebCalendar install.
          </li>
          </ul></li>
 
@@ -167,23 +197,25 @@
         this <i>before</i> you proceed to the automated install.
     </li>
 
-    <li>Change the permissions the permissions of the <tt>includes</tt> directory.
-        If you are doing this from FTP, change directories to the new webcalendar directory
-        and use the following command:<br>
-        &nbsp;&nbsp;<tt>chmod 777 includes</tt>
+    <li>Change the permissions of both the <span class="tt">includes</span>
+        and the <span class="tt">icons</span> directories. If you are doing
+        this from FTP, change to your new webcalendar directory. Make a note of
+        the current directory permissions, and then enter the following
+        commands:<br>&nbsp;&nbsp;<span class="tt">chmod 777 includes<br>
+        &nbsp;&nbsp;chmod 777 icons</span>
 
-    <li>Download a copy of your old <tt>includes/settings.php</tt> file from the old
+    <li>Download a copy of your old <span class="tt">includes/settings.php</span> file from the old
         WebCalendar install and have it handy so you can enter the same values in your
         upgrade process. </li>
 
    <li>You're now ready to start the install/upgrade wizard.  Point your browser to the
        web server where you have installed the files.   You only need to specify
        the webcalendar directory to get to the wizard.  Because there is no
-       <tt>includes/settings.php</tt> file in the new install, you will be redirected
+       <span class="tt">includes/settings.php</span> file in the new install, you will be redirected
        to the install/upgrade wizard.</li>
     
-   <li>Once the wizard is complete, it's a good idea to change your <tt>includes</tt>
-       permissions back to what they were originally for better security. </li>
+   <li>Once the wizard is complete, it's a good idea to change the permissions of
+       the directories back to what they were originally for better security.</li>
     </ol>
 
     <hr>
@@ -547,7 +579,7 @@ CREATE TABLE webcal_import_data (
 );
     </pre>
 
-    <p>Next, you will need to run the script found in the <tt>tools</tt>
+    <p>Next, you will need to run the script found in the <span class="tt">tools</span>
     subdirectory. This will convert all your passwords from plain text to md5.
     You can run this from the command line (if you have a standalone version of
     PHP compiled):</p>
@@ -562,7 +594,7 @@ php convert_passwords.php
 
     <pre>http://yourcalendarurl/tools/convert_passwords.php</pre>
 
-    <p>You may safely delete the file <tt>/tools/convert_passwords.php</tt>
+    <p>You may safely delete the file <span class="tt">/tools/convert_passwords.php</span>
     after successfully performing this step.</p>
 
     <p>Delete all webcalendar_login browser cookies. Details should be available
@@ -573,7 +605,7 @@ php convert_passwords.php
 
     <h2><a id="from_1_0RC2">To upgrade from v0.9.43 - v1.0RC2</a></h2>
 
-    <p>The <tt>webcal_view</tt> table was modified. Execute the following SQL
+    <p>The <span class="tt">webcal_view</span> table was modified. Execute the following SQL
     to update your database:</p>
 
     <pre>
@@ -665,8 +697,7 @@ CREATE TABLE webcal_entry_categories (
     to run the <a href="install/index.php">installation script</a> to perform
     any necessary data changes needed to convert existing data.</p>
 
-//    <p><a href="http://validator.w3.org/check?uri=referer">
-//      <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!"
-//      class="valid"></a></p>
+    <p><a href="http://validator.w3.org/check?uri=referer">
+      <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid HTML5!"></a></p>
   </body>
 </html>
