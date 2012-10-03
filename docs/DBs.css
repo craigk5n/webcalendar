@@ -1,0 +1,43 @@
+/* $Id$ */
+
+body {
+  background-color:#FFFFFF;
+}
+#DB_Doc blockquote {
+  margin:5px;
+}
+#DB_Doc p {
+  margin:0;
+  padding:0;
+}
+#DB_Doc label {
+  clear:left;
+  float:left;
+  width:13%;
+  font-weight:bold;
+  line-height:120%;
+}
+hr {
+  margin: 5px 0;
+  padding:0;
+}
+table {
+  border:0;
+  padding:1px;
+}
+th {
+  background-color:#C0C0C0;
+  vertical-align:top;
+}
+td {
+  background-color:#E0E0E0;
+  padding:2px;
+  vertical-align:top;
+}
+span {
+  color:#FF0000;
+  font-weight:bold;
+}
+.tt {
+  font-family:monospace;
+}
