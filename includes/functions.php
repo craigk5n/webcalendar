@@ -1,5 +1,6 @@
 <?php
-/* Most of WebCalendar's functions.
+/**
+ * Most of WebCalendar's functions.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
@@ -1691,8 +1692,8 @@ function do_redirect ( $url ) {
   // $SERVER_URL should end in '/', but we may not have it yet if we are
   // redirecting to the login.  If not, then pull it from the database.
   if ( empty ( $SERVER_URL ) && ! empty ( $c ) ) {
-    $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-      "WHERE cal_setting = 'SERVER_URL'" );
+    $res = dbi_query ( 'SELECT cal_value FROM webcal_config
+      WHERE cal_setting = ' . "'SERVER_URL'" );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         $SERVER_URL = $row[0];
@@ -1709,9 +1710,6 @@ function do_redirect ( $url ) {
   if ( ! empty ( $SERVER_URL ) && substr ( $url, 0, 1 ) != '/' ) {
     $url = $SERVER_URL . $url;
   }
-
-//echo "<pre>"; print_r ( debug_backtrace() ); echo "\n</pre>\n";
-//echo "URL: $url <br>"; exit;
 
   $meta = '';
   if ( ( substr ( $SERVER_SOFTWARE, 0, 5 ) == 'Micro' ) ||
