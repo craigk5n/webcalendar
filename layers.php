@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * This page handles managing a user's layers
  * and works with layer_ajax.php to make changes.
@@ -45,76 +45,57 @@ $LOADING = '<center><img src="images/loading_animation.gif" alt=""></center>';
 $public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
   translate( 'modify XXX layers settings' ) );
 
+$headExtras = '<link href="includes/tabcontent/tabcontent.css" rel="stylesheet">
+    <link href="includes/js/modalbox/modalbox.css" rel="stylesheet" media="screen">
+    <script src="includes/js/visible.js"></script>
+    <script src="includes/js/modalbox/modalbox.js"></script>
+    <script src="includes/tabcontent/tabcontent.js"></script>';
+
 ob_start();
-
-// Add ModalBox javascript/CSS & Tab code
-$headExtras = '
-<script src="includes/tabcontent/tabcontent.js"></script>
-<link href="includes/tabcontent/tabcontent.css" rel="stylesheet">
-<script src="includes/js/modalbox/modalbox.js"></script>
-<link rel="stylesheet" href="includes/js/modalbox/modalbox.css"
-media="screen">
-';
-
-print_header( array( 'js/visible.js/true' ),
-  $headExtras, 'onload="load_layers();"' );
+print_header ( '', $headExtras, 'onload="load_layers();"' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
   echo print_not_auth();
 else {
-  if( empty( $PUBLIC_ACCESS ) )
+  if ( empty ( $PUBLIC_ACCESS ) )
     $PUBLIC_ACCESS = 'N';
 
-  if( $is_admin && empty( $public ) && $PUBLIC_ACCESS == 'Y' ) {
-    ?>
+  echo ( $is_admin && empty ( $public ) && $PUBLIC_ACCESS == 'Y' ? '
     <div class="rightsidetip">
-      <a href="layers.php?public=1"><?php echo $public_link;?></a>
-    </div>
-<?php
-  }
-  echo '
+      <a href="layers.php?public=1">' . $public_link . '</a>
+    </div>' : '' ) . '
     <h2>' . ( $updating_public
     ? translate ( $PUBLIC_ACCESS_FULLNAME ) . '&nbsp;' : '' )
    . translate ( 'Layers' ) . '&nbsp;<img src="images/help.gif" alt="'
    . translate ( 'Help' ) . '" class="help" onclick="window.open( '
    . '\'help_layers.php\', \'cal_help\', \'dependent,menubar,scrollbars,'
    . 'height=400,width=400,innerHeight=420,outerWidth=420\' );"></h2>
-    ' . display_admin_link();
-
-  ?>
-  <form>
-  <div class="note">
-  <span id="layerstatus">
-  <?php echo $layers_enabled ? $LAYERS_ENABLED : $LAYERS_DISABLED;?>
-  </span>
-  &nbsp;&nbsp;
-  &nbsp;&nbsp;
-  <input type="button" onclick="return set_layer_status(true);" value=<?php echo $enableLayersStr;?>" id="enablebutton" <?php echo $layers_enabled ? ' disabled' : '';?>>
-  <input type="button" onclick="return set_layer_status(false);" value=<?php etranslate("Disable Layers");?>" <?php echo $layers_enabled ? '' : ' disabled';?> id="disablebutton">
-  </div>
-
-<br><br>
-
-<div id="layerlist" style="margin-left: 25px;"> <?php echo $LOADING;?> </div>
-
-<br>
-
-<div class="layerButtons" style="margin-left: 25px;">
-<input type="button" value="<?php etranslate('Add layer');?>..."
-  onclick="return edit_layer(-1)">
-</div>
-<br>
+    ' . display_admin_link() . '
+    <form>
+      <div class="note">
+        <span id="layerstatus">'
+    . ( $layers_enabled ? $LAYERS_ENABLED : $LAYERS_DISABLED )
+    . '</span> &nbsp; &nbsp; &nbsp;
+        <input type="button" onclick="return set_layer_status(true);" value="'
+    . $enableLayersStr . '" id="enablebutton"'
+    . ( $layers_enabled ? ' disabled' : '' ) . '>
+        <input type="button" onclick="return set_layer_status(false);" value="'
+    . translate ( 'Disable Layers' ) . '" id="disablebutton"'
+    .  ( $layers_enabled ? '>' : ' disabled>' ) . '
+      </div><br><br>
+      <div id="layerlist" style="margin-left: 25px;">' . $LOADING . '</div><br>
+      <div class="layerButtons" style="margin-left: 25px;">
+        <input type="button" value="' . translate ( 'Add layer' )
+    . '..." onclick="return edit_layer(-1)">
+      </div><br>
 
 <!--
-<input type="button" value="Refresh"
-  onclick="return load_layers()"> <br>
--->
-
-<?php
+      <input type="button" value="Refresh" onclick="return load_layers()"><br>
+-->';
 }
 
 // Create list of users for edit layer dialog.
-$userlist = Array();
+$userlist = array();
 if ( $single_user == 'N' ) {
   $otherlist = $userlist = get_my_users ( '', 'view' );
   if ( $NONUSER_ENABLED == 'Y' ) {
