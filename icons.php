@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
 $icon_path = 'icons/';
 
@@ -60,10 +60,10 @@ if ( $d = dir ( $icon_path ) ) {
    . translate ( 'Current Icons on Server' ) . '</h2></td>
       </tr>
       <tr>';
-  for ( $i = 0, $cnt = count ( $icons ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $icons[$i]; $i++ ) {
     echo '
         <td><a href="#" onclick="sendURL( \'' . $icon_path . $icons[$i]
-     . '\' )" ><img src="' . $icon_path . $icons[$i] . '" border="0" title="'
+     . '\' )" ><img src="' . $icon_path . $icons[$i] . '" title="'
      . $title_str . '" alt="' . $title_str . '"></a></td>'
      . ( $i > 0 && $i % 8 == 0 ? '
       </tr>

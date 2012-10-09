@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Page Description:
  * This page will display the month "view" with all users's events on the same
@@ -62,35 +62,34 @@ if ( ! empty ( $error ) ) {
 }
 
 $e_save = $re_save = array();
-for ( $i = 0, $cnt = $viewusercnt; $i < $cnt; $i++ ) {
+foreach ( $viewusers as $i ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
+  $repeated_events = read_repeated_events ( $i, $startdate, $enddate, '' );
   $re_save = array_merge ( $re_save, $repeated_events );
   /* Pre-load the non-repeating events for quicker access */
-  $events = read_events ( $viewusers[$i], $startdate, $enddate );
+  $events = read_events ( $i, $startdate, $enddate );
   $e_save = array_merge ( $e_save, $events );
 }
 $events = $repeated_events = array();
 
-for ( $i = 0, $cnt = count ( $e_save ); $i < $cnt; $i++ ) {
+foreach ( $e_save as $i ) {
   $should_add = 1;
-  for ( $j = 0, $cnt_j = count ( $events ); $j < $cnt_j && $should_add; $j++ ) {
-    if ( ! $e_save[$i]->getClone() && $e_save[$i]->getID() == $events[$j]->getID() )
+  for ( $j = 0; $events[$j] && $should_add; $j++ ) {
+    if ( ! $i->getClone() && $i->getID() == $events[$j]->getID() )
       $should_add = 0;
   }
   if ( $should_add )
-    array_push ( $events, $e_save[$i] );
+    array_push ( $events, $i );
 }
 
-for ( $i = 0, $cnt = count ( $re_save ); $i < $cnt; $i++ ) {
+foreach ( $re_save as $i ) {
   $should_add = 1;
-  for ( $j = 0, $cnt_j = count ( $repeated_events ); $j < $cnt_j && $should_add; $j++ ) {
-    if( ! $re_save[$i]->getClone()
-        && $re_save[$i]->getID() == $repeated_events[$j]->getID() )
+  for ( $j = 0; $repeated_events[$j] && $should_add; $j++ ) {
+    if ( ! $i->getClone() && $i->getID() == $repeated_events[$j]->getID() )
       $should_add = 0;
   }
   if ( $should_add )
-    array_push ( $repeated_events, $re_save[$i] );
+    array_push ( $repeated_events, $i );
 }
 
 if ( $DISPLAY_SM_MONTH != 'N' ) {

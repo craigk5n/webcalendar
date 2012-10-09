@@ -40,7 +40,7 @@ function schedule_event(hours, minutes) {
     parentForm.day.selectedIndex = day - 1;
     parentForm.month.selectedIndex = month - 1;
 
-    for (var i = 0; i < parentForm.year.length; i++) {
+    for (var i = 0; parentForm.year[i]; i++) {
       if (parentForm.year.options[i].value == year) {
         parentForm.year.selectedIndex = i;
       }

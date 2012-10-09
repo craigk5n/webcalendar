@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
 send_no_cache_header();
 
@@ -219,10 +219,10 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   // Get and sort all the repeating and non-repeating events for this date.
   $ev = combine_and_sort_events ( get_entries ( $date ),
     get_repeating_entries ( $user, $date ) );
-  for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
-    if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) ||
-      $ev[$i]->getStatus() == 'A' )
-      print_detailed_entry ( $ev[$i], $date );
+  foreach ( $ev as $i ) {
+    if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' )
+        || $i->getStatus() == 'A' )
+      print_detailed_entry ( $i, $date );
   }
 }
 

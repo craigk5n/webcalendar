@@ -31,13 +31,13 @@ if ( ! empty ( $run_mode ) &&  $run_mode == 'dev' )
 function assert_get_cvs_file_version ( $file ) {
   $version = 'v?.?';
   $path = array ( '', 'includes/', '../' );
-  for ( $i = 0, $cnt = count ( $path ); $i < $cnt; $i++ ) {
-    $newfile = $path[$i] . $file;
+  foreach ( $path as $i ) {
+    $newfile = $i . $file;
     if ( file_exists ( $newfile ) ) {
       $fd = @fopen ( $newfile, 'rb', false );
       if ( $fd ) {
         while ( ! feof ( $fd ) ) {
-          $data = fgets( $fd );
+          $data = fgets ( $fd );
           if ( preg_match ( "/Id: (\S+),v (\d\S+)/", $data, $match ) ) {
             $version = 'v' . $match[2];
             break;
@@ -69,9 +69,8 @@ function assert_backtrace() {
     return '[stacktrack requires PHP 4.3/5.0. Not available in PHP '
      . phpversion() . ']';
   $bt = debug_backtrace();
-  // print_r ( $bt );
   $file = array();
-  for ( $i = 2, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
+  for ( $i = 2; $bt[$i]; $i++ ) {
     // skip the first two, since it's always this func and assert_handler
     $afile = $bt[$i];
 
@@ -79,7 +78,7 @@ function assert_backtrace() {
      . ' [' . assert_get_cvs_file_version ( $afile['file'] ) . ']';
     if ( ! empty ( $afile['function'] ) ) {
       $line .= ' ' . $afile['function'] . ' ( ';
-      for ( $j = 0, $cnt_args = count ( $afile['args'] ); $j < $cnt_args; $j++ ) {
+      for ( $j = 0; $afile['args'][$j]; $j++ ) {
         if ( $j )
           $line .= ', ';
         $v = $afile['args'][$j];

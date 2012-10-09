@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
 print_header();
 echo '
@@ -33,12 +33,11 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
     <form action="' . $url . '" method="get" name="SelectUser">
       <select name="user" onchange="document.SelectUser.submit()">';
 
-  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
+  foreach ( $userlist as $i ) {
     // Don't list current user
-    if ( $login == $userlist[$i]['cal_login'] )
+    if ( $login == $i['cal_login'] )
       continue;
-    echo $option . $userlist[$i]['cal_login'] . '">'
-     . $userlist[$i]['cal_fullname'] . '</option>';
+    echo $option . $i['cal_login'] . '">' . $i['cal_fullname'] . '</option>';
   }
 
   echo '

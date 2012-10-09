@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Description:
  * Creates the iCal free/busy schedule a single user.
@@ -128,15 +128,12 @@ for ( $d = $startdate; $d <= $enddate; $d += 86400 ) {
   $dYmd = date ( 'Ymd', $d );
   $ev = get_entries ( $dYmd, $get_unapproved );
   $evcnt = count ( $ev );
-  for ( $i = 0; $i < $evcnt; $i++ ) {
-    $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration(),
-      $ev[$i]->getTime(), 'ical' );
+  foreach ( $ev as $i ) {
+    $event_text .= fb_export_time ( $dYmd, $i->getDuration(), $i->getTime(), 'ical' );
   }
   $revents = get_repeating_entries ( $user, $dYmd, $get_unapproved );
-  $recnt = count ( $revents );
-  for ( $i = 0; $i < $recnt; $i++ ) {
-    $event_text .= fb_export_time ( $dYmd, $revents[$i]->getDuration(),
-      $revents[$i]->getTime(), 'ical' );
+  foreach ( $revents as $i ) {
+    $event_text .= fb_export_time ( $dYmd, $i->getDuration(), $i->getTime(), 'ical' );
   }
 }
 

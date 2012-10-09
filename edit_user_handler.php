@@ -1,9 +1,10 @@
-<?php // $Id$
+<?php /* $Id$ */
 
 // There is the potential for a lot of mischief from users trying to access this
 // file in ways they shouldn't. Users may try to type in a URL to get around
 // functions that are not being displayed on the web page to them.
 include_once 'includes/init.php';
+require_valide_referring_url();
 load_user_layers();
 
 $referer = '';

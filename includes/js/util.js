@@ -48,12 +48,12 @@ function altrows() {
 
   var rows = $$('div tbody tr');
 
-  for (var i = rows.length - 1; i >= 0; i--) {
-    if (!rows[i].hasClassName('ignore')) {
-      rows[i].onmouseover = function () {
+  for (var i in rows) {
+    if (!i.hasClassName('ignore')) {
+      i.onmouseover = function () {
         $(this).addClassName('alt');
       }
-      rows[i].onmouseout = function () {
+      i.onmouseout = function () {
         $(this).removeClassName('alt');
       }
     }
@@ -65,12 +65,12 @@ function altps() {
 
   var rows = $$('div p');
 
-  for (var i = rows.length - 1; i >= 0; i--) {
-    if (!rows[i].hasClassName('ignore')) {
-      rows[i].onmouseover = function () {
+  for (var i in rows) {
+    if (!i.hasClassName('ignore')) {
+      i.onmouseover = function () {
         $(this).addClassName('alt');
       }
-      rows[i].onmouseout = function () {
+      i.onmouseout = function () {
         $(this).removeClassName('alt');
       }
     }

@@ -439,9 +439,9 @@ if ( empty ( $error ) && empty ( $list ) ) {
     $ev = combine_and_sort_events (
       get_entries ( $dateYmd ),
       get_repeating_entries ( $report_user, $dateYmd ) );
-    for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
-      if ( $get_unapproved || $ev[$i]->getStatus() == 'A' )
-        $event_str .= event_to_text ( $ev[$i], $dateYmd );
+    foreach ( $ev as $i ) {
+      if ( $get_unapproved || $i->getStatus() == 'A' )
+        $event_str .= event_to_text ( $i, $dateYmd );
     }
 
     if ( ! empty ( $event_str ) || $report_include_empty == 'Y' || $report_time_range < 10 ) {

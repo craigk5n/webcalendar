@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  * Show a list of upcoming events (and possibly tasks).
  *
  * This script is intended to be used outside of normal WebCalendar
@@ -573,16 +573,15 @@ for ( $i = $startDate; date ( 'Ymd', $i ) <= $endDateYmd &&
   $ev = combine_and_sort_events ( $entries, $rentries );
   $tentries = get_tasks ( $d, $get_unapproved );
   $ev = combine_and_sort_events ( $ev, $tentries );
-  $ev_cnt = count ( $ev );
 
   echo "<!-- $d " . count ( $ev ) . " -->\n";
 
-  if ( $ev_cnt > 0 ) {
+  if ( count ( $ev ) > 0 ) {
     echo "<!-- XXX -->\n";
     //print "<dt>" . date_to_str( $d, translate( '__month__ __dd__' ),
     //  true, true ) . "</dt>\n<dd>";
     echo '<dt>' . date_to_str ( $d ) . "</dt>\n<dd>";
-    for ( $j = 0; $j < $ev_cnt && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0; $ev[$j] && $numEvents < $maxEvents; $j++ ) {
       print_upcoming_event ( $ev[$j], $d );
       $numEvents++;
     }

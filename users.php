@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * NOTE:
  * There are THREE components that make up the functionality of users.php.
@@ -77,14 +77,13 @@ if ( $doUsers ) {
           <ul>';
 
     $userlist = user_get_users();
-    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-      if ( $userlist[$i]['cal_login'] != '__public__' )
+    foreach ( $userlist as $i ) {
+      if ( $i['cal_login'] != '__public__' )
         echo '
-            <li><a href="edit_user.php?user=' . $userlist[$i]['cal_login'] . '">'
-         . $userlist[$i]['cal_fullname'] . '</a>'
-         . ( $userlist[$i]['cal_is_admin'] == 'Y' ? '&nbsp;<abbr title="'
-           . $denotesStr . '">*</abbr>' : '' )
-         . '</li>';
+            <li><a href="edit_user.php?user=' . $i['cal_login'] . '">'
+          . $i['cal_fullname'] . '</a>'
+          . ( $i['cal_is_admin'] == 'Y'
+            ? '&nbsp;<abbr title="' . $denotesStr . '">*</abbr>' : '' ) . '</li>';
     }
     echo '
           </ul>';

@@ -86,7 +86,6 @@ if ( empty ( $error ) && $show_participants ) {
       ? array_merge ( $nonusers, $userlist )
       : array_merge ( $userlist, $nonusers ) );
   }
-  $userlistcnt = count ( $userlist );
 }
 
 // Default values.
@@ -146,8 +145,8 @@ if ( empty ( $error ) && $report_id >= 0 ) {
       // Check permissions.
       if ( $show_participants && ! empty ( $report_user ) ) {
         $user_is_in_list = false;
-        for ( $i = 0; $i < $userlistcnt; $i++ ) {
-          if ( $report_user == $userlist[$i]['cal_login'] )
+        foreach ( $userlist as $i ) {
+          if ( $report_user == $i['cal_login'] )
             $user_is_in_list = true;
         }
         if ( ! $user_is_in_list && $report_login != $login && ! $is_admin )
@@ -230,10 +229,10 @@ if ( $show_participants ) {
    . $option . ( empty( $report_user ) ? '" selected>' : '">' )
    . translate( 'Current User' ) . '</option>';
 
-  for ( $i = 0; $i < $userlistcnt; $i++ ) {
-    echo $option . $userlist[$i]['cal_login']
-     . ( ! empty ( $report_user ) && $report_user == $userlist[$i]['cal_login']
-      ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname'] . '</option>';
+  foreach ( $userlist as $i ) {
+    echo $option . $i['cal_login']
+     . ( ! empty ( $report_user ) && $report_user == $i['cal_login']
+      ? '" selected>' : '">' ) . $i['cal_fullname'] . '</option>';
   }
 
   echo '

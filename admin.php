@@ -183,7 +183,7 @@ if ( ! $error ) {
     $lang_list .= $option . $v
      . ( $v == $s['LANGUAGE'] ? '" selected>' : '">' ) . $k . '</option>';
   }
-  for ( $i = 0, $cnt = count ( $themes[0] ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $themes[0][$i]; $i++ ) {
     $theme_list .= $option . $themes[1][$i] . '">' . $themes[0][$i] . '</option>';
   }
   for ( $i = 0; $i < 7; $i++ ) {
@@ -210,15 +210,15 @@ if ( ! $error ) {
      . $v . '</option>';
   }
   // Allow user to select a view also.
-  for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
-    if ( $views[$i]['cal_is_global'] != 'Y' )
+  foreach ( $views as $i ) {
+    if ( $i['cal_is_global'] != 'Y' )
       continue;
 
-    $xurl = $views[$i]['url'];
+    $xurl = $i['url'];
     $xurl_strip = str_replace ( '&amp;', '&', $xurl );
     $user_vu .= $option . $xurl
      . ( $s['STARTVIEW'] == $xurl_strip ? '" selected>' : '">' )
-     . $views[$i]['cal_name'] . '</option>';
+     . $i['cal_name'] . '</option>';
   }
   foreach ( $menuthemes as $menutheme ) {
     $menu_theme_list .= $option . $menutheme

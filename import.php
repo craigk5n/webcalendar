@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Page Description:
  * This page will present the user with forms for submitting a data file to import.
@@ -34,13 +34,11 @@ function print_user_list() {
     }
     $num_users = $size = 0;
     $users = '';
-    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-      $l = $userlist[$i]['cal_login'];
+    foreach ( $userlist as $i ) {
+      $l = $i['cal_login'];
       $size++;
-      $users .= $option . $l
-       . ( $l == $login && ! $is_assistant && ! $is_nonuser_admin
-        ? '" selected>' : '">' )
-       . $userlist[$i]['cal_fullname'] . '</option>';
+      $users .= $option . $l . ( $l == $login && ! $is_assistant && ! $is_nonuser_admin
+        ? '" selected>' : '">' ) . $i['cal_fullname'] . '</option>';
     }
 
     if ( $size > 50 )

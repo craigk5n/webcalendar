@@ -3,36 +3,36 @@
 var weeknum = /\bweeknumber\b/;
 
 addLoadListener(function () {
-    var links = document.getElementsByTagName('a');
+  var links = document.getElementsByTagName('a');
 
-    for (var i = links.length - 1; i >= 0; i--) {
-      if (weeknum.test(links[i].className)) {
-        if (typeof links[i].onmouseover != 'function') {
-          links[i].onmouseover = function () {
-            highlightAncestor(this, 'tr');
-          };
-        } else {
-          var mouseover = links[i].onmouseover;
-          links[i].onmouseover = function () {
-            mouseover();
-            highlightAncestor(links[i], 'tr');
-          }
+  for (var i in links) {
+    if (weeknum.test(i.className)) {
+      if (typeof i.onmouseover != 'function') {
+        i.onmouseover = function () {
+          highlightAncestor(this, 'tr');
+        };
+      } else {
+        var mouseover = i.onmouseover;
+        i.onmouseover = function () {
+          mouseover();
+          highlightAncestor(i, 'tr');
         }
+      }
 
-        if (typeof links[i].onmouseout != 'function') {
-          links[i].onmouseout = function () {
-            unhighlightAncestor(this, 'tr');
-          };
-        } else {
-          var mouseout = links[i].onmouseout;
-          links[i].onmouseout = function () {
-            mouseout();
-            unhighlightAncestor(links[i], 'tr');
-          }
+      if (typeof i.onmouseout != 'function') {
+        i.onmouseout = function () {
+          unhighlightAncestor(this, 'tr');
+        };
+      } else {
+        var mouseout = i.onmouseout;
+        i.onmouseout = function () {
+          mouseout();
+          unhighlightAncestor(i, 'tr');
         }
       }
     }
-  });
+  }
+});
 
 function highlightAncestor(ele, ancestorTag) {
   var ancestor = ele.parentNode;

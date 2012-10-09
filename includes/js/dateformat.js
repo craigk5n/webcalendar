@@ -19,35 +19,28 @@ Date.prototype.getISOYear = function () {
 };
 Date.prototype.getISOWeek = function () {
   var onejan = new Date(this.getISOYear(), 0, 1);
-  var wk = Math.ceil((((this - onejan) / 86400000)
-         + onejan.getMDay() + 1) / 7);
+  var wk = Math.ceil((((this - onejan) / 86400000) + onejan.getMDay() + 1) / 7);
   if (onejan.getMDay() > 3)
     wk--;
   return wk;
 };
 Date.prototype.getJulian = function () {
-  return Math.floor((this / 86400000)
-     - (this.getTimezoneOffset() / 1440) + 2440587.5);
+  return Math.floor((this / 86400000) - (this.getTimezoneOffset() / 1440) + 2440587.5);
 };
 Date.prototype.getMonthName = function () {
-  var m = (typeof months != 'undefined' ? months : ['January', 'February',
-      'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
-      'November', 'December']);
+  var m = (typeof months != 'undefined' ? months : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']);
   return m[this.getMonth()];
 };
 Date.prototype.getMonthShort = function () {
-  var m = (typeof shortMonths != 'undefined' ? shortMonths : ['Jan', 'Feb',
-      'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+  var m = (typeof shortMonths != 'undefined' ? shortMonths : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
   return m[this.getMonth()];
 };
 Date.prototype.getDayName = function () {
-  var d = (typeof weekdays != 'undefined' ? weekdays : ['Sunday', 'Monday',
-      'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
+  var d = (typeof weekdays != 'undefined' ? weekdays : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
   return d[this.getDay()];
 };
 Date.prototype.getDayShort = function () {
-  var d = (typeof shortWeekdays != 'undefined' ? shortWeekdays : ['Sun', 'Mon',
-      'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
+  var d = (typeof shortWeekdays != 'undefined' ? shortWeekdays : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
   return d[this.getDay()];
 };
 Date.prototype.getOrdinal = function () {
@@ -77,8 +70,7 @@ Date.prototype.getDOY = function () {
 };
 Date.prototype.getWeek = function () {
   var onejan = new Date(this.getFullYear(), 0, 1);
-  return Math.ceil((((this - onejan) / 86400000)
-       + onejan.getDay() + 1) / 7);
+  return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
 };
 Date.prototype.getStdTimezoneOffset = function () {
   var jan = new Date(this.getFullYear(), 0, 1);
@@ -89,9 +81,8 @@ Date.prototype.getDST = function () {
   return this.getTimezoneOffset() < this.getStdTimezoneOffset();
 };
 Date.prototype.getSwatch = function () {
-  return Math.floor((((this.getUTCHours() + 1) % 24)
-       + this.getUTCMinutes() / 60
-       + this.getUTCSeconds() / 3600) * 1000 / 24);
+  return Math.floor((((this.getUTCHours() + 1) % 24) +
+      this.getUTCMinutes() / 60 + this.getUTCSeconds() / 3600) * 1000 / 24);
 };
 function _daysInMonth(month, year) {
   var dd = new Date(year, month, 0);
@@ -100,7 +91,7 @@ function _daysInMonth(month, year) {
 Date.prototype.format = function (f) {
   var fmt = f.split('');
   var res = '';
-  for (var i = 0, l = fmt.length; i < l; i++) {
+  for (var i = 0; fmt[i]; i++) {
     switch (fmt[i]) {
     case '^':
       res += fmt[++i];
@@ -251,4 +242,3 @@ Date.prototype.format = function (f) {
   }
   return res;
 }
- 

@@ -1,5 +1,7 @@
 <?php
-/* This file includes functions needed by WebCalendar web services.
+/**
+ * Page description:
+ * This file includes functions needed by WebCalendar web services.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
@@ -174,7 +176,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   // Site extra fields.
   $extras = get_site_extra_fields ( $id );
   $se = '';
-  for ( $i = 0, $cnt = count ( $site_extras ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $site_extras[$i]; $i++ ) {
     $extra_name = $site_extras[$i][0];
     $extra_descr = $site_extras[$i][1];
     $extra_type = $site_extras[$i][2];
@@ -217,14 +219,14 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
       $DISABLE_PARTICIPANTS_FIELD != 'Y' ) ) {
     $out .= '
   <participants>';
-    for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
+    foreach ( $participants as $i ) {
       $out .= '
-    <participant status="' . $participants[$i]['cal_status'] . '">'
-       . $participants[$i]['cal_login'] . '</participant>';
+    <participant status="' . $i['cal_status'] . '">'
+       . $i['cal_login'] . '</participant>';
     }
-    for ( $i = 0, $cnt = count ( $ext_participants ); $i < $cnt; $i++ ) {
+    foreach ( $ext_participants as $i ) {
       $out .= '
-    <participant>' . ws_escape_xml ( $ext_participants[$i] ) . '</participant>';
+    <participant>' . ws_escape_xml ( $i ) . '</participant>';
     }
 
     $out .= '

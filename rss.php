@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  * This script is intended to be used outside of normal WebCalendar use,
  * as an RSS 2.0 feed to a RSS client.
  *
@@ -280,7 +280,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
 ';
 
   if ( $entrycnt > 0 || $rentrycnt > 0 ) {
-    for ( $j = 0; $j < $entrycnt && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0; $entries[$j] && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
       if ( in_array ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
@@ -306,7 +306,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
         $numEvents++;
       }
     }
-    for ( $j = 0; $j < $rentrycnt && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0; $rentries[$j] && $numEvents < $maxEvents; $j++ ) {
       // To allow repeated daily entries to be suppressed. Step below is
       // necessary because 1st occurence of repeating events shows up in
       // $entries AND $rentries & we suppress display of it in $rentries.

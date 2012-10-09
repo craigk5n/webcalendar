@@ -1,8 +1,9 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
+require_valide_referring_url();
 
 $user = getPostValue ( 'user' );
-$users = getPostValue ( 'users' );
+$users= getPostValue ( 'users' );
 
 $error = '';
 if ( $user != $login )
@@ -10,9 +11,9 @@ if ( $user != $login )
 # update user list
 dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_boss = ?', array ( $user ) );
 if ( ! empty ( $users ) ) {
-  for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
+  foreach ( $users as $i ) {
     dbi_execute ( 'INSERT INTO webcal_asst ( cal_boss, cal_assistant )
-      VALUES ( ?, ? )', array ( $user, $users[$i] ) );
+      VALUES ( ?, ? )', array ( $user, $i ) );
   }
 }
 

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 if ( ! $is_admin ) {
@@ -29,10 +29,10 @@ if ( empty ( $error ) ) {
   if ( ! empty ( $userlist ) ) {
     echo '
         <ul>';
-    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
+    foreach ( $userlist as $i ) {
       echo '
-          <li><a href="edit_nonusers.php?nid=' . $userlist[$i]['cal_login']
-       . '">' . $userlist[$i]['cal_fullname'] . '</a></li>';
+          <li><a href="edit_nonusers.php?nid=' . $i['cal_login']
+        . '">' . $i['cal_fullname'] . '</a></li>';
     }
     echo '
         </ul>';

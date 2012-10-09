@@ -139,8 +139,8 @@ function do_config( $fileLoc ) {
   // Split the data into lines.
   $configLines = explode( "\n", $data );
 
-  for( $n = 0, $cnt = count( $configLines ); $n < $cnt; $n++ ) {
-    $buffer = trim( $configLines[$n] );
+  foreach ( $configLines as $n ) {
+    $buffer = trim ( $n );
 
     if( preg_match( '/^#|\/\*/', $buffer ) // comments
         || preg_match( '/^<\?/', $buffer ) // start PHP code

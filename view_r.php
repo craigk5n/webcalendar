@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Page Description:
  * This is the "Week by Time" and "Week by Day" view.
@@ -162,10 +162,8 @@ if ( ! empty ( $error ) ) {
 // col_pixels = width of smallest column
 // 100 = width of time column on left of table
 if ( ! $fit_to_window ) {
-  $table_width = ( $col_pixels * $viewusercnt ) *
-    ( $end_ind - $start_ind + 1 ) + 100;
+  $table_width = ( $col_pixels * $viewusercnt ) * ( $end_ind - $start_ind + 1 ) + 100;
 }
-//echo "table_width=$table_width<br>\n";
 
 // tdw is the cell width for each day
 if ( ! $fit_to_window )
@@ -306,15 +304,13 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     // get all the repeating events for this date and store in array $rep
     $dateYmd = date ( 'Ymd', $days[$d] );
     $rep = get_repeating_entries ( $user, $dateYmd );
-    $repcnt = count ( $rep );
-    for ( $j = 0; $j < $repcnt; $j++ ) {
-      if( ! isset( $am_part[$rep[$j]->getID()] ) ) {
-        $am_part[$rep[$j]->getID()] =
-          user_is_participant( $rep[$j]->getID(), $login );
+    foreach ( $rep as $j ) {
+      if( ! isset ( $am_part[$j->getID()] ) ) {
+        $am_part[$j->getID()] = user_is_participant ( $j->getID(), $login );
       }
-      if( $get_unapproved || $rep[$j]->getStatus() == 'A' ) {
-        if ( $rep[$j]->getDuration() > 0 && $rep[$j]->getDuration() != 1440 ) {
-          $slot = calc_time_slot( $rep[$j]->getTime(), false );
+      if( $get_unapproved || $j->getStatus() == 'A' ) {
+        if ( $j->getDuration() > 0 && $j->getDuration() != 1440 ) {
+          $slot = calc_time_slot ( $j->getTime(), false );
           if ( $slot < $first_slot ) {
             $first_slot = $slot;
           }
@@ -322,14 +318,12 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
       }
     }
     $ev = get_entries ( $dateYmd, $get_unapproved, 1, 1);
-    $evcnt = count ( $ev );
-    for ( $j = 0; $j < $evcnt; $j++ ) {
-      if( ! isset( $am_part[$ev[$j]->getID()] ) ) {
-        $am_part[$ev[$j]->getID()] =
-          user_is_participant( $ev[$j]->getID(), $login );
+    foreach ( $ev as $j ) {
+      if( ! isset ( $am_part[$j->getID()] ) ) {
+        $am_part[$j->getID()] = user_is_participant ( $j->getID(), $login );
       }
-      if( $ev[$j]->getDuration() > 0 && $ev[$j]->getDuration() != 1440 ) {
-        $slot = calc_time_slot( $ev[$j]->getTime(), false );
+      if( $j->getDuration() > 0 && $j->getDuration() != 1440 ) {
+        $slot = calc_time_slot( $j->getTime(), false );
         if ( $slot < $first_slot ) {
           $first_slot = $slot;
         }
@@ -351,14 +345,12 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
     // Get static non-repeating events
     $ev = get_entries ( $dateYmd, $get_unapproved, 1, 1 );
-    $hour_arr = array();
-    $rowspan_arr = array();
+    $hour_arr = $rowspan_arr = array();
     $evcnt = count ( $ev );
     $repcnt = count ( $rep );
-    for ( $i = 0; $i < $evcnt; $i++ ) {
+    foreach ( $ev as $i ) {
       // print out any repeating events that are before this one...
-      while ( $cur_rep < $repcnt &&
-        $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
+      while ( $cur_rep < $repcnt && $rep[$cur_rep]->getTime() < $i->getTime() ) {
         if( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
           if( $rep[$cur_rep]->getDuration() == 1440 )
             $all_day[$d] = 1;
@@ -366,12 +358,10 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         }
         $cur_rep++;
       }
-      if( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
-        if( $ev[$i]->getDuration() == 1440 )
+      if ( $get_unapproved || $i->getStatus() == 'A' ) {
+        if ( $i->getDuration() == 1440 )
           $all_day[$d] = 1;
-        html_for_event_week_at_a_glance ( $ev[$i], $dateYmd, 'small', $show_time );
-        //echo "Found event date=$dateYmd name='$viewname'<br>\n";
-        //print_r ( $rowspan_arr );
+        html_for_event_week_at_a_glance ( $i, $dateYmd, 'small', $show_time );
       }
     }
     // print out any remaining repeating events

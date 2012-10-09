@@ -1,6 +1,6 @@
 <?php // $Id$
 /**
- * Description:
+ * Page Description:
  * Handler for exporting webcalendar events to various formats.
  *
  * Comments:
@@ -14,6 +14,7 @@
  *********************************************************************/
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
+require_valide_referring_url();
 
 $user = getPostValue ( 'user' );
 if ( empty ( $user ) || $user == $login )

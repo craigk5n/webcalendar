@@ -177,7 +177,7 @@ function sendDate(date) {
   wodf.d.selectedIndex = date.substring(6, 8) - 1;
   wodf.m.selectedIndex = date.substring(4, 6) - 1;
 
-  for (var i = sy.length - 1; i >= 0; i--) {
+  for (var i = 0; sy[i]; i++) {
     if (sy.options[i].value == year) {
       sy.selectedIndex = i;
     }

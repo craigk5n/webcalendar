@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // NOTE: This file is included by the print_trailer function in "includes/init.php".
@@ -12,15 +12,15 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
   $goto_link = $manage_calendar_link = $reports_link = $views_link = array();
 
-  $myCalStr = translate ( 'My Calendar' );
-  $todayStr = translate ( 'Today' );
-  $unapprovedStr = translate ( 'Unapproved Entries' );
-  $importStr = translate ( 'Import' );
-  $addNewEntryStr = translate ( 'Add New Entry' );
+  $addNewEntryStr= translate ( 'Add New Entry' );
   $addNewTaskStr = translate ( 'Add New Task' );
-  $loginStr = translate ( 'Login' );
-  $logoutStr = translate ( 'Logout' );
-  $currentUserStr = translate ( 'Current User_' );
+  $currentUserStr= translate ( 'Current User_' );
+  $importStr     = translate ( 'Import' );
+  $loginStr      = translate ( 'Login' );
+  $logoutStr     = translate ( 'Logout' );
+  $myCalStr      = translate ( 'My Calendar' );
+  $todayStr      = translate ( 'Today' );
+  $unapprovedStr = translate ( 'Unapproved Entries' );
   $publicStr = $PUBLIC_ACCESS_FULLNAME;
   if ( empty ( $readonly ) || $readonly != 'Y' )
     $readonly = 'N';
@@ -147,8 +147,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   if ( count ( $goto_link ) > 0 ) {
     $tret .= '
         <span class="prefix">' . translate( 'Go to' ) . '</span>';
-    $gotocnt = count ( $goto_link );
-    for ( $i = 0; $i < $gotocnt; $i++ ) {
+    for ( $i = 0; $goto_link[$i]; $i++ ) {
       $tret .= ( $i > 0 ? ' | ' : '' ) . '
         <a ' . $goto_link[$i] . '</a>';
     }
@@ -157,19 +156,18 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   $tret .= '
 <!-- VIEWS -->';
 
-  $viewcnt = count ( $views );
-  if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' ) && $viewcnt > 0 ) {
-    for ( $i = 0; $i < $viewcnt; $i++ ) {
-      $views_link[] = 'href="' . $views[$i]['url']
-       . ( empty( $thisdate ) ? '' : '&amp;date=' . $thisdate )
-       . '">' . htmlspecialchars( $views[$i]['cal_name'] );
+  if ( ( access_can_access_function ( ACCESS_VIEW ) && $ALLOW_VIEW_OTHER != 'N' )
+      && count ( $views ) > 0 ) {
+    foreach ( $views as $i ) {
+      $views_link[] = 'href="' . $i['url']
+       . ( empty ( $thisdate ) ? '' : '&amp;date=' . $thisdate )
+       . '">' . htmlspecialchars ( $i['cal_name'] );
     }
   }
-  $views_linkcnt = count ( $views_link );
-  if ( $views_linkcnt > 0 ) {
+  if ( count ( $views_link ) > 0 ) {
     $tret .= '<br>
         <span class="prefix">' . translate( 'Views_' ) . '</span>&nbsp;';
-    for ( $i = 0; $i < $views_linkcnt; $i++ ) {
+    for ( $i = 0; $views_link[$i]; $i++ ) {
       $tret .= ( $i > 0 ? ' | ' : '' ) . '
         <a ' . $views_link[$i] . '</a>';
     }
@@ -186,18 +184,16 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       AND cal_show_in_trailer = \'Y\' ) ORDER BY cal_report_id',
       array ( $login ) );
     if ( $rows ) {
-      for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-        $row = $rows[$i];
+      foreach ( $rows as $row ) {
         $reports_link[] = 'href="report.php?report_id=' . $row[1]
          . ( ! empty ( $user ) && $user != $login ? '&amp;user=' . $user : '' )
          . '">' . htmlspecialchars( $row[0] );
       }
     }
-    $reports_linkcnt = count ( $reports_link );
-    if ( $reports_linkcnt > 0 ) {
+    if ( count ( $reports_link ) > 0 ) {
       $tret .= '<br>
         <span class="prefix">' . translate( 'Reports_' ) . '</span>&nbsp;';
-      for ( $i = 0; $i < $reports_linkcnt; $i++ ) {
+      for ( $i = 0; $reports_link[$i]; $i++ ) {
         $tret .= ( $i > 0 ? ' | ' : '' ) . '
         <a ' . $reports_link[$i] . '</a>';
       }
@@ -254,13 +250,13 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
     if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
       $public = array (
-        'cal_login' => '__public__',
-        'cal_fullname' => $publicStr
+        'cal_login'   => '__public__',
+        'cal_fullname'=> $publicStr
         );
       array_unshift ( $grouplist, $public );
     }
     $groups = '';
-    for ( $i = 0, $cnt = count ( $grouplist ); $i < $cnt; $i++ ) {
+    for ( $i = 0; $grouplist[$i]; $i++ ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
       // don't display current $user in group list
@@ -309,11 +305,9 @@ if( dbi_get_debug() ) {
    . '&nbsp;&nbsp;<b>Cached queries:</b> ' . dbi_num_cached_queries() . '<br>
       <ol>';
   $log = $GLOBALS['SQLLOG'];
-  // $log=0;
-  $logcnt = count ( $log );
-  for ( $i = 0; $i < $logcnt; $i++ ) {
+  foreach ( $log as $i ) {
     $tret .= '
-        <li>' . $log[$i] . '</li>';
+        <li>' . $i . '</li>';
   }
   $tret .= '
       </ol>

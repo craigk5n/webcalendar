@@ -1,7 +1,7 @@
 #!/usr/local/bin/php -q
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  * This is a command-line script that will send out any email
  * reminders that are due.
  *
@@ -102,12 +102,11 @@ if ( $debug )
 
 // Get a list of the email users in the system.
 // They must also have an email address.
-// Otherwise, we can't send them mail, so what's the point?
+// Otherwise, we can't send them email, so what's the point?
 $allusers = user_get_users();
-$allusercnt = count ( $allusers );
-for ( $i = 0; $i < $allusercnt; $i++ ) {
-  $names[$allusers[$i]['cal_login']] = $allusers[$i]['cal_fullname'];
-  $emails[$allusers[$i]['cal_login']] = $allusers[$i]['cal_email'];
+foreach ( $allusers as $i ) {
+  $names[$i['cal_login']] = $i['cal_fullname'];
+  $emails[$i['cal_login']]= $i['cal_email'];
 }
 
 $attachics = $htmlmail = $languages = $noemail = $t_format = $tz = array();
@@ -206,31 +205,28 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
 
   // Keep track of duplicates.
   $completed_ids = array();
-  $evcnt = count ( $ev );
-  for ( $i = 0; $i < $evcnt; $i++ ) {
-    $id = $ev[$i]->getID();
+  foreach ( $ev as $i ) {
+    $id = $i->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
 
     $completed_ids[$id] = 1;
-    process_event( $id, $ev[$i]->getName(), $ev[$i]->getDateTimeTS(),
-      $ev[$i]->getEndDateTimeTS() );
+    process_event ( $id, $i->getName(), $i->getDateTimeTS(), $i->getEndDateTimeTS() );
   }
   // Get tasks for this date.
   // A task will be included one time for each participant.
   $tks = get_tasks ( $date );
   // Keep track of duplicates.
   $completed_ids = array();
-  $tkscnt = count ( $tks );
-  for ( $i = 0; $i < $tkscnt; $i++ ) {
-    $id = $tks[$i]->getID();
+  foreach ( $tks as $i ) {
+    $id = $i->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
 
     $completed_ids[$id] = 1;
     $is_task = true;
-    process_event( $id, $tks[$i]->getName(), $tks[$i]->getDateTimeTS(),
-      $tks[$i]->getDueDateTimeTS(), $dateTS );
+    process_event ( $id, $i->getName(), $i->getDateTimeTS(),
+      $i->getDueDateTimeTS(), $dateTS );
   }
   $is_task = false;
   // Get repeating events...tasks are not included at this time.
@@ -240,14 +236,14 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $repcnt = count ( $rep );
   if ( $debug )
     echo "found $repcnt repeating events for $date<br>";
-  for ( $i = 0; $i < $repcnt; $i++ ) {
-    $id = $rep[$i]->getID();
+  foreach ( $rep as $i ) {
+    $id = $i->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
 
     $completed_ids[$id] = 1;
-    process_event( $id, $rep[$i]->getName(), $rep[$i]->getDateTimeTS(),
-      $rep[$i]->getEndDateTimeTS(), $date );
+    process_event ( $id, $i->getName(), $i->getDateTimeTS(),
+      $i->getEndDateTimeTS(), $date );
   }
 }
 
@@ -277,7 +273,6 @@ function send_reminder ( $id, $event_date ) {
       $percentage[$row[0]] = $row[1];
     }
   }
-  $partcnt = count ( $participants );
   // Get external participants.
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' && !
       empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == 'Y' ) {
@@ -292,7 +287,6 @@ function send_reminder ( $id, $event_date ) {
       }
     }
   }
-  $ext_partcnt = count ( $ext_participants );
   if ( ! $num_participants && ! $num_ext_participants ) {
     if ( $debug )
       echo 'No participants found for event id' . ": $id<br>\n";
@@ -305,8 +299,8 @@ function send_reminder ( $id, $event_date ) {
     cal_description, cal_due_date, cal_due_time FROM webcal_entry
     WHERE cal_id = ?', array ( $id ) );
   if ( ! $res ) {
-    echo translate ( 'Database error' ) . ': '
-     . translate ( 'could not find event id' ) . " $id.\n";
+    echo str_replace ( 'XXX', $id, translate ( 'Db error event XXX not found' ) )
+      . "\n";
     return;
   }
 
@@ -321,18 +315,18 @@ function send_reminder ( $id, $event_date ) {
   $mailusers = $recipients = array();
   if ( isset ( $single_user ) && $single_user == 'Y' ) {
     $mailusers[] = $emails[$single_user_login];
-    $recipients[] = $single_user_login;
+    $recipients[]= $single_user_login;
   } else {
-    for ( $i = 0; $i < $partcnt; $i++ ) {
-      if ( strlen ( $emails[$participants[$i]] ) ) {
-        $mailusers[] = $emails[$participants[$i]];
-        $recipients[] = $participants[$i];
+    foreach ( $participants as $i ) {
+      if ( strlen ( $emails[$i] ) ) {
+        $mailusers[] = $emails[$i];
+        $recipients[]= $i;
       } else {
         if ( $debug )
-          echo "No email for user $participants[$i].<br>\n";
+          echo "No email for user $i.<br>\n";
       }
     }
-    for ( $i = 0; $i < $ext_partcnt; $i++ ) {
+    for ( $i = 0; $ext_participants[$i]; $i++ ) {
       $mailusers[] = $ext_participants_email[$i];
       $recipients[] = $ext_participants[$i];
     }
@@ -444,18 +438,17 @@ function send_reminder ( $id, $event_date ) {
 
     // Site extra fields.
     $extras = get_site_extra_fields ( $id );
-    $site_extracnt = count ( $site_extras );
-    for ( $i = 0; $i < $site_extracnt; $i++ ) {
-      if ( $site_extras[$i] == 'FIELDSET' )
+    foreach ( $site_extras as $i ) {
+      if ( $i == 'FIELDSET' )
         continue;
 
-      $extra_name = $site_extras[$i][0];
-      $extra_descr = $site_extras[$i][1];
-      $extra_type = $site_extras[$i][2];
-      $extra_arg1 = $site_extras[$i][3];
-      $extra_arg2 = $site_extras[$i][4];
-      if ( ! empty ( $site_extras[$i][5] ) )
-        $extra_view = $site_extras[$i][5] & EXTRA_DISPLAY_REMINDER;
+      $extra_name = $i[0];
+      $extra_descr= $i[1];
+      $extra_type = $i[2];
+      $extra_arg1 = $i[3];
+      $extra_arg2 = $i[4];
+      if ( ! empty ( $i[5] ) )
+        $extra_view = $i[5] & EXTRA_DISPLAY_REMINDER;
 
       if ( ! empty ( $extras[$extra_name]['cal_name'] ) &&
           $extras[$extra_name]['cal_name'] != '' && ! empty ( $extra_view ) ) {
@@ -477,12 +470,12 @@ function send_reminder ( $id, $event_date ) {
           $DISABLE_PARTICIPANTS_FIELD != 'N' ) ) {
       $body .= translate ( 'Participants_' ) . "\n";
 
-      for ( $i = 0; $i < $partcnt; $i++ ) {
-        $body .= $padding . $names[$participants[$i]] . "\n";
+      foreach ( $participants as $i ) {
+        $body .= $padding . $names[$i] . "\n";
       }
-      for ( $i = 0; $i < $ext_partcnt; $i++ ) {
-        $body .= $padding . str_replace( 'XXX', $ext_participants[$i],
-          translate( 'XXX External User' ) ) . "\n";
+      foreach ( $ext_participants as $i ) {
+        $body .= $padding . str_replace ( 'XXX', $i,
+          translate ( 'XXX External User' ) ) . "\n";
       }
     }
 
@@ -635,14 +628,14 @@ function my_get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   if ( $debug )
     echo "Getting repeating entries for $dateYmd<br>";
 
-  for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
-    $list = $repeated_events[$i]->getRepeatAllDates();
-    for ( $j = 0, $cnt_j = count ( $list ); $j < $cnt_j; $j++ ) {
+  foreach ( $repeated_events as $i ) {
+    $list = $i->getRepeatAllDates();
+    foreach ( $list as $j ) {
       if ( $debug )
-        echo "     checking $list[$j] = " . date( 'Ymd', $list[$j]) . '<br>';
+        echo "     checking $j = " . date ( 'Ymd', $j ) . '<br>';
 
-      if ( $dateYmd == date ( 'Ymd', $list[$j] ) ) {
-        $ret[$n++] = $repeated_events[$i];
+      if ( $dateYmd == date ( 'Ymd', $j ) ) {
+        $ret[$n++] = $i;
         if ( $debug )
           echo 'Added!<br>';
       }

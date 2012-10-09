@@ -25,14 +25,14 @@ xoffset = 8,     // popup distance from cursor x coordinate
 yoffset = 12;    // popup distance from cursor y coordinate
 
 addLoadListener(function () {
-    kon = (navigator.userAgent.indexOf('konqueror') > 0);
-    idiv = null;
-    winW = 800;
-    winH = 600;
-    x = y = 0;
+  kon  = (navigator.userAgent.indexOf('konqueror') > 0);
+  idiv = null;
+  winW = 800;
+  winH = 600;
+  x = y = 0;
 
-    if (followMe) {
-      document.onmousemove = mousemove;
+  if (followMe) {
+    document.onmousemove = mousemove;
 
     // Workaround for Konqueror bug: Fix browser confusion on resize.
     if (kon) {
@@ -45,12 +45,12 @@ addLoadListener(function () {
     entries = entries.concat(document.getElementsBySelector('a.unapprovedentry'));
     entries = entries.concat(document.getElementsBySelector('tr.task'));
 
-    for (var i = 0, j = entries.length; i < j; i++) {
-      entries[i].onmouseover = function (event) {
+    for (var i in entries) {
+      i.onmouseover = function (event) {
         showPopUp(event, 'eventinfo-' + this.id);
         return true;
       }
-      entries[i].onmouseout = function () {
+      i.onmouseout = function () {
         hidePopUp('eventinfo-' + this.id);
         return true;
       }
@@ -68,10 +68,10 @@ function hidePopUp(name) {
 
 function gettip(name) {
   return (document[name]
-         ? document[name]
-         : (document.getElementById(name)
-           ? document.getElementById(name)
-           : 0));
+     ? document[name]
+     : (document.getElementById(name)
+       ? document.getElementById(name)
+       : 0));
 }
 
 function showPopUp(evt, name) {
@@ -121,10 +121,8 @@ function recursive_resize(ele, width, height) {
   if (height != null && ele.offsetHeight > height)
     ele.style.height = height + px;
 
-  for (var i = 0, j = ele.childNodes.length; i < j; i++) {
-    recursive_resize(ele.childNodes[i],
-      width - ele.childNodes[i].offsetLeft,
-      height - ele.childNodes[i].offsetTop);
+  for (var i in ele.childNodes) {
+    recursive_resize(i, width - i.offsetLeft, height - i.offsetTop);
   }
 }
 

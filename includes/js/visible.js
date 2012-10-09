@@ -8,8 +8,7 @@ function showTab(name) {
   tab,
   tname;
 
-  for (var i = tabs.length - 1; i >= 0; i--) {
-    tname = tabs[i];
+  for (var tname in tabs) {
     tab = document.getElementById('tab_' + tname);
     // We might call without parameter, if so display tabfor div.
     if (tab && !name) {
@@ -30,10 +29,10 @@ function visByClass(classname, state) {
   var inc = 0,
   alltags = document.getElementsByTagName('*');
 
-  for (var i = alltags.length - 1; i >= 0; i--) {
-    var str = alltags[i].className;
+  for (var i in alltags) {
+    var str = i.className;
     if (str && str.match(classname)) {
-      alltags[i].style.display = (state == 'hide' ? 'none' : '');
+      i.style.display = (state == 'hide' ? 'none' : '');
     }
   }
 }

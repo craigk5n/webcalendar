@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  *  Web Service functionality for reminders.
  *  Uses XML (but not SOAP at this point since that would be
  *       overkill and require extra packages to install).
@@ -135,11 +135,11 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 
   // Check to see if this event has any reminders.
   $extras = get_site_extra_fields ( $id );
-  for ( $j = 0, $seCnt = count ( $site_extras ); $j < $seCnt; $j++ ) {
-    $extra_name = $site_extras[$j][0];
-    $extra_type = $site_extras[$j][2];
-    $extra_arg1 = $site_extras[$j][3];
-    $extra_arg2 = $site_extras[$j][4];
+  foreach ( $site_extras as $j ) {
+    $extra_name = $j[0];
+    $extra_type = $j[2];
+    $extra_arg1 = $j[3];
+    $extra_arg2 = $j[4];
 
     if ( ! empty ( $extras[$extra_name]['cal_remind'] ) ) {
       $debug .= "\n" . translate ( 'Reminder set for event.' );
@@ -186,8 +186,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 }
 
 $out .= '
-<!-- ' . str_replace ( array ( 'XXX', 'YYY' ), array ( $user, $login ),
-  translate ( 'Reminders for XXX login YYY' ) ) . ' -->
+<!-- Reminders for user "' . $user . '", login "' . $login . '". -->
 ';
 
 $startdate = time(); // today
@@ -199,22 +198,20 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $ev = get_entries ( $date );
   // Keep track of duplicates.
   $completed_ids = array();
-  for ( $i = 0, $evCnt = count ( $ev ); $i < $evCnt; $i++ ) {
-    $id = $ev[$i]->getID();
+  foreach ( $ev as $i ) {
+    $id = $i->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $ev[$i]->getName(),
-      $date, $ev[$i]->getTime() );
+    $out .= process_event ( $id, $i->getName(), $date, $i->getTime() );
   }
   $rep = get_repeating_entries ( $user, $date );
-  for ( $i = 0, $repCnt = count ( $rep ); $i < $repCnt; $i++ ) {
-    $id = $rep[$i]->getID();
+  foreach ( $rep as $i ) {
+    $id = $i->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event ( $id, $rep[$i]->getName(), $date,
-      $rep[$i]->getTime() );
+    $out .= process_event ( $id, $i->getName(), $date, $i->getTime() );
   }
 }
 

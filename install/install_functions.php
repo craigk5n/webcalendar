@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * The file contains all the functions used in the installation script
  */
@@ -318,7 +318,7 @@ function get_installed_version ( $postinstall = false ) {
   if ( ! $show_all_errors )
     show_errors ( false );
   // This data is read from file upgrade_matrix.php.
-  for ( $i = 0, $dbCntStr = count ( $database_upgrade_matrix ); $i < $dbCntStr; $i++ ) {
+  for ( $i = 0; $database_upgrade_matrix[$i]; $i++ ) {
     $sql = $database_upgrade_matrix[$i][0];
 
     if ( $sql != '' )
@@ -468,15 +468,15 @@ function db_populate ( $install_filename, $display_sql ) {
 
   // String version of parsed_sql that is used if displaying SQL only.
   $str_parsed_sql = '';
-  for ( $i = 0, $j = count( $parsed_sql ); $i < $j; $i++ ) {
-    $parsed_sql[$i] .= ';';
+  foreach ( $parsed_sql as $i ) {
+    $i .= ';';
     if ( empty ( $display_sql ) ) {
-      if ( $show_all_errors == true )
-        echo $parsed_sql[$i] . '<br>';
+      if ( $show_all_errors )
+        echo $i . '<br>';
 
-      dbi_execute( $parsed_sql[$i], array(), false, $show_all_errors );
+      dbi_execute ( $i, array(), false, $show_all_errors );
     } else
-      $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
+      $str_parsed_sql .= $i . "\n\n";
   }
 
   // Enable warnings.

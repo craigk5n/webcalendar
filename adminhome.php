@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Page Description:
  *   Serves as the home page for administrative functions.
@@ -136,7 +136,7 @@ echo '
     <h2>' . translate( 'Administrative Tools' ) . '</h2>
     <table summary="admin options">';
 
-for ( $i = 0, $cnt = count( $names ); $i < $cnt; $i++ ) {
+for ( $i = 0; $names[$i]; $i++ ) {
   echo ( $i % COLUMNS == 0 ? '
       <tr>' : '' ) . '
         <td> <a href="' . $links[$i] . '">' . $names[$i] . '</a></td>'

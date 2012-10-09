@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  * Presents page to edit/add an event/task/journal
  *
  * Notes:
@@ -417,8 +417,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
 
   if ( ! empty ( $defusers ) ) {
     $tmp_ar = explode ( ',', $defusers );
-    for ( $i = 0, $cnt = count ( $tmp_ar ); $i < $cnt; $i++ ) {
-      $participants[$tmp_ar[$i]] = 1;
+    foreach ( $tmp_ar as $i ) {
+      $participants[$i] = 1;
     }
   }
 
@@ -562,7 +562,7 @@ if ( $can_edit ) {
   }
 
   $tabs = '<ul id="viewtabs" class="shadetabs" style="margin-left: 10px;">';
-  for ( $i = 0, $cnt = count ( $tabs_name ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $tabs_name[$i]; $i++ ) {
     $tabs .= '<li><a href="#" rel="' . $tabs_name[$i] .
       '"' . ( $i == 0 ? ' class="selected"' : '' ) .
       '>' . $tabs_title[$i] . '</a></li>' . "\n";
@@ -707,15 +707,14 @@ if ( $can_edit ) {
        . '</td>
                         </tr>';
       $others_complete = 'yes';
-      for ( $i = 0, $cnt = count ( $overall_percent ); $i < $cnt; $i++ ) {
-        user_load_variables ( $overall_percent[$i][0], 'percent' );
+      foreach ( $overall_percent as $i ) {
+        user_load_variables ( $i[0], 'percent' );
         echo '
                         <tr>
                           <td>' . $percentfullname . '</td>
-                          <td>' . $overall_percent[$i][1] . '</td>
+                          <td>' . $i[1] . '</td>
                         </tr>';
-        if ( $overall_percent[$i][0] != $real_user &&
-          $overall_percent[$i][1] < 100 )
+        if ( $i[0] != $real_user && $i[1] < 100 )
           $others_complete = 'no';
       }
       echo '
@@ -847,15 +846,15 @@ if ( $can_edit ) {
           <legend>' . translate ( 'Site Extras' ) . '</legend>' : '' ) . '
           <table summary="">' : '' );
 
-  for ( $i = 0; $i < $site_extracnt; $i++ ) {
-    if ( $site_extras[$i] == 'FIELDSET' )
+  foreach ( $site_extras as $i ) {
+    if ( $i == 'FIELDSET' )
       continue;
 
-    $extra_name = $site_extras[$i][0];
-    $extra_descr = $site_extras[$i][1];
-    $extra_type = $site_extras[$i][2];
-    $extra_arg1 = $site_extras[$i][3];
-    $extra_arg2 = $site_extras[$i][4];
+    $extra_name = $i[0];
+    $extra_descr= $i[1];
+    $extra_type = $i[2];
+    $extra_arg1 = $i[3];
+    $extra_arg2 = $i[4];
     // Default value if needed.
     $defIdx = ( empty ( $extras[$extra_name]['cal_data'] )
       ? $extra_arg2 : $extras[$extra_name]['cal_data'] );
@@ -900,16 +899,15 @@ if ( $can_edit ) {
                 <select name="' . $extra_name . '">'
        . $option . '">None</option>';
       $userlist = get_my_users ( get_my_users );
-      $usercnt = count ( $userlist );
-      for ( $j = 0; $j < $usercnt; $j++ ) {
+      foreach ( $userlist as $j ) {
         if ( access_is_enabled() && !
-            access_user_calendar ( 'view', $userlist[$j]['cal_login'] ) )
+            access_user_calendar ( 'view', $j['cal_login'] ) )
           continue; // Cannot view calendar so cannot add to their cal.
 
-        echo $option . $userlist[$j]['cal_login']
-         . ( ! empty ( $extras[$extra_name]['cal_data'] ) &&
-          ( $userlist[$j]['cal_login'] == $extras[$extra_name]['cal_data'] )
-           ? '" selected>' : '">' ) . $userlist[$j]['cal_fullname'] . '</option>';
+        echo $option . $j['cal_login']
+          . ( ! empty ( $extras[$extra_name]['cal_data'] )
+              && ( $j['cal_login'] == $extras[$extra_name]['cal_data'] )
+            ? '" selected>' : '">' ) . $j['cal_fullname'] . '</option>';
       }
       echo '
                 </select>';
@@ -917,10 +915,9 @@ if ( $can_edit ) {
       // Show custom select list.
       $extraSelectArr = $isMultiple = $multiselect = '';
       if ( is_array ( $extra_arg1 ) ) {
-        $extra_arg1cnt = count ( $extra_arg1 );
         if ( $extra_arg2 > 0 ) {
-          $multiselect = ' size="'
-           . min( $extra_arg2, $extra_arg1cnt ) . '" multiple';
+          $multiselect = ' size="' . min ( $extra_arg2, count ( $extra_arg1 ) )
+            . '" multiple';
           $isMultiple = '[]';
           if ( ! empty ( $extras ) )
             $extraSelectArr = explode ( ',', $extras[$extra_name]['cal_data'] );
@@ -929,21 +926,18 @@ if ( $can_edit ) {
         echo '
                 <select name="' . $extra_name . $isMultiple . '"'
          . $multiselect . '>';
-        for ( $j = 0; $j < $extra_arg1cnt; $j++ ) {
-          echo $option . $extra_arg1[$j];
+        foreach ( $extra_arg1 as $j ) {
+          echo $option . $j;
 
           if ( ! empty ( $extras[$extra_name]['cal_data'] ) ) {
-            if ( $extra_arg2 == 0 &&
-              $extra_arg1[$j] == $extras[$extra_name]['cal_data'] )
+            if ( $extra_arg2 == 0 && $j == $extras[$extra_name]['cal_data'] )
               echo '" selected>';
-            else
-            if ( $extra_arg2 > 0 &&
-              in_array ( $extra_arg1[$j], $extraSelectArr ) )
+            else if ( $extra_arg2 > 0 && in_array ( $j, $extraSelectArr ) )
               echo '" selected>';
           } else
             echo ( $j == 0 ? '" selected>' : '">' );
 
-          echo $extra_arg1[$j] . '</option>';
+          echo $j . '</option>';
         }
       }
       echo '
@@ -988,10 +982,9 @@ if ( $can_edit ) {
     $groups = get_groups ( $real_user );
     $userlist = get_my_users ( $create_by, 'invite' );
     $num_users = $size = 0;
-    $usercnt = count ( $userlist );
     $myusers = $nonusers = $users = $grouplist = '';
 
-    for ( $i = 0; $i < $usercnt; $i++ ) {
+    for ( $i = 0; $userlist[$i]; $i++ ) {
       $f = $userlist[$i]['cal_fullname'];
       $l = $userlist[$i]['cal_login'];
       $q = ( ! empty ( $selectedStatus[$l] ) && $selectedStatus[$l] == 'W'
@@ -1028,7 +1021,7 @@ if ( $can_edit ) {
     if ( $NONUSER_ENABLED == 'Y' ) {
       // Include Public NUCs
       $mynonusers = get_my_nonusers ( $real_user, true );
-      for ( $i = 0, $cnt = count ( $mynonusers ); $i < $cnt; $i++ ) {
+      for ( $i = 0; $mynonusers[$i]; $i++ ) {
         $l = $mynonusers[$i]['cal_login'];
         $n = $mynonusers[$i]['cal_fullname'];
         $q = ( ! empty ( $selectedStatus[$l] ) && $selectedStatus[$l] == 'W'
@@ -1047,9 +1040,9 @@ if ( $can_edit ) {
     }
 
     if ( $GROUPS_ENABLED == 'Y' ) {
-      for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
-        $grouplist .= $option . $groups[$i]['cal_group_id'] . '">'
-            . $groups[$i]['cal_name'] . '</option>';
+      foreach ( $groups as $i ) {
+        $grouplist .= $option . $i['cal_group_id'] . '">'
+          . $i['cal_name'] . '</option>';
      }
 
     }
@@ -1419,16 +1412,12 @@ if ( $can_edit ) {
 
     // Populate Repeat Exceptions data for later use.
     $excepts = '';
-    $exceptcnt = count ( $exceptions );
-    for ( $i = 0; $i < $exceptcnt; $i++ ) {
-      $excepts .= $option . '-' . $exceptions[$i] . '">-' . $exceptions[$i]
-       . '</option>';
+    foreach ( $exceptions as $i ) {
+      $excepts .= $option . '-' . $i . '">-' . $i . '</option>';
     }
     // Populate Repeat Inclusions data for later use
-    $includecnt = count ( $inclusions );
-    for ( $i = 0; $i < $includecnt; $i++ ) {
-      $excepts .= $option . '+' . $inclusions[$i] . '">+' . $inclusions[$i]
-       . '</option>';
+    foreach ( $inclusions as $i ) {
+      $excepts .= $option . '+' . $i . '">+' . $i . '</option>';
     }
 
     echo '

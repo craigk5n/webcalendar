@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Page Description:
  * This page will handle the form submission from edit_report.php
@@ -32,6 +32,7 @@
  * or you are an admin user.
  */
 include_once 'includes/init.php';
+require_valide_referring_url();
 load_user_categories();
 
 $error = ( empty( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
@@ -153,8 +154,7 @@ if ( empty ( $error ) ) {
     $sql = 'INSERT INTO webcal_report ( ';
     $sql_v = '';
 
-    $namecnt = count ( $names );
-    for ( $i = 0; $i < $namecnt; $i++ ) {
+    for ( $i = 0; $names[$i]; $i++ ) {
       $sql .= ( $i > 0 ? ', ' : '' ) . $names[$i];
       $sql_v .= ( $i > 0 ? ', ' : '' ) . '?';
     }
@@ -162,8 +162,7 @@ if ( empty ( $error ) ) {
     $report_id = $newid;
   } else {
     $sql = 'UPDATE webcal_report SET ';
-    $namecnt = count ( $names );
-    for ( $i = 0; $i < $namecnt; $i++ ) {
+    for ( $i = 0; $names[$i]; $i++ ) {
       $sql .= ( $i > 0 ? ', ' : '' ) . "$names[$i] = ?";
     }
     $sql .= ' WHERE cal_report_id = ?';

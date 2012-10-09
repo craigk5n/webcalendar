@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
 
 //check UAC
@@ -97,9 +97,9 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     ( $date >= date ( 'Ymd' )
       ? get_tasks ( $date, $get_unapproved ) : $tk ) );
 
-  for ( $j = 0, $cnt = count ( $ev ); $j < $cnt; $j++ ) {
-    if ( $get_unapproved || $ev[$j]->getStatus() == 'A' )
-      html_for_event_week_at_a_glance ( $ev[$j], $date );
+  foreach ( $ev as $j ) {
+    if ( $get_unapproved || $j->getStatus() == 'A' )
+      html_for_event_week_at_a_glance ( $j, $date );
   }
 
   // Squish events that use the same cell into the same cell.

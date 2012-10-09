@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  *  Generates RSS 2.0 output of the activity log.
  *
  *  Like icalclient.php, this file does not use the standard web-based
@@ -164,10 +164,10 @@ function rss_activity_log ( $sys, $entries ) {
 
   $ret = '';
 
-  for ( $i = 0; $i < count ( $rows ) && $i < $entries; $i++ ) {
+  for ( $i = 0; $rows[$i] && $i < $entries; $i++ ) {
     $row = $rows[$i];
     $num = 0;
-    $l_login = $row[0];
+    $l_login= $row[0];
     $l_user = $row[1];
     $l_type = $row[2];
     $l_date = $row[3];
@@ -175,21 +175,21 @@ function rss_activity_log ( $sys, $entries ) {
     $l_text = $row[5];
 
     if ( $sys ) {
-      $l_id = $row[6];
-      $l_description = '';
+      $l_id         = $row[6];
+      $l_description= '';
     } else {
-      $l_eid = $row[6];
-      $l_ename = $row[7];
-      $l_id = $row[8];
-      $l_etype = $row[9];
-      $l_description = $row[10];
+      $l_eid        = $row[6];
+      $l_ename      = $row[7];
+      $l_id         = $row[8];
+      $l_etype      = $row[9];
+      $l_description= $row[10];
       // convert lines to <br> if no HTML formatting found
       if ( strpos ( $l_description, "</" ) == false ) {
         $l_description = nl2br ( $l_description );
       }
     }
     $num++;
-    $unixtime = date_to_epoch ( $l_date . $l_time );
+    $unixtime= date_to_epoch ( $l_date . $l_time );
     $subject = display_activity_log ( $l_type, $l_text, "\n" );
     $ret .=
       "<item>\n" . '  <title><![CDATA[' . $subject . ': '
@@ -202,8 +202,8 @@ function rss_activity_log ( $sys, $entries ) {
       $ret .= $x;
     } else
       $ret .= '<![CDATA[' . $l_description  . ']]>';
-    $ret .= '</description>';
-    $ret .= "\n"
+
+    $ret .= '</description>' . "\n"
     // . '  <category><![CDATA[' . $category . ']]></category>' . "\n"
     /* RSS 2.0 date format Wed, 02 Oct 2002 13:00:00 GMT */
       . '<pubDate>' . gmdate( 'D, d M Y H:i:s', $unixtime ) . ' GMT</pubDate>'

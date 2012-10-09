@@ -12,6 +12,7 @@
  * @version $Id$
  */
 include_once 'includes/init.php';
+require_valide_referring_url();
 
 $error = '';
 
@@ -62,26 +63,23 @@ if ( $search_others ) {
       $GROUPS_ENABLED == 'Y' ) {
     $myusers = get_my_users ( '', 'view' );
     $userlookup = array();
-    for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {
-      $userlookup[$myusers[$i]['cal_login']] = 1;
+    foreach ( $myusers as $i ) {
+      $userlookup[$i['cal_login']] = 1;
     }
     $newlist = array();
     $cnt = count ( $users );
-    for ( $i = 0; $i < $cnt; $i++ ) {
-      if ( ! empty ( $userlookup[$users[$i]] ) )
-        $newlist[] = $users[$i];
+    foreach ( $users as $i ) {
+      if ( ! empty ( $userlookup[$i] ) )
+        $newlist[] = $i;
     }
     $users = $newlist;
   }
   // Now, use access control to remove more users :-)
   if ( access_is_enabled() && ! $is_admin ) {
     $newlist = array();
-    for ( $i = 0; $i < count ( $users ); $i++ ) {
-      if ( access_user_calendar ( 'view', $users[$i] ) ) {
-        $newlist[] = $users[$i];
-        //echo "can access $users[$i] <br>";
-      } else {
-        //echo "cannot access $users[$i] <br>";
+    foreach ( $users as $i ) {
+      if ( access_user_calendar ( 'view', $i ) ) {
+        $newlist[] = $i;
       }
     }
     $users = $newlist;
@@ -153,7 +151,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
 // end Phrase modification
   $order = 'DESC';
   $word_cnt = count ( $words );
-  for ( $i = 0; $i < $word_cnt; $i++ ) {
+  foreach ( $words as $i ) {
     $sql_params = array();
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, weu.cal_login '
@@ -167,8 +165,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       if ( empty ( $users[0] ) )
         $sql_params[0] = $users[0] = $login;
 
-      $user_cnt = count ( $users );
-      for ( $j = 0; $j < $user_cnt; $j++ ) {
+      for ( $j = 0; $users[$j]; $j++ ) {
         if ( $j > 0 ) $sql .= ', ?';
         $sql_params[] = $users[$j];
       }
@@ -191,13 +188,13 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       ? 'CAST ( we.cal_description AS varchar (1024) )'
       : 'we.cal_description' )
      . ' ) LIKE UPPER( ? ) ';
-    $sql_params[] = '%' . $words[$i] . '%';
-    $sql_params[] = '%' . $words[$i] . '%';
+    $sql_params[] = '%' . $i . '%';
+    $sql_params[] = '%' . $i . '%';
 
     //process advanced filters
     if ( ! empty ( $extra_filter ) ) {
       $sql .= ' OR wse.cal_data LIKE UPPER( ? )';
-      $sql_params[] = '%' . $words[$i] . '%';
+      $sql_params[] = '%' . $i . '%';
     }
     //close AND statement from above
     $sql .= ')';

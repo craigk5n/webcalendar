@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {
@@ -21,9 +21,8 @@ echo '
 
 if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo str_replace( 'XXX', $nonuserfullname,
-    translate( 'XXX Assistants' ) ) . '<br>
-      ' . translate( '-Admin mode-' );
+  echo str_replace ( 'XXX', $nonuserfullname, translate ( 'XXX Assistants' ) ) . '<br>
+      ' . translate ( '-Admin mode-' );
 } else
   echo translate ( 'Your assistants' );
 
@@ -49,13 +48,12 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
-  $u = $users[$i]['cal_login'];
+foreach ( $users as $i ) {
+  $u = $i['cal_login'];
   if ( $u == $login || $u == '__public__' )
     continue;
-  echo $option . $u
-   . ( empty( $assistantuser[$u] ) ? '">' : '" selected>' )
-   . $users[$i]['cal_fullname'] . '</option>';
+  echo $option . $u . ( empty ( $assistantuser[$u] ) ? '">' : '" selected>' )
+    . $i['cal_fullname'] . '</option>';
 }
 
 echo '

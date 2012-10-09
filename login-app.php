@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 
  foreach( array(
     'access',
@@ -117,12 +117,12 @@ echo '
    . '</a><br>' : '' );
 
 $nulist = get_nonuser_cals();
-for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
-  if ( $nulist[$i]['cal_is_public'] == 'Y' )
+foreach ( $nulist as $i ) {
+  if ( $i['cal_is_public'] == 'Y' )
     echo '
-    <a class="nav" href="nulogin.php?login=' . $nulist[$i]['cal_login'] . '">'
-     . str_replace ( 'XXX', $nulist[$i]['cal_fullname'],
-      translate( 'Access XXX calendar' ) ) . '</a><br>';
+    <a class="nav" href="nulogin.php?login=' . $i['cal_login'] . '">'
+      . str_replace ( 'XXX', $i['cal_fullname'],
+        translate ( 'Access XXX calendar' ) ) . '</a><br>';
 }
 
 echo ( $DEMO_MODE == 'Y'

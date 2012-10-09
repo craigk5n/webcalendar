@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Description:
  *  Web Service functionality to get a list of all users.
@@ -41,15 +41,15 @@ if ( $login == '__public__' && $login != $user && $PUBLIC_ACCESS_OTHERS != 'Y' )
 
 $userlist = get_my_users();
 
-for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
+foreach ( $userlist as $i ) {
   $out .= '
   <user>
-    <login>' . $userlist[$i]['cal_login'] . '</login>
-    <lastname>' . ws_escape_xml ( $userlist[$i]['cal_lastname'] ) . '</lastname>
-    <firstname>' . ws_escape_xml ( $userlist[$i]['cal_firstname'] ) . '</firstname>
-    <fullname>' . ws_escape_xml ( $userlist[$i]['cal_fullname'] ) . '</fullname>
-    <email>' . ws_escape_xml ( $userlist[$i]['cal_email'] ) . '</email>'
-   . ( $userlist[$i]['cal_is_admin'] == 'Y' ? '
+    <login>' . $i['cal_login'] . '</login>
+    <lastname>' . ws_escape_xml ( $i['cal_lastname'] ) . '</lastname>
+    <firstname>' . ws_escape_xml ( $i['cal_firstname'] ) . '</firstname>
+    <fullname>' . ws_escape_xml ( $i['cal_fullname'] ) . '</fullname>
+    <email>' . ws_escape_xml ( $i['cal_email'] ) . '</email>'
+    . ( $i['cal_is_admin'] == 'Y' ? '
     <admin>1</admin>' : '' ) . '
   </user>';
 }

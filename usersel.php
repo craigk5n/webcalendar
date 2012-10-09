@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
 
 // input args in URL
@@ -22,8 +22,8 @@ if ( empty ( $listid ) ) {
 // Parse $users.
 $exp = explode( ',', $users );
 $groups = $selected = $sql_params = array();
-for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
-  $selected[$exp[$i]] = 1;
+foreach ( $exp as $i ) {
+  $selected[$i] = 1;
 }
 
 $groups = get_groups( $user );
@@ -56,9 +56,8 @@ echo '
               <b>' . $groupsStr . '</b><br>
               <select name="groups" size="15">';
 
-for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
-  echo $option . $groups[$i]['cal_group_id'] . '">'
-   . $groups[$i]['cal_name'] . '</option>';
+foreach ( $groups as $i ) {
+  echo $option . $i['cal_group_id'] . '">' . $i['cal_name'] . '</option>';
 }
 
 echo '
