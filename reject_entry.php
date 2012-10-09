@@ -1,9 +1,10 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
-require ( 'includes/classes/WebCalMailer.class' );
-$mail = new WebCalMailer;
+require_valide_referring_url();
+require 'includes/classes/WebCalMailer.class';
 
-$error = '';
+$error= '';
+$mail = new WebCalMailer;
 
 if ( $readonly == 'Y' )
   $error = print_not_auth();
@@ -81,21 +82,20 @@ if ( empty ( $error ) && $id > 0 ) {
   }
 
   $eventstart = date_to_epoch ( $fmtdate . $time );
-  for ( $i = 0, $cnt = count ( $partlogin ); $i < $cnt; $i++ ) {
+  foreach ( $partlogin as $i ) {
     // Does this user want email for this?
-    $send_user_mail = get_pref_setting ( $partlogin[$i],
-      'EMAIL_EVENT_REJECTED' );
+    $send_user_mail = get_pref_setting ( $i, 'EMAIL_EVENT_REJECTED' );
     // Check UAC.
     $can_mail = 'Y';
     if ( access_is_enabled() )
-      $can_mail = access_user_calendar ( 'email', $partlogin[$i], $login );
+      $can_mail = access_user_calendar ( 'email', $i, $login );
 
-    $htmlmail = get_pref_setting ( $partlogin[$i], 'EMAIL_HTML' );
-    $t_format = get_pref_setting ( $partlogin[$i], 'TIME_FORMAT' );
-    user_load_variables ( $partlogin[$i], 'temp' );
-    $user_TIMEZONE = get_pref_setting ( $partlogin[$i], 'TIMEZONE' );
+    $htmlmail = get_pref_setting ( $i, 'EMAIL_HTML' );
+    $t_format = get_pref_setting ( $i, 'TIME_FORMAT' );
+    user_load_variables ( $i, 'temp' );
+    $user_TIMEZONE = get_pref_setting ( $i, 'TIMEZONE' );
     set_env ( 'TZ', $user_TIMEZONE );
-    $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
+    $user_language = get_pref_setting ( $i, 'LANGUAGE' );
     if ( $send_user_mail == 'Y' &&
       strlen ( $tempemail ) && $SEND_EMAIL != 'N' && $can_mail == 'Y' ) {
       reset_language ( empty ( $user_language ) || $user_language == 'none'
@@ -135,7 +135,7 @@ if ( empty ( $error ) && $id > 0 ) {
       // Send via WebCalMailer class.
       $mail->WC_Send ( $login_fullname, $tempemail,
         $tempfullname, $name, $msg, $htmlmail, $from );
-      activity_log ( $id, $login, $partlogin[$i], LOG_NOTIFICATION,
+      activity_log ( $id, $login, $i, LOG_NOTIFICATION,
         str_replace ( 'XXX', $app_user, translate ( 'Rejected by XXX.' ) ) );
     }
   }

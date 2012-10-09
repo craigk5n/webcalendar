@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Description
  *   Handler for AJAX requests for viewing events in combo.php,
@@ -133,17 +133,16 @@ if ( $action == 'get' ) {
     $tasks = read_tasks ( $user, $enddate );
   // Gather the category IDs for each
   $ids = array();
-  //echo "<pre>"; print_r ( $events ); echo "</pre>";
-  for ( $i = 0; $i < count ( $events ); $i++ ) {
-    $id = $events[$i]->getID();
+  foreach ( $events as $i ) {
+    $id = $i->getID();
     $ids[$id] = $id;
   }
-  for ( $i = 0; $i < count ( $repeated_events ); $i++ ) {
-    $id = $repeated_events[$i]->getID();
+  foreach ( $repeated_events as $i ) {
+    $id = $i->getID();
     $ids[$id] = $id;
   }
-  for ( $i = 0; $i < count ( $tasks ); $i++ ) {
-    $id = $tasks[$i]->getID();
+  foreach ( $tasks as $i ) {
+    $id = $i->getID();
     $ids[$id] = $id;
   }
   // Load all category IDs for the specified event IDs
@@ -311,8 +310,7 @@ if ( $action == 'get' ) {
   }
   // Add to each participant
   $userList = explode ( ',', $participants );
-  for ( $i = 0; $i < count ( $userList ); $i++ ) {
-    $user = $userList[$i];
+  foreach ( $userList as $user ) {
     $status = ( $user != $login &&
       boss_must_approve_event ( $login, $user ) &&
       $REQUIRE_APPROVALS == 'Y' &&
@@ -386,31 +384,25 @@ if ( $action == 'get' ) {
 // about converting times between timezones.
 function setLocalTimes ( $eventList )
 {
-  for ( $i = 0; $i < count ( $eventList ); $i++ ) {
-    $event = $eventList[$i];
-    $d = date_to_str ( $event->getDate(), '__yyyy__,__n__,__dd__',
-      false );
+  foreach ( $eventList as $event ) {
+    $d = date_to_str ( $event->getDate(), '__yyyy__,__n__,__dd__', false );
     $args = split ( ',', $d );
     $localDate = sprintf ( "%04d%02d%02d", $args[0], $args[1], $args[2] );
     $event->setLocalDate ( $localDate );
     if ( $event->getTime() <= 0 ) {
       $event->setLocalTime ( $event->getTime() );
     } else {
-      $localTime = display_time ( $event->getDatetime(),
-        0, '', '24' );
-      $localTime = substr ( $localTime, 0, 2 ) .
-        substr ( $localTime, 3, 5 );
+      $localTime = display_time ( $event->getDatetime(), 0, '', '24' );
+      $localTime = substr ( $localTime, 0, 2 ) . substr ( $localTime, 3, 5 );
       $event->setLocalTime ( $localTime );
     }
   }
 }
 
-function setCategories ( $eventList )
-{
+function setCategories ( $eventList ) {
   global $eventCats;
 
-  for ( $i = 0; $i < count ( $eventList ); $i++ ) {
-    $event = $eventList[$i];
+  foreach ( $eventList as $event ) {
     $id = $event->getID();
     if ( ! empty ( $eventCats[$id] ) ) {
       $event->setCategories ( $eventCats[$id] );

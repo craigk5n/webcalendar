@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# $Id$
 #
 # extractfaqs.pl
 #
@@ -17,27 +18,26 @@
 #
 #######################################################################
 
-my @files = ( );
-my @questions = ( );
-my @answers = ( );
-my @file = ( );
-my @cat = ( );
+my @answers  = ();
+my @cat      = ();
+my @file     = ();
+my @files    = ();
+my @questions= ();
 
-for ( $i = 0; $i < @ARGV; $i++ ) {
-  if ( -f $ARGV[$i] ) {
-    push ( @files, $ARGV[$i] )
+foreach ( $i ( @ARGV ) ) {
+  if ( -f $i ) {
+    push ( @files, $i )
   } else {
-    print STDERR "Ignoring $ARGV[$i]\n";
+    print STDERR "Ignoring $i\n";
   }
 }
 
-foreach $f ( @files )
-{
+foreach $f ( @files ) {
   process_file ( $f );
 }
 
 # Do some regex replacements to both questions and answers.
-for ( $i = 0; $i < @questions; $i++ ) {
+for ( $i = 0; $questions[$i]; $i++ ) {
   $questions[$i] =~ s/\s+/ /g;
   # remove the "new window" icons
   $questions[$i] =~ s/<a href=\"\S+\"[^>]+><img[^>]+><\/a>//g;
@@ -53,15 +53,14 @@ for ( $i = 0; $i < @questions; $i++ ) {
 
   # For
   if ( $answers[$i] =~ /<a href="#([a-z]+)">/ ) {
-    $answers[$i] = $` . "<a href=\"" .
-      makeCVSURL ( $file[$i], $1 ) . "\">" . $';
+    $answers[$i] = $` . "<a href=\"" . makeCVSURL ( $file[$i], $1 ) . "\">" . $';
   }
   $answers[$i] =~ s/<a href=\"\S+\"[^>]+><img[^>]+><\/a>//g;
 }
 
 print "<ul>\n";
 $thisCat = '';
-for ( $i = 0; $i < @questions; $i++ ) {
+for ( $i = 0; $questions[$i]; $i++ ) {
   if ( $cat[$i] ne $thisCat ) {
     print "  </ul></li>\n" if ( $thisCat ne '' );
     print "<li>$cat[$i]\n  <ul>\n";
@@ -74,11 +73,10 @@ for ( $i = 0; $i < @questions; $i++ ) {
 print "  </ul></li>\n" if ( $thisCat ne '' );
 print "</ul>\n<hr>\n<dl>\n";
 
-for ( $i = 0; $i < @questions; $i++ ) {
+for ( $i = 0; $questions[$i]; $i++ ) {
   $q = $questions[$i];
   $anchor = "faq_" . ( $i + 1 );
-  print "<dt><a name=\"$anchor\">$q</a></dt>\n";
-  print "<dd>$answers[$i]</dd>\n";
+  print "<dt><a name=\"$anchor\">$q</a></dt>\n<dd>$answers[$i]</dd>\n";
 }
 print "</dl>\n";
 
@@ -99,11 +97,11 @@ sub process_file {
   my ( $f ) = @_;
 
   open ( F, $f ) || die "Error reading $f: ";
-  my $inFAQ = 0;
-  my $cat = '';
+  my $inFAQ= 0;
+  my $cat  = '';
   my $text = '';
-  @sections = ( );
-  my @localCats = ( );
+  @sections= ();
+  my @localCats = ();
   while ( <F> ) {
     if ( /START FAQ:\s*(\S+.*)--/ ) {
       $inFAQ = 1;
@@ -123,7 +121,7 @@ sub process_file {
   close ( F );
 
   # Now parse the text
-  for ( $i = 0; $i < @sections; $i++ ) {
+  for ( $i = 0; $sections[$i]; $i++ ) {
     @q = split ( /<dt>/, $sections[$i] );
     $cat = $localCats[$i];
     shift ( @q ); # ignore junk at beginning
@@ -152,4 +150,3 @@ sub process_file {
     }
   }
 }
-

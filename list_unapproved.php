@@ -17,6 +17,7 @@
  */
 
 include_once 'includes/init.php';
+require_valide_referring_url();
 send_no_cache_header();
 
 if ( empty ( $user ) )
@@ -83,29 +84,28 @@ function list_unapproved ( $user ) {
     $rejectStr = translate ( 'Reject' );
     $uncheckAllStr = translate ( 'Uncheck All' );
     $viewStr = translate ( 'View this entry' );
-    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-      $row = $rows[$i];
+    foreach ( $rows as $row ) {
       $key++;
-      $id = $row[0];
-      $name = $row[1];
-      $description = $row[2];
-      $cal_user = $row[3];
-      $pri = $row[4];
-      $date = $row[5];
+      $id         = $row[0];
+      $name       = $row[1];
+      $description= $row[2];
+      $cal_user   = $row[3];
+      $pri        = $row[4];
+      $date       = $row[5];
       $time = sprintf ( "%06d", $row[6] );
-      $duration = $row[7];
-      $status = $row[8];
-      $type = $row[9];
+      $duration= $row[7];
+      $status  = $row[8];
+      $type    = $row[9];
       $view_link = 'view_entry';
       $entryID = 'entry' . $type . $id;
 
       $linkid = "pop$id-$key";
       $timestr = '';
       if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
-        $eventstart = date_to_epoch ( $date . $time );
+        $eventstart= date_to_epoch ( $date . $time );
         $eventstop = $eventstart + $duration;
         $eventdate = date_to_str ( date ( 'Ymd', $eventstart ) );
-        $timestr = display_time ( '', 0, $eventstart )
+        $timestr   = display_time ( '', 0, $eventstart )
          . ( $duration > 0 ? ' - ' . display_time ( '', 0, $eventstop ) : '' );
       } else {
         // Don't shift date if All Day or Untimed.
@@ -206,10 +206,9 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
       ? array_merge ( get_my_users(), $my_non_users )
       : get_my_users() );
 
-    for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
-      $x = $all[$j]['cal_login'];
-      if ( access_user_calendar ( 'approve', $x ) &&
-          empty ( $app_user_hash[$x] ) ) {
+    foreach ( $all as $j ) {
+      $x = $j['cal_login'];
+      if ( access_user_calendar ( 'approve', $x ) && empty ( $app_user_hash[$x] ) ) {
         $app_user_hash[$x] = 1;
         $app_users[] = $x;
       }
@@ -221,8 +220,8 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
       $app_users[] = '__public__';
     }
     $all = $my_non_users;
-    for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
-      $x = $all[$j]['cal_login'];
+    foreach ( $all as $j ) {
+      $x = $j['cal_login'];
       if ( empty ( $app_user_hash[$x] ) ) {
         $app_user_hash[$x] = 1;
         $app_users[] = $x;
@@ -235,9 +234,9 @@ echo '
     <form action="list_unapproved.php" name="listunapproved" method="post">
       <table summary="">';
 
-for ( $i = 0, $cnt = count ( $app_users ); $i < $cnt; $i++ ) {
+foreach ( $app_users as $i ) {
   // List unapproved entries for this user.
-  echo list_unapproved ( $app_users[$i] );
+  echo list_unapproved ( $i );
 }
 
 echo '
@@ -256,9 +255,9 @@ echo '
           theForm = document.forms [ \'listunapproved\' ],
           z;
 
-        for ( z = 0; z < theForm.length; z++ ) {
-          if ( theForm[z].type == \'checkbox\' && theForm[z].value == user )
-            theForm[z].checked = true;
+        for ( z in theForm ) {
+          if ( z.type == \'checkbox\' && z.value == user )
+            z.checked = true;
         }
       }
       function uncheck_all ( user ) {
@@ -266,9 +265,9 @@ echo '
           theForm = document.forms[\'listunapproved\'],
           z;
 
-        for ( z = 0; z < theForm.length; z++ ) {
-          if ( theForm[z].type == \'checkbox\' && theForm[z].value == user )
-            theForm[z].checked = false;
+        for ( z in theForm ) {
+          if ( z.type == \'checkbox\' && z.value == user )
+            z.checked = false;
         }
       }
       function do_confirm ( phrase, user, id ) {

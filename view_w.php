@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Page Description:
  * Display view of a week with users side by side.
@@ -65,7 +65,8 @@ echo '
 // any more than that doesn't really fit in the page.
 
 $e_save = $re_save = array();
-for ( $i = 0; $i < $viewusercnt; $i++ ) {
+$viewusercnt = count ( $viewusers );
+for ( $i = 0; $viewusers[$i]; $i++ ) {
   /* Pre-Load the repeated events for quckier access. */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   $re_save[$i] = $repeated_events;
@@ -74,7 +75,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   $e_save[$i] = $events = read_events ( $viewusers[$i], $wkstart - 604800, $wkend );
 }
 
-for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
+for ( $j = 0; $viewusers[$j]; $j += $USERS_PER_TABLE ) {
   // Since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
 
@@ -97,7 +98,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   // $j points to start of this table/row.
   // $k is counter starting at 0.
   // $i starts at table start and goes until end of this table/row.
-  for ( $i = $j, $k = 0; $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+  for ( $i = $j, $k = 0; $viewusers[$i] && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
     echo '
@@ -120,7 +121,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
           <th ' . $class . '>'
      . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS )
      . ' ' . date ( 'd', $date ) . '</th>';
-    for ( $i = $j, $k = 0; $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+    for ( $i = $j, $k = 0; $viewusers[$i] && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];

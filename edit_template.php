@@ -1,5 +1,4 @@
-<?php // $Id$
-
+<?php /* $Id$ */
 /**
  * Page Description:
  * This page will present the HTML form to edit an entry in the cal_report table,
@@ -14,6 +13,7 @@
  * Admin permissions are checked by the WebCalendar class.
  */
 include_once 'includes/init.php';
+require_valide_referring_url();
 
 $cur = $error = '';
 $found = $foundOld = false;

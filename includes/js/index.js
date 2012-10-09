@@ -24,7 +24,7 @@ function validate(form) {
   form = document.form_app_settings,
   listid = 0; // Find id of single user object.
 
-  for (var i = form.form_user_inc.length - 1; i >= 0; i--) {
+  for (var i = 0; form.form_user_inc[i]; i++) {
     if (form.form_user_inc.options[i].value == 'none') {
       listid = i;
       break;
@@ -58,7 +58,7 @@ function auth_handler() {
   var form = document.form_app_settings,
   listid = 0; // Find id of single user object.
 
-  for (var i = form.form_user_inc.length - 1; i >= 0; i--) {
+  for (var i = 0; form.form_user_inc[i]; i++) {
     if (form.form_user_inc.options[i].value == 'none') {
       listid = i;
       break;

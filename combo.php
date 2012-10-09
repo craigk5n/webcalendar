@@ -1,10 +1,8 @@
-<?php
+<?php  /* $Id$ */
 /**
  * This page handles displaying the Day/Week/Month/Year views in a single
  * page with tabs. Content is loaded dynamically with AJAX.
  * So, requests for previous & next will not force a page reload.
- *
- * Version: $Id$
  *
  * TODO:
  * - Week view
@@ -14,8 +12,7 @@
  * - Honor access_can_access_function ( ACCESS_WEEK/ACCESS_MONTH/ACCESS_DAY )
  *
  * Possibilities for later:
- * - Include tab for unapproved events where users could approve from
- *   this page.
+ * - Include tab for unapproved events where users could approve from this page.
  *
  * Note: some of the icons for this page were downloaded from the following
  * page.  If you want to add more icons, check there first.
@@ -423,7 +420,7 @@ var users = [];
   // Create a javascript array of all users this user has access to see.
   // Note: not using this yet in the javascript anywhere....
   $users = user_get_users();
-  for ( $i = 0; $i < count ( $users ); $i++ ) {
+  for ( $i = 0; $users[$i]; $i++ ) {
     $fname = $users[$i]['cal_fullname'];
     if ( empty ( $fname ) )
       $fname = $users[$i]['cal_login'];
@@ -443,9 +440,9 @@ function autocompleteUserSearch ( q )
   var cnt = 0;
 
   var words = q.toLowerCase().split ( ' ' );
-  for ( var i = 0; i < userLogins.length; i++ ) {
+  for ( var i = 0; userLogins[i]; i++ ) {
     var match = 0;
-    for ( var j = 0; j < words.length && ! match; j++ ) {
+    for ( var j = 0; words[j] && ! match; j++ ) {
       var q1 = words[j];
       if ( q1.length == 0 ) {
         // ignore
@@ -639,7 +636,7 @@ function ajax_get_tasks ()
       }
       tasks = new Array ();
       var i = 0;
-      for ( var i = 0; i < response.tasks.length; i++ ) {
+      for ( var i = 0; response.tasks[i]; i++ ) {
         tasks[i] = response.tasks[i];
       }
       loadedTasks = true;
@@ -738,8 +735,7 @@ function view_event ( key, location )
         return;
       }
       var text = '';
-      for ( var i = 0; i < response.participants.length; i++ ) {
-        var participant = response.participants[i];
+      for ( var participant in response.participants ) {
         var login = participant.login;
         var fullname = users[login] ? users[login] : login;
         if ( text.length > 0 ) text += "<br>";
@@ -751,8 +747,7 @@ function view_event ( key, location )
 
 <?php if ( Doc::attachmentsEnabled() ) { ?>
       text = '';
-      for ( var i = 0; i < response.attachments.length; i++ ) {
-        var attachment = response.attachments[i];
+      for ( var attachment in response.attachments ) {
         var summary = attachment.summary;
         if ( text.length > 0 ) text += "<br>";
         text += summary;
@@ -764,8 +759,7 @@ function view_event ( key, location )
 
 <?php if ( Doc::commentsEnabled() ) { ?>
       text = '<dl style="margin-top: 0;">';
-      for ( var i = 0; i < response.comments.length; i++ ) {
-        var comment = response.comments[i];
+      for ( var comment in response.comments ) {
         text += "<dt>" + comment.description + "<br>" +
           comment.owner + " @ " + comment.datetime + "</dt>" +
           "<dd>" + comment.text + "</dd>";
@@ -904,7 +898,7 @@ function month_view_nav_links ( year, month )
   ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (year-1) +
       ',' + month + ',1)">' +
     '<img src="images/combo-prev.png" border="0"><br>' + (year-1) + '</td>';
-  for ( i = 1; i <= 6; i++ ) {
+  for ( i = 1; i < 7; i++ ) {
     ret += '<td class="';
     if ( i == month )
       ret += 'currentMonthLink ';
@@ -924,7 +918,7 @@ function month_view_nav_links ( year, month )
    '<img src="images/combo-today.png" style="vertical-align: middle;">'
    + "<br><?php etranslate('Today');?></td></tr>";
   // Jul - Dec
-  for ( i = 7; i <= 12; i++ ) {
+  for ( i = 7; i < 13; i++ ) {
     ret += '<td class="';
     if ( i == month )
       ret += 'currentMonthLink ';
@@ -1025,9 +1019,9 @@ function buildHiddenParticipantList ()
   var html = '';
   var ar = $('quickAddParticipants').value.split ( ',' );
   ar.sort ();
-  for ( var i = 0; i < ar.length; i++ ) {
-    if ( ar[i].length > 0 )
-      html += quickAddBuildUserElement ( ar[i] );
+  for ( var i in ar ) {
+    if ( i.length > 0 )
+      html += quickAddBuildUserElement ( i );
   }
   $('quickAddParticipantList').innerHTML = html;
 }
@@ -1041,9 +1035,9 @@ function quickAddRemoveUser ( login )
 
   var value = $('quickAddParticipants').value;
   var logins = value.split ( ',' );
-  for ( var i = 0; i < logins.length; i++ ) {
-    if ( logins[i] != login ) {
-      newv[cnt] = logins[i];
+  for ( var i in logins ) {
+    if ( i != login ) {
+      newv[cnt] = i;
       cnt++;
     }
   }
@@ -1281,7 +1275,7 @@ function build_month_view ( year, month )
           '<a href="#" onclick="switchingToDayView=true;ajax_get_events('+year+','+month+','+i+');views.expandit(0);">' + i + "</a></span><br>";
         // If eventArray is null here, that means we have not loaded
         // event data for that date.
-        for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
+        for ( var l = 0; eventArray && eventArray[l]; l++ ) {
           var myEvent = eventArray[l];
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
           // See if this event matches selected categories.
@@ -1490,7 +1484,7 @@ function build_agenda_view ( year, month )
 <?php } ?>
         leadIn += ">" + format_date ( dateYmd, true ) + "</td>\n" +
           "<td valign=\"top\" class=\"" + className + "\">";
-        for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
+        for ( var l = 0; eventArray && eventArray[l]; l++ ) {
           var myEvent = eventArray[l];
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
           // See if this event matches selected categories.
@@ -1575,7 +1569,7 @@ function strcmp ( string1, string2 )
   var str2 = string2.toLowerCase ();
   if ( str1 == str2 ) return 0;
 
-  for ( var i = 0; i < str1.length && i < str2.length; i++ ) {
+  for ( var i = 0; str1[i] && str2[i]; i++ ) {
     if ( str1.charAt ( i ) < str2.charAt ( i ) )
       return -1;
     else if ( str1.charAt ( i ) > str2.charAt ( i ) )
@@ -1644,7 +1638,7 @@ function build_task_view ()
     '<th class="clickable" onclick="task_sort_handler(2)"><?php etranslate('Priority');?><img src="images/' + img[2] + '.png"></th>' +
     '<th class="clickable" onclick="task_sort_handler(3)"><?php etranslate('Category');?><img src="images/' + img[3] + '.png"></th>' +
     '</tr>' + "\n";
-  for ( var i = 0; i < tasks.length; i++ ) {
+  for ( var i = 0; tasks[i]; i++ ) {
     var task = tasks[i];
     if ( ! tasks[i] || ! tasks[i]._name )
       continue;
@@ -1714,7 +1708,7 @@ function build_day_view ( year, month, day )
 
     var untimedEvents = '';
     var timedEvents = '';
-    for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
+    for ( var l = 0; eventArray && eventArray[l]; l++ ) {
       var myEvent = eventArray[l];
       var isTimed = ( myEvent._time >= 0 );
       var thisEvent = '';
@@ -1817,8 +1811,7 @@ var pos = '0';
 function eventMatchesSelectedCats ( event ) {
   if ( ! event._categories || event._categories.length == 0 )
     return false;
-  for ( var i = 0; i < event._categories.length; i++ ) {
-    var catId = event._categories[i];
+  for ( var catId in event._categories ) {
     if ( isInArray ( catId, selectedCats ) ) {
       return true;
     }
@@ -1829,8 +1822,8 @@ function eventMatchesSelectedCats ( event ) {
 // Convenience function...
 function isInArray ( val, searchArr )
 {
-  for ( var i = 0; i < searchArr.length; i++ ) {
-    if ( searchArr[i] == val )
+  for ( var i in searchArr ) {
+    if ( i == val )
       return true;
   }
   return false;
@@ -1843,9 +1836,9 @@ function getUserSuggestion ( str )
   var ret = [];
   var cnt = 0;
 
-  for ( var i = 0; i < userLogins.length; i++ ) {
-    if ( userLogins[i].match(/str/i) ) {
-      ret[cnt++] = userLogins[i];
+  for ( var i in userLogins ) {
+    if ( i.match(/str/i) ) {
+      ret[cnt++] = i;
     }
   }
   return ret;

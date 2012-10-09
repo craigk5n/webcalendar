@@ -1,6 +1,7 @@
-<?php
+<?php /* $Id$ */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
+// Page Description:
 // This file contains all the functions for getting information
 // about users from Joomla 1.0.8 and logging in/out
 //  ** also compatible with Mambo 4.5.3
@@ -399,20 +400,19 @@ function user_delete_user ( $user ) {
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
   $delete_em = array ();
-  for ( $i = 0; $i < count ( $events ); $i++ ) {
-    $res = dbi_query ( "SELECT COUNT(*) FROM webcal_entry_user " .
-      "WHERE cal_id = " . $events[$i] );
+  foreach ( $events as $i ) {
+    $res = dbi_query ( 'SELECT COUNT(*) FROM webcal_entry_user WHERE cal_id = ' . $i );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
-    $delete_em[] = $events[$i];
+    $delete_em[] = $i;
       }
       dbi_free_result ( $res );
     }
   }
   // Now delete events that were just for this user
-  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_query ( "DELETE FROM webcal_entry WHERE cal_id = " . $delete_em[$i] );
+  foreach ( $delete_em as $i ) {
+    dbi_query ( 'DELETE FROM webcal_entry WHERE cal_id = ' . $i );
   }
 
   // Delete user participation from events
@@ -438,9 +438,8 @@ function user_delete_user ( $user ) {
     }
     dbi_free_result ( $res );
   }
-  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
-    dbi_query ( "DELETE FROM webcal_view_user WHERE cal_view_id = " .
-      $delete_em[$i] );
+  foreach ( $delete_em as $i ) {
+    dbi_query ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ' . $i );
   }
   dbi_query ( "DELETE FROM webcal_view WHERE cal_owner = '$user'" );
 

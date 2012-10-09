@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
-print_header( '', '', '', true, false, true );
+print_header ( '', '', '', 1, 0, 1 );
 
 if ( ! $is_admin ) {
   echo print_not_auth ( true ) . '
@@ -75,11 +75,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
           <td>
             <select name="nadmin" id="nadmin">';
 
-  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    echo $option . $userlist[$i]['cal_login']
-     . ( ! empty ( $nonusertemp_admin ) &&
-      $nonusertemp_admin == $userlist[$i]['cal_login']
-      ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname'] . '</option>';
+  foreach ( $userlist as $i ) {
+    echo $option . $i['cal_login']
+      . ( ! empty ( $nonusertemp_admin ) && $nonusertemp_admin == $i['cal_login']
+        ? '" selected>' : '">' ) . $i['cal_fullname'] . '</option>';
   }
 
   echo '

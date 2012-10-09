@@ -551,10 +551,10 @@ function export_recurrence_vcal( $id, $date ) {
       $num = count ( $exdate );
       if ( $num > 0 ) {
         $string = 'EXDATE:';
-        for ( $i = 0; $i < $num; $i++ ) {
-          $string .= $exdate[$i] . 'T000000,';
+        foreach ( $exdate as $i ) {
+          $string .= $i . 'T000000,';
         }
-        echo rtrim( $string, ',' ) . "\r\n";
+        echo rtrim ( $string, ',' ) . "\r\n";
       }
     }
   }
@@ -869,14 +869,6 @@ function export_vcal ( $id ) {
     } else {
       echo "CLASS:PUBLIC\r\n";
     }
-    // ATTENDEE of the event
-   // $attendee = export_get_attendee( $row[0], 'vcal' );
-    //$attendcnt = count ( $attendee );
-    //for ( $i = 0; $i < $attendcnt; $i++ ) {
-    //  $attendee[$i] = export_fold_lines ( $attendee[$i], 'quotedprintable' );
-    //  while ( list ( $key, $value ) = each ( $attendee[$i] ) )
-    //  echo "$value\r\n";
-    //}
 
     /* Time - all times are utc */
     echo export_time ( $date, $duration, $time, 'vcal' )
@@ -1103,10 +1095,9 @@ function export_ical ( $id = 'all', $attachment = false ) {
     }
     // ATTENDEE of the event
     $attendee = export_get_attendee( $id, 'ical' );
-    $attendcnt = count ( $attendee );
-    for ( $i = 0; $i < $attendcnt; $i++ ) {
-      $attendee[$i] = export_fold_lines ( $attendee[$i], 'utf8' );
-      while ( list ( $key, $value ) = each ( $attendee[$i] ) )
+    foreach ( $attendee as $i ) {
+      $i = export_fold_lines ( $i, 'utf8' );
+      while ( list ( $key, $value ) = each ( $i ) )
         $Vret .= "$value\r\n";
     }
     /* Time - all times are utc */
@@ -1438,10 +1429,9 @@ function import_data ( $data, $overwrite, $type ) {
       $values[] = $Entry['Description'];
       // do_debug ( "descr='" . $Entry['Description'] . "'" );
       $sql_params = array();
-      $namecnt = count ( $names );
       if ( $updateMode ) {
         $sql = 'UPDATE webcal_entry SET ';
-        for ( $f = 0; $f < $namecnt; $f++ ) {
+        for ( $f = 0; $names[$f]; $f++ ) {
           $sql .= ( $f > 0 ? ', ' : '' ) . $names[$f] . ' = ?';
           $sql_params[] = $values[$f];
         }
@@ -1449,7 +1439,7 @@ function import_data ( $data, $overwrite, $type ) {
         $sql_params[] = $id;
       } else {
         $string_names = $string_values = '';
-        for ( $f = 0; $f < $namecnt; $f++ ) {
+        for ( $f = 0; $names[$f]; $f++ ) {
           if ( $f > 0 ) {
             $string_names .= ', ';
             $string_values .= ', ';
@@ -1656,8 +1646,7 @@ function import_data ( $data, $overwrite, $type ) {
 
         $string_names = $string_values = '';
         $sql_params = array();
-        $namecnt = count ( $names );
-        for ( $f = 0; $f < $namecnt; $f++ ) {
+        for ( $f = 0; $names[$f]; $f++ ) {
           if ( $f > 0 ) {
             $string_names .= ', ';
             $string_values .= ', ';
@@ -1745,8 +1734,7 @@ function import_data ( $data, $overwrite, $type ) {
         $string_names = '';
         $string_values = '';
         $sql_params = array();
-        $namecnt = count ( $names );
-        for ( $f = 0; $f < $namecnt; $f++ ) {
+        for ( $f = 0; $names[$f]; $f++ ) {
           if ( $f > 0 ) {
             $string_names .= ', ';
             $string_values .= ', ';
@@ -1814,12 +1802,11 @@ function import_data ( $data, $overwrite, $type ) {
       // We could do this with a single SQL using sub-select, but
       // I'm pretty sure MySQL does not support it.
       $old = array_keys ( $oldUIDs );
-      $oldcnt = count ( $old );
-      for ( $i = 0; $i < $oldcnt; $i++ ) {
+      foreach ( $old as $i ) {
         $sql = 'SELECT cal_id FROM webcal_import_data
           WHERE cal_import_type = ? AND cal_external_id = ?
           AND cal_login = ? AND cal_id < ?';
-        $res = dbi_execute ( $sql, array ( $type, $old[$i], $calUser, $firstEventId ) );
+        $res = dbi_execute ( $sql, array ( $type, $i, $calUser, $firstEventId ) );
         if ( $res ) {
           while ( $row = dbi_fetch_row ( $res ) ) {
             $oldIds[] = $row[0];
@@ -1829,12 +1816,10 @@ function import_data ( $data, $overwrite, $type ) {
           echo db_error() . "<br>\n";
         }
       }
-      $oldidcnt = count ( $oldIds );
-      for ( $i = 0; $i < $oldidcnt; $i++ ) {
-        $sql = "UPDATE webcal_entry_user SET cal_status = 'D' "
-         . "WHERE cal_id = ?";
+      foreach ( $oldIds as $i ) {
+        $sql = 'UPDATE webcal_entry_user SET cal_status = \'D\' WHERE cal_id = ?';
         $sqlLog .= $sql . "<br>\n";
-        dbi_execute ( $sql, array ( $oldIds[$i] ) );
+        dbi_execute ( $sql, array ( $i ) );
         $numDeleted++;
       }
     }
@@ -1948,8 +1933,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $line = 0;
   $event = '';
   $lines = explode ( "\n", $data );
-  $linecnt = count ( $lines );
-  for ( $n = 0; $n < $linecnt && ! $error; $n++ ) {
+  for ( $n = 0; $lines[$n] && ! $error; $n++ ) {
     $line++;
     if ( $line > 5 && $line < 10 && $state == 'NONE' ) {
       // we are probably not reading an ics file
@@ -1962,14 +1946,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       $prodid = str_replace ( "-//", "", $prodid );
       $prodid = str_replace ( "\,", ",", $prodid );
       $event['prodid'] = $prodid;
-      // do_debug ( "Product ID: " . $prodid );
     }
-    // parser debugging code...
-    // echo "line = $line<br>";
-    // echo "state = $state<br>";
-    // echo "substate = $substate<br>";
-    // echo "subsubstate = $subsubstate<br>";
-    // echo "buff = " . htmlspecialchars( $buff ) . "<br><br>\n";
     if ( $state == 'VEVENT' || $state == 'VTODO' ) {
       if ( ! empty ( $subsubstate ) ) {
         if ( preg_match ( '/^END.*:(.+)$/i', $buff, $match ) ) {
@@ -2205,7 +2182,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       if ( preg_match ( '/^BEGIN:VCALENDAR$/i', $buff ) )
         $state = 'VCALENDAR';
     }
-  } // End while
+  }
   return $ical_data;
 }
 /**
@@ -2622,14 +2599,8 @@ function format_ical ( $event ) {
     // split into pieces
     // echo "RRULE line: $event[rrule]<br>\n";
     $RR = explode ( ';', $event['rrule'] );
-    // create an associative array of key-value pairs in $RR2[]
-    $rrcnt = count ( $RR );
-    for ( $i = 0; $i < $rrcnt; $i++ ) {
-      $ar = explode ( '=', $RR[$i] );
-      $RR2[$ar[0]] = $ar[1];
-    }
-    for ( $i = 0; $i < $rrcnt; $i++ ) {
-      if ( preg_match ( "/^FREQ=(.+)$/i", $RR[$i], $match ) ) {
+    foreach ( $RR as $i ) {
+      if ( preg_match ( "/^FREQ=(.+)$/i", $i, $match ) ) {
         if ( preg_match ( "/YEARLY/i", $match[1], $submatch ) ) {
           $fevent['Repeat']['Frequency'] = 6;
         } else if ( preg_match ( "/MONTHLY/i", $match[1], $submatch ) ) {
@@ -2647,43 +2618,43 @@ function format_ical ( $event ) {
           // Abort this import
           return;
         }
-      } else if ( preg_match ( "/^INTERVAL=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^INTERVAL=(.+)$/i", $i, $match ) ) {
         $fevent['Repeat']['Interval'] = $match[1];
-      } else if ( preg_match ( "/^UNTIL=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^UNTIL=(.+)$/i", $i, $match ) ) {
         // specifies an end date
         $fevent['Repeat']['Until'] = icaldate_to_timestamp ( $match[1] );
-      } else if ( preg_match ( "/^COUNT=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^COUNT=(.+)$/i", $i, $match ) ) {
         // specifies the number of repeats
         // We convert this to a true UNTIL after we parse exceptions
         $fevent['Repeat']['Count'] = $match[1];
-      } else if ( preg_match ( "/^BYSECOND=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^BYSECOND=(.+)$/i", $i, $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYSECOND value \"$RR[$i]\"<br>\n";
-      } else if ( preg_match ( "/^BYMINUTE=(.+)$/i", $RR[$i], $match ) ) {
+        echo "Unsupported iCal BYSECOND value \"$i\"<br>\n";
+      } else if ( preg_match ( "/^BYMINUTE=(.+)$/i", $i, $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYMINUTE value \"$RR[$i]\"<br>\n";
-      } else if ( preg_match ( "/^BYHOUR=(.+)$/i", $RR[$i], $match ) ) {
+        echo "Unsupported iCal BYMINUTE value \"$i\"<br>\n";
+      } else if ( preg_match ( "/^BYHOUR=(.+)$/i", $i, $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYHOUR value \"$RR[$i]\"<br>\n";
-      } else if ( preg_match ( "/^BYMONTH=(.+)$/i", $RR[$i], $match ) ) {
+        echo "Unsupported iCal BYHOUR value \"$i\"<br>\n";
+      } else if ( preg_match ( "/^BYMONTH=(.+)$/i", $i, $match ) ) {
         // this event repeats during the specified months
         $fevent['Repeat']['ByMonth'] = $match[1];
-      } else if ( preg_match ( "/^BYDAY=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^BYDAY=(.+)$/i", $i, $match ) ) {
         // this array contains integer offset (i.e. 1SU,1MO,1TU)
         $fevent['Repeat']['ByDay'] = $match[1];
-      } else if ( preg_match ( "/^BYMONTHDAY=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^BYMONTHDAY=(.+)$/i", $i, $match ) ) {
         $fevent['Repeat']['ByMonthDay'] = $match[1];
         // $fevent['Repeat']['Frequency'] = 3; //MonthlyByDay
-      } else if ( preg_match ( "/^BYSETPOS=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^BYSETPOS=(.+)$/i", $i, $match ) ) {
         // if not already Yearly, mark as MonthlyBySetPos
         if ( $fevent['Repeat']['Frequency'] != 6 )
           $fevent['Repeat']['Frequency'] = 5;
         $fevent['Repeat']['BySetPos'] = $match[1];
-      } else if ( preg_match ( "/^BYWEEKNO=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^BYWEEKNO=(.+)$/i", $i, $match ) ) {
         $fevent['Repeat']['ByWeekNo'] = $match[1];
-      } else if ( preg_match ( "/^BYYEARDAY=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^BYYEARDAY=(.+)$/i", $i, $match ) ) {
         $fevent['Repeat']['ByYearDay'] = $match[1];
-      } else if ( preg_match ( "/^WKST=(.+)$/i", $RR[$i], $match ) ) {
+      } else if ( preg_match ( "/^WKST=(.+)$/i", $i, $match ) ) {
         $fevent['Repeat']['Wkst'] = $match[1];
       }
     }
@@ -2724,8 +2695,7 @@ function parse_ISO8601_duration ( $duration ) {
   $ret = 0;
   $result = preg_split ( '/(P|D|T|H|M)/', $duration, -1,
     PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
-  $resultcnt = count ( $result );
-  for ( $i = 0; $i < $resultcnt; $i++ ) {
+  for ( $i = 0; $result[$i]; $i++ ) {
     if ( is_numeric ( $result[$i] ) && isset ( $result[$i + 1] ) ) {
       $ret += ( $result[$i] * $const[$result[$i + 1]] );
     }

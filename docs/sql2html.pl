@@ -52,7 +52,7 @@ sub print_table {
           </tr>
         </thead>
         <tbody>';
-  for ( $i = 0; $i < @column_name; $i++ ) {
+  for ( $i = 0; $column_name[$i]; $i++ ) {
     $out{ $name } .= '
           <tr>';
     if ( defined ( $table_keys{$column_name[$i]} ) ) {
@@ -76,19 +76,17 @@ sub print_table {
 }
 
 # first, get WebCalendar version
-open ( F, '../includes/classes/WebCalendar.class' )
-  || die 'Error reading WebCalendar.class:' . "$!\n";
+open ( F, '../translations/English-US.txt' ) || die '
+Error reading English-US.txt:' . "$!\n";
+
+$v = 'Unknown Version';
 while ( <F> ) {
-  if ( /PROGRAM_VERSION =/ ) {
-    if ( /'/ ) {
-      $v = $';
-      if ( $v =~ /'/ ) { $v = $`; }
-    }
+  if ( /PROGRAM_VERSION: (.*)/ ) {
+    $v = $1;
     last;
   }
 }
 close ( F );
-$v = 'Unknown Version' if ( !defined( $v ) );
 
 $hdr = $fld_desc = '';
 $in_create_table = $in_header = 0;

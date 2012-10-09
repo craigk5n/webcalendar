@@ -2,7 +2,7 @@
 
 // See the showTab function in "includes/js/visible.js"
 // for common code shared by all pages using the tabbed GUI.
-var tabs = ['',
+var tabs = [
   'settings',
   'public',
   'uac',
@@ -16,11 +16,11 @@ var tabs = ['',
 linkFile('includes/js/visible.js');
 
 addLoadListener(function () {
-  for (var i = tabs.length - 1; i > 0; i--) {
-    toggleVisible('tabscontent_' + tabs[i], 'visible', 'none');
+  for (var i in tabs ) {
+    toggleVisible('tabscontent_' + i, 'visible', 'none');
 
-    attachEventListener(document.getElementById('tab_' + tabs[i]), 'click', function () {
-      return setTab(tabs[i]);
+    attachEventListener(document.getElementById('tab_' + i), 'click', function () {
+      return setTab(i);
     });
   }
   altps();
@@ -44,11 +44,10 @@ addLoadListener(function () {
   attachEventListener(document.getElementById('previewBtn'), 'click', function () {
     return showPreview();
   });
-  var tmp = ['H', 'S', 'T'];
-  for (var i = 0; i < 3; i++) {
-    attachEventListener(document.getElementById('btn' + tmp[i]), 'click', function () {
-      window.open('edit_template.php?type=' + tmp[i], 'cal_template',
-        'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');
+  for (var i in Array('H', 'S', 'T')) {
+    attachEventListener(document.getElementById('btn' + i), 'click', function () {
+      window.open('edit_template.php?type=' + i, 'cal_template',
+       'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,outerWidth=520');
     });
   }
 });

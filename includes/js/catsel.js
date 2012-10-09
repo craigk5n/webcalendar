@@ -18,13 +18,13 @@ function sendCats(cats) {
   woda = window.opener.document.frm;
 
   // We seem to be looking for the last one. So let's start at the end.
-  for (var i = dfe.length - 1; i >= 0; i--) {
+  for (var i = 0; dfe[i]; i++) {
     if (dfe[i].name == 'eventcats[]') {
       eventid = i;
       break;
     }
   }
-  for (var i = 1, j = dfe[eventid].length; i < j; i++) {
+  for (var i = 1; dfe[eventid][i; i++) {
     dfe[eventid].options[i].selected = 1;
     parentid += ',' + parseInt(dfe[eventid].options[i].value);
     parenttext += ', ' + dfe[eventid].options[i].text;
@@ -47,7 +47,7 @@ function selAdd(btn) {
   var catid = eventid = 0,
   dfe = document.forms[0].elements;
 
-  for (var i = 0, j = dfe.length; i < j; i++) {
+  for (var i = 0; dfe[i]; i++) {
     if (dfe[i].name == 'cats[]') {
       catid = i;
     }
@@ -65,7 +65,7 @@ function selAdd(btn) {
       for (var i = 0, j = length; i < j; i++) {
         if (options[i].selected) {
           with (options[i]) {
-            for (var k = 0, l = evlist.length; k < l; j++) {
+            for (var k = 0, l = evlist.length; k < l; k++) {
               if (evlist.options[k].value == value) {
                 isUnique = false;
                 break; // We only need one.
@@ -88,7 +88,7 @@ function selRemove(btn) {
   eventid = 0;
 
   // We seem to be looking for the last one. So let's start at the end.
-  for (var i = dfe.length - 1; i >= 0; i--) {
+  for (var i = 0; dfe[i]; i++) {
     if (dfe[i].name == 'eventcats[]') {
       eventid = i;
       break;

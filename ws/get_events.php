@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  *  Web Service functionality to get events.
  *  Uses XML (but not SOAP at this point since that would be
  *       overkill and require extra packages to install).
@@ -123,22 +123,20 @@ for ( $d = $starttime; $d <= $endtime; $d += 86400 ) {
   $ev = get_entries ( $date );
   // Keep track of duplicates.
   $completed_ids = array();
-  for ( $i = 0, $evCnt = count ( $ev ); $i < $evCnt; $i++ ) {
-    $id = $ev[$i]->getID();
+  foreach ( $ev as $i ) {
+    $id = $i->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event( $id, $ev[$i]->getName(), $date,
-      $ev[$i]->getTime() );
+    $out .= process_event ( $id, $i->getName(), $date, $i->getTime() );
   }
   $rep = get_repeating_entries ( $user, $date );
-  for ( $i = 0, $repCnt = count ( $rep ); $i < $repCnt; $i++ ) {
-    $id = $rep[$i]->getID();
+  foreach ( $rep as $i ) {
+    $id = $i->getID();
     if ( ! empty ( $completed_ids[$id] ) )
       continue;
     $completed_ids[$id] = 1;
-    $out .= process_event( $id, $rep[$i]->getName(), $date,
-      $rep[$i]->getTime() );
+    $out .= process_event ( $id, $i->getName(), $date, $i->getTime() );
   }
 }
 

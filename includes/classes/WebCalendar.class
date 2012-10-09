@@ -223,8 +223,8 @@ class WebCalendar {
           $nonusers = get_my_nonusers ( $login, true );
           $userlist = array_merge ( $nonusers, $userlist );
         }
-        for ( $i = 0; $i < count ( $userlist ); $i++ ) {
-          if ( $user == $userlist[$i]['cal_login'] )
+        foreach ( $userlist as $i ) {
+          if ( $user == $i['cal_login'] )
             $valid_user = true;
         }
         if ( ! $valid_user )

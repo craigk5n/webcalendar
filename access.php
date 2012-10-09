@@ -1,7 +1,6 @@
-<?php
+<?php /* $Id$ */
 /**
- * $Id$
- *
+ * Page description:
  * This page is used to manage user access rights.
  *
  * It has three different modes:
@@ -19,6 +18,7 @@
  *             includes/access.php. Each should be either 'Y' or 'N'.
  */
 include_once 'includes/init.php';
+require_valide_referring_url();
 
 $allow_view_other =
   ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
@@ -174,16 +174,15 @@ if( $is_admin ) {
   // Add a DEFAULT CONFIGURATION to be used as a mask.
    . $option . '__default__"' . ( $guser == '__default__' ? ' selected>' : '>' )
    . $defConfigStr . '</option>';
-  for( $i = 0, $cnt = count( $userlist ); $i < $cnt; $i++ ) {
-    echo $option . $userlist[$i]['cal_login']
-     . ( $guser == $userlist[$i]['cal_login'] ? '" selected>' : '">' )
-     . $userlist[$i]['cal_fullname'] . '</option>';
+  foreach ( $userlist as $i ) {
+    echo $option . $i['cal_login']
+     . ( $guser == $i['cal_login'] ? '" selected>' : '">' )
+     . $i['cal_fullname'] . '</option>';
   }
-  for( $i = 0, $cnt = count( $nonuserlist ); $i < $cnt; $i++ ) {
-    echo $option . $nonuserlist[$i]['cal_login']
-     . ( $guser == $nonuserlist[$i]['cal_login'] ? '" selected>' : '">' )
-     . $nonuserlist[$i]['cal_fullname'] . ' '
-     . ( $nonuserlist[$i]['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
+  foreach ( $nonuserlist as $i ) {
+    echo $option . $i['cal_login']
+      . ( $guser == $i['cal_login'] ? '" selected>' : '">' ) . $i['cal_fullname']
+      . ' ' . ( $i['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
   }
 
   echo $goStr;
@@ -276,11 +275,11 @@ if( ! empty( $guser ) || ! $is_admin ) {
      . ( $otheruser == '__default__' ? ' selected>' : '>' )
      . $defConfigStr . '</option>';
 
-    for( $i = 0, $cnt = count( $userlist ); $i < $cnt; $i++ ) {
-      if( $userlist[$i]['cal_login'] != $guser )
-        echo $option . $userlist[$i]['cal_login']
-         . ( ! empty( $otheruser ) && $otheruser == $userlist[$i]['cal_login']
-          ? '" selected>' : '">' ) . $userlist[$i]['cal_fullname'] . '</option>';
+    foreach ( $userlist as $i ) {
+      if ( $i['cal_login'] != $guser )
+        echo $option . $i['cal_login']
+         . ( ! empty ( $otheruser ) && $otheruser == $i['cal_login']
+          ? '" selected>' : '">' ) . $i['cal_fullname'] . '</option>';
     }
     echo $goStr;
   }

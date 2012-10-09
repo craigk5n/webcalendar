@@ -4,7 +4,7 @@ function selectUsers() {
   var listid = 0;
 
   // We seem to want the last one, so let's start at the end.
-  for (var i = document.editviewform.elements.length - 1; i >= 0; i--) {
+  for (var i = 0; document.editviewform.elements[i]; i++) {
     if (document.editviewform.elements[i].name == 'users[]') {
       listid = i;
       break;
@@ -12,7 +12,7 @@ function selectUsers() {
   }
   url = 'usersel.php?form=editviewform&listid=' + listid + '&users=';
   // Add currently selected users.
-  for (var i = 0, j = 0, k = document.editviewform.elements[listid].length; i < k; i++) {
+  for (var i = 0, j = 0; document.editviewform.elements[listid][i]; i++) {
     if (document.editviewform.elements[listid].options[i].selected) {
       url += (j > 0 ? ',' : '') + document.editviewform.elements[listid].options[i].value;
       j++;

@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  *  Generates RSS 2.0 output of unapproved events for a user.
  *
  *  Like icalclient.php, this file does not use the standard web-based
@@ -170,37 +170,36 @@ function list_unapproved ( $user ) {
     ORDER BY weu.cal_login, we.cal_date';
   $rows = dbi_get_cached_rows ( $sql, array ( $user ) );
   if ( $rows ) {
-    $allDayStr = translate ( 'All day event' );
-    $appConStr = translate ( 'Approve/Confirm' );
-    $appSelStr = translate ( 'Approve Selected' );
-    $checkAllStr = translate ( 'Check All' );
-    $emailStr = translate ( 'Emails Will Not Be Sent' );
+    $allDayStr    = translate ( 'All day event' );
+    $appConStr    = translate ( 'Approve/Confirm' );
+    $appSelStr    = translate ( 'Approve Selected' );
+    $checkAllStr  = translate ( 'Check All' );
+    $emailStr     = translate ( 'Emails Will Not Be Sent' );
     $rejectSelStr = translate ( 'Reject Selected' );
-    $rejectStr = translate ( 'Reject' );
-    $uncheckAllStr = translate ( 'Uncheck All' );
-    $viewStr = translate ( 'View this entry' );
-    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-      $row = $rows[$i];
-      $id = $row[0];
-      $name = $row[1];
-      $description = $row[2];
-      $cal_user = $row[3];
-      $pri = $row[4];
-      $date = $row[5];
-      $time = sprintf ( "%06d", $row[6] );
-      $duration = $row[7];
-      $status = $row[8];
-      $type = $row[9];
-      $view_link = 'view_entry';
-      $entryID = 'entry' . $type . $id;
-      $unixtime = date_to_epoch ( $date . $time );
+    $rejectStr    = translate ( 'Reject' );
+    $uncheckAllStr= translate ( 'Uncheck All' );
+    $viewStr      = translate ( 'View this entry' );
+    foreach ( $rows as $row ) {
+      $id         = $row[0];
+      $name       = $row[1];
+      $description= $row[2];
+      $cal_user   = $row[3];
+      $pri        = $row[4];
+      $date       = $row[5];
+      $time       = sprintf ( "%06d", $row[6] );
+      $duration   = $row[7];
+      $status     = $row[8];
+      $type       = $row[9];
+      $view_link  = 'view_entry';
+      $entryID    = 'entry' . $type . $id;
+      $unixtime   = date_to_epoch ( $date . $time );
 
       $timestr = '';
       if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
-        $eventstart = date_to_epoch ( $date . $time );
+        $eventstart= date_to_epoch ( $date . $time );
         $eventstop = $eventstart + $duration;
         $eventdate = date_to_str ( date ( 'Ymd', $eventstart ) );
-        $timestr = display_time ( '', 0, $eventstart )
+        $timestr   = display_time ( '', 0, $eventstart )
          . ( $duration > 0 ? ' - ' . display_time ( '', 0, $eventstop ) : '' );
       } else {
         // Don't shift date if All Day or Untimed.

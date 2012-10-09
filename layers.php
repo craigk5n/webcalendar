@@ -115,18 +115,16 @@ if ( $single_user == 'N' ) {
   $num_users = $osize = $size = 0;
   $others = $users = '';
 
-  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    if ( $userlist[$i]['cal_login'] != $layer_user ) {
-      $users .= $option . $userlist[$i]['cal_login'] . '">'
-       . $userlist[$i]['cal_fullname'] . '</option>';
+  foreach ( $userlist as $i ) {
+    if ( $i['cal_login'] != $layer_user ) {
+      $users .= $option . $i['cal_login'] . '">' . $i['cal_fullname'] . '</option>';
     }
   }
 
-  for ( $i = 0, $cnt = count ( $otherlist ); $i < $cnt; $i++ ) {
-    if ( $otherlist[$i]['cal_login'] != $layer_user ) {
+  foreach ( $otherlist as $i ) {
+    if ( $i['cal_login'] != $layer_user ) {
       $osize++;
-      $others .= '$option . $otherlist[$i]['cal_login'] . '">'
-       . $otherlist[$i]['cal_fullname'] . '</option>';
+      $others .= $option . $i['cal_login'] . '">' . $i['cal_fullname'] . '</option>';
     }
   }
   // TODO: handle $otherlist like 1.2 code
@@ -239,18 +237,17 @@ function load_layers()
         return;
       }
       var x = '<table id="layertable" border="1" summary=""><th><?php echo translate( 'Source' );?></th><th><?php echo translate( 'Color' );?></th><th><?php echo translate( 'Duplicates' );?></th></tr>\n';
-      for ( var i = 0; i < response.layers.length; i++ ) {
+      for ( var i = 0; response.layers[i]; i++ ) {
         var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
         var l = response.layers[i];
         layers[l.id] = { id: l.id, source: l.source, color: l.color,
           dups: l.dups, fullname: l.fullname };
-        x += '<tr onclick="return edit_layer(' + l.id + ')">' +
-          '<td class="' + cl + '">' + l.fullname + '</td><td class="' +
-          cl + '">' + l.color +
+        x += '<tr onclick="return edit_layer(' + l.id + ')">' + '<td class="' +
+          cl + '">' + l.fullname + '</td><td class="' + cl + '">' + l.color +
           '<span class="colorsample" style="background-color: ' + l.color +
           '">&nbsp;</span></td><td class="' + cl + '">' +
-          ( l.dups == 'Y' ? '<?php echo $yesStr;?>' : '<?php echo $noStr;?>' ) +
-          '</td></tr>\n';
+          // translate ( 'no' ) translate ( 'yes' )
+          ( l.dups == 'Y' ? xlate['no'] : xlate['yes'] ) + '</td></tr>\n';
       }
       x += '</table>\n';
       $('layerlist').innerHTML = x;
@@ -322,8 +319,8 @@ function edit_layer (id)
   var found = false;
   if ( id > 0 ) {
     var n = layers[id]['source'];
-    for ( var i = 0; i < o.options.length; i++ ) {
-      if ( o.options[i].value == n ) {
+    for ( var i in o.options ) {
+      if ( i.value == n ) {
         o.selectedIndex = i;
       }
     }

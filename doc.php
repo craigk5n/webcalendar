@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  *  Obtain a binary object from the database and send it back to
  *  the browser using the correct mime type.
  *
@@ -99,18 +99,13 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       // In summary, make sure at least one event participant is in one of
       // this user's groups.
       $my_users = get_my_users();
-      $cnt = count ( $my_users );
-      if ( is_array ( $my_users ) && $cnt ) {
+      if ( is_array ( $my_users ) && count ( $my_users ) ) {
         $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
           WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
           AND weu.cal_login IN ( ';
-        $query_params = array();
-      $query_params[] = $id;
-      for ( $i = 0; $i < $cnt; $i++ ) {
-          if ( $i > 0 ) {
-            $sql .= ', ';
-          }
-          $sql .= '?';
+        $query_params = array ( $id );
+        for ( $i = 0; $my_users[$i]; $i++ ) {
+          $sql .= ( $i > 0 ? ', ' : '?' );
           $query_params[] = $my_users[$i]['cal_login'];
         }
         $res = dbi_execute ( $sql . ' )', $query_params );
@@ -122,8 +117,8 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
           dbi_free_result ( $res );
         }
       }
-      // If we didn't indicate we need to check groups, then this user
-      // can't view this event.
+      // If we didn't indicate we need to check groups,
+      // then this user can't view this event.
       if ( ! $check_group && ! access_is_enabled() )
         $can_view = false;
     }
@@ -137,8 +132,8 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     $NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals();
     $nonuser_lookup = array();
-    for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
-      $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
+    foreach ( $nonusers as $i ) {
+      $nonuser_lookup[$i['cal_login']] = 1;
     }
     $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
       WHERE cal_id = ? AND cal_status in ( \'A\', \'W\' )', array ( $id ) );

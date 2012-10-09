@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * This menu was created using some fantastic free tools out on the internet:
  *  - Most icons by everaldo at http://en.crystalxp.net/ (with his permission )
@@ -130,11 +130,9 @@ $showHelp = ( access_is_enabled()
   ? access_can_access_function ( ACCESS_HELP, $user )
   : ( $login != '__public__' && ! $is_nonuser ) );
 // Views
-$view_cnt = count ( $views );
-
-if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER != 'N' ) && $view_cnt > 0 ) {
+if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER != 'N' ) && count ( $views ) > 0 ) {
   $views_link = array();
-  for ( $i = 0; $i < $view_cnt; $i++ ) {
+  for ( $i = 0; $views[$i]; $i++ ) {
     $tmp['name'] = htmlspecialchars ( $views[$i]['cal_name'], ENT_QUOTES );
     $tmp['url'] = str_replace ( '&amp;', '&', $views[$i]['url'] )
      . ( empty ( $thisdate ) ? '' : '&date=' . $thisdate );
@@ -154,8 +152,7 @@ if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
     AND cal_show_in_trailer = \'Y\' ) ORDER BY cal_report_id',
     array ( $login ) );
   if ( $rows ) {
-    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-      $row = $rows[$i];
+    foreach ( $rows as $row ) {
       $tmp['name'] = htmlspecialchars ( $row[0], ENT_QUOTES );
       $tmp['url'] = 'report.php?report_id=' . $row[1] . $u_url;
       $reports_link[] = $tmp;
@@ -206,15 +203,15 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
 
   if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
     $public = array (
-      'cal_login' => '__public__',
-      'cal_fullname' => translate ( 'Public Access' )
+      'cal_login'   => '__public__',
+      'cal_fullname'=> translate ( 'Public Access' )
       );
     array_unshift ( $grouplist, $public );
   }
   $groups = '';
-  for ( $i = 0, $j = count( $grouplist ); $i < $j; $i++ ) {
-    $l = $grouplist[$i]['cal_login'];
-    $f = $grouplist[$i]['cal_fullname'];
+  foreach ( $grouplist as $i ) {
+    $l = $i['cal_login'];
+    $f = $i['cal_fullname'];
     // Don't display current $user in group list.
     if ( ! empty ( $user ) && $user == $l )
       continue;
@@ -416,20 +413,17 @@ if ( $menuConfig['Views'] &&
     if ( ! empty ( $views_link ) && $views_linkcnt > 0 && $menuConfig['My Views'] ) {
       jscMenu_sub_menu ( 'views.png', 'My Views' );
 
-      for ( $i = 0; $i < $views_linkcnt; $i++ ) {
-        jscMenu_item ( 'views.png', $views_link[$i]['name'],
-          $views_link[$i]['url'], false );
+      foreach ( $views_link as $i ) {
+        jscMenu_item ( 'views.png', $i['name'], $i['url'], false );
       }
       jscMenu_close();
     }
 
     if ( ! empty ( $groups ) && $menuConfig['Manage Calendar of'] ) {
       jscMenu_sub_menu ( 'manage_cal.png', 'Manage Calendar of' );
-      $groupcnt = count ( $groups );
 
-      for ( $i = 0; $i < $groupcnt; $i++ ) {
-        jscMenu_item ( 'display.png', $groups[$i]['name'],
-          $groups[$i]['url'], false );
+      foreach ( $groups as $i ) {
+        jscMenu_item ( 'display.png', $i['name'], $i['url'], false );
       }
       jscMenu_close();
     }
@@ -472,9 +466,8 @@ if ( ( $is_admin || $reports_linkcnt  > 0 ) && $menuConfig['Reports'] ) {
   if ( ! empty ( $reports_link ) && $reports_linkcnt > 0 && $menuConfig['My Reports'] ) {
     jscMenu_sub_menu ( 'reports.png', 'My Reports' );
 
-    for ( $i = 0; $i < $reports_linkcnt; $i++ ) {
-      jscMenu_item ( 'document.png', $reports_link[$i]['name'],
-        $reports_link[$i]['url'], false );
+    foreach ( $reports_link as $i ) {
+      jscMenu_item ( 'document.png', $i['name'], $i['url'], false );
     }
     jscMenu_close();
   }

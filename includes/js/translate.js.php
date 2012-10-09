@@ -1,22 +1,22 @@
-<?php // $Id$
-defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
+<?php /* $Id$ */
+defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-// Leave the "// translate(phrase)" in the *.js files
+// Leave the "// translate ( phrase )" in the *.js files
 // to give a better indication of where they actually get used.
 
 $tmp1 = $tmp2 = $tmpm = $tmpsm = $tmpw = $tmpsw = '';
 
-foreach( array( 'SU','MO','TU','WE','TH','FR','SA' ) as $b ) {
+foreach ( array ( 'SU','MO','TU','WE','TH','FR','SA' ) as $b ) {
   $tmp1 .= '\'' . $b . '\',';
-  $tmp2 .= '\'' . translate( $b ) . '\',';
+  $tmp2 .= '\'' . translate ( $b ) . '\',';
 }
 for ( $i = 0; $i < 12; $i++ ) {
-  $tmpm .= "'" . month_name( $i ) . "',";
-  $tmpsm .= "'" . month_name( $i, 'M' ) . "',";
+  $tmpm  .= "'" . month_name ( $i ) . "',";
+  $tmpsm .= "'" . month_name ( $i, 'M' ) . "',";
 
   if ( $i < 7 ) {
-    $tmpw .= "'" . weekday_name( $i ) . "',";
-    $tmpsw .=  "'" . weekday_name( $i, 'D' ) . "',";
+    $tmpw  .= "'" . weekday_name ( $i ) . "',";
+    $tmpsw .= "'" . weekday_name ( $i, 'D' ) . "',";
   }
 }
 echo 'var today= new Date();    // Examples using "js/dateformat.js".
@@ -67,6 +67,7 @@ xlate[\'invalidTHBG\']        = \'' . translate( 'Invalid table header BG color'
 xlate[\'invalidTextFG\']      = \'' . translate( 'Invalid table head text color', true ) . '\';
 xlate[\'invalidTitleFG\']     = \'' . translate( 'Invalid doc title color', true ) . '\';
 xlate[\'invalidTodayBG\']     = \'' . translate( 'Invalid table cell today BG', true ) . '\';
+xlate[\'no\']                 = \'' . translate( 'no', true ) . '\';
 xlate[\'noBlankCalId\']       = \'' . translate( 'no blank cal ID', true ) . '\';
 xlate[\'noBlankNames\']       = \'' . translate( 'both names cannot be blank', true) . '\';
 xlate[\'noBlankURL\']         = \'' . translate( 'no blank URLs', true ) . '\';
@@ -81,6 +82,7 @@ xlate[\'reallyDeleteReport\'] = \'' . translate( 'really delete report', true ) 
 xlate[\'rejThisEntry\']       = \'' . translate( 'Reject this entry?', true ) . '\';
 xlate[\'reqServerURL\']       = \'' . translate( 'Server URL is required.', true ) . '\';
 xlate[\'timeB4WorkHours\']    = \'' . translate( 'time before work hours', true ) . '\';
+xlate[\'yes\']                = \'' . translate( 'yes', true ) . '\';
 
 ';
 

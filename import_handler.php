@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Description:
  * Loads appropriate import file parser and processes the data returned.
@@ -24,6 +24,7 @@
  */
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
+require_valide_referring_url();
 $error = $sqlLog = '';
 print_header();
 

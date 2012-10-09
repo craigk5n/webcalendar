@@ -108,7 +108,7 @@ function mqRotate( mqr ) {
   if ( ! mqr )
     return;
 
-  for ( var j = mqr.length - 1; j > - 1; j-- ) {
+  for ( var j = 0; mqr[j]; j++ ) {
     maxa = mqr[j].ary.length;
     for ( var i = 0; i < maxa; i++ ) {
       var x = mqr[j].ary[i].style;

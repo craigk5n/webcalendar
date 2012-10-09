@@ -24,8 +24,8 @@ addLoadListener(function () {
   if (!document.editentryform)
     return false;
 
-  for (var i = tabs.length - 1; i > 1; i--) {
-    toggleVisible(tabs[i], 'visible', 'none');
+  for (var i in tabs) {
+    toggleVisible(i, 'visible', 'none');
   }
 
   // Define these variables here so they are valid.
@@ -107,7 +107,7 @@ function add_exception(which) {
   var c = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
 
   if (c.getDate() != d) {
-    alert(xlate['invalidDate']); // translate( 'Invalid Date' )
+    alert(xlate['invalidDate']); // translate ( 'Invalid Date' )
     return false;
   }
   var exceptDate = ymd,
@@ -155,7 +155,7 @@ function del_selected() {
   } // end with document
 }
 function displayInValid(myvar) {
-  alert(xlate['inputTimeOfDay']); // translate( 'must enter valid time' )
+  alert(xlate['inputTimeOfDay']); // translate ( 'must enter valid time' )
   myvar.select();
   myvar.focus();
 }
@@ -167,7 +167,7 @@ function isNumeric(sText) {
   var validChars = '0123456789',
   Char;
 
-  for (var i = sText.length - 1; i >= 0 && sText != 99; i--) {
+  for (var i = 0; sText[i] && sText != 99; i++) {
     Char = sText.charAt(i);
 
     if (validChars.indexOf(Char) == -1) {
@@ -180,7 +180,7 @@ function is_unique(val) {
   unique = true;
   var sel = form.sel_part;
 
-  for (var i = sel.length - 1; i >= 0; i--) {
+  for (var i = 0; sel[i]; i++) {
     if (sel.options[i].value == val) {
       unique = false;
       break;
@@ -200,7 +200,7 @@ function lookupName() {
     form.groups.selectedIndex = -1;
 
   // Check userlist.
-  for (var i = 0, j = form.entry_part.length; i < j; i++) {
+  for (var i = 0; form.entry_part[i]; i++) {
     if (form.entry_part.options[i].text.substring(0, x).toLowerCase() == lower) {
       selectid = i;
       break;
@@ -211,7 +211,7 @@ function lookupName() {
     return true;
   }
   // Check resource list.
-  for (var i = 0, j = form.res_part.length; i < j; i++) {
+  for (var i = 0; form.res_part[i]; i++) {
     if (form.res_part.options[i].text.substring(0, x).toLowerCase() == lower) {
       selectid = i;
       break;
@@ -223,7 +223,7 @@ function lookupName() {
   }
   // Check groups if enabled.
   if (form.groups) {
-    for (var i = 0, j = form.groups.length; i < j; i++) {
+    for (var i = 0; form.groups[i]; i++) {
       if (form.groups.options[i].text.substring(0, x).toLowerCase() == lower) {
         selectid = i;
         break;
@@ -251,48 +251,43 @@ function rpttype_handler() {
   //i == 6 yearly
   //i == 7 manual  Use only Exclusions/Inclusions
   //Turn all off initially
-  var tmp = [
-    'rpt_mode',
-    'rptwkst',
-    'weekdays_only',
-  ];
-  for (var j = tmp.length - 1; j >= 0; j--) {
-    toggleVisible(tmp[j], 'hidden');
+  for (var j in Array(
+      'rpt_mode',
+      'rptwkst',
+      'weekdays_only')) {
+    toggleVisible(j, 'hidden');
   }
-  tmp = [
-    'rptbydayextended',
-    'rptbydayln',
-    'rptbydayln1',
-    'rptbydayln2',
-    'rptbydayln3',
-    'rptbydayln4',
-    'rptbymonth',
-    'rptbymonthdayextended',
-    'rptbysetpos',
-    'rptbyweekno',
-    'rptbyyearday',
-    // 'rptday',
-    'rptenddate1',
-    'rptenddate2',
-    'rptenddate3',
-    'rptexceptions',
-    'rptfreq',
-    // 'select_exceptions_not',
-  ];
-  for (var j = tmp.length - 1; j >= 0; j--) {
-    toggleVisible(tmp[j], 'hidden', 'none');
-  }
-  if (i > 0 && i < 7) {
-    // always on
-    tmp = [
+  for (var j in Array(
+      'rptbydayextended',
+      'rptbydayln',
+      'rptbydayln1',
+      'rptbydayln2',
+      'rptbydayln3',
+      'rptbydayln4',
+      'rptbymonth',
+      'rptbymonthdayextended',
+      'rptbysetpos',
+      'rptbyweekno',
+      'rptbyyearday',
+      // 'rptday',
       'rptenddate1',
       'rptenddate2',
       'rptenddate3',
       'rptexceptions',
       'rptfreq',
-    ];
-    for (var j = tmp.length - 1; j >= 0; j--) {
-      toggleVisible(tmp[j], 'visible', 'block');
+      // 'select_exceptions_not',
+    )) {
+    toggleVisible(j, 'hidden', 'none');
+  }
+  if (i > 0 && i < 7) {
+    // always on
+    for (var j in Array(
+        'rptenddate1',
+        'rptenddate2',
+        'rptenddate3',
+        'rptexceptions',
+        'rptfreq')) {
+      toggleVisible(j, 'visible', 'block');
     }
     toggleVisible('rpt_mode', 'visible');
 
@@ -309,15 +304,13 @@ function rpttype_handler() {
     }
     if (i == 3) { // monthly (by day)
       if (expert) {
-        tmp = [
-          'rptbydayln',
-          'rptbydayln1',
-          'rptbydayln2',
-          'rptbydayln3',
-          'rptbydayln4',
-        ];
-        for (var j = tmp.length - 1; j >= 0; j--) {
-          toggleVisible(tmp[j], 'visible', 'block');
+        for (var j in Array(
+            'rptbydayln',
+            'rptbydayln1',
+            'rptbydayln2',
+            'rptbydayln3',
+            'rptbydayln4')) {
+          toggleVisible(j, 'visible', 'block');
         }
         toggleVisible('rptwkst', 'visible');
       }
@@ -333,18 +326,16 @@ function rpttype_handler() {
     }
     if (i == 6) { // yearly
       if (expert) {
-        tmp = [
-          'rptbydayln',
-          'rptbydayln1',
-          'rptbydayln2',
-          'rptbydayln3',
-          'rptbydayln4',
-          'rptbymonthdayextended',
-          'rptbyweekno',
-          'rptbyyearday',
-        ];
-        for (var j = tmp.length - 1; j >= 0; j--) {
-          toggleVisible(tmp[j], 'visible', 'block');
+        for (var j in Array(
+            'rptbydayln',
+            'rptbydayln1',
+            'rptbydayln2',
+            'rptbydayln3',
+            'rptbydayln4',
+            'rptbymonthdayextended',
+            'rptbyweekno',
+            'rptbyyearday')) {
+          toggleVisible(j, 'visible', 'block');
         }
         toggleVisible('rptwkst', 'visible');
       }
@@ -372,20 +363,16 @@ function rpttype_weekly() {
 // Set the state (selected or unselected) if a single user in the list of users.
 function selectByLogin(login) {
   // Check Users.
-  var list = document.editentryform.entry_part;
-
-  for (var i = list.options.length - 1; i >= 0; i--) {
-    if (list.options[i].value == login) {
-      list.options[i].selected = true;
+  for (var i in document.editentryform.entry_part.options) {
+    if (i.value == login) {
+      i.selected = true;
       return true;
     }
   }
   // Check Resources.
-  var list = document.editentryform.res_part;
-
-  for (var i = list.options.length - 1; i >= 0; i--) {
-    if (list.options[i].value == login) {
-      list.options[i].selected = true;
+  for (var i in document.editentryform.res_part.options) {
+    if (i.value == login) {
+      i.selected = true;
       return true;
     }
   }
@@ -441,31 +428,29 @@ function showSchedule() {
   w = 760,
   h = 180;
 
-  for (var i = 0; j = userlist.length; i < j; i++) {
+  for (var i = 0; userlist[i]; i++) {
     users += delim + userlist.options[i].value;
     delim = ',';
     h += 18;
   }
   if (users == '') {
-    alert(xlate['addParticipant']); // translate( 'Please add a participant' )
+    alert(xlate['addParticipant']); // translate ( 'Please add a participant' )
     return false;
   }
   var mX = 100,
   mY = 200
-    url = 'availability.php?users=' + users
-     + '&form=' + 'editentryform'
-     + '&year=' + form.year.value
-     + '&month=' + form.month.value
-     + '&day=' + form.day.options[form.day.selectedIndex].text;
+    url = 'availability.php?users=' + users + '&form=editentryform&year=' +
+    form.year.value + '&month=' + form.month.value + '&day=' +
+    form.day.options[form.day.selectedIndex].text;
 
   if (sch_win != null && !sch_win.closed) {
     h = h + 30;
     sch_win.location.replace(url);
     sch_win.resizeTo(w, h);
   } else {
-    sch_win = window.open(url, 'showSchedule', 'left=' + mX + ',top=' + mY
-         + ',screenx=' + mX + ',screeny=' + mY + ',width=' + w + ',height=' + h
-         + ',resizable=yes,scrollbars=yes');
+    sch_win = window.open(url, 'showSchedule',
+        'left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY +
+        ',width=' + w + ',height=' + h + ',resizable=yes,scrollbars=yes');
   }
 }
 // This function is called when the event type combo box is changed.
@@ -633,7 +618,7 @@ function validate_and_submit() {
       showTab('details');
 
     form.name.focus();
-    // translate( 'must enter Brief Description' )
+    // translate ( 'must enter Brief Description' )
     alert(xlate['inputBriefDescipt']);
     return false;
   }
@@ -645,14 +630,14 @@ function validate_and_submit() {
     // if it is before the user's preference for work hours.
     if (h < $WORK_DAY_START_HOUR + (timeFmt == '12' ? ' && form.entry_ampmA.checked' : '')) {
       if (!confirm(xlate['timeB4WorkHours']))
-        // translate( 'time before work hours' )
+        // translate ( 'time before work hours' )
         return false;
     }
   }
   // Was there really a change?
   changed = false;
-  for (var i = form.elements.length - 1; i >= 0; i--) {
-    field = form.elements[i];
+  for (var i in form.elements) {
+    field = i;
     switch (field.type) {
     case 'radio':
     case 'checkbox':
@@ -668,11 +653,11 @@ function validate_and_submit() {
       break;
     case 'select-one':
       //Don't register a percentage change
-      if (form.elements[i].name == 'percent')
+      if (i.name == 'percent')
         break;
 
       // case 'select-multiple':
-      for (var j = field.length - 1; j >= 0; j--) {
+      for (var j = 0; field[j]; j++) {
         if (field.options[j].selected != field.options[j].defaultSelected)
           changed = true;
       }
@@ -683,10 +668,6 @@ function validate_and_submit() {
     form.entry_changed.value = 'yes';
   }
 
-  // Add code to make HTMLArea code stick in TEXTAREA.
-  if (typeof editor != 'undefined')
-    editor._textArea.value = editor.getHTML();
-
   // Check if Event date is valid.
   var bydayStr = bymonthdayStr = bysetposStr = '',
   vald = form.day.options[form.day.selectedIndex].value;
@@ -696,13 +677,13 @@ function validate_and_submit() {
       vald);
 
   if (c.getDate() != vald) {
-    alert(xlate['invalidEvtDate']); // translate( 'Invalid Event Date' )
+    alert(xlate['invalidEvtDate']); // translate ( 'Invalid Event Date' )
     form.day.focus();
     return false;
   }
   // Repeat Tab enabled, Select them all.
   if (form.rpttype) {
-    for (var i = elements['exceptions[]'].length - 1; i >= 0; i--) {
+    for (var i = 0; elements['exceptions[]'][i]; i++) {
       elements['exceptions[]'].options[i].selected = true;
     }
   }
@@ -734,7 +715,7 @@ function validate_and_submit() {
   if (form.elements['selectedPart[]']) {
     var userlist = form.elements['selectedPart[]'];
 
-    for (var i = userlist.length - 1; i >= 0; i--) {
+    for (var i = 0; userlist[i]; i++) {
       userlist.options[i].selected = true;
     }
   }

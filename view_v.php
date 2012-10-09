@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Page Description:
  * This page will display the month "view" with all users's events on the same
@@ -65,7 +65,7 @@ if ( ! empty( $error ) ) {
 }
 
 $e_save = $re_save = array();
-for ( $i = 0; $i < $viewusercnt; $i++ ) {
+for ( $i = 0; $viewusers[$i]; $i++ ) {
   /* Pre-Load the repeated events for quicker access */
   $re_save[$i] = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   /* Pre-load the non-repeating events for quicker access
@@ -86,7 +86,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
   $body = $header = '';
   $todayYmd = date ( 'Ymd', $today );
-  for ( $i = 0; $i < $viewusercnt; $i++ ) {
+  for ( $i = 0; $viewusers[$i]; $i++ ) {
     $events = $e_save[$i];
     $repeated_events = $re_save[$i];
     $user = $viewusers[$i];

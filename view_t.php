@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Page Description:
  * This page will display a timebar for a week or month as specified by timeb.
@@ -53,8 +53,8 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
   $year = substr ( $date, 0, 4 );
-  $month = substr ( $date, 4, 2 );
-  $day = substr ( $date, 6, 2 );
+  $month= substr ( $date, 4, 2 );
+  $day  = substr ( $date, 6, 2 );
 
   $can_add = ( $readonly == 'N' || $is_admin );
   if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y' &&
@@ -67,10 +67,9 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $ev = combine_and_sort_events (
     get_entries ( $date, $get_unapproved ),
     get_repeating_entries ( $user, $date ) );
-  $evcnt = count ( $ev );
-  for ( $i = 0; $i < $evcnt; $i++ ) {
-    if( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
-      $ret .= print_entry_timebar ( $ev[$i], $date );
+  foreach ( $ev as $i ) {
+    if ( $get_unapproved || $i->getStatus() == 'A' ) {
+      $ret .= print_entry_timebar ( $i, $date );
       $cnt++;
     }
   }
@@ -230,7 +229,7 @@ function print_header_timebar() {
   . '
 <!-- YARDSTICK -->
             <tr class="yardstick">';
-  for ( $i = 0; $i < ( $totalSlots ); $i++ ) {
+  for ( $i = 0; $i < $totalSlots; $i++ ) {
     $ret .= '
               <td width="' . $yardWidth . '%">&nbsp;</td>';
   }
@@ -302,13 +301,13 @@ echo '
 // any more than that doesn't really fit in the page.
 
 $e_save = $re_save = array();
-for ( $i = 0; $i < $viewusercnt; $i++ ) {
+foreach ( $viewusers as $i ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
+  $repeated_events = read_repeated_events ( $i, $wkstart, $wkend, '' );
   $re_save = array_merge ( $re_save, $repeated_events );
   /* Pre-load the non-repeating events for quicker access
      subtracting ONE_WEEK to allow cross-day events to display. */
-  $events = read_events ( $viewusers[$i], $wkstart - 604800, $wkend );
+  $events = read_events ( $i, $wkstart - 604800, $wkend );
   $e_save = array_merge ( $e_save, $events );
 }
 $events = $e_save;

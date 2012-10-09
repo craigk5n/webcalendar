@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
 
 $groupname = $groupowner = $groupupdated = '';
@@ -77,11 +77,10 @@ if ( ! $newgroup ) {
     dbi_free_result ( $res );
   }
 }
-for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
-  $u = $users[$i]['cal_login'];
-  echo $option . $u
-   . ( empty( $groupuser[$u] ) ?  '">' : '" selected>' )
-   . $users[$i]['cal_fullname'] . '</option>';
+foreach ( $users as $i ) {
+  $u = $i['cal_login'];
+  echo $option . $u . ( empty ( $groupuser[$u] ) ?  '">' : '" selected>' )
+    . $i['cal_fullname'] . '</option>';
 }
 
 echo '

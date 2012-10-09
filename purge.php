@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  * Purge events page and handler.
  * When an event is deleted from a user's calendar, it is marked
  * as deleted (webcal_entry_user.cal_status = 'D'). This page
@@ -13,6 +13,7 @@
  * create) will remain unchanged.
  */
 include_once 'includes/init.php';
+require_valide_referring_url();
 
 // Set this to true do show the SQL at the bottom of the page
 $purgeDebug = false;
@@ -114,10 +115,10 @@ if ( $do_purge ) {
     $nonusers = get_nonuser_cals();
     $userlist = ($NONUSER_AT_TOP == 'Y' ? array_merge ($nonusers, $userlist) : array_merge ($userlist, $nonusers));
   }
-  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
-    echo $option . $userlist[$i]['cal_login']
-     . ( $login == $userlist[$i]['cal_login'] ? '" selected>' : '">' )
-     . $userlist[$i]['cal_fullname'] . "</option>\n";
+  foreach ( $userlist as $i ) {
+    echo $option . $i['cal_login']
+      . ( $login == $i['cal_login'] ? '" selected>' : '">' )
+      . $i['cal_fullname'] . "</option>\n";
   }
 echo $option . 'ALL">' .  $allStr ?></option>
   </select>
@@ -177,14 +178,12 @@ function purge_events ( $ids ) {
 
   //var_dump($tables);exit;
   $num = array();
-  $cnt = count ( $tables );
-  for ( $i = 0; $i < $cnt; $i++ ) {
-    $num[$i] = 0;
+  foreach ( $tables as $i ) {
+    $i = 0;
   }
   foreach ( $ids as $cal_id ) {
-    for ( $i = 0; $i < $cnt; $i++ ) {
-      $clause = ( $cal_id == 'ALL' ? '' :
-        " WHERE {$tables[$i][1]} = $cal_id" );
+    for ( $i = 0; $tables[$i]; $i++ ) {
+      $clause = ( $cal_id == 'ALL' ? '' : " WHERE {$tables[$i][1]} = $cal_id" );
       if ( $preview ) {
         $sql = 'SELECT COUNT(' . $tables[$i][1] .
           ") FROM {$tables[$i][0]}" . $clause;
@@ -208,7 +207,7 @@ function purge_events ( $ids ) {
     }
   }
   $xxxStr = translate( 'Records deleted from XXX' );
-  for ( $i = 0; $i < $cnt; $i++ ) {
+  for ( $i = 0; $tables[$i]; $i++ ) {
     $table = $tables[$i][0];
     echo $boxPreviewStr . ' ' .
       str_replace( 'XXX', " $table: {$num[$i]}" , $xxxStr ) .

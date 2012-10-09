@@ -169,8 +169,7 @@ function cmDrawSubMenu (subMenu, prefix, id, orient, nodeProperties)
 
   var classStr;
 
-  for (i = 5; i < subMenu.length; ++i)
-  {
+  for (i = 5; subMenu[i]; ++i) {
     item = subMenu[i];
     if (!item)
       continue;
@@ -272,8 +271,7 @@ function cmDraw (id, menu, orient, nodeProperties, prefix)
 
   var classStr;
 
-  for (i = 0; i < menu.length; ++i)
-  {
+  for (i = 0; menu[i]; ++i) {
     item = menu[i];
 
     if (!item)
@@ -357,8 +355,7 @@ function cmDrawFromText (id, orient, nodeProperties, prefix)
 {
   var domMenu = cmGetObject (id);
   var menu = null;
-  for (var currentDomItem = domMenu.firstChild; currentDomItem; currentDomItem = currentDomItem.nextSibling)
-  {
+  for (var currentDomItem = domMenu.firstChild; currentDomItem; currentDomItem = currentDomItem.nextSibling) {
     if (!currentDomItem.tagName || currentDomItem.tagName.toLowerCase () != 'ul')
       continue;
     menu = cmDrawFromTextSubMenu (currentDomItem);
@@ -374,8 +371,7 @@ function cmDrawFromText (id, orient, nodeProperties, prefix)
 function cmDrawFromTextSubMenu (domMenu)
 {
   var items = new Array ();
-  for (var currentDomItem = domMenu.firstChild; currentDomItem; currentDomItem = currentDomItem.nextSibling)
-  {
+  for (var currentDomItem = domMenu.firstChild; currentDomItem; currentDomItem = currentDomItem.nextSibling) {
     if (!currentDomItem.tagName || currentDomItem.tagName.toLowerCase () != 'li')
       continue;
     if (currentDomItem.firstChild == null)
@@ -385,8 +381,7 @@ function cmDrawFromTextSubMenu (domMenu)
     }
     var item = new Array ();
     var currentItem = currentDomItem.firstChild;
-    for (; currentItem; currentItem = currentItem.nextSibling)
-    {
+    for (; currentItem; currentItem = currentItem.nextSibling) {
       // scan for span tag
       if (!currentItem.tagName || currentItem.tagName.toLowerCase () != 'span')
         continue;
@@ -398,8 +393,7 @@ function cmDrawFromTextSubMenu (domMenu)
     }
     if (!currentItem)
       continue;
-    for (; currentItem; currentItem = currentItem.nextSibling)
-    {
+    for (; currentItem; currentItem = currentItem.nextSibling) {
       // scan for span tag
       if (!currentItem.tagName || currentItem.tagName.toLowerCase () != 'a')
         continue;
@@ -412,13 +406,12 @@ function cmDrawFromTextSubMenu (domMenu)
       break;
     }
 
-    for (; currentItem; currentItem = currentItem.nextSibling)
-    {
+    for (; currentItem; currentItem = currentItem.nextSibling) {
       // scan for span tag
       if (!currentItem.tagName || currentItem.tagName.toLowerCase () != 'ul')
         continue;
       var subMenuItems = cmDrawFromTextSubMenu (currentItem);
-      for (i = 0; i < subMenuItems.length; ++i)
+      for (i = 0; subMenuItems[i]; ++i)
         item[i + 5] = subMenuItems[i];
       break;
     }
@@ -454,8 +447,7 @@ function cmItemMouseOver (obj, prefix, isMain, idSub, index)
   if (!thisMenu.cmItems)
     thisMenu.cmItems = new Array ();
   var i;
-  for (i = 0; i < thisMenu.cmItems.length; ++i)
-  {
+  for (i = 0; thisMenu.cmItems[i]; ++i) {
     if (thisMenu.cmItems[i] == obj)
       break;
   }
@@ -759,12 +751,8 @@ function cmResetMenu (thisMenu, prefix)
     var i;
     var str;
     var items = thisMenu.cmItems;
-    for (i = 0; i < items.length; ++i)
-    {
-      if (items[i].cmIsMain)
-        str = prefix + 'MainItem';
-      else
-        str = prefix + 'MenuItem';
+    for (i = 0; items[i]; ++i) {
+      str = prefix + (items[i].cmIsMain ? 'MainItem' : 'MenuItem' );
       if (items[i].className != str)
         items[i].className = str;
     }
@@ -797,8 +785,7 @@ function cmHideMenu (thisMenu, currentMenu, prefix)
   if (thisMenu.cmSubMenu)
   {
     var i;
-    for (i = 0; i < thisMenu.cmSubMenu.length; ++i)
-    {
+    for (i = 0; thisMenu.cmSubMenu[i]; ++i) {
       cmHideSubMenu (thisMenu.cmSubMenu[i], prefix);
     }
   }
@@ -829,8 +816,7 @@ function cmHideSubMenu (thisMenu, prefix)
   if (thisMenu.cmSubMenu)
   {
     var i;
-    for (i = 0; i < thisMenu.cmSubMenu.length; ++i)
-    {
+    for (i = 0; thisMenu.cmSubMenu[i]; ++i) {
       cmHideSubMenu (thisMenu.cmSubMenu[i], prefix);
     }
   }
@@ -850,8 +836,7 @@ function cmHideControl (tagName, subMenu)
   var h = subMenu.offsetHeight;
 
   var i;
-  for (i = 0; i < document.all.tags(tagName).length; ++i)
-  {
+  for (i = 0; document.all.tags(tagName)[i]; ++i) {
     var obj = document.all.tags(tagName)[i];
     if (!obj || !obj.offsetParent)
       continue;
@@ -889,7 +874,7 @@ function cmShowControl (subMenu)
   if (subMenu.cmOverlap)
   {
     var i;
-    for (i = 0; i < subMenu.cmOverlap.length; ++i)
+    for (i = 0; subMenu.cmOverlap[i]; ++i)
       subMenu.cmOverlap[i].style.visibility = "";
   }
   subMenu.cmOverlap = null;

@@ -13,18 +13,14 @@ p = p.substring(0, p.indexOf('.'));
 // with HTML5 and CSS3 especially.
 linkFile(d + 'includes/css/' + p + '.css', 'link');
 
-var tmp = [
-  'dateformat',
-  'geturl',
-// Not sure if we should call these from offsite or not.
-// 'http://code.jquery.com/jquery-1.7.min.js'
-// 'http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js'
-  'jquery',    // Complements "prototype.js" and works with
-  'modernizr', // to make older browsers do HTML5/CSS3 things with minimal code from us.
-  p,           // Loads the CSS/JS for the page that called this.
-];
-for (var i = tmp.length - 1; i >= 0; i--) {
-  linkFile(d + 'includes/js/' + tmp[i] + '.js');
+for (var i in Array(
+    'dateformat',
+    'geturl',
+    // 'http://code.jquery.com/jquery-1.7.min.js'
+    // 'http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js'
+    p, // Loads the CSS/JS for the page that called this.
+  )) {
+  linkFile(d + 'includes/js/' + i + '.js');
 }
 function addLoadListener(fn) {
   if (typeof window.addEventListener != 'undefined') {
@@ -73,22 +69,21 @@ function getElementsByAttribute(attribute, attributeValue) {
 
   elementArray = document.getElementsByTagName('*');
 
-  for (var i = elementArray.length - 1; i >= 0; i--) {
+  for (var i in elementArray) {
     if (attribute == 'class') {
       var pattern = new RegExp('(^| )' + attributeValue + '( |$)');
 
-      if (pattern.test(elementArray[i].className)) {
-        matchedArray[matchedArray.length] = elementArray[i];
+      if (pattern.test(i.className)) {
+        matchedArray[matchedArray.length] = i;
       }
     } else if (attribute == 'for') {
-      if (elementArray[i].getAttribute('htmlFor')
-         || elementArray[i].getAttribute('for')) {
-        if (elementArray[i].htmlFor == attributeValue) {
-          matchedArray[matchedArray.length] = elementArray[i];
+      if (i.getAttribute('htmlFor') || i.getAttribute('for')) {
+        if (i.htmlFor == attributeValue) {
+          matchedArray[matchedArray.length] = i;
         }
       }
-    } else if (elementArray[i].getAttribute(attribute) == attributeValue) {
-      matchedArray[matchedArray.length] = elementArray[i];
+    } else if (i.getAttribute(attribute) == attributeValue) {
+      matchedArray[matchedArray.length] = i;
     }
   }
   return matchedArray;
@@ -127,8 +122,8 @@ if (typeof document.getElementsBySelector == 'undefined') {
     var tokens = selector.split(' ');
     var currentContext = [document];
 
-    for (var i = 0, l = tokens.length; i < l; i++) {
-      token = tokens[i].replace(/^\s+/, '').replace(/\s+$/, '');
+    for (var i in tokens) {
+      token = i.replace(/^\s+/, '').replace(/\s+$/, '');
 
       if (token.indexOf('#') > -1) {
         // Token is an ID selector.
@@ -158,23 +153,22 @@ if (typeof document.getElementsBySelector == 'undefined') {
         var found = [],
         foundCount = 0;
 
-        for (var h = 0, m = currentContext.length; h < m; h++) {
+        for (var h in currentContext) {
           var elements;
           elements = (tagName == '*'
-             ? getAllChildren(currentContext[h])
-             : currentContext[h].getElementsByTagName(tagName));
+             ? getAllChildren(h) : h.getElementsByTagName(tagName));
 
-          for (var j = 0, n = elements.length; j < n; j++) {
-            found[foundCount++] = elements[j];
+          for (var j in elements) {
+            found[foundCount++] = j;
           }
         }
         currentContext = [];
 
         var currentContextIndex = 0;
 
-        for (var k = 0, o = found.length; k < o; k++) {
-          if (found[k].className && found[k].className.match(new RegExp('\\b' + className + '\\b')))
-            currentContext[currentContextIndex++] = found[k];
+        for (var k in found) {
+          if (k.className && k.className.match(new RegExp('\\b' + className + '\\b')))
+            currentContext[currentContextIndex++] = k;
         }
         continue; // Skip to next token.
       }
@@ -201,15 +195,14 @@ if (typeof document.getElementsBySelector == 'undefined') {
         var found = [],
         foundCount = 0;
 
-        for (var h = 0, m = currentContext.length; h < m; h++) {
+        for (var h in currentContext) {
           var elements;
 
           elements = (tagName == '*'
-             ? getAllChildren(currentContext[h])
-             : currentContext[h].getElementsByTagName(tagName));
+             ? getAllChildren(h) : h.getElementsByTagName(tagName));
 
-          for (var j = 0, n = elements.length; j < n; j++) {
-            found[foundCount++] = elements[j];
+          for (var j in elements) {
+            found[foundCount++] = j;
           }
         }
         currentContext = [];
@@ -257,9 +250,9 @@ if (typeof document.getElementsBySelector == 'undefined') {
 
         var currentContextIndex = 0;
 
-        for (var k = 0, o = found.length; k < o; k++) {
-          if (checkFunction(found[k])) {
-            currentContext[currentContextIndex++] = found[k];
+        for (var k in found) {
+          if (checkFunction(k)) {
+            currentContext[currentContextIndex++] = k;
           }
         }
         continue; // Skip to next token.
@@ -270,11 +263,11 @@ if (typeof document.getElementsBySelector == 'undefined') {
       var found = [],
       foundCount = 0;
 
-      for (var h = 0, m = currentContext.length; h < m; h++) {
-        var elements = currentContext[h].getElementsByTagName(tagName);
+      for (var h in currentContext) {
+        var elements = h.getElementsByTagName(tagName);
 
-        for (var j = 0, n = elements.length; j < n; j++) {
-          found[foundCount++] = elements[j];
+        for (var j in elements) {
+          found[foundCount++] = j;
         }
       }
       currentContext = found;
@@ -359,8 +352,7 @@ function targeTo(targ, aId) {
      ? document : document.getElementById(aId));
   anchors = a.getElementsByTagName('a');
 
-  for (var i = anchors.length - 1; i >= 0; i--) {
-    a = anchors[i];
+  for (var a in anchors) {
     a.setAttribute('target', '');
     a.target = targ; // If '', turn target off.
   }
@@ -386,8 +378,8 @@ function toggleVisible(name, v, d, mom) {
 function wc_getCookie(Name) {
   var cookies = document.cookie.split(';');
 
-  for (var i = cookies.length - 1; i >= 0; i--) {
-    var crumbs = cookies[i].split('=');
+  for (var i in cookies) {
+    var crumbs = i.split('=');
 
     if (crumbs[0] == Name) {
       return crumbs[1];

@@ -1,5 +1,6 @@
 <?php // $Id$
 include_once 'includes/init.php';
+require_valide_referring_url();
 
 $icon_max_size = '3000';
 $icon_path = 'icons/';
@@ -9,8 +10,7 @@ $icon_path = 'icons/';
  */
 function renameIcon ( $id ) {
   global $icon_path;
-  $bakIcon = $catIcon = $icon_path . 'cat-';
-  $bakIcon .= date ( 'YmdHis' ) . '.gif';
+  $bakIcon = $catIcon = $icon_path . 'cat-' . date ( 'YmdHis' ) . '.gif';
   $catIcon .= $id . '.gif';
   if ( ! file_exists ( $catIcon ) )
     $catIcon = 'icons/cat-' . $id . '.png';

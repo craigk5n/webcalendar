@@ -41,7 +41,7 @@ function selectUsers() {
   listid = 0,
   url;
 
-  for (var i = 0, j = dse.length - 1; i < j; i++) {
+  for (var i = 0; dse[i]; i++) {
     if (dse[i].name == 'users[]') {
       listid = i;
       break; // Should only be one.
@@ -50,7 +50,7 @@ function selectUsers() {
   url = 'usersel.php?form=searchformentry&listid=' + listid + '&users=';
 
   // Add currently selected users.
-  for (var i = 0, j = 0, k = dse[listid].length - 1; i < k; i++) {
+  for (var i = 0, j = 0; dse[listid][i]; i++) {
     if (dse[listid].options[i].selected) {
       url += (j > 0 ? ',' : '') + dse[listid].options[i].value;
       j++;

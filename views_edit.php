@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
  * Page Description:
  * This page displays the views that the user currently owns and
@@ -40,14 +40,15 @@ if ( empty ( $id ) ) {
   $viewname = $unnameViewStr;
 } else {
   // search for view by id
-  for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
-    if ( $views[$i]['cal_view_id'] == $id ) {
+  foreach ( $views as $i ) {
+    if ( $i['cal_view_id'] == $id ) {
       $newview = false;
-      $viewname = $views[$i]['cal_name'];
+      $viewname= $i['cal_name'];
       if ( empty ( $viewname ) )
         $viewname = $unnameViewStr;
-      $viewtype = $views[$i]['cal_view_type'];
-      $viewisglobal = $views[$i]['cal_is_global'];
+
+      $viewtype    = $i['cal_view_type'];
+      $viewisglobal= $i['cal_is_global'];
     }
   }
 }
@@ -150,11 +151,10 @@ echo '<tr><td><label>'
     $users = ( $NONUSER_AT_TOP == 'Y'
      ? array_merge ( $nonusers, $users ) : array_merge ( $users, $nonusers ) );
   }
-  for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
-    $u = $users[$i]['cal_login'];
-    echo '<option value=' . $u
-     . ( empty( $viewuser[$u] ) ? '">' : '" selected>' )
-     . $users[$i]['cal_fullname'] . "</option>\n";
+  foreach ( $users as $i ) {
+    $u = $i['cal_login'];
+    echo '<option value=' . $u . ( empty ( $viewuser[$u] ) ? '">' : '" selected>' )
+      . $i['cal_fullname'] . "</option>\n";
   }
 ?>
 </select>

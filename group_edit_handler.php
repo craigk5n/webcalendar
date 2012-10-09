@@ -1,9 +1,10 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
+require_valide_referring_url();
 
-$id = getPostValue ( 'id' );
-$groupname = getPostValue ( 'groupname' );
-$users = getPostValue ( 'users' );
+$id       = getPostValue ( 'id' );
+$groupname= getPostValue ( 'groupname' );
+$users    = getPostValue ( 'users' );
 
 if ( ! $is_admin )
   $error = print_not_auth();
@@ -45,9 +46,9 @@ else {
     if ( empty ( $error ) && ! empty ( $users ) ) {
       dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_group_id = ?',
         array ( $id ) );
-      for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
+      foreach ( $users as $i ) {
         dbi_execute ( 'INSERT INTO webcal_group_user ( cal_group_id, cal_login )
-          VALUES ( ?, ? )', array ( $id, $users[$i] ) );
+          VALUES ( ?, ? )', array ( $id, $i ) );
       }
     }
   }

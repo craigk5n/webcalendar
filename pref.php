@@ -1,5 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
+require_valide_referring_url();
 
 function save_pref( $prefs, $src) {
   global $my_theme, $prefuser;
@@ -176,9 +177,9 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
          && ( empty( $public ) && ! empty( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y' )
        ? $option . 'pref.php?public=1">'
          . translate( 'Public Access calendar' ) . '</option>' : '' );
-    for ( $i = 0, $cnt = count( $nulist ); $i < $cnt; $i++ ) {
-      $nucs .= $option . 'pref.php?user='. $nulist[$i]['cal_login']. '">'
-       . $nulist[$i]['cal_fullname'] . '</option>';
+    foreach ( $nulist as $i ) {
+      $nucs .= $option . 'pref.php?user='. $i['cal_login']. '">'
+        . $i['cal_fullname'] . '</option>';
     }
     $nucs .= '
       </select>';
@@ -246,15 +247,15 @@ foreach ( $choices as $k => $v ) {
    . htmlspecialchars( $v ) . '</option>';
 }
 // Allow user to select a view also.
-for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
-if ( $views[$i]['cal_owner'] != $user && $views[$i]['cal_is_global'] != 'Y' )
+foreach ( $views as $i ) {
+  if ( $i['cal_owner'] != $user && $i['cal_is_global'] != 'Y' )
     continue;
 
-  $xurl = $views[$i]['url'];
+  $xurl = $i['url'];
   $xurl_strip = str_replace ( '&amp;', '&', $xurl );
   $user_vu .= $option . $xurl
    . ( $prefarray['STARTVIEW'] == $xurl_strip ? '" selected>' : '">' )
-   . htmlspecialchars( $views[$i]['cal_name'] ) . '</option>';
+   . htmlspecialchars ( $i['cal_name'] ) . '</option>';
 }
 $catList = '';
 if ( ! empty( $categories ) ) {

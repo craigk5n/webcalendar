@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  *  Web Service functionality to get unapproved events. This will list events
  *  for the current user and for any other user for whom the current user is
  *  authorized to approve events. Uses REST-style web service.
@@ -57,15 +57,14 @@ $out = '
 <unapproved>
   <userlist>';
 $out2 = '';
-$unapprovedStr = translate ( 'Get unapproved for XXX' );
 
-for ( $i = 0, $cnt = count ( $userList ); $i < $cnt; $i++ ) {
+foreach ( $userList as $i ) {
   $out .= '
-    <login>' . ws_escape_xml ( $userList[$i] ) . '</login>';
+    <login>' . ws_escape_xml ( $i ) . '</login>';
 
   $out2 .= ( $WS_DEBUG ? '
-<!-- ' . str_replace ( 'XXX', $userList[$i], $unapprovedStr ) . ' -->' : '' )
-   . get_unapproved ( $userList[$i] );
+<!-- Getting unapproved for user "' . $i . '". -->' : '' )
+    . get_unapproved ( $i );
 }
 
 $out .= '
@@ -127,12 +126,11 @@ function get_unapproved ( $user ) {
 -->
 ';
   if ( $rows ) {
-    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
-      $row = $rows[$i];
-      $id = $row[0];
-      $name = $row[1];
-      $date = $row[2];
-      $time = $row[3];
+    foreach ( $rows as $row ) {
+      $id  = $row[0];
+      $name= $row[1];
+      $date= $row[2];
+      $time= $row[3];
       $ret .= process_event ( $id, $name, $date, $time, $user );
     }
   }
@@ -158,8 +156,8 @@ function get_users_to_approve() {
   if ( access_is_enabled() ) {
     $all = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y'
       ? array_merge ( get_my_users(), $my_non_users ) : get_my_users() );
-    for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
-      $x = $all[$j]['cal_login'];
+    foreach ( $all as $j ) {
+      $x = $j['cal_login'];
       if ( access_user_calendar ( 'approve', $x ) ) {
         if ( empty ( $app_user_hash[$x] ) ) {
           $app_users[] = $x;
@@ -174,8 +172,8 @@ function get_users_to_approve() {
       $app_users_hash['__public__'] = 1;
     }
     $all = $my_non_users;
-    for ( $j = 0, $cnt = count ( $all ); $j < $cnt; $j++ ) {
-      $x = $all[$j]['cal_login'];
+    foreach ( $all as $j ) {
+      $x = $j['cal_login'];
       if ( empty ( $app_user_hash[$x] ) ) {
         $app_users[] = $x;
         $app_user_hash[$x] = 1;

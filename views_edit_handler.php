@@ -1,13 +1,14 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
+require_valide_referring_url();
 
 $error = '';
 
-$viewisglobal = getPostValue ( 'is_global' );
-$viewname = getPostValue ( 'viewname' );
-$viewtype = getPostValue ( 'viewtype' );
-$users = getPostValue ( 'users' );
-$delete = getPostValue ( 'delete' );
+$delete      = getPostValue ( 'delete' );
+$users       = getPostValue ( 'users' );
+$viewisglobal= getPostValue ( 'is_global' );
+$viewname    = getPostValue ( 'viewname' );
+$viewtype    = getPostValue ( 'viewtype' );
 
 if ( ! $is_admin || $viewisglobal != 'Y' )
   $viewisglobal = 'N'; // Only admin can create global view.
@@ -51,10 +52,9 @@ else {
     if ( getPostValue ( 'viewuserall' ) == 'Y' )
       $users = array ( '__all__' );
 
-    for ( $i = 0, $cnt = count ( $users );
-      ! empty ( $users ) && $i < $cnt; $i++ ) {
+    foreach ( $users as $i ) {
       dbi_execute ( 'INSERT INTO webcal_view_user ( cal_view_id, cal_login )
-        VALUES ( ?, ? )', array ( $id, $users[$i] ) );
+        VALUES ( ?, ? )', array ( $id, $i ) );
     }
   }
 }

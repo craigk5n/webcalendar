@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php /* $Id$ */
 /**
- * Description:
+ * Page Description:
  * Presents page to view an event with links to edit, delete
  * confirm, copy, add event
  *
@@ -200,12 +200,11 @@ if ( empty ( $error ) ) {
     // In summary, make sure at least one event participant is in one of
     // this user's groups.
     $my_users = get_my_users();
-    $my_usercnt = count ( $my_users );
-    if ( is_array ( $my_users ) && $my_usercnt ) {
+    if ( is_array ( $my_users ) && count ( $my_users ) ) {
       $sql_params = array( $id );
       $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
         WHERE we.cal_id = weu.cal_id AND we.cal_id = ? AND weu.cal_login IN ( ';
-      for ( $i = 0; $i < $my_usercnt; $i++ ) {
+      for ( $i = 0; $my_users[$i]; $i++ ) {
         $sql .= ( $i > 0 ? ', ' : '' ) . '?';
         $sql_params[] = $my_users[$i]['cal_login'];
       }
@@ -231,8 +230,8 @@ if ( empty ( $error ) && ! $can_view && !
     empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
   $nonusers = get_nonuser_cals();
   $nonuser_lookup = array();
-  for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
-    $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
+  foreach ( $nonusers as $i ) {
+    $nonuser_lookup[$i['cal_login']] = 1;
   }
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
     WHERE cal_id = ? AND cal_status IN (\'A\',\'W\')', array ( $id ) );
@@ -577,20 +576,19 @@ echo '
 // load any site-specific fields and display them
 $extras = get_site_extra_fields ( $id );
 $site_extracnt = count ( $site_extras );
-for ( $i = 0; $i < $site_extracnt; $i++ ) {
-  if ( $site_extras[$i] == 'FIELDSET' ) continue;
-  $extra_name = $site_extras[$i][0];
-  $extra_type = $site_extras[$i][2];
-  $extra_arg1 = $site_extras[$i][3];
-  $extra_arg2 = $site_extras[$i][4];
-  if ( ! empty ( $site_extras[$i][5] ) )
-    $extra_view = $site_extras[$i][5] & EXTRA_DISPLAY_VIEW;
+foreach ( $site_extras as $i ) {
+  if ( $i == 'FIELDSET' )
+    continue;
+  $extra_name = $i[0];
+  $extra_type = $i[2];
+  $extra_arg1 = $i[3];
+  $extra_arg2 = $i[4];
+  if ( ! empty ( $i[5] ) )
+    $extra_view = $i[5] & EXTRA_DISPLAY_VIEW;
   if ( ! empty ( $extras[$extra_name]['cal_name'] )  && ! empty ( $extra_view ) ) {
     echo '
       <tr>
-        <td>'
-// Note to self: What are these and do they get translated somewhere else? bb
-     . translate( $site_extras[$i][1] ) . ':</td>
+        <td>' . str_replace ( 'XXX', translate ( $i[1] ), translate ( 'XXX_' ) ) . '</td>
         <td>';
 
     if ( $extra_type == EXTRA_URL ) {
@@ -668,16 +666,15 @@ if ( $single_user == 'N' && $show_participants ) {
             <th>' . translate( 'Participants' ) . '</th>
             <th colspan="2">' . translate( 'Percentage Complete' ) . '</th>';
     $others_complete = 'yes';
-    for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
-      user_load_variables ( $participants[$i][0], 'temp' );
+    foreach ( $participants as $i ) {
+      user_load_variables ( $i[0], 'temp' );
       if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
-      $spacer = 100 - $participants[$i][2];
-      $percentage = $participants[$i][2];
-      if ( $participants[$i][0] == $login )
-        $login_percentage = $participants[$i][2];
-      else
-      if ( $participants[$i][2] < 100 )
+      $spacer    = 100 - $i[2];
+      $percentage= $i[2];
+      if ( $i[0] == $login )
+        $login_percentage = $i[2];
+      else if ( $i[2] < 100 )
         $others_complete = 'no';
 
       echo '
@@ -705,7 +702,7 @@ if ( $single_user == 'N' && $show_participants ) {
     echo '
           </table>';
   } else {
-    for ( $i = 0; $i < $num_app; $i++ ) {
+    for ( $i = 0; $num_app[$i]; $i++ ) {
       user_load_variables ( $approved[$i], 'temp' );
       if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
@@ -725,18 +722,19 @@ if ( $single_user == 'N' && $show_participants ) {
       $external_users = event_get_external_users ( $id, 1 );
       $ext_users = explode ( "\n", $external_users );
       if ( is_array ( $ext_users ) ) {
-        $externUserStr = translate ( 'External User' );
-        for ( $i = 0, $cnt = count ( $ext_users ); $i < $cnt; $i++ ) {
-          if ( ! empty ( $ext_users[$i] ) ) {
+        $externUserStr = str_replace ( 'XXX', translate ( 'External User' ),
+          translate ( '(XXX)' ) );
+        foreach ( $ext_users as $i ) {
+          if ( ! empty ( $i ) ) {
             echo '
-          ' . $ext_users[$i] . ' (' . $externUserStr . ')<br>';
-            if ( preg_match ( '/mailto: (\S+)"/', $ext_users[$i], $match ) )
+          ' . $i . ' (' . $externUserStr . ')<br>';
+            if ( preg_match ( '/mailto: (\S+)"/', $i, $match ) )
               $allmails[] = $match[1];
           }
         }
       }
     }
-    for ( $i = 0; $i < $num_wait; $i++ ) {
+    for ( $i = 0; $num_wait[$i]; $i++ ) {
       user_load_variables ( $waiting[$i], 'temp' );
       if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
@@ -751,7 +749,7 @@ if ( $single_user == 'N' && $show_participants ) {
 
       echo ' (?)<br>';
     }
-    for ( $i = 0; $i < $num_rej; $i++ ) {
+    for ( $i = 0; $num_rej[$i]; $i++ ) {
       user_load_variables ( $rejected[$i], 'temp' );
       if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
@@ -845,7 +843,7 @@ if ( Doc::commentsEnabled() ) {
   $comList = new CommentList( $id );
   $num_comment = $comList->getSize();
   $comment_text = '';
-  for ( $i = 0; $i < $num_comment; $i++ ) {
+  for ( $i = 0; $num_comment[$i]; $i++ ) {
     $cmt = $comList->getDoc ( $i );
     user_load_variables ( $cmt->getLogin(), 'cmt_' );
     $comment_text .= '

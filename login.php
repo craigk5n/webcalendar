@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php /* $Id$ */
 @session_start();
 foreach ( $_SESSION as $key => $value ) {
   $dummy[$key] = $value; // Copy to a dummy array.
@@ -210,12 +210,11 @@ echo send_doctype ( $appStr ) . '
 $nulist = get_nonuser_cals();
 $accessStr = translate ( 'Access XXX calendar' );
 
-for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
-  if ( $nulist[$i]['cal_is_public'] == 'Y' )
+foreach ( $nulist as $i ) {
+  if ( $i['cal_is_public'] == 'Y' )
     echo '
-    <a class="nav" href="nulogin.php?login=' . $nulist[$i]['cal_login'] . '">'
-     . str_replace ( 'XXX', $nulist[$i]['cal_fullname'], $accessStr )
-     . '</a><br>';
+    <a class="nav" href="nulogin.php?login=' . $i['cal_login'] . '">'
+     . str_replace ( 'XXX', $i['cal_fullname'], $accessStr ) . '</a><br>';
 }
 echo ( $DEMO_MODE == 'Y'
   // This is used on the sourceforge demo page.

@@ -1,6 +1,7 @@
-<?php // $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
+require_valide_referring_url();
 
 // Only available in php 5.x Used for hCalendar parsing.
 if ( function_exists ( 'simplexml_load_string' ) )
@@ -166,37 +167,31 @@ function delete_events ( $nid ) {
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted.
   $delete_em = array();
-  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
+  foreach ( $events as $i ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-      WHERE cal_id = ?', array ( $events[$i] ) );
+      WHERE cal_id = ?', array ( $i ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( ! empty ( $row ) && $row[0] == 1 )
-        $delete_em[] = $events[$i];
+        $delete_em[] = $i;
 
       dbi_free_result ( $res );
     }
   }
   // Now delete events that were just for this user.
-  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
-    dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
-    dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
-    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
-      array ( $delete_em[$i] ) );
-    dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
-    dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
-    dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
-    dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id =? ',
-      array ( $delete_em[$i] ) );
-    dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
-    dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+  foreach ( $delete_em as $i ) {
+    foreach ( array (
+        'webcal_blob',
+        'webcal_entry',
+        'webcal_entry_ext_user',
+        'webcal_entry_repeats',
+        'webcal_entry_repeats_not',
+        'webcal_import_data',
+        'webcal_reminders',
+        'webcal_site_extras' ) as $db ) {
+      dbi_execute ( 'DELETE FROM ' . $db . ' WHERE cal_id = ?', array ( $i ) );
+    }
+    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?', array ( $i ) );
   }
   // Delete user participation from events.
   dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
