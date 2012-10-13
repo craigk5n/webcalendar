@@ -201,10 +201,10 @@ if ( empty ( $error ) ) {
     // this user's groups.
     $my_users = get_my_users();
     if ( is_array ( $my_users ) && count ( $my_users ) ) {
-      $sql_params = array( $id );
+      $sql_params = array ( $id );
       $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
         WHERE we.cal_id = weu.cal_id AND we.cal_id = ? AND weu.cal_login IN ( ';
-      for ( $i = 0; $my_users[$i]; $i++ ) {
+      for ( $i = 0, $cnt = count ( $my_users ); $i < $cnt; $i++ ) {
         $sql .= ( $i > 0 ? ', ' : '' ) . '?';
         $sql_params[] = $my_users[$i]['cal_login'];
       }
@@ -702,7 +702,7 @@ if ( $single_user == 'N' && $show_participants ) {
     echo '
           </table>';
   } else {
-    for ( $i = 0; $num_app[$i]; $i++ ) {
+    for ( $i = 0; $i < $num_app; $i++ ) {
       user_load_variables ( $approved[$i], 'temp' );
       if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
@@ -734,7 +734,7 @@ if ( $single_user == 'N' && $show_participants ) {
         }
       }
     }
-    for ( $i = 0; $num_wait[$i]; $i++ ) {
+    for ( $i = 0; $i < $num_wait; $i++ ) {
       user_load_variables ( $waiting[$i], 'temp' );
       if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
@@ -749,7 +749,7 @@ if ( $single_user == 'N' && $show_participants ) {
 
       echo ' (?)<br>';
     }
-    for ( $i = 0; $num_rej[$i]; $i++ ) {
+    for ( $i = 0; $i < $num_rej; $i++ ) {
       user_load_variables ( $rejected[$i], 'temp' );
       if ( access_is_enabled() )
         $can_email = access_user_calendar ( 'email', $templogin );
@@ -843,7 +843,7 @@ if ( Doc::commentsEnabled() ) {
   $comList = new CommentList( $id );
   $num_comment = $comList->getSize();
   $comment_text = '';
-  for ( $i = 0; $num_comment[$i]; $i++ ) {
+  for ( $i = 0; $i < $num_comment; $i++ ) {
     $cmt = $comList->getDoc ( $i );
     user_load_variables ( $cmt->getLogin(), 'cmt_' );
     $comment_text .= '
