@@ -65,7 +65,8 @@ if ( ! empty( $error ) ) {
 }
 
 $e_save = $re_save = array();
-for ( $i = 0; $viewusers[$i]; $i++ ) {
+$viewusercnt - count ( $viewusers );
+for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quicker access */
   $re_save[$i] = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   /* Pre-load the non-repeating events for quicker access
@@ -86,7 +87,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
   $body = $header = '';
   $todayYmd = date ( 'Ymd', $today );
-  for ( $i = 0; $viewusers[$i]; $i++ ) {
+  for ( $i = 0; $i < $viewusercnt; $i++ ) {
     $events = $e_save[$i];
     $repeated_events = $re_save[$i];
     $user = $viewusers[$i];

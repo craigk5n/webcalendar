@@ -318,7 +318,7 @@ function get_installed_version ( $postinstall = false ) {
   if ( ! $show_all_errors )
     show_errors ( false );
   // This data is read from file upgrade_matrix.php.
-  for ( $i = 0; $database_upgrade_matrix[$i]; $i++ ) {
+  for ( $i = 0; $i < $database_upgrade_matrix; $i++ ) {
     $sql = $database_upgrade_matrix[$i][0];
 
     if ( $sql != '' )

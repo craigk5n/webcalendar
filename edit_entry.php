@@ -562,7 +562,7 @@ if ( $can_edit ) {
   }
 
   $tabs = '<ul id="viewtabs" class="shadetabs" style="margin-left: 10px;">';
-  for ( $i = 0; $tabs_name[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $tabs_name ); $i < $cnt ; $i++ ) {
     $tabs .= '<li><a href="#" rel="' . $tabs_name[$i] .
       '"' . ( $i == 0 ? ' class="selected"' : '' ) .
       '>' . $tabs_title[$i] . '</a></li>' . "\n";
@@ -984,7 +984,7 @@ if ( $can_edit ) {
     $num_users = $size = 0;
     $myusers = $nonusers = $users = $grouplist = '';
 
-    for ( $i = 0; $userlist[$i]; $i++ ) {
+    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt ; $i++ ) {
       $f = $userlist[$i]['cal_fullname'];
       $l = $userlist[$i]['cal_login'];
       $q = ( ! empty ( $selectedStatus[$l] ) && $selectedStatus[$l] == 'W'
@@ -1021,7 +1021,7 @@ if ( $can_edit ) {
     if ( $NONUSER_ENABLED == 'Y' ) {
       // Include Public NUCs
       $mynonusers = get_my_nonusers ( $real_user, true );
-      for ( $i = 0; $mynonusers[$i]; $i++ ) {
+      for ( $i = 0, $cnt = count ( $mynonusers ); $i < $cnt; $i++ ) {
         $l = $mynonusers[$i]['cal_login'];
         $n = $mynonusers[$i]['cal_fullname'];
         $q = ( ! empty ( $selectedStatus[$l] ) && $selectedStatus[$l] == 'W'

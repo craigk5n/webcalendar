@@ -70,7 +70,7 @@ function assert_backtrace() {
      . phpversion() . ']';
   $bt = debug_backtrace();
   $file = array();
-  for ( $i = 2; $bt[$i]; $i++ ) {
+  for ( $i = 2, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
     // skip the first two, since it's always this func and assert_handler
     $afile = $bt[$i];
 
@@ -78,7 +78,7 @@ function assert_backtrace() {
      . ' [' . assert_get_cvs_file_version ( $afile['file'] ) . ']';
     if ( ! empty ( $afile['function'] ) ) {
       $line .= ' ' . $afile['function'] . ' ( ';
-      for ( $j = 0; $afile['args'][$j]; $j++ ) {
+      for ( $j = 0, $cnt = count ( $afile['args'] ); $j < $cnt; $j++ ) {
         if ( $j )
           $line .= ', ';
         $v = $afile['args'][$j];

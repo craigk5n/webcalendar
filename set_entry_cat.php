@@ -74,7 +74,7 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
   $categories = explode ( ',', $cat_id );
 
   $names = $sql_params = $values = array();
-  for ( $i = 0; $categories[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $categories ); $i < $cnt; $i++ ) {
     // Don't process Global Categories.
     if ( $categories[$i] > 0 ) {
       $names[] = 'cal_id';

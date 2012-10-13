@@ -154,7 +154,7 @@ if ( empty ( $error ) ) {
     $sql = 'INSERT INTO webcal_report ( ';
     $sql_v = '';
 
-    for ( $i = 0; $names[$i]; $i++ ) {
+    for ( $i = 0, $cnt = count ( $names ); $i < $cnt; $i++ ) {
       $sql .= ( $i > 0 ? ', ' : '' ) . $names[$i];
       $sql_v .= ( $i > 0 ? ', ' : '' ) . '?';
     }
@@ -162,7 +162,7 @@ if ( empty ( $error ) ) {
     $report_id = $newid;
   } else {
     $sql = 'UPDATE webcal_report SET ';
-    for ( $i = 0; $names[$i]; $i++ ) {
+    for ( $i = 0, $cnt = count ( $names ); $i < $cnt; $i++ ) {
       $sql .= ( $i > 0 ? ', ' : '' ) . "$names[$i] = ?";
     }
     $sql .= ' WHERE cal_report_id = ?';

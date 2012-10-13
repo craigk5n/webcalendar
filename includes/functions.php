@@ -326,7 +326,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
     // Likely called from a form with 1 user.
     $participants[0] = $login;
 
-  for ( $i = 0; $participants[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
     $sql .= ( $i > 0 ? ' OR ' : '' ) . 'weu.cal_login = ?';
     $query_params[] = $participants[$i];
   }
@@ -2632,7 +2632,7 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
     else {
       // Build count ( $groups ) placeholders separated with commas.
       $placeholders = '';
-      for ( $p_i = 0; $groups[$p_i]; $p_i++ ) {
+      for ( $p_i = 0, $cnt = count ( $groups ); $p_i < $cnt; $p_i++ ) {
         $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
       }
       $sql .= "IN ( $placeholders ) )";
@@ -2745,7 +2745,7 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
     else {
       // Build count ( $groups ) placeholders separated with commas.
       $placeholders = '';
-      for ( $p_i = 0; $groups[$p_i]; $p_i++ ) {
+      for ( $p_i = 0, $cnt = count ( $groups ); $p_i < $cnt; $p_i++ ) {
         $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
       }
       $sql .= "IN ( $placeholders )";
@@ -5016,7 +5016,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   elseif ( ! empty ( $cat_id ) ) {
     $cat_array = explode ( ',', $cat_id );
     $placeholders = '';
-    for ( $p_i = 0; $cat_array[$p_i]; $p_i++ ) {
+    for ( $p_i = 0, $cnt = count ( $cat_array ); $p_i < $cnt; $p_i++ ) {
       $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
     }
     $rows = dbi_get_cached_rows ( $sql . 'WHERE cat_id IN ( ' . $placeholders
@@ -5049,7 +5049,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
 
   if ( $catlistcnt > 0 ) {
     $placeholders = '';
-    for ( $p_i = 0; $catlist[$p_i]; $p_i++ ) {
+    for ( $p_i = 0, $cnt = count ( $catlist ); $p_i < $cnt; $p_i++ ) {
       $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
       $query_params[] = $catlist[$p_i];
     }
@@ -5174,7 +5174,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
     if ( empty ( $max_until ) )
       $max_until = mktime ( 0, 0, 0, $thismonth + 2, 1, $thisyear );
 
-    for ( $i = 0; $result[$i]; $i++ ) {
+    for ( $i = 0, $cnt = count ( $result ); $i < $cnt; $i++ ) {
       if( $result[$i]->getID() != '' ) {
         $rows = dbi_get_cached_rows ( 'SELECT cal_date, cal_exdate
           FROM webcal_entry_repeats_not
@@ -5792,7 +5792,7 @@ function validate_domain() {
     // Split the data into lines.
     $blacklistLines = explode ( "\n", $data );
 
-    for ( $n = 0; $blacklistLines[$n]; $n++ ) {
+    for ( $n = 0, $cnt = count ( $blacklistLines ); $n < $cnt; $n++ ) {
       $buffer = trim ( $blacklistLines[$n], "\r\n " );
       if ( preg_match ( '/^#/', $buffer ) )
         continue;

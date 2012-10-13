@@ -181,8 +181,9 @@ function purge_events ( $ids ) {
   foreach ( $tables as $i ) {
     $i = 0;
   }
+  $tablecnt  = count ( $tables );
   foreach ( $ids as $cal_id ) {
-    for ( $i = 0; $tables[$i]; $i++ ) {
+    for ( $i = 0; $i < $tablecnt; $i++ ) {
       $clause = ( $cal_id == 'ALL' ? '' : " WHERE {$tables[$i][1]} = $cal_id" );
       if ( $preview ) {
         $sql = 'SELECT COUNT(' . $tables[$i][1] .
@@ -207,7 +208,7 @@ function purge_events ( $ids ) {
     }
   }
   $xxxStr = translate( 'Records deleted from XXX' );
-  for ( $i = 0; $tables[$i]; $i++ ) {
+  for ( $i = 0; $i < $tablecnt; $i++ ) {
     $table = $tables[$i][0];
     echo $boxPreviewStr . ' ' .
       str_replace( 'XXX', " $table: {$num[$i]}" , $xxxStr ) .

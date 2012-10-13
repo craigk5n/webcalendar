@@ -176,9 +176,9 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   // Site extra fields.
   $extras = get_site_extra_fields ( $id );
   $se = '';
-  for ( $i = 0; $site_extras[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $site_extras ); $i < $cnt; $i++ ) {
     $extra_name = $site_extras[$i][0];
-    $extra_descr = $site_extras[$i][1];
+    $extra_descr= $site_extras[$i][1];
     $extra_type = $site_extras[$i][2];
     if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
       $tag = strtolower ( preg_replace ( '/[^A-Za-z0-9]+/', '',

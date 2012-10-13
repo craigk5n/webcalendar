@@ -129,7 +129,7 @@ if ( $action == 'search' ) {
   }
 
   $data = $sug = array();
-  for ( $i = 0; $ret[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
     $data[$i]= $ret[$i]['text'];
     $sug[$i] = $ret[$i]['name'];
   }

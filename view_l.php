@@ -74,7 +74,7 @@ $events = $repeated_events = array();
 
 foreach ( $e_save as $i ) {
   $should_add = 1;
-  for ( $j = 0; $events[$j] && $should_add; $j++ ) {
+  for ( $j = 0, $cnt = count ( $events ); $j < $cnt && $should_add; $j++ ) {
     if ( ! $i->getClone() && $i->getID() == $events[$j]->getID() )
       $should_add = 0;
   }
@@ -84,7 +84,7 @@ foreach ( $e_save as $i ) {
 
 foreach ( $re_save as $i ) {
   $should_add = 1;
-  for ( $j = 0; $repeated_events[$j] && $should_add; $j++ ) {
+  for ( $j = 0, $cnt = count ( $repeated_events ); $j < $cnt && $should_add; $j++ ) {
     if ( ! $i->getClone() && $i->getID() == $repeated_events[$j]->getID() )
       $should_add = 0;
   }

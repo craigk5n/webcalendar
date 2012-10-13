@@ -280,7 +280,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
 ';
 
   if ( $entrycnt > 0 || $rentrycnt > 0 ) {
-    for ( $j = 0; $entries[$j] && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0, $cnt = count ( $entries ); $j < $cnt && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
       if ( in_array ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
@@ -306,7 +306,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
         $numEvents++;
       }
     }
-    for ( $j = 0; $rentries[$j] && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0, $cnt = count ( $rentries ); $j < $cnt && $numEvents < $maxEvents; $j++ ) {
       // To allow repeated daily entries to be suppressed. Step below is
       // necessary because 1st occurence of repeating events shows up in
       // $entries AND $rentries & we suppress display of it in $rentries.

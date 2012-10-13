@@ -104,7 +104,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
           WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
           AND weu.cal_login IN ( ';
         $query_params = array ( $id );
-        for ( $i = 0; $my_users[$i]; $i++ ) {
+        for ( $i = 0, $cnt = count ( $my_users ); $i < $cnt; $i++ ) {
           $sql .= ( $i > 0 ? ', ' : '?' );
           $query_params[] = $my_users[$i]['cal_login'];
         }

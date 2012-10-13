@@ -60,7 +60,7 @@ if ( $d = dir ( $icon_path ) ) {
    . translate ( 'Current Icons on Server' ) . '</h2></td>
       </tr>
       <tr>';
-  for ( $i = 0; $icons[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $icons ); $i < $cnt; $i++ ) {
     echo '
         <td><a href="#" onclick="sendURL( \'' . $icon_path . $icons[$i]
      . '\' )" ><img src="' . $icon_path . $icons[$i] . '" title="'
