@@ -136,7 +136,7 @@ echo '
     <h2>' . translate( 'Administrative Tools' ) . '</h2>
     <table summary="admin options">';
 
-for ( $i = 0; $names[$i]; $i++ ) {
+for ( $i = 0, $cnt = count ( $names ); $i < $cnt; $i++ ) {
   echo ( $i % COLUMNS == 0 ? '
       <tr>' : '' ) . '
         <td> <a href="' . $links[$i] . '">' . $names[$i] . '</a></td>'

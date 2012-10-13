@@ -420,7 +420,7 @@ var users = [];
   // Create a javascript array of all users this user has access to see.
   // Note: not using this yet in the javascript anywhere....
   $users = user_get_users();
-  for ( $i = 0; $users[$i]; $i++ ) {
+  for ( $i = 0 $cnt = count ( $users ); $i < $cnt; $i++ ) {
     $fname = $users[$i]['cal_fullname'];
     if ( empty ( $fname ) )
       $fname = $users[$i]['cal_login'];

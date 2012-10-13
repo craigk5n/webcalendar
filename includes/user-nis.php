@@ -309,7 +309,7 @@ function user_delete_user ( $user ) {
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
   $delete_em = array ();
-  for ( $i = 0; $events[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user
       WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
@@ -321,7 +321,7 @@ function user_delete_user ( $user ) {
     }
   }
   // Now delete events that were just for this user
-  for ( $i = 0; $delete_em[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
       array ( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
@@ -366,7 +366,7 @@ function user_delete_user ( $user ) {
     }
     dbi_free_result ( $res );
   }
-  for ( $i = 0; $delete_em[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ?',
       array ( $delete_em[$i] ) );
   }
@@ -407,7 +407,7 @@ function user_delete_user ( $user ) {
     }
     dbi_free_result ( $res );
   }
-  for ( $i = 0; $delete_em[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_report_template WHERE cal_report_id = ?',
       array ( $delete_em[$i] ) );
   }

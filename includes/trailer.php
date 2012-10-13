@@ -147,7 +147,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   if ( count ( $goto_link ) > 0 ) {
     $tret .= '
         <span class="prefix">' . translate( 'Go to' ) . '</span>';
-    for ( $i = 0; $goto_link[$i]; $i++ ) {
+    for ( $i = 0, $cnt = count ( $goto_link ); $i < $cnt; $i++ ) {
       $tret .= ( $i > 0 ? ' | ' : '' ) . '
         <a ' . $goto_link[$i] . '</a>';
     }
@@ -167,7 +167,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   if ( count ( $views_link ) > 0 ) {
     $tret .= '<br>
         <span class="prefix">' . translate( 'Views_' ) . '</span>&nbsp;';
-    for ( $i = 0; $views_link[$i]; $i++ ) {
+    for ( $i = 0, $cnt = count ( $views_link ); $i < $cnt; $i++ ) {
       $tret .= ( $i > 0 ? ' | ' : '' ) . '
         <a ' . $views_link[$i] . '</a>';
     }
@@ -193,7 +193,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     if ( count ( $reports_link ) > 0 ) {
       $tret .= '<br>
         <span class="prefix">' . translate( 'Reports_' ) . '</span>&nbsp;';
-      for ( $i = 0; $reports_link[$i]; $i++ ) {
+      for ( $i = 0, $cnt = count ( $reports_link ); $i < $cnt; $i++ ) {
         $tret .= ( $i > 0 ? ' | ' : '' ) . '
         <a ' . $reports_link[$i] . '</a>';
       }
@@ -256,7 +256,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       array_unshift ( $grouplist, $public );
     }
     $groups = '';
-    for ( $i = 0; $grouplist[$i]; $i++ ) {
+    for ( $i = 0, $cnt = count ( $grouplist ); $i < $cnt; $i++ ) {
       $l = $grouplist[$i]['cal_login'];
       $f = $grouplist[$i]['cal_fullname'];
       // don't display current $user in group list

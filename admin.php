@@ -183,7 +183,7 @@ if ( ! $error ) {
     $lang_list .= $option . $v
      . ( $v == $s['LANGUAGE'] ? '" selected>' : '">' ) . $k . '</option>';
   }
-  for ( $i = 0; $themes[0][$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $themes[0] ); $i < $cnt; $i++ ) {
     $theme_list .= $option . $themes[1][$i] . '">' . $themes[0][$i] . '</option>';
   }
   for ( $i = 0; $i < 7; $i++ ) {

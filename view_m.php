@@ -66,9 +66,9 @@ if ( ! empty ( $error ) ) {
   exit;
 }
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
-
+$viewusercnt = count ( $viewusers );
 $e_save = $re_save = array();
-for ( $i = 0; $viewusers[$i]; $i++ ) {
+for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
   $re_save[$i] = $repeated_events;
@@ -77,7 +77,7 @@ for ( $i = 0; $viewusers[$i]; $i++ ) {
   $e_save[$i] = $events;
 }
 
-for ( $j = 0; $viewusers[$j]; $j += $USERS_PER_TABLE ) {
+for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   // Since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
 
@@ -100,7 +100,7 @@ for ( $j = 0; $viewusers[$j]; $j += $USERS_PER_TABLE ) {
   // $j points to start of this table/row.
   // $k is counter starting at 0.
   // $i starts at table start and goes until end of this table/row.
-  for ( $i = $j, $k = 0; $viewusers[$i] && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+  for ( $i = $j, $k = 0; $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
     echo '
@@ -125,7 +125,7 @@ for ( $j = 0; $viewusers[$j]; $j += $USERS_PER_TABLE ) {
     echo '
         <tr>
           <th' . $class . '>' . $weekday . '&nbsp;' . date( 'd', $date ) . '</th>';
-    for ( $i = $j, $k = 0; $viewusers[$i] && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+    for ( $i = $j, $k = 0; $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
       $user = $viewusers[$i];

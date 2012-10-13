@@ -165,7 +165,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       if ( empty ( $users[0] ) )
         $sql_params[0] = $users[0] = $login;
 
-      for ( $j = 0; $users[$j]; $j++ ) {
+      for ( $j = 0, $cnt = count ( $users ); $j < $cnt; $j++ ) {
         if ( $j > 0 ) $sql .= ', ?';
         $sql_params[] = $users[$j];
       }

@@ -581,7 +581,7 @@ for ( $i = $startDate; date ( 'Ymd', $i ) <= $endDateYmd &&
     //print "<dt>" . date_to_str( $d, translate( '__month__ __dd__' ),
     //  true, true ) . "</dt>\n<dd>";
     echo '<dt>' . date_to_str ( $d ) . "</dt>\n<dd>";
-    for ( $j = 0; $ev[$j] && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0, $cnt = count ( $ev ); $j < $cnt && $numEvents < $maxEvents; $j++ ) {
       print_upcoming_event ( $ev[$j], $d );
       $numEvents++;
     }

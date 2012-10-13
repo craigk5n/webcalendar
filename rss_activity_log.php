@@ -164,7 +164,7 @@ function rss_activity_log ( $sys, $entries ) {
 
   $ret = '';
 
-  for ( $i = 0; $rows[$i] && $i < $entries; $i++ ) {
+  for ( $i = 0, $cnt = count ( $rows ); $i < $cnt && $i < $entries; $i++ ) {
     $row = $rows[$i];
     $num = 0;
     $l_login= $row[0];

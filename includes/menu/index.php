@@ -132,7 +132,7 @@ $showHelp = ( access_is_enabled()
 // Views
 if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER != 'N' ) && count ( $views ) > 0 ) {
   $views_link = array();
-  for ( $i = 0; $views[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
     $tmp['name'] = htmlspecialchars ( $views[$i]['cal_name'], ENT_QUOTES );
     $tmp['url'] = str_replace ( '&amp;', '&', $views[$i]['url'] )
      . ( empty ( $thisdate ) ? '' : '&date=' . $thisdate );

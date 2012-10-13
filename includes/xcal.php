@@ -79,8 +79,7 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
   $len = strlen ( $string );
   $fold = $limit;
   $res = array();
-  $row = '';
-  $enc = '';
+  $enc = $row = '';
   $lwsp = 0; // position of the last linear whitespace (where to fold)
   $res_ind = 0; // row index
   $start_encode = 0; // we start encoding only after the ': ' character is encountered
@@ -1431,7 +1430,7 @@ function import_data ( $data, $overwrite, $type ) {
       $sql_params = array();
       if ( $updateMode ) {
         $sql = 'UPDATE webcal_entry SET ';
-        for ( $f = 0; $names[$f]; $f++ ) {
+        for ( $f = 0, $cnt = count ( $names ); $f < $cnt; $f++ ) {
           $sql .= ( $f > 0 ? ', ' : '' ) . $names[$f] . ' = ?';
           $sql_params[] = $values[$f];
         }
@@ -1439,7 +1438,7 @@ function import_data ( $data, $overwrite, $type ) {
         $sql_params[] = $id;
       } else {
         $string_names = $string_values = '';
-        for ( $f = 0; $names[$f]; $f++ ) {
+        for ( $f = 0, $cnt = count ( $names ); $f < $cnt; $f++ ) {
           if ( $f > 0 ) {
             $string_names .= ', ';
             $string_values .= ', ';
@@ -1646,7 +1645,7 @@ function import_data ( $data, $overwrite, $type ) {
 
         $string_names = $string_values = '';
         $sql_params = array();
-        for ( $f = 0; $names[$f]; $f++ ) {
+        for ( $f = 0, $cnt = count ( $names ); $f < $cnt; $f++ ) {
           if ( $f > 0 ) {
             $string_names .= ', ';
             $string_values .= ', ';
@@ -1734,7 +1733,7 @@ function import_data ( $data, $overwrite, $type ) {
         $string_names = '';
         $string_values = '';
         $sql_params = array();
-        for ( $f = 0; $names[$f]; $f++ ) {
+        for ( $f = 0, $cnt = count ( $names ); $f < $cnt; $f++ ) {
           if ( $f > 0 ) {
             $string_names .= ', ';
             $string_values .= ', ';
@@ -1933,7 +1932,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $line = 0;
   $event = '';
   $lines = explode ( "\n", $data );
-  for ( $n = 0; $lines[$n] && ! $error; $n++ ) {
+  for ( $n = 0, $cnt = count ( $lines ); $n < $cnt && ! $error; $n++ ) {
     $line++;
     if ( $line > 5 && $line < 10 && $state == 'NONE' ) {
       // we are probably not reading an ics file
@@ -2695,7 +2694,7 @@ function parse_ISO8601_duration ( $duration ) {
   $ret = 0;
   $result = preg_split ( '/(P|D|T|H|M)/', $duration, -1,
     PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
-  for ( $i = 0; $result[$i]; $i++ ) {
+  for ( $i = 0, $cnt = count ( $result ); $i < $cnt; $i++ ) {
     if ( is_numeric ( $result[$i] ) && isset ( $result[$i + 1] ) ) {
       $ret += ( $result[$i] * $const[$result[$i + 1]] );
     }
