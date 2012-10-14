@@ -1,5 +1,4 @@
-<?php
-// $Id$
+<?php /* $Id$ */
 include_once 'includes/init.php';
 
 $credits = getPostValue( 'Credits' );
@@ -20,12 +19,12 @@ if( empty( $data ) ) {
 }
 
 ob_start();
-print_header( '', '<script>
+print_header ( '', '<script>
       // $data is too big for a cookie. Let's see if HTML5 works.
       if (Modernizr.localstorage) {
-        localStorage[data] = ' . $data . ';
+        localStorage[data] = "' . $data . '";
       } else {
-        var data = ' . $data . ';          
+        var data = "' . $data . '";
       }
     </script>', '', true, false, true );
 echo '    <div id="creds">' . ( empty( $credits ) ? '
