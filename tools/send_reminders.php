@@ -326,7 +326,7 @@ function send_reminder ( $id, $event_date ) {
           echo "No email for user $i.<br>\n";
       }
     }
-    for ( $i = 0, $cnt = count ( $ext_participants ); $i < ; $i++ ) {
+    for ( $i = 0, $cnt = count ( $ext_participants ); $i < $cnt; $i++ ) {
       $mailusers[] = $ext_participants_email[$i];
       $recipients[] = $ext_participants[$i];
     }
