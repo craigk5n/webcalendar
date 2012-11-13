@@ -1,4 +1,16 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ *
+ * Security:
+ *  If User Access Control is on, the user must have access to
+ *  ACCESS_ACTIVITY_LOG or be an admin user.
+ *  If User Access Control is off, the user must be an admin user.
+ */
 /**
  * Page Description:
  *  Generates RSS 2.0 output of the activity log.
@@ -12,11 +24,6 @@
  *
  * Input parameters:
  *  None
- *
- * Security:
- *  If User Access Control is on, the user must have access to
- *  ACCESS_ACTIVITY_LOG or be an admin user.
- *  If User Access Control is off, the user must be an admin user.
  *
  * Notes:
  *  Changes in functionality should be coordinated with activity_log.php
@@ -184,7 +191,7 @@ function rss_activity_log ( $sys, $entries ) {
       $l_etype      = $row[9];
       $l_description= $row[10];
       // convert lines to <br> if no HTML formatting found
-      if ( strpos ( $l_description, "</" ) == false ) {
+      if ( strpos ( $l_description, '</' ) === false ) {
         $l_description = nl2br ( $l_description );
       }
     }
