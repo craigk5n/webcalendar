@@ -7,7 +7,6 @@
  * @version $Id$
  * @package WebCalendar
  */
-
 /**
  * The WebCalendar.
  *
@@ -397,7 +396,8 @@ class WebCalendar {
     if ( empty ( $PHP_SELF ) )
       $PHP_SELF = ''; // This happens when running send_reminders.php from CL.
 
-    if ( ! strstr ( $PHP_SELF, 'login.php' ) && ! empty ( $GLOBALS['login'] ) )
+// Keep the space so 0 really is === false
+    if ( ! strpos ( ' login.php', $PHP_SELF ) && ! empty ( $GLOBALS['login'] ) )
       $GLOBALS['login'] = '';
 
     // Define an array to use to jumble up the key: $offsets
@@ -688,7 +688,7 @@ class WebCalendar {
     if ( empty ( $login_url ) )
       $login_url = 'login.php';
 
-    $login_url .= ( strstr ( $login_url, '?' ) ? '&amp;' : '?' )
+    $login_url .= ( strpos ( $login_url, '?' ) ? '&amp;' : '?' )
      . ( empty ( $login_return_path ) ? '' : 'return_path='
          . $login_return_path );
 
@@ -723,14 +723,14 @@ class WebCalendar {
     $is_nonuser = false;
 
     if ( empty ( $login ) && $use_http_auth ) {
-      if ( strstr ( $PHP_SELF, "login.php" ) ) {
+      if ( strpos ( ' login.php', $PHP_SELF ) ) {
         // Ignore since login.php will redirect to index.php.
       } else
         send_http_login();
     } else
     if ( ! empty ( $login ) ) {
       // They are already logged in ($login is set in validate.php).
-      if ( strstr ( $PHP_SELF, 'login.php' ) ) {
+      if ( strpos ( ' login.php', $PHP_SELF ) ) {
         // Ignore since login.php will redirect to index.php.
       } else
       if ( $login == '__public__' ) {
@@ -769,78 +769,79 @@ class WebCalendar {
     // Restrict them from using certain pages.
     $not_auth = false;
     if ( ! empty ( $login ) && $login == '__public__' || $is_nonuser ) {
-      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
-        strstr ( $PHP_SELF, 'admin.php' ) ||
-        strstr ( $PHP_SELF, 'admin_handler.php' ) ||
-        strstr ( $PHP_SELF, 'adminhome.php' ) ||
-        strstr ( $PHP_SELF, 'approve_entry.php' ) ||
-        strstr ( $PHP_SELF, 'category.php' ) ||
-        strstr ( $PHP_SELF, 'category_handler.php' ) ||
-        strstr ( $PHP_SELF, 'del_entry.php' ) ||
-        strstr ( $PHP_SELF, 'edit_remotes.php' ) ||
-        strstr ( $PHP_SELF, 'edit_remotes_handler.php' ) ||
-        strstr ( $PHP_SELF, 'edit_template.php' ) ||
-        strstr ( $PHP_SELF, 'edit_user.php' ) ||
-        strstr ( $PHP_SELF, 'edit_user_handler.php' ) ||
-        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'groups.php' ) ||
-        strstr ( $PHP_SELF, 'import.php' ) ||
-        strstr ( $PHP_SELF, 'import_handler.php' ) ||
-        strstr ( $PHP_SELF, 'layer_toggle.php' ) ||
-        strstr ( $PHP_SELF, 'layers.php' ) ||
-        strstr ( $PHP_SELF, 'list_unapproved.php' ) ||
-        strstr ( $PHP_SELF, 'pref.php' ) ||
-        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
-        strstr ( $PHP_SELF, 'reject_entry.php' ) ||
-        strstr ( $PHP_SELF, 'set_entry_cat.php' ) ||
-        strstr ( $PHP_SELF, 'views.php' ) ||
-        strstr ( $PHP_SELF, 'views_edit_handler.php' ) )
+// Could be shorter and faster without the linefeeds but, that's harder to read/maintain.
+// Keep the first linefeed so 0 really is === false.
+      if ( strpos ( '
+activity_log.php
+admin.php
+adminhome.php
+admin_handler.php
+approve_entry.php
+category.php
+category_handler.php
+del_entry.php
+edit_remotes.php
+edit_remotes_handler.php
+edit_template.php
+edit_user.php
+edit_user_handler.php
+groups.php
+group_edit_handler.php
+import.php
+import_handler.php
+layers.php
+layer_toggle.php
+list_unapproved.php
+pref.php
+pref_handler.php
+reject_entry.php
+set_entry_cat.php
+views.php
+views_edit_handler.php', $PHP_SELF ) )
         $not_auth = true;
     }
-
-    if ( empty ( $is_admin ) || ! $is_admin ) {
-      //if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
-      if ( strstr ( $PHP_SELF, 'admin.php' ) ||
-        strstr ( $PHP_SELF, 'admin_handler.php' ) ||
-        strstr ( $PHP_SELF, 'group_edit.php' ) ||
-        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'groups.php' ) ) {
+    if ( empty ( $is_admin ) ) {
+      if ( strpos ( '
+admin.php
+admin_handler.php
+group_edit.php
+group_edit_handler.php
+groups.php', $PHP_SELF ) ) {
         $not_auth = true;
       }
     }
 
     // Restrict access if calendar is read-only.
     if ( $readonly == 'Y' ) {
-      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
-        strstr ( $PHP_SELF, 'admin.php' ) ||
-        strstr ( $PHP_SELF, 'adminhome.php' ) ||
-        strstr ( $PHP_SELF, 'approve_entry.php' ) ||
-        strstr ( $PHP_SELF, 'category.php' ) ||
-        strstr ( $PHP_SELF, 'category_handler.php' ) ||
-        strstr ( $PHP_SELF, 'del_entry.php' ) ||
-        strstr ( $PHP_SELF, 'edit_report.php' ) ||
-        strstr ( $PHP_SELF, 'edit_report_handler.php' ) ||
-        strstr ( $PHP_SELF, 'edit_template.php' ) ||
-        strstr ( $PHP_SELF, 'edit_user.php' ) ||
-        strstr ( $PHP_SELF, 'edit_user_handler.php' ) ||
-        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
-        strstr ( $PHP_SELF, 'groups.php' ) ||
-        strstr ( $PHP_SELF, 'import.php' ) ||
-        strstr ( $PHP_SELF, 'import_handler.php' ) ||
-        strstr ( $PHP_SELF, 'import_handler.php' ) ||
-        strstr ( $PHP_SELF, 'layer_toggle.php' ) ||
-        strstr ( $PHP_SELF, 'layers.php' ) ||
-        strstr ( $PHP_SELF, 'list_unapproved.php' ) ||
-        strstr ( $PHP_SELF, 'pref.php' ) ||
-        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
-        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
-        strstr ( $PHP_SELF, 'purge.php' ) ||
-        strstr ( $PHP_SELF, 'register.php' ) ||
-        strstr ( $PHP_SELF, 'reject_entry.php' ) ||
-        strstr ( $PHP_SELF, 'set_entry_cat.php' ) ||
-        strstr ( $PHP_SELF, 'users.php' ) ||
-        strstr ( $PHP_SELF, 'views.php' ) ||
-        strstr ( $PHP_SELF, 'views_edit_handler.php' ) )
+      if ( strpos ( '
+activity_log.php
+admin.php
+adminhome.php
+approve_entry.php
+category.php
+category_handler.php
+del_entry.php
+edit_report.php
+edit_report_handler.php
+edit_template.php
+edit_user.php
+edit_user_handler.php
+groups.php
+group_edit_handler.php
+import.php
+import_handler.php
+layers.php
+layer_toggle.php
+list_unapproved.php
+pref.php
+pref_handler.php
+purge.php
+register.php
+reject_entry.php
+set_entry_cat.php
+users.php
+views.php
+views_edit_handler.php', $PHP_SELF ) )
         $not_auth = true;
     }
 

@@ -1,14 +1,14 @@
 <?php
-/**
-* All of WebCalendar's ical/vcal functions
-*
+/*
 * @author Craig Knudsen <cknudsen@cknudsen.com>
 * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
 * @license http://www.gnu.org/licenses/gpl.html GNU GPL
 * @version $Id$
 * @package WebCalendar
 */
-
+/**
+* All of WebCalendar's ical/vcal functions
+*/
 /**
  *
  * Generate Product ID string
@@ -353,7 +353,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
         // translate ( 'TH' ) translate ( 'FR' ) translate ( 'SA' )
         // translate ( 'SU' )
         if ( ! empty ( $byday ) && ! empty ( $lang_file ) &&
-           ! strstr ( $lang_file, 'English-US.txt' ) ) {
+           ! strpos ( ' ' . $lang_file, 'English-US.txt' ) ) {
           $bydayArr = explode ( ',', $byday );
           foreach ( $bydayArr as $bydayIdx ) {
             $bydayOut[] = substr ( $bydayIdx, 0, strlen ( $bydayIdx ) -2 )
@@ -1634,7 +1634,7 @@ function import_data ( $data, $overwrite, $type ) {
           $RENDTIME = ( empty( $Entry['Repeat']['Count'] )
             ? gmdate( 'His', $Entry['Repeat']['Until'] )
             : $Entry['start_time'] ); // Get end time from DTSTART
-          
+
           $names[] = 'cal_end';
           $values[] = gmdate ( 'Ymd', $Entry['Repeat']['Until'] );
           // if ( $RENDTIME != '000000' ) {
@@ -3075,7 +3075,10 @@ function get_vtimezone ( $tzid, $dtstart, $dtend='' ) {
  */
 function parse_tzid ( $tzid ) {
   // if we get a complex TZID we try to parse it
-  if ( strstr ( $tzid, 'ozilla.org' ) or strstr ( $tzid, 'softwarestudio.org' ) ) {
+// Keep the linefeed so 0 really is === false.
+  if ( strpos ( '
+ozilla.org
+softwarestudio.org', $tzid,  ) ) {
     $tzAr = explode ( '/', $tzid );
     $tzArCnt = count ( $tzAr );
     $tzid = $tzAr[3];

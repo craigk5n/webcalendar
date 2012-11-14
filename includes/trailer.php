@@ -1,4 +1,11 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$Id$
+ * @package WebCalendar
+ */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // NOTE: This file is included by the print_trailer function in "includes/init.php".
@@ -56,9 +63,10 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   if ( ! empty ( $_SERVER['SCRIPT_NAME'] ) )
     $reqURI = $_SERVER['SCRIPT_NAME'];
 
-  $todayURL = ( ! strstr ( $reqURI, 'day.php' ) && !
-    strstr ( $reqURI, 'month.php' ) && ! strstr ( $reqURI, 'week.php' )
-    ? 'day.php' : $reqURI );
+  $todayURL = ( ! strpos ( '
+day.php
+month.php
+week.php', $reqURI ) ? 'day.php' : $reqURI );
 
   if ( ! access_can_view_page ( $todayURL ) )
     $todayURL = '';
@@ -269,7 +277,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       // user cannot view any of the standard D/W/M/Y pages, that will force us
       // to use the view.
       $xurl = get_preferred_view ( '', 'user=' . $l );
-      if ( strstr ( $xurl, 'view_' ) ) {
+      if ( strpos ( ' ' . $xurl, 'view_' ) ) {
         if ( access_can_access_function ( ACCESS_MONTH ) )
           $xurl = 'month.php?user=' . $l;
         elseif ( access_can_access_function ( ACCESS_WEEK ) )

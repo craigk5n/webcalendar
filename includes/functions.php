@@ -9,6 +9,20 @@
  * @package WebCalendar
  */
 
+/**
+ * Hack to implement clone() for php4.x.
+ *
+ * @param mixed  Event object
+ *
+ * @return mixed  Clone of the original object.
+ */
+if ( version_compare ( phpversion(), '5.0' ) < 0 ) {
+  eval ( '
+    function clone ( $item ) {
+      return $item;
+    }
+    ' );
+}
 /* Functions start here. All non-function code should be above this.
  *
  * Note to developers:
@@ -606,7 +620,7 @@ EOT;
           $slot = '0' . $slot; // Add leading zeros.
 
         $slot = $slot . ''; // Convert to a string.
-        if ( empty ( $master['_all_'][$slot] ) 
+        if ( empty ( $master['_all_'][$slot] )
             || ( $master['_all_'][$slot]['stat'] != 'A' ) )
           $master['_all_'][$slot]['stat'] = $E->getStatus();
 
@@ -1156,9 +1170,9 @@ function display_month( $thismonth, $thisyear, $demo = false,
         }
         $class = trim ( $class );
         $class .= ( ! empty( $ret_events )
-            && strstr( $ret_events, 'class="entry"' )
+            && strpos ( ' ' . $ret_events, 'class="entry"' )
 // If we decide we don't like it, just remove the next 1 line.
-            || strstr( $ret_events, 'class="layerentry"' )
+            || strpos ( ' ' . $ret_events, 'class="layerentry"' )
           ? ' hasevents' : '' );
 
         $ret .= ( strlen( $class ) ? ' class="' . $class . '">' : '>' )
@@ -2497,7 +2511,7 @@ function get_entries ( $date, $get_unapproved = true ) {
     if( ! $get_unapproved && $i->getStatus() == 'W' )
       continue;
 
-    if( $i->isAllDay() || $i->isUntimed() ) 
+    if( $i->isAllDay() || $i->isUntimed() )
       if( $i->getDate() == $date || $event_date == $date )
         $ret[] = $i;
   }
@@ -2963,9 +2977,9 @@ function get_preferred_view ( $indate = '', $args = '' ) {
 
   $xdate = ( empty ( $indate ) ? $thisdate : $indate );
 
-  $url .= ( empty ( $xdate ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
+  $url .= ( empty ( $xdate ) ? '' : ( strpos ( $url, '?' ) ? '&amp;' : '?' )
      . 'date=' . $xdate );
-  $url .= ( empty ( $args ) ? '' : ( strstr ( $url, '?' ) ? '&amp;' : '?' )
+  $url .= ( empty ( $args ) ? '' : ( strpos ( $url, '?' ) ? '&amp;' : '?' )
      . $args );
 
   return $url;
@@ -3211,22 +3225,6 @@ function getOverLap ( $item, $i, $parent = true ) {
   if ( $recurse == 1 )
    getOverLap ( $result[$i -1], $i, false );
 }
-
-/**
- * Hack to implement clone() for php4.x.
- *
- * @param mixed  Event object
- *
- * @return mixed  Clone of the original object.
- */
-if( version_compare( phpversion(), '5.0' ) < 0 ) {
-  eval ( '
-    function clone ($item) {
-      return $item;
-    }
-    ' );
-}
-
 /**
  * Get the reminder data for a given entry id.
  *
@@ -3487,10 +3485,11 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $class = ( $login != $getLogin && strlen ( $getLogin )
     ? 'layer' : ( $event->getStatus() == 'W' ? 'unapproved' : '' ) ) . 'entry';
   // If we are looking at a view, then always use "entry".
-  if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
-      strstr ( $PHP_SELF, 'view_t.php' ) ||
-      strstr ( $PHP_SELF, 'view_v.php' ) ||
-      strstr ( $PHP_SELF, 'view_w.php' ) )
+  if ( strpos ( '
+view_m.php
+view_t.php
+view_v.php
+view_w.php', $PHP_SELF ) )
     $class = 'entry';
 
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
@@ -3638,11 +3637,12 @@ function html_for_event_week_at_a_glance ( $event, $date,
   $class = ( $login != $getLoginStr && strlen ( $getLoginStr )
     ? 'layer' : ( $event->getStatus() == 'W' ? 'unapproved' : '' ) ) . 'entry';
   // If we are looking at a view, then always use "entry".
-  if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
-      strstr ( $PHP_SELF, 'view_r.php' ) ||
-      strstr ( $PHP_SELF, 'view_t.php' ) ||
-      strstr ( $PHP_SELF, 'view_v.php' ) ||
-      strstr ( $PHP_SELF, 'view_w.php' ) )
+  if ( strpos ( '
+view_m.php
+view_r.php
+view_t.php
+view_v.php
+view_w.php', $PHP_SELF ) )
     $class = 'entry';
 
   if ( ! empty ( $override_class ) )
@@ -3881,7 +3881,7 @@ function load_global_settings() {
 
     // Hack to fix up IIS.
     if ( isset ( $_SERVER['SERVER_SOFTWARE'] ) &&
-        strstr ( $_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS' ) &&
+        strpos ( ' ' . $_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS' ) &&
         isset ( $_SERVER['SCRIPT_NAME'] ) )
       $REQUEST_URI = $_SERVER['SCRIPT_NAME'];
   }
@@ -4408,7 +4408,7 @@ function print_checkbox( $vals, $id = '' ) {
     $variable = 'pref_' . $vals[0];
   }
 
-  $hidden = ( strpos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
+  $hidden = ( strpos ( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
     <input type="hidden" name="' . $variable . '" value="N">' );
 
 
@@ -4713,10 +4713,11 @@ function print_entry ( $event, $date ) {
     ? 'layer' : ( $event->getStatus() == 'W' ? 'unapproved' : '' ) ) . 'entry';
 
   // If we are looking at a view, then always use "entry".
-  if ( strstr ( $PHP_SELF, 'view_m.php' ) ||
-      strstr ( $PHP_SELF, 'view_t.php' ) ||
-      strstr ( $PHP_SELF, 'view_v.php' ) ||
-      strstr ( $PHP_SELF, 'view_w.php' ) )
+  if ( strpos ( '
+view_m.php
+view_t.php
+view_v.php
+view_w.php', $PHP_SELF ) )
     $class = 'entry';
 
   if( $event->getPriority() < 4 )
@@ -5382,11 +5383,11 @@ function remember_this_view ( $view = false ) {
     $REQUEST_URI = $_SERVER['REQUEST_URI'];
 
   // If called from init, only process script named "view_x.php.
-  if ( $view == true && ! strstr ( $REQUEST_URI, 'view_' ) )
+  if ( $view == true && ! strpos ( ' ' . $REQUEST_URI, 'view_' ) )
     return;
 
   // Do not use anything with "friendly" in the URI.
-  if ( strstr ( $REQUEST_URI, 'friendly=' ) )
+  if ( strpos ( ' ' . $REQUEST_URI, 'friendly=' ) )
     return;
 
   setcookie( 'webcalendar_last_view', $REQUEST_URI );
@@ -6079,7 +6080,7 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
           str_replace ( '&', '&amp;', $description ) ) );
       // If there is no HTML found, then go ahead and replace
       // the line breaks ("\n") with the HTML break ("<br>").
-      $ret .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
+      $ret .= ( strpos ( ' ' . $str, '<' ) && strpos ( $str, '>' )
         ? $str : nl2br ( $str ) );
     } else
       // HTML not allowed in description, escape everything.

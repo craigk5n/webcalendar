@@ -1,5 +1,12 @@
 #!/usr/local/bin/php -q
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ */
 /**
  * Page Description:
  * This is a command-line script that will send out any email
@@ -52,8 +59,8 @@ define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
                  // relative to current working directory.
 define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
 define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
-$old_path = ini_get ( 'include_path' );
-$delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
+$old_path= ini_get ( 'include_path' );
+$delim   = ( strpos ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
 foreach( array(

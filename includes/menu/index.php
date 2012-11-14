@@ -1,4 +1,11 @@
-<?php /* $Id$ */
+<?php
+/*
+* @author Craig Knudsen <cknudsen@cknudsen.com>
+* @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+* @license http://www.gnu.org/licenses/gpl.html GNU GPL
+* @version $Id$
+* @package WebCalendar
+*/
 /**
  * This menu was created using some fantastic free tools out on the internet:
  *  - Most icons by everaldo at http://en.crystalxp.net/ (with his permission )
@@ -223,7 +230,7 @@ view any of the standard D/M/W/Y pages, that will force us to use the view.
 */
     $xurl = get_preferred_view ( '', 'user=' . $l );
 
-    if ( strstr ( $xurl, 'view_' ) ) {
+    if ( strpos ( ' ' . $xurl, 'view_' ) ) {
       if ( access_can_access_function ( ACCESS_MONTH, $user ) )
         $xurl = 'month.php?user=' . $l;
       elseif ( access_can_access_function ( ACCESS_WEEK, $user ) )

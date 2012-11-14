@@ -1,4 +1,11 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ */
 /**
  * Page Description:
  * Presents page to view an event with links to edit, delete
@@ -405,7 +412,7 @@ if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
   $str = str_replace ( '&amp;amp;', '&amp;', $str );
   // If there is no HTML found, then go ahead and replace
   // the line breaks ("\n") with the HTML break.
-  echo ( strstr ( $str, '<' ) && strstr ( $str, '>' )
+  echo ( strpos ( ' ' . $str, '<' ) && strpos ( $str, '>' )
     ? $str // found some html...
     : nl2br ( activate_urls ( $str ) ) );
 } else

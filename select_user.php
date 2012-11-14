@@ -1,4 +1,11 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ */
 include_once 'includes/init.php';
 print_header();
 echo '
@@ -19,7 +26,7 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
       : array_merge ( $userlist, $nonusers ) );
   }
 
-  if ( strstr ( $STARTVIEW, 'view' ) )
+  if ( strpos ( ' ' . $STARTVIEW, 'view' ) )
     $url = 'month.php';
   else {
     $url = $STARTVIEW;
