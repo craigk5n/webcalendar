@@ -1,4 +1,11 @@
 <?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ */
 /**
  * Language translation functions.
  *
@@ -11,14 +18,7 @@
  *
  * Although there is a PHP gettext() function, I prefer to use this home-grown
  * translate function since it is simpler to work with.
- *
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
- * @package WebCalendar
  */
-
 /**
  * Performs html_entity_decode style conversion for php < 4.3
  * Borrowed from http://us2.php.net/manual/en/function.html-entity-decode.php
@@ -264,9 +264,8 @@ function load_translation_text() {
 
     $can_save = ( is_writable ( $cache_tran_dir ) );
   }
-
-  $new_install = ( ! strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
-  $translations = array();
+  $new_install = ( ! strpos ( ' ' . $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
+  $translations= array();
 
   // First set default $translations[]
   // by reading the base English-US.txt file or it's cache.

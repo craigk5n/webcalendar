@@ -1,4 +1,19 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ *
+ * Security:
+ * Same as in edit_report.php...
+ * If system setting $REPORTS_ENABLED is set to anything other than 'Y',
+ * then don't allow access to this page.
+ * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of participants.
+ * Can only delete/edit an event if you are the creator of the event
+ * or you are an admin user.
+ */
 /**
  * Page Description:
  * This page will handle the form submission from edit_report.php
@@ -22,14 +37,6 @@
  * page_template
  * day_template
  * event_template
- *
- * Security:
- * Same as in edit_report.php...
- * If system setting $REPORTS_ENABLED is set to anything other than 'Y',
- * then don't allow access to this page.
- * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of participants.
- * Can only delete/edit an event if you are the creator of the event
- * or you are an admin user.
  */
 include_once 'includes/init.php';
 require_valide_referring_url();
@@ -88,17 +95,17 @@ if ( empty ( $error ) ) {
   $errStr = '
     <p>' . translate ( 'Error' ) . ' [';
   $noVarXXX = ']: ' . translate ( 'Variable XXX not found.' ) . '</p>';
-  if ( ! strstr ( $page_template, '${days}' ) )
+  if ( ! strpos ( ' ' . $page_template, '${days}' ) )
     $error .= $errStr . translate ( 'Page template' )
      . str_replace ( 'XXX', '${days}', $noVarXXX );
 
   // Day template must include ${events}.
-  if ( ! strstr ( $day_template, '${events}' ) )
+  if ( ! strpos ( ' ' . $day_template, '${events}' ) )
     $error .= $errStr . translate ( 'Day template' )
      . str_replace ( 'XXX', '${events}', $noVarXXX );
 
   // Event template must include ${name}.
-  if ( ! strstr ( $event_template, '${name}' ) )
+  if ( ! strpos ( ' ' . $event_template, '${name}' ) )
     $error .= $errStr . translate ( 'Event template' )
      . str_replace ( 'XXX', '${name}', $noVarXXX );
 }

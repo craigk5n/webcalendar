@@ -1,4 +1,23 @@
 <?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ * @subpackage Reports
+ *
+ * Security:
+ * If system setting $REPORTS_ENABLED is set to anything other than 'Y',
+ * then don't allow access to this page.
+ * If webcal_report.cal_is_global is set to:
+ *   'Y', any user can view the report.
+ *   'N', only the creator (set in webcal_report.cal_login) can view the report.
+ * If webcal_report.cal_allow_nav is:
+ *   'Y', then present Next and Previous links.
+ *   'N', then no Next / Previous links and the offset parameter will be ignored.
+ * Public user cannot edit/list reports.
+ */
 /**
  * Lists a user's reports or displays a specific report.
  *
@@ -12,27 +31,7 @@
  * - <var>user</var> (optional) - specifies which user's calendar to use for
  *   the report. This will be ignored if the chosen report is tied to a
  *   specific user.
- *
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
- * @package WebCalendar
- * @subpackage Reports
  */
-
-/* Security:
- * If system setting $REPORTS_ENABLED is set to anything other than 'Y',
- * then don't allow access to this page.
- * If webcal_report.cal_is_global is set to:
- *   'Y', any user can view the report.
- *   'N', only the creator (set in webcal_report.cal_login) can view the report.
- * If webcal_report.cal_allow_nav is:
- *   'Y', then present Next and Previous links.
- *   'N', then no Next / Previous links and the offset parameter will be ignored.
- * Public user cannot edit/list reports.
- */
-
 include_once 'includes/init.php';
 
 /**
@@ -124,7 +123,7 @@ function event_to_text ( $event, $date ) {
       //fix any broken special characters
       $str = preg_replace( "/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str );
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
-      if ( strstr ( $description_str, '<' ) && strstr ( $description_str, '>' ) ) {
+      if ( strpos ( ' ' . $description_str, '<' ) && strpos ( $description_str, '>' ) ) {
         // Found some HTML.
       } else
         // No HTML found. Add line breaks.

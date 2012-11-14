@@ -1,4 +1,11 @@
 <?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ */
 /**
  * Does various initialization tasks and includes all needed files.
  *
@@ -38,12 +45,6 @@
  *
  * Also, for month.php, day.php, week.php, week_details.php:
  *   - {@link send_no_cache_header()};
- *
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
- * @package WebCalendar
  */
 
  if( empty( $_SERVER['PHP_SELF'] )
@@ -141,7 +142,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     <script src="js_cacher.php?inc=js/translate.js.php"></script>';
 
   // Remember this view if the file is a view_x.php script.
-  if( ! strstr( $REQUEST_URI, 'view_entry' ) )
+  if ( ! strpos ( ' ' . $REQUEST_URI, 'view_entry' ) )
     remember_this_view( true );
 
   $appStr = generate_application_name( true );
