@@ -1,4 +1,16 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ *
+ * Security:
+ * Events will only be deleted if they were created by the selected
+ * user. Events where the user was a participant (but not did not
+ * create) will remain unchanged.
+ /*
 /**
  * Page Description:
  * Purge events page and handler.
@@ -6,11 +18,6 @@
  * as deleted (webcal_entry_user.cal_status = 'D'). This page
  * will actually clean out the database rather than just mark an
  * event as deleted.
- *
- * Security:
- * Events will only be deleted if they were created by the selected
- * user. Events where the user was a participant (but not did not
- * create) will remain unchanged.
  */
 include_once 'includes/init.php';
 require_valide_referring_url();
@@ -118,7 +125,7 @@ if ( $do_purge ) {
   foreach ( $userlist as $i ) {
     echo $option . $i['cal_login']
       . ( $login == $i['cal_login'] ? '" selected>' : '">' )
-      . $i['cal_fullname'] . "</option>\n";
+      . $i['cal_fullname'] . '</option>';
   }
 echo $option . 'ALL">' .  $allStr ?></option>
   </select>
