@@ -1,4 +1,11 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ /*
 include_once 'includes/init.php';
 require_valide_referring_url();
 
@@ -283,12 +290,12 @@ foreach ( array(
     288 => '5',
     1440=> '1',
   ) as $k => $v ) {
-  $entry_slots .= $ption . $k
+  $entry_slots .= $option . $k
    . ( $prefarray['ENTRY_SLOTS'] == $k ? '" selected>' : '">' )
    . $v . '&nbsp;' . ( $v != '1'
      ? $minutesStr : ( $k = 24  ? $hourStr : translate( 'minute' ) ) ) . '</option>';
   if ( $k < 288 )
-    $time_slots .= $ption . $k
+    $time_slots .= $option . $k
      . ( $prefarray['TIME_SLOTS'] == $k ? '" selected>' : '">' )
      . $v . '&nbsp;' . ( $v != '1' ? $minutesStr : $hourStr ) . '</option>';
 }
