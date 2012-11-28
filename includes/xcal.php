@@ -1769,7 +1769,7 @@ function import_data ( $data, $overwrite, $type ) {
         $Entry['Summary'] = str_replace ( "''", "'", $Entry['Summary'] );
         $Entry['Summary'] = str_replace ( "'", "\\'", $Entry['Summary'] );
         echo htmlspecialchars ( $Entry['Summary'] ) . ' (' . $dd
-         . ( empty ( $time ) ? '' : '&nbsp; ' . $time . ")<br>\n"
+         . ( empty ( $time ) ? '' : '&nbsp; ' . $time ) . ")<br>\n"
          . translate ( 'conflicts with existing entries' )
          . "<ul>\n" . $overlap . "</ul>\n";
       } else {
