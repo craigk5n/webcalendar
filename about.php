@@ -1,4 +1,11 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ */
 include_once 'includes/init.php';
 
 $credits = getPostValue( 'Credits' );
@@ -20,7 +27,7 @@ if( empty( $data ) ) {
 
 ob_start();
 print_header ( '', '<script>
-      // $data is too big for a cookie. Let's see if HTML5 works.
+      // $data is too big for a cookie. Let\'s see if HTML5 works.
       if (Modernizr.localstorage) {
         localStorage[data] = "' . $data . '";
       } else {
