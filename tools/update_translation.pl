@@ -1,5 +1,9 @@
 #!/usr/bin/perl
-# $Id$
+# @author Craig Knudsen <cknudsen@cknudsen.com>
+# @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+# @license http://www.gnu.org/licenses/gpl.html GNU GPL
+# @version $Id$
+# @package WebCalendar
 #
 # This tool can update one, several or all translation file(s) by doing the following:
 # - Phrases are organized by the page on which they first appear.
@@ -245,12 +249,11 @@ PROGRAM_URL: http://www.k5n.us/webcalendar.php' if ( $i =~ /english-us/i );
     print OUT '
 
 # A lone equal sign "=" to the right of the FIRST colon ": " indicates that
-# the "translation" is identical to the ';
-
-    print OUT 'phrase on the left.
-' if ( $i =~ /english-us/i );
-    print OUT 'English text.
-' if ( $i !~ /english-us/i );
+# the "translation" is identical to the '
+      . ( $i =~ /english-us/i
+        ? 'phrase on the left.'
+        : 'English text.' ) . '
+';
   }
 
   print OUT '
@@ -267,10 +270,10 @@ charset: ' . $trans{'charset'};
 ' if ( $i !~ /english-us/i );
 
   print OUT '
-direction: ' . $trans{'direction'};
+direction: ' . $trans{'direction'} . '
+';
 
   print OUT '
-
 # In the date formats, change only the format of the terms.
 # For example in German.txt the proper "translation" would be
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
@@ -290,7 +293,7 @@ __month__ __yyyy__: ' . $trans{'__month__ __yyyy__'} . '
 
   foreach $j ( sort @files ) {
     $pageheader = "\n" . ( '#' x 40 ) . "\n# Page: $j\n#\n";
-    foreach $text ( keys %foundin ) {
+    foreach $text ( sort keys %foundin ) {
       next if ( $j ne $foundin{$text} );
       if ( exists $trans{$text} ) {
         print OUT $pageheader . $text . ': ' . ( $use_equals
