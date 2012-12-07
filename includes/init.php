@@ -388,11 +388,9 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 '
 /*
  // Adds an easy link to validate the pages.
- // (But, needs to be updated for HTML5.)
   . ( $DEMO_MODE == 'Y' ? '
-    <p><a href="http://validator.w3.org/check?uri=referer">'
-     . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
-     . 'class="valid"></a></p>' : '' )
+    <p><a href="http://validator.w3.org/check?uri=referer">
+      <img src="images/HTML5_Logo.png" alt="Valid HTML5!"></a></p>' : '' )
 */
 /* Close HTML page properly. */ . '
   </body>
