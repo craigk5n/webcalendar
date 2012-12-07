@@ -24,7 +24,7 @@ function sendCats(cats) {
       break;
     }
   }
-  for (var i = 1; dfe[eventid][i; i++) {
+  for (var i = 1; dfe[eventid][i]; i++) {
     dfe[eventid].options[i].selected = 1;
     parentid += ',' + parseInt(dfe[eventid].options[i].value);
     parenttext += ', ' + dfe[eventid].options[i].text;
