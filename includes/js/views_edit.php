@@ -1,5 +1,5 @@
 <?php /* $Id$  */ ?>
-function selectUsers () {
+function selectUsers() {
   var listid = 0;
   for ( i = 0; i < document.editviewform.elements.length; i++ ) {
     if ( document.editviewform.elements[i].name == "users[]" )
@@ -15,7 +15,7 @@ function selectUsers () {
       url += document.editviewform.elements[listid].options[i].value;
     }
   }
-  //alert ( "URL: " + url );
+  //alert("URL: " + url );
   // open window
   window.open ( url, "UserSelection",
     "width=500,height=500,resizable=yes,scrollbars=yes" );
