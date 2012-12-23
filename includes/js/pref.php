@@ -20,16 +20,16 @@ function valid_form ( form ) {
   if ( err.length > 0 )
     colorErr = true;
   if ( ! validWorkHours ( form ) ) {
-    err += xlate['invalidHours'] // translate ( 'Invalid work hours.' )
+    err += xlate['invalidHours'] // translate ( 'Invalid work hours' )
       + form.pref_WORK_DAY_START_HOUR.value + ' > '
       + form.pref_WORK_DAY_END_HOUR.value + "\n";
   }
   if ( colorErr ) {
-    alert ( xlate['errorXXX'].replace(/XXX/, err) // translate ( 'Error XXX' )
-     + "\n\n" + xlate['formatColorRGB']; // translate ( 'Color format should be RGB' )
+    alert(xlate['errorXXX'].replace(/XXX/, err) + // translate ( 'Error XXX' )
+     "\n\n" + xlate['formatColorRGB']); // translate ( 'Color format should be RGB' )
     return false;
   } else if ( err.length > 0 ) {
-    alert ( xlate['errorXXX'].replace(/XXX/, err);
+    alert(xlate['errorXXX'].replace(/XXX/, err));
     return false;
   }
   return true;
