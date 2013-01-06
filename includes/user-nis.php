@@ -108,7 +108,7 @@ function user_valid_crypt ( $login, $crypt_password ) {
     }
     dbi_free_result ( $res );
   } else {
-    $error = 'Database error: ' . dbi_error ();
+    $error = 'Database error: ' . dbi_error();
   }
 
   return $ret;
@@ -214,13 +214,11 @@ function user_add_user ( $user, $password, $firstname,
   if ( $admin != 'Y' )
     $admin = 'N';
   $sql = 'INSERT INTO webcal_user
-    ( cal_login, cal_lastname, cal_firstname,
-    cal_is_admin, cal_passwd, cal_email )
+    ( cal_login, cal_lastname, cal_firstname, cal_is_admin, cal_passwd, cal_email )
     VALUES ( ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $user, $ulastname,
-
     $ufirstname, $admin, $upassword, $uemail ) ) ) {
-    $error = translate ( 'Database error', true) . ': ' . dbi_error ();
+    $error = str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX', true ) );
     return false;
   }
   return true;
