@@ -216,7 +216,7 @@ if ( $action == 'get' ) {
   $comments = array();
   $attachments = array();
   if ( ! $res ) {
-    $error = translate("Database error") . ': ' . dbi_error();
+    $error = str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) );
   } else {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $parts[] = array ( 'login' => $row[0],
@@ -288,23 +288,22 @@ if ( $action == 'get' ) {
   dbi_free_result ( $res );
   $mod_date = gmdate ( 'Ymd' );
   $mod_time = gmdate ( 'His' );
-  $sql = 'INSERT INTO webcal_entry ( cal_id, cal_create_by, cal_date, ' .
-    'cal_time, cal_mod_date, cal_mod_time, ' .
-    'cal_duration, cal_priority, cal_access, cal_type, cal_name, ' .
-    'cal_description ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+  $sql = 'INSERT INTO webcal_entry ( cal_id, cal_create_by, cal_date,
+    cal_time, cal_mod_date, cal_mod_time,
+    cal_duration, cal_priority, cal_access, cal_type, cal_name,
+    cal_description ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
   $values = array ( $id, $login, $date, -1, $mod_date, $mod_time,
     0, 5, 'P', 'E', $name, $description );
   if ( ! dbi_execute ( $sql, $values ) ) {
-    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
     exit;
   }
   if ( $cat_id > 0 ) {
-    $sql =
-      'INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) ' .
-      'VALUES ( ?, ?, ? )';
+    $sql = 'INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner )
+        VALUES ( ?, ?, ? )';
     $values = array ( $id, $cat_id, $user );
     if ( ! dbi_execute ( $sql, $values ) ) {
-      ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+      ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
       exit;
     }
   }
@@ -318,7 +317,7 @@ if ( $action == 'get' ) {
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
         cal_status ) VALUES ( ?, ?, ? )',
           array ( $id, $user, $status ) ) ) {
-      ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+      ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
     }
     activity_log ( $id, $login, $user, LOG_CREATE, '' );
     // TODO: send email notification!
@@ -355,7 +354,7 @@ if ( $action == 'get' ) {
   $values = array ( $id, $login, $startdate, -1, $duedate, -1,
     $mod_date, $mod_time, 0, 5, 'P', 'T', $name, $description );
   if ( ! dbi_execute ( $sql, $values ) ) {
-    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
     exit;
   }
   if ( $cat_id > 0 ) {
@@ -364,14 +363,14 @@ if ( $action == 'get' ) {
       'VALUES ( ?, ?, ? )';
     $values = array ( $id, $cat_id, $user );
     if ( ! dbi_execute ( $sql, $values ) ) {
-      ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+      ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
       exit;
     }
   }
   if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status ) VALUES ( ?, ?, ? )',
         array ( $id, $user, 'A' ) ) ) {
-    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
   }
   ajax_send_success();
   activity_log ( $id, $login, $user, LOG_CREATE_T, '' );
@@ -438,7 +437,7 @@ function load_category_ids ( $ids )
     }
     dbi_free_result ( $res );
   } else {
-    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
+    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
     exit;
   }
   if ( $debug ) {

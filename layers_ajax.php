@@ -118,10 +118,10 @@ exit;
 function delete_layer ( $user, $id ) {
   global $error, $layers;
 
-  if ( ! dbi_execute ( 'DELETE FROM webcal_user_layers ' .
-   ' WHERE cal_layerid = ? AND cal_login = ?',
+  if ( ! dbi_execute ( 'DELETE FROM webcal_user_layers
+    WHERE cal_layerid = ? AND cal_login = ?',
    array ( $id, $user ) ) ) {
-    $error = translate ( "Database error" ) . ": " . dbi_error();
+    $error = str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) );
   }
 }
 
