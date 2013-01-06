@@ -95,14 +95,14 @@ if ( ! empty ( $delete ) ) {
   }
   // Add entry in UAC access table for new admin and remove for old admin.
   // First delete any record for this user/nuc combo.
-  dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
-    AND cal_other_user = ?', array ( $nadmin, $nid ) );
+  dbi_execute ( 'DELETE FROM webcal_access_user
+    WHERE cal_login = ? AND cal_other_user = ?', array ( $nadmin, $nid ) );
   if ( ! dbi_execute ( 'INSERT INTO webcal_access_user ( cal_login,
     cal_other_user, cal_can_view, cal_can_edit, cal_can_approve, cal_can_invite,
     cal_can_email, cal_see_time_only ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
       array ( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) )
-    die_miserable_death ( translate ( 'Database error' ) . ': '
-       . dbi_error() );
+    die_miserable_death ( str_replace ( 'XXX', dbi_error(),
+        translate ( 'DB error XXX' ) ) );
 }
 
 if ( ! empty ( $reload ) ) {
