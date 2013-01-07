@@ -1,6 +1,7 @@
 $Id$
 
-Version 1.2.6 (?? ??? 2012)
+Version 1.2.6 (?? ??? 2013)
+ - Fixed bug [ 3577712 ] - typo in upcoming.php
  - Bug fix: ajax.php error on undefined function require_valide_referring_url
  - Bug fix: don't require HTTP_REFERER in HTTP header since some version of
    MSIE don't send it, causing some form submissions to fail.
