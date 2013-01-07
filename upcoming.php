@@ -209,10 +209,10 @@ function print_upcoming_event ( $e, $date ) {
 
   //added for hCalendar
   if ( $hcalendar_output ) {
-    echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTImeTS () )
-      .'">' . $e->getDateTIme () . "</abbr>\n";
-    echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTImeTS () )
-      . '">' . $e->getEndDateTImeTS () . "</abbr>\n";
+    echo '<abbr class="dtstart" title="'. export_ts_utc_date ($e->getDateTimeTS () )
+      .'">' . $e->getDateTime () . "</abbr>\n";
+    echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTimeTS () )
+      . '">' . $e->getEndDateTimeTS () . "</abbr>\n";
     echo '<span class="description">' . $e->getDescription () . "</span>\n";
     if ( strlen ( $e->getLocation () ) > 0 )
     echo '<span class="location">' . $e->getLocation () . "</span>\n";
