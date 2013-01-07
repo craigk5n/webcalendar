@@ -4,7 +4,8 @@ NOTE: This is the 2.0.0 development branch.
 Put code changes right below the 2.0.0+CVS label below.
 
 Version 2.0.0+CVS (?? ??? 2011)
- - 07-Jan-2013 cek Fixed bug [ 3577712 ] : typo in upcoming.php
+ - 07-Jan-2013 cek Fixed bug [ 3560830 ] invalid calls to print_not_auth
+ - 07-Jan-2013 cek Fixed bug [ 3577712 ] typo in upcoming.php
  - 21-Nov-11 bb Cut dupe code and rearange some to try to get "translate.js.php"
    to work from "install/index.php".
    Fix typos.
