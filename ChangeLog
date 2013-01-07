@@ -4,7 +4,8 @@ NOTE: This is the 1.3.0 development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2012)
- - 07-Jan-2013 cek Fixed bug [ 3577712 ] : typo in upcoming.php
+ - 07-Jan-2013 cek Fixed bug [ 3560830 ] wrong params for print_not_auth
+ - 07-Jan-2013 cek Fixed bug [ 3577712 ] typo in upcoming.php
  - 11-Mar-2012 cek Patch [ 3501281 ] Updated Greek translation
  - 28-Feb-2012 cek Fixed bug [ 3467051 ] Don't allow empty category names.
  - 28-Feb-2012 cek Fixed bug [ 3418570 ] Security vulnerability in saving
