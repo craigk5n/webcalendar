@@ -98,7 +98,7 @@ user_load_variables ( $login, '' );
 // Make sure the have privileges to access the activity log
 if ( ! $is_admin || ( access_is_enabled() && !
   access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) )
-  die_miserable_death ( print_not_auth (2) );
+  die_miserable_death ( print_not_auth () );
 
 
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );

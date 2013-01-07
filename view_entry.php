@@ -336,7 +336,7 @@ if ( ( empty ( $event_status ) && ! $is_admin ) ||
 
 // We can bypass $can_view if coming from RSS
 if ( ( ! $can_view && empty ( $rss_view ) ) ) {
-  echo print_not_auth ( 8, true ) . print_trailer();
+  echo print_not_auth ( true ) . print_trailer();
   exit;
 }
 // save date so the trailer links are for the same time period

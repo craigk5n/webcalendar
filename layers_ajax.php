@@ -81,7 +81,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   // TODO: we should do some additional checking here to make
   // sure someone isn't asking for a layer they are not authorized to view.
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-    $error = print_not_auth (7);
+    $error = print_not_auth ();
   } else {
     save_layer ( getPostValue('layeruser'),
       getPostValue('source'), getPostValue('color'),
@@ -96,7 +96,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   // TODO: we should so some additional checking here to make
   // sure someone isn't asking for a layer they are not authorized to view.
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-    $error = print_not_auth (7);
+    $error = print_not_auth ();
   } else {
     $id = getPostValue ( 'id' );
     if ( $id <= 0 ) {
