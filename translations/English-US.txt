@@ -37,7 +37,7 @@
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
 # $Id$
-# Translation last updated: 10-09-2012
+# Translation last updated: 01-08-2013
 
 PROGRAM_NAME: WebCalendar
 PROGRAM_VERSION: v1.2.5
@@ -46,6 +46,7 @@ PROGRAM_URL: http://www.k5n.us/webcalendar.php
 
 charset: iso-8859-1
 direction: ltr
+
 __mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
 __month__ __dd__: __month__ __dd__
 __month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
@@ -678,6 +679,21 @@ Monthly (by day): Monthly (by day)
 url-help: Event URL
 
 ########################################
+# Page: edit_entry_handler.php
+#
+Security violation!: Security violation!
+see XXX to view appointment: see XXX to view appointment
+see XXX to acc/rej appointment: see XXX to acc/rej appointment
+must enter anti-spam text: must enter anti-spam text
+Your suggested time of: Your suggested time of
+XXX made an appointment: XXX made an appointment
+conflicts with existing entries: conflicts with the following existing calendar entries:
+conflicts with suggested time: conflicts with suggested time
+user removed from party list: user removed from party list
+Scheduling Conflict: Scheduling Conflict
+XXX updated an appointment: XXX updated an appointment
+
+########################################
 # Page: edit_nonusers.php
 #
 Delete: Delete
@@ -714,7 +730,6 @@ Import Results: Import Results
 Create layer to view cal: Create a new layer to view this calendar.
 success importing XXX events: Events successfully imported: XXX
 error parsing import file: There was an error parsing the import file or no events were returned.
-Database error: Database error
 
 ########################################
 # Page: edit_report.php
@@ -1009,34 +1024,19 @@ Events successfully imported: Events successfully imported:
 ########################################
 # Page: includes/access.php
 #
-Edit Event_: Edit Event:
-Administrative Tools_: Administrative Tools:
-User Management_: User Management:
-Activity Log_: Activity Log:
-UAC_: User Access Control:
-Advanced Search_: Advanced Search:
-View Event_: View Event:
-Reports_: Reports:
-System Settings_: System Settings:
-Preferences_: Preferences:
-Week View_: Week View:
-Month View_: Month View:
-Subscribe/Publish_: Subscribe/Publish:
-Security Audit_: Security Audit:
-Day View_: Day View:
-Common Trailer_: Common Trailer:
-Category Management_: Category Management:
-Another Users Calendar_: Another Users Calendar:
-Views_: Views:
-Account_: Account:
-Manage Views_: Manage Views:
-Help_: Help:
-Export_: Export:
+Month View: Month View
+Category Management: Category Management
+User Management: User Management
+Week View: Week View
+Manage Views: Manage Views
+Search: Search
+Common Trailer: Common Trailer
+Day View: Day View
+Edit Event: Edit Event
 Invalid function id XXX: Invalid function id: "XXX".
-Year View_: Year View:
-Import_: Import:
-Layers_: Layers:
-Search_: Search:
+Advanced Search: Advanced Search
+Year View: Year View
+Another Users Calendar: Another User's Calendar
 
 ########################################
 # Page: includes/classes/Doc.class
@@ -1068,6 +1068,13 @@ file_open: File Error: Could not open file:
 # Page: includes/classes/WebCalendar.class
 #
 You are not authorized.: You are not authorized.
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Challenge/Response: Challenge/Response
+Enter the correct letters and numbers...: Enter the correct letters and numbers...
+Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
 
 ########################################
 # Page: includes/config.php
@@ -1337,6 +1344,11 @@ illegal chars in password: The password contains illegal characters.
 must enter login/password: You must enter a login and password.
 
 ########################################
+# Page: includes/js/pref.php
+#
+Invalid work hours: Invalid work hours
+
+########################################
 # Page: includes/js/view_entry.js
 #
 Show: Show
@@ -1358,7 +1370,6 @@ This Month: This Month
 My Views: My Views
 Add New Event: Add New Event
 Help Contents: Help Contents
-Search: Search
 Login: Login
 This Week: This Week
 Unapproved Events: Unapproved Events
@@ -1377,14 +1388,16 @@ My Profile: My Profile
 My Calendar: My Calendar
 Home: Home
 Go to: Go to:
+Reports_: Reports:
 Unapproved Entries: Unapproved Entries
 Logout: Logout
+Views_: Views:
 Back to My Calendar: Back to My Calendar
 Current User_: Current User:
 Manage calendar of: Manage calendar of:
 Add New Entry: Add New Entry
 Add New Task: Add New Task
-Another Users Calendar: Another User's Calendar
+Search_: Search:
 
 ########################################
 # Page: includes/translate.php
@@ -1501,9 +1514,7 @@ SU: SU
 TH: TH
 Event Imported: Event Imported:
 SA: SA
-conflicts with existing entries: conflicts with the following existing calendar entries:
 Inclusion Dates: Inclusion Dates
-Scheduling Conflict: Scheduling Conflict
 Exclusion Dates: Exclusion Dates
 WE: WE
 Month Days: Month Days
@@ -1656,8 +1667,8 @@ Delete layer: Delete layer
 #
 only one layer per user: You can only create one layer for each user.
 Invalid entry id.: Invalid entry id.
+Unable to update pref XXX: Unable to update preference: "XXX".
 no layers for yourself: You cannot create a layer for yourself.
-Unable to update preference: Unable to update preference
 
 ########################################
 # Page: list_unapproved.php
@@ -1807,7 +1818,6 @@ Upcoming: Upcoming
 Past: Past
 Enter % for all entries: (Enter % for all entries)
 All Dates: All Dates
-Advanced Search: Advanced Search
 Range: Range
 Include Site Extras: Include<br>Site Extras:
 

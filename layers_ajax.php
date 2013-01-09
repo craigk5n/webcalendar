@@ -59,7 +59,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   if( ! dbi_execute( 'INSERT INTO webcal_user_pref ( cal_login, cal_setting,
       cal_value ) VALUES ( ?, \'LAYERS_STATUS\', ? )',
       array( $layer_user, ( $action == 'enable' ? 'Y': 'N' ) ) ) ) {
-    ajax_send_error ( translate ( 'Unable to update preference' ) . ': ' . dbi_error() );
+    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'Unable to update pref XXX' ) ) );
   } else {
     // Success
     ajax_send_success();
