@@ -13,6 +13,53 @@
  * @package WebCalendar
  */
 
+
+/**
+  * This function examines the data for a form POST or GET to check
+  * for malicious hacks.  If one is found, we just exit since this
+  * should not happen with normal use.
+  */
+function preventHacking ( $name, $instr ) {
+  $bannedTags = array (
+    'APPLET', 'BODY', 'EMBED', 'FORM', 'HEAD',
+    'HTML', 'IFRAME', 'LINK', 'META', 'NOEMBED',
+    'NOFRAMES', 'NOSCRIPT', 'OBJECT', 'SCRIPT',
+    );
+  $failed = false;
+
+  if ( is_array ( $instr ) ) {
+    for ( $j = 0; $j < count ( $instr ); $j++ ) {
+      for ( $i = 0; $i < count ( $bannedTags ) && ! $failed; $i++ ) {
+        // First, replace any escape characters like '\x3c'
+        $teststr = preg_replace ( "#(\\\x[0-9A-F]{2})#e",
+          "chr(hexdec('\\1'))", $instr[$j] );
+        if ( preg_match ( "/<\s*$bannedTags[$i]/i", $teststr ) ) {
+          $failed = true;
+        }
+      }
+    }
+    if ( $failed ) {
+      die_miserable_death ( translate ( 'Fatal Error' ) . ': '
+         . translate ( 'Invalid data format for' ) . ' ' . $name );
+    }
+  } else {
+    // Not an array
+    // First, replace any escape characters like '\x3c'
+    $teststr = preg_replace ( "#(\\\x[0-9A-F]{2})#e",
+      "chr(hexdec('\\1'))", $instr );
+    for ( $i = 0; $i < count ( $bannedTags ) && ! $failed; $i++ ) {
+      if ( preg_match ( "/<\s*$bannedTags[$i]/i", $teststr ) ) {
+        $failed = true;
+      }
+    }
+    if ( $failed ) {
+      die_miserable_death ( translate ( 'Fatal Error' ) . ': '
+         . translate ( 'Invalid data format for' ) . ' ' . $name );
+    }
+  }
+}
+
+
 /**
  * Gets the value resulting from an HTTP POST method.
  *
@@ -36,6 +83,7 @@ function getPostValue($name, $defVal=NULL, $chkXSS=false) {
 
   $cleanXSS = $chkXSS? chkXSS($postName) : true;
 
+  preventHacking ( $name, $postName );
   return $cleanXSS ? $postName : NULL;
 }
 
@@ -61,6 +109,7 @@ function getGetValue($name) {
   $getName = null;
   if (isset($_GET) && is_array($_GET) && isset($_GET[$name]))
     $getName = ( get_magic_quotes_gpc() != 0 ? $_GET[$name] : addslashes($_GET[$name]) );
+  preventHacking ( $name, $getName );
   return $getName;
 }
 
@@ -109,6 +158,7 @@ function getValue($name, $format = '', $fatal = false) {
     // ignore value
     return '';
   }
+  preventHacking ( $name, $val );
   return $val;
 }
 

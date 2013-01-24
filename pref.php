@@ -558,7 +558,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
    echo "<option value=\"$K\"";
    if ( ! empty ( $prefarray['CATEGORY_VIEW'] ) &&
     $prefarray['CATEGORY_VIEW'] == $K ) echo $selected;
-   echo ">{$V['cat_name']}</option>\n";
+   echo ">{" . htmlentities ( $V['cat_name'] ) . "}</option>\n";
   }
  }
 ?>

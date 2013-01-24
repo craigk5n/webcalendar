@@ -153,7 +153,7 @@ if ( empty ( $error ) ) {
         $catIcon = $icon_path . 'cat-' . $K . '.png';
       $catStr = '<span style="color: '
        . ( ! empty ( $V['cat_color'] ) ? $V['cat_color'] : '#000000' )
-       . ';">' . $V['cat_name'] . '</span>';
+       . ';">' . htmlentities ( $V['cat_name'] ) . '</span>';
       echo '
       <li>' . ( $V['cat_owner'] == $login || $is_admin
         ? '<a href="category.php?id=' . $K . '">' . $catStr . '</a>' : $catStr );

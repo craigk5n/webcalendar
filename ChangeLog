@@ -4,6 +4,12 @@ NOTE: This is the 1.3.0 development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2012)
+ - 24-Jan-2013 cek Security fix: Do not show the reason for a failed login
+   (i.e. "no such user")
+   Security fix: Escape HTML characters in category name.
+   Security fix: Check all passed in fields (either via HTML form or via
+   URL parameter) for certain malicious tags (script, embed, etc.) and
+   generate fatal error if found.
  - 07-Jan-2013 cek Fixed bug [ 3560830 ] wrong params for print_not_auth
  - 07-Jan-2013 cek Fixed bug [ 3577712 ] typo in upcoming.php
  - 11-Mar-2012 cek Patch [ 3501281 ] Updated Greek translation
