@@ -226,7 +226,7 @@ function print_upcoming_event ( $e, $date ) {
     $categories = get_categories_by_id ( $e->getId(), $username );
     $category = implode ( ', ', $categories);
     if ( strlen( $category ) > 0 )
-      echo '<span class="categories">' . $category . "</span>\n";
+      echo '<span class="categories">' . htmlentities ( $category ) . "</span>\n";
     if ( strlen ( $e->getUrl() ) > 0 )
       echo '<span class="url">' . $e->getUrl() . "</span>\n";
     $rrule = export_recurrence_ical( $e->getId() );

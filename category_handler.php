@@ -23,6 +23,8 @@ function renameIcon ( $id ) {
 $is_my_event = false;
 $id = getValue ( 'id' );
 $catname = getValue ( 'catname' );
+// prohibit any html in category name (including <script>)
+$catname = strip_tags ( $catname );
 $catcolor = getValue ( 'catcolor' );
 $isglobal = getValue ( 'isglobal' );
 $delIcon = getPostValue ( 'delIcon' );

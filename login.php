@@ -34,7 +34,7 @@ $WebCalendar->initializeSecondPhase();
 load_global_settings();
 
 // Set this true to show "no such user" or "invalid password" on login failures.
-$showLoginFailureReason = true;
+$showLoginFailureReason = false;
 
 if ( ! empty ( $last_login ) )
   $login = '';

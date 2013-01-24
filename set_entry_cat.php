@@ -43,7 +43,7 @@ $catNames = '';
 $globals_found = false;
 $categories = get_categories_by_id ( $id, $login, true );
 if ( ! empty ( $categories ) ) {
-  $catNames = implode ( ', ', $categories );
+  $catNames = htmlentities ( implode ( ', ', $categories ) );
   $keys = array_keys ( $categories );
   $catList = implode ( ',', $keys );
   sort ( $keys );
