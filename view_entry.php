@@ -510,7 +510,7 @@ echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
       </tr>' : '' ) . ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ? '
       <tr>
         <td class="aligntop bold">' . translate ( 'Category' ) . ':</td>
-        <td>' . $category . '</td>
+        <td>' . htmlentities ( $category ) . '</td>
       </tr>' : '' );
 
 // Display who originally created event

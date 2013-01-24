@@ -1,5 +1,13 @@
 $Id$
 
+Version 1.2.7 (?? ??? 2013)
+ - Security fix: Do not show the reason for a failed login (i.e. "no such user")
+ - Security fix: Escape HTML characters in category name.
+ - Security fix: Check all passed in fields (either via HTML form or via
+   URL parameter) for certain malicious tags (script, embed, etc.) and
+   generate fatal error if found.
+
+
 Version 1.2.6 (07 Jan 2013)
  - Fixed bug [ 3577712 ] - typo in upcoming.php
  - Bug fix: ajax.php error on undefined function require_valide_referring_url
