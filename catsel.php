@@ -49,7 +49,9 @@ if ( ! empty ( $categories ) ) {
     // None is index -1 and needs to be ignored
     if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
         substr ( $form, 0, 4 ) == 'edit' ) ) {
-      $tmpStr = $K . '" name="' . $V['cat_name'] . '">' . $V['cat_name'];
+      $tmpStr = $K .
+        '" name="' . htmlentities ( $V['cat_name'] ) .
+        '">' . htmlentities ( $V['cat_name'] );
       echo '
             <option value="' . ( empty ( $V['cat_owner'] )
         ? "-$tmpStr" . '<sup>*</sup>' : $tmpStr ) . '</option>';
@@ -77,7 +79,7 @@ if ( strlen ( $cats ) ) {
     }
     echo '
             <option value="' . "$K\" $disabled>"
-     . $categories[abs ( $K )]['cat_name'] . $show_ast . '</option>';
+     . htmlentities ( $categories[abs ( $K )]['cat_name'] ) . $show_ast . '</option>';
   }
 }
 

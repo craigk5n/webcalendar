@@ -35,7 +35,7 @@ load_global_settings ();
 
 // Change this to true to show "no such user" or "invalid password" on
 // login failures.
-$showLoginFailureReason = true;
+$showLoginFailureReason = false;
 
 if ( ! empty ( $last_login ) ) {
   $login = '';

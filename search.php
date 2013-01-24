@@ -66,7 +66,7 @@ if ( is_array ( $categories ) && $show_advanced ) {
   foreach ( $categories as $K => $V ) {
     if ( $K > 0 )
       echo '
-              <option value="' . $K . '">' . $V['cat_name'] . '</option>';
+              <option value="' . $K . '">' . htmlentities ( $V['cat_name'] ) . '</option>';
   }
 
   echo '

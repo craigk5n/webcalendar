@@ -313,7 +313,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   while ( list ( $K, $V ) = each ( $categories ) ) {
     echo '
               <option value="' . $K . '"' . ( $report_cat_id == $K ? $selected : '' )
-     . '>' . $V['cat_name'] . '</option>';
+     . '>' . htmlentities ( $V['cat_name'] ) . '</option>';
   }
 
   echo '
