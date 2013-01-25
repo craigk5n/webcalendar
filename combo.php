@@ -361,10 +361,16 @@ var categories = [];
         ', name: "' . $categories[$catId]['cat_name'] . '"' .
         ', color: "' . $categories[$catId]['cat_color'] . '"' .
         ', global: ' . ( $categories[$catId]['cat_global'] ? '0' : '1' );
-      $catIconFile = 'icons/cat-' . $catId . '.gif';
-      if ( ! file_exists ( $catIconFile ) )
-        $catIconFile = 'icons/cat-' . $catId . '.png';
-        echo ', icon: "' . $catIconFile . '"';
+      $gifIconFile =  'icons/cat-' . $catId . '.gif';
+      $pngIconFile =  'icons/cat-' . $catId . '.png';
+      $jpgIconFile =  'icons/cat-' . $catId . '.jpg';
+      if ( file_exists ( $gifIconFile ) ) {
+        echo ', icon: "' . $gifIconFile . '"';
+      } else if ( file_exists ( $pngIconFile ) ) {
+        echo ', icon: "' . $pngIconFile . '"';
+      } else if ( file_exists ( $jpgIconFile ) ) {
+        echo ', icon: "' . $jpgIconFile . '"';
+      }
       echo " };\n";
     }
   }
