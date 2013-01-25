@@ -918,7 +918,7 @@ function month_view_nav_links ( year, month )
   var ret, i;
 
   ret = '<table class="noprint monthnavlinks" border="0">';
-  ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (year-1) +
+  ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (parseInt(year)-1) +
       ',' + month + ',1)">' +
     '<img src="images/combo-prev.png" border="0"/><br/>' + (year-1) + '</td>';
   for ( i = 1; i <= 6; i++ ) {
@@ -928,9 +928,9 @@ function month_view_nav_links ( year, month )
     ret += 'clickable" onclick="ajax_get_events(' + year +
       ',' + i + ',1)">' + shortMonths[i-1] + '</td>';
   }
-  ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (year+1) +
-      ',' + month + ',1)">' +
-    '<img src="images/combo-next.png" border="0"/><br/>' + (year+1) + '</td>';
+  ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (parseInt(year)+1) +
+      ',' + parseInt(month) + ',1)">' +
+    '<img src="images/combo-next.png" border="0"/><br/>' + (parseInt(year)+1) + '</td>';
   // Add link to today
   var today = new Date();
   var d = today.getDate();
