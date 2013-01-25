@@ -596,7 +596,7 @@ function editCats ( evt ) {
 
   function catWindowClosed () {
   }
-  Modalbox.show($('editCatsDiv'), {title: '<?php etranslate('Categories');?>', width: 350, onHide: catWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+  Modalbox.show($('editCatsDiv'), {title: '<?php etranslate('Categories');?>', width: 350, transitions: false, onHide: catWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
 
   var cat_ids = elements['cat_id'].value;
   var selected_ids = cat_ids.split ( ',' );
