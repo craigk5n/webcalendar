@@ -567,8 +567,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $interval = intval ( 60 / $increment );
   $cell_pct = intval ( 80 / ( $hours * $interval ) );
   $cols = ( ( $hours * $interval ) + 1 );
-  $style_width = ( $cell_pct > 0 ? 'style="width:' . str_replace( 'XXX',
-      translate( $cell_pct, false, 'N' ), translate( 'percent' ) ) : '' );
+  $style_width = ( $cell_pct > 0 ? ' style="width:' . $cell_pct .  '%' : '' );
   $thismonth = (int) date( 'm', $dateTS );
   $thisyear = (int) date( 'Y', $dateTS );
 
@@ -635,7 +634,7 @@ EOT;
     }
   }
 
-  for( $i = $first_hour; $i < $last_hour; $i++ ) {
+  for ( $i = $first_hour; $i < $last_hour; $i++ ) {
     $hour = $i;
     if ( $TIME_FORMAT == '12' ) {
       $hour %= 12;
@@ -647,7 +646,7 @@ EOT;
       $hourfmt = '%02d';
 
     $halfway = intval ( ( $interval / 2 ) -1 );
-    for( $j = 0; $j < $interval; $j++ ) {
+    for ( $j = 0; $j < $interval; $j++ ) {
       $inc_x_j = $increment * $j;
       $str .= '
         <td id="C' . ( $j + 1 ) . '" class="dailymatrix" ';
