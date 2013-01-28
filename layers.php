@@ -1,4 +1,11 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ */
 /**
  * This page handles managing a user's layers
  * and works with layer_ajax.php to make changes.
@@ -140,15 +147,15 @@ if ( $single_user == 'N' ) {
     <input type="hidden" name="editLayerId" id="editLayerId" value="">
     <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0">
     <table>
-      <tr><td class="tooltip" title="<?php etranslate('user to display on your cal');?>"><label><?php echo translate( 'Source_' );?></label></td>
+      <tr><td class="tooltip"<?php etooltip ( 'user to display on your cal' );?>><label><?php echo translate ( 'Source_' );?></label></td>
         <td><select id="editLayerSource" name="editLayerSource">
             <?php echo $users;?>
         </td></tr>
-      <tr><td class="tooltip" title="<?php etranslate('text color of new layer');?>"><label><?php echo translate( 'Color_' );?></label></td>
+      <tr><td class="tooltip"<?php etooltip ( 'text color of new layer' );?>><label><?php echo translate ( 'Color_' );?></label></td>
         <td><?php echo print_color_input_html ( 'editLayerColor', '',
             '#000000' );?>
         </td></tr>
-      <tr><td class="tooltip" title="<?php etranslate('show duplicate events');?>"><label><?php echo translate( 'Duplicates_' );?></label></td>
+      <tr><td class="tooltip"<?php etooltip ( 'show duplicate events' );?>><label><?php echo translate ( 'Duplicates_' );?></label></td>
         <td><input type="checkbox" name="editLayerDups" id="editLayerDups">
         </td></tr>
     </table>

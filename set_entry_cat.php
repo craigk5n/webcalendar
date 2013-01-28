@@ -1,4 +1,11 @@
-<?php /* $Id$ */
+<?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id$
+ * @package WebCalendar
+ /*
 /**
  * Page Description:
  * Allows the setting of categories by each participant of an event.
@@ -125,7 +132,7 @@ else {
           <td>{$event_name}</td>
         </tr>
         <tr>
-          <td class="tooltip" title="{$catHelpStr}" valign="top">
+          <td class="tooltip"{$catHelpStr} valign="top">
             <label for="entry_categories">{$cat_Str}<br></label>
             <input type="button" value="{$editStr}" onclick="editCats( event )">
           </td>

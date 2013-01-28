@@ -447,7 +447,7 @@ function etranslate ( $str, $decode = '', $type = 'A', $date = '' ) {
 function tooltip( $str, $decode = '' ) {
   $ret = translate( $str, $decode );
   $ret = preg_replace( '/<[^>]+>/', '', $ret );
-  return preg_replace( '/"/', "'", $ret );
+  return ' title="' . preg_replace ( '/"/', "'", $ret ) . '"';
 }
 
 /**

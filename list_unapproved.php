@@ -1,4 +1,11 @@
 <?php
+/*
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @package WebCalendar
+ * @version $Id$
+ */
 /**
  * This file lists unapproved entries for one or more users.
  *
@@ -8,12 +15,6 @@
  *
  * The user will be allowed to approve/reject the event if:
  * it is on their own calendar
- *
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @package WebCalendar
- * @version $Id$
  */
 
 include_once 'includes/init.php';
@@ -60,9 +61,9 @@ function list_unapproved ( $user ) {
 
   user_load_variables ( $user, 'temp_' );
 
-  $rssLink = '<a href="rss_unapproved.php?user=' .
-    htmlspecialchars ( $user ) . '"><img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - ' .
-    htmlspecialchars( $temp_fullname ) . '" border="0"></a>';
+  $rssLink = '<a href="rss_unapproved.php?user=' . htmlspecialchars ( $user )
+    . '"><img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - '
+    . htmlspecialchars ( $temp_fullname ) . '"></a>';
 
   $count = 0;
   $ret = '';
@@ -125,7 +126,7 @@ function list_unapproved ( $user ) {
         <td><a title="' . $viewStr . '" class="entry" id="' . $linkid
        . '" href="' . $view_link . '.php?id=' . $id . '&amp;user=' . $cal_user
        . '">' . htmlspecialchars( $name ) . '</a> '
-       . str_replace( 'XXX', $eventdate, translate( '(XXX)_' ) . '</td>'
+       . str_replace ( 'XXX', $eventdate, translate ( '(XXX)_' ) ). '</td>'
       /* approve */ . '
         <td align="center"><input type="image" src="images/check.gif" title="'
        . $appConStr . '" onclick="return do_confirm( \'approve\', \''
@@ -149,7 +150,7 @@ function list_unapproved ( $user ) {
       $ret .= '
       <tr>
         <td colspan="5" nowrap="nowrap">&nbsp;
-          <img src="images/select.gif" border="0" alt="">
+          <img src="images/select.gif" alt="">
           <label><a title="' . $checkAllStr . '" onclick="check_all( \''
        . $user . '\' );">' . $checkAllStr . '</a> / <a title="' . $uncheckAllStr
        . '" onclick="uncheck_all( \'' . $user . '\' );">' . $uncheckAllStr
