@@ -346,7 +346,11 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' )
 
 foreach ( $tabs_ar as $k => $v ) {
   echo '
-        <span class="tab"' . ( $k != 'settings' ? 'bak' : 'for' ) . ' id="tab_"' . $k . ( $k != 'colors' ? '' : '" title="' . tooltip( 'colors-help' ) ) . "\">$v" . '</span>';
+        <span class="tab"'
+    . ( $k != 'settings' ? 'bak' : 'for' )
+    . ' id="tab_"' . $k
+    . ( $k != 'colors' ? '' : tooltip ( 'colors-help' ) )
+    . ">$v" . '</span>';
 }
 echo '
       </div>
@@ -357,7 +361,7 @@ echo '
         <div id="tabscontent_settings" class="tooltip">
           <fieldset>
             <legend>' . translate( 'Language' ) . '</legend>
-            <p class="tooltipselect" title="' . tooltip( 'language-help' ) . '"><label for="pref_lang">' . translate( 'Language_' ) . '</label>
+            <p class="tooltipselect"' . tooltip ( 'language-help' ) . '><label for="pref_lang">' . translate ( 'Language_' ) . '</label>
               <select id="pref_lang" name="pref_LANGUAGE">' . $lang_list . '
               </select><br>' . str_replace( 'XXX', translate( get_browser_language( true ) ),   translate( 'browser default language XXX' ) ) . '</p>
           </fieldset>
@@ -365,8 +369,8 @@ echo '
             <legend>' . translate( 'Date and Time' ) . '</legend>'
 // Can we set timezones? If not don't display any options.
  . ( set_env( 'TZ', $prefarray['TIMEZONE'] ) ? '
-              <p class="tooltipselect" title="' . tooltip( 'tz_help' ) . '"><label for="pref_TIMEZONE">' . translate( 'Timezone Selection' ) . '</label>' . print_timezone_select_html( 'pref_', $prefarray['TIMEZONE'] ) . '</p>' : '' ) . '
-              <p class="tooltipselect" title="' . tooltip( 'date_format_help' ) . '">' . translate( 'Date format' ) . '
+              <p class="tooltipselect"' . tooltip ( 'tz_help' ) . '><label for="pref_TIMEZONE">' . translate ( 'Timezone Selection' ) . '</label>' . print_timezone_select_html ( 'pref_', $prefarray['TIMEZONE'] ) . '</p>' : '' ) . '
+              <p class="tooltipselect"' . tooltip ( 'date_format_help' ) . '>' . translate ( 'Date format' ) . '
                 <select name="pref_DATE_FORMAT">' . $datestyle_ymd . '
                 </select>&nbsp;' . date_to_str( $dateYmd, $DATE_FORMAT, false ) . '<br>
                 <select name="pref_DATE_FORMAT_MY">' . $datestyle_my . '
@@ -375,14 +379,14 @@ echo '
                 </select>&nbsp;' . date_to_str( $dateYmd, $DATE_FORMAT_MD, false ) . '<br>
                 <select name="pref_DATE_FORMAT_TASK">' . $datestyle_tk . '
                 </select>&nbsp;' . translate( 'Small Task Date' ) . ' ' . date_to_str( $dateYmd, $DATE_FORMAT_TASK, false ) . '</p>
-              <p title="' . tooltip( 'time_format_help' ) . '">' . translate( 'Time format' ) . print_radio( 'TIME_FORMAT', array( '12'=>translate( '12 hour' ), '24'=>translate( '24 hour' ) ) ) . '</p>
-              <p title="' . tooltip( 'display_week_starts_on' ) . '">' . translate( 'Week starts on' ) . '
+              <p' . tooltip ( 'time_format_help' ) . '>' . translate ( 'Time format' ) . print_radio ( 'TIME_FORMAT', array ( '12'=>translate ( '12 hour' ), '24'=>translate ( '24 hour' ) ) ) . '</p>
+              <p' . tooltip ( 'display_week_starts_on' ) . '>' . translate ( 'Week starts on' ) . '
                 <select id="pref_WEEK_START" name="pref_WEEK_START">' . $start_wk_on . '
                 </select></p>
-              <p title="' . tooltip( 'display_weekend_starts_on' ) . '">' . translate( 'Weekend starts on' ) . '
+              <p' . tooltip ( 'display_weekend_starts_on' ) . '>' . translate ( 'Weekend starts on' ) . '
                 <select id="pref_WEEKEND_START" name="pref_WEEKEND_START">' . $start_wkend_on . '
                 </select></p>
-              <p title="' . tooltip( 'work_hours_help' ) . '">' . translate( 'Work hours' ) . '
+              <p' . tooltip ( 'work_hours_help' ) . '>' . translate ( 'Work hours' ) . '
                 <label for="pref_starthr">' . translate( 'From' ) . '</label>
                 <select id="pref_starthr" name="pref_WORK_DAY_START_HOUR">' . $work_hr_start . '
                 </select>
@@ -392,10 +396,10 @@ echo '
           </fieldset>
           <fieldset>
             <legend>' . translate( 'Appearance' ) . '</legend>
-            <p title="' . tooltip( 'preferred_view_help' ) . '">' . translate( 'Preferred view' ) . '
+            <p' . tooltip ( 'preferred_view_help' ) . '>' . translate ( 'Preferred view' ) . '
               <select name="pref_STARTVIEW">' . $prefer_vu . $user_vu . '
               </select></p>
-            <p class="tooltipselect" title="' . tooltip( 'fonts_help' ) . '">
+            <p class="tooltipselect"' . tooltip ( 'fonts_help' ) . '>
               <label for="pref_font">' . translate( 'Fonts' ) . '</label>
               <input type="text" id="pref_font" name="pref_FONTS" size="40" value="' . htmlspecialchars( $prefarray['FONTS'] ) . '"></p>';
 foreach ( array(
@@ -421,28 +425,28 @@ foreach ( array(
     'moon_phases' => translate( 'Display Lunar Phases in month view' ),
   ) as $k => $v ) } {
   echo '
-            <p title="' . tooltip( // bypass update_translation.pl
-   'display_' . $k . '_help' ) . '">' . $v . print_radio( 'DISPLAY_' . strtoupper( $k ) ) . '</p>';
+            <p' . tooltip ( // bypass update_translation.pl
+   'display_' . $k . '_help' ) . '>' . $v . print_radio ( 'DISPLAY_' . strtoupper ( $k ) ) . '</p>';
 }
 echo '
           </fieldset>
           <fieldset>
             <legend>' . translate( 'Events' ) . '</legend>
-            <p title="' . tooltip( 'display_unapproved_help' ) . '">' . translate( 'Display unapproved' ) . print_radio( 'DISPLAY_UNAPPROVED' ) . '</p>
-            <p title="' . tooltip( 'timed_evt_len_help' ) . '">' . translate( 'Specify timed event length by' ) . print_radio( 'TIMED_EVT_LEN', array( 'D' => translate( 'Duration' ), 'E' => translate( 'End Time' ) ) ) . '</p>' . $catList . '
-            <p title="' . tooltip( 'disable_crossday_events_help' ) . '">' . translate( 'Disable Cross-Day Events' ) . print_radio( 'DISABLE_CROSSDAY_EVENTS' ) . '</p>
-            <p title="' . tooltip( 'display_desc_print_day_help' ) . '">' . translate( 'desc in printer day view' ) . print_radio( 'DISPLAY_DESC_PRINT_DAY' ) . '</p>
-            <p title="' . tooltip( 'entry-interval-help' ) . '">' . translate( 'Entry interval' ) . '
+            <p' . tooltip ( 'display_unapproved_help' ) . '>' . translate ( 'Display unapproved' ) . print_radio ( 'DISPLAY_UNAPPROVED' ) . '</p>
+            <p' . tooltip ( 'timed_evt_len_help' ) . '>' . translate ( 'Specify timed event length by' ) . print_radio ( 'TIMED_EVT_LEN', array ( 'D' => translate ( 'Duration' ), 'E' => translate ( 'End Time' ) ) ) . '</p>' . $catList . '
+            <p' . tooltip ( 'disable_crossday_events_help' ) . '>' . translate ( 'Disable Cross-Day Events' ) . print_radio ( 'DISABLE_CROSSDAY_EVENTS' ) . '</p>
+            <p' . tooltip ( 'display_desc_print_day_help' ) . '>' . translate ( 'desc in printer day view' ) . print_radio ( 'DISPLAY_DESC_PRINT_DAY' ) . '</p>
+            <p' . tooltip ( 'entry-interval-help' ) . '>' . translate ( 'Entry interval' ) . '
               <select name="pref_ENTRY_SLOTS">' . $entry_slots . '
               </select></p>
-            <p title="' . tooltip( 'time-interval-help' ) . '">' . translate( 'Time interval' ) . '
+            <p' . tooltip ( 'time-interval-help' ) . '>' . translate ( 'Time interval' ) . '
               <select name="pref_TIME_SLOTS">' . $time_slots . '
               </select></p>
           </fieldset>
           <fieldset>
             <legend>' . translate( 'Miscellaneous' ) . '</legend>
-            <p title="' . tooltip( 'auto-refresh-help' ) . '">' . translate( 'Auto-refresh calendars' ) . print_radio( 'AUTO_REFRESH' ) . '</p>
-            <p title="' . tooltip( 'auto-refresh-time-help' ) . '">&nbsp;&nbsp;&nbsp;&nbsp;' . translate( 'Auto-refresh time' ) . '
+            <p' . tooltip ( 'auto-refresh-help' ) . '>' . translate ( 'Auto-refresh calendars' ) . print_radio ( 'AUTO_REFRESH' ) . '</p>
+            <p' . tooltip ( 'auto-refresh-time-help' ) . '>&nbsp;&nbsp;&nbsp;&nbsp;' . translate ( 'Auto-refresh time' ) . '
               <input type="text" name="pref_AUTO_REFRESH_TIME" size="4" value="' . ( empty( $prefarray['AUTO_REFRESH_TIME'] ) ? 0 : $prefarray['AUTO_REFRESH_TIME'] ) . '">' .  $minutesStr . '</p>
           </fieldset>
         </div>
@@ -451,8 +455,8 @@ echo '
 if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) {
   echo '
         <div id="tabscontent_themes" class="tooltip">
-          <p title="' . tooltip( 'theme-reload-help' ) . '" colspan="3">' . translate( 'reload page to show Theme' ) . '</p>
-          <p class="tooltipselect" title="' . tooltip( 'themes-help' ) . '"><label for="pref_THEME">' . translate( 'Themes_' ) . '</label>
+          <p colspan="3"' . tooltip ( 'theme-reload-help' ) . '>' . translate ( 'reload page to show Theme' ) . '</p>
+          <p class="tooltipselect"' . tooltip ( 'themes-help' ) . '><label for="pref_THEME">' . translate ( 'Themes_' ) . '</label>
             <select id="pref_THEME" name="pref_THEME">' . $option . 'none" disabled selected>' . translate( 'AVAILABLE THEMES' ) . '</option>';
   foreach ( $themes as $theme ) {
     echo $option . $theme . '">' . $theme . '</option>';
@@ -462,7 +466,7 @@ if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) {
             <input type="button" id="previewBtn" name="preview" value="' . translate( 'Preview' ) . '"></p>';
   if ( $MENU_ENABLED == 'Y' ) {
     echo '
-          <p title="' . tooltip( 'menu_themes_help' ) . '"><label for="pref_MENU_THEME">' . translate( 'Menu theme' ) . '</label>
+          <p' . tooltip ( 'menu_themes_help' ) . '><label for="pref_MENU_THEME">' . translate ( 'Menu theme' ) . '</label>
             <select id="pref_MENU_THEME" name="pref_MENU_THEME">' . $option . 'default"' . ( $prefarray['MENU_THEME'] == 'default' ? ' selected' : '' ) . '>default</option>';
     foreach ( $menuthemes as $menutheme ) {
       echo $option . $menutheme . ( $prefarray['MENU_THEME'] == $menutheme ? '" selected>' : '">' ) . $menutheme . '</option>';
@@ -477,20 +481,20 @@ if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) {
 
 echo ( $updating_public ? '' : ( $SEND_EMAIL == 'Y' ? '
         <div id="tabscontent_email" class="tooltip">
-          <p title="' . tooltip( 'email-format' ) . '">' . translate( 'Email format preference' ) . print_radio( 'EMAIL_HTML', array( 'Y' => translate( 'HTML' ), 'N' => translate( 'Plain Text' ) ) ) . '</p>
-          <p title="' . tooltip( 'email_attach_ics' ) . '">' . translate( 'Include iCalendar attachments' ) . print_radio( 'EMAIL_ATTACH_ICS', '', '', 0 ) . '</p>
-          <p title="' . tooltip( 'email_reminder_help' ) . '">' . translate( 'Event reminders' ) . print_radio( 'EMAIL_REMINDER' ) . '</p>
-          <p title="' . tooltip( 'email_event_added' ) . '">' . translate( 'Events added to my calendar' ) . print_radio( 'EMAIL_EVENT_ADDED' ) . '</p>
-          <p title="' . tooltip( 'email_event_updated' ) . '">' . translate( 'Events updated on my calendar' ) . print_radio( 'EMAIL_EVENT_UPDATED' ) . '</p>
-          <p title="' . tooltip( 'email_event_deleted' ) . '">' . translate( 'Events removed from my calendar' ) . print_radio( 'EMAIL_EVENT_DELETED' ) . '</p>
-          <p title="' . tooltip( 'email_event_rejected' ) . '">' . translate( 'Event rejected by participant' ) . print_radio( 'EMAIL_EVENT_REJECTED' ) . '</p>
-          <p title="' . tooltip( 'email_event_create' ) . '">' . translate( 'Event that I create' ) . print_radio( 'EMAIL_EVENT_CREATE' ) . '</p>
+          <p' . tooltip ( 'email-format' ) . '>' . translate ( 'Email format preference' ) . print_radio ( 'EMAIL_HTML', array ( 'Y' => translate ( 'HTML' ), 'N' => translate ( 'Plain Text' ) ) ) . '</p>
+          <p' . tooltip ( 'email_attach_ics' ) . '>' . translate ( 'Include iCalendar attachments' ) . print_radio ( 'EMAIL_ATTACH_ICS', '', '', 0 ) . '</p>
+          <p' . tooltip ( 'email_reminder_help' ) . '>' . translate ( 'Event reminders' ) . print_radio ( 'EMAIL_REMINDER' ) . '</p>
+          <p' . tooltip ( 'email_event_added' ) . '>' . translate ( 'Events added to my calendar' ) . print_radio ( 'EMAIL_EVENT_ADDED' ) . '</p>
+          <p' . tooltip ( 'email_event_updated' ) . '>' . translate ( 'Events updated on my calendar' ) . print_radio ( 'EMAIL_EVENT_UPDATED' ) . '</p>
+          <p' . tooltip ( 'email_event_deleted' ) . '>' . translate ( 'Events removed from my calendar' ) . print_radio ( 'EMAIL_EVENT_DELETED' ) . '</p>
+          <p' . tooltip ( 'email_event_rejected' ) . '>' . translate ( 'Event rejected by participant' ) . print_radio ( 'EMAIL_EVENT_REJECTED' ) . '</p>
+          <p' . tooltip ( 'email_event_create' ) . '>' . translate ( 'Event that I create' ) . print_radio ( 'EMAIL_EVENT_CREATE' ) . '</p>
         </div>
 <!-- END EMAIL -->' : '' ) . '
         <div id="tabscontent_boss" class="tooltip">' . ( $SEND_EMAIL == 'Y' ? '
           <p>' . translate( 'Email me event notification' ) . print_radio( 'EMAIL_ASSISTANT_EVENTS' ) . '</p>' : '' ) . '
           <p>' . translate( 'I want to approve events' ) . print_radio( 'APPROVE_ASSISTANT_EVENT' ) . '</p>
-          <p title="' . tooltip( 'display_byproxy-help' ) . '">' . translate( 'Display if created by Assistant' ) . print_radio( 'DISPLAY_CREATED_BYPROXY' ) . '</p>
+          <p' . tooltip ( 'display_byproxy-help' ) . '>' . translate ( 'Display if created by Assistant' ) . print_radio ( 'DISPLAY_CREATED_BYPROXY' ) . '</p>
         </div>
 <!-- END BOSS -->' );
 
@@ -499,7 +503,7 @@ if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y') {
     ? 0 : $prefarray['USER_REMOTE_ACCESS'] );
   echo '
         <div id="tabscontent_subscribe" class="tooltipselect">
-          <p title="' . tooltip( 'allow-view-subscriptions-help' ) . '">' . translate( 'Allow remote viewing of' ) . '
+          <p' . tooltip ( 'allow-view-subscriptions-help' ) . '>' . translate ( 'Allow remote viewing of' ) . '
             <select name="pref_USER_REMOTE_ACCESS">';
   $tmp = array(
     translate( 'Public entries' ),
@@ -515,14 +519,14 @@ if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y') {
   $longURLStr = '&nbsp;&nbsp;&nbsp;&nbsp;' . $urlStr . $htmlServURL;
   echo '
             </select></p>' . ( $PUBLISH_ENABLED == 'Y' ? '
-          <p title="' . tooltip( 'allow-remote-subscriptions-help' ) . '">' . translate( 'Allow remote subscriptions' ) . print_radio( 'USER_PUBLISH_ENABLED' ) . '</p>' . ( $empServ ? '' : '
-          <p title="' . tooltip( 'remote-subscriptions-url-help' ) . '">' . $longURLStr . 'publish.php/' . $upPub . '.ics<br>' . $htmlServURL . 'publish.php?user=' . $upPub . '</p>' ) . '
-          <p title="' . tooltip( 'allow-remote-publishing-help' ) . '">' . translate( 'Allow remote publishing' ) . print_radio( 'USER_PUBLISH_RW_ENABLED' ) . '</p>' . ( $empServ ? '' : '
-          <p title="' . tooltip( 'remote-publishing-url-help' ) . '">' . $longURLStr . 'icalclient.php</p>' ) : '' ) . ( $RSS_ENABLED == 'Y' ? '
-          <p title="' . tooltip( 'rss-enabled-help' ) . '">' . translate( 'Enable RSS feed' ) . print_radio( 'USER_RSS_ENABLED' ) . '</p>' . ( $empServ ? '' : '
-          <p title="' . tooltip( 'rss-feed-url-help' ) . '">' . $longURLStr . 'rss.php?user=' . $upPub . '</p>' ) : '' ) . '
-          <p title="' . tooltip( 'freebusy-enabled-help' ) . '">' . translate( 'Enable FreeBusy publishing' ) . print_radio( 'FREEBUSY_ENABLED' ) . '</p>' . ( $empServ ? '' : '
-          <p title="' . tooltip( 'freebusy-url-help' ) . '">' . $longURLStr . 'freebusy.php/' . $upPub . '.ifb<br>' . $htmlServURL . 'freebusy.php?user=' .$upPub . '</p>' ) . '
+          <p' . tooltip ( 'allow-remote-subscriptions-help' ) . '>' . translate ( 'Allow remote subscriptions' ) . print_radio ( 'USER_PUBLISH_ENABLED' ) . '</p>' . ( $empServ ? '' : '
+          <p' . tooltip ( 'remote-subscriptions-url-help' ) . '>' . $longURLStr . 'publish.php/' . $upPub . '.ics<br>' . $htmlServURL . 'publish.php?user=' . $upPub . '</p>' ) . '
+          <p' . tooltip ( 'allow-remote-publishing-help' ) . '>' . translate ( 'Allow remote publishing' ) . print_radio ( 'USER_PUBLISH_RW_ENABLED' ) . '</p>' . ( $empServ ? '' : '
+          <p' . tooltip ( 'remote-publishing-url-help' ) . '>' . $longURLStr . 'icalclient.php</p>' ) : '' ) . ( $RSS_ENABLED == 'Y' ? '
+          <p' . tooltip ( 'rss-enabled-help' ) . '>' . translate ( 'Enable RSS feed' ) . print_radio ( 'USER_RSS_ENABLED' ) . '</p>' . ( $empServ ? '' : '
+          <p' . tooltip ( 'rss-feed-url-help' ) . '>' . $longURLStr . 'rss.php?user=' . $upPub . '</p>' ) : '' ) . '
+          <p' . tooltip ( 'freebusy-enabled-help' ) . '>' . translate ( 'Enable FreeBusy publishing' ) . print_radio ( 'FREEBUSY_ENABLED' ) . '</p>' . ( $empServ ? '' : '
+          <p' . tooltip ( 'freebusy-url-help' ) . '>' . $longURLStr . 'freebusy.php/' . $upPub . '.ifb<br>' . $htmlServURL . 'freebusy.php?user=' .$upPub . '</p>' ) . '
         </div>
 <!-- END SUBSCRIBE -->';
 }
@@ -546,8 +550,8 @@ if ( $ALLOW_USER_HEADER == 'Y' ) {
 
   foreach ( $tmp as $k => $v ) {
     echo '
-          <p title="' . tooltip( // bypass update_translation.pl
-      'custom-' . $k . '-help' ) . '">' . $v . '
+          <p' . tooltip ( // bypass update_translation.pl
+      'custom-' . $k . '-help' ) . '>' . $v . '
             <input type="button" id="' . $k . 'Btn" value="' . $editStr . '" name=""></p>';
   }
   echo '
