@@ -58,7 +58,6 @@ sub find_pgm_files {
   push( @txt_files, $_ ) # We just want the file name.
     if ( $_ =~ /\.txt$/i && "$File::Find::dir" =~ /\.\.\/translations/i );
 }
-
 sub hash_a_file {
   my ( $file_in, $hash_ref ) = @_;
   my $hdr = '';
@@ -89,7 +88,6 @@ sub hash_a_file {
   close( F );
   return $hdr;
 }
-
 ( $this ) = reverse split( /\//, $0 );
 
 $base_dir       = '..';
@@ -120,7 +118,6 @@ for ( $i = 0; $i < @ARGV; $i++ ) {
     push( @infiles, ( $ARGV[ $i ] . ( $ARGV[ $i ] !~ /txt$/  ? '.txt' : '' ) ) );
   }
 }
-
 print "\nFinding WebCalendar program files.\n\n" if ( $verbose );
 find \&find_pgm_files, $base_dir;
 
@@ -146,7 +143,6 @@ foreach $f ( reverse sort @files ) {
   }
   close( F );
 }
-
 # Load the base translation file (English) so every phrase has a default.
 print "Reading base translation file: $base_trans_file\n" if ( $verbose );
 $base_header = hash_a_file( $base_trans_file, \%base_trans );
@@ -158,7 +154,6 @@ foreach $k ( keys %base_trans ) {
     $base_trans{$k} = $k;
   }
 }
-
 foreach $k (
     'charset',
     'direction',
@@ -173,8 +168,7 @@ foreach $k (
     ) {
   $foundin{$k} = 'top of page';
 }
-
-( $day, $mon, $year ) = ( localtime( time() ) )[ 3, 4, 5 ];
+( $day, $mon, $year ) = ( localtime( time () ) )[ 3, 4, 5 ];
 
 # Read in 'summary.txt' here to write back out later.
 hash_a_file( 'summary.txt', \%summ ) if ( -f 'summary.txt' );
@@ -209,7 +203,6 @@ foreach $i ( @infiles ) {
     #
     $header = hash_a_file( "$trans_dir/$i", \%trans );
   }
-
   # Set heading defaults.
   foreach $k ( keys %trans ) {
     if ( $i =~ /english-us/i ) {
@@ -221,9 +214,8 @@ foreach $i ( @infiles ) {
       $trans{$k} = ( $trans{$k} eq '=' ? $base_trans{$k} : $trans{$k} );
     }
   }
-
   $header .= '# Translation last updated: '
-    . sprintf( "%02d-%02d-%04d", $mon + 1, $day, $year + 1900 ) . "\n";
+    . sprintf ( "%02d-%02d-%04d", $mon + 1, $day, $year + 1900 ) . "\n";
 
   #
   # Write new translation file.
@@ -255,7 +247,6 @@ PROGRAM_URL: http://www.k5n.us/webcalendar.php' if ( $i =~ /english-us/i );
         : 'English text.' ) . '
 ';
   }
-
   print OUT '
 # Specify a charset (will be sent within meta tag for each page).' if ( $i !~ /english-us/i );
 
@@ -296,6 +287,7 @@ __month__ __yyyy__: ' . $trans{'__month__ __yyyy__'} . '
     foreach $text ( sort keys %foundin ) {
       next if ( $j ne $foundin{$text} );
       if ( exists $trans{$text} ) {
+        $trans{$text} =~ s/\s\s+/ /g; # Convert multiple spaces to one.
         print OUT $pageheader . $text . ': ' . ( $use_equals
             && ( ( $i =~ /english-us/i && $text eq $base_trans{$text} )
               || ( $i !~ /english-us/i && $trans{$text} eq $base_trans{$text} ) )
@@ -313,7 +305,6 @@ __month__ __yyyy__: ' . $trans{'__month__ __yyyy__'} . '
       }
     }
   }
-
   $summ{$i} = ( $notfound
     ? sprintf ( "%4d (%4.1f%% complete)", $notfound,
       ( 100 - ( $notfound / $total ) * 100 ) )
@@ -321,12 +312,11 @@ __month__ __yyyy__: ' . $trans{'__month__ __yyyy__'} . '
 
   print STDERR (
     !$notfound
-    ? "All text was found in $i.  Good job :-)\n"
+    ? "All text was found in $i. Good job! :-)\n"
     : "$notfound translation(s) missing.\n"
   );
 }
-
-# Update "summary.txt" while we're heere.
+# Update "summary.txt" while we're here.
 open( OUT, ">summary.txt" ) || die 'Can\'t write "summary.txt"';
 printf OUT ( "%-24s %21s\n\n", 'Language file', '# missing translations' );
 foreach $k ( sort keys %summ ) {
