@@ -1,14 +1,15 @@
 // $Id$
 
-linkFile('includes/js/v_h_scrolls.js');
+linkFile('includes/js/chapman.js');
 
 addLoadListener(function () {
     targeTo('_blank');
 
     attachEventListener(document.getElementById('ok'), 'click', window.close);
+
+    start();
   });
 
 function start() {
   startScroll('creds', (Modernizr.localstorage ? localStorage[data] : data));
 }
- 
