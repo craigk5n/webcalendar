@@ -101,9 +101,9 @@ $from_YMD = getPostValue ( 'from__YMD' );
 if ( empty ( $from_YMD ) ) {
   $start_day = $start_month = $start_year = '';
 } else {
-  $start_year = substr ( $from_YMD, 0, 4 );
-  $start_month = substr ( $from_YMD, 4, 2 );
-  $start_day = substr ( $from_YMD, 6, 2 );
+  $start_year = intval ( substr ( $from_YMD, 0, 4 ) );
+  $start_month = intval ( substr ( $from_YMD, 4, 2 ) );
+  $start_day = intval ( substr ( $from_YMD, 6, 2 ) );
   if ( $start_year < 1970 )
     $start_year = 1970;
 }
@@ -112,17 +112,19 @@ $end_YMD = getPostValue ( 'until__YMD' );
 if ( empty ( $end_YMD ) ) {
   $end_day = $end_month = $end_year = '';
 } else {
-  $end_year = substr ( $end_YMD, 0, 4 );
-  $end_month = substr ( $end_YMD, 4, 2 );
-  $end_day = substr ( $end_YMD, 6, 2 );
+  $end_year = intval ( substr ( $end_YMD, 0, 4 ) );
+  $end_month = intval ( substr ( $end_YMD, 4, 2 ) );
+  $end_day = intval ( substr ( $end_YMD, 6, 2 ) );
   if ( $end_year < 1970 )
     $end_year = 1970;
 }
 
-$startDate = gmdate( 'Ymd', gmmktime( 0, 0, 0,
-  $start_month, $start_day, $start_year ) );
-$endDate = gmdate( 'Ymd', gmmktime( 23, 59, 59,
-  $end_month, $end_day, $end_year ) );
+if ( $date_filter == 3 ) {//Use Date Range
+  $startDate = gmdate( 'Ymd', gmmktime( 0, 0, 0,
+    $start_month, $start_day, $start_year ) );
+  $endDate = gmdate( 'Ymd', gmmktime( 23, 59, 59,
+    $end_month, $end_day, $end_year ) );
+}
 
 print_header();
 echo '
