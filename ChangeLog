@@ -4,6 +4,7 @@ NOTE: This is the 1.3.0 development branch.
 Put code changes right below the 1.3.0+CVS label below.
 
 Version 1.3.0+CVS (?? ??? 2012)
+ - 06-Feb-2013 cek Fix for php warnings on search handler
  - 24-Jan-2013 cek Security fix: Do not show the reason for a failed login
    (i.e. "no such user")
    Security fix: Escape HTML characters in category name.
