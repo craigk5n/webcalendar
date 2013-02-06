@@ -214,12 +214,12 @@ Agenda content goes here...
 <?php if ( $show_participants ) { ?>
   <tr><td class="aligntop bold"><?php etranslate( 'Participants_' )?></td>
     <td id="participants">  </td></tr>
-<?php } ?>
-<?php if ( Doc::attachmentsEnabled() ) { ?>
+<?php }
+if ( Doc::attachmentsEnabled() ) { ?>
   <tr><td class="aligntop bold"><?php etranslate( 'Attachments' )?></td>
     <td id="attachments">  </td></tr>
-<?php } ?>
-<?php if ( Doc::commentsEnabled() ) { ?>
+<?php }
+if ( Doc::commentsEnabled() ) { ?>
   <tr><td class="aligntop bold"><?php etranslate( 'Comments' )?></td>
     <td id="comments">  </td></tr>
 <?php } ?>
@@ -695,8 +695,8 @@ function view_event ( key, location )
     $('access').innerHTML = '<?php etranslate('Confidential');?>';
   else
     $('access').innerHTML = '<?php etranslate('Private');?>';
-<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
-<?php } ?>
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) {
+} ?>
 
   $('eventlink').innerHTML = '<a href="view_entry.php?id=' + myEvent._id +
 <?php if ( ! empty ( $user ) && $login != $user ) { echo "'&amp;user=$user' + "; } ?>
@@ -706,8 +706,8 @@ function view_event ( key, location )
   $('participants').innerHTML = '<?php echo $SMALL_LOADING;?>';
 <?php if ( Doc::attachmentsEnabled() ) { ?>
   $('attachments').innerHTML = '<?php echo $SMALL_LOADING;?>';
-<?php } ?>
-<?php if ( Doc::commentsEnabled() ) { ?>
+<?php }
+if ( Doc::commentsEnabled() ) { ?>
   $('comments').innerHTML = '<?php echo $SMALL_LOADING;?>';
 <?php } ?>
 
@@ -755,9 +755,8 @@ function view_event ( key, location )
       if ( response.attachments.length == 0 )
         text = '<?php etranslate('None');?>';
       $('attachments').innerHTML = text;
-<?php } ?>
-
-<?php if ( Doc::commentsEnabled() ) { ?>
+<?php }
+if ( Doc::commentsEnabled() ) { ?>
       text = '<dl style="margin-top: 0;">';
       for ( var comment in response.comments ) {
         text += "<dt>" + comment.description + "<br>" +
