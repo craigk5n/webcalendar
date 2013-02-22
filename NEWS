@@ -8,6 +8,13 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
+Version 1.2.7 (22 Jan 2013)
+ - Security fix: Do not show the reason for a failed login (i.e. "no such user")
+ - Security fix: Escape HTML characters in category name.
+ - Security fix: Check all passed in fields (either via HTML form or via
+   URL parameter) for certain malicious tags (script, embed, etc.) and
+   generate fatal error if found.
+
 Version 1.2.6 (07 Jan 2013)
  - Fix for "undefined function require_valide" bug
  - Other minor bug fixes.
