@@ -1127,8 +1127,8 @@ function display_month( $thismonth, $thisyear, $demo = false,
       $ret .= $wkStr2 . '</a></td>';
     }
 
-    for ( $j = 0; $j < 7; $j++ ) {
-      $date = $i + ( $j * 86400 + 43200 );
+    for ( $j = 43200; $j < 604800; $j += 86400 ) {
+      $date       = $j + $i;
       $dateYmd = date ( 'Ymd', $date );
       $dateD = date ( 'd', $date );
       $thiswday = date ( 'w', $date );
@@ -1342,9 +1342,8 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
        . date( 'W', $i + 86400 ) . '" href="week.php?' . $u_url . 'date='
        . date ( 'Ymd', $tmp ) . '">(' . date ( 'W', $tmp ) . ')</a></td>' : '' );
 
-    for ( $j = 0; $j < 7; $j++ ) {
-      // Add 12 hours just so we don't have DST problems.
-      $date = $i + ( $j * 86400 + 43200 );
+    for ( $j = 43200; $j < 604800; $j += 86400 ) {
+      $date      = $j + $i;
       $dateYmd = date ( 'Ymd', $date );
       $hasEvents = false;
       $title = '';
@@ -2318,7 +2317,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
   }
   if ( ! empty ( $ex_days ) ) {
     foreach ( $ex_days as $ex_day ) {
-      foreach ( $ret as $i ) {
+      foreach ( $ret as &$i ) {
         if ( isset ( $i ) && date ( 'Ymd', $i ) == substr ( $ex_day, 0, 8 ) )
           unset ( $i );
       }
@@ -2335,7 +2334,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
   sort ( $ret );
   // We want results in YYYYMMDD format.
   if ( ! empty ( $jump ) ) {
-    foreach ( $ret as $i ) {
+    foreach ( $ret as &$i ) {
       if ( isset ( $i ) )
         $i = date ( 'Ymd', $i );
     }
