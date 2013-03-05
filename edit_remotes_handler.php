@@ -1,7 +1,7 @@
 <?php /* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
-require_valide_referring_url();
+require_valid_referring_url();
 
 // Only available in php 5.x Used for hCalendar parsing.
 if ( function_exists ( 'simplexml_load_string' ) )

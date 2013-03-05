@@ -328,7 +328,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
     we.cal_name, we.cal_id, we.cal_access, weu.cal_status, we.cal_date
     FROM webcal_entry we, webcal_entry_user weu WHERE we.cal_id = weu.cal_id AND ( ';
 
-  foreach ( $dates as $i ) {
+  for ( $i = 0; $i < $datecnt; $i++ ) {
     $sql .= ( $i != 0 ? ' OR ' : '' ) . 'we.cal_date = '
      . gmdate ( 'Ymd', $i );
   }
@@ -5400,7 +5400,7 @@ function remember_this_view ( $view = false ) {
   * would delete an event in webcalendar to the admin.  If the admin user
   * clicks on that link we don't want to actually delete the event.
   */
-function require_valide_referring_url() {
+function require_valid_referring_url() {
   global $SERVER_URL;
 
   if ( empty ( $_SERVER['HTTP_REFERER'] ) ) {

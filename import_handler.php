@@ -24,7 +24,7 @@
  */
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
-require_valide_referring_url();
+require_valid_referring_url();
 $error = $sqlLog = '';
 print_header();
 

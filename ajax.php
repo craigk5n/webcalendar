@@ -15,7 +15,7 @@ foreach( array(
   ) as $i ) {
   include_once 'includes/' . $i . '.php';
 }
-require_valide_referring_url();
+require_valid_referring_url();
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
