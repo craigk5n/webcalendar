@@ -18,7 +18,7 @@
  *             includes/access.php. Each should be either 'Y' or 'N'.
  */
 include_once 'includes/init.php';
-require_valide_referring_url();
+require_valid_referring_url();
 
 $allow_view_other =
   ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );

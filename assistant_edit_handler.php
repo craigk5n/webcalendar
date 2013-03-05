@@ -1,6 +1,6 @@
 <?php /* $Id$ */
 include_once 'includes/init.php';
-require_valide_referring_url();
+require_valid_referring_url();
 
 $user = getPostValue ( 'user' );
 $users= getPostValue ( 'users' );

@@ -7,7 +7,7 @@
  * @package WebCalendar
  /*
 include_once 'includes/init.php';
-require_valide_referring_url();
+require_valid_referring_url();
 
 function save_pref( $prefs, $src) {
   global $my_theme, $prefuser;
