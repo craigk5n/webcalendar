@@ -1,0 +1,1596 @@
+# See translations/English-US.txt for instructions.
+#
+# Translated by:
+# Liida Grybyniuk<lgrybynyuk@gmail.com>
+#
+# Last update: Thu Feb 20 2013
+#
+# $Id: Ukrainian_utf8.txt, v 0.11 2013/02/20 11:21:23
+# Translation last updated on 20-02-2013
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: UTF-8
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+########################################
+# Page: about.php
+#
+Title: Заголовок
+
+########################################
+# Page: access.php
+#
+Database error: Помилка бази даних
+DEFAULT CONFIGURATION: КОНФІГУРАЦІЯ ПО ЗАМОВЧУВАННЮ
+Go: Перейти
+Save: Зберегти
+Public Access: ЗАГАЛЬНИЙ Доступ
+Admin: АдмІнІстратор
+UAC: Контроль Доступу Користувача
+may access others cals: Дозволити Доступ до Календарів Інших Користувачів
+this user may access my cal: Дати Цьому Користувачу Доступ до Мого Календаря
+Type: Тип
+Calendar: Календар
+View Event: Переглянути Подію
+View: Перегляд
+Edit: Редагувати
+Approve/Reject: Підтвердити/Відхилити
+Events: Події
+Tasks: Задачі
+Journals: Журнали
+Can Invite: Може Запрошувати
+Can Email: Може писати листи
+Can See Time Only: Може бачити тільки час
+Assistant: Асистент
+Select All: Вибрати Все
+Clear All: Очистити Все
+Public: Загальнодоступний
+
+########################################
+# Page: activity_log.php
+#
+Next: Далі
+Previous: Раніше
+
+########################################
+# Page: add_entry.php
+#
+confidential: Конфіденційний
+private: Особисте
+Error adding event: Помилка в процесі створення події
+
+########################################
+# Page: admin.php
+#
+Select: Вибрати
+Day: День
+Week: Неділя
+Month: Місяць
+Year: Рік
+Bottom: знизу
+Top: зверху
+Anyone: Кто завгодно
+Participant: Учасник
+Settings: Установки
+Groups: Групи
+NUCs: Календарі не користувачів
+Other: Інше
+Email: Адреса електронної пошти
+Colors: Кольори
+Document BG: Фон документу
+Document title: Заголовок документу
+Document text: Текст документу
+My event text: Текст моїх подій
+Table grid color: Колір ліній таблиці
+Table header BG: Фона заголовка таблиці
+Table header text: Текст заголовка таблиці
+Table cell BG: Фон таблиці
+Table cell today BG: Фон клітинки поточного дня
+Table cell events BG: Фон клетинки таблиці для днів з подіями
+Table cell weekends BG: Фон клітинки вихідних
+Table cell other month BG: Фон клітинки таблиці для іншого місяця
+Week number color: Колір номера неділі
+Event popup BG: Фон вікна події
+Event popup text: Текст вікна події
+System Settings: Налаштування системи
+Help: Підказка
+System options: Параметри системи
+app-name-help: Визначає ім'я додатку, яке буде показано у заголовку браузера всіх сторінок включаючи вхід в систему. Значення вказане вами буде переглянуто в файлі кодування, що дозволить вам пред'явити різні заголовки для різноманітних мов.
+Application Name: Ім'я додатку
+Translated Name: Переведене Ім'я
+server-url-help: Вказує базовий URL для додатку. Це буде використано для розсилки нагадувань і повідомлень по електроній пошті.
+Server URL: URL серверу
+home-url-help: Визначає домашню адресу вашого додатку. Він може бути абсолютним чи відносним
+Home URL: Домашня адреса
+language-help: Визначає яка мова може бути використана.
+Language: Мова
+Your browser default language is: Мова вашого браузера за замовчуванням
+Allow user themes Дозволити користувачам теми
+themes-help: Дозволити масове оновлення налаштувань конфігурації. Налаштування користувача маленькими буквами.
+Themes: Теми
+AVAILABLE THEMES: ДОСТУПНІ ТЕМИ
+None: Без категорії
+Preview: Попередній перегляд
+Site customization: Налаштування сайту
+custom-script-help: дозволяє додавати інші сценарії Javascript чи таблиці стилей, які будуть виставлені в секцію HTML "head" для кожної сторінки.
+Custom script/stylesheet: Інший скрипт/таблиця стилів
+custom-header-help: Дозволити зміну HTML тексту для заголовку кожної сторінки.
+Custom header: Інший заголовок
+custom-trailer-help: Дозволити зміну HTML тексту для закінчення кожної сторінки.
+Custom trailer: Другий низ
+enable-external-header-help: Дозволяє загрузити низ сторінки із зовнішнього файла
+external files head/script/trail: Дозволити зовнішній факл для заголовка/скрипта/низу странки
+Allow user to override header/trailer: Дозволити користувачу переписати верх/низ сторінки
+Date and Time: Дата та Час
+tz-help: Визначає скільки годин різниці між північним часом та вашим.
+Server TZ Selection: Вибір тимчасової зони сервера
+display-general-use-gmt-help: Якщо ввімкнено, дата/час загального виду будуть показані як GMT
+Display Common Use Date/Times as GMT: Показувати дату/час загального виду як GMT
+date-format-help: Вказати переважний формат дати.
+Date format: Формат дати
+Small Task Date: Дата невеликого завдання
+display-week-starts-on: Задає перший день неділі - неділя або понеділок (в багатоьок країнах, включаючи Америку та Ізраїль, першим днем неділі вважається неділя). Якщо був вибраний понеділок, то номуреаці буде проводитися за стандартами ISO.
+Week starts on: Тиждень починається в
+time-format-help: Визначає формат часу:<br> <i>12-часовой:</i> или <i>24-часовой</i>.
+Time format: Формат часу
+12 hour: 12 годин
+24 hour: 24 години
+timed-evt-len-help: Визначає метод вводу для визначення довжини події для події з визначиним часом.
+Specify timed event length by: Встановити довжину подій з визначеним часом
+Duration: Тривалість
+End Time: Час закінчення
+work-hours-help: Визначає часовий проміжок, який використовується календарем.
+Work hours:Робочі години
+From: Від
+to: до
+Appearance: Відображення
+preferred-view-help: Визначає бажаний вид (день, тиждень, місяць або рік).
+Preferred view: Бажаний вид
+Allow top menu: Дозволити меню в заголовку
+Date Selectors position: Позиція вибору Дати
+menu-themes-help: Встановлює кольори та стиль меню заголовку
+Menu theme: Тема меню
+fonts-help: Вказує список системних шрифтів для використання (наприклад "Arial, Helvetica")
+Fonts: Шрифти
+display-sm_month-help: Якщо включено, відображає маленькі місяці в перегляді місяця
+Display small months: Показувати маленькі місяці
+display-weekends-help: Включати вихідні при перегляді тижня.
+Display weekends: Показувати вихідні
+display-alldays-help: Показувати попередні та наступні дні місяця при перегляді місяця, заповнюючі всі комірки.
+Display all days: Показувати всі дня в перегляді місяця
+display-week-number-help: Задає чи показувати нумерація тижня (1-52) в перегляді місяця чи тижня.
+Display week number: Показувати дні неділі
+display-desc-print-day-help: Включати опис подій в розпорядку дня для друку.
+Display description in printer day view: Показувати опис у вигляді для друку
+yearly-shows-events-help: В перегляді року відображати дня, які містять події жирним текстом.
+bold events month/year views: Виділяти дні з подіями при перегляді місяця та року
+display-minutes-help: Якщо включено, хвилини з :00 будуть завжди відображатися.
+Display 00 minutes always: Завжди показувати 00 хвилин
+allow-view-add-help: Картинка "+" буде добавлена у вигляді, яка дозволить користувачу швидко додавати події в календарі інших користувачів.
+Include add event link in views: Додати посилання Додати Подію у вигдаді
+lunar-help: Якщо включено, то будуть відображатися маленкі картинки, які показують фази місяця.
+Display Lunar Phases: Показувати фази місяця при перегляді місяця
+Restrictions: Обмеження
+allow-view-other-help: Визначає чи може один користувач дивитись календарі інших користувачів.
+Allow viewing other users calendars: Дозволити переглядати календарі інших користувачів
+require-approvals-help: Коли ввімкнено, користувач повинен затвердити подію перед тим, як воно зявиться на його календарі (поки не ввімкнено відображення непідтвердженого). Увага, відповідь "Ні" для даного поля не вимикає підтверження для календаря Загального Доступу (якщо календар Загального Доступу ввімкнений).
+Require event approvals: Вимагається підтвердження подій
+display-unapproved-help: Задає, чи видно непідтверджені події у вашому календарі.<b> Якщо вибрано "Так", то вони будуть відображені в календарі, в іншому кольорі, ніж підтверджені події.<br> При виборі "Ні", необхідно спочатку підтвердити події перед тим, як його буде видно в календарі.
+Display unapproved: Показувати непідтвердженні
+conflict-check-help: Перевіряє події на конфлікт (дві події створені в один і той же час для однієї і тієї ж людини). Якщо ви включите це, ви також зможете створити дві події на один час після згоди з попередженням. Якщо ви відключите це, перевірки на конфлікт не буде. Вам можливо захочеться встановити це в "Так", щоб перевірка запрацювала.
+Check for conflicts: Перевірка подій на конфлікти
+Yes: Так
+No: Ні
+conflict-months-help: Якщо перевірка на конфлікти ввимкнена ("Перевірка подій на конфлікти" встановлена в "Ні"), це визначає як багато місяців в майбутньому ми повинні перевірити на конфлікти. Якщо ви вважаєте, що добавляння подій займає багато часу, то зменште це число.
+Conflict checking months: Дистанція перевірки на конфлікти
+conflict-check-override-help: Дозволяє користувачам відхилити перевірку конфліктів та назначити дві події на один і той самий час.
+Allow users to override conflicts: Дозволити користувачам відхилити перевірку конфліктів
+limit-appts-help: Дозволяє системному адміністратору встановити глобальне обмеження на число подій, які може мати користувач в один день.
+Limit timed events per day: Обмежити число подій з визначеним часом в день
+limit-appts-number-help: Вказує максимальне число подій з визначеним часом, які може мати користувач в день.
+Maximum timed events per day: Максимальне число подій з визначеним часом в день
+crossday-help: Якщо включено, події які будуть перекривати будуть відображені в різних днях.
+Disable Cross-Day Events: Відключити події, які перекривають дні
+disable-location-field-help: Вибір "Так" забере поле "Місце" зі сторінки інформації про подію.
+Disable Location field: Відімкнути поле Місце
+disable-url-field-help: Вибір "Так" забере поле "Адреса" зі сторінки інформації про подію
+Disable URL field: Забрати поле Адреса
+disable-priority-field-help: Відповідь "Так" забере поле "Пріоритет" зі сторінки інформації про подію, забезпечуючи простий інтерфейс для новачків.
+Disable Priority field: Забрати поле Пріоритет
+disable-access-field-help: Відповідь "Так" видалить поле "Доступ" зі сторінки інформації про подію, забезпечуючи простий інтерфейс для новачків.
+Disable Access field: Забрати поле Доступ
+disable-participants-field-help: Відповідь "Так" видалить поле "Доступ" зі сторінки інформації про подію, яка запобігає користувачів від додавання інших користувачів у їхніх подіях. Якщо ви виключили цю можливість, ви можливо захочете також відключити поле "Дозволити продивлюватися календарі інших користувачів"
+Disable Participants field: Забрати поле Учасники
+disable-repeating-field-help: Відповідь "Так" видалити поле "Повторення" із сторінки інформації про подію, забезпечуючи простий інтерфейс для новачків.
+Disable Repeating field: Забрати поле Повторення
+allow-html-description-help: Якщо ввімкнено, користувачі можуть вводити HTML в поле опису події. Якщо не включено, HTML таги будуть видалені так, що буде відображатись чистий текст. Увага: Включеня даного пункту дозволяє користувачам вставляти посилання на картинки інших сайтів.
+Allow HTML in Description: Дозволити HTML в поле Опис
+Popups: Спливаючі вікна
+disable-popups-help: Відключити спливаючі вікна при огляді календаря
+Disable Pop-Ups: Відключити спливаючі вікна
+popup-includes-siteextras-help: Якщо дозволено, дозволяє різним полям події у файлі site_extras.php бути відображеними в спливаючому вікні.
+Display Site Extras in popup: Відображати розширювані вікна в спливаючих вікнах
+popup-includes-participants-help: Якщо включено, учасники будуть показані у спливаючих  вікнах події.
+Display Participants in popup: Показати учасників у спливаючих вікнах
+Miscellaneous: Різне
+remember-last-login-help: Якщо включено, ім'я користувача буде вписано у форму на сторінку входа (але без пароля).
+Remember last login: Запам'ятовувати ім'я користувача
+summary_length-help: Максимальний розмір Короткого Опису при перегляді календаря
+Brief Description Length: Максимальний розмір Короткого Опису
+user_sort-help: Визначає порядок сортування для списків Користувачів та Некористувачів
+User Sort Order: Порядок Сортування Користувачів
+Lastname, Firstname: Прізвище, Ім'я
+Firstname, Lastname: Ім'я, Прізвище
+allow-public-access-help: Коли включено, календар може бути використаний як загальний календар тільки для читання, який не вимагає входу користувачів.
+Allow public access: Дозволити загальний доступ
+public-access-default-visible: Події з загального календаря з'являються в календарях користувачів.
+Public visible by default: Загальний календар видно за замовчуванням
+public-access-default-selected: Коли створюється загальна подія, загальний користувач пуде учасником за замовчуванням.
+Public access is default participant: Загальний доступ учаснику за замовчуванням
+public-access-view-others-help: Визначає чи може користувач загального доступу бачити календарі інших користувачів.
+Public access can view other users: Загальний доступ може бачити інших користувачів
+public-access-can-add-help: Коли ввімкнено, користувачі, які користуються системою через загальний Доступ зможуть додавати нові події, але вони не будуть пов'язані в календарі до тих пір, поки адміністратор не підтвердить нові події.
+Public access can add events: Загальний доступ створює подію
+public-access-add-requires-approval-help: Вказує, що події, створені через запис загального доступу вимагають підтвердження перед відображенням.
+Public access new events require approval: Події загального доступу вимагають підтвердження
+public-access-sees-participants-help: Якщо ввімкнено, користувачі, які зайшли в календар через загальний доступ зможуть бачити учасників події, якщо вони переглядаються деталі події.
+Public access can view participants: Загальний доступ може бачити учасників
+public-access-override-help: Дозволяє назвам і описам подіям бути прихованими на загальному календарі
+Override public event name/desc: Приховати назви/опис події для загального доступу
+public-access-override-text-help: Текст, який показується, якщо попередній пункт ввімкнено. Якщо 'Not Available' - воно буде переведене.
+Text to display to public access: Текст, який показується публічному доступу
+uac-enabled-help: Включає контроль рівня доступу користувача
+UAC enabled: Контроль рівня доступу користувача ввімкнено
+groups-enabled-help: Додати підтримку групи, дозволяє користувачам вибирати корисувачів по групам.
+Groups enabled: Группы включены
+user-sees-his-group-help: Якщо включено, користувач не зможе бачити календарі інших користувачів, які не входять в жодну з груп.
+User sees only his groups: Користувач бачить тільки свої групи
+nonuser-enabled-help: Якщо включено, адміністратори будуть мати можливості додавати календарі некористувачів
+NUCs enabled: Календарі некористувачів ввімкнені
+nonuser-list-help: Де відображати календарі некористувачів в списку учасників
+Nonuser list: Відображати в списку учасників
+Enabled: Ввімкнені
+reports-enabled-help: Якщо ввімкнено, користувач зможе бачити секцію "Звіти" внизу кожної сторінки та зможе створювати різні звіти.
+Reports enabled: Звіти виключені
+subscriptions-enabled-help: Вказує, чи зовнішні користувачі зможуть підписатися на календар WebCalendar, дозволяє бачити події користувача WebCalendar в їхніх додатках з підтримкою  iCal (наприклад Apple's iCal або Mozilla Calendar)
+Allow remote subscriptions: Дозволити дистанційні підписки
+remotes-enabled-help: Дозволити користувачам завантажувати зовнішні ics файли, використовуючи інтернет адреси
+Allow remote calendars: Дозволити зовнішні календарі
+rss-enabled-help: Визначає, що календарь користувача може бути отриманий через RSS.
+Enable RSS feed: Включити RSS роздачу
+categories-enabled-help: Включає піддтримку категорій подій
+Categories enabled: Категорії ввімкнено
+icon_upload-enabled-help: Якщо ввімкнено, користувачі зможуть завантажити картинки для категорій
+upload Category Icon?: Дозволити завантажувати картинки для категорій
+Requires: Вимагає
+folder to exist: наявність каталогу
+display-tasks-help: Показувати маленьке вікно з задачами на календарі дня і місяця
+Display small task list: Показувати маленьке вікно з задачами
+display-tasks-in-grid-help: Показувати задачі в календарі разом із подіями
+Display tasks in Calendars: Показувати задачі в календарі
+allow-external-users-help: Визначає, що некористувач календаря може бути доданий в подію. Це дозволяє не користувачам календаря бути в списку учасників події.
+Allow external users: Дозволити зовнішніх користувачів
+external-can-receive-notification-help: Коли зовнішні користувачі включені і включено використання електроної пошти, зовнішні користувачі зможуть отримувати повідомлення поштою, коли події додано, оновлено чи видалено (якщо адреса зовнішнього користувача вказана).
+notify externals by email: Зовнішні користувачі можуть отримувати Внешние пользователи могут получать повідомлення поштою
+external-can-receive-reminder-help: Коли зовнішні користувачі включені і використання електронної пошти ввімкнено, зовнішні користувачі зможуть отримувати нагадування (якщо адреса зовншішнього користувача вказана).
+remind externals by email: Зовнішні користувачі можуть отримувати нагадування поштою
+allow-self-registration-help: Дозволити користувачам реєструвати самих себе
+Allow self-reg: Дозволити самореєстрацію
+use-blacklist-help: Обмежити доступ до WebCalendar функціям, базуючись на IP адресу
+Restrict self-reg to blacklist: Обмежити реєстрацію чорному листу
+allow-self-registration-full-help: Дозволити новим користувачам завершити процесь реєстрації онлайн.
+Use self-registration email notifications: Генерує паролі та розсилає їх новим користувачам. Це має допомогти проти спамерів.
+allow-attachment-help: Дозволити користувачам загружати вкладки до подій
+Allow event attachments: Дозволити приєднання файлів до подій
+owner/admins can attach if enabled: Адміністратор та власник завжди можуть завантажувати вкладки якщо включено
+allow-comments-help: Дозволити користувачам коментувати користувачам події
+Allow event comments: Дозволити коментувати події
+owner/admins can comment if enabled: Адміністратор та власник завжди можуть додавати коментарів якщо включено
+email-enabled-help: Включити чи виключити всю розсилку повідомлень та нагадувань. Виберіть "Ні", якщо ваш сервер не налаштований для відправки повідомленьВ.
+Email enabled: Електрона пошта включена
+email-default-sender: Вказати електрону адресу, яка буде використана в якості відправника.
+Default sender address: Адреса відправника
+email-mailer: Виберіть тип пошти (SMTP, PHP mail, sendmail)
+Email Mailer: Тип пошти
+email-smtp-host: Імена SMTP серверів, розділені комами
+SMTP Host name(s): Імена SMTP серверів
+email-smtp-port: Номер SMTP порту (зазвичай 25)
+SMTP Port Number: Номер SMTP порту
+email-smtp-auth: Використати SMTP авторизацію
+SMTP Authentication: Авторизація SMTP
+email-smtp-username: Ім'я користувача SMTP якщо використовується авторизація
+SMTP Username: Ім'я користувача  SMTP
+email-smtp-password: Пароль SMTP якщо використовується авторизація
+SMTP Password: Пароль SMTP
+Default user settings: Налаштування користуача за замовчуванням
+Email format preference: Параметри формату листів
+Plain Text: Чистий текст
+email-event-reminders-help: Вказуе відсилати чи ні нагадування
+Event reminders: Нагадування про подію
+email-event-added: Вказує потрібно чи ні відсилати повідомлення поштою, коли подія додана в ваш календар.
+Events added to my calendar: Події додані в мій календар
+email-event-updated: Вказує потрібно чи ні відсилати повідомлення поштою, коли в ваш календар додано подію.
+Events updated on my calendar: Події оновлені в моєму календарі
+email-event-deleted: Вказує потрібно чи ні відсилати письмові повідомлення, що подію видалено з вашого календаря.
+Events removed from my calendar: Події видалені з мого календаря
+email-event-rejected: Вказує потрібно чи ні відсилати повідомлення поштою, коли учасник відхиляє подію вашого календаря.
+party rejeced event: Подію відхилено учасником
+Allow user custom colors: Дозволити користувачю змінювати кольори.
+gradient-colors: Якщо включено, градієнтні кольори будуть використані. Це може дуже зашкодити виробництву.
+Enable gradient images?: Включити градієнтні картинки для фонових кольорів
+Not available: Не доступний
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Асистенти
+Preferences: Параметри
+Control Panel: Панель Керування
+Users: Користувачі
+Account: Рахунок
+Categories: Категорії
+Views: Види
+Layers: Шари
+Reports: Звіти
+Delete Events: Видалити Події
+Activity Log: Монітор Активності
+Security Audit: Перевірка безпеки
+System Log: Системний Журнал
+Public Preferences: Загальні Параметри
+Unapproved Public Events: Незатверджені Загальні Події
+Administrative Tools: Інструменти Адміністратора
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name: Ім'я існує
+Username already exists.: Ім'я користувача вже існує
+Email address exists: Адреса електроної пошти вже існує
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Додаткові Коментарі (опціонально)
+Approve and Send: Підтвердити і Відіслати
+Approve and Exit: Підтвердити і Вийти
+Hello: Привіт
+An appointment has been approved and comments added by: Зустріч була підтверджена і коментарі додано
+The subject was: Тема була
+The description is: Опис
+Date: Дата
+Time: Час
+Comments: Коментарі
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Режим Адміністратора
+Your assistants: Ваші асистенти
+
+########################################
+# Page: availability.php
+#
+Program Error: Помилка Програми
+day: день
+
+########################################
+# Page: category.php
+#
+Category Icon: Картинка категорії
+Global: Глобальна
+Category Name: Ім'я Категорії
+Color: Колір
+Remove Icon: Видалити картинку
+Add Icon to Category: Додати картинку до категорії
+Upload: Завантаження
+gif 3kb max: файли gif до 3kb
+Search for existing icons: Пошук існуючих картинок
+Add: Додати
+Delete: Видалити
+Make New Category: Додати нову категорію
+
+########################################
+# Page: category_handler.php
+#
+File size over max: Размір файла перевищує допустимий
+File is not a gif image.: Файл не є gif картинкою
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: ДОСТУПНІ КАТЕГОРІЇ
+ENTRY CATEGORIES: КАТЕГОРІЇ ЗАПИСУ
+Remove: Видалити
+Global Category: Глобальнаа Категорія
+Cancel: Відмінити
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: Назначена вами зустріч була відмінена
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Неправильний ідентрифікатор blob
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Добати Коментарій
+Add Attachment: Прикріпити файл
+Subject: Тема
+Comment: Коментарій
+Upload file: Завантажити файл
+Description: Опис
+
+########################################
+# Page: docdel.php
+#
+Removed: Видалено
+
+########################################
+# Page: edit_entry.php
+#
+days: днів
+hours: годин
+minutes: хвилини
+You are not authorized to edit this task: Ви не авторизовані для редагування цієї задачі
+task: задача
+is in a different timezone than you are. Currently: в іншій часовій зоні, ніж ви. В даний момент
+hour ahead of you: час попереду вас
+hour behind you: час після вас
+hours ahead of you: годин поперед вами
+hours behind you: годин після вас
+time here is your TZ: Час введений тут основано на вашій часові зоні
+Edit Entry: Редагувати Запис
+Add Entry: Додати Запис
+Details: Деталі
+Participants: Учасники
+Repeat: Повторити
+Reminders: Нагадування
+brief-description-help: Тут має знаходитись короткий (близько 20 символів) опис події. Цей опис буде видно під час перегляду календаря.
+Brief Description: Короткий опис
+full-description-help: Тут потрібно розмістити детальний опис події. Цю інформацію буде видно при перегляді самої події.
+Full Description: Повний опис
+access-help: Задає рівень доступа до події.<br> <i>Общедоступный:</i> кожен може бачити всі деталі даної події.<br> <i>Конфіденційний:</i> інші користувачі можуть бачити, що у вас певний запис в даний час, але не мають доступу до деталей.
+Access: Доступ
+priority-help: Задає терміновість події. Події з високою швидкістю будть видалені.
+Priority: Терміновість
+High: Висока
+Medium: Середня
+Low: Низька
+category-help: Вказує категорію події
+Category: Категорі
+completed-help: День виконання задачі. Включена тільки якщо відсоток виконання на всіх участках рівний 100%.
+Date Completed: День виконання
+percent-help: Відсоток виконання задачі у даного користувача
+Percent Complete: Відсотків виконано
+All Percentages: Всі відсотки
+location-help: Розташування події
+Location: Місце
+url-help: Адреса події
+URL: Адреса
+date-help: Задає дату події.
+Start Date: Дата початку
+Untimed event: Подія на невизначену подію
+Timed event: Подія на конкретний час
+All day event: Подія на весь день
+TZ Offset: Часова Зона
+time-help: Задає час події.<br> <i>Це поле можна не заповнювати.</i>
+duration-help: Задає тривалість події.<br><i>Це поле можна не заповнювати.</i>
+end-time-help: Визначає час, коли очікується кінець події.
+Start Time: Час початку
+Due Date: Дата кінця
+Due Time: Час кінця
+Site Extras: Можливості сайту
+participants-help: Список учасників даної події.
+Availability: Доступність
+external-participants-help: Вказує список учасників події, які не є користувачами календаря. Користувачі мають бути вказаті по одному на строку і можуть містити адресу e-mail. Якщо адресу e-mail вказано, користувач зможе отримувати повідомлення і нагадування.
+External Participants: Зовнішні Учасники
+repeat-type-help: Виберіть з якою частотою ця подія буде повторюватися. <i>Щомісяця (день тижня)</i> задає щомісячне повторення типу 1-ша неділя, 2-га п'ятниця і т.д. <i>Щомісячна (дата)</i> дозволяє повторення заднім числом місяця.
+Daily: Щодня
+Weekly: Щотижня
+Monthly: Щомісяця
+by day: по дню тижня
+by date: по даті
+by position: по позиції
+Yearly: Щорічно
+Manual: Вручну
+Expert Mode: Режим Експерта
+repeat-end-date-help: Задає день до якого подія має повторюватися.
+Ending: Закінчення
+Forever: Завжди
+Use end date: Використовувати дату завершення
+Number of times: Кількість разів
+repeat-frequency-help: Задає як часто подія повторюється. Значення за замовчуванням 1 означає, що воно має проходити кожен раз, коли наступає визначений час. Значення 2 приведе до того, що подія буде проходити через раз і т.д.
+Frequency: Частота
+Weekdays Only: Тільки по дням тижня
+Week Start: Початок неділі
+repeat-bydayextended-help: Дозволяє вибір дати, що грунтується на дні тижня.
+ByDay: По дню
+All: Все
+repeat-month-help: Вказує по яким місяцям подіє має повторюватися.
+ByMonth: По місяцям
+repeat-bysetpos-help: Дозволяє вибір дати за позиціями всередині місяця.
+BySetPos: По позиції
+repeat-bymonthdayextended-help: Дозволяє вибір дати за днем місяця
+ByMonthDay: За днем місяця
+repeat-byweekno-help: Дозволяє користувачу вибирати список тижнів для повтору події (1,2...53,-53,-52...-1).
+ByWeekNo: По номеру тижня
+repeat-byyearday-help: Дозволяє користувачу вказати список днів року для повтору події (1,2...366,-366,-365...-1).
+ByYearDay: За днем року
+repeat-exceptions-help: Додаткові дні для події за якими вона повинна чи не повинна повторюватися.
+Exclusions: Виключення
+Inclusions: Включення
+Add Exception: Додати виключення
+Add Inclusion: Додати включення
+Delete Selected: Видалити вибране
+Send Reminder: Відіслати нагадування
+When: Коли
+Use Date/Time: Використати Дату/Час
+Use Offset: Використати Зміщення
+Before: До
+After: Після
+Start: Початок
+End/Due: Кінець/До
+Times: Раз
+Every: Кожен
+Delete entry: Видалити запис
+not authorized to edit entry: Ви не маєте прав доступу для видалення даного запису
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Вам призначена нова зустріч
+An appointment has been updated by: Зустріч оновлена
+following conflicts with suggested time: Наступні записи конфліктують з запропонованим часом
+Please look on: Дивіться далі
+to accept or reject this appointment: для підтвердження чи відхилення цієї зустрічі
+to view this appointment: для перегляду цієї зустрічі
+Scheduling Conflict: Конфлікт у розкладі
+Your suggested time of: Ваш запропонований час
+conflicts with the following existing calendar entries: конфліктує з нищенаступними календарними записами
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: Додати Шар
+Edit Layer: Редагувати Шар
+Source: Джерело
+Duplicates: Дублікати
+Show layer events that are the same as your own: Показувати елементи шару, які збігаються з вашими
+Add to Others: Додати до інших
+Add to My Calendar: Додати в Мій Календар
+Delete layer: Видалити шар
+
+########################################
+# Page: edit_layer_handler.php
+#
+no layers for you: Ви не можете створити шар для себе
+only 1 layer per user: Ви можете створити тільки один шар для кожного користувача
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX не встановлено в config.php.
+word characters only: може містити символи тільки (a-zA-Z_0-9)
+Add User: Додати Користувача
+Edit User: Редагувати Користувача
+Calendar ID: ID календаря
+First Name: Ім'я
+Last Name: Прізвище
+Is public calendar: Це загальний календар
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Додати Зовнішній Календар
+Edit Remote Calendar: Редагувати Зовнішній Календар
+Create Layer: Створити Шра
+Reload: Перезавантажити
+Required to View Remote Calendar: Необхідно для перегляду Зовнішнього Календаря
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: Помилка
+Import Results: Результати Завантаження
+Events successfully imported: Події успішно завантажені
+Create a new layer to view this calendar: Створити шари для перегляду цього календаря
+Errors: Помилки
+There was an error parsing the import file or no events were returned: В файлі, що завантажувався було виявлено помилку чи не було даних
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Завтра
+Today: Сьогодні
+Yesterday: Вчора
+Day before yesterday: Позавчора
+Next week: Наступний тиждень
+This week: Цей тиждень
+Last week: Минулий тиждень
+Week before last: Позаминулий тиждень
+Next week and week after: Наступні два тижня
+This week and next week: Цей і наступний тиждень
+Last week and this week: Минулий і цей тиждень
+Last two weeks: Минулі два тижня
+Next month: Наступний місяць
+This month: Цей місяць
+Last month: Минулий місяць
+Month before last: Позаминулий місяць
+Next year: Наступний рік
+This year: Цей рік
+Last year: Минулий рік
+Year before last: Позаминулий рік
+Next 14 days: Наступні 14 днівк
+Next 30 days: Наступні 30 днів
+Next 60 days: Наступні 60 днів
+Next 90 days: Наступні 90 днів
+Next 180 days: Наступні 180 днів
+Next 365 days: Наступні 365 днів
+Invalid report id.: Неправильний ID звіту
+Unnamed Report: Безіменний Звіт
+Add Report: Додати Звіт
+Edit Report: Редагувати Звіт
+Report name: Назва звіту
+User: Користувач
+Current User: Поточний користувач
+Include standard header/trailer: Додавати стандартний заголовок/кінець
+Include previous/next links: Додавати  посилання попередній/наступний
+Include empty dates: Додавати пусті дати
+Date range: Діапазон дат
+Template variables: Шаблонні змінні
+Page template: Шаблон сторінки
+Day template: Шаблон дня
+Event template: Шаблон події
+
+########################################
+# Page: edit_report_handler.php
+#
+Variable N not found: Змінна N не знайдена
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Редагувати заголовок сторінки
+Edit Custom Script/Stylesheet: Редагувати сценарій/таблицю стилей
+Edit Custom Trailer: Редагувати низ сторінки
+
+########################################
+# Page: edit_user.php
+#
+Username: Ім'я користувача
+E-mail address: Адреса електроної пошти
+Password: Пароль
+again: ще раз
+Disabled for demo: Відключено для демонстрації
+Change Password: Змінити пароль
+New Password: Новий пароль
+Set Password: Встановити пароль
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Видаленя користувачів не підтримується
+The passwords were not identical.: Паролі не співпали
+You have not entered a password.: Ви не ввели пароль
+Username cannot be blank.: І'мя користувача не може бути порожнім
+
+########################################
+# Page: export.php
+#
+Export: Експортувати
+Export format: Формат експорту
+Include all layers: Включаючи всі шари
+Export all dates: Експортувати всі дати
+Start date: Дата початку
+End date: Дата завершення
+Modified since: Змінено
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect: Формат експорту невизначений чи неправильний
+
+########################################
+# Page: groups.php
+#
+Add New Group: Додати Нову Групу
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Безіменна Група
+Add Group: Додати Групу
+Edit Group: Редагувати Групу
+Group name: Ім'я Групи
+Updated: Оновлено
+Created by: Додано
+
+########################################
+# Page: group_edit_handler.php
+#
+specify group name: Ви повинні вказати ім'я групи
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Автоматично оновлювати календарі
+auto-refresh-help: Коли включено, перегляд дня, тижня, місяця та список незатверджених подій будуть періодично оновлювати себе.
+Auto-refresh time: Час автоматичного оновлення
+auto-refresh-time-help: Якщо автоматичне оновлення включено, дане поле вказує час між оновленннями.
+Display days with events in bold in year view: Відображати дні з подіями жирним в перегляді року
+Display weekends in week view: Включати вихідні в перегляді тижня.
+Time interval: Часовий інтервал:
+time-interval-help: Вказати наскільки великі часові блоки мають бути в перегляді тижня та дня.
+Nonuser: Календарі некористувачів
+user-customize-color: Вказує, що користувачам дозволено змінювати їх особисту кольорову схему.
+enable-gradient-help: Використовувати градієнтні кольори для фону клітинок.
+Manually entering color values: Вручну введіть дані кольори
+colors-help: Всі кольори мають бути представлені в шістнадцятирічному форматі "#RRGGBB", де RR - червона складова, GG - зелена, BB - блакитна.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Повідомити про помилку
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Додавання/Редагування календарних записів
+Repeat Type: Вид повтору
+For More Information...: Для додаткової інформації...
+Repeat End Date: Останній день повтору
+Repeat Day: День Повтору
+repeat-day-help: Задає в які дні тижня ця подія буде повторюватися ця подія буде повторюватися. Використовується тільки для щотижневого виду подій.
+
+########################################
+# Page: help_import.php
+#
+Import: Імпорт
+This form will allow you to import entries from the Palm Desktop Datebook.: Ця форма дозволить вам завантажувати дані з Palm Desktop Datebook.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Воно має розташовуватись в каталозі вашого Palm <tt>datebook/datebook.dat</tt> в каталозі вашого користувача.
+The following entries will not be imported: Наступні записи не будуть завантажені
+Entries older than the current date: Записи до поточної дати
+Entries created in the Palm Desktop...: Записи створені в Palm Desktop, які ще не було оброблено в HotSync
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Все завантажене з Palm буде переписано в процесі наступного завантаження (доки не пройде дата події).
+Therefore, updates should be made in the Palm Desktop.: Таким чином оновлення мають бути зроблені в Desktop.
+This form will import vCalendar (.vcs) 1.0 events: Ця форма завантажить подію у форматі vCalendar (.vcs) 1.0
+The following formats have been tested: Наступні формати будуть перевірені
+This form will import iCalendar (.ics) events: Ця форма завантажить події у форматі iCalendar (.ics)
+Enabling: Підключення
+Overwrite Prior Import: Переписати наступне завантаження
+
+########################################
+# Page: help_index.php
+#
+Help Index: Індекс підсказки
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Шари зручні для відображення подій інший користувачів у своєму календарі. Ви можете вказати користувача і колір яким його події будуть відображені
+Add/Edit/Delete: Додати/Редагувати/Видалити
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Клік на посилання Редагувати Шари в секції адміністрування внизу сторінки дозволить вам додавати/редагувати/видаляти шари.
+text color of the new layer: Колір тексту, яким буде відображатися шар.
+Disabling: Відключення
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Натисніть посилання Відключити Шари в секції адміністрування внизу сторінки, щоб відключити шари.
+show dupes of your events: Якщо включено, події які співпадають з вашими будуть відображатися.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Натисніть посилання Відключити Шари в секції адміністрування сторінки, щоб відключити шари.
+layer this user on your cal: Вказати користувача, чи події, які ви бажаєте в себе бачити у календаріУ.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Основна Категорія
+default-category-help: Вказує категорію за замовчуванням до якої належить нова подія.
+When I am the boss: Коли я керівник
+Email me event notification: Надсилати мені повідомлення про події по e-mail
+email-boss-notifications-help: Визначає чи може керівник отримувати листи - оповіщення про події
+I want to approve events: Я хочу затверджувати події
+boss-approve-event-help: Визначає, що керівнику потрібно дозволяти події, додані асистентами.
+Subscribe/Publish: Підписатися/Опублікувати
+Allow remote publishing: Дозволити дистанційну підписку
+allow-remote-publishing-help: Визначає чи може дистанційний iCal клієнт поублікувати події в WebCalendar
+remote-publishing-url-help: Показує адресу, яку використовує iCal клієнт для підписки і публікації в WebCalendar.
+allow-remote-subscriptions-help: Визначити чи дистанційні користувача можуть підписатися на ваш календар, дозволити їм бачити ваші події в iCal-загальному додатку (таким якк Apple's iCal чи Mozilla Calendar).
+remote-subscriptions-url-help: Показує адресу, яку мають використовувати користувачі для підписки на ваш календар.
+Enable FreeBusy publishing: Включити поблікацію FreeBusy
+freebusy-enabled-help: Визначає чи може користувацький вільний час бути доступним користуючись  iCal FreeBusy стандартом.
+freebusy-url-help: Адреса для доступу до користувацького списку FreeBusy
+rss-feed-url-help: Адреса доступу до RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Контроль Доступу Користувача дозволяє більш тонші налаштування доступу для користувачів ніж було раніше. Користувачі можуть мати дозвіл за замовчуванням, встанвлені Адміністратором.
+If disabled, this user cannot send you emails.: Якщо виключено, користува не може надсилати вам листи.
+If disabled, this user cannot see you in the participants list.: Якщо виключено, користувач не побачити вас у списку учасників.
+If enabled, this user cannot view the details of any of your entries.: Якщо включено, користувач не може побачити деталі будь-яких із ваших записів.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Публікацію відключено (Адміністратор)
+Publishing Disabled (User): Публікацію відключено (Користувач)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Натисніть щоб вибрати
+Current Icons on Server: Поточні картинки на сервері
+
+########################################
+# Page: import.php
+#
+Disabled: Виключено
+Import format: Формат завантаження
+Exclude private records: Вилучити особисті записи
+Repeated items imported separately: Повторювані події завантажуються окремо. Попередні завантаження не переписуються.
+
+########################################
+# Page: import_handler.php
+#
+Events from prior import marked as deleted: Події з попереднього завантаження помічено на видалення
+Conflicting events: Конфліктуючі події
+The import file contained no data: Файл для завантаження не містить даних
+
+########################################
+# Page: layers.php
+#
+Layer: Шар
+Edit layer: Редагувати шар
+Layers are currently: Шари в даний момент
+Disable Layers: Відключити шари
+Click here: Натисніть тут
+to modify the layers settings for the: змінити налаштування шарів для
+calendar: календар
+Add layer: Додати шар
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Підтвердити
+Approve Selected: Підтвердити Вибране
+Check All: Відмінити все
+Emails Will Not Be Sent: Електроні листи не будуть відіслані
+Reject Selected: Відхилити вибране
+Reject: Відхилити
+Uncheck All: Зняти помітку з усього
+View this entry: Перегляд даного запису
+No unapproved entries for: Немає незатверджених записів для
+Unapproved Entries: Незатверджені записи
+Not authorized: Не авторизований
+Approve this entry?: Затвердити цей запис?
+Reject this entry?: Відхилити цей запис?
+Approve Selected entries?: Затвердити Вибрані записи?
+Reject Selected entries?: Відхилити вибрані записти?
+
+########################################
+# Page: login-app.php
+#
+must enter login/pwrd: Необхідно ввести ім'я та пароль
+save login via cookie: Зберегти імя в браузері, щоб не потрібно було завершувати завантаження в наступний раз
+Login: Вхід
+Access public calendar: Вхід в загальний календар
+cookies-note: <b>Внимание:</b> Цьому додатку потрібні включені.
+
+########################################
+# Page: login.php
+#
+Invalid login: Недопустимий користувач
+you logged out: Ви вийшли із системи
+not registered: Ще не зареєстровані? Вам сюди!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar: Такого некористувацького календаря не існує
+not a public cal: Цей календар не є Загальним
+
+########################################
+# Page: nonusers.php
+#
+make a NUC: Додати новий не користувацький календар
+
+########################################
+# Page: nulogin.php
+#
+Illegal characters in login: Недопустимі символи в імені користувача
+
+########################################
+# Page: pref.php
+#
+Save Preferences: Зберегти Параметри
+Public Access calendar: Календар Загального Доступу
+modify NUCS prefs: Змінити Параметри Некористувацького календаря
+Return to My Preferences: Повернутися в Мої параметри
+Custom Scripts: Інші сценарії
+Timezone Selection: Вибір Часової Зони
+entry-interval-help: Встановити інтервал у хвилинах при зміні часової події
+Entry interval: Введіть інтервал
+hour: час
+minute: хвилина
+theme-reload-help: У зв'язку з кешуванням CSS може виникнути потреба оновити сторінку
+reload page for effect: Сторінці потрібне оновлення, щоб нова тема мала ефект.
+display_byproxy-help: Відобразити справжнього автора сторінкиО view_entry
+Display if created by Assistant: Відобразити якщо створено асистентом
+allow-view-subscriptions-help: Дозволити заборону дистанційного доступу до особистих та конфіденційних записів
+Allow remote viewing of: Дозволити дистанційний перегляд
+entries: записи
+
+########################################
+# Page: publish.php
+#
+No user specified: Не вказано користувача
+
+########################################
+# Page: purge.php
+#
+Purging events for: Видалити подію для
+Finished: Завершено
+Back: Назад
+Check box to delete ALL events for a user: Відмітити для видалення <b>ВСЕХ</b> подій користувача
+Delete all events before: Видалити всі події до
+Preview delete: Попередній перегляд видалення
+Records deleted from: Записи видалено з
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Адреса електроної пошти не можуть бути порожніми
+a new WebCal account: Новий обліковий запис WebCalendar було створено
+Your username is: Ім'я вашого користувача
+Your password is: Ваш пароль
+Please visit: Будь ласка відвідайте
+to log in and start using your account: щоб увійти в систему і почати використовувати свій обліковий запис
+login and change pwd: Ви можете змінити свій пароль після першого входу в систему
+If you received this email in error: Якщо ви отримала цей лист помилково і не підписувались на отримання облікового запису  WebCalendar, ви можете видалити це повідомлення і відповісти з короткою приміткою
+Administrator: Адміністратор
+Welcome: Ласкаво просимо
+Registration: Реєстрація
+Welcome to WebCal: Ласкаво просимо в WebCalendar
+email will arrive: Ваш лист має бути скоро доставлено
+Return to Login screen: Повернутися на сторінку входу
+Password (again): Пароль (повторити)
+account info emailed: Ваші дані будуть відіслані вам по електроній пошті
+Submit: Передати
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Продовжити
+your comments emailed to other parties: (Ваші коментарі будуть включені до листа іншим учасникам )
+An appointment has been rejected by: Зустріч була відхилена
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Додати Новий Зовнішній Календар
+
+########################################
+# Page: report.php
+#
+confidential event: Цей запис конфіденційний
+cont.: продовж.
+Approved: Затверджено
+Deleted: Видалено
+Rejected: Відхилено
+Waiting for approval: В очікувані завтердження
+Unknown: Невідомо
+to manage reports for the Public Access calendar: керувати звітами для календаря Загального Доступу
+Add new report: Додати новий звіт
+Manage Reports: Керувати Звітами
+
+########################################
+# Page: search.php
+#
+Advanced Search: Розширений Пошук
+Search: Пошук
+Keywords: Ключові слова
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Потрібно ввести одне ключове слово чи більше
+Search Results: Результати пошуку
+match found: знайдено відповідність
+matches found: знайдено відповідності
+No matches found: Нічого не знайдено
+
+########################################
+# Page: security_audit.php
+#
+Status: Статус
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Переглянути календар іншого користувача
+
+########################################
+# Page: set_entry_cat.php
+#
+no categories added: Ви не додавали ніяких категорій
+Set Category: Встановити Категорію
+Global Categories cannot be changed.: Глобальні категорії не можуть бути змінені
+
+########################################
+# Page: upcoming.php
+#
+more: ще
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Зовнішні Календарі
+denotes administrative user: визначає адміністративного користувача
+Add New User: Додати нового користувача
+
+########################################
+# Page: usersel.php
+#
+Reset: Скинути
+
+########################################
+# Page: views.php
+#
+Add New View: Додати Новий Вид
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Безіменний Вид
+Add View: Додати Вид
+Edit View: Редагувати Вид
+View Name: Ім'я Виду
+View Type: Тип Видe
+Day by Time: День за часом
+Week (Users horizontal): Тиждень (Користувачі горизонтально)
+Week by Time: Тиждень за часом
+Week (Users vertical): Тиждень (Користувачі вертикально)
+Week (Timebar): Тиждень (Лінія часу)
+Month (Timebar): Місяць (Лінія часу)
+Month (side by side): Місяць (сторінка до сторони)
+Month (on same calendar): Місяць (на тому ж самому календарі)
+
+########################################
+# Page: views_edit_handler.php
+#
+specify a view name: Ви повинні вказати ім'я виду
+
+########################################
+# Page: view_d.php
+#
+no users in view: Немає користувачів для цього виду
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Оновити відсоток виконання
+Completed: Виконано
+Assistant mode: Режим Асистента
+Declined: Відмовлено
+Needs-Action: Необхідна дія
+by: учасника
+Percentage Complete: Відсоток виконання
+External User: Зовнішній користувач
+Update: Оновити
+Attachments: Вкладки
+comments: коментарі
+Show: Показати
+Hide: Сховати
+Approve/Confirm entry: Підтвердити запис
+Reject entry: Відхилити запис
+Set category: Задати категорію
+Copy entry: Скопіювати запис
+This will delete this entry for all users.: Дана операція видалить цей запис у всіх користувачів.
+Edit entry:Редагувати запис
+Edit repeating entry for all dates: Редагувати повторювані події для всіх дат
+Delete repeating event for all dates: Видалити повторювані події для всіх дат
+Edit entry for this date: Редагувати подію на цю дату
+Delete entry only for this date: Видалити подію тільки на цю дату
+from calendar of: з календаря
+This will delete the entry from your calendar.: Це видалить даний запис з вашого календаря.
+from your boss calendar: з календаря вашого керівника
+Do you want to add this entry to your calendar?: Ви бажаєте додати цей запис у ваш календар?
+This will add the entry to your calendar.: Це додасть даний запис у ваш календар.
+email parties: Відіслати повідомлення всім учасниками
+Hide activity log: Сховати монітор активності
+Show activity log: Показати монітор активності
+Export this entry to: Експортувати даний запис в
+
+########################################
+# Page: view_r.php
+#
+dblclick empty cell to add entry: Натисніть двічі на порожню комірку для створення нового запису
+
+########################################
+# Page: week_details.php
+#
+New Entry: Новий запис
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Календарь іншого користувачі
+Category Management: Керувати Категоріями
+Day View: Перегляд Дня
+Edit Event: Змінити Подію
+Month View: Перегляд Місяця
+Common Trailer: Інший Низ сторінки
+User Management: Керувати Користувачами
+Manage Views: Керувати Видами
+Week View: Перегляд Тижня
+Year View: Перегляд Року
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Грудень
+Dec: Груд
+LANGUAGE DEFINED: ВИЗНАЧЕНИЙ МОВОЮ
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database: Помилка з'єднання з базою даних
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Фатальна помилка
+
+########################################
+# Page: includes/functions.php
+#
+This event is private: Це особиста подія
+Conf.: Конф.
+exceeds XXX events/day limit: перевищено обмеження XXX подій в день
+on: на
+All Attendees: Всі учасники
+Busy: Зайнятий
+Tentative: Досвідчений
+Schedule an appointment for: Занести в розклад події про
+Event approved: Подію дозволено
+Journal approved: Журнал затверджений
+Task approved: Задача затверджена
+Attachment: Вкладки
+Event created: Подію створено
+Journal created: Журнал створено
+Task created: Задачу створено
+Event deleted: Подію видалено
+Journal deleted: Журнал видалено
+Task deleted: Задачу створено
+New user via email (self registration): Новий користувач по пошті (самореєстрація)
+New user (self reg): Новий користувач (самореєстрація)
+Notification sent: Повідомлення відіслано
+Event rejected: Подію відхилено
+Journal rejected: Журнал відхилено
+Task rejected: Задачу відхилено
+Reminder sent: Нагадування відіслано
+Event updated: Подію оновлено
+Journal updated: Журнал оновлено
+Task updated: Задачу оновлено
+Delete User: Видалити Користувача
+WK: Тжд
+TASKS: ЗАДАЧІ
+Task_Title: Заголовок
+Due: До
+Task Name: Ім'я задачі
+Task Due Date: Виконати до
+You have XXX unapproved entries: У вас XXX незатверджених подій
+Changes successfully saved: Зміни успішно збережені
+Event: Події
+Action: Дія
+Printer Friendly: Версія для друку
+Generate printer-friendly version: Створити версію для друку
+after: після
+before: до
+end: кінець
+start: початок
+View this event: Переглянути цю подію
+View this task: Переглянути цю задачу
+January: Січень
+February: Лютий
+March: Березень
+April: Квітень
+May_: Травень
+June: Червень
+July: Липень
+August: Серпень
+September: Вересень
+October: Жовтень
+November: Листопад
+Jan: Сч
+Feb: Лют
+Mar: Бер
+Apr: Квіт
+May: Трав
+Jun: Черв
+Jul: Лип
+Aug: Серп
+Sep: Вер
+Oct: Жов
+Nov: Лист
+The following error occurred: Виникла наступна помилка
+You are not authorized.: У вас немає права доступу
+Your current GMT offset is: Ваше зміщенно по GMT
+Unauthorized: Неавторизований
+Error approving event: Помилка в процесі затвердження події
+Error deleting event: Помилка в процесі видалення події
+Error rejecting event: Помилка при намаганні відхилити подію
+Sunday: Неділя
+Monday: Понеділок
+Tuesday: Вівторок
+Wednesday: Середа
+Thursday: Четвер
+Friday: П'ятниця
+Saturday: Субота
+Sun: Нед
+Mon: Пнд
+Tue: Вівт
+Wed: Срд
+Thu: Чт
+Fri: Птн
+Sat: Сбт
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Індекс
+Page: Сторінка
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Мій календар
+Add New Entry: Додати новий запис
+Add New Task: Додати Нову Задачу
+Logout: Вихід
+Home: Домівка
+Back to My Calendar: Повернутися до мого календаря
+Go to: Перейти до
+Manage calendar of: Керувати календарям
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Мову Браузера Не Знайдено
+not supported: не підтримується
+English: Англійський
+English-US: Англійський США
+Afrikaans: Африканська
+Albanian: Алюанська
+Arabic: Арабська
+Basque: Баскська
+Bulgarian: Волгарська
+Catalan: Каталанська
+Chinese (Simplified/GB2312): Китайська (Спрощена/GB2312)
+Chinese (Traditional/Big5): Китайська (Традиційна/Big5)
+Croatian: Хорватська
+Czech: Чешська
+Danish: Датська
+Dutch: Голандська
+Estonian: Естонська
+Finnish: Фінська
+French: Французька
+Galician: Галіціанська
+German: Німецька
+Greek: Грецька
+Hebrew: Єврейська
+Holo (Taiwanese): Холо (Тайванський)
+Hungarian: Венгерська
+Icelandic: Ісландська
+Italian: Італійська                                                                                                                            Japanese: Японська
+Korean: Корейська                                                                                                                        Lithuanian: Литовська
+Norwegian: Норвежська
+Polish: Польська
+Portuguese: Португальська
+Portuguese/Brazil: Португальська/Бразилія
+Romanian: Румунська
+Russian: Російська
+Serbian: Сербська
+Slovak: Словацька
+Slovenian: Словенська
+Spanish: Іспанська
+Swedish: Шведська
+Turkish: Турецька
+Welsh: Валійська
+Browser-defined: Визначена браузером
+event: подія
+journal: журнал
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Невірне ім'я користувача
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: невірний пароль
+no such user: неіснуючий користувач
+
+########################################
+# Page: includes/xcal.php
+#
+MO: ПН
+TU: ВТ
+WE: СР
+TH: ЧТ
+FR: ПТ
+SA: СБ
+SU: НД
+Interval: Інтервал
+Months: Месяців
+Month Days: Днів місяця
+Days: Днів
+Weeks: Тижнів
+Position: Позиція
+Until: До
+Count: Кількість
+Inclusion Dates: Включаючи дати
+Exclusion Dates: Не влючаючи дати
+Unnamed Event: Події без імені
+Event Imported: Події завантажено
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: байт
+kb: кб
+Mb: Мб
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Повідомлення
+authenticate: Помилка SMTP. Не можу авторизуватися
+connect_host: Помилка SMTP. Не можу з'єднатися з SMTP сервером
+data_not_accepted: Помилка SMTP. Дані не прийнято
+encoding: Невідоме кодування
+execute: Не можу виконати
+file_access: Немає доступу до файлу
+file_open: Помилка. Не можу відкрити файл
+from_failed: Наступний відправник недоступний
+instantiate: Не можу використовувати функціональності пошти
+mailer_not_supported: Мейлер не підтримується
+provide_address: Ви повиння пред'явити як мінімум одну адресу отримувача
+recipients_failed: Помилка SMTP. Наступні користувачі недоступні
+
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required.: Необхідна адреса сервера
+Server URL must end with /.: Адреса сервера повина закінчуватися '/'
+Invalid work hours: Неправильні робочі години
+Invalid color for document background.: Недопустимий колір для фону документа
+Invalid color for document title.: Недопустимий колір для заголовка документа
+Invalid color for table cell background.: Недопустимий колір для фону таблиці
+Invalid color for table grid.: Недопустимий колір для сітки таблиці
+Invalid color for table header background.: Недопустимий колір для фону заголовка таблиці
+Invalid color for table text background.: Недопустимий колір для фону текту таблиці
+Invalid color for event popup background.: Недопустимий колир для фону вікна події
+Invalid color for event popup text.: Недопустимий колір для тексту вікна події
+Invalid color for table cell background for today.: Недопустимий колір для фону клітинки поточного дня
+Color format should be RGB: Формат кольору повинен бути виду '#RRGGBB'
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Змінити дату і час для даного елемента?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Ви не ввели короткий опис
+The time you have entered begins before your preferred work hours. Is this correct?: Час вказаний вами починається до початку бажаних робочих годин. Це вірно?
+Invalid Event Date: Недопустима дата подіїНедопустимая дата события
+Please add a participant: Будь ласка додайте учасника
+Invalid Date: Недопустима дата
+You have not entered a valid time of day: Ви не ввели вірний час дня
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Неправильний колір
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ID календаря не може бути порожнім
+First and last names cannot both be blank.: Ім'я та прізвище не можуть бути порожніми одночасно
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+no blank URLs: Адреса не може бути порожньою
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Файл не співпадає з форматом імпорту
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Цей Тиждень
+This Month: Цей Місяць
+This Year: Цей Рік
+Exit: Вихід
+Add New Event: Додати нову подію
+Delete Entries: Видалити елементи
+My Views: Мої Види
+Manage Calendar of: Керувати календарем
+My Reports: Мої Звіти
+My Profile: Мій Профіль
+Public Calendar: Загальний Календар
+Unapproved Events: Незатверджені події
+User Manager: Керування Користувачами
+
+########################################
+# Page: install/index.php
+#
+WebCalendar Installation Wizard: Майстер Налаштування WebCalendar
+Step: Крок
+Single-User: Однокористувацький
+Failure Reason: Причина Помилка
+must manually create DB: Ви повинні створити базу даних вручну
+Database Cache Directory: Шлях до кешу бази даних
+Test Settings: Перевірити налаштування
+Create New: Створити нову
+Database Name: Ім'я бази даних
+Timezone Conversion Successful: Успішне Перетворення Часової Зони
+Error Unable to write to file: Помилка. Неможливо записати у файл
+Successful Login: Вхід успішний
+Invalid Login: Вхід недопустимий
+required only if Safe Mode is On: вимагається тільки якщо Safe Mode встановлено в On
+required only if Remote Calendars are used: вимагається тільки якщо використовуються Дистанційні Календарі
+needed for Gradient Image Backgrounds: вимагається для градієнтних картинок фонут
+Passwords do not match: Паролі не співпадають
+Unable to write password to settings.php file: Неможливо записати пароль у файл settings.php
+Password has been set: Пароль встановлено
+Connection Successful: З'єднання Успішне
+Please go to next page to continue installation: Будь ласка пройдіть на наступну сторінку для продовження налаштування
+Correct your entries or click the Create New button to continue installation: Виправте введені значеня чи натисніть <b>Создать Новую</b> для продовження
+Correct your entries and try again: Виправте введені значення і спробуйте знову
+does not exist: не існіє
+is not writable: не доступний запис
+Error Converting Timezone: Помилка перетворення Часової Зони
+Please change the file permissions of this file: Будь ласка змініть права доступу до файлу
+change includes permission: Будь ласка встановіть права на запис для інших користувачів в каталог includes
+Your settings have been saved: Ваші налаштування збережено
+Error you must specify a Single-User Login: Помилка. Ви повинні вказати ім'я для\\nоднокористувацького режиму
+Full Path (no backslashes): Повний шлях (без поворотних слешів)
+The password contains illegal characters.: Пароль містить неправильні символи.
+follow the wizard: Цей майстер налаштування допоможе вам налаштувати базову установку WebCalendar. Для допомоги та вирішення проблем дивіться
+PHP Version Check: Перевірка версії PHP
+Check to see if PHP 4.1.0 or greater is installed: Перевірте що ваша версія PHP більша чи дорівнює 4.1.0
+PHP version: Версія PHP
+PHP Settings: Налаштування PHP
+Detailed PHP Info: Деталізована інформація про PHP
+Session Check: Перевірка Сесії
+test sessions operation: Для тестування правильності роботи сесії оновіть сторінку
+You should see the session counter increment each time: Ви повинні побачити лічильник сесій, який оновлюється кожного разу
+SESSION COUNTER: ЛІЧИЛЬНИК СЕСІЙ
+Settings.php Status: Статус Settings.php
+settings.php permissions: Права доступу для файлу <b>settings.php</b> встановлені так, що той, хто встановлював не має права змінити його. Будь ласка змініть права доступу до даного файлу для продовження.
+includes directory permissions: Права доступу для каталога <b>includes</b> встановлені так, що той, хто встановлював не має права змінити його. Будь ласка змініть права доступу до даного файлу для продовження.
+Your settings.php file appears to be valid: Ваш файл <b>settings.php</b> успішно перевірено на правильність.
+Configuration Wizard Password: Пароль для Майстера Налаштування
+Create Settings File Password: Створити пароль для файлу налаштування
+db setup directions...: В цій сесії вам потрібно встановити та перевірити з'єднання із сервером вашої бази даних. Вказаний користувач бази даних повинен мати ВСІ привілегії для створення бази даних, таблиць і коритувачів. Якщо це можливо чи ваш доступ до бази даних обмежено вам потрібно самостійно налаштувати вашу базу даних.
+Database Status: Статус Бази Даних
+Supported DBs for your PHP: PHP установка підтримує наступні Бази Даних
+Your current database settings are able to access the database: Вдалося встановити з'єднання з поточними налаштуваннями
+Please Test Settings: Будь ласка перевірте налаштування
+DB NOT accessable: З вашими поточними налаштуваннями <b>невозможно</b> створити з базою даних. Чи з'єднання ще не перевірено.
+Database Settings: Налаштування Бази Даних
+Database Type: Тип Бази Даних
+Server: Сервер
+Connection Persistence: Живучість з'єднання
+All your database tables appear to be up to date. You may proceed to the: Всі таблиці вашої бази оновлені. Ви можете перейти до
+next page and complete your WebCalendar setup: наступної сторінки і закінчити налаштування WebCalendar
+This appears to be a new installation. If this is not correct, please:  Це схоже на нову установку. Якщо це невірно, будь ласка
+go back to the previous page and correct your settings: поверніться на попередню сторінку і виправте свої налаштування
+The database requires some data input: База даних вимага ввід невеликих даних
+Click Update Database to complete the upgrade: Натисніть <b>Оновити Базу Даних</b> для закінчення оновлення
+This appears to be an upgrade from version: Це схоже на оновлення з версії
+In this section we will perform the required database changes to bring your database up to the required level: В цій секції ми будемо виробляти потрібні зміни бази даних, щоб довести її до потрібного рівня
+If you are using a fully supported database, this step will be performed automatically for you: Якщо ви використовуєте повністю підтримувану базу даних, цей крок буде зроблено автоматично
+If not, the required SQL can be displayed and you should be able: Якщо ні, потрібний SQL текст буде відображено і вам
+to cut &amp; paste it into your database server query window: скопіювати і вставити його у вікно запитів вашої бази даних
+No database actions are required: Ніяких дій на стороні бази даних не вимагається
+database requires actions: Наступні дії необхідно виконати на базі даних
+ODBC Underlying Database: Основна База Даних ODBC
+Automatic installation not supported: Автоматична установка повністю не підтримується для вашого типу бази данихх. Вам потрібно вручну створити необхідні таблиці використовуючи SQL , що поставляється. Будь ласка натисніть <b>Показать</b> для продовження. Скопіюйте його у вікно запитів вашої бази даних.
+may take some time: Це може зайняти декілька хвилин
+Install Database: Встановити Базу Даних
+Update Database: Оновити Базу Даних
+Display Required SQL: Показати Необхідний SQL
+final step in WebCal setup: Це останній крок налаштування в установки вашого WebCalendar
+Timezone Conversion: Перетворення Часової Зони
+It appears that you have: Схоже що ви
+NOT: не
+converted your existing WebCalendar event data to GMT.: перетворили дані подій свого існуючого WebCalendar до GMT
+If you have, you may ignore this notice and not proceed with the conversion.: Якщо ви зробили, ви можете ігнорувати це повідомлення і не продовжувати перетворення
+If this is a new installation, you may also ignore this notice.: Якщо це нове налаштування, ви можете ігнорувати це повідомлення.
+Convert Data to GMT: Перетворити дані в GMT
+Application Settings: Налаштування Додатку
+HTTP-based authentication was not detected: Авторизацію на основі HTTP не знайдено
+You will need to reconfigure your web server if you wish to: Вам потрібно переналаштувати ваш веб сервер якщо ви бажаєте
+select Web Server from the User Authentication choices below.: Використовувати "Веб Сервер" із списку "Авторизація Користувачів"
+HTTP-based authentication was detected.: Авторизація на основі HTTP підтримується
+User authentication is being handled by your web server.: Авторизація користувачів може оброблюватися вашим веб сервером
+You should select Web Server from the list of User Authentication choices below.: Вам потрібно використовувати "Веб Сервер" із списку "Авторизація Користувачів"
+Create Default Admin Account: Створити обліковий запис Адміністратора за замовчуванням
+Admin Account Not Found: Обліковий запис Адміністратора не знайдено
+User Authentication: Авторизація Користувачів
+Web-based via WebCal (default): На сторінці WebCalendar (за замовчуванням)
+Web Server: Веб Сервер
+None (Single-User): Ні (Однокористувацька)
+Read-Only: Тільки Читання
+Environment: Оточення
+Production: Виробництво
+Development: Разробка
+Save Settings: Зберегти налаштування
+Launch WebCalendar: Запустити WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating webcal_config: Помилка при оновленні webcal_config
+Perl script required: Ваша попередня версія WebCalendar вимагає запущеного PERL скрипта для перетворення ваших даних. Будь ласка запустіть /tools/upgrade_to_0.9.7.pl потім поверніться на цю сторінку для продовження.
+version requires table update: Ваша попередня версія WebCalendar вимагає оновлення деяких таблиць бази.
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Include Path: Включити  шлях
+Deleting events for: Видалення подій для
+Importing events for: Завантаження подій для
+No data returned from XXX: Ніяких даних не надійшло від
+for non-user calendar: для некористувацького календаря
+No Remote Calendars found: Зовнішні Календарі не знайдено
+remote Calendars disabled: Зовнішні Календарі не включені
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: не можу знайти id події
+could not find event id XXX in database.: не можу знайти подію з id XXX в базі даних.
+This is a reminder for the XXX detailed below.: Це нагадування про XXX описано нижче.
+Pecentage Complete: Відсотків виконано
+Reminder: Нагадування
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Неприпустимі символи в імені користувача
