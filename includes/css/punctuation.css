@@ -1,0 +1,32 @@
+/* $Id$ */
+
+.brackets::before {
+  content:'[';
+}
+.brackets::after {
+  content:']';
+}
+.colon::after {
+  content:': ';
+}
+.dblHyphens::before {
+  content:'-- ';
+}
+.dblHyphens::after {
+  content:' --';
+}
+.ellipsis::after {
+  content:'&hellip;';
+}
+._hyphen::before {
+  content:'-';
+}
+.hyphen_::after {
+  content:'-';
+}
+.parentheses::before {
+  content:'(';
+}
+.parentheses::after {
+  content:')';
+}
