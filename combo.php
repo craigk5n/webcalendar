@@ -134,9 +134,9 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     }
   }
   ?>
-  <br><input style="font-size: 80%" type="button" value="<?php etranslate("Select All");?>" onclick="selectAllCategories()">
+  <br><input style="font-size: 80%" type="button" value="<?php echo translate ( 'Select All' );?>" onclick="selectAllCategories()">
     &nbsp;&nbsp;
-  <input style="font-size: 80%" type="button" value="<?php etranslate("Select None");?>" onclick="selectNoCategories()">
+  <input style="font-size: 80%" type="button" value="<?php echo translate ( 'Select None' );?>" onclick="selectNoCategories()">
   <?php
 ?>
 </div>
@@ -148,12 +148,12 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 
 <ul id="viewtabs" class="shadetabs" style="margin-left: 10px;">
 
-<li><a href="#" rel="contentDay" class="selected"><?php etranslate('Day');?></a></li>
-<li><a href="#" rel="contentWeek"><?php etranslate('Week');?></a></li>
-<li><a href="#" rel="contentMonth"><?php etranslate('Month')?></a></li>
-<li><a href="#" rel="contentYear"><?php etranslate('Year')?></a></li>
-<li><a href="#" rel="contentAgenda"><?php etranslate("Agenda");?></a></li>
-<li><a href="#" rel="contentTasks"><?php etranslate('Tasks');?></a></li>
+<li><a href="#" rel="contentDay" class="selected"><?php echo translate ( 'Day' );?></a></li>
+<li><a href="#" rel="contentWeek"><?php echo translate ( 'Week' );?></a></li>
+<li><a href="#" rel="contentMonth"><?php echo translate ( 'Month' )?></a></li>
+<li><a href="#" rel="contentYear"><?php echo translate ( 'Year' )?></a></li>
+<li><a href="#" rel="contentAgenda"><?php echo translate ( 'Agenda' );?></a></li>
+<li><a href="#" rel="contentTasks"><?php echo translate ( 'Tasks' );?></a></li>
 </ul>
 
 <div style="border:1px solid gray; width:95%; margin-bottom: 1em; margin-left: 10px; margin-right: 10px; padding: 10px">
@@ -183,7 +183,7 @@ Agenda content goes here...
 </table>
 <br>
 <span id="addtask" class="clickable fakebutton"
-  onclick="taskAddPopup()"><?php etranslate('Add Task');?></span>
+  onclick="taskAddPopup()"><?php echo translate ( 'Add Task' );?></span>
 </div>
 
 
@@ -193,34 +193,34 @@ Agenda content goes here...
 <div id="viewEventDiv" style="display: none;">
 <table>
   <tr><td colspan="2"><h3 id="name" class="eventName"> </h3></td></tr>
-  <tr><td class="aligntop bold"><?php etranslate( 'Description_' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Description_' )?></td>
     <td id="description">  </td></tr>
-  <tr><td class="aligntop bold"><?php etranslate( 'Date_' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Date_' )?></td>
     <td id="date">  </td></tr>
-  <tr><td class="aligntop bold"><?php etranslate( 'Time_' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Time_' )?></td>
     <td id="time">  </td></tr>
 <?php if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate( 'Priority_' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Priority_' )?></td>
     <td id="priority">  </td></tr>
 <?php } ?>
-  <tr><td class="aligntop bold"><?php etranslate( 'Access' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Access' )?></td>
     <td id="access">  </td></tr>
 <?php if ( $single_user == 'N' ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate( 'Created by' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Created by' )?></td>
     <td id="createdby">  </td></tr>
 <?php } ?>
-  <tr><td class="aligntop bold"><?php etranslate( 'Updated' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Updated' )?></td>
     <td id="updated">  </td></tr>
 <?php if ( $show_participants ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate( 'Participants_' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Participants_' )?></td>
     <td id="participants">  </td></tr>
 <?php }
 if ( Doc::attachmentsEnabled() ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate( 'Attachments' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Attachments' )?></td>
     <td id="attachments">  </td></tr>
 <?php }
 if ( Doc::commentsEnabled() ) { ?>
-  <tr><td class="aligntop bold"><?php etranslate( 'Comments' )?></td>
+  <tr><td class="aligntop bold"><?php echo translate ( 'Comments' )?></td>
     <td id="comments">  </td></tr>
 <?php } ?>
   <tr><td colspan="2">&nbsp;</td></tr>
@@ -232,12 +232,12 @@ if ( Doc::commentsEnabled() ) { ?>
 <div id="quickAddDiv" style="display: none;">
 <input type="hidden" name="quickAddParticipants" id="quickAddParticipants" value="">
 <table>
-<tr><td class="aligntop bold"><?php etranslate( 'Date_' );?></td>
+<tr><td class="aligntop bold"><?php echo translate ( 'Date_' );?></td>
   <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
   </td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Brief Description');?></td>
+<tr><td class="aligntop bold"><?php echo translate ( 'Brief Description' );?></td>
   <td><input id="quickAddName" name="quickAddName" onfocus="this.select();"></td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Full Description');?></td>
+<tr><td class="aligntop bold"><?php echo translate ( 'Full Description' );?></td>
   <td><textarea id="quickAddDescription" name="quickAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
@@ -254,13 +254,13 @@ if ( Doc::commentsEnabled() ) { ?>
      ?>
      </select></td></tr>
 <?php } ?>
-<tr><td class="aligntop bold"><?php etranslate('Participants_');?></td>
+<tr><td class="aligntop bold"><?php echo translate ( 'Participants_' );?></td>
   <td><span id="quickAddParticipantList"></span>
       &nbsp;&nbsp;
       <input type="text" id="quickAddNewParticipant" name="quickAddNewParticipant" size="20"></td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="eventAddHandler()"><br>
-<span class="clickable" onclick="addEventDetail()"><?php etranslate("Add event detail");?></span>
+<tr><td colspan="2"><input type="button" value="<?php echo translate ( 'Save' );?>" onclick="eventAddHandler()"><br>
+<span class="clickable" onclick="addEventDetail()"><?php echo translate ( 'Add event detail' );?></span>
 </td></tr>
 </table>
 </div>
@@ -269,13 +269,13 @@ if ( Doc::commentsEnabled() ) { ?>
 <div id="taskAddDiv" style="display: none;">
 <form name="taskAddForm" id="taskAddForm">
 <table>
-<tr><td class="aligntop bold"><?php etranslate('Start Date');?></td>
+<tr><td class="aligntop bold"><?php echo translate ( 'Start Date' );?></td>
   <td><?php echo datesel_Print ( 'task_start_date', $date );?></td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Due Date_');?></td>
+<tr><td class="aligntop bold"><?php echo translate ( 'Due Date_' );?></td>
   <td><?php echo datesel_Print('task_due_date', $date); ?></td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Brief Description');?></td>
+<tr><td class="aligntop bold"><?php echo translate ( 'Brief Description' );?></td>
   <td><input id="taskAddName" name="taskAddName"></td></tr>
-<tr><td class="aligntop bold"><?php etranslate('Full Description');?></td>
+<tr><td class="aligntop bold"><?php echo translate ( 'Full Description' );?></td>
   <td><textarea id="taskAddDescription" name="taskAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
@@ -293,8 +293,8 @@ if ( Doc::commentsEnabled() ) { ?>
      </select></td></tr>
 <?php } ?>
 <tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="taskAddHandler()"><br>
-<span class="clickable" onclick="taskAddDetail()"><?php etranslate("Add task detail");?></span>
+<tr><td colspan="2"><input type="button" value="<?php echo translate ( 'Save' );?>" onclick="taskAddHandler()"><br>
+<span class="clickable" onclick="taskAddDetail()"><?php echo translate ( 'Add task detail' );?></span>
 </td></tr>
 </table>
 </form>
@@ -573,7 +573,7 @@ function ajax_get_events ( year, month, day )
     parameters: { action: 'get', startdate: startdate, user: user },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=get' );
+        alert ( '<?php echo translate ( 'no response from server' );?>' + ' events_ajax.php?action=get' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -595,7 +595,7 @@ function ajax_get_events ( year, month, day )
       loadedMonths[monthKey] = 1;
       update_display ( year, month, day );
     },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
   });
   switchingToDayView = false;
   return true;
@@ -618,7 +618,7 @@ function ajax_get_tasks ()
     parameters: { action: 'gett', user: user },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=gett' );
+        alert ( '<?php echo translate ( 'no response from server' );?>' + ' events_ajax.php?action=gett' );
         return;
       }
       //alert ( "Get Tasks Response:\n" + transport.responseText );
@@ -642,7 +642,7 @@ function ajax_get_tasks ()
       loadedTasks = true;
       update_task_display ();
     },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
   });
   return true;
 }
@@ -671,7 +671,7 @@ function view_event ( key, location )
   function viewWindowClosed() {
     viewDialogIsVisible = false;
   }
-  Modalbox.show($('viewEventDiv'), {title: '<?php etranslate('View Event');?>', width: 450, onHide: viewWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+  Modalbox.show($('viewEventDiv'), {title: '<?php echo translate ( 'View Event' );?>', width: 450, onHide: viewWindowClosed, closeString: '<?php echo translate ( 'Cancel' );?>' });
   //Modalbox.resizeToContent();
   viewDialogIsVisible = true;
 
@@ -684,23 +684,23 @@ function view_event ( key, location )
   $('createdby').innerHTML = users[myEvent._owner] ?
     users[myEvent._owner] : myEvent._owner;
   if ( myEvent._priority < 4 )
-    $('priority').innerHTML = '<?php etranslate('High');?>';
+    $('priority').innerHTML = '<?php echo translate ( 'High' );?>';
   else if ( myEvent._priority < 7 )
-    $('priority').innerHTML = '<?php etranslate('Medium');?>';
+    $('priority').innerHTML = '<?php echo translate ( 'Medium' );?>';
   else
-    $('priority').innerHTML = '<?php etranslate('Low');?>';
+    $('priority').innerHTML = '<?php echo translate ( 'Low' );?>';
   if ( myEvent._access == 'P' )
-    $('access').innerHTML = '<?php etranslate('Public');?>';
+    $('access').innerHTML = '<?php echo translate ( 'Public' );?>';
   else if ( myEvent._access == 'C' )
-    $('access').innerHTML = '<?php etranslate('Confidential');?>';
+    $('access').innerHTML = '<?php echo translate ( 'Confidential' );?>';
   else
-    $('access').innerHTML = '<?php etranslate('Private');?>';
+    $('access').innerHTML = '<?php echo translate ( 'Private' );?>';
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) {
 } ?>
 
   $('eventlink').innerHTML = '<a href="view_entry.php?id=' + myEvent._id +
 <?php if ( ! empty ( $user ) && $login != $user ) { echo "'&amp;user=$user' + "; } ?>
-    '" class="fakebutton"><?php etranslate('View Event')?></a>';
+    '" class="fakebutton"><?php echo translate ( 'View Event' )?></a>';
 
   // For now, blank out participants.
   $('participants').innerHTML = '<?php echo $SMALL_LOADING;?>';
@@ -718,7 +718,7 @@ if ( Doc::commentsEnabled() ) { ?>
     parameters: { action: 'eventinfo', id: myEvent._id },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=eventinfo&id=' + myEvent._id );
+        alert ( '<?php echo translate ( 'no response from server' );?>' + ' events_ajax.php?action=eventinfo&id=' + myEvent._id );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -753,7 +753,7 @@ if ( Doc::commentsEnabled() ) { ?>
         text += summary;
       }
       if ( response.attachments.length == 0 )
-        text = '<?php etranslate('None');?>';
+        text = '<?php echo translate ( 'None' );?>';
       $('attachments').innerHTML = text;
 <?php }
 if ( Doc::commentsEnabled() ) { ?>
@@ -765,11 +765,11 @@ if ( Doc::commentsEnabled() ) { ?>
       }
       text += "</dl>\n";
       if ( response.comments.length == 0 )
-        text = '<?php etranslate('None');?>';
+        text = '<?php echo translate ( 'None' );?>';
       $('comments').innerHTML = text;
 <?php } ?>
     },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
   });
 }
 
@@ -915,7 +915,7 @@ function month_view_nav_links ( year, month )
   ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' +
     y + ',' + m + ',' + d + ')">' +
    '<img src="images/combo-today.png" style="vertical-align: middle;">'
-   + "<br><?php etranslate('Today');?></td></tr>";
+   + "<br><?php echo translate ( 'Today' );?></td></tr>";
   // Jul - Dec
   for ( i = 7; i < 13; i++ ) {
     ret += '<td class="';
@@ -953,7 +953,7 @@ function today_link()
   return "<span class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     y + "," + m + "," + d + ")\">" +
    '<img src="images/combo-today.png" style="vertical-align: middle;">'
-   + " <?php etranslate('Today');?></span>";
+   + " <?php echo translate ( 'Today' );?></span>";
 }
 
 // Callback for the user clicking on a cell in the month view, which
@@ -973,10 +973,10 @@ function monthCellClickHandler ( dateYmd )
     quickAddDialogIsOpen = false;
   }
   // Display quick add popup
-  Modalbox.show($('quickAddDiv'), {title: '<?php etranslate('Add Entry');?>', width: <?php echo $quick_add_width;?>, transitions: false, onHide: addWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+  Modalbox.show($('quickAddDiv'), {title: '<?php echo translate ( 'Add Entry' );?>', width: <?php echo $quick_add_width;?>, transitions: false, onHide: addWindowClosed, closeString: '<?php echo translate ( 'Cancel' );?>' });
   Modalbox.resizeToContent();
 
-  $('quickAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Event');?>" );
+  $('quickAddName').setAttribute ( 'value', "<?php echo translate ( 'Unnamed Event' );?>" );
   $('quickAddName').select();
   $('quickAddName').focus();
   $('quickAddDescription').innerHTML = "";
@@ -1076,7 +1076,7 @@ function eventAddHandler()
       participants: participants<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=addevent' );
+        alert ( '<?php echo translate ( 'no response from server') ;?>' + ' events_ajax.php?action=addevent' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -1100,7 +1100,7 @@ function eventAddHandler()
       loadedMonths[monthKey] = 0;
       ajax_get_events ( currentYear, currentMonth, currentDay );
     },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
   });
 }
 
@@ -1134,10 +1134,10 @@ function taskAddPopup ()
     ymd += '0';
   ymd += today.getDate ();
 
-  Modalbox.show($('taskAddDiv'), {title: '<?php etranslate('Add Task');?>', width: <?php echo $quick_add_width;?>, transitions: false, closeString: '<?php etranslate('Cancel');?>' });
+  Modalbox.show($('taskAddDiv'), {title: '<?php echo translate ( 'Add Task' );?>', width: <?php echo $quick_add_width;?>, transitions: false, closeString: '<?php echo translate ( 'Cancel' );?>' });
   Modalbox.resizeToContent();
 
-  $('taskAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Task');?>" );
+  $('taskAddName').setAttribute ( 'value', "<?php echo translate ( 'Unnamed Task' );?>" );
   $('taskAddName').select();
   $('taskAddName').focus();
   $('taskAddDescription').innerHTML = "";
@@ -1171,7 +1171,7 @@ function taskAddHandler()
       description: description<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate('no response from server');?>' + ' events_ajax.php?action=addtask' );
+        alert ( '<?php echo translate ( 'no response from server' );?>' + ' events_ajax.php?action=addtask' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -1198,7 +1198,7 @@ function taskAddHandler()
       loadedTasks = false;
       ajax_get_tasks ();
     },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
   });
 }
 
@@ -1370,7 +1370,7 @@ function build_year_view ( year, month )
     ret = prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>"></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php echo translate ( 'Refresh' );?>"></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"yeartitle\">" + year + "</span>" +
@@ -1442,7 +1442,7 @@ function build_agenda_view ( year, month )
       prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>"></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php echo translate ( 'Refresh' );?>"></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
@@ -1478,7 +1478,7 @@ function build_agenda_view ( year, month )
         className += " clickable";
         leadIn += "<td valign=\"top\" align=\"right\" class=\"" + className + "\"";
 <?php if ( $can_add ) { ?>
-        leadIn += ' title="<?php etranslate('Click to add entry');?>" ' +
+        leadIn += ' title="<?php echo translate ( 'Click to add entry' );?>" ' +
           " onclick=\"return monthCellClickHandler(" + dateYmd + ")\"";
 <?php } ?>
         leadIn += ">" + format_date ( dateYmd, true ) + "</td>\n" +
@@ -1632,10 +1632,10 @@ function build_task_view ()
   img[taskSortCol] = ( taskSortAsc ? 'sort-up' : 'sort-down' );
 
   var content =
-    '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php etranslate('Name');?><img src="images/' + img[0] + '.png"></th>' +
-    '<th class="clickable" onclick="task_sort_handler(1)"><?php etranslate('Due Date');?><img src="images/' + img[1] + '.png"></th>' +
-    '<th class="clickable" onclick="task_sort_handler(2)"><?php etranslate('Priority');?><img src="images/' + img[2] + '.png"></th>' +
-    '<th class="clickable" onclick="task_sort_handler(3)"><?php etranslate('Category');?><img src="images/' + img[3] + '.png"></th>' +
+    '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php echo translate ( 'Name' );?><img src="images/' + img[0] + '.png"></th>' +
+    '<th class="clickable" onclick="task_sort_handler(1)"><?php echo translate ( 'Due Date' );?><img src="images/' + img[1] + '.png"></th>' +
+    '<th class="clickable" onclick="task_sort_handler(2)"><?php echo translate ( 'Priority' );?><img src="images/' + img[2] + '.png"></th>' +
+    '<th class="clickable" onclick="task_sort_handler(3)"><?php echo translate ( 'Category' );?><img src="images/' + img[3] + '.png"></th>' +
     '</tr>' + "\n";
   for ( var i = 0; tasks[i]; i++ ) {
     var task = tasks[i];
@@ -1651,11 +1651,11 @@ function build_task_view ()
       iconImg + task._name + '</td><td class="' + cl + '">' +
       format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">';
     if ( task._priority < 4 )
-      content += '<?php etranslate('High');?>';
+      content += '<?php echo translate ( 'High' );?>';
     else if ( task._priority < 7 )
-      content += '<?php etranslate('Medium');?>';
+      content += '<?php echo translate ( 'Medium' );?>';
     else
-      content += '<?php etranslate('Low');?>';
+      content += '<?php echo translate ( 'Low' );?>';
     content += '</td><td class="' + cl +
       '">';
       var catId = task._category;
@@ -1699,7 +1699,7 @@ function build_day_view ( year, month, day )
       prev_month_link_dayview ( year, month, day ) +
       next_month_link_dayview ( year, month, day ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>"></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php echo translate ( 'Refresh' );?>"></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"daytitle\">" + format_date ( dateYmd, true ) +"</span>" +
@@ -1874,7 +1874,7 @@ function format_time ( timeStr, abbreviate )
 <?php if ( $TIME_FORMAT == '12' ) { ?>
   if ( h < 0 )
     h += 24;
-  var ampm = ( h >= 12 ? '<?php etranslate('pm')?>' : '<?php etranslate('am')?>' );
+  var ampm = ( h >= 12 ? '<?php echo translate ( 'pm' )?>' : '<?php echo translate ( 'am' )?>' );
   h %= 12;
   if ( h == 0 )
     h = 12;

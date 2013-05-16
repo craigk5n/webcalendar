@@ -247,7 +247,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 
     // Public access has no access to tasks.
     if ( $login == '__public__' && $eType == 'task' )
-      etranslate( 'not authorized to edit task' );
+      echo translate ( 'not authorized to edit task' );
 
     // Check UAC.
     if ( access_is_enabled() )
@@ -1622,7 +1622,7 @@ if ( $can_edit ) {
       include_once 'includes/classes/captcha/captcha.php';
       echo captcha::form();
     } else
-      etranslate ( 'CAPTCHA Warning' );
+      echo translate ( 'CAPTCHA Warning' );
   }
 
   echo '
@@ -1662,7 +1662,7 @@ if ( $can_edit ) {
      . translate( 'really delete entry' ) . '\' );">'
      . translate( 'Delete entry' ) . '</a><br>';
 } else
-  etranslate( 'not authorized to edit entry' );
+  echo translate ( 'not authorized to edit entry' );
 // end if ( $can_edit )
 
 // Create a hidden div tag for editing categories...
