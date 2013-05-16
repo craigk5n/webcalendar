@@ -414,32 +414,10 @@ function translate ( $str, $decode = '', $type = '' ) {
 
   return $str;
 }
-
-/**
- * Translates text and prints it.
- *
- * This is just an abbreviation for:
- *
- * <code>echo translate ( $str )</code>
- *
- * @param string   $str     Text to translate and print
- * @param string   $decode  Do we want to envoke html_entity_decode
- * @param string   $type    (A = alphabetic, D = date, N = numeric)
- * @param integer  $date    Default date()
- *
- * @uses translate
- */
-function etranslate ( $str, $decode = '', $type = 'A', $date = '' ) {
-  echo translate ( $str, $decode, $type, $date );
-}
-
 /**
  * Translates and removes HTML from text, and returns it.
  *
  * This is useful for tooltips, which barf on HTML.
- *
- * <b>Note:</b>  {@link etooltip()} prints the result
- * rather than return the value.
  *
  * @param string $str Text to translate
  * @return string The translated text with all HTML removed
@@ -449,22 +427,6 @@ function tooltip( $str, $decode = '' ) {
   $ret = preg_replace( '/<[^>]+>/', '', $ret );
   return ' title="' . preg_replace ( '/"/', "'", $ret ) . '"';
 }
-
-/**
- * Translates and removes HTML from text, and prints it.
- *
- * This is useful for tooltips, which barf on HTML.
- *
- * <b>Note:</b> {@link tooltip()} returns the result
- * rather than print the value.
- *
- * @param string $str Text to translate and print
- * @uses tooltip
- */
-function etooltip ( $str, $decode = '' ) {
-  echo tooltip ( $str, $decode );
-}
-
 /**
  * Generate translated array of language names
  *
@@ -553,13 +515,13 @@ function languageToAbbrev ( $name ) {
 }
 
 /**
- *
-If the user sets "Browser-defined" as their language setting, then use the
-$HTTP_ACCEPT_LANGUAGE settings to determine the language. The array below
-maps browser language abbreviations into our available language files.
-NOTE:  These should all be lowercase on the left side even though the proper
-listing is like "en-US"!  Not sure what the abbreviation is?  Check out:
-http://www.geocities.com/click2speak/languages.html
+If the user sets "Browser-defined" as their language setting,
+then use the $HTTP_ACCEPT_LANGUAGE settings to determine the language.
+The array below maps browser language abbreviations into our available language files.
+NOTE: These should all be lowercase on the left side, even though the proper
+listing is like "en-US"!
+Not sure what the abbreviation is? Check out:
+http://www.metamodpro.com/browser-language-codes
 */
 $browser_languages = array (
   'af' => 'Afrikaans',
@@ -611,6 +573,7 @@ $browser_languages = array (
   'sr' => 'Serbian',
   'sv' => 'Swedish',
   'tr' => 'Turkish',
+  'uk' => 'Ukrainian',
   'zh' => 'Chinese-GB2312', // Simplified Chinese
   'zh-cn' => 'Chinese-GB2312',
   'zh-min-nan-tw' => 'Holo-Big5',
@@ -620,7 +583,6 @@ $browser_languages = array (
 /*
 General purpose translations that may be used elsewhere
 as variables and not picked up by "tools/update_translation.pl".
-
 translate ( 'event' ) translate ( 'journal' )
 
 Because not everyone uses these symbols for numbers:
@@ -630,6 +592,12 @@ translate ( '8' ) translate ( '9' )
 
 To use as masks to get language appropriate separators. Eventually.
 translate( '9,999.99' ) translate( 'time is 140000' )
+
+To better organize numbers, days and months,
+translations/*.txt "page" headers:
+translate ( 'Number Symbols' )
+translate ( 'Day Names (and Abbreviations)' )
+translate ( 'Month Names (and Abbreviations)' )
 */
 
 ?>
