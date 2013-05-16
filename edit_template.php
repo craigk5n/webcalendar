@@ -109,11 +109,11 @@ report_user: ' . $report_user . '<br>
 echo '
     <h2>';
 if ( $type == 'H' )
-  etranslate ( 'Edit Custom Header' );
+  echo translate ( 'Edit Custom Header' );
 elseif ( $type == 'S' )
-  etranslate ( 'Edit Custom Script/Stylesheet' );
+  echo translate ( 'Edit Custom Script/Stylesheet' );
 else
-  etranslate ( 'Edit Custom Trailer' );
+  echo translate ( 'Edit Custom Trailer' );
 
 if ( $user != '__system__' ) {
   user_load_variables ( $user, 'temp_' );

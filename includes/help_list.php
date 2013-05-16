@@ -46,7 +46,7 @@ $help_list[translate( 'Report Bug' )] = 'help_bug.php';
 
 $helpListStr = '
     <div class="helplist">
-      ' . translate( 'Page_' ) . ' ';
+      ' . translate ( 'Page_' ) . ' '; // temporarily translate ( 'Page' )
 $page = 0;
 if ( empty ( $thispage ) )
   $thispage = 0;

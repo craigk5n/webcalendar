@@ -173,13 +173,13 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
   // Mozilla Calendar does not bother showing errors, so they won't see this
   // error message anyhow... Not sure about Apple iCal or other clients.
-  etranslate ( 'Publishing Disabled (Admin)' );
+  echo translate ( 'Publishing Disabled (Admin)' );
   exit;
 }
 
 if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  etranslate ( 'Publishing Disabled (User)' );
+  echo translate ( 'Publishing Disabled (User)' );
   exit;
 }
 

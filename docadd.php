@@ -206,14 +206,14 @@ print_header();
 <table summary="">
 
 <tr><td class="aligntop"><label for="description">
-  <?php etranslate( 'Subject_' )?></label></td>
+  <?php echo translate ( 'Subject_' )?></label></td>
   <td><input type="text" name="description" size="50" maxlength="127"></td></tr>
 <!-- TODO: htmlarea or fckeditor support -->
 <tr><td class="aligntop"><label for="comment">
-  <?php etranslate ( 'Comment_' )?></label></td>
+  <?php echo translate ( 'Comment_' )?></label></td>
   <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate( 'Add Comment' )?>"></td></tr>
+<input type="submit" value="<?php echo translate ( 'Add Comment' )?>"></td></tr>
 </table>
 </form>
 
@@ -225,14 +225,14 @@ print_header();
 <input type="hidden" name="type" value="A">
 <table summary="">
 <tr class="browse"><td>
- <label for="fileupload"><?php etranslate( 'Upload file' );?></label></td><td>
+ <label for="fileupload"><?php echo translate ( 'Upload file' );?></label></td><td>
  <input type="file" name="FileName" id="fileupload" size="45" maxlength="50">
 <tr><td class="aligntop"><label for="description">
-  <?php etranslate( 'Description_' )?></label></td>
+  <?php echo translate ( 'Description_' )?></label></td>
   <td><input type="text" name="description" size="50" maxlength="127"></td></tr>
 
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate( 'Add Attachment' )?>"></td></tr>
+<input type="submit" value="<?php echo translate ( 'Add Attachment' )?>"></td></tr>
 
 </table>
 </form>

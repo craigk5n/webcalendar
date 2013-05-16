@@ -114,7 +114,7 @@ if ( $do_purge ) {
 <form action="purge.php" method="post" name="purgeform" id="purgeform">
 <table>
  <tr><td><label for="user">
-  <?php echo translate( 'User_' );?></label></td>
+  <?php echo translate ( 'User_' );?></label></td>
  <td><select name="username">
 <?php
   $userlist = get_my_users();
@@ -131,28 +131,28 @@ echo $option . 'ALL">' .  $allStr ?></option>
   </select>
  </td></tr>
  <tr><td><label for="purge_all">
-  <?php etranslate( 'to delete ALL events for user' )?></label></td>
+  <?php echo translate ( 'to delete ALL events for user' )?></label></td>
   <td valign="bottom">
   <input type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );">
  </td></tr>
  <tr id="dateArea"><td><label>
-  <?php etranslate( 'Delete all events before' )?></label></td><td>
+  <?php echo translate ( 'Delete all events before' )?></label></td><td>
   <?php echo date_selection ( 'end_', date ( 'Ymd' ) ) ?>
  </td></tr>
  <tr><td><label for="purge_deleted">
-  <?php etranslate( 'Purge deleted only' )?></label></td>
+  <?php echo translate ( 'Purge deleted only' )?></label></td>
   <td valign="bottom">
   <input type="checkbox" name="purge_deleted" value="Y">
  </td></tr>
  <tr><td><label for="preview">
-  <?php etranslate( 'Preview delete' )?></label></td>
+  <?php echo translate ( 'Preview delete' )?></label></td>
   <td valign="bottom">
   <input type="checkbox" name="preview" value="Y" checked>
  </td></tr>
  <tr><td colspan="2">
   <input type="submit" name="delete" value="<?php
     echo $deleteStr?>" onclick="return confirm( '<?php
-    etranslate ( 'really delete events for', true);
+    echo translate ( 'really delete events for', true );
     ?> ' + document.forms[0].username.value + '?' )">
  </td></tr>
 </table>

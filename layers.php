@@ -147,21 +147,21 @@ if ( $single_user == 'N' ) {
     <input type="hidden" name="editLayerId" id="editLayerId" value="">
     <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0">
     <table>
-      <tr><td class="tooltip"<?php etooltip ( 'user to display on your cal' );?>><label><?php echo translate ( 'Source_' );?></label></td>
+      <tr><td class="tooltip"<?php echo tooltip ( 'user to display on your cal' );?>><label><?php echo translate ( 'Source_' );?></label></td>
         <td><select id="editLayerSource" name="editLayerSource">
             <?php echo $users;?>
         </td></tr>
-      <tr><td class="tooltip"<?php etooltip ( 'text color of new layer' );?>><label><?php echo translate ( 'Color_' );?></label></td>
+      <tr><td class="tooltip"<?php echo tooltip ( 'text color of new layer' );?>><label><?php echo translate ( 'Color_' );?></label></td>
         <td><?php echo print_color_input_html ( 'editLayerColor', '',
             '#000000' );?>
         </td></tr>
-      <tr><td class="tooltip"<?php etooltip ( 'show duplicate events' );?>><label><?php echo translate ( 'Duplicates_' );?></label></td>
+      <tr><td class="tooltip"<?php echo tooltip ( 'show duplicate events' );?>><label><?php echo translate ( 'Duplicates_' );?></label></td>
         <td><input type="checkbox" name="editLayerDups" id="editLayerDups">
         </td></tr>
     </table>
     <br>
     <center>
-      <input id="editLayerDeleteButton" type="button" value="<?php etranslate("Delete");?>"
+      <input id="editLayerDeleteButton" type="button" value="<?php echo translate ( 'Delete' );?>"
       onclick="if ( confirm ( '<?php echo $areYouSureStr;?>' ) ) {
         $('editLayerDelete').setAttribute ( 'value', '1' );
         edit_window_closed (); Modalbox.hide ();
@@ -196,7 +196,7 @@ function set_layer_status (enable)
         return;
       }
       if ( response.error ) {
-        alert ( '<?php etranslate("Error");?>:\n\n' + response.message );
+        alert ( '<?php echo translate ( 'Error' );?>:\n\n' + response.message );
       } else {
         //alert("Success! \n\n" + response);
         if ( enable ) {
@@ -212,7 +212,7 @@ function set_layer_status (enable)
         }
       }
     },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
   });
   return true;
 }
@@ -243,7 +243,7 @@ function load_layers()
         alert ( '<?php echo $err_Str;?>' + response.message );
         return;
       }
-      var x = '<table id="layertable" border="1" summary=""><th><?php echo translate( 'Source' );?></th><th><?php echo translate( 'Color' );?></th><th><?php echo translate( 'Duplicates' );?></th></tr>\n';
+      var x = '<table id="layertable" border="1" summary=""><th><?php echo translate ( 'Source' );?></th><th><?php echo translate ( 'Color' );?></th><th><?php echo translate ( 'Duplicates' );?></th></tr>\n';
       for ( var i = 0; response.layers[i]; i++ ) {
         var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
         var l = response.layers[i];
@@ -259,7 +259,7 @@ function load_layers()
       x += '</table>\n';
       $('layerlist').innerHTML = x;
     },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
   });
   return true;
 }
@@ -297,7 +297,7 @@ function edit_window_closed () {
         load_layers();
       }
     },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
   });
   return true;
 }
@@ -306,14 +306,14 @@ function edit_layer (id)
 {
   var titleStr = '';
   if ( id < 0 )
-    titleStr = '<?php etranslate('Add Layer');?>';
+    titleStr = '<?php echo translate ( 'Add Layer' );?>';
   else
-    titleStr = '<?php etranslate('Edit Layer');?>';
+    titleStr = '<?php echo translate ( 'Edit Layer' );?>';
 
   // While I like the visual effects that you get with transitions enabled,
   // it causes some of the javascript (setting selectedIndex) to fail for
   // some reason.  So, it is disabled here.
-  Modalbox.show($('editLayerDiv'), {title: titleStr, width: 375, transitions: false, closeString: '<?php etranslate('Cancel');?>' });
+  Modalbox.show($('editLayerDiv'), {title: titleStr, width: 375, transitions: false, closeString: '<?php echo translate ( 'Cancel' );?>' });
 
   if ( id < 0 ) {
     $('editLayerDeleteButton').setAttribute ( 'disabled', 'true' );

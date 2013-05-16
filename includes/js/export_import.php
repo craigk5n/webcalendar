@@ -51,7 +51,7 @@ function checkExtension() {
       break;
   }
   if ( ! pass ) {
-    alert ( "<?php etranslate ( 'Import Format type mismatch', true ) ?>");
+    alert ( "<?php echo translate ( 'Import Format type mismatch', true ) ?>");
     return false;
   }
   return true;
