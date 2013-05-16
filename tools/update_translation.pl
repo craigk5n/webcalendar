@@ -46,6 +46,10 @@
 #  (which will create update_translation.pl.tdy, the new version)
 #
 ####################################################################
+# Set these once instead of trying to remember to change them in six files.
+$PROGRAM_VERSION = 'v1.3.0';
+$PROGRAM_DATE    = '28 Sep 2008';
+
 use File::Copy;
 use File::Find;
 
@@ -65,7 +69,7 @@ sub hash_a_file {
 
   open( F, $file_in ) || die "Error opening $file_in";
   while ( <F> ) {
-    chomp; # remove newline
+    chomp; #     remove newline
     s/\r*$//g; # remove annoying CR
 
     if ( $in_header && /^#/ ) {
@@ -78,10 +82,14 @@ sub hash_a_file {
     next if ( /^#/ );
     $in_header = 0;
 
+    s/\s\s+/ /g; # Convert multiple spaces to one.
+    s/^\s*//; #    and trim.
+    s/\s*$//;
+
     if ( /\s*:\s*/ ) {
 # after the above if () is evaluated true
-# $` (dollar backtick) = the phrase to the left of colon
-# $' (dollar apostrophy) = the phrase to the right of colon
+# $` (dollar backtick)   = the phrase to the left of colon
+# $' (dollar apostrophe) = the phrase to the right of colon
       $$hash_ref{$`} = $';
    }
  }
@@ -125,6 +133,7 @@ find \&find_pgm_files, $base_dir;
 
 die "Usage: $this [-a][language1 language2 ...]\n" if ( !@infiles );
 
+%base_trans = ();
 %foundin = ();
 # Where are the translate & tooltip phrases?
 foreach $f ( reverse sort @files ) {
@@ -136,16 +145,56 @@ foreach $f ( reverse sort @files ) {
     while ( $data =~ /(translate|tooltip)\s*\(\s*['"]\s*/ ) {
       $data = $';
       if ( $data =~ /\s*['"]\s*[,\)]/ ) {
-        $foundin{$`} = $f;
+        $tmp = $`;
+        $tmp =~ s/\s\s+/ /g; # Convert multiple spaces to one.
+        $tmp =~ s/^\s*//; #    and trim.
+        $tmp =~ s/\s*$//;
+
+        $foundin{$tmp} = $f;
+# English should not have "MISSING" phrases.
+# Update as English-US.txt is read in later.
+        $base_trans{$tmp} = $tmp;
       }
       $data = $';
     }
   }
   close( F );
 }
+
 # Load the base translation file (English) so every phrase has a default.
 print "Reading base translation file: $base_trans_file\n" if ( $verbose );
 $base_header = hash_a_file( $base_trans_file, \%base_trans );
+
+# If, for some reason, these get left out of the English file.
+$base_trans{'charset'} = 'UTF-8'; # Considered current best practice.
+$base_trans{'direction'} = 'ltr';
+$base_trans{'May_'} = 'May';
+foreach $k (
+    '__mm__/__dd__/__yyyy__',
+    '__month__ __dd__',
+    '__month__ __dd__, __yyyy__',
+    '__month__ __yyyy__',
+    '0','1','2','3','4','5','6','7','8','9',
+    'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',
+    'Sun','Mon','Tue','Wed','Thu','Fri','Sat',
+    'SU','MO','TU','WE','TH','FR','SA',
+    'January','February','March','April','June','July',
+    'August','September','October','November','December',
+    'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec' ) {
+  $base_trans{$k} = $k;
+  $foundin{$k} = 'top of page';
+}
+
+foreach $k (
+    'charset',
+    'direction',
+    'May_',
+    'PROGRAM_DATE',
+    'PROGRAM_NAME',
+    'PROGRAM_URL',
+    'PROGRAM_VERSION' ) {
+  $foundin{$k} = 'top of page';
+}
 
 # This hash needs to be full-text.
 foreach $k ( keys %base_trans ) {
@@ -154,21 +203,8 @@ foreach $k ( keys %base_trans ) {
     $base_trans{$k} = $k;
   }
 }
-foreach $k (
-    'charset',
-    'direction',
-    'PROGRAM_DATE',
-    'PROGRAM_NAME',
-    'PROGRAM_URL',
-    'PROGRAM_VERSION',
-    '__mm__/__dd__/__yyyy__',
-    '__month__ __dd__',
-    '__month__ __dd__, __yyyy__',
-    '__month__ __yyyy__',
-    ) {
-  $foundin{$k} = 'top of page';
-}
-( $day, $mon, $year ) = ( localtime( time () ) )[ 3, 4, 5 ];
+
+( $day, $mon, $year ) = ( localtime ( time () ) )[ 3, 4, 5 ];
 
 # Read in 'summary.txt' here to write back out later.
 hash_a_file( 'summary.txt', \%summ ) if ( -f 'summary.txt' );
@@ -199,10 +235,22 @@ foreach $i ( @infiles ) {
   } else {
     %trans = ();
     #
-    # If not updating English, load the translation file we need
+    # If not updating English, load the translation file we need.
     #
     $header = hash_a_file( "$trans_dir/$i", \%trans );
   }
+
+  foreach $k (
+      '0','1','2','3','4','5','6','7','8','9',
+      'charset',
+      'direction',
+      '__mm__/__dd__/__yyyy__',
+      '__month__ __dd__',
+      '__month__ __dd__, __yyyy__',
+      '__month__ __yyyy__' ) {
+    $trans{$k} = $base_trans{$k} if $trans{$k} eq '';
+  }
+
   # Set heading defaults.
   foreach $k ( keys %trans ) {
     if ( $i =~ /english-us/i ) {
@@ -225,11 +273,10 @@ foreach $i ( @infiles ) {
   open( OUT, ">$trans_dir/$i" ) || die "Error writing $i: ";
   print OUT $header;
 
-  # Set these once instead of trying to remember to change them in six files.
   print OUT '
 PROGRAM_NAME: WebCalendar
-PROGRAM_VERSION: v1.2.5
-PROGRAM_DATE: 29 Feb 2012
+PROGRAM_VERSION: ' . $PROGRAM_VERSION . '
+PROGRAM_DATE: ' . $PROGRAM_DATE . '
 PROGRAM_URL: http://www.k5n.us/webcalendar.php' if ( $i =~ /english-us/i );
 
   print OUT '
@@ -270,20 +317,60 @@ direction: ' . $trans{'direction'} . '
 #   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
 ' if ( $i !~ /english-us/i );
 
+  foreach $k (
+      '__mm__/__dd__/__yyyy__',
+      '__month__ __dd__',
+      '__month__ __dd__, __yyyy__',
+      '__month__ __yyyy__' ) {
+    print OUT "
+$k: " . $trans{$k};
+  }
+
   print OUT '
-__mm__/__dd__/__yyyy__: ' . $trans{'__mm__/__dd__/__yyyy__'} . '
-__month__ __dd__: ' . $trans{'__month__ __dd__'} . '
-__month__ __dd__, __yyyy__: ' . $trans{'__month__ __dd__, __yyyy__'} . '
-__month__ __yyyy__: ' . $trans{'__month__ __yyyy__'} . '
+
+' . ( '#' x 80 ) . '
+' . ( '#' x 80 ) if ( $i !~ /english-us/i );
+
+  print OUT '
+
+########################################
+# ' . $trans{'Number Symbols'} . '
+#';
+  foreach $k ( '0','1','2','3','4','5','6','7','8','9' ) {
+    print OUT "
+$k: " . $trans{$k};
+  }
+
+  print OUT '
+
+########################################
+# ' . $trans{'Day Names (and Abbreviations)'} . '
+#';
+  foreach $k ( 'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',
+      'Sun','Mon','Tue','Wed','Thu','Fri','Sat',
+      'SU','MO','TU','WE','TH','FR','SA' ) {
+    print OUT "
+$k: " . $trans{$k};
+  }
+
+  print OUT '
+
+########################################
+# ' . $trans{'Month Names (and Abbreviations)'} . '
+#';
+  foreach $k ( 'January','February','March','April','May_','June',
+      'July','August','September','October','November','December',
+      'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec' ) {
+    print OUT "
+$k: " . $trans{$k};
+  }
+
+  print OUT '
 ';
 
-  print OUT '
-' . ( '#' x 80 ) . '
-' . ( '#' x 80 ) . '
-' if ( $i !~ /english-us/i );
-
   foreach $j ( sort @files ) {
-    $pageheader = "\n" . ( '#' x 40 ) . "\n# Page: $j\n#\n";
+    $pageheader = "\n" . ( '#' x 40 ) . "\n# $trans{'Page'}: \"$j\"\n#\n";
+
     foreach $text ( sort keys %foundin ) {
       next if ( $j ne $foundin{$text} );
       if ( exists $trans{$text} ) {
@@ -314,7 +401,7 @@ __month__ __yyyy__: ' . $trans{'__month__ __yyyy__'} . '
     !$notfound
     ? "All text was found in $i. Good job! :-)\n"
     : "$notfound translation(s) missing.\n"
-  );
+ );
 }
 # Update "summary.txt" while we're here.
 open( OUT, ">summary.txt" ) || die 'Can\'t write "summary.txt"';
