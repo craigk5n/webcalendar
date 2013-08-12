@@ -212,7 +212,7 @@ th,
 .main td.othermonth{
   ' . background_css( $GLOBALS['OTHERMONTHBG'], 100 ) . '
 }
-.main td.today{
+.main td.today, #datesel td #today {
   ' . background_css( $GLOBALS['TODAYCELLBG'], 100 ) . '
 }
 #admin .main td.weekcell,
@@ -358,7 +358,8 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     // Gradient
     //  echo ".cat_{$catId} { "
     //    . background_css( $color, 15 ) . ' color: ' . $fg . "; }\n";
-      echo ".cat_{$catId} { background-color: $color; border: 1px outset $color; color: $fg }\n";
+      echo "#combo .cat_{$catId} { background-color: $color; border: 1px outset $color; color: $fg }\n";
+      echo "#month2 .cat_{$catId} { color: $color }\n";
     }
   }
 }
