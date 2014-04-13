@@ -21,6 +21,8 @@
  *    Retrieve preferences from the webcal_user_pref table.
  */
 
+$tzInitSet = false;
+
 /**
  * Logs a debug message.
  *
@@ -3983,8 +3985,10 @@ function load_global_settings() {
     $GLOBALS['TIMEZONE'] = $GLOBALS['SERVER_TIMEZONE'];
 
   set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
-  if ( function_exists ( "date_default_timezone_set" ) )
-    date_default_timezone_set ( $GLOBALS['TIMEZONE'] );
+  if ( ! $tzInitSet ) {
+    if ( function_exists ( "date_default_timezone_set" ) )
+      date_default_timezone_set ( $GLOBALS['TIMEZONE'] );
+  }
 
   // If app name not set.... default to "Title". This gets translated later
   // since this function is typically called before translate.php is included.
@@ -5620,6 +5624,15 @@ function send_to_preferred_view ( $indate = '', $args = '' ) {
  */
 function set_env ( $val, $setting ) {
   global $tzOffset;
+  global $tzInitSet;
+
+  // Set SERVER TIMEZONE.
+  if ( ! $tzInitSet ) {
+    if ( empty ( $GLOBALS['TIMEZONE'] ) )
+      $GLOBALS['TIMEZONE'] = $GLOBALS['SERVER_TIMEZONE'];
+    if ( function_exists ( "date_default_timezone_set" ) )
+      date_default_timezone_set ( $GLOBALS['TIMEZONE'] );
+  }
 
   $can_setTZ = ( substr ( $setting, 0, 11 ) == 'WebCalendar' ? false : true );
   $ret = false;
