@@ -10,6 +10,6 @@ Documentation:
 - [Online Demo at SF](http://webcalendar.sourceforge.net/demo/)
 
 Developer Resources:
-- [WebCalendar-Database.html](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/docs/WebCalendar-Database.html)
-- [WebCalendar-DeveloperGuide.html](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/docs/WebCalendar-DeveloperGuide.html)
+- [WebCalendar-Database.html](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-Database.html)
+- [WebCalendar-DeveloperGuide.html](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-DeveloperGuide.html)
 
