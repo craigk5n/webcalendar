@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>WebCalendar Upgrading Notes</title>
+    <style type="text/css">
+      body {
+        background: #FFF;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      a {
+        text-decoration: none;
+      }
+      p {
+        margin: 10px;
+      }
+      dl,
+      ul {
+        margin-left: 10px;
+      }
+      h2,
+      h3 {
+        padding: 5px;
+      }
+      h2 {
+        background: #191970;
+        color: #FFF;
+      }
+      dt {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      pre {
+        margin-right: 25px;
+        margin-left: 25px;
+        border: 1px solid #00F;
+        padding: 4px;
+        background: #EEF;
+        font-size: 14px;
+        font-family: courier, monospace;
+      }
+      .tip {
+        padding: 2px;
+        background: #FF0;
+        font-weight: bold;
+      }
+      .note {
+        padding: 2px;
+        background: #87CEFA;
+        font-weight: bold;
+      }
+      hr {
+        margin-bottom: 7px;
+      }
+      .valid {
+        border: 0;
+      }
+      .top {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WebCalendar Upgrading Notes</h1>
+
+    <table border="0" style="margin-left: 50px;">
+    <tr><th style="text-align: right;">WebCalendar Version:</th><td> 1.2.7 </td></tr>
+    <tr><th valign="top" style="text-align: right;">Document Version:</th><td> $Revision: 1.43.2.15 $ <br/> $Date: 2013/02/22 15:56:47 $</td>
+    </table>
+
+    <p style="margin-bottom: 0"><span class="note">Important News:</span> A major
+    improvement beginning with Version 1.1 is the addition of an automated
+    installation script. This script will guide you through the installation
+    process and help identify any problem areas that might prevent successful
+    installation or operation of WebCalendar.</p>
+
+    <ul style="margin-top: 0">
+      <li style="margin-left: 30px">If upgrading, the script will attempt to
+      determine your current installation version and bring your database up to
+      date.</li>
+
+      <li style="margin-left: 30px">If this is a new installation, the
+      installation script will create your database and setup the required
+      tables for you. It can then create a default Administrator account and
+      add the basic configuration data to get you up and running.</li>
+    </ul>
+
+    <p>This installation script was tested primarily using MySQL and Apache on a
+    dedicated server. If using an ISP or a CPANEL installer, your mileage may
+    vary. If problems arise, you can always follow the instruction below as in
+    previous versions and setup your database manually. As with any upgrade,
+    it's always a good idea to <span style="color: #F00">backup your data prior
+    to installation</span>.</p>
+
+    <p>Another major upgrade to WebCalendar for v1.1 is the implementation of
+    full timezone support. In previous versions, all date/time data was stored
+    based on server time and users set their 'time offset' relative to server
+    time. Now, all date/time data will be stored in the database as
+    Greenwich Mean Time (GMT) and users will be able to select a timezone based
+    on their geographical location.</p>
+
+    <p>Having true timezone information available within WebCalendar enables the
+    system to correct for Daylight Savings Time (DST) even if users are in
+    different timezones. The database houses timezone information from 1970 to
+    2038 and can calculate the appropriate GMT offset required to allow users to
+    see events in their true 'local time'.</p>
+
+    <p>The installation script will perform the initial import of the timezone
+    data and guide you through the one-time conversion required to get your
+    existing data converted to GMT.</p>
+
+    <p><a href="install/index.php">Launch the Automatic Installation Script</a></p>
+
+    <h2>Upgrading Steps</h2>
+
+    <p>With the new 1.1 install wizard, you will no longer have to be troubled
+    with uploading SQL files to phpMyAdmin or executing SQL commands yourself.
+    Your database will be upgraded automatically from your current older
+    WebCalendar installation.  Follow the steps below to upgrade to WebCalendar
+    1.1 from an older version of WebCalendar.
+    </p>
+
+    <ol>
+       <li>Make a backup of your current WebCalendar database.  This can be done
+       a couple of different ways.
+         <ul>
+           <li>If you have access to phpMyAdmin, you can use the export function:
+             <ul>
+               <li>Startup phpMyAdmin </li>
+               <li>Select the database from the pulldown on the left under the
+                   label "Databases".  (This will be the same database name
+                   used in your <tt>includes/settings.php</tt> file in your
+                   old WebCalendar install.)</li>
+               <li>Click on the "Export" tab.</li>
+               <li>It's best to use "SQL" for the format so it can be easily imported again.</li>
+               <li>Select "zipped" for compression.  If you don't do this, you will just
+                   see the SQL in your browser window, and you will have to cut and
+                   paste this into a text editor to save it.
+               <li>Click on the "Go" button at the bottom of the page. </li>
+
+             </ul> </li>
+          <li>If you have access to a MySQL command line (typically via shell access on a
+              Linux server), you can use the mysqldump command:<br/>
+             &nbsp;&nbsp;<tt>mysqldump -u<b>USERNAME</b> -p<b>PASSWORD</b> <b>DATABASE</b> > dumpfile.sql</tt>
+             <br/>Of course, replace USERNAME, PASSWORD and DATABASE from the values in
+            your <tt>includes/settings.php</tt> file from your old WebCalendar install.
+         </li>
+         </ul></li>
+       </li>
+
+    <li>Make a backup of your current WebCalendar files on the server.  You would typically
+        do this with an FTP client
+        (like <a href="http://filezilla.sourceforge.net/">FileZilla</a>).
+    </li>
+
+    <li>Install the new WebCalendar files in a <b>new</b> directory on your server.
+        How you do this will depend on what type of access you have to your server.
+        It is best to not overwrite your old WebCalendar install.  The unpacked/unzipped
+        files will create a directory with the current WebCalendar version name in it.
+    </li>
+    <li><b>Optional:</b>
+        If you prefer to use a simple name (like "webcalendar" rather than "WebCalendar-1.1.6"),
+        then you can rename the directory after you've installed the files.
+        A good way to do this might be to rename your old webcalendar install to
+        something like "webcalendar-oldinstall" and rename the new install to be
+        the same name as your old one.
+        <br/><b>Note:</b> If you are planning on renaming the directory, it is best to do
+        this <i>before</i> you proceed to the automated install.
+    </li>
+
+    <li>Change the permissions the permissions of the <tt>includes</tt> directory.
+        If you are doing this from FTP, change directories to the new webcalendar directory
+        and use the following command:<br/>
+        &nbsp;&nbsp;<tt>chmod 777 includes</tt>
+    <li>Change the permissions the permissions of the <tt>icons</tt> directory.
+        If you are doing this from FTP, change directories to the new webcalendar directory
+        and use the following command:<br/>
+        &nbsp;&nbsp;<tt>chmod 777 icons</tt>
+
+    <li>Download a copy of your old <tt>includes/settings.php</tt> file from the old
+        WebCalendar install and have it handy so you can enter the same values in your
+        upgrade process. </li>
+    <li>Download all files in your old <tt>icons</tt> directory from your old
+        WebCalendar and copy the files into the <tt>icons</tt> directory in
+        the new install directory. </li>
+
+   <li>You're now ready to start the install/upgrade wizard.  Point your browser to the
+       web server where you have installed the files.   You only need to specify
+       the webcalendar directory to get to the wizard.  Because there is no
+       <tt>includes/settings.php</tt> file in the new install, you will be redirected
+       to the install/upgrade wizard.</li>
+    
+   <li>Once the wizard is complete, it's a good idea to change your <tt>includes</tt>
+       permissions back to what they were originally for better security. </li>
+    </ol>
+
+    <hr />
+    <h2>Manual Upgrade Instructions</h2>
+
+    <p>Below are the steps needed to manually upgrade from a previous version.
+    <b>You can ignore everything below if you use the Automated Installation
+    Script.</b>  Select the version of your existing install from the list below.
+    If you are more than one version behind (i.e. the new version is v1.1.6,
+    and you're using 0.9.39), click the "next..." link at the end of each
+    section to move to the next version.
+    Always follow the versions in sequence.</p>
+
+    <p><span class="note">Note:</span> Due to large number of database types
+    that WebCalendar can support, it would be impractical to list all the SQL
+    variations here. All SQL listed is taken from the
+    <a href="install/sql/upgrade-mysql.sql" target="_blank">upgrade-mysq.sql</a>
+    file used during the automatic installation process. If you are using a
+    database other then MySQL, you may want refer to the appropriate
+    upgrade-xxxxx.sql file in the install/sql folder.</p>
+
+    <h2>My previous install was...</h2>
+
+    <ul>
+      <li><a href="UPGRADING.html#from_1.1.0a-CVS">1.1.0-CVS or 1.1.0a-CVS</a></li>
+      <li><a href="UPGRADING.html#from_1.0.0">1.0RC3 or 1.0.0</a></li>
+      <li><a href="UPGRADING.html#from_1_0RC2">0.9.45, 1.0RC1 or 1.0RC2</a></li>
+      <li><a href="UPGRADING.html#dot944">0.9.44</a></li>
+      <li><a href="UPGRADING.html#dot943">0.9.43</a></li>
+      <li><a href="UPGRADING.html#dot942">0.9.42</a></li>
+      <li><a href="UPGRADING.html#dot941">0.9.41</a></li>
+      <li><a href="UPGRADING.html#dot940">0.9.40</a></li>
+      <li><a href="UPGRADING.html#dot939">0.9.39</a></li>
+      <li><a href="UPGRADING.html#dot938">0.9.38</a></li>
+      <li><a href="UPGRADING.html#dot937">0.9.37</a></li>
+      <li><a href="UPGRADING.html#dot936">0.9.35 - 0.9.36</a></li>
+      <li><a href="UPGRADING.html#dot934">0.9.27 - 0.9.34</a></li>
+      <li><a href="UPGRADING.html#dot926">0.9.22 - 0.9.26</a></li>
+      <li><a href="UPGRADING.html#dot921">0.9.14 - 0.9.21</a></li>
+      <li><a href="UPGRADING.html#dot913">0.9.12 - 0.9.13</a></li>
+      <li><a href="UPGRADING.html#dot911">0.9.07 - 0.9.11</a></li>
+      <li><a href="UPGRADING.html#dot906">0.9.01 - 0.9.06</a></li>
+      <li><a href="UPGRADING.html#dot9">0.9</a></li>
+    </ul>
+
+    <hr />
+    <h2><a id="dot9">To upgrade from v0.9</a></h2>
+
+    <p>You need to create the table cal_user_pref in tables.sql. You need to
+    create the table cal_entry_user in tables.sql that was mistakenly created as
+    "cal_event_user" in the 0.9 release.</p>
+
+    <a href="UPGRADING.html#dot906">next...</a>
+    <hr />
+
+    <h2><a id="dot906">To upgrade from v0.9.01</a></h2>
+
+    <p>Entirely new tables are used. Use the following commands to convert your
+    existing MySQL tables to the new tables:</p>
+
+    <pre>
+cd tools
+./upgrade_to_0.9.7.pl
+mysql intranet &lt; commands.sql
+    </pre>
+
+    <p>where "intranet" is the name of the MySQL database that contains your
+    WebCalendar tables.</p>
+
+    <a href="UPGRADING.html#dot911">next...</a>
+    <hr />
+
+    <h2><a id="dot911">To upgrade from v0.9.07 - v0.9.11</a></h2>
+
+    <p>To fix a bug in the handing of events at midnight, all the entries with
+    NULL for cal_time are changed to -1. Use the following SQL command:</p>
+
+    <pre>UPDATE webcal_entry SET cal_time = -1 WHERE cal_time is null;</pre>
+
+    <a href="UPGRADING.html#dot913">next...</a>
+    <hr />
+
+    <h2><a id="dot913">To upgrade from v0.9.12 or v0.9.13</a></h2>
+
+    <p>A new table was added to support repeating events. Use the following SQL
+    command:</p>
+
+    <pre>
+CREATE TABLE webcal_entry_repeats (
+  cal_id INT DEFAULT '0' NOT NULL,
+  cal_days CHAR(7),
+  cal_end INT,
+  cal_frequency INT DEFAULT '1',
+  cal_type VARCHAR(20),
+  PRIMARY KEY (cal_id)
+);
+    </pre>
+
+    <a href="UPGRADING.html#dot921">next...</a>
+    <hr />
+
+    <h2><a id="dot921">To upgrade from v0.9.14 - v0.9.21</a></h2>
+
+    <p>A new table was added to support layering. For MySQL, the SQL is:</p>
+
+    <pre>
+CREATE TABLE webcal_user_layers (
+  cal_login varchar(25) NOT NULL,
+  cal_layeruser varchar(25) NOT NULL,
+  cal_color varchar(25) NULL,
+  cal_dups CHAR(1) DEFAULT 'N',
+  cal_layerid INT DEFAULT '0' NOT NULL,
+  PRIMARY KEY ( cal_login, cal_layeruser )
+);
+    </pre>
+
+    <a href="UPGRADING.html#dot926">next...</a>
+    <hr />
+
+    <h2><a id="dot926">To upgrade from v0.9.22 - v0.9.26</a></h2>
+
+    <p>Two new tables were added for custom event fields and reminders.
+    For MySQL the SQL is:</p>
+
+    <pre>
+CREATE TABLE webcal_site_extras (
+  cal_id INT DEFAULT '0' NOT NULL,
+  cal_name VARCHAR(25) NOT NULL,
+  cal_type INT NOT NULL,
+  cal_date INT DEFAULT '0',
+  cal_remind INT DEFAULT '0',
+  cal_data TEXT,
+  PRIMARY KEY ( cal_id, cal_name, cal_type )
+);
+CREATE TABLE webcal_reminder_log (
+  cal_id INT DEFAULT '0' NOT NULL,
+  cal_name VARCHAR(25) NOT NULL,
+  cal_event_date INT NOT NULL DEFAULT 0,
+  cal_last_sent INT NOT NULL DEFAULT 0,
+  PRIMARY KEY ( cal_id, cal_name, cal_event_date )
+);
+    </pre>
+
+    <p>You will also need to setup the tools/send_reminders.php script to be run
+    periodically. I would recommend once an hour. For Linux/UNIX, this is
+    simple. Just use cron and add a line to your crontab file that looks like:</p>
+
+    <pre>1 * * * * cd /some/directory/webcalendar/tools; ./send_reminders.php</pre>
+
+    <p>This will tell cron to run the script at one minute after the hour.
+    Windows users will have to find another way to run the script. There are
+    ports/look-a-likes of cron for Windows, so look around.</p>
+
+    <a href="UPGRADING.html#dot934">next...</a>
+    <hr />
+
+    <h2><a id="dot934">To upgrade from v0.9.27 - v0.9.34</a></h2>
+
+    <p>Six new tables were added for group support, views, system settings and
+    activity logs. For MySQL the SQL is:</p>
+
+    <pre>
+CREATE TABLE webcal_group (
+  cal_group_id INT NOT NULL,
+  cal_last_update INT NOT NULL,
+  cal_name VARCHAR(50) NOT NULL,
+  cal_owner VARCHAR(25) NULL,
+  PRIMARY KEY ( cal_group_id )
+);
+CREATE TABLE webcal_group_user (
+  cal_group_id INT NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_group_id, cal_login )
+);
+CREATE TABLE webcal_view (
+  cal_view_id INT NOT NULL,
+  cal_name VARCHAR(50) NOT NULL,
+  cal_owner VARCHAR(25) NOT NULL,
+  cal_view_type CHAR(1),
+  PRIMARY KEY ( cal_view_id )
+);
+CREATE TABLE webcal_view_user (
+  cal_view_id INT NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_view_id, cal_login )
+);
+CREATE TABLE webcal_config (
+  cal_setting VARCHAR(50) NOT NULL,
+  cal_value VARCHAR(50) NULL,
+  PRIMARY KEY ( cal_setting )
+);
+CREATE TABLE webcal_entry_log (
+  cal_log_id INT NOT NULL,
+  cal_date INT NOT NULL,
+  cal_entry_id INT NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_time INT NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_text TEXT,
+  PRIMARY KEY ( cal_log_id )
+);
+    </pre>
+
+    <a href="UPGRADING.html#dot936">next...</a>
+    <hr />
+
+    <h2><a id="dot936">To upgrade from v0.9.35 or v0.9.36</a></h2>
+
+    <p>The webcal_entry_log table was modified, and a new table
+webcal_entry_repeats_not was created. Use the following SQL for MySQL:</p>
+
+    <pre>
+ALTER TABLE webcal_entry_log ADD cal_user_cal VARCHAR(25);
+CREATE TABLE webcal_entry_repeats_not (
+  cal_id INT NOT NULL,
+  cal_date INT NOT NULL,
+  PRIMARY KEY ( cal_id, cal_date )
+);
+    </pre>
+
+    <a href="UPGRADING.html#dot937">next...</a>
+    <hr />
+
+    <h2><a id="dot937">To upgrade from v0.9.37</a></h2>
+
+    <p>The webcal_entry_user table was modified, and a new table
+    webcal_categories was created. Use the following SQL for MySQL:</p>
+
+    <pre>
+ALTER TABLE webcal_entry_user ADD cal_category INT DEFAULT NULL;
+CREATE TABLE webcal_categories (
+  cat_id INT NOT NULL,
+  cat_name VARCHAR(80) NOT NULL,
+  cat_owner VARCHAR(25),
+  PRIMARY KEY ( cat_id )
+);
+    </pre>
+
+    <a href="UPGRADING.html#dot938">next...</a>
+    <hr />
+
+    <h2><a id="dot938">To upgrade from v0.9.38</a></h2>
+
+    <p>The names of the date settings in the database were modified. All old
+    data settings need to be removed from the database.</p>
+
+    <pre>
+DELETE FROM webcal_config WHERE cal_setting LIKE 'DATE_FORMAT%';
+DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
+    </pre>
+
+    <a href="UPGRADING.html#dot939">next...</a>
+    <hr />
+
+    <h2><a id="dot939">To upgrade from v0.9.39</a></h2>
+
+    <p>Two new tables were created: webcal_asst and webcal_entry_ext_user.
+    And the column cal_ext_for_id was added to the webcal_entry table. Use the
+    following SQL for MySQL:</p>
+
+    <pre>
+CREATE TABLE webcal_asst (
+  cal_boss VARCHAR(25) NOT NULL,
+  cal_assistant VARCHAR(25) NOT NULL,
+  PRIMARY KEY ( cal_boss, cal_assistant )
+);
+CREATE TABLE webcal_entry_ext_user (
+  cal_id INT DEFAULT 0 NOT NULL,
+  cal_fullname VARCHAR(50) NOT NULL,
+  cal_email VARCHAR(75) NULL,
+  PRIMARY KEY ( cal_id, cal_fullname )
+);
+ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
+    </pre>
+
+    <a href="UPGRADING.html#dot940">next...</a>
+    <hr />
+
+    <h2><a id="dot940">To upgrade from v0.9.40</a></h2>
+
+    <p>One new table was added: webcal_nonuser_cals. Use the following SQL for
+    MySQL:</p>
+
+    <pre>
+CREATE TABLE webcal_nonuser_cals (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_admin VARCHAR(25) NOT NULL,
+  cal_firstname VARCHAR(25),
+  cal_lastname VARCHAR(25),
+  PRIMARY KEY ( cal_login )
+);
+    </pre>
+
+    <a href="UPGRADING.html#dot941">next...</a>
+    <hr />
+
+    <h2><a id="dot941">To upgrade from v0.9.41</a></h2>
+
+    <p>Three new tables were added: webcal_report, webcal_report_template, and
+    webcal_import_data. Use the following SQL for MySQL:</p>
+
+    <pre>
+CREATE TABLE webcal_report (
+  cal_report_id INT NOT NULL,
+  cal_allow_nav CHAR(1) DEFAULT 'Y',
+  cal_cat_id INT NULL,
+  cal_include_empty CHAR(1) DEFAULT 'N',
+  cal_include_header CHAR(1) DEFAULT 'Y' NOT NULL,
+  cal_is_global CHAR(1) DEFAULT 'N' NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_report_name VARCHAR(50) NOT NULL,
+  cal_report_type VARCHAR(20) NOT NULL,
+  cal_show_in_trailer CHAR(1) DEFAULT 'N',
+  cal_time_range INT NOT NULL,
+  cal_update_date INT NOT NULL,
+  cal_user VARCHAR(25) NULL,
+  PRIMARY KEY ( cal_report_id )
+);
+CREATE TABLE webcal_report_template (
+  cal_report_id INT NOT NULL,
+  cal_template_type CHAR(1) NOT NULL,
+  cal_template_text TEXT,
+  PRIMARY KEY ( cal_report_id, cal_template_type )
+);
+CREATE TABLE webcal_import_data (
+  cal_id int NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_external_id VARCHAR(200) NULL,
+  cal_import_type VARCHAR(15) NOT NULL,
+  PRIMARY KEY  ( cal_id, cal_login )
+);
+    </pre>
+
+    <a href="UPGRADING.html#dot942">next...</a>
+    <hr />
+
+    <h2><a id="dot942">To upgrade from v0.9.42</a></h2>
+
+    <p>User passwords are now stored using md5 and require the webcal_user table
+    to be altered to accommodate larger password data. Use the following SQL
+    for MySQL:</p>
+
+    <pre>
+ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(32) NULL;
+DROP TABLE webcal_import_data;
+CREATE TABLE webcal_import (
+  cal_import_id INT NOT NULL,
+  cal_date INT NOT NULL,
+  cal_login VARCHAR(25) NULL,
+  cal_name VARCHAR(50) NULL,
+  cal_type VARCHAR(10) NOT NULL,
+  PRIMARY KEY ( cal_import_id )
+);
+CREATE TABLE webcal_import_data (
+  cal_id INT NOT NULL,
+  cal_login VARCHAR(25) NOT NULL,
+  cal_external_id VARCHAR(200) NULL,
+  cal_import_id INT NOT NULL,
+  cal_import_type VARCHAR(15) NOT NULL,
+  PRIMARY KEY  ( cal_id, cal_login )
+);
+    </pre>
+
+    <p>Next, you will need to run the script found in the <tt>tools</tt>
+    subdirectory. This will convert all your passwords from plain text to md5.
+    You can run this from the command line (if you have a standalone version of
+    PHP compiled):</p>
+
+    <pre>
+cd tools
+php convert_passwords.php
+    </pre>
+
+    <p>Or, if you do not have a standalone version of PHP, you can just type in
+    the URL to access the script in your browser:</p>
+
+    <pre>http://yourcalendarurl/tools/convert_passwords.php</pre>
+
+    <p>You may safely delete the file <tt>/tools/convert_passwords.php</tt>
+    after successfully performing this step.</p>
+
+    <p>Delete all webcalendar_login browser cookies. Details should be available
+    on your local browser help section.</p>
+
+    <a href="UPGRADING.html#from_1_0RC2">next...</a>
+    <hr />
+
+    <h2><a id="from_1_0RC2">To upgrade from v0.9.43 - v1.0RC2</a></h2>
+
+    <p>The <tt>webcal_view</tt> table was modified. Execute the following SQL
+    to update your database:</p>
+
+    <pre>
+UPDATE webcal_config SET cal_value = 'week.php' WHERE cal_setting = 'STARTVIEW';
+UPDATE webcal_user_pref SET cal_value = 'day.php'
+  WHERE cal_value = 'day' AND cal_setting = 'STARTVIEW';
+UPDATE webcal_user_pref SET cal_value = 'month.php'
+  WHERE cal_value = 'month' AND cal_setting = 'STARTVIEW';
+UPDATE webcal_user_pref SET cal_value = 'week.php'
+  WHERE cal_value = 'week' AND cal_setting = 'STARTVIEW';
+UPDATE webcal_user_pref SET cal_value = 'year.php'
+  WHERE cal_value = 'year' AND cal_setting = 'STARTVIEW';
+ALTER TABLE webcal_view ADD cal_is_global CHAR(1) NOT NULL DEFAULT 'N';
+UPDATE webcal_view SET cal_is_global = 'N';
+    </pre>
+
+    <a href="UPGRADING.html#from_1.0.0">next...</a>
+    <hr />
+
+    <h2><a id="from_1.0.0">To upgrade from v1.0RC3 - v1.0.0</a></h2>
+
+    <p>Two new tables need to be created to support advanced user access control.
+    One new table is needed to store custom user header/footer template
+    information. Execute the following SQL to update your database:</p>
+
+    <pre>
+CREATE TABLE webcal_access_user (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_other_user VARCHAR(25) NOT NULL,
+  cal_can_approve CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_delete CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_edit CHAR(1) NOT NULL DEFAULT 'N',
+  cal_can_view CHAR(1) NOT NULL DEFAULT 'N',
+  PRIMARY KEY ( cal_login, cal_other_user )
+);
+CREATE TABLE webcal_access_function (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_permissions VARCHAR(64) NOT NULL,
+  PRIMARY KEY ( cal_login )
+);
+ALTER TABLE webcal_nonuser_cals ADD cal_is_public CHAR(1) NOT NULL DEFAULT 'N';
+CREATE TABLE webcal_user_template (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_template_text TEXT,
+  PRIMARY KEY ( cal_login, cal_type )
+);
+    </pre>
+
+    <hr />
+
+    <h2><a id="from_1.1.0a-CVS">To upgrade from v1.1.0-CVS or v1.1.0a-CVS</a></h2>
+
+    <p>A new table is needed to support multiple categories. In addition,
+    several new columns have been added to webcal_entry and one column added to
+    webcal_entry_user to support VTODO tasks, and to webcal_repeats to support
+    the much improved ical support. A new column was added to
+    webcal_entry_repeats_not to differentiate between exclusion and inclusions.
+    Use the following SQL to update your MySQL database:</p>
+
+    <pre>
+ALTER TABLE webcal_entry ADD cal_due_date int(11) default NULL;
+ALTER TABLE webcal_entry ADD cal_due_time int(11) default NULL;
+ALTER TABLE webcal_entry ADD cal_location varchar(50) default NULL;
+ALTER TABLE webcal_entry ADD cal_url varchar(100) default NULL;
+ALTER TABLE webcal_entry ADD cal_completed int(11) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_endtime int(11) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_byday varchar(100) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_bymonth varchar(50) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_bymonthday varchar(100) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_bysetpos varchar(50) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_byweekno varchar(50) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_byyearday varchar(50) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_count int(11) default NULL;
+ALTER TABLE webcal_entry_repeats ADD cal_wkst char(2) default 'MO';
+ALTER TABLE webcal_entry_repeats_not ADD cal_exdate int(1) NOT NULL DEFAULT '1';
+ALTER TABLE webcal_entry_user ADD cal_percent int(11) NOT NULL DEFAULT '0';
+CREATE TABLE webcal_entry_categories (
+  cal_id int(11) NOT NULL default '0',
+  cat_id int(11) NOT NULL default '0',
+  cat_order int(11) NOT NULL default '0',
+  cat_owner varchar(25) default NULL
+);
+    </pre>
+
+    <hr />
+
+    <p>After you complete manually updating your database, you will still need
+    to run the <a href="install/index.php">installation script</a> to perform
+    any necessary data changes needed to convert existing data.</p>
+
+    <p><a href="http://validator.w3.org/check?uri=referer">
+      <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!"
+      class="valid" /></a></p>
+  </body>
+</html>

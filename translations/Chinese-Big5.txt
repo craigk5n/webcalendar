@@ -1,0 +1,414 @@
+# See translations/English-US.txt for instructions.
+#
+# Translated by: Liang-Kuan Liu <lianguan@pchome.com.tw>
+# Last update: 15 February 2001
+#
+# Additional translations 'borrowed' from SourceForge project
+# 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# $Id: Chinese-Big5.txt,v 1.31.2.1 2008/09/05 17:59:19 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: Big5
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: 網路行事曆
+
+########################################
+# Page: access.php
+#
+Go: 前往
+Save: 儲存
+Admin: 管理
+Public: 公眾的
+Confidential: 機密的
+Private: 私人的
+
+########################################
+# Page: add_entry.php
+#
+confidential: 機密的
+private: 私人的
+
+########################################
+# Page: admin.php
+#
+Select: 選擇
+Day: 日
+Week: 週
+Month: 月
+Year: 年
+Settings: 設定中
+Colors: 顏色
+Document background: 文件背景
+Document title: 文件標題
+Table cell background: 表格背景
+Table cell background for current day: 當日顏色
+Help: 說明
+Language: 語系
+Your browser default language is: 你的瀏覽器預設的語系是
+None: 無
+Week starts on: 每週開始於
+Time format: 時間格式
+12 hour: 12時制
+24 hour: 24時制
+Duration: 持續時間
+Work hours: 月曆可顯示之工作時間
+From: 自
+to: 至
+Preferred view: 檢視選擇
+Display week number: 顯示週數(以年計算)
+Display unapproved: 顯示未核准的
+Yes: 是
+No: 否
+Enabled: 啟用的
+
+########################################
+# Page: adminhome.php
+#
+Preferences: 參數設定
+Users: 使用者
+Account: 編輯個人資料
+Layers: 階層架構
+
+########################################
+# Page: approve_entry.php
+#
+Hello: 你好
+The subject was: 主題是
+Date: 日&nbsp;期
+Time: 時&nbsp;間
+
+########################################
+# Page: category.php
+#
+Color: 顏色
+Delete: 刪除
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: 約會已經被取消, 取消者是
+
+########################################
+# Page: docadd.php
+#
+Description: 描&nbsp;述
+
+########################################
+# Page: edit_entry.php
+#
+am: 上午
+pm: 下午
+hours: 時
+minutes: 分
+Edit Entry: 編輯記事
+Add Entry: 新增記事
+Participants: 參與者
+Brief Description: 概要描述
+Full Description: 完整描述
+Access: 顯示設定
+Priority: 優先等級
+High: 高
+Medium: 中
+Low: 低
+Daily: 每日的
+Weekly: 每週的
+Monthly: 每月的
+by day: 依第幾天
+by date: 依日期
+Yearly: 每年的
+Use end date: 使用結束日期設定
+Frequency: 重複次數
+Delete entry: 刪除記事
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: 你有一個新約會, 邀請者是
+Please look on: 請查看
+to accept or reject this appointment: 決定接受或拒絕這個約會
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: 新增階層
+Edit Layer: 編輯階層
+Source: 來源
+Duplicates: 副本
+Show layer events that are the same as your own: 在你的行事曆中同時顯示來源者的記事
+Add to My Calendar: 新增到我的行事曆
+Delete layer: 刪除階層
+
+########################################
+# Page: edit_nonusers.php
+#
+Add User: 新增使用者
+Edit User: 編輯使用者資料
+First Name: 姓
+Last Name: 名
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: 錯誤
+
+########################################
+# Page: edit_report.php
+#
+Today: 今日
+Next month: 上一月
+Next year: 下一月
+User: 使&nbsp;用&nbsp;者
+Current User: 目前使用者
+
+########################################
+# Page: edit_user.php
+#
+Username: 使用者名稱
+E-mail address: 電子郵件地址
+Password: 密碼
+again: 再一次
+Change Password: 變更密碼
+New Password: 新的密碼
+Set Password: 設定密碼
+
+########################################
+# Page: edit_user_handler.php
+#
+The passwords were not identical.: 密碼不一樣
+You have not entered a password.: 你沒有輸入密碼
+
+########################################
+# Page: export.php
+#
+Export: 輸出
+Export format: 輸出格式
+Export all dates: 輸出所有資料
+Start date: 開始日期
+End date: 結束日期
+Modified since: 更改自
+
+########################################
+# Page: group_edit.php
+#
+Updated: 更新
+Created by: 公布者
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: 新增/編輯 行事曆項目
+Repeat Type: 週期性設定
+Repeat End Date: 週期結束日期
+Repeat Day: 重複於
+
+########################################
+# Page: help_index.php
+#
+Help Index: 輔助索引
+
+########################################
+# Page: import.php
+#
+Disabled: 停用的
+
+########################################
+# Page: layers.php
+#
+Layer: 階層
+Edit layer: 編輯階層
+Layers are currently: 階層架構目前是
+Disable Layers: 停用階層架構
+Add layer: 新增階層
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: 核准/確定
+Reject: 拒絕
+View this entry: 檢視這個記事
+Approve this entry?: 核准這個記事?
+Reject this entry?: 拒絕這個記事?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: 你必須輸入使用者名稱及密碼
+Save login via cookies so I dont have to login next time.: 將登入資料儲存於 cookies 中，下次就不需要再登入系統。
+Login: 登入
+cookies-note: <b>注意:</b> 本程式須要 cookies 才能使用.
+
+########################################
+# Page: pref.php
+#
+Save Preferences: 儲存參數
+
+########################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: 約會已經被拒絕, 拒絕者是
+
+########################################
+# Page: report.php
+#
+This event is confidential.: 這個記事是機密的
+Rejected: 拒絕的
+
+########################################
+# Page: search.php
+#
+Search: 搜尋
+Keywords: 關鍵字
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: 你至少要輸入一個搜尋文字或句子
+Search Results: 搜尋結果
+match found: 筆符合查詢
+matches found: 筆符合查詢
+No matches found: 查無資料
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: 檢視其他人的月曆
+
+########################################
+# Page: users.php
+#
+denotes administrative user: 使用者管理員
+Add New User: 新增使用者
+
+########################################
+# Page: view_entry.php
+#
+Approve/Confirm entry: 核准/確定 記事
+Reject entry: 拒絕記事
+This will delete this entry for all users.: 對所有的使用者也將會刪除這個記事.
+Edit entry: 編輯記事
+This will delete the entry from your calendar.: 這將會從你的行事曆刪除這個記事.
+Do you want to add this entry to your calendar?: 你要新增這個記事到你的行事曆嗎?
+This will add the entry to your calendar.: 這將會新增這個記事到你的行事曆.
+
+########################################
+# Page: week_details.php
+#
+New Entry: 新的記事
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: 別人的行事曆
+
+########################################
+# Page: includes/date_formats.php
+#
+December: 十二月
+Dec: 12月
+
+########################################
+# Page: includes/functions.php
+#
+WK: 週
+Printer Friendly: 友善列印
+January: 一月
+February: 二月
+March: 三月
+April: 四月
+May_: 五月
+June: 六月
+July: 七月
+August: 八月
+September: 九月
+October: 十月
+November: 十一月
+Jan: 1月
+Feb: 2月
+Mar: 3月
+Apr: 4月
+May: 5月
+Jun: 6月
+Jul: 7月
+Aug: 8月
+Sep: 9月
+Oct: 10月
+Nov: 11月
+You are not authorized.: 您未經授權
+Sunday: 星期日
+Monday: 星期一
+Tuesday: 星期二
+Wednesday: 星期三
+Thursday: 星期四
+Friday: 星期五
+Saturday: 星期六
+Sun: 週日
+Mon: 週一
+Tue: 週二
+Wed: 週三
+Thu: 週四
+Fri: 週五
+Sat: 週六
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: 我的行事曆
+Add New Entry: 新增記事
+Logout: 登出
+Back to My Calendar: 回到我的行事曆
+Go to: 功能選擇
+
+########################################
+# Page: includes/translate.php
+#
+event: 記事
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: 通告
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: 你沒有輸入概要描述
+The time you have entered begins before your preferred work hours. Is this correct?: 這個時段不在你自定的工作時間內. 這是正確的嗎?
+You have not entered a valid time of day: 你沒有輸入正確的時間
+
+########################################
+# Page: includes/menu/index.php
+#
+Unapproved Events: 未核准的記事

@@ -1,0 +1,79 @@
+# See translations/English-US.txt for instructions.
+#
+# Translations by Krunoslav Zubrinic <krunoslav.zubrinic@vip.hr>, June 2003.
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# $Id: Croatian_utf8.txt,v 1.7 2007/04/20 22:17:34 bbannon Exp $
+# Translation last updated on 04-20-2007
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: UTF-8
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: admin.php
+#
+Month: mjesec
+Year: godina
+
+########################################
+# Page: edit_report.php
+#
+Today: Danas
+Next month: Slijedeći mjesec
+Next year: Slijedeća godina
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Prosinac
+
+########################################
+# Page: includes/functions.php
+#
+WK: Tje
+January: Siječanj
+February: Veljača
+March: Ožujak
+April: Travanj
+May_: Svibanj
+June: Lipanj
+July: Srpanj
+August: Kolovoz
+September: Rujan
+October: Listopad
+November: Studeni
+Sunday: Nedjelja
+Monday: Ponedjeljak
+Tuesday: Utorak
+Wednesday: Srijeda
+Thursday: Četvrtak
+Friday: Petak
+Saturday: Subota

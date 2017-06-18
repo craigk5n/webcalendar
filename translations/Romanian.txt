@@ -1,0 +1,928 @@
+# See translations/English-US.txt for instructions.
+#
+# Translated by:
+# Dan Protopopescu <protopop@physics.gla.ac.uk>
+# Last update: 19 January 2005
+#
+# Translations for page: includes/classes/WebCalMailer.class
+# by: Catalin Constantin <catalin@dazoot.ro>
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
+# $Id: Romanian.txt,v 1.21.2.1 2008/09/05 17:59:22 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: iso-8859-2
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: access.php
+#
+Database error: Eroare in baza de date
+Go: Schimb&#259;
+Save: Salveaz&#259;
+Public Access: Acces public
+Edit: Editeaz&#259;
+Events: Evenimente
+Confidential: Confiden&#355;ial
+Private: Privat
+
+########################################
+# Page: activity_log.php
+#
+Next: Urm&#259;toarea
+Previous: Anterioara
+
+########################################
+# Page: add_entry.php
+#
+confidential: confiden&#355;ial
+private: privat
+Error adding event: Eroare la ad&#259;ugarea evenimentului
+
+########################################
+# Page: admin.php
+#
+Select: Selecteaz&#259;
+Day: Ziua
+Week: S&#259;pt&#259;m&#226;na
+Month: Luna
+Year: Anul
+Bottom: Coad&#259;
+Top: Cap
+Settings: Configura&#355;ie
+Groups: Grupuri
+NonUser Calendars: Calendare non-utilizator
+Other: Altele
+Colors: Culori
+Document background: Fundalul documentului
+Document title: Titlul documentului
+Document text: Textul documentului
+Table grid color: Culoarea liniilor tabelului
+Table header background: Fundalul legendei tabelului
+Table header text: Textul legendei tabelului
+Table cell background: Fundalul casu&#355;elor tabelului
+Table cell background for current day: Fundalul casu&#355;elor tabelului pentru ziua curent&#259;
+Table cell background for weekends: Fundalul casu&#355;elor tabelului pentru weekend
+Event popup background: Fundalul popup-urilor
+Event popup text: Textul popup-urilor
+System Settings: Configura&#355;ie de sistem
+Help: Ajutor
+app-name-help: Specific&#259; numele aplica&#355;iei care va ap&#259;rea &#238;n bara de titlu a browserului pentru toate paginile &#351;i pentru pagina de login. Valoarea specificat&#259; aici va fi c&#259;utat&#259; &#238;n dic&#355;ionar &#238;n a&#351;a fel &#238;nc&#226;t se pot folosi titluri diferite pentru diferite limbi.
+Application Name: Numele aplica&#355;iei
+server-url-help: Specific&#259; URL-ul de baz&#259; al aplica&#355;iei. Acesta va fi inclus c&#226;nd vor fi trimise aduceri-aminte sau notificari prin email.
+Server URL: URL-ul serverului
+language-help: Specific&#259; ce limba s&#259; se foloseasc&#259;.
+Language: Limba
+Your browser default language is: Limba implicit&#259; a browserului t&#259;u este
+None: Nici una
+custom-script-help: Permite ad&#259;ugarea de text javascript/stylesheet care s&#259; fie inserat in sec&#355;iunea "head" a HTML-ului fiec&#259;rei pagini.
+Custom script/stylesheet: Folose&#351;te un script/stylesheet propriu
+custom-header-help: Permite ad&#259;ugarea unui fragment de HTML la &#238;nceputul fiecarei pagini.
+Custom header: Header propriu
+custom-trailer-help: Permite ad&#259;ugarea unui fragment de HTML la sf&#226;r&#351;itul fiecarei pagini.
+Custom trailer: Trailer propriu
+tz-help: Specific&#259; cu c&#238;te ore s&#259; trebuie ajustat&#259; ora serverului pentru ora local&#259;.
+date-format-help: Specific&#259; formatul preferat pentru dat&#259;.
+Date format: Formatul datei
+display-week-starts-on: Specific&#259; dac&#259; s&#259;pt&#259;m&#226;na &#238;ncepe duminica sau lunea. Dac&#259; "Luni" este specificat, atunci numerele s&#259;pt&#259;m&#226;nilor vor fi numerele ISO.
+Week starts on: S&#259;pt&#259;m&#226;na &#238;ncepe
+time-format-help: Specific&#259; ce format s&#259; se foloseasc&#259;:<br /><i>12 ore:</i> Afi&#351;eaz&#259; orele ca 3am, 8:30pm, etc.<br /><i>24 ore:</i> Afi&#351;eaz&#259; orele ca 300, 2030, etc.
+Time format: Formatul orei
+12 hour: 12 ore
+24 hour: 24 ore
+timed-evt-len-help: Specific&#259; metoda de determinare a duratei unui eveniment programat.
+Specify timed event length by: Specific&#259; durata unui eveniment prin
+Duration: Durat&#259;
+End Time: Ora de &#238;ncheiere
+work-hours-help: Specific&#259; intervalul de timp afi&#351;at dintr-o zi
+Work hours: Ore de munc&#259;
+From: De la
+to: p&#226;n&#259; la
+preferred-view-help: Specific&#259; vizualizarea implicit&#259; (zi, s&#259;pt&#259;m&#226;na, lun&#259; sau an).
+Preferred view: Vizualizarea preferat&#259;
+fonts-help: Specific&#259; o list&#259; a fonturilor care pot fi folosite (de exemplu "Arial, Helvetica")
+Fonts: Fonturi
+display-weekends-help: Include weekendurile &#238;n s&#259;pt&#259;m&#226;na.
+display-week-number-help: Specific&#259; dac&#259; numarul s&#259;pt&#259;m&#226;nii (1-52) s&#259; va fi ar&#259;tat &#238;n vizualiz&#259;rile lunar&#259; &#351;i s&#259;pt&#259;m&#226;nal&#259;.
+Display week number: Afi&#351;eaz&#259; numarul s&#259;pt&#259;m&#226;nii
+display-desc-print-day-help: Include descrierea evenimentului &#238;n versiunea pentru tip&#259;rit a vizualizarii pe zile
+Display description in printer day view: Afi&#351;eaz&#259; descrierea &#238;n versiunea pentru tip&#259;rit a vizualizarii pe zile
+yearly-shows-events-help: &#206;n vizualizarea pe an, afi&#351;eaza cu litere ingro&#351;ate datele cu evenimente.
+Display days with events in bold in month and year views: Afi&#351;eaza cu litere &#238;ngro&#351;ate datele cu evenimente &#238;n vizualizarile lunara &#351;i anuala
+allow-view-add-help: O iconi&#355;&#259; '+' va fi inclus&#259; &#238;n vizualiz&#259;ri, permi&#355;&#226;nd utilizatorilor s&#259; adauge u&#351;or evenimente la calendarele altora.
+Include add event link in views: Include op&#355;iunea adauga evenimente &#238;n vizualiz&#259;ri
+allow-view-other-help: Specific&#259; dac&#259; un utilizator poate s&#259; vad&#259; calendarul altuia.
+Allow viewing other users calendars: Permite vizualizarea calendarelor altor utilizatori
+require-approvals-help: C&#226;nd activat&#259;, utilizatorul trebuie s&#259; aprobe evenimentele care vor fie afi&#351;ate in calendarul sau (&#238;n afar&#259; de cazul c&#226;nd "afi&#351;eaz&#259; neaprobatele" este activat). Nepun&#226;nd aici "Nu" va dezactiva aprobarile pentru calendarul cu access public (&#238;n cazul &#238;n care calendarul cu access public este activat).
+Require event approvals: Necesit&#259; aprobare pentru evenimente
+display-unapproved-help: Specific&#259; daca evenimentele neaprobate sunt afi&#351;ate &#238;n calendarul t&#259;u.<br /> Dac&#259; aici este "Da", atunci evenimentele neaprobate for fi afi&#351;ate &#238;n calendarul t&#259;u (intr-o alta culoare).<br /> Dac&#259; aici este "Nu", atunci evenimentele neaprobate trebuie aprobate &#238;nainte de a ap&#259;rea &#238;n calendarul t&#259;u.
+Display unapproved: Afi&#351;eaz&#259; neaprobatele
+conflict-check-help: Verific&#259; dac&#259; sunt conflicte de evenimente (dou&#259; evenimente &#238;n acela&#351;i timp pentru aceea&#351;i persoan&#259;). Dac&#259; la&#351;i aici "Da", vei fii totu&#351;i capabil s&#259; programezi dou&#259; evenimente &#238;n acela&#351;i timp dar cu confirmare special&#259;. Dac&#259; pui aici "Nu", atunci nu se va verifica dac&#259; sunt conflicte. Op&#355;iunea recomandat&#259; este "Da".
+Check for event conflicts: Verific&#259; dac&#259; sunt conflicte de evenimente
+Yes: Da
+No: Nu
+conflict-months-help: Dac&#259; se alege verificarea conflictelor ("Verific&#259; dac&#259; sunt conflicte de evenimente" este "Da"), aceast&#259; valoare specific&#259; c&#226;te luni &#238;nainte s&#259; fie verificate conflictele. Dac&#259; ad&#259;ugarea de evenimente ia prea mult timp, &#238;ncearc&#259; s&#259; reduci acest numar.
+Conflict checking months: C&#226;te luni &#238;n viitor s&#259; fie verificate conflictele
+conflict-check-override-help: Permite utilizatorilor s&#259; &#238;ncalce conflictele de evenimente &#351;i s&#259; programeze dou&#259; sau mai multe evenimente &#238;n acela&#351;i timp.
+Allow users to override conflicts: Permite utilizatorilor s&#259; &#238;ncalce conflictele
+limit-appts-help: Permite ca administratorul s&#259; poat&#259; fixa o limit&#259; maxim&#259; a numarului total de evenimente pe care un utilizator le poate programa pentru o singur&#259; zi.
+Limit number of timed events per day: Limiteaza numarul de evenimente programate pentru o singur&#259; zi
+limit-appts-number-help: Specific&#259; numarul maxim number de evenimente pe care un utilizator le poate programa &#238;ntr-o zi.
+Maximum timed events per day: Numarul de maxim de evenimente ce pot fi programate pentru o singur&#259; zi
+disable-priority-field-help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Prioritate" din paginile cu informatie despre evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
+Disable Priority field: Dezactiveaz&#259; op&#355;iunea "Prioritate"
+disable-access-field-help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Acces" din paginile cu informatie despre evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
+Disable Access field: Dezactiveaz&#259; op&#355;iunea "Acces"
+disable-participants-field-help: Selectand "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Participan&#355;i" din paginile cu informa&#355;ie despre evenimente, prevenind ca utilizatorii s&#259; adauge al&#355;i utilizatori la evenimentele proprii. Dac&#259; activezi aceast&#259; op&#355;iune ar trebui s&#259; dezactivezi &#351;i op&#355;iunea "Permite vizualizarea calendarelor altor utilizatori".
+Disable Participants field: Dezactiveaz&#259; optiunea "Participan&#355;i"
+disable-repeating-field-help: Select&#226;nd "Da" &#238;nl&#259;tur&#259; op&#355;iunea "Repeti&#355;ii" c&#226;nd se adaug&#259; evenimente, f&#259;c&#238;nd interfa&#355;a mai simpl&#259; pentru &#238;ncep&#259;tori.
+Disable Repeating field: Dezactiveaz&#259; op&#355;iunea "Repeti&#355;ii"
+allow-html-description-help: C&#226;nd aceast&#259; proprietate este activat&#259;, utilizatorii pot include HTML &#238;n descrierea evenimentelor. Dezactivat&#259;, simbolurile HTML vor fi transformate in a&#351;a fel &#238;nc&#226;t s&#259; apar&#259; ca simplu text. Aten&#355;ie! Activ&#226;nd aceast&#259; proprietate permite utilizatorilor s&#259; linkeze imagini de pe alte situri.
+Allow HTML in Description: Permite HTML &#238;n descrieri
+popup-includes-siteextras-help: C&#226;nd aceast&#259; op&#355;iune este activat&#259;, permite ca op&#355;iunile speciale din site_extras.php s&#259; fie ar&#259;tate &#238;n popup-uri.
+Display Site Extras in popup: Afi&#351;eaz&#259; op&#355;iunile speciale &#238;n popup-uri
+remember-last-login-help: C&#226;nd aceast&#259; proprietate este activat&#259;, numele utilizatorului va fi auto-inserat &#238;n pagina de login (dar nu &#351;i parola), iar dup&#259; login preferin&#355;ele utilizatorului vor fi &#238;nc&#259;rcate (incluz&#226;nd culorile &#351;i limba selectate).
+Remember last login: &#354;ine minte ultimul login
+allow-public-access-help: C&#226;nd aceast&#259; op&#355;iune este activat&#259;, calendarul este deschis publicului (doar pentru citire) iar autentificarea nu mai este necesar&#259;.
+Allow public access: Permite accesul public
+public-access-default-visible: Evenimentele din calendarul public vor aparea automat &#238;n calendarele toturor utilizatorilor.
+Public access visible by default: Acces public implicit
+public-access-default-selected: La ad&#259;ugarea unui nou eveniment, utilizatorul public va fi considerat participant implicit.
+Public access is default participant: Utilizatorul public e participant implicit.
+public-access-view-others-help: La accesul public &#238;n sistem, specific&#259; dac&#259; utilizatorul poate vedea calendarele altora.
+Public access can view other users: Prin acces public se pot vedea calendarele altora
+public-access-can-add-help: Dac&#259; se alege aceast&#259; optiune, utilizatori care acceseaz&#259; sistemul prin acces public vor fi capabili s&#259; adauge noi evenimente care &#238;ns&#259; nu vor ap&#259;rea &#238;n calendar &#238;nainte ca un administrator s&#259; le aprobe.
+Public access can add events: Se pot ad&#259;uga evenimente prin acces public
+public-access-add-requires-approval-help: Specific&#259; dac&#259; evenimentele ad&#259;ugate via acces public necesit&#259; aprobare &#238;nainte de a fi afi&#351;ate.
+Public access new events require approval: Evenimentele ad&#259;ugate via acces public necesit&#259; aprobare
+public-access-sees-participants-help: Dac&#259; se alege aceast&#259; optiune, utilizatori care acceseaz&#259; sistemul prin acces public vor putea vedea participan&#355;ii &#238;n detaliile fiec&#259;rui eveniment.
+Public access can view participants: Participan&#355;ii pot fi v&#259;zu&#355;i prin acces public
+groups-enabled-help: Activeaz&#259; suport pentru grupuri, prmi&#355;&#226;nd utilizatorilor s&#259; selecteze grupuri de utilizatori.
+Groups enabled: Activeaz&#259; grupuri
+user-sees-his-group-help: Dac&#259; se alege aceast&#259; op&#355;iune, utilizatorii nu vor putea vedea al&#355;i utilizatori cu care nu au nici un grup &#238;n comun.
+User sees only his groups: Utilizatorul vede doar propriile grupuri
+nonuser-enabled-help: Dac&#259; se alege aceast&#259; op&#355;iune, administratorii vor avea posibilitatea sa adauge calendare non-utilizator.
+Nonuser enabled: Calendarele non-utilizator sunt activate
+nonuser-list-help: Unde s&#259; fie afi&#351;ate calendare non-utilizator &#238;n lista participan&#355;ilor
+Nonuser list: Pune &#238;n lista participan&#355;ilor la
+Enabled: Activate
+reports-enabled-help: Dac&#259; aceast&#259; op&#355;iune este aleas&#259;, utilizatorii vor vedea o sec&#355;iune intitulat&#259; "Rapoarte" &#238;n josul paginii &#351;i vor putea crea rapoarte personale. &#206;n plus, utilizatorii administrativi pot crea rapoarte globale care s&#259; apar&#259; pe paginile tuturor utilizatorilor.
+Reports enabled: Rapoartele sunt activate
+subscriptions-enabled-help: Specific&#259; daca utilizatorii nelocali se pot abona la un calendar utilizator WebCalendar, permi&#355;&#238;ndu-le s&#259; vad&#259; evenimentele de tip WebCalendar &#238;n aplica&#355;ii compatibile cu iCal (ca de exemplu iCal-ul lui Apple sau Mozilla Calendar).
+Allow remote subscriptions: Permite abonamente nelocale
+categories-enabled-help: Adaug&#259; suport pentru categorii de evenimente.
+Categories enabled: Activeaz&#259; categorii
+allow-external-users-help: Specific&#259; daca un utilizator non-calendar poate fi ad&#259;ugat la un eveniment, permi&#355;&#226;ndu-i s&#259; fie listat ca participant.
+Allow external users: Accept&#259; utilizatori externi
+external-can-receive-notification-help: C&#226;nd utilizatorii externi sunt acceptati iar utilizarea emailului este activat&#259;, utilizatorii externi pot primi notifica&#355;ii prin email c&#226;nd un eveniment este ad&#259;ugat, actualizat sau &#351;ters (dac&#259; adresa utilizatorului extern este cunoscut&#259;).
+External users can receive email notifications: Utilizatorii externi pot primi email
+external-can-receive-reminder-help: C&#226;nd utilizatorii externi sunt acceptati iar utilizarea emailului este activat&#259;, utilizatorii externi pot primi aduceri-aminte (dac&#259; adresa utilizatorului extern este cunoscut&#259;).
+External users can receive email reminders: Utilizatorii externi pot primi aduceri-aminte
+email-enabled-help: Activeaz&#259;/dezactiveaz&#259; trimiterea de email pentru notifica&#355;ii sau aduceri-aminte. Pune aici "nu" daca serverul t&#259;u nu este configurat s&#259; trimit&#259; email.
+Email enabled: Email activat
+email-default-sender: Specific&#259; adresa de email implicit&#259; a expeditorului la trimiterea de aduceri-aminte.
+Default sender address: Adresa de email implicit&#259; a expeditorului
+Default user settings: Configuratia implicit&#259; pentru utilizatori
+email-event-reminders-help: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte.
+Event reminders: Aduceri-aminte
+email-event-added: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte prin email c&#226;nd un eveniment este ad&#259;ugat &#238;n calendarul t&#259;u.
+Events added to my calendar: Evenimente ad&#259;ugate &#238;n calendarul meu
+email-event-updated: Specific&#259; dac&#259; s&#259; fie trimise aduceri-aminte prin email c&#226;nd un eveniment este actualizat &#238;n calendarul t&#259;u.
+Events updated on my calendar: Eveniments actualizate &#238;n calendarul meu
+email-event-deleted: Specific&#259; dac&#259; s&#259; se trimit&#259; notifica&#355;ii prin email c&#226;nd un eveniment este &#351;ters din calendarul t&#259;u.
+Events removed from my calendar: Evenimente &#351;terse din calendarul meu.
+email-event-rejected: Specific&#259; dac&#259; s&#259; se trimit&#259; notifica&#355;ii prin email c&#226;nd un utilizator refuz&#259; un eveniment din calendarul t&#259;u.
+Event rejected by participant: Eveniment refuzat de c&#259;tre participant
+Allow user to customize colors: Permite utilizatorilor sa-&#351;i aleag&#259; culorile
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Asisten&#355;i
+Preferences: Preferin&#355;e
+Users: Utilizatori
+Account: Cont
+Categories: Categorii
+Views: Vizualizari
+Layers: Straturi
+Reports: Rapoarte
+Delete Events: &#350;terge evenimente
+Activity Log: Jurnal de activitate
+Public Preferences: Preferin&#355;e publice
+Unapproved Public Events: Evenimente publice neaprobate
+Administrative Tools: Unelte administrative
+
+########################################
+# Page: approve_entry.php
+#
+Hello: Buna
+The subject was: Subiectul era
+The description is: Descrierea este
+Date: Data
+Time: Ora
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Modul 'administrator'
+Your assistants: Asisten&#355;ii t&#259;i
+
+########################################
+# Page: availability.php
+#
+day: zi
+
+########################################
+# Page: category.php
+#
+Global: Global&#259;
+Category Name: Numele categoriei
+Color: Culoarea
+Add: Adaug&#259;
+Delete: &#350;terge
+Make New Category: Adaug&#259; o nou&#259; categorie
+
+########################################
+# Page: catsel.php
+#
+Remove: &#350;terge
+Cancel: Anuleaz&#259;
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: O programare de-a ta a fost anulat&#259; de c&#259;tre
+
+########################################
+# Page: docadd.php
+#
+Description: Descriere
+
+########################################
+# Page: edit_entry.php
+#
+days: zile
+hours: ore
+minutes: minute
+Edit Entry: Editeaz&#259; eveniment
+Add Entry: Adaug&#259; eveniment
+Details: Detalii
+Participants: Participan&#355;i
+Repeat: Repet&#259;
+brief-description-help: Aceasta ar trebui s&#259; fie o scurt&#259; descriere (cam 20 de litere) a evenimentului. Aceasta va reprezenta evenimentul c&#226;nd ne uitam &#238;n calendar.
+Brief Description: Scurt&#259; descriere
+full-description-help: Aceasta ar trebui s&#259; descrie complet evenimentul. Aceste informa&#355;tii pot fi v&#259;zute c&#226;nd utilizatorul cite&#351;te despre eveniment.
+Full Description: Descriere detaliat&#259;
+access-help: Specific&#259; nivelul de acces pentru un eveniment dat.<br /> <i>Public</i>: Oricine poate vedea toate detaliile evenimentului.<br /><i>Confidential</i>: Al&#355;ii pot vedea c&#259; ai notat&#259; o data &#351;i or&#259;, dar nu pot citi detaliile.
+Access: Acces
+priority-help: Specific&#259; prioritatea evenimentului. Evenimentele cu prioritate ridicat&#259; vor fi afi&#351;ate cu litere ingro&#351;ate.
+Priority: Prioritate
+High: Ridicat&#259;
+Medium: Medie
+Low: Scazut&#259;
+category-help: Specific&#259; tipul evenimentului.
+Category: Categorie
+date-help: Specific&#259; data evenimentului.
+Untimed event: Eveniment far&#259; ora fixata
+Timed event: Eveniment cu ora fixat&#259;
+All day event: Eveniment cuprinz&#226;nd toat&#259; ziua
+Timezone Offset: Diferen&#355;a de fus orar
+time-help: Specific&#259; ora evenimentului. Selecteaz&#259; fie "Eveniment cu ora fixat&#259;" (pentru evenimente programate la moment anume din zi), fie "Eveniment fara or&#259; fixat&#259;" (pentru evenimente care nu se petrec la o or&#259; anume - ca de exemplu o zi liber&#259;), fie "Cuprinz&#226;nd toat&#259; ziua" (pentru evenimente care iau toat&#259; ziua - de exemplu o aniversare).
+duration-help: Specific&#259; durata (in ore:minute) a evenimentului.<br /><i>Poate fi l&#259;sat gol.</i>
+end-time-help: Specific&#259; ora la care se a&#351;teapt&#259; ca evenimentul s&#259; se termine.
+participants-help: Listeaz&#259; participan&#355;ii din aceast&#259; &#238;nregistrare.
+external-participants-help: Specific&#259; o list&#259; de participan&#355;i la eveniment care nu sunt utilizatori ai calendarului. Ace&#351;ti utilizatori trebuie listati c&#226;te unul pe linie &#351;i se pot include cu adrese de email. Daca adresa de email este specificata, utilizatorul poate primi notificari &#351;i aduceri-aminte.
+External Participants: Participan&#355;i externi
+repeat-type-help: Selecteaz&#259; c&#226;t de des un eveniment trebuie repetat. <i>Lunar (pe zile)</i> permite ca un eveniment s&#259; fie repetat de exemplu &#238;n fiecare prim&#259; Mar&#355;i a lunii sau a treia Joi a lunii, etc. <i>Lunar (pe date)</i> permite repetarea pe o dat&#259; fix&#259; a lunii.
+Daily: Zilnic
+Weekly: S&#259;pt&#259;m&#226;nal
+Monthly: Lunar
+by day: pe zile
+by date: dup&#259; data
+Yearly: Anual
+repeat-end-date-help: Specific&#259; p&#226;n&#259; la ce dat&#259; s&#259; se repete evenimentul.
+Use end date: Folose&#351;te data final&#259;
+repeat-frequency-help: Spune c&#226;t de des un eveniment trebuie repetat. Cifra implicit&#259; 1 arat&#259; ca trebuie repetat de fiecare dat&#259;. Specific&#226;nd 2 va face ca evenimentul s&#259; se repete la fiecare dou&#259; s&#259;pt&#259;m&#226;ni (dac&#259; <i>Tipul repeti&#355;iei</i> este <i>S&#259;pt&#259;m&#226;nal&#259;</i>), din dou&#259; &#238;n dou&#259; luni (dac&#259; <i>Tipul repeti&#355;iei</i> este <i>Lunar&#259;</i>), etc.
+Frequency: Frecven&#355;a
+All: Toate
+Send Reminder: Trimite aducere-aminte
+Delete entry: &#350;terge aceast&#259; &#238;nregistrare
+You are not authorized to edit this entry.: Nu e&#351;ti autorizat(&#259;) s&#259; editezi acest eveniment
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: O nou&#259; programare a fost facut&#259; pentru tine de c&#259;tre
+An appointment has been updated by: O programare a fost re&#238;nnoit&#259; de c&#259;tre
+The following conflicts with the suggested time: Urmatoarele sunt &#238;n conflict cu ora sugerat&#259;
+Please look on: Te rog uit&#259;-te la
+to accept or reject this appointment: pentru a accepta sau refuza aceast&#259; programare
+to view this appointment: pentru a vedea aceast&#259; programare
+Scheduling Conflict: Conflict de orare
+Your suggested time of: Ora sugerat&#259; pentru tine de
+conflicts with the following existing calendar entries: este &#238;n conflict cu urm&#259;toarele evenimente din acest calendar
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: Adaug&#259; stratul
+Edit Layer: Editeaz&#259; stratul
+Source: Sursa
+Duplicates: Duplicate
+Show layer events that are the same as your own: Afi&#351;eaz&#259; evenimentele din acest strat care sunt identice cu ale tale
+Add to My Calendar: Adaug&#259; la calendarul meu
+Delete layer: &#350;terge stratul
+
+########################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself.: Nu po&#355;i crea un strat pentru tine insu&#355;i
+You can only create one layer for each user.: Po&#355;i crea un singur strat per utilizator
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX nu are valoarea dat&#259; &#238;n config.php.
+word characters only: poate s&#259; con&#355;in&#259; doar litere &#351;i(sau) cifre (a-zA-Z_0-9)
+Add User: Adaug&#259; utilizator
+Edit User: Editeaz&#259; utilizator
+Calendar ID: ID-ul calendarului
+First Name: Prenume
+Last Name: Nume (de familie)
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: Eroare
+Import Results: Rezultatul importului
+Events successfully imported: Evenimentele au fost importate cu succes
+Errors: Erori
+There was an error parsing the import file or no events were returned: Eroare la citirea fi&#351;ierului importat sau lips&#259; de evenimente
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: M&#226;ine
+Today: Ast&#259;zi
+Yesterday: Ieri
+Day before yesterday: Alalt&#259;ieri
+Next week: S&#259;pt&#259;m&#226;na urm&#259;toare
+This week: S&#259;pt&#259;m&#226;na aceasta
+Last week: S&#259;pt&#259;m&#226;na trecut&#259;
+Week before last: Cu dou&#226; s&#259;pt&#259;m&#226;ni in urm&#259;
+Next week and week after: Cele dou&#226; s&#259;pt&#259;m&#226;ni urm&#259;toare
+This week and next week: Aceasta &#351;i urm&#259;toarea s&#259;pt&#259;m&#226;na
+Last week and this week: S&#259;pt&#259;m&#226;na aceasta &#351;i cea trecut&#226;
+Last two weeks: Ultimele dou&#259; s&#259;pt&#259;m&#226;ni
+Next month: Luna urm&#226;toare
+This month: Luna aceasta
+Last month: Luna trecut&#226;
+Month before last: Cu dou&#226; luni &#238;n urm&#226;
+Next year: Anul urmator
+This year: Anul acesta
+Last year: Anul trecut
+Year before last: Cu doi ani &#238;n urm&#226;
+Invalid report id.: ID-ul acestui raport este invalid
+Unnamed Report: Raport fara nume
+Add Report: Adaug&#259; raport
+Edit Report: Editeaz&#259; raport
+Report name: Numele raportului
+User: Utilizator
+Current User: Utilizatorul curent
+Include standard header/trailer: Include &#238;nceput/sf&#226;r&#351;it standard
+Include previous/next links: Include linkuri "anterior/urm&#259;tor"
+Include empty dates: Include date goale
+Date range: Interval de date
+Template variables: Variabile &#351;ablon
+Page template: &#350;sblonul paginii
+Day template: &#350;sblonul zilei
+Event template: &#350;sblonul evenimentului
+
+########################################
+# Page: edit_report_handler.php
+#
+Variable N not found: Variabila N nu a fost gasit&#259;
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Editeaz&#259; headerul personalizat
+Edit Custom Script/Stylesheet: Editeaz&#259; textul personalizat (script/stylesheet)
+Edit Custom Trailer: Editeaz&#259; trailerul personalizat
+
+########################################
+# Page: edit_user.php
+#
+Username: Utilizator
+E-mail address: Adresa de email
+Password: Parol&#259;
+again: din nou
+Disabled for demo: Dezactivat pentru demonstra&#355;ie
+Change Password: Schimb&#259; parola
+New Password: Noua parol&#259;
+Set Password: Seteaz&#259; parola
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: &#350;tergerea utilizatorilor nu este permis&#259;
+The passwords were not identical.: Parolele nu erau identice
+You have not entered a password.: Nu a fost introdus&#259; parola
+
+########################################
+# Page: export.php
+#
+Export: Export&#259;
+Export format: Formatul de export
+Include all layers: Include toate straturile
+Export all dates: Export&#259; toate datele
+Start date: Data ini&#355;ial&#259;
+End date: Data final&#259;
+Modified since: Modificat&#259; din
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect: formatul de export este incorect sau nu a fost definit
+
+########################################
+# Page: groups.php
+#
+Add New Group: Adaug&#259; un nou grup
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Far&#259; nume
+Add Group: Adaug&#259; grup
+Edit Group: Editeaz&#259; grup
+Group name: Numele grupului
+Updated: Actualizat&#259;
+Created by: Creat&#259; de
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Trebuie specificat un nume de grup
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Auto-actualizeaz&#259; calendarele
+auto-refresh-help: C&#226;nd activat&#259;, vizualiz&#259;rile pe zile, s&#259;pt&#259;m&#226;nal&#259;, lunar&#259; &#351;i lista evenimentelor neaprobate se vor auto-actualiza regulat.
+Auto-refresh time: Intervalul de auto-actualizare
+auto-refresh-time-help: Daca auto-actualizarea este activat&#259;, aici se specific&#259; timpul &#238;ntre dou&#259; reactualiz&#259;ri.
+Display days with events in bold in year view: Afi&#351;eaz&#259; cu litere &#238;ngrosate zilele cu evenimente din vizualizarea anual&#259;
+Display weekends in week view: Afi&#351;eaz&#259; &#351;i weekendurile
+Time interval: Intervalul de timp
+time-interval-help: Specific&#259; unitatea de timp &#238;n vizualiz&#238;rile pe zile sau s&#259;pt&#259;m&#226;nal&#238;.
+Nonuser: Calendare non-utilizator
+colors-help: Toate culorile trebuie specificate in format hexazecimal "#RRGGBB" unde "RR" este valoarea hexazecimala pentru ro&#351;u, "GG" pentru verde &#351;i "BB" pentru albastru.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Anunt&#259; o eroare de programare
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Adaug&#259;/Editeaz&#259; evenimente din calendar
+Repeat Type: Tipul repeti&#355;iei
+Repeat End Date: Data final&#259; a repeti&#355;iei
+Repeat Day: Ziua de repeti&#355;ie
+repeat-day-help: Specifica &#238;n ce zile ale saptamanii s&#259; se repete evenimentul. Acesta se folose&#351;te doar c&#226;nd <i>Tipul repeti&#355;iei</i> este saptamanal.
+
+########################################
+# Page: help_import.php
+#
+Import: Import&#259;
+This form will allow you to import entries from the Palm Desktop Datebook.: Acest formular &#238;&#355;i permite s&#259; impor&#355;i &#238;nregistr&#259;ri dintr-un Palm Desktop Datebook.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Ar trebui s&#259; fie localizat &#238;n directorul <tt>datebook/datebook.dat</tt> de pe Palm, &#238;ntr-un subdirector cu numele t&#259;u de utilizator.
+The following entries will not be imported: Urmatoarele date nu vor fi importate
+Entries older than the current date: &#206;nregistr&#259;ri mai vechi dec&#226;t data curent&#259;
+Entries created in the Palm Desktop...: &#206;nregistr&#259;ri create pe Palm dar care nu au fost HotSync-ate
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Orice a fost importat de pe Palm va fi rescris la urmatorul import (dac&#259; data nu este trecut&#259;).
+Therefore, updates should be made in the Palm Desktop.: De aceea actualiz&#259;rile ar trebui f&#259;cute pe Palm Desktop.
+This form will import vCalendar (.vcs) 1.0 events: Acest formular va importa evenimente de tip vCalendar (.vcs) 1.0
+The following formats have been tested: Au fost testate urm&#259;toarele formate
+This form will import iCalendar (.ics) events: Aceast formular va importa evenimente de tip iCalendar (.ics)
+Enabling: Activare
+Overwrite Prior Import: Rescrie importul anterior
+
+########################################
+# Page: help_index.php
+#
+Help Index: Index
+
+########################################
+# Page: help_layers.php
+#
+Add/Edit/Delete: Adaug&#259;/Editeaz&#259;/&#350;terge
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Daca alegi linkul "Editeaz&#259; straturi" din sectiunea admin din josul paginii vei putea s&#259; adaugi, editezi sau &#351;tergi straturi.
+The text color of the new layer that will be displayed in your calendar.: Culoarea textului noului strat a&#351;a cum se va vedea &#238;n calendarul t&#259;u.
+Disabling: Dezactivare
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Urmeaz&#259; linkul "Dezactiveaz&#259;" din sec&#355;iunea "Admin" din josul paginii ca s&#259; suprimi straturile.
+If checked, events that are duplicates of your events will be shown.: Dac&#259; bifezi aici, vei vedea &#351;i evenimentele care sunt duplicate alor tale.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Urmeaz&#259; linkul "Activeaz&#259;" din sec&#355;iunea "Admin" din josul paginii ca s&#259; activezi straturile.
+Specifies the user that you would like to see displayed in your calendar.: Specific&#259; utilizatorul pe care ai vrea s&#259;-l vezi &#238;n calendarul t&#259;u.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Categoria implicit&#259;
+default-category-help: Specific&#259; &#238;n ce categorie se &#238;ncadrezeaza implicit un nou eveniment.
+When I am the boss: C&#226;nd sunt liderul
+Email me event notification: Trimite o notifica&#355;ie prin email
+I want to approve events: Vreau s&#259; aprob evenimente
+Subscribe/Publish: Abonare/Publicare
+allow-remote-subscriptions-help: Specific&#259; dac&#259; utilizatorii nelocali pot s&#259; se aboneze la acest calendar, permi&#355;&#238;ndu-le s&#259; vad&#259; evenimentele &#238;ntr-o aplica&#355;ie compatibil&#259; cu iCal (ca de exemplu iCal-ul lui Apple sau Mozilla Calendar).
+remote-subscriptions-url-help: Afi&#351;eaz&#259; URL-ul pe care utilizatorii nelocali trebuie s&#259;-l foloseasc&#259; pentru a se abona la acest calendar.
+
+########################################
+# Page: import.php
+#
+Disabled: Dezactivate
+Import format: Formatul de import
+Exclude private records: Exclude datele private
+
+########################################
+# Page: import_handler.php
+#
+Events from prior import marked as deleted: Evenimentele importate anterior sunt marcate ca &#351;terse
+Conflicting events: Evenimente &#238;n conflict
+The import file contained no data: Fisierul importat nu con&#355;ine date
+
+########################################
+# Page: layers.php
+#
+Layer: Strat
+Edit layer: Editeaz&#259; stratul
+Layers are currently: Starturile sunt acum
+Disable Layers: Dezactiveaz&#259; straturile
+Click here: F&#259; click aici
+to modify the layers settings for the: ca s&#259; modifici configurarea straturilor pentru
+Add layer: Adaug&#259; un strat
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Aprob&#259;/Confirm&#259;
+Reject: Refuz&#259;
+View this entry: Afi&#351;eaz&#259;
+Approve this entry?: Aprob&#259;?
+Reject this entry?: Refuz&#259;?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Este nevoie de login &#351;i parol&#259;
+Save login via cookies so I dont have to login next time.: Salveaz&#259; loginul &#238;ntr-un cookie pentru data viitoare
+Access public calendar: Acceseaz&#259; calendarul public
+cookies-note: <b>Nota:</b> Aceast&#259; aplica&#355;ie necesit&#259; cookie-uri.
+
+########################################
+# Page: login.php
+#
+Invalid login: Login invalid
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Adaug&#259; un nou calendar non-utilizator
+
+########################################
+# Page: pref.php
+#
+Save Preferences: Salveaz&#259; preferin&#355;ele
+hour: ora
+minute: minut
+
+########################################
+# Page: purge.php
+#
+Purging events for: Cura&#355;&#226;nd evenimente pentru
+Finished: Terminat
+Check box to delete ALL events for a user: Bifeaz&#259; aceast&#259; casu&#355;&#259; ca s&#259; &#351;tergi <b>TOATE</b> evenimentele utilizatorului
+Delete all events before: &#350;terge toate evenimentele dinainte de
+Are you sure you want to delete events for: Sigur vrei s&#259; &#351;tergi evenimentele lui
+Records deleted from: &#206;nregistrari au fost &#351;terse &#238;ncep&#226;nd de la
+
+########################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: O programare a fost refuzat&#259; de c&#259;tre
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Acest eveniment este confiden&#355;ial
+Approved: Aprobat
+Deleted: Stears&#259;
+Rejected: Refuzat&#259;
+Waiting for approval: Astept&#226;nd aprobare
+Unknown: Necunoscut
+to manage reports for the Public Access calendar: pentru a administra rapoartele din calendarul cu acces public
+Add new report: Adaug&#259; un nou raport
+Manage Reports: Administreaza rapoartele
+
+########################################
+# Page: search.php
+#
+Advanced Search: C&#259;utare detaliat&#259;
+Search: C&#259;utare
+Keywords: Cuvinte cheie
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Specific&#259; unul sau mai multe cuvinte cheie
+Search Results: Rezultatele cautarii
+match found: potrivire g&#259;sita
+matches found: potriviri g&#259;site
+No matches found: Nimic nu se potrive&#351;te
+
+########################################
+# Page: security_audit.php
+#
+Status: Statut
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Vizualizeaz&#259; calendarul unui alt utilizator
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Nu ai ad&#259;ugat nici o categorie
+Set Category: Define&#351;te o categorie
+
+########################################
+# Page: users.php
+#
+denotes administrative user: desemneaz&#259; utilizatorul administrativ
+Add New User: Adaug&#259; un nou utilizator
+
+########################################
+# Page: usersel.php
+#
+Reset: Reseteaz&#259;
+
+########################################
+# Page: views.php
+#
+Add New View: Adaug&#259; o nou&#259; vizualizare
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Vizualizare fara nume
+Add View: Adaug&#259; o vizualizare
+Edit View: Editeaz&#259; o vizualizare
+View Name: Afi&#351;eaz&#259; numele
+View Type: Afi&#351;eaz&#259; tipul
+Week (Users horizontal): S&#259;pt&#259;m&#226;n&#259;(utilizatorii pe orizontal&#259;)
+Week (Users vertical): S&#259;pt&#259;m&#226;n&#259; (utilizatorii pe vertical&#259;)
+Week (Timebar): S&#259;pt&#259;m&#226;n&#259; (ora pe orizontal&#259;)
+Month (Timebar): Lun&#259; (ora pe orizontal&#259;)
+Month (side by side): Lun&#259; (una lang&#259; alta)
+Month (on same calendar): Lun&#259; (pe acela&#351;i calendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Trebuie specificat numele vizualizarii
+
+########################################
+# Page: view_entry.php
+#
+Assistant mode: Modul 'asistent'
+External User: Utilizator extern
+Approve/Confirm entry: Aprob&#259;/Confirm&#259; &#238;nregistrarea
+Reject entry: Refuz&#259; &#238;nregistrarea
+Set category: Specific&#259; o categorie
+Copy entry: Copiaz&#259; aceast&#259; &#238;nregistrare
+This will delete this entry for all users.: Aceasta va &#351;terge &#238;nregistrarea pentru to&#355;i utilizatorii.
+Edit entry: Editeaz&#259; aceast&#259; &#238;nregistrare
+Edit repeating entry for all dates: Editeaz&#259; &#238;nregistrarea pentru toate datele c&#226;nd se repet&#259;
+Delete repeating event for all dates: &#350;terge toate repeti&#355;iile evenimentului
+Edit entry for this date: Editeaz&#259; &#238;nregistrarea numai pentru aceast&#259; dat&#259;
+Delete entry only for this date: &#350;terge &#238;nregistrarea doar pentru aceast&#259; dat&#259;
+This will delete the entry from your calendar.: Va &#351;terge aceast&#259; &#238;nregistrare din calendarul t&#259;u.
+Do you want to add this entry to your calendar?: Vrei s&#259; adaugi aceast&#259; &#238;nregistrare la calendarul t&#259;u?
+This will add the entry to your calendar.: Aceasta va ad&#259;uga &#238;nregistrarea la calendarul t&#259;u.
+Email all participants: Trimite email tuturor participan&#355;ilor
+Hide activity log: Ascunde jurnalul de activitate
+Show activity log: Afi&#351;eaz&#259; jurnalul de activitate
+Export this entry to: Export&#259; aceast&#259; &#238;nregistrare &#238;n
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nou eveniment
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Calendarul altcuiva
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Decembrie
+
+########################################
+# Page: includes/functions.php
+#
+exceeds limit of XXX events per day: dep&#259;&#351;e&#351;te limita de XXX evenimente pe zi
+Event approved: Eveniment aprobat
+Event created: Eveniment creat
+Event deleted: Eveniment &#351;ters
+Notification sent: A fost trimis&#259; o notificare
+Event rejected: Eveniment refuzat
+Reminder sent: A fost trimis&#259; o aducere-aminte
+Event updated: Eveniment actualizat
+Changes successfully saved: Modificarile au fost salvate cu succes
+Event: Evenimentul
+Action: Actiune
+Printer Friendly: Pentru tip&#259;rit
+Generate printer-friendly version: Genereaz&#259; o versiune u&#351;or de tip&#259;rit
+January: Ianuarie
+February: Februarie
+March: Martie
+April: Aprilie
+May_: Mai
+June: Iunie
+July: Iulie
+September: Septembrie
+October: Octombrie
+November: Noiembrie
+Jan: Ian
+May: Mai
+Jun: Iun
+Jul: Iul
+Nov: Noi
+The following error occurred: Urm&#259;toarea eroare s-a petrecut
+You are not authorized.: Nu e&#351;ti autorizat(&#259;)
+Add N hours to: Adaug&#259; N ore la
+Subtract N hours from: Scade N ore din
+same as: la fel ca
+server time: ora serverului
+Error approving event: Eroare la aprobarea evenimentului
+Sunday: Duminic&#259;
+Monday: Luni
+Tuesday: Mar&#355;i
+Wednesday: Miercuri
+Thursday: Joi
+Friday: Vineri
+Saturday: S&#226;mb&#259;t&#259;
+Sun: Duminic&#259;
+Mon: Luni
+Tue: Mar&#355;i
+Wed: Miercuri
+Thu: Joi
+Fri: Vineri
+Sat: S&#226;mb&#259;t&#259;
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Calendarul meu
+Add New Entry: Adaug&#259; un nou eveniment
+Back to My Calendar: &#206;napoi la calendarul meu
+Go to: Schimb&#259; cu
+Manage calendar of: Lucreaz&#259; cu calendarul lui
+
+########################################
+# Page: includes/translate.php
+#
+English: Englez&#259;
+Basque: Basc&#259;
+Bulgarian: Bulgar&#259;
+Catalan: Catalan&#259;
+Chinese (Simplified/GB2312): Chinez&#259; (Simplificat&#259;/GB2312)
+Chinese (Traditional/Big5): Chinez&#259; (Traditional&#259;/Big5)
+Czech: Ceh&#259;
+Danish: Danez&#259;
+Dutch: Olandez&#259;
+Estonian: Estonian&#259;
+Finnish: Finlandez&#259;
+French: Francez&#259;
+Galician: Galic&#259;
+German: German&#259;
+Holo (Taiwanese): Holo (Taivanez&#259;)
+Hungarian: Ungar&#259;
+Icelandic: Islandic&#259;
+Italian: Italian&#259;
+Japanese: Japonez&#259;
+Korean: Corean&#259;
+Norwegian: Norvegian&#259;
+Polish: Polonez&#259;
+Portuguese: Portughez&#259;
+Portuguese/Brazil: Portughez&#259; Brazilian&#259;
+Romanian: Rom&#226;n&#259;
+Russian: Rus&#259;
+Spanish: Spaniol&#259;
+Swedish: Suedez&#259;
+Turkish: Turc&#259;
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Utilizator invalid
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: parol&#259; incorect&#259;
+no such user: utilizator inexistent
+
+########################################
+# Page: includes/xcal.php
+#
+Unnamed Event: Eveniment f&#259;r&#259; nume
+Event Imported: Eveniment importat
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notificare
+authenticate: Eroare SMTP: Nu a functionat autentificarea.
+connect_host: Eroare SMTP: Nu m-am putut conecta la adresa SMTP.
+data_not_accepted: Eroare SMTP: Continutul mailului nu a fost acceptat.
+encoding: Encodare necunoscuta:
+execute: Nu pot executa:
+file_access: Nu pot accesa fisierul:
+file_open: Eroare de fisier: Nu pot deschide fisierul:
+from_failed: Urmatoarele adrese From au dat eroare:
+instantiate: Nu am putut instantia functia mail.
+mailer_not_supported: mailer nu este suportat.
+provide_address: Trebuie sa adaugati cel putin un recipient (adresa de mail).
+recipients_failed: Eroare SMTP: Urmatoarele adrese de mail au dat eroare:
+
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required.: Este necesar URL-ul serverului
+Server URL must end with /.: URL-ul serverului trebuie s&#259; se termine &#238;n '/'
+Invalid work hours.: Ore de lucru invalide
+Invalid color for document background.: Culoare invalid&#259; pentru fundalul documentului
+Invalid color for document title.: Culoare invalid&#259; pentru titlul documentului
+Invalid color for table cell background.: Culoare invalid&#259; pentru fundalul casu&#355;elor tabelului
+Invalid color for table grid.: Culoare invalid&#259; pentru liniile tabelului
+Invalid color for table header background.: Culoare invalid&#259; pentru fundalul legendei tabelului
+Invalid color for table text background.: Culoare invalid&#259; pentru fundalul textului tabelului
+Invalid color for event popup background.: Culoare invalid&#259; pentru fundalul popup-urilor
+Invalid color for event popup text.: Culoare invalid&#259; pentru textul popup-urilor
+Invalid color for table cell background for today.: Culoare invalid&#259; pentru fundalul casu&#355;ei de azi a tabelului
+Color format should be RRGGBB.: Formatul culorii trebuie s&#259; fie '#RRGGBB'
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Nu ai scris o scurt&#259; descriere
+The time you have entered begins before your preferred work hours. Is this correct?: Ora pe care ai dat-o este inainte de orele tale preferate de lucru. E corect a&#351;a?
+You have not entered a valid time of day: Nu ai specificat o or&#259; corect&#259;
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Culoare invalid&#259;
+
+########################################
+# Page: includes/menu/index.php
+#
+Unapproved Events: Evenimente neaprobate
+
+########################################
+# Page: tools/send_reminders.php
+#
+Reminder: Aducere-aminte

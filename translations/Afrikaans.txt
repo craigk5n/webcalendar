@@ -1,0 +1,106 @@
+# See translations/English-US.txt for instructions.
+#
+# Translations anonymous, November 2003,
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# $Id: Afrikaans.txt,v 1.8.2.1 2008/09/05 17:59:19 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: activity_log.php
+#
+Next: Volgende
+Previous: Vorige
+
+########################################
+# Page: admin.php
+#
+Month: Maand
+Year: Jaar
+
+########################################
+# Page: approve_entry.php
+#
+Date: Datum
+
+########################################
+# Page: edit_report.php
+#
+Today: Vandag
+Next month: Volgende maand
+Next year: Volgende jaar
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Desember
+Dec: Des
+
+########################################
+# Page: includes/functions.php
+#
+January: Januarie
+February: Februarie
+March: Maart
+May_: Mei
+June: Junie
+July: Julie
+August: Augustus
+October: Oktober
+Mar: Maa
+May: Mei
+Oct: Okt
+Sunday: Sondag
+Monday: Maandag
+Tuesday: Dinsdag
+Wednesday: Woensdag
+Thursday: Donderdag
+Friday: Vrydag
+Saturday: Saterdag
+Sun: Son
+Mon: Maa
+Tue: Din
+Wed: Woe
+Thu: Don
+Fri: Vry
+
+########################################
+# Page: includes/xcal.php
+#
+MO: MA
+TU: DI
+WE: WO
+TH: DO
+FR: VR
+SU: SO

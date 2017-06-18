@@ -1,0 +1,1938 @@
+# Use this as a starting point to translate WebCalendar into other languages.
+#
+# Note to translators:  If you want to copy these header comments to your
+# language file and translate them, too, that's OK with us.
+#
+# The format consists of an optional header:
+#
+# Translated by: Παύλος Γκέσος cham_gss@hotmail.com, Γιάννης Κασκαμανίδης kiolalis@gmail.com
+# Last update: the date of translation
+#   (Including the leading "# " and any comments made by previous translators.
+#   The FIRST blank line ends these header comments.)
+#
+# Followed by as many as needed:
+#
+# English phrase: translation
+#   (One to a line. WITHOUT the leading "# ".
+#   The "English phrase: ", including the colon ":", is provided by the
+#   WebCalendar developers. Your part is the "translation".)
+#
+# The tools directory contains two perl scripts to help you:
+# The tools directory contains two perl scripts to help you:
+#   - check_translation.pl
+#       indicates if all text has been successfully translated.
+#   - update_translation.pl
+#       will parse the program files to find all translate ( 'phrase' ) and
+#       tooltip ( 'phrase' ). It will arrange the phrases according to the page
+#       (file) that contains the first occurance. Optionally, it can tag the
+#       phrases that are not yet translated by putting
+#       << MISSING >>
+#       on the line above the phrase. And, if the phrase is an abbreviation,
+#       it will include the full English text on the line below the phrase.
+#
+# Note: I'm attempting to cut down on the overall file size. If the "translation"
+#       word / phrase is identical in your language and English, just use an "=" sign.
+#
+# Note:  You will notice the entry for "May_" below. There is a reason for this.
+#        Translate "May_" to the full month name and "May" to the,
+#        usually three-letter, month abbreviation (like "Oct" for "October").
+#
+# $Id: Greek.txt,v 1.20.2.2 2012/03/11 19:00:51 cknudsen Exp $
+# Translation last updated on 02-27-2012
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: UTF-8
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: WebCalendar
+version: έκδοση
+version XXX: έκδοση XXX
+WebCalendar is a PHP application used...: Το WebCalendar είναι μια PHP εφαρμογή ημερολογίου για έναν χρήστη ή μια ομάδα χρηστών. Μπορεί επίσης να ρυθμιστεί έτσι ώστε να είναι ένα ημερολόγιο γεγονότων.
+Credits: Εύσημα
+About: Σχετικά
+OK: Εντάξει
+
+########################################
+# Page: access.php
+#
+Database error: Σφάλμα στη βάση δεδομένων
+Database error XXX.: Σφάλμα στη βάση δεδομένων: XXX.
+DEFAULT CONFIGURATION: ΠΡΟΚΑΘΟΡΙΣΜΕΝΕΣ ΡΥΘΜΙΣΕΙΣ
+Go: Μετάβαση
+Save: Αποθήκευση
+Undo: Αναίρεση
+Public Access: Δημόσια πρόσβαση
+Admin: Διαχειριστής
+User Access Control: Έλεγχος πρόσβασης χρήστη
+Allow Access to Other Users Calendar: Επιτρέπεται η πρόσβαση σε ημερολόγια άλλων χρηστών
+Grant This User Access to My Calendar: Παραχώρηση δικαιώματος πρόσβασης στο ημερολόγιο μου σε αυτόν τον χρήστη
+Type: Είδος επανάληψης
+Calendar: Ημερολόγιο
+View Event: Προβολή γεγονότος
+View: Προβολή
+Edit: Επεξεργασία
+Approve/Reject: Αποδοχή/Απόρριψη
+Events: Γεγονότα
+Tasks: Εργασίες
+Journals: Ημερολόγια
+Can Invite: Έχει δυνατότητα πρόσκλησης
+Can Email: Έχει δυνατότητα Email
+Can See Time Only: Μπορεί να δει μόνο την ώρα
+Assistant: Βοηθός
+Select All: Επιλογή όλων
+Clear All: Καθαρισμός όλων
+Public: Δημόσιες
+Confidential: Εμπιστευτικές
+Private: Ιδιωτικές
+
+########################################
+# Page: activity_log.php
+#
+Next: Επόμενα
+Previous: Προηγούμενα
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Το γεγονός XXX είναι ήδη στο ημερολόγιό σας.
+Invalid entry id XXX.: Λανθασμένη καταχώριση id: "XXX".
+ένα XXX γεγονός πιθανότατα να μην προστεθεί στο ημερολόγιό σας: Αυτό είναι ένα XXX γεγονός και πιθανότατα να μην προστεθεί στο ημερολόγιό σας.
+confidential: εμπιστευτικό
+private: ιδιωτικό
+Error adding event: Σφάλμα κατά την προσθήκη γεγονότος
+Error adding event XXX.: Σφάλμα προσθήκης γεγονότος: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Λανθασμένο "XXX" όνομα ρύθμισης.
+Select: Επιλογή
+Day: Ημέρα
+Week: Εβδομάδα
+Month: Μήνας
+Year: Έτος
+Bottom: Κάτω
+Top: Πάνω
+Anyone: Οποιοσδήποτε
+Participant: Συμμετέχων
+Settings: Ρυθμίσεις
+Groups: Ομάδες
+NonUser Calendars: Ημερολόγια μη-χρηστών
+Other: Διάφορα
+Email: Email
+Colors: Χρώματα
+Document background: Παρασκήνιο εγγράφου
+Document title: Τίτλος εγγράφου
+Document text: Κείμενο εγγράφου
+My event text: Παρασκήνιο κειμένου γεγονότος
+Table grid color: Χρώμα πλέγματος του πίνακα
+Table header background: Παρασκήνιο επικεφαλίδας του πίνακα
+Table header text: Κείμενο επικεφαλίδας του πίνακα
+Table cell background: Παρασκήνιο κελιών του πίνακα
+Table cell background for current day: Παρασκήνιο κελιών του πίνακα για την τρέχουσα ημέρα
+Table cell background for days with events: Παρασκήνιο κελιών του πίνακα για ημέρες με γεγονότα
+Table cell background for weekends: Παρασκήνιο κελιών του πίνακα για τα σαββατοκύριακα
+Table cell background for other month: Παρασκήνιο κελιών του πίνακα για άλλον μήνα
+Week number color: Χρώμα αριθμού εβδομάδας
+Event popup background: Παρασκήνιο αναδυόμενου παραθύρου γεγονότος
+Event popup text: Κείμενο αναδυόμενου παραθύρου γεγονότος
+System Settings: Ρυθμίσεις συστήματος
+Help: Βοήθεια
+System options: Επιλογές συστήματος
+app-name-help: Καθορίζει το όνομα της εφαρμογής που θα εμφανίζεται στη γραμμή τίτλου του περιηγητή για όλες τις σελίδες, περιλαμβανομένης της σελίδας σύνδεσης. Η τιμή που θα καθορίσετε εδώ θα ανατρέχει στο αρχείο μεταφράσεων και θα σας επιτρέπει να παρέχετε διαφορετικούς τίτλους για διαφορετικές γλώσσες
+Application Name: Όνομα εφαρμογής
+Translated Name: Μεταφρασμένο όνομα
+Translated Name (XXX): Μεταφρασμένο όνομα (XXX)
+server-url-help: Καθορίζει το βασικό URL της εφαρμογής το οποίο θα περιλαμβάνεται στα email υπενθυμίσεων και ειδοποιήσεων.
+Server URL: URL διακομιστή
+home-url-help: Καθορίζει το αρχικό URL για την εφαρμογή. Αυτό μπορεί να είναι απόλυτο ή ένα σχετικό.
+Home URL: Αρχικό URL
+language-help: Καθορίζει ποια γλώσσα θα χρησιμοποιηθεί.
+Language: Γλώσσα
+Your browser default language is: Η προκαθορισμένη γλώσσα του περιηγητή σας είναι η
+Your browser default language is XXX.: Η προκαθορισμένη γλώσσα του περιηγητή σας είναι "XXX".
+Allow user to use themes: Επιτρέπεται στους χρήστες να χρησιμοποιούν διακοσμητικά θέματα
+themes-help: Επιτρέπεται η ομαδική ενημέρωση των ρυθμίσεων. Οι ετικέτες πεζών χαρακτήρων ανήκουν μόνο στις προτιμήσεις του χρήστη.
+Themes: Διακοσμητικά θέματα
+AVAILABLE THEMES: ΔΙΑΘΕΣΙΜΑ ΔΙΑΚΟΣΜΗΤΙΚΑ ΘΕΜΑΤΑ
+None: Καμία
+Preview: Προεπισκόπηση
+Site customization: Προσαρμογή ιστότοπου
+custom-script-help: Επιτρέπει την καταχώρηση προσαρμοσμένου κειμένου Javascript ή κείμενο stylesheet το οποίο θα εισαχθεί στον τομέα HTML "head" για κάθε σελίδα.
+Custom script/stylesheet: Προσαρμοσμένο script/stylesheet
+custom-header-help: Επιτρέπει σε ένα προσαρμοσμένο κομμάτι κώδικα HTML να εισαχθεί στην αρχή κάθε σελίδας.
+Custom header: Προσαρμοσμένη επικεφαλίδα
+custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
+Custom trailer: Προσαρμοσμένο υποσέλιδο
+enable-external-header-help: Allows the custom trailer to be loaded from an external file
+Allow external file for header/script/trailer: Επιτρέπεται εξωτερικό αρχείο για επικεφαλίδα/σενάριο εντολών/υποσέλιδο
+Allow user to override header/trailer: Επιτρέπεται η παράκαμψη της επικεφαλίδας/υποσέδιδου
+Date and Time: Ημερομηνία και Ώρα
+tz-help: Specifies how many hours to adjust the time from server time to local time.
+Server Timezone Selection: Επιλογή διακομιστή ζώνης ώρας
+display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
+Display Common Use Date/Times as GMT: Εμφάνιση συχνά χρησιμοποιούμενων Ημερομηνιών/Ωρών ως GMT
+date-format-help: Specifies the preferred date format.
+Date format: Μορφή ημερομηνίας
+Small Task Date: Σύντομη ημερομηνία
+display-week-starts-on: Specifies day of week that the week starts on. If Monday is specified, then week numbers will be ISO week numbers.
+Week starts on: Η εβδομάδα αρχίζει
+display-weekend-starts-on: Sets the day of the week for weekends to start
+Weekend starts on: Το Σαββατοκύριακο αρχίζει
+time-format-help: Specifies which time format to use:<br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.<br /><em>24 hour:</em> Display times as 300, 2030, etc.
+Time format: Μορφή ώρας
+12 hour: 12ωρο
+24 hour: 24ωρο
+timed-evt-len-help: Καθορίζει τη μέθοδο εισαγωγής για τον εντοπισμό της διάρκειας ενός χρονοσημασμένου γεγονότος.
+Specify timed event length by: Καθορισμός διάρκειας χρονοσημασμένου γεγονότος με
+Duration: Διάρκεια
+End Time: Ώρα λήξης
+work-hours-help: Specifies the time range to display for the day view.
+Work hours: Ώρες εργασίας
+From: Από
+to: μέχρι
+Appearance: Εμφάνιση
+preferred-view-help: Ορίζει την προκαθορισμένη προβολή (Ημέρα, Εβδομάδα, Μήνας, ή Έτος).
+Preferred view: Προτιμώμενη προβολή
+Allow top menu: Επιτρέπεται μενού στο επάνω μέρος
+Date Selectors position: Θέση επιλογέων ημερομηνίας
+menu-themes-help: Ορισμός χρωμάτων και στιλ του επάνω μενού
+Menu theme: Διακοσμητικό θέμα μενού
+fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+Fonts: Γραμματοσειρές
+display-sm_month-help: Εάν ενεργοποιηθεί, εμφανίζει μικρούς μήνες στην προβολή μηνών
+Display small months: Εμφάνιση μικρών μηνών
+display-weekends-help: Συμπεριλαμβάνει Σαββατοκύριακα όταν προβάλλεται μια εβδομάδα
+Display weekends: Εμφάνιση Σαββατοκύριακων
+display-long-daynames-help: Εάν ενεργοποιηθεί, εμφανίζονται ολόκληρα τα ονόματα των ημερών
+Display long day names: Εμφάνιση ολόκληρων ονομάτων των ημερών
+display-alldays-help: Display previous and next months days in month views, filling all cells.
+Display all days in month view: Εμφάνιση όλων των ημερών σε προβολή μήνα
+display-week-number-help: Καθορίζει τον αριθμό της εβδομάδας (1-52) should be displayed in the month view and the week view.
+Display week number: Εμφάνιση αριθμού εβδομάδας
+display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
+Display description in printer day view: Εμφάνιση περιγραφής σε εκτυπώσιμη προβολή ημέρας
+yearly-shows-events-help: On the yearly view, display days that contain events in a bold font.
+Display days with events in bold in month and year views: Εμφάνιση ημερών που περιέχουν γεγονότα με έντονη γραμματοσειρά στις προβολές μήνα και έτους
+display-minutes-help: Εάν ενεργοποιηθεί, τα λεπτά που τελειώνουν σε :00 θα εμφανίζονται πάντα
+Display 00 minutes always: Εμφάνιση πάντα 00 λεπτών
+display-end-times-help: Εμφάνιση ώρας λήξης γεγονότων εάν πρόκειται για γεγονότα με χρονική σήμανση
+Display end times on calendars: Εμφάνιση ώρας λήξης στα ημερολόγια
+allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+Include add event link in views: Συμπερίληψη συνδέσμου προσθήκης γεγονότος στις προβολές
+lunar-help: If enabled, will display small icons representing the lunar phases each month
+Display Lunar Phases in month view: Εμφάνιση των φάσεων της Σελήνης σε προβολή μήνα
+Restrictions: Περιορισμοί
+allow-view-other-help: Specifies whether one user may view another user's calendar.
+Allow viewing other users calendars: Επιτρέπεται η εμφάνιση ημερολογίων άλλων χρηστών
+require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled). Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+Require event approvals: Απαιτούνται εγκρίσεις γεγονότων
+display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+Display unapproved: Εμφάνιση μη εγκεκριμένων
+conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person). If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done. You probably want to set this to "Yes", so conflict checking occurs.
+Check for event conflicts: Έλεγχος για διενέξεις γεγονότων
+Yes: Ναι
+No: Όχι
+conflict-months-help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts. If you find adding events is taking a long time to process, reduce this number.
+Conflict checking months: Έλεγχος για διενέξεις σε χρονικό διάστημα μηνών
+conflict-check-override-help: Allows users to override event conflicts and schedule two or more events for the same time.
+Allow users to override conflicts: Επιτρέπεται στους χρήστες να παρακάμπτουν τις διενέξεις
+limit-appts-help: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+Limit number of timed events per day: Όριο χρονοσημασμένων γεγονότων ανά ημέρα
+limit-appts-number-help: Specifies the maximum number of timed events a user can have in a single day.
+Maximum timed events per day: Μέγιστος αριθμός χρονοσημασμένων γεγονότων ανά ημέρα
+crossday-help: If enabled, events that span days will be displayed on separate days
+Disable Cross-Day Events: Απενεργοποίηση γεγονότων την ημέρα της Σταύρωσης
+disable-location-field-help: Selecting "Yes" will remove the "Location" field from event information pages
+Disable Location field: Απενεργοποίηση πεδίου τοποθεσίας
+disable-url-field-help: Selecting "Yes" will remove the "URL" field from event information pages
+Disable URL field: Απενεργοποίηση πεδίου URL
+disable-priority-field-help: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+Disable Priority field: Απενεργοποίηση πεδίου προτεραιότητας
+disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
+Disable Access field: Απενεργοποίηση πεδίου πρόσβασης
+disable-participants-field-help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events. If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+Disable Participants field: Απενεργοποίηση πεδίου συμμετεχόντων
+disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events. This will provide a simpler interface for novices.
+Disable Repeating field: Απενεργοποίηση πεδίου επανάληψης
+allow-html-description-help: If enabled, users can enter HTML in the event description field. If not enabled, the HTML tags will be escaped so as to appear as plain text. Warning: Enabling this feature will allow users to reference images on other websites.
+Allow HTML in Description: Επιτρέπεται η χρήση HTML στην περιγραφή
+Popups: Αναδυόμενα παράθυρα
+disable-popups-help: Απενεργοποίηση αναδυόμενων παραθύρων από τις προβολές ημερολογίων
+Disable Pop-Ups: Απενεργοποίηση αναδυόμενων παραθύρων
+popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+Display Site Extras in popup: Εμφάνιση των Extras του ιστότοπου σε αναδυόμενο παράθυρο
+popup-includes-participants-help: If enabled, participants are displayed in event popups.
+Display Participants in popup: Εμφανίζει τους συμμετέχοντες σε ένα αναδυόμενο παράθυρο
+Miscellaneous: Διάφορα
+remember-last-login-help: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
+Remember last login: Απομνημόνευση τελευταίας σύνδεσης
+summary_length-help: Μέγιστο μήκος σύντομης περιγραφής στις προβολές ημερολογίων
+Brief Description Length: Μήκος σύντομης περιγραφής
+user_sort-help: Determines sort order for User, Nonuser lists
+User Sort Order: Ταξινόμηση χρηστών
+Lastname, Firstname: Επώνυμο, Όνομα
+Firstname, Lastname: Όνομα, Επώνυμο
+allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+Allow public access: Επιτρέπεται η δημόσια πρόσβαση
+public-access-default-visible: Events from the public calendar will automatically appear on all users' calendars
+Public access visible by default: Public access visible by default
+public-access-default-selected: When adding a new event, the public user will be selected by default as a participant.
+Public access is default participant: Public access is default participant
+public-access-view-others-help: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
+Public access can view other users: Public access can view other users
+public-access-can-add-help: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
+Public access can add events: Public access can add events
+public-access-add-requires-approval-help: Specifies whether events added via the public access account require approval before being displayed.
+Public access new events require approval: Public access new events require approval
+public-access-sees-participants-help: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+Public access can view participants: Public access can view participants
+public-access-override-help: Allows event names and descriptions to be hidden on the public calendar
+Override event name/description for public access: Override event name/description for public access
+public-access-override-text-help: The text to display if the above option is enabled. If 'Not Available', it will be translated.
+Text to display to public access: Text to display to public access
+public-access-captcha-help: If enabled, new events added by Public require passing a CAPTCHA validation.
+Require CAPTCHA validation for public access new events: Require CAPTCHA validation for public access new events
+uac-enabled-help: Enables user-level access control
+User Access Control enabled: Ενεργοποίηση ελέγχου πρόσβασης χρήστη
+groups-enabled-help: Enables group support, allowing users to select users by groups.
+Groups enabled: Ενεργοποίηση ομάδων
+user-sees-his-group-help: If enabled, users will not see calendar users that are not in at least one of their groups.
+User sees only his groups: Ο χρήστης βλέπει μόνο τις δικές του ομάδες
+nonuser-enabled-help: If enabled, admins will have the option to add nonuser calendars
+Nonuser enabled: Ενεργοποίηση ημερολογίων μη χρηστών
+nonuser-list-help: Πού θα εμφανίζονται τα ημερολόγια των μη χρηστών στη λίστα των συμμετεχόντων;
+Nonuser list: Εμφάνιση στη λίστα χρηστών
+Upcoming Events: Προσεχή γεγονότα
+upcoming-events-help: Ενεργοποίηση upcoming.php
+Enabled: Ενεργοποιημένα
+upcoming-events-allow-override: Επιτρέπεται παράμετρος χρήστη για το upcoming.php
+Allow user override: Επιτρέπεται η παράκαμψη χρήστη
+upcoming-events-display-caticons: Συμπερίληψη εικονιδίων κατηγορίας στο in upcoming.php
+Display category icons: Εμφάνιση εικονιδίων κατηγορίας
+upcoming-events-display-layers: Εμφάνιση στρώσεων στο upcoming.php
+Display layers: Εμφάνιση στρώσεων
+upcoming-events-display-links: Εμφάνιση συνδέσμων στο upcoming.php
+Display links to events: Εμφάνιση συνδέσμων προς γεγονότα
+upcoming-events-display-popups: Εμφάνιση αναδυόμενων παραθύρων των γεγονότων στο upcoming.php
+Display event popups: Εμφάνιση αναδυόμενων παραθύρων των γεγονότων
+reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports. Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+Reports enabled: Αναφορές ενεργοποιημένες
+subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+Allow remote subscriptions: Επιτρέπονται απομακρυσμένες εγγραφές
+remotes-enabled-help: Allows users to load remote ics files using URL
+Allow remote calendars: Επιτρέπονται απομακρυσμένα ημερολόγια
+rss-enabled-help: Specifies if a user's calendar can be obtained from a RSS feed.
+Enable RSS feed: Ενεργοποίηση τροφοδότη RSS
+categories-enabled-help: Enables support for event categories.
+Categories enabled: Ενεργοποιημένες κατηγορίες
+icon_upload-enabled-help: If enabled, users can upload category icons
+Category Icon Upload enabled: Ενεργοποίηση φόρτωσης εικονιδίου κατηγορίας
+Requires: Απαιτείται
+folder to exist: folder to exist
+(Requires XXX folder to exist.): (Requires XXX folder to exist.)
+display-tasks-help: Display small task window on month and day calendar
+Display small task list: Εμφάνιση σύντομης λίστας εργασιών
+display-tasks-in-grid-help: Εμφάνιση εργασιών στα ημερολόγια μαζί με τα γεγονότα
+Display tasks in Calendars: Εμφάνιση εργασιών στα ημερολόγια
+allow-external-users-help: Specifies whether a non-calendar user can be added to an event. This allows non-calendar users to be listed as event participants.
+Allow external users: Επιτρέπονται εξωτερικοί χρήστες
+external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+External users can receive email notifications: External users can receive email notifications
+external-can-receive-reminder-help: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+External users can receive email reminders: External users can receive email reminders
+allow-self-registration-help: Επιτρέπεται σε νέους χρήστες να εγγράφονται ατομικά
+Allow self-registration: Επιτρέπεται η ατομική εγγραφή
+use-blacklist-help: Limit access to WebCalendar functions based on IP address
+Restrict self-registration to blacklist: Περιορισμός της ατομικής εγγραφής σε μαύρη λίστα
+allow-self-registration-full-help: Επιτρέπεται στους νέους χρήστες να ολοκληρώνουν τη διαδικασία ατομικής εγγραφής on-line
+Use self-registration email notifications: Δημουργία κωδικών πρόσβασης και αποστολή τους στους νέους χρήστες
+allow-attachment-help: Επιτρέπεται στους χρήστες να προσθέτουν συνημμένα αρχεία στα γεγονότα.
+Allow file attachments to events: Επιτρέπονται συνημμένα αρχεία σε γεγονότα
+Admin and owner can always add attachments if enabled.: Εάν ενεργοποιηθεί, ο διαχειριστής και ο ιδιοκτήτης θα μπορούν πάντα να επισυνάπτουν αρχεία.
+allow-comments-help: Επιτρέπεται στους χρήστες να προσθέτουν σχόλια στα γεγονότα.
+Allow comments to events: Επιτρέπονται σχόλια στα γεγονότα
+Admin and owner can always add comments if enabled.: Εάν ενεργοποιηθεί, ο διαχειριστής και ο ιδιοκτήτης θα μπορούν πάντα να προσθέτουν σχόλια.
+email-enabled-help: Turn on or off all sending of email for notification and reminders. Set to "no", if your server is not properly setup to send mail.
+Email enabled: Ενεγοποίηση αποστολής Email
+email-default-sender: Specifies the email address to specify as the sender when sending out reminders.
+Default sender address: Προκαθορισμένo email αποστολέα
+email-mailer: Επιλογή  πρωτοκόλλου email (SMTP, PHP mail, sendmail)
+Email Mailer: Πρωτόκολλα Email
+email-smtp-host: Ονόματα διακομιστών SMTP διαχωρισμένα με κόμμα
+SMTP Host name(s): Όνομα διακομιστή SMTP
+email-smtp-port: Αριθμός θύρας SMTP (κανονικά 25)
+SMTP Port Number: Αριθμός θύρας SMTP
+email-smtp-auth: Χρήση πιστοποίησης SMTP
+SMTP Authentication: Πιστοποίηση SMTP
+email-smtp-username: Όνομα χρήστη SMTP εάν χρησιμοποιείται η πιστοποίηση
+SMTP Username: Όνομα χρήστη SMTP
+email-smtp-password: Κωδικός πρόσβασης SMTP εάν χρησιμοποιείται η πιστοποίηση
+SMTP Password: Κωδικός πρόσβασης SMTP
+Default user settings: Προκαθορισμένες ρυθμίσεις χρήστη
+email-format: Specify preference for HTML or plain text messages
+Email format preference: Προτίμηση μορφής Email
+HTML: HTML
+Plain Text: Απλό κείμενο
+email-include-ics: Include an iCalendar ICS file to email message
+Include iCalendar attachments: Συμπερίληψη συνημμένων iCalendar
+email-event-reminders-help: Specifies whether or not to send event reminders.
+Event reminders: Υπενθυμίσεις γεγονότος
+email-event-added: Specifies whether or not to send email notifications when an event is added to your calendar.
+Events added to my calendar: Γεγονότα που προστέθηκαν στο ημερολόγιό μου
+email-event-updated: Specifies whether or not to send email notifications when an event is updated on your calendar.
+Events updated on my calendar: Γεγονότα που ενημερώθηκαν στο ημερολόγιό μου
+email-event-deleted: Specifies whether or not to send email notifications when an event is removed from your calendar.
+Events removed from my calendar: Γεγονότα που αφαιρέθηκαν από το ημερολόγιό μου
+email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
+Event rejected by participant: Γεγονός που απορρίφθηκε από έναν συμμετέχοντα
+email-event-create: Specifies whether the creator of entries will receive an email
+Event that I create: Γεγονός που δημιούργησα
+Color options: Επιλογές χρώματος
+Allow user to customize colors: Επιτρέπεται στους χρήστες να προσαρμόζουν τα χρώματα
+gradient-colors: If enabled gradient colors are used. This can greatly impact performance.
+Enable gradient images for background colors: Ενεργοποίηση διαβάθμισης για τα χρώματα παρασκηνίου
+Not available: Δεν είναι διαθέσιμο
+Background Image options: Επιλογές εικόνας παρασκηνίου
+bgimage-help: Καταχωρίστε εδώ το URL της επιθυμητής εικόνας παρασκηνίου. Ενδεχομένως έναν σχετικό σύνδεσμο.
+Background Image: Εικόνα παρασκηνίου
+bgrepeat-help: Controls repeat behavior of background image.
+Background Repeat: Επανάληψη παρασκηνίου
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Βοηθοί
+Preferences: Προτιμήσεις χρήστη
+Control Panel: Πίνακας ελέγχου
+Users: Χρήστες
+Account: Λογαριασμός
+Categories: Κατηγορίες
+Views: Προβολές
+Layers: Στρώσεις
+Reports: Αναφορές
+Delete Events: Διαγραφή γεγονότων
+Activity Log: Καταγραφή δραστηριότητας
+System Log: Καταγραφή συστήματος
+Security Audit: Επιθεώρηση ασφαλείας
+Public Preferences: Δημόσιες προτιμήσεις
+Unapproved Public Events: Μη εγκεκριμένα δημόσια γεγονότα
+Administrative Tools: Εργαλεία διαχείρισης
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name: Αντιγραφή ονόματος
+Duplicate Name XXX: Αντιγραφή ονόματος: "XXX".
+Username already exists.: Το όνομα χρήστη υπάρχει ήδη
+Username XXX already exists.: Το όνομα χρήστη "XXX" υπάρχει ήδη
+Email address already exists.: Η διεύθυνση Email υπάρχει ήδη
+Email address XXX already exists.: Η διεύθυνση Email "XXX" υπάρχει ήδη
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Πρόσθετα σχόλια (προαιρετικά)
+Approve and Send: Έγκριση και αποστολή
+Approve and Exit: Έγκριση και έξοδος
+(Τα σχόλιά σας θα σταλούν με email στον δημιουργό του γεγονότος.): (Τα σχόλιά σας θα σταλούν με email στον δημιουργό του γεγονότος.)
+Hello: Γεια σου
+Hello, XXX.: Γεια σου, XXX.
+An appointment has been approved and comments added by: An appointment has been approved and comments added by
+XXX has approved an appointment and added comments.: An appointment has been approved and comments added by XXX.
+The subject was: Το θέμα ήταν
+Subject XXX: Θέμα: "XXX".
+The description is: Η περιγραφή είναι
+Description XXX: Περιγραφή: "XXX".
+Date: Ημερομηνία
+Date XXX: Ημερομηνία: XXX
+Time: Ώρα
+Time XXX: Ώρα: XXX
+Comments: Σχόλια
+Comments XXX: Σχόλια: XXX
+Approved w/Comments by XXX.: Approved w/Comments by: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Λειτουργία διαχείρισης
+Your assistants: Οι βοηθοί σας
+
+########################################
+# Page: availability.php
+#
+Program Error: Program Error:
+No XXX specified!: No XXX specified!
+Program Error No XXX specified!: Program Error: No XXX specified!
+user: user
+year: year
+month: month
+day: day
+
+########################################
+# Page: category.php
+#
+Category Icon: Εικονίδιο κατηγορίας
+Global: Καθολική
+Category Name: Όνομα κατηγορίας:
+Color: Χρώμα
+Remove Icon: Αφαίρεση εικονιδίου:
+Add Icon to Category: Προσθήκη εικονιδίου στην κατηγορία
+Upload: Φόρτωση
+gif 3kb max: (gif 3kb μέγιστο)
+Search for existing icons: Αναζήτηση για υπάρχοντα εικονίδια
+Add: Προσθήκη
+Delete: Διαγραφή
+entry: Καταχώριση
+Are you sure you want to delete this XXX?: Είστε βέβαιος ότι θέλετε να διαγράψετε αυτή τη XXX;
+Make New Category: Δημιουργία νέας κατηγορίας
+
+########################################
+# Page: category_handler.php
+#
+#
+Category name is required: Το όνομα της κατηγορίας είναι απαραίτητο
+File size exceeds maximum.: Το μέγεθος του αρχείου είναι μεγαλύτερο από το μέγιστο επιτρεπόμενο.
+File is not a gif image.: Το αρχείο εικόνας δεν είναι gif.
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: ΔΙΑΘΕΣΙΜΕΣ ΚΑΤΗΓΟΡΙΕΣ
+ENTRY CATEGORIES: ENTRY CATEGORIES
+Remove: Αφαίρεση
+Global Category: Καθολική κατηγορία
+Cancel: Άκυρο
+
+########################################
+# Page: colors.php
+#
+Add Custom: Προσθήκη προσαρμοσμένου
+Basic Colors: Βασικά χρώματα
+Current Color: Τρέχον χρώμα
+Custom Colors: Προσαρμοσμένα χρώματα
+Old Color: Παλιό χρώμα
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: An appointment has been canceled for you by
+XXX has canceled an appointment.: XXX has canceled an appointment.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Invalid blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Προσθήκη σχολίου
+Add Attachment: Προσθήκη συνημμένου
+Subject: Θέμα
+Comment: Σχόλιο
+Upload file: Φόρτωση αρχείου
+Description: Περιγραφή
+
+########################################
+# Page: docdel.php
+#
+Removed: Αφαιρέθηκε
+
+########################################
+# Page: edit_entry.php
+#
+am: πμ
+pm: μμ
+days: ημέρες
+hours: ώρες
+minutes: λεπτά
+You are not authorized to edit this task: You are not authorized to edit this task.
+task: task
+You are not authorized to edit this XXX.: You are not authorized to edit this XXX.
+is in a different timezone than you are. Currently: is in a different timezone than you are. Currently
+hour ahead of you: hour ahead of you
+hour behind you: hour behind you
+hours ahead of you: hours ahead of you
+hours behind you: hours behind you
+XXX is in a different timezone (ahead): (XXX is in a different timezone; XXX ahead of you.<br />&nbsp;XXX)
+XXX is in a different timezone (behind): (XXX is in a different timezone; XXX behind you.<br />&nbsp;XXX)
+Time entered here is based on your Timezone.: Time entered here is based on <b>your</b> Timezone.
+Edit Entry: Επεξεργασία καταχώρισης
+Add Entry: Προσθήκη καταχώρισης
+Details: Λεπτομέρειες
+Participants: Συμμετέχοντες
+Repeat: Επανάληψη
+Reminders: Υπενθυμίσεις
+brief-description-help: This should provide a short description (about 20 characters) of the event. This will represent the event when viewing the calendar.
+Brief Description: Σύντομη περιγραφή
+full-description-help: This should complete details of the event. This information can be seen when a user views the event.
+Full Description: Πλήρης περιγραφή
+access-help: Specifies the access level of the event. <ul><li><em>Public</em>: Everyone can see the full details of the event. </li><li><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.</li></ul>
+Access: Πρόσβαση
+priority-help: Καθορίζει την προτεραιότητα του γεγονότος. Τα γεγονότα με υψηλή προτεραιότητα θα εμφανίζονται με έντονη γραφή .
+Priority: Προτεραιότητα
+High: Υψηλή
+Medium: Μεσαία
+Low: Χαμηλή
+category-help: Καθορίζει την κατηγορία του γεγονότος.
+Category: Κατηγορία
+completed-help: Date task is completed. Only enabled when all participants percentage equals 100%.
+Date Completed: Date Completed
+percent-help: Task completion percentage for this user
+Percent Complete: Percent Complete
+All Percentages: Όλα τα ποσοστά
+location-help: Τοποθεσία γεγονότος
+Location: Τοποθεσία
+url-help: URL γεγονότος
+URL: URL
+date-help: Καθορίζει την ημερομηνία του γεγονότος.
+Start Date: Ημερομηνία έναρξης
+Untimed event: Χωρίς χρονική σήμανση
+Timed event: Με χρονική σήμανση
+All day event: Ολοήμερο γεγονός
+Timezone Offset: Timezone Offset
+time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
+duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
+end-time-help: Specifies the time the event is expected to end.
+Start Time: Ώρα έναρξης
+Due Date: Due Date
+Due Time: Due Time
+Site Extras: Site Extras
+participants-help: Lists the participants of this entry.
+Availability: Διαθεσιμότητα
+external-participants-help: Specifies a list of participants for the event that are not calendar users. The users should be listed one per line and can include an email address. If an email address is specified, the user is eligible to receive notifications and reminders.
+External Participants: External Participants
+repeat-type-help: Επιλέξτε πόσο συχνά θα επαναλαμβάνεται το γεγονός
+Daily: Κάθε ημέρα
+Weekly: Κάθε εβδομάδα
+Monthly: Κάθε μήνα
+by day: με τη μέρα
+by date: με την ημερομηνία
+by position: με τη θέση
+Monthly (by day): Κάθε μήνα (με τη μέρα)
+Monthly (by date): Κάθε μήνα (με την ημερομηνία)
+Monthly (by position): Κάθε μήνα (με τη θέση)
+Yearly: Κάθε χρόνο
+Manual: Χειροκίνητα
+Expert Mode: Ειδική λειτουργία
+repeat-end-date-help: Καθορίζει την ημερομηνία μέχρι την οποία θα επαναλαμβάνεται το γεγονός.
+Ending: Λήξη
+Forever: Για πάντα
+Use end date: Χρήση ημερομηνίας λήξης
+Number of times: Αριθμός επαναλήψεων
+repeat-frequency-help: Καθορίζει πόσο συχνά θα επαναλαμβάνεται το γεγόνος.
+Frequency: Συχνότητα
+Weekdays Only: Μόνο τις καθημερινές
+Week Start: Week Start
+repeat-bydayextended-help: Allows date selection based on day of week.
+ByDay: Ανά ημέρα
+All: Όλες οι
+repeat-month-help: Specifies which months the event should repeat in.
+ByMonth: Ανά μήνα
+repeat-bysetpos-help: Allows date selection based on position withing the month.
+BySetPos: BySetPos
+repeat-bymonthdayextended-help: Allows date selection based on date.
+ByMonthDay: ByMonthDay
+repeat-byweekno-help: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
+ByWeekNo: ByWeekNo
+repeat-byyearday-help: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
+ByYearDay: Ανά ημέρα χρόνου
+repeat-exceptions-help: Επιπρόσθετες ημέρες κατά τις οποίες το γεγονός θα συμβαίνει ή δεν θα συμβαίνει.
+Exclusions: Αποκλεισμοί
+Inclusions: Συμπεριλήψεις
+Add Exception: Προσθήκη αποκλεισμού
+Add Inclusion: Προσθήκη συμπερίληψης
+Delete Selected: Διαγραφή επιλεγμένου
+Send Reminder: Αποστολή υπενθύμισης
+When: Πότε
+Use Date/Time: Χρήση Ημερομηνίας/Ώρας
+Use Offset: Χρήση έναρξης
+Before: Πριν
+After: Μετά
+Start: Έναρξη
+End/Due: Τέλος/Λήξη
+Times: Times
+Every: Every
+CAPTCHA Warning: <b>Warning:</b> Cannot use CAPTCHA without PHP's GD extension!<br />
+Delete entry: Διαγραφή καταχώρισης
+You are not authorized to edit this entry.: You are not authorized to edit this entry.
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: A new appointment has been made for you by
+XXX has made a new appointment.: XXX has made a new appointment.
+An appointment has been updated by: An appointment has been updated by
+XXX has updated an appointment.: XXX has updated an appointment.
+Security violation!: Security violation!
+You must enter the anti-spam text on the previous page.: You must enter the anti-spam text on the previous page.
+The following conflicts with the suggested time: The following conflicts with the suggested time
+User removed from participants list.: User removed from participants list.
+Please look on: Please look on
+to accept or reject this appointment: to accept or reject this appointment
+to view this appointment: to view this appointment
+Please look on XXX to accept or reject this appointment.: Please look on XXX to accept or reject this appointment.
+Please look on XXX to view this appointment.: Please look on XXX to view this appointment.
+Scheduling Conflict: Scheduling Conflict
+Your suggested time of: Your suggested time of
+conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: Προσθήκη στρώσης
+Edit Layer: Επεξεργασία στρώσης
+Source: Πηγή
+Duplicates: Εμφάνιση διπλότυπων
+Show layer events that are the same as your own: Εμφανίζει τα γεγονότα της στρώσης που είναι τα ίδια με τα δικά σας
+Add to Others: Προσθήκη σε άλλους χρήστες
+Add to My Calendar: Προσθήκη στο δικό μου ημερολόγιο
+Delete layer: Διαγραφή στρώσης
+
+########################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself.: Δεν μπορείτε να δημιουργήστε μια στρώση για τον εαυτό σας.
+You can only create one layer for each user.: Μπορείτε να δημιουργήστε μόνο μια στρώση για κάθε χρήστη.
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX δεν έχει οριστεί στο αρχείο config.php.
+word characters only: Μπορεί να περιέχει μόνο αλφαριθμητικούς χαρακτήρες (a-z, A-Z, 0-9)
+Add User: Προσθήκη χρήστη
+Edit User: Επεξεργασία χρήστη
+Calendar ID: ID Ημερολογίου
+First Name: Όνομα
+Last Name: Επώνυμο
+Is public calendar: Είναι δημόσιο ημερολόγιο
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Add Remote Calendar
+Edit Remote Calendar: Edit Remote Calendar
+Create Layer: Create Layer
+Reload: Reload
+Required to View Remote Calendar: Required to View Remote Calendar
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: Error
+Import Results: Import Results
+Events successfully imported: Events successfully imported
+Create a new layer to view this calendar: Create a new layer to view this calendar
+Errors: Errors
+There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Αύριο
+Today: Σήμερα
+Yesterday: Χθες
+Day before yesterday: Προχθές
+Next week: Επόμενη εβδομάδα
+This week: Αυτή η εβδομάδα
+Last week: Περασμένη εβδομάδα
+Week before last: Προπερασμένη εβδομάδα
+Next week and week after: Επόμενη και μεθεπόμενη εβδομάδα
+This week and next week: Αυτή και η επόμενη εβδομάδα
+Last week and this week: Την προηγούμενη και την τρέχουσα εβδομάδα
+Last two weeks: Τελευταίες εβδομάδες
+Next month: Επόμενος μήνας
+This month: Τρέχων μήνας
+Last month: Τελευταίος μήνας
+Month before last: Προπερασμένος μήνας
+Next year: Επόμενο έτος
+This year: Τρέχον έτος
+Last year: Προηγούμενο έτος
+Year before last: Προπερασμένο έτος
+Next 14 days: Τελευταίες 14 ημέρες
+Next 30 days: Τελευταίες 30 ημέρες
+Next 60 days: Τελευταίες 60 ημέρες
+Next 90 days: Τελευταίες 90 ημέρες
+Next 180 days: Τελευταίες 180 ημέρες
+Next 365 days: Τελευταίες 365 ημέρες
+Invalid report id.: Λανθασμένο id αναφοράς.
+Invalid report id XXX.: Λανθασμένο id αναφοράς: "XXX".
+Unnamed Report: Ανώνυμη αναφορά
+Add Report: Προσθήκη αναφοράς
+Edit Report: Επεξεργασία αναφοράς
+Report name: Όνομα αναφοράς
+User: Χρήστης
+Current User: Τρέχων χρήστης
+Include link in menu: Συμπερίληψη συνδέσμου στο μενού
+Include standard header/trailer: Συμπερίληψη πρότυπης επικεφαλίδας/υποσέλιδου
+Include previous/next links: Συμπερίληψη προηγούμενων/επόμενων συνδέσμων
+Include empty dates: Συμπερίληψη κενών ημερομηνιών
+Date range: Χρονικό διάστημα
+Template variables: Μεταβλητές προτύπου
+Page template: Πρότυπο σελίδας
+Day template: Πρότυπο ημέρας
+Event template: Πρότυπο γεγονότος
+report: αναφορά
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: No such report id: "XXX".
+Variable N not found: Variable N not found
+Variable XXX not found.: Variable <tt>XXX</tt> not found.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Edit Custom Header
+Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
+Edit Custom Trailer: Επεξεργασία προσαρμοσμένου υποσέλιδου
+
+########################################
+# Page: edit_user.php
+#
+Username: Όνομα χρήστη
+E-mail address: Διεύθυνση E-mail
+Password: Κωδικός πρόσβασης
+again: πάλι
+Disabled for demo: Απενεργοποίηση για επίδειξη
+Change Password: Αλλαγή κωδικού πρόσβασης
+New Password: Νέος κωδικός πρόσβασης
+Set Password: Ορισμός κωδικού πρόσβασης
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Deleting users not supported.
+The passwords were not identical.: The passwords were not identical.
+You have not entered a password.: You have not entered a password.
+Username cannot be blank.: Username cannot be blank.
+
+########################################
+# Page: export.php
+#
+Export: Εξαγωγή
+Export format: Μορφή εξαγωγής
+Include all layers: Συμπερίληψη όλων των στρώσεων
+Include deleted entries: Συμπερίληψη διεγραμμένων στρώσεων
+Export all dates: Εξαγωγή όλων των ημερομηνιών
+Start date: Ημερομηνία έναρξης
+End date: Ημερομηνία λήξης
+Modified since: Ημερομηνία τροποποίησης
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect: export format not defined or incorrect
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: No user specified.
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Ανώνυμ ομάδα
+Add Group: Προσθήκη ομάδας
+Edit Group: Επεξεργασία ομάδας
+Group name: Όνομα ομάδας
+Updated: Ενημερώθηκε
+Created by: Δημιουργός
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Πρέπει να καθορίσετε ένα όνομα ομάδας
+
+########################################
+# Page: groups.php
+#
+Add New Group: Προσθήκη νέας ομάδας
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Αυτόματη ανανέωση ημερολογίων
+auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
+Auto-refresh time: Ώρα αυτόματης ανανέωσης
+auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
+Display days with events in bold in year view: Display days with events in bold in year view
+Display weekends in week view: Εμφάνιση Σαββατοκύριακων στην προβολή εβδομάδας
+Time interval: Χρονικό διάστημα
+time-interval-help: Specifies how long the time blocks in the week view and day view will be.
+Nonuser: Nonuser Calendars
+user-customize-color: Specifies whether users are allowed to modify their own color scheme.
+enable-gradient-help: Use gradient colors for cell backgrounds.
+Manually entering color values: Manually entering color values
+colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Report Bug
+Please include all the information below when reporting a bug.: Please include all the information below when reporting a bug.
+Also, please use English rather than: Also, please use <strong>English</strong> rather than
+Also, please use English rather than XXX.: Also, please use <strong>English</strong> rather than XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Documentation
+Currently in English only.: Currently in English only.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
+Repeat Type: Repeat Type
+For More Information...: For More Information...
+Repeat End Date: Repeat End Date
+Repeat Day: Repeat Day
+repeat-day-help: Specifies which days of the week the event should repeat on.
+
+########################################
+# Page: help_import.php
+#
+Import: Εισαγωγή
+Palm Desktop: Palm Desktop
+This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
+The following entries will not be imported: The following entries will not be imported
+Entries older than the current date: Entries older than the current date
+Entries created in the Palm Desktop...: Entries created in the Palm Desktop that have not been HotSync'd
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
+Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
+vCal: vCal
+This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
+The following formats have been tested: The following formats have been tested
+This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
+Enabling: Ενεργοποίηση
+Overwrite Prior Import: Αντικατάσταση προηγούμενης εισαγωγής
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Ευρετήριο Βοήθειας
+About WebCalendar: Σχετικά με το WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Layers are useful for displaying other users' events in your own calendar. You can specify the user and the color the events will be displayed in.
+Add/Edit/Delete: Add/Edit/Delete
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
+The text color of the new layer that will be displayed in your calendar.: The text color of the new layer that will be displayed in your calendar.
+Disabling: Disabling
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.
+If checked, events that are duplicates of your events will be shown.: If checked, events that are duplicates of your events will be shown.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
+Specifies the user that you would like to see displayed in your calendar.: Specifies the user that you would like to see displayed in your calendar.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Προκαθορισμένη κατηγορία
+default-category-help: Specifies the category a new event should default to.
+When I am the boss: Όταν είμαι ο διαχειριστής
+Email me event notification: Αποστολή σε μένα μηνυμάτων Email με ειδοποιήσεις για γεγονότα
+email-boss-notifications-help: Specifies if bosses receive emails as event notifications.
+I want to approve events: Επιθυμώ να εγκρίνω γεγονότα
+boss-approve-event-help: Specifies whether the boss will be required to approve events added by assistants.
+Subscribe/Publish: Συνδρομή/Δημοσίευση
+Allow remote publishing: Επιτρέπεται η απομακρυσμένη δημοσίευση
+allow-remote-publishing-help: Specifies if a remote iCal client can publish events back to WebCalendar
+remote-publishing-url-help: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
+allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
+Enable FreeBusy publishing: Επιτρέπεται η FreeBusy δημοσίευση
+freebusy-enabled-help: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
+freebusy-url-help: The URL for accessing the user's FreeBusy list
+rss-feed-url-help: The URL to access the RSS feed
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.:
+If disabled, this user cannot send you emails.: If disabled, this user cannot send you emails.
+If disabled, this user cannot see you in the participants list.: If disabled, this user cannot see you in the participants list.
+If enabled, this user cannot view the details of any of your entries.: If enabled, this user cannot view the details of any of your entries.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Publishing Disabled (Admin)
+Publishing Disabled (User): Publishing Disabled (User)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Click to Select
+Current Icons on Server: Current Icons on Server
+
+########################################
+# Page: import.php
+#
+Disabled: Απενεργοποιημένες
+Import format: Μορφή εισαγωγής
+Exclude private records: Αποκλεισμών ιδιωτικών εγγραφών
+Repeated items are imported separately. Prior imports are not overwritten.: Αντικείμενα που επαναλαμβάνονται θα εισαχθούν ξεχωριστά. Οι προηγούμενες εισαγωγές δεν θα αντικατασταθούν.
+
+########################################
+# Page: import_handler.php
+#
+No file: No file
+Error deleting palm events from webcalendar.: Error deleting palm events from webcalendar.
+Events from prior import marked as deleted: Events from prior import marked as deleted
+Conflicting events: Conflicting events
+The import file contained no data: The import file contained no data
+
+########################################
+# Page: layers.php
+#
+Layer: Στρώση
+Edit layer: Επεξεργασία στρώσης
+Enable layers: Ενεργοποίηση στρώσεων
+Layers are currently: Οι στρώσεις είναι ήδη
+Disable Layers: Απενεργοποίηση στρώσεων
+Click here: Κάντε κλικ εδώ
+to modify the layers settings for the: για να τροποποιήσετε τις ρυθμίσεις στρώσεων για το
+calendar: ημερολόγιο
+Add layer: Προσθήκη στρώσης
+
+########################################
+# Page: layers_toggle.php
+#
+Unable to update preference: Unable to update preference
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Έγκριση/Επιβεβαίωση
+Approve Selected: Έγκριση επιλεγμένου
+Check All: Έλεγχος όλων
+Emails Will Not Be Sent: Μηνύματα email δεν θα σταλούν
+Reject Selected: Απόρριψη επιλεγμένου
+Reject: Απόρριψη
+Uncheck All: Uncheck All
+View this entry: Προβολή αυτής της καταχώρισης
+No unapproved entries for: Δεν υπάρχουν μη εγκεκριμένες καταχωρίσεις για τον/την
+No unapproved entries for XXX.: Δεν υπάρχουν μη εγκεκριμένες καταχωρίσεις για τον/την: "XXX".
+Unapproved Entries: Μη εγκεκριμένες καταχωρίσεις
+Not authorized: Χωρίς εξουσιοδότηση
+Approve this entry?: Να εγκριθεί αυτή η καταχώριση;
+Reject this entry?: Να απορρίφθει αυτή η καταχώριση;
+Approve Selected entries?: Να εγκριθούν οι επιλεγμένες καταχωρίσεις;
+Reject Selected entries?: Να απορριφθούν οι επιλεγμένες καταχωρίσεις;
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: You must enter a login and password.
+Save login via cookies so I dont have to login next time.: Αποθήκευση στοιχείων για αυτόματη σύνδεση την επόμενη φορά 
+Login: Σύνδεση
+Access public calendar: Πρόσβαση δημόσιου ημερολογίου
+public: δημόσιο
+Access XXX calendar: Πρόσβαση στο XXX ημερολόγιο
+cookies-note: <b>Σημείωση:</b> Αυτή η εφαρμογή απαιτεί την ενεργοποίηση των cookies
+
+########################################
+# Page: login.php
+#
+Invalid login: Μη έγκυρη σύνδεση
+You have been logged out.: Έχετε αποσυνδεθεί
+Not yet registered? Register here!: Δεν έχετε ακόμη εγγραφεί; Μπορείτε να το κάνετε τώρα εδώ!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar: No such nonuser calendar
+No such nonuser calendar XXX.: No such nonuser calendar: "XXX".
+This Calendar is not Public.: This Calendar is not Public.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Προσθήκη ημερολογίου μη χρήστη
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified: A login must be specified
+Illegal characters in login: Illegal characters in login
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Μη έγκυρο διακοσμητικό θέμα
+Save Preferences: Αποθήκευση προτιμήσεων
+Public Access calendar: Ημερολόγιο δημόσιας πρόσβασης
+Modify Non User Calendar Preferences: Τροποποίηση προτιμήσεων ημερολογίου ενός μη χρήστη
+Return to My Preferences: Επιστροφή στις προτιμήσεις μου
+Custom Scripts: Προσαρμοσμένα σενάρια εντολών
+Timezone Selection: Επιλογή ζώνης ώρας
+entry-interval-help: Ορίστε διάστημα σε λεπτά καθώς επεξεργάζεστε τους χρόνους μιας καταχώρισης
+Entry interval: Χρονικό διάστημα καταχώρισης
+hour: ώρα
+minute: λεπτα
+theme-reload-help: Due to CSS caching, a page reload may be required
+Page may need to be reloaded for new Theme to take effect: Για να εμφανιστεί το διακοσμητικό θέμα που επιλέξατε, θα πρέπει να ανανεώσετε την ιστοσελίδα
+display_byproxy-help: Display the real creator on view_entry page
+Display if created by Assistant: Να φαίνεται αν έχει δημιουργηθεί από βοηθό
+allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
+Allow remote viewing of: Επιτρέπεται η απομακρυσμένη εμφάνιση
+entries: καταχωρίσεις
+
+########################################
+# Page: publish.php
+#
+No user specified: Δεν καθορίστηκε χρήστης
+
+########################################
+# Page: purge.php
+#
+Purging events for: Εκκαθάριση γεγονότων για
+Finished: Ολοκληρώθηκε
+Back: Πίσω
+Check box to delete ALL events for a user: Επιλέξτε το πλαίσιο για να διαγράψετε <b>ΟΛΑ</b> τα γεγονότα του χρήστη
+Delete all events before: Διαγραφή όλων των γεγονότων πριν
+Purge deleted only: Εκκαθάριση μόνο των διεγραμμένων
+Preview delete: Προεπισκόπηση διαγραφής
+Are you sure you want to delete events for: Είστε σίγουρος ότι θέλθετε να διαγράψετε γεγονότα για
+Records deleted from: Εγγραφές διαγραφείσες από 
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Η διεύθυνση Email δεν μπορεί να είναι κενή.
+Illegal characters in login XXX.: Μη έγκυροι χαρακτήρες στη σύνδεση XXX.
+New user via self-registration.: Νέος χρήστης με ατομική εγγραφή
+A new WebCalendar account has been set up for you.: Ένας νέος λογαριασμός έχει δημιουργηθεί για σας στο WebCalendar.
+Your username is: Το όνομα χρήστη που δηλώσατε είναι
+Your username is XXX.: Το όνομα χρήστη που δηλώσατε είναι: "XXX".
+Your password is: Ο κωδικός πρόσβασης που δημιουργήθηκε για σας είναι
+Your password is XXX.: Ο κωδικός πρόσβασης που δημιουργήθηκε για σας είναι: "XXX".
+Please visit: Please visit to log in and start using your account: to log in and start using your account
+Please visit XXX to log in and start using your account!: Please visit "XXX" to log in and start using your account!
+You may change your password after logging in the first time.: Αφού συνδεθείτε για πρώτη φορά, μπορείτε να αλλάξετε τον κωδικό πρόσβασης που σας παραχωρήθηκε από το σύστημα.
+If you received this email in error: Εάν λάβατε αυτό το μήνυμα κατά λάθος και δεν είστε εσείς αυτός/αυτή που αιτήθηκε λογαριασμό στο WebCalendar, αγνοείστε αυτό το μήνυμα ή απαντήστε με ένα σύντομο σχόλιο.
+Administrator: Διαχειριστής
+Welcome: Καλωσήρθατε
+New user via email.: Νέος χρήστης μέσω email.
+Registration: Εγγραφή
+Welcome to WebCalendar: Καλωσήρθατε στο WebCalendar
+Your email should arrive shortly.: Το μήνυμα email θα φτάσει πολύ σύντομα.
+Return to Login screen: Επιστροφή στην οθόνη σύνδεσης
+Password (again): Κωδικός πρόσβασης (πάλι)
+Your account information will be emailed to you.: Οι πληροφορίες του λογαριασμού που δημιουργήσατε θα σας σταλούν με μήνυμα email.
+Submit: Υποβολή
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Continue
+(Your comments will be emailed to the other participants.): (Your comments will be emailed to the other participants.)
+An appointment has been rejected by: An appointment has been rejected by
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Add New Remote Calendar
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Αυτό το γεγονός είναι εμπιστευτικό
+(Private): (Ιδιωτικό)
+cont.: cont.
+(cont.): (cont.)
+Approved: Εγκεκριμένο
+Deleted: Διεγραμμένο
+Rejected: Έχει απορριφθεί
+Waiting for approval: Αναμονή για αποδοχή
+Unknown: Άγνωστο
+to manage reports for the Public Access calendar: για τη διαχείριση των αναφορών του ημερολογίου δημόσιας πρόσβασης
+Click here to manage reports for the Public Access calendar.: Κάντε κλικ εδώ για να διαχειριστείτε τις αναφορές του ημερολογίου δημόσιας πρόσβασης
+Add new report: Προσθήκη νέας αναφοράς
+Manage Reports: Διαχείριση αναφορών
+
+########################################
+# Page: search.php
+#
+Advanced Search: Προχωρημένη αναζήτηση
+Search: Αναζήτηση
+Keywords: Λέξεις κλειδιά
+Enter % for all entries: Εισαγωγή % για όλες τις καταχωρίσεις
+Include: Συμπερίληψη
+Filter by Date: Φιλτράρισμα με ημερομηνία
+All Dates: Όλες τις ημερομηνίες
+Past: Παρελθούσες
+Upcoming: Προσεχείς
+Range: Χρονικό διάστημα
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: You must enter one or more search keywords
+Search Results: Search Results
+match found: match found
+matches found: matches found
+No matches found: No matches found
+New Search: New Search
+
+########################################
+# Page: security_audit.php
+#
+The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: Η παρακάτω λίστα περιέχει μερικά πιθανά ζητήματα εγκατάστασης της εφαρμογής WebCalendar, τα οποία αν τροποποιηθούν θα κάνουν την εγκατάστασή σας περισσότερο ασφαλή.
+For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: Για ερωτήσεις για κάθε ζήτημα ασφαλείας του WebCalendar, παρακαλώ χρησιμοποιήστε τα forums του WebCalendar στο SourceForge.net.
+View your current PHP settings: Προβάλλετε τις τρέχουσες ρυθμίσεις PHP.
+Security Issue: Θέμα ασφαλείας
+Status: Κατάσταση
+You should change the password of the default admin user.: Θα πρέπει να αλλάξετε τον κωδικό πρόσβασης του προκαθορισμένου διαχειριστή.
+Default admin user password: Κωδικός πρόσβασης προκαθορισμένου διαχειριστή
+The following item should not be writable: Το ακόλουθο στοιχείο δεν θα πρέπει να είναι εγγράψιμο
+File permissions: Δικαιώματα αρχείου
+Because you have email disabled, you should remove this file.: Επειδή έχετε απενεργοποιημένο email, θα πρέπει να αφαιρέσετε αυτό το αρχείο.
+File exists: Το αρχείο υπάρχει
+If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: Εάν δεν χρησιμοποιείτε αυτό το αρχείο, τότε διαγράψτε το. Διαφορετικά, θα πρέπει να το μετακινήσετε σε διαφορετική τοποθεσία.
+File location: Τοποθεσία αρχείου
+You may want to consider enabling User Access Control to set user privileges.: You may want to consider enabling User Access Control to set user privileges.
+It is recommended that public event submissions be approved: It is recommended that public event submissions be approved
+CAPTCHA is recommended to guard againt automated event submissions.: CAPTCHA is recommended to guard againt automated event submissions.
+The database cache directory should be in a directory that cannot be accessed with a URL.: The database cache directory should be in a directory that cannot be accessed with a URL.
+Database cache directory location: Τοποθεσία καταλόγου κρυφής μνήμης της βάσης δεδομένων
+The recommended setting for magic quotes is Off.: Η προτεινόμενη ρύθμιση για τα μαγικά εισαγωγικά είναι απενεργοποιημένη.
+PHP setting: Ρύθμιση PHP
+The recommended setting for register_globals is Off.: Η προτεινόμενη ρύθμιση για το register_globals είναι απενεργοποιημένη.
+The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: Η προτεινόμενη ρύθμιση για το allow_url_fopen δεν έχει ενεργοποιηθεί.
+The recommended setting for allow_url_include is Off.: Η προτεινόμενη ρύθμιση για το allow_url_include είναι απενεργοποιημένη.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: View Another User's Calendar
+
+########################################
+# Page: set_entry_cat.php
+#
+Invalid entry id.: Invalid entry id.
+You have not added any categories.: You have not added any categories.
+Set Category: Set Category
+Global Categories cannot be changed.: Global Categories cannot be changed.
+
+########################################
+# Page: upcoming.php
+#
+more: more
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Ημερολόγια απομακρυσμένης πρόσβασης
+denotes administrative user: Υποδηλώνει χρήστη με δικαιώματα διαχειριστή
+Add New User: Προσθήκη νέου χρήστη
+
+########################################
+# Page: usersel.php
+#
+form: form
+listid: listid
+Reset: Reset
+
+########################################
+# Page: view_d.php
+#
+No users for this view: No users for this view
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Update Task Percentage
+Completed: Completed
+Assistant mode: Assistant mode
+Declined: Declined
+Needs-Action: Needs-Action
+by: by
+Percentage Complete: Percentage Complete
+External User: External User
+Update: Update
+Attachments: Συνημμένα
+at: στο
+comments: σχόλια
+Show: Εμφάνιση
+Hide: Απόκρυψη
+Approve/Confirm entry: Έγκριση/Αποδοχή καταχώρισης
+Reject entry: Απόρριψη καταχώρισης
+Set category: Ορισμός κατηγορίας
+Copy entry: Αντιγραφή καταχώρισης
+This will delete this entry for all users.: This will delete this entry for all users.
+Edit entry: Επεξεργασία καταχώρισης
+Edit repeating entry for all dates: Edit repeating entry for all dates
+Delete repeating event for all dates: Delete repeating event for all dates
+Edit entry for this date: Επεξεργασία καταχώρισης αυτής της ημερομηνίας
+Delete entry only for this date: Delete entry only for this date
+Delete entry from calendar of XXX: Delete entry from calendar of XXX
+This will delete the entry from your XXX calendar.: This will delete the entry from your XXX calendar.
+boss: boss'
+This will delete the entry from your boss calendar.: This will delete the entry from your boss' calendar.
+This will delete the entry from your calendar.: This will delete the entry from your calendar.
+from your boss calendar: from your boss' calendar
+Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
+This will add the entry to your calendar.: This will add the entry to your calendar.
+Email all participants: Αποστολή Email σε όλους τους συμμετέχοντες
+Hide activity log: Απόκρυψη καταγραφής δραστηριότητας
+Show activity log: Εμφάνιση καταγραφής δραστηριότητας
+Export this entry to: Εξαγωγή αυτής της καταχώρισης σε 
+Palm Pilot: Palm Pilot
+
+########################################
+# Page: view_r.php
+#
+Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
+
+########################################
+# Page: views.php
+#
+Add New View: Προσθήκη νέας προβολής
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Ανώνυμη προβολή
+Add View: Προσθήκη προβολής
+Edit View: Επεξεργασία προβολής
+View Name: Όνομα προβολής
+View Type: Είδος προβολής
+Day by Time: Day by Time
+Week (Users horizontal): Week (Users horizontal)
+Week by Time: Week by Time
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Θα πρέπει να ορίσετε ένα όνομα προβολής
+
+########################################
+# Page: week_details.php
+#
+New Entry: Νέα καταχώριση
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Ημερολόγιο άλλου χρήστη
+Category Management: Διαχείριση κατηγοριών
+Day View: Προβολή ημέρας
+Edit Event: Επεξεργασία γεγονότος
+Month View: Προβολή μήνα
+Common Trailer: Συνηθισμένο υποσέλιδο
+User Management: Διαχείριση χρήστη
+Manage Views: Διαχείριση προβολών
+Week View: Προβολή εβδομάδας
+Year View: Προβολή έτους
+Invalid function id: Λανθασμένο λειτουργία id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Could not find "settings.php" file.<br />Please copy "settings.php.orig" to "settings.php" and edit for your site.
+Incomplete settings.php file...: Incomplete settings.php file...
+Could not find XXX defined in...: Could not find "XXX" defined in your "settings.php" file.
+You must define XXX in: You must define "XXX" in the "settings.php" file.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: December
+Dec: Dec
+LANGUAGE DEFINED: LANGUAGE DEFINED
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database: Error connecting to database
+db_type not defined.: db_type not defined.
+invalid db_type: invalid db_type
+Cache cleared from previous SQL!: Cache cleared from previous SQL!
+Error executing query.: Error executing query.
+Unfortunately, XXX is not implemented for: Unfortunately, XXX is not implemented for
+Unknown ODBC error.: Unknown ODBC error.
+Unknown error.: Unknown error.
+Error opening cache dir: Error opening cache dir
+delete: delete
+Could not XXX file: Could not XXX file
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatal Error
+Invalid data format for: Invalid data format for
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Error: Type not set for activity log!
+This event is private: Αυτό το γεγονός είναι ιδιωτικό
+This event is XXX.: Αυτό το γεγονός είναι XXX.
+Conf.: Conf.
+exceeds limit of XXX events per day: exceeds limit of XXX events per day
+on: on
+All Attendees: Όλοι οι συμμετέχοντες
+Busy: Απασχολημένος
+Tentative: Προσωρινός
+Schedule an appointment for: Προγραμματισμός συνάντησης για
+Schedule an appointment for XXX.: Προγραμματισμός συνάντησης για XXX:XXX.
+Event approved: Αποδοχή γεγονότος
+Journal approved: Αποδοχή ημερολογίου
+Task approved: Αποδοχή εργασίας
+Attachment: Συνημμένο
+Event created: Δημιουργήθηκε ένα γεγονός
+Journal created: Δημιουργήθηκε ένα ημερολόγιο
+Task created: Δημιουργήθηκε μια εργασία
+Event deleted: Διαγράφηκε ένα γεγονός
+Journal deleted: Διαγράφηκε ένα ημερολόγιο
+Task deleted: Διαγράφηκε μια εργασία
+New user via email (self registration): Νέος χρήστης μέσω email (ατομική εγγραφή)
+New user (self registration): Νέος χρήστης (ατομική εγγραφή)
+Notification sent: Η ειδοποίηση στάλθηκε
+Event rejected: Το γεγονός απορρίφθηκε
+Journal rejected: Το ημερολόγιο απορρίφθηκε
+Task rejected: Η εργασία απορρίφθηκε
+Reminder sent: Η υπενθύμιση στάλθηκε
+Event updated: Το γεγονός ενημερώθηκε
+Journal updated: Το ημερολόγιο ενημερώθηκε
+Task updated: Η εργασία ενημερώθηκε
+Delete User: Διαγραφή χρήστη
+WK: ΕΒΔ
+TASKS: ΕΡΓΑΣΙΕΣ
+Task_Title: Τίτλος
+Due: Due
+Task Name: Όνομα εργασίας
+Task Due Date: Ημερομηνία λήξης εργασίας
+You have XXX unapproved entries: You have XXX unapproved entries
+Changes successfully saved: Changes successfully saved
+Event: Event
+Action: Action
+Printer Friendly: Printer Friendly
+Generate printer-friendly version: Generate printer-friendly version
+after: after
+before: before
+end: end
+start: start
+View this event: View this event
+View this task: View this task
+January: Ιανουάριος
+February: Φεβρουάριος
+March: Μάρτιος
+April: Απρίλιος
+May_: Μάιος
+June: Ιούνιος
+July: Ιούλιος
+August: Αύγουστος
+September: Σεπτέμβριος
+October: Οκτώβριος
+November: Νοέμβριος
+Jan: Ιαν
+Feb: Φεβ
+Mar: Μαρ
+Apr: Απρ
+May: Μάι
+Jun: Ιούν
+Jul: Ιούλ
+Aug: Αυγ
+Sep: Σεπ
+Oct: Οκτ
+Nov: Νοε
+unknown-month: unknown-month
+First Quarter Moon: First Quarter Moon
+Full Moon: Full Moon
+Last Quarter Moon: Last Quarter Moon
+New Moon: New Moon
+Error TIME_SLOTS undefined!: Error: TIME_SLOTS undefined!
+The following error occurred: The following error occurred
+You are not authorized.: You are not authorized.
+Add N hours to: Add N hours to
+Subtract N hours from: Subtract N hours from
+same as: το ίδιο με
+server time: ώρα διακομιστή
+Cannot read timezone file XXX.: Cannot read timezone file: XXX.
+Your current GMT offset is: Η τρέχουσα GMT απόκλιση είναι
+Your current GMT offset is XXX hours.: Η τρέχουσα GMT απόκλιση είναι XXX hours.
+Unauthorized: Unauthorized
+Error approving event: Error approving event
+Error approving event XXX.: Error approving event: XXX.
+Error deleting event: Error deleting event
+Error deleting event XXX.: Error deleting event: XXX.
+Error rejecting event: Error rejecting event
+Error rejecting event XXX.: Error rejecting event: XXX.
+Sunday: Κυριακή
+Monday: Δευτέρα
+Tuesday: Τρίτη
+Wednesday: Τετάρτη
+Thursday: Πέμπτη
+Friday: Παρασκευή
+Saturday: Σάββατο
+Sun: Κυρ
+Mon: Δευ
+Tue: Τρι
+Wed: Τετ
+Thu: Πεμ
+Fri: Παρ
+Sat: Σαβ
+unknown-weekday: unknown-weekday
+Invalid referring URL: Invalid referring URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Ευρετήριο
+Documentation: Τεκμηρίωση
+Page: Σελίδα
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Ημερολόγιο
+Add New Entry: Προσθήκη νέας καταχώρισης
+Add New Task: Προσθήκη νέας εργασίας
+Logout: Αποσύνδεση
+Home: Αρχική
+Back to My Calendar: Πίσω στο ημερολόγιό μου
+Go to: Μετάβαση στο
+Manage calendar of: Διαχείριση ημερολογίου του
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Browser Language Not Found
+not supported: not supported
+English: English
+English-US: English-US
+Afrikaans: Afrikaans
+Albanian: Albanian
+Arabic: Arabic
+Basque: Basque
+Bulgarian: Bulgarian
+Catalan: Catalan
+Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
+Chinese (Traditional/Big5): Chinese (Traditional/Big5)
+Croatian: Croatian
+Czech: Czech
+Danish: Danish
+Dutch: Dutch
+Elven: Elven
+Estonian: Estonian
+Finnish: Finnish
+French: French
+Galician: Galician
+German: German
+Greek: Greek
+Hebrew: Hebrew
+Holo (Taiwanese): Holo (Taiwanese)
+Hungarian: Hungarian
+Icelandic: Icelandic
+Indonesian: Indonesian
+Italian: Italian
+Japanese: Japanese
+Korean: Korean
+Lithuanian: Lithuanian
+Norwegian: Norwegian
+Polish: Polish
+Portuguese: Portuguese
+Portuguese/Brazil: Portuguese/Brazil
+Romanian: Romanian
+Russian: Russian
+Serbian: Serbian
+Slovak: Slovak
+Slovenian: Slovenian
+Spanish: Spanish
+Swedish: Swedish
+Turkish: Turkish
+Welsh: Welsh
+Browser-defined: Browser-defined
+event: event
+journal: journal
+0: 0
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+6: 6
+7: 7
+8: 8
+9: 9
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Μη έγκυρη σύνδεση χρήστη
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: εσφαλμένος κωδικός πρόσβασης
+no such user: δεν υπάρχει τέτοιος χρήστης
+
+########################################
+# Page: includes/xcal.php
+#
+MO: ΔΕ
+TU: ΤΡ
+WE: ΤΕ
+TH: ΠΕ
+FR: ΠΑ
+SA: ΣΑ
+SU: ΚΥ
+Interval: Διάστημα
+Months: Μήνες
+Month Days: Μήνας Ημέρες
+Days: Ημέρες
+Weeks: Εβδομάδες
+Position: Θέση
+Until: Μέχρι
+Count: Μέτρηση
+Inclusion Dates: Συμπερίληψη ημερομηνιών
+Exclusion Dates: Αποκλεισμός ημερομηνιών
+Unnamed Event: Ανώνυμο γεγονός
+Event Imported: Εισηγμένο γεγονός
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bytes
+kb: kb
+Mb: Mb
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Ειδοποίηση
+authenticate: SMTP Error: Αδυναμία πιστοποίησης
+connect_host: SMTP Error: Αδυναμία σύνδεσης στον διακομιστή SMTP:
+data_not_accepted: SMTP Error: Μη αποδεκτά δεδομένα
+encoding: Άγνωστη κωδικοποίηση:
+execute: Αδυναμία εκτέλεσης:
+file_access: Αδυναμία πρόσβασης στο αρχείο:
+file_open: Σφάλμα αρχείου Αδυναμία ανοίγματος αρχείου:
+from_failed: The following From address failed:
+instantiate: Could not instantiate mail function
+mailer_not_supported: mailer is not supported
+provide_address: You must provide at least one recipient email address.
+recipients_failed: SMTP Error: The following recipients failed:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
+Enter the correct letters and numbers from the image into the text box...: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.
+Challenge/Response: Challenge/Response
+
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required.: Server URL is required.
+Server URL must end with /.: Server URL must end with '/'.
+Invalid work hours.: Invalid work hours.
+Invalid color for document background.: Invalid color for document background.
+Invalid color for document title.: Invalid color for document title.
+Invalid color for table cell background.: Invalid color for table cell background.
+Invalid color for table grid.: Invalid color for table grid.
+Invalid color for table header background.: Invalid color for table header background.
+Invalid color for table text background.: Invalid color for table text background.
+Invalid color for event popup background.: Invalid color for event popup background.
+Invalid color for event popup text.: Invalid color for event popup text.
+Invalid color for table cell background for today.: Invalid color for table cell background for today.
+Color format should be RRGGBB.: Color format should be '#RRGGBB'.
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Change the date and time of this entry?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: You have not entered a Brief Description
+The time you have entered begins before your preferred work hours. Is this correct?: The time you have entered begins before your preferred work hours. Is this correct?
+Invalid Event Date: Invalid Event Date
+Please add a participant: Please add a participant
+Invalid Date: Invalid Date
+You have not entered a valid time of day: You have not entered a valid time of day
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Μη έγκυρο χρώμα
+layer: στρώση
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Το ID του ημερολογίου δεν μπορεί να είναι κενό.
+First and last names cannot both be blank.: Το όνομα και το επώνυμο δεν μπορεί να είναι κενά.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+URL cannot be blank.: URL cannot be blank.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: File type does not match Import Format
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Αυτή η εβδομάδα
+This Month: Αυτός ο μήνας
+This Year: Αυτός ο χρόνος
+Exit: Έξοδος
+Add New Event: Προσθήκη νέου γεγονότος
+Delete Entries: Διαγραφή καταχωρίσεων
+My Views: Οι προβολές μου
+Manage Calendar of: Διαχείριση ημερολογίου του
+My Reports: Οι αναφορές μου
+My Profile: Το προφίλ μου
+Public Calendar: Δημόσια ημερολόγιο
+Unapproved Events: Μη εγκεκριμένα γεγονότα
+User Manager: Διαχείριση χρηστών
+Help Contents: Περιεχόμενα βοήθειας
+
+########################################
+# Page: install/index.php
+#
+WebCalendar Installation Wizard: WebCalendar Installation Wizard
+Step: Step
+WebCalendar Installation Wizard Step XXX: WebCalendar Installation Wizard Step XXX
+Single-User: Single-User
+Failure Reason: Failure Reason
+You must manually create database: You must manually create database
+Database Cache Directory: Database Cache Directory
+Test Settings: Test Settings
+Create New: Create New
+Database Name: Database Name
+Timezone Conversion Successful: Timezone Conversion Successful
+Error Unable to write to file: Error Unable to write to file
+Error Unable to write to file XXX.: Error Unable to write to file XXX.
+Successful Login: Successful Login
+Invalid Login: Invalid Login
+required only if Safe Mode is On: required only if Safe Mode is On
+required only if Remote Calendars are used: required only if Remote Calendars are used
+needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
+Passwords do not match: Passwords do not match
+Unable to write password to settings.php file: Unable to write password to settings.php file
+Password has been set: Password has been set
+Connection Successful: Connection Successful
+Please go to next page to continue installation: Please go to next page to continue installation
+Correct your entries or click the Create New button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
+Correct your entries and try again: Correct your entries and try again
+does not exist: does not exist
+is not writable: is not writable
+Error Converting Timezone: Error Converting Timezone
+Please change the file permissions of this file: Please change the file permissions of this file
+Please change includes dir permission: Please change the file permissions of your includes directory to allow writing by other users
+Your settings have been saved: Your settings have been saved
+Error you must specify a Single-User Login: Error you must specify a\nSingle-User Login
+Full Path (no backslashes): Full Path (no backslashes)
+The password contains illegal characters.: The password contains illegal characters.
+This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
+PHP Version Check: PHP Version Check
+Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
+PHP version: PHP version
+PHP Settings: PHP Settings
+Detailed PHP Info: Detailed PHP Info
+Session Check: Session Check
+To test the proper operation of sessions, reload this page: To test the proper operation of sessions, reload this page
+You should see the session counter increment each time: You should see the session counter increment each time
+SESSION COUNTER: SESSION COUNTER
+Settings.php Status: Settings.php Status
+The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
+The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
+Your settings.php file appears to be valid: Your <b>settings.php</b> file appears to be valid
+Configuration Wizard Password: Configuration Wizard Password
+Create Settings File Password: Create Settings File Password
+db setup directions...: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
+Database Status: Database Status
+Supported databases for your PHP installation: Supported databases for your PHP installation
+Your current database settings are able to access the database: Your current database settings are able to access the database
+Please Test Settings: Please Test Settings
+Your current database settings are not able...: Your current database settings are <b>not</b> able to access the database or have not yet been tested
+Database Settings: Database Settings
+Database Type: Είδος βάσης δεδομένων
+Server: Server
+Connection Persistence: Connection Persistence
+All your database tables appear to be up to date. You may proceed to the: All your database tables appear to be up to date. You may proceed to the
+next page and complete your WebCalendar setup: next page and complete your WebCalendar setup
+This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
+go back to the previous page and correct your settings: go back to the previous page and correct your settings
+The database requires some data input: The database requires some data input
+Click Update Database to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
+This appears to be an upgrade from version: This appears to be an upgrade from version
+In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
+If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
+If not, the required SQL can be displayed and you should be able: If not, the required SQL can be displayed and you should be able
+to cut &amp; paste it into your database server query window: to cut &amp; paste it into your database server query window
+No database actions are required: No database actions are required
+The following database actions are required: The following database actions are required
+ODBC Underlying Database: ODBC Underlying Database
+Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the SQL supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
+This may take several minutes to complete: This may take several minutes to complete
+Install Database: Install Database
+Update Database: Update Database
+Display Required SQL: Display Required SQL
+Return to previous page after processing SQL.: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
+This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
+Timezone Conversion: Timezone Conversion
+It appears that you have: It appears that you have
+NOT: NOT
+converted your existing WebCalendar event data to GMT.: converted your existing WebCalendar event data to GMT.
+If you have, you may ignore this notice and not proceed with the conversion.: If you have, you may ignore this notice and not proceed with the conversion.
+If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
+It appears that you have NOT converted your existing WebCalendar...: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion.. If this is a new installation, you may also ignore this notice.
+Convert Data to GMT: Convert Data to GMT
+Application Settings: Application Settings
+HTTP-based authentication was not detected: HTTP-based authentication was not detected
+You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
+select Web Server from the User Authentication choices below.: select 'Web Server' from the 'User Authentication' choices below
+HTTP-based authentication was not detected...: HTTP-based authentication was not detected. You will need to reconfigure your web server if you wish to select 'Web Server' from the 'User Authentication' choices below.
+HTTP-based authentication was detected.: HTTP-based authentication was detected.
+User authentication is being handled by your web server.: User authentication is being handled by your web server.
+You should select Web Server from the list of User Authentication choices below.: You should select 'Web Server' from the list of 'User Authentication' choices below.
+HTTP-based authentication was detected...: HTTP-based authentication was detected. User authentication is being handled by your web server. You should select 'Web Server' from the list of 'User Authentication' choices below.
+Create Default Admin Account: Create Default Admin Account
+Admin Account Not Found: Admin Account Not Found
+User Authentication: User Authentication
+Web-based via WebCalendar (default): Web-based via WebCalendar (default)
+Web Server: Web Server
+Web Server (detected): Διακομιστής (εντοπίστηκε)
+Web Server (not detected): Διακομιστής (δεν εντοπίστηκε)
+None (Single-User): None (Single-User)
+Read-Only: Read-Only
+Environment: Περιβάλλον
+Production: Production
+Development: Παραγωγή
+Save Settings: Αποθήκευση ρυθμίσεων
+Launch WebCalendar: Φόρτωση του WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating webcal_config: Error updating webcal_config
+Error updating table XXX: Error updating table "XXX": XXX.
+Conversion Successful: <b>Conversion Successful</b>
+Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
+previous version requires updating several tables: Your previous version of WebCalendar requires updating several database tables.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ΔΕΝ ΥΠΑΡΧΕΙ ΔΙΑΘΕΣΙΜΗ ΠΡΟΕΠΙΣΚΟΠΗΣΗ
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Include Path: Include Path
+Deleting events for: Deleting events for
+Importing events for: Importing events for
+No data returned from: No data returned from
+for non-user calendar: for non-user calendar
+No Remote Calendars found: No Remote Calendars found
+Remote Calendars not enabled: Remote Calendars not enabled
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: could not find event id
+could not find event id XXX in database.: could not find event id XXX in database.
+This is a reminder for the XXX detailed below.: This is a reminder for the XXX detailed below.
+Pecentage Complete: Pecentage Complete
+Reminder: Reminder
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action: Unsupported action
+Unsupported action XXX.: Unsupported action: XXX.
+No event id specified.: No event id specified.
+not admin: not admin
+Not authorized (not admin).: Not authorized (not admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date XXX to date XXX.: Checking for events for XXX from date XXX to date XXX.
+Found XXX events in time range.: Found XXX events in time range.
+Event id=XXX XXX at XXX on XXX.: Event id=XXX "XXX" at XXX on XXX.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Allowing XXX user to view other user's calendar.
+Error Email reminders disabled for user XXX.: Error: Email reminders disabled for user "XXX".
+Number of site_extras XXX.: Number of site_extras: XXX.
+Reminder set for event.: Reminder set for event.
+Mins Before XXX.: Mins Before: XXX.
+Event time is XXX.: Event time is: XXX.
+Remind time is XXX.: Remind time is: XXX.
+Reminders for user XXX, login XXX.: Reminders for user "XXX", login "XXX".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Getting unapproved for user "XXX".
+Event id=XXX XXX already sent.: Event id=XXX "XXX" already sent.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: No login required for single-user mode.
+No login required for HTTP authentication.: No login required for HTTP authentication.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Invalid characters in login.
+Username XXX does not exist.: Username "XXX" does not exist.
+You cannot remove admin rights from yourself!: You cannot remove admin rights from yourself!
+Unknown error saving user: Unknown error saving user.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: No participants found for event id: XXX.
+Db error Could not find event id XXX.: Db error: Could not find event id XXX.
+Error Could not find event id XXX in database.: Error: Could not find event id XXX in database.

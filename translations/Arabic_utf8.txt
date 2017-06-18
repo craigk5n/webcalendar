@@ -1,0 +1,97 @@
+# See translations/English-US.txt for instructions.
+#
+# Translations by Karim Ratib, <Karim.Ratib@open-craft.com>, February 2005,
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# $Id: Arabic_utf8.txt,v 1.7 2007/04/20 22:17:33 bbannon Exp $
+# Translation last updated on 04-20-2007
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: UTF-8
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: approve_entry.php
+#
+Time: الوقت
+
+########################################
+# Page: edit_report.php
+#
+Today: اليوم الحالى
+Next month: الشهر التالى
+Next year: السنة التالية
+
+########################################
+# Page: includes/date_formats.php
+#
+December: ديسمبر
+Dec: ديسمبر
+
+########################################
+# Page: includes/functions.php
+#
+WK: أسبوع
+January: يناير
+February: فبراير
+March: مارس
+April: ابريل
+May_: مايو
+June: يونيو
+July: يوليو
+August: اغسطس
+September: سبتمبر
+October: اكتوبر
+November: نوفمبر
+Jan: يناير
+Feb: فبراير
+Mar: مارس
+Apr: ابريل
+May: مايو
+Jun: يونيو
+Jul: يوليو
+Aug: اغسطس
+Sep: سبتمبر
+Oct: اكتوبر
+Nov: نوفمبر
+Sunday: الأحد
+Monday: الإثنين
+Tuesday: الثلاثاء
+Wednesday: الأربعاء
+Thursday: الخميس
+Friday: الجمعة
+Saturday: السبت
+Sun: أحد
+Mon: إثنين
+Tue: ثلاثاء
+Wed: أربعاء
+Thu: خميس
+Fri: جمعة
+Sat: سبت

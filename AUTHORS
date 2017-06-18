@@ -1,0 +1,152 @@
+Most of the code was written by:
+  Craig Knudsen <cknudsenATcknudsen.com>
+
+
+New features and bug fixes provided by:
+  Jukka Aittola <Jukka.AittolaAThut.fi>
+  Mike Baptiste <baptisteATcc-concepts.com>
+  Ralph Bo&szlig;ler <rbosslerATgmx.de>
+  Toby Cabot <tobyATtoby.cabotATpobox.com>
+  Antonio Costa <accmdqATesoterica.pt>
+  Lachlan Cox <lachieATzip.com.au>
+  Matthew Crosby <mcrosbyATmarthon.org>
+  Dominik Fischer <dfischerATmegla.de>
+  Tollef Fog Heen <tollefATadd.no>
+  T.R. Fullhart <kayosATkayos.org>
+  Ken Harris <kharrisATlhinfo.com>
+  Florian Helmberger <fhATenemy.org>
+  Michiel Holtkamp <michielATreseau.nl>
+  Jeff Hoover* <jhoovATthebusstop.net>
+  Lucie Houel <lyly134ATcaramail.com>
+  Peter Huetmannsberger <huetmannATsite38.ping.at>
+  Thomas James <tbjamesATbellsouth.net>
+  Ian R. Justman <ianjATcalweb.com>
+  Thorsten Klein <kleinATlfm.rwth-aachen.de>
+  Ulrich Leodolter <ulrichATlab1.psy.univie.ac.at>
+  Benoit Maisonny <benoitATsynclude.com>
+  Jonathan Mark <jhmarkATxenops.com>
+  Ed Palmer <palmeredATusers.sourceforge.net>
+  Otto Paukner <Otto.PauknerATm-v-l.de>
+  Paul Reisdorf <preisdorfATbinus.net>
+  Adam Roben* <adam.robenATgmail.com>
+  David Rodrigues <drodrigATnetextensions.com>
+  Adam Shantz* <adamATadamshantzDOTcom>
+  Andy Skunza <askunzaATdynamix-ltd.com>
+  Oliver Teuber <teuberATdevicen.de>
+  Romuald Texier <romualdATidp9001.com>
+  Frederic Tyndiuk <email address suppressed>
+  Jan Willamowius <janATmobile.de>
+  Vadim Zaliva <lordATcrocodile.org>
+  Ray Jones* <rjonesATumces.edu>
+  Bruce Bannon* <bbannonATusersDOTsourceforgeDOTnet>
+
+
+* ( Development Team )
+
+
+Translations:
+ Bulgarian:
+  Malen Malenov <malen_malenovATyahoo.com>
+ Catalan:
+  Tradu&iuml;t <infoATtraduit.com>
+ Chinese-Big5:
+  Liang-Kuan Liu <lianguanATpchome.com.tw>
+ Croatian_utf8:
+  Krunoslav Zubrinic <krunoslav.zubrinicATvip.hr>
+ Czech:
+  Hanu&scaron; Adler <hadATpenguin.cz>
+ Danish:
+  Allan Thraen <allanAT12go.dk>
+  J&oslash;rgen Thomsen <jthATjth.net>
+  Jens Th <photoATjens-th.com>
+  Nicolaj Rasmussen <drlandauATmsn.com>
+  Morten Nielsen <mniATit.dk>
+  Leo Todaro <leotodaroAThotmail.com>
+ Dutch:
+  Marcel van der Boom <marcelAThsdev.com>
+  Patrick Gutlich <pgutlichATcasema.net>
+  Klaus Spithost <k.spithostATit-works.nl>
+  Marieke Timmer <marieke.timmerATtijdhof.nl>
+  Arnout Engelen <arnoutenATbzzt.net>
+  Oliver Heesakkers <devATheesakkers.info>
+ Estonian:
+  Madis Listak <madisATnetbell.ee>
+ Finnish:
+  Juha-Matti &Aring;berg <juffeATliveware.fi>
+  Jussi Siponen <jussi.siponenATposiona.com>
+ French:
+  Luc Capronnier <email address suppressed>
+  Olivier Piquerez <PiquerezATtopd.ch>
+  Yves Moenner <yves.moennerATmailcity.com>
+  Romuald Texier <romualdtATfree.fr>
+  Wilfrid Hubert
+  G&eacute;rard Delafond
+  Mario Dragone <mario.dragoneATreims.iufm.fr>
+  erational <http://www.erational.org>
+  Ivan Machetto
+  Emmanuel Rihn <acontrecourantATonline_fr>
+ Galician:
+  Ra&uacute;l Araya Tauler <nubeiroATnubeiro.com>
+ German:
+  Markus Egartner <markus.egartnerATkh.hallein.at>
+  Ralph Bo&szlig;ler <rbosslerATgmx.de>
+  Peter Huetmannsberger <huetmannATsite38.ping.at>
+ Greek:
+  Paul Gessos <cham_gssAThotmail.com>
+ Hebrew:
+  Dov Zamir <dovATzamirfamily.com>
+ Holo-Big5:
+  Henry H. Tan-Tenn <share2002novATlomaji.com>
+ Hungarian:
+  Gyorgy Baffia <gyorgyATbaffia.hu>
+  Laszlo Csecsy <boobaaATajrg.hu_>
+  Istvan Bubreg <bubregATfreemail.hu>
+ Icelandic:
+  Kristofer Arnar Einarsson <kristoferATkristofer.com>
+ Italian:
+  Simone Cortesi <simoneATcortesi.com>
+  Alessandro <a.orlandiATiol.it>
+ Japanese:
+  Makoto Hamanaka <VYA04230ATnifty.com>
+  Tadashi Jokagi <elf2000ATusers.sourceforge.net>
+ Korean:
+  Joonyup Jeon <goodwillATwowbook.com>
+ Norwegian:
+  P&aring;l L&oslash;berg/Magni Ons&oslash;ien <initioATinitio.no>
+  Hans Fredrik Nordhaug <hansfnATusers.sourceforge.net>
+ Polish:
+  Lipowczan Pawel <lpao2ATo2.pl>
+  Jano <j4n0ATusers.sourceforge.net>
+ Portuguese:
+  Antonio Costa <accmdqATmail.esoterica.pt>
+  Nuno Lopes <nuno.lopesATmaxitel.com>
+ Portuguese/Brazil:
+  S&eacute;rgio Oliveira <slolivATterra.com.br>
+  Mauricio Piza <mpizaATformare.com.br>
+  Paulino Michelazzo <paulinoATmichelazzo.com.br>
+  Jos&eacute; Roberto Kerne <joserobertoATdicaslinux.com.br>
+  Nuno Lopes <nmlATmaxitel.pt>
+  Andre Oliveira <zack22ATig.com.br>
+ Romanian:
+  Dan Protopopescu <protopopATphysics.gla.ac.uk>
+ Russian:
+  Andre E. Bar&rsquo;yudin <baryudinATpob.huji.ac.il>
+  Ilya G. Teterev <remirranATgmail.com>
+ Spanish:
+  Pedro Del Medico <pdmpATinterhoster.com>
+  P&eacute;rez Rilo
+  Eduardo Dominguez <lalo_notthispleaseATteligens.com>
+  Mario Benito <mbenitoATmaberi.com>
+ Swedish:
+  Jesper Th&ouml;rn <jesperATthorn.as>
+  Bernt Sj&ouml;str&ouml;m <berntATsjostrom.pchemma.nu>
+ Turkish:
+  Atilla Kazanci <supportATdig-it-berlin.de>
+ Welsh:
+  Wyn James <wynjamesATonetel.net.uk>
+
+
+There are probably many others that I have inadvertantly missed.
+
+
+Thank you all for contributing to WebCalendar!

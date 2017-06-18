@@ -1,0 +1,43 @@
+#minicolumn,
+#month .minical,
+#trailer,
+#week .minical,
+.bullet,
+.minitask,
+.nav,
+.new,
+.next,
+.popup,
+.prev,
+.printer,
+.ThemeMenubar,
+form {
+  display: none !important;
+}
+a {
+  color: inherit !important;
+}
+#cat {
+  display: inline !important;
+}
+.entry,
+.layerentry,
+.unapprovedentry {
+  font-size: 12px;
+}
+#viewt .entry,
+#viewt .layerentry,
+#viewt .unapprovedentry {
+  font-size: 13px !important;
+}
+#day dl.desc {
+  display: block !important;
+}
+#viewt table,
+#viewt tr,
+#viewt td {
+  border-color: black !important;
+}
+#printarea {
+ width: 100% !important;
+}

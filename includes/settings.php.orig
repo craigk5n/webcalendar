@@ -1,0 +1,75 @@
+<?php
+##########################################################
+# WebCalendar Site Settings
+#
+# You can edit this file by hand.  Start by copying settings.php.orig
+# to be settings.php
+#
+# This is not really a php file, but we use the .php file extension to
+# prevent malicious users from downloading this file to obtain our
+# database login.
+#
+# When you're done here, try accessing WebCalendar as an admin
+# user and go to the System Settings page (admin.php) to change system
+# settings.
+#
+# For ODBC use, ignore the db_host value and set 
+# db_database to your full DSN
+##########################################################
+
+/* database settings see notes above
+db_type: mysql
+db_host: localhost
+db_login: root
+db_password: none
+db_database: intranet
+db_persistent: false
+
+# Read-only mode: You can set this to true to create a read-only calendar.
+# If you enable $single_user_login (below), no login will be required,
+# making this a publicly viewable calendar.  In order to add events to
+# a setup like this, you will need to setup another installation of this
+# application that is not read-only.
+# If $readonly is enabled in multi-user mode, only admin users will able
+# to add/edit/delete events.
+# NOTE: Approvals are not disabled in read-only.  You must also disable
+# approvals if you don't want to use them.
+# NOTE #2: Using $readonly has mostly been superceded by the new public
+# access calendar (added in version 0.9.35) which allows
+# a public access calendar with no login or a regular calendar user with
+# a valid login.  This is configured in the admin web interface.
+# If you want to use the new system (recommended), leave this $readonly
+# setting set to "false".
+readonly: false
+
+# Are you setting this up as a multi-user system?
+# You can always start as a single-user system and change to multi-user
+# later.  To enable single-user mode, uncomment out the following line
+# and set it to a login name (that you would use if you ever switched to
+# multi-user).  In single-user mode, you will not be prompted for a login,
+# nor will you be asked to select participants for events.
+# NOTE: If you select single-user and then upgrade to multi-user later,
+# you'll have to add in the login name you've set below to the cal_user
+# table.  You will be able to do this from the web admin interface.
+# Set $single_user to either true or false.  If true, make sure
+# $single_user_login is defined.
+single_user: false
+#single_user_login: cknudsen
+
+# Do you want to use web-based login or use HTTP authorization?
+# NOTE: You can only use HTTP authorization if PHP is built as
+# an Apache module.
+# NOTE #2: There's no need to use this if you're running single
+# user mode.
+# Set the following to true to use http-based authorization.
+# If you want to setup a public calendar with HTTP-based authentication,
+# see FAQ in WebCalendar-SysAdmin.html for instructions.
+use_http_auth: false
+
+# user authentication module (user.php, user-ldap.php, user-nis.php)
+# Note: if you enable LDAP support (with user-ladp.php), you will also
+# need to modify user-ldap.php to configure some settings.
+user_inc: user.php
+
+# end */
+?>

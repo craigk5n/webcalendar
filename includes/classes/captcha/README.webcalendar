@@ -1,0 +1,7 @@
+The files in this directory are a CAPTCHA anti-spam class.
+See the original README file for more info.
+The captcha.php file was modified to configure its
+use with WebCalendar.
+
+NOTE: this CAPTCHA class does require the PHP GD extension.  See the PHP
+pages at www.php.net for information on how to enable this extension.

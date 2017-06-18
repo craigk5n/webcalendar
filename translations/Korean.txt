@@ -1,0 +1,372 @@
+# See translations/English-US.txt for instructions.
+#
+# Author: Joonyup Jeon <goodwill@wowbook.com>
+# Last updated: 07 June 2000
+#
+# Additional translations 'borrowed' from SourceForge project
+# 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# $Id: Korean.txt,v 1.32.2.1 2008/09/05 17:59:22 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: EUC-KR
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: 웹 캘린더
+
+########################################
+# Page: access.php
+#
+Go: 시작
+Save: 저장
+Admin: 관리
+Public: 공용
+Confidential: 비밀
+Private: 개인용
+
+########################################
+# Page: activity_log.php
+#
+Next: 다음
+
+########################################
+# Page: add_entry.php
+#
+confidential: 비밀
+private: 개인용
+
+########################################
+# Page: admin.php
+#
+Week: 주
+Month: 월
+Year: 해
+Settings: 설정
+Colors: 색상
+Document background: 배경 색상
+Document title: 제목 색상
+Table cell background: 테이블 셀 배경 색상
+Table cell background for current day: 오늘 날짜 표시 색상
+Help: 도움말
+Language: 언어
+time-format-help: 시간 표시 형식을 명시합니다.<br /><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br /><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
+Time format: 시간 표시 형식
+Duration: 기간
+work-hours-help: 일별 화면에서 표시대상시간을 명시
+Work hours: 근무 시간
+From: 시작
+to: 종료
+display-week-number-help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명시.
+Display week number: 몇주차인가 표시
+display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다.<br /> "Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<br />"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
+Display unapproved: 승인안된 행사 표시
+Yes: 예
+No: 아니오
+
+########################################
+# Page: adminhome.php
+#
+Preferences: 환경 설정
+Users: 사용자
+Account: 계정
+
+########################################
+# Page: approve_entry.php
+#
+Hello: 안녕!
+Date: 일자
+Time: 시각
+
+########################################
+# Page: category.php
+#
+Delete: 지우기
+
+########################################
+# Page: docadd.php
+#
+Description: 설명
+
+########################################
+# Page: edit_entry.php
+#
+minutes: 분
+Edit Entry: 항목 편집
+Add Entry: 항목 추가
+Participants: 참가자
+brief-description-help: 행사의 간략한 설명(약 20자)입니다. 달력상의 행사를 나타냅니다.
+Brief Description: 요약 설명
+full-description-help: 행사의 자세한 설명입니다.
+Full Description: 상세 설명
+access-help: 행사의 접근 수준을 명시.<br /> <i>공용</i>: 모든 사람이 행사의 세부 내용까지 볼 수 있음.<br /><i>비밀</i>: 타 사용자는 일자와 시각을 볼 수 있으나 세부 사항은 볼 수 없음.
+Access: 접근
+priority-help: 행사 우선순위 명시. 높은 우선순위의 행사는 굵은 글씨로 표시됩니다.
+Priority: 우선 순위
+High: 높음
+Medium: 중간
+Low: 낮음
+date-help: 행사일을 나타냅니다.
+time-help: 행사 시각입니다.<br /><i>이 항목은 비워둘 수 있습니다.</i>
+duration-help: 행사기간 명시(분단위)<br /><i>이 항목은 비워둘 수 있습니다.</i>
+participants-help: 참가자의 목록 표시.
+Delete entry: 항목 지우기
+You are not authorized to edit this entry.: 이 항목을 편집할 권한이 없습니다.
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: 새 약속이 생성되었습니다. 생성자:
+The following conflicts with the suggested time: 다음 사항은 제시된 시간과 겹칩니다.
+Please look on: 다음을 살펴볼 것-
+to accept or reject this appointment: 이 약속을 수락하거나 거절
+to view this appointment: 이 약속을 보기
+Your suggested time of: 제안한 시간
+conflicts with the following existing calendar entries: 다음과 같은 항목과 겹칩니다.
+
+########################################
+# Page: edit_nonusers.php
+#
+Add User: 사용자 추가
+Edit User: 사용자 편집
+First Name: 이름
+Last Name: 성
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: 오류
+
+########################################
+# Page: edit_report.php
+#
+Today: 오늘
+Next month: 다음 달
+Current User: 현 사용자
+
+########################################
+# Page: edit_user.php
+#
+E-mail address: E-mail 주소
+Password: 비밀번호
+Change Password: 비밀번호 변경
+New Password: 새 비밀번호
+Set Password: 비밀번호 설정
+
+########################################
+# Page: edit_user_handler.php
+#
+You have not entered a password.: 암호를 입력하지 않았습니다.
+
+########################################
+# Page: group_edit.php
+#
+Updated: 갱신된
+Created by: 작성자:
+
+########################################
+# Page: help_admin.php
+#
+colors-help: 모든 색상은 "#RRGGBB" 같은 16진수 형식으로 표시해야 합니다. "RR" 은 적색, "GG"는 녹색, "BB"는 청색의 16진수 값입니다.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: 달력 항목의 추가/편집
+
+########################################
+# Page: help_index.php
+#
+Help Index: 도움말 목차
+
+########################################
+# Page: list_unapproved.php
+#
+View this entry: 항목 보기
+Approve this entry?: 이 항목을 승인함.
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: 아이디와 비밀번호를 입력해야 합니다.
+Save login via cookies so I dont have to login next time.: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
+Login: 로그인
+cookies-note: <b>주:</b> 쿠키를 다룰 수 있는 브라우저가 필요합니다.
+
+########################################
+# Page: pref.php
+#
+Save Preferences: 환경설정 저장
+
+########################################
+# Page: report.php
+#
+This event is confidential.: 이 행사는 비밀항목입니다.
+
+########################################
+# Page: search.php
+#
+Search: 검색
+Keywords: 검색어
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: 검색어를 입력하셔야 합니다.
+Search Results: 검색 결과
+match found: 항목 발견
+matches found: 항목 발견
+No matches found: 찾은 항목 없음
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: 다른 사용자의 달력 보기
+
+########################################
+# Page: users.php
+#
+denotes administrative user: 관리자를 나타냄
+Add New User: 새 사용자 추가
+
+########################################
+# Page: view_entry.php
+#
+Approve/Confirm entry: 이 항목을 승인/확인함
+This will delete this entry for all users.: 모든 사용자들에서도 이 항목이 지워집니다.
+Edit entry: 항목 편집
+
+########################################
+# Page: week_details.php
+#
+New Entry: 새 항목
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: 다른 사용자 달력
+
+########################################
+# Page: includes/date_formats.php
+#
+December: 12월
+Dec: 12월
+
+########################################
+# Page: includes/functions.php
+#
+WK: 주
+Printer Friendly: 인쇄용 화면
+Generate printer-friendly version: 인쇄용 화면 생성
+January: 1월
+February: 2월
+March: 3월
+April: 4월
+May_: 5월
+June: 6월
+July: 7월
+August: 8월
+September: 9월
+October: 10월
+November: 11월
+Jan: 1월
+Feb: 2월
+Mar: 3월
+Apr: 4월
+May: 5월
+Jun: 6월
+Jul: 7월
+Aug: 8월
+Sep: 9월
+Oct: 10월
+Nov: 11월
+The following error occurred: 다음과 같은 오류 발생:
+You are not authorized.: 권한이 없습니다:
+Unauthorized: 권한 없음
+Error approving event: 행사 승인 중 에러
+Sunday: 일요일
+Monday: 월요일
+Tuesday: 화요일
+Wednesday: 수요일
+Thursday: 목요일
+Friday: 금요일
+Saturday: 토요일
+Sun: 일
+Mon: 월
+Tue: 화
+Wed: 수
+Thu: 목
+Fri: 금
+Sat: 토
+
+########################################
+# Page: includes/trailer.php
+#
+Add New Entry: 새 항목 추가
+Back to My Calendar: 내 달력으로 돌아가기
+Go to: 가기
+
+########################################
+# Page: includes/translate.php
+#
+event: 행사
+
+########################################
+# Page: includes/xcal.php
+#
+Unnamed Event: 이름없는 행사
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: 통보
+
+########################################
+# Page: includes/js/admin.php
+#
+Invalid color for document background.: 배경 색상 틀림
+Invalid color for document title.: 제목 색상 틀림
+Invalid color for table cell background.: 테이블 셀 배경색 틀림
+Invalid color for table cell background for today.: 오늘 날짜 표시 색상 틀림
+Color format should be RRGGBB.: 색상 형식은 '#RRGGBB' 이어야 합니다. 예)"#FF0000" (빨강)
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: 요약 설명을 입력하지 않았습니다.
+You have not entered a valid time of day: 유효한 일자/시각이 아닙니다.
+
+########################################
+# Page: includes/menu/index.php
+#
+Unapproved Events: 미승인 행사

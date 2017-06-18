@@ -1,0 +1,405 @@
+# See translations/English-US.txt for instructions.
+#
+# Translated by: Kristofer Arnar Einarsson kristofer@kristofer.com
+# Last update: 18 August 2000
+#
+# $Id: Icelandic.txt,v 1.32.2.1 2008/09/05 17:59:22 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: VefDagatal
+
+########################################
+# Page: access.php
+#
+Go: Velja
+Save: Vista
+Admin: Stjórnandi
+Public: Allir
+Confidential: Trúnaðarmál
+Private: Einka
+
+########################################
+# Page: add_entry.php
+#
+confidential: trúnaðarmál
+private: einka
+
+########################################
+# Page: admin.php
+#
+Select: Velja
+Day: Dagur
+Week: Vika
+Month: Mánuður
+Year: Ár
+Settings: Stillingar
+Colors: Litir
+Document background: Bakgrunnur
+Document title: Titill
+Table cell background: Bakgrunnur dálka
+Table cell background for current day: Bakgrunnur dálka núverandi dags
+Help: Hjálp
+language-help: Tilgreinir tungumál.
+Language: Tungumál
+None: Engin
+display-week-starts-on: Tilgreinir hvort vikan byrjar á sunnudegi eða mánudegi. Ef mánudagur er valinn munu vikunúmerin á ISO viku númer.
+Week starts on: Vika byrjar á
+time-format-help: Tilgreinir á hvaða tímasnið á að nota:<br /><i>12 tíma:</i> Birtir tíma sem 3fh, 8:30eh, o.s.frv.<br /><i>24 tíma:</i> Birtir tíma sem 300, 2030, o.s.frv.
+Time format: Klukka
+12 hour: 12 tíma
+24 hour: 24 tíma
+Duration: Lengd
+work-hours-help: Tilgreinir vinnutíma sem á að birta.
+Work hours: Vinnutími
+From: Frá
+to: til
+preferred-view-help: Tilgreinir sjálfgefið val (Dagur, vika, mánuður eða ár).
+Preferred view: Birting
+display-week-number-help: Tilgreinir hvort vikunúmer (1-52) eigi að birtast í mánaðar og viku vali.
+Display week number: Birta númer viku
+display-unapproved-help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali.<br /> Ef "Já", eru ósamþykkt atriði birt á dagatali (í öðrum lit).<br /> Ef "Nei", verður að samþykkta atriði til þess að þau birtist á dagatali.
+Display unapproved: Birta ósamþykkt
+Yes: Já
+No: Nei
+
+########################################
+# Page: adminhome.php
+#
+Preferences: Stilla
+Users: Notendur
+Account: Reikningur
+
+########################################
+# Page: approve_entry.php
+#
+Hello: Halló
+Date: Dags
+Time: Tími
+
+########################################
+# Page: category.php
+#
+Delete: Eyða
+
+########################################
+# Page: docadd.php
+#
+Description: Lýsing
+
+########################################
+# Page: edit_entry.php
+#
+am: fh
+pm: eh
+minutes: mínútur
+Edit Entry: Breyta atriði
+Add Entry: Bæta við
+Participants: Þátttakendur
+brief-description-help: Hér á að vera stutt lýsing (u.þ.b 20 stafir) atriðis. Þetta mun vera einkenni atriðis í dagatali.
+Brief Description: Stutt skrýring
+full-description-help: Hér á að vera full lýsing atriðis. Upplýsingarnar er hægt að sjá þegar atriði er skoðað.
+Full Description: Full skýring
+access-help: Tilgreinir aðgang að atriði.<br /> <i>Allir</i>: Allir geta séð fulla lýsingu atriðis.<br /><i>Trúnaðarmál</i>: Aðrir sjá að viðkomandi hefur atriði á tilgreindum tíma en sjá ekkert um efnið.
+Access: Aðgangur
+priority-help: Tilgreinir forgang atriðis. Atriði með háan forgang eru birt með feitu letri.
+Priority: Forgangur
+High: Hár
+Medium: Meðal
+Low: Lágur
+date-help: Tilgreinir dagsetningu atriðis.
+time-help: Tilgreinir tíma atriðis.<br /><i>Þessu sviði má sleppa.</i>
+duration-help: Tilgreinir áætlaða lengd (í mínútum) atriðis.<br /><i>Þessu sviði má sleppa.</i>
+participants-help: Fá fram þá sem koma að atriði.
+repeat-type-help: Velja hversu oft endurtaka á atburðinn.<i>Mánaðarlega (eftir degi)</i> gerir kleift að endurtaka atriði fyrsta mánudag mánaðar, þriðja þriðjudag o.s.frv. <i>Mánaðarlega (eftir dags)</i> gerir kleift að endurtaka atriði á sama mánaðardegi.
+Daily: Daglega
+Weekly: Vikulega
+Monthly: Mánaðarlega
+by day: eftir degi
+by date: eftir dags
+Yearly: Árlega
+repeat-end-date-help: Tilgreinir dagsetningu sem endurtaka á atriði þangað til.
+Use end date: Loka dags
+repeat-frequency-help: Tilgreinir hversu oft á að endurtaka atriði. 1 er sjálfgefið fyrir hvert skipti. Með því að velja 2 er hægt að láta atriði gerast aðra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern mánuð (ef valin <i>Endurtekning</i> er <i>Mánaðarlega</i>), o.s.frv.
+Frequency: Tíðni
+Delete entry: Eyða atriði
+You are not authorized to edit this entry.: Þú hefur ekki réttindi til þess að breyta þessu atriði
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Nýr fundur hefur verið búinn til af
+The following conflicts with the suggested time: Eftirfarandi stangast á við tíma
+Please look on: Vinsamlegast skoðið
+to accept or reject this appointment: til að staðfesta eða hafna þessum fundi
+to view this appointment: til að skoða fund
+Your suggested time of: Uppgefinn tími
+conflicts with the following existing calendar entries: stangast á við eftirfarandi atriði
+
+########################################
+# Page: edit_nonusers.php
+#
+Add User: Nýr notandi
+Edit User: Breyta notanda
+First Name: Fornafn
+Last Name: Eftirnafn
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: Villa
+
+########################################
+# Page: edit_report.php
+#
+Current User: Núverandi notandi
+
+########################################
+# Page: edit_user.php
+#
+Username: Notandanafn
+E-mail address: Tölvupóstur
+Password: Lykilorð
+again: aftur
+Change Password: Breyta lykilorði
+New Password: Nýtt lykilorð
+Set Password: Breyta
+
+########################################
+# Page: edit_user_handler.php
+#
+The passwords were not identical.: Lykilorðin passa ekki saman
+You have not entered a password.: Lykilorð vantar
+
+########################################
+# Page: export.php
+#
+Export: Flytja
+Export format: Snið til að flytja á
+Start date: Byrjun dags
+End date: Endir dags
+Modified since: Breytt síðan
+
+########################################
+# Page: group_edit.php
+#
+Updated: Uppfært
+Created by: Gert af
+
+########################################
+# Page: help_admin.php
+#
+colors-help: Alla liti á að skilgreina með "#RRGGBB" hex sniði þar sem "RR" er hex gildið fyrir rauðan, "GG" er hex gildi fyrir grænan, og "BB" er hex gildi fyrir bláan.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Bæta við/Eyða atriðum í dagatali
+Repeat Type: Tegund endurtekningar
+Repeat End Date: Lok endurtekningar
+Repeat Day: Endurtekning
+repeat-day-help: Tilgreinir á hvaða vikudegi á að endurtaka atriði. Þetta á aðeins við um þegar valin <i>Endurtekning</i> er <i>Vikulega</i>.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Efnisyfirlit
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Samþykkja/Staðfesta
+Reject: Hafna
+View this entry: Skoða
+Approve this entry?: Samþykkja?
+Reject this entry?: Hafna þessu atriði?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Þú verður að slá inn notandanafn og lykilorð
+Save login via cookies so I dont have to login next time.: Vista upplýsingar með kökum
+Login: Skrá inn
+cookies-note: <b>Athugið:</b> Kökur verða að vera virkar
+
+########################################
+# Page: pref.php
+#
+Save Preferences: Vista stillingar
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Þetta er trúnaðarmál
+Rejected: Hafnað
+
+########################################
+# Page: search.php
+#
+Search: Leit
+Keywords: Leitarorð
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Þú verður að slá inn amk eitt leitarorð
+Search Results: Niðurstaða leitar
+match found: fannst
+matches found: fundust
+No matches found: Ekkert fannst
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Skoða dagatal annarra
+
+########################################
+# Page: users.php
+#
+denotes administrative user: táknar stjórnanda
+Add New User: Bæta nýjum notanda við
+
+########################################
+# Page: view_entry.php
+#
+Approve/Confirm entry: Samþykkja/Staðfesta atriði
+Reject entry: Hafna atriði
+This will delete this entry for all users.: Atriði verður eytt hjá öllum notendum.
+Edit entry: Breyta atriði
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nýtt atriði
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Dagatal annarra
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Desember
+Dec: Des
+
+########################################
+# Page: includes/functions.php
+#
+Printer Friendly: Prentvænt
+Generate printer-friendly version: Búa til prentvæna útgáfu
+January: Janúar
+February: Febrúar
+March: Mars
+April: Apríl
+May_: Maí
+June: Júní
+July: Júlí
+August: Ágúst
+October: Október
+November: Nóvember
+May: Maí
+Jun: Jún
+Jul: Júl
+Aug: Ágú
+Oct: Okt
+Nov: Nóv
+The following error occurred: Eftirfarandi villa kom upp
+You are not authorized.: Þú hefur ekki heimild
+Error approving event: Villa við samþykkt atriðis
+Sunday: Sunnudagur
+Monday: Mánudagur
+Tuesday: Þriðjudagur
+Wednesday: Miðvikudagur
+Thursday: Fimmtudagur
+Friday: Föstudagur
+Saturday: Laugardagur
+Mon: Mán
+Tue: Þri
+Wed: Mið
+Thu: Fim
+Fri: Fös
+Sat: Lau
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Dagatalið mitt
+Add New Entry: Bæta við
+Logout: Skrá út
+Back to My Calendar: Aftur í mitt dagatal
+Go to: Fara í
+
+########################################
+# Page: includes/translate.php
+#
+event: atburður
+
+########################################
+# Page: includes/xcal.php
+#
+MO: MÁ
+TU: ÞR
+WE: MI
+TH: FI
+FR: FÖ
+SA: L
+SU: =
+Unnamed Event: Ónafngreint atriði
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Tilkynning
+
+########################################
+# Page: includes/js/admin.php
+#
+Invalid color for document background.: Ólöglegur litur í bakgrunni
+Invalid color for document title.: Ólöglegur litur í titli
+Invalid color for table cell background.: Ólöglegur litur í bakgrunni taflna
+Invalid color for table cell background for today.: Ólöglegur litur í bakgrunni taflna núverandi dags
+Color format should be RRGGBB.: Form lita á að vera '#RRGGBB'
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Stutta lýsingu vantar
+You have not entered a valid time of day: Rangur tími sleginn inn
+
+########################################
+# Page: includes/menu/index.php
+#
+Unapproved Events: Ósamþykkt atriði

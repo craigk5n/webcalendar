@@ -1,0 +1,197 @@
+# Translations from:
+# English-Quernya, http://home.netcom.com/~heensle/lang/elvish/quenya/engquen.html
+# and
+# The Language of the Elven
+# http://www.grey-company.org/Circle/language/search/Wordsearch.cgi?Language=Elven
+#
+# Note:  This is a 'graphical fantasy language' and is much better with a
+# special font installed on your personal computer.  You can find one at:
+#
+# Writing with Elvish Fonts, http://www.sci.fi/~alboin/tengwartutorial.htm
+#
+# Note:  Elven folk do not use abbreviations much.
+#
+# $Id: Elven.txt,v 1.2.2.1 2008/09/05 17:59:20 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: activity_log.php
+#
+Next: Ento
+Previous: Yana
+
+########################################
+# Page: admin.php
+#
+Week: Enquie
+Bottom: Sundo
+Top: Telmello
+Anyone: Ai'er
+to: a'
+Yes: Um
+No: N'uma
+
+########################################
+# Page: adminhome.php
+#
+Account: Quentale
+
+########################################
+# Page: approve_entry.php
+#
+Time: Luume'
+
+########################################
+# Page: availability.php
+#
+year: atendea
+month: asta
+day: re
+
+########################################
+# Page: edit_entry.php
+#
+High: Taurn
+Medium: Ened
+Low: N'taurn
+All: Ilya
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Tul're
+Today: A're
+Yesterday: Tella're
+
+########################################
+# Page: edit_user.php
+#
+again: au'
+
+########################################
+# Page: register.php
+#
+Welcome: Creoso
+
+########################################
+# Page: upcoming.php
+#
+more: ner
+
+########################################
+# Page: view_entry.php
+#
+by: ed'
+boss: kano
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Ringáre
+Dec: Ringáre
+
+########################################
+# Page: includes/dbi4php.php
+#
+write: tengw
+
+########################################
+# Page: includes/functions.php
+#
+WK: ENQUIE
+after: ale'
+before: n'ala
+end: tál
+start: mas
+January: Narvinye
+February: Nénime
+March: Súlime
+April: Víresse
+May_: Lótesse
+June: Nárie
+July: Cermie
+August: Urime
+September: Yavannie
+October: Narquelie
+November: Hísime
+Jan: Narvinye
+Feb: Nénime
+Mar: Súlime
+Apr: Víresse
+May: Lótesse
+Jun: Nárie
+Jul: Cermie
+Aug: Urime
+Sep: Yavannie
+Oct: Narquelie
+Nov: Hísime
+Sunday: Tárion
+Monday: Elenya
+Tuesday: Anarya
+Wednesday: Isilya
+Thursday: Alduya
+Friday: Menelya
+Saturday: Valanya
+Sun: Tárion
+Mon: Elenya
+Tue: Anarya
+Wed: Isilya
+Thu: Alduya
+Fri: Menelya
+Sat: Valany
+
+########################################
+# Page: includes/trailer.php
+#
+Home: Eska
+
+########################################
+# Page: includes/translate.php
+#
+Elven: Eldalie
+
+########################################
+# Page: includes/xcal.php
+#
+MO: Elenya
+TU: Anarya
+WE: Isilya
+TH: Alduya
+FR: Menelya
+SA: Valany
+SU: Tárion
+
+########################################
+# Page: install/index.php
+#
+NOT: IL

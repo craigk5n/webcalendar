@@ -1,0 +1,408 @@
+# See translations/English-US.txt for instructions.
+#
+# Translations for page: includes/classes/WebCalMailer.class
+# by: Elçin Özel - Can Yýlmaz - Mehmet Benlioðlu
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
+# $Id: Turkish.txt,v 1.35.2.1 2008/09/05 17:59:23 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: iso-8859-9
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: WebTakvimi
+
+########################################
+# Page: access.php
+#
+Go: göster
+Save: Kayit
+Admin: Sef
+Public: acik
+Confidential: özel
+Private: özel
+
+########################################
+# Page: add_entry.php
+#
+confidential: özel
+private: özel
+
+########################################
+# Page: admin.php
+#
+Select: Sec
+Day: Gün
+Week: Hafta
+Month: Ay
+Year: Sene
+Settings: Ayar
+Colors: Renkler
+Document background: Sayfa-arkasi
+Document title: Baslik
+Table cell background: Tabela Sayfa-arkasi
+Table cell background for current day: Tabela-arkasi 'Bugün' icin
+Help: Yardim
+Language: Lisan
+None: Hic
+Week starts on: Hafta baslangici
+time-format-help: Hangi saat özelligi kullanildigini gösterir:<br /><i>12-saatlik:</i> Saati 3am, 8:30pm vs. diye gösterir.<br /><i>24-saatlik:</i> Saati 3.00, 20.30 vs. diye gösterir.
+Time format: Saat
+12 hour: 12-saatlik
+24 hour: 24-saatlik
+Duration: Zaman
+work-hours-help: Zaman bölüntüsü Günlük görünüm icin.
+Work hours: Calisma zamani
+From: Kimden
+to: Kime
+Preferred view: Asil kullanim/gösteri
+display-week-number-help: Kacinci Hafta oldugunu (1-52) Aylik ve Haftalik görünümlerinde gösterir.
+Display week number: Kacinci Hafta
+display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<br /> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<br /> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir.
+Display unapproved: Onaylanmamis Termin'leri gör
+Yes: Evet
+No: Hayir
+
+########################################
+# Page: adminhome.php
+#
+Preferences: Ana Ayar
+Users: Kullanici
+
+########################################
+# Page: approve_entry.php
+#
+Hello: Iyi günler
+Date: Tarih
+Time: Saat
+
+########################################
+# Page: category.php
+#
+Delete: Sil
+
+########################################
+# Page: docadd.php
+#
+Description: Anlam
+
+########################################
+# Page: edit_entry.php
+#
+minutes: Dakika
+Edit Entry: Islem degistir
+Add Entry: Islem ekle
+Participants: Katilanlar
+brief-description-help: Termin icin kisa Özet (20 Isaret). Takvimde bu görünür.
+Brief Description: Özel Anlami
+full-description-help: Terminin tamamen aciklamasi. Bu aciklamayi Kullanici Termin'de görür.
+Full Description: Tüm Anlam
+access-help: Termine giris özelliklerini gösterir.<br /> <i>Acik</i>: Herkes her Detayli görebilir.<br /><i>Özel</i>: Termin'in varligini görebilir, ama hicbir Detayli göremez.
+Access: Giris
+priority-help: Termin'in Prioritesini gösterir. Prioritesi yüksek olan Termin'ler kalin yazi olarak gösterilir.
+Priority: Priorite
+High: yüksek
+Medium: orta
+Low: alcak
+date-help: Termin'in tarihini gösterir.
+time-help: Termin'in saatini gösterir.<br /><i>Bos birakilabilir.</i>
+duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<br /><i>Bos birakilabilir.</i>
+participants-help: Termine katilanlari gösterir.
+Daily: Günliük
+Weekly: Haftalik
+Monthly: Aylik
+by day: Günlere göre
+by date: Tarihe göre
+Yearly: Senelik
+Use end date: Bugün bitiyor
+Frequency: defa
+Delete entry: Islemi sil
+You are not authorized to edit this entry.: Sizin bu Islemi silmek icin hak sahibiz yok.
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Sizin icin bir Termin eklendi -->
+The following conflicts with the suggested time: Önerilen Terminde saat carpismasi
+Please look on: Bakiniz
+to accept or reject this appointment: Termini onaylamak/ret etmek.
+to view this appointment: Termini gör
+Scheduling Conflict: Termin carpismasi
+Your suggested time of: Isleminiz
+conflicts with the following existing calendar entries: takiben Takvimde baska bir Islemle carpisiyor.
+
+########################################
+# Page: edit_nonusers.php
+#
+Add User: Kullanici ekle
+Edit User: Kullanici ayar
+First Name: Ad
+Last Name: Soyad
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: Hata
+
+########################################
+# Page: edit_report.php
+#
+Current User: aktüel Kullanici
+
+########################################
+# Page: edit_user.php
+#
+Username: Kullanici Adi
+E-mail address: E-Mail-Adresi
+Password: Sifre
+again: Tekrar
+Change Password: Sifre degistir
+New Password: Yeni Sifre
+Set Password: Sifreyi kullan
+
+########################################
+# Page: edit_user_handler.php
+#
+The passwords were not identical.: Verilen Sifreler esit degil
+You have not entered a password.: Sifre vermediniz
+
+########################################
+# Page: export.php
+#
+Export: Veriler export
+Export format: Export sekli
+Start date: Baslangic tarihi
+End date: Bitis tarihi
+Modified since: Degistirimler
+
+########################################
+# Page: group_edit.php
+#
+Updated: degistirme tarihi
+Created by: kuran kisi
+
+########################################
+# Page: help_admin.php
+#
+colors-help: Tüm renkler "#RRGGBB" olarak verilebilir. "RR" Kirmizi icin hexadesimal olarak, "GG" Yesil icin ve "BB" Mavi icin.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Takvim-Islemi ekle/degistir
+Repeat Type: Tekrar türü
+Repeat End Date: Termin tekrarinin sonu
+Repeat Day: Tekrarin günü
+
+########################################
+# Page: help_index.php
+#
+Help Index: Yardim-Endeksi
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Islem onaylansin
+Reject: Ret
+View this entry: Islemi gör
+Approve this entry?: Islem onaylansin?
+Reject this entry?: Isleme ret?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Kullanici Adi ve Sifre vermeniz gerekiyor.
+Save login via cookies so I dont have to login next time.: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
+Login: Giris
+cookies-note: <b>Not:</b> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
+
+########################################
+# Page: pref.php
+#
+Save Preferences: Ayarlari kayit et
+
+########################################
+# Page: report.php
+#
+This event is confidential.: özel Termin
+Rejected: Islem onaylanmadi, eklenmeyecek
+
+########################################
+# Page: search.php
+#
+Search: Arama
+Keywords: Kelimeler
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: En az bir Kelime girmeniz gerekiyor
+Search Results: Arama sonucu
+match found: Bulunan
+matches found: Bulunan
+No matches found: Bulunmiyor
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Baska Kullanicilarin Takvimini göster
+
+########################################
+# Page: users.php
+#
+denotes administrative user: Sef Kullaniciyi gösterir
+Add New User: Yeni Kullanici ekle
+
+########################################
+# Page: view_entry.php
+#
+Approve/Confirm entry: Islem onaylansin?
+Reject entry: Isleme ret?
+This will delete this entry for all users.: Bu Islem tüt Kullanicilar icin siliniyor.
+Edit entry: Islem degistir
+
+########################################
+# Page: week_details.php
+#
+New Entry: Yeni islem
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Baska Kullanicilarin Takvimi
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Aralik
+Dec: Ara
+
+########################################
+# Page: includes/functions.php
+#
+Printer Friendly: Dostca Baski
+Generate printer-friendly version: Baski verziyonu üret
+January: Ocak
+February: Subat
+March: Mart
+April: Nisan
+May_: Mayis
+June: Haziran
+July: Temmuz
+August: Agustos
+September: Eylül
+October: Ekim
+November: Kasim
+Jan: Oca
+Feb: Sub
+Apr: Nis
+Jun: Haz
+Jul: Tem
+Aug: Agu
+Sep: Eyl
+Oct: Eki
+Nov: Kas
+The following error occurred: Takipteki Hatalar cikiyor
+You are not authorized.: Hak sahibi degilsiniz
+Unauthorized: Hak yok
+Error approving event: Islem onayinda hata
+Sunday: Pazar
+Monday: Pazartesi
+Tuesday: Sali
+Wednesday: Carsamba
+Thursday: Persembe
+Friday: Cuma
+Saturday: Cumartesi
+Sun: Pa
+Mon: Pt
+Tue: Sa
+Wed: Ca
+Thu: Pe
+Fri: Cu
+Sat: Ct
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Benim Takvimim
+Add New Entry: Islem ekle
+Logout: Cikis
+Back to My Calendar: Takvimime geri
+Go to: Git
+
+########################################
+# Page: includes/translate.php
+#
+event: Islem
+
+########################################
+# Page: includes/xcal.php
+#
+Unnamed Event: isimsiz olay
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Not
+authenticate: SMTP Hatasý: Doðrulanamýyor.
+connect_host: SMTP Hatasý: SMTP hosta baðlanýlamýyor.
+data_not_accepted: SMTP Hatasý: Veri kabul edilmedi.
+encoding: Bilinmeyen þifreleme:
+execute: Çalýþtýrýlamýyor:
+file_access: Dosyaya eriþilemiyor:
+file_open: Dosya Hatasý: Dosya açýlamýyor:
+from_failed: Baþarýsýz olan gönderici adresi:
+instantiate: Örnek mail fonksiyonu yaratýlamadý.
+mailer_not_supported: mailler desteklenmemektedir.
+provide_address: En az bir tane mail adresi belirtmek zorundasýnýz alýcýnýn email adresi.
+recipients_failed: SMTP Hatasý: alýcýlara ulaþmadý:
+
+########################################
+# Page: includes/js/admin.php
+#
+Invalid color for document background.: Renk Sayfa-arkasi icin gecerli degil
+Invalid color for document title.: Renk Baslik icin gecerli degil
+Invalid color for table cell background.: Renk Tabela-arkasi icin gecerli degil
+Invalid color for table cell background for today.: Renk Tabela-arkasi 'Bugün' icin gecerli degil
+Color format should be RRGGBB.: Renkler sadece '#RRGGBB' seklinde verilebilir.
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Özet Anlami vermediniz
+You have not entered a valid time of day: Gecerli saat vermediniz
+
+########################################
+# Page: includes/menu/index.php
+#
+Unapproved Events: Onaylanmamis Termin

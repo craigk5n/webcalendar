@@ -1,0 +1,1507 @@
+# See translations/English-US.txt for instructions.
+#
+# Translated by: Dov Zamir, dov@zamirfamily.com
+# Last update: 22 July 2006
+#
+# $Id: Hebrew_utf8.txt,v 1.23.2.3 2008/09/05 17:59:21 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: UTF-8
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: rtl
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __yyyy__ __dd__, __mm__
+__month__ __dd__: __dd__ __month__
+__month__ __dd__, __yyyy__: __yyyy__/__dd__/__month__
+__month__ __yyyy__: __yyyy__ __month__
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: לוח שנה
+
+########################################
+# Page: access.php
+#
+Database error: שגיאת בסיס נתונים
+DEFAULT CONFIGURATION: תצורת ברירת מחדל
+Go: בצע
+Save: שמור
+Public Access: גישה ציבורית
+Admin: מנהל
+User Access Control: בקרת גישת משתמשים
+Allow Access to Other Users Calendar: הרשה גישה ללוחות שנה של משתמשים אחרים
+Grant This User Access to My Calendar: הרשה למשתמש זה גישה ללוח השנה שלי
+Type: סוג
+Calendar: לוח שנה
+View Event: הצג ארוע
+View: תצוגה
+Edit: ערוך
+Approve/Reject: אשר/דחה
+Events: ארועים
+Tasks: משימות
+Journals: יומנים
+Can Invite: יכול לזמן
+Can Email: יכול לשלוח דוא"ל
+Can See Time Only: יכול לראות רק זמנים
+Assistant: עוזר
+Select All: בחר הכל
+Clear All: נקה הכל
+Public: ציבורי
+
+########################################
+# Page: activity_log.php
+#
+Next: הבא
+Previous: הקודם
+
+########################################
+# Page: add_entry.php
+#
+confidential: סודי
+private: פרטי
+Error adding event: שגיאה בהוספת הארוע
+
+########################################
+# Page: admin.php
+#
+Select: בחר
+Day: יום
+Week: שבוע
+Month: חודש
+Year: שנה
+Anyone: כל אחד
+Participant: משתתף
+Settings: הגדרות
+Groups: קבוצות
+NonUser Calendars: לוחות שנה ללא משתמש
+Other: אחר
+Email: דוא"ל
+Colors: צבעים
+Document background: רקע למסמכים
+Document title: כותרת המסמך
+Document text: טקסט המסמך
+My event text: הטקסט של הארוע שלי
+Table grid color: צבע הרשת בטבלה
+Table header background: רקע לכותרת טבלה
+Table header text: טקסט כותרת טבלה
+Table cell background: רקע לתא בטבלה
+Table cell background for current day: רקע לתא בטבלה ליום הנוכחי
+Table cell background for days with events: צבע רקע התא של ימים בהם יש ארועים
+Table cell background for weekends: רקע לתא בטבלה לסופי שבוע
+Table cell background for other month: צבע רקע התא של חודש אחר
+Week number color: צבע מספר השבוע
+Event popup background: רקע לחלונית ארוע קופצת
+Event popup text: טקסט לחלונית ארוע קופצת
+System Settings: הגדרות מערכת
+Help: עזרה
+app-name-help: קובע את שם היישום שיופיע בפס הכותרת של הדפדפן עבור כל הדפים ועל דף הכניסה. הערך שתקבע כאן יימצא בקובץ התרגום מה שיאפשר כותרות שונות עבור שפות שונות.
+Application Name: שם היישום
+Translated Name: שם מתורגם
+server-url-help: קובע את URL הבסיס של היישום. הוא ייכלל כאשר נשלחים תזכורות בדוא"ל והודעות.
+Server URL: URL של השרת
+home-url-help: קובע את URL הבית של היישום. היא יכולה להיות מדויק או יחסי
+Home URL: URL הבית
+language-help: קובע את שפת ממשק המשתמש
+Language: שפה
+Your browser default language is: שפת ברירת המחדל של הדפדפן שלך הינה
+Allow user to use themes: מותר למשתמשים להשתמש בערכות תצורה
+themes-help: מאפשר עדכון מסיבי של הגדרות תצורה. תוויות באותיות קטנות הן העדיפויות משתמש בלבד.
+Themes: ערכות תצורה
+AVAILABLE THEMES: ערכות תצורה זמינות
+None: ללא
+Preview: תצוגה מקדימה
+custom-script-help: מאפשר הכנסת סקריפט ג'אבה או טקסט של דף סגנון שייכנס אל איזור HTML "head" בכל דף.
+Custom script/stylesheet: סקריפט אישי/דף סגנון
+custom-header-help: מאפשר לכלול קטע HTML המותאם אישית בראש כל דף.
+Custom header: כותרת מותאמת אישית
+custom-trailer-help: מאפשר לכלול קטע HTML המותאם אישית בתחתית כל דף.
+Custom trailer: סיומת המותאמת אישית
+enable-external-header-help: מאפשר טעינת סיומת מותאמת אישית מקובץ חיצוני
+Allow external file for header/script/trailer: מאפשר שימוש בקובץ חיצוני עבור כותרת/סקריפט/סיומת
+Allow user to override header/trailer: מותר למשתמש לדרוס כותרת/סיומת
+tz-help: קובע את השעון המקומי (לעומת השעון בשרת).
+Server Timezone Selection: בחירת איזור זמן של השרת
+display-general-use-gmt-help: אם נבחר, תאריכים/שעות משותפים מוצגים בשעון גרניץ'
+Display Common Use Date/Times as GMT: הצג שימוש בתאריכים/שעות משותפים בשעון גרניץ'
+date-format-help: קובע את תצורת התאריך המעודפת.
+Date format: תצורת תאריך
+Small Task Date: תאריך משימה בקטן
+display-week-starts-on: קובע אם השבוע מתחיל ביום ראשון או ביום שני. אם בוחרים ביום שני, אזי מספרי שבוע יהיו מספרי ISO.
+Week starts on: השבוע מתחיל ב-
+time-format-help: קובע איזה תצורת שעה להשתמש:<br /><i>12 שעות:</i> הצג שעות כ-3 לפנה"צ, 8:30 אחה"צ, וכדומה<br /><i> 24 שעות:</i> הצג שעות כ- 3:00, 20:30, וכדומה.
+Time format: תצורת שעה
+12 hour: 12 שעות
+24 hour: 24 שעות
+timed-evt-len-help: קובע את צורת הכנסת הנתונים כדי לקבוע את המשך של ארוע לפי שעה
+Specify timed event length by: ציין משך ארוע לפי שעה על ידי
+Duration: משך
+End Time: שעת סיום
+work-hours-help: קובע את תווך השעות להציג בתצוגה היומית.
+Work hours: שעות עבודה
+From: מאת
+to: אל
+preferred-view-help: קובע את התצוגה ברירת המחדל (יום, שבוע, חודש או שנה).
+Preferred view: תצוגה מועדפת
+Allow top menu: אפשר תפריט עליונה
+Date Selectors position: מיקום בוחר תאריכים
+menu-themes-help: קובע את הצבעים ואת הסגנון של התפריט העליונה
+Menu theme: ערכת תצורה של התפריט
+fonts-help: קובע רשימה של גופנים לשימוש המערכת (כדוגמת "Arial, Helvetica")
+Fonts: גופנים
+display-sm_month-help: כאשר נבחר, מציג חודשים קטנים בתצוגה חודשית
+Display small months: הצג חודשים קטנים
+display-weekends-help: לכלול סופי שבוע בתצוגה שבועית.
+Display weekends: הצג סופי שבוע
+display-alldays-help: הצג את ימי החודש הקודם והחודש הבא בתצוגה חודשים, כדי למלא את כל התאים.
+Display all days in month view: מציג את כל הימים בתצוגה חודשית
+display-week-number-help: קובע אם להציג את מספר הסידורי של השבוע (1-52) בתצוגה חודשית ושבועית
+Display week number: הצג מספר סידורי של השבוע
+display-desc-print-day-help: לכלול תאור הארוע בתצוגה ידידותית למדפסת.
+Display description in printer day view: לכלול תאור בתצוגה יומית מודפסת
+yearly-shows-events-help: בתצוגה שנתית, הצג ימים בהם יש ארועים בטקסט מודגש.
+Display days with events in bold in month and year views: בתצוגה שנתית וחודשית, הצג ימים בהם יש ארועים בטקסט מודגש.
+display-minutes-help: אם נבחר, תמיד יוצגו דקות עם סיומת 00
+Display 00 minutes always: תמיד הצג 00 דקות
+allow-view-add-help: צלמית "+" יכלל בתצוגות, ויאפשר למשתמשים להוסיף ארועים ללוחות שנה של משתמשים אחרים במהירות.
+Include add event link in views: לכלול קישור הוספת ארועים בתצוגות
+lunar-help: אם נבחר, יציג צלמיות קטנות המייצגות את פאזת הירח כל חודש
+Display Lunar Phases in month view: הצג פאזות הירח בתצוגה חודשית
+allow-view-other-help: קובע אם למשתמש אחד מותר לצפות בלוח שנה של משתמש אחר.
+Allow viewing other users calendars: אפשר צפייה בלוחות שנה של אחרים
+require-approvals-help: כאשר מאופשר, על המשתמש לאשר ארוע לפני שהוא יוצג בלוח השנה שלו (אלא אם הצג לא מאושרים מופעל). הערה: כאשר זה במצב "לא", זה לא ייכבה אישורים ללוחות בעלי גישה ציבורית (אם מאופשרים לוחות שנה עם גישה ציבורית).
+Require event approvals: לחייב אישורי אירועים
+display-unapproved-help: קובע אם ארועים לא מאושרים מוצגים בלוח השנה שלך.<br />כאשר נבחר "כן", אזי ארועים לא מאושרים יוצגו בלוח שלך (בצבע שונה).<br />אם נבחר "לא", אזי חייבים לאשר אירוע לפני שיוצג בלוח השנה שלך.
+Display unapproved: הצג לא מאושרים
+conflict-check-help: בדוק התנגשויות ארועים (שני ארועים מתוכננים לאותה שעה לאותו אדם). אם תבחר "כן", עדיין תוכל לזמן שני ארועים לאותה שעה לאחר אישור אזהרה. אם תבחר "לא" התנגשיות לא ייבדקו. מן הסתם תרצה לבחור "כן" כדי לבדוק אם יש התנגשויות.
+Check for event conflicts: בדוק התנגשויות ארועים
+Yes: כן
+No: לא
+conflict-months-help: אם קיימת בדיקת התנגשויות (בדוק התנגשויות ארועים הוא "כן"), זה קובע כמה חודשים קדימה לחפש התנגשויות. אם הוספת ארועים לוקח הרבה זמן, הקטן ערך זה.
+Conflict checking months: הודשים לבדיקת התנגשויות
+conflict-check-override-help: אפשר למשתמשים להתעלם מהתנגשויות ולזמן שני ארועים או יותר לאותה השעה.
+Allow users to override conflicts: אפשר למשתמשים להתעלם מהתנגשויות
+limit-appts-help: מאפשר למנהל המערכת לקבוע גבול לכמות הפגישות המותרות למשתמש מסוים ביום אחד.
+Limit number of timed events per day: הגבל כמות ארועים לפי שעה ביום
+limit-appts-number-help: קובע את כמות המירבית של ארועים לפי שעה שאפשר למשתמש לקבוע ביום אחד.
+Maximum timed events per day: כמות המירבית של ארועים לפי שעה ליום אחד
+crossday-help: אם נבחר, ארוע החוצה גבול יום יוצג בימים נפרדים
+Disable Cross-Day Events: בטל ארועים החוצים יום
+disable-location-field-help: בחירת "כן" יסיר את שדה "מקום" מדפי המידע אודות ארועים
+Disable Location field: בטל שדה מקום
+disable-priority-field-help: בחירת "כן" יסיר את שדה "עדיפות" מדפי מידע אודות ארועים, מה שיספק ממשק פשוט יותר עבור משתמשים חדשים.
+Disable Priority field: הסר שדה עדיפות
+disable-access-field-help: בחירת "כן" יסיר את השדה "גישה" מדפי מידע אודות אירועים, מה שיספק ממשק פשוט יותר עבור משתמשים חדשים.
+Disable Access field: הסר שדה גישה
+disable-participants-field-help: בחירת "כן" יסיר את השדה "משתתפים" מדפי מידע אודות אירועים, מה שיספק ממשק פשוט יותר עבור משתמשים חדשים.
+Disable Participants field: הסר שדה משתתפים
+disable-repeating-field-help: בחירת "כן" יסיר את השדה "חוזר" מדפי מידע אודות אירועים, מה שיספק ממשק פשוט יותר עבור משתמשים חדשים.
+Disable Repeating field: הסר שדה חוזר
+allow-html-description-help: אם נבחר, מאפשר למשתמשים להקליד HTML בשדה תאור ארוע. אם לא נבחר, טגים של HTML יופיעו כטקסט פשוט. אזהרה: אפשור תכונה זו יאפשר למשתמשים להציג תמונות מאתרים חיצוניים.
+Allow HTML in Description: אפשר HTML בתאורים
+disable-popups-help: בטל הצגת חלוניות קפצות בתצוגת לוח השנה
+Disable Pop-Ups: בטל חנוניות קופצות
+popup-includes-siteextras-help: אם נבחר, מאפשר תצוגת שדה הגדרות אתר המותאמות אישית בקובץ site_extras.php בחלונית קופצת.
+Display Site Extras in popup: הצג תוספות אתר בחלונית קופצת
+popup-includes-participants-help: אם נבחר, משתתפים מוצגים בחלוניות קופצות של ארועים
+Display Participants in popup: הצג משתתפים בחלונית קופצת
+remember-last-login-help: כאשר נבחר, שם המשתמש יופיעה אוטומטית עם פתיחת דף הכניסה (אך לא הסיסמא), והעדיפויות של המשתמש ייטענו (כולל צבעים מועדפים ובחירת שפה).
+Remember last login: זכור שם משתמש קודם
+summary_length-help: האורך המירבי של תאור קצר בתצוגת לוחות שנה
+Brief Description Length: אורך תאור קצר
+allow-public-access-help: כאשר נבחר, ניתן להשתמש בלוח השנה כלוח ציבורי לקריאה בלבד אשר לא מחייב אימות משתמשים.
+Allow public access: אפשר גישה ציבורית
+public-access-default-visible: ארועים בלוח הציבורי יופיעו אוטומטית בלוחות השנה של כל המשתמשים.
+Public access visible by default: גישה ציבורית נראית כברירת מחדל
+public-access-default-selected: בהוספת ארוע חדש, ייבחר המשתמש הציבורי כמשתתף כברירת מחדל.
+Public access is default participant: גישה ציבורית הינה משתתף כברירת מחדל
+public-access-view-others-help: כאשר ניגשים למערכת בגישה ציבורית, קובע אם למשתמש אפשר לצפות בלוח שנה של משתמש אחר.
+Public access can view other users: גישה ציבורית יכולה לצפות בלוחות של אחרים
+public-access-can-add-help: כאשר מאופשר, משתמשים הניגשים למערכת באמצעות גישה ציבורית יוכלו להוסיף ארועים חדשים, אבל הארועים הללו לא יופיעו בלוח עד לאחר אישור מנהל.
+Public access can add events: לגישה ציבורית מותר להוסיף ארועים
+public-access-add-requires-approval-help: קובע אם ארועים שנוספו בעזרת חשבון גישה ציבורית מחייבים אישור לפני תצוגתם.
+Public access new events require approval: ארועים חדשים מגישה ציבורית חייבים אישור
+public-access-sees-participants-help: אם מאופשר, משתמשים הניגשים ללוח מחשבון גישה ציבורית יוכלו לצפות במשתתפים אם הם בוחרים לצפות בפרטים של ארוע.
+Public access can view participants: גישה ציבורית יכולה לראות משתתפים
+public-access-override-help: מאפשר הסתרת שמות ותאורים של ארועים בלוח השנה הציבורי
+Override event name/description for public access: דרוס שם/תאור ארוע בגישה ציבורית
+public-access-override-text-help: הצג טקסט זה כאשר האופציה לעיל מופעלת. אם 'Not Available' הוא יתורגם
+Text to display to public access: הטקסט להציג לגישה ציבורית
+uac-enabled-help: מאפשר בקרת גישה ברמת המשתמש
+User Access Control enabled: בקרת גישה ברמת המשתמש מופעלת
+groups-enabled-help: אפשר תמיכה בקבוצות, דבר שיאפשר למשתמשים לבחור משתמשים לפי קבוצות.
+Groups enabled: קבוצות מאופשרות
+user-sees-his-group-help: אם מאופשר, משתמשים לא יוכלו לצפות במשתמשי לוחות שנה שלא נמצאים בלפחות אחת הקבוצות שלהם.
+User sees only his groups: משתמש רואה רק קבוצות שלו
+nonuser-enabled-help: אם מאופשר, למנהל אפשרות להוסיף לוחות שנה ללא משתמש
+Nonuser enabled: אפשור לוחות שנה ללא משתמש
+nonuser-list-help: היכן להציג את לוחות השנה ללא משתמשים ברשימת משתתפים
+Nonuser list: הצג ברשימת משתתפים ב-
+Enabled: מאופשרות
+reports-enabled-help: אם מאופשר, משתמשים ייראו מחלקה של "דוחות" בתחתית כל דף והם יוכלו ליצור דוחות מותאמים אישית. בנוסף, מנהלים יוכלו ליצור דו"חות גלובליים שיוצגו בתחתית הדף של כל משתמש.
+Reports enabled: דו"חות מאופשרים
+subscriptions-enabled-help: קובע אם משתמשים מרוחקים יוכלו להרשם ללוח שנה של משתמש מקומי, מאפשר להם לראות את הארועים של המשתמש המקומי ביישומים בעלי יכולות iCal כדוגמת iCal של Apple או Mozilla Calendar.
+Allow remote subscriptions: אפשר מנויים מרוחקים
+remotes-enabled-help: מאפשר למשתמשים לטעון קבצי ucs מרוחקים באמצעות URL
+Allow remote calendars: אפשר לוחות שנה מרוחקים
+rss-enabled-help: קובע אם אפשר להשיג לוח של משתמש בזרם RSS
+Enable RSS feed: אפשר זרם RSS
+categories-enabled-help: מאפשר שימוש בסיווגי ארועים
+Categories enabled: סיווגים מאופשרים
+icon_upload-enabled-help: אם מאופשר, למשתששים מותר לעלות צלמיות עבור סיווגים
+Category Icon Upload enabled: העלת צלמיות לסיווגים מותרת
+display-tasks-help: הצג חלונית קטנה למשימות בלוח יומי ובלוח חודשי
+Display small task list: הצג רשימה קטנה של משימות
+display-tasks-in-grid-help: הצג משימות בלוח ביחד עם ארועים
+Display tasks in Calendars: הצג משימות בלוח השנה
+allow-external-users-help: קובע אם מותר להוסיף משתמש שאינו משתמש לוח שנה, לארוע. זה מאפשר הוספת משתמשים חיצוניים כמשתתפים בארוע.
+Allow external users: אפשר משתמשים חיצוניים
+external-can-receive-notification-help: כאשר מאפשרים משתמשים חיצוניים ומאפשרים דוא"ל, ניתן לשלוח הודעות לשמשתמשים חיצוניים כאשר הארוע נוסף, מעודכן או נמחק (אם נקבע הכתובת של המשתמש החיצוני, כמובן),
+External users can receive email notifications: מותר לממשתמשים חיצוניים לקבל הודעות דואר
+external-can-receive-reminder-help: כאשר משתמשים חיצוניים מאופשרים ומשלוח דואר מאופשר, ניתן לשלוח תזכורות למשתמשים חיצוניים (אם נקבע את הכתובת שלו).
+External users can receive email reminders: למשתמשים חיצוניים מותר לקבל תזכורות בדואר אלקטרוני
+allow-self-registration-help: אפשר למשתמשים חדשים להרשם בעצמם
+Allow self-registration: אפשר רישום עצמי
+use-blacklist-help: הגבל גישה אל פונקציות לוח השנה על בסיס כתובת IP
+Restrict self-registration to blacklist: הגבל רישום עצמי לרשימה שחורה
+allow-self-registration-full-help: אפשר למשתמשים חדשים להשלים רישום עצמי במקוון
+Use self-registration email notifications: חולל סיסמאות ושלח אותם בדוא"ל אל משתמשים חדשים. זה אמור למנוע רישום שולחי דואר זבל.
+allow-attachment-help: אפשר למשתמשים להוסיף קבצים מצורפים לארועים
+Allow file attachments to events: אפשר קבצים מצורפים בארועים
+Admin and owner can always add attachments if enabled.: המנהל והבעלים יכולים תמיד להוסיף מצורפים באם מאופשר.
+allow-comments-help: אפשר למשתמשים להוסיף הערות לארועים
+Allow comments to events: אפשר הערות בארועים
+Admin and owner can always add comments if enabled.: המנהל והבעלים תמיד יכולים להוסיף הערות, באם מאופשר.
+email-enabled-help: הדלק וכבה כל משלוחי דוא"ל עבור הודעות ותזכרות. ציין "לא" אם שרת הדואר שלך לא שולח דואר כשורה.
+Email enabled: דואר אלקטרוני מאופשר
+email-default-sender: קובע את כתובת השולח במשלוח תזכורות.
+Default sender address: כתובת השולח ברירת המחדל
+email-mailer: בחר סוג דוא"ל (SNMP, דואר PHP, sendmail)
+Email Mailer: תוכנת דוא"ל
+email-smtp-host: שמ/שמות שרת/' SMTP המופרדים בפסיקים
+SMTP Host name(s): שם/שמות שרת SMTP
+email-smtp-port: מספר פורט ה-SMTP (לרוב 25)
+SMTP Port Number: מספר פורט SMTP
+email-smtp-auth: השתמש באימות SMTP
+SMTP Authentication: אימות SMTP
+email-smtp-username: שם משתמש SMTP, אם משתמשים באימות
+SMTP Username: שם משתמש SMTP
+email-smtp-password: סיסמת SMTP אם משתמשים באימות
+SMTP Password: סיסמת SMTP
+Default user settings: הגדרות משתמש ברירות המחדל
+Email format preference: עדיפות תצורת דוא"ל
+Plain Text: טקסט פשוט
+email-event-reminders-help: קובע באם לשלוח תזכורות לארועים או לא.
+Event reminders: תזכורות לארועים
+email-event-added: קובע אם לשלוח הודעות דוא"ל כאשר מתווסף ארוע ללוח השנה שלך.
+Events added to my calendar: ארועים מתווספים ללוח שלי
+email-event-updated: קובע אם לשלוח הודעות דוא"ל כאשר מתעדכן ארוע בלוח השנה שלך.
+Events updated on my calendar: ארועים מתעדכנים בלוח שלי
+email-event-deleted: קובע אם לשלוח הודעות דוא"ל כאשר נמחק ארוע מלוח השנה שלך.
+Events removed from my calendar: ארועים נמחקים מהלוח שלי
+email-event-rejected: קובע אם לשלוח הודעות דוא"ל כאשר משתמש דוחה זימון לארוע בלוח השנה שלך.
+Event rejected by participant: משתתף דוחה ארוע בלוח שלי
+Allow user to customize colors: אפשר למשתמשים לשנות צבעים
+gradient-colors: אם מופעל משתמשים בצבעים גרדיאנטים. זה יכול להשפיע מאוד על ביצועים.
+Enable gradient images for background colors: אפשר צבעים גרדיאנטים כצבעי רקע
+Not available: לא זמין
+
+########################################
+# Page: adminhome.php
+#
+Assistants: עוזרים
+Preferences: עדיפויות
+Control Panel: לוח הבקרה
+Users: משתמשים
+Account: חשבון
+Categories: סיווגים
+Views: תצוגות
+Layers: שכבות
+Reports: דו"חות
+Delete Events: מחק ארועים
+Activity Log: יומן ארועים
+Public Preferences: עדיפויות ציבוריות
+Unapproved Public Events: ארועים ציבוריים לא מאושרים
+Administrative Tools: כלי ניהול
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name: שם כפול
+Username already exists.: שם המשתמש קיים כבר
+Email address already exists.: כתובת דוא"ל קיימת כבר
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): הערות נוספות (אופציונלי)
+Approve and Send: אשר ושלח
+Approve and Exit: אשר וצא
+Hello: שלום
+An appointment has been approved and comments added by: אושרה פגישה והוספו הערות על ידי
+The subject was: הנושא הוא
+The description is: התאור הינו
+Date: תאריך
+Time: שעה
+Comments: הערות
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: מצב מנהל
+Your assistants: העוזרים שלך
+
+########################################
+# Page: availability.php
+#
+day: יום
+
+########################################
+# Page: category.php
+#
+Category Icon: צלמית הסיווג
+Global: גלובאלי
+Category Name: שם סיווג
+Color: צבע
+Remove Icon: הסר צלמית
+Add Icon to Category: הוסף צלמית לסיווג
+Upload: העלה
+gif 3kb max: gif מקסימום 3kb
+Search for existing icons: חפש צלמיות קיימות
+Add: הוסף
+Delete: מחק
+Make New Category: הוסף סיווג חדש
+
+########################################
+# Page: category_handler.php
+#
+File size exceeds maximum.: גודל הקובץ מעל הוגדל המירבי המותר
+File is not a gif image.: הצלמית אינו תמונת גיפ
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: סיווגים זמינים
+ENTRY CATEGORIES: סיווגי רשומות
+Remove: הסר
+Global Category: סיווג גלובאלי
+Cancel: בטל
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: פגישה נקבעה לך על ידי
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: זיהוי בלוב לא חוקי
+
+########################################
+# Page: docadd.php
+#
+Add Comment: הוסף הערה
+Add Attachment: הוסף מצורף
+Subject: נושא
+Comment: הערה
+Upload file: העלה קובץ
+Description: תאור
+
+########################################
+# Page: docdel.php
+#
+Removed: הוסר
+
+########################################
+# Page: edit_entry.php
+#
+am: לפנה"צ
+pm: אחה"צ
+days: ימים
+hours: שעות
+minutes: דקות
+You are not authorized to edit this task: אינך רשאי לערוך משימה זו.
+task: משימה
+is in a different timezone than you are. Currently: הנו באיזור זמן שונה ממך. כרגע
+hour ahead of you: שעה מוקדמת ממך
+hour behind you: שעה מאוחרת ממך
+hours ahead of you: שעות מוקדמות ממך
+hours behind you: שעות מאוחרות ממך
+Time entered here is based on your Timezone.: השעה כאן מבוססת על איזור הזמן שלך
+Edit Entry: ערוך רשומה
+Add Entry: הוסף רשומה
+Details: פרטים
+Participants: משתתפים
+Repeat: חזרה
+Reminders: תזכורות
+brief-description-help: זה מיועד לספק תאור קצר (כ-20 תווים) של הארוע. הוא ייצג את הארוע בצפייה בלוח השנה.
+Brief Description: תאור קצר
+full-description-help: זה צריך להיות הפרטים המלאים של הארוע. ניתן לצפות במידע זה כאשר משתמש צופה בארוע.
+Full Description: תאור מלא
+access-help: קובע את רמת הגישה של הארוע.<br /> <i>ציבורי</i>: כל אחד יכול לצפות בפרטים המלאים של הארוע.<br /><i>פרטי</i>: משתמשים יכולים לראות שיש לך ארוע בשעה ובתאריך הזה, אבל לא את הפרטים המתארים את הארוע.
+Access: גישה
+priority-help: קובע את העדיפות של הארוע. ארועים בעדיפות גבוהה יוצגו במודגש
+Priority: עדיפות
+High: גבוהה
+Medium: בינונית
+Low: נמוכה
+category-help: קובע את סיווג הארוע
+Category: סיווג
+completed-help: תאריך סיום המשימה. פעיל רק כאשר כל המשתתפים סיומו 100% מהמשימה.
+Date Completed: תאריך סיום
+percent-help: אחוז הביצוע עבור משתמש זה.
+Percent Complete: אחוז ביצוע
+All Percentages: כל האחוזים
+location-help: מקום הארוע
+Location: מקום
+date-help: קובע את תאריך הארוע.
+Start Date: תאריך התחלה
+Untimed event: ארוע לא לפי זמן
+Timed event: ארוע לפי זמן
+All day event: ארוע של יום שלם
+Timezone Offset: היסט איזור זמן
+time-help: קובע את שעת הארוע.<br /> בחר "ארוע לפי זמן" (עבור ארוע שמזומן לשעה מסויימת באותו יום), "ארוע לא לפי זמן" (עבור ארוע שלא קשור לשעה (כמו חופשה)), או "ארוע של יום שלם" עבור ארוע שלוקח את כל היום (כמו להיות מחוץ למשרד).
+duration-help: קובע את משך הארוע (בשעות:דקות).<br /><i>ניתן להשאיר שדה זה ריק.</i>
+end-time-help: קובע את שעת סיום הצפוי של הארוע.
+Start Time: שעת התחלה
+Due Date: תאריך יעד
+Due Time: שעת יעד
+participants-help: מציג את המשתתפים בארוע זה.
+Availability: זמינות
+external-participants-help: קובע רשימת משתתפים לארוע אשר אינם משתמשים במערכת לוח השנה. יש לציין משתתף אחד בכל שורה ואפשר לכלול כתובת דוא"ל. אם מציינים כתובת דוא"ל המשתתף מועמד לקבל הודעות ותזכורות
+External Participants: מתשתתפים חיצוניים
+repeat-type-help: בחר כל כמה זמן הארוע חוזר על עצמו. <i>חודשי (לפי יום)</i> מאפשר לארוע לחזור על עצמו ביום שני הראשון בחודש, יום חמישי השלישי וחודש, וכדומה, <i>חודשי (לפי תאריך)</i> מאפשר לארוע לחזור על עצמו באותו תאריך בכל חודש.
+Daily: יומי
+Weekly: שבועי
+Monthly: חודשי
+by day: לפי יום
+by date: לפי תאריך
+by position: לפי מיקום
+Yearly: שנתי
+Manual: ידני
+Expert Mode: מצב מומחה
+repeat-end-date-help: קובע עד מתי יש לחזור על הארוע
+Ending: סיום
+Forever: לעולם
+Use end date: השתמש בתאריך סיום
+Number of times: מספר פעמים
+repeat-frequency-help: קובע כל כמה זמן יש לחזור על הארוע. ברירת המחדל 1 קובע שעליו לחזור בכל פעם. ציון 2 יגרום לכך שהארוע יחזור כל שבוע שני (אם סוג החזרה הנו שבועית או כל חודש שני אם סוג החזרה הוא חודשי, וכך הלאה.
+Frequency: תדירות
+Weekdays Only: ימי חול בלבד
+Week Start: תחילת השבוע
+repeat-bydayextended-help: מאפשר בחירת יום המבוססת על היום בשבוע
+ByDay: לפי יום
+All: הכל
+repeat-month-help: קובע באיזה חודשים יש לחזור על הארוע
+ByMonth: לפי חודש
+repeat-bysetpos-help: מאפשר בחירת תאריך המבוססת על מיקום במשך החודש
+BySetPos: לפי מיקום
+repeat-bymonthdayextended-help: מאפשר בחירת תאריך המבוססת תאריך
+ByMonthDay: לפי יום בחודש
+repeat-byweekno-help: מאפשר למשתמש לקבוע רשימת שבועות בהם יש לחזור על הארוע (1,2...53,-53,-52...-1)
+ByWeekNo: לפי מספר השבוע
+repeat-byyearday-help: מאפשר למשתמש לציין רשימת ימים בהם חוזר הארוע (1,2...366,-366,-365...-1).
+ByYearDay: לפי יום בשנה
+repeat-exceptions-help: ימים נוספים בהם הארוע מתרחש או לא מתרחש
+Exclusions: לא לכלול
+Inclusions: לכלול
+Add Exception: הוסף ימים לא לכלול
+Add Inclusion: הוסף ימים לכלול
+Delete Selected: מחק מסומנים
+Send Reminder: שלח תזכורת
+When: כאשר
+Use Date/Time: השתמש בתאריך/שעה
+Use Offset: השתמש בהיסט
+Before: לפני
+After: אחרי
+Start: תחילה
+End/Due: סיום/יעד
+Times: פעמים
+Every: כל
+Delete entry: מחק רשומה
+You are not authorized to edit this entry.: אינך רשאי לערוך רשומה זו
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: פגישה חדשה נקבעה לך על ידי
+An appointment has been updated by: פגישה קיימת עודכנה עבורך על ידי
+The following conflicts with the suggested time: הרשום מטה מתנגש עם השעה המוצעת
+Please look on: נא להמשיך לצפות
+to accept or reject this appointment: כדי לקבל או לדחות פגישה זו
+to view this appointment: כדי לצפות בפגישה זו
+Scheduling Conflict: התנגשות זימונים
+Your suggested time of: השעה המוצעת שלך
+conflicts with the following existing calendar entries: מתנגשת עם רשומות לוח השנה הרשומות מטה.
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: הוסף שכבה
+Edit Layer: ערוך שכבה
+Source: מקור
+Duplicates: כפולים
+Show layer events that are the same as your own: הצג ארועים בשכבה שזהים לארועים שלך
+Add to Others: הוסף לאחרים
+Add to My Calendar: הוסף ללוח השנה שלי
+Delete layer: מחק שכבה
+
+########################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself.: אי אפשר ליצור שכבה עבור עצמך
+You can only create one layer for each user.: אפשר ליצור רק שכבה אחת לכל משתמש
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX לא נקבע ב- config.php.
+word characters only: יכול להכיל רק את הווים (a-zA-Z_0-9)
+Add User: הוסף משתמש
+Edit User: ערוך משתמש
+Calendar ID: זיהוי לוח שנה
+First Name: שם פרטי
+Last Name: שם משפחה
+Is public calendar: הינו לוח שנה ציבורי
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: הוסף לוח שנה מרוחק
+Edit Remote Calendar: ערוך לוח שנה מרוחק
+Create Layer: צור שכבה
+Reload: טען מחדש
+Required to View Remote Calendar: צריך כדי לצפות בלוח שנה מרוחק
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: שגיאה
+Import Results: תוצאות הייבוא
+Events successfully imported: הארועים הובוא בהצלחה
+Create a new layer to view this calendar: צור שכבה חדשה כדי לצפות בלוח שנה זה.
+Errors: שגיאות
+There was an error parsing the import file or no events were returned: ארעה שגיאה בקריאת קובץ הייבוא או שלא נמצאו ארועים כל שהם.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: מחר
+Today: היום
+Yesterday: אתמול
+Day before yesterday: שלשום
+Next week: שבוע הבא
+This week: השבוע
+Last week: שבוע שעבר
+Week before last: לפני שבועיים
+Next week and week after: שבוע הבא ועוד שבועיים
+This week and next week: השבוע והשבוע הבא
+Last week and this week: השבוע שעבר והשבוע
+Last two weeks: השבועיים האחרונים
+Next month: החודש הבא
+This month: החודש
+Last month: החודש שעבר
+Month before last: לפני חודשיים
+Next year: השנה הבאה
+This year: השנה
+Last year: השנה שעברה
+Year before last: לפני שנתיים
+Next 14 days: 14 ימים הקרובים
+Next 30 days: 30 ימים הקרובים
+Next 60 days: 60 ימים הקרובים
+Next 90 days: 90 ימים הקרובים
+Next 180 days: 180 ימים הקרובים
+Next 365 days: 365 ימים הקרובים
+Invalid report id.: זיהוי דו"ח לא חוקי
+Unnamed Report: דו"ח ללא שם
+Add Report: הוסף דו"ח
+Edit Report: ערוך דו"ח
+Report name: שם הדו"ח
+User: משתמש
+Current User: המשתמש הנוכחי
+Include standard header/trailer: לכלול כותרת/סיומת סטנדרטית
+Include previous/next links: לכלול קישורי הקודם/הבא
+Include empty dates: לכלול תאריכים ריקים
+Date range: טווח תאריכים
+Template variables: משתני התבנית
+Page template: תבנית הדף
+Day template: תבנית היום
+Event template: תבנית ארוע
+
+########################################
+# Page: edit_report_handler.php
+#
+Variable N not found: לא נמצא משתנה N
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: ערוך כותרת מותאמת אישית
+Edit Custom Script/Stylesheet: ערוך סקריפט/דף סגנונות המותאם אישית
+Edit Custom Trailer: ערוך סיומת מתאמת אישית
+
+########################################
+# Page: edit_user.php
+#
+Username: שם משתמש
+E-mail address: כתובת דוא"ל
+Password: סיסמא
+again: שוב
+Disabled for demo: לא פעיל לצורך ההדגמה
+Change Password: שנה סיסמא
+New Password: סיסמא חדשה
+Set Password: קבע סיסמא
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: מחיקת משתמשים אינה נתמכת
+The passwords were not identical.: הסיסמות לא זהות
+You have not entered a password.: לא הקלדת סיסמא
+Username cannot be blank.: שם משתמש לא יכול להיות ריק
+
+########################################
+# Page: export.php
+#
+Export: ייצוא
+Export format: פורמאט ייצוא
+Include all layers: כולל כל השכבות
+Export all dates: לייצא את כל התאריכים
+Start date: תאריך התחלה
+End date: תאריך סיום
+Modified since: שהשתנו מאז
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect: תצורת ייצוא לא מוגדרת או שגויה
+
+########################################
+# Page: groups.php
+#
+Add New Group: הוסף קבוצה חדשה
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: קבוצה ללא שם
+Add Group: הוסף קבוצה
+Edit Group: ערוך קבוצה
+Group name: שם הקבוצה
+Updated: עודכנה
+Created by: נוצרה על ידי
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: עליך לציין שם קבוצה
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: רענון לוחות שנה באופן אוטומטי
+auto-refresh-help: כאשר מאופשר, דפי תצוגה היומית, השבועית, החודשית ורישימת הלא מאושרים יתרעננו בצורה אוטומטית לפרקים
+Auto-refresh time: זמן רענון אוטומטי
+auto-refresh-time-help: באם רענון אוטומטי מאופשר, קובע את פרק הזמן בין רענונים.
+Display days with events in bold in year view: הצג ימים עם ארועים מודגשים בתצוגה שנתית
+Display weekends in week view: הצג סופי שבוע בתצוגה שבועית
+Time interval: אורך בלוק השעות
+time-interval-help: קובע את אורך בלוק השעות בתצוגה שבועית ובתצוגה היומית.
+Nonuser: לוחות שנה ללא משתמשים
+user-customize-color: קובע באם מותר למשתמשים לשנות את ערכות הצבעים של עצמם
+enable-gradient-help: להשתמש בצבעים גרדיאנטים לרקע של תאים
+Manually entering color values: הכנסת ערכי צבעים ידנית
+colors-help: יש לציין צבעים כמספר הקסדצימאלי "#RRGGBB" כאשר "RR" הוא הערך של אדום, "GG" הוא ערך של ירוק ו-"BB" הוא הערך של כחול.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: דווח על באג
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: הוספה/עריכה של רשומות לוחות שנה
+Repeat Type: סוג חזרה
+Repeat End Date: תאריך סיום החזרה
+Repeat Day: יום החזרה
+repeat-day-help: קובע באיזה מימי השבוע על הארוע להופיע. משתמשים בזה רק כאשר סוג החזרה הוא שבועי.
+
+########################################
+# Page: help_import.php
+#
+Import: ייבוא
+This form will allow you to import entries from the Palm Desktop Datebook.: טופס זה יאפשר לך לייבא רשומות מפינקס התאריכים של שולחן העבודה של Palm
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: הוא אמור להמצא במחיצה ב-Palm שלך ב- <tt>datebook/datebook.dat</tt> בתת ספריה על שם שם המשתמש שלך
+The following entries will not be imported: הרשומות הבאות לא ייובוא
+Entries older than the current date: רשומות ישנות מהתאריך של היום
+Entries created in the Palm Desktop...: רשומות בשולחן העבודה של ה-Palm שלא סונכרנו
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: כל דבר שמיובא מה-Palm יישכתב מחדש בפעולת הייבוא הבא (אלא אם עבר תאריך הארוע).
+Therefore, updates should be made in the Palm Desktop.: לכן יש לעדכן אותם בשולחן העבודה של ה-Palm.
+This form will import vCalendar (.vcs) 1.0 events: טופס זה יאפשר ייבוא של ארועים של vCalendar (.vcs) 1.0
+The following formats have been tested: נבדקו התצורות הבאות
+This form will import iCalendar (.ics) events: טופס זה מאפשר ייבוא של ארועים של iCalendar (.ics)
+Enabling: אפשור
+Overwrite Prior Import: דרוס ייבוא קודם
+
+########################################
+# Page: help_index.php
+#
+Help Index: אינדקס העזרה
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: שכבות משמשות לתצוגת ארועים של משתמשים אחרים בלוח השנה שלך. ניתן לציין את המשתמש ואת צבע הצגת הארועים שלו.
+Add/Edit/Delete: הוסף/ערוך/מחק
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: הקלקה על קישור עריכת שכבות באזור הנהול בתחתית הדף תאפשר הוספה/עריכה/מחיקה של שכבות.
+The text color of the new layer that will be displayed in your calendar.: צבע הטקסט של השכבה החדשה שתוצג בלוח השנה שלך.
+Disabling: ביטול
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: לחץ על קישור ביטול שכבות באיזור הניהול בתחתית הדף כדי לכבות שכבות.
+If checked, events that are duplicates of your events will be shown.: אם נבחר, יוצגו הארועים שהנם כפולים של ארועים בלוח השנה שלך.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: לחץ על קישור אפשר שכבות באיזור הניהול בתחתית הדף כדי להדליק שכבות.
+Specifies the user that you would like to see displayed in your calendar.: קובע את המשתמש שהנך רוצה להציג בלוח השנה שלך.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: סיווג ברירת מחדל
+default-category-help: קבע את הסיווג המחדלי של ארוע חדש.
+When I am the boss: כאשר אני המנהל
+Email me event notification: שלח לי הודעות על ארועים בדוא"ל
+email-boss-notifications-help: קובע אם מנהלים מקבלים הודעות לגבי ארועים בדוא"ל.
+I want to approve events: אני רוצה לאשר ארועים
+boss-approve-event-help: קובע אם המנהל חייב לאשר ארועים שעוזריו קבעו.
+Subscribe/Publish: מנוי/פרסום
+Allow remote publishing: אפשר פרסום מרוחק
+allow-remote-publishing-help: קובע באם מותר ללקוח iCal לפרסם ארועים בחזרה ללוח השנה
+remote-publishing-url-help: מציג את ה-URL להשתמש ביישום לקוח ה-iCal כדי להרשם אל ולפרסם בלוח השנה
+allow-remote-subscriptions-help: קובע אם לשמתמשים מרוחקים מותר לעשות מנוי ללוח השנה שלך, לאפשר להם לראות את הארועים שלך ביישומים בעלי יכולות iCal כמו iCal של Apple או Mozilla Calendar.
+remote-subscriptions-url-help: מציג את ה-URL שמשתמשים מרוחקים צריכים להשתמש כדי לעשות מנוי בלוח השנה שלך.
+Enable FreeBusy publishing: אפשר פרסום מידע אודות זמן פנוי ותפוס
+freebusy-enabled-help: קובע באם ניתן להשיג את זמינות המשתמש בהתאם לתקן פנוי/תפוס של iCal
+freebusy-url-help: כתובת URL לגישה אל בזמינות של המשתמש
+rss-feed-url-help: כתובת URL לגישה לזרם RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: בקרת גישת משתמשים מאפשרת בקרה טובה יותר על גישת משתמשים וניהול הרשאות מאשר היה אפשר בעבר. גם משתמשים יכולים לנהל גישת משתמשים והרשאות באם המנהל אפשר זאת.
+If disabled, this user cannot send you emails.: אם לא מאופשר, משתמש זה לא יוכל לשלוח לך דוא"ל.
+If disabled, this user cannot see you in the participants list.: אם לא מאופשר, משתמש זה לא יוכל לראות אותך ברשימת המשתתפים.
+If enabled, this user cannot view the details of any of your entries.: אם מאופשר, משתמש זה לא יוכל לצפות בפרטים של הרשומות שלך.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): פרסום מבוטל (מנהל)
+Publishing Disabled (User): פרסום מבוטל (משתמש)
+
+########################################
+# Page: icons.php
+#
+Click to Select: הקלק לבחירה
+Current Icons on Server: הצלמיות הנוכחיות בשרת
+
+########################################
+# Page: import.php
+#
+Disabled: לא מופעל
+Import format: פורמאט ייבוא
+Exclude private records: ללא רשומות פרטיות
+Repeated items are imported separately. Prior imports are not overwritten.: פרטים עם חזרה מיובאים בנפרד. ייבואים קודמים אינם נדרסים.
+
+########################################
+# Page: import_handler.php
+#
+Events from prior import marked as deleted: ארועים מייבוא קודם סומנו כמחוקים
+Conflicting events: ארועים מתנגשים
+The import file contained no data: קובץ הייבוא לא מכיל מידע.
+
+########################################
+# Page: layers.php
+#
+Layer: שכבה
+Edit layer: ערוך שכבה
+Layers are currently: שכבות כרגע
+Disable Layers: בטל שכבות
+Click here: הקלק כאן
+to modify the layers settings for the: כדי לשנות הגדרות שכבה עבור
+calendar: לוח השנה
+Add layer: הוסף שכבה
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: אשר
+Approve Selected: אשר מסומנות
+Check All: בחר הכל
+Emails Will Not Be Sent: לא יישלח דוא"ל
+Reject Selected: דחה מסומנות
+Reject: דחה
+Uncheck All: נקה הכל
+View this entry: צפה ברשומה זו
+No unapproved entries for: אין רשומות לא מאושרות עבור
+Unapproved Entries: רשומות לא מאושרות
+Not authorized: לא מורשה
+Approve this entry?: אשר רשומה זו?
+Reject this entry?: דחה רשומה זו?
+Approve Selected entries?: לאשר רשומות מסומנות?
+Reject Selected entries?: לדחות רשומות מסומנות?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: עליך להקליד שם משתמש וסיסמא
+Save login via cookies so I dont have to login next time.: שמור שם משתמש בעזרת עוגיות כדי שלא אצטרך להקליד אותו בפעם הבאה
+Login: כניסה
+Access public calendar: גישה ללוח שנה ציבורית
+cookies-note: <b>הערה:</b> יישום זה מחייב שימוש בעוגיות.
+
+########################################
+# Page: login.php
+#
+Invalid login: כניסה לא חוקית
+You have been logged out.: יצאת מהמערכת
+Not yet registered? Register here!: עוד לא רשמת? הרשם כאן!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar: אין לוח שנה ללא משתמש בשם זה
+This Calendar is not Public.: לוח שנה זה אינו ציבורי
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: הוסף לוח שנה ללא משתמש
+
+########################################
+# Page: nulogin.php
+#
+Illegal characters in login: ישנם תווים לא חוקיים בשם המשתמש
+
+########################################
+# Page: pref.php
+#
+Save Preferences: שמור עדיפויות
+Public Access calendar: לוח שנה לגישה ציבורית
+Modify Non User Calendar Preferences: שנה העדיפויות עבור לוחות שנה ללא משתמש
+Return to My Preferences: חזור להעדיפויות שלי
+Custom Scripts: סקריפטים המותאמים אישית
+Timezone Selection: בחירת איזור זמן
+entry-interval-help: קובע את פרק הזמן בדקות בעריכת זמני ארועים
+Entry interval: פרק הזמן של ארוע
+hour: שעה
+minute: דקה
+theme-reload-help: בגלל המטמון של CSS, יתכן שצריך לרענן את הדף
+Page may need to be reloaded for new Theme to take effect: יתכן שצריך לרענן את הדף כדי שערכת הצבעים החדשה תתחיל לפעול.
+display_byproxy-help: בטל את היוצר האמיתי בדף התצוגת רשומות
+Display if created by Assistant: הצג אם נוצר על ידי עוזר
+allow-view-subscriptions-help: מאפשר הגבלת הגישה אל רשומות פרטיות וסודיות בגישה מרחוק
+Allow remote viewing of: אפשר תצוגה מרוחקת של
+entries: רשומות
+
+########################################
+# Page: publish.php
+#
+No user specified: לא ציינת משתמש
+
+########################################
+# Page: purge.php
+#
+Purging events for: מוחק ארועים עבור
+Finished: סיימתי
+Back: חזור
+Check box to delete ALL events for a user: סמן משבצת כדי למחוק את <b>כל</b> הארועים של משתמש אחד
+Delete all events before: מחק את כל הארועים מלפני
+Preview delete: תצוגה מקדימה של המחיקה
+Records deleted from: רשומות נמחקו מ-
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: כתובת דוא"ל לא יכולה להיות ריקה
+A new WebCalendar account has been set up for you.: חשבון לוח שנה חדש הוגדר עבורך
+Your username is: שם המשתמש שלך הינו
+Your password is: הסיסמא שלך הוא
+Please visit: נא לבקר
+to log in and start using your account: כדי להכנס ולהתחיל להשתמש בחשבונך
+You may change your password after logging in the first time.: ניתן לשנות את הסיסמא אחרי הכניסה הראשונה לחשבונך.
+If you received this email in error: אם קיבלת את המסר הזה בטעות ולא נרשמת לקבל חשבון לוח שנה, אתה יכול להתעלם מדוא"ל זה או לענות לו עם הערה קצרה.
+Administrator: מנהל
+Welcome: ברוך בואך
+Registration: רישום
+Welcome to WebCalendar: ברוך בואך אל לוח השנה
+Your email should arrive shortly.: הדוא"ל צריך להגיע אליך מיד.
+Return to Login screen: חזרה למסך הכניסה
+Password (again): סיסמא (שוב)
+Your account information will be emailed to you.: מידע אודות החשבון שלך יישלח אליך בדוא"ל
+Submit: הגש
+
+########################################
+# Page: reject_entry.php
+#
+Continue: המשך
+(Your comments will be emailed to the other participants.): )הערותיך היכללו בדוא"ל למשתתפים האחרים)
+An appointment has been rejected by: פגישה נדחתה (סירוב) על ידי
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: הוסף לוח מרוחק חדש
+
+########################################
+# Page: report.php
+#
+This event is confidential.: ארוע זה הינו פרטי
+cont.: המשך
+Approved: מאושר
+Deleted: נמחק
+Rejected: נדחה
+Waiting for approval: מחכה לאישור
+Unknown: לא ידוע
+to manage reports for the Public Access calendar: כדי לנהל דו"חות עבור לוח השנה של גישה ציבורית
+Add new report: הוסף דו"ח חדש
+Manage Reports: ניהול דו"חות
+
+########################################
+# Page: search.php
+#
+Advanced Search: חיפוש מתקדם
+Search: חיפוש
+Keywords: מילות מפתח
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: עליך להקליד מלת מפתח אחת לפחות
+Search Results: תוצאות החיפוש
+match found: נמצאה התאמה
+matches found: נמצאו התאמות
+No matches found: לא נמצאו התאמות
+
+########################################
+# Page: security_audit.php
+#
+Status: מצב
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: צפה בלוח שנה של משתמש אחר
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: לא הוספת סיווגים כלשהם
+Set Category: קבע סיווג
+Global Categories cannot be changed.: לא ניתן לשנות סיווגים גלובאליים
+
+########################################
+# Page: upcoming.php
+#
+more: עוד
+
+########################################
+# Page: users.php
+#
+Remote Calendars: לוחות שנה מרוחקים
+denotes administrative user: מציין מנהל
+Add New User: הוסף משתמש חדש
+
+########################################
+# Page: usersel.php
+#
+Reset: נקה
+
+########################################
+# Page: views.php
+#
+Add New View: הוסף תצוגה חדשה
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: תצוגה ללא שם
+Add View: הוסף תצוגה
+Edit View: ערוך תצוגה
+View Name: שם התצוגה
+View Type: סיווג התצוגה
+Day by Time: יום לפי שעה
+Week (Users horizontal): שבוע (משתמשים במאוזן)
+Week by Time: שבוע לפי שעה
+Week (Users vertical): שבוע (משתמשים במאונך)
+Week (Timebar): שבוע (פס זמן)
+Month (Timebar): חודש (פס זמן)
+Month (side by side): חודש (זה ליד זה)
+Month (on same calendar): חודש (באותו לוח השנה)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: עליך לציין שם לתצוגה
+
+########################################
+# Page: view_d.php
+#
+No users for this view: אין משתמשים בתצוגה זו
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: עדכן אחוז המשימה
+Completed: הושלם
+Assistant mode: מצב עוזר
+Declined: נדחה
+Needs-Action: נדרש טיפול
+by: על ידי
+Percentage Complete: אחוז נשלם
+External User: משתמש חיצוני
+Update: עדכן
+Attachments: מצורפים
+comments: הערות
+Show: הצג
+Hide: הסתר
+Approve/Confirm entry: אשר רשומה
+Reject entry: דחה רשומה
+Set category: קבע סיווג
+Copy entry: העתק רשומה
+This will delete this entry for all users.: זה ימחוק את הרשומה עבור כל המשתמשים.
+Edit entry: ערוך רשומה
+Edit repeating entry for all dates: ערוך רשומה חוזרת עבור כל התאריכים
+Delete repeating event for all dates: מחק רשומה חוזרת עבור כל התאריכים
+Edit entry for this date: ערוך רשומה עבור תאריך זה בלבד
+Delete entry only for this date: מחק רשומה עבור תאריך זה בלבד
+from calendar of: מלוח השנה של
+This will delete the entry from your calendar.: זה ימחוק את הרשומה מלוח השנה שלך.
+from your boss calendar: מלוח השנה של המנהל שלך
+Do you want to add this entry to your calendar?: האם ברצונך להוסיף את הרשומה ללוח השנה שלך?
+This will add the entry to your calendar.: זה יוסיף את הרשומה ללוח השנה שלך.
+Email all participants: שלח דוא"ל לכל המשתתפים
+Hide activity log: הסתר יומן פעילויות
+Show activity log: הצג יומן פעילויות
+Export this entry to: ייצא רשומה זו ל-
+
+########################################
+# Page: view_r.php
+#
+Double-click on empty cell to add new entry: הקלק הקלקה כפולה בתא ריק כדי להוסיף רשומה
+
+########################################
+# Page: week_details.php
+#
+New Entry: רשומה חדשה
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: לוח שנה של משתמש אחר
+Category Management: ניהול סיווגים
+Day View: תצוגה יומית
+Edit Event: ערוך ארוע
+Month View: תצוגה חודשית
+Common Trailer: סיומת משותפת
+User Management: ניהול משתמשים
+Manage Views: ניהול תצוגות
+Week View: תצוגה שבועית
+Year View: תצוגה שנתית
+
+########################################
+# Page: includes/date_formats.php
+#
+December: דצמבר
+Dec: דצמ
+LANGUAGE DEFINED: שפה מוגדרת
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: שגיאה חמורה
+
+########################################
+# Page: includes/functions.php
+#
+This event is private: ארוע זה הינו פרטי
+Conf.: סודי
+exceeds limit of XXX events per day: חורג מהמגבלה של XXX ארועים ליום
+All Attendees: כל המשתתפים
+Busy: תפוס
+Tentative: לא סופי
+Schedule an appointment for: זמן פגישה עבור
+Event approved: הארוע אושר
+Journal approved: היומן אושר
+Task approved: המשימה אושרה
+Attachment: מצורף
+Event created: הארוע נוצר
+Journal created: היומן נוצר
+Task created: המשימה נוצרה
+Event deleted: הארוע נמחק
+Journal deleted: היומן נמחק
+Task deleted: המשימה נמחקה
+Notification sent: הודעה נשלחה
+Event rejected: הארוע נדחה
+Journal rejected: היומן נדחה
+Task rejected: המשימה נדחתה
+Reminder sent: תזכורת נשלחה
+Event updated: הארוע עודכן
+Journal updated: היומן עודכן
+Task updated: המשימה עודכנה
+WK: שבוע
+TASKS: משימות
+Task_Title: כותרת
+Due: יעד
+Task Name: שם המשימה
+Task Due Date: תאריך יעד המשימה
+You have XXX unapproved entries: יש לך XXX רשומות לא מאושרות
+Changes successfully saved: השינויים נשמרו בהצלחה
+Event: ארוע
+Action: פעולה
+Printer Friendly: ידידותי למדפסת
+Generate printer-friendly version: חולל גרסה ידידותית למדפסת
+after: אחרי
+before: לפני
+end: סוף
+start: תחילה
+View this event: צפה בארוע זה
+View this task: צפה במשימה זו
+January: ינואר
+February: פברואר
+March: מרס
+April: אפריל
+May_: מאי
+June: יוני
+July: יולי
+August: אוגוסט
+September: ספטמבר
+October: אוקטובר
+November: נובמבר
+Jan: ינו
+Feb: פבר
+Mar: מרס
+Apr: אפר
+May: מאי
+Jun: יונ
+Jul: יול
+Aug: אוג
+Sep: ספט
+Oct: אוק
+Nov: נוב
+The following error occurred: השגיאה הבאה אירעה
+You are not authorized.: אינך מורשה
+Your current GMT offset is: ההיסט הנוכחי משעון גרניץ' הינו
+Unauthorized: לא מורשה
+Error approving event: שגיאה באישור הארוע
+Error deleting event: שגיאה במחיקת הארוע
+Error rejecting event: שגיאה בדחית הארוע
+Sunday: יום ראשון
+Monday: יום שני
+Tuesday: יום שלישי
+Wednesday: יום רביעי
+Thursday: יום חמישי
+Friday: יום שישי
+Saturday: יום שבת
+Sun: ראש
+Mon: שני
+Tue: שלי
+Wed: רבי
+Thu: חמי
+Fri: שיש
+Sat: שבת
+
+########################################
+# Page: includes/help_list.php
+#
+Page: דף
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: לוח השנה שלי
+Add New Entry: הוסף רשומה חדשה
+Add New Task: הוסף משימה חדשה
+Logout: ניתוק
+Home: הביתה
+Back to My Calendar: חזור אל לוח השנה שלי
+Go to: לך אל
+Manage calendar of: נהל לוח שנה של
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: שפת הדפדפן שלך לא נמצא
+not supported: אינו נתמך
+Browser-defined: מוגדר על ידי הדפדפן
+event: ארוע
+journal: יומן
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: שם משתמש לא חוקי
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: סיסמא שגויה
+no such user: אין משתמש כזה
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: פרק זמן
+Months: חודשים
+Month Days: ימי החודש
+Days: ימים
+Weeks: שבועות
+Position: מיקום
+Until: עד
+Count: כמות
+Inclusion Dates: תאריכים כלולים
+Exclusion Dates: תאריכים לא כלולים
+Unnamed Event: ארוע ללא שם
+Event Imported: הארוע הובא
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: בייטים
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: הודעה
+authenticate: שגיאת SNMP~ לא הצלחתי לאמת
+connect_host: שגיאת SNMP~ לא הצלחתי להתחבר לשרת SNMP~
+data_not_accepted: שגיאת SNMP~ מידע לא התקבל
+encoding: קידוד לא מוכר~
+execute: לא יכולתי לבצע~
+file_access: לא הצלחתי לגשת לקובץ~
+file_open: שגיאה בפתיחת קובץ~
+from_failed: כתובת מאת הבאה נכשלה~
+instantiate: לא הצלחתי להפעיל הרצה של פונקציית הדואר
+mailer_not_supported: תוכנת הדואר אינה נתמכת
+provide_address: עליך לספק לפחות כתובת אחת לקבלת דוא"ל
+recipients_failed: שגיאת SNMT~ הנמענים הבאים נכשלו~
+
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required.: URL של השרת חובה
+Server URL must end with /.: URL של השרת חייב להסתיים ב-'/'
+Invalid work hours.: שעות עבודה לא חוקיות
+Invalid color for document background.: צבע רקע מסמך לא חוקי
+Invalid color for document title.: צבע כותרת מסמך לא חוקי
+Invalid color for table cell background.: צבע רקע התא של טבלה לא חוקי
+Invalid color for table grid.: צבע רשת הטבלה לא חוקי
+Invalid color for table header background.: צבע רקע הכותרת של טבלה לא חוקי
+Invalid color for table text background.: צבע רקע הטקסט של טבלה לט חוקי
+Invalid color for event popup background.: צבע רקע חלונית ארוע קופצת לא חוקי
+Invalid color for event popup text.: צבע טקסט של חלונית ארוע קופצת לא חוקי
+Invalid color for table cell background for today.: צבע רקע טבלה של היום לא חוקי
+Color format should be RRGGBB.: תצורת הצבע צריכה להיות '#RRGGBB'
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: שנה את השעה והתאריך של רשומה זו?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: לא הכנסת תאור קצר
+The time you have entered begins before your preferred work hours. Is this correct?: ציינת שעה לפני תחילת יום העבודה שלך. האם זה נכון?
+Invalid Event Date: תאריך ארוע לא חוקי
+Please add a participant: נא להוסיף משתתף
+Invalid Date: תאריך לא חוקי
+You have not entered a valid time of day: לא הכנסת שעה חוקית
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: צבע לא חוקי
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: זיהוי לוח השנה לא יכול ליהות ריק
+First and last names cannot both be blank.: אין אפשרות שגם שם הפרטי וגם שם המשפחה יהיו ריקים
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+URL cannot be blank.: כתובת URL לא יכול להיות ריקה
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: סוג הקובץ אינו תואם לפורמאט הייבוא
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: השבוע
+This Month: החודש
+This Year: השנה
+Exit: צא
+Add New Event: הוסף ארוע חדש
+Delete Entries: מחק רשומות
+My Views: התצוגות שלי
+Manage Calendar of: ניהול לוח השנה של
+My Reports: הדו"חות שלי
+My Profile: הפרופיל שלי
+Public Calendar: לוח שנה ציבורי
+Unapproved Events: ארועים לא מאושרים
+User Manager: ניהול משתמשים
+
+########################################
+# Page: install/index.php
+#
+WebCalendar Installation Wizard: אשף ההתקנה של לוח השנה
+Step: צעד
+Failure Reason: סיבת הכשלון
+You must manually create database: עליך ליצור את בסיס הנתונים ידנית
+Database Cache Directory: מחיצת מטמון של בסיס הנתונים
+Create New: צור חדש
+Database Name: שם בסיס הנתונים
+Timezone Conversion Successful: המרת איזור זמן הצליחה
+Error Unable to write to file: שגיאה, לא הצלחתי לכתוב לקובץ
+Successful Login: כניסה מוצלחת
+Invalid Login: כניסה לא מוצלחת
+required only if Safe Mode is On: דרוש רק אם עובדים במצב בטוח.
+required only if Remote Calendars are used: דרוש רק אם משתמשים בלוחות שנה מרוחקים.
+needed for Gradient Image Backgrounds: דרוש לתמונות רקע עם צבעים גרדיאנטים
+Passwords do not match: הסיסמאות לא תואמות
+Unable to write password to settings.php file: לא הצלחתי לכתוב את הסיסמא לקובץ settings.php
+Password has been set: הסיסמא נקבעה
+Connection Successful: החיבור הצליח
+Please go to next page to continue installation: נא להתקדם לדף הבא כדי להמשיך בהתקנה
+Correct your entries or click the Create New button to continue installation: תקן את התשובות שלך או הלקל על כפתור <b>צור חדש</b> כדי להמשיך את ההתקנה
+Correct your entries and try again: תקן את התשובות שלך ונסה שוב
+does not exist: אינו קיים
+is not writable: לא פתוח לכתיבה
+Error Converting Timezone: שגיאה בהמרת איזור הזמן
+Please change the file permissions of this file: נא לשנות את ההרשאות של הקובץ הזה
+Please change includes dir permission: נא לשנות את ההרשאות של מחיצת includes כדי לאפשר כתיבה על ידי משתמשים אחרים
+Your settings have been saved: העדיפויות שלך נשמרו
+Error you must specify a Single-User Login: שגיאה, עליך לציין \\nכניסת משתמש יחיד
+Full Path (no backslashes): מסלול מלא (ללא קו נתוי הפוך)
+The password contains illegal characters.: הסיסמא מכילה תווים לא חוקיים.
+This installation wizard will guide you...: אשף ההתקנה יוביל אותך דרך ההתקנה הבסיסית של לוח השנה. עבור עזרה ואיתור תקלות ראה
+PHP Version Check: בדיקת גרסת PHP
+Check to see if PHP 4.1.0 or greater is installed: בודק לוודא שמותקן PHP בגרסה 4.1.0 או יותר
+PHP version: גרסת PHP
+Detailed PHP Info: מידע PHP מפורט
+Session Check: בדיקת סשן
+To test the proper operation of sessions, reload this page: כדי לבדוק את הפעולה התקינה של הסשן, טען דף זה מחדש
+You should see the session counter increment each time: אתה אמור לראות את מונה הסשן מתקדם בכל פעם
+SESSION COUNTER: מונה הסשן
+Settings.php Status: מצב Settings.php
+The file permissions of settings.php are set...: הרשאות הקובץ של <b>settings.php</b> נקבעו כך שלמתקין אין הרשאה לשנותו. נא לשנות את הרשאות הקובץ של הקובץ הבא כדי להמשיך.
+The file permissions of the includes directory are set...: הרשאות הקובץ של מחיצת <b>includes</b> כך שלמתקין אין הרשאה ליצור בה קובץ חדש. נא לשנות את ההרשאות של המחיצה הבאה כדי להמשיך.
+Your settings.php file appears to be valid: קובץ <b>settings.php</b> שלך נראה תקין
+Configuration Wizard Password: סיסמת אשף ההתקנה
+Create Settings File Password: צור סיסמא בקובץ ההגדרות
+db setup directions...: בחלק זה תגדיר ותבדוק חיבור לשרת בסיס הנתונים שלך. החשבון המסופק צריך להיות בעל הרשאות מלאות ליצור את בסיס נתונים, טבלאות ומשתמשים. אם דבר זה לא אפשרי, או שיש לך גישה מוגבלת לבסיס הנתונים שלך, תאלץ להגדיר את בסיס הנתונים שלך ידנית.
+Database Status: מצב בסיס הנתונים
+Supported databases for your PHP installation: בסיסי נתונים הנתמכים עבור תצורת ה-PHP שלך
+Your current database settings are able to access the database: ניתן לגשת לבסיס הנתונים בעזרת ההגדרות הנוכחיות שלך
+Please Test Settings: נא לבדוק את ההגדרות
+Your current database settings are not able...: ההגדרות הנוכחיות שלך <b>אינן</b> מאפשרות גישה אל בסיס הנתונים שלך או שעדיין לא נבדקו
+Database Settings: הגדרות בסיס הנתונים
+Database Type: סוג בסיס הנתונים
+Server: שרת
+Connection Persistence: קישור מתמיד
+All your database tables appear to be up to date. You may proceed to the: כל בסיס הנתונים שלך נראים מעודכנים. נא להתקדם אל
+next page and complete your WebCalendar setup: הדף הבא והשלם את התקנת לוח השנה שלך
+This appears to be a new installation. If this is not correct, please: זה נראה כהתקנה חדשה. אם זה לא נכון, אנא
+go back to the previous page and correct your settings: חזור לדף הקודם ותקן את ההגדרות שלך
+The database requires some data input: בסיס הנתונים זקוק להכנסת מידע
+Click Update Database to complete the upgrade: הקלק על <b>עדכן בסיס נתונים</b> כדי להשלים את העדכון
+This appears to be an upgrade from version: זה נראה כעדכון מגרסה
+In this section we will perform the required database changes to bring your database up to the required level: בחלק זה נבצע את השינויים המתבקשים לבסיס הנתונים כדי להביא את בסיס הנתונים שלך אל הרמה הדרושה
+If you are using a fully supported database, this step will be performed automatically for you: אם הנך משתמש בבסיס נתונים עם תמיכה מלאה, צעד זה יתבצע באופן אוטומטי
+If not, the required SQL can be displayed and you should be able: אם לא, יוצג ה-SQL הדרוש, ואתה אמור להיות מסוגללחתוך &amp; הדבק אותו אל תוך חלון השאילתות של בסיס הנתונים שלך
+No database actions are required: לא נדרשות כל פעולות בבסיס הנתונים
+The following database actions are required: פעולות בסיס הנתונים הבאות נדרשות
+ODBC Underlying Database: בסיס נתונים על בסיס ODBC
+Automatic installation not supported: עוד לא יישמנו התקנה אוטומטית עבור סוג בסיס הנתונים שלך. עליך ליצור את הטבלאות הדרושות ידינית בעזרת ה-SQL המסופק. נא הקלק על <b>הצג SQL</b> כדי להמשיך. חתוך &amp; הדבק אותו אל תוך חלון ה-SQL של בסיס הנתונים שלך.
+This may take several minutes to complete: זה יכול לקחת מספר דקות כדי לסיים
+Install Database: התקן בסיס נתונים
+Update Database: עדכן בסיס נתונים
+Display Required SQL: הצג SQL נדרש
+Return to previous page after processing SQL.: לאחר טיפול ידני ב-SQL, עליך לחזור לדף הקודם כדי לבדוק את בסיס הנתונים שלך כדי שהסקריפט יגלה את השינויים.
+This is the final step in setting up your WebCalendar Installation.: זהו הצעד האחרון בהגדרת התקנת לוח השנה שלך
+Timezone Conversion: המרת איזור זמן
+It appears that you have: כנראה ש-
+NOT: לא
+converted your existing WebCalendar event data to GMT.: המרת את מידע הארועים הנוכחי שלך לשעון גרניץ'
+If you have, you may ignore this notice and not proceed with the conversion.: אם אכן המרת אותו, אפשר להתעלם מהודעה זו מבלי להמשיך בהמרה
+If this is a new installation, you may also ignore this notice.: אפשר להתעלם מהודעה זו גם אם זו התקנה חדשה.
+Convert Data to GMT: המר מידע לשעון גרניץ'
+Application Settings: הגדרות יישום
+HTTP-based authentication was not detected: לצאתי אימות מבוסס HTML
+You will need to reconfigure your web server if you wish to: עליך להגדיר מחדש את שרת הווב שלך אם ברצונך
+select Web Server from the User Authentication choices below.: לבחור 'שרת ווב' מאפשריות 'אימות משתמשים' בהמשך
+HTTP-based authentication was detected.: נמצא אמות מבוסס HTML
+User authentication is being handled by your web server.: שרת הווב שלך מטפל באימות משתמשים
+You should select Web Server from the list of User Authentication choices below.: עליך לבחור ב'שרת ווב' מרשימת בחירות ,אימות משתמשים' בהמשך
+Create Default Admin Account: צור חשבון מנהל ברירת מחדל
+User Authentication: אימות משתמשים
+Web-based via WebCalendar (default): מבוסס ווב באמצעות לוח השנה (ברירת המחדל)
+Web Server: שרת ווב
+None (Single-User): ללא (משתמש יחיד)
+Read-Only: לקריאה בלבד
+Environment: סביבה
+Production: ייצור
+Development: פיתוח
+Save Settings: שמור הגדרות
+Launch WebCalendar: הפעל את לוח השנה
+
+########################################
+# Page: install/install_functions.php
+#
+Perl script required: הגירסה הקודמת של לוח השנה שלך מחייבת הרצת סקריפט של PERL כדי להמיר את המידע שלך.נא להריץ את /tools/upgrade_to_0.9.7.pl ואחרי זה חזור לדף הזה.
+previous version requires updating several tables: הגירסה הקודמת של לוח השנה שלך מחייבת עדכון מספר טבלאות בבסיס הנתונים שלך.
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Deleting events for: מוחק ארועים עבור
+Importing events for: מייבא ארועים עבור
+No data returned from: לא התקבל כל מידע מ-
+for non-user calendar: עבור לוח שנה ללא משתמש
+No Remote Calendars found: לא נמצאו לוחות שנה מרוחקים
+Remote Calendars not enabled: לוחות שנה מרוקים לא מאופשרים
+
+########################################
+# Page: tools/send_reminders.php
+#
+Pecentage Complete: אחוז מושלם
+Reminder: תזכורת
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: ישנם תווים לא חוקיים בשם משתמש

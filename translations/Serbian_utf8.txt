@@ -1,0 +1,92 @@
+# See translations/English-US.txt for instructions.
+#
+# Translations by Srle Doberman <srleiqnet@hotmail.com>, September 2005
+# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# $Id: Serbian_utf8.txt,v 1.8 2007/04/20 22:17:54 bbannon Exp $
+# Translation last updated on 04-20-2007
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: UTF-8
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: access.php
+#
+Calendar: kalendaru
+
+########################################
+# Page: approve_entry.php
+#
+Date: datum
+Time: Vreme
+
+########################################
+# Page: edit_report.php
+#
+Today: Danas
+Next month: Sledeći mesec
+Next year: Sledeća godina
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Decembar
+
+########################################
+# Page: includes/functions.php
+#
+WK: Nd
+January: Januar
+February: Februar
+March: Mart
+May_: Maj
+June: Jun
+August: Avgust
+September: Septembar
+October: Oktobar
+November: Novembar
+May: Maj
+Aug: Avg
+Oct: Okt
+Sunday: Nedelja
+Monday: onedeljak
+Tuesday: Utorak
+Wednesday: Sreda
+Thursday: Četvrtak
+Friday: Petak
+Saturday: Subota
+Sun: Ned
+Mon: Pon
+Tue: Uto
+Wed: Sre
+Thu: Čet
+Fri: Pet
+Sat: Sub

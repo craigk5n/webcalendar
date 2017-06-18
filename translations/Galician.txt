@@ -1,0 +1,478 @@
+# See translations/English-US.txt for instructions.
+#
+# Translated by: Raúl Araya Tauler, nubeiro@nubeiro.com
+# Last update: 20 May 2001
+#
+# $Id: Galician.txt,v 1.31.2.1 2008/09/05 17:59:20 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: access.php
+#
+Database error: Erro da base de datos
+Go: Ir
+Save: Gravar
+Admin: Xestión
+Public: Público
+Confidential: Confidencial
+Private: Privado
+
+########################################
+# Page: add_entry.php
+#
+confidential: confidencial
+private: privado
+Error adding event: Erro ó engadi-lo evento
+
+########################################
+# Page: admin.php
+#
+Select: Seleccionar
+Day: Día
+Week: Semana
+Month: Mes
+Year: Ano
+Settings: Configuración
+Email: correo electrónico
+Colors: Cores
+Document background: Fondo do documento
+Document title: Título do documento
+Table cell background: Fondo da cela da táboa
+Table cell background for current day: Fondo da cela para hoxe
+Help: Axuda
+language-help: Especifica o idioma que se empregará.
+Language: Idioma
+Your browser default language is: O idioma por defecto do seu navegador é
+None: Ningunha
+display-week-starts-on: Especifica se a semana comeza o Domingo ou o Luns. Se se selecciona Luns, enton os números da semana amosaránse no formato ISO.
+Week starts on: A semana comeza o
+time-format-help: Especifica qué formato horario empregar:<br /><i>12 horas:</i> Amosa-las horas co formato 3am, 8:30pm, etc.<br /><i>24 horas:</i> Amosa-las horas co formato 300, 2030, etc.
+Time format: Formato da hora
+12 hour: 12 horas
+24 hour: 24 horas
+Duration: Duración
+work-hours-help: Especifica o devalo de horas que se amosarán na vista do día.
+Work hours: Horas de traballo
+From: De
+to: ata
+preferred-view-help: Especifica a vista por defecto (Día, Semana, Mes ou Ano).
+Preferred view: Vista preferida
+display-week-number-help: Especifica se o número da semana (1-52) debería amosarse na vista do mes e na vista da semana.
+Display week number: Amosa-lo número da semana
+display-unapproved-help: Especifica se amosar ou non os eventos non aprobados no seu calendario.<br /> Se selecciona "Si", entón amosaranse os eventos non aprobados no seu calendario (cunha cor de texto diferente).<br /> Se selecciona "Non", entón deberanse aproba-los eventos antes de que poidan ser amosados no seu calendario.
+Display unapproved: Amosar non aprobados
+Yes: Si
+No: Non
+Enabled: Activado
+email-event-reminders-help: Especifica se enviar ou non recordatorios de evento.
+Event reminders: Recordatorios de eventos
+email-event-added: Especifica se enviar ou non notificacións por correo electrónico cando se engade un evento ó seu calendario.
+Events added to my calendar: Eventos engadidos no meu calendario
+email-event-updated: Especifica se enviar ou non notificacións por correo electrónico cando se actualiza un evento do seu calendario.
+Events updated on my calendar: Eventos actualizados no meu calendario
+email-event-deleted: Especifica se enviar ou non notificacións por correo electrónico cando se borra un evento do seu calendario.
+Events removed from my calendar: Eventos borrados do meu calendario
+email-event-rejected: Especifica se enviar ou non notificacións por correo electrónico cando un participante rexeita un evento do seu calendario.
+Event rejected by participant: Evento rexeitado polo participante
+
+########################################
+# Page: adminhome.php
+#
+Preferences: Preferencias
+Users: Usuarios
+Account: Conta
+Layers: Capas
+
+########################################
+# Page: approve_entry.php
+#
+Hello: Ola
+The subject was: O tema era
+Date: Data
+Time: Hora
+
+########################################
+# Page: category.php
+#
+Color: Cor
+Delete: Borrar
+
+########################################
+# Page: catsel.php
+#
+Cancel: Cancelar
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: Foille cancelada unha cita por
+
+########################################
+# Page: docadd.php
+#
+Description: Descrición
+
+########################################
+# Page: edit_entry.php
+#
+days: días
+hours: horas
+minutes: minutos
+Edit Entry: Modificar Entrada
+Add Entry: Engadir Entrada
+Participants: Participantes
+brief-description-help: Debería proporcionar unha descrición breve (arredor de 20 caracteres) do evento. Esta descrición representará o evento cando se amose no calendario.
+Brief Description: Descrición breve
+full-description-help: Esto debería completa-la descrición do evento. Esta información amósase cando o usuario ve o evento.
+Full Description: Descrición completa
+access-help: Especifica o nivel de acceso do evento.<br /> <i>Público</i>: Todos poden ve-la descrición completa do evento.<br /><i>Confidencial</i>: Os demais poden ver que ten unha entrada para ese día e hora, pero non os detalles sobre a entrada.
+Access: Acceso
+priority-help: Especifica a prioridade do evento. As prioridades altas amosaránse en negriña.
+Priority: Prioridade
+High: Alta
+Medium: Media
+Low: Baixa
+date-help: Especifica a data do evento.
+time-help: Especifica a hora do evento.<br /><i>Este campo pode deixarse en branco.</i>
+duration-help: Especifica a duración (en horas:minutos) do evento.<br /><i>Este campo pode deixarse en branco.</i>
+participants-help: Lista dos participantes desta entrada.
+repeat-type-help: Seleccione con qué frecuencia se repetirá o evento.<i>Mensualmente (por días)</i> permite que o evento se repita o primeiro luns do mes, o terceiro xoves do mes, etc.<i>Mensualmente (por data)</i> permite que o evento se repita o mesmo día de cada mes.
+Daily: Diariamente
+Weekly: Semanalmente
+Monthly: Mensualmente
+by day: por día
+by date: por data
+Yearly: Anualmente
+repeat-end-date-help: Especifica a data ata a qeu se debe repeti-lo evento.
+Use end date: Data final de uso
+repeat-frequency-help: Especifica con qué frecuencia se repetirá o evento. O 1 por defecto indica que debería ter lugar cada vez. Se se especifica 2, o evento terá lugar nas outras semanas (se en <i>Tipo de Repetición</i> se selecciona <i>Semanalmente</i>), terá lugar nos outros meses (se en <i>Tipo de Repetición</i> se selecciona <i>Mensualmente</i>), etc.
+Frequency: Frecuencia
+Delete entry: Borrar entrada
+You are not authorized to edit this entry.: Non está autorizado para modificar esta entrada
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Foille engadida unha nova cita por
+An appointment has been updated by: Foille actualizada unha cita por
+The following conflicts with the suggested time: O seguinte entra en conflicto coa hora suxerida
+Please look on: Por favor mire en
+to accept or reject this appointment: para aceptar ou rexeitar esta cita
+to view this appointment: para ver esta cita
+Scheduling Conflict: Conflicto de horario
+Your suggested time of: A súa hora suxerida de
+conflicts with the following existing calendar entries: entra en conflicto coas seguintes entradas existentes no calendario
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: Engadir Capa
+Edit Layer: Modificar Capa
+Source: Fonte
+Duplicates: Duplicados
+Show layer events that are the same as your own: Amosa-los eventos da capa que son iguais ós seus
+Add to My Calendar: Engadir ó meu Calendario
+Delete layer: Borrar capa
+
+########################################
+# Page: edit_nonusers.php
+#
+Add User: Engadir Usuario
+Edit User: Modificar Usuario
+First Name: Nome
+Last Name: Apelido
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: Erro
+
+########################################
+# Page: edit_report.php
+#
+User: Usuario
+Current User: Usuario actual
+
+########################################
+# Page: edit_user.php
+#
+Username: Nome de usuario
+E-mail address: enderezo de correo electrónico
+Password: Contrasinal
+again: outra vez
+Disabled for demo: Desactivado para a demo
+Change Password: Cambiar contrasinal
+New Password: Novo contrasinal
+Set Password: Fixar contrasinal
+
+########################################
+# Page: edit_user_handler.php
+#
+The passwords were not identical.: Os contrasinais non eran idénticos
+You have not entered a password.: Non introduciu ningún contrasinal
+
+########################################
+# Page: export.php
+#
+Export: Exportar
+Export format: Formato ó que exportar
+Export all dates: Exportar tódalas datas
+Start date: Data de comezo
+End date: Data final
+Modified since: Modificado dende
+
+########################################
+# Page: group_edit.php
+#
+Updated: Actualizado
+Created by: Creado por
+
+########################################
+# Page: help_admin.php
+#
+colors-help: Tódolas cores deben especificarse no formato hexadecimal "#RRGGBB" onde "RR" é o valor hexadecimal para o vermello, "GG" é o valor hexadecimal para o verde e "BB" é o valor hexadecimal para o azul
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Engadindo/Modificando Entradas do Calendario
+Repeat Type: Tipo de repetición
+Repeat End Date: Data final de repetición
+Repeat Day: Día de repetición
+repeat-day-help: Especifica qué días da semana se repetirá o evento. Esta opción só se pode usar cando en <i>Tipo de Repetición</i> se selecciona <i>Semanalmente</i>.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Índice da axuda
+
+########################################
+# Page: import.php
+#
+Disabled: Desactivado
+
+########################################
+# Page: layers.php
+#
+Layer: Capa
+Edit layer: Modificar capa
+Layers are currently: As capas están actualmente
+Disable Layers: Desactivar Capas
+Add layer: Engadir capa
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Aprobar/Confirmar
+Reject: Rexeitar
+View this entry: Ver esta entrada
+Approve this entry?: ¿Aprobar esta entrada?
+Reject this entry?: ¿Rexeitar esta entrada?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Debe introducir un login e un contrasinal
+Save login via cookies so I dont have to login next time.: Gravar login mediante cookies para non ter que volver introducilo a próxima vez
+Login: Entrar
+cookies-note: <b>Nota:</b> Este programa necesita que as cookies estean activadas.
+
+########################################
+# Page: login.php
+#
+Invalid login: Login inválido
+
+########################################
+# Page: pref.php
+#
+Save Preferences: Gravar preferencias
+
+########################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: Foille rexeitada unha cita por
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Este evento é confidencial
+Rejected: Rexeitada
+
+########################################
+# Page: search.php
+#
+Search: Buscar
+Keywords: Palabras clave
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Debe introducir unha ou máis palabras clave para a busca
+Search Results: Resultados da busca
+match found: coincidencia atopada
+matches found: coincidencias atopadas
+No matches found: Non se atoparon coincidencias
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Ve-lo Calendario de outro Usuario
+
+########################################
+# Page: users.php
+#
+denotes administrative user: denota usuario administrativo
+Add New User: Engadir Novo Usuario
+
+########################################
+# Page: view_entry.php
+#
+Approve/Confirm entry: Aprobar/Confirmar entrada
+Reject entry: Rexeitar entrada
+This will delete this entry for all users.: Esto borrará esta entrada para tódolos usuarios.
+Edit entry: Modificar entrada
+This will delete the entry from your calendar.: Esto borrará a entrada do seu calendario.
+Do you want to add this entry to your calendar?: ¿Quere engadir esta entrada ó seu calendario?
+This will add the entry to your calendar.: Esto engadirá a entrada ó seu calendario.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nova entrada
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Calendario de outro usuario
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Decembro
+
+########################################
+# Page: includes/functions.php
+#
+Printer Friendly: Versión para imprimir
+Generate printer-friendly version: Xenerar versión para imprimir
+January: Xaneiro
+February: Febreiro
+March: Marzo
+April: Abril
+May_: Maio
+June: Xuño
+July: Xullo
+August: Agosto
+September: Setembro
+October: Outubro
+November: Novembro
+Jan: Xan
+Apr: Abr
+May: Mai
+Jun: Xuñ
+Jul: Xul
+Aug: Ago
+Sep: Set
+Oct: Out
+The following error occurred: Ocorreu o seguinte erro
+You are not authorized.: Non está autorizado
+Error approving event: Erro ó aproba-lo evento
+Sunday: Domingo
+Monday: Luns
+Tuesday: Martes
+Wednesday: Mércores
+Thursday: Xoves
+Friday: Venres
+Saturday: Sábado
+Sun: Dom
+Mon: Lun
+Tue: Mar
+Wed: Mér
+Thu: Xov
+Fri: Ven
+Sat: Sab
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: O Meu Calendario
+Add New Entry: Engadir nova entrada
+Logout: Saír
+Back to My Calendar: Volver ó meu Calendario
+Go to: Ir a
+
+########################################
+# Page: includes/translate.php
+#
+event: evento
+
+########################################
+# Page: includes/xcal.php
+#
+Unnamed Event: Evento sen nome
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notificación
+
+########################################
+# Page: includes/js/admin.php
+#
+Invalid color for document background.: Color non válido para o fondo do documento
+Invalid color for document title.: Color non válido para o título do documento
+Invalid color for table cell background.: Color non válido para o fondo da cela
+Invalid color for table cell background for today.: Color non válido para o fondo da cela de hoxe
+Color format should be RRGGBB.: O formato da cor debería ser '#RRGGBB'
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Non introduciu ningunha descrición breve
+The time you have entered begins before your preferred work hours. Is this correct?: A hora que introduciu comeza antes das súas horas de traballo indicadas. ¿Está ben?
+You have not entered a valid time of day: Non introduciu unha hora válida do día
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Color non válido
+
+########################################
+# Page: includes/menu/index.php
+#
+Unapproved Events: Eventos sen aprobar
+
+########################################
+# Page: tools/send_reminders.php
+#
+Reminder: Recordatorio

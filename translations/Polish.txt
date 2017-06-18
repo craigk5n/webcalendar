@@ -1,0 +1,1886 @@
+# See translations/English-US.txt for instructions.
+#
+# Translators / Tlumacze:
+# Lipowczan Pawel [lpao2@o2.pl]
+# Jano [j4n0@users.sourceforge.net]
+#
+# Last time updated on 09-18-2005
+#
+# Translations for page: includes/classes/WebCalMailer.class
+# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+#
+# $Id: Polish.txt,v 1.43.2.4 2008/09/05 17:59:22 bbannon Exp $
+# 
+# PKaszubski [pkaszubski@gmail.com]
+# Translation completed on 2008-05-07 01:25
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: iso-8859-2
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version: wersja
+version XXX: wersja XXX
+WebCalendar is a PHP application used...: WebCalendar to aplikacja kalendarzowa PHP dla pojedynczego u¿ytkownika lub grupy u¿ytkowników po³±czonych przez internet / intranet. Mo¿na j± tak¿e skonfigurowaæ jako kalendarz zdarzeñ.
+Credits: Autorzy
+About: O programie
+OK: =
+
+########################################
+# Page: access.php
+#
+Database error: B³±d bazy danych
+Database error XXX.: B³±d bazy danych: XXX.
+DEFAULT CONFIGURATION: DOMY¦LNA KONFIGURACJA
+Go: Id¼
+Save: Zapisz
+Undo: Cofnij
+Public Access: Dostêp Publiczny
+Admin: Administrator
+User Access Control: Kontrola dostêpu u¿ytkownika
+Allow Access to Other Users Calendar: Udostêpniaj kalendarze innych u¿ytkowników
+Grant This User Access to My Calendar: Udostêpnij mój kalendarz temu u¿ytkownikowi
+Type: Typ
+Calendar: Kalendarz
+View Event: Ogl±danie zdarzeñ
+View: Obejrzyj
+Edit: Edytuj
+Approve/Reject: Potwierd¼/Odrzuæ
+Events: Zdarzenia
+Tasks: Zadania
+Journals: Dzieniki
+Can Invite: Mo¿e zapraszaæ
+Can Email: Mo¿e wysy³aæ emaile
+Can See Time Only: Mo¿e tylko sprawdziæ czas
+Assistant: Asystent
+Select All: Wybierz wszystkie
+Clear All: Wyczy¶æ wszystkie
+Public: Publiczne
+Confidential: Poufne
+Private: Prywatne
+
+########################################
+# Page: activity_log.php
+#
+Next: Nastêpny
+Previous: Poprzedni
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Zdarzenie XXX ju¿ wystêpuje w Twoim kalendarzu.
+Invalid entry id XXX.: Nieprawid³owy identyfikator zdarzenia: "XXX".
+a XXX event may not be added to your calendar: Zdarzenie XXX nie mo¿e zostaæ dodane do Twojego kalendarza.
+confidential: poufne
+private: prywatne
+Error adding event: B³±d dodawania zdarzenia
+Error adding event XXX.: B³±d dodawania zdarzenia: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Nieprawid³owa nazwa ustawienia "XXX".
+Select: Wybierz
+Day: Dzieñ
+Week: Tydzieñ
+Month: Miesi±c
+Year: Rok
+Bottom: Dó³
+Top: Góra
+Anyone: Wszyscy
+Participant: Uczestnik 
+Settings: Ustawienia
+Groups: Grupy
+NonUser Calendars: Kalendarze bez w³a¶cicieli
+Other: Pozosta³e
+Email: =
+Colors: Kolory
+Document background: T³o dokumentu
+Document title: Tytu³ dokumentu
+Document text: Tekst dokumentu
+My event text: Tre¶æ zdarzenia
+Table grid color: Kolor ramek tabeli
+Table header background: T³o nag³ówka tabeli
+Table header text: Tekst nag³ówka tabeli
+Table cell background: T³o komórki tabeli
+Table cell background for current day: T³o komórki bie¿±cego dnia
+Table cell background for days with events: T³o komórek zawieraj±cych wydarzenia
+Table cell background for weekends: T³o komórki dla dni weekendowych
+Table cell background for other month: T³o komórek tabel innych miesiêcy
+Week number color: Kolor numeru tygodnia
+Event popup background: T³o okienka popup z opisem wydarzenia
+Event popup text: Opis wydarzenia w okienku popup
+System Settings: Ustawienia systemowe
+Help: Pomoc
+System options: Opcje systemowe
+app-name-help: Okre¶la nazwê aplikacji, która bêdzie siê pojawia³a jako tytu³ przegl±darki na wszystkich stronach oraz na stronie logowania. Warto¶æ któr± tutaj wybierzesz zostanie zachowana w pliku z t³umaczeniem pozwalaj±c na obs³uge ró¿nych tytu³ów dla ró¿nych jêzyków
+Application Name: Nazwa aplikacji
+Translated Name: Przet³umaczona nazwa
+Translated Name (XXX): Przet³umaczona nazwa (XXX)
+server-url-help: Okre¶la adres bazowy dla aplikacji. Bêdzie on dodany w momencie wysy³ania wiadomo¶ci email z powiadomieniami i przypomnieniami
+Server URL: Adres internetowy (URL) serwera
+home-url-help: Okre¶la adres internetowy strony pocz±tkowej. ¦cie¿ka mo¿e byæ absolutna lub wzglêdna.
+Home URL: Adres internetowy (URL) strony g³ównej
+language-help: Okre¶la, którego jêzyka u¿ywaæ.
+Language: Jêzyk
+Your browser default language is: Domy¶lnym jêzykiem twojej przegl±darki jest
+Your browser default language is XXX.: Domy¶lnym jêzykiem twojej przegl±darki jest "XXX".
+Allow user to use themes: Zezwalaj u¿ytkownikowi na korzystanie ze skórek ("themes")
+themes-help: Zezwalaj na jednoczesn± aktualizacjê wielu ustawieñ w konfiguracji. Etykiety napisane ma³ymi literami s± jedynie preferencjami u¿utkownika.
+Themes: Skórki ("Themes")
+AVAILABLE THEMES: DOSTÊPNE SKÓRKI ("Themes")
+None: Brak
+Preview: Podgl±d
+Site customization: Ustawienia w³asne
+custom-script-help: Pozwala na wprowadzenie w³asnego Javascriptu lub kaskadowego arkusza stylów CSS, który zostanie dodany do nag³ówka ka¿dej strony.
+Custom script/stylesheet: W³asny skrypt/styl
+custom-header-help: Pozwala na wprowadzenie w³asnego kodu HTML, który bêdzie dodany na górze ka¿dej strony
+Custom header: W³asny nag³ówek
+custom-trailer-help: Pozwala na wprowadzenie w³asnego kodu HTML, który bêdzie dodany na dole ka¿dej strony
+Custom trailer: W³asna stopka
+enable-external-header-help: Pozwala na wprowadzanie w³asnych skryptów/stylów, nag³ówków i stopek z zewnêtrznego pliku
+Allow external file for header/script/trailer: Skrypt/styl, nag³ówek, stopka z zewnêtrznego pliku
+Allow user to override header/trailer: Zezwól na nag³ówek/stopkê u¿ytkownika
+Date and Time: Data i czas
+tz-help: Okre¶la, ile godzin potrzeba do przystosowania czasu serwera do czasu lokalnego.
+Server Timezone Selection: Strefa czasowa serwera
+display-general-use-gmt-help: Je¶li zaznaczone, wspó³dzielone daty/czasy wy¶wietlane s± w czasie GMT
+Display Common Use Date/Times as GMT: Wy¶wietlaj wspó³dzielone daty/czasy w standardzie GMT
+date-format-help: Okre¶la preferowany format daty
+Date format: Format daty
+Small Task Date: Krótka data zadania
+display-week-starts-on: Okre¶la, czy pierwszym dniem tygodnia jest niedziela czy poniedzia³ek. Je¶li jest to poniedzia³ek, to numer tygodnia bêdzie numerem ISO.
+Week starts on: Tydzieñ zaczyna siê w
+display-weekend-starts-on: Ustaw dzieñ tygodnia rozpoczynaj±cy weekend
+Weekend starts on: Weekend zaczyna siê w
+time-format-help: Okre¶la, którego formatu czasu u¿ywaæ<br /><i>12 godz.:</i> Wy¶wietla czas jako 1am, 8:10pm, itd.<br /><i>24 godz.:</i> Wy¶wietla czas jako 1:00, 20:10 itd.
+Time format: Format czasu
+12 hour: 12 godzin
+24 hour: 24 godziny
+timed-evt-len-help: Metoda podawania d³ugo¶ci zdarzeñ
+Specify timed event length by: Podawaj d³ugo¶æ zdarzenia jako
+Duration: Czas trwania
+End Time: Czas zakoñczenia
+work-hours-help: Okre¶la czas wy¶wietlany w widoku dziennym.
+Work hours: Godziny pracy
+From: Od
+to: Do
+Appearance: Wygl±d
+preferred-view-help: Okre¶la preferowany widok (dzieñ, tydzieñ, miesi±c lub rok)
+Preferred view: Preferowany widok
+Allow top menu: Poka¿ menu górne
+Date Selectors position: Pozycja opcji wyboru daty
+menu-themes-help: Ustawienia kolorów i stylów górnego menu
+Menu theme: Skórka ("theme") menu
+fonts-help: Okre¶la listê czcionek systemowych do u¿ycia (np. "Arial, Helvetica")
+Fonts: Czcionki
+display-sm_month-help: W widoku miesi±ca, wy¶wietla ma³e widoki miesiêcy 
+Display small months: Wy¶wietl ma³e widoki miesiêcy
+display-weekends-help: W widoku tygodnia wy¶wietla tak¿e weekendy
+Display weekends: Poka¿ weekendy
+display-long-daynames-help: Je¶li w³±czone, wy¶wietlaj± siê d³ugie nazwy dni
+Display long day names: Wy¶wietl d³ugie nazwy dni
+display-alldays-help: Wy¶wietlaj dni poprzedniego i nastêpnego miesi±ca w trybie widoku miesi±ca.
+Display all days in month view: Wy¶wietlaj wszystkie dni w trybie widoku miesi±ca
+display-week-number-help: Okre¶la, czy numer tygodnia (1-52) powinien byæ wy¶wietlany w widoku miesi±ca i tygodnia.
+Display week number: Wy¶wietl numery tygodni
+display-desc-print-day-help: Dodawaj opis wpisu w wersji widoku dziennego do druku
+Display description in printer day view: Wy¶wietl opis w widoku dziennym do druku
+yearly-shows-events-help: W widoku rocznym i miesiêcznym, wy¶wietla pogrubion± czcionk± dni, które zawieraj± wydarzenia
+Display days with events in bold in month and year views: Pogrubiaj dni z wpisami w widoku miesi±ca i roku
+display-minutes-help: Je¶li w³±czone, koñcówka :00 bêdzie zawsze wy¶wietlana dla pe³nych godzin
+Display 00 minutes always: Zawsze wy¶wietlaj :00 minut
+display-end-times-help: Wy¶wietlaj czas zakoñczenia zdarzeñ okre¶lonych czasowo
+Display end times on calendars: Wy¶wietlaj czas zakoñczenia w kalendarzu
+allow-view-add-help: Znak '+' bêdzie wy¶wietlany, umo¿liwiaj±c uzytkownikom szybkie dodawanie zdarzeñ do kalendarzy innych u¿ytkowników.
+Include add event link in views: W³±cz przycisk dodawania zdarzenia
+lunar-help: Je¶li w³±czone, wy¶wietlaæ siê bêd± ikonki pokazujêce fazy Ksiê¿yca w ka¿dym miesi±cu
+Display Lunar Phases in month view: Wy¶wietlaj fazy Ksiê¿yca w widoku miesi±ca
+Restrictions: Ograniczenia
+allow-view-other-help: W³±cza mo¿liwo¶æ ogl±dania kalendarzy innych u¿ytkowników
+Allow viewing other users calendars: Zezwalaj na ogl±danie kalendarzy innych u¿ytkowników
+require-approvals-help: Wymaga zatwierdzenia zdarzenia przez u¿ytkownika
+Require event approvals: Wymagaj zatwierdzania zdarzeñ
+display-unapproved-help: Okre¶la, czy niezatwierdzone wydarzenia bed± wy¶wietlane w twoim kalendarzu.<br /> Je¶li "tak" wtedy niezatwierdzone wydarzenia bed± wy¶wietlane (innym kolorem).<br /> Je¶li "Nie" wtedy najpierw bed± musia³y zostaæ zatwierdzone nim pojawi± siê w Twoim kalendarzu.
+Display unapproved: Wy¶wietlaj niezatwierdzone
+conflict-check-help: Sprawdzaj, czy nie ma konfliktów zdarzeñ (dwóch zdarzeñ tego samego u¿ytkownika w tym samym czasie)
+Check for event conflicts: Sprawdzaj, czy nie ma konfliktów zdarzeñ
+Yes: Tak
+No: Nie
+conflict-months-help: Sprawdzaj, na ile miesiecy do przodu bed± sprawdzane konflikty zdarzeñ.
+Conflict checking months: Ilo¶æ miesiêcy do przodu do sprawdzenia
+conflict-check-override-help: Pozwala na akceptowanie konfliktów i przechowywanie dwóch zdarzeñ maj±cych miejsce w tym samym czasie
+Allow users to override conflicts: Pozwalaj u¿ytkownikom na akceptowanie konfliktów
+limit-appts-help: Pozwala na ustalenie globalnego limitu zdarzeñ dla ka¿dego u¿ytkownika, jaki mo¿e ustaliæ na dany dzieñ.
+Limit number of timed events per day: Limit zdarzeñ na dzieñ
+limit-appts-number-help: Ustala dzienny limit zdarzeñ ze sprecyzowanym czasem
+Maximum timed events per day: Maksymalna ilo¶æ zdarzeñ okre¶lonych czasowo na dzieñ
+crossday-help: Jesli w³±czone, wydarzenia trwaj±ce d³u¿ej ni¿ dzieñ bêd± pokazywane w osobnych dniach
+Disable Cross-Day Events: Nie pokazuj pe³nego zakresu wydarzeñ trwaj±cych d³u¿ej ni¿ dzieñ
+disable-location-field-help: Wybranie "Tak" usunie pole "Miejsce" ze stron z informacj± o zdarzeniu
+Disable Location field: Wy³±cz pole "Miejsce"
+disable-url-field-help: Wybranie "Tak" usunie pole "URL" ze stron z informacj± o zdarzeniu
+Disable URL field: Wy³±cz pole "URL"
+disable-priority-field-help: Wy³±cza pole "Priorytet" ze stron z informacj± o zdarzeniu
+Disable Priority field: Wy³±cz pole "Priorytet"
+disable-access-field-help: Wy³±cza pole "Dostêp" ze stron z informacj± o zdarzeniu
+Disable Access field: Wy³±cz pole "Dostêp"
+disable-participants-field-help: Wy³±cza pole "Wspó³uczestnicy" ze strony z informacj± o zdarzeniu
+Disable Participants field: Wy³±cz pole "Wspó³uczestnicy"
+disable-repeating-field-help: Wy³±cza pole "Powtarzanie" ze strony z informacj± o zdarzeniu
+Disable Repeating field: Wy³±cz pole "Powtarzanie"
+allow-html-description-help: Zezwalaj na HTML w opisie zdarzeñ, lub traktuj tekst jako preformatowany
+Allow HTML in Description: Zezwalaj na HTML w opisie
+Popups: Okienka pop-ups
+disable-popups-help: Wy³±cz okienka pop-ups w widoku kalendarza
+Disable Pop-Ups: Wy³±cz okienka pop-ups.
+popup-includes-siteextras-help: Je¶li w³±czone, okienka pop-up zdarzenia zawieraæ bêd± Dodatki Strony - odsy³acz do zdefiniowania w³asnych dodatkowych pól dla zdarzeñ w pliku site_extras.php.
+Display Site Extras in popup: Wy¶wietlaj Dodatki Strony w popup-ach
+popup-includes-participants-help: Je¶li w³±czone, uczestnicy s± wy¶wietlani w podgl±dzie pop-up zdarzenia.
+Display Participants in popup: Wy¶wietlaj uczestników w okienkach pop-up
+Miscellaneous: Ró¿ne
+remember-last-login-help: W³±cza zapamiêtywanie ostatnio u¿ytej nazwy u¿ytkownika na stronie logowania (lecz nie has³a) oraz preferencji (wliczaj±c kolory i jêzyk).
+Remember last login: Pamiêtaj ostatnie logowanie
+summary_length-help: Maksymalna d³ugo¶æ krótkiego opisu w widokach kalendarzowych
+Brief Description Length: Maksymalna d³ugo¶æ krótkiego opisu
+user_sort-help: Okre¶la kolejno¶æ sortowania list u¿ytkownika oraz list bez w³a¶ciciela
+User Sort Order: Kolejno¶æ sortowania zdefiniowana przez u¿ytkownika
+Lastname, Firstname: Nazwisko, imiê
+Firstname, Lastname: Imiê, nazwisko
+allow-public-access-help: Pozwalaj na dostêp do publicznego kalendarza dla niezalogowanych
+Allow public access: Zezwalaj na dostêp publiczny
+public-access-default-visible: Ustala, czy elementy kalendarza publicznego powinny byæ widoczne dla wszystkich u¿ytkowników
+Public access visible by default: Domy¶lny dostêp do kalendarza publicznego
+public-access-default-selected: Podczas dodawania nowego zdarzenia domy¶lnie ustala publicznego u¿ytkownika jako wspó³uczestnika
+Public access is default participant: U¿ytkownik publiczny jest domy¶lnym wspó³uczestnikiem
+public-access-view-others-help: U¿ytkownik publiczny mo¿e przegl±daæ kalendarze innych u¿ytkowników
+Public access can view other users: Publiczny dostêp do kalendarzy
+public-access-can-add-help: U¿ytkownik publiczny mo¿e dodawaæ nowe zdarzenia (ale musz± zostaæ zatwierdzone przez administratora)
+Public access can add events: Publiczny dostêp do dodawania zdarzeñ
+public-access-add-requires-approval-help: Ustala czy zdarzenia dodane przez u¿ytkownika publicznego bed± wymagaæ zatwierdzenia przez administratora
+Public access new events require approval: Publiczne zdarzenia wymagaj± zatwierdzenia
+public-access-sees-participants-help: U¿ytkownik publiczny mo¿e przegl±daæ wspó³uczestników zdarzenia
+Public access can view participants: Publiczny dostêp do informacji o wspó³uczestnikach
+public-access-override-help: Pozwala na ukrywanie nazw i opisów zdarzeñ w publicznym kalendarzu
+Override event name/description for public access: Ukrywaj nazwy i opisy zdarzeñ w publicznym kalendarzu
+public-access-override-text-help: Tekst do wy¶wietlenia w kalendarzu publicznego dostêpu, je¶li powy¿sza opcja jest w³±czona
+Text to display to public access: Tekst do wy¶wietlenia
+public-access-captcha-help: Je¶li w³±czone, dodanie wpisu przez u¿ytkownika publicznego wymaga weryfikacji CAPTCHA.
+Require CAPTCHA validation for public access new events: Wymagaj weryfikacji CAPTCHA dla nowych zdarzeñ dostêpnych publicznie
+uac-enabled-help: W³±cza kontrolê dostêpu z poziomu u¿ytkownika
+User Access Control enabled: W³±cz kontrolê dostêpu u¿ytkownika
+groups-enabled-help: W³±cza obs³ugê grup, pozwalaj±c u¿ytkownikom na wybieranie u¿ytkonikówna podstawie grup do których nale¿±
+Groups enabled: Grupy w³±czone
+user-sees-his-group-help: Je¿eli w³±czone, u¿ytkownicy nie bed± mogli ogl±daæ kalendarzy u¿ytkowników, którzy nie nale¿± do ¿adnej z ich grup
+User sees only his groups: U¿ytkownik widzi tylko te grupy
+nonuser-enabled-help: Je¿eli w³±czone, administratorzy bed± mieli mo¿liwo¶æ dodawania kalendarzy bez w³a¶cicieli
+Nonuser enabled: Kalendarze bez w³a¶cicieli w³±czone
+nonuser-list-help: Gdzie wy¶wietlaæ kalendarze bez w³a¶cicieli na li¶cie wspó³uczestników
+Nonuser list: Miejsce wy¶wietlania kalendarzy bez w³a¶cicieli
+Enabled: W³±czone
+reports-enabled-help: W³±cza opcje tworzenia raportów.
+Reports enabled: Raporty w³±czone
+subscriptions-enabled-help: Ustala, czy u¿ytkownicy zdalni mog± korzystaæ z zasobów WebCalendara
+Allow remote subscriptions: Zezwalaj na zdalne subskrypcje
+remotes-enabled-help: Zezwalaj u¿ytkownikom na za³adowanie zdalnych plików .ics korzystaj±c z adresu URL.
+Allow remote calendars: Zezwól na zdalne kalendarze
+rss-enabled-help: Ustala, czy informacje z kalendarza u¿ytkownika mog± byæ dostêpne przez RSS
+Enable RSS feed: Uruchom RSS
+categories-enabled-help: W³±cza obs³ugê dla kategorii zdarzeñ
+Categories enabled: Kategorie w³±czone
+icon_upload-enabled-help: Je¶li w³±czone, u¿ytkownicy mog± wysy³aæ na serwer ikonki dla kategorii
+Category Icon Upload enabled: U¿ytkownicy mog± wysy³aæ w³asne ikonki dla kategorii
+Requires: Wymaga
+folder to exist: istnienia katalogu
+(Requires XXX folder to exist.): (Wymaga istnienia katalogu XXX.)
+display-tasks-help: Wy¶wietlaj okienka z krótkimi listami zadañ w widoku kalendarzowym miesi±ca oraz dnia
+Display small task list: Wy¶wietlaj krótkie listy zadañ
+display-tasks-in-grid-help: Wy¶wietlaj tak¿e zadania w kalendarzach
+Display tasks in Calendars: Wy¶wietlaj zadania w kalendarzach
+allow-external-users-help: Pozwala na dodawanie u¿ytkowników bez kalendarzy (zewnêtrznych). Mo¿na dziêki temu wprowadzaæ ich do listy wspó³uczestników.
+Allow external users: Zezwalaj na zewnêtrznych u¿ytkowników
+external-can-receive-notification-help: W³±cza wysy³anie emailem informacji do zewnêtrznych u¿ytkowników je¶li zdarzenie jest dodawane, zmieniane lub usuwane.
+External users can receive email notifications: Informacje emailowe dla zewnêtrznych u¿ytkowników
+external-can-receive-reminder-help: W³±cza wysy³anie emailem przypominaczy do zewnêtrznych u¿ytkowników je¶li zdarzenie jest dodawane, zmieniane lub usuwane.
+External users can receive email reminders: Przypomnienia emailowe dla u¿ytkowników zewnêtrznych
+allow-self-registration-help: Zezwala na samodzieln± rejestracjê nowych u¿ytkowników
+Allow self-registration: Samodzielna rejestracja
+use-blacklist-help: W³±cz limity dostêpu do kalendarza wzglêdem adresów IP
+Restrict self-registration to blacklist: W³±cz czarn± listê IP
+allow-self-registration-full-help: Pozwól nowym u¿ytkownikom na dokoñczenie procesu rejestracji online.
+Use self-registration email notifications: W³±cz zabezpieczenia email podczas samodzielnej rejestracji (antyspam)
+allow-attachment-help: Zezwala uzytkownikom na dodawania za³±czników do zdarzeñ.
+Allow file attachments to events: Zezwól na za³±czniki w zdarzeniach
+Admin and owner can always add attachments if enabled.: Je¶li w³±czone, Administrator i w³a¶ciciel bêd± mogli dodawaæ za³±czniki.
+allow-comments-help: Pozwól u¿ytkownikom dodawaæ komentarze do zdarzeñ.
+Allow comments to events: Zezwól na komentarze do zdarzeñ
+Admin and owner can always add comments if enabled.: Je¶li w³±czone, administrator i w³a¶ciciel mog± zawsze dodaæ komentarz.
+email-enabled-help: W³±cza wysy³anie emaili z informacjami i przypominaczami. Ustaw "nie", je¶li twój serwer nie jest odpowiednio skonfigurowany do wysy³ania poczty.
+Email enabled: Emaile w³±czone
+email-default-sender: Ustala domy¶lnego nadawcê wiadomo¶ci
+Default sender address: Domy¶lny adres nadawcy
+email-mailer: =
+Email Mailer: Program pocztowy
+email-smtp-host: Host(y) SMTP (oddzielaj przecinkami)
+SMTP Host name(s): Nazwa/nazwy hosta/hostów SMTP
+email-smtp-port: Numer portu SMTP (zwykle 25)
+SMTP Port Number: Numer portu SMTP
+email-smtp-auth: U¿ywaj autoryzacji SMTP
+SMTP Authentication: Autoryzacja SMTP
+email-smtp-username: Nazwa u¿ytkownika na serwerze SMTP je¶li u¿ywana jest autoryzacja
+SMTP Username: Nazwa u¿ytkownika SMTP
+email-smtp-password: Has³o SMTP je¶li u¿ywana jest autoryzacja
+SMTP Password: Has³o SMTP
+Default user settings: Domy¶lne ustawienia u¿ytkownika
+email-format: Okre¶l preferowany format dla wiadomo¶ci email: HTML lub zwyk³y tekst
+Email format preference: Ustawienie preferowanego formatu dla wiadomo¶ci email
+HTML: =
+Plain Text: Zwyk³y tekst
+email-include-ics: Do³±czaj plik w formacie iCalendar (.ics) do wiadomo¶ci email
+Include iCalendar attachments: Stosuj za³±czniki iCalendar
+email-event-reminders-help: Ustala, czy wysy³aæ przypomnienia
+Event reminders: Wysy³aj przypomnienia
+email-event-added: Ustala, czy wysy³aæ informacje o dodaniu zdarzenia
+Events added to my calendar: Wysy³aj zawiadomienia o dodaniu nowego zdarzenia
+email-event-updated: Ustala, czy wysy³aæ zawiadomienia o modyfikacji zdarzenia
+Events updated on my calendar: Wysy³aj zawiadomienia o modyfikacji istniej±cego zdarzenia
+email-event-deleted: Ustala, czy wysy³aæ zawiadomienia o usuniêciu zdarzenia
+Events removed from my calendar: Wysy³aj zawiadomienia o usuniêciu istniej±cego zdarzenia
+email-event-rejected: Ustala, czy wysy³aæ zawiadomienia o odrzuceniu zdarzenia przez wspó³uczestnika
+Event rejected by participant: Wysy³aj zawiadomienia o odrzuceniu istniej±cego zdarzenia
+email-event-create: Ustala, czy autor wpisu otrzyma zawiadomienie email
+Event that I create: Zdarzenie utworzone przeze mnie
+Color options: Opcje kolorów
+Allow user to customize colors: Pozwala u¿ytkownikowi na wybór w³asnych kolorów
+gradient-colors: Je¶li w³±czone, u¿yte zostan± gradienty kolorów. Mo¿e mieæ wp³yw na dzia³anie programu.
+Enable gradient images for background colors: W³±cz gradienty dla kolorów t³a
+Not available: Niedostêpny
+Background Image options: Opcje obrazu t³a
+bgimage-help: Adres URL wybranego obrazu t³a. Mo¿na u¿yæ ¶cie¿ki wzglêdnej.
+Background Image: Obraz t³a
+bgrepeat-help: Ustawienia powielania obrazu t³a.
+Background Repeat: Powtórz t³o
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Asystenci
+Preferences: Opcje
+Control Panel: Panel kontrolny
+Users: U¿ytkownicy
+Account: Konto
+Categories: Kategorie
+Views: Widoki
+Layers: Warstwy
+Reports: Raporty
+Delete Events: Kasuj zdarzenia
+Activity Log: Dziennik/Rejestr dzia³añ
+System Log: Log systemowy
+Public Preferences: Opcje dostêpu publicznego
+Unapproved Public Events: Niezatwierdzone zdarzenia publiczne
+Administrative Tools: Narzêdzia administracyjne
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name: Powtórzona nazwa
+Duplicate Name XXX: Powtórzona nazwa: "XXX".
+Username already exists.: Podana nazwa u¿ytkownika jest ju¿ zajêta.
+Username XXX already exists.: Nazwa u¿ytkownika "XXX" jest ju¿ zajêta.
+Email address already exists.: Podany email jest ju¿ przypisany do innego u¿ytkownika.
+Email address XXX already exists.: Email "XXX" jest ju¿ przypisany do innego u¿ytkownika.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Uwagi dodatkowe (opcjonalne)
+Approve and Send: Zatwierd¼ i wy¶lij
+Approve and Exit: Zatwierd¼ i wyjd¼
+(Your comments will be emailed to the event creator.): (Twoje uwagi zostan± wys³ane do autora wpisu.)
+Hello: Witaj
+Hello, XXX.: Witaj, XXX.
+An appointment has been approved and comments added by: Zaaprobowane zosta³o spotkanie i uwagi dodane przez
+XXX has approved an appointment and added comments.: XXX zaaprobowa³ spotkanie i doda³ uwagi.
+The subject was: Tematem by³o
+Subject XXX: Temat: "XXX".
+The description is: Opis brzmi:
+Description XXX: Opis: "XXX".
+Date: Data
+Date XXX: Data: XXX
+Time: Czas
+Time XXX: Czas: XXX
+Comments: Uwagi
+Comments XXX: Uwagi: XXX
+Approved w/Comments by XXX.: Zatwierdzi³ i uwagi doda³: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Tryb administratora
+Your assistants: Twoi asystenci
+
+########################################
+# Page: availability.php
+#
+Program Error: B³±d programu
+No XXX specified!: Nie podano XXX!
+Program Error No XXX specified!: B³±d programu: Nie podano XXX!
+user: u¿ytkownik
+year: rok
+month: miesi±c
+day: dzieñ
+
+########################################
+# Page: category.php
+#
+Category Icon: Ikona kategorii
+Global: Globalny
+Category Name: Nazwa kategorii
+Color: Kolor
+Remove Icon: Usuñ ikonê
+Add Icon to Category: Dodaj ikonê do kategorii
+Upload: Wy¶lij
+gif 3kb max: (gif, maks. 3kb)
+Search for existing icons: Szukaj w¶ród istniej±cych ikon
+Add: Dodaj
+Delete: Skasuj
+entry: wpis
+Are you sure you want to delete this XXX?: Czy na pewno chcesz usun±æ XXX?
+Make New Category: Utwórz now± kategoriê
+
+########################################
+# Page: category_handler.php
+#
+File size exceeds maximum.: Rozmiar pliku przekracza dopuszczaln± wielko¶æ.
+File is not a gif image.: Plik nie jest obrazem w formacie gif.
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: DOSTÊPNE KATEGORIE
+ENTRY CATEGORIES: KATEGORIE WPISÓW
+Remove: Usuñ
+Global Category: Kategoria globalna
+Cancel: Anuluj
+
+########################################
+# Page: colors.php
+#
+Add Custom: Dodaj w³asny kolor
+Basic Colors: Kolory podstawowe
+Current Color: Aktualny kolor
+Custom Colors: Kolory w³asne u¿ytkownika
+Old Color: Poprzedni kolor
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: Twoje spotkanie zosta³o skasowane przez
+XXX has canceled an appointment.: XXX skasowa³ spotkanie.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Niepoprawne id "bloba"
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Dodaj uwagê
+Add Attachment: Dodaj za³±cznik
+Subject: Temat
+Comment: Uwaga
+Upload file: Wy¶lij plik
+Description: Opis
+
+########################################
+# Page: docdel.php
+#
+Removed: Usuniête
+
+########################################
+# Page: edit_entry.php
+#
+am: przed po³udniem
+pm: po po³udniu
+days: dni
+hours: godzin(y)
+minutes: minut(y)
+You are not authorized to edit this task: Nie masz autoryzacji, by edytowaæ to zadanie.
+task: zadanie
+You are not authorized to edit this XXX.: Nie masz autoryzacji, by edytowaæ to XXX.
+is in a different timezone than you are. Currently: jest w innej strefie czasowej ni¿ ty. Aktualnie:
+hour ahead of you: godzina przed tob±
+hour behind you: godzina za tob±
+hours ahead of you: godzin(y) przed tob±
+hours behind you: godzin(y) za tob±
+XXX is in a different timezone (ahead): (XXX jest w innej strefie czasowej (przed tob±)
+XXX is in a different timezone (behind): (XXX jest w innej strefie czasowej (za tob±)
+Time entered here is based on your Timezone.: Podany czas jest ustalony na podstawie twojej strefy czasowej
+Edit Entry: Edytuj wpis
+Add Entry: Dodaj wpis
+Details: Szczegó³y
+Participants: Uczestnicy
+Repeat: Powtarzaj
+Reminders: Przypomnienia
+brief-description-help: Powinien to byæ krótki opis (oko³o 20 znaków) wydarzenia. Bêdzie wy¶wietlany w kalendarzu.
+Brief Description: Krótki opis
+full-description-help: Powinien to byæ pe³ny opis wydarzenia. Bêdzie wy¶wietlany podczas ogl±dania wydarzenia.
+Full Description: Pe³en opis
+access-help: Okre¶la poziom dostêpu do wydarzenia.<br /><i>Publiczny</i>: Ka¿dy mo¿e ogl±daæ wszystkie szczegó³y wydarzenia.<br /><i>Poufny</i>: Inni u¿ytkownicy widz± wpis, ale nie mog± ogl±daæ jego szczegó³ów.
+Access: Dostêp
+priority-help: Okre¶la priorytet wydarzenia. Wysoki priorytet bêdzie wy¶wietlany pogrubion± czcionk±.
+Priority: Priorytet
+High: Wysoki
+Medium: ¦redni
+Low: Niski
+category-help: Okre¶la kategoriê danego zdarzenia
+Category: Kategoria
+completed-help: Data ukoñczenia zadania. Wy¶wietla siê tylko, je¶li procent wykonania u ka¿dego uczestnika wynosi 100%.
+Date Completed: Data ukoñczenia
+percent-help: Procent wykonania dla tego u¿ytkownika
+Percent Complete: Procent wykonania
+All Percentages: Wszystkie warto¶ci procentowe
+location-help: Miejsce zdarzenia
+Location: Miejsce
+url-help: Adres internetowy (URL)
+URL: Adres URL
+date-help: Okre¶la datê wydarzenia.
+Start Date: Data rozpoczêcia
+Untimed event: Zdarzenie nieokre¶lone czasowo
+Timed event: Zdarzenie okre¶lone czasowo
+All day event: Zdarzenie ca³odobowe
+Timezone Offset: Przesuniêcie strefy czasowej
+time-help: Okre¶la czas wydarzenia. <ul><li>"Zdarzenie okre¶lone czasowo" (dla wydarzenia, które ma mieæ miejsce o okre¶lonej godzinie danego dnia)</li><li>"Zdarzenie nieokre¶lone czasowo" (dla wydarzenia, które nie ma przypisanej konkretnej godziny (np. ¶wiêto)</li><li>"Zdarzenie ca³odobowe" (dla wydarzenia, które tocz± siê przez ca³y dzieñ (np. nieobecno¶æ w pracy)</li></ul>
+duration-help: Okre¶la (w minutach) czas trwania wydarzenia.<br /><i>Mo¿e zostaæ puste.</i>
+end-time-help: Okre¶la godzinê, o której zdarzenie powinno siê skoñczyæ
+Start Time: Data rozpoczêcia
+Due Date: Data zakoñczenia
+Due Time: Godzina zakoñczenia
+Site Extras: Dodatki
+participants-help: Lista uczestników dla tego wpisu.
+Availability: Dostêpno¶æ
+external-participants-help: Okre¶la listê uczestników dla zdarzenia, którzy nie s± u¿ytkownikami kalendarza. U¿ytkownicy powinni byæ uszeregowani - jeden na liniê - i mog± zawieraæ adres email. Je¿eli adres email jest podany, u¿ytkownik mo¿e ubiegaæ siê o otrzymywanie zawiadomieñ i przypomnieñ.
+External Participants: Uczestnicy zewnêtrzni 
+repeat-type-help: Wybierz, z jak± czêstotliwo¶ci± wydarzenie ma byæ powtarzane.<i>Co miesi±c (wg dnia)</i> pozwala powtarzaæ wydarzenie w pierwszy poniedzia³ek ka¿dego miesi±ca, trzeci wtorek .. itd. <i>Co miesi±c (wg daty)</i> pozwala powtarzaæ wydarzenie tego samego dnia ka¿dego miesi±ca.
+Daily: codziennie
+Weekly: co tydzieñ
+Monthly: co miesi±c
+by day: wg dnia
+by date: wg daty
+by position: wg pozycji
+Monthly (by day): co miesi±c (wg dnia)
+Monthly (by date): co miesi±c (wg daty)
+Monthly (by position): co miesi±c (wg pozycji)
+Yearly: co rok
+Manual: ustaw rêczne
+Expert Mode: Tryb zaawansowany
+repeat-end-date-help: Okre¶la datê, do której dane wydarzenie ma byc ponawiane.
+Ending: Zakoñczenie
+Forever: Bez daty koñcowej
+Use end date: U¿yj daty zakoñczenia
+Number of times: Ilo¶æ powtórzeñ
+repeat-frequency-help: Okre¶la, jak czêsto wydarzenie ma byæ powtarzane. Domy¶lnie 1 oznacza, ¿e bêdzie powtarzane za ka¿dym razem. Przy ustawieniu 2, bêdzie powtarzane co drugi tydzieñ (je¶li <i>Typ powtarzania</i> jest ustawiony na <i>Co tydzieñ</i>), co drugi miesi±c (je¿eli <i>Typ powtarzania</i> jest ustawiony na <i>Co miesi±c</i>), itd.
+Frequency: Czêstotliwo¶æ
+Weekdays Only: Tylko dni robocze
+Week Start: Pocz±tek tygodnia
+repeat-bydayextended-help: Umo¿liwia wybór dnia wyst±pienia jako dnia tygodnia.
+ByDay: Dzieñ tygodnia
+All: Wszystkie
+repeat-month-help: Okre¶la, w których miesi±cach zdarzenie ma byæ ponawiane. 
+ByMonth: Miesi±c
+repeat-bysetpos-help: Umo¿liwia wybór dnia wyst±pienia w oparciu o pozycjê w miesi±cu.
+BySetPos: Pozycja w miesi±cu
+repeat-bymonthdayextended-help: Umo¿liwia wybór dnia wyst±pienia w oparciu o datê.
+ByMonthDay: Dzieñ w miesi±cu
+repeat-byweekno-help: Umo¿liwia okre¶lenie listy tygodni, w których wydarzenie ma siê powtórzyæ (1,2...53,-53,-52...-1).
+ByWeekNo: Numer tygodnia w roku
+repeat-byyearday-help: Umo¿liwia okre¶lenie listy numerowanych dni w roku, w które wydarzenie ma siê powtórzyæ (1,2...366,-366,-365...-1).
+ByYearDay: Numer dnia w roku
+repeat-exceptions-help: Dodatkowe dni, kiedy wydarzenie powinno lub nie powinno siê odbyæ.
+Exclusions: Wyj±tki
+Inclusions: Dodatkowe wyst±pienia
+Add Exception: Dodaj wyj±tek
+Add Inclusion: Dodaj wyst±pienie
+Delete Selected: Usuñ zaznaczone
+Send Reminder: Wy¶lij przypomnienie
+When: Kiedy
+Use Date/Time: U¿yj daty/godziny
+Use Offset: U¿yj odstêpu czasowego
+Before: Przed
+After: Po
+Start: Rozpoczêcie
+End/Due: Zakoñczenie
+Times: Ile razy
+Every: Co
+CAPTCHA Warning: <b>Uwaga:</b> Nie mo¿na zastosowaæ CAPTCHA bez rozszerzenia GD dla PHP!<br />
+Delete entry: Skasuj wpis
+You are not authorized to edit this entry.: Nie masz autoryzacji, by edytowaæ ten wpis
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: Zosta³o ustalone nowe spotkanie
+XXX has made a new appointment.: XXX ustali³ nowe spotkanie.
+An appointment has been updated by: Spotkanie zosta³o zaktualizowane przez
+XXX has updated an appointment.: XXX zaktualizowa³ spotkanie.
+Security violation!: Naruszenie zabezpieczenia!
+You must enter the anti-spam text on the previous page.: Musisz wprowadziæ tekst antyspamowy na poprzedniej stronie.
+The following conflicts with the suggested time: Nastêpuj±ce wydarzenia koliduj± z sugerowanym czasem
+User removed from participants list.: U¿ytkownik usuniêty z listy wspó³uczestników.
+Please look on: Proszê, spójrz na
+to accept or reject this appointment: aby zatwierdziæ b±d¼ odrzuciæ to spotkanie
+to view this appointment: aby obejrzeæ to spotkanie
+Please look on XXX to accept or reject this appointment.: Proszê, spojrz na XXX, aby zaakceptowaæ b±d¼ odrzuciæ to spotkanie.
+Please look on XXX to view this appointment.: Proszê, spojrz na XXX, aby obejrzeæ szczegó³y tego spotkania.
+Scheduling Conflict: Konflikt w harmonogramie
+Your suggested time of: Twój sugerowany czas
+conflicts with the following existing calendar entries: koliduje z nastêpuj±cymi wpisami kalendarza
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: Dodaj warstwê
+Edit Layer: Warstwa edycji
+Source: «ród³o
+Duplicates: Duplikaty
+Show layer events that are the same as your own: Poka¿ zdarzenia wartwy, które pokrywaj± siê z twoimi w³asnymi
+Add to Others: Dodaj do innych
+Add to My Calendar: Dodaj do mojego kalendarza
+Delete layer: Usuñ warstwê
+
+########################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself.: Nie mo¿esz utworzyæ warstwy dla samego siebie
+You can only create one layer for each user.: Mo¿esz utworzyæ tylko jedn± warstwê na u¿ytkownika
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX nie zosta³ ustawiony w pliku config.php
+word characters only: mo¿e zawieraæ tylko litery i cyfry
+Add User: Dodaj u¿ytkownika
+Edit User: Edytuj u¿ytkownika
+Calendar ID: ID kalendarza
+First Name: Imiê
+Last Name: Nazwisko
+Is public calendar: Jest kalendarzem publicznym
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Dodaj kalendarz zdalny
+Edit Remote Calendar: Edytuj kalendarz zdalny
+Create Layer: Utwórz warstwê
+Reload: Od¶wie¿/Prze³aduj
+Required to View Remote Calendar: Wymagane do ogl±dania kalendarzy zewnêtrznych
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: B³±d
+Import Results: Importuj wyniki
+Events successfully imported: Wydarzenia pomy¶lnie zaimportowano
+Create a new layer to view this calendar: Utwórz now± warstwê, by ogl±daæ ten kalendarz
+Errors: B³êdy
+There was an error parsing the import file or no events were returned: B³±d przekazania importowanego pliku lub brak zdarzeñ zwróconych
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Jutro
+Today: Dzisiaj
+Yesterday: Wczoraj
+Day before yesterday: Przedwczoraj
+Next week: Nastêpny tydzieñ
+This week: Ten tydzieñ
+Last week: Zesz³y tydzieñ
+Week before last: Przed tygodniem
+Next week and week after: Nastêpny i kolejny tydzieñ po nim
+This week and next week: Ten i nastêpny tydzieñ
+Last week and this week: Poprzedni i bie¿±cy tydzieñ
+Last two weeks: Poprzednie dwa tygodnie
+Next month: Nastêpny miesi±c
+This month: Ten miesi±c
+Last month: Ostatni miesi±c
+Month before last: Przedostatni miesi±c
+Next year: Nastêpny rok
+This year: Ten rok
+Last year: Ostatni rok
+Year before last: Przedostatni rok
+Next 14 days: Nastêpne 14 dni
+Next 30 days: Nastêpne 30 dni
+Next 60 days: Nastêpne 60 dni
+Next 90 days: Nastêpne 90 dni
+Next 180 days: Nastêpne 180 dni
+Next 365 days: Nastêpne 365 dni
+Invalid report id.: Nieprawid³owy id raportu
+Invalid report id XXX.: Nieprawid³owy id raportu: "XXX".
+Unnamed Report: Nienazwany raport
+Add Report: Dodaj raport
+Edit Report: Edytuj raport
+Report name: Nazwa raportu
+User: U¿ytkownik
+Current User: Bie¿±cy u¿ytkownik
+Include link in menu: Do³±cz ³±cze w menu
+Include standard header/trailer: Do³±cz standardowy nag³ówek/zwiastun
+Include previous/next links: Do³±cz poprzednie/nastêpne ³±cza
+Include empty dates: Do³±cz puste daty
+Date range: Przedzia³ daty
+Template variables: Zmienne szablonowe
+Page template: Szablon strony
+Day template: Szablon dnia
+Event template: Szablon zdarzenia
+report: raport
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Nie ma raportu o takim id: "XXX".
+Variable N not found: Nie odnaleziono zmiennej N
+Variable XXX not found.: Nie odnaleziono zmiennej <tt>XXX</tt>.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Edytuj w³asny nag³ówek
+Edit Custom Script/Stylesheet: Ustaw w³asny skrypt/styl
+Edit Custom Trailer: Edytuj w³asn± stopkê
+
+########################################
+# Page: edit_user.php
+#
+Username: U¿ytkownik
+E-mail address: Adres e-mail
+Password: Has³o
+again: ponów
+Disabled for demo: Wy³±czony w wersji demo
+Change Password: Zmieñ has³o
+New Password: Nowe has³o
+Set Password: Nadaj has³o
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Brak obs³ugi usuwania u¿ytkowników
+The passwords were not identical.: Has³a nie s± takie same
+You have not entered a password.: Nie wprowadzi³e¶ has³a
+Username cannot be blank.: Nazwa u¿ytkownika nie mo¿e byæ pusta
+
+########################################
+# Page: export.php
+#
+Export: Eksportuj
+Export format: Format eksportu
+Include all layers: Do³±cz wszystkie warstwy
+Include deleted entries: Do³±cz skasowane wpisy
+Export all dates: Eksportuj wszystkie daty
+Start date: Data pocz±tkowa
+End date: Data koñcowa
+Modified since: Zmodyfikowane po
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect: niezdefiniowany lub niepoprawny format eksportu
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Nie podano nazwy u¿ytkownika
+
+########################################
+# Page: groups.php
+#
+Add New Group: Dodaj now± grupê
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Grupa bezimienna
+Add Group: Dodaj grupê
+Edit Group: Edytuj grupê
+Group name: Nazwa grupy
+Updated: Zaktualizowany
+Created by: Stworzony przez
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Musisz podaæ nazwê grupy
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Automatycznie od¶wie¿aj kalendarze
+auto-refresh-help: W³±cza okresowe autood¶wie¿anie stron z widokiem dziennym, tygodniowym, miesiêcznym oraz z list± niezatwierdzonych zdarzeñ
+Auto-refresh time: Od¶wie¿aj automatycznie co
+auto-refresh-time-help: Okre¶la okres automatycznego od¶wie¿ania
+Display days with events in bold in year view: Wy¶wietlaj w widoku rocznym dni z wydarzeniami czcionk± pogrubion±
+Display weekends in week view: Wy¶wietl weekendy w widoku tygodniowym
+Time interval: Bloki czasowe
+time-interval-help: Okre¶la, jak d³ugie bêd± bloki czasowe w widoku tygodniowym i dziennym
+Nonuser: Kalendarze bez w³a¶cicieli
+user-customize-color: Ustala, czy u¿ytkownicy mog± ustalaæ swoje w³asne schematy kolorów.
+enable-gradient-help: U¿ywaj gradientów podczas wype³niania komórek tabeli.
+Manually entering color values: Rêczne wprowadzanie warto¶ci kolorów
+colors-help: Wszystkie kolory powinny byæ okre¶lone w heksagonalnym formacie "#RRGGBB" gdzie "RR" jestt warto¶ci± czerwieni, "GG" jest warto¶ci± zielonego i "BB" jest warto¶ci± niebieskiego.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: B³±d raportu
+Please include all the information below when reporting a bug.: Proszê za³±czyæ wszystkie informacje poni¿ej w zawiadomieniu o b³êdzie w programie.
+Also, please use English rather than: Bardzo proszê, by jêzykiem raportu by³ <strong>angielski</strong>, nie 
+Also, please use English rather than XXX.: Bardzo proszê, by jêzykiem raportu by³ <strong>angielski</strong>, nie XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Dokumentacja programu WebCalendar
+Currently in English only.: Aktualnie dostêpne jedynie w jêz. angielskim.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Dodawanie/edycja wpisów kalendarza
+Repeat Type: Typ powtarzania
+For More Information...: Wiêcej informacji...
+Repeat End Date: Powtórz datê zakoñczenia
+Repeat Day: Powtórz dzieñ
+repeat-day-help: Okre¶la, w które dni tygodnia wydarzenie ma byæ powtarzane. U¿ywane jest tylko, gdy <i>Typ powtarzania</i> jest ustawiony na <i>Co tydzieñ</i>.
+
+########################################
+# Page: help_import.php
+#
+Import: Importuj
+Palm Desktop: Palmtop
+This form will allow you to import entries from the Palm Desktop Datebook.: Ten formularz pomo¿e ci zaimportowaæ wpisy z twojego kalendarza w palmtopie
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Powinien byæ umieszczony w katalogu <tt>datebook/datebook.dat</tt> w podkatalogu wg. nazwy u¿ytkownika
+The following entries will not be imported: Nastêpuj±ce wpisy nie zostan± zaimportowane
+Entries older than the current date: Wpisy starsze od bie¿±cej daty
+Entries created in the Palm Desktop...: Wpisy utworzone w Palmtopie, które nie zosta³y HotSync'owane
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Wszystko zaimportowane z Palmtopa bêdzie nadpisane podczas kolejnego importu (chyba ¿e data zdarzenia minê³a). 
+Therefore, updates should be made in the Palm Desktop.: Dlatego aktualizacje powinny byæ przeprowadzone w Palmtopie.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events: Ten formularz zaimportuje zdarzenia vCalendar (.vcs) 1.0
+The following formats have been tested: Podane formaty zosta³y przetestowane
+This form will import iCalendar (.ics) events: Ten formularz zaimportuje zdarzenia iCalendar (.ics)
+Enabling: W³±czenie
+Overwrite Prior Import: Nadpisz poprzednio importowane
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.: spowoduje, ¿e zdarzenia poprzednio zaimportowane, które mia³y ten sam UID, co zdarzenie aktualnie importowane, zostan± oznaczone jako skasowane. Dziêki temu plik iCalendar zostanie zaimportowany bez duplikatów.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Indeks pomocy
+About WebCalendar: O programie WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Warstwy to u¿yteczny dodatek, który pozwala na wy¶wietlanie zdarzeñ innych u¿ytkowników w twoim w³asnym kalendarzu. Mo¿esz ustaliæ u¿ytkownika i kolor jego zdarzeñ, które maj± byæ pokazywane.
+Add/Edit/Delete: Dodaj/Edytuj/Usuñ
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klikaj±c na ³±cze Edytuj Warstwy w sekcji administracyjnej na dole strony pozwoli ci na dodanie/edycjê/kasowanie warstw.
+The text color of the new layer that will be displayed in your calendar.: Kolor tekstu nowej warstwy która bêdzie wy¶wietlona w twoim kalendarzu
+Disabling: Wy³±czanie
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Naci¶nij ³±cze Wy³±cz Warstwy w sekcji administracyjnej na dole strony, aby wy³±czyæ warstwy.
+If checked, events that are duplicates of your events will be shown.: Je¿eli zaznaczone, zdarzenia, które siê powtarzaj± z twoimi, bêd± pokazane
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Naci¶nij ³±cze W³±cz Warstwy w sekcji administracyjnej na dole strony, aby w³±czyæ warstwy.
+Specifies the user that you would like to see displayed in your calendar.: Okre¶la u¿ytkownika, którego chcia³by¶ widzieæ w swoim kalendarzu
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Domy¶lna kategoria
+default-category-help: Okre¶la domy¶ln± kategoriê, do której nowe zdarzenie bêdzie dodane
+When I am the boss: Kiedy jestem szefem
+Email me event notification: Zawiadomienie o zdarzeniu "napisz do mnie"
+email-boss-notifications-help: Ustala, czy szefowie maj± dostawaæ emaile z informacjami o zdarzeniach
+I want to approve events: Chcê zatwierdziæ zdarzenia
+boss-approve-event-help: Ustala, czy szefowie bêd± musieli zatwierdziæ zdarzenia dodane przez asystentów
+Subscribe/Publish: Subskrybuj/Publikuj
+Allow remote publishing: W³±cz zdaln± publikacjê
+allow-remote-publishing-help: Zezwala, czy zdalny klient iCal mo¿e publikowaæ zdarzenia w tym kalendarzu
+remote-publishing-url-help: Wy¶wietla URL, który powieniem byæ u¿yty w kliencie iCal aby po³±czyæ siê z WebCalendarem
+allow-remote-subscriptions-help: Okre¶la, czy zdalny u¿ytkownik mo¿e byæ dodany do listy subskrypcji do twojego kalendarza, pozwalaj±c im na ogl±danie twoich zdarzeñ we w³±czonej aplikacji iCal (takich jak Apple's iCal albo Mozilla)
+remote-subscriptions-url-help: Wy¶wietla adres internetowy, na który u¿ytkownicy powinni pisaæ, by zapisaæ siê na listê subskrypcji do twojego kalendarza.
+Enable FreeBusy publishing: W³±cz FreeBusy
+freebusy-enabled-help: Ustala, czy u¿ytkownik jest dostêpny za pomoc± standardu iCal FreeBusy
+freebusy-url-help: Adres dostêpu do listy FreeBusy
+rss-feed-url-help: Adres dostêpu do RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Umo¿lwia dok³adn± kontrolê dostêpu i przywilejów u¿ytkowników. Autoryzowani przez administratora u¿ytkownicy mog± udzielaæ zezwoleñ globalnych i indywidualnych.
+If disabled, this user cannot send you emails.: Je¶li wy³±czone, ten u¿ytkownik nie mo¿e wysy³ac do ciebie emaili.
+If disabled, this user cannot see you in the participants list.: Je¶li wy³±czone, ten u¿ytkownik nie mo¿e ciê zobaczyæ na li¶cie uczestników.
+If enabled, this user cannot view the details of any of your entries.: Je¶li w³±czone, ten u¿ytkownik nie mo¿e ogl±daæ szczegó³ów twoich wpisów.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Publikacja wy³±czona (Administrator)
+Publishing Disabled (User): Publikacja wy³±czona (U¿ytkownik)
+
+########################################
+# Page: icons.php
+#
+Click to Select: kliknij, aby wybraæ
+Current Icons on Server: Ikony dostêpne na serwerze
+
+########################################
+# Page: import.php
+#
+Disabled: Wy³±czone
+Import format: Format importu
+Exclude private records: Wyklucz prywatne wpisy
+Repeated items are imported separately. Prior imports are not overwritten.: Wpisy powtarzaj±ce siê s± importowane osobno. Uprzednio importowane wpisy nie s± nadpisywane.
+
+########################################
+# Page: import_handler.php
+#
+No file: Brak pliku
+Error deleting palm events from webcalendar.: B³±d kasowania wpisu z palmtopa w WebCalendarze.
+Events from prior import marked as deleted: Zdarzenia z wcze¶niejszego importu zosta³y zaznaczone jak skasowane
+Conflicting events: Wydarzenia konfliktowe
+The import file contained no data: Plik importowany nie zawiera³ ¿adnych danych
+
+########################################
+# Page: layers.php
+#
+Layer: Warstwa
+Edit layer: Edytuj warstwê
+Enable layers: W³±cz wartswy
+Layers are currently: Warstwy s± aktualnie
+Disable Layers: Wy³±czenie warstw
+Click here: Kliknij tutaj
+to modify the layers settings for the: aby zmodyfikowaæ ustawienia warstw dla
+calendar: Kalendarz
+Add layer: Dodaj warstwê
+
+########################################
+# Page: layers_toggle.php
+#
+Unable to update preference: Nie mo¿na zaktualizowaæ ustawienia
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Zatwierd¼/Potwierd¼
+Approve Selected: Zatwierd¼ wybrane
+Check All: Sprawd¼ wszystkie
+Emails Will Not Be Sent: Emaile NIE zostan± wys³ane
+Reject Selected: Odrzuæ wybrane
+Reject: Odrzuæ
+Uncheck All: Odznacz wszystkie
+View this entry: Ogl±daj ten wpis
+No unapproved entries for: Brak niezatwierdzonych wpisów dla
+No unapproved entries for XXX.: Brak niezatwierdzonych wpisów dla: "XXX".
+Unapproved Entries: Niezatwierdzone wpisy
+Not authorized: Brak autoryzacji
+Approve this entry?: Zatwierdziæ wpis ?
+Reject this entry?: Odrzuciæ wpis?
+Approve Selected entries?: Zatwierdziæ wybrane wpisy?
+Reject Selected entries?: Odrzuciæ wybrane wpisy?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Musisz wprowadziæ nazwê u¿ytkownika i has³o
+Save login via cookies so I dont have to login next time.: Zapisz nazwê u¿ytkownika przez cookies, by unikn±æ konieczno¶ci ponownego logowania.
+Login: Zaloguj
+Access public calendar: Dostêp do kalendarza publicznego
+public: publiczny
+Access XXX calendar: Dostêp do kalendarza XXX
+cookies-note: <b>Uwaga!</b> Ta aplikacja wymaga w³±czonych cookies ('ciasteczek')!
+
+########################################
+# Page: login.php
+#
+Invalid login: Nieprawid³owa nazwa u¿ytkownika (login)
+You have been logged out.: Zosta³e¶ wylogowany
+Not yet registered? Register here!: Nie masz konta? Zarejestruj siê tutaj!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar: Nie ma takiego kalendarza bez w³a¶ciciela
+No such nonuser calendar XXX.: Kalendar "XXX" bez w³a¶ciciela nie istnieje.
+This Calendar is not Public.: To nie jest kalendarz publiczny.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Dodaj nowy kalendarz bez w³a¶ciciela
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified: Nale¿y podaæ nazwê u¿ytkownika ("login")
+Illegal characters in login: Niepoprawne znaki w nazwie u¿ytkownika
+
+########################################
+# Page: pref.php
+#
+Save Preferences: Zapisz moje ustawienia
+Public Access calendar: Kalendarz z dostêpem publicznym
+Modify Non User Calendar Preferences: Modyfikuj ustawienia kalendarza bez w³a¶ciciela
+Return to My Preferences: Powrót do moich Ustawieñ
+Custom Scripts: Skrypty u¿ytkownika
+Timezone Selection: Wybór strefy czasowej
+entry-interval-help: Ustala odstêp minutowy dla wpisów
+Entry interval: Odstêp minutowy dla wpisów
+hour: godzina
+minute: minuta
+theme-reload-help: Ze wzglêdu na zapis CSS w pamiêci podrêcznej "cache", mo¿e byæ konieczne od¶wie¿enie strony
+Page may need to be reloaded for new Theme to take effect: Zmiana skórki ("theme") mo¿e wymagaæ od¶wie¿enia strony
+display_byproxy-help: Wy¶wietl w³a¶ciwego twórcê zdarzenia na stronie "view_entry"
+Display if created by Assistant: Wy¶wietl, je¶li stworzone przez asystenta
+allow-view-subscriptions-help: Umo¿liwia ograniczenie dostêpu zdalnego do wpisów prywatnych i poufnych
+Allow remote viewing of: Zezwól na dostêp zdalny do
+entries: wpisy
+
+########################################
+# Page: publish.php
+#
+No user specified: Nie okre¶lono u¿ytkownika
+
+########################################
+# Page: purge.php
+#
+Purging events for: Wyczy¶æ trwale ('purge') zdarzenia dla
+Finished: Zakoñczone
+Back: Wstecz
+Check box to delete ALL events for a user: Zaznacz, aby skasowaæ <b>WSZYSTKIE</b> zdarzenia dla u¿ytkownika
+Delete all events before: Kasuj wszystkie zdarzenia przed
+Purge deleted only: Wyczy¶æ trwale ('purge') wcze¶niej skasowane
+Preview delete: Usuniêcie podgl±du
+Are you sure you want to delete events for: Jeste¶ pewny, ¿e chcesz skasowaæ zdarzenia dla
+Records deleted from: Usuniêto pola z
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Adres email nie mo¿e byæ pusty
+Illegal characters in login XXX.: Nieprawid³owe znaki w nazwie u¿ytkownika XXX.
+New user via self-registration.: Auto-rejestracja nowego u¿ytkownika.
+A new WebCalendar account has been set up for you.: Utworzono dla Ciebie nowe konto w programie WebCalendar.
+Your username is: Twoja nazwa u¿ytkownika to
+Your username is XXX.: Twoja nazwa u¿ytkownika to: "XXX".
+Your password is: Twoje has³o to
+Your password is XXX.: Twoje has³o to: "XXX".
+Please visit: Odwied¼
+to log in and start using your account: aby zalogowaæ siê i zacz±æ korzystaæ z konta
+Please visit XXX to log in and start using your account!: Proszê odwied¼ "XXX", aby siê zalogowaæ i zacz±æ korzystaæ z konta!
+You may change your password after logging in the first time.: Mo¿esz zmieniæ has³o po logowaniu siê za pierwszym razem
+If you received this email in error: Je¶li dosta³e¶ ten email w wyniku b³êdu i nie tworzy³e¶ sobie konta WebCalendar, zignoruj tê informacjê, lub odpowiedz krótk± notk±.
+Administrator: =
+Welcome: Witaj
+New user via email.: Nowy u¿ytkownik utworzony przez email.
+Registration: Rejestracja
+Welcome to WebCalendar: Witaj w WebCalendarze
+Your email should arrive shortly.: Email powinien wkrótce dotrzeæ.
+Return to Login screen: Powrót do ekranu logowania
+Password (again): Has³o (ponownie)
+Your account information will be emailed to you.: Informacje o Twoim koncie zostan± do Ciebie wys³ane mailem.
+Submit: Wy¶lij
+
+########################################
+# Page: reject_entry.php
+#
+Continue: =
+(Your comments will be emailed to the other participants.): (Twoje uwagi zostan± wys³ane emailem do innych uczestników.)
+An appointment has been rejected by: Spotkanie zosta³o odrzucone przez
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Dodaj nowy zdalny kalendarz
+
+########################################
+# Page: report.php
+#
+This event is confidential.: To zdarzenie poufne
+(Private): (prywatne)
+cont.: nast.
+(cont.): (nast.)
+Approved: Zatwierdzone
+Deleted: Skasowane
+Rejected: Odrzucone
+Waiting for approval: Czekanie na zatwierdzenie
+Unknown: Nieznane
+to manage reports for the Public Access calendar: aby zarz±dzaæ raportami kalendarza publicznego
+Click here to manage reports for the Public Access calendar.: Kliknij tutaj, aby zarz±dzaæ raportami kalendarza publicznego.
+Add new report: Dodaj nowy raport
+Manage Reports: Zarz±dzaj raportami
+
+########################################
+# Page: search.php
+#
+Advanced Search: Wyszukiwanie zaawansowane
+Search: Szukaj
+Keywords: S³owa kluczowe
+Enter % for all entries: Wprowad¼ %, aby wyszukaæ wszystkie wpisy
+Include: Do³±cz
+Filter by Date: Filtruj wg daty
+All Dates: Wszystkie
+Past: Przesz³e
+Upcoming: Przysz³e
+Range: Wybierz przedzia³
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: Musisz wprowadziæ jedno lub wiêcej s³ów kluczowych
+Search Results: Rezultaty wyszukiwania
+match found: znaleziono
+matches found: znaleziono
+No matches found: Nie znaleziono
+New Search: Nowe wyszukiwanie
+
+########################################
+# Page: security_audit.php
+#
+Status: Stan
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Poka¿ kalendarz innego u¿ytkownika
+
+########################################
+# Page: set_entry_cat.php
+#
+Invalid entry id.: Nieprawid³owe id wpisu.
+You have not added any categories.: Nie doda³e¶ ¿adnych kategorii
+Set Category: Ustaw kategorie
+Global Categories cannot be changed.: Kategorii globalnych nie mo¿na zmieniæ.
+
+########################################
+# Page: upcoming.php
+#
+more: wiêcej
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Kalendarze zdalne
+denotes administrative user: wskazuje administratora
+Add New User: Dodaj nowego u¿ytkownika
+
+########################################
+# Page: usersel.php
+#
+form: formularz
+listid: id listy
+Reset: Resetuj
+
+########################################
+# Page: views.php
+#
+Add New View: Dodaj nowy widok
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Widok bez nazwy
+Add View: Dodaj Widok
+Edit View: Edytuj Widok
+View Name: Zobacz Nazwê
+View Type: Zobacz Typ
+Day by Time: Dzieñ (sortuj wg czasu)
+Week (Users horizontal): Tydzieñ (U¿ytkownicy poziomo)
+Week by Time: Tydzieñ (sortuj wg czasu)
+Week (Users vertical): Tydzieñ (U¿ytkownicy pionowo)
+Week (Timebar): Tydzieñ (z uwzglêdnieniem czasu)
+Month (Timebar): Miesi±c (z uwzglêdnieniem czasu)
+Month (side by side): Miesi±c (obok siebie)
+Month (on same calendar): Miesi±c (na tym samym kalendarzu)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Musisz okre¶liæ nazwê widoku
+
+########################################
+# Page: view_d.php
+#
+No users for this view: Brak u¿ytkowników dla tego widoku
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Aktualizuj procent wykonania
+Completed: Ukoñczone
+Assistant mode: Tryb asystenta
+Declined: Odrzucone
+Needs-Action: Wymaga dzia³ania
+by: do
+Percentage Complete: Procent wykonania
+External User: Zewnêtrzny u¿ytkownik
+Update: Aktualizuj
+Attachments: Za³±czniki
+at: w
+comments: uwagi
+Show: Poka¿
+Hide: Ukryj
+Approve/Confirm entry: Zatwierd¼/Potwierd¼ wpis
+Reject entry: Odrzuæ wpis
+Set category: Ustaw kategorie
+Copy entry: Kopiuj wpis
+This will delete this entry for all users.: Skasujesz ten wpis WSZYSTKIM u¿ytkownikom.
+Edit entry: Edytuj wpis
+Edit repeating entry for all dates: Edytuj powtarzaj±ce wpisy dla wszystkich dat
+Delete repeating event for all dates: Kasuj powtarzaj±ce siê zdarzenia dla wszystkich dat
+Edit entry for this date: Edytuj wpis dla tej daty
+Delete entry only for this date: Kasuj wpis tylko dla tej daty
+from calendar of: Z kalendarza
+This will delete the entry from your XXX calendar.: Zostanie skasowany wpis z twojego kalendarza XXX.
+boss: szefa
+This will delete the entry from your boss calendar.: Skasujesz ten wpis z kalendarza szefa.
+This will delete the entry from your calendar.: Skasujesz ten wpis ze swojego kalendarza.
+from your boss calendar: z kalendarza szefa
+Do you want to add this entry to your calendar?: Czy chcesz dodac wpis do twojego kalendarza?
+This will add the entry to your calendar.: Zostanie dodany wpis do twojego kalendarza
+Email all participants: Wy¶lij do wszystkich uczestników
+Hide activity log: Ukryj dziennik zdarzeñ
+Show activity log: Poka¿ dziennik zdarzeñ
+Export this entry to: Eksportuj ten wpis do
+Palm Pilot: =
+
+########################################
+# Page: view_r.php
+#
+Double-click on empty cell to add new entry: Podwójne klikniêcie na pustej komórce dodaje nowy wpis
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nowy wpis
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalendarze innych u¿ytkowników
+Category Management: Zarz±dzanie kategoriami
+Day View: Widok dnia
+Edit Event: Edycja zdarzeñ
+Month View: Widok miesi±ca
+Common Trailer: Wspólny skrypt/styl/nag³ówek/stopka
+User Management: Zarz±dzanie u¿ytkownikami
+Manage Views: Zarz±dzaj widokami
+Week View: Widok tygodnia
+Year View: Widok roku
+Invalid function id: Niepoprawne id funkcji
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Nie mo¿na odnale¼æ pliku "settings.php".<br />Proszê zrobiæ kopiê pliku "settings.php.orig" o nazwie "settings.php" i wyedytowaæ odpowiednio dla swojej strony WWW.
+Incomplete settings.php file...: Plik "settings.php" jest niekompletny...
+Could not find XXX defined in...: Nie mo¿na odnale¼æ definicji "XXX" w Twoim pliku "settings.php".
+You must define XXX in: Musisz zdefiniowaæ "XXX" w pliku "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Grudzieñ
+Dec: Gru
+LANGUAGE DEFINED: ZGODNIE Z WYBRANYM JÊZYKIEM
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database: B³±d po³±czenia z baz± danych
+db_type not defined.: nie zdefiniowano db_type.
+invalid db_type: niepoprawny db_type
+Cache cleared from previous SQL!: Pamiêæ podrêczna "cache" poprzedniego zapytania SQL zosta³a wyczyszczona!
+Error executing query.: B³±d zapytania.
+Unfortunately, XXX is not implemented for: Niestety, XXX nie jest obs³ugiwane dla
+Unknown ODBC error.: Nieznany b³±d ODBC.
+Unknown error.: Nieznany b³±d.
+Cache error: B³±d pamiêci podrêcznej "cache"
+write: zapisaæ
+Could not XXX file: Nie mo¿na XXX pliku
+Error opening cache dir: B³±d otwarcia katalogu z pamiêci± podrêczn± "cache"
+delete: usun±æ
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: B³±d krytyczny
+Invalid data format for: Niepoprawny format danych dla
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: B³±d: Nie ustawiono kategorii do zapisu w logu !
+This event is private: To wydarzenie prywatne.
+This event is XXX.: Wydarzenie XXX.
+Conf.: pouf.
+exceeds limit of XXX events per day: Przekroczono limit XXX zdarzeñ?????? na dzieñ
+on: w³±czone
+All Attendees: Wszyscy uczestnicy
+Busy: Zajêty
+Tentative: Próbny
+Schedule an appointment for: Zaplanuj spotkanie dla
+Schedule an appointment for XXX.: Zaplanuj spotkanie dla XXX:XXX.
+Event approved: Zdarzenie zatwierdzone
+Journal approved: Dziennik zatwierdzony
+Task approved: Zadanie zatwierdzone
+Attachment: Za³±cznik
+Event created: Zdarzenie utworzone
+Journal created: Dziennik utworzony
+Task created: Zadanie utworzone
+Event deleted: Zdarzenie skasowane
+Journal deleted: Dziennik skasowany
+Task deleted: Zadanie skasowane
+New user via email (self registration): Nowy u¿ytkownik zarejestrowany przez e-mail (auto-rejestracja)
+New user (self registration): Nowy u¿ytkownik (auto-rejestracja)
+Notification sent: Zawiadomienie wys³ane
+Event rejected: Zdarzenie odrzucone
+Journal rejected: Dziennik odrzucony
+Task rejected: Zadanie odrzucone
+Reminder sent: Przypomnienie wys³ane
+Event updated: Zdarzenie zaktualizowane
+Journal updated: Dziennik zaktualizowany
+Task updated: Zadanie zaktualizowane
+Delete User: Usuñ u¿ytkownika
+WK: Tydz.
+TASKS: ZADANIA
+Task_Title: Tytu³
+Due: Termin
+Task Name: Nazwa zadania
+Task Due Date: Termin wykonania
+You have XXX unapproved entries: Masz XXX niezatwierdzonych wpisów
+Changes successfully saved: Zmiany pomy¶lnie zapisane
+Event: Zdarzenie
+Action: Akcja
+Printer Friendly: Wersja do druku
+Generate printer-friendly version: Utwórz wersjê do druku
+after: po
+before: przed
+end: koniec
+start: pocz±tek
+View this event: Obejrzyj zdarzenie
+View this task: Obejrzyj zadanie
+January: Styczeñ
+February: Luty
+March: Marzec
+April: Kwiecieñ
+May_: Maj
+June: Czerwiec
+July: Lipiec
+August: Sierpieñ
+September: Wrzesieñ
+October: Pa¼dziernik
+November: Listopad
+Jan: Sty
+Feb: Lut
+Mar: =
+Apr: Kwi
+May: Maj
+Jun: Cze
+Jul: Lip
+Aug: Sie
+Sep: Wrz
+Oct: Pa¼
+Nov: Lis
+unknown-month: nieznany miesi±c
+First Quarter Moon: Pierwsza kwadra Ksiê¿yca
+Full Moon: Pe³nia Ksiê¿yca
+Last Quarter Moon: Ostatnia kwadra Ksiê¿yca
+New Moon: Nów Ksiê¿yca
+Error TIME_SLOTS undefined!: B³±d: niezdefiniowane TIME_SLOTS!
+The following error occurred: Wyst±pi³ nastêpuj±cy b³±d
+You are not authorized.: Nie masz autoryzacji
+Add N hours to: Dodaj N godzin do
+Subtract N hours from: Odejmij N godzin od
+same as: taki sam jak
+server time: czas serwera
+Cannot read timezone file XXX.: Nie mogê odczytaæ pliku ze strefami czasowymi: XXX.
+Your current GMT offset is: Twoja ró¿nica wzglêdem czasu GMT wynosi
+Your current GMT offset is XXX hours.: Twoja ró¿nica wzglêdem czasu GMT wynosi XXX godzin(y).
+Unauthorized: Brak autoryzacji
+Error approving event: B³±d w zatwierdzaniu zdarzenia
+Error approving event XXX.: B³±d w zatwierdzaniu zdarzenia: XXX.
+Error deleting event: B³±d w usuwaniu zdarzenia
+Error deleting event XXX.: B³±d w usuwaniu zdarzenia: XXX.
+Error rejecting event: B³±d przy odrzucaniu zdarzenia
+Error rejecting event XXX.: B³±d przy odrzucaniu zdarzenia: XXX.
+Sunday: Niedziela
+Monday: Poniedzia³ek
+Tuesday: Wtorek
+Wednesday: ¦roda
+Thursday: Czwartek
+Friday: Pi±tek
+Saturday: Sobota
+Sun: Nd
+Mon: Pn
+Tue: Wt
+Wed: ¦r
+Thu: Cz
+Fri: Pt
+Sat: Sb
+unknown-weekday: nieznany dzieñ roboczy
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indeks
+Documentation: Dokumentacja
+Page: Strona
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Mój kalendarz
+Add New Entry: Nowy wpis
+Add New Task: Nowe zadanie
+Logout: Wyloguj
+Home: Pocz±tek
+Back to My Calendar: Powrót do mojego kalendarza
+Go to: Id¼ do
+Manage calendar of: Zarz±dzaj kalendarzem od
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: nie znaleziono jêzyka przegl±darki
+not supported: brak wsparcia dla tego jêzyka
+English: angielski
+English-US: angielski (USA)
+Afrikaans: afrikaans
+Albanian: albañski
+Arabic: arabski
+Basque: baskijski
+Bulgarian: bu³garski
+Catalan: kataloñski
+Chinese (Simplified/GB2312): chiñski (uproszczony/GB2312)
+Chinese (Traditional/Big5): chiñski (tradycyjny/Big5)
+Croatian: chorwacki
+Czech: czeski
+Danish: duñski
+Dutch: niderlandzki
+Elven: elfski
+Estonian: estoñski
+Finnish: fiñski
+French: francuski
+Galician: galicyjski
+German: niemiecki
+Greek: grecki
+Hebrew: hebrajski
+Holo (Taiwanese): Holo (tajwañski)
+Hungarian: wêgierski
+Icelandic: islandzki
+Indonesian: indonezyjski
+Italian: w³oski
+Japanese: japoñski
+Korean: koreanski
+Lithuanian: litewski
+Norwegian: norweski
+Polish: polski
+Portuguese: portugalski
+Portuguese/Brazil: brazylijski portugalski
+Romanian: rumuñski
+Russian: rosyjski
+Serbian: serbski
+Slovak: s³owacki
+Slovenian: s³oweñski
+Spanish: hiszpañski
+Swedish: szwedzki
+Turkish: turecki
+Welsh: walijski
+Browser-defined: jêzyk przegl±darki
+event: zdarzenie
+journal: dziennik
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Nieprawid³owy login u¿ytkownika
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: nieprawid³owe has³o
+no such user: nie ma takiego u¿ytkownika
+
+########################################
+# Page: includes/xcal.php
+#
+MO: PN
+TU: WT
+WE: ¦R
+TH: CZ
+FR: PT
+SA: SO
+SU: ND
+Interval: Odstêp
+Months: Miesi±ce
+Month Days: Dni w miesi±cu
+Days: Dni
+Weeks: Tygodnie
+Position: Pozycja
+Until: Do
+Count: Licznik
+Inclusion Dates: Daty w³±cznie
+Exclusion Dates: Daty wy³±cznie
+Unnamed Event: Nienazwane wydarzenie
+Event Imported: Zdarzenia zaimportowane
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bajty/bajtów
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Zawiadomienie
+authenticate: B³±d SMTP: Nie mo¿na przeprowadziæ autoryzacji.
+connect_host: B³±d SMTP: Nie mo¿na po³±czyæ siê z wybranym hostem.
+data_not_accepted: B³±d SMTP: Dane nie zosta³y przyjête.
+encoding: Nieznany sposób kodowania znaków
+execute: Nie mo¿na uruchomiæ
+file_access: Brak dostêpu do pliku
+file_open: Nie mo¿na otworzyæ pliku
+from_failed: Nastêpuj±cy adres Nadawcy jest nieprawid³owy
+instantiate: Nie mo¿na wywo³aæ funkcji mail(). Sprawd¼ konfiguracjê serwera.
+mailer_not_supported: Wybrana metoda wysy³ki wiadomo¶ci nie jest obs³ugiwana.
+provide_address: Nale¿y podaæ prawid³owy adres email Odbiorcy.
+recipients_failed: B³±d SMTP: Nastêpuj±cy odbiorcy s± nieprawid³owi:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Wprowad¿ znaki pokazane na obrazku
+Enter the correct letters and numbers from the image into the text box...: Wprowad¿ prawid³owe litery i cyfry z obrazka do pola tekstowego. Ten test ogranicza dostêp dla z³osliwych web-botów. Je¶li obrazek jest dla Ciebie trudny do odczytania, prze³aduj/od¶wie¿ stronê.
+Challenge/Response: Zakwestionuj/Odpowiedz
+
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required.: Wymagany adres internetowy serwera
+Server URL must end with /.: Adres serwera musi koñczyæ siê na '/'
+Invalid work hours.: Niepoprawne godziny pracy
+Invalid color for document background.: Nieprawid³owy kolor t³a dokumentu
+Invalid color for document title.: Nieprawid³owy kolor tytu³u dokumentu
+Invalid color for table cell background.: Nieprawid³owy kolor t³a komórki tabeli
+Invalid color for table grid.: Nieprawid³owy kolor dla ramek tabeli
+Invalid color for table header background.: Nieprawid³owy kolor dla t³a nag³ówka
+Invalid color for table text background.: Nieprawid³owy kolor dla t³a tekstu tabeli
+Invalid color for event popup background.: Nieprawid³owy kolor dla t³a zdarzenia pojawiaj±cego siê
+Invalid color for event popup text.: Nieprawid³owy kolor dla tekstu pojawiaj±cego siê zdarzenia
+Invalid color for table cell background for today.: Nieprawid³owy kolor t³a komórki dla bie¿±cego dnia
+Color format should be RRGGBB.: Prawid³owy format koloru to '#RRGGBB'.
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Zmieniæ datê i czas tego wpisu?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Nie wprowadzi³e¶ krótkiego opisu
+The time you have entered begins before your preferred work hours. Is this correct?: Czas, który poda³e¶, zaczyna siê przed preferowanymi godzinami pracy. Czy jest to poprawne?
+Invalid Event Date: Niepoprawna data zdarzenia
+Please add a participant: Podaj uczestnika
+Invalid Date: Nieprawid³owa data
+You have not entered a valid time of day: Nie wprowadzi³e¶ poprawnego czasu
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Nieprawid³owy kolor
+layer: warstwa
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Pole ID kalendarza nie mo¿e byæ puste.
+First and last names cannot both be blank.: Pola z imieniem i nazwiskiem nie mog± jednocze¶nie byæ puste.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+URL cannot be blank.: Pole adresu URL nie mo¿e byæ puste.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Typ pliku nie odpowiada formatowi importu
+
+########################################
+# Page: includes/js/visible.php
+#
+Invalid Color: Nieprawid³owy kolor
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Ten tydzieñ
+This Month: Ten miesi±c
+This Year: Ten rok
+Exit: Wyj¶cie
+Add New Event: Nowe wydarzenie
+Delete Entries: Usuñ wpisy
+My Views: Moje widoki
+Manage Calendar of: Zarz±dzaj innymi kalendarzami
+My Reports: Moje raporty
+My Profile: Moje profile
+Public Calendar: Kalendarz publiczny
+Unapproved Events: Niezatwierdzone wydarzenia
+User Manager: Zarz±dzaj u¿ytkownikami
+Help Contents: Pomoc
+
+########################################
+# Page: install/index.php
+#
+WebCalendar Installation Wizard: Kreator Instalacji WebCalendara
+Step: Krok
+WebCalendar Installation Wizard Step XXX: Kreator Instalacji WebCalendara - Krok XXX
+Single-User: Dla jednego u¿ytkownika
+Failure Reason: Powód niepowodzenia
+You must manually create database: Musisz utworzyæ bazê danych rêcznie
+Database Cache Directory: Katalog pamiêci podrêcznej ("cache") bazy danych
+Test Settings: Sprawd¼ ustawienia
+Create New: Utwórz nowy
+Database Name: Nazwa bazy danych
+Timezone Conversion Successful: Konwersja strefy czasowej zakoñczona powodzeniem
+Error Unable to write to file: B³±d podczas zapisu pliku
+Error Unable to write to file XXX.: B³±d - Nie mo¿na dokonaæ zapisu do pliku XXX.
+Successful Login: Udane zalogowanie
+Invalid Login: B³êdna nazwa u¿ytkownika
+required only if Safe Mode is On: wymagane jedynie, je¶li w³±czony jest tryb bezpieczny ("Safe Mode")
+required only if Remote Calendars are used: wymagane jedynie, je¶li u¿ywane s± zdalne kalendarze
+needed for Gradient Image Backgrounds: potrzebny do gradientów w tle
+Passwords do not match: Podane has³a ró¿ni± siê od siebie
+Unable to write password to settings.php file: Nie mogê zapisaæ has³a do pliku z ustawieniami "settings.php"
+Password has been set: Has³o zosta³o ustanowione
+Connection Successful: Po³±czenie zakoñczone sukcesem
+Please go to next page to continue installation: Przejd¼ do nastêpnej strony, aby kontynuowaæ instalacjê
+Correct your entries or click the Create New button to continue installation: Popraw wprowadzone dane lub kliknij przycisk <b>Utwórz nowy</b>, aby kontynuowaæ instalacjê
+Correct your entries and try again: Popraw wprowadzone dane i spróbuj ponownie
+does not exist: nie istnieje
+is not writable: nie pozwala na zapis
+Error Converting Timezone: B³±d konwersji stefy czasowej
+Please change the file permissions of this file: Zmieñ prawa dostêpu do tego pliku
+Please change includes dir permission: Proszê zmieniæ przywileje dostêpu dla katalogu "includes", aby umo¿liwiæ zapis innym u¿ytkownikom
+Your settings have been saved: Twoje ustawienia zosta³y zapisane
+Error you must specify a Single-User Login: B³±d - musisz ustaliæ/podaæ nazwê u¿ytkownika dla logowania pojedyñczego u¿ytkownika
+Full Path (no backslashes): Pe³na ¶cie¿ka (bez backslash'ów)
+The password contains illegal characters.: Has³o zawiera niedozwolone znaki.
+This installation wizard will guide you...: Kreator instalacji pomo¿e ci przeprowadziæ prost± instalacjê programu WebCalendar. Aby uzyskaæ dodatkowe informacje oraz pomoc w rozwi±zywaniu problemów, zobacz
+PHP Version Check: Sprawdzenie wersji PHP
+Check to see if PHP 4.1.0 or greater is installed: Zaznacz, aby sprawdziæ czy zainstalowano PHP w wersji 4.1.0 lub nowszej
+PHP version: Wersja PHP
+PHP Settings: Ustawienia PHP
+Detailed PHP Info: Szczegó³owe informacje o PHP
+Session Check: Sprawdzenie sesji
+To test the proper operation of sessions, reload this page: Aby sprawdziæ odpowiednie operacje sesji, od¶wie¿ stronê
+You should see the session counter increment each time: Powiniene¶ zobaczyæ zwiêkszanie siê licznika sesji za ka¿dem razem.
+SESSION COUNTER: LICZNIK SESJI
+Settings.php Status: Status settings.php
+The file permissions of settings.php are set...: Ustawione przywileje dostêpu do pliku <b>settings.php</b> nie pozwalaj± instalatorowi na jego modyfikacjê. Aby kontynuowaæ, nale¿y zmieniæ przywileje nastêpujacego pliku.
+The file permissions of the includes directory are set...: =
+Your settings.php file appears to be valid: Plik <b>settings.php</b> jest poprawny
+Configuration Wizard Password: Has³o kreatora instalacji
+Create Settings File Password: Utwórz has³o pliku z ustawieniami
+db setup directions...: W tej sekcji nawi±¿esz i przetestujesz po³±czenie z serwerem bazy danych. Posiadane konto powinno mieæ PE£NE przywileje umozliwiaj±ce zak³adanie baz, tabel oraz ustanawianie uzytkowników. Je¶li nie jest to mo¿liwe, lub je¶li twój dostêp do bazy danych jest ograniczony, bêdziesz musia³ rêcznie skonfigurowaæ bazê.
+Database Status: Status bazy danych
+Supported databases for your PHP installation: Bazy danych obs³ugiwane przez Twoj± instalacjê PHP
+Your current database settings are able to access the database: Twoje obecne ustawienia pozwalaj± na dostêp do bazy danych.
+Please Test Settings: Proszê przetestowaæ ustawienia
+Your current database settings are not able...: Twoje obecne ustawienia <b>nie</b> pozwalaj± na dostêp do bazy danych.
+Database Settings: Ustawienia bazy danych
+Database Type: Typ bazy danych
+Server: Serwer
+Connection Persistence: Trwa³e po³±czenie
+All your database tables appear to be up to date. You may proceed to the: Wszystkie tabele w bazie danych wydaj± siê byæ poprawne i aktualne. Mo¿esz kontynuowaæ do
+next page and complete your WebCalendar setup: nastêpnej strony i zakoñczyæ instalacjê WebCalendara
+This appears to be a new installation. If this is not correct, please: Wygl±da na to, ¿e to nowa instalacja. Je¶li tak nie jest
+go back to the previous page and correct your settings: wróæ na poprzedni± stronê i popraw ustawienia
+The database requires some data input: Baza danych wymaga podania pewnych danych
+Click Update Database to complete the upgrade: Kliknij <b>Aktualizuj bazê danych</b> aby zakoñczyæ aktualizacjê
+This appears to be an upgrade from version: Wygl±da na to, ¿e to aktualizacja z poprzedniej wersji.
+In this section we will perform the required database changes to bring your database up to the required level: W tej sekcji przeprowadzimy niezbêdne zmiany w bazie danych, aby aktualizowaæ j± do wymaganego stanu.
+If you are using a fully supported database, this step will be performed automatically for you: Je¶li u¿ywasz w pe³ni obs³ugiwanej bazy danych, ten krok zostanie wykonany automatycznie.
+If not, the required SQL can be displayed and you should be able: Je¶li nie, niezbêdne zapytania SQL bêd± wy¶wietlone i bêdziesz móg³
+to cut &amp; paste it into your database server query window: skopiowaæ je i wkleiæ w oknie zapytañ swojej bazy.
+No database actions are required: Nie s± potrzebne ¿adne zmiany w bazie danych
+The following database actions are required: Potrzebne s± nastêpuj±ce zmiany
+ODBC Underlying Database: Zasadnicza baza danych ODBC
+Automatic installation not supported: Instalacja automatyczna nie zosta³a przeprowadzona w ca³o¶ci dla twojej bazy danych. Bêdziesz musia³ rêcznie za³o¿yæ wymagane tabele za pomoc± sugerowanych kwerend SQL. Kliknij na guzik <b>Poka¿ SQL</b>, aby kontynuowaæ. Skopiuj i wklej komendê do okienka zapytania bazy serwera.
+This may take several minutes to complete: To mo¿e zaj±æ kilka minut
+Install Database: Zainstaluj bazê danych
+Update Database: Aktualizuj bazê danych
+Display Required SQL: Poka¿ potrzebne zapytania SQL
+Return to previous page after processing SQL.: Po rêcznym przeprowadzeniu tej procedury SQL, powróæ do poprzedniej strony i ponownie przetestuj bazê danych, aby skrypt móg³ wykryæ wprowadzone zmiany.
+This is the final step in setting up your WebCalendar Installation.: To ostatni krok w konfiguracji nowej instalacji WebCalendara
+Timezone Conversion: Konwersja strefy czasowej
+It appears that you have: Wygl±da na to, ¿e
+NOT: NIE
+converted your existing WebCalendar event data to GMT.: dokona³e¶ konwersji danych swojego kalendarza WebCalendar na GMT.
+If you have, you may ignore this notice and not proceed with the conversion.: Je¶li dokona³e¶ konwersji, mo¿esz zignorowaæ to ostrze¿enie i nie kontynuowaæ konwersji.
+If this is a new installation, you may also ignore this notice.: Je¶li to nowa instalacja, mo¿esz tak¿e zignorowaæ to ostrze¿enie.
+It appears that you have NOT converted your existing WebCalendar...: Wygl±da na to, ¿e nie dokona³e¶ konwersji danych swojego kalendarza WebCalendar na GMT. Je¶li dokona³e¶ konwersji, mo¿esz zignorowaæ to ostrze¿enie i nie kontynuowaæ konwersji.. Je¶li to nowa instalacja, mo¿esz tak¿e zignorowaæ to ostrze¿enie.
+Convert Data to GMT: Dokonaj konwersji danych na czas GMT
+Application Settings: Ustawienia aplikacji
+HTTP-based authentication was not detected: Autoryzacja HTTP nie wykryta
+You will need to reconfigure your web server if you wish to: Bêdziesz musia³ przekonfigurowaæ swój serwer, je¶li chcesz
+select Web Server from the User Authentication choices below.: wybraæ "Serwer" z listy "Autoryzacja u¿ytkownika"
+HTTP-based authentication was not detected...: Autoryzacja HTTP-based nie zosta³a wykryta. Bêdziesz musia³ przekonfigurowaæ swój serwer, je¶li wybraæ "Serwer" z poni¿szej listy "Autoryzacja u¿ytkownika".
+HTTP-based authentication was detected.: Autoryzacja HTTP zosta³a wykryta
+User authentication is being handled by your web server.: Autoryzacja u¿ytkownika odbywa siê na Twoim serwerze
+You should select Web Server from the list of User Authentication choices below.: Powiniene¶ wybraæ "Serwer" z poni¿szej listy "Autoryzacja u¿ytkownika"
+HTTP-based authentication was detected...: Autoryzacja HTTP zosta³a wykryta. Autoryzacja u¿ytkownika odbywa siê na Twoim serwerze. Powiniene¶ wybraæ "Serwer" z poni¿szej listy "Autoryzacja u¿ytkownika".
+Create Default Admin Account: Utwórz domy¶lne konto Administratora
+Admin Account Not Found: Nie znaleziono konta administratora
+User Authentication: Autoryzacja u¿ytkownika
+Web-based via WebCalendar (default): Standardowa poprzez WebCalendar
+Web Server: Serwer
+Web Server (detected): Serwer (wykryty)
+Web Server (not detected): Serwer (niewykryty)
+None (Single-User): Brak (jeden u¿ytkownik)
+Read-Only: Tylko do odczytu
+Environment: ¦rodowisko
+Production: Produkcja
+Development: Rozwój
+Save Settings: Zapisz ustawienia
+Launch WebCalendar: Uruchom WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating webcal_config: B³±d aktualizacji konfiguracji programu WebCalendar
+Error updating table XXX: B³±d aktualizacji tabeli "XXX": XXX.
+Conversion Successful: Konwersja zakoñczona sukcesem
+Perl script required: Twoja poprzednia wersja WebCalendar wymaga konwersji danych skryptem PERL. Uruchom /tools/upgrade_to_0.9.7.pl, a nastêpnie wróæ do bie¿±cej strony.
+previous version requires updating several tables: Twoja poprzednia wersja WebCalendar wymaga aktualizacji niektórych tabel w bazie danych.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: PODGL¡D NIEDOSTÊPNY
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Include Path: Zastosuj pe³n± ¶cie¿kê dostêpu
+Deleting events for: Usuwam zdarzenia dla
+Importing events for: Importujê zdarzenia dla
+No data returned from: Brak danych z
+for non-user calendar: dla kalendarzy bez w³a¶ciciela
+No Remote Calendars found: Nie znaleziono zdalnych kalendarzy
+Remote Calendars not enabled: Kalendarze zdalne nie s± w³±czone
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: nie znaleziono id zdarzenia
+could not find event id XXX in database.: nie znaleziono zdarzenia o id XXX w bazie.
+This is a reminder for the XXX detailed below.: Uwaga: zbli¿a siê XXX opisane poni¿ej.
+Pecentage Complete: Procent wykonania
+Reminder: Przypomnienie
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action: Dzia³anie nie mo¿e zostaæ wykonane.
+Unsupported action XXX.: Dzia³anie XXX nie mo¿e zostaæ wykonane.
+No event id specified.: Nie podano id wydarzenia.
+not admin: nie jeste¶ administratorem
+Not authorized (not admin).: Brak autoryzacji (nie jeste¶ administratorem).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date XXX to date XXX.: Sprawdzam zdarzenia zawieraj±ce XXX od dnia XXX do dnia XXX.
+Found XXX events in time range.: Znaleziono XXX zdarzeñ dla podanego zakresu czasowego.
+Event id=XXX XXX at XXX on XXX.: Zdarzenie: id=XXX "XXX" o XXX w XXX.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Zezwalam u¿ytkownikowi XXX na ogl±danie kalendarzy innych u¿ytkowników.
+Error Email reminders disabled for user XXX.: B³±d: Emaile przypominaj±ce s± wy³±czone dla u¿ytkownika "XXX".
+Number of site_extras XXX.: Liczba dodatków: XXX.
+Reminder set for event.: W³±czono funkcjê przypominania dla tego zdarzenia.
+Mins Before XXX.: Minut do: XXX.
+Event time is XXX.: Czas zdarzenia: XXX.
+Remind time is XXX.: Czas przypomnienia: XXX.
+Reminders for user XXX, login XXX.: Przypomnienia dla u¿ytkownika "XXX" o nazwie u¿ytkownika "XXX".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Wyszukujê niezatwierdzone wpisy dla u¿ytkownika "XXX".
+Event id=XXX XXX already sent.: Zdarzenie id=XXX "XXX" ju¿ zosta³o wys³ane.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Nazwa u¿ytkownika nie jest wymagana w trybie pojedynczego u¿ytkownika.
+No login required for HTTP authentication.: Nazwa u¿ytkownika nie jest wymagana do autoryzacji HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Nieprawid³owe znaki w nazwie u¿ytkownika.
+Username XXX does not exist.: U¿ytkownik "XXX" nie istnieje.
+You cannot remove admin rights from yourself!: Nie mo¿esz samego siebie pozbawiæ praw administratora!
+Unknown error saving user: Nieznany b³±d przy próbie zapisania danych o u¿ytkowniku.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Brak uczestników dla zdarzenia o id: XXX.
+Db error Could not find event id XXX.: B³±d bazy: Nie znaleziono wydarzenia o id XXX.
+Error Could not find event id XXX in database.: B³±d: Nie znaleziono wydarzenia o id XXX w bazie.

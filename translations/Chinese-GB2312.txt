@@ -1,0 +1,775 @@
+# See translations/English-US.txt for instructions.
+#
+# Translated by: liaobin@jite.net shenyi@jite.net
+# Last update: 2003-8-5
+#
+# $Id: Chinese-GB2312.txt,v 1.33.2.1 2008/09/05 17:59:19 bbannon Exp $
+# Translation last updated on 09-05-2008
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: gb2312
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: 标题
+
+########################################
+# Page: access.php
+#
+Database error: 数据库错误
+Go: 前往
+Save: 保存
+Public Access: 公共的
+Admin: 管理
+Calendar: 日历
+Public: 公众的
+Confidential: 机密的
+Private: 私人的
+
+########################################
+# Page: activity_log.php
+#
+Next: 下一页
+Previous: 前一页
+
+########################################
+# Page: add_entry.php
+#
+confidential: 机密的
+private: 私人的
+Error adding event: 添加事件错误
+
+########################################
+# Page: admin.php
+#
+Select: 选择
+Day: 日
+Week: 周
+Month: 月
+Year: 年
+Bottom: 底部
+Top: 顶部
+Settings: 设置
+Groups: 组
+Email: 邮件
+Colors: 颜色
+Document background: 文件背景
+Document title: 文件标题
+Document text: 文档文本
+Table grid color: 表栅格颜色
+Table header background: 表头背景颜色
+Table header text: 表头文本颜色
+Table cell background: 表格背景
+Table cell background for current day: 当天颜色
+Table cell background for weekends: 设置周末背景色
+Event popup background: 事件弹出背景颜色
+Event popup text: 事件弹出文本颜色
+System Settings: 系统设置
+Help: 说明
+app-name-help: 应用-名称-帮助
+Application Name: 应用名称
+server-url-help: 系统-URL-帮助
+Server URL: 系统URL
+language-help: 请选择使用的语言.
+Language: 语言
+Your browser default language is: 您的浏览器预设的语言是
+None: 无
+date-format-help: 描述合适的日期格式
+Date format: 日期格式
+Week starts on: 每周开始于
+Time format: 时间格式
+12 hour: 12时制
+24 hour: 24时制
+Duration: 持续时间
+Work hours: 月历可显示之工作时间
+From: 自
+to: 至
+preferred-view-help: 描述默认的视图 (天, 周, 月, 或年).
+Preferred view: 查看选择
+fonts-help: 字体帮助
+Fonts: 字体
+display-weekends-help: 显示-周末-帮助
+Display week number: 显示周数(以年計算)
+Include add event link in views: 包括在视图中添加事件联接
+allow-view-other-help: 允许-其它-视图-帮助
+Allow viewing other users calendars: 允许查看其他用户日历
+require-approvals-help: 是否需要核准事件
+Require event approvals: 需要事件核准
+Display unapproved: 显示未核准的
+conflict-check-help: 冲突-检查-帮助
+Check for event conflicts: 检查事件冲突
+Yes: 是
+No: 否
+conflict-months-help: 冲突-月-帮助
+Conflict checking months: 冲突检查月数
+Allow users to override conflicts: 允许用户修改冲突
+Limit number of timed events per day: 限制每天已安排事件的数量
+Maximum timed events per day: 每天最大已安排时间实践的数量
+disable-priority-field-help: 关闭-优先级-域-帮助
+Disable Priority field: 关闭优先级域
+disable-access-field-help: 关闭-访问-域-帮助
+Disable Access field: 关闭访问域
+disable-repeating-field-help: 关闭-重复-域-帮助
+Disable Repeating field: 关闭重复域
+remember-last-login-help: 记录最后一次登录
+Remember last login: 记住最后一次登录
+allow-public-access-help: 允许-公共-进入-帮助
+Allow public access: 允许公共登录
+public-access-view-others-help: 可以为公共日历添加其他视图
+Public access can view other users: 公共登录能查询其他用户
+public-access-can-add-help: 可以设置为公共的
+Public access can add events: 公共登录能添加事件
+groups-enabled-help: 组-开放-帮助
+Groups enabled: 使用组
+user-sees-his-group-help: 察看-所在组-帮助
+User sees only his groups: 用户只能看见自己的组
+Nonuser enabled: 允许非日历用户
+Nonuser list: 非日历用户清单
+Enabled: 已使用
+Reports enabled: 允许报告
+Allow remote subscriptions: 允许远程投递
+categories-enabled-help: 允许-分类-帮助
+Categories enabled: 允许分类
+Allow external users: 允许其他用户
+External users can receive email notifications: 其他用户能接受邮件提醒
+email-enabled-help: 邮件-允许-帮助
+Email enabled: 使用邮件已启用
+email-default-sender: 邮件-默认-发送者
+Default sender address: 默认邮件地址
+Default user settings: 默认用户设置
+email-event-reminders-help: 描述是否允许发送事件提醒邮件
+Event reminders: 事件发生时通知
+email-event-added: 邮件-事件-已添加
+Events added to my calendar: 事件添加到我的日历时通知
+email-event-updated: 邮件-事件-已更新
+Events updated on my calendar: 我的日历中事件更新时通知
+email-event-deleted: 邮件-事件-已删除
+Events removed from my calendar: 我的日历中事件删除时通知
+email-event-rejected: 邮件-事件-已拒绝
+Event rejected by participant: 事件审核未通过时通知
+Allow user to customize colors: 允许用户个性化颜色
+
+########################################
+# Page: adminhome.php
+#
+Assistants: 助理
+Preferences: 参数设置
+Users: 用户
+Account: 个人资料
+Categories: 分类
+Views: 视图
+Layers: 层次结构
+Reports: 报告
+Activity Log: 活动日志
+
+########################################
+# Page: approve_entry.php
+#
+Hello: 您好
+The subject was: 主题是
+The description is: 详细说明
+Date: 日期
+Time: 时间
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: 管理员模式
+Your assistants: 您的助理
+
+########################################
+# Page: category.php
+#
+Global: 全局
+Category Name: 分类名称
+Color: 颜色
+Add: 添加
+Delete: 删除
+Make New Category: 新增分类
+
+########################################
+# Page: catsel.php
+#
+Remove: 删除
+Cancel: 取消
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: 约会已经被取消, 取消者是
+
+########################################
+# Page: docadd.php
+#
+Description: 描述
+
+########################################
+# Page: edit_entry.php
+#
+am: 上午
+pm: 下午
+days: 天
+hours: 时
+minutes: 分
+Edit Entry: 编辑事件
+Add Entry: 新增事件
+Participants: 参与者
+Brief Description: 概要描述
+Full Description: 完整描述
+Access: 显示设置
+Priority: 优先等級
+High: 高
+Medium: 中
+Low: 低
+category-help: 分类-帮助
+Category: 分类
+Untimed event: 无时间的事件
+Timed event: 有时间的事件
+All day event: 全天事件
+Timezone Offset: 时区设置
+External Participants: 其他参与者
+Daily: 每日的
+Weekly: 每周的
+Monthly: 每月的
+by day: 按天
+by date: 按日期
+Yearly: 每年的
+Use end date: 使用结束日期设置
+Frequency: 重复次数
+All: 全部
+Send Reminder: 发送邮件通知
+Delete entry: 删除事件
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: 您有一个新事件, 提交者是
+An appointment has been updated by: 一个约会已经更新,更新人:
+The following conflicts with the suggested time: 在指定的时间内有下面的冲突
+Please look on: 请查看
+to accept or reject this appointment: 决定接受或拒绝这个事件
+to view this appointment: 察看此约会
+Scheduling Conflict: 日程冲突
+Your suggested time of: 您指定的时间
+conflicts with the following existing calendar entries: 同下面已存在的日历事件冲突
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: 新增层
+Edit Layer: 编辑层
+Source: 来源
+Duplicates: 副本
+Show layer events that are the same as your own: 在您的日历中同时显示来源者的事件
+Add to My Calendar: 新增到我的日历
+Delete layer: 删除层
+
+########################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself.: 您不能您自己创建一个层
+You can only create one layer for each user.: 您只能为一个用户来源设置一个层
+
+########################################
+# Page: edit_nonusers.php
+#
+Add User: 新增用户
+Edit User: 编辑用户资料
+Calendar ID: 日历编号
+First Name: 姓
+Last Name: 名
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: 错误
+Errors: 错误
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: 明天
+Today: 今天
+Yesterday: 昨天
+Day before yesterday: 前天
+Next week: 下周
+This week: 本周
+Last week: 上周
+Week before last: 上上周
+Next week and week after: 下周和下周以后
+This week and next week: 本周和下周
+Last week and this week: 上周和本周
+Last two weeks: 最后两周
+Next month: 下月
+This month: 本月
+Last month: 上月
+Month before last: 上上月
+Next year: 明年
+This year: 今年
+Last year: 去年
+Year before last: 前年
+Invalid report id.: 无效的报告编号
+Unnamed Report: 未命名的报告
+Add Report: 添加报告
+Edit Report: 编辑报告
+Report name: 报告名称
+User: 用户
+Current User: 当前用户
+Include standard header/trailer: 包括标准的头/尾
+Include previous/next links: 包括前一个/后一个联接
+Include empty dates: 包括空日期
+Date range: 日期范围
+Template variables: 临时变量
+Page template: 页面模版
+Day template: 日模版
+Event template: 事件模版
+
+########################################
+# Page: edit_report_handler.php
+#
+Variable N not found: 变量N未找到
+
+########################################
+# Page: edit_user.php
+#
+Username: 用户名称
+E-mail address: 电子邮件地址
+Password: 密码
+again: 再次
+Disabled for demo: 关闭演示模式
+Change Password: 更改密码
+New Password: 新的密码
+Set Password: 设置密码
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: 不支持删除用户功能
+The passwords were not identical.: 密码不一样
+You have not entered a password.: 您没有输入密码
+
+########################################
+# Page: export.php
+#
+Export: 输出
+Export format: 输出格式
+Export all dates: 输出所有资料
+Start date: 开始日期
+End date: 结束日期
+Modified since: 更改自
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect: 导出格式未定义或不正确
+
+########################################
+# Page: groups.php
+#
+Add New Group: 新增组
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: 未命名的组
+Add Group: 添加组
+Edit Group: 编辑组
+Group name: 组名
+Updated: 更新
+Created by: 创建人
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: 您必须指定一个组名
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: 自动刷新日历
+auto-refresh-help: 自动-刷新-帮助
+Auto-refresh time: 自动刷新时间
+auto-refresh-time-help: 自动-刷新-时间-帮助
+Display weekends in week view: 显示周末
+Time interval: 时间间隔
+Nonuser: 非日历用户
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: 报告错误
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: 新增/编辑 日历項目
+Repeat Type: 周期性设置
+Repeat End Date: 周期结束日期
+Repeat Day: 重复于
+
+########################################
+# Page: help_import.php
+#
+Import: 输入
+Palm Desktop: Palm 桌面
+Enabling: 正在打开
+
+########################################
+# Page: help_index.php
+#
+Help Index: 辅助索引
+
+########################################
+# Page: help_layers.php
+#
+Add/Edit/Delete: 添加/编辑/删除
+The text color of the new layer that will be displayed in your calendar.: 你的日历中显示的新层次的文本颜色
+Disabling: 正在关闭
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: 点击页面下端管理部分的停用层次架构不显示层次架构
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: 点击页面下端管理部分的启用层次架构显示层次架构
+Specifies the user that you would like to see displayed in your calendar.: 选择用户使在你的日历中显示他的事件
+
+########################################
+# Page: help_pref.php
+#
+Default Category: 默认分类
+When I am the boss: 当我是老板
+Email me event notification: 给我事件的邮件通知
+I want to approve events: 我想参加这个事件
+Subscribe/Publish: 投递/发布
+
+########################################
+# Page: import.php
+#
+Disabled: 已停用
+Exclude private records: 不含个人纪录
+
+########################################
+# Page: import_handler.php
+#
+Conflicting events: 冲突事件
+
+########################################
+# Page: layers.php
+#
+Layer: 层次
+Edit layer: 编辑层次
+Layers are currently: 当前的层次是
+Disable Layers: 停用层
+Click here: 点击此处
+to modify the layers settings for the: 修改层设置为：
+Add layer: 新增层次
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: 核准/确定
+Reject: 拒绝
+View this entry: 查看这个事件
+Approve this entry?: 核准此事件?
+Reject this entry?: 拒绝此事件?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: 您必须输入用户名称及密码
+Save login via cookies so I dont have to login next time.: 将登录资料存储于 cookies 中，下次就不需要再登录系统。
+Login: 登录
+Access public calendar: 进入公共日历
+cookies-note: <b>注意:</b> 本程序需要 cookies 才能使用.
+
+########################################
+# Page: login.php
+#
+Invalid login: 无效的登录
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: 添加新的非日历用户
+
+########################################
+# Page: pref.php
+#
+Save Preferences: 保存参数
+hour: 小时
+
+########################################
+# Page: reject_entry.php
+#
+An appointment has been rejected by: 约会已经被拒绝, 拒绝者是
+
+########################################
+# Page: report.php
+#
+This event is confidential.: 这个事件是机密的
+cont.: 继续
+Approved: 有效的
+Deleted: 已经删除
+Rejected: 拒绝的
+Waiting for approval: 等待核准
+Unknown: 未知的
+to manage reports for the Public Access calendar: 管理公共日历的报告
+Add new report: 新增报告
+Manage Reports: 管理报告
+
+########################################
+# Page: search.php
+#
+Advanced Search: 高级查询
+Search: 查询
+Keywords: 关键字
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: 您至少要输入一个搜寻文字或句子
+Search Results: 查询结果
+match found: 笔符合查询
+matches found: 笔符合查询
+No matches found: 查无资料
+
+########################################
+# Page: security_audit.php
+#
+Status: 状态
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: 查看其他用户的日历
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: 您还没有添加任何分类
+Set Category: 设置分类
+
+########################################
+# Page: users.php
+#
+denotes administrative user: 用户管理員
+Add New User: 新增用户
+
+########################################
+# Page: usersel.php
+#
+Reset: 更新
+
+########################################
+# Page: views.php
+#
+Add New View: 新增视图
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: 未命名的视图
+Add View: 新增视图
+Edit View: 编辑视图
+View Name: 视图名称
+View Type: 视图类型
+Week (Users horizontal): 周(用户水平)
+Week (Users vertical): 周(用户垂直)
+Week (Timebar): 周(时间条)
+Month (side by side): 月(一个接一个)
+Month (on same calendar): 月(在相同的日历上)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: 您必须指定一个视图名称
+
+########################################
+# Page: view_entry.php
+#
+Assistant mode: 辅助模式
+External User: 其他用户
+Approve/Confirm entry: 核准/确定 事件
+Reject entry: 拒绝事件
+Set category: 设置种类
+This will delete this entry for all users.: 对所有的用户也將會删除这个事件.
+Edit entry: 编辑事件
+Edit repeating entry for all dates: 编辑所有日期的重复条目
+Delete repeating event for all dates: 删除所有时间的这个重复事件
+Edit entry for this date: 编辑这个日期的条目
+Delete entry only for this date: 只有这个日期删除条目
+This will delete the entry from your calendar.: 这將會從您的日历删除这个事件.
+Do you want to add this entry to your calendar?: 您要新增这个事件到您的日历吗?
+This will add the entry to your calendar.: 这將會新增这个事件到您的日历.
+Email all participants: 邮寄给所有的题者
+Hide activity log: 隐藏活动日志
+Show activity log: 显示活动日志
+Export this entry to: 输出此条目到
+
+########################################
+# Page: week_details.php
+#
+New Entry: 新事件
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: 其他用户的日历
+Manage Views: 管理视图
+
+########################################
+# Page: includes/date_formats.php
+#
+December: 十二月
+Dec: 12月
+
+########################################
+# Page: includes/functions.php
+#
+exceeds limit of XXX events per day: 超过每天XXX个事件
+Event approved: 事件已到达
+Event created: 事件已创建
+Event deleted: 事件已删除
+Notification sent: 发送通知
+Event rejected: 事件已拒绝
+Reminder sent: 发送提醒
+Event updated: 事件已经更新
+Event: 事件
+Action: 活动
+Printer Friendly: 打印
+Generate printer-friendly version: 产生打印版本
+January: 一月
+February: 二月
+March: 三月
+April: 四月
+May_: 五月
+June: 六月
+July: 七月
+August: 八月
+September: 九月
+October: 十月
+November: 十一月
+Jan: 1月
+Feb: 2月
+Mar: 3月
+Apr: 4月
+May: 5月
+Jun: 6月
+Jul: 7月
+Aug: 8月
+Sep: 9月
+Oct: 10月
+Nov: 11月
+The following error occurred: 发生了下面的错误
+You are not authorized.: 您未经授权
+Add N hours to: 添加 N 小时到
+Subtract N hours from: 减去 N 小时从
+same as: 相同与
+server time: 服务时间
+Error approving event: 错误批准的事件
+Sunday: 星期日
+Monday: 星期一
+Tuesday: 星期二
+Wednesday: 星期三
+Thursday: 星期四
+Friday: 星期五
+Saturday: 星期六
+Sun: 周日
+Mon: 周一
+Tue: 周二
+Wed: 周三
+Thu: 周四
+Fri: 周五
+Sat: 周六
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: 我的日历
+Add New Entry: 新增事件
+Logout: 注销
+Back to My Calendar: 返回我的日历
+Go to: 到
+
+########################################
+# Page: includes/translate.php
+#
+event: 记事
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: 登录用户无效
+
+########################################
+# Page: includes/xcal.php
+#
+Unnamed Event: 未命名的事件
+Event Imported: 事件已输入
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: 通告
+
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required.: 填写系统URL
+Server URL must end with /.: 系统URL必须以'/'结尾
+Invalid color for document background.: 无效的文档背景颜色
+Invalid color for document title.: 无效的文档标题颜色
+Invalid color for table cell background.: 无效的表格单元背景颜色
+Invalid color for table grid.: 无效的表格网格颜色
+Invalid color for table header background.: 无效的表头背景颜色
+Invalid color for table text background.: 无效的表头文本颜色
+Invalid color for event popup background.: 无效的背景颜色
+Invalid color for event popup text.: 无效的文本颜色
+Invalid color for table cell background for today.: 无效的当天表格单元背景颜色
+Color format should be RRGGBB.: 颜色格式需要是 '#RRGGBB'
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: 您没有输入概要描述
+The time you have entered begins before your preferred work hours. Is this correct?: 这个时段不在您自定的工作时间內. 这是正确的吗?
+You have not entered a valid time of day: 您没有输入正确的时间
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: 无效的颜色
+
+########################################
+# Page: includes/menu/index.php
+#
+Unapproved Events: 未核准的事件
+
+########################################
+# Page: tools/send_reminders.php
+#
+Reminder: 提醒

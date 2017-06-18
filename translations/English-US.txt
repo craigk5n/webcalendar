@@ -1,0 +1,1938 @@
+# Use this as a starting point to translate WebCalendar into other languages.
+#
+# Note to translators:  If you want to copy these header comments to your
+# language file and translate them, too, that's OK with us.
+#
+# The format consists of an optional header:
+#
+# Translated by: your name and email
+# Last update: the date of translation
+#   (Including the leading "# " and any comments made by previous translators.
+#   The FIRST blank line ends these header comments.)
+#
+# Followed by as many as needed:
+#
+# English phrase: translation
+#   (One to a line. WITHOUT the leading "# ".
+#   The "English phrase: ", including the colon ":", is provided by the
+#   WebCalendar developers. Your part is the "translation".)
+#
+# The tools directory contains two perl scripts to help you:
+#   - check_translation.pl
+#       indicates if all text has been successfully translated.
+#   - update_translation.pl
+#       will parse the program files to find all translate ( 'phrase' ) and
+#       tooltip ( 'phrase' ). It will arrange the phrases according to the page
+#       (file) that contains the first occurance. Optionally, it can tag the
+#       phrases that are not yet translated by putting
+#       << MISSING >>
+#       on the line above the phrase. And, if the phrase is an abbreviation,
+#       it will include the full English text on the line below the phrase.
+#
+# Note: I'm attempting to cut down on the overall file size. If the "translation"
+#       word / phrase is identical in your language and English, just use an "=" sign.
+#
+# Note:  You will notice the entry for "May_" below. There is a reason for this.
+#        Translate "May_" to the full month name and "May" to the,
+#        usually three-letter, month abbreviation (like "Oct" for "October").
+#
+# $Id: English-US.txt,v 1.238.2.20 2012/02/28 02:54:55 cknudsen Exp $
+# Translation last updated on 02-27-2012
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: iso-8859-1
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: ltr
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
+__month__ __dd__: __month__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__, __yyyy__
+__month__ __yyyy__: __month__ __yyyy__
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: WebCalendar
+version: version
+version XXX: version XXX
+WebCalendar is a PHP application used...: WebCalendar is a PHP application used to maintain a calendar for a single user or an internet / intranet group of users. It can also be configured as an event calendar.
+Credits: Credits
+About: About
+OK: OK
+
+########################################
+# Page: access.php
+#
+Database error: Database error
+Database error XXX.: Database error: XXX.
+DEFAULT CONFIGURATION: DEFAULT CONFIGURATION
+Go: Go
+Save: Save
+Undo: Undo
+Public Access: Public Access
+Admin: Admin
+User Access Control: User Access Control
+Allow Access to Other Users Calendar: Allow Access to Other Users' Calendar
+Grant This User Access to My Calendar: Grant This User Access to My Calendar
+Type: Type
+Calendar: Calendar
+View Event: View Event
+View: View
+Edit: Edit
+Approve/Reject: Approve/Reject
+Events: Events
+Tasks: Tasks
+Journals: Journals
+Can Invite: Can Invite
+Can Email: Can Email
+Can See Time Only: Can See Time Only
+Assistant: Assistant
+Select All: Select All
+Clear All: Clear All
+Public: Public
+Confidential: Confidential
+Private: Private
+
+########################################
+# Page: activity_log.php
+#
+Next: Next
+Previous: Previous
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Event XXX is already on your calendar.
+Invalid entry id XXX.: Invalid entry id: "XXX".
+a XXX event may not be added to your calendar: This is a XXX event and may not be added to your calendar.
+confidential: confidential
+private: private
+Error adding event: Error adding event
+Error adding event XXX.: Error adding event: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Invalid setting name "XXX".
+Select: Select
+Day: Day
+Week: Week
+Month: Month
+Year: Year
+Bottom: Bottom
+Top: Top
+Anyone: Anyone
+Participant: Participant
+Settings: Settings
+Groups: Groups
+NonUser Calendars: NonUser Calendars
+Other: Other
+Email: Email
+Colors: Colors
+Document background: Document background
+Document title: Document title
+Document text: Document text
+My event text: My event text
+Table grid color: Table grid color
+Table header background: Table header background
+Table header text: Table header text
+Table cell background: Table cell background
+Table cell background for current day: Table cell background for current day
+Table cell background for days with events: Table cell background for days with events
+Table cell background for weekends: Table cell background for weekends
+Table cell background for other month: Table cell background for other month
+Week number color: Week number color
+Event popup background: Event popup background
+Event popup text: Event popup text
+System Settings: System Settings
+Help: Help
+System options: System options
+app-name-help: Specifies the name of the application that will appear in the browser title bar for all pages and on the login page. The value you specify here will be looked up in the translations file allowing you to provide different titles for different languages.
+Application Name: Application Name
+Translated Name: Translated Name
+Translated Name (XXX): Translated Name (XXX)
+server-url-help: Specifies the base URL for the application. This will be included when sending out email reminders and notifications.
+Server URL: Server URL
+home-url-help: Specifies the home URL for the application. This can be an absolute or relative
+Home URL: Home URL
+language-help: Specifies which language to use.
+Language: Language
+Your browser default language is: Your browser default language is
+Your browser default language is XXX.: Your browser default language is "XXX".
+Allow user to use themes: Allow user to use themes
+themes-help: Allows mass update of configuration settings. Lower case labels are user pref only.
+Themes: Themes
+AVAILABLE THEMES: AVAILABLE THEMES
+None: None
+Preview: Preview
+Site customization: Site customization
+custom-script-help: Allows entry of custom Javascript or stylesheet text that will be inserted into the HTML "head" section of every page.
+Custom script/stylesheet: Custom script/stylesheet
+custom-header-help: Allows a custom HTML snippet to be included in the top of every page.
+Custom header: Custom header
+custom-trailer-help: Allows a custom HTML snippet to be included at the end of every page.
+Custom trailer: Custom trailer
+enable-external-header-help: Allows the custom trailer to be loaded from an external file
+Allow external file for header/script/trailer: Allow external file for header/script/trailer
+Allow user to override header/trailer: Allow user to override header/trailer
+Date and Time: Date and Time
+tz-help: Specifies how many hours to adjust the time from server time to local time.
+Server Timezone Selection: Server Timezone Selection
+display-general-use-gmt-help: If enabled, common dates/times are displayed as GMT
+Display Common Use Date/Times as GMT: Display Common Use Date/Times as GMT
+date-format-help: Specifies the preferred date format.
+Date format: Date format
+Small Task Date: Small Task Date
+display-week-starts-on: Specifies day of week that the week starts on. If Monday is specified, then week numbers will be ISO week numbers.
+Week starts on: Week starts on
+display-weekend-starts-on: Sets the day of the week for weekends to start
+Weekend starts on: Weekend starts on
+time-format-help: Specifies which time format to use:<br /><em>12 hour:</em> Display times as 3am, 8:30pm, etc.<br /><em>24 hour:</em> Display times as 300, 2030, etc.
+Time format: Time format
+12 hour: 12 hour
+24 hour: 24 hour
+timed-evt-len-help: Specifies input method for determining the length of a timed event.
+Specify timed event length by: Specify timed event length by
+Duration: Duration
+End Time: End Time
+work-hours-help: Specifies the time range to display for the day view.
+Work hours: Work hours
+From: From
+to: to
+Appearance: Appearance
+preferred-view-help: Specifies the default view (Day, Week, Month, or Year).
+Preferred view: Preferred view
+Allow top menu: Allow top menu
+Date Selectors position: Date Selectors position
+menu-themes-help: Sets the colors and style of the top menu
+Menu theme: Menu theme
+fonts-help: Specifies a list of system fonts to use (such as "Arial, Helvetica")
+Fonts: Fonts
+display-sm_month-help: If enabled, displays small months in month views
+Display small months: Display small months
+display-weekends-help: Include weekends when viewing a week.
+Display weekends: Display weekends
+display-long-daynames-help: If enabled, long day names are displayed
+Display long day names: Display long day names
+display-alldays-help: Display previous and next months days in month views, filling all cells.
+Display all days in month view: Display all days in month view
+display-week-number-help: Specifies whether the week number (1-52) should be displayed in the month view and the week view.
+Display week number: Display week number
+display-desc-print-day-help: Include event descriptions in printer-friendly version of day view.
+Display description in printer day view: Display description in printer day view
+yearly-shows-events-help: On the yearly view, display days that contain events in a bold font.
+Display days with events in bold in month and year views: Display days with events in bold in month and year views
+display-minutes-help: If enabled, minutes ending with :00 will always be displayed
+Display 00 minutes always: Display 00 minutes always
+display-end-times-help: Display event end times if timed event
+Display end times on calendars: Display end times on calendars
+allow-view-add-help: A '+' icon will be included in views, allowing users to quickly add events to other users' calendars.
+Include add event link in views: Include add event link in views
+lunar-help: If enabled, will display small icons representing the lunar phases each month
+Display Lunar Phases in month view: Display Lunar Phases in month view
+Restrictions: Restrictions
+allow-view-other-help: Specifies whether one user may view another user's calendar.
+Allow viewing other users calendars: Allow viewing other user's calendars
+require-approvals-help: When enabled, a user must approve an event before it is displayed on their calendar (unless Display unapproved is enabled). Note setting this to "No" will not turn off approvals for the Public Access calendar (if the Public Access calendar is enabled).
+Require event approvals: Require event approvals
+display-unapproved-help: Specifies whether unapproved events are displayed in your calendar.<br /> If set to "Yes", then unapproved events will be displayed in your calendar (in a different text color).<br /> If set to "No", then unapproved events must be approved before they are displayed in your calendar.
+Display unapproved: Display unapproved
+conflict-check-help: Check for event conflicts (two events scheduled for the same time for the same person). If you set this to "Yes", you will still be able to schedule two events at the same time after confirming a warning. If you set this to "No", no checking for conflicts will be done. You probably want to set this to "Yes", so conflict checking occurs.
+Check for event conflicts: Check for event conflicts
+Yes: Yes
+No: No
+conflict-months-help: If conflict checking is in place ("Check for event conflicts" is set to "No"), this specifies how many months into the future we should check for conflicts. If you find adding events is taking a long time to process, reduce this number.
+Conflict checking months: Conflict checking months
+conflict-check-override-help: Allows users to override event conflicts and schedule two or more events for the same time.
+Allow users to override conflicts: Allow users to override conflicts
+limit-appts-help: Allows the system administrator to set a system-wide limit on the number of appointments a single user can have on any single day.
+Limit number of timed events per day: Limit number of timed events per day
+limit-appts-number-help: Specifies the maximum number of timed events a user can have in a single day.
+Maximum timed events per day: Maximum timed events per day
+crossday-help: If enabled, events that span days will be displayed on separate days
+Disable Cross-Day Events: Disable Cross-Day Events
+disable-location-field-help: Selecting "Yes" will remove the "Location" field from event information pages
+Disable Location field: Disable Location field
+disable-url-field-help: Selecting "Yes" will remove the "URL" field from event information pages
+Disable URL field: Disable URL field
+disable-priority-field-help: Selecting "Yes" will remove the "Priority" field from event information pages, providing a simpler interface for novices.
+Disable Priority field: Disable Priority field
+disable-access-field-help: Selecting "Yes" will remove the "Access" field from event information pages, providing a simpler interface for novices.
+Disable Access field: Disable Access field
+disable-participants-field-help: Selecting "Yes" will remove the "Participants" field from event information pages, preventing users from adding other users to their events. If you enable this option, you may want to also disable the "Allow viewing other user's calendars" field also.
+Disable Participants field: Disable Participants field
+disable-repeating-field-help: Selecting "Yes" will remove the "Repeating" field when adding events. This will provide a simpler interface for novices.
+Disable Repeating field: Disable Repeating field
+allow-html-description-help: If enabled, users can enter HTML in the event description field. If not enabled, the HTML tags will be escaped so as to appear as plain text. Warning: Enabling this feature will allow users to reference images on other websites.
+Allow HTML in Description: Allow HTML in Description
+Popups: Popups
+disable-popups-help: Disable popups from calendar views
+Disable Pop-Ups: Disable Pop-Ups
+popup-includes-siteextras-help: If enabled, allow custom event fields setup in the site_extras.php file will be displayed in event popups.
+Display Site Extras in popup: Display Site Extras in popup
+popup-includes-participants-help: If enabled, participants are displayed in event popups.
+Display Participants in popup: Display Participants in popup
+Miscellaneous: Miscellaneous
+remember-last-login-help: When enabled, the user's login will be filled in for them on the login page (but not the password), and the user's preferences will be loaded (including their preferred colors and language selection).
+Remember last login: Remember last login
+summary_length-help: Maximum length of Brief Description in calendar views
+Brief Description Length: Brief Description Length
+user_sort-help: Determines sort order for User, Nonuser lists
+User Sort Order: User Sort Order
+Lastname, Firstname: Lastname, Firstname
+Firstname, Lastname: Firstname, Lastname
+allow-public-access-help: When enabled, the calendar can be used as a read-only public calendar that does not require users to login.
+Allow public access: Allow public access
+public-access-default-visible: Events from the public calendar will automatically appear on all users' calendars
+Public access visible by default: Public access visible by default
+public-access-default-selected: When adding a new event, the public user will be selected by default as a participant.
+Public access is default participant: Public access is default participant
+public-access-view-others-help: When access the system with public access, specifies whether the user can view the calendar of another calendar user.
+Public access can view other users: Public access can view other users
+public-access-can-add-help: When enabled, users that access the system through Public Access will be able to add new events, but they will not show up in the calendar until an administrator approves the new event.
+Public access can add events: Public access can add events
+public-access-add-requires-approval-help: Specifies whether events added via the public access account require approval before being displayed.
+Public access new events require approval: Public access new events require approval
+public-access-sees-participants-help: If enabled, users accessing the calendar from the public account will be able to see event participants if they view details of an event.
+Public access can view participants: Public access can view participants
+public-access-override-help: Allows event names and descriptions to be hidden on the public calendar
+Override event name/description for public access: Override event name/description for public access
+public-access-override-text-help: The text to display if the above option is enabled. If 'Not Available', it will be translated.
+Text to display to public access: Text to display to public access
+public-access-captcha-help: If enabled, new events added by Public require passing a CAPTCHA validation.
+Require CAPTCHA validation for public access new events: Require CAPTCHA validation for public access new events
+uac-enabled-help: Enables user-level access control
+User Access Control enabled: User Access Control enabled
+groups-enabled-help: Enables group support, allowing users to select users by groups.
+Groups enabled: Groups enabled
+user-sees-his-group-help: If enabled, users will not see calendar users that are not in at least one of their groups.
+User sees only his groups: User sees only his groups
+nonuser-enabled-help: If enabled, admins will have the option to add nonuser calendars
+Nonuser enabled: Nonuser Calendars Enabled
+nonuser-list-help: Where to display the nonuser calendars in the participant list
+Nonuser list: Display in participants list at
+Upcoming Events: Upcoming Events
+upcoming-events-help: Enable upcoming.php
+Enabled: Enabled
+upcoming-events-allow-override: Allow user paramter for upcoming.php
+Allow user override: Allow user override
+upcoming-events-display-caticons: Include category icons in upcoming.php
+Display category icons: Display category icons
+upcoming-events-display-layers: Display layers in upcoming.php
+Display layers: Display layers
+upcoming-events-display-links: Display links in upcoming.php
+Display links to events: Display links to events
+upcoming-events-display-popups: Display event popups in upcoming.php
+Display event popups: Display event popups
+reports-enabled-help: If enabled, users will see a "Reports" section at the bottom of each page and will be allowed to create custom reports. Additionally, admin users can create global reports that will appear at the bottom of all users' pages.
+Reports enabled: Reports enabled
+subscriptions-enabled-help: Specifies if remote users can subscribe to a WebCalendar user's calendar, allowing them to see the WebCalendar user's events in their iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+Allow remote subscriptions: Allow remote subscriptions
+remotes-enabled-help: Allows users to load remote ics files using URL
+Allow remote calendars: Allow remote calendars
+rss-enabled-help: Specifies if a user's calendar can be obtained from a RSS feed.
+Enable RSS feed: Enable RSS feed
+categories-enabled-help: Enables support for event categories.
+Categories enabled: Categories enabled
+icon_upload-enabled-help: If enabled, users can upload category icons
+Category Icon Upload enabled: Category Icon Upload enabled
+Requires: Requires
+folder to exist: folder to exist
+(Requires XXX folder to exist.): (Requires XXX folder to exist.)
+display-tasks-help: Display small task window on month and day calendar
+Display small task list: Display small task list
+display-tasks-in-grid-help: Display tasks in calendars along with events
+Display tasks in Calendars: Display tasks in Calendars
+allow-external-users-help: Specifies whether a non-calendar user can be added to an event. This allows non-calendar users to be listed as event participants.
+Allow external users: Allow external users
+external-can-receive-notification-help: When external users are enabled and email usage is enabled, external users can receive email notifications when the event is added, updated or delete (if the external user's email address is provided).
+External users can receive email notifications: External users can receive email notifications
+external-can-receive-reminder-help: When external users are enabled and email usage is enabled, external users can receive email reminders (if the external user's email address is provided).
+External users can receive email reminders: External users can receive email reminders
+allow-self-registration-help: Permit new users to register themselves
+Allow self-registration: Allow self-registration
+use-blacklist-help: Limit access to WebCalendar functions based on IP address
+Restrict self-registration to blacklist: Restrict self-registration to blacklist
+allow-self-registration-full-help: Allow new users to complete the self-registration process on-line
+Use self-registration email notifications: Generate passwords and send to new users
+allow-attachment-help: Allow users to add file attachments to events.
+Allow file attachments to events: Allow file attachments to events
+Admin and owner can always add attachments if enabled.: Admin and owner can always add attachments if enabled.
+allow-comments-help: Allow users to add comments to events.
+Allow comments to events: Allow comments to events
+Admin and owner can always add comments if enabled.: Admin and owner can always add comments if enabled.
+email-enabled-help: Turn on or off all sending of email for notification and reminders. Set to "no", if your server is not properly setup to send mail.
+Email enabled: Email enabled
+email-default-sender: Specifies the email address to specify as the sender when sending out reminders.
+Default sender address: Default sender address
+email-mailer: Choose email type (SMTP, PHP mail, sendmail)
+Email Mailer: Email Mailer
+email-smtp-host: Hostname(s) of SMTP server(s) separated by commas
+SMTP Host name(s): SMTP Host name(s)
+email-smtp-port: SMTP Port Number (normally 25)
+SMTP Port Number: SMTP Port Number
+email-smtp-auth: Use SMTP Authentication
+SMTP Authentication: SMTP Authentication
+email-smtp-username: SMTP Username if using Authentication
+SMTP Username: SMTP Username
+email-smtp-password: SMTP Password if using Authentication
+SMTP Password: SMTP Password
+Default user settings: Default user settings
+email-format: Specify preference for HTML or plain text messages
+Email format preference: Email format preference
+HTML: HTML
+Plain Text: Plain Text
+email-include-ics: Include an iCalendar ICS file to email message
+Include iCalendar attachments: Include iCalendar attachments
+email-event-reminders-help: Specifies whether or not to send event reminders.
+Event reminders: Event reminders
+email-event-added: Specifies whether or not to send email notifications when an event is added to your calendar.
+Events added to my calendar: Events added to my calendar
+email-event-updated: Specifies whether or not to send email notifications when an event is updated on your calendar.
+Events updated on my calendar: Events updated on my calendar
+email-event-deleted: Specifies whether or not to send email notifications when an event is removed from your calendar.
+Events removed from my calendar: Events removed from my calendar
+email-event-rejected: Specifies whether or not to send email notifications when a participant rejects an event that is on your calendar.
+Event rejected by participant: Event rejected by participant
+email-event-create: Specifies whether the creator of entries will receive an email
+Event that I create: Event that I create
+Color options: Color options
+Allow user to customize colors: Allow user to customize colors
+gradient-colors: If enabled gradient colors are used. This can greatly impact performance.
+Enable gradient images for background colors: Enable gradient images for background colors
+Not available: Not available
+Background Image options: Background Image options
+bgimage-help: URL of desired background image. May be relative link.
+Background Image: Background Image
+bgrepeat-help: Controls repeat behavior of background image.
+Background Repeat: Background Repeat
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Assistants
+Preferences: Preferences
+Control Panel: Control Panel
+Users: Users
+Account: Account
+Categories: Categories
+Views: Views
+Layers: Layers
+Reports: Reports
+Delete Events: Delete Events
+Activity Log: Activity Log
+System Log: System Log
+Security Audit: Security Audit
+Public Preferences: Public Preferences
+Unapproved Public Events: Unapproved Public Events
+Administrative Tools: Administrative Tools
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name: Duplicate Name
+Duplicate Name XXX: Duplicate Name: "XXX".
+Username already exists.: Username already exists.
+Username XXX already exists.: Username "XXX" already exists.
+Email address already exists.: Email address already exists.
+Email address XXX already exists.: Email address "XXX" already exists.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Additional Comments (optional)
+Approve and Send: Approve and Send
+Approve and Exit: Approve and Exit
+(Your comments will be emailed to the event creator.): (Your comments will be emailed to the event creator.)
+Hello: Hello
+Hello, XXX.: Hello, XXX.
+An appointment has been approved and comments added by: An appointment has been approved and comments added by
+XXX has approved an appointment and added comments.: An appointment has been approved and comments added by XXX.
+The subject was: The subject was
+Subject XXX: Subject: "XXX".
+The description is: The description is
+Description XXX: Description: "XXX".
+Date: Date
+Date XXX: Date: XXX
+Time: Time
+Time XXX: Time: XXX
+Comments: Comments
+Comments XXX: Comments: XXX
+Approved w/Comments by XXX.: Approved w/Comments by: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Admin mode
+Your assistants: Your assistants
+
+########################################
+# Page: availability.php
+#
+Program Error: Program Error:
+No XXX specified!: No XXX specified!
+Program Error No XXX specified!: Program Error: No XXX specified!
+user: user
+year: year
+month: month
+day: day
+
+########################################
+# Page: category.php
+#
+Category Icon: Category Icon
+Global: Global
+Category Name: Category Name:
+Color: Color
+Remove Icon: Remove Icon:
+Add Icon to Category: Add Icon to Category
+Upload: Upload
+gif 3kb max: (gif 3kb max)
+Search for existing icons: Search for existing icons
+Add: Add
+Delete: Delete
+entry: entry
+Are you sure you want to delete this XXX?: Are you sure you want to delete this XXX?
+Make New Category: Make New Category
+
+########################################
+# Page: category_handler.php
+#
+#
+Category name is required: Category name is required
+File size exceeds maximum.: File size exceeds maximum.
+File is not a gif image.: File is not a gif image.
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: AVAILABLE CATEGORIES
+ENTRY CATEGORIES: ENTRY CATEGORIES
+Remove: Remove
+Global Category: Global Category
+Cancel: Cancel
+
+########################################
+# Page: colors.php
+#
+Add Custom: Add Custom
+Basic Colors: Basic Colors
+Current Color: Current Color
+Custom Colors: Custom Colors
+Old Color: Old Color
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: An appointment has been canceled for you by
+XXX has canceled an appointment.: XXX has canceled an appointment.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Invalid blob id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Add Comment
+Add Attachment: Add Attachment
+Subject: Subject
+Comment: Comment
+Upload file: Upload file
+Description: Description
+
+########################################
+# Page: docdel.php
+#
+Removed: Removed
+
+########################################
+# Page: edit_entry.php
+#
+am: am
+pm: pm
+days: days
+hours: hours
+minutes: minutes
+You are not authorized to edit this task: You are not authorized to edit this task.
+task: task
+You are not authorized to edit this XXX.: You are not authorized to edit this XXX.
+is in a different timezone than you are. Currently: is in a different timezone than you are. Currently
+hour ahead of you: hour ahead of you
+hour behind you: hour behind you
+hours ahead of you: hours ahead of you
+hours behind you: hours behind you
+XXX is in a different timezone (ahead): (XXX is in a different timezone; XXX ahead of you.<br />&nbsp;XXX)
+XXX is in a different timezone (behind): (XXX is in a different timezone; XXX behind you.<br />&nbsp;XXX)
+Time entered here is based on your Timezone.: Time entered here is based on <b>your</b> Timezone.
+Edit Entry: Edit Entry
+Add Entry: Add Entry
+Details: Details
+Participants: Participants
+Repeat: Repeat
+Reminders: Reminders
+brief-description-help: This should provide a short description (about 20 characters) of the event. This will represent the event when viewing the calendar.
+Brief Description: Brief Description
+full-description-help: This should complete details of the event. This information can be seen when a user views the event.
+Full Description: Full Description
+access-help: Specifies the access level of the event. <ul><li><em>Public</em>: Everyone can see the full details of the event. </li><li><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.</li></ul>
+Access: Access
+priority-help: Specifies the priority of the event. High priority events will be displayed in bold.
+Priority: Priority
+High: High
+Medium: Medium
+Low: Low
+category-help: Specifies the category of the event.
+Category: Category
+completed-help: Date task is completed. Only enabled when all participants percentage equals 100%.
+Date Completed: Date Completed
+percent-help: Task completion percentage for this user
+Percent Complete: Percent Complete
+All Percentages: All Percentages
+location-help: Event location
+Location: Location
+url-help: Event URL
+URL: URL
+date-help: Specifies the date of the event.
+Start Date: Start Date
+Untimed event: Untimed event
+Timed event: Timed event
+All day event: All day event
+Timezone Offset: Timezone Offset
+time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event that is scheduled for a specific time on that day)</li><li>"Untimed event" (for an event this does not have a time (like a holiday)</li><li>"All day event" (for an event that takes all day (like being out of the office)</li></ul>
+duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
+end-time-help: Specifies the time the event is expected to end.
+Start Time: Start Time
+Due Date: Due Date
+Due Time: Due Time
+Site Extras: Site Extras
+participants-help: Lists the participants of this entry.
+Availability: Availability
+external-participants-help: Specifies a list of participants for the event that are not calendar users. The users should be listed one per line and can include an email address. If an email address is specified, the user is eligible to receive notifications and reminders.
+External Participants: External Participants
+repeat-type-help: Select how often the event should repeat.
+Daily: Daily
+Weekly: Weekly
+Monthly: Monthly
+by day: by day
+by date: by date
+by position: by position
+Monthly (by day): Monthly (by day)
+Monthly (by date): Monthly (by date)
+Monthly (by position): Monthly (by position)
+Yearly: Yearly
+Manual: Manual
+Expert Mode: Expert Mode
+repeat-end-date-help: Specifies the date the event should repeat until.
+Ending: Ending
+Forever: Forever
+Use end date: Use end date
+Number of times: Number of times
+repeat-frequency-help: Specifies how often the event should repeat.
+Frequency: Frequency
+Weekdays Only: Weekdays Only
+Week Start: Week Start
+repeat-bydayextended-help: Allows date selection based on day of week.
+ByDay: ByDay
+All: All
+repeat-month-help: Specifies which months the event should repeat in.
+ByMonth: ByMonth
+repeat-bysetpos-help: Allows date selection based on position withing the month.
+BySetPos: BySetPos
+repeat-bymonthdayextended-help: Allows date selection based on date.
+ByMonthDay: ByMonthDay
+repeat-byweekno-help: Allows user to specify a list of weeks to repeat event (1,2...53,-53,-52...-1).
+ByWeekNo: ByWeekNo
+repeat-byyearday-help: Allows user to specify a list of year days to repeat event (1,2...366,-366,-365...-1).
+ByYearDay: ByYearDay
+repeat-exceptions-help: Additional days that this event should or should not occur on.
+Exclusions: Exclusions
+Inclusions: Inclusions
+Add Exception: Add Exception
+Add Inclusion: Add Inclusion
+Delete Selected: Delete Selected
+Send Reminder: Send Reminder
+When: When
+Use Date/Time: Use Date/Time
+Use Offset: Use Offset
+Before: Before
+After: After
+Start: Start
+End/Due: End/Due
+Times: Times
+Every: Every
+CAPTCHA Warning: <b>Warning:</b> Cannot use CAPTCHA without PHP's GD extension!<br />
+Delete entry: Delete entry
+You are not authorized to edit this entry.: You are not authorized to edit this entry.
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: A new appointment has been made for you by
+XXX has made a new appointment.: XXX has made a new appointment.
+An appointment has been updated by: An appointment has been updated by
+XXX has updated an appointment.: XXX has updated an appointment.
+Security violation!: Security violation!
+You must enter the anti-spam text on the previous page.: You must enter the anti-spam text on the previous page.
+The following conflicts with the suggested time: The following conflicts with the suggested time
+User removed from participants list.: User removed from participants list.
+Please look on: Please look on
+to accept or reject this appointment: to accept or reject this appointment
+to view this appointment: to view this appointment
+Please look on XXX to accept or reject this appointment.: Please look on XXX to accept or reject this appointment.
+Please look on XXX to view this appointment.: Please look on XXX to view this appointment.
+Scheduling Conflict: Scheduling Conflict
+Your suggested time of: Your suggested time of
+conflicts with the following existing calendar entries: conflicts with the following existing calendar entries
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: Add Layer
+Edit Layer: Edit Layer
+Source: Source
+Duplicates: Duplicates
+Show layer events that are the same as your own: Show layer events that are the same as your own
+Add to Others: Add to Others
+Add to My Calendar: Add to My Calendar
+Delete layer: Delete layer
+
+########################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself.: You cannot create a layer for yourself.
+You can only create one layer for each user.: You can only create one layer for each user.
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX has not been set in config.php.
+word characters only: can only contain word characters (a-zA-Z_0-9)
+Add User: Add User
+Edit User: Edit User
+Calendar ID: Calendar ID
+First Name: First Name
+Last Name: Last Name
+Is public calendar: Is public calendar
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Add Remote Calendar
+Edit Remote Calendar: Edit Remote Calendar
+Create Layer: Create Layer
+Reload: Reload
+Required to View Remote Calendar: Required to View Remote Calendar
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: Error
+Import Results: Import Results
+Events successfully imported: Events successfully imported
+Create a new layer to view this calendar: Create a new layer to view this calendar
+Errors: Errors
+There was an error parsing the import file or no events were returned: There was an error parsing the import file or no events were returned
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Tomorrow
+Today: Today
+Yesterday: Yesterday
+Day before yesterday: Day before yesterday
+Next week: Next week
+This week: This week
+Last week: Last week
+Week before last: Week before last
+Next week and week after: Next week and week after
+This week and next week: This week and next week
+Last week and this week: Last week and this week
+Last two weeks: Last two weeks
+Next month: Next month
+This month: This month
+Last month: Last month
+Month before last: Month before last
+Next year: Next year
+This year: This year
+Last year: Last year
+Year before last: Year before last
+Next 14 days: Next 14 days
+Next 30 days: Next 30 days
+Next 60 days: Next 60 days
+Next 90 days: Next 90 days
+Next 180 days: Next 180 days
+Next 365 days: Next 365 days
+Invalid report id.: Invalid report id.
+Invalid report id XXX.: Invalid report id: "XXX".
+Unnamed Report: Unnamed Report
+Add Report: Add Report
+Edit Report: Edit Report
+Report name: Report name
+User: User
+Current User: Current User
+Include link in menu: Include link in menu
+Include standard header/trailer: Include standard header/trailer
+Include previous/next links: Include previous/next links
+Include empty dates: Include empty dates
+Date range: Date range
+Template variables: Template variables
+Page template: Page template
+Day template: Day template
+Event template: Event template
+report: report
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: No such report id: "XXX".
+Variable N not found: Variable N not found
+Variable XXX not found.: Variable <tt>XXX</tt> not found.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Edit Custom Header
+Edit Custom Script/Stylesheet: Edit Custom Script/Stylesheet
+Edit Custom Trailer: Edit Custom Trailer
+
+########################################
+# Page: edit_user.php
+#
+Username: Username
+E-mail address: E-mail address
+Password: Password
+again: again
+Disabled for demo: Disabled for demo
+Change Password: Change Password
+New Password: New Password
+Set Password: Set Password
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Deleting users not supported.
+The passwords were not identical.: The passwords were not identical.
+You have not entered a password.: You have not entered a password.
+Username cannot be blank.: Username cannot be blank.
+
+########################################
+# Page: export.php
+#
+Export: Export
+Export format: Export format
+Include all layers: Include all layers
+Include deleted entries: Include deleted entries
+Export all dates: Export all dates
+Start date: Start date
+End date: End date
+Modified since: Modified since
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect: export format not defined or incorrect
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: No user specified.
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Unnamed Group
+Add Group: Add Group
+Edit Group: Edit Group
+Group name: Group name
+Updated: Updated
+Created by: Created by
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: You must specify a group name
+
+########################################
+# Page: groups.php
+#
+Add New Group: Add New Group
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Auto-refresh calendars
+auto-refresh-help: When enabled, the day view, week view, month view, and list unapproved pages will all automatically refresh themselves periodically.
+Auto-refresh time: Auto-refresh time
+auto-refresh-time-help: If Auto-refresh is enabled, this specifies the time between each refresh.
+Display days with events in bold in year view: Display days with events in bold in year view
+Display weekends in week view: Display weekends in week view
+Time interval: Time interval
+time-interval-help: Specifies how long the time blocks in the week view and day view will be.
+Nonuser: Nonuser Calendars
+user-customize-color: Specifies whether users are allowed to modify their own color scheme.
+enable-gradient-help: Use gradient colors for cell backgrounds.
+Manually entering color values: Manually entering color values
+colors-help: All colors should be specified in "#RRGGBB" hexadecimal format where "RR" is the hex value for red, "GG" is the hex value for green, and "BB" is the hex value for blue.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Report Bug
+Please include all the information below when reporting a bug.: Please include all the information below when reporting a bug.
+Also, please use English rather than: Also, please use <strong>English</strong> rather than
+Also, please use English rather than XXX.: Also, please use <strong>English</strong> rather than XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar Documentation
+Currently in English only.: Currently in English only.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Adding/Editing Calendar Entries
+Repeat Type: Repeat Type
+For More Information...: For More Information...
+Repeat End Date: Repeat End Date
+Repeat Day: Repeat Day
+repeat-day-help: Specifies which days of the week the event should repeat on.
+
+########################################
+# Page: help_import.php
+#
+Import: Import
+Palm Desktop: Palm Desktop
+This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
+The following entries will not be imported: The following entries will not be imported
+Entries older than the current date: Entries older than the current date
+Entries created in the Palm Desktop...: Entries created in the Palm Desktop that have not been HotSync'd
+Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
+Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
+vCal: vCal
+This form will import vCalendar (.vcs) 1.0 events: This form will import vCalendar (.vcs) 1.0 events
+The following formats have been tested: The following formats have been tested
+This form will import iCalendar (.ics) events: This form will import iCalendar (.ics) events
+Enabling: Enabling
+Overwrite Prior Import: Overwrite Prior Import
+will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Help Index
+About WebCalendar: About WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Layers are useful for displaying other users' events in your own calendar. You can specify the user and the color the events will be displayed in.
+Add/Edit/Delete: Add/Edit/Delete
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.
+The text color of the new layer that will be displayed in your calendar.: The text color of the new layer that will be displayed in your calendar.
+Disabling: Disabling
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.
+If checked, events that are duplicates of your events will be shown.: If checked, events that are duplicates of your events will be shown.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.
+Specifies the user that you would like to see displayed in your calendar.: Specifies the user that you would like to see displayed in your calendar.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Default Category
+default-category-help: Specifies the category a new event should default to.
+When I am the boss: When I am the boss
+Email me event notification: Email me event notification
+email-boss-notifications-help: Specifies if bosses receive emails as event notifications.
+I want to approve events: I want to approve events
+boss-approve-event-help: Specifies whether the boss will be required to approve events added by assistants.
+Subscribe/Publish: Subscribe/Publish
+Allow remote publishing: Allow remote publishing
+allow-remote-publishing-help: Specifies if a remote iCal client can publish events back to WebCalendar
+remote-publishing-url-help: Displays the URL to use in the iCal client application for both subscribing and publishing back to WebCalendar.
+allow-remote-subscriptions-help: Specifies if remote users can subscribe to your calendar, allowing them to see your events in a iCal-enabled application (such as Apple's iCal or Mozilla Calendar).
+remote-subscriptions-url-help: Displays the URL remote users should use to subscribe to your calendar.
+Enable FreeBusy publishing: Enable FreeBusy publishing
+freebusy-enabled-help: Specifies if a user's available time can be obtained using the iCal FreeBusy standard.
+freebusy-url-help: The URL for accessing the user's FreeBusy list
+rss-feed-url-help: The URL to access the RSS feed
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.:
+If disabled, this user cannot send you emails.: If disabled, this user cannot send you emails.
+If disabled, this user cannot see you in the participants list.: If disabled, this user cannot see you in the participants list.
+If enabled, this user cannot view the details of any of your entries.: If enabled, this user cannot view the details of any of your entries.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Publishing Disabled (Admin)
+Publishing Disabled (User): Publishing Disabled (User)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Click to Select
+Current Icons on Server: Current Icons on Server
+
+########################################
+# Page: import.php
+#
+Disabled: Disabled
+Import format: Import format
+Exclude private records: Exclude private records
+Repeated items are imported separately. Prior imports are not overwritten.: Repeated items are imported separately. Prior imports are not overwritten.
+
+########################################
+# Page: import_handler.php
+#
+No file: No file
+Error deleting palm events from webcalendar.: Error deleting palm events from webcalendar.
+Events from prior import marked as deleted: Events from prior import marked as deleted
+Conflicting events: Conflicting events
+The import file contained no data: The import file contained no data
+
+########################################
+# Page: layers.php
+#
+Layer: Layer
+Edit layer: Edit layer
+Enable layers: Enable layers
+Layers are currently: Layers are currently
+Disable Layers: Disable Layers
+Click here: Click here
+to modify the layers settings for the: to modify the layers settings for the
+calendar: calendar
+Add layer: Add layer
+
+########################################
+# Page: layers_toggle.php
+#
+Unable to update preference: Unable to update preference
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Approve/Confirm
+Approve Selected: Approve Selected
+Check All: Check All
+Emails Will Not Be Sent: Emails Will Not Be Sent
+Reject Selected: Reject Selected
+Reject: Reject
+Uncheck All: Uncheck All
+View this entry: View this entry
+No unapproved entries for: No unapproved entries for
+No unapproved entries for XXX.: No unapproved entries for: "XXX".
+Unapproved Entries: Unapproved Entries
+Not authorized: Not authorized
+Approve this entry?: Approve this entry?
+Reject this entry?: Reject this entry?
+Approve Selected entries?: Approve Selected entries?
+Reject Selected entries?: Reject Selected entries?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: You must enter a login and password.
+Save login via cookies so I dont have to login next time.: Save login via cookies so I don't have to login next time
+Login: Login
+Access public calendar: Access public calendar
+public: public
+Access XXX calendar: Access XXX calendar
+cookies-note: <b>Note:</b> This application requires cookies to be enabled.
+
+########################################
+# Page: login.php
+#
+Invalid login: Invalid login
+You have been logged out.: You have been logged out.
+Not yet registered? Register here!: Not yet registered? Register here!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar: No such nonuser calendar
+No such nonuser calendar XXX.: No such nonuser calendar: "XXX".
+This Calendar is not Public.: This Calendar is not Public.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Add New NonUser Calendar
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified: A login must be specified
+Illegal characters in login: Illegal characters in login
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Invalid theme
+Save Preferences: Save Preferences
+Public Access calendar: Public Access calendar
+Modify Non User Calendar Preferences: Modify Non User Calendar Preferences
+Return to My Preferences: Return to My Preferences
+Custom Scripts: Custom Scripts
+Timezone Selection: Timezone Selection
+entry-interval-help: Sets minute interval when editing entry times
+Entry interval: Entry interval
+hour: hour
+minute: minute
+theme-reload-help: Due to CSS caching, a page reload may be required
+Page may need to be reloaded for new Theme to take effect: Page may need to be reloaded for new Theme to take effect
+display_byproxy-help: Display the real creator on view_entry page
+Display if created by Assistant: Display if created by Assistant
+allow-view-subscriptions-help: Allows restricting remote access to Private or Confidential entries
+Allow remote viewing of: Allow remote viewing of
+entries: entries
+
+########################################
+# Page: publish.php
+#
+No user specified: No user specified
+
+########################################
+# Page: purge.php
+#
+Purging events for: Purging events for
+Finished: Finished
+Back: Back
+Check box to delete ALL events for a user: Check box to delete <b>ALL</b> events for a user
+Delete all events before: Delete all events before
+Purge deleted only: Purge deleted only
+Preview delete: Preview delete
+Are you sure you want to delete events for: Are you sure you want to delete events for
+Records deleted from: Records deleted from
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Email address cannot be blank.
+Illegal characters in login XXX.: Illegal characters in login XXX.
+New user via self-registration.: New user via self-registration.
+A new WebCalendar account has been set up for you.: A new WebCalendar account has been set up for you.
+Your username is: Your username is
+Your username is XXX.: Your username is: "XXX".
+Your password is: Your password is
+Your password is XXX.: Your password is: "XXX".
+Please visit: Please visit
+to log in and start using your account: to log in and start using your account
+Please visit XXX to log in and start using your account!: Please visit "XXX" to log in and start using your account!
+You may change your password after logging in the first time.: You may change your password after logging in the first time.
+If you received this email in error: If you received this email in error and did not sign up for a WebCalendar account, you may disregard this notice, or reply with a short note
+Administrator: Administrator
+Welcome: Welcome
+New user via email.: New user via email.
+Registration: Registration
+Welcome to WebCalendar: Welcome to WebCalendar
+Your email should arrive shortly.: Your email should arrive shortly.
+Return to Login screen: Return to Login screen
+Password (again): Password (again)
+Your account information will be emailed to you.: Your account information will be emailed to you.
+Submit: Submit
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Continue
+(Your comments will be emailed to the other participants.): (Your comments will be emailed to the other participants.)
+An appointment has been rejected by: An appointment has been rejected by
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Add New Remote Calendar
+
+########################################
+# Page: report.php
+#
+This event is confidential.: This event is confidential.
+(Private): (Private)
+cont.: cont.
+(cont.): (cont.)
+Approved: Approved
+Deleted: Deleted
+Rejected: Rejected
+Waiting for approval: Waiting for approval
+Unknown: Unknown
+to manage reports for the Public Access calendar: to manage reports for the Public Access calendar
+Click here to manage reports for the Public Access calendar.: Click here to manage reports for the Public Access calendar.
+Add new report: Add new report
+Manage Reports: Manage Reports
+
+########################################
+# Page: search.php
+#
+Advanced Search: Advanced Search
+Search: Search
+Keywords: Keywords
+Enter % for all entries: Enter % for all entries
+Include: Include
+Filter by Date: Filter by Date
+All Dates: All Dates
+Past: Past
+Upcoming: Upcoming
+Range: Range
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords: You must enter one or more search keywords
+Search Results: Search Results
+match found: match found
+matches found: matches found
+No matches found: No matches found
+New Search: New Search
+
+########################################
+# Page: security_audit.php
+#
+The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.: The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.
+For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.: For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net.
+View your current PHP settings: View your current PHP settings
+Security Issue: Security Issue
+Status: Status
+You should change the password of the default admin user.: You should change the password of the default admin user.
+Default admin user password: Default admin user password
+The following item should not be writable: The following item should not be writable
+File permissions: File permissions
+Because you have email disabled, you should remove this file.: Because you have email disabled, you should remove this file.
+File exists: File exists
+If you are not using this file, remove it.  Otherwise, it should be moved to a different location.: If you are not using this file, remove it.  Otherwise, it should be moved to a different location.
+File location: File location
+You may want to consider enabling User Access Control to set user privileges.: You may want to consider enabling User Access Control to set user privileges.
+It is recommended that public event submissions be approved: It is recommended that public event submissions be approved
+CAPTCHA is recommended to guard againt automated event submissions.: CAPTCHA is recommended to guard againt automated event submissions.
+The database cache directory should be in a directory that cannot be accessed with a URL.: The database cache directory should be in a directory that cannot be accessed with a URL.
+Database cache directory location: Database cache directory location
+The recommended setting for magic quotes is Off.: The recommended setting for magic quotes is Off.
+PHP setting: PHP setting
+The recommended setting for register_globals is Off.: The recommended setting for register_globals is Off.
+The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.: The recommended setting for allow_url_fopen is Off when remote calendars are not enabled.
+The recommended setting for allow_url_include is Off.: The recommended setting for allow_url_include is Off.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: View Another User's Calendar
+
+########################################
+# Page: set_entry_cat.php
+#
+Invalid entry id.: Invalid entry id.
+You have not added any categories.: You have not added any categories.
+Set Category: Set Category
+Global Categories cannot be changed.: Global Categories cannot be changed.
+
+########################################
+# Page: upcoming.php
+#
+more: more
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Remote Calendars
+denotes administrative user: denotes administrative user
+Add New User: Add New User
+
+########################################
+# Page: usersel.php
+#
+form: form
+listid: listid
+Reset: Reset
+
+########################################
+# Page: view_d.php
+#
+No users for this view: No users for this view
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Update Task Percentage
+Completed: Completed
+Assistant mode: Assistant mode
+Declined: Declined
+Needs-Action: Needs-Action
+by: by
+Percentage Complete: Percentage Complete
+External User: External User
+Update: Update
+Attachments: Attachments
+at: at
+comments: comments
+Show: Show
+Hide: Hide
+Approve/Confirm entry: Approve/Confirm entry
+Reject entry: Reject entry
+Set category: Set category
+Copy entry: Copy entry
+This will delete this entry for all users.: This will delete this entry for all users.
+Edit entry: Edit entry
+Edit repeating entry for all dates: Edit repeating entry for all dates
+Delete repeating event for all dates: Delete repeating event for all dates
+Edit entry for this date: Edit entry for this date
+Delete entry only for this date: Delete entry only for this date
+Delete entry from calendar of XXX: Delete entry from calendar of XXX
+This will delete the entry from your XXX calendar.: This will delete the entry from your XXX calendar.
+boss: boss'
+This will delete the entry from your boss calendar.: This will delete the entry from your boss' calendar.
+This will delete the entry from your calendar.: This will delete the entry from your calendar.
+from your boss calendar: from your boss' calendar
+Do you want to add this entry to your calendar?: Do you want to add this entry to your calendar?
+This will add the entry to your calendar.: This will add the entry to your calendar.
+Email all participants: Email all participants
+Hide activity log: Hide activity log
+Show activity log: Show activity log
+Export this entry to: Export this entry to
+Palm Pilot: Palm Pilot
+
+########################################
+# Page: view_r.php
+#
+Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
+
+########################################
+# Page: views.php
+#
+Add New View: Add New View
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Unnamed View
+Add View: Add View
+Edit View: Edit View
+View Name: View Name
+View Type: View Type
+Day by Time: Day by Time
+Week (Users horizontal): Week (Users horizontal)
+Week by Time: Week by Time
+Week (Users vertical): Week (Users vertical)
+Week (Timebar): Week (Timebar)
+Month (Timebar): Month (Timebar)
+Month (side by side): Month (side by side)
+Month (on same calendar): Month (on same calendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: You must specify a view name
+
+########################################
+# Page: week_details.php
+#
+New Entry: New Entry
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Another User's Calendar
+Category Management: Category Management
+Day View: Day View
+Edit Event: Edit Event
+Month View: Month View
+Common Trailer: Common Trailer
+User Management: User Management
+Manage Views: Manage Views
+Week View: Week View
+Year View: Year View
+Invalid function id: Invalid function id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Could not find "settings.php" file.<br />Please copy "settings.php.orig" to "settings.php" and edit for your site.
+Incomplete settings.php file...: Incomplete settings.php file...
+Could not find XXX defined in...: Could not find "XXX" defined in your "settings.php" file.
+You must define XXX in: You must define "XXX" in the "settings.php" file.
+
+########################################
+# Page: includes/date_formats.php
+#
+December: December
+Dec: Dec
+LANGUAGE DEFINED: LANGUAGE DEFINED
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database: Error connecting to database
+db_type not defined.: db_type not defined.
+invalid db_type: invalid db_type
+Cache cleared from previous SQL!: Cache cleared from previous SQL!
+Error executing query.: Error executing query.
+Unfortunately, XXX is not implemented for: Unfortunately, XXX is not implemented for
+Unknown ODBC error.: Unknown ODBC error.
+Unknown error.: Unknown error.
+Error opening cache dir: Error opening cache dir
+delete: delete
+Could not XXX file: Could not XXX file
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatal Error
+Invalid data format for: Invalid data format for
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Error: Type not set for activity log!
+This event is private: This event is private
+This event is XXX.: This event is XXX.
+Conf.: Conf.
+exceeds limit of XXX events per day: exceeds limit of XXX events per day
+on: on
+All Attendees: All Attendees
+Busy: Busy
+Tentative: Tentative
+Schedule an appointment for: Schedule an appointment for
+Schedule an appointment for XXX.: Schedule an appointment for XXX:XXX.
+Event approved: Event approved
+Journal approved: Journal approved
+Task approved: Task approved
+Attachment: Attachment
+Event created: Event created
+Journal created: Journal created
+Task created: Task created
+Event deleted: Event deleted
+Journal deleted: Journal deleted
+Task deleted: Task deleted
+New user via email (self registration): New user via email (self registration)
+New user (self registration): New user (self registration)
+Notification sent: Notification sent
+Event rejected: Event rejected
+Journal rejected: Journal rejected
+Task rejected: Task rejected
+Reminder sent: Reminder sent
+Event updated: Event updated
+Journal updated: Journal updated
+Task updated: Task updated
+Delete User: Delete User
+WK: WK
+TASKS: TASKS
+Task_Title: Title
+Due: Due
+Task Name: Task Name
+Task Due Date: Task Due Date
+You have XXX unapproved entries: You have XXX unapproved entries
+Changes successfully saved: Changes successfully saved
+Event: Event
+Action: Action
+Printer Friendly: Printer Friendly
+Generate printer-friendly version: Generate printer-friendly version
+after: after
+before: before
+end: end
+start: start
+View this event: View this event
+View this task: View this task
+January: January
+February: February
+March: March
+April: April
+May_: May
+June: June
+July: July
+August: August
+September: September
+October: October
+November: November
+Jan: Jan
+Feb: Feb
+Mar: Mar
+Apr: Apr
+May: May
+Jun: Jun
+Jul: Jul
+Aug: Aug
+Sep: Sep
+Oct: Oct
+Nov: Nov
+unknown-month: unknown-month
+First Quarter Moon: First Quarter Moon
+Full Moon: Full Moon
+Last Quarter Moon: Last Quarter Moon
+New Moon: New Moon
+Error TIME_SLOTS undefined!: Error: TIME_SLOTS undefined!
+The following error occurred: The following error occurred
+You are not authorized.: You are not authorized.
+Add N hours to: Add N hours to
+Subtract N hours from: Subtract N hours from
+same as: same as
+server time: server time
+Cannot read timezone file XXX.: Cannot read timezone file: XXX.
+Your current GMT offset is: Your current GMT offset is
+Your current GMT offset is XXX hours.: Your current GMT offset is XXX hours.
+Unauthorized: Unauthorized
+Error approving event: Error approving event
+Error approving event XXX.: Error approving event: XXX.
+Error deleting event: Error deleting event
+Error deleting event XXX.: Error deleting event: XXX.
+Error rejecting event: Error rejecting event
+Error rejecting event XXX.: Error rejecting event: XXX.
+Sunday: Sunday
+Monday: Monday
+Tuesday: Tuesday
+Wednesday: Wednesday
+Thursday: Thursday
+Friday: Friday
+Saturday: Saturday
+Sun: Sun
+Mon: Mon
+Tue: Tue
+Wed: Wed
+Thu: Thu
+Fri: Fri
+Sat: Sat
+unknown-weekday: unknown-weekday
+Invalid referring URL: Invalid referring URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Index
+Documentation: Documentation
+Page: Page
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: My Calendar
+Add New Entry: Add New Entry
+Add New Task: Add New Task
+Logout: Logout
+Home: Home
+Back to My Calendar: Back to My Calendar
+Go to: Go to
+Manage calendar of: Manage calendar of
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Browser Language Not Found
+not supported: not supported
+English: English
+English-US: English-US
+Afrikaans: Afrikaans
+Albanian: Albanian
+Arabic: Arabic
+Basque: Basque
+Bulgarian: Bulgarian
+Catalan: Catalan
+Chinese (Simplified/GB2312): Chinese (Simplified/GB2312)
+Chinese (Traditional/Big5): Chinese (Traditional/Big5)
+Croatian: Croatian
+Czech: Czech
+Danish: Danish
+Dutch: Dutch
+Elven: Elven
+Estonian: Estonian
+Finnish: Finnish
+French: French
+Galician: Galician
+German: German
+Greek: Greek
+Hebrew: Hebrew
+Holo (Taiwanese): Holo (Taiwanese)
+Hungarian: Hungarian
+Icelandic: Icelandic
+Indonesian: Indonesian
+Italian: Italian
+Japanese: Japanese
+Korean: Korean
+Lithuanian: Lithuanian
+Norwegian: Norwegian
+Polish: Polish
+Portuguese: Portuguese
+Portuguese/Brazil: Portuguese/Brazil
+Romanian: Romanian
+Russian: Russian
+Serbian: Serbian
+Slovak: Slovak
+Slovenian: Slovenian
+Spanish: Spanish
+Swedish: Swedish
+Turkish: Turkish
+Welsh: Welsh
+Browser-defined: Browser-defined
+event: event
+journal: journal
+0: 0
+1: 1
+2: 2
+3: 3
+4: 4
+5: 5
+6: 6
+7: 7
+8: 8
+9: 9
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Invalid user login
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: incorrect password
+no such user: no such user
+
+########################################
+# Page: includes/xcal.php
+#
+MO: MO
+TU: TU
+WE: WE
+TH: TH
+FR: FR
+SA: SA
+SU: SU
+Interval: Interval
+Months: Months
+Month Days: Month Days
+Days: Days
+Weeks: Weeks
+Position: Position
+Until: Until
+Count: Count
+Inclusion Dates: Inclusion Dates
+Exclusion Dates: Exclusion Dates
+Unnamed Event: Unnamed Event
+Event Imported: Event Imported
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bytes
+kb: kb
+Mb: Mb
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Notification
+authenticate: SMTP Error: Could not authenticate
+connect_host: SMTP Error: Could not connect to SMTP host:
+data_not_accepted: SMTP Error: Data not accepted
+encoding: Unknown encoding:
+execute: Could not execute:
+file_access: Could not access file:
+file_open: File Error Could not open file:
+from_failed: The following From address failed:
+instantiate: Could not instantiate mail function
+mailer_not_supported: mailer is not supported
+provide_address: You must provide at least one recipient email address.
+recipients_failed: SMTP Error: The following recipients failed:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Enter Characters Seen in Graphic
+Enter the correct letters and numbers from the image into the text box...: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read.
+Challenge/Response: Challenge/Response
+
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required.: Server URL is required.
+Server URL must end with /.: Server URL must end with '/'.
+Invalid work hours.: Invalid work hours.
+Invalid color for document background.: Invalid color for document background.
+Invalid color for document title.: Invalid color for document title.
+Invalid color for table cell background.: Invalid color for table cell background.
+Invalid color for table grid.: Invalid color for table grid.
+Invalid color for table header background.: Invalid color for table header background.
+Invalid color for table text background.: Invalid color for table text background.
+Invalid color for event popup background.: Invalid color for event popup background.
+Invalid color for event popup text.: Invalid color for event popup text.
+Invalid color for table cell background for today.: Invalid color for table cell background for today.
+Color format should be RRGGBB.: Color format should be '#RRGGBB'.
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Change the date and time of this entry?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: You have not entered a Brief Description
+The time you have entered begins before your preferred work hours. Is this correct?: The time you have entered begins before your preferred work hours. Is this correct?
+Invalid Event Date: Invalid Event Date
+Please add a participant: Please add a participant
+Invalid Date: Invalid Date
+You have not entered a valid time of day: You have not entered a valid time of day
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: Invalid color
+layer: layer
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Calendar ID cannot be blank.
+First and last names cannot both be blank.: First and last names cannot both be blank.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+URL cannot be blank.: URL cannot be blank.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: File type does not match Import Format
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: This Week
+This Month: This Month
+This Year: This Year
+Exit: Exit
+Add New Event: Add New Event
+Delete Entries: Delete Entries
+My Views: My Views
+Manage Calendar of: Manage Calendar of
+My Reports: My Reports
+My Profile: My Profile
+Public Calendar: Public Calendar
+Unapproved Events: Unapproved Events
+User Manager: User Manager
+Help Contents: Help Contents
+
+########################################
+# Page: install/index.php
+#
+WebCalendar Installation Wizard: WebCalendar Installation Wizard
+Step: Step
+WebCalendar Installation Wizard Step XXX: WebCalendar Installation Wizard Step XXX
+Single-User: Single-User
+Failure Reason: Failure Reason
+You must manually create database: You must manually create database
+Database Cache Directory: Database Cache Directory
+Test Settings: Test Settings
+Create New: Create New
+Database Name: Database Name
+Timezone Conversion Successful: Timezone Conversion Successful
+Error Unable to write to file: Error Unable to write to file
+Error Unable to write to file XXX.: Error Unable to write to file XXX.
+Successful Login: Successful Login
+Invalid Login: Invalid Login
+required only if Safe Mode is On: required only if Safe Mode is On
+required only if Remote Calendars are used: required only if Remote Calendars are used
+needed for Gradient Image Backgrounds: needed for Gradient Image Backgrounds
+Passwords do not match: Passwords do not match
+Unable to write password to settings.php file: Unable to write password to settings.php file
+Password has been set: Password has been set
+Connection Successful: Connection Successful
+Please go to next page to continue installation: Please go to next page to continue installation
+Correct your entries or click the Create New button to continue installation: Correct your entries or click the <b>Create New</b> button to continue installation
+Correct your entries and try again: Correct your entries and try again
+does not exist: does not exist
+is not writable: is not writable
+Error Converting Timezone: Error Converting Timezone
+Please change the file permissions of this file: Please change the file permissions of this file
+Please change includes dir permission: Please change the file permissions of your includes directory to allow writing by other users
+Your settings have been saved: Your settings have been saved
+Error you must specify a Single-User Login: Error you must specify a\nSingle-User Login
+Full Path (no backslashes): Full Path (no backslashes)
+The password contains illegal characters.: The password contains illegal characters.
+This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
+PHP Version Check: PHP Version Check
+Check to see if PHP 4.1.0 or greater is installed: Check to see if PHP 4.1.0 or greater is installed
+PHP version: PHP version
+PHP Settings: PHP Settings
+Detailed PHP Info: Detailed PHP Info
+Session Check: Session Check
+To test the proper operation of sessions, reload this page: To test the proper operation of sessions, reload this page
+You should see the session counter increment each time: You should see the session counter increment each time
+SESSION COUNTER: SESSION COUNTER
+Settings.php Status: Settings.php Status
+The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
+The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
+Your settings.php file appears to be valid: Your <b>settings.php</b> file appears to be valid
+Configuration Wizard Password: Configuration Wizard Password
+Create Settings File Password: Create Settings File Password
+db setup directions...: In this section you will set up and test a connection to your database server. The account information supplied should have FULL permissions to create databases, tables and users. If this is not possible, or your database access is limited, you will have to manually configure your database.
+Database Status: Database Status
+Supported databases for your PHP installation: Supported databases for your PHP installation
+Your current database settings are able to access the database: Your current database settings are able to access the database
+Please Test Settings: Please Test Settings
+Your current database settings are not able...: Your current database settings are <b>not</b> able to access the database or have not yet been tested
+Database Settings: Database Settings
+Database Type: Database Type
+Server: Server
+Connection Persistence: Connection Persistence
+All your database tables appear to be up to date. You may proceed to the: All your database tables appear to be up to date. You may proceed to the
+next page and complete your WebCalendar setup: next page and complete your WebCalendar setup
+This appears to be a new installation. If this is not correct, please: This appears to be a new installation. If this is not correct, please
+go back to the previous page and correct your settings: go back to the previous page and correct your settings
+The database requires some data input: The database requires some data input
+Click Update Database to complete the upgrade: Click <b>Update Database</b> to complete the upgrade
+This appears to be an upgrade from version: This appears to be an upgrade from version
+In this section we will perform the required database changes to bring your database up to the required level: In this section we will perform the required database changes to bring your database up to the required level
+If you are using a fully supported database, this step will be performed automatically for you: If you are using a fully supported database, this step will be performed automatically for you
+If not, the required SQL can be displayed and you should be able: If not, the required SQL can be displayed and you should be able
+to cut &amp; paste it into your database server query window: to cut &amp; paste it into your database server query window
+No database actions are required: No database actions are required
+The following database actions are required: The following database actions are required
+ODBC Underlying Database: ODBC Underlying Database
+Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the SQL supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
+This may take several minutes to complete: This may take several minutes to complete
+Install Database: Install Database
+Update Database: Update Database
+Display Required SQL: Display Required SQL
+Return to previous page after processing SQL.: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
+This is the final step in setting up your WebCalendar Installation.: This is the final step in setting up your WebCalendar Installation.
+Timezone Conversion: Timezone Conversion
+It appears that you have: It appears that you have
+NOT: NOT
+converted your existing WebCalendar event data to GMT.: converted your existing WebCalendar event data to GMT.
+If you have, you may ignore this notice and not proceed with the conversion.: If you have, you may ignore this notice and not proceed with the conversion.
+If this is a new installation, you may also ignore this notice.: If this is a new installation, you may also ignore this notice.
+It appears that you have NOT converted your existing WebCalendar...: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion.. If this is a new installation, you may also ignore this notice.
+Convert Data to GMT: Convert Data to GMT
+Application Settings: Application Settings
+HTTP-based authentication was not detected: HTTP-based authentication was not detected
+You will need to reconfigure your web server if you wish to: You will need to reconfigure your web server if you wish to
+select Web Server from the User Authentication choices below.: select 'Web Server' from the 'User Authentication' choices below
+HTTP-based authentication was not detected...: HTTP-based authentication was not detected. You will need to reconfigure your web server if you wish to select 'Web Server' from the 'User Authentication' choices below.
+HTTP-based authentication was detected.: HTTP-based authentication was detected.
+User authentication is being handled by your web server.: User authentication is being handled by your web server.
+You should select Web Server from the list of User Authentication choices below.: You should select 'Web Server' from the list of 'User Authentication' choices below.
+HTTP-based authentication was detected...: HTTP-based authentication was detected. User authentication is being handled by your web server. You should select 'Web Server' from the list of 'User Authentication' choices below.
+Create Default Admin Account: Create Default Admin Account
+Admin Account Not Found: Admin Account Not Found
+User Authentication: User Authentication
+Web-based via WebCalendar (default): Web-based via WebCalendar (default)
+Web Server: Web Server
+Web Server (detected): Web Server (detected)
+Web Server (not detected): Web Server (not detected)
+None (Single-User): None (Single-User)
+Read-Only: Read-Only
+Environment: Environment
+Production: Production
+Development: Development
+Save Settings: Save Settings
+Launch WebCalendar: Launch WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating webcal_config: Error updating webcal_config
+Error updating table XXX: Error updating table "XXX": XXX.
+Conversion Successful: <b>Conversion Successful</b>
+Perl script required: Your previous version of WebCalendar requires running a PERL script to convert your data. Please run /tools/upgrade_to_0.9.7.pl then return to this page to continue.
+previous version requires updating several tables: Your previous version of WebCalendar requires updating several database tables.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: NO PREVIEW AVAILABLE
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Include Path: Include Path
+Deleting events for: Deleting events for
+Importing events for: Importing events for
+No data returned from: No data returned from
+for non-user calendar: for non-user calendar
+No Remote Calendars found: No Remote Calendars found
+Remote Calendars not enabled: Remote Calendars not enabled
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: could not find event id
+could not find event id XXX in database.: could not find event id XXX in database.
+This is a reminder for the XXX detailed below.: This is a reminder for the XXX detailed below.
+Pecentage Complete: Pecentage Complete
+Reminder: Reminder
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action: Unsupported action
+Unsupported action XXX.: Unsupported action: XXX.
+No event id specified.: No event id specified.
+not admin: not admin
+Not authorized (not admin).: Not authorized (not admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date XXX to date XXX.: Checking for events for XXX from date XXX to date XXX.
+Found XXX events in time range.: Found XXX events in time range.
+Event id=XXX XXX at XXX on XXX.: Event id=XXX "XXX" at XXX on XXX.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Allowing XXX user to view other user's calendar.
+Error Email reminders disabled for user XXX.: Error: Email reminders disabled for user "XXX".
+Number of site_extras XXX.: Number of site_extras: XXX.
+Reminder set for event.: Reminder set for event.
+Mins Before XXX.: Mins Before: XXX.
+Event time is XXX.: Event time is: XXX.
+Remind time is XXX.: Remind time is: XXX.
+Reminders for user XXX, login XXX.: Reminders for user "XXX", login "XXX".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Getting unapproved for user "XXX".
+Event id=XXX XXX already sent.: Event id=XXX "XXX" already sent.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: No login required for single-user mode.
+No login required for HTTP authentication.: No login required for HTTP authentication.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Invalid characters in login.
+Username XXX does not exist.: Username "XXX" does not exist.
+You cannot remove admin rights from yourself!: You cannot remove admin rights from yourself!
+Unknown error saving user: Unknown error saving user.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: No participants found for event id: XXX.
+Db error Could not find event id XXX.: Db error: Could not find event id XXX.
+Error Could not find event id XXX in database.: Error: Could not find event id XXX in database.
