@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: assistant_edit.php,v 1.41 2009/11/22 16:47:44 bbannon Exp $
 include_once 'includes/init.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {
@@ -8,21 +8,24 @@ if ( empty ( $login ) || $login == '__public__' ) {
 }
 
 if ( $user != $login )
-  $user = ( ( $is_admin || $is_nonuser_admin ) && $user ? $user : $login );
+  $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
+
+print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
+  '<script type="text/javascript" src="includes/js/assistant_edit.js"></script>' );
 
 ob_start();
-print_header();
 
 echo '
     <form action="assistant_edit_handler.php" method="post" '
  . 'name="assistanteditform">' . ( $user ? '
-      <input type="hidden" name="user" value="' . $user . '">' : '' ) . '
+      <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
       <h2>';
 
+$assistStr = translate ( 'Assistants' );
 if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo str_replace ( 'XXX', $nonuserfullname, translate ( 'XXX Assistants' ) ) . '<br>
-      ' . translate ( '-Admin mode-' );
+  echo $nonuserfullname . ' ' . $assistStr . '<br />
+      -- ' . translate ( 'Admin mode' ) . ' --';
 } else
   echo translate ( 'Your assistants' );
 
@@ -31,9 +34,9 @@ echo '</h2>
       <table summary="">
         <tr>
           <td class="aligntop"><label for="users">'
- . translate( 'Assistants_' ) . '</label></td>
+ . $assistStr . ':</label></td>
           <td>
-            <select name="users[]" id="users" size="10" multiple>';
+            <select name="users[]" id="users" size="10" multiple="multiple">';
 
 // Get list of all users.
 $users = get_my_users();
@@ -48,26 +51,33 @@ if ( $res ) {
   dbi_free_result ( $res );
 }
 
-foreach ( $users as $i ) {
-  $u = $i['cal_login'];
+for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
+  $u = $users[$i]['cal_login'];
   if ( $u == $login || $u == '__public__' )
     continue;
-  echo $option . $u . ( empty ( $assistantuser[$u] ) ? '">' : '" selected>' )
-    . $i['cal_fullname'] . '</option>';
+  echo '
+              <option value="' . $u . '"'
+   . ( ! empty ( $assistantuser[$u] ) ? ' selected="selected"' : '' ) . '>'
+   . $users[$i]['cal_fullname'] . '</option>';
 }
 
 echo '
             </select>' . ( $GROUPS_ENABLED == 'Y' ? '
-            <input type="button" value="' . $selectStr . '...">' : '' ) . '
+            <input type="button" onclick="selectUsers()" value="'
+   . translate ( 'Select' ) . '..." />' : '' ) . '
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="aligncenter"><br><input type="submit" '
- . 'name="action" value="' . $saveStr . '">
+          <td colspan="2" class="aligncenter"><br /><input type="submit" '
+ . 'name="action" value="' . translate ( 'Save' ) . '" />
           </td>
         </tr>
       </table>
-    </form>' . print_trailer();
+    </form>
+    ';
+
 ob_end_flush();
+
+echo print_trailer();
 
 ?>

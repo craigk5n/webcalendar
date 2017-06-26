@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: docdel.php,v 1.16 2009/11/22 16:47:44 bbannon Exp $
 /**
  * Page Description:
  *  This page will handle deletion of an entry in webcal_blob.
@@ -40,7 +40,7 @@ else {
       $can_delete = true;
   } else
     // document not found
-    $error = str_replace( 'XXX', $blid, $badEntryStr );
+    $error = str_replace ( 'XXX', $blid, translate ( 'Invalid entry id XXX.' ) );
 
   dbi_free_result ( $res );
 }

@@ -1,14 +1,7 @@
 #!/usr/local/bin/php -q
-<?php
-/*
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
- * @package WebCalendar
- */
+<?php // $Id: reload_remotes.php,v 1.16 2010/03/06 16:57:00 bbannon Exp $
 /**
- * Page Description:
+ * Description:
  * This is a command-line script that will reload all user's remote calendars.
  *
  * Usage:
@@ -49,26 +42,24 @@ define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
                  // relative to current working directory.
 define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
 define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
-$old_path= ini_get ( 'include_path' );
-$delim   = ( strpos ( $old_path, ';' ) ? ';' : ':' );
+$old_path = ini_get ( 'include_path' );
+$delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
-foreach( array(
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'translate',
-    'xcal',
-  ) as $i ) {
-  include_once __WC_INCLUDEDIR . $i . '.php';
-}
+include_once __WC_INCLUDEDIR . 'translate.php';
 require_once __WC_CLASSDIR . 'WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include __WC_INCLUDEDIR . 'config.php';
+include __WC_INCLUDEDIR . 'dbi4php.php';
+include __WC_INCLUDEDIR . 'formvars.php';
+include __WC_INCLUDEDIR . 'functions.php';
+
 $WebCalendar->initializeFirstPhase();
 
 include __WC_INCLUDEDIR . $user_inc;
+include __WC_INCLUDEDIR . 'xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 // Used for hCal parsing.
@@ -79,7 +70,7 @@ $debug = false; // Set to true to print debug info...
 // Establish a database connection.
 $c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
 if ( ! $c ) {
-  echo translate ( 'Error connecting to DB' ) . ' ' . dbi_error();
+  echo translate ( 'Error connecting to database' ) . ': ' . dbi_error();
   exit;
 }
 
@@ -87,8 +78,8 @@ load_global_settings();
 $WebCalendar->setLanguage();
 
 if ( $debug )
-  echo "<br>\n" . translate( 'Include Path' )
-   . ' =' . ini_get( 'include_path' ) . "<br>\n";
+  echo "<br />\n" . translate ( 'Include Path' )
+   . ' =' . ini_get ( 'include_path' ) . "<br />\n";
 
 if ( $REMOTES_ENABLED == 'Y' ) {
   $res = dbi_execute ( 'SELECT cal_login, cal_url, cal_admin
@@ -119,33 +110,33 @@ if ( $REMOTES_ENABLED == 'Y' ) {
       if ( count ( $data ) && empty ( $errormsg ) ) {
         // delete existing events
         if ( $debug )
-          echo "<br>\n" . translate( 'Deleting events for' )
-           . ": $calUser<br>\n";
+          echo "<br />\n" . translate ( 'Deleting events for' )
+           . ": $calUser<br />\n";
         delete_events ( $calUser );
         // import new events
         if ( $debug )
-          echo translate( 'Importing events for' ) . ": $calUser<br>\n"
-           . translate( 'From' ) . ": $cal_url<br>\n";
+          echo translate ( 'Importing events for' ) . ": $calUser<br />\n"
+           . translate ( 'From' ) . ": $cal_url<br />\n";
         import_data ( $data, $overwrite, $type );
         if ( $debug )
           echo translate ( 'Events successfully imported' )
-           . " $count_suc<br><br>\n";
+           . ": $count_suc<br /><br />\n";
       } else { // we didn't receive any data and/or there was an error
         if ( ! empty ( $errormsg ) )
-          echo $errormsg . "<br>\n";
+          echo $errormsg . "<br />\n";
 
         if ( count ( $data ) == 0 )
-          echo "<br>\n" . translate( 'No data returned from' )
-           . ":  $cal_url<br>\n" . translate( 'for non-user calendar' )
-           . ":  $calUser<br>\n";
+          echo "<br />\n" . translate ( 'No data returned from' )
+           . ":  $cal_url<br />\n" . translate ( 'for non-user calendar' )
+           . ":  $calUser<br />\n";
       }
     }
     dbi_free_result ( $res );
   }
   if ( $cnt == 0 )
-    echo "<br>\n" . translate( 'No Remote Calendars found' );
+    echo "<br />\n" . translate ( 'No Remote Calendars found' );
 } else
-  echo "<br>\n" . translate( 'Remote Calendars not enabled' );
+  echo "<br />\n" . translate ( 'Remote Calendars not enabled' );
 // just in case
 $login = '';
 /**
@@ -158,34 +149,41 @@ function delete_events ( $nid ) {
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
   $delete_em = array();
-  foreach ( $events as $i ) {
+  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-      WHERE cal_id = ?', array ( $i ) );
+      WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
-          $delete_em[] = $i;
+          $delete_em[] = $events[$i];
       }
       dbi_free_result ( $res );
     }
   }
   // Now delete events that were just for this user
-  foreach ( $delete_em as $i ) {
-    foreach ( array (
-        'webcal_blob',
-        'webcal_entry',
-        'webcal_entry_ext_user',
-        'webcal_entry_repeats',
-        'webcal_entry_repeats_not',
-        'webcal_import_data',
-        'webcal_reminders',
-        'webcal_site_extras' ) as $db ) {
-      dbi_execute ( 'DELETE FROM ' . $db . ' WHERE cal_id = ?', array ( $i ) );
-    }
-    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?', array ( $i ) );
+  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+    dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id =? ',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
   }
   // Delete user participation from events
-  dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?', array ( $nid ) );
+  dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
+    array ( $nid ) );
 }
 
 ?>

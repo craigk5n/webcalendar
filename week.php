@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: week.php,v 1.144 2010/02/21 08:27:48 bbannon Exp $
 include_once 'includes/init.php';
 
 //check UAC
@@ -63,7 +63,12 @@ if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user ) && $is_assistant
     ? $user : $login, $wkend, $cat_id );
 
-$help = ( $can_add ? ' title="' . $dblClickAdd . '"' : '' );
+if ( $can_add ) {
+  $help = ' title="' .
+    translate ( 'Double-click on empty cell to add new entry' ) . '"';
+} else {
+  $help = '';
+}
 
 $eventsStr = $filler = $headerStr = $minical_tasks = $untimedStr = '';
 $navStr = display_navigation ( 'week' );
@@ -72,7 +77,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS );
   $dateYmd = date ( 'Ymd', $days[$i] );
 
-  $header[$i] = $weekdays[$i] . '<br>'
+  $header[$i] = $weekdays[$i] . '<br />'
    . date_to_str ( $dateYmd, $DATE_FORMAT_MD, false, true );
 
   // Generate header row.
@@ -81,9 +86,12 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     : ( is_weekend ( $days[$i] ) ? ' class="weekend"' : '' ) );
 
   $headerStr .= '<th ' . $class .
-    ( $can_add ? " ondblclick=\"dblclick_add('$dateYmd','$user',0,0)\">" : '>' )
-   . '<p style="margin:.75em 0 0 0"><a href="day.php?' . $u_url
-   . 'date=' . $dateYmd . $caturl . '">' . $header[$i] . '</a></p></th>';
+    ( $can_add ? " ondblclick=\"dblclick_add('$dateYmd','$user',0,0)\"" : '' ) .
+    ">";
+  $headerStr .=
+    '<p style="margin:.75em 0 0 0"><a href="day.php?' . $u_url .
+    'date=' . $dateYmd . $caturl . '">' .
+    $header[$i] . '</a></p></th>';
 
   $date = date ( 'Ymd', $days[$i] );
   $hour_arr = $rowspan_arr = $tk = array();
@@ -97,9 +105,9 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
     ( $date >= date ( 'Ymd' )
       ? get_tasks ( $date, $get_unapproved ) : $tk ) );
 
-  foreach ( $ev as $j ) {
-    if ( $get_unapproved || $j->getStatus() == 'A' )
-      html_for_event_week_at_a_glance ( $j, $date );
+  for ( $j = 0, $cnt = count ( $ev ); $j < $cnt; $j++ ) {
+    if ( $get_unapproved || $ev[$j]->getStatus() == 'A' )
+      html_for_event_week_at_a_glance ( $ev[$j], $date );
   }
 
   // Squish events that use the same cell into the same cell.
@@ -122,7 +130,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
         // This will move entries apart that appear in one field,
         // yet start on different hours.
         for ( $u = $diff_start_time; $u > 0; $u-- ) {
-          $hour_arr[$last_row] .= '<br>' . "\n";
+          $hour_arr[$last_row] .= '<br />' . "\n";
         }
         $hour_arr[$last_row] .= $hour_arr[$j];
         $hour_arr[$j] = '';
@@ -182,24 +190,25 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       // or it could mean one event ends at 11:15 and another starts at 11:30.
       if ( ! empty ( $save_hour_arr[$d][$i] ) ) {
         $eventsStr .= '
-              <td' . $class . ( $can_add
-          ? " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\">"
-          : '>' ) . $save_hour_arr[$d][$i] . '</td>';
+              <td' . $class;
+        if ( $can_add )
+          $eventsStr .= " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
+
+        $eventsStr .= '>' . $save_hour_arr[$d][$i] . '</td>';
       }
 
       $rowspan_day[$d]--;
     } else {
-      $eventsStr .= '<td' . $class . ( $can_add
-        ? " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\""
-        : '' );
-
+      $eventsStr .= '<td' . $class;
+      if ( $can_add )
+        $eventsStr .= " ondblclick=\"dblclick_add('$dateYmd','$user',$time_h,$time_m)\"";
       if ( empty ( $save_hour_arr[$d][$i] ) ) {
         $eventsStr .= '>' . '&nbsp;';
       } else {
         $rowspan_day[$d] = $save_rowspan_arr[$d][$i];
         $eventsStr .= ( $rowspan_day[$d] > 1
-          ? ' rowspan="' . $rowspan_day[$d]  .'">' : '>' )
-         . $save_hour_arr[$d][$i];
+          ? ' rowspan="' . $rowspan_day[$d]  .'"': '' )
+         . '>' . $save_hour_arr[$d][$i];
       }
       $eventsStr .= '</td>';
     }
@@ -223,7 +232,7 @@ if ( $DISPLAY_TASKS == 'Y' ) {
   $tableWidth = '80%';
   $filler = '<td></td>';
   $minical_tasks .= '
-        <td id="minicolumn" rowspan="2">
+        <td id="minicolumn" rowspan="2" valign="top">
 <!-- START MINICAL -->
           <div class="minicontainer">' . ( $DISPLAY_SM_MONTH == 'Y' ? '
             <div class="minicalcontainer">'
@@ -233,12 +242,14 @@ if ( $DISPLAY_TASKS == 'Y' ) {
         </td>';
 }
 
-print_header( '', generate_refresh_meta() );
+print_header(
+  array( 'js/popups.js/true', 'js/dblclick_add.js/true' ),
+  generate_refresh_meta(), '', false, false, false, false );
 
 echo <<<EOT
-    <table cellpadding="1" summary="">
+    <table width="100%" cellpadding="1" summary="">
       <tr>
-        <td id="printarea" width:{$tableWidth};">
+        <td id="printarea" style="vertical-align:top; width:{$tableWidth};">
         {$navStr}
         </td>
         {$filler}

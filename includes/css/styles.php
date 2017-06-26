@@ -5,7 +5,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: styles.php,v 1.9.2.1 2013/08/12 16:18:52 cknudsen Exp $
  * @package WebCalendar
  *
  *                         HOW TO READ THIS DOCUMENT
@@ -28,12 +28,12 @@
  * Each selector can contain multiple declarations.
  *   EXAMPLE:
  *     body {
- *       background-color: black;
+ *       background: black;
  *       color: red;
  *       font-size: 12px;
  *     }
  * In the example above, there are three declarations:
- *   background-color: black;
+ *   background: black;
  *   color: red;
  *   font-size: 12px;
  *
@@ -139,6 +139,7 @@ echo ( $DISPLAY_TASKS != 'Y' ? '#month #nextmonth{
   border-top:0.0625em solid ' . $GLOBALS['TABLEBG'] . ';
 }
 ' : '' ) . '#day .minical td.selectedday,
+#eventcomment,
 #login table,
 #register table,
 #securityAuditNotes,
@@ -171,7 +172,7 @@ echo ( $DISPLAY_TASKS != 'Y' ? '#month #nextmonth{
   border-color:' . $GLOBALS['BGCOLOR'] . ';
 }
 body{
-  background-color:' . $GLOBALS['BGCOLOR'] . ( empty( $GLOBALS['BGIMAGE'] )
+  background:' . $GLOBALS['BGCOLOR'] . ( empty( $GLOBALS['BGIMAGE'] )
   ? '' : ' url( ' . $GLOBALS['BGIMAGE'] . ' ) ' . $GLOBALS['BGREPEAT'] ) . ';
   font-family:' . $GLOBALS['FONTS'] . ';
 }
@@ -193,7 +194,7 @@ th,
 #day .minical caption,
 .dailymatrix,
 .layertable th{
-  background-color:' . $GLOBALS['THBG'] . ';
+  background:' . $GLOBALS['THBG'] . ';
 }
 .main th,
 .main th.weekend{
@@ -211,7 +212,7 @@ th,
 .main td.othermonth{
   ' . background_css( $GLOBALS['OTHERMONTHBG'], 100 ) . '
 }
-.main td.today{
+.main td.today, #datesel td #today {
   ' . background_css( $GLOBALS['TODAYCELLBG'], 100 ) . '
 }
 #admin .main td.weekcell,
@@ -223,7 +224,7 @@ th,
 td.matrixappts,
 #adminhome table,
 #adminhome td a,
-#view_entry blockquote,
+#eventcomment,
 .alt,
 .layers,
 .layertable td,
@@ -231,24 +232,21 @@ td.matrixappts,
 .minitask tr.header th,
 .minitask tr.header td,
 .standard{
-  background-color:' . $GLOBALS['CELLBG'] . ';
-}
-.minitask tr.task {
-  background-color:' . rgb_luminance( $GLOBALS['BGCOLOR'], $E->getPriority() ) . ';
+  background:' . $GLOBALS['CELLBG'] . ';
 }
 #editentry th.weekend,
 .minical td.weekend{
-  background-color:' . $GLOBALS['WEEKENDBG'] . ';
+  background:' . $GLOBALS['WEEKENDBG'] . ';
 }
 #example_month,
 .glance th.empty,
 .minical th,
 .minical td.empty{
-  background-color:' . $GLOBALS['BGCOLOR'] . ';
+  background:' . $GLOBALS['BGCOLOR'] . ';
 }
 #listunapproved .odd,
 .minical td#today{
-  background-color:' . $GLOBALS['TODAYCELLBG'] . ';
+  background:' . $GLOBALS['TODAYCELLBG'] . ';
 }
 .glance td,
 .note{
@@ -258,7 +256,7 @@ td.matrixappts,
   ' . background_css( $GLOBALS['WEEKENDBG'], 15 ) . '
 }
 #contentDay .daytimedevent{
-  background-color:' . $GLOBALS['HASEVENTSBG'] . ';
+  background:' . $GLOBALS['HASEVENTSBG'] . ';
 }
 #login table,
 #register table{
@@ -329,6 +327,8 @@ th,
 }
 ' : '' );
 
+?>
+<?php
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   // Need to load user variables so that $is_admin is set before we load
   // categories.
@@ -358,7 +358,8 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     // Gradient
     //  echo ".cat_{$catId} { "
     //    . background_css( $color, 15 ) . ' color: ' . $fg . "; }\n";
-      echo ".cat_{$catId} { background-color: $color; border: 1px outset $color; color: $fg }\n";
+      echo "#combo .cat_{$catId} { background-color: $color; border: 1px outset $color; color: $fg }\n";
+      echo "#month2 .cat_{$catId} { color: $color }\n";
     }
   }
 }

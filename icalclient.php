@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: icalclient.php,v 1.42 2010/02/21 08:27:48 bbannon Exp $
 /**
  *               WARNING * WARNING * WARNING * WARNING * WARNING
  *                 This script is still considered alpha level.
@@ -81,24 +81,24 @@
  * Also, not sure if reminders for repeated events are handled properly yet.
  */
 
- foreach( array(
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'site_extras',
-    'translate',
-    'validate',
-    'xcal',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
+
+include_once 'includes/validate.php';
+include 'includes/site_extras.php';
+
+include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -173,13 +173,13 @@ if ( empty ( $PUBLISH_ENABLED ) || $PUBLISH_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
   // Mozilla Calendar does not bother showing errors, so they won't see this
   // error message anyhow... Not sure about Apple iCal or other clients.
-  echo translate ( 'Publishing Disabled (Admin)' );
+  etranslate ( 'Publishing Disabled (Admin)' );
   exit;
 }
 
 if ( empty ( $USER_PUBLISH_RW_ENABLED ) || $USER_PUBLISH_RW_ENABLED != 'Y' ) {
   header ( 'Content-Type: text/plain' );
-  echo translate ( 'Publishing Disabled (User)' );
+  etranslate ( 'Publishing Disabled (User)' );
   exit;
 }
 

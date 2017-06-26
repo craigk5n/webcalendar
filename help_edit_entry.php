@@ -1,18 +1,20 @@
-<?php // $Id$
+<?php // $Id: help_edit_entry.php,v 1.33 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
+print_header ( '', '', '', true );
+
 ob_start();
-print_header( '', '', '', true );
 
 echo $helpListStr . '
-    <h2>' . translate( 'Help Add/Edit Cal Entries' ) . '</h2>';
+    <h2>' . translate ( 'Help' ) . ': '
+ . translate ( 'Adding/Editing Calendar Entries' ) . '</h2>';
 
 $tmp_arr = array (
   translate ( 'Brief Description' ) => translate ( 'brief-description-help' ),
   translate ( 'Full Description' ) => translate ( 'full-description-help' ),
-  translate ( 'Date_' ) => translate ( 'date-help' ),
-  translate ( 'Time_' ) => translate ( 'time-help' ),
+  translate ( 'Date' ) => translate ( 'date-help' ),
+  translate ( 'Time' ) => translate ( 'time-help' ),
   );
 
 if ( $TIMED_EVT_LEN != 'E' )
@@ -21,7 +23,7 @@ else
   $tmp_arr[ translate ( 'End Time' ) ] = translate ( 'end-time-help' );
 
 if ( $DISABLE_PRIORITY_FIELD != 'Y' )
-  $tmp_arr[ translate ( 'Priority_' ) ] = translate ( 'priority-help' );
+  $tmp_arr[ translate ( 'Priority' ) ] = translate ( 'priority-help' );
 
 if ( $DISABLE_ACCESS_FIELD != 'Y' )
   $tmp_arr[ translate ( 'Access' ) ] = translate ( 'access-help' );
@@ -44,7 +46,8 @@ if ( $DISABLE_REPEATING_FIELD != 'Y' ) {
   list_help ( $tmp_arr );
 }
 
-echo print_trailer ( false, true, true );
 ob_end_flush();
+
+echo print_trailer ( false, true, true );
 
 ?>

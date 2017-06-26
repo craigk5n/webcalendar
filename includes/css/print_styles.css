@@ -1,5 +1,3 @@
-// $Id$
-
 #minicolumn,
 #month .minical,
 #trailer,
@@ -41,8 +39,7 @@ a {
   border-color: black !important;
 }
 #printarea {
-  width: 100% !important;
-  vertical-align:top;
+ width: 100% !important;
 }
 .noprint {
   display: none !important;

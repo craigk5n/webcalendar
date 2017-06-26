@@ -1,5 +1,9 @@
-<?php /* $Id$ */
+<?php // $Id: remotes.php,v 1.13 2009/11/22 16:47:45 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
+
+$newRemoteStr = translate ( 'Add New Remote Calendar' );
+$targetStr =
+'target="remotesiframe" onclick="showFrame( \'remotesiframe\' );">';
 
 if ( ! $NONUSER_PREFIX ) {
   echo print_error_header() . translate ( 'NONUSER_PREFIX not set' ) . '
@@ -9,29 +13,31 @@ if ( ! $NONUSER_PREFIX ) {
 }
 $add = getValue ( 'add' );
 echo '
-      <a name="tabnonusers"></a>
-      <div id="tabscontent_remotes">';
+    <a name="tabnonusers"></a>
+    <div id="tabscontent_remotes">';
 
 if ( empty ( $error ) ) {
   echo '
-        <a href="edit_remotes.php?add=1">'
-   . translate( 'Add New Remote Calendar' ) . '</a><br>';
+      <a title="' . $newRemoteStr . '" href="edit_remotes.php?add=1"'
+   . $targetStr . $newRemoteStr . '</a><br />';
   // Displaying Remote Calendars
   $userlist = get_nonuser_cals ( $login, true );
   if ( ! empty ( $userlist ) ) {
     echo '
-        <ul>';
-    foreach ( $userlist as $i ) {
+      <ul>';
+    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       echo '
-          <li><a href="edit_remotes.php?nid=' . $i['cal_login']
-        . '">' . $i['cal_fullname'] . '</a></li>';
+        <li><a title="' . $userlist[$i]['cal_fullname']
+       . '" href="edit_remotes.php?nid=' . $userlist[$i]['cal_login'] . '"'
+       . $targetStr . $userlist[$i]['cal_fullname'] . '</a></li>';
     }
     echo '
-        </ul>';
+      </ul>';
   }
 }
 
 echo '
-        <iframe id="remotesiframe" name="remotesiframe"></iframe>
-      </div>';
+      <iframe name="remotesiframe" id="remotesiframe" style="width: 90%; '
+ . 'border: 0; height: 250px;"></iframe>
+    </div>';
 ?>

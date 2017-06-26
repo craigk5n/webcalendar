@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: login.php,v 1.125.2.1 2013/01/24 21:15:09 cknudsen Exp $
 @session_start();
 foreach ( $_SESSION as $key => $value ) {
   $dummy[$key] = $value; // Copy to a dummy array.
@@ -13,22 +13,20 @@ if ( ! empty ( $dummy ) ) {
 unset ( $_SESSION['webcal_login'] );
 unset ( $_SESSION['webcalendar_session'] );
 
-foreach( array(
-    'access',
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'translate',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
+include_once 'includes/access.php';
 include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
@@ -36,7 +34,7 @@ $WebCalendar->initializeSecondPhase();
 load_global_settings();
 
 // Set this true to show "no such user" or "invalid password" on login failures.
-$showLoginFailureReason = true;
+$showLoginFailureReason = false;
 
 if ( ! empty ( $last_login ) )
   $login = '';
@@ -57,8 +55,8 @@ $action = getGetValue ( 'action' );
 if ( ! empty ( $action ) && $action == 'logout' ) {
   $logout = true;
   $return_path = '';
-  setcookie( 'webcalendar_login', '', 0 );
-  setcookie( 'webcalendar_last_view', '', 0 );
+  SetCookie ( 'webcalendar_login', '', 0 );
+  SetCookie ( 'webcalendar_last_view', '', 0 );
 } else
 if ( empty ( $return_path ) ) {
   // See if a return path was set.
@@ -94,7 +92,7 @@ else {
       $password = stripslashes ( $password );
     }
     $login = trim ( $login );
-    $badLoginStr = translate ( 'Illegal chars in login XXX' );
+    $badLoginStr = translate ( 'Illegal characters in login XXX.' );
 
     if ( $login != addslashes ( $login ) )
       die_miserable_death (
@@ -107,7 +105,7 @@ else {
       // If $remember, set login to expire in 365 days.
       $timeStr = ( ! empty ( $remember ) && $remember == 'yes'
         ? time() + 31536000 : 0 );
-      setcookie( 'webcalendar_session', $encoded_login, $timeStr, $cookie_path );
+      SetCookie ( 'webcalendar_session', $encoded_login, $timeStr, $cookie_path );
 
       // The cookie "webcalendar_login" is provided as a convenience to other
       // apps that may wish to know what was the last calendar login,
@@ -116,7 +114,7 @@ else {
       // used to allow logins within this app. It is used to load user
       // preferences on the login page (before anyone has logged in)
       // if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
-      setcookie( 'webcalendar_login', $login, $timeStr, $cookie_path );
+      SetCookie ( 'webcalendar_login', $login, $timeStr, $cookie_path );
 
       if ( ! empty ( $GLOBALS['newUserUrl'] ) )
         $url = $GLOBALS['newUserUrl'];
@@ -137,89 +135,104 @@ else {
     // $error = "Start";
   }
   // Delete current user.
-  setcookie( 'webcalendar_session', '', 0, $cookie_path );
+  SetCookie ( 'webcalendar_session', '', 0, $cookie_path );
   // In older versions, the cookie path had no trailing slash and NS 4.78
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we also delete the
   // cookie with the trailing slash removed.
   if ( substr ( $cookie_path, -1 ) == '/' )
-    setcookie( 'webcalendar_session', '', 0, substr( $cookie_path, 0, -1 ) );
+    SetCookie ( 'webcalendar_session', '', 0, substr ( $cookie_path, 0, -1 ) );
 }
 ob_start();
-setcookie( 'err', $error, 180 );
-setcookie( 'login', $login, 180 );
-echo send_doctype ( $appStr ) . '
-    <link href="css_cacher.php?login=__public__" rel="stylesheet">
-    <link href="includes/css/styles.css" rel="stylesheet">'. ( $logout ? '' : '
-    <script src="includes/js/base.js"></script>' )
+echo send_doctype ( $appStr ) . ( $logout ? '' : '
+    <script type="text/javascript">
+    // Error check login/password.
+      function valid_form ( form ) {
+        if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
+          alert ( \''
+   . translate ( 'You must enter a login and password.', true ) . '\' );
+          return false;
+        }
+        return true;
+      }
+      function myOnLoad() {
+        document.login_form.login.focus();' . ( empty ( $login ) ? '' : '
+        document.login_form.login.select();' ) . ( empty ( $error ) ? '' : '
+        alert ( \'' . $error . '\' );' ) . '
+      }
+    </script>' ) . '
+    <link type="text/css" href="css_cacher.php?login=__public__" rel="stylesheet" />
+    <link type="text/css" href="includes/css/styles.css" rel="stylesheet" />'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
   ? load_template ( $login, 'S' ) : '' ) . '
   </head>
-  <body id="login">'
+  <body id="login"' . ( $logout ? '' : ' onload="myOnLoad();"' ) . '>'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y'
   ? load_template ( $login, 'H' ) : '' ) . '
     <h2>' . $appStr . '</h2>' . ( empty ( $error ) ? '' : '
-    <span class="error">'
+    <span style="color:#f00; font-weight:bold;">'
    . str_replace ( 'XXX', $error, translate ( 'Error XXX' ) ) . '</span>' )
- . '<br>' . ( $logout ? '
-    <p>' . translate( 'You logged out' ) . '</p><br><br>
-    <a href="login.php' . ( empty( $return_path )
-    ? '' : '?return_path=' . htmlentities ( $return_path ) ) . '" class="nav">'
- . translate( 'Login' ) . '</a><br><br><br>' : '
-    <form action="login.php" method="post" name="login_form" id="login">'
- . ( empty( $return_path ) ? '' : '
+ . '<br />' . ( $logout ? '
+    <p>' . translate ( 'You have been logged out.' ) . '</p><br /><br />
+    <a class="nav" href="login.php' . ( empty ( $return_path )
+    ? '' : '?return_path=' . htmlentities ( $return_path ) ) . '">'
+   . translate ( 'Login' ) . '</a><br /><br /><br />' : '
+    <form name="login_form" id="login" action="login.php" method="post" '
+   . ' onsubmit="return valid_form( this )">' . ( empty ( $return_path ) ? '' : '
       <input type="hidden" name="return_path" value="'
-     . htmlentities( $return_path ) . '">' ) . '
+     . htmlentities ( $return_path ) . '" />' ) . '
       <table align="center" cellspacing="10" cellpadding="10" summary="">
         <tr>
-          <td rowspan="2"><img src="images/login.gif" alt="Login"></td>
+          <td rowspan="2"><img src="images/login.gif" alt="Login" /></td>
           <td align="right"><label for="user">' . translate ( 'Username' )
-   . '</label></td>
+   . ':</label></td>
           <td><input name="login" id="user" size="15" maxlength="25" value="'
-   . ( empty( $last_login ) ? '' : $last_login ) . '" tabindex="1"></td>
+   . ( empty ( $last_login ) ? '' : $last_login ) . '" tabindex="1" /></td>
         </tr>
         <tr>
           <td class="alignright"><label for="password">'
-   . translate ( 'Password' ) . '</label></td>
-          <td><input type="password" id="password" name="password" size="15" '
-   . 'maxlength="30" tabindex="2"></td>
+   . translate ( 'Password' ) . ':</label></td>
+          <td><input name="password" id="password" type="password" size="15" '
+   . 'maxlength="30" tabindex="2" /></td>
         </tr>
         <tr>
           <td colspan="3" style="font-size:10px;">
             <input type="checkbox" name="remember" id="remember" tabindex="3" '
    . 'value="yes"' . ( ! empty ( $remember ) && $remember == 'yes'
-    ? 'checked>' : '>' ) . '
+    ? 'checked="checked"' : '' ) . ' />
             <label for="remember">&nbsp;'
-   . translate ( 'Save login via cookies' ) . '</label>
+   . translate ( 'Save login via cookies so I dont have to login next time.' )
+   . '</label>
           </td>
         </tr>
         <tr>
           <td colspan="4" class="aligncenter"><input type="submit" value="'
-   . translate( 'Login' ) . '" tabindex="4"></td>
+   . translate ( 'Login' ) . '" tabindex="4" /></td>
         </tr>
       </table>
     </form>' ) . ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y'
-  ? '<br><br>
+  ? '<br /><br />
     <a class="nav" href="index.php">' . translate ( 'Access public calendar' )
-   . '</a><br>' : '' );
+   . '</a><br />' : '' );
 
 $nulist = get_nonuser_cals();
 $accessStr = translate ( 'Access XXX calendar' );
 
-foreach ( $nulist as $i ) {
-  if ( $i['cal_is_public'] == 'Y' )
+for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
+  if ( $nulist[$i]['cal_is_public'] == 'Y' )
     echo '
-    <a class="nav" href="nulogin.php?login=' . $i['cal_login'] . '">'
-     . str_replace ( 'XXX', $i['cal_fullname'], $accessStr ) . '</a><br>';
+    <a class="nav" href="nulogin.php?login=' . $nulist[$i]['cal_login'] . '">'
+     . str_replace ( 'XXX', $nulist[$i]['cal_fullname'], $accessStr )
+     . '</a><br />';
 }
 echo ( $DEMO_MODE == 'Y'
   // This is used on the sourceforge demo page.
   ? '
-    Demo login: user = "demo", password = "demo"<br>' : '' ) . '<br><br>';
+    Demo login: user = "demo", password = "demo"<br />' : '' ) . '<br /><br />';
 
 if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
   // We can limit what domain is allowed to self register.
@@ -228,12 +241,13 @@ if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
 
   if ( ! empty ( $valid_ip ) )
     echo '
-    <a href="register.php">' . translate( 'Not registered' ) . '</a><br>';
+    <b><a href="register.php">'
+     . translate ( 'Not yet registered? Register here!' ) . '</a></b><br />';
 }
 echo '
-     <span class="cookies">' . translate( 'cookies-note' ) . '</span><br>
-     <hr>
-     <br>
+     <span class="cookies">' . translate ( 'cookies-note' ) . '</span><br />
+     <hr />
+     <br />
      <a href="' . $PROGRAM_URL . '" id="programname">' . $PROGRAM_NAME . '</a>'
 // Print custom trailer (since we do not call print_trailer function).
  . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'

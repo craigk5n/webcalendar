@@ -1,6 +1,6 @@
-<?php // $Id$
+<?php // $Id: export_handler.php,v 1.60.2.1 2012/02/28 15:43:10 cknudsen Exp $
 /**
- * Page Description:
+ * Description:
  * Handler for exporting webcalendar events to various formats.
  *
  * Comments:
@@ -13,8 +13,8 @@
  *
  *********************************************************************/
 include_once 'includes/init.php';
+require_valid_referring_url ();
 include_once 'includes/xcal.php';
-require_valid_referring_url();
 
 $user = getPostValue ( 'user' );
 if ( empty ( $user ) || $user == $login )
@@ -267,10 +267,12 @@ if ( substr ( $format, 0, 4 ) == 'ical' ) {
   export_install_datebook ( $id );
 } else {
   print_header();
+  $errorStr = translate ( 'Error' );
   echo '
-    <h2>' . translate ( 'Export Error' ) . '</h2>
-    <span class="bold">' . $err_Str . '</span>'
-   . translate( 'incorrect export format' ) . '<br>' . print_trailer();
+    <h2>' . translate ( 'Export' ) . ' ' . $errorStr . '</h2>
+    <span class="bold">' . $errorStr . ':</span> '
+   . translate( 'export format not defined or incorrect.' ) . '<br />
+    ' . print_trailer();
 } //end if ($format == "ical")
 
 ?>

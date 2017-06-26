@@ -1,13 +1,5 @@
-<?php
-/*
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
- * @package WebCalendar
- /*
+<?php // $Id: set_entry_cat.php,v 1.45.2.1 2013/01/24 21:15:09 cknudsen Exp $
 /**
- * Page Description:
  * Allows the setting of categories by each participant of an event.
  *
  * Multiple categories can be added by each participant and stored separately
@@ -26,7 +18,7 @@ if ( $CATEGORIES_ENABLED != 'Y' )
   $error = print_not_auth();
 else
 if ( empty ( $categories ) )
-  $error = translate ( 'no categories added' );
+  $error = translate ( 'You have not added any categories.' );
 
 // Make sure user is a participant.
 $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
@@ -51,7 +43,7 @@ $catNames = '';
 $globals_found = false;
 $categories = get_categories_by_id ( $id, $login, true );
 if ( ! empty ( $categories ) ) {
-  $catNames = implode ( ', ', $categories );
+  $catNames = htmlentities ( implode ( ', ', $categories ) );
   $keys = array_keys ( $categories );
   $catList = implode ( ',', $keys );
   sort ( $keys );
@@ -112,9 +104,11 @@ if ( ! empty ( $cat_id ) && empty ( $error ) ) {
 $setCatStr = translate ( 'Set Category' );
 $briefStr = translate ( 'Brief Description' );
 $catHelpStr = tooltip ( 'category-help' );
+$catStr = translate ( 'Category' );
 $editStr = translate ( 'Edit' );
 $globalNoteStr = ( $globals_found
-  ? translate ( 'cant change Global Cats' ) : '' );
+  ? translate ( 'Global Categories cannot be changed.' ) : '' );
+$saveStr = translate ( 'Save' );
 
 print_header ( array ( 'js/set_entry_cat.php/true' ) );
 
@@ -124,28 +118,28 @@ else {
   echo <<<EOT
     <h2>{$setCatStr}</h2>
     <form action="set_entry_cat.php" method="post" name="selectcategory">
-      <input type="hidden" name="date" value="{$date}">
-      <input type="hidden" name="id" value="{$id}">
-      <table cellpadding="5" summary="">
+      <input type="hidden" name="date" value="{$date}" />
+      <input type="hidden" name="id" value="{$id}" />
+      <table border="0" cellpadding="5" summary="">
         <tr class="aligntop">
-          <td class="bold">{$briefStr}</td>
+          <td class="bold">{$briefStr}:</td>
           <td>{$event_name}</td>
         </tr>
         <tr>
-          <td class="tooltip"{$catHelpStr} valign="top">
-            <label for="entry_categories">{$cat_Str}<br></label>
-            <input type="button" value="{$editStr}" onclick="editCats( event )">
+          <td class="tooltip" title="{$catHelpStr}" valign="top">
+            <label for="entry_categories">{$catStr}:<br /></label>
+            <input type="button" value="{$editStr}" onclick="editCats( event )" />
           </td>
           <td valign="top">
             <input readonly="readonly" type="text" name="catnames"
-              value="{$catNames}" size="75" onclick="editCats( event )"><br>
+              value="{$catNames}" size="75" onclick="editCats( event )" /><br />
             {$globalNoteStr}
             <input type="hidden" name="cat_id" id="entry_categories"
-              value="{$catList}">
+              value="{$catList}" />
           </td>
         </tr>
         <tr class="aligntop">
-          <td colspan="2"><br><input type="submit" value="{$saveStr}"></td>
+          <td colspan="2"><br /><input type="submit" value="{$saveStr}" /></td>
         </tr>
       </table>
     </form>

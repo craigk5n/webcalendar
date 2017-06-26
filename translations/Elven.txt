@@ -11,7 +11,7 @@
 #
 # Note:  Elven folk do not use abbreviations much.
 #
-# $Id$
+# $Id: Elven.txt,v 1.5 2009/10/27 18:36:50 bbannon Exp $
 # Translation last updated on 10-15-2008
 
 

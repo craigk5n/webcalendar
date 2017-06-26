@@ -1,8 +1,9 @@
 # Makefile for updating documentation automatically
+# If you have phpdoc installed, you can use that to
+# generate additional documentation.
 
 
-all: WebCalendar-Database.html phpdoc/index.html faqs.html
-
+all: WebCalendar-Database.html faqs.html
 
 # List include files that will be searched for function documentation
 INCLUDES = \
@@ -56,18 +57,16 @@ INCLUDES = \
  ../view_entry.php \
  ../view_r.php \
  ../view_t.php \
- ../week_details.php \
- ../ws/get_events.php \
- ../ws/get_reminders.php \
- ../ws/get_unapproved.php \
- ../ws/ws.php
+ ../week_details.php
 
 WebCalendar-Database.html: ../install/sql/tables-mysql.sql sql2html.pl
 	perl sql2html.pl < ../install/sql/tables-mysql.sql > WebCalendar-Database.html
 
+# You need phpdoc to generate the following documentation.
 phpdoc/index.html: $(INCLUDES)
 	phpdoc -f `echo $(INCLUDES) | sed -e 's/ /,/g'` -t phpdoc -ti "WebCalendar Function Documentation" -s on
 
+# The faqs.html is used on the k5n.us website
 faqs.html: WebCalendar-SysAdmin.html WebCalendar-UserManual.html \
 	WebCalendar-DeveloperGuide.html \
 	extractfaqs.pl

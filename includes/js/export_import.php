@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: export_import.php,v 1.16 2009/11/22 16:47:46 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 ?>
 function toggle_import() {
@@ -51,7 +51,7 @@ function checkExtension() {
       break;
   }
   if ( ! pass ) {
-    alert ( "<?php echo translate ( 'Import Format type mismatch', true ) ?>");
+    alert ( "<?php etranslate ( 'File type does not match Import Format', true ) ?>");
     return false;
   }
   return true;

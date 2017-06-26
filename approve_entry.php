@@ -1,7 +1,7 @@
-<?php // $Id$
+<?php // $Id: approve_entry.php,v 1.55.2.1 2012/02/28 15:43:09 cknudsen Exp $
 include_once 'includes/init.php';
-require_once 'includes/classes/WebCalMailer.class';
-require_valid_referring_url();
+require_valid_referring_url ();
+require ( 'includes/classes/WebCalMailer.class' );
 
 $error = '';
 
@@ -11,7 +11,8 @@ if ( $readonly == 'Y' )
 if ( getPostValue( 'comments' ) !== null ) {
   $comments = getPostValue ( 'comments' );
   $cancel = getPostValue ( 'cancel' );
-} else if ( empty( $ret ) ) {
+} else
+if ( empty ( $ret ) ) {
   $q_string = ( ! empty ( $_SERVER['QUERY_STRING'] )
     ? '?' . $_SERVER['QUERY_STRING'] : '' );
 
@@ -19,22 +20,26 @@ if ( getPostValue( 'comments' ) !== null ) {
   echo '
     <form action="approve_entry.php' . $q_string
    . '" method="post" name="add_comments">
-      <table summary="">
+      <table border="0" cellspacing="5" summary="">
         <tr>
-          <td><h3>' . translate( 'Additional Comments (optional)' ) . '</h3></td>
+          <td align="center" valign="bottom"><h3>'
+   . translate ( 'Additional Comments (optional)' ) . '</h3></td>
         <tr>
         <tr>
-          <td><textarea name="comments"></textarea></td>
+          <td align="center"><textarea name="comments" rows="5" '
+   . 'cols="60"></textarea></td>
         </tr>
         <tr>
-          <td>
-            <input type="submit" value="' . translate( 'Approve and Send' ) . '">
+          <td align="center">
+            <input type="submit" value="' . translate ( 'Approve and Send' )
+   . '" />&nbsp;&nbsp;&nbsp;
             <input type="submit" id="cancel" name="cancel" value="'
-   . translate( 'Approve and Exit' ) . '">
+   . translate( 'Approve and Exit' ) . '" />
           </td>
         </tr>
         <tr>
-          <td>' . translate ( 'comments emailed to creator' ) . '</td>
+          <td>'
+  . translate ( '(Your comments will be emailed to the event creator.)' ) . '</td>
         </tr>
       </table>
     </form>
@@ -51,8 +56,8 @@ $id = getValue ( 'id' );
 // Allow administrators to approve public events.
 $app_user = ( $PUBLIC_ACCESS == 'Y' && ! empty ( $public ) && $is_admin
   ? '__public__' : ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
-// If User Access Control is enabled,
-// check to see if they are allowed to approve for the specified user.
+// If User Access Control is enabled, we check to see if they are
+// allowed to approve for the specified user.
 if ( access_is_enabled() && ! empty ( $user ) && $user != $login &&
     access_user_calendar ( 'approve', $user ) )
   $app_user = $user;
@@ -93,7 +98,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
 
     $msg = str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) )
     . "\n\n" . str_replace ( 'XXX', $login_fullname,
-      translate ( 'XXX approve/comment appointment' ) ) . "\n\n"
+      translate ( 'XXX has approved an appointment and added comments.' ) ) . "\n\n"
     . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . "\n"
     . str_replace ( 'XXX', $description, translate ( 'Description XXX' ) ) . "\n"
     . str_replace ( 'XXX', date_to_str ( $fmtdate ), translate ( 'Date XXX' ) )

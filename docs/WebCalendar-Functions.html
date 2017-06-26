@@ -1,9 +1,11 @@
-<!doctype html>
-<html lang="en">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta charset="utf-8">
 <title>WebCalendar Function Documentation</title>
-<style>
+<style type="text/css">
 body {
   background-color: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;
@@ -176,23 +178,23 @@ h3 {
 <li><a href="#weekday_name">weekday_name</a></li>
 <li><a href="#weekday_short_name">weekday_short_name</a></li>
 </ul>
-<hr>
-<br><br>
+<hr />
+<br /><br />
 <h3><a name="activate_urls">activate_urls</a></h3>
-<tt>activate_urls ( $text )</tt><br><br>
+<tt>activate_urls ( $text )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Look for URLs in the given text, and make them into links.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$text</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The text altered to have HTML links for any web links (http or https)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3275</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="activity_log">activity_log</a></h3>
-<tt>activity_log ( $event_id, $user, $user_cal, $type, $text )</tt><br><br>
+<tt>activity_log ( $event_id, $user, $user_cal, $type, $text )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Add something to the activity log for an event. The information will be saved to the <a href="WebCalendar-Database.html#webcal_entry_log"><tt>webcal_entry_log</tt></a> table.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$event_id</tt> - event id</li>
 <li><tt>$user</tt> - user doing this</li>
@@ -202,12 +204,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 771</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="background_css">background_css</a></h3>
-<tt>background_css ( $color, $height, $percent )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Creates the CSS for using gradient.php, if the appropriate GD functions are available. A one-pixel wide image will be used for the background image.<br><br><span class="note">Note</span> The gd library module needs to be available to use gradient images. If it is not available, a single background color will be used instead.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>background_css ( $color, $height, $percent )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Creates the CSS for using gradient.php, if the appropriate GD functions are available. A one-pixel wide image will be used for the background image.<br /><br /><span class="note">Note</span> The gd library module needs to be available to use gradient images. If it is not available, a single background color will be used instead.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$color</tt> - base color</li>
 <li><tt>$height</tt> - height of gradient image</li>
@@ -215,36 +217,36 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The style sheet text to use</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4433</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="boss_must_approve_event">boss_must_approve_event</a></h3>
-<tt>boss_must_approve_event ( $assistant, $boss )</tt><br><br>
+<tt>boss_must_approve_event ( $assistant, $boss )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Check the boss user preferences to see if the boss must approve events added to their calendar.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$assistant</tt> - assistant login</li>
 <li><tt>$boss</tt> - boss login</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the boss must approve new events</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3810</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="boss_must_be_notified">boss_must_be_notified</a></h3>
-<tt>boss_must_be_notified ( $assistant, $boss )</tt><br><br>
+<tt>boss_must_be_notified ( $assistant, $boss )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Check the boss user preferences to see if the boss wants to be notified via email on changes to their calendar.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$assistant</tt> - assistant login</li>
 <li><tt>$boss</tt> - boss login</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the boss wants email notifications</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3794</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="build_entry_popup">build_entry_popup</a></h3>
-<tt>build_entry_popup ( $popupid, $user, $description, $time, $site_extras )</tt><br><br>
+<tt>build_entry_popup ( $popupid, $user, $description, $time, $site_extras )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Build the HTML for the event popup (but don't print it yet since we don't want this HTML to go inside the table for the month).</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$popupid</tt> - CSS id to use for event popup</li>
 <li><tt>$user</tt> - user the event pertains to</li>
@@ -254,25 +256,25 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The HTML for the event popup</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1084</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="calc_time_slot">calc_time_slot</a></h3>
-<tt>calc_time_slot ( $time, $round_down, $10AM )</tt><br><br>
+<tt>calc_time_slot ( $time, $round_down, $10AM )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Calculate which row/slot this time represents. This is used in day and week views where hours of the time are separated into different cells in a table.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$time</tt> - input time in YYYYMMDD format</li>
 <li><tt>$round_down</tt> - should we change 1100 to 1059?</li>
-<li><tt>$10AM</tt> - 100AM appointment just shows up in the 10AM slow and not in the 11AM slot also.)<br><br><span class="note">Note</span> the global variable $TIME_SLOTS is used to determine how many time slots there are and how many minutes each is. This variable is defined user preferences (or defaulted to admin system settings).</li>
+<li><tt>$10AM</tt> - 100AM appointment just shows up in the 10AM slow and not in the 11AM slot also.)<br /><br /><span class="note">Note</span> the global variable $TIME_SLOTS is used to determine how many time slots there are and how many minutes each is. This variable is defined user preferences (or defaulted to admin system settings).</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The time slot index</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2655</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="check_for_conflicts">check_for_conflicts</a></h3>
-<tt>check_for_conflicts ( $date, $duration, $hour, $minute, $participants, $login, $id )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Check for conflicts. Find overlaps between an array of dates and the other dates in the database.<br>Limits on number of appointments: if enabled in System Settings ($LIMIT_APPTS global variable), too many appointments can also generate a scheduling conflict.<br><br><span class="note">TODO</span> Update this to handle exceptions to repeating events</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>check_for_conflicts ( $date, $duration, $hour, $minute, $participants, $login, $id )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Check for conflicts. Find overlaps between an array of dates and the other dates in the database.<br />Limits on number of appointments: if enabled in System Settings ($LIMIT_APPTS global variable), too many appointments can also generate a scheduling conflict.<br /><br /><span class="note">TODO</span> Update this to handle exceptions to repeating events</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - is an array of dates in YYYYMMDD format that is checked for overlaps.</li>
 <li><tt>$duration</tt> - event duration in minutes</li>
@@ -284,80 +286,80 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Return empty string for no conflicts or return the HTML of the conflicts when one or more are found.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2461</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="clean_html">clean_html</a></h3>
-<tt>clean_html ( $value )</tt><br><br>
+<tt>clean_html ( $value )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Replace unsafe characters with HTML encoded equivalents</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$value</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the cleaned text</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4363</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="clean_int">clean_int</a></h3>
-<tt>clean_int ( $data )</tt><br><br>
+<tt>clean_int ( $data )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Remove non-digits from the specified text</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$data</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the converted text</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4392</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="clean_whitespace">clean_whitespace</a></h3>
-<tt>clean_whitespace ( $data )</tt><br><br>
+<tt>clean_whitespace ( $data )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Remove whitespace from the specified text</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$data</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the converted text</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4404</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="clean_word">clean_word</a></h3>
-<tt>clean_word ( $data )</tt><br><br>
+<tt>clean_word ( $data )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Remove non-word characters from the specified text</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$data</tt> - input text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the converted text</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4380</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="daily_matrix">daily_matrix</a></h3>
-<tt>daily_matrix ( $date, $participants )</tt><br><br>
+<tt>daily_matrix ( $date, $participants )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Draws a daily outlook style availability grid showing events that  are approved and awaiting approval.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - the date to show the grid for</li>
 <li><tt>$participants</tt> - which users should be included in the grid</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4474</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="date_selection">date_selection</a></h3>
-<tt>date_selection ( $prefix, $date )</tt><br><br>
+<tt>date_selection ( $prefix, $date )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print out a date selection for use in a form.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$prefix</tt> - prefix to use in front of form element names</li>
 <li><tt>$date</tt> - currently selected date (in YYYYMMDD) format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1152</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="date_to_str">date_to_str</a></h3>
-<tt>date_to_str ( $indate, $format, $show_weekday, $short_months, $server_time )</tt><br><br>
+<tt>date_to_str ( $indate, $format, $show_weekday, $short_months, $server_time )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Convert a date in YYYYMMDD format into "Friday, December 31, 1999", "Friday, 12-31-1999" or whatever format the user prefers.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$indate</tt> - date in YYYYMMDD format</li>
 <li><tt>$format</tt> - format to use for date (default is "__month__ __dd__, __yyyy__")</li>
@@ -367,35 +369,35 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The query result resource on queries (which can then be passed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results), or true/false on insert or delete queries.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3430</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="dbi_affected_rows">dbi_affected_rows</a></h3>
-<tt>dbi_affected_rows ( $conn, $res )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Returns the number of rows affected by the last INSERT, UPDATE or DELETE.<br><br><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>dbi_affected_rows ( $conn, $res )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Returns the number of rows affected by the last INSERT, UPDATE or DELETE.<br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$conn</tt> - The database connection</li>
 <li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The number or database rows affected.</blockquote>
 <span class="prompt">Location:</span><blockquote>php-dbi.php, line 358</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="dbi_close">dbi_close</a></h3>
-<tt>dbi_close ( $conn )</tt><br><br>
+<tt>dbi_close ( $conn )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Close a database connection. (Not necessary for any database that uses pooled connections such as MySQL, but a good programming practice.)</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$conn</tt> - The database connection</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true on success, false on error</blockquote>
 <span class="prompt">Location:</span><blockquote>php-dbi.php, line 187</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="dbi_connect">dbi_connect</a></h3>
-<tt>dbi_connect ( $host, $login, $password, $database )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled.<br><br><span class="note">Notes</span><ul> <li> The database type is determined by the global variable <tt>db_type</tt></li> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul></blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>dbi_connect ( $host, $login, $password, $database )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Open up a database connection. Use a pooled connection if the db supports it and the <tt>db_persistent</tt> setting is enabled.<br /><br /><span class="note">Notes</span><ul> <li> The database type is determined by the global variable <tt>db_type</tt></li> <li> For ODBC, $host is ignored, $database = DSN</li> <li> For Oracle, $database = tnsnames name</li> <li> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails </li> </ul></blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$host</tt> - Hostname of database server</li>
 <li><tt>$login</tt> - Database login</li>
@@ -404,23 +406,23 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The connection</blockquote>
 <span class="prompt">Location:</span><blockquote>php-dbi.php, line 66</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="dbi_error">dbi_error</a></h3>
-<tt>dbi_error ( $ )</tt><br><br>
+<tt>dbi_error ( $ )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get the latest database error message.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The text of the last database error. (The type of information varies depending on the which type of database is being used.)</blockquote>
 <span class="prompt">Location:</span><blockquote>php-dbi.php, line 428</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="dbi_fatal_error">dbi_fatal_error</a></h3>
-<tt>dbi_fatal_error ( $msg, $doExit, $showError )</tt><br><br>
+<tt>dbi_fatal_error ( $msg, $doExit, $showError )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Display a fatal database error and abort execution.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$msg</tt> - The database error message</li>
 <li><tt>$doExit</tt> - Abort execution (true/false)</li>
@@ -428,34 +430,34 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>php-dbi.php, line 461</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="dbi_fetch_row">dbi_fetch_row</a></h3>
-<tt>dbi_fetch_row ( $res )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Retrieve a single row from the database and return it as an array.<br><br><span class="note">Note</span> we don't use the more useful xxx_fetch_array because not all databases support this function.<br><br><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>dbi_fetch_row ( $res )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Retrieve a single row from the database and return it as an array.<br /><br /><span class="note">Note</span> we don't use the more useful xxx_fetch_array because not all databases support this function.<br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of database columns representing a single row in the query result or false on an error.</blockquote>
 <span class="prompt">Location:</span><blockquote>php-dbi.php, line 305</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="dbi_free_result">dbi_free_result</a></h3>
-<tt>dbi_free_result ( $res )</tt><br><br>
+<tt>dbi_free_result ( $res )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Free a result set.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$res</tt> - The database query resource returned from the <a href="#dbi_query"><tt>dbi_query</tt></a> function.</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true on success</blockquote>
 <span class="prompt">Location:</span><blockquote>php-dbi.php, line 395</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="dbi_query">dbi_query</a></h3>
-<tt>dbi_query ( $sql, $fatalOnError, $showError )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Execute a SQL query.<br><br><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>dbi_query ( $sql, $fatalOnError, $showError )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Execute a SQL query.<br /><br /><span class="note">Note</span> Use the <a href="#dbi_error"><tt>dbi_error</tt></a> function to get error information if the connection fails.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$sql</tt> - SQL of query to execute</li>
 <li><tt>$fatalOnError</tt> - Abort execution if there is a database error</li>
@@ -463,34 +465,34 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The query result resource on queries (which can then be passed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results), or true/false on insert or delete queries.</blockquote>
 <span class="prompt">Location:</span><blockquote>php-dbi.php, line 230</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="decode_string">decode_string</a></h3>
-<tt>decode_string ( $instr )</tt><br><br>
+<tt>decode_string ( $instr )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Extract a user's name from a session id. This prevents users from begin able to edit their cookies.txt file and set the username in plain text.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$instr</tt> - a hex-encoded string. "Hello" would be "678ea786a5".</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The decoded string</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3530</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="die_miserable_death">die_miserable_death</a></h3>
-<tt>die_miserable_death ( $error )</tt><br><br>
+<tt>die_miserable_death ( $error )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print a fatal error message to the user along with a link to the Troubleshooting section of the WebCalendar System Administrator's Guide.  Execution is aborted.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$error</tt> - The error message to display</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>config.php, line 39</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="display_small_month">display_small_month</a></h3>
-<tt>display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums, $minical_id, $month_link )</tt><br><br>
+<tt>display_small_month ( $thismonth, $thisyear, $showyear, $show_weeknums, $minical_id, $month_link )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Prints out a minicalendar for a month</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$thismonth</tt> - number of the month to print</li>
 <li><tt>$thisyear</tt> - number of the year</li>
@@ -501,136 +503,136 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1195</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="display_time">display_time</a></h3>
-<tt>display_time ( $time, $ignore_offset )</tt><br><br>
+<tt>display_time ( $time, $ignore_offset )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Display a time in either 12 or 24 hour format. The global variable $TZ_OFFSET to adjust the time. Note that this is somewhat of a kludge for timezone support. If an event is set for 11PM server time and the user is 2 hours ahead, it will show up as 1AM, but the date will not be adjusted to the next day.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$time</tt> - input time in HHMMSS format</li>
 <li><tt>$ignore_offset</tt> - if true, then do not use the timezone offset (optional)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The query result resource on queries (which can then be passed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results), or true/false on insert or delete queries.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3292</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="display_unapproved_events">display_unapproved_events</a></h3>
-<tt>display_unapproved_events ( $user )</tt><br><br>
+<tt>display_unapproved_events ( $user )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Check for any unaproved events. If any are found, display a link to the unapproved events (where they can be approved). If the user is an admin user, also count up any public events. If the user is a nonuser admin, count up events on the nonuser calendar.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - current user login</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3222</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="do_debug">do_debug</a></h3>
-<tt>do_debug ( $msg )</tt><br><br>
+<tt>do_debug ( $msg )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Log a debug message. Generally, we do not leave calls to this function in the code. It is used for debugging only.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$msg</tt> - Text to be logged</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 410</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="do_redirect">do_redirect</a></h3>
-<tt>do_redirect ( $url )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Send a redirect to the specified page. The database connection is closed and execution terminates in this function.<br> Note: MS IIS/PWS has a bug in which it does not allow us to send a cookie and a redirect in the same HTTP header. When we detect that the web server is IIS, we accomplish the redirect using meta-refresh. See the following for more info on the IIS bug: <blockquote> <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4"> http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4</a> </blockquote></blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>do_redirect ( $url )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Send a redirect to the specified page. The database connection is closed and execution terminates in this function.<br /> Note: MS IIS/PWS has a bug in which it does not allow us to send a cookie and a redirect in the same HTTP header. When we detect that the web server is IIS, we accomplish the redirect using meta-refresh. See the following for more info on the IIS bug: <blockquote> <a href="http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4"> http://www.faqts.com/knowledge_base/view.phtml/aid/9316/fid/4</a> </blockquote></blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$url</tt> - The page to redirect to. In theory, this should be an absolute URL, but all browsers accept relative URLs (like "month.php").</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 483</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="encode_string">encode_string</a></h3>
-<tt>encode_string ( $instr )</tt><br><br>
+<tt>encode_string ( $instr )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Take an input string and encode it into a slightly encoded hexval that we can use as a session cookie.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$instr</tt> - text to encode</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the encoded text</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3564</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="etooltip">etooltip</a></h3>
-<tt>etooltip ( $str )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML.<br><br><span class="note">Note</span> The <a href="#tooltip"><tt>tooltip</tt></a> function will return the result rather than print the value.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>etooltip ( $str )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML.<br /><br /><span class="note">Note</span> The <a href="#tooltip"><tt>tooltip</tt></a> function will return the result rather than print the value.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$str</tt> - the input text to translate and print</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>translate.php, line 176</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="etranslate">etranslate</a></h3>
-<tt>etranslate ( $str )</tt><br><br>
+<tt>etranslate ( $str )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Translate text and print it. This is just an abbreviation for: echo translate ( $str )</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$str</tt> - input text to translate and print</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>translate.php, line 147</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="event_get_external_users">event_get_external_users</a></h3>
-<tt>event_get_external_users ( $event_id, $use_mailto )</tt><br><br>
+<tt>event_get_external_users ( $event_id, $use_mailto )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get the list of external users for an event from the <a href="WebCalendar-Database.html#webcal_entry_ext_user"><tt>webcal_entry_ext_user</tt></a> table in an HTML format.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$event_id</tt> - event id</li>
 <li><tt>$use_mailto</tt> - when set to 1, email address will contain an href link with a mailto URL.</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The list of external users for an event formatted in HTML.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 729</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="getGetValue">getGetValue</a></h3>
-<tt>getGetValue ( $name )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP GET method.<br> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file. If you need to enforce a specific input format (such as numeric input), then use the <a href="#getValue"><tt>getValue</tt></a> function.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>getGetValue ( $name )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP GET method.<br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file. If you need to enforce a specific input format (such as numeric input), then use the <a href="#getValue"><tt>getValue</tt></a> function.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 190</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="getIntValue">getIntValue</a></h3>
-<tt>getIntValue ( $name, $fatal )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Get an integer value resulting from an HTTP GET or HTTP POST method.<br> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>getIntValue ( $name, $fatal )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Get an integer value resulting from an HTTP GET or HTTP POST method.<br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
 <li><tt>$fatal</tt> - Is it considered a fatal error requiring execution to stop if the value retrieved does not match the format regular expression?</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 257</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="getPostValue">getPostValue</a></h3>
-<tt>getPostValue ( $name )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP POST method.<br> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>getPostValue ( $name )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Get the value resulting from an HTTP POST method.<br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the value used in the HTML form</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 168</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="getValue">getValue</a></h3>
-<tt>getValue ( $name, $format, $fatal )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Get the value resulting from either HTTP GET method or HTTP POST method.<br> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.<br> Note: If you need to get an integer value, you can use the <a href="#getIntValue"><tt>getIntValue</tt></a> function.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>getValue ( $name, $format, $fatal )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Get the value resulting from either HTTP GET method or HTTP POST method.<br /> Note: The return value will be affected by the value of <tt>magic_quotes_gpc</tt> in the <tt>php.ini</tt> file.<br /> Note: If you need to get an integer value, you can use the <a href="#getIntValue"><tt>getIntValue</tt></a> function.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name used in the HTML form or found in the URL</li>
 <li><tt>$format</tt> - A regular expression format that the input must match. If the input does not match, an empty string is returned and a warning is sent to the browser. If The $fatal parameter is true, then execution will also stop when the input does not match the format.</li>
@@ -638,12 +640,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 215</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_all_dates">get_all_dates</a></h3>
-<tt>get_all_dates ( $date, $rpt_type, $end, $days, $ex_dates, $freq )</tt><br><br>
+<tt>get_all_dates ( $date, $rpt_type, $end, $days, $ex_dates, $freq )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Returns all the dates a specific event will fall on accounting for the repeating. Any event with no end will be assigned one.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - initial date in raw format</li>
 <li><tt>$rpt_type</tt> - repeating type as stored in the database</li>
@@ -654,12 +656,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of dates (in UNIX time format)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1856</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_entries">get_entries</a></h3>
-<tt>get_entries ( $user, $date, $get_unapproved )</tt><br><br>
+<tt>get_entries ( $user, $date, $get_unapproved )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get all the events for a specific date from the array of pre-loaded events (which was loaded all at once to improve performance). The returned events will be sorted by time of day.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - username</li>
 <li><tt>$date</tt> - date to get events for in YYYYMMDD format</li>
@@ -667,23 +669,23 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of events</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1594</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_last_view">get_last_view</a></h3>
-<tt>get_last_view ( $ )</tt><br><br>
+<tt>get_last_view ( $ )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get the last page stored using the <a href="#remember_this_view"><tt>remember_this_view</tt></a> function. Return empty string if we don't know.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The URL of the last view or an empty string if it cannot be determined.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 586</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_monday_before">get_monday_before</a></h3>
-<tt>get_monday_before ( $year, $month, $day )</tt><br><br>
+<tt>get_monday_before ( $year, $month, $day )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get the Monday of the week that the specified date is in. (If the date specified is a Monday, then that date is returned.)</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$year</tt> - year in YYYY format</li>
 <li><tt>$month</tt> - month (1-12)</li>
@@ -691,58 +693,58 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The date (in unix time format)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2238</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_my_users">get_my_users</a></h3>
-<tt>get_my_users ( $ )</tt><br><br>
+<tt>get_my_users ( $ )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get a list of users. If groups are enabled, this will restrict the list of users to only those users who are in the same group(s) as the user (unless the user is an admin user). We allow admin users to see all users because they can also edit someone else's events (so they may need access to users who are not in the same groups that they are in).</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of users, where each element in the array is an array with the following keys:<ul> <li>cal_login</li> <li>cal_lastname</li> <li>cal_firstname</li> <li>cal_is_admin</li> <li>cal_is_admin</li> <li>cal_email</li> <li>cal_password</li> <li>cal_fullname</li> </ul></blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 826</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_nonuser_cals">get_nonuser_cals</a></h3>
-<tt>get_nonuser_cals ( $user )</tt><br><br>
+<tt>get_nonuser_cals ( $user )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get a list of nonuser calendars and return info in an array.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - (optional) login of admin of the nonuser calendars</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of nonuser cals, where each is an array with the following fields: <ul> <li> cal_login </li> <li> cal_lastname </li> <li> cal_firstname </li> <li> cal_admin </li> <li> cal_fullname </li> </ul></blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4107</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_pref_setting">get_pref_setting</a></h3>
-<tt>get_pref_setting ( $user, $setting )</tt><br><br>
+<tt>get_pref_setting ( $user, $setting )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get a preference setting for the specified user. If no value is found in the database, then the system default setting will be returned.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - user login we are getting preference for</li>
 <li><tt>$setting</tt> - the name of the setting</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value found in the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table for the specified setting or the system default if no user settings was found.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 901</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_preferred_view">get_preferred_view</a></h3>
-<tt>get_preferred_view ( $date, $args )</tt><br><br>
+<tt>get_preferred_view ( $date, $args )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get user's preferred view. The user's preferred view is stored in the $STARTVIEW global variable. This is loaded from the user preferences (or system settings if there are no user preferences.)</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - (optional) date to pass to preferred view in YYYYMMDD format</li>
 <li><tt>$args</tt> - (optional) arguments to include in the URL (such as "user=joe")</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 425</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_repeating_entries">get_repeating_entries</a></h3>
-<tt>get_repeating_entries ( $user, $date, $get_unapproved )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Get all the repeating events for the specified data and return them in an array (which is sorted by time of day).<br><br><span class="note">Note</span> The global variable <tt>$repeated_events</tt> needs to be set by calling the <a href="#read_repeated_events"><tt>read_repeated_events</tt></a> function first.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>get_repeating_entries ( $user, $date, $get_unapproved )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Get all the repeating events for the specified data and return them in an array (which is sorted by time of day).<br /><br /><span class="note">Note</span> The global variable <tt>$repeated_events</tt> needs to be set by calling the <a href="#read_repeated_events"><tt>read_repeated_events</tt></a> function first.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - username</li>
 <li><tt>$date</tt> - date to get events for in YYYYMMDD format</li>
@@ -750,23 +752,23 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The query result resource on queries (which can then be passed to the <a href="#dbi_fetch_row"><tt>dbi_fetch_row</tt></a> function to obtain the results), or true/false on insert or delete queries.</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2039</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_site_extra_fields">get_site_extra_fields</a></h3>
-<tt>get_site_extra_fields ( $eventid )</tt><br><br>
+<tt>get_site_extra_fields ( $eventid )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get any site-specific fields for an entry that are stored in the database in the <a href="WebCalendar-Database.html#webcal_site_extras"><tt>webcal_site_extras</tt></a> table.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$eventid</tt> - event id</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Return an array of array with the keys as follows:  <ul> <li> cal_name </li> <li> cal_type </li> <li> cal_date </li> <li> cal_remind </li> <li> cal_data </li> </ul></blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1475</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="get_sunday_before">get_sunday_before</a></h3>
-<tt>get_sunday_before ( $year, $month, $day )</tt><br><br>
+<tt>get_sunday_before ( $year, $month, $day )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get the Sunday of the week that the specified date is in. (If the date specified is a Sunday, then that date is returned.)</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$year</tt> - year in YYYY format</li>
 <li><tt>$month</tt> - month (1-12)</li>
@@ -774,23 +776,23 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>The date (in unix time format)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2221</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="html_for_add_icon">html_for_add_icon</a></h3>
-<tt>html_for_add_icon ( $ )</tt><br><br>
+<tt>html_for_add_icon ( $ )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Generate the HTML for an icon to add a new event.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The HTML for the add event icon</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2690</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="html_for_event_day_at_a_glance">html_for_event_day_at_a_glance</a></h3>
-<tt>html_for_event_day_at_a_glance ( $id, $date, $time, $name, $description, $status, $pri, $access, $duration, $event_owner, $event_category )</tt><br><br>
+<tt>html_for_event_day_at_a_glance ( $id, $date, $time, $name, $description, $status, $pri, $access, $duration, $event_owner, $event_category )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Generate the HTML for an event to be viewed in the day-at-glance (day.php). The HTML will be stored in an array ($hour_arr) indexed on the event's starting hour.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$id</tt> - event id</li>
 <li><tt>$date</tt> - date of event in YYYYMMDD format</li>
@@ -806,12 +808,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2871</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="html_for_event_week_at_a_glance">html_for_event_week_at_a_glance</a></h3>
-<tt>html_for_event_week_at_a_glance ( $id, $date, $time, $name, $description, $status, $pri, $access, $duration, $event_owner, $event_category )</tt><br><br>
+<tt>html_for_event_week_at_a_glance ( $id, $date, $time, $name, $description, $status, $pri, $access, $duration, $event_owner, $event_category )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Generate the HTML for an event to be viewed in the week-at-glance (week.php). The HTML will be stored in an array (global variable $hour_arr) indexed on the event's starting hour.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$id</tt> - event id</li>
 <li><tt>$date</tt> - date of event in YYYYMMDD format</li>
@@ -827,135 +829,135 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2722</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="html_to_8bits">html_to_8bits</a></h3>
-<tt>html_to_8bits ( $html )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Convert HTML entities in 8bit.<br><br><span class="note">Note</span> Only supported for PHP4 (not PHP3).</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>html_to_8bits ( $html )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Convert HTML entities in 8bit.<br /><br /><span class="note">Note</span> Only supported for PHP4 (not PHP3).</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$html</tt> - HTML text</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The converted text</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3692</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="languageToAbbrev">languageToAbbrev</a></h3>
-<tt>languageToAbbrev ( $name )</tt><br><br>
+<tt>languageToAbbrev ( $name )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Converts language names to their abbreviation</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$name</tt> - Name of the language (such as "French")</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The abbreviation ("fr" for "French")</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4416</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="load_global_settings">load_global_settings</a></h3>
-<tt>load_global_settings ( $ )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Load default system settings (which can be updated via admin.php) System settings are stored in the <a href="WebCalendar-Database.html#webcal_config"><tt>webcal_config</tt></a> table.<br> Note: If the setting for "server_url" is not set, the value will be calculated and stored in the database.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>load_global_settings ( $ )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Load default system settings (which can be updated via admin.php) System settings are stored in the <a href="WebCalendar-Database.html#webcal_config"><tt>webcal_config</tt></a> table.<br /> Note: If the setting for "server_url" is not set, the value will be calculated and stored in the database.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 276</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="load_nonuser_preferences">load_nonuser_preferences</a></h3>
-<tt>load_nonuser_preferences ( $nonuser )</tt><br><br>
+<tt>load_nonuser_preferences ( $nonuser )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Loads nonuser preferences from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table if on a nonuser admin page.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$nonuser</tt> - login name for nonuser calendar</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4218</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="load_translation_text">load_translation_text</a></h3>
-<tt>load_translation_text ( $ )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Load all the language translation into an array for quick lookup.<br><br><span class="note">Note</span> There is no need to call this manually. It will be invoked by the <a href="#translate"><tt>translate</tt></a> function the first time it is called.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>load_translation_text ( $ )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Load all the language translation into an array for quick lookup.<br /><br /><span class="note">Note</span> There is no need to call this manually. It will be invoked by the <a href="#translate"><tt>translate</tt></a> function the first time it is called.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>translate.php, line 71</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="load_user_categories">load_user_categories</a></h3>
-<tt>load_user_categories ( $ex_global )</tt><br><br>
+<tt>load_user_categories ( $ex_global )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Load current user's category info and stuff it into category global variable.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$ex_global</tt> - Don't include global categories ('' or '1')</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3624</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="load_user_layers">load_user_layers</a></h3>
-<tt>load_user_layers ( $user, $force )</tt><br><br>
+<tt>load_user_layers ( $user, $force )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Load current user's layer info and stuff it into layer global variable. If the system setting $ALLOW_VIEW_OTHER is not set to 'Y', then we ignore all layer functionality. If $force is 0, we only load layers if the current user preferences have layers turned on.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - User to load layers for</li>
 <li><tt>$force</tt> - If set to 1, then load layers for this user even if user preferences have layers turned off.</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 963</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="load_user_preferences">load_user_preferences</a></h3>
-<tt>load_user_preferences ( $ )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...)<br><br><span class="note">Notes</span>   <ul> <li>If the $ALLOW_COLOR_CUSTOMIZATION is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul></blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>load_user_preferences ( $ )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Load the current user's preferences as global variables from the <a href="WebCalendar-Database.html#webcal_user_pref"><tt>webcal_user_pref</tt></a> table. Also load the list of views for this user (not really a preference, but this is a convenient place to put this...)<br /><br /><span class="note">Notes</span>   <ul> <li>If the $ALLOW_COLOR_CUSTOMIZATION is set to 'N', then we ignore any color preferences.</li> <li>Other default values will also be set if the user has not saved a preference and no global value has been set by the administrator in the system settings.</li> </ul></blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 622</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="month_name">month_name</a></h3>
-<tt>month_name ( $m )</tt><br><br>
+<tt>month_name ( $m )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Return the full name of the specified month. Use the <a href="#month_short_name"><tt>month_short_name</tt></a> function to get the abbreviated name of the month.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$m</tt> - month (0-11)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The full name of the specified month</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3330</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="month_short_name">month_short_name</a></h3>
-<tt>month_short_name ( $m )</tt><br><br>
+<tt>month_short_name ( $m )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Return the abbreviated name of the specified month (such as "Jan"). Use the <a href="#month_name"><tt>month_name</tt></a> function to get the full name of the month.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$m</tt> - month (0-11)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The abbreviated name of the specified month (example: "Jan")</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3358</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="nonuser_load_variables">nonuser_load_variables</a></h3>
-<tt>nonuser_load_variables ( $login, $prefix )</tt><br><br>
+<tt>nonuser_load_variables ( $login, $prefix )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Loads nonuser variables (login, firstname, etc.) The following variables will be set:  <ul> <li> login </li> <li> firstname </li> <li> lastname </li> <li> fullname </li> <li> admin </li> <li> email </li> </ul></blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$login</tt> - login name of nonuser calendar</li>
 <li><tt>$prefix</tt> - prefix to use for variables that will be set. For example, if prefix is "temp", then the login will be stored in the $templogin global variable. </li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4149</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="print_category_menu">print_category_menu</a></h3>
-<tt>print_category_menu ( $form, $date, $cat_id )</tt><br><br>
+<tt>print_category_menu ( $form, $date, $cat_id )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print dropdown HTML for categories.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$form</tt> - the page to submit data to (without .php)</li>
 <li><tt>$date</tt> - date in YYYYMMDD format</li>
@@ -963,12 +965,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3657</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="print_date_entries">print_date_entries</a></h3>
-<tt>print_date_entries ( $date, $user, $is_ssi )</tt><br><br>
+<tt>print_date_entries ( $date, $user, $is_ssi )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print all the calendar entries for the specified user for the specified date. If we are displaying data from someone other than the logged in user, then check the access permission of the entry.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - date in YYYYMMDD format</li>
 <li><tt>$user</tt> - username</li>
@@ -976,12 +978,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2296</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="print_date_entries_timebar">print_date_entries_timebar</a></h3>
-<tt>print_date_entries_timebar ( $date, $user, $ssi )</tt><br><br>
+<tt>print_date_entries_timebar ( $date, $user, $ssi )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print all the entries in a time bar format for the specified user for the specified date. If we are displaying data from someone other than the logged in user, then check the access permission of the entry.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - date in YYYYMMDD format</li>
 <li><tt>$user</tt> - username</li>
@@ -989,36 +991,36 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3834</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="date_selection">date_selection</a></h3>
-<tt>date_selection ( $prefix, $date )</tt><br><br>
+<tt>date_selection ( $prefix, $date )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print out a date selection for use in a form.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$prefix</tt> - prefix to use in front of form element names</li>
 <li><tt>$date</tt> - currently selected date (in YYYYMMDD) format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The value used in the HTML form (or URL)</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1139</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="print_day_at_a_glance">print_day_at_a_glance</a></h3>
-<tt>print_day_at_a_glance ( $date, $user )</tt><br><br>
+<tt>print_day_at_a_glance ( $date, $user )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print all the calendar entries for the specified user for the specified date in day-at-a-glance format. If we are displaying data from someone other than the logged in user, then check the access permission of the entry.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - date in YYYYMMDD format</li>
 <li><tt>$user</tt> - username of calendar</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3026</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="print_entry">print_entry</a></h3>
-<tt>print_entry ( $id, $date, $time, $duration, $name, $description, $status, $pri, $access, $event_owner, $event_cat )</tt><br><br>
+<tt>print_entry ( $id, $date, $time, $duration, $name, $description, $status, $pri, $access, $event_owner, $event_cat )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print the HTML for one day's events in the month view.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$id</tt> - event id</li>
 <li><tt>$date</tt> - date of event (relevant in repeating events) in YYYYMMDD format</li>
@@ -1034,12 +1036,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1350</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="print_entry_timebar">print_entry_timebar</a></h3>
-<tt>print_entry_timebar ( $id, $date, $time, $duration, $name, $description, $status, $pri, $access, $event_owner, $event_category )</tt><br><br>
+<tt>print_entry_timebar ( $id, $date, $time, $duration, $name, $description, $status, $pri, $access, $event_owner, $event_category )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print the HTML for an events with a timebar.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$id</tt> - event id</li>
 <li><tt>$date</tt> - date of event in YYYYMMDD format</li>
@@ -1055,12 +1057,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3914</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="print_header">print_header</a></h3>
-<tt>print_header ( $includes, $HeadX, $BodyX, $disbleCustom, $disableStyle )</tt><br><br>
+<tt>print_header ( $includes, $HeadX, $BodyX, $disbleCustom, $disableStyle )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Prints the HTML header and opening HTML body tag.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$includes</tt> - an array of additional files to include referenced from the includes directory</li>
 <li><tt>$HeadX</tt> - a variable containing any other data to be printed inside the head tag (meta, script, etc)</li>
@@ -1070,24 +1072,24 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>init.php, line 213</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="print_header_timebar">print_header_timebar</a></h3>
-<tt>print_header_timebar ( $start_hour, $end_hour )</tt><br><br>
+<tt>print_header_timebar ( $start_hour, $end_hour )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print the header for the timebar.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$start_hour</tt> - start hour</li>
 <li><tt>$end_hour</tt> - end hour</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4069</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="print_trailer">print_trailer</a></h3>
-<tt>print_trailer ( $include_nav_links, $closeDb, $disableCustom )</tt><br><br>
+<tt>print_trailer ( $include_nav_links, $closeDb, $disableCustom )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Print the common trailer.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$include_nav_links</tt> - should the standard navigation links be included in the trailer (true/false). </li>
 <li><tt>$closeDb</tt> - close the database connection (true/false)</li>
@@ -1095,12 +1097,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>init.php, line 334</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="query_events">query_events</a></h3>
-<tt>query_events ( $user, $want_repeated, $non, $date_filter, $cat_id )</tt><br><br>
+<tt>query_events ( $user, $want_repeated, $non, $date_filter, $cat_id )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Read events visible to a user (including layers and possibly public access if enabled); Return results in an array sorted by time of day.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - username</li>
 <li><tt>$want_repeated</tt> - true to get repeating events; false to get</li>
@@ -1110,12 +1112,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of events</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1676</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="read_events">read_events</a></h3>
-<tt>read_events ( $user, $startdate, $enddate, $cat_id )</tt><br><br>
+<tt>read_events ( $user, $startdate, $enddate, $cat_id )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Read all the events for a user for the specified range of dates. This is only called once per page request to improve performance. All the events get loaded into the array $events sorted by time of day (not date).</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - username</li>
 <li><tt>$startdate</tt> - start date range, inclusive (in YYYYMMDD format)</li>
@@ -1124,12 +1126,12 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of events</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1512</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="read_repeated_events">read_repeated_events</a></h3>
-<tt>read_repeated_events ( $user, $date, $cat_id )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Read all the repeated events for a user. This is only called once per page request to improve performance. All the events get loaded into the array $repeated_events sorted by time of day (not date). This will load all the repeated events into memory.<br><br><span class="note">Notes</span>  <ul> <li> To get which events repeat on a specific date, use the <a href="#get_repeating_entries"><tt>get_repeating_entries</tt></a> function.</li> <li> To get all the dates that one specific event repeats on, the <a href="#get_all_dates"><tt>get_all_dates</tt></a> function should be called. </li> </ul></blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>read_repeated_events ( $user, $date, $cat_id )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Read all the repeated events for a user. This is only called once per page request to improve performance. All the events get loaded into the array $repeated_events sorted by time of day (not date). This will load all the repeated events into memory.<br /><br /><span class="note">Notes</span>  <ul> <li> To get which events repeat on a specific date, use the <a href="#get_repeating_entries"><tt>get_repeating_entries</tt></a> function.</li> <li> To get all the dates that one specific event repeats on, the <a href="#get_all_dates"><tt>get_all_dates</tt></a> function should be called. </li> </ul></blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$user</tt> - username</li>
 <li><tt>$cat_id</tt> - category ID to filter on  (May be empty)</li>
@@ -1137,113 +1139,113 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of repeating events</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1828</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="remember_this_view">remember_this_view</a></h3>
-<tt>remember_this_view ( $ )</tt><br><br>
+<tt>remember_this_view ( $ )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Generate a cookie that saves the last calendar view (month, week, day) based on the current $REQUEST_URI so we can return to this same page after a user edits/deletes/etc an event.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 567</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="repeated_event_matches_date">repeated_event_matches_date</a></h3>
-<tt>repeated_event_matches_date ( $event, $dateYmd )</tt><br><br>
+<tt>repeated_event_matches_date ( $event, $dateYmd )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Returns a boolean stating whether or not the event passed in will fall on the date passed.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$event</tt> - the event as an array</li>
 <li><tt>$dateYmd</tt> - the date to check in YYYYMMDD format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true or false</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2073</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="reset_language">reset_language</a></h3>
-<tt>reset_language ( $new_language )</tt><br><br>
+<tt>reset_language ( $new_language )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Unload translations so we can switch languages and translate into a different language).</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$new_language</tt> - new language file to load (just the base filename, no directory or file suffix. Example: "French")</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>translate.php, line 48</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="send_http_login">send_http_login</a></h3>
-<tt>send_http_login ( $ )</tt><br><br>
+<tt>send_http_login ( $ )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Send an HTTP login request to the browser and stop execution.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 534</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="send_no_cache_header">send_no_cache_header</a></h3>
-<tt>send_no_cache_header ( $ )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Send header stuff that tells the browser not to cache this page. Different browser use different mechanisms for this, so a series of HTTP header directives are sent.<br><br><span class="note">Note</span> This function needs to be called before any HTML output is sent to the browser.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>send_no_cache_header ( $ )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Send header stuff that tells the browser not to cache this page. Different browser use different mechanisms for this, so a series of HTTP header directives are sent.<br /><br /><span class="note">Note</span> This function needs to be called before any HTML output is sent to the browser.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li>None</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 606</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="send_to_preferred_view">send_to_preferred_view</a></h3>
-<tt>send_to_preferred_view ( $date, $args )</tt><br><br>
+<tt>send_to_preferred_view ( $date, $args )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Send a redirect to the user's preferred view. The user's preferred view is stored in the $STARTVIEW global variable. This is loaded from the user preferences (or system settings if there are no user preferences.)</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - (optional) date to pass to preferred view in YYYYMMDD format</li>
 <li><tt>$args</tt> - (optional) arguments to include in the URL (such as "user=joe")</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 467</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="set_today">set_today</a></h3>
-<tt>set_today ( $date )</tt><br><br>
+<tt>set_today ( $date )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Determines what the day is after the $TZ_OFFSET and sets it globally. The following global variables will be set:  <ul> <li> $thisyear </li> <li> $thismonth </li> <li> $thisday </li> <li> $thisdate </li> <li> $today </li> </ul></blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - the date in YYYYMMDD format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>Nothing</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4246</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="site_extras_for_popup">site_extras_for_popup</a></h3>
-<tt>site_extras_for_popup ( $id )</tt><br><br>
+<tt>site_extras_for_popup ( $id )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Generate the HTML used in an event popup for the site_extras fields of an event.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$id</tt> - event id</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The HTML to be used within the event popup for any site_extra fields found for the specified event</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 1011</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="time_to_minutes">time_to_minutes</a></h3>
-<tt>time_to_minutes ( $time )</tt><br><br>
+<tt>time_to_minutes ( $time )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Convert a time format HHMMSS (like 131000 for 1PM) into number of minutes past midnight.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$time</tt> - input time in HHMMSS format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The number of minutes since midnight</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2639</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="times_overlap">times_overlap</a></h3>
-<tt>times_overlap ( $time1, $duration1, $time2, $duration1 )</tt><br><br>
+<tt>times_overlap ( $time1, $duration1, $time2, $duration1 )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Check to see if two events overlap.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$time1</tt> - time 1 in HHMMSS format</li>
 <li><tt>$duration1</tt> - duration 1 in minutes</li>
@@ -1252,113 +1254,113 @@ h3 {
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the two times overlap, false if they do not</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2428</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="tooltip">tooltip</a></h3>
-<tt>tooltip ( $str )</tt><br><br>
-<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML.<br><br><span class="note">Note</span> The <a href="#etooltip"><tt>etooltip</tt></a> function will print the result rather than return the value.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<tt>tooltip ( $str )</tt><br /><br />
+<span class="prompt">Description:</span><blockquote>Translate text and remove and HTML from it. This is useful for tooltips, which barf on HTML.<br /><br /><span class="note">Note</span> The <a href="#etooltip"><tt>etooltip</tt></a> function will print the result rather than return the value.</blockquote>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$str</tt> - the input text to translate</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The translated text with all HTML removed</blockquote>
 <span class="prompt">Location:</span><blockquote>translate.php, line 158</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="translate">translate</a></h3>
-<tt>translate ( $str )</tt><br><br>
+<tt>translate ( $str )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Translate a string from the default English usage to some other language. The first time that this is called, the translation file will be loaded (with the <a href="#load_translation_text"><tt>load_translation_text</tt></a> function).</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$str</tt> - text to translate</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The translated text, if available. If no translation is available, then the original untranslated text is returned.</blockquote>
 <span class="prompt">Location:</span><blockquote>translate.php, line 115</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="user_get_boss_list">user_get_boss_list</a></h3>
-<tt>user_get_boss_list ( $assistant )</tt><br><br>
+<tt>user_get_boss_list ( $assistant )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Get a list of an assistant's boss from the <a href="WebCalendar-Database.html#webcal_asst"><tt>webcal_asst</tt></a> table.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$assistant</tt> - login of assistant</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>An array of bosses, where each boss is an array with the following fields: <ul> <li> cal_login </li> <li> cal_fullname </li> </ul></blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3714</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="user_has_boss">user_has_boss</a></h3>
-<tt>user_has_boss ( $assistant )</tt><br><br>
+<tt>user_has_boss ( $assistant )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Check the <a href="WebCalendar-Database.html#webcal_asst"><tt>webcal_asst</tt></a> table to see if the specified user login has any bosses associated with it.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$assistant</tt> - login for user</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the user is an assistant to one or more bosses</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3773</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="user_is_assistant">user_is_assistant</a></h3>
-<tt>user_is_assistant ( $assistant, $boss )</tt><br><br>
+<tt>user_is_assistant ( $assistant, $boss )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Return true if $user is $boss assistant by checking in the <a href="WebCalendar-Database.html#webcal_asst"><tt>webcal_asst</tt></a> table.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$assistant</tt> - login of potential assistant</li>
 <li><tt>$boss</tt> - login of potential boss</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true or false</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3748</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="user_is_nonuser_admin">user_is_nonuser_admin</a></h3>
-<tt>user_is_nonuser_admin ( $login, $nonuser )</tt><br><br>
+<tt>user_is_nonuser_admin ( $login, $nonuser )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Check the <a href="WebCalendar-Database.html#webcal_nonuser_cals"><tt>webcal_nonuser_cals</tt></a> table to determine if the user is the administrator for the nonuser calendar.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$login</tt> - login of user that is the potential administrator</li>
 <li><tt>$nonuser</tt> - login name for nonuser calendar</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>true if the user is the administrator for the nonuser calendar</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 4195</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="week_number">week_number</a></h3>
-<tt>week_number ( $date )</tt><br><br>
+<tt>week_number ( $date )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Returns week number for specified date. depending from week numbering settings.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$date</tt> - date in UNIX time format</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>The week number of the specified date</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 2258</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="weekday_name">weekday_name</a></h3>
-<tt>weekday_name ( $w )</tt><br><br>
+<tt>weekday_name ( $w )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Return the full weekday name. Use the <a href="#weekday_short_name"><tt>weekday_short_name</tt></a> function to get the abbreviated weekday name.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$w</tt> - weekday (0=Sunday,...,6=Saturday)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the full weekday name ("Sunday")</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3386</blockquote>
-<br><br>
-<br><br>
+<br /><br />
+<br /><br />
 <h3><a name="weekday_short_name">weekday_short_name</a></h3>
-<tt>weekday_short_name ( $w )</tt><br><br>
+<tt>weekday_short_name ( $w )</tt><br /><br />
 <span class="prompt">Description:</span><blockquote>Return the abbreviated weekday name. Use the <a href="#weekday_name"><tt>weekday_name</tt></a> function to get the full weekday name.</blockquote>
-<span class="prompt">Parameters:</span><br>
+<span class="prompt">Parameters:</span><br />
 <ul>
 <li><tt>$w</tt> - weekday (0=Sunday,...,6=Saturday)</li>
 </ul>
 <span class="prompt">Returns:</span><blockquote>the abbreviated weekday name ("Sun")</blockquote>
 <span class="prompt">Location:</span><blockquote>functions.php, line 3408</blockquote>
-<br><br>
-<hr>
-//<p>
-//      <a href="http://validator.w3.org/check?uri=referer"><img
-//          src="http://www.w3.org/Icons/valid-xhtml10" border="0"
-//          alt="Valid XHTML 1.0!" height="31" width="88"></a>
-//</p>
+<br /><br />
+<hr/>
+<p>
+      <a href="http://validator.w3.org/check?uri=referer"><img
+          src="http://www.w3.org/Icons/valid-xhtml10" border="0"
+          alt="Valid XHTML 1.0!" height="31" width="88" /></a>
+</p>
 </body>
 </html>

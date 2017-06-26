@@ -1,6 +1,7 @@
-<?php /* $Id$ */
+<?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
-/**
+/*
+ * $Id: user-ldap.php,v 1.44 2009/10/27 18:36:49 bbannon Exp $
  * LDAP user functions.
  * This file is intended to be used instead of the standard user.php file.
  * I have not tested this yet (I do not have an LDAP server running yet),
@@ -291,7 +292,7 @@ function user_delete_user ( $user ) {
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
   $delete_em = array ();
-  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $i < count ( $events ); $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user ' .
       'WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
@@ -303,7 +304,7 @@ function user_delete_user ( $user ) {
     }
   }
   // Now delete events that were just for this user
-  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
       array ( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
@@ -348,7 +349,7 @@ function user_delete_user ( $user ) {
     }
     dbi_free_result ( $res );
   }
-  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ?',
       array ( $delete_em[$i] ) );
   }
@@ -389,7 +390,7 @@ function user_delete_user ( $user ) {
     }
     dbi_free_result ( $res );
   }
-  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_report_template WHERE cal_report_id = ?',
       array ( $delete_em[$i] ) );
   }
@@ -431,10 +432,10 @@ function user_get_users ( $publicOnly=false ) {
       $info = @ldap_get_entries( $ds, $sr );
       for ( $i = 0; $i < $info['count']; $i++ ) {
         $ret[$count++] = array (
-          'cal_login'    => $info[$i][$ldap_user_attr[0]][0],
+          'cal_login' => $info[$i][$ldap_user_attr[0]][0],
           'cal_lastname' => $info[$i][$ldap_user_attr[1]][0],
-          'cal_firstname'=> $info[$i][$ldap_user_attr[2]][0],
-          'cal_email'    => $info[$i][$ldap_user_attr[4]][0],
+          'cal_firstname' => $info[$i][$ldap_user_attr[2]][0],
+          'cal_email' => $info[$i][$ldap_user_attr[4]][0],
           'cal_is_admin' => user_is_admin ($info[$i][$ldap_user_attr[0]][0],$Admins),
           'cal_fullname' => $info[$i][$ldap_user_attr[3]][0]
           );

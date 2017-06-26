@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: view_w.php,v 1.81 2009/11/22 22:26:18 bbannon Exp $
 /**
  * Page Description:
  * Display view of a week with users side by side.
@@ -19,11 +19,15 @@
  * then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
+include_once 'includes/init.php';
 include_once 'includes/views.php';
 
+$error = '';
 $USERS_PER_TABLE = 6;
 $id = getValue ( 'id' );
+view_init ( $id );
 $printerStr = generate_printer_friendly ( 'view_w.php' );
+set_today ( $date );
 
 $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
@@ -32,31 +36,45 @@ $todayYmd = date ( 'Ymd', $today );
 $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday + 1 );
 $wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ) );
 
+$nextStr = translate ( 'Next' );
+$prevStr = translate ( 'Previous' );
+
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
+
+print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
+
+// Get users in this view.
+$viewusers = view_get_user_list ( $id );
+$viewusercnt = count ( $viewusers );
+if ( $viewusercnt == 0 )
+  // This could happen if user_sees_only_his_groups = Y and
+  // this user is not a member of any group assigned to this view.
+  $error = translate( 'No users for this view.' );
 
 if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
-  ob_end_flush();
   exit;
 }
 
+ob_start();
+
 echo '
-      <div style="width:99%;">
-        <a title="' . $prevStr . '" class="prev" href="view_w.php?id=' . $id
+    <div style="width:99%;">
+      <a title="' . $prevStr . '" class="prev" href="view_w.php?id=' . $id
  . '&amp;date=' . sprintf ( "%04d%02d%02d", date ( 'Y', $prev ),
-  date( 'm', $prev ), date( 'd', $prev ) )
- . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '"></a>
-        <a title="' . $nextStr . '" class="next" href="view_w.php?id=' . $id
+  date ( 'm', $prev ), date ( 'd', $prev ) ) . '">
+        <img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
+      <a title="' . $nextStr . '" class="next" href="view_w.php?id=' . $id
  . '&amp;date=' . sprintf ( "%04d%02d%02d", date ( 'Y', $next ),
-  date( 'm', $next ), date( 'd', $next ) )
- . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '"></a>
-        <div class="title">
-          <span class="date">' . date_to_str( date( 'Ymd', $wkstart ), '',
+  date ( 'm', $next ), date ( 'd', $next ) ) . '">
+        <img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+      <div class="title">
+        <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '',
   false ) . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
- . date_to_str( date( 'Ymd', $wkend ), '', false ) . '</span><br>
-          <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
-        </div>
-      </div><br>';
+ . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br />
+        <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
+      </div>
+    </div><br />';
 
 // The table has names across the top and dates for rows. Since we need to spit
 // out an entire row before we can move to the next date, we'll save up all the
@@ -65,8 +83,7 @@ echo '
 // any more than that doesn't really fit in the page.
 
 $e_save = $re_save = array();
-$viewusercnt = count ( $viewusers );
-for ( $i = 0; $i < viewusercnt; $i++ ) {
+for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access. */
   $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   $re_save[$i] = $repeated_events;
@@ -75,7 +92,7 @@ for ( $i = 0; $i < viewusercnt; $i++ ) {
   $e_save[$i] = $events = read_events ( $viewusers[$i], $wkstart - 604800, $wkend );
 }
 
-for ( $j = 0; $j < viewusercnt; $j += $USERS_PER_TABLE ) {
+for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   // Since print_date_entries is rather stupid, we can swap the event data
   // around for users by changing what $events points to.
 
@@ -90,22 +107,25 @@ for ( $j = 0; $j < viewusercnt; $j += $USERS_PER_TABLE ) {
     : 5 );
 
   echo '
-      <table class="main" cellpadding="1" summary=""'
-   . ( $can_add ? 'title="' . $dblClickAdd . '"' : '' ) . '>
-        <tr>
-          <th class="empty">&nbsp;</th>';
+    <table class="main" cellspacing="0" cellpadding="1" summary=""';
+  if ( $can_add )
+    echo 'title="' .
+      translate ( 'Double-click on empty cell to add new entry' ) . '"';
+  echo '>
+      <tr>
+        <th class="empty">&nbsp;</th>';
 
   // $j points to start of this table/row.
   // $k is counter starting at 0.
   // $i starts at table start and goes until end of this table/row.
-  for ( $i = $j, $k = 0; $i < viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+  for ( $i = $j, $k = 0; $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
     $user = $viewusers[$i];
     user_load_variables ( $user, 'temp' );
     echo '
-          <th style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
+        <th style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
   }
   echo '
-        </tr>';
+      </tr>';
 
   for ( $date = $wkstart; $date < $wkend; $date += 86400 ) {
     $dateYmd = date ( 'Ymd', $date );
@@ -113,46 +133,45 @@ for ( $j = 0; $j < viewusercnt; $j += $USERS_PER_TABLE ) {
     if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
       continue;
 
-    $class = ' class="' . ( $dateYmd == $todayYmd
+    $class = 'class="' . ( $dateYmd == $todayYmd
       ? 'today"' : ( $is_weekend ? 'weekend"' : 'row"' ) );
 
     echo '
-        <tr>
-          <th ' . $class . '>'
+      <tr>
+        <th ' . $class . '>'
      . weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS )
      . ' ' . date ( 'd', $date ) . '</th>';
-    for ( $i = $j, $k = 0; $i < viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
+    for ( $i = $j, $k = 0; $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $user = $viewusers[$i];
       $events = $e_save[$i];
       $repeated_events = $re_save[$i];
       $entryStr = print_date_entries ( $dateYmd, $user, true );
       // Unset class from above if needed.
-      if ( $class == ' class="row"' ||  $class == ' class="hasevents"' )
+      if ( $class == 'class="row"' ||  $class == 'class="hasevents"' )
         $class = '';
       if ( ! empty ( $entryStr ) && $entryStr != '&nbsp;' )
-        $class = ' class="hasevents"';
+        $class = 'class="hasevents"';
       else if ( $dateYmd == $todayYmd )
-        $class = ' class="today"';
+        $class = 'class="today"';
       else if ( $is_weekend )
-        $class = ' class="weekend"';
-
+        $class = 'class="weekend"';
       echo '
-          <td' . $class . ' style="width:' . $tdw . '%;"'
-       . ( $can_add
-         ? " ondblclick=\"dblclick_add( '$dateYmd', '$user', 0, 0 )\">" : '>' )
-       . $entryStr . '</td>';
+        <td ' . $class . ' style="width:' . $tdw . '%;"';
+      if ( $can_add )
+        echo " ondblclick=\"dblclick_add( '$dateYmd', '$user', 0, 0 )\"";
+      echo '>' . $entryStr . '</td>';
     }
     echo '
-        </tr>';
+      </tr>';
   }
   echo '
-      </table>';
+    </table>';
 }
+
+ob_end_flush();
 
 $user = ''; // reset
 
 echo ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
-
-ob_end_flush();
 
 ?>

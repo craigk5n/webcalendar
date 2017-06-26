@@ -1,5 +1,5 @@
 <?php
-/* $Id$
+/* $Id: controlpanel.php,v 1.15 2009/10/11 16:29:59 bbannon Exp $
  *
  * Description:
  * This page generates the JNLP contents
@@ -19,23 +19,18 @@
  *
  **************************************************************************/
 
-foreach( array(
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'translate',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
-foreach( array(
-    'WebCalendar',
-    'Event',
-    'RptEvent',
-  ) as $i ) {
-  require_once 'includes/classes/' . $i . '.class';
-}
+include_once 'includes/translate.php';
+require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
+
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+
 $WebCalendar->initializeFirstPhase ();
 
 include 'includes/' . $user_inc;
@@ -58,7 +53,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
   codebase="' . $SERVER_URL . '"
   href="controlpanel.php">
   <information>
-    <title>' . translate( 'Control Panel_' ) . ' ' . htmlentities( $appStr );
+    <title>' . translate ( 'Control Panel' ) . ': ' . htmlentities ( $appStr );
 
 ?></title>
     <vendor>k5n.us</vendor>

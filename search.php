@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: search.php,v 1.58.2.1 2013/01/24 21:15:09 cknudsen Exp $
 
 include_once 'includes/init.php';
 // Is this user allowed to search the calendars of other users?
@@ -18,51 +18,61 @@ elseif( $login == '__public__' && ! empty( $PUBLIC_ACCESS_OTHERS )
     && $PUBLIC_ACCESS_OTHERS == 'Y' )
   $show_others = true;
 
-$show_advanced = ( getValue( 'adv', '[01]' ) == '1' ? '1' : '0' );
+$show_advanced = getValue( 'adv', '[01]' );
+$show_advanced = $show_advanced == '1' ? '1' : '0';
 $avdStyle = array( 'hidden', 'visible' );
 if( access_is_enabled()
     && ! access_can_access_function( ACCESS_ADVANCED_SEARCH ) )
-  $show_advanced = '0';
+  $show_advanced = false;
 
 load_user_categories();
+$selected = ' selected="selected" ';
 
 $advSearchStr = translate( 'Advanced Search' );
 $searchStr    = translate( 'Search' );
+$INC = array();
+
+$INC[] = 'js/autocomplete.js';
+
+if( $show_advanced ) {
+  $INC[] = 'js/translate.js.php';
+  $INC[] = 'js/visible.js/true';
+  $INC[] = 'js/datesel.php';
+}
+
+if( $show_others )
+  $INC[] = 'js/search.js/true';
 
 ob_start();
-setcookie( 'show_adv', $show_advanced );
-setcookie( 'vis', $avdStyle[$show_advanced] );
-print_header();
+print_header( $INC );
 
-echo '
-    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
+echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
     <form action="search_handler.php" method="post" id="searchformentry" '
- . 'name="searchformentry">
-      <input type="hidden" name="advanced" value="' . $show_advanced . '">
-      <table summary="">
-        <tr>
-          <td><label for="keywordsadv">' . translate( 'Keywords' )
- . '&nbsp;</label></td>
-          <td><input type="text" id="keywordsadv" name="keywords" size="30">&nbsp;
-            <input type="submit" value="' . $searchStr . '"></td>
-        </tr>
-        <tr height="30px">
-          <td>&nbsp;</td>
-          <td valign="top">' . translate( 'Enter % for all entries' ) . '</td>
-        </tr>';
+ . 'name="searchformentry" style="margin-left: 13px;">
+      <input type="hidden" name="advanced" value="' . $show_advanced . '" />
+      <table summary=""><tr><td><label for="keywordsadv">' . translate( 'Keywords' )
+ . ':&nbsp;</label></td>
+        <td><input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
+        <input type="submit" value="' . $searchStr . '" /></td></tr>';
+
+echo '<tr height="30px"><td>&nbsp;</td><td valign="top">(' .
+  translate( 'Enter % for all entries' ) . ')</td></tr>';
 
 if( is_array( $categories ) && $show_advanced ) {
   echo '
-        <tr id="catfilter">
-          <td><label for="cat_filter">' . translate( 'Categories_' )
-   . '</label></td>
+        <tr id="catfilter" style="visibility:' . $avdStyle[$show_advanced]
+   . ';">
+          <td><label for="cat_filter">' . translate( 'Categories' )
+   . ':</label></td>
           <td>
-            <select id="cat_filter" name="cat_filter">' . $option . '" selected>'
-   . $allStr . '</option>';
+            <select name="cat_filter" id="cat_filter">
+              <option value=""' . $selected . '>' . translate( 'All' )
+   . '</option>';
 
   foreach( $categories as $K => $V ) {
     if( $K > 0 )
-      echo $option . $K . '">' . $V['cat_name'] . '</option>';
+      echo '
+              <option value="' . $K . '">' . htmlentities ( $V['cat_name'] ) . '</option>';
   }
 
   echo '
@@ -72,35 +82,43 @@ if( is_array( $categories ) && $show_advanced ) {
 }
 if( count( $site_extras ) > 0 ) {
   echo '
-        <tr id="extrafilter">
-          <td><label for="extra_filter">' . translate( 'Include Site Extras' )
-   . '</label></td>
-          <td><input type="checkbox" name="extra_filter" value="Y"></td>
-        </tr>';
+        <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced]
+   . ';">
+          <td><label for="extra_filter">'
+   . translate( 'Include' ) . '<br />' . translate( 'Site Extras' )
+   . ':</label></td>
+          <td><input type="checkbox" name="extra_filter" value="Y" />
+          </td></tr>';
 }
 if( $show_advanced ) {
   $dateYmd = date( 'Ymd' );
   echo '
-        <tr id="datefilter">
-          <td><label for="date_filter">' . translate( 'Filter by Date' )
-   . '</label></td>
+        <tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced]
+   . ';">
+          <td><label for="date_filter">' . translate('Filter by Date')
+   . ':</label></td>
           <td>
-            <select id="date_filter" name="date_filter">'
-   . $option . '0" selected>' . translate( 'All Dates' ) . '</option>'
-   . $option . '1">' . translate( 'Past' ) . '</option>'
-   . $option . '2">' . translate( 'Upcoming' ) . '</option>'
-   . $option . '3">' . translate( 'Range' ) . '</option>
+            <select name="date_filter" id="date_filter" onchange="toggleDateRange()">
+              <option value="0"' . $selected . '>' . translate( 'All Dates' )
+   . '</option>
+              <option value="1">' . translate( 'Past' ) . '</option>
+              <option value="2">' . translate( 'Upcoming' ) . '</option>
+              <option value="3">' . translate( 'Range' ) . '</option>
             </select>
           </td>
         </tr>
-        <tr id="startDate">
-          <td>&nbsp;&nbsp;<label>' . translate( 'Start date_' ) . '</label></td>
-          <td>' . datesel_Print( 'from_', $dateYmd ) . '
+        <tr id="startDate" style="visibility:hidden">
+          <td>&nbsp;&nbsp;<label>' . translate( 'Start date' )
+   . ':</label></td>
+          <td>'
+   . datesel_Print( 'from_', $dateYmd ) . '
           </td>
         </tr>
-        <tr id="endDate">
-          <td>&nbsp;&nbsp;<label>' . translate( 'End date_' ) . '</label></td>
-          <td>' . datesel_Print( 'until_', $dateYmd ) . '
+        <tr id="endDate" style="visibility:hidden">
+          <td>&nbsp;&nbsp;<label>' . translate( 'End date' )
+   . ':</label></td>
+          <td>'
+   . datesel_Print( 'until_', $dateYmd ) . '
           </td>
         </tr>';
 }
@@ -122,34 +140,43 @@ if( $show_others ) {
     $size = $cnt;
 
   echo '
-        <tr id="advlink">
-          <td colspan="2"><a href="search.php?adv=1">' . $advSearchStr
-   . '</a></td>
-        </tr>
-        <tr id="adv">
+      <tr id="advlink" style="visibility:' . $avdStyle[!$show_advanced]
+   . ';"><td colspan="2"><a title="' . $advSearchStr
+   . '" href="search.php?adv=1">'
+   . $advSearchStr . '</a></td></tr>
+        <tr  id="adv" style="visibility:' . $avdStyle[$show_advanced]
+   . ';">
           <td class="aligntop"><label for="usersadv">'
-   . translate( 'Users_' ) . '&nbsp;</label></td>
+   . translate( 'Users' ) . ':&nbsp;</label></td>
           <td>
             <select name="users[]" id="usersadv" size="' . $size
-   . '" multiple>';
+   . '" multiple="multiple">';
 
   for( $i = 0; $i < $cnt; $i++ ) {
-    echo $option . $users[$i]['cal_login']
-     . ( $users[$i]['cal_login'] == $login ? '" selected>' : '">' )
-     . $users[$i]['cal_fullname'] . '</option>';
+    echo '
+              <option value="' . $users[$i]['cal_login'] . '"'
+     . ( $users[$i]['cal_login'] == $login ? ' selected="selected"' : '' )
+     . '>' . $users[$i]['cal_fullname'] . '</option>';
   }
 
   echo '
             </select>'
    . ( $GROUPS_ENABLED == 'Y'
-    ? '<input type="button" id="searchUsers" value="' . $selectStr . '...">'
-    : '' ) . '
+    ? '<input type="button" onclick="selectUsers()" value="'
+     . translate( 'Select' ) . '..." />' : '' ) . '
           </td>
         </tr>';
 }
-
-echo '</table>
-    </form>' . print_trailer();
 ob_end_flush();
 
+echo '</table></form>';
+?>
+<script language="JavaScript">
+<!-- <![CDATA[
+new Autocomplete('keywordsadv', { serviceUrl:'autocomplete_ajax.php' });
+
+//]]> -->
+</script>
+<?php
+print_trailer ();
 ?>

@@ -6,7 +6,7 @@
  * @author Jeff Hoover
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$:
+ * @version $Id: touch_of_grey_pref.php,v 1.5 2007/02/01 02:23:11 bbannon Exp $:
  * @package WebCalendar
  */
 
@@ -32,6 +32,6 @@ $webcal_theme = array (
   'WEEKENDBG'    => '#F0F1F5',  // Table cell background for weekends
  );
 
-include_once 'theme_inc.php';
+include 'theme_inc.php';
 
 ?>

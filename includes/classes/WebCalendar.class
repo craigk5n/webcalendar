@@ -4,9 +4,10 @@
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: WebCalendar.class,v 1.137 2011/04/09 16:53:58 rjones6061 Exp $
  * @package WebCalendar
  */
+
 /**
  * The WebCalendar.
  *
@@ -222,8 +223,8 @@ class WebCalendar {
           $nonusers = get_my_nonusers ( $login, true );
           $userlist = array_merge ( $nonusers, $userlist );
         }
-        foreach ( $userlist as $i ) {
-          if ( $user == $i['cal_login'] )
+        for ( $i = 0; $i < count ( $userlist ); $i++ ) {
+          if ( $user == $userlist[$i]['cal_login'] )
             $valid_user = true;
         }
         if ( ! $valid_user )
@@ -387,6 +388,8 @@ class WebCalendar {
       $GLOBALS['webcalendar_login'] = $_COOKIE['webcalendar_login'];
     if ( ! empty ( $_COOKIE['webcalendar_last_view'] ) )
       $GLOBALS['webcalendar_last_view'] = $_COOKIE['webcalendar_last_view'];
+    if ( ! empty ( $_COOKIE['webcalendar_csscache'] ) )
+      $GLOBALS['webcalendar_csscache'] = $_COOKIE['webcalendar_csscache'];
 
     // Don't allow a user to put "login=XXX" in the URL
     // if they are not coming from the login.php page.
@@ -396,8 +399,7 @@ class WebCalendar {
     if ( empty ( $PHP_SELF ) )
       $PHP_SELF = ''; // This happens when running send_reminders.php from CL.
 
-// Keep the space so 0 really is === false
-    if ( ! strpos ( ' login.php', $PHP_SELF ) && ! empty ( $GLOBALS['login'] ) )
+    if ( ! strstr ( $PHP_SELF, 'login.php' ) && ! empty ( $GLOBALS['login'] ) )
       $GLOBALS['login'] = '';
 
     // Define an array to use to jumble up the key: $offsets
@@ -458,10 +460,10 @@ class WebCalendar {
     if ( ! $use_http_auth &&
       ( $this->_filename == 'css_cacher.php' ||
         $this->_filename == 'icalclient.php' ||
-        $this->_filename == 'js_cacher.php' ||
-        $this->_filename == 'publish.php' ||
+        $this->_filename == 'rss_unapproved.php' ||
         $this->_filename == 'rss_activity_log.php' ||
-        $this->_filename == 'rss_unapproved.php' ) ) {
+        $this->_filename == 'js_cacher.php' ||
+        $this->_filename == 'publish.php' ) ) {
       return;
     }
 
@@ -556,7 +558,7 @@ class WebCalendar {
             if ( ! empty ( $login ) && $login != addslashes ( $login ) ) {
               // The following deletes the bad cookie.
               // So, the user just needs to reload.
-              setcookie( 'webcalendar_session', '', 0 );
+              SetCookie ( 'webcalendar_session', '', 0 );
               die_miserable_death ( 'Illegal characters in login <tt>'
                  . htmlentities ( $login )
                  . '</tt>. Press browser reload to clear bad cookie.' );
@@ -660,7 +662,7 @@ class WebCalendar {
             array ( $single_user_login, md5 ( $single_user_login ), 'Y' ) ) )
           die_miserable_death ( 'User <tt>' . $single_user_login
              . '</tt> does not exist in <tt>webcal_user</tt> table and we were '
-             . 'not able to add it for you:<br><blockquote>' . dbi_error()
+             . 'not able to add it for you:<br /><blockquote>' . dbi_error()
              . '</blockquote>' );
 
         // User was added... should we tell them?
@@ -688,7 +690,7 @@ class WebCalendar {
     if ( empty ( $login_url ) )
       $login_url = 'login.php';
 
-    $login_url .= ( strpos ( $login_url, '?' ) ? '&amp;' : '?' )
+    $login_url .= ( strstr ( $login_url, '?' ) ? '&amp;' : '?' )
      . ( empty ( $login_return_path ) ? '' : 'return_path='
          . $login_return_path );
 
@@ -723,14 +725,14 @@ class WebCalendar {
     $is_nonuser = false;
 
     if ( empty ( $login ) && $use_http_auth ) {
-      if ( strpos ( ' login.php', $PHP_SELF ) ) {
+      if ( strstr ( $PHP_SELF, "login.php" ) ) {
         // Ignore since login.php will redirect to index.php.
       } else
         send_http_login();
     } else
     if ( ! empty ( $login ) ) {
       // They are already logged in ($login is set in validate.php).
-      if ( strpos ( ' login.php', $PHP_SELF ) ) {
+      if ( strstr ( $PHP_SELF, 'login.php' ) ) {
         // Ignore since login.php will redirect to index.php.
       } else
       if ( $login == '__public__' ) {
@@ -769,79 +771,78 @@ class WebCalendar {
     // Restrict them from using certain pages.
     $not_auth = false;
     if ( ! empty ( $login ) && $login == '__public__' || $is_nonuser ) {
-// Could be shorter and faster without the linefeeds but, that's harder to read/maintain.
-// Keep the first linefeed so 0 really is === false.
-      if ( strpos ( '
-activity_log.php
-admin.php
-adminhome.php
-admin_handler.php
-approve_entry.php
-category.php
-category_handler.php
-del_entry.php
-edit_remotes.php
-edit_remotes_handler.php
-edit_template.php
-edit_user.php
-edit_user_handler.php
-groups.php
-group_edit_handler.php
-import.php
-import_handler.php
-layers.php
-layer_toggle.php
-list_unapproved.php
-pref.php
-pref_handler.php
-reject_entry.php
-set_entry_cat.php
-views.php
-views_edit_handler.php', $PHP_SELF ) )
+      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
+        strstr ( $PHP_SELF, 'admin.php' ) ||
+        strstr ( $PHP_SELF, 'admin_handler.php' ) ||
+        strstr ( $PHP_SELF, 'adminhome.php' ) ||
+        strstr ( $PHP_SELF, 'approve_entry.php' ) ||
+        strstr ( $PHP_SELF, 'category.php' ) ||
+        strstr ( $PHP_SELF, 'category_handler.php' ) ||
+        strstr ( $PHP_SELF, 'del_entry.php' ) ||
+        strstr ( $PHP_SELF, 'edit_remotes.php' ) ||
+        strstr ( $PHP_SELF, 'edit_remotes_handler.php' ) ||
+        strstr ( $PHP_SELF, 'edit_template.php' ) ||
+        strstr ( $PHP_SELF, 'edit_user.php' ) ||
+        strstr ( $PHP_SELF, 'edit_user_handler.php' ) ||
+        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
+        strstr ( $PHP_SELF, 'groups.php' ) ||
+        strstr ( $PHP_SELF, 'import.php' ) ||
+        strstr ( $PHP_SELF, 'import_handler.php' ) ||
+        strstr ( $PHP_SELF, 'layer_toggle.php' ) ||
+        strstr ( $PHP_SELF, 'layers.php' ) ||
+        strstr ( $PHP_SELF, 'list_unapproved.php' ) ||
+        strstr ( $PHP_SELF, 'pref.php' ) ||
+        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
+        strstr ( $PHP_SELF, 'reject_entry.php' ) ||
+        strstr ( $PHP_SELF, 'set_entry_cat.php' ) ||
+        strstr ( $PHP_SELF, 'views.php' ) ||
+        strstr ( $PHP_SELF, 'views_edit_handler.php' ) )
         $not_auth = true;
     }
-    if ( empty ( $is_admin ) ) {
-      if ( strpos ( '
-admin.php
-admin_handler.php
-group_edit.php
-group_edit_handler.php
-groups.php', $PHP_SELF ) ) {
+
+    if ( empty ( $is_admin ) || ! $is_admin ) {
+      //if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
+      if ( strstr ( $PHP_SELF, 'admin.php' ) ||
+        strstr ( $PHP_SELF, 'admin_handler.php' ) ||
+        strstr ( $PHP_SELF, 'group_edit.php' ) ||
+        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
+        strstr ( $PHP_SELF, 'groups.php' ) ) {
         $not_auth = true;
       }
     }
 
     // Restrict access if calendar is read-only.
     if ( $readonly == 'Y' ) {
-      if ( strpos ( '
-activity_log.php
-admin.php
-adminhome.php
-approve_entry.php
-category.php
-category_handler.php
-del_entry.php
-edit_report.php
-edit_report_handler.php
-edit_template.php
-edit_user.php
-edit_user_handler.php
-groups.php
-group_edit_handler.php
-import.php
-import_handler.php
-layers.php
-layer_toggle.php
-list_unapproved.php
-pref.php
-pref_handler.php
-purge.php
-register.php
-reject_entry.php
-set_entry_cat.php
-users.php
-views.php
-views_edit_handler.php', $PHP_SELF ) )
+      if ( strstr ( $PHP_SELF, 'activity_log.php' ) ||
+        strstr ( $PHP_SELF, 'admin.php' ) ||
+        strstr ( $PHP_SELF, 'adminhome.php' ) ||
+        strstr ( $PHP_SELF, 'approve_entry.php' ) ||
+        strstr ( $PHP_SELF, 'category.php' ) ||
+        strstr ( $PHP_SELF, 'category_handler.php' ) ||
+        strstr ( $PHP_SELF, 'del_entry.php' ) ||
+        strstr ( $PHP_SELF, 'edit_report.php' ) ||
+        strstr ( $PHP_SELF, 'edit_report_handler.php' ) ||
+        strstr ( $PHP_SELF, 'edit_template.php' ) ||
+        strstr ( $PHP_SELF, 'edit_user.php' ) ||
+        strstr ( $PHP_SELF, 'edit_user_handler.php' ) ||
+        strstr ( $PHP_SELF, 'group_edit_handler.php' ) ||
+        strstr ( $PHP_SELF, 'groups.php' ) ||
+        strstr ( $PHP_SELF, 'import.php' ) ||
+        strstr ( $PHP_SELF, 'import_handler.php' ) ||
+        strstr ( $PHP_SELF, 'import_handler.php' ) ||
+        strstr ( $PHP_SELF, 'layer_toggle.php' ) ||
+        strstr ( $PHP_SELF, 'layers.php' ) ||
+        strstr ( $PHP_SELF, 'list_unapproved.php' ) ||
+        strstr ( $PHP_SELF, 'pref.php' ) ||
+        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
+        strstr ( $PHP_SELF, 'pref_handler.php' ) ||
+        strstr ( $PHP_SELF, 'purge.php' ) ||
+        strstr ( $PHP_SELF, 'register.php' ) ||
+        strstr ( $PHP_SELF, 'reject_entry.php' ) ||
+        strstr ( $PHP_SELF, 'set_entry_cat.php' ) ||
+        strstr ( $PHP_SELF, 'users.php' ) ||
+        strstr ( $PHP_SELF, 'views.php' ) ||
+        strstr ( $PHP_SELF, 'views_edit_handler.php' ) )
         $not_auth = true;
     }
 

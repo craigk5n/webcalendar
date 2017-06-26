@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: js_cacher.php,v 1.20 2009/12/27 15:53:29 bbannon Exp $
 // If the JavaScript doesn't need any input from PHP,
 // this file should not be called.
 define( '_ISVALID', true );
@@ -33,20 +33,16 @@ closedir( $myDirectory );
 ob_start( ini_get( 'zlib.output_compression' ) != 1
   && ! stristr( $_SERVER['HTTP_USER_AGENT'], 'MSIE 6' ) ? 'ob_gzhandler' : '' );
 
-foreach( array(
-    'access',
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'translate',
-    'validate',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
+include_once 'includes/translate.php';
+include_once 'includes/config.php';
+include_once 'includes/dbi4php.php';
+include_once 'includes/formvars.php';
+include_once 'includes/functions.php';
 
 do_config( 'includes/settings.php' );
 include_once 'includes/' . $user_inc;
+include_once 'includes/access.php';
+include_once 'includes/validate.php';
 include_once 'includes/gradient.php';
 
 header( 'Content-type: text/javascript' );

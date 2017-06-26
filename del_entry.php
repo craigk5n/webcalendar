@@ -1,9 +1,7 @@
-<?php /* $Id$ */
+<?php // $Id: del_entry.php,v 1.78 2009/11/22 16:47:44 bbannon Exp $
 include_once 'includes/init.php';
 require 'includes/classes/WebCalMailer.class';
 $mail = new WebCalMailer;
-
-require_valid_referring_url();
 
 $can_edit = $my_event = false;
 $other_user = '';
@@ -133,38 +131,38 @@ if ( $id > 0 && empty ( $error ) ) {
 
     $eventstart = date_to_epoch ( $fmtdate . $time );
     $TIME_FORMAT = 24;
-    foreach ( $partlogin as $i ) {
+    for ( $i = 0, $cnt = count ( $partlogin ); $i < $cnt; $i++ ) {
       // Log the deletion.
-      activity_log ( $id, $login, $i, $log_delete, '' );
+      activity_log ( $id, $login, $partlogin[$i], $log_delete, '' );
       // Check UAC.
       $can_email = ( access_is_enabled()
-        ? access_user_calendar ( 'email', $i, $login ) : false );
+        ? access_user_calendar ( 'email', $partlogin[$i], $login ) : false );
 
       // Don't email the logged in user.
-      if ( $can_email && $i != $login ) {
-        set_env ( 'TZ', get_pref_setting ( $i, 'TIMEZONE' ) );
-        $user_language = get_pref_setting ( $i, 'LANGUAGE' );
-        user_load_variables ( $i, 'temp' );
-        if ( ! $is_nonuser_admin && $i != $login
-            && get_pref_setting ( $i, 'EMAIL_EVENT_DELETED' ) == 'Y'
-            && boss_must_be_notified ( $login, $i ) && ! empty ( $tempemail )
-            && $SEND_EMAIL != 'N' ) {
+      if ( $can_email && $partlogin[$i] != $login ) {
+        set_env ( 'TZ', get_pref_setting ( $partlogin[$i], 'TIMEZONE' ) );
+        $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
+        user_load_variables ( $partlogin[$i], 'temp' );
+        if ( ! $is_nonuser_admin && $partlogin[$i] != $login &&
+          get_pref_setting ( $partlogin[$i], 'EMAIL_EVENT_DELETED' ) == 'Y' &&
+            boss_must_be_notified ( $login, $partlogin[$i] ) && !
+            empty ( $tempemail ) && $SEND_EMAIL != 'N' ) {
           reset_language ( empty ( $user_language ) || $user_language == 'none'
             ? $LANGUAGE : $user_language );
           // Use WebCalMailer class.
           $mail->WC_Send ( $login_fullname, $tempemail, $tempfullname, $name,
             str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) )
              . ".\n\n" . str_replace ( 'XXX', $login_fullname,
-              translate ( 'XXX canceled an appointment' ) ) . "\n"
+              translate ( 'XXX has canceled an appointment.' ) ) . "\n"
              . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . "\"\n"
              . str_replace ( 'XXX', date_to_str ( $thisdate ),
               translate ( 'Date XXX' ) ) . "\n"
              . ( ! empty ( $eventtime ) && $eventtime != '-1'
               ? str_replace ( 'XXX', display_time ( '', 2, $eventstart,
-                  get_pref_setting ( $i, 'TIME_FORMAT' ) ),
+                  get_pref_setting ( $partlogin[$i], 'TIME_FORMAT' ) ),
                 translate ( 'Time XXX' ) ) : '' ) . "\n\n",
             // Apply user's GMT offset and display their TZID.
-            get_pref_setting ( $i, 'EMAIL_HTML' ), $login_email );
+            get_pref_setting ( $partlogin[$i], 'EMAIL_HTML' ), $login_email );
         }
       }
     }
@@ -188,20 +186,22 @@ if ( $id > 0 && empty ( $error ) ) {
             $ex_events[] = $row[0];
           }
           dbi_free_result ( $res );
-          foreach ( $ex_events as $i ) {
+          for ( $i = 0, $cnt = count ( $ex_events ); $i < $cnt; $i++ ) {
             $res = dbi_execute ( 'SELECT cal_login FROM
-              webcal_entry_user WHERE cal_id = ?', array ( $i ) );
+              webcal_entry_user WHERE cal_id = ?', array ( $ex_events[$i] ) );
             if ( $res ) {
               $delusers = array();
               while ( $row = dbi_fetch_row ( $res ) ) {
                 $delusers[] = $row[0];
               }
               dbi_free_result ( $res );
-              foreach ( $delusers as $j ) {
+              for ( $j = 0, $cnt = count ( $delusers ); $j < $cnt; $j++ ) {
                 // Log the deletion.
-                activity_log ( $i, $login, $j, $log_delete, '' );
+                activity_log ( $ex_events[$i], $login, $delusers[$j],
+                  $log_delete, '' );
                 dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
-                  WHERE cal_id = ? AND cal_login = ?', array ( 'D', $i, $j ) );
+                  WHERE cal_id = ? AND cal_login = ?',
+                  array ( 'D', $ex_events[$i], $delusers[$j] ) );
               }
             }
           }
@@ -219,7 +219,7 @@ if ( $id > 0 && empty ( $error ) ) {
   } else {
     // Not the owner of the event, but participant or noncal_admin.
     // Just  set the status to 'D' instead of deleting.
-    $del_user = ( empty( $other_user ) ? $login : $other_user );
+    $del_user = ( ! empty ( $other_user ) ? $other_user : $login );
     if ( ! empty ( $user ) && $user != $login ) {
       if ( $is_admin || $my_event || ( $can_edit && $is_assistant ) ||
           ( access_is_enabled() &&

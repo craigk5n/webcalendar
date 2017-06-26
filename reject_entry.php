@@ -1,10 +1,10 @@
-<?php /* $Id$ */
+<?php // $Id: reject_entry.php,v 1.67.2.1 2012/02/28 15:43:10 cknudsen Exp $
 include_once 'includes/init.php';
-require_valid_referring_url();
-require 'includes/classes/WebCalMailer.class';
-
-$error= '';
+require_valid_referring_url ();
+require ( 'includes/classes/WebCalMailer.class' );
 $mail = new WebCalMailer;
+
+$error = '';
 
 if ( $readonly == 'Y' )
   $error = print_not_auth();
@@ -18,7 +18,7 @@ else {
     <form action="reject_entry.php'
    . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : '?' . $_SERVER['QUERY_STRING'] )
    . '" method="post" name="add_comments">
-      <table cellspacing="5" summary="">
+      <table border="0" cellspacing="5" summary="">
         <tr>
           <td align="center" valign="bottom"><h3>'
    . translate ( 'Additional Comments (optional)' ) . '</h3></td>
@@ -29,10 +29,12 @@ else {
         </tr>
         <tr>
           <td align="center"><input type="submit" value="'
-   . translate( 'Continue' ) . '"></td>
+   . translate ( 'Continue' ) . '" /></td>
         </tr>
         <tr>
-          <td>' . translate ( 'comments emailed to others' ) . '</td>
+          <td>'
+   . translate ( '(Your comments will be emailed to the other participants.)' )
+   . '</td>
         </tr>
       </table>
     </form>
@@ -82,20 +84,21 @@ if ( empty ( $error ) && $id > 0 ) {
   }
 
   $eventstart = date_to_epoch ( $fmtdate . $time );
-  foreach ( $partlogin as $i ) {
+  for ( $i = 0, $cnt = count ( $partlogin ); $i < $cnt; $i++ ) {
     // Does this user want email for this?
-    $send_user_mail = get_pref_setting ( $i, 'EMAIL_EVENT_REJECTED' );
+    $send_user_mail = get_pref_setting ( $partlogin[$i],
+      'EMAIL_EVENT_REJECTED' );
     // Check UAC.
     $can_mail = 'Y';
     if ( access_is_enabled() )
-      $can_mail = access_user_calendar ( 'email', $i, $login );
+      $can_mail = access_user_calendar ( 'email', $partlogin[$i], $login );
 
-    $htmlmail = get_pref_setting ( $i, 'EMAIL_HTML' );
-    $t_format = get_pref_setting ( $i, 'TIME_FORMAT' );
-    user_load_variables ( $i, 'temp' );
-    $user_TIMEZONE = get_pref_setting ( $i, 'TIMEZONE' );
+    $htmlmail = get_pref_setting ( $partlogin[$i], 'EMAIL_HTML' );
+    $t_format = get_pref_setting ( $partlogin[$i], 'TIME_FORMAT' );
+    user_load_variables ( $partlogin[$i], 'temp' );
+    $user_TIMEZONE = get_pref_setting ( $partlogin[$i], 'TIMEZONE' );
     set_env ( 'TZ', $user_TIMEZONE );
-    $user_language = get_pref_setting ( $i, 'LANGUAGE' );
+    $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
     if ( $send_user_mail == 'Y' &&
       strlen ( $tempemail ) && $SEND_EMAIL != 'N' && $can_mail == 'Y' ) {
       reset_language ( empty ( $user_language ) || $user_language == 'none'
@@ -105,7 +108,7 @@ if ( empty ( $error ) && $id > 0 ) {
       str_replace ( 'XXX', $tempfullname, translate ( 'Hello, XXX.' ) ) . '
 
 ' . str_replace ( 'XXX', $login_fullname,
-        translate ( 'XXX rejected an appointment' ) ) . '
+        translate ( 'XXX has rejected an appointment.' ) ) . '
 
 ' . str_replace ( 'XXX', $name, translate ( 'Subject XXX' ) ) . '
 ' . str_replace ( 'XXX', $description, translate ( 'Description XXX' ) ) . '
@@ -135,7 +138,7 @@ if ( empty ( $error ) && $id > 0 ) {
       // Send via WebCalMailer class.
       $mail->WC_Send ( $login_fullname, $tempemail,
         $tempfullname, $name, $msg, $htmlmail, $from );
-      activity_log ( $id, $login, $i, LOG_NOTIFICATION,
+      activity_log ( $id, $login, $partlogin[$i], LOG_NOTIFICATION,
         str_replace ( 'XXX', $app_user, translate ( 'Rejected by XXX.' ) ) );
     }
   }

@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: view_r.php,v 1.58 2009/11/22 22:26:18 bbannon Exp $
 /**
  * Page Description:
  * This is the "Week by Time" and "Week by Day" view.
@@ -44,8 +44,10 @@
  * enabled, then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
+include_once 'includes/init.php';
 include_once 'includes/views.php';
 
+$error = '';
 $can_add = true; // include '+' add icons in this view?
 
 // Set this to true to allow the table to be larger than the browser's
@@ -76,6 +78,8 @@ $DISPLAY_TZ = 2;
 // this row around in all cases.
 $show_untimed_row_always = true;
 
+view_init ( $id );
+
 // view type 'E' = Day by Time, 'R' = Week by Time
 $is_day_view = ( $view_type == 'E' );
 $col_pixels = ( $is_day_view ? $col_pixels_day : $col_pixels_week );
@@ -83,18 +87,25 @@ $fit_to_window = ( $is_day_view ? $fit_to_window_day : $fit_to_window_week );
 $show_time = ( $is_day_view ? $show_time_day : $show_time_week );
 
 $printerStr = generate_printer_friendly ( 'view_r.php' );
+set_today ( $date );
+
+print_header( array( 'js/popups.js/true' ) );
 
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 
-$next = mktime( 0, 0, 0, $thismonth, $thisday + ( $is_day_view ? 1 : 7 ), $thisyear );
-
+if ( $is_day_view )
+  $next = mktime ( 0, 0, 0, $thismonth, $thisday + 1, $thisyear );
+else
+  $next = mktime ( 0, 0, 0, $thismonth, $thisday + 7, $thisyear );
 $nextyear = date ( 'Y', $next );
 $nextmonth = date ( 'm', $next );
 $nextday = date ( 'd', $next );
 $nextdate = sprintf ( "%04d%02d%02d", $nextyear, $nextmonth, $nextday );
 
-$prev = mktime( 0, 0, 0, $thismonth, $thisday - ( $is_day_view ? 1 : 7 ), $thisyear );
-
+if ( $is_day_view )
+  $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 1, $thisyear );
+else
+  $prev = mktime ( 0, 0, 0, $thismonth, $thisday - 7, $thisyear );
 $prevyear = date ( 'Y', $prev );
 $prevmonth = date ( 'm', $prev );
 $prevday = date ( 'd', $prev );
@@ -104,7 +115,10 @@ $wkstart = get_weekday_before ( $thisyear, $thismonth, $thisday +1 );
 
 $wkend = $wkstart + 604800;
 
-$time_w = ( $fit_to_window ? '8%' : '100px' ); // 8% for time column
+if ( ! $fit_to_window )
+  $time_w = '100px';
+else
+  $time_w = '8%'; // 8% for time column
 
 // Set the day of week range (0=Sun, 6=Sat)
 // $start_ind = start of range
@@ -133,7 +147,7 @@ if ( $is_day_view ) {
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + 86400 * $i ) + 43200;
   $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS );
-  $header[$i] = $weekdays[$i] . '<br>' .
+  $header[$i] = $weekdays[$i] . '<br />' .
      month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );
   if ( empty ( $first_date ) )
@@ -146,15 +160,23 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
 // save up all the HTML for each cell and then print it out when we're
 // done.
 
+$viewusers = view_get_user_list ( $id );
+$viewusercnt = count ( $viewusers );
+//echo "<pre>"; print_r ( $viewusers ); echo "</pre>\n";
+
 // Make sure we have at least one user in our view.
 // If this is a global view, we may have removed all the users if
 // the current user does not have permission to view any of the
 // users in the view.
 // In theory, we whould always at least have ourselves in the view, right?
+if ( $viewusercnt == 0 ) {
+  // I don't think we need to translate this.
+  $error = 'No users for this view.';
+}
 
 if ( ! empty ( $error ) ) {
-  echo print_error( $error ) . print_trailer();
-  ob_end_flush();
+  echo print_error ( $error );
+  echo print_trailer();
   exit;
 }
 
@@ -162,8 +184,10 @@ if ( ! empty ( $error ) ) {
 // col_pixels = width of smallest column
 // 100 = width of time column on left of table
 if ( ! $fit_to_window ) {
-  $table_width = ( $col_pixels * $viewusercnt ) * ( $end_ind - $start_ind + 1 ) + 100;
+  $table_width = ( $col_pixels * $viewusercnt ) *
+    ( $end_ind - $start_ind + 1 ) + 100;
 }
+//echo "table_width=$table_width<br />\n";
 
 // tdw is the cell width for each day
 if ( ! $fit_to_window )
@@ -187,7 +211,6 @@ if ( ! $fit_to_window )
   $uwf = $col_pixels . 'px';
 else
   $uwf = sprintf ( "%0.2f", $tdw / $viewusercnt ) . '%';
-
 $uheader = '';
 for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
@@ -200,7 +223,7 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   user_load_variables ( $viewusers[$i], 'temp' );
   $uheader .= "<th class=\"small\" width=\"$uwf\" style=\"width:$uwf;\">" .
     $tempfullname . "</th>\n";
-  //echo "$viewusers[$i]: loaded " . count( $events ) . " events<br>\n";
+  //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br />\n";
 }
 $num_users = $viewusercnt;
 
@@ -214,34 +237,36 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 ?>
 
 <div style="width:99%;">
-<a title="<?php echo $prevStr;?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php echo $prevStr;?>"></a>
+<a title="<?php etranslate ( 'Previous' )?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
 
-<a title="<?php echo $nextStr;?>" class="next" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php echo $nextStr?>"></a>
+<a title="<?php etranslate ( 'Next' )?>" class="next" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
 <span class="date"><?php
   if ( $is_day_view ) {
     echo date_to_str ( date ( 'Ymd', $thistime ), false );
   } else {
-    echo $first_date . "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" . $last_date;
+    echo $first_date . "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
+      $last_date;
   }
-?></span><br>
+?></span><br />
 <span class="viewname"><?php echo htmlspecialchars ( $view_name ) ?></span>
 <?php
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-    echo "<br>\n<span class=\"titleweek\">(" .
+    echo "<br />\n<span class=\"titleweek\">(" .
       translate( 'Week' ) . ' ' . date( 'W', $wkstart + 86400 ) . ')</span>';
   }
 ?>
-</div></div><br>
+</div></div><br />
 
 <?php
-$help = ( $can_add ? 'title="' . $dblClickAdd . '"' : '' );
+$help = ( $can_add ? 'title="' .
+    translate ( 'Double-click on empty cell to add new entry' ) . '"' : '' );
 
 if ( ! $fit_to_window ) { ?>
 <table <?php echo $help;?> class="main" style="width:<?php
   echo $table_width;?>px;" width="<?php echo $table_width;?>">
 <?php } else { ?>
-<table <?php echo $help;?> class="main">
+<table <?php echo $help;?> class="main" width="100%">
 <?php } ?>
 
 <!-- table header -->
@@ -304,13 +329,15 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     // get all the repeating events for this date and store in array $rep
     $dateYmd = date ( 'Ymd', $days[$d] );
     $rep = get_repeating_entries ( $user, $dateYmd );
-    foreach ( $rep as $j ) {
-      if( ! isset ( $am_part[$j->getID()] ) ) {
-        $am_part[$j->getID()] = user_is_participant ( $j->getID(), $login );
+    $repcnt = count ( $rep );
+    for ( $j = 0; $j < $repcnt; $j++ ) {
+      if( ! isset( $am_part[$rep[$j]->getID()] ) ) {
+        $am_part[$rep[$j]->getID()] =
+          user_is_participant( $rep[$j]->getID(), $login );
       }
-      if( $get_unapproved || $j->getStatus() == 'A' ) {
-        if ( $j->getDuration() > 0 && $j->getDuration() != 1440 ) {
-          $slot = calc_time_slot ( $j->getTime(), false );
+      if( $get_unapproved || $rep[$j]->getStatus() == 'A' ) {
+        if ( $rep[$j]->getDuration() > 0 && $rep[$j]->getDuration() != 1440 ) {
+          $slot = calc_time_slot( $rep[$j]->getTime(), false );
           if ( $slot < $first_slot ) {
             $first_slot = $slot;
           }
@@ -318,12 +345,14 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
       }
     }
     $ev = get_entries ( $dateYmd, $get_unapproved, 1, 1);
-    foreach ( $ev as $j ) {
-      if( ! isset ( $am_part[$j->getID()] ) ) {
-        $am_part[$j->getID()] = user_is_participant ( $j->getID(), $login );
+    $evcnt = count ( $ev );
+    for ( $j = 0; $j < $evcnt; $j++ ) {
+      if( ! isset( $am_part[$ev[$j]->getID()] ) ) {
+        $am_part[$ev[$j]->getID()] =
+          user_is_participant( $ev[$j]->getID(), $login );
       }
-      if( $j->getDuration() > 0 && $j->getDuration() != 1440 ) {
-        $slot = calc_time_slot( $j->getTime(), false );
+      if( $ev[$j]->getDuration() > 0 && $ev[$j]->getDuration() != 1440 ) {
+        $slot = calc_time_slot( $ev[$j]->getTime(), false );
         if ( $slot < $first_slot ) {
           $first_slot = $slot;
         }
@@ -345,12 +374,14 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
 
     // Get static non-repeating events
     $ev = get_entries ( $dateYmd, $get_unapproved, 1, 1 );
-    $hour_arr = $rowspan_arr = array();
+    $hour_arr = array();
+    $rowspan_arr = array();
     $evcnt = count ( $ev );
     $repcnt = count ( $rep );
-    foreach ( $ev as $i ) {
+    for ( $i = 0; $i < $evcnt; $i++ ) {
       // print out any repeating events that are before this one...
-      while ( $cur_rep < $repcnt && $rep[$cur_rep]->getTime() < $i->getTime() ) {
+      while ( $cur_rep < $repcnt &&
+        $rep[$cur_rep]->getTime() < $ev[$i]->getTime() ) {
         if( $get_unapproved || $rep[$cur_rep]->getStatus() == 'A' ) {
           if( $rep[$cur_rep]->getDuration() == 1440 )
             $all_day[$d] = 1;
@@ -358,10 +389,12 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         }
         $cur_rep++;
       }
-      if ( $get_unapproved || $i->getStatus() == 'A' ) {
-        if ( $i->getDuration() == 1440 )
+      if( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
+        if( $ev[$i]->getDuration() == 1440 )
           $all_day[$d] = 1;
-        html_for_event_week_at_a_glance ( $i, $dateYmd, 'small', $show_time );
+        html_for_event_week_at_a_glance ( $ev[$i], $dateYmd, 'small', $show_time );
+        //echo "Found event date=$dateYmd name='$viewname'<br />\n";
+        //print_r ( $rowspan_arr );
       }
     }
     // print out any remaining repeating events
@@ -392,7 +425,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
           $start_time = $i;
           $diff_start_time = $start_time - $last_row;
           for ( $x = $diff_start_time; $x > 0; $x-- )
-            $hour_arr[$last_row] .= "<br>\n";
+            $hour_arr[$last_row] .= "<br />\n";
           $hour_arr[$last_row] .= $hour_arr[$i];
           $hour_arr[$i] = '';
           $rowspan_arr[$i] = 0;
@@ -424,22 +457,31 @@ if ( $untimed_found || $show_untimed_row_always ) {
     $is_weekend = is_weekend ( $days[$d] );
     if ( $is_weekend  && $DISPLAY_WEEKENDS == 'N' ) continue;
     if ( $dateYmd == $todayYmd )
-      $class .= ' class="today"';
+      $class .= 'class="today"';
     else if ( $is_weekend )
-      $class .= ' class="weekend"';
+      $class .= 'class="weekend"';
     else
       $class = '';
     for ( $u = 0; $u < $viewusercnt; $u++ ) {
       $untimed = $save_untimed[$u][$d];
-      // Use the class 'hasevents' for any hour block that contains events.
+      // Use the class 'hasevents' for any hour block that has events
+      // in it.
       if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
-        $class = ' class="hasevents"';
+        $class = 'class="hasevents"';
       }
 
-      echo '<td' . $class . ( $can_add
-        ? " ondblclick=\"dblclick( '$dateYmd', '$viewusers[$u]' )\">" : '>' )
-       . ( empty( $untimed[$d] ) && strlen ( $untimed[$d] )
-         ? '&nbsp;' : $untimed[$d] ) . "</td>\n";
+      echo "<td $class ";
+      if ( $can_add ) {
+        echo " ondblclick=\"dblclick( '$dateYmd', '$viewusers[$u]' )\"";
+      }
+      echo '>';
+
+      if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
+        echo $untimed[$d];
+      } else {
+        echo '&nbsp;';
+      }
+      echo "</td>\n";
     }
   }
   echo "</tr>\n";
@@ -466,34 +508,53 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
       $rowspan_arr = $save_rowspan_arr[$u][$d];
       $is_weekend = is_weekend ( $days[$d] );
       if ( $dateYmd == $todayYmd )
-        $class .= ' class="today"';
+        $class .= 'class="today"';
       else if ( $is_weekend )
-        $class .= ' class="weekend"';
+        $class .= 'class="weekend"';
       else
         $class = '';
-      // Use the class 'hasevents' for any hour block that contains events.
+      // Use the class 'hasevents' for any hour block that has events
+      // in it.
       if ( ! empty ( $hour_arr[$i] ) && strlen ( $hour_arr[$i] ) ) {
-        $class = ' class="hasevents"';
+        $class = 'class="hasevents"';
       }
 
       if ( $rowspan_day[$u][$d] > 1 ) {
         // this might mean there's an overlap, or it could mean one event
         // ends at 11:15 and another starts at 11:30.
         if ( !empty ( $hour_arr[$i] ) ) {
-          echo '<td' .  $class . '>' . $hour_arr[$i]. "</td>\n";
+          echo "<td $class>" . $hour_arr[$i]. "</td>\n";
         }
         $rowspan_day[$u][$d]--;
       } else {
         if ( empty ( $hour_arr[$i] ) ) {
-          echo '<td' . $class . ( $can_add
-            ? " ondblclick=\"dblclick( '$dateYmd', '$viewusers[$u]', '$time_h',"
-              . " '$time_m' )\"" : '' ) . ">&nbsp;</td>\n";
+          echo "<td $class ";
+          if ( $can_add ) {
+            echo " ondblclick=\"dblclick( '$dateYmd', "
+              . "'$viewusers[$u]', '$time_h', '$time_m' )\"";
+          }
+          echo '>';
+          echo "&nbsp;</td>\n";
         } else {
           $rowspan_day[$u][$d] = $save_rowspan_arr[$u][$d][$i];
-          echo "<td $class " . ( $rowspan_day[$u][$d] > 1
-            ? 'rowspan="' . $rowspan_day[$u][$d] . '"' : '' )
-           . ( $can_add ? "ondblclick=\"dblclick( '$dateYmd', '$user', "
-           . "'$time_h', '$time_m' )\">" : '>' ) . $hour_arr[$i] . "</td>\n";
+          if ( $rowspan_day[$u][$d] > 1 ) {
+            echo "<td $class ";
+            echo ' rowspan="' . $rowspan_day[$u][$d] . '"';
+            if ( $can_add ) {
+              echo " ondblclick=\"dblclick( '$dateYmd', "
+                . "'$user', '$time_h', '$time_m' )\"";
+            }
+            echo '>';
+            echo $hour_arr[$i]."</td>\n";
+          } else {
+            echo "<td $class ";
+            if ( $can_add ) {
+              echo " ondblclick=\"dblclick( '$dateYmd', "
+                . "'$user', '$time_h', '$time_m' )\"";
+            }
+            echo '>';
+            echo $hour_arr[$i]."</td>\n";
+          }
         }
       }
     }
@@ -504,7 +565,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 ?>
 
 </table>
-<script>
+<script type="text/javascript">
 <!-- <![CDATA[
 function dblclick( date, name, hour, minute ) {
  window.location.href  = 'edit_entry.php?date=' + date + '&defusers=' + name
@@ -517,9 +578,8 @@ function dblclick( date, name, hour, minute ) {
 
 $user = ''; // reset
 
-echo ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
+if ( ! empty ( $eventinfo ) ) echo $eventinfo;
 
-ob_end_flush();
-
-?>
+echo $printerStr;
+echo print_trailer(); ?>
 

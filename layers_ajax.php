@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: layers_ajax.php,v 1.4.2.1 2012/02/28 15:43:10 cknudsen Exp $
 /**
  * Description
  *   Handler for AJAX requests from layers.php.
@@ -6,26 +6,24 @@
  *   Because JSON support was not built-in to PHP until 5.2, we have our
  *   own implmentation in includes/JSON.php.
  */
-
-foreach( array(
-    'access',
-    'ajax',
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'translate',
-    'validate',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+require_valid_referring_url ();
+
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
+include 'includes/access.php';
+include 'includes/validate.php';
 include 'includes/JSON.php';
+include 'includes/ajax.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -59,7 +57,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   if( ! dbi_execute( 'INSERT INTO webcal_user_pref ( cal_login, cal_setting,
       cal_value ) VALUES ( ?, \'LAYERS_STATUS\', ? )',
       array( $layer_user, ( $action == 'enable' ? 'Y': 'N' ) ) ) ) {
-    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'Unable to update pref XXX' ) ) );
+    ajax_send_error ( translate ( 'Unable to update preference' ) . ': ' . dbi_error() );
   } else {
     // Success
     ajax_send_success();
@@ -81,7 +79,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   // TODO: we should do some additional checking here to make
   // sure someone isn't asking for a layer they are not authorized to view.
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-    $error = print_not_auth ();
+    $error = print_not_auth (7);
   } else {
     save_layer ( getPostValue('layeruser'),
       getPostValue('source'), getPostValue('color'),
@@ -96,7 +94,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   // TODO: we should so some additional checking here to make
   // sure someone isn't asking for a layer they are not authorized to view.
   if ( $ALLOW_VIEW_OTHER != 'Y' ) {
-    $error = print_not_auth ();
+    $error = print_not_auth (7);
   } else {
     $id = getPostValue ( 'id' );
     if ( $id <= 0 ) {
@@ -118,10 +116,10 @@ exit;
 function delete_layer ( $user, $id ) {
   global $error, $layers;
 
-  if ( ! dbi_execute ( 'DELETE FROM webcal_user_layers
-    WHERE cal_layerid = ? AND cal_login = ?',
+  if ( ! dbi_execute ( 'DELETE FROM webcal_user_layers ' .
+   ' WHERE cal_layerid = ? AND cal_login = ?',
    array ( $id, $user ) ) ) {
-    $error = str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) );
+    $error = translate ( "Database error" ) . ": " . dbi_error();
   }
 }
 
@@ -129,7 +127,7 @@ function save_layer ( $user, $source, $layercolor, $dups, $id ) {
   global $error, $layers;
 
   if ( $user == $source )
-    $error = translate ( 'no layers for yourself' );
+    $error = translate ( 'You cannot create a layer for yourself.' );
 
   load_user_layers ( $user, 1 );
 
@@ -151,7 +149,7 @@ function save_layer ( $user, $source, $layercolor, $dups, $id ) {
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
         if ( $row[0] > 0 )
-          $error = translate ( 'only one layer per user' );
+          $error = translate ( 'You can only create one layer for each user.' );
 
         dbi_free_result ( $res );
       }

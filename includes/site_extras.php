@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: site_extras.php,v 1.25 2009/11/22 16:47:46 bbannon Exp $
 /**
  * Page Description:
  *  This file can be used to define extra information associated with a
@@ -123,7 +123,7 @@ define ( 'EXTRA_DISPLAY_ALL', 511 );
                         // List of options (first will be default)
      array ( "None", "Room 101", "Room 102", "Conf Room 8", "Conf Room 12" ),
      12,                // 0=single  >1=multiple && also the maximum size
-                        // <select name="RoomLocation" size="12" multiple>
+                        // <select name="RoomLocation" multiple="multiple" size="12">
      EXTRA_DISPLAY_ALL //Display in all places
    ),
    array (
@@ -139,6 +139,8 @@ define ( 'EXTRA_DISPLAY_ALL', 511 );
  END EXAMPLES
 
  Define your stuff here...
+ Below translate calls are here so they get picked up by update_translation.pl.
+ They are never executed in PHP.
  Make sure you add translations in the translations file for anything
  you need to translate to another language.
  Use tools/check_translation.pl to verify you have all your translations.

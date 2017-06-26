@@ -1,21 +1,19 @@
-<?php // $Id$
-
-foreach( array(
-    'access',
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'translate',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
+<?php // $Id: register.php,v 1.50.2.1 2012/02/28 15:43:10 cknudsen Exp $
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+require_valid_referring_url ();
+
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
+include_once 'includes/access.php';
 include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
@@ -56,8 +54,8 @@ function checks( $isWhat, $isWher ) {
 
   if( ! strlen( $isWhat ) ) {
     $error = ( $isWher == 'login'
-      ? translate( 'no blank username' )
-      : translate( 'no blank email' ) );
+      ? translate( 'Username cannot be blank.' )
+      : translate( 'Email address cannot be blank.' ) );
     return false;
   }
   $res = dbi_execute( 'SELECT cal_' . $isWher . ' FROM webcal_user
@@ -93,7 +91,12 @@ function generate_password() {
   return $pass;
 }
 
-$uemail = $ufirstname = $ulastname = $upassword1 = $upassword2 = $user = '';
+$uemail =
+$ufirstname =
+$ulastname =
+$upassword1 =
+$upassword2 =
+$user = '';
 
 // We can limit what domain is allowed to self register.
 // $self_registration_domain should have this format "192.168.220.0:255.255.240.0";
@@ -104,7 +107,7 @@ if( empty( $valid_ip ) )
 
 // We could make $control a unique value if necessary.
 $control = getPostValue( 'control' );
-$illegalCharStr = translate( 'Illegal chars in login XXX' );
+$illegalCharStr = translate( 'Illegal characters in login XXX.' );
 
 if( empty( $error ) && ! empty( $control ) ) {
   $uemail     = getPostValue( 'uemail' );
@@ -141,14 +144,14 @@ if( empty( $error ) && ! empty( $control ) ) {
         $error = str_replace( 'XXX', htmlentities( $user ), $illegalCharStr );
     } elseif( $upassword1 != $upassword2 ) {
       $control = '';
-      $error = translate( 'passwords not identical' );
+      $error = translate( 'The passwords were not identical.' );
     }
 
     if( empty( $error ) ) {
       user_add_user( $user, $upassword1, $ufirstname, $ulastname,
         $uemail, $uis_admin );
       activity_log( 0, 'system', $user, LOG_NEWUSER_FULL,
-        translate( 'New user via self-reg' ) );
+        translate( 'New user via self-registration.' ) );
     }
   } elseif( $control == 'email' ) {
     // Process account info for email submission.
@@ -162,13 +165,15 @@ if( empty( $error ) && ! empty( $control ) ) {
     $msg = str_replace( ', XXX.',
       ( strlen( $tempName ) ? ', ' . $tempName . '.' : '.' ),
       translate( 'Hello, XXX.' ) ) . "\n\n"
-     . translate( 'you have a WebCal account' ) . "\n\n"
+     . translate( 'A new WebCalendar account has been set up for you.' )
+     . "\n\n"
     . str_replace( 'XXX', $user, translate( 'Your username is XXX.' ) )
      . "\n\n"
     . str_replace( 'XXX', $new_pass, translate( 'Your password is XXX.' ) )
      . "\n\n"
     . str_replace( 'XXX', $appStr,
-      translate( 'login to your account at XXX' ) ) . "\n";
+      translate( 'Please visit XXX to log in and start using your account!' ) )
+     . "\n";
 
     // Add URL to event, if we can figure it out.
     if( ! empty( $SERVER_URL ) ) {
@@ -180,10 +185,10 @@ if( empty( $error ) && ! empty( $control ) ) {
       $msg .= "\n\n" . $url;
     }
     $msg .= "\n\n"
-     . translate( 'change pwd after 1st login' )
-     . "\n\n" . translate( 'If email received in error' ) . "\n\n";
+     . translate( 'You may change your password after logging in the first time.' )
+     . "\n\n" . translate( 'If you received this email in error' ) . "\n\n";
     $adminStr = translate( 'Administrator', true );
-    $name = $appStr . ' ' . translate( 'Welcome' ) . ' ' . $ufirstname;
+    $name = $appStr . ' ' . translate( 'Welcome' ) . ': ' . $ufirstname;
     // Send via WebCalMailer class.
     $mail->WC_Send( $adminStr, $uemail, $ufirstname . ' '
        . $ulastname, $name, $msg, $htmlmail, $EMAIL_FALLBACK_FROM );
@@ -193,10 +198,23 @@ if( empty( $error ) && ! empty( $control ) ) {
 }
 
 echo send_doctype( $appStr ) . '
-    <link href="css_cacher.php?login=__public__" rel="stylesheet">
-    <link href="includes/css/styles.css" rel="stylesheet">
-    <!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->
-    <script src="includes/js/base.js"></script>'
+    <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js"></script><![endif]-->
+    <script type="text/javascript" src="includes/js/prototype.js"></script>
+    <script type="text/javascript">
+      var
+        validform = false,
+        xlate = [];
+
+      xlate[\'inputPassword\']   = \''
+ . translate( 'You have not entered a password.', true ) . '\',
+      xlate[\'noBlankUsername\'] = \''
+ . translate( 'Username cannot be blank.', true ) . '\',
+      xlate[\'passwordsNoMatch\'] = \''
+ . translate( 'The passwords were not identical.', true ) . '\';
+    </script>
+    <script type="text/javascript" src="includes/js/register.js"></script>
+    <link type="text/css" href="css_cacher.php?login=__public__" rel="stylesheet" />
+    <link type="text/css" href="includes/css/styles.css" rel="stylesheet" />'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
@@ -206,73 +224,79 @@ echo send_doctype( $appStr ) . '
     <h2>' . $appStr . ' ' . translate( 'Registration' ) . '</h2>'
  . ( ! empty( $error )
   ? '
-    <span class="error">' . $err_Str . $error . '</span><br>'
-  : '<br><br>' . ( empty( $control ) ? '' : '
+    <span style="color:#FF0000; font-weight:bold;">' . translate( 'Error' )
+   . ": $error" . '</span><br />'
+  : '<br /><br />' . ( empty( $control ) ? '' : '
     <form action="login.php" method="post">
-      <input type="hidden" name="login" value="' . $user . '">
-      <table cellspacing="10" summary="">
+      <input type="hidden" name="login" value="' . $user . '" />
+      <table align="center" cellspacing="10" cellpadding="10" summary="">
         <tr>
           <td rowspan="3"><img src="images/register.gif"></td>
-          <td>' . translate( 'Welcome to WebCal' ) . '</td>
+          <td>' . translate( 'Welcome to WebCalendar' ) . '</td>
         </tr>' . ( $SELF_REGISTRATION_FULL == 'Y' ? '
         <tr>
           <td colspan="3" align="center"><label>'
-       . translate( 'should get email soon' ) . '</label></td>
+       . translate( 'Your email should arrive shortly.' ) . '</label></td>
         </tr>' : '' ) . '
         <tr>
           <td colspan="3" align="center"><input type="submit" value="'
-     . translate( 'Return to Login screen' ) . '"></td>
+     . translate( 'Return to Login screen' ) . '" /></td>
         </tr>
       </table>
     </form>' ) . '
-    <form action="register.php" method="post" id="selfreg" name="selfreg">
-      <input type="hidden" name="control" value="' . $form_control . '">
-      <table cellspacing="10" summary="">
+    <form action="register.php" method="post" onSubmit="return valid_form()"
+        name="selfreg">
+      <input type="hidden" name="control" value="' . $form_control . '" />
+      <table align="center" cellpadding="10" cellspacing="10" summary="">
         <tr>
-          <td rowspan="3"><img src="images/register.gif" alt=""></td>
-          <td align="right"><label>' . translate( 'Username' ) . '</label></td>
-          <td><input type="text" id="user" name="user" size="20" maxlength="20" '
-   . 'value="' . $user . '"></td>
+          <td rowspan="3"><img src="images/register.gif" alt="" /></td>
+          <td align="right"><label>' . translate( 'Username' ) . ':</label></td>
+          <td align="left"><input type="text" name="user" id="user" value="'
+   . $user . '" size="20" maxlength="20" onChange="check_name();" /></td>
         </tr>
         <tr>
-          <td align="right"><label>' . translate( 'First Name' ) . '</label></td>
-          <td><input type="text" name="ufirstname" size="25" maxlength="25" value="'
-   . $ufirstname . '"></td>
+          <td align="right"><label>' . translate( 'First Name' )
+   . ':</label></td>
+          <td align="left"><input type="text" name="ufirstname" value="'
+   . $ufirstname . '" size="25" maxlength="25" /></td>
         </tr>
         <tr>
-          <td align="right"><label>' . translate( 'Last Name' ) . '</label></td>
-          <td><input type="text" name="ulastname" size="25" maxlength="25" value="'
-   . $ulastname . '"></td>
+          <td align="right"><label>' . translate( 'Last Name' ) . ':</label></td>
+          <td align="left"><input type="text" name="ulastname" value="'
+   . $ulastname . '" size="25" maxlength="25" /></td>
         </tr>
         <tr>
           <td align="right" colspan="2"><label>' . translate( 'E-mail address' )
-   . '</label></td>
-          <td><input type="text" id="uemail" name="uemail" size="40" maxlength="75" '
-   . 'value="' . $uemail . '"></td>
+   . ':</label></td>
+          <td align="left"><input type="text" name="uemail" id="uemail" value="'
+   . $uemail . '" size="40" maxlength="75" onChange="check_uemail();" /></td>
         </tr>
         <tr>
-          <td colspan="' . ( $SELF_REGISTRATION_FULL != 'Y'
-    ? '2" align="right"><label>' . translate( 'Password' ) . '</label></td>
-          <td><input type="password" name="upassword1" size="15" value="'
-     . $upassword1 . '"></td>
+          <td ' . ( $SELF_REGISTRATION_FULL != 'Y'
+    ? 'align="right" colspan="2"><label>' . translate( 'Password' )
+     . ':</label></td>
+          <td align="left"><input name="upassword1" value="' . $upassword1
+     . '" size="15" type="password" /></td>
         </tr>
         <tr>
-          <td colspan="2" align="right"><label>'
+          <td align="right" colspan="2"><label>'
            . translate( 'Password (again)' ) . '</label></td>
-          <td><input type="password" name="upassword2" size="15" value="'
-     . $upassword2 . '">'
-    : '3" align="center"><label>'
-     . translate( 'you get info by email' ) . '</label>' ) . '</td>
+          <td align="left"><input name="upassword2" value="' . $upassword2
+     . '" size="15" type="password" />'
+    : 'colspan="3" align="center"><label>'
+     . translate( 'Your account information will be emailed to you.' )
+     . '</label>' ) . '</td>
         </tr>
         <tr>
           <td colspan="3" align="center"><input type="submit" value="'
-   . translate( 'Submit' ) . '"></td>
+   . translate( 'Submit' ) . '" /></td>
         </tr>
       </table>
-    </form>' ) . '
-    <span class="cookies">' . translate( 'cookies-note' ) . '</span><br>
-    <hr>
-    <br><br>
+    </form>' ) . '<br /><br /><br /><br /><br /><br /><br /><br />
+    <span class="cookies">' . translate( 'cookies-note' )
+ . '</span><br />
+    <hr />
+    <br /><br />
     <a href="' . $PROGRAM_URL . '" id="programname">' . $PROGRAM_NAME . '</a>';
 // Print custom trailer (since we do not call print_trailer function).
 if( ! empty( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {

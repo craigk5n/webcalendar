@@ -1,6 +1,6 @@
-<?php /* $Id$ */
+<?php // $Id: rss.php,v 1.58 2010/10/05 17:16:59 cknudsen Exp $
 /**
- * Page Description:
+ * Description:
  * This script is intended to be used outside of normal WebCalendar use,
  * as an RSS 2.0 feed to a RSS client.
  *
@@ -52,29 +52,26 @@
 
 $debug = false;
 
- foreach( array(
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'site_extras',
-    'translate',
-    'validate',
-    'xcal',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
-foreach( array(
-    'WebCalendar',
-    'Event',
-    'RptEvent',
-  ) as $i ) {
-  require_once 'includes/classes/' . $i . '.class';
-}
+include_once 'includes/translate.php';
+require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
+
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/formvars.php';
+include 'includes/functions.php';
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
+
+include_once 'includes/validate.php';
+include 'includes/site_extras.php';
+
+include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -280,7 +277,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
 ';
 
   if ( $entrycnt > 0 || $rentrycnt > 0 ) {
-    for ( $j = 0, $cnt = count ( $entries ); $j < $cnt && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0; $j < $entrycnt && $numEvents < $maxEvents; $j++ ) {
       // Prevent non-Public events from feeding
       if ( in_array ( $entries[$j]->getAccess(), $allow_access ) ) {
         $eventIds[] = $entries[$j]->getID();
@@ -306,7 +303,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
         $numEvents++;
       }
     }
-    for ( $j = 0, $cnt = count ( $rentries ); $j < $cnt && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0; $j < $rentrycnt && $numEvents < $maxEvents; $j++ ) {
       // To allow repeated daily entries to be suppressed. Step below is
       // necessary because 1st occurence of repeating events shows up in
       // $entries AND $rentries & we suppress display of it in $rentries.

@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: upgrade-oracle.sql,v 1.29 2009/10/30 11:47:16 bbannon Exp $ */
 /*upgrade_v0.9.14*/
 UPDATE webcal_entry SET cal_time = -1 WHERE cal_time is null;
 CREATE TABLE webcal_entry_repeats (

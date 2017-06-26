@@ -27,11 +27,11 @@ var _cmIDName = 'cmSubMenuID';    // for creating submenu id
 var _cmTimeOut = null;      // how long the menu would stay
 var _cmCurrentItem = null;    // the current menu item being selected;
 
-var _cmNoAction = new Object();  // indicate that the item cannot be hovered.
-var _cmNoClick = new Object();    // similar to _cmNoAction but does not respond to mouseup/mousedown events
-var _cmSplit = new Object();    // indicate that the item is a menu split
+var _cmNoAction = new Object ();  // indicate that the item cannot be hovered.
+var _cmNoClick = new Object ();    // similar to _cmNoAction but does not respond to mouseup/mousedown events
+var _cmSplit = new Object ();    // indicate that the item is a menu split
 
-var _cmItemList = new Array();    // a simple list of items
+var _cmItemList = new Array ();    // a simple list of items
 
 // default node properties
 var _cmNodeProperties =
@@ -88,10 +88,11 @@ var _cmNodeProperties =
 //
 // produce a new unique id
 //
-function cmNewID()
+function cmNewID ()
 {
   return _cmIDName + (++_cmIDCount);
 }
+
 //
 // return the property string for the menu item
 //
@@ -115,6 +116,7 @@ function cmActionItem (item, prefix, isMain, idSub, orient, nodeProperties)
     returnStr = ' onmouseover="cmItemMouseOverOpenSub (this,' + prefix + ',' + isMain + ',' + idSub + ',' + orient + ',' + index + ')" onmousedown="cmItemMouseDown (this,' + index + ')"';
   return returnStr + ' onmouseout="cmItemMouseOut (this,' + nodeProperties.delay + ')" onmouseup="cmItemMouseUp (this,' + index + ')"';
 }
+
 //
 // this one is used by _cmNoClick to only take care of onmouseover and onmouseout
 // events which are associated with menu but not actions associated with menu clicking/closing
@@ -129,10 +131,12 @@ function cmNoClickItem (item, prefix, isMain, idSub, orient, nodeProperties)
   prefix = '\'' + prefix + '\'';
   return ' onmouseover="cmItemMouseOver (this,' + prefix + ',' + isMain + ',' + idSub + ',' + index + ')" onmouseout="cmItemMouseOut (this,' + nodeProperties.delay + ')"';
 }
+
 function cmNoActionItem (item, prefix)
 {
   return item[1];
 }
+
 function cmSplitItem (prefix, isMain, vertical)
 {
   var classStr = 'cm' + prefix;
@@ -148,6 +152,7 @@ function cmSplitItem (prefix, isMain, vertical)
     classStr += 'HSplit';
   return eval (classStr);
 }
+
 //
 // draw the sub menu recursively
 //
@@ -164,7 +169,8 @@ function cmDrawSubMenu (subMenu, prefix, id, orient, nodeProperties)
 
   var classStr;
 
-  for (i = 5; subMenu[i]; ++i) {
+  for (i = 5; i < subMenu.length; ++i)
+  {
     item = subMenu[i];
     if (!item)
       continue;
@@ -173,7 +179,7 @@ function cmDrawSubMenu (subMenu, prefix, id, orient, nodeProperties)
       item = cmSplitItem (prefix, 0, true);
 
     hasChild = (item.length > 5);
-    idSub = hasChild ? cmNewID() : null;
+    idSub = hasChild ? cmNewID () : null;
 
     str += '<tr class="' + prefix + 'MenuItem"';
     if (item[0] != _cmNoClick)
@@ -188,6 +194,7 @@ function cmDrawSubMenu (subMenu, prefix, id, orient, nodeProperties)
       str += '</tr>';
       continue;
     }
+
     classStr = prefix + 'Menu';
     classStr += hasChild ? 'Folder' : 'Item';
 
@@ -211,9 +218,11 @@ function cmDrawSubMenu (subMenu, prefix, id, orient, nodeProperties)
       str += nodeProperties.itemRight;
     str += '</td></tr>';
   }
+
   str += '</table></div>' + strSub;
   return str;
 }
+
 //
 // The function that builds the menu inside the specified element id.
 //
@@ -255,6 +264,7 @@ function cmDraw (id, menu, orient, nodeProperties, prefix)
     orientSub = 'v' + orientStr.substr (1, 2);
     vertical = true;
   }
+
   var i;
   var item;
   var idSub;
@@ -262,7 +272,8 @@ function cmDraw (id, menu, orient, nodeProperties, prefix)
 
   var classStr;
 
-  for (i = 0; menu[i]; ++i) {
+  for (i = 0; i < menu.length; ++i)
+  {
     item = menu[i];
 
     if (!item)
@@ -272,7 +283,7 @@ function cmDraw (id, menu, orient, nodeProperties, prefix)
     str += ' class="' + prefix + 'MainItem"';
 
     hasChild = (item.length > 5);
-    idSub = hasChild ? cmNewID() : null;
+    idSub = hasChild ? cmNewID () : null;
 
     str += cmActionItem (item, prefix, 1, idSub, orient, nodeProperties) + '>';
 
@@ -285,6 +296,7 @@ function cmDraw (id, menu, orient, nodeProperties, prefix)
       str += vertical? '</tr>' : '</td>';
       continue;
     }
+
     classStr = prefix + 'Main' + (hasChild ? 'Folder' : 'Item');
 
     str += vertical ? '<td' : '<span';
@@ -318,6 +330,7 @@ function cmDraw (id, menu, orient, nodeProperties, prefix)
   obj.innerHTML = str;
   //document.write ("<xmp>" + str + "</xmp>");
 }
+
 //
 // The function builds the menu inside the specified element id.
 //
@@ -344,8 +357,9 @@ function cmDrawFromText (id, orient, nodeProperties, prefix)
 {
   var domMenu = cmGetObject (id);
   var menu = null;
-  for (var currentDomItem = domMenu.firstChild; currentDomItem; currentDomItem = currentDomItem.nextSibling) {
-    if (!currentDomItem.tagName || currentDomItem.tagName.toLowerCase() != 'ul')
+  for (var currentDomItem = domMenu.firstChild; currentDomItem; currentDomItem = currentDomItem.nextSibling)
+  {
+    if (!currentDomItem.tagName || currentDomItem.tagName.toLowerCase () != 'ul')
       continue;
     menu = cmDrawFromTextSubMenu (currentDomItem);
     break;
@@ -353,25 +367,28 @@ function cmDrawFromText (id, orient, nodeProperties, prefix)
   if (menu)
     cmDraw (id, menu, orient, nodeProperties, prefix);
 }
+
 //
 // a recursive function that build menu tree structure
 //
 function cmDrawFromTextSubMenu (domMenu)
 {
-  var items = new Array();
-  for (var currentDomItem = domMenu.firstChild; currentDomItem; currentDomItem = currentDomItem.nextSibling) {
-    if (!currentDomItem.tagName || currentDomItem.tagName.toLowerCase() != 'li')
+  var items = new Array ();
+  for (var currentDomItem = domMenu.firstChild; currentDomItem; currentDomItem = currentDomItem.nextSibling)
+  {
+    if (!currentDomItem.tagName || currentDomItem.tagName.toLowerCase () != 'li')
       continue;
     if (currentDomItem.firstChild == null)
     {
       items[items.length] = _cmSplit;
       continue;
     }
-    var item = new Array();
+    var item = new Array ();
     var currentItem = currentDomItem.firstChild;
-    for (; currentItem; currentItem = currentItem.nextSibling) {
+    for (; currentItem; currentItem = currentItem.nextSibling)
+    {
       // scan for span tag
-      if (!currentItem.tagName || currentItem.tagName.toLowerCase() != 'span')
+      if (!currentItem.tagName || currentItem.tagName.toLowerCase () != 'span')
         continue;
       if (!currentItem.firstChild)
         item[0] = null;
@@ -381,9 +398,10 @@ function cmDrawFromTextSubMenu (domMenu)
     }
     if (!currentItem)
       continue;
-    for (; currentItem; currentItem = currentItem.nextSibling) {
+    for (; currentItem; currentItem = currentItem.nextSibling)
+    {
       // scan for span tag
-      if (!currentItem.tagName || currentItem.tagName.toLowerCase() != 'a')
+      if (!currentItem.tagName || currentItem.tagName.toLowerCase () != 'a')
         continue;
       item[1] = currentItem.innerHTML;
       item[2] = currentItem.href;
@@ -393,12 +411,14 @@ function cmDrawFromTextSubMenu (domMenu)
         item[4] = null;
       break;
     }
-    for (; currentItem; currentItem = currentItem.nextSibling) {
+
+    for (; currentItem; currentItem = currentItem.nextSibling)
+    {
       // scan for span tag
-      if (!currentItem.tagName || currentItem.tagName.toLowerCase() != 'ul')
+      if (!currentItem.tagName || currentItem.tagName.toLowerCase () != 'ul')
         continue;
       var subMenuItems = cmDrawFromTextSubMenu (currentItem);
-      for (i = 0; subMenuItems[i]; ++i)
+      for (i = 0; i < subMenuItems.length; ++i)
         item[i + 5] = subMenuItems[i];
       break;
     }
@@ -406,6 +426,7 @@ function cmDrawFromTextSubMenu (domMenu)
   }
   return items;
 }
+
 //////////////////////////////////////////////////////////////////////
 //
 // Mouse Event Handling Functions
@@ -426,13 +447,15 @@ function cmItemMouseOver (obj, prefix, isMain, idSub, index)
     obj.cmPrefix = prefix;
     obj.cmIsMain = isMain;
   }
+
   var thisMenu = cmGetThisMenu (obj, prefix);
 
   // insert obj into cmItems if cmItems doesn't have obj
   if (!thisMenu.cmItems)
-    thisMenu.cmItems = new Array();
+    thisMenu.cmItems = new Array ();
   var i;
-  for (i = 0; thisMenu.cmItems[i]; ++i) {
+  for (i = 0; i < thisMenu.cmItems.length; ++i)
+  {
     if (thisMenu.cmItems[i] == obj)
       break;
   }
@@ -441,6 +464,7 @@ function cmItemMouseOver (obj, prefix, isMain, idSub, index)
     //thisMenu.cmItems.push (obj);
     thisMenu.cmItems[i] = obj;
   }
+
   // hide the previous submenu that is not this branch
   if (_cmCurrentItem)
   {
@@ -452,6 +476,7 @@ function cmItemMouseOver (obj, prefix, isMain, idSub, index)
       cmSetStatus (item);
       return;
     }
+
     var thatPrefix = _cmCurrentItem.cmPrefix;
     var thatMenu = cmGetThisMenu (_cmCurrentItem, thatPrefix);
 
@@ -465,6 +490,7 @@ function cmItemMouseOver (obj, prefix, isMain, idSub, index)
         cmHideMenu (thatMenu, thisMenu, thatPrefix);
     }
   }
+
   // okay, set the current menu to this obj
   _cmCurrentItem = obj;
 
@@ -481,8 +507,10 @@ function cmItemMouseOver (obj, prefix, isMain, idSub, index)
     else
       obj.className = prefix + 'MenuItemHover';
   }
+
   cmSetStatus (item);
 }
+
 //
 // action should be taken for mouse moving in to the menu item
 //
@@ -498,6 +526,7 @@ function cmItemMouseOverOpenSub (obj, prefix, isMain, idSub, orient, index)
     cmShowSubMenu (obj, prefix, subMenu, orient);
   }
 }
+
 //
 // action should be taken for mouse moving out of the menu item
 //
@@ -505,9 +534,10 @@ function cmItemMouseOut (obj, delayTime)
 {
   if (!delayTime)
     delayTime = _cmNodeProperties.delay;
-  _cmTimeOut = window.setTimeout ('cmHideMenuTime()', delayTime);
+  _cmTimeOut = window.setTimeout ('cmHideMenuTime ()', delayTime);
   window.defaultStatus = '';
 }
+
 //
 // action should be taken for mouse button down at a menu item
 //
@@ -521,6 +551,7 @@ function cmItemMouseDown (obj, index)
       obj.className = obj.cmPrefix + 'MenuItemActive';
   }
 }
+
 //
 // action should be taken for mouse button down at a menu item
 // this is one also opens submenu if needed
@@ -535,6 +566,7 @@ function cmItemMouseDownOpenSub (obj, index, prefix, orient, idSub)
     cmShowSubMenu (obj, prefix, subMenu, orient);
   }
 }
+
 //
 // action should be taken for mouse button up at a menu item
 //
@@ -553,6 +585,7 @@ function cmItemMouseUp (obj, index)
   {
     window.open (link, target);
   }
+
   var prefix = obj.cmPrefix;
   var thisMenu = cmGetThisMenu (obj, prefix);
 
@@ -579,6 +612,7 @@ function cmItemMouseUp (obj, index)
     }
   }
 }
+
 //////////////////////////////////////////////////////////////////////
 //
 // Mouse Event Support Utility Functions
@@ -621,6 +655,7 @@ function cmMoveSubMenu (obj, subMenu, orient)
       subMenu.style.top = (cmGetYAt (obj, p) + cmGetHeight (obj) - cmGetHeight (subMenu)) + 'px';
   }
 }
+
 //
 // automatically re-adjust the menu position based on available screen size.
 //
@@ -663,6 +698,7 @@ function cmGetHorizontalAlign (obj, mode, p, subMenuWidth)
     return horiz;
   }
 }
+
 //
 // show the subMenu w/ specified orientation
 // also move it to the correct coordinates
@@ -679,10 +715,11 @@ function cmShowSubMenu (obj, prefix, subMenu, orient)
     var thisMenu = cmGetThisMenu (obj, prefix);
     subMenu.cmParentMenu = thisMenu;
     if (!thisMenu.cmSubMenu)
-      thisMenu.cmSubMenu = new Array();
+      thisMenu.cmSubMenu = new Array ();
     //thisMenu.cmSubMenu.push (subMenu);
     thisMenu.cmSubMenu[thisMenu.cmSubMenu.length] = subMenu;
   }
+
   // position the sub menu
   cmMoveSubMenu (obj, subMenu, orient);
   subMenu.style.visibility = 'visible';
@@ -701,7 +738,7 @@ function cmShowSubMenu (obj, prefix, subMenu, orient)
        not really sure if this part is necessary, but shouldn't
        hurt. */
     if (!subMenu.cmOverlap)
-      subMenu.cmOverlap = new Array();
+      subMenu.cmOverlap = new Array ();
 /*@cc_on @*/
 /*@if (@_jscript_version >= 5.5)
 @else @*/
@@ -711,6 +748,7 @@ function cmShowSubMenu (obj, prefix, subMenu, orient)
     cmHideControl ("OBJECT", subMenu);
   }
 }
+
 //
 // reset all the menu items to class MenuItem in thisMenu
 //
@@ -721,17 +759,22 @@ function cmResetMenu (thisMenu, prefix)
     var i;
     var str;
     var items = thisMenu.cmItems;
-    for (i = 0; items[i]; ++i) {
-      str = prefix + (items[i].cmIsMain ? 'MainItem' : 'MenuItem' );
+    for (i = 0; i < items.length; ++i)
+    {
+      if (items[i].cmIsMain)
+        str = prefix + 'MainItem';
+      else
+        str = prefix + 'MenuItem';
       if (items[i].className != str)
         items[i].className = str;
     }
   }
 }
+
 //
 // called by the timer to hide the menu
 //
-function cmHideMenuTime()
+function cmHideMenuTime ()
 {
   if (_cmCurrentItem)
   {
@@ -740,6 +783,7 @@ function cmHideMenuTime()
     _cmCurrentItem = null;
   }
 }
+
 //
 // hide thisMenu, children of thisMenu, as well as the ancestor
 // of thisMenu until currentMenu is encountered. currentMenu
@@ -753,10 +797,12 @@ function cmHideMenu (thisMenu, currentMenu, prefix)
   if (thisMenu.cmSubMenu)
   {
     var i;
-    for (i = 0; thisMenu.cmSubMenu[i]; ++i) {
+    for (i = 0; i < thisMenu.cmSubMenu.length; ++i)
+    {
       cmHideSubMenu (thisMenu.cmSubMenu[i], prefix);
     }
   }
+
   // hide the upstream menus
   while (thisMenu && thisMenu != currentMenu)
   {
@@ -771,6 +817,7 @@ function cmHideMenu (thisMenu, currentMenu, prefix)
     thisMenu = cmGetThisMenu (thisMenu.cmParentMenu, prefix);
   }
 }
+
 //
 // hide thisMenu as well as its sub menus if thisMenu is not
 // already hidden
@@ -782,7 +829,8 @@ function cmHideSubMenu (thisMenu, prefix)
   if (thisMenu.cmSubMenu)
   {
     var i;
-    for (i = 0; thisMenu.cmSubMenu[i]; ++i) {
+    for (i = 0; i < thisMenu.cmSubMenu.length; ++i)
+    {
       cmHideSubMenu (thisMenu.cmSubMenu[i], prefix);
     }
   }
@@ -790,6 +838,7 @@ function cmHideSubMenu (thisMenu, prefix)
   thisMenu.style.visibility = 'hidden';
   cmShowControl (thisMenu);
 }
+
 //
 // hide a control such as IFRAME
 //
@@ -801,7 +850,8 @@ function cmHideControl (tagName, subMenu)
   var h = subMenu.offsetHeight;
 
   var i;
-  for (i = 0; document.all.tags(tagName)[i]; ++i) {
+  for (i = 0; i < document.all.tags(tagName).length; ++i)
+  {
     var obj = document.all.tags(tagName)[i];
     if (!obj || !obj.offsetParent)
       continue;
@@ -830,6 +880,7 @@ function cmHideControl (tagName, subMenu)
     obj.style.visibility = "hidden";
   }
 }
+
 //
 // show the control hidden by the subMenu
 //
@@ -838,11 +889,12 @@ function cmShowControl (subMenu)
   if (subMenu.cmOverlap)
   {
     var i;
-    for (i = 0; subMenu.cmOverlap[i]; ++i)
+    for (i = 0; i < subMenu.cmOverlap.length; ++i)
       subMenu.cmOverlap[i].style.visibility = "";
   }
   subMenu.cmOverlap = null;
 }
+
 //
 // returns the main menu or the submenu table where this obj (menu item)
 // is in
@@ -859,6 +911,7 @@ function cmGetThisMenu (obj, prefix)
   }
   return null;
 }
+
 //
 // return true if this item is handled using default handlers
 //
@@ -868,6 +921,7 @@ function cmIsDefaultItem (item)
     return false;
   return true;
 }
+
 //
 // returns the object baring the id
 //
@@ -877,6 +931,7 @@ function cmGetObject (id)
     return document.all[id];
   return document.getElementById (id);
 }
+
 //
 // functions that obtain the width of an HTML element.
 //
@@ -893,6 +948,7 @@ function cmGetWidth (obj)
   // use the left and right child instead
   return obj.lastChild.offsetLeft - obj.firstChild.offsetLeft + cmGetWidth (obj.lastChild);
 }
+
 //
 // functions that obtain the height of an HTML element.
 //
@@ -906,6 +962,7 @@ function cmGetHeight (obj)
   // use the first child's height
   return obj.firstChild.offsetHeight;
 }
+
 //
 // functions that obtain the coordinates of an HTML element
 //
@@ -921,6 +978,7 @@ function cmGetX (obj)
   while (obj);
   return x;
 }
+
 function cmGetXAt (obj, elm)
 {
   var x = 0;
@@ -934,6 +992,7 @@ function cmGetXAt (obj, elm)
     return x;
   return x - cmGetX (elm);
 }
+
 function cmGetY (obj)
 {
   var y = 0;
@@ -945,11 +1004,13 @@ function cmGetY (obj)
   while (obj);
   return y;
 }
+
 function cmIsTRNode (obj)
 {
   var tagName = obj.tagName;
   return tagName == "TR" || tagName == "tr" || tagName == "Tr" || tagName == "tR";
 }
+
 //
 // get the Y position of the object. In case of TR element though,
 // we attempt to adjust the value.
@@ -964,15 +1025,18 @@ function cmGetYAt (obj, elm)
     obj = obj.firstChild;
     y -= firstTR.firstChild.offsetTop;
   }
+
   while (obj && obj != elm)
   {
     y += obj.offsetTop;
     obj = obj.offsetParent;
   }
+
   if (obj == elm)
     return y;
   return y - cmGetY (elm);
 }
+
 //
 // extract description from the menu item and set the status text
 // @param  item  the menu item
@@ -987,6 +1051,7 @@ function cmSetStatus (item)
 
   window.defaultStatus = descript;
 }
+
 //
 // debug function, ignore :)
 //
@@ -1003,6 +1068,7 @@ function cmGetProperties (obj)
     msg += i + ' = ' + obj[i] + '; ';
   return msg;
 }
+
 /* v1.4.4      1. a quick fix for a bug for _cmSplit checking. reported by
             Son Nguyen.
 */

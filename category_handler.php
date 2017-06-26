@@ -1,8 +1,8 @@
-<?php // $Id$
+<?php // $Id: category_handler.php,v 1.37.2.2 2013/01/24 21:15:08 cknudsen Exp $
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 
-$icon_max_size = '3000';
+$icon_max_size = '6000';
 $icon_path = 'icons/';
 
 /**
@@ -10,7 +10,8 @@ $icon_path = 'icons/';
  */
 function renameIcon ( $id ) {
   global $icon_path;
-  $bakIcon = $catIcon = $icon_path . 'cat-' . date ( 'YmdHis' ) . '.gif';
+  $bakIcon = $catIcon = $icon_path . 'cat-';
+  $bakIcon .= date ( 'YmdHis' ) . '.gif';
   $catIcon .= $id . '.gif';
   if ( ! file_exists ( $catIcon ) )
     $catIcon = 'icons/cat-' . $id . '.png';
@@ -22,6 +23,8 @@ function renameIcon ( $id ) {
 $is_my_event = false;
 $id = getValue ( 'id' );
 $catname = getValue ( 'catname' );
+// prohibit any html in category name (including <script>)
+$catname = strip_tags ( $catname );
 $catcolor = getValue ( 'catcolor' );
 $isglobal = getValue ( 'isglobal' );
 $delIcon = getPostValue ( 'delIcon' );
@@ -69,6 +72,8 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
   }
   // Rename any icons associated with this cat_id.
   renameIcon ( $id );
+} else if ( empty ( $error ) && empty ( $catname ) ) {
+  $error = translate ( 'Category name is required' );
 } else if ( empty ( $error ) ) {
   if ( ! empty ( $id ) ) {
     # Update (don't let them change global status).
@@ -118,7 +123,7 @@ if ( empty ( $error ) && ! empty ( $delete ) ) {
         $file_result = move_uploaded_file ( $file['tmp_name'], $fullIcon );
         // echo "Upload Result:" . $file_result;
       } else if ( $file['size'] > $icon_max_size ) {
-        $error = translate ( 'File size exceeds max' );
+        $error = translate ( 'File size exceeds maximum.' );
       } else if ( $file['type'] != 'image/gif' &&
         $file['type'] != 'image/png' ) {
         $error = translate ( 'File is not a GIF or PNG image' ) . ': '

@@ -1,6 +1,7 @@
-<?php /* $Id$ */
+<?php
 /**
- * Page description:
+ * $Id: access.php,v 1.60.2.1 2012/02/28 15:43:09 cknudsen Exp $
+ *
  * This page is used to manage user access rights.
  *
  * It has three different modes:
@@ -18,7 +19,7 @@
  *             includes/access.php. Each should be either 'Y' or 'N'.
  */
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 
 $allow_view_other =
   ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );
@@ -28,11 +29,13 @@ if( ! access_is_enabled() ) {
   exit;
 }
 
+$dbErrStr = translate( 'Database error XXX.' );
 $defConfigStr = translate( 'DEFAULT CONFIGURATION' );
 $goStr = '
       </select>
-      <input type="submit" value="' . translate( 'Go' ) . '">
+      <input type="submit" value="' . translate( 'Go' ) . '" />
     </form>';
+$saveStr = translate( 'Save' );
 $undoStr = translate( 'Undo' );
 
 $saved = '';
@@ -52,7 +55,7 @@ if( getPostValue( 'auser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
 
   if( ! dbi_execute( 'INSERT INTO webcal_access_function( cal_login,
       cal_permissions ) VALUES ( ?, ? )', array( $auser, $perm ) ) )
-    die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrXXXStr ) );
+    die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
   $saved = true;
 }
@@ -76,7 +79,7 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
       break;
 
     $approve_total = $edit_total = $view_total = 0;
-    for( $i = 1; $i < 257; ) {
+    for( $i = 1; $i <= 256; ) {
       $approve_total += getPostValue( 'a_' . $i );
       $edit_total    += getPostValue( 'e_' . $i );
       $view_total    += getPostValue( 'v_' . $i );
@@ -100,12 +103,14 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
           ( strlen( $invite ) ? $invite : 'N' ),
           ( strlen( $email ) ? $email : 'N' ),
           ( strlen( $time ) ? $time : 'N' ) ) ) )
-      die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrXXXStr ) );
+      die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
     $saved = true;
   }
 }
+$checked = ' checked="checked"';
 $guser = getPostValue( 'guser' );
+$selected = ' selected="selected"';
 
 if( $guser == '__default__' ) {
   $otheruser = $guser;
@@ -152,8 +157,14 @@ if( ! empty( $otheruser ) ) {
   }
 }
 ob_start();
-setcookie( 'enAll', ( ! empty( $op['time'] ) && $op['time'] == 'Y' ) );
-print_header();
+
+print_header( '',
+  '<script type="text/javascript" src="includes/js/access.js?'
+ . filemtime( 'includes/js/access.js' ) . '"></script>
+    <link type="text/css" href="includes/css/access.css?'
+ . filemtime( 'includes/css/access.css' ) . '" rel="stylesheet" />',
+  ( ! empty( $op['time'] ) && $op['time'] == 'Y'
+    ? 'onload="enableAll( true );"' : '' ) );
 
 echo print_success( $saved );
 
@@ -161,28 +172,33 @@ if( ! empty( $guser ) && $is_admin )
   user_load_variables( $guser, 'user_' );
 
 if( $is_admin ) {
+  $adminStr = translate( 'Admin' );
   $userlist = get_my_users();
   $nonuserlist = get_nonuser_cals();
   // If we are here... we must need to print out a list of users.
   echo '
-    <h2>' . ( empty( $user_fullname )
-    ? translate( 'UAC' )
-    : str_replace( 'XXX', $user_fullname, translate( 'UAC XXX' ) ) ) . '</h2>
+    <h2>' . translate( 'User Access Control' )
+   . ( empty( $user_fullname ) ? '' : ': ' . $user_fullname ) . '</h2>
     ' . display_admin_link( false ) . '
     <form action="access.php" method="post" name="SelectUser">
-      <select id="guser" name="guser">'
+      <select name="guser" onchange="document.SelectUser.submit()">'
   // Add a DEFAULT CONFIGURATION to be used as a mask.
-   . $option . '__default__"' . ( $guser == '__default__' ? ' selected>' : '>' )
-   . $defConfigStr . '</option>';
-  foreach ( $userlist as $i ) {
-    echo $option . $i['cal_login']
-     . ( $guser == $i['cal_login'] ? '" selected>' : '">' )
-     . $i['cal_fullname'] . '</option>';
+  . '
+        <option value="__default__"'
+   . ( $guser == '__default__' ? $selected : '' )
+   . '>' . $defConfigStr . '</option>';
+  for( $i = 0, $cnt = count( $userlist ); $i < $cnt; $i++ ) {
+    echo '
+        <option value="' . $userlist[$i]['cal_login'] . '"'
+     . ( $guser == $userlist[$i]['cal_login'] ? $selected : '' )
+     . '>' . $userlist[$i]['cal_fullname'] . '</option>';
   }
-  foreach ( $nonuserlist as $i ) {
-    echo $option . $i['cal_login']
-      . ( $guser == $i['cal_login'] ? '" selected>' : '">' ) . $i['cal_fullname']
-      . ' ' . ( $i['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
+  for( $i = 0, $cnt = count( $nonuserlist ); $i < $cnt; $i++ ) {
+    echo '
+        <option value="' . $nonuserlist[$i]['cal_login'] . '"'
+     . ( $guser == $nonuserlist[$i]['cal_login'] ? $selected : '' )
+     . '>' . $nonuserlist[$i]['cal_fullname'] . ' '
+     . ( $nonuserlist[$i]['cal_is_public'] == 'Y' ? '*' : '' ) . '</option>';
   }
 
   echo $goStr;
@@ -198,13 +214,14 @@ if( ! empty( $guser ) || ! $is_admin ) {
     $order = array(
       1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 27,
       15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 );
-    // Make sure we covered all access types defined in "includes\access.php".
+    // Make sure that we have defined all the types of access
+    // defined in access.php.
     assert( count( $order ) == ACCESS_NUMBER_FUNCTIONS );
 
     echo '
     <form action="access.php" method="post" id="accessform" name="accessform">
-      <input type="hidden" name="auser" value="' . $guser . '">
-      <input type="hidden" name="guser" value="' . $guser . '">
+      <input type="hidden" name="auser" value="' . $guser . '" />
+      <input type="hidden" name="guser" value="' . $guser . '" />
       <table summary="">
         <tbody>
           <tr>
@@ -232,12 +249,15 @@ if( ! empty( $guser ) || ! $is_admin ) {
             $show = false;
         }
       }
-      echo ( $show ? print_checkbox( array( 'access_' . $order[$i], 'Y',
+      if( $show )
+        echo print_checkbox( array( 'access_' . $order[$i], 'Y',
             access_get_function_description( $order[$i] ),
-            substr( $access, $order[$i], 1 ) ), 'dito' ) . '<br>' : '' )
-       . ( ( $i + 1 ) % $div == 0 ? '
+            substr( $access, $order[$i], 1 ) ), 'dito' ) . '<br />';
+
+      if( ( $i + 1 ) % $div == 0 )
+        echo '
             </td>
-            <td>' : '' );
+            <td>';
     }
 
     echo '
@@ -245,17 +265,17 @@ if( ! empty( $guser ) || ! $is_admin ) {
           </tr>
         </tbody>
       </table>
-      <input type="submit" value="' . $undoStr . '">
-      <input type="submit" name="submit" value="' . $saveStr . '">
+      <input type="submit" value="' . $undoStr . '" />
+      <input type="submit" name="submit" value="' . $saveStr . '" />
     </form>';
 
-    $pagetitle = translate( 'may access others cals' );
+    $pagetitle = translate( 'Allow Access to Other Users Calendar' );
   } else {
     // Get list of users that this user can see (may depend on group settings)
     // along with all nonuser calendars.
     // if( $guser != '__default__' ) {
     $guser = $login;
-    $pagetitle = translate( 'this user may access my cal' );
+    $pagetitle = translate( 'Grant This User Access to My Calendar' );
   }
 
   if( $guser == '__default__' ) {
@@ -268,18 +288,21 @@ if( ! empty( $guser ) || ! $is_admin ) {
     echo '
     <h2 style="margin-bottom: 2px;">' . $pagetitle . '</h2>
     <form action="access.php" method="post" name="SelectOther">
-      <input type="hidden" name="guser" value="' . $guser . '">
-      <select id="ouser" name="otheruser">'
+      <input type="hidden" name="guser" value="' . $guser . '" />
+      <select name="otheruser" onchange="document.SelectOther.submit()">'
     // Add a DEFAULT CONFIGURATION to be used as a mask.
-     . $option . '__default__"'
-     . ( $otheruser == '__default__' ? ' selected>' : '>' )
-     . $defConfigStr . '</option>';
+    . '
+        <option value="__default__"'
+     . ( $otheruser == '__default__' ? $selected : '' )
+     . '>' . $defConfigStr . '</option>';
 
-    foreach ( $userlist as $i ) {
-      if ( $i['cal_login'] != $guser )
-        echo $option . $i['cal_login']
-         . ( ! empty ( $otheruser ) && $otheruser == $i['cal_login']
-          ? '" selected>' : '">' ) . $i['cal_fullname'] . '</option>';
+    for( $i = 0, $cnt = count( $userlist ); $i < $cnt; $i++ ) {
+      if( $userlist[$i]['cal_login'] != $guser )
+        echo '
+        <option value="' . $userlist[$i]['cal_login'] . '"'
+         . ( ! empty( $otheruser ) && $otheruser == $userlist[$i]['cal_login']
+          ? $selected : '' )
+         . '>' . $userlist[$i]['cal_fullname'] . '</option>';
     }
     echo $goStr;
   }
@@ -289,21 +312,26 @@ if( ! empty( $otheruser ) ) {
   if( $allow_view_other ) {
     $typeStr = translate( 'Type' );
     echo '
-    <form action="access.php" method="post" id="EditOther" name="EditOther">
-      <input type="hidden" name="guser" value="' . $guser . '">
-      <input type="hidden" name="otheruser" value="' . $otheruser . '">
-      <table summary="">
+    <form action="access.php" method="post" name="EditOther">
+      <input type="hidden" name="guser" value="' . $guser . '" />
+      <input type="hidden" name="otheruser" value="' . $otheruser . '" /><br />
+      <table cellpadding="5" cellspacing="0" summary="">
         <tbody>
           <tr>
-            <th width=' . ( $guser == '__public__'
+            <th class="boxleft boxtop boxbottom" width='
+     . ( $guser == '__public__'
       ? '"60%" align="center">' . translate( 'Calendar' ) . '</th>
-            <th width="20%">' . $typeStr . '</th>
-            <th colspan="3" width="20%">' . translate( 'View Event' )
+            <th class="boxtop boxbottom" width="20%">' . $typeStr . '</th>
+            <th class="boxtop boxbottom boxright" colspan="3" width="20%">'
+       . translate( 'View Event' )
       : '"25%">' . $otheruser_fullname . '</th>
-            <th width="15%">' . $typeStr . '</th>
-            <th width="15%" colspan="3">' . translate( 'View' ) . '</th>
-            <th width="15%" colspan="3">' . $editStr . '</th>
-            <th width="15%" colspan="3">' . translate( 'Approve/Reject' ) ) . '</th>
+            <th class="boxtop boxbottom" width="15%">' . $typeStr . '</th>
+            <th width="15%" colspan="3" class="boxtop boxbottom">'
+       . translate( 'View' ) . '</th>
+            <th width="15%" colspan="3" class="boxtop boxbottom">'
+       . translate( 'Edit' ) . '</th>
+            <th width="15%" colspan="3" class="boxtop boxright boxbottom">'
+       . translate( 'Approve/Reject' ) ) . '</th>
           </tr>';
 
     $access_type = array(
@@ -312,73 +340,71 @@ if( ! empty( $otheruser ) ) {
       translate( 'Tasks' ),
       '',
       translate( 'Journals' )
-    );
+      );
 
     for( $j = 1; $j < 5; $j++ ) {
-      // No reason to do the math 100 times.
-      $j8 = $j * 8;
-      $j64 = $j * 64;
       $bottomedge = '';
       if( $j == 3 )
         continue;
       echo '
           <tr>
-            <td class="' . ( $j > 3 ? ' boxbottom' : '' )
-       . 'boxleft leftpadded"><input type="checkbox" value="Y" name="';
+            <td class="boxleft leftpadded' . ( $j > 3 ? ' boxbottom' : '' )
+       . '"><input type="checkbox" value="Y" name=';
       if( $j == 1 )
-        echo 'invite"'
-         . ( ! empty( $op['invite'] ) && $op['invite'] == 'N'
-           ? '>' : ' checked>' ) . translate( 'Can Invite' );
+        echo '"invite"'
+         . ( ! empty( $op['invite'] ) && $op['invite'] == 'N' ? '' : $checked )
+         . ' />' . translate( 'Can Invite' );
       elseif( $j == 2 )
-        echo 'email"'
-         . ( ! empty( $op['email'] ) && $op['email'] == 'N'
-           ? '>' : ' checked>' ) . translate( 'Can Email' );
+        echo '"email"'
+         . ( ! empty( $op['email'] ) && $op['email'] == 'N' ? '' : $checked )
+         . ' />' . translate( 'Can Email' );
       else {
-        echo 'time" id="enAll"'
-         . ( ! empty( $op['time'] ) && $op['time'] == 'Y' ? ' checked>' : '>' )
+        echo '"time"'
+         . ( ! empty( $op['time'] ) && $op['time'] == 'Y' ? $checked : '' )
+         . ' onclick="enableAll( this.checked );" />'
          . translate( 'Can See Time Only' );
         $bottomedge = 'boxbottom';
       }
       echo '</td>
-            <td align="center" class="' . $bottomedge . ' boxleft">'
+            <td align="center" class="boxleft ' . $bottomedge . '">'
        . $access_type[$j] . '</td>
-            <td align="center" class="' . $bottomedge . ' boxleft pub">'
-       . '<input type="checkbox" value="' . $j . '" name="v_' . $j
-       . ( ! empty( $op['view'] ) && ( $op['view'] & $j ) ? '" checked' : '"' )
-       . '></td>
-            <td class="' . $bottomedge . ' conf"><input type="checkbox" value="'
-       . $j8 . '" name="v_' . $j8
-       . ( ! empty( $op['view'] ) && ( $op['view'] & $j8 )
-         ? '" checked' : '"' ) . '></td>
-            <td class="' . $bottomedge . ' priv"><input type="checkbox" value="'
-       . $j64 . '" name="v_' . $j64
-       . ( ! empty( $op['view'] ) && ( $op['view'] & $j64 )
-         ? '" checked' : '"' ) . '></td>'
+            <td align="center" class="boxleft pub ' . $bottomedge . '">'
+       . '<input type="checkbox" value="' . $j . '" name="v_' . $j . '"'
+       . ( ! empty( $op['view'] ) && ( $op['view'] & $j ) ? $checked : '' )
+       . ' /></td>
+            <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
+       . $j * 8 . '" name="v_' . $j * 8 . '"'
+       . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 8 ) )
+        ? $checked : '' ) . ' /></td>
+            <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
+       . $j * 64 . '" name="v_' . $j * 64 . '"'
+       . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 64 ) )
+        ? $checked : '' ) . ' /></td>'
        . ( $guser != '__public__' ? '
-            <td align="center" class="' . $bottomedge . ' boxleft pub"><input '
-         . 'type="checkbox" value="' . $j . '" name="e_' . $j
-         . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j ) ? '" checked' : '"' )
-         . '></td>
-            <td class="' . $bottomedge . ' conf"><input type="checkbox" value="'
-         . $j8 . '" name="e_' . $j8
-         . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j8 )
-           ? '" checked' : '"' ) . '></td>
-            <td class="' . $bottomedge . ' priv"><input type="checkbox" value="'
-         . $j64 . '" name="e_' . $j64
-         . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j64 )
-           ? '" checked' : '"' ) . '></td>
-            <td align="center" class="' . $bottomedge . ' boxleft pub"><input '
-         . 'type="checkbox" value="' . $j . '" name="a_' . $j
+            <td align="center" class="boxleft pub ' . $bottomedge . '"><input '
+         . 'type="checkbox" value="' . $j . '" name="e_' . $j . '"'
+         . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j ) ? $checked : '' )
+         . ' /></td>
+            <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
+         . $j * 8 . '" name="e_' . $j * 8 . '"'
+         . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 8 ) )
+          ? $checked : '' ) . ' /></td>
+            <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
+         . $j * 64 . '" name="e_' . $j * 64 . '"'
+         . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 64 ) )
+          ? $checked : '' ) . ' /></td>
+            <td align="center" class="boxleft pub ' . $bottomedge . '"><input '
+         . 'type="checkbox" value="' . $j . '" name="a_' . $j . '"'
          . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j )
-           ? '" checked' : '"' ) . '></td>
-            <td class="' . $bottomedge . ' conf"><input type="checkbox" value="'
-         . $j8 . '" name="a_' . $j8
-         . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j8 )
-           ? '" checked' : '"' ) . '></td>
-            <td class="boxright ' . $bottomedge
-         . ' priv"><input type="checkbox" value="' . $j64 . '" name="a_' . $j64
-         . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j64 )
-           ? '" checked' : '"' ) . '></td>'
+          ? $checked : '' ) . ' /></td>
+            <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
+         . $j * 8 . '" name="a_' . $j * 8 . '"'
+         . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 8 ) )
+          ? $checked : '' ) . ' /></td>
+            <td class="boxright priv ' . $bottomedge
+         . '"><input type="checkbox" value="' . $j * 64 . '" name="a_' . $j * 64
+         . '"' . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 64 ) )
+          ? $checked : '' ) . ' /></td>'
         : '' ) . '
           </tr>';
     }
@@ -386,26 +412,31 @@ if( ! empty( $otheruser ) ) {
           <tr>
             <td colspan="2" class="boxleft alignright">'
      . ( $otheruser != '__default__' && $otheruser != '__public__' ? '
-              <input type="button" id="assistBtn" value="'
-     . translate( 'Assistant' ) . '">&nbsp;&nbsp;' : '' ) . '
-              <input type="button" id="selAllBtn" value="'
-     . translate( 'Select All' ) . '">&nbsp;&nbsp;
-              <input type="button" id="clrAllBtn" value="'
-     . translate( 'Clear All' ) . '">
+              <input type="button" value="' . translate( 'Assistant' )
+       . '" onclick="selectAll(63);" />&nbsp;&nbsp;' : '' ) . '
+              <input type="button" value="' . translate( 'Select All' )
+     . '" onclick="selectAll(256);" />&nbsp;&nbsp;
+              <input type="button" value="' . translate( 'Clear All' )
+     . '" onclick="selectAll(0);" />
             </td>
             <td colspan="9" class="boxright">
-              <span class="pub">' . translate( 'Public' ) . '</span>
-              <span class="conf">' . translate( 'Confidential' ) . '</span>
-              <span class="priv">' . translate( 'Private' ) . '</span>
+              <table border="0" align="center" cellpadding="5" '
+     . 'cellspacing="2" summary="">
+                <tr>
+                  <td class="pub">' . translate( 'Public' ) . '</td>
+                  <td class="conf">' . translate( 'Confidential' ) . '</td>
+                  <td class="priv">' . translate( 'Private' ) . '</td>
+                </tr>
+              </table>
             </td>
           </tr>';
   }
 
   echo '
           <tr>
-            <td colspan="11" class="boxright boxbottom boxleft">
-              <input type="submit" value="' . $undoStr . '">
-              <input type="submit" name="submit" value="' . $saveStr . '">
+            <td colspan="11" class="boxleft boxbottom boxright">
+              <input type="submit" value="' . $undoStr . '" />
+              <input type="submit" name="submit" value="' . $saveStr . '" />
             </td>
           </tr>
         </tbody>

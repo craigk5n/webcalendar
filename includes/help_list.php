@@ -1,12 +1,13 @@
-<?php // $Id$
+<?php // $Id: help_list.php,v 1.9 2009/11/22 16:47:46 bbannon Exp $
 /**
  * The file contains a listing of all the current help files in an array.
  * This should make it easier to add new help screens without having to
  * touch each file every time.
 */
 defined ( '_ISVALID' ) or ( 'You cannot access this file directly!' );
-
-$help_list = array( translate( 'Index' ) => 'help_index.php' );
+// DO NOT DELETE translate ( 'Index' ) translate ( 'Documentation' )
+$help_list = array();
+$help_list['Index'] = 'help_index.php';
 
 $can_add = true;
 if ( $readonly == 'Y' )
@@ -21,40 +22,41 @@ else {
     $can_add = false;
 }
 if ( $can_add )
-  $help_list[translate( 'Adding/Editing Calendar Entries' )] = 'help_edit_entry.php';
+  $help_list['Adding/Editing Calendar Entries'] = 'help_edit_entry.php';
 
 if( ! access_is_enabled() && $login != '__public__'
     || access_can_access_function( ACCESS_LAYERS ) )
-  $help_list[translate( 'Layers' )] = 'help_layers.php';
+  $help_list['Layers'] = 'help_layers.php';
 if( ( ! access_is_enabled() && $login != '__public__' )
     || access_can_access_function( ACCESS_IMPORT ) )
-  $help_list[translate( 'Import' )] = 'help_import.php';
+  $help_list['Import'] = 'help_import.php';
 
 if( ( ! access_is_enabled() && $login != '__public__' )
     || access_can_access_function( ACCESS_PREFERENCES ) )
-  $help_list[translate( 'Preferences' )] = 'help_pref.php';
+  $help_list['Preferences'] = 'help_pref.php';
 
 if( access_is_enabled() && $login != '__public__' )
-  $help_list[translate( 'UAC' )] = 'help_uac.php';
+  $help_list['User Access Control'] = 'help_uac.php';
 
 if( ( $is_admin && ! access_is_enabled() )
     || access_can_access_function( ACCESS_IMPORT ) )
-  $help_list[translate( 'System Settings' )] = 'help_admin.php';
+  $help_list['System Settings'] = 'help_admin.php';
 
-$help_list[translate( 'Documentation' )] = 'help_docs.php';
-$help_list[translate( 'Report Bug' )] = 'help_bug.php';
+$help_list['Documentation'] = 'help_docs.php';
+$help_list['Report Bug'] = 'help_bug.php';
 
 $helpListStr = '
     <div class="helplist">
-      ' . translate ( 'Page_' ) . ' '; // temporarily translate ( 'Page' )
+      ' . translate ( 'Page' ) . ': ';
 $page = 0;
 if ( empty ( $thispage ) )
   $thispage = 0;
-foreach ( $help_list as $k => $v ) {
+foreach ( $help_list as $key => $val ) {
   $page++;
   $helpListStr .= '
-      <a href="' . "$v?thispage=$page\"" . ( $page == $thispage
-    ? ' class="current"' : '' ) . ' title="' . "$k\">$page" . '</a>';
+      <a' . ( $page == $thispage ? ' class="current"' : '' ) . ' title="'
+   . translate ( $key ) . '" href="' . $val . '?thispage=' . $page . '">'
+   . $page . '</a>';
 }
 $helpListStr .= '
     </div>';
@@ -65,10 +67,10 @@ $helpListStr .= '
  * @params $help_array   The array of things to print.
  */
 function list_help ( $help_array ) {
-  foreach ( $help_array as $l => $v ) {
+  foreach ( $help_array as $lab => $val ) {
     echo '
-        <p><label>' . $l . '</label> '
-     . ( $v == '0' ? '0' : empty( $v ) ? '&nbsp;' : $v ) . '</p>';
+        <p><label>' . $lab . ':</label> '
+     . ( $val == '0' ? '0' : empty ( $val ) ? '&nbsp;' : $val ) . '</p>';
   }
 }
 

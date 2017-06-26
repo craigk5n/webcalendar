@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: add_entry.php,v 1.31 2009/11/22 16:47:44 bbannon Exp $
 include_once 'includes/init.php';
 
 $error = '';
@@ -13,7 +13,7 @@ if ( $id > 0 ) {
     if ( $row[0] == $id ) {
       $is_my_event = true;
       echo str_replace ( 'XXX', $id,
-        translate ( 'Event XXX already on cal' ) );
+        translate ( 'Event XXX is already on your calendar.' ) );
       exit;
     }
     dbi_free_result ( $res );
@@ -22,10 +22,11 @@ if ( $id > 0 ) {
   $res = dbi_execute ( 'SELECT cal_access FROM webcal_entry WHERE cal_id = ?',
     array ( $id ) );
   if ( ! $res ) {
-    echo str_replace( 'XXX', $id, $badEntryStr );
+    echo str_replace ( 'XXX', $id, translate ( 'Invalid entry id XXX.' ) );
     exit;
   }
-  $mayNotAddStr = translate( 'cant add XXX to cal' );
+  $mayNotAddStr =
+  translate ( 'a XXX event may not be added to your calendar' );
   $row = dbi_fetch_row ( $res );
 
   if ( ! $is_my_event ) {

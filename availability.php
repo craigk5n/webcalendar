@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: availability.php,v 1.27 2009/11/22 16:47:44 bbannon Exp $
 /**
  * Page Description:
  * Display a timebar view of a single day.
@@ -20,10 +20,10 @@ if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
   // not allowed...
   exit;
 
-$day  = getGetValue( 'day' );
-$month= getGetValue( 'month' );
-$users= getGetValue( 'users' );
-$year = getGetValue( 'year' );
+$users = getGetValue ( 'users' );
+$year = getGetValue ( 'year' );
+$month = getGetValue ( 'month' );
+$day = getGetValue ( 'day' );
 
 // Input args in URL.
 // users: list of comma-separated users.
@@ -42,11 +42,9 @@ if ( empty ( $users ) ) {
   exit;
 }
 
-setcookie( 'day', $day );
-setcookie( 'month', $month );
-setcookie( 'year', $year );
-setcookie( 'frm', getGetValue( 'form' ) );
-print_header( '', '', '', true, false, true );
+print_header (
+  array ( 'js/availability.php/false/' . "$month/$day/$year/"
+   . getGetValue ( 'form' ) ), '', 'onload="focus();"', true, false, true );
 
 $next_url = $prev_url = '?users=' . $users;
 $time = mktime ( 0, 0, 0, $month, $day, $year );
@@ -57,21 +55,27 @@ $span = ( $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ) * 3 + 1;
 
 $users = explode ( ',', $users );
 
+$nextStr = translate ( 'Next' );
+$prevStr = translate ( 'Previous' );
+
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="' . $prev_url
- . '"><img src="images/leftarrow.gif" class="prev" alt="' . $prevStr . '"></a>
+ . '"><img src="images/leftarrow.gif" class="prev" alt="'
+ . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="' . $next_url
- . '"><img src="images/rightarrow.gif" class="next" alt="' . $nextStr . '"></a>
+ . '"><img src="images/rightarrow.gif" class="next" alt="'
+ . $nextStr . '" /></a>
       <div class="title">
         <span class="date">';
 printf ( "%s, %s %d, %d", weekday_name ( strftime ( "%w", $time ) ),
   month_name ( $month - 1 ), $day, $year );
-echo '</span><br>
+echo '</span><br />
       </div>
-    </div><br>
+    </div><br />
     <form action="availability.php" method="post">
       ' . daily_matrix ( $date, $users ) . '
-    </form>' . print_trailer( false, true, true );
+    </form>
+    ' . print_trailer ( false, true, true );
 
 ?>

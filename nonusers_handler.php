@@ -1,16 +1,16 @@
-<?php /* $Id$ */
+<?php
+/* $Id: nonusers_handler.php,v 1.27 2009/11/22 16:47:45 bbannon Exp $ */
 include_once 'includes/init.php';
-require_valid_referring_url();
 load_user_layers();
 
-$action    = getValue ( 'action' );
-$delete    = getValue ( 'delete' );
-$ispublic  = getValue ( 'ispublic' );
-$nadmin    = getValue ( 'nadmin' );
-$nfirstname= getValue ( 'nfirstname' );
-$nid       = getValue ( 'nid' );
-$nlastname = getValue ( 'nlastname' );
+$nid = getValue ( 'nid' );
 $old_admin = getValue ( 'old_admin' );
+$nfirstname = getValue ( 'nfirstname' );
+$nlastname = getValue ( 'nlastname' );
+$nadmin = getValue ( 'nadmin' );
+$ispublic = getValue ( 'ispublic' );
+$action = getValue ( 'action' );
+$delete = getValue ( 'delete' );
 
 if ( ! $is_admin ) {
   echo print_not_auth ( true ) . print_trailer();
@@ -18,7 +18,7 @@ if ( ! $is_admin ) {
 }
 $error = '';
 
-if ( $action == 'Delete' || $action == $deleteStr ) {
+if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
   // delete this nonuser calendar
   $user = $nid;
 
@@ -28,19 +28,20 @@ if ( $action == 'Delete' || $action == $deleteStr ) {
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted.
   $delete_em = array();
-  foreach ( $events as $i ) {
+  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-      WHERE cal_id = ?', array ( $i ) );
+      WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) && $row[0] == 1 )
-        $delete_em[] = $i;
+        $delete_em[] = $events[$i];
 
       dbi_free_result ( $res );
     }
   }
   // Now delete events that were just for this user
-  foreach ( $delete_em as $i ) {
-    dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?', array ( $i ) );
+  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+    dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
   }
 
   // Delete user participation from events
@@ -55,7 +56,7 @@ if ( $action == 'Delete' || $action == $deleteStr ) {
       array ( $user ) ) )
     $error = db_error();
 } else {
-  if ( $action == 'Save' || $action == $saveStr ) {
+  if ( $action == 'Save' || $action == translate ( 'Save' ) ) {
     // Updating
     $sql_params = array();
     $sql = 'UPDATE webcal_nonuser_cals SET';
@@ -81,7 +82,8 @@ if ( $action == 'Delete' || $action == $deleteStr ) {
           array ( $nid, $nfirstname, $nlastname, $nadmin ) ) )
         $error = db_error();
     } else
-      $error = translate ( 'Cal ID word chars only' );
+      $error = translate ( 'Calendar ID' ) . ' '
+       . translate ( 'word characters only' ) . '.';
   }
 }
 if ( empty ( $error ) )

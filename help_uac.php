@@ -1,22 +1,27 @@
-<?php // $Id$
+<?php // $Id: help_uac.php,v 1.14 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-$descStr = translate ( 'fine control of UAC and permissions' );
+$descStr =
+translate ( 'Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.' );
 
 print_header ( '', '', '', true, false, true );
 echo $helpListStr . '
     <div class="helpbody">
-      <h2>' . translate( 'Help UAC' ) . '</h2>
+      <h2>' . translate ( 'Help' ) . ': '
+       . translate ( 'User Access Control' ) . '</h2>
       <p>' . $descStr . '</p>';
-list_help( array(
-  translate ( 'Can Email_' ) => translate ( 'If disabled no email from user' ),
-  translate ( 'Can Invite_' ) => translate ( 'If disabled user cant see you' ),
-  translate ( 'Can See Time Only_' ) =>
-  translate ( 'If enabled user cant see details' ),
-  )
-);
+$tmp_arr = array (
+  translate ( 'Can Email' ) =>
+  translate ( 'If disabled, this user cannot send you emails.' ),
+  translate ( 'Can Invite' ) =>
+  translate ( 'If disabled, this user cannot see you in the participants list.' ),
+  translate ( 'Can See Time Only' ) =>
+  translate ( 'If enabled, this user cannot view the details of any of your entries.' ),
+  );
+list_help ( $tmp_arr );
 echo '
-    </div>' . print_trailer ( false, true, true );
+    </div>
+    ' . print_trailer ( false, true, true );
 
 ?>

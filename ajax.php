@@ -1,27 +1,24 @@
-<?php /* $Id$ */
+<?php // $Id: ajax.php,v 1.24.2.1 2012/02/28 15:43:09 cknudsen Exp $
 /**
- * Page Description
+ * Description
  * This is the handler for Ajax httpXmlRequests.
  */
-
-foreach( array(
-    'access',
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'translate',
-    'validate',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
-require_valid_referring_url();
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+require_valid_referring_url ();
+
 $WebCalendar->initializeFirstPhase();
 
-include_once 'includes/' . $user_inc;
+include 'includes/' . $user_inc;
+include 'includes/access.php';
+include 'includes/validate.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -61,7 +58,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $name )
       echo str_replace ( 'XXX', $name,
-        translate ( 'Email XXX already exists', true ) );
+        translate ( 'Email address XXX already exists.', true ) );
   }
 } elseif ( $page == 'minitask' ) {
   $name = ( empty ( $name ) ? 0 : $name );

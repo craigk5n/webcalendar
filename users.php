@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: users.php,v 1.55.2.1 2012/02/28 15:43:10 cknudsen Exp $
 /**
  * NOTE:
  * There are THREE components that make up the functionality of users.php.
@@ -37,31 +37,34 @@ if ( $is_admin ) {
   $doGroups = ( ! empty ( $GROUPS_ENABLED ) && $GROUPS_ENABLED == 'Y' );
   $doNUCS = ( ! empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' );
 }
-$currenttab = getValue ( 'tab', 'users' );
+$currenttab = getValue ( 'tab', '^(users|groups|nonusers|remotes||)$', true );
 
-ob_start();
-setcookie( 'ctab', $currenttab );
-setcookie( 'grps', ( $doUsers && $doGroups ) );
-setcookie( 'nucs', ( $doUsers && $doNUCS ) );
-setcookie( 'rems', $doRemotes );
-print_header( '', '', '', false, false, true );
+$BodyX = 'onload="showTab(\''. $currenttab . '\');"';
+print_header ( array ( 'js/visible.php', 'js/users.php/true' ), '',
+  $BodyX, '', '', true );
 
 $taborder = array ( 'tabfor', 'tabbak','tabbak','tabbak','tabbak');
 $i=0;
+ob_start();
 
 echo display_admin_link() . '
 <!-- TABS -->
     <div id="tabs">'
- . ( $doUser || $doUsers ? '
-      <span class="'.$taborder[$i++].'" id="tab_users"><a href="#tabusers">'
-   . ( $is_admin ? translate( 'Users' ) : translate( 'Account' ) )
-   . '</a></span>' : '' ) . ( $doUsers && $doGroups ? '
-      <span class="'.$taborder[$i++].'" id="tab_groups"><a href="#tabgroups">'
-   . translate( 'Groups' ) . '</a></span>' : '' ) . ( $doUsers && $doNUCS ? '
-      <span class="'.$taborder[$i++].'" id="tab_nonusers"><a href="#tabnonusers">'
-   . translate( 'NUCs' ) . '</a></span>' : '' ) . ( $doRemotes ? '
-      <span class="'.$taborder[$i++].'" id="tab_remotes"><a href="#tabremotes">'
-   . translate( 'Remote Calendars' ) . '</a></span>' : '' ) . '
+ .( $doUser || $doUsers? '
+      <span class="'.$taborder[$i++].'" id="tab_users"><a href="#tabusers" onclick="return '
+ . 'showTab( \'users\' )">'
+ . ( $is_admin ? translate ( 'Users' ) : translate ( 'Account' ) )
+ . '</a></span>' : '' ) . ( $doUsers && $doGroups ? '
+      <span class="'.$taborder[$i++].'" id="tab_groups"><a href="#tabgroups" '
+   . 'onclick="return showTab( \'groups\' )">' . translate ( 'Groups' )
+   . '</a></span>' : '' ) . ( $doUsers && $doNUCS ? '
+      <span class="'.$taborder[$i++].'" id="tab_nonusers"><a href="#tabnonusers" '
+   . 'onclick="return showTab( \'nonusers\' )">'
+   . translate ( 'NonUser Calendars' ) . '</a></span>' : '' )
+ . ( $doRemotes ? '
+      <span class="'.$taborder[$i++].'" id="tab_remotes"><a href="#tabremotes" '
+   . 'onclick="return showTab( \'remotes\' )">'
+   . translate ( 'Remote Calendars' ) . '</a></span>' : '' ) . '
     </div>
 <!-- TABS BODY -->
     <div id="tabscontent">
@@ -72,18 +75,21 @@ if ( $doUsers ) {
   $denotesStr = translate ( 'denotes administrative user' );
   if ( $is_admin ) {
     echo ( $admin_can_add_user ? '
-          <a href="edit_user.php">' . translate( 'Add New User' )
-     . '</a><br>' : '' ) . '
+          <a href="edit_user.php" target="useriframe" onclick="showFrame'
+       . '( \'useriframe\' );">' . translate ( 'Add New User' )
+       . '</a><br />' : '' ) . '
           <ul>';
 
     $userlist = user_get_users();
-    foreach ( $userlist as $i ) {
-      if ( $i['cal_login'] != '__public__' )
+    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
+      if ( $userlist[$i]['cal_login'] != '__public__' )
         echo '
-            <li><a href="edit_user.php?user=' . $i['cal_login'] . '">'
-          . $i['cal_fullname'] . '</a>'
-          . ( $i['cal_is_admin'] == 'Y'
-            ? '&nbsp;<abbr title="' . $denotesStr . '">*</abbr>' : '' ) . '</li>';
+            <li><a href="edit_user.php?user=' . $userlist[$i]['cal_login']
+         . '" target="useriframe" onclick="showFrame(\'useriframe\');">'
+         . $userlist[$i]['cal_fullname'] . '</a>'
+         . ( $userlist[$i]['cal_is_admin'] == 'Y' ? '&nbsp;<abbr title="'
+           . $denotesStr . '">*</abbr>' : '' )
+         . '</li>';
     }
     echo '
           </ul>';
@@ -91,12 +97,12 @@ if ( $doUsers ) {
 }
 if ( $is_admin ) {
     echo '
-          *&nbsp;' . $denotesStr . '.<br>
-          <iframe id="useriframe" name="useriframe"></iframe>';
+          *&nbsp;' . $denotesStr . '.<br />
+          <iframe name="useriframe" id="useriframe"></iframe>';
 }
-if ( $doUser && ! $doUsers ) {
+if ($doUser && ! $doUsers ) {
     echo '
-          <iframe src="edit_user.php" id="accountiframe" name="accountiframe">'
+          <iframe src="edit_user.php" name="accountiframe" id="accountiframe">'
     . '</iframe>';
 }
 
@@ -112,8 +118,10 @@ if ( $doUsers && $doNUCS )
 if ( $doRemotes )
   include_once 'remotes.php';
 
-echo '
-    </div>' . print_trailer();
 ob_end_flush();
+
+echo '
+    </div>
+    ' . print_trailer();
 
 ?>

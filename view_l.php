@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: view_l.php,v 1.76 2009/11/22 22:26:18 bbannon Exp $
 /**
  * Page Description:
  * This page will display the month "view" with all users's events on the same
@@ -20,15 +20,22 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
+
+include_once 'includes/init.php';
 include_once 'includes/views.php';
 
-$printerStr = $unapprovedStr = '';
+view_init ( $id );
+
+$error = $printerStr = $unapprovedStr = '';
 if ( empty ( $friendly ) ) {
   $unapprovedStr = display_unapproved_events( $is_assistant || $is_nonuser_admin
    ? $user : $login );
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
-
+set_today ( $date );
+print_header( array( 'js/popups.php/true' ),
+  '<script type="text/javascript" src="includes/js/weekHover.js?'
+ . filemtime( 'includes/js/weekHover.js' ) . '"></script>' );
 $trailerStr = print_trailer();
 
 $next = mktime ( 3, 0, 0, $thismonth + 1, 1, $thisyear );
@@ -55,41 +62,48 @@ if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
 
 $thisdate = date ( 'Ymd', $startdate );
 
+// Get users in this view.
+$viewusers = view_get_user_list ( $id );
+if ( count ( $viewusers ) == 0 )
+  // This could happen if user_sees_only_his_groups  = Y and
+  // this user is not a member of any  group assigned to this view.
+  $error = translate( 'No users for this view.' );
+
 if ( ! empty ( $error ) ) {
   echo print_error ( $error ) . print_trailer();
-  ob_end_flush();
   exit;
 }
 
 $e_save = $re_save = array();
-foreach ( $viewusers as $i ) {
+for ( $i = 0, $cnt = count ( $viewusers ); $i < $cnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $i, $startdate, $enddate, '' );
+  $repeated_events = read_repeated_events ( $viewusers[$i], $startdate, $enddate, '' );
   $re_save = array_merge ( $re_save, $repeated_events );
   /* Pre-load the non-repeating events for quicker access */
-  $events = read_events ( $i, $startdate, $enddate );
+  $events = read_events ( $viewusers[$i], $startdate, $enddate );
   $e_save = array_merge ( $e_save, $events );
 }
 $events = $repeated_events = array();
 
-foreach ( $e_save as $i ) {
+for ( $i = 0, $cnt = count ( $e_save ); $i < $cnt; $i++ ) {
   $should_add = 1;
-  for ( $j = 0, $cnt = count ( $events ); $j < $cnt && $should_add; $j++ ) {
-    if ( ! $i->getClone() && $i->getID() == $events[$j]->getID() )
+  for ( $j = 0, $cnt_j = count ( $events ); $j < $cnt_j && $should_add; $j++ ) {
+    if ( ! $e_save[$i]->getClone() && $e_save[$i]->getID() == $events[$j]->getID() )
       $should_add = 0;
   }
   if ( $should_add )
-    array_push ( $events, $i );
+    array_push ( $events, $e_save[$i] );
 }
 
-foreach ( $re_save as $i ) {
+for ( $i = 0, $cnt = count ( $re_save ); $i < $cnt; $i++ ) {
   $should_add = 1;
-  for ( $j = 0, $cnt = count ( $repeated_events ); $j < $cnt && $should_add; $j++ ) {
-    if ( ! $i->getClone() && $i->getID() == $repeated_events[$j]->getID() )
+  for ( $j = 0, $cnt_j = count ( $repeated_events ); $j < $cnt_j && $should_add; $j++ ) {
+    if( ! $re_save[$i]->getClone()
+        && $re_save[$i]->getID() == $repeated_events[$j]->getID() )
       $should_add = 0;
   }
   if ( $should_add )
-    array_push ( $repeated_events, $i );
+    array_push ( $repeated_events, $re_save[$i] );
 }
 
 if ( $DISPLAY_SM_MONTH != 'N' ) {
@@ -105,21 +119,17 @@ $monthStr = display_month ( $thismonth, $thisyear );
 $eventinfo = ( empty ( $eventinfo ) ? '' : $eventinfo );
 
 echo <<<EOT
-    <div class="title">
-      <div class="minical">
-       {$prevMonth}{$nextMonth}
-      </div>
-      {$navStr}
-      <span class="viewname"><br>{$view_name}</span>
+  <div class="title">
+    <div class="minical">
+     {$prevMonth}{$nextMonth}
     </div>
-    <br>
-    {$monthStr}
-    {$eventinfo}
-    {$unapprovedStr}
-    {$printerStr}
-    {$trailerStr}
+    {$navStr}
+    <span class="viewname"><br />{$view_name}</span>
+  </div>
+  <br />
+  {$monthStr}
+  {$eventinfo}
+  {$unapprovedStr}
+  {$printerStr}
+  {$trailerStr}
 EOT;
-
-ob_end_flush();
-
-?>

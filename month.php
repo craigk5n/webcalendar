@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: month.php,v 1.107 2010/04/06 19:50:22 cknudsen Exp $
 include_once 'includes/init.php';
 
 //check UAC
@@ -6,7 +6,7 @@ if( ! access_can_access_function( ACCESS_MONTH )
     || ( ! empty( $user ) && ! access_user_calendar( 'view', $user ) ) )
   send_to_preferred_view();
 
-if ( $user != $login && $is_nonuser_admin )
+if ( ( $user != $login ) && $is_nonuser_admin )
   load_user_layers ( $user );
 else
 if ( empty ( $user ) )
@@ -66,16 +66,16 @@ if ( empty ( $DISPLAY_TASKS ) || $DISPLAY_TASKS == 'N' &&
 if ( $DISPLAY_TASKS == 'Y' && $friendly != 1 ) {
   if ( $DISPLAY_SM_MONTH != 'N' ) {
     $nextMonth2 = display_small_month ( $nextmonth, $nextyear, true, false,
-      'nextmonth', $monthURL ) . '<br>';
+      'nextmonth', $monthURL ) . '<br />';
     $prevMonth2 = display_small_month ( $prevmonth, $prevyear, true, false,
-      'prevmonth', $monthURL ) . '<br>';
+      'prevmonth', $monthURL ) . '<br />';
   } else {
-    $nextMonth2 =  $prevMonth2 = '<br><br><br><br>';
+    $nextMonth2 =  $prevMonth2 = '<br /><br /><br /><br />';
   }
   $smallTasks = display_small_tasks ( $cat_id );
   $tableWidth = '80%';
 }
-$eventinfo = ( empty( $eventinfo ) ? '' : $eventinfo );
+$eventinfo = ( ! empty ( $eventinfo ) ? $eventinfo : '' );
 $monthStr = display_month ( $thismonth, $thisyear, false, true );
 $navStr = display_navigation ( 'month' );
 
@@ -84,20 +84,26 @@ if ( empty ( $friendly ) ) {
     ( $is_assistant || $is_nonuser_admin ? $user : $login ) );
   $printerStr = generate_printer_friendly ( 'month.php' );
 }
+$trailerStr = print_trailer();
 
-print_header( '', generate_refresh_meta() );
+$HeadX = generate_refresh_meta()
+  . '<script type="text/javascript" src="includes/js/weekHover.js?'
+  . filemtime( 'includes/js/weekHover.js' ) . '"></script>';
+
+print_header(
+  array( 'js/popups.js/true', 'js/visible.php', 'js/dblclick_add.js/true' ),
+  $HeadX, '', false, false, false, false );
 
 echo <<<EOT
-    <table summary="' . "$thismonth $thisyear" . '">
+    <table border="0" width="100%" cellpadding="1" summary="">
       <tr>
-        <td id="printarea" width="{$tableWidth}" rowspan="2">
+        <td id="printarea" valign="top" width="{$tableWidth}" rowspan="2">
           {$prevMonth1}{$nextMonth1}
           {$navStr}
           {$monthStr}
         </td>
         <td valign="top" align="center">
-          {$prevMonth2}{$nextMonth2}
-          <div id="minitask">{$smallTasks}</div>
+          {$prevMonth2}{$nextMonth2}<div id="minitask">{$smallTasks}</div>
         </td>
       </tr>
     </table>

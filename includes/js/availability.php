@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: availability.php,v 1.18 2009/11/22 16:47:46 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $month = $arinc[3];
@@ -37,7 +37,7 @@ function schedule_event(hours, minutes) {
   var year =<?php echo $year ?>;
   var month =<?php echo $month ?>;
   var day =<?php echo $day ?>;
-  if (confirm("<?php echo translate ( 'Change entry date/time', true )?>")) {
+  if (confirm("<?php etranslate ( 'Change the date and time of this entry?', true)?>")) {
     var parentForm = window.opener.document.forms['<?php echo $parent_form ?>'];
     if ( '<?php echo $parent_form ?>' == 'editentryform') {
       parentForm.timetype.selectedIndex = 1;

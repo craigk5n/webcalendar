@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: group_edit.php,v 1.34 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 
 $groupname = $groupowner = $groupupdated = '';
@@ -22,41 +22,43 @@ else {
   }
 }
 
+print_header ( '', '', '', true );
+
 ob_start();
-print_header( '', '', '', true );
 
 echo '
     <form action="group_edit_handler.php" method="post">
-      <input type="hidden" name="';
+      <h2>';
 
 if ( $newgroup ) {
   $v = array();
-  echo 'add" value="1">
-      <h2>' .  translate( 'Add Group' ) . '</h2>
+  echo translate ( 'Add Group' ) . '</h2>
+      <input type="hidden" name="add" value="1';
 } else
-  echo 'id" value="' . $id">
-      <h2>' . translate( 'Edit Group' ) . '</h2>';
+  echo translate ( 'Edit Group' ) . '</h2>
+      <input type="hidden" name="id" value="' . $id;
 
-echo '
+echo '" />
       <table summary="">
         <tr>
-          <td><label for="groupname">'
- . translate( 'Group name' ) . '</label></td>
+          <td class="bold"><label for="groupname">'
+ . translate ( 'Group name' ) . ':</label></td>
           <td><input type="text" name="groupname" id="groupname" size="20" '
- . 'value="' . htmlspecialchars( $groupname ) . '"></td>
-        </tr>' . ( $newgroup ? '' : '
+ . 'value="' . htmlspecialchars ( $groupname ) . '" /></td>
+        </tr>' . ( ! $newgroup ? '
         <tr>
-          <td>' . translate( 'Updated' ) . '</td>
+          <td class="aligntop bold">' . translate ( 'Updated' ) . ':</td>
           <td>' . date_to_str ( $groupupdated ) . '</td>
         </tr>
         <tr>
-          <td>' . translate( 'Created by' ) . '</td>
+          <td class="aligntop bold">' . translate ( 'Created by' ) . ':</td>
           <td>' . $groupowner . '</td>
-        </tr>' ) . '
+        </tr>' : '' ) . '
         <tr>
-          <td><label for="users">' . translate( 'Users_' ) . '</label></td>
+          <td class="aligntop bold"><label for="users">'
+ . translate ( 'Users' ) . ':</label></td>
           <td>
-            <select name="users[]" id="users" size="10" multiple>';
+            <select name="users[]" id="users" size="10" multiple="multiple">';
 
 // Get list of all users.
 $users = user_get_users();
@@ -77,10 +79,12 @@ if ( ! $newgroup ) {
     dbi_free_result ( $res );
   }
 }
-foreach ( $users as $i ) {
-  $u = $i['cal_login'];
-  echo $option . $u . ( empty ( $groupuser[$u] ) ?  '">' : '" selected>' )
-    . $i['cal_fullname'] . '</option>';
+for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
+  $u = $users[$i]['cal_login'];
+  echo '
+              <option value="' . $u . '" '
+   . ( ! empty ( $groupuser[$u] ) ? ' selected="selected"' : '' )
+   . '>' . $users[$i]['cal_fullname'] . '</option>';
 }
 
 echo '
@@ -88,16 +92,22 @@ echo '
           </td>
         </tr>
         <tr>
-          <td colspan="2"><br>
+          <td colspan="2" class="aligncenter"><br />
             <input type="submit" name="action" value="'
- . ( $newgroup ? $addStr . '">' : $saveStr . '">
-            <input type="submit" id="delGrpEntry" name="delete" value="'
-   . $deleteStr . '">' ) . '
+ . ( $newgroup ? translate ( 'Add' ) : translate ( 'Save' ) ) . '" />'
+ . ( ! $newgroup ? '
+            <input type="submit" name="delete" value="'
+   . translate ( 'Delete' ) . '" onclick="return confirm( \''
+   . translate( 'Are you sure you want to delete this entry?' )
+   . '\')" />' : '' ) . '
           </td>
         </tr>
       </table>
-    </form>' . print_trailer ( false, true, true );
+    </form>
+    ';
 
 ob_end_flush();
+
+echo print_trailer ( false, true, true );
 
 ?>

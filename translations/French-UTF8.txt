@@ -11,7 +11,7 @@
 #  Emmanuel Rihn <acontrecourant_at_online_fr>
 # Last updated on July 21 2006
 #
-# $Id$
+# $Id: French-UTF8.txt,v 1.28 2010/02/21 08:27:50 bbannon Exp $
 # Translation last updated on 10-15-2008
 
 
@@ -89,123 +89,123 @@ Month: Mois
 Year: Année
 Settings: Réglages
 Groups: Groupes
-NUCs: Agendas Non-Utilisateurs
+NonUser Calendars: Agendas Non-Utilisateurs
 Other: Autre
 Email: Courrier électronique
 Colors: Couleurs
-Document BG: Fond
+Document background: Fond
 Document title: Titre du document
 Document text: Texte du document
 Table grid color: Couleur de quadrillage de tableau
-Table header BG: Fond d'en-tête de tableau
+Table header background: Fond d'en-tête de tableau
 Table header text: Texte d'en-tête de tableau
-Table cell BG: Fond de cellule
-Table cell today BG: Fond de cellule pour aujourd'hui
-Table cell weekends BG: Couleur de fond pour les week-ends
-Event popup BG: Fond des détails d'événements
+Table cell background: Fond de cellule
+Table cell background for current day: Fond de cellule pour aujourd'hui
+Table cell background for weekends: Couleur de fond pour les week-ends
+Event popup background: Fond des détails d'événements
 Event popup text: Texte surgissant des événements
 System Settings: Réglages du système
 Help: Aide
 app-name-help: Spécifie le nom de l'application qui apparaîtra dans la barre de titre du navigateur pour toutes les pages (page de connexion incluse). La valeur que vous spécifiez ici sera recherchée dans le fichier de traduction vous permettant de fournir différents titres pour différentes langues.
 Application Name: Nom de l'application
-server_url_help: Spécifie l'URL de base pour l'application. Elle sera incluse lors de l'envoi des courriers électroniques ainsi que pour les rappels et les notifications.
+server-url-help: Spécifie l'URL de base pour l'application. Elle sera incluse lors de l'envoi des courriers électroniques ainsi que pour les rappels et les notifications.
 Server URL: URL du serveur
 language-help: Spécifie la langue à utiliser.
 Language: Langue
 Your browser default language is: La langue utilisée par défaut par votre navigateur est
 None: Aucune
 Preview: Aperçu
-custom_script_help: Autoriser l'utilisation de codes javascript personnalisés ou de feuilles de style qui seront inséré(e)s dans la section HTML "head" de chaque page.
-Custom script: Script/Feuille de style personnalisé(e)
-custom_header_help: Permet d'ajouter un code HTML personnalisé au haut de chaque page
+custom-script-help: Autoriser l'utilisation de codes javascript personnalisés ou de feuilles de style qui seront inséré(e)s dans la section HTML "head" de chaque page.
+Custom script/stylesheet: Script/Feuille de style personnalisé(e)
+custom-header-help: Permet d'ajouter un code HTML personnalisé au haut de chaque page
 Custom header: En-tête personnalisé
-custom_trailer_help: Permet d'ajouter un code HTML personnalisé au bas de chaque page
+custom-trailer-help: Permet d'ajouter un code HTML personnalisé au bas de chaque page
 Custom trailer: Bas de page personnalisé
-tz_help: Spécifie le décalage horaire à adopter pour ajuster l'heure universelle à l'heure locale.
-server_tz_help: Spécifie le décalage horaire à adopter pour ajuster l'heure universelle à l'heure du serveur.
-date_format_help: Spécifie le format d'affichage des dates.
+tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure universelle à l'heure locale.
+server-tz-help: Spécifie le décalage horaire à adopter pour ajuster l'heure universelle à l'heure du serveur.
+date-format-help: Spécifie le format d'affichage des dates.
 Date format: Format des dates
-display_week_starts_on: Spécifie par quel jour commence la semaine. Si Lundi est choisi, les numéros des semaines seront à la norme ISO.
+display-week-starts-on: Spécifie par quel jour commence la semaine. Si Lundi est choisi, les numéros des semaines seront à la norme ISO.
 Week starts on: La semaine commence le
-time_format_help: Spécifie quel format utiliser pour l'heure :<br><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.<br><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
+time-format-help: Spécifie quel format utiliser pour l'heure :<br /><i>12 heures:</i> Affiche l'heure de cette façon : 3am, 8:30pm, etc.<br /><i>24 heures:</i> Affiche l'heure de cette façon 3:00, 20:30, etc.
 Time format: Format de l'heure
 12 hour: 12 heures
 24 hour: 24 heures
-timed_evt_len_help: Spécifie la méthode de saisie pour la durée d'un événement
+timed-evt-len-help: Spécifie la méthode de saisie pour la durée d'un événement
 Specify timed event length by: Déterminer la fin d'un événement par
 Duration: Durée
 End Time: Fin
-work_hours_help: Spécifie les heures de début et de fin de travail.
+work-hours-help: Spécifie les heures de début et de fin de travail.
 Work hours: Heures de travail
 From: de
 to: à
-preferred_view_help: Spécifie la vue par défaut (par Jour, Semaine, Mois, ou Année).
+preferred-view-help: Spécifie la vue par défaut (par Jour, Semaine, Mois, ou Année).
 Preferred view: Vue préférée
-fonts_help: Permet de définir une liste de polices pour l'affichage (par exemple "Helvetica, Arial, sans-serif").
+fonts-help: Permet de définir une liste de polices pour l'affichage (par exemple "Helvetica, Arial, sans-serif").
 Fonts: Polices
-display_weekends_help: Inclure les week-ends lors de la visualisation de la semaine.
-display_weeknumber_help: Spécifie si le numéro de la semaine (1-52) doit être affiché.
+display-weekends-help: Inclure les week-ends lors de la visualisation de la semaine.
+display-week-number-help: Spécifie si le numéro de la semaine (1-52) doit être affiché.
 Display week number: Afficher le numéro de semaine
-display_desc_print_day_help: Inclure les descriptions d'événements dans la version imprimable de la vue journalière.
-desc in printer day view: Descriptions dans la version imprimable de la vue journalière
-display_bold_days_in_year_help: Sur la vue par année, affiche les jours contenant des événements en caractères gras
-bold events month/year views: Sur les vues par mois et par année, affiche les jours contenant des événements en caractères gras
-display_add_link_in_views_help: L'icone '+' apparaitra dans les vues permettant aux utilisateurs d'ajouter rapidement des événements dans ceux d'autres utilisateurs
+display-desc-print-day-help: Inclure les descriptions d'événements dans la version imprimable de la vue journalière.
+Display description in printer day view: Descriptions dans la version imprimable de la vue journalière
+yearly-shows-events-help: Sur la vue par année, affiche les jours contenant des événements en caractères gras
+Display days with events in bold in month and year views: Sur les vues par mois et par année, affiche les jours contenant des événements en caractères gras
+allow-view-add-help: L'icone '+' apparaitra dans les vues permettant aux utilisateurs d'ajouter rapidement des événements dans ceux d'autres utilisateurs
 Include add event link in views: Inclure le lien d'ajout d'événement dans les vues
-allow_view_other_help: Spécifie si un utilisateur peut visualiser l'agenda d'un autre utilisateur.
-may view others cals: Autoriser la visualisation des agendas des autres personnes
-require_approvals_help: Activé, un utilisateur doit approuver un événement avant qu'il ne soit affiché dans l'agenda (à moins que « Afficher les événements en attente » ne soit activé). Notez que le réglage sur « Non » désactivera les approbations pour l'agenda à accès public (si l'accès public à l'agenda est activé).
+allow-view-other-help: Spécifie si un utilisateur peut visualiser l'agenda d'un autre utilisateur.
+Allow viewing other users calendars: Autoriser la visualisation des agendas des autres personnes
+require-approvals-help: Activé, un utilisateur doit approuver un événement avant qu'il ne soit affiché dans l'agenda (à moins que « Afficher les événements en attente » ne soit activé). Notez que le réglage sur « Non » désactivera les approbations pour l'agenda à accès public (si l'accès public à l'agenda est activé).
 Require event approvals: Réclamer l'approbation des événements
-display_unapproved_help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
+display-unapproved-help: Spécifie si vous voulez afficher dans votre agenda les événements en attente.<br /> Si vous choisissez « Oui », les événements en attente seront affichés dans votre agenda (dans une couleur différente).<br /> Si vous choisissez « Non », les événements en attente seront affichés dans votre agenda seulement quand vous les approuverez.
 Display unapproved: Afficher les événements en attente
-allow_conflicts_help: Vérifier les conflits d'événements (deux événements prévus au même moment pour la même personne). Si vous positionnez cette valeur à « Oui », vous pourrez introduire deux événements qui se chevauchent après confirmation. Si vous choisissez « Non », il ne sera effectué aucune vérification de conflit. Vous choisirez probablement « Oui » pour activer la vérification des conflits.
-Check for conflicts: Vérifier les conflits d'événements
+conflict-check-help: Vérifier les conflits d'événements (deux événements prévus au même moment pour la même personne). Si vous positionnez cette valeur à « Oui », vous pourrez introduire deux événements qui se chevauchent après confirmation. Si vous choisissez « Non », il ne sera effectué aucune vérification de conflit. Vous choisirez probablement « Oui » pour activer la vérification des conflits.
+Check for event conflicts: Vérifier les conflits d'événements
 Yes: Oui
 No: Non
-conflict_months_help: Si la vérification des conflits est activée (« Vérifier les conflits pour les événements » est positionné sur « Oui »), ceci spécifie sur combien de mois dans le futur les conflits seront vérifiés. Si vous trouvez que l'ajout d'événements prend trop de temps, réduisez ce nombre.
+conflict-months-help: Si la vérification des conflits est activée (« Vérifier les conflits pour les événements » est positionné sur « Oui »), ceci spécifie sur combien de mois dans le futur les conflits seront vérifiés. Si vous trouvez que l'ajout d'événements prend trop de temps, réduisez ce nombre.
 Conflict checking months: Période de vérification des conflits en mois
-allow_conflict_override_help: Permet aux utilisateurs de passer outre les conflits d'agenda et de plannifier deux (ou plus) événements au même moment.
-may users override conflicts: Permet aux utilisateurs de passer outre les conflits
-limit_appts_help: Permet à l'administrateur de fixer la limite générale du nombre d'événements par utilisateur et par jour.
-Limit timed events per day: Nombre maximum d'événements temporels par jour
-limit_appts_number_help: Détermine le nombre maximum d'événements temporels qu'un utilisateur peut avoir dans une journée.
+conflict-check-override-help: Permet aux utilisateurs de passer outre les conflits d'agenda et de plannifier deux (ou plus) événements au même moment.
+Allow users to override conflicts: Permet aux utilisateurs de passer outre les conflits
+limit-appts-help: Permet à l'administrateur de fixer la limite générale du nombre d'événements par utilisateur et par jour.
+Limit number of timed events per day: Nombre maximum d'événements temporels par jour
+limit-appts-number-help: Détermine le nombre maximum d'événements temporels qu'un utilisateur peut avoir dans une journée.
 Maximum timed events per day: Nombre maximum d'événements temporels par jour
-disable_priority_field_help: En sélectionnant « Oui », vous enlevez le champ « Priorité » des pages d'information sur les événements, fournissant une interface plus simple pour les novices.
+disable-priority-field-help: En sélectionnant « Oui », vous enlevez le champ « Priorité » des pages d'information sur les événements, fournissant une interface plus simple pour les novices.
 Disable Priority field: Désactiver le champ Priorité
-disable_access_field_help: En sélectionnant « Oui », vous enlevez le champ « Accès » des pages d'information sur les événements, fournissant une interface plus simple pour les novices.
+disable-access-field-help: En sélectionnant « Oui », vous enlevez le champ « Accès » des pages d'information sur les événements, fournissant une interface plus simple pour les novices.
 Disable Access field: Désactiver le champ Accès
-disable_participants_field_help: En sélectionnant « Oui », vous enlevez le champ « Participants » des pages d'informations sur les événements, empêchant les utilisateurs d'ajouter d'autres utilisateurs à leurs événements. Si vous activez cette option, vous devriez désactiver aussi le champ « Autoriser la visualisation des agendas des autres utilisateurs ».
+disable-participants-field-help: En sélectionnant « Oui », vous enlevez le champ « Participants » des pages d'informations sur les événements, empêchant les utilisateurs d'ajouter d'autres utilisateurs à leurs événements. Si vous activez cette option, vous devriez désactiver aussi le champ « Autoriser la visualisation des agendas des autres utilisateurs ».
 Disable Participants field: Désactiver le champ Participants
-disable_repeating_field_help: En sélectionnant « Oui », vous enlevez le champ « Répétitions » lors de l'ajout d'événements, fournissant une interface plus simple pour les novices.
+disable-repeating-field-help: En sélectionnant « Oui », vous enlevez le champ « Répétitions » lors de l'ajout d'événements, fournissant une interface plus simple pour les novices.
 Disable Repeating field: Désactiver le champ de Répétition
-allow_html_description_help: Si coché, les utilisateurs pourront ajouter du code HTML dans le champ descriptif d'événement.  Sinon, le HTML sera affiché textuellement.  Attention: Activer cette option permet aux utilisateurs d'inclure des images hébergées sur d'autres site web.
+allow-html-description-help: Si coché, les utilisateurs pourront ajouter du code HTML dans le champ descriptif d'événement.  Sinon, le HTML sera affiché textuellement.  Attention: Activer cette option permet aux utilisateurs d'inclure des images hébergées sur d'autres site web.
 Allow HTML in Description: Autoriser l'utilisation de code HTML dans les descriptions
-site_extras_in_popup_help: Si coché, permet aux champs ajoutés dans site_extras.php de s'afficher dans les fenêtres d'alerte d'événements
+popup-includes-siteextras-help: Si coché, permet aux champs ajoutés dans site_extras.php de s'afficher dans les fenêtres d'alerte d'événements
 Display Site Extras in popup: Afficher les extras au site dans les fenêtres d'alerte
-remember_last_login_help: Si activé, l'identifiant de l'utilisateur sera rempli pour son compte sur la page de connexion (sans le mot de passe), et les préférences de l'utilisateur seront chargées (y compris les couleurs préférées et la sélection de la langue).
+remember-last-login-help: Si activé, l'identifiant de l'utilisateur sera rempli pour son compte sur la page de connexion (sans le mot de passe), et les préférences de l'utilisateur seront chargées (y compris les couleurs préférées et la sélection de la langue).
 Remember last login: Se souvenir de la dernière connexion
-allow_public_access_help: Activé, l'agenda peut être utilisé comme un agenda public en lecture seule ne requierant pas de connexion par les utilisateurs.
+allow-public-access-help: Activé, l'agenda peut être utilisé comme un agenda public en lecture seule ne requierant pas de connexion par les utilisateurs.
 Allow public access: Autoriser l'accès public
 public-access-default-visible: Les événements de l'agenda public s'afficheront automatiquement sur les agenda de tous les autres usagers.
-Public visible by default: Accès public visible par défaut
+Public access visible by default: Accès public visible par défaut
 public-access-default-selected: À l'ajout d'un événement, l'utilisateur public sera sélectionné par défaut comme participant.
-is public default party: L'accès public est le participant par défaut
+Public access is default participant: L'accès public est le participant par défaut
 public-access-view-others-help: Lors d'un accès en mode « accès public », spécifie si l'utilisateur peut visualiser les agendas des autres utilisateurs.
-may public view others: L'accès public peut visualiser les autres utilisateurs
+Public access can view other users: L'accès public peut visualiser les autres utilisateurs
 public-access-can-add-help: Activé, les utilisateurs qui accédent au système via un accès public pourront ajouter de nouveaux événements, mais ceux-ci ne s'afficheront pas dans l'agenda tant qu'un administrateur ne les aura pas approuvés.
-may public add events: Autorise un accès public à ajouter des événements
+Public access can add events: Autorise un accès public à ajouter des événements
 public-access-add-requires-approval-help: Indique si les événements ajoutés par l'accès public nécéssitent d'être approuvés avant d'être affichés
-must approve public events: Les nouveaux événements publiques doivent être approuvés
+Public access new events require approval: Les nouveaux événements publiques doivent être approuvés
 public-access-sees-participants-help: Si coché, les utilisateurs consultant l'agenda à partir du compte public pourront voir la liste des participants en visualisant les détails d'un événement
-may public see participants: Les utilisateurs publiques peuvent afficher les participants
+Public access can view participants: Les utilisateurs publiques peuvent afficher les participants
 groups-enabled-help: Active le support des groupes, autorisant les utilisateurs à sélectionner les utilisateurs par groupe.
 Groups enabled: Groupes activés
 user-sees-his-group-help: Si activé, les utilisateurs ne visualiseront pas l'agenda des autres utilisateurs n'appartenant pas au moins à leur groupe.
 User sees only his groups: L'utilisateur ne visualise que ses groupes
 nonuser-enabled-help: Si activé, les administrateurs auront la possibilité d'ajouter des agendas non-utilisateurs
-NUCs enabled: Agenda des non-utilisateurs activé
+Nonuser enabled: Agenda des non-utilisateurs activé
 nonuser-list-help: Indique où afficher l'agenda des non-utilisateurs dans la liste des participants
-list NUCs at: Afficher la liste des participants
+Nonuser list: Afficher la liste des participants
 Enabled: activés
 reports-enabled-help: Si coché, les utilisateurs verront apparaitre une section « Rapports » au bas de chaque page et pourront créer des rapports personnalisés.  En plus, les administrateurs ont la possibilité de créer des rapports globaux s'affichant au bas de chaque page d'usager.
 Reports enabled: Rapports activés
@@ -216,26 +216,26 @@ Categories enabled: Active/Désactive l'utilisation des catégories
 allow-external-users-help: Indique si un utilisateur extérieur à l'agenda peut être ajouté à un événement. Celà permet aux utilisateurs extérieurs à l'agenda d'y figurer comme participants.
 Allow external users: Autoriser les utilisateurs extérieurs
 external-can-receive-notification-help: Lorsque des utilisateurs extérieurs bénéficient de la possibilité d'adresser des courriers électroniques, ils peuvent recevoir une notification par couriel lors de l'ajout, de la modification ou de la suppression d'un événement (à condition que l'adresse de couriel de l'utilisateur extérieur soit spécifiée)
-may notify externals by email: Les utilisateurs extérieurs peuvent recevoir une notification par couriel
+External users can receive email notifications: Les utilisateurs extérieurs peuvent recevoir une notification par couriel
 external-can-receive-reminder-help: Lorsque des utilisateurs extérieurs bénéficient de la possibilité d'adresser des courriers électroniques, ils peuvent recevoir un rappel (à condition que l'adresse de couriel de l'utilisateur extérieur soit spécifiée)
-may remind externals by email: Les utilisateurs extérieurs peuvent recevoir des rappels par couriel
+External users can receive email reminders: Les utilisateurs extérieurs peuvent recevoir des rappels par couriel
 email-enabled-help: Active/Désactive l'envoi de couriel pour la notification et les rappels. Positionnez-le sur « Non » si votre serveur n'est pas configuré pour l'adressage des courriers électroniques.
 Email enabled: Courrier électronique activé
 email-default-sender: Spécifie l'adresse de courrier électronique à indiquer pour l'expéditeur lors de l'envoi de rappels.
 Default sender address: Adresse par défaut de l'expéditeur
 Default user settings: Réglages par défaut de l'utilisateur
-email_reminder_help: Permet de définir si un couriel est adressé ou non pour le rappel d'un événement.
+email-event-reminders-help: Permet de définir si un couriel est adressé ou non pour le rappel d'un événement.
 Event reminders: Rappel pour un événement
-email_event_added: Notification par couriel lors de l'ajout d'un événement dans votre agenda.
+email-event-added: Notification par couriel lors de l'ajout d'un événement dans votre agenda.
 Events added to my calendar: Événement ajouté dans votre agenda
-email_event_added: Notification par couriel lors de la modification d'un événement dans votre agenda.
+email-event-updated: Notification par couriel lors de la modification d'un événement dans votre agenda.
 Events updated on my calendar: Événement modifié dans votre agenda
-email_event_deleted: Notification par couriel lors de la suppression d'un événement dans votre agenda.
+email-event-deleted: Notification par couriel lors de la suppression d'un événement dans votre agenda.
 Events removed from my calendar: Événement supprimé dans votre agenda
-email_event_rejected: Notification par couriel lors du rejet d'un événement par l'un des participants.
+email-event-rejected: Notification par couriel lors du rejet d'un événement par l'un des participants.
 Event rejected by participant: Événement rejeté par un participant
 Allow user to customize colors: Autoriser les utilisateurs à personnaliser leurs couleurs
-Enable gradient images for BG: Autoriser les images en dégradés comme images de fond
+Enable gradient images for background colors: Autoriser les images en dégradés comme images de fond
 Not available: Non disponible
 
 ########################################
@@ -283,7 +283,7 @@ Category Name: Nom de la catégorie
 Color: Couleur
 Add: Ajouter
 Delete: Supprimer
-really delete entry: Voulez-vous vraiment supprimer cet événement ?
+Are you sure you want to delete this entry?: Voulez-vous vraiment supprimer cet événement ?
 Make New Category: Ajouter une nouvelle catégorie
 
 ########################################
@@ -319,7 +319,7 @@ brief-description-help: Ceci doit être un résumé (environ 20 caractères) de 
 Brief Description: Description résumée
 full-description-help: Ceci doit être une description détaillée de l'événement. Cette information sera vue par l'utilisateur quand celui-ci cliquera sur l'événement.
 Full Description: Description détaillée
-access-help: Spécification du niveau d'accès de l'événement.<br> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
+access-help: Spécification du niveau d'accès de l'événement.<br /> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br /><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
 Access: Accès
 priority-help: Spécification de la priorité de l'événement. Une haute priorité sera affichée en gras.
 Priority: Priorité
@@ -333,16 +333,16 @@ date-help: Spécification de la date de l'événement.
 Untimed event: événement intemporel
 Timed event: événement temporel
 All day event: événement permanent
-TZ Offset: Décalage horaire
-time-help: Spécification de l'heure de l'événement.<br><i>Ce champ peut être laissé vide.</i>
-duration-help: Spécification de la durée (en minutes) de l'événement.<br><i>Ce champ peut être laissé vide.</i>
+Timezone Offset: Décalage horaire
+time-help: Spécification de l'heure de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
+duration-help: Spécification de la durée (en minutes) de l'événement.<br /><i>Ce champ peut être laissé vide.</i>
 end-time-help: Spécifie l'heure à laquelle l'événement est prévu se terminer
 participants-help: Liste des participants pour cet événement.
 Selected: Sélection
 Availability: Disponibilité
 external-participants-help: Spécifie une liste de participants pour cet événement qui ne font pas partie des utilisateurs de l'agenda. Ces utilisateurs devraient figurer un à un par ligne avec éventuellement leur adresse de couriel. Si une adresse de couriel est spécifiée, l'utilisateur peut recevoir par couriel les notifications et rappels.
 External Participants: Participants extérieurs
-repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc.<br><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
+repeat-type-help: Sélectionner la fréquence de répétition de l'événement.<br /><i>Mensuel (par jour)</i> autorise un événement à être répété tous les premiers Lundi du mois, 3ème Jeudi du mois, etc.<br /><i>Mensuel (par date)</i> autorise un événement à être répété le même jour du mois.
 Daily: Quotidienne
 Weekly: Hebdomadaire
 Monthly: Mensuelle
@@ -356,20 +356,20 @@ Frequency: Fréquence
 All: Tout
 Send Reminder: Envoyer un rappel
 Delete entry: Supprimer l'événement
-not authorized to edit entry: Vous n'êtes pas autorisé à modifier cet événement
+You are not authorized to edit this entry.: Vous n'êtes pas autorisé à modifier cet événement
 
 ########################################
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: Un nouvel événement est proposé par
 An appointment has been updated by: Un événement a été mis à jour par
-conflicts with suggested time: Cet événement est en conflit avec l'heure suggérée.
+The following conflicts with the suggested time: Cet événement est en conflit avec l'heure suggérée.
 Please look on: Veuillez consulter
 to accept or reject this appointment: pour accepter ou rejeter cet événement
 to view this appointment: pour voir cet événement
 Scheduling Conflict: Conflit entre agendas
 Your suggested time of: Votre suggestion de
-conflicts with existing entries: est en conflit avec les événements suivants
+conflicts with the following existing calendar entries: est en conflit avec les événements suivants
 
 ########################################
 # Page: edit_layer.php
@@ -385,8 +385,8 @@ Delete layer: Détruire un calque
 ########################################
 # Page: edit_layer_handler.php
 #
-no layers for yourself: Vous ne pouvez pas créer un calque pour vous-même
-only one layer per user: Vous ne pouvez créer qu'un seul calque par utilisateur
+You cannot create a layer for yourself.: Vous ne pouvez pas créer un calque pour vous-même
+You can only create one layer for each user.: Vous ne pouvez créer qu'un seul calque par utilisateur
 
 ########################################
 # Page: edit_nonusers.php
@@ -406,7 +406,7 @@ Error: Erreur
 Import Results: Résultat de l'importation
 Events successfully imported: Événements importés avec succès
 Errors: Erreurs
-error parsing import file: Erreur lors de l'analyse du fichier d'importation - ou - aucun événément n'a été détecté
+There was an error parsing the import file or no events were returned.: Erreur lors de l'analyse du fichier d'importation - ou - aucun événément n'a été détecté
 
 ########################################
 # Page: edit_report.php
@@ -452,7 +452,7 @@ Template variables: Variables disponibles
 Page template: Options de présentation
 Day template: Options de présentation pour une journée
 Event template: Options de présentation pour un événement
-really delete report: Etes vous certain de vouloir effacer ce rapport ?
+Are you sure you want to delete this report?: Etes vous certain de vouloir effacer ce rapport ?
 
 ########################################
 # Page: edit_report_handler.php
@@ -474,7 +474,7 @@ E-mail address: Adresse de couriel
 Password: Mot de passe
 again: confirmer
 Disabled for demo: Désactivé pour la démo
-really delete user: Êtes-vous certain de vouloir supprimer cet utilisateur ?
+Are you sure you want to delete this user?: Êtes-vous certain de vouloir supprimer cet utilisateur ?
 Change Password: Changer de mot de passe
 New Password: Nouveau mot de passe
 Set Password: Modifier le mot de passe
@@ -483,9 +483,9 @@ Set Password: Modifier le mot de passe
 # Page: edit_user_handler.php
 #
 Deleting users not supported.: La suppression des utilisateurs n'est pas possible
-passwords not identical: Les mots de passe saisis ne sont pas identiques
-must enter a password: Vous n'avez pas saisi de mot de passe
-no blank username: Le nom d'utilisateur ne peut être laissé non renseigné
+The passwords were not identical.: Les mots de passe saisis ne sont pas identiques
+You have not entered a password.: Vous n'avez pas saisi de mot de passe
+Username cannot be blank.: Le nom d'utilisateur ne peut être laissé non renseigné
 
 ########################################
 # Page: export.php
@@ -501,7 +501,7 @@ Modified since: Modifié depuis
 ########################################
 # Page: export_handler.php
 #
-incorrect export format: Le format d'exportation n'est pas défini ou est incorrect
+export format not defined or incorrect.: Le format d'exportation n'est pas défini ou est incorrect
 
 ########################################
 # Page: groups.php
@@ -530,7 +530,7 @@ Auto-refresh calendars: Rafraichissement automatique de l'agenda
 auto-refresh-help: Activé, les pages de visualisation par jour, semaine, mois et la liste des événements en attente seront automatiquement périodiquement rafraichies.
 Auto-refresh time: Période de rafraichissement
 auto-refresh-time-help: Spécifie la période de rafraichissement des pages.
-bold events in year view: Afficher les jours avec événements en gras dans la vue annuelle
+Display days with events in bold in year view: Afficher les jours avec événements en gras dans la vue annuelle
 Display weekends in week view: Afficher les week-ends dans la représentation de la semaine
 Time interval: Intervalle de temps (vues semaine et jour)
 time-interval-help: Spécifie l'intervalle de temps pour l'affichage des vues par semaine et par jour.
@@ -558,15 +558,16 @@ repeat-day-help: Spécifie quels jours de la semaine l'événement doit être r�
 # Page: help_import.php
 #
 Import: Importer
-to import entries from Palm: Ce formulaire vous permet d'importer les données de votre logiciel Palm Desktop gérant votre ordinateur personnel Palm. Les données sont implémentées dans un fichier <tt>datebook.dat</tt> placé dans le répertoire <tt>datebook/</tt> de votre Palm (cf. sous-répertoire généralement à votre nom). Sélectionner sur votre disque dur, dans l'arborescence Palm Desktop, le fichier <tt>datebook.dat</tt> pour l'importation.
-these entries not imported: Les entrées suivantes ne seront pas importées
-Entries older than current date: Entrées antérieures à la date courante
-Entries created in Palm: Entrées crées dans le logiciel Palm Desktop qui n'ont pas été synchronisées via HotSync
+This form will allow you to import entries from the Palm Desktop Datebook.: Ce formulaire vous permet d'importer les données de votre logiciel Palm Desktop gérant votre ordinateur personnel Palm.
+It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Les données sont implémentées dans un fichier <tt>datebook.dat</tt> placé dans le répertoire <tt>datebook/</tt> de votre Palm (cf. sous-répertoire généralement à votre nom). Sélectionner sur votre disque dur, dans l'arborescence Palm Desktop, le fichier <tt>datebook.dat</tt> pour l'importation.
+The following entries will not be imported: Les entrées suivantes ne seront pas importées
+Entries older than the current date: Entrées antérieures à la date courante
+Entries created in the Palm Desktop...: Entrées crées dans le logiciel Palm Desktop qui n'ont pas été synchronisées via HotSync
 Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Tout événement importé du Palm sera écrasé dans votre agenda partagé WebCalendar lors de la prochaine importation (sauf si la date de l'événement en question est antérieure).
 Therefore, updates should be made in the Palm Desktop.: Les mises à jour doivent donc au préalable être effectuées via le logiciel Palm Desktop (HotSync).
-This will import (.vcs): Ce formulaire importe le format vCalendar (.vcs)
-These formats have been tested: Les formats suivants ont été testés
-This will import (.ics): Ce formulaire importera tout événement au format iCalendar (.ics)
+This form will import vCalendar (.vcs) 1.0 events.: Ce formulaire importe le format vCalendar (.vcs)
+The following formats have been tested: Les formats suivants ont été testés
+This form will import iCalendar (.ics) events.: Ce formulaire importera tout événement au format iCalendar (.ics)
 Enabling: Activer
 Overwrite Prior Import: Remplacer l'importation précédente
 
@@ -579,13 +580,13 @@ Help Index: Index de l'aide
 # Page: help_layers.php
 #
 Add/Edit/Delete: Ajouter/Modifier/Supprimer
-Edit Layers link in admin: Cliquer sur le lien « Modifier les calques » dans la section administration, au bas de la page, vous permet d'ajouter/modifier/supprimer les calques.
-text color of new layer: La couleur à utiliser pour l'affichage du texte d'un nouveau calque dans votre agenda.
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Cliquer sur le lien « Modifier les calques » dans la section administration, au bas de la page, vous permet d'ajouter/modifier/supprimer les calques.
+The text color of the new layer that will be displayed in your calendar.: La couleur à utiliser pour l'affichage du texte d'un nouveau calque dans votre agenda.
 Disabling: Désactiver
-Disable Layers link in admin: Sélectionner le lien « Désactiver » pour supprimer le mode calque.
-show duplicate events: Activé, les événements en double des vôtres seront affichés.
-Enable Layers link in admin: Sélectionner le lien « Activer » pour bénéficier du mode calque.
-user to display on your cal: Défini l'utilisateur que vous désirez voir affiché dans votre agenda.
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Sélectionner le lien « Désactiver » pour supprimer le mode calque.
+If checked, events that are duplicates of your events will be shown.: Activé, les événements en double des vôtres seront affichés.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Sélectionner le lien « Activer » pour bénéficier du mode calque.
+Specifies the user that you would like to see displayed in your calendar.: Défini l'utilisateur que vous désirez voir affiché dans votre agenda.
 
 ########################################
 # Page: help_pref.php
@@ -611,16 +612,16 @@ Exclude private records: Exclure les enregistrements privés
 ########################################
 # Page: import_handler.php
 #
-prior imports marked deleted: Les événements importés précédemment sont marqués supprimés
+Events from prior import marked as deleted: Les événements importés précédemment sont marqués supprimés
 Conflicting events: Événements en conflits
-import file had no data: Le fichier à importer ne contient aucune donnée exploitable
+The import file contained no data.: Le fichier à importer ne contient aucune donnée exploitable
 
 ########################################
 # Page: layers.php
 #
 Layer: Calque
 Edit layer: Modifier un calque
-really delete layer: êtes vous certain de détruire ce calque ?
+Are you sure you want to delete this layer?: êtes vous certain de détruire ce calque ?
 Disable Layers: Désactiver les calques
 Add layer: Ajouter un calque
 
@@ -636,8 +637,8 @@ Reject this entry?: Rejeter cet événement ?
 ########################################
 # Page: login-app.php
 #
-must enter login/password: Vous devez saisir un login et un mot de passe valides
-Save login via cookies: Sauvegarder l'identifiant dans un cookie, pour ne plus le saisir la prochaine fois
+You must enter a login and password.: Vous devez saisir un login et un mot de passe valides
+Save login via cookies so I dont have to login next time.: Sauvegarder l'identifiant dans un cookie, pour ne plus le saisir la prochaine fois
 Login: Connexion
 Access public calendar: Agenda à accès public
 calendar: agenda
@@ -665,7 +666,7 @@ minute: =
 #
 Purging events for: Supprimer les événements de
 Finished: Terminé
-to delete ALL events for user: Cocher la case pour supprimer <b>TOUS</b> les événements d'un utilisateur
+Check box to delete ALL events for a user: Cocher la case pour supprimer <b>TOUS</b> les événements d'un utilisateur
 Delete all events before: Supprimer les événements antérieurs au
 Preview delete: Aperçu de la suppression
 
@@ -677,7 +678,7 @@ An appointment has been rejected by: Un événement a été rejeté par
 ########################################
 # Page: report.php
 #
-confidential event: Cet événement est confidentiel
+This event is confidential.: Cet événement est confidentiel
 cont.: suite
 Approved: Approuvé
 Deleted: Supprimé
@@ -699,7 +700,7 @@ Keywords: Mots clés
 ########################################
 # Page: search_handler.php
 #
-must enter search keywords: Vous devez indiquer un ou plusieurs mot(s) clé(s) pour la recherche
+You must enter one or more search keywords.: Vous devez indiquer un ou plusieurs mot(s) clé(s) pour la recherche
 Search Results: Résultats de la recherche
 match found: événement correspond à votre recherche
 matches found: événements correspondent à votre recherche
@@ -718,7 +719,7 @@ View Another Users Calendar: Visualiser l'agenda d'un autre utilisateur
 ########################################
 # Page: set_entry_cat.php
 #
-no categories added: Vous n'avez pas défini de catégories
+You have not added any categories.: Vous n'avez pas défini de catégories
 Set Category: Choisir la catégorie
 
 ########################################
@@ -760,7 +761,7 @@ You must specify a view name: Vous devez indiquer une vue
 ########################################
 # Page: view_d.php
 #
-No users for view: Aucun utilisateur pour cette vue
+No users for this view.: Aucun utilisateur pour cette vue
 
 ########################################
 # Page: view_entry.php
@@ -771,15 +772,15 @@ Approve/Confirm entry: Approuver/Confirmer cet événement
 Reject entry: Rejeter l'événement
 Set category: Choisir une catégorie
 Copy entry: Dupliquer l'événement
-will delete entry for all: Ceci va supprimer cet événement pour tous les utilisateurs.
+This will delete this entry for all users.: Ceci va supprimer cet événement pour tous les utilisateurs.
 Edit entry: Modification de l'événement
-Edit repeating entry all dates: Modifier l'événement répétitif pour toutes les dates
-Dele repeating event all dates: Supprimer l'événement répétitif pour toutes les dates
+Edit repeating entry for all dates: Modifier l'événement répétitif pour toutes les dates
+Delete repeating event for all dates: Supprimer l'événement répétitif pour toutes les dates
 Edit entry for this date: Modifier l'événement pour cette date
 Delete entry only for this date: Supprimer l'événement pour cette date
-will delete entry from your cal: Ceci supprimera un événement de votre agenda.
-want to add entry to your cal: Voulez-vous ajouter cet événement à votre agenda ?
-will add entry to your cal: Ceci ajoutera un événement à votre agenda.
+This will delete the entry from your calendar.: Ceci supprimera un événement de votre agenda.
+Do you want to add this entry to your calendar?: Voulez-vous ajouter cet événement à votre agenda ?
+This will add the entry to your calendar.: Ceci ajoutera un événement à votre agenda.
 Email all participants: Envoyer un courriel à tous les participants
 Hide activity log: Masquer le journal de suivi
 Show activity log: Visualiser le journal de suivi
@@ -805,7 +806,7 @@ Dec: Déc
 ########################################
 # Page: includes/functions.php
 #
-exceeds XXX events/day limit: dépasse la limite de XXX événements par jour
+exceeds limit of XXX events per day: dépasse la limite de XXX événements par jour
 All Attendees: Tous les participants
 Busy: Indisponible
 Tentative: Attente d'approbation
@@ -941,29 +942,29 @@ Notification: =
 Server URL is required.: L'URL du serveur n'est pas spécifiée
 Server URL must end with /.: L'URL du serveur doit se terminer par '/'
 Invalid work hours.: Plage horaire invalide
-Invalid doc BG color: Couleur de fond incorrecte
-Invalid doc title color: Couleur de titre de document incorrecte
-Invalid table cell BG color: Couleur de fond de cellule incorrecte
-Invalid table grid color: Couleur de quadrillage incorrecte
-Invalid table header BG color: Couleur de fond de cellule d'en-tête de tableau incorrecte
-Invalid table cell BG color: Couleur de texte de tableau incorrecte
-Invalid popup BG color: Couleur de fond de fenêtre d'alerte incorrecte
-Invalid popup text color: Couleur de texte de fenêtre d'alerte incorrecte
-Invalid table cell today BG: Couleur de fond de cellule du jour courant incorrecte
-Color format should be RGB: Le format de couleur devrait être du type '#RRGGBB'
+Invalid color for document background.: Couleur de fond incorrecte
+Invalid color for document title.: Couleur de titre de document incorrecte
+Invalid color for table cell background.: Couleur de fond de cellule incorrecte
+Invalid color for table grid.: Couleur de quadrillage incorrecte
+Invalid color for table header background.: Couleur de fond de cellule d'en-tête de tableau incorrecte
+Invalid color for table text background.: Couleur de texte de tableau incorrecte
+Invalid color for event popup background.: Couleur de fond de fenêtre d'alerte incorrecte
+Invalid color for event popup text.: Couleur de texte de fenêtre d'alerte incorrecte
+Invalid color for table cell background for today.: Couleur de fond de cellule du jour courant incorrecte
+Color format should be RRGGBB.: Le format de couleur devrait être du type '#RRGGBB'
 
 ########################################
 # Page: includes/js/availability.php
 #
-Change entry date/time: Modifier la date et l'heure de cet événement ?
+Change the date and time of this entry?: Modifier la date et l'heure de cet événement ?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-must enter Brief Description: Vous n'avez pas saisi de description résumée
-time before work hours: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
+You have not entered a Brief Description: Vous n'avez pas saisi de description résumée
+The time you have entered begins before your preferred work hours. Is this correct?: L'heure que vous avez spécifiée commence avant l'heure de début de vos journées. Est-ce correct ?
 Please add a participant: Veuillez ajouter un participant
-must enter valid time: Vous n'avez pas saisi une heure appropriée
+You have not entered a valid time of day: Vous n'avez pas saisi une heure appropriée
 
 ########################################
 # Page: includes/js/edit_layer.php

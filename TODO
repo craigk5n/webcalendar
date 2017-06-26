@@ -1,15 +1,10 @@
-$Id$
-
-Things to do as part of the WebCalendar 1.3.0 development cycle.
+Things to do as part of the WebCalendar 1.3 development cycle
 
 Com
 ple     Description
 te?
 --- -------------------------------------
-[ ] Move punctuation and literals out of the code to better accommodate the translators.
-[ ] Update "UPGRADING.html"
 
-(Are any more of these completed?)
 [ ] Better handling of large numbers of users (1000+).
     We have one user who claims the JS chokes the browser with 1000+
     users when you press the "Select..." button
@@ -28,7 +23,7 @@ te?
     events like the public calendar does.  Allow for a a list of users
     to receive email notifications... perhaps all users who have
     approve permissions on the nonuser calendar.
-[ ] Add all features of public calendar to nonuser public calendar.
+[ ] Add all features of public calendar to nonuser public calendarr.
     Remove the public calendar and transition users to a public
     nonuser calendar as part of the upgrade process.
 [ ] Always have "User Access Control" enabled.  We might need to work
@@ -67,3 +62,4 @@ Here are some other ideas for the next or perhaps later releases:
     Details on how to developer ActiveSync Service Providers:
       http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wceactsy/html/ceconunderstandingserviceproviders.asp
       http://msdn.microsoft.com/library/default.asp?url=/library/en-us/wceactsy/html/cecondesignguidelinesforactivesyncsynchronizationserviceproviders.asp
+

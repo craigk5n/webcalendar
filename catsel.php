@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: catsel.php,v 1.28.2.1 2013/01/24 21:15:09 cknudsen Exp $
 include_once 'includes/init.php';
 
 // load user and global cats
@@ -24,16 +24,19 @@ $entryCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $entryCatStr ) ) / 2 );
 if ( strlen ( $entryCatStr ) < 30 )
   $entryCatStr = $entryCatFiller . $entryCatStr . $entryCatFiller;
 
+print_header( array( 'js/catsel.php/false/' . $form ),
+  '<script type=text/javascript" src="includes/js/catsel.js"></script>',
+  '', true, false, true );
+
 ob_start();
-setcookie( 'frm', $form );
-print_header( '', '', '', true, false, true );
 
 echo '
-    <table align="center" width="90%" summary="">
+    <table align="center" border="0" width="90%" summary="">
       <tr>
         <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>
-      <form action="" method="post" id="editCategories" name="editCategories">
+      <form action="" method="post" name="editCategories" '
+ . 'onSubmit="sendCats( this )">
       <tr>
         <td valign="top">';
 
@@ -46,8 +49,11 @@ if ( ! empty ( $categories ) ) {
     // None is index -1 and needs to be ignored
     if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
         substr ( $form, 0, 4 ) == 'edit' ) ) {
-      $tmpStr = $K . '" name="' . $V['cat_name'] . '">' . $V['cat_name'];
-      echo $option . ( empty ( $V['cat_owner'] )
+      $tmpStr = $K .
+        '" name="' . htmlentities ( $V['cat_name'] ) .
+        '">' . htmlentities ( $V['cat_name'] );
+      echo '
+            <option value="' . ( empty ( $V['cat_owner'] )
         ? "-$tmpStr" . '<sup>*</sup>' : $tmpStr ) . '</option>';
     }
   }
@@ -56,39 +62,44 @@ if ( ! empty ( $categories ) ) {
 }
 echo '
         </td>
-        <td valign="center"><input type="button" id="selAdd" value=">>"></td>
+        <td valign="center"><input type="button" value=">>" onclick="selAdd()"'
+ . ' /></td>
         <td align="center" valign="top">
-          <select name="eventcats[]" size="9" multiple>
+          <select name="eventcats[]" size="9"  multiple="multiple">
             <option disabled>' . $entryCatStr . '</option>';
 
 if ( strlen ( $cats ) ) {
   foreach ( $eventcats as $K ) {
     // disable if not creator and category is Global
     $show_ast = '';
+    $disabled = ( empty ( $categories[abs ( $K )]['cat_owner'] ) &&
+      substr ( $form, 0, 4 ) != 'edit' ? 'disabled' : '' );
     if ( empty ( $categories[abs ( $K )]['cat_owner'] ) ) {
       $show_ast = '*';
     }
-    echo $option . $K
-     .  ( empty( $categories[abs( $K )]['cat_owner'] )
-      && substr( $form, 0, 4 ) != 'edit' ? '" disabled>' : '">' )
-     . $categories[abs( $K )]['cat_name'] . $show_ast . '</option>';
+    echo '
+            <option value="' . "$K\" $disabled>"
+     . htmlentities ( $categories[abs ( $K )]['cat_name'] ) . $show_ast . '</option>';
   }
 }
 
+ob_end_flush();
+
 echo '
           </select>
-          <input type="button" id="selRem" value="' . translate( 'Remove' ) . '>
+          <input type="button" value="' . translate ( 'Remove' )
+ . '" onclick="selRemove()" />
         </td>
       </tr>
       <tr>
         <td valign="top" align="right">*' . translate ( 'Global Category' )
- . '&nbsp;&nbsp;&nbsp;<input type="button" id="sendCat" value="' . $okStr
- . '"></td>
-        <td colspan="2" align="left">&nbsp;&nbsp;<input type="button" id="canCat"'
- . ' value="' . translate( 'Cancel' ) . '"></td>
+ . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . translate ( 'OK' )
+ . '" onclick="sendCats()" /></td>
+        <td colspan="2" align="left">&nbsp;&nbsp;<input type="button" value="'
+ . translate ( 'Cancel' ) . '" onclick="window.close()" /></td>
       </tr>
       </form>
-    </table>' . print_trailer( false, true, true );
-ob_end_flush();
+    </table>
+    ' . print_trailer ( false, true, true );
 
 ?>

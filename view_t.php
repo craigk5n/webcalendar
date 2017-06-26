@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: view_t.php,v 1.93 2011/07/12 19:42:25 rjones6061 Exp $
 /**
  * Page Description:
  * This page will display a timebar for a week or month as specified by timeb.
@@ -19,9 +19,13 @@
  * then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
+include_once 'includes/init.php';
 include_once 'includes/views.php';
 
+$error = '';
 $USERS_PER_TABLE = 6;
+
+view_init ( $id );
 
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
@@ -53,8 +57,8 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
   $year = substr ( $date, 0, 4 );
-  $month= substr ( $date, 4, 2 );
-  $day  = substr ( $date, 6, 2 );
+  $month = substr ( $date, 4, 2 );
+  $day = substr ( $date, 6, 2 );
 
   $can_add = ( $readonly == 'N' || $is_admin );
   if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y' &&
@@ -67,9 +71,10 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $ev = combine_and_sort_events (
     get_entries ( $date, $get_unapproved ),
     get_repeating_entries ( $user, $date ) );
-  foreach ( $ev as $i ) {
-    if ( $get_unapproved || $i->getStatus() == 'A' ) {
-      $ret .= print_entry_timebar ( $i, $date );
+  $evcnt = count ( $ev );
+  for ( $i = 0; $i < $evcnt; $i++ ) {
+    if( $get_unapproved || $ev[$i]->getStatus() == 'A' ) {
+      $ret .= print_entry_timebar ( $ev[$i], $date );
       $cnt++;
     }
   }
@@ -229,7 +234,7 @@ function print_header_timebar() {
   . '
 <!-- YARDSTICK -->
             <tr class="yardstick">';
-  for ( $i = 0; $i < $totalSlots; $i++ ) {
+  for ( $i = 0; $i < ( $totalSlots ); $i++ ) {
     $ret .= '
               <td width="' . $yardWidth . '%">&nbsp;</td>';
   }
@@ -270,29 +275,43 @@ $prevmonth = date ( 'm', $prev );
 $prevday = date ( 'd', $prev );
 $prevdate = sprintf ( "%04d%02d%02d", $prevyear, $prevmonth, $prevday );
 
+// Get users in this view.
+$viewusers = view_get_user_list ( $id );
+$viewusercnt = count ( $viewusers );
+if ( $viewusercnt == 0 )
+  // This could happen if user_sees_only_his_groups  = Y and
+  // this user is not a member of any  group assigned to this view.
+  $error = translate( 'No users for this view.' );
+
 $printerStr = generate_printer_friendly ( 'view_t.php' );
+
+print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 
 if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
-  ob_end_flush();
   exit;
 }
 
+$nextStr = translate ( 'Next' );
+$prevStr = translate ( 'Previous' );
+
+ob_start();
+
 echo '
-      <div style="width:99%;">
-        <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
+    <div style="width:99%;">
+      <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
   '&amp;date=' . $prevdate
- . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '"></a>
-        <a title="' . $nextStr . '" class="next" href="view_t.php?id=' . $id .
+ . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
+      <a title="' . $nextStr . '" class="next" href="view_t.php?id=' . $id .
   '&amp;date=' . $nextdate
- . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '"></a>
-        <div class="title">
-          <span class="date">' . date_to_str( date( 'Ymd', $wkstart ), '', false )
+ . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+      <div class="title">
+        <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
- . date_to_str( date( 'Ymd', $wkend ), '', false ) . '</span><br>
-          <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
-        </div>
-      </div><br><br>';
+ . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br />
+        <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
+      </div>
+    </div><br /><br />';
 
 // The table has names across the top and dates for rows. Since we need to
 // spit out an entire row before we can move to the next date, we'll save up all
@@ -301,13 +320,13 @@ echo '
 // any more than that doesn't really fit in the page.
 
 $e_save = $re_save = array();
-foreach ( $viewusers as $i ) {
+for ( $i = 0; $i < $viewusercnt; $i++ ) {
   /* Pre-Load the repeated events for quckier access */
-  $repeated_events = read_repeated_events ( $i, $wkstart, $wkend, '' );
+  $repeated_events = read_repeated_events ( $viewusers[$i], $wkstart, $wkend, '' );
   $re_save = array_merge ( $re_save, $repeated_events );
   /* Pre-load the non-repeating events for quicker access
      subtracting ONE_WEEK to allow cross-day events to display. */
-  $events = read_events ( $i, $wkstart - 604800, $wkend );
+  $events = read_events ( $viewusers[$i], $wkstart - 604800, $wkend );
   $e_save = array_merge ( $e_save, $events );
 }
 $events = $e_save;
@@ -315,7 +334,7 @@ $repeated_events = $re_save;
 $timeBarHeader = print_header_timebar();
 
 echo '
-      <table class="main" summary="">';
+    <table class="main" summary="">';
 
 for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
   $dateYmd = date ( 'Ymd', $date );
@@ -323,27 +342,28 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
   if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
     continue;
 
-  echo '
-        <tr' . ( $dateYmd == date( 'Ymd', $today ) ? '>
-          <th class="today"' : ( $is_weekend ? ' class="weekend">
-          <th class="weekend"' : '>
-          <th class="row"' ) ) . ( $can_add
-    ? " ondblclick=\"dblclick_add( '$dateYmd', '$login' )\" title=\""
-     . $dblClickAdd . "\">"
-    : '>' ) . weekday_name( date( 'w', $date ), $DISPLAY_LONG_DAYS ) . '&nbsp;' .
-    date ( 'd', $date ) . '</th>
-          <td class="timebar">' . $timeBarHeader .
-    print_date_entries_timebar( $dateYmd, $login, true ) . '</table>
-          </td>
-        </tr>';
+  echo '<tr' . ( $dateYmd == date ( 'Ymd', $today ) ? '>
+      <th class="today"' :
+      ( $is_weekend ? ' class="weekend"><th class="weekend"' :
+      '><th class="row"' ) );
+  if ( $can_add )
+    echo " ondblclick=\"dblclick_add( '$dateYmd', '$login' )\"" .
+      " title=\"" . translate ( 'Double-click on empty cell to add new entry' ) . "\"";
+  echo '>';
+  echo weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS ) . '&nbsp;' .
+    date ( 'd', $date ) . '</th><td class="timebar">' . $timeBarHeader .
+    print_date_entries_timebar ( $dateYmd, $login, true ) .
+    '</table>
+        </td>
+      </tr>';
 }
 
 $user = ''; // reset
 
-echo '
-      </table>'
- . ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
-
 ob_end_flush();
+
+echo '
+    </table>'
+ . ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
 
 ?>

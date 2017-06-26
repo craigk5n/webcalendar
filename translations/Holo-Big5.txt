@@ -2,7 +2,7 @@
 #
 # Translated by: Henry H. Tan-Tenn <share2002nov@lomaji.com>
 #
-# $Id$
+# $Id: Holo-Big5.txt,v 1.23 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 
@@ -80,10 +80,10 @@ Month: 月
 Year: 年
 Settings: 設定中
 Colors: 顏色
-Document BG: 文件背景
+Document background: 文件背景
 Document title: 文件標題
-Table cell BG: 表格背景
-Table cell today BG: 當日顏色
+Table cell background: 表格背景
+Table cell background for current day: 當日顏色
 System Settings: 系統設定
 Help: 說明
 Language: 語系
@@ -140,7 +140,7 @@ Category Name: 類別名稱
 Color: 色緻
 Add: 增加
 Delete: 刪除
-really delete entry: 你敢確定 beh 刪除這個記事？
+Are you sure you want to delete this entry?: 你敢確定 beh 刪除這個記事？
 Make New Category: 增加新類別
 
 ########################################
@@ -173,7 +173,7 @@ brief-description-help: 佇遮簡單描述這個活動（約略二十字以內）。佇行事曆面頂是用
 Brief Description: 概要描述
 full-description-help: 活動 e 詳細說明。用者檢視活動內涵 e 時陣，會看著這部分。
 Full Description: 完整描述
-access-help: 活動 e 顯示設定。<br> <i>公眾 e </i>: 所有人都看會著活動 e 詳細資料。<br><i>機密 e </i>: 別人看會著你佇某日某時陣有活動記事，但是看 be 著詳細資料。
+access-help: 活動 e 顯示設定。<br /> <i>公眾 e </i>: 所有人都看會著活動 e 詳細資料。<br /><i>機密 e </i>: 別人看會著你佇某日某時陣有活動記事，但是看 be 著詳細資料。
 Access: 顯示設定
 priority-help: 活動 e 優先等級。高等級 e 活動會用粗體字型特別表示。
 Priority: 優先等級
@@ -186,8 +186,8 @@ date-help: 活動舉辦 e 日期。
 Untimed event: 無定時間 e 活動
 Timed event: 有定時間 e 活動
 All day event: 歸工 e 活動
-time-help: 活動舉辦 e 時間。<br><i>這項會使免添。</i>
-duration-help: 活動前後 e 長度（按分鐘算）。<br><i>這項會使免添。</i>
+time-help: 活動舉辦 e 時間。<br /><i>這項會使免添。</i>
+duration-help: 活動前後 e 長度（按分鐘算）。<br /><i>這項會使免添。</i>
 participants-help: 列出這項記事 e 參與者。
 external-participants-help: 非行事曆用者 e 本活動參與者名單。一 choa 應該列一位，會使包括電子郵便住址。有列住址 e 參與者通收著通知函及提醒函。
 External Participants: 外面參與者
@@ -204,7 +204,7 @@ repeat-frequency-help: 活動重複 e 頻率。設定「1」表示按時重複，「2」表示活動每兩
 Frequency: 頻率
 All: 全部
 Delete entry: 刪除記事
-not authorized to edit entry: 你無權利編輯這項記事
+You are not authorized to edit this entry.: 你無權利編輯這項記事
 
 ########################################
 # Page: edit_entry_handler.php
@@ -257,8 +257,8 @@ Set Password: 設定密碼
 # Page: edit_user_handler.php
 #
 Deleting users not supported.: 無支援刪除使用者
-passwords not identical: 密碼無對
-must enter a password: 你無輸入密碼
+The passwords were not identical.: 密碼無對
+You have not entered a password.: 你無輸入密碼
 
 ########################################
 # Page: export.php
@@ -309,7 +309,7 @@ Disabled: 停用 e
 #
 Layer: 階層
 Edit layer: 編輯階層
-really delete layer: 你敢確定 beh 刪除這個階層？
+Are you sure you want to delete this layer?: 你敢確定 beh 刪除這個階層？
 Disable Layers: 停用階層架構
 Add layer: 新增階層
 
@@ -325,8 +325,8 @@ Reject this entry?: 拒絕這個記事?
 ########################################
 # Page: login-app.php
 #
-must enter login/password: 你著輸入用者名稱及密碼
-Save login via cookies: 將登入資料儲存佇 cookies 中，後擺就免重登入。
+You must enter a login and password.: 你著輸入用者名稱及密碼
+Save login via cookies so I dont have to login next time.: 將登入資料儲存佇 cookies 中，後擺就免重登入。
 Login: 登入
 Access public calendar: 入去公眾行事曆
 cookies-note: <b>注意:</b> 本程式須要 cookies 才會得使用。
@@ -344,7 +344,7 @@ An appointment has been rejected by: 約會已經被拒絕，拒絕者是
 ########################################
 # Page: report.php
 #
-confidential event: 這個記事是機密 e
+This event is confidential.: 這個記事是機密 e
 Deleted: 已經刪除
 Rejected: 已經被拒絕
 Waiting for approval: 等待核准
@@ -359,7 +359,7 @@ Keywords: 關鍵字
 ########################################
 # Page: search_handler.php
 #
-must enter search keywords: 你至少著輸入一個檢索關鍵字
+You must enter one or more search keywords.: 你至少著輸入一個檢索關鍵字
 Search Results: 檢索結果
 match found: 筆符合查詢
 matches found: 筆符合查詢
@@ -413,15 +413,15 @@ External User: 外面用者
 Approve/Confirm entry: 核准/確定 記事
 Reject entry: 拒絕記事
 Set category: 設定類別
-will delete entry for all: 這會對所有用者刪除這項記事。
+This will delete this entry for all users.: 這會對所有用者刪除這項記事。
 Edit entry: 編輯記事
-Edit repeating entry all dates: 編輯所有日期 e 重複記事
-Dele repeating event all dates: 刪除重複 e 活動（所有日期）
+Edit repeating entry for all dates: 編輯所有日期 e 重複記事
+Delete repeating event for all dates: 刪除重複 e 活動（所有日期）
 Edit entry for this date: 編輯這個日期 e 記事
 Delete entry only for this date: 干單刪除這個日期 e 記事
-will delete entry from your cal: 這將會從你 e 行事曆刪除這個記事。
-want to add entry to your cal: 你要新增這個記事到你 e 行事曆嗎？
-will add entry to your cal: 這將會新增這個記事到你 e 行事曆。
+This will delete the entry from your calendar.: 這將會從你 e 行事曆刪除這個記事。
+Do you want to add this entry to your calendar?: 你要新增這個記事到你 e 行事曆嗎？
+This will add the entry to your calendar.: 這將會新增這個記事到你 e 行事曆。
 Email all participants: Email 所有參與者
 Hide activity log: 暗蓋使用紀錄
 Show activity log: 顯示使用紀錄
@@ -447,7 +447,7 @@ Dec: 12月
 ########################################
 # Page: includes/functions.php
 #
-exceeds XXX events/day limit: 超出一工 XXX 項活動 e 限制
+exceeds limit of XXX events per day: 超出一工 XXX 項活動 e 限制
 Event approved: 活動確認過
 Event created: 活動註冊
 Event deleted: 活動被刪除
@@ -514,9 +514,9 @@ Notification: 通告
 ########################################
 # Page: includes/js/edit_entry.php
 #
-must enter Brief Description: 你無輸入概要描述
-time before work hours: 這個時段無佇你自定 e 工作時間內。 這敢是正確 e ?
-must enter valid time: 你無輸入正確 e 時間
+You have not entered a Brief Description: 你無輸入概要描述
+The time you have entered begins before your preferred work hours. Is this correct?: 這個時段無佇你自定 e 工作時間內。 這敢是正確 e ?
+You have not entered a valid time of day: 你無輸入正確 e 時間
 
 ########################################
 # Page: includes/js/edit_layer.php

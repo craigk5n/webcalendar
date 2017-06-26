@@ -3,15 +3,15 @@
  * Presents a HTML form to add or edit a report.
  *
  * Input Parameters:
- * - <var>report_id</var> (optional) - the report id of the report to edit.
- *   If blank, user is adding a new report.
+ * - <var>report_id</var> (optional) - the report id of the report to edit. If
+ *   blank, user is adding a new report.
  * - <var>public</var> (optional) - If set to '1' and user is an admin user,
  *   then we are creating a report for the public user.
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: edit_report.php,v 1.65.2.1 2013/01/24 21:15:09 cknudsen Exp $
  * @package WebCalendar
  * @subpackage Reports
  */
@@ -29,10 +29,12 @@ load_user_categories();
 
 $adding_report = false;
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+$checked = ' checked="checked"';
 $error =
  ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' || $login == '__public__'
    ? print_not_auth() : '' );
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
+$selected = ' selected="selected"';
 $show_participants = ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y'
   ? false : true );
 $updating_public = ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS == 'Y' );
@@ -86,6 +88,7 @@ if ( empty ( $error ) && $show_participants ) {
       ? array_merge ( $nonusers, $userlist )
       : array_merge ( $userlist, $nonusers ) );
   }
+  $userlistcnt = count ( $userlist );
 }
 
 // Default values.
@@ -93,8 +96,8 @@ $day_template = '<dt><b>${date}</b></dt>
 <dd><dl>${events}</dl></dd>';
 
 $event_template = '<dt>${name}</dt>
-<dd><b>' . translate( 'Date_' ) . '</b> ${date}<br>
-<b>' . translate( 'Time_' ) . '</b> ${time}<br>
+<dd><b>' . translate ( 'Date' ) . ':</b> ${date}<br />
+<b>' . translate ( 'Time' ) . ':</b> ${time}<br />
 ${description}</dd>
 ';
 
@@ -112,11 +115,11 @@ $page_options = array ( 'days', 'report_id' );
 /**
  * Generate clickable option lists.
  */
-function print_options( $textarea, $optn ) {
+function print_options ( $textarea, $option ) {
   // Use ASCII values for ${}.
   echo '
-            <a onclick="addMe( \'' . $textarea . '\', \'${' . $optn
-   . '}\' )">${' . $optn . '}</a><br>';
+            <a onclick="addMe( \'' . $textarea . '\', \'${' . $option
+   . '}\' )">${' . $option . '}</a><br />';
 }
 
 if ( empty ( $error ) && $report_id >= 0 ) {
@@ -145,8 +148,8 @@ if ( empty ( $error ) && $report_id >= 0 ) {
       // Check permissions.
       if ( $show_participants && ! empty ( $report_user ) ) {
         $user_is_in_list = false;
-        foreach ( $userlist as $i ) {
-          if ( $report_user == $i['cal_login'] )
+        for ( $i = 0; $i < $userlistcnt; $i++ ) {
+          if ( $report_user == $userlist[$i]['cal_login'] )
             $user_is_in_list = true;
         }
         if ( ! $user_is_in_list && $report_login != $login && ! $is_admin )
@@ -209,30 +212,32 @@ echo '
  . '</h2>
     <form action="edit_report_handler.php" method="post" name="reportform">'
  . ( $updating_public ? '
-      <input type="hidden" name="public" value="1">' : '' )
- . ( $adding_report ? '' : '
-      <input type="hidden" name="report_id" value="' . $report_id . '">' ) . '
+      <input type="hidden" name="public" value="1" />' : '' )
+ . ( ! $adding_report ? '
+      <input type="hidden" name="report_id" value="'
+   . $report_id . '" />' : '' ) . '
       <table summary="">
         <tr>
           <td><label for="rpt_name">' . translate ( 'Report name' )
- . '</label></td>
+ . ':</label></td>
           <td><input type="text" name="report_name" id="rpt_name" size="40" '
- . 'maxlength="50" value="' . $report_name . '"></td>
+ . 'maxlength="50" value="' . $report_name . '" /></td>
         </tr>';
 
 if ( $show_participants ) {
   echo '
         <tr>
-          <td><label for="rpt_user">' . translate( 'User_' ) . '</label></td>
+          <td><label for="rpt_user">' . translate ( 'User' ) . ':</label></td>
           <td>
-            <select id="report_user" name="rpt_user" size="1">'
-   . $option . ( empty( $report_user ) ? '" selected>' : '">' )
-   . translate( 'Current User' ) . '</option>';
+            <select name="report_user" id="rpt_user" size="1">
+              <option value=""' . ( empty ( $report_user ) ? $selected : '' )
+   . '>' . translate ( 'Current User' ) . '</option>';
 
-  foreach ( $userlist as $i ) {
-    echo $option . $i['cal_login']
-     . ( ! empty ( $report_user ) && $report_user == $i['cal_login']
-      ? '" selected>' : '">' ) . $i['cal_fullname'] . '</option>';
+  for ( $i = 0; $i < $userlistcnt; $i++ ) {
+    echo '
+              <option value="' . $userlist[$i]['cal_login'] . '"'
+     . ( ! empty ( $report_user ) && $report_user == $userlist[$i]['cal_login']
+      ? $selected : '' ) . '>' . $userlist[$i]['cal_fullname'] . '</option>';
   }
 
   echo '
@@ -243,7 +248,7 @@ if ( $show_participants ) {
 
 echo ( $is_admin ? '
         <tr>
-          <td><label>' . translate( 'Global_' ) . '</label></td>
+          <td><label>' . translate( 'Global' ) . ':</label></td>
           <td>' . print_radio( 'is_global', '', '',
     ( ! empty( $report_is_global ) && $report_is_global == 'Y'
       ? 'Y' : 'N' ) ) . '</td>
@@ -254,40 +259,42 @@ echo ( $is_admin ? '
   // allow option of adding to all users menu.
  . '
         <tr>
-          <td><label>' . translate( 'Include link in menu' ) . '</label></td>
+          <td><label>' . translate( 'Include link in menu' ) . ':</label></td>
           <td>' . print_radio( 'show_in_trailer', '', '',
     ( ! empty( $report_show_in_menu ) && $report_show_in_menu == 'Y'
       ? 'Y' : 'N' ) ) . '</td>
         </tr>' : '' ) . '
         <tr>
           <td><label>' . translate( 'Include standard header/trailer' )
- . '</label></td>
+ . ':</label></td>
           <td>' . print_radio( 'include_header', '', '',
     ( ! empty( $report_include_header ) && $report_include_header == 'Y'
       ? 'Y' : 'N' ) ) . '</td>
         </tr>
         <tr>
           <td><label>' . translate( 'Include previous/next links' )
- . '</label></td>
+ . ':</label></td>
           <td>' . print_radio( 'allow_nav', '', '',
     ( ! empty( $report_allow_nav ) && $report_allow_nav == 'Y'
       ? 'Y' : 'N' ) ) . '</td>
         </tr>
         <tr>
-          <td><label>' . translate( 'Include empty dates' ) . '</label></td>
+          <td><label>' . translate( 'Include empty dates' ) . ':</label></td>
           <td>' . print_radio( 'include_empty', '', '',
     ( ! empty( $report_include_empty ) && $report_include_empty == 'Y'
       ? 'Y' : 'N' ) ) . '</td>
         </tr>
         <tr>
           <td><label for="rpt_time_range">' . translate ( 'Date range' )
- . '</label></td>
+ . ':</label></td>
           <td>
             <select name="time_range" id="rpt_time_range">';
 
 while ( list ( $num, $descr ) = each ( $ranges ) ) {
-  echo $option . $num
-   . ( $report_time_range == $num ? '" selected>' : '">' ) . $descr . '</option>';
+  echo '
+              <option value="' . $num . '"'
+   . ( $report_time_range == $num ? $selected : '' )
+   . '>' . $descr . '</option>';
 }
 
 echo '
@@ -298,14 +305,16 @@ echo '
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   echo '
         <tr>
-          <td><label for="rpt_cat_id">' . $cat_Str . '</label></td>
+          <td><label for="rpt_cat_id">' . translate ( 'Category' )
+   . ':</label></td>
           <td>
-            <select id="cat_id" name="rpt_cat_id">'
-   . $option . '">' . $noneStr . '</option>';
+            <select name="cat_id" id="rpt_cat_id">
+              <option value="">' . translate ( 'None' ) . '</option>';
 
   while ( list ( $K, $V ) = each ( $categories ) ) {
-    echo $option . $K . ( $report_cat_id == $K ? '" selected>' : '">' )
-     . $V['cat_name'] . '</option>';
+    echo '
+              <option value="' . $K . '"' . ( $report_cat_id == $K ? $selected : '' )
+     . '>' . htmlentities ( $V['cat_name'] ) . '</option>';
   }
 
   echo '
@@ -323,42 +332,42 @@ echo '
  . '</label></td>
         </tr>
         <tr>
-          <td valign="top"><label>' . translate( 'Page template_' )
- . '</label></td>
+          <td valign="top"><label>' . translate ( 'Page template' )
+ . ':</label></td>
           <td><textarea rows="12" cols="60" name="page_template">'
  . htmlentities ( $page_template, ENT_COMPAT, $charset ) . '</textarea></td>
           <td class="aligntop cursoradd" colspan="2">';
 
-foreach ( $page_options as $optn ) {
-  print_options( 'page_template', $optn );
+foreach ( $page_options as $option ) {
+  print_options ( 'page_template', $option );
 }
 
 echo '
           </td>
         </tr>
         <tr>
-          <td valign="top"><label>' . translate( 'Day template_' )
- . '</label></td>
+          <td valign="top"><label>' . translate ( 'Day template' )
+ . ':</label></td>
           <td><textarea rows="12" cols="60" name="day_template">'
  . htmlentities ( $day_template, ENT_COMPAT, $charset ) . '</textarea></td>
           <td class="aligntop cursoradd" colspan="2">';
 
-foreach ( $day_options as $optn ) {
-  print_options( 'day_template', $optn );
+foreach ( $day_options as $option ) {
+  print_options ( 'day_template', $option );
 }
 
 echo '
           </td>
         </tr>
         <tr>
-          <td valign="top"><label>' . translate( 'Event template_' )
- . '</label></td>
+          <td valign="top"><label>' . translate ( 'Event template' )
+ . ':</label></td>
           <td><textarea rows="12" cols="60" name="event_template" id="event_template">'
  . htmlentities ( $event_template, ENT_COMPAT, $charset ) . '</textarea></td>
           <td class="aligntop cursoradd" width="150px">';
 
-foreach ( $event_options as $optn ) {
-  print_options( 'event_template', $optn );
+foreach ( $event_options as $option ) {
+  print_options ( 'event_template', $option );
 }
 
 echo '
@@ -368,7 +377,7 @@ echo '
 $extra_names = get_site_extras_names( EXTRA_DISPLAY_REPORT );
 if ( count ( $extra_names ) > 0 )
   echo '
-            <label>' . translate( 'Site Extras' ) . '</label><br>';
+            <label>' . translate ( 'Site Extras' ) . '</label><br />';
 
 foreach ( $extra_names as $name ) {
   print_options ( 'event_template', 'extra:' . $name );
@@ -379,15 +388,46 @@ echo '
         </tr>
         <tr>
           <td colspan="4">
-            <input type="submit" value="' . $saveStr . '">'
+            <input type="submit" value="' . translate ( 'Save' ) . '" />'
  . ( $adding_report ? '' : '&nbsp;&nbsp;
-            <input type="submit" id="edRepDelete" name="delete" value="'
-   . $deleteStr . '">' ) . '
+            <input type="submit" name="delete" value="'
+   . translate ( 'Delete' ) . '" onclick="return confirm( \''
+   . translate( 'Are you sure you want to delete this report?' )
+   . '\');" />' );
+
+ob_end_flush();
+
+?>
           </td>
         </tr>
       </table>
-    </form>' . print_trailer();
+    </form>
+    <script type="text/javascript" >
+<!-- <![CDATA[
+    // This script borrowed from phpMyAdmin with some mofification.
+      function addMe ( areaname, myValue ) {
+        var textarea = document.reportform.elements[areaname];
+        // IE support.
+        if ( document.selection ) {
+          textarea.focus();
+          sel = document.selection.createRange();
+          sel.text = myValue;
+        }
+        // MOZILLA/NETSCAPE support.
+        else if ( textarea.selectionStart || textarea.selectionStart == '0' ) {
+          var
+            startPos = textarea.selectionStart,
+            endPos = textarea.selectionEnd;
 
-ob_end_flush();
+          textarea.value = textarea.value.substring ( 0, startPos ) + myValue
+            + textarea.value.substring ( endPos, textarea.value.length );
+        }
+        else {
+          textarea.value += myValue;
+        }
+      }
+//]]> -->
+    </script>
+<?php echo print_trailer();
 
 ?>

@@ -1,6 +1,6 @@
-<?php /* $Id$ */
+<?php // $Id: edit_nonusers_handler.php,v 1.31.2.1 2012/02/28 15:43:10 cknudsen Exp $
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 load_user_layers();
 
 if ( ! $is_admin ) {
@@ -9,18 +9,16 @@ if ( ! $is_admin ) {
 }
 $error = '';
 
-$add       = getPostValue ( 'Add' );
-$delete    = getPostValue ( 'delete' );
-$ispublic  = getPostValue ( 'ispublic' );
-$nadmin    = getPostValue ( 'nadmin' );
-$nfirstname= getPostValue ( 'nfirstname' );
-$nid       = getPostValue ( 'nid' );
+$delete = getPostValue ( 'delete' );
+$save = getPostValue ( 'Save' );
+$add = getPostValue ( 'Add' );
+$nid = getPostValue ( 'nid' );
+$nfirstname = getPostValue ( 'nfirstname' );
 $nlastname = getPostValue ( 'nlastname' );
+$nadmin = getPostValue ( 'nadmin' );
 $old_admin = getPostValue ( 'old_admin' );
-$save      = getPostValue ( 'Save' );
-
-if ( empty ( $ispublic ) )
-  $ispublic = 'N';
+$ispublic = getPostValue ( 'ispublic' );
+if ( empty ( $ispublic ) ) $ispublic = 'N';
 
 if ( ! empty ( $delete ) ) {
   // delete this nonuser calendar
@@ -28,35 +26,40 @@ if ( ! empty ( $delete ) ) {
   // Get event ids for all events this user is a participant
   $events = get_users_event_ids ( $nid );
 
-  // TODO: Move a lot of this into a function. We could eliminate 8 or 8 copies.
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
   $delete_em = array();
-  foreach ( $events as $i ) {
+  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * )
-      FROM webcal_entry_user WHERE cal_id = ?', array ( $i ) );
+      FROM webcal_entry_user WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
-          $delete_em[] = $i;
+   $delete_em[] = $events[$i];
       }
       dbi_free_result ( $res );
     }
   }
   // Now delete events that were just for this user
-  foreach ( $delete_em as $i ) {
-    foreach ( array (
-        'webcal_blob',
-        'webcal_entry',
-        'webcal_entry_ext_user',
-        'webcal_entry_repeats',
-        'webcal_entry_repeats_not',
-        'webcal_import_data',
-        'webcal_reminders',
-        'webcal_site_extras' ) as $db ) {
-      dbi_execute ( 'DELETE FROM ' . $db . ' WHERE cal_id = ?', array ( $i ) );
-    }
-    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?', array ( $i ) );
+  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+    dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id =? ',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
+     array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
   }
 
   // Delete user participation from events
@@ -115,10 +118,10 @@ if ( ! empty ( $delete ) ) {
         $error = db_error();
       }
     } else {
-      $error = translate ( 'Cal ID word chars only' );
+      $error = translate ( 'Calendar ID' ).' '.translate ( 'word characters only' ).'.';
     }
   }
-  //Add entry in UAC access table for new admin and remove old admin
+  //Add entry in UAC access table for new admin and remove for of admin
   //first delete any record for this user/nuc combo
   dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
     AND cal_other_user = ?', array ( $nadmin, $nid ) );
@@ -126,8 +129,7 @@ if ( ! empty ( $delete ) ) {
     cal_other_user, cal_can_view, cal_can_edit, cal_can_approve, cal_can_invite,
     cal_can_email, cal_see_time_only ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
     array ( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) ) {
-    die_miserable_death ( str_replace ( 'XXX', dbi_error(),
-      translate ( 'DB error XXX' ) ) );
+    die_miserable_death ( translate ( 'Database error' ) . ': ' . dbi_error() );
   }
   // Delete old admin...
   //TODO Make this an optional step
@@ -136,6 +138,5 @@ if ( ! empty ( $delete ) ) {
       AND cal_other_user = ?', array ( $old_admin, $nid ) );
 }
 
-echo error_check ( 'users.php?tab=nonusers', false );
-
+echo error_check('users.php?tab=nonusers', false);
 ?>

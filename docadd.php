@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: docadd.php,v 1.22 2009/11/22 16:47:44 bbannon Exp $
 /**
  * Page Description:
  *  This page will handle adding blobs into the database. It will
@@ -97,7 +97,8 @@ if ( ! $can_add )
 
 if ( ! empty ( $error ) ) {
   print_header();
-  echo print_error( $error ) . print_trailer();
+  echo print_error ( $error );
+  echo print_trailer();
   exit;
 }
 
@@ -109,9 +110,10 @@ if ( $REQUEST_METHOD == 'POST' ) {
   // get next id first
   $res = dbi_execute ( 'SELECT MAX( cal_blob_id ) FROM webcal_blob' );
   if ( ! $res )
-    die_miserable_death ( str_replace ( 'XXX', dbi_error(), $dbErrXXXStr ) );
-  $row = dbi_fetch_row ( $res );
-  $nextid = ( empty( $row ) ? 1 : $row[0] + 1 );
+    die_miserable_death ( str_replace ( 'XXX', dbi_error(),
+      translate ( 'Database error XXX.' ) ) );
+       $row = dbi_fetch_row ( $res );
+  $nextid = ( ! empty ( $row ) ? $row[0] + 1 :  1 );
   dbi_free_result ( $res );
 
   if ( $type == 'C' ) {
@@ -141,7 +143,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
     if ( ! empty ( $_FILES['FileName'] ) )
       $file = $_FILES['FileName'];
     if ( empty ( $file['file'] ) )
-      $error = 'File Upload error!<br>';
+      $error = 'File Upload error!<br />';
 
     //print_r ( $file ); exit;
     $mimetype = $file['type'];
@@ -157,7 +159,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
       die_miserable_death ( "Error reading temp file: $tmpfile" );
     if ( ! empty ( $error ) ) {
       while ( ! feof ( $fd ) ) {
-        $data .= fgets( $fd );
+        $data .= fgets ( $fd, 4096 );
       }
     }
     fclose ( $fd );
@@ -200,20 +202,20 @@ print_header();
   // Comment
 ?>
 <form action="docadd.php" method="post" name="docform">
-<input type="hidden" name="id" value="<?php echo $id?>">
-<input type="hidden" name="type" value="C">
+<input type="hidden" name="id" value="<?php echo $id?>" />
+<input type="hidden" name="type" value="C" />
 
 <table summary="">
 
 <tr><td class="aligntop"><label for="description">
-  <?php echo translate ( 'Subject_' )?></label></td>
-  <td><input type="text" name="description" size="50" maxlength="127"></td></tr>
+  <?php etranslate ( 'Subject' )?>:</label></td>
+  <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
 <!-- TODO: htmlarea or fckeditor support -->
 <tr><td class="aligntop"><label for="comment">
-  <?php echo translate ( 'Comment_' )?></label></td>
+  <?php etranslate ( 'Comment' )?>:</label></td>
   <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>
 <tr><td colspan="2">
-<input type="submit" value="<?php echo translate ( 'Add Comment' )?>"></td></tr>
+<input type="submit" value="<?php etranslate ( 'Add Comment' )?>" /></td></tr>
 </table>
 </form>
 
@@ -221,18 +223,18 @@ print_header();
   // Attachment
 ?>
 <form action="docadd.php" method="post" name="docform" enctype="multipart/form-data">
-<input type="hidden" name="id" value="<?php echo $id?>">
-<input type="hidden" name="type" value="A">
+<input type="hidden" name="id" value="<?php echo $id?>" />
+<input type="hidden" name="type" value="A" />
 <table summary="">
 <tr class="browse"><td>
- <label for="fileupload"><?php echo translate ( 'Upload file' );?></label></td><td>
- <input type="file" name="FileName" id="fileupload" size="45" maxlength="50">
+ <label for="fileupload"><?php etranslate ( 'Upload file' );?>:</label></td><td>
+ <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
 <tr><td class="aligntop"><label for="description">
-  <?php echo translate ( 'Description_' )?></label></td>
-  <td><input type="text" name="description" size="50" maxlength="127"></td></tr>
+  <?php etranslate ( 'Description' )?>:</label></td>
+  <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
 
 <tr><td colspan="2">
-<input type="submit" value="<?php echo translate ( 'Add Attachment' )?>"></td></tr>
+<input type="submit" value="<?php etranslate ( 'Add Attachment' )?>" /></td></tr>
 
 </table>
 </form>

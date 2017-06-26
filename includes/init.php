@@ -1,11 +1,4 @@
 <?php
-/*
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
- * @package WebCalendar
- */
 /**
  * Does various initialization tasks and includes all needed files.
  *
@@ -15,10 +8,7 @@
  *
  * <b>Comments:</b>
  * The following scripts do not use this file:
- *   - freebusy.php
- *   - install/index.php
  *   - login.php
- *   - register.php
  *   - week_ssi.php
  *   - upcoming.php
  *   - tools/send_reminders.php
@@ -28,23 +18,29 @@
  *   2. call any other functions or includes not in this file that you need
  *   3. call the print_header function with proper arguments
  *
- * What gets called (although not generally in this order.):
- *   - include_once "includes/$user_inc";
- *   - include_once 'includes/access.php';
+ * What gets called:
+ *   - include_once 'includes/translate.php';
+ *   - require_once 'includes/classes/WebCalendar.class';
+ *   - require_once 'includes/classes/Event.class';
+ *   - require_once 'includes/classes/RptEvent.class';
  *   - include_once 'includes/assert.php';
  *   - include_once 'includes/config.php';
  *   - include_once 'includes/dbi4php.php';
  *   - include_once 'includes/formvars.php';
  *   - include_once 'includes/functions.php';
- *   - include_once 'includes/site_extras.php';
- *   - include_once 'includes/translate.php';
+ *   - include_once "includes/$user_inc";
  *   - include_once 'includes/validate.php';
- *   - require_once 'includes/classes/Event.class';
- *   - require_once 'includes/classes/RptEvent.class';
- *   - require_once 'includes/classes/WebCalendar.class';
+ *   - include_once 'includes/site_extras.php';
+ *   - include_once 'includes/access.php';
  *
  * Also, for month.php, day.php, week.php, week_details.php:
  *   - {@link send_no_cache_header()};
+ *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id: init.php,v 1.159 2010/08/31 13:49:17 cknudsen Exp $
+ * @package WebCalendar
  */
 
  if( empty( $_SERVER['PHP_SELF'] )
@@ -52,60 +48,28 @@
        && preg_match( '/\/includes\//', $_SERVER['PHP_SELF'] ) ) )
   die( 'You cannot access this file directly!' );
 
-// These are just collections of functions.
-// They don't run any code on load.
-// Well, some of them define() some things and set up arrays
-// but, I dont' think that counts as "code". :) bb
-foreach( array(
-    'access',
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'site_extras',
-    'translate',
-    'validate',
-  ) as $f ) {
-  include_once 'includes/'. $f . '.php';
-}
-foreach( array(
-    'WebCalendar',
-    'Event',
-    'RptEvent',
-  ) as $f ) {
-  require_once 'includes/classes/'. $f . '.class';
-}
+include_once 'includes/translate.php';
+require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
+
 $WebCalendar = new WebCalendar( __FILE__ );
 
-// I haven't determined if this must go here,
-// or if it could go in the first foreach loop above. bb
 include_once 'includes/assert.php';
+include_once 'includes/config.php';
+include_once 'includes/dbi4php.php';
+include_once 'includes/formvars.php';
+include_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
 include_once 'includes/' . $user_inc;
+include_once 'includes/validate.php';
+include_once 'includes/site_extras.php';
+include_once 'includes/access.php';
 include_once 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
-
-/* ==================================
- * Initialize some variables that get used a lot.
- * Avoids errors for 'undefined' later.
- */
-$byday = $bymonth = $bymonthday = $bysetpos = $exceptions = $INC = array();
-$inclusions = $menuthemes = $participants = $reminder = $themes = array();
-
-$access = $BodyX = $byweekno = $byyearday = $cal_date = $cal_url = $catList = '';
-$catNames = $currenttab = $due_date = $duration = $external_users = $HEAD = '';
-$location = $name = $priority = $rpt_count = $rpt_end_date = $rpt_end_time = '';
-$rpt_freq = $thisyear = '';
-
-$option = '
-                <option value="';
-
-/**
- * End init vars.
- */
 
 /**
  * Prints the HTML header and opening HTML body tag.
@@ -116,15 +80,12 @@ $option = '
  *                             script, etc)
  * @param string $BodyX        Data to be printed inside the Body tag (onload
  *                             for example)
- *
- * NOTE: I'm trying to remove $includes, $HeadX and $BodyX as parameters.
- *       by moving the calls into external .js files. bb
- *
  * @param bool   $disbleCustom Do not include custom header? (useful for small
  *                             popup windows, such as color selection)
- * @param bool   $disableStyle Do not include the standard css
+ * @param bool   $disableStyle Do not include the standard css?
  * @param bool   $disableRSS   Do not include the RSS link
  * @param bool   $disableAJAX  Do not include the prototype.js link
+ * @param bool   $disableUTIL  Do not include the util.js link
  */
 function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $disableCustom = false, $disableStyle = false, $disableRSS = false,
@@ -135,15 +96,15 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
-  $cs_ret = $lang = $menuHtml = $menuScript = $rs_ret = '';
-
-  // No point in calling this from a dozen places.
-  $js_ret = '
-    <script src="js_cacher.php?inc=js/translate.js.php"></script>';
+  $cs_ret = $lang = $menuHtml = $menuScript = '';
 
   // Remember this view if the file is a view_x.php script.
-  if ( ! strpos ( ' ' . $REQUEST_URI, 'view_entry' ) )
+  if( ! strstr( $REQUEST_URI, 'view_entry' ) )
     remember_this_view( true );
+
+  // Menu control.
+  if( ! empty( $friendly ) || $disableCustom )
+    $MENU_ENABLED = 'N';
 
   $appStr = generate_application_name( true );
   // Include includes/css/print_styles.css as a media="print" stylesheet.
@@ -152,22 +113,27 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // will look when printed. This maintains backwards-compatibility for browsers
   // that don't support media="print" stylesheets.
   $cs_ar = array( 'css/styles.css', 'css/print_styles.css' );
+  $js_ar = array();
 
-  // Some functions that are going to be used  by almost everything very shortly.
-  $js_ar = array( 'js/base.js' ); // See comments in file.
+  $ret = send_doctype( $appStr );
 
   if( ! $disableAJAX ) {
-    $js_ret .= '
-    <!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->';
-    $js_ar[] = 'js/prototype.js';
-    $js_ar[] = 'js/scriptaculous/scriptaculous.js?load=builder,effects';
+    $ret .= '
+    <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js?'
+     . filemtime( 'includes/js/ie5.js' ) . '"></script><![endif]-->';
+    if ( is_array ( $includes ) && in_array ( 'JQUERY', $includes ) ) {
+      $js_ar[] = 'js/jquery-1.9.1.min.js';
+      $js_ar[] = 'js/jquery-1.10.1.js';
+    } else {
+      $js_ar[] = 'js/prototype.js';
+      $js_ar[] = 'js/scriptaculous/scriptaculous.js?load=builder,effects';
+    }
   }
-
-  // Menu control.
-  $MENU_ENABLED = ( ! empty( $friendly ) || $disableCustom ? 'N' : 'Y' );
 
   // CSS and JS includes needed for the top menu.
   if( $MENU_ENABLED == 'Y' ) {
+    $saveBodyX = $BodyX;
+    $BodyX = '';
     $MENU_THEME = ( ! empty( $MENU_THEME ) && $MENU_THEME != 'none'
       ? $MENU_THEME : 'default' );
     $menu_theme = ( $SCRIPT == 'admin.php'
@@ -176,32 +142,22 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
     include_once 'includes/menu/index.php';
 
-    $HeadX .= '
-    <script>
-      var myMenu = [
-' . $menuScript . '
-      ];
-
-      addLoadListener( function () {
-        cmDraw( \'myMenuID\', myMenu, \'hbr\', cmTheme, \'Theme\' );
-      });
-    </script>
-';
-
-    // To shorten the code a bit,
-    // I've moved "menu/themes/default/theme.css" to "includes/css/styles.css".
-    // So just load in any changes for your theme.
     $cs_ar[] = 'menu/themes/' . $menu_theme . '/theme.css';
-
     $js_ar[] = 'menu/JSCookMenu.js';
-
-    // The various "theme.js" are almost all identical.
-    // Why have so many duplicates?
-    $js_ar[] = 'menu/themes/default/theme.js';
-    // Then just load in the pieces that are different.
-    $tmp = 'menu/themes/' . $menu_theme . '/theme.js';
-    if ( file_exists( $tmp ) ) {
-      $js_ar[] = $tmp;
+    $js_ar[] = 'menu/themes/' . $menu_theme . '/theme.js';
+    if ( ! empty ( $saveBodyX ) && preg_match ( '/cmDraw/', $BodyX ) ) {
+      // menu code overwrote our BodyX
+      if ( preg_match ( '/onload="(\S+)"/i', $saveBodyX, $matches ) ) {
+        $BodyX = 'onload="' . $matches[1] . '; ' .
+         "cmDraw( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
+      } else if ( preg_match ( '/cmDraw/', $BodyX ) ) {
+         // handled...  wasn't clobbered
+      } else {
+        die_miserable_death ( 'BodyX error in print_header.  Menu and ' .
+          $self . ' are both setting onload callback.<br/>Old: ' .
+          htmlentities ( $saveBodyX ) . '<br/><br/>New: ' .
+          htmlentities ( $BodyX ) );
+      }
     }
   }
 
@@ -210,52 +166,54 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   if( ! empty( $js_ar ) )
     foreach( $js_ar as $j ) {
-      $js_ret .= '
-    <script src="includes/' . $j . '"></script>';
+      $i = 'includes/' . $j;
+      $timeStr = ( @filemtime ( $i ) > 0 ? "?" . filemtime ( $i ) : '' );
+      $ret .= '
+    <script type="text/javascript" src="'
+       . $i . $timeStr . '"></script>';
     }
 
   // Any other includes?
   if( is_array( $includes ) ) {
     foreach( $includes as $inc ) {
-      if( stristr( $inc, '.css' ) ) {
+      $cs_ret .= '<!-- inc \"$inc\" INCLUDED -->' . "\n";
+      if ( $inc == 'JQUERY' ) {
+        // Ignore since we handled it above
+        $cs_ret .= '<!-- JQUERY INCLUDED -->' . "\n";
+      } if( stristr( $inc, '.css' ) ) {
+        $i = 'includes/' . $inc;
         // Not added to $cs_ar because I think we want these,
-        // even if $disableStyle?
+        // even if $disableStyle.
         $cs_ret .= '
-    <link href="includes/' . $inc . '" rel="stylesheet">';
+    <link type="text/css" href="' . $i . '?' . filemtime( $i )
+         . '" rel="stylesheet" />';
       } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
           && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
       } else {
         $arinc = explode( '/', $inc );
-        $js_ret .= '
-    <script src="';
+        $ret .= '
+    <script type="text/javascript" src="';
 
-        if( stristr( $inc, '/true' ) ) { // File is all JavaScript, no PHP.
-                                         // Even if the extension is ".php" for now.
+        if( stristr( $inc, '/true' ) ) {
           $i = 'includes';
-          $delim = '/';
           foreach( $arinc as $a ) {
-            if( $a == 'true' ) {
-              // Not using it now but, we may want to send things in later?
-              $delim = '?';
-              continue;
-            }
-            $i .= $delim . $a;
-            if( $delim == '?' ) {
-              $delim = '&';
-            }
+            if( $a == 'true' )
+              break;
+
+            $i .= '/' . $a;
           }
-          $js_ret .= $i;
+          $ret .= $i . '?' . filemtime( $i );
         } else {
-          $js_ret .= 'js_cacher.php?inc=' . $inc;
+          $ret .= 'js_cacher.php?inc=' . $inc;
         }
-        $js_ret .= '"></script>';
+        $ret .= '"></script>';
       }
     }
   }
+  // There has to be a way to make "$menuScript" an external file.
+  $ret .= $menuScript;
 
-  // Craig, shouldn't this be translated?
-  // Maybe "translate( 'XXX Unapproved Events' )" or something?
   $tmp   = '" rel="alternate" title="' . $appStr . ' - Unapproved Events - ';
   $tmp_f = 'rss_unapproved.php';
   $tmp_l = '
@@ -275,32 +233,39 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     // the current user has permissions to approve for, but I'm thinking
     // that's too many db requests to repeat on every page.
 
-    $rs_ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '">'
+    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '" />'
      . ( $is_admin && $PUBLIC_ACCESS == 'Y' ? $tmp_l . $tmp_f . '?user=public&'
      . filemtime( $tmp_f ) . $tmp . translate( $PUBLIC_ACCESS_FULLNAME )
-     . '">' : '' );
+     . '" />' : '' );
   }
   if( $is_admin ) {
     $tmp_f = 'rss_activity_log.php';
-    $rs_ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . '" rel="alternate"'
-     . ' title="' . $appStr . ' - ' . translate('Activity Log') . '">';
+    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . '" rel="alternate"'
+     . ' title="' . $appStr . ' - ' . translate('Activity Log') . '" />';
   }
   if( ! $disableStyle ) {
-    $cs_ret .= '
-    <link href="css_cacher.php?login='
+    // Check the CSS version for cache clearing if needed.
+    if( isset( $_COOKIE['webcalendar_csscache'] ) )
+      $webcalendar_csscache = $_COOKIE['webcalendar_csscache'];
+    else {
+      $webcalendar_csscache = 1;
+      SetCookie( 'webcalendar_csscache', $webcalendar_csscache );
+    }
+    $ret .= '
+    <link type="text/css" href="css_cacher.php?login='
      . ( empty( $_SESSION['webcal_tmp_login'] )
        ? $login : $_SESSION['webcal_tmp_login'] )
-     . '" rel="stylesheet">';
+     . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet" />';
     foreach( $cs_ar as $c ) {
-      $cs_ret .= '
-    <link href="includes/' . $c . '" rel="stylesheet"'
+      $i = 'includes/' . $c;
+      $ret .= '
+    <link type="text/css" href="' . $i . '?' . filemtime( $i )
+       . '" rel="stylesheet"'
        . ( $c == 'css/print_styles.css' && empty( $friendly )
-         ? ' media="print">' : '>' );
+         ? ' media="print"' : '' ) . ' />';
     }
   }
-  echo send_doctype( $appStr )
-   // Experimenting with the output sequence.
-   . $cs_ret . $js_ret . $rs_ret
+  echo $ret . $cs_ret
   // Add custom script/stylesheet if enabled.
    . ( $CUSTOM_SCRIPT == 'Y' && ! $disableCustom
      ? load_template( $login, 'S' ) : '' )
@@ -311,28 +276,28 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $tmp_l . 'rss.php?' . filemtime( 'rss.php' )
       /* TODO: single-user mode, etc. */
      . ( $login != '__public__' ? '&user=' . $login : '' )
-     . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]">' : '' )
+     . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]" />' : '' )
   // Do we need anything else inside the header tag?
   // $HeadX moved here because linked CSS may override standard styles.
    . ( $HeadX ? '
-    ' . $HeadX : '' ) . '
-    <link type="image/x-icon" href="favicon.ico" rel="shortcut icon">
+     ' . $HeadX : '' ) . '
+    <link type="image/x-icon" href="favicon.ico?'
+   . filemtime( 'favicon.ico' ) . '" rel="shortcut icon" />
   </head>
   <body'
   // Determine the page direction (left-to-right or right-to-left).
   . ( translate( 'direction' ) == 'rtl' ? ' dir="rtl"' : '' )
   /* Add <body> id. */ . ' id="' . preg_replace( '/(_|.php)/', '',
-    substr( $self, strrpos( $self, '/' ) + 1 ) )
+    substr( $self, strrpos( $self, '/' ) + 1 ) ) . '"'
   // Add any extra parts to the <body> tag.
-  // However, I'm trying to move "onload" and such into the .js files. bb
-  . ( empty( $BodyX ) ? '"' : "\" $BodyX" ) . ">\n"
+  . ( empty( $BodyX ) ? '' : " $BodyX" ) . '>' . "\n"
   // If menu is enabled, place menu above custom header if desired.
   . ( $MENU_ENABLED == 'Y' && $menuConfig['Above Custom Header']
     ? $menuHtml : '' )
   // Add custom header if enabled.
   . ( $CUSTOM_HEADER == 'Y' && ! $disableCustom
     ? load_template( $login, 'H' ) : '' )
-  // Add the top menu if needed.
+  // Add the top menu if enabled.
   . ( $MENU_ENABLED == 'Y' && ! $menuConfig['Above Custom Header']
     ? $menuHtml : '' );
   // TODO convert this to return value.
@@ -350,22 +315,20 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
  */
 function print_trailer( $include_nav_links = true, $closeDb = true,
   $disableCustom = false ) {
-  global $ALLOW_VIEW_OTHER, $c, $CATEGORIES_ENABLED, $cat_id, $CUSTOM_TRAILER,
-  $DATE_FORMAT_MD, $DATE_FORMAT_MY, $DEMO_MODE, $DISPLAY_TASKS,
-  $DISPLAY_TASKS_IN_GRID, $friendly, $fullname, $GROUPS_ENABLED, $has_boss,
-  $is_admin, $is_nonuser, $is_nonuser_admin, $LAYER_STATUS, $login,
-  $login_return_path, $MENU_DATE_TOP, $MENU_ENABLED, $NONUSER_ENABLED,
-  $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_FULLNAME,
-  $PUBLIC_ACCESS_OTHERS, $readonly, $REPORTS_ENABLED, $REQUIRE_APPROVALS,
-  $single_user, $STARTVIEW, $thisday, $thismonth, $thisyear, $user,
-  $use_http_auth, $views, $WEEK_START;
+  global $ALLOW_VIEW_OTHER, $c, $cat_id, $CATEGORIES_ENABLED, $CUSTOM_TRAILER,
+  $DATE_FORMAT_MD, $DATE_FORMAT_MY, $DEMO_MODE, $DISPLAY_TASKS, $friendly,
+  $DISPLAY_TASKS_IN_GRID, $fullname, $GROUPS_ENABLED, $has_boss, $is_admin,
+  $is_nonuser, $is_nonuser_admin, $LAYER_STATUS, $login, $login_return_path,
+  $MENU_DATE_TOP, $MENU_ENABLED, $NONUSER_ENABLED, $PUBLIC_ACCESS,
+  $PUBLIC_ACCESS_CAN_ADD, $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS_OTHERS,
+  $readonly, $REPORTS_ENABLED, $REQUIRE_APPROVALS, $single_user, $STARTVIEW,
+  $thisday, $thismonth, $thisyear, $use_http_auth, $user, $views, $WEEK_START;
 
   $ret = '';
 
   if( $include_nav_links && ! $friendly ) {
     if( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' )
-      $ret .= '
-    <div id="dateselector">' . print_menu_dates() . '</div>';
+      $ret .= '<div id="dateselector">' . print_menu_dates() . '</div>';
 
     if( $MENU_ENABLED == 'N' )
       include_once 'includes/trailer.php';
@@ -385,14 +348,11 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 
   return $ret . '
 <!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->
-'
-/*
- // Adds an easy link to validate the pages.
+' // Adds an easy link to validate the pages.
   . ( $DEMO_MODE == 'Y' ? '
-    <p><a href="http://validator.w3.org/check?uri=referer">
-      <img src="images/HTML5_Logo.png" alt="Valid HTML5!"></a></p>' : '' )
-*/
-/* Close HTML page properly. */ . '
+    <p><a href="http://validator.w3.org/check?uri=referer">'
+     . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
+     . 'class="valid" /></a></p>' : '' )/* Close HTML page properly. */ . '
   </body>
 </html>
 ';
@@ -405,74 +365,59 @@ function print_menu_dates( $menu = false ) {
   $DATE_FORMAT_MY, $DISPLAY_WEEKENDS, $id, $login, $SCRIPT, $thisday,
   $thismonth, $thisyear, $user, $WEEK_START;
 
-  $formStr = '
-        <form action="%s" method="get" name="%s" id="%s'
-   . ( $menu ? 'menu">' : 'form">' ) . '%s'
-   . ( ! empty( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '">' : '' )
-   . ( ! empty( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '">' : '' )
-   . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
-     && ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="' . $cat_id . '">' : '' ) . '
-            <label for="%s">%s&nbsp;</label>
-            <select name="date" id="%5$s">';
   $goStr = '
             </select>' . ( $menu ? '' : '
-            <input type="submit" value="' . translate( 'Go' ) . '">' ) . '
+            <input type="submit" value="' . translate( 'Go' ) . '" />' ) . '
           </form>';
   $include_id = false;
-  $monthUrl = $weekUrl = $yearUrl = $GLOBALS['STARTVIEW'];
-  $m_Args = $w_Args = $y_Args = '';
+  $option = '
+              <option value="';
+  $ret = $urlArgs = '';
   // TODO add this to admin and pref.
   // Change this value to 'Y' to enable staying in custom views.
   $STAY_IN_VIEW = 'N';
-
+  $selected = ' selected="selected"';
   if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) ) {
     $include_id = true;
-    $monthUrl = $weekUrl = $yearUrl = $SCRIPT;
-  } else {
-    if( access_can_view_page( 'month.php' ) )
-      $monthUrl = 'month.php';
-    else {
-      if( preg_match( '/[?&](\S+)=(\S+)/', $monthUrl, $match ) ) {
-        $monthUrl = $match[0];
-        $m_Args = '
-                <input type="hidden" name="'
-         . $match[1] . '" value="' . $match[2] . '">';
-      }
-    }
-    if( access_can_view_page( 'week.php' ) )
-      $weekUrl = 'week.php';
-    else {
-      if( preg_match( '/[?&](\S+)=(\S+)/', $weekUrl, $match ) ) {
-        $weekUrl = $match[0];
-        $w_Args = '
-                <input type="hidden" name="'
-         . $match[1] . '" value="' . $match[2] . '">';
-      }
-    }
-    if( access_can_view_page( 'year.php' ) )
-      $yearUrl = 'year.php';
-    else {
-      if( preg_match( '/[?&](\S+)=(\S+)/', $yearUrl, $match ) ) {
-        $yearUrl = $match[0];
-        $y_Args = '
+    $monthUrl = $SCRIPT;
+  } else
+  if( access_can_view_page( 'month.php' ) )
+    $monthUrl = 'month.php';
+  else {
+    $monthUrl = $GLOBALS['STARTVIEW'];
+    if( preg_match( '/[?&](\S+)=(\S+)/', $monthUrl, $match ) ) {
+      $monthUrl = $match[0];
+      $urlArgs = '
               <input type="hidden" name="'
-         . $match[1] . '" value="' . $match[2] . '">';
-      }
+       . $match[1] . '" value="' . $match[2] . '" />';
     }
   }
-  $ret = sprintf( $formStr, $monthUrl, 'SelectMonth', 'month', $m_Args,
-    'monthselect', translate( 'Month' ) );
 
-  $d = ( empty( $thisday )   ? date( 'd' ) : $thisday );
+  $ret .= '
+          <form action="' . $monthUrl
+   . '" method="get" name="SelectMonth" id="month'
+   . ( $menu ? 'menu' : 'form' ) . '"> ' . $urlArgs
+   . ( ! empty( $user ) && $user != $login ? '
+            <input type="hidden" name="user" value="' . $user . '" />' : '' )
+   . ( ! empty( $id ) && $include_id ? '
+            <input type="hidden" name="id" value="' . $id . '" />' : '' )
+   . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
+     && ( ! $user || $user == $login ) ? '
+            <input type="hidden" name="cat_id" value="'
+     . $cat_id . '" />' : '' ) . '
+            <label for="monthselect"><a '
+   . 'href="javascript:document.SelectMonth.submit()">'
+   . translate( 'Month' ) . '</a>:&nbsp;</label>
+            <select name="date" id="monthselect" '
+   . 'onchange="document.SelectMonth.submit()">';
+
+  $d = ( empty( $thisday ) ? date( 'd' ) : $thisday );
   $m = ( empty( $thismonth ) ? date( 'm' ) : $thismonth );
-  $y = ( empty( $thisyear )  ? date( 'Y' ) : $thisyear );
+  $y = ( empty( $thisyear ) ? date( 'Y' ) : $thisyear );
 
-  $lastDay = ( $DISPLAY_WEEKENDS== 'N' ? 4 : 6 );
-  $thisdate= date( 'Ymd', mktime( 0, 0, 0, $m, 1, $y ) );
-  $thisweek= date( 'W', mktime( 0, 0, 0, $m, $d, $y ) );
+  $lastDay = ( $DISPLAY_WEEKENDS == 'N' ? 4 : 6 );
+  $thisdate = date( 'Ymd', mktime( 0, 0, 0, $m, 1, $y ) );
+  $thisweek = date( 'W', mktime( 0, 0, 0, $m, $d, $y ) );
   $wkstart = get_weekday_before( $y, $m, $d );
 
   $tmp = mktime( 0, 0, 0, $m - 7, 1, $y );
@@ -487,60 +432,112 @@ function print_menu_dates( $menu = false ) {
     }
     if( $y > 1969 && $y < 2038 ) {
       $dateYmd = date( 'Ymd', mktime( 0, 0, 0, $m, 1, $y ) );
-      $ret .= $option . $dateYmd
-       . ( $dateYmd == $thisdate ? '" selected>' : '">' )
+      $ret .= $option . $dateYmd . '"'
+       . ( $dateYmd == $thisdate ? $selected : '' ) . '>'
        . date_to_str( $dateYmd, $DATE_FORMAT_MY, false, true ) . '</option>';
     }
   }
+
   $ret .= $goStr . ( $menu ? '
         </td>
-        <td class="ThemeMenubackgr ThemeMenu">' : '' )
-   . sprintf( $formStr, $weekUrl, 'SelectWeek', 'week', $w_Args,
-     'weekselect', translate( 'Week' ) );
+        <td class="ThemeMenubackgr ThemeMenu">' : '' );
+
+  if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) )
+    $weekUrl = $SCRIPT;
+  else
+  if( access_can_view_page( 'week.php' ) ) {
+    $urlArgs = '';
+    $weekUrl = 'week.php';
+  } else {
+    $weekUrl = $GLOBALS['STARTVIEW'];
+    if( preg_match( '/[?&](\S+)=(\S+)/', $weekUrl, $match ) ) {
+      $weekUrl = $match[0];
+      $urlArgs = '
+              <input type="hidden" name="'
+       . $match[1] . '" value="' . $match[2] . '" />';
+    }
+  }
+
+  $ret .= '
+          <form action="' . $weekUrl
+   . '" method="get" name="SelectWeek" id="week'
+   . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
+   . ( ! empty( $user ) && $user != $login ? '
+            <input type="hidden" name="user" value="' . $user . '" />' : '' )
+   . ( ! empty( $id ) && $include_id ? '
+            <input type="hidden" name="id" value="' . $id . '" />' : '' )
+   . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
+     && ( ! $user || $user == $login ) ? '
+            <input type="hidden" name="cat_id" value="'
+     . $cat_id . '" />' : '' ) . '
+            <label for="weekselect"><a '
+   . 'href="javascript:document.SelectWeek.submit()">'
+   . translate( 'Week' ) . '</a>:&nbsp;</label>
+            <select name="date" id="weekselect" '
+   . 'onchange="document.SelectWeek.submit()">';
 
   $y = ( empty( $thisyear ) ? date( 'Y' ) : $thisyear );
   for( $i = -5; $i <= 9; $i++ ) {
-    $twkstart= bump_local_timestamp( $wkstart, 0, 0, 0, 0, 7 * $i, 0 );
-    $twkend  = bump_local_timestamp( $twkstart, 0, 0, 0, 0, $lastDay, 0 );
-    $dateSYmd= date( 'Ymd', $twkstart );
-    $dateEYmd= date( 'Ymd', $twkend );
-    $dateW   = date( 'W', $twkstart + 86400 );
-
+    $twkstart = bump_local_timestamp( $wkstart, 0, 0, 0, 0, 7 * $i, 0 );
+    $twkend = bump_local_timestamp( $twkstart, 0, 0, 0, 0, $lastDay, 0 );
+    $dateSYmd = date( 'Ymd', $twkstart );
+    $dateEYmd = date( 'Ymd', $twkend );
+    $dateW = date( 'W', $twkstart + 86400 );
     if( $twkstart > 0 && $twkend < 2146021200 )
-      $ret .= $option . $dateSYmd
-       . ( $dateW == $thisweek ? '" selected>' : '">' )
+      $ret .= $option . $dateSYmd . '"'
+       . ( $dateW == $thisweek ? $selected : '' ) . '>'
        . ( ! empty( $GLOBALS['PULLDOWN_WEEKNUMBER'] )
-           && $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
-         ? '(' . $dateW . ')&nbsp;&nbsp;' : '' ) . sprintf( '%s - %s',
+         && $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
+        ? '(' . $dateW . ')&nbsp;&nbsp;' : '' ) . sprintf( '%s - %s',
         date_to_str( $dateSYmd, $DATE_FORMAT_MD, false, true ),
         date_to_str( $dateEYmd, $DATE_FORMAT_MD, false, true ) ) . '</option>';
   }
 
   $ret .= $goStr . ( $menu ? '
         </td>
-        <td class="ThemeMenubackgr ThemeMenu">' : '' )
-   . sprintf( $formStr, $yearUrl, 'SelectYear', 'year', $y_Args,
-     'yearselect', translate( 'Year' ) );
+        <td class="ThemeMenubackgr ThemeMenu" align="right">' : '' );
+
+  if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) )
+    $yearUrl = $SCRIPT;
+  else
+  if( access_can_view_page( 'year.php' ) ) {
+    $urlArgs = '';
+    $yearUrl = 'year.php';
+  } else {
+    $yearUrl = $GLOBALS['STARTVIEW'];
+    if( preg_match( '/[?&](\S+)=(\S+)/', $yearUrl, $match ) ) {
+      $yearUrl = $match[0];
+      $urlArgs = '
+            <input type="hidden" name="'
+       . $match[1] . '" value="' . $match[2] . '" />';
+    }
+  }
+
+  $ret .= '
+          <form action="' . $yearUrl
+   . '" method="get" name="SelectYear" id="year'
+   . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
+   . ( ! empty( $user ) && $user != $login ? '
+            <input type="hidden" name="user" value="' . $user . '" />' : '' )
+   . ( ! empty( $id ) && $include_id ? '
+            <input type="hidden" name="id" value="' . $id . '" />' : '' )
+   . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
+     && ( ! $user || $user == $login ) ? '
+            <input type="hidden" name="cat_id" value="'
+     . $cat_id . '" />' : '' ) . '
+            <label for="yearselect"><a '
+   . 'href="javascript:document.SelectYear.submit()">'
+   . translate( 'Year' ) . '</a>:&nbsp;</label>
+            <select name="year" id="yearselect" '
+   . 'onchange="document.SelectYear.submit()">';
 
   for( $i = $y - 2, $cnt = $y + 6; $i < $cnt; $i++ ) {
     if( $i > 1969 && $i < 2038 )
-      $ret .= $option . $i
-       . ( $i == $y ? '" selected>' : '">' ) . $i . '</option>';
+      $ret .= $option . $i . '"'
+       . ( $i == $y ? $selected : '' ) . '>' . $i . '</option>';
   }
 
-  return $ret . $goStr
-    // There must be a better place for this...
-   . '
-    <script>
-      addLoadListener( function () {
-        attachEventListener(document.getElementById(\'monthselect\'), \'change\',
-          document.SelectMonth.submit);
-        attachEventListener(document.getElementById(\'weekselect\'), \'change\',
-          document.SelectWeek.submit);
-        attachEventListener(document.getElementById(\'yearselect\'), \'change\',
-          document.SelectYear.submit);
-      });
-    </script>';
+  return $ret . $goStr;
 }
 
 ?>

@@ -1,24 +1,21 @@
-<?php // $Id$
+<?php // $Id: nulogin.php,v 1.22 2009/11/22 16:47:45 bbannon Exp $
 /**
  * This page handles logins for nonuser calendars.
  */
-
-foreach( array(
-    'access',
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'translate',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
+include_once 'includes/access.php';
 include 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
@@ -33,7 +30,7 @@ if ( $single_user == 'Y'/* No login for single-user mode.*/ ||
 
 $login = getValue ( 'login' );
 if ( empty ( $login ) )
-  die_miserable_death( translate( 'must specify login' ) );
+  die_miserable_death( translate( 'A login must be specified.' ) );
 
 $date = getValue ( 'date' );
 $return_path = getValue ( 'return_path' );
@@ -62,7 +59,7 @@ if ( get_magic_quotes_gpc() )
   $login = stripslashes ( $login );
 
 $login = trim ( $login );
-$badLoginStr = translate ( 'Illegal chars in login XXX' );
+$badLoginStr = translate ( 'Illegal characters in login XXX.' );
 
 if ( $login != addslashes ( $login ) )
   die_miserable_death (
@@ -72,7 +69,7 @@ if ( $login != addslashes ( $login ) )
 $encoded_login = encode_string ( $login . '|nonuser' );
 
 // set login to expire in 365 days
-setcookie( 'webcalendar_session', $encoded_login,
+SetCookie ( 'webcalendar_session', $encoded_login,
   ( ! empty ( $remember ) && $remember == 'yes' ?
   31536000 + time() : 0 ), $cookie_path );
 

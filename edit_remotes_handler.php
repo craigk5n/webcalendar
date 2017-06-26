@@ -1,7 +1,7 @@
-<?php /* $Id$ */
+<?php // $Id: edit_remotes_handler.php,v 1.22.2.1 2012/02/28 15:43:10 cknudsen Exp $
 include_once 'includes/init.php';
+require_valid_referring_url ();
 include_once 'includes/xcal.php';
-require_valid_referring_url();
 
 // Only available in php 5.x Used for hCalendar parsing.
 if ( function_exists ( 'simplexml_load_string' ) )
@@ -76,7 +76,8 @@ if ( ! empty ( $delete ) ) {
           array ( $nid, $nfirstname, $nlastname, $nadmin, 'N', $nurl ) ) )
         $error = db_error();
     } else
-      $error = translate ( 'Cal ID word chars only' );
+      $error = translate( 'Calendar ID' )
+        . translate( 'word characters only' );
 
     // Add new layer if requested.
     if ( ! empty ( $nlayer ) && $nlayer == 'Y' ) {
@@ -95,14 +96,14 @@ if ( ! empty ( $delete ) ) {
   }
   // Add entry in UAC access table for new admin and remove for old admin.
   // First delete any record for this user/nuc combo.
-  dbi_execute ( 'DELETE FROM webcal_access_user
-    WHERE cal_login = ? AND cal_other_user = ?', array ( $nadmin, $nid ) );
+  dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
+    AND cal_other_user = ?', array ( $nadmin, $nid ) );
   if ( ! dbi_execute ( 'INSERT INTO webcal_access_user ( cal_login,
     cal_other_user, cal_can_view, cal_can_edit, cal_can_approve, cal_can_invite,
     cal_can_email, cal_see_time_only ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
       array ( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) )
-    die_miserable_death ( str_replace ( 'XXX', dbi_error(),
-        translate ( 'DB error XXX' ) ) );
+    die_miserable_death ( translate ( 'Database error' ) . ': '
+       . dbi_error() );
 }
 
 if ( ! empty ( $reload ) ) {
@@ -127,8 +128,8 @@ if ( ! empty ( $reload ) ) {
     $data = parse_hcal ( $result, $type );
   }
 
-  $errorStr = '<br><br>
-    <b>' . $err_Str . '</b>';
+  $errorStr = '<br /><br />
+    <b>' . translate ( 'Error' ) . ':</b> ';
 
   print_header ( '', '', '', true, false, true );
   if ( count ( $data ) && empty ( $errormsg ) ) {
@@ -137,9 +138,9 @@ if ( ! empty ( $reload ) ) {
     // Import new events.
     import_data ( $data, $overwrite, $type );
     echo '
-    <p>' . translate( 'Import Results' ) . '</p><br><br>
-    ' . str_replace( 'XXX', $count_suc,
-      translate ( 'success importing XXX events' ) ) . '<br>';
+    <p>' . translate ( 'Import Results' ) . '</p><br /><br />
+    ' . translate ( 'Events successfully imported' ) . ': ' . $count_suc
+     . '<br />';
     if ( $layer_found == false ) { // We may have just added layer.
       load_user_layers();
       foreach ( $layers as $layer ) {
@@ -149,13 +150,15 @@ if ( ! empty ( $reload ) ) {
     }
     if ( $layer_found == false )
       echo '
-    <p>' . translate( 'Create layer to view cal' ) . '</p>';
+    <p>' . translate( 'Create a new layer to view this calendar.' ) . '</p>';
   } elseif ( ! empty ( $errormsg ) ) {
     echo '
-    ' . $err_Str . $error_num . '<br><br>
-    ' . $errorStr . $errormsg . '<br>';
+    ' . translate ( 'Errors' ) . ': ' . $error_num . '<br /><br />
+    ' . $errorStr . $errormsg . '<br />';
   } else {
-    echo $errorStr . translate( 'error parsing import file' ) . '<br>';
+    echo $errorStr .
+    translate( 'There was an error parsing the import file or no events were returned.' )
+     . '<br />';
   }
   echo print_trailer ( false, true, true );
 }
@@ -167,31 +170,37 @@ function delete_events ( $nid ) {
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted.
   $delete_em = array();
-  foreach ( $events as $i ) {
+  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-      WHERE cal_id = ?', array ( $i ) );
+      WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( ! empty ( $row ) && $row[0] == 1 )
-        $delete_em[] = $i;
+        $delete_em[] = $events[$i];
 
       dbi_free_result ( $res );
     }
   }
   // Now delete events that were just for this user.
-  foreach ( $delete_em as $i ) {
-    foreach ( array (
-        'webcal_blob',
-        'webcal_entry',
-        'webcal_entry_ext_user',
-        'webcal_entry_repeats',
-        'webcal_entry_repeats_not',
-        'webcal_import_data',
-        'webcal_reminders',
-        'webcal_site_extras' ) as $db ) {
-      dbi_execute ( 'DELETE FROM ' . $db . ' WHERE cal_id = ?', array ( $i ) );
-    }
-    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?', array ( $i ) );
+  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+    dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id =? ',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
+    dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
+      array ( $delete_em[$i] ) );
   }
   // Delete user participation from events.
   dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',

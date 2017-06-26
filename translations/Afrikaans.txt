@@ -4,7 +4,7 @@
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id$
+# $Id: Afrikaans.txt,v 1.10 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-15-2008
 
 

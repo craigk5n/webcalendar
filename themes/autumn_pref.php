@@ -6,7 +6,7 @@
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$:
+ * @version $Id: autumn_pref.php,v 1.5 2007/02/01 02:23:11 bbannon Exp $:
  * @package WebCalendar
  */
 
@@ -31,6 +31,6 @@ $webcal_theme = array (
   'WEEKENDBG'    => '#FF6633',
   );
 
-include_once 'theme_inc.php';
+include 'theme_inc.php';
 
 ?>

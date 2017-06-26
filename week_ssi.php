@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: week_ssi.php,v 1.48 2010/02/06 16:30:35 bbannon Exp $
 /**
  * This page is intended to be used as a server-side include for another page.
  * (Such as an intranet home page or something.)
@@ -23,7 +23,8 @@ if ( strlen ( $login ) == 0 ) {
   if ( strlen ( $webcalendar_login ) > 0 )
     $login = $user = $webcalendar_login;
   else {
-    echo '<span class="error">' . $err_Str
+    echo '<span style="color:#F00;"><span style="font-weight: bold;">'
+     . translate ( 'Error' ) . ':</span>'
      . translate( 'No user specified.' ) . '</span>';
     exit;
   }
@@ -74,7 +75,7 @@ for ( $i = 0; $i < 7; $i++ ) {
    . ( date ( 'Ymd', $days[$i] ) == date ( 'Ymd', $today )
     ? $TODAYCELLBG : $THBG )
    . ';">' . weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS )
-   . '<br>' . month_name( date ( 'm', $days[$i] ) - 1, 'M' ) . ' '
+   . '<br />' . month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) . ' '
    . date ( 'd', $days[$i] ) . '</th>';
 
   $tmpOut2 .= '
@@ -84,10 +85,10 @@ for ( $i = 0; $i < 7; $i++ ) {
 }
 
 echo '
-    <table summary="">
+    <table width="100%" summary="">
       <tr>
         <td style="background: ' . $TABLEBG . ';">
-          <table cellspacing="1" cellpadding="2" summary="">
+          <table style="border: 0; width: 100%;" cellspacing="1" cellpadding="2" summary="">
             <tr>' . $tmpOut1 . '
             </tr>
             <tr>' . $tmpOut2 . '

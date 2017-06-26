@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: export.php,v 1.54.2.1 2013/01/24 21:15:09 cknudsen Exp $
 /**
  * Page Description:
  * This page will present the user with forms for exporting calendar events.
@@ -11,7 +11,7 @@ include_once 'includes/xcal.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {
   // do not allow public access
-  do_redirect( empty( $STARTVIEW ) ? 'month.php' : $STARTVIEW );
+  do_redirect ( empty ( $STARTVIEW ) ? 'month.php' : "$STARTVIEW" );
   exit;
 }
 
@@ -19,9 +19,11 @@ load_user_categories();
 
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
+$selected = ' selected="selected" ';
+
+print_header ( array ( 'js/export_import.php', 'js/visible.php' ) );
 
 ob_start();
-print_header();
 
 echo '
     <h2>' . translate ( 'Export' ) . '</h2>
@@ -29,23 +31,25 @@ echo '
       <table summary="">
         <tr>
           <td><label for="exformat">' . translate ( 'Export format' )
- . '</label></td>
-          <td>' . generate_export_select() . '
+ . ':</label></td>
+          <td>' . generate_export_select ( 'toggel_catfilter' ) . '
           </td>
         </tr>';
 
 if ( is_array ( $categories ) ) {
   echo '
         <tr id="catfilter">
-          <td><label for="cat_filter">' . translate( 'Categories_' )
-   . '</label></td>
+          <td><label for="cat_filter">' . translate ( 'Categories' )
+   . ':</label></td>
           <td>
-            <select name="cat_filter" id="cat_filter">'
-   . $option . '" selected>' . $allStr . '</option>';
+            <select name="cat_filter" id="cat_filter">
+              <option value=""' . $selected . '>' . translate ( 'All' )
+   . '</option>';
 
   foreach ( $categories as $K => $V ) {
     if ( $K > 0 )
-      echo $option . $K . '">' . $V['cat_name'] . '</option>';
+      echo '
+              <option value="' . $K . '">' . htmlentities ( $V['cat_name'] ) . '</option>';
   }
 
   echo '
@@ -60,7 +64,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="include_layers" id="include_layers" '
-   . 'value="y">
+   . 'value="y" />
             <label for="include_layers">' . translate ( 'Include all layers' )
    . '</label>
           </td>
@@ -70,7 +74,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="include_deleted" id="include_deleted" '
- . 'value="y">
+ . 'value="y" />
             <label for="include_deleted">'
  . translate ( 'Include deleted entries' ) . '</label>
           </td>
@@ -78,23 +82,25 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
         <tr>
           <td>&nbsp;</td>
           <td>
-            <input type="checkbox" id="exportall" name="use_all_dates" value="y">
-            <label for="exportall">' . translate( 'Export all dates' ) . '</label>
+            <input type="checkbox" name="use_all_dates" id="exportall" '
+ . 'value="y" onclick="toggle_datefields( \'dateArea\', this );" />
+            <label for="exportall">' . translate ( 'Export all dates' )
+ . '</label>
           </td>
         </tr>
         <tr>
           <td colspan="2">
             <table id="dateArea" summary="">
               <tr>
-                <td><label>' . translate( 'Start date_' ) . '</label></td>
+                <td><label>' . translate ( 'Start date' ) . ':</label></td>
                 <td>' . date_selection ( 'from', $dateYmd ) . '</td>
               </tr>
               <tr>
-                <td><label>' . translate( 'End date_' ) . '</label></td>
+                <td><label>' . translate ( 'End date' ) . ':</label></td>
                 <td>' . date_selection ( 'end', $dateYmd ) . '</td>
               </tr>
               <tr>
-                <td><label>' . translate( 'Modified since_' ) . '</label></td>
+                <td><label>' . translate ( 'Modified since' ) . ':</label></td>
                 <td>' . date_selection ( 'mod', mktime ( 0, 0, 0,
                   $datem, date ( 'd' ) - 7, $dateY ) ) . '</td>
               </tr>
@@ -103,11 +109,14 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
         </tr>
         <tr>
           <td colspan="2"><input type="submit" value="'
- . translate( 'Export' ) . '"></td>
+ . translate ( 'Export' ) . '" /></td>
         </tr>
       </table>
-    </form>' . print_trailer();
+    </form>
+    ';
 
 ob_end_flush();
+
+echo print_trailer();
 
 ?>

@@ -1,8 +1,10 @@
-<?php  /* $Id$ */
+<?php
 /**
  * This page handles displaying the Day/Week/Month/Year views in a single
  * page with tabs. Content is loaded dynamically with AJAX.
  * So, requests for previous & next will not force a page reload.
+ *
+ * Version: $Id: combo.php,v 1.60.2.2 2013/01/25 19:55:48 cknudsen Exp $
  *
  * TODO:
  * - Week view
@@ -12,7 +14,8 @@
  * - Honor access_can_access_function ( ACCESS_WEEK/ACCESS_MONTH/ACCESS_DAY )
  *
  * Possibilities for later:
- * - Include tab for unapproved events where users could approve from this page.
+ * - Include tab for unapproved events where users could approve from
+ *   this page.
  *
  * Note: some of the icons for this page were downloaded from the following
  * page.  If you want to add more icons, check there first.
@@ -21,21 +24,16 @@
  *	http://rrze-icon-set.berlios.de/licence.html
  */
 include_once 'includes/init.php';
-
 // Load Doc classes for attachments and comments
-foreach( array(
-    'Doc',
-    'DocList',
-    'AttachmentList',
-    'CommentList',
-  ) as $i ) {
-  include_once 'includes/classes/' . $i . '.class';
-}
+include 'includes/classes/Doc.class';
+include 'includes/classes/DocList.class';
+include 'includes/classes/AttachmentList.class';
+include 'includes/classes/CommentList.class';
 
 //send_no_cache_header();
 
-$LOADING = '<div style="height: 220px; padding-top: 190px;"><center><img src="images/loading_animation.gif" alt=""></center></div>';
-$SMALL_LOADING = '<img src="images/loading_animation_small.gif" alt="..." width="16" height="16">';
+$LOADING = '<div style="height: 220px; padding-top: 190px;"><center><img src="images/loading_animation.gif" alt="" /></center></div>';
+$SMALL_LOADING = '<img src="images/loading_animation_small.gif" alt="..." width="16" height="16" />';
 
 if ( $CATEGORIES_ENABLED == 'Y' )
   load_user_categories();
@@ -63,8 +61,8 @@ if ( ! empty ( $user ) ) {
   if ( ! access_user_calendar( 'view', $user ) ) {
      // Not allowed.
      $user = $login;
-  }
-}
+  } 
+} 
 
 // Can the user see event participants?
 $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
@@ -98,26 +96,42 @@ else {
     $can_add = false;
 }
 
+
+$bodyExtras = 'onload="onLoadInit()"';
+
+// Add ModalBox javascript/CSS & Tab code, Auto-complete
+$headExtras = '
+<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
+<link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
+<script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
+<link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css" 
+media="screen" />
+<script type="text/javascript" src="includes/js/autocomplete.js"></script>
+';
+
+print_header(
+  array( 'js/popups.js/true', 'js/visible.php', 'js/datesel.php' ),
+  $headExtras, $bodyExtras );
+
 //ob_start();
-print_header();
 
 ?>
 
 <div class="headerinfo">
-<table>
+<table border="0">
 <tr>
 <?php
 if ( $single_user == 'N' ) {
-  user_load_variables( empty( $user ) ? $login, 'user_' : $user );
+  user_load_variables ( ! empty ( $user ) ? $user : $login, 'user_' );
   echo "<td valign=\"top\" class=\"username\"><nobr>" .
      htmlspecialchars ( $user_fullname ) . "</nobr></td>";
 }
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   ?>
-  <td valign="top" id="categoryselection"><?php translate( 'Categories_'  );?></td>
+  <td valign="top" id="categoryselection">Categories:</td>
   <td valign="top" onmouseover="setCategoryVisibility(true)" onmouseout="setCategoryVisibility(false)">
-  <img id="catexpand" src="images/expand.gif">
-  <span id="selectedcategories">All</span><br>
+  <img id="catexpand" src="images/expand.gif" />
+  <span id="selectedcategories">All</span><br />
   <div id="categorylist" style="display:none">
   <?php
   foreach ( $categories as $catId => $val ) {
@@ -125,7 +139,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     if ( $catId > 0 ) {
       ?>
       <nobr><input type="checkbox" id="<?php echo $name;?>" name="<?php echo $name;?>"
-        onclick="handleCategoryCheckboxChange()" value="Y"><label for="<?php echo $name;?>">
+        onclick="handleCategoryCheckboxChange()" value="Y" /><label for="<?php echo $name;?>">
         <?php echo htmlspecialchars ( $categories[$catId]['cat_name'] ) ?>
         </label></nobr>&nbsp;
       <?php
@@ -134,9 +148,9 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     }
   }
   ?>
-  <br><input style="font-size: 80%" type="button" value="<?php echo translate ( 'Select All' );?>" onclick="selectAllCategories()">
+  <br /><input style="font-size: 80%" type="button" value="<?php etranslate("Select All");?>" onclick="selectAllCategories()" />
     &nbsp;&nbsp;
-  <input style="font-size: 80%" type="button" value="<?php echo translate ( 'Select None' );?>" onclick="selectNoCategories()">
+  <input style="font-size: 80%" type="button" value="<?php etranslate("Select None");?>" onclick="selectNoCategories()" />
   <?php
 ?>
 </div>
@@ -148,12 +162,12 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 
 <ul id="viewtabs" class="shadetabs" style="margin-left: 10px;">
 
-<li><a href="#" rel="contentDay" class="selected"><?php echo translate ( 'Day' );?></a></li>
-<li><a href="#" rel="contentWeek"><?php echo translate ( 'Week' );?></a></li>
-<li><a href="#" rel="contentMonth"><?php echo translate ( 'Month' )?></a></li>
-<li><a href="#" rel="contentYear"><?php echo translate ( 'Year' )?></a></li>
-<li><a href="#" rel="contentAgenda"><?php echo translate ( 'Agenda' );?></a></li>
-<li><a href="#" rel="contentTasks"><?php echo translate ( 'Tasks' );?></a></li>
+<li><a href="#" rel="contentDay" class="selected"><?php etranslate('Day');?></a></li>
+<li><a href="#" rel="contentWeek"><?php etranslate('Week');?></a></li>
+<li><a href="#" rel="contentMonth"><?php etranslate('Month')?></a></li>
+<li><a href="#" rel="contentYear"><?php etranslate('Year')?></a></li>
+<li><a href="#" rel="contentAgenda"><?php etranslate("Agenda");?></a></li>
+<li><a href="#" rel="contentTasks"><?php etranslate('Tasks');?></a></li>
 </ul>
 
 <div style="border:1px solid gray; width:95%; margin-bottom: 1em; margin-left: 10px; margin-right: 10px; padding: 10px">
@@ -181,9 +195,9 @@ Agenda content goes here...
 <div id="contentTasks" class="tabcontent">
 <table id="tasktable">
 </table>
-<br>
+<br/>
 <span id="addtask" class="clickable fakebutton"
-  onclick="taskAddPopup()"><?php echo translate ( 'Add Task' );?></span>
+  onclick="taskAddPopup()"/><?php etranslate('Add Task');?></span>
 </div>
 
 
@@ -191,36 +205,36 @@ Agenda content goes here...
 
 
 <div id="viewEventDiv" style="display: none;">
-<table>
+<table border="0">
   <tr><td colspan="2"><h3 id="name" class="eventName"> </h3></td></tr>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Description_' )?></td>
+  <tr><td class="aligntop bold"><?php etranslate("Description")?>:</td>
     <td id="description">  </td></tr>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Date_' )?></td>
+  <tr><td class="aligntop bold"><?php etranslate("Date")?>:</td>
     <td id="date">  </td></tr>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Time_' )?></td>
+  <tr><td class="aligntop bold"><?php etranslate("Time")?>:</td>
     <td id="time">  </td></tr>
 <?php if ( $DISABLE_PRIORITY_FIELD != 'Y' ) { ?>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Priority_' )?></td>
+  <tr><td class="aligntop bold"><?php etranslate("Priority")?>:</td>
     <td id="priority">  </td></tr>
 <?php } ?>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Access' )?></td>
+  <tr><td class="aligntop bold"><?php etranslate("Access")?>:</td>
     <td id="access">  </td></tr>
 <?php if ( $single_user == 'N' ) { ?>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Created by' )?></td>
+  <tr><td class="aligntop bold"><?php etranslate("Created by")?>:</td>
     <td id="createdby">  </td></tr>
 <?php } ?>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Updated' )?></td>
+  <tr><td class="aligntop bold"><?php etranslate("Updated")?>:</td>
     <td id="updated">  </td></tr>
 <?php if ( $show_participants ) { ?>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Participants_' )?></td>
+  <tr><td class="aligntop bold"><?php etranslate("Participants")?>:</td>
     <td id="participants">  </td></tr>
-<?php }
-if ( Doc::attachmentsEnabled() ) { ?>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Attachments' )?></td>
+<?php } ?>
+<?php if ( Doc::attachmentsEnabled() ) { ?>
+  <tr><td class="aligntop bold"><?php etranslate("Attachments")?>:</td>
     <td id="attachments">  </td></tr>
-<?php }
-if ( Doc::commentsEnabled() ) { ?>
-  <tr><td class="aligntop bold"><?php echo translate ( 'Comments' )?></td>
+<?php } ?>
+<?php if ( Doc::commentsEnabled() ) { ?>
+  <tr><td class="aligntop bold"><?php etranslate("Comments")?>:</td>
     <td id="comments">  </td></tr>
 <?php } ?>
   <tr><td colspan="2">&nbsp;</td></tr>
@@ -230,37 +244,37 @@ if ( Doc::commentsEnabled() ) { ?>
 
 <!-- Hidden div tag for Quick Add dialog -->
 <div id="quickAddDiv" style="display: none;">
-<input type="hidden" name="quickAddParticipants" id="quickAddParticipants" value="">
-<table>
-<tr><td class="aligntop bold"><?php echo translate ( 'Date_' );?></td>
+<input type="hidden" name="quickAddParticipants" id="quickAddParticipants" value="" />
+<table border="0">
+<tr><td class="aligntop bold"><?php etranslate('Date');?>:</td>
   <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
   </td></tr>
-<tr><td class="aligntop bold"><?php echo translate ( 'Brief Description' );?></td>
-  <td><input id="quickAddName" name="quickAddName" onfocus="this.select();"></td></tr>
-<tr><td class="aligntop bold"><?php echo translate ( 'Full Description' );?></td>
+<tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
+  <td><input id="quickAddName" name="quickAddName" onfocus="this.select();" /></td></tr>
+<tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
   <td><textarea id="quickAddDescription" name="quickAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
-<tr><td class="aligntop bold"><?php echo $cat_Str . '</td>
-  <td><select id="quickAddCategory" name="quickAddCategory">'
- . $option . '-1">' . translate( 'None' );?></option>
+<tr><td class="aligntop bold"><?php etranslate('Category');?>:</td>
+  <td><select id="quickAddCategory" name="quickAddCategory">
+     <option value="-1"><?php etranslate('None');?></option>
      <?php
      foreach ( $categories as $K => $V ) {
        if ( $K > 1 ) {
-         echo $option . $K . '">'
-          . htmlspecialchars( $categories[$K]['cat_name'] ) . '</option>';
+         echo '<option value="' . $K . '">' .
+           htmlspecialchars ( $categories[$K]['cat_name'] ) . "</option>\n";
        }
      }
      ?>
      </select></td></tr>
 <?php } ?>
-<tr><td class="aligntop bold"><?php echo translate ( 'Participants_' );?></td>
+<tr><td class="aligntop bold"><?php etranslate('Participants');?>:</td>
   <td><span id="quickAddParticipantList"></span>
       &nbsp;&nbsp;
-      <input type="text" id="quickAddNewParticipant" name="quickAddNewParticipant" size="20"></td></tr>
+      <input type="text" id="quickAddNewParticipant" name="quickAddNewParticipant" size="20" /></td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><input type="button" value="<?php echo translate ( 'Save' );?>" onclick="eventAddHandler()"><br>
-<span class="clickable" onclick="addEventDetail()"><?php echo translate ( 'Add event detail' );?></span>
+<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="eventAddHandler()" /><br />
+<span class="clickable" onclick="addEventDetail()"><?php etranslate("Add event detail");?></span>
 </td></tr>
 </table>
 </div>
@@ -268,39 +282,39 @@ if ( Doc::commentsEnabled() ) { ?>
 <!-- Hidden div tag for Add Task dialog -->
 <div id="taskAddDiv" style="display: none;">
 <form name="taskAddForm" id="taskAddForm">
-<table>
-<tr><td class="aligntop bold"><?php echo translate ( 'Start Date' );?></td>
+<table border="0">
+<tr><td class="aligntop bold"><?php etranslate('Start Date');?>:</td>
   <td><?php echo datesel_Print ( 'task_start_date', $date );?></td></tr>
-<tr><td class="aligntop bold"><?php echo translate ( 'Due Date_' );?></td>
+<tr><td class="aligntop bold"><?php etranslate('Due Date');?>:</td>
   <td><?php echo datesel_Print('task_due_date', $date); ?></td></tr>
-<tr><td class="aligntop bold"><?php echo translate ( 'Brief Description' );?></td>
-  <td><input id="taskAddName" name="taskAddName"></td></tr>
-<tr><td class="aligntop bold"><?php echo translate ( 'Full Description' );?></td>
+<tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
+  <td><input id="taskAddName" name="taskAddName" /></td></tr>
+<tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
   <td><textarea id="taskAddDescription" name="taskAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
-<tr><td class="aligntop bold"><?php echo $cat_Str . '</td>
-  <td><select id="taskAddCategory" name="taskAddCategory">'
- . $option . '-1">' . translate( 'None' ) . '</option>';
-
+<tr><td class="aligntop bold"><?php etranslate('Category');?>:</td>
+  <td><select id="taskAddCategory" name="taskAddCategory">
+     <option value="-1"><?php etranslate('None');?></option>
+     <?php
      foreach ( $categories as $K => $V ) {
        if ( $K > 1 ) {
-         echo $option . $K . '">'
-          . htmlspecialchars( $categories[$K]['cat_name'] ) . '</option>';
+         echo '<option value="' . $K . '">' .
+           htmlspecialchars ( $categories[$K]['cat_name'] ) . "</option>\n";
        }
      }
      ?>
      </select></td></tr>
 <?php } ?>
 <tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><input type="button" value="<?php echo translate ( 'Save' );?>" onclick="taskAddHandler()"><br>
-<span class="clickable" onclick="taskAddDetail()"><?php echo translate ( 'Add task detail' );?></span>
+<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="taskAddHandler()" /><br />
+<span class="clickable" onclick="taskAddDetail()"><?php etranslate("Add task detail");?></span>
 </td></tr>
 </table>
 </form>
 </div>
 
-<script>
+<script type="text/javascript">
 
 // Called when page is loaded.
 // Load events for the current month.
@@ -347,10 +361,16 @@ var categories = [];
         ', name: "' . $categories[$catId]['cat_name'] . '"' .
         ', color: "' . $categories[$catId]['cat_color'] . '"' .
         ', global: ' . ( $categories[$catId]['cat_global'] ? '0' : '1' );
-      $catIconFile = 'icons/cat-' . $catId . '.gif';
-      if ( ! file_exists ( $catIconFile ) )
-        $catIconFile = 'icons/cat-' . $catId . '.png';
-        echo ', icon: "' . $catIconFile . '"';
+      $gifIconFile =  'icons/cat-' . $catId . '.gif';
+      $pngIconFile =  'icons/cat-' . $catId . '.png';
+      $jpgIconFile =  'icons/cat-' . $catId . '.jpg';
+      if ( file_exists ( $gifIconFile ) ) {
+        echo ', icon: "' . $gifIconFile . '"';
+      } else if ( file_exists ( $pngIconFile ) ) {
+        echo ', icon: "' . $pngIconFile . '"';
+      } else if ( file_exists ( $jpgIconFile ) ) {
+        echo ', icon: "' . $jpgIconFile . '"';
+      }
       echo " };\n";
     }
   }
@@ -368,8 +388,6 @@ var loadedMonths = new Array(); // Key will be format "200801" For Jan 2008
 // loadedTasks set to true when tasks have been loaded.  We don't load tasks
 // based on date, so it is a single scalar variable rather than an array.
 var loadedTasks = false;
-/*
-  These are set up in "includes/js/translate.js.php".
 var months = [
   <?php
     // Create javascript array of month names localized to the user's
@@ -410,7 +428,6 @@ var shortWeekdays = [
     }
   ?>
   ];
-*/
 var daysPerMonth = [ <?php echo implode ( ", ", $days_per_month ); ?> ];
 var leapDaysPerMonth = [ <?php echo implode ( ", ", $ldays_per_month ); ?> ];
 var userLogins = [];
@@ -420,7 +437,7 @@ var users = [];
   // Create a javascript array of all users this user has access to see.
   // Note: not using this yet in the javascript anywhere....
   $users = user_get_users();
-  for ( $i = 0 $cnt = count ( $users ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $i < count ( $users ); $i++ ) {
     $fname = $users[$i]['cal_fullname'];
     if ( empty ( $fname ) )
       $fname = $users[$i]['cal_login'];
@@ -440,9 +457,9 @@ function autocompleteUserSearch ( q )
   var cnt = 0;
 
   var words = q.toLowerCase().split ( ' ' );
-  for ( var i = 0; userLogins[i]; i++ ) {
+  for ( var i = 0; i < userLogins.length; i++ ) {
     var match = 0;
-    for ( var j = 0; words[j] && ! match; j++ ) {
+    for ( var j = 0; j < words.length && ! match; j++ ) {
       var q1 = words[j];
       if ( q1.length == 0 ) {
         // ignore
@@ -528,7 +545,7 @@ function handleCategoryCheckboxChange()
   }
 ?>
   if ( cnt == 0 || cntOff == 0 ) {
-    newText = '<?php echo $allStr;?>';
+    newText = '<?php etranslate('All');?>';
     for ( var catId in categories ) {
       categories[catId].state = 1;
     }
@@ -573,7 +590,7 @@ function ajax_get_events ( year, month, day )
     parameters: { action: 'get', startdate: startdate, user: user },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate ( 'no response from server' );?>' + ' events_ajax.php?action=get' );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=get' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -582,11 +599,11 @@ function ajax_get_events ( year, month, day )
         // Hmmm... The Prototype JSON above doesn't seem to work!
         //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
-        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php echo $err_Str;?>' + response.message );
+        alert ( '<?php etranslate('Error');?>: '  + response.message );
         return;
       }
       for ( var key in response.dates ) {
@@ -595,7 +612,7 @@ function ajax_get_events ( year, month, day )
       loadedMonths[monthKey] = 1;
       update_display ( year, month, day );
     },
-    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
   switchingToDayView = false;
   return true;
@@ -618,7 +635,7 @@ function ajax_get_tasks ()
     parameters: { action: 'gett', user: user },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate ( 'no response from server' );?>' + ' events_ajax.php?action=gett' );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=gett' );
         return;
       }
       //alert ( "Get Tasks Response:\n" + transport.responseText );
@@ -627,22 +644,22 @@ function ajax_get_tasks ()
         // Hmmm... The Prototype JSON above doesn't seem to work!
         //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
-        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php echo $err_Str;?>' + response.message );
+        alert ( '<?php etranslate('Error');?>: '  + response.message );
         return;
       }
       tasks = new Array ();
       var i = 0;
-      for ( var i = 0; response.tasks[i]; i++ ) {
+      for ( var i = 0; i < response.tasks.length; i++ ) {
         tasks[i] = response.tasks[i];
       }
       loadedTasks = true;
       update_task_display ();
     },
-    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
   return true;
 }
@@ -671,7 +688,7 @@ function view_event ( key, location )
   function viewWindowClosed() {
     viewDialogIsVisible = false;
   }
-  Modalbox.show($('viewEventDiv'), {title: '<?php echo translate ( 'View Event' );?>', width: 450, onHide: viewWindowClosed, closeString: '<?php echo translate ( 'Cancel' );?>' });
+  Modalbox.show($('viewEventDiv'), {title: '<?php etranslate('View Event');?>', width: 450, onHide: viewWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
   //Modalbox.resizeToContent();
   viewDialogIsVisible = true;
 
@@ -684,30 +701,30 @@ function view_event ( key, location )
   $('createdby').innerHTML = users[myEvent._owner] ?
     users[myEvent._owner] : myEvent._owner;
   if ( myEvent._priority < 4 )
-    $('priority').innerHTML = '<?php echo translate ( 'High' );?>';
+    $('priority').innerHTML = '<?php etranslate('High');?>';
   else if ( myEvent._priority < 7 )
-    $('priority').innerHTML = '<?php echo translate ( 'Medium' );?>';
+    $('priority').innerHTML = '<?php etranslate('Medium');?>';
   else
-    $('priority').innerHTML = '<?php echo translate ( 'Low' );?>';
+    $('priority').innerHTML = '<?php etranslate('Low');?>';
   if ( myEvent._access == 'P' )
-    $('access').innerHTML = '<?php echo translate ( 'Public' );?>';
+    $('access').innerHTML = '<?php etranslate('Public');?>';
   else if ( myEvent._access == 'C' )
-    $('access').innerHTML = '<?php echo translate ( 'Confidential' );?>';
+    $('access').innerHTML = '<?php etranslate('Confidential');?>';
   else
-    $('access').innerHTML = '<?php echo translate ( 'Private' );?>';
-<?php if ( $CATEGORIES_ENABLED == 'Y' ) {
-} ?>
+    $('access').innerHTML = '<?php etranslate('Private');?>';
+<?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
+<?php } ?>
 
   $('eventlink').innerHTML = '<a href="view_entry.php?id=' + myEvent._id +
 <?php if ( ! empty ( $user ) && $login != $user ) { echo "'&amp;user=$user' + "; } ?>
-    '" class="fakebutton"><?php echo translate ( 'View Event' )?></a>';
+    '" class="fakebutton"><?php etranslate('View Event')?></a>';
 
   // For now, blank out participants.
   $('participants').innerHTML = '<?php echo $SMALL_LOADING;?>';
 <?php if ( Doc::attachmentsEnabled() ) { ?>
   $('attachments').innerHTML = '<?php echo $SMALL_LOADING;?>';
-<?php }
-if ( Doc::commentsEnabled() ) { ?>
+<?php } ?>
+<?php if ( Doc::commentsEnabled() ) { ?>
   $('comments').innerHTML = '<?php echo $SMALL_LOADING;?>';
 <?php } ?>
 
@@ -718,7 +735,7 @@ if ( Doc::commentsEnabled() ) { ?>
     parameters: { action: 'eventinfo', id: myEvent._id },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate ( 'no response from server' );?>' + ' events_ajax.php?action=eventinfo&id=' + myEvent._id );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=eventinfo&id=' + myEvent._id );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -727,18 +744,19 @@ if ( Doc::commentsEnabled() ) { ?>
         // Hmmm... The Prototype JSON above doesn't seem to work!
         //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
-        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php echo $err_Str;?>' + response.message );
+        alert ( '<?php etranslate('Error');?>: '  + response.message );
         return;
       }
       var text = '';
-      for ( var participant in response.participants ) {
+      for ( var i = 0; i < response.participants.length; i++ ) {
+        var participant = response.participants[i];
         var login = participant.login;
         var fullname = users[login] ? users[login] : login;
-        if ( text.length > 0 ) text += "<br>";
+        if ( text.length > 0 ) text += "<br />";
         text += fullname;
         if ( participant.status == 'W' )
           text += ' (?)';
@@ -747,29 +765,32 @@ if ( Doc::commentsEnabled() ) { ?>
 
 <?php if ( Doc::attachmentsEnabled() ) { ?>
       text = '';
-      for ( var attachment in response.attachments ) {
+      for ( var i = 0; i < response.attachments.length; i++ ) {
+        var attachment = response.attachments[i];
         var summary = attachment.summary;
-        if ( text.length > 0 ) text += "<br>";
+        if ( text.length > 0 ) text += "<br />";
         text += summary;
       }
       if ( response.attachments.length == 0 )
-        text = '<?php echo translate ( 'None' );?>';
+        text = '<?php etranslate('None');?>';
       $('attachments').innerHTML = text;
-<?php }
-if ( Doc::commentsEnabled() ) { ?>
+<?php } ?>
+
+<?php if ( Doc::commentsEnabled() ) { ?>
       text = '<dl style="margin-top: 0;">';
-      for ( var comment in response.comments ) {
-        text += "<dt>" + comment.description + "<br>" +
+      for ( var i = 0; i < response.comments.length; i++ ) {
+        var comment = response.comments[i];
+        text += "<dt>" + comment.description + "<br />" +
           comment.owner + " @ " + comment.datetime + "</dt>" +
           "<dd>" + comment.text + "</dd>";
       }
       text += "</dl>\n";
       if ( response.comments.length == 0 )
-        text = '<?php echo translate ( 'None' );?>';
+        text = '<?php etranslate('None');?>';
       $('comments').innerHTML = text;
 <?php } ?>
     },
-    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
 }
 
@@ -817,7 +838,8 @@ function prev_day_link ( year, month, day )
       year--;
       month = 12;
     }
-    day = _daysInMonth(month,year);
+    day = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
+      daysPerMonth[month];
   }
   return "<span id=\"prevday\" class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     year + "," + month + "," + day + ")\">&lt;</span>";
@@ -826,7 +848,9 @@ function prev_day_link ( year, month, day )
 function next_day_link ( year, month, day )
 {
   day++;
-  if ( day > _daysInMonth(month,year) ) {
+  var daysInMonth = ( year % 4 == 0 ) ? leapDaysPerMonth[month] :
+    daysPerMonth[month];
+  if ( day > daysInMonth ) {
     day = 1;
     month++;
     if ( month > 12 ) {
@@ -870,7 +894,7 @@ function prev_month_link ( year, month )
   }
   return '<span id="prevmonth" class="clickable noprint" onclick="ajax_get_events(' +
     y + ',' + m + ',1)"><img src="images/combo-prev.png" border="0" alt="' +
-    shortMonths[m-1] + '"></span>';
+    shortMonths[m-1] + '"/></span>';
 }
 
 function next_month_link ( year, month )
@@ -884,7 +908,7 @@ function next_month_link ( year, month )
     y = year;
   }
   return '<span id="nextmonth" class="clickable noprint" onclick="ajax_get_events(' +
-    y + ',' + m + ',1)"><img src="images/combo-next.png" border="0" alt="' + shortMonths[m-1] + '"></span>';
+    y + ',' + m + ',1)"><img src="images/combo-next.png" border="0" alt="' + shortMonths[m-1] + '"/></span>';
 }
 
 // Build a table of quick links to all the months in the current
@@ -893,20 +917,20 @@ function month_view_nav_links ( year, month )
 {
   var ret, i;
 
-  ret = '<table class="noprint monthnavlinks">';
-  ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (year-1) +
+  ret = '<table class="noprint monthnavlinks" border="0">';
+  ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (parseInt(year)-1) +
       ',' + month + ',1)">' +
-    '<img src="images/combo-prev.png" border="0"><br>' + (year-1) + '</td>';
-  for ( i = 1; i < 7; i++ ) {
+    '<img src="images/combo-prev.png" border="0"/><br/>' + (year-1) + '</td>';
+  for ( i = 1; i <= 6; i++ ) {
     ret += '<td class="';
     if ( i == month )
       ret += 'currentMonthLink ';
     ret += 'clickable" onclick="ajax_get_events(' + year +
       ',' + i + ',1)">' + shortMonths[i-1] + '</td>';
   }
-  ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (year+1) +
-      ',' + month + ',1)">' +
-    '<img src="images/combo-next.png" border="0"><br>' + (year+1) + '</td>';
+  ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (parseInt(year)+1) +
+      ',' + parseInt(month) + ',1)">' +
+    '<img src="images/combo-next.png" border="0"/><br/>' + (parseInt(year)+1) + '</td>';
   // Add link to today
   var today = new Date();
   var d = today.getDate();
@@ -914,10 +938,10 @@ function month_view_nav_links ( year, month )
   var y = today.getYear() + 1900;
   ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' +
     y + ',' + m + ',' + d + ')">' +
-   '<img src="images/combo-today.png" style="vertical-align: middle;">'
-   + "<br><?php echo translate ( 'Today' );?></td></tr>";
+   '<img src="images/combo-today.png" style="vertical-align: middle;" />'
+   + "<br/><?php etranslate('Today');?></td></tr>";
   // Jul - Dec
-  for ( i = 7; i < 13; i++ ) {
+  for ( i = 7; i <= 12; i++ ) {
     ret += '<td class="';
     if ( i == month )
       ret += 'currentMonthLink ';
@@ -952,8 +976,8 @@ function today_link()
   var y = today.getYear() + 1900;
   return "<span class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     y + "," + m + "," + d + ")\">" +
-   '<img src="images/combo-today.png" style="vertical-align: middle;">'
-   + " <?php echo translate ( 'Today' );?></span>";
+   '<img src="images/combo-today.png" style="vertical-align: middle;" />'
+   + " <?php etranslate('Today');?></span>";
 }
 
 // Callback for the user clicking on a cell in the month view, which
@@ -973,10 +997,10 @@ function monthCellClickHandler ( dateYmd )
     quickAddDialogIsOpen = false;
   }
   // Display quick add popup
-  Modalbox.show($('quickAddDiv'), {title: '<?php echo translate ( 'Add Entry' );?>', width: <?php echo $quick_add_width;?>, transitions: false, onHide: addWindowClosed, closeString: '<?php echo translate ( 'Cancel' );?>' });
+  Modalbox.show($('quickAddDiv'), {title: '<?php etranslate('Add Entry');?>', width: <?php echo $quick_add_width;?>, transitions: false, onHide: addWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
   Modalbox.resizeToContent();
 
-  $('quickAddName').setAttribute ( 'value', "<?php echo translate ( 'Unnamed Event' );?>" );
+  $('quickAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Event');?>" );
   $('quickAddName').select();
   $('quickAddName').focus();
   $('quickAddDescription').innerHTML = "";
@@ -1018,9 +1042,9 @@ function buildHiddenParticipantList ()
   var html = '';
   var ar = $('quickAddParticipants').value.split ( ',' );
   ar.sort ();
-  for ( var i in ar ) {
-    if ( i.length > 0 )
-      html += quickAddBuildUserElement ( i );
+  for ( var i = 0; i < ar.length; i++ ) {
+    if ( ar[i].length > 0 )
+      html += quickAddBuildUserElement ( ar[i] );
   }
   $('quickAddParticipantList').innerHTML = html;
 }
@@ -1034,9 +1058,9 @@ function quickAddRemoveUser ( login )
 
   var value = $('quickAddParticipants').value;
   var logins = value.split ( ',' );
-  for ( var i in logins ) {
-    if ( i != login ) {
-      newv[cnt] = i;
+  for ( var i = 0; i < logins.length; i++ ) {
+    if ( logins[i] != login ) {
+      newv[cnt] = logins[i];
       cnt++;
     }
   }
@@ -1049,7 +1073,7 @@ function quickAddBuildUserElement ( login )
   var ret = '<span class="participant" id="p_' + login +
     '">' + login + '<span class="partX">' +
     '<img src="images/close.png" onclick="quickAddRemoveUser(\'' +
-    login + '\')" alt="x">' +
+    login + '\')" alt="x" />' +
     '</span></span>';
   return ret;
 }
@@ -1076,7 +1100,7 @@ function eventAddHandler()
       participants: participants<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate ( 'no response from server') ;?>' + ' events_ajax.php?action=addevent' );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=addevent' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
@@ -1085,11 +1109,11 @@ function eventAddHandler()
         // Hmmm... The Prototype JSON above doesn't seem to work!
         //var response = eval('(' + transport.responseText + ')');
       } catch ( err ) {
-        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php echo $err_Str;?>' + response.message );
+        alert ( '<?php etranslate('Error');?>: '  + response.message );
         return;
       }
       // Successfully added :-)
@@ -1100,7 +1124,7 @@ function eventAddHandler()
       loadedMonths[monthKey] = 0;
       ajax_get_events ( currentYear, currentMonth, currentDay );
     },
-    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
 }
 
@@ -1129,15 +1153,15 @@ function taskAddPopup ()
   var ymd = "" + ( today.getYear () + 1900 );
   if ( today.getMonth() - 1 < 10 )
     ymd += '0';
-  ymd += ( today.getMonth() - 1 );
+  ymd += ( today.getMonth() + 1 );
   if ( today.getDate() < 10 )
     ymd += '0';
   ymd += today.getDate ();
 
-  Modalbox.show($('taskAddDiv'), {title: '<?php echo translate ( 'Add Task' );?>', width: <?php echo $quick_add_width;?>, transitions: false, closeString: '<?php echo translate ( 'Cancel' );?>' });
+  Modalbox.show($('taskAddDiv'), {title: '<?php etranslate('Add Task');?>', width: <?php echo $quick_add_width;?>, transitions: false, closeString: '<?php etranslate('Cancel');?>' });
   Modalbox.resizeToContent();
 
-  $('taskAddName').setAttribute ( 'value', "<?php echo translate ( 'Unnamed Task' );?>" );
+  $('taskAddName').setAttribute ( 'value', "<?php etranslate('Unnamed Task');?>" );
   $('taskAddName').select();
   $('taskAddName').focus();
   $('taskAddDescription').innerHTML = "";
@@ -1171,18 +1195,18 @@ function taskAddHandler()
       description: description<?php if ( $CATEGORIES_ENABLED == 'Y' ) { echo ', category: category';} ?> },
     onSuccess: function( transport ) {
       if ( ! transport.responseText ) {
-        alert ( '<?php echo translate ( 'no response from server' );?>' + ' events_ajax.php?action=addtask' );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' + ': events_ajax.php?action=addtask' );
         return;
       }
       //alert ( "Response:\n" + transport.responseText );
       try  {
         var response = transport.responseText.evalJSON();
       } catch ( err ) {
-        alert ( xlate['JSONerrXXX'].replace(/XXX/, err) + "\n\n" + transport.responseText );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
         return;
       }
       if ( response.error ) {
-        alert ( '<?php echo $err_Str;?>' + response.message );
+        alert ( '<?php etranslate('Error');?>: '  + response.message );
         return;
       }
       // Successfully added :-)
@@ -1198,7 +1222,7 @@ function taskAddHandler()
       loadedTasks = false;
       ajax_get_tasks ();
     },
-    onFailure: function() { alert( '<?php echo translate ( 'Error' );?>' ) }
+    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
   });
 }
 
@@ -1219,8 +1243,8 @@ function build_month_view ( year, month )
   //  month = month.substring ( 1 );
   try {
     var dateYmd;
-    ret = '<table><tr><td align="center" width="70%">' +
-      '<table><tr><td width="30%" align="right">' +
+    ret = '<table border="0" width="100%"><tr><td align="center" width="70%">' +
+      '<table border="0" width="100%"><tr><td width="30%" align="right">' +
       prev_month_link ( year, month ) + '</td><td width="40%" align="center">' +
       '<span class="monthtitle">' + months[month-1] + " " + year + "</span>" +
       '<span id="monthstatus"> </span>' +
@@ -1230,7 +1254,7 @@ function build_month_view ( year, month )
       '</td><td align="right">' +
        month_view_nav_links ( year, month ) +
       '</td></tr></table>' +
-      "<table id=\"month_main\" class=\"main\" border=\"1\"><tr>";
+      "<table id=\"month_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"1\"><tr>";
     for ( var i = 0; i < 7; i++ ) {
       ret += "<th>" + weekdays[i] + "</th>";
     }
@@ -1271,10 +1295,10 @@ function build_month_view ( year, month )
         ret += " onclick=\"return monthCellClickHandler(" + key + ")\"";
 <?php } ?>
         ret += "><span class=\"dayofmonth\">" +
-          '<a href="#" onclick="switchingToDayView=true;ajax_get_events('+year+','+month+','+i+');views.expandit(0);">' + i + "</a></span><br>";
+          '<a href="#" onclick="switchingToDayView=true;ajax_get_events('+year+','+month+','+i+');views.expandit(0);">' + i + "</a></span><br />";
         // If eventArray is null here, that means we have not loaded
         // event data for that date.
-        for ( var l = 0; eventArray && eventArray[l]; l++ ) {
+        for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
           var myEvent = eventArray[l];
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
           // See if this event matches selected categories.
@@ -1290,7 +1314,7 @@ function build_month_view ( year, month )
             var catId = myEvent._category;
             if ( catId < 0 ) catId = 0 - catId;
             if ( categories[catId] && categories[catId].icon ) {
-              iconImg += '<img src="' + categories[catId].icon + '">';
+              iconImg += '<img src="' + categories[catId].icon + '" />';
             }
             if ( categories[catId] && categories[catId].color ) {
               catColorClass = "cat_" + catId;
@@ -1307,7 +1331,7 @@ function build_month_view ( year, month )
           //  eventRet += ' "style=background-color:' + catColor + ';"';
           eventRet += ">";
           if ( iconImg == '' ) {
-            //eventRet += '<img src="images/event.gif" alt=".">';
+            //eventRet += '<img src="images/event.gif" alt="." />';
           } else {
             eventRet += iconImg;
           }
@@ -1370,12 +1394,12 @@ function build_year_view ( year, month )
     ret = prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php echo translate ( 'Refresh' );?>"></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"yeartitle\">" + year + "</span>" +
       "<span id=\"yearstatus\"> </span>" +
-      "<table id=\"year_main\" class=\"main\">";
+      "<table id=\"year_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"0\">";
 
     var d = new Date();
     var today = new Date();
@@ -1385,8 +1409,8 @@ function build_year_view ( year, month )
         ret += "<tr>";
       ret += "<td class=\"monthblock\" valign=\"top\" align=\"center\" width=\"25%\">";
       ret += '<a href="#" onclick="ajax_get_events('+year+','+(n+1)+',1);views.expandit(2);">' +
-         months[n] + "</a><br>\n";
-      ret += "<table class=\"monthtable\">";
+         months[n] + "</a><br/>\n";
+      ret += "<table class=\"monthtable\" border=\"0\">";
 
       d.setMonth ( n );
       month = n + 1;
@@ -1442,12 +1466,12 @@ function build_agenda_view ( year, month )
       prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php echo translate ( 'Refresh' );?>"></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
       "<span id=\"agendastatus\"> </span>" +
-      "<table>\n";
+      "<table border=\"0\">\n";
 
     var d = new Date();
     var today = new Date();
@@ -1478,12 +1502,12 @@ function build_agenda_view ( year, month )
         className += " clickable";
         leadIn += "<td valign=\"top\" align=\"right\" class=\"" + className + "\"";
 <?php if ( $can_add ) { ?>
-        leadIn += ' title="<?php echo translate ( 'Click to add entry' );?>" ' +
+        leadIn += ' title="<?php etranslate('Click to add entry');?>" ' +
           " onclick=\"return monthCellClickHandler(" + dateYmd + ")\"";
 <?php } ?>
         leadIn += ">" + format_date ( dateYmd, true ) + "</td>\n" +
           "<td valign=\"top\" class=\"" + className + "\">";
-        for ( var l = 0; eventArray && eventArray[l]; l++ ) {
+        for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
           var myEvent = eventArray[l];
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>
           // See if this event matches selected categories.
@@ -1504,12 +1528,12 @@ function build_agenda_view ( year, month )
             var catId = myEvent._category;
             if ( catId < 0 ) catId = 0 - catId;
             if ( categories[catId] && categories[catId].icon ) {
-              iconImg += '<img src="' + categories[catId].icon + '">';
+              iconImg += '<img src="' + categories[catId].icon + '" />';
             }
           }
 <?php } ?>
           if ( iconImg == '' ) {
-            ret += '<img src="images/event.gif" alt=".">';
+            ret += '<img src="images/event.gif" alt="." />';
           } else {
             ret += iconImg;
           }
@@ -1568,7 +1592,7 @@ function strcmp ( string1, string2 )
   var str2 = string2.toLowerCase ();
   if ( str1 == str2 ) return 0;
 
-  for ( var i = 0; str1[i] && str2[i]; i++ ) {
+  for ( var i = 0; i < str1.length && i < str2.length; i++ ) {
     if ( str1.charAt ( i ) < str2.charAt ( i ) )
       return -1;
     else if ( str1.charAt ( i ) > str2.charAt ( i ) )
@@ -1632,30 +1656,30 @@ function build_task_view ()
   img[taskSortCol] = ( taskSortAsc ? 'sort-up' : 'sort-down' );
 
   var content =
-    '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php echo translate ( 'Name' );?><img src="images/' + img[0] + '.png"></th>' +
-    '<th class="clickable" onclick="task_sort_handler(1)"><?php echo translate ( 'Due Date' );?><img src="images/' + img[1] + '.png"></th>' +
-    '<th class="clickable" onclick="task_sort_handler(2)"><?php echo translate ( 'Priority' );?><img src="images/' + img[2] + '.png"></th>' +
-    '<th class="clickable" onclick="task_sort_handler(3)"><?php echo translate ( 'Category' );?><img src="images/' + img[3] + '.png"></th>' +
+    '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php etranslate('Name');?><img src="images/' + img[0] + '.png"/></th>' +
+    '<th class="clickable" onclick="task_sort_handler(1)"><?php etranslate('Due Date');?><img src="images/' + img[1] + '.png"/></th>' +
+    '<th class="clickable" onclick="task_sort_handler(2)"><?php etranslate('Priority');?><img src="images/' + img[2] + '.png"/></th>' +
+    '<th class="clickable" onclick="task_sort_handler(3)"><?php etranslate('Category');?><img src="images/' + img[3] + '.png"/></th>' +
     '</tr>' + "\n";
-  for ( var i = 0; tasks[i]; i++ ) {
+  for ( var i = 0; i < tasks.length; i++ ) {
     var task = tasks[i];
     if ( ! tasks[i] || ! tasks[i]._name )
       continue;
     var iconImg = '';
     var catId = task._category;
     if ( catId && catId > 0 && categories[catId] && categories[catId].icon ) {
-      iconImg += '<img src="' + categories[catId].icon + '">';
+      iconImg += '<img src="' + categories[catId].icon + '" />';
     }
     var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
     content += '<tr><td class="' + cl + '">' +
-      iconImg + task._name + '</td><td class="' + cl + '">' +
+      iconImg + task._name + '</td><td class="' + cl + '">' + 
       format_date ( task._dueDate, false ) + '</td><td class="' + cl + '">';
     if ( task._priority < 4 )
-      content += '<?php echo translate ( 'High' );?>';
+      content += '<?php etranslate('High');?>';
     else if ( task._priority < 7 )
-      content += '<?php echo translate ( 'Medium' );?>';
+      content += '<?php etranslate('Medium');?>';
     else
-      content += '<?php echo translate ( 'Low' );?>';
+      content += '<?php etranslate('Low');?>';
     content += '</td><td class="' + cl +
       '">';
       var catId = task._category;
@@ -1699,7 +1723,7 @@ function build_day_view ( year, month, day )
       prev_month_link_dayview ( year, month, day ) +
       next_month_link_dayview ( year, month, day ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php echo translate ( 'Refresh' );?>"></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"daytitle\">" + format_date ( dateYmd, true ) +"</span>" +
@@ -1707,7 +1731,7 @@ function build_day_view ( year, month, day )
 
     var untimedEvents = '';
     var timedEvents = '';
-    for ( var l = 0; eventArray && eventArray[l]; l++ ) {
+    for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
       var myEvent = eventArray[l];
       var isTimed = ( myEvent._time >= 0 );
       var thisEvent = '';
@@ -1750,12 +1774,12 @@ var pos = '0';
         var catId = myEvent._category;
         if ( catId < 0 ) catId = 0 - catId;
         if ( categories[catId] && categories[catId].icon ) {
-          iconImg += '<img src="' + categories[catId].icon + '">';
+          iconImg += '<img src="' + categories[catId].icon + '" />';
         }
       }
 <?php } ?>
       if ( iconImg == '' ) {
-        thisEvent += '<img src="images/event.gif" alt=".">';
+        thisEvent += '<img src="images/event.gif" alt="." />';
       } else {
         thisEvent += iconImg;
       }
@@ -1810,7 +1834,8 @@ var pos = '0';
 function eventMatchesSelectedCats ( event ) {
   if ( ! event._categories || event._categories.length == 0 )
     return false;
-  for ( var catId in event._categories ) {
+  for ( var i = 0; i < event._categories.length; i++ ) {
+    var catId = event._categories[i];
     if ( isInArray ( catId, selectedCats ) ) {
       return true;
     }
@@ -1821,8 +1846,8 @@ function eventMatchesSelectedCats ( event ) {
 // Convenience function...
 function isInArray ( val, searchArr )
 {
-  for ( var i in searchArr ) {
-    if ( i == val )
+  for ( var i = 0; i < searchArr.length; i++ ) {
+    if ( searchArr[i] == val )
       return true;
   }
   return false;
@@ -1835,9 +1860,9 @@ function getUserSuggestion ( str )
   var ret = [];
   var cnt = 0;
 
-  for ( var i in userLogins ) {
-    if ( i.match(/str/i) ) {
-      ret[cnt++] = i;
+  for ( var i = 0; i < userLogins.length; i++ ) {
+    if ( userLogins[i].match(/str/i) ) {
+      ret[cnt++] = userLogins[i];
     }
   }
   return ret;
@@ -1847,17 +1872,33 @@ function getUserSuggestion ( str )
 // includes/functions.php.
 function format_date ( dateStr, showWeekday )
 {
-  var date = new Date(dateStr);
+  var fmt = '<?php echo $DATE_FORMAT;?>';
 
-  var ret = (showWeekday ? 'D, ' : '') + dateFmt.replace(/__dd__/, 'd');
-  ret = ret.replace(/__j__/, 'j');
-  ret = ret.replace(/__mm__/, 'm');
-  ret = ret.replace(/__mon__/, 'M');
-  ret = ret.replace(/__month__/, 'F');
-  ret = ret.replace(/__n__/, 'n');
-  ret = ret.replace(/__yy__/, 'y');
+  var y = dateStr.substr ( 0, 4 );
+  var m = dateStr.substr ( 4, 2 );
+  var d = dateStr.substr ( 6, 2 );
 
-  return date.format(ret.replace(/__yyyy__/, 'Y'));
+  var ret = fmt;
+  ret = ret.replace ( /__dd__/, d );
+  ret = ret.replace ( /__j__/, d );
+  ret = ret.replace ( /__mm__/, m );
+  ret = ret.replace ( /__mon__/, shortMonths[m-1] );
+  ret = ret.replace ( /__month__/, months[m-1] );
+  ret = ret.replace ( /__n__/, m );
+  ret = ret.replace ( /__yy__/, y % 100 );
+  ret = ret.replace ( /__yyyy__/, y );
+
+  var w = '';
+  if ( showWeekday ) {
+    var myD = new Date();
+    myD.setYear ( y );
+    myD.setMonth ( m - 1 );
+    myD.setDate ( d );
+    wday = myD.getDay();
+    w = weekdays[wday] + ', ';
+  }
+
+  return w + ret;
 }
 
 // TODO: modify this to handle different time formats, timezones, etc...
@@ -1874,7 +1915,7 @@ function format_time ( timeStr, abbreviate )
 <?php if ( $TIME_FORMAT == '12' ) { ?>
   if ( h < 0 )
     h += 24;
-  var ampm = ( h >= 12 ? '<?php echo translate ( 'pm' )?>' : '<?php echo translate ( 'am' )?>' );
+  var ampm = ( h >= 12 ? '<?php etranslate('pm')?>' : '<?php etranslate('am')?>' );
   h %= 12;
   if ( h == 0 )
     h = 12;
@@ -1931,12 +1972,12 @@ function format_description ( desc )
     ret = desc;
   } else {
     // No HTML found, replace \n with line breaks
-    ret = desc.replace( /\n/g,"<br>" );
+    ret = desc.replace (/\n/g,"<br />");
   }
 <?php } else { ?>
   // HTML not allowed in description
   // TODO: convert URLs into active links
-  ret = desc.replace( /\n/g,"<br>" );
+  ret = desc.replace (/\n/g,"<br />");
 <?php } ?>
   return ret;
 }

@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: nonusers.php,v 1.35 2009/11/22 16:47:45 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 if ( ! $is_admin ) {
@@ -15,31 +15,41 @@ if ( ! $NONUSER_PREFIX ) {
 }
 
 $add = getValue ( 'add' );
+$newNonUserStr = translate ( 'Add New NonUser Calendar' );
+$targetStr =
+'target="nonusersiframe" onclick="showFrame( \'nonusersiframe\' );">';
+
+ob_start();
 
 echo '
-      <a name="tabnonusers"></a>
-      <div id="tabscontent_nonusers">';
+  <a name="tabnonusers"></a>
+  <div id="tabscontent_nonusers">';
 
 if ( empty ( $error ) ) {
   echo '
-        <a href="edit_nonusers.php?add=1">'
-   . translate( 'Add New NonUser Calendar' ) . '</a><br>';
+    <a title="' . $newNonUserStr . '" href="edit_nonusers.php?add=1"'
+   . $targetStr . $newNonUserStr . '</a><br />';
   // Displaying NonUser Calendars
   $userlist = get_nonuser_cals();
   if ( ! empty ( $userlist ) ) {
     echo '
-        <ul>';
-    foreach ( $userlist as $i ) {
+    <ul>';
+    for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       echo '
-          <li><a href="edit_nonusers.php?nid=' . $i['cal_login']
-        . '">' . $i['cal_fullname'] . '</a></li>';
+      <li><a title="' . $userlist[$i]['cal_fullname']
+       . '" href="edit_nonusers.php?nid=' . $userlist[$i]['cal_login'] . '"'
+       . $targetStr . $userlist[$i]['cal_fullname'] . '</a></li>';
     }
     echo '
-        </ul>';
+    </ul>';
   }
 }
+
 echo '
-        <iframe id="nonusersiframe" name="nonusersiframe"></iframe>
-      </div>';
+    <iframe name="nonusersiframe" id="nonusersiframe" style="width: 90%; '
+ . 'border: 0; height: 250px;"></iframe>
+  </div>';
+
+ob_end_flush();
 
 ?>

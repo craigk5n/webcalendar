@@ -1,10 +1,10 @@
-<?php /* $Id$ */
+<?php // $Id: edit_user_handler.php,v 1.54.2.1 2012/02/28 15:43:10 cknudsen Exp $
 
 // There is the potential for a lot of mischief from users trying to access this
 // file in ways they shouldn't. Users may try to type in a URL to get around
 // functions that are not being displayed on the web page to them.
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 load_user_layers();
 
 $referer = '';
@@ -33,11 +33,12 @@ if ( ! $is_admin )
   $user = $login;
 
 $notAuthStr = print_not_auth();
-$notIdenticalStr = translate ( 'passwords not identical' );
-$noPasswordStr = translate ( 'must enter a password' );
-$blankUserStr = translate ( 'no blank username' );
+$deleteStr = translate ( 'Deleting users not supported.' );
+$notIdenticalStr = translate ( 'The passwords were not identical.' );
+$noPasswordStr = translate ( 'You have not entered a password.' );
+$blankUserStr = translate ( 'Username cannot be blank.' );
 
-// Don't let them edit users if they're not authorized.
+// Don't let them edit users if they'e not authorized.
 if ( empty ( $user ) ) {
   // Asking to create a new user. Must be admin...
   if ( ! $is_admin && ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) )
@@ -61,7 +62,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
       user_delete_user ( $user ); // Will also delete user's events.
       activity_log ( 0, $login, $user, LOG_USER_DELETE, '' );
     } else
-      $error = translate( 'Deleting users not supported.' );
+      $error = $deleteStr;
   } else
     $error = $notAuthStr;
 } else {

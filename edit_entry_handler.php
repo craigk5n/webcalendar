@@ -1,5 +1,6 @@
-<?php // $Id$
+<?php // $Id: edit_entry_handler.php,v 1.204.2.1 2012/02/28 15:43:10 cknudsen Exp $
 include_once 'includes/init.php';
+require_valid_referring_url ();
 require 'includes/classes/WebCalMailer.class';
 $mail = new WebCalMailer;
 
@@ -12,10 +13,10 @@ $old_id = -1;
 $dateStr   = translate( 'Date XXX' );
 $descStr   = translate( 'Description XXX' );
 $helloStr  = translate( 'Hello, XXX.' );
-$newAppStr = translate( 'XXX made an appointment' );
+$newAppStr = translate( 'XXX has made a new appointment.' );
 $subjStr   = translate( 'Subject XXX' );
 $timeStr   = translate( 'Time XXX' );
-$updAppStr = translate( 'XXX updated an appointment' );
+$updAppStr = translate( 'XXX has updated an appointment.' );
 
 /**
  * Put byday values in logical sequence.
@@ -145,7 +146,7 @@ $timetype      = getPostValue( 'timetype' );
 $weekdays_only = getPostValue( 'weekdays_only' );
 $wkst          = getPostValue( 'wkst' );
 
-$description = ( strlen( $description ) == 0 || $description == '<br>'
+$description = ( strlen( $description ) == 0 || $description == '<br />'
   ? $name : $description );
 
 // For public events, we don't EVER allow HTML tags.  There is just too
@@ -174,8 +175,7 @@ foreach( array(
     'META',
     'OBJECT',
     'SCRIPT',
-    'TITLE',
-  ) as $i ) {
+    'TITLE' ) as $i ) {
   if( preg_match( "/<\s*$i/i", $description ) ) {
     $error = translate( 'Security violation!' );
     activity_log( 0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:edit_entry' );
@@ -398,7 +398,7 @@ if( file_exists( 'includes/classes/captcha/captcha.php' )
 
     if( ! $res )
       $error =
-      translate( 'must enter anti-spam text' );
+      translate( 'You must enter the anti-spam text on the previous page.' );
   } else {
     // Should have seen warning on edit_entry.php, so no warning here...
   }
@@ -557,8 +557,8 @@ if( $ALLOW_CONFLICTS != 'Y' && empty( $confirm_conflicts )
 } //end check for any schedule conflicts
 
 if( empty( $error ) && ! empty( $conflicts ) )
-  $error = translate( 'conflicts with suggested time' ) . '
-    <ul>$conflicts</ul>';
+  $error = translate( 'The following conflicts with the suggested time' )
+   . ': <ul>$conflicts</ul>';
 
 $msg = '';
 
@@ -596,8 +596,7 @@ if( empty( $error ) ) {
           'entry_ext_user',
           'entry_repeats',
           'entry_user',
-          'site_extras',
-        ) as $d ) {
+          'site_extras' ) as $d ) {
         dbi_execute( 'DELETE FROM webcal_' . $d . ' WHERE cal_id = ?',
           array( $id ) );
       }
@@ -833,8 +832,7 @@ if( empty( $error ) ) {
     // Clearly, we want to delete the old repeats, before inserting new...
     foreach( array(
         'repeats',
-        'repeats_not',
-      ) as $d ) {
+        'repeats_not' ) as $d ) {
       if( ! dbi_execute( 'DELETE FROM webcal_entry_' . $d
        . ' WHERE cal_id = ?', array( $id ) ) )
         $error .= $dberror . dbi_error();
@@ -886,7 +884,7 @@ if( empty( $error ) ) {
        . implode( ',', $names ) . ' ) VALUES ( ?'
        . str_repeat( ',?', count( $values ) - 1 ) . ' )';
       dbi_execute( $sql, $values );
-      $msg .= '<span class="bold">SQL:</span> ' . $sql . '<br><br>';
+      $msg .= '<span class="bold">SQL:</span> ' . $sql . '<br /><br />';
     } //end add repeating info
 
     // We manually created exceptions. This can be done without repeats.
@@ -947,7 +945,7 @@ if( empty( $error ) ) {
             ? date( 'Ymd', $eventstart ) : gmdate( 'Ymd', $eventstart ) );
           $msg = str_replace( 'XXX', $tempfullname, $helloStr ) . "\n\n"
            . str_replace( 'XXX', $login_fullname,
-             translate( 'XXX canceled an appointment' ) ) . "\n"
+             translate( 'XXX has canceled an appointment.' ) ) . "\n"
            . str_replace( 'XXX', $name, $subjStr ) . "\n\n"
            . str_replace( 'XXX', $description, $descStr ) . "\n"
            . str_replace( 'XXX', date_to_str( $fmtdate ), $dateStr ) . "\n"
@@ -971,7 +969,7 @@ if( empty( $error ) ) {
             ( get_pref_setting( $old_participant,
               'EMAIL_ATTACH_ICS', 'N' ) == 'Y' ? $id : '' ) );
           activity_log( $id, $login, $old_participant, LOG_NOTIFICATION,
-            translate( 'user removed from party list' ) );
+            translate( 'User removed from participants list.' ) );
         }
       }
     }
@@ -1081,8 +1079,8 @@ if( empty( $error ) ) {
           // Add Site Extra Date if permitted.
           . $extra_email_data . str_replace( 'XXX', generate_application_name(),
             ( $REQUIRE_APPROVALS == 'Y'
-              ? translate( 'see XXX to acc/rej appointment' )
-              : translate( 'see XXX to view appointment' ) ) );
+              ? translate( 'Please look on XXX to accept or reject this appointment.' )
+              : translate( 'Please look on XXX to view this appointment.' ) ) );
 
               // Add URL to event, if we can figure it out.
           if( ! empty( $SERVER_URL ) ) {
@@ -1247,7 +1245,7 @@ if( ! empty( $conflicts ) ) {
   }
 
   echo '</span>
-    ' . translate( 'conflicts with existing entries' ) . '
+    ' . translate( 'conflicts with the following existing calendar entries' ) . ':
     <ul>' . $conflicts . '
     </ul>
     ' // User can confirm conflicts.
@@ -1261,13 +1259,13 @@ if( ! empty( $conflicts ) ) {
         // $yval = htmlentities( $yval );
 
         echo '
-      <input type="hidden" name="' . $xkey . '" value="' . $yval . '">';
+      <input type="hidden" name="' . $xkey . '" value="' . $yval . '" />';
       }
     } else {
       if( get_magic_quotes_gpc() )
         $xval = stripslashes( $xval );
       echo '
-      <input type="hidden" name="' . $xkey . '" value="' . $xval . '">';
+      <input type="hidden" name="' . $xkey . '" value="' . $xval . '" />';
     }
   }
 
@@ -1275,9 +1273,9 @@ if( ! empty( $conflicts ) ) {
   // Allow them to override a conflict if server settings allow it.
    ( ! empty( $ALLOW_CONFLICT_OVERRIDE ) && $ALLOW_CONFLICT_OVERRIDE == 'Y' ? '
       <input type="submit" name="confirm_conflicts" value="'
-     . $saveStr . '">' : '' ) . '
+     . translate( 'Save' ) . '" />' : '' ) . '
       <input type="button" value="' . translate( 'Cancel' )
-   . '" onclick="history.back()">
+   . '" onclick="history.back()" />
     </form>';
 
   ob_end_flush();

@@ -1,29 +1,12 @@
-// $Id$
-
-span.conf,
-span.priv,
-span.pub {
-  width:30%;
-}
-th {
-  border-top:1px solid #888;
-  border-bottom:1px solid #888;
-}
-th:first-of-type {
-  border-left:1px solid #888;
-}
-th:last-of-type {
-  border-right:1px solid #888;
-}
 #accessform {
   margin-top:.25em;
   border:.0625em solid #888;
   padding:.25em;
 }
-#accessform td {
+#accessform table {
+  border:0;
+}
+#accessform table td {
   margin:.625em;
   vertical-align:top;
-}
-#EditOther td {
-  padding:5px;
 }

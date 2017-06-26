@@ -13,7 +13,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: user-imap.php,v 1.28 2009/10/27 18:36:49 bbannon Exp $
  * @package WebCalendar
  * @subpackage IMAPAuthentication
  */
@@ -66,7 +66,7 @@ function quoteIMAP($str)
 function user_valid_login ( $login, $password ) {
   global $error,$auth, $imap_host, $imap_port, $allow_auto_create, $PHP_SELF;
   $ret = false;
-//  do_debug("in imap/user_valid_login...<br>\nl=$login p=$password<br>\n");
+//  do_debug ("in imap/user_valid_login...<br />\nl=$login p=$password<br />\n");
 
   $all_imap_hosts = array ();
   $all_imap_ports = array ();
@@ -119,15 +119,15 @@ function user_valid_login ( $login, $password ) {
 
     // Connect to IMAP-server
     $stream = fsockopen ( $host, $all_imap_ports[$idx], $error_number, $error_string, 15 );
-    $response = fgets( $stream );
+    $response = fgets( $stream, 1024 );
     if ( $stream ) {
       $logon_str = 'a001 LOGIN "' . quoteIMAP( $login ) .
         '" "' . quoteIMAP( $password ) . "\"\r\n";
       fputs( $stream, $logon_str );
-      $response = fgets( $stream );
+      $response = fgets( $stream, 1024 );
       if ( substr ( $response, 5, 2 ) == 'OK' ) {
         fputs( $stream, "a001 LOGOUT\r\n" );
-        $response = fgets( $stream );
+        $response = fgets( $stream, 1024 );
         $ret = true;
         if ( $allow_auto_create && ! empty ( $PHP_SELF ) &&
           preg_match ( "/\/login.php/", $PHP_SELF )) {
@@ -391,9 +391,9 @@ function user_delete_user ( $user ) {
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
   $delete_em = array ();
-  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
-    $res = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user
-      WHERE cal_id = ?', array ( $events[$i] ) );
+  for ( $i = 0; $i < count ( $events ); $i++ ) {
+    $res = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user ' .
+      'WHERE cal_id = ?', array ( $events[$i] ) );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
@@ -403,7 +403,7 @@ function user_delete_user ( $user ) {
     }
   }
   // Now delete events that were just for this user
-  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
       array ( $delete_em[$i] ) );
     dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
@@ -448,7 +448,7 @@ function user_delete_user ( $user ) {
     }
     dbi_free_result ( $res );
   }
-  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ?',
       array ( $delete_em[$i] ) );
   }
@@ -489,7 +489,7 @@ function user_delete_user ( $user ) {
     }
     dbi_free_result ( $res );
   }
-  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
+  for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_report_template WHERE cal_report_id = ?',
       array ( $delete_em[$i] ) );
   }

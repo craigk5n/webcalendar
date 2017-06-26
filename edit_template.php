@@ -1,4 +1,5 @@
-<?php /* $Id$ */
+<?php // $Id: edit_template.php,v 1.38.2.1 2012/02/28 15:43:10 cknudsen Exp $
+
 /**
  * Page Description:
  * This page will present the HTML form to edit an entry in the cal_report table,
@@ -13,7 +14,7 @@
  * Admin permissions are checked by the WebCalendar class.
  */
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 
 $cur = $error = '';
 $found = $foundOld = false;
@@ -101,19 +102,19 @@ if ( $REQUEST_METHOD == 'POST' ) {
 
 print_header ( '', '', '', true );
 /*
-echo 'report_id: ' . $report_id . '<br>
-report_name: ' . $report_name . '<br>
-report_user: ' . $report_user . '<br>
+echo 'report_id: ' . $report_id . '<br />
+report_name: ' . $report_name . '<br />
+report_user: ' . $report_user . '<br />
 ';
 */
 echo '
     <h2>';
 if ( $type == 'H' )
-  echo translate ( 'Edit Custom Header' );
+  etranslate ( 'Edit Custom Header' );
 elseif ( $type == 'S' )
-  echo translate ( 'Edit Custom Script/Stylesheet' );
+  etranslate ( 'Edit Custom Script/Stylesheet' );
 else
-  echo translate ( 'Edit Custom Trailer' );
+  etranslate ( 'Edit Custom Trailer' );
 
 if ( $user != '__system__' ) {
   user_load_variables ( $user, 'temp_' );
@@ -122,19 +123,19 @@ if ( $user != '__system__' ) {
 
 echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
     <form action="edit_template.php" method="post" name="reportform">
-      <input type="hidden" name="type" value="' . $type . '">'
+      <input type="hidden" name="type" value="' . $type . '" />'
    . ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' && !
     empty ( $user ) && $user != '__system__' ? '
-      <input type="hidden" name="user" value="' . $user . '">' : '' ) . '
+      <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
       <textarea rows="15" cols="60" name="template">' . htmlspecialchars ( $cur )
-   . '</textarea><br>
+   . '</textarea><br />
       <input type="button" value="' . translate ( 'Cancel' )
-   . '" onclick="window.close();">
-      <input name="action" type="submit" value="' . $saveStr . '">'
+   . '" onclick="window.close();" />
+      <input name="action" type="submit" value="' . translate ( 'Save' ) . '" />'
    . ( ! empty ( $user ) ? '
-      <input name="delete" type="submit" value="' . $deleteStr
+      <input name="delete" type="submit" value="' . translate ( 'Delete' )
      . '" onclick="return confirm( \''
-     . translate( 'really delete entry' ) . '\');">'
+     . translate( 'Are you sure you want to delete this entry?' ) . '\');" />'
     : '' ) . '
     </form>' ) . "\n" . print_trailer ( false, true, true );
 

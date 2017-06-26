@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: usersel.php,v 1.40 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 
 // input args in URL
@@ -22,8 +22,8 @@ if ( empty ( $listid ) ) {
 // Parse $users.
 $exp = explode( ',', $users );
 $groups = $selected = $sql_params = array();
-foreach ( $exp as $i ) {
-  $selected[$i] = 1;
+for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
+  $selected[$exp[$i]] = 1;
 }
 
 $groups = get_groups( $user );
@@ -32,7 +32,7 @@ ob_start();
 print_header( '', '', '', true, false, true );
 
 echo '
-    <script>';
+    <script type="text/javascript">';
 
 include 'includes/js/usersel.php';
 
@@ -40,40 +40,42 @@ echo '
     </script>
     <center>
       <form action="#" name="userselform">
-        <table summary="">
+        <table style="border: 0; width: 100%;" summary="">
           <tr>
             <td class="aligntop">
-              <b>' . translate( 'Users_' ) . '</b><br>
-              <select name="users" size="15" multiple>
-              </select><br>
-              <input type="button" value="' . $allStr
- . '" onclick="selectAll( true )">
-              <input type="button" value="' . $noneStr
- . '" onclick="selectAll( false )">
-              <input type="reset" value="' . translate( 'Reset' ) . '">
+              <b>' . translate ( 'Users' ) . ':</b><br />
+              <select name="users" size="15" multiple="multiple">
+              </select><br />
+              <input type="button" value="' . translate ( 'All' )
+ . '" onclick="selectAll( true )" />
+              <input type="button" value="' . translate ( 'None' )
+ . '" onclick="selectAll( false )" />
+              <input type="reset" value="' . translate ( 'Reset' ) . '" />
             </td>
             <td valign="top">
-              <b>' . $groupsStr . '</b><br>
+              <b>' . translate ( 'Groups' ) . ':</b><br />
               <select name="groups" size="15">';
 
-foreach ( $groups as $i ) {
-  echo $option . $i['cal_group_id'] . '">' . $i['cal_name'] . '</option>';
+for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {
+  echo '
+                <option value="' . $groups[$i]['cal_group_id'] . '">'
+   . $groups[$i]['cal_name'] . '</option>';
 }
 
 echo '
-              </select><br>
-              <input type="button" value="' . $addStr
- . '" onclick="toggleGroup( true );">
+              </select><br />
+              <input type="button" value="' . translate ( 'Add' )
+ . '" onclick="toggleGroup( true );" />
               <input type="button" value="' . translate ( 'Remove' )
- . '" onclick="toggleGroup( false );">
+ . '" onclick="toggleGroup( false );" />
             </td>
           </tr>
           <tr>
-            <td style="text-align:center;" colspan="2"><br><br>
-              <input type="button" value="' . $okStr
- . '" onclick="OkButton()">
+            <td style="text-align:center;" colspan="2"><br /><br />
+              <input type="button" value="' . translate ( 'OK' )
+ . '" onclick="OkButton()" />
               <input type="button" value="' . translate ( 'Cancel' )
- . '" onclick="window.close()">
+ . '" onclick="window.close()" />
             </td>
           </tr>
         </table>

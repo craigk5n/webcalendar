@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: minical.php,v 1.23 2009/11/22 16:47:45 bbannon Exp $
 /**
  * Description:
  * This script is intended to be used inside an IFRAME on another website
@@ -86,11 +86,11 @@ user_load_variables ( $login, 'minical_' );
 if ( $user != '__public__' && ! nonuser_load_variables ( $login, 'minica_' ) )
   die_miserable_death (
     str_replace ( 'XXX', $login,
-      translate ( 'No NUC XXX' ) ) );
+      translate ( 'No such nonuser calendar XXX.' ) ) );
 
 if ( $user != '__public__' &&
   ( empty ( $minical_is_public ) || $minical_is_public != 'Y' ) )
-  die_miserable_death ( translate ( 'not a public calendar' ) );
+  die_miserable_death ( translate ( 'This Calendar is not Public.' ) );
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextmonth = date ( 'm', $next );

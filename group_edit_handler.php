@@ -1,10 +1,10 @@
-<?php /* $Id$ */
+<?php // $Id: group_edit_handler.php,v 1.29.2.1 2012/02/28 15:43:10 cknudsen Exp $
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 
-$id       = getPostValue ( 'id' );
-$groupname= getPostValue ( 'groupname' );
-$users    = getPostValue ( 'users' );
+$id = getPostValue ( 'id' );
+$groupname = getPostValue ( 'groupname' );
+$users = getPostValue ( 'users' );
 
 if ( ! $is_admin )
   $error = print_not_auth();
@@ -46,9 +46,9 @@ else {
     if ( empty ( $error ) && ! empty ( $users ) ) {
       dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_group_id = ?',
         array ( $id ) );
-      foreach ( $users as $i ) {
+      for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
         dbi_execute ( 'INSERT INTO webcal_group_user ( cal_group_id, cal_login )
-          VALUES ( ?, ? )', array ( $id, $i ) );
+          VALUES ( ?, ? )', array ( $id, $users[$i] ) );
       }
     }
   }

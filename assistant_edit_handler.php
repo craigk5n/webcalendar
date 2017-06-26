@@ -1,19 +1,19 @@
-<?php /* $Id$ */
+<?php // $Id: assistant_edit_handler.php,v 1.21.2.1 2012/02/28 15:43:09 cknudsen Exp $
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 
 $user = getPostValue ( 'user' );
-$users= getPostValue ( 'users' );
+$users = getPostValue ( 'users' );
 
 $error = '';
 if ( $user != $login )
-  $user = ( ( $is_admin || $is_nonuser_admin ) && $user ? $user : $login );
+  $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
 # update user list
 dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_boss = ?', array ( $user ) );
 if ( ! empty ( $users ) ) {
-  foreach ( $users as $i ) {
+  for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
     dbi_execute ( 'INSERT INTO webcal_asst ( cal_boss, cal_assistant )
-      VALUES ( ?, ? )', array ( $user, $i ) );
+      VALUES ( ?, ? )', array ( $user, $users[$i] ) );
   }
 }
 

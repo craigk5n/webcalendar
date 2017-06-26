@@ -1,23 +1,4 @@
 <?php
-/*
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
- * @package WebCalendar
- * @subpackage Reports
- *
- * Security:
- * If system setting $REPORTS_ENABLED is set to anything other than 'Y',
- * then don't allow access to this page.
- * If webcal_report.cal_is_global is set to:
- *   'Y', any user can view the report.
- *   'N', only the creator (set in webcal_report.cal_login) can view the report.
- * If webcal_report.cal_allow_nav is:
- *   'Y', then present Next and Previous links.
- *   'N', then no Next / Previous links and the offset parameter will be ignored.
- * Public user cannot edit/list reports.
- */
 /**
  * Lists a user's reports or displays a specific report.
  *
@@ -31,7 +12,27 @@
  * - <var>user</var> (optional) - specifies which user's calendar to use for
  *   the report. This will be ignored if the chosen report is tied to a
  *   specific user.
+ *
+ * @author Craig Knudsen <cknudsen@cknudsen.com>
+ * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @version $Id: report.php,v 1.82 2009/11/22 16:47:45 bbannon Exp $
+ * @package WebCalendar
+ * @subpackage Reports
  */
+
+/* Security:
+ * If system setting $REPORTS_ENABLED is set to anything other than 'Y',
+ * then don't allow access to this page.
+ * If webcal_report.cal_is_global is set to:
+ *   'Y', any user can view the report.
+ *   'N', only the creator (set in webcal_report.cal_login) can view the report.
+ * If webcal_report.cal_allow_nav is:
+ *   'Y', then present Next and Previous links.
+ *   'N', then no Next / Previous links and the offset parameter will be ignored.
+ * Public user cannot edit/list reports.
+ */
+
 include_once 'includes/init.php';
 
 /**
@@ -71,7 +72,7 @@ function event_to_text ( $event, $date ) {
   global $ALLOW_HTML_DESCRIPTION, $event_template, $login, $report_id, $user;
 
   $allDayStr = translate ( 'All day event' );
-  $confStr = translate ( 'confidential event' );
+  $confStr = translate ( 'This event is confidential.' );
   $privStr = translate ( '(Private)' );
 
   $end_time_str = $start_time_str = $time_str = '';
@@ -123,7 +124,7 @@ function event_to_text ( $event, $date ) {
       //fix any broken special characters
       $str = preg_replace( "/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str );
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
-      if ( strpos ( ' ' . $description_str, '<' ) && strpos ( $description_str, '>' ) ) {
+      if ( strstr ( $description_str, '<' ) && strstr ( $description_str, '>' ) ) {
         // Found some HTML.
       } else
         // No HTML found. Add line breaks.
@@ -219,7 +220,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
     if ( ! $updating_public ) {
       if ( $PUBLIC_ACCESS == 'Y' ) {
         $clickStr =
-        translate ( 'manage pubic reports' );
+        translate ( 'Click here to manage reports for the Public Access calendar.' );
         $list .= '
     <p><a title="' . $clickStr . '" href="report.php?public=1">'
          . $clickStr . '</a></p>';
@@ -237,7 +238,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   $list .= '
     <ul>';
   if ( $res ) {
-    $addNewRepStr = translate ( 'Add new report' );
+    $addStr = translate ( 'Add new report' );
     $unnamesStr = translate ( 'Unnamed Report' );
     while ( $row = dbi_fetch_row ( $res ) ) {
       $rep_name = trim ( $row[1] );
@@ -252,7 +253,8 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
     </ul>';
     $addurl = 'edit_report.php' . ( $updating_public ? '?public=1' : '' );
     $list .= '
-    <p><a href="' . $addurl . '" class="nav">' . $addNewRepStr . '</a></p>';
+    <p><a title="' . $addStr . '" href="' . $addurl . '" class="nav">'
+     . $addStr . '</a></p>';
     dbi_free_result ( $res );
   } else
     $error = $invalidID;
@@ -302,8 +304,8 @@ if ( empty ( $report_user ) )
 $day_str = $printerStr = '';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt>
-<dd><b>' . translate( 'Date_' ) . '</b> ${date}<br>
-<b>' . translate( 'Time_' ) . '</b> ${time}<br>
+<dd><b>' . translate ( 'Date' ) . ':</b> ${date}<br />
+<b>' . translate ( 'Time' ) . ':</b> ${time}<br />
 ${description}</dd>';
 $page_template = '<dl>${days}</dl>';
 
@@ -438,9 +440,9 @@ if ( empty ( $error ) && empty ( $list ) ) {
     $ev = combine_and_sort_events (
       get_entries ( $dateYmd ),
       get_repeating_entries ( $report_user, $dateYmd ) );
-    foreach ( $ev as $i ) {
-      if ( $get_unapproved || $i->getStatus() == 'A' )
-        $event_str .= event_to_text ( $i, $dateYmd );
+    for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
+      if ( $get_unapproved || $ev[$i]->getStatus() == 'A' )
+        $event_str .= event_to_text ( $ev[$i], $dateYmd );
     }
 
     if ( ! empty ( $event_str ) || $report_include_empty == 'Y' || $report_time_range < 10 ) {
@@ -460,6 +462,8 @@ if ( ! empty ( $error ) ) {
 }
 
 $adminLinkStr = $manageStr = $nextLinkStr = $prevLinkStr = $textStr = '';
+$nextStr = translate ( 'Next' );
+$prevStr = translate ( 'Previous' );
 $reportNameStr = ( $include_header ? '
     <h2>' . $report_name . '</h2>' : '' );
 
@@ -467,9 +471,9 @@ if ( ! empty ( $report_allow_nav ) && $report_allow_nav == 'Y' ) {
   $temp = '" href="report.php?report_id=' . $report_id . $u_url . '&amp;offset=';
 
   $nextLinkStr = $prevLinkStr = '
-    <a class="nav"' . temp;
-  $nextLinkStr .= $next . '">' . $nextStr . '</a>';
-  $prevLinkStr .= $prev . '">' . $prevStr . '</a>&nbsp;&nbsp;';
+    <a class="nav" title="';
+  $nextLinkStr .= $nextStr . $temp . $next . '">' . $nextStr . '</a>';
+  $prevLinkStr .= $prevStr . $temp . $prev . '">' . $prevStr . '</a>&nbsp;&nbsp;';
 }
 
 if ( empty ( $list ) ) {

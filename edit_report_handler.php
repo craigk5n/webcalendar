@@ -1,19 +1,4 @@
-<?php
-/*
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
- * @package WebCalendar
- *
- * Security:
- * Same as in edit_report.php...
- * If system setting $REPORTS_ENABLED is set to anything other than 'Y',
- * then don't allow access to this page.
- * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of participants.
- * Can only delete/edit an event if you are the creator of the event
- * or you are an admin user.
- */
+<?php // $Id: edit_report_handler.php,v 1.38.2.1 2012/02/28 15:43:10 cknudsen Exp $
 /**
  * Page Description:
  * This page will handle the form submission from edit_report.php
@@ -37,9 +22,17 @@
  * page_template
  * day_template
  * event_template
+ *
+ * Security:
+ * Same as in edit_report.php...
+ * If system setting $REPORTS_ENABLED is set to anything other than 'Y',
+ * then don't allow access to this page.
+ * If $ALLOW_VIEW_OTHER is 'N', then do not allow selection of participants.
+ * Can only delete/edit an event if you are the creator of the event
+ * or you are an admin user.
  */
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 load_user_categories();
 
 $error = ( empty( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y'
@@ -95,17 +88,17 @@ if ( empty ( $error ) ) {
   $errStr = '
     <p>' . translate ( 'Error' ) . ' [';
   $noVarXXX = ']: ' . translate ( 'Variable XXX not found.' ) . '</p>';
-  if ( ! strpos ( ' ' . $page_template, '${days}' ) )
+  if ( ! strstr ( $page_template, '${days}' ) )
     $error .= $errStr . translate ( 'Page template' )
      . str_replace ( 'XXX', '${days}', $noVarXXX );
 
   // Day template must include ${events}.
-  if ( ! strpos ( ' ' . $day_template, '${events}' ) )
+  if ( ! strstr ( $day_template, '${events}' ) )
     $error .= $errStr . translate ( 'Day template' )
      . str_replace ( 'XXX', '${events}', $noVarXXX );
 
   // Event template must include ${name}.
-  if ( ! strpos ( ' ' . $event_template, '${name}' ) )
+  if ( ! strstr ( $event_template, '${name}' ) )
     $error .= $errStr . translate ( 'Event template' )
      . str_replace ( 'XXX', '${name}', $noVarXXX );
 }
@@ -161,7 +154,8 @@ if ( empty ( $error ) ) {
     $sql = 'INSERT INTO webcal_report ( ';
     $sql_v = '';
 
-    for ( $i = 0, $cnt = count ( $names ); $i < $cnt; $i++ ) {
+    $namecnt = count ( $names );
+    for ( $i = 0; $i < $namecnt; $i++ ) {
       $sql .= ( $i > 0 ? ', ' : '' ) . $names[$i];
       $sql_v .= ( $i > 0 ? ', ' : '' ) . '?';
     }
@@ -169,7 +163,8 @@ if ( empty ( $error ) ) {
     $report_id = $newid;
   } else {
     $sql = 'UPDATE webcal_report SET ';
-    for ( $i = 0, $cnt = count ( $names ); $i < $cnt; $i++ ) {
+    $namecnt = count ( $names );
+    for ( $i = 0; $i < $namecnt; $i++ ) {
       $sql .= ( $i > 0 ? ', ' : '' ) . "$names[$i] = ?";
     }
     $sql .= ' WHERE cal_report_id = ?';

@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: adminhome.php,v 1.45 2010/02/03 17:41:20 bbannon Exp $
 /**
  * Page Description:
  *   Serves as the home page for administrative functions.
@@ -52,7 +52,7 @@ if ( $is_nonuser_admin ) {
 
   if ( $accessEnabled
       && access_can_access_function( ACCESS_ACCESS_MANAGEMENT ) ) {
-    $names[] = translate( 'UAC' );
+    $names[] = translate ( 'User Access Control' );
     $links[] = 'access.php';
   }
 
@@ -130,16 +130,29 @@ if ( $is_nonuser_admin ) {
 @session_start();
 $_SESSION['webcal_tmp_login'] = 'SheIsA1Fine!';
 ob_start();
-print_header();
+print_header( '',
+/*
+  '<style type="text/css">
+      #adminhome table,
+      #adminhome td a {
+        background:' . $CELLBG . '
+      }
+    </style>
+ If this is the proper way to call css_cacher.php from here?
+ */
+    '<link type="text/css" href="css_cacher.php" rel="stylesheet" />
+    <link type="text/css" href="includes/css/styles.css" rel="stylesheet" />' );
 
 echo '
     <h2>' . translate( 'Administrative Tools' ) . '</h2>
     <table summary="admin options">';
 
-for ( $i = 0, $cnt = count ( $names ); $i < $cnt; $i++ ) {
+for ( $i = 0, $cnt = count( $names ); $i < $cnt; $i++ ) {
+  $empLink = empty( $links[$i] );
   echo ( $i % COLUMNS == 0 ? '
       <tr>' : '' ) . '
-        <td> <a href="' . $links[$i] . '">' . $names[$i] . '</a></td>'
+        <td>' . ( $empLink ? '' : '<a href="' . $links[$i] . '">' )
+   . $names[$i] . ( $empLink ? '' : '</a>' ) . '</td>'
    . ( $i % COLUMNS == COLUMNS - 1 ? '
       </tr>' : '' );
 }
@@ -152,7 +165,8 @@ while ( $i % COLUMNS != 0 ) {
 
 echo '
       </tr>
-    </table>' . print_trailer();
+    </table>
+    ' . print_trailer();
 ob_end_flush();
 
 ?>

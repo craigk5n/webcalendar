@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: import_handler.php,v 1.44 2009/11/22 16:47:45 bbannon Exp $
 /**
  * Description:
  * Loads appropriate import file parser and processes the data returned.
@@ -24,7 +24,6 @@
  */
 include_once 'includes/init.php';
 include_once 'includes/xcal.php';
-require_valid_referring_url();
 $error = $sqlLog = '';
 print_header();
 
@@ -36,7 +35,7 @@ if ( ! empty ( $_FILES['FileName'] ) )
   $file = $_FILES['FileName'];
 
 if ( empty ( $file ) )
-  echo translate( 'No file' ) . '<br>';
+  echo translate ( 'No file' ) . '!<br />';
 
 // Handle user
 $calUser = getValue ( 'calUser' );
@@ -70,7 +69,7 @@ if ( $file['size'] > 0 ) {
     case 'PALMDESKTOP':
       include 'import_palmdesktop.php';
       if ( delete_palm_events ( $login ) != 1 )
-        $errormsg = translate ( 'Error deleting palm from webcal' );
+        $errormsg = translate ( 'Error deleting palm events from webcalendar.' );
       $data = parse_palmdesktop ( $file['tmp_name'], $exc_private );
       $type = 'palm';
       break;
@@ -95,25 +94,30 @@ if ( $file['size'] > 0 ) {
   if ( ! empty ( $data ) && empty ( $errormsg ) ) {
     import_data ( $data, $doOverwrite, $type );
     echo '
-    <p>' . translate( 'Import Results' ) . '</p><br><br>
-    ' . translate ( 'Events successfully imported' ) . ' ' . $count_suc
-     . '<br>
-    ' . translate ( 'prior imports marked deleted' ) . ' '
-     . $numDeleted . '<br>
+    <p>' . translate ( 'Import Results' ) . '</p><br /><br />
+    ' . translate ( 'Events successfully imported' ) . ': ' . $count_suc
+     . '<br />
+    ' . translate ( 'Events from prior import marked as deleted' ) . ': '
+     . $numDeleted . '<br />
     ' . ( empty ( $ALLOW_CONFLICTS )
-      ? translate( 'Conflicting events' ) . ': ' . $count_con . '<br>
-    ' : '' ) . $err_Str . $error_num . '<br><br>';
+      ? translate ( 'Conflicting events' ) . ': ' . $count_con . '<br />
+    ' : '' ) . translate ( 'Errors' ) . ': ' . $error_num . '<br /><br />';
   } elseif ( ! empty ( $errormsg ) )
     echo '
-    <br><br>
-    <b>' . $err_Str . '</b> ' . $errormsg . '<br>';
+    <br /><br />
+    <b>' . translate ( 'Error' ) . ':</b> ' . $errormsg . '<br />';
   else
-    echo '<br><br>
-    <b>' . $err_Str . '</b>' . translate( 'error parsing import file' ) . '<br>';
+    echo '
+    <br /><br />
+    <b>' . translate ( 'Error' ) . ':</b> '
+     . translate( 'There was an error parsing the import file or no events were returned.' )
+     . '<br />';
 } else
-  echo '<br><br>
-    <b>' . $err_Str . '</b>' . translate( 'import file had no data' ) . '<br>';
-// echo "<hr>$sqlLog\n";
+  echo '
+    <br /><br />
+    <b>' . translate ( 'Error' ) . ':</b> '
+   . translate( 'The import file contained no data.' ) . '<br />';
+// echo "<hr />$sqlLog\n";
 echo print_trailer();
 
 ?>

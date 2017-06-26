@@ -1,6 +1,6 @@
-<?php /* $Id$ */
+<?php // $Id: doc.php,v 1.23 2009/11/22 16:47:44 bbannon Exp $
 /**
- * Page Description:
+ * Description:
  *  Obtain a binary object from the database and send it back to
  *  the browser using the correct mime type.
  *
@@ -12,6 +12,7 @@ include_once 'includes/classes/Doc.class';
 
 $blid = getValue ( 'blid', '-?[0-9]+', true );
 $error = $res = '';
+$invalidIDStr = translate ( 'Invalid entry id XXX.' );
 
 if ( empty ( $blid ) )
   $error = translate ( 'Invalid blob id' );
@@ -24,7 +25,7 @@ else {
 if ( empty ( $error ) ) {
   $row = dbi_fetch_row ( $res );
   if ( ! $row )
-    $error = str_replace( 'XXX', $blid, $badEntryStr );
+    $error = str_replace ( 'XXX', $blid, $invalidIDStr );
   else {
     $doc = new Doc( $row );
     $description = $doc->getDescription();
@@ -44,8 +45,9 @@ if ( empty ( $error ) ) {
 // to view the event in order to access this file.
 // TODO: move all this code (and code in view_entry.php) to a common
 // function named can_view_event or something similar.
-$can_view = $is_confidential = $is_my_event = $is_private = false;
-
+$can_view = false;
+$is_my_event = false;
+$is_private = $is_confidential = false;
 $log = getGetValue ( 'log' );
 $show_log = ! empty ( $log );
 
@@ -57,7 +59,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     $can_view = true;
 
   if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
-    $error = str_replace( 'XXX', $id, $badEntryStr );
+    $error = str_replace ( 'XXX', $id, $invalidIDStr );
 
   if ( empty ( $error ) ) {
     // is this user a participant or the creator of the event?
@@ -99,13 +101,18 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       // In summary, make sure at least one event participant is in one of
       // this user's groups.
       $my_users = get_my_users();
-      if ( is_array ( $my_users ) && count ( $my_users ) ) {
+      $cnt = count ( $my_users );
+      if ( is_array ( $my_users ) && $cnt ) {
         $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
           WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
           AND weu.cal_login IN ( ';
-        $query_params = array ( $id );
-        for ( $i = 0, $cnt = count ( $my_users ); $i < $cnt; $i++ ) {
-          $sql .= ( $i > 0 ? ', ' : '?' );
+        $query_params = array();
+      $query_params[] = $id;
+      for ( $i = 0; $i < $cnt; $i++ ) {
+          if ( $i > 0 ) {
+            $sql .= ', ';
+          }
+          $sql .= '?';
           $query_params[] = $my_users[$i]['cal_login'];
         }
         $res = dbi_execute ( $sql . ' )', $query_params );
@@ -117,8 +124,8 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
           dbi_free_result ( $res );
         }
       }
-      // If we didn't indicate we need to check groups,
-      // then this user can't view this event.
+      // If we didn't indicate we need to check groups, then this user
+      // can't view this event.
       if ( ! $check_group && ! access_is_enabled() )
         $can_view = false;
     }
@@ -132,8 +139,8 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     $NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals();
     $nonuser_lookup = array();
-    foreach ( $nonusers as $i ) {
-      $nonuser_lookup[$i['cal_login']] = 1;
+    for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
+      $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
     }
     $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
       WHERE cal_id = ? AND cal_status in ( \'A\', \'W\' )', array ( $id ) );

@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: freebusy.php,v 1.35 2009/11/22 16:47:45 bbannon Exp $
 /**
  * Description:
  * Creates the iCal free/busy schedule a single user.
@@ -40,31 +40,24 @@
  * If $FREEBUSY_ENABLED is not 'Y' (set in each user' Preferences), do not allow.
  */
 
-foreach( array(
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'site_extras',
-    'translate',
-    'validate',
-    'xcal',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
-
-foreach( array(
-    'WebCalendar',
-    'Event',
-    'RptEvent',
-  ) as $i ) {
-  require_once 'includes/classes/' . $i . '.class';
-}
+include_once 'includes/translate.php';
+require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
+include 'includes/validate.php';
+include 'includes/site_extras.php';
+include 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -128,12 +121,15 @@ for ( $d = $startdate; $d <= $enddate; $d += 86400 ) {
   $dYmd = date ( 'Ymd', $d );
   $ev = get_entries ( $dYmd, $get_unapproved );
   $evcnt = count ( $ev );
-  foreach ( $ev as $i ) {
-    $event_text .= fb_export_time ( $dYmd, $i->getDuration(), $i->getTime(), 'ical' );
+  for ( $i = 0; $i < $evcnt; $i++ ) {
+    $event_text .= fb_export_time ( $dYmd, $ev[$i]->getDuration(),
+      $ev[$i]->getTime(), 'ical' );
   }
   $revents = get_repeating_entries ( $user, $dYmd, $get_unapproved );
-  foreach ( $revents as $i ) {
-    $event_text .= fb_export_time ( $dYmd, $i->getDuration(), $i->getTime(), 'ical' );
+  $recnt = count ( $revents );
+  for ( $i = 0; $i < $recnt; $i++ ) {
+    $event_text .= fb_export_time ( $dYmd, $revents[$i]->getDuration(),
+      $revents[$i]->getTime(), 'ical' );
   }
 }
 

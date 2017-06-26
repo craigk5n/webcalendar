@@ -4,7 +4,7 @@
 # by: Elçin Özel - Can Yýlmaz - Mehmet Benlioðlu
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
-# $Id$
+# $Id: Turkish.txt,v 1.38 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 
@@ -72,27 +72,27 @@ Month: Ay
 Year: Sene
 Settings: Ayar
 Colors: Renkler
-Document BG: Sayfa-arkasi
+Document background: Sayfa-arkasi
 Document title: Baslik
-Table cell BG: Tabela Sayfa-arkasi
-Table cell today BG: Tabela-arkasi 'Bugün' icin
+Table cell background: Tabela Sayfa-arkasi
+Table cell background for current day: Tabela-arkasi 'Bugün' icin
 Help: Yardim
 Language: Lisan
 None: Hic
 Week starts on: Hafta baslangici
-time_format_help: Hangi saat özelligi kullanildigini gösterir:<br><i>12-saatlik:</i> Saati 3am, 8:30pm vs. diye gösterir.<br><i>24-saatlik:</i> Saati 3.00, 20.30 vs. diye gösterir.
+time-format-help: Hangi saat özelligi kullanildigini gösterir:<br /><i>12-saatlik:</i> Saati 3am, 8:30pm vs. diye gösterir.<br /><i>24-saatlik:</i> Saati 3.00, 20.30 vs. diye gösterir.
 Time format: Saat
 12 hour: 12-saatlik
 24 hour: 24-saatlik
 Duration: Zaman
-work_hours_help: Zaman bölüntüsü Günlük görünüm icin.
+work-hours-help: Zaman bölüntüsü Günlük görünüm icin.
 Work hours: Calisma zamani
 From: Kimden
 to: Kime
 Preferred view: Asil kullanim/gösteri
-display_weeknumber_help: Kacinci Hafta oldugunu (1-52) Aylik ve Haftalik görünümlerinde gösterir.
+display-week-number-help: Kacinci Hafta oldugunu (1-52) Aylik ve Haftalik görünümlerinde gösterir.
 Display week number: Kacinci Hafta
-display_unapproved_help: Onaylanmamis Terminler Takviminizde görülsünmü.<br> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<br> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir.
+display-unapproved-help: Onaylanmamis Terminler Takviminizde görülsünmü.<br /> Eger "Evet", Onaylanmamis Termin'ler baska bir renkte olur.<br /> Eger "Hayir", onaylanmamis Termin'ler onaylandiktan sonra Takvimde görünebilir.
 Display unapproved: Onaylanmamis Termin'leri gör
 Yes: Evet
 No: Hayir
@@ -115,7 +115,7 @@ Time: Saat
 # Page: category.php
 #
 Delete: Sil
-really delete entry: Islemi sahiden silmek istiyormusunuz?
+Are you sure you want to delete this entry?: Islemi sahiden silmek istiyormusunuz?
 
 ########################################
 # Page: docadd.php
@@ -135,7 +135,7 @@ brief-description-help: Termin icin kisa Özet (20 Isaret). Takvimde bu görünür.
 Brief Description: Özel Anlami
 full-description-help: Terminin tamamen aciklamasi. Bu aciklamayi Kullanici Termin'de görür.
 Full Description: Tüm Anlam
-access-help: Termine giris özelliklerini gösterir.<br> <i>Acik</i>: Herkes her Detayli görebilir.<br><i>Özel</i>: Termin'in varligini görebilir, ama hicbir Detayli göremez.
+access-help: Termine giris özelliklerini gösterir.<br /> <i>Acik</i>: Herkes her Detayli görebilir.<br /><i>Özel</i>: Termin'in varligini görebilir, ama hicbir Detayli göremez.
 Access: Giris
 priority-help: Termin'in Prioritesini gösterir. Prioritesi yüksek olan Termin'ler kalin yazi olarak gösterilir.
 Priority: Priorite
@@ -143,8 +143,8 @@ High: yüksek
 Medium: orta
 Low: alcak
 date-help: Termin'in tarihini gösterir.
-time-help: Termin'in saatini gösterir.<br><i>Bos birakilabilir.</i>
-duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<br><i>Bos birakilabilir.</i>
+time-help: Termin'in saatini gösterir.<br /><i>Bos birakilabilir.</i>
+duration-help: Dakika olarak Termin'in sürecegi zamani gösterir.<br /><i>Bos birakilabilir.</i>
 participants-help: Termine katilanlari gösterir.
 Daily: Günliük
 Weekly: Haftalik
@@ -155,19 +155,19 @@ Yearly: Senelik
 Use end date: Bugün bitiyor
 Frequency: defa
 Delete entry: Islemi sil
-not authorized to edit entry: Sizin bu Islemi silmek icin hak sahibiz yok.
+You are not authorized to edit this entry.: Sizin bu Islemi silmek icin hak sahibiz yok.
 
 ########################################
 # Page: edit_entry_handler.php
 #
 A new appointment has been made for you by: Sizin icin bir Termin eklendi -->
-conflicts with suggested time: Önerilen Terminde saat carpismasi
+The following conflicts with the suggested time: Önerilen Terminde saat carpismasi
 Please look on: Bakiniz
 to accept or reject this appointment: Termini onaylamak/ret etmek.
 to view this appointment: Termini gör
 Scheduling Conflict: Termin carpismasi
 Your suggested time of: Isleminiz
-conflicts with existing entries: takiben Takvimde baska bir Islemle carpisiyor.
+conflicts with the following existing calendar entries: takiben Takvimde baska bir Islemle carpisiyor.
 
 ########################################
 # Page: edit_nonusers.php
@@ -201,8 +201,8 @@ Set Password: Sifreyi kullan
 ########################################
 # Page: edit_user_handler.php
 #
-passwords not identical: Verilen Sifreler esit degil
-must enter a password: Sifre vermediniz
+The passwords were not identical.: Verilen Sifreler esit degil
+You have not entered a password.: Sifre vermediniz
 
 ########################################
 # Page: export.php
@@ -249,8 +249,8 @@ Reject this entry?: Isleme ret?
 ########################################
 # Page: login-app.php
 #
-must enter login/password: Kullanici Adi ve Sifre vermeniz gerekiyor.
-Save login via cookies: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
+You must enter a login and password.: Kullanici Adi ve Sifre vermeniz gerekiyor.
+Save login via cookies so I dont have to login next time.: Tanimlamayi Cookie'ye kayit et, birdahakinde otamatik olarak girisi gecmek icin.
 Login: Giris
 cookies-note: <b>Not:</b> Takvimi kullanmak icin, Browser'inizde Cookie'leri kabul etmeniz gerekiyor.
 
@@ -262,7 +262,7 @@ Save Preferences: Ayarlari kayit et
 ########################################
 # Page: report.php
 #
-confidential event: özel Termin
+This event is confidential.: özel Termin
 Rejected: Islem onaylanmadi, eklenmeyecek
 
 ########################################
@@ -274,7 +274,7 @@ Keywords: Kelimeler
 ########################################
 # Page: search_handler.php
 #
-must enter search keywords: En az bir Kelime girmeniz gerekiyor
+You must enter one or more search keywords.: En az bir Kelime girmeniz gerekiyor
 Search Results: Arama sonucu
 match found: Bulunan
 matches found: Bulunan
@@ -296,7 +296,7 @@ Add New User: Yeni Kullanici ekle
 #
 Approve/Confirm entry: Islem onaylansin?
 Reject entry: Isleme ret?
-will delete entry for all: Bu Islem tüt Kullanicilar icin siliniyor.
+This will delete this entry for all users.: Bu Islem tüt Kullanicilar icin siliniyor.
 Edit entry: Islem degistir
 
 ########################################
@@ -400,17 +400,17 @@ recipients_failed: SMTP Hatasý: alýcýlara ulaþmadý:
 ########################################
 # Page: includes/js/admin.php
 #
-Invalid doc BG color: Renk Sayfa-arkasi icin gecerli degil
-Invalid doc title color: Renk Baslik icin gecerli degil
-Invalid table cell BG color: Renk Tabela-arkasi icin gecerli degil
-Invalid table cell today BG: Renk Tabela-arkasi 'Bugün' icin gecerli degil
-Color format should be RGB: Renkler sadece '#RRGGBB' seklinde verilebilir.
+Invalid color for document background.: Renk Sayfa-arkasi icin gecerli degil
+Invalid color for document title.: Renk Baslik icin gecerli degil
+Invalid color for table cell background.: Renk Tabela-arkasi icin gecerli degil
+Invalid color for table cell background for today.: Renk Tabela-arkasi 'Bugün' icin gecerli degil
+Color format should be RRGGBB.: Renkler sadece '#RRGGBB' seklinde verilebilir.
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-must enter Brief Description: Özet Anlami vermediniz
-must enter valid time: Gecerli saat vermediniz
+You have not entered a Brief Description: Özet Anlami vermediniz
+You have not entered a valid time of day: Gecerli saat vermediniz
 
 ########################################
 # Page: includes/menu/index.php

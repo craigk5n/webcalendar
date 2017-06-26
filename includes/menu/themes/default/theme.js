@@ -1,9 +1,9 @@
-// $Id$
 
 // directory of where all the images are
 var cmThemeBase = 'includes/menu/themes/default/';
 
-var cmTheme = {
+var cmTheme =
+{
   // main menu display attributes
   //
   // Note. When the menu bar is horizontal,

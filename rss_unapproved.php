@@ -1,6 +1,6 @@
-<?php /* $Id$ */
+<?php // $Id: rss_unapproved.php,v 1.8 2010/10/05 17:16:59 cknudsen Exp $
 /**
- * Page Description:
+ * Description:
  *  Generates RSS 2.0 output of unapproved events for a user.
  *
  *  Like icalclient.php, this file does not use the standard web-based
@@ -32,25 +32,25 @@
  *  </IfModule>
  */
 
-foreach( array(
-    'access',
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'site_extras',
-    'translate',
-    'validate',
-    'xcal',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+include 'includes/access.php';
+
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
+
+include_once 'includes/validate.php';
+include 'includes/site_extras.php';
+
+include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -170,36 +170,38 @@ function list_unapproved ( $user ) {
     ORDER BY weu.cal_login, we.cal_date';
   $rows = dbi_get_cached_rows ( $sql, array ( $user ) );
   if ( $rows ) {
-    $allDayStr    = translate ( 'All day event' );
-    $appConStr    = translate ( 'Approve/Confirm' );
-    $appSelStr    = translate ( 'Approve Selected' );
-    $checkAllStr  = translate ( 'Check All' );
-    $emailStr     = translate ( 'Emails Will Not Be Sent' );
+    $allDayStr = translate ( 'All day event' );
+    $appConStr = translate ( 'Approve/Confirm' );
+    $appSelStr = translate ( 'Approve Selected' );
+    $checkAllStr = translate ( 'Check All' );
+    $deleteStr = translate ( 'Delete' );
+    $emailStr = translate ( 'Emails Will Not Be Sent' );
     $rejectSelStr = translate ( 'Reject Selected' );
-    $rejectStr    = translate ( 'Reject' );
-    $uncheckAllStr= translate ( 'Uncheck All' );
-    $viewStr      = translate ( 'View this entry' );
-    foreach ( $rows as $row ) {
-      $id         = $row[0];
-      $name       = $row[1];
-      $description= $row[2];
-      $cal_user   = $row[3];
-      $pri        = $row[4];
-      $date       = $row[5];
-      $time       = sprintf ( "%06d", $row[6] );
-      $duration   = $row[7];
-      $status     = $row[8];
-      $type       = $row[9];
-      $view_link  = 'view_entry';
-      $entryID    = 'entry' . $type . $id;
-      $unixtime   = date_to_epoch ( $date . $time );
+    $rejectStr = translate ( 'Reject' );
+    $uncheckAllStr = translate ( 'Uncheck All' );
+    $viewStr = translate ( 'View this entry' );
+    for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
+      $row = $rows[$i];
+      $id = $row[0];
+      $name = $row[1];
+      $description = $row[2];
+      $cal_user = $row[3];
+      $pri = $row[4];
+      $date = $row[5];
+      $time = sprintf ( "%06d", $row[6] );
+      $duration = $row[7];
+      $status = $row[8];
+      $type = $row[9];
+      $view_link = 'view_entry';
+      $entryID = 'entry' . $type . $id;
+      $unixtime = date_to_epoch ( $date . $time );
 
       $timestr = '';
       if ( $time > 0 || ( $time == 0 && $duration != 1440 ) ) {
-        $eventstart= date_to_epoch ( $date . $time );
+        $eventstart = date_to_epoch ( $date . $time );
         $eventstop = $eventstart + $duration;
         $eventdate = date_to_str ( date ( 'Ymd', $eventstart ) );
-        $timestr   = display_time ( '', 0, $eventstart )
+        $timestr = display_time ( '', 0, $eventstart )
          . ( $duration > 0 ? ' - ' . display_time ( '', 0, $eventstop ) : '' );
       } else {
         // Don't shift date if All Day or Untimed.

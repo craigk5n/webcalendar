@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: help_index.php,v 1.29 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 print_header ( '', '', '', true );
@@ -7,15 +7,19 @@ echo '
     <ul>';
 $page = 0;
 //display About WebCalendar link only on index page
+$aboutStr = translate ( 'About WebCalendar' );
 echo '
-      <li><a href="" onclick="javascript:openAbout()">'
- . translate( 'About WebCal' ) . '</a></li>';
-foreach ( $help_list as $k => $v ) {
+      <li><a title="' . $aboutStr . '" href="" onclick="javascript:openAbout()">'
+      . $aboutStr . '</a></li>';
+foreach ( $help_list as $key => $val ) {
   $page++;
+  $transStr = translate ( $key );
   echo '
-      <li><a href="' . $v . '?thispage=' . $page . '">' . $k . '</a></li>';
+      <li><a title="' . $transStr . '" href="' . $val . '?thispage=' . $page
+   . '">' . $transStr . '</a></li>';
 }
 echo '
-    </ul>' . print_trailer( false, true, true );
+    </ul>
+    ' . print_trailer ( false, true, true );
 
 ?>

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: security_audit.php,v 1.13 2010/01/24 10:07:07 bbannon Exp $
 /**
  * Description:
  *  This page will take look for possible security issues with
@@ -26,21 +26,21 @@ if ( $phpinfo == '1' ) {
   exit;
 }
 clearstatcache();
-ob_start();
 print_header();
+ob_start();
 echo '
     <h2>' . translate( 'Security Audit' ) . '</h2>
     <ul id="securityAuditNotes">
       <li>' . translate( 'list potential security issues') . '</li>
-      <li>' . translate( 'WebCal security questions' )
+      <li>' . translate( 'For questions about WebCalendar security see the forums' )
   . '<a href="https://sourceforge.net/forum/?group_id=3870" target="_blank">'
   . '<img src="docs/newwin.gif" alt="SourceForge.net" border="0"></a></li>
       <li><a href="#" onclick="window.open( \'security_audit.php?phpinfo=1\', '
   . '\'phpinfo\', \'dependent,menubar,scrollbars,height=500,width=600,'
-  . 'innerHeight=520,outerWidth=620\' );">'
+  . 'innerHeight=520,outerWidth=620\' );" />'
   . translate( 'View your current PHP settings' ) . '</a></li>
     </ul>
-    <table id="securityAudit" cellpadding="4">
+    <table id="securityAudit" border="0" cellpadding="4">
       <tr>
         <th>' . translate( 'Security Issue' ) . '</th>
         <th>' . translate( 'Status' ) . '</th>
@@ -50,7 +50,7 @@ echo '
 // Make sure they aren't still using the default admin username/password.
 print_issue( translate( 'Default admin user password' ),
   ( user_valid_login( 'admin', 'admin' ) == false ),
-  translate( 'change default admin password' ) );
+  translate( 'You should change the password of the default admin user.' ) );
 
 // Is the main directory still writable?
 // Just see if we get an error trying to append to it.
@@ -93,7 +93,7 @@ if ( $SEND_EMAIL != 'Y' ) {
   // Reminders are disabled!
   print_issue( str_replace( 'XXX', 'tools/send_reminders.php',
       translate( 'File exists XXX' ) ), $isOk,
-    translate( 'email disabled remove this file' ) );
+    translate( 'Because you have email disabled, you should remove this file.' ) );
 } else {
   // Is tools/send_reminders.php in the 'standard' location?
   print_issue( str_replace( 'XXX', 'tools/send_reminders.php',
@@ -105,18 +105,20 @@ if ( $SEND_EMAIL != 'Y' ) {
 $sysSettingsXXX = translate( 'System Settings XXX' );
 
 // Is UAC enabled?
-print_issue( str_replace( 'XXX', translate( 'UAC' ), $sysSettingsXXX ),
+print_issue(
+  str_replace( 'XXX', translate( 'User Access Control' ), $sysSettingsXXX ),
   access_is_enabled(), translate( 'consider enabling UAC' ) );
 
 // If Public Access enabled, make sure approvals are on
 if ( $PUBLIC_ACCESS == 'Y' ) {
   print_issue( str_replace( 'XXX',
-      translate( 'must approve public events' ), $sysSettingsXXX ),
+      translate( 'Public access new events require approval' ), $sysSettingsXXX ),
     ( $PUBLIC_ACCESS_CAN_ADD != 'Y' || $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y' ),
-    translate( 'recommend approve new publics' ) );
+    translate( 'recommend approving new public events' ) );
 
   print_issue( str_replace( 'XXX',
-      translate( 'require public CAPTCHA' ), $sysSettingsXXX ),
+      translate( 'Require CAPTCHA validation for public access new events' ),
+      $sysSettingsXXX ),
     ( $ENABLE_CAPTCHA == 'Y' ), translate( 'recommend using CAPTCHA' ) );
 }
 
@@ -131,7 +133,7 @@ if ( ! empty( $settings['db_cachedir'] ) && $wcDir != '.' ) {
     $isOk = false;
   }
 }
-print_issue( translate( 'DB cache dir location' ), $isOk,
+print_issue( translate( 'Database cache directory location' ), $isOk,
   translate( 'db cache should be inaccessable' ) );
 
 $phpSettingsXXX  = translate( 'PHP Settings XXX' );
@@ -185,7 +187,7 @@ function print_issue( $description, $isOk, $help ) {
   echo '
       <tr' . ( $count++ % 2 > 0 ? ' class="odd"' : '' ) . '>
         <td>' . $description . '</td>
-        <td><img src="images/' . $img . ' width="16" height="16"></td>
+        <td><img src="images/' . $img . ' width="16" height="16" /></td>
         <td>' . $help . '</td>
       </tr>';
 }

@@ -1,7 +1,7 @@
-<?php // $Id$
+<?php // $Id: edit_user.php,v 1.14 2009/11/22 16:47:46 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-$errStr = translate ( 'Error_', true );
+$errStr = translate ( 'Error', true ) . ' ';
 
 ?>
 var
@@ -13,7 +13,7 @@ function valid_form ( form ) {
 
   if ( ! name ) {
     alert ( "<?php echo $errStr
- . translate ( 'no blank username', true )?>" );
+ . translate ( 'Username cannot be blank.', true )?>" );
     return false;
   }
   check_name();
@@ -29,12 +29,12 @@ function valid_form2 ( form ) {
 
   if ( ! pass1 || ! pass2 ) {
     alert ( "<?php echo $errStr
- . translate ( 'must enter a password', true )?>" );
+ . translate ( 'You have not entered a password.', true )?>" );
     return false;
   }
   if ( pass1 != pass2 ) {
     alert ( "<?php echo $errStr
- . translate ( 'passwords not identical', true )?>" );
+ . translate ( 'The passwords were not identical.', true )?>" );
     return false;
   }
 

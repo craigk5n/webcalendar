@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: activity_log.php,v 1.55 2009/11/22 16:47:44 bbannon Exp $
 /**
  * Description:
  *  Display either the "Activity Log" (for events/tasks) or the
@@ -22,21 +22,25 @@ if ( ! $is_admin || ( access_is_enabled()
   die_miserable_death ( print_not_auth() );
 
 $eventsStr = translate ( 'Events' );
+$nextStr = translate ( 'Next' );
+$prevStr = translate ( 'Previous' );
 
 $PAGE_SIZE = 25; // Number of entries to show at once.
 $startid = getValue ( 'startid', '-?[0-9]+', true );
 $sys = ( $is_admin && getGetValue ( 'system' ) != '' );
 
-ob_start();
 print_header();
+
+ob_start();
 
 echo generate_activity_log( '', $sys, $startid ) . '
     <div class="navigation">'
 // Go BACK in time.
- . ( empty( $nextpage ) ? '' : '
-      <a class="prev" href="activity_log.php?startid=' . $nextpage
-    . ( $sys ? '&amp;system=1">' : '">' ) . $prevStr . '&nbsp;' . $PAGE_SIZE
-    . '&nbsp;' . $eventsStr . '</a>' );
+  . ( ! empty ( $nextpage ) ? '
+      <a title="' . $prevStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
+    . '" class="prev" href="activity_log.php?startid=' . $nextpage
+    . ( $sys ? '&amp;system=1' : '' ) . '">' . $prevStr . '&nbsp;' . $PAGE_SIZE
+    . '&nbsp;' . $eventsStr . '</a>' : '' );
 
 if ( ! empty ( $startid ) ) {
   $previd = $startid + $PAGE_SIZE;
@@ -45,18 +49,19 @@ if ( ! empty ( $startid ) ) {
     if ( $row = dbi_fetch_row ( $res ) )
       // Go FORWARD in time.
       echo '
-      <a class="next" href="activity_log.php' . ( $row[0] <= $previd
+      <a title="' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
+        . '" class="next" href="activity_log.php' . ( $row[0] <= $previd
           ? ( $sys ? '?system=1' : '' )
-          : '?startid=' . $previd . ( $sys ? '&amp;system=1">' : '">' ) )
-        . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br>';
+          : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) . '">'
+        . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br />';
 
     dbi_free_result ( $res );
   }
 }
 
+ob_end_flush();
+
 echo '
     </div>' . print_trailer();
-
-ob_end_flush();
 
 ?>

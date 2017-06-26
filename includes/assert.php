@@ -9,7 +9,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: assert.php,v 1.13 2009/11/22 16:47:45 bbannon Exp $
  * @package WebCalendar
  */
 
@@ -31,13 +31,13 @@ if ( ! empty ( $run_mode ) &&  $run_mode == 'dev' )
 function assert_get_cvs_file_version ( $file ) {
   $version = 'v?.?';
   $path = array ( '', 'includes/', '../' );
-  foreach ( $path as $i ) {
-    $newfile = $i . $file;
+  for ( $i = 0, $cnt = count ( $path ); $i < $cnt; $i++ ) {
+    $newfile = $path[$i] . $file;
     if ( file_exists ( $newfile ) ) {
       $fd = @fopen ( $newfile, 'rb', false );
       if ( $fd ) {
         while ( ! feof ( $fd ) ) {
-          $data = fgets ( $fd );
+          $data = fgets ( $fd, 1024 );
           if ( preg_match ( "/Id: (\S+),v (\d\S+)/", $data, $match ) ) {
             $version = 'v' . $match[2];
             break;
@@ -69,6 +69,7 @@ function assert_backtrace() {
     return '[stacktrack requires PHP 4.3/5.0. Not available in PHP '
      . phpversion() . ']';
   $bt = debug_backtrace();
+  // print_r ( $bt );
   $file = array();
   for ( $i = 2, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
     // skip the first two, since it's always this func and assert_handler
@@ -78,7 +79,7 @@ function assert_backtrace() {
      . ' [' . assert_get_cvs_file_version ( $afile['file'] ) . ']';
     if ( ! empty ( $afile['function'] ) ) {
       $line .= ' ' . $afile['function'] . ' ( ';
-      for ( $j = 0, $cnt = count ( $afile['args'] ); $j < $cnt; $j++ ) {
+      for ( $j = 0, $cnt_args = count ( $afile['args'] ); $j < $cnt_args; $j++ ) {
         if ( $j )
           $line .= ', ';
         $v = $afile['args'][$j];
@@ -117,11 +118,10 @@ function assert_backtrace() {
  */
 function assert_handler ( $script, $line, $msg='' ) {
   if ( empty ( $msg ) )
-    $msg = 'Assertion failed<br>' . "\n";
+    $msg = 'Assertion failed<br />' . "\n";
   $trace = ( function_exists ( 'debug_backtrace' )
     ? assert_backtrace() : basename( $script ) . ': ' . $line . ' ' . $msg );
-  $msg .= ( function_exists( 'debug_backtrace' )
-    ? '<b>Stack Trace:</b><br><br>' : '' )
+  $msg .= ( function_exists ( 'debug_backtrace' ) ? '<b>Stack Trace:</b><br /><br />' : '' )
     . '<blockquote><tt>' . nl2br ( $trace ) . '</tt></blockquote>';
   if ( function_exists ( 'die_miserable_death' ) )
     die_miserable_death ( $msg );

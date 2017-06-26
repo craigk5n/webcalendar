@@ -1,6 +1,6 @@
-<?php /* $Id$ */
+<?php // $Id: upcoming.php,v 1.97.2.5 2013/01/24 21:15:09 cknudsen Exp $
 /**
- * Page Description:
+ * Description:
  * Show a list of upcoming events (and possibly tasks).
  *
  * This script is intended to be used outside of normal WebCalendar
@@ -26,7 +26,9 @@
  *
  * Input parameters:
  * You can override settings by changing the URL parameters:
- *   - days: number of days ahead to look for events
+ *   - days: number of days ahead to look for events (be sure to also
+ *     change "maxEvents" from its default of 10.
+ *   - maxEvents: max number of events to show (default is 10)
  *   - cat_id: specify a category id to filter on
  *   - user: login name of calendar to display (instead of public
  *     user), if allowed by System Settings. You must have the
@@ -224,7 +226,7 @@ function print_upcoming_event ( $e, $date ) {
     $categories = get_categories_by_id ( $e->getId(), $username );
     $category = implode ( ', ', $categories);
     if ( strlen( $category ) > 0 )
-      echo '<span class="categories">' . $category . "</span>\n";
+      echo '<span class="categories">' . htmlentities ( $category ) . "</span>\n";
     if ( strlen ( $e->getUrl() ) > 0 )
       echo '<span class="url">' . $e->getUrl() . "</span>\n";
     $rrule = export_recurrence_ical( $e->getId() );
@@ -532,8 +534,10 @@ a:hover {
 
 <?php
 if ( ! empty ( $showPopups ) && empty ( $error ) ) {
-  echo '<script src="includes/js/util.js"></script>
-    <script src="includes/js/popups.js"</script>';
+  echo '<script type="text/javascript" src="includes/js/util.js?'
+   . filemtime( 'includes/js/util.js' ) . '"></script>
+    <script type="text/javascript" src="includes/js/popups.js?'
+   . filemtime( 'includes/js/popups.js' ) . '"></script>';
 }
 ?>
 </head>
@@ -557,7 +561,9 @@ if ($showTitle) echo '<h3 class="cal_upcoming_title">'. translate ($upcoming_tit
 <?php
 echo "<dl>\n";
 
-echo "<!-- \nstartTime: startDate\nendTime: $endDate\nstartDate: " .
+echo "<!-- \nstartTime: $startDate (" . date('Ymd H:i:s', $startDate ) . ")\n" .
+  "endTime: $endDate (" . date('Ymd H:i:s', $endDate ) . ")\n" .
+  "startDate: " .
   "$date\nnumDays: $numDays\nuser: $username\nevents: " .
   count ( $events ) . "\nrepeated_events: " .
   count ( $repeated_events ) . " -->\n";
@@ -567,21 +573,24 @@ $numEvents = 0;
 $endDateYmd = date ( 'Ymd', $endDate );
 for ( $i = $startDate; date ( 'Ymd', $i ) <= $endDateYmd &&
   $numEvents < $maxEvents; $i += 86400 ) {
+  echo "<!-- i = $i; startDate = $startDate; date(Ymd)= " .
+    date ( 'Ymd', $i ) . "; endDateYmd = $endDateYmd; numEvents: $numEvents; maxEvents: $maxEvents -->\n";
   $d = date ( 'Ymd', $i );
   $entries = get_entries ( $d, $get_unapproved );
   $rentries = get_repeating_entries ( $username, $d, $get_unapproved );
   $ev = combine_and_sort_events ( $entries, $rentries );
   $tentries = get_tasks ( $d, $get_unapproved );
   $ev = combine_and_sort_events ( $ev, $tentries );
+  $ev_cnt = count ( $ev );
 
   echo "<!-- $d " . count ( $ev ) . " -->\n";
 
-  if ( count ( $ev ) > 0 ) {
+  if ( $ev_cnt > 0 ) {
     echo "<!-- XXX -->\n";
     //print "<dt>" . date_to_str( $d, translate( '__month__ __dd__' ),
     //  true, true ) . "</dt>\n<dd>";
     echo '<dt>' . date_to_str ( $d ) . "</dt>\n<dd>";
-    for ( $j = 0, $cnt = count ( $ev ); $j < $cnt && $numEvents < $maxEvents; $j++ ) {
+    for ( $j = 0; $j < $ev_cnt && $numEvents < $maxEvents; $j++ ) {
       print_upcoming_event ( $ev[$j], $d );
       $numEvents++;
     }

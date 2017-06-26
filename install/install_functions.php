@@ -1,7 +1,15 @@
-<?php /* $Id$ */
+<?php // $Id: install_functions.php,v 1.23 2009/11/22 16:47:47 bbannon Exp $
 /**
  * The file contains all the functions used in the installation script
  */
+/**
+ * Developer debug log (
+ */
+function do_debug ( $msg ) {
+  // log to /tmp/webcal-debug.log
+  // error_log ( date ( "Y-m-d H:i:s" ) . "> $msg\n",
+  // 3, "d:\php\logs\debug.txt" );
+}
 /**
  * Change string to uppercase
  */
@@ -83,20 +91,36 @@ function do_v11b_updates() {
   dbi_execute ( 'UPDATE webcal_entry_user SET cal_category = NULL' );
   // Mark existing exclusions as new exclusion type.
   dbi_execute ( 'UPDATE webcal_entry_repeats_not SET cal_exdate = 1' );
-  // Change cal_days format to cal_byday format.
+  // Change cal_days format to cal_cal_byday format.
   // Deprecate monthlyByDayR to simply monthlyByDay.
   dbi_execute ( 'UPDATE webcal_entry_repeats SET cal_type = \'monthlyByDay\'
     WHERE cal_type = \'monthlybByDayR\'' );
   $res = dbi_execute ( 'SELECT cal_id, cal_days FROM webcal_entry_repeats ' );
   if ( $res ) {
-    $tmp = array( 'SU','MO','TU','WE','TH','FR','SA' );
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $row[1] ) && $row[1] != 'yyyyyyy' && $row[1] != 'nnnnnnn' ) {
         $byday = array();
-        for( $i = 0; $i < 7; $i++ ) {
-          if ( substr( $row[1], $i, 1 ) == 'y' )
-            $byday[] = $tmp[$i];
-        }
+        if ( substr ( $row[1], 0, 1 ) == 'y' )
+          $byday[] = 'SU';
+
+        if ( substr ( $row[1], 1, 1 ) == 'y' )
+          $byday[] = 'MO';
+
+        if ( substr ( $row[1], 2, 1 ) == 'y' )
+          $byday[] = 'TU';
+
+        if ( substr ( $row[1], 3, 1 ) == 'y' )
+          $byday[] = 'WE';
+
+        if ( substr ( $row[1], 4, 1 ) == 'y' )
+          $byday[] = 'TH';
+
+        if ( substr ( $row[1], 5, 1 ) == 'y' )
+          $byday[] = 'FR';
+
+        if ( substr ( $row[1], 6, 1 ) == 'y' )
+          $byday[] = 'SA';
+
         $bydays = implode ( ',', $byday );
         dbi_execute ( 'UPDATE webcal_entry_repeats SET cal_byday = ?
           WHERE cal_id = ?', array ( $bydays, $row[0] ) );
@@ -109,12 +133,12 @@ function do_v11b_updates() {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $row[0] ) ) {
+        $dY = substr ( $row[0], 0, 4 );
+        $dm = substr ( $row[0], 4, 2 );
+        $dd = substr ( $row[0], 6, 2 );
+        $new_date = date ( 'Ymd', gmmktime ( 0, 0, 0, $dm, $dd, $dY ) + 86400 );
         dbi_execute ( 'UPDATE webcal_entry_repeats SET cal_end = ?
-          WHERE cal_id = ?', array( date( 'Ymd',
-            gmmktime( 0, 0, 0,
-              substr( $row[0], 4, 2 ),
-              substr( $row[0], 6, 2 ),
-              substr( $row[0], 0, 4 ) ) + 86400 ), $row[1] ) );
+          WHERE cal_id = ?', array ( $new_date, $row[1] ) );
       }
     }
     dbi_free_result ( $res );
@@ -157,7 +181,7 @@ function do_v11e_updates() {
         $reminder_log_exists = true;
         $row2 = dbi_fetch_row ( $res2 );
         $times_sent = 1;
-        $last_sent = ( empty( $row2[0] ) ? 0 : $row2[0] );
+        $last_sent = ( ! empty ( $row2[0] ) ? $row2[0] : 0 );
         dbi_free_result ( $res2 );
       }
       dbi_execute ( 'INSERT INTO webcal_reminders ( cal_id, cal_date,
@@ -248,7 +272,7 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
 
         $new_cal_date = gmdate ( 'Ymd', $new_datetime );
         $new_cal_time = gmdate ( 'His', $new_datetime );
-        $cutoff = ( empty( $cutoffdate ) ? '' : ' AND cal_date <= ?' );
+        $cutoff = ( ! empty ( $cutoffdate ) ? ' AND cal_date <= ?' : '' );
         // Now update row with new data.
         if ( ! dbi_execute ( 'UPDATE webcal_entry SET cal_date = ?, cal_time = ?
           WHERE cal_id = ?' . $cutoff,
@@ -292,11 +316,13 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
   // Delete any existing entry.
   if ( ! dbi_execute ( 'DELETE FROM webcal_config
     WHERE cal_setting = \'WEBCAL_TZ_CONVERSION\'' ) )
-    return str_replace( 'XXX', dbi_error(), $dbErrXXXStr );
+    return str_replace( 'XXX', dbi_error(),
+      translate ( 'Database error XXX.' ) );
 
   if ( ! dbi_execute ( 'INSERT INTO webcal_config ( cal_setting, cal_value )
     VALUES ( \'WEBCAL_TZ_CONVERSION\', \'Y\' )' ) )
-    return str_replace( 'XXX', dbi_error(), $dbErrXXXStr );
+    return str_replace( 'XXX', dbi_error(),
+      translate ( 'Database error XXX.' ) );
 
   return $error;
 }
@@ -309,7 +335,7 @@ function get_installed_version ( $postinstall = false ) {
   // Set this as the default value.
   $_SESSION['application_name'] = 'Title';
   $_SESSION['blank_database'] = '';
-  // We will append the db_type to get the proper filename.
+  // We will append the db_type to come up te proper filename.
   $_SESSION['install_file'] = 'tables';
   $_SESSION['old_program_version'] = ( $postinstall
     ? $PROGRAM_VERSION : 'new_install' );
@@ -318,7 +344,7 @@ function get_installed_version ( $postinstall = false ) {
   if ( ! $show_all_errors )
     show_errors ( false );
   // This data is read from file upgrade_matrix.php.
-  for ( $i = 0; $i < $database_upgrade_matrix; $i++ ) {
+  for ( $i = 0, $dbCntStr = count ( $database_upgrade_matrix ); $i < $dbCntStr; $i++ ) {
     $sql = $database_upgrade_matrix[$i][0];
 
     if ( $sql != '' )
@@ -334,7 +360,7 @@ function get_installed_version ( $postinstall = false ) {
   }
   $response_msg = ( $_SESSION['old_program_version'] == 'pre-v0.9.07'
     ? translate ( 'Perl script required' )
-    : translate ( 'version needs tables updated' ) );
+    : translate ( 'previous version requires updating several tables' ) );
   // v1.1 and after will have an entry in webcal_config to make this easier
   // $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
   //   WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'', array(), false, false );
@@ -428,59 +454,87 @@ function get_installed_version ( $postinstall = false ) {
   show_errors ( true );
 } // end get_installed_version
 /**
+ * parse_sql (needs description)
+ */
+function parse_sql ( $sql ) {
+  $sql = trim ( $sql );
+  $sql = trim ( $sql, "\r\n " );
+  $ret = array();
+
+  $buffer_str = '';
+  for( $i = 0; $i < strlen ( $sql ); $i++ ) {
+    $buffer_str .= substr ( $sql, $i, 1 );
+    if ( substr ( $sql, $i, 1 ) == ';' ) {
+      $ret[] = $buffer_str;
+      $buffer_str = '';
+    }
+  }
+  return ( $ret );
+}
+/**
  * db_populate (needs description)
  */
 function db_populate ( $install_filename, $display_sql ) {
   global $show_all_errors, $str_parsed_sql;
+
+  if ( $install_filename == '' )
+    return;
+
+  $current_pointer = false;
+  $full_sql = '';
 
   if ( function_exists( 'set_magic_quotes_runtime' ) ) {
     $magic = @get_magic_quotes_runtime();
     @set_magic_quotes_runtime( 0 );
   }
 
-  $current_pointer = ( substr( $_SESSION['install_file'], 0, 6 ) == 'tables' );
-  $full_sql = '';
+  $fd = @fopen ( 'sql/' . $install_filename, 'r', true );
 
-  $fd = @fopen( 'sql/' . $install_filename, 'r', true );
-  while( ! feof( $fd ) ) {
-    $data = trim( fgets( $fd ), "\r\n " );
-    // Discard everything up to the required point in the upgrade file.
-    if ( ! current_pointer ) {
-      $current_pointer = ( strpos( strtoupper( $data ),
-        strtoupper( $_SESSION['install_file'] ) ) );
-      continue;
-    }
-    // Skip blank lines and comments.
-    if ( empty( $data )
-        || substr( $data, 0, 2 ) == '/*'
-        || substr( $data, 0, 1 ) == '*'
-        || substr( $data, 0, 1 ) == '#' ) {
-      continue;
-    }
+  // Discard everything up to the required point in the upgrade file.
+  while ( ! feof ( $fd ) && empty ( $current_pointer ) ) {
+    $data = trim ( fgets ( $fd, 4096 ), "\r\n " );
+    if ( strpos ( strtoupper ( $data ),
+          strtoupper ( $_SESSION['install_file'] ) ) ||
+        substr ( $_SESSION['install_file'], 0, 6 ) == 'tables' )
+      $current_pointer = true;
+  }
+  // We already have a $data item from above.
+  if ( substr ( $data, 0, 2 ) == "/*" &&
+      substr ( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
+    // Do nothing...We skip over comments in upgrade files.
+  } else
     $full_sql .= $data;
+
+  // We need to strip out the comments from upgrade files.
+  while ( ! feof ( $fd ) ) {
+    $data = trim ( fgets ( $fd, 4096 ), "\r\n " );
+    if ( substr ( $data, 0, 2 ) == '/*' &&
+        substr ( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
+      // Do nothing...We skip over comments in upgrade files.
+    } else
+      $full_sql .= $data;
   }
 
   if ( isset( $magic ) )
     @set_magic_quotes_runtime( $magic );
 
   fclose ( $fd );
-  $parsed_sql = array_map( 'trim', explode( ';', $full_sql ) );
+  $parsed_sql = parse_sql ( $full_sql );
 
   // String version of parsed_sql that is used if displaying SQL only.
   $str_parsed_sql = '';
-  foreach ( $parsed_sql as $i ) {
-    $i .= ';';
+  for ( $i = 0, $sqlCntStr = count ( $parsed_sql ); $i < $sqlCntStr; $i++ ) {
     if ( empty ( $display_sql ) ) {
-      if ( $show_all_errors )
-        echo $i . '<br>';
+      if ( $show_all_errors == true )
+        echo $parsed_sql[$i] . '<br />';
 
-      dbi_execute ( $i, array(), false, $show_all_errors );
+      dbi_execute( $parsed_sql[$i], array(), false, $show_all_errors );
     } else
-      $str_parsed_sql .= $i . "\n\n";
+      $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
   }
 
   // Enable warnings.
   show_errors ( true );
-}
+} // end db_populate
 
 ?>

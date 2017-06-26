@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: events_ajax.php,v 1.18.2.1 2012/02/28 15:43:10 cknudsen Exp $
 /**
  * Description
  *   Handler for AJAX requests for viewing events in combo.php,
@@ -15,41 +15,33 @@
  *
  * TODO: hide private events of other users.
  */
+include_once 'includes/translate.php';
+require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/Event.class';
+require_once 'includes/classes/RptEvent.class';
 
-foreach( array(
-    'access',
-    'ajax',
-    'config',
-    'dbi4php',
-    'formvars',
-    'functions',
-    'translate',
-    'validate',
-  ) as $i ) {
-  include_once 'includes/' . $i . '.php';
-}
-foreach( array(
-    'WebCalendar',
-    'Event',
-    'RptEvent',
-  ) as $i ) {
-  require_once 'includes/classes/' . $i . '.class';
-}
 $WebCalendar = new WebCalendar( __FILE__ );
+
+include 'includes/config.php';
+include 'includes/dbi4php.php';
+include 'includes/formvars.php';
+include 'includes/functions.php';
+require_valid_referring_url ();
+
 $WebCalendar->initializeFirstPhase();
 
 include 'includes/' . $user_inc;
+include 'includes/access.php';
+include 'includes/validate.php';
 include 'includes/JSON.php';
+include 'includes/ajax.php';
 
 // Load Doc classes for attachments and comments
-foreach( array(
-    'Doc',
-    'DocList',
-    'AttachmentList',
-    'CommentList',
-  ) as $i ) {
-  include_once 'includes/classes/' . $i . '.class';
-}
+include 'includes/classes/Doc.class';
+include 'includes/classes/DocList.class';
+include 'includes/classes/AttachmentList.class';
+include 'includes/classes/CommentList.class';
+
 $WebCalendar->initializeSecondPhase();
 
 load_global_settings();
@@ -124,7 +116,7 @@ if ( $action == 'get' ) {
   $wkstart = get_weekday_before ( $startyear, $startmonth );
   $startTime = $wkstart;
   if ( $debug )
-    echo "startdate: $startdate <br>enddate: $enddate<br>startTime: $startTime<br>";
+    echo "startdate: $startdate <br />enddate: $enddate<br />startTime: $startTime<br />";
   $repeated_events = read_repeated_events ( $user, $startTime, $endTime );
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $user, $startTime, $endTime );
@@ -133,16 +125,17 @@ if ( $action == 'get' ) {
     $tasks = read_tasks ( $user, $enddate );
   // Gather the category IDs for each
   $ids = array();
-  foreach ( $events as $i ) {
-    $id = $i->getID();
+  //echo "<pre>"; print_r ( $events ); echo "</pre>";
+  for ( $i = 0; $i < count ( $events ); $i++ ) {
+    $id = $events[$i]->getID();
     $ids[$id] = $id;
   }
-  foreach ( $repeated_events as $i ) {
-    $id = $i->getID();
+  for ( $i = 0; $i < count ( $repeated_events ); $i++ ) {
+    $id = $repeated_events[$i]->getID();
     $ids[$id] = $id;
   }
-  foreach ( $tasks as $i ) {
-    $id = $i->getID();
+  for ( $i = 0; $i < count ( $tasks ); $i++ ) {
+    $id = $tasks[$i]->getID();
     $ids[$id] = $id;
   }
   // Load all category IDs for the specified event IDs
@@ -216,7 +209,7 @@ if ( $action == 'get' ) {
   $comments = array();
   $attachments = array();
   if ( ! $res ) {
-    $error = str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) );
+    $error = translate("Database error") . ': ' . dbi_error();
   } else {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $parts[] = array ( 'login' => $row[0],
@@ -288,28 +281,30 @@ if ( $action == 'get' ) {
   dbi_free_result ( $res );
   $mod_date = gmdate ( 'Ymd' );
   $mod_time = gmdate ( 'His' );
-  $sql = 'INSERT INTO webcal_entry ( cal_id, cal_create_by, cal_date,
-    cal_time, cal_mod_date, cal_mod_time,
-    cal_duration, cal_priority, cal_access, cal_type, cal_name,
-    cal_description ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
+  $sql = 'INSERT INTO webcal_entry ( cal_id, cal_create_by, cal_date, ' .
+    'cal_time, cal_mod_date, cal_mod_time, ' .
+    'cal_duration, cal_priority, cal_access, cal_type, cal_name, ' .
+    'cal_description ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
   $values = array ( $id, $login, $date, -1, $mod_date, $mod_time,
     0, 5, 'P', 'E', $name, $description );
   if ( ! dbi_execute ( $sql, $values ) ) {
-    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
+    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     exit;
   }
   if ( $cat_id > 0 ) {
-    $sql = 'INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner )
-        VALUES ( ?, ?, ? )';
+    $sql =
+      'INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) ' .
+      'VALUES ( ?, ?, ? )';
     $values = array ( $id, $cat_id, $user );
     if ( ! dbi_execute ( $sql, $values ) ) {
-      ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
+      ajax_send_error ( translate('Database error') . ": " . dbi_error() );
       exit;
     }
   }
   // Add to each participant
   $userList = explode ( ',', $participants );
-  foreach ( $userList as $user ) {
+  for ( $i = 0; $i < count ( $userList ); $i++ ) {
+    $user = $userList[$i];
     $status = ( $user != $login &&
       boss_must_approve_event ( $login, $user ) &&
       $REQUIRE_APPROVALS == 'Y' &&
@@ -317,7 +312,7 @@ if ( $action == 'get' ) {
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
         cal_status ) VALUES ( ?, ?, ? )',
           array ( $id, $user, $status ) ) ) {
-      ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
+      ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     }
     activity_log ( $id, $login, $user, LOG_CREATE, '' );
     // TODO: send email notification!
@@ -354,7 +349,7 @@ if ( $action == 'get' ) {
   $values = array ( $id, $login, $startdate, -1, $duedate, -1,
     $mod_date, $mod_time, 0, 5, 'P', 'T', $name, $description );
   if ( ! dbi_execute ( $sql, $values ) ) {
-    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
+    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     exit;
   }
   if ( $cat_id > 0 ) {
@@ -363,14 +358,14 @@ if ( $action == 'get' ) {
       'VALUES ( ?, ?, ? )';
     $values = array ( $id, $cat_id, $user );
     if ( ! dbi_execute ( $sql, $values ) ) {
-      ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
+      ajax_send_error ( translate('Database error') . ": " . dbi_error() );
       exit;
     }
   }
   if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status ) VALUES ( ?, ?, ? )',
         array ( $id, $user, 'A' ) ) ) {
-    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
+    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
   }
   ajax_send_success();
   activity_log ( $id, $login, $user, LOG_CREATE_T, '' );
@@ -383,25 +378,35 @@ if ( $action == 'get' ) {
 // about converting times between timezones.
 function setLocalTimes ( $eventList )
 {
-  foreach ( $eventList as $event ) {
-    $d = date_to_str ( $event->getDate(), '__yyyy__,__n__,__dd__', false );
+  for ( $i = 0; $i < count ( $eventList ); $i++ ) {
+    $event = $eventList[$i];
+    $d = date_to_str ( $event->getDate(), '__yyyy__,__n__,__dd__',
+      false );
     $args = split ( ',', $d );
     $localDate = sprintf ( "%04d%02d%02d", $args[0], $args[1], $args[2] );
     $event->setLocalDate ( $localDate );
     if ( $event->getTime() <= 0 ) {
       $event->setLocalTime ( $event->getTime() );
     } else {
-      $localTime = display_time ( $event->getDatetime(), 0, '', '24' );
-      $localTime = substr ( $localTime, 0, 2 ) . substr ( $localTime, 3, 5 );
+      $localTime = display_time ( $event->getDatetime() );
+//      $localTime = display_time ( $event->getDatetime(),
+//        0, '', '24' );
+//echo "\ngetDateTime(): " . $event->getDatetime() . "\n";
+//echo "localTime1: $localTime\n";
+//      $localTime = substr ( $localTime, 0, 2 ) .
+//        substr ( $localTime, 3, 5 );
+//echo "localTime2: $localTime\n";
       $event->setLocalTime ( $localTime );
     }
   }
 }
 
-function setCategories ( $eventList ) {
+function setCategories ( $eventList )
+{
   global $eventCats;
 
-  foreach ( $eventList as $event ) {
+  for ( $i = 0; $i < count ( $eventList ); $i++ ) {
+    $event = $eventList[$i];
     $id = $event->getID();
     if ( ! empty ( $eventCats[$id] ) ) {
       $event->setCategories ( $eventCats[$id] );
@@ -422,7 +427,7 @@ function load_category_ids ( $ids )
     '(cat_owner = \'' . $user . '\' OR cat_owner IS NULL) ' .
     'ORDER BY cat_order';
   if ( $debug )
-    echo "SQL: $sql <br>";
+    echo "SQL: $sql <br />";
   $res = dbi_execute ( $sql, array() );
   $eventCats = array();
   if ( $res ) {
@@ -437,7 +442,7 @@ function load_category_ids ( $ids )
     }
     dbi_free_result ( $res );
   } else {
-    ajax_send_error ( str_replace ( 'XXX', dbi_error(), translate ( 'DB error XXX' ) ) );
+    ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     exit;
   }
   if ( $debug ) {

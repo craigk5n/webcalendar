@@ -5,7 +5,7 @@
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: Event.class,v 1.27 2010/08/18 04:05:19 cknudsen Exp $
  * @package WebCalendar
  * @subpackage Events
  */

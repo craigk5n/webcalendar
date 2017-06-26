@@ -13,7 +13,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: config.php,v 1.92 2011/07/12 19:45:42 rjones6061 Exp $
  * @package WebCalendar
  */
 
@@ -32,9 +32,9 @@
  *           Additionally, we don't want to call too many external functions
  *           from here since we could end up calling the function that called
  *           this one. Infinite loops === "bad"!
- *           So, call translate(), for example, before you get here.
+ * NOTE: Don't call translate from here.
+ *       This function is often called before translation stuff is initialized!
  */
-
 function die_miserable_death( $error, $anchor='' ) {
   global $APPLICATION_NAME, $LANGUAGE, $login, $TROUBLE_URL;
 
@@ -52,7 +52,7 @@ function die_miserable_death( $error, $anchor='' ) {
   <head><title>{$appStr}: Fatal Error</title></head>
   <body>
     <h2>{$appStr} Error</h2>
-    <p>{$error}</p><hr>
+    <p>{$error}</p><hr />
     <p><a href="{$url}" target="_blank">Troubleshooting Help</a></p>
   </body>
 </html>
@@ -63,9 +63,9 @@ EOT;
 function db_error( $doExit = false, $sql = '' ) {
   global $settings;
 
-  $ret = str_replace( 'XXX', dbi_error(), $dbErrXXXStr )
+  $ret = str_replace( 'XXX', dbi_error(), translate( 'Database error XXX.' ) )
    . ( ! empty( $settings['mode'] ) && $settings['mode'] == 'dev'
-    && ! empty( $sql ) ? '<br>SQL:<br>' . $sql : '' );
+    && ! empty( $sql ) ? '<br />SQL:<br />' . $sql : '' );
 
   if( $doExit ) {
     echo $ret;
@@ -92,6 +92,11 @@ function do_config( $fileLoc ) {
   $PROGRAM_NAME, $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings,
   $single_user, $single_user_login, $TROUBLE_URL, $user_inc, $use_http_auth;
 
+  // When changing PROGRAM VERSION, also change it in install/default_config.php
+  $PROGRAM_VERSION = 'v1.3.0';
+  $PROGRAM_DATE = '28 Sep 2008';
+
+  $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
   $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
 
@@ -110,7 +115,7 @@ function do_config( $fileLoc ) {
   // If still empty.... use __FILE__.
   if( empty( $fd ) ) {
     $testName = get_full_include_path( 'settings.php' );
-    $fd = @fopen( $testName, 'rb', true );
+    $fd = @fopen( $fileLoc, 'rb', true );
 
     if( $fd )
       $fileLoc = $testName;
@@ -122,13 +127,14 @@ function do_config( $fileLoc ) {
       header( 'Location: install/index.php' );
       exit;
     } else
-      die_miserable_death( translate( 'settings.php not found' ) );
+      die_miserable_death( translate( 'Could not find settings.php file...' ) );
   }
 
-  // We read in the entire file, and split the lines manually.
+  // We don't use fgets() since it seems to have problems with Mac-formatted
+  // text files. Instead, we read in the entire file, and split the lines manually.
   $data = '';
   while( ! feof( $fd ) ) {
-    $data .= fgets( $fd );
+    $data .= fgets( $fd, 4096 );
   }
   fclose( $fd );
 
@@ -139,8 +145,8 @@ function do_config( $fileLoc ) {
   // Split the data into lines.
   $configLines = explode( "\n", $data );
 
-  foreach ( $configLines as $n ) {
-    $buffer = trim ( $n );
+  for( $n = 0, $cnt = count( $configLines ); $n < $cnt; $n++ ) {
+    $buffer = trim( $configLines[$n] );
 
     if( preg_match( '/^#|\/\*/', $buffer ) // comments
         || preg_match( '/^<\?/', $buffer ) // start PHP code
@@ -172,7 +178,7 @@ function do_config( $fileLoc ) {
       header( 'Location: install/index.php' );
       exit;
     } else
-      die_miserable_death( translate( 'Incomplete settings.php' ) );
+      die_miserable_death( translate( 'Incomplete settings.php file...' ) );
   }
 
   // Use 'db_cachedir' if found, otherwise look for 'cachedir'.
@@ -214,7 +220,7 @@ function do_config( $fileLoc ) {
 
   if( $single_user == 'Y' && empty( $single_user_login ) )
     die_miserable_death( str_replace( 'XXX', 'single_user_login',
-        translate( 'define XXX in settings' ) ) );
+        translate( 'You must define XXX in' ) ) );
 
   $use_http_auth = ( preg_match( '/(1|yes|true|on)/i',
       $settings['use_http_auth'] ) ? true : false );
@@ -246,7 +252,7 @@ function do_config( $fileLoc ) {
       $row = $rows[0];
 
       if( empty( $row ) || $row[0] != $PROGRAM_VERSION ) {
-        header( $locateStr . ( empty( $row ) ? 'UNKNOWN' : $row[0] ) );
+        header( $locateStr . '' . ( empty( $row ) ? 'UNKNOWN' : $row[0] ) );
         exit;
       }
     }

@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: week_details.php,v 1.78 2009/11/22 22:26:18 bbannon Exp $
 include_once 'includes/init.php';
 send_no_cache_header();
 
@@ -44,33 +44,36 @@ for ( $i = 0; $i < 7; $i++ ) {
    . date_to_str ( date ( 'Ymd', $days[$i] ), $DATE_FORMAT_MD, false );
 }
 
+$nextStr = translate ( 'Next' );
 $newEntryStr = translate ( 'New Entry' );
+$prevStr = translate ( 'Previous' );
+
+print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
 
 ob_start();
-print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
 
 echo '
     <div class="title">
       <a title="' . $prevStr . '" class="prev" href="week_details.php?' . $u_url
  . 'date=' . date ( 'Ymd', $prev ) . $caturl
- . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '"></a>
+ . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="week_details.php?' . $u_url . 'date='
  . date ( 'Ymd', $next ) . $caturl
- . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '"></a>
+ . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
       <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
  . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span>'
- . ( $DISPLAY_WEEKNUMBER == 'Y' ? '<br>
+ . ( $DISPLAY_WEEKNUMBER == 'Y' ? '<br />
       <span class="titleweek">(' . translate ( 'Week' ) . ' '
    . date ( 'W', $wkstart + 86400 ) . ')</span>' : '' ) . '
-      <span class="user">' . ( $single_user == 'N' ? '<br>
-      ' . $user_fullname : '' ) . ( $is_nonuser_admin ? '<br>'
-   . translate( '-Admin mode-' ) : '' ) . ( $is_assistant ? '<br>'
-   . translate ( '-Assistant mode-' ) : '' ) . '</span>'
- . ( $CATEGORIES_ENABLED == 'Y' ? '<br><br>'
+      <span class="user">' . ( $single_user == 'N' ? '<br />
+      ' . $user_fullname : '' ) . ( $is_nonuser_admin ? '<br />-- '
+   . translate ( 'Admin mode' ) . ' --' : '' ) . ( $is_assistant ? '<br />-- '
+   . translate ( 'Assistant mode' ) . ' --' : '' ) . '</span>'
+ . ( $CATEGORIES_ENABLED == 'Y' ? '<br /><br />'
    . print_category_menu( 'week', sprintf ( "%04d%02d%02d", $thisyear,
       $thismonth, $thisday ), $cat_id ) : '' ) . '
-    </div><br>
+    </div><br />
     <center>
       <table class="main" summary="">';
 
@@ -91,7 +94,7 @@ for ( $d = 0; $d < 7; $d++ ) {
             <a title="' . $newEntryStr . '" href="edit_entry.php?' . $u_url
      . 'date=' . date ( 'Ymd', $days[$d] )
      . '"><img src="images/new.gif" class="new" alt="' . $newEntryStr
-     . '"></a>' : '' ) . '
+     . '" /></a>' : '' ) . '
             <a title="' . $header[$d] . '" href="day.php?' . $u_url . 'date='
    . date ( 'Ymd', $days[$d] ) . $caturl . '">' . $header[$d] . '</a>
           </th>
@@ -107,9 +110,11 @@ for ( $d = 0; $d < 7; $d++ ) {
 echo '
       </table>
     </center>
-    ' . ( empty( $eventinfo ) ? '' : $eventinfo ) . '<br>'
- . $printerStr . print_trailer();
+    ' . ( empty ( $eventinfo ) ? '' : $eventinfo ) . '<br />';
+
 ob_end_flush();
+
+echo $printerStr . print_trailer();
 
 /**
  * Prints the HTML for one event in detailed view.
@@ -133,7 +138,7 @@ function print_detailed_entry ( $event, $date ) {
 
   if ( $getExtStr != '' ) {
     $id = $getExtStr;
-    $name .= ' ' . translate ( '(cont.)' );
+    $name .= ' (' . translate ( 'cont.' ) . ')';
   } else
     $id = $event->getID();
 
@@ -152,7 +157,7 @@ function print_detailed_entry ( $event, $date ) {
   if ( $class == 'layerentry' )
     echo '&amp;user=' . $loginStr;
 
-  echo '<img src="images/circle.gif" class="bullet" alt="view icon">';
+  echo '<img src="images/circle.gif" class="bullet" alt="view icon" />';
   if ( $login != $loginStr && strlen ( $loginStr ) ) {
     if ( $layers ) {
       foreach ( $layers as $layer ) {
@@ -195,7 +200,7 @@ function print_detailed_entry ( $event, $date ) {
   echo $PN . '</a>' . ( $evPri ? '
             </strong>' : '' )
   # Only display description if it is different than the event name.
-  . ( $PN != $PD ? ' - ' . $PD : '' ) . '<br>';
+  . ( $PN != $PD ? ' - ' . $PD : '' ) . '<br />';
 
   $eventinfo .= build_entry_popup ( 'eventinfo-' . $linkid, $loginStr,
     $descStr, $timestr, site_extras_for_popup ( $id ) );
@@ -219,10 +224,10 @@ function print_det_date_entries ( $date, $user, $ssi ) {
   // Get and sort all the repeating and non-repeating events for this date.
   $ev = combine_and_sort_events ( get_entries ( $date ),
     get_repeating_entries ( $user, $date ) );
-  foreach ( $ev as $i ) {
-    if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' )
-        || $i->getStatus() == 'A' )
-      print_detailed_entry ( $i, $date );
+  for ( $i = 0, $cnt = count ( $ev ); $i < $cnt; $i++ ) {
+    if ( ( ! empty ( $DISPLAY_UNAPPROVED ) && $DISPLAY_UNAPPROVED != 'N' ) ||
+      $ev[$i]->getStatus() == 'A' )
+      print_detailed_entry ( $ev[$i], $date );
   }
 }
 

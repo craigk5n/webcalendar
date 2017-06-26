@@ -1,11 +1,4 @@
-<?php
-/*
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
- * @package WebCalendar
- */
+<?php // $Id: select_user.php,v 1.36 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 print_header();
 echo '
@@ -26,7 +19,7 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
       : array_merge ( $userlist, $nonusers ) );
   }
 
-  if ( strpos ( ' ' . $STARTVIEW, 'view' ) )
+  if ( strstr ( $STARTVIEW, 'view' ) )
     $url = 'month.php';
   else {
     $url = $STARTVIEW;
@@ -40,22 +33,24 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
     <form action="' . $url . '" method="get" name="SelectUser">
       <select name="user" onchange="document.SelectUser.submit()">';
 
-  foreach ( $userlist as $i ) {
+  for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     // Don't list current user
-    if ( $login == $i['cal_login'] )
+    if ( $login == $userlist[$i]['cal_login'] )
       continue;
-    echo $option . $i['cal_login'] . '">' . $i['cal_fullname'] . '</option>';
+    echo '
+        <option value="' . $userlist[$i]['cal_login'] . '">'
+     . $userlist[$i]['cal_fullname'] . '</option>';
   }
 
   echo '
       </select>
-      <input type="submit" value="' . translate( 'Go' ) . '">
+      <input type="submit" value="' . translate ( 'Go' ) . '" />
     </form>';
 
   ob_end_flush();
 }
 
-echo '<br><br>
+echo '<br /><br />
     ' . print_trailer();
 
 ?>

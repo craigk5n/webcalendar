@@ -1,4 +1,4 @@
-<?php /* $Id$ */
+<?php // $Id: icons.php,v 1.15 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 $icon_path = 'icons/';
 
@@ -8,7 +8,7 @@ $can_edit = ( is_dir ( $icon_path ) &&
 if ( ! $can_edit )
   do_redirect ( 'category.php' );
 
-print_header ( array ( 'js/visible.js/true' ), '', '', true );
+print_header ( array ( 'js/visible.php' ), '', '', true );
 
 $icons = array();
 
@@ -20,7 +20,7 @@ if ( $d = dir ( $icon_path ) ) {
       $fd = @fopen ( $icon_path . $entry, 'rb' );
       if ( $fd ) {
         // We only need to compare the first 1kb.
-        $data .= fgets( $fd );
+        $data .= fgets ( $fd, 1024 );
         $icons[md5 ( $data )] = $entry;
       }
       fclose ( $fd );
@@ -34,7 +34,7 @@ if ( $d = dir ( $icon_path ) ) {
   $title_str = translate ( 'Click to Select' );
 
   ?>
-  <script>
+  <script type="text/javascript">
   <!-- <![CDATA[
   function sendURL ( url ) {
     var
@@ -54,7 +54,7 @@ if ( $d = dir ( $icon_path ) ) {
 <?php
   ob_start();
   echo '
-    <table align="center" summary="">
+    <table align="center" border="0" summary="">
       <tr>
         <td colspan="8" align="center"><h2>'
    . translate ( 'Current Icons on Server' ) . '</h2></td>
@@ -63,8 +63,8 @@ if ( $d = dir ( $icon_path ) ) {
   for ( $i = 0, $cnt = count ( $icons ); $i < $cnt; $i++ ) {
     echo '
         <td><a href="#" onclick="sendURL( \'' . $icon_path . $icons[$i]
-     . '\' )" ><img src="' . $icon_path . $icons[$i] . '" title="'
-     . $title_str . '" alt="' . $title_str . '"></a></td>'
+     . '\' )" ><img src="' . $icon_path . $icons[$i] . '" border="0" title="'
+     . $title_str . '" alt="' . $title_str . '" /></a></td>'
      . ( $i > 0 && $i % 8 == 0 ? '
       </tr>
       <tr>' : '' );

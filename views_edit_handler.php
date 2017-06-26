@@ -1,14 +1,14 @@
-<?php /* $Id$ */
+<?php // $Id: views_edit_handler.php,v 1.27.2.1 2012/02/28 15:43:10 cknudsen Exp $
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 
 $error = '';
 
-$delete      = getPostValue ( 'delete' );
-$users       = getPostValue ( 'users' );
-$viewisglobal= getPostValue ( 'is_global' );
-$viewname    = getPostValue ( 'viewname' );
-$viewtype    = getPostValue ( 'viewtype' );
+$viewisglobal = getPostValue ( 'is_global' );
+$viewname = getPostValue ( 'viewname' );
+$viewtype = getPostValue ( 'viewtype' );
+$users = getPostValue ( 'users' );
+$delete = getPostValue ( 'delete' );
 
 if ( ! $is_admin || $viewisglobal != 'Y' )
   $viewisglobal = 'N'; // Only admin can create global view.
@@ -52,9 +52,10 @@ else {
     if ( getPostValue ( 'viewuserall' ) == 'Y' )
       $users = array ( '__all__' );
 
-    foreach ( $users as $i ) {
+    for ( $i = 0, $cnt = count ( $users );
+      ! empty ( $users ) && $i < $cnt; $i++ ) {
       dbi_execute ( 'INSERT INTO webcal_view_user ( cal_view_id, cal_login )
-        VALUES ( ?, ? )', array ( $id, $i ) );
+        VALUES ( ?, ? )', array ( $id, $users[$i] ) );
     }
   }
 }

@@ -1,168 +1,170 @@
-<?php // $Id$
+<?php // $Id: help_admin.php,v 1.33 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
+print_header ( '', '', '', true );
 ob_start();
-print_header( '', '', '', true );
 echo $helpListStr . '
-    <h2>' . translate ( 'Help System Settings' ) . '</h2>
-    <h3>' . $setsStr . '</h3>
+    <h2>' . translate ( 'Help' ) . ': ' . translate ( 'System Settings' )
+ . '</h2>
+    <h3>' . translate ( 'Settings' ) . '</h3>
     <div class="helpbody">
       <div>';
-list_help( array(
+$tmp_arr = array (
   translate ( 'Allow HTML in Description' ) =>
-  translate ( 'allow_html_description_help' ),
-  translate ( 'may users override conflicts' ) =>
-  translate ( 'allow_conflict_override_help' ),
-  translate ( 'may view others cals' ) =>
-  translate ( 'allow_view_other_help' ),
+  translate ( 'allow-html-description-help' ),
+  translate ( 'Allow users to override conflicts' ) =>
+  translate ( 'conflict-check-override-help' ),
+  translate ( 'Allow viewing other users calendars' ) =>
+  translate ( 'allow-view-other-help' ),
   translate ( 'Application Name' ) =>
   translate ( 'app-name-help' ),
   translate ( 'Auto-refresh calendars' ) => translate ( 'auto-refresh-help' ),
   translate ( 'Auto-refresh time' ) => translate ( 'auto-refresh-time-help' ),
-  translate ( 'Check for conflicts' ) =>
-  translate ( 'allow_conflicts_help' ),
+  translate ( 'Check for event conflicts' ) =>
+  translate ( 'conflict-check-help' ),
   translate ( 'Conflict checking months' ) =>
-  translate ( 'conflict_months_help' ),
-  translate ( 'Custom header' ) => translate ( 'custom_header_help' ),
-  translate ( 'Custom script' ) =>
-  translate ( 'custom_script_help' ),
-  translate ( 'Custom trailer' ) => translate ( 'custom_trailer_help' ),
-  translate ( 'Date format' ) => translate ( 'date_format_help' ),
+  translate ( 'conflict-months-help' ),
+  translate ( 'Custom header' ) => translate ( 'custom-header-help' ),
+  translate ( 'Custom script/stylesheet' ) =>
+  translate ( 'custom-script-help' ),
+  translate ( 'Custom trailer' ) => translate ( 'custom-trailer-help' ),
+  translate ( 'Date format' ) => translate ( 'date-format-help' ),
   translate ( 'Disable Access field' ) =>
-  translate ( 'disable_access_field_help' ),
+  translate ( 'disable-access-field-help' ),
   translate ( 'Disable Participants field' ) =>
-  translate ( 'disable_participants_field_help' ),
+  translate ( 'disable-participants-field-help' ),
   translate ( 'Disable Priority field' ) =>
-  translate ( 'disable_priority_field_help' ),
+  translate ( 'disable-priority-field-help' ),
   translate ( 'Disable Repeating field' ) =>
-  translate ( 'disable_repeating_field_help' ),
-  translate ( 'bold events in year view' ) =>
-  translate ( 'display_bold_days_in_year_help' ),
-  translate ( 'desc in printer day view' ) =>
-  translate ( 'display_desc_print_day_help' ),
+  translate ( 'disable-repeating-field-help' ),
+  translate ( 'Display days with events in bold in year view' ) =>
+  translate ( 'yearly-shows-events-help' ),
+  translate ( 'Display description in printer day view' ) =>
+  translate ( 'display-desc-print-day-help' ),
   translate ( 'Display Site Extras in popup' ) =>
-  translate ( 'site_extras_in_popup_help' ),
-  translate ( 'Display unapproved' ) => translate ( 'display_unapproved_help' ),
+  translate ( 'popup-includes-siteextras-help' ),
+  translate ( 'Display unapproved' ) => translate ( 'display-unapproved-help' ),
   translate ( 'Display week number' ) =>
-  translate ( 'display_weeknumber_help' ),
+  translate ( 'display-week-number-help' ),
   translate ( 'Display weekends in week view' ) =>
-  translate ( 'display_weekends_help' ),
-  translate ( 'Fonts' ) => translate ( 'fonts_help' ),
+  translate ( 'display-weekends-help' ),
+  translate ( 'Fonts' ) => translate ( 'fonts-help' ),
   translate ( 'Home URL' ) => translate ( 'home-url-help' ),
   translate ( 'Include add event link in views' ) =>
-  translate ( 'display_add_link_in_views_help' ),
-  translate ( 'Language_' ) => translate ( 'language-help' ),
-  translate ( 'Limit timed events per day' ) =>
-  translate ( 'limit_appts_help' ),
+  translate ( 'allow-view-add-help' ),
+  translate ( 'Language' ) => translate ( 'language-help' ),
+  translate ( 'Limit number of timed events per day' ) =>
+  translate ( 'limit-appts-help' ),
   translate ( 'Maximum timed events per day' ) =>
-  translate ( 'limit_appts_number_help' ),
-  translate ( 'Preferred view' ) => translate ( 'preferred_view_help' ),
+  translate ( 'limit-appts-number-help' ),
+  translate ( 'Preferred view' ) => translate ( 'preferred-view-help' ),
   translate ( 'Remember last login' ) =>
-  translate ( 'remember_last_login_help' ),
+  translate ( 'remember-last-login-help' ),
   translate ( 'Require event approvals' ) =>
-  translate ( 'require_approvals_help' ),
-  translate ( 'Server URL' ) => translate( 'server_url_help' ),
+  translate ( 'require-approvals-help' ),
+  translate ( 'Server URL' ) => translate ( 'server-url-help' ),
   translate ( 'Specify timed event length by' ) =>
-  translate ( 'timed_evt_len_help' ),
-  translate ( 'Time format' ) => translate ( 'time_format_help' ),
+  translate ( 'timed-evt-len-help' ),
+  translate ( 'Time format' ) => translate ( 'time-format-help' ),
   translate ( 'Time interval' ) => translate ( 'time-interval-help' ),
-  translate ( 'Week starts on' ) => translate ( 'display_week_starts_on' ),
-  translate ( 'Work hours' ) => translate ( 'work_hours_help' ),
-  )
-);
+  translate ( 'Week starts on' ) => translate ( 'display-week-starts-on' ),
+  translate ( 'Work hours' ) => translate ( 'work-hours-help' ),
+  );
+list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Public Access' ) . '</h3>
       <div>';
-list_help( array(
+$tmp_arr = array (
   translate ( 'Allow public access' ) =>
-  translate ( 'allow_public_access_help' ),
-  translate ( 'may public add events' ) =>
+  translate ( 'allow-public-access-help' ),
+  translate ( 'Public access can add events' ) =>
   translate ( 'public-access-can-add-help' ),
-  translate ( 'may public view others' ) =>
+  translate ( 'Public access can view other users' ) =>
   translate ( 'public-access-view-others-help' ),
-  translate ( 'may public see participants' ) =>
+  translate ( 'Public access can view participants' ) =>
   translate ( 'public-access-sees-participants-help' ),
-  translate ( 'is public default party' ) =>
+  translate ( 'Public access is default participant' ) =>
   translate ( 'public-access-default-selected' ),
-  translate ( 'must approve public events' ) =>
+  translate ( 'Public access new events require approval' ) =>
   translate ( 'public-access-add-requires-approval-help' ),
-  translate ( 'Public visible by default' ) =>
+  translate ( 'Public access visible by default' ) =>
   translate ( 'public-access-default-visible' ),
-  )
-);
+  );
+list_help ( $tmp_arr );
 echo '
       </div>
-      <h3>' . $groupsStr . '</h3>
+      <h3>' . translate ( 'Groups' ) . '</h3>
       <div>';
-list_help( array(
+$tmp_arr = array (
   translate ( 'Groups enabled' ) => translate ( 'groups-enabled-help' ),
   translate ( 'User sees only his groups' ) =>
   translate ( 'user-sees-his-group-help' ),
-  )
-);
+  );
+list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Nonuser' ) . '</h3>
       <div>';
-list_help( array(
-  translate ( 'NUCs enabled' ) => translate ( 'nonuser-enabled-help' ),
-  translate ( 'list NUCs at' ) => translate ( 'nonuser-list-help' ),
-  )
-);
+$tmp_arr = array (
+  translate ( 'Nonuser enabled' ) => translate ( 'nonuser-enabled-help' ),
+  translate ( 'Nonuser list' ) => translate ( 'nonuser-list-help' ),
+  );
+list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Other' ) . '</h3>
       <div>';
-list_help( array(
+$tmp_arr = array (
   translate ( 'Allow external users' ) =>
   translate ( 'allow-external-users-help' ),
   translate ( 'Allow remote subscriptions' ) =>
   translate ( 'subscriptions-enabled-help' ),
   translate ( 'Categories enabled' ) => translate ( 'categories-enabled-help' ),
-  translate ( 'may notify externals by email' ) =>
+  translate ( 'External users can receive email notifications' ) =>
   translate ( 'external-can-receive-notification-help' ),
-  translate ( 'may remind externals by email' ) =>
+  translate ( 'External users can receive email reminders' ) =>
   translate ( 'external-can-receive-reminder-help' ),
   translate ( 'Reports enabled' ) => translate ( 'reports-enabled-help' ),
-  )
-);
+  );
+list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Email' ) . '</h3>
       <div>';
-list_help( array(
+$tmp_arr = array (
   translate ( 'Default sender address' ) =>
   translate ( 'email-default-sender' ),
   translate ( 'Email enabled' ) => translate ( 'email-enabled-help' ),
   translate ( 'Event rejected by participant' ) =>
-  translate ( 'email_event_rejected' ),
+  translate ( 'email-event-rejected' ),
   translate ( 'Event reminders' ) =>
-  translate ( 'email_reminder_help' ),
+  translate ( 'email-event-reminders-help' ),
   translate ( 'Events added to my calendar' ) =>
-  translate ( 'email_event_added' ),
+  translate ( 'email-event-added' ),
   translate ( 'Events removed from my calendar' ) =>
-  translate ( 'email_event_deleted' ),
+  translate ( 'email-event-deleted' ),
   translate ( 'Events updated on my calendar' ) =>
-  translate ( 'email_event_added' ),
-  )
-);
+  translate ( 'email-event-updated' ),
+  );
+list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Colors' ) . '</h3>
       <div>';
-list_help( array(
+$tmp_arr = array (
   translate ( 'Allow user to customize colors' ) =>
   translate ( 'user-customize-color' ),
-  translate ( 'Enable gradient images for BG' ) =>
+  translate ( 'Enable gradient images for background colors' ) =>
   translate ( 'enable-gradient-help' ),
   translate ( 'Manually entering color values' ) => translate ( 'colors-help' ),
-  )
-);
+  );
+list_help ( $tmp_arr );
+ob_end_flush();
 echo '
       </div>
-    </div>' . print_trailer( false, true, true );
-ob_end_flush();
+    </div>
+    ' . print_trailer ( false, true, true );
 
 ?>

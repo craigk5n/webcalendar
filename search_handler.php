@@ -9,10 +9,10 @@
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @package WebCalendar
- * @version $Id$
+ * @version $Id: search_handler.php,v 1.56.2.2 2013/02/06 16:12:39 cknudsen Exp $
  */
 include_once 'includes/init.php';
-require_valid_referring_url();
+require_valid_referring_url ();
 
 $error = '';
 
@@ -29,7 +29,7 @@ $keywords = getValue ( 'keywords' );
 $advanced = getValue ( 'advanced' );
 
 if ( strlen ( $keywords ) == 0 )
-  $error = translate( 'must enter search keywords' );
+  $error = translate( 'You must enter one or more search keywords.' );
 
 $matches = 0;
 // Determine if this user is allowed to search the calendar of other users
@@ -63,23 +63,26 @@ if ( $search_others ) {
       $GROUPS_ENABLED == 'Y' ) {
     $myusers = get_my_users ( '', 'view' );
     $userlookup = array();
-    foreach ( $myusers as $i ) {
-      $userlookup[$i['cal_login']] = 1;
+    for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {
+      $userlookup[$myusers[$i]['cal_login']] = 1;
     }
     $newlist = array();
     $cnt = count ( $users );
-    foreach ( $users as $i ) {
-      if ( ! empty ( $userlookup[$i] ) )
-        $newlist[] = $i;
+    for ( $i = 0; $i < $cnt; $i++ ) {
+      if ( ! empty ( $userlookup[$users[$i]] ) )
+        $newlist[] = $users[$i];
     }
     $users = $newlist;
   }
   // Now, use access control to remove more users :-)
   if ( access_is_enabled() && ! $is_admin ) {
     $newlist = array();
-    foreach ( $users as $i ) {
-      if ( access_user_calendar ( 'view', $i ) ) {
-        $newlist[] = $i;
+    for ( $i = 0; $i < count ( $users ); $i++ ) {
+      if ( access_user_calendar ( 'view', $users[$i] ) ) {
+        $newlist[] = $users[$i];
+        //echo "can access $users[$i] <br />";
+      } else {
+        //echo "cannot access $users[$i] <br />";
       }
     }
     $users = $newlist;
@@ -98,9 +101,9 @@ $from_YMD = getPostValue ( 'from__YMD' );
 if ( empty ( $from_YMD ) ) {
   $start_day = $start_month = $start_year = '';
 } else {
-  $start_year = substr ( $from_YMD, 0, 4 );
-  $start_month = substr ( $from_YMD, 4, 2 );
-  $start_day = substr ( $from_YMD, 6, 2 );
+  $start_year = intval ( substr ( $from_YMD, 0, 4 ) );
+  $start_month = intval ( substr ( $from_YMD, 4, 2 ) );
+  $start_day = intval ( substr ( $from_YMD, 6, 2 ) );
   if ( $start_year < 1970 )
     $start_year = 1970;
 }
@@ -109,17 +112,19 @@ $end_YMD = getPostValue ( 'until__YMD' );
 if ( empty ( $end_YMD ) ) {
   $end_day = $end_month = $end_year = '';
 } else {
-  $end_year = substr ( $end_YMD, 0, 4 );
-  $end_month = substr ( $end_YMD, 4, 2 );
-  $end_day = substr ( $end_YMD, 6, 2 );
+  $end_year = intval ( substr ( $end_YMD, 0, 4 ) );
+  $end_month = intval ( substr ( $end_YMD, 4, 2 ) );
+  $end_day = intval ( substr ( $end_YMD, 6, 2 ) );
   if ( $end_year < 1970 )
     $end_year = 1970;
 }
 
-$startDate = gmdate( 'Ymd', gmmktime( 0, 0, 0,
-  $start_month, $start_day, $start_year ) );
-$endDate = gmdate( 'Ymd', gmmktime( 23, 59, 59,
-  $end_month, $end_day, $end_year ) );
+if ( $date_filter == 3 ) {//Use Date Range
+  $startDate = gmdate( 'Ymd', gmmktime( 0, 0, 0,
+    $start_month, $start_day, $start_year ) );
+  $endDate = gmdate( 'Ymd', gmmktime( 23, 59, 59,
+    $end_month, $end_day, $end_year ) );
+}
 
 print_header();
 echo '
@@ -151,7 +156,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
 // end Phrase modification
   $order = 'DESC';
   $word_cnt = count ( $words );
-  foreach ( $words as $i ) {
+  for ( $i = 0; $i < $word_cnt; $i++ ) {
     $sql_params = array();
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, weu.cal_login '
@@ -165,7 +170,8 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       if ( empty ( $users[0] ) )
         $sql_params[0] = $users[0] = $login;
 
-      for ( $j = 0, $cnt = count ( $users ); $j < $cnt; $j++ ) {
+      $user_cnt = count ( $users );
+      for ( $j = 0; $j < $user_cnt; $j++ ) {
         if ( $j > 0 ) $sql .= ', ?';
         $sql_params[] = $users[$j];
       }
@@ -188,13 +194,13 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
       ? 'CAST ( we.cal_description AS varchar (1024) )'
       : 'we.cal_description' )
      . ' ) LIKE UPPER( ? ) ';
-    $sql_params[] = '%' . $i . '%';
-    $sql_params[] = '%' . $i . '%';
+    $sql_params[] = '%' . $words[$i] . '%';
+    $sql_params[] = '%' . $words[$i] . '%';
 
     //process advanced filters
     if ( ! empty ( $extra_filter ) ) {
       $sql .= ' OR wse.cal_data LIKE UPPER( ? )';
-      $sql_params[] = '%' . $i . '%';
+      $sql_params[] = '%' . $words[$i] . '%';
     }
     //close AND statement from above
     $sql .= ')';
@@ -266,10 +272,10 @@ if ( empty ( $error ) && empty ( $info ) ) {
     </ul>';
 }
 echo '
-      <form action="search.php' . ( empty( $advanced ) ? '' : '?adv=1' )
+      <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
         . '"  style="margin-left: 13px;" method="post">
        <input type="submit" value="'
-        . translate( 'New Search' ) . '"></form>';
+        . translate ( 'New Search' ) . '" /></form>';
 ob_end_flush();
 echo print_trailer();
 
