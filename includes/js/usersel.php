@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: usersel.php,v 1.28 2009/11/22 16:47:47 bbannon Exp $
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 global $form, $groups, $listid;
 

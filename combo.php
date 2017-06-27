@@ -4,7 +4,7 @@
  * page with tabs. Content is loaded dynamically with AJAX.
  * So, requests for previous & next will not force a page reload.
  *
- * Version: $Id$
+ * Version: $Id: combo.php,v 1.60.2.2 2013/01/25 19:55:48 cknudsen Exp $
  *
  * TODO:
  * - Week view

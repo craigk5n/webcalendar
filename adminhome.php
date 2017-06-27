@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: adminhome.php,v 1.45 2010/02/03 17:41:20 bbannon Exp $
 /**
  * Page Description:
  *   Serves as the home page for administrative functions.

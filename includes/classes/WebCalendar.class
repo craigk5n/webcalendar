@@ -4,7 +4,7 @@
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: WebCalendar.class,v 1.137 2011/04/09 16:53:58 rjones6061 Exp $
  * @package WebCalendar
  */
 

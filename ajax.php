@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: ajax.php,v 1.24.2.1 2012/02/28 15:43:09 cknudsen Exp $
 /**
  * Description
  * This is the handler for Ajax httpXmlRequests.

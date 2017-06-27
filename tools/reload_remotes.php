@@ -1,5 +1,5 @@
 #!/usr/local/bin/php -q
-<?php // $Id$
+<?php // $Id: reload_remotes.php,v 1.16 2010/03/06 16:57:00 bbannon Exp $
 /**
  * Description:
  * This is a command-line script that will reload all user's remote calendars.

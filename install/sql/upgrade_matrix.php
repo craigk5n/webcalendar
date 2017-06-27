@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: upgrade_matrix.php,v 1.23 2009/11/22 16:47:47 bbannon Exp $
 
 //Program Version for this release
 $PROGRAM_VERSION = 'v1.3.0';

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: views_edit_handler.php,v 1.27.2.1 2012/02/28 15:43:10 cknudsen Exp $
 include_once 'includes/init.php';
 require_valid_referring_url ();
 

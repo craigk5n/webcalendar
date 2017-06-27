@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: site_extras.php,v 1.25 2009/11/22 16:47:46 bbannon Exp $
 /**
  * Page Description:
  *  This file can be used to define extra information associated with a

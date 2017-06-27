@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# $Id$
+# $Id: update_translation.pl,v 1.41 2008/10/14 01:16:22 bbannon Exp $
 #
 # This tool will update a translation file by doing the following:
 # - Phrases are organized by the page on which they first appear.

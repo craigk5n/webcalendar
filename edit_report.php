@@ -11,7 +11,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: edit_report.php,v 1.65.2.1 2013/01/24 21:15:09 cknudsen Exp $
  * @package WebCalendar
  * @subpackage Reports
  */

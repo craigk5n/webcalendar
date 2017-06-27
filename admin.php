@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: admin.php,v 1.198.2.1 2012/02/28 15:43:09 cknudsen Exp $
 include_once 'includes/init.php';
 require_valid_referring_url ();
 include_once 'includes/date_formats.php';

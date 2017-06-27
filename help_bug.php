@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: help_bug.php,v 1.31 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 

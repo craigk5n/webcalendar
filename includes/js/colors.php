@@ -1,4 +1,4 @@
-<?php /* $Id$  */ ?>
+<?php /* $Id: colors.php,v 1.27 2007/09/10 20:56:31 bbannon Exp $  */ ?>
 
 // Predefined Colors
   pcoc = getCookie("webcalendar_custom_colors");

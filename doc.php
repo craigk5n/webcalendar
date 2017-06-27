@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: doc.php,v 1.23 2009/11/22 16:47:44 bbannon Exp $
 /**
  * Description:
  *  Obtain a binary object from the database and send it back to

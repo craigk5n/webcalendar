@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: events_ajax.php,v 1.18.2.1 2012/02/28 15:43:10 cknudsen Exp $
 /**
  * Description
  *   Handler for AJAX requests for viewing events in combo.php,
@@ -388,10 +388,14 @@ function setLocalTimes ( $eventList )
     if ( $event->getTime() <= 0 ) {
       $event->setLocalTime ( $event->getTime() );
     } else {
-      $localTime = display_time ( $event->getDatetime(),
-        0, '', '24' );
-      $localTime = substr ( $localTime, 0, 2 ) .
-        substr ( $localTime, 3, 5 );
+      $localTime = display_time ( $event->getDatetime() );
+//      $localTime = display_time ( $event->getDatetime(),
+//        0, '', '24' );
+//echo "\ngetDateTime(): " . $event->getDatetime() . "\n";
+//echo "localTime1: $localTime\n";
+//      $localTime = substr ( $localTime, 0, 2 ) .
+//        substr ( $localTime, 3, 5 );
+//echo "localTime2: $localTime\n";
       $event->setLocalTime ( $localTime );
     }
   }

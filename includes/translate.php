@@ -15,7 +15,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: translate.php,v 1.88 2010/03/06 16:57:00 bbannon Exp $
  * @package WebCalendar
  */
 

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: day.php,v 1.85 2010/02/21 08:27:48 bbannon Exp $
 include_once 'includes/init.php';
 
 //check UAC

@@ -4,7 +4,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: functions.php,v 1.591.2.3 2014/04/13 16:24:43 cknudsen Exp $
  * @package WebCalendar
  */
 
@@ -3985,7 +3985,7 @@ function load_global_settings() {
     $GLOBALS['TIMEZONE'] = $GLOBALS['SERVER_TIMEZONE'];
 
   set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
-  if ( ! $tzInitSet ) {
+  if ( empty ( $tzInitSet ) ) {
     if ( function_exists ( "date_default_timezone_set" ) )
       date_default_timezone_set ( $GLOBALS['TIMEZONE'] );
   }
@@ -5280,7 +5280,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           }
         }
       } else {
-        $tmp = $layers_byuser[$item->getLogin()];
+        $tmp = isset($layers_byuser[$item->getLogin()]) ? $layers_byuser[$item->getLogin()] : '';
 
         if( $i == $first_i_this_id || ( ! empty( $tmp ) && $tmp == 'Y' ) )
           // This item is either the first one with its ID, or dupes allowed.

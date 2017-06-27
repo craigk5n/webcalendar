@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: week_ssi.php,v 1.48 2010/02/06 16:30:35 bbannon Exp $
 /**
  * This page is intended to be used as a server-side include for another page.
  * (Such as an intranet home page or something.)

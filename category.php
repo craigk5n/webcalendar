@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: category.php,v 1.50.2.1 2013/01/24 21:15:08 cknudsen Exp $
 
 include_once 'includes/init.php';
 // Load user and global cats.
@@ -109,7 +109,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     ( ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) && $canWrite )
     ? translate ( 'Add Icon to Category' ) . '</label><br />&nbsp;&nbsp;&nbsp;'
      . translate ( 'Upload' ) . '&nbsp;<span style="font-size:small;">'
-     . translate ( 'GIF or PNG 3kb max' ) . '</span>:
+     . translate ( 'GIF or PNG 6kb max' ) . '</span>:
             <input type="file" name="FileName" id="fileupload" size="45" '
      . 'maxlength="50" value=""/>
           </td>

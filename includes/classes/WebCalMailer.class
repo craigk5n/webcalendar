@@ -18,6 +18,7 @@ if( file_exists( $inc_path . '/xcal.php' ) )
   include_once $inc_path . '/xcal.php'; // Used for ics attachments.
 
 require 'phpmailer/class.phpmailer.php';
+require 'phpmailer/class.smtp.php';
 
 class WebCalMailer extends phpmailer{
   var $WordWrap = 75;
@@ -27,15 +28,19 @@ class WebCalMailer extends phpmailer{
    */
   function WebCalMailer() {
     global $EMAIL_MAILER, $mailerError,
-    $SMTP_AUTH, $SMTP_HOST, $SMTP_PASSWORD, $SMTP_USERNAME;
+    $SMTP_AUTH, $SMTP_HOST, $SMTP_PORT, $SMTP_PASSWORD, $SMTP_USERNAME;
 
     $mailerError = '';
-    $this->Version .= ' extended by ' . generate_application_name( false );
+    #$this->Version .= ' extended by ' . generate_application_name( false );
     $this->Host = $SMTP_HOST;
-    $this->Mailer = $EMAIL_MAILER;
+    $this->Port = $SMTP_PORT;
+    #$this->Mailer = $EMAIL_MAILER;
+    $this->IsSMTP ();
     $this->CharSet = translate( 'charset' );
     // Turn on SMTP authentication.
     $this->SMTPAuth = ( $SMTP_AUTH == 'Y' );
+    $this->SMTPSecure = "tls";
+    $this->SMTPDebug = 2;
     $this->Username = $SMTP_USERNAME; // SMTP username.
     $this->Password = $SMTP_PASSWORD; // SMTP password.
   }
@@ -47,10 +52,13 @@ class WebCalMailer extends phpmailer{
     $to_name, $subject, $msg, $html = 'N', $from_email = '', $id = '' ) {
 
     if( strlen( $from_email ) ) {
-      $this->From = $from_email;
-      $this->FromName = $from_name;
-    } else
-      $this->From = $from_name;
+      $this->SetFrom ( $from_email, $from_name );
+      #$this->From = $from_email;
+      #$this->FromName = $from_name;
+    } else {
+      $this->SetFrom ( $from_email, $from_name );
+      #$this->From = $from_name;
+    }
 
     $this->IsHTML( $html == 'Y' );
     $this->AddAddress( $to_email, unhtmlentities( $to_name, true ) );
@@ -60,7 +68,11 @@ class WebCalMailer extends phpmailer{
     if( ! empty( $id ) )
       $this->IcsAttach( $id );
 
-    $this->Send();
+    if ( ! $this->Send() ) {
+      # TODO: log this...
+      #echo "Mail Error:\n" . $this->ErrorInfo . "\n";
+      #print_r ( $this );
+    }
     $this->ClearAll();
   }
 

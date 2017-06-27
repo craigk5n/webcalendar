@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: layers_ajax.php,v 1.4.2.1 2012/02/28 15:43:10 cknudsen Exp $
 /**
  * Description
  *   Handler for AJAX requests from layers.php.

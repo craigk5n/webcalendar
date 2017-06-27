@@ -1,5 +1,5 @@
 #!/usr/local/bin/php -q
-<?php // $Id$
+<?php // $Id: send_reminders.php,v 1.94 2010/03/06 16:57:00 bbannon Exp $
 /**
  * Description:
  * This is a command-line script that will send out any email
@@ -142,8 +142,10 @@ if ( $res ) {
       case 'LANGUAGE':
         // Users language preference.
         $languages[$user] = $row[1];
-        if ( $debug )
+        if ( $debug ) {
           echo "Language for $user is $row[1].<br />\n";
+          #print_r ( $row );
+        }
         break;
       case 'TIME_FORMAT':
         // Users time format settings.
@@ -401,7 +403,7 @@ function send_reminder ( $id, $event_date ) {
      . ( $row[2] > 0
       ? ( $is_task ? translate ( 'Start Time' ) : translate ( 'Time' ) ) . ': '
        . display_time ( '', $display_tzid, $event_time, $userTformat ) . "\n"
-      : ( ( $row[2] == 0 &&  $row[5] = 1440) ? translate( 'Time' ) . ': '
+      : ( ( $row[2] == 0 &&  $row[5] == 1440) ? translate( 'Time' ) . ': '
        . translate( 'All day event' ). "\n" : '' ) )
      . ( $row[5] > 0 && ! $is_task
       ? translate ( 'Duration' ) . ': ' . $row[5] . ' '
@@ -626,8 +628,11 @@ function my_get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
     $list = $repeated_events[$i]->getRepeatAllDates();
     for ( $j = 0, $cnt_j = count ( $list ); $j < $cnt_j; $j++ ) {
-      if ( $debug )
-        echo "     checking $list[$j] = " . date( 'Ymd', $list[$j]) . '<br />';
+      if ( $debug ) {
+        echo "     checking $list[$j] aka " . date( 'Ymd', $list[$j]) .
+          "<br />: " . ( $dateYmd == date ( 'Ymd', $list[$j] ) ? "Y" : "N" ) .
+          "\n";
+      }
 
       if ( $dateYmd == date ( 'Ymd', $list[$j] ) ) {
         $ret[$n++] = $repeated_events[$i];

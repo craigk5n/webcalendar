@@ -7,7 +7,7 @@
 # by: Johan Linnér <johan@linner.biz>
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
-# $Id$
+# $Id: Swedish.txt,v 1.46 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

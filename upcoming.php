@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: upcoming.php,v 1.97.2.5 2013/01/24 21:15:09 cknudsen Exp $
 /**
  * Description:
  * Show a list of upcoming events (and possibly tasks).

@@ -13,7 +13,7 @@
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @package WebCalendar
- * @version $Id$
+ * @version $Id: list_unapproved.php,v 1.83.2.1 2012/02/28 15:43:10 cknudsen Exp $
  */
 
 include_once 'includes/init.php';

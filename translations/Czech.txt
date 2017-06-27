@@ -6,7 +6,7 @@
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id$
+# $Id: Czech.txt,v 1.45 2008/10/15 18:19:59 bbannon Exp $
 #
 # 2007-10-24: Translation encoding and grammar corrected by: Hanu¹ Adler
 # (had (a) actinet .dot. cz)

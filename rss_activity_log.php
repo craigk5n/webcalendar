@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: rss_activity_log.php,v 1.9 2010/10/05 17:16:59 cknudsen Exp $
 /**
  * Description:
  *  Generates RSS 2.0 output of the activity log.

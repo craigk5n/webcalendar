@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: datesel.php,v 1.57 2009/11/22 16:47:44 bbannon Exp $
 include_once 'includes/init.php';
 
 $fday = getGetValue ( 'fday' );
@@ -40,6 +40,7 @@ for ( $i = 0; $i < 7; $i++ ) {
   $wkdys .= '<td>' . weekday_name ( ( $i + $WEEK_START ) % 7, 'D' ) . '</td>';
 }
 //build month grid
+$todayYmd = date ( 'Ymd' );
 $mdays = '';
 for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthendYmd; $i += 604800 ) {
   $mdays .= '
@@ -47,11 +48,14 @@ for ( $i = $wkstart; date ( 'Ymd', $i ) <= $monthendYmd; $i += 604800 ) {
   for ( $j = 0; $j < 7; $j++ ) {
     $date = $i + ( $j * 86400 ) + 43200;
     $dateYmd = date ( 'Ymd', $date );
+    $class=' class="field "';
+    if ( $dateYmd == $todayYmd )
+      $class .= ' id="today" ';
     $mdays .= '
                <td'
      . ( ( $dateYmd >= $monthstartYmd && $dateYmd <= $monthendYmd ) ||
       $DISPLAY_ALL_DAYS_IN_MONTH == 'Y'
-      ? ' class="field"><a href="javascript:sendDate(\''
+      ? $class . '><a href="javascript:sendDate(\''
        . $dateYmd . '\')">' . date ( 'j', $date ) . '</a>'
       : '>' ) . '</td>';
   }

@@ -9,7 +9,7 @@
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @package WebCalendar
- * @version $Id$
+ * @version $Id: search_handler.php,v 1.56.2.2 2013/02/06 16:12:39 cknudsen Exp $
  */
 include_once 'includes/init.php';
 require_valid_referring_url ();

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: remotes.php,v 1.13 2009/11/22 16:47:45 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $newRemoteStr = translate ( 'Add New Remote Calendar' );

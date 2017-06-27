@@ -5,7 +5,7 @@
 * @author Craig Knudsen <cknudsen@cknudsen.com>
 * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
 * @license http://www.gnu.org/licenses/gpl.html GNU GPL
-* @version $Id$
+* @version $Id: xcal.php,v 1.97 2010/02/21 08:27:49 bbannon Exp $
 * @package WebCalendar
 */
 

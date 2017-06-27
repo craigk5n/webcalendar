@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: edit_entry.php,v 1.91.2.1 2013/01/25 19:37:06 cknudsen Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
  global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
@@ -618,7 +618,8 @@ function editCats ( evt ) {
       }
       obj.checked = sel;
     } else {
-      alert ( "Could not find '" + checkboxId + "' in DOM" );
+      // Note: this happens when an admin edits a user's personal event.
+      //alert ( "Could not find '" + checkboxId + "' in DOM" );
     }
   <?php
   }
@@ -647,8 +648,12 @@ function catOkHandler () {
       catNames += '<?php echo $cat['cat_name'];?>';
     }
   } else {
-    if ( ! obj ) alert ( "Could not find " + checkboxId );
-    else alert ( "Could not find " + nameId );
+    // Note: this can happen when an admin is editing a user's personal
+    // event.
+    //if ( ! obj )
+    //  alert ( "Could not find " + checkboxId );
+    //else
+    //  alert ( "Could not find " + nameId );
   }
 <?php
   }

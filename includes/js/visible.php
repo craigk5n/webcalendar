@@ -1,5 +1,5 @@
 <?php
-/* $Id$ */
+/* $Id: visible.php,v 1.24 2008/01/28 20:14:13 cknudsen Exp $ */
 // install/index.php needs to call this file directly,
 // so we need to insert the proper script tags as needed.
 $endScriptStr = '';

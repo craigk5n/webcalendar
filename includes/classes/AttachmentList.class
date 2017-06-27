@@ -5,7 +5,7 @@
  * @author Craig Knudsen
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: AttachmentList.class,v 1.3 2007/04/08 07:59:54 bbannon Exp $
  * @package WebCalendar
  * @subpackage Doc
  */

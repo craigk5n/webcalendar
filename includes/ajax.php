@@ -12,7 +12,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: ajax.php,v 1.5 2009/11/22 16:47:45 bbannon Exp $
  * @package WebCalendar
  */
 

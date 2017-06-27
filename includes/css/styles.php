@@ -5,7 +5,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: styles.php,v 1.9.2.1 2013/08/12 16:18:52 cknudsen Exp $
  * @package WebCalendar
  *
  *                         HOW TO READ THIS DOCUMENT

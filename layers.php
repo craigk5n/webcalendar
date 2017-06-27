@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: layers.php,v 1.58 2010/10/07 15:41:19 cknudsen Exp $
 /**
  * This page handles managing a user's layers
  * and works with layer_ajax.php to make changes.

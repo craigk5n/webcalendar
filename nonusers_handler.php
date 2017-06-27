@@ -1,5 +1,5 @@
 <?php
-/* $Id$ */
+/* $Id: nonusers_handler.php,v 1.27 2009/11/22 16:47:45 bbannon Exp $ */
 include_once 'includes/init.php';
 load_user_layers();
 

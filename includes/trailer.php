@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: trailer.php,v 1.132 2009/11/22 16:47:46 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // NOTE: This file is included within the print_trailer function found in

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: del_entry.php,v 1.78 2009/11/22 16:47:44 bbannon Exp $
 include_once 'includes/init.php';
 require 'includes/classes/WebCalMailer.class';
 $mail = new WebCalMailer;

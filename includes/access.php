@@ -13,7 +13,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: access.php,v 1.54 2011/07/12 19:45:13 rjones6061 Exp $
  * @package WebCalendar
  */
 

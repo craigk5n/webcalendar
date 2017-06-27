@@ -1,4 +1,4 @@
-// $Id$
+// $Id: v_h_scrolls.js,v 1.4 2010/02/21 08:27:49 bbannon Exp $
 
 /* This function needs to be seperate for each page that has scrollers.
 function start() {

@@ -13,7 +13,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: user-imap.php,v 1.28 2009/10/27 18:36:49 bbannon Exp $
  * @package WebCalendar
  * @subpackage IMAPAuthentication
  */

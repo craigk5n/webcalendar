@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: autocomplete_ajax.php,v 1.2 2010/09/17 03:03:25 cknudsen Exp $
 /**
  * Description
  *	Handler for AJAX requests for search suggestion (aka autocomplete)

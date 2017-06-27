@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: view_t.php,v 1.93 2011/07/12 19:42:25 rjones6061 Exp $
 /**
  * Page Description:
  * This page will display a timebar for a week or month as specified by timeb.

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: assistant_edit.php,v 1.41 2009/11/22 16:47:44 bbannon Exp $
 include_once 'includes/init.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {

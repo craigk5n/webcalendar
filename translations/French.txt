@@ -16,7 +16,7 @@
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id$
+# $Id: French.txt,v 1.72 2010/02/21 08:27:50 bbannon Exp $
 # Translation last updated on 12-30-2008
 
 

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: search.php,v 1.58.2.1 2013/01/24 21:15:09 cknudsen Exp $
 
 include_once 'includes/init.php';
 // Is this user allowed to search the calendars of other users?

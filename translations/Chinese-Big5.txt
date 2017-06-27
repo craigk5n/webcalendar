@@ -7,7 +7,7 @@
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id$
+# $Id: Chinese-Big5.txt,v 1.35 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-15-2008
 
 

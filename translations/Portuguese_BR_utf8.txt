@@ -29,7 +29,7 @@
 # http://sourceforge.net/projects/jscalendar/
 #
 #
-# $Id$
+# $Id: Portuguese_BR_utf8.txt,v 1.5 2010/02/21 08:27:52 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

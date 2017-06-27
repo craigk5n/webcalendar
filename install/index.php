@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: index.php,v 1.139.2.1 2012/02/28 15:43:10 cknudsen Exp $
 /**
  * Page Description:
  * Main page for install/config of db settings.

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: group_edit.php,v 1.34 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 
 $groupname = $groupowner = $groupupdated = '';

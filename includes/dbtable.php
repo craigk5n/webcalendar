@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: dbtable.php,v 1.25 2009/11/22 16:47:45 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // This file contains some convenient functions for editing rows in a table.

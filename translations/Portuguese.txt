@@ -8,7 +8,7 @@
 # By Paulo Henrique Garcia - paulo@controllerweb.com.br
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
-# $Id$
+# $Id: Portuguese.txt,v 1.47 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

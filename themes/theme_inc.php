@@ -1,5 +1,5 @@
 <?php
-// $Id$
+// $Id: theme_inc.php,v 1.8 2009/10/11 16:30:14 bbannon Exp $
 // Displays a screenshot if called directly
 // and a file exists that matches this script name.
 // Include  this file in all themes.

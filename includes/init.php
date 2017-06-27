@@ -39,7 +39,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: init.php,v 1.159 2010/08/31 13:49:17 cknudsen Exp $
  * @package WebCalendar
  */
 
@@ -85,6 +85,7 @@ $WebCalendar->initializeSecondPhase();
  * @param bool   $disableStyle Do not include the standard css?
  * @param bool   $disableRSS   Do not include the RSS link
  * @param bool   $disableAJAX  Do not include the prototype.js link
+ * @param bool   $disableUTIL  Do not include the util.js link
  */
 function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $disableCustom = false, $disableStyle = false, $disableRSS = false,
@@ -120,8 +121,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $ret .= '
     <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js?'
      . filemtime( 'includes/js/ie5.js' ) . '"></script><![endif]-->';
-    $js_ar[] = 'js/prototype.js';
-    $js_ar[] = 'js/scriptaculous/scriptaculous.js?load=builder,effects';
+    if ( is_array ( $includes ) && in_array ( 'JQUERY', $includes ) ) {
+      $js_ar[] = 'js/jquery-1.9.1.min.js';
+      $js_ar[] = 'js/jquery-1.10.1.js';
+    } else {
+      $js_ar[] = 'js/prototype.js';
+      $js_ar[] = 'js/scriptaculous/scriptaculous.js?load=builder,effects';
+    }
   }
 
   // CSS and JS includes needed for the top menu.
@@ -170,7 +176,11 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // Any other includes?
   if( is_array( $includes ) ) {
     foreach( $includes as $inc ) {
-      if( stristr( $inc, '.css' ) ) {
+      $cs_ret .= '<!-- inc \"$inc\" INCLUDED -->' . "\n";
+      if ( $inc == 'JQUERY' ) {
+        // Ignore since we handled it above
+        $cs_ret .= '<!-- JQUERY INCLUDED -->' . "\n";
+      } if( stristr( $inc, '.css' ) ) {
         $i = 'includes/' . $inc;
         // Not added to $cs_ar because I think we want these,
         // even if $disableStyle.

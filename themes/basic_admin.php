@@ -4,7 +4,7 @@
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$:
+ * @version $Id: basic_admin.php,v 1.4 2007/02/01 02:23:11 bbannon Exp $:
  * @package WebCalendar
  */
 

@@ -1,8 +1,8 @@
-<?php // $Id$
+<?php // $Id: category_handler.php,v 1.37.2.2 2013/01/24 21:15:08 cknudsen Exp $
 include_once 'includes/init.php';
 require_valid_referring_url ();
 
-$icon_max_size = '3000';
+$icon_max_size = '6000';
 $icon_path = 'icons/';
 
 /**

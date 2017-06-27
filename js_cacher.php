@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: js_cacher.php,v 1.20 2009/12/27 15:53:29 bbannon Exp $
 // If the JavaScript doesn't need any input from PHP,
 // this file should not be called.
 define( '_ISVALID', true );

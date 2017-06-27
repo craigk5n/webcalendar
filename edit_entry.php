@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: edit_entry.php,v 1.227 2010/08/27 05:15:57 cknudsen Exp $
 /**
  * Description:
  * Presents page to edit/add an event/task/journal

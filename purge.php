@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: purge.php,v 1.72.2.1 2012/02/28 15:43:10 cknudsen Exp $
 /**
  * Description:
  * Purge events page and handler.

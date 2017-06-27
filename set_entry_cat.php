@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: set_entry_cat.php,v 1.45.2.1 2013/01/24 21:15:09 cknudsen Exp $
 /**
  * Allows the setting of categories by each participant of an event.
  *

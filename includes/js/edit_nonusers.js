@@ -1,4 +1,4 @@
-// $Id$
+// $Id: edit_nonusers.js,v 1.1 2008/12/23 14:07:41 bbannon Exp $
 
 var validform;
 

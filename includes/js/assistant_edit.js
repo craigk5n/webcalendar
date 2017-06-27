@@ -1,4 +1,4 @@
-// $Id$
+// $Id: assistant_edit.js,v 1.1 2008/12/15 10:42:45 bbannon Exp $
 
 function selectUsers() {
   // Find id of user selection object.

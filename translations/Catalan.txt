@@ -14,7 +14,7 @@
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id$
+# $Id: Catalan.txt,v 1.27 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-15-2008
 
 

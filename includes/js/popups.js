@@ -1,4 +1,4 @@
-// $Id$
+// $Id: popups.js,v 1.2 2009/11/22 22:03:26 bbannon Exp $
 
 // The following code is used to support the small popups that give the full
 // description of an event when the user moves the mouse over it.

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: default_config.php,v 1.75 2009/11/22 16:47:47 bbannon Exp $
 /**
  * The file contains a listing of all the current WebCalendar config settings
  * and their default values.

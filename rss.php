@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: rss.php,v 1.58 2010/10/05 17:16:59 cknudsen Exp $
 /**
  * Description:
  * This script is intended to be used outside of normal WebCalendar use,

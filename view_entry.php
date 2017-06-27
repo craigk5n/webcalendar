@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: view_entry.php,v 1.185.2.2 2013/01/07 16:52:13 cknudsen Exp $
 /**
  * Description:
  * Presents page to view an event with links to edit, delete

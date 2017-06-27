@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: pref.php,v 1.34 2009/11/22 16:47:46 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
   global $ALLOW_COLOR_CUSTOMIZATION;

@@ -11,7 +11,7 @@
 #
 # Czech converted to UTF8 and updated by: Lukáš Hlůže on 13 Nov, 2007
 #
-# $Id$
+# $Id: Czech_utf8.txt,v 1.6 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-15-2008
 
 

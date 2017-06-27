@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: edit_entry_handler.php,v 1.204.2.1 2012/02/28 15:43:10 cknudsen Exp $
 include_once 'includes/init.php';
 require_valid_referring_url ();
 require 'includes/classes/WebCalMailer.class';

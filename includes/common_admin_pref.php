@@ -1,6 +1,6 @@
 <?php
 /* Consolidating parts of admin.php and pref.php.
- * $Id$
+ * $Id: common_admin_pref.php,v 1.5 2007/08/28 01:12:20 bbannon Exp $
  */
 
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.

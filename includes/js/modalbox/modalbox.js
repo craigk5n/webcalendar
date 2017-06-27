@@ -27,10 +27,13 @@ Modalbox.Methods = {
 		width: 500, // Default width in px
 		height: 90, // Default height in px
 		overlayOpacity: 0.65, // Default overlay opacity
-		overlayDuration: 0.25, // Default overlay fade in/out duration in seconds
-		slideDownDuration: 0.5, // Default Modalbox appear slide down effect in seconds
-		slideUpDuration: 0.5, // Default Modalbox hiding slide up effect in seconds
-		resizeDuration: 0.25, // Default resize duration seconds
+		// cek: modified defaults since passing them as options seem
+		// to cause the autocomplete confusion (?)
+		overlayDuration: 0.1 /*0.25*/, // Default overlay fade in/out duration in seconds
+		slideDownDuration: 0.1 /*0.5*/, // Default Modalbox appear slide down effect in seconds
+		slideUpDuration: 0.1 /*0.5*/, // Default Modalbox hiding slide up effect in seconds
+		resizeDuration: 0.1 /*0.25*/, // Default resize duration seconds
+		// cek: end mods 
 		inactiveFade: true, // Fades MB window on inactive state
 		transitions: true, // Toggles transition effects. Transitions are enabled by default
 		loadingString: "Please wait. Loading...", // Default loading string message

@@ -29,7 +29,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/lgpl.html GNU LGPL
- * @version $Id$
+ * @version $Id: dbi4php.php,v 1.37 2010/04/07 13:39:08 cknudsen Exp $
  * @package WebCalendar
  *
  * History:

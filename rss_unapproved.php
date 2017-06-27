@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: rss_unapproved.php,v 1.8 2010/10/05 17:16:59 cknudsen Exp $
 /**
  * Description:
  *  Generates RSS 2.0 output of unapproved events for a user.

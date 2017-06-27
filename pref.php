@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: pref.php,v 1.168.2.2 2013/01/24 21:15:09 cknudsen Exp $
 include_once 'includes/init.php';
 require_valid_referring_url ();
 

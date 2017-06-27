@@ -1,4 +1,4 @@
-<?php /* $Id$  */ ?>
+<?php /* $Id: set_entry_cat.php,v 1.9 2009/10/27 18:36:49 bbannon Exp $  */ ?>
 function editCats( evt ) {
   if (document.getElementById) {
     mX = evt.clientX + 150;

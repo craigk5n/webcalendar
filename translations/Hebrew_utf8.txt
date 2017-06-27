@@ -3,7 +3,7 @@
 # Translated by: Dov Zamir, dov@zamirfamily.com
 # Last update: 22 July 2006
 #
-# $Id$
+# $Id: Hebrew_utf8.txt,v 1.30 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

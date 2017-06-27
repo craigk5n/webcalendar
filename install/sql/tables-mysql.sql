@@ -1,4 +1,4 @@
-/* $Id$ */
+/* $Id: tables-mysql.sql,v 1.25 2009/11/22 16:47:47 bbannon Exp $ */
 /**
  * Description:
  * This file is used to create all tables used by WebCalendar

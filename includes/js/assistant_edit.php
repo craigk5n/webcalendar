@@ -1,4 +1,4 @@
-<?php /* $Id$  */ ?>
+<?php /* $Id: assistant_edit.php,v 1.10 2006/04/14 23:37:00 umcesrjones Exp $  */ ?>
 function selectUsers () {
   // find id of user selection object
   var listid = 0;

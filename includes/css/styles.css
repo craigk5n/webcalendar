@@ -4,7 +4,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: styles.css,v 1.39 2010/10/20 01:28:21 cknudsen Exp $
  * @package WebCalendar
  */
 
@@ -380,13 +380,15 @@ a.matrix img {
   position:absolute;
   top:0;
   left:0;
-  border:1px solid;
-  padding:.1875em;
+  border:2px solid;
+  padding:1.0em;
   font-size:.75em;
   text-decoration:none;
   visibility:hidden;
   z-index:20;
-  -moz-border-radius:.375em;
+  border-radius:8px;
+  -moz-border-radius:8px;
+  box-shadow: 5px 5px 5px #888888;
 }
 .popup dl,
 .popup dt {
@@ -864,55 +866,56 @@ tr.highlight td {
   margin:0 .25em;
   border:0;
 }
-#combo div.headerinfo {
+#combo div.headerinfo, #month2 div.headerinfo {
   margin:.9375em;
   border:1px solid #000;
   padding:.625em;
   background:#fff;
   color:#000;
 }
-#combo div.headerinfo .username {
+#combo div.headerinfo .username, #month2 div.headerinfo .username {
   font-weight:bold;
   font-size:16pt;
 }
-#combo div.headerinfo #categoryselection {
+#combo div.headerinfo #categoryselection, #month2 div.headerinfo #categoryselection {
   padding-left:1.875em;
   font-weight:normal;
   font-size:12pt;
 }
-#combo div.headerinfo #selectedcategories {
+#combo div.headerinfo #selectedcategories, #month2 div.headerinfo #selectedcategories {
   font-weight:normal;
   font-size:12pt;
 }
-#combo #categorylist {
+#combo #categorylist, #month2 #categorylist {
   border:1px solid #ccc;
   background:#ffa;
 }
 #contentMonth #monthstatus {
   margin-left:1.25em;
 }
+#month2 td.displayYear { font-size: 1.2em !important }
 #contentMonth .monthtitle,
 #contentYear .yeartitle,
 #contentDay .daytitle {
   margin:0 0 0 .3125em;
   padding:0;
-  font-size:16pt;
+  font-size:18pt;
   text-align:center;
 }
-#combo #contentMonth #month_main {
+#combo #contentMonth #month_main, #month2 #contentMonth #month_main {
   margin-top: 10px;
 }
-#combo #contentMonth #month_main td {
+#combo #contentMonth #month_main td, #month2 #contentMonth #month_main td {
   height:90px;
 }
-#combo .event {
+#combo .event, #month2 .event {
   margin-top:.0625em;
   overflow:hidden;
 }
-#combo #contentMonth .eventname {
+#combo #contentMonth .eventname, #month2 #contentMonth .eventname {
   vertical-align: top;
 }
-#combo #contentMonth .event {
+#combo #contentMonth .event, #month2 #contentMonth .event {
   vertical-align: middle;
 }
 #contentYear #year_main,
@@ -1022,12 +1025,12 @@ tr.highlight td {
   font-size: 1.0em;
   padding: 4px;
 }
-#combo #viewEventDiv table {
+#combo #viewEventDiv table, #month2 #viewEventDiv table {
   padding: 10px;
   margin: 10px;
 }
 #combo #taskAddDiv .fakebutton,
-#combo #quickAddDiv .fakebutton {
+#combo #quickAddDiv .fakebutton, #month2 #quickAddDiv .fakebutton {
   padding: 0;
 }
 .dateselIcon {
@@ -1298,49 +1301,57 @@ tr.highlight td {
 #combo #refresh,
 #combo #nextyear,
 #combo #nextday,
-#combo #nextmonthdayview {
+#combo #nextmonthdayview,
+#month2 #nextmonth,
+#month2 #refresh,
+#month2 #nextyear,
+#month2 #nextday,
+#month2 #nextmonthdayview {
   margin-right:.1875em;
 }
-#combo .monthnavlinks td {
+#month2 #nextmonth, #month2 #prevmonth { font-size: 0.7em }
+#combo .monthnavlinks td, #month2 .monthnavlinks td {
   background-color: #e0e0e0;
   border: 2px #e0e0e0 outset;
   font-size: .80em;
 }
-#combo .monthnavlinks .currentMonthLink {
+#combo .monthnavlinks .currentMonthLink, #month2 .monthnavlinks .currentMonthLink {
   background-color: #c0c0c0;
 }
-#combo #quickAddDiv {
+#combo #quickAddDiv, #month2 #quickAddDiv {
   border:1px solid;
   border-color:#e0e0e0 #808080 #808080 #e0e0e0;
   background:#ffffff;
   padding: 5px;
 }
-#combo #viewEventDiv {
+#combo #viewEventDiv, #month2 #viewEventDiv {
   border:1px solid;
   border-color:#e0e0e0 #808080 #808080 #e0e0e0;
   background:#ffffff;
 }
-#combo .event {
+#combo .event, #month2 .event {
   /*background-color: #a00;*/
 }
-#combo #contentMonth div.event {
+#combo #contentMonth div.event, #month2 #contentMonth div.event {
   margin-bottom: 2px;
   padding-left: 2px;
 }
-#combo #contentMonth div.event img {
+#combo #contentMonth div.event img, #month2 #contentMonth div.event img {
   float: left;
 }
-#combo .participant {
+#combo .participant, #month2 .participant {
   font-size: 80%;
   background-color: #d0d0d0;
   border: 1px solid #b0b0b0;
   padding: 2px;
 }
-#combo #quickAddDiv #quickAddParticipantList .partX {
+#combo #quickAddDiv #quickAddParticipantList .partX,
+#month2 #quickAddDiv #quickAddParticipantList .partX {
   padding: 0;
   cursor:pointer;
 }
-#combo #quickAddDiv #quickAddParticipantList .partX img {
+#combo #quickAddDiv #quickAddParticipantList .partX img,
+#month2 #quickAddDiv #quickAddParticipantList .partX img {
   vertical-align: top;
   margin-top: 3px;
   margin-left: 2px;
@@ -1459,6 +1470,10 @@ table.ThemeMenubar select {
 /* for modalbox */
 #MB_caption {
   font-size: 16pt !important;
+}
+#MB_window h3 {
+  margin-top: 0 !important; /* default is 24 (too big) */
+  margin-bottom: 5px !important; /* default is 24 (too big) */
 }
 
 /*

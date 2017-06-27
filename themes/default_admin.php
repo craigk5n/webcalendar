@@ -6,7 +6,7 @@
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$:
+ * @version $Id: default_admin.php,v 1.6 2007/07/12 19:29:17 bbannon Exp $:
  * @package WebCalendar
  */
 // Define your stuff here...

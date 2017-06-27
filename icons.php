@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: icons.php,v 1.15 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 $icon_path = 'icons/';
 

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: edit_remotes_handler.php,v 1.22.2.1 2012/02/28 15:43:10 cknudsen Exp $
 include_once 'includes/init.php';
 require_valid_referring_url ();
 include_once 'includes/xcal.php';

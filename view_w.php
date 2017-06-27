@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: view_w.php,v 1.81 2009/11/22 22:26:18 bbannon Exp $
 /**
  * Page Description:
  * Display view of a week with users side by side.

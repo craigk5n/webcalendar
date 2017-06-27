@@ -3,7 +3,7 @@
 # Translated by: Raúl Araya Tauler, nubeiro@nubeiro.com
 # Last update: 20 May 2001
 #
-# $Id$
+# $Id: Galician.txt,v 1.34 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

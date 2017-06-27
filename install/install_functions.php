@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: install_functions.php,v 1.23 2009/11/22 16:47:47 bbannon Exp $
 /**
  * The file contains all the functions used in the installation script
  */

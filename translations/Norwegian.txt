@@ -8,7 +8,7 @@
 # Translations for page: includes/classes/WebCalMailer.class
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
-# $Id$
+# $Id: Norwegian.txt,v 1.53 2010/02/21 08:27:52 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

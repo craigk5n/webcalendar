@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: add_entry.php,v 1.31 2009/11/22 16:47:44 bbannon Exp $
 include_once 'includes/init.php';
 
 $error = '';

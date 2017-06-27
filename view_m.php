@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: view_m.php,v 1.88 2009/11/22 22:26:18 bbannon Exp $
 /**
  * Page Description:
  * Display a month view with users side by side.

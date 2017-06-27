@@ -1,6 +1,6 @@
 <?php
 /************************************************************************
- * $Id$
+ * $Id: datesel.php,v 1.24 2010/09/04 02:27:51 cknudsen Exp $
  *
  * Date selection via DHTML.  We use PHP to provide the translations and
  * a few user preferences (date format, language).  Otherwise, this could

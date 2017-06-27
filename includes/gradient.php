@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: gradient.php,v 1.28 2009/11/22 16:47:46 bbannon Exp $
 /**
  * Description:
  *  Generate a gradient image for use as a background image.

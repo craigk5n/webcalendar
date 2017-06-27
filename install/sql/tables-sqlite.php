@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: tables-sqlite.php,v 1.24 2009/11/22 16:47:47 bbannon Exp $
 /**
  * Description:
  * This file will create an SQLite database.

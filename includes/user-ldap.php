@@ -1,7 +1,7 @@
 <?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 /*
- * $Id$
+ * $Id: user-ldap.php,v 1.44 2009/10/27 18:36:49 bbannon Exp $
  * LDAP user functions.
  * This file is intended to be used instead of the standard user.php file.
  * I have not tested this yet (I do not have an LDAP server running yet),

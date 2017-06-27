@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: groups.php,v 1.29 2009/11/22 16:47:45 bbannon Exp $
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $count = $lastrow = 0;

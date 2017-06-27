@@ -1,4 +1,4 @@
-// $Id$
+// $Id: admin.js,v 1.3 2010/02/21 08:27:49 bbannon Exp $
 
 function init_admin() {
   attach_handler();

@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: edit_nonusers.php,v 1.29 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 print_header( array( 'js/translate.js.php' ),
   '<script type="text/javascript" src="includes/js/edit_nonusers.js"></script>',

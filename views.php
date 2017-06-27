@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: views.php,v 1.29 2010/01/24 10:51:02 bbannon Exp $
 include_once 'includes/init.php';
 
 if ( ! $is_admin )

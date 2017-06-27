@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: year.php,v 1.72 2010/02/21 08:27:48 bbannon Exp $
 include_once 'includes/init.php';
 send_no_cache_header();
 

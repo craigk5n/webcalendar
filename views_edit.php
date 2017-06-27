@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php // $Id: views_edit.php,v 1.61 2009/11/22 16:47:45 bbannon Exp $
 /**
  * Page Description:
  * This page displays the views that the user currently owns and
