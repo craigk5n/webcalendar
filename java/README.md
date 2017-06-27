@@ -62,19 +62,17 @@ Users should install the webcalendar.jar file locally and run it as
 follows (for the ReminderApp, for SampleApp, just replace "ReminderApp"
 with "SampleApp"):
 
-## for web-based authentication
-```
-  java -classpath webcalendar.jar us.k5n.webcalendar.ui.ReminderApp \
-    -url=http://yourwebcalurlhere/ \
-    -user=UUU -password=PPP
-  [where "UUU" is the your username and "PPP" is your password]```
+## Web-based Authentication
+    java -classpath webcalendar.jar us.k5n.webcalendar.ui.ReminderApp \
+      -url=http://yourwebcalurlhere/ \
+      -user=UUU -password=PPP
+    [where "UUU" is the your username and "PPP" is your password]```
 
-### for http-based authentication
-```
-  java -classpath webcalendar.jar us.k5n.webcalendar.ui.ReminderApp \
-    -url=http://yourwebcalurlhere/ \
-    -httpuser=UUU -httppasswd=PPP
-  [where "UUU" is the your username and "PPP" is your password]```
+## Http-based Authentication
+    java -classpath webcalendar.jar us.k5n.webcalendar.ui.ReminderApp \
+      -url=http://yourwebcalurlhere/ \
+      -httpuser=UUU -httppasswd=PPP
+    [where "UUU" is the your username and "PPP" is your password]```
 
 Note that you can use both web-based and HTTP-based authentication if
 your site is configured to do that.  (The WebCalendar username will be
