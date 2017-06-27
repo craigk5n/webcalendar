@@ -1,7 +1,4 @@
-README - WebCalendar Web Services & Java Client - version 0.2
-$Id$
-
-------------------------------------------------------------------------------
+# WebCalendar Web Services & Java Client - version 0.2
 
 Note: The web services files are not a standard part of WebCalendar
   and can be found in the "ws" directory or your WebCalendar install.
@@ -25,8 +22,7 @@ WebCalendar Web Services:
   + ControlPanel: under development... not much there yet.
   + more to come soon.... ?
 
-Java 1.4 is required since the org.w3c.dom package is used to parse
-XML (which is new in Java 1.4).
+Will work with any java since 1.4.
 
 The XML that is returned from the WebCalendar server is not SOAP.
 It is just XML.  This may change in the future if additional functions are
@@ -35,8 +31,7 @@ additional software (like the PEAR SOAP module) on their WebCalendar
 server.
 
 
-------------------------------------------------------------------------------
-			NOTES ON THE SAMPLE APP
+# Notes On The Sample App
 
 SampleApp is intended to illustrate how to develop a WebCalendar client.
 The app could be modified with a much improved UI.
@@ -47,8 +42,8 @@ the methods that get/update event data.  No need to rewrite a
 complete UI if there is one out there already.
 
 
-------------------------------------------------------------------------------
-			NOTES ON THE REMINDER APP
+
+# Notes On The Reminder App
 
 This ReminderApp client works independently from the email reminders that the
 WebCalendar server sends out.  If you wish to use this instead of
@@ -56,8 +51,8 @@ the email reminders, you can turn off them in your WebCalendar
 preferences.  If you do, be aware that you may miss a reminder if
 this app is not running.
 
-------------------------------------------------------------------------------
-				INSTALLATION
+
+# Installation
 
 First, make sure you version of WebCalendar has the "ws" subdirectory.
 Version 1.0 or later should include these.  If you don't have these, you
@@ -67,29 +62,30 @@ Users should install the webcalendar.jar file locally and run it as
 follows (for the ReminderApp, for SampleApp, just replace "ReminderApp"
 with "SampleApp"):
 
-[for web-based authentication]
+## for web-based authentication
+```
   java -classpath webcalendar.jar us.k5n.webcalendar.ui.ReminderApp \
     -url=http://yourwebcalurlhere/ \
     -user=UUU -password=PPP
-  [where "UUU" is the your username and "PPP" is your password]
+  [where "UUU" is the your username and "PPP" is your password]```
 
-[for http-based authentication]
+### for http-based authentication
+```
   java -classpath webcalendar.jar us.k5n.webcalendar.ui.ReminderApp \
     -url=http://yourwebcalurlhere/ \
     -httpuser=UUU -httppasswd=PPP
-  [where "UUU" is the your username and "PPP" is your password]
+  [where "UUU" is the your username and "PPP" is your password]```
 
 Note that you can use both web-based and HTTP-based authentication if
 your site is configured to do that.  (The WebCalendar username will be
 based on the -user argument.)
 
-------------------------------------------------------------------------------
-				LICENSE
+
+# License
 
 The license for this code is the same GPL license used by WebCalendar.
 
-------------------------------------------------------------------------------
-				COMPILING
+# Compiling
 
 You don't need to compile the java source code unless you want to make
 some changes.  The code is already compiled into the webcalendar.jar file.
@@ -98,6 +94,3 @@ If you do want to compile, a makefile is provided.  If you have Windows,
 you can use cygwin to get a copy of make, or you can just invoke javac
 from the command line to build all the source.
 
-------------------------------------------------------------------------------
-Craig Knudsen
-cknudsen@cknudsen.com
