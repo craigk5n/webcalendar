@@ -18,9 +18,8 @@ require ( 'phpmailer/class.phpmailer.php' );
 
 class WebCalMailer extends phpmailer {
   var $WordWrap = 75;
-
   /* Constructor */
-  function WebCalMailer () {
+  function __construct () {
     global $EMAIL_MAILER, $mailerError,
     $SMTP_AUTH, $SMTP_HOST, $SMTP_PASSWORD, $SMTP_USERNAME;
     $mailerError = '';

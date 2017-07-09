@@ -5,7 +5,7 @@
  * @author Craig Knudsen
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: DocList.class,v 1.7.2.2 2007/08/06 02:28:27 cknudsen Exp $
  * @package WebCalendar
  * @subpackage Doc
  */
@@ -50,7 +50,7 @@ class DocList {
    * @return DocList The new DocList object
    * @access public
    */
-  function DocList ( $event_id, $type )
+  function __construct ( $event_id, $type )
   {
     $this->_event_id = $event_id;
     $this->_type = $type;

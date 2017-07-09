@@ -31,7 +31,6 @@ if ( ! dbi_execute ( $sql, array ( $layer_user,
       ( $status == 'off' ? 'N': 'Y' ) ) ) ) {
   $error = translate ( 'Unable to update preference' ) . ': ' . dbi_error ()
    . '<br /><br /><span class="bold">SQL:</span> ' . $sql;
-  break;
 }
 
 if ( empty ( $error ) )

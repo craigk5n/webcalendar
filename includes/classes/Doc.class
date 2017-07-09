@@ -6,7 +6,7 @@
  * @author Craig Knudsen
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
+ * @version $Id: Doc.class,v 1.7.2.4 2011/06/02 12:44:30 rjones6061 Exp $
  * @package WebCalendar
  * @subpackage Doc
  */
@@ -123,7 +123,7 @@ class Doc {
    *
    * @return string  The SQL to load the Doc
    */
-  function getSQLForDocId ( $blid ) {
+  public static function getSQLForDocId ( $blid ) {
     return 'SELECT ' . Doc::getColumnList ()
      . ' FROM webcal_blob WHERE cal_blob_id = ' . $blid;
   }
@@ -155,7 +155,7 @@ class Doc {
    *
    * @access public
    */
-  function Doc ( $row ) {
+  function __construct ( $row ) {
     if ( ! is_array ( $row ) )
       die_miserable_death ( 'Doc constructor called without an array.' );
 
