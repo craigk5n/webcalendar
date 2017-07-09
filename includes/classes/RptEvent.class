@@ -160,7 +160,7 @@ class RepeatingEvent extends Event {
    *
    * @access public
    */
-  function RepeatingEvent ( $name, $description, $date, $time, $id, $extForID,
+  function __construct ( $name, $description, $date, $time, $id, $extForID,
     $priority, $access, $duration, $status, $owner, $category, $login,
     $cal_type, $location, $url, $due_date, $due_time, $percent,$moddate, $modtime,
     $rpt_type, $end, $frequency, $days, $rpt_bymonth,
@@ -168,10 +168,8 @@ class RepeatingEvent extends Event {
     $rpt_byyearday, $rpt_wkst, $rpt_count, $endtime,
     $exceptions, $inclusions, $rpt_all_dates ) {
 
-    /* Silly PHP4 hack */
-    $parent = get_parent_class ( $this );
-
-    parent::$parent ( $name, $description, $date, $time, $id, $extForID,
+    // Invoke super constructor
+    parent::__construct( $name, $description, $date, $time, $id, $extForID,
       $priority, $access, $duration, $status, $owner, $category, $login,
       $cal_type, $location, $url, $due_date, $due_time, $percent, $moddate, $modtime );
 

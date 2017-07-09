@@ -233,7 +233,7 @@ class Event {
    * @access public
    */
 
-  function Event ( $name, $description, $date, $time, $id, $extForID,
+  function __construct ( $name, $description, $date, $time, $id, $extForID,
           $priority, $access, $duration, $status, $owner, $category, $login,
           $calType, $location, $url, $dueDate, $dueTime, $percent, $moddate, $modtime ) {
 

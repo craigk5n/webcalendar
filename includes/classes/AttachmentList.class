@@ -22,9 +22,9 @@ class AttachmentList extends DocList {
    * @return AttachmentList The new AttachmentList object
    * @access public
    */
-  function AttachmentList ( $event_id )
+  function __construct ( $event_id )
   {
-    parent::DocList ( $event_id, 'A' );
+    parent::__construct ( $event_id, 'A' );
   }
 
 }

@@ -50,7 +50,7 @@ class DocList {
    * @return DocList The new DocList object
    * @access public
    */
-  function DocList ( $event_id, $type )
+  function __construct ( $event_id, $type )
   {
     $this->_event_id = $event_id;
     $this->_type = $type;
