@@ -488,6 +488,11 @@ function dbi_update_blob ( $table, $column, $key, $data ) {
        . ( function_exists ( 'mysql_real_escape_string' )
         ? mysql_real_escape_string ( $data ) : addslashes ( $data ) )
        . '\' WHERE ' . $key );
+  } elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
+    return dbi_execute ( $sql . ' = \''
+       . ( function_exists ( 'mysql_reali_escape_string' )
+        ? mysqli_real_escape_string ( $data ) : addslashes ( $data ) )
+       . '\' WHERE ' . $key );
   } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite' ) == 0 )
     return dbi_execute ( $sql . ' = \''
        . sqlite_udf_encode_binary ( $data ) . '\' WHERE ' . $key );
@@ -527,6 +532,8 @@ function dbi_get_blob ( $table, $column, $key ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     if ( strcmp ( $GLOBALS['db_type'], 'mysql' ) == 0 ||
         strcmp ( $GLOBALS['db_type'], 'mssql' ) == 0 )
+      $ret = $row[0];
+    elseif ( strcmp ( $GLOBALS['db_type'], 'mysqli' ) == 0 )
       $ret = $row[0];
     elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite' ) == 0 )
       $ret = sqlite_udf_decode_binary ( $row[0] );
