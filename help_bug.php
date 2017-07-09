@@ -21,10 +21,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
 // translate ( 'Also, please use English rather than' )
      . str_replace ('XXX', translate ( get_browser_language ( true ) ),
      translate ( 'Also, please use English rather than XXX.' ) ) : '' ) . '</p>
-    <form action="http://sourceforge.net/tracker/" target="_new">
-      <input type="hidden" name="func" value="add" />
-      <input type="hidden" name="group_id" value="3870" />
-      <input type="hidden" name="atid" value="103870" />
+    <form action="https://github.com/craigk5n/webcalendar/issues" target="_new">
       <input type="submit" value="' . translate ( 'Report Bug' ) . '" />
     </form>
     <h3>' . translate ( 'System Settings' ) . '</h3>
