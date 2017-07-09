@@ -1,12 +1,15 @@
 WebCalendar NEWS File
-Version: $Id$
+Version: 1.2.8
 
 This file lists significant changes to WebCalendar.  For a more detailed
-list (that includes specific bugs fixed, please look at ChangeLog):
-
-http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/ChangeLog?&pathrev=REL_1_2
+list (that includes specific bugs fixed, please look at ChangeLog).
 
 ---------------------------------------------------------------------------
+
+Version 1.2.8 (?? ??? 2017)
+ - Updates to supper PHP7.  PHP 5.3 is now minimum PHP version required.
+ - Added missing code for mysqli support.
+ - Gracefully handle if the function ob_gzhandler is not available.
 
 Version 1.2.7 (22 Jan 2013)
  - Security fix: Do not show the reason for a failed login (i.e. "no such user")

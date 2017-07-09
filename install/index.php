@@ -111,7 +111,9 @@ $checked = ' checked="checked" ';
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
 $magic = @get_magic_quotes_runtime ();
-@set_magic_quotes_runtime (0);
+if ( function_exists ( "set_magic_quotes_runtime" ) ) {
+  @set_magic_quotes_runtime (0);
+}
 $fd = @fopen ( $file, 'rb', true );
 $settings = array ();
 $password = '';
@@ -133,9 +135,13 @@ if ( ! empty ( $fd ) ) {
     $forcePassword = true;
   }
 }
-@set_magic_quotes_runtime ($magic);
+if ( function_exists ( "set_magic_quotes_runtime" ) ) {
+  @set_magic_quotes_runtime ($magic);
+}
 
-session_start ();
+if ( function_exists ( "session_start" ) ) {
+  session_start ();
+}
 $doLogin = false;
 
 // Set default Application Name
@@ -253,7 +259,9 @@ if ( @file_exists ( $file ) && $forcePassword && ! empty ( $pwd1 ) ) {
 }
 
 $magic = @get_magic_quotes_runtime ();
-@set_magic_quotes_runtime (0);
+if ( function_exists ( "set_magic_quotes_runtime" ) ) {
+  @set_magic_quotes_runtime (0);
+}
 $fd = @fopen ( $file, 'rb', false );
 if ( ! empty ( $fd ) ) {
   while ( ! feof ( $fd ) ) {
@@ -271,7 +279,9 @@ if ( ! empty ( $fd ) ) {
   }
   fclose ( $fd );
 }
-@set_magic_quotes_runtime ($magic);
+if ( function_exists ( "set_magic_quotes_runtime" ) ) {
+  @set_magic_quotes_runtime ($magic);
+}
 
 $action = getGetValue ( 'action' );
 // We were set here because of a mismatch of $PROGRAM_VERSION
@@ -942,10 +952,10 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
 </td></tr>
 <tr><th class="header"  colspan="2"><?php etranslate ( 'PHP Version Check' ) ?></th></tr>
 <tr><td>
-<?php etranslate ( 'Check to see if PHP 4.1.0 or greater is installed' ) ?>.
+<?php etranslate ( 'Check to see if PHP 5.3.0 or greater is installed' ) ?>.
 </td>
   <?php
-    $class = ( version_compare ( phpversion (), '4.1.0', '>=' ) ? '' : 'not' )
+    $class = ( version_compare ( phpversion (), '5.3.0', '>=' ) ? '' : 'not' )
       . 'recommended';
     echo '<td class="' . $class . '"><img src="' . ( $class == 'recommended'
       ? 'recommended.gif' : 'not_recommended.jpg' ) . '" alt="" />&nbsp;'
@@ -1019,7 +1029,11 @@ if ( empty ( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {?>
     } else {
       echo '<img src="not_recommended.jpg" alt=""/>&nbsp;';
     }
-     echo translate ( 'SESSION COUNTER' ) . ': ' . $_SESSION['check'];
+    if ( ! function_exists ( "session_start" ) ) {
+      echo translate("PHP sessions unavailable");
+    } else {
+      echo translate ( 'SESSION COUNTER' ) . ': ' . $_SESSION['check'];
+    }
 ?>
  </td></tr>
 <?php //if the settings file doesn't exist or we can't write to it, echo an error header..
@@ -1175,6 +1189,9 @@ if ( ! $exists || ! $canWrite ) { ?>
     $supported['postgresql'] = 'PostgreSQL';
   if ( function_exists ( 'sqlite_open' ) )
     $supported['sqlite'] = 'SQLite';
+  // TODO: Add support for SQLite3
+  //if ( class_exists ( 'SQLite3' ) )
+  //  $supported['sqlite3'] = 'SQLite3';
 
   asort ( $supported );
   foreach ( $supported as $key => $value ) {

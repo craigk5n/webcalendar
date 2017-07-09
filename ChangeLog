@@ -1,4 +1,4 @@
-$Id$
+Version 1.2.8 (?? Jul 2017)
 
 Version 1.2.7 (22 Feb 2013)
  - Security fix: Do not show the reason for a failed login (i.e. "no such user")
