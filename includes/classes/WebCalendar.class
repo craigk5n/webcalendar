@@ -125,8 +125,15 @@ class WebCalendar {
     $DMW = in_array ( $SCRIPT, $special );
 
     // Security precaution.  Don't allow <script> to be included in
-    // a URL in any way.
-    if ( preg_match ( '/\s*script/i', $_SERVER['QUERY_STRING'] ) ) {
+    // a URL in any way.  This includes the directory names as well.
+    if ( preg_match ( '/\s*script/i', $_SERVER['QUERY_STRING'] . $self ) ) {
+      // No need to have a graceful exit for this since it should only
+      // happen to malicioius crapweasels.
+      echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
+      exit;
+    }
+    // Don't allow "img src" to be in the URL either.
+    if ( preg_match ( '/\s*img.*src/i', $_SERVER['QUERY_STRING'] . $self ) ) {
       // No need to have a graceful exit for this since it should only
       // happen to malicioius crapweasels.
       echo "<html><body><h2>User Error</h2><p>Bite me.</p></html>\n";
