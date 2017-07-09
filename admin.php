@@ -2,6 +2,7 @@
 include_once 'includes/init.php';
 require_valid_referring_url ();
 include_once 'includes/date_formats.php';
+include_once 'includes/available_themes.php';
 if ( file_exists ( 'install/default_config.php' ) )
   include_once 'install/default_config.php';
 
@@ -33,8 +34,13 @@ function save_pref ( $prefs, $src ) {
       $setting = $key;
     }
     if ( strlen ( $setting ) > 0 && $prefix == 'admin_' ) {
-      if ( $setting == 'THEME' && $value != 'none' )
-        $my_theme = strtolower ( $value );
+      if ( $setting == 'THEME' && $value != 'none' ) {
+        if ( isValidTheme ( strtolower ( $value  ) ) )
+          $my_theme = strtolower ( $value );
+        else {
+          die_miserable_death ( "Invalid theme" );
+        }
+      }
 
       $setting = strtoupper ( $setting );
       $sql = 'DELETE FROM webcal_config WHERE cal_setting = ?';
