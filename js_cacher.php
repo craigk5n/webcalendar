@@ -60,7 +60,8 @@ if ( ( ! empty ( $arinc[2] ) && stristr ( $arinc[2], 'true' ) ) ) {
 
 // We don't want to compress for IE6 because of 'object expected' errors.
 if ( ini_get ( 'zlib.output_compression' ) != 1 && !
-    stristr ( $_SERVER['HTTP_USER_AGENT'], 'MSIE 6' ) )
+    stristr ( $_SERVER['HTTP_USER_AGENT'], 'MSIE 6' ) &&
+    function_exists ( "ob_gzhandler" ) )
   ob_start ( 'ob_gzhandler' );
 
 // We only allow includes if they exist in our includes/js directory, or HTMLarea
