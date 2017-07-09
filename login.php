@@ -112,7 +112,11 @@ if ( $single_user == 'Y' ) {
 
       user_load_variables ( $login, '' );
 
-      $encoded_login = encode_string ( $login . '|' . crypt($password) );
+      if ( function_exists("password_hash") ) {
+        $encoded_login = encode_string ( $login . '|' . password_hash($password,PASSWORD_BCRYPT) );
+      else {
+        $encoded_login = encode_string ( $login . '|' . crypt($password) );
+      }
       // set login to expire in 365 days
       if ( ! empty ( $remember ) && $remember == 'yes' ) {
         SetCookie ( 'webcalendar_session', $encoded_login,
