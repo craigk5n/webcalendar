@@ -1,4 +1,5 @@
-<?php // $Id: help_bug.php,v 1.31 2009/11/22 16:47:45 bbannon Exp $
+<?php
+/* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
@@ -10,19 +11,17 @@ if ( empty ( $HTTP_USER_AGENT ) )
 
   print_header ( '', '', '', true );
 
-  ob_start();
+  ob_start ();
 
   echo $helpListStr . '
     <h2>' . translate ( 'Report Bug' ) . '</h2>
     <p>' .
   translate ( 'Please include all the information below when reporting a bug.' )
    . ( $LANGUAGE != 'English-US' ? ' '
+// translate ( 'Also, please use English rather than' )
      . str_replace ('XXX', translate ( get_browser_language ( true ) ),
      translate ( 'Also, please use English rather than XXX.' ) ) : '' ) . '</p>
-    <form action="http://sourceforge.net/tracker/" target="_new">
-      <input type="hidden" name="func" value="add" />
-      <input type="hidden" name="group_id" value="3870" />
-      <input type="hidden" name="atid" value="103870" />
+    <form action="https://github.com/craigk5n/webcalendar/issues" target="_new">
       <input type="submit" value="' . translate ( 'Report Bug' ) . '" />
     </form>
     <h3>' . translate ( 'System Settings' ) . '</h3>
@@ -30,7 +29,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
   $tmp_arr = array ( 'PROGRAM_NAME' => $PROGRAM_NAME,
     'SERVER_SOFTWARE' => $SERVER_SOFTWARE,
     'Web Browser' => $HTTP_USER_AGENT,
-    'PHP Version' => phpversion(),
+    'PHP Version' => phpversion (),
     'Default Encoding' => ini_get ( 'default_charset' ),
     'db_type' => $db_type,
     'readonly' => $readonly,
@@ -49,7 +48,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
   }
 
   list_help ( $tmp_arr );
-  ob_end_flush();
+  ob_end_flush ();
   echo '
     </div>
     ' . print_trailer ( false, true, true );

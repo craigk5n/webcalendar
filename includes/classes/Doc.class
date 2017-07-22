@@ -142,7 +142,7 @@ class Doc {
    *
    * @return string  The SQL to load the Doc
    */
-  function getSQLForDocId ( $blid ) {
+  function static function getSQLForDocId ( $blid ) {
     return 'SELECT ' . Doc::getColumnList()
      . ' FROM webcal_blob WHERE cal_blob_id = ' . $blid;
   }
@@ -175,7 +175,7 @@ class Doc {
    *
    * @access public
    */
-  function Doc ( $row ) {
+  function __construct ( $row ) {
     if ( ! is_array ( $row ) )
       die_miserable_death ( 'Doc constructor called without an array.' );
 
