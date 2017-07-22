@@ -6420,7 +6420,15 @@ function rgb2html($r, $g=-1, $b=-1)
   */
 function require_valid_referring_url ()
 {
-  global $SERVER_URL;
+  global $SERVER_URL, $settings;
+
+  // Allow value in settings.php to disable this.  If you run PHP
+  // inside a docker container, you will need to do this since the IP
+  // address will be different.
+  if ( isset ( $settings['disable_referer_check'] ) &&
+    $settings['disable_referer_check'] == 'true' ) {
+    return;
+  }
 
   if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
     // Missing the REFERER value
