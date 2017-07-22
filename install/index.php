@@ -352,8 +352,12 @@ if( ! empty( $action ) && $action == 'install' ) {
         $install_filename .= 'postgres.sql';
         break;
       case 'sqlite':
-      case 'sqlite3':
         include_once 'sql/tables-sqlite.php';
+        populate_sqlite_db( $real_db, $c );
+        $install_filename = '';
+        break;
+      case 'sqlite3':
+        include_once 'sql/tables-sqlite3.php';
         populate_sqlite_db( $real_db, $c );
         $install_filename = '';
         break;
@@ -1215,7 +1219,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   if( function_exists( 'sqlite_open' ) )
     $supported['sqlite'] = 'SQLite';
 
-  if( function_exists( 'sqlite3_open' ) )
+  if( class_exists( 'SQLite3' ) )
     $supported['sqlite3'] = 'SQLite3';
 
   foreach( $supported as $key => $value ) {
@@ -1234,19 +1238,19 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td class="prompt"><label for="server">'
    . translate( 'Server' ) . ':</label></td>
                 <td colspan="2"><input name="form_db_host" id="server" '
-   . 'size="20" value="' . $settings['db_host'] . '" /></td>
+   . 'size="20" value="' . ( empty($settings['db_host']) ? '' : $settings['db_host']) . '" /></td>
               </tr>
               <tr>
                 <td class="prompt"><label for="login">'
    . $loginStr . ':</label></td>
                 <td colspan="2"><input name="form_db_login" id="login" '
-   . 'size="20" value="' . $settings['db_login'] . '" /></td>
+   . 'size="20" value="' . ( empty($settings['db_login']) ? '' : $settings['db_login']) . '" /></td>
               </tr>
               <tr>
                 <td class="prompt"><label for="pass">'
    . $passwordStr . ':</label></td>
                 <td colspan="2"><input name="form_db_password" id="pass" '
-   . 'size="20" value="' . $settings['db_password'] . '" /></td>
+   . 'size="20" value="' . (empty($settings['db_password']) ? '' : $settings['db_password']) . '" /></td>
               </tr>
               <tr>
                 <td class="prompt" id="db_name"><label for="database">'

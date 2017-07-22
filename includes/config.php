@@ -229,8 +229,10 @@ function do_config( $fileLoc ) {
   $user_inc = $settings['user_inc'];
 
   // If SQLite, the db file is in the includes directory.
-  if( $db_type == 'sqlite' || $db_type == 'sqlite3' )
-    $db_database = get_full_include_path( $db_database );
+  if( $db_type == 'sqlite' || $db_type == 'sqlite3' ) {
+    if ( substr ( $db_database, 0, 1 ) != '/' && ! file_exists ( $db_database ) )
+      $db_database = get_full_include_path( $db_database );
+  }
 
   // &amp; does not work here...leave it as &.
   $locateStr = 'Location: install/index.php?action=mismatch&version=';

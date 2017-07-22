@@ -8,12 +8,15 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
-Version 1.3.0-alpha1 (27 Jun 2017)
+Version 1.3.0-alpha1 (22 Jul 2017)
   - Fixes:
     + Removed old hack for register_globals work-around that is no longer
       needed.  This will improve security.
     + Updated PHP Mailer package.
-    + Cross-site scripting (XSS) fixes.
+    + XSS fixes
+    + Disable XSS check by settings disable_referer_check to 'false' in
+      includes/settings.php.  This will be required if WebCalendar is running
+      inside Docker.
   - New Features / Enhancements:
     = User Interface
       + New combo.php view for day/week/month/year/agenda view is
@@ -33,6 +36,9 @@ Version 1.3.0-alpha1 (27 Jun 2017)
         Category icons can now be either GIF or PNG images.  If "icons"
         directory is not writable, admin users will see an error message
         when editing/adding categories.
+      + Support for PHP 5.3+ SQLite3 class for using sqlite3.
+      + Add ability to import output of 'git log' command to allow viewing
+        git commit history in webcalendar.
   - The following translations were updated:
     French, Greek, Indonesian, Italian
 

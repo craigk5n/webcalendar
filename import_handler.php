@@ -6,6 +6,7 @@
  *      Palmdesktop (dba file)
  *      iCal (ics file)
  *      vCal (vcs file)
+ *      Git Log (text file output from 'git log' command)
  *
  *
  * Notes:
@@ -88,6 +89,13 @@ if ( $file['size'] > 0 ) {
       include 'import_outlookcsv.php';
       $data = parse_outlookcsv ( $file['tmp_name'] );
       $type = 'outlookcsv';
+      break;
+
+    // Output from command: 'git log'
+    case 'GITLOG':
+      include "import_gitlog.php";
+      $data = parse_gitlog ( $_FILES['FileName']['tmp_name'] );
+      $type = 'gitlog';
       break;
   }
   $count_con = $count_suc = $error_num = 0;

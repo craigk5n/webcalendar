@@ -136,6 +136,7 @@ else {
               <option value="PALMDESKTOP">Palm Desktop</option>
               <option value="VCAL">vCal</option>
               <option value="OUTLOOKCSV">Outlook (CSV)</option>
+              <option value="GITLOG">Git Log</option>
             </select>
           </td>
         </tr>

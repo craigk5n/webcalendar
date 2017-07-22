@@ -46,6 +46,9 @@ function checkExtension() {
     case 3:
       pass = ( extension == 'csv' );
       break;
+    case 4: // git log
+      pass = true;
+      break;
     default:
       pass = false;
       break;

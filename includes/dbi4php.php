@@ -216,7 +216,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
     $GLOBALS['sqlite_c']              = $c;
     return $c;
   } elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
-    $c = sqlite3_open( $database );
+    $c = new SQLite3 ( $database );
 
     if( ! $c ) {
       echo str_replace( 'XXX', $db_sqlite_error_str,
@@ -224,8 +224,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
       exit;
     }
     $db_connection_info['connected']  = true;
-    $db_connection_info['connection'] =
-    $GLOBALS['sqlite_c']              = $c;
+    $db_connection_info['connection'] = $GLOBALS['sqlite3_c'] = $c;
     return $c;
   } else
     dbi_fatal_error( 'dbi_connect(): '
@@ -248,6 +247,8 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
 function dbi_close( $conn ) {
   global $db_connection_info, $db_query_count,
   $old_textlimit, $old_textsize, $SQLLOG;
+
+  $connection =  $db_connection_info['connection'];
 
   if( is_array( $db_connection_info ) ) {
     if( ! $db_connection_info['connected'] )
@@ -285,9 +286,9 @@ function dbi_close( $conn ) {
     return pg_close( $GLOBALS['postgresql_connection'] );
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
     return sqlite_close( $conn );
-  elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 )
-    return sqlite3_close( $conn );
-  else
+  elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
+    return $connection->close ();
+  } else
     dbi_fatal_error( 'dbi_close(): '
        . translate( 'db_type not defined.' ) );
 }
@@ -397,7 +398,7 @@ function dbi_query( $sql, $fatalOnError = true, $showError = true ) {
     $res = sqlite_query( $GLOBALS['sqlite_c'], $sql, SQLITE_NUM );
   } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
     $found_db_type = true;
-    $res = sqlite3_query( $GLOBALS['sqlite_c'], $sql );
+    $res = $GLOBALS['sqlite3_c']->query ( $sql );
   }
 
   if( $found_db_type ) {
@@ -448,9 +449,9 @@ function dbi_fetch_row( $res ) {
     return ( $r ? $r : false );
   } elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
     return sqlite_fetch_array( $res );
-  elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 )
-    return sqlite3_fetch( $res );
-  else
+  elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
+    return $res->fetchArray ();
+  } else
     dbi_fatal_error( 'dbi_fetch_row(): '
      . translate( 'db_type not defined.' ) );
 }
@@ -488,7 +489,7 @@ function dbi_affected_rows( $conn, $res ) {
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
     return sqlite_changes( $conn );
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 )
-    return sqlite3_changes( $conn );
+    return $conn->changes();
   else
     dbi_fatal_error( 'dbi_free_result(): '
      . translate( 'db_type not defined.' ) );
@@ -571,7 +572,9 @@ function dbi_get_blob( $table, $column, $key ) {
       $ret = pg_unescape_bytea ( $row[0] );
     elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
       $ret = sqlite_udf_decode_binary( $row[0] );
-    else
+    elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
+      $ret = stream_get_contents( $row[0] );
+    } else
       // TODO!
       die_miserable_death( $unavail_DBI_Update_blob );
   }
@@ -614,9 +617,9 @@ function dbi_free_result( $res ) {
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 ) {
     // Not supported
   }
-  elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 )
-    return sqlite3_query_close( $res );
-  else
+  elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
+    // Not needed
+  } else
     dbi_fatal_error( 'dbi_free_result(): '
        . translate( 'db_type not defined.' ) );
 }
@@ -659,12 +662,7 @@ function dbi_error() {
       $GLOBALS['db_sqlite_error_str'] = '';
     }
   } elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
-    if ( empty ( $GLOBALS['db_sqlite_error_str'] ) ) {
-      $ret = sqlite3_error( $GLOBALS['sqlite_c'] );
-    } else {
-      $ret = $GLOBALS['db_sqlite_error_str'];
-      $GLOBALS['db_sqlite_error_str'] = '';
-    }
+    $ret = $GLOBALS['sqlite3_c']->lastErrorMsg ();
   } else
     $ret = 'dbi_error(): ' . translate( 'db_type not defined.' );
 
@@ -726,9 +724,10 @@ function dbi_escape_string( $string ) {
       return pg_escape_string( $string );
     case 'sqlite':
       return sqlite_escape_string( $string );
+    case 'sqlite3':
+      return $db_connection_info['connection']->escapeString ( $string );
     case 'ibm_db2':
     case 'odbc':
-    case 'sqlite3':
     default:
       return addslashes( $string );
   }
@@ -772,12 +771,6 @@ function dbi_execute( $sql, $params = array(), $fatalOnError = true,
     $phindex++;
   }
   $prepared .= substr( $sql, $offset );
-
-  if( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 )
-    if( ! sqlite3_exec( $GLOBALS['sqlite_c'], $prepared ) )
-      dbi_fatal_error( str_replace( 'XXX', $prepared,
-        translate( 'Cannot execute SQLite3 command XXX' ) ),
-        $fatalOnError, $showError );
 
   return dbi_query( $prepared, $fatalOnError, $showError );
 }

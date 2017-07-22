@@ -1246,7 +1246,9 @@ function import_data ( $data, $overwrite, $type ) {
   }
   if ( ! is_array ( $data ) )
     return false;
+
   foreach ( $data as $Entry ) {
+    flush(); ob_flush(); // send output to browser ASAP
     // do_debug ( "Entry Array " . print_r ( $Entry, true ) );
     $participants[0] = $calUser;
     // $participants[0] = $login;
@@ -1569,6 +1571,19 @@ function import_data ( $data, $overwrite, $type ) {
             $error = db_error();
             break;
           }
+        } else if ( $ImportType == 'GITLOG' ) {
+          $uid = empty ( $Entry['UID'] ) ? null : $Entry['UID'];
+          // This may cause problems
+          if ( strlen ( $uid ) > 200 )
+            $uid = substr ( $uid, 0, 200 );
+          $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
+            cal_login, cal_import_type, cal_external_id )
+            VALUES ( ?, ?, ?, ?, ? )';
+          $sqlLog .= $sql . "<br />\n";
+          if ( ! dbi_execute ( $sql, array ( $importId, $id, $calUser, 'gitlog', $uid ) ) ) {
+            $error = db_error();
+            break;
+          }
         }
       }
       // Now add participants
@@ -1610,7 +1625,7 @@ function import_data ( $data, $overwrite, $type ) {
       // update Categories
       if ( ! empty( $Entry['Categories'] ) || $importcat != '') {
         $cat_ids = ( $importcat != ''
-          ? get_categories_id_byname( utf8_decode( $importcat ) )
+          ? get_categories_id_byname( function_exists("utf8_decode") ? utf8_decode( $importcat ) : $importcat )
           : $Entry['Categories'] );
 
         $cat_order = 1;
@@ -1805,6 +1820,7 @@ function import_data ( $data, $overwrite, $type ) {
       }
     }
     // here to end not in icalclient
+    $time = '';
     if ( $subType != 'icalclient' && $subType != 'remoteics' ) {
       if ( ! empty ( $error ) && empty ( $overlap ) ) {
         $error_num++;
@@ -1844,7 +1860,8 @@ function import_data ( $data, $overwrite, $type ) {
         echo '" title="' . translate ( 'View this entry' ) . '">';
         $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
         $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
-        echo htmlspecialchars ( $Entry['Summary'] ). '</a> ( ' . $dd;
+        echo htmlspecialchars ( $Entry['Summary'] ). '</a> (' .
+          date_to_str ( $dd );
 
         if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
           echo '&nbsp; ' . translate ( 'All day event' );

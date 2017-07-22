@@ -338,7 +338,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   // Default color is $MYEVENTS.  Add a bogus array 'none' element for it.
   $categories['none'] = array ( 'cat_color' => $MYEVENTS );
   foreach ( $categories as $catId => $cat ) {
-    if ( $catId == 0 || $catId == -1 ) next;
+    if ( $catId == 0 || $catId == -1 ) continue;
     //echo "\n cat id = $catId\n";
     $color = $cat['cat_color'];
     $fg = '#000000';
