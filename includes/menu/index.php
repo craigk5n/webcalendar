@@ -70,7 +70,7 @@ if ( $single_user != 'Y' ) {
     $year_url .= '?user=' . $user;
 
     if ( ! empty ( $new_entry_url ) )
-      $new_entry_url .= '&user=' . $user;
+      $new_entry_url .= (strpos($new_entry_url, '?') !== FALSE? '&': '?') . 'user=' . $user;
 
     if ( ! empty ( $new_task_url ) )
       $new_task_url .= '&user=' . $user;
