@@ -209,7 +209,7 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
       );
     array_unshift ( $grouplist, $public );
   }
-  $groups = '';
+  $groups = array();
   $grouplistcnt = count ( $grouplist );
   for ( $i = 0; $i < $grouplistcnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
