@@ -142,7 +142,7 @@ class Doc {
    *
    * @return string  The SQL to load the Doc
    */
-  function static function getSQLForDocId ( $blid ) {
+  public static function getSQLForDocId ( $blid ) {
     return 'SELECT ' . Doc::getColumnList()
      . ' FROM webcal_blob WHERE cal_blob_id = ' . $blid;
   }
