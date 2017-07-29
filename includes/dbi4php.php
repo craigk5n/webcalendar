@@ -509,7 +509,7 @@ function dbi_affected_rows( $conn, $res ) {
  * @return bool True on success
  */
 function dbi_update_blob( $table, $column, $key, $data ) {
-  global $unavail_DBI_Update_blob;
+  global $unavail_DBI_Update_blob, $db_connection_info;
 
   $unavail_DBI_Update_blob = str_replace( array( 'XXX', 'YYY' ),
     array( '"dbi_update_blob"', $GLOBALS['db_type'] ),
@@ -535,7 +535,16 @@ function dbi_update_blob( $table, $column, $key, $data ) {
   elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
     return dbi_execute( $sql . ' = \''
      . sqlite_udf_encode_binary( $data ) . '\' WHERE ' . $key );
-  else
+  elseif ( strcmp ( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
+    $ar = explode ( '=', $key, 2 );
+    $colKey = trim($ar[0]);
+    $valueKey = trim($ar[1]);
+    $statement = $GLOBALS['sqlite3_c']->prepare($sql .
+      " = ? WHERE $colKey = ?");
+    $statement->bindParam ( 1, $data, SQLITE3_BLOB );
+    $statement->bindParam ( 2, $valueKey );
+    return $statement->execute();
+  } else
     // TODO!
     die_miserable_death( $unavail_DBI_Update_blob );
 }
@@ -550,7 +559,7 @@ function dbi_update_blob( $table, $column, $key, $data ) {
  * @return bool True on success
  */
 function dbi_get_blob( $table, $column, $key ) {
-  global $unavail_DBI_Update_blob;
+  global $unavail_DBI_Update_blob, $db_connection_info;
 
   assert( '! empty( $table )' );
   assert( '! empty( $column )' );
@@ -573,7 +582,7 @@ function dbi_get_blob( $table, $column, $key ) {
     elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
       $ret = sqlite_udf_decode_binary( $row[0] );
     elseif( strcmp( $GLOBALS['db_type'], 'sqlite3' ) == 0 ) {
-      $ret = stream_get_contents( $row[0] );
+      $ret = $row[0];
     } else
       // TODO!
       die_miserable_death( $unavail_DBI_Update_blob );
@@ -725,7 +734,7 @@ function dbi_escape_string( $string ) {
     case 'sqlite':
       return sqlite_escape_string( $string );
     case 'sqlite3':
-      return $db_connection_info['connection']->escapeString ( $string );
+      return SQLite3::escapeString ( $string );
     case 'ibm_db2':
     case 'odbc':
     default:
