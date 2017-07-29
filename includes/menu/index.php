@@ -29,8 +29,12 @@ if ( access_is_enabled () )
 if ( $login == '__public__' )
   $can_add = ( access_is_enabled () ? $can_add : $PUBLIC_ACCESS_CAN_ADD == 'Y' );
 
-if ( $is_nonuser )
-  $can_add = false;
+if (!$is_admin && !$is_assistant && !$is_nonuser_admin) {
+  if ($is_nonuser)
+    $can_add = false;
+  else if (!empty($user) && $user != $login && $user != '__public__')
+    $can_add = false;
+}
 
 $export_url = $import_url = $new_entry_url = $new_task_url = '';
 $search_url = $select_user_url = $unapproved_url = '';
