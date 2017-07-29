@@ -211,12 +211,17 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
   }
   $groups = array();
   $grouplistcnt = count ( $grouplist );
+  $gdone = array();
   for ( $i = 0; $i < $grouplistcnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];
     // Don't display current $user in group list.
     if ( ! empty ( $user ) && $user == $l )
       continue;
+    // Do not show duplicate entries.
+    if (isset($gdone[$l]))
+      continue;
+    $gdone[$l] = true;
     /*
 Use the preferred view if it is day/month/week/year.php. Try not to use a
 user-created view because it might not display the proper user's events.

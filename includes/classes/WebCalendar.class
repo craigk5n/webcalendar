@@ -168,6 +168,7 @@ class WebCalendar {
     load_global_settings();
 
     $this->setLanguage();
+    $user = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
 
     if ( empty ( $ovrd ) )
       load_user_preferences();
@@ -181,7 +182,6 @@ class WebCalendar {
     $id      = getValue ( 'id', '[0-9]+', true );
     $minute  = getValue ( 'minute', '[0-9]+' );
     $month   = getValue ( 'month', '[0-9]+' );
-    $user    = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
     $year    = getValue ( 'year', '[0-9]+' );
 
     if ( empty ( $PUBLIC_ACCESS ) )
@@ -240,7 +240,8 @@ class WebCalendar {
 
       if ( ! empty ( $user ) ) {
         $u_url = 'user=' . $user . '&amp;';
-        user_load_variables ( $user, 'user_' );
+        if (!user_load_variables ( $user, 'user_' ))
+          nonuser_load_variables($user, 'user_');
         if ( $user == '__public__' )
           $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
       } else {
