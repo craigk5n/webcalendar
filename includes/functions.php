@@ -2449,6 +2449,14 @@ function get_byday ( $byday, $cdate, $type = 'month', $date ) {
     $byxxxDay = '';
     $dayTxt = substr ( $day, -2, 2 );
     $dayOffset = substr_replace ( $day, '', -2, 2 );
+
+    // It is possible to have spurious offset days within a 'daily' repetition,
+    //   by setting them while in month/year repetition type, then changing
+    //   type to 'daily'.
+    // These situations will lead in a crash without the following test.
+    if (is_numeric($dayOffset) && !isset($ditype))
+      continue;
+
     $dowOffset = ( ( -1 * $byday_values[$dayTxt] ) + 7 ) % 7; //SU=0, MO=6, TU=5...
     if ( is_numeric ( $dayOffset ) && $dayOffset > 0 ) {
       // Offset from beginning of $type.
