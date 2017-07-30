@@ -2706,21 +2706,15 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
     $sql = 'SELECT DISTINCT( wnc.cal_login ), cal_lastname, cal_firstname,
       cal_is_public FROM webcal_group_user wgu, webcal_nonuser_cals wnc WHERE '
      . ( $add_public ? 'wnc.cal_is_public = \'Y\'  OR ' : '' )
-     . ' cal_admin = ? OR ( wgu.cal_login = wnc.cal_login AND cal_group_id ';
-    if ( $groupcnt == 1 )
-      $sql .= '= ? )';
-    else {
-      // Build count ( $groups ) placeholders separated with commas.
-      $placeholders = '';
-      for ( $p_i = 0; $p_i < $groupcnt; $p_i++ ) {
-        $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
-      }
-      $sql .= "IN ( $placeholders ) )";
-    }
+     . ' cal_admin = ?
+    OR ( wgu.cal_login = wnc.cal_login
+      AND cal_group_id ' .
+      ( $groupcnt == 1 ? '= ?' : 'IN ( ?' . str_repeat ( ',?', $groupcnt - 1 ) . ' )' );
 
     // Add $this_user to beginning of query params.
     array_unshift ( $groups, $this_user );
-    $rows = dbi_get_cached_rows ( $sql . ' ORDER BY '
+    $rows = dbi_get_cached_rows ( $sql . ' )
+  ORDER BY '
        . ( empty ( $USER_SORT_ORDER ) ? '' : "$USER_SORT_ORDER" ), $groups );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -2821,17 +2815,9 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
     // Get other members of users' groups.
     $sql = 'SELECT DISTINCT(webcal_group_user.cal_login), cal_lastname,
       cal_firstname FROM webcal_group_user LEFT JOIN webcal_user
-      ON webcal_group_user.cal_login = webcal_user.cal_login WHERE cal_group_id ';
-    if ( $groupcnt == 1 )
-      $sql .= '= ?';
-    else {
-      // Build count ( $groups ) placeholders separated with commas.
-      $placeholders = '';
-      for ( $p_i = 0; $p_i < $groupcnt; $p_i++ ) {
-        $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
-      }
-      $sql .= "IN ( $placeholders )";
-    }
+    ON webcal_group_user.cal_login = webcal_user.cal_login
+  WHERE cal_group_id ' .
+      ( $groupcnt == 1 ? '= ?' : 'IN ( ?' . str_repeat ( ',?', $groupcnt - 1 ) . ' )' );
 
     $rows = dbi_get_cached_rows ( $sql . ' ORDER BY '
        . ( empty ( $USER_SORT_ORDER ) ? '' : "$USER_SORT_ORDER, " )
@@ -5144,12 +5130,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
     $rows = dbi_get_cached_rows( $sql, array() );
   elseif ( ! empty ( $cat_id ) ) {
     $cat_array = explode ( ',', $cat_id );
-    $placeholders = '';
-    for ( $p_i = 0, $cnt = count ( $cat_array ); $p_i < $cnt; $p_i++ ) {
-      $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
-    }
-    $rows = dbi_get_cached_rows ( $sql . 'WHERE cat_id IN ( ' . $placeholders
-       . ' )', $cat_array );
+    $rows = dbi_get_cached_rows ( $sql . '
+  WHERE cat_id IN ( ?' . str_repeat ( ',?', count ( $cat_array ) - 1 ) . ' )', $cat_array );
   }
   if ( ! empty ( $cat_id ) ) {
     // $rows = dbi_get_cached_rows ( $sql, array ( $cat_id ) );
@@ -5178,9 +5160,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
    . 'we.cal_id = weu.cal_id AND weu.cal_status IN ( \'A\',\'W\' ) ';
 
   if ( $catlistcnt > 0 ) {
-    $placeholders = '';
+    $placeholders = '?' . str_repeat ( ',?', $catlistcnt - 1 );
     for ( $p_i = 0; $p_i < $catlistcnt; $p_i++ ) {
-      $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
       $query_params[] = $catlist[$p_i];
     }
 
