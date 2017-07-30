@@ -1750,30 +1750,8 @@ function do_redirect ( $url ) {
   if ( empty ( $SERVER_SOFTWARE ) )
     $SERVER_SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
 
-  // $SERVER_URL should end in '/', but we may not have it yet if we are
-  // redirecting to the login.  If not, then pull it from the database.
-  if ( empty ( $SERVER_URL ) && ! empty ( $c ) ) {
-    $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-      "WHERE cal_setting = 'SERVER_URL'" );
-    if ( $res ) { 
-      if ( $row = dbi_fetch_row ( $res ) ) {
-        $SERVER_URL = $row[0];
-      }
-    }
-    dbi_free_result ( $res );
-  }
-
-  // If we have the server URL, then use a full URL, which is technically
-  // required (but all browsers accept relative URLs here).
-  // BUT, only do this if our URL does not start with '/' because then
-  // we could end up with a URL like:
-  //   http://www.k5n.us/webcalendar/webcalendar/month.php
-  if ( ! empty ( $SERVER_URL ) && substr ( $url, 0, 1 ) != '/' ) {
-    $url = $SERVER_URL . $url;
-  }
-
-//echo "<pre>"; print_r ( debug_backtrace() ); echo "\n</pre>\n";
-//echo "URL: $url <br>"; exit;
+  // As of RFC 7231, Location redirects can be relative URLs.
+  // See: https://tools.ietf.org/html/rfc7231#section-7.1.2
 
   $meta = '';
   if ( ( substr ( $SERVER_SOFTWARE, 0, 5 ) == 'Micro' ) ||
