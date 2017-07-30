@@ -125,91 +125,87 @@
 
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
-echo ( $DISPLAY_TASKS != 'Y' ? '#month #nextmonth{
-  float:right;
+/* CSS Variables (Custom Properties) are currently available in all modern browsers. Even IE > 9!
+
+  See http://www.caniuse.com/#search=css%20variables
+  and https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables
+
+  So, as long as this file, "styles.php" with PHP variables, gets called before
+  "styles.css" they should all work. Allowing "styles.css" to cache without the
+  need to go through "css_cacher.php". */
+
+/* ":root" matches top-level, usually "html". */
+echo ':root {
+  /* Leave font-size as "px" here and "rem" should scale properly everywhere else. */
+  --def-font-size: 16px;
+  --def-font-family: sans-serif;
+
+  --box-default-color: #888888;
+
+  --bgcolor: ' . $GLOBALS['BGCOLOR'] . ';
+  --bgimage: ' . $GLOBALS['BGIMAGE'] . ';
+  --bgrepeat: ' . $GLOBALS['BGREPEAT'] . ';
+  --captions: ' . $GLOBALS['CAPTIONS'] . ';
+  --cellbg: ' . $GLOBALS['CELLBG'] . ';
+  --fonts: ' . $GLOBALS['FONTS'] . ';
+  --h2color: ' . $GLOBALS['H2COLOR'] . ';
+  --haseventsbg: ' . $GLOBALS['HASEVENTSBG'] . ';
+  --minicalfont: ' . $GLOBALS['MINICALFONT'] . ';
+  --minicalwidth: ' . $GLOBALS['MINICALWIDTH'] . ';
+  --myevents: ' . $GLOBALS['MYEVENTS'] . ';
+  --nextmonthbg: ' . $GLOBALS['NEXTMONTHBG'] . ';
+  --othermonthbg: ' . $GLOBALS['OTHERMONTHBG'] . ';
+  --popupfg: ' . $GLOBALS['POPUP_FG'] . ';
+  --prevmonthbg: ' . $GLOBALS['PREVMONTHBG'] . ';
+  --tablebg: ' . $GLOBALS['TABLEBG'] . ';
+  --textcolor: ' . $GLOBALS['TEXTCOLOR'] . ';
+  --thbg: ' . $GLOBALS['THBG'] . ';
+  --thfg: ' . $GLOBALS['THFG'] . ';
+  --todaycellbg: ' . $GLOBALS['TODAYCELLBG'] . ';
+  --weekendbg: ' . $GLOBALS['WEEKENDBG'] . ';
+  --weeknumber: ' . $GLOBALS['WEEKNUMBER'] . ';
+}' .
+/* TODO: I think these two, among others, may be too specific.
+   Do they really need "#month"?
+   And, instead of IDs "#nextmonth" and "#prevmonth", would classes ".next" and ".prev" work? */
+  ( $DISPLAY_TASKS != 'Y' ? '
+#month #nextmonth {
+  float: right;
 }
-#month #prevmonth{
-  float:left;
+#month #prevmonth {
+  float: left;
 }
-' : '' ) . '#minicalendar table{
-  width:' . ( empty( $GLOBALS['MINICALWIDTH'] )
+' : '' ) . '#minicalendar table {
+  width: ' . ( empty( $GLOBALS['MINICALWIDTH'] )
   ? '10em' : $GLOBALS['MINICALWIDTH'] ) . ';
 }
-' . ( $MENU_ENABLED == 'N' ? '#dateselector form{
-  border-top:0.0625em solid ' . $GLOBALS['TABLEBG'] . ';
+' . ( $MENU_ENABLED == 'N' ? '#dateselector form {
+  border-top: 0.0625em solid ' . $GLOBALS['TABLEBG'] . ';
 }
-' : '' ) . '#day .minical td.selectedday,
-#eventcomment,
-#login table,
-#register table,
-#securityAuditNotes,
-#viewd .main th,
-.dayofmonth,
-.embactlog,
-.embactlog th,
-.embactlog td,
-.glance,
-.glance th.row,
-.glance td,
-.main,
-.main th,
-.main td,
-.matrixd,
-.note,
-.rightsidetip,
-.standard,
-.standard th{
-  border-color:' . $GLOBALS['TABLEBG'] . ';
+' : '' ) . '
+body {' . ( empty( $GLOBALS['BGIMAGE'] )  
+  ? '' : '
+  background-image: url( ' . $GLOBALS['BGIMAGE'] . ' );
+  background-repeats: ' . $GLOBALS['BGREPEAT'] );
+';
 }
-.glance th.empty,
-.minical th,
-.minical td,
-#viewv .main th.empty,
-#viewm .main th.empty,
-#vieww .main th.empty,
-#viewr .main th.empty,
-#week .main th.empty{
-  border-color:' . $GLOBALS['BGCOLOR'] . ';
-}
-body{
-  background:' . $GLOBALS['BGCOLOR'] . ( empty( $GLOBALS['BGIMAGE'] )
-  ? '' : ' url( ' . $GLOBALS['BGIMAGE'] . ' ) ' . $GLOBALS['BGREPEAT'] ) . ';
-  font-family:' . $GLOBALS['FONTS'] . ';
-}
-body,
-a,
-.minical td.empty,
-.minitask td,
-.nav,
-.printer,
-.task{
-  color:' . $GLOBALS['TEXTCOLOR'] . ';
-}
-.popup{
-  border-color:' . $GLOBALS['POPUP_FG'] . ';
+.popup {
   ' . background_css( $GLOBALS['POPUP_BG'], 200 ) . '
-  color:' . $GLOBALS['POPUP_FG'] . ';
-}
-th,
-#day .minical caption,
-.dailymatrix,
-.layertable th{
-  background:' . $GLOBALS['THBG'] . ';
 }
 .main th,
-.main th.weekend{
+.main th.weekend {
   ' . background_css( $GLOBALS['THBG'], 15 ) . '
 }
-.main td{
+.main td {
   ' . background_css( $GLOBALS['CELLBG'], 100 ) . '
 }
-.main td.weekend{
+.main td.weekend {
   ' . background_css( $GLOBALS['WEEKENDBG'], 100 ) . '
 }' . ( $GLOBALS['HASEVENTSBG'] != $GLOBALS['CELLBG'] ? '
-.main td.hasevents{
+.main td.hasevents {
   ' . background_css( $GLOBALS['HASEVENTSBG'], 100 ) . '
 }' : '' ) . '
-.main td.othermonth{
+.main td.othermonth {
   ' . background_css( $GLOBALS['OTHERMONTHBG'], 100 ) . '
 }
 .main td.today, #datesel td #today {
@@ -218,118 +214,41 @@ th,
 #admin .main td.weekcell,
 #month .main td.weekcell,
 #pref .main td.weekcell,
-#viewl .main td.weekcell{
+#viewl .main td.weekcell {
   ' . background_css( $GLOBALS['THBG'], 50 ) . '
 }
-td.matrixappts,
-#adminhome table,
-#adminhome td a,
-#eventcomment,
-.alt,
-.layers,
-.layertable td,
-.minical td,
-.minitask tr.header th,
-.minitask tr.header td,
-.standard{
-  background:' . $GLOBALS['CELLBG'] . ';
-}
-#editentry th.weekend,
-.minical td.weekend{
-  background:' . $GLOBALS['WEEKENDBG'] . ';
-}
-#example_month,
-.glance th.empty,
-.minical th,
-.minical td.empty{
-  background:' . $GLOBALS['BGCOLOR'] . ';
-}
-#listunapproved .odd,
-.minical td#today{
-  background:' . $GLOBALS['TODAYCELLBG'] . ';
-}
 .glance td,
-.note{
+.note {
   ' . background_css( $GLOBALS['CELLBG'], 50 ) . '
 }
-#viewt .main th.weekend{
+#viewt .main th.weekend {
   ' . background_css( $GLOBALS['WEEKENDBG'], 15 ) . '
 }
-#contentDay .daytimedevent{
-  background:' . $GLOBALS['HASEVENTSBG'] . ';
-}
 #login table,
-#register table{
+#register table {
   ' . background_css( $GLOBALS['CELLBG'], 200 ) . '
 }
-#securityAuditNotes{
+#securityAuditNotes {
   ' . background_css( $GLOBALS['CELLBG'], 150 ) . '
 }
-#viewt td.entry{
+#viewt td.entry {
   ' . background_css( $GLOBALS['THBG'], 10 ) . '
 }
-a.weekcell,
-.weeknumber{
-  color:' . $GLOBALS['WEEKNUMBER'] . ';
-}
-h2,
-.asstmode,
-.categories,
-.tabfor a,
-.title .date,
-.title .titleweek,
-.user,
-.title .user,
-.title .viewname,
-#admin .main td.weekcell,
-#day .title .date,
-#day .title .user,
-#example_month p,
-#month .main td.weekcell,
-#pref .main td.weekcell,
-#viewl .main td.weekcell{
-  color:' . $GLOBALS['H2COLOR'] . ';
-}
-th,
-#day .minical caption,
-#viewr .main th a,
-#week .main th a,
-#weekdetails .main th a,
-.layertable th{
-  color:' . $GLOBALS['THFG'] . ';
-}
-#contentDay #dayuntimed,
-#contentDay .daytimedevent,
-.entry{
-  color:' . $GLOBALS['MYEVENTS'] . ';
-}
-.dayofmonth,
-.note{
-  color:' . $GLOBALS['TABLEBG'] . ';
-}
-.minical th{
-  color:' . $GLOBALS['TEXTCOLOR'] . ';
-}
-.minical caption a{
-  color:' . $GLOBALS['CAPTIONS'] . ';
-}
 #minicalendar th,
-#minicalendar td{
-  font-size:' . ( empty( $GLOBALS['MINICALFONT'] )
+#minicalendar td {
+  font-size: ' . ( empty( $GLOBALS['MINICALFONT'] )
   ? '0.6875em' : $GLOBALS['MINICALFONT'] ) . ';
 }
 ' . ( $DISPLAY_WEEKENDS == 'N' ? '#viewt .main tr.weekend,
 .main th.weekend,
 .main td.weekend,
 .minical th.weekend,
-.minical td.weekend{
-  display:none;
+.minical td.weekend {
+  display: none;
 }
 ' : '' );
 
-?>
-<?php
-if ( $CATEGORIES_ENABLED == 'Y' ) {
+if ( $CATEGORIES_ENABLED === 'Y' ) {
   // Need to load user variables so that $is_admin is set before we load
   // categories.
   user_load_variables ( $user, '' );
@@ -338,28 +257,29 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   // Default color is $MYEVENTS.  Add a bogus array 'none' element for it.
   $categories['none'] = array ( 'cat_color' => $MYEVENTS );
   foreach ( $categories as $catId => $cat ) {
-    if ( $catId == 0 || $catId == -1 ) continue;
-    //echo "\n cat id = $catId\n";
+    if ( $catId == 0 || $catId == -1 )
+      continue;
+
     $color = $cat['cat_color'];
     $fg = '#000000';
+
     if ( $catId < 0 )
       $catId = 0 - $catId;
+
     $rgb = array ( 255, 255, 255 );
+
     if ( ! empty ( $color ) ) {
       if ( preg_match ( "/#(.)(.)(.)(.)(.)(.)/", $color ) ) {
         $rgb = html2rgb ( $color );
+
         // If red+green+blue is less than 50%, then we will
         // assume this color is dark enough to use a white text foreground.
         if ( $rgb[0] + $rgb[1] + $rgb[2] < 384 ) {
-          $fg = '#ffffff';
+          $fg = '#FFFFFF';
         }
-        //echo "// " . hextoint ( $matches[1] ) . ',' . hextoint ( $matches[3]).','. hextoint ( $matches[5] )  . " $fg\n";
       }
     // Gradient
-    //  echo ".cat_{$catId} { "
-    //    . background_css( $color, 15 ) . ' color: ' . $fg . "; }\n";
-      echo "#combo .cat_{$catId} { background-color: $color; border: 1px outset $color; color: $fg }\n";
-      echo "#month2 .cat_{$catId} { color: $color }\n";
+      echo "#combo .cat_ {$catId} { background-color: $color; border: 1px outset $color; color: $fg }\n"#month2 .cat_ {$catId} { color: $color }\n";
     }
   }
 }
