@@ -19,6 +19,9 @@
   * for malicious hacks.  If one is found, we just exit since this
   * should not happen with normal use.
   */
+function preventHacking_helper($matches) {
+  return chr(hexdec($matches[1]));
+}
 function preventHacking ( $name, $instr ) {
   $bannedTags = array (
     'APPLET', 'BODY', 'EMBED', 'FORM', 'HEAD',
@@ -29,10 +32,10 @@ function preventHacking ( $name, $instr ) {
 
   if ( is_array ( $instr ) ) {
     for ( $j = 0; $j < count ( $instr ); $j++ ) {
+      // First, replace any escape characters like '\x3c'
+      $teststr = preg_replace_callback("#(\\\x[0-9A-F]{2})#i",
+                                       'preventHacking_helper', $instr[$j]);
       for ( $i = 0; $i < count ( $bannedTags ) && ! $failed; $i++ ) {
-        // First, replace any escape characters like '\x3c'
-        $teststr = preg_replace ( "#(\\\x[0-9A-F]{2})#e",
-          "chr(hexdec('\\1'))", $instr[$j] );
         if ( preg_match ( "/<\s*$bannedTags[$i]/i", $teststr ) ) {
           $failed = true;
         }
@@ -45,8 +48,8 @@ function preventHacking ( $name, $instr ) {
   } else {
     // Not an array
     // First, replace any escape characters like '\x3c'
-    $teststr = preg_replace ( "#(\\\x[0-9A-F]{2})#e",
-      "chr(hexdec('\\1'))", $instr );
+    $teststr = preg_replace_callback("#(\\\x[0-9A-F]{2})#i",
+                                     'preventHacking_helper', $instr);
     for ( $i = 0; $i < count ( $bannedTags ) && ! $failed; $i++ ) {
       if ( preg_match ( "/<\s*$bannedTags[$i]/i", $teststr ) ) {
         $failed = true;
