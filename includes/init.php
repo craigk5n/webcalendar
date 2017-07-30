@@ -96,6 +96,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
+  if ( defined ( '__WC_INCDIR' ) && is_dir ( __WC_INCDIR ) )
+    $incdir = __WC_INCDIR;
+  elseif ( is_dir ( 'includes' ) )
+    $incdir = 'includes';
+  elseif ( is_dir ( '../includes' ) )
+    $incdir = '../includes';
+
   $cs_ret = $lang = $menuHtml = $menuScript = '';
 
   // Remember this view if the file is a view_x.php script.
@@ -115,7 +122,12 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $cs_ar = array( 'css/styles.css', 'css/print_styles.css' );
   $js_ar = array();
 
-  $ret = send_doctype( $appStr );
+  $ret = send_doctype( $appStr ) .
+// Use "normalize.css" to set all browsers, especially IE, to the same baseline.
+// Use "punctuation.css" to start getting punctuation out of the code to where the translators can get at it.
+'
+    <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css" rel="stylesheet">
+    <link href="' . $incdir . '/css/punctuation.css" rel="stylesheet">';
 
   if( ! $disableAJAX ) {
     $ret .= '
@@ -258,6 +270,10 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
      . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet" />';
     foreach( $cs_ar as $c ) {
       $i = 'includes/' . $c;
+/* According to the HTML5 books I've read,
+   no browser has ever used either type="text/css" or type="text/javascript".
+   So, all these could come out. Later. bb
+ */
       $ret .= '
     <link type="text/css" href="' . $i . '?' . filemtime( $i )
        . '" rel="stylesheet"'
@@ -347,9 +363,17 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   }
 
   return $ret . '
-<!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->
-' // Adds an easy link to validate the pages.
-  . ( $DEMO_MODE == 'Y' ? '
+<!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
+    ( $ALLOW_HTML_DESCRIPTION !== 'Y' ? '' :
+    /* Your choices here are "basic", "standard" or "full". */ '
+    <script src="//cdn.ckeditor.com/4.6.0/basic/ckeditor.js"></script>
+    <script>' .
+    /* Use CKEditor for ALL <textarea>. */ '
+      CKEDITOR.replaceAll();
+    </script>' ) .
+
+    // Adds an easy link to validate the pages.
+    ( $DEMO_MODE == 'Y' ? '
     <p><a href="http://validator.w3.org/check?uri=referer">'
      . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
      . 'class="valid" /></a></p>' : '' )/* Close HTML page properly. */ . '
