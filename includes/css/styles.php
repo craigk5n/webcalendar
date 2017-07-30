@@ -279,7 +279,7 @@ if ( $CATEGORIES_ENABLED === 'Y' ) {
         }
       }
     // Gradient
-      echo "#combo .cat_ {$catId} { background-color: $color; border: 1px outset $color; color: $fg }\n"#month2 .cat_ {$catId} { color: $color }\n";
+      echo "#combo .cat_ {$catId} { background-color: $color; border: 1px outset $color; color: $fg }\n#month2 .cat_ {$catId} { color: $color }\n";
     }
   }
 }
