@@ -66,7 +66,7 @@ $name     = getPostValue( 'name', '', 'XSS' );
 $priority = getPostValue( 'priority' );
 $user     = getPostValue( 'user' );
 
-// Remember previous cal_goup_id if present.
+// Remember previous cal_group_id if present.
 $parent = getPostValue( 'parent' );
 $old_id = ( empty( $parent ) ? $old_id : $parent );
 
@@ -342,10 +342,23 @@ $can_edit  = false;
 // Value may be needed later for recreating event.
 $old_create_by = ( empty( $user ) ? '' : $user );
 
-if( empty( $id ) )
+if( empty( $id ) ) {
   // New event...
-  $can_edit = true;
-else {
+  $can_edit = (!empty($readonly) && $readonly != 'Y');
+
+  if (access_is_enabled())
+    $can_edit = access_can_access_function(ACCESS_EVENT_EDIT, $user);
+
+  if ($login == '__public__')
+    $can_edit = access_is_enabled()? $can_edit: $PUBLIC_ACCESS_CAN_ADD == 'Y';
+
+  if (!$is_admin && !$is_assistant && !$is_nonuser_admin) {
+    if ($is_nonuser)
+      $can_edit = false;
+    else if (!empty($user) && $user != $login && $user != '__public__')
+      $can_edit = false;
+  }
+} else {
   // Event owner or assistant?
   $res = dbi_execute( 'SELECT cal_create_by FROM webcal_entry WHERE cal_id = ?',
     array( $id ) );

@@ -8,8 +8,11 @@ require_valid_referring_url ();
 load_user_layers();
 
 $referer = '';
-if ( ! empty ( $_SERVER['HTTP_REFERER']) )
-  $referer = strrchr($_SERVER['HTTP_REFERER'], '/edit_user.php' );
+if ( ! empty ( $_SERVER['HTTP_REFERER']) ) {
+  $refurl = parse_url($_SERVER['HTTP_REFERER']);
+  if (!empty($refurl['path']))
+    $referer = strrchr($refurl['path'], '/edit_user.php' );
+}
 
 if (  $referer != '/edit_user.php' ) {
   activity_log( 0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:edit_user' );
