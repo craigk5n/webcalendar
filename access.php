@@ -50,11 +50,11 @@ if( getPostValue( 'auser' ) != '' && getPostValue( 'submit' ) == $saveStr ) {
     $perm .= ( getPostValue( 'access_' . $i ) == 'Y' ? 'Y' : 'N' );
   }
 
-  dbi_execute( 'DELETE FROM webcal_access_function WHERE cal_login = ?',
-    array( $auser ) );
+  dbi_execute( 'DELETE FROM webcal_access_function
+  WHERE cal_login = ?', [$auser] );
 
   if( ! dbi_execute( 'INSERT INTO webcal_access_function( cal_login,
-      cal_permissions ) VALUES ( ?, ? )', array( $auser, $perm ) ) )
+      cal_permissions ) VALUES ( ?, ? )', [$auser, $perm] ) )
     die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
   $saved = true;
@@ -70,10 +70,10 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
     // If user is not admin,
     // reverse values so they are granting access to their own calendar.
     if( ! $is_admin )
-      list( $puser, $pouser ) = array( $pouser, $puser );
+      list( $puser, $pouser ) = [$pouser, $puser];
 
     dbi_execute( 'DELETE FROM webcal_access_user WHERE cal_login = ?
-      AND cal_other_user = ?', array( $puser, $pouser ) );
+    AND cal_other_user = ?', [$puser, $pouser] );
 
     if( empty( $pouser ) )
       break;
@@ -94,7 +94,7 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
         cal_other_user, cal_can_view, cal_can_edit, cal_can_approve,
         cal_can_invite, cal_can_email, cal_see_time_only )
         VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
-        array(
+        [
           $puser,
           $pouser,
           ( $view_total > 0 ? $view_total : 0 ),
@@ -102,7 +102,7 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
           ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 ),
           ( strlen( $invite ) ? $invite : 'N' ),
           ( strlen( $email ) ? $email : 'N' ),
-          ( strlen( $time ) ? $time : 'N' ) ) ) )
+          ( strlen( $time ) ? $time : 'N' )] ) )
       die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
     $saved = true;
@@ -211,9 +211,9 @@ if( ! empty( $guser ) || ! $is_admin ) {
     $div = ceil( ACCESS_NUMBER_FUNCTIONS / 4 );
 
     // We can reorder the display of user rights here.
-    $order = array(
+    $order = [
       1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 27,
-      15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 );
+      15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
     // Make sure that we have defined all the types of access
     // defined in access.php.
     assert( count( $order ) == ACCESS_NUMBER_FUNCTIONS );
@@ -250,9 +250,9 @@ if( ! empty( $guser ) || ! $is_admin ) {
         }
       }
       if( $show )
-        echo print_checkbox( array( 'access_' . $order[$i], 'Y',
+        echo print_checkbox ( ['access_' . $order[$i], 'Y',
             access_get_function_description( $order[$i] ),
-            substr( $access, $order[$i], 1 ) ), 'dito' ) . '<br />';
+            substr( $access, $order[$i], 1 )], 'dito' ) . '<br />';
 
       if( ( $i + 1 ) % $div == 0 )
         echo '
@@ -279,7 +279,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
   }
 
   if( $guser == '__default__' ) {
-    $userlist = array( '__default__' );
+    $userlist = ['__default__'];
     $otheruser = $otheruser_login = '__default__';
     $otheruser_fullname = $defConfigStr;
   } else
@@ -334,13 +334,12 @@ if( ! empty( $otheruser ) ) {
        . translate( 'Approve/Reject' ) ) . '</th>
           </tr>';
 
-    $access_type = array(
+    $access_type = [
       '',
       translate( 'Events' ),
       translate( 'Tasks' ),
       '',
-      translate( 'Journals' )
-      );
+      translate( 'Journals' )];
 
     for( $j = 1; $j < 5; $j++ ) {
       $bottomedge = '';
