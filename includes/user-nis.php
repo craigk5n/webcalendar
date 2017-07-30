@@ -12,6 +12,8 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 // need these functions and you will still need to add users to
 // webcal_user.
 
+include_once 'auth-settings.php';
+
 if ( ! defined ( 'CRYPT_SALT_LENGTH' ) )
   define ( 'CRYPT_SALT_LENGTH', 12 );
 
@@ -21,9 +23,6 @@ if ( ! defined ( 'CRYPT_SALT_LENGTH' ) )
 $user_can_update_password = false;
 $admin_can_add_user = false;
 $admin_can_delete_user = false;
-
-// $user_external_group = 100;
-$user_external_email = 'domain.com';
 
 // Check to see if a given login/password is valid. If invalid,
 // the error message will be placed in $error (a global variable).
@@ -38,7 +37,7 @@ function user_valid_login ( $login, $password ) {
   $data = @yp_match (yp_get_default_domain (), 'passwd.byname', $login);
   if ( strlen ( $data ) ) {
     $data = explode ( ':', $data );
-    if ( $user_external_group && $user_external_group != $data[3] ) {
+    if (!empty($user_external_group) && $user_external_group != $data[3]) {
       $error = translate ( 'Invalid login' );
       return $ret;
     }
@@ -181,13 +180,14 @@ function user_load_variables ( $login, $prefix ) {
  * @param string $lastname  User last name
  * @param string $email     User email address
  * @param string $admin     Is the user an administrator? ('Y' or 'N')
+ * @param string $enabled   Is the user account enabled? ('Y' or 'N')
  *
  * @return bool True on success
  *
  * @global string Error message
  */
 function user_add_user ( $user, $password, $firstname,
-  $lastname, $email, $admin ) {
+  $lastname, $email, $admin, $enabled = 'Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -215,11 +215,10 @@ function user_add_user ( $user, $password, $firstname,
     $admin = 'N';
   $sql = 'INSERT INTO webcal_user
     ( cal_login, cal_lastname, cal_firstname,
-    cal_is_admin, cal_passwd, cal_email )
-    VALUES ( ?, ?, ?, ?, ?, ? )';
+    cal_is_admin, cal_passwd, cal_email, cal_enabled )
+    VALUES ( ?, ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $user, $ulastname,
-
-    $ufirstname, $admin, $upassword, $uemail ) ) ) {
+    $ufirstname, $admin, $upassword, $uemail, $enabled ) ) ) {
     $error = translate ( 'Database error', true) . ': ' . dbi_error ();
     return false;
   }
@@ -234,12 +233,13 @@ function user_add_user ( $user, $password, $firstname,
  * @param string $lastname  User last name
  * @param string $mail      User email address
  * @param string $admin     Is the user an administrator? ('Y' or 'N')
+ * @param string $enabled   Is the user account enabled? ('Y' or 'N')
  *
  * @return bool True on success
  *
  * @global string Error message
  */
-function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
+function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabled = 'Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -261,11 +261,14 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
   if ( $admin != 'Y' )
     $admin = 'N';
 
+  if ( $enabled != 'Y' )
+    $enabled = 'N';
+
   $sql = 'UPDATE webcal_user SET cal_lastname = ?,
     cal_firstname = ?, cal_email = ?,
-    cal_is_admin = ? WHERE cal_login = ?';
+    cal_is_admin = ?, cal_enabled = ? WHERE cal_login = ?';
   if ( ! dbi_execute( $sql,
-      array( $ulastname, $ufirstname, $uemail, $admin, $user ) ) ) {
+      array( $ulastname, $ufirstname, $uemail, $admin, $enabled, $user ) ) ) {
     $error = db_error ();
     return false;
   }

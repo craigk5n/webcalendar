@@ -24,22 +24,11 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 //   change line 85 in includes/pnSession.php to:
 //      ini_set('session.cookie_path', '/');
 
-/************************* Config ***********************************/
+include_once 'auth-settings.php';
 
-// Location of postnuke config.php file (with trailing slash)
-$app_path = '/usr/local/www/data/postnuke/';
-
-// URL to postnuke (with trailing slash)
-$app_url = 'http://'.$_SERVER['SERVER_NAME'].'/postnuke/';
-
-// Table Prefix
-$pn_table_prefix = 'pn_';
-
-// Set the group id of the postnuke group you want to be webcal admins.
-// Default is set to the postnuke 'Admins' group
-$pn_admin_gid = '2';
-
-/*************************** End Config *****************************/
+// User administration should be done through the aplication's interface
+$user_can_update_password = false;
+$admin_can_add_user = false;
 
 // For postnuke, we can automatically fetch some values we need from the
 // config.php file
@@ -321,13 +310,6 @@ function user_load_variables ( $login, $prefix ) {
 $app_same_db = (($db_database == $app_db) && ($app_host == $db_host)) ? '1' : '0';
 //echo "Same DB:$app_same_db";exit;
 
-// User administration should be done through the aplication's interface
-$user_can_update_password = false;
-$admin_can_add_user = false;
-
-// Allow admin to delete user from webcal tables (not application)
-$admin_can_delete_user = true;
-
 // Redirect the user to the login-app.php page
 function app_login_screen( $return ) {
   global $SERVER_URL;
@@ -475,7 +457,7 @@ function user_delete_user ( $user ) {
 }
 
 // Functions we don't use with this file:
-function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
+function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabled = 'Y' ) {
   global $error;
   $error = 'User admin not supported.'; return false;
 }
@@ -483,7 +465,7 @@ function user_update_user_password ( $user, $password ) {
   global $error;
   $error = 'User admin not supported.'; return false;
 }
-function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin ) {
+function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin, $enabled = 'Y' ) {
   global $error;
   $error = 'User admin not supported.'; return false;
 }

@@ -19,17 +19,11 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 // - user_get_users (returns array of users)
 // - user_load_variables (loads info about a user)
 
-/************************* Config ***********************************/
+include_once 'auth-settings.php';
 
-// Directory that contains the joomla configuration.php file (with trailing slash)
-$app_path = '/usr/local/www/data/joomla/';
-
-// Set the group id(s) of the joomla group(s) you want to be webcal admins.
-// Default is set to the 'Super Administrator' and 'Administrator' groups
-// Groups in core_acl_aro_groups table
-$app_admin_gid = array ('24','25');
-
-/*************************** End Config *****************************/
+// User administration should be done through the application's interface
+$user_can_update_password = false;
+$admin_can_add_user = false;
 
 // For Joomla, we can automatically fetch the values we need from the
 // configuration.php file
@@ -358,13 +352,6 @@ function user_logged_in () {
 $app_same_db = (($db_database == $app_db) && ($app_host == $db_host)) ? '1' : '0';
 //echo "Same DB:$app_same_db";exit;
 
-// User administration should be done through the aplication's interface
-$user_can_update_password = false;
-$admin_can_add_user = false;
-
-// Allow admin to delete user from webcal tables (not application)
-$admin_can_delete_user = true;
-
 // Redirect the user to the login-app.php page
 function app_login_screen( $return ) {
   global $SERVER_URL;
@@ -452,7 +439,8 @@ function user_delete_user ( $user ) {
 }
 
 // Functions we don't use with this file:
-function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
+function user_update_user ( $user, $firstname, $lastname, $email, $admin,
+	$enabled = 'Y' ) {
   global $error;
   $error = 'User admin not supported.'; return false;
 }
@@ -460,7 +448,7 @@ function user_update_user_password ( $user, $password ) {
   global $error;
   $error = 'User admin not supported.'; return false;
 }
-function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin ) {
+function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin, $enabled = 'Y' ) {
   global $error;
   $error = 'User admin not supported.'; return false;
 }

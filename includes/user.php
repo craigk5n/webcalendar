@@ -20,10 +20,9 @@
  */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
+include_once 'auth-settings.php';
+
 // Set some global config variables about your system.
-$user_can_update_password = true;
-$admin_can_add_user = true;
-$admin_can_delete_user = true;
 $admin_can_disable_user = true;
 
 /**
@@ -157,6 +156,7 @@ function user_load_variables ( $login, $prefix ) {
     $GLOBALS[$prefix . 'fullname'] = ( $login == '__public__'?
       $PUBLIC_ACCESS_FULLNAME : translate ( 'DEFAULT CONFIGURATION' ) );
     $GLOBALS[$prefix . 'password'] = '';
+    $GLOBALS[$prefix . 'enabled'] = 'Y';
     return true;
   }
   $sql =
@@ -194,6 +194,7 @@ function user_load_variables ( $login, $prefix ) {
  * @param string $lastname  User last name
  * @param string $email     User email address
  * @param string $admin     Is the user an administrator? ('Y' or 'N')
+ * @param string $enabled   Is the user account enabled? ('Y' or 'N')
  *
  * @return bool True on success
  *
@@ -279,7 +280,7 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabl
 
   $sql = 'UPDATE webcal_user SET cal_lastname = ?, ' .
     'cal_firstname = ?, cal_email = ?,' .
-    'cal_is_admin = ?,cal_enabled = ? WHERE cal_login = ?';
+    'cal_is_admin = ?, cal_enabled = ? WHERE cal_login = ?';
   if ( ! dbi_execute ( $sql,
     array( $ulastname, $ufirstname, $uemail, $admin, $enabled, $user ) ) ) {
     $error = db_error();
