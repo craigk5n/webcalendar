@@ -304,8 +304,8 @@ if ( empty ( $report_user ) )
 $day_str = $printerStr = '';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt>
-<dd><b>' . translate ( 'Date' ) . ':</b> ${date}<br />
-<b>' . translate ( 'Time' ) . ':</b> ${time}<br />
+<dd><b class="colon">' . translate ( 'Date' ) . '</b> ${date}<br />
+<b class="colon">' . translate ( 'Time' ) . '</b> ${time}<br />
 ${description}</dd>';
 $page_template = '<dl>${days}</dl>';
 

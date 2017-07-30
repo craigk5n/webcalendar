@@ -42,8 +42,8 @@ echo '
       <form action="#" name="userselform">
         <table style="border: 0; width: 100%;" summary="">
           <tr>
-            <td class="aligntop">
-              <b>' . translate ( 'Users' ) . ':</b><br />
+            <td class="aligntop colon">
+              <b>' . translate ( 'Users' ) . '</b><br />
               <select name="users" size="15" multiple="multiple">
               </select><br />
               <input type="button" value="' . translate ( 'All' )
@@ -53,7 +53,7 @@ echo '
               <input type="reset" value="' . translate ( 'Reset' ) . '" />
             </td>
             <td valign="top">
-              <b>' . translate ( 'Groups' ) . ':</b><br />
+              <b class="colon">' . translate ( 'Groups' ) . '</b><br />
               <select name="groups" size="15">';
 
 for ( $i = 0, $cnt = count ( $groups ); $i < $cnt; $i++ ) {

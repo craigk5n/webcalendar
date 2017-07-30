@@ -94,11 +94,11 @@ if ( $newview ) {
 
 <table summary="">
 <tr><td>
- <label for="viewname"><?php etranslate ( 'View Name' )?>:</label></td><td colspan="3">
+ <label for="viewname" class="colon"><?php etranslate ( 'View Name' )?></label></td><td colspan="3">
  <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" />
 </td></tr>
 <tr><td>
- <label for="viewtype"><?php etranslate ( 'View Type' )?>:</label></td><td colspan="3">
+ <label for="viewtype" class="colon"><?php etranslate ( 'View Type' )?></label></td><td colspan="3">
  <select name="viewtype" id="viewtype">
   <option value="D" <?php if ( $viewtype == 'D' )
   echo $selected;?>><?php etranslate ( 'Day' ); ?></option>
@@ -123,15 +123,15 @@ if ( $newview ) {
 
 <?php if ( $is_admin ) {
   $defIdx = ( ! empty ( $viewisglobal ) && $viewisglobal == 'Y' ? 'Y' : 'N' );
-  echo '<tr><td><label>'
-  . translate ( 'Global' ) . ":</label></td>\n<td>"
+  echo '<tr><td><label class="colon">'
+  . translate ( 'Global' ) . "</label></td>\n<td>"
   . print_radio ( 'is_global', '', '', $defIdx, '</td><td>' )
   . "</td></tr>\n";
  }
 
 $defIdx = ( ! empty ( $all_users ) && $all_users == true ? 'Y' : 'N' );
-echo '<tr><td><label>'
-  . translate ( 'Users' ) . ":</label></td>\n<td>"
+echo '<tr><td><label class="colon">'
+  . translate ( 'Users' ) . "</label></td>\n<td>"
   . print_radio ( 'viewuserall', array ( 'N'=>'Selected', 'Y'=>'All'),
     'usermode_handler', $defIdx, '</td><td>' )
   . "</td></tr>\n";
