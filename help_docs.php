@@ -8,7 +8,7 @@ if ( empty ( $SERVER_SOFTWARE ) )
 if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 
-print_header ( '', '', '', true );
+print_header ( [], '', '', 1 );
 
 echo $helpListStr . '
     <h2>' . translate ( 'WebCalendar Documentation' ) . '</h2>
@@ -23,6 +23,6 @@ echo $helpListStr . '
       <li><a href="http://www.k5n.us/wiki/">WebCalendar Wiki</a></li>
     </ul>';
 
-print_trailer ( false, true, true );
+print_trailer ( 0, 1, 1 );
 
 ?>

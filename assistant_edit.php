@@ -10,11 +10,7 @@ if ( empty ( $login ) || $login == '__public__' ) {
 if ( $user != $login )
   $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
 
-print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
-  '<script type="text/javascript" src="includes/js/assistant_edit.js"></script>' );
-
-ob_start();
-
+print_header ( $GROUPS_ENABLED !== 'Y' ? [] : ['js/assistant_edit.js'] );
 echo '
     <form action="assistant_edit_handler.php" method="post" '
  . 'name="assistanteditform">' . ( $user ? '
@@ -74,10 +70,6 @@ echo '
         </tr>
       </table>
     </form>
-    ';
-
-ob_end_flush();
-
-echo print_trailer();
+    ' . print_trailer();
 
 ?>

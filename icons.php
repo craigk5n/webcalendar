@@ -8,7 +8,7 @@ $can_edit = ( is_dir ( $icon_path ) &&
 if ( ! $can_edit )
   do_redirect ( 'category.php' );
 
-print_header ( array ( 'js/visible.php' ), '', '', true );
+print_header ( ['js/visible.php'], '', '', 1 );
 
 $icons = array();
 
@@ -52,7 +52,6 @@ if ( $d = dir ( $icon_path ) ) {
   </script>
 
 <?php
-  ob_start();
   echo '
     <table align="center" border="0" summary="">
       <tr>
@@ -77,8 +76,6 @@ if ( $d = dir ( $icon_path ) ) {
     </table>
   </body>
 </html>';
-
-  ob_end_flush();
 }
 
 ?>

@@ -1,7 +1,7 @@
 <?php // $Id: help_index.php,v 1.29 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
-print_header ( '', '', '', true );
+print_header ( [], '', '', 1 );
 echo '
     <h2>' . translate ( 'Help Index' ) . '</h2>
     <ul>';
@@ -20,6 +20,6 @@ foreach ( $help_list as $key => $val ) {
 }
 echo '
     </ul>
-    ' . print_trailer ( false, true, true );
+    ' . print_trailer ( 0, 1, 1 );
 
 ?>

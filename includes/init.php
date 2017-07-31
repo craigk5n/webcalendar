@@ -96,6 +96,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
+  ob_start ();
+
   $cs_ret = $lang = $menuHtml = $menuScript = '';
 
   // Remember this view if the file is a view_x.php script.
@@ -345,7 +347,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 
     unset( $c );
   }
-
+  ob_end_flush ();
   return $ret . '
 <!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->
 ' // Adds an easy link to validate the pages.

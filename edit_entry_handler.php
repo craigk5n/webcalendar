@@ -1227,7 +1227,6 @@ if( empty( $error ) && empty( $mailerError ) ) {
 
 if( ! empty( $conflicts ) ) {
   print_header();
-  ob_start();
   echo '
     <h2>' . translate( 'Scheduling Conflict' ) . '</h2>
     ' . translate( 'Your suggested time of' ) . '

@@ -24,12 +24,8 @@ $entryCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $entryCatStr ) ) / 2 );
 if ( strlen ( $entryCatStr ) < 30 )
   $entryCatStr = $entryCatFiller . $entryCatStr . $entryCatFiller;
 
-print_header( array( 'js/catsel.php/false/' . $form ),
-  '<script type=text/javascript" src="includes/js/catsel.js"></script>',
-  '', true, false, true );
-
-ob_start();
-
+print_header( ['js/catsel.php/false/' . $form, 'js/catsel.js'],
+  '', '', 1, 0, 1 );
 echo '
     <table align="center" border="0" width="90%" summary="">
       <tr>
@@ -82,9 +78,6 @@ if ( strlen ( $cats ) ) {
      . htmlentities ( $categories[abs ( $K )]['cat_name'] ) . $show_ast . '</option>';
   }
 }
-
-ob_end_flush();
-
 echo '
           </select>
           <input type="button" value="' . translate ( 'Remove' )
@@ -100,6 +93,6 @@ echo '
       </tr>
       </form>
     </table>
-    ' . print_trailer ( false, true, true );
+    ' . print_trailer ( 0, 1, 1 );
 
 ?>

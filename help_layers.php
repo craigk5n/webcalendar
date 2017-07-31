@@ -1,7 +1,7 @@
 <?php // $Id: help_layers.php,v 1.24 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
-print_header ( '', '', '', true );
+print_header ( [], '', '', 1 );
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Layers' ) . '</h2>
     <p>' .
@@ -27,6 +27,6 @@ if ( $ALLOW_COLOR_CUSTOMIZATION )
     <h3>' . translate ( 'Colors' ) . '</h3>
     <p>' . translate ( 'colors-help' ) . '</p>';
 
-echo print_trailer ( false, true, true );
+echo print_trailer ( 0, 1, 1 );
 
 ?>

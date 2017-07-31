@@ -109,11 +109,8 @@ media="screen" />
 <script type="text/javascript" src="includes/js/autocomplete.js"></script>
 ';
 
-print_header(
-  array( 'js/popups.js/true', 'js/visible.php', 'js/datesel.php' ),
+print_header ( ['js/popups.js/true', 'js/visible.php', 'js/datesel.php'],
   $headExtras, $bodyExtras );
-
-//ob_start();
 
 ?>
 
@@ -1985,9 +1982,6 @@ function format_description ( desc )
 </script>
 
 <?php
-
-//ob_end_flush();
-
 echo print_trailer();
 
 ?>

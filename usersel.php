@@ -28,8 +28,7 @@ for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
 
 $groups = get_groups( $user );
 
-ob_start();
-print_header( '', '', '', true, false, true );
+print_header ( [], '', '', 1, 0, 1 );
 
 echo '
     <script type="text/javascript">';
@@ -82,8 +81,6 @@ echo '
       </form
     </center>';
 
-ob_end_flush();
-
-echo print_trailer ( false, true, true );
+echo print_trailer ( 0, 1, 1 );
 
 ?>

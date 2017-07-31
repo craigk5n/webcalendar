@@ -30,9 +30,6 @@ $startid = getValue ( 'startid', '-?[0-9]+', true );
 $sys = ( $is_admin && getGetValue ( 'system' ) != '' );
 
 print_header();
-
-ob_start();
-
 echo generate_activity_log( '', $sys, $startid ) . '
     <div class="navigation">'
 // Go BACK in time.
@@ -58,9 +55,6 @@ if ( ! empty ( $startid ) ) {
     dbi_free_result ( $res );
   }
 }
-
-ob_end_flush();
-
 echo '
     </div>' . print_trailer();
 

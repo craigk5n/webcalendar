@@ -285,7 +285,7 @@ if ( $viewusercnt == 0 )
 
 $printerStr = generate_printer_friendly ( 'view_t.php' );
 
-print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
+print_header ( ['js/popups.js/true', 'js/dblclick_add.js/true'] );
 
 if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
@@ -294,8 +294,6 @@ if ( ! empty ( $error ) ) {
 
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
-
-ob_start();
 
 echo '
     <div style="width:99%;">
@@ -359,8 +357,6 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
 }
 
 $user = ''; // reset
-
-ob_end_flush();
 
 echo '
     </table>'

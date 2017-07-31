@@ -89,7 +89,7 @@ $show_time = ( $is_day_view ? $show_time_day : $show_time_week );
 $printerStr = generate_printer_friendly ( 'view_r.php' );
 set_today ( $date );
 
-print_header( array( 'js/popups.js/true' ) );
+print_header ( ['js/popups.js/true'] );
 
 $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 

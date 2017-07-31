@@ -100,7 +100,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   }
 }
 
-print_header ( '', '', '', true );
+print_header ( [], '', '', 1 );
 /*
 echo 'report_id: ' . $report_id . '<br />
 report_name: ' . $report_name . '<br />
@@ -137,6 +137,6 @@ echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
      . '" onclick="return confirm( \''
      . translate( 'Are you sure you want to delete this entry?' ) . '\');" />'
     : '' ) . '
-    </form>' ) . "\n" . print_trailer ( false, true, true );
+    </form>' ) . "\n" . print_trailer ( 0, 1, 1 );
 
 ?>

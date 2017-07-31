@@ -21,10 +21,7 @@ $datem = date ( 'm' );
 $dateY = date ( 'Y' );
 $selected = ' selected="selected" ';
 
-print_header ( array ( 'js/export_import.php', 'js/visible.php' ) );
-
-ob_start();
-
+print_header ( ['js/export_import.php', 'js/visible.php'] );
 echo '
     <h2>' . translate ( 'Export' ) . '</h2>
     <form action="export_handler.php" method="post" name="exportform" id="exportform">
@@ -113,10 +110,6 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
         </tr>
       </table>
     </form>
-    ';
-
-ob_end_flush();
-
-echo print_trailer();
+    ' . print_trailer();
 
 ?>
