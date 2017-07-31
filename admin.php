@@ -173,9 +173,7 @@ if ( is_dir ( $dir ) ) {
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
 
-print_header( array( 'js/translate.js.php' ),
-  '<script type="text/javascript" src="includes/js/admin.js"></script>
-    <script type="text/javascript" src="includes/js/visible.js"></script>',
+print_header ( ['js/translate.js.php','js/admin.js','js/visible.js'], '',
   'onload="init_admin();showTab( \'' . $currenttab . '\' );"' );
 
 if ( ! $error ) {
@@ -338,7 +336,6 @@ if ( ! $error ) {
   }
 
   set_today ( date ( 'Ymd' ) );
-  ob_start();
 
   echo '
     <h2>' . translate ( 'System Settings' )
@@ -928,7 +925,6 @@ if ( ! $error ) {
         <input type="submit" value="' . $saveStr . '" name="" />
       </div>
     </form>';
-  ob_end_flush();
 } else // if $error
   echo print_error ( $error, true );
 

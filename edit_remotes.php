@@ -16,8 +16,8 @@
  * if UAC is enabled, then the user must be allowed to ACCESS_IMPORT.
 */
 include_once 'includes/init.php';
-print_header ( array ( 'js/edit_remotes.php/false', 'js/visible.php' ),
-  '', '', true );
+print_header ( ['js/edit_remotes.php/false', 'js/visible.php'],
+  '', '', 1 );
 
 $error = '';
 
@@ -137,6 +137,6 @@ EOT;
   echo '
     </form>';
 }
-echo print_trailer ( false, true, true );
+echo print_trailer ( 0, 1, 1 );
 
 ?>

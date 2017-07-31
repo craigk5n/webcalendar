@@ -131,7 +131,7 @@ if ( ! empty ( $reload ) ) {
   $errorStr = '<br /><br />
     <b>' . translate ( 'Error' ) . ':</b> ';
 
-  print_header ( '', '', '', true, false, true );
+  print_header ( [], '', '', 1, 0, 1 );
   if ( count ( $data ) && empty ( $errormsg ) ) {
     // Delete existing events.
     delete_events ( $nid );
@@ -160,7 +160,7 @@ if ( ! empty ( $reload ) ) {
     translate( 'There was an error parsing the import file or no events were returned.' )
      . '<br />';
   }
-  echo print_trailer ( false, true, true );
+  echo print_trailer ( 0, 1, 1 );
 }
 
 function delete_events ( $nid ) {

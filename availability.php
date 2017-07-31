@@ -43,8 +43,8 @@ if ( empty ( $users ) ) {
 }
 
 print_header (
-  array ( 'js/availability.php/false/' . "$month/$day/$year/"
-   . getGetValue ( 'form' ) ), '', 'onload="focus();"', true, false, true );
+  ['js/availability.php/false/' . "$month/$day/$year/"
+   . getGetValue ( 'form' )], '', 'onload="focus();"', 1, 0, 1 );
 
 $next_url = $prev_url = '?users=' . $users;
 $time = mktime ( 0, 0, 0, $month, $day, $year );
@@ -76,6 +76,6 @@ echo '</span><br />
     <form action="availability.php" method="post">
       ' . daily_matrix ( $date, $users ) . '
     </form>
-    ' . print_trailer ( false, true, true );
+    ' . print_trailer ( 0, 1, 1 );
 
 ?>

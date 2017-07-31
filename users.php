@@ -40,12 +40,10 @@ if ( $is_admin ) {
 $currenttab = getValue ( 'tab', '^(users|groups|nonusers|remotes||)$', true );
 
 $BodyX = 'onload="showTab(\''. $currenttab . '\');"';
-print_header ( array ( 'js/visible.php', 'js/users.php/true' ), '',
-  $BodyX, '', '', true );
+print_header ( ['js/visible.php', 'js/users.php/true'], '', $BodyX, '', '', 1 );
 
 $taborder = array ( 'tabfor', 'tabbak','tabbak','tabbak','tabbak');
 $i=0;
-ob_start();
 
 echo display_admin_link() . '
 <!-- TABS -->
@@ -117,8 +115,6 @@ if ( $doUsers && $doNUCS )
 
 if ( $doRemotes )
   include_once 'remotes.php';
-
-ob_end_flush();
 
 echo '
     </div>

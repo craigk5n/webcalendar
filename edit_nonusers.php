@@ -1,8 +1,6 @@
 <?php // $Id: edit_nonusers.php,v 1.29 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
-print_header( array( 'js/translate.js.php' ),
-  '<script type="text/javascript" src="includes/js/edit_nonusers.js"></script>',
-  '', true, '', true, false );
+print_header ( ['js/translate.js.php', 'js/edit_nonusers.js'], '', '', 1, 0, 1 );
 
 if ( ! $is_admin ) {
   echo print_not_auth ( true ) . '
@@ -39,8 +37,6 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
       <input type="text" name="nid" id="calid" size="20" '
      . 'onchange="check_name();" maxlength="20" /> '
      . translate ( 'word characters only' );
-
-  ob_start();
 
   echo '
     <form action="edit_nonusers_handler.php" name="editnonuser" method="post" '
@@ -126,9 +122,6 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     </form>
     ';
 }
-
-ob_end_flush();
-
-echo print_trailer ( false, true, true );
+echo print_trailer ( 0, 1, 1 );
 
 ?>

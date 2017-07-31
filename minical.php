@@ -105,7 +105,7 @@ $startdate = mktime ( 0, 0, 0, $thismonth, 1, $thisyear );
 $enddate = mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear );
 
 // Don't display custom header.
-print_header ( '', generate_refresh_meta(), '', true );
+print_header ( [], generate_refresh_meta(), '', 1 );
 
 /* Pre-Load the repeated events for quicker access. */
 $repeated_events = read_repeated_events ( $user, $startdate, $enddate, $cat_id );

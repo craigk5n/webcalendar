@@ -50,8 +50,6 @@ $LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
 $public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
   translate( 'Click to modify layers settings for XXX' ) );
 
-ob_start();
-
 // Add ModalBox javascript/CSS & Tab code
 $headExtras = '
 <script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
@@ -61,7 +59,7 @@ $headExtras = '
 media="screen" />
 ';
 
-print_header( array( 'js/translate.js.php', 'js/visible.js/true' ),
+print_header ( ['js/translate.js.php', 'js/visible.js/true'],
   $headExtras, 'onload="load_layers();"' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
@@ -369,6 +367,5 @@ function edit_layer (id)
 
 <?php
 echo print_trailer();
-ob_end_flush();
 
 ?>

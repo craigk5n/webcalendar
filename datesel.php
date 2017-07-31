@@ -32,7 +32,7 @@ $wkstart = get_weekday_before ( $thisyear, $thismonth );
 $monthstartYmd = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
 $monthendYmd = date ( 'Ymd', mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear ) );
 
-print_header ( '','', '', true, false, true, true, true );
+print_header ( [], '', '', 1, 0, 1, 1, 1 );
 
 //build weekday names
 $wkdys = '';
@@ -115,6 +115,6 @@ echo <<<EOT
   </script>
 EOT;
 
-echo print_trailer ( false, true, true );
+echo print_trailer ( 0, 1, 1 );
 
 ?>

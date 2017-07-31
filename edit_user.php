@@ -28,10 +28,7 @@ if ( empty ( $user ) ) {
   if ( ! access_can_access_function ( ACCESS_ACCOUNT_INFO ) )
     $error = print_not_auth();
 }
-
-$disableCustom = true;
-$INC = array ('js/edit_user.php/false');
-print_header ( $INC, '', '', $disableCustom, '', true, false );
+print_header ( ['js/edit_user.php/false'], '', '', 1, 0, 1 );
 
 if ( ! empty ( $error ) ) {
   echo print_error ( $error );
@@ -173,5 +170,5 @@ if ( $is_admin && ( empty( $user ) || $user != $login ) ) { ?>
 <?php } ?>
 </td></tr></table>
 <?php }
-echo print_trailer ( false, true, true ); ?>
+echo print_trailer ( 0, 1, 1 ); ?>
 

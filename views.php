@@ -4,8 +4,7 @@ include_once 'includes/init.php';
 if ( ! $is_admin )
   $user = $login;
 
-ob_start();
-print_header( array( 'js/visible.php' ) );
+print_header ( ['js/visible.php'] );
 
 echo display_admin_link() . '
 <!-- TABS -->
@@ -48,7 +47,5 @@ echo '
       </div>
     </div>
     ' . print_trailer();
-
-ob_end_flush();
 
 ?>

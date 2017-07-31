@@ -241,8 +241,6 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     dbi_free_result ( $res );
   }
 }
-
-ob_start();
 echo '
     <p><strong>';
 if ( $matches > 0 ) {
@@ -275,8 +273,7 @@ echo '
       <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
         . '"  style="margin-left: 13px;" method="post">
        <input type="submit" value="'
-        . translate ( 'New Search' ) . '" /></form>';
-ob_end_flush();
-echo print_trailer();
+        . translate ( 'New Search' ) . '" /></form>' .
+  print_trailer();
 
 ?>

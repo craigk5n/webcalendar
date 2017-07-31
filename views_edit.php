@@ -19,7 +19,8 @@ if ( ! $is_admin )
   $user = $login;
 
 $BodyX = 'onload="usermode_handler();"';
-$INC = array ( 'js/visible.php');
+$INC = ['js/visible.php'];
+
 if ( $GROUPS_ENABLED == 'Y' )
   $INC[] = 'js/views_edit.php/true';
 
@@ -176,5 +177,5 @@ echo '<tr><td><label>'
 
 </form>
 
-<?php echo print_trailer ( false, true, true ); ?>
+<?php echo print_trailer ( 0, 1, 1 ); ?>
 

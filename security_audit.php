@@ -20,14 +20,13 @@ if ( ! $is_admin || ( access_is_enabled()
 
 $phpinfo = getGetValue( 'phpinfo' );
 if ( $phpinfo == '1' ) {
-  print_header( '', '', '', true );
+  print_header ( [], '', '', 1 );
   phpinfo();
-  print_trailer( false, true, true );
+  print_trailer ( 0, 1, 1 );
   exit;
 }
 clearstatcache();
 print_header();
-ob_start();
 echo '
     <h2>' . translate( 'Security Audit' ) . '</h2>
     <ul id="securityAuditNotes">
@@ -165,7 +164,6 @@ echo '
     </table>
 ' . print_trailer() . '
 <!-- done -->';
-ob_end_flush();
 exit;
 
 /* functions ... */

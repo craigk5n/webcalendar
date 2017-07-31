@@ -43,7 +43,6 @@ if( $show_advanced ) {
 if( $show_others )
   $INC[] = 'js/search.js/true';
 
-ob_start();
 print_header( $INC );
 
 echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
@@ -167,8 +166,6 @@ if( $show_others ) {
           </td>
         </tr>';
 }
-ob_end_flush();
-
 echo '</table></form>';
 ?>
 <script language="JavaScript">

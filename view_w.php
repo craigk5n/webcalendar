@@ -41,7 +41,7 @@ $prevStr = translate ( 'Previous' );
 
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
-print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
+print_header ( ['js/popups.js/true', 'js/dblclick_add.js/true'] );
 
 // Get users in this view.
 $viewusers = view_get_user_list ( $id );
@@ -55,9 +55,6 @@ if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
   exit;
 }
-
-ob_start();
-
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_w.php?id=' . $id
@@ -167,9 +164,6 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
   echo '
     </table>';
 }
-
-ob_end_flush();
-
 $user = ''; // reset
 
 echo ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();

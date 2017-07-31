@@ -103,9 +103,7 @@ $upload = ini_get ( 'file_uploads' );
 $upload_enabled = ( ! empty( $upload )
    && preg_match( '/(On|1|true|yes)/i', $upload ) );
 
-ob_start();
-
-print_header ( array ( 'js/export_import.php', 'js/visible.php' ),
+print_header ( ['js/export_import.php', 'js/visible.php'],
   '', 'onload="toggle_import();"' );
 echo '
     <h2>' . translate ( 'Import' ) . '&nbsp;<img src="images/help.gif" alt="'
@@ -180,6 +178,5 @@ else {
     </form>';
 }
 echo print_trailer();
-ob_end_flush();
 
 ?>
