@@ -364,7 +364,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 
   return $ret . '
 <!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
-    ( $ALLOW_HTML_DESCRIPTION !== 'Y' ? '' :
+    ( $GLOBALS['ALLOW_HTML_DESCRIPTION'] !== 'Y' ? '' :
     /* Your choices here are "basic", "standard" or "full". */ '
     <script src="//cdn.ckeditor.com/4.6.0/basic/ckeditor.js"></script>
     <script>' .

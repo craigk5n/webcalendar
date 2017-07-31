@@ -593,7 +593,7 @@ if ( $can_edit ) {
 <!-- DETAILS -->' : '
       <fieldset>
         <legend>' . translate ( 'Details' ) . '</legend>' ) . '
-          <table border="0" summary="">
+          <table border="1" summary="">
             <tr>
               <td class="tooltip" title="'
    . tooltip ( 'brief-description-help' ) . '"><label for="entry_brief">'
@@ -605,7 +605,7 @@ if ( $can_edit ) {
               <td class="tooltip aligntop" title="'
    . tooltip ( 'full-description-help' ) . '"><label for="entry_full">'
    . translate ( 'Full Description' ) . ':</label></td>
-              <td><textarea name="description" id="entry_full" rows="'
+              <td width="60%"><textarea name="description" id="entry_full" rows="'
    . $textareasize . '" cols="50"' . '>' . htmlspecialchars ( $description )
    . '</textarea></td>' . ( $use_fckeditor || $use_htmlarea ? '
             </tr>
