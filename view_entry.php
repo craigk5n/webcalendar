@@ -820,9 +820,9 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
     . ( $is_admin || $login == $a->getLogin()
         || user_is_assistant( $login, $a->getLogin() ) || $login == $create_by
         || user_is_assistant( $login, $create_by )
-      ? ' [<a href="docdel.php?blid=' . $a->getId()
+      ? ' <a href="docdel.php?blid=' . $a->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
-       . translate ( 'Delete' ) . '</a>]' : '' ) . '<br />';
+       . '<img src="images/delete.png"/></a>' : '' ) . '<br />';
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize();
@@ -854,9 +854,9 @@ if ( Doc::commentsEnabled() ) {
     . ( $is_admin || $login == $cmt->getLogin()
         || user_is_assistant( $login, $cmt->getLogin() ) || $login == $create_by
         || user_is_assistant( $login, $create_by )
-      ? ' [<a href="docdel.php?blid=' . $cmt->getId()
+      ? ' <a href="docdel.php?blid=' . $cmt->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr
-       . '\' );">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
+       . '\' );"><img src="images/delete.png"/></a>' : '' )// end show delete link
      . '<br />
           <blockquote id="eventcomment">';
      if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
