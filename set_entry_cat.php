@@ -122,12 +122,12 @@ else {
       <input type="hidden" name="id" value="{$id}" />
       <table border="0" cellpadding="5" summary="">
         <tr class="aligntop">
-          <td class="bold">{$briefStr}:</td>
+          <td class="bold colon">{$briefStr}</td>
           <td>{$event_name}</td>
         </tr>
         <tr>
           <td class="tooltip" title="{$catHelpStr}" valign="top">
-            <label for="entry_categories">{$catStr}:<br /></label>
+            <label for="entry_categories" class="colon">{$catStr}<br /></label>
             <input type="button" value="{$editStr}" onclick="editCats( event )" />
           </td>
           <td valign="top">

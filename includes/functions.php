@@ -201,7 +201,7 @@ function build_entry_label ( $event, $popupid,
   if ( $not_my_entry && $tmpAccess == 'R' && !
     ( $can_access &PRIVATE_WT ) ) {
     if ( $time_only != 'Y' )
-      $ret = '(' . translate ( 'Private' ) . ')';
+      $ret = '<span class="parentheses">' . translate ( 'Private' ) . '</span>';
 
     $eventinfo .= build_entry_popup ( $popupid, $tmpLogin,
       str_replace ( 'XXX', translate ( 'private' ),

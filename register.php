@@ -250,31 +250,31 @@ echo send_doctype( $appStr ) . '
       <table align="center" cellpadding="10" cellspacing="10" summary="">
         <tr>
           <td rowspan="3"><img src="images/register.gif" alt="" /></td>
-          <td align="right"><label>' . translate( 'Username' ) . ':</label></td>
+          <td align="right"><label class="colon">' . translate( 'Username' ) . '</label></td>
           <td align="left"><input type="text" name="user" id="user" value="'
    . $user . '" size="20" maxlength="20" onChange="check_name();" /></td>
         </tr>
         <tr>
-          <td align="right"><label>' . translate( 'First Name' )
-   . ':</label></td>
+          <td align="right"><label class="colon">' . translate( 'First Name' )
+   . '</label></td>
           <td align="left"><input type="text" name="ufirstname" value="'
    . $ufirstname . '" size="25" maxlength="25" /></td>
         </tr>
         <tr>
-          <td align="right"><label>' . translate( 'Last Name' ) . ':</label></td>
+          <td align="right"><label class="colon">' . translate( 'Last Name' ) . '</label></td>
           <td align="left"><input type="text" name="ulastname" value="'
    . $ulastname . '" size="25" maxlength="25" /></td>
         </tr>
         <tr>
-          <td align="right" colspan="2"><label>' . translate( 'E-mail address' )
-   . ':</label></td>
+          <td align="right" colspan="2"><label class="colon">' . translate( 'E-mail address' )
+   . '</label></td>
           <td align="left"><input type="text" name="uemail" id="uemail" value="'
    . $uemail . '" size="40" maxlength="75" onChange="check_uemail();" /></td>
         </tr>
         <tr>
           <td ' . ( $SELF_REGISTRATION_FULL != 'Y'
-    ? 'align="right" colspan="2"><label>' . translate( 'Password' )
-     . ':</label></td>
+    ? 'align="right" colspan="2"><label class="colon">' . translate( 'Password' )
+     . '</label></td>
           <td align="left"><input name="upassword1" value="' . $upassword1
      . '" size="15" type="password" /></td>
         </tr>
