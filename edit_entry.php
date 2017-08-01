@@ -593,7 +593,7 @@ if ( $can_edit ) {
 <!-- DETAILS -->' : '
       <fieldset>
         <legend>' . translate ( 'Details' ) . '</legend>' ) . '
-          <table border="1" summary="">
+          <table border="0" summary="">
             <tr>
               <td class="tooltip" title="'
    . tooltip ( 'brief-description-help' ) . '"><label for="entry_brief">'
