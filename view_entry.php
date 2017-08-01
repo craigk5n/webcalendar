@@ -858,9 +858,20 @@ if ( Doc::commentsEnabled() ) {
        . '" onclick="return confirm( \'' . $areYouSureStr
        . '\' );">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
      . '<br />
-          <blockquote id="eventcomment">' . nl2br ( activate_urls (
-        htmlspecialchars( $cmt->getData() ) ) ) . '
-        </blockquote><div style="clear:both"></div>';
+          <blockquote id="eventcomment">';
+     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
+       $str = $cmt->getData();
+       $str = str_replace ( '&amp;amp;', '&amp;', $str );
+       // If there is no HTML found, then go ahead and replace
+       // the line breaks ("\n") with the HTML break.
+       $comment_text .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
+         ? $str // found some html...
+         : nl2br ( activate_urls ( $str ) ) );
+     } else {
+       $comment_text .= nl2br ( activate_urls (
+        htmlspecialchars( $cmt->getData() ) ) );
+     }
+     $comment_text .= '</blockquote><div style="clear:both"></div>';
   }
 
   if ( $num_comment == 0 )
