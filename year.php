@@ -114,8 +114,8 @@ echo <<<EOT
       {$asstModeStr}
       {$catSelectStr}
     </div><br />
-    <div align="center">
-      <table id="monthgrid" summary="">
+    <div class="aligncenter">
+      <table id="monthgrid">
         {$gridOmonths}
       </table>
     </div><br />

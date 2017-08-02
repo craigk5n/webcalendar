@@ -232,7 +232,7 @@ if ( $DISPLAY_TASKS == 'Y' ) {
   $tableWidth = '80%';
   $filler = '<td></td>';
   $minical_tasks .= '
-        <td id="minicolumn" rowspan="2" valign="top">
+        <td id="minicolumn" rowspan="2" class="aligntop">
 <!-- START MINICAL -->
           <div class="minicontainer">' . ( $DISPLAY_SM_MONTH == 'Y' ? '
             <div class="minicalcontainer">'
@@ -247,7 +247,7 @@ print_header(
   generate_refresh_meta(), '', false, false, false, false );
 
 echo <<<EOT
-    <table width="100%" cellpadding="1" summary="">
+    <table cellpadding="1">
       <tr>
         <td id="printarea" style="vertical-align:top; width:{$tableWidth};">
         {$navStr}
@@ -256,7 +256,7 @@ echo <<<EOT
       </tr>
       <tr>
         <td>
-          <table class="main" summary=""{$help}>
+          <table class="main"{$help}>
             <tr>
               <th class="empty">&nbsp;</th>{$headerStr}
             </tr>{$untimedStr}{$eventsStr}

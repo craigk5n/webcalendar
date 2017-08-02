@@ -165,7 +165,7 @@ if ( $single_user == 'N' ) {
   <form name="editLayerForm" id="editLayerForm">
     <input type="hidden" name="editLayerId" id="editLayerId" value="" />
     <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0" />
-    <table border="0">
+    <table>
       <tr><td class="tooltip" title="<?php etranslate('Specifies the user that you would like to see displayed in your calendar.');?>"><label><?php echo $sourceStr;?>:</label></td>
         <td><select id="editLayerSource" name="editLayerSource">
             <?php echo $users;?>
@@ -262,7 +262,7 @@ function load_layers()
         alert ( '<?php etranslate('Error');?>: '  + response.message );
         return;
       }
-      var x = '<table id="layertable" border="1" cellspacing="0" cellpadding="0" summary=""><th><?php echo $sourceStr;?></th><th><?php echo $colorStr;?></th><th><?php echo $duplicatesStr;?></th></tr>\n';
+      var x = '<table id="layertable" border="1"><th><?php echo $sourceStr;?></th><th><?php echo $colorStr;?></th><th><?php echo $duplicatesStr;?></th></tr>\n';
       for ( var i = 0; i < response.layers.length; i++ ) {
         var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
         var l = response.layers[i];

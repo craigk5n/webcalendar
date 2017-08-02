@@ -53,7 +53,7 @@ $INC = array ( 'js/visible.php' );
 print_header ( $INC );
 ?>
 
-<table summary="">
+<table>
 <tr><td style="vertical-align:top; width:50%;">
 <?php
 echo '<h2>' . translate ( 'Delete Events' );
@@ -139,7 +139,7 @@ onclick="history.back()" /></form
  </td></tr>
  <tr><td><label for="purge_all" class="colon">
   <?php etranslate ( 'Check box to delete ALL events for a user' )?></label></td>
-  <td valign="bottom">
+  <td class="alignbottom">
   <input type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );" />
  </td></tr>
  <tr id="dateArea"><td><label class="colon">
@@ -148,12 +148,12 @@ onclick="history.back()" /></form
  </td></tr>
  <tr><td><label for="purge_deleted" class="colon">
   <?php etranslate ( 'Purge deleted only' )?></label></td>
-  <td valign="bottom">
+  <td class="alignbottom">
   <input type="checkbox" name="purge_deleted" value="Y" />
  </td></tr>
  <tr><td><label for="preview" class="colon">
   <?php etranslate ( 'Preview delete' )?></label></td>
-  <td valign="bottom">
+  <td class="alignbottom">
   <input type="checkbox" name="preview" value="Y" checked="checked" />
  </td></tr>
  <tr><td colspan="2">

@@ -283,7 +283,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <div id="tabscontent_settings">
 <fieldset>
  <legend><?php etranslate ('Language')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
+<table cellspacing="1" cellpadding="2">
 <tr><td class="tooltipselect" title="<?php etooltip ("language-help");?>">
  <label for="pref_lang" class="colon"><?php etranslate ( 'Language' )?></label></td><td>
  <select name="pref_LANGUAGE" id="pref_lang">
@@ -312,7 +312,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 </fieldset>
 <fieldset>
  <legend><?php etranslate ('Date and Time')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
+<table cellspacing="1" cellpadding="2">
 <?php if ( $can_set_timezone == true ) { ?>
 <tr><td class="tooltipselect" title="<?php etooltip ( 'tz-help' )?>">
   <label for="pref_TIMEZONE" class="colon"><?php etranslate ( 'Timezone Selection' )?></label></td><td>
@@ -431,7 +431,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 </fieldset>
 <fieldset>
  <legend><?php etranslate ('Appearance')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
+<table cellspacing="1" cellpadding="2">
 <tr><td class="tooltip colon" title="<?php etooltip ( 'preferred-view-help' );?>"><?php
 etranslate ( 'Preferred view' )?></td><td>
 <select name="pref_STARTVIEW">
@@ -535,7 +535,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </fieldset>
 <fieldset>
  <legend><?php etranslate ('Events')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
+<table cellspacing="1" cellpadding="2">
 
 <tr><td class="tooltip colon" title="<?php etooltip ( 'display-unapproved-help' );?>">
  <?php etranslate ( 'Display unapproved' )?></td><td>
@@ -612,7 +612,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 </fieldset>
 <fieldset>
  <legend><?php etranslate ('Miscellaneous')?></legend>
-<table cellspacing="1" cellpadding="2" border="0" summary="">
+<table cellspacing="1" cellpadding="2">
 
 <tr><td class="tooltip colon" title="<?php etooltip ( 'auto-refresh-help' );?>">
  <?php etranslate ( 'Auto-refresh calendars' )?></td><td>
@@ -630,7 +630,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 
 <?php if ( $ALLOW_USER_THEMES == 'Y' || $is_admin ) { ?>
 <div id="tabscontent_themes">
-<table cellspacing="1" cellpadding="2" border="0" width="35%" summary="">
+<table cellspacing="1" cellpadding="2" width="35%">
 <tr><td class="tooltip"  title="<?php etooltip ( 'theme-reload-help' );?>"colspan="3"><?php
 etranslate ( 'Page may need to be reloaded for new Theme to take effect' )?></td></tr>
 <tr><td  class="tooltipselect colon" title="<?php etooltip ( 'themes-help' );?>">
@@ -672,7 +672,7 @@ etranslate ( 'Page may need to be reloaded for new Theme to take effect' )?></td
 if ( ! $updating_public ) {
 if ( $SEND_EMAIL == 'Y' ) { ?>
 <div id="tabscontent_email">
-<table cellspacing="1" cellpadding="2" summary="">
+<table cellspacing="1" cellpadding="2">
 <tr><td class="tooltip">
 <tr><td class="tooltip colon" title="<?php etooltip('email-format');?>">
  <?php etranslate ( 'Email format preference' )?></td><td>
@@ -720,7 +720,7 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <?php } ?>
 
 <div id="tabscontent_boss">
-<table cellspacing="1" cellpadding="2" summary="">
+<table cellspacing="1" cellpadding="2">
 <?php if ( $SEND_EMAIL == 'Y' ) { ?>
 <tr><td class="tooltip colon"><?php etranslate ( 'Email me event notification' )?></td><td>
  <?php echo print_radio ( 'EMAIL_ASSISTANT_EVENTS' ) ?>
@@ -740,7 +740,7 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 
 <?php } /* if ( ! $updating_public ) */ ?>
 <div id="tabscontent_subscribe">
-<table cellspacing="1" cellpadding="2" summary="">
+<table cellspacing="1" cellpadding="2">
 <?php if ( $PUBLISH_ENABLED == 'Y' || $RSS_ENABLED == 'Y') { ?>
 <tr><td class="tooltipselect colon" title="<?php etooltip ( 'allow-view-subscriptions-help' )?>"><?php etranslate ( 'Allow remote viewing of' );
 $publish_access = ( empty( $prefarray['USER_REMOTE_ACCESS'] )
@@ -829,7 +829,7 @@ if ( $RSS_ENABLED == 'Y' ) { ?>
 
 <?php if ( $ALLOW_USER_HEADER == 'Y' ) { ?>
 <div id="tabscontent_header">
-<table cellspacing="1" cellpadding="2" summary="">
+<table cellspacing="1" cellpadding="2">
 <?php if ( $CUSTOM_SCRIPT == 'Y' ) { ?>
  <tr><td class="tooltip colon" title="<?php etooltip ( 'custom-script-help' );?>">
   <?php etranslate ( 'Custom script/stylesheet' )?></td><td>
@@ -862,9 +862,9 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
 
 <?php if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <div id="tabscontent_colors">
-<table width="100%" summary="">
+<table>
 <tr class="ignore"><td class="aligntop">
-<table cellspacing="0" cellpadding="0" summary="">
+<table>
  <tr><td>
   <?php echo print_color_input_html ( 'BGCOLOR',
     translate ( 'Document background' ) ) ?>
@@ -930,7 +930,7 @@ if ( $CUSTOM_TRAILER == 'Y' ) { ?>
 </td><td class="aligncenter aligntop">
 <br />
 <!-- BEGIN EXAMPLE MONTH -->
-<table style="width:90%; background-color:<?php echo $BGCOLOR?>" summary=""><tr>
+<table style="width:90%; background-color:<?php echo $BGCOLOR?>"><tr>
 <td width="1%" rowspan="3">&nbsp;</td>
 <td style="text-align:center; color:<?php
   echo $H2COLOR?>; font-weight:bold;"><?php

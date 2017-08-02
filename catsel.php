@@ -31,14 +31,14 @@ print_header( array( 'js/catsel.php/false/' . $form ),
 ob_start();
 
 echo '
-    <table align="center" border="0" width="90%" summary="">
+    <table class="aligncenter" width="90%">
       <tr>
         <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>
       <form action="" method="post" name="editCategories" '
  . 'onSubmit="sendCats( this )">
       <tr>
-        <td valign="top">';
+        <td class="aligntop">';
 
 if ( ! empty ( $categories ) ) {
   echo '
@@ -62,9 +62,9 @@ if ( ! empty ( $categories ) ) {
 }
 echo '
         </td>
-        <td valign="center"><input type="button" value=">>" onclick="selAdd()"'
+        <td class="alignmiddle"><input type="button" value=">>" onclick="selAdd()"'
  . ' /></td>
-        <td align="center" valign="top">
+        <td class="aligncenter aligntop">
           <select name="eventcats[]" size="9"  multiple="multiple">
             <option disabled>' . $entryCatStr . '</option>';
 
@@ -92,10 +92,10 @@ echo '
         </td>
       </tr>
       <tr>
-        <td valign="top" align="right">*' . translate ( 'Global Category' )
+        <td class="aligntop alignright">*' . translate ( 'Global Category' )
  . '&nbsp;&nbsp;&nbsp;<input type="button" value="' . translate ( 'OK' )
  . '" onclick="sendCats()" /></td>
-        <td colspan="2" align="left">&nbsp;&nbsp;<input type="button" value="'
+        <td colspan="2" class="alignleft">&nbsp;&nbsp;<input type="button" value="'
  . translate ( 'Cancel' ) . '" onclick="window.close()" /></td>
       </tr>
       </form>

@@ -70,7 +70,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   echo '
     <form action="category_handler.php" method="post" name="catform" '
    . 'enctype="multipart/form-data">' . $idStr . '
-      <table cellspacing="2" cellpadding="3" summary="">
+      <table cellspacing="2" cellpadding="3">
         <tr>
           <td width="25%"><label for="catname">' . translate ( 'Category Name' )
    . '</label></td>

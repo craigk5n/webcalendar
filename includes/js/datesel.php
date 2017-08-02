@@ -200,12 +200,12 @@ function datesel_UpdateDisplay ( div, datename, year, month, day, curYMD )
   var ret = 
     '<div style="width: 100%">' +
     '<span class="clickable" onclick="datesel_Cancel()"/><img id="cancelImage" src="images/cancel.png" alt="x" /></span></div>' +
-    '<table border="0" class="dateselTable">' +
+    '<table class="dateselTable">' +
     '<tr><td colspan="7" id="dateselMonthName">' +
-    '<img src="images/combo-prev.png" align="left" class="clickable" ' +
+    '<img src="images/combo-prev.png" class="alignleft clickable" ' +
     'onclick="datesel_goto(event,' + "'" + datename + "'" + ',' + prevYear + ',' +
     prevMonth + ',' + prevDay + ',' + curYMD + ')" />' + months[month-1] + ' ' + year +
-    '<img src="images/combo-next.png" align="right" class="clickable" ' +
+    '<img src="images/combo-next.png" class="alignright clickable" ' +
     'onclick="datesel_goto(event,' + "'" + datename + "'" + ',' + nextYear + ',' +
     nextMonth + ',' + nextDay + ',' + curYMD + ')" />' + '</td></tr>';
 

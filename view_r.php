@@ -266,7 +266,7 @@ if ( ! $fit_to_window ) { ?>
 <table <?php echo $help;?> class="main" style="width:<?php
   echo $table_width;?>px;" width="<?php echo $table_width;?>">
 <?php } else { ?>
-<table <?php echo $help;?> class="main" width="100%">
+<table <?php echo $help;?> class="main">
 <?php } ?>
 
 <!-- table header -->
@@ -497,9 +497,8 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = ( int ) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
-  echo "<tr>\n<th valign=\"top\" class=\"row\" width=\"$time_w" .
+  echo "<tr>\n<th class=\"aligntop row\" width=\"$time_w" .
     '">' . $time . "</th>\n";
-  //echo "<tr>\n<th valign=\"top\">" . $time . "</th>\n";
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     $dateYmd = date ( 'Ymd', $days[$d] );

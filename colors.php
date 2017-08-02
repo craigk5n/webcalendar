@@ -25,20 +25,20 @@ print_header( '',
 echo <<<EOT
     <form action="colors.php" name="colorpicker">
       <input type="hidden" id="colorcell" value="{$color}" />
-      <table cellspacing="2" cellpadding="0" align="center" summary="">
+      <table cellspacing="2" class="aligncenter">
         <tr>
           <td colspan="3">
-            <img height="1" src="images/blank.gif" border="0" alt="" /></td>
+            <img height="1" src="images/blank.gif" alt="" /></td>
         </tr>
         <tr>
-          <td align="center">{$basicStr}</td>
+          <td class="aligncenter">{$basicStr}</td>
 <!-- COLORS PICTURE -->
-          <td rowspan="5" width="220" align="center">
+          <td rowspan="5" width="220" class="aligncenter">
             <img id="colorpic" height="192" width="192" src="images/colors.jpg"
               onclick="setFromImage(event);" alt="" /></td>
 <!-- ***** SLIDER **** -->
           <td rowspan="5">
-            <table cellspacing="0" cellpadding="0" width="24" summary=""
+            <table width="24"
               onclick="setFromSlider(event);">
               <tr>
                 <td id="slider"></td>
@@ -48,29 +48,29 @@ echo <<<EOT
         </tr>
         <tr>
 <!--  BASIC COLORS PALETTE  -->
-          <td align="center" id="colorchoices"></td>
+          <td class="aligncenter" id="colorchoices"></td>
         </tr>
         <tr>
-          <td align="center">{$customStr}</td>
+          <td class="aligncenter">{$customStr}</td>
         </tr>
         <tr>
 <!--  Custom Colors  -->
-          <td align="center" id="colorcustom"></td>
+          <td class="aligncenter" id="colorcustom"></td>
         </tr>
         <tr>
-          <td align="center"><input type="button" value="{$addcustomStr}"
+          <td class="aligncenter"><input type="button" value="{$addcustomStr}"
             onclick="definePreColor()" /></td>
         </tr>
         <tr>
-          <td valign="top" colspan="3">
-            <table cellpadding="2" cellspacing="0" width="100%" summary="">
-              <tr align="center">
-                <td colspan="2" height="30" valign="bottom">{$currentStr}</td>
-                <td valign="bottom">{$oldStr}</td>
+          <td class="aligntop" colspan="3">
+            <table cellpadding="2">
+              <tr class="aligncenter">
+                <td colspan="2" height="30" class="alignbottom">{$currentStr}</td>
+                <td class="alignbottom">{$oldStr}</td>
               </tr>
               <tr>
 <!-- RGB INPUT -->
-                <td class="boxtop boxleft boxbottom" valign="top" align="right">
+                <td class="boxtop boxbottom boxleft aligntop alignright">
                   R: <input id="rgb_r" type="text" size="3" maxlength="3"
                     value="255" onchange="setFromRGB()" /><br />
                   G: <input id="rgb_g" type="text" size="3" maxlength="3"
@@ -81,22 +81,19 @@ echo <<<EOT
                     value="FFFFFF" onchange="setFromHTML()" />
                 </td>
                 <td class="boxtop boxright boxbottom" width="120">
-          <table id="thecell" bgcolor="#ffffff" align="center"
-            border="1" cellspacing="0" cellpadding="0" summary="">
+          <table id="thecell" bgcolor="#FFFFFF" class="aligncenter"
+            border="1">
                     <tr>
                       <td><img src="images/blank.gif" width="55" height="53"
-                        border="0" alt="" /></td>
+                        alt="" /></td>
                     </tr>
                   </table>
                 </td>
-                <td valign="middle" align="center" class="boxtop boxright
-                  boxbottom">
+                <td class="alignmiddle aligncenter boxtop boxright boxbottom">
 <!--  Display New Color  -->
-        <table id="theoldcell" bgcolor="#ffffff" border="1" cellspacing="0"
-           cellpadding="0" summary="">
+        <table id="theoldcell" bgcolor="#FFFFFF" border="1">
                     <tr>
-            <td><img src="images/blank.gif" width="55" height="53"
-              border="0" alt="" /></td>
+            <td><img src="images/blank.gif" width="55" height="53" alt="" /></td>
                     </tr>
                   </table>
                 </td>
@@ -105,7 +102,7 @@ echo <<<EOT
           </td>
         </tr>
         <tr>
-          <td colspan="3" align="center" height="30">
+          <td colspan="3" class="aligncenter" height="30">
             <input type="button"
               value="&nbsp;&nbsp;&nbsp;{$okStr}&nbsp;&nbsp;&nbsp;"
               onclick="transferColor(); window.close()"

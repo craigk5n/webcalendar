@@ -197,7 +197,7 @@ function print_upcoming_event ( $e, $date ) {
           $catIcon = 'icons/cat-' . $catNum . '.png';
         if ( file_exists ( $catIcon ) )
           echo $link .
-            '<img src="' . $catIcon . '" alt="category icon" border="0"></a>';
+            '<img src="' . $catIcon . '" alt="category icon"></a>';
       }
     }
     echo $link;

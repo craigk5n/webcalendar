@@ -30,7 +30,7 @@ body {
   width:100%;
   margin:0;
   padding:0;
-  font-size: var(--def-font-size);
+  font: var(--def-font-size)\1.5 var(--fonts);
 }
 body{
   background-color: var(--bgcolor);
@@ -74,18 +74,24 @@ textarea {
   overflow:auto;
 }
 table {
+  width:100%;
   border:0;
   border-collapse:collapse;
   border-spacing:0;
   table-layout:fixed;
 }
 th,
-.layertable th{
+td {
+  margin:0;
+  border:0;
+  padding:0;
+}
+th,
+.layertable th {
   background-color: var(--thbg);
   color: var(--thfg);
 }
 th {
-  padding:0;
   /*font-size:.8125rem;*/
 }
 td {
@@ -313,7 +319,7 @@ a#programname {
   font-weight:bold;
   font-size:.875rem;
 }
-.entry{
+.entry {
   color: var(--myevents);
 }
 .entry,
@@ -690,7 +696,7 @@ tr.highlight td {
   font-weight:bold;
   text-align:center;
 }
-#pref .tooltip{
+#pref .tooltip {
   width:14.6875rem;
   vertical-align:top;
 }
@@ -1180,8 +1186,8 @@ tr.highlight td {
   margin-top:1.875rem;
   margin-bottom:3.125rem;
 }
-#register table,
-#login table {
+#login table,
+#register table {
   border:1px solid var(--tablebg);
   font-size:.75rem;
 }
@@ -1235,16 +1241,22 @@ tr.highlight td {
   height:.625rem;
   border:0;
 }
-.minitask td.pct,
-.alignright {
-  text-align:right;
-}
-.minitask td.name,
-.alignleft {
-  text-align:left;
+.alignbottom {
+  vertical-align:bottom;
 }
 .aligncenter {
   text-align:center;
+}
+.alignleft,
+.minitask td.name {
+  text-align:left;
+}
+.alignmiddle {
+  vertical-align:middle;
+}
+.alignright,
+.minitask td.pct {
+  text-align:right;
 }
 .aligntop {
   vertical-align:top;
@@ -1270,7 +1282,7 @@ tr.highlight td {
   margin:.125rem .0625rem;
   padding:.3125rem;
 }
-.layers h4{
+.layers h4 {
   margin:0 0 .3125rem;
 }
 .layers p {
@@ -1553,7 +1565,6 @@ table.ThemeMenubar select {
   padding-left: 2px;
   padding-right: 2px;
 }
-
 
 /* for modalbox */
 #MB_caption {

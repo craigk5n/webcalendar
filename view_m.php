@@ -109,7 +109,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
 
   echo '
     <br /><br />
-    <table class="main" summary=""';
+    <table class="main"';
   if ( $can_add )
     echo ' title="' .
       translate ( 'Double-click on empty cell to add new entry' ) . '"';

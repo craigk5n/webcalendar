@@ -222,7 +222,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
     <form action="access.php" method="post" id="accessform" name="accessform">
       <input type="hidden" name="auser" value="' . $guser . '" />
       <input type="hidden" name="guser" value="' . $guser . '" />
-      <table summary="">
+      <table>
         <tbody>
           <tr>
             <td>';
@@ -315,14 +315,14 @@ if( ! empty( $otheruser ) ) {
     <form action="access.php" method="post" name="EditOther">
       <input type="hidden" name="guser" value="' . $guser . '" />
       <input type="hidden" name="otheruser" value="' . $otheruser . '" /><br />
-      <table cellpadding="5" cellspacing="0" summary="">
+      <table cellpadding="5">
         <tbody>
           <tr>
-            <th class="boxleft boxtop boxbottom" width='
+            <th class="boxtop boxbottom boxleft" width='
      . ( $guser == '__public__'
-      ? '"60%" align="center">' . translate( 'Calendar' ) . '</th>
+      ? '"60%" class="aligncenter">' . translate( 'Calendar' ) . '</th>
             <th class="boxtop boxbottom" width="20%">' . $typeStr . '</th>
-            <th class="boxtop boxbottom boxright" colspan="3" width="20%">'
+            <th class="boxtop boxright boxbottom" colspan="3" width="20%">'
        . translate( 'View Event' )
       : '"25%">' . $otheruser_fullname . '</th>
             <th class="boxtop boxbottom" width="15%">' . $typeStr . '</th>
@@ -365,9 +365,9 @@ if( ! empty( $otheruser ) ) {
         $bottomedge = 'boxbottom';
       }
       echo '</td>
-            <td align="center" class="boxleft ' . $bottomedge . '">'
+            <td class="aligncenter boxleft ' . $bottomedge . '">'
        . $access_type[$j] . '</td>
-            <td align="center" class="boxleft pub ' . $bottomedge . '">'
+            <td class="aligncenter boxleft pub ' . $bottomedge . '">'
        . '<input type="checkbox" value="' . $j . '" name="v_' . $j . '"'
        . ( ! empty( $op['view'] ) && ( $op['view'] & $j ) ? $checked : '' )
        . ' /></td>
@@ -380,7 +380,7 @@ if( ! empty( $otheruser ) ) {
        . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 64 ) )
         ? $checked : '' ) . ' /></td>'
        . ( $guser != '__public__' ? '
-            <td align="center" class="boxleft pub ' . $bottomedge . '"><input '
+            <td class="aligncenter boxleft pub ' . $bottomedge . '"><input '
          . 'type="checkbox" value="' . $j . '" name="e_' . $j . '"'
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j ) ? $checked : '' )
          . ' /></td>
@@ -392,7 +392,7 @@ if( ! empty( $otheruser ) ) {
          . $j * 64 . '" name="e_' . $j * 64 . '"'
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 64 ) )
           ? $checked : '' ) . ' /></td>
-            <td align="center" class="boxleft pub ' . $bottomedge . '"><input '
+            <td class="aligncenter boxleft pub ' . $bottomedge . '"><input '
          . 'type="checkbox" value="' . $j . '" name="a_' . $j . '"'
          . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j )
           ? $checked : '' ) . ' /></td>
@@ -419,8 +419,7 @@ if( ! empty( $otheruser ) ) {
      . '" onclick="selectAll(0);" />
             </td>
             <td colspan="9" class="boxright">
-              <table border="0" align="center" cellpadding="5" '
-     . 'cellspacing="2" summary="">
+              <table class="aligncenter" cellpadding="5" cellspacing="2">
                 <tr>
                   <td class="pub">' . translate( 'Public' ) . '</td>
                   <td class="conf">' . translate( 'Confidential' ) . '</td>

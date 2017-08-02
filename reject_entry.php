@@ -18,17 +18,17 @@ else {
     <form action="reject_entry.php'
    . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : '?' . $_SERVER['QUERY_STRING'] )
    . '" method="post" name="add_comments">
-      <table border="0" cellspacing="5" summary="">
+      <table cellspacing="5">
         <tr>
-          <td align="center" valign="bottom"><h3>'
+          <td class="aligncenter alignbottom"><h3>'
    . translate ( 'Additional Comments (optional)' ) . '</h3></td>
         </tr>
         <tr>
-          <td align="center"><textarea name="comments" rows="5" cols="60">'
+          <td class="aligncenter"><textarea name="comments" rows="5" cols="60">'
    . '</textarea></td>
         </tr>
         <tr>
-          <td align="center"><input type="submit" value="'
+          <td class="aligncenter"><input type="submit" value="'
    . translate ( 'Continue' ) . '" /></td>
         </tr>
         <tr>

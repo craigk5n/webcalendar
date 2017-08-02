@@ -44,33 +44,33 @@ function fillhtml () {
   var custom = document.getElementById('colorcustom');
   var slidehtml = choicehtml = customhtml ='';
   var ctr=0;
-  slidehtml += '<table cellspacing="0" cellpadding="0" width="14" summary="">';
+  slidehtml += '<table width="14">';
   for (i=0;i<192;i++) {
     slidehtml += '<tr><td id="sc'+(i+1)+ '" height="1" width="14"></td></tr>';
   }
   slidehtml += '</table>';
   slide.innerHTML = slidehtml;
 
-  choicehtml += '<table border="1" cellpadding="0" cellspacing="0" summary="">';
+  choicehtml += '<table border="1">';
   for ( i=1; i<7; i++ ) {
     choicehtml += '<tr height="14">';
     for (j=1; j<9; j++ ) {
       ctr++;
         choicehtml += '<td height="14" width="14" bgcolor="#'+ colorList[ctr]
         +'" onclick="setCol( \'' +colorList[ctr] +'\' )">'
-        + '<img src="images/blank.gif" width="14" height="14" border="0" alt=""/></a></td>';
+        + '<img src="images/blank.gif" width="14" height="14" alt=""/></a></td>';
     }
     choicehtml += '</tr>';
   }
   choicehtml += '</table>';
   choice.innerHTML = choicehtml;
 
-  customhtml += '<table border="1" cellpadding="0" cellspacing="0" summary=""><tr>';
+  customhtml += '<table border="1"><tr>';
   for ( i=1; i<17; i++) {
     customhtml += '<td id="precell' + i
        + '" bgcolor="#ffffff" onclick="preset( '+ i
        + ' )"><img src="images/blank.gif" width="14" '
-       + 'id="preimg' + i + '" height="14" border="0" alt="" /></td>';
+       + 'id="preimg' + i + '" height="14" alt="" /></td>';
     if ( i == 8 ) customhtml += '</tr><tr>';
   }
   customhtml += '</tr></table>';

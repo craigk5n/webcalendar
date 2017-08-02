@@ -519,7 +519,7 @@ function print_menu_dates( $menu = false ) {
 
   $ret .= $goStr . ( $menu ? '
         </td>
-        <td class="ThemeMenubackgr ThemeMenu" align="right">' : '' );
+        <td class="ThemeMenubackgr ThemeMenu alignright">' : '' );
 
   if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) )
     $yearUrl = $SCRIPT;

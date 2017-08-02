@@ -392,7 +392,7 @@ echo '
   ? '  ( ' . translate ( 'Admin mode' ) . ' )' : '' )
  . ( $is_assistant ? ' ( ' . translate ( 'Assistant mode' ) . ' )' : '' )
  . '</h2>
-    <table width="100%" summary="">
+    <table>
       <tr>
         <td class="aligntop bold colon" width="10%">' . translate ( 'Description' )
  . '</td>
@@ -660,9 +660,9 @@ if ( $single_user == 'N' && $show_participants ) {
   }
   if ( $eType == 'task' ) {
     echo '
-          <table border="1" width="80%" cellspacing="0" cellpadding="1" summary="">
-            <th align="center">' . translate ( 'Participants' ) . '</th>
-            <th align="center" colspan="2">'
+          <table border="1" width="80%" cellpadding="1">
+            <th class="aligncenter">' . translate ( 'Participants' ) . '</th>
+            <th class="aligncenter" colspan="2">'
      . translate ( 'Percentage Complete' ) . '</th>';
     $others_complete = 'yes';
     for ( $i = 0, $cnt = count ( $participants ); $i < $cnt; $i++ ) {
@@ -688,7 +688,7 @@ if ( $single_user == 'N' && $show_participants ) {
         echo '&nbsp;' . $tempfullname;
 
       echo '</td>
-              <td width="5%" align="center">' . $percentage . '%</td>
+              <td width="5%" class="aligncenter">' . $percentage . '%</td>
               <td width="65%">
                 <img src="images/pix.gif" width="' . $percentage
        . '%" height="10">

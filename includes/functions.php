@@ -560,8 +560,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $cols = ( ( $hours * $interval ) + 1 );
   $ret = <<<EOT
     <br />
-    <table align="center" class="matrixd" style="width:'80%';" cellspacing="0"
-      cellpadding="0">
+    <table class="aligncenter matrixd" style="width:'80%';"
+     >
       <tr>
         <td class="matrix" colspan="{$cols}"></td>
       </tr>
@@ -739,9 +739,9 @@ EOT;
   } // End foreach participant.
   return $ret . <<<EOT
     </table><br />
-    <table align="center">
+    <table class="aligncenter">
       <tr>
-        <td class="matrixlegend" ><img src="images/pix.gif" title="{$busy}"
+        <td class="matrixlegend"><img src="images/pix.gif" title="{$busy}"
           alt="{$busy}" />{$busy}&nbsp;&nbsp;&nbsp;<img src="images/pixb.gif"
           title="{$tentative}" alt="{$tentative}" />{$tentative}</td>
       </tr>
@@ -1103,11 +1103,8 @@ function display_month( $thismonth, $thisyear, $demo = false,
     $help = '';
   }
 
-
   $ret .= '
-    <table ' . $help . ' class="main" cellspacing="0" cellpadding="0"'
-   . ' id="month_main" summary="calendar for ' . month_name( $thismonth - 1 )
-   . ' ' . $thisyear . '">
+    <table ' . $help . ' class="main" id="month_main">
       <tr>' . ( $DISPLAY_WEEKNUMBER == 'Y' ? '
         <th class="empty"></th>' : '' );
 
@@ -1308,7 +1305,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   // Start the minical table for each month.
   $ret = '
     <table class="minical"'
-   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' ) . ' summary="">';
+   . ( $minical_id != '' ? ' id="' . $minical_id . '"' : '' ) . '>';
 
   $monthstart = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
   $monthend = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth + 1, 0, $thisyear ) );
@@ -1501,10 +1498,10 @@ function display_small_tasks ( $cat_id ) {
     ( empty ( $task_filter ) ? '' : $task_filter ), $cat_id, true );
   $row_cnt = 1;
   $task_html = '
-    <table class="minitask" cellspacing="0" cellpadding="2" summary="">
+    <table class="minitask" cellpadding="2">
       <tr class="header">
         <th colspan="6">' . translate ( 'TASKS' ) . '</th>
-        <th align="right" colspan="2"><a href="edit_entry.php?' . $u_url
+        <th class="alignright" colspan="2"><a href="edit_entry.php?' . $u_url
    . 'eType=task' . $caturl
    . '"><img src="images/new.gif" alt="+" class="new" /></a></th>
       </tr>
@@ -1902,9 +1899,9 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
    . ( $sys ? translate ( 'System Log' ) : translate ( 'Activity Log' ) )
    . ( $sys ? '' : ' &nbsp;<a href="rss_activity_log.php">'
    . '<img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - '
-   . translate( 'Activity Log' ) . '" border="0" /></a>' )
+   . translate( 'Activity Log' ) . '" /></a>' )
    . "</$size>" . display_admin_link() . '
-    <table class="embactlog" summary="">
+    <table class="embactlog">
       <tr>
         <th class="usr">' . translate ( 'User' ) . '</th>
         <th class="cal">' . translate ( 'Calendar' ) . '</th>
@@ -4710,7 +4707,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
     }
   }
   $ret .= '
-    <table class="main glance" cellspacing="0" cellpadding="0" summary="">'
+    <table class="main glance">'
    . ( empty ( $hour_arr[9999] ) ? '' : '
       <tr>
         <th class="empty">&nbsp;</th>
@@ -6331,9 +6328,9 @@ function site_extras_for_popup ( $id ) {
 function print_error_box ( $msg )
 {
   echo '<div class="warningBox">' .
-    '<table border="0"><tr><td valign="middle">' .
-    '<img src="images/warning.png" width="40" height="40" align="middle" alt="' .
-    translate('Error') . '" /></td><td valign="middle">' .
+    '<table><tr><td class="alignmiddle">' .
+    '<img src="images/warning.png" width="40" height="40" class="alignmiddle" alt="' .
+    translate ( 'Error' ) . '" /></td><td class="alignmiddle">' .
     translate('The permissions for the icons directory are set to read-only') .
     "</td></tr></table></div>\n";
 }

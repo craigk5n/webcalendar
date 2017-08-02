@@ -218,7 +218,7 @@ function print_header_timebar() {
   // Print hours.
   $ret = '
 <!-- TIMEBAR -->
-          <table class="timebar" summary="">
+          <table class="timebar">
             <tr>';
   for ( $i = $WORK_DAY_START_HOUR; $i < $WORK_DAY_END_HOUR; $i++ ) {
     $hour = ( $i < 13 || $TIME_FORMAT == 24 ? $i : $i % 12 );
@@ -334,7 +334,7 @@ $repeated_events = $re_save;
 $timeBarHeader = print_header_timebar();
 
 echo '
-    <table class="main" summary="">';
+    <table class="main">';
 
 for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
   $dateYmd = date ( 'Ymd', $date );

@@ -50,7 +50,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
      . $nonusertemp_admin . '" />' ) . '
       <h2>' . ( empty ( $nid )
     ? translate ( 'Add User' ) : translate ( 'Edit User' ) ) . '</h2>
-      <table summary="">
+      <table>
         <tr>
           <td><label for="calid">' . translate ( 'Calendar ID' )
    . ':</label></td>
@@ -94,7 +94,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   if ( ! $use_http_auth ) {
     echo '
         <tr>
-          <td valign="top"><label for="ispublic">'
+          <td class="aligntop"><label for="ispublic">'
      . translate ( 'Is public calendar' ) . ':</td>
           <td>
             <input type="radio" name="ispublic" value="Y" '
