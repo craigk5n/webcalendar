@@ -543,7 +543,8 @@ function dbi_update_blob( $table, $column, $key, $data ) {
       " = ? WHERE $colKey = ?");
     $statement->bindParam ( 1, $data, SQLITE3_BLOB );
     $statement->bindParam ( 2, $valueKey );
-    return $statement->execute();
+    $ret = $statement->execute();
+    return ( $ret == FALSE ? FALSE : TRUE );
   } else
     // TODO!
     die_miserable_death( $unavail_DBI_Update_blob );

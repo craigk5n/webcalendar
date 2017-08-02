@@ -17,75 +17,11 @@ defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
  * these functions and you will still need to add users to webcal_user.
  */
 
-/***************************** Config *******************************/
-// Set some global config variables about your system.
-// Next three are NOT yet implemented for LDAP
+include_once 'auth-settings.php';
+
+// Next two features are NOT yet implemented for LDAP
 $user_can_update_password = false;
 $admin_can_add_user = false;
-
-// Allow admin to delete user from webcal tables
-$admin_can_delete_user = true;
-
-//------ LDAP General Server Settings ------//
-//
-// Name or address of the LDAP server
-//  For SSL/TLS use 'ldaps://localhost'
-$ldap_server = 'localhost';
-
-// Port LDAP listens on (default 389)
-$ldap_port = '389';
-
-// Use TLS for the connection (not the same as ldaps://)
-$ldap_start_tls = false;
-
-// If you need to set LDAP_OPT_PROTOCOL_VERSION
-$set_ldap_version = false;
-$ldap_version = '3'; // (usually 3)
-
-// base DN to search for users
-$ldap_base_dn = 'ou=people,dc=company,dc=com';
-
-// The ldap attribute used to find a user (login).
-// E.g., if you use cn,  your login might be "Jane Smith"
-//       if you use uid, your login might be "jsmith"
-$ldap_login_attr = 'uid';
-
-// Account used to bind to the server and search for information.
-// This user must have the correct rights to perform search.
-// If left empty the search will be made in anonymous.
-//
-// *** We do NOT recommend storing the root LDAP account info here ***
-$ldap_admin_dn = '';  // user DN
-$ldap_admin_pwd = ''; // user password
-
-//------ Admin Group Settings ------//
-//
-// A group name (complete DN) to find users with admin rights
-$ldap_admin_group_name = 'cn=webcal_admin,ou=group,dc=company,dc=com';
-
-// What type of group do we want (posixgroup, groupofnames, groupofuniquenames)
-$ldap_admin_group_type = 'posixgroup';
-
-// The LDAP attribute used to store member of a group
-$ldap_admin_group_attr = 'memberuid';
-
-//------ LDAP Filter Settings ------//
-//
-// LDAP filter used to limit search results and login authentication
-$ldap_user_filter = '(objectclass=person)';
-
-// Attributes to fetch from LDAP and corresponding user variables in the
-// application. Do change according to your LDAP Schema
-$ldap_user_attr = array (
-  // LDAP attribute   //WebCalendar variable
-  'uid',              //login
-  'sn',               //lastname
-  'givenname',        //firstname
-  'cn',               //fullname
-  'mail'              //email
-);
-
-/*************************** End Config *****************************/
 
 // Convert group name to lower case to prevent problems
 $ldap_admin_group_attr = strtolower($ldap_admin_group_attr);
@@ -244,7 +180,8 @@ function user_load_variables ( $login, $prefix ) {
 //   $lastname - last name
 //   $email - email address
 //   $admin - is admin? ("Y" or "N")
-function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin ) {
+//   $enabled - account enabled? ("Y" or "N")
+function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin, $enabled = 'Y' ) {
   global $error;
 
   $error = 'Not yet supported.';
@@ -258,7 +195,8 @@ function user_add_user ( $user, $password, $firstname, $lastname, $email, $admin
 //   $lastname - last name
 //   $email - email address
 //   $admin - is admin?
-function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
+//   $enabled - account enabled? ("Y" or "N")
+function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabled = 'Y' ) {
   global $error;
 
   $error = 'Not yet supported.';

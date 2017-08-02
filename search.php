@@ -62,8 +62,8 @@ if( is_array( $categories ) && $show_advanced ) {
   echo '
         <tr id="catfilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
-          <td><label for="cat_filter">' . translate( 'Categories' )
-   . ':</label></td>
+          <td><label for="cat_filter" class="colon">' . translate( 'Categories' )
+   . '</label></td>
           <td>
             <select name="cat_filter" id="cat_filter">
               <option value=""' . $selected . '>' . translate( 'All' )
@@ -84,9 +84,9 @@ if( count( $site_extras ) > 0 ) {
   echo '
         <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
-          <td><label for="extra_filter">'
+          <td><label for="extra_filter" class="colon">'
    . translate( 'Include' ) . '<br />' . translate( 'Site Extras' )
-   . ':</label></td>
+   . '</label></td>
           <td><input type="checkbox" name="extra_filter" value="Y" />
           </td></tr>';
 }
@@ -95,8 +95,8 @@ if( $show_advanced ) {
   echo '
         <tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
-          <td><label for="date_filter">' . translate('Filter by Date')
-   . ':</label></td>
+          <td><label for="date_filter" class="colon">' . translate('Filter by Date')
+   . '</label></td>
           <td>
             <select name="date_filter" id="date_filter" onchange="toggleDateRange()">
               <option value="0"' . $selected . '>' . translate( 'All Dates' )
@@ -108,15 +108,15 @@ if( $show_advanced ) {
           </td>
         </tr>
         <tr id="startDate" style="visibility:hidden">
-          <td>&nbsp;&nbsp;<label>' . translate( 'Start date' )
-   . ':</label></td>
+          <td>&nbsp;&nbsp;<label class="colon">' . translate( 'Start date' )
+   . '</label></td>
           <td>'
    . datesel_Print( 'from_', $dateYmd ) . '
           </td>
         </tr>
         <tr id="endDate" style="visibility:hidden">
-          <td>&nbsp;&nbsp;<label>' . translate( 'End date' )
-   . ':</label></td>
+          <td>&nbsp;&nbsp;<label class="colon">' . translate( 'End date' )
+   . '</label></td>
           <td>'
    . datesel_Print( 'until_', $dateYmd ) . '
           </td>

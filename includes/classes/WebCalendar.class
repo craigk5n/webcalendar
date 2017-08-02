@@ -157,10 +157,11 @@ class WebCalendar {
    * @access private
    */
   function _initInitSecondPhase() {
-    global $ALLOW_VIEW_OTHER, $can_add, $can_add, $cat_id, $CATEGORIES_ENABLED,
+    global $ALLOW_VIEW_OTHER, $can_add, $cat_id, $CATEGORIES_ENABLED,
     $CATEGORY_VIEW, $caturl, $date, $DMW, $friendly, $ignore_user_case,
     $override, $fullname, $GROUPS_ENABLED,
-    $hour, $id, $is_admin, $is_assistant, $is_nonuser, $login, $minute, $month,
+    $hour, $id, $is_admin, $is_assistant, $is_nonuser, $is_nonuser_admin,
+    $login, $minute, $month,
     $NONUSER_ENABLED, $nonusers, $ovrd, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
     $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS_OTHERS, $readonly, $u_url, $user,
     $user_fullname, $USER_SEES_ONLY_HIS_GROUPS, $userlist, $valid_user, $year;
@@ -168,6 +169,7 @@ class WebCalendar {
     load_global_settings();
 
     $this->setLanguage();
+    $user = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
 
     if ( empty ( $ovrd ) )
       load_user_preferences();
@@ -181,7 +183,6 @@ class WebCalendar {
     $id      = getValue ( 'id', '[0-9]+', true );
     $minute  = getValue ( 'minute', '[0-9]+' );
     $month   = getValue ( 'month', '[0-9]+' );
-    $user    = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
     $year    = getValue ( 'year', '[0-9]+' );
 
     if ( empty ( $PUBLIC_ACCESS ) )
@@ -220,8 +221,12 @@ class WebCalendar {
         if ( $PUBLIC_ACCESS_OTHERS != 'Y' )
           $user = ''; // Security precaution.
       }
-      if ( $is_nonuser )
-        $can_add = false;
+      if (!$is_admin && !$is_assistant && !$is_nonuser_admin) {
+	if ($is_nonuser)
+          $can_add = false;
+	else if (!empty($user) && $user != $login && $user != '__public__')
+	  $can_add = false;
+      }
 
       if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! $is_admin ) {
         $userlist = get_my_users();
@@ -240,7 +245,8 @@ class WebCalendar {
 
       if ( ! empty ( $user ) ) {
         $u_url = 'user=' . $user . '&amp;';
-        user_load_variables ( $user, 'user_' );
+        if (!user_load_variables ( $user, 'user_' ))
+          nonuser_load_variables($user, 'user_');
         if ( $user == '__public__' )
           $user_fullname = translate ( $PUBLIC_ACCESS_FULLNAME );
       } else {

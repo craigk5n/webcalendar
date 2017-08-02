@@ -24,8 +24,8 @@ echo '
 $assistStr = translate ( 'Assistants' );
 if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo $nonuserfullname . ' ' . $assistStr . '<br />
-      -- ' . translate ( 'Admin mode' ) . ' --';
+  echo $nonuserfullname . ' ' . $assistStr . '<br /><span class="dblHyphens">
+      ' . translate ( 'Admin mode' ) . '</span>';
 } else
   echo translate ( 'Your assistants' );
 
@@ -33,8 +33,7 @@ echo '</h2>
       ' . display_admin_link() . '
       <table summary="">
         <tr>
-          <td class="aligntop"><label for="users">'
- . $assistStr . ':</label></td>
+          <td class="aligntop colon"><label for="users">' . $assistStr . '</label></td>
           <td>
             <select name="users[]" id="users" size="10" multiple="multiple">';
 

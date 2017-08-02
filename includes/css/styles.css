@@ -4,26 +4,45 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ *
  * @version $Id: styles.css,v 1.39 2010/10/20 01:28:21 cknudsen Exp $
+ * hmmm... How does the version line work on github?
+ *
  * @package WebCalendar
  */
 
-/* This file could be a lot smaller if all selectors with identical declarations
- * were combined. However, running it through something like
- * http://www.cssoptimiser.com/ doesn't work as it screws up the cascading.
- */
-
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* These are to prevent some 'spam site' complaints. */
+  background-color: #FFFFFE;
+  color: #000001;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
 html,
 body {
   position:relative;
   width:100%;
   margin:0;
   padding:0;
-  /* Change this one font-size and everything else should scale. */
-  font-size:16px;
+  font-size: var(--def-font-size);
+}
+body{
+  background-color: var(--bgcolor);
+  color: var(--textcolor);
+  font: var(--def-font-size)/1.5 var(--def-font-family);
 }
 a {
+  color: var(--textcolor);
   text-decoration:none;
+}
+a.weekcell {
+  color: var(--weeknumber);
 }
 abbr {
   cursor:help;
@@ -32,25 +51,26 @@ div {
   border:0;
 }
 h2 {
-  font-size:1.875em;
+  color: var(--h2color);
+  font-size:1.875rem;
 }
 h3 {
-  font-size:1.500em;
+  font-size:1.500rem;
 }
 fieldset {
   width:96%;
 }
 label {
   font-weight:bold;
-  /*font-size:.6875em;*/
+  /*font-size:.6875rem;*/
 }
 p,
 input,
 select {
-  /*font-size:.75em;*/
+  /*font-size:.75rem;*/
 }
 textarea {
-  /*font-size:.75em;*/
+  /*font-size:.75rem;*/
   overflow:auto;
 }
 table {
@@ -59,43 +79,62 @@ table {
   border-spacing:0;
   table-layout:fixed;
 }
+th,
+.layertable th{
+  background-color: var(--thbg);
+  color: var(--thfg);
+}
 th {
   padding:0;
-  /*font-size:.8125em;*/
+  /*font-size:.8125rem;*/
 }
 td {
-  /*font-size:.6875em;*/
+  /*font-size:.6875rem;*/
 }
 ul,
 ul a {
-  /*font-size:.75em;*/
+  /*font-size:.75rem;*/
+}
+.alt {
+  background-color: var(--cellbg);
 }
 .main {
   clear:both;
   width:100%;
-  border-right:1px solid;
-  border-bottom:1px solid;
+  border-right:1px solid var(--tablebg);
+  border-bottom:1px solid var(--tablebg);
 }
 .main th,
 .main td {
   width:14%;
-  border-top: 1px solid;
-  border-left: 1px solid;
+  border-top: 1px solid var(--tablebg);
+  border-left: 1px solid var(--tablebg);
   vertical-align:top;
+}
+.minical td.weekend,
+#editentry th.weekend {
+   background-color: var(--weekendbg);
+}
+.minical td#today,
+#listunapproved .odd {
+  background-color: var(--todaycellbg);
 }
 .underline {
  text-decoration:underline;
 }
 .fixed {
-  width:10em;
+  width:10rem;
   margin-right:0;
 }
 .cursoradd a, .clickable {
   cursor:pointer;
 }
+.task {
+  color: var(--textcolor);
+}
 .warningBox {
-  background-color: #ffc0c0;
-  border: 1px solid #a04040;
+  background-color: #FFC0C0;
+  border: 1px solid #A04040;
   color: #000;
   margin: 20px;
 }
@@ -105,35 +144,37 @@ ul a {
   width:96%;
 }
 #tabscontent {
-  margin:-.0625em .125em;
-  border:.125em groove #c0c0c0;
-  padding:.5em;
-  background:#f8f8ff;
+  margin:-.0625rem .125rem;
+  border:.125rem groove #C0C0C0;
+  padding:.5rem;
+  background-color:#F8F8FF;
   z-index:50;
 }
 .tabfor,
 .tabbak  {
   position:relative;
-  margin:0 0 0 .1em;
-  border:.125em ridge #c0c0c0;
-  border-bottom:.125em solid #f8f8ff;
-  padding:.2em .2em .1em;
-  -moz-border-radius:.75em .75em 0 0;
+  margin:0 0 0 .1rem;
+  border:.125rem ridge #C0C0C0;
+  border-bottom:.125rem solid #F8F8FF;
+  padding:.2rem .2rem .1rem;
+  -moz-border-radius:.75rem .75rem 0 0;
+       border-radius:.75rem .75rem 0 0;
 }
 .tabfor a,
 .tabbak a {
+  color: var(--h2color);
   font-weight:bold;
-  /*font-size:.875em;*/
+  /*font-size:.875rem;*/
 }
 .tabbak a {
   color:#999;
 }
 .tabfor {
-  background:#f8f8ff;
+  background-color:#F8F8FF;
   z-index:51;
 }
 .tabbak {
-  background:#e0e0e0;
+  background-color:#E0E0E0;
   z-index:49;
 }
 #editnonusers,
@@ -142,7 +183,7 @@ ul a {
 #edituser,
 #groupedit,
 #viewsedit {
-  background:#f8f8ff;
+  background-color:#F8F8FF;
 }
 #cat,
 #day dl.desc,
@@ -172,23 +213,24 @@ ul a {
 }
 #tabscontent_colors p span,
 .sample {
-  margin:0 .0625em;
+  margin:0 .0625rem;
   border-style:groove;
-  padding:0 .5em;
+  padding:0 .5rem;
 }
 .weeknumber {
-  font-size:.625em;
+  color: var(--weeknumber);
+  font-size:.625rem;
   text-decoration:none;
 }
 img {
   border:0;
 }
 img.color {
-  width:.9375em;
-  height:.9375em;
+  width:.9375rem;
+  height:.9375rem;
 }
 #cat {
-  font-size:1.125em;
+  font-size:1.125rem;
 }
 #dateselector,
 #trailer {
@@ -198,9 +240,9 @@ img.color {
 #dateselector form {
   float:left;
   width:33%;
-  margin-top:.3125em;
-  margin-bottom:1.5625em;
-  padding-top:.3125em;
+  margin-top:.3125rem;
+  margin-bottom:1.5625rem;
+  padding-top:.3125rem;
 }
 #dateselector label,
 #trailer label {
@@ -222,6 +264,11 @@ img.color {
   /*font-size: small;*/
   text-align:right;
 }
+#viewr .main th a,
+#week .main th a,
+#weekdetails .main th a {
+  color: var(--thfg);
+}
 #yearform {
   clear:right;
   margin-bottom:0;
@@ -234,14 +281,15 @@ img.color {
 #menu a,
 .prefix,
 .printer {
-  font-size:.875em;
+  color: var(--textcolor);
+  font-size:.875rem;
 }
 .prefix {
   font-weight:bold;
 }
 a#programname {
-  margin-top:.625em;
-  font-size:.625em;
+  margin-top:.625rem;
+  font-size:.625rem;
 }
 .printer {
   clear:both;
@@ -253,22 +301,25 @@ a#programname {
   float:right;
 }
 .unapprovedentry {
-  padding-right:.1875em;
+  padding-right:.1875rem;
   color:#800000;
 /* Remove comments to set unapproved in italics.
   font-style:italic;
 */
-  /*font-size:.75em;*/
+  /*font-size:.75rem;*/
   text-decoration:none;
 }
 .nounapproved {
   font-weight:bold;
-  font-size:.875em;
+  font-size:.875rem;
+}
+.entry{
+  color: var(--myevents);
 }
 .entry,
 .layerentry {
-  padding-right:.1875em;
-  /*font-size:.75em;*/
+  padding-right:.1875rem;
+  /*font-size:.75rem;*/
   text-decoration:none;
 }
 .layerentry {
@@ -277,21 +328,22 @@ a#programname {
 .entry img,
 .layerentry img,
 .unapprovedentry img {
-  margin-right:.125em;
-  margin-left:.125em;
+  margin-right:.125rem;
+  margin-left:.125rem;
 }
 .dayofmonth {
+  color: var(--tablebg);
+  border:1px solid var(--tablebg);
   border-width:0 1px 1px 0;
-  border-style:solid;
-  padding:0 .125em 0 .1875em;
+  padding:0 .125rem 0 .1875rem;
   font-weight:bold;
-  font-size:.75em;
+  font-size:.75rem;
   text-decoration:none;
   vertical-align:top;
 }
 .dayofmonth:hover {
-  border-right:1px solid #00f;
-  border-bottom:1px solid #00f;
+  border-right:1px solid #00F;
+  border-bottom:1px solid #00F;
 }
 .next img,
 #activitylog .next {
@@ -303,44 +355,46 @@ a#programname {
 }
 .next img,
 .prev img {
-  margin-top:.4375em;
-  margin-right:.1875em;
+  margin-top:.4375rem;
+  margin-right:.1875rem;
 }
 #activitylog .next,
 #activitylog .prev {
   border:0;
   font-weight:bold;
-  font-size:.875em;
+  font-size:.875rem;
 }
 #day .next img,
 #day .prev img {
-  margin-top:2.3125em;
+  margin-top:2.3125rem;
 }
 #day .monthnav .next img,
 #day .monthnav .prev img {
   margin:0;
 }
 .dailymatrix {
+  background-color: var(--thbg);
   cursor:pointer;
-  font-size:.75em;
+  font-size:.75rem;
   text-align:right;
   text-decoration:none;
 }
 .dailymatrix:hover {
-  background:#cfc;
+  background-color:#CFC;
 }
 td.matrixappts {
   width:0;
+  background-color: var(--cellbg);
   cursor:pointer;
   text-align:left;
   vertical-align:middle;
 }
 td.matrixappts:hover {
-  background:#cfc;
+  background-color:#CFC;
 }
 td.matrix {
   height:1px;
-  background:#000;
+  background-color:#000;
 }
 .matrix img {
   width:100%;
@@ -348,47 +402,49 @@ td.matrix {
 }
 a.matrix img {
   width:100%;
-  height:.5em;
+  height:.5rem;
 }
 .matrixd {
   margin-right:auto;
   margin-left:auto;
-  border-right:1px solid;
-  border-left:1px solid;
+  border-right:1px solid var(--tablebg);
+  border-left:1px solid var(--tablebg);
 }
 .matrixledge {
   border-left:1px solid #000;
 }
 .matrixlegend {
-  margin-top:1.5625em;
+  margin-top:1.5625rem;
   margin-right:auto;
   margin-left:auto;
   border:1px solid #000;
-  padding:.3125em;
-  background:#fff;
+  padding:.3125rem;
+  background-color:#FFF;
   text-align:center;
 }
 .matrixlegend img {
-  width:.625em;
-  height:.625em;
+  width:.625rem;
+  height:.625rem;
 }
 .nav {
-  font-size:.875em;
+  color: var(--textcolor);
+  font-size:.875rem;
   text-decoration:none;
 }
 .popup {
   position:absolute;
   top:0;
   left:0;
-  border:2px solid;
-  padding:1.0em;
-  font-size:.75em;
+  color: var(--popupfg);
+  border:2px solid var(--popupfg);
+  padding:1.0rem;
+  font-size:.75rem;
   text-decoration:none;
   visibility:hidden;
   z-index:20;
   border-radius:8px;
   -moz-border-radius:8px;
-  box-shadow: 5px 5px 5px #888888;
+  box-shadow: 5px 5px 5px var(--box-default-color);
 }
 .popup dl,
 .popup dt {
@@ -399,27 +455,29 @@ a.matrix img {
   font-weight:bold;
 }
 .popup dd {
-  margin-left:1.25em;
+  margin-left:1.25rem;
 }
 .tooltip,
 .tooltipselect {
   cursor:help;
   font-weight:bold;
-  font-size:.6875em;
+  font-size:.6875rem;
   text-decoration:none;
 }
 .tooltip {
-  width:7.5em;
+  width:7.5rem;
 }
 .tooltipselect {
   vertical-align:top;
 }
 .user,
 .categories {
-  font-size:1.125em;
+  color: var(--h2color);
+  font-size:1.125rem;
   text-align:center;
 }
 .asstmode {
+  color: var(--h2color);
   font-weight:bold;
   text-align:center;
 }
@@ -428,7 +486,7 @@ a.matrix img {
   vertical-align:top;
 }
 .helpbody {
-  margin-bottom:1em;
+  margin-bottom:1rem;
   font-weight:normal;
   vertical-align:top;
 }
@@ -436,16 +494,16 @@ a.matrix img {
   border:1px solid #000;
 }
 .helpbody label {
-  font-size:1.1em;
+  font-size:1.1rem;
   vertical-align:top;
 }
 .helpbody p {
-  margin:1em;
+  margin:1rem;
 }
 .helplist {
   border:0;
   font-weight:bold;
-  font-size:1.2em;
+  font-size:1.2rem;
   text-align:center;
 }
 .helplist a {
@@ -457,7 +515,7 @@ a.matrix img {
   text-decoration:none;
 }
 #helpbug form {
-  margin-bottom:1em;
+  margin-bottom:1rem;
 }
 #helpbug label {
   clear:left;
@@ -465,53 +523,59 @@ a.matrix img {
   width:32%;
 }
 #helpbug p {
-  margin:0 1em;
+  margin:0 1rem;
 }
 img.help {
   cursor:help;
 }
 .sample {
   text-align:left;
-  width:1em;
+  width:1rem;
 }
 .standard {
-  border:1px solid;
-  font-size:.75em;
+  background-color: var(--cellbg);
+  border:1px solid var(--tablebg);
+  font-size:.75rem;
 }
 .standard th {
-  border-bottom:1px solid;
+  border:0;
+  border-bottom:1px solid var(--tablebg);
   padding:0;
-  font-size:1.125em;
+  font-size:1.125rem;
 }
  /* style for week hover highlight */
 tr.highlight td {
-  background:#ffb !important;
+  background-color:#ffb !important;
 }
 .minical {
-  margin:0 0 .3125em 0;
-  font-size:.625em;
+  margin:0 0 .3125rem 0;
+  font-size:.625rem;
 }
 .minical caption a {
+  color: var(--captions);
   font-weight:bold;
 }
 .minical th {
-  border:0 solid;
-  padding:0 .125em;
+  border:0 solid var(--bgcolor);
+  padding:0 .125rem;
 }
 .minical th,
 .minical td.empty {
+  background-color: var(--bgcolor);
+  color: var(--textcolor);
   text-align:center;
 }
 .minical th.empty {
-  background:transparent;
+  background-color:transparent;
 }
 .minical td {
-  border:1px solid;
-  padding:0 .125em;
+  background-color: var(--cellbg);
+  border:1px solid var(--bgcolor);
+  padding:0 .125rem;
 }
 .minical td a {
   margin:0;
-  padding:.1875em;
+  padding:.1875rem;
   display:block;
   text-align:center;
 }
@@ -525,9 +589,10 @@ tr.highlight td {
 }
 .minitask tr.header th,
 .minitask tr.header td {
-  border-bottom:.125em solid #000;
+  background-color: var(--cellbg);
+  border-bottom:.125rem solid #000;
   padding:0;
-  font-size:.75em;
+  font-size:.75rem;
   text-align:center;
 }
 .minitask tr.header td {
@@ -544,10 +609,11 @@ tr.highlight td {
 .sorterbottom {
  border-bottom:1px solid #000 !important;
 }
-.minitask  td {
+.minitask td {
+  color: var(--textcolor);
   border-bottom:1px solid #000;
   padding:0;
-  font-size:.75em;
+  font-size:.75rem;
   text-align:center;
 }
 .minitask td.filler {
@@ -562,17 +628,17 @@ tr.highlight td {
 #admin select,
 #pref input,
 #pref select {
-  margin:0 .1875em;
+  margin:0 .1875rem;
 }
 #admin .main td,
 #pref .main td {
-  height:1.875em;
+  height:1.875rem;
 }
 #admin .main td,
 #admin .main th,
 #pref .main td,
 #pref .main th {
-  font-size:.75em;
+  font-size:.75rem;
 }
 #admin .empty,
 #pref .empty {
@@ -581,6 +647,7 @@ tr.highlight td {
 }
 #admin .main td.weekcell,
 #pref .main td.weekcell {
+  color: var(--h2color);
   margin:0;
   text-align:center;
   text-decoration:none;
@@ -588,7 +655,7 @@ tr.highlight td {
 }
 #admin .main th.weekcell,
 #pref .main th.weekcell {
-  background:transparent;
+  background-color:transparent;
 }
 #admin .main td.empty,
 #admin .main td.weekcell,
@@ -606,43 +673,45 @@ tr.highlight td {
   float:left;
   width:25%;
   margin:0;
-  padding:0 .25em;
+  padding:0 .25rem;
 }
 #admin #saver {
   clear:both;
-  margin-top:1em;
+  margin-top:1rem;
 }
 #example_month {
   float:right;
   width:45%;
-  margin:3em 1em 0;
+  background-color: var(--bgcolor);
+  margin:3rem 1rem 0;
 }
 #example_month p {
+  color: var(--h2color);
   font-weight:bold;
   text-align:center;
 }
 #pref .tooltip{
-  width:14.6875em;
+  width:14.6875rem;
   vertical-align:top;
 }
 .embactlog {
   width:100%;
-  border-right:1px solid;
-  border-bottom:1px solid;
+  border-right:1px solid var(--tablebg);
+  border-bottom:1px solid var(--tablebg);
   border-spacing:0;
 }
 .embactlog tr {
-  background:#fff;
+  background-color:#FFF;
 }
 .embactlog .odd {
-  background:#eee;
+  background-color:#EEE;
 }
 .embactlog th {
   width:14%;
-  border-top:1px solid;
-  border-bottom:1px solid;
-  border-left:1px solid;
-  padding:.0625em .1875em;
+  border-top:1px solid var(--tablebg);
+  border-bottom:1px solid var(--tablebg);
+  border-left:1px solid var(--tablebg);
+  padding:.0625rem .1875rem;
 }
 .embactlog th.action,
 .embactlog th.cal,
@@ -650,12 +719,12 @@ tr.highlight td {
   width:7%;
 }
 .embactlog td {
-  border-left:1px solid;
-  padding:.0625em .1875em;
+  border-left:1px solid var(--tablebg);
+  padding:.0625rem .1875rem;
 }
 #day div.minicalcontainer {
   border:1px solid #000;
-  padding:.1875em;
+  padding:.1875rem;
   vertical-align:top;
 }
 #day table.minical {
@@ -663,50 +732,53 @@ tr.highlight td {
   margin-left:auto;
 }
 #day .minical caption {
+  background-color: var(--thbg);
+  color: var(--thfg);
   margin-right:auto;
   margin-left:auto;
   font-weight:bold;
-  font-size:2.9375em;
+  font-size:2.9375rem;
 }
 #day .minical td.selectedday {
-  border:.125em solid;
+  border:.125rem solid var(--tablebg);
 }
 #day .monthnav th {
   border:0;
-  padding:.1875em;
+  padding:.1875rem;
   text-align:center;
 }
 .menuhref {
   font-family:arial, verdana, sans-serif;
 }
 #datesel td.field {
-  font-size:.75em;
+  font-size:.75rem;
 }
 .glance {
   width:100%;
-  border-right:1px solid;
-  border-bottom:1px solid;
+  border-right:1px solid var(--tablebg);
+  border-bottom:1px solid var(--tablebg);
 }
 .glance th.empty {
-  border-top:1px solid;
-  border-left:1px solid;
+  background-color: var(--bgcolor);
+  border-top:1px solid var(--bgcolor);
+  border-left:1px solid var(--bgcolor);
 }
 .glance th.row {
   width:14%;
-  height:2.5em;
-  border-top:1px solid;
-  border-left:1px solid;
+  height:2.5rem;
+  border-top:1px solid var(--tablebg);
+  border-left:1px solid var(--tablebg);
   vertical-align:middle;
 }
 .glance td {
-  border-top:1px solid;
-  border-left:1px solid;
-  padding-left:.1875em;
+  border-top:1px solid var(--tablebg);
+  border-left:1px solid var(--tablebg);
+  padding-left:.1875rem;
   vertical-align:top;
 }
 #day .glance td {
   width:86%;
-  height:2.5em;
+  height:2.5rem;
 }
 #day dl.desc {
   margin:0;
@@ -717,10 +789,10 @@ tr.highlight td {
 }
 #day dl.desc dd {
   margin:0;
-  padding-left:1.25em;
+  padding-left:1.25rem;
 }
 #year #monthgrid td {
-  padding:0 .3125em;
+  padding:0 .3125rem;
   vertical-align:top;
 }
 #year .minical tr {
@@ -737,28 +809,29 @@ tr.highlight td {
   width:12%;
 }
 #viewr th.small {
-  background:none;
-  font-size:.5em;
+  background-color:none;
+  font-size:.5rem;
 }
 #viewd .main th {
-  border-right:1px solid;
-  padding:.0625em;
+  border-right:1px solid var(--tablebg);;
+  padding:.0625rem;
 }
-#pref .main th.weekcell,
-#viewl .main th.empty,
 #day .main th.empty,
-#month .main th.empty{
+#month .main th.empty,
+#pref .main th.weekcell,
+#viewl .main th.empty {
   width:1%;
   border-top:0;
   border-left:0;
-  background:transparent;
+  background-color:transparent;
 }
+#month .main td.weekcell,
 #pref .main td.weekcell,
-#viewl .main td.weekcell,
-#month .main td.weekcell {
+#viewl .main td.weekcell {
   width:1%;
+  color: var(--h2color);
   margin:0;
-  font-size:.75em;
+  font-size:.75rem;
   text-align:center;
   text-decoration:none;
   vertical-align:middle;
@@ -779,14 +852,14 @@ tr.highlight td {
 #viewr .main th.empty,
 #week .main th.empty {
   width:5%;
-  border-top:1px solid;
-  border-left:1px solid;
-  background:none;
-  background:transparent;
+  border-top:1px solid var(--bgcolor);
+  border-left:1px solid var(--bgcolor);
+  background-color:none;
+  background-color:transparent;
 }
 #week .main th.row {
   width:5%;
-  height:2.5em;
+  height:2.5rem;
   vertical-align:top;
 }
 #viewt.main {
@@ -801,7 +874,7 @@ tr.highlight td {
   vertical-align:top;
 }
 #viewv .main th.row {
-  padding:0 .3125em;
+  padding:0 .3125rem;
   text-align:left;
 }
 #viewd .main th.row {
@@ -809,7 +882,7 @@ tr.highlight td {
   text-align:left;
 }
 #viewr th.row {
-  height:2.5em;
+  height:2.5rem;
   vertical-align:top;
 }
 #vieww .main th.today,
@@ -827,14 +900,14 @@ tr.highlight td {
   vertical-align:top;
 }
 #pref .main td {
-  height:1.875em;
-  font-size:.75em;
+  height:1.875rem;
+  font-size:.75rem;
 }
 #viewl .main td,
 #contentMonth .main td,
 #month .main td {
-  height:6.0em;
-  font-size:.75em;
+  height:6.0rem;
+  font-size:.75rem;
   vertical-align:top;
 }
 #vieww .main td,
@@ -842,8 +915,8 @@ tr.highlight td {
 #viewr .main td,
 #viewm .main td,
 #viewv .main td {
-  font-size:.75em;
-  padding-left:.1875em;
+  font-size:.75rem;
+  padding-left:.1875rem;
 }
 #viewl #prevmonth {
   float:left;
@@ -863,14 +936,14 @@ tr.highlight td {
 }
 #viewl .minical,
 #month .minical {
-  margin:0 .25em;
+  margin:0 .25rem;
   border:0;
 }
 #combo div.headerinfo, #month2 div.headerinfo {
-  margin:.9375em;
+  margin:.9375rem;
   border:1px solid #000;
-  padding:.625em;
-  background:#fff;
+  padding:.625rem;
+  background-color:#FFF;
   color:#000;
 }
 #combo div.headerinfo .username, #month2 div.headerinfo .username {
@@ -878,7 +951,7 @@ tr.highlight td {
   font-size:16pt;
 }
 #combo div.headerinfo #categoryselection, #month2 div.headerinfo #categoryselection {
-  padding-left:1.875em;
+  padding-left:1.875rem;
   font-weight:normal;
   font-size:12pt;
 }
@@ -887,17 +960,17 @@ tr.highlight td {
   font-size:12pt;
 }
 #combo #categorylist, #month2 #categorylist {
-  border:1px solid #ccc;
-  background:#ffa;
+  border:1px solid #CCC;
+  background-color:#FFA;
 }
 #contentMonth #monthstatus {
-  margin-left:1.25em;
+  margin-left:1.25rem;
 }
-#month2 td.displayYear { font-size: 1.2em !important }
+#month2 td.displayYear { font-size: 1.2rem !important; }
 #contentMonth .monthtitle,
 #contentYear .yeartitle,
 #contentDay .daytitle {
-  margin:0 0 0 .3125em;
+  margin:0 0 0 .3125rem;
   padding:0;
   font-size:18pt;
   text-align:center;
@@ -909,7 +982,7 @@ tr.highlight td {
   height:90px;
 }
 #combo .event, #month2 .event {
-  margin-top:.0625em;
+  margin-top:.0625rem;
   overflow:hidden;
 }
 #combo #contentMonth .eventname, #month2 #contentMonth .eventname {
@@ -920,7 +993,7 @@ tr.highlight td {
 }
 #contentYear #year_main,
 #contentYear .monthblock {
-  background: #fff;
+  background-color: #FFF;
   border: 0;
 }
 #contentYear .monthtable {
@@ -929,7 +1002,7 @@ tr.highlight td {
   border-bottom: 1px solid;
 }
 #contentYear .empty {
-  background-color: #e0e0e0;
+  background-color: #E0E0E0;
 }
 #contentYear th {
   font-size: 70%;
@@ -940,65 +1013,67 @@ tr.highlight td {
   text-align: center;
 }
 #contentAgenda #agendastatus {
-  margin-left:1.25em;
+  margin-left:1.25rem;
 }
-#contentAgenda td.odd {
-  background:#e0e0e0;
+#contentAgenda td {
+  background-color:#E0E0E0;
   font-size:10pt;
 }
 #contentAgenda td.even {
-  background:#ffffff;
-  font-size:10pt;
+  background-color:#FFFFFF;
 }
 #contentDay #daystatus {
-  margin-left:1.25em;
+  margin-left:1.25rem;
 }
 #contentDay .timeofday {
   float:right;
-  margin-right:.125em;
-  font-size:.5625em;
+  margin-right:.125rem;
+  font-size:.5625rem;
 }
 #contentDay #daydiv {
-  height:25em;
+  height:25rem;
   scrollTop:400;
   overflow:auto;
 }
 #contentDay #dayuntimed {
-  margin-top:.25em;
-  margin-bottom:.25em;
-  margin-left:3.125em;
+  background-color:#FFFFFF;
+  color: var(--myevents);
+  margin-top:.25rem;
+  margin-bottom:.25rem;
+  margin-left:3.125rem;
   border:1px solid;
-  border-color:#a0a0a0 #e0e0e0 #e0e0e0 #a0a0a0;
-  background:#ffffff;
-  font-size:.625em;
+  border-color:#A0A0A0 #E0E0E0 #E0E0E0 #A0A0A0;
+  font-size:.625rem;
 }
 #contentDay .daytimedevent {
-  width:15.625em;
+  width:15.625rem;
+  background-color: var(--haseventsbg);
+  color: var(--myevents);
   border:1px solid;
-  border-color:#e0e0e0 #a0a0a0 #a0a0a0 #e0e0e0;
-  font-size:.625em;
+  border-color:#E0E0E0 #A0A0A0 #A0A0A0 #E0E0E0;
+  font-size:.625rem;
 }
 #contentDay #dayinnerdiv {
   position:relative;
-  height:75em;
+  height:75rem;
 }
 #contentDay .hourblockleft {
   position:absolute;
   left:0;
-  width:3.125em;
-  height:3.125em;
+  width:3.125rem;
+  height:3.125rem;
   margin:0;
-  border:1px solid #e0e0e0;
+  border:1px solid #E0E0E0;
   padding:0;
 }
 #contentDay .hourblockright {
   position:absolute;
-  left:3.125em;
-  width:31.25em;
-  height:3.125em;
+  left:3.125rem;
+  width:31.25rem;
+  height:3.125rem;
   margin:0;
-  border-right:1px solid #e0e0e0;
-  border-left:1px solid #e0e0e0;
+  border-right:1px solid #E0E0E0;
+  border-left:1px solid #E0E0E0;
   padding:0;
   background-image:url( images/hour_in_day.gif );
   /*overflow:auto;*/
@@ -1007,22 +1082,22 @@ tr.highlight td {
   background-color: #000080;
   border: 2px outset #000060;
   color: #ffffff;
-  font-size: 1.0em;
+  font-size: 1.0rem;
   padding: 4px;
   padding-left: 20px;
 }
 #combo #contentTasks #tasktable td.odd {
-  background-color: #c0c0c0;
-  border: 2px outset #c0c0c0;
+  background-color: #C0C0C0;
+  border: 2px outset #C0C0C0;
   color: #000000;
-  font-size: 1.0em;
+  font-size: 1.0rem;
   padding: 4px;
 }
 #combo #contentTasks #tasktable td.even {
-  background-color: #d8d8d8;
-  border: 2px outset #d8d8d8;
+  background-color: #D8D8D8;
+  border: 2px outset #D8D8D8;
   color: #000000;
-  font-size: 1.0em;
+  font-size: 1.0rem;
   padding: 4px;
 }
 #combo #viewEventDiv table, #month2 #viewEventDiv table {
@@ -1045,23 +1120,26 @@ tr.highlight td {
   text-align:center;
 }
 #day .title {
-  margin-top:.1875em;
+  margin-top:.1875rem;
   text-align:center;
 }
-#day .title .date,
-.title .date {
+.title .date,
+#day .title .date {
+  color: var(--h2color);
   font-weight:bold;
-  font-size:1.5em;
+  font-size:1.5rem;
   text-align:center;
 }
 .title .titleweek {
-  font-size:1.25em;
+  color: var(--h2color);
+  font-size:1.25rem;
 }
 .title .viewname,
-#day .title .user,
-.title .user {
+.title .user,
+#day .title .user {
+  color: var(--h2color);
   font-weight:bold;
-  font-size:1.125em;
+  font-size:1.125rem;
   text-align:center;
 }
 #weekdetails .main {
@@ -1069,19 +1147,19 @@ tr.highlight td {
 }
 #weekdetails .main th {
   width:100%;
-  padding:.125em;
+  padding:.125rem;
 }
 #weekdetails .main td {
-  height:4.6875em;
+  height:4.6875rem;
 }
 #viewt table.timebar {
   width:100%;
 }
 #viewt td.timebar {
   width:90%;
-  background:#fff;
+  background-color:#FFF;
   color:#999;
-  font-size:.625em;
+  font-size:.625rem;
   text-align:center;
 }
 #viewt .yardstick td {
@@ -1099,62 +1177,62 @@ tr.highlight td {
   border:0;
 }
 #login {
-  margin-top:1.875em;
-  margin-bottom:3.125em;
+  margin-top:1.875rem;
+  margin-bottom:3.125rem;
 }
 #register table,
 #login table {
-  border:1px solid;
-  font-size:.75em;
+  border:1px solid var(--tablebg);
+  font-size:.75rem;
 }
 .cookies {
-  font-size:.8125em;
+  font-size:.8125rem;
 }
 .strikethrough {
   text-decoration:line-through;
 }
 .pub {
-  background:#80ff80;
+  background-color:#80FF80;
   text-align:center;
 }
 .conf {
-  background:#ffff80;
+  background-color:#FFFF80;
   text-align:center;
 }
 .priv {
-  background:#ff5050;
+  background-color:#FF5050;
   text-align:center;
 }
 .boxtop {
-  border-top:1px solid #888;
+  border-top:1px solid var(--box-default-color);
 }
 .boxright {
-  border-right:1px solid #888;
+  border-right:1px solid var(--box-default-color);
 }
 .boxbottom {
-  border-bottom:1px solid #888;
+  border-bottom:1px solid var(--box-default-color);
 }
 .boxleft {
-  border-left:1px solid #888;
+  border-left:1px solid var(--box-default-color);
 }
 .boxall {
-  border:1px solid #888;
-  padding-left:.1875em;
+  border:1px solid var(--box-default-color);
+  padding-left:.1875rem;
 }
 .leftpadded {
-  padding-left:3.125em;
+  padding-left:3.125rem;
   text-align:left;
 }
 .location {
- font-size:.625em;
+ font-size:.625rem;
 }
 .byxxx th,
 .byxxx td {
   text-align:center;
 }
 .icon_text {
-  width:.625em;
-  height:.625em;
+  width:.625rem;
+  height:.625rem;
   border:0;
 }
 .minitask td.pct,
@@ -1179,7 +1257,7 @@ tr.highlight td {
   background-repeat:no-repeat;
 }
 #about p {
-  margin:.0625em;
+  margin:.0625rem;
   color:#333;
 }
 #scroller {
@@ -1188,36 +1266,37 @@ tr.highlight td {
 }
 .layers {
   float:left;
-  margin:.125em .0625em;
-  padding:.3125em;
+  background-color: var(--cellbg);
+  margin:.125rem .0625rem;
+  padding:.3125rem;
 }
 .layers h4{
-  margin:0 0 .3125em;
+  margin:0 0 .3125rem;
 }
 .layers p {
   margin:0;
-  padding-left:.3125em;
-  font-size:.75em;
+  padding-left:.3125rem;
+  font-size:.75rem;
 }
 .layers p label {
-  font-size:.8125em;
+  font-size:.8125rem;
 }
 #securityAudit {
   border:1px solid #c0c0c0;
 }
 #securityAudit th {
-  background:#d0d0d0;
+  background-color:#d0d0d0;
 }
 #securityAudit tr.odd td {
-  background:#e0e0e0;
+  background-color:#e0e0e0;
 }
 #securityAuditNotes {
-  margin:1.25em;
-  border:1px solid;
+  margin:1.25rem;
+  border:1px solid var(--tablebg);
 }
 #securityAuditNotes li {
-  margin-top:.25em;
-  margin-bottom:.25em;
+  margin-top:.25rem;
+  margin-bottom:.25rem;
 }
 #accountiframe,
 #useriframe {
@@ -1225,38 +1304,42 @@ tr.highlight td {
   border:0;
 }
 #accountiframe {
-  height:13.125em;
+  height:13.125rem;
 }
 #useriframe {
-  height:17.5em;
+  height:17.5rem;
 }
 .note {
-  margin:0 1.5625em;
-  border:1px solid;
-  padding:.625em;
+  color: var(--tablebg);
+  margin:0 1.5625rem;
+  border:1px solid var(--tablebg);
+  padding:.625rem;
 }
 .rightsidetip {
   float:right;
-  width:15.625em;
-  margin-top:.625em;
-  margin-right:1.5625em;
-  border:1px solid;
-  padding:.3125em;
-  font-size:.6875em;
+  width:15.625rem;
+  margin-top:.625rem;
+  margin-right:1.5625rem;
+  border:1px solid var(--tablebg);
+  padding:.3125rem;
+  font-size:.6875rem;
   text-align:center;
 }
 .layertable {
    text-align:center;
 }
+.layertable td {
+  background-color: var(--cellbg);
+}
 .layertable th,
 .layertable td {
-  padding:.3125em 1.25em;
+  padding:.3125rem 1.25rem;
 }
 #layers #layertable th {
   background-color: #000080;
   border: 2px outset #000060;
   color: #ffffff;
-  font-size: 1.0em;
+  font-size: 1.0rem;
   padding: 4px;
   /*padding-left: 20px;*/
 }
@@ -1264,7 +1347,7 @@ tr.highlight td {
   background-color: #c0c0c0;
   border: 2px outset #c0c0c0;
   color: #000000;
-  font-size: 1.0em;
+  font-size: 1.0rem;
   padding: 4px;
   cursor:pointer;
 }
@@ -1272,7 +1355,7 @@ tr.highlight td {
   background-color: #d8d8d8;
   border: 2px outset #d8d8d8;
   color: #000000;
-  font-size: 1.0em;
+  font-size: 1.0rem;
   padding: 4px;
   cursor:pointer;
 }
@@ -1286,15 +1369,15 @@ tr.highlight td {
 .fakebutton {
    border:2px #d0d0d0 outset;
    /*border-color:#e0e0e0 #808080 #808080 #e0e0e0;*/
-   padding-right:.3125em;
-   padding-left:.3125em;
-   padding:.25em;
-   background:#d0d0d0;
+   padding-right:.3125rem;
+   padding-left:.3125rem;
+   padding:.25rem;
+   background-color:#d0d0d0;
    color:#000;
    font-size:11pt;
 }
 .fakebutton:hover {
-   background:#a0a0a0;
+   background-color:#a0a0a0;
    border:2px #c0c0c0 outset;
 }
 #combo #nextmonth,
@@ -1307,13 +1390,13 @@ tr.highlight td {
 #month2 #nextyear,
 #month2 #nextday,
 #month2 #nextmonthdayview {
-  margin-right:.1875em;
+  margin-right:.1875rem;
 }
-#month2 #nextmonth, #month2 #prevmonth { font-size: 0.7em }
+#month2 #nextmonth, #month2 #prevmonth { font-size: 0.7rem; }
 #combo .monthnavlinks td, #month2 .monthnavlinks td {
   background-color: #e0e0e0;
   border: 2px #e0e0e0 outset;
-  font-size: .80em;
+  font-size: .80rem;
 }
 #combo .monthnavlinks .currentMonthLink, #month2 .monthnavlinks .currentMonthLink {
   background-color: #c0c0c0;
@@ -1321,13 +1404,13 @@ tr.highlight td {
 #combo #quickAddDiv, #month2 #quickAddDiv {
   border:1px solid;
   border-color:#e0e0e0 #808080 #808080 #e0e0e0;
-  background:#ffffff;
+  background-color:#ffffff;
   padding: 5px;
 }
 #combo #viewEventDiv, #month2 #viewEventDiv {
   border:1px solid;
   border-color:#e0e0e0 #808080 #808080 #e0e0e0;
-  background:#ffffff;
+  background-color:#ffffff;
 }
 #combo .event, #month2 .event {
   /*background-color: #a00;*/
@@ -1357,15 +1440,20 @@ tr.highlight td {
   margin-left: 2px;
 }
 #eventcomment {
- border:1px solid;
- padding:.25em;
+  background-color: var(--cellbg);
+  border:1px solid var(--tablebg);
+  padding:.25rem;
+}
+#adminhome table,
+#adminhome td a {
+  background-color: var(--cellbg);
 }
 #adminhome table {
   border:1px solid #000;
-  padding:.3125em;
+  padding:.3125rem;
 }
 #adminhome table td {
-  padding:1.25em;
+  padding:1.25rem;
 }
 #adminhome table td,
 #adminhome td a {
@@ -1373,18 +1461,18 @@ tr.highlight td {
 }
 #adminhome td a {
   border:1px solid;
-  border-color:#eee #777 #777 #eee;
-  padding:.625em;
+  border-color:#EEE #777 #777 #EEE;
+  padding:.625rem;
 }
 #adminhome td a:hover {
   border-color:#777 #eee #eee #777;
-  background:#aaa;
+  background-color:#aaa;
 }
 #login label,
 #login textarea,
 #login tr,
 #login td {
-  font-size:1em;
+  font-size:1rem;
 }
 a:hover {
   color:#00f;
@@ -1394,12 +1482,12 @@ table.ThemeMenubar {
   font-size: 80% !important;
 }
 table.ThemeMenubar select {
-  font-size: 1.0em !important;
+  font-size: 1.0rem !important;
 }
 #editCatsDiv #innerDiv {
   border:1px solid;
-  border-color:#e0e0e0 #808080 #808080 #e0e0e0;
-  background:#ffffff;
+  border-color:#E0E0E0 #808080 #808080 #E0E0E0;
+  background-color:#ffffff;
   padding: 5px;
   font-size: 80%;
 }
@@ -1414,7 +1502,7 @@ table.ThemeMenubar select {
   height: 100%;
   z-index: 10001;
 /*
-  background: #fff;
+  background-color: #fff;
   opacity: 0.50;
 */
 }
@@ -1482,7 +1570,7 @@ table.ThemeMenubar select {
  */
 .autocomplete-w1 { background:url(../../images/shadow.png) no-repeat bottom right; position:absolute; top:4px; left:3px; /* IE6 fix: */ _background:none; _top:1px; z-index: 11000; }
 .autocomplete-w2 { padding:0 6px 6px 0; }
-.autocomplete { width:300px !important; border:1px solid #999; background:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE specific: */ _height:350px;  _margin:0px 6px 6px 0; overflow-x:hidden; }
-.autocomplete .selected { background:#F0F0F0; }
+.autocomplete { width:300px !important; border:1px solid #999; background-color:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE specific: */ _height:350px;  _margin:0 6px 6px 0; overflow-x:hidden; }
+.autocomplete .selected { background-color:#F0F0F0; }
 .autocomplete div { padding:2px 5px; white-space:nowrap; }
 .autocomplete strong { font-weight:normal; color:#3399FF; }

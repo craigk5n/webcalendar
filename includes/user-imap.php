@@ -18,24 +18,12 @@
  * @subpackage IMAPAuthentication
  */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
-// Set some global config variables about your system.
+
+include_once 'auth-settings.php';
+
+// Password is handled by IMAP authentication scheme: cannot be changed.
 $user_can_update_password = false;
 $admin_can_add_user = false;
-$admin_can_delete_user = true; // will not affect IMAP server info
-
-// Allow auto-creation of WebCalendar Accounts for fully authenticated users
-$allow_auto_create = true;
-
-//
-// 'auth_imap' configuration settings "borrowed" from the Meeting Room Booking System
-//  https://sourceforge.net/projects/mrbs
-//  GNU General Public License (GPL)
-//
-// This file contains all the functions for getting information
-// about users via IMAP
-//
-$imap_host = 'localhost'; // Where is the IMAP server
-$imap_port = '143';          // The IMAP server port
 
 /* quoteIMAP($str)
  *
@@ -138,8 +126,7 @@ function user_valid_login ( $login, $password ) {
             $GLOBALS[$prefix . 'login'] != $login ) {
             user_add_user ( $login, $password, '', '', '', 'N' );
             //Redirect new users to enter user date
-            $GLOBALS['newUserUrl'] = $GLOBALS['SERVER_URL'] .
-              "edit_user.php?user=$login";
+            $GLOBALS['newUserUrl'] = "edit_user.php?user=$login";
           } else {
             //refresh their password in webcal_user
             user_update_user_password ( $login, $password );
@@ -264,13 +251,14 @@ function user_load_variables ( $login, $prefix ) {
  * @param string $lastname  User last name
  * @param string $email     User email address
  * @param string $admin     Is the user an administrator? ('Y' or 'N')
+ * @param string $enabled   Is the user account enabled? ('Y' or 'N')
  *
  * @return bool True on success
  *
  * @global string Error message
  */
 function user_add_user ( $user, $password, $firstname,
-  $lastname, $email, $admin ) {
+  $lastname, $email, $admin, $enabled = 'Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -298,10 +286,10 @@ function user_add_user ( $user, $password, $firstname,
     $admin = 'N';
   $sql = 'INSERT INTO webcal_user ' .
     '( cal_login, cal_lastname, cal_firstname, ' .
-    'cal_is_admin, cal_passwd, cal_email ) ' .
+    'cal_is_admin, cal_passwd, cal_email, cal_enabled ) ' .
     'VALUES ( ?, ?, ?, ?, ?, ?, ? )';
   if ( ! dbi_execute ( $sql, array ( $user, $ulastname,
-    $ufirstname, $admin, $upassword, $uemail ) ) ) {
+    $ufirstname, $admin, $upassword, $uemail, $enabled ) ) ) {
     $error = db_error ();
     return false;
   }
@@ -316,12 +304,13 @@ function user_add_user ( $user, $password, $firstname,
  * @param string $lastname  User last name
  * @param string $mail      User email address
  * @param string $admin     Is the user an administrator? ('Y' or 'N')
+ * @param string $enabled   Is the user account enabled? ('Y' or 'N')
  *
  * @return bool True on success
  *
  * @global string Error message
  */
-function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
+function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabled = 'Y' ) {
   global $error;
 
   if ( $user == '__public__' ) {
@@ -343,11 +332,14 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin ) {
   if ( $admin != 'Y' )
     $admin = 'N';
 
+  if ( $enabled != 'Y' )
+    $enabled = 'N';
+
   $sql = 'UPDATE webcal_user SET cal_lastname = ?, ' .
     'cal_firstname = ?, cal_email = ?,' .
-    'cal_is_admin = ? WHERE cal_login = ?';
+    'cal_is_admin = ?, cal_enabled = ? WHERE cal_login = ?';
   if ( ! dbi_execute( $sql,
-      array( $ulastname, $ufirstname, $uemail, $admin, $user ) ) ) {
+      array( $ulastname, $ufirstname, $uemail, $admin, $enabled, $user ) ) ) {
     $error = db_error ();
     return false;
   }

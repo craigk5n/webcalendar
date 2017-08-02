@@ -201,7 +201,7 @@ function build_entry_label ( $event, $popupid,
   if ( $not_my_entry && $tmpAccess == 'R' && !
     ( $can_access &PRIVATE_WT ) ) {
     if ( $time_only != 'Y' )
-      $ret = '(' . translate ( 'Private' ) . ')';
+      $ret = '<span class="parentheses">' . translate ( 'Private' ) . '</span>';
 
     $eventinfo .= build_entry_popup ( $popupid, $tmpLogin,
       str_replace ( 'XXX', translate ( 'private' ),
@@ -1750,30 +1750,8 @@ function do_redirect ( $url ) {
   if ( empty ( $SERVER_SOFTWARE ) )
     $SERVER_SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
 
-  // $SERVER_URL should end in '/', but we may not have it yet if we are
-  // redirecting to the login.  If not, then pull it from the database.
-  if ( empty ( $SERVER_URL ) && ! empty ( $c ) ) {
-    $res = dbi_query ( "SELECT cal_value FROM webcal_config " .
-      "WHERE cal_setting = 'SERVER_URL'" );
-    if ( $res ) { 
-      if ( $row = dbi_fetch_row ( $res ) ) {
-        $SERVER_URL = $row[0];
-      }
-    }
-    dbi_free_result ( $res );
-  }
-
-  // If we have the server URL, then use a full URL, which is technically
-  // required (but all browsers accept relative URLs here).
-  // BUT, only do this if our URL does not start with '/' because then
-  // we could end up with a URL like:
-  //   http://www.k5n.us/webcalendar/webcalendar/month.php
-  if ( ! empty ( $SERVER_URL ) && substr ( $url, 0, 1 ) != '/' ) {
-    $url = $SERVER_URL . $url;
-  }
-
-//echo "<pre>"; print_r ( debug_backtrace() ); echo "\n</pre>\n";
-//echo "URL: $url <br>"; exit;
+  // As of RFC 7231, Location redirects can be relative URLs.
+  // See: https://tools.ietf.org/html/rfc7231#section-7.1.2
 
   $meta = '';
   if ( ( substr ( $SERVER_SOFTWARE, 0, 5 ) == 'Micro' ) ||
@@ -2449,6 +2427,14 @@ function get_byday ( $byday, $cdate, $type = 'month', $date ) {
     $byxxxDay = '';
     $dayTxt = substr ( $day, -2, 2 );
     $dayOffset = substr_replace ( $day, '', -2, 2 );
+
+    // It is possible to have spurious offset days within a 'daily' repetition,
+    //   by setting them while in month/year repetition type, then changing
+    //   type to 'daily'.
+    // These situations will lead in a crash without the following test.
+    if (is_numeric($dayOffset) && !isset($ditype))
+      continue;
+
     $dowOffset = ( ( -1 * $byday_values[$dayTxt] ) + 7 ) % 7; //SU=0, MO=6, TU=5...
     if ( is_numeric ( $dayOffset ) && $dayOffset > 0 ) {
       // Offset from beginning of $type.
@@ -2706,21 +2692,15 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
     $sql = 'SELECT DISTINCT( wnc.cal_login ), cal_lastname, cal_firstname,
       cal_is_public FROM webcal_group_user wgu, webcal_nonuser_cals wnc WHERE '
      . ( $add_public ? 'wnc.cal_is_public = \'Y\'  OR ' : '' )
-     . ' cal_admin = ? OR ( wgu.cal_login = wnc.cal_login AND cal_group_id ';
-    if ( $groupcnt == 1 )
-      $sql .= '= ? )';
-    else {
-      // Build count ( $groups ) placeholders separated with commas.
-      $placeholders = '';
-      for ( $p_i = 0; $p_i < $groupcnt; $p_i++ ) {
-        $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
-      }
-      $sql .= "IN ( $placeholders ) )";
-    }
+     . ' cal_admin = ?
+    OR ( wgu.cal_login = wnc.cal_login
+      AND cal_group_id ' .
+      ( $groupcnt == 1 ? '= ?' : 'IN ( ?' . str_repeat ( ',?', $groupcnt - 1 ) . ' )' );
 
     // Add $this_user to beginning of query params.
     array_unshift ( $groups, $this_user );
-    $rows = dbi_get_cached_rows ( $sql . ' ORDER BY '
+    $rows = dbi_get_cached_rows ( $sql . ' )
+  ORDER BY '
        . ( empty ( $USER_SORT_ORDER ) ? '' : "$USER_SORT_ORDER" ), $groups );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -2821,17 +2801,9 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
     // Get other members of users' groups.
     $sql = 'SELECT DISTINCT(webcal_group_user.cal_login), cal_lastname,
       cal_firstname FROM webcal_group_user LEFT JOIN webcal_user
-      ON webcal_group_user.cal_login = webcal_user.cal_login WHERE cal_group_id ';
-    if ( $groupcnt == 1 )
-      $sql .= '= ?';
-    else {
-      // Build count ( $groups ) placeholders separated with commas.
-      $placeholders = '';
-      for ( $p_i = 0; $p_i < $groupcnt; $p_i++ ) {
-        $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
-      }
-      $sql .= "IN ( $placeholders )";
-    }
+    ON webcal_group_user.cal_login = webcal_user.cal_login
+  WHERE cal_group_id ' .
+      ( $groupcnt == 1 ? '= ?' : 'IN ( ?' . str_repeat ( ',?', $groupcnt - 1 ) . ' )' );
 
     $rows = dbi_get_cached_rows ( $sql . ' ORDER BY '
        . ( empty ( $USER_SORT_ORDER ) ? '' : "$USER_SORT_ORDER, " )
@@ -4428,6 +4400,7 @@ function nonuser_load_variables ( $login, $prefix ) {
       $GLOBALS[$prefix . 'login'] = $row[0];
       $GLOBALS[$prefix . 'lastname'] = $row[1];
       $GLOBALS[$prefix . 'firstname'] = $row[2];
+      $GLOBALS[$prefix . 'fullname'] = trim($raw[1] . ' ' . $row[2]);
       $GLOBALS[$prefix . 'admin'] = $row[3];
       $GLOBALS[$prefix . 'is_public'] = $row[4];
       $GLOBALS[$prefix . 'url'] = $row[5];
@@ -5144,12 +5117,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
     $rows = dbi_get_cached_rows( $sql, array() );
   elseif ( ! empty ( $cat_id ) ) {
     $cat_array = explode ( ',', $cat_id );
-    $placeholders = '';
-    for ( $p_i = 0, $cnt = count ( $cat_array ); $p_i < $cnt; $p_i++ ) {
-      $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
-    }
-    $rows = dbi_get_cached_rows ( $sql . 'WHERE cat_id IN ( ' . $placeholders
-       . ' )', $cat_array );
+    $rows = dbi_get_cached_rows ( $sql . '
+  WHERE cat_id IN ( ?' . str_repeat ( ',?', count ( $cat_array ) - 1 ) . ' )', $cat_array );
   }
   if ( ! empty ( $cat_id ) ) {
     // $rows = dbi_get_cached_rows ( $sql, array ( $cat_id ) );
@@ -5178,9 +5147,8 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
    . 'we.cal_id = weu.cal_id AND weu.cal_status IN ( \'A\',\'W\' ) ';
 
   if ( $catlistcnt > 0 ) {
-    $placeholders = '';
+    $placeholders = '?' . str_repeat ( ',?', $catlistcnt - 1 );
     for ( $p_i = 0; $p_i < $catlistcnt; $p_i++ ) {
-      $placeholders .= ( $p_i == 0 ) ? '?' : ', ?';
       $query_params[] = $catlist[$p_i];
     }
 
@@ -6079,7 +6047,8 @@ function user_get_boss_list ( $assistant ) {
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
-      user_load_variables ( $row[0], 'bosstemp_' );
+      if (!user_load_variables ( $row[0], 'bosstemp_' ))
+        nonuser_load_variables($row[0], 'bosstemp_');
       $ret[$count++] = array (
         'cal_login' => $row[0],
         'cal_fullname' => $bosstemp_fullname

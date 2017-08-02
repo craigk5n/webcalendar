@@ -394,8 +394,8 @@ echo '
  . '</h2>
     <table width="100%" summary="">
       <tr>
-        <td class="aligntop bold" width="10%">' . translate ( 'Description' )
- . ':</td>
+        <td class="aligntop bold colon" width="10%">' . translate ( 'Description' )
+ . '</td>
         <td>';
 
 if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
@@ -413,18 +413,18 @@ if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
 echo '</td>
       </tr>' . ( $DISABLE_LOCATION_FIELD != 'Y' && ! empty ( $location ) ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Location' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Location' ) . '</td>
         <td>' . $location . '</td>
       </tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' && ! empty ( $url ) ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'URL' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'URL' ) . '</td>
         <td>' . activate_urls ( $url ) . '</td>
       </tr>' : '' );
 
 if ( $event_status != 'A' && ! empty ( $event_status ) ) {
   echo '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Status' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Status' ) . '</td>
         <td>';
 
   if ( $event_status == 'D' )
@@ -442,36 +442,36 @@ if ( $event_status != 'A' && ! empty ( $event_status ) ) {
 
 echo '
       <tr>
-        <td class="aligntop bold">'
+        <td class="aligntop bold colon">'
  . ( $eType == 'task' ? translate ( 'Start Date' ) : translate ( 'Date' ) )
- . ':</td>
+ . '</td>
         <td>' . date_to_str ( $display_date ) . ( $eType == 'task' ? '</td>
       </tr>' . ( $event_time >= 0 ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Start Time' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Start Time' ) . '</td>
         <td>'
      . display_time ( $display_date . sprintf ( "%06d", $event_time ), 2 )
      . '</td>
       </tr>' : '' ) . '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Due Date' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Due Date' ) . '</td>
         <td>' . date_to_str ( $due_date ) . '</td>
       </tr>
       <tr>
-        <td class="aligntop bold">' . translate ( 'Due Time' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Due Time' ) . '</td>
         <td>' . display_time ( $due_date . sprintf ( "%06d", $due_time ), 2 )
    . '</td>
       </tr>' . ( ! empty ( $cal_completed ) ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Completed' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Completed' ) . '</td>
         <td>' . date_to_str ( $cal_completed ) : '' ) : '' ) . '</td>
       </tr>' . ( $event_repeats ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Repeat Type' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Repeat Type' ) . '</td>
         <td>' . export_recurrence_ical ( $id, true ) . '</td>
       </tr>' : '' ) . ( $eType != 'task' && $event_time >= 0 ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Time' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Time' ) . '</td>
         <td>' . ( $duration == 1440 && $event_time == 0
     ? translate ( 'All day event' )
     : display_time ( $display_date . sprintf ( "%06d", $event_time ),
@@ -485,7 +485,7 @@ if ( $duration > 0 && $duration != 1440 ) {
   $dur_m = $duration - ( $dur_h * 60 );
   echo '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Duration' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Duration' ) . '</td>
         <td>' . ( $dur_h > 0 ? $dur_h . ' ' . translate ( 'hour'
        . ( $dur_h == 1 ? '' : 's' ) ) . ' ' : '' )
    . ( $dur_m > 0 ? $dur_m . ' ' . translate ( 'minutes' ) : '' ) . '</td>
@@ -494,11 +494,11 @@ if ( $duration > 0 && $duration != 1440 ) {
 
 echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Priority' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Priority' ) . '</td>
         <td>' . $cal_priority . '-' . $pri[ceil($cal_priority/3)] .'</td>
       </tr>' : '' ) . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Access' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Access' ) . '</td>
         <td>' . ( $cal_access == "P"
     ? translate ( 'Public' )
     : ( $cal_access == 'C'
@@ -506,7 +506,7 @@ echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
       : translate ( 'Private' ) ) ) . '</td>
       </tr>' : '' ) . ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Category' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Category' ) . '</td>
         <td>' . $category . '</td>
       </tr>' : '' );
 
@@ -531,7 +531,7 @@ if ( ! empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
 if ( $single_user == 'N' && ! empty ( $createby_fullname ) ) {
   echo '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Created by' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Created by' ) . '</td>
         <td>';
   if ( $is_private && ! access_is_enabled() )
     echo '[' . translate ( 'Private' ) . ']</td>
@@ -558,7 +558,7 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname ) ) {
 
 echo '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Updated' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Updated' ) . '</td>
         <td>'
  . ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y'
   ? date_to_str ( $mod_date ) . ' ' . display_time ( $mod_date . $mod_time, 3 )
@@ -568,7 +568,7 @@ echo '
 // Display the reminder info if found.
  . ( ! empty ( $reminder ) ? '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Send Reminder' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Send Reminder' ) . '</td>
         <td>' . $reminder . '</td>
       </tr>' : '' );
 
@@ -586,7 +586,7 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
   if ( ! empty ( $extras[$extra_name]['cal_name'] )  && ! empty ( $extra_view ) ) {
     echo '
       <tr>
-        <td class="aligntop bold">' . translate ( $site_extras[$i][1] ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( $site_extras[$i][1] ) . '</td>
         <td>';
 
     if ( $extra_type == EXTRA_URL ) {
@@ -627,7 +627,7 @@ if ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
 if ( $single_user == 'N' && $show_participants ) {
   echo '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Participants' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Participants' ) . '</td>
         <td>';
 
   $num_app = $num_rej = $num_wait = 0;
@@ -808,7 +808,7 @@ if ( $eType == 'task' ) {
 if ( Doc::attachmentsEnabled() && $rss_view == false ) {
   echo '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Attachments' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Attachments' ) . '</td>
         <td>';
 
   $attList = new AttachmentList( $id );
@@ -820,9 +820,9 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
     . ( $is_admin || $login == $a->getLogin()
         || user_is_assistant( $login, $a->getLogin() ) || $login == $create_by
         || user_is_assistant( $login, $create_by )
-      ? ' [<a href="docdel.php?blid=' . $a->getId()
+      ? ' <a href="docdel.php?blid=' . $a->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
-       . translate ( 'Delete' ) . '</a>]' : '' ) . '<br />';
+       . '<img src="images/delete.png"/></a>' : '' ) . '<br />';
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize();
@@ -836,7 +836,7 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
 if ( Doc::commentsEnabled() ) {
   echo '
       <tr>
-        <td class="aligntop bold">' . translate ( 'Comments' ) . ':</td>
+        <td class="aligntop bold colon">' . translate ( 'Comments' ) . '</td>
         <td>';
 
   $comList = new CommentList( $id );
@@ -854,13 +854,24 @@ if ( Doc::commentsEnabled() ) {
     . ( $is_admin || $login == $cmt->getLogin()
         || user_is_assistant( $login, $cmt->getLogin() ) || $login == $create_by
         || user_is_assistant( $login, $create_by )
-      ? ' [<a href="docdel.php?blid=' . $cmt->getId()
+      ? ' <a href="docdel.php?blid=' . $cmt->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr
-       . '\' );">' . translate ( 'Delete' ) . '</a>]' : '' )// end show delete link
+       . '\' );"><img src="images/delete.png"/></a>' : '' )// end show delete link
      . '<br />
-          <blockquote id="eventcomment">' . nl2br ( activate_urls (
-        htmlspecialchars( $cmt->getData() ) ) ) . '
-        </blockquote><div style="clear:both"></div>';
+          <blockquote id="eventcomment">';
+     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
+       $str = $cmt->getData();
+       $str = str_replace ( '&amp;amp;', '&amp;', $str );
+       // If there is no HTML found, then go ahead and replace
+       // the line breaks ("\n") with the HTML break.
+       $comment_text .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
+         ? $str // found some html...
+         : nl2br ( activate_urls ( $str ) ) );
+     } else {
+       $comment_text .= nl2br ( activate_urls (
+        htmlspecialchars( $cmt->getData() ) ) );
+     }
+     $comment_text .= '</blockquote><div style="clear:both"></div>';
   }
 
   if ( $num_comment == 0 )

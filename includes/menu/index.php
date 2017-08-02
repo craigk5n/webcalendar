@@ -29,8 +29,12 @@ if ( access_is_enabled () )
 if ( $login == '__public__' )
   $can_add = ( access_is_enabled () ? $can_add : $PUBLIC_ACCESS_CAN_ADD == 'Y' );
 
-if ( $is_nonuser )
-  $can_add = false;
+if (!$is_admin && !$is_assistant && !$is_nonuser_admin) {
+  if ($is_nonuser)
+    $can_add = false;
+  else if (!empty($user) && $user != $login && $user != '__public__')
+    $can_add = false;
+}
 
 $export_url = $import_url = $new_entry_url = $new_task_url = '';
 $search_url = $select_user_url = $unapproved_url = '';
@@ -70,7 +74,7 @@ if ( $single_user != 'Y' ) {
     $year_url .= '?user=' . $user;
 
     if ( ! empty ( $new_entry_url ) )
-      $new_entry_url .= '&user=' . $user;
+      $new_entry_url .= (strpos($new_entry_url, '?') !== FALSE? '&': '?') . 'user=' . $user;
 
     if ( ! empty ( $new_task_url ) )
       $new_task_url .= '&user=' . $user;
@@ -209,14 +213,19 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
       );
     array_unshift ( $grouplist, $public );
   }
-  $groups = '';
+  $groups = array();
   $grouplistcnt = count ( $grouplist );
+  $gdone = array();
   for ( $i = 0; $i < $grouplistcnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];
     // Don't display current $user in group list.
     if ( ! empty ( $user ) && $user == $l )
       continue;
+    // Do not show duplicate entries.
+    if (isset($gdone[$l]))
+      continue;
+    $gdone[$l] = true;
     /*
 Use the preferred view if it is day/month/week/year.php. Try not to use a
 user-created view because it might not display the proper user's events.

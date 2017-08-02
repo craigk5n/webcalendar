@@ -210,7 +210,7 @@ print_header();
 <tr><td class="aligntop"><label for="description">
   <?php etranslate ( 'Subject' )?>:</label></td>
   <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
-<!-- TODO: htmlarea or fckeditor support -->
+
 <tr><td class="aligntop"><label for="comment">
   <?php etranslate ( 'Comment' )?>:</label></td>
   <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>

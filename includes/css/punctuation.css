@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* $Id: punctuation.css,v 1.1 2013/05/15 17:48:21 bbannon Exp $ */
+:lang(en) blockquote, :lang(en) q {
+  quotes: "“" "”" "‘" "’";
+}
+blockquote::before {
+  content: open-quote;
+}
+blockquote::after {
+  content: close-quote;
+}
+.brackets::before {
+  content: '[';
+}
+.brackets::after {
+  content: ']';
+}
+.colon::after {
+  content: ': ';
+}
+.dblHyphens::before {
+  content: '-- ';
+}
+.dblHyphens::after {
+  content: ' --';
+}
+.ellipsis {
+  text-overflow: ellipsis;
+}
+._hyphen::before {
+  content: '-';
+}
+.hyphen_::after {
+  content: '-';
+}
+.parentheses::before {
+  content: ' (';
+}
+.parentheses::after {
+  content: ') ';
+}

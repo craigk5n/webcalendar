@@ -143,27 +143,7 @@ if ( empty ( $date ) && empty ( $month ) ) {
 
 $BodyX = 'onload="onLoad();"';
 $INC = array ( 'js/edit_entry.php/false/' . $user, 'js/visible.php' );
-$textareasize = '15';
-
-// Can we use HTMLArea or FCKEditor? (Relax! That's the authors initials.)
-// Note: HTMLArea has been discontinued, so FCKEditor is preferred.
-$use_fckeditor = $use_htmlarea = false;
-
-if ( $ALLOW_HTML_DESCRIPTION == 'Y' ) {
-  // Allow HTML in description.
-  // If they have installed an HTML edit widget, make use of it.
-  if ( file_exists ( 'includes/FCKeditor-2.0/fckeditor.js' ) &&
-      file_exists ( 'includes/FCKeditor-2.0/fckconfig.js' ) ) {
-    $textareasize = '20';
-    $use_fckeditor = true;
-  } else
-  if ( file_exists ( 'includes/htmlarea/htmlarea.php' ) ) {
-    $BodyX = 'onload="onLoad();initEditor();';
-    $INC[] = 'htmlarea/core.php/true';
-    $INC[] = 'htmlarea/htmlarea.php/true';
-    $use_htmlarea = true;
-  }
-}
+$textareasize = ( $ALLOW_HTML_DESCRIPTION === 'Y' ? '20' : '15' );
 
 // Add Modal Dialog javascript/CSS
 $HEAD =
@@ -625,7 +605,7 @@ if ( $can_edit ) {
               <td class="tooltip aligntop" title="'
    . tooltip ( 'full-description-help' ) . '"><label for="entry_full">'
    . translate ( 'Full Description' ) . ':</label></td>
-              <td><textarea name="description" id="entry_full" rows="'
+              <td width="60%"><textarea name="description" id="entry_full" rows="'
    . $textareasize . '" cols="50"' . '>' . htmlspecialchars ( $description )
    . '</textarea></td>' . ( $use_fckeditor || $use_htmlarea ? '
             </tr>
