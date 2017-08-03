@@ -20,17 +20,17 @@ if ( empty ( $ret ) ) {
   echo '
     <form action="approve_entry.php' . $q_string
    . '" method="post" name="add_comments">
-      <table border="0" cellspacing="5" summary="">
+      <table cellspacing="5">
         <tr>
-          <td align="center" valign="bottom"><h3>'
+          <td class="aligncenter alignbottom"><h3>'
    . translate ( 'Additional Comments (optional)' ) . '</h3></td>
         <tr>
         <tr>
-          <td align="center"><textarea name="comments" rows="5" '
+          <td class="aligncenter"><textarea name="comments" rows="5" '
    . 'cols="60"></textarea></td>
         </tr>
         <tr>
-          <td align="center">
+          <td class="aligncenter">
             <input type="submit" value="' . translate ( 'Approve and Send' )
    . '" />&nbsp;&nbsp;&nbsp;
             <input type="submit" id="cancel" name="cancel" value="'

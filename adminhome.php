@@ -145,7 +145,7 @@ print_header( '',
 
 echo '
     <h2>' . translate( 'Administrative Tools' ) . '</h2>
-    <table summary="admin options">';
+    <table>';
 
 for ( $i = 0, $cnt = count( $names ); $i < $cnt; $i++ ) {
   $empLink = empty( $links[$i] );

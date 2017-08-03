@@ -50,12 +50,12 @@ echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
     <form action="search_handler.php" method="post" id="searchformentry" '
  . 'name="searchformentry" style="margin-left: 13px;">
       <input type="hidden" name="advanced" value="' . $show_advanced . '" />
-      <table summary=""><tr><td><label for="keywordsadv">' . translate( 'Keywords' )
+      <table><tr><td><label for="keywordsadv">' . translate ( 'Keywords' )
  . ':&nbsp;</label></td>
         <td><input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
         <input type="submit" value="' . $searchStr . '" /></td></tr>';
 
-echo '<tr height="30px"><td>&nbsp;</td><td valign="top">(' .
+echo '<tr height="30px"><td>&nbsp;</td><td class="aligntop">(' .
   translate( 'Enter % for all entries' ) . ')</td></tr>';
 
 if( is_array( $categories ) && $show_advanced ) {

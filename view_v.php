@@ -95,7 +95,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 
   $tdw = 12; // Column width percent.
   echo '
-    <table class="main" summary=""';
+    <table class="main"';
   if ( $can_add )
     echo 'title="' .
       translate ( 'Double-click on empty cell to add new entry' ) . '"';

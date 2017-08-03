@@ -54,16 +54,16 @@ if ( $d = dir ( $icon_path ) ) {
 <?php
   ob_start();
   echo '
-    <table align="center" border="0" summary="">
+    <table class="aligncenter">
       <tr>
-        <td colspan="8" align="center"><h2>'
+        <td colspan="8" class="aligncenter"><h2>'
    . translate ( 'Current Icons on Server' ) . '</h2></td>
       </tr>
       <tr>';
   for ( $i = 0, $cnt = count ( $icons ); $i < $cnt; $i++ ) {
     echo '
         <td><a href="#" onclick="sendURL( \'' . $icon_path . $icons[$i]
-     . '\' )" ><img src="' . $icon_path . $icons[$i] . '" border="0" title="'
+     . '\' )" ><img src="' . $icon_path . $icons[$i] . '" title="'
      . $title_str . '" alt="' . $title_str . '" /></a></td>'
      . ( $i > 0 && $i % 8 == 0 ? '
       </tr>
@@ -72,7 +72,7 @@ if ( $d = dir ( $icon_path ) ) {
   echo '
       </tr>
       <tr>
-        <td colspan="8" align="center">' . $title_str . '</td>
+        <td colspan="8" class="aligncenter">' . $title_str . '</td>
       </tr>
     </table>
   </body>

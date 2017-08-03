@@ -34,13 +34,13 @@ echo '
       <li>' . translate( 'list potential security issues') . '</li>
       <li>' . translate( 'For questions about WebCalendar security see the forums' )
   . '<a href="https://sourceforge.net/forum/?group_id=3870" target="_blank">'
-  . '<img src="docs/newwin.gif" alt="SourceForge.net" border="0"></a></li>
+  . '<img src="docs/newwin.gif" alt="SourceForge.net"></a></li>
       <li><a href="#" onclick="window.open( \'security_audit.php?phpinfo=1\', '
   . '\'phpinfo\', \'dependent,menubar,scrollbars,height=500,width=600,'
   . 'innerHeight=520,outerWidth=620\' );" />'
   . translate( 'View your current PHP settings' ) . '</a></li>
     </ul>
-    <table id="securityAudit" border="0" cellpadding="4">
+    <table id="securityAudit" cellpadding="4">
       <tr>
         <th>' . translate( 'Security Issue' ) . '</th>
         <th>' . translate( 'Status' ) . '</th>

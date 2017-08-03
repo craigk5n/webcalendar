@@ -42,13 +42,13 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
   }
 
   $ret = '
-    <table summary="">
+    <table>
       <tr>
         <td style="background-color:#000000;">
-          <table style="border:0; width:100%;" cellspacing="1" cellpadding="2" summary="">
+          <table style="width:100%;" cellspacing="1" cellpadding="2">
             <tr>
               <td style="width:100%; background-color:' . $CELLBG . ';">
-                <table style="border:0; width:100%;" summary="">';
+                <table style="border:0; width:100%;">';
   if ( ! empty ( $action ) ) {
     $ret .= '
                   <form action="' . $action . '" method="post"'
@@ -171,13 +171,13 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
     return 'Error: dbtable_to_html_list parameter 3 is not an array!<br />' . "\n";
 
   $ret = '
-    <table summary="">
+    <table>
       <tr>
         <td style="background-color:#000000;">
-          <table style="border:0; width:100%;" cellspacing="1" cellpadding="2" summary="">
+          <table style="border:0; width:100%;" cellspacing="1" cellpadding="2">
             <tr>
               <td style="width:100%; background-color:' . $CELLBG . ';">
-                <table style="border:0; width:100%;" summary="">
+                <table style="border:0; width:100%;">
                   <tr>'; // header
   $fieldcnt = count ( $fields );
   for ( $i = 0; $i < $fieldcnt; $i++ ) {

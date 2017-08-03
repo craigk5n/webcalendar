@@ -118,18 +118,18 @@ print_header(
 ?>
 
 <div class="headerinfo">
-<table border="0">
+<table>
 <tr>
 <?php
 if ( $single_user == 'N' ) {
   user_load_variables ( ! empty ( $user ) ? $user : $login, 'user_' );
-  echo "<td valign=\"top\" class=\"username\"><nobr>" .
+  echo "<td class=\"aligntop username\"><nobr>" .
      htmlspecialchars ( $user_fullname ) . "</nobr></td>";
 }
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   ?>
-  <td valign="top" id="categoryselection">Categories:</td>
-  <td valign="top" onmouseover="setCategoryVisibility(true)" onmouseout="setCategoryVisibility(false)">
+  <td class="aligntop" id="categoryselection">Categories:</td>
+  <td class="aligntop" onmouseover="setCategoryVisibility(true)" onmouseout="setCategoryVisibility(false)">
   <img id="catexpand" src="images/expand.gif" />
   <span id="selectedcategories">All</span><br />
   <div id="categorylist" style="display:none">
@@ -205,7 +205,7 @@ Agenda content goes here...
 
 
 <div id="viewEventDiv" style="display: none;">
-<table border="0">
+<table>
   <tr><td colspan="2"><h3 id="name" class="eventName"> </h3></td></tr>
   <tr><td class="aligntop bold"><?php etranslate("Description")?>:</td>
     <td id="description">  </td></tr>
@@ -238,14 +238,14 @@ Agenda content goes here...
     <td id="comments">  </td></tr>
 <?php } ?>
   <tr><td colspan="2">&nbsp;</td></tr>
-  <tr><td colspan="2" id="eventlink" align="center">  </td></tr>
+  <tr><td colspan="2" id="eventlink" class="aligncenter">  </td></tr>
 </table>
 </div>
 
 <!-- Hidden div tag for Quick Add dialog -->
 <div id="quickAddDiv" style="display: none;">
 <input type="hidden" name="quickAddParticipants" id="quickAddParticipants" value="" />
-<table border="0">
+<table>
 <tr><td class="aligntop bold"><?php etranslate('Date');?>:</td>
   <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
   </td></tr>
@@ -282,7 +282,7 @@ Agenda content goes here...
 <!-- Hidden div tag for Add Task dialog -->
 <div id="taskAddDiv" style="display: none;">
 <form name="taskAddForm" id="taskAddForm">
-<table border="0">
+<table>
 <tr><td class="aligntop bold"><?php etranslate('Start Date');?>:</td>
   <td><?php echo datesel_Print ( 'task_start_date', $date );?></td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Due Date');?>:</td>
@@ -893,7 +893,7 @@ function prev_month_link ( year, month )
     y = year;
   }
   return '<span id="prevmonth" class="clickable noprint" onclick="ajax_get_events(' +
-    y + ',' + m + ',1)"><img src="images/combo-prev.png" border="0" alt="' +
+    y + ',' + m + ',1)"><img src="images/combo-prev.png" alt="' +
     shortMonths[m-1] + '"/></span>';
 }
 
@@ -908,7 +908,7 @@ function next_month_link ( year, month )
     y = year;
   }
   return '<span id="nextmonth" class="clickable noprint" onclick="ajax_get_events(' +
-    y + ',' + m + ',1)"><img src="images/combo-next.png" border="0" alt="' + shortMonths[m-1] + '"/></span>';
+    y + ',' + m + ',1)"><img src="images/combo-next.png" alt="' + shortMonths[m-1] + '"/></span>';
 }
 
 // Build a table of quick links to all the months in the current
@@ -917,10 +917,10 @@ function month_view_nav_links ( year, month )
 {
   var ret, i;
 
-  ret = '<table class="noprint monthnavlinks" border="0">';
-  ret += '<tr><td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (parseInt(year)-1) +
+  ret = '<table class="noprint monthnavlinks">';
+  ret += '<tr><td rowspan="2" class="aligncenter clickable" onclick="ajax_get_events(' + (parseInt(year)-1) +
       ',' + month + ',1)">' +
-    '<img src="images/combo-prev.png" border="0"/><br/>' + (year-1) + '</td>';
+    '<img src="images/combo-prev.png"/><br/>' + (year-1) + '</td>';
   for ( i = 1; i <= 6; i++ ) {
     ret += '<td class="';
     if ( i == month )
@@ -928,15 +928,15 @@ function month_view_nav_links ( year, month )
     ret += 'clickable" onclick="ajax_get_events(' + year +
       ',' + i + ',1)">' + shortMonths[i-1] + '</td>';
   }
-  ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' + (parseInt(year)+1) +
+  ret += '<td rowspan="2" class="aligncenter clickable" onclick="ajax_get_events(' + (parseInt(year)+1) +
       ',' + parseInt(month) + ',1)">' +
-    '<img src="images/combo-next.png" border="0"/><br/>' + (parseInt(year)+1) + '</td>';
+    '<img src="images/combo-next.png"/><br/>' + (parseInt(year)+1) + '</td>';
   // Add link to today
   var today = new Date();
   var d = today.getDate();
   var m = today.getMonth() + 1;
   var y = today.getYear() + 1900;
-  ret += '<td align="center" rowspan="2" class="clickable" onclick="ajax_get_events(' +
+  ret += '<td rowspan="2" class="aligncenter clickable" onclick="ajax_get_events(' +
     y + ',' + m + ',' + d + ')">' +
    '<img src="images/combo-today.png" style="vertical-align: middle;" />'
    + "<br/><?php etranslate('Today');?></td></tr>";
@@ -1243,18 +1243,18 @@ function build_month_view ( year, month )
   //  month = month.substring ( 1 );
   try {
     var dateYmd;
-    ret = '<table border="0" width="100%"><tr><td align="center" width="70%">' +
-      '<table border="0" width="100%"><tr><td width="30%" align="right">' +
-      prev_month_link ( year, month ) + '</td><td width="40%" align="center">' +
+    ret = '<table><tr><td class="aligncenter" width="70%">' +
+      '<table><tr><td width="30%" class="alignright">' +
+      prev_month_link ( year, month ) + '</td><td width="40%" class="aligncenter">' +
       '<span class="monthtitle">' + months[month-1] + " " + year + "</span>" +
       '<span id="monthstatus"> </span>' +
-      '</td><td width="30%" align="left">' +
+      '</td><td width="30%" class="alignleft">' +
       next_month_link ( year, month ) +
       '</td></tr></table>' +
-      '</td><td align="right">' +
+      '</td><td class="alignright">' +
        month_view_nav_links ( year, month ) +
       '</td></tr></table>' +
-      "<table id=\"month_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"1\"><tr>";
+      "<table id=\"month_main\" class=\"main\"  border=\"1\"><tr>";
     for ( var i = 0; i < 7; i++ ) {
       ret += "<th>" + weekdays[i] + "</th>";
     }
@@ -1399,7 +1399,7 @@ function build_year_view ( year, month )
       "&nbsp;" +
       "<span class=\"yeartitle\">" + year + "</span>" +
       "<span id=\"yearstatus\"> </span>" +
-      "<table id=\"year_main\" class=\"main\" border=\"0\" width=\"100%\" border=\"0\">";
+      "<table id=\"year_main\" class=\"main\">";
 
     var d = new Date();
     var today = new Date();
@@ -1407,10 +1407,10 @@ function build_year_view ( year, month )
     for ( var n = 0; n < 12; n++ ) {
       if ( n % 4 == 0 )
         ret += "<tr>";
-      ret += "<td class=\"monthblock\" valign=\"top\" align=\"center\" width=\"25%\">";
+      ret += "<td class=\"monthblock aligntop aligncenter\" width=\"25%\">";
       ret += '<a href="#" onclick="ajax_get_events('+year+','+(n+1)+',1);views.expandit(2);">' +
          months[n] + "</a><br/>\n";
-      ret += "<table class=\"monthtable\" border=\"0\">";
+      ret += "<table class=\"monthtable\">";
 
       d.setMonth ( n );
       month = n + 1;
@@ -1471,7 +1471,7 @@ function build_agenda_view ( year, month )
       "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
       "<span id=\"agendastatus\"> </span>" +
-      "<table border=\"0\">\n";
+      "<table>\n";
 
     var d = new Date();
     var today = new Date();
@@ -1500,13 +1500,13 @@ function build_agenda_view ( year, month )
         if ( eventArray && eventArray.length > 0 )
           className += ' entry hasevents';
         className += " clickable";
-        leadIn += "<td valign=\"top\" align=\"right\" class=\"" + className + "\"";
+        leadIn += "<td class=\"aligntop alignright\"" + className + "\"";
 <?php if ( $can_add ) { ?>
         leadIn += ' title="<?php etranslate('Click to add entry');?>" ' +
           " onclick=\"return monthCellClickHandler(" + dateYmd + ")\"";
 <?php } ?>
         leadIn += ">" + format_date ( dateYmd, true ) + "</td>\n" +
-          "<td valign=\"top\" class=\"" + className + "\">";
+          "<td class=\"aligntop " + className + "\">";
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
           var myEvent = eventArray[l];
 <?php if ( $CATEGORIES_ENABLED == 'Y' ) { ?>

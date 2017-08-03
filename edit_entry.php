@@ -593,7 +593,7 @@ if ( $can_edit ) {
 <!-- DETAILS -->' : '
       <fieldset>
         <legend>' . translate ( 'Details' ) . '</legend>' ) . '
-          <table border="0" summary="">
+          <table>
             <tr>
               <td class="tooltip" title="'
    . tooltip ( 'brief-description-help' ) . '"><label for="entry_brief">'
@@ -615,7 +615,7 @@ if ( $can_edit ) {
    . ( ! empty ( $categories ) || $DISABLE_ACCESS_FIELD != 'Y' ||
     ( $DISABLE_PRIORITY_FIELD != 'Y' )
     /* New table for extra fields. */ ? '
-                <table border="0" width="90%" summary="">' : '' )
+                <table width="90%">' : '' )
    . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
                   <tr>
                     <td class="tooltip" title="' . tooltip ( 'access-help' )
@@ -659,14 +659,13 @@ if ( $can_edit ) {
   }
   echo ( ! empty ( $categories ) && $CATEGORIES_ENABLED == 'Y' ? '
                   <tr>
-                    <td class="tooltip" title="' . tooltip ( 'category-help' )
-     . '" valign="top">
+                    <td class="tooltip aligntop" title="' . tooltip ( 'category-help' ) . '">
                       <label for="entry_categories">' . translate ( 'Category' )
      . ':<br /></label>
                       <input type="button" value="' . translate ( 'Edit' )
      . '" onclick="editCats( event )" />
                     </td>
-                    <td valign="top">
+                    <td class="aligntop">
                       <span name="catnames" id="entry_categories" " onclick="editCats( event )" style="cursor: pointer;" />' . $catNames . '</span>
                       <input type="hidden" id="cat_id" name="cat_id" value="' . $catList
      . '" />
@@ -679,7 +678,7 @@ if ( $can_edit ) {
   if ( $eType == 'task' ) { // Only for tasks.
     $completed_visible = ( strlen ( $completed ) ? 'visible' : 'hidden' );
     echo '<br />
-                <table border="0" summary="">
+                <table>
                   <tr id="completed">
                     <td class="tooltip" title="' . tooltip ( 'completed-help' )
      . '"><label for="task_percent">' . translate ( 'Date Completed' )
@@ -708,8 +707,7 @@ if ( $can_edit ) {
       echo '
                   <tr>
                     <td colspan="2">
-                      <table width="100%" border="0" cellpadding="2" '
-       . 'cellspacing="5" summary="">
+                      <table cellpadding="2" cellspacing="5">
                         <tr>
                           <td colspan="2">' . translate ( 'All Percentages' )
        . '</td>
@@ -856,7 +854,7 @@ if ( $can_edit ) {
       <div>
         <fieldset>
           <legend>' . translate ( 'Site Extras' ) . '</legend>' : '' ) . '
-          <table summary="">' : '' );
+          <table>' : '' );
 
   for ( $i = 0; $i < $site_extracnt; $i++ ) {
     if ( $site_extras[$i] == 'FIELDSET' )
@@ -988,7 +986,7 @@ if ( $can_edit ) {
     <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
     <fieldset>
       <legend>' . translate ( 'Participants' ) . '</legend>' ) . '
-      <table border="0" summary="" cellpadding="10">';
+      <table cellpadding="10">';
 
   // Only ask for participants if we are multi-user.
   $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
@@ -1104,7 +1102,7 @@ if ( $can_edit ) {
      . 'onkeyup="lookupName()" /></td>
         </tr>
         <tr>
-          <td valign="top" width="160px" class="boxbottom boxleft">
+          <td width="160px" class="aligntop boxbottom boxleft">
           <label>' . translate( 'Users' ) . '</label><br />
             <select class="fixed" name="participants[]" id="entry_part" size="' . $size
      . '" multiple="multiple">' . $users . '
@@ -1120,7 +1118,7 @@ if ( $can_edit ) {
             <input name="movert" type="button" value='
             . $addStr . ' onclick="selResource( this );" />
           </td>
-        <td valign="top"  class="boxbottom boxright">'
+        <td class="aligntop boxright boxbottom">'
         . ( $GROUPS_ENABLED == 'Y' ? '&nbsp;&nbsp;<label>'
         . translate( 'Groups' ) . '</label><br />
           <select class="fixed" name="groups" id="groups" size="'
@@ -1137,7 +1135,7 @@ if ( $can_edit ) {
           <td class="tooltip aligntop"><label>'
             . translate( 'Selected' ) . '<br />'
             . translate ( 'Participants' ) . ':</label></td>
-          <td align="left" valign="bottom" class="boxtop boxleft boxbottom">&nbsp;</td>
+          <td class="alignleft alignbottom boxtop boxbottom boxleft">&nbsp;</td>
           <td class="boxtop boxright boxbottom" colspan="2">
             <select class="fixed" name="selectedPart[]" id="sel_part" size="7" multiple="multiple">'
      . $myusers . '
@@ -1172,7 +1170,7 @@ if ( $can_edit ) {
     <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
     <fieldset>
       <legend>' . translate ( 'Repeat' ) . '</legend>' ) . '
-      <table border="0" cellspacing="0" cellpadding="3" summary="">
+      <table cellpadding="3">
         <tr>
           <td class="tooltip" title="' . tooltip ( 'repeat-type-help' )
      . '"><label for="rpttype">' . translate ( 'Type' ) . ':</label></td>
@@ -1276,7 +1274,7 @@ if ( $can_edit ) {
             <input type="hidden" name="bysetposList" value="'
      . ( empty ( $bysetposStr ) ? '' : $bysetposStr ) . '" />
             <table class="byxxx" cellpadding="2" cellspacing="2" '
-     . 'border="1" summary="">
+     . 'border="1">
               <tr>
                 <td></td>';
     // Display byday extended selection.
@@ -1346,7 +1344,7 @@ if ( $can_edit ) {
           <td class="tooltip">' . translate ( 'ByMonth' ) . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bymonth selection. */ . '
-            <table cellpadding="5" cellspacing="0" summary="">
+            <table cellpadding="5">
               <tr>';
     for ( $rpt_month = 1; $rpt_month < 13; $rpt_month++ ) {
       echo '
@@ -1372,8 +1370,8 @@ if ( $can_edit ) {
      . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bysetpos selection. */ . '
-            <table class="byxxx" cellpadding="2" cellspacing="0" '
-     . 'border="1" summary="">
+            <table class="byxxx" cellpadding="2" '
+     . 'border="1">
               <tr>
                 <td></td>';
     for ( $rpt_bysetpos_label = 1; $rpt_bysetpos_label < 11;
@@ -1414,8 +1412,8 @@ if ( $can_edit ) {
      . ':&nbsp;</td>
         <td colspan="2" class="boxall">'
     /* Display bymonthday extended selection. */ . '
-          <table class="byxxx" cellpadding="2" cellspacing="0" '
-     . 'border="1" summary="">
+          <table class="byxxx" cellpadding="2" '
+     . 'border="1">
             <tr>
               <td></td>';
     for ( $rpt_bymonthday_label = 1; $rpt_bymonthday_label < 11;
@@ -1483,14 +1481,14 @@ if ( $can_edit ) {
         <td class="tooltip"><label>' . translate ( 'Exclusions' ) . '/<br />'
      . translate ( 'Inclusions' ) . ':</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
-          <table border="0" width="250px" summary="">
+          <table width="250px">
             <tr>
               <td colspan="2">'
      . date_selection ( 'except_', $rpt_end_date ? $rpt_end_date : $cal_date )
      . '</td>
             </tr>
             <tr>
-              <td align="right" valign="top" width="100">
+              <td class="alignright aligntop" width="100">
                 <label id="select_exceptions_not" style="visibility:'
      . ( empty ( $excepts ) ? 'visible' : 'hidden' ) . ';"></label>
                 <select id="select_exceptions" name="exceptions[]" '
@@ -1499,12 +1497,12 @@ if ( $can_edit ) {
      . ';" size="4">' . $excepts . '
                 </select>
               </td>
-              <td valign="top">
-                <input align="left" type="button" name="addException" value="'
+              <td class="aligntop">
+                <input class="alignleft" type="button" name="addException" value="'
      . translate ( 'Add Exception' ) . '" onclick="add_exception(0)" /><br />
-                <input align="left" type="button" name="addInclusion" value="'
+                <input class="alignleft" type="button" name="addInclusion" value="'
      . translate ( 'Add Inclusion' ) . '" onclick="add_exception(1)" /><br />
-                <input align="left" type="button" name="delSelected" value="'
+                <input class="alignleft" type="button" name="delSelected" value="'
      . translate ( 'Delete Selected' ) . '" onclick="del_selected()" />
               </td>
             </tr>
@@ -1548,7 +1546,7 @@ if ( $can_edit ) {
     <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
     <fieldset>
       <legend>' . translate ( 'Reminders' ) . '</legend>' ) . '
-      <table border="0" cellspacing="0" cellpadding="3" summary="">
+      <table cellpadding="3">
         <thead>
           <tr>
             <td class="tooltip"><label>' . translate ( 'Send Reminder' )
@@ -1673,7 +1671,7 @@ if ( $can_edit ) {
   }
 
   echo '
-      <table summary="">
+      <table>
         <tr>
           <td>
             <script type="text/javascript">

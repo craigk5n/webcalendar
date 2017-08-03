@@ -68,7 +68,7 @@ print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ),
 
 echo <<<EOT
 
-    <table width="100%" cellpadding="1" summary="">
+    <table cellpadding="1">
       <tr>
         <td width="80%">
           {$navStr}

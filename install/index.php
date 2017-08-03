@@ -935,7 +935,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   $class = ( version_compare( phpversion(), '4.1.0', '>=' ) ? '' : 'not' )
    . 'recommended';
   echo '
-    <table border="1" width="90%" align="center" summary="Wizard Step 1">
+    <table border="1" width="90%" class="aligncenter">
       <tr>
         <th class="pageheader" colspan="2">'
    . str_replace( 'XXX', translate( '1' ), $wizardStr ) . '</th>
@@ -1068,12 +1068,12 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
        . translate( 'Configuration Wizard Password' ) . '</th>
       </tr>
       <tr>
-        <td colspan="2" align="center" style="border:none">';
+        <td colspan="2" class="aligncenter" style="border:none">';
 
       if( $doLogin )
         echo '
           <form action="index.php" method="post" name="dblogin">
-            <table summary="">
+            <table>
               <tr>
                 <th>' . $passwordStr . ':</th>
                 <td>
@@ -1087,7 +1087,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       if( $forcePassword )
         echo '
           <form action="index.php" method="post" name="dbpassword">
-            <table border="0" summary="">
+            <table>
               <tr>
                 <th colspan="2" class="header">'
          . translate( 'Create Settings File Password' ) . '</th>
@@ -1101,7 +1101,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td><input name="password2" type="password" /></td>
               </tr>
               <tr>
-                <td colspan="2" align="center"><input type="submit" value="'
+                <td colspan="2" class="aligncenter"><input type="submit" value="'
          . translate( 'Set Password' ) . '" /></td>
               </tr>
             </table>
@@ -1112,9 +1112,9 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         </td>
       </tr>
     </table>' . ( empty( $_SESSION['validuser'] ) ? '' : '
-    <table border="0" width="90%" align="center" summary="">
+    <table width="90%" class="aligncenter">
       <tr>
-        <td align="center">
+        <td class="aligncenter">
           <form action="index.php?action=switch&amp;page=2" method="post">
             <input type="submit" value="' . $nextStr . ' ->" />
           </form>
@@ -1125,7 +1125,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   // BEGIN STEP 2
 } elseif( $_SESSION['step'] == 2 ) {
   echo '
-    <table border="1" width="90%" align="center" summary="Wizard Step 2">
+    <table border="1" width="90%" class="aligncenter">
       <tr>
         <th class="pageheader" colspan="2">'
    . str_replace( 'XXX', translate( '2' ), $wizardStr ) . '</th>
@@ -1182,12 +1182,12 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td>
           <form action="index.php" method="post" name="dbform" '
    . 'onSubmit="return chkPassword()">
-            <table align="right" width="100%" border="0" summary="">
+            <table class="alignright">
               <tr>
                 <td rowspan="7" width="20%">&nbsp;</td>
-                <td class="prompt" width="25%" valign="bottom">'
+                <td class="prompt" width="25%" class="alignbottom">'
    . '<label for="db_type">' . translate( 'Database Type' ) . ':</label></td>
-                <td valign="bottom">
+                <td class="alignbottom">
                   <select name="form_db_type" id="db_type" '
    . 'onChange="db_type_handler();">';
 
@@ -1293,7 +1293,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
   echo ( empty( $_SESSION['validuser'] ) ? '' : '
               <tr>
-                <td align="center" colspan="3">
+                <td class="aligncenter" colspan="3">
                   <input name="action" type="submit" value="' . $testSettingsStr
      . '" class="' . ( empty( $_SESSION['db_success'] ) ? 'not' : '' )
      . 'recommended' . '" />' . ( ! empty( $_SESSION['db_noexist'] ) &&
@@ -1307,20 +1307,20 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         </td>
       </tr>
     </table>' ) . '
-    <table border="0" width="90%" align="center" summary="">
+    <table width="90%" class="aligncenter">
       <tr>
-        <td align="right" width="40%">
+        <td class="alignright" width="40%">
           <form action="index.php?action=switch&amp;page=1" method="post">
             <input type="submit" value="<- ' . $backStr . '" />
           </form>
         </td>
-        <td align="center" width="20%">
+        <td class="aligncenter" width="20%">
           <form action="index.php?action=switch&amp;page=3" method="post">
             <input type="submit" value="' . $nextStr . ' ->" '
    . ( empty( $_SESSION['db_success'] ) ? 'disabled' : '' ) . ' />
           </form>
         </td>
-        <td align="left" width="40%">
+        <td class="alignleft" width="40%">
           <form action="" method="post">
             <input type="button" value="' . $logoutStr . '" '
    . ( empty( $_SESSION['validuser'] ) ? 'disabled' : '' )
@@ -1348,7 +1348,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         : translate( 'The database requires some data input...' ) ) );
 
   echo '
-    <table border="1" width="90%" align="center" summary="Wizard Step 3">
+    <table border="1" width="90%" class="aligncenter">
       <tr>
         <th class="pageheader" colspan="2">'
    . str_replace( 'XXX', translate( '3' ), $wizardStr ) . '</th>
@@ -1381,7 +1381,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
       echo '
       <tr>
-        <td id="odbc_db" align="center" nowrap>
+        <td id="odbc_db" class="aligncenter" nowrap>
           <form action="index.php?action=set_odbc_db" method="post" '
        . 'name="set_odbc_db">' . translate( 'ODBC Underlying Database' ) . '
             <select name="odbc_db" onchange="document.set_odbc_db.submit();">
@@ -1407,7 +1407,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
     echo '
       <tr>
-        <td class="recommended" align="center">'
+        <td class="recommended aligncenter">'
      . ( ! empty( $settings['db_type'] ) &&
       empty( $_SESSION['blank_database'] ) &&
       ( $settings['db_type'] == 'ibase' || $settings['db_type'] == 'oracle' )
@@ -1429,7 +1429,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
        && $settings['db_type'] != 'sqlite3'
        && empty( $_SESSION['blank_database'] ) ? '
       <tr>
-        <td align="center">
+        <td class="aligncenter">
           <form action="index.php?action=install" method="post" name="display">
             <input type="hidden" name="install_file" value="'
        . $_SESSION['install_file'] . '" />
@@ -1448,20 +1448,20 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
   echo '
     </table>
-    <table border="0" width="90%" align="center" summary="">
+    <table width="90%" class="aligncenter">
       <tr>
-        <td align="right" width="40%">
+        <td class="alignright" width="40%">
           <form action="index.php?action=switch&amp;page=2" method="post">
             <input type="submit" value="<- ' . $backStr . '" />
           </form>
         </td>
-        <td align="center" width="20%">
+        <td class="aligncenter" width="20%">
           <form action="index.php?action=switch&amp;page=4" method="post">
             <input type="submit" value="' . $nextStr . ' ->" '
    . ( empty( $_SESSION['db_updated'] ) ? 'disabled' : '' ) . ' />
           </form>
         </td>
-        <td align="left" width="40%">
+        <td class="alignleft" width="40%">
           <form action="" method="post">
             <input type="button" value="' . $logoutStr . '" '
    . ( empty( $_SESSION['validuser'] ) ? 'disabled' : '' )
@@ -1478,7 +1478,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     ? 'dev' // development
     : 'prod' ); // production
   echo '
-    <table border="1" width="90%" align="center" summary="Wizard Step 4">
+    <table border="1" width="90%" class="aligncenter">
       <th class="pageheader" colspan="2">'
    . str_replace( 'XXX', translate( '4' ), $wizardStr ) . '</th>
       <tr>
@@ -1494,7 +1494,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
           <form action="index.php?action=tz_convert" method="post">
             <ul><li>'
        . translate( 'It appears that you have NOT converted...' ) . '</li></ul>
-            <div align="center"><input type="submit" value="'
+            <div class="aligncenter"><input type="submit" value="'
        . translate( 'Convert Data to GMT' ) . ':" /></div>
           </form>' : '
           <ul><li>' . $tzSuccessStr . '</li></ul>' ) . '
@@ -1512,7 +1512,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       </tr>
       <tr>
         <td>
-          <table width="75%" align="center" border="0" summary="">
+          <table width="75%" class="aligncenter">
             <tr>
             <form action="index.php?action=switch&amp;page=4" method="post" '
    . 'enctype=\'multipart/form-data\' name="form_app_settings">
@@ -1601,9 +1601,9 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         </td>
       </tr>
     </table>
-    <table width="80%" align="center" summary="">
+    <table width="80%" class="aligncenter">
       <tr>
-        <td align="center">'
+        <td class="aligncenter">'
    . ( ! empty( $_SESSION['db_success'] ) && $_SESSION['db_success'] &&
     empty( $dologin ) ? '
               <input name="action" type="button" value="'

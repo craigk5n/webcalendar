@@ -229,17 +229,17 @@ echo send_doctype( $appStr ) . '
   : '<br /><br />' . ( empty( $control ) ? '' : '
     <form action="login.php" method="post">
       <input type="hidden" name="login" value="' . $user . '" />
-      <table align="center" cellspacing="10" cellpadding="10" summary="">
+      <table class="aligncenter" cellspacing="10" cellpadding="10">
         <tr>
           <td rowspan="3"><img src="images/register.gif"></td>
           <td>' . translate( 'Welcome to WebCalendar' ) . '</td>
         </tr>' . ( $SELF_REGISTRATION_FULL == 'Y' ? '
         <tr>
-          <td colspan="3" align="center"><label>'
+          <td colspan="3" class="aligncenter"><label>'
        . translate( 'Your email should arrive shortly.' ) . '</label></td>
         </tr>' : '' ) . '
         <tr>
-          <td colspan="3" align="center"><input type="submit" value="'
+          <td colspan="3" class="aligncenter"><input type="submit" value="'
      . translate( 'Return to Login screen' ) . '" /></td>
         </tr>
       </table>
@@ -247,48 +247,45 @@ echo send_doctype( $appStr ) . '
     <form action="register.php" method="post" onSubmit="return valid_form()"
         name="selfreg">
       <input type="hidden" name="control" value="' . $form_control . '" />
-      <table align="center" cellpadding="10" cellspacing="10" summary="">
+      <table class="aligncenter" cellpadding="10" cellspacing="10">
         <tr>
           <td rowspan="3"><img src="images/register.gif" alt="" /></td>
-          <td align="right"><label class="colon">' . translate( 'Username' ) . '</label></td>
-          <td align="left"><input type="text" name="user" id="user" value="'
+          <td class="alignright"><label class="colon">' . translate( 'Username' ) . '</label></td>
+          <td class="alignleft"><input type="text" id="user" name="user" value="'
    . $user . '" size="20" maxlength="20" onChange="check_name();" /></td>
         </tr>
         <tr>
-          <td align="right"><label class="colon">' . translate( 'First Name' )
-   . '</label></td>
-          <td align="left"><input type="text" name="ufirstname" value="'
+          <td class="alignright"><label class="colon">' . translate( 'First Name' ) . '</label></td>
+          <td class="alignleft"><input type="text" name="ufirstname" value="'
    . $ufirstname . '" size="25" maxlength="25" /></td>
         </tr>
         <tr>
-          <td align="right"><label class="colon">' . translate( 'Last Name' ) . '</label></td>
-          <td align="left"><input type="text" name="ulastname" value="'
+          <td class="alignright"><label class="colon">' . translate( 'Last Name' ) . '</label></td>
+          <td class="alignleft"><input type="text" name="ulastname" value="'
    . $ulastname . '" size="25" maxlength="25" /></td>
         </tr>
         <tr>
-          <td align="right" colspan="2"><label class="colon">' . translate( 'E-mail address' )
-   . '</label></td>
-          <td align="left"><input type="text" name="uemail" id="uemail" value="'
+          <td class="alignright" colspan="2"><label class="colon">' . translate( 'E-mail address' ) . '</label></td>
+          <td class="alignleft"><input type="text" name="uemail" id="uemail" value="'
    . $uemail . '" size="40" maxlength="75" onChange="check_uemail();" /></td>
         </tr>
         <tr>
           <td ' . ( $SELF_REGISTRATION_FULL != 'Y'
-    ? 'align="right" colspan="2"><label class="colon">' . translate( 'Password' )
-     . '</label></td>
-          <td align="left"><input name="upassword1" value="' . $upassword1
+    ? 'class="alignright" colspan="2"><label class="colon">' . translate( 'Password' ) . '</label></td>
+          <td class="alignleft"><input name="upassword1" value="' . $upassword1
      . '" size="15" type="password" /></td>
         </tr>
         <tr>
-          <td align="right" colspan="2"><label>'
+          <td class="alignright" colspan="2"><label>'
            . translate( 'Password (again)' ) . '</label></td>
-          <td align="left"><input name="upassword2" value="' . $upassword2
+          <td class="alignleft"><input name="upassword2" value="' . $upassword2
      . '" size="15" type="password" />'
-    : 'colspan="3" align="center"><label>'
+    : 'colspan="3" class="aligncenter"><label>'
      . translate( 'Your account information will be emailed to you.' )
      . '</label>' ) . '</td>
         </tr>
         <tr>
-          <td colspan="3" align="center"><input type="submit" value="'
+          <td colspan="3" class="aligncenter"><input type="submit" value="'
    . translate( 'Submit' ) . '" /></td>
         </tr>
       </table>

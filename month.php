@@ -95,14 +95,14 @@ print_header(
   $HeadX, '', false, false, false, false );
 
 echo <<<EOT
-    <table border="0" width="100%" cellpadding="1" summary="">
+    <table cellpadding="1">
       <tr>
-        <td id="printarea" valign="top" width="{$tableWidth}" rowspan="2">
+        <td id="printarea" class="aligntop" width="{$tableWidth}" rowspan="2">
           {$prevMonth1}{$nextMonth1}
           {$navStr}
           {$monthStr}
         </td>
-        <td valign="top" align="center">
+        <td class="aligntop aligncenter">
           {$prevMonth2}{$nextMonth2}<div id="minitask">{$smallTasks}</div>
         </td>
       </tr>

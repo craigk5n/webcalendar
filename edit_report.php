@@ -216,7 +216,7 @@ echo '
  . ( ! $adding_report ? '
       <input type="hidden" name="report_id" value="'
    . $report_id . '" />' : '' ) . '
-      <table summary="">
+      <table>
         <tr>
           <td><label for="rpt_name">' . translate ( 'Report name' )
  . ':</label></td>
@@ -324,7 +324,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 } //end $CATEGORIES_ENABLED test
 echo '
       </table>
-      <table summary="">
+      <table>
         <tr>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
@@ -332,7 +332,7 @@ echo '
  . '</label></td>
         </tr>
         <tr>
-          <td valign="top"><label>' . translate ( 'Page template' )
+          <td class="aligntop"><label>' . translate ( 'Page template' )
  . ':</label></td>
           <td><textarea rows="12" cols="60" name="page_template">'
  . htmlentities ( $page_template, ENT_COMPAT, $charset ) . '</textarea></td>
@@ -346,7 +346,7 @@ echo '
           </td>
         </tr>
         <tr>
-          <td valign="top"><label>' . translate ( 'Day template' )
+          <td class="aligntop"><label>' . translate ( 'Day template' )
  . ':</label></td>
           <td><textarea rows="12" cols="60" name="day_template">'
  . htmlentities ( $day_template, ENT_COMPAT, $charset ) . '</textarea></td>
@@ -360,7 +360,7 @@ echo '
           </td>
         </tr>
         <tr>
-          <td valign="top"><label>' . translate ( 'Event template' )
+          <td class="aligntop"><label>' . translate ( 'Event template' )
  . ':</label></td>
           <td><textarea rows="12" cols="60" name="event_template" id="event_template">'
  . htmlentities ( $event_template, ENT_COMPAT, $charset ) . '</textarea></td>

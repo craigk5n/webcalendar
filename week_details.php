@@ -75,7 +75,7 @@ echo '
       $thismonth, $thisday ), $cat_id ) : '' ) . '
     </div><br />
     <center>
-      <table class="main" summary="">';
+      <table class="main">';
 
 $untimed_found = false;
 for ( $d = 0; $d < 7; $d++ ) {

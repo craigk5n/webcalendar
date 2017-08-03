@@ -185,10 +185,10 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
    . ' onsubmit="return valid_form( this )">' . ( empty ( $return_path ) ? '' : '
       <input type="hidden" name="return_path" value="'
      . htmlentities ( $return_path ) . '" />' ) . '
-      <table align="center" cellspacing="10" cellpadding="10" summary="">
+      <table class="aligncenter" cellspacing="10" cellpadding="10">
         <tr>
           <td rowspan="2"><img src="images/login.gif" alt="Login" /></td>
-          <td align="right"><label for="user">' . translate ( 'Username' )
+          <td class="alignright"><label for="user">' . translate ( 'Username' )
    . ':</label></td>
           <td><input name="login" id="user" size="15" maxlength="25" value="'
    . ( empty ( $last_login ) ? '' : $last_login ) . '" tabindex="1" /></td>

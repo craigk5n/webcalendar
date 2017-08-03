@@ -120,17 +120,17 @@ else {
     <form action="set_entry_cat.php" method="post" name="selectcategory">
       <input type="hidden" name="date" value="{$date}" />
       <input type="hidden" name="id" value="{$id}" />
-      <table border="0" cellpadding="5" summary="">
+      <table cellpadding="5">
         <tr class="aligntop">
           <td class="bold colon">{$briefStr}</td>
           <td>{$event_name}</td>
         </tr>
         <tr>
-          <td class="tooltip" title="{$catHelpStr}" valign="top">
+          <td class="tooltip aligntop" title="{$catHelpStr}">
             <label for="entry_categories" class="colon">{$catStr}<br /></label>
             <input type="button" value="{$editStr}" onclick="editCats( event )" />
           </td>
-          <td valign="top">
+          <td class="aligntop">
             <input readonly="readonly" type="text" name="catnames"
               value="{$catNames}" size="75" onclick="editCats( event )" /><br />
             {$globalNoteStr}

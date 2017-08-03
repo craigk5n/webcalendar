@@ -92,7 +92,7 @@ if ( $newview ) {
 }
 ?>
 
-<table summary="">
+<table>
 <tr><td>
  <label for="viewname" class="colon"><?php etranslate ( 'View Name' )?></label></td><td colspan="3">
  <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" />

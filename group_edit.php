@@ -39,7 +39,7 @@ if ( $newgroup ) {
       <input type="hidden" name="id" value="' . $id;
 
 echo '" />
-      <table summary="">
+      <table>
         <tr>
           <td class="bold"><label for="groupname">'
  . translate ( 'Group name' ) . ':</label></td>

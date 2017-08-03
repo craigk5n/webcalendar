@@ -40,7 +40,7 @@ echo '
     </script>
     <center>
       <form action="#" name="userselform">
-        <table style="border: 0; width: 100%;" summary="">
+        <table style="border: 0; width: 100%;">
           <tr>
             <td class="aligntop colon">
               <b>' . translate ( 'Users' ) . '</b><br />
@@ -52,7 +52,7 @@ echo '
  . '" onclick="selectAll( false )" />
               <input type="reset" value="' . translate ( 'Reset' ) . '" />
             </td>
-            <td valign="top">
+            <td class="aligntop">
               <b class="colon">' . translate ( 'Groups' ) . '</b><br />
               <select name="groups" size="15">';
 

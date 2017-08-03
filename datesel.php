@@ -72,12 +72,11 @@ $mdays .= '
     ';
 
 echo <<<EOT
-    <div align="center">
-      <table class="aligncenter" width="100%" summary="">
+    <div class="aligncenter">
+      <table class="aligncenter">
         <tr>
-          <td align="center" valign="top">
-            <table class="aligncenter" cellpadding="3" cellspacing="2"
-              summary="">
+          <td class="aligncenter aligntop">
+            <table class="aligncenter" cellpadding="3" cellspacing="2">
               <tr>
                 <td><a title="{$previousStr}" class="prev" {$prevdate}>
                   <img src="images/leftarrowsmall.gif"

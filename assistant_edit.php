@@ -31,7 +31,7 @@ if ( $is_nonuser_admin ) {
 
 echo '</h2>
       ' . display_admin_link() . '
-      <table summary="">
+      <table>
         <tr>
           <td class="aligntop colon"><label for="users">' . $assistStr . '</label></td>
           <td>
