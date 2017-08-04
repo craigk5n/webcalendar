@@ -6,19 +6,12 @@ require_valid_referring_url ();
 $credits = getPostValue( 'Credits' );
 static $data;
 
-if( empty( $data ) ) {
+if ( empty( $data ) ) {
   //  Read in and format AUTHORS file.
-  if( $fd = @fopen( 'AUTHORS', 'r' ) ) {
-    while( ! feof( $fd ) && empty( $error ) ) {
-      $data .= fgets( $fd, 4096 );
-    }
-    fclose( $fd );
-  }
-  $data = preg_replace( '/<.+>+/', '', $data );
-  $data = preg_replace( "/\n\s/", '<br />&nbsp;', $data );
-  $data = preg_replace( '/\s\s+/', '&nbsp;&nbsp;', $data );
-  $data = preg_replace( '/\n/', '<br />', $data );
-  $data = str_replace( ' <br />', '<br />', $data );
+  $data = preg_replace (
+  ["/\n|\r\n/", '/\s\s+/',      '\s*<br />\s*', '/\s*<.+>+/'],
+  ['<br />',    '&nbsp;&nbsp;', '<br />'],
+  file_get_contents ( 'AUTHORS' ) );
 }
 
 ob_start();
