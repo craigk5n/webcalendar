@@ -39,7 +39,7 @@ $wkend = $wkstart + ( 86400 * ( $DISPLAY_WEEKENDS == 'N' ? 5 : 7 ) );
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-$can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
+$can_add = ( $ADD_LINK_IN_VIEWS === 'Y' );
 
 print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 
