@@ -131,8 +131,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   if( ! $disableAJAX ) {
     $ret .= '
-    <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js?'
-     . filemtime( 'includes/js/ie5.js' ) . '"></script><![endif]-->';
+    <!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->';
     if ( is_array ( $includes ) && in_array ( 'JQUERY', $includes ) ) {
       $js_ar[] = 'js/jquery-1.9.1.min.js';
       $js_ar[] = 'js/jquery-1.10.1.js';
@@ -179,10 +178,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   if( ! empty( $js_ar ) )
     foreach( $js_ar as $j ) {
       $i = 'includes/' . $j;
-      $timeStr = ( @filemtime ( $i ) > 0 ? "?" . filemtime ( $i ) : '' );
       $ret .= '
-    <script type="text/javascript" src="'
-       . $i . $timeStr . '"></script>';
+    <script src="' . $i . '"></script>';
     }
 
   // Any other includes?
@@ -197,15 +194,14 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
         // Not added to $cs_ar because I think we want these,
         // even if $disableStyle.
         $cs_ret .= '
-    <link type="text/css" href="' . $i . '?' . filemtime( $i )
-         . '" rel="stylesheet" />';
+    <link href="' . $i . '" rel="stylesheet" />';
       } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
           && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
       } else {
         $arinc = explode( '/', $inc );
         $ret .= '
-    <script type="text/javascript" src="';
+    <script src="';
 
         if( stristr( $inc, '/true' ) ) {
           $i = 'includes';
@@ -264,19 +260,14 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
       SetCookie( 'webcalendar_csscache', $webcalendar_csscache );
     }
     $ret .= '
-    <link type="text/css" href="css_cacher.php?login='
+    <link href="css_cacher.php?login='
      . ( empty( $_SESSION['webcal_tmp_login'] )
        ? $login : $_SESSION['webcal_tmp_login'] )
      . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet" />';
     foreach( $cs_ar as $c ) {
       $i = 'includes/' . $c;
-/* According to the HTML5 books I've read,
-   no browser has ever used either type="text/css" or type="text/javascript".
-   So, all these could come out. Later. bb
- */
       $ret .= '
-    <link type="text/css" href="' . $i . '?' . filemtime( $i )
-       . '" rel="stylesheet"'
+    <link href="' . $i . '" rel="stylesheet"'
        . ( $c == 'css/print_styles.css' && empty( $friendly )
          ? ' media="print"' : '' ) . ' />';
     }

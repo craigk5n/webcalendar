@@ -145,7 +145,7 @@ else {
 }
 ob_start();
 echo send_doctype ( $appStr ) . ( $logout ? '' : '
-    <script type="text/javascript">
+    <script>
     // Error check login/password.
       function valid_form ( form ) {
         if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
@@ -161,8 +161,8 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
         alert ( \'' . $error . '\' );' ) . '
       }
     </script>' ) . '
-    <link type="text/css" href="css_cacher.php?login=__public__" rel="stylesheet" />
-    <link type="text/css" href="includes/css/styles.css" rel="stylesheet" />'
+    <link href="css_cacher.php?login=__public__" rel="stylesheet" />
+    <link href="includes/css/styles.css" rel="stylesheet" />'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'

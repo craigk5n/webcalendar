@@ -402,7 +402,7 @@ ob_end_flush();
         </tr>
       </table>
     </form>
-    <script type="text/javascript" >
+    <script>
 <!-- <![CDATA[
     // This script borrowed from phpMyAdmin with some mofification.
       function addMe ( areaname, myValue ) {

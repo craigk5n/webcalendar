@@ -32,7 +32,7 @@ ob_start();
 print_header( '', '', '', true, false, true );
 
 echo '
-    <script type="text/javascript">';
+    <script>';
 
 include 'includes/js/usersel.php';
 

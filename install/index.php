@@ -775,7 +775,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <title>' . translate( 'WebCalendar Setup Wizard' ) . '</title>
     <meta http-equiv="Content-Type" content="text/html; charset='
  . translate( 'charset' ) . '" />
-    <script type="text/javascript">
+    <script>
 <!-- <![CDATA[
       var xlate = [];
       xlate[\'invalidColor\'] = \'' . translate( 'Invalid Color', true ) . '\';
@@ -873,8 +873,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
       }
 //]]> -->
     </script>
-    <script type="text/javascript" src="../includes/js/visible.js"></script>
-    <style type="text/css">
+    <script src="../includes/js/visible.js"></script>
+    <style>
       body {
         margin:0;
         background:#fff;
