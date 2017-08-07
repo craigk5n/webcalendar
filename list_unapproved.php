@@ -177,8 +177,6 @@ function list_unapproved ( $user ) {
 } //end list_unapproved()
 print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
 
-ob_start();
-
 echo '
     <h2>' . translate ( 'Unapproved Entries' ) . '</h2>';
 
@@ -312,8 +310,6 @@ echo '
       }
 //]]> -->
     </script>
-    ';
-ob_end_flush();
-echo print_trailer();
+    ' . print_trailer ();
 
 ?>

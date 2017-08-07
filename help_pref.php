@@ -3,9 +3,6 @@ include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
 print_header ( '', '', '', true );
-
-ob_start();
-
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Preferences' ) . '</h2>
     <h3>' . translate ( 'Settings' ) . '</h3>
@@ -108,8 +105,6 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' )
 
 echo '
     </div>';
-
-ob_end_flush();
 
 echo print_trailer ( false, true, true );
 

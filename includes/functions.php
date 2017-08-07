@@ -4085,6 +4085,7 @@ function load_template ( $login, $type ) {
   if ( $found &&
     ( ! empty ( $ALLOW_EXTERNAL_HEADER ) && $ALLOW_EXTERNAL_HEADER == 'Y' ) &&
       file_exists ( $file ) ) {
+// Craig. Why not just do $ret = file_get_contents ( $file ) here?
     ob_start();
     include "$file";
     $ret = ob_get_contents();

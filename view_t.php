@@ -295,8 +295,6 @@ if ( ! empty ( $error ) ) {
 $nextStr = translate ( 'Next' );
 $prevStr = translate ( 'Previous' );
 
-ob_start();
-
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
@@ -359,8 +357,6 @@ for ( $date = $wkstart; $date <= $wkend; $date += 86400 ) {
 }
 
 $user = ''; // reset
-
-ob_end_flush();
 
 echo '
     </table>'

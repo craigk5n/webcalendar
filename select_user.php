@@ -26,9 +26,6 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
     if ( $url == 'month' || $url == 'day' || $url == 'week' || $url == 'year' )
       $url .= '.php';
   }
-
-  ob_start();
-
   echo '
     <form action="' . $url . '" method="get" name="SelectUser">
       <select name="user" onchange="document.SelectUser.submit()">';
@@ -46,8 +43,6 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
       </select>
       <input type="submit" value="' . translate ( 'Go' ) . '" />
     </form>';
-
-  ob_end_flush();
 }
 
 echo '<br /><br />

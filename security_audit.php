@@ -27,7 +27,6 @@ if ( $phpinfo == '1' ) {
 }
 clearstatcache();
 print_header();
-ob_start();
 echo '
     <h2>' . translate( 'Security Audit' ) . '</h2>
     <ul id="securityAuditNotes">
@@ -165,7 +164,6 @@ echo '
     </table>
 ' . print_trailer() . '
 <!-- done -->';
-ob_end_flush();
 exit;
 
 /* functions ... */

@@ -13,8 +13,6 @@ if ( empty( $data ) ) {
   ['<br />',    '&nbsp;&nbsp;', '<br />'],
   file_get_contents ( 'AUTHORS' ) );
 }
-
-ob_start();
 print_header( '', ( empty( $credits ) ? '' : '<script type="text/javascript">
       function start() {
         startScroll( \'creds\', \'' . $data . '\' );
@@ -42,7 +40,5 @@ echo '    <div id="creds">' . ( empty( $credits ) ? '
  . '" onclick="window.close()" />
     </form>
     ' . print_trailer( false, true, true );
-
-ob_end_flush();
 
 ?>

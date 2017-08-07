@@ -52,7 +52,6 @@ if ( $d = dir ( $icon_path ) ) {
   </script>
 
 <?php
-  ob_start();
   echo '
     <table class="aligncenter">
       <tr>
@@ -77,8 +76,6 @@ if ( $d = dir ( $icon_path ) ) {
     </table>
   </body>
 </html>';
-
-  ob_end_flush();
 }
 
 ?>

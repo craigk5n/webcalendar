@@ -40,8 +40,6 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
      . 'onchange="check_name();" maxlength="20" /> '
      . translate ( 'word characters only' );
 
-  ob_start();
-
   echo '
     <form action="edit_nonusers_handler.php" name="editnonuser" method="post" '
    . 'onsubmit="return valid_form( this );">'
@@ -126,9 +124,6 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     </form>
     ';
 }
-
-ob_end_flush();
-
 echo print_trailer ( false, true, true );
 
 ?>

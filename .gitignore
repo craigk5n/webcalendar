@@ -1,2 +1,3 @@
-includes/settings.php
+.htaccess
 includes/htmlarea
+includes/settings.php

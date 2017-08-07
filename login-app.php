@@ -44,8 +44,6 @@ $appStr = generate_application_name();
 // Set return page.
 $login_return_path = $SERVER_URL . $return_path;
 
-ob_start();
-
 echo send_doctype ( $appStr ) . ( ! $logout ? '
     <script type="text/javascript">
 
@@ -150,8 +148,6 @@ echo ( $DEMO_MODE == 'Y'
 // Print custom trailer (since we do not call print_trailer function).
  . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'
   ? load_template ( $login, 'T' ) : '' );
-
-ob_end_flush();
 
 ?>
   </body>

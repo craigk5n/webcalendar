@@ -129,7 +129,7 @@ if ( $is_nonuser_admin ) {
 
 @session_start();
 $_SESSION['webcal_tmp_login'] = 'SheIsA1Fine!';
-ob_start();
+
 print_header( '',
 /*
   '<style type="text/css">
@@ -167,6 +167,5 @@ echo '
       </tr>
     </table>
     ' . print_trailer();
-ob_end_flush();
 
 ?>

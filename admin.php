@@ -338,7 +338,6 @@ if ( ! $error ) {
   }
 
   set_today ( date ( 'Ymd' ) );
-  ob_start();
 
   echo '
     <h2>' . translate ( 'System Settings' )
@@ -928,7 +927,7 @@ if ( ! $error ) {
         <input type="submit" value="' . $saveStr . '" name="" />
       </div>
     </form>';
-  ob_end_flush();
+
 } else // if $error
   echo print_error ( $error, true );
 

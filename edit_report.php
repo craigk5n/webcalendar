@@ -202,9 +202,6 @@ if ( ! empty ( $error ) ) {
   echo $error . print_trailer ( false );
   exit;
 }
-
-ob_start();
-
 echo '
     <h2>'
  . ( $updating_public ? translate ( $PUBLIC_ACCESS_FULLNAME ) . ' ' : '' )
@@ -394,8 +391,6 @@ echo '
    . translate ( 'Delete' ) . '" onclick="return confirm( \''
    . translate( 'Are you sure you want to delete this report?' )
    . '\');" />' );
-
-ob_end_flush();
 
 ?>
           </td>

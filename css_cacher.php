@@ -38,9 +38,6 @@ $expTime = time() + 86400;
 if( $empTmp )
   $expTime = time() - 86400;
 
-// IE can handle compressed CSS OK.
-ob_start();
-
 header( 'Content-type: text/css' );
 header( 'Cache-Control: Public' );
 header( 'Pragma: Public' );
@@ -48,7 +45,5 @@ header( 'Pragma: Public' );
 send_no_cache_header();
 
 include_once 'includes/css/styles.php';
-
-ob_end_flush();
 
 ?>

@@ -27,12 +27,6 @@ while( $fileName = readdir( $myDirectory ) ) {
 }
 closedir( $myDirectory );
 
-// We don't want to compress JavaScript for IE6
-// because of 'object expected' errors.
-// Still hold the output till we're done.
-ob_start( ini_get( 'zlib.output_compression' ) != 1
-  && ! stristr( $_SERVER['HTTP_USER_AGENT'], 'MSIE 6' ) ? 'ob_gzhandler' : '' );
-
 include_once 'includes/translate.php';
 include_once 'includes/config.php';
 include_once 'includes/dbi4php.php';
@@ -67,7 +61,5 @@ foreach( $arinc as $a ) {
 
 if( is_file( $newinc ) && in_array( $arinc[1], $fileList ) )
   include_once $newinc;
-
-ob_end_flush();
 
 ?>
