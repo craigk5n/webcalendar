@@ -441,6 +441,7 @@ a.matrix img {
   left:0;
   color: var(--popupfg);
   border:2px solid var(--popupfg);
+  background-color: var(--popupbg);
   padding:1.0rem;
   font-size:.75rem;
   text-decoration:none;
