@@ -237,7 +237,6 @@ if ( $lang == 'en' )
 
 $appStr = generate_application_name();
 
-ob_start();
 // header ( 'Content-type: application/rss+xml');
 header ( 'Content-type: text/xml' );
 echo '<?xml version="1.0" encoding="' . $charset . '"?>
@@ -357,7 +356,7 @@ countentries==' . $entrycnt . ' ' . $rentrycnt . '
 echo '
   </channel>
 </rss>';
-ob_end_flush();
+
 // Clear login...just in case.
 $login = '';
 exit;

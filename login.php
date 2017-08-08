@@ -143,7 +143,6 @@ else {
   if ( substr ( $cookie_path, -1 ) == '/' )
     SetCookie ( 'webcalendar_session', '', 0, substr ( $cookie_path, 0, -1 ) );
 }
-ob_start();
 echo send_doctype ( $appStr ) . ( $logout ? '' : '
     <script type="text/javascript">
     // Error check login/password.
@@ -254,7 +253,5 @@ echo '
   ? load_template ( $login, 'T' ) : '' ) . '
   </body>
 </html>';
-
-ob_end_flush();
 
 ?>

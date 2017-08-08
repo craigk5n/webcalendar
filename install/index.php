@@ -766,7 +766,6 @@ $offStr = translate( 'OFF' );
 $onStr  = translate( 'ON' );
 $yesStr = translate( 'Yes' );
 
-ob_start();
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "DTD/xhtml1-transitional.dtd">
@@ -1623,8 +1622,6 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       </tr>
     </table>';
 }
-
-ob_end_flush();
 
 ?>
   </body>

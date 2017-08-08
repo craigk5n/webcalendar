@@ -96,6 +96,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
+  ob_start ();
+
   if ( defined ( '__WC_INCDIR' ) && is_dir ( __WC_INCDIR ) )
     $incdir = __WC_INCDIR;
   elseif ( is_dir ( 'includes' ) )

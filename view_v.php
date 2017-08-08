@@ -43,7 +43,6 @@ $prevStr = translate ( 'Previous' );
 
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
-ob_start();
 print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 echo '
     <div style="width:99%;">
@@ -155,6 +154,5 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
 $user = ''; // reset
 
 echo ( empty ( $eventinfo ) ? '' : $eventinfo ) .$printerStr . print_trailer();
-ob_end_flush();
 
 ?>

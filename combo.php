@@ -113,8 +113,6 @@ print_header(
   array( 'js/popups.js/true', 'js/visible.php', 'js/datesel.php' ),
   $headExtras, $bodyExtras );
 
-//ob_start();
-
 ?>
 
 <div class="headerinfo">
@@ -1985,8 +1983,6 @@ function format_description ( desc )
 </script>
 
 <?php
-
-//ob_end_flush();
 
 echo print_trailer();
 

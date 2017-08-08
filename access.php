@@ -156,8 +156,6 @@ if( ! empty( $otheruser ) ) {
     }
   }
 }
-ob_start();
-
 print_header( '',
   '<script type="text/javascript" src="includes/js/access.js?'
  . filemtime( 'includes/js/access.js' ) . '"></script>
@@ -443,7 +441,6 @@ if( ! empty( $otheruser ) ) {
 }
 
 echo print_trailer();
-ob_end_flush();
 
 /**
  * Get the list of users that the specified user can see.

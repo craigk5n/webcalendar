@@ -28,7 +28,6 @@ for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
 
 $groups = get_groups( $user );
 
-ob_start();
 print_header( '', '', '', true, false, true );
 
 echo '
@@ -81,8 +80,6 @@ echo '
         </table>
       </form
     </center>';
-
-ob_end_flush();
 
 echo print_trailer ( false, true, true );
 

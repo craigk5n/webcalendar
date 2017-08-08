@@ -10,9 +10,6 @@ if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 
   print_header ( '', '', '', true );
-
-  ob_start ();
-
   echo $helpListStr . '
     <h2>' . translate ( 'Report Bug' ) . '</h2>
     <p>' .
@@ -48,7 +45,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
   }
 
   list_help ( $tmp_arr );
-  ob_end_flush ();
+
   echo '
     </div>
     ' . print_trailer ( false, true, true );

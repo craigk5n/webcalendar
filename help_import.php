@@ -3,9 +3,6 @@ include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
 print_header ( '', '', '', true );
-
-ob_start();
-
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Import' ) . '</h2>
     <h3>' . translate ( 'Palm Desktop' ) . '</h3>
@@ -29,8 +26,6 @@ echo $helpListStr . '
     <p>' . translate ( 'This form will import iCalendar (.ics) events.' ) . ' '
  . translate ( 'Enabling' ) . ' <b>' . translate ( 'Overwrite Prior Import' )
  . '</b>, ' . translate ( 'will cause events imported previously...' ) . '</p>';
-
-ob_end_flush();
 
 echo print_trailer ( false, true, true );
 
