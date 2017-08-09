@@ -168,10 +168,7 @@ $wkst = 'MO';
 $real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
   ( $is_assistant || $is_admin ) ) ? $user : $login;
 
-//print_header ( $INC, $HEAD, $BodyX, false, false, false, true );
 print_header ( $INC, $HEAD, $BodyX );
-
-ob_start();
 
 if ( $readonly == 'Y' || $is_nonuser )
   $can_edit = false;
@@ -1710,8 +1707,6 @@ if ( $can_edit ) {
   etranslate( 'You are not authorized to edit this entry.' );
 // end if ( $can_edit )
 
-ob_end_flush();
-
 // Create a hidden div tag for editing categories...
 ?>
 <div id="editCatsDiv" style="display: none;">
@@ -1751,8 +1746,7 @@ views.init()
 // End init tabs
 </script>
 
-<?php } ?>
-<?php
+<?php }
 
 echo print_trailer();
 

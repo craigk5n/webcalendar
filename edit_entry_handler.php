@@ -1240,7 +1240,6 @@ if( empty( $error ) && empty( $mailerError ) ) {
 
 if( ! empty( $conflicts ) ) {
   print_header();
-  ob_start();
   echo '
     <h2>' . translate( 'Scheduling Conflict' ) . '</h2>
     ' . translate( 'Your suggested time of' ) . '
@@ -1291,7 +1290,6 @@ if( ! empty( $conflicts ) ) {
    . '" onclick="history.back()" />
     </form>';
 
-  ob_end_flush();
 } else
   // Process errors.
   $mail->MailError( $mailerError, $error );

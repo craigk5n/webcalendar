@@ -156,6 +156,7 @@ echo ':root {
   --nextmonthbg: ' . $GLOBALS['NEXTMONTHBG'] . ';
   --othermonthbg: ' . $GLOBALS['OTHERMONTHBG'] . ';
   --popupfg: ' . $GLOBALS['POPUP_FG'] . ';
+  --popupbg: ' . $GLOBALS['POPUP_BG'] . ';
   --prevmonthbg: ' . $GLOBALS['PREVMONTHBG'] . ';
   --tablebg: ' . $GLOBALS['TABLEBG'] . ';
   --textcolor: ' . $GLOBALS['TEXTCOLOR'] . ';

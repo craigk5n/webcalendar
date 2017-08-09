@@ -30,7 +30,6 @@ body {
   width:100%;
   margin:0;
   padding:0;
-  font: var(--def-font-size)\1.5 var(--fonts)
 }
 body{
   background-color: var(--bgcolor);
@@ -74,7 +73,6 @@ textarea {
   overflow:auto;
 }
 table {
-  width:100%;
   border:0;
   border-collapse:collapse;
   border-spacing:0;
@@ -443,6 +441,7 @@ a.matrix img {
   left:0;
   color: var(--popupfg);
   border:2px solid var(--popupfg);
+  background-color: var(--popupbg);
   padding:1.0rem;
   font-size:.75rem;
   text-decoration:none;
@@ -1492,9 +1491,6 @@ a:hover {
 table.ThemeMenubar {
   table-layout:auto;
   font-size: 80% !important;
-}
-table.ThemeMenubar select {
-  font-size: 1.0rem !important;
 }
 #editCatsDiv #innerDiv {
   border:1px solid;

@@ -3,7 +3,6 @@ include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
 print_header ( '', '', '', true );
-ob_start();
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'System Settings' )
  . '</h2>
@@ -161,7 +160,7 @@ $tmp_arr = array (
   translate ( 'Manually entering color values' ) => translate ( 'colors-help' ),
   );
 list_help ( $tmp_arr );
-ob_end_flush();
+
 echo '
       </div>
     </div>

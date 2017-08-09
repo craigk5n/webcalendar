@@ -19,8 +19,6 @@ $newNonUserStr = translate ( 'Add New NonUser Calendar' );
 $targetStr =
 'target="nonusersiframe" onclick="showFrame( \'nonusersiframe\' );">';
 
-ob_start();
-
 echo '
   <a name="tabnonusers"></a>
   <div id="tabscontent_nonusers">';
@@ -49,7 +47,5 @@ echo '
     <iframe name="nonusersiframe" id="nonusersiframe" style="width: 90%; '
  . 'border: 0; height: 250px;"></iframe>
   </div>';
-
-ob_end_flush();
 
 ?>

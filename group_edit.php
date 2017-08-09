@@ -23,9 +23,6 @@ else {
 }
 
 print_header ( '', '', '', true );
-
-ob_start();
-
 echo '
     <form action="group_edit_handler.php" method="post">
       <h2>';
@@ -105,8 +102,6 @@ echo '
       </table>
     </form>
     ';
-
-ob_end_flush();
 
 echo print_trailer ( false, true, true );
 

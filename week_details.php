@@ -49,9 +49,6 @@ $newEntryStr = translate ( 'New Entry' );
 $prevStr = translate ( 'Previous' );
 
 print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
-
-ob_start();
-
 echo '
     <div class="title">
       <a title="' . $prevStr . '" class="prev" href="week_details.php?' . $u_url
@@ -110,11 +107,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 echo '
       </table>
     </center>
-    ' . ( empty ( $eventinfo ) ? '' : $eventinfo ) . '<br />';
-
-ob_end_flush();
-
-echo $printerStr . print_trailer();
+    ' . ( empty ( $eventinfo ) ? '' : $eventinfo ) . '<br />' . $printerStr . print_trailer ();
 
 /**
  * Prints the HTML for one event in detailed view.

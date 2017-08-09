@@ -96,6 +96,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
+  ob_start ();
+
   if ( defined ( '__WC_INCDIR' ) && is_dir ( __WC_INCDIR ) )
     $incdir = __WC_INCDIR;
   elseif ( is_dir ( 'includes' ) )
@@ -362,15 +364,22 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
     unset( $c );
   }
 
+  // Only enable CKEditor on the following pages.  Some pages are expecting plain
+  // text and HTML will cause issues.
+  $pagesWithFullEditor = [ 'edit_entry.php', 'docadd.php' ];
+  $includeCkeditor = ( ! empty ( $GLOBALS['ALLOW_HTML_DESCRIPTION'] ) ) &&
+    $GLOBALS['ALLOW_HTML_DESCRIPTION'] == 'Y' &&
+    in_array ( $GLOBALS['SCRIPT'], $pagesWithFullEditor );
+
   return $ret . '
 <!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
-    ( $GLOBALS['ALLOW_HTML_DESCRIPTION'] !== 'Y' ? '' :
+    ( $includeCkeditor ?
     /* Your choices here are "basic", "standard" or "full". */ '
     <script src="//cdn.ckeditor.com/4.6.0/basic/ckeditor.js"></script>
     <script>' .
     /* Use CKEditor for ALL <textarea>. */ '
       CKEDITOR.replaceAll();
-    </script>' ) .
+    </script>' : '' ) .
 
     // Adds an easy link to validate the pages.
     ( $DEMO_MODE == 'Y' ? '

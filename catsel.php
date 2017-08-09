@@ -27,9 +27,6 @@ if ( strlen ( $entryCatStr ) < 30 )
 print_header( array( 'js/catsel.php/false/' . $form ),
   '<script type=text/javascript" src="includes/js/catsel.js"></script>',
   '', true, false, true );
-
-ob_start();
-
 echo '
     <table class="aligncenter" width="90%">
       <tr>
@@ -82,9 +79,6 @@ if ( strlen ( $cats ) ) {
      . htmlentities ( $categories[abs ( $K )]['cat_name'] ) . $show_ast . '</option>';
   }
 }
-
-ob_end_flush();
-
 echo '
           </select>
           <input type="button" value="' . translate ( 'Remove' )
