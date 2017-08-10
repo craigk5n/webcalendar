@@ -1,4 +1,4 @@
-<?php // $Id: layers_ajax.php,v 1.4.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 /**
  * Description
  *   Handler for AJAX requests from layers.php.
@@ -52,11 +52,11 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 if ( $action == 'enable' || $action == 'disable' ) {
   // Toggle LAYER_STATUS in the user's preferences between N and Y.
   dbi_execute( 'DELETE FROM webcal_user_pref WHERE cal_login = ?
-    AND cal_setting = \'LAYERS_STATUS\'', array( $layer_user ) );
+    AND cal_setting = "LAYERS_STATUS"',  [$layer_user] );
 
   if( ! dbi_execute( 'INSERT INTO webcal_user_pref ( cal_login, cal_setting,
       cal_value ) VALUES ( ?, \'LAYERS_STATUS\', ? )',
-      array( $layer_user, ( $action == 'enable' ? 'Y': 'N' ) ) ) ) {
+      [$layer_user, ( $action == 'enable' ? 'Y': 'N' )] ) {
     ajax_send_error ( translate ( 'Unable to update preference' ) . ': ' . dbi_error() );
   } else {
     // Success
@@ -65,14 +65,14 @@ if ( $action == 'enable' || $action == 'disable' ) {
 } else if ( $action == 'list' ) {
   // Use JSON to encode our list of layers.
   load_user_layers ( $layer_user, 1 );
-  $ret_layers = array();
+  $ret_layers = [];
   foreach ( $layers as $layer ) {
     user_load_variables ( $layer['cal_layeruser'], 'layer' );
-    $ret_layers[] = array ( 'id' => $layer['cal_layerid'],
+    $ret_layers[] =  ['id' => $layer['cal_layerid'],
       'source' => $layer['cal_layeruser'],
       'color' => $layer['cal_color'],
       'dups' => $layer['cal_dups'],
-      'fullname' => $layerfullname );
+      'fullname' => $layerfullname];
   }
   ajax_send_object ( 'layers', $ret_layers, $sendPlainText );
 } else if ( $action == 'save' ) {
@@ -118,7 +118,7 @@ function delete_layer ( $user, $id ) {
 
   if ( ! dbi_execute ( 'DELETE FROM webcal_user_layers ' .
    ' WHERE cal_layerid = ? AND cal_login = ?',
-   array ( $id, $user ) ) ) {
+    [$id, $user] ) ) {
     $error = translate ( "Database error" ) . ": " . dbi_error();
   }
 }
@@ -139,13 +139,13 @@ function save_layer ( $user, $source, $layercolor, $dups, $id ) {
 
       dbi_execute ( 'UPDATE webcal_user_layers SET cal_layeruser = ?,
         cal_color = ?, cal_dups = ? WHERE cal_layerid = ?',
-        array ( $source, $layercolor, $dups, $layerid ) );
+        [$source, $layercolor, $dups, $layerid] );
     } else {
       // New layer entry.
       // Check for existing layer for user. Can only have one layer per user.
       $res = dbi_execute ( 'SELECT COUNT( cal_layerid ) FROM webcal_user_layers
         WHERE cal_login = ? AND cal_layeruser = ?',
-        array ( $user, $source ) );
+        [$user, $source] );
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
         if ( $row[0] > 0 )
@@ -162,7 +162,7 @@ function save_layer ( $user, $source, $layercolor, $dups, $id ) {
           $layerid = 1;
         dbi_execute ( 'INSERT INTO webcal_user_layers ( cal_layerid, cal_login,
           cal_layeruser, cal_color, cal_dups ) VALUES ( ?, ?, ?, ?, ? )',
-          array ( $layerid, $user, $source, $layercolor, $dups ) );
+          [$layerid, $user, $source, $layercolor, $dups] );
       }
     }
   }

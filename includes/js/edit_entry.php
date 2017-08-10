@@ -1,21 +1,23 @@
-<?php // $Id: edit_entry.php,v 1.91.2.1 2013/01/25 19:37:06 cknudsen Exp $
+<?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
+global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
 
- global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
- $user = $arinc[3];
+$user = $arinc[3];
+
+// Craig. This would be a good place to use the Date functions in js/chapman.js
+// These arrays are already set. And translated. Wouldn't have to redo them again.
+// There are other such places, too.
 ?>
-var bydayAr = new Array();
-var bymonthdayAr = new Array();
-var bysetposAr = new Array();
-var bydayLabels = new Array("SU","MO","TU","WE","TH","FR","SA");
-var bydayTrans = new Array( "<?php etranslate ( 'SU' ) ?>"
+var bydayAr = bymonthdayAr = bysetposAr = [];
+var bydayLabels = ["SU","MO","TU","WE","TH","FR","SA"];
+var bydayTrans = [
+  "<?php etranslate ( 'SU' ) ?>"
 , "<?php etranslate ( 'MO' ) ?>"
 , "<?php etranslate ( 'TU' ) ?>"
 , "<?php etranslate ( 'WE' ) ?>"
 , "<?php etranslate ( 'TH' ) ?>"
 , "<?php etranslate ( 'FR' ) ?>"
-, "<?php etranslate ( 'SA' ) ?>"
-);
+, "<?php etranslate ( 'SA' ) ?>"];
 // do a little form verifying
 function validate_and_submit() {
   if ( form.name.value == "" ) {
@@ -174,8 +176,9 @@ function addGroup() {
   $groups = get_groups ( $user );
   for ( $i = 0; $i < count ( $groups )  ; $i++ ) {
     echo "\n    if ( selNum == $i ) {\n";
-    $res = dbi_execute ( 'SELECT cal_login from webcal_group_user
-      WHERE cal_group_id = ?', array ( $groups[$i]['cal_group_id'] ) );
+    $res = dbi_execute ( 'SELECT cal_login
+  FROM webcal_group_user
+  WHERE cal_group_id = ?', [$groups[$i]['cal_group_id']] );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         echo "      selectByLogin ( \"$row[0]\" );\n";
@@ -351,13 +354,7 @@ function rpttype_weekly() {
 <?php //see the showTab function in includes/js/visible.php for common code shared by all pages
  //using the tabbed GUI.
 ?>
-var tabs = new Array();
-tabs[0] = "details";
-tabs[1] = "participants";
-tabs[2] = "pete";
-tabs[3] = "reminder";
-
-var sch_win;
+var sch_win, tabs = ["details","participants","pete","reminder"]
 
 // Show Availability for the first selection
 function showSchedule() {

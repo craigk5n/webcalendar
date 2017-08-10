@@ -1,4 +1,4 @@
-<?php // $Id: edit_report_handler.php,v 1.38.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 /**
  * Page Description:
  * This page will handle the form submission from edit_report.php
@@ -68,7 +68,7 @@ $adding_report = ( empty ( $report_id ) || $report_id <= 0 );
 if ( empty ( $error ) && $single_user != 'N' && !
     empty ( $report_id ) && $report_id > 0 && ! $is_admin ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_report WHERE report_id = ?',
-    array ( $report_id ) );
+    [$report_id] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] != $login )
@@ -105,11 +105,11 @@ if ( empty ( $error ) ) {
 $delete = getPostValue ( 'delete' );
 if ( empty ( $error ) && ! empty ( $report_id ) && ! empty ( $delete ) ) {
   if ( ! dbi_execute ( 'DELETE FROM webcal_report_template WHERE cal_report_id = ?',
-      array ( $report_id ) ) )
+      [$report_id] ) )
     $error = db_error();
 
   if ( empty ( $error ) && ! dbi_execute ( 'DELETE FROM webcal_report
-    WHERE cal_report_id = ?', array ( $report_id ) ) )
+  WHERE cal_report_id = ?', [$report_id] ) )
     $error = db_error();
   // Send back to main report listing page.
   if ( empty ( $error ) )
@@ -120,12 +120,12 @@ if ( empty ( $error ) ) {
   if ( empty ( $report_name ) || trim ( $report_name ) == '' )
     $report_name = translate ( 'Unnamed Report' );
 
-  $names = array ( 'cal_login', 'cal_update_date', 'cal_report_type',
+  $names = ['cal_login', 'cal_update_date', 'cal_report_type',
     'cal_report_name', 'cal_user', 'cal_include_header', 'cal_time_range',
     'cal_cat_id', 'cal_allow_nav', 'cal_include_empty', 'cal_is_global',
-    'cal_show_in_trailer' );
+    'cal_show_in_trailer'];
 
-  $values = array (
+  $values = [
     ( $updating_public ? '__public__' : $login ),
     date ( 'Ymd' ),
     'html',
@@ -137,7 +137,7 @@ if ( empty ( $error ) ) {
     ( empty ( $allow_nav ) || $allow_nav != 'Y' ? 'N' : 'Y' ),
     ( empty ( $include_empty ) || $include_empty != 'Y' ? 'N' : 'Y' ),
     ( empty ( $is_global ) || $is_global != 'Y' ? 'N' : 'Y' ),
-    ( empty ( $show_in_trailer ) || $show_in_trailer != 'Y' ? 'N' : 'Y' ) );
+    ( empty ( $show_in_trailer ) || $show_in_trailer != 'Y' ? 'N' : 'Y' )];
 
   if ( $adding_report ) {
     $newid = 1;
@@ -178,22 +178,22 @@ if ( empty ( $error ) && ! dbi_execute ( $sql, $values ) )
 if ( empty ( $error ) ) {
   if ( ! $adding_report ) {
     if ( ! dbi_execute ( 'DELETE FROM webcal_report_template
-      WHERE cal_report_id = ?', array ( $report_id ) ) )
+  WHERE cal_report_id = ?', [$report_id] ) )
       $error = db_error();
   }
   $ins_sql = 'INSERT INTO webcal_report_template
     ( cal_report_id, cal_template_type, cal_template_text ) VALUES ( ?, ?, ? )';
 
   if ( empty ( $error ) && ! dbi_execute ( $ins_sql,
-        array ( $report_id, 'D', $day_template ) ) )
+      [$report_id, 'D', $day_template] ) )
     $error = db_error();
 
   if ( empty ( $error ) && ! dbi_execute ( $ins_sql,
-        array ( $report_id, 'E', $event_template ) ) )
+      [$report_id, 'E', $event_template] ) )
     $error = db_error();
 
   if ( empty ( $error ) && ! dbi_execute ( $ins_sql,
-        array ( $report_id, 'P', $page_template ) ) )
+      [$report_id, 'P', $page_template] ) )
     $error = db_error();
 }
 

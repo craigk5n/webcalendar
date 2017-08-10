@@ -156,7 +156,7 @@ media="screen" />
 ';
 
 $byday = $bymonth = $bymonthday = $bysetpos = $participants =
-$exceptions = $inclusions = $reminder = array();
+$exceptions = $inclusions = $reminder = [];
 $byweekno = $byyearday = $catList = $catNames = $external_users = $rpt_count = '';
 
 $create_by = $login;
@@ -181,7 +181,9 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
     cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, cal_name,
     cal_description, cal_group_id, cal_location, cal_due_date, cal_due_time,
-    cal_completed, cal_url FROM webcal_entry WHERE cal_id = ?', array ( $id ) );
+    cal_completed, cal_url
+  FROM webcal_entry
+  WHERE cal_id = ?', [$id] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     // If current user is creator of event, then they can edit.
@@ -267,7 +269,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
       $res = dbi_execute ( 'SELECT cal_id, cal_type, cal_end, cal_endtime,
         cal_frequency, cal_byday, cal_bymonth, cal_bymonthday, cal_bysetpos,
         cal_byweekno, cal_byyearday, cal_wkst, cal_count
-        FROM webcal_entry_repeats WHERE cal_id = ?', array ( $id ) );
+  FROM webcal_entry_repeats
+  WHERE cal_id = ?', [$id] );
       if ( $res ) {
         if ( $row = dbi_fetch_row ( $res ) ) {
           $rpt_type = $row[1];
@@ -310,7 +313,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
     }
 
     $res = dbi_execute ( 'SELECT cal_login, cal_percent, cal_status
-      FROM webcal_entry_user WHERE cal_id = ?', array ( $id ) );
+  FROM webcal_entry_user
+  WHERE cal_id = ?', [$id] );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $overall_percent[] = $row;
@@ -329,7 +333,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
 
     // Get Repeat Exceptions.
     $res = dbi_execute ( 'SELECT cal_date, cal_exdate
-      FROM webcal_entry_repeats_not WHERE cal_id = ?', array ( $id ) );
+  FROM webcal_entry_repeats_not
+  WHERE cal_id = ?', [$id] );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[1] == 1 )
@@ -357,7 +362,7 @@ if ( ! empty ( $id ) && $id > 0 ) {
 
   // Get participants.
   $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user WHERE cal_id = ?
-    AND cal_status IN ( \'A\', \'W\' )', array ( $id ) );
+    AND cal_status IN ( "A", "W" )', [$id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;
@@ -380,14 +385,14 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $due_hour = $WORK_DAY_END_HOUR;
   $due_minute = $task_percent = 0;
   $due_time = $WORK_DAY_END_HOUR . '0000';
-  $overall_percent = array();
+  $overall_percent = [];
 
   // Get category if passed in URL as cat_id.
   $cat_id = getValue ( 'cat_id', '-?[0-9,\-]*', true );
   if ( ! empty ( $cat_id ) ) {
     $res = dbi_execute ( 'SELECT cat_name FROM webcal_categories
       WHERE cat_id = ? AND ( cat_owner = ? OR cat_owner IS NULL )',
-      array ( $cat_id, $real_user ) );
+      [$cat_id, $real_user] );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $catNames = $row[0];
@@ -518,11 +523,11 @@ if ( $is_assistant || $is_admin && ! empty ( $user ) ) {
     // translate ( 'XXX is in a different timezone (behind)' )
     // Line breaks in translates below are to bypass update_translation.pl.
     $TZ_notice = str_replace ( 'XXX',
-      array ( $tempfullname,
+      [$tempfullname,
         // TODO show hh:mm instead of abs.
         $abs_diff . ' ' . translate ( 'hour'
            . ( $abs_diff == 1 ? '' : 's' ) ),
-        translate ( 'Time entered here is based on your Timezone.' ) ),
+        translate ( 'Time entered here is based on your Timezone.' )],
       translate ( 'XXX is in a different timezone ('
          . ( $tz_diff > 0 ? 'ahead)' : 'behind)' ) ) );
   }
@@ -541,8 +546,8 @@ echo '
  . 'innerHeight=420,outerWidth=420\' );" /></h2>';
 
 if ( $can_edit ) {
-  $tabs_name = array ( 'details' );
-  $tabs_title = array ( translate ( 'Details' ) );
+  $tabs_name = ['details'];
+  $tabs_title = [translate ( 'Details' )];
   if ( $DISABLE_PARTICIPANTS_FIELD != 'Y' ) {
     $tabs_name[] = 'participants';
     $tabs_title[] = translate ( 'Participants' );
@@ -638,10 +643,10 @@ if ( $can_edit ) {
      . ':&nbsp;</label></td>
                     <td>
                       <select name="priority" id="entry_prio">';
-    $pri = array ( '',
+    $pri = ['',
       translate ( 'High' ),
       translate ( 'Medium' ),
-      translate ( 'Low' ) );
+      translate ( 'Low' )];
 
     for ( $i = 1; $i <= 9; $i++ ) {
       echo '
@@ -962,7 +967,7 @@ if ( $can_edit ) {
       echo print_radio ( $extra_name, $extra_arg1, '', $defIdx );
     elseif ( $extra_type == EXTRA_CHECKBOX )
       // Show custom checkbox option.
-      echo print_checkbox ( array ( $extra_name, $extra_arg1, '', $defIdx ) );
+      echo print_checkbox ( [$extra_name, $extra_arg1, '', $defIdx] );
 
     echo '
                 </td>

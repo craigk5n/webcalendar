@@ -1,4 +1,4 @@
-<?php // $Id: layers.php,v 1.58 2010/10/07 15:41:19 cknudsen Exp $
+<?php
 /**
  * This page handles managing a user's layers
  * and works with layer_ajax.php to make changes.
@@ -21,8 +21,8 @@ load_user_layers ( $layer_user, 1 );
 
 $layers_enabled = 0;
 $res = dbi_execute ( 'SELECT cal_value FROM webcal_user_pref
-  WHERE cal_setting = \'LAYERS_STATUS\' AND cal_login = ?',
-  array ( $layer_user ) );
+  WHERE cal_setting = "LAYERS_STATUS"
+    AND cal_login = ?', [$layer_user] );
 
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
@@ -117,7 +117,7 @@ else {
 }
 
 // Create list of users for edit layer dialog.
-$userlist = Array();
+$userlist = [];
 if ( $single_user == 'N' ) {
   $otherlist = $userlist = get_my_users ( '', 'view' );
   if ( $NONUSER_ENABLED == 'Y' ) {
@@ -191,7 +191,7 @@ if ( $single_user == 'N' ) {
 
 
 <script type="text/javascript">
-var layers = Array();
+var layers = [];
 // Set the LAYER_STATUS value in webcal_user_pref for either the current
 // user or the public user ('__public__') with an AJAX call to
 // layers_ajax.php.
@@ -236,7 +236,7 @@ function set_layer_status (enable)
 
 function load_layers()
 {
-  layers = Array();
+  layers = [];
   $('layerlist').innerHTML = '<?php echo $LOADING;?>';
   new Ajax.Request('layers_ajax.php',
   {

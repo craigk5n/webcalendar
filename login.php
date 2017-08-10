@@ -1,4 +1,4 @@
-<?php // $Id: login.php,v 1.125.2.1 2013/01/24 21:15:09 cknudsen Exp $
+<?php
 @session_start();
 foreach ( $_SESSION as $key => $value ) {
   $dummy[$key] = $value; // Copy to a dummy array.
@@ -126,8 +126,8 @@ else {
         $error = translate ( 'Invalid login', true );
 
       activity_log ( 0, 'system', '', LOG_LOGIN_FAILURE,
-        str_replace ( array ( 'XXX', 'YYY' ),
-          array ( $login, $_SERVER['REMOTE_ADDR'] ),
+        str_replace (  ['XXX', 'YYY'],
+           [$login, $_SERVER['REMOTE_ADDR']],
           translate ( 'Activity login failure' ) ) );
     }
   } else {

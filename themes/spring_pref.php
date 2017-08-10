@@ -6,7 +6,6 @@
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: spring_pref.php,v 1.5 2007/02/01 02:23:11 bbannon Exp $:
  * @package WebCalendar
  */
 
@@ -14,7 +13,7 @@
 // Any option in webcal_user_pref can be configured here.
 
 // This theme will be available to both normal users and System Settings.
-$webcal_theme = array (
+$webcal_theme = [
   'MENU_THEME'   => 'spring',
   'BGCOLOR'      => '#CCFFCC',
   'CELLBG'       => '#99FF99',
@@ -28,8 +27,7 @@ $webcal_theme = array (
   'THBG'         => '#669900',
   'THFG'         => '#000000',
   'TODAYCELLBG'  => '#FFFF66',
-  'WEEKENDBG'    => '#00CC99',
-  );
+  'WEEKENDBG'    => '#00CC99'];
 
 include 'theme_inc.php';
 

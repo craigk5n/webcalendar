@@ -9,7 +9,7 @@ echo $helpListStr . '
     <h3>' . translate ( 'Settings' ) . '</h3>
     <div class="helpbody">
       <div>';
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Allow HTML in Description' ) =>
   translate ( 'allow-html-description-help' ),
   translate ( 'Allow users to override conflicts' ) =>
@@ -68,14 +68,13 @@ $tmp_arr = array (
   translate ( 'Time format' ) => translate ( 'time-format-help' ),
   translate ( 'Time interval' ) => translate ( 'time-interval-help' ),
   translate ( 'Week starts on' ) => translate ( 'display-week-starts-on' ),
-  translate ( 'Work hours' ) => translate ( 'work-hours-help' ),
-  );
+  translate ( 'Work hours' ) => translate ( 'work-hours-help' )];
 list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Public Access' ) . '</h3>
       <div>';
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Allow public access' ) =>
   translate ( 'allow-public-access-help' ),
   translate ( 'Public access can add events' ) =>
@@ -89,33 +88,30 @@ $tmp_arr = array (
   translate ( 'Public access new events require approval' ) =>
   translate ( 'public-access-add-requires-approval-help' ),
   translate ( 'Public access visible by default' ) =>
-  translate ( 'public-access-default-visible' ),
-  );
+  translate ( 'public-access-default-visible' )];
 list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Groups' ) . '</h3>
       <div>';
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Groups enabled' ) => translate ( 'groups-enabled-help' ),
   translate ( 'User sees only his groups' ) =>
-  translate ( 'user-sees-his-group-help' ),
-  );
+  translate ( 'user-sees-his-group-help' )];
 list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Nonuser' ) . '</h3>
       <div>';
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Nonuser enabled' ) => translate ( 'nonuser-enabled-help' ),
-  translate ( 'Nonuser list' ) => translate ( 'nonuser-list-help' ),
-  );
+  translate ( 'Nonuser list' ) => translate ( 'nonuser-list-help' )];
 list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Other' ) . '</h3>
       <div>';
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Allow external users' ) =>
   translate ( 'allow-external-users-help' ),
   translate ( 'Allow remote subscriptions' ) =>
@@ -125,14 +121,13 @@ $tmp_arr = array (
   translate ( 'external-can-receive-notification-help' ),
   translate ( 'External users can receive email reminders' ) =>
   translate ( 'external-can-receive-reminder-help' ),
-  translate ( 'Reports enabled' ) => translate ( 'reports-enabled-help' ),
-  );
+  translate ( 'Reports enabled' ) => translate ( 'reports-enabled-help' )];
 list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Email' ) . '</h3>
       <div>';
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Default sender address' ) =>
   translate ( 'email-default-sender' ),
   translate ( 'Email enabled' ) => translate ( 'email-enabled-help' ),
@@ -145,20 +140,18 @@ $tmp_arr = array (
   translate ( 'Events removed from my calendar' ) =>
   translate ( 'email-event-deleted' ),
   translate ( 'Events updated on my calendar' ) =>
-  translate ( 'email-event-updated' ),
-  );
+  translate ( 'email-event-updated' )];
 list_help ( $tmp_arr );
 echo '
       </div>
       <h3>' . translate ( 'Colors' ) . '</h3>
       <div>';
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Allow user to customize colors' ) =>
   translate ( 'user-customize-color' ),
   translate ( 'Enable gradient images for background colors' ) =>
   translate ( 'enable-gradient-help' ),
-  translate ( 'Manually entering color values' ) => translate ( 'colors-help' ),
-  );
+  translate ( 'Manually entering color values' ) => translate ( 'colors-help' )];
 list_help ( $tmp_arr );
 
 echo '

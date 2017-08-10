@@ -5,7 +5,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: styles.php,v 1.9.2.1 2013/08/12 16:18:52 cknudsen Exp $
  * @package WebCalendar
  *
  *                         HOW TO READ THIS DOCUMENT
@@ -256,7 +255,7 @@ if ( $CATEGORIES_ENABLED === 'Y' ) {
   load_user_categories ();
 
   // Default color is $MYEVENTS.  Add a bogus array 'none' element for it.
-  $categories['none'] = array ( 'cat_color' => $MYEVENTS );
+  $categories['none'] = ['cat_color' => $MYEVENTS];
   foreach ( $categories as $catId => $cat ) {
     if ( $catId == 0 || $catId == -1 )
       continue;
@@ -267,7 +266,7 @@ if ( $CATEGORIES_ENABLED === 'Y' ) {
     if ( $catId < 0 )
       $catId = 0 - $catId;
 
-    $rgb = array ( 255, 255, 255 );
+    $rgb = [255, 255, 255];
 
     if ( ! empty ( $color ) ) {
       if ( preg_match ( "/#(.)(.)(.)(.)(.)(.)/", $color ) ) {

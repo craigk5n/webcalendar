@@ -1,4 +1,4 @@
-<?php // $Id: group_edit.php,v 1.34 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 $groupname = $groupowner = $groupupdated = '';
@@ -10,7 +10,8 @@ else {
   $newgroup = false;
   // Get group by id.
   $res = dbi_execute ( 'SELECT cal_owner, cal_name, cal_last_update, cal_owner
-    FROM webcal_group WHERE cal_group_id = ?', array ( $id ) );
+  FROM webcal_group
+  WHERE cal_group_id = ?', [$id] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $groupname = $row[1];
@@ -28,7 +29,7 @@ echo '
       <h2>';
 
 if ( $newgroup ) {
-  $v = array();
+  $v = [];
   echo translate ( 'Add Group' ) . '</h2>
       <input type="hidden" name="add" value="1';
 } else
@@ -68,7 +69,7 @@ if ( $NONUSER_ENABLED == 'Y' ) {
 // Get list of users for this group.
 if ( ! $newgroup ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_group_user
-    WHERE cal_group_id = ?', array ( $id ) );
+  WHERE cal_group_id = ?', [$id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $groupuser[$row[0]] = 1;

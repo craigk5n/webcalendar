@@ -1,4 +1,4 @@
-<?php // $Id: docdel.php,v 1.16 2009/11/22 16:47:44 bbannon Exp $
+<?php
 /**
  * Page Description:
  *  This page will handle deletion of an entry in webcal_blob.
@@ -47,8 +47,9 @@ else {
 
 if ( empty ( $error ) && ! $can_delete && $event_id > 0 ) {
   // See if current user is creator of associated event
-  $res = dbi_execute ( 'SELECT cal_create_by FROM webcal_entry WHERE cal_id = ?',
-    array ( $event_id ) );
+  $res = dbi_execute ( 'SELECT cal_create_by
+  FROM webcal_entry
+  WHERE cal_id = ?', [$event_id] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $event_owner = $row[0];
@@ -63,8 +64,8 @@ if ( empty ( $error ) && ! $can_delete )
   $error = print_not_auth();
 
 if ( empty ( $error ) && $can_delete ) {
-  if ( ! dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_blob_id = ?',
-      array ( $blid ) ) )
+  if ( ! dbi_execute ( 'DELETE FROM webcal_blob
+  WHERE cal_blob_id = ?', [$blid] ) )
     $error = db_error();
   else {
     if ( $event_id > 0 ) {

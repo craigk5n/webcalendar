@@ -1,4 +1,4 @@
-<?php // $Id: rss_unapproved.php,v 1.8 2010/10/05 17:16:59 cknudsen Exp $
+<?php
 /**
  * Description:
  *  Generates RSS 2.0 output of unapproved events for a user.
@@ -168,7 +168,7 @@ function list_unapproved ( $user ) {
     FROM webcal_entry we, webcal_entry_user weu
     WHERE we.cal_id = weu.cal_id AND weu.cal_login = ? AND weu.cal_status = \'W\'
     ORDER BY weu.cal_login, we.cal_date';
-  $rows = dbi_get_cached_rows ( $sql, array ( $user ) );
+  $rows = dbi_get_cached_rows ( $sql, [$user] );
   if ( $rows ) {
     $allDayStr = translate ( 'All day event' );
     $appConStr = translate ( 'Approve/Confirm' );

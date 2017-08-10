@@ -1,4 +1,4 @@
-<?php // $Id: site_extras.php,v 1.25 2009/11/22 16:47:46 bbannon Exp $
+<?php
 /**
  * Page Description:
  *  This file can be used to define extra information associated with a
@@ -71,70 +71,69 @@ define ( 'EXTRA_DISPLAY_ALL', 511 );
    You want to add an URL, a reminder, an email address, an event contact
    (from list of calendar users), and some driving directions.
 
- $site_extras = array (
-   'FIELDSET',     // Special case to display Fieldset in edit_entry.php
-                   // If used, it must the first entry in $site_extras array
-   array (
-     "URL",        // unique name of this extra field (used in db)
-     "Event URL",  // how this field will be described to users
-     EXTRA_URL,    // type of field
-     '_blank',     // href target of URL ( '', '_blank', '_top, etc )
-     0,             // arg 2
-     EXTRA_DISPLAY_ALL //Display in all places
-   ),
-   array (
-     "Email",         // unique name of this extra field (used in db)
-     "Event Email",   // how this field will be described to users
-     EXTRA_EMAIL,     // type of field
-     0,               // arg 1 (unused)
-     0,                // arg 2 (unused)
-     EXTRA_DISPLAY_ALL //Display in all places
-   ),
-   array (
-     "Contact",       // unique name of this extra field (used in db)
-     "Event Contact", // how this field will be described to users
-     EXTRA_USER,      // type of field
-     0,               // arg 1 (unused)
-     0,                // arg 2 (unused)
-     EXTRA_DISPLAY_ALL //Display in all places
-   ),
-   array (
-     "Directions",         // unique name of this extra field (used in db)
-     "Driving Directions", // how this field will be described to users
-     EXTRA_MULTILINETEXT,  // type of field
-     50,                   // width of text entry
-     8,                    // height of text entry
-     EXTRA_DISPLAY_ALL   //Display in all places
-
-   ),
-   array (
-     "UserDepartment", // unique name of this extra field (used in db)
-     "Department",     // how this field will be described to users
-     EXTRA_RADIO,      // type of field
-                       // List of options val->disp pair required for each option
-     array( 'HR'=>'Human Resources', 'PR'=>'Purchasing', 'IT'=>'IT Services' ),
-     'IT',             // default item
-     EXTRA_DISPLAY_VIEW //Display in view_entry only
-   ),
-   array (
-     "RoomLocation",    // unique name of this extra field (used in db)
-     "Location",        // how this field will be described to users
-     EXTRA_SELECTLIST,  // type of field
-                        // List of options (first will be default)
-     array ( "None", "Room 101", "Room 102", "Conf Room 8", "Conf Room 12" ),
-     12,                // 0=single  >1=multiple && also the maximum size
-                        // <select name="RoomLocation" multiple="multiple" size="12">
-     EXTRA_DISPLAY_ALL //Display in all places
-   ),
-   array (
-     "NeedLunch",       // unique name of this extra field (used in db)
-     "Lunch",           // how this field will be described to users
-     EXTRA_CHECKBOX,    // type of field
-     'Y',               // Value of checkbox
-     'Y',               // default state (set to above value to check )
-     EXTRA_DISPLAY_POPUP | EXTRA_DISPLAY_VIEW //Display in Popups and View
-   )
- );
+$site_extras = [
+  'FIELDSET',     // Special case to display Fieldset in edit_entry.php
+                  // If used, it must the first entry in $site_extras array
+  [
+    "URL",        // unique name of this extra field (used in db)
+    "Event URL",  // how this field will be described to users
+    EXTRA_URL,    // type of field
+    '_blank',     // href target of URL ( '', '_blank', '_top, etc )
+    0,            // arg 2
+    EXTRA_DISPLAY_ALL //Display in all places
+  ],
+  [
+    "Email",         // unique name of this extra field (used in db)
+    "Event Email",   // how this field will be described to users
+    EXTRA_EMAIL,     // type of field
+    0,               // arg 1 (unused)
+    0,               // arg 2 (unused)
+    EXTRA_DISPLAY_ALL //Display in all places
+  ],
+  [
+    "Contact",       // unique name of this extra field (used in db)
+    "Event Contact", // how this field will be described to users
+    EXTRA_USER,      // type of field
+    0,               // arg 1 (unused)
+    0,               // arg 2 (unused)
+    EXTRA_DISPLAY_ALL //Display in all places
+  ],
+  [
+    "Directions",        // unique name of this extra field (used in db)
+    "Driving Directions",// how this field will be described to users
+    EXTRA_MULTILINETEXT, // type of field
+    50,                  // width of text entry
+    8,                   // height of text entry
+    EXTRA_DISPLAY_ALL    //Display in all places
+  ],
+  [
+    "UserDepartment", // unique name of this extra field (used in db)
+    "Department",     // how this field will be described to users
+    EXTRA_RADIO,      // type of field
+                      // List of options val->disp pair required for each option
+    ['HR'=>'Human Resources', 'PR'=>'Purchasing', 'IT'=>'IT Services'],
+    'IT',             // default item
+    EXTRA_DISPLAY_VIEW //Display in view_entry only
+  ],
+  [
+    "RoomLocation",    // unique name of this extra field (used in db)
+    "Location",        // how this field will be described to users
+    EXTRA_SELECTLIST,  // type of field
+                       // List of options (first will be default)
+    ["None", "Room 101", "Room 102", "Conf Room 8", "Conf Room 12"],
+    12,                // 0=single  >1=multiple && also the maximum size
+                       // <select name="RoomLocation" multiple="multiple" size="12">
+    EXTRA_DISPLAY_ALL  //Display in all places
+  ],
+  [
+    "NeedLunch",       // unique name of this extra field (used in db)
+    "Lunch",           // how this field will be described to users
+    EXTRA_CHECKBOX,    // type of field
+    'Y',               // Value of checkbox
+    'Y',               // default state (set to above value to check )
+    EXTRA_DISPLAY_POPUP | EXTRA_DISPLAY_VIEW //Display in Popups and View
+  ]
+];
 
  END EXAMPLES
 
@@ -145,7 +144,7 @@ define ( 'EXTRA_DISPLAY_ALL', 511 );
  you need to translate to another language.
  Use tools/check_translation.pl to verify you have all your translations.
 */
-$site_extras = array (
-);
+$site_extras = [
+];
 
 ?>

@@ -1,4 +1,4 @@
-<?php // $Id: users.php,v 1.55.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 /**
  * NOTE:
  * There are THREE components that make up the functionality of users.php.
@@ -43,7 +43,9 @@ $BodyX = 'onload="showTab(\''. $currenttab . '\');"';
 print_header ( array ( 'js/visible.php', 'js/users.php/true' ), '',
   $BodyX, '', '', true );
 
-$taborder = array ( 'tabfor', 'tabbak','tabbak','tabbak','tabbak');
+// Craig. Much more efficient to style the default then just change 'tabfor'.
+// No need for 'tabbak'.
+$taborder = ['tabfor', 'tabbak','tabbak','tabbak','tabbak'];
 $i=0;
 
 echo display_admin_link() . '

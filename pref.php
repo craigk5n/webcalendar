@@ -33,13 +33,13 @@ function save_pref( $prefs, $src) {
         $my_theme = strtolower ( $value );
       $sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
         'AND cal_setting = ?';
-      dbi_execute ( $sql, array ( $prefuser, $setting ) );
+      dbi_execute ( $sql, [$prefuser, $setting] );
       if ( strlen ( $value ) > 0 ) {
       $setting = strtoupper ( $setting );
         $sql = 'INSERT INTO webcal_user_pref ' .
           '( cal_login, cal_setting, cal_value ) VALUES ' .
           '( ?, ?, ? )';
-        if ( ! dbi_execute ( $sql, array ( $prefuser, $setting, $value ) ) ) {
+        if ( ! dbi_execute ( $sql, [$prefuser, $setting, $value] ) ) {
           $error = 'Unable to update preference: ' . dbi_error() .
    '<br /><br /><span class="bold colon">SQL</span>' . $sql;
           break;
@@ -68,7 +68,7 @@ if ( $is_admin && ! empty ( $public ) && $PUBLIC_ACCESS == 'Y' ) {
 }
 
 //get list of theme files from /themes directory
-$themes = array();
+$themes = [];
 $dir = 'themes/';
 if (is_dir ($dir)) {
    if ($dh = opendir ($dir)) {
@@ -118,7 +118,7 @@ if ($user != $login)
 load_user_categories();
 // Reload preferences into $prefarray[].
 // Get system settings first.
-$prefarray = array();
+$prefarray = [];
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config ' );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
@@ -128,7 +128,7 @@ if ( $res ) {
 }
 //get user settings
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_user_pref
-  WHERE cal_login = ?', array ( $prefuser ) );
+  WHERE cal_login = ?', [$prefuser] );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $prefarray[$row[0]] = $row[1];
@@ -144,7 +144,7 @@ $translation_loaded = false;
 include 'includes/date_formats.php';
 
 //get list of menu themes
-$menuthemes = array();
+$menuthemes = [];
 $dir = 'includes/menu/themes/';
 if ( is_dir ( $dir ) ) {
    if ( $dh = opendir ( $dir ) ) {
@@ -376,7 +376,7 @@ if ( $ALLOW_COLOR_CUSTOMIZATION == 'Y' ) { ?>
 <tr><td class="tooltip colon" title="<?php etooltip ( 'time-format-help' )?>">
  <?php etranslate ( 'Time format' )?></td><td>
  <?php echo print_radio ( 'TIME_FORMAT',
-   array ( '12'=>translate ( '12 hour' ), '24'=>translate ( '24 hour' ) ) ) ?>
+    ['12'=>translate ( '12 hour' ), '24'=>translate ( '24 hour' )] ) ?>
 </td></tr>
 <tr><td class="tooltip colon" title="<?php etooltip ( 'display-week-starts-on' )?>">
  <?php etranslate ( 'Week starts on' )?></td><td>
@@ -440,8 +440,7 @@ etranslate ( 'Preferred view' )?></td><td>
 if ( $prefarray['STARTVIEW'] == 'month' || $prefarray['STARTVIEW'] == 'day' ||
   $prefarray['STARTVIEW'] == 'week' || $prefarray['STARTVIEW'] == 'year' )
   $prefarray['STARTVIEW'] .= '.php';
-$choices = array();
-$choices_text = array();
+$choices = $choices_text = [];
 if ( access_can_access_function ( ACCESS_DAY, $user ) ) {
   $choices[] = 'day.php';
   $choices_text[] = translate ( 'Day' );
@@ -545,7 +544,7 @@ for ( $i = 0, $cnt = count ( $views ); $i < $cnt; $i++ ) {
 <tr><td class="tooltip colon" title="<?php etooltip ( 'timed-evt-len-help' );?>">
  <?php etranslate ( 'Specify timed event length by' )?></td><td>
  <?php echo print_radio ( 'TIMED_EVT_LEN',
-   array ( 'D'=>translate ( 'Duration' ), 'E'=>translate ( 'End Time' ) ) ) ?>
+    ['D'=>translate ( 'Duration' ), 'E'=>translate ( 'End Time' )] ) ?>
 </td></tr>
 
 <?php if ( ! empty ( $categories ) ) { ?>
@@ -677,7 +676,7 @@ if ( $SEND_EMAIL == 'Y' ) { ?>
 <tr><td class="tooltip colon" title="<?php etooltip('email-format');?>">
  <?php etranslate ( 'Email format preference' )?></td><td>
  <?php echo print_radio ( 'EMAIL_HTML',
-   array ( 'Y'=> translate ( 'HTML' ), 'N'=>translate ( 'Plain Text' ) ) ) ?>
+    ['Y'=> translate ( 'HTML' ), 'N'=>translate ( 'Plain Text' )] ) ?>
 </td></tr>
 
 <tr><td class="tooltip colon" title="<?php etooltip('email-include-ics');?>">

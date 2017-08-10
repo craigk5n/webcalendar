@@ -1,5 +1,5 @@
 #!/usr/local/bin/php -q
-<?php // $Id: reload_remotes.php,v 1.16 2010/03/06 16:57:00 bbannon Exp $
+<?php
 /**
  * Description:
  * This is a command-line script that will reload all user's remote calendars.
@@ -87,7 +87,7 @@ if ( $REMOTES_ENABLED == 'Y' ) {
   $cnt = 0;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $data = array();
+      $data = [];
       $cnt++;
       $calUser = $row[0];
       $cal_url = $row[1];
@@ -148,10 +148,10 @@ function delete_events ( $nid ) {
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
-  $delete_em = array();
+  $delete_em = [];
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-      WHERE cal_id = ?', array ( $events[$i] ) );
+  WHERE cal_id = ?', [$events[$i]] );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
@@ -163,27 +163,27 @@ function delete_events ( $nid ) {
   // Now delete events that were just for this user
   for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id =? ',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
   }
   // Delete user participation from events
   dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
-    array ( $nid ) );
+    [$nid] );
 }
 
 ?>

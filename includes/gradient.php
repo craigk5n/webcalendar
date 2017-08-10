@@ -1,4 +1,4 @@
-<?php // $Id: gradient.php,v 1.28 2009/11/22 16:47:46 bbannon Exp $
+<?php
 /**
  * Description:
  *  Generate a gradient image for use as a background image.
@@ -62,15 +62,14 @@ if ( file_exists ( 'formvars.php' ) )
 $MIN_COLORS = 4;
 $MAX_COLORS = 256;
 $MAX_HEIGHT = $MAX_WIDTH = 600;
-$DEFAULTS = array (
+$DEFAULTS = [
   'color1' => 'ccc',
   'color2' => 'eee',
   'colors' => 32,
   'direction' => 90,
   'height' => 50,
   'percent' => 15,
-  'width' => 50,
-  );
+  'width' => 50];
 
 if ( empty ( $PHP_SELF ) && ! empty ( $_SERVER ) && !
     empty ( $_SERVER['PHP_SELF'] ) )
@@ -109,7 +108,7 @@ if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
  *  $color - HTML color specification in 'RRGGBB' or 'RGB' format
  *
  * Return value:
- *  array ('red' => $red_val, 'green' => $green_val, 'blue' => $blue_val)
+ *   ['red' => $red_val, 'green' => $green_val, 'blue' => $blue_val]
  */
 function colorToRGB ( $color ) {
   if ( strlen ( $color ) == 6 ) {
@@ -129,7 +128,7 @@ function colorToRGB ( $color ) {
     // Invalid color specification
     return false;
 
-  return array ( 'red' => $red, 'green' => $green, 'blue' => $blue );
+  return ['red' => $red, 'green' => $green, 'blue' => $blue];
 }
 /**
  * can_write_to_dir (needs description)
@@ -264,7 +263,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
 
   $image = imagecreate ( $width, $height );
   // Allocate array of colors
-  $colors = array();
+  $colors = [];
 
   $deltared = $color2['red'] - $color1['red'];
   $deltagreen = $color2['green'] - $color1['green'];
@@ -398,7 +397,7 @@ function  rgb2hsl ( $rgb ) {
      if ( $H < 0 ) $H += 1;
      if ( $H > 1 ) $H -= 1;
   }
-  return array ( $H, $S, $L);
+  return [$H, $S, $L];
 }
 
 function hsl2rgb( $hsl ) {
@@ -444,7 +443,7 @@ function Hue_2_RGB( $v1, $v2, $vH ) {
  * scale range = 0 to 9
  */
 function rgb_luminance ( $rgb, $scale=5) {
-  $luminance = array( .44, .50, .56, .62, .68, .74, .80, .86, .92, .98 );
+  $luminance = [.44, .50, .56, .62, .68, .74, .80, .86, .92, .98];
   if ( $scale < 0 ) $scale = 0;
   if ( $scale > 9 ) $scale = 9;
   $new = rgb2hsl ( $rgb );

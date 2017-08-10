@@ -6,7 +6,6 @@
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: default_admin.php,v 1.6 2007/07/12 19:29:17 bbannon Exp $:
  * @package WebCalendar
  */
 // Define your stuff here...
@@ -14,7 +13,11 @@
 // This theme will reset the System Settings to the default values from the
 // installation script. This will not affect colors or options that users have
 // already saved under preferences.
-$webcal_theme = array (
+
+// Craig. If the above comment is true,
+// why not just include 'install/default_config.php' here?
+// Then we wouldn't need to keep both places up to date.
+$webcal_theme = [
   'ADD_LINK_IN_VIEWS'                => 'N',
   'ALLOW_ATTACH'                     => 'N',
   'ALLOW_ATTACH_ANY'                 => 'N',
@@ -129,8 +132,7 @@ $webcal_theme = array (
   'WEEK_START'                       => '0',
   'WEEKENDBG'                        => '#D0D0D0',
   'WORK_DAY_END_HOUR'                => '17',
-  'WORK_DAY_START_HOUR'              => '8',
-  );
+  'WORK_DAY_START_HOUR'              => '8];
 
 include 'theme_inc.php';
 

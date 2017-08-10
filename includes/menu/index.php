@@ -1,6 +1,5 @@
 <?php
-/* $Id: index.php,v 1.60.2.15 2008/04/23 20:22:55 umcesrjones Exp $
- *
+/*
  * This menu was created using some fantastic free tools out on the internet:
  *  - Most icons by everaldo at http://en.crystalxp.net/ (with his permission )
  *  - Javascript & CSS by JSCookMenu at http://www.cs.ucla.edu/~heng/JSCookMenu/
@@ -135,7 +134,7 @@ $showHelp = ( access_is_enabled ()
 $view_cnt = count ( $views );
 
 if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER != 'N' ) && $view_cnt > 0 ) {
-  $views_link = array ();
+  $views_link = [];
   for ( $i = 0; $i < $view_cnt; $i++ ) {
     $tmp['name'] = htmlspecialchars ( $views[$i]['cal_name'], ENT_QUOTES );
     $tmp['url'] = str_replace ( '&amp;', '&', $views[$i]['url'] )
@@ -149,12 +148,12 @@ if ( ( access_can_access_function ( ACCESS_VIEW, $user ) && $ALLOW_VIEW_OTHER !=
 $reports_linkcnt = 0;
 if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
     access_can_access_function ( ACCESS_REPORT, $user ) ) {
-  $reports_link = array ();
+  $reports_link = [];
   $u_url = ( ! empty ( $user ) && $user != $login ? '&user=' . $user : '' );
   $rows = dbi_get_cached_rows ( 'SELECT cal_report_name, cal_report_id
     FROM webcal_report WHERE cal_login = ? OR ( cal_is_global = \'Y\'
     AND cal_show_in_trailer = \'Y\' ) ORDER BY cal_report_id',
-    array ( $login ) );
+    [$login] );
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
@@ -207,15 +206,14 @@ if ( $have_boss_url && ( $has_boss || ! empty ( $admincals[0] ) ||
     $grouplist = array_merge ( $admincals, $grouplist );
 
   if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
-    $public = array (
+    $public = [
       'cal_login' => '__public__',
-      'cal_fullname' => translate ( 'Public Access' )
-      );
+      'cal_fullname' => translate ( 'Public Access' )];
     array_unshift ( $grouplist, $public );
   }
-  $groups = array();
+  $groups = [];
   $grouplistcnt = count ( $grouplist );
-  $gdone = array();
+  $gdone = [];
   for ( $i = 0; $i < $grouplistcnt; $i++ ) {
     $l = $grouplist[$i]['cal_login'];
     $f = $grouplist[$i]['cal_fullname'];

@@ -1,5 +1,5 @@
 #!/usr/local/bin/php -q
-<?php // $Id: convert_passwords.php,v 1.12 2009/11/22 16:47:47 bbannon Exp $
+<?php
 /**
  * This script will alter the webcal_user table to allow 32 character passwords
  * and convert user passwords to PHP md5 passwords.
@@ -79,7 +79,7 @@ $res = dbi_execute ( $sql );
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
     $sql2 = "UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?";
-    $res2 = dbi_execute ( $sql2, array ( md5 ( $row[1] ), $row[0] ) );
+    $res2 = dbi_execute ( $sql2, [md5 ( $row[1] ), $row[0]] );
     if ($res2)
       echo "Password updated for: ".$row[0]."<br />\n";
   }

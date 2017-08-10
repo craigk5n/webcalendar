@@ -1,4 +1,4 @@
-<?php // $Id: admin.php,v 1.198.2.1 2012/02/28 15:43:09 cknudsen Exp $
+<?php
 include_once 'includes/init.php';
 require_valid_referring_url ();
 include_once 'includes/date_formats.php';
@@ -44,13 +44,15 @@ function save_pref ( $prefs, $src ) {
 
       $setting = strtoupper ( $setting );
       $sql = 'DELETE FROM webcal_config WHERE cal_setting = ?';
-      if ( ! dbi_execute ( $sql, array ( $setting ) ) ) {
+
+      if ( ! dbi_execute ( $sql, [$setting] ) ) {
         $error = db_error ( false, $sql );
         break;
       }
       if ( strlen ( $value ) > 0 ) {
         $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
-        if ( ! dbi_execute ( $sql, array ( $setting, $value ) ) ) {
+
+        if ( ! dbi_execute ( $sql, [$setting, $value] ) ) {
           $error = db_error ( false, $sql );
           break;
         }
@@ -213,9 +215,9 @@ if ( ! $error ) {
    . "...\" onclick=\"window.open( 'edit_template.php?type=%s','cal_template','"
    . 'dependent,menubar,scrollbars,height=500,width=500,outerHeight=520,'
    . 'outerWidth=520\' );" name="" />';
-  $choices = array ( 'day.php', 'week.php', 'month.php', 'year.php' );
-  $choices_text = array ( translate ( 'Day' ), translate ( 'Week' ),
-    translate ( 'Month' ), translate ( 'Year' ) );
+  $choices = ['day.php', 'week.php', 'month.php', 'year.php'];
+  $choices_text = [translate ( 'Day' ), translate ( 'Week' ),
+    translate ( 'Month' ), translate ( 'Year' )];
 
   $bottomStr = translate ( 'Bottom' );
   $topStr = translate ( 'Top' );
@@ -233,7 +235,7 @@ if ( ! $error ) {
   $work_hr_end = $work_hr_start = '';
 
   // This should be easier to add more tabs if needed.
-  $tabs_ar = array (
+  $tabs_ar = [
     'settings', translate ( 'Settings' ),
     'public', translate ( 'Public Access' ),
     'uac', translate ( 'User Access Control' ),
@@ -241,8 +243,7 @@ if ( ! $error ) {
     'nonuser', translate ( 'NonUser Calendars' ),
     'other', translate ( 'Other' ),
     'email', translate ( 'Email' ),
-    'colors', translate ( 'Colors' )
-    );
+    'colors', translate ( 'Colors' )];
   for ( $i = 0, $cnt = count ( $tabs_ar ); $i < $cnt; $i++ ) {
     $tabs .= '
         <span class="tab' . ( $i > 0 ? 'bak' : 'for' ) . '" id="tab_'
@@ -317,7 +318,7 @@ if ( ! $error ) {
      . ( $s['MENU_THEME'] == $menutheme ? $selected : '' )
      . '>' . $menutheme . '</option>';
   }
-  foreach ( array ( // Document color choices.
+  foreach ( [ // Document color choices.
       'BGCOLOR' => translate ( 'Document background' ),
       'H2COLOR' => translate ( 'Document title' ),
       'TEXTCOLOR' => translate ( 'Document text' ),
@@ -332,8 +333,7 @@ if ( ! $error ) {
       'OTHERMONTHBG' => translate ( 'Table cell background for other month' ),
       'WEEKNUMBER' => translate ( 'Week number color' ),
       'POPUP_BG' => translate ( 'Event popup background' ),
-      'POPUP_FG' => translate ( 'Event popup text' )
-      ) as $k => $v ) {
+      'POPUP_FG' => translate ( 'Event popup text' )] as $k => $v ) {
     $color_sets .= admin_print_color_input_html ( $k, $v );
   }
 
@@ -468,12 +468,12 @@ if ( ! $error ) {
               </select></p>
             <p><label title="' . tooltip ( 'time-format-help' ) . '">'
    . translate ( 'Time format' ) . ':</label>' . print_radio ( 'TIME_FORMAT',
-    array ( '12' => translate ( '12 hour' ), '24' => translate ( '24 hour' ) ) )
+    ['12' => translate ( '12 hour' ), '24' => translate ( '24 hour' )] )
    . '</p>
             <p><label title="' . tooltip ( 'timed-evt-len-help' ) . '">'
    . translate ( 'Specify timed event length by' ) . ':</label>'
    . print_radio ( 'TIMED_EVT_LEN',
-    array ( 'D' => translate ( 'Duration' ), 'E' => translate ( 'End Time' ) ) )
+    ['D' => translate ( 'Duration' ), 'E' => translate ( 'End Time' )] )
    . '</p>
             <p><label for="admin_WORK_DAY_START_HOUR" title="'
    . tooltip ( 'work-hours-help' ) . '">' . translate ( 'Work hours' )
@@ -496,7 +496,7 @@ if ( ! $error ) {
             <p><label>' . translate ( 'Allow top menu' ) . ':</label>'
    . print_radio ( 'MENU_ENABLED' ) . '</p>
             <p><label>' . translate ( 'Date Selectors position' ) . ':</label>'
-   . print_radio ( 'MENU_DATE_TOP', array ( 'Y' => $topStr, 'N' => $bottomStr ) )
+   . print_radio ( 'MENU_DATE_TOP', ['Y' => $topStr, 'N' => $bottomStr] )
    . '</p>
             <p><label for="admin_MENU_THEME" title="'
    . tooltip ( 'menu-themes-help' ) . '">' . translate ( 'Menu theme' )
@@ -558,7 +558,7 @@ if ( ! $error ) {
    . translate ( 'Check for event conflicts' ) . ':</label>'
   /* This control is logically reversed. */
    . print_radio ( 'ALLOW_CONFLICTS',
-    array ( 'N' => translate ( 'Yes' ), 'Y' => translate ( 'No' ) ) ) . '</p>
+    ['N' => translate ( 'Yes' ), 'Y' => translate ( 'No' )] ) . '</p>
             <p><label title="' . tooltip ( 'conflict-months-help' ) . '">'
    . translate ( 'Conflict checking months' ) . ':</label>
               <input type="text" size="3" '
@@ -700,7 +700,7 @@ if ( ! $error ) {
    . print_radio ( 'NONUSER_ENABLED' ) . '</p>
           <p><label title="' . tooltip ( 'nonuser-list-help' ) . '">'
    . translate ( 'Nonuser list' ) . ':</label>'
-   . print_radio ( 'NONUSER_AT_TOP', array ( 'Y' => $topStr, 'N' => $bottomStr ) )
+   . print_radio ( 'NONUSER_AT_TOP', ['Y' => $topStr, 'N' => $bottomStr] )
    . '</p>
         </div>
 
@@ -804,16 +804,16 @@ if ( ! $error ) {
    . print_radio ( 'ALLOW_ATTACH', '', 'attach_handler' )
     . '</p><p id="at1" style="margin-left:25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add attachments if enabled.' )
-   . '<br />' . print_checkbox ( array ( 'ALLOW_ATTACH_PART', 'Y', $partyStr ) )
-   . print_checkbox ( array ( 'ALLOW_ATTACH_ANY', 'Y', $anyoneStr ) )
+   . '<br />' . print_checkbox ( ['ALLOW_ATTACH_PART', 'Y', $partyStr] )
+   . print_checkbox ( ['ALLOW_ATTACH_ANY', 'Y', $anyoneStr] )
    . '</p><br /><p><label title="'
    . tooltip ( 'allow-comments-help' ) . '">'
    . translate ( 'Allow comments to events' ) . ':</label>'
    . print_radio ( 'ALLOW_COMMENTS', '', 'comment_handler' )
    . '</p><p id="com1" style="margin-left:25%"><strong>Note: </strong>'
    . translate ( 'Admin and owner can always add comments if enabled.' )
-   . '<br />' . print_checkbox ( array ( 'ALLOW_COMMENTS_PART', 'Y', $partyStr ) )
-   . print_checkbox ( array ( 'ALLOW_COMMENTS_ANY', 'Y', $anyoneStr ) )
+   . '<br />' . print_checkbox ( ['ALLOW_COMMENTS_PART', 'Y', $partyStr] )
+   . print_checkbox ( ['ALLOW_COMMENTS_ANY', 'Y', $anyoneStr] )
    . '</p><br /></div></div>
 
 <!-- BEGIN EMAIL -->
@@ -863,8 +863,7 @@ if ( ! $error ) {
    . '<p><label title="' . tooltip ( 'email-format' ) . '">'
    . translate ( 'Email format preference' ) . ':</label>'
    . print_radio ( 'EMAIL_HTML',
-     array ( 'Y'=> translate ( 'HTML' ),
-             'N'=>translate( 'Plain Text' ) ) ) . '</p>'
+    ['Y'=> translate ( 'HTML' ), 'N'=>translate( 'Plain Text' )] ) . '</p>'
    . '<p><label title="' . tooltip ( 'email-include-ics' ) . '">'
    . translate ( 'Include iCalendar attachments' ) . ':</label>'
    . print_radio( 'EMAIL_ATTACH_ICS' ) . '</p>'

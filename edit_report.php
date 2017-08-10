@@ -11,7 +11,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: edit_report.php,v 1.65.2.1 2013/01/24 21:15:09 cknudsen Exp $
  * @package WebCalendar
  * @subpackage Reports
  */
@@ -49,7 +48,7 @@ if ( empty ( $report_id ) ) {
 }
 
 // Set date range options.
-$ranges = array (
+$ranges = [
   '0' => translate ( 'Tomorrow' ),
   '1' => translate ( 'Today' ),
   '2' => translate ( 'Yesterday' ),
@@ -75,8 +74,7 @@ $ranges = array (
   '52' => translate ( 'Next 60 days' ),
   '53' => translate ( 'Next 90 days' ),
   '54' => translate ( 'Next 180 days' ),
-  '55' => translate ( 'Next 365 days' ),
-  );
+  '55' => translate ( 'Next 365 days' )];
 
 // Get list of users visible to the current user.
 if ( empty ( $error ) && $show_participants ) {
@@ -104,13 +102,13 @@ ${description}</dd>
 $page_template = '<dl>${days}</dl>';
 
 // Setup option arrays.
-$day_options = array ( 'events', 'date', 'fulldate', 'report_id' );
+$day_options = ['events', 'date', 'fulldate', 'report_id'];
 
-$event_options = array ( 'name', 'description', 'date', 'fulldate', 'time',
+$event_options = ['name', 'description', 'date', 'fulldate', 'time',
   'starttime', 'endtime', 'duration', 'location', 'url', 'priority', 'href',
-  'user', 'fullname', 'report_id' );
+  'user', 'fullname', 'report_id'];
 
-$page_options = array ( 'days', 'report_id' );
+$page_options = ['days', 'report_id'];
 
 /**
  * Generate clickable option lists.
@@ -127,7 +125,7 @@ if ( empty ( $error ) && $report_id >= 0 ) {
     cal_report_type, cal_include_header, cal_report_name, cal_time_range,
     cal_user, cal_allow_nav, cal_cat_id, cal_include_empty, cal_show_in_trailer,
     cal_update_date FROM webcal_report WHERE cal_report_id = ?',
-    array ( $report_id ) );
+    [$report_id] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $i = 0;
@@ -171,7 +169,8 @@ if ( empty ( $error ) && $report_id >= 0 ) {
     $error = db_error();
 
   $res = dbi_execute ( 'SELECT cal_template_type, cal_template_text
-    FROM webcal_report_template WHERE cal_report_id = ?', array ( $report_id ) );
+  FROM webcal_report_template
+  WHERE cal_report_id = ?', [$report_id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] == 'D' )
