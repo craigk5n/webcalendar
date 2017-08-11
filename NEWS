@@ -6,7 +6,7 @@ list (that includes specific bugs fixed, please look at ChangeLog).
 
 ---------------------------------------------------------------------------
 
-Version 1.2.8 (?? ??? 2017)
+Version 1.2.8 (11 Aug 2017)
  - Cross-site scripting (XSS) fixes.
  - Updates to supper PHP7.  PHP 5.3 is now minimum PHP version required.
  - Added missing code for mysqli support.

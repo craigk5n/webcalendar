@@ -1,4 +1,8 @@
-Version 1.2.8 (?? Jul 2017)
+Version 1.2.8 (11 Aug 2017)
+ - Cross-site scripting (XSS) fixes.
+ - Updates to supper PHP7.  PHP 5.3 is now minimum PHP version required.
+ - Added missing code for mysqli support.
+ - Gracefully handle if the function ob_gzhandler is not available.
 
 Version 1.2.7 (22 Feb 2013)
  - Security fix: Do not show the reason for a failed login (i.e. "no such user")
