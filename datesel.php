@@ -92,7 +92,7 @@ echo <<<EOT
               {$mdays}
 
   <!--We'll leave this javascript here to speed things up. -->
-  <script type="text/javascript">
+  <script>
   <!-- <![CDATA[
   function sendDate ( date ) {
     year = date.substring ( 0, 4 );

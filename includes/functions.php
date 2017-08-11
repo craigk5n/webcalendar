@@ -5002,7 +5002,7 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
  */
 function print_success ( $saved ) {
   return ( $saved ? '
-    <script type="text/javascript">
+    <script>
 <!-- <![CDATA[
       alert ( \'' . translate ( 'Changes successfully saved', true ) . '\' );
 //]]> -->

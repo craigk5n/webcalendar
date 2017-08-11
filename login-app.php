@@ -45,7 +45,7 @@ $appStr = generate_application_name();
 $login_return_path = $SERVER_URL . $return_path;
 
 echo send_doctype ( $appStr ) . ( ! $logout ? '
-    <script type="text/javascript">
+    <script>
 
     // Error check login/password.
       function valid_form ( form ) {
@@ -63,8 +63,8 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
         alert ( \'' . $error . '\' );' ) . '
       }
     </script>' : '' ) . '
-    <link type="text/css" href="css_cacher.php?login=__public__" rel="stylesheet" />
-    <link type="text/css" href="includes/css/styles.css" rel="stylesheet" />'
+    <link href="css_cacher.php?login=__public__" rel="stylesheet" />
+    <link href="includes/css/styles.css" rel="stylesheet" />'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'

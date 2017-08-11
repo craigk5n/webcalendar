@@ -31,7 +31,7 @@ $groups = get_groups( $user );
 print_header( '', '', '', true, false, true );
 
 echo '
-    <script type="text/javascript">';
+    <script>';
 
 include 'includes/js/usersel.php';
 
