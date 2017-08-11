@@ -63,49 +63,6 @@ function save_pref ( $prefs, $src ) {
   load_global_settings();
   load_user_preferences();
 }
-
-/**
- * Generates HTML for color chooser options in admin pages.
- *
- * NOTE: This will be merged back into function print_color_input_html
- *       in includes/function.php when I remove the tables from pref.php.
- *
- * @param string $varname  the name of the variable to display
- * @param string $title    color description
- * @param string $varval   the default value to display
- *
- * @return string  HTML for the color selector.
- */
-function admin_print_color_input_html ( $varname, $title, $varval = '' ) {
-  global $prefarray, $s, $SCRIPT;
-  static $select;
-
-  $name = '';
-  $setting = $varval;
-
-  if ( empty ( $select ) )
-    $select = translate ( 'Select' ) . '...';
-
-  if ( $SCRIPT == 'admin.php' ) {
-    $name = 'admin_';
-    $setting = $s[$varname];
-  } elseif ( $SCRIPT == 'pref.php' ) {
-    $name = 'pref_';
-    $setting = $prefarray[$varname];
-  }
-
-  $name .= $varname;
-
-  return '
-            <p><label for="' . $name . '">' . $title
-   . ':</label><input type="text" name="' . $name . '" id="' . $name
-   . '" size="7" maxlength="7" value="' . $setting
-   . '" onchange="updateColor( this, \'' . $varname
-   . '_sample\' );" /><span id="' . $varname . '_sample" style="background:'
-   . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor( \''
-   . $name . '\', event )" value="' . $select . '" /></p>';
-}
-
 $currenttab = '';
 $error = ( $is_admin ? '' : print_not_auth() );
 
@@ -333,8 +290,9 @@ if ( ! $error ) {
       'OTHERMONTHBG' => translate ( 'Table cell background for other month' ),
       'WEEKNUMBER' => translate ( 'Week number color' ),
       'POPUP_BG' => translate ( 'Event popup background' ),
-      'POPUP_FG' => translate ( 'Event popup text' )] as $k => $v ) {
-    $color_sets .= admin_print_color_input_html ( $k, $v );
+      'POPUP_FG' => translate ( 'Event popup text' )
+      ) as $k => $v ) {
+    $color_sets .= print_color_input_html ( $k, $v );
   }
 
   set_today ( date ( 'Ymd' ) );
