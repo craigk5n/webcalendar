@@ -1,7 +1,10 @@
-$Id$
 
 NOTE: This is the 1.3.0 development branch.
-Put code changes right below the 1.3.0+CVS label below.
+Put code changes right below the 1.3.0 label below.
+
+NOTE: This file is being depracated in favor of using git log to see
+the changes.  This file is likely out of date and likely to be
+removed at some point.
 
 Version 1.3.0-alpha1 (27 Jun 2017)
  - 27-Jun-2017 cek Migrated from SourceForge to github.  Various updates
