@@ -5,7 +5,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: styles.php,v 1.9.2.1 2013/08/12 16:18:52 cknudsen Exp $
  * @package WebCalendar
  *
  *                         HOW TO READ THIS DOCUMENT
@@ -135,120 +134,131 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
   need to go through "css_cacher.php". */
 
 /* ":root" matches top-level, usually "html". */
-echo ':root {
-  /* Leave font-size as "px" here and "rem" should scale properly everywhere else. */
+?>
+:root {
+<?php /* Leave font-size as "px" here and "rem" should scale properly everywhere else. */ ?>
   --def-font-size: 16px;
   --def-font-family: sans-serif;
 
   --box-default-color: #888888;
 
-  --bgcolor: ' . $GLOBALS['BGCOLOR'] . ';
-  --bgimage: ' . $GLOBALS['BGIMAGE'] . ';
-  --bgrepeat: ' . $GLOBALS['BGREPEAT'] . ';
-  --captions: ' . $GLOBALS['CAPTIONS'] . ';
-  --cellbg: ' . $GLOBALS['CELLBG'] . ';
-  --fonts: ' . $GLOBALS['FONTS'] . ';
-  --h2color: ' . $GLOBALS['H2COLOR'] . ';
-  --haseventsbg: ' . $GLOBALS['HASEVENTSBG'] . ';
-  --minicalfont: ' . $GLOBALS['MINICALFONT'] . ';
-  --minicalwidth: ' . $GLOBALS['MINICALWIDTH'] . ';
-  --myevents: ' . $GLOBALS['MYEVENTS'] . ';
-  --nextmonthbg: ' . $GLOBALS['NEXTMONTHBG'] . ';
-  --othermonthbg: ' . $GLOBALS['OTHERMONTHBG'] . ';
-  --popupfg: ' . $GLOBALS['POPUP_FG'] . ';
-  --popupbg: ' . $GLOBALS['POPUP_BG'] . ';
-  --prevmonthbg: ' . $GLOBALS['PREVMONTHBG'] . ';
-  --tablebg: ' . $GLOBALS['TABLEBG'] . ';
-  --textcolor: ' . $GLOBALS['TEXTCOLOR'] . ';
-  --thbg: ' . $GLOBALS['THBG'] . ';
-  --thfg: ' . $GLOBALS['THFG'] . ';
-  --todaycellbg: ' . $GLOBALS['TODAYCELLBG'] . ';
-  --weekendbg: ' . $GLOBALS['WEEKENDBG'] . ';
-  --weeknumber: ' . $GLOBALS['WEEKNUMBER'] . ';
-}' .
-/* TODO: I think these two, among others, may be too specific.
-   Do they really need "#month"?
-   And, instead of IDs "#nextmonth" and "#prevmonth", would classes ".next" and ".prev" work? */
-  ( $DISPLAY_TASKS != 'Y' ? '
+  --bgcolor: <?php echo $GLOBALS['BGCOLOR']?>;
+  --bgimage: <?php echo$GLOBALS['BGIMAGE']; ?>;
+  --bgrepeat: <?php echo$GLOBALS['BGREPEAT']; ?>;
+  --captions: <?php echo$GLOBALS['CAPTIONS']; ?>;
+  --cellbg: <?php echo$GLOBALS['CELLBG']; ?>;
+  --fonts: <?php echo$GLOBALS['FONTS']; ?>;
+  --h2color: <?php echo$GLOBALS['H2COLOR']; ?>;
+  --haseventsbg: <?php echo$GLOBALS['HASEVENTSBG']; ?>;
+  --minicalfont: <?php echo$GLOBALS['MINICALFONT']; ?>;
+  --minicalwidth: <?php echo$GLOBALS['MINICALWIDTH']; ?>;
+  --myevents: <?php echo$GLOBALS['MYEVENTS']; ?>;
+  --nextmonthbg: <?php echo$GLOBALS['NEXTMONTHBG']; ?>;
+  --othermonthbg: <?php echo$GLOBALS['OTHERMONTHBG']; ?>;
+  --popupfg: <?php echo$GLOBALS['POPUP_FG']; ?>;
+  --popupbg: <?php echo$GLOBALS['POPUP_BG']; ?>;
+  --prevmonthbg: <?php echo$GLOBALS['PREVMONTHBG']; ?>;
+  --tablebg: <?php echo$GLOBALS['TABLEBG']; ?>;
+  --textcolor: <?php echo$GLOBALS['TEXTCOLOR']; ?>;
+  --thbg: <?php echo$GLOBALS['THBG']; ?>;
+  --thfg: <?php echo$GLOBALS['THFG']; ?>;
+  --todaycellbg: <?php echo$GLOBALS['TODAYCELLBG']; ?>;
+  --weekendbg: <?php echo$GLOBALS['WEEKENDBG']; ?>;
+  --weeknumber: <?php echo$GLOBALS['WEEKNUMBER']; ?>;
+}
+<?php
+// TODO: I think these two, among others, may be too specific.
+// Do they really need "#month"?
+// And, instead of IDs "#nextmonth" and "#prevmonth", would classes ".next" and ".prev" work?
+if ( $DISPLAY_TASKS != 'Y' ) { ?>
 #month #nextmonth {
   float: right;
 }
 #month #prevmonth {
   float: left;
 }
-' : '' ) . '#minicalendar table {
-  width: ' . ( empty( $GLOBALS['MINICALWIDTH'] )
-  ? '10em' : $GLOBALS['MINICALWIDTH'] ) . ';
+<?php } ?>
+
+#minicalendar table {
+  width: <?php echo empty( $GLOBALS['MINICALWIDTH'] )
+  ? '10em' : $GLOBALS['MINICALWIDTH']; ?>;
 }
-' . ( $MENU_ENABLED == 'N' ? '#dateselector form {
-  border-top: 0.0625em solid ' . $GLOBALS['TABLEBG'] . ';
+
+<?php if (  $MENU_ENABLED == 'N' ) { ?>
+#dateselector form {
+  border-top: 0.0625em solid <?php echo $GLOBALS['TABLEBG'];?>;
 }
-' : '' ) . '
-body {' . ( empty( $GLOBALS['BGIMAGE'] )  
-  ? '' : '
-  background-image: url( ' . $GLOBALS['BGIMAGE'] . ' );
-  background-repeats: ' . $GLOBALS['BGREPEAT'] );
-';
+<?php } ?>
+
+<?php if ( ! empty ( $GLOBALS['BGIMAGE'] ) ) { ?>
+body {
+  background-image: url( '<php echo $GLOBALS['BGIMAGE'];?>' );
+  background-repeats: '<?php echo$GLOBALS['BGREPEAT'];?>' );
 }
 .popup {
-  ' . background_css( $GLOBALS['POPUP_BG'], 200 ) . '
+  <?php echo background_css( $GLOBALS['POPUP_BG'], 200 ); ?>
 }
+<?php } ?>
 .main th,
 .main th.weekend {
-  ' . background_css( $GLOBALS['THBG'], 15 ) . '
+  <?php echo background_css( $GLOBALS['THBG'], 15 );?>
 }
 .main td {
-  ' . background_css( $GLOBALS['CELLBG'], 100 ) . '
+  <?php echo background_css( $GLOBALS['CELLBG'], 100 ); ?>
 }
 .main td.weekend {
-  ' . background_css( $GLOBALS['WEEKENDBG'], 100 ) . '
-}' . ( $GLOBALS['HASEVENTSBG'] != $GLOBALS['CELLBG'] ? '
+  <?php echo background_css( $GLOBALS['WEEKENDBG'], 100 ); ?>
+}
+<?php if  ( $GLOBALS['HASEVENTSBG'] != $GLOBALS['CELLBG'] ) { ?>
 .main td.hasevents {
-  ' . background_css( $GLOBALS['HASEVENTSBG'], 100 ) . '
-}' : '' ) . '
+  <?php echo background_css( $GLOBALS['HASEVENTSBG'], 100 ); ?>
+}
+<?php } ?>
 .main td.othermonth {
-  ' . background_css( $GLOBALS['OTHERMONTHBG'], 100 ) . '
+  <?php echo background_css( $GLOBALS['OTHERMONTHBG'], 100 ); ?>
 }
 .main td.today, #datesel td #today {
-  ' . background_css( $GLOBALS['TODAYCELLBG'], 100 ) . '
+  <?php echo background_css( $GLOBALS['TODAYCELLBG'], 100 ); ?>
 }
 #admin .main td.weekcell,
 #month .main td.weekcell,
 #pref .main td.weekcell,
 #viewl .main td.weekcell {
-  ' . background_css( $GLOBALS['THBG'], 50 ) . '
+  <?php echo background_css( $GLOBALS['THBG'], 50 ); ?>
 }
 .glance td,
 .note {
-  ' . background_css( $GLOBALS['CELLBG'], 50 ) . '
+  <?php echo background_css( $GLOBALS['CELLBG'], 50 );?>
 }
 #viewt .main th.weekend {
-  ' . background_css( $GLOBALS['WEEKENDBG'], 15 ) . '
+  <?php echo background_css( $GLOBALS['WEEKENDBG'], 15 );?>
 }
 #login table,
 #register table {
-  ' . background_css( $GLOBALS['CELLBG'], 200 ) . '
+  <?php echo background_css( $GLOBALS['CELLBG'], 200 );?>
 }
 #securityAuditNotes {
-  ' . background_css( $GLOBALS['CELLBG'], 150 ) . '
+  <?php echo background_css( $GLOBALS['CELLBG'], 150 );?>
 }
 #viewt td.entry {
-  ' . background_css( $GLOBALS['THBG'], 10 ) . '
+  <?php echo background_css( $GLOBALS['THBG'], 10 );?>
 }
 #minicalendar th,
 #minicalendar td {
-  font-size: ' . ( empty( $GLOBALS['MINICALFONT'] )
-  ? '0.6875em' : $GLOBALS['MINICALFONT'] ) . ';
+  font-size: <?php echo ( empty( $GLOBALS['MINICALFONT'] )
+  ? '0.6875em' : $GLOBALS['MINICALFONT'] ); ?>;
 }
-' . ( $DISPLAY_WEEKENDS == 'N' ? '#viewt .main tr.weekend,
+<?php if ( $DISPLAY_WEEKENDS == 'N' ) { ?>
+#viewt .main tr.weekend,
 .main th.weekend,
 .main td.weekend,
 .minical th.weekend,
 .minical td.weekend {
   display: none;
 }
-' : '' );
+<?php } ?>
 
+<?php
 if ( $CATEGORIES_ENABLED === 'Y' ) {
   // Need to load user variables so that $is_admin is set before we load
   // categories.
@@ -284,5 +294,4 @@ if ( $CATEGORIES_ENABLED === 'Y' ) {
     }
   }
 }
-
 ?>
