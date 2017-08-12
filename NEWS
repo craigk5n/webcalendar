@@ -8,6 +8,12 @@ http://webcalendar.cvs.sourceforge.net/*checkout*/webcalendar/webcalendar/Change
 
 ---------------------------------------------------------------------------
 
+Version 1.3.0-unreleased (?? ??? 2017)
+  - Fixes:
+  - New Features / Enhancements / Changes:
+    + Search requests were changed from POST to GET so that users can
+      more easily use the browser's back button.
+
 Version 1.3.0-alpha1 (22 Jul 2017)
   - Fixes:
     + Removed old hack for register_globals work-around that is no longer
