@@ -249,7 +249,7 @@ echo '
       <input type="hidden" name="process_action" value="" />
       <input type="hidden" name="process_user" value="" />
     </form>' . ( ! empty ( $eventinfo ) ? $eventinfo : '' ) . '
-    <script type="text/javascript">
+    <script>
 <!-- <![CDATA[
       function check_all ( user ) {
         var

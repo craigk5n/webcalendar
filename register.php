@@ -198,9 +198,9 @@ if( empty( $error ) && ! empty( $control ) ) {
 }
 
 echo send_doctype( $appStr ) . '
-    <!--[if IE 5]><script type="text/javascript" src="includes/js/ie5.js"></script><![endif]-->
-    <script type="text/javascript" src="includes/js/prototype.js"></script>
-    <script type="text/javascript">
+    <!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->
+    <script src="includes/js/prototype.js"></script>
+    <script>
       var
         validform = false,
         xlate = [];
@@ -212,9 +212,9 @@ echo send_doctype( $appStr ) . '
       xlate[\'passwordsNoMatch\'] = \''
  . translate( 'The passwords were not identical.', true ) . '\';
     </script>
-    <script type="text/javascript" src="includes/js/register.js"></script>
-    <link type="text/css" href="css_cacher.php?login=__public__" rel="stylesheet" />
-    <link type="text/css" href="includes/css/styles.css" rel="stylesheet" />'
+    <script src="includes/js/register.js"></script>
+    <link href="css_cacher.php?login=__public__" rel="stylesheet" />
+    <link href="includes/css/styles.css" rel="stylesheet" />'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'

@@ -615,7 +615,7 @@ if ( ( $search_url != '' && $menuConfig['Search'] ) &&
   jscMenu_custom ( '<td class="ThemeMenuItemLeft"><img src="includes/menu/icons'
      . '/spacer.gif" /></td><td colspan="2"><form action="search_handler.php'
 	 . ( ! empty ( $user ) ? '?users[]=' . $user : '' ) . '" '
-     . 'method="post"><input type="text" name="keywords" size="25" /><input '
+     . 'method="GET"><input type="text" name="keywords" size="25" /><input '
      . 'type="submit" value="' . translate ( 'Search' )
      . '" /></form></td>' );
   jscMenu_close ();

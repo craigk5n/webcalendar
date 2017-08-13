@@ -182,7 +182,7 @@ print<<EOF;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title>$TITLE</title>
-<style type="text/css">
+<style>
 body {
   background-color: #FFFFFF;
   font-family: Arial, Helvetica, sans-serif;

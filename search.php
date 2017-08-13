@@ -46,7 +46,7 @@ if( $show_others )
 print_header( $INC );
 
 echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
-    <form action="search_handler.php" method="post" id="searchformentry" '
+    <form action="search_handler.php" method="GET" id="searchformentry" '
  . 'name="searchformentry" style="margin-left: 13px;">
       <input type="hidden" name="advanced" value="' . $show_advanced . '" />
       <table><tr><td><label for="keywordsadv">' . translate ( 'Keywords' )

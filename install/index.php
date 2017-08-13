@@ -641,7 +641,10 @@ if( empty( $x ) ) {
     $settings['readonly']          =
     $settings['single_user']       =
     $settings['use_http_auth']     = 'false';
-    $settings['db_type']           = 'mysql';
+    if ( function_exists ( 'mysqli_connect' ) )
+      $settings['db_type']           = 'mysqli';
+    else
+      $settings['db_type']           = 'mysql';
     $settings['install_password']  =
     $settings['single_user_login'] = '';
     $settings['user_inc']          = 'user.php';
@@ -774,7 +777,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <title>' . translate( 'WebCalendar Setup Wizard' ) . '</title>
     <meta http-equiv="Content-Type" content="text/html; charset='
  . translate( 'charset' ) . '" />
-    <script type="text/javascript">
+    <script>
 <!-- <![CDATA[
       var xlate = [];
       xlate[\'invalidColor\'] = \'' . translate( 'Invalid Color', true ) . '\';
@@ -872,8 +875,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
       }
 //]]> -->
     </script>
-    <script type="text/javascript" src="../includes/js/visible.js"></script>
-    <style type="text/css">
+    <script src="../includes/js/visible.js"></script>
+    <style>
       body {
         margin:0;
         background:#fff;

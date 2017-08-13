@@ -564,7 +564,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 ?>
 
 </table>
-<script type="text/javascript">
+<script>
 <!-- <![CDATA[
 function dblclick( date, name, hour, minute ) {
  window.location.href  = 'edit_entry.php?date=' + date + '&defusers=' + name
