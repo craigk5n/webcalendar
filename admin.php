@@ -83,7 +83,7 @@ if ( ! empty ( $_POST ) && empty ( $error ) ) {
 if ( function_exists ( 'db_load_config' ) && empty ( $_POST ) )
   db_load_config();
 
-$menuthemes = $s = $themes = array();
+$menuthemes = $s = $themes = [];
 
 $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
 
@@ -132,9 +132,7 @@ if ( is_dir ( $dir ) ) {
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
 
-print_header( array( 'js/translate.js.php' ),
-  '<script type="text/javascript" src="includes/js/admin.js"></script>
-    <script type="text/javascript" src="includes/js/visible.js"></script>',
+print_header ( ['js/translate.js.php','js/admin.js','js/visible.js'], '',
   'onload="init_admin();showTab( \'' . $currenttab . '\' );"' );
 
 if ( ! $error ) {
@@ -290,8 +288,7 @@ if ( ! $error ) {
       'OTHERMONTHBG' => translate ( 'Table cell background for other month' ),
       'WEEKNUMBER' => translate ( 'Week number color' ),
       'POPUP_BG' => translate ( 'Event popup background' ),
-      'POPUP_FG' => translate ( 'Event popup text' )
-      ) as $k => $v ) {
+      'POPUP_FG' => translate ( 'Event popup text' )] as $k => $v ) {
     $color_sets .= print_color_input_html ( $k, $v );
   }
 
