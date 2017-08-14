@@ -72,6 +72,11 @@ if ( $action == 'enable' || $action == 'disable' ) {
       'source' => $layer['cal_layeruser'],
       'color' => $layer['cal_color'],
       'dups' => $layer['cal_dups'],
+// Craig. This looks like a bug. I can't find $layerfullname set anywhere.
+// And the only table with a fullname is webcal_entry_ext_user, which doesn't seem to be called here.
+// Even $fullname doesn't seem to fit.
+// Is it supposed to be maybe $layer['cal_login'] or $layer['cal_layeruser']?
+
       'fullname' => $layerfullname];
   }
   ajax_send_object ( 'layers', $ret_layers, $sendPlainText );
