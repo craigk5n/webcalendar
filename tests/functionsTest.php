@@ -56,4 +56,60 @@ final class FunctionsTest extends TestCase
     $this->assertEquals ( '160000', $res );
   }
 
+  // Unit tests for bump_local_timestamp
+  public function test_bump_local_timestamp() {
+    date_default_timezone_set ( "America/New_York" );
+    // Noon NY time on Jan 1 2016
+    $jan1_ts = mktime ( 12, 0, 0, 1, 1, 2016 );
+    // echo "jan1_ts = " . date('r',$jan1_ts) . "\n";
+    $this->assertEquals ( '12', date('H', $jan1_ts) );
+    $this->assertEquals ( '2016', date('Y', $jan1_ts) );
+
+    // params for bump_local_timestamp:
+    //   current_unixtime, hourchange, minchange, secchage,
+    //   monthchange, daychange, yearchange
+
+    // Add 1 hour
+    $newtime = bump_local_timestamp( $jan1_ts, 1, 0, 0, 0, 0, 0 );
+    $this->assertEquals ( '13', date('H', $newtime) );
+
+    // Add 1 year
+    $newtime = bump_local_timestamp( $jan1_ts, 0, 0, 0, 0, 0, 1 );
+    $this->assertEquals ( '2017', date('Y', $newtime) );
+
+    // Add 1 month
+    $newtime = bump_local_timestamp( $jan1_ts, 0, 0, 0, 1, 0, 0 );
+    $this->assertEquals ( '02', date('m', $newtime) );
+
+    // Add 1 day
+    $newtime = bump_local_timestamp( $jan1_ts, 0, 0, 0, 0, 1, 0 );
+    //echo "Time: " . date('r', $newtime ) . "\n";
+    $this->assertEquals ( '02', date('d', $newtime) );
+
+    // Daylight savings 2016 was March 13, aneded on November 6
+
+    // Add day for about a week around the change and make sure
+    // the hour stays at 12PM.
+    $start = mktime ( 12, 0, 0, 3, 7, 2016 ); // March 7
+    for ( $i = 0; $i < 14; $i++ ) {
+      $newtime = bump_local_timestamp( $start, 0, 0, 0, 0, $i, 0 );
+      $expDay = sprintf ( "%02d", ( 7 + $i ) );
+      //echo "Time: " . date('r', $newtime ) . "\n";
+      $this->assertEquals ( '12', date('H', $newtime) );
+      $this->assertEquals ( $expDay, date('d', $newtime) );
+    }
+  
+    // Do the same for DST ending
+    $start = mktime ( 12, 0, 0, 11, 1, 2016 ); // Nov 1
+    for ( $i = 0; $i < 14; $i++ ) {
+      $newtime = bump_local_timestamp( $start, 0, 0, 0, 0, $i, 0 );
+      $expDay = sprintf ( "%02d", ( 1 + $i ) );
+      //echo "Time: " . date('r', $newtime ) . "\n";
+      $this->assertEquals ( '12', date('H', $newtime) );
+      $this->assertEquals ( $expDay, date('d', $newtime) );
+    }
+  
+  }
+
+
 }
