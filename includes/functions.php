@@ -141,7 +141,10 @@ function add_dstfree_time ( $date, $span, $interval = 1 ) {
 function add_duration ( $time, $duration ) {
   $time = sprintf ( "%06d", $time );
   $minutes =
-  intval ( $time / 10000 ) * 60 + ( ( $time / 100 ) % 100 ) + $duration;
+    intval ( $time / 10000 ) * 60 + ( ( $time / 100 ) % 100 ) + $duration;
+  // If we ran past 240000, then roll back over to 000000.
+  $minutes %= ( 24 * 60 );
+echo "Minutes: $minutes\n";
 
   return sprintf ( "%d%02d00", $minutes / 60, $minutes % 60 );
 }
