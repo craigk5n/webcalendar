@@ -1,5 +1,4 @@
-<?php // $Id: import_palmdesktop.php,v 1.20 2009/11/22 16:47:45 bbannon Exp $
-
+<?php
 /**
  * Parse the datebook file.
  *
@@ -9,7 +8,7 @@ function parse_palmdesktop ( $file, $exc_private = 1 ) {
   $file = EscapeShellArg ( $file );
   $exc_private = EscapeShellArg ( $exc_private );
   exec ( 'perl tools/palm_datebook.pl ' . "$file $exc_private", $Entries );
-  $data = array();
+  $data = [];
   while ( list ( $line_num, $line ) = each ( $Entries ) ) {
     $data[] = ParseLine ( $line );
   }
@@ -23,27 +22,27 @@ function parse_palmdesktop ( $file, $exc_private = 1 ) {
  */
 function delete_palm_events ( $login ) {
   $res = dbi_execute ( 'SELECT cal_id FROM webcal_import_data
-    WHERE cal_login = ? AND cal_import_type = ?', array ( $login, 'palm' ) );
+    WHERE cal_login = ? AND cal_import_type = ?', [$login, 'palm'] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
-        array ( $row[0] ) );
+       [$row[0]] );
       dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
-        array ( $row[0] ) );
+       [$row[0]] );
       dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
-        array ( $row[0] ) );
+       [$row[0]] );
       dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
-        array ( $row[0] ) );
+       [$row[0]] );
       dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
-        array ( $row[0] ) );
+       [$row[0]] );
       dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?',
-        array ( $row[0] ) );
+       [$row[0]] );
       dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
-        array ( $row[0] ) );
+       [$row[0]] );
       dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_id = ?',
-        array ( $row[0] ) );
+       [$row[0]] );
       dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
-        array ( $row[0] ) );
+       [$row[0]] );
     }
   }
   dbi_free_result ( $res );

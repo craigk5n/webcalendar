@@ -9,7 +9,6 @@
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @package WebCalendar
- * @version $Id: search_handler.php,v 1.56.2.2 2013/02/06 16:12:39 cknudsen Exp $
  */
 include_once 'includes/init.php';
 require_valid_referring_url ();
@@ -62,11 +61,11 @@ if ( $search_others ) {
       $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! empty ( $GROUPS_ENABLED ) &&
       $GROUPS_ENABLED == 'Y' ) {
     $myusers = get_my_users ( '', 'view' );
-    $userlookup = array();
+    $userlookup = [];
     for ( $i = 0, $cnt = count ( $myusers ); $i < $cnt; $i++ ) {
       $userlookup[$myusers[$i]['cal_login']] = 1;
     }
-    $newlist = array();
+    $newlist = [];
     $cnt = count ( $users );
     for ( $i = 0; $i < $cnt; $i++ ) {
       if ( ! empty ( $userlookup[$users[$i]] ) )
@@ -76,7 +75,7 @@ if ( $search_others ) {
   }
   // Now, use access control to remove more users :-)
   if ( access_is_enabled() && ! $is_admin ) {
-    $newlist = array();
+    $newlist = [];
     for ( $i = 0; $i < count ( $users ); $i++ ) {
       if ( access_user_calendar ( 'view', $users[$i] ) ) {
         $newlist[] = $users[$i];
@@ -149,7 +148,7 @@ $plen = strlen ( $phrasedelim );
 if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     substr ( $keywords, $klen - $plen ) == $phrasedelim ) {
   $phrase = substr ( $keywords, $plen, $klen - ( $plen * 2 ) );
-  $words = array ( $phrase );
+  $words = [$phrase];
 } else
   // original (default) behavior
   $words = explode ( ' ', $keywords );
@@ -157,7 +156,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
   $order = 'DESC';
   $word_cnt = count ( $words );
   for ( $i = 0; $i < $word_cnt; $i++ ) {
-    $sql_params = array();
+    $sql_params = [];
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, weu.cal_login '
       . ( empty( $extra_filter ) ? '' : ', wse.cal_data ' )

@@ -1,4 +1,4 @@
-<?php // $Id: help_pref.php,v 1.36 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
@@ -9,7 +9,7 @@ echo $helpListStr . '
     <div class="helpbody">
       <div>';
 
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Auto-refresh calendars' ) => translate ( 'auto-refresh-help' ),
   translate ( 'Auto-refresh time' ) => translate ( 'auto-refresh-time-help' ),
   translate ( 'Date format' ) => translate ( 'date-format-help' ),
@@ -31,8 +31,7 @@ $tmp_arr = array (
   translate ( 'Time interval' ) => translate ( 'time-interval-help' ),
   translate ( 'Timezone Offset' ) => translate ( 'tz-help' ),
   translate ( 'Week starts on' ) => translate ( 'display-week-starts-on' ),
-  translate ( 'Work hours' ) => translate ( 'work-hours-help' ),
-  );
+  translate ( 'Work hours' ) => translate ( 'work-hours-help' )];
 
 list_help ( $tmp_arr );
 
@@ -41,7 +40,7 @@ echo '
       <h3>' . translate ( 'Email' ) . '</h3>
       <div>';
 
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Event rejected by participant' ) =>
   translate ( 'email-event-rejected' ),
   translate ( 'Event reminders' ) =>
@@ -51,8 +50,7 @@ $tmp_arr = array (
   translate ( 'Events removed from my calendar' ) =>
   translate ( 'email-event-deleted' ),
   translate ( 'Events updated on my calendar' ) =>
-  translate ( 'email-event-updated' ),
-  );
+  translate ( 'email-event-updated' )];
 
 list_help ( $tmp_arr );
 
@@ -61,12 +59,11 @@ echo '
       <h3>' . translate ( 'When I am the boss' ) . '</h3>
       <div>';
 
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Email me event notification' ) =>
   translate ( 'email-boss-notifications-help' ),
   translate ( 'I want to approve events' ) =>
-  translate ( 'boss-approve-event-help' ),
-  );
+  translate ( 'boss-approve-event-help' )];
 
 list_help ( $tmp_arr );
 
@@ -78,7 +75,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) {
       <h3>' . translate ( 'Subscribe/Publish' ) . '</h3>
       <div>';
 
-  $tmp_arr = array (
+  $tmp_arr = [
     translate ( 'Allow remote publishing' ) =>
     translate ( 'allow-remote-publishing-help' ),
     translate ( 'URL' ) => translate ( 'remote-publishing-url-help' ),
@@ -89,8 +86,7 @@ if ( $PUBLISH_ENABLED == 'Y' ) {
     translate ( 'freebusy-enabled-help' ),
     translate ( 'URL' ) => translate ( 'freebusy-url-help' ),
     translate ( 'Enable RSS feed' ) => translate ( 'rss-enabled-help' ),
-    translate ( 'URL' ) => translate ( 'rss-feed-url-help' ),
-    );
+    translate ( 'URL' ) => translate ( 'rss-feed-url-help' )];
 
   list_help ( $tmp_arr );
 

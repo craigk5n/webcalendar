@@ -1,4 +1,4 @@
-<?php // $Id: add_entry.php,v 1.31 2009/11/22 16:47:44 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 $error = '';
@@ -6,8 +6,10 @@ $error = '';
 if ( $id > 0 ) {
   // Double check to make sure user doesn't already have the event.
   $is_my_event = $is_private = false;
-  $res = dbi_execute ( 'SELECT cal_id FROM webcal_entry_user
-    WHERE cal_login = ? AND cal_id = ?', array ( $login, $id ) );
+  $res = dbi_execute ( 'SELECT cal_id
+  FROM webcal_entry_user
+  WHERE cal_login = ?
+    AND cal_id = ?', [$login, $id] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $id ) {
@@ -19,8 +21,9 @@ if ( $id > 0 ) {
     dbi_free_result ( $res );
   }
   // Now lets make sure the user is allowed to add the event (not private).
-  $res = dbi_execute ( 'SELECT cal_access FROM webcal_entry WHERE cal_id = ?',
-    array ( $id ) );
+  $res = dbi_execute ( 'SELECT cal_access
+  FROM webcal_entry
+  WHERE cal_id = ?', [$id] );
   if ( ! $res ) {
     echo str_replace ( 'XXX', $id, translate ( 'Invalid entry id XXX.' ) );
     exit;
@@ -44,8 +47,8 @@ if ( $id > 0 ) {
   }
   // Add the event.
   if ( $readonly == 'N' && ! $is_my_event && ! $is_private ) {
-    if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
-      cal_status ) VALUES ( ?, ?, ? )', array ( $id, $login, 'A' ) ) )
+    if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login, cal_status ) VALUES
+( ?, ?, ? )', [$id, $login, 'A'] ) )
       $error = str_replace ( 'XXX', dbi_error(),
         translate ( 'Error adding event XXX.' ) );
   }

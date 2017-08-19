@@ -1,4 +1,4 @@
-<?php // $Id: del_entry.php,v 1.78 2009/11/22 16:47:44 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 require 'includes/classes/WebCalMailer.class';
 $mail = new WebCalMailer;
@@ -12,7 +12,7 @@ if ( $id > 0 ) {
   $can_edit = ( $is_admin || $readonly != 'Y' );
 
   // If assistant is doing this, then we need to switch login to user in the SQL.
-  $query_params = array();
+  $query_params = [];
   $query_params[] = $id;
   $sql = 'SELECT we.cal_id, we.cal_type FROM webcal_entry we,
     webcal_entry_user weu WHERE we.cal_id = weu.cal_id AND we.cal_id = ? ';
@@ -40,8 +40,9 @@ if ( strpos ( 'EM', $activity_type ) !== false ) {
   $log_reject = LOG_REJECT_T;
 }
 // See who owns the event. Owner should be able to delete.
-$res = dbi_execute ( 'SELECT cal_create_by FROM webcal_entry WHERE cal_id = ?',
-  array ( $id ) );
+$res = dbi_execute ( 'SELECT cal_create_by
+  FROM webcal_entry
+  WHERE cal_id = ?', [$id] );
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
   $owner = $row[0];
@@ -77,7 +78,7 @@ if ( ! $can_edit )
 // Is this a repeating event?
 $event_repeats = false;
 $res = dbi_execute ( 'SELECT COUNT( cal_id ) FROM webcal_entry_repeats
-  WHERE cal_id = ?', array ( $id ) );
+  WHERE cal_id = ?', [$id] );
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( $row[0] > 0 )
@@ -93,8 +94,9 @@ if ( $id > 0 && empty ( $error ) ) {
   if ( ! empty ( $date ) )
     $thisdate = $date;
   else {
-    $res = dbi_execute ( 'SELECT cal_date FROM webcal_entry WHERE cal_id = ?',
-      array ( $id ) );
+    $res = dbi_execute ( 'SELECT cal_date
+  FROM webcal_entry
+  WHERE cal_id = ?', [$id] );
     if ( $res ) {
       // date format is 19991231
       $row = dbi_fetch_row ( $res );
@@ -110,8 +112,9 @@ if ( $id > 0 && empty ( $error ) ) {
     // Email participants that the event was deleted.
     // First, get list of participants (with status Approved or Waiting on approval).
     $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
-      WHERE cal_id = ? AND cal_status IN ( \'A\', \'W\' )', array ( $id ) );
-    $partlogin = array();
+  WHERE cal_id = ?
+    AND cal_status IN ( "A", "W" )', [$id] );
+    $partlogin = [];
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $partlogin[] = $row[0];
@@ -120,7 +123,7 @@ if ( $id > 0 && empty ( $error ) ) {
     }
     // Get event name.
     $res = dbi_execute ( 'SELECT cal_name, cal_date, cal_time FROM webcal_entry
-      WHERE cal_id = ?', array ( $id ) );
+  WHERE cal_id = ?', [$id] );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       $name = $row[0];
@@ -173,24 +176,26 @@ if ( $id > 0 && empty ( $error ) ) {
     if ( $override_repeat ) {
       dbi_execute ( 'INSERT INTO webcal_entry_repeats_not
         ( cal_id, cal_date, cal_exdate ) VALUES ( ?, ?, ? )',
-        array ( $id, $date, 1 ) );
+        [$id, $date, 1] );
       // Should we log this to the activity log???
     } else {
       // If it's a repeating event, delete any event exceptions that were entered.
       if ( $event_repeats ) {
-        $res = dbi_execute ( 'SELECT cal_id FROM webcal_entry WHERE cal_group_id = ?',
-          array ( $id ) );
+        $res = dbi_execute ( 'SELECT cal_id
+  FROM webcal_entry
+  WHERE cal_group_id = ?', [$id] );
         if ( $res ) {
-          $ex_events = array();
+          $ex_events = [];
           while ( $row = dbi_fetch_row ( $res ) ) {
             $ex_events[] = $row[0];
           }
           dbi_free_result ( $res );
           for ( $i = 0, $cnt = count ( $ex_events ); $i < $cnt; $i++ ) {
-            $res = dbi_execute ( 'SELECT cal_login FROM
-              webcal_entry_user WHERE cal_id = ?', array ( $ex_events[$i] ) );
+            $res = dbi_execute ( 'SELECT cal_login
+  FROM webcal_entry_user
+  WHERE cal_id = ?', [$ex_events[$i]] );
             if ( $res ) {
-              $delusers = array();
+              $delusers = [];
               while ( $row = dbi_fetch_row ( $res ) ) {
                 $delusers[] = $row[0];
               }
@@ -200,8 +205,8 @@ if ( $id > 0 && empty ( $error ) ) {
                 activity_log ( $ex_events[$i], $login, $delusers[$j],
                   $log_delete, '' );
                 dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
-                  WHERE cal_id = ? AND cal_login = ?',
-                  array ( 'D', $ex_events[$i], $delusers[$j] ) );
+  WHERE cal_id = ?
+    AND cal_login = ?', ['D', $ex_events[$i], $delusers[$j]] );
               }
             }
           }
@@ -209,12 +214,13 @@ if ( $id > 0 && empty ( $error ) ) {
       }
 
       // Now, mark event as deleted for all users.
-      dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = \'D\' WHERE cal_id = ?',
-        array ( $id ) );
+      dbi_execute ( 'UPDATE webcal_entry_user
+  SET cal_status = "D"
+  WHERE cal_id = ?', [$id] );
 
       // Delete External users for this event
-      dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
-        array ( $id ) );
+      dbi_execute ( 'DELETE FROM webcal_entry_ext_user
+  WHERE cal_id = ?', [$id] );
     }
   } else {
     // Not the owner of the event, but participant or noncal_admin.
@@ -233,11 +239,12 @@ if ( $id > 0 && empty ( $error ) ) {
       if ( $override_repeat ) {
         dbi_execute ( 'INSERT INTO webcal_entry_repeats_not
           ( cal_id, cal_date, cal_exdate ) VALUES ( ?, ?, ? )',
-          array ( $id, $date, 1 ) );
+          [$id, $date, 1] );
         // Should we log this to the activity log???
       } else {
         dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
-          WHERE cal_id = ? AND cal_login = ?', array ( 'D', $id, $del_user ) );
+  WHERE cal_id = ?
+    AND cal_login = ?', ['D', $id, $del_user] );
         activity_log ( $id, $login, $login, $log_reject, '' );
       }
     }

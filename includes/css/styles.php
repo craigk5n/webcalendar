@@ -266,7 +266,7 @@ if ( $CATEGORIES_ENABLED === 'Y' ) {
   load_user_categories ();
 
   // Default color is $MYEVENTS.  Add a bogus array 'none' element for it.
-  $categories['none'] = array ( 'cat_color' => $MYEVENTS );
+  $categories['none'] = ['cat_color' => $MYEVENTS];
   foreach ( $categories as $catId => $cat ) {
     if ( $catId == 0 || $catId == -1 )
       continue;
@@ -277,7 +277,7 @@ if ( $CATEGORIES_ENABLED === 'Y' ) {
     if ( $catId < 0 )
       $catId = 0 - $catId;
 
-    $rgb = array ( 255, 255, 255 );
+    $rgb = [255, 255, 255];
 
     if ( ! empty ( $color ) ) {
       if ( preg_match ( "/#(.)(.)(.)(.)(.)(.)/", $color ) ) {

@@ -1,4 +1,4 @@
-<?php // $Id: trailer.php,v 1.132 2009/11/22 16:47:46 bbannon Exp $
+<?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // NOTE: This file is included within the print_trailer function found in
@@ -10,7 +10,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     <div id="trailer">
       <div id="menu">' . "\n";
 
-  $goto_link = $manage_calendar_link = $reports_link = $views_link = array();
+  $goto_link = $manage_calendar_link = $reports_link = $views_link = [];
 
   $myCalStr = translate ( 'My Calendar' );
   $todayStr = translate ( 'Today' );
@@ -196,11 +196,11 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
   if ( ! empty ( $REPORTS_ENABLED ) && $REPORTS_ENABLED == 'Y' &&
       access_can_access_function ( ACCESS_REPORT ) ) {
-    $reports_link = array();
+    $reports_link = [];
     $rows = dbi_get_cached_rows ( 'SELECT cal_report_name, cal_report_id
       FROM webcal_report WHERE cal_login = ? OR ( cal_is_global = \'Y\'
       AND cal_show_in_trailer = \'Y\' ) ORDER BY cal_report_id',
-      array ( $login ) );
+      [$login] );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
@@ -268,10 +268,9 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       $grouplist = array_merge ( $admincals, $grouplist );
 
     if ( $is_admin && $PUBLIC_ACCESS == 'Y' ) {
-      $public = array (
+      $public = [
         'cal_login' => '__public__',
-        'cal_fullname' => $publicStr
-        );
+        'cal_fullname' => $publicStr];
       array_unshift ( $grouplist, $public );
     }
     $groups = '';

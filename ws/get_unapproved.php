@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php
 /**
  * Description:
  *  Web Service functionality to get unapproved events. This will list events
@@ -48,7 +48,7 @@ if ( $login != $user && $ALLOW_VIEW_OTHER != 'Y' ) {
     exit;
 }
 
-$sentIds = array();
+$sentIds = [];
 
 // Get users that this user can approve.
 $userList = get_users_to_approve();
@@ -93,14 +93,13 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 
   if ( ! empty ( $sentIds[$id] ) ) {
     if ( $WS_DEBUG )
-      ws_log_message ( str_replace ( array ( 'XXX', 'YYY' ),
-          array ( $id, $name ),
+      ws_log_message ( str_replace ( ['XXX', 'YYY'], [$id, $name],
           translate ('Event id=XXX YYY already sent.' ) ) );
     return '';
   } else {
     if ( $WS_DEBUG )
-      ws_log_message ( str_replace ( array ( 'XXX', 'YYY', 'ZZZ', 'AAA' ),
-          array ( $id, $name, $event_time, $event_date ),
+      ws_log_message ( str_replace ( ['XXX', 'YYY', 'ZZZ', 'AAA'],
+          [$id, $name, $event_time, $event_date],
           translate ( 'Event id=XXX YYY at ZZZ on AAA.' ) ) );
     $sentIds[$id] = true;
     return ws_print_event_xml ( $id, $event_date );
@@ -120,7 +119,7 @@ function get_unapproved ( $user ) {
     FROM webcal_entry we, webcal_entry_user weu
     WHERE we.cal_id = weu.cal_id AND weu.cal_login = ? AND weu.cal_status = \'W\'
     ORDER BY we.cal_date';
-  $rows = dbi_get_cached_rows ( $sql, array ( $user ) );
+  $rows = dbi_get_cached_rows ( $sql, [$user] );
   echo '
 <!-- SQL:
 ' . $sql . '
@@ -143,7 +142,7 @@ function get_unapproved ( $user ) {
 // Returns an array of logins.
 function get_users_to_approve() {
   global $is_admin, $login, $NONUSER_ENABLED, $PUBLIC_ACCESS, $user;
-  $app_user_hash = $app_users = $my_non_users = array();
+  $app_user_hash = $app_users = $my_non_users = [];
   $non_users = get_nonuser_cals();
   foreach ( $non_users as $nonuser ) {
     if ( user_is_nonuser_admin ( $login, $nonuser['cal_login'] ) ) {

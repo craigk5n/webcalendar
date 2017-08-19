@@ -184,7 +184,7 @@ function get_admins () {
   global $c, $db_host, $db_login, $db_password, $db_database;
 
   if ( ! empty ( $cached_admins ) ) return $cached_admins;
-  $cached_admins = array ();
+  $cached_admins = [];
 
   // if application is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
@@ -221,16 +221,16 @@ function user_get_users ( $publicOnly=false ) {
 
   $Admins = get_admins ();
   $count = 0;
-  $ret = array ();
+  $ret = [];
   if ( $PUBLIC_ACCESS == 'Y' )
-    $ret[$count++] = array (
+    $ret[$count++] = [
        'cal_login' => '__public__',
        'cal_lastname' => '',
        'cal_firstname' => '',
        'cal_is_admin' => 'N',
        'cal_email' => '',
        'cal_password' => '',
-       'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
+       'cal_fullname' => $PUBLIC_ACCESS_FULLNAME];
   if ( $publicOnly ) return $ret;
   // if application is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
@@ -242,14 +242,13 @@ function user_get_users ( $publicOnly=false ) {
       $flname = explode (' ',$row[1]);
       $fname = ( isset ( $flname[1] ) ? $flname[0] : $row[1] );
       $lname = ( isset ( $flname[1] ) ? $flname[1] : '' );
-      $ret[$count++] = array (
+      $ret[$count++] = [
         'cal_login' => $row[2],
         'cal_lastname' => $lname,
         'cal_firstname' => $fname,
         'cal_is_admin' => user_is_admin ($row[0],$Admins),
         'cal_email' => $row[3],
-        'cal_fullname' => $row[1]
-      );
+        'cal_fullname' => $row[1]];
     }
     dbi_free_result ( $res );
   }
@@ -270,7 +269,7 @@ function user_load_variables ( $login, $prefix ) {
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
-  $cached_user_var = array ();
+  $cached_user_var = [];
 
   if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
     nonuser_load_variables ( $login, $prefix );
@@ -385,7 +384,7 @@ function user_delete_user ( $user ) {
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
-  $delete_em = array ();
+  $delete_em = [];
   for ( $i = 0; $i < count ( $events ); $i++ ) {
     $res = dbi_query ( "SELECT COUNT(*) FROM webcal_entry_user " .
       "WHERE cal_id = " . $events[$i] );
@@ -416,7 +415,7 @@ function user_delete_user ( $user ) {
   dbi_query ( "DELETE FROM webcal_asst WHERE cal_assistant = '$user'" );
 
   // Delete user's views
-  $delete_em = array ();
+  $delete_em = [];
   $res = dbi_query ( "SELECT cal_view_id FROM webcal_view " .
     "WHERE cal_owner = '$user'" );
   if ( $res ) {

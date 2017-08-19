@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php
 /**
  * Description:
  *  Web Service functionality to get events.
@@ -73,8 +73,8 @@ $repeated_events = query_events ( $user, true,
 // Read non-repeating events (for all users).
 if ( $WS_DEBUG )
   $out .= '
-<!-- ' . str_replace ( array ( 'XXX', 'YYY', 'ZZZ' ),
-    array ( $user, $startdate, $enddate ),
+<!-- ' . str_replace ( ['XXX', 'YYY', 'ZZZ'],
+    [$user, $startdate, $enddate],
     translate ( 'Checking for events for XXX from date YYY to date ZZZ.' ) )
    . ' -->
 ';
@@ -95,8 +95,8 @@ function process_event ( $id, $name, $event_date, $event_time ) {
   global $out, $WS_DEBUG;
 
   if ( $WS_DEBUG )
-    ws_log_message ( str_replace ( array ( 'XXX', 'YYY', 'ZZZ', 'AAA' ),
-        array ( $id, $name, $event_time, $event_date ),
+    ws_log_message ( str_replace ( ['XXX', 'YYY', 'ZZZ', 'AAA'],
+        [$id, $name, $event_time, $event_date],
         translate ( 'Event id=XXX YYY at ZZZ on AAA.' ) ) );
 
   return ws_print_event_xml ( $id, $event_date );
@@ -115,14 +115,14 @@ $endtime = mktime ( 0, 0, 0,
   substr ( $enddate, 0, 4 ) );
 
 for ( $d = $starttime; $d <= $endtime; $d += 86400 ) {
-  $completed_ids = array();
+  $completed_ids = [];
   $date = date ( 'Ymd', $d );
   // $out .= "Date: $date\n";
   // Get non-repeating events for this date.
   // An event will be included one time for each participant.
   $ev = get_entries ( $date );
   // Keep track of duplicates.
-  $completed_ids = array();
+  $completed_ids = [];
   for ( $i = 0, $evCnt = count ( $ev ); $i < $evCnt; $i++ ) {
     $id = $ev[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )

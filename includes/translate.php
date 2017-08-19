@@ -15,7 +15,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: translate.php,v 1.88 2010/03/06 16:57:00 bbannon Exp $
  * @package WebCalendar
  */
 
@@ -63,7 +62,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
     die_miserable_death ( 'Could not open language file: ' . $in_file );
 
   $inInstallTrans = false;
-  $installationTranslations = array();
+  $installationTranslations = [];
 
   while ( ! feof ( $fp ) ) {
     $buffer = trim ( fgets ( $fp, 4096 ) );
@@ -76,7 +75,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
 
     // Convert quotes to entities.
     $buffer =
-    str_replace ( array ( '"', "'" ), array ( '&quot;', '&#39;' ), $buffer );
+    str_replace ( ['"', "'"], ['&quot;', '&#39;'], $buffer );
 
     // Skip comments.
     if ( substr ( $buffer, 0, 1 ) == '#' ) {
@@ -220,7 +219,7 @@ function load_translation_text() {
   }
 
   $new_install = ( ! strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
-  $translations = array();
+  $translations = [];
 
   // First set default $translations[]
   // by reading the base English-US.txt file or it's cache.
@@ -430,7 +429,7 @@ function etooltip ( $str, $decode = '' ) {
 function define_languages() {
   global $languages;
 
-  $languages = array (
+  $languages = [
     translate ( 'English' ) => 'English-US', // translate ( 'English-US' )
     translate ( 'Afrikaans' ) => 'Afrikaans',
     translate ( 'Albanian' ) => 'Albanian',
@@ -481,11 +480,11 @@ function define_languages() {
     translate ( 'Turkish' ) => 'Turkish',
     translate ( 'Welsh' ) => 'Welsh'
     // Add new languages here!
-    );
+    ];
     //Sort languages in translated order
     asort ( $languages );
     //make sure Browser Defined is first in list
-    $browser_defined = array ( translate ( 'Browser-defined' ) => 'none');
+    $browser_defined = [translate ( 'Browser-defined' ) => 'none'];
     $languages = array_merge ( $browser_defined, $languages );
 }
 
@@ -507,15 +506,16 @@ function languageToAbbrev ( $name ) {
 }
 
 /**
- *
-If the user sets "Browser-defined" as their language setting, then use the
-$HTTP_ACCEPT_LANGUAGE settings to determine the language. The array below
-maps browser language abbreviations into our available language files.
-NOTE:  These should all be lowercase on the left side even though the proper
-listing is like "en-US"!  Not sure what the abbreviation is?  Check out:
-http://www.geocities.com/click2speak/languages.html
-*/
-$browser_languages = array (
+ * If the user sets "Browser-defined" as their language setting, then use the
+ * $HTTP_ACCEPT_LANGUAGE settings to determine the language. The array below
+ * maps browser language abbreviations into our available language files.
+ * NOTE:  These should all be lowercase on the left side even though the proper
+ * listing is like "en-US"!  Not sure what the abbreviation is?  Check out:
+ * http://www.metamodpro.com/browser-language-codes
+ */
+// Craig. Why not just have the translation/*.txt files named 'de-at.txt' or whatever?
+// Would eliminate this whole array. And the function that calls it.
+$browser_languages = [
   'af' => 'Afrikaans',
   'ar' => 'Arabic',
   'bg' => 'Bulgarian',
@@ -569,7 +569,7 @@ $browser_languages = array (
   'zh-cn' => 'Chinese-GB2312',
   'zh-min-nan-tw' => 'Holo-Big5',
   'zh-tw' => 'Chinese-Big5', // Traditional Chinese
-  );
+  ];
 
 /*
 General purpose translations that may be used elsewhere

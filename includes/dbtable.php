@@ -1,4 +1,4 @@
-<?php // $Id: dbtable.php,v 1.25 2009/11/22 16:47:45 bbannon Exp $
+<?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 // This file contains some convenient functions for editing rows in a table.
@@ -85,7 +85,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
        . '>' . $tablear[$i]['prompt'] . ':</b>' ) . '</td>
                       <td style="vertical-align:top;">';
     if ( empty ( $tablear[$i]['noneditable'] ) && ! empty ( $action ) ) {
-      if ( in_array ( $tablear[$i]['type'], array ( 'float', 'int', 'text' ) ) )
+      if ( in_array ( $tablear[$i]['type'], ['float', 'int', 'text'] ) )
         $ret .= '
                         <input type="text" name="' . $tablear[$i]['name'] . '"'
          . ( empty ( $tablear[$i]['maxlength'] )
@@ -112,7 +112,7 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
         $ret .= '(type ' . $tablear[$i]['type'] . ' not supported)';
     } else {
       if ( ! empty ( $valuesar[$i] ) ) {
-        if ( in_array ( $tablear[$i]['type'], array ( 'float', 'int', 'text' ) ) )
+        if ( in_array ( $tablear[$i]['type'], ['float', 'int', 'text'] ) )
           $ret .= htmlentities ( $valuesar[$i] );
         elseif ( $tablear[$i]['type'] == 'boolean' )
           $ret .= ( empty ( $valuesar[$i] ) || $valuesar[$i] == 'Y'
@@ -194,7 +194,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
   }
   $ret .= '
                   </tr>';
-  $query_params = array();
+  $query_params = [];
   $sql = 'SELECT ' . $fields[0];
 
   for ( $i = 1; $i < $fieldcnt; $i++ ) {
@@ -286,7 +286,7 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
  */
 function dbtable_load ( $tablear, $tablename, $keys ) {
   $cnt = count ( $tablear );
-  $query_params = array();
+  $query_params = [];
   $ret = false;
   $sql = 'SELECT ';
 
@@ -334,7 +334,7 @@ function dbtable_load ( $tablear, $tablename, $keys ) {
   $res = dbi_execute ( $sql, $query_params );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
-      $ret = array();
+      $ret = [];
       for ( $i = 0; $i < $cnt; $i++ ) {
         $ret[$i] = $row[$i];
       }
@@ -367,7 +367,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
     exit;
   }
   $first = 1;
-  $query_params = array();
+  $query_params = [];
   $sql = 'DELETE FROM ' . $tablename . ' WHERE ';
   for ( $i = 0; $i < $cnt; $i++ ) {
     if ( ! empty ( $tablear[$i]['iskey'] ) ) {
@@ -403,7 +403,7 @@ function dbtable_delete ( $tablear, $tablename, $keys ) {
 function dbtable_add ( $tablear, $tablename, $valuesar ) {
   global $error;
 
-  $query_params = array();
+  $query_params = [];
   $ret = false;
   $sql = 'INSERT INTO ' . $tablename . ' (';
   if ( ! is_array ( $tablear ) ) {
@@ -459,7 +459,7 @@ function dbtable_add ( $tablear, $tablename, $valuesar ) {
 function dbtable_update ( $tablear, $tablename, $valuesar ) {
   global $error;
 
-  $query_params = array();
+  $query_params = [];
   $sql = 'UPDATE ' . $tablename . ' SET';
   if ( ! is_array ( $tablear ) ) {
     echo 'Error: dbtable_update parameter 1 is not an array!<br />' . "\n";
@@ -540,7 +540,7 @@ function dbtable_genid ( $tablename, $field ) {
  * @param $valuesar - array of values
  */
 function dbtable_build_name_index ( $tablear, $valuesar ) {
-  $ret = array();
+  $ret = [];
   for ( $i = 0, $cnt = count ( $tablear ); $i < $cnt; $i++ ) {
     $ret[$tablear[$i]['name']] = $valuesar[$i];
   }

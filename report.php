@@ -16,7 +16,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: report.php,v 1.82 2009/11/22 16:47:45 bbannon Exp $
  * @package WebCalendar
  * @subpackage Reports
  */
@@ -168,13 +167,13 @@ function event_to_text ( $event, $date ) {
 
   // Replace all variables in the event template.
   $text = str_replace (
-    array ( '${date}', '${dateYmd}', '${description}', '${duration}',
+     ['${date}', '${dateYmd}', '${description}', '${duration}',
       '${endtime}', '${fulldate}', '${fullname}', '${href}', '${id}',
       '${location}', '${name}', '${priority}', '${report_id}', '${starttime}',
-      '${time}', '${url}', '${user}' ),
-    array ( $date_str, $date, $description_str, $duration_str, $end_time_str,
+      '${time}', '${url}', '${user}'],
+     [$date_str, $date, $description_str, $duration_str, $end_time_str,
       $date_full_str, $fullname, $href_str, $id, $location, $name_str, $pri_str,
-      $report_id, $start_time_str, $time_str, $url, $tempLog ),
+      $report_id, $start_time_str, $time_str, $url, $tempLog],
     $event_template );
   $text = replace_site_extras_in_template ( $text,
     format_site_extras ( get_site_extra_fields ( $id ), EXTRA_DISPLAY_REPORT ) );
@@ -215,7 +214,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   $list = '';
   $sql = 'SELECT cal_report_id, cal_report_name FROM webcal_report
     WHERE cal_login = ';
-  $sql_params = array();
+  $sql_params = [];
   if ( $is_admin ) {
     if ( ! $updating_public ) {
       if ( $PUBLIC_ACCESS == 'Y' ) {
@@ -264,7 +263,8 @@ if ( empty ( $error ) && empty ( $list ) ) {
   $res = dbi_execute ( 'SELECT cal_login, cal_report_id, cal_is_global,
     cal_report_type, cal_include_header, cal_report_name, cal_time_range,
     cal_user, cal_allow_nav, cal_cat_id, cal_include_empty, cal_update_date
-    FROM webcal_report WHERE cal_report_id = ?', array ( $report_id ) );
+  FROM webcal_report
+  WHERE cal_report_id = ?', [$report_id] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[2] != 'Y' && $login != $row[0] )
@@ -312,7 +312,8 @@ $page_template = '<dl>${days}</dl>';
 // Load templates for this report.
 if ( empty ( $error ) && empty ( $list ) ) {
   $res = dbi_execute ( 'SELECT cal_template_type, cal_template_text
-    FROM webcal_report_template WHERE cal_report_id = ?', array ( $report_id ) );
+  FROM webcal_report_template
+  WHERE cal_report_id = ?', [$report_id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( $row[0] == 'D' )
@@ -450,8 +451,8 @@ if ( empty ( $error ) && empty ( $list ) ) {
       $date_full_str = date_to_str ( $dateYmd );
 
       $day_str .= str_replace (
-        array ( '${date}', '${events}', '${fulldate}', '${report_id}' ),
-        array ( $date_str, $event_str, $date_full_str, $report_id ),
+        ['${date}', '${events}', '${fulldate}', '${report_id}'],
+        [$date_str, $event_str, $date_full_str, $report_id],
         $day_template );
     }
   }

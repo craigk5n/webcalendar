@@ -1,4 +1,4 @@
-<?php // $Id: approve_entry.php,v 1.55.2.1 2012/02/28 15:43:09 cknudsen Exp $
+<?php
 include_once 'includes/init.php';
 require_valid_referring_url ();
 require ( 'includes/classes/WebCalMailer.class' );
@@ -69,8 +69,9 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $mail = new WebCalMailer;
   // Email event creator to notify that it was approved with comments.
   // Get the name of the event.
-  $res = dbi_execute ( 'SELECT cal_name, cal_description, cal_date, cal_time,
-    cal_create_by FROM webcal_entry WHERE cal_id = ?', array ( $id ) );
+  $res = dbi_execute ( 'SELECT cal_name, cal_description, cal_date, cal_time, cal_create_by
+  FROM webcal_entry
+  WHERE cal_id = ?', [$id] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $name = $row[0];
