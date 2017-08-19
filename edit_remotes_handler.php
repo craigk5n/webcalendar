@@ -1,4 +1,4 @@
-<?php // $Id: edit_remotes_handler.php,v 1.22.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 include_once 'includes/init.php';
 require_valid_referring_url ();
 include_once 'includes/xcal.php';
@@ -29,24 +29,24 @@ if ( ! empty ( $delete ) ) {
 
   // Delete any layers other users may have that point to this user.
   dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_layeruser = ?',
-    array ( $nid ) );
+    [$nid] );
 
   // Delete any UAC calendar access entries for this  user.
   dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
-    OR cal_other_user = ?', array ( $nid, $nid ) );
+    OR cal_other_user = ?', [$nid, $nid] );
 
   // Delete any UAC function access entries for this  user.
   dbi_execute ( 'DELETE FROM webcal_access_function WHERE cal_login = ?',
-    array ( $nid ) );
+   [$nid] );
 
   // Delete user.
   if ( ! dbi_execute ( 'DELETE FROM webcal_nonuser_cals WHERE cal_login = ?',
-      array ( $nid ) ) )
+     [$nid] ) )
     $error = db_error();
 } else {
   if ( ! empty ( $nid ) && ! empty ( $save ) ) {
     // Updating
-    $query_params = array();
+    $query_params = [];
     $sql = 'UPDATE webcal_nonuser_cals SET ';
     if ( $nlastname ) {
       $sql .= ' cal_lastname = ?, ';
@@ -73,7 +73,7 @@ if ( ! empty ( $delete ) ) {
       if ( ! dbi_execute ( 'INSERT INTO webcal_nonuser_cals ( cal_login,
         cal_firstname, cal_lastname, cal_admin, cal_is_public, cal_url )
         VALUES ( ?, ?, ?, ?, ?, ? )',
-          array ( $nid, $nfirstname, $nlastname, $nadmin, 'N', $nurl ) ) )
+        [$nid, $nfirstname, $nlastname, $nadmin, 'N', $nurl] ) )
         $error = db_error();
     } else
       $error = translate( 'Calendar ID' )
@@ -90,24 +90,24 @@ if ( ! empty ( $delete ) ) {
 
       dbi_execute ( 'INSERT INTO webcal_user_layers ( cal_layerid, cal_login,
         cal_layeruser, cal_color, cal_dups ) VALUES ( ?, ?, ?, ?, ? )',
-        array ( $layerid, $login, $nid, $layercolor, 'N' ) );
+        [$layerid, $login, $nid, $layercolor, 'N'] );
       $layer_found = true;
     }
   }
   // Add entry in UAC access table for new admin and remove for old admin.
   // First delete any record for this user/nuc combo.
   dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?
-    AND cal_other_user = ?', array ( $nadmin, $nid ) );
+    AND cal_other_user = ?', [$nadmin, $nid] );
   if ( ! dbi_execute ( 'INSERT INTO webcal_access_user ( cal_login,
     cal_other_user, cal_can_view, cal_can_edit, cal_can_approve, cal_can_invite,
     cal_can_email, cal_see_time_only ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )',
-      array ( $nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N' ) ) )
+      [$nadmin, $nid, 511, 511, 511, 'Y', 'Y', 'N'] ) )
     die_miserable_death ( translate ( 'Database error' ) . ': '
        . dbi_error() );
 }
 
 if ( ! empty ( $reload ) ) {
-  $data = array();
+  $data = [];
   $calUser = $nid;
   $overwrite = true;
   $type = 'remoteics';
@@ -169,10 +169,10 @@ function delete_events ( $nid ) {
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted.
-  $delete_em = array();
+  $delete_em = [];
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-      WHERE cal_id = ?', array ( $events[$i] ) );
+  WHERE cal_id = ?', [$events[$i]] );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( ! empty ( $row ) && $row[0] == 1 )
@@ -184,27 +184,27 @@ function delete_events ( $nid ) {
   // Now delete events that were just for this user.
   for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+     [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+     [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
-      array ( $delete_em[$i] ) );
+     [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+     [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+     [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+     [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id =? ',
-      array ( $delete_em[$i] ) );
+     [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+     [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+     [$delete_em[$i]] );
   }
   // Delete user participation from events.
   dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
-    array ( $nid ) );
+   [$nid] );
 }
 
 echo error_check ( 'users.php?tab=remotes', false );

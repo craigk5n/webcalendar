@@ -1,4 +1,4 @@
-<?php // $Id: set_entry_cat.php,v 1.45.2.1 2013/01/24 21:15:09 cknudsen Exp $
+<?php
 /**
  * Allows the setting of categories by each participant of an event.
  *
@@ -22,7 +22,8 @@ if ( empty ( $categories ) )
 
 // Make sure user is a participant.
 $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
-  WHERE cal_id = ? AND cal_login = ?', array ( $id, $login ) );
+  WHERE cal_id = ?
+    AND cal_login = ?', [$id, $login] );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     if ( $row[0] == 'D' ) // User deleted themself.
@@ -36,7 +37,7 @@ if ( $res ) {
   $error = db_error();
 
 $cat_id = getValue ( 'cat_id', '-?[0-9,\-]*', true );
-$cat_ids = $cat_name = array();
+$cat_ids = $cat_name = [];
 $catNames = '';
 
 // Get user's categories for this event.
@@ -54,7 +55,7 @@ if ( ! empty ( $categories ) ) {
 // Get event name and make sure event exists.
 $event_name = '';
 $res = dbi_execute ( 'SELECT cal_name FROM webcal_entry WHERE cal_id = ?',
-  array ( $id ) );
+  [$id] );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) )
     $event_name = $row[0];
@@ -69,10 +70,10 @@ if ( $res ) {
 // If this is the form handler, then save now
 if ( ! empty ( $cat_id ) && empty ( $error ) ) {
   dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?
-    AND ( cat_owner = ? )', array ( $id, $login ) );
+    AND ( cat_owner = ? )', [$id, $login] );
   $categories = explode ( ',', $cat_id );
 
-  $names = $sql_params = $values = array();
+  $names = $sql_params = $values = [];
   for ( $i = 0, $cnt = count ( $categories ); $i < $cnt; $i++ ) {
     // Don't process Global Categories.
     if ( $categories[$i] > 0 ) {

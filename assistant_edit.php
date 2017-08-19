@@ -1,4 +1,4 @@
-<?php // $Id: assistant_edit.php,v 1.41 2009/11/22 16:47:44 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {
@@ -38,7 +38,7 @@ echo '</h2>
 $users = get_my_users();
 // Get list of users for this view.
 $res = dbi_execute ( 'SELECT cal_boss, cal_assistant FROM webcal_asst
-   WHERE cal_boss = ?', array ( $user ) );
+  WHERE cal_boss = ?', [$user] );
 
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {

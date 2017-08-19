@@ -1,4 +1,4 @@
-<?php // $Id: help_uac.php,v 1.14 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
@@ -11,14 +11,13 @@ echo $helpListStr . '
       <h2>' . translate ( 'Help' ) . ': '
        . translate ( 'User Access Control' ) . '</h2>
       <p>' . $descStr . '</p>';
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Can Email' ) =>
   translate ( 'If disabled, this user cannot send you emails.' ),
   translate ( 'Can Invite' ) =>
   translate ( 'If disabled, this user cannot see you in the participants list.' ),
   translate ( 'Can See Time Only' ) =>
-  translate ( 'If enabled, this user cannot view the details of any of your entries.' ),
-  );
+  translate ( 'If enabled, this user cannot view the details of any of your entries.' )];
 list_help ( $tmp_arr );
 echo '
     </div>

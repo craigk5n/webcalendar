@@ -1,4 +1,4 @@
-<?php // $Id: export_handler.php,v 1.60.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 /**
  * Description:
  * Handler for exporting webcalendar events to various formats.
@@ -74,7 +74,8 @@ Name: ' . $row[1] . "\n";
 
 function get_cal_ent_extras ( $id, $from, $where = false ) {
   $res = dbi_execute ( 'SELECT * FROM ' . $from . 'WHERE cal_id = ?'
-     . ( $where ? ' AND ( ' . $where . ' )' : '' ), array ( $id ) );
+     . ( $where ? '
+    AND ( ' . $where . ' )' : '' ), [$id] );
   return ( $res ? ( dbi_fetch_row ( $res ) ) : ( false ) );
 }
 /**

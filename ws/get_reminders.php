@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php
 /**
  * Description:
  *  Web Service functionality for reminders.
@@ -127,8 +127,8 @@ function process_event ( $id, $name, $event_date, $event_time ) {
   global $CUTOFF, $site_extras, $WS_DEBUG;
   $out = '';
 
-  $debug = str_replace ( array ( 'XXX', 'YYY', 'ZZZ', 'AAA' ),
-    array ( $id, $name, $event_time, $event_date ),
+  $debug = str_replace ( ['XXX', 'YYY', 'ZZZ', 'AAA'],
+    [$id, $name, $event_time, $event_date],
     translate ( 'Event id=XXX YYY at ZZZ on AAA.' ) ) . "\n"
    . str_replace ( 'XXX', count ( $site_extras ),
     translate ( 'Number of site_extras XXX.' ) );
@@ -186,7 +186,7 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 }
 
 $out .= '
-<!-- ' . str_replace ( array ( 'XXX', 'YYY' ), array ( $user, $login ),
+<!-- ' . str_replace ( ['XXX', 'YYY'], [$user, $login],
   translate ( 'Reminders for user XXX, login YYY.' ) ) . ' -->
 ';
 
@@ -198,7 +198,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   // An event will be included one time for each participant.
   $ev = get_entries ( $date );
   // Keep track of duplicates.
-  $completed_ids = array();
+  $completed_ids = [];
   for ( $i = 0, $evCnt = count ( $ev ); $i < $evCnt; $i++ ) {
     $id = $ev[$i]->getID();
     if ( ! empty ( $completed_ids[$id] ) )

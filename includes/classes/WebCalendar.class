@@ -4,7 +4,6 @@
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: WebCalendar.class,v 1.137 2011/04/09 16:53:58 rjones6061 Exp $
  * @package WebCalendar
  */
 
@@ -50,29 +49,28 @@ class WebCalendar {
    * @todo Make it possible to distinguish between files in different directories
    * (e.g. login.php and ws/login.php).
    */
-  var $_filePhaseMap =
-  array ( '/^(about|nulogin|login|login-app|register|controlpanel|upcoming)\.php$/' =>
-    array (
-      array ( 'Config', 'PHPDBI', 'Functions' ),
-      array ( 'User', 'Connect' ) ),
+  var $_filePhaseMap = [
+    '/^(about|nulogin|login|login-app|register|controlpanel|upcoming)\.php$/' =>
+    [
+      ['Config', 'PHPDBI', 'Functions'],
+      ['User', 'Connect']],
     '/^(ajax|layers_ajax|events_ajax|users_ajax|autocomplete_ajax|css_cacher|js_cacher|icalclient|freebusy|publish|rss|rss_unapproved|rss_activity_log|get_reminders|get_events|ws)\.php$/' =>
-    array (
-      array ( 'Config', 'PHPDBI', 'Functions' ),
-      array ( 'User', 'Validate', 'Connect', 'SiteExtras', 'Access' ) ),
+    [
+      ['Config', 'PHPDBI', 'Functions'],
+      ['User', 'Validate', 'Connect', 'SiteExtras', 'Access']],
     '/^convert_passwords\.php$/' =>
-    array (
-      array ( 'Config', 'PHPDBI' ),
-      array() ),
+    [
+      ['Config', 'PHPDBI'],
+      []],
     '/^send_reminders|reload_remotes\.php$/' =>
-    array (
-      array ( 'Config', 'PHPDBI', 'Functions' ),
-      array ( 'User', 'SiteExtras' ) ),
+    [
+      ['Config', 'PHPDBI', 'Functions'],
+      ['User', 'SiteExtras']],
     /* This is for files which have called include('includes/init.php'). */
     '/^init\.php$/' =>
-    array (
-      array ( 'InitFirstPhase', 'Config', 'PHPDBI', 'Functions' ),
-      array ( 'User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase' ) )
-    );
+    [
+      ['InitFirstPhase', 'Config', 'PHPDBI', 'Functions'],
+      ['User', 'Validate', 'Connect', 'SiteExtras', 'Access', 'InitSecondPhase']]];
 
   /**
    * WebCalendar constructor.
@@ -142,9 +140,9 @@ class WebCalendar {
 
 
     // Several files need a no-cache header and some of the same code.
-    $special = array ( 'month.php', 'day.php', 'week.php', 'combo.php',
+    $special = ['month.php', 'day.php', 'week.php', 'combo.php',
       'week_details.php', 'year.php', 'minical.php', 'events_ajax.php',
-      'users_ajax.php', 'autocomplete_ajax.php' );
+      'users_ajax.php', 'autocomplete_ajax.php'];
     $DMW = in_array ( $SCRIPT, $special );
 
     // Unset some variables that shouldn't be set.
@@ -363,7 +361,7 @@ class WebCalendar {
      * @global array $days_per_month
      */
     $ldays_per_month =
-    $days_per_month = array ( 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
+    $days_per_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     $ldays_per_month[2] = 29;
 
     /**
@@ -371,14 +369,14 @@ class WebCalendar {
      *
      * @global array $weekday_names
      */
-    $weekday_names = array ( 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' );
+    $weekday_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     /**
      * Array containing the BYDAY names for the days of the week.
      *
      * @global array $byday_name
      */
-    $byday_names = array ( 'SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA' );
+    $byday_names = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
 
     /**
      * Array containing the number value of the days of the week.
@@ -426,7 +424,7 @@ class WebCalendar {
     $salt2 = md5( empty( $db_password ) ? 'oogabooga' : $db_password );
     $salt2_len = strlen ( $salt2 );
 
-    $offsets = array();
+    $offsets = [];
     for ( $i = 0; $i < $salt_len || $i < $salt2_len; $i++ ) {
       $offsets[$i] = 0;
       if ( $i < $salt_len )
@@ -662,7 +660,7 @@ class WebCalendar {
            . 'in <tt>includes/settings.php</tt>.' );
 
       $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_user
-        WHERE cal_login = ?', array ( $single_user_login ) );
+  WHERE cal_login = ?', [$single_user_login] );
       if ( ! $res ) {
         echo 'Database error: ' . dbi_error();
         exit;
@@ -672,7 +670,7 @@ class WebCalendar {
         // User specified as single_user_login does not exist.
         if ( ! dbi_execute ( 'INSERT INTO webcal_user ( cal_login, cal_passwd,
           cal_is_admin ) VALUES ( ?, ?, ? )',
-            array ( $single_user_login, md5 ( $single_user_login ), 'Y' ) ) )
+          [$single_user_login, md5 ( $single_user_login ), 'Y'] ) )
           die_miserable_death ( 'User <tt>' . $single_user_login
              . '</tt> does not exist in <tt>webcal_user</tt> table and we were '
              . 'not able to add it for you:<br /><blockquote>' . dbi_error()
@@ -889,7 +887,7 @@ class WebCalendar {
     global $access_other_cals;
 
     // Global variable used to cache permissions
-    $access_other_cals = array();
+    $access_other_cals = [];
   }
 
   /**
