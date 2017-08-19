@@ -5,7 +5,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: views.php,v 1.24 2009/11/22 16:47:46 bbannon Exp $
  * @package WebCalendar
  */
 
@@ -60,8 +59,8 @@ function view_get_user_list ( $view_id ) {
 
   // get users in this view
   $res = dbi_execute (
-    'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?', array ( $view_id ) );
-  $ret = array();
+    'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?', [$view_id] );
+  $ret = [];
   $all_users = false;
   if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -75,7 +74,7 @@ function view_get_user_list ( $view_id ) {
   }
   if ( $all_users ) {
     $users = get_my_users ( '', 'view' );
-    $ret = array();
+    $ret = [];
     $usercnt = count ( $users );
     for ( $i = 0; $i < $usercnt; $i++ ) {
       $ret[] = $users[$i]['cal_login'];
@@ -91,12 +90,12 @@ function view_get_user_list ( $view_id ) {
     // is not allowed to see.
     if ( ! empty ( $USER_SEES_ONLY_HIS_GROUPS ) &&
       $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-      $userlookup = array();
+      $userlookup = [];
       $myusercnt = count ( $myusers );
       for ( $i = 0; $i < $myusercnt; $i++ ) {
         $userlookup[$myusers[$i]['cal_login']] = 1;
       }
-      $newlist = array();
+      $newlist = [];
       $retcnt = count ( $ret );
       for ( $i = 0; $i < $retcnt; $i++ ) {
         if ( ! empty ( $userlookup[$ret[$i]] ) )
@@ -106,7 +105,7 @@ function view_get_user_list ( $view_id ) {
     }
 
     //Sort user list...
-    $sortlist = array();
+    $sortlist = [];
     $myusercnt = count ( $myusers );
     $retcnt = count ( $ret );
     for ( $i = 0; $i < $myusercnt; $i++ ) {
@@ -122,7 +121,7 @@ function view_get_user_list ( $view_id ) {
 
   // If user access control enabled, check against that as well.
   if( access_is_enabled() && ! $is_admin ) {
-    $newlist = array();
+    $newlist = [];
     $retcnt = count ( $ret );
     for ( $i = 0; $i < $retcnt; $i++ ) {
       if ( access_user_calendar ( 'view', $ret[$i] ) )

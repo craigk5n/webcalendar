@@ -4,7 +4,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
  * @package WebCalendar
  */
 
@@ -72,25 +71,24 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   // Get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user
     WHERE cal_id = ? AND cal_status IN (\'A\',\'W\') ORDER BY cal_login',
-    array ( $id ) );
-  $participants = array();
+    [$id] );
+  $participants = [];
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $participants[] = array (
+      $participants[] = [
         'cal_login' => $row[0],
-        'cal_status' => $row[1],
-        );
+        'cal_status' => $row[1]];
     }
   }
 
   // Get external participants.
-  $ext_participants = array();
+  $ext_participants = [];
   $num_ext_participants = 0;
   if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' && !
       empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == 'Y' ) {
     $res = dbi_execute ( 'SELECT cal_fullname, cal_email
       FROM webcal_entry_ext_user WHERE cal_id = ? AND cal_email IS NOT NULL
-      ORDER BY cal_fullname', array ( $id ) );
+      ORDER BY cal_fullname', [$id] );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $ext_participants[$num_ext_participants] = $row[0];
@@ -109,7 +107,9 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   // Get event details.
   $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
     cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, cal_name,
-    cal_description FROM webcal_entry WHERE cal_id = ?', array ( $id )
+    cal_description
+  FROM webcal_entry
+  WHERE cal_id = ?', [$id]
     );
   if ( ! $res ) {
     $out .= '

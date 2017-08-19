@@ -19,7 +19,7 @@
 function parse_gitlog ( $cal_file ) {
   global $errormsg, $tz;
 
-  $import_data = array();
+  $import_data = [];
 
   if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
     $errormsg .= 'Cannot read temporary file: ' . "$cal_file\n";
@@ -27,7 +27,7 @@ function parse_gitlog ( $cal_file ) {
   } else {
     $commitId = $author = $date = $message = '';
     $inMessage = false;
-    $matches = array ();
+    $matches = [];
     while ( ( $line = fgets ( $fd ) ) != false ) {
       $line = rtrim ( $line );
       if ( preg_match ( "/^commit\s+(\S+)/", $line, $matches ) ) {
@@ -69,7 +69,7 @@ function parseGitDate ( $dateStr ) {
 }
 
 function create_event_object ( $commitId, $author, $date, $message ) {
-  $obj = array ();
+  $obj = [];
 
   $obj['UID'] = $commitId;
   $obj['CalendarType'] = 'VEVENT'; // The default type

@@ -1,4 +1,4 @@
-<?php // $Id: autocomplete_ajax.php,v 1.2 2010/09/17 03:03:25 cknudsen Exp $
+<?php
 /**
  * Description
  *	Handler for AJAX requests for search suggestion (aka autocomplete)
@@ -74,7 +74,7 @@ if ( $action == 'search' ) {
   if ( substr ( $query, 0, $plen ) == $phrasedelim &&
     substr ( $query, $klen - $plen ) == $phrasedelim ) {
     $phrase = substr ( $query, $plen, $klen - ( $plen * 2 ) );
-    $words = array ( $phrase );
+    $words = [$phrase];
   } else {
     // remove starting quote if not end quote found (user is still typing)
     if ( substr ( $query, 0, $plen ) == $phrasedelim )
@@ -87,11 +87,10 @@ if ( $action == 'search' ) {
   $query = str_replace ( '"', '', $query );
   $words = explode ( ' ', $query );
   
-  $ret = array ();
-  $eventTitles = array ();
+  $eventTitles = $ret = [];
   $word_cnt = count ( $words );
   for ( $i = 0; $i < $word_cnt; $i++ ) {
-    $sql_params = array();
+    $sql_params = [];
     // Note: we only search approved/waiting events (not deleted).
     $sql = 'SELECT we.cal_id, we.cal_name, we.cal_date, weu.cal_login '
       . ( empty( $extra_filter ) ? '' : ', wse.cal_data ' )
@@ -132,21 +131,19 @@ if ( $action == 'search' ) {
     dbi_free_result ( $res );
   }
 
-  $sug = array ();
+  $data = $sug = [];
   for ( $i = 0; $i < count ( $ret ); $i++ ) {
     $sug[$i] = $ret[$i]['name'];
   }
-  $data = array ();
   for ( $i = 0; $i < count ( $ret ); $i++ ) {
     $data[$i] = $ret[$i]['text'];
   }
 
   $json = new Services_JSON();
-  $output = array (
+  $output = [
     "query" => $query,
     "suggestions" => $sug,
-    "data" => $data
-    );
+    "data" => $data];
   echo $json->encode($output);
 } else {
   ajax_send_error ( translate('Unknown error.') );

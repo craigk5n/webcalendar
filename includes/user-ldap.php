@@ -125,7 +125,7 @@ function user_load_variables ( $login, $prefix ) {
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];
-  $cached_user_var = array ();
+  $cached_user_var = [];
 
   if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) == $NONUSER_PREFIX ) {
     nonuser_load_variables ( $login, $prefix );
@@ -229,10 +229,11 @@ function user_delete_user ( $user ) {
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted
-  $delete_em = array ();
+  $delete_em = [];
   for ( $i = 0; $i < count ( $events ); $i++ ) {
-    $res = dbi_execute ( 'SELECT COUNT(*) FROM webcal_entry_user ' .
-      'WHERE cal_id = ?', array ( $events[$i] ) );
+    $res = dbi_execute ( 'SELECT COUNT( * )
+  FROM webcal_entry_user
+  WHERE cal_id = ?', [$events[$i]] );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) ) {
         if ( $row[0] == 1 )
@@ -244,43 +245,43 @@ function user_delete_user ( $user ) {
   // Now delete events that were just for this user
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
-      array( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
-      array( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
-      array( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
-      array( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id = ?',
-      array( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
-      array( $delete_em[$i] ) );
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
-      array( $delete_em[$i] ) );
+      [$delete_em[$i]] );
   }
 
   // Delete user participation from events
   dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   // Delete preferences
   dbi_execute ( 'DELETE FROM webcal_user_pref WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   // Delete from groups
   dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   // Delete bosses & assistants
   dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_boss = ?',
-    array ( $user ) );
+    [$user] );
   dbi_execute ( 'DELETE FROM webcal_asst WHERE cal_assistant = ?',
-    array ( $user ) );
+    [$user] );
   // Delete user's views
-  $delete_em = array ();
+  $delete_em = [];
   $res = dbi_execute ( 'SELECT cal_view_id FROM webcal_view WHERE cal_owner = ?',
-    array ( $user ) );
+    [$user] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $delete_em[] = $row[0];
@@ -289,39 +290,39 @@ function user_delete_user ( $user ) {
   }
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_view_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
   }
   dbi_execute ( 'DELETE FROM webcal_view WHERE cal_owner = ?',
-    array ( $user ) );
+    [$user] );
   //Delete them from any other user's views
   dbi_execute ( 'DELETE FROM webcal_view_user WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   // Delete layers
   dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   // Delete any layers other users may have that point to this user.
   dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_layeruser = ?',
-    array ( $user ) );
+    [$user] );
   // Delete user
   dbi_execute ( 'DELETE FROM webcal_user WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   // Delete function access
   dbi_execute ( 'DELETE FROM webcal_access_function WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   // Delete user access
   dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   dbi_execute ( 'DELETE FROM webcal_access_user WHERE cal_other_user = ?',
-    array ( $user ) );
+    [$user] );
   // Delete user's categories
   dbi_execute ( 'DELETE FROM webcal_categories WHERE cat_owner = ?',
-    array ( $user ) );
+    [$user] );
   dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cat_owner = ?',
-    array ( $user ) );
+    [$user] );
   // Delete user's reports
-  $delete_em = array ();
+  $delete_em = [];
   $res = dbi_execute ( 'SELECT cal_report_id FROM webcal_report WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $delete_em[] = $row[0];
@@ -330,16 +331,16 @@ function user_delete_user ( $user ) {
   }
   for ( $i = 0; $i < count ( $delete_em ); $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_report_template WHERE cal_report_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
   }
   dbi_execute ( 'DELETE FROM webcal_report WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
     //not sure about this one???
   dbi_execute ( 'DELETE FROM webcal_report WHERE cal_user = ?',
-    array ( $user ) );
+    [$user] );
   // Delete user templates
   dbi_execute ( 'DELETE FROM webcal_user_template WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
 }
 
 // Get a list of users and return info in an array.
@@ -350,16 +351,16 @@ function user_get_users ( $publicOnly=false ) {
 
   $Admins = get_admins ();
   $count = 0;
-  $ret = array ();
+  $ret = [];
   if ( $PUBLIC_ACCESS == 'Y' )
-    $ret[$count++] = array (
+    $ret[$count++] = [
        'cal_login' => '__public__',
        'cal_lastname' => '',
        'cal_firstname' => '',
        'cal_is_admin' => 'N',
        'cal_email' => '',
        'cal_password' => '',
-       'cal_fullname' => $PUBLIC_ACCESS_FULLNAME );
+       'cal_fullname' => $PUBLIC_ACCESS_FULLNAME];
   if ( $publicOnly ) return $ret;
   if ($r = connect_and_bind ()) {
     $sr = @ldap_search ( $ds, $ldap_base_dn, $ldap_user_filter, $ldap_user_attr );
@@ -369,14 +370,13 @@ function user_get_users ( $publicOnly=false ) {
       if ( (float)substr (PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, $ldap_user_attr[3]);
       $info = @ldap_get_entries( $ds, $sr );
       for ( $i = 0; $i < $info['count']; $i++ ) {
-        $ret[$count++] = array (
+        $ret[$count++] = [
           'cal_login' => $info[$i][$ldap_user_attr[0]][0],
           'cal_lastname' => $info[$i][$ldap_user_attr[1]][0],
           'cal_firstname' => $info[$i][$ldap_user_attr[2]][0],
           'cal_email' => $info[$i][$ldap_user_attr[4]][0],
           'cal_is_admin' => user_is_admin ($info[$i][$ldap_user_attr[0]][0],$Admins),
-          'cal_fullname' => $info[$i][$ldap_user_attr[3]][0]
-          );
+          'cal_fullname' => $info[$i][$ldap_user_attr[3]][0]];
       }
       @ldap_free_result($sr);
     }
@@ -409,11 +409,11 @@ function get_admins () {
   global $ldap_admin_group_name,$ldap_admin_group_attr,$ldap_admin_group_type;
 
   if ( ! empty ( $cached_admins ) ) return $cached_admins;
-  $cached_admins = array ();
+  $cached_admins = [];
 
   if ($r = connect_and_bind ()) {
     $search_filter = "($ldap_admin_group_attr=*)";
-    $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, array ($ldap_admin_group_attr) );
+    $sr = @ldap_search ( $ds, $ldap_admin_group_name, $search_filter, [$ldap_admin_group_attr] );
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {

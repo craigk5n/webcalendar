@@ -1,4 +1,4 @@
-<?php // $Id: rss.php,v 1.58 2010/10/05 17:16:59 cknudsen Exp $
+<?php
 /**
  * Description:
  * This script is intended to be used outside of normal WebCalendar use,
@@ -148,7 +148,7 @@ if ( $allow_user_override ) {
 load_user_preferences();
 
   // public entries only
-  $allow_access = array ( 'P' );
+  $allow_access = ['P'];
 
 // .
 // Determine what remote access has been set up by user.
@@ -257,11 +257,11 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>
 
 $endtimeYmd = date ( 'Ymd', $endTime );
 $numEvents = 0;
-$reventIds = array();
+$reventIds = [];
 for ( $i = $startTime; date ( 'Ymd', $i ) <= $endtimeYmd && $numEvents < $maxEvents;
   $i += 86400 ) {
   $d = date ( 'Ymd', $i );
-  $eventIds = array();
+  $eventIds = [];
   $pubDate = gmdate ( 'D, d M Y', $i );
 
   $entries = get_entries ( $d, false );

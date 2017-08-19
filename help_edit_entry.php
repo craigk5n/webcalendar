@@ -1,4 +1,4 @@
-<?php // $Id: help_edit_entry.php,v 1.33 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
@@ -7,12 +7,11 @@ echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': '
  . translate ( 'Adding/Editing Calendar Entries' ) . '</h2>';
 
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Brief Description' ) => translate ( 'brief-description-help' ),
   translate ( 'Full Description' ) => translate ( 'full-description-help' ),
   translate ( 'Date' ) => translate ( 'date-help' ),
-  translate ( 'Time' ) => translate ( 'time-help' ),
-  );
+  translate ( 'Time' ) => translate ( 'time-help' )];
 
 if ( $TIMED_EVT_LEN != 'E' )
   $tmp_arr[ translate ( 'Duration' ) ] = translate ( 'duration-help' );
@@ -35,11 +34,10 @@ if ( $DISABLE_REPEATING_FIELD != 'Y' ) {
   echo '
       <p><a class="underline" href="docs/WebCalendar-UserManual.html#repeat">'
    . translate ( 'For More Information...' ) . '</a></p>';
-  $tmp_arr = array (
+  $tmp_arr = [
     translate ( 'Repeat End Date' ) => translate ( 'repeat-end-date-help' ),
     translate ( 'Repeat Day' ) => translate ( 'repeat-day-help' ),
-    translate ( 'Frequency' ) => translate ( 'repeat-frequency-help' ),
-    );
+    translate ( 'Frequency' ) => translate ( 'repeat-frequency-help' )];
   list_help ( $tmp_arr );
 }
 echo print_trailer ( false, true, true );

@@ -6,7 +6,6 @@
  * @author Jeff Hoover
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: touch_of_grey_pref.php,v 1.5 2007/02/01 02:23:11 bbannon Exp $:
  * @package WebCalendar
  */
 
@@ -14,7 +13,7 @@
 // Any option in webcal_user_pref can be configured here.
 
 //This theme will be available to both normal users and System Settings.
-$webcal_theme = array (
+$webcal_theme = [
   'MENU_THEME'   => 'touch_of_grey',
   'BGCOLOR'      => '#E0E2EB',  // Document background
   'CELLBG'       => '#FFFFFF',  // Table cell background
@@ -30,7 +29,7 @@ $webcal_theme = array (
   'THFG'         => '#000000',  // Table header text
   'TODAYCELLBG'  => '#E0E2EB',  // Table cell background for current day
   'WEEKENDBG'    => '#F0F1F5',  // Table cell background for weekends
- );
+ ];
 
 include 'theme_inc.php';
 

@@ -13,7 +13,6 @@
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @package WebCalendar
- * @version $Id: list_unapproved.php,v 1.83.2.1 2012/02/28 15:43:10 cknudsen Exp $
  */
 
 include_once 'includes/init.php';
@@ -73,7 +72,7 @@ function list_unapproved ( $user ) {
     FROM webcal_entry we, webcal_entry_user weu
     WHERE we.cal_id = weu.cal_id AND weu.cal_login = ? AND weu.cal_status = \'W\'
     ORDER BY weu.cal_login, we.cal_date';
-  $rows = dbi_get_cached_rows ( $sql, array ( $user ) );
+  $rows = dbi_get_cached_rows ( $sql, [$user] );
   if ( $rows ) {
     $allDayStr = translate ( 'All day event' );
     $appConStr = translate ( 'Approve/Confirm' );
@@ -180,7 +179,7 @@ print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
 echo '
     <h2>' . translate ( 'Unapproved Entries' ) . '</h2>';
 
-$app_user_hash = $app_users = $my_non_users = array();
+$app_user_hash = $app_users = $my_non_users = [];
 $non_users = get_nonuser_cals();
 foreach ( $non_users as $nonuser ) {
   if ( user_is_nonuser_admin ( $login, $nonuser['cal_login'] ) )

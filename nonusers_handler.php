@@ -1,5 +1,4 @@
 <?php
-/* $Id: nonusers_handler.php,v 1.27 2009/11/22 16:47:45 bbannon Exp $ */
 include_once 'includes/init.php';
 load_user_layers();
 
@@ -27,10 +26,10 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
 
   // Now count number of participants in each event...
   // If just 1, then save id to be deleted.
-  $delete_em = array();
+  $delete_em = [];
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-      WHERE cal_id = ?', array ( $events[$i] ) );
+  WHERE cal_id = ?', [$events[$i]] );
     if ( $res ) {
       if ( $row = dbi_fetch_row ( $res ) && $row[0] == 1 )
         $delete_em[] = $events[$i];
@@ -41,24 +40,24 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
   // Now delete events that were just for this user
   for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
     dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
-      array ( $delete_em[$i] ) );
+      [$delete_em[$i]] );
   }
 
   // Delete user participation from events
   dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
-    array ( $user ) );
+    [$user] );
   // Delete any layers other users may have that point to this user.
   dbi_execute ( 'DELETE FROM webcal_user_layers WHERE cal_layeruser = ?',
-    array ( $user ) );
+    [$user] );
 
   // Delete user
   if ( ! dbi_execute ( 'DELETE FROM webcal_nonuser_cals WHERE cal_login = ?',
-      array ( $user ) ) )
+      [$user] ) )
     $error = db_error();
 } else {
   if ( $action == 'Save' || $action == translate ( 'Save' ) ) {
     // Updating
-    $sql_params = array();
+    $sql_params = [];
     $sql = 'UPDATE webcal_nonuser_cals SET';
     if ( $nlastname ) {
       $sql .= ' cal_lastname = ?,';
@@ -79,7 +78,7 @@ if ( $action == 'Delete' || $action == translate ( 'Delete' ) ) {
       $nid = $NONUSER_PREFIX . $nid;
       if ( ! dbi_execute ( 'INSERT INTO webcal_nonuser_cals ( cal_login,
         cal_firstname, cal_lastname, cal_admin ) VALUES ( ?, ?, ?, ? )',
-          array ( $nid, $nfirstname, $nlastname, $nadmin ) ) )
+          [$nid, $nfirstname, $nlastname, $nadmin] ) )
         $error = db_error();
     } else
       $error = translate ( 'Calendar ID' ) . ' '

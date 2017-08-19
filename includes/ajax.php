@@ -12,7 +12,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: ajax.php,v 1.5 2009/11/22 16:47:45 bbannon Exp $
  * @package WebCalendar
  */
 
@@ -34,12 +33,11 @@ function ajax_send_object ( $objectName, $object, $sendPlainText=false ) {
   else
     Header ( 'Content-Type: text/json' );
   $json = new Services_JSON();
-  $ret = array (
+  $ret = [
     "error" => 0,
     "status" => 'OK',
     "message" => '',
-    $objectName => $object
-    );
+    $objectName => $object];
   echo $json->encode($ret);
   return true;
 }
@@ -61,11 +59,10 @@ function ajax_send_objects ( $objectArray, $sendPlainText=false ) {
   else
     Header ( 'Content-Type: text/json' );
   $json = new Services_JSON();
-  $ret = array (
+  $ret = [
     "error" => 0,
     "status" => 'OK',
-    "message" => '',
-    );
+    "message" => ''];
   foreach ( $objectArray as $name => $value ) {
     $ret[$name] = $value;
   }
@@ -88,11 +85,10 @@ function ajax_send_success ( $sendPlainText=false ) {
   else
     Header ( 'Content-Type: text/json' );
   $json = new Services_JSON();
-  $ret = array (
+  $ret = [
     "error" => 0,
     "status" => 'OK',
-    "message" => ''
-    );
+    "message" => ''];
   echo $json->encode($ret);
   return true;
 }
@@ -115,11 +111,10 @@ function ajax_send_error ( $errorMessage, $sendPlainText=false ) {
   else
     Header ( 'Content-Type: text/json' );
   $json = new Services_JSON();
-  $ret = array (
+  $ret = [
     "error" => 1,
     "status" => 'ERROR',
-    "message" => $errorMessage
-    );
+    "message" => $errorMessage];
   echo $json->encode($ret);
   return true;
 }

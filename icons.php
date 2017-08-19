@@ -1,4 +1,4 @@
-<?php // $Id: icons.php,v 1.15 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 $icon_path = 'icons/';
 
@@ -10,7 +10,7 @@ if ( ! $can_edit )
 
 print_header ( array ( 'js/visible.php' ), '', '', true );
 
-$icons = array();
+$icons = [];
 
 if ( $d = dir ( $icon_path ) ) {
   while ( false !== ( $entry = $d->read() ) ) {

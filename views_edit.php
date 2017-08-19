@@ -1,4 +1,4 @@
-<?php // $Id: views_edit.php,v 1.61 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Page Description:
  * This page displays the views that the user currently owns and
@@ -64,7 +64,7 @@ if ( empty ( $viewname ) ) {
 $all_users = false;
 if ( ! $newview ) {
     $res = dbi_execute ( 'SELECT cal_login FROM webcal_view_user WHERE cal_view_id = ?',
-     array ( $id ) );
+     [$id] );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $viewuser[$row[0]] = 1;
@@ -83,7 +83,7 @@ if ( ! empty( $error ) ) {
 }
 
 if ( $newview ) {
-  $v = array();
+  $v = [];
   echo '<h2>' . translate ( 'Add View' ) . "</h2>\n";
   echo '<input type="hidden" name="add" value="1" />' . "\n";
 } else {
@@ -132,7 +132,7 @@ if ( $newview ) {
 $defIdx = ( ! empty ( $all_users ) && $all_users == true ? 'Y' : 'N' );
 echo '<tr><td><label class="colon">'
   . translate ( 'Users' ) . "</label></td>\n<td>"
-  . print_radio ( 'viewuserall', array ( 'N'=>'Selected', 'Y'=>'All'),
+  . print_radio ( 'viewuserall', ['N'=>'Selected', 'Y'=>'All'],
     'usermode_handler', $defIdx, '</td><td>' )
   . "</td></tr>\n";
 ?>
