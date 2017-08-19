@@ -108,8 +108,42 @@ final class FunctionsTest extends TestCase
       $this->assertEquals ( '12', date('H', $newtime) );
       $this->assertEquals ( $expDay, date('d', $newtime) );
     }
-  
   }
 
+  // TODO: test_build_entry_label
+
+  // Unit tests for calc_time_slot
+  // Function paramters:
+  // string $time        Input time in HHMMSS format
+  // bool   $round_down  Should we change 1100 to 1059?
+  public function test_calc_time_slot() {
+    date_default_timezone_set ( "America/New_York" );
+    global $TIME_SLOTS;
+
+    $TIME_SLOTS = 24; // 1 slot per hour
+    $this->assertEquals ( 0, calc_time_slot ( '000000', false ) );
+    $this->assertEquals ( 0, calc_time_slot ( '005900', false ) );
+    $this->assertEquals ( 0, calc_time_slot ( '010000', true ) );
+    $this->assertEquals ( 1, calc_time_slot ( '010000', false ) );
+    $this->assertEquals ( 12, calc_time_slot ( '120000', false ) );
+    $this->assertEquals ( 12, calc_time_slot ( '123000', false ) );
+    $this->assertEquals ( 12, calc_time_slot ( '125959', false ) );
+    $this->assertEquals ( 23, calc_time_slot ( '230000', false ) );
+    $this->assertEquals ( 23, calc_time_slot ( '235900', false ) );
+    $this->assertEquals ( 23, calc_time_slot ( '240000', true ) );
+
+    $TIME_SLOTS = 48; // 1 slot per half hour
+    $this->assertEquals ( 0, calc_time_slot ( '000000', false ) );
+    $this->assertEquals ( 1, calc_time_slot ( '005900', false ) );
+    $this->assertEquals ( 1, calc_time_slot ( '010000', true ) );
+    $this->assertEquals ( 2, calc_time_slot ( '010000', false ) );
+    $this->assertEquals ( 24, calc_time_slot ( '120000', false ) );
+    $this->assertEquals ( 25, calc_time_slot ( '123000', false ) );
+    $this->assertEquals ( 25, calc_time_slot ( '125959', false ) );
+    $this->assertEquals ( 46, calc_time_slot ( '230000', false ) );
+    $this->assertEquals ( 47, calc_time_slot ( '235900', false ) );
+    $this->assertEquals ( 47, calc_time_slot ( '240000', true ) );
+  }
+  
 
 }
