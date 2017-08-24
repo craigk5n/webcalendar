@@ -108,8 +108,8 @@ function do_config ( $fileLoc ) {
   $PROGRAM_URL, $PROGRAM_VERSION, $readonly, $run_mode, $settings, $single_user,
   $single_user_login, $TROUBLE_URL, $use_http_auth, $user_inc;
 
-  $PROGRAM_VERSION = 'v1.2.8';
-  $PROGRAM_DATE = '11 Aug 2017';
+  $PROGRAM_VERSION = 'v1.2.9';
+  $PROGRAM_DATE = '24 Aug 2017';
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
   $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
   $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';

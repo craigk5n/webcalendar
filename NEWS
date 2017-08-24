@@ -5,6 +5,8 @@ This file lists significant changes to WebCalendar.  For a more detailed
 list (that includes specific bugs fixed, please look at ChangeLog).
 
 ---------------------------------------------------------------------------
+Version 1.2.9 (24 Aug 2017)
+ - Fixed PHP compile error in login.php
 
 Version 1.2.8 (11 Aug 2017)
  - Cross-site scripting (XSS) fixes.

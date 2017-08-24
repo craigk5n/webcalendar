@@ -332,3 +332,5 @@ CREATE TABLE webcal_timezones (
 /*upgrade_v1.2.7*/
 
 /*upgrade_v1.2.8*/
+
+/*upgrade_v1.2.9*/
