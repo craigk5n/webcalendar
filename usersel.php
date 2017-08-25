@@ -57,7 +57,7 @@ ob_start ();
 echo '
     <script language="javascript" type="text/javascript">';
 
-include 'includes/js/usersel.php';
+include_once 'includes/js/usersel.php';
 
 echo '
     </script>

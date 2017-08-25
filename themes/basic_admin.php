@@ -20,6 +20,6 @@ $webcal_theme = array (
   'DISPLAY_WEEKENDS'      => 'N',
   );
 
-include 'theme_inc.php';
+include_once 'theme_inc.php';
 
 ?>

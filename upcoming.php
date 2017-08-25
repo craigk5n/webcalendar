@@ -89,15 +89,15 @@ require_once 'includes/classes/RptEvent.class';
 
 $WebCalendar = new WebCalendar ( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+include_once 'includes/config.php';
+include_once 'includes/dbi4php.php';
+include_once 'includes/formvars.php';
+include_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 
-include 'includes/' . $user_inc;
-include 'includes/site_extras.php';
+include_once 'includes/' . $user_inc;
+include_once 'includes/site_extras.php';
 
 //set default hCalendar but allow it to be overridden
 //this will include hidden values that can gleaned by hCalendar

@@ -39,18 +39,18 @@ require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar ( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
-include 'includes/access.php';
+include_once 'includes/config.php';
+include_once 'includes/dbi4php.php';
+include_once 'includes/formvars.php';
+include_once 'includes/functions.php';
+include_once 'includes/access.php';
 
 $WebCalendar->initializeFirstPhase ();
 
-include 'includes/' . $user_inc;
+include_once 'includes/' . $user_inc;
 
 include_once 'includes/validate.php';
-include 'includes/site_extras.php';
+include_once 'includes/site_extras.php';
 
 // This next step will send a redirect to login.php, which we don't want.
 $WebCalendar->initializeSecondPhase ();

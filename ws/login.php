@@ -18,7 +18,7 @@ $WebCalendar = new WebCalendar ( __FILE__ );
 
 $WebCalendar->initializeFirstPhase ();
 
-include __WC_INCLUDEDIR . '/' .$user_inc;
+include_once __WC_INCLUDEDIR . '/' .$user_inc;
 
 $WebCalendar->initializeSecondPhase ();
 

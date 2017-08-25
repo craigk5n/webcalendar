@@ -32,6 +32,6 @@ $webcal_theme = array (
   'WEEKENDBG'    => '#F0F1F5',  // Table cell background for weekends
  );
 
-include 'theme_inc.php';
+include_once 'theme_inc.php';
 
 ?>

@@ -23,8 +23,8 @@ require_once  __WC_INCLUDEDIR . '/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar ( __FILE__ );
 
-include __WC_INCLUDEDIR . '/config.php';
-include __WC_INCLUDEDIR . '/dbi4php.php';
+include_once __WC_INCLUDEDIR . '/config.php';
+include_once __WC_INCLUDEDIR . '/dbi4php.php';
 
 $WebCalendar->initializeFirstPhase();
 $WebCalendar->initializeSecondPhase();

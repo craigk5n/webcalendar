@@ -141,7 +141,7 @@ if ( $res ) {
 $translation_loaded = false;
 reset_language ( get_pref_setting ( $login, 'LANGUAGE' ) );
 //move this include here to allow proper translation
-include 'includes/date_formats.php';
+include_once 'includes/date_formats.php';
 
 //get list of menu themes
 $menuthemes = array ();

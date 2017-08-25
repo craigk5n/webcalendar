@@ -41,24 +41,24 @@
  * If $FREEBUSY_ENABLED is not 'Y' (set in each user' Preferences), do not allow.
  */
 
-include 'includes/translate.php';
+include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
 
 $WebCalendar = new WebCalendar ( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+include_once 'includes/config.php';
+include_once 'includes/dbi4php.php';
+include_once 'includes/formvars.php';
+include_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 
-include 'includes/' . $user_inc;
-include 'includes/validate.php';
-include 'includes/site_extras.php';
-include 'includes/xcal.php';
+include_once 'includes/' . $user_inc;
+include_once 'includes/validate.php';
+include_once 'includes/site_extras.php';
+include_once 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase ();
 

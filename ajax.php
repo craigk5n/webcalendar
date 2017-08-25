@@ -8,18 +8,18 @@ require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar ( __FILE__ );
 
-include 'includes/translate.php';
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+include_once 'includes/translate.php';
+include_once 'includes/config.php';
+include_once 'includes/dbi4php.php';
+include_once 'includes/formvars.php';
+include_once 'includes/functions.php';
 require_valide_referring_url ();
 
 $WebCalendar->initializeFirstPhase ();
 
-include 'includes/' . $user_inc;
-include 'includes/access.php';
-include 'includes/validate.php';
+include_once 'includes/' . $user_inc;
+include_once 'includes/access.php';
+include_once 'includes/validate.php';
 
 $WebCalendar->initializeSecondPhase ();
 

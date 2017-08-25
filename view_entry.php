@@ -13,12 +13,12 @@
  * (*) required field
  */
 include_once 'includes/init.php';
-include 'includes/xcal.php'; // only to display recurrance info
+include_once 'includes/xcal.php'; // only to display recurrance info
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.class';
-include 'includes/classes/DocList.class';
-include 'includes/classes/AttachmentList.class';
-include 'includes/classes/CommentList.class';
+include_once 'includes/classes/Doc.class';
+include_once 'includes/classes/DocList.class';
+include_once 'includes/classes/AttachmentList.class';
+include_once 'includes/classes/CommentList.class';
 
 // Make sure this user is allowed to look at this calendar.
 $can_approve = $can_edit = $can_view = false;

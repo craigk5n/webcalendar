@@ -52,16 +52,16 @@ require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar ( __FILE__ );
 
-include __WC_INCLUDEDIR . '/translate.php';
-include __WC_INCLUDEDIR . '/config.php';
-include __WC_INCLUDEDIR . '/dbi4php.php';
-include __WC_INCLUDEDIR . '/formvars.php';
-include __WC_INCLUDEDIR . '/functions.php';
+include_once __WC_INCLUDEDIR . '/translate.php';
+include_once __WC_INCLUDEDIR . '/config.php';
+include_once __WC_INCLUDEDIR . '/dbi4php.php';
+include_once __WC_INCLUDEDIR . '/formvars.php';
+include_once __WC_INCLUDEDIR . '/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 
-include __WC_INCLUDEDIR . '/' . $user_inc;
-include __WC_INCLUDEDIR . '/xcal.php';
+include_once __WC_INCLUDEDIR . '/' . $user_inc;
+include_once __WC_INCLUDEDIR . '/xcal.php';
 
 $WebCalendar->initializeSecondPhase ();
 // used for hCal parsing

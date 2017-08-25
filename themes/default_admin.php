@@ -132,6 +132,6 @@ $webcal_theme = array (
   'WORK_DAY_START_HOUR'              => '8',
   );
 
-include 'theme_inc.php';
+include_once 'theme_inc.php';
 
 ?>
