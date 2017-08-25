@@ -1898,6 +1898,7 @@ function format_date ( dateStr, showWeekday )
 
 // TODO: modify this to handle different time formats, timezones, etc...
 // The code for different timezones could get ugly here...
+// This is assumed to be the current local time in "HHMMSS" or "HHMM" format.
 function format_time ( timeStr, abbreviate )
 {
   if ( timeStr < 0 )

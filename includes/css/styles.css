@@ -1074,7 +1074,7 @@ tr.highlight td {
 #contentDay .hourblockright {
   position:absolute;
   left:3.125rem;
-  width:31.25rem;
+  width:100%;
   height:3.125rem;
   margin:0;
   border-right:1px solid #E0E0E0;

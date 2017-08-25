@@ -378,14 +378,9 @@ function setLocalTimes ( $eventList )
     if ( $event->getTime() <= 0 ) {
       $event->setLocalTime ( $event->getTime() );
     } else {
-      $localTime = display_time ( $event->getDatetime() );
-//      $localTime = display_time ( $event->getDatetime(),
-//        0, '', '24' );
-//echo "\ngetDateTime(): " . $event->getDatetime() . "\n";
-//echo "localTime1: $localTime\n";
-//      $localTime = substr ( $localTime, 0, 2 ) .
-//        substr ( $localTime, 3, 5 );
-//echo "localTime2: $localTime\n";
+      // Get time in local user time in HHMMSS format.
+      $localTime = display_time ( $event->getDatetime(), 0, '', '24' );
+      $localTime = str_replace ( ':', '', $localTime );
       $event->setLocalTime ( $localTime );
     }
   }
