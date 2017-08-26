@@ -609,11 +609,8 @@ if ( $can_edit ) {
    . translate ( 'Full Description' ) . ':</label></td>
               <td width="60%"><textarea name="description" id="entry_full" rows="'
    . $textareasize . '" cols="50"' . '>' . htmlspecialchars ( $description )
-   . '</textarea></td>' . ( $use_fckeditor || $use_htmlarea ? '
-            </tr>
-            <tr>
-              <td colspan="2"' : '
-              <td' ) . ' class="aligntop">'
+   . '</textarea></td>' 
+   . '<td class="aligntop">'
    . ( ! empty ( $categories ) || $DISABLE_ACCESS_FIELD != 'Y' ||
     ( $DISABLE_PRIORITY_FIELD != 'Y' )
     /* New table for extra fields. */ ? '
@@ -1687,20 +1684,7 @@ if ( $can_edit ) {
           </td>
         </tr>
       </table>
-      <input type="hidden" name="participant_list" value="" />'
-  // This bit should be moved to a webcal_fckconfig.js file.
-  // Then the current FCKEditor SVN version would probably work.
-  . ( $use_fckeditor ? '
-      <script type="text/javascript" '
-     . 'src="includes/FCKeditor-2.0/fckeditor.js"></script>
-      <script type="text/javascript">
-        var myFCKeditor = new FCKeditor ( \'description\' );
-
-        myFCKeditor.BasePath = \'includes/FCKeditor-2.0/\';
-        myFCKeditor.ToolbarSet = \'Medium\';
-        myFCKeditor.Config[\'SkinPath\'] = \'./skins/office2003/\';
-        myFCKeditor.ReplaceTextarea();
-      </script>' : '' ) . '
+      <input type="hidden" name="participant_list" value="" />
     </form>';
 
   if ( $id > 0 && ( $login == $create_by || $single_user == 'Y' || $is_admin ) )
