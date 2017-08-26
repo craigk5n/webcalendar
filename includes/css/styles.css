@@ -1190,6 +1190,10 @@ tr.highlight td {
   border:1px solid var(--tablebg);
   font-size:.75rem;
 }
+#login #save-cookies {
+  font-size:.66rem;
+  font-weight: normal;
+}
 .cookies {
   font-size:.8125rem;
 }
