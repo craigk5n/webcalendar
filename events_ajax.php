@@ -372,7 +372,7 @@ function setLocalTimes ( $eventList )
     $event = $eventList[$i];
     $d = date_to_str ( $event->getDate(), '__yyyy__,__n__,__dd__',
       false );
-    $args = split ( ',', $d );
+    $args = explode ( ',', $d );
     $localDate = sprintf ( "%04d%02d%02d", $args[0], $args[1], $args[2] );
     $event->setLocalDate ( $localDate );
     if ( $event->getTime() <= 0 ) {
