@@ -97,30 +97,14 @@ function do_v11b_updates() {
     WHERE cal_type = \'monthlybByDayR\'' );
   $res = dbi_execute ( 'SELECT cal_id, cal_days FROM webcal_entry_repeats ' );
   if ( $res ) {
+    $byday_names = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $row[1] ) && $row[1] != 'yyyyyyy' && $row[1] != 'nnnnnnn' ) {
         $byday = [];
-        if ( substr ( $row[1], 0, 1 ) == 'y' )
-          $byday[] = 'SU';
-
-        if ( substr ( $row[1], 1, 1 ) == 'y' )
-          $byday[] = 'MO';
-
-        if ( substr ( $row[1], 2, 1 ) == 'y' )
-          $byday[] = 'TU';
-
-        if ( substr ( $row[1], 3, 1 ) == 'y' )
-          $byday[] = 'WE';
-
-        if ( substr ( $row[1], 4, 1 ) == 'y' )
-          $byday[] = 'TH';
-
-        if ( substr ( $row[1], 5, 1 ) == 'y' )
-          $byday[] = 'FR';
-
-        if ( substr ( $row[1], 6, 1 ) == 'y' )
-          $byday[] = 'SA';
-
+        for ( $i = 0; $i < 7; $i++ ) {
+          if ( mb_substr ( $row[1], $i, 1 ) === 'y' )
+            $byday[] = $byday_names[$i];
+        }
         $bydays = implode ( ',', $byday );
         dbi_execute ( 'UPDATE webcal_entry_repeats SET cal_byday = ?
   WHERE cal_id = ?', [$bydays, $row[0]] );
@@ -133,9 +117,9 @@ function do_v11b_updates() {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $row[0] ) ) {
-        $dY = substr ( $row[0], 0, 4 );
-        $dm = substr ( $row[0], 4, 2 );
-        $dd = substr ( $row[0], 6, 2 );
+        $dY = mb_substr ( $row[0], 0, 4 );
+        $dm = mb_substr ( $row[0], 4, 2 );
+        $dd = mb_substr ( $row[0], 6, 2 );
         $new_date = date ( 'Ymd', gmmktime ( 0, 0, 0, $dm, $dd, $dY ) + 86400 );
         dbi_execute ( 'UPDATE webcal_entry_repeats SET cal_end = ?
   WHERE cal_id = ?', [$new_date, $row[1]] );
@@ -168,9 +152,9 @@ function do_v11e_updates() {
         continue;
 
       $date = $last_sent = $offset = $times_sent = 0;
-      if ( strlen ( $row[1] ) == 8 ) // cal_data is probably a date.
-        $date = mktime ( 0, 0, 0, substr ( $row[1], 4, 2 ),
-          substr ( $row[1], 6, 2 ), substr ( $row[1], 0, 4 ) );
+
+      if ( mb_strlen ( $row[1] ) === 8 ) // cal_data is probably a date.
+        $date = mktime ( 0, 0, 0, mb_substr ( $row[1], 4, 2 ), mb_substr ( $row[1], 6, 2 ), mb_substr ( $row[1], 0, 4 ) );
       else
         $offset = $row[1];
 
@@ -259,12 +243,12 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
       if ( ( $cal_time == -1 ) || ( $cal_time == 0 && $cal_duration == 1440 ) )
         continue;
       else {
-        $sy = substr ( $cal_date, 0, 4 );
-        $sm = substr ( $cal_date, 4, 2 );
-        $sd = substr ( $cal_date, 6, 2 );
-        $sh = substr ( $cal_time, 0, 2 );
-        $si = substr ( $cal_time, 2, 2 );
-        $ss = substr ( $cal_time, 4, 2 );
+        $sy = mb_substr ( $cal_date, 0, 4 );
+        $sm = mb_substr ( $cal_date, 4, 2 );
+        $sd = mb_substr ( $cal_date, 6, 2 );
+        $sh = mb_substr ( $cal_time, 0, 2 );
+        $si = mb_substr ( $cal_time, 2, 2 );
+        $ss = mb_substr ( $cal_time, 4, 2 );
 
         $new_datetime = ( empty ( $offset )
           ? mktime ( $sh, $si, $ss, $sm, $sd, $sy )
@@ -293,12 +277,12 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
       $cal_date = $row[0];
       $cal_time = sprintf ( "%06d", $row[1] );
       $cal_log_id = $row[2];
-      $sy = substr ( $cal_date, 0, 4 );
-      $sm = substr ( $cal_date, 4, 2 );
-      $sd = substr ( $cal_date, 6, 2 );
-      $sh = substr ( $cal_time, 0, 2 );
-      $si = substr ( $cal_time, 2, 2 );
-      $ss = substr ( $cal_time, 4, 2 );
+      $sy = mb_substr ( $cal_date, 0, 4 );
+      $sm = mb_substr ( $cal_date, 4, 2 );
+      $sd = mb_substr ( $cal_date, 6, 2 );
+      $sh = mb_substr ( $cal_time, 0, 2 );
+      $si = mb_substr ( $cal_time, 2, 2 );
+      $ss = mb_substr ( $cal_time, 4, 2 );
       $new_datetime = mktime ( $sh, $si, $ss, $sm, $sd, $sy );
       $new_cal_date = gmdate ( 'Ymd', $new_datetime );
       $new_cal_time = gmdate ( 'His', $new_datetime );
@@ -434,7 +418,8 @@ function get_installed_version ( $postinstall = false ) {
     WHERE cal_setting = "SERVER_URL"', [], false, $show_all_errors );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( ! empty ( $row[0] ) && strlen ( $row[0] ) )
+
+    if ( mb_strlen ( $row[0] ) )
       $_SESSION['server_url'] = $row[0];
 
     dbi_free_result ( $res );
@@ -462,9 +447,10 @@ function parse_sql ( $sql ) {
   $ret = [];
 
   $buffer_str = '';
-  for( $i = 0; $i < strlen ( $sql ); $i++ ) {
-    $buffer_str .= substr ( $sql, $i, 1 );
-    if ( substr ( $sql, $i, 1 ) == ';' ) {
+  for ( $i = 0; $i < mb_strlen ( $sql ); $i++ ) {
+    $buffer_str .= mb_substr ( $sql, $i, 1 );
+
+    if ( mb_substr ( $sql, $i, 1 ) === ';' ) {
       $ret[] = $buffer_str;
       $buffer_str = '';
     }
@@ -493,14 +479,12 @@ function db_populate ( $install_filename, $display_sql ) {
   // Discard everything up to the required point in the upgrade file.
   while ( ! feof ( $fd ) && empty ( $current_pointer ) ) {
     $data = trim ( fgets ( $fd, 4096 ), "\r\n " );
-    if ( strpos ( strtoupper ( $data ),
-          strtoupper ( $_SESSION['install_file'] ) ) ||
-        substr ( $_SESSION['install_file'], 0, 6 ) == 'tables' )
+
+    if ( mb_stripos ( $data, $_SESSION['install_file'] ) || mb_substr ( $_SESSION['install_file'], 0, 6 ) === 'tables' )
       $current_pointer = true;
   }
   // We already have a $data item from above.
-  if ( substr ( $data, 0, 2 ) == "/*" &&
-      substr ( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
+  if ( mb_substr ( $data, 0, 2 ) === '/*' && mb_substr ( $_SESSION['install_file'], 0, 6 ) !== 'tables' ) {
     // Do nothing...We skip over comments in upgrade files.
   } else
     $full_sql .= $data;
@@ -508,8 +492,7 @@ function db_populate ( $install_filename, $display_sql ) {
   // We need to strip out the comments from upgrade files.
   while ( ! feof ( $fd ) ) {
     $data = trim ( fgets ( $fd, 4096 ), "\r\n " );
-    if ( substr ( $data, 0, 2 ) == '/*' &&
-        substr ( $_SESSION['install_file'], 0, 6 ) != 'tables' ) {
+    if ( mb_substr ( $data, 0, 2 ) === '/*' && mb_substr ( $_SESSION['install_file'], 0, 6 ) !== 'tables' ) {
       // Do nothing...We skip over comments in upgrade files.
     } else
       $full_sql .= $data;

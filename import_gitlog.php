@@ -46,15 +46,17 @@ function parse_gitlog ( $cal_file ) {
       } else {
         // Everything else is the commit message
         $inMessage = true;
+
         // skip any leading blank lines
-        if ( strlen ( $message ) > 0 || strlen ( trim ( $line ) ) > 0 ) {
-          if ( strlen ( $message ) > 0 )
+        if ( mb_strlen ( $message ) || mb_strlen ( trim ( $line ) ) ) {
+          if ( mb_strlen ( $message ) )
             $message .= "\n";
+
           $message .= $line;
         }
       }
     }
-    if ( strlen ( $commitId ) > 0 ) {
+    if ( mb_strlen ( $commitId ) ) {
       $obj = create_event_object ( $commitId, $author, $date, $message );
       $import_data[] = $obj;
     }
@@ -78,7 +80,7 @@ function create_event_object ( $commitId, $author, $date, $message ) {
   // Summary should be first 6 chars of commit id and first line of
   // commit message.
   $messageLines = explode ( "\n", $message );
-  $summary = substr ( $commitId, 0, 6 ) . ' ' . $messageLines[0];
+  $summary = mb_substr ( $commitId, 0, 6 ) . ' ' . $messageLines[0];
   $obj['Summary'] = $summary; // Summary of event (string)
   $obj['Description'] = nl2br ( $message ); // Full Description (string)
   $obj['AlarmSet'] = 0; // 1 = true  0 = false

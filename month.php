@@ -1,4 +1,4 @@
-<?php // $Id: month.php,v 1.107 2010/04/06 19:50:22 cknudsen Exp $
+<?php
 include_once 'includes/init.php';
 
 //check UAC
@@ -17,13 +17,13 @@ load_user_categories();
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextYmd = date ( 'Ymd', $next );
-$nextyear = substr ( $nextYmd, 0, 4 );
-$nextmonth = substr ( $nextYmd, 4, 2 );
+$nextyear = mb_substr ( $nextYmd, 0, 4 );
+$nextmonth= mb_substr ( $nextYmd, 4, 2 );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevYmd = date ( 'Ymd', $prev );
-$prevyear = substr ( $prevYmd, 0, 4 );
-$prevmonth = substr ( $prevYmd, 4, 2 );
+$prevyear = mb_substr ( $prevYmd, 0, 4 );
+$prevmonth= mb_substr ( $prevYmd, 4, 2 );
 
 if ( $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $boldDays = true;
@@ -37,18 +37,19 @@ if ( $BOLD_DAYS_IN_YEAR == 'Y' ) {
 
 /* Pre-Load the repeated events for quicker access */
 $repeated_events = read_repeated_events (
-  ( ! empty ( $user ) && strlen ( $user ) )
-  ? $user : $login, $startdate, $enddate, $cat_id );
+  ( mb_strlen ( $user ) ? $user : $login ),
+  $startdate, $enddate, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access */
-$events = read_events ( ( ! empty ( $user ) && strlen ( $user ) )
-  ? $user : $login, $startdate, $enddate, $cat_id );
+$events = read_events (
+  ( mb_strlen ( $user ) ? $user : $login ),
+  $startdate, $enddate, $cat_id );
 
 if ( $DISPLAY_TASKS_IN_GRID == 'Y' )
   /* Pre-load tasks for quicker access */
-  $tasks = read_tasks ( ( ! empty ( $user ) && strlen ( $user ) &&
-    $is_assistant )
-    ? $user : $login, $enddate, $cat_id );
+  $tasks = read_tasks (
+    ( mb_strlen ( $user ) && $is_assistant ? $user : $login ),
+    $enddate, $cat_id );
 
 $tableWidth = '100%';
 $monthURL = 'month.php?' . ( ! empty ( $cat_id )

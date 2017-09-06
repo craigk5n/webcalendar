@@ -1,4 +1,4 @@
-<?php // $Id: day.php,v 1.85 2010/02/21 08:27:48 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 //check UAC
@@ -46,7 +46,7 @@ $events = read_events ( empty ( $user )
 
 if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   /* Pre-load tasks for quicker access */
-  $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user ) && $is_assistant
+  $tasks = read_tasks ( mb_strlen ( $user ) && $is_assistant
     ? $user : $login, $now, $cat_id );
 
 $smallTasks = ( $DISPLAY_TASKS == 'Y' ? '<div id="minitask">

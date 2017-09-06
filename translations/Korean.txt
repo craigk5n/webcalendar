@@ -7,8 +7,7 @@
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id: Korean.txt,v 1.35 2008/10/15 18:19:59 bbannon Exp $
-# Translation last updated on 10-14-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -20,7 +19,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: EUC-KR
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -47,331 +46,312 @@ __month__ __yyyy__: =
 ########################################
 # Page: about.php
 #
-Title: À¥ Ä¶¸°´õ
+Title: ì›¹ ìº˜ë¦°ë”
 
 ########################################
 # Page: access.php
 #
-Go: ½ÃÀÛ
-Save: ÀúÀå
-Admin: °ü¸®
-Public: °ø¿ë
-Confidential: ºñ¹Ğ
-Private: °³ÀÎ¿ë
+Go: ì‹œì‘
+Save: ì €ì¥
+Admin: ê´€ë¦¬
+Public: ê³µìš©
+Confidential: ë¹„ë°€
+Private: ê°œì¸ìš©
 
 ########################################
 # Page: activity_log.php
 #
-Next: ´ÙÀ½
+Next: ë‹¤ìŒ
 
 ########################################
 # Page: add_entry.php
 #
-confidential: ºñ¹Ğ
-private: °³ÀÎ¿ë
+confidential: ë¹„ë°€
+private: ê°œì¸ìš©
 
 ########################################
 # Page: admin.php
 #
-Week: ÁÖ
-Month: ¿ù
-Year: ÇØ
-Settings: ¼³Á¤
-Colors: »ö»ó
-Document background: ¹è°æ »ö»ó
-Document title: Á¦¸ñ »ö»ó
-Table cell background: Å×ÀÌºí ¼¿ ¹è°æ »ö»ó
-Table cell background for current day: ¿À´Ã ³¯Â¥ Ç¥½Ã »ö»ó
-Help: µµ¿ò¸»
-Language: ¾ğ¾î
-time-format-help: ½Ã°£ Ç¥½Ã Çü½ÄÀ» ¸í½ÃÇÕ´Ï´Ù.<br /><i>12 hour:</i>½Ã°£Ç¥½Ã°¡ 3am, 8:30pm, µîµîÀ¸·Î Ç¥½ÃµÊ<br /><i>24 hour:</i>½Ã°£Ç¥½Ã°¡ 300, 2030 µîµîÀ¸·Î Ç¥½ÃµÊ
-Time format: ½Ã°£ Ç¥½Ã Çü½Ä
-Duration: ±â°£
-work-hours-help: ÀÏº° È­¸é¿¡¼­ Ç¥½Ã´ë»ó½Ã°£À» ¸í½Ã
-Work hours: ±Ù¹« ½Ã°£
-From: ½ÃÀÛ
-to: Á¾·á
-display-week-number-help: ¿ùº° È­¸é°ú ÁÖº° È­¸é¿¡ ¸îÁÖÂ÷ÀÎ°¡(1~52) Ç¥½Ã¿©ºÎ¸¦ ¸í½Ã.
-Display week number: ¸îÁÖÂ÷ÀÎ°¡ Ç¥½Ã
-display-unapproved-help: ¹Ì½ÂÀÎµÈ Çà»ç°¡ ´Ş·Â»ó¿¡ Ç¥½ÃµÉ °ÍÀÎ°¡¸¦ ¸í½ÃÇÕ´Ï´Ù.<br /> "Yes"·Î ¼³Á¤½Ã ¹Ì½ÂÀÎµÈ Çà»çµµ Ç¥½ÃµË´Ï´Ù.(´Ù¸¥ »ö±ò·Î).<br />"No"·Î ¼³Á¤ÇÏ¸é ¹Ì½ÂÀÎ Çà»ç´Â ½ÂÀÎ ÈÄ¿¡¸¸ ´Ş·Â¿¡ Ç¥½ÃµË´Ï´Ù.
-Display unapproved: ½ÂÀÎ¾ÈµÈ Çà»ç Ç¥½Ã
-Yes: ¿¹
-No: ¾Æ´Ï¿À
+Week: ì£¼
+Month: ì›”
+Year: í•´
+Settings: ì„¤ì •
+Colors: ìƒ‰ìƒ
+Document background: ë°°ê²½ ìƒ‰ìƒ
+Document title: ì œëª© ìƒ‰ìƒ
+Table cell background: í…Œì´ë¸” ì…€ ë°°ê²½ ìƒ‰ìƒ
+Table cell background for current day: ì˜¤ëŠ˜ ë‚ ì§œ í‘œì‹œ ìƒ‰ìƒ
+Help: ë„ì›€ë§
+Language: ì–¸ì–´
+time-format-help: ì‹œê°„ í‘œì‹œ í˜•ì‹ì„ ëª…ì‹œí•©ë‹ˆë‹¤.<br /><i>12 hour:</i>ì‹œê°„í‘œì‹œê°€ 3am, 8:30pm, ë“±ë“±ìœ¼ë¡œ í‘œì‹œë¨<br /><i>24 hour:</i>ì‹œê°„í‘œì‹œê°€ 300, 2030 ë“±ë“±ìœ¼ë¡œ í‘œì‹œë¨
+Time format: ì‹œê°„ í‘œì‹œ í˜•ì‹
+Duration: ê¸°ê°„
+work-hours-help: ì¼ë³„ í™”ë©´ì—ì„œ í‘œì‹œëŒ€ìƒì‹œê°„ì„ ëª…ì‹œ
+Work hours: ê·¼ë¬´ ì‹œê°„
+From: ì‹œì‘
+to: ì¢…ë£Œ
+display-week-number-help: ì›”ë³„ í™”ë©´ê³¼ ì£¼ë³„ í™”ë©´ì— ëª‡ì£¼ì°¨ì¸ê°€(1~52) í‘œì‹œì—¬ë¶€ë¥¼ ëª…ì‹œ.
+Display week number: ëª‡ì£¼ì°¨ì¸ê°€ í‘œì‹œ
+display-unapproved-help: ë¯¸ìŠ¹ì¸ëœ í–‰ì‚¬ê°€ ë‹¬ë ¥ìƒì— í‘œì‹œë  ê²ƒì¸ê°€ë¥¼ ëª…ì‹œí•©ë‹ˆë‹¤.<br /> "Yes"ë¡œ ì„¤ì •ì‹œ ë¯¸ìŠ¹ì¸ëœ í–‰ì‚¬ë„ í‘œì‹œë©ë‹ˆë‹¤.(ë‹¤ë¥¸ ìƒ‰ê¹”ë¡œ).<br />"No"ë¡œ ì„¤ì •í•˜ë©´ ë¯¸ìŠ¹ì¸ í–‰ì‚¬ëŠ” ìŠ¹ì¸ í›„ì—ë§Œ ë‹¬ë ¥ì— í‘œì‹œë©ë‹ˆë‹¤.
+Display unapproved: ìŠ¹ì¸ì•ˆëœ í–‰ì‚¬ í‘œì‹œ
+Yes: ì˜ˆ
+No: ì•„ë‹ˆì˜¤
 
 ########################################
 # Page: adminhome.php
 #
-Preferences: È¯°æ ¼³Á¤
-Users: »ç¿ëÀÚ
-Account: °èÁ¤
-
-########################################
-# Page: approve_entry.php
-#
-Hello: ¾È³ç!
-Date: ÀÏÀÚ
-Time: ½Ã°¢
+Preferences: í™˜ê²½ ì„¤ì •
+Users: ì‚¬ìš©ì
+Account: ê³„ì •
 
 ########################################
 # Page: category.php
 #
-Delete: Áö¿ì±â
-Are you sure you want to delete this entry?: Á¤¸»·Î ÀÌ Ç×¸ñÀ» Áö¿ì½Ã°Ú½À´Ï±î?
+Delete: ì§€ìš°ê¸°
+Are you sure you want to delete this entry?: ì •ë§ë¡œ ì´ í•­ëª©ì„ ì§€ìš°ì‹œê² ìŠµë‹ˆê¹Œ?
 
 ########################################
-# Page: docadd.php
+# Page: combo.php
 #
-Description: ¼³¸í
+Description: ì„¤ëª…
+Date: ì¼ì
+Time: ì‹œê°
+Priority: ìš°ì„  ìˆœìœ„
+Access: ì ‘ê·¼
+Created by: ì‘ì„±ì:
+Updated: ê°±ì‹ ëœ
+Participants: ì°¸ê°€ì
+Brief Description: ìš”ì•½ ì„¤ëª…
+Full Description: ìƒì„¸ ì„¤ëª…
+Error: ì˜¤ë¥˜
+High: ë†’ìŒ
+Medium: ì¤‘ê°„
+Low: ë‚®ìŒ
+Today: ì˜¤ëŠ˜
+Add Entry: í•­ëª© ì¶”ê°€
+Unnamed Event: ì´ë¦„ì—†ëŠ” í–‰ì‚¬
 
 ########################################
 # Page: edit_entry.php
 #
-minutes: ºĞ
-Edit Entry: Ç×¸ñ ÆíÁı
-Add Entry: Ç×¸ñ Ãß°¡
-Participants: Âü°¡ÀÚ
-brief-description-help: Çà»çÀÇ °£·«ÇÑ ¼³¸í(¾à 20ÀÚ)ÀÔ´Ï´Ù. ´Ş·Â»óÀÇ Çà»ç¸¦ ³ªÅ¸³À´Ï´Ù.
-Brief Description: ¿ä¾à ¼³¸í
-full-description-help: Çà»çÀÇ ÀÚ¼¼ÇÑ ¼³¸íÀÔ´Ï´Ù.
-Full Description: »ó¼¼ ¼³¸í
-access-help: Çà»çÀÇ Á¢±Ù ¼öÁØÀ» ¸í½Ã.<br /> <i>°ø¿ë</i>: ¸ğµç »ç¶÷ÀÌ Çà»çÀÇ ¼¼ºÎ ³»¿ë±îÁö º¼ ¼ö ÀÖÀ½.<br /><i>ºñ¹Ğ</i>: Å¸ »ç¿ëÀÚ´Â ÀÏÀÚ¿Í ½Ã°¢À» º¼ ¼ö ÀÖÀ¸³ª ¼¼ºÎ »çÇ×Àº º¼ ¼ö ¾øÀ½.
-Access: Á¢±Ù
-priority-help: Çà»ç ¿ì¼±¼øÀ§ ¸í½Ã. ³ôÀº ¿ì¼±¼øÀ§ÀÇ Çà»ç´Â ±½Àº ±Û¾¾·Î Ç¥½ÃµË´Ï´Ù.
-Priority: ¿ì¼± ¼øÀ§
-High: ³ôÀ½
-Medium: Áß°£
-Low: ³·À½
-date-help: Çà»çÀÏÀ» ³ªÅ¸³À´Ï´Ù.
-time-help: Çà»ç ½Ã°¢ÀÔ´Ï´Ù.<br /><i>ÀÌ Ç×¸ñÀº ºñ¿öµÑ ¼ö ÀÖ½À´Ï´Ù.</i>
-duration-help: Çà»ç±â°£ ¸í½Ã(ºĞ´ÜÀ§)<br /><i>ÀÌ Ç×¸ñÀº ºñ¿öµÑ ¼ö ÀÖ½À´Ï´Ù.</i>
-participants-help: Âü°¡ÀÚÀÇ ¸ñ·Ï Ç¥½Ã.
-Delete entry: Ç×¸ñ Áö¿ì±â
-You are not authorized to edit this entry.: ÀÌ Ç×¸ñÀ» ÆíÁıÇÒ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.
+minutes: ë¶„
+Edit Entry: í•­ëª© í¸ì§‘
+brief-description-help: í–‰ì‚¬ì˜ ê°„ëµí•œ ì„¤ëª…(ì•½ 20ì)ì…ë‹ˆë‹¤. ë‹¬ë ¥ìƒì˜ í–‰ì‚¬ë¥¼ ë‚˜íƒ€ëƒ…ë‹ˆë‹¤.
+full-description-help: í–‰ì‚¬ì˜ ìì„¸í•œ ì„¤ëª…ì…ë‹ˆë‹¤.
+access-help: í–‰ì‚¬ì˜ ì ‘ê·¼ ìˆ˜ì¤€ì„ ëª…ì‹œ.<br /> <i>ê³µìš©</i>: ëª¨ë“  ì‚¬ëŒì´ í–‰ì‚¬ì˜ ì„¸ë¶€ ë‚´ìš©ê¹Œì§€ ë³¼ ìˆ˜ ìˆìŒ.<br /><i>ë¹„ë°€</i>: íƒ€ ì‚¬ìš©ìëŠ” ì¼ìì™€ ì‹œê°ì„ ë³¼ ìˆ˜ ìˆìœ¼ë‚˜ ì„¸ë¶€ ì‚¬í•­ì€ ë³¼ ìˆ˜ ì—†ìŒ.
+priority-help: í–‰ì‚¬ ìš°ì„ ìˆœìœ„ ëª…ì‹œ. ë†’ì€ ìš°ì„ ìˆœìœ„ì˜ í–‰ì‚¬ëŠ” êµµì€ ê¸€ì”¨ë¡œ í‘œì‹œë©ë‹ˆë‹¤.
+date-help: í–‰ì‚¬ì¼ì„ ë‚˜íƒ€ëƒ…ë‹ˆë‹¤.
+time-help: í–‰ì‚¬ ì‹œê°ì…ë‹ˆë‹¤.<br /><i>ì´ í•­ëª©ì€ ë¹„ì›Œë‘˜ ìˆ˜ ìˆìŠµë‹ˆë‹¤.</i>
+duration-help: í–‰ì‚¬ê¸°ê°„ ëª…ì‹œ(ë¶„ë‹¨ìœ„)<br /><i>ì´ í•­ëª©ì€ ë¹„ì›Œë‘˜ ìˆ˜ ìˆìŠµë‹ˆë‹¤.</i>
+participants-help: ì°¸ê°€ìì˜ ëª©ë¡ í‘œì‹œ.
+Delete entry: í•­ëª© ì§€ìš°ê¸°
+You are not authorized to edit this entry.: ì´ í•­ëª©ì„ í¸ì§‘í•  ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: »õ ¾à¼ÓÀÌ »ı¼ºµÇ¾ú½À´Ï´Ù. »ı¼ºÀÚ:
-The following conflicts with the suggested time: ´ÙÀ½ »çÇ×Àº Á¦½ÃµÈ ½Ã°£°ú °ãÄ¨´Ï´Ù.
-Please look on: ´ÙÀ½À» »ìÆìº¼ °Í-
-to accept or reject this appointment: ÀÌ ¾à¼ÓÀ» ¼ö¶ôÇÏ°Å³ª °ÅÀı
-to view this appointment: ÀÌ ¾à¼ÓÀ» º¸±â
-Your suggested time of: Á¦¾ÈÇÑ ½Ã°£
-conflicts with the following existing calendar entries: ´ÙÀ½°ú °°Àº Ç×¸ñ°ú °ãÄ¨´Ï´Ù.
+The following conflicts with the suggested time: ë‹¤ìŒ ì‚¬í•­ì€ ì œì‹œëœ ì‹œê°„ê³¼ ê²¹ì¹©ë‹ˆë‹¤.
+Your suggested time of: ì œì•ˆí•œ ì‹œê°„
+conflicts with the following existing calendar entries: ë‹¤ìŒê³¼ ê°™ì€ í•­ëª©ê³¼ ê²¹ì¹©ë‹ˆë‹¤.
 
 ########################################
 # Page: edit_nonusers.php
 #
-Add User: »ç¿ëÀÚ Ãß°¡
-Edit User: »ç¿ëÀÚ ÆíÁı
-First Name: ÀÌ¸§
-Last Name: ¼º
-
-########################################
-# Page: edit_remotes_handler.php
-#
-Error: ¿À·ù
+Add User: ì‚¬ìš©ì ì¶”ê°€
+Edit User: ì‚¬ìš©ì í¸ì§‘
+First Name: ì´ë¦„
+Last Name: ì„±
 
 ########################################
 # Page: edit_report.php
 #
-Today: ¿À´Ã
-Next month: ´ÙÀ½ ´Ş
-Current User: Çö »ç¿ëÀÚ
+Next month: ë‹¤ìŒ ë‹¬
+Current User: í˜„ ì‚¬ìš©ì
 
 ########################################
 # Page: edit_user.php
 #
-E-mail address: E-mail ÁÖ¼Ò
-Password: ºñ¹Ğ¹øÈ£
-Change Password: ºñ¹Ğ¹øÈ£ º¯°æ
-New Password: »õ ºñ¹Ğ¹øÈ£
-Set Password: ºñ¹Ğ¹øÈ£ ¼³Á¤
+E-mail address: E-mail ì£¼ì†Œ
+Password: ë¹„ë°€ë²ˆí˜¸
+Change Password: ë¹„ë°€ë²ˆí˜¸ ë³€ê²½
+New Password: ìƒˆ ë¹„ë°€ë²ˆí˜¸
+Set Password: ë¹„ë°€ë²ˆí˜¸ ì„¤ì •
 
 ########################################
 # Page: edit_user_handler.php
 #
-You have not entered a password.: ¾ÏÈ£¸¦ ÀÔ·ÂÇÏÁö ¾Ê¾Ò½À´Ï´Ù.
-
-########################################
-# Page: group_edit.php
-#
-Updated: °»½ÅµÈ
-Created by: ÀÛ¼ºÀÚ:
+You have not entered a password.: ì•”í˜¸ë¥¼ ì…ë ¥í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.
 
 ########################################
 # Page: help_admin.php
 #
-colors-help: ¸ğµç »ö»óÀº "#RRGGBB" °°Àº 16Áø¼ö Çü½ÄÀ¸·Î Ç¥½ÃÇØ¾ß ÇÕ´Ï´Ù. "RR" Àº Àû»ö, "GG"´Â ³ì»ö, "BB"´Â Ã»»öÀÇ 16Áø¼ö °ªÀÔ´Ï´Ù.
+colors-help: ëª¨ë“  ìƒ‰ìƒì€ "#RRGGBB" ê°™ì€ 16ì§„ìˆ˜ í˜•ì‹ìœ¼ë¡œ í‘œì‹œí•´ì•¼ í•©ë‹ˆë‹¤. "RR" ì€ ì ìƒ‰, "GG"ëŠ” ë…¹ìƒ‰, "BB"ëŠ” ì²­ìƒ‰ì˜ 16ì§„ìˆ˜ ê°’ì…ë‹ˆë‹¤.
 
 ########################################
 # Page: help_edit_entry.php
 #
-Adding/Editing Calendar Entries: ´Ş·Â Ç×¸ñÀÇ Ãß°¡/ÆíÁı
+Adding/Editing Calendar Entries: ë‹¬ë ¥ í•­ëª©ì˜ ì¶”ê°€/í¸ì§‘
 
 ########################################
 # Page: help_index.php
 #
-Help Index: µµ¿ò¸» ¸ñÂ÷
+Help Index: ë„ì›€ë§ ëª©ì°¨
 
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: Ç×¸ñ º¸±â
-Approve this entry?: ÀÌ Ç×¸ñÀ» ½ÂÀÎÇÔ.
+View this entry: í•­ëª© ë³´ê¸°
+Approve this entry?: ì´ í•­ëª©ì„ ìŠ¹ì¸í•¨.
 
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: ¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØ¾ß ÇÕ´Ï´Ù.
-Save login via cookies so I dont have to login next time.: ´ÙÀ½¹ø¿¡ ·Î±×ÀÎ ÇÒ ÇÊ¿ä°¡ ¾øµµ·Ï ·Î±×ÀÎ Á¤º¸ ÀúÀå.
-Login: ·Î±×ÀÎ
-cookies-note: <b>ÁÖ:</b> ÄíÅ°¸¦ ´Ù·ê ¼ö ÀÖ´Â ºê¶ó¿ìÀú°¡ ÇÊ¿äÇÕ´Ï´Ù.
+You must enter a login and password.: ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì•¼ í•©ë‹ˆë‹¤.
+Save login via cookies so I dont have to login next time.: ë‹¤ìŒë²ˆì— ë¡œê·¸ì¸ í•  í•„ìš”ê°€ ì—†ë„ë¡ ë¡œê·¸ì¸ ì •ë³´ ì €ì¥.
+Login: ë¡œê·¸ì¸
+cookies-note: <b>ì£¼:</b> ì¿ í‚¤ë¥¼ ë‹¤ë£° ìˆ˜ ìˆëŠ” ë¸Œë¼ìš°ì €ê°€ í•„ìš”í•©ë‹ˆë‹¤.
 
 ########################################
 # Page: pref.php
 #
-Save Preferences: È¯°æ¼³Á¤ ÀúÀå
+Save Preferences: í™˜ê²½ì„¤ì • ì €ì¥
 
 ########################################
 # Page: report.php
 #
-This event is confidential.: ÀÌ Çà»ç´Â ºñ¹ĞÇ×¸ñÀÔ´Ï´Ù.
+This event is confidential.: ì´ í–‰ì‚¬ëŠ” ë¹„ë°€í•­ëª©ì…ë‹ˆë‹¤.
 
 ########################################
 # Page: search.php
 #
-Search: °Ë»ö
-Keywords: °Ë»ö¾î
+Search: ê²€ìƒ‰
+Keywords: ê²€ìƒ‰ì–´
 
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: °Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.
-Search Results: °Ë»ö °á°ú
-match found: Ç×¸ñ ¹ß°ß
-matches found: Ç×¸ñ ¹ß°ß
-No matches found: Ã£Àº Ç×¸ñ ¾øÀ½
+You must enter one or more search keywords.: ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.
+Search Results: ê²€ìƒ‰ ê²°ê³¼
+match found: í•­ëª© ë°œê²¬
+matches found: í•­ëª© ë°œê²¬
+No matches found: ì°¾ì€ í•­ëª© ì—†ìŒ
 
 ########################################
 # Page: select_user.php
 #
-View Another Users Calendar: ´Ù¸¥ »ç¿ëÀÚÀÇ ´Ş·Â º¸±â
+View Another Users Calendar: ë‹¤ë¥¸ ì‚¬ìš©ìì˜ ë‹¬ë ¥ ë³´ê¸°
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: °ü¸®ÀÚ¸¦ ³ªÅ¸³¿
-Add New User: »õ »ç¿ëÀÚ Ãß°¡
+denotes administrative user: ê´€ë¦¬ìë¥¼ ë‚˜íƒ€ëƒ„
+Add New User: ìƒˆ ì‚¬ìš©ì ì¶”ê°€
 
 ########################################
 # Page: view_entry.php
 #
-Approve/Confirm entry: ÀÌ Ç×¸ñÀ» ½ÂÀÎ/È®ÀÎÇÔ
-This will delete this entry for all users.: ¸ğµç »ç¿ëÀÚµé¿¡¼­µµ ÀÌ Ç×¸ñÀÌ Áö¿öÁı´Ï´Ù.
-Edit entry: Ç×¸ñ ÆíÁı
+Approve/Confirm entry: ì´ í•­ëª©ì„ ìŠ¹ì¸/í™•ì¸í•¨
+This will delete this entry for all users.: ëª¨ë“  ì‚¬ìš©ìë“¤ì—ì„œë„ ì´ í•­ëª©ì´ ì§€ì›Œì§‘ë‹ˆë‹¤.
+Edit entry: í•­ëª© í¸ì§‘
 
 ########################################
 # Page: week_details.php
 #
-New Entry: »õ Ç×¸ñ
+New Entry: ìƒˆ í•­ëª©
 
 ########################################
 # Page: includes/access.php
 #
-Another Users Calendar: ´Ù¸¥ »ç¿ëÀÚ ´Ş·Â
+Another Users Calendar: ë‹¤ë¥¸ ì‚¬ìš©ì ë‹¬ë ¥
 
 ########################################
 # Page: includes/date_formats.php
 #
-December: 12¿ù
-Dec: 12¿ù
+December: 12ì›”
+Dec: 12ì›”
 
 ########################################
 # Page: includes/functions.php
 #
-WK: ÁÖ
-Printer Friendly: ÀÎ¼â¿ë È­¸é
-Generate printer-friendly version: ÀÎ¼â¿ë È­¸é »ı¼º
-January: 1¿ù
-February: 2¿ù
-March: 3¿ù
-April: 4¿ù
-May_: 5¿ù
-June: 6¿ù
-July: 7¿ù
-August: 8¿ù
-September: 9¿ù
-October: 10¿ù
-November: 11¿ù
-Jan: 1¿ù
-Feb: 2¿ù
-Mar: 3¿ù
-Apr: 4¿ù
-May: 5¿ù
-Jun: 6¿ù
-Jul: 7¿ù
-Aug: 8¿ù
-Sep: 9¿ù
-Oct: 10¿ù
-Nov: 11¿ù
-The following error occurred: ´ÙÀ½°ú °°Àº ¿À·ù ¹ß»ı:
-You are not authorized.: ±ÇÇÑÀÌ ¾ø½À´Ï´Ù:
-Unauthorized: ±ÇÇÑ ¾øÀ½
-Error approving event: Çà»ç ½ÂÀÎ Áß ¿¡·¯
-Sunday: ÀÏ¿äÀÏ
-Monday: ¿ù¿äÀÏ
-Tuesday: È­¿äÀÏ
-Wednesday: ¼ö¿äÀÏ
-Thursday: ¸ñ¿äÀÏ
-Friday: ±İ¿äÀÏ
-Saturday: Åä¿äÀÏ
-Sun: ÀÏ
-Mon: ¿ù
-Tue: È­
-Wed: ¼ö
-Thu: ¸ñ
-Fri: ±İ
-Sat: Åä
+Printer Friendly: ì¸ì‡„ìš© í™”ë©´
+Generate printer-friendly version: ì¸ì‡„ìš© í™”ë©´ ìƒì„±
+January: 1ì›”
+February: 2ì›”
+March: 3ì›”
+April: 4ì›”
+May_: 5ì›”
+June: 6ì›”
+July: 7ì›”
+August: 8ì›”
+September: 9ì›”
+October: 10ì›”
+November: 11ì›”
+Jan: 1ì›”
+Feb: 2ì›”
+Mar: 3ì›”
+Apr: 4ì›”
+May: 5ì›”
+Jun: 6ì›”
+Jul: 7ì›”
+Aug: 8ì›”
+Sep: 9ì›”
+Oct: 10ì›”
+Nov: 11ì›”
+The following error occurred: ë‹¤ìŒê³¼ ê°™ì€ ì˜¤ë¥˜ ë°œìƒ:
+You are not authorized.: ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤:
+Unauthorized: ê¶Œí•œ ì—†ìŒ
+Sunday: ì¼ìš”ì¼
+Monday: ì›”ìš”ì¼
+Tuesday: í™”ìš”ì¼
+Wednesday: ìˆ˜ìš”ì¼
+Thursday: ëª©ìš”ì¼
+Friday: ê¸ˆìš”ì¼
+Saturday: í† ìš”ì¼
+Sun: ì¼
+Mon: ì›”
+Tue: í™”
+Wed: ìˆ˜
+Thu: ëª©
+Fri: ê¸ˆ
+Sat: í† 
 
 ########################################
 # Page: includes/trailer.php
 #
-Add New Entry: »õ Ç×¸ñ Ãß°¡
-Back to My Calendar: ³» ´Ş·ÂÀ¸·Î µ¹¾Æ°¡±â
-Go to: °¡±â
+Add New Entry: ìƒˆ í•­ëª© ì¶”ê°€
+Back to My Calendar: ë‚´ ë‹¬ë ¥ìœ¼ë¡œ ëŒì•„ê°€ê¸°
+Go to: ê°€ê¸°
 
 ########################################
 # Page: includes/translate.php
 #
-event: Çà»ç
-
-########################################
-# Page: includes/xcal.php
-#
-Unnamed Event: ÀÌ¸§¾ø´Â Çà»ç
+event: í–‰ì‚¬
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
 #
-Notification: Åëº¸
-
-########################################
-# Page: includes/js/admin.php
-#
-Invalid color for document background.: ¹è°æ »ö»ó Æ²¸²
-Invalid color for document title.: Á¦¸ñ »ö»ó Æ²¸²
-Invalid color for table cell background.: Å×ÀÌºí ¼¿ ¹è°æ»ö Æ²¸²
-Invalid color for table cell background for today.: ¿À´Ã ³¯Â¥ Ç¥½Ã »ö»ó Æ²¸²
-Color format should be RRGGBB.: »ö»ó Çü½ÄÀº '#RRGGBB' ÀÌ¾î¾ß ÇÕ´Ï´Ù. ¿¹)"#FF0000" (»¡°­)
+Notification: í†µë³´
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: ¿ä¾à ¼³¸íÀ» ÀÔ·ÂÇÏÁö ¾Ê¾Ò½À´Ï´Ù.
-You have not entered a valid time of day: À¯È¿ÇÑ ÀÏÀÚ/½Ã°¢ÀÌ ¾Æ´Õ´Ï´Ù.
+You have not entered a Brief Description: ìš”ì•½ ì„¤ëª…ì„ ì…ë ¥í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.
+You have not entered a valid time of day: ìœ íš¨í•œ ì¼ì/ì‹œê°ì´ ì•„ë‹™ë‹ˆë‹¤.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Color format should be RRGGBB.: ìƒ‰ìƒ í˜•ì‹ì€ '#RRGGBB' ì´ì–´ì•¼ í•©ë‹ˆë‹¤. ì˜ˆ)"#FF0000" (ë¹¨ê°•)
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: ë°°ê²½ ìƒ‰ìƒ í‹€ë¦¼
+Invalid color for document title.: ì œëª© ìƒ‰ìƒ í‹€ë¦¼
+Invalid color for table cell background.: í…Œì´ë¸” ì…€ ë°°ê²½ìƒ‰ í‹€ë¦¼
+Invalid color for table cell background for today.: ì˜¤ëŠ˜ ë‚ ì§œ í‘œì‹œ ìƒ‰ìƒ í‹€ë¦¼
 
 ########################################
 # Page: includes/menu/index.php
 #
-Unapproved Events: ¹Ì½ÂÀÎ Çà»ç
+Unapproved Events: ë¯¸ìŠ¹ì¸ í–‰ì‚¬

@@ -1,4 +1,4 @@
-<?php // $Id: register.php,v 1.50.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 
@@ -52,7 +52,7 @@ $form_control = ( $SELF_REGISTRATION_FULL == 'Y' ? 'email' : 'full' );
 function checks( $isWhat, $isWher ) {
   global $control, $error;
 
-  if( ! strlen( $isWhat ) ) {
+  if ( ! mb_strlen ( $isWhat ) ) {
     $error = ( $isWher == 'login'
       ? translate( 'Username cannot be blank.' )
       : translate( 'Email address cannot be blank.' ) );
@@ -85,7 +85,7 @@ function generate_password() {
   srand( ( double ) microtime() * 1000000 );
   $i = 0;
   while( $i < $pass_length ) {
-    $pass .= substr( $salt, rand() % 33, 1 );
+    $pass .= mb_substr ( $salt, rand () % 33, 1 );
     $i++;
   }
   return $pass;
@@ -162,8 +162,8 @@ if( empty( $error ) && ! empty( $control ) ) {
       $uemail, $uis_admin );
 
     $tempName = trim( $ufirstname . ' ' . $ulastname );
-    $msg = str_replace( ', XXX.',
-      ( strlen( $tempName ) ? ', ' . $tempName . '.' : '.' ),
+    $msg = str_replace ( 'XXX',
+      ( mb_strlen ( $tempName ) ? $tempName : $user ),
       translate( 'Hello, XXX.' ) ) . "\n\n"
      . translate( 'A new WebCalendar account has been set up for you.' )
      . "\n\n"

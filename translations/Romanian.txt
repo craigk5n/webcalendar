@@ -8,8 +8,7 @@
 # by: Catalin Constantin <catalin@dazoot.ro>
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
-# $Id: Romanian.txt,v 1.27 2008/12/28 16:22:34 bbannon Exp $
-# Translation last updated on 10-14-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -21,7 +20,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-2
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -53,7 +52,6 @@ Title: =
 ########################################
 # Page: access.php
 #
-Database error: Eroare in baza de date
 Go: Schimb&#259;
 Save: Salveaz&#259;
 Public Access: Acces public
@@ -76,7 +74,6 @@ Previous: Anterioara
 #
 confidential: confiden&#355;ial
 private: privat
-Error adding event: Eroare la ad&#259;ugarea evenimentului
 
 ########################################
 # Page: admin.php
@@ -113,7 +110,6 @@ server-url-help: Specific&#259; URL-ul de baz&#259; al aplica&#355;iei. Acesta v
 Server URL: URL-ul serverului
 language-help: Specific&#259; ce limba s&#259; se foloseasc&#259;.
 Language: Limba
-Your browser default language is: Limba implicit&#259; a browserului t&#259;u este
 None: Nici una
 custom-script-help: Permite ad&#259;ugarea de text javascript/stylesheet care s&#259; fie inserat in sec&#355;iunea "head" a HTML-ului fiec&#259;rei pagini.
 Custom script/stylesheet: Folose&#351;te un script/stylesheet propriu
@@ -253,15 +249,6 @@ Unapproved Public Events: Evenimente publice neaprobate
 Administrative Tools: Unelte administrative
 
 ########################################
-# Page: approve_entry.php
-#
-Hello: Buna
-The subject was: Subiectul era
-The description is: Descrierea este
-Date: Data
-Time: Ora
-
-########################################
 # Page: assistant_edit.php
 #
 Admin mode: Modul 'administrator'
@@ -290,41 +277,44 @@ Remove: &#350;terge
 Cancel: Anuleaz&#259;
 
 ########################################
-# Page: del_entry.php
-#
-An appointment has been canceled for you by: O programare de-a ta a fost anulat&#259; de c&#259;tre
-
-########################################
-# Page: docadd.php
+# Page: combo.php
 #
 Description: Descriere
+Date: Data
+Time: Ora
+Priority: Prioritate
+Access: Acces
+Created by: Creat&#259; de
+Updated: Actualizat&#259;
+Participants: Participan&#355;i
+Brief Description: Scurt&#259; descriere
+Full Description: Descriere detaliat&#259;
+Category: Categorie
+All: Toate
+Error: Eroare
+High: Ridicat&#259;
+Medium: Medie
+Low: Scazut&#259;
+Today: Ast&#259;zi
+Add Entry: Adaug&#259; eveniment
+Unnamed Event: Eveniment f&#259;r&#259; nume
+pm: =
+am: =
 
 ########################################
 # Page: edit_entry.php
 #
-am: =
-pm: =
 days: zile
 hours: ore
 minutes: minute
 Edit Entry: Editeaz&#259; eveniment
-Add Entry: Adaug&#259; eveniment
 Details: Detalii
-Participants: Participan&#355;i
 Repeat: Repet&#259;
 brief-description-help: Aceasta ar trebui s&#259; fie o scurt&#259; descriere (cam 20 de litere) a evenimentului. Aceasta va reprezenta evenimentul c&#226;nd ne uitam &#238;n calendar.
-Brief Description: Scurt&#259; descriere
 full-description-help: Aceasta ar trebui s&#259; descrie complet evenimentul. Aceste informa&#355;tii pot fi v&#259;zute c&#226;nd utilizatorul cite&#351;te despre eveniment.
-Full Description: Descriere detaliat&#259;
 access-help: Specific&#259; nivelul de acces pentru un eveniment dat.<br /> <i>Public</i>: Oricine poate vedea toate detaliile evenimentului.<br /><i>Confidential</i>: Al&#355;ii pot vedea c&#259; ai notat&#259; o data &#351;i or&#259;, dar nu pot citi detaliile.
-Access: Acces
 priority-help: Specific&#259; prioritatea evenimentului. Evenimentele cu prioritate ridicat&#259; vor fi afi&#351;ate cu litere ingro&#351;ate.
-Priority: Prioritate
-High: Ridicat&#259;
-Medium: Medie
-Low: Scazut&#259;
 category-help: Specific&#259; tipul evenimentului.
-Category: Categorie
 URL: =
 date-help: Specific&#259; data evenimentului.
 Untimed event: Eveniment far&#259; ora fixata
@@ -348,7 +338,6 @@ repeat-end-date-help: Specific&#259; p&#226;n&#259; la ce dat&#259; s&#259; se r
 Use end date: Folose&#351;te data final&#259;
 repeat-frequency-help: Spune c&#226;t de des un eveniment trebuie repetat. Cifra implicit&#259; 1 arat&#259; ca trebuie repetat de fiecare dat&#259;. Specific&#226;nd 2 va face ca evenimentul s&#259; se repete la fiecare dou&#259; s&#259;pt&#259;m&#226;ni (dac&#259; <i>Tipul repeti&#355;iei</i> este <i>S&#259;pt&#259;m&#226;nal&#259;</i>), din dou&#259; &#238;n dou&#259; luni (dac&#259; <i>Tipul repeti&#355;iei</i> este <i>Lunar&#259;</i>), etc.
 Frequency: Frecven&#355;a
-All: Toate
 Send Reminder: Trimite aducere-aminte
 Delete entry: &#350;terge aceast&#259; &#238;nregistrare
 You are not authorized to edit this entry.: Nu e&#351;ti autorizat(&#259;) s&#259; editezi acest eveniment
@@ -356,32 +345,10 @@ You are not authorized to edit this entry.: Nu e&#351;ti autorizat(&#259;) s&#25
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: O nou&#259; programare a fost facut&#259; pentru tine de c&#259;tre
-An appointment has been updated by: O programare a fost re&#238;nnoit&#259; de c&#259;tre
 The following conflicts with the suggested time: Urmatoarele sunt &#238;n conflict cu ora sugerat&#259;
-Please look on: Te rog uit&#259;-te la
-to accept or reject this appointment: pentru a accepta sau refuza aceast&#259; programare
-to view this appointment: pentru a vedea aceast&#259; programare
 Scheduling Conflict: Conflict de orare
 Your suggested time of: Ora sugerat&#259; pentru tine de
 conflicts with the following existing calendar entries: este &#238;n conflict cu urm&#259;toarele evenimente din acest calendar
-
-########################################
-# Page: edit_layer.php
-#
-Add Layer: Adaug&#259; stratul
-Edit Layer: Editeaz&#259; stratul
-Source: Sursa
-Duplicates: Duplicate
-Show layer events that are the same as your own: Afi&#351;eaz&#259; evenimentele din acest strat care sunt identice cu ale tale
-Add to My Calendar: Adaug&#259; la calendarul meu
-Delete layer: &#350;terge stratul
-
-########################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself.: Nu po&#355;i crea un strat pentru tine insu&#355;i
-You can only create one layer for each user.: Po&#355;i crea un singur strat per utilizator
 
 ########################################
 # Page: edit_nonusers.php
@@ -395,9 +362,13 @@ First Name: Prenume
 Last Name: Nume (de familie)
 
 ########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Eroare in baza de date
+
+########################################
 # Page: edit_remotes_handler.php
 #
-Error: Eroare
 Import Results: Rezultatul importului
 Events successfully imported: Evenimentele au fost importate cu succes
 Errors: Erori
@@ -407,7 +378,6 @@ There was an error parsing the import file or no events were returned.: Eroare l
 # Page: edit_report.php
 #
 Tomorrow: M&#226;ine
-Today: Ast&#259;zi
 Yesterday: Ieri
 Day before yesterday: Alalt&#259;ieri
 Next week: S&#259;pt&#259;m&#226;na urm&#259;toare
@@ -426,7 +396,6 @@ Next year: Anul urmator
 This year: Anul acesta
 Last year: Anul trecut
 Year before last: Cu doi ani &#238;n urm&#226;
-Invalid report id.: ID-ul acestui raport este invalid
 Unnamed Report: Raport fara nume
 Add Report: Adaug&#259; raport
 Edit Report: Editeaz&#259; raport
@@ -442,11 +411,6 @@ Page template: &#350;sblonul paginii
 Day template: &#350;sblonul zilei
 Event template: &#350;sblonul evenimentului
 Are you sure you want to delete this report?: Sigur vrei s&#259; &#351;tergi acest raport?
-
-########################################
-# Page: edit_report_handler.php
-#
-Variable N not found: Variabila N nu a fost gasit&#259;
 
 ########################################
 # Page: edit_template.php
@@ -503,8 +467,6 @@ Unnamed Group: Far&#259; nume
 Add Group: Adaug&#259; grup
 Edit Group: Editeaz&#259; grup
 Group name: Numele grupului
-Updated: Actualizat&#259;
-Created by: Creat&#259; de
 
 ########################################
 # Page: group_edit_handler.php
@@ -544,13 +506,9 @@ repeat-day-help: Specifica &#238;n ce zile ale saptamanii s&#259; se repete even
 #
 Import: Import&#259;
 Palm Desktop: =
-This form will allow you to import entries from the Palm Desktop Datebook.: Acest formular &#238;&#355;i permite s&#259; impor&#355;i &#238;nregistr&#259;ri dintr-un Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Ar trebui s&#259; fie localizat &#238;n directorul <tt>datebook/datebook.dat</tt> de pe Palm, &#238;ntr-un subdirector cu numele t&#259;u de utilizator.
 The following entries will not be imported: Urmatoarele date nu vor fi importate
 Entries older than the current date: &#206;nregistr&#259;ri mai vechi dec&#226;t data curent&#259;
 Entries created in the Palm Desktop...: &#206;nregistr&#259;ri create pe Palm dar care nu au fost HotSync-ate
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Orice a fost importat de pe Palm va fi rescris la urmatorul import (dac&#259; data nu este trecut&#259;).
-Therefore, updates should be made in the Palm Desktop.: De aceea actualiz&#259;rile ar trebui f&#259;cute pe Palm Desktop.
 vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Acest formular va importa evenimente de tip vCalendar (.vcs) 1.0
 The following formats have been tested: Au fost testate urm&#259;toarele formate
@@ -571,8 +529,10 @@ Clicking the Edit Layers link in the admin section at the bottom of the page wil
 The text color of the new layer that will be displayed in your calendar.: Culoarea textului noului strat a&#351;a cum se va vedea &#238;n calendarul t&#259;u.
 Disabling: Dezactivare
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Urmeaz&#259; linkul "Dezactiveaz&#259;" din sec&#355;iunea "Admin" din josul paginii ca s&#259; suprimi straturile.
+Duplicates: Duplicate
 If checked, events that are duplicates of your events will be shown.: Dac&#259; bifezi aici, vei vedea &#351;i evenimentele care sunt duplicate alor tale.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Urmeaz&#259; linkul "Activeaz&#259;" din sec&#355;iunea "Admin" din josul paginii ca s&#259; activezi straturile.
+Source: Sursa
 Specifies the user that you would like to see displayed in your calendar.: Specific&#259; utilizatorul pe care ai vrea s&#259;-l vezi &#238;n calendarul t&#259;u.
 
 ########################################
@@ -604,11 +564,20 @@ The import file contained no data.: Fisierul importat nu con&#355;ine date
 ########################################
 # Page: layers.php
 #
-Layer: Strat
-Edit layer: Editeaz&#259; stratul
 Are you sure you want to delete this layer?: Sigur vrei s&#259; &#351;tergi acest strat?
+Delete layer: &#350;terge stratul
+Edit layer: Editeaz&#259; stratul
+Layer: Strat
 Disable Layers: Dezactiveaz&#259; straturile
 Add layer: Adaug&#259; un strat
+Add Layer: Adaug&#259; stratul
+Edit Layer: Editeaz&#259; stratul
+
+########################################
+# Page: layers_ajax.php
+#
+You cannot create a layer for yourself.: Nu po&#355;i crea un strat pentru tine insu&#355;i
+You can only create one layer for each user.: Po&#355;i crea un singur strat per utilizator
 
 ########################################
 # Page: list_unapproved.php
@@ -625,13 +594,13 @@ Reject this entry?: Refuz&#259;?
 You must enter a login and password.: Este nevoie de login &#351;i parol&#259;
 Save login via cookies so I dont have to login next time.: Salveaz&#259; loginul &#238;ntr-un cookie pentru data viitoare
 Login: =
-Access public calendar: Acceseaz&#259; calendarul public
 cookies-note: <b>Nota:</b> Aceast&#259; aplica&#355;ie necesit&#259; cookie-uri.
 
 ########################################
 # Page: login.php
 #
 Invalid login: Login invalid
+Access public calendar: Acceseaz&#259; calendarul public
 
 ########################################
 # Page: nonusers.php
@@ -655,22 +624,15 @@ Delete all events before: &#350;terge toate evenimentele dinainte de
 Are you sure you want to delete events for: Sigur vrei s&#259; &#351;tergi evenimentele lui
 
 ########################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: O programare a fost refuzat&#259; de c&#259;tre
-
-########################################
 # Page: report.php
 #
 This event is confidential.: Acest eveniment este confiden&#355;ial
-cont.: =
 Approved: Aprobat
 Deleted: Stears&#259;
 Rejected: Refuzat&#259;
 Waiting for approval: Astept&#226;nd aprobare
 Unknown: Necunoscut
-Click here: F&#259; click aici
-to manage reports for the Public Access calendar: pentru a administra rapoartele din calendarul cu acces public
+Invalid report id.: ID-ul acestui raport este invalid
 Add new report: Adaug&#259; un nou raport
 Manage Reports: Administreaza rapoartele
 
@@ -750,6 +712,7 @@ External User: Utilizator extern
 Approve/Confirm entry: Aprob&#259;/Confirm&#259; &#238;nregistrarea
 Reject entry: Refuz&#259; &#238;nregistrarea
 Set category: Specific&#259; o categorie
+Add to My Calendar: Adaug&#259; la calendarul meu
 Copy entry: Copiaz&#259; aceast&#259; &#238;nregistrare
 This will delete this entry for all users.: Aceasta va &#351;terge &#238;nregistrarea pentru to&#355;i utilizatorii.
 Edit entry: Editeaz&#259; aceast&#259; &#238;nregistrare
@@ -770,6 +733,7 @@ Palm Pilot: =
 # Page: week_details.php
 #
 New Entry: Nou eveniment
+cont.: =
 
 ########################################
 # Page: includes/access.php
@@ -826,7 +790,6 @@ Add N hours to: Adaug&#259; N ore la
 Subtract N hours from: Scade N ore din
 same as: la fel ca
 server time: ora serverului
-Error approving event: Eroare la aprobarea evenimentului
 Sunday: Duminic&#259;
 Monday: Luni
 Tuesday: Mar&#355;i
@@ -899,7 +862,6 @@ no such user: utilizator inexistent
 ########################################
 # Page: includes/xcal.php
 #
-Unnamed Event: Eveniment f&#259;r&#259; nume
 Event Imported: Eveniment importat
 
 ########################################
@@ -920,23 +882,6 @@ provide_address: Trebuie sa adaugati cel putin un recipient (adresa de mail).
 recipients_failed: Eroare SMTP: Urmatoarele adrese de mail au dat eroare:
 
 ########################################
-# Page: includes/js/admin.php
-#
-Server URL is required.: Este necesar URL-ul serverului
-Server URL must end with /.: URL-ul serverului trebuie s&#259; se termine &#238;n '/'
-Invalid work hours.: Ore de lucru invalide
-Invalid color for document background.: Culoare invalid&#259; pentru fundalul documentului
-Invalid color for document title.: Culoare invalid&#259; pentru titlul documentului
-Invalid color for table cell background.: Culoare invalid&#259; pentru fundalul casu&#355;elor tabelului
-Invalid color for table grid.: Culoare invalid&#259; pentru liniile tabelului
-Invalid color for table header background.: Culoare invalid&#259; pentru fundalul legendei tabelului
-Invalid color for table text background.: Culoare invalid&#259; pentru fundalul textului tabelului
-Invalid color for event popup background.: Culoare invalid&#259; pentru fundalul popup-urilor
-Invalid color for event popup text.: Culoare invalid&#259; pentru textul popup-urilor
-Invalid color for table cell background for today.: Culoare invalid&#259; pentru fundalul casu&#355;ei de azi a tabelului
-Color format should be RRGGBB.: Formatul culorii trebuie s&#259; fie '#RRGGBB'
-
-########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Nu ai scris o scurt&#259; descriere
@@ -944,9 +889,29 @@ time prior to work hours...: Ora pe care ai dat-o este inainte de orele tale pre
 You have not entered a valid time of day: Nu ai specificat o or&#259; corect&#259;
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/js/edit_remotes.php
 #
 Invalid color: Culoare invalid&#259;
+Color format should be RRGGBB.: Formatul culorii trebuie s&#259; fie '#RRGGBB'
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Culoare invalid&#259; pentru fundalul documentului
+Invalid color for document title.: Culoare invalid&#259; pentru titlul documentului
+Invalid color for table cell background.: Culoare invalid&#259; pentru fundalul casu&#355;elor tabelului
+Invalid color for table cell background for today.: Culoare invalid&#259; pentru fundalul casu&#355;ei de azi a tabelului
+Invalid work hours.: Ore de lucru invalide
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL-ul serverului trebuie s&#259; se termine &#238;n '/'
+Invalid color for table grid.: Culoare invalid&#259; pentru liniile tabelului
+Invalid color for event popup background.: Culoare invalid&#259; pentru fundalul popup-urilor
+Invalid color for event popup text.: Culoare invalid&#259; pentru textul popup-urilor
+Invalid color for table header background.: Culoare invalid&#259; pentru fundalul legendei tabelului
+Server URL is required.: Este necesar URL-ul serverului
 
 ########################################
 # Page: includes/menu/index.php

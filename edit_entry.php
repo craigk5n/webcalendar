@@ -1,4 +1,4 @@
-<?php // $Id: edit_entry.php,v 1.227 2010/08/27 05:15:57 cknudsen Exp $
+<?php
 /**
  * Description:
  * Presents page to edit/add an event/task/journal
@@ -165,8 +165,7 @@ $create_by = $login;
 // We could override it and use $byday_names[$WEEK_START'].
 $wkst = 'MO';
 
-$real_user = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
-  ( $is_assistant || $is_admin ) ) ? $user : $login;
+$real_user = ( mb_strlen ( $user ) && ( $is_assistant || $is_admin ) ? $user : $login );
 
 print_header ( $INC, $HEAD, $BodyX );
 
@@ -228,11 +227,11 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $cal_url = $row[16];
 
     // What kind of entry are we dealing with?
-    if ( strpos ( 'EM', $type ) !== false )
+    if ( mb_strpos ( 'EM', $type ) !== false )
       $eType = 'event';
-    elseif ( strpos ( 'JO', $type ) !== false )
+    elseif ( mb_strpos ( 'JO', $type ) !== false )
       $eType = 'journal';
-    elseif ( strpos ( 'NT', $type ) !== false )
+    elseif ( mb_strpos ( 'NT', $type ) !== false )
       $eType = 'task';
 
     // Public access has no access to tasks.
@@ -409,8 +408,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
   if ( $eType == 'task' )
     $hour = $WORK_DAY_START_HOUR;
 
-  // Anything other then testing for strlen breaks either hour=0 or no hour in URL.
-  if ( strlen ( $hour ) )
+  // Anything other then testing for mb_strlen breaks either hour=0 or no hour in URL.
+  if ( mb_strlen ( $hour ) )
     $time = $hour * 100;
   else
     $hour = $time = -1;
@@ -625,8 +624,8 @@ if ( $can_edit ) {
                     <td width="80%">
                       <select name="access" id="entry_access">
                         <option value="P"' . ( $access == 'P' || !
-      strlen ( $access ) ? $selected : '' ) . '>' . translate ( 'Public' )
-     . '</option>
+      mb_strlen ( $access ) ? $selected : '' ) .
+      '>' . translate ( 'Public' ) . '</option>
                         <option value="R"' . ( $access == 'R' ? $selected : '' )
      . '>' . translate ( 'Private' ) . '</option>
                         <option value="C"' . ( $access == 'C' ? $selected : '' )
@@ -678,7 +677,7 @@ if ( $can_edit ) {
                 </table>' : '' );
 
   if ( $eType == 'task' ) { // Only for tasks.
-    $completed_visible = ( strlen ( $completed ) ? 'visible' : 'hidden' );
+    $completed_visible = ( mb_strlen ( $completed ) ? 'visible' : 'hidden' );
     echo '<br />
                 <table>
                   <tr id="completed">
@@ -1722,7 +1721,7 @@ if ( $can_edit ) {
     foreach ( $categories as $K => $V ) {
       // None is index -1 and needs to be ignored
       if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
-          substr ( $form, 0, 4 ) == 'edit' ) ) {
+          mb_substr ( $form, 0, 4 ) === 'edit' ) ) {
         $tmpStr = $K . '">' . $V['cat_name'];
         echo '<input type="checkbox" name="cat_' . $K . '" ' .
           'id="cat_' . $K . '"><label for="cat_' . $K . '">' .

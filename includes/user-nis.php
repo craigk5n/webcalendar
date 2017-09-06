@@ -35,13 +35,14 @@ function user_valid_login ( $login, $password ) {
   $ret = false;
 
   $data = @yp_match (yp_get_default_domain (), 'passwd.byname', $login);
-  if ( strlen ( $data ) ) {
+
+  if ( mb_strlen ( $data ) ) {
     $data = explode ( ':', $data );
     if (!empty($user_external_group) && $user_external_group != $data[3]) {
       $error = translate ( 'Invalid login' );
       return $ret;
     }
-    if ( $data[1] == crypt ( $password, substr ( $data[1], 0,
+    if ( $data[1] == crypt ( $password, mb_substr ( $data[1], 0,
       CRYPT_SALT_LENGTH ) ) ) {
       if ( count ( $data ) >= 4 ) {
         $ret = true;
@@ -129,7 +130,7 @@ function user_load_variables ( $login, $prefix ) {
     return  $cached_user_var[$login][$prefix];
   $cached_user_var = [];
 
-  if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ( $NONUSER_PREFIX && mb_substr ( $login, 0, mb_strlen ( $NONUSER_PREFIX ) ) === $NONUSER_PREFIX ) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
@@ -154,10 +155,7 @@ function user_load_variables ( $login, $prefix ) {
       $GLOBALS[$prefix . 'lastname'] = $row[1];
       $GLOBALS[$prefix . 'is_admin'] = $row[2];
       $GLOBALS[$prefix . 'email'] = empty ( $row[3] ) ? '' : $row[3];
-      if ( strlen ( $row[0] ) && strlen ( $row[1] ) )
-        $GLOBALS[$prefix . 'fullname'] = "$row[0] $row[1]";
-      else
-        $GLOBALS[$prefix . 'fullname'] = $login;
+      $GLOBALS[$prefix . 'fullname'] = ( mb_strlen ( $row[0] ) && mb_strlen ( $row[1] ) ? "$row[0] $row[1]" : $login );
       $GLOBALS[$prefix . 'password'] = $row[4];
       $ret = true;
     }
@@ -194,25 +192,14 @@ function user_add_user ( $user, $password, $firstname,
     $error = translate ( 'Invalid user login', true);
     return false;
   }
+  $uemail    = ( mb_strlen ( $email ) ? $email : NULL );
+  $ufirstname= ( mb_strlen ( $firstname ) ? $firstname : NULL );
+  $ulastname = ( mb_strlen ( $lastname ) ? $lastname : NULL );
+  $upassword = ( mb_strlen ( $password ) ? md5 ( $password ) : NULL );
 
-  if ( strlen ( $email ) )
-    $uemail = $email;
-  else
-    $uemail = NULL;
-  if ( strlen ( $firstname ) )
-    $ufirstname = $firstname;
-  else
-    $ufirstname = NULL;
-  if ( strlen ( $lastname ) )
-    $ulastname = $lastname;
-  else
-    $ulastname = NULL;
-  if ( strlen ( $password ) )
-    $upassword = md5 ( $password );
-  else
-    $upassword = NULL;
   if ( $admin != 'Y' )
     $admin = 'N';
+
   $sql = 'INSERT INTO webcal_user
     ( cal_login, cal_lastname, cal_firstname,
     cal_is_admin, cal_passwd, cal_email, cal_enabled )
@@ -246,18 +233,10 @@ function user_update_user ( $user, $firstname, $lastname, $email, $admin, $enabl
     $error = translate ( 'Invalid user login' );
     return false;
   }
-  if ( strlen ( $email ) )
-    $uemail = $email;
-  else
-    $uemail = NULL;
-  if ( strlen ( $firstname ) )
-    $ufirstname = $firstname;
-  else
-    $ufirstname = NULL;
-  if ( strlen ( $lastname ) )
-    $ulastname = $lastname;
-  else
-    $ulastname = NULL;
+  $uemail    = ( mb_strlen ( $email ) ? $email : NULL );
+  $ufirstname= ( mb_strlen ( $firstname ) ? $firstname : NULL );
+  $ulastname = ( mb_strlen ( $lastname ) ? $lastname : NULL );
+
   if ( $admin != 'Y' )
     $admin = 'N';
 
@@ -451,7 +430,7 @@ function user_get_users ( $publicOnly=false ) {
     ORDER BY $order1 cal_login' );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
+      if ( mb_strlen ( $row[1] ) && mb_strlen ( $row[2] ) )
         $fullname = ( $order1 == 'cal_lastname, cal_firstname,' ?
            "$row[1] $row[2]" : "$row[2] $row[1]" );
       else

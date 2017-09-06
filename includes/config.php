@@ -13,7 +13,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: config.php,v 1.92 2011/07/12 19:45:42 rjones6061 Exp $
  * @package WebCalendar
  */
 
@@ -230,7 +229,7 @@ function do_config( $fileLoc ) {
 
   // If SQLite, the db file is in the includes directory.
   if( $db_type == 'sqlite' || $db_type == 'sqlite3' ) {
-    if ( substr ( $db_database, 0, 1 ) != '/' && ! file_exists ( $db_database ) )
+    if ( mb_substr ( $db_database, 0, 1 ) !== '/' && ! file_exists ( $db_database ) )
       $db_database = get_full_include_path( $db_database );
   }
 

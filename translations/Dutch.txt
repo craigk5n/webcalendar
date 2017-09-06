@@ -5,8 +5,7 @@
 #   Arnout Engelen / arnouten@bzzt.net
 #   Oliver Heesakkers / dev@heesakkers.info
 #
-# $Id: Dutch.txt,v 1.64 2008/12/28 16:22:34 bbannon Exp $
-# Translation last updated on 10-15-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -18,7 +17,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: iso-8859-15
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -46,7 +45,6 @@ __month__ __yyyy__: =
 # Page: about.php
 #
 Title: =
-version: versie
 version XXX: versie XXX
 WebCalendar is a PHP application used...: Webcalendar is een PHP-toepassing die dient om de agenda van een enkele gebruiker of van een internet- of intranetgebruikersgroep bij te houden.
 Credits: Medewerkers
@@ -56,7 +54,6 @@ OK: =
 ########################################
 # Page: access.php
 #
-Database error: Databasefout
 Database error XXX.: Databasefout: XXX.
 DEFAULT CONFIGURATION: STANDAARD INSTELLINGEN
 Go: Tonen
@@ -84,7 +81,7 @@ Select All: Selecteer Alles
 Clear All: Alle wissen
 Public: Publiekelijk
 Confidential: vertrouwelijk
-Private: privé-afspraak
+Private: privÃ©-afspraak
 
 ########################################
 # Page: activity_log.php
@@ -97,8 +94,7 @@ Previous: Vorige
 #
 a XXX event may not be added to your calendar: Dit is een XXX afspraak en mag niet aan uw agenda toegevoegd worden.
 confidential: vertrouwelijk
-private: privé-afspraak
-Error adding event: Fout bij toevoegen afspraak
+private: privÃ©-afspraak
 
 ########################################
 # Page: admin.php
@@ -138,14 +134,12 @@ Help: =
 System options: Systeemopties
 app-name-help: Hier wordt de naam van de applicatie gedefinieerd, deze naam verschijnt in het browservenster op elke pagina en op de login-pagina.
 Application Name: Programmanaam
-Translated Name: Vertaalde naam
 server-url-help: Specificeert de basis URL van de applicatie, deze URL wordt gebruikt bij het verzenden van email notificaties en herinneringen.
 Server URL: =
 home-url-help: Specifieert de home URL van het programma. Dit kan een absoluut of een relatief adres zijn.
 Home URL: Thuis URL
 language-help: Specificeert welke taal gebruikt dient te worden.
 Language: Taal
-Your browser default language is: De standaard-browsertaal is
 Allow user to use themes: Permitteer gebruiker stijlen te gebruiken
 themes-help: Dit laat een gelijktijdige aanpassing van vele configuratie-instellingen toe. Eigenschappen in kleine letters worden enkel in de gerbuikersinstellingen aangepast.
 Themes: Stijlen
@@ -163,8 +157,8 @@ enable-external-header-help: Laat toe om de hoofding te laden vanuit een extern 
 Allow external file for header/script/trailer: Permitteer extern bestand voor kop/script/staart
 Allow user to override header/trailer: Permitteer de gebruiker controle over kop/staart
 Date and Time: Datum en tijd
-tz-help: Deze optie bepaalt het aantal uren tijdsverschil tussen de servertijd en de lokale tijd.
 Server Timezone Selection: Server tijdzone selectie
+tz-help: Deze optie bepaalt het aantal uren tijdsverschil tussen de servertijd en de lokale tijd.
 display-general-use-gmt-help: Indien aangeduid, worden datums en tijden voor algemeen gebruik in GMT getoond.
 Display Common Use Date/Times as GMT: Toon data en tijden voor algemeen gebruik in GMT
 date-format-help: Hier geeft u aan hoe de datum wordt weergegeven.
@@ -234,7 +228,7 @@ limit-appts-help: Deze optie staat de Administrator toe om het aantal afspraken 
 Limit number of timed events per day: Stel beperking in voor het aantal tijdgebonden afspraken per gebruiker per dag
 limit-appts-number-help: Deze optie bepaalt het maximale aantal tijdgebonden afspraken per gebruiker per dag
 Maximum timed events per day: Maximum aantal tijdgebonden afspraken per gebruiker per dag
-crossday-help: Indien aangeduid worden afspraken die meer dan één dag duren op de afzonderlijke dagen aangegeven.
+crossday-help: Indien aangeduid worden afspraken die meer dan Ã©Ã©n dag duren op de afzonderlijke dagen aangegeven.
 Disable Cross-Day Events: Dagoverschrijdende afspraken uitschakelen
 disable-location-field-help: Hiermee voorkomt u dat het locatie-veld wordt getoond
 Disable Location field: Locatie-veld uitschakelen
@@ -303,12 +297,10 @@ remotes-enabled-help: Sta gebrukers toe om ics-bestanden te laden via URL
 Allow remote calendars: Sta agenda's op afstand toe
 rss-enabled-help: Bepaalt of de agenda van een gebruiker verkregen kan worden via een RSS feed.
 Enable RSS feed: RSS-feed inschakelen
-categories-enabled-help: Sta ondersteuning toe voor afspraakcategorieën.
+categories-enabled-help: Sta ondersteuning toe voor afspraakcategorieÃ«n.
 Categories enabled: Activeer gebruik van categorieen
 icon_upload-enabled-help: Sta het uploaden van categorie-icoontjes toe
 Category Icon Upload enabled: Uploaden categorie-ikoon toegestaan
-Requires: Behoeft
-folder to exist: map om te bestaan
 display-tasks-help: Toon klein taakvenster in maand- en dagagenda
 Display small task list: Kleine takenlijst tonen
 display-tasks-in-grid-help: Toon in de agenda's de taken samen met de gebeurtenissen
@@ -394,27 +386,13 @@ Unapproved Public Events: Openstaande publieke afspraken
 Administrative Tools: Administratieve gereedschappen
 
 ########################################
-# Page: ajax.php
-#
-Duplicate Name: Dubbele naam
-Username already exists.: Gebruikersnaam bestaat al
-Email address already exists.: Email-adres bestaat al
-
-########################################
 # Page: approve_entry.php
 #
 Additional Comments (optional): Extra opmerkingen (optioneel
 Approve and Send: Goedkeuren en verzenden
 Approve and Exit: Goedkeuren en afsluiten
 (Your comments will be emailed to the event creator.): Je commentaar zal in een email verstuurd worden aan de maker van de afspraak.
-Hello: Hallo
 Hello, XXX.: Hallo, XXX.
-An appointment has been approved and comments added by: Er is een afspraak goedgekeurd en commentaar bijgevoegd door
-The subject was: Het betreft afspraak
-The description is: De omschrijving van de afspraak luidt
-Date: Datum
-Time: Tijd
-Comments: Opmerkingen
 
 ########################################
 # Page: assistant_edit.php
@@ -423,10 +401,13 @@ Admin mode: Admin-modus
 Your assistants: Uw agenda-assistenten
 
 ########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Onbekende fout.
+
+########################################
 # Page: availability.php
 #
-Program Error: Programmafout
-No XXX specified!: Geen XXX gespecifieerd!
 user: gebruiker
 year: jaar
 month: maand
@@ -442,7 +423,6 @@ Color: Kleur
 Remove Icon: Ikoon verwijderen
 Add Icon to Category: Ikoon aan categorie toevoegen
 Upload: Uploaden
-gif 3kb max: gif maximaal 3 kilobyte
 Search for existing icons: Zoek naar bestaande ikonen
 Add: Voeg toe
 Delete: Verwijderen
@@ -453,7 +433,6 @@ Make New Category: Categorie toevoegen
 # Page: category_handler.php
 #
 File size exceeds maximum.: Bestand is groter dan toegestaan
-File is not a gif image.: Bestand is geen gif-afbeelding
 
 ########################################
 # Page: catsel.php
@@ -474,9 +453,33 @@ Custom Colors: Eigen kleuren
 Old Color: Oude kleur
 
 ########################################
-# Page: del_entry.php
+# Page: combo.php
 #
-An appointment has been canceled for you by: Er is een afspraak voor u geannuleerd door
+Description: Omschrijving
+Date: Datum
+Time: Tijd
+Priority: Prioriteit
+Access: Toegankelijkheid
+Created by: Aangemaakt door
+Updated: Gewijzigd
+Participants: Deelnemers
+Attachments: Bijlagen
+Comments: Opmerkingen
+Brief Description: Korte omschrijving
+Full Description: Uitgebreide omschrijving
+Category: Categorie
+Start Date: Startdatum
+Due Date: Af zijn op datum
+All: Alle
+Error: fout
+High: Hoge prioriteit
+Medium: Normale prioriteit
+Low: Lage prioriteit
+Today: vandaag
+Add Entry: Afspraak toevoegen
+Unnamed Event: Naamloze afspraak
+pm: p.m. (post meridiem), 's avond
+am: a.m. (ante meridiem), 's morgens
 
 ########################################
 # Page: doc.php
@@ -491,7 +494,6 @@ Add Attachment: Bijlage toevoegen
 Subject: Onderwerp
 Comment: Opmerking
 Upload file: Upload bestand
-Description: Omschrijving
 
 ########################################
 # Page: docdel.php
@@ -501,8 +503,6 @@ Removed: Verwijderd
 ########################################
 # Page: edit_entry.php
 #
-am: a.m. (ante meridiem), 's morgens
-pm: p.m. (post meridiem), 's avond
 days: dagen
 hours: uren
 minutes: minuten
@@ -514,24 +514,14 @@ hours ahead of you: uren voor op u
 hours behind you: uren achter op u
 Time entered here is based on your Timezone.: Gegeven tijd is gebaseerd op uw tijdzone
 Edit Entry: Afspraak wijzigen
-Add Entry: Afspraak toevoegen
 Details: =
-Participants: Deelnemers
 Repeat: Herhalen
 Reminders: Herinneringen
 brief-description-help: In dit veld kunt u een korte afspraakomschrijving invullen (ca. 20 karakters). De omschrijving wordt in de agenda getoond.
-Brief Description: Korte omschrijving
 full-description-help: Hier ziet u de volledige afspraakomschrijving.<br />N.B.: deze omschrijving wordt alleen getoond indien de afspraak wordt geopend.
-Full Description: Uitgebreide omschrijving
 access-help: Hier bepaalt u de toegankelijkheid van de afspraak voor anderen. Indien u<br /><i>publiek</i> selecteert kunnen de overige gebruikers de afspraak bekijken. Selecteert u <i>vertrouwelijk</i>, dan zien de overige gebruikers wel dat u een afspraak heeft, maar kunnen zij geen details opvragen.
-Access: Toegankelijkheid
 priority-help: Hier kunt u de prioriteit van de afspraak vermelden; afspraken met een hoge prioriteit zullen vetgedrukt in de agenda verschijnen.
-Priority: Prioriteit
-High: Hoge prioriteit
-Medium: Normale prioriteit
-Low: Lage prioriteit
 category-help: Hier geeft u aan in welke categorie de afspraak thuishoort.
-Category: Categorie
 completed-help: Datumtaak afgewerkt. Alleen mogelijk als alle deelnemers de taak 100% afgewerkt hebben.
 Date Completed: Datum afgewerkt
 percent-help: Afwerkingspercentage van de taak voor deze gebruiker
@@ -542,7 +532,6 @@ Location: Locatie
 url-help: URL bij een afspraak
 URL: URL voor agendapublicatie
 date-help: Dit is de datum waarop de afspraak plaatsvindt.
-Start Date: Startdatum
 Untimed event: Afspraak zonder begin en eindtijd
 Timed event: Tijdgebonden afspraak
 All day event: Dagvullende afspraak
@@ -551,10 +540,9 @@ time-help: Dit is de aanvangstijd van de afspraak.<br /><i>Dit veld mag leeg bli
 duration-help: Hier geeft u aan hoe lang de afspraak duurt (in minuten).<br /><i>Dit veld mag leeg blijven</i><br />
 end-time-help: Bepaalt de tijd waarop de afspraak gepland is te eindigen.
 Start Time: Starttijd
-Due Date: Af zijn op datum
 Due Time: Af zijn om
 Site Extras: Site extra's
-participants-help: Noteer hier welke externe deelnemers bij de afspraak aanwezig zullen zijn. Zorg dat elke regel maximaal één deelnemer omvat en voeg een mailadres toe om de externe deelnemer een email-notificatie of herinnering te laten ontvangen.<br />N.B. het verzenden van notificaties en herinneringen zal alleen plaatsvinden indien de agenda-instellingen en de server dit ondersteunen.
+participants-help: Noteer hier welke externe deelnemers bij de afspraak aanwezig zullen zijn. Zorg dat elke regel maximaal Ã©Ã©n deelnemer omvat en voeg een mailadres toe om de externe deelnemer een email-notificatie of herinnering te laten ontvangen.<br />N.B. het verzenden van notificaties en herinneringen zal alleen plaatsvinden indien de agenda-instellingen en de server dit ondersteunen.
 Selected: Geselecteerd
 Availability: Beschikbaarheid
 external-participants-help: Hier wordt een lijst van externe deelnemers gegeven. Vul per regel een gebruiker en emailadres in. Als een emailadres is ingevoerd kan de externe gebruiker ook notificaties en herinneringen ontvangen.
@@ -580,7 +568,6 @@ Weekdays Only: Enkel werkdagen
 Week Start: Week start
 repeat-bydayextended-help: Sta toe dat een dag van de week wordt gekozen.
 ByDay: PerDag
-All: Alle
 repeat-month-help: Bepaal in welke maanden de afspraak herhaald moet worden.
 ByMonth: PerMaand
 repeat-bysetpos-help: Sta datumkeuze toe op basis van dag van de maand.
@@ -613,33 +600,10 @@ You are not authorized to edit this entry.: U heeft geen toestemming om deze afs
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: Er is een nieuw agendapunt voor u gemaakt door
-An appointment has been updated by: Er is een agendapunt voor u bijgewerkt door
 The following conflicts with the suggested time: De voorgestelde tijd conflicteert met de volgende afspraak
-Please look on: Raadpleeg
-to accept or reject this appointment: om deze toevoeging te bevestigen of te weigeren.
-to view this appointment: om deze toevoeging te bekijken.
 Scheduling Conflict: Agendaconflict
 Your suggested time of: De door u voorgestelde tijd
 conflicts with the following existing calendar entries: conflicteert met de volgende bestaande afspraken
-
-########################################
-# Page: edit_layer.php
-#
-Add Layer: Laag toevoegen
-Edit Layer: Laag wijzigen
-Source: Bron
-Duplicates: Afspraken dupliceren
-Show layer events that are the same as your own: In elke laag ook de afspraken weergeven die in mijn eigen agenda staan?
-Add to Others: Toevoegen aan anderen
-Add to My Calendar: Zet afspraak ook in mijn eigen agenda
-Delete layer: Laag verwijderen
-
-########################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself.: U kunt geen laag voor uzelf aanmaken
-You can only create one layer for each user.: U kunt slechts een laag per gebruiker aanmaken
 
 ########################################
 # Page: edit_nonusers.php
@@ -654,6 +618,11 @@ Last Name: Achternaam
 Is public calendar: Is een publieke kalender
 
 ########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Databasefout
+
+########################################
 # Page: edit_remotes.php
 #
 Add Remote Calendar: Kalender op afstand toevoegen
@@ -665,7 +634,6 @@ Required to View Remote Calendar: Nodig om Kalender op afstand te bekijken
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: fout
 Import Results: Resultaat van importeren
 Events successfully imported: Afspraken succesvol geimporteerd
 Create a new layer to view this calendar.: Maak een nieuwe laag om deze kalender te bekijken
@@ -676,7 +644,6 @@ There was an error parsing the import file or no events were returned.: Er heeft
 # Page: edit_report.php
 #
 Tomorrow: morgen
-Today: vandaag
 Yesterday: gisteren
 Day before yesterday: eergisteren
 Next week: volgende week
@@ -701,7 +668,6 @@ Next 60 days: Volgende 60 dagen
 Next 90 days: Volgende 90 dagen
 Next 180 days: Volgende 180 dagen
 Next 365 days: Volgende 365 dagen
-Invalid report id.: Ongeldige rapportage-ID
 Unnamed Report: naamloze rapportage
 Add Report: rapportage toevoegen
 Edit Report: rapportage wijzigen
@@ -721,7 +687,6 @@ Are you sure you want to delete this report?: Weet u zeker dat u deze rapportage
 ########################################
 # Page: edit_report_handler.php
 #
-Variable N not found: Variabele N niet gevonden
 Variable XXX not found.: Variabele <tt>XXX</tt> niet gevonden
 
 ########################################
@@ -751,6 +716,11 @@ Deleting users not supported.: Het verwijderen van gebruikers is niet mogelijk
 The passwords were not identical.: De ingevoerde wachtwoorden zijn niet identiek of u heeft het wachtwoord maar een keer ingevuld<br />Probeer het nog eens
 You have not entered a password.: U heeft geen wachtwoord ingevuld.
 Username cannot be blank.: Gebruikersnaam kan niet leeg zijn
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Niet geauthoriseerd
 
 ########################################
 # Page: export.php
@@ -786,8 +756,6 @@ Unnamed Group: Naamloze groep
 Add Group: Groep toevoegen
 Edit Group: Groep wijzigen
 Group name: Groepsnaam
-Updated: Gewijzigd
-Created by: Aangemaakt door
 
 ########################################
 # Page: group_edit_handler.php
@@ -833,20 +801,16 @@ repeat-day-help: Indien uw afspraak wekelijks wordt herhaald, geeft u hier aan o
 #
 Import: Importeren
 Palm Desktop: =
-This form will allow you to import entries from the Palm Desktop Datebook.: Hier kunt u de afspraken van uw Palm Desktop Datebook in uw agenda importeren.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Al uw Palm Datebook-afspraken zijn opgeslagen in een bestand met de naam datebook.dat. U kunt dit bestand vinden in de Palm-directory op uw computer. In deze directory vindt u een subdirectory met uw gebruikersnaam als naam. Hierin vindt u het bestand <tt>datebook/datebook.dat</tt> - dit bestand heeft u nodig om uw Palm Desktop datebookgegevens in uw WebCalendar agenda te kunnen importeren.
 The following entries will not be imported: De volgende items zullen niet worden geimporteerd
 Entries older than the current date: items ouder dan de huidige datum
 Entries created in the Palm Desktop...: Items gemaakt in de Palm Desktop agenda die nog niet met HotSync gesynchroniseerd zijn
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Telkens als u uw Palm Datebook in uw WebCalendar agenda importeert zullen de gegevens van een vorige import-activiteit worden overschreven. Dit geldt niet voor afspraken in het verleden - items ouder dan de huidige datum worden immers niet geimporteerd.
-Therefore, updates should be made in the Palm Desktop.: &nbsp;Derhalve dient u <b>nieuwe afspraken in de Palm Desktop agenda toe te voegen</b> en niet in uw WebCalendar agenda.
 vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Hier kunt u afspraken uit vCalendar (.vcs) 1.0 in uw agenda importeren
 The following formats have been tested: De volgende bestandsformaten zijn getest
 This form will import iCalendar (.ics) events.: Met dit formulier importeert u iCalendar (.ics) afspraken
 Enabling: activeer
 Overwrite Prior Import: Vorige import overschrijven
-will cause events imported previously...: zal vroeger geïmporteerde afspraken als <i>verwijderd</i> aanduiden, wanneer ze dezelfde UID gebruikten als het pas geïmporteerde bestand. Dit maakt het mogelijk een bijgewerkt iCalendar-bestand te importeren zonder dubbels te creëren.
+will cause events imported previously...: zal vroeger geÃ¯mporteerde afspraken als <i>verwijderd</i> aanduiden, wanneer ze dezelfde UID gebruikten als het pas geÃ¯mporteerde bestand. Dit maakt het mogelijk een bijgewerkt iCalendar-bestand te importeren zonder dubbels te creÃ«ren.
 
 ########################################
 # Page: help_index.php
@@ -863,8 +827,10 @@ Clicking the Edit Layers link in the admin section at the bottom of the page wil
 The text color of the new layer that will be displayed in your calendar.: De tekstkleur die wordt gebruikt voor deze nieuwe laag in je agenda.
 Disabling: de-activeer
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: De-activeer lagen door naar menu [beheer] onderin beeld te gaan en te klikken op lagen deactiveren.
+Duplicates: Afspraken dupliceren
 If checked, events that are duplicates of your events will be shown.: Indien deze optie is geactiveerd zullen afspraken die zowel in je eigen agenda staan, als die van degene wiens agenda je dubbelt, ook dubbel worden weergegeven.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Activeer lagen door naar menu [beheer] onderin beeld te gaan en te klikken op [lagen activeren].
+Source: Bron
 Specifies the user that you would like to see displayed in your calendar.: Specificeert de gebruiker wiens agenda je in als laag aan je eigen agenda wilt toevoegen.
 
 ########################################
@@ -913,7 +879,7 @@ Current Icons on Server: Hiudige ikonen op de server
 #
 Disabled: niet weergegeven
 Import format: Te importeren formaat
-Exclude private records: Negeer privégegevens
+Exclude private records: Negeer privÃ©gegevens
 Repeated items are imported separately. Prior imports are not overwritten.: Herhaalde afspraken worden apart geimporteerd. Vorige imports worden niet overschreven.
 
 ########################################
@@ -927,17 +893,23 @@ The import file contained no data.: Het importbestand bevat geen gegevens.
 ########################################
 # Page: layers.php
 #
-Layer: laag
-Edit layer: Laag wijzigen
 Are you sure you want to delete this layer?: Weet u zeker dat u deze laag wilt verwijderen?
+Delete layer: Laag verwijderen
+Edit layer: Laag wijzigen
 Enable layers: Lagen activeren
+Layer: laag
 Disable Layers: Lagen deactiveren
 Add layer: Laag toevoegen
+Add Layer: Laag toevoegen
+Edit Layer: Laag wijzigen
 
 ########################################
-# Page: layers_toggle.php
+# Page: layers_ajax.php
 #
 Unable to update preference: Voorkeuren kunnen niet bijgewerkt worden
+Invalid entry id.: Ongeldige afspraak-ID
+You cannot create a layer for yourself.: U kunt geen laag voor uzelf aanmaken
+You can only create one layer for each user.: U kunt slechts een laag per gebruiker aanmaken
 
 ########################################
 # Page: list_unapproved.php
@@ -950,9 +922,7 @@ Reject Selected: Verwerp geselecteerde
 Reject: Weigeren
 Uncheck All: Alles uitvinken
 View this entry: Afspraak bekijken
-No unapproved entries for: Geen openstaande vermeldingen voor
 Unapproved Entries: Openstaande vermeldingen
-Not authorized: Niet geauthoriseerd
 Approve this entry?: Afspraak bevestigen?
 Reject this entry?: Afspraak weigeren?
 Approve Selected entries?: Geselecteerde afpsraken goedkeuren?
@@ -964,23 +934,20 @@ Reject Selected entries?: Verwerp geselecteerde afspraken
 You must enter a login and password.: U moet een gebruikersnaam en een wachtwoord invullen.
 Save login via cookies so I dont have to login next time.: Bewaar inloggegevens
 Login: Aanmelden
-Access public calendar: Ga naar Open Agenda
 public: publiekelijk
-calendar: agenda
 cookies-note: <b>NB:</b> Deze applicatie maakt gebruik van cookies.
 
 ########################################
 # Page: login.php
 #
-Illegal characters in login: Ongeldige karakters in login
 Invalid login: Ongeldige login
 You have been logged out.: U bent uitgelogd
+Access public calendar: Ga naar Open Agenda
 Not yet registered? Register here!: Nog niet geregistreerd? Registreer hier!
 
 ########################################
 # Page: minical.php
 #
-No such nonuser calendar: Onbekende losse agenda
 This Calendar is not Public.: Deze agenda is niet openbaar
 
 ########################################
@@ -992,6 +959,7 @@ Add New NonUser Calendar: Losse agenda toevoegen
 # Page: nulogin.php
 #
 A login must be specified.: Er moet een login gespecifieerd worden
+No such nonuser calendar: Onbekende losse agenda
 
 ########################################
 # Page: pref.php
@@ -1030,11 +998,9 @@ Are you sure you want to delete events for: Weet u zeker dat u alle afspraken wi
 # Page: register.php
 #
 Email address cannot be blank.: Email-adres kan niet leeg zijn
+Username already exists.: Gebruikersnaam bestaat al
+Email address already exists.: Email-adres bestaat al
 A new WebCalendar account has been set up for you.: Er is een nieuw WebCalendar account voor u opgezet.
-Your username is: Uw gebruikersnaam is
-Your password is: Uw wachtwoord is
-Please visit: Bezoek
-to log in and start using your account: om in te loggen en te starten met het gebruiken van uw account
 You may change your password after logging in the first time.: U kunt uw wachtwoord wijzigen na de eerste keer te hebben ingelogd
 If you received this email in error: Indien u deze mail onterecht ontvangt
 Administrator: Beheerder
@@ -1052,7 +1018,6 @@ Submit: Invoeren
 #
 Continue: Doorgaan
 (Your comments will be emailed to the other participants.): (Uw opmerkingen worden ingevoegd bij een email aan de andere deelnemers)
-An appointment has been rejected by: Er is een afspraak geweigerd door
 
 ########################################
 # Page: remotes.php
@@ -1063,16 +1028,14 @@ Add New Remote Calendar: Nieuwe kalender op afstand toevoegen
 # Page: report.php
 #
 This event is confidential.: Vertrouwelijk - details niet beschikbaar
-(Private): (privé-afspraak)
-cont.: =
+(Private): (privÃ©-afspraak)
 (cont.): =
 Approved: Goedgekeurd
 Deleted: Verwijderd
 Rejected: Geweigerd
 Waiting for approval: Nog niet bevestigd
 Unknown: Onbekend
-Click here: Klik hier
-to manage reports for the Public Access calendar: om rapportages voor de Open Agenda te beheren
+Invalid report id.: Ongeldige rapportage-ID
 Add new report: Rapportage toevoegen
 Manage Reports: Rapportagebeheer
 
@@ -1111,7 +1074,6 @@ View Another Users Calendar: Bekijk de agenda van een andere gebruiker
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id.: Ongeldige afspraak-ID
 You have not added any categories.: U heeft geen categorie toegevoegd
 Set Category: Bepaal categorie
 Global Categories cannot be changed.: Globale categorien kunnen niet worden gewijzigd
@@ -1155,7 +1117,7 @@ Week (Users vertical): Weekoverzicht - gebruikers links
 Week (Timebar): Weekoverzicht - tijdbalkweergave
 Month (Timebar): Maandoverzicht - tijdbalk
 Month (side by side): Maandoverzicht - gebruikers boven naast elkaar
-Month (on same calendar): Maandoverzicht -  gebruikers in één agenda
+Month (on same calendar): Maandoverzicht -  gebruikers in Ã©Ã©n agenda
 
 ########################################
 # Page: views_edit_handler.php
@@ -1179,13 +1141,13 @@ by: door
 Percentage Complete: Percentage compleet
 External User: Externe Gebruiker
 Update: Bijwerken
-Attachments: Bijlagen
 comments: opmerkingen
 Show: Toon
 Hide: Verbergen
 Approve/Confirm entry: Afspraak bevestigen
 Reject entry: Afspraak weigeren
 Set category: Bepaal categorie
+Add to My Calendar: Zet afspraak ook in mijn eigen agenda
 Copy entry: Kopie maken van afspraak
 This will delete this entry for all users.: De afspraak wordt uit de agenda verwijderd.
 Edit entry: Afspraak wijzigen
@@ -1215,6 +1177,7 @@ Double-click on empty cell to add new entry: Dubbelklik een lege cel om een nieu
 # Page: week_details.php
 #
 New Entry: Nieuwe afspraak
+cont.: =
 
 ########################################
 # Page: includes/access.php
@@ -1241,16 +1204,10 @@ LANGUAGE DEFINED: TAAL GEDEFINIEERD
 ########################################
 # Page: includes/dbi4php.php
 #
-Error connecting to database: Fout bij het verbinden met de database
 db_type not defined.: db_type niet gedefineerd.
-invalid db_type: db_type ongeldig
 Cache cleared from previous SQL!: Cache van vorige SQL gewist!
 Error executing query.: Fout bij het uitvoeren van de query.
-Unfortunately, XXX is not implemented for: XXX wordt jammer genoeg niet toegepast op
 Unknown ODBC error.: Onbekende ODBC-fout.
-Unknown error.: Onbekende fout.
-write: wegschrijven
-Error opening cache dir: Fout bij het openen van de cache-map
 delete: verwijderen
 
 ########################################
@@ -1262,14 +1219,12 @@ Invalid data format for: Ongeldig dataformaat voor
 ########################################
 # Page: includes/functions.php
 #
-This event is private: Deze afspraak is prive
 Conf.: =
 exceeds limit of XXX events per day: de grens van XXX afspraken per dag is bereikt
 on: op
 All Attendees: Alle deelnemers
 Busy: Bezig
 Tentative: Voorlopig
-Schedule an appointment for: Maak een afspraak voor
 Event approved: Afspraak goedgekeurd
 Journal approved: Journaal goedgekeurd
 Task approved: Taak goedgekeurd
@@ -1291,7 +1246,6 @@ Event updated: Afspraak bijgewerkt
 Journal updated: Journaal bijgewerkt
 Task updated: Taak bijgewerkt
 Delete User: Verwijder gebruiker
-WK: =
 TASKS: TAKEN
 Task_Title: Taak_Titel
 Due: Af zijn
@@ -1338,11 +1292,7 @@ Add N hours to: Voeg N uren toe aan
 Subtract N hours from: Trek N uren af van
 same as: hetzelfde als
 server time: servertijd
-Your current GMT offset is: Uw huidige afwijking van GMT is
 Unauthorized: Niet geauthoriseerd
-Error approving event: Fout bij bevestigen afspraak
-Error deleting event: Fout bij verwijderen van afspraak
-Error rejecting event: Fout bij afwijzen afspraak
 Sunday: Zondag
 Monday: Maandag
 Tuesday: Dinsdag
@@ -1381,7 +1331,6 @@ Manage calendar of: Beheer de agenda van
 # Page: includes/translate.php
 #
 Browser Language Not Found: Taal van de browser niet gevonden
-not supported: Niet ondersteund
 English: Engels
 English-US: Engels-VS
 Afrikaans: =
@@ -1458,7 +1407,6 @@ Until: Tot
 Count: Telling
 Inclusion Dates: Toe te voegen data
 Exclusion Dates: Uitgesloten data
-Unnamed Event: Naamloze afspraak
 Event Imported: Item geimporteerd
 
 ########################################
@@ -1486,23 +1434,6 @@ provide_address: Lever adres
 recipients_failed: Ontvangers faalden
 
 ########################################
-# Page: includes/js/admin.php
-#
-Server URL is required.: Server-URL wordt vereist
-Server URL must end with /.: Server-URL moet eindigen op '/'
-Invalid work hours.: Ongeldige werktijden
-Invalid color for document background.: Ongeldige kleur voor de achtergrond
-Invalid color for document title.: Ongeldige kleur voor de agendatitel
-Invalid color for table cell background.: Ongeldige kleur voor de tabelcel
-Invalid color for table grid.: Ongeldige kleur voor tabelraster
-Invalid color for table header background.: Ongeldige kleur voor achtergrond agendatitel
-Invalid color for table text background.: Ongeldige kleur voor tekstachtergrond
-Invalid color for event popup background.: Ongeldige achtergrondkleur voor afspraak-popup
-Invalid color for event popup text.: Ongeldige tekstkleur voor afspraak-popup
-Invalid color for table cell background for today.: Ongeldige achtergrondkleur voor huidige datum
-Color format should be RRGGBB.: Kleur weergeven in #RRGGBB-formaat
-
-########################################
 # Page: includes/js/availability.php
 #
 Change the date and time of this entry?: Wilt u de datum en tijd van deze afspraak wijzigen?
@@ -1518,11 +1449,6 @@ Invalid Date: Ongeldige datum
 You have not entered a valid time of day: U heeft geen geldige tijd ingevuld
 
 ########################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Ongeldige kleur
-
-########################################
 # Page: includes/js/edit_nonuser.php
 #
 Calendar ID cannot be blank.: Kalender ID kan niet leeg zijn
@@ -1531,6 +1457,8 @@ First and last names cannot both be blank.: Zowel voor- als achternaam kunnen ni
 ########################################
 # Page: includes/js/edit_remotes.php
 #
+Invalid color: Ongeldige kleur
+Color format should be RRGGBB.: Kleur weergeven in #RRGGBB-formaat
 URL cannot be blank.: URL kan niet leeg zijn
 
 ########################################
@@ -1539,9 +1467,28 @@ URL cannot be blank.: URL kan niet leeg zijn
 File type does not match Import Format: Bestandstype komt niet overeen met import-formaat
 
 ########################################
-# Page: includes/js/visible.php
+# Page: includes/js/pref.php
 #
+Invalid color for document background.: Ongeldige kleur voor de achtergrond
+Invalid color for document title.: Ongeldige kleur voor de agendatitel
+Invalid color for table cell background.: Ongeldige kleur voor de tabelcel
+Invalid color for table cell background for today.: Ongeldige achtergrondkleur voor huidige datum
+Invalid work hours.: Ongeldige werktijden
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Server-URL moet eindigen op '/'
+Invalid color for table grid.: Ongeldige kleur voor tabelraster
+Invalid color for event popup background.: Ongeldige achtergrondkleur voor afspraak-popup
+Invalid color for event popup text.: Ongeldige tekstkleur voor afspraak-popup
+Invalid color for table header background.: Ongeldige kleur voor achtergrond agendatitel
+Server URL is required.: Server-URL wordt vereist
 Invalid Color: Ongeldige kleur
+Database Name: Database naam
+Full Path (no backslashes): Volledig pad (geen schuine strepen achterover)
+The password contains illegal characters.: Het wachtwoord bevat ongeldige tekens.
+Error you must specify a Single-User Login: Fout u moet een\\nEnkele-Gebruikers Login
 
 ########################################
 # Page: includes/menu/index.php
@@ -1564,36 +1511,23 @@ Help Contents: Help inhoud
 ########################################
 # Page: install/index.php
 #
-Create New: Maak nieuw
 Database Cache Directory: Database cache directory
-Database Name: Database naam
+Create New: Maak nieuw
 Failure Reason: Reden van fout
+You must manually create database: U moet handmatig een database aanmaken
 Single-User: Enkele gebruiker
 Test Settings: Testinstellingen
 Timezone Conversion Successful: Tijdzone conversie succesvol
-WebCalendar Installation Wizard: Webkalender Installatie-wizard
-Step: Stap
-You must manually create database: U moet handmatig een database aanmaken
 Successful Login: Succesvol ingelogd
 Invalid Login: Ongeldige login
-required only if Remote Calendars are used: alleen nodig indien kalenders op afstand wordt gebruikt
-required only if Safe Mode is On: alleen nodig indie Veilige Modus aanstaan
-needed for Gradient Image Backgrounds: benodigd voor kleuroverlopen in de achtergrond
-Passwords do not match: Wachtwoorden komen niet overeen
 Unable to write password to settings.php file: Niet mogelijk om wachtwoord in settings.php weg te schrijven
 Password has been set: Wachtwoord is ingesteld
-Connection Successful: Verbinding succesvol
-Please go to next page to continue installation: Ga naar de volgende pagina om de installatie voort te zetten
 Correct your entries or click the Create New...: Corrigeer uw vermeldingen of klik de <b>Maak nieuw</b> knop om door te gaan
 Correct your entries and try again.: Corrigeer uw vermeldingen en probeer opnieuw
 Error Converting Timezone: Fout bij converteren tijdzone
-Error Unable to write to file: Fout Niet mogelijk om bestand te schrijven
 Please change the file permissions of this file.: Wijzig de bestandspermissies van dit bestand
 Please change includes dir permission: Wijzig includes directory permissies
 Your settings have been saved.: Uw instellingen zijn opgeslagen
-Error you must specify a Single-User Login: Fout u moet een\\nEnkele-Gebruikers Login
-Full Path (no backslashes): Volledig pad (geen schuine strepen achterover)
-The password contains illegal characters.: Het wachtwoord bevat ongeldige tekens.
 This installation wizard will guide you...: De installatie-wizard zal u leiden...
 PHP Version Check: PHP Versiecontrole
 Check to see if PHP 4.1.0 or greater is installed.: Controleer of PHP 4.1.0 of hoger is geinstalleerd
@@ -1602,8 +1536,6 @@ PHP Settings: PHP-instellingen
 Detailed PHP Info: Gedetailleerde PHP informatie
 settings.php Status: =
 Session Check: Sessie-controle
-To test the proper operation of sessions, reload this page: Om de correcte werking van sessies te testen, herlaad (F5) deze pagina
-You should see the session counter increment each time: U moet de sessie-teller iedere keer omhoog zien gaan
 SESSION COUNTER: SESSIE TELLER
 The file permissions of settings.php are set...: De bestandspermissies van <b>settings.php</b> zijn gezet op...
 The file permissions of the includes directory are set...: De bestandspermissies van de map van <b>settings.php</b> zijn zo gezet dat de installateerder geen recht heeft om een nieuw bestand aan te maken. Verander de permissies van de volgende map alvorens verder te gaan.
@@ -1619,17 +1551,6 @@ Database Settings: Database instellingen
 Database Type: Database Type:
 Server: =
 Connection Persistence: Verbinding persistentie
-All your database tables appear to be up to date. You may proceed to the: Alle database-tabellen lijken bijgewerkt te zijn. U kunt doorgaan naar de
-next page and complete your WebCalendar setup: volgende pagina en WebKalender-installatie afronden
-This appears to be a new installation. If this is not correct, please: Dit lijkt een nieuwe installatie te zijn. Indien dit onjuist is, alstublieft
-go back to the previous page and correct your settings: ga terug naar de vorige pagina en corrigeer uw instellingen
-This appears to be an upgrade from version: Dit lijkt een opwaardering te zijn van versie
-The database requires some data input: De database vereist enige data-invoer
-Click Update Database to complete the upgrade: Klik <b>Database bijwerken</b> om de upgrade compleet te maken
-In this section we will perform the required database changes to bring your database up to the required level: In deze sectie passen we uw database aan om deze op het benodigde niveau te krijgen
-If you are using a fully supported database, this step will be performed automatically for you: Indien u een volledig ondersteunde database gebruikt, zal deze stap automatisch worden uitgevoerd
-If not, the required SQL can be displayed and you should be able: Zoniet kan de gevraagde SQL getoond worden met u in staat zijn
-to cut &amp; paste it into your database server query window: om het de knippen &amp; plakken in uw database server query venster
 No database actions are required.: Er zijn geen database-acties vereist
 The following database actions are required: De volgende database acties zijn benodigd
 ODBC Underlying Database: Database met ODBC ondersteuning
@@ -1641,21 +1562,9 @@ Display Required SQL: Toon benodigde SQL
 Return to previous page after processing SQL.: Na manueel deze sql uitgevoerd te hebben, zal u naar de vorige pagina moeten terugkeren en uw database opnieuw laten testen zodat het programma de veranderingen kan zien.
 This is the final step in setting up your WebCalendar Installation.: Dit is de laatste stap bij het instellen van uw WebKalender Installatie
 Timezone Conversion: Tijzone conversie
-It appears that you have: Het lijkt er op dat u heeft
-NOT: NIET
-converted your existing WebCalendar event data to GMT.: uw bestaande tijden zijn geconverteerd naar GMT
-If you have, you may ignore this notice and not proceed with the conversion.: Indien u dit gedaan hebt, mag u dit bericht negeren en verder gaan met de conversie
-If this is a new installation, you may also ignore this notice.: Indien dit een nieuwe installatie is, kunt u deze waarschuwing negeren.
 Convert Data to GMT: Converteer tijden naar GMT
 Application Settings: Programma instellingen
-HTTP-based authentication was not detected: Authenticatie gebaseerd op HTTP werd niet gevonden
-You will need to reconfigure your web server if you wish to: U moet uw webserver anders configureren indien u wilt
-select Web Server from the User Authentication choices below.: Selecteer 'Web Server' in de 'Gebruiker authenticatie' opties hieronder
-HTTP-based authentication was detected.: Authenticatie gebaseerd op HTTP werd gevonden
-User authentication is being handled by your web server.: Gebruikers Authenticatie wordt afgehandeld door de server
-You should select Web Server from the list of User Authentication choices below.: U moet 'Webserver' uit de onderstaande lijst van 'Gebruikers Authenticatie' opties kiezen
 Create Default Admin Account: Maak een standaard beheer-account
-Admin Account Not Found: Admin account niet gevonden
 User Authentication: Gebruikers Authenticatie
 Web-based via WebCalendar (default): Web-based via WebKalender (standaard)
 None (Single-User): Geen (enkele-gebruiker)
@@ -1669,12 +1578,12 @@ Launch WebCalendar: Lanceer WebKalender
 ########################################
 # Page: install/install_functions.php
 #
-Error updating webcal_config: Fout bij het updaten van webcal_config
 Perl script required: Perl-script vereist
 
 ########################################
 # Page: tools/reload_remotes.php
 #
+Error connecting to database: Fout bij het verbinden met de database
 Include Path: Include Pad
 Deleting events for: Afspraken aan het verwijderen voor
 Importing events for: Afspraken importeren voor
@@ -1692,12 +1601,6 @@ task: taak
 This is a reminder for the XXX detailed below.: Dit is een herinnering aan de XXX waarvan u hieronder de details vindt
 Pecentage Complete: Percentage compleet
 Reminder: Herinnering
-
-########################################
-# Page: ws/event_mod.php
-#
-Unsupported action: Niet ondersteunde actie
-not admin: geen admin
 
 ########################################
 # Page: ws/user_mod.php

@@ -46,7 +46,7 @@ $year_url = 'year.php';
 
 $mycal = ( empty ( $STARTVIEW ) ? 'index.php' : $STARTVIEW );
 
-$mycal .= ( ! strpos ( $mycal, '.php' ) ? '.php' : '' );
+$mycal .= ( ! mb_strpos ( $mycal, '.php' ) ? '.php' : '' );
 
 if ( $can_add ) {
   // Add new entry.
@@ -73,7 +73,8 @@ if ( $single_user != 'Y' ) {
     $year_url .= '?user=' . $user;
 
     if ( ! empty ( $new_entry_url ) )
-      $new_entry_url .= (strpos($new_entry_url, '?') !== FALSE? '&': '?') . 'user=' . $user;
+      $new_entry_url .= ( mb_strpos ( $new_entry_url, '?' ) !== FALSE ? '&': '?' ) .
+        'user=' . $user;
 
     if ( ! empty ( $new_task_url ) )
       $new_task_url .= '&user=' . $user;
@@ -176,8 +177,9 @@ if ( ! $use_http_auth && $single_user != 'Y' ) {
     $logout_url = $login_url . '&';
   }
   $logout_url .= 'action=logout';
+
   // Should we use another application's login/logout pages?
-  if ( substr ( $GLOBALS['user_inc'], 0, 9 ) == 'user-app-' ) {
+  if ( mb_substr ( $GLOBALS['user_inc'], 0, 9 ) === 'user-app-' ) {
     global $app_login_page, $app_logout_page;
 
     $login_url = 'login-app.php'
@@ -232,7 +234,7 @@ view any of the standard D/M/W/Y pages, that will force us to use the view.
 */
     $xurl = get_preferred_view ( '', 'user=' . $l );
 
-    if ( strstr ( $xurl, 'view_' ) ) {
+    if ( mb_strstr ( $xurl, 'view_' ) ) {
       if ( access_can_access_function ( ACCESS_MONTH, $user ) )
         $xurl = 'month.php?user=' . $l;
       elseif ( access_can_access_function ( ACCESS_WEEK, $user ) )
@@ -673,20 +675,20 @@ $menuHtml .= '
           </td>' : '' ) . '
           <td class="ThemeMenubackgr ThemeMenu alignright">'
  . ( ! empty ( $logout_url ) && $menuConfig['Login'] // Using http_auth.
-  ? '<a class="menuhref" title="'
-   . ( strlen ( $login ) && $login != '__public__'
-    ? $logoutStr . '" href="' . $logout_url . '">' . $logoutStr
+      ? '<a class="menuhref" href="' .
+        ( mb_strlen ( $login ) && $login !== '__public__'
+          ? $logout_url . '">' . $logoutStr
      . ':</a>&nbsp;<label>'
      . ( $menuConfig['Login Fullname'] ? $fullname : $login ) . '</label>'
-    : // For public user.
-    $loginStr . '" href="' . $login_url . '">' . $loginStr . '</a>' )
+          : // For public user.
+            $login_url . '">' . $loginStr . '</a>' )
   : '&nbsp;&nbsp;&nbsp;' // TODO replace with something???
   ) . '&nbsp;</td>
         </tr>
       </table>';
 
 // Add function to onload string as needed.
-$BodyX = ( empty ( $BodyX ) ? 'onload="' : substr ( $BodyX, 0, -1 ) )
+$BodyX = ( empty ( $BodyX ) ? 'onload="' : mb_substr ( $BodyX, 0, -1 ) )
  . "cmDraw( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
 
 /* This function allows admins to add static content to their menu.

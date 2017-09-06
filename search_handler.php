@@ -27,7 +27,7 @@ if ( $login == '__public__' && ! empty ( $OVERRIDE_PUBLIC ) &&
 $keywords = getValue ( 'keywords' );
 $advanced = getValue ( 'advanced' );
 
-if ( strlen ( $keywords ) == 0 )
+if ( ! mb_strlen ( $keywords ) )
   $error = translate( 'You must enter one or more search keywords.' );
 
 $matches = 0;
@@ -100,9 +100,10 @@ $from_YMD = getPostValue ( 'from__YMD' );
 if ( empty ( $from_YMD ) ) {
   $start_day = $start_month = $start_year = '';
 } else {
-  $start_year = intval ( substr ( $from_YMD, 0, 4 ) );
-  $start_month = intval ( substr ( $from_YMD, 4, 2 ) );
-  $start_day = intval ( substr ( $from_YMD, 6, 2 ) );
+  $start_year = intval ( mb_substr ( $from_YMD, 0, 4 ) );
+  $start_month= intval ( mb_substr ( $from_YMD, 4, 2 ) );
+  $start_day  = intval ( mb_substr ( $from_YMD, 6, 2 ) );
+
   if ( $start_year < 1970 )
     $start_year = 1970;
 }
@@ -111,9 +112,10 @@ $end_YMD = getPostValue ( 'until__YMD' );
 if ( empty ( $end_YMD ) ) {
   $end_day = $end_month = $end_year = '';
 } else {
-  $end_year = intval ( substr ( $end_YMD, 0, 4 ) );
-  $end_month = intval ( substr ( $end_YMD, 4, 2 ) );
-  $end_day = intval ( substr ( $end_YMD, 6, 2 ) );
+  $end_year = intval ( mb_substr ( $end_YMD, 0, 4 ) );
+  $end_month= intval ( mb_substr ( $end_YMD, 4, 2 ) );
+  $end_day  = intval ( mb_substr ( $end_YMD, 6, 2 ) );
+
   if ( $end_year < 1970 )
     $end_year = 1970;
 }
@@ -141,13 +143,12 @@ else {
 // e.g., search_handler.php?keywords=%22Location:%20Arts%20and%20Crafts%22
 
 // begin Phrase modification
-$klen = strlen ( $keywords );
+$klen = mb_strlen ( $keywords );
 $phrasedelim = "\\\"";
-$plen = strlen ( $phrasedelim );
+$plen = mb_strlen ( $phrasedelim );
 
-if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
-    substr ( $keywords, $klen - $plen ) == $phrasedelim ) {
-  $phrase = substr ( $keywords, $plen, $klen - ( $plen * 2 ) );
+if ( mb_substr ( $keywords, 0, $plen ) === $phrasedelim && mb_substr ( $keywords, $klen - $plen ) === $phrasedelim ) {
+  $phrase = mb_substr ( $keywords, $plen, $klen - ( $plen * 2 ) );
   $words = [$phrase];
 } else
   // original (default) behavior

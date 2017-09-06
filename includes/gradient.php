@@ -111,18 +111,18 @@ if ( ! empty ( $_GET ) && ! empty ( $PHP_SELF ) &&
  *   ['red' => $red_val, 'green' => $green_val, 'blue' => $blue_val]
  */
 function colorToRGB ( $color ) {
-  if ( strlen ( $color ) == 6 ) {
-    $red = hexdec ( substr ( $color, 0, 2 ) );
-    $green = hexdec ( substr ( $color, 2, 2 ) );
-    $blue = hexdec ( substr ( $color, 4, 2 ) );
-  } elseif ( strlen ( $color ) == 3 ) {
-    $red_hex = substr ( $color, 0, 1 );
+  if ( mb_strlen ( $color ) === 6 ) {
+    $red  = hexdec ( mb_substr ( $color, 0, 2 ) );
+    $green= hexdec ( mb_substr ( $color, 2, 2 ) );
+    $blue = hexdec ( mb_substr ( $color, 4, 2 ) );
+  } elseif ( mb_strlen ( $color ) === 3 ) {
+    $red_hex = mb_substr ( $color, 0, 1 );
     $red = hexdec ( $red_hex . $red_hex );
 
-    $green_hex = substr ( $color, 1, 1 );
+    $green_hex = mb_substr ( $color, 1, 1 );
     $green = hexdec ( $green_hex . $green_hex );
 
-    $blue_hex = substr ( $color, 2, 1 );
+    $blue_hex = mb_substr ( $color, 2, 1 );
     $blue = hexdec ( $blue_hex . $blue_hex );
   } else
     // Invalid color specification
@@ -135,7 +135,7 @@ function colorToRGB ( $color ) {
  */
 function can_write_to_dir ($path)
 {
-  if ( $path { strlen ( $path ) - 1 } == '/' ) //Start function again with tmp file...
+  if ( $path { mb_strlen ( $path ) - 1 } === '/' ) //Start function again with tmp file...
     return can_write_to_dir ( $path.uniqid ( mt_rand() ) . '.tmp');
   else if ( preg_match( '/\.tmp$/', $path ) ) { //Check tmp file for read/write capabilities
     if ( ! ( $f = @fopen ( $path, 'w+' ) ) )
@@ -165,11 +165,11 @@ function background_css ( $base, $height = '', $percent = '' ) {
   if ( $type != '' && $ENABLE_GRADIENTS == 'Y' ) {
     $ret .= ': ' . $base . ' url( ';
     if ( ! file_exists ( 'images/cache' ) || ! can_write_to_dir ( 'images/cache/' ) )
-      $ret .= 'includes/gradient.php?base=' . substr ( $base, 1 )
+      $ret .= 'includes/gradient.php?base=' . mb_substr ( $base, 1 )
        . ( $height != '' ? '&height=' . $height : '' )
        . ( $percent != '' ? '&percent=' . $percent : '' );
     else {
-      $file_name = 'images/cache/' . substr ( $base, 1, 6 )
+      $file_name = 'images/cache/' . mb_substr ( $base, 1, 6 )
        . ( $height != '' ? '-' . $height : '' )
        . ( $percent != ''? '-' . $percent : '' ) . $type;
       if ( ! file_exists ( $file_name ) )
@@ -359,12 +359,12 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
  * General purpose functions to convert RGB to HSL and HSL to RBG
  */
 function  rgb2hsl ( $rgb ) {
-  if ( substr ($rgb, 0,1 ) == '#' )
-     $rgb = substr ( $rgb,1,6);
+  if ( mb_substr ( $rgb, 0,1 ) === '#' )
+     $rgb = mb_substr ( $rgb,1,6);
 
-  $R = ( hexdec (substr ( $rgb,0,2) ) / 255 );
-  $G = ( hexdec (substr ( $rgb,2,2) ) / 255 );
-  $B = ( hexdec (substr ( $rgb,4,2) ) / 255 );
+  $R = ( hexdec ( mb_substr ( $rgb,0,2 ) ) / 255 );
+  $G = ( hexdec ( mb_substr ( $rgb,2,2 ) ) / 255 );
+  $B = ( hexdec ( mb_substr ( $rgb,4,2 ) ) / 255 );
 
   $Min = min ( $R, $G, $B );    //Min. value of RGB
   $Max = max( $R, $G, $B );    //Max. value of RGB

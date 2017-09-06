@@ -1,4 +1,4 @@
-<?php // $Id: icalclient.php,v 1.42 2010/02/21 08:27:48 bbannon Exp $
+<?php
 /**
  *               WARNING * WARNING * WARNING * WARNING * WARNING
  *                 This script is still considered alpha level.
@@ -133,7 +133,7 @@ Method 2:
 //Method 1
 if ( empty( $_SERVER['PHP_AUTH_USER'] ) && ! empty( $_ENV['REMOTE_USER'] ) ) {
   list( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
-  explode( ':', base64_decode( substr( $_ENV['REMOTE_USER'], 6 ) ) );
+  explode ( ':', base64_decode ( mb_substr ( $_ENV['REMOTE_USER'], 6 ) ) );
 
   $_SERVER['PHP_AUTH_USER'] = trim ( $_SERVER['PHP_AUTH_USER'] );
   $_SERVER['PHP_AUTH_PW'] = trim ( $_SERVER['PHP_AUTH_PW'] );
@@ -190,11 +190,12 @@ user_load_variables ( $login, 'publish_' );
 
 function dump_globals() {
   foreach ( $GLOBALS as $K => $V ) {
-    do_debug ( "GLOBALS[$K] => " . ( strlen ( $V ) < 70 ? $V : '(too long)' ) );
+    do_debug ( "GLOBALS[$K] => " .
+      ( mb_strlen ( $V ) < 70 ? $V : '(too long)' ) );
   }
   foreach ( $GLOBALS['HTTP_POST_VARS'] as $K => $V ) {
-    do_debug ( "GLOBALS[$_POST[$K]] => "
-       . ( strlen ( $V ) < 70 ? $V : '(too long)' ) );
+    do_debug ( "GLOBALS[$_POST[$K]] => " .
+      ( mb_strlen ( $V ) < 70 ? $V : '(too long)' ) );
   }
 }
 

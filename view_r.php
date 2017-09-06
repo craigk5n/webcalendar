@@ -1,4 +1,4 @@
-<?php // $Id: view_r.php,v 1.58 2009/11/22 22:26:18 bbannon Exp $
+<?php
 /**
  * Page Description:
  * This is the "Week by Time" and "Week by Day" view.
@@ -438,7 +438,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
     }
 
     // now save the output...
-    if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
+    if ( mb_strlen ( $hour_arr[9999] ) ) {
       $untimed[$d] = $hour_arr[9999];
       $untimed_found = true;
     }
@@ -466,7 +466,7 @@ if ( $untimed_found || $show_untimed_row_always ) {
       $untimed = $save_untimed[$u][$d];
       // Use the class 'hasevents' for any hour block that has events
       // in it.
-      if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
+      if ( mb_strlen ( $untimed[$d] ) ) {
         $class = 'class="hasevents"';
       }
 
@@ -476,7 +476,7 @@ if ( $untimed_found || $show_untimed_row_always ) {
       }
       echo '>';
 
-      if ( !empty ( $untimed[$d] ) && strlen ( $untimed[$d] ) ) {
+      if ( mb_strlen ( $untimed[$d] ) ) {
         echo $untimed[$d];
       } else {
         echo '&nbsp;';
@@ -514,7 +514,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
         $class = '';
       // Use the class 'hasevents' for any hour block that has events
       // in it.
-      if ( ! empty ( $hour_arr[$i] ) && strlen ( $hour_arr[$i] ) ) {
+      if ( mb_strlen ( $hour_arr[$i] ) ) {
         $class = 'class="hasevents"';
       }
 

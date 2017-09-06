@@ -93,7 +93,8 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $user_TIMEZONE = get_pref_setting ( $creator, 'TIMEZONE' );
   set_env ( 'TZ', $user_TIMEZONE );
   $user_language = get_pref_setting ( $creator, 'LANGUAGE' );
-  if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && $SEND_EMAIL != 'N' ) {
+
+  if ( $send_user_mail === 'Y' && mb_strlen ( $tempemail ) && $SEND_EMAIL !== 'N' ) {
     reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
       ? $LANGUAGE : $user_language );
 
@@ -122,7 +123,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
       $msg .= "\n\n" . str_replace ( 'XXX', $comments,
         translate ( 'Comments XXX' ) );
 
-    $from = ( strlen ( $login_email ) ? $login_email : $EMAIL_FALLBACK_FROM );
+    $from = ( mb_strlen ( $login_email ) ? $login_email : $EMAIL_FALLBACK_FROM );
     // Send mail.
     $mail->WC_Send ( $login_fullname, $tempemail,
       $tempfullname, $name, $msg, $htmlmail, $from );

@@ -95,8 +95,8 @@ function assert_backtrace() {
           $line .= $v ? 'true' : 'false';
         else {
           $v = ( string ) @$v;
-          $line .= '"' . htmlspecialchars ( substr ( $v, 0, 40 ) )
-           . ( strlen ( $v ) > 40 ? '...' : '' ) . '"';
+          $line .= '"' . htmlspecialchars ( mb_substr ( $v, 0, 40 ) ) .
+            ( mb_strlen ( $v ) > 40 ? '..."' : '"' );
         }
       }
       $line .= ' )';

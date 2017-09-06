@@ -4,8 +4,7 @@
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id: Lithuanian.txt,v 1.8 2008/10/15 18:19:59 bbannon Exp $
-# Translation last updated on 10-14-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -17,7 +16,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: Windows-1257
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -44,18 +43,18 @@ __month__ __yyyy__: =
 ########################################
 # Page: access.php
 #
-Calendar: Kalendoriø
+Calendar: KalendoriÃ¸
 
 ########################################
-# Page: approve_entry.php
+# Page: combo.php
 #
-Date: Pasirinkite datà
+Date: Pasirinkite datÃ 
+Today: Ãiandien
 
 ########################################
 # Page: edit_report.php
 #
-Today: Ğiandien
-Next month: Kitas mënuo
+Next month: Kitas mÃ«nuo
 Next year: Kiti metai
 
 ########################################
@@ -67,16 +66,15 @@ Dec: Gru
 ########################################
 # Page: includes/functions.php
 #
-WK: sav
 January: Sausis
 February: Vasaris
 March: Kovas
 April: Balandis
-May_: Geguşë
-June: Birşelis
+May_: GeguÃ¾Ã«
+June: BirÃ¾elis
 July: Liepa
-August: Rugpjûtis
-September: Rugsëjis
+August: RugpjÃ»tis
+September: RugsÃ«jis
 October: Spalis
 November: Lapkritis
 Jan: Sau
@@ -93,14 +91,14 @@ Nov: Lap
 Sunday: Sekmadienis
 Monday: Pirmadienis
 Tuesday: Antradienis
-Wednesday: Treèiadienis
+Wednesday: TreÃ¨iadienis
 Thursday: Ketvirtadienis
 Friday: Pentadienis
-Saturday: Ğeğtadienis
+Saturday: ÃeÃ°tadienis
 Sun: Sek
 Mon: Pir
 Tue: Ant
 Wed: Tre
 Thu: Ket
 Fri: Pen
-Sat: Ğeğ
+Sat: ÃeÃ°

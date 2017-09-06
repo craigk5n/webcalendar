@@ -39,7 +39,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: init.php,v 1.159 2010/08/31 13:49:17 cknudsen Exp $
  * @package WebCalendar
  */
 
@@ -96,7 +95,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
 
-  ob_start ();
+  // ----- setup php for working with Unicode data -----
+  mb_http_input ( 'UTF-8' );
+  mb_http_output ( 'UTF-8' );
+  mb_internal_encoding ( 'UTF-8' );
+  mb_language ( 'uni' );
+  mb_regex_encoding ( 'UTF-8' );
+  ob_start ( 'mb_output_handler' );
 
   if ( defined ( '__WC_INCDIR' ) && is_dir ( __WC_INCDIR ) )
     $incdir = __WC_INCDIR;
@@ -108,7 +113,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $cs_ret = $lang = $menuHtml = $menuScript = '';
 
   // Remember this view if the file is a view_x.php script.
-  if( ! strstr( $REQUEST_URI, 'view_entry' ) )
+  if ( ! mb_strstr ( $REQUEST_URI, 'view_entry' ) )
     remember_this_view( true );
 
   // Menu control.
@@ -191,13 +196,14 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
       if ( $inc == 'JQUERY' ) {
         // Ignore since we handled it above
         $cs_ret .= '<!-- JQUERY INCLUDED -->' . "\n";
-      } if( stristr( $inc, '.css' ) ) {
+      }
+      if ( mb_stristr ( $inc, '.css' ) ) {
         $i = 'includes/' . $inc;
         // Not added to $cs_ar because I think we want these,
         // even if $disableStyle.
         $cs_ret .= '
     <link href="' . $i . '" rel="stylesheet" />';
-      } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
+      } elseif ( mb_substr ( $inc, 0, 12 ) === 'js/popups.js'
           && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
       } else {
@@ -205,7 +211,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
         $ret .= '
     <script src="';
 
-        if( stristr( $inc, '/true' ) ) {
+        if ( mb_stristr ( $inc, '/true' ) ) {
           $i = 'includes';
           foreach( $arinc as $a ) {
             if( $a == 'true' )
@@ -297,7 +303,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // Determine the page direction (left-to-right or right-to-left).
   . ( translate( 'direction' ) == 'rtl' ? ' dir="rtl"' : '' )
   /* Add <body> id. */ . ' id="' . preg_replace( '/(_|.php)/', '',
-    substr( $self, strrpos( $self, '/' ) + 1 ) ) . '"'
+    mb_substr ( $self, mb_strrpos ( $self, '/' ) + 1 ) ) . '"'
   // Add any extra parts to the <body> tag.
   . ( empty( $BodyX ) ? '' : " $BodyX" ) . '>' . "\n"
   // If menu is enabled, place menu above custom header if desired.

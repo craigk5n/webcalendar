@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php
 /**
  * Description:
  *  Web Service functionality to update, delete or add events.
@@ -48,7 +48,8 @@ if ( empty ( $user ) )
   $user = $login;
 
 $action = getGetValue ( 'action' );
-if ( strpos ( 'approvedeletereject', $action ) === false )
+
+if ( mb_strpos ( 'approvedeletereject', $action ) === false )
   $error = str_replace ( 'XXX', ws_escape_xml ( $action ),
     translate ( 'Unsupported action XXX.' ) );
 
@@ -73,8 +74,7 @@ if ( empty ( $error ) && ! $is_admin && $user != $login ) {
     // TODO: Support boss/assistant when UAC is not enabled.
     $error = translate ( 'Not authorized' );
 }
-
-if ( strpos ( ' approvedeletereject', $action ) )
+if ( mb_strpos ( ' approvedeletereject', $action ) )
   update_status ( ucfirst ( $action ), $user, $id );
 
 $out .= ( empty ( $error ) ? '

@@ -1,5 +1,4 @@
-<?php // $Id: edit_user_handler.php,v 1.54.2.1 2012/02/28 15:43:10 cknudsen Exp $
-
+<?php
 // There is the potential for a lot of mischief from users trying to access this
 // file in ways they shouldn't. Users may try to type in a URL to get around
 // functions that are not being displayed on the web page to them.
@@ -11,7 +10,7 @@ $referer = '';
 if ( ! empty ( $_SERVER['HTTP_REFERER']) ) {
   $refurl = parse_url($_SERVER['HTTP_REFERER']);
   if (!empty($refurl['path']))
-    $referer = strrchr($refurl['path'], '/edit_user.php' );
+    $referer = mb_strrchr ( $refurl['path'], '/edit_user.php' );
 }
 
 if (  $referer != '/edit_user.php' ) {
@@ -70,7 +69,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
     $error = $notAuthStr;
 } else {
   // Handle update of password.
-  if ( $formtype == 'setpassword' && strlen ( $user ) ) {
+  if ( $formtype === 'setpassword' && mb_strlen ( $user ) ) {
     if ( ! access_can_access_function ( ACCESS_USER_MANAGEMENT ) && !
         access_can_access_function ( ACCESS_ACCOUNT_INFO ) )
       $error = $notAuthStr;
@@ -78,7 +77,7 @@ if ( ! empty ( $delete ) && $formtype == 'edituser' ) {
     if ( $upassword1 != $upassword2 )
       $error = $notIdenticalStr;
     else {
-      if ( strlen ( $upassword1 ) ) {
+      if ( mb_strlen ( $upassword1 ) ) {
         if ( $user_can_update_password ) {
           user_update_user_password ( $user, $upassword1 );
           activity_log ( 0, $login, $user, LOG_USER_UPDATE,

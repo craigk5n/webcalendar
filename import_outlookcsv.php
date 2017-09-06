@@ -100,7 +100,7 @@ function dateDifference ( $start_timestamp, $end_timestamp, $unit = 0 ) {
 }
 
 function toBoolean ( $string ) {
-  return in_array ( strtoupper ( $string ), ['TRUE', 'T', '1', 'TR'] );
+  return in_array ( mb_strtoupper ( $string ), ['TRUE', 'T', '1', 'TR'] );
 }
 
 ?>

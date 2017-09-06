@@ -27,9 +27,10 @@ if ( ! empty ( $_POST ) ) {
   $process_user = getPostValue ( 'process_user' );
   if ( ! empty ( $process_action ) ) {
     foreach ( $_POST as $tid => $app_user ) {
-      if ( substr ( $tid, 0, 5 ) == 'entry' ) {
-        $type = substr ( $tid, 5, 1 );
-        $id = substr ( $tid, 6 );
+      if ( mb_substr ( $tid, 0, 5 ) === 'entry' ) {
+        $type= mb_substr ( $tid, 5, 1 );
+        $id  = mb_substr ( $tid, 6 );
+
         if ( empty ( $error ) && $id > 0 )
           update_status ( $process_action, $app_user, $id, $type );
       }

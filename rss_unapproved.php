@@ -58,7 +58,7 @@ $appStr = generate_application_name();
 // If WebCalendar is using http auth, then $login will be set in validate.php.
 if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ) {
   list ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
-  explode ( ':', base64_decode ( substr ( $_ENV['REMOTE_USER'], 6 ) ) );
+  explode ( ':', base64_decode ( mb_substr ( $_ENV['REMOTE_USER'], 6 ) ) );
 
   $_SERVER['PHP_AUTH_USER'] = trim ( $_SERVER['PHP_AUTH_USER'] );
   $_SERVER['PHP_AUTH_PW'] = trim ( $_SERVER['PHP_AUTH_PW'] );

@@ -1,4 +1,4 @@
-<?php // $Id: view_entry.php,v 1.185.2.2 2013/01/07 16:52:13 cknudsen Exp $
+<?php
 /**
  * Description:
  * Presents page to view an event with links to edit, delete
@@ -115,8 +115,10 @@ else {
     $cal_priority = $row[6];
     $cal_type = $row[7];
     $cal_access = $row[8];
-    if ( strpos ( 'NT', $cal_type ) !== false )
+
+    if ( mb_strpos ( 'NT', $cal_type ) !== false )
       $eType = 'task';
+
     if ( $hide_details ) {
       $description = $name = $overrideStr = translate ( $OVERRIDE_PUBLIC_TEXT );
       if ( ! empty ( $row[11] ) )
@@ -385,8 +387,8 @@ $event_date = ( $event_repeats && ! empty ( $date ) ? $date : $orig_date );
 // Get category Info
 if ( $CATEGORIES_ENABLED == 'Y' ) {
   $categories = get_categories_by_id ( $id,
-    ( ( ! empty ( $user ) && strlen ( $user ) ) && ( $is_assistant || $is_admin )
-      ? $user : $login ), true );
+    ( mb_strlen ( $user ) && ( $is_assistant || $is_admin ) ? $user : $login ),
+    true );
   $category = implode ( ', ', $categories );
 }
 
@@ -410,7 +412,7 @@ if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
   $str = str_replace ( '&amp;amp;', '&amp;', $str );
   // If there is no HTML found, then go ahead and replace
   // the line breaks ("\n") with the HTML break.
-  echo ( strstr ( $str, '<' ) && strstr ( $str, '>' )
+  echo ( mb_strstr ( $str, '<' ) && mb_strstr ( $str, '>' )
     ? $str // found some html...
     : nl2br ( activate_urls ( $str ) ) );
 } else
@@ -553,7 +555,7 @@ if ( $single_user == 'N' && ! empty ( $createby_fullname ) ) {
     $pubAccStr = ( $row[0] == '__public__'
       ? translate ( 'Public Access' ) : $createby_fullname );
 
-    echo ( strlen ( $email_addr ) && $can_email != 'N'
+    echo ( mb_strlen ( $email_addr ) && $can_email !== 'N'
       ? '<a href="mailto:' . $email_addr . '?subject=' . $subject . '">'
        . $pubAccStr . '</a>'
       : $pubAccStr )
@@ -597,11 +599,11 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
 
     if ( $extra_type == EXTRA_URL ) {
       $target = ( ! empty ( $extra_arg1 ) ? ' target="' . $extra_arg1 . '" ' : '' );
-      echo ( strlen ( $extras[$extra_name]['cal_data'] ) ? '<a href="'
+      echo ( mb_strlen ( $extras[$extra_name]['cal_data'] ) ? '<a href="'
          . $extras[$extra_name]['cal_data'] . '"' . $target . '>'
          . $extras[$extra_name]['cal_data'] . '</a>' : '' );
      } elseif ( $extra_type == EXTRA_EMAIL )
-      echo ( strlen ( $extras[$extra_name]['cal_data'] ) ? '<a href="mailto:'
+      echo ( mb_strlen ( $extras[$extra_name]['cal_data'] ) ? '<a href="mailto:'
          . $extras[$extra_name]['cal_data'] . '?subject=' . $subject . '">'
          . $extras[$extra_name]['cal_data'] . '</a>' : '' );
     elseif ( $extra_type == EXTRA_DATE )
@@ -686,7 +688,7 @@ if ( $single_user == 'N' && $show_participants ) {
       echo '
             <tr>
               <td width="30%">';
-      if ( strlen ( $tempemail ) && $can_email != 'N' ) {
+      if ( mb_strlen ( $tempemail ) && $can_email !== 'N' ) {
         echo '<a href="mailto:' . $tempemail . '?subject=' . $subject
          . '">&nbsp;' . $tempfullname . '</a>';
         $allmails[] = $tempemail;
@@ -712,7 +714,7 @@ if ( $single_user == 'N' && $show_participants ) {
         $can_email = access_user_calendar ( 'email', $templogin );
       echo '
           ';
-      if ( strlen ( $tempemail ) > 0 && $can_email != 'N' ) {
+      if ( mb_strlen ( $tempemail ) && $can_email !== 'N' ) {
         echo '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
          . $tempfullname . '</a>';
         $allmails[] = $tempemail;
@@ -743,7 +745,7 @@ if ( $single_user == 'N' && $show_participants ) {
         $can_email = access_user_calendar ( 'email', $templogin );
       echo '
           ';
-      if ( strlen ( $tempemail ) > 0 && $can_email != 'N' ) {
+      if ( mb_strlen ( $tempemail ) && $can_email !== 'N' ) {
         echo '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
          . $tempfullname . '</a>';
         $allmails[] = $tempemail;
@@ -758,7 +760,8 @@ if ( $single_user == 'N' && $show_participants ) {
         $can_email = access_user_calendar ( 'email', $templogin );
 
       echo '
-          <strike>' . ( strlen ( $tempemail ) > 0 && $can_email != 'N'
+          <strike>' .
+        ( mb_strlen ( $tempemail ) > 0 && $can_email !== 'N'
         ? '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
          . $tempfullname . '</a>'
         : $tempfullname ) . '</strike> (' . translate ( 'Rejected' ) . ')<br />';
@@ -870,7 +873,7 @@ if ( Doc::commentsEnabled() ) {
        $str = str_replace ( '&amp;amp;', '&amp;', $str );
        // If there is no HTML found, then go ahead and replace
        // the line breaks ("\n") with the HTML break.
-       $comment_text .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
+       $comment_text .= ( mb_strstr ( $str, '<' ) && mb_strstr ( $str, '>' )
          ? $str // found some html...
          : nl2br ( activate_urls ( $str ) ) );
      } else {

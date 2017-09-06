@@ -1,4 +1,4 @@
-<?php // $Id: week_details.php,v 1.78 2009/11/22 22:26:18 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 send_no_cache_header();
 
@@ -27,11 +27,11 @@ if ( $DISPLAY_WEEKENDS == 'N' ) {
 $printerStr = generate_printer_friendly ( 'week_details.php' );
 
 /* Pre-Load the repeated events for quckier access. */
-$repeated_events = read_repeated_events ( ( strlen ( $user )
+$repeated_events = read_repeated_events ( ( mb_strlen ( $user )
   ? $user : $login ), $wkstart, $wkend, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access. */
-$events = read_events ( ( strlen ( $user )
+$events = read_events ( ( mb_strlen ( $user )
   ? $user : $login ), $wkstart, $wkend, $cat_id );
 
 if ( $WEEK_START == 0 && $DISPLAY_WEEKENDS == 'N' )
@@ -126,7 +126,7 @@ function print_detailed_entry ( $event, $date ) {
   $loginStr = $event->getLogin();
   $name = $event->getName();
 
-  $class = ( $login != $loginStr && strlen ( $loginStr )
+  $class = ( $login !== $loginStr && mb_strlen ( $loginStr )
     ? 'layer' : ( $event->getStatus() == 'W' ? 'unapproved' : '' ) ) . 'entry';
 
   if ( $getExtStr != '' ) {
@@ -144,14 +144,15 @@ function print_detailed_entry ( $event, $date ) {
    . '" id="' . $linkid . '" href="view_entry.php?id=' . $id
    . '&amp;date=' . $date;
 
-  if ( strlen ( $user ) > 0 )
+  if ( mb_strlen ( $user ) )
     echo '&amp;user=' . $user;
   else
   if ( $class == 'layerentry' )
     echo '&amp;user=' . $loginStr;
 
-  echo '<img src="images/circle.gif" class="bullet" alt="view icon" />';
-  if ( $login != $loginStr && strlen ( $loginStr ) ) {
+  echo '><img src="images/circle.gif" class="bullet" alt="view icon" />';
+
+  if ( $login !== $loginStr && mb_strlen ( $loginStr ) ) {
     if ( $layers ) {
       foreach ( $layers as $layer ) {
         if ( $layer['cal_layeruser'] == $loginStr ) {
@@ -174,13 +175,12 @@ function print_detailed_entry ( $event, $date ) {
 
     echo $timestr . '&raquo;&nbsp;';
   }
-
-  if ( $login != $user && $evAccessStr == 'R' && strlen ( $user ) )
+  if ( $login !== $user && $evAccessStr === 'R' && mb_strlen ( $user ) )
     $PN = $PD = '(' . translate ( 'Private' ) . ')';
   elseif ( $login != $loginStr && $evAccessStr == 'R' &&
-    strlen ( $loginStr ) )
+    mb_strlen ( $loginStr ) )
     $PN = $PD = '(' . translate ( 'Private' ) . ')';
-  elseif ( $login != $loginStr && strlen ( $loginStr ) ) {
+  elseif ( $login !== $loginStr && mb_strlen ( $loginStr ) ) {
     $PN = htmlspecialchars ( $name );
     $PD = activate_urls ( htmlspecialchars ( $descStr ) );
   } else {
@@ -211,8 +211,7 @@ function print_detailed_entry ( $event, $date ) {
 function print_det_date_entries ( $date, $user, $ssi ) {
   global $events, $is_admin, $readonly;
 
-  $date = mktime ( 0, 0, 0, substr ( $date, 4, 2 ),
-    substr ( $date, 6, 2 ), substr ( $date, 0, 4 ) );
+  $date = mktime ( 0, 0, 0, mb_substr ( $date, 4, 2 ), mb_substr ( $date, 6, 2 ), mb_substr ( $date, 0, 4 ) );
 
   // Get and sort all the repeating and non-repeating events for this date.
   $ev = combine_and_sort_events ( get_entries ( $date ),

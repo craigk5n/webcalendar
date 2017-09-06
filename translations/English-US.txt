@@ -1,6 +1,6 @@
 # Use this as a starting point to translate WebCalendar into other languages.
 #
-# Note to translators:  If you want to copy these header comments to your
+# Note to translators: If you want to copy these header comments to your
 # language file and translate them, too, that's OK with us.
 #
 # The format consists of an optional header:
@@ -17,9 +17,7 @@
 #   The "English phrase: ", including the colon ":", is provided by the
 #   WebCalendar developers. Your part is the "translation".)
 #
-# The tools directory contains two perl scripts to help you:
-#   - check_translation.pl
-#       indicates if all text has been successfully translated.
+# The tools directory contains a perl script to help you:
 #   - update_translation.pl
 #       will parse the program files to find all translate ( 'phrase' ) and
 #       tooltip ( 'phrase' ). It will arrange the phrases according to the page
@@ -36,10 +34,9 @@
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
-# $Id: English-US.txt,v 1.276 2010/10/07 14:59:29 cknudsen Exp $
-# Translation last updated on 11-22-2009
+# Translation last updated on 09-03-2017
 
-charset: iso-8859-1
+charset: UTF-8
 direction: ltr
 __mm__/__dd__/__yyyy__: __mm__/__dd__/__yyyy__
 __month__ __dd__: __month__ __dd__
@@ -449,6 +446,11 @@ Admin mode: Admin mode
 Your assistants: Your assistants
 
 ########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Unknown error.
+
+########################################
 # Page: availability.php
 #
 Program Error No XXX specified!: Program Error: No XXX specified!
@@ -462,12 +464,13 @@ day: day
 #
 Category Icon: Category Icon
 Global: Global
+The permissions for the icons directory are set to read-only: The permissions for the icons directory are set to read-only
 Category Name: Category Name:
 Color: Color
 Remove Icon: Remove Icon:
 Add Icon to Category: Add Icon to Category
 Upload: Upload
-gif 3kb max: (gif 3kb max)
+GIF or PNG 6kb max: GIF or PNG 6kb max
 Search for existing icons: Search for existing icons
 Add: Add
 Delete: Delete
@@ -477,8 +480,9 @@ Make New Category: Make New Category
 ########################################
 # Page: category_handler.php
 #
+Category name is required: Category name is required
 File size exceeds maximum.: File size exceeds maximum.
-File is not a gif image.: File is not a gif image.
+File is not a GIF or PNG image: File is not a GIF or PNG image
 
 ########################################
 # Page: catsel.php
@@ -503,6 +507,7 @@ Old Color: Old Color
 #
 Select None: Select None
 Agenda: Agenda
+Add Task: Add Task
 Description: Description
 Date: Date
 Time: Time
@@ -517,6 +522,9 @@ Brief Description: Brief Description
 Full Description: Full Description
 Category: Category
 Add event detail: Add event detail
+Start Date: Start Date
+Due Date: Due Date
+Add task detail: Add task detail
 All: All
 Error: Error
 no response from server: no response from server
@@ -527,8 +535,10 @@ Low: Low
 Today: Today
 Add Entry: Add Entry
 Unnamed Event: Unnamed Event
+Unnamed Task: Unnamed Task
 Refresh: Refresh
 Click to add entry: Click to add entry
+Name: Name
 pm: pm
 am: am
 
@@ -590,7 +600,6 @@ Location: Location
 url-help: Event URL
 URL: URL
 date-help: Specifies the date of the event.
-Start Date: Start Date
 Untimed event: Untimed event
 Timed event: Timed event
 All day event: All day event
@@ -599,7 +608,6 @@ time-help: Specifies the time of the event. <ul><li>"Timed event" (for an event 
 duration-help: Specifies the duration (in hours;minutes) of the event. <em>This field can be left blank.</em>
 end-time-help: Specifies the time the event is expected to end.
 Start Time: Start Time
-Due Date: Due Date
 Due Time: Due Time
 Site Extras: Site Extras
 avail_participants-help: Lists the available participants of this entry.
@@ -798,7 +806,7 @@ Username cannot be blank.: Username cannot be blank.
 ########################################
 # Page: events_ajax.php
 #
-Unknown error.: Unknown error.
+Not authorized: Not authorized
 
 ########################################
 # Page: export.php
@@ -862,6 +870,7 @@ colors-help: All colors should be specified in "#RRGGBB" hexadecimal format wher
 #
 Report Bug: Report Bug
 Please include all the information below when reporting a bug.: Please include all the information below when reporting a bug.
+Also, please use English rather than: Also, please use English rather than
 Also, please use English rather than XXX.: Also, please use <strong>English</strong> rather than XXX.
 
 ########################################
@@ -885,14 +894,10 @@ repeat-day-help: Specifies which days of the week the event should repeat on.
 #
 Import: Import
 Palm Desktop: Palm Desktop
-This form will allow you to import entries from the Palm Desktop Datebook.: This form will allow you to import entries from the Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
 allow you to import entries from the Palm...: This form will allow you to import entries from the Palm Desktop Datebook. It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
 The following entries will not be imported: The following entries will not be imported:
 Entries older than the current date: Entries older than the current date
 Entries created in the Palm Desktop...: Entries created in the Palm Desktop that have not been HotSync'd
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Anything imported from Palm will be overwritten during the next import (unless the event date has passed).
-Therefore, updates should be made in the Palm Desktop.: Therefore, updates should be made in the Palm Desktop.
 Anything imported from Palm...: Anything imported from Palm will be overwritten during the next import (unless the event date has passed). Therefore, updates should be made in the Palm Desktop.
 vCal: vCal
 This form will import vCalendar (.vcs) 1.0 events.: This form will import vCalendar (.vcs) 1.0 events.
@@ -985,13 +990,13 @@ The import file contained no data.: The import file contained no data.
 ########################################
 # Page: layers.php
 #
-Layer: Layer
-Edit layer: Edit layer
-Delete layer: Delete layer
 Are you sure you want to delete this layer?: Are you sure you want to delete this layer?
+Delete layer: Delete layer
+Edit layer: Edit layer
 Enable layers: Enable layers
-Layers are currently enabled.: Layers are currently <strong>enabled</strong>.
+Layer: Layer
 Layers are currently disabled.: Layers are currently <strong>disabled</strong>.
+Layers are currently enabled.: Layers are currently <strong>enabled</strong>.
 Click to modify layers settings for XXX: Click here to modify the layers settings for the XXX calendar.
 Disable Layers: Disable Layers
 Add layer: Add layer
@@ -1019,7 +1024,6 @@ Uncheck All: Uncheck All
 View this entry: View this entry
 No unapproved entries for XXX.: No unapproved entries for: "XXX".
 Unapproved Entries: Unapproved Entries
-Not authorized: Not authorized
 Approve this entry?: Approve this entry?
 Reject this entry?: Reject this entry?
 Approve Selected entries?: Approve Selected entries?
@@ -1066,12 +1070,14 @@ No such nonuser calendar: No such nonuser calendar
 ########################################
 # Page: pref.php
 #
+Invalid theme: Invalid theme
 Save Preferences: Save Preferences
 Public Access calendar: Public Access calendar
 Modify Non User Calendar Preferences: Modify Non User Calendar Preferences
 Return to My Preferences: Return to My Preferences
 Custom Scripts: Custom Scripts
 Timezone Selection: Timezone Selection
+Multiview: Multiview
 entry-interval-help: Sets minute interval when editing entry times
 Entry interval: Entry interval
 hour: hour
@@ -1100,8 +1106,8 @@ Records deleted from XXX: Records deleted from "XXX".
 ########################################
 # Page: register.php
 #
-Username already exists.: Username already exists.
 Email address cannot be blank.: Email address cannot be blank.
+Username already exists.: Username already exists.
 Email address already exists.: Email address already exists.
 New user via self-registration.: New user via self-registration.
 A new WebCalendar account has been set up for you.: A new WebCalendar account has been set up for you.
@@ -1316,6 +1322,11 @@ New Entry: New Entry
 cont.: cont.
 
 ########################################
+# Page: week_ssi.php
+#
+<b>Error&#58;</b> No user specified.: <b>Error&#58;</b> No user specified.
+
+########################################
 # Page: includes/access.php
 #
 Another Users Calendar: Another User's Calendar
@@ -1348,17 +1359,16 @@ LANGUAGE DEFINED: LANGUAGE DEFINED
 ########################################
 # Page: includes/dbi4php.php
 #
-Error connecting to database: Error connecting to database
+Error connecting to database XXX: Error connecting to database XXX
 db_type not defined.: db_type not defined.
-invalid db_type: invalid db_type
+invalid db_type XXX: invalid db_type XXX
 Cache cleared from previous SQL!: Cache cleared from previous SQL!
 Error executing query.: Error executing query.
 Unfortunately, XXX is not implemented for YYY: Unfortunately, "XXX" is not implemented for (YYY).
 Unknown ODBC error.: Unknown ODBC error.
-write: write
-Cache error Could not XXX file YYY.: Cache error: Could not XXX file "YYY".
 Error opening cache dir XXX.: Error opening cache dir "XXX".
 delete: delete
+Cache error Could not XXX file YYY.: Cache error: Could not XXX file "YYY".
 
 ########################################
 # Page: includes/formvars.php
@@ -1400,7 +1410,8 @@ Event updated: Event updated
 Journal updated: Journal updated
 Task updated: Task updated
 Delete User: Delete User
-WK: WK
+Week XXX: Week XXX
+WKXXX: WKXXX
 TASKS: TASKS
 Task_Title: Title
 Due: Due
@@ -1473,6 +1484,7 @@ Thu: Thu
 Fri: Fri
 Sat: Sat
 unknown-weekday: unknown-weekday
+Invalid referring URL: Invalid referring URL
 
 ########################################
 # Page: includes/help_list.php
@@ -1497,7 +1509,6 @@ Manage calendar of: Manage calendar of
 # Page: includes/translate.php
 #
 Browser Language Not Found: Browser Language Not Found
-(not supported): (not supported)
 English: English
 English-US: English-US
 Afrikaans: Afrikaans
@@ -1625,23 +1636,6 @@ Enter the correct letters and numbers...: Enter the correct letters and numbers 
 Challenge/Response: Challenge/Response
 
 ########################################
-# Page: includes/js/admin.php
-#
-Server URL is required.: Server URL is required.
-Server URL must end with /.: Server URL must end with a slash(/).
-Invalid work hours.: Invalid work hours.
-Invalid color for document background.: Invalid color for document background.
-Invalid color for document title.: Invalid color for document title.
-Invalid color for table cell background.: Invalid color for table cell background.
-Invalid color for table grid.: Invalid color for table grid.
-Invalid color for table header background.: Invalid color for table header background.
-Invalid color for table text background.: Invalid color for table text background.
-Invalid color for event popup background.: Invalid color for event popup background.
-Invalid color for event popup text.: Invalid color for event popup text.
-Invalid color for table cell background for today.: Invalid color for table cell background for today.
-Color format should be RRGGBB.: Color format should be #RRGGBB.
-
-########################################
 # Page: includes/js/availability.php
 #
 Change the date and time of this entry?: Change the date and time of this entry?
@@ -1666,6 +1660,7 @@ First and last names cannot both be blank.: First and last names cannot both be 
 # Page: includes/js/edit_remotes.php
 #
 Invalid color: Invalid color
+Color format should be RRGGBB.: Color format should be #RRGGBB.
 URL cannot be blank.: URL cannot be blank.
 
 ########################################
@@ -1674,9 +1669,24 @@ URL cannot be blank.: URL cannot be blank.
 File type does not match Import Format: File type does not match Import Format
 
 ########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Invalid color for document background.
+Invalid color for document title.: Invalid color for document title.
+Invalid color for table cell background.: Invalid color for table cell background.
+Invalid color for table cell background for today.: Invalid color for table cell background for today.
+Invalid work hours.: Invalid work hours.
+
+########################################
 # Page: includes/js/translate.js.php
 #
+Server URL must end with /.: Server URL must end with a slash(/).
+Invalid color for table grid.: Invalid color for table grid.
+Invalid color for event popup background.: Invalid color for event popup background.
+Invalid color for event popup text.: Invalid color for event popup text.
 Invalid color for table header text.: Invalid color for table header text.
+Invalid color for table header background.: Invalid color for table header background.
+Server URL is required.: Server URL is required.
 Invalid Color: Invalid Color
 Database Name: Database Name
 Full Path (no backslashes): Full Path (no backslashes)
@@ -1824,6 +1834,7 @@ NO PREVIEW AVAILABLE: NO PREVIEW AVAILABLE
 ########################################
 # Page: tools/reload_remotes.php
 #
+Error connecting to database: Error connecting to database
 Include Path: Include Path
 Deleting events for: Deleting events for
 Importing events for: Importing events for

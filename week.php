@@ -1,4 +1,4 @@
-<?php // $Id: week.php,v 1.144 2010/02/21 08:27:48 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 //check UAC
@@ -50,18 +50,21 @@ if ( $DISPLAY_SM_MONTH == 'Y' && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   $evEnd = $wkend;
 }
 /* Pre-Load the repeated events for quickier access. */
-$repeated_events = read_repeated_events ( ( strlen ( $user )
-    ? $user : $login ), $evStart - 604800, $evEnd, $cat_id );
+$repeated_events = read_repeated_events (
+  ( mb_strlen ( $user ) ? $user : $login ),
+  $evStart - 604800, $evEnd, $cat_id );
 
 /* Pre-load the non-repeating events for quicker access. */
 // Start the search ONE_WEEK early to account for cross-day events.
-$events = read_events ( ( strlen ( $user )
-    ? $user : $login ), $evStart - 604800, $evEnd, $cat_id );
+$events = read_events (
+  ( mb_strlen ( $user ) ? $user : $login ),
+  $evStart - 604800, $evEnd, $cat_id );
 
 if ( empty ( $DISPLAY_TASKS_IN_GRID ) || $DISPLAY_TASKS_IN_GRID == 'Y' )
   /* Pre-load tasks for quicker access. */
-  $tasks = read_tasks ( ! empty ( $user ) && strlen ( $user ) && $is_assistant
-    ? $user : $login, $wkend, $cat_id );
+  $tasks = read_tasks (
+    ( mb_strlen ( $user ) && $is_assistant ? $user : $login ),
+    $wkend, $cat_id );
 
 if ( $can_add ) {
   $help = ' title="' .
@@ -145,7 +148,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   }
 
   // Now save the output...
-  if ( ! empty ( $hour_arr[9999] ) && strlen ( $hour_arr[9999] ) ) {
+  if ( mb_strlen ( $hour_arr[9999] ) ) {
     $untimed[$i] = $hour_arr[9999];
     $untimed_found = true;
   }
@@ -154,9 +157,10 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   if ( $can_add )
     $untimedStr .= " ondblclick=\"dblclick_add('$dateYmd','$user',0,0)\"";
   // Use the class 'hasevents' for any hour block that has events in it.
-  $untimedStr .= ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
+  $untimedStr .= ( mb_strlen ( $untimed[$i] )
     ? ' class="hasevents"' : $class )
-    . '>' . ( ! empty ( $untimed[$i] ) && strlen ( $untimed[$i] )
+    . '>' .
+    ( mb_strlen ( $untimed[$i] )
     ? $untimed[$i] : '&nbsp;' ) . '</td>';
 
   $save_hour_arr[$i] = $hour_arr;
@@ -179,7 +183,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     // Class "hasevents" overrides both "today" and "weekend".
     // And class "today" overrides "weekend".
     // So, no need to list them all.
-    $class = ( ! empty ( $save_hour_arr[$d][$i] ) && strlen ( $save_hour_arr[$d][$i] )
+    $class = ( mb_strlen ( $save_hour_arr[$d][$i] )
       ? ' class="hasevents"'
       : ( $dateYmd == date ( 'Ymd', $today )
         ? ' class="today"'

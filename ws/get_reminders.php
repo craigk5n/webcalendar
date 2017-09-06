@@ -146,9 +146,9 @@ function process_event ( $id, $name, $event_date, $event_time ) {
       // How many minutes before event should we send the reminder?
       $event_time = mktime ( intval ( $event_time / 10000 ),
         ( $event_time / 100 ) % 100, 0,
-        substr ( $event_date, 4, 2 ),
-        substr ( $event_date, 6, 2 ),
-        substr ( $event_date, 0, 4 ) );
+        mb_substr ( $event_date, 4, 2 ),
+        mb_substr ( $event_date, 6, 2 ),
+        mb_substr ( $event_date, 0, 4 ) );
 
       if ( ( $extra_arg2 & EXTRA_REMINDER_WITH_OFFSET ) > 0 ) {
         $minsbefore = $extras[$extra_name]['cal_data'];
@@ -156,9 +156,9 @@ function process_event ( $id, $name, $event_date, $event_time ) {
       } elseif ( ( $extra_arg2 & EXTRA_REMINDER_WITH_DATE ) > 0 ) {
         $rd = $extras[$extra_name]['cal_date'];
         $remind_time = mktime ( 0, 0, 0,
-          substr ( $rd, 4, 2 ),
-          substr ( $rd, 6, 2 ),
-          substr ( $rd, 0, 4 ) );
+          mb_substr ( $rd, 4, 2 ),
+          mb_substr ( $rd, 6, 2 ),
+          mb_substr ( $rd, 0, 4 ) );
       } else {
         $minsbefore = $extra_arg1;
         $remind_time = $event_time - ( $minsbefore * 60 );

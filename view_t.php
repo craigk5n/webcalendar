@@ -1,4 +1,4 @@
-<?php // $Id: view_t.php,v 1.93 2011/07/12 19:42:25 rjones6061 Exp $
+<?php
 /**
  * Page Description:
  * This page will display a timebar for a week or month as specified by timeb.
@@ -56,9 +56,9 @@ function print_date_entries_timebar ( $date, $user, $ssi ) {
   $cnt = 0;
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
 
-  $year = substr ( $date, 0, 4 );
-  $month = substr ( $date, 4, 2 );
-  $day = substr ( $date, 6, 2 );
+  $year = mb_substr ( $date, 0, 4 );
+  $month= mb_substr ( $date, 4, 2 );
+  $day  = mb_substr ( $date, 6, 2 );
 
   $can_add = ( $readonly == 'N' || $is_admin );
   if ( $PUBLIC_ACCESS == 'Y' && $PUBLIC_ACCESS_CAN_ADD != 'Y' &&
@@ -186,7 +186,9 @@ function print_entry_timebar ( $event, $date ) {
   . ( $can_access != 0 && $time_only != 'Y' ? '
           <a class="entry" id="' . $linkid . '" href="view_entry.php?id='
      . $id . '&amp;date=' . ( $tempClone ? $tempClone: $date )
-     . ( strlen ( $user ) > 0 ? '&amp;user=' . $user : '' ) . '">' : '' ) . '['
+     . ( mb_strlen ( $user ) ? '&amp;user=' . $user : '' ) .
+      '">' : '' ) .
+    '['
    . $GLOBALS['tempfullname']
    . ']&nbsp;' . build_entry_label ( $event, 'eventinfo-' . $linkid, $can_access,
     ( $event->isAllDay()
@@ -247,7 +249,7 @@ function print_header_timebar() {
 $date = ( empty ( $date ) ? date ( 'Ymd' ) : $date );
 // Initialize date to first of current month.
 if ($view_type != 'S')
-  $date = substr ( $date, 0, 6 ) . '01';
+  $date = mb_substr ( $date, 0, 6 ) . '01';
 
 set_today ( $date );
 

@@ -53,7 +53,7 @@ define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
 define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
 define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 $old_path = ini_get ( 'include_path' );
-$delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
+$delim = ( mb_strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
 require_once __WC_CLASSDIR . 'WebCalendar.class';
@@ -324,7 +324,7 @@ function send_reminder ( $id, $event_date ) {
     $recipients[] = $single_user_login;
   } else {
     for ( $i = 0; $i < $partcnt; $i++ ) {
-      if ( strlen ( $emails[$participants[$i]] ) ) {
+      if ( mb_strlen ( $emails[$participants[$i]] ) ) {
         $mailusers[] = $emails[$participants[$i]];
         $recipients[] = $participants[$i];
       } else {
@@ -388,7 +388,7 @@ function send_reminder ( $id, $event_date ) {
     // Don't include link for External users.
     if ( ! empty ( $SERVER_URL ) && ! $isExt ) {
       $eventURL = $SERVER_URL
-       . ( substr ( $SERVER_URL, -1, 1 ) == '/' ? '' : '/' )
+       . ( mb_substr ( $SERVER_URL, -1 ) == '/' ? '' : '/' )
        . 'view_entry.php?id=' . $id . '&em=1';
 
       if ( $useHtml == 'Y' )
@@ -396,7 +396,7 @@ function send_reminder ( $id, $event_date ) {
 
       $body .= $eventURL . "\n\n";
     }
-    $body .= strtoupper ( $name ) . "\n\n" . translate ( 'Description' )
+    $body .= mb_strtoupper ( $name ) . "\n\n" . translate ( 'Description' )
      . ":\n" . $padding . $description . "\n"
      . ( $is_task ? translate ( 'Start Date' ) : translate ( 'Date' ) )
      . ': ' . date_to_str ( ( $row[2] > 0? date ( 'Ymd', $event_date ) : gmdate ( 'Ymd', $event_date ) ) ) . "\n"

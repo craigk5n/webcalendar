@@ -185,13 +185,14 @@ if ( $load_layers )
 
 // Calculate date range.
 $date = getValue ( 'date', '-?[0-9]+', true );
-if ( empty ( $date ) || strlen ( $date ) != 8 )
+
+if ( empty ( $date ) || mb_strlen ( $date ) !== 8 )
   // If no date specified, start with today.
   $date = date ( 'Ymd' );
 
-$thisyear = substr ( $date, 0, 4 );
-$thismonth = substr ( $date, 4, 2 );
-$thisday = substr ( $date, 6, 2 );
+$thisyear = mb_substr ( $date, 0, 4 );
+$thismonth= mb_substr ( $date, 4, 2 );
+$thisday  = mb_substr ( $date, 6, 2 );
 
 $startTime = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 

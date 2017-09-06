@@ -101,8 +101,9 @@ if ( empty ( $error ) && $id > 0 ) {
     $user_TIMEZONE = get_pref_setting ( $partlogin[$i], 'TIMEZONE' );
     set_env ( 'TZ', $user_TIMEZONE );
     $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
+
     if ( $send_user_mail == 'Y' &&
-      strlen ( $tempemail ) && $SEND_EMAIL != 'N' && $can_mail == 'Y' ) {
+      mb_strlen ( $tempemail ) && $SEND_EMAIL !== 'N' && $can_mail == 'Y' ) {
       reset_language ( empty ( $user_language ) || $user_language == 'none'
         ? $LANGUAGE : $user_language );
 
@@ -128,13 +129,15 @@ if ( empty ( $error ) && $id > 0 ) {
 
 ' . ( $htmlmail == 'Y' ? activate_urls ( $url ) : $url );
       }
-      if ( strlen ( $comments ) )
+
+      if ( mb_strlen ( $comments ) )
         $msg .= '
 
 ' . str_replace ( 'XXX', $comments, translate ( 'Comments XXX' ) );
 
       $from = $EMAIL_FALLBACK_FROM;
-      if ( strlen ( $login_email ) )
+
+      if ( mb_strlen ( $login_email ) )
         $from = $login_email;
 
       // Send via WebCalMailer class.

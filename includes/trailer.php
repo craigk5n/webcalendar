@@ -52,7 +52,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
   $mycal = ( empty ( $GLOBALS['STARTVIEW'] )
     ? 'index.php' : $GLOBALS['STARTVIEW'] );
-  $mycal .= ( strpos ( $mycal, '.php' )? '' : '.php' );
+  $mycal .= ( mb_strpos ( $mycal, '.php' ) ? '' : '.php' );
 
   // Calc URL to today.
   $reqURI = 'month.php';
@@ -62,9 +62,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
   if ( ! empty ( $_SERVER['SCRIPT_NAME'] ) )
     $reqURI = $_SERVER['SCRIPT_NAME'];
 
-  $todayURL = ( ! strstr ( $reqURI, 'day.php' ) && !
-    strstr ( $reqURI, 'month.php' ) && ! strstr ( $reqURI, 'week.php' )
-    ? 'day.php' : $reqURI );
+  $todayURL = ( preg_match ( '/(day|month|week)\.php/', $reqURI ) === false ? 'day.php' : $reqURI );
 
   if ( ! access_can_view_page ( $todayURL ) )
     $todayURL = '';
@@ -204,8 +202,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
-        $reports_link[] = '<a title="' . htmlspecialchars ( $row[0] )
-         . '" href="report.php?report_id=' . $row[1]
+        $reports_link[] = '<a href="report.php?report_id=' . $row[1]
          . ( ! empty ( $user ) && $user != $login ? '&amp;user=' . $user : '' )
          . '">' . htmlspecialchars ( $row[0] ) . '</a>';
       }
@@ -232,7 +229,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     }
 
     // Should we use another application's login/logout pages?
-    if ( substr ( $GLOBALS['user_inc'], 0, 9 ) == 'user-app-' ) {
+    if ( mb_substr ( $GLOBALS['user_inc'], 0, 9 ) === 'user-app-' ) {
       global $app_login_page, $app_logout_page;
       $logout_url = $app_logout_page;
       $login_url = 'login-app.php'
@@ -242,11 +239,11 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
 
     if ( $readonly != 'Y' )
       $tret .= '<br /><span class="prefix">' . $currentUserStr . ':</span>&nbsp;'
-       . ( strlen ( $login ) && $login != '__public__'
-        ? $fullname . '&nbsp;(<a title="' . $logoutStr . '" href="'
+       . ( mb_strlen ( $login ) && $login !== '__public__'
+        ? $fullname . '&nbsp;(<a href="'
          . $logout_url . '">' . $logoutStr
         : // For public user (who did not actually login).
-        $publicStr . '&nbsp;(<a title="' . $loginStr . '" href="' . $login_url
+        $publicStr . '&nbsp;(<a href="' . $login_url
          . '">' . $loginStr ) . "</a>)\n";
   }
 
@@ -287,7 +284,8 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
       // user cannot view any of the standard D/W/M/Y pages, that will force us
       // to use the view.
       $xurl = get_preferred_view ( '', 'user=' . $l );
-      if ( strstr ( $xurl, 'view_' ) ) {
+
+      if ( mb_strstr ( $xurl, 'view_' ) ) {
         if ( access_can_access_function ( ACCESS_MONTH ) )
           $xurl = 'month.php?user=' . $l;
         elseif ( access_can_access_function ( ACCESS_WEEK ) )

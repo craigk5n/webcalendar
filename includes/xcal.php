@@ -61,21 +61,23 @@ function mb_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
   mb_language('japanese');
   mb_internal_encoding('UTF-8');
 
-  $line = mb_strcut($string, 0, $limit);    // multibyte operation
-  $string = substr($string, strlen($line)); // siglebyte(bytestream) operation
+  $line  = mb_strcut ( $string, 0, $limit ); // multibyte operation
+  $string= mb_substr ( $string, mb_strlen ( $line ) ); // siglebyte(bytestream) operation
   $res[] = $line;
 
-  while (0 < mb_strlen($string)) {
-    $line = " " . mb_strcut($string, 0, $limit - 1);
-    $string = substr($string, strlen($line) - 1);
+  while ( 0 < mb_strlen ( $string ) ) {
+    $line = ' ' . mb_strcut ( $string, 0, $limit - 1 );
+    $string = mb_substr ( $string, mb_strlen ( $line ) - 1 );
 
     $res[] = $line;
   }
+  mb_language ( 'uni' );
+
   return $res;
 }
 
 function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
-  $len = strlen ( $string );
+  $len = mb_strlen ( $string );
   $fold = $limit;
   $res = [];
   $row = '';
@@ -97,7 +99,7 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
     if ( $string[$i] == ':' )
       $start_encode = 1;
 
-    if ( ( strlen ( $row ) + strlen ( $enc ) ) > $fold ) {
+    if ( ( mb_strlen ( $row ) + mb_strlen ( $enc ) ) > $fold ) {
       $delta = 0;
 
       if ( $lwsp == 0 )
@@ -105,11 +107,11 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
       if ( $row[$lwsp] == ' ' || $row[$lwsp] == "\t" )
         $delta = -1;
 
-      $res[$res_ind] = substr ( $row, 0, $lwsp + 1 + $delta );
+      $res[$res_ind] = mb_substr ( $row, 0, $lwsp + 1 + $delta );
 
       if ( strcmp( $encoding, 'quotedprintable' ) == 0 )
         $res[$res_ind] .= '='; // soft line break;
-      $row = substr ( $row, $lwsp + 1 );
+      $row = mb_substr ( $row, $lwsp + 1 );
 
       $row = ' ' . $row;
 
@@ -121,15 +123,15 @@ function wc_export_fold_lines ( $string, $encoding = 'none', $limit = 76 ) {
       // at the beginning of lines
       $res_ind++; // next line
       $lwsp = 0;
-    } //end if ((strlen ($row) + strlen ($enc)) > $fold)
+    }
     $row .= $enc;
 
     if ( $string[$i] == ' ' || $string[$i] == "\t" || $string[$i] == ';' ||
       $string[$i] == ',' )
-      $lwsp = strlen ( $row ) - 1;
+      $lwsp = mb_strlen ( $row ) - 1;
 
     if ( $string[$i] == ':' && ( strcmp( $encoding, 'quotedprintable' ) == 0 ) )
-      $lwsp = strlen ( $row ) - 1; // We cut at ':' only for quoted printable.
+      $lwsp = mb_strlen ( $row ) - 1; // We cut at ':' only for quoted printable.
   } //end for ($i = 0; $i < $len; $i++)
   $res[$res_ind] = $row; // Add last row (or first if no folding is necessary)
   return $res;
@@ -351,11 +353,10 @@ function export_recurrence_ical ( $id, $simple = false ) {
         // translate ( 'TH' ) translate ( 'FR' ) translate ( 'SA' )
         // translate ( 'SU' )
         if ( ! empty ( $byday ) && ! empty ( $lang_file ) &&
-           ! strstr ( $lang_file, 'English-US.txt' ) ) {
+           ! mb_strstr ( $lang_file, 'English-US.txt' ) ) {
           $bydayArr = explode ( ',', $byday );
           foreach ( $bydayArr as $bydayIdx ) {
-            $bydayOut[] = substr ( $bydayIdx, 0, strlen ( $bydayIdx ) -2 )
-              . translate ( substr ( $bydayIdx, -2 ) );
+            $bydayOut[] = mb_substr ( $bydayIdx, 0, mb_strlen ( $bydayIdx ) -2 ) . translate ( mb_substr ( $bydayIdx, -2 ) );
           }
           $byday = implode ( ',', $bydayOut );
         }
@@ -740,7 +741,7 @@ function generate_uid ( $id = '' ) {
   $uid = str_replace ( 'http://', ' ', $uid );
   $uid .= sprintf ( "-%s-%010d", $login, $id );
   $uid = preg_replace ( "/[\s\/\.-]+/", '-', $uid );
-  $uid = strtoupper ( $uid );
+  $uid = mb_strtoupper ( $uid );
   return $uid;
 }
 // Add entries in the webcal_import and webcal_import_data tables.
@@ -957,8 +958,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $percent = ( empty ( $row[10] ) ? 0 : $row[10] );
     $completed = ( empty ( $row[11] )
       ? ''
-      : substr ( $row[11], 0, 8 ) . 'T'
-       . sprintf ( "%06d", substr ( $row[11], 9, 6 ) ) );
+      : mb_substr ( $row[11], 0, 8 ) . 'T' . sprintf ( "%06d", mb_substr ( $row[11], 9, 6 ) ) );
     $due_date = $row[12];
     $due_time = $row[13];
     $location = $row[14];
@@ -1277,9 +1277,9 @@ function import_data ( $data, $overwrite, $type ) {
       ? 5 : $Entry['Priority'] );
 
     $cal_completed = ( empty( $Entry['Completed'] )
-      ? '' : substr( $Entry['Completed'], 0, 8 ) );
+      ? '' : mb_substr ( $Entry['Completed'], 0, 8 ) );
 
-    if ( strlen( $cal_completed < 8 ) )
+    if ( mb_strlen ( $cal_completed < 8 ) )
       $cal_completed = '';
 
     $months = ( empty( $Entry['Repeat']['ByMonth'] )
@@ -1426,9 +1426,9 @@ function import_data ( $data, $overwrite, $type ) {
       }
       if ( ! empty ( $Entry['Due'] ) ) {
         $names[] = 'cal_due_date';
-        $values[] = sprintf ( "%d", substr ( $Entry['Due'], 0, 8 ) );
+        $values[] = sprintf ( "%d", mb_substr ( $Entry['Due'], 0, 8 ) );
         $names[] = 'cal_due_time';
-        $values[] = sprintf ( "%d", substr ( $Entry['Due'], 9, 6 ) );
+        $values[] = sprintf ( "%d", mb_substr ( $Entry['Due'], 9, 6 ) );
       }
       if ( ! empty ( $Entry['CalendarType'] ) ) {
         $names[] = 'cal_type';
@@ -1438,10 +1438,12 @@ function import_data ( $data, $overwrite, $type ) {
           $values[] = ( ! empty ( $Entry['Repeat'] ) )? 'N': 'T';
         }
       }
-      if ( strlen ( $Entry['Summary'] ) == 0 )
+      if ( ! mb_strlen ( $Entry['Summary'] ) )
         $Entry['Summary'] = translate ( 'Unnamed Event' );
+
       if ( empty ( $Entry['Description'] ) )
         $Entry['Description'] = $Entry['Summary'];
+
       $Entry['Summary'] = str_replace ( "\\n", "\n", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "\\'", "'", $Entry['Summary'] );
       $Entry['Summary'] = str_replace ( "\\\"", "\"", $Entry['Summary'] );
@@ -1466,8 +1468,8 @@ function import_data ( $data, $overwrite, $type ) {
       // TODO Add this option to preferences
       if ( empty ( $LIMIT_DESCRIPTION_SIZE ) || $LIMIT_DESCRIPTION_SIZE == 'Y' ) {
         // limit length to 1024 chars since we setup tables that way
-        if ( strlen ( $Entry['Description'] ) >= 1024 ) {
-          $Entry['Description'] = substr ( $Entry['Description'], 0, 1019 )
+        if ( mb_strlen ( $Entry['Description'] ) > 1023 ) {
+          $Entry['Description'] = mb_substr ( $Entry['Description'], 0, 1019 )
            . '...';
         }
       }
@@ -1546,8 +1548,10 @@ function import_data ( $data, $overwrite, $type ) {
           }
         } else if ( $ImportType == 'VCAL' ) {
           $uid = empty ( $Entry['UID'] ) ? null : $Entry['UID'];
-          if ( strlen ( $uid ) > 200 )
+
+          if ( mb_strlen ( $uid ) > 200 )
             $uid = null;
+
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
             cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
@@ -1558,9 +1562,11 @@ function import_data ( $data, $overwrite, $type ) {
           }
         } else if ( $ImportType == 'ICAL' ) {
           $uid = empty ( $Entry['UID'] ) ? null : $Entry['UID'];
+
           // This may cause problems
-          if ( strlen ( $uid ) > 200 )
-            $uid = substr ( $uid, 0, 200 );
+          if ( mb_strlen ( $uid ) > 200 )
+            $uid = mb_substr ( $uid, 0, 200 );
+
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
             cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
@@ -1571,9 +1577,11 @@ function import_data ( $data, $overwrite, $type ) {
           }
         } else if ( $ImportType == 'GITLOG' ) {
           $uid = empty ( $Entry['UID'] ) ? null : $Entry['UID'];
+
           // This may cause problems
-          if ( strlen ( $uid ) > 200 )
-            $uid = substr ( $uid, 0, 200 );
+          if ( mb_strlen ( $uid ) > 200 )
+            $uid = mb_substr ( $uid, 0, 200 );
+
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
             cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
@@ -1955,7 +1963,8 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       do_debug ( "read: " . $line );
       do_debug ( "cnt = " . ( $cnt ) );
       $data .= $line;
-      if ( $cnt > 10 && strlen ( $data ) == 0 ) {
+
+      if ( $cnt > 10 && ! mb_strlen ( $data ) ) {
         do_debug ( "Read $cnt lines of data, but got no data :-(" );
         do_debug( "Informing user of PHP server bug (PHP v" . phpversion() . ")" );
         // Note: Mozilla Calendar does not display this error for some reason.
@@ -1966,10 +1975,9 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       }
     }
     fclose ( $stdin );
-    //fclose ( $tmp );
-    //do_debug ( "strlen (data)=" . strlen ($data) );
+
     // Check for PHP stdin bug
-    if ( $cnt > 5 && strlen ( $data ) < 10 ) {
+    if ( $cnt > 5 && mb_strlen ( $data ) < 10 ) {
       do_debug ( "Read $cnt lines of data, but got no data :-(" );
       do_debug ( "Informing user of PHP server bug" );
       header ( 'Content-Type: text/plain' );
@@ -1979,7 +1987,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       exit;
     }
     // Check to see if client sent valid data
-    if ( strlen ( $data ) < 20 ) {
+    if ( mb_strlen ( $data ) < 20 ) {
       do_debug ( "Informing user of no client data" );
       header ( 'Content-Type: text/plain' );
       echo 'Error: Your iCalendar client did not ' .
@@ -2062,12 +2070,14 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       // this can perhaps cause problems
       else if ( preg_match ( "/^SUMMARY\s*(;.+)?:(.+)$/iU", $buff, $match ) ) {
         $substate = 'summary';
-        if ( stristr( $match[1], 'ENCODING=QUOTED-PRINTABLE' ) )
+
+        if ( mb_stristr ( $match[1], 'ENCODING=QUOTED-PRINTABLE' ) )
           $match[2] = quoted_printable_decode( $match[2] );
         $event[$substate] = $match[2];
       } elseif ( preg_match ( "/^DESCRIPTION\s*(;.+)?:(.+)$/iU", $buff, $match ) ) {
         $substate = 'description';
-        if ( stristr( $match[1], 'ENCODING=QUOTED-PRINTABLE' ) )
+
+        if ( mb_stristr ( $match[1], 'ENCODING=QUOTED-PRINTABLE' ) )
           $match[2] = quoted_printable_decode( $match[2] );
         $event[$substate] = $match[2];
       } elseif ( preg_match ( "/^CLASS.*:(.*)$/i", $buff, $match ) ) {
@@ -2315,7 +2325,8 @@ function parse_hcal ( $hcal_array ) {
       } elseif ( $key == 'DTSTART' ) {
         $substate = 'dtstart';
         $event[$substate] = $value;
-        if ( strlen ( $value ) > 8 ) {
+
+        if ( mb_strlen ( $value ) > 8 ) {
           $substate = 'dtstartDATETIME';
           $event[$substate] = true;
         } else {
@@ -2325,7 +2336,8 @@ function parse_hcal ( $hcal_array ) {
       } elseif ( $key == 'DTEND' ) {
         $substate = 'dtend';
         $event[$substate] = $value;
-        if ( strlen ( $value ) > 8 ) {
+
+        if ( mb_strlen ( $value ) > 8 ) {
           $substate = 'dtendDATETIME';
           $event[$substate] = true;
         } else {
@@ -2408,14 +2420,15 @@ function icaldate_to_timestamp ( $vdate, $tzid = '', $plus_d = '0',
   $user_TIMEZONE = get_pref_setting ( $calUser, 'TIMEZONE' );
 
   $H = $M = $S = 0;
-  $y = substr ( $vdate, 0, 4 ) + $plus_y;
-  $m = substr ( $vdate, 4, 2 ) + $plus_m;
-  $d = substr ( $vdate, 6, 2 ) + $plus_d;
-  if ( strlen ( $vdate ) > 8 ) {
-    $H = substr ( $vdate, 9, 2 );
-    $M = substr ( $vdate, 11, 2 );
-    $S = substr ( $vdate, 13, 2 );
-    $Z = substr ( $vdate, 15, 1 );
+  $y = mb_substr ( $vdate, 0, 4 ) + $plus_y;
+  $m = mb_substr ( $vdate, 4, 2 ) + $plus_m;
+  $d = mb_substr ( $vdate, 6, 2 ) + $plus_d;
+
+  if ( mb_strlen ( $vdate ) > 8 ) {
+    $H = mb_substr ( $vdate, 9, 2 );
+    $M = mb_substr ( $vdate, 11, 2 );
+    $S = mb_substr ( $vdate, 13, 2 );
+    $Z = mb_substr ( $vdate, 15, 1 );
   }
   // if we get a Mozilla TZID we try to parse it
   $tzid = parse_tzid ( $tzid );
@@ -2766,7 +2779,8 @@ function rrule_repeat_days ( $RA ) {
 
   $ret = [];
   foreach ( $RA as $item ) {
-    $item = strtoupper ( $item );
+    $item = mb_strtoupper ( $item );
+
     if ( in_array ( $item, $byday_names ) )
       $ret[] = $item;
   }
@@ -2920,13 +2934,14 @@ function parse_vcal( $cal_file ) {
  * Convert vcal format (yyyymmddThhmmssZ) to epoch time
  */
 function vcaldate_to_timestamp( $vdate, $plus_d = '0', $plus_m = '0', $plus_y = '0' ) {
-  $y = substr ( $vdate, 0, 4 ) + $plus_y;
-  $m = substr ( $vdate, 4, 2 ) + $plus_m;
-  $d = substr ( $vdate, 6, 2 ) + $plus_d;
-  $H = substr ( $vdate, 9, 2 );
-  $M = substr ( $vdate, 11, 2 );
-  $S = substr ( $vdate, 13, 2 );
-  $Z = substr ( $vdate, 15, 1 );
+  $y = mb_substr ( $vdate, 0, 4 ) + $plus_y;
+  $m = mb_substr ( $vdate, 4, 2 ) + $plus_m;
+  $d = mb_substr ( $vdate, 6, 2 ) + $plus_d;
+  $H = mb_substr ( $vdate, 9, 2 );
+  $M = mb_substr ( $vdate, 11, 2 );
+  $S = mb_substr ( $vdate, 13, 2 );
+  $Z = mb_substr ( $vdate, 15, 1 );
+
   if ( $Z == 'Z' ) {
     $TS = gmmktime ( $H, $M, $S, $m, $d, $y );
   } else {
@@ -3082,17 +3097,18 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
   $ret = '';
   $time = sprintf ( "%06d", $time );
   $allday = ( $time == -1 || $duration == 1440 );
-  $year = ( int ) substr ( $date, 0, -4 );
-  $month = ( int ) substr ( $date, - 4, 2 );
-  $day = ( int ) substr ( $date, -2, 2 );
+  $year = ( int ) mb_substr ( $date, 0, -4 );
+  $month= ( int ) mb_substr ( $date, - 4, 2 );
+  $day  = ( int ) mb_substr ( $date, -2, 2 );
+
   // No time, or an "All day" event"
   if ( $allday ) {
     // untimed event - consider this to not be busy
   } else {
     // normal/timed event (or all-day event)
-    $hour = ( int ) substr ( $time, 0, -4 );
-    $min = ( int ) substr ( $time, -4, 2 );
-    $sec = ( int ) substr ( $time, -2, 2 );
+    $hour= ( int ) mb_substr ( $time, 0, -4 );
+    $min = ( int ) mb_substr ( $time, -4, 2 );
+    $sec = ( int ) mb_substr ( $time, -2, 2 );
     $duration = $duration * 60;
 
     $start_tmstamp = mktime ( $hour, $min, $sec, $month, $day, $year );
@@ -3165,7 +3181,7 @@ function get_vtimezone ( $tzid, $dtstart, $dtend='' ) {
  */
 function parse_tzid ( $tzid ) {
   // if we get a complex TZID we try to parse it
-  if ( strstr ( $tzid, 'ozilla.org' ) or strstr ( $tzid, 'softwarestudio.org' ) ) {
+  if ( mb_strstr ( $tzid, 'ozilla.org' ) || mb_strstr ( $tzid, 'softwarestudio.org' ) ) {
     $tzAr = explode ( '/', $tzid );
     $tzArCnt = count ( $tzAr );
     $tzid = $tzAr[3];

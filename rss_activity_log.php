@@ -1,4 +1,4 @@
-<?php // $Id: rss_activity_log.php,v 1.9 2010/10/05 17:16:59 cknudsen Exp $
+<?php
 /**
  * Description:
  *  Generates RSS 2.0 output of the activity log.
@@ -58,7 +58,7 @@ $appStr = generate_application_name();
 
 if ( empty ( $_SERVER['PHP_AUTH_USER'] ) && ! empty ( $_ENV['REMOTE_USER'] ) ) {
   list ( $_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'] ) =
-  explode ( ':', base64_decode ( substr ( $_ENV['REMOTE_USER'], 6 ) ) );
+  explode ( ':', base64_decode ( mb_substr ( $_ENV['REMOTE_USER'], 6 ) ) );
 
   $_SERVER['PHP_AUTH_USER'] = trim ( $_SERVER['PHP_AUTH_USER'] );
   $_SERVER['PHP_AUTH_PW'] = trim ( $_SERVER['PHP_AUTH_PW'] );
@@ -183,10 +183,10 @@ function rss_activity_log ( $sys, $entries ) {
       $l_id = $row[8];
       $l_etype = $row[9];
       $l_description = $row[10];
+
       // convert lines to <br /> if no HTML formatting found
-      if ( strpos ( $l_description, "</" ) == false ) {
+      if ( mb_strpos ( $l_description, '</' ) === false )
         $l_description = nl2br ( $l_description );
-      }
     }
     $num++;
     $unixtime = date_to_epoch ( $l_date . $l_time );

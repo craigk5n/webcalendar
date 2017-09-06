@@ -1,7 +1,6 @@
 <?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 /*
- * $Id: user-ldap.php,v 1.44 2009/10/27 18:36:49 bbannon Exp $
  * LDAP user functions.
  * This file is intended to be used instead of the standard user.php file.
  * I have not tested this yet (I do not have an LDAP server running yet),
@@ -24,8 +23,8 @@ $user_can_update_password = false;
 $admin_can_add_user = false;
 
 // Convert group name to lower case to prevent problems
-$ldap_admin_group_attr = strtolower($ldap_admin_group_attr);
-$ldap_admin_group_type = strtolower($ldap_admin_group_type);
+$ldap_admin_group_attr = mb_strtolower ( $ldap_admin_group_attr );
+$ldap_admin_group_type = mb_strtolower ( $ldap_admin_group_type );
 
 // Function to search the dn of a given user the error message will
 // be placed in $error.
@@ -127,7 +126,7 @@ function user_load_variables ( $login, $prefix ) {
     return  $cached_user_var[$login][$prefix];
   $cached_user_var = [];
 
-  if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) == $NONUSER_PREFIX ) {
+  if ( $NONUSER_PREFIX && mb_substr ( $login, 0, mb_strlen ( $NONUSER_PREFIX ) ) === $NONUSER_PREFIX ) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }
@@ -367,7 +366,11 @@ function user_get_users ( $publicOnly=false ) {
     if (!$sr) {
       $error = 'Error searching LDAP server: ' . ldap_error( $ds );
     } else {
-      if ( (float)substr (PHP_VERSION,0,3) >= 4.2 ) ldap_sort ( $ds, $sr, $ldap_user_attr[3]);
+// Craig, why not use version_compare here? Is this an ldap thing?
+//      if ( version_compare ( PHP_VERSION, '5.3.0', >= ) )
+      if ( ( float ) mb_substr ( PHP_VERSION,0,3 ) >= 5.3 )
+        ldap_sort ( $ds, $sr, $ldap_user_attr[3] );
+
       $info = @ldap_get_entries( $ds, $sr );
       for ( $i = 0; $i < $info['count']; $i++ ) {
         $ret[$count++] = [

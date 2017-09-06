@@ -1,4 +1,4 @@
-<?php // $Id: datesel.php,v 1.57 2009/11/22 16:47:44 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 $fday = getGetValue ( 'fday' );
@@ -8,9 +8,9 @@ $fyear = getGetValue ( 'fyear' );
 $form = getGetValue ( 'form' );
 $date = getGetValue ( 'date' );
 
-if ( strlen ( $date ) > 0 ) {
-  $thisyear = substr ( $date, 0, 4 );
-  $thismonth = substr ( $date, 4, 2 );
+if ( mb_strlen ( $date ) > 0 ) {
+  $thisyear = mb_substr ( $date, 0, 4 );
+  $thismonth= mb_substr ( $date, 4, 2 );
 } else {
   $thisyear = date ( 'Y' );
   $thismonth = date ( 'm' );

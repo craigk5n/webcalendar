@@ -1,14 +1,13 @@
 # See translations/English-US.txt for instructions.
 #
-# Translated by: Bernt Sjöström <bernt@sjostrom.pchemma.nu>
+# Translated by: Bernt SjÃ¶strÃ¶m <bernt@sjostrom.pchemma.nu>
 # Last update: 11 november 2004
 #
 # Translations for page: includes/classes/WebCalMailer.class
-# by: Johan Linnér <johan@linner.biz>
+# by: Johan LinnÃ©r <johan@linner.biz>
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
-# $Id: Swedish.txt,v 1.46 2008/12/28 16:22:34 bbannon Exp $
-# Translation last updated on 10-14-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -52,8 +51,7 @@ Title: Webbkalender
 ########################################
 # Page: access.php
 #
-Database error: Fel i databasen
-Go: Gå till
+Go: GÃ¥ till
 Save: Spara
 Public Access: Offentlig kalender
 Admin: Administration
@@ -66,175 +64,173 @@ Private: Privat
 ########################################
 # Page: activity_log.php
 #
-Next: Nästa
-Previous: Föregående
+Next: NÃ¤sta
+Previous: FÃ¶regÃ¥ende
 
 ########################################
 # Page: add_entry.php
 #
 confidential: privat
 private: privat
-Error adding event: Fel vid inläggning av ny aktivitet
 
 ########################################
 # Page: admin.php
 #
-Select: Välj
+Select: VÃ¤lj
 Day: Dag
 Week: Vecka
-Month: Månad
-Year: År
+Month: MÃ¥nad
+Year: Ã…r
 Bottom: Botten
 Top: Topp
-Settings: Inställningar
+Settings: InstÃ¤llningar
 Groups: Grupper
-NonUser Calendars: Icke-användare kalender
+NonUser Calendars: Icke-anvÃ¤ndare kalender
 Email: E-post
-Colors: Färger
-Document background: Dokumentbakgrundens färg
-Document title: Dokumenttitelns färg
-Document text: Dokumenttextens färg
-Table grid color: Tabellstreckens färg
-Table header background: Tabellhuvudets bakgrundsfärg
-Table header text: Tabellhuvudtextens färg
-Table cell background: Tabellcells bakgrundsfärg
-Table cell background for current day: Tabellcells bakgrundsfärg för idag
-Table cell background for weekends: Tabellcells bakgrundsfärg för veckoslut
-Event popup background: Aktivitetspopp-upps bakgrundsfärg
-Event popup text: Aktivitetspopp-upps textfärg
-System Settings: Systeminställningar
-Help: Hjälp
-app-name-help: Anger namnet på denna applikation. Det kommer att synas i bläddrarens titelfält på alla sidor och på login-sidan. Värdet du anger här kommer att slås upp i språk-filen och tillåter dig att tillhandahålla olika titlar för olika språk.
+Colors: FÃ¤rger
+Document background: Dokumentbakgrundens fÃ¤rg
+Document title: Dokumenttitelns fÃ¤rg
+Document text: Dokumenttextens fÃ¤rg
+Table grid color: Tabellstreckens fÃ¤rg
+Table header background: Tabellhuvudets bakgrundsfÃ¤rg
+Table header text: Tabellhuvudtextens fÃ¤rg
+Table cell background: Tabellcells bakgrundsfÃ¤rg
+Table cell background for current day: Tabellcells bakgrundsfÃ¤rg fÃ¶r idag
+Table cell background for weekends: Tabellcells bakgrundsfÃ¤rg fÃ¶r veckoslut
+Event popup background: Aktivitetspopp-upps bakgrundsfÃ¤rg
+Event popup text: Aktivitetspopp-upps textfÃ¤rg
+System Settings: SysteminstÃ¤llningar
+Help: HjÃ¤lp
+app-name-help: Anger namnet pÃ¥ denna applikation. Det kommer att synas i blÃ¤ddrarens titelfÃ¤lt pÃ¥ alla sidor och pÃ¥ login-sidan. VÃ¤rdet du anger hÃ¤r kommer att slÃ¥s upp i sprÃ¥k-filen och tillÃ¥ter dig att tillhandahÃ¥lla olika titlar fÃ¶r olika sprÃ¥k.
 Application Name: Denna applikations namn
-server-url-help: Anger bas-URL för denna applikation. Denna kommer att inkluderas när e-post med påminnelser och meddelanden skickas ut.
+server-url-help: Anger bas-URL fÃ¶r denna applikation. Denna kommer att inkluderas nÃ¤r e-post med pÃ¥minnelser och meddelanden skickas ut.
 Server URL: Server-URL
-language-help: Ange vilket språk du vill använda.
-Language: Språk
-Your browser default language is: Standardspråket i din webbläsare är
+language-help: Ange vilket sprÃ¥k du vill anvÃ¤nda.
+Language: SprÃ¥k
 None: Ingen
-custom-script-help: Tillåter inmatning av egna Javaskript eller stilmalls-text som kommer att sättas in på varje HTML-sidas "HEAD"-del.
+custom-script-help: TillÃ¥ter inmatning av egna Javaskript eller stilmalls-text som kommer att sÃ¤ttas in pÃ¥ varje HTML-sidas "HEAD"-del.
 Custom script/stylesheet: Eget skript/stilmall
-custom-header-help: Tillåter ett eget HTML-fält att sättas in överst på varje sida.
+custom-header-help: TillÃ¥ter ett eget HTML-fÃ¤lt att sÃ¤ttas in Ã¶verst pÃ¥ varje sida.
 Custom header: Egen "header"
-custom-trailer-help: Tillåter ett eget HTML-fält att sättas in nederst på varje sida.
+custom-trailer-help: TillÃ¥ter ett eget HTML-fÃ¤lt att sÃ¤ttas in nederst pÃ¥ varje sida.
 Custom trailer: Egen "footer"
-tz-help: Anger hur många timmar att justera tiden från server-tid till lokal tid.
-date-format-help: Anger önskat datumformat.
+tz-help: Anger hur mÃ¥nga timmar att justera tiden frÃ¥n server-tid till lokal tid.
+date-format-help: Anger Ã¶nskat datumformat.
 Date format: Datumformat
-display-week-starts-on: Börjar din vecka på söndagar eller måndagar.
-Week starts on: Veckan börjar på
+display-week-starts-on: BÃ¶rjar din vecka pÃ¥ sÃ¶ndagar eller mÃ¥ndagar.
+Week starts on: Veckan bÃ¶rjar pÃ¥
 time-format-help: Skall tiden visas i 12 eller 24-timmars format.
 Time format: Tidsformat
 12 hour: 12 timmar
 24 hour: 24 timmar
-timed-evt-len-help: Anger inmatningssättet för att ange längden på en tidsangiven aktivitet.
-Specify timed event length by: Ange tidsangiven aktivitets längd genom
+timed-evt-len-help: Anger inmatningssÃ¤ttet fÃ¶r att ange lÃ¤ngden pÃ¥ en tidsangiven aktivitet.
+Specify timed event length by: Ange tidsangiven aktivitets lÃ¤ngd genom
 Duration: Varaktighet
 End Time: Sluttid
 work-hours-help: Specificera antal timmar kalenderdagarna ska omfatta.
-Work hours: Kalenderdagens omfång i timmar
-From: Från
+Work hours: Kalenderdagens omfÃ¥ng i timmar
+From: FrÃ¥n
 to: till
-preferred-view-help: Specificera standardvisning (dag, vecka, månad eller år).
+preferred-view-help: Specificera standardvisning (dag, vecka, mÃ¥nad eller Ã¥r).
 Preferred view: Vald standardvy
-fonts-help: Anger en lista på systemtypsnitt att använda (som "Arial, Helvetica, Verdana")
+fonts-help: Anger en lista pÃ¥ systemtypsnitt att anvÃ¤nda (som "Arial, Helvetica, Verdana")
 Fonts: Typsnitt
 display-weekends-help: Inkludera veckoslut vid visning av vecka.
-display-week-number-help: Specificera om veckonumren skall visas på veckovyn.
+display-week-number-help: Specificera om veckonumren skall visas pÃ¥ veckovyn.
 Display week number: Visa veckonummer
-display-desc-print-day-help: Inkludera aktivitetsbeskrivning i utskriftsvänlig version av dagsvyn.
-Display description in printer day view: Visa beskrivning i utskriftsvänlig version av dag
-yearly-shows-events-help: Vid visning av år, visa dagar som innehåller aktiviteter i fetstil.
-allow-view-add-help: En '+'-ikon kommer att läggas till i visningar, vilket tillåter användare att snabbt lägga till aktiviteter till andra användares kalendrar.
-Include add event link in views: Lägg till 'Lägg till händelse'-länk i visningar
-allow-view-other-help: Anger om en användare ska kunna se en annan användares kalender.
-Allow viewing other users calendars: Tillåt visning av andra användares kalendrar
-require-approvals-help: Om aktiverat måste en användare godkänna en aktivitet innan den visas på deras kalender (om inte "Visa icke godkända aktiviteter" är aktiverad). Notera att sätta denna till "Nej" kommer inte att stänga av godkännanden för offentliga kalendrar (om "Offentlig kalender" är tillåten).
-Require event approvals: Kräver aktivitetsgodkännande
-display-unapproved-help: Specificera om din kalender skall visa icke godkända aktiviteter.
-Display unapproved: Visa icke godkända aktiviteter
-conflict-check-help: Kontrollera av händelsekonflikter (två händelser planerade för samma tid för samma person). Om du sätter detta till "Ja", kan du fortfarande planera in två händelser vid samma tid efter att ha accepterat en varning. Om du sätter detta till "Nej", kommer inga kontroller av konflikter att göras. Du vill förmodligen sätta detta till "Ja", så att konfliktkontroll görs.
-Check for event conflicts: Kontroll av händelsekonflikt
+display-desc-print-day-help: Inkludera aktivitetsbeskrivning i utskriftsvÃ¤nlig version av dagsvyn.
+Display description in printer day view: Visa beskrivning i utskriftsvÃ¤nlig version av dag
+yearly-shows-events-help: Vid visning av Ã¥r, visa dagar som innehÃ¥ller aktiviteter i fetstil.
+allow-view-add-help: En '+'-ikon kommer att lÃ¤ggas till i visningar, vilket tillÃ¥ter anvÃ¤ndare att snabbt lÃ¤gga till aktiviteter till andra anvÃ¤ndares kalendrar.
+Include add event link in views: LÃ¤gg till 'LÃ¤gg till hÃ¤ndelse'-lÃ¤nk i visningar
+allow-view-other-help: Anger om en anvÃ¤ndare ska kunna se en annan anvÃ¤ndares kalender.
+Allow viewing other users calendars: TillÃ¥t visning av andra anvÃ¤ndares kalendrar
+require-approvals-help: Om aktiverat mÃ¥ste en anvÃ¤ndare godkÃ¤nna en aktivitet innan den visas pÃ¥ deras kalender (om inte "Visa icke godkÃ¤nda aktiviteter" Ã¤r aktiverad). Notera att sÃ¤tta denna till "Nej" kommer inte att stÃ¤nga av godkÃ¤nnanden fÃ¶r offentliga kalendrar (om "Offentlig kalender" Ã¤r tillÃ¥ten).
+Require event approvals: KrÃ¤ver aktivitetsgodkÃ¤nnande
+display-unapproved-help: Specificera om din kalender skall visa icke godkÃ¤nda aktiviteter.
+Display unapproved: Visa icke godkÃ¤nda aktiviteter
+conflict-check-help: Kontrollera av hÃ¤ndelsekonflikter (tvÃ¥ hÃ¤ndelser planerade fÃ¶r samma tid fÃ¶r samma person). Om du sÃ¤tter detta till "Ja", kan du fortfarande planera in tvÃ¥ hÃ¤ndelser vid samma tid efter att ha accepterat en varning. Om du sÃ¤tter detta till "Nej", kommer inga kontroller av konflikter att gÃ¶ras. Du vill fÃ¶rmodligen sÃ¤tta detta till "Ja", sÃ¥ att konfliktkontroll gÃ¶rs.
+Check for event conflicts: Kontroll av hÃ¤ndelsekonflikt
 Yes: Ja
 No: Nej
-conflict-months-help: Om konfliktkontroll aktiverats ("Kontroll av händelsekonflikt" är satt till "Ja"), anger detta hur många månader framåt vi ska kontrollera för konflikter. Om du ser att det tar lång tid att processa tillägg av ny aktivitet bör du reducera siffran.
-Conflict checking months: Konfliktkontroll antal månader framåt
-conflict-check-override-help: Tillåter användare att åsidosätta aktivitetskonflikter och planera två eller flera aktiviteter för samma tid.
-Allow users to override conflicts: Tillåt användare att åsidosätta konflikter
-limit-appts-help: Tillåter systemadministratören att sätta systemövergripande gräns för antalet aktiviteter en enskild användare kan ha på en enskild dag.
-Limit number of timed events per day: Begränsa antalet aktiviteter per dag
-limit-appts-number-help: Anger maximalt antal tidsangivna aktiviteter en användare kan ha en enskild dag.
+conflict-months-help: Om konfliktkontroll aktiverats ("Kontroll av hÃ¤ndelsekonflikt" Ã¤r satt till "Ja"), anger detta hur mÃ¥nga mÃ¥nader framÃ¥t vi ska kontrollera fÃ¶r konflikter. Om du ser att det tar lÃ¥ng tid att processa tillÃ¤gg av ny aktivitet bÃ¶r du reducera siffran.
+Conflict checking months: Konfliktkontroll antal mÃ¥nader framÃ¥t
+conflict-check-override-help: TillÃ¥ter anvÃ¤ndare att Ã¥sidosÃ¤tta aktivitetskonflikter och planera tvÃ¥ eller flera aktiviteter fÃ¶r samma tid.
+Allow users to override conflicts: TillÃ¥t anvÃ¤ndare att Ã¥sidosÃ¤tta konflikter
+limit-appts-help: TillÃ¥ter systemadministratÃ¶ren att sÃ¤tta systemÃ¶vergripande grÃ¤ns fÃ¶r antalet aktiviteter en enskild anvÃ¤ndare kan ha pÃ¥ en enskild dag.
+Limit number of timed events per day: BegrÃ¤nsa antalet aktiviteter per dag
+limit-appts-number-help: Anger maximalt antal tidsangivna aktiviteter en anvÃ¤ndare kan ha en enskild dag.
 Maximum timed events per day: Maximalt antal tidsangivna aktiviteter per dag
-disable-priority-field-help: Välj "Ja" om du vill att "Prioritet"-fältet ska tas bort från händelsers informationssidor, vilket skapar ett enklare gränssnitt för noviser.
-Disable Priority field: Välj bort Prioritet-fältet
-disable-access-field-help: Välj "Ja" om du vill ta bort "Tillträde"-fältet från händelsers informationssidor, vilket skapar ett enklare gränssnitt för noviser.
-Disable Access field: Välj bort Tillträde-fältet
-disable-participants-field-help: Välj "Ja" om du vill ta bort "Deltagare"-fältet från händelsers informationssidor, vilket förhindrar användare från att lägga till andra användare till deras händelser. Om du verkställer detta val, bör du kanske också välja bort "Tillåt visning av andra användares kalendrar"-fältet.
-Disable Participants field: Välj bort Deltagare-fältet
-disable-repeating-field-help: Välj "Ja" om du vill ta bort "Upprepning"-fältet när händelser läggs till. Detta skapar ett enklare gränssnitt för noviser.
-Disable Repeating field: Välj bort Upprepning-fältet
-allow-html-description-help: Om aktiverat kan användare ange HTML-taggar i aktivitetbeskrivningsfältet. Om inte tillåtet kommer HTML-taggar att visas som vanlig text. <b>VARNING:</b> Att tillåta denna möjlighet ger användare möjlighet att referera till sidor och bilder på andra webbplatser.
-Allow HTML in Description: Tillåt HTML-taggar i beskrivningar
-popup-includes-siteextras-help: Om aktiverat tillåts egna händelsefältinställningar i site_extras.php-filen att visas i händelsepopp-uppfönster.
-Display Site Extras in popup: Visa Webb-extra i popp-uppfönster
-remember-last-login-help: Om aktiverat kommer användares användarnamn att fyllas i åt dem på inloggningssidan (men inte lösenordet). och användarens inställningar kommer att laddas (inklusive inställda färger och språkval).
-Remember last login: Kom ihåg föregående inloggning
-allow-public-access-help: Om tillåtet kan kalendern användas som en läsbar offentlig kalender som inte kräver användarinloggning.
-Allow public access: Tillåt offentlig åtkomst
-public-access-default-visible: Aktiviteter från den offentliga kalendern kommer automatiskt att synas på alla användares kalendrar
+disable-priority-field-help: VÃ¤lj "Ja" om du vill att "Prioritet"-fÃ¤ltet ska tas bort frÃ¥n hÃ¤ndelsers informationssidor, vilket skapar ett enklare grÃ¤nssnitt fÃ¶r noviser.
+Disable Priority field: VÃ¤lj bort Prioritet-fÃ¤ltet
+disable-access-field-help: VÃ¤lj "Ja" om du vill ta bort "TilltrÃ¤de"-fÃ¤ltet frÃ¥n hÃ¤ndelsers informationssidor, vilket skapar ett enklare grÃ¤nssnitt fÃ¶r noviser.
+Disable Access field: VÃ¤lj bort TilltrÃ¤de-fÃ¤ltet
+disable-participants-field-help: VÃ¤lj "Ja" om du vill ta bort "Deltagare"-fÃ¤ltet frÃ¥n hÃ¤ndelsers informationssidor, vilket fÃ¶rhindrar anvÃ¤ndare frÃ¥n att lÃ¤gga till andra anvÃ¤ndare till deras hÃ¤ndelser. Om du verkstÃ¤ller detta val, bÃ¶r du kanske ocksÃ¥ vÃ¤lja bort "TillÃ¥t visning av andra anvÃ¤ndares kalendrar"-fÃ¤ltet.
+Disable Participants field: VÃ¤lj bort Deltagare-fÃ¤ltet
+disable-repeating-field-help: VÃ¤lj "Ja" om du vill ta bort "Upprepning"-fÃ¤ltet nÃ¤r hÃ¤ndelser lÃ¤ggs till. Detta skapar ett enklare grÃ¤nssnitt fÃ¶r noviser.
+Disable Repeating field: VÃ¤lj bort Upprepning-fÃ¤ltet
+allow-html-description-help: Om aktiverat kan anvÃ¤ndare ange HTML-taggar i aktivitetbeskrivningsfÃ¤ltet. Om inte tillÃ¥tet kommer HTML-taggar att visas som vanlig text. <b>VARNING:</b> Att tillÃ¥ta denna mÃ¶jlighet ger anvÃ¤ndare mÃ¶jlighet att referera till sidor och bilder pÃ¥ andra webbplatser.
+Allow HTML in Description: TillÃ¥t HTML-taggar i beskrivningar
+popup-includes-siteextras-help: Om aktiverat tillÃ¥ts egna hÃ¤ndelsefÃ¤ltinstÃ¤llningar i site_extras.php-filen att visas i hÃ¤ndelsepopp-uppfÃ¶nster.
+Display Site Extras in popup: Visa Webb-extra i popp-uppfÃ¶nster
+remember-last-login-help: Om aktiverat kommer anvÃ¤ndares anvÃ¤ndarnamn att fyllas i Ã¥t dem pÃ¥ inloggningssidan (men inte lÃ¶senordet). och anvÃ¤ndarens instÃ¤llningar kommer att laddas (inklusive instÃ¤llda fÃ¤rger och sprÃ¥kval).
+Remember last login: Kom ihÃ¥g fÃ¶regÃ¥ende inloggning
+allow-public-access-help: Om tillÃ¥tet kan kalendern anvÃ¤ndas som en lÃ¤sbar offentlig kalender som inte krÃ¤ver anvÃ¤ndarinloggning.
+Allow public access: TillÃ¥t offentlig Ã¥tkomst
+public-access-default-visible: Aktiviteter frÃ¥n den offentliga kalendern kommer automatiskt att synas pÃ¥ alla anvÃ¤ndares kalendrar
 Public access visible by default: Som standard offentligt synlig
-public-access-view-others-help: Vid offentligt tillträde anges om användaren ska kunna visa andra kalenderanvändares kalendrar.
-Public access can view other users: Offentlig användare kan se andra användare
-public-access-can-add-help: Om aktiverat kan användare med offentlig tillgång till systemet lägga till nya aktiviteter, men de kommer inte att visas i kalendern förrän en administratör godkänt den nya aktiviteten.
-Public access can add events: Offentlig användare kan lägga till aktivitet
-public-access-add-requires-approval-help: Anger om tillagd händelse via offentlig tillgång ska kräva godkännande innan det visas.
-Public access new events require approval: Offentligt tillagd ny händelse kräver godkännande
-public-access-sees-participants-help: Om aktiverat kan offentliga användare av kalendern se händelsedeltagare om de tittar på en händelses detaljer.
-Public access can view participants: Offentlig användare kan se andra deltagare
-groups-enabled-help: Tillåt grupphantering, vilket tillåter en användare att välja deltagare via grupper.
-Groups enabled: Grupper tillåtna
-user-sees-his-group-help: Om aktiverat kan inte användare se andra kalenderanvändare som inte finns i åtminstone en av deras grupper.
-User sees only his groups: Användare ser enbart denna grupp
-nonuser-enabled-help: Om aktiverat har administratörer möjligheten att lägga till icke-användares kalendrar
-Nonuser enabled: Icke-användares kalendrar aktiverat
-nonuser-list-help: Var ska icke-användares kalendrar visas i deltagarlistan.
+public-access-view-others-help: Vid offentligt tilltrÃ¤de anges om anvÃ¤ndaren ska kunna visa andra kalenderanvÃ¤ndares kalendrar.
+Public access can view other users: Offentlig anvÃ¤ndare kan se andra anvÃ¤ndare
+public-access-can-add-help: Om aktiverat kan anvÃ¤ndare med offentlig tillgÃ¥ng till systemet lÃ¤gga till nya aktiviteter, men de kommer inte att visas i kalendern fÃ¶rrÃ¤n en administratÃ¶r godkÃ¤nt den nya aktiviteten.
+Public access can add events: Offentlig anvÃ¤ndare kan lÃ¤gga till aktivitet
+public-access-add-requires-approval-help: Anger om tillagd hÃ¤ndelse via offentlig tillgÃ¥ng ska krÃ¤va godkÃ¤nnande innan det visas.
+Public access new events require approval: Offentligt tillagd ny hÃ¤ndelse krÃ¤ver godkÃ¤nnande
+public-access-sees-participants-help: Om aktiverat kan offentliga anvÃ¤ndare av kalendern se hÃ¤ndelsedeltagare om de tittar pÃ¥ en hÃ¤ndelses detaljer.
+Public access can view participants: Offentlig anvÃ¤ndare kan se andra deltagare
+groups-enabled-help: TillÃ¥t grupphantering, vilket tillÃ¥ter en anvÃ¤ndare att vÃ¤lja deltagare via grupper.
+Groups enabled: Grupper tillÃ¥tna
+user-sees-his-group-help: Om aktiverat kan inte anvÃ¤ndare se andra kalenderanvÃ¤ndare som inte finns i Ã¥tminstone en av deras grupper.
+User sees only his groups: AnvÃ¤ndare ser enbart denna grupp
+nonuser-enabled-help: Om aktiverat har administratÃ¶rer mÃ¶jligheten att lÃ¤gga till icke-anvÃ¤ndares kalendrar
+Nonuser enabled: Icke-anvÃ¤ndares kalendrar aktiverat
+nonuser-list-help: Var ska icke-anvÃ¤ndares kalendrar visas i deltagarlistan.
 Nonuser list: Visa i deltagarlistans
 Enabled: Aktiverat
-reports-enabled-help: Om aktiverat kommer användare att se ett "Rapport"-val i slutet på varje sida och har då möjlighet att skapa egna rapporter. Därtill kan administratörer skapa globala rapporter som syns i slutet på alla användares sidor.
-Reports enabled: Rapporter tillåts
-subscriptions-enabled-help: Anger om fjärranvändare ska kunna abbonera på en Webbkalenderanvändares kalender och tillåta dem att se Webbkalenderanvändarens aktiviteter i deras iCal-tillåtna applikation (som Apples iCal eller Mozilla-kalender).
-Allow remote subscriptions: Tillåt fjärrabbonemang
-categories-enabled-help: Aktiverar stöd för aktivitetskategorier.
+reports-enabled-help: Om aktiverat kommer anvÃ¤ndare att se ett "Rapport"-val i slutet pÃ¥ varje sida och har dÃ¥ mÃ¶jlighet att skapa egna rapporter. DÃ¤rtill kan administratÃ¶rer skapa globala rapporter som syns i slutet pÃ¥ alla anvÃ¤ndares sidor.
+Reports enabled: Rapporter tillÃ¥ts
+subscriptions-enabled-help: Anger om fjÃ¤rranvÃ¤ndare ska kunna abbonera pÃ¥ en WebbkalenderanvÃ¤ndares kalender och tillÃ¥ta dem att se WebbkalenderanvÃ¤ndarens aktiviteter i deras iCal-tillÃ¥tna applikation (som Apples iCal eller Mozilla-kalender).
+Allow remote subscriptions: TillÃ¥t fjÃ¤rrabbonemang
+categories-enabled-help: Aktiverar stÃ¶d fÃ¶r aktivitetskategorier.
 Categories enabled: Kategorier aktiverat
-allow-external-users-help: Anger om en icke-kalenderanvändare kan läggas till en aktivitet. Detta tillåter icke-kalenderanvändare att listas som aktivitetsdeltagare.
-Allow external users: Tillåt externa användare
-external-can-receive-notification-help: När externa användare tillåts och e-postanvändning tillåts, kan externa användare få e-postmeddelanden när händelse läggs till, uppdateras eller tas bort (om den externa användarens e-postadress har angetts).
-External users can receive email notifications: Externa användare kan få e-postmeddelanden
-external-can-receive-reminder-help: När externa användare tillåts och e-postanvändning tillåts kan externa användare få e-postpåminnelser (om den externa användarens e-postadress har angetts).
-External users can receive email reminders: Externa användare kan få e-postpåminnelser
-email-enabled-help: Slå på eller av all sändning av e-post för meddelanden och påminnelser. Sätt till "nej" om din server inte är rätt konfigurerad för att skicka e-post.
-Email enabled: E-post tillåts
-email-default-sender: Anger den e-postadress som anges som avsändare när påminnelser skickas ut.
-Default sender address: Normal avsändaradress
-Default user settings: Normala användarinställningar
-email-event-reminders-help: Anger om programmet ska skicka påminnelser via e-post
-Event reminders: Aktivitestpåminnelser
-email-event-added: Skicka e-post vid tillägg av aktivitet
+allow-external-users-help: Anger om en icke-kalenderanvÃ¤ndare kan lÃ¤ggas till en aktivitet. Detta tillÃ¥ter icke-kalenderanvÃ¤ndare att listas som aktivitetsdeltagare.
+Allow external users: TillÃ¥t externa anvÃ¤ndare
+external-can-receive-notification-help: NÃ¤r externa anvÃ¤ndare tillÃ¥ts och e-postanvÃ¤ndning tillÃ¥ts, kan externa anvÃ¤ndare fÃ¥ e-postmeddelanden nÃ¤r hÃ¤ndelse lÃ¤ggs till, uppdateras eller tas bort (om den externa anvÃ¤ndarens e-postadress har angetts).
+External users can receive email notifications: Externa anvÃ¤ndare kan fÃ¥ e-postmeddelanden
+external-can-receive-reminder-help: NÃ¤r externa anvÃ¤ndare tillÃ¥ts och e-postanvÃ¤ndning tillÃ¥ts kan externa anvÃ¤ndare fÃ¥ e-postpÃ¥minnelser (om den externa anvÃ¤ndarens e-postadress har angetts).
+External users can receive email reminders: Externa anvÃ¤ndare kan fÃ¥ e-postpÃ¥minnelser
+email-enabled-help: SlÃ¥ pÃ¥ eller av all sÃ¤ndning av e-post fÃ¶r meddelanden och pÃ¥minnelser. SÃ¤tt till "nej" om din server inte Ã¤r rÃ¤tt konfigurerad fÃ¶r att skicka e-post.
+Email enabled: E-post tillÃ¥ts
+email-default-sender: Anger den e-postadress som anges som avsÃ¤ndare nÃ¤r pÃ¥minnelser skickas ut.
+Default sender address: Normal avsÃ¤ndaradress
+Default user settings: Normala anvÃ¤ndarinstÃ¤llningar
+email-event-reminders-help: Anger om programmet ska skicka pÃ¥minnelser via e-post
+Event reminders: AktivitestpÃ¥minnelser
+email-event-added: Skicka e-post vid tillÃ¤gg av aktivitet
 Events added to my calendar: Aktivtetet som lagts till i min kalender
-email-event-updated: Skicka e-post när aktivitet uppdaterats
+email-event-updated: Skicka e-post nÃ¤r aktivitet uppdaterats
 Events updated on my calendar: Aktivitet som uppdaterats i min kalender
 email-event-deleted: Skicka e-post vid borttagning av aktivitet
-Events removed from my calendar: Aktivitetet som raderats från min kalender
-email-event-rejected: Skicka e-post när aktivitetet inte har accepterats
-Event rejected by participant: Aktiviteter som avböjts av deltagare
-Allow user to customize colors: Tillåt användare att anpassa färgerna
+Events removed from my calendar: Aktivitetet som raderats frÃ¥n min kalender
+email-event-rejected: Skicka e-post nÃ¤r aktivitetet inte har accepterats
+Event rejected by participant: Aktiviteter som avbÃ¶jts av deltagare
+Allow user to customize colors: TillÃ¥t anvÃ¤ndare att anpassa fÃ¤rgerna
 
 ########################################
 # Page: adminhome.php
 #
-Assistants: Medhjälpare
-Preferences: Inställningar
-Users: Användare
+Assistants: MedhjÃ¤lpare
+Preferences: InstÃ¤llningar
+Users: AnvÃ¤ndare
 Account: Konto
 Categories: Kategorier
 Views: Visningar
@@ -242,35 +238,26 @@ Layers: Lager
 Reports: Rapporter
 Delete Events: Ta bort aktivitet
 Activity Log: Aktivitetslogg
-Public Preferences: Offentliga inställningar
-Unapproved Public Events: Icke godkända offentliga aktiviteter
+Public Preferences: Offentliga instÃ¤llningar
+Unapproved Public Events: Icke godkÃ¤nda offentliga aktiviteter
 Administrative Tools: Administrativa verktyg
-
-########################################
-# Page: approve_entry.php
-#
-Hello: Hej
-The subject was: Ämnet var
-The description is: Beskrivningen är
-Date: Datum
-Time: Klockan
 
 ########################################
 # Page: assistant_edit.php
 #
-Admin mode: Administrationsläge
-Your assistants: Dina medhjälpare
+Admin mode: AdministrationslÃ¤ge
+Your assistants: Dina medhjÃ¤lpare
 
 ########################################
 # Page: category.php
 #
 Global: =
 Category Name: Kategorinamn
-Color: Färg
-Add: Lägg till
+Color: FÃ¤rg
+Add: LÃ¤gg till
 Delete: Radera
-Are you sure you want to delete this entry?: Är du säker på att du vill ta bort denna aktivitet?
-Make New Category: Lägg till ny kategori
+Are you sure you want to delete this entry?: Ã„r du sÃ¤ker pÃ¥ att du vill ta bort denna aktivitet?
+Make New Category: LÃ¤gg till ny kategori
 
 ########################################
 # Page: catsel.php
@@ -279,160 +266,137 @@ Remove: Ta bort
 Cancel: Avbryt
 
 ########################################
-# Page: del_entry.php
-#
-An appointment has been canceled for you by: Ett möte har inställts för dig av
-
-########################################
-# Page: docadd.php
+# Page: combo.php
 #
 Description: Beskrivning
+Date: Datum
+Time: Klockan
+Priority: Prioritet
+Access: TillgÃ¤nglighet
+Created by: Skapad av
+Updated: Uppdaterad
+Participants: Deltagare
+Brief Description: Kort beskrivning
+Full Description: FullstÃ¤ndig beskrivning
+Category: Kategori
+All: Alla
+Error: Fel
+High: HÃ¶g
+Medium: Mellan
+Low: LÃ¥g
+Today: I dag
+Add Entry: LÃ¤gg till aktivitet
+Unnamed Event: hÃ¤ndelse utan namn
+pm: e.m.
+am: f.m.
 
 ########################################
 # Page: edit_entry.php
 #
-am: f.m.
-pm: e.m.
 days: dagar
 hours: timmar
 minutes: minuter
-Edit Entry: Ändra aktivitet
-Add Entry: Lägg till aktivitet
-Participants: Deltagare
-brief-description-help: Här skall det stå en kort beskrivning av aktiviteten/händelsen - den i översiktskalendern.
-Brief Description: Kort beskrivning
-full-description-help: Här kan du skriva en komplett beskrivning av aktiviteten.
-Full Description: Fullständig beskrivning
-access-help: Ange om händelsen/aktiviteten skall kunna ses av andra eller om den skall vara privat.
-Access: Tillgänglighet
+Edit Entry: Ã„ndra aktivitet
+brief-description-help: HÃ¤r skall det stÃ¥ en kort beskrivning av aktiviteten/hÃ¤ndelsen - den i Ã¶versiktskalendern.
+full-description-help: HÃ¤r kan du skriva en komplett beskrivning av aktiviteten.
+access-help: Ange om hÃ¤ndelsen/aktiviteten skall kunna ses av andra eller om den skall vara privat.
 priority-help: Ange aktivitetens prioritet.
-Priority: Prioritet
-High: Hög
-Medium: Mellan
-Low: Låg
 category-help: Anger aktivitetens kategori
-Category: Kategori
 URL: =
-date-help: Anger datum för aktiviteten.
-Untimed event: Icke tidsbestämd aktivitet
-Timed event: Tidsbestämd aktivitet
+date-help: Anger datum fÃ¶r aktiviteten.
+Untimed event: Icke tidsbestÃ¤md aktivitet
+Timed event: TidsbestÃ¤md aktivitet
 All day event: Heldagsaktivitet
 Timezone Offset: Lokal tid
-time-help: Anger tidpunkt för aktiviteten.<br /><i>Det här fältet behöver inte vara ifyllt.</i>
-duration-help: I detta fält anger du aktivitetens varaktighet<br /><i>Det här fältet behöver inte vara ifyllt.</i>
-end-time-help: Anger den tid aktiviteten förväntas sluta.
-participants-help: Visa deltagare för denna händelse.
-external-participants-help: Anger en lista på deltagare till händelsen som inte är kalenderanvändare. Användarna bör listas en per rad och kan innehålla e-postadress. Om en e-postadress angetts, är användaren berättigad att få meddelande och påminnelser.
+time-help: Anger tidpunkt fÃ¶r aktiviteten.<br /><i>Det hÃ¤r fÃ¤ltet behÃ¶ver inte vara ifyllt.</i>
+duration-help: I detta fÃ¤lt anger du aktivitetens varaktighet<br /><i>Det hÃ¤r fÃ¤ltet behÃ¶ver inte vara ifyllt.</i>
+end-time-help: Anger den tid aktiviteten fÃ¶rvÃ¤ntas sluta.
+participants-help: Visa deltagare fÃ¶r denna hÃ¤ndelse.
+external-participants-help: Anger en lista pÃ¥ deltagare till hÃ¤ndelsen som inte Ã¤r kalenderanvÃ¤ndare. AnvÃ¤ndarna bÃ¶r listas en per rad och kan innehÃ¥lla e-postadress. Om en e-postadress angetts, Ã¤r anvÃ¤ndaren berÃ¤ttigad att fÃ¥ meddelande och pÃ¥minnelser.
 External Participants: Externa deltagare
 repeat-type-help: Hur ofta skall aktiviteten upprepas.
 Daily: Dagligen
 Weekly: Veckovis
-Monthly: Månatlig
-by day: efter bestämd dag
-by date: efter bestämt datum
-Yearly: Årlig
-repeat-end-date-help: Specificera slutdatum för upprepningen av denna aktivitet.
-Use end date: Använd slutdatum
-repeat-frequency-help: Hur ofta skall aktiviteten upprepas? Talet 1 visar att det skall ske varje gång, 2 varannan o.s.v...
+Monthly: MÃ¥natlig
+by day: efter bestÃ¤md dag
+by date: efter bestÃ¤mt datum
+Yearly: Ã…rlig
+repeat-end-date-help: Specificera slutdatum fÃ¶r upprepningen av denna aktivitet.
+Use end date: AnvÃ¤nd slutdatum
+repeat-frequency-help: Hur ofta skall aktiviteten upprepas? Talet 1 visar att det skall ske varje gÃ¥ng, 2 varannan o.s.v...
 Frequency: Upprepningens regelbundenhet
-All: Alla
-Send Reminder: Skicka påminnelse
-Delete entry: Radera händelse
-You are not authorized to edit this entry.: Du har inte lov att redigera denna händelse
+Send Reminder: Skicka pÃ¥minnelse
+Delete entry: Radera hÃ¤ndelse
+You are not authorized to edit this entry.: Du har inte lov att redigera denna hÃ¤ndelse
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: En ny aktivitet har skapats åt dig av
-An appointment has been updated by: En aktivitet har uppdaterats av
-The following conflicts with the suggested time: Följande händelseer krockar med vald tidpunkt
-Please look on: Var vänlig se på
-to accept or reject this appointment: för att acceptera/avböja denna aktivitet
-to view this appointment: för att se denna aktivitet
+The following conflicts with the suggested time: FÃ¶ljande hÃ¤ndelseer krockar med vald tidpunkt
 Scheduling Conflict: Planeringskonflikt
-Your suggested time of: Din föreslagna tiden för
-conflicts with the following existing calendar entries: krockar med tidigare händelser i kalendern
-
-########################################
-# Page: edit_layer.php
-#
-Add Layer: Lägg till lager
-Edit Layer: Redigera lager
-Source: Ägare
-Duplicates: Dubletter
-Show layer events that are the same as your own: Visa lagerhändelser som är samma som dina egna
-Add to My Calendar: Lägg till i min kalender
-Delete layer: Ta bort lager
-
-########################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself.: Du kan inte skapa ett lager åt dig själv
-You can only create one layer for each user.: Du kan bara skapa ett lager för varje användare
+Your suggested time of: Din fÃ¶reslagna tiden fÃ¶r
+conflicts with the following existing calendar entries: krockar med tidigare hÃ¤ndelser i kalendern
 
 ########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NINUSER_PREFIX har inte angetts i CONFIG.PHP
-Add User: Ny användare
-Edit User: Redigera användare
+Add User: Ny anvÃ¤ndare
+Edit User: Redigera anvÃ¤ndare
 Calendar ID: Kalender ID
-First Name: Förnamn
+First Name: FÃ¶rnamn
 Last Name: Efternamn
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Fel i databasen
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Fel
 Import Results: Importresultat
-Events successfully imported: Händelseimport lyckades
+Events successfully imported: HÃ¤ndelseimport lyckades
 Errors: Fel
-There was an error parsing the import file or no events were returned.: Det var ett fel vid analysen av importfilen eller inga händelser returnerades
+There was an error parsing the import file or no events were returned.: Det var ett fel vid analysen av importfilen eller inga hÃ¤ndelser returnerades
 
 ########################################
 # Page: edit_report.php
 #
 Tomorrow: I morgon
-Today: I dag
-Yesterday: I går
-Day before yesterday: I förrgår
-Next week: Nästa vecka
+Yesterday: I gÃ¥r
+Day before yesterday: I fÃ¶rrgÃ¥r
+Next week: NÃ¤sta vecka
 This week: Denna vecka
-Last week: Förra veckan
-Week before last: Förrförra veckan
-Next week and week after: Nästa vecka och följande
-This week and next week: Denna vecka och nästa
-Last week and this week: Föregående vecka och denna vecka
-Last two weeks: Föregående två veckor
-Next month: Nästa månad
-This month: Denna månad
-Last month: Föregående månad
-Month before last: Förrförra månaden
-Next year: Nästa år
-This year: Detta år
-Last year: Föregående år
-Year before last: Förrförra året
-Invalid report id.: Ej godkänt rapport-ID
+Last week: FÃ¶rra veckan
+Week before last: FÃ¶rrfÃ¶rra veckan
+Next week and week after: NÃ¤sta vecka och fÃ¶ljande
+This week and next week: Denna vecka och nÃ¤sta
+Last week and this week: FÃ¶regÃ¥ende vecka och denna vecka
+Last two weeks: FÃ¶regÃ¥ende tvÃ¥ veckor
+Next month: NÃ¤sta mÃ¥nad
+This month: Denna mÃ¥nad
+Last month: FÃ¶regÃ¥ende mÃ¥nad
+Month before last: FÃ¶rrfÃ¶rra mÃ¥naden
+Next year: NÃ¤sta Ã¥r
+This year: Detta Ã¥r
+Last year: FÃ¶regÃ¥ende Ã¥r
+Year before last: FÃ¶rrfÃ¶rra Ã¥ret
 Unnamed Report: Icke namngiven rapport
-Add Report: Lägg till rapport
+Add Report: LÃ¤gg till rapport
 Edit Report: Redigera rapport
 Report name: Rapportnamn
-User: Användare
-Current User: Aktuell Användare
-Include standard header/trailer: Lägg till standard header/trailer
-Include previous/next links: Inkludera föregående/nästkommande länkar
+User: AnvÃ¤ndare
+Current User: Aktuell AnvÃ¤ndare
+Include standard header/trailer: LÃ¤gg till standard header/trailer
+Include previous/next links: Inkludera fÃ¶regÃ¥ende/nÃ¤stkommande lÃ¤nkar
 Include empty dates: Inkludera tomma datum
-Date range: Datumområde
+Date range: DatumomrÃ¥de
 Template variables: Mallvariabler
 Page template: Sidmall
 Day template: Dagmall
-Event template: Händelsemall
-Are you sure you want to delete this report?: Är du säker på att du vill ta bort denna rapport?
-
-########################################
-# Page: edit_report_handler.php
-#
-Variable N not found: Variabel N hittades inte
+Event template: HÃ¤ndelsemall
+Are you sure you want to delete this report?: Ã„r du sÃ¤ker pÃ¥ att du vill ta bort denna rapport?
 
 ########################################
 # Page: edit_template.php
@@ -444,21 +408,21 @@ Edit Custom Trailer: Redigera egen Trailer
 ########################################
 # Page: edit_user.php
 #
-Username: Användarnamn
+Username: AnvÃ¤ndarnamn
 E-mail address: E-postadress
-Password: Lösenord
+Password: LÃ¶senord
 again: igen
-Disabled for demo: Avstängd i demoversionen
-Change Password: Ändra lösenord
-New Password: Nytt lösenord
-Set Password: Byt lösenord
+Disabled for demo: AvstÃ¤ngd i demoversionen
+Change Password: Ã„ndra lÃ¶senord
+New Password: Nytt lÃ¶senord
+Set Password: Byt lÃ¶senord
 
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported.: Borttagning av användare stöds inte
-The passwords were not identical.: Lösenorden stämmer inte överens med varandra
-You have not entered a password.: Du har inte angivit något lösenord
+Deleting users not supported.: Borttagning av anvÃ¤ndare stÃ¶ds inte
+The passwords were not identical.: LÃ¶senorden stÃ¤mmer inte Ã¶verens med varandra
+You have not entered a password.: Du har inte angivit nÃ¥got lÃ¶senord
 
 ########################################
 # Page: export.php
@@ -468,7 +432,7 @@ Export format: Exportformat
 Export all dates: Exportera allt
 Start date: Startdatum
 End date: Slutdatum
-Modified since: Ändrad efter
+Modified since: Ã„ndrad efter
 
 ########################################
 # Page: export_handler.php
@@ -478,36 +442,34 @@ export format not defined or incorrect.: exportformat inte angett eller felaktig
 ########################################
 # Page: groups.php
 #
-Add New Group: Lägg till ny grupp
+Add New Group: LÃ¤gg till ny grupp
 
 ########################################
 # Page: group_edit.php
 #
 Unnamed Group: Icke namngiven grupp
-Add Group: Lägg till grupp
+Add Group: LÃ¤gg till grupp
 Edit Group: Redigera grupp
 Group name: Gruppnamn
-Updated: Uppdaterad
-Created by: Skapad av
 
 ########################################
 # Page: group_edit_handler.php
 #
-You must specify a group name: Du måste ange ett gruppnamn
+You must specify a group name: Du mÃ¥ste ange ett gruppnamn
 
 ########################################
 # Page: help_admin.php
 #
 Auto-refresh calendars: Automatisk omladdning av kalender
-auto-refresh-help: Om detta aktiveras kommer dagsvisning, veckovisning, månadsvisning och listning av icke godkända sidor att automatiskt laddas om periodiskt.
+auto-refresh-help: Om detta aktiveras kommer dagsvisning, veckovisning, mÃ¥nadsvisning och listning av icke godkÃ¤nda sidor att automatiskt laddas om periodiskt.
 Auto-refresh time: Omladdningstid
-auto-refresh-time-help: Om automatisk omladdning är aktiverat anger detta tiden mellan omladdningarna.
-Display days with events in bold in year view: Visa dagar med aktiviteter i fetstil i årsvyn
+auto-refresh-time-help: Om automatisk omladdning Ã¤r aktiverat anger detta tiden mellan omladdningarna.
+Display days with events in bold in year view: Visa dagar med aktiviteter i fetstil i Ã¥rsvyn
 Display weekends in week view: Visa veckoslut vid visning av vecka
 Time interval: Tidsintervall
-time-interval-help: Anger hur långa tidsblocken i veckovisning och dagsvisning ska vara.
-Nonuser: Icke-användares kalendrar
-colors-help: Alla färger skall skrivas in som #RRGGBB där RR är hexkoden för den röda, GG är hexkoden för den gröna och BB är hexkoden för den blå färgen.
+time-interval-help: Anger hur lÃ¥nga tidsblocken i veckovisning och dagsvisning ska vara.
+Nonuser: Icke-anvÃ¤ndares kalendrar
+colors-help: Alla fÃ¤rger skall skrivas in som #RRGGBB dÃ¤r RR Ã¤r hexkoden fÃ¶r den rÃ¶da, GG Ã¤r hexkoden fÃ¶r den grÃ¶na och BB Ã¤r hexkoden fÃ¶r den blÃ¥ fÃ¤rgen.
 
 ########################################
 # Page: help_bug.php
@@ -517,59 +479,57 @@ Report Bug: Rapportera bug
 ########################################
 # Page: help_edit_entry.php
 #
-Adding/Editing Calendar Entries: Lägg till/ändra aktivitet
+Adding/Editing Calendar Entries: LÃ¤gg till/Ã¤ndra aktivitet
 Repeat Type: Upprepningsfrekvens
 Repeat End Date: Upprepningens slutdatum
 Repeat Day: Upprepningsdagar
-repeat-day-help: Vilka veckodagar skall aktiviteten upprepas på
+repeat-day-help: Vilka veckodagar skall aktiviteten upprepas pÃ¥
 
 ########################################
 # Page: help_import.php
 #
 Import: =
 Palm Desktop: Palm desktop
-This form will allow you to import entries from the Palm Desktop Datebook.: Detta formulär tillåter dig att importera aktiviteter från Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Det bör vara placerat i din Palm-mapp <tt>"datebook/datebook.dat"</tt> i en undermapp benämnd med ditt användarnamn.
-The following entries will not be imported: Följande händelser kommer inte att importeras
-Entries older than the current date: Händelser äldre än dagens datum
-Entries created in the Palm Desktop...: Händelser skapade i Palm Desktop som inte har blivit "HotSynkroniserade"
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Allting som importerats från Palm kommer att skrivas över vid nästa import (om inte händelsedatumet har passerats).
-Therefore, updates should be made in the Palm Desktop.: Därför bör uppdateringar göras i Palm Desktop.
+The following entries will not be imported: FÃ¶ljande hÃ¤ndelser kommer inte att importeras
+Entries older than the current date: HÃ¤ndelser Ã¤ldre Ã¤n dagens datum
+Entries created in the Palm Desktop...: HÃ¤ndelser skapade i Palm Desktop som inte har blivit "HotSynkroniserade"
 vCal: =
-This form will import vCalendar (.vcs) 1.0 events.: Detta formulär kommer att importera vCalendar (.vcs) 1.0 aktiviteter
-The following formats have been tested: Följande format har testats
-This form will import iCalendar (.ics) events.: Detta formulär kommer att importera iCalendar (.ics) aktiviteter
-Enabling: Tillåt
-Overwrite Prior Import: Skriv över tidigare import
+This form will import vCalendar (.vcs) 1.0 events.: Detta formulÃ¤r kommer att importera vCalendar (.vcs) 1.0 aktiviteter
+The following formats have been tested: FÃ¶ljande format har testats
+This form will import iCalendar (.ics) events.: Detta formulÃ¤r kommer att importera iCalendar (.ics) aktiviteter
+Enabling: TillÃ¥t
+Overwrite Prior Import: Skriv Ã¶ver tidigare import
 
 ########################################
 # Page: help_index.php
 #
-Help Index: Hjälpöversikt
+Help Index: HjÃ¤lpÃ¶versikt
 
 ########################################
 # Page: help_layers.php
 #
-Add/Edit/Delete: Lägg till/Redigera/Ta bort
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Att klika på Redigera lager-länken i administrationsdelen i botten på sidan tillåter dig att lägga till/redigera/ta bort lager.
-The text color of the new layer that will be displayed in your calendar.: Textfärgen för det nya lagret som kommer att visas i din kalender.
-Disabling: Stäng av
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Tryck på stäng av lager-länkar i administrationsdelen i slutet på sidan för att stanga av lager.
-If checked, events that are duplicates of your events will be shown.: Om markerat kommer aktiviteter som är dubletter till dina aktiviteter att visas.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Tryck på Tillåt lager-länken i administrationsdelen i botten på sidan för att slå på lagervisning.
-Specifies the user that you would like to see displayed in your calendar.: Anger den användare du vill se visad i din kalender.
+Add/Edit/Delete: LÃ¤gg till/Redigera/Ta bort
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Att klika pÃ¥ Redigera lager-lÃ¤nken i administrationsdelen i botten pÃ¥ sidan tillÃ¥ter dig att lÃ¤gga till/redigera/ta bort lager.
+The text color of the new layer that will be displayed in your calendar.: TextfÃ¤rgen fÃ¶r det nya lagret som kommer att visas i din kalender.
+Disabling: StÃ¤ng av
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Tryck pÃ¥ stÃ¤ng av lager-lÃ¤nkar i administrationsdelen i slutet pÃ¥ sidan fÃ¶r att stanga av lager.
+Duplicates: Dubletter
+If checked, events that are duplicates of your events will be shown.: Om markerat kommer aktiviteter som Ã¤r dubletter till dina aktiviteter att visas.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Tryck pÃ¥ TillÃ¥t lager-lÃ¤nken i administrationsdelen i botten pÃ¥ sidan fÃ¶r att slÃ¥ pÃ¥ lagervisning.
+Source: Ã„gare
+Specifies the user that you would like to see displayed in your calendar.: Anger den anvÃ¤ndare du vill se visad i din kalender.
 
 ########################################
 # Page: help_pref.php
 #
 Default Category: Standardkategori
-default-category-help: Anger den kategori en ny aktivitet normalt ska tillhöra
-When I am the boss: När jag är boss
-Email me event notification: Skicka mig e-post vid händelsemeddelande
-I want to approve events: Jag vill godkänna aktiviteter
+default-category-help: Anger den kategori en ny aktivitet normalt ska tillhÃ¶ra
+When I am the boss: NÃ¤r jag Ã¤r boss
+Email me event notification: Skicka mig e-post vid hÃ¤ndelsemeddelande
+I want to approve events: Jag vill godkÃ¤nna aktiviteter
 Subscribe/Publish: Abbonera/Publicera
-allow-remote-subscriptions-help: Anger om fjärranvändare kan abbonera på din kalender och tillåta dem se aktiviteter i din iCal-aktiverade applikation (såsom Apples iCal eller Mozilla kalender).
-remote-subscriptions-url-help: Visar den URL som användare bör använda för att abbonera på din kalender.
+allow-remote-subscriptions-help: Anger om fjÃ¤rranvÃ¤ndare kan abbonera pÃ¥ din kalender och tillÃ¥ta dem se aktiviteter i din iCal-aktiverade applikation (sÃ¥som Apples iCal eller Mozilla kalender).
+remote-subscriptions-url-help: Visar den URL som anvÃ¤ndare bÃ¶r anvÃ¤nda fÃ¶r att abbonera pÃ¥ din kalender.
 
 ########################################
 # Page: import.php
@@ -580,97 +540,99 @@ Exclude private records: Ta inte med privata poster
 ########################################
 # Page: import_handler.php
 #
-Events from prior import marked as deleted: Händelser från tidigare import markerade som borttagna
-Conflicting events: Händelsekonflikter
-The import file contained no data.: Importfilen innehöll inga data
+Events from prior import marked as deleted: HÃ¤ndelser frÃ¥n tidigare import markerade som borttagna
+Conflicting events: HÃ¤ndelsekonflikter
+The import file contained no data.: Importfilen innehÃ¶ll inga data
 
 ########################################
 # Page: layers.php
 #
-Layer: Lager
+Are you sure you want to delete this layer?: Ã„r du sÃ¤ker pÃ¥ att du vill ta bort detta lager?
+Delete layer: Ta bort lager
 Edit layer: Redigera lager
-Are you sure you want to delete this layer?: Är du säker på att du vill ta bort detta lager?
+Layer: Lager
 Disable Layers: Inaktivera lager
-Add layer: Lägg till lager
+Add layer: LÃ¤gg till lager
+Add Layer: LÃ¤gg till lager
+Edit Layer: Redigera lager
+
+########################################
+# Page: layers_ajax.php
+#
+You cannot create a layer for yourself.: Du kan inte skapa ett lager Ã¥t dig sjÃ¤lv
+You can only create one layer for each user.: Du kan bara skapa ett lager fÃ¶r varje anvÃ¤ndare
 
 ########################################
 # Page: list_unapproved.php
 #
-Approve/Confirm: Godkänn/bekräfta
-Reject: Avböj
+Approve/Confirm: GodkÃ¤nn/bekrÃ¤fta
+Reject: AvbÃ¶j
 View this entry: Visa aktivitet
-Approve this entry?: Godkänn händelsen?
-Reject this entry?: Avböj denna händelse?
+Approve this entry?: GodkÃ¤nn hÃ¤ndelsen?
+Reject this entry?: AvbÃ¶j denna hÃ¤ndelse?
 
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: Ange användarnamn och lösenord
-Save login via cookies so I dont have to login next time.: Kom ihåg användarnamnet till nästa gång (cookie)
+You must enter a login and password.: Ange anvÃ¤ndarnamn och lÃ¶senord
+Save login via cookies so I dont have to login next time.: Kom ihÃ¥g anvÃ¤ndarnamnet till nÃ¤sta gÃ¥ng (cookie)
 Login: Logga in
-Access public calendar: Tillträde till offentlig kalender
-cookies-note: <strong>OBS:</strong> Programmet kräver att din webbläsare tillåter cookies, om inte - ändra dina inställningar i webbläsaren.
+cookies-note: <strong>OBS:</strong> Programmet krÃ¤ver att din webblÃ¤sare tillÃ¥ter cookies, om inte - Ã¤ndra dina instÃ¤llningar i webblÃ¤saren.
 
 ########################################
 # Page: login.php
 #
 Invalid login: Felaktig inloggning
+Access public calendar: TilltrÃ¤de till offentlig kalender
 
 ########################################
 # Page: nonusers.php
 #
-Add New NonUser Calendar: Lägg till ny icke-användare kalender
+Add New NonUser Calendar: LÃ¤gg till ny icke-anvÃ¤ndare kalender
 
 ########################################
 # Page: pref.php
 #
-Save Preferences: Spara inställningarna
+Save Preferences: Spara instÃ¤llningarna
 hour: timme
 
 ########################################
 # Page: purge.php
 #
-Purging events for: Rensa bort aktiviteter för
+Purging events for: Rensa bort aktiviteter fÃ¶r
 Finished: Klar
-Check box to delete ALL events for a user: Markera boxen för att ta bort <b>ALLA</b> aktiviteter för användare
-Delete all events before: Ta bort alla aktiviteter före
-Are you sure you want to delete events for: Är du säker på att du vill ta bort aktiviteter för
-
-########################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: Ett möte har inte godkänts av
+Check box to delete ALL events for a user: Markera boxen fÃ¶r att ta bort <b>ALLA</b> aktiviteter fÃ¶r anvÃ¤ndare
+Delete all events before: Ta bort alla aktiviteter fÃ¶re
+Are you sure you want to delete events for: Ã„r du sÃ¤ker pÃ¥ att du vill ta bort aktiviteter fÃ¶r
 
 ########################################
 # Page: report.php
 #
-This event is confidential.: Denna aktivitet är privat
-cont.: forts.
-Approved: Godkänd
+This event is confidential.: Denna aktivitet Ã¤r privat
+Approved: GodkÃ¤nd
 Deleted: Borttagen
-Rejected: Avböjd
-Waiting for approval: Väntar på godkännande
-Unknown: Okänd
-Click here: Klicka här
-to manage reports for the Public Access calendar: för att hantera rapporter för offentlig kalender
-Add new report: Lägg till ny rapport
+Rejected: AvbÃ¶jd
+Waiting for approval: VÃ¤ntar pÃ¥ godkÃ¤nnande
+Unknown: OkÃ¤nd
+Invalid report id.: Ej godkÃ¤nt rapport-ID
+Add new report: LÃ¤gg till ny rapport
 Manage Reports: Hantera rapporter
 
 ########################################
 # Page: search.php
 #
-Advanced Search: Avancerad sökning
-Search: Sök
-Keywords: Sökord
+Advanced Search: Avancerad sÃ¶kning
+Search: SÃ¶k
+Keywords: SÃ¶kord
 
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: Du måste ange ett eller flera sökord
-Search Results: Sökresultat
-match found: träff hittad
-matches found: träffar hittade
-No matches found: Inga träffar hittades
+You must enter one or more search keywords.: Du mÃ¥ste ange ett eller flera sÃ¶kord
+Search Results: SÃ¶kresultat
+match found: trÃ¤ff hittad
+matches found: trÃ¤ffar hittade
+No matches found: Inga trÃ¤ffar hittades
 
 ########################################
 # Page: security_audit.php
@@ -680,77 +642,79 @@ Status: =
 ########################################
 # Page: select_user.php
 #
-View Another Users Calendar: Titta på en annan användares kalender
+View Another Users Calendar: Titta pÃ¥ en annan anvÃ¤ndares kalender
 
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: Du har inte lagt till några kategorier
+You have not added any categories.: Du har inte lagt till nÃ¥gra kategorier
 Set Category: Ange kategori
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: indikerar administratör
-Add New User: Lägg till en ny användare
+denotes administrative user: indikerar administratÃ¶r
+Add New User: LÃ¤gg till en ny anvÃ¤ndare
 
 ########################################
 # Page: usersel.php
 #
-Reset: Ångra
+Reset: Ã…ngra
 
 ########################################
 # Page: views.php
 #
-Add New View: Lägg till ny visning
+Add New View: LÃ¤gg till ny visning
 
 ########################################
 # Page: views_edit.php
 #
 Unnamed View: Icke namngiven visning
-Add View: Lägg till visning
+Add View: LÃ¤gg till visning
 Edit View: Redigera visning
 View Name: Visningsnamn
 View Type: Visningstyp
-Week (Users horizontal): Vecka (Användare horisontellt)
-Week (Users vertical): Vecka (Användare vertikalt)
+Week (Users horizontal): Vecka (AnvÃ¤ndare horisontellt)
+Week (Users vertical): Vecka (AnvÃ¤ndare vertikalt)
 Week (Timebar): Vecka (Tidsaxel)
-Month (side by side): Månad (sida vid sida)
-Month (on same calendar): Månad (på samma kalender)
+Month (side by side): MÃ¥nad (sida vid sida)
+Month (on same calendar): MÃ¥nad (pÃ¥ samma kalender)
 
 ########################################
 # Page: views_edit_handler.php
 #
-You must specify a view name: Du måste ange ett visningsnamn
+You must specify a view name: Du mÃ¥ste ange ett visningsnamn
 
 ########################################
 # Page: view_entry.php
 #
-Assistant mode: Assistansläge
-External User: Extern användare
-Approve/Confirm entry: Godkänn/bekräfta händelsen
-Reject entry: Avböj händelsen
+Assistant mode: AssistanslÃ¤ge
+External User: Extern anvÃ¤ndare
+Approve/Confirm entry: GodkÃ¤nn/bekrÃ¤fta hÃ¤ndelsen
+Reject entry: AvbÃ¶j hÃ¤ndelsen
 Set category: Ange kategori
-Copy entry: Kopiera händelse
-This will delete this entry for all users.: Det här kommer att radera denna händelse för alla användare.
-Edit entry: Ändra händelse
-Edit repeating entry for all dates: Redigera återkommande händelse för alla datum
-Delete repeating event for all dates: Ta bort återkommande händelse för alla datum
-Edit entry for this date: Redigera händelse för detta datum
-Delete entry only for this date: Ta bort händelse för detta datum
-This will delete the entry from your calendar.: Detta kommer att ta bort aktiviteten från din kalender.
-Do you want to add this entry to your calendar?: Vill du lägga till denna aktivitet i kalendern?
-This will add the entry to your calendar.: Detta kommer att lägga till aktiviteten i din kalender.
+Add to My Calendar: LÃ¤gg till i min kalender
+Copy entry: Kopiera hÃ¤ndelse
+This will delete this entry for all users.: Det hÃ¤r kommer att radera denna hÃ¤ndelse fÃ¶r alla anvÃ¤ndare.
+Edit entry: Ã„ndra hÃ¤ndelse
+Edit repeating entry for all dates: Redigera Ã¥terkommande hÃ¤ndelse fÃ¶r alla datum
+Delete repeating event for all dates: Ta bort Ã¥terkommande hÃ¤ndelse fÃ¶r alla datum
+Edit entry for this date: Redigera hÃ¤ndelse fÃ¶r detta datum
+Delete entry only for this date: Ta bort hÃ¤ndelse fÃ¶r detta datum
+This will delete the entry from your calendar.: Detta kommer att ta bort aktiviteten frÃ¥n din kalender.
+Do you want to add this entry to your calendar?: Vill du lÃ¤gga till denna aktivitet i kalendern?
+This will add the entry to your calendar.: Detta kommer att lÃ¤gga till aktiviteten i din kalender.
 Email all participants: E-posta alla deltagare
-Hide activity log: Dölj aktivitetetslogg
+Hide activity log: DÃ¶lj aktivitetetslogg
 Show activity log: Visa aktivitetslogg
-Export this entry to: Exportera denna händelse till
+Export this entry to: Exportera denna hÃ¤ndelse till
 Palm Pilot: =
 
 ########################################
 # Page: week_details.php
 #
-New Entry: Ny händelse
+New Entry: Ny hÃ¤ndelse
+cont.: forts.
 
 ########################################
 # Page: includes/access.php
@@ -766,18 +730,18 @@ Dec: =
 ########################################
 # Page: includes/functions.php
 #
-exceeds limit of XXX events per day: Överskrider begränsningen på XXX händelser per dag
-Event approved: Aktivitet godkänd
+exceeds limit of XXX events per day: Ã–verskrider begrÃ¤nsningen pÃ¥ XXX hÃ¤ndelser per dag
+Event approved: Aktivitet godkÃ¤nd
 Event created: Aktivitet skapad
 Event deleted: Aktivitet borttagen
 Notification sent: Meddelande skickat
-Event rejected: Aktivitet avböjd
-Reminder sent: Påminnelse skickad
+Event rejected: Aktivitet avbÃ¶jd
+Reminder sent: PÃ¥minnelse skickad
 Event updated: Aktivitet uppdaterad
 Event: Aktivitet
-Action: Åtgärd
-Printer Friendly: Utskriftsvänlig version
-Generate printer-friendly version: Skapa utskriftsvänlig version
+Action: Ã…tgÃ¤rd
+Printer Friendly: UtskriftsvÃ¤nlig version
+Generate printer-friendly version: Skapa utskriftsvÃ¤nlig version
 January: Januari
 February: Februari
 March: Mars
@@ -800,37 +764,36 @@ Aug: =
 Sep: =
 Oct: Okt
 Nov: =
-The following error occurred: Följande fel uppstod
-You are not authorized.: Förbjuden åtgärd
-Add N hours to: Lägg till N timmar till
-Subtract N hours from: Dra bort N timmar från
+The following error occurred: FÃ¶ljande fel uppstod
+You are not authorized.: FÃ¶rbjuden Ã¥tgÃ¤rd
+Add N hours to: LÃ¤gg till N timmar till
+Subtract N hours from: Dra bort N timmar frÃ¥n
 same as: samma som
 server time: servertid
-Error approving event: Ett fel uppstod när händelsen skulle godkännas
-Sunday: Söndag
-Monday: Måndag
+Sunday: SÃ¶ndag
+Monday: MÃ¥ndag
 Tuesday: Tisdag
 Wednesday: Onsdag
 Thursday: Torsdag
 Friday: Fredag
-Saturday: Lördag
-Sun: Sön
-Mon: Mån
+Saturday: LÃ¶rdag
+Sun: SÃ¶n
+Mon: MÃ¥n
 Tue: Tis
 Wed: Ons
 Thu: Tor
 Fri: Fre
-Sat: Lör
+Sat: LÃ¶r
 
 ########################################
 # Page: includes/trailer.php
 #
 My Calendar: Min kalender
-Add New Entry: Ny händelse
+Add New Entry: Ny hÃ¤ndelse
 Logout: Logga ut
 Back to My Calendar: Min kalender
-Go to: Gå till
-Manage calendar of: Hantera kalender åt
+Go to: GÃ¥ till
+Manage calendar of: Hantera kalender Ã¥t
 
 ########################################
 # Page: includes/translate.php
@@ -839,11 +802,11 @@ English: Engelska
 Basque: Baskiska
 Bulgarian: Bulgariska
 Catalan: Katalanska
-Chinese (Simplified/GB2312): Kinesiska (Förenklad/GB2312)
+Chinese (Simplified/GB2312): Kinesiska (FÃ¶renklad/GB2312)
 Chinese (Traditional/Big5): Kinesiska (Traditonell/Big5)
 Czech: Tjeckiska
 Danish: Danska
-Dutch: Holländska
+Dutch: HollÃ¤ndska
 Estonian: Lettiska
 Finnish: Finska
 French: Franska
@@ -851,7 +814,7 @@ Galician: Galiciska
 German: Tyska
 Holo (Taiwanese): Holo (Taiwanesiska)
 Hungarian: Ungerska
-Icelandic: Isländska
+Icelandic: IslÃ¤ndska
 Italian: Italienska
 Japanese: Japanska
 Korean: Koreanska
@@ -868,66 +831,68 @@ event: aktivitet
 ########################################
 # Page: includes/user-imap.php
 #
-Invalid user login: Felaktigt användarnamn
+Invalid user login: Felaktigt anvÃ¤ndarnamn
 
 ########################################
 # Page: includes/xcal.php
 #
-Unnamed Event: händelse utan namn
-Event Imported: Händelse importerad
+Event Imported: HÃ¤ndelse importerad
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
 #
-Notification: Påminnelse
+Notification: PÃ¥minnelse
 authenticate: SMTP fel: Kunde inte autentisera.
 connect_host: SMTP fel: Kunde inte ansluta till SMTP-server.
 data_not_accepted: SMTP fel: Data accepterades inte.
-encoding: Okänt encode-format:
-execute: Kunde inte köra:
-file_access: Ingen åtkomst till fil:
-file_open: Fil fel: Kunde inte öppna fil:
-from_failed: Följande avsändaradress är felaktig:
+encoding: OkÃ¤nt encode-format:
+execute: Kunde inte kÃ¶ra:
+file_access: Ingen Ã¥tkomst till fil:
+file_open: Fil fel: Kunde inte Ã¶ppna fil:
+from_failed: FÃ¶ljande avsÃ¤ndaradress Ã¤r felaktig:
 instantiate: Kunde inte initiera e-postfunktion.
-mailer_not_supported: mailer stöds inte.
-provide_address: Du måste ange minst en mottagares e-postadress.
-recipients_failed: SMTP fel: Följande mottagare är felaktig:
-
-########################################
-# Page: includes/js/admin.php
-#
-Server URL is required.: Server-URL krävs
-Server URL must end with /.: Server-URL måste slute med '/'
-Invalid work hours.: Ogiltig arbetstid
-Invalid color for document background.: Ogiltig bakgrundsfärg
-Invalid color for document title.: Ogiltig färg för dokumenttiteln
-Invalid color for table cell background.: Ogiltig färg för tabellcellsbakgrunden
-Invalid color for table grid.: Ogiltig färg för tabellstrecken
-Invalid color for table header background.: Ogiltig färg för tabellhuvudets bakgrund
-Invalid color for table text background.: Ogiltig färg för tabelltextens bakgrund
-Invalid color for event popup background.: Ogiltig färg för händelsepopp-uppens bakgrund
-Invalid color for event popup text.: Ogiltig färg för händelsepopp-uppens text
-Invalid color for table cell background for today.: Ogiltig färg för dagens tabellcellsbakgrund
-Color format should be RRGGBB.: Färgen skall skrivas som '#RRGGBB'
+mailer_not_supported: mailer stÃ¶ds inte.
+provide_address: Du mÃ¥ste ange minst en mottagares e-postadress.
+recipients_failed: SMTP fel: FÃ¶ljande mottagare Ã¤r felaktig:
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Da har inte angivit någon kort beskrivning
-time prior to work hours...: Tidpunkten du har angivit ligger före din angivna arbetstid. Är detta korrekt?
+You have not entered a Brief Description: Da har inte angivit nÃ¥gon kort beskrivning
+time prior to work hours...: Tidpunkten du har angivit ligger fÃ¶re din angivna arbetstid. Ã„r detta korrekt?
 You have not entered a valid time of day: Du har inte angivit en giltig tid
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/js/edit_remotes.php
 #
-Invalid color: Ogiltig färg
+Invalid color: Ogiltig fÃ¤rg
+Color format should be RRGGBB.: FÃ¤rgen skall skrivas som '#RRGGBB'
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Ogiltig bakgrundsfÃ¤rg
+Invalid color for document title.: Ogiltig fÃ¤rg fÃ¶r dokumenttiteln
+Invalid color for table cell background.: Ogiltig fÃ¤rg fÃ¶r tabellcellsbakgrunden
+Invalid color for table cell background for today.: Ogiltig fÃ¤rg fÃ¶r dagens tabellcellsbakgrund
+Invalid work hours.: Ogiltig arbetstid
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Server-URL mÃ¥ste slute med '/'
+Invalid color for table grid.: Ogiltig fÃ¤rg fÃ¶r tabellstrecken
+Invalid color for event popup background.: Ogiltig fÃ¤rg fÃ¶r hÃ¤ndelsepopp-uppens bakgrund
+Invalid color for event popup text.: Ogiltig fÃ¤rg fÃ¶r hÃ¤ndelsepopp-uppens text
+Invalid color for table header background.: Ogiltig fÃ¤rg fÃ¶r tabellhuvudets bakgrund
+Server URL is required.: Server-URL krÃ¤vs
 
 ########################################
 # Page: includes/menu/index.php
 #
-Unapproved Events: Icke godkända aktiviteter
+Unapproved Events: Icke godkÃ¤nda aktiviteter
 
 ########################################
 # Page: tools/send_reminders.php
 #
-Reminder: Påminnelse
+Reminder: PÃ¥minnelse

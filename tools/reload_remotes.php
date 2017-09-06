@@ -43,7 +43,7 @@ define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
 define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
 define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 $old_path = ini_get ( 'include_path' );
-$delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
+$delim = ( mb_strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
 include_once __WC_INCLUDEDIR . 'translate.php';

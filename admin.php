@@ -19,8 +19,9 @@ function save_pref ( $prefs, $src ) {
 
   while ( list ( $key, $value ) = each ( $prefs ) ) {
     if ( $src == 'post' ) {
-      $prefix = substr ( $key, 0, 6 );
-      $setting = substr ( $key, 6 );
+      $prefix = mb_substr ( $key, 0, 6 );
+      $setting= mb_substr ( $key, 6 );
+
       if ( $key == 'currenttab' )
         continue;
 
@@ -33,23 +34,23 @@ function save_pref ( $prefs, $src ) {
       $prefix = 'admin_';
       $setting = $key;
     }
-    if ( strlen ( $setting ) > 0 && $prefix == 'admin_' ) {
+    if ( mb_strlen ( $setting ) && $prefix === 'admin_' ) {
       if ( $setting == 'THEME' && $value != 'none' ) {
-        if ( isValidTheme ( strtolower ( $value  ) ) )
-          $my_theme = strtolower ( $value );
+        if ( isValidTheme ( mb_strtolower ( $value ) ) )
+          $my_theme = mb_strtolower ( $value );
         else {
           die_miserable_death ( "Invalid theme" );
         }
       }
 
-      $setting = strtoupper ( $setting );
+      $setting = mb_strtoupper ( $setting );
       $sql = 'DELETE FROM webcal_config WHERE cal_setting = ?';
 
       if ( ! dbi_execute ( $sql, [$setting] ) ) {
         $error = db_error ( false, $sql );
         break;
       }
-      if ( strlen ( $value ) > 0 ) {
+      if ( mb_strlen ( $value ) ) {
         $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
 
         if ( ! dbi_execute ( $sql, [$setting, $value] ) ) {
@@ -73,7 +74,7 @@ if ( ! empty ( $_POST ) && empty ( $error ) ) {
   save_pref ( $_POST, 'post' );
 
   if ( ! empty ( $my_theme ) ) {
-    include_once 'themes/' . strtolower ( $my_theme ) . '.php';
+    include_once 'themes/' . mb_strtolower ( $my_theme ) . '.php';
     save_pref ( $webcal_theme, 'theme' );
   }
 }
@@ -100,13 +101,12 @@ $dir = 'themes';
 if ( is_dir ( $dir ) ) {
   if ( $dh = opendir ( $dir ) ) {
     while ( ( $file = readdir ( $dh ) ) !== false ) {
-      if ( strpos ( $file, '_admin.php' ) ) {
-        $themes[0][] = strtoupper ( str_replace ( '_admin.php', '', $file ) );
-        $themes[1][] = strtoupper ( str_replace ( '.php', '', $file ) );
-      } else
-      if ( strpos ( $file, '_pref.php' ) ) {
-        $themes[0][] = strtolower ( str_replace ( '_pref.php', '', $file ) );
-        $themes[1][] = strtolower ( str_replace ( '.php', '', $file ) );
+      if ( mb_strpos ( $file, '_admin.php' ) ) {
+        $themes[0][] = mb_strtoupper ( str_replace ( '_admin.php', '', $file ) );
+        $themes[1][] = mb_strtoupper ( str_replace ( '.php', '', $file ) );
+      } elseif ( mb_strpos ( $file, '_pref.php' ) ) {
+        $themes[0][] = mb_strtolower ( str_replace ( '_pref.php', '', $file ) );
+        $themes[1][] = mb_strtolower ( str_replace ( '.php', '', $file ) );
       }
     }
     sort ( $themes );

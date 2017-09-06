@@ -5,8 +5,7 @@
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id: Slovak_utf8.txt,v 1.10 2008/10/15 18:19:59 bbannon Exp $
-# Translation last updated on 10-14-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -18,7 +17,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: UTF-8
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -48,14 +47,14 @@ __month__ __yyyy__: =
 Calendar: kalendĂˇri
 
 ########################################
-# Page: approve_entry.php
+# Page: combo.php
 #
 Date: dĂˇtum
+Today: Dnes
 
 ########################################
 # Page: edit_report.php
 #
-Today: Dnes
 Next month: Nasl. mesiac
 Next year: Nasl. rok
 
@@ -67,7 +66,6 @@ Dec: =
 ########################################
 # Page: includes/functions.php
 #
-WK: tĂ˝Ĺľ
 January: JanuĂˇr
 February: FebruĂˇr
 March: Marec

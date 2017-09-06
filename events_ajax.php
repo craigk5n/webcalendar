@@ -78,17 +78,21 @@ $sendPlainText = true;
 $startdate = getIntValue ( 'startdate' );
 if ( empty ( $startdate ) )
   $startdate = date ( "Ym" ) . '01';
-$startyear = substr ( $startdate, 0, 4 );
-$startmonth = substr ( $startdate, 4, 2 );
-$startday = substr ( $startdate, 6, 2 );
+
+$startyear = mb_substr ( $startdate, 0, 4 );
+$startmonth= mb_substr ( $startdate, 4, 2 );
+$startday  = mb_substr ( $startdate, 6, 2 );
+
 $startTime = mktime ( 3, 0, 0, $startmonth, $startday, $startyear );
 $enddate = getIntValue ( 'enddate' );
 if ( empty ( $enddate ) )
   $enddate = date ( "Ymd", mktime ( 3, 0, 0, $startmonth + 1,
     $startday, $startyear ) );
-$endyear = substr ( $enddate, 0, 4 );
-$endmonth = substr ( $enddate, 4, 2 );
-$endday = substr ( $enddate, 6, 2 );
+
+$endyear = mb_substr ( $enddate, 0, 4 );
+$endmonth= mb_substr ( $enddate, 4, 2 );
+$endday  = mb_substr ( $enddate, 6, 2 );
+
 $endTime = mktime ( 3, 0, 0, $endmonth, $endday, $endyear );
 
 $error = '';
@@ -379,13 +383,6 @@ function setLocalTimes ( $eventList )
       $event->setLocalTime ( $event->getTime() );
     } else {
       $localTime = display_time ( $event->getDatetime() );
-//      $localTime = display_time ( $event->getDatetime(),
-//        0, '', '24' );
-//echo "\ngetDateTime(): " . $event->getDatetime() . "\n";
-//echo "localTime1: $localTime\n";
-//      $localTime = substr ( $localTime, 0, 2 ) .
-//        substr ( $localTime, 3, 5 );
-//echo "localTime2: $localTime\n";
       $event->setLocalTime ( $localTime );
     }
   }

@@ -8,7 +8,6 @@
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id$
  * @package WebCalendar
  * @subpackage Mailer
  */
@@ -51,7 +50,7 @@ class WebCalMailer extends phpmailer{
   function WC_Send( $from_name, $to_email,
     $to_name, $subject, $msg, $html = 'N', $from_email = '', $id = '' ) {
 
-    if( strlen( $from_email ) ) {
+    if ( mb_strlen ( $from_email ) ) {
       $this->SetFrom ( $from_email, $from_name );
       #$this->From = $from_email;
       #$this->FromName = $from_name;

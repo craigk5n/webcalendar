@@ -111,8 +111,7 @@ function event_to_text ( $event, $date ) {
     $id = $event->getID();
 
   if ( $tempAcc == 'R' ) {
-    if ( ( $login != $user && strlen ( $user ) ) ||
-        ( $login != $tempLog && strlen ( $tempLog ) ) ) {
+    if ( ( $login !== $user && mb_strlen ( $user ) ) || ( $login !== $tempLog && mb_strlen ( $tempLog ) ) ) {
       $description_str = $confStr;
       $name_str = $privStr;
     }
@@ -123,7 +122,8 @@ function event_to_text ( $event, $date ) {
       //fix any broken special characters
       $str = preg_replace( "/&amp;(#[0-9]+|[a-z]+);/i", "&$1;", $str );
       $description_str = str_replace ( '&amp;amp;', '&amp;', $str );
-      if ( strstr ( $description_str, '<' ) && strstr ( $description_str, '>' ) ) {
+
+      if ( mb_strstr ( $description_str, '<' ) && mb_strstr ( $description_str, '>' ) ) {
         // Found some HTML.
       } else
         // No HTML found. Add line breaks.

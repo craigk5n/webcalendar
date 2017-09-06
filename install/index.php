@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.139.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 /**
  * Page Description:
  * Main page for install/config of db settings.
@@ -29,7 +29,7 @@
  *   1.1.4 in CVS until the official 1.1.4 release is made.
  *
  *   You can mark the version with "+CVS" or something similar in NEWS
- *   and/or ChangeLog since these are not used in the code.
+ *   since these are not used in the code.
  *
  * Input Parameters:
  * OPTIONAL tzoffset   If after logging in, adding tzoffset to the URL
@@ -143,13 +143,13 @@ if( ! isset( $_SESSION['application_name'] ) )
 // Set Server URL.
 if( ! isset( $_SESSION['server_url'] ) ) {
   if( ! empty( $_SERVER['HTTP_HOST'] ) && ! empty( $_SERVER['REQUEST_URI'] ) ) {
-    $ptr = strpos( $_SERVER['REQUEST_URI'], '/install', 2 );
+    $ptr = mb_strpos ( $_SERVER['REQUEST_URI'], '/install', 2 );
 
     if( $ptr > 0 )
       $_SESSION['server_url'] = $SERVER_URL = 'http://' . $_SERVER['HTTP_HOST']
        . ( ! empty( $_SERVER['SERVER_PORT'] ) && $_SERVER['SERVER_PORT'] != 80
         ? ':' . $_SERVER['SERVER_PORT'] : '' )
-       . substr( $_SERVER['REQUEST_URI'], 0, $ptr + 1 );
+       . mb_substr ( $_SERVER['REQUEST_URI'], 0, $ptr + 1 );
   }
 }
 
@@ -372,7 +372,7 @@ if( ! empty( $action ) && $action == 'install' ) {
       array(), false, $show_all_errors );
     if( $res ) {
       while( $row = dbi_fetch_row( $res ) ) {
-        if( strlen( $row[1] ) < 30 )
+        if ( mb_strlen ( $row[1] ) < 30 )
           dbi_execute( 'UPDATE webcal_user SET cal_passwd = ?
             WHERE cal_login = ?', array( md5( $row[1] ), $row[0] ) );
       }
@@ -472,7 +472,7 @@ if( ! empty( $post_action ) && $post_action == $testSettingsStr && !
   } //end if($c)
 
   // Test db_cachedir directory for write permissions.
-  if( strlen( $db_cachedir ) > 0 ) {
+  if ( mb_strlen ( $db_cachedir ) ) {
     if( ! is_dir( $db_cachedir ) )
       $response_msg2 = $failureStr
        . str_replace( 'XXX', $cachedirStr,
@@ -585,7 +585,8 @@ if( ! empty( $action ) && $action == 'tz_convert' && !
 
   if( $c ) {
     $ret = convert_server_to_GMT( $tzoffset, $cutoffdate );
-    if( substr( $ret, 3, 21 ) == 'Conversion Successful' ) {
+
+    if ( mb_substr ( $ret, 3, 21 ) === 'Conversion Successful' ) {
       $_SESSION['tz_conversion'] = 'Success';
       $response_msg = $tzSuccessStr;
     } else
@@ -1263,7 +1264,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   /* This a workaround for postgresql. The db_type should be 'pgsql'
      but 'postgresql' is used in a lot of places...
      so this is easier for now :( */
-   . ( substr( php_sapi_name(), 0, 3 ) <> 'cgi' &&
+   . ( mb_substr ( php_sapi_name (), 0, 3 ) <> 'cgi' &&
     ini_get( ( $settings['db_type'] == 'postgresql'
         ? 'pgsql' : $settings['db_type'] ) . '.allow_persistent' ) ? '
               <tr>

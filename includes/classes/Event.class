@@ -5,7 +5,6 @@
  * @author Adam Roben <adam.roben@gmail.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: Event.class,v 1.27 2010/08/18 04:05:19 cknudsen Exp $
  * @package WebCalendar
  * @subpackage Events
  */
@@ -305,9 +304,10 @@ class Event {
   }
 
   function getDateTimeAdjusted() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
+    $year = mb_substr ( $this->_date, 0, 4 );
+    $month= mb_substr ( $this->_date, 4, 2 );
+    $day  = mb_substr ( $this->_date, 6, 2 );
+
   if ( $this->isTimed() ) {
     $h = (int) ( $this->_time / 10000 );
     $m = ( $this->_time / 100 ) % 100;
@@ -381,9 +381,10 @@ class Event {
    * @access public
    */
   function getDueDateTimeTS() {
-    $year = substr ( $this->_dueDate, 0, 4 );
-    $month = substr ( $this->_dueDate, 4, 2 );
-    $day = substr ( $this->_dueDate, 6, 2 );
+    $year = mb_substr ( $this->_dueDate, 0, 4 );
+    $month= mb_substr ( $this->_dueDate, 4, 2 );
+    $day  = mb_substr ( $this->_dueDate, 6, 2 );
+
   if ( $this->_time > 0 ) {
     $h = (int) ( $this->_dueTime / 10000 );
     $m = ( $this->_dueTime / 100 ) % 100;
@@ -415,9 +416,10 @@ class Event {
    * @access public
    */
   function getDateTimeTS() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
+    $year = mb_substr ( $this->_date, 0, 4 );
+    $month= mb_substr ( $this->_date, 4, 2 );
+    $day  = mb_substr ( $this->_date, 6, 2 );
+
   if ( $this->isTimed() ) {
     $h = (int) ( $this->_time / 10000 );
     $m = ( $this->_time / 100 ) % 100;
@@ -616,9 +618,10 @@ class Event {
    * @access public
    */
   function getEndDate() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
+    $year = mb_substr ( $this->_date, 0, 4 );
+    $month= mb_substr ( $this->_date, 4, 2 );
+    $day  = mb_substr ( $this->_date, 6, 2 );
+
     if ( $this->_time > 0 ) {
       $h = (int) ( $this->_time / 10000 );
       $m = ( $this->_time / 100 ) % 100;
@@ -638,9 +641,10 @@ class Event {
    * @access public
    */
   function getEndTime() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
+    $year = mb_substr ( $this->_date, 0, 4 );
+    $month= mb_substr ( $this->_date, 4, 2 );
+    $day  = mb_substr ( $this->_date, 6, 2 );
+
     if ( $this->_time > 0 ) {
       $h = (int) ( $this->_time / 10000 );
       $m = ( $this->_time / 100 ) % 100;
@@ -672,9 +676,10 @@ class Event {
    * @access public
    */
   function getEndDateTimeTS() {
-    $year = substr ( $this->_date, 0, 4 );
-    $month = substr ( $this->_date, 4, 2 );
-    $day = substr ( $this->_date, 6, 2 );
+    $year = mb_substr ( $this->_date, 0, 4 );
+    $month= mb_substr ( $this->_date, 4, 2 );
+    $day  = mb_substr ( $this->_date, 6, 2 );
+
     if ( $this->_time > 0 ) {
       $h = (int) ( $this->_time / 10000 );
       $m = ( $this->_time / 100 ) % 100;

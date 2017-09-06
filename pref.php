@@ -1,4 +1,4 @@
-<?php // $Id: pref.php,v 1.168.2.2 2013/01/24 21:15:09 cknudsen Exp $
+<?php
 include_once 'includes/init.php';
 require_valid_referring_url ();
 
@@ -13,8 +13,9 @@ function save_pref( $prefs, $src) {
   global $my_theme, $prefuser;
   while ( list ( $key, $value ) = each ( $prefs ) ) {
     if ( $src == 'post' ) {
-      $setting = substr ( $key, 5 );
-      $prefix = substr ( $key, 0, 5 );
+      $prefix = mb_substr ( $key, 0, 5 );
+      $setting= mb_substr ( $key, 5 );
+
       if ( $prefix != 'pref_')
         continue;
       // Validate key name. Should start with "pref_" and not include
@@ -27,15 +28,16 @@ function save_pref( $prefs, $src) {
       $setting = $key;
       $prefix = 'pref_';
     }
-    //echo "Setting = $setting, key = $key, prefix = $prefix<br />\n";
-    if ( strlen ( $setting ) > 0 && $prefix == 'pref_' ) {
+    if ( mb_strlen ( $setting ) && $prefix === 'pref_' ) {
       if ( $setting == 'THEME' &&  $value != 'none' )
-        $my_theme = strtolower ( $value );
+        $my_theme = mb_strtolower ( $value );
       $sql = 'DELETE FROM webcal_user_pref WHERE cal_login = ? ' .
         'AND cal_setting = ?';
+
       dbi_execute ( $sql, [$prefuser, $setting] );
-      if ( strlen ( $value ) > 0 ) {
-      $setting = strtoupper ( $setting );
+
+      if ( mb_strlen ( $value ) ) {
+        $setting = mb_strtoupper ( $setting );
         $sql = 'INSERT INTO webcal_user_pref ' .
           '( cal_login, cal_setting, cal_value ) VALUES ' .
           '( ?, ?, ? )';
@@ -73,7 +75,7 @@ $dir = 'themes/';
 if (is_dir ($dir)) {
    if ($dh = opendir ($dir)) {
        while (($file = readdir ($dh)) !== false) {
-         if ( strpos ( $file, '_pref.php' ) )
+         if ( mb_strpos ( $file, '_pref.php' ) )
            $themes[] = str_replace ( '_pref.php', '', $file );
        }
        sort ( $themes );
@@ -197,13 +199,14 @@ print_header($INC, '', $BodyX);
  if ( $updating_public )
   echo translate ($PUBLIC_ACCESS_FULLNAME) . '&nbsp;';
  etranslate ( 'Preferences' );
- if ( $is_nonuser_admin || ( $is_admin && substr ( $prefuser, 0, 5 ) == '_NUC_' ) ) {
+
+if ( $is_nonuser_admin || ( $is_admin && mb_substr ( $prefuser, 0, mb_strlen ( $NONUSER_PREFIX ) ) === $NONUSER_PREFIX ) ) {
   nonuser_load_variables ( $user, 'nonuser' );
   echo '<br /><strong>-- ' .
    translate ( 'Admin mode' ) . ': '.$nonuserfullname." --</strong>\n";
  }
 $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'] : '' );
-$formaction = substr ($self, strrpos($self, '/') + 1) . $qryStr;
+$formaction = mb_substr ( $self, mb_strrpos ( $self, '/' ) + 1 ) . $qryStr;
 
 ?>&nbsp;<img src="images/help.gif" alt="<?php etranslate ( 'Help' )?>" class="help" onclick="window.open( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
 

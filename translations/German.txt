@@ -5,8 +5,7 @@
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 13. April 2010
 #
-# $Id: German.txt,v 1.190 2010/08/15 03:22:08 cknudsen Exp $
-# Translation last updated on 04-13-2010
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -445,6 +444,11 @@ Admin mode: Administratormodus
 Your assistants: Ihre Assistenten
 
 ########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Unbekannter Fehler
+
+########################################
 # Page: availability.php
 #
 Program Error No XXX specified!: Programmfehler No. XXX spezifiziert!
@@ -463,7 +467,6 @@ Color: Farbe
 Remove Icon: Icon entfernen
 Add Icon to Category: Icon f&uuml;r Kategorie hinzuf&uuml;gen
 Upload: Hochladen
-gif 3kb max: gif max. 3kb gro&szlig;
 Search for existing icons: Suche nach bereits vorhandenen Icons
 Add: Hinzuf&uuml;gen
 Delete: L&ouml;schen
@@ -474,7 +477,6 @@ Make New Category: Neue Kategorie erstellen
 # Page: category_handler.php
 #
 File size exceeds maximum.: Dateigr&ouml;&szlig;e &uuml;bersteigt Maximum
-File is not a gif image.: Datei ist kein &#34;gif&#34-Bild.
 
 ########################################
 # Page: catsel.php
@@ -513,6 +515,8 @@ Brief Description: Kurzbeschreibung
 Full Description: Ausf&uuml;hrliche Beschreibung
 Category: Kategorie
 Add event detail: Termindetails hinzuf&uuml;gen
+Start Date: Startdatum
+Due Date: F&auml;lligkeitsdatum
 All: Alle
 Error: Fehler
 no response from server: keine R&uuml;ckantwort vom Server
@@ -586,7 +590,6 @@ Location: Ort
 url-help: URL des Termins
 URL: =
 date-help: Gibt das Datum des Termines an.
-Start Date: Startdatum
 Untimed event: Termin OHNE Zeitangabe
 Timed event: Termin MIT Zeitangabe
 All day event: Termin f&uuml;r den GANZEN Tag
@@ -595,7 +598,6 @@ time-help: Gibt die Uhrzeit des Termines an. Kann leer gelassen werden.
 duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen werden.
 end-time-help: Definiert die Zeit des Termines als Endzeitpunkt.
 Start Time: Startzeit
-Due Date: F&auml;lligkeitsdatum
 Due Time: F&auml;lligkeitszeit
 Site Extras: Extrafelder
 avail_participants-help: Liste der verf&uuml;gbaren Teilnehmer dieses Eintrags.
@@ -794,7 +796,7 @@ Username cannot be blank.: Benutzername darf nicht leer sein.
 ########################################
 # Page: events_ajax.php
 #
-Unknown error.: Unbekannter Fehler
+Not authorized: Keine Berechtigung
 
 ########################################
 # Page: export.php
@@ -1011,7 +1013,6 @@ Uncheck All: Nichts markieren
 View this entry: Eintrag ansehen
 No unapproved entries for XXX.: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r &#39;XXX&#39;
 Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
-Not authorized: Keine Berechtigung
 Approve this entry?: Diesen Eintrag best&auml;tigen?
 Reject this entry?: Eintrag ablehnen?
 Approve Selected entries?: Best&auml;tige ausgew&auml;hlte Eintr&auml;ge?
@@ -1347,11 +1348,9 @@ Cache cleared from previous SQL!: Cache wird von voriger SQL geleert!
 Error executing query.: Fehler beim Ausf&uuml;hren des Query
 Unfortunately, XXX is not implemented for YYY: Ungew&ouml;hnlich, &#34;XXX&#34; ist nicht (f&uuml;r YYY) implementiert.
 Unknown ODBC error.: Unbekannter ODBC Fehler
-Cannot execute SQLite3 command XXX: kann SQLite3 Befehl XXX nicht ausf&uuml;hren
-write: schreiben
-Cache error Could not XXX file YYY.: Cache-Fehler, kann Datei YYY nicht XXX.
 Error opening cache dir XXX.: Fehler beim &Ouml;ffnen des Cache-Verzeichnisses &#34;XXX&#34;.
 delete: l&ouml;schen
+Cache error Could not XXX file YYY.: Cache-Fehler, kann Datei YYY nicht XXX.
 
 ########################################
 # Page: includes/formvars.php
@@ -1393,7 +1392,6 @@ Event updated: Termin aktualisiert
 Journal updated: Journal aktualisiert
 Task updated: Aufgabe aktualisiert
 Delete User: Teilnehmer l&ouml;schen
-WK: KW
 TASKS: AUFGABEN
 Task_Title: Aufgabentitel
 Due: F&auml;llig
@@ -1490,7 +1488,6 @@ Manage calendar of: Kalender verwalten von
 # Page: includes/translate.php
 #
 Browser Language Not Found: Browsersprache nicht gefunden
-(not supported): (nicht unterst&uuml;tzt)
 English: Englisch
 English-US: Englisch-US
 Afrikaans: Afrikanisch

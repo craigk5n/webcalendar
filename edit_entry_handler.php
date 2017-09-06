@@ -1,4 +1,4 @@
-<?php // $Id: edit_entry_handler.php,v 1.204.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 include_once 'includes/init.php';
 require_valid_referring_url ();
 require 'includes/classes/WebCalMailer.class';
@@ -24,18 +24,18 @@ $updAppStr = translate( 'XXX has updated an appointment.' );
 function sort_byday( $a, $b ) {
   global $byday_values;
 
-  $len_a = strlen( $a );
-  $len_b = strlen( $b );
-  $val_a = $byday_values[substr( $a, -2 )];
-  $val_b = $byday_values[substr( $b, -2 )];
+  $len_a = mb_strlen ( $a );
+  $len_b = mb_strlen ( $b );
+  $val_a = $byday_values[mb_substr ( $a, -2 )];
+  $val_b = $byday_values[mb_substr ( $b, -2 )];
 
   if( $len_a != $len_b )
     return ( $len_a < $len_b ? -1 : 1 );
   elseif( $len_a == 2 )
     return strcmp( $val_a, $val_b );
   else { // They start with numeric offsets.
-    $offset_a = substr( $a, 0, $len_a - 2 );
-    $offset_b = substr( $b, 0, $len_b - 2 );
+    $offset_a = mb_substr ( $a, 0, $len_a - 2 );
+    $offset_b = mb_substr ( $b, 0, $len_b - 2 );
 
     if( $offset_a == $offset_b )
       return strcmp( $val_a, $val_b );
@@ -146,7 +146,7 @@ $timetype      = getPostValue( 'timetype' );
 $weekdays_only = getPostValue( 'weekdays_only' );
 $wkst          = getPostValue( 'wkst' );
 
-$description = ( strlen( $description ) == 0 || $description == '<br />'
+$description = ( ! mb_strlen ( $description ) || $description === '<br />'
   ? $name : $description );
 
 // For public events, we don't EVER allow HTML tags.  There is just too
@@ -272,7 +272,7 @@ if( $timetype == 'A' )
 if( $timetype == 'U' )
   $duration_h = 0;
 
-if( strpos( 'AU', $timetype ) !== false ) {
+if ( mb_strpos ( 'AU', $timetype ) !== false ) {
   $duration_m   =
   $end_hour     =
   $end_minute   =
@@ -438,7 +438,7 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
 
     if( ! empty( $bydayAr ) ) {
       foreach( $bydayAr as $bydayElement ) {
-        if( strlen( $bydayElement ) > 2 )
+        if ( mb_strlen ( $bydayElement ) > 2 )
           $bydayAll[] = $bydayElement;
       }
     }
@@ -450,8 +450,8 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
       $byday = implode( ',', $bydayAll );
 
       // Strip off leading comma if present.
-      if( substr( $byday, 0, 1 ) == ',' )
-        $byday = substr( $byday, 1 );
+      if ( mb_substr ( $byday, 0, 1 ) === ',' )
+        $byday = mb_substr ( $byday, 1 );
     }
   }
 
@@ -470,8 +470,8 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
       $bymonthday   = implode( ',', $bymonthdayAr );
     }
     // Strip off leading comma if present.
-    if( substr( $bymonthday, 0, 1 ) == ',' )
-      $bymonthday = substr( $bymonthday, 1 );
+    if ( mb_substr ( $bymonthday, 0, 1 ) === ',' )
+      $bymonthday = mb_substr ( $bymonthday, 1 );
   }
 
   if( $rpt_type == 'monthlyBySetPos' ) {
@@ -483,8 +483,8 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
       $bysetpos   = implode( ',', $bysetposAr );
     }
     // Strip off leading comma if present.
-    if( substr( $bysetpos, 0, 1 ) == ',' )
-      $bysetpos = substr( $bysetpos, 1 );
+    if ( mb_substr ( $bysetpos, 0, 1 ) === ',' )
+      $bysetpos = mb_substr ( $bysetpos, 1 );
   }
 
   // If expert mode not selected,
@@ -507,10 +507,10 @@ if( empty( $DISABLE_REPEATING_FIELD ) || $DISABLE_REPEATING_FIELD == 'N' ) {
     $exceptions = array();
   else {
     foreach( $exceptions as $i ) {
-      if( substr( $i, 0, 1 ) == '+' )
-        $inclusion_list[] = substr( $i, 1, 8 );
+      if ( mb_substr ( $i, 0, 1 ) === '+' )
+        $inclusion_list[] = mb_substr ( $i, 1, 8 );
       else
-        $exception_list[] = substr( $i, 1, 8 );
+        $exception_list[] = mb_substr ( $i, 1, 8 );
     }
   }
 } // end test for $DISABLE_REPEATING_FIELD
@@ -550,8 +550,7 @@ if( empty( $wkst ) )
 if( empty( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' )
   $confirm_conflicts = ''; // Security precaution.
 
-if( $ALLOW_CONFLICTS != 'Y' && empty( $confirm_conflicts )
-    && strlen( $entry_hour ) > 0 && $timetype != 'U' && $eType != 'task' ) {
+if ( $ALLOW_CONFLICTS !== 'Y' && empty ( $confirm_conflicts ) && mb_strlen ( $entry_hour ) && $timetype !== 'U' && $eType !== 'task' ) {
   $conf_until = ( empty( $rpt_until ) ? '' : $rpt_until );
   $conf_count = ( empty( $rpt_count ) ? 999 : $rpt_count );
   $dates = get_all_dates( $eventstart, $rpt_type, $rpt_freq,
@@ -631,7 +630,7 @@ if( empty( $error ) ) {
 
   $query_params[] = ( empty( $old_create_by ) ? $login : $old_create_by );
   $query_params[] = gmdate( 'Ymd', $eventstart );
-  $query_params[] = ( ( strlen( $entry_hour ) > 0 && $timetype != 'U' )
+  $query_params[] = ( ( mb_strlen ( $entry_hour ) && $timetype !== 'U' )
     ? gmdate( 'His', $eventstart ) : '-1' );
 
   if( ! empty( $eventcomplete ) )
@@ -657,7 +656,7 @@ if( empty( $error ) ) {
   elseif( $eType == 'task' )
     $query_params[] = ( $tmpRpt ? 'N' : 'T' );
 
-  $query_params[] = ( strlen( $name ) == 0 ? 'Unnamed Event' : $name );
+  $query_params[] = ( ! mb_strlen ( $name ) ? 'Unnamed Event' : $name );
   $query_params[] = $description;
 
   if( ! empty( $location ) )
@@ -695,8 +694,7 @@ if( empty( $error ) ) {
     $participants[0] = $single_user_login;
 
   // Add categories.
-  $cat_owner = ( ( ! empty( $user ) && strlen( $user ) )
-      && ( $is_assistant || $is_admin ) ? $user : $login );
+  $cat_owner = ( mb_strlen ( $user ) && ( $is_assistant || $is_admin ) ? $user : $login );
   dbi_execute( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?
     AND ( cat_owner = ? OR cat_owner IS NULL )', array( $id, $cat_owner ) );
 
@@ -752,7 +750,7 @@ if( empty( $error ) ) {
     $sql = '';
     $query_params = array();
 
-    if( strlen( $extra_name ) || $extra_type == EXTRA_DATE ) {
+    if ( mb_strlen ( $extra_name ) || $extra_type === EXTRA_DATE ) {
       if( $extra_type == EXTRA_CHECKBOX
           || $extra_type == EXTRA_EMAIL
           || $extra_type == EXTRA_MULTILINETEXT
@@ -787,7 +785,7 @@ if( empty( $error ) ) {
           $extra_email_data .= $extra_name . ': ' . $edate . "\n";
       }
     }
-    if( strlen( $sql ) && empty( $error ) ) {
+    if ( mb_strlen ( $sql ) && empty ( $error ) ) {
       if( ! dbi_execute( $sql, $query_params ) )
         $error = $dberror . dbi_error();
     }
@@ -851,7 +849,7 @@ if( empty( $error ) ) {
         $error .= $dberror . dbi_error();
     }
     // Add repeating info.
-    if( ! empty( $rpt_type ) && strlen( $rpt_type ) && $rpt_type != 'none' ) {
+    if ( mb_strlen ( $rpt_type ) && $rpt_type !== 'none' ) {
       $names  = array( 'cal_id', 'cal_type', 'cal_frequency' );
       $values = array( $id, $rpt_type, ( $rpt_freq ? $rpt_freq : 1 ) );
 
@@ -905,8 +903,7 @@ if( empty( $error ) ) {
       foreach( $exceptions as $i ) {
         if( ! dbi_execute( 'INSERT INTO webcal_entry_repeats_not
             ( cal_id, cal_date, cal_exdate ) VALUES ( ?, ?, ? )',
-            array( $id, substr( $i, 1, 8 ),
-              ( ( substr( $i, 0, 1 ) == '+' ) ? 0 : 1 ) ) ) )
+            [$id, mb_substr ( $i, 1, 8 ), ( mb_substr ( $i, 0, 1 ) === '+' ? 0 : 1 )] ) )
           $error = $dberror . dbi_error();
       }
     } //end exceptions
@@ -1151,7 +1148,7 @@ if( empty( $error ) ) {
               $ext_emails[$ext_count] =
                 preg_replace( '/[<>]/', '',  $ext_emails[$ext_count] );
             } else {
-              if( strlen( $ext_names[$ext_count] ) )
+              if ( mb_strlen ( $ext_names[$ext_count] ) )
                 $ext_names[$ext_count] .= ' ';
 
               $ext_names[$ext_count] .= $j;
@@ -1165,7 +1162,7 @@ if( empty( $error ) ) {
                 $ext_names[$i] .= "[$k]";
             }
           }
-          if( strlen( $ext_emails[$ext_count] )
+          if ( mb_strlen ( $ext_emails[$ext_count] )
               && empty( $ext_names[$ext_count] ) )
             $ext_names[$ext_count] = $ext_emails[$ext_count];
 
@@ -1179,17 +1176,16 @@ if( empty( $error ) ) {
   if( is_array( $ext_names ) && is_array( $ext_emails ) ) {
     $ext_namescnt = count( $ext_names );
     for( $i = 0; $i < $ext_namescnt; $i++ ) {
-      if( strlen( $ext_names[$i] ) ) {
+      if ( mb_strlen ( $ext_names[$i] ) ) {
         if( ! dbi_execute( 'INSERT INTO webcal_entry_ext_user
           ( cal_id, cal_fullname, cal_email ) VALUES ( ?, ?, ? )',
           array( $id, $ext_names[$i],
-            ( strlen( $ext_emails[$i] ) ? $ext_emails[$i] : null ) ) ) )
+            ( mb_strlen ( $ext_emails[$i] ) ? $ext_emails[$i] : null ) ) ) )
           $error = $dberror . dbi_error();
 
         // Send mail notification if enabled.
         // TODO: Move this code into a function...
-        if( $EXTERNAL_NOTIFICATIONS == 'Y' && $SEND_EMAIL != 'N'
-            && strlen( $ext_emails[$i] ) > 0 ) {
+        if ( $EXTERNAL_NOTIFICATIONS === 'Y' && $SEND_EMAIL !== 'N' && mb_strlen ( $ext_emails[$i] ) ) {
           if( ( ! $newevent && isset( $EXTERNAL_UPDATES )
               && $EXTERNAL_UPDATES == 'Y' ) || $newevent ) {
             $fmtdate = ( $timetype == 'T'

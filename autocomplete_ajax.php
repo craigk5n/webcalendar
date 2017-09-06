@@ -68,17 +68,17 @@ $matches = 0;
 if ( $action == 'search' ) {
 /* NOT YET WORKING....
   // Check for quoted phrase
-  $klen = strlen ( $query );
+  $klen = mb_strlen ( $query );
   $phrasedelim = "\\\"";
-  $plen = strlen ( $phrasedelim );
-  if ( substr ( $query, 0, $plen ) == $phrasedelim &&
-    substr ( $query, $klen - $plen ) == $phrasedelim ) {
-    $phrase = substr ( $query, $plen, $klen - ( $plen * 2 ) );
+  $plen = mb_strlen ( $phrasedelim );
+
+  if ( mb_substr ( $query, 0, $plen ) === $phrasedelim && mb_substr ( $query, $klen - $plen ) === $phrasedelim ) {
+    $phrase = mb_substr ( $query, $plen, $klen - ( $plen * 2 ) );
     $words = [$phrase];
   } else {
     // remove starting quote if not end quote found (user is still typing)
-    if ( substr ( $query, 0, $plen ) == $phrasedelim )
-      $query = substr ( $query, 1, $klen - $plen );
+    if ( mb_substr ( $query, 0, $plen ) === $phrasedelim )
+      $query = mb_substr ( $query, 1, $klen - $plen );
     // original (default) behavior
     $words = explode ( ' ', $query );
   }
@@ -117,7 +117,8 @@ if ( $action == 'search' ) {
        . ', we.cal_name', $sql_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
-        $utitle = str_replace ( ' ', '', strtoupper ( $row[1] ) );
+        $utitle = str_replace ( ' ', '', mb_strtoupper ( $row[1] ) );
+
         if ( empty ( $eventTitles[$utitle] ) ) {
           $ret[$matches]['id'] = $row[0];
           $ret[$matches]['name'] = $row[1];

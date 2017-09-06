@@ -39,19 +39,20 @@ if ( $CATEGORIES_ENABLED == 'Y' )
 $date = getIntValue ( 'date' );
 if ( empty ( $date ) )
   $date = date ( 'Ymd' );
-$thisyear = substr ( $date, 0, 4 );
-$thismonth = substr ( $date, 4, 2 );
-$thisday = substr ( $date, 6, 2 );
+
+$thisyear = mb_substr ( $date, 0, 4 );
+$thismonth= mb_substr ( $date, 4, 2 );
+$thisday  = mb_substr ( $date, 6, 2 );
 
 $next = mktime ( 0, 0, 0, $thismonth + 1, 1, $thisyear );
 $nextYmd = date ( 'Ymd', $next );
-$nextyear = substr ( $nextYmd, 0, 4 );
-$nextmonth = substr ( $nextYmd, 4, 2 );
+$nextyear = mb_substr ( $nextYmd, 0, 4 );
+$nextmonth= mb_substr ( $nextYmd, 4, 2 );
 
 $prev = mktime ( 0, 0, 0, $thismonth - 1, 1, $thisyear );
 $prevYmd = date ( 'Ymd', $prev );
-$prevyear = substr ( $prevYmd, 0, 4 );
-$prevmonth = substr ( $prevYmd, 4, 2 );
+$prevyear = mb_substr ( $prevYmd, 0, 4 );
+$prevmonth= mb_substr ( $prevYmd, 4, 2 );
 
 $user    = getValue ( 'user', '[A-Za-z0-9_\.=@,\-]*', true );
 if ( ! empty ( $user ) ) {

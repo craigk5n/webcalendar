@@ -36,8 +36,9 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   WHERE cal_login = ?', [$NONUSER_PREFIX . $name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
+
     // Presuming we are using '_NUC_' as $NONUSER_PREFIX.
-    if ( $name == substr ( $row[0], strlen ( $NONUSER_PREFIX ) ) )
+    if ( $name === mb_substr ( $row[0], mb_strlen ( $NONUSER_PREFIX ) ) )
       echo str_replace ( 'XXX', $name, translate ( 'Duplicate Name XXX', true ) );
   }
 } elseif ( $page == 'register' || $page == 'edit_user' ) {

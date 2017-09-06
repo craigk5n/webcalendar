@@ -1,4 +1,4 @@
-<?php // $Id: catsel.php,v 1.28.2.1 2013/01/24 21:15:09 cknudsen Exp $
+<?php
 include_once 'includes/init.php';
 
 // load user and global cats
@@ -15,13 +15,15 @@ $form = getGetValue ( 'form' );
 $eventcats = explode ( ',', $cats );
 
 $availCatStr = translate ( 'AVAILABLE CATEGORIES' );
-$availCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $availCatStr ) ) / 2 );
-if ( strlen ( $availCatStr ) < 30 )
+$availCatFiller = str_repeat ( '&nbsp;', ( 30 - mb_strlen ( $availCatStr ) ) / 2 );
+
+if ( mb_strlen ( $availCatStr ) < 30 )
   $availCatStr = $availCatFiller . $availCatStr . $availCatFiller;
 
 $entryCatStr = translate ( 'ENTRY CATEGORIES' );
-$entryCatFiller = str_repeat( '&nbsp;', ( 30 - strlen ( $entryCatStr ) ) / 2 );
-if ( strlen ( $entryCatStr ) < 30 )
+$entryCatFiller = str_repeat ( '&nbsp;', ( 30 - mb_strlen ( $entryCatStr ) ) / 2 );
+
+if ( mb_strlen ( $entryCatStr ) < 30 )
   $entryCatStr = $entryCatFiller . $entryCatStr . $entryCatFiller;
 
 print_header( array( 'js/catsel.php/false/' . $form ),
@@ -45,7 +47,7 @@ if ( ! empty ( $categories ) ) {
   foreach ( $categories as $K => $V ) {
     // None is index -1 and needs to be ignored
     if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
-        substr ( $form, 0, 4 ) == 'edit' ) ) {
+        mb_substr ( $form, 0, 4 ) === 'edit' ) ) {
       $tmpStr = $K .
         '" name="' . htmlentities ( $V['cat_name'] ) .
         '">' . htmlentities ( $V['cat_name'] );
@@ -65,12 +67,13 @@ echo '
           <select name="eventcats[]" size="9"  multiple="multiple">
             <option disabled>' . $entryCatStr . '</option>';
 
-if ( strlen ( $cats ) ) {
+if ( mb_strlen ( $cats ) ) {
   foreach ( $eventcats as $K ) {
     // disable if not creator and category is Global
     $show_ast = '';
     $disabled = ( empty ( $categories[abs ( $K )]['cat_owner'] ) &&
-      substr ( $form, 0, 4 ) != 'edit' ? 'disabled' : '' );
+      mb_substr ( $form, 0, 4 ) !== 'edit' ? 'disabled' : '' );
+
     if ( empty ( $categories[abs ( $K )]['cat_owner'] ) ) {
       $show_ast = '*';
     }

@@ -14,7 +14,7 @@ $icons = [];
 
 if ( $d = dir ( $icon_path ) ) {
   while ( false !== ( $entry = $d->read() ) ) {
-    if ( substr ( $entry, -3, 3 ) == 'gif' ) {
+    if ( mb_substr ( $entry, -3 ) === 'gif' ) {
       $data = '';
       // We''ll compare the files to eliminate duplicates.
       $fd = @fopen ( $icon_path . $entry, 'rb' );

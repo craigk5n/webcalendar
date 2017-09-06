@@ -88,17 +88,17 @@ if ( empty ( $error ) ) {
   $errStr = '
     <p>' . translate ( 'Error' ) . ' [';
   $noVarXXX = ']: ' . translate ( 'Variable XXX not found.' ) . '</p>';
-  if ( ! strstr ( $page_template, '${days}' ) )
+  if ( ! mb_strstr ( $page_template, '${days}' ) )
     $error .= $errStr . translate ( 'Page template' )
      . str_replace ( 'XXX', '${days}', $noVarXXX );
 
   // Day template must include ${events}.
-  if ( ! strstr ( $day_template, '${events}' ) )
+  if ( ! mb_strstr ( $day_template, '${events}' ) )
     $error .= $errStr . translate ( 'Day template' )
      . str_replace ( 'XXX', '${events}', $noVarXXX );
 
   // Event template must include ${name}.
-  if ( ! strstr ( $event_template, '${name}' ) )
+  if ( ! mb_strstr ( $event_template, '${name}' ) )
     $error .= $errStr . translate ( 'Event template' )
      . str_replace ( 'XXX', '${name}', $noVarXXX );
 }

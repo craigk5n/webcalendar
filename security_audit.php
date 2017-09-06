@@ -1,4 +1,4 @@
-<?php // $Id: security_audit.php,v 1.13 2010/01/24 10:07:07 bbannon Exp $
+<?php
 /**
  * Description:
  *  This page will take look for possible security issues with
@@ -126,8 +126,8 @@ $isOk = true;
 if ( ! empty( $settings['db_cachedir'] ) && $wcDir != '.' ) {
   $cache = str_replace( '\\', '/', $settings['db_cachedir'] );
   $wcDir = str_replace( '\\', '/', $wcDir );
-  if ( strncmp( $cache, $wcDir, strlen( $wcDir ) ) == 0
-      && strlen( $wcDir ) < strlen( $cache ) ) {
+
+  if ( strncmp ( $cache, $wcDir, mb_strlen ( $wcDir ) ) === 0 && mb_strlen ( $wcDir ) < mb_strlen ( $cache ) ) {
     // Using a webcalendar subdirectory for db cache.
     $isOk = false;
   }
@@ -209,7 +209,7 @@ function is__writable( $path ) {
 //see http://bugs.php.net/bug.php?id=27609
 //see http://bugs.php.net/bug.php?id=30931
 
-  if ( $path{ strlen( $path ) - 1 } == '/' ) // recursively return a temporary file path
+  if ( $path { mb_strlen ( $path ) - 1 } === '/' ) // recursively return a temporary file path
     return is__writable( $path . uniqid( mt_rand() ) . '.tmp' );
   else if ( @is_dir( $path ) )
     return is__writable( $path . '/' . uniqid( mt_rand() ) . '.tmp' );

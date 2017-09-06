@@ -32,7 +32,7 @@ if ( $id > 0 ) {
     dbi_free_result ( $res );
   }
 }
-if ( strpos ( 'EM', $activity_type ) !== false ) {
+if ( mb_strpos ( 'EM', $activity_type ) !== false ) {
   $log_delete = LOG_DELETE;
   $log_reject = LOG_REJECT;
 } else {

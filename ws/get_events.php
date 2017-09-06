@@ -106,13 +106,13 @@ function process_event ( $id, $name, $event_date, $event_time ) {
 // <!-- date range: '."$startdate - $enddate -->\n";
 
 $starttime = mktime ( 0, 0, 0,
-  substr ( $startdate, 4, 2 ),
-  substr ( $startdate, 6, 2 ),
-  substr ( $startdate, 0, 4 ) );
+  mb_substr ( $startdate, 4, 2 ),
+  mb_substr ( $startdate, 6, 2 ),
+  mb_substr ( $startdate, 0, 4 ) );
 $endtime = mktime ( 0, 0, 0,
-  substr ( $enddate, 4, 2 ),
-  substr ( $enddate, 6, 2 ),
-  substr ( $enddate, 0, 4 ) );
+  mb_substr ( $enddate, 4, 2 ),
+  mb_substr ( $enddate, 6, 2 ),
+  mb_substr ( $enddate, 0, 4 ) );
 
 for ( $d = $starttime; $d <= $endtime; $d += 86400 ) {
   $completed_ids = [];

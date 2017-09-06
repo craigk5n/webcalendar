@@ -29,11 +29,7 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/lgpl.html GNU LGPL
- * @version $Id: dbi4php.php,v 1.37 2010/04/07 13:39:08 cknudsen Exp $
  * @package WebCalendar
- *
- * History:
- *  See ChangeLog
  *
  * License:
  *   Copyright (C) 2006  Craig Knudsen
@@ -177,7 +173,7 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
     $_ora_conn_func =
       'OCI' . ( $GLOBALS['db_persistent'] ? 'P' : '' ) . 'Logon';
     $c = $_ora_conn_func( $login, $password,
-      ( strlen( $host ) && strcmp( $host, 'localhost' )
+      ( mb_strlen ( $host ) && strcmp ( $host, 'localhost' )
         ? '(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP) (HOST = '
          . $host . ' ) (PORT = 1521))) (CONNECT_DATA = (SID = ' . $database
          . ')))'
@@ -188,9 +184,9 @@ function dbi_connect( $host, $login, $password, $database, $lazy = true ) {
    $GLOBALS['oracle_connection']     = $c;
    return $c;
   } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 ) {
-    $dbargs = ( strlen( $host ) ? 'host=' . "$host " : '' )
+    $dbargs = ( mb_strlen ( $host ) ? 'host=' . "$host " : '' )
      . 'dbname=' . $database . ' user=' . $login
-     . ( strlen( $password ) ? ' password=' . $password : '' );
+     . ( mb_strlen ( $password ) ? ' password=' . $password : '' );
     $c = ( $GLOBALS['db_persistent']
       ? pg_pconnect( $dbargs ) : pg_connect( $dbargs ) );
     $GLOBALS['postgresql_connection'] = $c;
@@ -676,7 +672,7 @@ function dbi_error() {
   } else
     $ret = 'dbi_error(): ' . translate( 'db_type not defined.' );
 
-  return ( strlen( $ret ) ? $ret : translate( 'Unknown error.' ) );
+  return ( mb_strlen ( $ret ) ? $ret : translate ( 'Unknown error.' ) );
 }
 
 /**
@@ -773,14 +769,14 @@ function dbi_execute( $sql, $params = array(), $fatalOnError = true,
   $prepared = '';
   $offset  =
   $phindex = 0;
-  while( ( $pos = strpos( $sql, '?', $offset ) ) !== false ) {
-    $prepared .= substr( $sql, $offset, $pos - $offset )
+  while ( ( $pos = mb_strpos ( $sql, '?', $offset ) ) !== false ) {
+    $prepared .= mb_substr ( $sql, $offset, $pos - $offset )
      . ( ( is_null( $params[ $phindex ] ) )
       ? "NULL" : ( "'" . dbi_escape_string( $params[ $phindex ] ) . "'" ) );
     $offset = $pos + 1;
     $phindex++;
   }
-  $prepared .= substr( $sql, $offset );
+  $prepared .= mb_substr ( $sql, $offset );
 
   return dbi_query( $prepared, $fatalOnError, $showError );
 }

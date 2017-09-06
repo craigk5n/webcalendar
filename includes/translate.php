@@ -66,7 +66,8 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
 
   while ( ! feof ( $fp ) ) {
     $buffer = trim ( fgets ( $fp, 4096 ) );
-    if ( strlen ( $buffer ) == 0 )
+
+    if ( ! mb_strlen ( $buffer ) )
       continue;
 
     if ( function_exists( 'get_magic_quotes_runtime' )
@@ -78,9 +79,9 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
     str_replace ( ['"', "'"], ['&quot;', '&#39;'], $buffer );
 
     // Skip comments.
-    if ( substr ( $buffer, 0, 1 ) == '#' ) {
-      if ( substr ( $buffer, 0, 7 ) == '# Page:' )
-        $inInstallTrans = ( substr ( $buffer, 9, 7 ) == 'install' );
+    if ( mb_substr ( $buffer, 0, 1 ) === '#' ) {
+      if ( mb_substr ( $buffer, 0, 7 ) === '# Page:' )
+        $inInstallTrans = ( mb_substr ( $buffer, 9, 7 ) === 'install' );
 
       continue;
     }
@@ -89,9 +90,9 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
     if ( $inInstallTrans && ! $new_install )
       continue;
 
-    $pos = strpos ( $buffer, ':' );
-    $abbrev = trim ( substr ( $buffer, 0, $pos ) );
-    $temp = trim ( substr ( $buffer, $pos + 1 ) );
+    $pos   = mb_strpos ( $buffer, ':' );
+    $abbrev= trim ( mb_substr ( $buffer, 0, $pos ) );
+    $temp  = trim ( mb_substr ( $buffer, $pos + 1 ) );
 
     // If the translation is the same as the English text,
     // tools/update_translation.pl should signify this with an "=" sign
@@ -105,7 +106,7 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
   }
   fclose ( $fp );
 
-  if ( stristr ( $in_file, 'english' ) )
+  if ( mb_stristr ( $in_file, 'english' ) )
     ksort ( $translations );
 
   // We want to cache all the non-installation phrases...
@@ -161,7 +162,7 @@ function load_translation_text() {
   if ( empty ( $lang_file ) )
     $lang_file = "translations/English-US.txt";
 
-  $lang_cache = substr ( $lang_file, strrpos ( $lang_file, '/' ) + 1 );
+  $lang_cache = mb_substr ( $lang_file, mb_strrpos ( $lang_file, '/' ) + 1 );
   $cached_base_file =
   $cached_file =
   $cachedir =
@@ -217,8 +218,7 @@ function load_translation_text() {
 
     $can_save = ( is_writable ( $cache_tran_dir ) );
   }
-
-  $new_install = ( ! strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
+  $new_install = ( ! mb_strstr ( $_SERVER['SCRIPT_NAME'], 'install/index.php' ) );
   $translations = [];
 
   // First set default $translations[]
@@ -276,14 +276,15 @@ function get_browser_language ( $pref = false ) {
   else {
     $langs = explode ( ',', $HTTP_ACCEPT_LANGUAGE );
     for ( $i = 0, $cnt = count ( $langs ); $i < $cnt; $i++ ) {
-      $l = strtolower( trim( preg_replace( '/;.*/', '', $langs[$i] ) ) );
+      $l = mb_strtolower ( trim ( preg_replace ( '/;.*/', '', $langs[$i] ) ) );
 
       if ( ! empty( $browser_languages[$l] ) )
         return $browser_languages[$l];
     }
   }
-  return ( strlen ( $HTTP_ACCEPT_LANGUAGE ) && $pref == true
-    ? $HTTP_ACCEPT_LANGUAGE . ' ' . translate ( '(not supported)' )
+  // If "not supported", how do we translate it?
+  return ( mb_strlen ( $HTTP_ACCEPT_LANGUAGE ) && $pref
+    ? $HTTP_ACCEPT_LANGUAGE . ' (not supported)'
     : 'English-US' );
 }
 
@@ -329,7 +330,7 @@ function translate ( $str, $decode = '', $type = '' ) {
       $str = ( $decode
         ? unhtmlentities ( $translations[$str] ) : $translations[$str] );
   }
-  if ( strpos ( strtolower ( $LANGUAGE ), 'english' ) === false ) {
+  if ( mb_stripos ( $LANGUAGE, 'english' ) === false ) {
     // Only translate if not English.
     if ( $type == 'D' ) {
       for ( $i = 0; $i < 12; $i++ ) {
@@ -354,7 +355,7 @@ function translate ( $str, $decode = '', $type = '' ) {
         }
       }
     }
-    if ( $type != '' ) {
+    if ( mb_stripos ( 'DN', $type ) !== false ) {
       // Translate number symbols.
       for ( $i = 0; $i < 10; $i++ ) {
         $tmp = $i . '';
@@ -433,27 +434,24 @@ function define_languages() {
     translate ( 'English' ) => 'English-US', // translate ( 'English-US' )
     translate ( 'Afrikaans' ) => 'Afrikaans',
     translate ( 'Albanian' ) => 'Albanian',
-    translate ( 'Arabic' ) . ' (UTF8)' => 'Arabic_utf8',
+    translate ( 'Arabic' )  => 'Arabic',
     translate ( 'Basque' ) => 'Basque',
     translate ( 'Bulgarian' ) => 'Bulgarian',
     translate ( 'Catalan' ) => 'Catalan',
     translate ( 'Chinese (Simplified/GB2312)' ) => 'Chinese-GB2312',
     translate ( 'Chinese (Traditional/Big5)' ) => 'Chinese-Big5',
-    translate ( 'Croatian' ) . ' (UTF8)' => 'Croatian_utf8',
+    translate ( 'Croatian' ) => 'Croatian',
     translate ( 'Czech' ) => 'Czech',
-    translate ( 'Czech' ) . ' (UTF8)' => 'Czech_utf8',
     translate ( 'Danish' ) => 'Danish',
     translate ( 'Dutch' ) => 'Dutch',
     translate ( 'Elven' ) => 'Elven',
     translate ( 'Estonian' ) => 'Estonian',
     translate ( 'Finnish' ) => 'Finnish',
-    translate ( 'French' ) . ' (UTF8)' => 'French-UTF8',
     translate ( 'French' ) => 'French',
     translate ( 'Galician' ) => 'Galician',
     translate ( 'German' ) => 'German',
-    translate ( 'German' ) . ' (UTF-8)' => 'German_utf8',
     translate ( 'Greek' ) => 'Greek',
-    translate ( 'Hebrew' ) . ' (UTF-8)' => 'Hebrew_utf8',
+    translate ( 'Hebrew' ) => 'Hebrew',
     translate ( 'Holo (Taiwanese)' ) => 'Holo-Big5',
     translate ( 'Hungarian' ) => 'Hungarian',
     translate ( 'Icelandic' ) => 'Icelandic',
@@ -461,19 +459,17 @@ function define_languages() {
     translate ( 'Italian' ) => 'Italian',
     translate ( 'Japanese' ) . ' (EUC-JP)' => 'Japanese-eucjp',
     translate ( 'Japanese' ) . ' (SHIFT JIS)' => 'Japanese-sjis',
-    translate ( 'Japanese' ) . ' (UTF-8)' => 'Japanese',
+    translate ( 'Japanese' ) => 'Japanese',
     translate ( 'Korean' ) => 'Korean',
     translate ( 'Lithuanian' ) => 'Lithuanian',
     translate ( 'Norwegian' ) => 'Norwegian',
     translate ( 'Polish' ) => 'Polish',
     translate ( 'Portuguese' ) => 'Portuguese',
     translate ( 'Portuguese/Brazil' ) => 'Portuguese_BR',
-    translate ( 'Portuguese/Brazil' ) . ' (UTF-8)' => 'Portuguese_BR_utf8',
     translate ( 'Romanian' ) => 'Romanian',
-    translate ( 'Russian' ) . ' (UTF-8)' => 'Russian_utf8',
     translate ( 'Russian' ) => 'Russian',
-    translate ( 'Serbian' ) . ' (UTF-8)' => 'Serbian_utf8',
-    translate ( 'Slovak' ) . ' (UTF-8)' => 'Slovak_utf8',
+    translate ( 'Serbian' ) => 'Serbian',
+    translate ( 'Slovak' ) => 'Slovak',
     translate ( 'Slovenian' ) => 'Slovenian',
     translate ( 'Spanish' ) => 'Spanish',
     translate ( 'Swedish' ) => 'Swedish',

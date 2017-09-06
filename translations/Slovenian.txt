@@ -4,8 +4,7 @@
 # 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id: Slovenian.txt,v 1.9 2008/10/15 18:19:59 bbannon Exp $
-# Translation last updated on 10-14-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -17,7 +16,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: ISO-8859-2
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -53,14 +52,14 @@ Month: mesec
 Year: leto
 
 ########################################
-# Page: approve_entry.php
+# Page: combo.php
 #
 Date: datum
+Today: Danes
 
 ########################################
 # Page: edit_report.php
 #
-Today: Danes
 Next month: Naslednji mesec
 Next year: Naslednje leto
 
@@ -73,7 +72,6 @@ Dec: =
 ########################################
 # Page: includes/functions.php
 #
-WK: Te
 January: Januar
 February: Februar
 March: Marec

@@ -1,4 +1,4 @@
-<?php // $Id: year.php,v 1.72 2010/02/21 08:27:48 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 send_no_cache_header();
 
@@ -38,12 +38,12 @@ $catSelectStr = '';
 if ( ! empty ( $BOLD_DAYS_IN_YEAR ) && $BOLD_DAYS_IN_YEAR == 'Y' ) {
   /* Pre-Load the repeated events for quckier access */
   $repeated_events = read_repeated_events (
-    ( ! empty ( $user ) && strlen ( $user ) ? $user : $login ),
+    ( mb_strlen ( $user ) ? $user : $login ),
     $startdate, $enddate, $cat_id );
 
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events (
-    ( ! empty ( $user ) && strlen ( $user ) ? $user : $login ),
+    ( mb_strlen ( $user ) ? $user : $login ),
     $startdate, $enddate, $cat_id );
   $boldDays = true;
 

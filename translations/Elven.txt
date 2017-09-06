@@ -11,8 +11,7 @@
 #
 # Note:  Elven folk do not use abbreviations much.
 #
-# $Id: Elven.txt,v 1.5 2009/10/27 18:36:50 bbannon Exp $
-# Translation last updated on 10-15-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -71,11 +70,6 @@ No: N'uma
 Account: Quentale
 
 ########################################
-# Page: approve_entry.php
-#
-Time: Luume'
-
-########################################
 # Page: availability.php
 #
 year: atendea
@@ -83,18 +77,19 @@ month: asta
 day: re
 
 ########################################
-# Page: edit_entry.php
+# Page: combo.php
 #
+Time: Luume'
+All: Ilya
 High: Taurn
 Medium: Ened
 Low: N'taurn
-All: Ilya
+Today: A're
 
 ########################################
 # Page: edit_report.php
 #
 Tomorrow: Tul're
-Today: A're
 Yesterday: Tella're
 
 ########################################
@@ -121,52 +116,46 @@ boss: kano
 ########################################
 # Page: includes/date_formats.php
 #
-December: Ringáre
-Dec: Ringáre
-
-########################################
-# Page: includes/dbi4php.php
-#
-write: tengw
+December: RingÃ¡re
+Dec: RingÃ¡re
 
 ########################################
 # Page: includes/functions.php
 #
-WK: ENQUIE
 after: ale'
 before: n'ala
-end: tál
+end: tÃ¡l
 start: mas
 January: Narvinye
-February: Nénime
-March: Súlime
-April: Víresse
-May_: Lótesse
-June: Nárie
+February: NÃ©nime
+March: SÃºlime
+April: VÃ­resse
+May_: LÃ³tesse
+June: NÃ¡rie
 July: Cermie
 August: Urime
 September: Yavannie
 October: Narquelie
-November: Hísime
+November: HÃ­sime
 Jan: Narvinye
-Feb: Nénime
-Mar: Súlime
-Apr: Víresse
-May: Lótesse
-Jun: Nárie
+Feb: NÃ©nime
+Mar: SÃºlime
+Apr: VÃ­resse
+May: LÃ³tesse
+Jun: NÃ¡rie
 Jul: Cermie
 Aug: Urime
 Sep: Yavannie
 Oct: Narquelie
-Nov: Hísime
-Sunday: Tárion
+Nov: HÃ­sime
+Sunday: TÃ¡rion
 Monday: Elenya
 Tuesday: Anarya
 Wednesday: Isilya
 Thursday: Alduya
 Friday: Menelya
 Saturday: Valanya
-Sun: Tárion
+Sun: TÃ¡rion
 Mon: Elenya
 Tue: Anarya
 Wed: Isilya
@@ -193,9 +182,4 @@ WE: Isilya
 TH: Alduya
 FR: Menelya
 SA: Valany
-SU: Tárion
-
-########################################
-# Page: install/index.php
-#
-NOT: IL
+SU: TÃ¡rion

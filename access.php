@@ -1,7 +1,5 @@
 <?php
 /**
- * $Id: access.php,v 1.60.2.1 2012/02/28 15:43:09 cknudsen Exp $
- *
  * This page is used to manage user access rights.
  *
  * It has three different modes:
@@ -100,9 +98,9 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
           ( $view_total > 0 ? $view_total : 0 ),
           ( $edit_total > 0 && $puser != '__public__' ? $edit_total : 0 ),
           ( $approve_total > 0 && $puser != '__public__' ? $approve_total : 0 ),
-          ( strlen( $invite ) ? $invite : 'N' ),
-          ( strlen( $email ) ? $email : 'N' ),
-          ( strlen( $time ) ? $time : 'N' )] ) )
+          ( mb_strlen ( $invite ) ? $invite : 'N' ),
+          ( mb_strlen ( $email ) ? $email : 'N' ),
+          ( mb_strlen ( $time ) ? $time : 'N' )] ) )
       die_miserable_death( str_replace( 'XXX', dbi_error(), $dbErrStr ) );
 
     $saved = true;
@@ -230,7 +228,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
       $show = true;
 
       if( $guser == '__public__'
-          || substr( $guser, 0, 5 ) == $NONUSER_PREFIX ) {
+          || ( mb_strlen ( $NONUSER_PREFIX ) && mb_substr ( $guser, 0, mb_strlen ( $NONUSER_PREFIX ) ) === $NONUSER_PREFIX ) ) {
         switch( $order[$i] ) {
           case ACCESS_ACCESS_MANAGEMENT:
           case ACCESS_ACCOUNT_INFO:
@@ -250,7 +248,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
       if( $show )
         echo print_checkbox ( ['access_' . $order[$i], 'Y',
             access_get_function_description( $order[$i] ),
-            substr( $access, $order[$i], 1 )], 'dito' ) . '<br />';
+            mb_substr ( $access, $order[$i], 1 )], 'dito' ) . '<br />';
 
       if( ( $i + 1 ) % $div == 0 )
         echo '

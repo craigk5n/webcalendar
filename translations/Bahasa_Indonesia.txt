@@ -1,8 +1,7 @@
 # Translated by: Ronny as-salafi <ronny.assalafi@gmail.com>
 # Last update: 28 August 2007
 #
-# $Id: Bahasa_Indonesia.txt,v 1.9 2010/02/21 08:27:49 bbannon Exp $
-# Translation last updated on 10-15-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -46,7 +45,6 @@ Title: KalenderWeb
 ########################################
 # Page: access.php
 #
-Database error: Terjadi kesalahan pada database
 Go: Pergi
 Save: Simpan
 Public Access: Akses Umum
@@ -63,11 +61,6 @@ Private: Pribadi
 #
 Next: Berikutnya
 Previous: Sebelumnya
-
-########################################
-# Page: add_entry.php
-#
-Error adding event: Terjadi kesalahan pada saat menambahkan acara
 
 ########################################
 # Page: admin.php
@@ -104,7 +97,6 @@ server-url-help: Tentukan URL dasar untuk aplikasi. URL ini akan disertakan pada
 Server URL: URL Server
 language-help: Tentukan bahasa yang ingin digunakan.
 Language: Bahasa
-Your browser default language is: Bahasa asali perambah Anda adalah
 None: Tanpa
 Preview: Pratinjau
 custom-script-help: Memperkenankan entri dari teks Javascript atau stylesheet spesial yang akan disisipkan ke dalam bagian "head" HTML dari setiap halaman.
@@ -246,15 +238,6 @@ Unapproved Public Events: Acara Umum yang Belum Disetujui
 Administrative Tools: Peralatan Administratif
 
 ########################################
-# Page: approve_entry.php
-#
-Hello: Halo
-The subject was: Subyeknya adalah
-The description is: Keterangannya adalah
-Date: Tanggal
-Time: Waktu
-
-########################################
 # Page: assistant_edit.php
 #
 Admin mode: Modus Admin
@@ -281,41 +264,44 @@ Remove: Hapus
 Cancel: Batal
 
 ########################################
-# Page: del_entry.php
-#
-An appointment has been canceled for you by: Sebuah perjanjian telah dibatalkan untuk Anda oleh
-
-########################################
-# Page: docadd.php
+# Page: combo.php
 #
 Description: Keterangan
+Date: Tanggal
+Time: Waktu
+Priority: Prioritas
+Access: Akses
+Created by: Dibuat oleh
+Updated: Dimutakhirkan
+Participants: Partisipan
+Brief Description: Keterangan Singkat
+Full Description: Keterangan Lengkap
+Category: Kategori
+All: Semua
+Error: Terjadi Kesalahan
+High: Tinggi
+Medium: Sedang
+Low: Rendah
+Today: Hari ini
+Add Entry: Tambah Entri
+Unnamed Event: Acara Belum Bernama
+pm: =
+am: =
 
 ########################################
 # Page: edit_entry.php
 #
-am: =
-pm: =
 days: hari
 hours: jam
 minutes: menit
 Edit Entry: Edit Entri
-Add Entry: Tambah Entri
 Details: Perincian
-Participants: Partisipan
 Repeat: Pengulangan
 brief-description-help: Ketikkan sebuah keterangan singkat (sekitar 20 karakter) mengenai acara disini. Teks ini akan ditampilkan sebagai judul acara ketika seorang pengguna melihat kalender.
-Brief Description: Keterangan Singkat
 full-description-help: Ketikkan rincian lengkap mengenai acara ini disini. Teks ini dapat dilihat pada saat seorang pengguna melihat acaranya.
-Full Description: Keterangan Lengkap
 access-help: Menentukan tingkat akses dari acara.<br /> <i>Umum</i>: Siapa saja dapat melihat rincian lengkap mengenai acara.  <br /><i>Pribadi</i>: Pengguna lain dapat melihat bahwa Anda mempunyai sebuah entri untuk tanggal dan waktu tersebut, tetapi mereka tidak dapat melihat rincian acaranya.
-Access: Akses
 priority-help: Menentukan prioritas acara. Acara-acara dengan prioritas tinggi akan ditampilkan dalam huruf tebal.
-Priority: Prioritas
-High: Tinggi
-Medium: Sedang
-Low: Rendah
 category-help: Menentukan kategori untuk acara.
-Category: Kategori
 URL: =
 date-help: Menentukan tanggal dari acara.
 Untimed event: Acara tanpa jadwal waktu
@@ -340,33 +326,16 @@ repeat-end-date-help: Menentukan tanggal akhir pengulangan sebuah acara.
 Use end date: Gunakan tanggal akhir
 repeat-frequency-help: Menentukan seberapa sering acara harus diulangi. Nilai asali 1 menyatakan bahwa acara ini harus terjadi setiap waktu. Menentukan nilai 2 akan membuat acara terjadi setiap pekan lain (jika <i>Tipe Pengulangan</i> ditetapkan ke <i>Mingguan</i>), setiap bulan lain (jika <i>Tipe Pengulangan</i> ditetapkan ke <i>Bulanan</i>), dsb.
 Frequency: Frekuensi
-All: Semua
 Send Reminder: Kirim Pengingat
 Delete entry: Hapus entri
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: Sebuah perjanjian telah dibuat untuk Anda oleh
-An appointment has been updated by: Sebuah perjanjian telah dimutakhirkan oleh
 The following conflicts with the suggested time: Yang berikut ini konflik dengan waktu yang ditunjukkan
-Please look on: Silakan lihat
-to accept or reject this appointment: untuk menerima atau menolak perjanjian ini
-to view this appointment: untuk melihat perjanjian ini
 Scheduling Conflict: Konflik Penjadwalan
 Your suggested time of: Waktu yang Anda tunjukkan untuk
 conflicts with the following existing calendar entries: telah konflik dengan entri-entri kalender yang sudah ada berikut ini
-
-########################################
-# Page: edit_layer.php
-#
-Add Layer: Tambah Lapisan
-Edit Layer: Edit Lapisan
-Source: Sumber
-Duplicates: Duplikat
-Show layer events that are the same as your own: Perlihatkan lapisan acara yang sama seperti milik Anda
-Add to My Calendar: Tambahkan ke Kalender Saya
-Delete layer: Hapus layer
 
 ########################################
 # Page: edit_nonusers.php
@@ -380,9 +349,13 @@ First Name: Nama Depan
 Last Name: Nama Belakang
 
 ########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Terjadi kesalahan pada database
+
+########################################
 # Page: edit_remotes_handler.php
 #
-Error: Terjadi Kesalahan
 Import Results: Hasil Pengimporan
 Events successfully imported: Acara-acara telah berhasil diimpor
 Errors: Kesalahan-kesalahan
@@ -392,7 +365,6 @@ There was an error parsing the import file or no events were returned.: Telah te
 # Page: edit_report.php
 #
 Tomorrow: Besok
-Today: Hari ini
 Yesterday: Kemarin
 Day before yesterday: Kemarin lusa
 Next week: Pekan depan
@@ -431,11 +403,6 @@ Template variables: Variabel template
 Page template: Template halaman
 Day template: Template hari
 Event template: Template acara
-
-########################################
-# Page: edit_report_handler.php
-#
-Variable N not found: Variabel N tidak ditemukan
 
 ########################################
 # Page: edit_template.php
@@ -484,8 +451,6 @@ Unnamed Group: Grup Belum Bernama
 Add Group: tambah Grup
 Edit Group: Edit Grup
 Group name: Nama grup
-Updated: Dimutakhirkan
-Created by: Dibuat oleh
 
 ########################################
 # Page: group_edit_handler.php
@@ -528,12 +493,8 @@ repeat-day-help: Menentukan pada hari apa acara harus diulangi. Pilihan ini digu
 #
 Import: Impor
 Palm Desktop: =
-This form will allow you to import entries from the Palm Desktop Datebook.: Formulir ini akan memperkenankan Anda untuk mengimpor entri-entri dari Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Ini terletak dalam direktori Palm Anda dalam <tt>datebook/datebook.dat</tt> dalam sebuah sub-direktori yang dinamai berdasarkan nama pengguna Anda.
 The following entries will not be imported: Entri-entri berikut ini tidak akan diimpor
 Entries older than the current date: Entri-entri yang lebih lama dari tanggal hari ini
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Semua yang diimpor dari Palm akan ditimpa selama pengimporan selanjutnya (terkecuali tanggal acara telah terlewati).
-Therefore, updates should be made in the Palm Desktop.: Dengan demikian, pemutakhiran harus dilakukan di Palm Desktop.
 vCal: =
 The following formats have been tested: Format-format berikut ini telah diuji coba
 Enabling: Dinyalakan
@@ -552,8 +513,10 @@ Clicking the Edit Layers link in the admin section at the bottom of the page wil
 The text color of the new layer that will be displayed in your calendar.: Warna teks dari lapisan yang baru yang akan ditampilkan dalam kalender Anda.
 Disabling: Dimatikan
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Tekan tautan Matikan Lapisak dalam bagian admin pada bagian bawah halaman untuk mematikan lapisan.
+Duplicates: Duplikat
 If checked, events that are duplicates of your events will be shown.: Jika dicentang, maka acara-acara yang merupakan duplikat dari acara-acara Anda akan ditampilkan.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Tekan tautan Nyalakan Lapisan dalam bagian admin pada bagian bawah halaman untuk menyalakan lapisan.
+Source: Sumber
 Specifies the user that you would like to see displayed in your calendar.: Menentukan pengguna yang Anda inginkan untuk ditampilkan dalam kalende Anda.
 
 ########################################
@@ -587,10 +550,13 @@ The import file contained no data.: Berksa pengimporan tidak berisi data
 ########################################
 # Page: layers.php
 #
-Layer: Lapisan
+Delete layer: Hapus layer
 Edit layer: Edit lapisan
+Layer: Lapisan
 Disable Layers: Matikan Lapisan
 Add layer: Tambahkan lapisan
+Add Layer: Tambah Lapisan
+Edit Layer: Edit Lapisan
 
 ########################################
 # Page: list_unapproved.php
@@ -605,14 +571,13 @@ Reject this entry?: Tolak entri ini?
 # Page: login-app.php
 #
 Login: Log Masuk
-Access public calendar: Klik disini untuk mengakses kalender umum
-calendar: kalender
 cookies-note: <b>Catatan:</b> Aplikasi ini mengharuskan dukungan kuki pada perambah Anda dinyalakan.
 
 ########################################
 # Page: login.php
 #
 Invalid login: Log masuk taksahih
+Access public calendar: Klik disini untuk mengakses kalender umum
 
 ########################################
 # Page: nonusers.php
@@ -636,21 +601,13 @@ Preview delete: Pratinjau Penghapusan
 Are you sure you want to delete events for: Anda yakin ingin menghapus acara-acara untuk
 
 ########################################
-# Page: reject_entry.php
-#
-An appointment has been rejected by: Sebuah perjanjian telah ditolak oleh
-
-########################################
 # Page: report.php
 #
-cont.: bersambung
 Approved: Disetujui
 Deleted: Dihapus
 Rejected: Ditolak
 Waiting for approval: Menunggu persetujuan
 Unknown: Tidak Diketahui
-Click here: Klik disini
-to manage reports for the Public Access calendar: untuk mengelola laporan untuk kalender Akses Umum
 Add new report: Tambahkan laporan baru
 Manage Reports: Kelola Laporan
 
@@ -729,6 +686,7 @@ External User: Pengguna Eksternal
 Approve/Confirm entry: Setujui/Konfirmasi entri
 Reject entry: Tolak entri
 Set category: Tetapkan kategori
+Add to My Calendar: Tambahkan ke Kalender Saya
 Copy entry: Salin entri
 This will delete this entry for all users.: Ini akan menghapus entri ini untuk semua pengguna.
 Edit entry: Edit entri
@@ -749,6 +707,7 @@ Palm Pilot: =
 # Page: week_details.php
 #
 New Entry: Entri Baru
+cont.: bersambung
 
 ########################################
 # Page: includes/date_formats.php
@@ -803,7 +762,6 @@ Add N hours to: Tambahkan N jam ke
 Subtract N hours from: Kurangi N jam dari
 same as: sama seperti
 server time: waktu server
-Error approving event: Terjadi kesalahan pada saat sedang menyetujui acara
 Sunday: Ahad
 Monday: Senin
 Tuesday: Selasa
@@ -879,7 +837,6 @@ no such user: pengguna tidak dikenali
 ########################################
 # Page: includes/xcal.php
 #
-Unnamed Event: Acara Belum Bernama
 Event Imported: Acara Telah Diimpor
 
 ########################################
@@ -901,7 +858,7 @@ Please add a participant: Silakan tambahkan seorang partisipan
 You have not entered a valid time of day: Anda tidak mengetikkan sebuah waktu hari yang sahih
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/js/edit_remotes.php
 #
 Invalid color: Warna taksahih
 

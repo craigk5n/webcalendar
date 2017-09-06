@@ -5,7 +5,7 @@ foreach ( $_SESSION as $key => $value ) {
 }
 if ( ! empty ( $dummy ) ) {
   foreach ( $dummy as $key => $value ) {
-    if ( substr ( $key, 0, 6 ) == 'webcal' )
+    if ( mb_substr ( $key, 0, 6 ) === 'webcal' )
       unset ( $_SESSION[$key] );
   }
 }
@@ -140,8 +140,8 @@ else {
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we also delete the
   // cookie with the trailing slash removed.
-  if ( substr ( $cookie_path, -1 ) == '/' )
-    SetCookie ( 'webcalendar_session', '', 0, substr ( $cookie_path, 0, -1 ) );
+  if ( mb_substr ( $cookie_path, -1 ) === '/' )
+    setcookie ( 'webcalendar_session', '', 0, mb_substr ( $cookie_path, 0, -1 ) );
 }
 echo send_doctype ( $appStr ) . ( $logout ? '' : '
     <script>

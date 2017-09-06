@@ -109,12 +109,12 @@ function export_pilot_csv( $id ) {
     if ( $row[4] < 0 ) {
       echo
       '1,', // untimed
-      substr ( $row[3], 0, 4 ), '-', // beginDate (str: YYYY-MM-DD) + beginTime
-      substr ( $row[3], 4, 2 ), '-',
-      substr ( $row[3], 6, 2 ), ',00:00:00,',
-      substr ( $row[3], 0, 4 ), '-', // endDate + endTime
-      substr ( $row[3], 4, 2 ), '-',
-      substr ( $row[3], 6, 2 ), ',00:00:00,';
+      mb_substr ( $row[3], 0, 4 ), '-', // beginDate (str: YYYY-MM-DD) + beginTime
+      mb_substr ( $row[3], 4, 2 ), '-',
+      mb_substr ( $row[3], 6, 2 ), ',00:00:00,',
+      mb_substr ( $row[3], 0, 4 ), '-', // endDate + endTime
+      mb_substr ( $row[3], 4, 2 ), '-',
+      mb_substr ( $row[3], 6, 2 ), ',00:00:00,';
     } else {
       echo '0,', // untimed
       pilot_date_time ( $row[3], $row[4], 0, ',' ), ',', // beginDate,beginTime
@@ -171,9 +171,9 @@ function export_pilot_csv( $id ) {
       echo $repType, ','; // repeatType
       if ( $ext[2] ) {
         echo '0,', // repeatForever
-        substr ( $ext[2], 0, 4 ), '-', // repeatEnd
-        substr ( $ext[2], 4, 2 ), '-',
-        substr ( $ext[2], 6, 2 ), ' 00:00:00,';
+        mb_substr ( $ext[2], 0, 4 ), '-', // repeatEnd
+        mb_substr ( $ext[2], 4, 2 ), '-',
+        mb_substr ( $ext[2], 6, 2 ), ' 00:00:00,';
       } else
         echo '1,,'; // repeatForever,repeatEnd
 
@@ -185,7 +185,7 @@ function export_pilot_csv( $id ) {
         case 3: // monthly/weekday
           // repeatDay (0..6=Sun..Sat 1st, 7..13 2nd, 14..20 3rd,
           // 21..27 4th, 28-34 last week)
-          echo floor ( substr ( $row[3], 6, 2 ) / 7 ) * 7 + date ( 'w',
+          echo floor ( mb_substr ( $row[3], 6, 2 ) / 7 ) * 7 + date ( 'w',
             date_to_epoch ( $row[3] ) ), ",0,0\n";
           break;
         case 1: // daily
@@ -218,21 +218,22 @@ if ( $format != 'ical' && $format != 'vcal' && $format != 'pilot-csv' &&
   die_miserable_death ( 'Invalid format "' . htmlspecialchars($format) . '"' );
 $id = getValue ( 'id', '-?[0-9]+', true );
 
-$use_all_dates = getPostValue ( 'use_all_dates' );
-if ( strtolower ( $use_all_dates ) != 'y' )
-  $use_all_dates = '';
-
+$cat_filter     = getPostValue ( 'cat_filter' );
+$include_deleted= getPostValue ( 'include_deleted' );
 $include_layers = getPostValue ( 'include_layers' );
-if ( strtolower ( $include_layers ) != 'y' )
-  $include_layers = '';
+$use_all_dates  = getPostValue ( 'use_all_dates' );
 
-$include_deleted = getPostValue ( 'include_deleted' );
-if ( strtolower ( $include_deleted ) != 'y' )
+if ( $cat_filter === 0 )
+  $cat_filter = '';
+
+if ( mb_strtolower ( $include_deleted ) !== 'y' )
   $include_deleted = '';
 
-$cat_filter = getPostValue ( 'cat_filter' );
-if ( $cat_filter == 0 )
-  $cat_filter = '';
+if ( mb_strtolower ( $include_layers ) !== 'y' )
+  $include_layers = '';
+
+if ( mb_strtolower ( $use_all_dates ) !== 'y' )
+  $use_all_dates = '';
 
 $endday = getValue ( 'endday', '-?[0-9]+', true );
 $endmonth = getValue ( 'endmonth', '-?[0-9]+', true );
@@ -254,7 +255,8 @@ if ( empty ( $id ) )
   $id = 'all';
 
 $outputName = 'webcalendar-' . "$login-$id";
-if ( substr ( $format, 0, 4 ) == 'ical' ) {
+
+if ( mb_substr ( $format, 0, 4 ) === 'ical' ) {
   transmit_header ( 'text/calendar', $outputName . '.ics' );
   export_ical ( $id );
 } elseif ( $format == 'vcal' ) {

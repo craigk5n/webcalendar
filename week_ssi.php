@@ -1,4 +1,4 @@
-<?php // $Id: week_ssi.php,v 1.48 2010/02/06 16:30:35 bbannon Exp $
+<?php
 /**
  * This page is intended to be used as a server-side include for another page.
  * (Such as an intranet home page or something.)
@@ -16,11 +16,10 @@ $WebCalendar->setLanguage();
 
 $user = '__none__'; // Don't let user specify in URL.
 
-if ( strlen ( $login ) == 0 ) {
+if ( ! mb_strlen ( $login ) ) {
   if ( $single_user == 'Y' )
     $login = $user = $single_user_login;
-  else
-  if ( strlen ( $webcalendar_login ) > 0 )
+  elseif ( mb_strlen ( $webcalendar_login ) )
     $login = $user = $webcalendar_login;
   else {
     echo '<span style="color:#F00;"><span class="bold colon">' .
@@ -35,9 +34,9 @@ $view = 'week';
 $today = time();
 
 if ( ! empty ( $date ) && ! empty ( $date ) ) {
-  $thisyear = substr ( $date, 0, 4 );
-  $thismonth = substr ( $date, 4, 2 );
-  $thisday = substr ( $date, 6, 2 );
+  $thisyear = mb_substr ( $date, 0, 4 );
+  $thismonth= mb_substr ( $date, 4, 2 );
+  $thisday  = mb_substr ( $date, 6, 2 );
 } else {
   $thisday = ( empty ( $day ) || $day == 0 ? date ( 'd', $today ) : $day );
   $thismonth = ( empty ( $month ) || $month == 0

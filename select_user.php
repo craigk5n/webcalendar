@@ -1,4 +1,4 @@
-<?php // $Id: select_user.php,v 1.36 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 print_header();
 echo '
@@ -18,8 +18,7 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
       ? array_merge ( $nonusers, $userlist )
       : array_merge ( $userlist, $nonusers ) );
   }
-
-  if ( strstr ( $STARTVIEW, 'view' ) )
+  if ( mb_strstr ( $STARTVIEW, 'view' ) )
     $url = 'month.php';
   else {
     $url = $STARTVIEW;

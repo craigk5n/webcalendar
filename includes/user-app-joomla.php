@@ -166,13 +166,13 @@ function app_update_session($sid) {
 
 
 function app_cookie_name( $live_site='' ) {
-  if( substr( $live_site, 0, 7 ) == 'http://' ) {
-    $hash = md5( 'site' . substr( $live_site, 7 ) );
-  } elseif( substr( $live_site, 0, 8 ) == 'https://' ) {
-    $hash = md5( 'site' . substr( $live_site, 8 ) );
-  } else {
-    $hash = md5( 'site' . $live_site );
-  }
+  if ( mb_substr ( $live_site, 0, 7 ) === 'http://' )
+    $hash = md5 ( 'site' . mb_substr ( $live_site, 7 ) );
+  elseif ( mb_substr ( $live_site, 0, 8 ) === 'https://' )
+    $hash = md5 ( 'site' . mb_substr ( $live_site, 8 ) );
+  else
+    $hash = md5 ( 'site' . $live_site );
+
   return $hash;
 }
 // Searches application database for $app_admin_gid and returns an array of the group members.
@@ -271,7 +271,7 @@ function user_load_variables ( $login, $prefix ) {
     return  $cached_user_var[$login][$prefix];
   $cached_user_var = [];
 
-  if ($NONUSER_PREFIX && substr ($login, 0, strlen ($NONUSER_PREFIX) ) == $NONUSER_PREFIX) {
+  if ( $NONUSER_PREFIX && mb_substr ( $login, 0, mb_strlen ( $NONUSER_PREFIX ) ) === $NONUSER_PREFIX ) {
     nonuser_load_variables ( $login, $prefix );
     return true;
   }

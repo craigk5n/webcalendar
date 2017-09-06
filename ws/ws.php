@@ -133,7 +133,8 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
 <event>
   <id>' . $id . '</id>
   <name>' . ws_escape_xml ( $name ) . '</name>' . ( ! empty ( $SERVER_URL ) ? '
-  <url>' . $SERVER_URL . ( substr ( $SERVER_URL, -1, 1 ) == '/' ? '' : '/' )
+  <url>' . $SERVER_URL .
+    ( mb_substr ( $SERVER_URL, -1 ) === '/' ? '' : '/' )
      . 'view_entry.php?id=' . $id . '</url>' : '' ) . '
   <description>' . ws_escape_xml ( $description ) . '</description>
   <dateFormatted>' . date_to_str ( $event_date ) . '</dateFormatted>
@@ -164,7 +165,8 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
   $out .= ( ! empty ( $DISABLE_ACCESS_FIELD ) && $DISABLE_ACCESS_FIELD == 'Y' ? '
   <access>'
      . ( $row[8] == 'P' ? translate ( 'Public' ) : translate ( 'Confidential' ) )
-     . '</access>' : '' ) . ( ! strlen ( $single_user_login ) ? '
+     . '</access>' : '' ) .
+    ( ! mb_strlen ( $single_user_login ) ? '
   <createdBy>' . $row[0] . '</createdBy>' : '' ) . '
   <updateDate>' . date_to_str ( $row[3] ) . '</updateDate>
   <updateTime>' . display_time ( $row[4] ) . '</updateTime>';
@@ -177,7 +179,7 @@ function ws_print_event_xml ( $id, $event_date, $extra_tags = '' ) {
     $extra_descr = $site_extras[$i][1];
     $extra_type = $site_extras[$i][2];
     if ( ! empty ( $extras[$extra_name]['cal_name'] ) ) {
-      $tag = strtolower ( preg_replace ( '/[^A-Za-z0-9]+/', '',
+      $tag = mb_strtolower ( preg_replace ( '/[^A-Za-z0-9]+/', '',
           translate ( $extra_descr ) ) );
       $tagname = str_replace ( '"', '', $extra_name );
 

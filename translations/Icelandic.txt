@@ -3,8 +3,7 @@
 # Translated by: Kristofer Arnar Einarsson kristofer@kristofer.com
 # Last update: 18 August 2000
 #
-# $Id: Icelandic.txt,v 1.35 2008/10/15 18:19:59 bbannon Exp $
-# Translation last updated on 10-14-2008
+# Translation last updated on 09-03-2017
 
 
 ################################################################################
@@ -50,15 +49,15 @@ Title: VefDagatal
 #
 Go: Velja
 Save: Vista
-Admin: Stjórnandi
+Admin: StjÃ³rnandi
 Public: Allir
-Confidential: Trúnağarmál
+Confidential: TrÃºnaÃ°armÃ¡l
 Private: Einka
 
 ########################################
 # Page: add_entry.php
 #
-confidential: trúnağarmál
+confidential: trÃºnaÃ°armÃ¡l
 private: einka
 
 ########################################
@@ -67,36 +66,36 @@ private: einka
 Select: Velja
 Day: Dagur
 Week: Vika
-Month: Mánuğur
-Year: Ár
+Month: MÃ¡nuÃ°ur
+Year: Ãr
 Settings: Stillingar
 Colors: Litir
 Document background: Bakgrunnur
 Document title: Titill
-Table cell background: Bakgrunnur dálka
-Table cell background for current day: Bakgrunnur dálka núverandi dags
-Help: Hjálp
-language-help: Tilgreinir tungumál.
-Language: Tungumál
+Table cell background: Bakgrunnur dÃ¡lka
+Table cell background for current day: Bakgrunnur dÃ¡lka nÃºverandi dags
+Help: HjÃ¡lp
+language-help: Tilgreinir tungumÃ¡l.
+Language: TungumÃ¡l
 None: Engin
-display-week-starts-on: Tilgreinir hvort vikan byrjar á sunnudegi eğa mánudegi. Ef mánudagur er valinn munu vikunúmerin á ISO viku númer.
-Week starts on: Vika byrjar á
-time-format-help: Tilgreinir á hvağa tímasniğ á ağ nota:<br /><i>12 tíma:</i> Birtir tíma sem 3fh, 8:30eh, o.s.frv.<br /><i>24 tíma:</i> Birtir tíma sem 300, 2030, o.s.frv.
+display-week-starts-on: Tilgreinir hvort vikan byrjar Ã¡ sunnudegi eÃ°a mÃ¡nudegi. Ef mÃ¡nudagur er valinn munu vikunÃºmerin Ã¡ ISO viku nÃºmer.
+Week starts on: Vika byrjar Ã¡
+time-format-help: Tilgreinir Ã¡ hvaÃ°a tÃ­masniÃ° Ã¡ aÃ° nota:<br /><i>12 tÃ­ma:</i> Birtir tÃ­ma sem 3fh, 8:30eh, o.s.frv.<br /><i>24 tÃ­ma:</i> Birtir tÃ­ma sem 300, 2030, o.s.frv.
 Time format: Klukka
-12 hour: 12 tíma
-24 hour: 24 tíma
+12 hour: 12 tÃ­ma
+24 hour: 24 tÃ­ma
 Duration: Lengd
-work-hours-help: Tilgreinir vinnutíma sem á ağ birta.
-Work hours: Vinnutími
-From: Frá
+work-hours-help: Tilgreinir vinnutÃ­ma sem Ã¡ aÃ° birta.
+Work hours: VinnutÃ­mi
+From: FrÃ¡
 to: til
-preferred-view-help: Tilgreinir sjálfgefiğ val (Dagur, vika, mánuğur eğa ár).
+preferred-view-help: Tilgreinir sjÃ¡lfgefiÃ° val (Dagur, vika, mÃ¡nuÃ°ur eÃ°a Ã¡r).
 Preferred view: Birting
-display-week-number-help: Tilgreinir hvort vikunúmer (1-52) eigi ağ birtast í mánağar og viku vali.
-Display week number: Birta númer viku
-display-unapproved-help: Tilgreinir hvort birta eigi ósamşykkt atriği í dagatali.<br /> Ef "Já", eru ósamşykkt atriği birt á dagatali (í öğrum lit).<br /> Ef "Nei", verğur ağ samşykkta atriği til şess ağ şau birtist á dagatali.
-Display unapproved: Birta ósamşykkt
-Yes: Já
+display-week-number-help: Tilgreinir hvort vikunÃºmer (1-52) eigi aÃ° birtast Ã­ mÃ¡naÃ°ar og viku vali.
+Display week number: Birta nÃºmer viku
+display-unapproved-help: Tilgreinir hvort birta eigi Ã³samÃ¾ykkt atriÃ°i Ã­ dagatali.<br /> Ef "JÃ¡", eru Ã³samÃ¾ykkt atriÃ°i birt Ã¡ dagatali (Ã­ Ã¶Ã°rum lit).<br /> Ef "Nei", verÃ°ur aÃ° samÃ¾ykkta atriÃ°i til Ã¾ess aÃ° Ã¾au birtist Ã¡ dagatali.
+Display unapproved: Birta Ã³samÃ¾ykkt
+Yes: JÃ¡
 No: Nei
 
 ########################################
@@ -107,136 +106,120 @@ Users: Notendur
 Account: Reikningur
 
 ########################################
-# Page: approve_entry.php
-#
-Hello: Halló
-Date: Dags
-Time: Tími
-
-########################################
 # Page: category.php
 #
-Delete: Eyğa
-Are you sure you want to delete this entry?: Viltu örugglega eyğa şessu atriği?
+Delete: EyÃ°a
+Are you sure you want to delete this entry?: Viltu Ã¶rugglega eyÃ°a Ã¾essu atriÃ°i?
 
 ########################################
-# Page: docadd.php
+# Page: combo.php
 #
-Description: Lısing
+Description: LÃ½sing
+Date: Dags
+Time: TÃ­mi
+Priority: Forgangur
+Access: AÃ°gangur
+Created by: Gert af
+Updated: UppfÃ¦rt
+Participants: ÃÃ¡tttakendur
+Brief Description: Stutt skrÃ½ring
+Full Description: Full skÃ½ring
+Error: Villa
+High: HÃ¡r
+Medium: MeÃ°al
+Low: LÃ¡gur
+Add Entry: BÃ¦ta viÃ°
+Unnamed Event: Ã“nafngreint atriÃ°i
+pm: eh
+am: fh
 
 ########################################
 # Page: edit_entry.php
 #
-am: fh
-pm: eh
-minutes: mínútur
-Edit Entry: Breyta atriği
-Add Entry: Bæta viğ
-Participants: Şátttakendur
-brief-description-help: Hér á ağ vera stutt lısing (u.ş.b 20 stafir) atriğis. Şetta mun vera einkenni atriğis í dagatali.
-Brief Description: Stutt skrıring
-full-description-help: Hér á ağ vera full lısing atriğis. Upplısingarnar er hægt ağ sjá şegar atriği er skoğağ.
-Full Description: Full skıring
-access-help: Tilgreinir ağgang ağ atriği.<br /> <i>Allir</i>: Allir geta séğ fulla lısingu atriğis.<br /><i>Trúnağarmál</i>: Ağrir sjá ağ viğkomandi hefur atriği á tilgreindum tíma en sjá ekkert um efniğ.
-Access: Ağgangur
-priority-help: Tilgreinir forgang atriğis. Atriği meğ háan forgang eru birt meğ feitu letri.
-Priority: Forgangur
-High: Hár
-Medium: Meğal
-Low: Lágur
-date-help: Tilgreinir dagsetningu atriğis.
-time-help: Tilgreinir tíma atriğis.<br /><i>Şessu sviği má sleppa.</i>
-duration-help: Tilgreinir áætlağa lengd (í mínútum) atriğis.<br /><i>Şessu sviği má sleppa.</i>
-participants-help: Fá fram şá sem koma ağ atriği.
-repeat-type-help: Velja hversu oft endurtaka á atburğinn.<i>Mánağarlega (eftir degi)</i> gerir kleift ağ endurtaka atriği fyrsta mánudag mánağar, şriğja şriğjudag o.s.frv. <i>Mánağarlega (eftir dags)</i> gerir kleift ağ endurtaka atriği á sama mánağardegi.
+minutes: mÃ­nÃºtur
+Edit Entry: Breyta atriÃ°i
+brief-description-help: HÃ©r Ã¡ aÃ° vera stutt lÃ½sing (u.Ã¾.b 20 stafir) atriÃ°is. Ãetta mun vera einkenni atriÃ°is Ã­ dagatali.
+full-description-help: HÃ©r Ã¡ aÃ° vera full lÃ½sing atriÃ°is. UpplÃ½singarnar er hÃ¦gt aÃ° sjÃ¡ Ã¾egar atriÃ°i er skoÃ°aÃ°.
+access-help: Tilgreinir aÃ°gang aÃ° atriÃ°i.<br /> <i>Allir</i>: Allir geta sÃ©Ã° fulla lÃ½singu atriÃ°is.<br /><i>TrÃºnaÃ°armÃ¡l</i>: AÃ°rir sjÃ¡ aÃ° viÃ°komandi hefur atriÃ°i Ã¡ tilgreindum tÃ­ma en sjÃ¡ ekkert um efniÃ°.
+priority-help: Tilgreinir forgang atriÃ°is. AtriÃ°i meÃ° hÃ¡an forgang eru birt meÃ° feitu letri.
+date-help: Tilgreinir dagsetningu atriÃ°is.
+time-help: Tilgreinir tÃ­ma atriÃ°is.<br /><i>Ãessu sviÃ°i mÃ¡ sleppa.</i>
+duration-help: Tilgreinir Ã¡Ã¦tlaÃ°a lengd (Ã­ mÃ­nÃºtum) atriÃ°is.<br /><i>Ãessu sviÃ°i mÃ¡ sleppa.</i>
+participants-help: FÃ¡ fram Ã¾Ã¡ sem koma aÃ° atriÃ°i.
+repeat-type-help: Velja hversu oft endurtaka Ã¡ atburÃ°inn.<i>MÃ¡naÃ°arlega (eftir degi)</i> gerir kleift aÃ° endurtaka atriÃ°i fyrsta mÃ¡nudag mÃ¡naÃ°ar, Ã¾riÃ°ja Ã¾riÃ°judag o.s.frv. <i>MÃ¡naÃ°arlega (eftir dags)</i> gerir kleift aÃ° endurtaka atriÃ°i Ã¡ sama mÃ¡naÃ°ardegi.
 Daily: Daglega
 Weekly: Vikulega
-Monthly: Mánağarlega
+Monthly: MÃ¡naÃ°arlega
 by day: eftir degi
 by date: eftir dags
-Yearly: Árlega
-repeat-end-date-help: Tilgreinir dagsetningu sem endurtaka á atriği şangağ til.
+Yearly: Ãrlega
+repeat-end-date-help: Tilgreinir dagsetningu sem endurtaka Ã¡ atriÃ°i Ã¾angaÃ° til.
 Use end date: Loka dags
-repeat-frequency-help: Tilgreinir hversu oft á ağ endurtaka atriği. 1 er sjálfgefiğ fyrir hvert skipti. Meğ şví ağ velja 2 er hægt ağ láta atriği gerast ağra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern mánuğ (ef valin <i>Endurtekning</i> er <i>Mánağarlega</i>), o.s.frv.
-Frequency: Tíğni
-Delete entry: Eyğa atriği
-You are not authorized to edit this entry.: Şú hefur ekki réttindi til şess ağ breyta şessu atriği
+repeat-frequency-help: Tilgreinir hversu oft Ã¡ aÃ° endurtaka atriÃ°i. 1 er sjÃ¡lfgefiÃ° fyrir hvert skipti. MeÃ° Ã¾vÃ­ aÃ° velja 2 er hÃ¦gt aÃ° lÃ¡ta atriÃ°i gerast aÃ°ra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern mÃ¡nuÃ° (ef valin <i>Endurtekning</i> er <i>MÃ¡naÃ°arlega</i>), o.s.frv.
+Frequency: TÃ­Ã°ni
+Delete entry: EyÃ°a atriÃ°i
+You are not authorized to edit this entry.: ÃÃº hefur ekki rÃ©ttindi til Ã¾ess aÃ° breyta Ã¾essu atriÃ°i
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: Nır fundur hefur veriğ búinn til af
-The following conflicts with the suggested time: Eftirfarandi stangast á viğ tíma
-Please look on: Vinsamlegast skoğiğ
-to accept or reject this appointment: til ağ stağfesta eğa hafna şessum fundi
-to view this appointment: til ağ skoğa fund
+The following conflicts with the suggested time: Eftirfarandi stangast Ã¡ viÃ° tÃ­ma
 Scheduling Conflict: =
-Your suggested time of: Uppgefinn tími
-conflicts with the following existing calendar entries: stangast á viğ eftirfarandi atriği
+Your suggested time of: Uppgefinn tÃ­mi
+conflicts with the following existing calendar entries: stangast Ã¡ viÃ° eftirfarandi atriÃ°i
 
 ########################################
 # Page: edit_nonusers.php
 #
-Add User: Nır notandi
+Add User: NÃ½r notandi
 Edit User: Breyta notanda
 First Name: Fornafn
 Last Name: Eftirnafn
 
 ########################################
-# Page: edit_remotes_handler.php
-#
-Error: Villa
-
-########################################
 # Page: edit_report.php
 #
-Current User: Núverandi notandi
+Current User: NÃºverandi notandi
 
 ########################################
 # Page: edit_user.php
 #
 Username: Notandanafn
-E-mail address: Tölvupóstur
-Password: Lykilorğ
+E-mail address: TÃ¶lvupÃ³stur
+Password: LykilorÃ°
 again: aftur
-Change Password: Breyta lykilorği
-New Password: Nıtt lykilorğ
+Change Password: Breyta lykilorÃ°i
+New Password: NÃ½tt lykilorÃ°
 Set Password: Breyta
 
 ########################################
 # Page: edit_user_handler.php
 #
-The passwords were not identical.: Lykilorğin passa ekki saman
-You have not entered a password.: Lykilorğ vantar
+The passwords were not identical.: LykilorÃ°in passa ekki saman
+You have not entered a password.: LykilorÃ° vantar
 
 ########################################
 # Page: export.php
 #
 Export: Flytja
-Export format: Sniğ til ağ flytja á
+Export format: SniÃ° til aÃ° flytja Ã¡
 Start date: Byrjun dags
 End date: Endir dags
-Modified since: Breytt síğan
-
-########################################
-# Page: group_edit.php
-#
-Updated: Uppfært
-Created by: Gert af
+Modified since: Breytt sÃ­Ã°an
 
 ########################################
 # Page: help_admin.php
 #
-colors-help: Alla liti á ağ skilgreina meğ "#RRGGBB" hex sniği şar sem "RR" er hex gildiğ fyrir rauğan, "GG" er hex gildi fyrir grænan, og "BB" er hex gildi fyrir bláan.
+colors-help: Alla liti Ã¡ aÃ° skilgreina meÃ° "#RRGGBB" hex sniÃ°i Ã¾ar sem "RR" er hex gildiÃ° fyrir rauÃ°an, "GG" er hex gildi fyrir grÃ¦nan, og "BB" er hex gildi fyrir blÃ¡an.
 
 ########################################
 # Page: help_edit_entry.php
 #
-Adding/Editing Calendar Entries: Bæta viğ/Eyğa atriğum í dagatali
+Adding/Editing Calendar Entries: BÃ¦ta viÃ°/EyÃ°a atriÃ°um Ã­ dagatali
 Repeat Type: Tegund endurtekningar
 Repeat End Date: Lok endurtekningar
 Repeat Day: Endurtekning
-repeat-day-help: Tilgreinir á hvağa vikudegi á ağ endurtaka atriği. Şetta á ağeins viğ um şegar valin <i>Endurtekning</i> er <i>Vikulega</i>.
+repeat-day-help: Tilgreinir Ã¡ hvaÃ°a vikudegi Ã¡ aÃ° endurtaka atriÃ°i. Ãetta Ã¡ aÃ°eins viÃ° um Ã¾egar valin <i>Endurtekning</i> er <i>Vikulega</i>.
 
 ########################################
 # Page: help_index.php
@@ -246,19 +229,19 @@ Help Index: Efnisyfirlit
 ########################################
 # Page: list_unapproved.php
 #
-Approve/Confirm: Samşykkja/Stağfesta
+Approve/Confirm: SamÃ¾ykkja/StaÃ°festa
 Reject: Hafna
-View this entry: Skoğa
-Approve this entry?: Samşykkja?
-Reject this entry?: Hafna şessu atriği?
+View this entry: SkoÃ°a
+Approve this entry?: SamÃ¾ykkja?
+Reject this entry?: Hafna Ã¾essu atriÃ°i?
 
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: Şú verğur ağ slá inn notandanafn og lykilorğ
-Save login via cookies so I dont have to login next time.: Vista upplısingar meğ kökum
-Login: Skrá inn
-cookies-note: <b>Athugiğ:</b> Kökur verğa ağ vera virkar
+You must enter a login and password.: ÃÃº verÃ°ur aÃ° slÃ¡ inn notandanafn og lykilorÃ°
+Save login via cookies so I dont have to login next time.: Vista upplÃ½singar meÃ° kÃ¶kum
+Login: SkrÃ¡ inn
+cookies-note: <b>AthugiÃ°:</b> KÃ¶kur verÃ°a aÃ° vera virkar
 
 ########################################
 # Page: pref.php
@@ -268,20 +251,20 @@ Save Preferences: Vista stillingar
 ########################################
 # Page: report.php
 #
-This event is confidential.: Şetta er trúnağarmál
-Rejected: Hafnağ
+This event is confidential.: Ãetta er trÃºnaÃ°armÃ¡l
+Rejected: HafnaÃ°
 
 ########################################
 # Page: search.php
 #
 Search: Leit
-Keywords: Leitarorğ
+Keywords: LeitarorÃ°
 
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: Şú verğur ağ slá inn amk eitt leitarorğ
-Search Results: Niğurstağa leitar
+You must enter one or more search keywords.: ÃÃº verÃ°ur aÃ° slÃ¡ inn amk eitt leitarorÃ°
+Search Results: NiÃ°urstaÃ°a leitar
 match found: fannst
 matches found: fundust
 No matches found: Ekkert fannst
@@ -289,27 +272,27 @@ No matches found: Ekkert fannst
 ########################################
 # Page: select_user.php
 #
-View Another Users Calendar: Skoğa dagatal annarra
+View Another Users Calendar: SkoÃ°a dagatal annarra
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: táknar stjórnanda
-Add New User: Bæta nıjum notanda viğ
+denotes administrative user: tÃ¡knar stjÃ³rnanda
+Add New User: BÃ¦ta nÃ½jum notanda viÃ°
 
 ########################################
 # Page: view_entry.php
 #
-Approve/Confirm entry: Samşykkja/Stağfesta atriği
-Reject entry: Hafna atriği
-This will delete this entry for all users.: Atriği verğur eytt hjá öllum notendum.
-Edit entry: Breyta atriği
+Approve/Confirm entry: SamÃ¾ykkja/StaÃ°festa atriÃ°i
+Reject entry: Hafna atriÃ°i
+This will delete this entry for all users.: AtriÃ°i verÃ°ur eytt hjÃ¡ Ã¶llum notendum.
+Edit entry: Breyta atriÃ°i
 Palm Pilot: =
 
 ########################################
 # Page: week_details.php
 #
-New Entry: Nıtt atriği
+New Entry: NÃ½tt atriÃ°i
 
 ########################################
 # Page: includes/access.php
@@ -325,73 +308,71 @@ Dec: Des
 ########################################
 # Page: includes/functions.php
 #
-Printer Friendly: Prentvænt
-Generate printer-friendly version: Búa til prentvæna útgáfu
-January: Janúar
-February: Febrúar
+Printer Friendly: PrentvÃ¦nt
+Generate printer-friendly version: BÃºa til prentvÃ¦na ÃºtgÃ¡fu
+January: JanÃºar
+February: FebrÃºar
 March: Mars
-April: Apríl
-May_: Maí
-June: Júní
-July: Júlí
-August: Ágúst
+April: AprÃ­l
+May_: MaÃ­
+June: JÃºnÃ­
+July: JÃºlÃ­
+August: ÃgÃºst
 September: =
-October: Október
-November: Nóvember
+October: OktÃ³ber
+November: NÃ³vember
 Jan: =
 Feb: =
 Mar: =
 Apr: =
-May: Maí
-Jun: Jún
-Jul: Júl
-Aug: Ágú
+May: MaÃ­
+Jun: JÃºn
+Jul: JÃºl
+Aug: ÃgÃº
 Sep: =
 Oct: Okt
-Nov: Nóv
+Nov: NÃ³v
 The following error occurred: Eftirfarandi villa kom upp
-You are not authorized.: Şú hefur ekki heimild
-Error approving event: Villa viğ samşykkt atriğis
+You are not authorized.: ÃÃº hefur ekki heimild
 Sunday: Sunnudagur
-Monday: Mánudagur
-Tuesday: Şriğjudagur
-Wednesday: Miğvikudagur
+Monday: MÃ¡nudagur
+Tuesday: ÃriÃ°judagur
+Wednesday: MiÃ°vikudagur
 Thursday: Fimmtudagur
-Friday: Föstudagur
+Friday: FÃ¶studagur
 Saturday: Laugardagur
 Sun: =
-Mon: Mán
-Tue: Şri
-Wed: Miğ
+Mon: MÃ¡n
+Tue: Ãri
+Wed: MiÃ°
 Thu: Fim
-Fri: Fös
+Fri: FÃ¶s
 Sat: Lau
 
 ########################################
 # Page: includes/trailer.php
 #
-My Calendar: Dagataliğ mitt
-Add New Entry: Bæta viğ
-Logout: Skrá út
-Back to My Calendar: Aftur í mitt dagatal
-Go to: Fara í
+My Calendar: DagataliÃ° mitt
+Add New Entry: BÃ¦ta viÃ°
+Logout: SkrÃ¡ Ãºt
+Back to My Calendar: Aftur Ã­ mitt dagatal
+Go to: Fara Ã­
 
 ########################################
 # Page: includes/translate.php
 #
-event: atburğur
+event: atburÃ°ur
 
 ########################################
 # Page: includes/xcal.php
 #
-MO: MÁ
-TU: ŞR
+MO: MÃ
+TU: ÃR
 WE: MI
 TH: FI
-FR: FÖ
+FR: FÃ–
 SA: L
 SU: =
-Unnamed Event: Ónafngreint atriği
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -399,21 +380,25 @@ Unnamed Event: Ónafngreint atriği
 Notification: Tilkynning
 
 ########################################
-# Page: includes/js/admin.php
-#
-Invalid color for document background.: Ólöglegur litur í bakgrunni
-Invalid color for document title.: Ólöglegur litur í titli
-Invalid color for table cell background.: Ólöglegur litur í bakgrunni taflna
-Invalid color for table cell background for today.: Ólöglegur litur í bakgrunni taflna núverandi dags
-Color format should be RRGGBB.: Form lita á ağ vera '#RRGGBB'
-
-########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Stutta lısingu vantar
-You have not entered a valid time of day: Rangur tími sleginn inn
+You have not entered a Brief Description: Stutta lÃ½singu vantar
+You have not entered a valid time of day: Rangur tÃ­mi sleginn inn
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Color format should be RRGGBB.: Form lita Ã¡ aÃ° vera '#RRGGBB'
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Ã“lÃ¶glegur litur Ã­ bakgrunni
+Invalid color for document title.: Ã“lÃ¶glegur litur Ã­ titli
+Invalid color for table cell background.: Ã“lÃ¶glegur litur Ã­ bakgrunni taflna
+Invalid color for table cell background for today.: Ã“lÃ¶glegur litur Ã­ bakgrunni taflna nÃºverandi dags
 
 ########################################
 # Page: includes/menu/index.php
 #
-Unapproved Events: Ósamşykkt atriği
+Unapproved Events: Ã“samÃ¾ykkt atriÃ°i

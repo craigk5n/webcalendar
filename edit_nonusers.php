@@ -1,4 +1,4 @@
-<?php // $Id: edit_nonusers.php,v 1.29 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 print_header( array( 'js/translate.js.php' ),
   '<script type="text/javascript" src="includes/js/edit_nonusers.js"></script>',
@@ -31,9 +31,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
     $id_display = $nid . '
       <input type="hidden" name="nid" value="' . $nid . '" />';
     $button = translate ( 'Save' );
-        $buttonAction = 'Save';
-   // $nonusertemp_login = substr ( $nonusertemp_login,
-   //   strlen ( $NONUSER_PREFIX ) );
+    $buttonAction = 'Save';
   } else
     $id_display = '
       <input type="text" name="nid" id="calid" size="20" '

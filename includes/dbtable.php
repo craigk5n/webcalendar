@@ -71,9 +71,9 @@ function dbtable_to_html ( $tablear, $valuesar, $action = '', $formname = '',
 
     if ( $tablear[$i]['type'] == 'dbdate' ) {
       // '2007-12-31'
-      $y = substr ( $valuesar[$i], 0, 4 );
-      $m = substr ( $valuesar[$i], 5, 2 );
-      $d = substr ( $valuesar[$i], 8, 2 );
+      $y = mb_substr ( $valuesar[$i], 0, 4 );
+      $m = mb_substr ( $valuesar[$i], 5, 2 );
+      $d = mb_substr ( $valuesar[$i], 8, 2 );
     }
 
     $ret .= '
@@ -242,9 +242,9 @@ function dbtable_html_list ( $tablear, $tablename, $href, $fields,
             $val = date_to_str ( $row[$i], '', 1, 1 );
           elseif ( $tablear[$ind]['type'] == 'dbdate' )
             $val = date_to_str ( sprintf ( "%04d%02d%02d",
-                substr ( $row[$i], 0, 4 ),
-                substr ( $row[$i], 5, 2 ),
-                substr ( $row[$i], 8, 2 ) ), '', 1, 1 );
+                mb_substr ( $row[$i], 0, 4 ),
+                mb_substr ( $row[$i], 5, 2 ),
+                mb_substr ( $row[$i], 8, 2 ) ), '', 1, 1 );
           else
             $val = htmlentities ( $row[$i] );
 

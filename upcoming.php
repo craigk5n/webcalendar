@@ -1,4 +1,4 @@
-<?php // $Id: upcoming.php,v 1.97.2.5 2013/01/24 21:15:09 cknudsen Exp $
+<?php
 /**
  * Description:
  * Show a list of upcoming events (and possibly tasks).
@@ -221,17 +221,23 @@ function print_upcoming_event ( $e, $date ) {
     echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTimeTS() )
       . '">' . $e->getEndDateTimeTS() . "</abbr>\n";
     echo '<span class="description">' . $e->getDescription() . "</span>\n";
-    if ( strlen ( $e->getLocation() ) > 0 )
+
+    if ( mb_strlen ( $e->getLocation () ) )
     echo '<span class="location">' . $e->getLocation() . "</span>\n";
+
     $categories = get_categories_by_id ( $e->getId(), $username );
     $category = implode ( ', ', $categories);
-    if ( strlen( $category ) > 0 )
+
+    if ( mb_strlen ( $category ) )
       echo '<span class="categories">' . htmlentities ( $category ) . "</span>\n";
-    if ( strlen ( $e->getUrl() ) > 0 )
+
+    if ( mb_strlen ( $e->getUrl () ) )
       echo '<span class="url">' . $e->getUrl() . "</span>\n";
+
     $rrule = export_recurrence_ical( $e->getId() );
-    if ( strlen ( $rrule ) > 6 )
-      echo '<span class="rrule">' . substr ( $rrule, 6 ) . "</span>\n";
+
+    if ( mb_strlen ( $rrule ) > 6 )
+      echo '<span class="rrule">' . mb_substr ( $rrule, 6 ) . "</span>\n";
   }
 
   if ( $showTime ) {  //show event time if requested (default=don't show)
@@ -380,42 +386,37 @@ if ( $error == '' ) {
       $cat_id = $x;
     }
   }
-
     $x = getGetValue ( 'upcoming_title', true );
     if ( ! empty ( $x ) ) {
       $upcoming_title = $x;
     }
-
     $x = getGetValue ( 'showMore', true );
     if ( strlen( $x ) > 0 ) {
       $showMore= $x;
     }
-
     $x = getGetValue ( 'showTime', true );
     if ( strlen( $x ) > 0 ) {
       $showTime= $x;
     }
-
     $x = getGetValue ( 'showTitle', true );
     if ( strlen( $x ) > 0 ) {
       $showTitle = $x;
     }
-
   if ( $load_layers ) {
     load_user_layers ( $username );
   }
-
   //load_user_categories();
 
   // Calculate date range
   $date = getValue ( 'date', '-?[0-9]+', true );
-  if ( empty ( $date ) || strlen ( $date ) != 8 ) {
+
+  if ( empty ( $date ) || mb_strlen ( $date ) !== 8 ) {
     // If no date specified, start with today
     $date = date ( 'Ymd' );
   }
-  $thisyear = substr ( $date, 0, 4 );
-  $thismonth = substr ( $date, 4, 2 );
-  $thisday = substr ( $date, 6, 2 );
+  $thisyear = mb_substr ( $date, 0, 4 );
+  $thismonth= mb_substr ( $date, 4, 2 );
+  $thisday  = mb_substr ( $date, 6, 2 );
 
   $startDate = mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear );
 
@@ -547,7 +548,8 @@ if ( ! empty ( $error ) ) {
   echo "</body></html>";
 
   //restore previous working directory before exit
-  if (strlen($save_current_working_dir)) chdir($save_current_working_dir);
+  if ( mb_strlen ( $save_current_working_dir ) )
+    chdir ( $save_current_working_dir );
 
   exit;
 }
@@ -609,6 +611,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( $name_of_this_file, $PHP_SELF ) ) {
 }
 
 //restore previous working directory before exit
-if (strlen($save_current_working_dir)) chdir($save_current_working_dir);
+if ( mb_strlen ( $save_current_working_dir ) )
+  chdir ( $save_current_working_dir );
 
 ?>

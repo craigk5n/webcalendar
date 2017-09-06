@@ -13,7 +13,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: access.php,v 1.54 2011/07/12 19:45:13 rjones6061 Exp $
  * @package WebCalendar
  */
 
@@ -382,7 +381,7 @@ function access_can_access_function( $function, $user = '' ) {
   assert( 'isset( $function )' );
 
   $access = access_load_user_functions( $user );
-  $yesno = substr( $access, $function, 1 );
+  $yesno = mb_substr ( $access, $function, 1 );
 
   if( empty( $yesno ) )
     $yesno = get_default_function_access( $function, $user );
@@ -428,10 +427,10 @@ function access_can_view_page( $page = '', $user = '' ) {
   $page = basename( $page );
 
   // Handle special cases for publish.php and freebusy.php.
-  if( substr( $page, -3 ) == 'ics' )
+  if ( mb_substr ( $page, -3 ) === 'ics' )
     $page = 'publish.php';
 
-  if( substr( $page, -3 ) == 'ifb' )
+  if ( mb_substr ( $page, -3 ) === 'ifb' )
     $page = 'freebusy.php';
 
   // First, check list of exceptions to our rules.
@@ -454,7 +453,7 @@ function access_can_view_page( $page = '', $user = '' ) {
 
   // If we did not find a page id, then this is also a WebCalendar bug.
   // (Someone needs to add another entry in the $page_lookup[] array.)
-  $yesno  = substr( $access, $page_id, 1 );
+  $yesno = mb_substr ( $access, $page_id, 1 );
 
   // No setting found. Use default values.
   if( empty( $yesno ) )
