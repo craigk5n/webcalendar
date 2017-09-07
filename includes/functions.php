@@ -5507,7 +5507,7 @@ function send_doctype ( $doc_title = '' ) {
   if ( empty ( $lang ) )
     $lang = 'en';
 
-  $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+  $charset = ( empty ( $LANGUAGE ) ? 'utf-8' : translate ( 'charset' ) );
 
   return '<?xml version="1.0" encoding="' . $charset . '"?' . '>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
