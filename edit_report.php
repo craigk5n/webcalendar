@@ -27,7 +27,7 @@ include_once 'includes/init.php';
 load_user_categories();
 
 $adding_report = false;
-$charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+$charset = ( empty ( $LANGUAGE ) ? 'utf-8' : translate ( 'charset' ) );
 $checked = ' checked="checked"';
 $error =
  ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' || $login == '__public__'

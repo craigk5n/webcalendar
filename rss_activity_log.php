@@ -93,7 +93,7 @@ if ( ! $is_admin || ( access_is_enabled() && !
   die_miserable_death ( print_not_auth (2) );
 
 
-$charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+$charset = ( empty ( $LANGUAGE ) ? 'utf-8' : translate ( 'charset' ) );
 // This should work ok with RSS, may need to hardcode fallback value.
 $lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
   ? $lang : $LANGUAGE );

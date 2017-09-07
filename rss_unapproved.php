@@ -112,7 +112,7 @@ if ( $user == '' )
   $user = $login;
 
 
-$charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+$charset = ( empty ( $LANGUAGE ) ? 'utf-8' : translate ( 'charset' ) );
 // This should work ok with RSS, may need to hardcode fallback value.
 $lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
   ? $lang : $LANGUAGE );

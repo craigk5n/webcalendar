@@ -44,7 +44,6 @@
  *
  * We do not include unapproved events in the RSS feed.
  *
- *
  * TODO
  * Add other RSS 2.0 options such as media.
  * Add <managingEditor>: dan@spam_me.com (Dan Deletekey)
@@ -229,7 +228,7 @@ if ( $allow_repeats == true )
 /* Pre-load the non-repeating events for quicker access */
 $events = read_events ( $username, $startTime, $endTime, $cat_id );
 
-$charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+$charset = ( empty ( $LANGUAGE ) ? 'utf-8' : translate ( 'charset' ) );
 // This should work ok with RSS, may need to hardcode fallback value.
 $lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
   ? $lang : $LANGUAGE );
