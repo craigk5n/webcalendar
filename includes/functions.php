@@ -2031,6 +2031,9 @@ EOT;
  *
  * @return  HTML for Meta Tag.
  */
+// Craig. This is only ever called from print_header('',$HeadX).
+// It could be combined into function send_doctype(), before <title>.
+// Unless you have other plans for it?
 function generate_refresh_meta() {
   global $AUTO_REFRESH, $AUTO_REFRESH_TIME, $REQUEST_URI;
 
@@ -3947,8 +3950,7 @@ function load_global_settings() {
     FROM webcal_config' );
   for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
     $row = $rows[$i];
-    $setting = $row[0];
-    $GLOBALS[$setting] = $value = $row[1];
+    $GLOBALS[$row[0]] = $row[1];
   }
 
   // Set SERVER TIMEZONE.
@@ -5504,16 +5506,20 @@ function send_doctype ( $doc_title = '' ) {
   if ( empty ( $lang ) )
     $lang = 'en';
 
-  $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
+  $charset = ( empty ( $LANGUAGE ) ? 'utf-8' : translate ( 'charset' ) );
 
-  return '<?xml version="1.0" encoding="' . $charset . '"?' . '>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
-   . $lang . '">
+// Craig. This is the major part of converting to HTML5.
+// The rest:
+//    changing " />" to ">" - on "<br />" "<input... />", etc.
+//    removing "<!-- <![CDATA[" and "//]]> -->"
+//    simpifying the other !DOCTYPE lines that don't call send_doctype().
+// can be done later.
+
+  return '<!DOCTYPE html>
+<html lang="' . $lang . '">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
-   . '" />' . ( empty ( $doc_title ) ? '' : '
+    <meta charset="' . $charset . '" />' .
+    ( empty ( $doc_title ) ? '' : '
     <title>' . $doc_title . '</title>' );
 }
 
@@ -6186,7 +6192,28 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
   } //if $description
   return $ret . ( empty ( $site_extras ) ? '' : $site_extras ) . "</dl>\n";
 }
+// Craig. Several places in the code call fopen(),fget(),fclose()
+// then strip php open/close and comments.
+// and trim()
+// This would replace them.
+/**
+ * Read a file into an array.
+ *
+ * param  string  name of file
+ * param  bool    strip comments or not
+ */
+function file2array ( $file, $nocomments = 0 ) {
+  $ret = [];
+  foreach ( file ( $file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES ) as $l ) {
+    // Strip php open/close and comments?
+    if ( $nocomments && preg_match ( '/^\s*(<\?|#|\/\*|\*|\?>)/', $l ) )
+      continue;
 
+    // Trim and compress whitespace
+    $ret[] = preg_replace ( ['/\s\s+/', '/^\s+/', '/\s+$/'], [' '], $l );
+  }
+  return $ret;
+}
 /**
  * Formats site_extras for display according to their type.
  *
