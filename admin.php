@@ -89,8 +89,7 @@ $res = dbi_execute ( 'SELECT cal_setting, cal_value FROM webcal_config' );
 
 if ( $res ) {
   while ( $row = dbi_fetch_row ( $res ) ) {
-    $setting = $row[0];
-    $s[$setting] = $value = $row[1];
+    $s[$row[0]] = $row[1];
   }
   dbi_free_result ( $res );
 }
