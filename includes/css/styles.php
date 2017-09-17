@@ -136,12 +136,14 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 /* ":root" matches top-level, usually "html". */
 ?>
 :root {
-<?php /* Leave font-size as "px" here and "rem" should scale properly everywhere else. */ ?>
   --def-font-size: 16px;
   --def-font-family: sans-serif;
+  --def-line-height: 1.15;
 
   --box-default-color: #888888;
 
+  --basefontsize: <?php echo $GLOBALS['BASE_FONT_SIZE']; ?>;
+  --baselineheight: <?php echo $GLOBALS['BASE_LINE_HEIGHT']; ?>;
   --bgcolor: <?php echo $GLOBALS['BGCOLOR']?>;
   --bgimage: <?php echo$GLOBALS['BGIMAGE']; ?>;
   --bgrepeat: <?php echo$GLOBALS['BGREPEAT']; ?>;

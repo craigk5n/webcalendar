@@ -1,9 +1,9 @@
-<?php // $Id: default_config.php,v 1.75 2009/11/22 16:47:47 bbannon Exp $
+<?php
 /**
  * The file contains a listing of all the current WebCalendar config settings
  * and their default values.
  */
-$webcalConfig = array(
+$webcalConfig = [
   'ADD_LINK_IN_VIEWS' => 'N',
   'ADMIN_OVERRIDE_UAC' => 'Y',
   'ALLOW_ATTACH' => 'N',
@@ -26,6 +26,8 @@ $webcalConfig = array(
   'APPROVE_ASSISTANT_EVENT' => 'Y',
   'AUTO_REFRESH' => 'N',
   'AUTO_REFRESH_TIME' => '0',
+  'BASE_FONT_SIZE'                   => '16px',
+  'BASE_LINE_HEIGHT'                 => '1.15',
   'BGCOLOR' => '#fff',
   'BGIMAGE' => '',
   'BGREPEAT' => 'repeat fixed center',
@@ -92,10 +94,14 @@ $webcalConfig = array(
   'LIMIT_APPTS' => 'N',
   'LIMIT_APPTS_NUMBER' => '6',
   'LIMIT_DESCRIPTION_SIZE' => 'N',
+  'MAX_DESCRIPTION_SIZE'             => '1024', // Or, we have to change the table field size.
   'MENU_DATE_TOP' => 'Y',
   'MENU_ENABLED' => 'Y',
   'MENU_THEME' => 'default',
+  'MINIMUM_PHP_VERSION',             => '5.3.0', // Craig. Is this what we're currently going for? And are there minimums for Apache or MySQL or anything else?
   'MYEVENTS' => '#006000',
+  'NEXTMONTHBG'                      => '#D0DDD0', // These 2 for users who want to differentiate
+  'PREVMONTHBG'                      => '#DDD0D0',
   'NONUSER_AT_TOP' => 'Y',
   'NONUSER_ENABLED' => 'Y',
   'OTHERMONTHBG' => '#d0d0d0',
@@ -157,7 +163,7 @@ $webcalConfig = array(
   'WEEKNUMBER' => '#f63',
   'WORK_DAY_END_HOUR' => '17',
   'WORK_DAY_START_HOUR' => '8'
-  );
+  ];
 
 /**
  * db_load_config (needs description)

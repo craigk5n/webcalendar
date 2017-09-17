@@ -5,9 +5,6 @@
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  *
- * @version $Id: styles.css,v 1.39 2010/10/20 01:28:21 cknudsen Exp $
- * hmmm... How does the version line work on github?
- *
  * @package WebCalendar
  */
 
@@ -34,7 +31,9 @@ body {
 body{
   background-color: var(--bgcolor);
   color: var(--textcolor);
-  font: var(--def-font-size)/1.5 var(--def-font-family);
+/* Leave font-size as "px" here and "rem" should scale properly everywhere else. */
+/* Embedded "var(--one,var(--two),default)" are fall backs. The first !empty() is used. */
+  font:var(--basefontsize,var(--def-font-size),16px)/var(--lineheight,var(--def-line-height),1.15) var(--fonts,var(--def-font-family));
 }
 a {
   color: var(--textcolor);
@@ -447,8 +446,8 @@ a.matrix img {
   text-decoration:none;
   visibility:hidden;
   z-index:20;
-  border-radius:8px;
   -moz-border-radius:8px;
+       border-radius:8px;
   box-shadow: 5px 5px 5px var(--box-default-color);
 }
 .popup dl,
