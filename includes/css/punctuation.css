@@ -27,6 +27,9 @@ blockquote::after {
 .ellipsis {
   text-overflow: ellipsis;
 }
+.fullstop::after {
+  content: '. ';
+}
 ._hyphen::before {
   content: '-';
 }
