@@ -81,16 +81,16 @@ if ( empty ( $friendly ) ) {
 } else
   $unapprovedStr = $printerStr = '';
 
-$yr_rows = 3;
-/* TODO: Move $yr_rows = 3 to webcal_config as default.
+$YEAR_ROWS = 3;
+/* TODO: Move $YEAR_ROWS = 3 to webcal_config as default.
  * Add to webcal_user_prefs for each user.
  */
-$yr_cols = intval ( 12 / $yr_rows );
+$yr_cols = intval ( 12 / $YEAR_ROWS );
 $m = 1;
 
 $gridOmonths = '';
 
-for ( $r = 1; $r <= $yr_rows; $r++ ) {
+for ( $r = 1; $r <= $YEAR_ROWS; $r++ ) {
   $gridOmonths .= '        <tr>';
 
   for( $c = 1; $c <= $yr_cols; $c++, $m++ ) {
