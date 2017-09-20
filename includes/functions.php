@@ -4082,8 +4082,6 @@ function load_template ( $login, $type ) {
       }
     }
   }
-
-
   // Strip leading and trailing white space in file name candidate.
   $file = preg_replace ('/^\s*/', '', $ret);
   $file = preg_replace ('/\s*$/', '', $file);
@@ -4097,7 +4095,6 @@ function load_template ( $login, $type ) {
     $ret = ob_get_contents();
     ob_end_clean();
   }
-
   return $ret;
 }
 
@@ -5508,13 +5505,6 @@ function send_doctype ( $doc_title = '' ) {
 
   $charset = ( empty ( $LANGUAGE ) ? 'utf-8' : translate ( 'charset' ) );
 
-// Craig. This is the major part of converting to HTML5.
-// The rest:
-//    changing " />" to ">" - on "<br />" "<input... />", etc.
-//    removing "<!-- <![CDATA[" and "//]]> -->"
-//    simpifying the other !DOCTYPE lines that don't call send_doctype().
-// can be done later.
-
   return '<!DOCTYPE html>
 <html lang="' . $lang . '">
   <head>
@@ -6192,10 +6182,6 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
   } //if $description
   return $ret . ( empty ( $site_extras ) ? '' : $site_extras ) . "</dl>\n";
 }
-// Craig. Several places in the code call fopen(),fget(),fclose()
-// then strip php open/close and comments.
-// and trim()
-// This would replace them.
 /**
  * Read a file into an array.
  *
