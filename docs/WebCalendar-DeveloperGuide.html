@@ -1,84 +1,11 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<title>WebCalendar Developer Guide</title>
-<style>
-body {
-  background-color: #FFFFFF;
-  font-family: Arial, Helvetica, sans-serif;
-}
-a {
-  text-decoration: none;
-}
-dt {
-  font-weight: bold;
-  margin-left: 25px;
-  margin-top: 20px;
-}
-.valid {
-  border-width: 0px;
-}
-pre {
-  font-family: courier, monospace;
-  font-size: 14px;
-  border: 1px solid #0000FF;
-  background-color: #EEEEFF;
-  padding: 4px;
-  margin-left: 25px;
-  margin-right: 25px;
-}
-tr {
-  background-color: #606080;
-  color: #F0F0F0;
-}
-td {
-  vertical-align: top;
-}
-th {
-  background-color: #000000;
-}
-.colorheader {
-  background-color: #000000;
-  color: #FFFFFF;
-  margin-left: 3px;
-  margin-right: 3px;
-  padding: 2px;
-}
-.newwin {
-  border-width: 0px;
-}
-.tip {
-  font-weight: bold;
-  background-color: #FFFF00;
-  border: 1px solid #000000;
-  padding: 1px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-right: 10px;
-}
-.note {
-  font-weight: bold;
-  background-color: blue;
-  color: #FFFFFF;
-  border: 1px solid #000000;
-  padding: 2px;
-}
-hr {
-  margin-bottom: 7px;
-}
-h2 {
-  background-color: #191970;
-  color: #FFFFFF;
-  padding: 5px;
-}
-.top {
-  text-align: right;
-}
-</style>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WebCalendar Developer Guide</title>
+    <link href="../includes/css/docs.css" rel="stylesheet">
 </head>
-<body>
+<body id="guide">
 <h1>WebCalendar Developer Guide</h1>
 
 <h2>Table of Contents</h2>
@@ -93,7 +20,7 @@ h2 {
   <li><a href="#faq">FAQ</a></li>
   <li><a href="#resources">Resources</a></li>
 </ul>
-<hr />
+<hr>
 
 <a name="intro"></a>
 <h2>Introduction</h2>
@@ -103,7 +30,7 @@ required to run WebCalendar due to the use of classes and sessions.
 </p>
 
 <div class="top"><a href="#" target="_top">top</a></div>
-<hr />
+<hr>
 
 <a name="Tools"></a>
 <h2>Tools</h2>
@@ -146,7 +73,7 @@ include perl, make, patch, diff and cvs.
 </p>
 
 <div class="top"><a href="#" target="_top">top</a></div>
-<hr />
+<hr>
 
 <a name="getcode"></a>
 <h2>Getting The Code</h2>
@@ -178,7 +105,7 @@ have not been 100% enforced, so you will see exceptions):</p>
 
     Classes should be defined in files contained in <tt>includes/classes/</tt>.
     Filenames should be of the form ClassName.class. There should only be one
-    class defined per file.<br />
+    class defined per file.<br>
     If incorporating a class from another project (i.e. phpMailer ), it is
     acceptable to use the original naming conventions and filenames. This will
     allow for easy upgrading and help avoid any GNU license issues.
@@ -253,7 +180,7 @@ they have not been 100% implemented).</p>
 
   <dt>PHP file comments</dt>
   <dd>Each file should have a file header.
-    <br />
+    <br>
     See <a
       href="http://webcalendar.cvs.sourceforge.net/webcalendar/webcalendar/report.php?revision=1.56&amp;view=markup"><tt>report.php</tt></a>
     as an example.</dd>
@@ -359,7 +286,7 @@ quickly and efficiently.</p>
   seems to suffice for our purposes. Possibly, a  better technique would be to
   use the charset of the original creator of the data, but this is beyond
   current capabilities.
-  <br />
+  <br>
   For reference see: <a
     href="http://us3.php.net/manual/en/function.htmlentities.php">
   http://us3.php.net/manual/en/function.htmlentities.php</a></dd>
@@ -406,7 +333,7 @@ quickly and efficiently.</p>
   updated file. In that case, you should be able to just replace the old file
   with the new (assuming the new file and your install are based on the same
   version of WebCalendar).
-  <br /><br />
+  <br><br>
   Others are patch files, which usually have a <tt>.diff</tt> or
   <tt>.patch</tt> file extension. In order to use one of these files, you need
   the <a href="http://www.gnu.org/software/patch/patch.html">GNU patch</a>
@@ -414,13 +341,13 @@ quickly and efficiently.</p>
   version for Windows. I use the patch program that comes with <a
     href="http://www.cygwin.com">Cygwin</a> on windows.) I would recommend
   testing the patch on your install first using the <tt>--dry-run</tt> option.
-  <br /><br />
+  <br><br>
   For example, if the patch file is called <tt>calmods.diff</tt>, then you
   would use:
   <pre>patch --dry-run &lt; calmods.diff</pre>
   If the program says it cannot determine which file to patch, try adding -p1:
   <pre>patch --dry-run -p1 &lt; calmods.diff</pre>
-  <br /><br />
+  <br><br>
   If it goes through all the changes successfully, do the same command without
   the <tt>--dry-run</tt> option to install the patch. If it says "hunk
   failed", then the patch cannot be applied without hand-merging files. This
@@ -457,13 +384,12 @@ quickly and efficiently.</p>
 </ul>
 
 <div class="top"><a href="#" target="_top">top</a></div>
-<hr />
+<hr>
 <p>
   <b>Last Update:</b> $Id: WebCalendar-DeveloperGuide.html,v 1.19 2007/07/12 19:29:10 bbannon Exp $
-  <br />
+  <br>
   <a href="http://validator.w3.org/check?uri=referer"><img
-    src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!"
-    class="valid" /></a>
+    src="../images/HTML5_Logo.png" alt="Valid HTML5!"></a>
 </p>
 </body>
 </html>

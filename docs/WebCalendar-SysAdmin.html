@@ -1,92 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-     <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>WebCalendar System Administrator's Guide</title>
-<style>
-body {
- background-color: #FFFFFF;
- font-family: Arial, Helvetica, sans-serif;
-}
-a {
- text-decoration: none;
-}
-dt {
- font-weight: bold;
- margin-left: 25px;
- margin-top: 20px;
-}
-.valid {
- border-width: 0px;
-}
-pre {
- font-family: courier, monospace;
- font-size: 14px;
- border: 1px solid #0000FF;
- background-color: #EEEEFF;
- padding: 4px;
- margin-left: 25px;
- margin-right: 25px;
-}
-td {
- background-color: #ddd;
- border: 1px solid #bbb;
- color: #000;
- vertical-align: top;
-}
-th {
- background-color: #eee;
- border: 1px solid #ccc;
- color: #000;
-}
-.colorheader {
- background-color: #000000;
- color: #FFFFFF;
- margin-left: 3px;
- margin-right: 3px;
- padding: 2px;
-}
-.newwin {
- border-width: 0px;
-}
-.ptip {
-  background: #ddd;
-  padding: 5px;
-  border: 1px solid #aaa;
-}
-.tip {
- font-weight: bold;
- background-color: #FFFF00;
- border: 1px solid #000000;
- padding: 1px;
- padding-left: 5px;
- padding-right: 5px;
- margin-right: 10px;
-}
-.note {
- font-weight: bold;
- background-color: blue;
- color: #FFFFFF;
- border: 1px solid #000000;
- padding: 2px;
-}
-hr {
- margin-bottom: 7px;
-}
-h2 {
- background-color: #191970;
- color: #FFFFFF;
- padding: 5px;
-}
-.top {
- text-align: right;
-}
-</style>
-</head>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="utf-8">
+    <title>WebCalendar System Administrator's Guide</title>
+    <link href="../includes/css/docs.css" rel="stylesheet">
+  </head>
+  <body id="sysadmin">
 <h1>WebCalendar System Administrator's Guide</h1>
 <p><strong>WebCalendar Version: 1.2.7</strong></p>
 
@@ -113,7 +32,7 @@ h2 {
  <li><a href="#appendixE">Appendix E: How To Configure for LDAP</a></li>
  <li><a href="#appendixF">Appendix F: Manual Installation</a></li>
 </ul>
-<hr />
+<hr>
 
 <a name="intro"></a>
 <h2>Introduction</h2>
@@ -228,7 +147,7 @@ h2 {
  </li>
 </ul>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="requirements"></a>
 <h2>System Requirements</h2>
@@ -255,7 +174,7 @@ h2 {
  <p><strong>Recommended:</strong></p>
  <ul>
   <li>pilot-link (if exporting to Palm):
-  <a href="http://sourceforge.net/project/?group_id=2158">http://sourceforge.net/project/?group_id=2158</a>&nbsp;<a href="http://sourceforge.net/project/?group_id=2158" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
+  <a href="http://sourceforge.net/project/?group_id=2158">http://sourceforge.net/project/?group_id=2158</a>&nbsp;<a href="http://sourceforge.net/project/?group_id=2158" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></li>
  </ul>
  <p><a name="database">You must have one of the following databases installed</a>:</p>
  <ul>
@@ -278,7 +197,7 @@ h2 {
  <p>For the database you choose, you must have its drivers built into
   PHP. For example, to use MySQL, PHP must be compiled with MySQL
   support (which is the default setting when installing PHP).
-  See the PHP pages (<a href="http://www.php.net">www.php.net</a>&nbsp;<a href="http://www.php.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>)
+  See the PHP pages (<a href="http://www.php.net">www.php.net</a>&nbsp;<a href="http://www.php.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>)
   for more information on setting up PHP.</p>
  <p>No optional PHP packages (other than MySQL) are required for this
   application. However, PHP should be compiled with <tt>--enable-track-vars</tt>
@@ -302,12 +221,12 @@ h2 {
   Check for <tt>/usr/bin/php</tt> to see if you already have the
   PHP standalone executable. If it's there, you can use
   the following command to see what version of PHP you have:
-  <br /><br />
+  <br><br>
   <tt style="margin-left: 50px;">/usr/bin/php -v</tt>
  </p>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="fileunpacking"></a>
 <h2>File Unpacking</h2>
@@ -321,7 +240,7 @@ h2 {
   Keep in mind that unless you remap the directory (via your web server's
   configuration settings), it will be part of the URL for the calendar.</p>
  <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="appsetup"></a>
  <h2>Application Installation</h2>
@@ -434,7 +353,7 @@ h2 {
   </td></tr>
   <tr><td>
    Database Name</td><td>db_password</td><td>
-   The database password for the above login<br />
+   The database password for the above login<br>
    (Use 'none' if your db server does not use a TCP socket to connect.)
    (Not used for SQLite.)
   </td></tr>
@@ -533,33 +452,33 @@ calculate the proper value and store it in the database.</p>
   to setup which authentication method to use.</p>
  <p>You currently have five choices:</p>
  <ol>
-  <li>Web-based authentication (login/passwords verified in the WebCalendar database):<br />
-   <tt>use_http_auth = false</tt><br />
+  <li>Web-based authentication (login/passwords verified in the WebCalendar database):<br>
+   <tt>use_http_auth = false</tt><br>
    <tt>user_inc = user.php</tt>
   </li>
-  <li>HTTP-based authentication (login/passwords verified by the web server):<br />
-   <tt>use_http_auth = true</tt><br />
-   <tt>user_inc = user.php</tt><br />
+  <li>HTTP-based authentication (login/passwords verified by the web server):<br>
+   <tt>use_http_auth = true</tt><br>
+   <tt>user_inc = user.php</tt><br>
    ... and don't forget to setup your web server to handle user
-   authentication.<br />
+   authentication.<br>
           <span class="note">Note:</span> In order to use HTTP-based authentication,
     PHP must be setup as a module for your server rather than a CGI.
   </li>
-  <li>NIS-based authentication (login/passwords verified by NIS):<br />
-   <tt>use_http_auth = false</tt><br />
-   <tt>user_inc = user-nis.php</tt><br />
+  <li>NIS-based authentication (login/passwords verified by NIS):<br>
+   <tt>use_http_auth = false</tt><br>
+   <tt>user_inc = user-nis.php</tt><br>
    Additional configuration settings will need to be set
    in <tt>includes/user-nis.php</tt>.
   </li>
-  <li>LDAP-based authentication (login/passwords verified by LDAP server):<br />
-   <tt>use_http_auth = false</tt><br />
-   <tt>user_inc = user-ldap.php</tt><br />
+  <li>LDAP-based authentication (login/passwords verified by LDAP server):<br>
+   <tt>use_http_auth = false</tt><br>
+   <tt>user_inc = user-ldap.php</tt><br>
    Additional configuration settings will need to be set
    in <tt>includes/user-ldap.php</tt>.
   </li>
-  <li>IMAP-based authentication (login/passwords verified by IMAP server):<br />
-   <tt>use_http_auth = false</tt><br />
-   <tt>user_inc = user-imap.php</tt><br />
+  <li>IMAP-based authentication (login/passwords verified by IMAP server):<br>
+   <tt>use_http_auth = false</tt><br>
+   <tt>user_inc = user-imap.php</tt><br>
    Additional configuration settings will need to be set
    in <tt>includes/user-imap.php</tt>.
   </li>
@@ -590,7 +509,7 @@ your system.</strong></p>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 
-<hr />
+<hr>
 
 <a name="eventcal"></a>
 <h2>Configuring as Event Calendar</h2>
@@ -617,7 +536,7 @@ and the event has been approved.
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 
-<hr />
+<hr>
 
 <a name="users"></a>
  <h2>Creating Users</h2>
@@ -635,7 +554,7 @@ and the event has been approved.
  <p class="ptip"><span class="tip">TIP</span> On a single-user system, you do not need to create any users.</p>
  <p class="ptip"><span class="tip">TIP</span> For an event calendar, you do not need to create a user for the "public user".</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="reminders"></a>
  <h2>Setting Up Email Reminders</h2>
@@ -646,7 +565,7 @@ and the event has been approved.
   <li>You should have a version of PHP built as a CGI (so that you can run
     php from the command line). This does not mean you must build all
     of PHP as a CGI. You can still build PHP as a module for your web
-  server and then build the CGI-based PHP later.<br />
+  server and then build the CGI-based PHP later.<br>
     <span class="note">Note:</span> Many Linux distributions and some Windows LAMP packages
     come with the PHP built for CGI.</li>
   <li>You must setup cron (on Linux/UNIX) or something like cron for Windows
@@ -680,7 +599,7 @@ and the event has been approved.
   correct. If you do not have <tt>wget</tt> installed on your system, you can use
   any tool (lynx, perl script, etc.) that is capable of making an HTTP request for this.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="systemsettings"></a>
  <h2>System Settings</h2>
@@ -1028,7 +947,7 @@ and the event has been approved.
    <dd>Specifies the text color of event popup areas</dd>
  </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="siteextras"></a>
  <h2>Custom Event Fields</h2>
@@ -1055,7 +974,7 @@ and the event has been approved.
     <tt>EXTRA_TEXT</tt></td><td>
     Allows the user to enter a single line of text</td><td>
     Specifies the size of the text form element as it would appear in the
-    following ("NN" would be replaced with Arg 1):<br />
+    following ("NN" would be replaced with Arg 1):<br>
     &nbsp;&nbsp; <tt>&lt;input&nbsp;size="NN"&nbsp;...</tt></td><td>
     N/A
    </td></tr>
@@ -1063,10 +982,10 @@ and the event has been approved.
     <tt>EXTRA_MULTILINETEXT</tt></td><td>
     Allows the user to enter multiple lines of text</td><td>
     Specifies how many characters wide the textform element should be as it
-    would appear in the following ("NN" would be replaced with Arg 1):<br />
+    would appear in the following ("NN" would be replaced with Arg 1):<br>
     &nbsp;&nbsp; <tt>&lt;textarea&nbsp;cols="NN"&nbsp;...</tt></td><td>
     Specifies how many lines long the textform element should be as it would
-    appear in the following ("NN" would be replaced with Arg 1):<br />
+    appear in the following ("NN" would be replaced with Arg 1):<br>
     &nbsp;&nbsp; <tt>&lt;textarea&nbsp;rows="NN"&nbsp;...</tt>
    </td></tr>
    <tr><td>
@@ -1119,7 +1038,7 @@ and the event has been approved.
   </table>
  </center>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="faq"></a>
  <h2>Frequently Asked Questions</h2>
@@ -1129,9 +1048,9 @@ and the event has been approved.
   <dt>How do I setup PHP, MySQL and Apache on Windows?</dt>
    <dd>The easiest way to do this is to try one of the prepackaged bundles that will install all of these for you:
     <ul>
-   <li><a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a>&nbsp;<a href="http://www.apachefriends.org/en/xampp.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-   <li><a href="http://www.foxserv.net/">FoxServ</a>&nbsp;<a href="http://www.foxserv.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-   <li><a href="http://www.sokkit.net/">Sokkit</a>&nbsp;<a href="http://www.sokkit.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> (formerly PHPTriad)</li>
+   <li><a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a>&nbsp;<a href="http://www.apachefriends.org/en/xampp.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></li>
+   <li><a href="http://www.foxserv.net/">FoxServ</a>&nbsp;<a href="http://www.foxserv.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></li>
+   <li><a href="http://www.sokkit.net/">Sokkit</a>&nbsp;<a href="http://www.sokkit.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a> (formerly PHPTriad)</li>
     </ul>
   </dd>
   <dt>How do I setup PHP, MySQL and Apache on Mac OS X?</dt>
@@ -1140,23 +1059,23 @@ and the event has been approved.
        setup WebCalendar would be to use one of the following
        packages:
     <ul>
-   <li><a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a>&nbsp;<a href="http://www.apachefriends.org/en/xampp.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
+   <li><a href="http://www.apachefriends.org/en/xampp.html">XAMPP</a>&nbsp;<a href="http://www.apachefriends.org/en/xampp.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></li>
     </ul>
   </dd>
  <dt>How do I setup PHP, MySQL and Apache on UNIX/Linux?</dt>
   <dd>There are many online instructions on how to do this. Here are a few:
     <ul>
-   <li><a href="http://www.onlamp.com/pub/a/php/2000/11/17/php_admin.html">ONLamp.com: Basic Installation of PHP on a Unix System</a>&nbsp;<a href="http://www.onlamp.com/pub/a/php/2000/11/17/php_admin.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-   <li><a href="http://www.devshed.com/Server_Side/PHP/SoothinglySeamless/">Developer Shed: The Soothingly Seamless Setup of Apache, SSL, MySQL and PHP</a>&nbsp;<a href="http://www.devshed.com/Server_Side/PHP/SoothinglySeamless/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-   <li><a href="http://www.linuxhelp.net/guides/lamp/">Linux Help: LAMP Guide</a>&nbsp;<a href="http://www.linuxhelp.net/guides/lamp/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
-   <li><a href="http://www.php.net/manual/en/installation.php">PHP.net</a>&nbsp;<a href="http://www.php.net/manual/en/installation.php" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></li>
+   <li><a href="http://www.onlamp.com/pub/a/php/2000/11/17/php_admin.html">ONLamp.com: Basic Installation of PHP on a Unix System</a>&nbsp;<a href="http://www.onlamp.com/pub/a/php/2000/11/17/php_admin.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></li>
+   <li><a href="http://www.devshed.com/Server_Side/PHP/SoothinglySeamless/">Developer Shed: The Soothingly Seamless Setup of Apache, SSL, MySQL and PHP</a>&nbsp;<a href="http://www.devshed.com/Server_Side/PHP/SoothinglySeamless/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></li>
+   <li><a href="http://www.linuxhelp.net/guides/lamp/">Linux Help: LAMP Guide</a>&nbsp;<a href="http://www.linuxhelp.net/guides/lamp/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></li>
+   <li><a href="http://www.php.net/manual/en/installation.php">PHP.net</a>&nbsp;<a href="http://www.php.net/manual/en/installation.php" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></li>
     </ul>
   </dd>
  <dt>I've finished the install. What is the login to WebCalendar?</dt>
   <dd>After the initial creation of the database tables, there will
     be a single user account created with the username "admin" and
     the password set to "admin" as well.
-    <br /><span class="note">Note:</span> This account is intended to get your started.
+    <br><span class="note">Note:</span> This account is intended to get your started.
     You should create a new admin account and delete this one.</dd>
  <dt><a name="samplepublic">I want to use WebCalendar as an events calendar for
     my organization. How do I set it up to do this?</a></dt>
@@ -1196,11 +1115,11 @@ and the event has been approved.
  one of the many iCalendar holiday files that are freely available.
  A good resource for free iCalendar files is
  <a href="http://www.icalshare.com">iCalShare
-        <img src="newwin.gif" alt="new" class="newwin" /></a>.
+        <img src="newwin.gif" alt="new" class="newwin"></a>.
  For example, the U.S. holiday iCalendar file can be downloaded from:
  <blockquote>
  <a href="http://icalshare.com/article.php?story=20020912105939521">http://icalshare.com/article.php?story=20020912105939521
-        <img src="newwin.gif" alt="new" class="newwin" /></a> </blockquote>
+        <img src="newwin.gif" alt="new" class="newwin"></a> </blockquote>
  If you don't want each individual user to have to import
  the holiday calendar, you can use nonuser calendars.
  First, make sure nonuser calendars are enabled in your
@@ -1232,7 +1151,7 @@ and the event has been approved.
  the calendar?</dt>
   <dd>In the file <tt>translations/English-US.txt</tt>,
   change the line that says "Public Access" to what you want
-  it to say on the right side.<br /><br />Example:
+  it to say on the right side.<br><br>Example:
   <pre>Public Access: Foobar Event Calendar</pre>
   </dd>
  <dt>Can I embed WebCalendar as a component on another web page?</dt>
@@ -1242,7 +1161,7 @@ and the event has been approved.
     To do this, In System Settings, set both "Custom header" and
   "Custom trailer" to "Yes" and press the "Edit" button to enter the
     header and trailer content.
-    <br />
+    <br>
     If you are looking to just include a list of upcoming events in one
     of your web pages, you can use the <tt>upcoming.php</tt> page in
     WebCalendar to do this. Edit the top of this file to configure options.
@@ -1255,7 +1174,7 @@ and the event has been approved.
     you must have "Public Access" enabled in System Settings).
     You can override this with another user's calendar.
     (See <tt>upcoming.php</tt> for instructions on this.)
-    <br /><br />
+    <br><br>
     If you would like to display a small calendar (like the ones on the month view), you can add the
     following example. There are some configuration options available in the top of this file as well.
     You can then use an <tt>iframe</tt> elsewhere on your web site as
@@ -1281,7 +1200,7 @@ and the event has been approved.
   <dd>
   It's a fairly simple process. If you've ever translated a C-based app
      that used GNU's gettext tool, then you'll have no problem. The I18N
-     support was based on GNU's <a href="http://www.gnu.org/software/gettext/gettext.html">gettext</a>&nbsp;<a href="http://www.gnu.org/software/gettext/gettext.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>. Here's what you need to do.
+     support was based on GNU's <a href="http://www.gnu.org/software/gettext/gettext.html">gettext</a>&nbsp;<a href="http://www.gnu.org/software/gettext/gettext.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>. Here's what you need to do.
      <ol>
      <li>look in the "translations" directory</li>
      <li>copy the <tt>English-US.txt</tt> file into what you'd like to call your
@@ -1295,7 +1214,7 @@ and the event has been approved.
      <li>Add the new language to both the $languages array and the
        $browser_languages arrays defined in <tt>includes/translate.php</tt>.</li>
      <li>Test it out... </li>
-  <li>Post a copy of your translation (along with your changes to <tt>includes/translate.php</tt>) to the <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</li>
+  <li>Post a copy of your translation (along with your changes to <tt>includes/translate.php</tt>) to the <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a> for WebCalendar.</li>
      </ol>
   </dd>
  <dt>How do I update an existing translation?</dt>
@@ -1307,20 +1226,20 @@ and the event has been approved.
   and typically the English version of the translation will also be included on the following line (as in the example below):
     <pre># &lt;&lt; MISSING &gt;&gt;
 # Edit:
-#</pre><br />
+#</pre><br>
   For some text, an abbreviation may be used rather than the English text.
   In those cases, the full text will be noted as in the following example:
   <pre># &lt;&lt; MISSING &gt;&gt;
 # custom-script-help:
 # English text: Allows entry of custom Javascript or stylesheet text that
 # will be inserted into the HTML "head" section of every page.
-#</pre><br />
+#</pre><br>
      When you're done making changes, move into the <tt>tools</tt> directory.
        Run the <tt>check_translation.pl</tt> script on your new data file to make
        sure you have all the needed translations:
   <pre><tt>perl check_translation.pl French</tt></pre>
      Post a copy of your translation to the
-  <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> for WebCalendar.</dd>
+  <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a> for WebCalendar.</dd>
 <dt>During Import, I receive this error: Unknown Timezone: XXXXX defaulting to GMT.</dt>
 <dd>This is a notice that your import file contained unknown timezone information.
   WebCalendar will simply save the event or task as GMT. You are encouraged to
@@ -1329,7 +1248,7 @@ and the event has been approved.
 <!-- END FAQ -->
  </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="trouble"></a>
  <h2>Troubleshooting</h2>
@@ -1371,7 +1290,7 @@ and the event has been approved.
   then you probably do not have the needed support for your database
   compiled into PHP.
     If the function is not a database connect call, then check the
-    <a href="http://www.php.net/manual/en/">PHP manual</a>&nbsp;<a href="http://www.php.net/manual/en/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>
+    <a href="http://www.php.net/manual/en/">PHP manual</a>&nbsp;<a href="http://www.php.net/manual/en/" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>
     to see if the function requires a specific version of PHP. You
     may have an out-dated version of PHP that requires upgrading.</dd>
  <dt>When I try and view certain pages, nothing happens for 30 seconds, then I get a time-out error.</dt>
@@ -1396,7 +1315,7 @@ and the event has been approved.
    <li>In WebCalendar's System Settings, you have set the "Email Enabled" setting to "Yes".</li>
    <li>In WebCalendar's System Settings, make sure you have the "Default sender address"
    to something.
-   <br /><span class="note">Note:</span>
+   <br><span class="note">Note:</span>
           Some mail system will reject mail that has a "From" address
           that is a different domain from the originating SMTP server.
           So, if your SMTP server is smtp.mydomain.com and your "Default sender address"
@@ -1421,13 +1340,13 @@ and the event has been approved.
    into the Custom Event Fields.</dd>
  <dt>How do I get the most recent version of WebCalendar?</dt>
   <dd>You can download the latest public release from SourceForge's
-  <a href="http://sourceforge.net/project/showfiles.php?group_id=3870">file list for WebCalendar</a>&nbsp;<a href="http://sourceforge.net/project/showfiles.php?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
-  <br />
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=3870">file list for WebCalendar</a>&nbsp;<a href="http://sourceforge.net/project/showfiles.php?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>.
+  <br>
     You can download the latest development code from the CVS server using
-  the <a href="http://sourceforge.net/cvs/?group_id=3870">instructions provided by SourceForge</a>&nbsp;<a href="http://sourceforge.net/cvs/?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>. (You will need a CVS client to do this.)</dd>
+  the <a href="http://sourceforge.net/cvs/?group_id=3870">instructions provided by SourceForge</a>&nbsp;<a href="http://sourceforge.net/cvs/?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>. (You will need a CVS client to do this.)</dd>
  <dt>How do I install a patch file listed on SourceForge's
-    <a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870">list of WebCalendar patches</a>&nbsp;<a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>?</dt>
-  <dd>Most patches are distributed as context diffs. That means they were produced using the UNIX <tt>diff</tt> command with the <tt>-C</tt> option. The patches are intended to be used with the <a href="http://www.fsf.org/software/patch/patch.html">GNU patch</a>&nbsp;<a href="http://www.fsf.org/software/patch/patch.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> program. This program is standard on most Linux systems and can be obtained as part of the <a href="http://www.cygwin.com">Cygwin</a>&nbsp;<a href="http://www.cygwin.com" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a> package for Windows. Mac OS X will have the patch program installed if they install the developer tools CD.</dd>
+    <a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870">list of WebCalendar patches</a>&nbsp;<a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>?</dt>
+  <dd>Most patches are distributed as context diffs. That means they were produced using the UNIX <tt>diff</tt> command with the <tt>-C</tt> option. The patches are intended to be used with the <a href="http://www.fsf.org/software/patch/patch.html">GNU patch</a>&nbsp;<a href="http://www.fsf.org/software/patch/patch.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a> program. This program is standard on most Linux systems and can be obtained as part of the <a href="http://www.cygwin.com">Cygwin</a>&nbsp;<a href="http://www.cygwin.com" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a> package for Windows. Mac OS X will have the patch program installed if they install the developer tools CD.</dd>
  <dt>I forgot/lost my admin password. How can I reset it?</dt>
   <dd>The easiest way is to admin a new admin user and then use that
     new user to reset the password for your old admin account.
@@ -1453,7 +1372,7 @@ cal_firstname, cal_is_admin ) VALUES
  <dt>I get a database error from MySQL that says "Client does not support authentication protocol."</dt>
   <dd>From the MySQL 5.0 Reference Manual:
   <blockquote>MySQL 5.0 uses an authentication protocol based on a password hashing algorithm that is incompatible with that used by older (pre-4.1) clients. If you upgrade the server from 4.0, attempts to connect to it with an older client may fail with the following message:
-  <br /><br />
+  <br><br>
   Client does not support authentication protocol requested
   by server; consider upgrading MySQL client
   </blockquote>
@@ -1464,26 +1383,26 @@ cal_firstname, cal_is_admin ) VALUES
 <!-- END FAQ -->
 </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="help"></a>
  <h2>Getting Help</h2>
  <p>Try the Help/Troubleshooting forum for WebCalendar, hosted at SourceForge.net:</p>
- <pre><a href="https://sourceforge.net/forum/forum.php?forum_id=11588">https://sourceforge.net/forum/forum.php?forum_id=11588</a>&nbsp;<a href="http://sourceforge.net/forum/forum.php?forum_id=11588" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a></pre>
+ <pre><a href="https://sourceforge.net/forum/forum.php?forum_id=11588">https://sourceforge.net/forum/forum.php?forum_id=11588</a>&nbsp;<a href="http://sourceforge.net/forum/forum.php?forum_id=11588" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></pre>
  <p>If you encounter a bug, please check the
-  <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
+  <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>.
   If you do <strong>not</strong> see anything similar, submit a new bug.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="license"></a>
  <h2>Licensing</h2>
  <p>WebCalendar is distributed under the open source
-  <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.
+  <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>.
   If you have questions about this license, please
-  read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl-faq.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin" /></a>.</p>
+  read their <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>&nbsp;<a href="http://www.gnu.org/licenses/gpl-faq.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="glossary"></a>
  <h2>Glossary</h2>
@@ -1560,7 +1479,7 @@ cal_firstname, cal_is_admin ) VALUES
     user <a href="#pref">Preferences</a>)</dd>
  </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="appendixA"></a>
  <h2>Appendix A: Using phpMyAdmin</h2>
@@ -1607,7 +1526,7 @@ following steps to setup WebCalendar.
 </ol>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="appendixB"></a>
  <h2>Appendix B: Database Setup</h2>
@@ -1804,7 +1723,7 @@ view the UNIX man page for crontab
 </ol>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="appendixD"></a>
 <h2>Appendix D: Displaying Upcoming Events on Your Site</h2>
@@ -1823,35 +1742,35 @@ This page is intended to be included in other pages using the
   <td>
       Specifies if Public Access must be enabled in System Settings
       for this page to be viewed.
-      <br />Default setting: false
+      <br>Default setting: false
   </td></tr>
 
 <tr><td valign="top">$display_link</td>
   <td>
       Specifies if events should have a link to the URL
       within WebCalendar to view the event.
-      <br />Default setting: true
+      <br>Default setting: true
   </td></tr>
 
 <tr><td valign="top">$link_target</td>
   <td>
       Specifies the name of the window that be used for
       the link target.
-      <br />Default setting: _top
+      <br>Default setting: _top
   </td></tr>
 
 <tr><td valign="top">$numDays</td>
   <td>
       Specifies how many days of events should be listed.
-      <br />Can override this by passing "num" in within the URL
+      <br>Can override this by passing "num" in within the URL
            with "upcoming.php?num=60"
-      <br />Default setting: 30
+      <br>Default setting: 30
   </td></tr>
 
 <tr><td valign="top">$maxEvents</td>
   <td>
       Specifies the maximum number of events to list.
-      <br />Default setting: 10
+      <br>Default setting: 10
   </td></tr>
 
 <tr><td valign="top">$username</td>
@@ -1859,7 +1778,7 @@ This page is intended to be included in other pages using the
       The login of the calendar to display upcoming events for.
       If you want to see upcoming events for user login "joe",
       then you would change this to "joe".
-      <br />Default setting: __public__ (The public calendar)
+      <br>Default setting: __public__ (The public calendar)
   </td></tr>
 
 <tr><td valign="top">$allow_user_override</td>
@@ -1867,22 +1786,22 @@ This page is intended to be included in other pages using the
       Specifies whether the calendar user can be specified in the URL
       (in which case the $username setting will be ignored) using
       a URL like "upcoming.php?user=joe".
-      <br />Default setting: true
+      <br>Default setting: true
   </td></tr>
 
 <tr><td valign="top">$load_layers</td>
   <td>
       Specifies if the calendar user's layers should also be
       included in the upcoming events.
-      <br />Note: Layers must be enabled in the user's preferences.
-      <br />Default setting: true
+      <br>Note: Layers must be enabled in the user's preferences.
+      <br>Default setting: true
   </td></tr>
 
 <tr><td valign="top">$cat_id</td>
   <td>
       Specifies a category id to filter events on.
-      <br />Note: Categories must be enabled in System Settings.
-      <br />Default setting: (empty)
+      <br>Note: Categories must be enabled in System Settings.
+      <br>Default setting: (empty)
   </td></tr>
 
 </table>
@@ -1908,7 +1827,7 @@ This page is intended to be included in other pages using the
   with the <tt>iframe</tt> tag.</p>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="appendixE"></a>
 <h2>Appendix E: How To Configure for LDAP</h2>
@@ -1916,7 +1835,7 @@ This page is intended to be included in other pages using the
 <p>Configuring WebCalendar to use an existing LDAP directory is fairly
 simple. It is know to work with OpenLDAP and Novell Edirectory and
 should work with other systems as well.
-<br />
+<br>
 <span class="note">Note:</span>
 If you use LDAP, the group functionality of WebCalendar does not yet work.</p>
 
@@ -1956,9 +1875,9 @@ package does not include support but, &quot;php4-ldap&quot; does.</p>
 <p>The second step is to set WebCalendar to use LDAP authentication in
 <tt>settings.php</tt>. Instructions on to do this can be found in the
 <a href="#appsetup">Application Installation</a> section above.
-In summary, the following should be set:<br />
-<tt>use_http_auth = false</tt><br />
-<tt>user_inc = user-ldap.php</tt><br /></p>
+In summary, the following should be set:<br>
+<tt>use_http_auth = false</tt><br>
+<tt>user_inc = user-ldap.php</tt><br></p>
 
 <p>The next step is a little more work and involves editing the
 <tt>includes/user-ldap.php</tt> file with a text editor. You will have
@@ -1973,27 +1892,27 @@ following:</p>
 <tr><td valign="top">$ldap_server</td>
   <td>
       FQDN or IP address of the LDAP server (or localhost).
-      <br />ex. 'ldapserver.company.com'
+      <br>ex. 'ldapserver.company.com'
   </td></tr>
 
 <tr><td valign="top">$ldap_base_dn</td>
   <td>
       Specifies the base DN used to search for users
-      <br />ex. 'ou=people,dc=company,dc=com' or 'o=context,ou=subcontext'
+      <br>ex. 'ou=people,dc=company,dc=com' or 'o=context,ou=subcontext'
   </td></tr>
 
 <tr><td valign="top">$ldap_admin_group_name</td>
   <td>
       Specifies a group (complete DN) with admin rights for WebCalendar
-      <br />You might have to create one in LDAP
-      <br />ex. 'cn=it,ou=group,dc=company,dc=com'
+      <br>You might have to create one in LDAP
+      <br>ex. 'cn=it,ou=group,dc=company,dc=com'
   </td></tr>
 
 </table>
 
 <h3>Using SSL with LDAP</h3>
 <p>If the LDAP server will accept connections over SSL, simply add 'ldaps://'
-to the beginning of <tt>$ldap_server</tt>.<br />Example: ldaps://ldapserver.company.com</p>
+to the beginning of <tt>$ldap_server</tt>.<br>Example: ldaps://ldapserver.company.com</p>
 
 <h3>Using TLS with LDAP</h3>
 <p>If the LDAP server is set up to use TLS,  set <tt>$ldap_start_tls = true</tt>.</p>
@@ -2004,17 +1923,16 @@ to the beginning of <tt>$ldap_server</tt>.<br />Example: ldaps://ldapserver.comp
 and <tt>$ldap_version = '3'</tt>.</p>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <a name="appendixF"></a>
 <h2>Appendix F: Manual Installation</h2>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 <h3>TODO</h3>
 <p>
  <a href="http://validator.w3.org/check?uri=referer"><img
-  src="http://www.w3.org/Icons/valid-xhtml10"
-  alt="Valid XHTML 1.0!" class="valid" /></a></p>
+  src="../images/HTML5_Logo.png" alt="Valid HTML5!"></a></p>
 </body>
 </html>
