@@ -279,8 +279,7 @@ ALTER TABLE webcal_blob MODIFY cal_size int UNSIGNED DEFAULT NULL COMMENT 'Size 
 ALTER TABLE webcal_blob MODIFY cal_name varchar(30) DEFAULT NULL COMMENT 'Filename of object (not used for comments).' FIRST;
 ALTER TABLE webcal_blob MODIFY cal_mod_time time NOT NULL COMMENT 'Time added.' FIRST;
 ALTER TABLE webcal_blob MODIFY cal_mod_date date NOT NULL COMMENT 'Date added.' FIRST;
-#ALTER TABLE webcal_blob ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
-ALTER TABLE webcal_blob MODIFY cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
+ALTER TABLE webcal_blob ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
 ALTER TABLE webcal_blob MODIFY cal_mime_type varchar(50) DEFAULT NULL COMMENT 'MIME type of object (as specified by browser during upload (not used for comment).' FIRST;
 ALTER TABLE webcal_blob MODIFY cal_login varchar(25) DEFAULT NULL COMMENT 'Login of user who created. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_blob MODIFY cal_id int UNSIGNED DEFAULT NULL COMMENT 'Event id (if applicable). From <a href="#webcal_entry">webcal_entry</a> table.' FIRST;
@@ -307,19 +306,16 @@ ALTER TABLE webcal_entry MODIFY cal_priority tinyint UNSIGNED DEFAULT '5' COMMEN
 ALTER TABLE webcal_entry MODIFY cal_name varchar(80) NOT NULL COMMENT 'Brief description of event.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_mod_time time DEFAULT NULL COMMENT 'Time the event was last modified.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_mod_date date DEFAULT NULL COMMENT 'Date the event was last modified.' FIRST;
-#ALTER TABLE webcal_entry ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
-ALTER TABLE webcal_entry MODIFY cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
+ALTER TABLE webcal_entry ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_location varchar(100) DEFAULT NULL COMMENT 'Location of event.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_group_id int UNSIGNED DEFAULT NULL COMMENT 'The parent event id if this event is overriding an occurrence of a repeating event. From this table.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_ext_for_id int UNSIGNED DEFAULT NULL COMMENT 'Used when an event goes past midnight into the next day, in which case an additional entry in this table will use this field to indicate the original event cal_id.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_duration int UNSIGNED NOT NULL COMMENT 'Duration of event in minutes.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_due_time time DEFAULT NULL COMMENT 'Task due time.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_due_date date DEFAULT NULL COMMENT 'Task due date.' FIRST;
-#ALTER TABLE webcal_entry ADD cal_due datetime DEFAULT NULL COMMENT 'When is this task due?' FIRST;
-ALTER TABLE webcal_entry MODIFY cal_due datetime DEFAULT NULL COMMENT 'When is this task due?' FIRST;
+ALTER TABLE webcal_entry ADD cal_due datetime DEFAULT NULL COMMENT 'When is this task due?' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_description text COMMENT 'Full description of event.';
-#ALTER TABLE webcal_entry ADD cal_datetime datetime NOT NULL COMMENT 'When is this event scheduled to start?' FIRST;
-ALTER TABLE webcal_entry MODIFY cal_datetime datetime NOT NULL COMMENT 'When is this event scheduled to start?' FIRST;
+ALTER TABLE webcal_entry ADD cal_datetime datetime NOT NULL COMMENT 'When is this event scheduled to start?' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_date date NOT NULL COMMENT 'Date of event.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_create_by varchar(25) NOT NULL COMMENT 'Login of user that created the event. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_entry MODIFY cal_completed date DEFAULT NULL COMMENT 'Date task completed.' FIRST;
@@ -344,20 +340,13 @@ ALTER TABLE webcal_entry_log MODIFY cal_user_cal varchar(25) DEFAULT NULL COMMEN
 ALTER TABLE webcal_entry_log MODIFY cal_type ENUM('A','C','E','M','R','U') NOT NULL DEFAULT 'C' COMMENT 'Log types:<ul><li>C: Created</li><li>A: Approved/Confirmed by user</li><li>R: Rejected by user</li><li>U: Updated by user</li><li>M: Mail Notification sent</li><li>E: Reminder sent</li></ul>' FIRST;
 ALTER TABLE webcal_entry_log MODIFY cal_time time DEFAULT NULL FIRST;
 ALTER TABLE webcal_entry_log MODIFY cal_text text COMMENT 'Optional text.';
-#ALTER TABLE webcal_entry_log ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
-ALTER TABLE webcal_entry_log MODIFY cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
+ALTER TABLE webcal_entry_log ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
 ALTER TABLE webcal_entry_log MODIFY cal_login varchar(25) NOT NULL COMMENT 'User who performed this action. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_entry_log MODIFY cal_entry_id int UNSIGNED NOT NULL COMMENT 'Event id. From <a href="#webcal_entry">webcal_entry</a> table.' FIRST;
 ALTER TABLE webcal_entry_log MODIFY cal_date date NOT NULL FIRST;
 ALTER TABLE webcal_entry_log MODIFY cal_log_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique id of this log entry.' FIRST;
 
 ALTER TABLE webcal_entry_repeats ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines repeating info about an event. The event is defined in <a href="#webcal_entry">webcal_entry</a> table.';
-ALTER TABLE webcal_entry_repeats MODIFY cal_type varchar(20) DEFAULT NULL COMMENT 'Type of repeating:<ul><li>daily - repeats daily</li><li>monthlyByDate - repeats on same day of the month</li><li>monthlyBySetPos - repeats based on position within other ByXXX values</li><li>monthlyByDay - repeats on specified weekday, (2nd Monday, for example)</li><li>weekly - repeats every week</li><li>yearly - repeats on same date every year</li></ul>' FIRST;
-ALTER TABLE webcal_entry_repeats MODIFY cal_frequency int UNSIGNED DEFAULT '1' COMMENT 'Frequency of repeat: 1 = every, 2 = every other, 3 = every 3rd, etc.' FIRST;
-ALTER TABLE webcal_entry_repeats MODIFY cal_endtime time DEFAULT NULL COMMENT 'End time for repeating event.' FIRST;
-#ALTER TABLE webcal_entry_repeats ADD cal_enddt datetime DEFAULT NULL COMMENT 'End date and time for repeating event.' FIRST;
-ALTER TABLE webcal_entry_repeats MODIFY cal_enddt datetime DEFAULT NULL COMMENT 'End date and time for repeating event.' FIRST;
-ALTER TABLE webcal_entry_repeats MODIFY cal_end date DEFAULT NULL COMMENT 'End date for repeating event.' FIRST;
 ALTER TABLE webcal_entry_repeats MODIFY cal_wkst ENUM('MO','TU','WE','TH','FR','SA','SU') DEFAULT 'MO' COMMENT 'Week starts on...';
 ALTER TABLE webcal_entry_repeats MODIFY cal_days ENUM('N','Y') DEFAULT NULL COMMENT 'NO LONGER USED. We''ll leave it in for now.' FIRST;
 ALTER TABLE webcal_entry_repeats MODIFY cal_count int UNSIGNED DEFAULT NULL FIRST;
@@ -367,6 +356,11 @@ ALTER TABLE webcal_entry_repeats MODIFY cal_bysetpos varchar(50) DEFAULT NULL FI
 ALTER TABLE webcal_entry_repeats MODIFY cal_bymonthday varchar(100) DEFAULT NULL FIRST;
 ALTER TABLE webcal_entry_repeats MODIFY cal_bymonth varchar(50) DEFAULT NULL FIRST;
 ALTER TABLE webcal_entry_repeats MODIFY cal_byday varchar(100) DEFAULT NULL COMMENT 'The following columns are values as specified in RFC2445.' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_type varchar(20) DEFAULT NULL COMMENT 'Type of repeating:<ul><li>daily - repeats daily</li><li>monthlyByDate - repeats on same day of the month</li><li>monthlyBySetPos - repeats based on position within other ByXXX values</li><li>monthlyByDay - repeats on specified weekday, (2nd Monday, for example)</li><li>weekly - repeats every week</li><li>yearly - repeats on same date every year</li></ul>' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_frequency int UNSIGNED DEFAULT '1' COMMENT 'Frequency of repeat: 1 = every, 2 = every other, 3 = every 3rd, etc.' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_endtime time DEFAULT NULL COMMENT 'End time for repeating event.' FIRST;
+ALTER TABLE webcal_entry_repeats ADD cal_enddt datetime DEFAULT NULL COMMENT 'End date and time for repeating event.' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_end date DEFAULT NULL COMMENT 'End date for repeating event.' FIRST;
 ALTER TABLE webcal_entry_repeats MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Event id. From <a href="#webcal_entry">webcal_entry</a> table.' FIRST;
 UPDATE webcal_entry_repeats SET cal_enddt = CONCAT(cal_end,cal_endtime);
 
@@ -411,8 +405,7 @@ ALTER TABLE webcal_nonuser_cals MODIFY cal_url varchar(255) DEFAULT NULL COMMENT
 ALTER TABLE webcal_nonuser_cals MODIFY cal_lastname varchar(25) DEFAULT NULL COMMENT 'Calendar''s last name.' FIRST;
 ALTER TABLE webcal_nonuser_cals MODIFY cal_is_public ENUM('N','Y') NOT NULL DEFAULT 'N' COMMENT 'Can this nonuser calendar be a public calendar (no login required)?' FIRST;
 ALTER TABLE webcal_nonuser_cals MODIFY cal_firstname varchar(25) DEFAULT NULL COMMENT 'Calendar'' first name.' FIRST;
-#ALTER TABLE webcal_nonuser_cals ADD cal_displayname varchar(50) DEFAULT NULL COMMENT 'Name to diplay on public or other user''s calendars.' FIRST;
-ALTER TABLE webcal_nonuser_cals MODIFY cal_displayname varchar(50) DEFAULT NULL COMMENT 'Name to diplay on public or other user''s calendars.' FIRST;
+ALTER TABLE webcal_nonuser_cals ADD cal_displayname varchar(50) DEFAULT NULL COMMENT 'Name to diplay on public or other user''s calendars.' FIRST;
 ALTER TABLE webcal_nonuser_cals MODIFY cal_admin varchar(25) NOT NULL COMMENT 'The calendar administrator. From <a href="#webcal_user">webcal_user</a> table.' FIRST;
 ALTER TABLE webcal_nonuser_cals MODIFY cal_login varchar(25) NOT NULL COMMENT 'Unique id for the calendar.' FIRST;
 UPDATE webcal_nonuser_cals SET cal_displayname = CONCAT_WS(' ',cal_firstname,cal_lastname);
@@ -427,7 +420,7 @@ ALTER TABLE webcal_reminders MODIFY cal_duration int UNSIGNED NOT NULL DEFAULT '
 ALTER TABLE webcal_reminders MODIFY cal_date datetime NOT NULL COMMENT 'When to send? Use this or cal_offset, but not both.' FIRST;
 ALTER TABLE webcal_reminders MODIFY cal_before ENUM('N','Y') NOT NULL DEFAULT 'Y' COMMENT 'Specifies whether reminder is sent before or after selected edge.' FIRST;
 ALTER TABLE webcal_reminders MODIFY cal_action varchar(12) NOT NULL DEFAULT 'EMAIL' COMMENT 'Action as imported, may be used in the future.' FIRST;
-ALTER TABLE webcal_reminders MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' FIRST;
+ALTER TABLE webcal_reminders MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'From <a href="webcal_entry">webcal_entry</a>' FIRST;
 
 ALTER TABLE webcal_report ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines a custom report created by a user.';
 ALTER TABLE webcal_report MODIFY cal_user varchar(25) DEFAULT NULL COMMENT 'User calendar to display (NULL indicates current user).';
@@ -436,8 +429,7 @@ ALTER TABLE webcal_report MODIFY cal_time_range int UNSIGNED NOT NULL COMMENT 'T
 ALTER TABLE webcal_report MODIFY cal_show_in_trailer ENUM('N','Y') DEFAULT 'N' COMMENT 'Include a link for this report in the "Go to" section of the navigation in the page trailer? ("Y" or "N")' FIRST;
 ALTER TABLE webcal_report MODIFY cal_report_type varchar(20) NOT NULL COMMENT 'Format of report (html, plain or csv).' FIRST;
 ALTER TABLE webcal_report MODIFY cal_report_name varchar(50) NOT NULL COMMENT 'Name of the report.' FIRST;
-#ALTER TABLE webcal_report ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Created or last updated.' FIRST;
-ALTER TABLE webcal_report MODIFY cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Created or last updated.' FIRST;
+ALTER TABLE webcal_report ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Created or last updated.' FIRST;
 ALTER TABLE webcal_report MODIFY cal_login varchar(25) NOT NULL COMMENT 'Creator of report.' FIRST;
 ALTER TABLE webcal_report MODIFY cal_is_global ENUM('N','Y') NOT NULL DEFAULT 'N' COMMENT 'Is this a global report (can it be accessed by other users - "Y" or "N")' FIRST;
 ALTER TABLE webcal_report MODIFY cal_include_header ENUM('N','Y') NOT NULL DEFAULT 'Y' COMMENT 'If cal_report_type is "html", should the default HTML header and trailer be included? ("Y" or "N")' FIRST;
@@ -532,12 +524,9 @@ CREATE TABLE IF NOT EXISTS webcal_translations (
 ) ENGINE MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Various language translations.';
 
 ALTER TABLE webcal_user ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines a WebCalendar user.';
-#ALTER TABLE webcal_user ADD cal_type ENUM('A','N','S','U') DEFAULT 'U' COMMENT 'Is this an A)dmin, N)on_user, S)ystem, or ordinary U)ser? Will evevtually replace is_admin.';
-ALTER TABLE webcal_user MODIFY cal_type ENUM('A','N','S','U') DEFAULT 'U' COMMENT 'Is this an A)dmin, N)on_user, S)ystem, or ordinary U)ser? Will evevtually replace is_admin.';
+ALTER TABLE webcal_user ADD cal_type ENUM('A','N','S','U') DEFAULT 'U' COMMENT 'Is this an A)dmin, N)on_user, S)ystem, or ordinary U)ser? Will evevtually replace is_admin.';
 ALTER TABLE webcal_user MODIFY cal_passwd varchar(32) DEFAULT NULL COMMENT 'The user''s password (not used for http.)' FIRST;
-#ALTER TABLE webcal_user ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'User''s last log in.' FIRST;
-ALTER TABLE webcal_user MODIFY cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'User''s last log in.' FIRST;
-ALTER TABLE webcal_user MODIFY cal_last_login timestamp on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date user last logged in.' FIRST;
+ALTER TABLE webcal_user MODIFY cal_last_login TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date user last logged in.' FIRST;
 ALTER TABLE webcal_user MODIFY cal_is_admin ENUM('N','Y') DEFAULT 'N' COMMENT 'Is the user a WebCalendar administrator? (Y or N)' FIRST;
 ALTER TABLE webcal_user MODIFY cal_enabled ENUM('N','Y') DEFAULT 'Y' COMMENT 'Allow admin to disable account? (Y or N)' FIRST;
 ALTER TABLE webcal_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'Unique user login.' FIRST;
