@@ -49,6 +49,9 @@ table {
   margin-left: 3px;
   padding: 2px;
 }
+.hide {
+  display: none;
+}
 .newwin {
   border: 0;
 }
@@ -57,6 +60,9 @@ table {
   padding: 2px;
   border: 1px solid #000000;
   font-weight: bold;
+}
+.nowrap {
+  white-space: nowrap;
 }
 .ptip {
   background: #DDDDDD;
@@ -73,6 +79,12 @@ table {
 }
 .tt {
   font: .85rem monospace;
+}
+.vbottom {
+  vertical-align: bottom;
+}
+.vtop {
+  vertical-align: top;
 }
 #funcs blockquote {
   margin-top: 5px;
@@ -214,4 +226,22 @@ table {
 }
 #upgrading ul:first-of-type {
   margin-top: 0;
+}
+#wc_db table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#wc_db table table,
+#wc_db table th,
+#wc_db table td {
+  border: .1rem solid #000000;
+}
+#wc_db table th {
+  background-color: #E5E5E5;
+  font-weight: bold;
+}
+#wc_db table th,
+#wc_db table td {
+  padding: 0.2rem;
 }
