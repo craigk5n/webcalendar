@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.139.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 /**
  * Page Description:
  * Main page for install/config of db settings.
@@ -48,21 +48,21 @@
  * TODO:
  * Change all references from postgresql to pgsql
  */
+define ( '__WC_BASEDIR', '../' );
+$fileDir = __WC_BASEDIR . 'includes';
+$file    = $fileDir . '/settings.php';
 $show_all_errors = false;
+
 // Change this path as needed.
 $firebird_path = 'c&#58;/program files/firebird/firebird_1_5/examples/employee.fdb';
 
-include_once '../includes/translate.php';
-include_once '../includes/dbi4php.php';
-include_once '../includes/config.php';
-include_once '../includes/formvars.php';
+include_once $fileDir . '/translate.php';
+include_once $fileDir . '/dbi4php.php';
+include_once $fileDir . '/config.php';
+include_once $fileDir . '/formvars.php';
 include_once 'default_config.php';
 include_once 'install_functions.php';
 include_once 'sql/upgrade_matrix.php';
-
-define( '__WC_BASEDIR', '../' );
-$fileDir = __WC_BASEDIR . 'includes';
-$file    = $fileDir . '/settings.php';
 
 clearstatcache();
 
@@ -969,8 +969,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td>'
    . translate( 'Check to see if PHP 4.1.0 or greater is installed.' ) . '</td>
-        <td class="' . $class . '"><img src="' . ( $class == 'recommended'
-    ? 'recommended.gif' : 'not_recommended.jpg' ) . '" alt="" />&nbsp;'
+        <td class="' . $class . '">'
    . translate( 'PHP version' ) . ' ' . phpversion() . '</td>
       </tr>
       <tr>
@@ -986,9 +985,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     echo '
       <tr>
         <td class="prompt">' . $setting[0] . '</td>
-        <td class="' . $class . '"><img src="'
-     . ( $class == 'recommended' ? 'recommended.gif' : 'not_recommended.jpg' )
-     . '" alt="" />&nbsp;' . $ini_get_result . '</td>
+        <td class="' . $class . '">' . $ini_get_result . '</td>
       </tr>';
   }
   foreach( $php_constants as $constant ) {
@@ -996,10 +993,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     echo '
       <tr>
         <td class="prompt">' . $constant[0] . '</td>
-        <td class="' . $class . '"><img alt="" src="'
-     . ( $class == 'recommended'
-      ? 'recommended.gif" />&nbsp;' . $onStr
-      : 'not_recommended.jpg" />&nbsp;' . $offStr ) . '</td>
+        <td class="' . $class . '">' . ( $class === 'recommended' ? $onStr : $offStr ) . '</td>
       </tr>';
   }
   foreach( $php_modules as $module ) {
@@ -1008,9 +1002,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     echo '
       <tr>
         <td class="prompt">' . $module[0] . '</td>
-        <td class="' . $class . '"><img src="'
-     . ( $class == 'recommended' ? 'recommended.gif"' : 'not_recommended.jpg"' )
-     . ' alt="" />&nbsp;' . get_php_modules( $module[1] ) . '</td>
+        <td class="' . $class . '">' . get_php_modules ( $module[1] ) . '</td>
       </tr>';
   }
   $settingsStatStr = translate( 'settings.php Status' );
@@ -1023,10 +1015,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td>'
   . translate( 'To test the proper operation of sessions...' ) . '</td>
         <td class="' . ( $_SESSION['check'] > 0 ? '' : 'not' ) . 'recommended'
-   . '"><img src="'
-   . ( $_SESSION['check'] > 0 ? 'recommended.gif"' : 'not_recommended.jpg"' )
-   . ' alt="" />&nbsp;' . translate( 'SESSION COUNTER' ) . ': '
-   . $_SESSION['check'] . '</td>
+   . '">' . str_replace ( 'XXX', translate ( $_SESSION['check'], 0, 'N' ), translate ( 'SESSION COUNTER&#58 XXX' ) ) . '</td>
       </tr>
       <tr>
         <th colspan="2" class="'
@@ -1042,7 +1031,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td';
   // If the settings file exists, but we can't write to it...
   if( $exists && ! $canWrite )
-    echo '><img src="not_recommended.jpg" alt="" />&nbsp;'
+    echo '>'
      . translate( 'The file permissions of settings.php are set...' ) . ':</td>
         <td><blockquote><b>' . realpath( $file ) . '</b></blockquote></td>
       </tr>';
@@ -1050,8 +1039,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   // and we can't write to the includes directory...
   else
   if( ! $exists && ! $canWrite )
-    echo ' colspan="2">
-          <img src="not_recommended.jpg" alt="" />&nbsp;'
+    echo ' colspan="2">'
      . translate( 'The file permissions of the includes directory are set...' )
      . ': <blockquote><b>' . realpath( $fileDir ) . '</b></blockquote></td>
       </tr>';
@@ -1059,7 +1047,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
   else {
     echo '>'
      . translate( 'Your settings.php file appears to be valid.' ) . '</td>
-        <td class="recommended"><img src="recommended.gif" alt="" />&nbsp;'
+        <td class="recommended">'
      . translate( 'OK' ) . '</td>
       </tr>';
 
@@ -1080,7 +1068,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <th>' . $passwordStr . ':</th>
                 <td>
                   <input name="password" type="password" />
-                  <input type="submit" value="' . $loginStr . '" />
+                  <button>' . $loginStr . '</button>
                 </td>
               </tr>
             </table>
@@ -1150,29 +1138,25 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
   if( ! empty( $_SESSION['db_success'] ) && $_SESSION['db_success'] ) {
     echo '
-            <li class="recommended"><img src="recommended.gif" alt="" />&nbsp;'
+            <li class="recommended">'
      . translate( 'Your current database settings are able to access the database.' )
      . '</li>';
     if( ! empty( $response_msg ) && empty( $response_msg2 ) )
       echo '
-            <li class="recommended"><img src="recommended.gif" alt="" />&nbsp;'
+            <li class="recommended">'
        . $response_msg . '</li>';
     elseif( empty( $response_msg2 ) && empty( $_SESSION['db_success'] ) )
       echo '
-            <li class="notrecommended"><img src="not_recommended.jpg" '
-       . 'alt="" />&nbsp;' . translate( 'Please Test Settings' ) . '</li>';
+            <li class="notrecommended">' . translate ( 'Please Test Settings' ) . '</li>';
   } else
     echo '
-            <li class="notrecommended"><img src="not_recommended.jpg" '
-     . 'alt="" />&nbsp;'
+            <li class="notrecommended">'
      . translate( 'Your current database settings are not able...' ) . '</li>'
      . ( empty( $response_msg ) ? '' : '
-            <li class="notrecommended"><img src="not_recommended.jpg" '
-       . 'alt="" />&nbsp;' . $response_msg . '</li>' );
+            <li class="notrecommended">' . $response_msg . '</li>' );
 
   echo ( empty( $response_msg2 ) ? '' : '
-            <li class="notrecommended"><img src="not_recommended.jpg" '
-     . 'alt="" />&nbsp;<b>' . $response_msg2 . '</b></li>' ) . '
+            <li class="notrecommended"><b>' . $response_msg2 . '</b></li>' ) . '
           </ul>
         </td>
       </tr>
