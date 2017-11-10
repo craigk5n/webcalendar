@@ -198,6 +198,8 @@ if( empty( $error ) && ! empty( $control ) ) {
 }
 
 echo send_doctype( $appStr ) . '
+    <link href="css_cacher.php?login=__public__" rel="stylesheet">
+    <link href="includes/css/styles.css" rel="stylesheet">
     <!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->
     <script src="includes/js/prototype.js"></script>
     <script>
@@ -212,9 +214,7 @@ echo send_doctype( $appStr ) . '
       xlate[\'passwordsNoMatch\'] = \''
  . translate( 'The passwords were not identical.', true ) . '\';
     </script>
-    <script src="includes/js/register.js"></script>
-    <link href="css_cacher.php?login=__public__" rel="stylesheet" />
-    <link href="includes/css/styles.css" rel="stylesheet" />'
+    <script src="includes/js/register.js"></script>'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
@@ -225,10 +225,10 @@ echo send_doctype( $appStr ) . '
  . ( ! empty( $error )
   ? '
     <span style="color:#FF0000; font-weight:bold;">' . translate( 'Error' )
-   . ": $error" . '</span><br />'
-  : '<br /><br />' . ( empty( $control ) ? '' : '
+   . ": $error" . '</span><br>'
+  : '<br><br>' . ( empty ( $control ) ? '' : '
     <form action="login.php" method="post">
-      <input type="hidden" name="login" value="' . $user . '" />
+      <input name="login" type="hidden" value="' . $user . '">
       <table class="aligncenter" cellspacing="10" cellpadding="10">
         <tr>
           <td rowspan="3"><img src="images/register.gif"></td>
@@ -240,60 +240,56 @@ echo send_doctype( $appStr ) . '
         </tr>' : '' ) . '
         <tr>
           <td colspan="3" class="aligncenter"><input type="submit" value="'
-     . translate( 'Return to Login screen' ) . '" /></td>
+     . translate ( 'Return to Login screen' ) . '"></td>
         </tr>
       </table>
     </form>' ) . '
     <form action="register.php" method="post" onSubmit="return valid_form()"
         name="selfreg">
-      <input type="hidden" name="control" value="' . $form_control . '" />
+      <input name="control" type="hidden" value="' . $form_control . '">
       <table class="aligncenter" cellpadding="10" cellspacing="10">
         <tr>
-          <td rowspan="3"><img src="images/register.gif" alt="" /></td>
+          <td rowspan="3"><img src="images/register.gif" alt=""></td>
           <td class="alignright"><label class="colon">' . translate( 'Username' ) . '</label></td>
-          <td class="alignleft"><input type="text" id="user" name="user" value="'
-   . $user . '" size="20" maxlength="20" onChange="check_name();" /></td>
+          <td class="alignleft"><input id="user" maxlength="20" name="user" size="20" type="text" value="' . $user . '" onChange="check_name();"></td>
         </tr>
         <tr>
           <td class="alignright"><label class="colon">' . translate( 'First Name' ) . '</label></td>
-          <td class="alignleft"><input type="text" name="ufirstname" value="'
-   . $ufirstname . '" size="25" maxlength="25" /></td>
+          <td class="alignleft"><input maxlength="25" name="ufirstname" size="25" type="text" value="' . $ufirstname . '"></td>
         </tr>
         <tr>
           <td class="alignright"><label class="colon">' . translate( 'Last Name' ) . '</label></td>
-          <td class="alignleft"><input type="text" name="ulastname" value="'
-   . $ulastname . '" size="25" maxlength="25" /></td>
+          <td class="alignleft"><input maxlength="25" name="ulastname" size="25" type="text" value="' . $ulastname . '"></td>
         </tr>
         <tr>
           <td class="alignright" colspan="2"><label class="colon">' . translate( 'E-mail address' ) . '</label></td>
-          <td class="alignleft"><input type="text" name="uemail" id="uemail" value="'
-   . $uemail . '" size="40" maxlength="75" onChange="check_uemail();" /></td>
+          <td class="alignleft"><input id="uemail" maxlength="75" name="uemail" size="40" type="text" value="' . $uemail . '" onChange="check_uemail();"></td>
         </tr>
         <tr>
           <td ' . ( $SELF_REGISTRATION_FULL != 'Y'
     ? 'class="alignright" colspan="2"><label class="colon">' . translate( 'Password' ) . '</label></td>
           <td class="alignleft"><input name="upassword1" value="' . $upassword1
-     . '" size="15" type="password" /></td>
+     . '" size="15" type="password"></td>
         </tr>
         <tr>
           <td class="alignright" colspan="2"><label>'
            . translate( 'Password (again)' ) . '</label></td>
           <td class="alignleft"><input name="upassword2" value="' . $upassword2
-     . '" size="15" type="password" />'
+     . '" size="15" type="password">'
     : 'colspan="3" class="aligncenter"><label>'
      . translate( 'Your account information will be emailed to you.' )
      . '</label>' ) . '</td>
         </tr>
         <tr>
           <td colspan="3" class="aligncenter"><input type="submit" value="'
-   . translate( 'Submit' ) . '" /></td>
+   . translate ( 'Submit' ) . '"></td>
         </tr>
       </table>
-    </form>' ) . '<br /><br /><br /><br /><br /><br /><br /><br />
+    </form>' ) . '<br><br><br><br><br><br><br><br>
     <span class="cookies">' . translate( 'cookies-note' )
- . '</span><br />
-    <hr />
-    <br /><br />
+ . '</span><br>
+    <hr>
+    <br><br>
     <a href="' . $PROGRAM_URL . '" id="programname">' . $PROGRAM_NAME . '</a>';
 // Print custom trailer (since we do not call print_trailer function).
 if( ! empty( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {

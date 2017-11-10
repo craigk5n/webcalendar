@@ -7,7 +7,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @package WebCalendar
  */
 include_once 'includes/init.php';
@@ -79,9 +79,9 @@ if ( $search_others ) {
     for ( $i = 0; $i < count ( $users ); $i++ ) {
       if ( access_user_calendar ( 'view', $users[$i] ) ) {
         $newlist[] = $users[$i];
-        //echo "can access $users[$i] <br />";
+        //echo "can access $users[$i] <br>";
       } else {
-        //echo "cannot access $users[$i] <br />";
+        //echo "cannot access $users[$i] <br>";
       }
     }
     $users = $newlist;
@@ -253,7 +253,6 @@ if ( $matches > 0 ) {
 
 echo ": " . htmlentities ( $keywords ) . '</strong>.</p>';
 
-
 // now sort by number of hits
 if ( empty ( $error ) && empty ( $info ) ) {
   // no mtaches
@@ -272,7 +271,7 @@ echo '
       <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
         . '"  style="margin-left: 13px;" method="post">
        <input type="submit" value="'
-        . translate ( 'New Search' ) . '" /></form>
+        . translate ( 'New Search' ) . '"></form>
     ' . print_trailer ();
 
 ?>

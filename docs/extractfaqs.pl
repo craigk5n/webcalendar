@@ -72,7 +72,7 @@ for ( $i = 0; $i < @questions; $i++ ) {
   print "    <li><a href=\"#$anchor\">$q</a></li>\n";
 }
 print "  </ul></li>\n" if ( $thisCat ne '' );
-print "</ul>\n<hr/>\n<dl>\n";
+print "</ul>\n<hr>\n<dl>\n";
 
 for ( $i = 0; $i < @questions; $i++ ) {
   $q = $questions[$i];

@@ -15,7 +15,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @package WebCalendar
  * @subpackage Reports
  */
@@ -304,8 +304,8 @@ if ( empty ( $report_user ) )
 $day_str = $printerStr = '';
 $day_template = '<dt><b>${date}</b></dt><dd><dl>${events}</dl></dd>';
 $event_template = '<dt>${name}</dt>
-<dd><b class="colon">' . translate ( 'Date' ) . '</b> ${date}<br />
-<b class="colon">' . translate ( 'Time' ) . '</b> ${time}<br />
+<dd><b class="colon">' . translate ( 'Date' ) . '</b> ${date}<br>
+<b class="colon">' . translate ( 'Time' ) . '</b> ${time}<br>
 ${description}</dd>';
 $page_template = '<dl>${days}</dl>';
 

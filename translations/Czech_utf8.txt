@@ -14,7 +14,6 @@
 # $Id: Czech_utf8.txt,v 1.6 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-15-2008
 
-
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
@@ -46,7 +45,6 @@ __month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
-
 
 ########################################
 # Page: access.php
@@ -123,7 +121,7 @@ date-format-help: Určuje upřednostňovaný formát data.
 Date format: Formát data
 display-week-starts-on: Tímto lze určit, zda týden začíná v neděli a nebo v pondělí. Pokud vybereš pondělí, tak se použije pro čísla týdnu norma ISO.
 Week starts on: Začátek týdne
-time-format-help: Určuje jaký formát času používat:<br /><i>12ti hodinový:</i> Zobrazuje časy jako je 3dop., 8:30odp., atp.<br /><i>24 hodinový:</i> Zobrazuje časy např. jako 300, 2030, atp.
+time-format-help: Určuje jaký formát času používat:<br><i>12ti hodinový:</i> Zobrazuje časy jako je 3dop., 8:30odp., atp.<br><i>24 hodinový:</i> Zobrazuje časy např. jako 300, 2030, atp.
 Time format: Formát času
 12 hour: 12 hodin
 24 hour: 24 hodin
@@ -152,7 +150,7 @@ allow-view-other-help: Určuje, zda si může uživatel prohlížet kalendář n
 Allow viewing other users calendars: Povol prohlížení kalendářů jiných uživatelů
 require-approvals-help: Pokud je povoleno, uživatel bude muset danou událost nejprve potvrdit a teprve pak se mu zobrazí v kalendáři (samozřejmě, pokud nemá povoleno zobrazování nepotvrzených). Poznemenejme, že nastavením tohoto na "Ne" nevypne nutnost potvrzování událostí pro veřejně přístupné kalendá?e (pokud jsou veřejně přístupné kalendáře povoleny...).
 Require event approvals: Vyžaduj potvrzování událostí
-display-unapproved-help: Tímto určíš, jestli se mají v tvém kalendáři zobrazovat nepotvrzené události<br /> Pokud je nastaveno na "Ano", pak se nepotvrzené události zobrazí v kalendáři (jinou barvou písma).<br /> Pokud je nastaveno na "Ne", nebudou nepotvrzené události zobrazeny, dokud je někdo nepotvrdí.
+display-unapproved-help: Tímto určíš, jestli se mají v tvém kalendáři zobrazovat nepotvrzené události<br>Pokud je nastaveno na "Ano", pak se nepotvrzené události zobrazí v kalendáři (jinou barvou písma).<br>Pokud je nastaveno na "Ne", nebudou nepotvrzené události zobrazeny, dokud je někdo nepotvrdí.
 Display unapproved: Zobrazovat nepotvrzené události
 conflict-check-help: Kontroluje konflikty mezi událostmi (dvě události naplánované na stejnou dobu pro tutéž osobu). Pokud tuto kontrolu povolíš, i tak bude možno po potvrzení konfliktu naplánovat na stejnou dobu více událostí. Doporučujeme nechat tuto kontrolu zapnutou.
 Check for event conflicts: Kontrola na konflikty mezi událostmi
@@ -314,7 +312,7 @@ brief-description-help: Zde by měl být stručný popis události (kolem 20ti z
 Brief Description: Stručný popis
 full-description-help: Tímto bys měl doplňovat další detaily události. Tyto informace si bude moct prohlédnout ten, kdo klikne na zobrazení podrobností.
 Full Description: Detailní popis
-access-help: Určuje úroveň pro přístup k události.<br /> <i>Veřejné</i>: Kdokoli se může podívat na všechny podrobnosti o této události.<br /><i>Důvěrné</i>: Ostaní uvidí, že máš záznam v kalendáři v daný okamžik, ale neuvidí už zádné další podrobnosti.
+access-help: Určuje úroveň pro přístup k události.<br><i>Veřejné</i>: Kdokoli se může podívat na všechny podrobnosti o této události.<br><i>Důvěrné</i>: Ostaní uvidí, že máš záznam v kalendáři v daný okamžik, ale neuvidí už zádné další podrobnosti.
 Access: Přístup
 priority-help: Určuje prioritu události. Události s vyšší prioritou budou zobrazeny tučně.
 Priority: Priorita
@@ -328,8 +326,8 @@ Untimed event: Nenačasovaná událost
 Timed event: Načasovaná událost
 All day event: Celodenní událost
 Timezone Offset: časová zóna
-time-help: Tímto se urdžuje přesný čas události.<br /><i>Nemusí se sem nic vyplňovat.</i>
-duration-help: Tímto lze určit dobu trvání (v minutách) dané události.<br /><i>Toto políčko může zůstat prázdné.</i>
+time-help: Tímto se urdžuje přesný čas události.<br><i>Nemusí se sem nic vyplňovat.</i>
+duration-help: Tímto lze určit dobu trvání (v minutách) dané události.<br><i>Toto políčko může zůstat prázdné.</i>
 end-time-help: Určuje očekávaný konec události.
 participants-help: Seznam účastníků této události.
 external-participants-help: Určuje seznam zůčastněných události, kterí nepatří mezi uživatele tohoto kalendářového systému. Tyto uživatele je možno vypsat jednoho po druhém, jeden na řádek (včetně emailové adresy). Pokud bude zadána emailová adresa, uživatel bude moct přijímat sdělení a připomínky.

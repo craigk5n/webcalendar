@@ -30,8 +30,8 @@ sub add_links {
 
   $in =~ s/&/&amp;/g;
   $in =~ s/&amp&amp;/&amp;/g;
-  $in =~ s/<br\s*\/>(Note|Notes):/<br\/><br\/><span class=\"note\">$1<\/span>/gi;
-  $in =~ s/<br\s*\/>(TODO):/<br\/><br\/><span class=\"note\">$1<\/span>/gi;
+  $in =~ s/<br\s*\>(Note|Notes):/<br><br><span class=\"note\">$1<\/span>/gi;
+  $in =~ s/<br\s*\>(TODO):/<br><br><span class=\"note\">$1<\/span>/gi;
 
   return $in;
 }
@@ -40,13 +40,13 @@ sub print_function {
   my ( $loc ) = @_;
   $out{$name} = "<h3><a name=\"$name\">$name</a></h3>\n";
   $out{$name} .= "<tt>$name ( " . '$' . join ( ', $', @params ) .
-    " )</tt><br /><br />\n";
+    " )</tt><br><br>\n";
   if ( defined ( $description ) ) {
     $out{$name} .= "<span class=\"prompt\">Description:</span>" .
       "<blockquote>";
     $out{$name} .= add_links ( $description ) . "</blockquote>\n";
   }
-  $out{$name} .= "<span class=\"prompt\">Parameters:</span><br />\n<ul>\n";
+  $out{$name} .= "<span class=\"prompt\">Parameters:</span><br>\n<ul>\n";
   if ( @params == 0 ) {
     $out{$name} .= "<li>None</li>\n";
   }
@@ -61,7 +61,7 @@ sub print_function {
     ( $returns eq '' ? "Nothing" : add_links ( $returns ) ) . "</blockquote>\n";
   $out{$name} .= "<span class=\"prompt\">Location:</span>" .
     "<blockquote>$loc</blockquote>\n";
-  $out{$name} .= "<br /><br />\n";
+  $out{$name} .= "<br><br>\n";
 }
 
 %funcNames = ( );
@@ -175,12 +175,10 @@ while ( <F> ) {
 close ( F );
 
 print<<EOF;
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
 <title>$TITLE</title>
 <style>
 body {
@@ -265,19 +263,15 @@ foreach $name ( sort keys ( %out ) ) {
   print "<li><a href=\"#$name\">$name</a></li>\n";
 }
 
-print "</ul>\n<hr />\n";
+print "</ul>\n<hr>\n";
 
 foreach $name ( sort keys ( %out ) ) {
-  print "<br /><br />\n" . $out{$name};
+  print "<br><br>\n" . $out{$name};
 }
 
 print<<EOF;
-<hr/>
-<p>
-      <a href="http://validator.w3.org/check?uri=referer"><img
-          src="http://www.w3.org/Icons/valid-xhtml10" border="0"
-          alt="Valid XHTML 1.0!" height="31" width="88" /></a>
-</p>
+<hr>
+<p><a href="http://validator.w3.org/check?uri=referer"><img src="../images/HTML5_Logo.png" alt="Valid HTML5!"></a></p>
 </body>
 </html>
 EOF

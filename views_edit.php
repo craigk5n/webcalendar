@@ -33,8 +33,8 @@ print_header ( $INC, '', $BodyX, $disableCustom );
 $newview = true;
 $viewname = $viewtype = '';
 $viewisglobal = 'N';
-$checked = ' checked="checked"';
-$selected = ' selected="selected"';
+$checked = ' checked';
+$selected = ' selected';
 
 $unnameViewStr = translate ( 'Unnamed View' );
 
@@ -84,18 +84,18 @@ if ( ! empty( $error ) ) {
 
 if ( $newview ) {
   $v = [];
-  echo '<h2>' . translate ( 'Add View' ) . "</h2>\n";
-  echo '<input type="hidden" name="add" value="1" />' . "\n";
+  echo '<h2>' . translate ( 'Add View' ) . '</h2>
+    <input name="add" type="hidden" value="1">';
 } else {
-  echo '<h2>' . translate ( 'Edit View' ) . "</h2>\n";
-  echo "<input type=\"hidden\" name=\"id\" value=\"$id\" />\n";
+  echo '<h2>' . translate ( 'Edit View' ) . '</h2>
+    <input name="id" type="hidden" value="' . "$id\">";
 }
 ?>
 
 <table>
 <tr><td>
  <label for="viewname" class="colon"><?php etranslate ( 'View Name' )?></label></td><td colspan="3">
- <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" />
+ <input id="viewname" name="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>">
 </td></tr>
 <tr><td>
  <label for="viewtype" class="colon"><?php etranslate ( 'View Type' )?></label></td><td colspan="3">
@@ -140,7 +140,7 @@ echo '<tr><td><label class="colon">'
 <tr><td colspan="4">
 <div id="viewuserlist">
 &nbsp;&nbsp;
- <select name="users[]" id="viewusers" size="10" multiple="multiple">
+ <select id="viewusers" multiple name="users[]" size="10">
 <?php
   // get list of all users
   $users = get_my_users ( '', 'view' );
@@ -160,16 +160,16 @@ echo '<tr><td><label class="colon">'
 ?>
 </select>
 <?php if ( $GROUPS_ENABLED == 'Y' ) { ?>
- <input type="button" onclick="selectUsers()" value="<?php etranslate ( 'Select' );?>..." />
+ <input type="button" value="<?php etranslate ( 'Select' );?>..." onclick="selectUsers()">
 <?php } ?>
 </div>
 </td></tr>
 <tr><td colspan="4" class="aligncenter">
-<br />
-<input type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>" />
+<br>
+<input name="action" type="submit" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>">
 <?php if ( ! $newview ) { ?>
  <input type="submit" name="delete" value="<?php etranslate( 'Delete' )?>" onclick="return confirm( '<?php
-  translate( 'Are you sure you want to delete this entry?' ); ?>' )" />
+  translate ( 'Are you sure you want to delete this entry?' ); ?>')">
 <?php } ?>
 </td></tr>
 </table>

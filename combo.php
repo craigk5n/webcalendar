@@ -28,11 +28,6 @@ include 'includes/classes/DocList.class';
 include 'includes/classes/AttachmentList.class';
 include 'includes/classes/CommentList.class';
 
-//send_no_cache_header();
-
-$LOADING = '<div style="height: 220px; padding-top: 190px;"><center><img src="images/loading_animation.gif" alt="" /></center></div>';
-$SMALL_LOADING = '<img src="images/loading_animation_small.gif" alt="..." width="16" height="16" />';
-
 if ( $CATEGORIES_ENABLED == 'Y' )
   load_user_categories();
 
@@ -99,12 +94,11 @@ $bodyExtras = 'onload="onLoadInit()"';
 
 // Add ModalBox javascript/CSS & Tab code, Auto-complete
 $headExtras = '
-<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
-<link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
-<script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
-<link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css" 
-media="screen" />
-<script type="text/javascript" src="includes/js/autocomplete.js"></script>
+<link href="includes/tabcontent/tabcontent.css" rel="stylesheet">
+<link href="includes/js/modalbox/modalbox.css" rel="stylesheet" media="screen">
+<script src="includes/tabcontent/tabcontent.js"></script>
+<script src="includes/js/modalbox/modalbox.js"></script>
+<script src="includes/js/autocomplete.js"></script>
 ';
 
 print_header(
@@ -126,8 +120,8 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
   ?>
   <td class="aligntop" id="categoryselection">Categories:</td>
   <td class="aligntop" onmouseover="setCategoryVisibility(true)" onmouseout="setCategoryVisibility(false)">
-  <img id="catexpand" src="images/expand.gif" />
-  <span id="selectedcategories">All</span><br />
+  <img src="images/expand.gif" id="catexpand">
+  <span id="selectedcategories"><?php etranslate ( 'All' )?></span><br>
   <div id="categorylist" style="display:none">
   <?php
   foreach ( $categories as $catId => $val ) {
@@ -135,7 +129,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     if ( $catId > 0 ) {
       ?>
       <nobr><input type="checkbox" id="<?php echo $name;?>" name="<?php echo $name;?>"
-        onclick="handleCategoryCheckboxChange()" value="Y" /><label for="<?php echo $name;?>">
+        value="Y" onclick="handleCategoryCheckboxChange()"><label for="<?php echo $name;?>">
         <?php echo htmlspecialchars ( $categories[$catId]['cat_name'] ) ?>
         </label></nobr>&nbsp;
       <?php
@@ -144,9 +138,9 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     }
   }
   ?>
-  <br /><input style="font-size: 80%" type="button" value="<?php etranslate("Select All");?>" onclick="selectAllCategories()" />
+  <br><input style="font-size: 80%" type="button" value="<?php etranslate ( 'Select All' );?>" onclick="selectAllCategories()">
     &nbsp;&nbsp;
-  <input style="font-size: 80%" type="button" value="<?php etranslate("Select None");?>" onclick="selectNoCategories()" />
+  <input style="font-size: 80%" type="button" value="<?php etranslate ( 'Select None' );?>" onclick="selectNoCategories()">
   <?php
 ?>
 </div>
@@ -191,9 +185,9 @@ Agenda content goes here...
 <div id="contentTasks" class="tabcontent">
 <table id="tasktable">
 </table>
-<br/>
+<br>
 <span id="addtask" class="clickable fakebutton"
-  onclick="taskAddPopup()"/><?php etranslate('Add Task');?></span>
+  onclick="taskAddPopup()"><?php etranslate ( 'Add Task' );?></span>
 </div>
 
 
@@ -240,13 +234,13 @@ Agenda content goes here...
 
 <!-- Hidden div tag for Quick Add dialog -->
 <div id="quickAddDiv" style="display: none;">
-<input type="hidden" name="quickAddParticipants" id="quickAddParticipants" value="" />
+<input id="quickAddParticipants" name="quickAddParticipants" type="hidden" value="">
 <table>
 <tr><td class="aligntop bold"><?php etranslate('Date');?>:</td>
   <td><?php echo datesel_Print ( 'quickAddDate', $date );?>
   </td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
-  <td><input id="quickAddName" name="quickAddName" onfocus="this.select();" /></td></tr>
+  <td><input id="quickAddName" name="quickAddName" onfocus="this.select();"></td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
   <td><textarea id="quickAddDescription" name="quickAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
@@ -267,9 +261,9 @@ Agenda content goes here...
 <tr><td class="aligntop bold"><?php etranslate('Participants');?>:</td>
   <td><span id="quickAddParticipantList"></span>
       &nbsp;&nbsp;
-      <input type="text" id="quickAddNewParticipant" name="quickAddNewParticipant" size="20" /></td></tr>
+      <input id="quickAddNewParticipant" name="quickAddNewParticipant" size="20" type="text"></td></tr>
 <tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="eventAddHandler()" /><br />
+<tr><td colspan="2"><input type="button" value="<?php etranslate ( 'Save' );?>" onclick="eventAddHandler()"><br>
 <span class="clickable" onclick="addEventDetail()"><?php etranslate("Add event detail");?></span>
 </td></tr>
 </table>
@@ -284,7 +278,7 @@ Agenda content goes here...
 <tr><td class="aligntop bold"><?php etranslate('Due Date');?>:</td>
   <td><?php echo datesel_Print('task_due_date', $date); ?></td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Brief Description');?>:</td>
-  <td><input id="taskAddName" name="taskAddName" /></td></tr>
+  <td><input id="taskAddName" name="taskAddName"></td></tr>
 <tr><td class="aligntop bold"><?php etranslate('Full Description');?>:</td>
   <td><textarea id="taskAddDescription" name="taskAddDescription"
        rows="4" cols="40" wrap="virtual"></textarea></td></tr>
@@ -303,15 +297,16 @@ Agenda content goes here...
      </select></td></tr>
 <?php } ?>
 <tr><td colspan="2">&nbsp;</td></tr>
-<tr><td colspan="2"><input type="button" value="<?php etranslate('Save');?>" onclick="taskAddHandler()" /><br />
+<tr><td colspan="2"><input type="button" value="<?php etranslate ( 'Save' );?>" onclick="taskAddHandler()"><br>
 <span class="clickable" onclick="taskAddDetail()"><?php etranslate("Add task detail");?></span>
 </td></tr>
 </table>
 </form>
 </div>
 
-<script type="text/javascript">
-
+<script>
+var LOADING = '<div style="height: 220px; padding-top: 190px; text-align:center"><img src="images/loading_animation.gif" alt=""></div>';
+var SMALL_LOADING = '<img src="images/loading_animation_small.gif" alt="..." style="width:16px; height:16px;">';
 // Called when page is loaded.
 // Load events for the current month.
 // Load all tasks.
@@ -573,11 +568,11 @@ function ajax_get_events ( year, month, day )
   }
   //alert ( "Loading startdate=" + startdate );
 
-  $('contentDay').innerHTML = '<?php echo $LOADING;?>';
-  $('contentWeek').innerHTML = '<?php echo $LOADING;?>';
-  $('contentMonth').innerHTML = '<?php echo $LOADING;?>';
-  $('contentYear').innerHTML = '<?php echo $LOADING;?>';
-  $('contentAgenda').innerHTML = '<?php echo $LOADING;?>';
+  $('contentDay').innerHTML =
+  $('contentMonth').innerHTML =
+  $('contentWeek').innerHTML =
+  $('contentYear').innerHTML =
+  $('contentAgenda').innerHTML = LOADING;
 
   new Ajax.Request('events_ajax.php',
   {
@@ -622,7 +617,7 @@ function ajax_get_tasks ()
     update_task_display ();
     return;
   }
-  //$('contentTasks').innerHTML = '<?php echo $LOADING;?>';
+  //$('contentTasks').innerHTML = LOADING;
 
   new Ajax.Request('events_ajax.php',
   {
@@ -715,12 +710,12 @@ function view_event ( key, location )
     '" class="fakebutton"><?php etranslate('View Event')?></a>';
 
   // For now, blank out participants.
-  $('participants').innerHTML = '<?php echo $SMALL_LOADING;?>';
+  $('participants').innerHTML = SMALL_LOADING;
 <?php if ( Doc::attachmentsEnabled() ) { ?>
-  $('attachments').innerHTML = '<?php echo $SMALL_LOADING;?>';
+  $('attachments').innerHTML = SMALL_LOADING;
 <?php } ?>
 <?php if ( Doc::commentsEnabled() ) { ?>
-  $('comments').innerHTML = '<?php echo $SMALL_LOADING;?>';
+  $('comments').innerHTML = SMALL_LOADING;
 <?php } ?>
 
   // Load participants via AJAX
@@ -751,7 +746,7 @@ function view_event ( key, location )
         var participant = response.participants[i];
         var login = participant.login;
         var fullname = users[login] ? users[login] : login;
-        if ( text.length > 0 ) text += "<br />";
+        if ( text.length > 0 ) text += '<br>';
         text += fullname;
         if ( participant.status == 'W' )
           text += ' (?)';
@@ -763,7 +758,7 @@ function view_event ( key, location )
       for ( var i = 0; i < response.attachments.length; i++ ) {
         var attachment = response.attachments[i];
         var summary = attachment.summary;
-        if ( text.length > 0 ) text += "<br />";
+        if ( text.length > 0 ) text += '<br>';
         text += summary;
       }
       if ( response.attachments.length == 0 )
@@ -775,9 +770,9 @@ function view_event ( key, location )
       text = '<dl style="margin-top: 0;">';
       for ( var i = 0; i < response.comments.length; i++ ) {
         var comment = response.comments[i];
-        text += "<dt>" + comment.description + "<br />" +
-          comment.owner + " @ " + comment.datetime + "</dt>" +
-          "<dd>" + comment.text + "</dd>";
+        text += '<dt>' + comment.description + '<br>' +
+          comment.owner + ' @ ' + comment.datetime + '</dt>' +
+          '<dd>' + comment.text + '</dd>';
       }
       text += "</dl>\n";
       if ( response.comments.length == 0 )
@@ -889,7 +884,7 @@ function prev_month_link ( year, month )
   }
   return '<span id="prevmonth" class="clickable noprint" onclick="ajax_get_events(' +
     y + ',' + m + ',1)"><img src="images/combo-prev.png" alt="' +
-    shortMonths[m-1] + '"/></span>';
+    shortMonths[m-1] + '"></span>';
 }
 
 function next_month_link ( year, month )
@@ -903,7 +898,7 @@ function next_month_link ( year, month )
     y = year;
   }
   return '<span id="nextmonth" class="clickable noprint" onclick="ajax_get_events(' +
-    y + ',' + m + ',1)"><img src="images/combo-next.png" alt="' + shortMonths[m-1] + '"/></span>';
+    y + ',' + m + ',1)"><img src="images/combo-next.png" alt="' + shortMonths[m-1] + '"></span>';
 }
 
 // Build a table of quick links to all the months in the current
@@ -915,7 +910,7 @@ function month_view_nav_links ( year, month )
   ret = '<table class="noprint monthnavlinks">';
   ret += '<tr><td rowspan="2" class="aligncenter clickable" onclick="ajax_get_events(' + (parseInt(year)-1) +
       ',' + month + ',1)">' +
-    '<img src="images/combo-prev.png"/><br/>' + (year-1) + '</td>';
+    '<img src="images/combo-prev.png"><br>' + (year-1) + '</td>';
   for ( i = 1; i <= 6; i++ ) {
     ret += '<td class="';
     if ( i == month )
@@ -925,7 +920,7 @@ function month_view_nav_links ( year, month )
   }
   ret += '<td rowspan="2" class="aligncenter clickable" onclick="ajax_get_events(' + (parseInt(year)+1) +
       ',' + parseInt(month) + ',1)">' +
-    '<img src="images/combo-next.png"/><br/>' + (parseInt(year)+1) + '</td>';
+    '<img src="images/combo-next.png"><br>' + (parseInt(year)+1) + '</td>';
   // Add link to today
   var today = new Date();
   var d = today.getDate();
@@ -933,8 +928,8 @@ function month_view_nav_links ( year, month )
   var y = today.getYear() + 1900;
   ret += '<td rowspan="2" class="aligncenter clickable" onclick="ajax_get_events(' +
     y + ',' + m + ',' + d + ')">' +
-   '<img src="images/combo-today.png" style="vertical-align: middle;" />'
-   + "<br/><?php etranslate('Today');?></td></tr>";
+   '<img src="images/combo-today.png" style="vertical-align: middle;">'
+   + '<br><?php etranslate ( 'Today' );?></td></tr>';
   // Jul - Dec
   for ( i = 7; i <= 12; i++ ) {
     ret += '<td class="';
@@ -971,7 +966,7 @@ function today_link()
   var y = today.getYear() + 1900;
   return "<span class=\"clickable fakebutton noprint\" onclick=\"ajax_get_events(" +
     y + "," + m + "," + d + ")\">" +
-   '<img src="images/combo-today.png" style="vertical-align: middle;" />'
+   '<img src="images/combo-today.png" style="vertical-align: middle;">'
    + " <?php etranslate('Today');?></span>";
 }
 
@@ -1068,7 +1063,7 @@ function quickAddBuildUserElement ( login )
   var ret = '<span class="participant" id="p_' + login +
     '">' + login + '<span class="partX">' +
     '<img src="images/close.png" onclick="quickAddRemoveUser(\'' +
-    login + '\')" alt="x" />' +
+    login + '\')" alt="x">' +
     '</span></span>';
   return ret;
 }
@@ -1290,7 +1285,7 @@ function build_month_view ( year, month )
         ret += " onclick=\"return monthCellClickHandler(" + key + ")\"";
 <?php } ?>
         ret += "><span class=\"dayofmonth\">" +
-          '<a href="#" onclick="switchingToDayView=true;ajax_get_events('+year+','+month+','+i+');views.expandit(0);">' + i + "</a></span><br />";
+          '<a href="#" onclick="switchingToDayView=true;ajax_get_events('+year+','+month+','+i+');views.expandit(0);">' + i + "</a></span><br>";
         // If eventArray is null here, that means we have not loaded
         // event data for that date.
         for ( var l = 0; eventArray && l < eventArray.length; l++ ) {
@@ -1309,7 +1304,7 @@ function build_month_view ( year, month )
             var catId = myEvent._category;
             if ( catId < 0 ) catId = 0 - catId;
             if ( categories[catId] && categories[catId].icon ) {
-              iconImg += '<img src="' + categories[catId].icon + '" />';
+              iconImg += '<img src="' + categories[catId].icon + '">';
             }
             if ( categories[catId] && categories[catId].color ) {
               catColorClass = "cat_" + catId;
@@ -1326,7 +1321,7 @@ function build_month_view ( year, month )
           //  eventRet += ' "style=background-color:' + catColor + ';"';
           eventRet += ">";
           if ( iconImg == '' ) {
-            //eventRet += '<img src="images/event.gif" alt="." />';
+            //eventRet += '<img src="images/event.gif" alt=".">';
           } else {
             eventRet += iconImg;
           }
@@ -1389,7 +1384,7 @@ function build_year_view ( year, month )
     ret = prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate ( 'Refresh' );?>"></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"yeartitle\">" + year + "</span>" +
@@ -1404,7 +1399,7 @@ function build_year_view ( year, month )
         ret += "<tr>";
       ret += "<td class=\"monthblock aligntop aligncenter\" width=\"25%\">";
       ret += '<a href="#" onclick="ajax_get_events('+year+','+(n+1)+',1);views.expandit(2);">' +
-         months[n] + "</a><br/>\n";
+         months[n] + "</a><br>\n";
       ret += "<table class=\"monthtable\">";
 
       d.setMonth ( n );
@@ -1461,7 +1456,7 @@ function build_agenda_view ( year, month )
       prev_year_link ( year, month ) +
       next_year_link ( year, month ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate ( 'Refresh' );?>"></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"monthtitle\">" + months[month-1] + " " + year + "</span>" +
@@ -1523,12 +1518,12 @@ function build_agenda_view ( year, month )
             var catId = myEvent._category;
             if ( catId < 0 ) catId = 0 - catId;
             if ( categories[catId] && categories[catId].icon ) {
-              iconImg += '<img src="' + categories[catId].icon + '" />';
+              iconImg += '<img src="' + categories[catId].icon + '">';
             }
           }
 <?php } ?>
           if ( iconImg == '' ) {
-            ret += '<img src="images/event.gif" alt="." />';
+            ret += '<img src="images/event.gif" alt=".">';
           } else {
             ret += iconImg;
           }
@@ -1651,10 +1646,10 @@ function build_task_view ()
   img[taskSortCol] = ( taskSortAsc ? 'sort-up' : 'sort-down' );
 
   var content =
-    '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php etranslate('Name');?><img src="images/' + img[0] + '.png"/></th>' +
-    '<th class="clickable" onclick="task_sort_handler(1)"><?php etranslate('Due Date');?><img src="images/' + img[1] + '.png"/></th>' +
-    '<th class="clickable" onclick="task_sort_handler(2)"><?php etranslate('Priority');?><img src="images/' + img[2] + '.png"/></th>' +
-    '<th class="clickable" onclick="task_sort_handler(3)"><?php etranslate('Category');?><img src="images/' + img[3] + '.png"/></th>' +
+    '<tr><th class="clickable" onclick="task_sort_handler(0)"><?php etranslate ( 'Name' );?><img src="images/' + img[0] + '.png"></th>' +
+    '<th class="clickable" onclick="task_sort_handler(1)"><?php etranslate ( 'Due Date' );?><img src="images/' + img[1] + '.png"></th>' +
+    '<th class="clickable" onclick="task_sort_handler(2)"><?php etranslate ( 'Priority' );?><img src="images/' + img[2] + '.png"></th>' +
+    '<th class="clickable" onclick="task_sort_handler(3)"><?php etranslate ( 'Category' );?><img src="images/' + img[3] + '.png"></th>' +
     '</tr>' + "\n";
   for ( var i = 0; i < tasks.length; i++ ) {
     var task = tasks[i];
@@ -1663,7 +1658,7 @@ function build_task_view ()
     var iconImg = '';
     var catId = task._category;
     if ( catId && catId > 0 && categories[catId] && categories[catId].icon ) {
-      iconImg += '<img src="' + categories[catId].icon + '" />';
+      iconImg += '<img src="' + categories[catId].icon + '">';
     }
     var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
     content += '<tr><td class="' + cl + '">' +
@@ -1718,7 +1713,7 @@ function build_day_view ( year, month, day )
       prev_month_link_dayview ( year, month, day ) +
       next_month_link_dayview ( year, month, day ) +
       "<span id=\"refresh\" class=\"clickable fakebutton noprint\" onclick=\"refresh()\">" +
-      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate('Refresh');?>" /></span>' +
+      '<img src="images/combo-refresh.png" style="vertical-align: middle;" alt="<?php etranslate ( 'Refresh' );?>"></span>' +
       today_link() +
       "&nbsp;" +
       "<span class=\"daytitle\">" + format_date ( dateYmd, true ) +"</span>" +
@@ -1769,12 +1764,12 @@ var pos = '0';
         var catId = myEvent._category;
         if ( catId < 0 ) catId = 0 - catId;
         if ( categories[catId] && categories[catId].icon ) {
-          iconImg += '<img src="' + categories[catId].icon + '" />';
+          iconImg += '<img src="' + categories[catId].icon + '">';
         }
       }
 <?php } ?>
       if ( iconImg == '' ) {
-        thisEvent += '<img src="images/event.gif" alt="." />';
+        thisEvent += '<img src="images/event.gif" alt=".">';
       } else {
         thisEvent += iconImg;
       }
@@ -1968,12 +1963,12 @@ function format_description ( desc )
     ret = desc;
   } else {
     // No HTML found, replace \n with line breaks
-    ret = desc.replace (/\n/g,"<br />");
+    ret = desc.replace(/\n/g,'<br>');
   }
 <?php } else { ?>
   // HTML not allowed in description
   // TODO: convert URLs into active links
-  ret = desc.replace (/\n/g,"<br />");
+  ret = desc.replace(/\n/g,'<br>');
 <?php } ?>
   return ret;
 }

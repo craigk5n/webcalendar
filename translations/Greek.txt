@@ -13,7 +13,6 @@
 # $Id: Greek.txt,v 1.25.2.1 2012/03/11 19:02:57 cknudsen Exp $
 # Translation last updated on 03-11-2012
 
-
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
@@ -45,7 +44,6 @@ __month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
-
 
 ########################################
 # Page: about.php
@@ -624,8 +622,8 @@ hour ahead of you: =
 hour behind you: =
 hours ahead of you: =
 hours behind you: =
-XXX is in a different timezone (ahead): (XXX is in a different timezone; XXX ahead of you.<br />&nbsp;XXX)
-XXX is in a different timezone (behind): (XXX is in a different timezone; XXX behind you.<br />&nbsp;XXX)
+XXX is in a different timezone (ahead): (XXX is in a different timezone; XXX ahead of you.<br>&nbsp;XXX)
+XXX is in a different timezone (behind): (XXX is in a different timezone; XXX behind you.<br>&nbsp;XXX)
 Time entered here is based on your Timezone.: =
 Edit Entry: Επεξεργασία καταχώρισης
 Details: Λεπτομέρειες
@@ -1294,7 +1292,7 @@ New Search: =
 #
 # << MISSING >>
 # For questions about WebCalendar security see the forums:
-# English text: For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net;<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
+# English text: For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net;<br><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
 #
 View your current PHP settings: Προβάλλετε τις τρέχουσες ρυθμίσεις PHP.
 Security Issue: Θέμα ασφαλείας
@@ -1309,7 +1307,7 @@ You should change the password of the default admin user.: Θα πρέπει ν�
 #
 # << MISSING >>
 # item XXX should not be writable:
-# English text: The following item should not be writable:<br /><tt>XXX</tt>
+# English text: The following item should not be writable:<br><tt>XXX</tt>
 #
 #
 # << MISSING >>

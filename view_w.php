@@ -59,19 +59,17 @@ echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_w.php?id=' . $id
  . '&amp;date=' . sprintf ( "%04d%02d%02d", date ( 'Y', $prev ),
-  date ( 'm', $prev ), date ( 'd', $prev ) ) . '">
-        <img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
+  date ( 'm', $prev ), date ( 'd', $prev ) ) . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '"></a>
       <a title="' . $nextStr . '" class="next" href="view_w.php?id=' . $id
  . '&amp;date=' . sprintf ( "%04d%02d%02d", date ( 'Y', $next ),
-  date ( 'm', $next ), date ( 'd', $next ) ) . '">
-        <img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+  date ( 'm', $next ), date ( 'd', $next ) ) . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '"></a>
       <div class="title">
         <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '',
   false ) . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
- . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br />
+ . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br>
         <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
       </div>
-    </div><br />';
+    </div><br>';
 
 // The table has names across the top and dates for rows. Since we need to spit
 // out an entire row before we can move to the next date, we'll save up all the

@@ -19,7 +19,7 @@ load_user_categories();
 
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
-$selected = ' selected="selected" ';
+$selected = ' selected ';
 
 print_header ( array ( 'js/export_import.php', 'js/visible.php' ) );
 echo '
@@ -61,7 +61,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="include_layers" id="include_layers" '
-   . 'value="y" />
+   . 'value="y">
             <label for="include_layers">' . translate ( 'Include all layers' )
    . '</label>
           </td>
@@ -71,7 +71,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="include_deleted" id="include_deleted" '
- . 'value="y" />
+ . 'value="y">
             <label for="include_deleted">'
  . translate ( 'Include deleted entries' ) . '</label>
           </td>
@@ -80,7 +80,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="use_all_dates" id="exportall" '
- . 'value="y" onclick="toggle_datefields( \'dateArea\', this );" />
+ . 'value="y" onclick="toggle_datefields(\'dateArea\', this);">
             <label for="exportall">' . translate ( 'Export all dates' )
  . '</label>
           </td>
@@ -106,7 +106,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
         </tr>
         <tr>
           <td colspan="2"><input type="submit" value="'
- . translate ( 'Export' ) . '" /></td>
+ . translate ( 'Export' ) . '"></td>
         </tr>
       </table>
     </form>

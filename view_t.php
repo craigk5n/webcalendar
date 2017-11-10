@@ -29,7 +29,6 @@ view_init ( $id );
 
 $can_add = ( empty ( $ADD_LINK_IN_VIEWS ) || $ADD_LINK_IN_VIEWS != 'N' );
 
-
 $entrySlots = ( $ENTRY_SLOTS > 144 ? 144 : $ENTRY_SLOTS );
 $yardSlots = ( int ) 60 / ( 1440 / $entrySlots ); //Number of divisions per hour.
 $slotValue = 60 / $yardSlots; //Minutes per division.
@@ -299,17 +298,17 @@ echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_t.php?id=' . $id .
   '&amp;date=' . $prevdate
- . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
+ . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '"></a>
       <a title="' . $nextStr . '" class="next" href="view_t.php?id=' . $id .
   '&amp;date=' . $nextdate
- . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+ . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '"></a>
       <div class="title">
         <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
- . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br />
+ . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br>
         <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
       </div>
-    </div><br /><br />';
+    </div><br><br>';
 
 // The table has names across the top and dates for rows. Since we need to
 // spit out an entire row before we can move to the next date, we'll save up all

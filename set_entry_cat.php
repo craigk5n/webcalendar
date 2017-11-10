@@ -119,8 +119,8 @@ else {
   echo <<<EOT
     <h2>{$setCatStr}</h2>
     <form action="set_entry_cat.php" method="post" name="selectcategory">
-      <input type="hidden" name="date" value="{$date}" />
-      <input type="hidden" name="id" value="{$id}" />
+      <input name="date" type="hidden" value="{$date}">
+      <input name="id" type="hidden" value="{$id}">
       <table cellpadding="5">
         <tr class="aligntop">
           <td class="bold colon">{$briefStr}</td>
@@ -128,19 +128,17 @@ else {
         </tr>
         <tr>
           <td class="tooltip aligntop" title="{$catHelpStr}">
-            <label for="entry_categories" class="colon">{$catStr}<br /></label>
-            <input type="button" value="{$editStr}" onclick="editCats( event )" />
+            <label class="colon" for="entry_categories">{$catStr}<br></label>
+            <input type="button" value="{$editStr}" onclick="editCats(event)">
           </td>
           <td class="aligntop">
-            <input readonly="readonly" type="text" name="catnames"
-              value="{$catNames}" size="75" onclick="editCats( event )" /><br />
+            <input name="catnames" readonly size="75" type="text" value="{$catNames}" onclick="editCats(event)"><br>
             {$globalNoteStr}
-            <input type="hidden" name="cat_id" id="entry_categories"
-              value="{$catList}" />
+            <input id="entry_categories" name="cat_id" type="hidden" value="{$catList}">
           </td>
         </tr>
         <tr class="aligntop">
-          <td colspan="2"><br /><input type="submit" value="{$saveStr}" /></td>
+          <td colspan="2"><br><input type="submit" value="{$saveStr}"></td>
         </tr>
       </table>
     </form>

@@ -47,14 +47,14 @@ function parse_gitlog ( $cal_file ) {
         // Everything else is the commit message
         $inMessage = true;
         // skip any leading blank lines
-        if ( strlen ( $message ) > 0 || strlen ( trim ( $line ) ) > 0 ) {
-          if ( strlen ( $message ) > 0 )
+        if ( mb_strlen ( $message ) || mb_strlen ( trim ( $line ) ) ) {
+          if ( mb_strlen ( $message ) )
             $message .= "\n";
           $message .= $line;
         }
       }
     }
-    if ( strlen ( $commitId ) > 0 ) {
+    if ( mb_strlen ( $commitId ) ) {
       $obj = create_event_object ( $commitId, $author, $date, $message );
       $import_data[] = $obj;
     }

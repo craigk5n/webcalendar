@@ -6,7 +6,7 @@
  *
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @version $Id: edit_remotes.php,v 1.22 2009/11/22 16:47:45 bbannon Exp $
  * @package WebCalendar
  * @subpackage Edit Remotes
@@ -43,7 +43,7 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
 
   if ( empty ( $nid ) ) {
     $id_display = '<input type="text" name="nid" id="nid" size="20" '
-     . 'maxlength="20" onchange="check_name();" /> '
+     . 'maxlength="20" onchange="check_name();"> '
      . translate ( 'word characters only' );
     $lableStr = translate ( 'Add Remote Calendar' );
   } else {
@@ -53,7 +53,7 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
     $button = translate ( 'Save' );
     $buttonAction = 'Save';
     $id_display = $nid . ' <input type="hidden" name="nid" id="nid" value="'
-     . $nid . '" />';
+     . $nid . '">';
     $lableStr = translate ( 'Edit Remote Calendar' );
     $remotestemp_login = substr ( $remotestemp_login, strlen ( $NONUSER_PREFIX ) );
   }
@@ -91,17 +91,17 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
         <tr>
           <td><label for="nfirstname">{$firstNameStr}:</label></td>
           <td colspan="3"><input type="text" name="nfirstname" id="nfirstname"
-            size="20" maxlength="25" value="{$firstNameValue}" /></td>
+            maxlength="25" size="20" value="{$firstNameValue}"></td>
         </tr>
         <tr>
           <td><label for="nlastname">{$lastNameStr}:</label></td>
           <td colspan="3"><input type="text" name="nlastname" id="nlastname"
-            size="20" maxlength="25" value="{$lastNameValue}" /></td>
+            maxlength="25" size="20" value="{$lastNameValue}"></td>
         </tr>
         <tr>
           <td><label for="nurl">{$urlStr}:</label></td>
           <td colspan="3"><input type="text" name="nurl" id="nurl" size="75"
-            maxlength="255" value="{$urlValue}" /></td>
+            maxlength="255" value="{$urlValue}"></td>
         </tr>
 EOT;
   if ( empty ( $nid ) ) {
@@ -109,12 +109,12 @@ EOT;
         <tr>
           <td><label for="nlayer">{$createLayerStr}:</label></td>
           <td colspan="3">
-            <input type="hidden" name="reload" id="reload" value="true" />
+            <input id="reload" name="reload" type="hidden" value="true">
             <input type="checkbox" name="nlayer" id="nlayer" value="Y"
-              onchange="toggle_layercolor();" />{$requiredStr}
+              onchange="toggle_layercolor();">{$requiredStr}
           </td>
         </tr>
-        <tr id="nlayercolor" style="visibility:hidden" >
+        <tr id="nlayercolor" style="visibility:hidden">
           <td>
 EOT;
     echo print_color_input_html ( 'layercolor', $colorStr, '#000000' ) . '
@@ -123,15 +123,15 @@ EOT;
   }
   echo <<<EOT
       </table>
-      <input type="hidden" name="nadmin" id="nadmin" value="{$login}" />
-      <input type="submit" name="{$buttonAction}" value="{$button}" />
+      <input id="nadmin" name="nadmin" type="hidden" value="{$login}">
+      <input name="{$buttonAction}" type="submit" value="{$button}">
 EOT;
 
   if ( ! empty ( $nid ) )
     echo <<<EOT
       <input type="submit" name="delete" value="{$deleteStr}"
-        onclick="return confirm( '{$confirmStr}' )" />
-      <input type="submit" name="reload" value="{$reloadStr}" />
+        onclick="return confirm('{$confirmStr}')">
+      <input name="reload" type="submit" value="{$reloadStr}">
 EOT;
 
   echo '

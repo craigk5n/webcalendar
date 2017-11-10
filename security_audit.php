@@ -36,7 +36,7 @@ echo '
   . '<img src="docs/newwin.gif" alt="SourceForge.net"></a></li>
       <li><a href="#" onclick="window.open( \'security_audit.php?phpinfo=1\', '
   . '\'phpinfo\', \'dependent,menubar,scrollbars,height=500,width=600,'
-  . 'innerHeight=520,outerWidth=620\' );" />'
+  . 'innerHeight=520,outerWidth=620\');">'
   . translate( 'View your current PHP settings' ) . '</a></li>
     </ul>
     <table id="securityAudit" cellpadding="4">
@@ -185,7 +185,7 @@ function print_issue( $description, $isOk, $help ) {
   echo '
       <tr' . ( $count++ % 2 > 0 ? ' class="odd"' : '' ) . '>
         <td>' . $description . '</td>
-        <td><img src="images/' . $img . ' width="16" height="16" /></td>
+        <td><img src="images/' . $img . ' style="width:16px; height:16px;"></td>
         <td>' . $help . '</td>
       </tr>';
 }

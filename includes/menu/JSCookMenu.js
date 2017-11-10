@@ -346,8 +346,7 @@ function cmDraw (id, menu, orient, nodeProperties, prefix)
 //    <ul style="visibility: hidden">
 //      <li><span>icon</span><a href="link" title="description">main menu text</a>
 //        <ul>
-//          <li><span>icon</span><a href="link" title="description">submenu item</a>
-//          </li>
+//          <li><span>icon</span><a href="link" title="description">submenu item</a></li>
 //        </ul>
 //      </li>
 //    </ul>

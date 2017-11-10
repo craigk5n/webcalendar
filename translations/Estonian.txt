@@ -6,7 +6,6 @@
 # $Id: Estonian.txt,v 1.30 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-15-2008
 
-
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
@@ -38,7 +37,6 @@ __month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
-
 
 ########################################
 # Page: about.php
@@ -109,7 +107,7 @@ date-format-help: Määrab eelistatud kuupäeva seaded.
 Date format: Kuupäeva seaded
 display-week-starts-on: Määrab kas nädal algab pühapäeval või esmaspäeval. Kui esmaspäeval, siis on nädala numbrid ISO standardi järgi.
 Week starts on: Nädal algab
-time-format-help: Määrab kasutatava aja eelistused :<br /><i>12 tundi:</i> Näita aega nii: 3am, 8:30pm, etc.<br /><i>24 tundi:</i> Näita aega nii: 300, 2030, jne.
+time-format-help: Määrab kasutatava aja eelistused :<br><i>12 tundi:</i> Näita aega nii: 3am, 8:30pm, etc.<br><i>24 tundi:</i> Näita aega nii: 300, 2030, jne.
 Time format: Aja eelistused
 12 hour: 12 tundi
 24 hour: 24 tundi
@@ -131,7 +129,7 @@ allow-view-other-help: Määrab kas kasutaja saab näha teiste kalendreid.
 Allow viewing other users calendars: Luba näha teiste kalendreid
 require-approvals-help: Kui on lubatud siis peab kasutaja sündmuse heaks kiitma enne kui seda näidatakse kalendris (kehtib, kui 'Näita heakskiitmatuid' on keelatud). Märkus - seade 'Ei' ei keela näitamist Avalikult Ligipääsetavas kalendris kui see on lubatud.
 Require event approvals: Nõua sündmuse heakskiitu
-display-unapproved-help: Määrab kas heakskiitmata sündmused näidatakse kalendris.<br /> Kui on 'Jah', siis näidatakse heakskiitmata sündmusi kalendris (erineva teksti värviga).<br /> Kui on 'Ei', siis peab heakskiitmata sündmused enne kalendris näitamist lubama.
+display-unapproved-help: Määrab kas heakskiitmata sündmused näidatakse kalendris.<br>Kui on 'Jah', siis näidatakse heakskiitmata sündmusi kalendris (erineva teksti värviga).<br>Kui on 'Ei', siis peab heakskiitmata sündmused enne kalendris näitamist lubama.
 Display unapproved: Näita heakskiitmatuid
 conflict-check-help: Kontrolli sündmuste vastuolulisust (mitu sündmust samal ajal ühele isikule). Kui ütled "jah" siis saad siiski samaaegseid sündmusi planeerida kui kinnitad hoiatus teateid. Kui ütled "ei", siis mingeid kontrolle ei tehta. Arvatavasti tahad öelda "jah", et vastuolusid kontrollida.
 Check for event conflicts: Kontrolli sündmuste vastuolulisust
@@ -260,7 +258,7 @@ Participants: Osalejad
 Brief Description: Lühikirjeldus
 full-description-help: See lõpetab sündmuse kirjelduse. Neid andmeid näeb kui kasutaja vaatab sündmust.
 Full Description: Täiskirjeldus
-access-help: Määrab sündmuse ligipääsetavuse.<br /> <i>Avalik</i>: Kõik võivad sündmust täielikult näha.<br /><i>Isiklik</i>: Teised näevad et see aeg on kinni kuid ei näe detaile.
+access-help: Määrab sündmuse ligipääsetavuse.<br><i>Avalik</i>: Kõik võivad sündmust täielikult näha.<br><i>Isiklik</i>: Teised näevad et see aeg on kinni kuid ei näe detaile.
 Access: Ligipääsetavus
 priority-help: Määrab sündmuse tähtsuse. Suure tähtsusega sündmused näidatakse esile tõstetult.
 Priority: Tähtsus
@@ -274,8 +272,8 @@ Untimed event: Ajastamata sündmus
 Timed event: Ajastatud sündmus
 All day event: Kogu päeva sündmus
 Timezone Offset: Ajavööndi erinevus
-time-help: Määrab sündmuse aja.<br />Vali kas "Ajastatud sündmus" (sündmuse jaoks mis on määratud kindlale ajale), "Ajastamata sündmus" (sündmuse jaoks millel pole kindlat kellaaega (nägu pühad) või "Kogu päeva sündmus" (sündmusele mis kestab kogu päeva (olen kontorist väljas).
-duration-help: Määrab sündmuse kestvuse (tunnid:minutid).<br /><i>Selle välja võib jätta tühjaks.</i>
+time-help: Määrab sündmuse aja.<br>Vali kas "Ajastatud sündmus" (sündmuse jaoks mis on määratud kindlale ajale), "Ajastamata sündmus" (sündmuse jaoks millel pole kindlat kellaaega (nägu pühad) või "Kogu päeva sündmus" (sündmusele mis kestab kogu päeva (olen kontorist väljas).
+duration-help: Määrab sündmuse kestvuse (tunnid:minutid).<br><i>Selle välja võib jätta tühjaks.</i>
 participants-help: Näita selle kande osalejaid.
 external-participants-help: Määrab ära kalendi mittekasutajatest osalejad. Osalejad tuleb loetleda üks rea kohta ja lisada võib emaili aadressi. Kui email on määratud, siis võib inimene saada teadustusi ja meeldetuletusi.
 External Participants: Välised osalejad

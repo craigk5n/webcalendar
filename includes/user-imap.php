@@ -12,7 +12,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @package WebCalendar
  * @subpackage IMAPAuthentication
  */
@@ -52,11 +52,10 @@ function quoteIMAP($str)
  */
 function user_valid_login ( $login, $password ) {
   global $error,$auth, $imap_host, $imap_port, $allow_auto_create, $PHP_SELF;
-  $ret = false;
-//  do_debug ("in imap/user_valid_login...<br />\nl=$login p=$password<br />\n");
 
-  $all_imap_hosts = [];
-  $all_imap_ports = [];
+  $ret = false;
+
+  $all_imap_hosts = $all_imap_ports = [];
 
   // Check if we do not have a username/password
   if (! isset ( $login) || ! isset ( $password) || strlen ($password)==0)

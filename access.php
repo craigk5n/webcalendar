@@ -33,7 +33,7 @@ $dbErrStr = translate( 'Database error XXX.' );
 $defConfigStr = translate( 'DEFAULT CONFIGURATION' );
 $goStr = '
       </select>
-      <input type="submit" value="' . translate( 'Go' ) . '" />
+      <input type="submit" value="' . translate ( 'Go' ) . '">
     </form>';
 $saveStr = translate( 'Save' );
 $undoStr = translate( 'Undo' );
@@ -108,9 +108,9 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
     $saved = true;
   }
 }
-$checked = ' checked="checked"';
+$checked = ' checked';
 $guser = getPostValue( 'guser' );
-$selected = ' selected="selected"';
+$selected = ' selected';
 
 if( $guser == '__default__' ) {
   $otheruser = $guser;
@@ -157,10 +157,9 @@ if( ! empty( $otheruser ) ) {
   }
 }
 print_header( '',
-  '<script type="text/javascript" src="includes/js/access.js?'
+  '<script src="includes/js/access.js?'
  . filemtime( 'includes/js/access.js' ) . '"></script>
-    <link type="text/css" href="includes/css/access.css?'
- . filemtime( 'includes/css/access.css' ) . '" rel="stylesheet" />',
+    <link href="includes/css/access.css" rel="stylesheet">',
   ( ! empty( $op['time'] ) && $op['time'] == 'Y'
     ? 'onload="enableAll( true );"' : '' ) );
 
@@ -218,8 +217,8 @@ if( ! empty( $guser ) || ! $is_admin ) {
 
     echo '
     <form action="access.php" method="post" id="accessform" name="accessform">
-      <input type="hidden" name="auser" value="' . $guser . '" />
-      <input type="hidden" name="guser" value="' . $guser . '" />
+      <input name="auser" type="hidden" value="' . $guser . '">
+      <input name="guser" type="hidden" value="' . $guser . '">
       <table>
         <tbody>
           <tr>
@@ -250,7 +249,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
       if( $show )
         echo print_checkbox ( ['access_' . $order[$i], 'Y',
             access_get_function_description( $order[$i] ),
-            substr( $access, $order[$i], 1 )], 'dito' ) . '<br />';
+            mb_substr ( $access, $order[$i], 1 )], 'dito' ) . '<br>';
 
       if( ( $i + 1 ) % $div == 0 )
         echo '
@@ -263,8 +262,8 @@ if( ! empty( $guser ) || ! $is_admin ) {
           </tr>
         </tbody>
       </table>
-      <input type="submit" value="' . $undoStr . '" />
-      <input type="submit" name="submit" value="' . $saveStr . '" />
+      <input type="submit" value="' . $undoStr . '">
+      <input name="submit" type="submit" value="' . $saveStr . '">
     </form>';
 
     $pagetitle = translate( 'Allow Access to Other Users Calendar' );
@@ -286,7 +285,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
     echo '
     <h2 style="margin-bottom: 2px;">' . $pagetitle . '</h2>
     <form action="access.php" method="post" name="SelectOther">
-      <input type="hidden" name="guser" value="' . $guser . '" />
+      <input name="guser" type="hidden" value="' . $guser . '">
       <select name="otheruser" onchange="document.SelectOther.submit()">'
     // Add a DEFAULT CONFIGURATION to be used as a mask.
     . '
@@ -311,8 +310,8 @@ if( ! empty( $otheruser ) ) {
     $typeStr = translate( 'Type' );
     echo '
     <form action="access.php" method="post" name="EditOther">
-      <input type="hidden" name="guser" value="' . $guser . '" />
-      <input type="hidden" name="otheruser" value="' . $otheruser . '" /><br />
+      <input name="guser" type="hidden" value="' . $guser . '">
+      <input name="otheruser" type="hidden" value="' . $otheruser . '"><br>
       <table cellpadding="5">
         <tbody>
           <tr>
@@ -350,15 +349,15 @@ if( ! empty( $otheruser ) ) {
       if( $j == 1 )
         echo '"invite"'
          . ( ! empty( $op['invite'] ) && $op['invite'] == 'N' ? '' : $checked )
-         . ' />' . translate( 'Can Invite' );
+         . '>' . translate ( 'Can Invite' );
       elseif( $j == 2 )
         echo '"email"'
          . ( ! empty( $op['email'] ) && $op['email'] == 'N' ? '' : $checked )
-         . ' />' . translate( 'Can Email' );
+         . '>' . translate ( 'Can Email' );
       else {
         echo '"time"'
          . ( ! empty( $op['time'] ) && $op['time'] == 'Y' ? $checked : '' )
-         . ' onclick="enableAll( this.checked );" />'
+         . ' onclick="enableAll(this.checked);">'
          . translate( 'Can See Time Only' );
         $bottomedge = 'boxbottom';
       }
@@ -368,40 +367,40 @@ if( ! empty( $otheruser ) ) {
             <td class="aligncenter boxleft pub ' . $bottomedge . '">'
        . '<input type="checkbox" value="' . $j . '" name="v_' . $j . '"'
        . ( ! empty( $op['view'] ) && ( $op['view'] & $j ) ? $checked : '' )
-       . ' /></td>
+       . '></td>
             <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
        . $j * 8 . '" name="v_' . $j * 8 . '"'
        . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 8 ) )
-        ? $checked : '' ) . ' /></td>
+        ? $checked : '' ) . '></td>
             <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
        . $j * 64 . '" name="v_' . $j * 64 . '"'
        . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 64 ) )
-        ? $checked : '' ) . ' /></td>'
+        ? $checked : '' ) . '></td>'
        . ( $guser != '__public__' ? '
             <td class="aligncenter boxleft pub ' . $bottomedge . '"><input '
          . 'type="checkbox" value="' . $j . '" name="e_' . $j . '"'
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j ) ? $checked : '' )
-         . ' /></td>
+         . '></td>
             <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
          . $j * 8 . '" name="e_' . $j * 8 . '"'
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 8 ) )
-          ? $checked : '' ) . ' /></td>
+          ? $checked : '' ) . '></td>
             <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
          . $j * 64 . '" name="e_' . $j * 64 . '"'
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 64 ) )
-          ? $checked : '' ) . ' /></td>
+          ? $checked : '' ) . '></td>
             <td class="aligncenter boxleft pub ' . $bottomedge . '"><input '
          . 'type="checkbox" value="' . $j . '" name="a_' . $j . '"'
          . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j )
-          ? $checked : '' ) . ' /></td>
+          ? $checked : '' ) . '></td>
             <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
          . $j * 8 . '" name="a_' . $j * 8 . '"'
          . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 8 ) )
-          ? $checked : '' ) . ' /></td>
+          ? $checked : '' ) . '></td>
             <td class="boxright priv ' . $bottomedge
          . '"><input type="checkbox" value="' . $j * 64 . '" name="a_' . $j * 64
          . '"' . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 64 ) )
-          ? $checked : '' ) . ' /></td>'
+          ? $checked : '' ) . '></td>'
         : '' ) . '
           </tr>';
     }
@@ -410,11 +409,11 @@ if( ! empty( $otheruser ) ) {
             <td colspan="2" class="boxleft alignright">'
      . ( $otheruser != '__default__' && $otheruser != '__public__' ? '
               <input type="button" value="' . translate( 'Assistant' )
-       . '" onclick="selectAll(63);" />&nbsp;&nbsp;' : '' ) . '
+       . '" onclick="selectAll(63);">&nbsp;&nbsp;' : '' ) . '
               <input type="button" value="' . translate( 'Select All' )
-     . '" onclick="selectAll(256);" />&nbsp;&nbsp;
+     . '" onclick="selectAll(256);">&nbsp;&nbsp;
               <input type="button" value="' . translate( 'Clear All' )
-     . '" onclick="selectAll(0);" />
+     . '" onclick="selectAll(0);">
             </td>
             <td colspan="9" class="boxright">
               <table class="aligncenter" cellpadding="5" cellspacing="2">
@@ -431,8 +430,8 @@ if( ! empty( $otheruser ) ) {
   echo '
           <tr>
             <td colspan="11" class="boxleft boxbottom boxright">
-              <input type="submit" value="' . $undoStr . '" />
-              <input type="submit" name="submit" value="' . $saveStr . '" />
+              <input type="submit" value="' . $undoStr . '">
+              <input name="submit" type="submit" value="' . $saveStr . '">
             </td>
           </tr>
         </tbody>

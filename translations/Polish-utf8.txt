@@ -15,7 +15,6 @@
 # Translation completed on 2008-05-07 01:25
 # Translation last updated on 09-05-2008
 
-
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
@@ -43,7 +42,6 @@ __month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
-
 
 ########################################
 # Page: about.php
@@ -183,7 +181,7 @@ display-week-starts-on: Określa, czy pierwszym dniem tygodnia jest niedziela cz
 Week starts on: Tydzień zaczyna się w
 display-weekend-starts-on: Ustaw dzień tygodnia rozpoczynający weekend
 Weekend starts on: Weekend zaczyna się w
-time-format-help: Określa, którego formatu czasu używać<br /><i>12 godz.:</i> Wyświetla czas jako 1am, 8:10pm, itd.<br /><i>24 godz.:</i> Wyświetla czas jako 1:00, 20:10 itd.
+time-format-help: Określa, którego formatu czasu używać<br><i>12 godz.:</i> Wyświetla czas jako 1am, 8:10pm, itd.<br><i>24 godz.:</i> Wyświetla czas jako 1:00, 20:10 itd.
 Time format: Format czasu
 12 hour: 12 godzin
 24 hour: 24 godziny
@@ -231,7 +229,7 @@ allow-view-other-help: Włącza możliwość oglądania kalendarzy innych użytk
 Allow viewing other users calendars: Zezwalaj na oglądanie kalendarzy innych użytkowników
 require-approvals-help: Wymaga zatwierdzenia zdarzenia przez użytkownika
 Require event approvals: Wymagaj zatwierdzania zdarzeń
-display-unapproved-help: Określa, czy niezatwierdzone wydarzenia bedą wyświetlane w twoim kalendarzu.<br /> Jeśli "tak" wtedy niezatwierdzone wydarzenia bedą wyświetlane (innym kolorem).<br /> Jeśli "Nie" wtedy najpierw bedą musiały zostać zatwierdzone nim pojawią się w Twoim kalendarzu.
+display-unapproved-help: Określa, czy niezatwierdzone wydarzenia bedą wyświetlane w twoim kalendarzu.<br>Jeśli "tak" wtedy niezatwierdzone wydarzenia bedą wyświetlane (innym kolorem).<br>Jeśli "Nie" wtedy najpierw bedą musiały zostać zatwierdzone nim pojawią się w Twoim kalendarzu.
 Display unapproved: Wyświetlaj niezatwierdzone
 conflict-check-help: Sprawdzaj, czy nie ma konfliktów zdarzeń (dwóch zdarzeń tego samego użytkownika w tym samym czasie)
 Check for event conflicts: Sprawdzaj, czy nie ma konfliktów zdarzeń
@@ -557,7 +555,7 @@ brief-description-help: Powinien to być krótki opis (około 20 znaków) wydarz
 Brief Description: Krótki opis
 full-description-help: Powinien to być pełny opis wydarzenia. Będzie wyświetlany podczas oglądania wydarzenia.
 Full Description: Pełen opis
-access-help: Określa poziom dostępu do wydarzenia.<br /><i>Publiczny</i>: Każdy może oglądać wszystkie szczegóły wydarzenia.<br /><i>Poufny</i>: Inni użytkownicy widzą wpis, ale nie mogą oglądać jego szczegółów.
+access-help: Określa poziom dostępu do wydarzenia.<br><i>Publiczny</i>: Każdy może oglądać wszystkie szczegóły wydarzenia.<br><i>Poufny</i>: Inni użytkownicy widzą wpis, ale nie mogą oglądać jego szczegółów.
 Access: Dostęp
 priority-help: Określa priorytet wydarzenia. Wysoki priorytet będzie wyświetlany pogrubioną czcionką.
 Priority: Priorytet
@@ -582,7 +580,7 @@ Timed event: Zdarzenie określone czasowo
 All day event: Zdarzenie całodobowe
 Timezone Offset: Przesunięcie strefy czasowej
 time-help: Określa czas wydarzenia. <ul><li>"Zdarzenie określone czasowo" (dla wydarzenia, które ma mieć miejsce o określonej godzinie danego dnia)</li><li>"Zdarzenie nieokreślone czasowo" (dla wydarzenia, które nie ma przypisanej konkretnej godziny (np. święto)</li><li>"Zdarzenie całodobowe" (dla wydarzenia, które toczą się przez cały dzień (np. nieobecność w pracy)</li></ul>
-duration-help: Określa (w minutach) czas trwania wydarzenia.<br /><i>Może zostać puste.</i>
+duration-help: Określa (w minutach) czas trwania wydarzenia.<br><i>Może zostać puste.</i>
 end-time-help: Określa godzinę, o której zdarzenie powinno się skończyć
 Start Time: Data rozpoczęcia
 Due Date: Data zakończenia
@@ -643,7 +641,7 @@ Start: Rozpoczęcie
 End/Due: Zakończenie
 Times: Ile razy
 Every: Co
-CAPTCHA Warning: <b>Uwaga:</b> Nie można zastosować CAPTCHA bez rozszerzenia GD dla PHP!<br />
+CAPTCHA Warning: <b>Uwaga:</b> Nie można zastosować CAPTCHA bez rozszerzenia GD dla PHP!<br>
 Delete entry: Skasuj wpis
 You are not authorized to edit this entry.: Nie masz autoryzacji, by edytować ten wpis
 
@@ -1309,7 +1307,7 @@ Invalid function id: Niepoprawne id funkcji
 ########################################
 # Page: includes/config.php
 #
-Could not find settings.php file...: Nie można odnaleźć pliku "settings.php".<br />Proszę zrobić kopię pliku "settings.php.orig" o nazwie "settings.php" i wyedytować odpowiednio dla swojej strony WWW.
+Could not find settings.php file...: Nie można odnaleźć pliku "settings.php".<br>Proszę zrobić kopię pliku "settings.php.orig" o nazwie "settings.php" i wyedytować odpowiednio dla swojej strony WWW.
 Incomplete settings.php file...: Plik "settings.php" jest niekompletny...
 Could not find XXX defined in...: Nie można odnaleźć definicji "XXX" w Twoim pliku "settings.php".
 You must define XXX in: Musisz zdefiniować "XXX" w pliku "settings.php".

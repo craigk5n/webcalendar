@@ -92,7 +92,6 @@ if ( ! $is_admin || ( access_is_enabled() && !
   access_can_access_function ( ACCESS_ACTIVITY_LOG ) ) )
   die_miserable_death ( print_not_auth (2) );
 
-
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 // This should work ok with RSS, may need to hardcode fallback value.
 $lang = languageToAbbrev ( $LANGUAGE == 'Browser-defined' || $LANGUAGE == 'none'
@@ -120,7 +119,6 @@ echo '<?xml version="1.0" encoding="' . $charset . '"?>
       <link>' . $SERVER_URL . '</link>
       <url>http://www.k5n.us/k5n_small.gif</url>
     </image>' . "\n";
-
 
 $num = getIntValue ( false, 'num' );
 if ( empty ( $num ) || $num <= 0 || $num > 100 )
@@ -183,7 +181,7 @@ function rss_activity_log ( $sys, $entries ) {
       $l_id = $row[8];
       $l_etype = $row[9];
       $l_description = $row[10];
-      // convert lines to <br /> if no HTML formatting found
+      // convert lines to<br>if no HTML formatting found
       if ( strpos ( $l_description, "</" ) == false ) {
         $l_description = nl2br ( $l_description );
       }

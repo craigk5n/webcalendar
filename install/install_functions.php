@@ -526,7 +526,7 @@ function db_populate ( $install_filename, $display_sql ) {
   for ( $i = 0, $sqlCntStr = count ( $parsed_sql ); $i < $sqlCntStr; $i++ ) {
     if ( empty ( $display_sql ) ) {
       if ( $show_all_errors == true )
-        echo $parsed_sql[$i] . '<br />';
+        echo $parsed_sql[$i] . '<br>';
 
       dbi_execute( $parsed_sql[$i], [], false, $show_all_errors );
     } else

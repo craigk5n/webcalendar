@@ -105,25 +105,22 @@ $trailerStr = print_trailer();
 print_header();
 echo <<<EOT
     <div class="title">
-      <a title="{$prevStr}" class="prev" href="year.php?year={$prevYear}{$userStr}">
-        <img src="images/leftarrow.gif" alt="{$prevStr}" /></a>
-      <a title="{$nextStr}" class="next" href="year.php?year={$nextYear}{$userStr}">
-        <img src="images/rightarrow.gif" alt="{$nextStr}" /></a>
-      <span class="date">{$thisyear}</span><br />
-      <span class="user">{$fullnameStr}</span><br />
+      <a href="year.php?year={$prevYear}{$userStr}" class="prev" title="{$prevStr}"><img src="images/leftarrow.gif" alt="{$prevStr}"></a>
+      <a href="year.php?year={$nextYear}{$userStr}" class="next" title="{$nextStr}"><img src="images/rightarrow.gif" alt="{$nextStr}"></a>
+      <span class="date">{$thisyear}</span><br>
+      <span class="user">{$fullnameStr}</span><br>
       {$asstModeStr}
       {$catSelectStr}
-    </div><br />
+    </div><br>
     <div class="aligncenter">
       <table id="monthgrid">
         {$gridOmonths}
       </table>
-    </div><br />
-    {$unapprovedStr}<br />
+    </div><br>
+    {$unapprovedStr}<br>
     {$printerStr}
     {$trailerStr}
 EOT;
 
 ?>
-
 

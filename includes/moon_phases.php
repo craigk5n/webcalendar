@@ -72,7 +72,7 @@ function calculateMoonPhases ( $year, $month = 1 ) {
 
     $J += intval ( $F );
     $F -= intval ( $F );
-    //.
+
     // Convert from JD to Calendar Date.
     $julian = $J + round ( $F );
     $s = ( function_exists ( 'jdtogregorian' )

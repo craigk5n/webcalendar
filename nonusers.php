@@ -25,8 +25,7 @@ echo '
 
 if ( empty ( $error ) ) {
   echo '
-    <a title="' . $newNonUserStr . '" href="edit_nonusers.php?add=1"'
-   . $targetStr . $newNonUserStr . '</a><br />';
+    <a href="edit_nonusers.php?add=1"' . $targetStr . $newNonUserStr . '</a><br>';
   // Displaying NonUser Calendars
   $userlist = get_nonuser_cals();
   if ( ! empty ( $userlist ) ) {
@@ -34,8 +33,7 @@ if ( empty ( $error ) ) {
     <ul>';
     for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
       echo '
-      <li><a title="' . $userlist[$i]['cal_fullname']
-       . '" href="edit_nonusers.php?nid=' . $userlist[$i]['cal_login'] . '"'
+      <li><a href="edit_nonusers.php?nid=' . $userlist[$i]['cal_login'] . '"'
        . $targetStr . $userlist[$i]['cal_fullname'] . '</a></li>';
     }
     echo '

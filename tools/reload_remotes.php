@@ -78,8 +78,7 @@ load_global_settings();
 $WebCalendar->setLanguage();
 
 if ( $debug )
-  echo "<br />\n" . translate ( 'Include Path' )
-   . ' =' . ini_get ( 'include_path' ) . "<br />\n";
+  echo '<br>Include Path =' . ini_get ( 'include_path' ) . "<br>\n";
 
 if ( $REMOTES_ENABLED == 'Y' ) {
   $res = dbi_execute ( 'SELECT cal_login, cal_url, cal_admin
@@ -110,33 +109,30 @@ if ( $REMOTES_ENABLED == 'Y' ) {
       if ( count ( $data ) && empty ( $errormsg ) ) {
         // delete existing events
         if ( $debug )
-          echo "<br />\n" . translate ( 'Deleting events for' )
-           . ": $calUser<br />\n";
+          echo "<br>Deleting events for: $calUser<br>\n";
+
         delete_events ( $calUser );
         // import new events
         if ( $debug )
-          echo translate ( 'Importing events for' ) . ": $calUser<br />\n"
-           . translate ( 'From' ) . ": $cal_url<br />\n";
+          echo "Importing events for: $calUser<br>From: $cal_url.<br>\n";
+
         import_data ( $data, $overwrite, $type );
         if ( $debug )
-          echo translate ( 'Events successfully imported' )
-           . ": $count_suc<br /><br />\n";
+          echo "Events successfully imported: $count_suc<br><br>\n";
       } else { // we didn't receive any data and/or there was an error
         if ( ! empty ( $errormsg ) )
-          echo $errormsg . "<br />\n";
+          echo "$errormsg<br>\n";
 
         if ( count ( $data ) == 0 )
-          echo "<br />\n" . translate ( 'No data returned from' )
-           . ":  $cal_url<br />\n" . translate ( 'for non-user calendar' )
-           . ":  $calUser<br />\n";
+          echo "<br>\n" . str_replace ( ['XXX','YYY'],[$cal_url,$calUser], translate ( 'No data returned from&#58; "XXX" for non-user calendar&#58; "YYY".' ) ) . "<br>\n";
       }
     }
     dbi_free_result ( $res );
   }
   if ( $cnt == 0 )
-    echo "<br />\n" . translate ( 'No Remote Calendars found' );
+    echo "<br>\n" . translate ( 'No Remote Calendars found.' );
 } else
-  echo "<br />\n" . translate ( 'Remote Calendars not enabled' );
+  echo "<br>\n" . translate ( 'Remote Calendars not enabled.' );
 // just in case
 $login = '';
 /**

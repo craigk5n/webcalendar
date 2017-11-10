@@ -241,7 +241,7 @@ tr.ThemeMainItem td.ThemeMainFolderRight {
   seq2:  image for hover and active
 
   To use, in the icon field, input the following:
-  <img class="seq1" src="normal.gif" /><img class="seq2" src="hover.gif" />
+  <img class="seq1" src="normal.gif"><img class="seq2" src="hover.gif">
 */
 
 .ThemeMenuItem img.seq1 {

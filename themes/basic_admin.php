@@ -3,7 +3,7 @@
  *
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @package WebCalendar
  */
 

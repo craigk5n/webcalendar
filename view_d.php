@@ -63,15 +63,11 @@ $previousStr = translate ( 'Previous' );
 echo <<<EOT
     <div class="viewnav">
       <a title="{$previousStr}" class="prev"
-        href="view_d.php?id={$id}&amp;date={$prevdate}">
-        <img src="images/leftarrow.gif" class="prev"
-          alt="{$previousStr}" /></a>
+        href="view_d.php?id={$id}&amp;date={$prevdate}"><img src="images/leftarrow.gif" class="prev" alt="{$previousStr}"></a>
       <a title="{$nextStr}" class="next"
-        href="view_d.php?id={$id}&amp;date={$nextdate}">
-        <img src="images/rightarrow.gif" class="next"
-          alt="{$nextStr}" /></a>
+        href="view_d.php?id={$id}&amp;date={$nextdate}"><img src="images/rightarrow.gif" class="next" alt="{$nextStr}"></a>
       <div class="title">
-        <span class="date">{$nowStr}</span><br />
+        <span class="date">{$nowStr}</span><br>
         <span class="viewname">{$view_name}</span>
       </div>
     </div>
@@ -79,11 +75,10 @@ echo <<<EOT
 
     <!-- Hidden form for booking events -->
     <form action="edit_entry.php" method="post" name="schedule">
-      <input type="hidden" name="date"
-        value="{$thisyear}{$thismonth}{$thisday}" />
-      <input type="hidden" name="defusers" value="{$partStr}" />
-      <input type="hidden" name="hour" value="" />
-      <input type="hidden" name="minute" value="" />
+      <input name="date" type="hidden" value="{$thisyear}{$thismonth}{$thisday}">
+      <input name="defusers" type="hidden" value="{$partStr}">
+      <input name="hour" type="hidden" value="">
+      <input name="minute" type="hidden" value="">
     </form>
 
     {$printerStr}

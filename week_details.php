@@ -53,24 +53,22 @@ echo '
     <div class="title">
       <a title="' . $prevStr . '" class="prev" href="week_details.php?' . $u_url
  . 'date=' . date ( 'Ymd', $prev ) . $caturl
- . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
+ . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '"></a>
       <a title="' . $nextStr . '" class="next" href="week_details.php?' . $u_url . 'date='
  . date ( 'Ymd', $next ) . $caturl
- . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+ . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '"></a>
       <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
  . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span>'
- . ( $DISPLAY_WEEKNUMBER == 'Y' ? '<br />
-      <span class="titleweek">(' . translate ( 'Week' ) . ' '
-   . date ( 'W', $wkstart + 86400 ) . ')</span>' : '' ) . '
-      <span class="user">' . ( $single_user == 'N' ? '<br />
-      ' . $user_fullname : '' ) . ( $is_nonuser_admin ? '<br />-- '
-   . translate ( 'Admin mode' ) . ' --' : '' ) . ( $is_assistant ? '<br />-- '
-   . translate ( 'Assistant mode' ) . ' --' : '' ) . '</span>'
- . ( $CATEGORIES_ENABLED == 'Y' ? '<br /><br />'
+ . ( $DISPLAY_WEEKNUMBER === 'Y' ? '<br>
+      <span class="titleweek">' . str_replace ('XXX',translate ( date ( 'W', $wkstart + 86400 ),0,'N' ), translate ( '(Week XXX)' ) ) . '</span>' : '' ) . '
+      <span class="user">' . ( $single_user === 'N' ? '<br>
+      ' . $user_fullname : '' ) . ( $is_nonuser_admin ? '<br><span class="dblHyphens">' . translate ( 'Admin mode' ) . '</span>' : '' ) . ( $is_assistant ? '<br>
+      <span class="dblHyphens">' . translate ( 'Assistant mode' ) . '</span>' : '' ) . '</span>'
+ . ( $CATEGORIES_ENABLED === 'Y' ? '<br><br>'
    . print_category_menu( 'week', sprintf ( "%04d%02d%02d", $thisyear,
       $thismonth, $thisday ), $cat_id ) : '' ) . '
-    </div><br />
+    </div><br>
     <center>
       <table class="main">';
 
@@ -91,7 +89,7 @@ for ( $d = 0; $d < 7; $d++ ) {
             <a title="' . $newEntryStr . '" href="edit_entry.php?' . $u_url
      . 'date=' . date ( 'Ymd', $days[$d] )
      . '"><img src="images/new.gif" class="new" alt="' . $newEntryStr
-     . '" /></a>' : '' ) . '
+     . '"></a>' : '' ) . '
             <a title="' . $header[$d] . '" href="day.php?' . $u_url . 'date='
    . date ( 'Ymd', $days[$d] ) . $caturl . '">' . $header[$d] . '</a>
           </th>
@@ -107,7 +105,7 @@ for ( $d = 0; $d < 7; $d++ ) {
 echo '
       </table>
     </center>
-    ' . ( empty ( $eventinfo ) ? '' : $eventinfo ) . '<br />' . $printerStr . print_trailer ();
+    ' . ( empty ( $eventinfo ) ? '' : $eventinfo ) . '<br>' . $printerStr . print_trailer ();
 
 /**
  * Prints the HTML for one event in detailed view.
@@ -144,13 +142,13 @@ function print_detailed_entry ( $event, $date ) {
    . '" id="' . $linkid . '" href="view_entry.php?id=' . $id
    . '&amp;date=' . $date;
 
-  if ( strlen ( $user ) > 0 )
+  if ( mb_strlen ( $user ) )
     echo '&amp;user=' . $user;
   else
   if ( $class == 'layerentry' )
     echo '&amp;user=' . $loginStr;
 
-  echo '<img src="images/circle.gif" class="bullet" alt="view icon" />';
+  echo '<img src="images/circle.gif" class="bullet" alt="view icon">';
   if ( $login != $loginStr && strlen ( $loginStr ) ) {
     if ( $layers ) {
       foreach ( $layers as $layer ) {
@@ -193,7 +191,7 @@ function print_detailed_entry ( $event, $date ) {
   echo $PN . '</a>' . ( $evPri ? '
             </strong>' : '' )
   # Only display description if it is different than the event name.
-  . ( $PN != $PD ? ' - ' . $PD : '' ) . '<br />';
+  . ( $PN !== $PD ? ' - ' . $PD : '' ) . '<br>';
 
   $eventinfo .= build_entry_popup ( 'eventinfo-' . $linkid, $loginStr,
     $descStr, $timestr, site_extras_for_popup ( $id ) );

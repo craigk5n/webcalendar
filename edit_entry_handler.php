@@ -146,7 +146,7 @@ $timetype      = getPostValue( 'timetype' );
 $weekdays_only = getPostValue( 'weekdays_only' );
 $wkst          = getPostValue( 'wkst' );
 
-$description = ( strlen( $description ) == 0 || $description == '<br />'
+$description = ( mb_strlen ( $description ) === 0 || $description === '<br>'
   ? $name : $description );
 
 // For public events, we don't EVER allow HTML tags.  There is just too
@@ -551,7 +551,7 @@ if( empty( $ALLOW_CONFLICT_OVERRIDE ) || $ALLOW_CONFLICT_OVERRIDE != 'Y' )
   $confirm_conflicts = ''; // Security precaution.
 
 if( $ALLOW_CONFLICTS != 'Y' && empty( $confirm_conflicts )
-    && strlen( $entry_hour ) > 0 && $timetype != 'U' && $eType != 'task' ) {
+    && mb_strlen ( $entry_hour ) && $timetype !== 'U' && $eType !== 'task' ) {
   $conf_until = ( empty( $rpt_until ) ? '' : $rpt_until );
   $conf_count = ( empty( $rpt_count ) ? 999 : $rpt_count );
   $dates = get_all_dates( $eventstart, $rpt_type, $rpt_freq,
@@ -631,7 +631,7 @@ if( empty( $error ) ) {
 
   $query_params[] = ( empty( $old_create_by ) ? $login : $old_create_by );
   $query_params[] = gmdate( 'Ymd', $eventstart );
-  $query_params[] = ( ( strlen( $entry_hour ) > 0 && $timetype != 'U' )
+  $query_params[] = ( ( mb_strlen ( $entry_hour ) && $timetype !== 'U' )
     ? gmdate( 'His', $eventstart ) : '-1' );
 
   if( ! empty( $eventcomplete ) )
@@ -897,7 +897,7 @@ if( empty( $error ) ) {
        . implode( ',', $names ) . ' ) VALUES ( ?'
        . str_repeat( ',?', count( $values ) - 1 ) . ' )';
       dbi_execute( $sql, $values );
-      $msg .= '<span class="bold">SQL:</span> ' . $sql . '<br /><br />';
+      $msg .= '<span class="bold">SQL:</span> ' . $sql . '<br><br>';
     } //end add repeating info
 
     // We manually created exceptions. This can be done without repeats.
@@ -946,7 +946,7 @@ if( empty( $error ) ) {
         $user_language = get_pref_setting( $old_participant, 'LANGUAGE' );
         $user_TIMEZONE = get_pref_setting( $old_participant, 'TIMEZONE' );
 
-        set_env( 'TZ', $user_TIMEZONE );
+        date_default_timezone_set ( $user_TIMEZONE );
         user_load_variables( $old_participant, 'temp' );
 
         if( $old_participant != $login && ! empty( $tempemail )
@@ -1065,7 +1065,7 @@ if( empty( $error ) ) {
         $user_language = get_pref_setting( $i, 'LANGUAGE' );
         $user_TIMEZONE = get_pref_setting( $i, 'TIMEZONE' );
 
-        set_env( 'TZ', $user_TIMEZONE );
+        date_default_timezone_set ( $user_TIMEZONE );
         user_load_variables( $i, 'temp' );
 
         if( boss_must_be_notified( $login, $i ) && ! empty( $tempemail )
@@ -1189,7 +1189,7 @@ if( empty( $error ) ) {
         // Send mail notification if enabled.
         // TODO: Move this code into a function...
         if( $EXTERNAL_NOTIFICATIONS == 'Y' && $SEND_EMAIL != 'N'
-            && strlen( $ext_emails[$i] ) > 0 ) {
+            && mb_strlen ( $ext_emails[$i] ) ) {
           if( ( ! $newevent && isset( $EXTERNAL_UPDATES )
               && $EXTERNAL_UPDATES == 'Y' ) || $newevent ) {
             $fmtdate = ( $timetype == 'T'
@@ -1271,13 +1271,13 @@ if( ! empty( $conflicts ) ) {
         // $yval = htmlentities( $yval );
 
         echo '
-      <input type="hidden" name="' . $xkey . '" value="' . $yval . '" />';
+      <input name="' . $xkey . '" type="hidden" value="' . $yval . '">';
       }
     } else {
       if( get_magic_quotes_gpc() )
         $xval = stripslashes( $xval );
       echo '
-      <input type="hidden" name="' . $xkey . '" value="' . $xval . '" />';
+      <input name="' . $xkey . '" type="hidden" value="' . $xval . '">';
     }
   }
 
@@ -1285,9 +1285,9 @@ if( ! empty( $conflicts ) ) {
   // Allow them to override a conflict if server settings allow it.
    ( ! empty( $ALLOW_CONFLICT_OVERRIDE ) && $ALLOW_CONFLICT_OVERRIDE == 'Y' ? '
       <input type="submit" name="confirm_conflicts" value="'
-     . translate( 'Save' ) . '" />' : '' ) . '
+     . translate ( 'Save' ) . '">' : '' ) . '
       <input type="button" value="' . translate( 'Cancel' )
-   . '" onclick="history.back()" />
+   . '" onclick="history.back()">
     </form>';
 
 } else

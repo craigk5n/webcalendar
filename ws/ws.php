@@ -3,7 +3,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @package WebCalendar
  */
 
@@ -50,11 +50,8 @@ function ws_init() {
  * Format a text string for use in the XML returned to the client.
  */
 function ws_escape_xml ( $str ) {
-  $str = str_replace ( "\r\n", "\\n", $str );
-  $str = str_replace ( "\n", "\\n", $str );
-  $str = str_replace ( '<br />', "\\n", $str );
-  $str = str_replace ( '<br />', "\\n", $str );
-  $str = str_replace ( '\n', "<br />", $str );
+  $str = str_replace ( ["\r\n","\n",'<br>'], "\\n", $str );
+  $str = str_replace ( '\n', "<br>", $str );
   $str = str_replace ( '&amp;', '&', $str );
   $str = str_replace ( '&', '&amp;', $str );
   return ( str_replace ( '<', '&lt;', str_replace ( '>', '&gt;', $str ) ) );

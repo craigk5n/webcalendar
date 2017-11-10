@@ -38,7 +38,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @version $Id: init.php,v 1.159 2010/08/31 13:49:17 cknudsen Exp $
  * @package WebCalendar
  */
@@ -167,8 +167,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
          // handled...  wasn't clobbered
       } else {
         die_miserable_death ( 'BodyX error in print_header.  Menu and ' .
-          $self . ' are both setting onload callback.<br/>Old: ' .
-          htmlentities ( $saveBodyX ) . '<br/><br/>New: ' .
+          $self . ' are both setting onload callback.<br>Old: ' .
+          htmlentities ( $saveBodyX ) . '<br><br>New: ' .
           htmlentities ( $BodyX ) );
       }
     }
@@ -196,7 +196,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
         // Not added to $cs_ar because I think we want these,
         // even if $disableStyle.
         $cs_ret .= '
-    <link href="' . $i . '" rel="stylesheet" />';
+    <link href="' . $i . '" rel="stylesheet">';
       } elseif( substr( $inc, 0, 12 ) == 'js/popups.js'
           && ! empty( $DISABLE_POPUPS ) && $DISABLE_POPUPS == 'Y' ) {
         // Don't load popups.js if DISABLE_POPUPS.
@@ -243,15 +243,15 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     // the current user has permissions to approve for, but I'm thinking
     // that's too many db requests to repeat on every page.
 
-    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '" />'
+    $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '">'
      . ( $is_admin && $PUBLIC_ACCESS == 'Y' ? $tmp_l . $tmp_f . '?user=public&'
      . filemtime( $tmp_f ) . $tmp . translate( $PUBLIC_ACCESS_FULLNAME )
-     . '" />' : '' );
+     . '">' : '' );
   }
   if( $is_admin ) {
     $tmp_f = 'rss_activity_log.php';
     $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . '" rel="alternate"'
-     . ' title="' . $appStr . ' - ' . translate('Activity Log') . '" />';
+     . ' title="' . $appStr . ' - ' . tooltip ( 'Activity Log' ) . '">';
   }
   if( ! $disableStyle ) {
     // Check the CSS version for cache clearing if needed.
@@ -265,13 +265,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     <link href="css_cacher.php?login='
      . ( empty( $_SESSION['webcal_tmp_login'] )
        ? $login : $_SESSION['webcal_tmp_login'] )
-     . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet" />';
+     . '&amp;css_cache=' . $webcalendar_csscache . '" rel="stylesheet">';
     foreach( $cs_ar as $c ) {
       $i = 'includes/' . $c;
       $ret .= '
     <link href="' . $i . '" rel="stylesheet"'
        . ( $c == 'css/print_styles.css' && empty( $friendly )
-         ? ' media="print"' : '' ) . ' />';
+         ? ' media="print"' : '' ) . '>';
     }
   }
   echo $ret . $cs_ret
@@ -285,13 +285,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $tmp_l . 'rss.php?' . filemtime( 'rss.php' )
       /* TODO: single-user mode, etc. */
      . ( $login != '__public__' ? '&user=' . $login : '' )
-     . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]" />' : '' )
+     . '" rel="alternate" title="' . $appStr . ' [RSS 2.0]">' : '' )
   // Do we need anything else inside the header tag?
   // $HeadX moved here because linked CSS may override standard styles.
    . ( $HeadX ? '
      ' . $HeadX : '' ) . '
     <link type="image/x-icon" href="favicon.ico?'
-   . filemtime( 'favicon.ico' ) . '" rel="shortcut icon" />
+   . filemtime( 'favicon.ico' ) . '" rel="shortcut icon">
   </head>
   <body'
   // Determine the page direction (left-to-right or right-to-left).
@@ -374,9 +374,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 
     // Adds an easy link to validate the pages.
     ( $DEMO_MODE == 'Y' ? '
-    <p><a href="http://validator.w3.org/check?uri=referer">'
-     . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
-     . 'class="valid" /></a></p>' : '' )/* Close HTML page properly. */ . '
+    <p><a href="http://validator.w3.org/check?uri=referer"><img src="images/HTML5_Logo.png" alt="Valid HTML5!"></a></p>' : '' )/* Close HTML page properly. */ . '
   </body>
 </html>
 ';
@@ -391,7 +389,7 @@ function print_menu_dates( $menu = false ) {
 
   $goStr = '
             </select>' . ( $menu ? '' : '
-            <input type="submit" value="' . translate( 'Go' ) . '" />' ) . '
+            <input type="submit" value="' . translate ( 'Go' ) . '">' ) . '
           </form>';
   $include_id = false;
   $option = '
@@ -400,7 +398,7 @@ function print_menu_dates( $menu = false ) {
   // TODO add this to admin and pref.
   // Change this value to 'Y' to enable staying in custom views.
   $STAY_IN_VIEW = 'N';
-  $selected = ' selected="selected"';
+  $selected = ' selected';
   if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) ) {
     $include_id = true;
     $monthUrl = $SCRIPT;
@@ -413,7 +411,7 @@ function print_menu_dates( $menu = false ) {
       $monthUrl = $match[0];
       $urlArgs = '
               <input type="hidden" name="'
-       . $match[1] . '" value="' . $match[2] . '" />';
+       . $match[1] . '" value="' . $match[2] . '">';
     }
   }
 
@@ -422,13 +420,13 @@ function print_menu_dates( $menu = false ) {
    . '" method="get" name="SelectMonth" id="month'
    . ( $menu ? 'menu' : 'form' ) . '"> ' . $urlArgs
    . ( ! empty( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '" />' : '' )
+            <input name="user" type="hidden" value="' . $user . '">' : '' )
    . ( ! empty( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '" />' : '' )
+            <input name="id" type="hidden" value="' . $id . '">' : '' ) .
    . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
      && ( ! $user || $user == $login ) ? '
             <input type="hidden" name="cat_id" value="'
-     . $cat_id . '" />' : '' ) . '
+     . $cat_id . '">' : '' ) . '
             <label for="monthselect"><a '
    . 'href="javascript:document.SelectMonth.submit()">'
    . translate( 'Month' ) . '</a>:&nbsp;</label>
@@ -478,7 +476,7 @@ function print_menu_dates( $menu = false ) {
       $weekUrl = $match[0];
       $urlArgs = '
               <input type="hidden" name="'
-       . $match[1] . '" value="' . $match[2] . '" />';
+       . $match[1] . '" value="' . $match[2] . '">';
     }
   }
 
@@ -487,13 +485,13 @@ function print_menu_dates( $menu = false ) {
    . '" method="get" name="SelectWeek" id="week'
    . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
    . ( ! empty( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '" />' : '' )
+            <input name="user" type="hidden" value="' . $user . '">' : '' )
    . ( ! empty( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '" />' : '' )
+            <input name="id" type="hidden" value="' . $id . '">' : '' ) .
    . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
      && ( ! $user || $user == $login ) ? '
             <input type="hidden" name="cat_id" value="'
-     . $cat_id . '" />' : '' ) . '
+     . $cat_id . '">' : '' ) . '
             <label for="weekselect"><a '
    . 'href="javascript:document.SelectWeek.submit()">'
    . translate( 'Week' ) . '</a>:&nbsp;</label>
@@ -533,7 +531,7 @@ function print_menu_dates( $menu = false ) {
       $yearUrl = $match[0];
       $urlArgs = '
             <input type="hidden" name="'
-       . $match[1] . '" value="' . $match[2] . '" />';
+       . $match[1] . '" value="' . $match[2] . '">';
     }
   }
 
@@ -542,13 +540,13 @@ function print_menu_dates( $menu = false ) {
    . '" method="get" name="SelectYear" id="year'
    . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
    . ( ! empty( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '" />' : '' )
+            <input name="user" type="hidden" value="' . $user . '">' : '' )
    . ( ! empty( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '" />' : '' )
+            <input name="id" type="hidden" value="' . $id . '">' : '' ) .
    . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
      && ( ! $user || $user == $login ) ? '
             <input type="hidden" name="cat_id" value="'
-     . $cat_id . '" />' : '' ) . '
+     . $cat_id . '">' : '' ) . '
             <label for="yearselect"><a '
    . 'href="javascript:document.SelectYear.submit()">'
    . translate( 'Year' ) . '</a>:&nbsp;</label>

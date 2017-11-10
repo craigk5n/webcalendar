@@ -39,7 +39,6 @@ if ( empty ( $id ) || $id <= 0 || ! is_numeric ( $id ) )
 $hide_details = ( $login == '__public__' && !
   empty ( $OVERRIDE_PUBLIC ) && $OVERRIDE_PUBLIC == 'Y' );
 
-
 // Check if we can display basic info for RSS FEED
 $rssuser = getGetValue ( 'rssuser' );
 if ( ! empty ( $rssuser ) ) {
@@ -53,10 +52,9 @@ if ( ! empty ( $rssuser ) ) {
       $user = $rssuser;
     $hide_details = false;
     // Make sure the displayed time is accurate.
-    set_env ( 'TZ', $user_rss_timezone );
+    date_default_timezone_set ( $user_rss_timezone );
   }
 }
-
 // Is this user a participant or the creator of the event?
 // If assistant is doing this, then we need to switch login to user in the sql.
 $sqlparm = ( $is_assistant ? $user : $login );
@@ -168,11 +166,6 @@ if ( empty ( $error ) ) {
 
   if ( $is_admin || $is_nonuser_admin || $is_assistant )
     $can_view = true;
-
- // Commented out by RJ. Not sure of the reason for this code
- //   if ( ($login != '__public__') && ($PUBLIC_ACCESS_OTHERS == 'Y') ) {
- //     $can_view = true;
- //   }
 
   $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin &&
     $user == $create_by ||
@@ -395,12 +388,12 @@ $reminder = getReminders ( $id, true );
 echo '
     <h2>' . $name . ( $is_nonuser_admin ||
   ( $is_admin && ! empty ( $user ) && $user == '__public__' )
-  ? '  ( ' . translate ( 'Admin mode' ) . ' )' : '' )
- . ( $is_assistant ? ' ( ' . translate ( 'Assistant mode' ) . ' )' : '' )
+  ? '<span class="parentheses">' . translate ( 'Admin mode' ) . '</span>' : '' )
+ . ( $is_assistant ? '<span class="parentheses">' . translate ( 'Assistant mode' ) . '</span>' : '' )
  . '</h2>
     <table>
       <tr>
-        <td class="aligntop bold colon" width="10%">' . translate ( 'Description' )
+        <td class="aligntop bold colon" style="width:10%;">' . translate ( 'Description' )
  . '</td>
         <td>';
 
@@ -662,7 +655,7 @@ if ( $single_user == 'N' && $show_participants ) {
       }
       dbi_free_result ( $res );
     } else
-      db_error() . '<br />';
+      db_error () . '<br>';
   }
   if ( $eType == 'task' ) {
     echo '
@@ -694,12 +687,8 @@ if ( $single_user == 'N' && $show_participants ) {
         echo '&nbsp;' . $tempfullname;
 
       echo '</td>
-              <td width="5%" class="aligncenter">' . $percentage . '%</td>
-              <td width="65%">
-                <img src="images/pix.gif" width="' . $percentage
-       . '%" height="10">
-                <img src="images/spacer.gif" width="' . $spacer
-       . '" height="10">
+              <td style="width:5%;" class="aligncenter">' . str_replace ( 'XXX', translate ( $percentage,0,'N' ), translate ( 'XXX%' ) ) . '</td>
+              <td style="width:65%;"><img src="images/pix.gif" style="width:' . $percentage . '%"; height:10px;"><img src="images/spacer.gif" style="width:' . $spacer . '; height:10px;">
               </td>
             </tr>';
     }
@@ -712,14 +701,14 @@ if ( $single_user == 'N' && $show_participants ) {
         $can_email = access_user_calendar ( 'email', $templogin );
       echo '
           ';
-      if ( strlen ( $tempemail ) > 0 && $can_email != 'N' ) {
+      if ( mb_strlen ( $tempemail ) && $can_email === 'Y' ) {
         echo '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
          . $tempfullname . '</a>';
         $allmails[] = $tempemail;
       } else
         echo $tempfullname;
 
-      echo '<br />';
+      echo '<br>';
     }
     // show external users here...
     if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ) {
@@ -730,7 +719,7 @@ if ( $single_user == 'N' && $show_participants ) {
         for ( $i = 0, $cnt = count ( $ext_users ); $i < $cnt; $i++ ) {
           if ( ! empty ( $ext_users[$i] ) ) {
             echo '
-          ' . $ext_users[$i] . ' (' . $externUserStr . ')<br />';
+          ' . $ext_users[$i] . '<span class="parentheses">' . $externUserStr . '</span><br>';
             if ( preg_match ( '/mailto: (\S+)"/', $ext_users[$i], $match ) )
               $allmails[] = $match[1];
           }
@@ -743,14 +732,14 @@ if ( $single_user == 'N' && $show_participants ) {
         $can_email = access_user_calendar ( 'email', $templogin );
       echo '
           ';
-      if ( strlen ( $tempemail ) > 0 && $can_email != 'N' ) {
+      if ( mb_strlen ( $tempemail ) && $can_email === 'Y' ) {
         echo '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
          . $tempfullname . '</a>';
         $allmails[] = $tempemail;
       } else
         echo $tempfullname;
 
-      echo ' (?)<br />';
+      echo ' (?)<br>';
     }
     for ( $i = 0; $i < $num_rej; $i++ ) {
       user_load_variables ( $rejected[$i], 'temp' );
@@ -758,13 +747,12 @@ if ( $single_user == 'N' && $show_participants ) {
         $can_email = access_user_calendar ( 'email', $templogin );
 
       echo '
-          <strike>' . ( strlen ( $tempemail ) > 0 && $can_email != 'N'
+          <strike>' . ( mb_strlen ( $tempemail ) && $can_email === 'Y'
         ? '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
          . $tempfullname . '</a>'
-        : $tempfullname ) . '</strike> (' . translate ( 'Rejected' ) . ')<br />';
+        : $tempfullname ) . '</strike><span class="parentheses">' . translate ( 'Rejected' ) . '</span><br>';
     }
   }
-
   echo '
         </td>
       </tr>';
@@ -793,18 +781,18 @@ if ( $eType == 'task' ) {
           <form action="view_entry.php?id=' . $id
      . '" method="post" name="setpercentage">
             <input type="hidden" name="others_complete" value="'
-     . $others_complete . '" />' . translate ( 'Update Task Percentage' ) . '
+     . $others_complete . '">' . translate ( 'Update Task Percentage' ) . '
         </td>
         <td>
-            <select name="upercent" id="task_percent">';
+            <select id="task_percent" name="upercent">';
     for ( $i = 0; $i <= 100; $i += 10 ) {
       echo '
               <option value="' . "$i\" " . ( $login_percentage == $i
-        ? ' selected="selected"':'' ) . ' >' . $i . '</option>';
+        ? ' selected' : '' ) . '>' . $i . '</option>';
     }
     echo '
             </select>&nbsp;
-            <input type="submit" value="' . translate ( 'Update' ) . '" />
+            <input type="submit" value="' . translate ( 'Update' ) . '">
           </form>
         </td>
       <tr>';
@@ -828,13 +816,13 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
         || user_is_assistant( $login, $create_by )
       ? ' <a href="docdel.php?blid=' . $a->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
-       . '<img src="images/delete.png"/></a>' : '' ) . '<br />';
+       . '<img src="images/delete.png"></a>' : '' ) . '<br>';
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize();
 
   echo ( $num_attach == 0 ? '
-          ' . translate ( 'None' ) . '<br />' :'' ) . '
+          ' . translate ( 'None' ) . '<br>' : '' ) . '
         </td>
       </tr>';
 }
@@ -862,8 +850,8 @@ if ( Doc::commentsEnabled() ) {
         || user_is_assistant( $login, $create_by )
       ? ' <a href="docdel.php?blid=' . $cmt->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr
-       . '\' );"><img src="images/delete.png"/></a>' : '' )// end show delete link
-     . '<br />
+       . '\');"><img src="images/delete.png"></a>' : '' )// end show delete link
+     . '<br>
           <blockquote id="eventcomment">';
      if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
        $str = $cmt->getData();
@@ -881,14 +869,14 @@ if ( Doc::commentsEnabled() ) {
   }
 
   if ( $num_comment == 0 )
-    echo translate ( 'None' ) . '<br />';
+    echo translate ( 'None' ) . '<br>';
   else {
     echo '
           ' . $num_comment . ' ' . translate ( 'comments' ) . '
           <input id="showbutton" type="button" value="' . translate ( 'Show' )
-     . '" onclick="showComments();" />
+     . '" onclick="showComments();">
           <input id="hidebutton" type="button" value="' . translate ( 'Hide' )
-     . '" onclick="hideComments();" /><br />
+     . '" onclick="hideComments();"><br>
           <div id="comtext">' . $comment_text . '</div>';
     // We could put the following JS in includes/js/view_entry.php,
     // but we won't need it in many cases and we don't know whether
@@ -896,7 +884,6 @@ if ( Doc::commentsEnabled() ) {
     // So, we will include it here instead.
     ?>
 <script>
-<!-- <![CDATA[
 function showComments() {
   var x = document.getElementById ( "comtext" )
   if ( x ) {
@@ -926,7 +913,6 @@ function hideComments() {
   }
 }
 hideComments();
-//]]> -->
 </script>
     <?php
   }
@@ -1142,15 +1128,15 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
   $palmStr = translate ( 'Palm Pilot' );
   $selectStr = generate_export_select();
   $userStr = ( ! empty ( $user ) ? '<input type="hidden" name="user" value="' .
-    $user . '" />' : '' );
+    $user . '">' : '' );
   echo <<<EOT
-    <br />
+    <br>
     <form method="post" name="exportform" action="export_handler.php">
       <label for="exformat">{$exportThisStr}:&nbsp;</label>
       {$selectStr}
-      <input type="hidden" name="id" value="{$id}" />
+      <input name="id" type="hidden" value="{$id}">
           {$userStr}
-      <input type="submit" value="{$exportStr}" />
+      <input type="submit" value="{$exportStr}">
     </form>
 EOT;
 }

@@ -14,7 +14,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @package WebCalendar
  */
 
@@ -210,7 +210,7 @@ function load_translation_text() {
       if ( ! is_dir ( $cache_tran_dir ) )
         die_miserable_death ( 'Error creating translation cache directory: "'
            . $cache_tran_dir
-           . '"<br /><br />Please check the permissions of the directory: "'
+           . '"<br><br>Please check the permissions of the directory: "'
            . $cachedir . '"' );
  */
     }

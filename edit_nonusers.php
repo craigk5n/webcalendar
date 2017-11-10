@@ -1,7 +1,7 @@
 <?php // $Id: edit_nonusers.php,v 1.29 2009/11/22 16:47:45 bbannon Exp $
 include_once 'includes/init.php';
 print_header( array( 'js/translate.js.php' ),
-  '<script type="text/javascript" src="includes/js/edit_nonusers.js"></script>',
+  '<script src="includes/js/edit_nonusers.js"></script>',
   '', true, '', true, false );
 
 if ( ! $is_admin ) {
@@ -29,7 +29,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   if ( ! empty ( $nid ) ) {
     nonuser_load_variables ( $nid, 'nonusertemp_' );
     $id_display = $nid . '
-      <input type="hidden" name="nid" value="' . $nid . '" />';
+      <input name="nid" type="hidden" value="' . $nid . '">';
     $button = translate ( 'Save' );
         $buttonAction = 'Save';
    // $nonusertemp_login = substr ( $nonusertemp_login,
@@ -37,7 +37,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   } else
     $id_display = '
       <input type="text" name="nid" id="calid" size="20" '
-     . 'onchange="check_name();" maxlength="20" /> '
+     . 'onchange="check_name();" maxlength="20"> '
      . translate ( 'word characters only' );
 
   echo '
@@ -45,7 +45,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
    . 'onsubmit="return valid_form( this );">'
    . ( empty ( $nonusertemp_admin ) ? '' : '
       <input type="hidden" name="old_admin" value="'
-     . $nonusertemp_admin . '" />' ) . '
+     . $nonusertemp_admin . '">' ) . '
       <h2>' . ( empty ( $nid )
     ? translate ( 'Add User' ) : translate ( 'Edit User' ) ) . '</h2>
       <table>
@@ -60,7 +60,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
           <td><input type="text" name="nfirstname" id="nfirstname" size="20" '
    . 'maxlength="25" value="'
    . ( empty ( $nonusertemp_firstname )
-    ? '' : htmlspecialchars ( $nonusertemp_firstname ) ) . '" /></td>
+    ? '' : htmlspecialchars ( $nonusertemp_firstname ) ) . '"></td>
         </tr>
         <tr>
           <td><label for="nlastname">' . translate ( 'Last Name' )
@@ -68,7 +68,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
           <td><input type="text" name="nlastname" id="nlastname" size="20" '
    . 'maxlength="25" value="'
    . ( empty ( $nonusertemp_lastname )
-    ? '' : htmlspecialchars ( $nonusertemp_lastname ) ) . '" /></td>
+    ? '' : htmlspecialchars ( $nonusertemp_lastname ) ) . '"></td>
         </tr>
         <tr>
           <td><label for="nadmin">' . translate ( 'Admin' ) . ':</label></td>
@@ -80,7 +80,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
               <option value="' . $userlist[$i]['cal_login'] . '"'
      . ( ! empty ( $nonusertemp_admin ) &&
       $nonusertemp_admin == $userlist[$i]['cal_login']
-      ? ' selected="selected"' : '' ) . '>' . $userlist[$i]['cal_fullname']
+      ? ' selected' : '' ) . '>' . $userlist[$i]['cal_fullname']
      . '</option>';
   }
 
@@ -97,10 +97,10 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
           <td>
             <input type="radio" name="ispublic" value="Y" '
      . ( ! empty ( $nonusertemp_is_public ) && $nonusertemp_is_public == 'Y'
-      ? ' checked="checked"' : '' ) . ' /> ' . translate ( 'Yes' )
+      ? ' checked' : '' ) . '> ' . translate ( 'Yes' )
      . '&nbsp;&nbsp;<input type="radio" name="ispublic" value="N" '
      . ( empty ( $nonusertemp_is_public ) || $nonusertemp_is_public != 'Y'
-      ? ' checked="checked"' : '' ) . ' /> ' . translate ( 'No' ) . '<br />';
+      ? ' checked' : '' ) . '> ' . translate ( 'No' ) . '<br>';
 
     if ( ! empty ( $nonusertemp_login ) ) {
       $nu_url = $SERVER_URL . 'nulogin.php?login=' . $nonusertemp_login;
@@ -113,14 +113,14 @@ if ( ( ( $add == '1' ) || ( ! empty ( $nid ) ) ) && empty ( $error ) ) {
   }
 
   echo '
-      </table><br />
+      </table><br>
       <input type="submit" name="' . $buttonAction
-            . '" value="' . $button . '" />'
+            . '" value="' . $button . '">'
             . ( empty ( $nid ) ? '' : '
       <input type="submit" name="delete" value="' . translate ( 'Delete' )
      . '" onclick="return confirm( \''
      . translate( 'Are you sure you want to delete this entry?' )
-     . '\')" />' ) . '
+     . '\')">') . '
     </form>
     ';
 }

@@ -6,7 +6,7 @@
  *
  * @author Craig Knudsen
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @version $Id: Doc.class,v 1.11 2011/06/02 12:45:22 rjones6061 Exp $
  * @package WebCalendar
  * @subpackage Doc
@@ -159,16 +159,16 @@ class Doc {
    * @param array $row  An array returned from dbi_fetch_row using
    *      the SQL from Doc->getSQL.
    *      The elements of the array should be:  <ul>
-   *      <li> Unique BLOB id  </li>
-   *      <li> Event id  </li>
-   *      <li> Login of owner  </li>
-   *      <li> Name of object  </li>
-   *      <li> Description  </li>
-   *      <li> Size of object (attachments)  </li>
-   *      <li> MIME type of object  </li>
-   *      <li> Type of objecgt ('A' or 'C')  </li>
-   *      <li> Modification date (YYYYMMDD)  </li>
-   *      <li> Modification time (YYYYMMDD)  </li>
+   *      <li>Unique BLOB id</li>
+   *      <li>Event id</li>
+   *      <li>Login of owner</li>
+   *      <li>Name of object</li>
+   *      <li>Description</li>
+   *      <li>Size of object (attachments)</li>
+   *      <li>MIME type of object</li>
+   *      <li>Type of objecgt ('A' or 'C')</li>
+   *      <li>Modification date (YYYYMMDD)</li>
+   *      <li>Modification time (YYYYMMDD)</li>
    *      </ul>
    *
    * @return Doc The new Doc object

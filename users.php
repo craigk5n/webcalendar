@@ -78,7 +78,7 @@ if ( $doUsers ) {
     echo ( $admin_can_add_user ? '
           <a href="edit_user.php" target="useriframe" onclick="showFrame'
        . '( \'useriframe\' );">' . translate ( 'Add New User' )
-       . '</a><br />' : '' ) . '
+       . '</a><br>' : '' ) . '
           <ul>';
 
     $userlist = user_get_users();
@@ -98,7 +98,7 @@ if ( $doUsers ) {
 }
 if ( $is_admin ) {
     echo '
-          *&nbsp;' . $denotesStr . '.<br />
+          *&nbsp;' . $denotesStr . '.<br>
           <iframe name="useriframe" id="useriframe"></iframe>';
 }
 if ($doUser && ! $doUsers ) {

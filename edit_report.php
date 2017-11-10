@@ -10,7 +10,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @package WebCalendar
  * @subpackage Reports
  */
@@ -28,12 +28,12 @@ load_user_categories();
 
 $adding_report = false;
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
-$checked = ' checked="checked"';
+$checked = ' checked';
 $error =
  ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' || $login == '__public__'
    ? print_not_auth() : '' );
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
-$selected = ' selected="selected"';
+$selected = ' selected';
 $show_participants = ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y'
   ? false : true );
 $updating_public = ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS == 'Y' );
@@ -94,8 +94,8 @@ $day_template = '<dt><b>${date}</b></dt>
 <dd><dl>${events}</dl></dd>';
 
 $event_template = '<dt>${name}</dt>
-<dd><b>' . translate ( 'Date' ) . ':</b> ${date}<br />
-<b>' . translate ( 'Time' ) . ':</b> ${time}<br />
+<dd><b>' . translate ( 'Date' ) . ':</b> ${date}<br>
+<b>' . translate ( 'Time' ) . ':</b> ${time}<br>
 ${description}</dd>
 ';
 
@@ -117,7 +117,7 @@ function print_options ( $textarea, $option ) {
   // Use ASCII values for ${}.
   echo '
             <a onclick="addMe( \'' . $textarea . '\', \'${' . $option
-   . '}\' )">${' . $option . '}</a><br />';
+   . '}\')">${' . $option . '}</a><br>';
 }
 
 if ( empty ( $error ) && $report_id >= 0 ) {
@@ -208,16 +208,16 @@ echo '
  . '</h2>
     <form action="edit_report_handler.php" method="post" name="reportform">'
  . ( $updating_public ? '
-      <input type="hidden" name="public" value="1" />' : '' )
+      <input name="public" type="hidden" value="1">' : '' )
  . ( ! $adding_report ? '
       <input type="hidden" name="report_id" value="'
-   . $report_id . '" />' : '' ) . '
+   . $report_id . '">' : '' ) . '
       <table>
         <tr>
           <td><label for="rpt_name">' . translate ( 'Report name' )
  . ':</label></td>
           <td><input type="text" name="report_name" id="rpt_name" size="40" '
- . 'maxlength="50" value="' . $report_name . '" /></td>
+ . 'maxlength="50" value="' . $report_name . '"></td>
         </tr>';
 
 if ( $show_participants ) {
@@ -373,7 +373,7 @@ echo '
 $extra_names = get_site_extras_names( EXTRA_DISPLAY_REPORT );
 if ( count ( $extra_names ) > 0 )
   echo '
-            <label>' . translate ( 'Site Extras' ) . '</label><br />';
+            <label>' . translate ( 'Site Extras' ) . '</label><br>';
 
 foreach ( $extra_names as $name ) {
   print_options ( 'event_template', 'extra:' . $name );
@@ -384,12 +384,12 @@ echo '
         </tr>
         <tr>
           <td colspan="4">
-            <input type="submit" value="' . translate ( 'Save' ) . '" />'
+            <input type="submit" value="' . translate ( 'Save' ) . '">'
  . ( $adding_report ? '' : '&nbsp;&nbsp;
             <input type="submit" name="delete" value="'
    . translate ( 'Delete' ) . '" onclick="return confirm( \''
    . translate( 'Are you sure you want to delete this report?' )
-   . '\');" />' );
+   . '\');">' );
 
 ?>
           </td>
@@ -397,7 +397,6 @@ echo '
       </table>
     </form>
     <script>
-<!-- <![CDATA[
     // This script borrowed from phpMyAdmin with some mofification.
       function addMe ( areaname, myValue ) {
         var textarea = document.reportform.elements[areaname];
@@ -420,7 +419,6 @@ echo '
           textarea.value += myValue;
         }
       }
-//]]> -->
     </script>
 <?php echo print_trailer();
 

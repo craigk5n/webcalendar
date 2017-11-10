@@ -6,10 +6,9 @@ $endScriptStr = '';
 if ( ! empty ( $_SERVER['PHP_SELF'] ) && !
  preg_match ( '/js_cacher.php/', $_SERVER['PHP_SELF'] ) ) {
   echo '<script>
-<!-- <![CDATA[
 ';
 
-  $endScriptStr = '//]]> -->
+  $endScriptStr = '
 </script>
 ';
 }

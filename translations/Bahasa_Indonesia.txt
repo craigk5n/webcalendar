@@ -4,7 +4,6 @@
 # $Id: Bahasa_Indonesia.txt,v 1.9 2010/02/21 08:27:49 bbannon Exp $
 # Translation last updated on 10-15-2008
 
-
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
@@ -36,7 +35,6 @@ __month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
-
 
 ########################################
 # Page: about.php
@@ -118,7 +116,7 @@ date-format-help: Tentukan format tanggal yang dikehendaki.
 Date format: Format tanggal
 display-week-starts-on: Menentukan apakah pekan dimulai pada hari Ahad atau Senin. Jika Anda menentukan hari Senin maka nomor-nomor pekan akan menggunakan nomor-nomor pekan ISO.
 Week starts on: Pekan dimulai pada
-time-format-help: Tentukan format waktu yang mana yang ingin digunakan: <br /><i>12 jam:</i> Menampilkan waktu sebagai 3am, 8:30pm, dsb.  <br /><i>24 jam:</i> Menampilkan waktu sebagai 300, 2030, dsb.
+time-format-help: Tentukan format waktu yang mana yang ingin digunakan:<br><i>12 jam:</i> Menampilkan waktu sebagai 3am, 8:30pm, dsb.<br><i>24 jam:</i> Menampilkan waktu sebagai 300, 2030, dsb.
 Time format: Format waktu
 12 hour: 12 jam
 24 hour: 24 jam
@@ -146,7 +144,7 @@ Include add event link in views: Sertakan tautan tambahkan acara dalam tampilan
 allow-view-other-help: Menentukan apakah seorang pengguna dapat melihat kalender pengguna yang lain atau tidak.
 require-approvals-help: Jika dinyalakan, maka seorang pengguna harus menyetuji sebuah acara sebelum acara tersebut ditampilkan pada kalender pribadi mereka (terkecuali jika Tampilkan acara yang belum disetujui dinyalakan). Harap diperhatikan bahwa dengan menyetel nilai ini ke "Tidak" tidak akan mematikan penyetujuan untuk kalender Akses Umum (jika kalender Akses Umum dinyalakan).
 Require event approvals: Membutuhkan penyetujuan acara
-display-unapproved-help: Menentukan apakah acara-acara yang belum disetujui akan ditampilkan dalam kalender Anda.<br /> Jika ditetapkan ke "Ya", maka acara-acara yang belum disetujui akan ditampilkan pada kalender Anda (dengan warna teks yang berbeda).<br /> Jika ditetapkan ke "Tidak", maka acara-acara yang belum disetujui harus disetujui terlebih dahulu sebelum mereka ditampilkan dalam kalender Anda.
+display-unapproved-help: Menentukan apakah acara-acara yang belum disetujui akan ditampilkan dalam kalender Anda.<br>Jika ditetapkan ke "Ya", maka acara-acara yang belum disetujui akan ditampilkan pada kalender Anda (dengan warna teks yang berbeda).<br>Jika ditetapkan ke "Tidak", maka acara-acara yang belum disetujui harus disetujui terlebih dahulu sebelum mereka ditampilkan dalam kalender Anda.
 Display unapproved: Tampilkan acara yang belum disetujui
 conflict-check-help: Periksa konflik acara (dua buah acara dijadwalkan untuk waktu yang sama untuk orang yang sama). Jika Anda menyetel nilai ini ke "Ya", maka Anda masih akan tetap bisa untuk menjadwalkan dua buah acara pada waktu yang sama setelah mengkonfirmasikan sebuah peringatan. Jika Anda menyetel nilai ini ke "Tidak", maka tidak ada pemeriksaan konflik yang akan dilakukan. Anda mungkin ingin untuk menyetel nilai ini ke "Ya", agar pemeriksaan konflik dilakukan.
 Check for event conflicts: Periksa konflik acara
@@ -307,7 +305,7 @@ brief-description-help: Ketikkan sebuah keterangan singkat (sekitar 20 karakter)
 Brief Description: Keterangan Singkat
 full-description-help: Ketikkan rincian lengkap mengenai acara ini disini. Teks ini dapat dilihat pada saat seorang pengguna melihat acaranya.
 Full Description: Keterangan Lengkap
-access-help: Menentukan tingkat akses dari acara.<br /> <i>Umum</i>: Siapa saja dapat melihat rincian lengkap mengenai acara.  <br /><i>Pribadi</i>: Pengguna lain dapat melihat bahwa Anda mempunyai sebuah entri untuk tanggal dan waktu tersebut, tetapi mereka tidak dapat melihat rincian acaranya.
+access-help: Menentukan tingkat akses dari acara.<br><i>Umum</i>: Siapa saja dapat melihat rincian lengkap mengenai acara.<br><i>Pribadi</i>: Pengguna lain dapat melihat bahwa Anda mempunyai sebuah entri untuk tanggal dan waktu tersebut, tetapi mereka tidak dapat melihat rincian acaranya.
 Access: Akses
 priority-help: Menentukan prioritas acara. Acara-acara dengan prioritas tinggi akan ditampilkan dalam huruf tebal.
 Priority: Prioritas
@@ -322,8 +320,8 @@ Untimed event: Acara tanpa jadwal waktu
 Timed event: Acara dengan jadwal waktu
 All day event: Acara sepanjang hari
 Timezone Offset: Selisih Zona Waktu
-time-help: Menentukan waktu dari acara.<br />Pilih antara "Acara dengan jadwal waktu" (untuk sebuah acara yang dijadwalkan untuk rentang waktu tertentu pada hari tersebut), "Acara tanpa jadwal waktu" (untuk sebuah acara yang tidak mempunyai sebuah jadwal waktu (seperti liburan), atau "Acara sepanjang hari" (untuk suatu acara yang memakan waktu sepanjang hari (seperti berada di luar kantor).
-duration-help: Menentukan durasi (dalam jam:menit) dari acara.  <br /><i>Bidangisian ini dapat dibiarkan kosong.</i>
+time-help: Menentukan waktu dari acara.<br>Pilih antara "Acara dengan jadwal waktu" (untuk sebuah acara yang dijadwalkan untuk rentang waktu tertentu pada hari tersebut), "Acara tanpa jadwal waktu" (untuk sebuah acara yang tidak mempunyai sebuah jadwal waktu (seperti liburan), atau "Acara sepanjang hari" (untuk suatu acara yang memakan waktu sepanjang hari (seperti berada di luar kantor).
+duration-help: Menentukan durasi (dalam jam:menit) dari acara.<br><i>Bidangisian ini dapat dibiarkan kosong.</i>
 end-time-help: Menentukan waktu dimana acara ini diperkirakan akan selesai.
 participants-help: Mendaftarkan partisipan dari entri ini.
 Availability: Ketersediaan

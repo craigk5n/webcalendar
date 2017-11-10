@@ -29,7 +29,7 @@ else {
         </tr>
         <tr>
           <td class="aligncenter"><input type="submit" value="'
-   . translate ( 'Continue' ) . '" /></td>
+   . translate ( 'Continue' ) . '"></td>
         </tr>
         <tr>
           <td>'
@@ -99,7 +99,7 @@ if ( empty ( $error ) && $id > 0 ) {
     $t_format = get_pref_setting ( $partlogin[$i], 'TIME_FORMAT' );
     user_load_variables ( $partlogin[$i], 'temp' );
     $user_TIMEZONE = get_pref_setting ( $partlogin[$i], 'TIMEZONE' );
-    set_env ( 'TZ', $user_TIMEZONE );
+    date_default_timezone_set ( $user_TIMEZONE );
     $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
     if ( $send_user_mail == 'Y' &&
       strlen ( $tempemail ) && $SEND_EMAIL != 'N' && $can_mail == 'Y' ) {
@@ -147,7 +147,7 @@ if ( empty ( $error ) && $id > 0 ) {
 }
 
 // Return to login TIMEZONE.
-set_env ( 'TZ', $TIMEZONE );
+date_default_timezone_set ( $TIMEZONE );
 if ( empty ( $error ) && empty ( $mailerError ) ) {
   if ( ! empty ( $ret ) && $ret == 'listall' )
     do_redirect ( 'list_unapproved.php' );

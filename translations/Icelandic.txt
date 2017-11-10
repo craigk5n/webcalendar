@@ -6,7 +6,6 @@
 # $Id: Icelandic.txt,v 1.35 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-14-2008
 
-
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
@@ -38,7 +37,6 @@ __month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
-
 
 ########################################
 # Page: about.php
@@ -81,7 +79,7 @@ Language: Tungumál
 None: Engin
 display-week-starts-on: Tilgreinir hvort vikan byrjar á sunnudegi eða mánudegi. Ef mánudagur er valinn munu vikunúmerin á ISO viku númer.
 Week starts on: Vika byrjar á
-time-format-help: Tilgreinir á hvaða tímasnið á að nota:<br /><i>12 tíma:</i> Birtir tíma sem 3fh, 8:30eh, o.s.frv.<br /><i>24 tíma:</i> Birtir tíma sem 300, 2030, o.s.frv.
+time-format-help: Tilgreinir á hvaða tímasnið á að nota:<br><i>12 tíma:</i> Birtir tíma sem 3fh, 8:30eh, o.s.frv.<br><i>24 tíma:</i> Birtir tíma sem 300, 2030, o.s.frv.
 Time format: Klukka
 12 hour: 12 tíma
 24 hour: 24 tíma
@@ -94,7 +92,7 @@ preferred-view-help: Tilgreinir sjálfgefið val (Dagur, vika, mánuður eða ár).
 Preferred view: Birting
 display-week-number-help: Tilgreinir hvort vikunúmer (1-52) eigi að birtast í mánaðar og viku vali.
 Display week number: Birta númer viku
-display-unapproved-help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali.<br /> Ef "Já", eru ósamþykkt atriði birt á dagatali (í öðrum lit).<br /> Ef "Nei", verður að samþykkta atriði til þess að þau birtist á dagatali.
+display-unapproved-help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali.<br>Ef "Já", eru ósamþykkt atriði birt á dagatali (í öðrum lit).<br>Ef "Nei", verður að samþykkta atriði til þess að þau birtist á dagatali.
 Display unapproved: Birta ósamþykkt
 Yes: Já
 No: Nei
@@ -137,7 +135,7 @@ brief-description-help: Hér á að vera stutt lýsing (u.þ.b 20 stafir) atriðis. Þe
 Brief Description: Stutt skrýring
 full-description-help: Hér á að vera full lýsing atriðis. Upplýsingarnar er hægt að sjá þegar atriði er skoðað.
 Full Description: Full skýring
-access-help: Tilgreinir aðgang að atriði.<br /> <i>Allir</i>: Allir geta séð fulla lýsingu atriðis.<br /><i>Trúnaðarmál</i>: Aðrir sjá að viðkomandi hefur atriði á tilgreindum tíma en sjá ekkert um efnið.
+access-help: Tilgreinir aðgang að atriði.<br><i>Allir</i>: Allir geta séð fulla lýsingu atriðis.<br><i>Trúnaðarmál</i>: Aðrir sjá að viðkomandi hefur atriði á tilgreindum tíma en sjá ekkert um efnið.
 Access: Aðgangur
 priority-help: Tilgreinir forgang atriðis. Atriði með háan forgang eru birt með feitu letri.
 Priority: Forgangur
@@ -145,8 +143,8 @@ High: Hár
 Medium: Meðal
 Low: Lágur
 date-help: Tilgreinir dagsetningu atriðis.
-time-help: Tilgreinir tíma atriðis.<br /><i>Þessu sviði má sleppa.</i>
-duration-help: Tilgreinir áætlaða lengd (í mínútum) atriðis.<br /><i>Þessu sviði má sleppa.</i>
+time-help: Tilgreinir tíma atriðis.<br><i>Þessu sviði má sleppa.</i>
+duration-help: Tilgreinir áætlaða lengd (í mínútum) atriðis.<br><i>Þessu sviði má sleppa.</i>
 participants-help: Fá fram þá sem koma að atriði.
 repeat-type-help: Velja hversu oft endurtaka á atburðinn.<i>Mánaðarlega (eftir degi)</i> gerir kleift að endurtaka atriði fyrsta mánudag mánaðar, þriðja þriðjudag o.s.frv. <i>Mánaðarlega (eftir dags)</i> gerir kleift að endurtaka atriði á sama mánaðardegi.
 Daily: Daglega

@@ -143,7 +143,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
     if ( ! empty ( $_FILES['FileName'] ) )
       $file = $_FILES['FileName'];
     if ( empty ( $file['file'] ) )
-      $error = 'File Upload error!<br />';
+      $error = 'File Upload error!<br>';
 
     //print_r ( $file ); exit;
     $mimetype = $file['type'];
@@ -202,20 +202,20 @@ print_header();
   // Comment
 ?>
 <form action="docadd.php" method="post" name="docform">
-<input type="hidden" name="id" value="<?php echo $id?>" />
-<input type="hidden" name="type" value="C" />
+<input name="id" type="hidden" value="<?php echo $id?>">
+<input name="type" type="hidden" value="C">
 
 <table>
 
 <tr><td class="aligntop"><label for="description">
   <?php etranslate ( 'Subject' )?>:</label></td>
-  <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
+  <td><input maxlength="127" name="description" size="50" type="text"></td></tr>
 
 <tr><td class="aligntop"><label for="comment">
   <?php etranslate ( 'Comment' )?>:</label></td>
   <td><textarea name="comment" rows="15" cols="60" wrap="auto"></textarea></td></tr>
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate ( 'Add Comment' )?>" /></td></tr>
+<input type="submit" value="<?php etranslate ( 'Add Comment' )?>"></td></tr>
 </table>
 </form>
 
@@ -223,18 +223,18 @@ print_header();
   // Attachment
 ?>
 <form action="docadd.php" method="post" name="docform" enctype="multipart/form-data">
-<input type="hidden" name="id" value="<?php echo $id?>" />
-<input type="hidden" name="type" value="A" />
+<input name="id" type="hidden" value="<?php echo $id?>">
+<input name="type" type="hidden" value="A">
 <table>
 <tr class="browse"><td>
  <label for="fileupload"><?php etranslate ( 'Upload file' );?>:</label></td><td>
- <input type="file" name="FileName" id="fileupload" size="45" maxlength="50" />
+ <input id="fileupload" maxlength="50" name="FileName" size="45" type="file">
 <tr><td class="aligntop"><label for="description">
   <?php etranslate ( 'Description' )?>:</label></td>
-  <td><input type="text" name="description" size="50" maxlength="127" /></td></tr>
+  <td><input maxlength="127" name="description" size="50" type="text"></td></tr>
 
 <tr><td colspan="2">
-<input type="submit" value="<?php etranslate ( 'Add Attachment' )?>" /></td></tr>
+<input type="submit" value="<?php etranslate ( 'Add Attachment' )?>"></td></tr>
 
 </table>
 </form>

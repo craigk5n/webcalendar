@@ -221,19 +221,23 @@ function print_upcoming_event ( $e, $date ) {
     echo '<abbr class="dtend" title="'. export_ts_utc_date ($e->getEndDateTimeTS() )
       . '">' . $e->getEndDateTimeTS() . "</abbr>\n";
     echo '<span class="description">' . $e->getDescription() . "</span>\n";
-    if ( strlen ( $e->getLocation() ) > 0 )
-    echo '<span class="location">' . $e->getLocation() . "</span>\n";
+
+    if ( mb_strlen ( $e->getLocation () ) )
+      echo '<span class="location">' . $e->getLocation () . "</span>\n";
+
     $categories = get_categories_by_id ( $e->getId(), $username );
     $category = implode ( ', ', $categories);
-    if ( strlen( $category ) > 0 )
+
+    if ( mb_strlen ( $category ) )
       echo '<span class="categories">' . htmlentities ( $category ) . "</span>\n";
-    if ( strlen ( $e->getUrl() ) > 0 )
+
+    if ( mb_strlen ( $e->getUrl () ) )
       echo '<span class="url">' . $e->getUrl() . "</span>\n";
+
     $rrule = export_recurrence_ical( $e->getId() );
     if ( strlen ( $rrule ) > 6 )
       echo '<span class="rrule">' . substr ( $rrule, 6 ) . "</span>\n";
   }
-
   if ( $showTime ) {  //show event time if requested (default=don't show)
     if ( $e->isAllDay() ) {
       echo ' (' . translate ( 'All day event' ) . ")\n";
@@ -348,7 +352,6 @@ if ( $allow_user_override ) {
   }
 }
 
-
 // Set for use elsewhere as a global
 $login = $username;
 // Load user preferences for DISPLAY_UNAPPROVED
@@ -387,17 +390,17 @@ if ( $error == '' ) {
     }
 
     $x = getGetValue ( 'showMore', true );
-    if ( strlen( $x ) > 0 ) {
+    if ( mb_strlen ( $x ) ) {
       $showMore= $x;
     }
 
     $x = getGetValue ( 'showTime', true );
-    if ( strlen( $x ) > 0 ) {
+    if ( mb_strlen ( $x ) ) {
       $showTime= $x;
     }
 
     $x = getGetValue ( 'showTitle', true );
-    if ( strlen( $x ) > 0 ) {
+    if ( mb_strlen ( $x ) ) {
       $showTitle = $x;
     }
 

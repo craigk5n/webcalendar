@@ -32,9 +32,9 @@ if ( empty ( $ret ) ) {
         <tr>
           <td class="aligncenter">
             <input type="submit" value="' . translate ( 'Approve and Send' )
-   . '" />&nbsp;&nbsp;&nbsp;
+   . '">&nbsp;&nbsp;&nbsp;
             <input type="submit" id="cancel" name="cancel" value="'
-   . translate( 'Approve and Exit' ) . '" />
+   . translate ( 'Approve and Exit' ) . '">
           </td>
         </tr>
         <tr>
@@ -91,7 +91,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   $htmlmail = get_pref_setting ( $creator, 'EMAIL_HTML' );
   user_load_variables ( $creator, 'temp' );
   $user_TIMEZONE = get_pref_setting ( $creator, 'TIMEZONE' );
-  set_env ( 'TZ', $user_TIMEZONE );
+  date_default_timezone_set ( $user_TIMEZONE );
   $user_language = get_pref_setting ( $creator, 'LANGUAGE' );
   if ( $send_user_mail == 'Y' && strlen ( $tempemail ) && $SEND_EMAIL != 'N' ) {
     reset_language ( empty ( $user_language ) || ( $user_language == 'none' )
@@ -132,7 +132,7 @@ if ( ! empty ( $comments ) && empty ( $cancel ) ) {
   }
 }
 // Return to login TIMEZONE.
-set_env ( 'TZ', $TIMEZONE );
+date_default_timezone_set ( $TIMEZONE );
 if ( empty ( $error ) && empty ( $mailerError ) ) {
   do_redirect ( ! empty ( $ret ) && $ret == 'listall'
     ? 'list_unapproved.php'

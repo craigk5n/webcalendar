@@ -26,7 +26,7 @@ if( access_is_enabled()
   $show_advanced = false;
 
 load_user_categories();
-$selected = ' selected="selected" ';
+$selected = ' selected ';
 
 $advSearchStr = translate( 'Advanced Search' );
 $searchStr    = translate( 'Search' );
@@ -46,16 +46,15 @@ if( $show_others )
 print_header( $INC );
 
 echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
-    <form action="search_handler.php" method="GET" id="searchformentry" '
- . 'name="searchformentry" style="margin-left: 13px;">
-      <input type="hidden" name="advanced" value="' . $show_advanced . '" />
+    <form id="searchformentry" action="search_handler.php" method="GET" name="searchformentry" style="margin-left: 13px;">
+      <input name="advanced" type="hidden" value="' . $show_advanced . '">
       <table><tr><td><label for="keywordsadv">' . translate ( 'Keywords' )
  . ':&nbsp;</label></td>
-        <td><input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
-        <input type="submit" value="' . $searchStr . '" /></td></tr>';
+        <td><input id="keywordsadv" name="keywords" size="30" type="text">&nbsp;
+        <input type="submit" value="' . $searchStr . '"></td></tr>';
 
-echo '<tr height="30px"><td>&nbsp;</td><td class="aligntop">(' .
-  translate( 'Enter % for all entries' ) . ')</td></tr>';
+echo '<tr height="30px"><td>&nbsp;</td><td class="aligntop">' .
+  translate ( '(Enter % for all entries)' ) . '</td></tr>';
 
 if( is_array( $categories ) && $show_advanced ) {
   echo '
@@ -84,9 +83,9 @@ if( count( $site_extras ) > 0 ) {
         <tr id="extrafilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
           <td><label for="extra_filter" class="colon">'
-   . translate( 'Include' ) . '<br />' . translate( 'Site Extras' )
+   . translate ( 'Include' ) . '<br>' . translate ( 'Site Extras' )
    . '</label></td>
-          <td><input type="checkbox" name="extra_filter" value="Y" />
+          <td><input name="extra_filter" type="checkbox" value="Y">
           </td></tr>';
 }
 if( $show_advanced ) {
@@ -148,13 +147,12 @@ if( $show_others ) {
           <td class="aligntop"><label for="usersadv">'
    . translate( 'Users' ) . ':&nbsp;</label></td>
           <td>
-            <select name="users[]" id="usersadv" size="' . $size
-   . '" multiple="multiple">';
+            <select id="usersadv" multiple name="users[]" size="' . $size . '">';
 
   for( $i = 0; $i < $cnt; $i++ ) {
     echo '
               <option value="' . $users[$i]['cal_login'] . '"'
-     . ( $users[$i]['cal_login'] == $login ? ' selected="selected"' : '' )
+     . ( $users[$i]['cal_login'] == $login ? ' selected' : '' )
      . '>' . $users[$i]['cal_fullname'] . '</option>';
   }
 
@@ -162,17 +160,14 @@ if( $show_others ) {
             </select>'
    . ( $GROUPS_ENABLED == 'Y'
     ? '<input type="button" onclick="selectUsers()" value="'
-     . translate( 'Select' ) . '..." />' : '' ) . '
+     . translate ( 'Select' ) . '...">' : '' ) . '
           </td>
         </tr>';
 }
 echo '</table></form>';
 ?>
-<script language="JavaScript">
-<!-- <![CDATA[
+<script>
 new Autocomplete('keywordsadv', { serviceUrl:'autocomplete_ajax.php' });
-
-//]]> -->
 </script>
 <?php
 print_trailer ();

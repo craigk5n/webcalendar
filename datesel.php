@@ -8,7 +8,7 @@ $fyear = getGetValue ( 'fyear' );
 $form = getGetValue ( 'form' );
 $date = getGetValue ( 'date' );
 
-if ( strlen ( $date ) > 0 ) {
+if ( mb_strlen ( $date ) ) {
   $thisyear = substr ( $date, 0, 4 );
   $thismonth = substr ( $date, 4, 2 );
 } else {
@@ -78,13 +78,9 @@ echo <<<EOT
           <td class="aligncenter aligntop">
             <table class="aligncenter" cellpadding="3" cellspacing="2">
               <tr>
-                <td><a title="{$previousStr}" class="prev" {$prevdate}>
-                  <img src="images/leftarrowsmall.gif"
-                     alt="{$previousStr}" /></a></td>
+                <td><a class="prev" title="{$previousStr}" {$prevdate}><img src="images/leftarrowsmall.gif" alt="{$previousStr}"></a></td>
                 <th colspan="5">&nbsp;{$monthStr}&nbsp;{$thisyear}&nbsp;</th>
-                <td><a title="{$nextStr}"class="next" {$nextdate}>
-                  <img src="images/rightarrowsmall.gif"
-                     alt="{$nextStr}" /></a></td>
+                <td><a class="next" title="{$nextStr}" {$nextdate}><img src="images/rightarrowsmall.gif" alt="{$nextStr}"></a></td>
               </tr>
               <tr class="day">
                {$wkdys}
@@ -93,7 +89,6 @@ echo <<<EOT
 
   <!--We'll leave this javascript here to speed things up. -->
   <script>
-  <!-- <![CDATA[
   function sendDate ( date ) {
     year = date.substring ( 0, 4 );
     month = date.substring ( 4, 6 );
@@ -110,7 +105,6 @@ echo <<<EOT
     }
     window.close();
   }
-  //]]> -->
   </script>
 EOT;
 

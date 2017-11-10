@@ -11,7 +11,6 @@
 # $Id: Norwegian.txt,v 1.53 2010/02/21 08:27:52 bbannon Exp $
 # Translation last updated on 10-14-2008
 
-
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
@@ -43,7 +42,6 @@ __month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
-
 
 ########################################
 # Page: about.php
@@ -458,8 +456,8 @@ Untimed event: Aktivitet uten tidsangivelse
 Timed event: Aktivitet med tidsangivelse
 All day event: Fulldagsaktivitet
 Timezone Offset: Tidssoneavvik
-time-help: Angir tidspunkt for aktiviteten.<br /><i>Dette feltet trenger ikke være utfylt.</i>
-duration-help: I dette feltet kan du angi varigheten på aktiviteten<br /><i>Dette feltet trenger ikke være utfylt.</i>
+time-help: Angir tidspunkt for aktiviteten.<br><i>Dette feltet trenger ikke være utfylt.</i>
+duration-help: I dette feltet kan du angi varigheten på aktiviteten<br><i>Dette feltet trenger ikke være utfylt.</i>
 end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
 Start Time: Starttidspunkt
 Due Date: Avslutningsdato
@@ -507,7 +505,7 @@ Start: =
 End/Due: Slutt
 Times: Tider
 Every: Hver
-CAPTCHA Warning: <b>Advarsel:</b> Kan ikke bruk CAPTCHA uten PHPs GD-utvidelse!<br />
+CAPTCHA Warning: <b>Advarsel:</b> Kan ikke bruk CAPTCHA uten PHPs GD-utvidelse!<br>
 Delete entry: Slett aktiviteten
 You are not authorized to edit this entry.: Du har ikke lov å redigere denne aktiviteten
 

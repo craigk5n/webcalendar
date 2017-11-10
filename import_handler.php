@@ -36,7 +36,7 @@ if ( ! empty ( $_FILES['FileName'] ) )
   $file = $_FILES['FileName'];
 
 if ( empty ( $file ) )
-  echo translate ( 'No file' ) . '!<br />';
+  echo translate ( 'No file!' ) . '<br>';
 
 // Handle user
 $calUser = getValue ( 'calUser' );
@@ -102,30 +102,29 @@ if ( $file['size'] > 0 ) {
   if ( ! empty ( $data ) && empty ( $errormsg ) ) {
     import_data ( $data, $doOverwrite, $type );
     echo '
-    <p>' . translate ( 'Import Results' ) . '</p><br /><br />
+    <p>' . translate ( 'Import Results' ) . '</p><br><br>
     ' . translate ( 'Events successfully imported' ) . ': ' . $count_suc
-     . '<br />
+     . '<br>
     ' . translate ( 'Events from prior import marked as deleted' ) . ': '
-     . $numDeleted . '<br />
+     . $numDeleted . '<br>
     ' . ( empty ( $ALLOW_CONFLICTS )
-      ? translate ( 'Conflicting events' ) . ': ' . $count_con . '<br />
-    ' : '' ) . translate ( 'Errors' ) . ': ' . $error_num . '<br /><br />';
+      ? translate ( 'Conflicting events' ) . ': ' . $count_con . '<br>
+    ' : '' ) . translate ( 'Errors' ) . ': ' . $error_num . '<br><br>';
   } elseif ( ! empty ( $errormsg ) )
     echo '
-    <br /><br />
-    <b>' . translate ( 'Error' ) . ':</b> ' . $errormsg . '<br />';
+    <br><br>
+    <b>' . translate ( 'Error' ) . ':</b> ' . $errormsg . '<br>';
   else
     echo '
-    <br /><br />
+    <br><br>
     <b>' . translate ( 'Error' ) . ':</b> '
      . translate( 'There was an error parsing the import file or no events were returned.' )
-     . '<br />';
+     . '<br>';
 } else
   echo '
-    <br /><br />
+    <br><br>
     <b>' . translate ( 'Error' ) . ':</b> '
-   . translate( 'The import file contained no data.' ) . '<br />';
-// echo "<hr />$sqlLog\n";
-echo print_trailer();
+   . translate ( 'The import file contained no data.' ) . '<br>' .
+    print_trailer ();
 
 ?>

@@ -3,7 +3,7 @@
  *
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
- * @license http://www.gnu.org/licenses/gpl.html GNU GPL
+ * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html GNU GPL
  * @package WebCalendar
  */
 
@@ -32,7 +32,7 @@ $tzInitSet = false;
  */
 function do_debug ( $msg ) {
   // log to /tmp/webcal-debug.log
-  // error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n<br />",
+  // error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n<br>",
   // 3, 'd:/php/logs/debug.txt' );
   //$fd = fopen ( "/tmp/webcal.log", 'a+b' );
   //fwrite ( $fd, date ( 'Y-m-d H:i:s' ) . "> $msg\n" );
@@ -41,7 +41,6 @@ function do_debug ( $msg ) {
   // error_log ( date ( 'Y-m-d H:i:s' ) . "> $msg\n",
   // 2, 'sockieman:2000' );
 }
-
 /**
  * Looks for URLs in the given text, and makes them into links.
  *
@@ -53,7 +52,6 @@ function activate_urls( $text ) {
   return preg_replace( '/[a-z]+:\/\/[^<> \t\r\n]+[a-z0-9\/]/i',
     '<a href="\\0">\\0</a>', $text );
 }
-
 /**
  * Adds something to the activity log for an event.
  *
@@ -109,7 +107,6 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
           gmdate ( 'Gis' ), ( empty ( $text ) ? null : $text )] ) )
     db_error ( true, $sql );
 }
-
 /**
  * Get the corrected timestamp after adding or subtracting ONE_HOUR
  * to compensate for DST.
@@ -129,7 +126,6 @@ function add_dstfree_time ( $date, $span, $interval = 1 ) {
 
   return $date;
 }
-
 /**
  * Return the time in HHMMSS format of input time + duration
  *
@@ -147,7 +143,6 @@ function add_duration ( $time, $duration ) {
 
   return sprintf ( "%d%02d00", $minutes / 60, $minutes % 60 );
 }
-
 /**
  * Bump UNIX local timestamp with the given duration.
  *
@@ -169,7 +164,6 @@ function bump_local_timestamp( $ts, $hour = 0, $minute = 0, $second = 0,
     date( 's', $ts ) + $second, date( 'n', $ts ) + $month,
     date( 'j', $ts ) + $day, date( 'Y', $ts ) + $year );
 }
-
 /**
  * Builds the HTML for the event label.
  *
@@ -233,7 +227,6 @@ function build_entry_label ( $event, $popupid,
   }
   return $ret;
 }
-
 /**
  * Calculates which row/slot this time represents.
  *
@@ -266,7 +259,6 @@ function calc_time_slot ( $time, $round_down = false ) {
 
   return $ret;
 }
-
 /**
  * Checks for conflicts.
  *
@@ -444,7 +436,6 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
 
   return $conflicts;
 }
-
 /**
  * Replaces unsafe characters with HTML encoded equivalents.
  *
@@ -459,7 +450,6 @@ function clean_html ( $value ) {
       ')' => '&#41;'] );
   return $value;
 }
-
 /**
  * Removes non-digits from the specified text.
  *
@@ -470,7 +460,6 @@ function clean_html ( $value ) {
 function clean_int ( $data ) {
   return preg_replace ( '/\D/', '', $data );
 }
-
 /**
  * Removes whitespace from the specified text.
  *
@@ -481,7 +470,6 @@ function clean_int ( $data ) {
 function clean_whitespace ( $data ) {
   return preg_replace ( '/\s/', '', $data );
 }
-
 /**
  * Removes non-word characters from the specified text.
  *
@@ -492,7 +480,6 @@ function clean_whitespace ( $data ) {
 function clean_word ( $data ) {
   return preg_replace ( '/\W/', '', $data );
 }
-
 /**
  * Combines the repeating and nonrepeating event arrays and sorts them
  *
@@ -519,7 +506,6 @@ function combine_and_sort_events ( $ev, $rep ) {
 
   return $rep;
 }
-
 /**
  * Draws a daily outlook style availability grid showing events that are
  * approved and awaiting approval.
@@ -559,9 +545,8 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $thisyear = date ( 'Y', $dateTS );
   $cols = ( ( $hours * $interval ) + 1 );
   $ret = <<<EOT
-    <br />
-    <table class="aligncenter matrixd" style="width:'80%';"
-     >
+    <br>
+    <table class="aligncenter matrixd" style="width:'80%';">
       <tr>
         <td class="matrix" colspan="{$cols}"></td>
       </tr>
@@ -709,7 +694,7 @@ EOT;
         if ( empty ( $master[$participants[$i]][$r]['ID'] ) )
           // This is the first line for 'all' users. No event here.
           $space = '
-          <span class="matrix"><img src="images/pix.gif" alt="" /></span>';
+          <span class="matrix"><img src="images/pix.gif" alt=""></span>';
         else {
           $tmpMast = $master[$participants[$i]][$r]['stat'];
           if ( strpos ( 'AW', $tmpMast ) !== false )
@@ -717,7 +702,7 @@ EOT;
           <a class="matrix" href="view_entry.php?id='
              . $master[$participants[$i]][$r]['ID']
              . '&friendly=1"><img src="images/pix' . ( $tmpMast = 'A' ? '' : 'b' )
-             . '.gif" title="' . $viewMsg . '" alt="' . $viewMsg . '" /></a>';
+             . '.gif" title="' . $viewMsg . '" alt="' . $viewMsg . '"></a>';
         }
 
         $ret .= '
@@ -734,21 +719,20 @@ EOT;
       </tr>
       <tr>
         <td class="matrix" colspan="' . $cols
-     . '"><img src="images/pix.gif" alt="-" /></td>
+     . '"><img src="images/pix.gif" alt="-"></td>
       </tr>';
   } // End foreach participant.
   return $ret . <<<EOT
-    </table><br />
+    </table><br>
     <table class="aligncenter">
       <tr>
-        <td class="matrixlegend"><img src="images/pix.gif" title="{$busy}"
-          alt="{$busy}" />{$busy}&nbsp;&nbsp;&nbsp;<img src="images/pixb.gif"
-          title="{$tentative}" alt="{$tentative}" />{$tentative}</td>
+        <td class="matrixlegend">
+          <img src="images/pix.gif" alt="{$busy}">{$busy}&nbsp;&nbsp;&nbsp;
+          <img src="images/pixb.gif" alt="{$tentative}">{$tentative}</td>
       </tr>
     </table>
 EOT;
 }
-
 /**
  * Date selection via DHTML.
  * This will create two HTML elements:
@@ -758,21 +742,17 @@ EOT;
  * The CSS ids will be the datename parameter with '_fmt' and '_YMD'
  * appended.
  */
-function datesel_Print ( $datename, $ymdValue='' )
-{
+function datesel_Print ( $datename, $ymdValue='' ) {
   if ( empty ( $ymdValue ) )
     $ymdValue = date ( 'Ymd' );
 
-  return '<input type="hidden" name="' . $datename .
-    '_YMD" id="' . $datename . '_YMD" value="' . $ymdValue . '"/>' .
-    '<span id="' . $datename . '_fmt">' .
+  return '<input id="' . $datename . '_YMD" name="' . $datename . '_YMD" type="hidden" value="' . $ymdValue . '">
+    <span id="' . $datename . '_fmt">' .
     date_to_str ( $ymdValue ) . '</span> ' .
     '<img id="dateselIcon_' . $datename .
     '" class="dateselIcon" onclick="datesel_SelectDate(event,\'' .
-    $datename  . '\' );" src="images/datesel.gif" />';
+    $datename  . '\');" src="images/datesel.gif">';
 }
-
-
 /**
  * Generate HTML for a date selection for use in a form.
  *
@@ -785,7 +765,7 @@ function datesel_Print ( $datename, $ymdValue='' )
  * @return string  HTML for the selection box.
  */
 function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
-  $selected = ' selected="selected"';
+  $selected = ' selected';
   $trigger_str = ( empty( $trigger ) ? '' : $prefix . 'datechanged();' );
   $onchange = ( empty ( $trigger_str ) ? '' : 'onchange="$trigger_str"' );
   if ( strlen ( $date ) != 8 )
@@ -847,9 +827,8 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   return $ret . '
       <input type="button" name="' . $prefix . 'btn" onclick="selectDate( \''
    . $prefix . 'day\',\'' . $prefix . 'month\',\'' . $prefix . "year','$date'"
-   . ', event, this.form );" value="' . translate ( 'Select' ) . '..." />' . "\n";
+   . ', event, this.form);" value="' . translate ( 'Select' ) . '...">' . "\n";
 }
-
 /**
  * Converts a date to a timestamp.
  *
@@ -885,8 +864,6 @@ function date_to_epoch( $d, $gmt = true ) {
       substr ( $d, 6, 2 ),
       substr ( $d, 0, 4 ) );
 }
-
-
 /**
  * Converts a date in YYYYMMDD format into "Friday, December 31, 1999",
  * "Friday, 12-31-1999" or whatever format the user prefers.
@@ -949,7 +926,6 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
       ( $short_months ? 'D' : '' ) ) . ', '
     : '' ) . str_replace ( '__yyyy__', $y, $ret );
 }
-
 /**
  * Extracts a user's name from a session id.
  *
@@ -977,7 +953,6 @@ function decode_string ( $instr ) {
   }
   return $orig;
 }
-
 /**
  * Display a text for a single activity log entry.
  *
@@ -986,7 +961,7 @@ function decode_string ( $instr ) {
  *
  * @return string  HTML for one log entry.
  */
-function display_activity_log( $cal_type, $cal_text = '', $break = '<br />&nbsp;' ) {
+function display_activity_log ( $cal_type, $cal_text = '', $break = '<br>&nbsp;' ) {
   if ( $cal_type == LOG_APPROVE )
     $ret = translate ( 'Event approved' );
   elseif ( $cal_type == LOG_APPROVE_J )
@@ -1045,7 +1020,6 @@ function display_activity_log( $cal_type, $cal_text = '', $break = '<br />&nbsp;
   return $ret
    . ( empty ( $cal_text ) ? '' : $break . $cal_text );
 }
-
 /**
  * Display the <<Admin link on pages if menus are not enabled
  *
@@ -1059,12 +1033,11 @@ function display_admin_link ( $break = true ) {
 
   $adminStr = translate ( 'Admin' );
 
-  return ( $break ? '<br />' . "\n" : '' )
+  return ( $break ? '<br>' . "\n" : '' )
    . ( $MENU_ENABLED == 'N' ? '<a title="' . $adminStr
      . '" class="nav" href="adminhome.php">&laquo;&nbsp; ' . $adminStr
-     . '</a><br /><br />' . "\n" : '' );
+     . '</a><br><br>' . "\n" : '' );
 }
-
 /**
  * Generate HTML to create a month display.
  * If $enableDblClick is set to true, the file js/dblclick_add.js should
@@ -1140,16 +1113,11 @@ function display_month( $thismonth, $thisyear, $demo = false,
       $wkStr = $WKStr . $tmp;
       $wkStr2 = '';
 
-      if ( $charset == 'UTF-8' )
-        $wkStr2 = $wkStr;
-      else {
-        for ( $w = 0, $cnt = strlen ( $wkStr ); $w < $cnt; $w++ ) {
-          $wkStr2 .= substr ( $wkStr, $w, 1 ) . '<br />';
-        }
+      for ( $w = 0, $cnt = mb_strlen ( $wkStr ); $w < $cnt; $w++ ) {
+        $wkStr2 .= mb_substr ( $wkStr, $w, 1 ) . '<br>';
       }
       $ret .= $wkStr2 . '</a></td>';
     }
-
     for ( $j = 0; $j < 7; $j++ ) {
       $date = $i + ( $j * 86400 + 43200 );
       $dateYmd = date ( 'Ymd', $date );
@@ -1208,7 +1176,6 @@ function display_month( $thismonth, $thisyear, $demo = false,
   return $ret . '
     </table>';
 }
-
 /**
  * Generate the HTML for the navigation bar.
  */
@@ -1234,10 +1201,10 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
     ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || $DISPLAY_TASKS == 'Y' ) ? '
         <a title="' . $nextStr . '" class="next" href="' . $name . '.php?'
      . $u_url . 'date=' . $nextYmd . $caturl
-     . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+     . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '"></a>
         <a title="' . $prevStr . '" class="prev" href="' . $name . '.php?'
      . $u_url . 'date=' . $prevYmd . $caturl
-     . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>' : '' ) . '
+     . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '"></a>' : '' ) . '
         <div class="title">
           <span class="date">';
 
@@ -1258,21 +1225,20 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
   return $ret . '</span>
           <span class="user">'
   // Display current calendar's user (if not in single user).
-  . ( $single_user == 'N' ? '<br />' . $user_fullname : '' )
+    . ( $single_user === 'N' ? '<br>' . $user_fullname : '' )
    . ( $is_nonuser_admin ||
     ( $is_admin && ! empty ( $user ) && $user == '__public__' )
-    ? '<br />-- ' . translate ( 'Admin mode' ) . ' --' : '' )
+    ? '<br><span class="dblHyphens">' . translate ( 'Admin mode' ) . '</span>' : '' )
    . ( $is_assistant
-    ? '<br />-- ' . translate ( 'Assistant mode' ) . ' --' : '' ) . '</span>'
+    ? '<br><span class="dblHyphens">' . translate ( 'Assistant mode' ) . '</span>' : '' ) . '</span>'
    . ( $CATEGORIES_ENABLED == 'Y' && $show_cats &&
-    ( ! $user || ( $user == $login || $is_assistant ) ) ? '<br /><br />'
+    ( ! $user || ( $user === $login || $is_assistant ) ) ? '<br><br>'
      . print_category_menu ( $name,
       sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday ),
       $cat_id ) : '' ) . '
         </div>
-      </div><br />';
+      </div><br>';
 }
-
 /**
  * Prints out a minicalendar for a month.
  *
@@ -1325,10 +1291,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           <th colspan="' . ( $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) . '">
             <a title="' . $prevStr . '" class="prev" href="day.php?' . $u_url
      . 'date=' . $month_ago . $caturl
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '"></a>
             <a title="' . $nextStr . '" class="next" href="day.php?' . $u_url
      . 'date=' . $month_ahead . $caturl
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '"></a>'
      . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
       ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
           </th>
@@ -1345,10 +1311,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           <th colspan="7">
             <a title="' . $prevStr . '" class="prev" href="minical.php?'
      . $u_url . 'date=' . $month_ago
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '"></a>
             <a title="' . $nextStr . '" class="next" href="minical.php?'
      . $u_url . 'date=' . $month_ahead
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '"></a>'
      . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
       ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
           </th>
@@ -1448,7 +1414,6 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
       </tbody>
     </table>';
 }
-
 /**
  * Prints small task list for this $login user.
  */
@@ -1480,11 +1445,11 @@ function display_small_tasks ( $cat_id ) {
     for ( $i = 0; $i < 4; $i++ ) {
       $ajax[$i] = '
         <td class="sorter" onclick="sortTasks( ' . $i . ', ' . $task_cat
-       . ', this )"><img src="images/up.png" style="vertical-align:bottom" /></td>';
+       . ', this )"><img src="images/up.png" style="vertical-align:bottom"></td>';
       $ajax[$i + 4] = '
         <td  class="sorter sorterbottom" onclick="sortTasks( ' .
       ( $i + 4 ) . ', ' . $task_cat
-       . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
+       . ', this)"><img src="images/down.png" style="vertical-align:top"></td>';
     }
   } else {
     $dueSpacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -1503,7 +1468,7 @@ function display_small_tasks ( $cat_id ) {
         <th colspan="6">' . translate ( 'TASKS' ) . '</th>
         <th class="alignright" colspan="2"><a href="edit_entry.php?' . $u_url
    . 'eType=task' . $caturl
-   . '"><img src="images/new.gif" alt="+" class="new" /></a></th>
+   . '"><img src="images/new.gif" alt="+" class="new"></a></th>
       </tr>
       <tr class="header">
         <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
@@ -1568,7 +1533,6 @@ function display_small_tasks ( $cat_id ) {
   $task_html .= "</table>\n";
   return $task_html;
 }
-
 /**
  * Displays a time in either 12 or 24 hour format.
  *
@@ -1589,8 +1553,8 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
   global $SERVER_TIMEZONE, $TIME_FORMAT;
 
   if ( $control & 4 ) {
-    $currentTZ = getenv ( 'TZ' );
-    set_env ( 'TZ', $SERVER_TIMEZONE );
+    $currentTZ = date_default_timezone_get ();
+    date_default_timezone_set ( $SERVER_TIMEZONE );
   }
   $t_format = ( empty ( $format ) ? $TIME_FORMAT : $format );
   $tzid = date ( ' T' ); //Default tzid for today.
@@ -1636,11 +1600,10 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
 
   // Reset timezone to previous value.
   if ( ! empty ( $currentTZ ) )
-    set_env ( 'TZ', $currentTZ );
+    date_default_timezone_set ( $currentTZ );
 
   return $ret;
 }
-
 /**
  * Checks for any unnaproved events.
  *
@@ -1711,7 +1674,7 @@ function display_unapproved_events ( $user ) {
         ? '<a class="nav" href="list_unapproved.php'
          . ( $user != $login ? '?user=' . $user . '"' : '' )
          . '">' . str_replace ( 'XXX', $row[0],
-          translate ( 'You have XXX unapproved entries' ) ) . "</a><br />\n"
+          translate ( 'You have XXX unapproved entries' ) ) . "</a><br>\n"
         : // Return something that won't display in bottom menu
         // but still has strlen > 0.
         '<!--NOP-->' );
@@ -1721,7 +1684,6 @@ function display_unapproved_events ( $user ) {
 
   return $ret;
 }
-
 /**
  * Sends a redirect to the specified page.
  * The database connection is closed and execution terminates in this function.
@@ -1756,7 +1718,7 @@ function do_redirect ( $url ) {
   if ( ( substr ( $SERVER_SOFTWARE, 0, 5 ) == 'Micro' ) ||
       ( substr ( $SERVER_SOFTWARE, 0, 3 ) == 'WN/' ) )
     $meta = '
-    <meta http-equiv="refresh" content="0; url=' . $url . '" />';
+    <meta http-equiv="refresh" content="0; url=' . $url . '">';
   else
     header ( 'Location: ' . $url );
 
@@ -1769,7 +1731,6 @@ function do_redirect ( $url ) {
   dbi_close ( $c );
   exit;
 }
-
 /**
  * Takes an input string and encode it into a slightly encoded hexval that we
  * can use as a session cookie.
@@ -1793,7 +1754,6 @@ function encode_string ( $instr ) {
   }
   return $ret;
 }
-
 /**
  * Check for errors and return required HTML for display
  *
@@ -1827,7 +1787,6 @@ function error_check ( $nextURL, $redirect = true ) {
   </body>
 </html>';
 }
-
 /**
  * Gets the list of external users for an event from the
  * webcal_entry_ext_user table in HTML format.
@@ -1860,7 +1819,6 @@ function event_get_external_users ( $event_id, $use_mailto = 0 ) {
   }
   return $ret;
 }
-
 /**
  * Fakes an email for testing purposes.
  *
@@ -1872,12 +1830,11 @@ function event_get_external_users ( $event_id, $use_mailto = 0 ) {
  * @ignore
  */
 function fake_mail ( $mailto, $subj, $text, $hdrs ) {
-  echo 'To: ' . $mailto . '<br />
-Subject: ' . $subj . '<br />
-' . nl2br ( $hdrs ) . '<br />
+  echo 'To: ' . $mailto . '<br>
+Subject: ' . $subj . '<br>
+' . nl2br ( $hdrs ) . '<br>
 ' . nl2br ( $text );
 }
-
 /**
  * Generate activity log
  *
@@ -1901,7 +1858,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
    . ( $sys ? translate ( 'System Log' ) : translate ( 'Activity Log' ) )
    . ( $sys ? '' : ' &nbsp;<a href="rss_activity_log.php">'
    . '<img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - '
-   . translate( 'Activity Log' ) . '" /></a>' )
+   . translate( 'Activity Log' ) . '"></a>' )
    . "</$size>" . display_admin_link() . '
     <table class="embactlog">
       <tr>
@@ -1970,7 +1927,6 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
   return $ret . '
     </table>';
 }
-
 /**
  * Generate Application Name
  *
@@ -1988,7 +1944,6 @@ function generate_application_name ( $custom = true ) {
       ? ( function_exists ( 'translate' ) ? translate ( 'Title' ) : 'Title' )
       : htmlspecialchars ( $APPLICATION_NAME ) ) );
 }
-
 /**
  * Generate HTML to add Printer Friendly Link.
  * If called without parameter, return only the href string.
@@ -2025,7 +1980,6 @@ function generate_printer_friendly ( $hrefin = '' ) {
       target="cal_printer_friendly">[{$displayStr}]</a>
 EOT;
 }
-
 /**
  * Generate Refresh Meta Tag.
  *
@@ -2039,9 +1993,8 @@ function generate_refresh_meta() {
     ? '
     <meta http-equiv="refresh" content="'
      . $AUTO_REFRESH_TIME * 60 // Convert to seconds.
-     . '; url=' . addslashes(htmlentities($REQUEST_URI)) . '" />' : '' );
+     . '; url=' . addslashes ( htmlentities ( $REQUEST_URI ) ) . '">' : '' );
 }
-
 /**
  * Returns all the dates a specific event will fall on
  * accounting for the repeating.
@@ -2177,7 +2130,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
           for ( $i=$WkstDay; $i<=( $WkstDay + 6 ); $i++ ) {
             $td = $cdate + ( $i * 86400 );
             $tdDay = date ( 'w', $td );
-            //echo $Count . '  ' . $n . '  ' .$WkstDay .'<br />';
+
             if ( in_array( $byday_names[$tdDay], $byday ) && $td >= $date
                 && $td <= $realend && $n < $Count )
               $ret[$n++] = $td;
@@ -2381,7 +2334,6 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
   }
   return $ret;
 }
-
 /**
  * Get the dates the correspond to the byday values.
  *
@@ -2473,7 +2425,6 @@ function get_byday ( $byday, $cdate, $type = 'month', $date ) {
   }
   return $ret;
 }
-
 /**
  * Get the dates the correspond to the bymonthday values.
  *
@@ -2503,7 +2454,6 @@ function get_bymonthday ( $bymonthday, $cdate, $date, $realend ) {
   }
   return $ret;
 }
-
 /**
  * Get categories for a given event id
  * Global categories are changed to negative numbers
@@ -2534,7 +2484,6 @@ function get_categories_by_id ( $id, $user, $asterisk = false ) {
 
   return $categories;
 }
-
 /**
  * Gets all the events for a specific date.
  *
@@ -2567,7 +2516,6 @@ function get_entries ( $date, $get_unapproved = true ) {
   }
   return $ret;
 }
-
 /**
  * Gets all the groups a user is authorized to see
  *
@@ -2607,7 +2555,6 @@ function get_groups ( $user ) {
  }
  return $groups;
 }
-
 /**
  * Gets the last page stored using {@link remember_this_view()}.
  *
@@ -2625,7 +2572,6 @@ function get_last_view ( $clear=true ) {
 
   return $val;
 }
-
 /**
  * Gets a list of nonusers.
  *
@@ -2731,7 +2677,6 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
   $my_nonuser_array[$this_user . $add_public] = $ret;
   return $ret;
 }
-
 /**
  * Gets a list of users.
  *
@@ -2831,7 +2776,6 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
   $my_user_array[$this_user][$reason] = $ret;
   return $ret;
 }
-
 /**
  * Gets a list of nonuser calendars and return info in an array.
  *
@@ -2890,7 +2834,6 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
   }
   return $ret;
 }
-
 /**
  * Gets the list of active plugins.
  *
@@ -2926,7 +2869,6 @@ function get_plugin_list ( $include_disabled = false ) {
 
   return $plugins;
 }
-
 /**
  * Gets a preference setting for the specified user.
  *
@@ -2965,7 +2907,6 @@ function get_pref_setting ( $user, $setting, $defaultValue='' ) {
   }
   return $ret;
 }
-
 /**
  * Gets user's preferred view.
  *
@@ -3026,7 +2967,6 @@ function get_preferred_view ( $indate = '', $args = '' ) {
 
   return $url;
 }
-
 /**
  * Gets all the repeating events for the specified date.
  *
@@ -3057,7 +2997,6 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   }
   return $ret;
 }
-
 /**
  * Gets all the tasks for a specific date.
  *
@@ -3089,7 +3028,6 @@ function get_tasks ( $date, $get_unapproved = true ) {
   }
   return $ret;
 }
-
 /**
  * Get plugins available to the current user.
  *
@@ -3112,7 +3050,6 @@ function get_user_plugin_list() {
   }
   return $ret;
 }
-
 /**
  * Get event ids for all events this user is a participant.
  *
@@ -3130,7 +3067,6 @@ function get_users_event_ids ( $user ) {
   }
   return $events;
 }
-
 /**
  * Identify user's browser.
  *
@@ -3157,7 +3093,6 @@ function get_web_browser() {
 
   return 'Unknown';
 }
-
 /**
  * Gets the previous weekday of the week containing the specified date.
  *
@@ -3183,7 +3118,6 @@ function get_weekday_before ( $year, $month, $day = 2 ) {
   }
   return $newdate;
 }
-
 /**
  * Get the moonphases for a given year and month.
  *
@@ -3210,7 +3144,6 @@ function getMoonPhases ( $year, $month ) {
 
   return $moons;
 }
-
 /**
  * Calculate event rollover to next day and add partial event as needed.
  *
@@ -3268,7 +3201,6 @@ function getOverLap ( $item, $i, $parent = true ) {
   if ( $recurse == 1 )
    getOverLap ( $result[$i -1], $i, false );
 }
-
 /**
  * Hack to implement clone() for php4.x.
  *
@@ -3283,7 +3215,6 @@ if( version_compare( phpversion(), '5.0' ) < 0 ) {
     }
     ' );
 }
-
 /**
  * Get the reminder data for a given entry id.
  *
@@ -3355,7 +3286,6 @@ translate ( 'minutes' )
   }
   return $reminder;
 }
-
 /**
  * Remove :00 from times based on $DISPLAY_MINUTES value.
  *
@@ -3369,7 +3299,6 @@ function getShortTime ( $timestr ) {
   return ( empty ( $DISPLAY_MINUTES ) || $DISPLAY_MINUTES == 'N'
     ? preg_replace ( '/(:00)/', '', $timestr ) : $timestr );
 }
-
 /**
  * Converts from Gregorian Year-Month-Day to ISO YearNumber-WeekNumber-WeekDay.
  *
@@ -3444,7 +3373,6 @@ function gregorianToISO ( $day, $month, $year ) {
 
   return "{$yearnumber}-{$weeknumber}-{$weekday}";
 }
-
 /**
  * Converts a hexadecimal digit to an integer.
  *
@@ -3478,8 +3406,6 @@ function hextoint ( $val ) {
   }
   return 0;
 }
-
-
 /**
  * Generates the HTML for an event to be viewed in the day-at-glance (day.php).
  *
@@ -3553,11 +3479,11 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
     $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
-     . '" title="' . $catAlt . '" />';
+     . '" title="' . $catAlt . '">';
   }
 
   if ( $getCalTypeName == 'task' ) {
-    $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
+    $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*"> ';
     $view_text = translate ( 'View this task' );
   }
 
@@ -3567,7 +3493,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   . ( $can_access != 0 && $time_only != 'Y'
     ? 'href="view_entry.php?id=' . $id . '&amp;date='
      . ( $getClone ? $getClone : $date )
-     . ( strlen ( $GLOBALS['user'] ) > 0
+     . ( mb_strlen ( $GLOBALS['user'] )
       ? '&amp;user=' . $GLOBALS['user']
       : ( $class == 'layerentry' ? '&amp;user=' . $getLogin : '' ) ) . '"'
     : '' ) . '>' . ( $getPri == 3 ? '<strong>' : '' );
@@ -3630,9 +3556,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
       <dd>'
      . ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y'
       ? $getDesc : strip_tags ( $getDesc ) ) . '</dd>
-    </dl>' : '' ) . "<br />\n";
+    </dl>' : '' ) . "<br>\n";
 }
-
 /**
  * Generates the HTML for an event to be viewed in the week-at-glance (week.php).
  *
@@ -3712,7 +3637,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
   if ( $getCat > 0 && file_exists ( $catIcon ) ) {
     $catAlt = translate ( 'Category' ) . ': ' . $categories[$getCat]['cat_name'];
     $hour_arr[$ind] .= '<img src="' . $catIcon . '" alt="' . $catAlt
-     . '" title="' . $catAlt . '" />';
+     . '" title="' . $catAlt . '">';
   }
 
   // Build entry link if UAC permits viewing.
@@ -3721,19 +3646,19 @@ function html_for_event_week_at_a_glance ( $event, $date,
     $href = 'href="view_entry.php?id=' . $id . '&amp;date='
      . ( $getClone ? $getClone : $date );
     if ( $getCalTypeName == 'task' ) {
-      $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
+      $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*"> ';
 
       $title .= translate ( 'View this task' );
     } else { // Must be event.
       if ( $isAllDay || $isUntime && $catAlt == '' )
-        $hour_arr[$ind] .= '<img src="images/circle.gif" class="bullet" alt="*" /> ';
+        $hour_arr[$ind] .= '<img src="images/circle.gif" class="bullet" alt="*"> ';
 
       $title .= translate ( 'View this event' );
     }
   }
 
   $hour_arr[$ind] .= $title . '" class="' . $class . '" id="' . $linkid . '" '
-   . $href . ( strlen ( $GLOBALS['user'] ) > 0
+   . $href . ( mb_strlen ( $GLOBALS['user'] )
     ? '&amp;user=' . $GLOBALS['user']
     : ( $class == 'layerentry' ? '&amp;user=' . $getLoginStr : '' ) ) . '">'
    . ( $getPri == 3 ? '<strong>' : '' );
@@ -3795,9 +3720,8 @@ function html_for_event_week_at_a_glance ( $event, $date,
    . ( empty ( $in_span ) ? '' : '</span>' )// End color span.
    . ( $getPri == 3 ? '</strong>' : '' ) . '</a>'
   // . ( $DISPLAY_ICONS == 'Y' ? icon_text ( $id, true, true ) : '' )
-  . "<br />\n";
+  . "<br>\n";
 }
-
 /**
  * Converts HTML entities in 8bit.
  *
@@ -3812,7 +3736,6 @@ function html_to_8bits ( $html ) {
    ? $html
    : strtr ( $html, array_flip ( get_html_translation_table ( HTML_ENTITIES ) ) ) );
 }
-
 /**
  * Generates the HTML for an add/edit/delete icon.
  *
@@ -3837,19 +3760,18 @@ function icon_text ( $id, $can_edit, $can_delete ) {
   return '
         <a title="' . $viewEntryStr . '" href="view_entry.php?id=' . $id
    . '"><img src="images/view.gif" alt="' . $viewEntryStr
-   . '" class="icon_text" /></a>' . ( $can_edit && $readonly == 'N' ? '
+   . '" class="icon_text"></a>' . ( $can_edit && $readonly === 'N' ? '
         <a title="' . $editEntryStr . '" href="edit_entry.php?id=' . $id
      . '"><img src="images/edit.gif" alt="' . $editEntryStr
-     . '" class="icon_text" /></a>' : '' )
+     . '" class="icon_text"></a>' : '' )
    . ( $can_delete && ( $readonly == 'N' || $is_admin ) ? '
         <a title="' . $deleteStr . '" href="del_entry.php?id=' . $id
      . '" onclick="return confirm( \''
      . translate( 'Are you sure you want to delete this entry?' ) . ' '
      . translate ( 'This will delete this entry for all users.' )
      . '\' );"><img src="images/delete.gif" alt="' . $deleteStr
-     . '" class="icon_text" /></a>' : '' );
+     . '" class="icon_text"></a>' : '' );
 }
-
 /**
  * Determine if date is a weekend
  *
@@ -3875,7 +3797,6 @@ function is_weekend ( $date ) {
   $wday = date ( 'w', $date );
   return ( $wday == $WEEKEND_START % 7 || $wday == ( $WEEKEND_START + 1 ) % 7 );
 }
-
 /**
  * Is this a leap year?
  *
@@ -3896,7 +3817,6 @@ function isLeapYear ( $year = '' ) {
 
   return ( ( $year % 4 == 0 && $year % 100 != 0 ) || $year % 400 == 0 );
 }
-
 /**
  * Loads default system settings (which can be updated via admin.php).
  *
@@ -3955,7 +3875,7 @@ function load_global_settings() {
   if ( empty ( $GLOBALS['TIMEZONE'] ) )
     $GLOBALS['TIMEZONE'] = $GLOBALS['SERVER_TIMEZONE'];
 
-  set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
+  date_default_timezone_set ( $GLOBALS['TIMEZONE'] );
   if ( empty ( $tzInitSet ) ) {
     if ( function_exists ( "date_default_timezone_set" ) )
       date_default_timezone_set ( $GLOBALS['TIMEZONE'] );
@@ -3987,7 +3907,6 @@ function load_global_settings() {
     $FONTS = ( $LANGUAGE == 'Japanese' ? 'Osaka, ' : '' )
      . 'Arial, Helvetica, sans-serif';
 }
-
 /**
  * Loads nonuser preferences from the webcal_user_pref table
  * if on a nonuser admin page.
@@ -4024,7 +3943,6 @@ function load_nonuser_preferences ( $nonuser ) {
   if ( empty ( $DATE_FORMAT_MD ) || $DATE_FORMAT_MD == 'LANGUAGE_DEFINED' )
     $DATE_FORMAT_MD = translate ( '__month__ __dd__' );
 }
-
 /**
  * Returns a custom header, stylesheet or tailer.
  *
@@ -4080,8 +3998,6 @@ function load_template ( $login, $type ) {
       }
     }
   }
-
-
   // Strip leading and trailing white space in file name candidate.
   $file = preg_replace ('/^\s*/', '', $ret);
   $file = preg_replace ('/\s*$/', '', $file);
@@ -4098,7 +4014,6 @@ function load_template ( $login, $type ) {
 
   return $ret;
 }
-
 /**
  * Loads current user's category info and stuff it into category global variable.
  *
@@ -4132,7 +4047,6 @@ function load_user_categories ( $ex_global = '' ) {
     }
   }
 }
-
 /**
  * Loads current user's layer info into layer global variable.
  *
@@ -4170,7 +4084,6 @@ function load_user_layers ( $user = '', $force = 0 ) {
     }
   }
 }
-
 /**
  * Loads the current user's preferences as global variables
  * from the webcal_user_pref table.
@@ -4241,7 +4154,7 @@ function load_user_preferences ( $guest = '' ) {
 
   // Set users timezone.
   if ( isset ( $GLOBALS['TIMEZONE'] ) )
-    set_env ( 'TZ', $GLOBALS['TIMEZONE'] );
+    date_default_timezone_set ( $GLOBALS['TIMEZONE'] );
 
   // Get views for this user and global views.
   // If NUC and not authorized by UAC, disallow global views.
@@ -4323,7 +4236,7 @@ function load_user_preferences ( $guest = '' ) {
 function month_name ( $m, $format = 'F' ) {
   global $lang;
   static $local_lang, $month_names, $monthshort_names;
-  //.
+
   // We may have switched languages.
   if ( $local_lang != $lang )
     $month_names = $monthshort_names = [];
@@ -4365,7 +4278,6 @@ function month_name ( $m, $format = 'F' ) {
 
   return translate ( 'unknown-month' ) . " ($m)";
 }
-
 /**
  * Loads nonuser variables (login, firstname, etc.).
  *
@@ -4411,7 +4323,6 @@ function nonuser_load_variables ( $login, $prefix ) {
   }
   return $ret;
 }
-
 /**
  * Prints dropdown HTML for categories.
  *
@@ -4431,9 +4342,9 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
     <form action="' . $form . '.php" method="get" name="SelectCategory" '
    . 'class="categories">' . ( empty ( $date ) ? '' : '
       <input type="hidden" name="' . ( $form != 'year' ? 'date' : 'year' )
-     . '" value="' . $date . '" />' )
+     . '" value="' . $date . '">' )
    . ( ! empty ( $user ) && $user != $login ? '
-      <input type="hidden" name="user" value="' . $user . '" />' : '' )
+      <input name="user" type="hidden" value="' . $user . '">' : '' )
    . $catStr . ':
       <select name="cat_id" onchange="document.SelectCategory.submit()">';
 
@@ -4447,7 +4358,7 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
         if ( $cat_id == $K ) {
           $printerStr .= '
     <span id="cat">' . $catStr . ': ' . $categories[$K]['cat_name'] . '</span>';
-          $ret .= ' selected="selected"';
+          $ret .= ' selected';
         }
         $ret .= ">{$V['cat_name']}</option>";
       }
@@ -4459,7 +4370,6 @@ function print_category_menu ( $form, $date = '', $cat_id = '' ) {
   // This is used for Printer Friendly view.
   . $printerStr;
 }
-
 /**
  * Generates HTML for checkbox form controls.
  *
@@ -4485,16 +4395,14 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
     $setting  = $prefarray[$vals[0]];
     $variable = 'pref_' . $vals[0];
   }
-    
   $hidden = ( strpos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
-    <input type="hidden" name="' . $variable . '" value="N" />' );
-
+    <input name="' . $variable . '" type="hidden" value="N">' );
 
   if( ! empty( $id ) && $id = 'dito' )
     $id = $vals[0];
 
   if( empty( $checked ) ) {
-    $checked = ' checked="checked"';
+    $checked = ' checked';
     $No  = translate( 'No' );
     $Yes = translate( 'Yes' );
   }
@@ -4504,9 +4412,8 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
    . '" ' . ( empty( $id ) ? '' : 'id="' . $id . '" ' )
    . ( $setting == $vals[1] ? $checked : '' )
    . ( empty( $onchange ) ? '' : ' onchange="' . $onchange . '()"' )
-   . ' />&nbsp;' . $vals[2] . '</label>';
+   . '>&nbsp;' . $vals[2] . '</label>';
 }
-
 /**
  * Generates HTML for color chooser options in admin and pref pages.
  *
@@ -4542,11 +4449,10 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
    . '</label><input type="text" name="' . $name . '" id="' . $name
    . '" size="7" maxlength="7" value="' . $setting
    . '" onchange="updateColor( this, \'' . $varname
-   . '_sample\' );" /><span class="sample" id="' . $varname . '_sample" style="background:'
+   . '_sample\');"><span class="sample" id="' . $varname . '_sample" style="background:'
    . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor( \''
-   . $name . '\', event )" value="' . $select . '" /></p>';
+   . $name . '\', event )" value="' . $select . '"></p>';
 }
-
 /**
  * Prints all the calendar entries for the specified user for the specified date.
  *
@@ -4601,11 +4507,11 @@ function print_date_entries ( $date, $user, $ssi = false,
     $ret = ( $can_add ? '
         <a title="' . $newEntryStr . '" href="edit_entry.php?' . $userCatStr
        . 'date=' . $date . '"><img src="images/new.gif" alt="' . $newEntryStr
-       . '" class="new" /></a>' : '' ) . '
+       . '" class="new"></a>' : '' ) . '
         <a class="dayofmonth" href="day.php?' . $userCatStr . 'date=' . $date
      . '">' . substr ( $date, 6, 2 ) . '</a>' . ( empty ( $tmp )
       ? '' : '<img src="images/' . $tmp . 'moon.gif" title="' . $moon_title
-      . '" alt="' . $moon_title . '" />' ) . "<br />\n";
+      . '" alt="' . $moon_title . '">' ) . "<br>\n";
     $cnt++;
   }
   // Get, combime and sort the events for this date.
@@ -4631,7 +4537,6 @@ function print_date_entries ( $date, $user, $ssi = false,
 
   return $ret;
 }
-
 /**
  * Prints all the calendar entries for the specified user
  * for the specified date in day-at-a-glance format.
@@ -4648,7 +4553,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   $TIME_SLOTS, $today, $TODAYCELLBG, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
 
   if ( empty ( $TIME_SLOTS ) )
-    return translate ( 'Error TIME_SLOTS undefined!' ) . "<br />\n";
+    return translate ( 'Error TIME_SLOTS undefined!' ) . "<br>\n";
 
   $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
   // Get, combine and sort the events for this date.
@@ -4693,7 +4598,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
         // This will move entries apart that appear in one field,
         // yet start on different hours.
         for ( $u = $diff_start_time; $u > 0; $u-- ) {
-          $hour_arr[$last_row] .= "<br />\n";
+          $hour_arr[$last_row] .= "<br>\n";
         }
         $hour_arr[$last_row] .= $hour_arr[$i];
         $hour_arr[$i] = '';
@@ -4759,7 +4664,6 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   return $ret . '
     </table>';
 }
-
 /**
  * Prints the HTML for one event in the month view.
  *
@@ -4828,7 +4732,7 @@ function print_entry ( $event, $date ) {
     // Make sure clones have parents URL date.
     $href = 'href="view_entry.php?id=' . $id . '&amp;date='
      . ( $cloneStr ? $cloneStr : $date )
-     . ( strlen ( $user ) > 0
+     . ( mb_strlen ( $user )
       ? '&amp;user=' . $user
       : ( $class == 'layerentry' ? '&amp;user=' . $loginStr : '' ) ) . '"';
     $title = ' title="' . $view_text . '" ';
@@ -4848,17 +4752,16 @@ function print_entry ( $event, $date ) {
     if ( ! file_exists ( $catIcon ) )
       $catIcon = '';
   }
-
   if ( empty ( $catIcon ) )
     $ret .= 'images/' . $icon . '" class="bullet" alt="' . $view_text
-     . '" width="5" height="7" />';
+     . '" style="width:5px; height:7px;">';
   else {
     // Use category icon.
     $catAlt = ( empty ( $categories[$catNum] )
       ? '' : translate ( 'Category' ) . ': '
        . $categories[$catNum]['cat_name'] );
 
-    $ret .= $catIcon . '" alt="' . $catAlt . '" title="' . "$catAlt\" />";
+    $ret .= $catIcon . '" alt="' . $catAlt . '" title="' . "$catAlt\">";
   }
 
   if ( $login != $loginStr && strlen ( $loginStr ) ) {
@@ -4900,13 +4803,12 @@ function print_entry ( $event, $date ) {
   // Added to allow a small location to be displayed if wanted.
   . ( ! empty ( $location ) && !
     empty ( $DISPLAY_LOCATION ) && $DISPLAY_LOCATION == 'Y'
-    ? '<br /><span class="location">('
-     . htmlspecialchars ( $location ) . ')</span>' : '' )
+    ? '<br><span class="location parentheses">'
+     . htmlspecialchars ( $location ) . '</span>' : '' )
    . ( $in_span == true ? '</span>' : '' ) . '</a>'
    . ( $event->getPriority() < 4 ? '</strong>' : '' ) // end font-weight span
-  . '<br />';
+  . '<br>';
 }
-
 /**
  * Generate standardized error message
  *
@@ -4922,7 +4824,6 @@ function print_error ( $error, $full = false ) {
    . ( $full ? translate ( 'The following error occurred' ) . ':' : '' ) . '
     <blockquote>' . $error . '</blockquote>';
 }
-
 /**
  * An h2 header error message.
  */
@@ -4930,7 +4831,6 @@ function print_error_header() {
   return '
     <h2>' . translate ( 'Error' ) . '</h2>';
 }
-
 /**
  * Generate standardized Not Authorized message
  *
@@ -4945,7 +4845,6 @@ function print_not_auth ( $full = false ) {
    . '!!!' . translate ( 'You are not authorized.' ) . "\n";
   return $ret;
 }
-
 /**
  * Generates HTML for radio buttons.
  *
@@ -4954,7 +4853,7 @@ function print_not_auth ( $full = false ) {
  *                if empty ( Yes/No options will be displayed )
  * @param string  $onclick  javascript function to call if needed
  * @param string  $defIdx default array index to select
- * @param string  $sep HTML value between radio options (&nbsp;,<br />)
+ * @param string  $sep HTML value between radio options (&nbsp;,<br>)
  *
  * @return string  HTML for the radio control.
  */
@@ -4966,7 +4865,7 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
   $ret = '';
   $setting = $defIdx;
   if ( empty ( $checked ) ) {
-    $checked = ' checked="checked"';
+    $checked = ' checked';
     $No = translate ( 'No' );
     $Yes = translate ( 'Yes' );
   }
@@ -4987,11 +4886,10 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
   foreach ( $vals as $K => $V ) {
     $ret .= '
       <input type="radio" name="' . $variable . '" value="' . $K . '"'
-     . ( $setting == $K ? $checked : '' ) . $onclickStr . ' />' . $V;
+     . ( $setting == $K ? $checked : '' ) . $onclickStr . '>' . $V;
   }
   return $ret;
 }
-
 /**
  * Generate standardized Success message.
  *
@@ -5002,12 +4900,9 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
 function print_success ( $saved ) {
   return ( $saved ? '
     <script>
-<!-- <![CDATA[
       alert ( \'' . translate ( 'Changes successfully saved', true ) . '\' );
-//]]> -->
     </script>' : '' );
 }
-
 /**
  * Prints Timezone select for use on forms
  *
@@ -5018,14 +4913,10 @@ function print_success ( $saved ) {
 */
 function print_timezone_select_html ( $prefix, $tz ) {
   $ret = '';
-  // We may be using php 4.x on Windows, so we can't use set_env() to
-  // adjust the user's TIMEZONE. We'll need to reply on the old fashioned
-  // way of using $tz_offset from the server's timezone.
-  $can_setTZ = ( substr ( $tz, 0, 11 ) == 'WebCalendar' ? false : true );
-  $old_TZ = getenv ( 'TZ' );
-  set_env ( 'TZ', 'America/New_York' );
+  $old_TZ = date_default_timezone_get ();
+  date_default_timezone_set ( 'UTC' );
   $tmp_timezone = date ( 'T' );
-  set_env ( 'TZ', $old_TZ );
+  date_default_timezone_set ( $old_TZ );
   // Don't change this to date().
   // if ( date ( 'T' ) == 'Ame' || ! $can_setTZ ) { //We have a problem!!
   if ( 0 ) { // Ignore this code for now.
@@ -5037,7 +4928,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
     for ( $i = -12; $i <= 13; $i++ ) {
       $ret .= '
           <option value="WebCalendar/' . $i . '"'
-       . ( $tz_value == $i ? ' selected="selected"' : '' ) . '>' . ( $i < 0
+       . ( $tz_value == $i ? ' selected' : '' ) . '>' . ( $i < 0
         ? str_replace ( 'N', - $i, $text_sub ) : ( $i == 0
           ? translate ( 'same as' ) : str_replace ( 'N', $i, $text_add ) ) )
        . '</option>';
@@ -5069,7 +4960,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
     for ( $i = 0, $cnt = count ( $timezones ); $i < $cnt; $i++ ) {
       $ret .= '
           <option value="' . $timezones[$i] . '"'
-       . ( $timezones[$i] == $tz ? ' selected="selected" ' : '' ) . '>'
+       . ( $timezones[$i] === $tz ? ' selected ' : '' ) . '>'
        . unhtmlentities ( $timezones[$i] ) . '</option>';
     }
     $ret .= '
@@ -5079,7 +4970,6 @@ function print_timezone_select_html ( $prefix, $tz ) {
   }
   return $ret;
 }
-
 /**
  * Reads events visible to a user.
  *
@@ -5161,11 +5051,11 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   $sql .= 'AND we.cal_type IN ( '
    . ( $is_task == false
     ? '\'E\',\'M\' ) ' : '\'N\',\'T\' ) AND ( we.cal_completed IS NULL ) ' )
-   . ( strlen ( $user ) > 0 ? 'AND ( weu.cal_login = ? ' : '' );
+   . ( mb_strlen ( $user ) ? 'AND ( weu.cal_login = ? ' : '' );
 
   $query_params[] = $user;
 
-  if ( $user == $login && strlen ( $user ) > 0 && $layers ) {
+  if ( $user === $login && mb_strlen ( $user ) && $layers ) {
     foreach ( $layers as $layer ) {
       $layeruser = $layer['cal_layeruser'];
 
@@ -5181,7 +5071,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   $rows = dbi_get_cached_rows( $sql . ( $user == $login && strlen( $user )
     && $PUBLIC_ACCESS_DEFAULT_VISIBLE == 'Y'
       ? 'OR weu.cal_login = \'__public__\' ' : '' )
-   . ( strlen( $user ) > 0 ? ') ' : '' ) . $date_filter . ' ORDER BY '
+   . ( mb_strlen ( $user ) ? ') ' : '' ) . $date_filter . ' ORDER BY '
     // Order the results by time, then name if not tasks.
     // Must also order by cal_id, in case there are more than
     // one event in a month with the same name and time.
@@ -5367,7 +5257,6 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   }
   return $result;
 }
-
 /**
  * Reads all the events for a user for the specified range of dates.
  *
@@ -5400,7 +5289,6 @@ function read_events ( $user, $startdate, $enddate, $cat_id = '' ) {
      . ' ) OR ( we.cal_date = ' . $end_date . ' AND we.cal_time <= '
      . gmdate ( 'His', $enddate ) . ' ) )', $cat_id );
 }
-
 /**
  * Reads all the repeated events for a user.
  *
@@ -5439,7 +5327,6 @@ function read_repeated_events ( $user, $date = '', $enddate = '', $cat_id = '' )
       ? 'AND ( wer.cal_end >= ' . $date . ' OR wer.cal_end IS NULL )' : '' ),
     $cat_id );
 }
-
 /**
  * Reads all the tasks for a user with due date within the specified date range.
  *
@@ -5462,7 +5349,6 @@ function read_tasks ( $user, $duedate, $cat_id = '' ) {
      . ' ) OR ( we.cal_due_date = ' . $due_date . ' AND we.cal_due_time <= '
      . gmdate ( 'His', $duedate ) . ' ) )', $cat_id, true );
 }
-
 /**
  * Generates a cookie that saves the last calendar view.
  *
@@ -5500,23 +5386,19 @@ function remember_this_view ( $view = false ) {
 function send_doctype ( $doc_title = '' ) {
   global $charset, $lang, $LANGUAGE;
 
-  $lang = ( empty ( $LANGUAGE ) ? '' : languageToAbbrev ( $LANGUAGE ) );
-  if ( empty ( $lang ) )
-    $lang = 'en';
+  $charset = ini_get ( 'default_charset' );
+  $lang = 'en';
 
-  $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
-
-  return '<?xml version="1.0" encoding="' . $charset . '"?' . '>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
-   . $lang . '">
+  if ( ! empty ( $LANGUAGE ) ) {
+    $charset = translate ( 'charset' );
+    $lang = languageToAbbrev ( $LANGUAGE );
+  }
+  return '<!DOCTYPE html>
+<html lang="' . $lang . '">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
-   . '" />' . ( empty ( $doc_title ) ? '' : '
+    <meta charset="' . $charset . '">' . ( empty ( $doc_title ) ? '' : '
     <title>' . $doc_title . '</title>' );
 }
-
 /**
  * Sends an HTTP login request to the browser and stops execution.
  *
@@ -5547,7 +5429,6 @@ function send_http_login() {
 </html>';
   exit;
 }
-
 /**
  * Sends HTTP headers that tell the browser not to cache this page.
  *
@@ -5564,7 +5445,6 @@ function send_no_cache_header() {
   header ( 'Cache-Control: post-check=0, pre-check=0', false );
   header ( 'Pragma: no-cache' );
 }
-
 /**
  * Sends a redirect to the user's preferred view.
  *
@@ -5578,7 +5458,6 @@ function send_no_cache_header() {
 function send_to_preferred_view ( $indate = '', $args = '' ) {
   do_redirect ( get_preferred_view ( $indate, $args ) );
 }
-
 /**
  * Set an environment variable if system allows it.
  *
@@ -5623,7 +5502,6 @@ function set_env ( $val, $setting ) {
 
   return $ret;
 }
-
 /**
  * Determines what the day is and sets it globally.
  * All times are in the user's timezone
@@ -5653,7 +5531,6 @@ function set_today ( $date = '' ) {
   }
   $thisdate = sprintf ( "%04d%02d%02d", $thisyear, $thismonth, $thisday );
 }
-
 /**
  * Sorts the combined event arrays by timestamp then name.
  *
@@ -5672,7 +5549,6 @@ function sort_events ( $a, $b ) {
 
   return ( $retval ? $retval : strnatcmp( $a->getName(), $b->getName() ) );
 }
-
 /**
  * Sorts the combined event arrays by timestamp then name (case insensitive).
  *
@@ -5689,7 +5565,6 @@ function sort_events_insensitive ( $a, $b ) {
     ? $retval
     : strnatcmp( strtolower( $a->getName() ), strtolower( $b->getName() ) ) );
 }
-
 /**
  * Sort user array based on $USER_SORT_ORDER.
  * <b>Note:</b> This is a user-defined comparison function for usort()
@@ -5712,7 +5587,6 @@ function sort_users ( $a, $b ) {
     ? ( empty ( $last ) ? $first : $last )
     : ( empty ( $first ) ? $last : $first ) );
 }
-
 /**
  * Converts a time format HHMMSS (like 130000 for 1PM)
  * into number of minutes past midnight.
@@ -5724,7 +5598,6 @@ function sort_users ( $a, $b ) {
 function time_to_minutes ( $time ) {
   return intval ( $time / 10000 ) * 60 + intval ( ( $time / 100 ) % 100 );
 }
-
 /**
  * Checks to see if two events overlap.
  *
@@ -5756,7 +5629,6 @@ function times_overlap ( $time1, $duration1, $time2, $duration2 ) {
   return ( ( $tmins1start >= $tmins2end ) || ( $tmins2start >= $tmins1end )
     ? false : true );
 }
-
 /**
  * Updates event status and logs activity
  *
@@ -5805,7 +5677,6 @@ function update_status ( $status, $user, $id, $type = 'E' ) {
   else
     activity_log ( $id, $login, $user, $log_type, '' );
 }
-
 /**
  * Checks the webcal_nonuser_cals table to determine if the user is the
  * administrator for the nonuser calendar.
@@ -5821,7 +5692,6 @@ function user_is_nonuser_admin ( $login, $nonuser ) {
     AND cal_admin = ?', [$nonuser, $login] );
   return ( $rows && ! empty ( $rows[0] ) );
 }
-
 /**
  * Determine if the specified user is a participant in the event.
  * User must have status 'A' or 'W'.
@@ -5847,7 +5717,6 @@ function user_is_participant ( $id, $user ) {
 
   return $ret;
 }
-
 /**
  * Checks to see if user's IP in in the IP Domain
  * specified by the /includes/blacklist.php file
@@ -5910,7 +5779,6 @@ function validate_domain() {
 
   return $ip_authorized;
 }
-
 /**
  * Returns either the full name or the abbreviation of the day.
  *
@@ -5961,7 +5829,6 @@ function weekday_name ( $w, $format = 'l' ) {
 
   return translate ( 'unknown-weekday' ) . " ($w)";
 }
-
 /* ****************************************************************************
  *     Functions for getting information about boss and their assistants.     *
  **************************************************************************** */
@@ -5982,7 +5849,6 @@ function boss_must_approve_event ( $assistant, $boss ) {
 
   return true;
 }
-
 /**
  * Checks the boss user preferences to see if the boss wants to be notified via
  * email on changes to their calendar.
@@ -5999,7 +5865,6 @@ function boss_must_be_notified ( $assistant, $boss ) {
 
   return true;
 }
-
 /**
  * Is this user an assistant of this boss?
  *
@@ -6024,7 +5889,6 @@ function user_is_assistant ( $assistant, $boss ) {
   }
   return $ret;
 }
-
 /**
  * Gets a list of an assistant's boss from the webcal_asst table.
  *
@@ -6054,7 +5918,6 @@ function user_get_boss_list ( $assistant ) {
   }
   return $ret;
 }
-
 /**
  * Is this user an assistant?
  *
@@ -6073,7 +5936,6 @@ function user_has_boss ( $assistant ) {
   }
   return $ret;
 }
-
 /* ****************************************************************************
  *                       Functions to handle site_extras                      *
  **************************************************************************** */
@@ -6175,7 +6037,7 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
         str_replace ( '&amp;amp;', '&amp;',
           str_replace ( '&', '&amp;', $description ) ) );
       // If there is no HTML found, then go ahead and replace
-      // the line breaks ("\n") with the HTML break ("<br />").
+      // the line breaks ("\n") with the HTML break ("<br>").
       $ret .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
         ? $str : nl2br ( $str ) );
     } else
@@ -6186,7 +6048,6 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
   } //if $description
   return $ret . ( empty ( $site_extras ) ? '' : $site_extras ) . "</dl>\n";
 }
-
 /**
  * Formats site_extras for display according to their type.
  *
@@ -6241,7 +6102,6 @@ function format_site_extras ( $extras, $filter = '' ) {
   }
   return $ret;
 }
-
 /**
  * Gets any site-specific fields for an entry that are stored in the database
  * in the webcal_site_extras table.
@@ -6274,7 +6134,6 @@ function get_site_extra_fields ( $eventid ) {
   }
   return $extras;
 }
-
 /**
  * Extract the names of all site_extras.
  *
@@ -6298,7 +6157,6 @@ function get_site_extras_names ( $filter = '' ) {
 
   return $ret;
 }
-
 /**
  * Generates the HTML used in an event popup for the site_extras fields.
  *
@@ -6322,25 +6180,20 @@ function site_extras_for_popup ( $id ) {
   foreach ( $extras as $extra ) {
     $ret .= '<dt>' . $extra['name'] . ":</dt>\n<dd>" . $extra['data'] . "</dd>\n";
   }
-
   return $ret;
 }
-
 // Print a box with an error message and a nice error icon.
-function print_error_box ( $msg )
-{
+function print_error_box ( $msg ) {
   echo '<div class="warningBox">' .
     '<table><tr><td class="alignmiddle">' .
     '<img src="images/warning.png" width="40" height="40" class="alignmiddle" alt="' .
-    translate ( 'Error' ) . '" /></td><td class="alignmiddle">' .
+    translate ( 'Error' ) . '"></td><td class="alignmiddle">' .
     translate('The permissions for the icons directory are set to read-only') .
     "</td></tr></table></div>\n";
 }
-
 // Convert an HTML color ('#ff00ff') into an array of red/green/blue values
 // of 0 to 255.
-function html2rgb($color)
-{
+function html2rgb ( $color ) {
   if ($color[0] == '#')
     $color = substr($color, 1);
 
@@ -6356,10 +6209,8 @@ function html2rgb($color)
 
   return [$r, $g, $b];
 }
-
 // Convert RGB values (0-255) into HTML color ('#ffffff')
-function rgb2html($r, $g=-1, $b=-1)
-{
+function rgb2html ( $r, $g=-1, $b=-1 ) {
   if (is_array($r) && sizeof($r) == 3)
     list($r, $g, $b) = $r;
 
@@ -6375,7 +6226,6 @@ function rgb2html($r, $g=-1, $b=-1)
   $color .= (strlen($b) < 2?'0':'').$b;
   return '#'.$color;
 }
-
 /**
   * Require a valid HTT_REFERER value in the HTTP header.  This will
   * prevent XSRF (cross-site request forgery).
@@ -6384,8 +6234,7 @@ function rgb2html($r, $g=-1, $b=-1)
   * would delete an event in webcalendar to the admin.  If the admin user
   * clicks on that link we don't want to actually delete the event.
   */
-function require_valid_referring_url ()
-{
+function require_valid_referring_url () {
   global $SERVER_URL, $settings;
 
   // Allow value in settings.php to disable this.  If you run PHP

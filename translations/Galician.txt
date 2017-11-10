@@ -6,7 +6,6 @@
 # $Id: Galician.txt,v 1.34 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-14-2008
 
-
 ################################################################################
 #                       DO NOT "TRANSLATE" THIS SECTION                        #
 ################################################################################
@@ -38,7 +37,6 @@ __month__ __yyyy__: =
 
 ################################################################################
 ################################################################################
-
 
 ########################################
 # Page: about.php
@@ -85,7 +83,7 @@ Your browser default language is: O idioma por defecto do seu navegador é
 None: Ningunha
 display-week-starts-on: Especifica se a semana comeza o Domingo ou o Luns. Se se selecciona Luns, enton os números da semana amosaránse no formato ISO.
 Week starts on: A semana comeza o
-time-format-help: Especifica qué formato horario empregar:<br /><i>12 horas:</i> Amosa-las horas co formato 3am, 8:30pm, etc.<br /><i>24 horas:</i> Amosa-las horas co formato 300, 2030, etc.
+time-format-help: Especifica qué formato horario empregar:<br><i>12 horas:</i> Amosa-las horas co formato 3am, 8:30pm, etc.<br><i>24 horas:</i> Amosa-las horas co formato 300, 2030, etc.
 Time format: Formato da hora
 12 hour: 12 horas
 24 hour: 24 horas
@@ -98,7 +96,7 @@ preferred-view-help: Especifica a vista por defecto (Día, Semana, Mes ou Ano).
 Preferred view: Vista preferida
 display-week-number-help: Especifica se o número da semana (1-52) debería amosarse na vista do mes e na vista da semana.
 Display week number: Amosa-lo número da semana
-display-unapproved-help: Especifica se amosar ou non os eventos non aprobados no seu calendario.<br /> Se selecciona "Si", entón amosaranse os eventos non aprobados no seu calendario (cunha cor de texto diferente).<br /> Se selecciona "Non", entón deberanse aproba-los eventos antes de que poidan ser amosados no seu calendario.
+display-unapproved-help: Especifica se amosar ou non os eventos non aprobados no seu calendario.<br>Se selecciona "Si", entón amosaranse os eventos non aprobados no seu calendario (cunha cor de texto diferente).<br>Se selecciona "Non", entón deberanse aproba-los eventos antes de que poidan ser amosados no seu calendario.
 Display unapproved: Amosar non aprobados
 Yes: Si
 No: Non
@@ -167,7 +165,7 @@ brief-description-help: Debería proporcionar unha descrición breve (arredor de 2
 Brief Description: Descrición breve
 full-description-help: Esto debería completa-la descrición do evento. Esta información amósase cando o usuario ve o evento.
 Full Description: Descrición completa
-access-help: Especifica o nivel de acceso do evento.<br /> <i>Público</i>: Todos poden ve-la descrición completa do evento.<br /><i>Confidencial</i>: Os demais poden ver que ten unha entrada para ese día e hora, pero non os detalles sobre a entrada.
+access-help: Especifica o nivel de acceso do evento.<br><i>Público</i>: Todos poden ve-la descrición completa do evento.<br><i>Confidencial</i>: Os demais poden ver que ten unha entrada para ese día e hora, pero non os detalles sobre a entrada.
 Access: Acceso
 priority-help: Especifica a prioridade do evento. As prioridades altas amosaránse en negriña.
 Priority: Prioridade
@@ -175,8 +173,8 @@ High: Alta
 Medium: Media
 Low: Baixa
 date-help: Especifica a data do evento.
-time-help: Especifica a hora do evento.<br /><i>Este campo pode deixarse en branco.</i>
-duration-help: Especifica a duración (en horas:minutos) do evento.<br /><i>Este campo pode deixarse en branco.</i>
+time-help: Especifica a hora do evento.<br><i>Este campo pode deixarse en branco.</i>
+duration-help: Especifica a duración (en horas:minutos) do evento.<br><i>Este campo pode deixarse en branco.</i>
 participants-help: Lista dos participantes desta entrada.
 repeat-type-help: Seleccione con qué frecuencia se repetirá o evento.<i>Mensualmente (por días)</i> permite que o evento se repita o primeiro luns do mes, o terceiro xoves do mes, etc.<i>Mensualmente (por data)</i> permite que o evento se repita o mesmo día de cada mes.
 Daily: Diariamente

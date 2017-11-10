@@ -143,7 +143,7 @@ if ( $id > 0 && empty ( $error ) ) {
 
       // Don't email the logged in user.
       if ( $can_email && $partlogin[$i] != $login ) {
-        set_env ( 'TZ', get_pref_setting ( $partlogin[$i], 'TIMEZONE' ) );
+        date_default_timezone_set ( get_pref_setting ( $partlogin[$i], 'TIMEZONE' ) );
         $user_language = get_pref_setting ( $partlogin[$i], 'LANGUAGE' );
         user_load_variables ( $partlogin[$i], 'temp' );
         if ( ! $is_nonuser_admin && $partlogin[$i] != $login &&
@@ -267,7 +267,7 @@ else
   $url = get_preferred_view ( '', empty ( $user ) ? '' : 'user=' . $user );
 
 // Return to login TIMEZONE.
-set_env ( 'TZ', $TIMEZONE );
+date_default_timezone_set ( $TIMEZONE );
 if ( empty ( $error ) && empty ( $mailerError ) ) {
   do_redirect ( $url );
   exit;

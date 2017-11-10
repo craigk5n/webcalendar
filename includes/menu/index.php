@@ -258,7 +258,7 @@ JSCookMenu top menu item looks like:
 [null,'Title',null,null,null,
 
 Followed by items for that menu:
-['<img src="image.png" />','Title','link.php',null,''],
+['<img src="image.png">','Title','link.php',null,''],
 
 Close a top level menu item:
 ],
@@ -287,7 +287,7 @@ function jscMenu_item ( $icon, $title='', $url, $translate=true, $target = '' ) 
   // escape single quite to avoid javascript error
   $str = preg_replace ( "/'/", "\\'", $title );
   $menuScript .= '[\'<img src="includes/menu/icons/' . $icon
-   . '" alt="'. $str .'" />\',\'' . ( $translate ? translate ( $str ) : $str )
+   . '" alt="'. $str .'">\',\'' . ( $translate ? translate ( $str ) : $str )
    . "','$url','$target',''],\n";
 }
 
@@ -299,7 +299,7 @@ function jscMenu_sub_menu ( $icon, $title='', $translate=true  ) {
   // escape single quite to avoid javascript error
   $str = preg_replace ( "/'/", "\\'", $title );
   $menuScript .= '[\'<img src="includes/menu/icons/' . $icon
-   . '" alt="" />\',\'' . ( $translate ? translate ( $str ) : $str )
+   . '" alt="">\',\'' . ( $translate ? translate ( $str ) : $str )
    . "','',null,'',\n";
 }
 
@@ -334,8 +334,7 @@ function jscMenu_divider () {
 ----------------------------------------------------------------------------- */
 
 $menuScript .= '
-    <script language="JavaScript" type="text/javascript">
-<!-- <![CDATA[
+    <script>
       var myMenu =
 ['
 
@@ -460,7 +459,7 @@ if ( ! empty ( $menuExtras[3] ) )
 
 // Reports Menu
 // translate ( 'My Reports' )
-if ( ( $is_admin || $reports_linkcnt  > 0 ) && $menuConfig['Reports'] ) {
+if ( ( $is_admin || $reports_linkcnt > 0 ) && $menuConfig['Reports'] ) {
   //allow us to back out menu if empty
   $tmp1_menuScript = $menuScript;
   jscMenu_menu ( 'Reports' );
@@ -611,11 +610,11 @@ if ( ( $search_url != '' && $menuConfig['Search'] ) &&
     jscMenu_divider ();
   }
   jscMenu_custom ( '<td class="ThemeMenuItemLeft"><img src="includes/menu/icons'
-     . '/spacer.gif" /></td><td colspan="2"><form action="search_handler.php'
+     . '/spacer.gif"></td><td colspan="2"><form action="search_handler.php'
 	 . ( ! empty ( $user ) ? '?users[]=' . $user : '' ) . '" '
-     . 'method="GET"><input type="text" name="keywords" size="25" /><input '
+     . 'method="GET"><input name="keywords" size="25" type="text"><input '
      . 'type="submit" value="' . translate ( 'Search' )
-     . '" /></form></td>' );
+     . '"></form></td>' );
   jscMenu_close ();
 }
 
@@ -657,7 +656,6 @@ if ( ! empty ( $menuExtras[7] ) )
   $menuScript .= parse_menu_extras ( $menuExtras[7] );
 
 $menuScript .= '];
-//]]> -->
     </script>' . "\n";
 
 $loginStr = translate ( 'Login' );

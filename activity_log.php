@@ -46,11 +46,10 @@ if ( ! empty ( $startid ) ) {
     if ( $row = dbi_fetch_row ( $res ) )
       // Go FORWARD in time.
       echo '
-      <a title="' . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr
-        . '" class="next" href="activity_log.php' . ( $row[0] <= $previd
+      <a href="activity_log.php' . ( $row[0] <= $previd
           ? ( $sys ? '?system=1' : '' )
-          : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) . '">'
-        . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br />';
+          : '?startid=' . $previd . ( $sys ? '&amp;system=1' : '' ) ) . '" class="next">'
+        . $nextStr . '&nbsp;' . $PAGE_SIZE . '&nbsp;' . $eventsStr . '</a><br>';
 
     dbi_free_result ( $res );
   }

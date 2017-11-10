@@ -147,7 +147,7 @@ if ( $is_day_view ) {
 for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $days[$i] = ( $wkstart + 86400 * $i ) + 43200;
   $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS );
-  $header[$i] = $weekdays[$i] . '<br />' .
+  $header[$i] = $weekdays[$i] . '<br>' .
      month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) .
      ' ' . date ( 'd', $days[$i] );
   if ( empty ( $first_date ) )
@@ -187,8 +187,6 @@ if ( ! $fit_to_window ) {
   $table_width = ( $col_pixels * $viewusercnt ) *
     ( $end_ind - $start_ind + 1 ) + 100;
 }
-//echo "table_width=$table_width<br />\n";
-
 // tdw is the cell width for each day
 if ( ! $fit_to_window )
   // pixels
@@ -223,7 +221,6 @@ for ( $i = 0; $i < $viewusercnt; $i++ ) {
   user_load_variables ( $viewusers[$i], 'temp' );
   $uheader .= "<th class=\"small\" width=\"$uwf\" style=\"width:$uwf;\">" .
     $tempfullname . "</th>\n";
-  //echo "$viewusers[$i]: loaded " . count ( $events ) . " events<br />\n";
 }
 $num_users = $viewusercnt;
 
@@ -237,9 +234,9 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 ?>
 
 <div style="width:99%;">
-<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>" class="prev"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
+<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>" class="prev"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>"></a>
 
-<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>" class="next"><img src="images/rightarrow.gif" alt="<?php etranslate ( 'Next' )?>" /></a>
+<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>" class="next"><img src="images/rightarrow.gif" alt="<?php etranslate ( 'Next' )?>"></a>
 <div class="title">
 <span class="date"><?php
   if ( $is_day_view ) {
@@ -248,15 +245,15 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
     echo $first_date . "&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;" .
       $last_date;
   }
-?></span><br />
+?></span><br>
 <span class="viewname"><?php echo htmlspecialchars ( $view_name ) ?></span>
 <?php
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
-    echo "<br />\n<span class=\"titleweek\">(" .
-      translate( 'Week' ) . ' ' . date( 'W', $wkstart + 86400 ) . ')</span>';
+    echo "<br>\n<span class=\"titleweek\">" . str_replace ( 'XXX',translate ( date ( 'W', $wkstart + 86400 ),0,'N' ),
+      translate ( '(Week XXX)' ) ) . '</span>';
   }
 ?>
-</div></div><br />
+</div></div><br>
 
 <?php
 $help = ( $can_add ? 'title="' .
@@ -393,8 +390,6 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
         if( $ev[$i]->getDuration() == 1440 )
           $all_day[$d] = 1;
         html_for_event_week_at_a_glance ( $ev[$i], $dateYmd, 'small', $show_time );
-        //echo "Found event date=$dateYmd name='$viewname'<br />\n";
-        //print_r ( $rowspan_arr );
       }
     }
     // print out any remaining repeating events
@@ -425,7 +420,7 @@ for ( $d = $start_ind; $d <= $end_ind; $d++ ) {
           $start_time = $i;
           $diff_start_time = $start_time - $last_row;
           for ( $x = $diff_start_time; $x > 0; $x-- )
-            $hour_arr[$last_row] .= "<br />\n";
+            $hour_arr[$last_row] .= "<br>\n";
           $hour_arr[$last_row] .= $hour_arr[$i];
           $hour_arr[$i] = '';
           $rowspan_arr[$i] = 0;
@@ -565,13 +560,11 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
 
 </table>
 <script>
-<!-- <![CDATA[
 function dblclick( date, name, hour, minute ) {
  window.location.href  = 'edit_entry.php?date=' + date + '&defusers=' + name
    + ( hour ? '&hour=' + hour + '&minute='
      + ( minute ? minute : 0 ) : '&duration=1440' );
 }
-//]]> -->
 </script>
 <?php
 
