@@ -13,9 +13,12 @@
 */
   border:.5em solid #def;
 /*  padding:.25em 5px .25em .25em; */
-  background:#def;
+  background:#c0c0c0;
   font-weight:bold;
   font-size:16px;
+}
+#credsin {
+  background:#c0c0c0;
 }
 .Vscroll {
 /* mandatory */
