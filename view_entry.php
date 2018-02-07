@@ -64,7 +64,7 @@ $res = dbi_execute ( 'SELECT we.cal_id, we.cal_create_by
   FROM webcal_entry we, webcal_entry_user weu
   WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
   AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
-  array ( $id, $sqlparm, $sqlparm ) );
+  [$id, $sqlparm, $sqlparm] );
 if ( $res ) {
   $row = dbi_fetch_row ( $res );
   if ( $row && $row[0] > 0 ) {
@@ -81,7 +81,7 @@ if ( ! empty ( $_POST ) && $is_my_event ) {
   if ( $upercent >= 0 && $upercent <= 100 ) {
     dbi_execute ( 'UPDATE webcal_entry_user SET cal_percent = ?
       WHERE cal_login = ? AND cal_id = ?',
-      array ( $upercent, $login, $id ) );
+     [$upercent, $login, $id] );
     activity_log ( $id, $login, $creator, LOG_UPDATE_T,
       translate ( 'Update Task Percentage' ) . ' ' . $upercent . '%' );
    }
@@ -89,7 +89,7 @@ if ( ! empty ( $_POST ) && $is_my_event ) {
   $others_complete = getPostValue ( 'others_complete' );
   if ( $upercent == 100 && $others_complete == 'yes' ) {
     dbi_execute ( 'UPDATE webcal_entry SET cal_completed = ?
-      WHERE cal_id = ?', array ( gmdate ( 'Ymd', time() ), $id ) );
+  WHERE cal_id = ?', [gmdate ( 'Ymd', time() ), $id] );
     activity_log ( $id, $login, $creator, LOG_UPDATE_T,
       translate ( 'Completed' ) );
   }
@@ -100,7 +100,7 @@ $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
   cal_mod_time, cal_duration, cal_priority, cal_type, cal_access,
   cal_name, cal_description, cal_location, cal_url, cal_due_date,
   cal_due_time, cal_completed FROM webcal_entry WHERE cal_id = ?',
-  array ( $id ) );
+  [$id] );
 if ( ! $res )
   $error = str_replace ('XXX', $id, translate ( 'Invalid entry id XXX.' ) );
 else {
@@ -199,7 +199,7 @@ if ( empty ( $error ) ) {
     $my_users = get_my_users();
     $my_usercnt = count ( $my_users );
     if ( is_array ( $my_users ) && $my_usercnt ) {
-      $sql_params = array();
+      $sql_params = [];
       $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
         WHERE we.cal_id = weu.cal_id AND we.cal_id = ? AND weu.cal_login IN ( ';
       $sql_params[] = $id;
@@ -228,12 +228,13 @@ if ( empty ( $error ) ) {
 if ( empty ( $error ) && ! $can_view && !
     empty ( $NONUSER_ENABLED ) && $NONUSER_ENABLED == 'Y' ) {
   $nonusers = get_nonuser_cals();
-  $nonuser_lookup = array();
+  $nonuser_lookup = [];
   for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
     $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
   }
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
-    WHERE cal_id = ? AND cal_status IN (\'A\',\'W\')', array ( $id ) );
+  WHERE cal_id = ?
+    AND cal_status IN ("A","W")', [$id] );
   $found_nonuser_cal = $found_reg_user = false;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -255,9 +256,11 @@ if ( empty ( $error ) && ! $can_view && !
 if ( ! $can_view && ! empty ( $PUBLIC_ACCESS_DEFAULT_VISIBLE ) &&
   $PUBLIC_ACCESS_DEFAULT_VISIBLE == 'Y' ) {
   // check to see if 'public' was a participant
-  $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user ' .
-    "WHERE cal_id = ? AND cal_login = '__public__'" .
-    'AND cal_status IN (\'A\',\'W\')', array ( $id ) );
+  $res = dbi_execute ( 'SELECT cal_login
+  FROM webcal_entry_user
+  WHERE cal_id = ?
+    AND cal_login = "__public__"
+    AND cal_status IN ("A","W")', [$id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $row[0] ) && $row[0] == '__public__' ) {
@@ -282,7 +285,8 @@ if ( ! empty ( $user ) && $login != $user ) {
   // If viewing another user's calendar, check the status of the
   // event on their calendar (to see if it's deleted).
   $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
-    WHERE cal_login = ? AND cal_id = ?', array ( $user, $id ) );
+  WHERE cal_login = ?
+    AND cal_id = ?', [$user, $id] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) )
       $event_status = $row[0];
@@ -293,7 +297,8 @@ if ( ! empty ( $user ) && $login != $user ) {
   // We are viewing event on user's own calendar, so check the
   // status on their own calendar.
   $res = dbi_execute ( 'SELECT cal_id, cal_status FROM webcal_entry_user
-    WHERE cal_login = ? AND cal_id = ?', array ( $login, $id ) );
+  WHERE cal_login = ?
+    AND cal_id = ?', [$login, $id] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     $event_status = $row[1];
@@ -310,7 +315,8 @@ if ( ! empty ( $user ) && $login != $user ) {
 // Check to make sure that it hasn't been deleted from everyone's calendar.
 //if ( empty ( $event_status ) ) {
 //  $res = dbi_execute ( 'SELECT cal_status FROM webcal_entry_user
-//    WHERE cal_status <> "D" ORDER BY cal_status', array() );
+//  WHERE cal_status <> "D"
+//  ORDER BY cal_status', [] );
  // if ( $res ) {
 //    if ( $row = dbi_fetch_row ( $res ) )
 //      $event_status = $row[0];
@@ -344,7 +350,7 @@ $subject = htmlspecialchars ( $subject );
 $event_repeats = false;
 // Build info string for repeating events and end date.
 $res = dbi_execute ( 'SELECT cal_type FROM webcal_entry_repeats
-  WHERE cal_id = ?', array ( $id ) );
+  WHERE cal_id = ?', [$id] );
 $rep_str = '';
 if ( $res ) {
   if ( $tmprow = dbi_fetch_row ( $res ) )
@@ -516,7 +522,7 @@ $proxy_fullname = '';
 if ( ! empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_log
     WHERE webcal_entry_log.cal_entry_id = ? AND webcal_entry_log.cal_type = \'C\'',
-    array ( $id ) );
+    [$id] );
   if ( $res ) {
     $row3 = dbi_fetch_row ( $res );
     if ( $row3 ) {
@@ -615,7 +621,7 @@ for ( $i = 0; $i < $site_extracnt; $i++ ) {
 }
 // participants
 // Only ask for participants if we are multi-user.
-$allmails = array();
+$allmails = [];
 $show_participants = ( $DISABLE_PARTICIPANTS_FIELD != 'Y' );
 if ( $is_admin )
   $show_participants = true;
@@ -640,7 +646,7 @@ if ( $single_user == 'N' && $show_participants ) {
     $res = dbi_execute ( 'SELECT cal_login, cal_status, cal_percent
         FROM webcal_entry_user WHERE cal_id = ?'
        . ( $eType == 'task' ? ' AND cal_status IN ( \'A\', \'W\' )' : '' ),
-      array ( $id ) );
+      [$id] );
     $first = 1;
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {

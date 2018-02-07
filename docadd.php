@@ -1,4 +1,4 @@
-<?php // $Id: docadd.php,v 1.22 2009/11/22 16:47:44 bbannon Exp $
+<?php
 /**
  * Page Description:
  *  This page will handle adding blobs into the database. It will
@@ -62,7 +62,7 @@ if ( empty ( $error ) && ! empty ( $id ) ) {
     FROM webcal_entry we, webcal_entry_user weu
     WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
     AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
-    array ( $id, $login, $login ) );
+    [$id, $login, $login] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] > 0 )
@@ -122,10 +122,10 @@ if ( $REQUEST_METHOD == 'POST' ) {
     $comment = getValue ( 'comment' );
     if ( ! dbi_execute ( 'INSERT INTO webcal_blob ( cal_blob_id, cal_id,
       cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type,
-      cal_mod_date, cal_mod_time, cal_blob )
-      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', array ( $nextid, $id, $login,
+      cal_mod_date, cal_mod_time, cal_blob ) VALUES
+( ?,?,?,?,?,?,?,?,?,?,? )', [$nextid, $id, $login,
         NULL, $description, 0, 'text/plain', 'C', date ( 'Ymd' ), date ( 'His' ),
-        NULL ) ) )
+        NULL] ) )
       $error = db_error();
     else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',
@@ -167,10 +167,10 @@ if ( $REQUEST_METHOD == 'POST' ) {
     $comment = getValue ( 'description' );
     if ( ! dbi_execute ( 'INSERT INTO webcal_blob ( cal_blob_id, cal_id,
       cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type,
-      cal_mod_date, cal_mod_time, cal_blob )
-      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )', array ( $nextid, $id, $login,
+      cal_mod_date, cal_mod_time, cal_blob ) VALUES
+( ?,?,?,?,?,?,?,?,?,?,? )', [$nextid, $id, $login,
         $filename, $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
-        date ( 'His' ), NULL ) ) )
+        date ( 'His' ), NULL] ) )
       $error = db_error();
     else {
       if ( ! dbi_update_blob ( 'webcal_blob', 'cal_blob',

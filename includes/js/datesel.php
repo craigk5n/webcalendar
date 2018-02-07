@@ -1,7 +1,5 @@
 <?php
 /************************************************************************
- * $Id: datesel.php,v 1.24 2010/09/04 02:27:51 cknudsen Exp $
- *
  * Date selection via DHTML.  We use PHP to provide the translations and
  * a few user preferences (date format, language).  Otherwise, this could
  * be just javascript... in which case we could have re-used any number of
@@ -23,45 +21,40 @@
  *	the disableAJAX parameter.)
  ************************************************************************/
 
-$ldays_per_month = $days_per_month =
-  array ( 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 );
+$ldays_per_month = $days_per_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 $ldays_per_month[2] = 29;
 
 ?>
 
 // Month names
-var months = new Array (
+var months = [
   <?php
     for ( $i = 0; $i < 12; $i++ ) {
       if ( $i ) echo ", ";
       echo "'" . month_name ( $i ) . "'";
     }
-  ?>
-  );
-var shortMonths = new Array (
+  ?>];
+var shortMonths = [
   <?php
     for ( $i = 0; $i < 12; $i++ ) {
       if ( $i ) echo ", ";
       echo "'" . month_name ( $i, 'M' ) . "'";
     }
-  ?>
-  );
+  ?>];
 var weekdays = [
   <?php
     for ( $i = 0; $i < 7; $i++ ) {
       if ( $i ) echo ", ";
       echo "'" . weekday_name ( $i, 'l' ) . "'";
     }
-  ?>
-  ];
+  ?>];
 var shortWeekdays = [
   <?php
     for ( $i = 0; $i < 7; $i++ ) {
       if ( $i ) echo ", ";
       echo "'" . weekday_name ( $i, 'D' ) . "'";
     }
-  ?>
-  ];
+  ?>];
 
 // Handle the user clicking somewhere else on the page than the
 // date selection box.  This will cancel the date selection.

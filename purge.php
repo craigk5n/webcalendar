@@ -1,4 +1,4 @@
-<?php // $Id: purge.php,v 1.72.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 /**
  * Description:
  * Purge events page and handler.
@@ -75,7 +75,7 @@ if ( $do_purge ) {
 
   if ( $purge_all == 'Y' ) {
     if ( $username == 'ALL' ) {
-      $ids = array ( 'ALL' );
+      $ids =  ['ALL'];
     } else {
       $ids = get_ids ( 'SELECT cal_id FROM webcal_entry '
         . " WHERE cal_create_by = '$username' $tail" );
@@ -176,22 +176,21 @@ function purge_events ( $ids ) {
   global $preview, $previewStr, $c; // db connection
   global $sqlLog, $allStr;
 
-  $tables = array (
-    array ( 'webcal_entry_user', 'cal_id' ),
-    array ( 'webcal_entry_repeats', 'cal_id' ),
-    array ( 'webcal_entry_repeats_not', 'cal_id' ),
-    array ( 'webcal_entry_log', 'cal_entry_id' ),
-    array ( 'webcal_entry_categories', 'cal_id' ),
-    array ( 'webcal_import_data', 'cal_id' ),
-    array ( 'webcal_site_extras', 'cal_id' ),
-    array ( 'webcal_reminders', 'cal_id' ),
-    array ( 'webcal_entry_ext_user', 'cal_id' ),
-    array ( 'webcal_blob', 'cal_id' ),
-    array ( 'webcal_entry', 'cal_id' )
-  );
+  $tables = [
+    ['webcal_entry_user', 'cal_id'],
+    ['webcal_entry_repeats', 'cal_id'],
+    ['webcal_entry_repeats_not', 'cal_id'],
+    ['webcal_entry_log', 'cal_entry_id'],
+    ['webcal_entry_categories', 'cal_id'],
+    ['webcal_import_data', 'cal_id'],
+    ['webcal_site_extras', 'cal_id'],
+    ['webcal_reminders', 'cal_id'],
+    ['webcal_entry_ext_user', 'cal_id'],
+    ['webcal_blob', 'cal_id'],
+    ['webcal_entry', 'cal_id']];
 
   //var_dump($tables);exit;
-  $num = array();
+  $num = [];
   $cnt = count ( $tables );
   for ( $i = 0; $i < $cnt; $i++ ) {
     $num[$i] = 0;
@@ -236,7 +235,7 @@ function purge_events ( $ids ) {
 function get_ids ( $sql, $ALL = '' ) {
   global $sqlLog;
 
-  $ids = array();
+  $ids = [];
   $sqlLog .= $sql . "<br />\n";
   $res = dbi_execute ( $sql );
   if ( $res ) {
@@ -247,7 +246,7 @@ function get_ids ( $sql, $ALL = '' ) {
         //ONLY Delete event if no other participants.
         $ID = $row[0];
         $res2 = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-          WHERE cal_id = ?', array ( $ID ) );
+  WHERE cal_id = ?', [$ID] );
         if ( $res2 ) {
           if ( $row2 = dbi_fetch_row ( $res2 ) ) {
             if ( $row2[0] == 1 )

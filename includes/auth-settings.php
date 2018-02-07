@@ -1,6 +1,4 @@
 <?php
-// $Id$
-
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 //	User management and authentication scheme parameters.
@@ -78,14 +76,14 @@ case 'user-ldap.php':	// Scheme: LDAP. Password in LDAP.
 
 	// Attributes to fetch from LDAP and corresponding user variables in the
 	// application. Do change according to your LDAP Schema
-	$ldap_user_attr = array (
+	$ldap_user_attr = [
 	  // LDAP attribute   //WebCalendar variable
 	  'uid',              //login
 	  'sn',               //lastname
 	  'givenname',        //firstname
 	  'cn',               //fullname
 	  'mail'              //email
-	);
+  ];
 
 	break;
 
@@ -117,7 +115,7 @@ case 'user-app-joomla.php':	// Scheme: Joomla. User must be logged in.
 	// Default is set to the 'Super Administrator' and
 	//  'Administrator' groups.
 	// Groups in core_acl_aro_groups table.
-	$app_admin_gid = array('24','25');
+	$app_admin_gid = ['24','25'];
 	break;
 
 case 'user-app-postnuke.php':	// Scheme: PostNuke. User must be logged in.

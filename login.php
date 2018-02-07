@@ -1,4 +1,4 @@
-<?php // $Id: login.php,v 1.125.2.1 2013/01/24 21:15:09 cknudsen Exp $
+<?php
 @session_start();
 foreach ( $_SESSION as $key => $value ) {
   $dummy[$key] = $value; // Copy to a dummy array.
@@ -126,8 +126,8 @@ else {
         $error = translate ( 'Invalid login', true );
 
       activity_log ( 0, 'system', '', LOG_LOGIN_FAILURE,
-        str_replace ( array ( 'XXX', 'YYY' ),
-          array ( $login, $_SERVER['REMOTE_ADDR'] ),
+        str_replace (  ['XXX', 'YYY'],
+           [$login, $_SERVER['REMOTE_ADDR']],
           translate ( 'Activity login failure' ) ) );
     }
   } else {
@@ -184,7 +184,7 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
    . ' onsubmit="return valid_form( this )">' . ( empty ( $return_path ) ? '' : '
       <input type="hidden" name="return_path" value="'
      . htmlentities ( $return_path ) . '" />' ) . '
-      <table class="aligncenter" cellspacing="10" cellpadding="10">
+      <table class="aligncenter" id="logintable" cellspacing="10" cellpadding="10">
         <tr>
           <td rowspan="2"><img src="images/login.gif" alt="Login" /></td>
           <td class="alignright"><label for="user">' . translate ( 'Username' )
@@ -203,9 +203,9 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
             <input type="checkbox" name="remember" id="remember" tabindex="3" '
    . 'value="yes"' . ( ! empty ( $remember ) && $remember == 'yes'
     ? 'checked="checked"' : '' ) . ' />
-            <label for="remember">&nbsp;'
+            <label id="save-cookies" for="remember">&nbsp;'
    . translate ( 'Save login via cookies so I dont have to login next time.' )
-   . '</label>
+   . '&nbsp;&nbsp;</label>
           </td>
         </tr>
         <tr>

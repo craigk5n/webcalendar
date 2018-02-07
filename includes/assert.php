@@ -9,7 +9,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: assert.php,v 1.13 2009/11/22 16:47:45 bbannon Exp $
  * @package WebCalendar
  */
 
@@ -30,7 +29,7 @@ if ( ! empty ( $run_mode ) &&  $run_mode == 'dev' )
  */
 function assert_get_cvs_file_version ( $file ) {
   $version = 'v?.?';
-  $path = array ( '', 'includes/', '../' );
+  $path = ['', 'includes/', '../'];
   for ( $i = 0, $cnt = count ( $path ); $i < $cnt; $i++ ) {
     $newfile = $path[$i] . $file;
     if ( file_exists ( $newfile ) ) {
@@ -70,7 +69,7 @@ function assert_backtrace() {
      . phpversion() . ']';
   $bt = debug_backtrace();
   // print_r ( $bt );
-  $file = array();
+  $file = [];
   for ( $i = 2, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
     // skip the first two, since it's always this func and assert_handler
     $afile = $bt[$i];

@@ -1,5 +1,4 @@
-<?php // $Id: edit_template.php,v 1.38.2.1 2012/02/28 15:43:10 cknudsen Exp $
-
+<?php
 /**
  * Page Description:
  * This page will present the HTML form to edit an entry in the cal_report table,
@@ -34,7 +33,8 @@ if ( $user == '__system__' )
 
 // Get existing value.
 $res = dbi_execute ( 'SELECT cal_template_text FROM webcal_user_template
-  WHERE cal_type = ? AND cal_login = ?', array ( $type, $user ) );
+  WHERE cal_type = ?
+    AND cal_login = ?', [$type, $user] );
 if ( $res ) {
   if ( $row = dbi_fetch_row ( $res ) ) {
     $cur = $row[0];
@@ -47,7 +47,8 @@ if ( $res ) {
 // since that is where we stored it in 1.0 and before.
 if ( ! $found ) {
   $res = dbi_execute ( 'SELECT cal_template_text FROM webcal_report_template
-    WHERE cal_template_type = ? AND cal_report_id = 0', array ( $type ) );
+  WHERE cal_template_type = ?
+    AND cal_report_id = 0', [$type] );
   if ( $res ) {
     if ( $row = dbi_fetch_row ( $res ) ) {
       $cur = $row[0];
@@ -66,12 +67,12 @@ if ( $REQUEST_METHOD == 'POST' ) {
   $delete = getPostValue ( 'delete' );
   if ( $user != '__system__' && ! empty ( $delete ) ) {
     dbi_execute ( 'DELETE FROM webcal_user_template WHERE cal_type = ?
-      AND cal_login = ?', array ( $type, $user ) );
+    AND cal_login = ?', [$type, $user] );
     echo '<html><body onload="window.close();"></body></html>';
     exit;
   }
 
-  $query_params = array ( getPostValue ( 'template' ), $type, $user );
+  $query_params = [getPostValue ( 'template' ), $type, $user];
 
   if ( $found )
     $sql = 'UPDATE webcal_user_template SET cal_template_text = ?
@@ -85,7 +86,8 @@ if ( $REQUEST_METHOD == 'POST' ) {
       // Delete from the webcal_report_template table and move the info
       // to the new webcal_user_template table.
       dbi_execute ( 'DELETE FROM webcal_report_template
-        WHERE cal_template_type = ? AND cal_report_id = 0 ', array ( $type ) );
+  WHERE cal_template_type = ?
+    AND cal_report_id = 0 ', [$type] );
   }
   if ( ! dbi_execute ( $sql, $query_params ) )
     $error = db_error();

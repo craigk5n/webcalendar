@@ -1,4 +1,4 @@
-<?php // $Id: help_layers.php,v 1.24 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 print_header ( '', '', '', true );
@@ -7,7 +7,7 @@ echo $helpListStr . '
     <p>' .
 translate ( 'Layers are useful for displaying...' )
  . '</p>';
-$tmp_arr = array (
+$tmp_arr = [
   translate ( 'Add/Edit/Delete' ) =>
   translate ( 'Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.' ),
   translate ( 'Colors' ) =>
@@ -19,8 +19,7 @@ $tmp_arr = array (
   translate ( 'Enabling' ) =>
   translate ( 'Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.' ),
   translate ( 'Source' ) =>
-  translate ( 'Specifies the user that you would like to see displayed in your calendar.' ),
-  );
+  translate ( 'Specifies the user that you would like to see displayed in your calendar.' )];
 list_help ( $tmp_arr );
 if ( $ALLOW_COLOR_CUSTOMIZATION )
   echo '

@@ -9,7 +9,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: formvars.php,v 1.10.2.1 2013/01/24 21:15:09 cknudsen Exp $
  * @package WebCalendar
  */
 
@@ -23,11 +22,10 @@ function preventHacking_helper($matches) {
   return chr(hexdec($matches[1]));
 }
 function preventHacking ( $name, $instr ) {
-  $bannedTags = array (
+  $bannedTags = [
     'APPLET', 'BODY', 'EMBED', 'FORM', 'HEAD',
     'HTML', 'IFRAME', 'LINK', 'META', 'NOEMBED',
-    'NOFRAMES', 'NOSCRIPT', 'OBJECT', 'SCRIPT',
-    );
+    'NOFRAMES', 'NOSCRIPT', 'OBJECT', 'SCRIPT'];
   $failed = false;
 
   if ( is_array ( $instr ) ) {

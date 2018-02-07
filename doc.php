@@ -1,4 +1,4 @@
-<?php // $Id: doc.php,v 1.23 2009/11/22 16:47:44 bbannon Exp $
+<?php
 /**
  * Description:
  *  Obtain a binary object from the database and send it back to
@@ -65,8 +65,8 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
     // is this user a participant or the creator of the event?
     $res = dbi_execute ( 'SELECT we.cal_id FROM webcal_entry we,
       webcal_entry_user weu WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
-      AND ( we.cal_create_by = ? OR weu.cal_login = ? )',
-      array ( $id, $login, $login ) );
+    AND ( we.cal_create_by = ?
+      OR weu.cal_login = ? )', [$id, $login, $login] );
     if ( $res ) {
       $row = dbi_fetch_row ( $res );
       if ( $row && $row[0] > 0 ) {
@@ -105,14 +105,9 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
       if ( is_array ( $my_users ) && $cnt ) {
         $sql = 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
           WHERE we.cal_id = weu.cal_id AND we.cal_id = ?
-          AND weu.cal_login IN ( ';
-        $query_params = array();
-      $query_params[] = $id;
-      for ( $i = 0; $i < $cnt; $i++ ) {
-          if ( $i > 0 ) {
-            $sql .= ', ';
-          }
-          $sql .= '?';
+    AND weu.cal_login IN ( ?' . str_repeat ( ',?', $cnt - 1 );
+        $query_params = [$id];
+        for ( $i = 0; $i < $cnt; $i++ ) {
           $query_params[] = $my_users[$i]['cal_login'];
         }
         $res = dbi_execute ( $sql . ' )', $query_params );
@@ -138,12 +133,13 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
   if ( empty ( $error ) && ! $can_view && ! empty ( $NONUSER_ENABLED ) &&
     $NONUSER_ENABLED == 'Y' ) {
     $nonusers = get_nonuser_cals();
-    $nonuser_lookup = array();
+    $nonuser_lookup = [];
     for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
       $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
     }
     $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
-      WHERE cal_id = ? AND cal_status in ( \'A\', \'W\' )', array ( $id ) );
+  WHERE cal_id = ?
+    AND cal_status IN ( "A", "W" )', [$id] );
     $found_nonuser_cal = $found_reg_user = false;
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {

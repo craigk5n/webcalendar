@@ -6,7 +6,6 @@
  * @author Ray Jones <rjones@umces.edu>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: default_pref.php,v 1.4 2007/02/01 02:23:11 bbannon Exp $:
  * @package WebCalendar
  */
 
@@ -14,7 +13,7 @@
 // Any option in webcal_user_pref can be configured here,
 
 // This theme will be available to both normal users and System Settings.
-$webcal_theme = array (
+$webcal_theme = [
   'MENU_THEME'            => 'default',
   'BGCOLOR'               => '#FFFFFF',
   'CELLBG'                => '#C0C0C0',
@@ -34,8 +33,7 @@ $webcal_theme = array (
   'THBG'                  => '#FFFFFF',
   'THFG'                  => '#000000',
   'TODAYCELLBG'           => '#FFFF33',
-  'WEEKENDBG'             => '#D0D0D0',
-  );
+  'WEEKENDBG'             => '#D0D0D0'];
 
 include 'theme_inc.php';
 

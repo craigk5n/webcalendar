@@ -1,5 +1,5 @@
 #!/usr/local/bin/php -q
-<?php // $Id: send_reminders.php,v 1.94 2010/03/06 16:57:00 bbannon Exp $
+<?php
 /**
  * Description:
  * This is a command-line script that will send out any email
@@ -105,7 +105,7 @@ for ( $i = 0; $i < $allusercnt; $i++ ) {
   $emails[$allusers[$i]['cal_login']] = $allusers[$i]['cal_email'];
 }
 
-$attachics = $htmlmail = $languages = $noemail = $t_format = $tz = array();
+$attachics = $htmlmail = $languages = $noemail = $t_format = $tz = [];
 
 $res = dbi_execute ( 'SELECT cal_login, cal_value, cal_setting
   FROM webcal_user_pref
@@ -202,7 +202,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   $ev = get_entries ( $date );
 
   // Keep track of duplicates.
-  $completed_ids = array();
+  $completed_ids = [];
   $evcnt = count ( $ev );
   for ( $i = 0; $i < $evcnt; $i++ ) {
     $id = $ev[$i]->getID();
@@ -217,7 +217,7 @@ for ( $d = 0; $d < $DAYS_IN_ADVANCE; $d++ ) {
   // A task will be included one time for each participant.
   $tks = get_tasks ( $date );
   // Keep track of duplicates.
-  $completed_ids = array();
+  $completed_ids = [];
   $tkscnt = count ( $tks );
   for ( $i = 0; $i < $tkscnt; $i++ ) {
     $id = $tks[$i]->getID();
@@ -259,7 +259,7 @@ function send_reminder ( $id, $event_date ) {
   $EXTERNAL_REMINDERS, $htmlmail, $ignore_user_case, $is_task, $LANGUAGE,
   $languages, $names, $only_testing, $SERVER_URL, $site_extras, $tz, $t_format;
 
-  $ext_participants = $participants = array();
+  $ext_participants = $participants = [];
   $num_ext_participants = $num_participants = 0;
 
   $pri[1] = translate ( 'High' );
@@ -269,7 +269,7 @@ function send_reminder ( $id, $event_date ) {
   // Get participants first...
   $res = dbi_execute ( 'SELECT cal_login, cal_percent FROM webcal_entry_user
     WHERE cal_id = ? AND cal_status IN ( \'A\',\'W\' ) ORDER BY cal_login',
-    array ( $id ) );
+   [$id] );
 
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -283,7 +283,7 @@ function send_reminder ( $id, $event_date ) {
       empty ( $EXTERNAL_REMINDERS ) && $EXTERNAL_REMINDERS == 'Y' ) {
     $res = dbi_execute ( 'SELECT cal_fullname, cal_email
       FROM webcal_entry_ext_user WHERE cal_id = ? AND cal_email IS NOT NULL
-      ORDER BY cal_fullname', array ( $id ) );
+  ORDER BY cal_fullname', [$id] );
 
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -303,7 +303,7 @@ function send_reminder ( $id, $event_date ) {
   $res = dbi_execute ( 'SELECT cal_create_by, cal_date, cal_time, cal_mod_date,
     cal_mod_time, cal_duration, cal_priority, cal_type, cal_access, cal_name,
     cal_description, cal_due_date, cal_due_time FROM webcal_entry
-    WHERE cal_id = ?', array ( $id ) );
+  WHERE cal_id = ?', [$id] );
   if ( ! $res ) {
     echo translate ( 'Database error' ) . ': '
      . translate ( 'could not find event id' ) . " $id.\n";
@@ -318,7 +318,7 @@ function send_reminder ( $id, $event_date ) {
 
   // Send mail. We send one user at a time so that we can switch
   // languages between users if needed (as well as HTML vs plain text).
-  $mailusers = $recipients = array();
+  $mailusers = $recipients = [];
   if ( isset ( $single_user ) && $single_user == 'Y' ) {
     $mailusers[] = $emails[$single_user_login];
     $recipients[] = $single_user_login;
@@ -518,7 +518,7 @@ function log_reminder ( $id, $times_sent ) {
   if ( ! $only_testing )
     dbi_execute ( 'UPDATE webcal_reminders
       SET cal_last_sent = ?, cal_times_sent = ? WHERE cal_id = ?',
-      array( time(), $times_sent, $id ) );
+     [time(), $times_sent, $id] );
 }
 
 /**
@@ -621,7 +621,7 @@ function my_get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   global $debug, $repeated_events;
 
   $n = 0;
-  $ret = array();
+  $ret = [];
   if ( $debug )
     echo "Getting repeating entries for $dateYmd<br />";
 

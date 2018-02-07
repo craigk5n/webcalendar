@@ -4,8 +4,6 @@
  * page with tabs. Content is loaded dynamically with AJAX.
  * So, requests for previous & next will not force a page reload.
  *
- * Version: $Id: combo.php,v 1.60.2.2 2013/01/25 19:55:48 cknudsen Exp $
- *
  * TODO:
  * - Week view
  * - Task view
@@ -377,12 +375,11 @@ var categories = [];
 var viewDialogIsVisible = false;
 var quickAddDialogIsVisible = null;
 var catsVisible = false;
-var events = new Array();
-var tasks = new Array ();
+var events = tasks = [];
 // loadedMonths is used to keep track of which months we have loaded events
 // for.  This prevents us from re-loading a month's events that we
 // previously loaded.
-var loadedMonths = new Array(); // Key will be format "200801" For Jan 2008
+var loadedMonths = []; // Key will be format "200801" For Jan 2008
 // loadedTasks set to true when tasks have been loaded.  We don't load tasks
 // based on date, so it is a single scalar variable rather than an array.
 var loadedTasks = false;
@@ -649,7 +646,7 @@ function ajax_get_tasks ()
         alert ( '<?php etranslate('Error');?>: '  + response.message );
         return;
       }
-      tasks = new Array ();
+      tasks = [];
       var i = 0;
       for ( var i = 0; i < response.tasks.length; i++ ) {
         tasks[i] = response.tasks[i];
@@ -1650,7 +1647,7 @@ function build_task_view ()
   // Sort tasks first
   tasks.sort ( compare_tasks );
 
-  var img = new Array ( 'sort-none', 'sort-none', 'sort-none', 'sort-none' );
+  var img = ['sort-none', 'sort-none', 'sort-none', 'sort-none'];
   img[taskSortCol] = ( taskSortAsc ? 'sort-up' : 'sort-down' );
 
   var content =
@@ -1901,6 +1898,7 @@ function format_date ( dateStr, showWeekday )
 
 // TODO: modify this to handle different time formats, timezones, etc...
 // The code for different timezones could get ugly here...
+// This is assumed to be the current local time in "HHMMSS" or "HHMM" format.
 function format_time ( timeStr, abbreviate )
 {
   if ( timeStr < 0 )

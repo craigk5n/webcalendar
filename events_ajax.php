@@ -1,4 +1,4 @@
-<?php // $Id: events_ajax.php,v 1.18.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 /**
  * Description
  *   Handler for AJAX requests for viewing events in combo.php,
@@ -110,8 +110,7 @@ if ( $can_edit && access_is_enabled () ) {
 }
 
 if ( $action == 'get' ) {
-  $dates = array();
-  $eventCats = array();
+  $dates = $eventCats = $ids = $tasks = [];
   /* Pre-Load the repeated events for quicker access */
   $wkstart = get_weekday_before ( $startyear, $startmonth );
   $startTime = $wkstart;
@@ -120,12 +119,9 @@ if ( $action == 'get' ) {
   $repeated_events = read_repeated_events ( $user, $startTime, $endTime );
   /* Pre-load the non-repeating events for quicker access */
   $events = read_events ( $user, $startTime, $endTime );
-  $tasks = array();
   if ( $DISPLAY_TASKS_IN_GRID == 'Y' )
     $tasks = read_tasks ( $user, $enddate );
   // Gather the category IDs for each
-  $ids = array();
-  //echo "<pre>"; print_r ( $events ); echo "</pre>";
   for ( $i = 0; $i < count ( $events ); $i++ ) {
     $id = $events[$i]->getID();
     $ids[$id] = $id;
@@ -161,19 +157,16 @@ if ( $action == 'get' ) {
       $dates[$dateYmd] = $ev;
     }
   }
-  $objects = array ( 'dates' => $dates );
+  $objects = ['dates' => $dates];
   if ( $debug ) {
     echo "<pre>"; print_r ( $objects ); echo "</pre>\n";
   }
   ajax_send_objects ( $objects, $sendPlainText );
 } else if ( $action == 'gett' ) { // Get Tasks
-  $tasks = array ();
+  $eventCats = $ids = $tasks = [];
   $thisyear = date ( 'Y' );
   $thismonth = date ( 'm' );
-  $tasks = array();
-  $eventCats = array();
   $task_list = query_events ( $user, false, '', '', true );
-  $ids = array ();
 
   foreach ( $task_list as $E ) {
     // Check UAC.
@@ -195,7 +188,7 @@ if ( $action == 'get' ) {
     load_category_ids ( $ids );
   setLocalTimes ( $tasks );
   setCategories ( $tasks );
-  $objects = array ( 'tasks' => $tasks );
+  $objects = ['tasks' => $tasks];
   if ( $debug ) {
     echo "<h2>Return</h2><pre>"; print_r ( $objects ); echo "</pre>\n";
   }
@@ -203,17 +196,15 @@ if ( $action == 'get' ) {
 } else if ( $action == 'eventinfo' ) {
   // TODO: enforce user access control here...
   $id = getIntValue ( 'id' );
-  $res = dbi_execute ( 'SELECT cal_login, cal_status ' .
-    'FROM webcal_entry_user WHERE cal_id = ?', array ( $id ) );
-  $parts = array();
-  $comments = array();
-  $attachments = array();
+  $res = dbi_execute ( 'SELECT cal_login, cal_status
+  FROM webcal_entry_user
+  WHERE cal_id = ?', [$id] );
+  $attachments = $comments = $parts = [];
   if ( ! $res ) {
     $error = translate("Database error") . ': ' . dbi_error();
   } else {
     while ( $row = dbi_fetch_row ( $res ) ) {
-      $parts[] = array ( 'login' => $row[0],
-         'status' => $row[1] );
+      $parts[] = ['login' => $row[0], 'status' => $row[1]];
     }
     dbi_free_result ( $res );
   }
@@ -225,9 +216,10 @@ if ( $action == 'get' ) {
       // Set link target to '_blank' so that we don't lose our place.
       // If we go to another page, the back button will re-init the page
       // so the user loses his place.
-      $attachments[] = array ( 'summary' => $a->getSummary ( '_blank' ),
+      $attachments[] = [
+        'summary' => $a->getSummary ( '_blank' ),
         'id' => $a->getId(),
-        'owner' => $a->getLogin() );
+        'owner' => $a->getLogin()];
     }
   }
   if ( Doc::commentsEnabled() ) {
@@ -235,21 +227,19 @@ if ( $action == 'get' ) {
     $comment_text = '';
     for ( $i = 0; $i < $comList->getSize(); $i++ ) {
       $cmt = $comList->getDoc ( $i );
-      $comments[] = array (
+      $comments[] = [
         'description' => htmlspecialchars ( $cmt->getDescription() ),
         'owner' => $cmt->getLogin(),
         'datetime' => date_to_str ( $cmt->getModDate(), '', false, true ) . ' '
           . display_time ( $cmt->getModTime(), 2 ),
         'text' => nl2br ( activate_urls (
-           htmlspecialchars ( $cmt->getData() ) ) ),
-        );
+           htmlspecialchars ( $cmt->getData() ) ) )];
     }
   }
-  $objects = array (
+  $objects = [
     'participants' => $parts,
     'comments' => $comments,
-    'attachments' => $attachments,
-  );
+    'attachments' => $attachments];
   if ( empty ( $error ) ) {
     ajax_send_objects ( $objects, $sendPlainText );
   } else {
@@ -285,8 +275,8 @@ if ( $action == 'get' ) {
     'cal_time, cal_mod_date, cal_mod_time, ' .
     'cal_duration, cal_priority, cal_access, cal_type, cal_name, ' .
     'cal_description ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
-  $values = array ( $id, $login, $date, -1, $mod_date, $mod_time,
-    0, 5, 'P', 'E', $name, $description );
+  $values = [$id, $login, $date, -1, $mod_date, $mod_time,
+    0, 5, 'P', 'E', $name, $description];
   if ( ! dbi_execute ( $sql, $values ) ) {
     ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     exit;
@@ -295,7 +285,7 @@ if ( $action == 'get' ) {
     $sql =
       'INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) ' .
       'VALUES ( ?, ?, ? )';
-    $values = array ( $id, $cat_id, $user );
+    $values = [$id, $cat_id, $user];
     if ( ! dbi_execute ( $sql, $values ) ) {
       ajax_send_error ( translate('Database error') . ": " . dbi_error() );
       exit;
@@ -311,7 +301,7 @@ if ( $action == 'get' ) {
       ! $is_nonuser_admin ) ? 'W' : 'A';
     if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
         cal_status ) VALUES ( ?, ?, ? )',
-          array ( $id, $user, $status ) ) ) {
+        [$id, $user, $status] ) ) {
       ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     }
     activity_log ( $id, $login, $user, LOG_CREATE, '' );
@@ -346,8 +336,8 @@ if ( $action == 'get' ) {
     'cal_time, cal_due_date, cal_due_time, cal_mod_date, cal_mod_time, ' .
     'cal_duration, cal_priority, cal_access, cal_type, cal_name, ' .
     'cal_description ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )';
-  $values = array ( $id, $login, $startdate, -1, $duedate, -1,
-    $mod_date, $mod_time, 0, 5, 'P', 'T', $name, $description );
+  $values = [$id, $login, $startdate, -1, $duedate, -1,
+    $mod_date, $mod_time, 0, 5, 'P', 'T', $name, $description];
   if ( ! dbi_execute ( $sql, $values ) ) {
     ajax_send_error ( translate('Database error') . ": " . dbi_error() );
     exit;
@@ -356,7 +346,7 @@ if ( $action == 'get' ) {
     $sql =
       'INSERT INTO webcal_entry_categories ( cal_id, cat_id, cat_owner ) ' .
       'VALUES ( ?, ?, ? )';
-    $values = array ( $id, $cat_id, $user );
+    $values = [$id, $cat_id, $user];
     if ( ! dbi_execute ( $sql, $values ) ) {
       ajax_send_error ( translate('Database error') . ": " . dbi_error() );
       exit;
@@ -364,7 +354,7 @@ if ( $action == 'get' ) {
   }
   if ( ! dbi_execute ( 'INSERT INTO webcal_entry_user ( cal_id, cal_login,
       cal_status ) VALUES ( ?, ?, ? )',
-        array ( $id, $user, 'A' ) ) ) {
+      [$id, $user, 'A'] ) ) {
     ajax_send_error ( translate('Database error') . ": " . dbi_error() );
   }
   ajax_send_success();
@@ -388,14 +378,9 @@ function setLocalTimes ( $eventList )
     if ( $event->getTime() <= 0 ) {
       $event->setLocalTime ( $event->getTime() );
     } else {
-      $localTime = display_time ( $event->getDatetime() );
-//      $localTime = display_time ( $event->getDatetime(),
-//        0, '', '24' );
-//echo "\ngetDateTime(): " . $event->getDatetime() . "\n";
-//echo "localTime1: $localTime\n";
-//      $localTime = substr ( $localTime, 0, 2 ) .
-//        substr ( $localTime, 3, 5 );
-//echo "localTime2: $localTime\n";
+      // Get time in local user time in HHMMSS format.
+      $localTime = display_time ( $event->getDatetime(), 0, '', '24' );
+      $localTime = str_replace ( ':', '', $localTime );
       $event->setLocalTime ( $localTime );
     }
   }
@@ -421,15 +406,17 @@ function load_category_ids ( $ids )
   //$ids = array_unique ( sort ( $ids, SORT_NUMERIC ) );
   $idList = implode ( ",", $ids );
   if ( $debug )
-    echo "load_category_ids: $idList <br>\n\n";
-  $sql = 'SELECT cal_id, cat_id FROM webcal_entry_categories ' .
-    'WHERE cal_id IN (' . $idList . ') AND ' .
-    '(cat_owner = \'' . $user . '\' OR cat_owner IS NULL) ' .
-    'ORDER BY cat_order';
+    echo "load_category_ids: $idList <br />\n\n";
+  $sql = 'SELECT cal_id, cat_id
+  FROM webcal_entry_categories
+  WHERE cal_id IN ( ' . $idList . ' )
+    AND ( cat_owner = "' . $user . '"
+      OR cat_owner IS NULL )
+  ORDER BY cat_order';
   if ( $debug )
     echo "SQL: $sql <br />";
-  $res = dbi_execute ( $sql, array() );
-  $eventCats = array();
+  $res = dbi_execute ( $sql, [] );
+  $eventCats = [];
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $eventId = $row[0];
@@ -437,7 +424,7 @@ function load_category_ids ( $ids )
       if ( ! empty ( $eventCats[$eventId] ) && is_array ( $eventCats[$eventId] ) ) {
         $eventCats[$eventId][] = $catId;
       } else {
-        $eventCats[$eventId] = array ( $catId );
+        $eventCats[$eventId] = [$catId];
       }
     }
     dbi_free_result ( $res );

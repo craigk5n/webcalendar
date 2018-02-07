@@ -1,4 +1,4 @@
-<?php // $Id: ajax.php,v 1.24.2.1 2012/02/28 15:43:09 cknudsen Exp $
+<?php
 /**
  * Description
  * This is the handler for Ajax httpXmlRequests.
@@ -33,7 +33,7 @@ $page = getPostValue ( 'page' );
 // We're processing edit_remotes Calendar ID field.
 if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_nonuser_cals
-    WHERE cal_login = ?', array ( $NONUSER_PREFIX . $name ) );
+  WHERE cal_login = ?', [$NONUSER_PREFIX . $name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     // Presuming we are using '_NUC_' as $NONUSER_PREFIX.
@@ -42,8 +42,9 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   }
 } elseif ( $page == 'register' || $page == 'edit_user' ) {
   // We're processing username field.
-  $res = dbi_execute ( 'SELECT cal_login FROM webcal_user WHERE cal_login = ?',
-    array ( $name ) );
+  $res = dbi_execute ( 'SELECT cal_login
+  FROM webcal_user
+  WHERE cal_login = ?', [$name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $name )
@@ -52,8 +53,9 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   }
 } elseif ( $page == 'email' ) {
   // We're processing email field from any page.
-  $res = dbi_execute ( 'SELECT cal_email FROM webcal_user WHERE cal_email = ?',
-    array ( $name ) );
+  $res = dbi_execute ( 'SELECT cal_email
+  FROM webcal_user
+  WHERE cal_email = ?', [$name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row[0] == $name )
@@ -65,8 +67,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   require_once 'includes/classes/Event.class';
   require_once 'includes/classes/RptEvent.class';
   include_once 'includes/gradient.php';
-  $column_array = array ( 'we.cal_priority', 'we.cal_name',
-    'we.cal_due_date', 'weu.cal_percent' );
+  $column_array = ['we.cal_priority', 'we.cal_name', 'we.cal_due_date', 'weu.cal_percent'];
   $task_filter = ' ORDER BY ' . $column_array[$name % 4]
    . ( $name > 3 ? ' ASC' : ' DESC' );
   echo display_small_tasks ( $cat_id );

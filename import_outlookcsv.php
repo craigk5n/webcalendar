@@ -1,4 +1,4 @@
-<?php // $Id: import_outlookcsv.php,v 1.16 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * File Description:
  * This file incudes functions for parsing CSV files generated from MS Outlook.
@@ -16,7 +16,7 @@
 function parse_outlookcsv ( $cal_file ) {
   global $errormsg, $tz;
 
-  $outlookcsv_data = array();
+  $outlookcsv_data = [];
 
   if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
     $errormsg .= 'Cannot read temporary file: ' . "$cal_file\n";
@@ -100,7 +100,7 @@ function dateDifference ( $start_timestamp, $end_timestamp, $unit = 0 ) {
 }
 
 function toBoolean ( $string ) {
-  return in_array ( strtoupper ( $string ), array ( 'TRUE', 'T', '1', 'TR' ) );
+  return in_array ( strtoupper ( $string ), ['TRUE', 'T', '1', 'TR'] );
 }
 
 ?>

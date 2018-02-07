@@ -1,4 +1,4 @@
-<?php // $Id: view_r.php,v 1.58 2009/11/22 22:26:18 bbannon Exp $
+<?php
 /**
  * Page Description:
  * This is the "Week by Time" and "Week by Day" view.
@@ -237,9 +237,9 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 ?>
 
 <div style="width:99%;">
-<a title="<?php etranslate ( 'Previous' )?>" class="prev" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
+<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>" class="prev"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
 
-<a title="<?php etranslate ( 'Next' )?>" class="next" href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>"><img src="images/rightarrow.gif" class="prevnext" alt="<?php etranslate ( 'Next' )?>" /></a>
+<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>" class="next"><img src="images/rightarrow.gif" alt="<?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
 <span class="date"><?php
   if ( $is_day_view ) {

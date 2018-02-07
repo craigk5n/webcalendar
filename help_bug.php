@@ -1,5 +1,4 @@
 <?php
-/* $Id$ */
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
@@ -23,7 +22,8 @@ if ( empty ( $HTTP_USER_AGENT ) )
     </form>
     <h3>' . translate ( 'System Settings' ) . '</h3>
     <div>';
-  $tmp_arr = array ( 'PROGRAM_NAME' => $PROGRAM_NAME,
+  $tmp_arr = [
+    'PROGRAM_NAME' => $PROGRAM_NAME,
     'SERVER_SOFTWARE' => $SERVER_SOFTWARE,
     'Web Browser' => $HTTP_USER_AGENT,
     'PHP Version' => phpversion (),
@@ -33,8 +33,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
     'single_user' => $single_user,
     'single_user_login' => $single_user_login,
     'use_http_auth' => ( $use_http_auth ? 'Y' : 'N' ),
-    'user_inc' => $user_inc,
-    );
+    'user_inc' => $user_inc];
   $res = dbi_execute ( 'SELECT cal_setting, cal_value
     FROM webcal_config ORDER BY cal_setting' );
   if ( $res ) {

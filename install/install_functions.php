@@ -1,4 +1,4 @@
-<?php // $Id: install_functions.php,v 1.23 2009/11/22 16:47:47 bbannon Exp $
+<?php
 /**
  * The file contains all the functions used in the installation script
  */
@@ -17,14 +17,14 @@ function make_uppercase() {
   // Make sure all cal_settings are UPPERCASE.
   if ( ! dbi_execute ( 'UPDATE webcal_config
     SET cal_setting = UPPER( cal_setting )' ) )
-    echo str_replace ( array ( 'XXX', 'YYY'),
-      array( 'webcal_config', dbi_error() ),
+    echo str_replace ( ['XXX', 'YYY'],
+      ['webcal_config', dbi_error()],
       translate ( 'Error updating table XXX' ) );
 
   if ( ! dbi_execute ( 'UPDATE webcal_user_pref
     SET cal_setting = UPPER( cal_setting )' ) )
-    echo str_replace ( array ( 'XXX', 'YYY' ),
-      array( 'webcal_user_pref', dbi_error() ),
+    echo str_replace ( ['XXX', 'YYY'],
+      ['webcal_user_pref', dbi_error()],
       translate ( 'Error updating table XXX' ) );
 }
 /**
@@ -32,7 +32,7 @@ function make_uppercase() {
  */
 function db_load_admin() {
   $res = dbi_execute ( 'SELECT cal_login FROM webcal_user
-    WHERE cal_login = \'admin\'', array(), false, false );
+    WHERE cal_login = "admin"', [], false, false );
   $sql = 'INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname,
     cal_firstname, cal_is_admin ) VALUES ( \'admin\',
     \'21232f297a57a5a743894a0e4a801fc3\', \'ADMINISTRATOR\', \'DEFAULT\', \'Y\' )';
@@ -56,7 +56,7 @@ function db_load_admin() {
  */
 function db_check_admin() {
   $res = dbi_execute ( 'SELECT COUNT( cal_login ) FROM webcal_user
-    WHERE cal_is_admin = \'Y\'', array(), false, false );
+    WHERE cal_is_admin = "Y"', [], false, false );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     dbi_free_result ( $res );
@@ -75,8 +75,8 @@ function do_v11b_updates() {
     while ( $row = dbi_fetch_row ( $res ) ) {
       dbi_execute ( 'INSERT INTO webcal_entry_categories ( cal_id, cat_id,'
          . ( empty ( $row[2] ) ? 'cat_order' : 'cat_owner' )
-         . ' ) VALUES ( ?, ?, ? )', array ( $row[0], $row[1],
-          ( empty ( $row[2] ) ? 99 : $row[2] ) ) );
+         . ' ) VALUES ( ?, ?, ? )', [$row[0], $row[1],
+          ( empty ( $row[2] ) ? 99 : $row[2] )] );
     }
     dbi_free_result ( $res );
   }
@@ -99,7 +99,7 @@ function do_v11b_updates() {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $row[1] ) && $row[1] != 'yyyyyyy' && $row[1] != 'nnnnnnn' ) {
-        $byday = array();
+        $byday = [];
         if ( substr ( $row[1], 0, 1 ) == 'y' )
           $byday[] = 'SU';
 
@@ -123,7 +123,7 @@ function do_v11b_updates() {
 
         $bydays = implode ( ',', $byday );
         dbi_execute ( 'UPDATE webcal_entry_repeats SET cal_byday = ?
-          WHERE cal_id = ?', array ( $bydays, $row[0] ) );
+  WHERE cal_id = ?', [$bydays, $row[0]] );
       }
     }
     dbi_free_result ( $res );
@@ -138,7 +138,7 @@ function do_v11b_updates() {
         $dd = substr ( $row[0], 6, 2 );
         $new_date = date ( 'Ymd', gmmktime ( 0, 0, 0, $dm, $dd, $dY ) + 86400 );
         dbi_execute ( 'UPDATE webcal_entry_repeats SET cal_end = ?
-          WHERE cal_id = ?', array ( $new_date, $row[1] ) );
+  WHERE cal_id = ?', [$new_date, $row[1]] );
       }
     }
     dbi_free_result ( $res );
@@ -159,7 +159,7 @@ function do_v11e_updates() {
   $reminder_log_exists = false;
   $res = dbi_execute ( 'SELECT cal_id, cal_data
     FROM webcal_site_extras WHERE cal_type = \'7\'' );
-  $done = array();
+  $done = [];
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $done[$row[0]] ) )
@@ -176,7 +176,7 @@ function do_v11e_updates() {
 
       $res2 = dbi_execute ( 'SELECT cal_last_sent
         FROM webcal_reminder_log WHERE cal_id = ? AND cal_last_sent > 0',
-        array ( $row[0] ) );
+        [$row[0]] );
       if ( $res2 ) {
         $reminder_log_exists = true;
         $row2 = dbi_fetch_row ( $res2 );
@@ -186,7 +186,7 @@ function do_v11e_updates() {
       }
       dbi_execute ( 'INSERT INTO webcal_reminders ( cal_id, cal_date,
         cal_offset, cal_last_sent, cal_times_sent ) VALUES ( ?, ?, ?, ?, ? )',
-        array ( $row[0], $date, $offset, $last_sent, $times_sent ) );
+        [$row[0], $date, $offset, $last_sent, $times_sent] );
       $done[$row[0]] = true;
     }
     dbi_free_result ( $res );
@@ -195,8 +195,8 @@ function do_v11e_updates() {
       WHERE webcal_site_extras.cal_type = \'7\'' );
     // Remove entries from webcal_reminder_log.
     if ( $reminder_log_exists == true ) {
-      dbi_execute( 'DELETE FROM webcal_reminder_log', array(), false, false );
-      dbi_execute( 'DROP TABLE webcal_reminder_log', array(), false, false );
+      dbi_execute ( 'DELETE FROM webcal_reminder_log', [], false, false );
+      dbi_execute ( 'DROP TABLE webcal_reminder_log', [], false, false );
     }
   }
 }
@@ -276,9 +276,9 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
         // Now update row with new data.
         if ( ! dbi_execute ( 'UPDATE webcal_entry SET cal_date = ?, cal_time = ?
           WHERE cal_id = ?' . $cutoff,
-            array ( $new_cal_date, $new_cal_time, $cal_id, $cutoffdate ) ) )
-          return str_replace ( array ( 'XXX', 'YYY' ),
-            array( 'webcal_entry', dbi_error() ),
+            [$new_cal_date, $new_cal_time, $cal_id, $cutoffdate] ) )
+          return str_replace ( ['XXX', 'YYY'],
+            ['webcal_entry', dbi_error()],
             translate ( 'Error updating table XXX' ) );
       }
     }
@@ -305,9 +305,9 @@ function convert_server_to_GMT ( $offset = 0, $cutoffdate = '' ) {
       // Now update row with new data
       if ( ! dbi_execute ( 'UPDATE webcal_entry_log
         SET cal_date = ?, cal_time = ? WHERE cal_log_id = ?',
-          array ( $new_cal_date, $new_cal_time, $cal_log_id ) ) )
-        return str_replace ( array ( 'XXX', 'YYY' ),
-          array( 'webcal_entry_log', dbi_error() ),
+          [$new_cal_date, $new_cal_time, $cal_log_id] ) )
+        return str_replace ( ['XXX', 'YYY'],
+          ['webcal_entry_log', dbi_error()],
           translate ( 'Error updating table XXX' ) );
     }
     dbi_free_result ( $res );
@@ -348,14 +348,14 @@ function get_installed_version ( $postinstall = false ) {
     $sql = $database_upgrade_matrix[$i][0];
 
     if ( $sql != '' )
-      $res = dbi_execute( $sql, array(), false, $show_all_errors );
+      $res = dbi_execute ( $sql, [], false, $show_all_errors );
     if ( $res ) {
       $_SESSION['old_program_version'] = $database_upgrade_matrix[$i + 1][2];
       $_SESSION['install_file'] = $database_upgrade_matrix[$i + 1][3];
       $res = '';
       $sql = $database_upgrade_matrix[$i][1];
       if ( $sql != '' )
-        dbi_execute( $sql, array(), false, $show_all_errors );
+        dbi_execute ( $sql, [], false, $show_all_errors );
     }
   }
   $response_msg = ( $_SESSION['old_program_version'] == 'pre-v0.9.07'
@@ -363,7 +363,7 @@ function get_installed_version ( $postinstall = false ) {
     : translate ( 'previous version requires updating several tables' ) );
   // v1.1 and after will have an entry in webcal_config to make this easier
   // $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-  //   WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'', array(), false, false );
+  //   WHERE cal_setting = "WEBCAL_PROGRAM_VERSION"', [], false, false );
   // if ( $res ) {
   // $row = dbi_fetch_row ( $res );
   // if ( ! empty ( $row[0] ) ) {
@@ -376,7 +376,7 @@ function get_installed_version ( $postinstall = false ) {
   // We need to determine if this is a blank database.
   // This may be due to a manual table setup.
   $res = dbi_execute ( 'SELECT COUNT( cal_value ) FROM webcal_config',
-    array(), false, $show_all_errors );
+    [], false, $show_all_errors );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( isset ( $row[0] ) && $row[0] == 0 )
@@ -407,7 +407,7 @@ function get_installed_version ( $postinstall = false ) {
   // This seems lke a good place to put this.
   $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
     WHERE cal_setting = \'WEBCAL_TZ_CONVERSION\'',
-    array(), false, $show_all_errors );
+    [], false, $show_all_errors );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     dbi_free_result ( $res );
@@ -416,7 +416,7 @@ function get_installed_version ( $postinstall = false ) {
       $_SESSION['tz_conversion'] = $row[0];
     else { // We'll test if any events even exist.
       $res = dbi_execute ( 'SELECT COUNT( cal_id ) FROM webcal_entry ',
-        array(), false, $show_all_errors );
+        [], false, $show_all_errors );
       if ( $res ) {
         $row = dbi_fetch_row ( $res );
         dbi_free_result ( $res );
@@ -431,7 +431,7 @@ function get_installed_version ( $postinstall = false ) {
   // Get existing server URL.
   // We could use the self-discvery value, but this may be a custom value.
   $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-    WHERE cal_setting = \'SERVER_URL\'', array(), false, $show_all_errors );
+    WHERE cal_setting = "SERVER_URL"', [], false, $show_all_errors );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( ! empty ( $row[0] ) && strlen ( $row[0] ) )
@@ -442,7 +442,7 @@ function get_installed_version ( $postinstall = false ) {
   // Get existing application name.
   $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
     WHERE cal_setting = \'APPLICATION_NAME\'',
-    array(), false, $show_all_errors );
+    [], false, $show_all_errors );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( ! empty ( $row[0] ) )
@@ -459,7 +459,7 @@ function get_installed_version ( $postinstall = false ) {
 function parse_sql ( $sql ) {
   $sql = trim ( $sql );
   $sql = trim ( $sql, "\r\n " );
-  $ret = array();
+  $ret = [];
 
   $buffer_str = '';
   for( $i = 0; $i < strlen ( $sql ); $i++ ) {
@@ -528,7 +528,7 @@ function db_populate ( $install_filename, $display_sql ) {
       if ( $show_all_errors == true )
         echo $parsed_sql[$i] . '<br />';
 
-      dbi_execute( $parsed_sql[$i], array(), false, $show_all_errors );
+      dbi_execute( $parsed_sql[$i], [], false, $show_all_errors );
     } else
       $str_parsed_sql .= $parsed_sql[$i] . "\n\n";
   }

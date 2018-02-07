@@ -4,7 +4,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: functions.php,v 1.591.2.3 2014/04/13 16:24:43 cknudsen Exp $
  * @package WebCalendar
  */
 
@@ -105,9 +104,9 @@ function activity_log ( $event_id, $user, $user_cal, $type, $text ) {
   $sql = 'INSERT INTO webcal_entry_log ( cal_log_id, cal_entry_id, cal_login,
     cal_user_cal, cal_type, cal_date, cal_time, cal_text )
     VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )';
-  if ( ! dbi_execute ( $sql, array ( $next_id, $event_id, $user,
+  if ( ! dbi_execute ( $sql, [$next_id, $event_id, $user,
         ( empty ( $user_cal ) ? null : $user_cal ), $type, gmdate ( 'Ymd' ),
-          gmdate ( 'Gis' ), ( empty ( $text ) ? null : $text ) ) ) )
+          gmdate ( 'Gis' ), ( empty ( $text ) ? null : $text )] ) )
     db_error ( true, $sql );
 }
 
@@ -142,7 +141,9 @@ function add_dstfree_time ( $date, $span, $interval = 1 ) {
 function add_duration ( $time, $duration ) {
   $time = sprintf ( "%06d", $time );
   $minutes =
-  intval ( $time / 10000 ) * 60 + ( ( $time / 100 ) % 100 ) + $duration;
+    intval ( $time / 10000 ) * 60 + ( ( $time / 100 ) % 100 ) + $duration;
+  // If we ran past 240000, then roll back over to 000000.
+  $minutes %= ( 24 * 60 );
 
   return sprintf ( "%d%02d00", $minutes / 60, $minutes % 60 );
 }
@@ -300,7 +301,7 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
 
   $conflicts = '';
   $count = 0;
-  $evtcnt = $found = $query_params = array();
+  $evtcnt = $found = $query_params = [];
   $partcnt = count ( $participants );
 
   $hour = gmdate ( 'H', $eventstart );
@@ -453,10 +454,9 @@ function check_for_conflicts ( $dates, $duration, $eventstart,
  */
 function clean_html ( $value ) {
   $value = htmlspecialchars ( $value, ENT_QUOTES );
-  $value = strtr ( $value, array (
+  $value = strtr ( $value, [
       '(' => '&#40;',
-      ')' => '&#41;'
-      ) );
+      ')' => '&#41;'] );
   return $value;
 }
 
@@ -504,7 +504,7 @@ function clean_word ( $data ) {
  * @return array  Array of Events.
  */
 function combine_and_sort_events ( $ev, $rep ) {
-  $ids = array();
+  $ids = [];
 
   // Repeating events show up in $ev and $rep.
   // Record their ids and don't add them to the combined array.
@@ -543,7 +543,7 @@ function daily_matrix ( $date, $participants, $popup = '' ) {
   $increment = intval ( 1440 /
     ( $ENTRY_SLOTS > 288 ? 288 : ( $ENTRY_SLOTS < 72 ? 72 : $ENTRY_SLOTS ) ) );
   $last_hour = $WORK_DAY_END_HOUR;
-  $master = array();
+  $master = [];
   $MouseOut = $MouseOver = $str = '';
   $participant_pct = '20%'; //Use percentage.
 
@@ -838,11 +838,11 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   }
   $yyyy_select .= '
       </select>';
-  $replace_strings = array(
+  $replace_strings = [
                            '__yyyy__'=>$yyyy_select,
                            '__month__'=>$month_select,
                            '__mm__'=>$mm_select,
-                           '__dd__'=>$dd_select);
+                           '__dd__'=>$dd_select];
   $ret = strtr( translate( 'date_select'), $replace_strings );
   return $ret . '
       <input type="button" name="' . $prefix . 'btn" onclick="selectDate( \''
@@ -1472,7 +1472,7 @@ function display_small_tasks ( $cat_id ) {
     $u_url = 'user=' . $user . '&amp;';
     $task_user = $user;
   }
-  $ajax = array();
+  $ajax = [];
   $dueSpacer = '&nbsp;';
   $task_cat = ( empty ( $cat_id ) ? -99 : $cat_id );
 
@@ -1626,8 +1626,10 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
       $hour = 12;
 
     $ret = sprintf ( "%d:%02d%s", $hour, $min, $ampm );
-  } else
-    $ret = sprintf ( "%02d&#58;%02d", $hour, $min );
+  } else {
+    //$ret = sprintf ( "%02d&#58;%02d", $hour, $min );
+    $ret = sprintf ( "%02d:%02d", $hour, $min );
+  }
 
   if ( $control & 2 )
     $ret .= $tzid;
@@ -1664,7 +1666,7 @@ function display_unapproved_events ( $user ) {
   if ( ! empty ( $retval[$user] ) )
     return $retval[$user];
 
-  $app_user_hash = $app_users = $query_params = array();
+  $app_user_hash = $app_users = $query_params = [];
   $query_params[] = $user;
   $ret = '';
   $sql = 'SELECT COUNT( weu.cal_id ) FROM webcal_entry_user weu, webcal_entry we
@@ -1841,7 +1843,7 @@ function event_get_external_users ( $event_id, $use_mailto = 0 ) {
 
   $rows = dbi_get_cached_rows ( 'SELECT cal_fullname, cal_email
     FROM webcal_entry_ext_user WHERE cal_id = ? ORDER by cal_fullname',
-    array ( $event_id ) );
+    [$event_id] );
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
@@ -1890,7 +1892,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
 
   $nextpage = '';
   $size = ( $id ? 'h3' : 'h2' );
-  $sql_params = array();
+  $sql_params = [];
   if ( ! empty ( $id ) )
     $sql_params[] = $id;
 
@@ -2090,7 +2092,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       ? mktime ( 0, 0, 0, 1, 1, 2038 ) // Set $until to some ridiculous value.
       : $Until );
 
-  $ret = array();
+  $ret = [];
   $date_excluded = false; //Flag to track ical results.
   // Do iterative checking here.
   // I floored the $realend so I check it against the floored date.
@@ -2205,7 +2207,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       $mdate = $cdate;
       while ( $cdate <= $realend && $n < $Count ) {
-          $bydayvalues = $bymonthdayvalues = $yret = array();
+          $bydayvalues = $bymonthdayvalues = $yret = [];
           if ( isset ( $byday ) )
             $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
 
@@ -2271,7 +2273,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
       }
       $cdate = mktime ( $hour, $minute, 0, $thismonth, $thisday, $thisyear );
       while ( $cdate <= $realend && $n < $Count ) {
-        $yret = array();
+        $yret = [];
         $ycd = date ( 'Y', $cdate );
         $fdoy = mktime ( 0, 0, 0, 1, 1, $ycd ); //first day of year
         $fdow = date ( 'w', $fdoy ); //day of week first day of year
@@ -2282,7 +2284,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
         if ( isset ( $bymonth ) ) {
           foreach ( $bymonth as $month ) {
             $mdate = mktime ( $hour, $minute, 0, $month, 1, $ycd );
-            $bydayvalues = $bymonthdayvalues = array();
+            $bydayvalues = $bymonthdayvalues = [];
             if ( isset ( $byday ) )
               $bydayvalues = get_byday ( $byday, $mdate, 'month', $date );
 
@@ -2298,7 +2300,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
                 ? array_merge ( $yret, $bymonthdayvalues )
                 : ( isset ( $byday )
                   ? array_merge ( $yret, $bydayvalues )
-                  : array ( mktime ( $hour, $minute, 0, $month, $thisday, $ycd ) ) ) );
+                  : [mktime ( $hour, $minute, 0, $month, $thisday, $ycd )] ) );
           } //end foreach bymonth
         } elseif ( isset ( $byyearday ) ) { // end if isset bymonth
           foreach ( $byyearday as $yearday ) {
@@ -2396,7 +2398,7 @@ function get_byday ( $byday, $cdate, $type = 'month', $date ) {
   if ( empty ( $byday ) )
     return;
 
-  $ret = array();
+  $ret = [];
   $hour = date ( 'H', $cdate );
   $minute = date ( 'i', $cdate );
   $mth = date ( 'm', $cdate );
@@ -2486,7 +2488,7 @@ function get_bymonthday ( $bymonthday, $cdate, $date, $realend ) {
   if ( empty ( $bymonthday ) )
     return;
 
-  $ret = array();
+  $ret = [];
   $dateYmHi = date ( 'YmHi', $cdate );
   $dim = date ( 't', $cdate ); //Days in month.
   $yr = substr ( $dateYmHi, 0, 4 );
@@ -2518,12 +2520,12 @@ function get_categories_by_id ( $id, $user, $asterisk = false ) {
   if ( empty ( $id ) )
     return false;
 
-  $categories = array();
+  $categories = [];
 
   $res = dbi_execute ( 'SELECT wc.cat_name, wc.cat_id, wec.cat_owner
     FROM webcal_categories wc, webcal_entry_categories wec WHERE wec.cal_id = ?
     AND wec.cat_id = wc.cat_id AND ( wec.cat_owner = ? OR wec.cat_owner IS NULL )
-    ORDER BY wec.cat_order', array ( $id, ( empty ( $user ) ? $login : $user ) ) );
+  ORDER BY wec.cat_order', [$id, ( empty ( $user ) ? $login : $user )] );
   while ( $row = dbi_fetch_row ( $res ) ) {
     $categories[ ( empty ( $row[2] ) ? - $row[1] : $row[1] ) ] = $row[0]
      . ( $asterisk && empty ( $row[2] ) ? '*' : '' );
@@ -2549,7 +2551,7 @@ function get_categories_by_id ( $id, $user, $asterisk = false ) {
  */
 function get_entries ( $date, $get_unapproved = true ) {
   global $events;
-  $ret = array();
+  $ret = [];
   for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
     $event_date = $events[$i]->getDateTimeAdjusted();
     if( ! $get_unapproved && $events[$i]->getStatus() == 'W' )
@@ -2586,7 +2588,7 @@ function get_groups ( $user ) {
 
   // Load list of groups.
   $sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
- $sql_params = array();
+ $sql_params = [];
  if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
    $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
      AND wgu.cal_login = ?';
@@ -2597,10 +2599,9 @@ function get_groups ( $user ) {
 
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
-     $groups[] = array (
+     $groups[] = [
         'cal_group_id' => $row[0],
-       'cal_name' => $row[1]
-       );
+       'cal_name' => $row[1]];
     }
    dbi_free_result ( $res );
  }
@@ -2660,8 +2661,8 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
   if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! $is_admin ) {
     // Get current user's groups.
     $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user
-      WHERE cal_login = ?', array ( $this_user ) );
-    $groups = $ret = $u_byname = array();
+  WHERE cal_login = ?', [$this_user] );
+    $groups = $ret = $u_byname = [];
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
@@ -2671,7 +2672,7 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
     $groupcnt = count ( $groups );
     // Nonuser (public) can only see themself (unless access control is on).
     if( $is_nonuser && ! access_is_enabled() )
-      return array ( $this_user );
+      return [$this_user];
 
     for ( $i = 0, $cnt = count ( $u ); $i < $cnt; $i++ ) {
       $u_byname[$u[$i]['cal_login']] = $u[$i];
@@ -2719,7 +2720,7 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
   // If user access control enabled,
   // remove any nonusers that this user does not have required access.
   if( access_is_enabled() ) {
-    $newlist = array();
+    $newlist = [];
     for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
       $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
       if ( $can_list == 'Y' || $can_list > 0 )
@@ -2766,8 +2767,8 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
   if ( $GROUPS_ENABLED == 'Y' && $USER_SEES_ONLY_HIS_GROUPS == 'Y' && ! $is_admin ) {
     // Get groups with current user as member.
     $rows = dbi_get_cached_rows ( 'SELECT cal_group_id FROM webcal_group_user
-      WHERE cal_login = ?', array ( $this_user ) );
-    $groups = $ret = $u_byname = array();
+  WHERE cal_login = ?', [$this_user] );
+    $groups = $ret = $u_byname = [];
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
@@ -2777,7 +2778,7 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
     $groupcnt = count ( $groups );
     // Nonuser (public) can only see themself (unless access control is on).
     if( $is_nonuser && ! access_is_enabled() )
-      return array ( $this_user );
+      return [$this_user];
 
     $u = user_get_users();
     if ( $is_nonuser_admin )
@@ -2819,7 +2820,7 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
   // If user access control enabled,
   // remove any users that this user does not have required access.
   if( access_is_enabled() ) {
-    $newlist = array();
+    $newlist = [];
     for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
       $can_list = access_user_calendar ( $reason, $ret[$i]['cal_login'], $this_user );
       if ( $can_list == 'Y' || $can_list > 0 )
@@ -2849,7 +2850,7 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
 function get_nonuser_cals ( $user = '', $remote = false ) {
   global $is_admin, $USER_SORT_ORDER;
   $count = 0;
-  $query_params = $ret = array();
+  $query_params = $ret = [];
   $sql = 'SELECT cal_login, cal_lastname, cal_firstname, cal_admin,
     cal_is_public, cal_url FROM webcal_nonuser_cals WHERE cal_url IS '
    . ( $remote == false ? '' : 'NOT ' ) . 'NULL ';
@@ -2866,7 +2867,7 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
 
-      $ret[$count++] = array (
+      $ret[$count++] = [
         'cal_login' => $row[0],
         'cal_lastname' => $row[1],
         'cal_firstname' => $row[2],
@@ -2874,14 +2875,13 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
         'cal_is_public' => $row[4],
         'cal_url' => $row[5],
         'cal_fullname' => ( strlen ( $row[1] . $row[2] )
-          ? "$row[2] $row[1]" : $row[0] )
-        );
+          ? "$row[2] $row[1]" : $row[0] )];
     }
   }
   // If user access control enabled,
   // remove any users that this user does not have 'view' access to.
   if( access_is_enabled() && ! $is_admin ) {
-    $newlist = array();
+    $newlist = [];
     for ( $i = 0, $cnt = count ( $ret ); $i < $cnt; $i++ ) {
       if ( access_user_calendar ( 'view', $ret[$i]['cal_login'] ) )
         $newlist[] = $ret[$i];
@@ -2910,7 +2910,7 @@ function get_plugin_list ( $include_disabled = false ) {
     WHERE cal_setting LIKE \'%.plugin_status\' '
      . ( ! $include_disabled ? 'AND cal_value = \'Y\' ' : '' )
      . 'ORDER BY cal_setting' );
-  $plugins = array();
+  $plugins = [];
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $e = explode ( '.', $row[0] );
@@ -2956,7 +2956,8 @@ function get_pref_setting ( $user, $setting, $defaultValue='' ) {
   }
 
   $rows = dbi_get_cached_rows ( 'SELECT cal_value FROM webcal_user_pref
-    WHERE cal_login = ? AND cal_setting = ?', array ( $user, $setting ) );
+  WHERE cal_login = ?
+    AND cal_setting = ?', [$user, $setting] );
   if ( $rows ) {
     $row = $rows[0];
     if ( $row && ! empty ( $row[0] ) )
@@ -3048,7 +3049,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
   global $repeated_events;
 
   $n = 0;
-  $ret = array();
+  $ret = [];
   for ( $i = 0, $cnt = count ( $repeated_events ); $i < $cnt; $i++ ) {
     if( ( $repeated_events[$i]->getStatus() == 'A' || $get_unapproved )
         && in_array( $dateYmd, $repeated_events[$i]->getRepeatAllDates() ) )
@@ -3073,7 +3074,7 @@ function get_repeating_entries ( $user, $dateYmd, $get_unapproved = true ) {
 function get_tasks ( $date, $get_unapproved = true ) {
   global $tasks;
 
-  $ret = array();
+  $ret = [];
   $today = date ( 'Ymd' );
   for ( $i = 0, $cnt = count ( $tasks ); $i < $cnt; $i++ ) {
     // In case of data corruption (or some other bug...).
@@ -3103,7 +3104,7 @@ function get_tasks ( $date, $get_unapproved = true ) {
  * @ignore
  */
 function get_user_plugin_list() {
-  $ret = array();
+  $ret = [];
   $all_plugins = get_plugin_list();
   for ( $i = 0, $cnt = count ( $all_plugins ); $i < $cnt; $i++ ) {
     if ( $GLOBALS[$all_plugins[$i] . '.disabled'] != 'N' )
@@ -3118,9 +3119,10 @@ function get_user_plugin_list() {
  * @param string $user  User to retrieve event ids
  */
 function get_users_event_ids ( $user ) {
-  $events = array();
+  $events = [];
   $res = dbi_execute ( 'SELECT we.cal_id FROM webcal_entry we, webcal_entry_user weu
-    WHERE we.cal_id = weu.cal_id AND weu.cal_login = ?', array ( $user ) );
+  WHERE we.cal_id = weu.cal_id
+    AND weu.cal_login = ?', [$user] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $events[] = $row[0];
@@ -3292,14 +3294,14 @@ if( version_compare( phpversion(), '5.0' ) < 0 ) {
  * @return array  $reminder
  */
 function getReminders ( $id, $display = false ) {
-  $reminder = array();
+  $reminder = [];
   $str = '';
   // Get reminders.
   $rows = dbi_get_cached_rows ( 'SELECT cal_id, cal_date, cal_offset,
     cal_related, cal_before, cal_repeats, cal_duration, cal_action,
     cal_last_sent, cal_times_sent FROM webcal_reminders
-    WHERE cal_id = ? ORDER BY cal_date,
-    cal_offset, cal_last_sent', array ( $id ) );
+  WHERE cal_id = ?
+  ORDER BY cal_date, cal_offset, cal_last_sent', [$id] );
   if ( $rows ) {
     $rowcnt = count ( $rows );
     for ( $i = 0; $i < $rowcnt; $i++ ) {
@@ -3386,7 +3388,7 @@ function getShortTime ( $timestr ) {
 function gregorianToISO ( $day, $month, $year ) {
   global $WEEK_START;
 
-  $mnth = array ( 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334 );
+  $mnth = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
   $y_isleap = isLeapYear ( $year );
 
   $day_of_year_number = $day + $mnth[$month - 1];
@@ -3976,7 +3978,7 @@ function load_global_settings() {
        . substr ( $REQUEST_URI, 0, $ptr + 1 );
 
       dbi_execute ( 'INSERT INTO webcal_config ( cal_setting, cal_value )
-        VALUES ( ?, ? )', array ( 'SERVER_URL', $SERVER_URL ) );
+        VALUES ( ?, ? )', ['SERVER_URL', $SERVER_URL] );
     }
   }
 
@@ -3996,7 +3998,8 @@ function load_nonuser_preferences ( $nonuser ) {
   global $DATE_FORMAT, $DATE_FORMAT_MD, $DATE_FORMAT_MY, $prefarray;
 
   $rows = dbi_get_cached_rows ( 'SELECT cal_setting, cal_value
-    FROM webcal_user_pref WHERE cal_login = ?', array ( $nonuser ) );
+  FROM webcal_user_pref
+  WHERE cal_login = ?', [$nonuser] );
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
@@ -4045,7 +4048,7 @@ function load_template ( $login, $type ) {
   $sql = 'SELECT cal_template_text FROM webcal_user_template
     WHERE cal_type = ? and cal_login = ';
   if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) {
-    $rows = dbi_get_cached_rows ( $sql . '?', array ( $type, $login ) );
+    $rows = dbi_get_cached_rows ( $sql . '?', [$type, $login] );
     if ( $rows && ! empty ( $rows[0] ) ) {
       $row = $rows[0];
       $ret .= $row[0];
@@ -4055,7 +4058,7 @@ function load_template ( $login, $type ) {
 
   // If no user-specific template, check for the system template.
   if ( ! $found ) {
-    $rows = dbi_get_cached_rows ( $sql . '\'__system__\'', array ( $type ) );
+    $rows = dbi_get_cached_rows ( $sql . '"__system__"', [$type] );
     if ( $rows && ! empty ( $rows[0] ) ) {
       $row = $rows[0];
       $ret .= $row[0];
@@ -4067,7 +4070,8 @@ function load_template ( $login, $type ) {
   if ( ! $found ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_template_text
       FROM webcal_report_template
-      WHERE cal_template_type = ? and cal_report_id = 0', array ( $type ) );
+  WHERE cal_template_type = ?
+    AND cal_report_id = 0', [$type] );
     if ( $rows && ! empty ( $rows[0] ) ) {
       $row = $rows[0];
       if ( ! empty ( $row ) ) {
@@ -4104,12 +4108,12 @@ function load_user_categories ( $ex_global = '' ) {
   global $categories, $CATEGORIES_ENABLED,
   $is_admin, $is_assistant, $login, $user;
 
-  $categories = array();
+  $categories = [];
   // These are default values.
   $categories[0]['cat_name'] = translate ( 'All' );
   $categories[-1]['cat_name'] = translate ( 'None' );
   if ( $CATEGORIES_ENABLED == 'Y' ) {
-    $query_params = array();
+    $query_params = [];
     $query_params[] = ( ( ! empty ( $user ) && strlen ( $user ) ) &&
       ( $is_assistant || $is_admin ) ? $user : $login );
     $rows = dbi_get_cached_rows ( 'SELECT cat_id, cat_name, cat_owner, cat_color
@@ -4119,12 +4123,11 @@ function load_user_categories ( $ex_global = '' ) {
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
-        $categories[$row[0]] = array (
+        $categories[$row[0]] = [
           'cat_name' => $row[1],
           'cat_owner' => $row[2],
           'cat_global' => empty ( $row[2] ) ? 1 : 0,
-          'cat_color' => ( empty ( $row[3] ) ? '#000000' : $row[3] )
-          );
+          'cat_color' => ( empty ( $row[3] ) ? '#000000' : $row[3] )];
       }
     }
   }
@@ -4147,23 +4150,22 @@ function load_user_layers ( $user = '', $force = 0 ) {
   if ( $user == '' )
     $user = $login;
 
-  $layers = array();
+  $layers = [];
 
   if ( empty ( $ALLOW_VIEW_OTHER ) || $ALLOW_VIEW_OTHER != 'Y' )
     return; // Not allowed to view others' calendars, so cannot use layers.
   if ( $force || ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS != 'N' ) ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_layerid, cal_layeruser, cal_color,
       cal_dups FROM webcal_user_layers WHERE cal_login = ? ORDER BY cal_layerid',
-      array ( $user ) );
+      [$user] );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
-        $layers[$row[0]] = array (
+        $layers[$row[0]] = [
           'cal_layerid' => $row[0],
           'cal_layeruser' => $row[1],
           'cal_color' => $row[2],
-          'cal_dups' => $row[3]
-          );
+          'cal_dups' => $row[3]];
       }
     }
   }
@@ -4190,7 +4192,7 @@ function load_user_preferences ( $guest = '' ) {
 
   $browser = get_web_browser();
   $browser_lang = get_browser_language();
-  $colors = array (
+  $colors = [
     'BGCOLOR' => 1,
     'CELLBG' => 1,
     'H2COLOR' => 1,
@@ -4205,16 +4207,16 @@ function load_user_preferences ( $guest = '' ) {
     'THFG' => 1,
     'TODAYCELLBG' => 1,
     'WEEKENDBG' => 1,
-    'WEEKNUMBER' => 1,
-    );
+    'WEEKNUMBER' => 1];
   $lang_found = false;
-  $prefarray = array();
+  $prefarray = [];
   // Allow __public__ pref to be used if logging in or user not validated.
   $tmp_login = ( empty ( $guest )
     ? $login : ( $guest == 'guest' ? '__public__' : $guest ) );
 
   $rows = dbi_get_cached_rows ( 'SELECT cal_setting, cal_value
-    FROM webcal_user_pref WHERE cal_login = ?', array ( $tmp_login ) );
+  FROM webcal_user_pref
+  WHERE cal_login = ?', [$tmp_login] );
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
@@ -4249,9 +4251,9 @@ function load_user_preferences ( $guest = '' ) {
         ( access_is_enabled()
           && ! access_can_access_function( ACCESS_VIEW, $guest ) ) )
       ? '' : ' OR cal_is_global = \'Y\' ' )
-     . 'ORDER BY cal_name', array ( $tmp_login ) );
+     . 'ORDER BY cal_name', [$tmp_login] );
   if ( $rows ) {
-    $views = array();
+    $views = [];
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
       $url = 'view_';
@@ -4264,14 +4266,13 @@ function load_user_preferences ( $guest = '' ) {
       else
         $url .= strtolower ( $row[2] ) . '.php?';
 
-      $v = array (
+      $v = [
         'cal_view_id' => $row[0],
         'cal_name' => $row[1],
         'cal_view_type' => $row[2],
         'cal_is_global' => $row[3],
         'cal_owner' => $row[4],
-        'url' => $url . 'id=' . $row[0]
-        );
+        'url' => $url . 'id=' . $row[0]];
       $views[] = $v;
     }
   }
@@ -4285,7 +4286,7 @@ function load_user_preferences ( $guest = '' ) {
       $lang = $browser_lang;
 
     dbi_execute ( 'INSERT INTO webcal_user_pref ( cal_login, cal_setting,
-     cal_value ) VALUES ( ?, ?, ? )', array ( $tmp_login, 'LANGUAGE', $lang ) );
+     cal_value ) VALUES ( ?, ?, ? )', [$tmp_login, 'LANGUAGE', $lang] );
   }
   reset_language ( ! empty ( $LANGUAGE ) && $LANGUAGE != 'none'
     ? $LANGUAGE : $browser_lang );
@@ -4325,12 +4326,12 @@ function month_name ( $m, $format = 'F' ) {
   //.
   // We may have switched languages.
   if ( $local_lang != $lang )
-    $month_names = $monthshort_names = array();
+    $month_names = $monthshort_names = [];
 
   $local_lang = $lang;
 
   if ( empty ( $month_names[0] ) || empty ( $monthshort_names[0] ) ) {
-    $month_names = array (
+    $month_names = [
       translate ( 'January' ),
       translate ( 'February' ),
       translate ( 'March' ),
@@ -4342,10 +4343,9 @@ function month_name ( $m, $format = 'F' ) {
       translate ( 'September' ),
       translate ( 'October' ),
       translate ( 'November' ),
-      translate ( 'December' )
-      );
+      translate ( 'December' )];
 
-    $monthshort_names = array (
+    $monthshort_names = [
       translate ( 'Jan' ),
       translate ( 'Feb' ),
       translate ( 'Mar' ),
@@ -4357,8 +4357,7 @@ function month_name ( $m, $format = 'F' ) {
       translate ( 'Sep' ),
       translate ( 'Oct' ),
       translate ( 'Nov' ),
-      translate ( 'Dec' )
-      );
+      translate ( 'Dec' )];
   }
 
   if ( $m >= 0 && $m < 12 )
@@ -4389,7 +4388,7 @@ function nonuser_load_variables ( $login, $prefix ) {
   $ret = false;
   $rows = dbi_get_cached_rows ( 'SELECT cal_login, cal_lastname, cal_firstname,
     cal_admin, cal_is_public, cal_url FROM webcal_nonuser_cals
-    WHERE cal_login = ?', array ( $login ) );
+  WHERE cal_login = ?', [$login] );
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
@@ -4662,7 +4661,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
     $ev = combine_and_sort_events ( $ev,
       get_tasks ( $date, $get_unapproved ) // Get all due tasks.
       );
-  $hour_arr = $rowspan_arr = array();
+  $hour_arr = $rowspan_arr = [];
   $interval = 1440 / $TIME_SLOTS; // Number of minutes per slot
 
   $first_slot = intval ( ( $WORK_DAY_START_HOUR * 60 ) / $interval );
@@ -4972,7 +4971,7 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
     $Yes = translate ( 'Yes' );
   }
   if ( empty ( $vals ) )
-    $vals = array ( 'Y' => $Yes, 'N' => $No );
+    $vals = ['Y' => $Yes, 'N' => $No];
 
   if ( $SCRIPT == 'admin.php' ) {
     if ( ! empty ( $s[$variable] ) )
@@ -5107,19 +5106,19 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   // New multiple categories requires some checking to see if this cat_id is
   // valid for this cal_id. It could be done with nested SQL,
   // but that may not work for all databases. This might be quicker also.
-  $catlist = $cloneRepeats = $layers_byuser = $result = array();
+  $catlist = $cloneRepeats = $layers_byuser = $result = [];
 
   $sql = 'SELECT DISTINCT( cal_id ) FROM webcal_entry_categories ';
   // None was selected...return only events without categories.
   if ( $cat_id == -1 )
-    $rows = dbi_get_cached_rows( $sql, array() );
+    $rows = dbi_get_cached_rows ( $sql, [] );
   elseif ( ! empty ( $cat_id ) ) {
     $cat_array = explode ( ',', $cat_id );
     $rows = dbi_get_cached_rows ( $sql . '
   WHERE cat_id IN ( ?' . str_repeat ( ',?', count ( $cat_array ) - 1 ) . ' )', $cat_array );
   }
   if ( ! empty ( $cat_id ) ) {
-    // $rows = dbi_get_cached_rows ( $sql, array ( $cat_id ) );
+    // $rows = dbi_get_cached_rows ( $sql, [$cat_id] );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
@@ -5128,7 +5127,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
     }
   }
   $catlistcnt = count ( $catlist );
-  $query_params = array();
+  $query_params = [];
   $sql = 'SELECT we.cal_name, we.cal_description, we.cal_date, we.cal_time,
     we.cal_id, we.cal_ext_for_id, we.cal_priority, we.cal_access,
     we.cal_duration, weu.cal_status, we.cal_create_by, weu.cal_login,
@@ -5217,7 +5216,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
           $primary_cat, $row[11], $row[12], $row[13], $row[14], $row[15],
           $row[16], $row[17], $row[18], $row[19], $row[20], $row[21], $row[22],
           $row[23], $row[24], $row[25], $row[26], $row[27], $row[28], $row[29],
-          $row[30], $row[31], $row[32], array(), array(), array() );
+          $row[30], $row[31], $row[32], [], [], [] );
       else
         $item = new Event( $evt_name, $evt_descr, $row[2], $row[3], $row[4],
           $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $primary_cat,
@@ -5231,7 +5230,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
 
       if( $item->getLogin() == $user ) {
         // Insert this one before all others with this ID.
-        array_splice ( $result, $first_i_this_id, 0, array ( $item ) );
+        array_splice ( $result, $first_i_this_id, 0, [$item] );
         $i++;
 
         if ( $first_i_this_id + 1 < $i ) {
@@ -5275,7 +5274,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
       if( $result[$i]->getID() != '' ) {
         $rows = dbi_get_cached_rows ( 'SELECT cal_date, cal_exdate
           FROM webcal_entry_repeats_not
-          WHERE cal_id = ?', array( $result[$i]->getID() ) );
+  WHERE cal_id = ?', [$result[$i]->getID()] );
         for ( $ii = 0, $rowcnt = count ( $rows ); $ii < $rowcnt; $ii++ ) {
           $row = $rows[$ii];
           // If this is not a clone, add exception date.
@@ -5354,7 +5353,7 @@ function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
         } else { // Process clones if any.
           if( count( $result[$i-1]->getRepeatAllDates() ) > 0 ) {
             $parentRepeats = $result[$i-1]->getRepeatAllDates();
-            $cloneRepeats = array();
+            $cloneRepeats = [];
             for( $j = 0, $parentRepeatscnt = count( $parentRepeats );
                 $j < $parentRepeatscnt; $j++ ) {
               $cloneRepeats[] = gmdate( 'Ymd',
@@ -5800,7 +5799,8 @@ function update_status ( $status, $user, $id, $type = 'E' ) {
   }
 
   if ( ! dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
-    WHERE cal_login = ? AND cal_id = ?', array ( $status, $user, $id ) ) )
+  WHERE cal_login = ?
+    AND cal_id = ?', [$status, $user, $id] ) )
     $error = str_replace( 'XXX', dbi_error(), $error_msg );
   else
     activity_log ( $id, $login, $user, $log_type, '' );
@@ -5817,7 +5817,8 @@ function update_status ( $status, $user, $id, $type = 'E' ) {
  */
 function user_is_nonuser_admin ( $login, $nonuser ) {
   $rows = dbi_get_cached_rows ( 'SELECT cal_admin FROM webcal_nonuser_cals
-    WHERE cal_login = ? AND cal_admin = ?', array ( $nonuser, $login ) );
+  WHERE cal_login = ?
+    AND cal_admin = ?', [$nonuser, $login] );
   return ( $rows && ! empty ( $rows[0] ) );
 }
 
@@ -5833,7 +5834,7 @@ function user_is_participant ( $id, $user ) {
 
   $rows = dbi_get_cached_rows ( 'SELECT COUNT( cal_id ) FROM webcal_entry_user
     WHERE cal_id = ? AND cal_login = ? AND cal_status IN ( \'A\',\'W\' )',
-    array ( $id, $user ) );
+    [$id, $user] );
   if ( ! $rows )
     die_miserable_death( str_replace( 'XXX', dbi_error(),
         translate ( 'Database error XXX.' ) ) );
@@ -5862,7 +5863,7 @@ function validate_domain() {
   if ( empty ( $SELF_REGISTRATION_BLACKLIST ) || $SELF_REGISTRATION_BLACKLIST == 'N' )
     return true;
 
-  $allow_true = $deny_true = array();
+  $allow_true = $deny_true = [];
   $ip_authorized = false;
   $rmt_long = ip2long ( $_SERVER['REMOTE_ADDR'] );
   $fd = @fopen ( 'includes/blacklist.php', 'rb', false );
@@ -5924,7 +5925,7 @@ function weekday_name ( $w, $format = 'l' ) {
 
   // We may have switched languages.
   if ( $local_lang != $lang )
-    $week_names = $weekday_names = array();
+    $week_names = $weekday_names = [];
 
   $local_lang = $lang;
 
@@ -5936,25 +5937,23 @@ function weekday_name ( $w, $format = 'l' ) {
     $format = 'l';
 
   if ( empty ( $weekday_names[0] ) || empty ( $week_names[0] ) ) {
-    $weekday_names = array (
+    $weekday_names = [
       translate ( 'Sunday' ),
       translate ( 'Monday' ),
       translate ( 'Tuesday' ),
       translate ( 'Wednesday' ),
       translate ( 'Thursday' ),
       translate ( 'Friday' ),
-      translate ( 'Saturday' )
-      );
+      translate ( 'Saturday' )];
 
-    $week_names = array (
+    $week_names = [
       translate ( 'Sun' ),
       translate ( 'Mon' ),
       translate ( 'Tue' ),
       translate ( 'Wed' ),
       translate ( 'Thu' ),
       translate ( 'Fri' ),
-      translate ( 'Sat' )
-      );
+      translate ( 'Sat' )];
   }
 
   if ( $w >= 0 && $w < 7 )
@@ -6015,7 +6014,8 @@ function user_is_assistant ( $assistant, $boss ) {
 
   $ret = false;
   $rows = dbi_get_cached_rows ( 'SELECT * FROM webcal_asst
-    WHERE cal_assistant = ? AND cal_boss = ?', array ( $assistant, $boss ) );
+  WHERE cal_assistant = ?
+    AND cal_boss = ?', [$assistant, $boss] );
   if ( $rows ) {
     $row = $rows[0];
 
@@ -6039,18 +6039,17 @@ function user_get_boss_list ( $assistant ) {
   global $bosstemp_fullname;
 
   $count = 0;
-  $ret = array();
+  $ret = [];
   $rows = dbi_get_cached_rows ( 'SELECT cal_boss FROM webcal_asst
-    WHERE cal_assistant = ?', array ( $assistant ) );
+  WHERE cal_assistant = ?', [$assistant] );
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
       if (!user_load_variables ( $row[0], 'bosstemp_' ))
         nonuser_load_variables($row[0], 'bosstemp_');
-      $ret[$count++] = array (
+      $ret[$count++] = [
         'cal_login' => $row[0],
-        'cal_fullname' => $bosstemp_fullname
-        );
+        'cal_fullname' => $bosstemp_fullname];
     }
   }
   return $ret;
@@ -6066,7 +6065,7 @@ function user_get_boss_list ( $assistant ) {
 function user_has_boss ( $assistant ) {
   $ret = false;
   $rows = dbi_get_cached_rows ( 'SELECT * FROM webcal_asst
-    WHERE cal_assistant = ?', array ( $assistant ) );
+  WHERE cal_assistant = ?', [$assistant] );
   if ( $rows ) {
     $row = $rows[0];
      if ( ! empty ( $row[0] ) )
@@ -6111,15 +6110,16 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
   $ret = '<dl id="' . $popupid . '" class="popup">' . "\n";
 
   if ( empty ( $popup_fullnames ) )
-    $popup_fullnames = array();
+    $popup_fullnames = [];
 
-  $partList = array();
+  $partList = [];
   if ( $details && $id != '' && !
     empty ( $PARTICIPANTS_IN_POPUP ) && $PARTICIPANTS_IN_POPUP == 'Y' && !
       ( $PUBLIC_ACCESS_VIEW_PART == 'N' && $login == '__public__' ) ) {
     $rows = dbi_get_cached_rows ( 'SELECT cal_login, cal_status
-      FROM webcal_entry_user WHERE cal_id = ? AND cal_status IN ( \'A\',\'W\' )',
-      array ( $id ) );
+  FROM webcal_entry_user
+  WHERE cal_id = ?
+    AND cal_status IN ( "A","W" )', [$id] );
     if ( $rows ) {
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
         $row = $rows[$i];
@@ -6132,7 +6132,8 @@ function build_entry_popup ( $popupid, $user, $description = '', $time,
        . ( $participants[$i][1] == 'W' ? '(?)' : '' );
     }
     $rows = dbi_get_cached_rows ( 'SELECT cal_fullname FROM webcal_entry_ext_user
-      WHERE cal_id = ? ORDER by cal_fullname', array ( $id ) );
+  WHERE cal_id = ?
+  ORDER by cal_fullname', [$id] );
     if ( $rows ) {
       $extStr = translate ( 'External User' );
       for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
@@ -6209,7 +6210,7 @@ function format_site_extras ( $extras, $filter = '' ) {
   if ( empty ( $site_extras ) || empty ( $extras ) )
     return;
 
-  $ret = array();
+  $ret = [];
   $extra_view = 1;
   foreach ( $site_extras as $site_extra ) {
     $data = '';
@@ -6235,7 +6236,7 @@ function format_site_extras ( $extras, $filter = '' ) {
       else
         $data .= $extras[$extra_name]['cal_data'];
 
-      $ret[$extra_name] = array ( 'name' => $name, 'data' => $data );
+      $ret[$extra_name] = ['name' => $name, 'data' => $data];
     }
   }
   return $ret;
@@ -6255,20 +6256,20 @@ function format_site_extras ( $extras, $filter = '' ) {
  *   - <var>cal_data</var>
  */
 function get_site_extra_fields ( $eventid ) {
-  $rows = dbi_get_cached_rows ( 'SELECT cal_name, cal_type, cal_date, cal_remind,
-    cal_data FROM webcal_site_extras WHERE cal_id = ?', array ( $eventid ) );
-  $extras = array();
+  $rows = dbi_get_cached_rows ( 'SELECT cal_name, cal_type, cal_date, cal_remind, cal_data
+  FROM webcal_site_extras
+  WHERE cal_id = ?', [$eventid] );
+  $extras = [];
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
       // Save by cal_name (e.g. "URL").
-      $extras[$row[0]] = array (
+      $extras[$row[0]] = [
         'cal_name' => $row[0],
         'cal_type' => $row[1],
         'cal_date' => $row[2],
         'cal_remind' => $row[3],
-        'cal_data' => $row[4]
-        );
+        'cal_data' => $row[4]];
     }
   }
   return $extras;
@@ -6284,7 +6285,7 @@ function get_site_extra_fields ( $eventid ) {
 function get_site_extras_names ( $filter = '' ) {
   global $site_extras;
 
-  $ret = array();
+  $ret = [];
 
   foreach ( $site_extras as $extra ) {
     if ( $extra == 'FIELDSET' ||
@@ -6344,18 +6345,16 @@ function html2rgb($color)
     $color = substr($color, 1);
 
   if (strlen($color) == 6) {
-    list($r, $g, $b) = array($color[0].$color[1],
-      $color[2].$color[3], $color[4].$color[5]);
+    list($r, $g, $b) = [$color[0].$color[1], $color[2].$color[3], $color[4].$color[5]];
   } elseif (strlen($color) == 3) {
-    list($r, $g, $b) = array($color[0].$color[0], $color[1].$color[1],
-      $color[2].$color[2]);
+    list($r, $g, $b) = [$color[0].$color[0], $color[1].$color[1], $color[2].$color[2]];
   } else {
     return false;
   }
 
   $r = hexdec($r); $g = hexdec($g); $b = hexdec($b);
 
-  return array($r, $g, $b);
+  return [$r, $g, $b];
 }
 
 // Convert RGB values (0-255) into HTML color ('#ffffff')
