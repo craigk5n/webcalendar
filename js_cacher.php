@@ -1,65 +1,74 @@
-<?php // $Id: js_cacher.php,v 1.20 2009/12/27 15:53:29 bbannon Exp $
-// If the JavaScript doesn't need any input from PHP,
-// this file should not be called.
-define( '_ISVALID', true );
+<?php
+/* $Id$ */
+// If the javascript doesn't need any input from php,
+// then we can cache it and not run init.php.
+define ( '_ISVALID', true );
 
-if( empty( $inc ) )
+if ( empty ( $inc ) )
   $inc = $_GET['inc'];
 
-if( empty( $inc ) && ! empty( $_REQUEST['inc'] ) )
+if ( empty ( $inc ) && ! empty ( $_REQUEST['inc'] ) )
   $inc = $_REQUEST['inc'];
 
-$arinc = explode( '/', $inc );
+$arinc = explode ( '/', $inc );
 
-// We only allow includes if they exist in our js or HTMLarea directories.
-if( $arinc[0] != 'js' && $arinc[0] != 'htmlarea' )
+if ( $arinc[0] != 'js' && $arinc[0] != 'htmlarea' )
   return false;
 
-if( is_dir( 'includes' ) )
-  $newinc = 'includes';
-elseif( is_dir( '../includes' ) )
-  $newinc = '../includes';
-
 // Get list of files in the js directory.
-$myDirectory = opendir( "$newinc/$arinc[0]" );
-while( $fileName = readdir( $myDirectory ) ) {
+$myDirectory = opendir ( 'includes/' . $arinc[0] );
+while ( $fileName = readdir ( $myDirectory ) ) {
   $fileList[] = $fileName;
 }
-closedir( $myDirectory );
+closedir ( $myDirectory );
 
-include_once 'includes/translate.php';
-include_once 'includes/config.php';
-include_once 'includes/dbi4php.php';
-include_once 'includes/formvars.php';
-include_once 'includes/functions.php';
+header ( 'Content-type: text/javascript' );
+if ( ( ! empty ( $arinc[2] ) && stristr ( $arinc[2], 'true' ) ) ) {
+  $cookie = ( isset ( $_COOKIE['webcalendar_csscache'] )
+    ? $_COOKIE['webcalendar_csscache'] : 0 );
 
-do_config( 'includes/settings.php' );
-include_once 'includes/' . $user_inc;
-include_once 'includes/access.php';
-include_once 'includes/validate.php';
-include_once 'includes/gradient.php';
+  // Kludge - we don't have access to the db from this script (for performance
+  // reasons... so just use EST for the timezone.
+  if ( function_exists ( "date_default_timezone_set" ) )
+    date_default_timezone_set ( "America/New_York");
+  header ( 'Last-Modified: ' . date ( 'r', mktime ( 0, 0, 0 ) + $cookie ) );
+  header ( 'Expires: ' . date ( 'D, j M Y H:i:s', time () + 86400 ) . ' UTC' );
+  header ( 'Cache-Control: Public' );
+  header ( 'Pragma: Public' );
+} else {
+  include 'includes/translate.php';
+  include 'includes/config.php';
+  include 'includes/dbi4php.php';
+  include 'includes/formvars.php';
+  include 'includes/functions.php';
 
-header( 'Content-type: text/javascript' );
-header( 'Cache-Control: Public' );
-header( 'Pragma: Public' );
+  do_config ( 'includes/settings.php' );
+  include 'includes/' . $user_inc;
+  include_once 'includes/access.php';
+  include_once 'includes/validate.php';
+  include_once 'includes/gradient.php';
 
-send_no_cache_header();
-load_global_settings();
-@session_start();
+  load_global_settings ();
+  @session_start ();
+  $login = ( empty ( $_SESSION['webcal_login'] )
+    ? '__public__' : $_SESSION['webcal_login'] );
 
-$login = ( empty( $_SESSION['webcal_login'] )
-  ? '__public__' : $_SESSION['webcal_login'] );
+  load_user_preferences ();
 
-load_user_preferences();
-
-foreach( $arinc as $a ) {
-  if( $a == 'true' || $a == 'false' )
-    break;
-
-  $newinc .= '/' . $a;
+  send_no_cache_header ();
 }
 
-if( is_file( $newinc ) && in_array( $arinc[1], $fileList ) )
-  include_once $newinc;
+// We don't want to compress for IE6 because of 'object expected' errors.
+if ( ini_get ( 'zlib.output_compression' ) != 1 && !
+    stristr ( $_SERVER['HTTP_USER_AGENT'], 'MSIE 6' ) &&
+    function_exists ( "ob_gzhandler" ) )
+  ob_start ( 'ob_gzhandler' );
+
+// We only allow includes if they exist in our includes/js directory, or HTMLarea
+$newinc = 'includes/' . $arinc[0] . '/' . $arinc[1];
+if ( is_file ( $newinc ) && in_array ( $arinc[1], $fileList ) )
+{
+  include_once ( $newinc );
+}
 
 ?>
