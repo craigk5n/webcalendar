@@ -75,9 +75,6 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
     dbi_execute( 'DELETE FROM webcal_access_user WHERE cal_login = ?
     AND cal_other_user = ?', [$puser, $pouser] );
 
-    if( empty( $pouser ) )
-      break;
-
     $approve_total = $edit_total = $view_total = 0;
     for( $i = 1; $i <= 256; ) {
       $approve_total += getPostValue( 'a_' . $i );
