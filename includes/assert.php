@@ -15,40 +15,8 @@
 /*
  * Setup callback function only if $settings.php mode == dev
  */
-if ( ! empty ( $run_mode ) &&  $run_mode == 'dev' )
+if ( ! empty ( $run_mode ) && $run_mode == 'dev' )
   assert_options( ASSERT_CALLBACK, 'assert_handler');
-
-/**
- * Gets the CVS file version for a specific file.
- *
- * Searches through the file and looks for the CVS Id tag.
- *
- * @param string $file Filename
- *
- * @return string File's CVS version string
- */
-function assert_get_cvs_file_version ( $file ) {
-  $version = 'v?.?';
-  $path = ['', 'includes/', '../'];
-  for ( $i = 0, $cnt = count ( $path ); $i < $cnt; $i++ ) {
-    $newfile = $path[$i] . $file;
-    if ( file_exists ( $newfile ) ) {
-      $fd = @fopen ( $newfile, 'rb', false );
-      if ( $fd ) {
-        while ( ! feof ( $fd ) ) {
-          $data = fgets ( $fd, 1024 );
-          if ( preg_match ( "/Id: (\S+),v (\d\S+)/", $data, $match ) ) {
-            $version = 'v' . $match[2];
-            break;
-          }
-        }
-        fclose ( $fd );
-        break;
-      }
-    }
-  }
-  return $version;
-}
 
 /**
  * Return a backtrace.
@@ -68,14 +36,14 @@ function assert_backtrace() {
     return '[stacktrack requires PHP 4.3/5.0. Not available in PHP '
      . phpversion() . ']';
   $bt = debug_backtrace();
-  // print_r ( $bt );
+
   $file = [];
   for ( $i = 2, $cnt = count ( $bt ); $i < $cnt; $i++ ) {
     // skip the first two, since it's always this func and assert_handler
     $afile = $bt[$i];
 
-    $line = basename ( $afile['file'] ) . ':' . $afile['line']
-     . ' [' . assert_get_cvs_file_version ( $afile['file'] ) . ']';
+    $line = basename ( $afile['file'] ) . ':' . $afile['line'];
+
     if ( ! empty ( $afile['function'] ) ) {
       $line .= ' ' . $afile['function'] . ' ( ';
       for ( $j = 0, $cnt_args = count ( $afile['args'] ); $j < $cnt_args; $j++ ) {
