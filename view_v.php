@@ -1,4 +1,4 @@
-<?php // $Id: view_v.php,v 1.85 2009/11/22 22:26:18 bbannon Exp $
+<?php
 /**
  * Page Description:
  * This page will display the month "view" with all users's events on the same
@@ -20,7 +20,6 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
 $DAYS_PER_TABLE = 7;

@@ -1,4 +1,4 @@
-<?php // $Id: view_m.php,v 1.88 2009/11/22 22:26:18 bbannon Exp $
+<?php
 /**
  * Page Description:
  * Display a month view with users side by side.
@@ -17,7 +17,6 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
 $error = '';

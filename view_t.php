@@ -1,4 +1,4 @@
-<?php // $Id: view_t.php,v 1.93 2011/07/12 19:42:25 rjones6061 Exp $
+<?php
 /**
  * Page Description:
  * This page will display a timebar for a week or month as specified by timeb.
@@ -19,7 +19,6 @@
  * then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
 $error = '';

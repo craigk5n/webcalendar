@@ -1,4 +1,4 @@
-<?php // $Id: view_d.php,v 1.60 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Page Description:
  * Display a timebar view of a single day.
@@ -19,8 +19,6 @@
  * then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
-// $start = microtime();
-include_once 'includes/init.php';
 include_once 'includes/views.php';
 
 $error = '';
