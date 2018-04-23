@@ -15,11 +15,11 @@
  * - Include tab for unapproved events where users could approve from
  *   this page.
  *
- * Note: some of the icons for this page were downloaded from the following
- * page.  If you want to add more icons, check there first.
- *	http://rrze-icon-set.berlios.de/gallery.html
+ * Note: some of the icons for this page were downloaded from the following page.
+ * If you want to add more icons, check there first.
+ *	http://rrze-icon-set.berlios.de/gallery.html (broken link)
  * License info (Creative Commons 3.0)
- *	http://rrze-icon-set.berlios.de/licence.html
+ *	http://rrze-icon-set.berlios.de/licence.html (broken link)
  */
 include_once 'includes/init.php';
 // Load Doc classes for attachments and comments
@@ -108,7 +108,7 @@ media="screen" />
 ';
 
 print_header(
-  array( 'js/popups.js/true', 'js/visible.php', 'js/datesel.php' ),
+  ['js/popups.js/true', 'js/visible.php', 'js/datesel.php','js/translate.js.php'],
   $headExtras, $bodyExtras );
 
 ?>
@@ -136,7 +136,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
       ?>
       <nobr><input type="checkbox" id="<?php echo $name;?>" name="<?php echo $name;?>"
         onclick="handleCategoryCheckboxChange()" value="Y" /><label for="<?php echo $name;?>">
-        <?php echo htmlspecialchars ( $categories[$catId]['cat_name'] ) ?>
+        <?php echo htmlspecialchars ( $catId['cat_name'] ) ?>
         </label></nobr>&nbsp;
       <?php
       //$catIconFile = 'icons/cat-' . $catId . '.gif';
@@ -258,7 +258,7 @@ Agenda content goes here...
      foreach ( $categories as $K => $V ) {
        if ( $K > 1 ) {
          echo '<option value="' . $K . '">' .
-           htmlspecialchars ( $categories[$K]['cat_name'] ) . "</option>\n";
+           htmlspecialchars ( $K['cat_name'] ) . "</option>\n";
        }
      }
      ?>
@@ -296,7 +296,7 @@ Agenda content goes here...
      foreach ( $categories as $K => $V ) {
        if ( $K > 1 ) {
          echo '<option value="' . $K . '">' .
-           htmlspecialchars ( $categories[$K]['cat_name'] ) . "</option>\n";
+           htmlspecialchars ( $K['cat_name'] ) . "</option>\n";
        }
      }
      ?>
@@ -350,24 +350,29 @@ var categories = [];
   // includes category name, owner, colors, global status, icon.
   foreach ( $categories as $catId => $val ) {
     if ( $catId > 0 ) {
-      echo 'categories[' . $catId . '] = ' .
-        '{ id : ' . $catId .
-        ', state: 1' .
-        ', owner: "' . $categories[$catId]['cat_owner'] . '"' .
-        ', name: "' . $categories[$catId]['cat_name'] . '"' .
-        ', color: "' . $categories[$catId]['cat_color'] . '"' .
-        ', global: ' . ( $categories[$catId]['cat_global'] ? '0' : '1' );
       $gifIconFile =  'icons/cat-' . $catId . '.gif';
       $pngIconFile =  'icons/cat-' . $catId . '.png';
       $jpgIconFile =  'icons/cat-' . $catId . '.jpg';
-      if ( file_exists ( $gifIconFile ) ) {
-        echo ', icon: "' . $gifIconFile . '"';
-      } else if ( file_exists ( $pngIconFile ) ) {
-        echo ', icon: "' . $pngIconFile . '"';
-      } else if ( file_exists ( $jpgIconFile ) ) {
-        echo ', icon: "' . $jpgIconFile . '"';
-      }
-      echo " };\n";
+      echo "categories[$catId] = {
+        color: '" . $catId['cat_color'] . '\',
+        global: ' . ( $catId['cat_global'] ? '0' : '1' );
+
+      if ( file_exists ( $gifIconFile ) )
+        echo ",
+        icon: '$gifIconFile'";
+      elseif ( file_exists ( $pngIconFile ) )
+        echo ",
+        icon: '$pngIconFile'";
+      elseif ( file_exists ( $jpgIconFile ) )
+        echo ",
+        icon: '$jpgIconFile'";
+
+      echo ",
+        id: $catId,
+        name: '" . $catId['cat_name'] . '\',
+        owner: \'' . $catId['cat_owner'] . '\',
+        state: 1
+      };';
     }
   }
 ?>
@@ -530,7 +535,7 @@ function handleCategoryCheckboxChange()
       echo "  if ( " . $varName . ' && ' . $varName . '.checked ) {' . "\n";
       echo '    selectedCats[cnt] = ' . $catId . ';' . "\n";
       echo "    if ( cnt++ > 0 ) newText += ', ';\n";
-      echo "    newText += \"" . $categories[$catId]['cat_name'] . "\";\n";
+      echo "    newText += \"" . $catId['cat_name'] . "\";\n";
       echo '    categories[' . $catId . '].state = 1;' . "\n";
       echo '  } else { ' . "\n";
       echo '    cntOff++;' . "\n";
