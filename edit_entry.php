@@ -442,10 +442,13 @@ if ( empty ( $rpt_type ) || ! $rpt_type )
   $rpt_type = 'none';
 
 // Avoid error for using undefined vars.
-if ( ! isset ( $hour ) && $hour != 0 )
-  $hour = -1;
-else
-if ( isset ( $hour ) && $hour >= 0 )
+if ( ! isset ( $hour ) || !is_numeric($hour))
+  $hour = 0;
+if (!isset ($minute)|| !is_numeric ($minute))
+  $minute = 0;
+else if ( isset ($hour) && is_numeric($hour) && $hour >= 0 ) {
+  $cal_time = ( $hour * 10000 ) + ( $minute * 100 );
+}
   $cal_time = ( $hour * 10000 ) + ( isset ( $minute ) ? $minute * 100 : 0 );
 
 if ( empty ( $access ) )
@@ -762,6 +765,8 @@ if ( $can_edit ) {
               <td';
 
   if ( $eType != 'task' ) {
+    if (! isset($duration) || ! is_numeric($duration))
+      $duration = 0;
     $dur_h = intval ( $duration / 60 );
 
     echo '>&nbsp;</td>

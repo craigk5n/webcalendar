@@ -2524,7 +2524,7 @@ function get_categories_by_id ( $id, $user, $asterisk = false ) {
 
   $res = dbi_execute ( 'SELECT wc.cat_name, wc.cat_id, wec.cat_owner
     FROM webcal_categories wc, webcal_entry_categories wec WHERE wec.cal_id = ?
-    AND wec.cat_id = wc.cat_id AND ( wec.cat_owner = ? OR wec.cat_owner IS NULL )
+    AND wec.cat_id = wc.cat_id AND ( wc.cat_owner = ? OR wc.cat_owner IS NULL )
   ORDER BY wec.cat_order', [$id, ( empty ( $user ) ? $login : $user )] );
   while ( $row = dbi_fetch_row ( $res ) ) {
     $categories[ ( empty ( $row[2] ) ? - $row[1] : $row[1] ) ] = $row[0]

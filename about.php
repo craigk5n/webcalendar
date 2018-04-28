@@ -9,8 +9,8 @@ static $data;
 if ( empty( $data ) ) {
   //  Read in and format AUTHORS file.
   $data = preg_replace (
-  ["/\n|\r\n/", '/\s\s+/',      '\s*<br />\s*', '/\s*<.+>+/'],
-  ['<br />',    '&nbsp;&nbsp;', '<br />'],
+    ["/\n|\r\n/", '/\sXX*<.+>+/' ],
+    ['<br />', ""],
   file_get_contents ( 'AUTHORS' ) );
 }
 print_header( '', ( empty( $credits ) ? '' : '<script type="text/javascript">

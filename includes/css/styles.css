@@ -658,6 +658,8 @@ tr.highlight td {
   text-decoration:none;
   vertical-align:middle;
 }
+#admin #em_smtp { font-size:.85rem; }
+#admin #default-user-settings { font-size:.85rem; }
 #admin .main th.weekcell,
 #pref .main th.weekcell {
   background-color:transparent;

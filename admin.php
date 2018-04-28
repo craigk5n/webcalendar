@@ -814,7 +814,7 @@ if ( ! $error ) {
               </div>
             </div>
             <p class="bold">' . translate ( 'Default user settings' ) . ':</p>'
-   . "<blockquote id=\"default-user-settings\">\n"
+   . "<span id=\"default-user-settings\">\n"
    . '<p><label title="' . tooltip ( 'email-format' ) . '">'
    . translate ( 'Email format preference' ) . ':</label>'
    . print_radio ( 'EMAIL_HTML',
@@ -840,7 +840,7 @@ if ( ! $error ) {
             <p><label title="' . tooltip ( 'email-event-create' ) . '">'
    . translate ( 'Event that I create' ) . ':</label>'
    . print_radio ( 'EMAIL_EVENT_CREATE' ) . '</p>
-          </blockquote>
+          </span>
           </div>
         </div>
 
