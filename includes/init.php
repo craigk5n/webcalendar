@@ -48,6 +48,7 @@
        && preg_match( '/\/includes\//', $_SERVER['PHP_SELF'] ) ) )
   die( 'You cannot access this file directly!' );
 
+include_once 'includes/functions.php';
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
@@ -59,7 +60,6 @@ include_once 'includes/assert.php';
 include_once 'includes/config.php';
 include_once 'includes/dbi4php.php';
 include_once 'includes/formvars.php';
-include_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
@@ -87,7 +87,7 @@ $WebCalendar->initializeSecondPhase();
  * @param bool   $disableAJAX  Do not include the prototype.js link
  * @param bool   $disableUTIL  Do not include the util.js link
  */
-function print_header( $includes = '', $HeadX = '', $BodyX = '',
+function print_header ( $includes = [], $HeadX = '', $BodyX = '',
   $disableCustom = false, $disableStyle = false, $disableRSS = false,
   $disableAJAX = false, $disableUTIL = false ) {
   global $BGCOLOR, $browser, $charset, $CUSTOM_HEADER, $CUSTOM_SCRIPT,
@@ -179,9 +179,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   if( ! empty( $js_ar ) )
     foreach( $js_ar as $j ) {
-      $i = 'includes/' . $j;
       $ret .= '
-    <script src="' . $i . '"></script>';
+    <script src="includes/' . $j . '"></script>';
     }
 
   // Any other includes?
@@ -363,6 +362,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
     in_array ( $GLOBALS['SCRIPT'], $pagesWithFullEditor );
 
   return $ret . '
+    <script src="js_cacher.php?inc=js/translate.js.php"></script>
 <!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
     ( $includeCkeditor ?
     /* Your choices here are "basic", "standard" or "full". */ '

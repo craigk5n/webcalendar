@@ -1,5 +1,4 @@
-<?php // $Id: search.php,v 1.58.2.1 2013/01/24 21:15:09 cknudsen Exp $
-
+<?php
 include_once 'includes/init.php';
 // Is this user allowed to search the calendars of other users?
 $show_others = false; // show "Advanced Search"
@@ -35,7 +34,6 @@ $INC = array();
 $INC[] = 'js/autocomplete.js';
 
 if( $show_advanced ) {
-  $INC[] = 'js/translate.js.php';
   $INC[] = 'js/visible.js/true';
   $INC[] = 'js/datesel.php';
 }
