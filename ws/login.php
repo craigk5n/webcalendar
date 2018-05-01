@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php
 /**
  * Description:
  *   Provides login mechanism for web service clients.
@@ -10,13 +10,13 @@ define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
 define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 
 include_once __WC_INCLUDEDIR . 'translate.php';
+include_once __WC_INCLUDEDIR . 'functions.php';
 require_once __WC_CLASSDIR . 'WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
 include __WC_INCLUDEDIR . 'config.php';
 include __WC_INCLUDEDIR . 'dbi4php.php';
-include __WC_INCLUDEDIR . 'functions.php';
 
 $WebCalendar->initializeFirstPhase();
 

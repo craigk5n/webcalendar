@@ -1,4 +1,4 @@
-<?php // $Id: publish.php,v 1.37 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Description:
  * Creates the iCal output for a single user's calendar so that remote users can
@@ -24,6 +24,7 @@
  */
 
 include_once 'includes/translate.php';
+include_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
@@ -31,7 +32,6 @@ $WebCalendar = new WebCalendar( __FILE__ );
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
-include 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 

@@ -1,4 +1,4 @@
-<?php // $Id: freebusy.php,v 1.35 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Description:
  * Creates the iCal free/busy schedule a single user.
@@ -41,6 +41,7 @@
  */
 
 include_once 'includes/translate.php';
+include_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
@@ -50,7 +51,6 @@ $WebCalendar = new WebCalendar( __FILE__ );
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
-include 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 

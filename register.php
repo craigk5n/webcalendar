@@ -1,5 +1,6 @@
-<?php // $Id: register.php,v 1.50.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 include_once 'includes/translate.php';
+include_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
@@ -7,7 +8,6 @@ $WebCalendar = new WebCalendar( __FILE__ );
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
-include 'includes/functions.php';
 require_valid_referring_url ();
 
 $WebCalendar->initializeFirstPhase();

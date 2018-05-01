@@ -1,6 +1,5 @@
 <?php
-/* $Id: controlpanel.php,v 1.15 2009/10/11 16:29:59 bbannon Exp $
- *
+/**
  * Description:
  * This page generates the JNLP contents
  * that Java Web Start uses to start the application.
@@ -20,6 +19,7 @@
  **************************************************************************/
 
 include_once 'includes/translate.php';
+include_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
@@ -29,7 +29,6 @@ $WebCalendar = new WebCalendar( __FILE__ );
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
-include 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase ();
 

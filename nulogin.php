@@ -1,8 +1,9 @@
-<?php // $Id: nulogin.php,v 1.22 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * This page handles logins for nonuser calendars.
  */
 include_once 'includes/translate.php';
+include_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
@@ -10,7 +11,6 @@ $WebCalendar = new WebCalendar( __FILE__ );
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
-include 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 

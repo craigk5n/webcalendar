@@ -21,6 +21,7 @@ function ws_init() {
   define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 
   include_once __WC_INCLUDEDIR . 'translate.php';
+  include_once __WC_INCLUDEDIR . 'functions.php';
   require_once __WC_CLASSDIR . 'WebCalendar.class';
   require_once __WC_CLASSDIR . 'Event.class';
   require_once __WC_CLASSDIR . 'RptEvent.class';
@@ -30,7 +31,6 @@ function ws_init() {
   include_once __WC_INCLUDEDIR . 'config.php';
   include_once __WC_INCLUDEDIR . 'dbi4php.php';
   include_once __WC_INCLUDEDIR . 'access.php';
-  include_once __WC_INCLUDEDIR . 'functions.php';
 
   $WebCalendar->initializeFirstPhase();
 

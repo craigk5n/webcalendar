@@ -15,6 +15,8 @@
 
 define ( '__WC_INCLUDEDIR', '../includes' );
 
+include_once __WC_INCLUDEDIR . 'translate.php';
+include_once __WC_INCLUDEDIR . 'functions.php';
 require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );

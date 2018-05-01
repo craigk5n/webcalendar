@@ -53,6 +53,7 @@
 $debug = false;
 
 include_once 'includes/translate.php';
+include_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
@@ -60,7 +61,6 @@ require_once 'includes/classes/RptEvent.class';
 $WebCalendar = new WebCalendar( __FILE__ );
 
 include 'includes/formvars.php';
-include 'includes/functions.php';
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 

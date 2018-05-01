@@ -16,6 +16,7 @@
  * TODO: hide private events of other users.
  */
 include_once 'includes/translate.php';
+include_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.class';
 require_once 'includes/classes/Event.class';
 require_once 'includes/classes/RptEvent.class';
@@ -25,7 +26,7 @@ $WebCalendar = new WebCalendar( __FILE__ );
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
-include 'includes/functions.php';
+
 require_valid_referring_url ();
 
 $WebCalendar->initializeFirstPhase();
