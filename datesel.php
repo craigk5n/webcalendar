@@ -1,4 +1,4 @@
-<?php // $Id: datesel.php,v 1.57 2009/11/22 16:47:44 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 $fday = getGetValue ( 'fday' );
@@ -32,7 +32,7 @@ $wkstart = get_weekday_before ( $thisyear, $thismonth );
 $monthstartYmd = date ( 'Ymd', mktime ( 0, 0, 0, $thismonth, 1, $thisyear ) );
 $monthendYmd = date ( 'Ymd', mktime ( 23, 59, 59, $thismonth + 1, 0, $thisyear ) );
 
-print_header ( '','', '', true, false, true, true, true );
+print_header ( [],'','',true,false,true,true,true );
 
 //build weekday names
 $wkdys = '';

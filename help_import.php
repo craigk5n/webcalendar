@@ -1,8 +1,8 @@
-<?php // $Id: help_import.php,v 1.27 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
+print_header ( [],'','',true );
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Import' ) . '</h2>
     <h3>' . translate ( 'Palm Desktop' ) . '</h3>

@@ -1,8 +1,6 @@
-<?php // $Id: edit_nonusers.php,v 1.29 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
-print_header( array( 'js/translate.js.php' ),
-  '<script type="text/javascript" src="includes/js/edit_nonusers.js"></script>',
-  '', true, '', true, false );
+print_header ( ['js/edit_nonusers.js/true'],'','',true,false,true );
 
 if ( ! $is_admin ) {
   echo print_not_auth ( true ) . '

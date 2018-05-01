@@ -1811,7 +1811,7 @@ function error_check ( $nextURL, $redirect = true ) {
 
   $ret = '';
   if ( ! empty ( $error ) ) {
-    print_header ( '', '', '', true );
+    print_header ( [],'','',true );
     $ret .= '
     <h2>' . print_error ( $error ) . '</h2>';
   } else {
@@ -5954,6 +5954,17 @@ function weekday_name ( $w, $format = 'l' ) {
       translate ( 'Thu' ),
       translate ( 'Fri' ),
       translate ( 'Sat' )];
+
+// These two don't get returned from here. We just want to make sure they're set.
+    $byday_names= ['SU','MO','TU','WE','TH','FR','SA'];
+    $byday_labels = [
+      translate ( 'SU' ),
+      translate ( 'MO' ),
+      translate ( 'TU' ),
+      translate ( 'WE' ),
+      translate ( 'TH' ),
+      translate ( 'FR' ),
+      translate ( 'SA' )];
   }
 
   if ( $w >= 0 && $w < 7 )

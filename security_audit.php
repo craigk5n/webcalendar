@@ -20,7 +20,7 @@ if ( ! $is_admin || ( access_is_enabled()
 
 $phpinfo = getGetValue( 'phpinfo' );
 if ( $phpinfo == '1' ) {
-  print_header( '', '', '', true );
+  print_header ( [],'','',true );
   phpinfo();
   print_trailer( false, true, true );
   exit;

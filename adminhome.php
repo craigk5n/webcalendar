@@ -1,4 +1,4 @@
-<?php // $Id: adminhome.php,v 1.45 2010/02/03 17:41:20 bbannon Exp $
+<?php
 /**
  * Page Description:
  *   Serves as the home page for administrative functions.
@@ -130,18 +130,7 @@ if ( $is_nonuser_admin ) {
 @session_start();
 $_SESSION['webcal_tmp_login'] = 'SheIsA1Fine!';
 
-print_header( '',
-/*
-  '<style type="text/css">
-      #adminhome table,
-      #adminhome td a {
-        background:' . $CELLBG . '
-      }
-    </style>
- If this is the proper way to call css_cacher.php from here?
- */
-    '<link type="text/css" href="css_cacher.php" rel="stylesheet" />
-    <link type="text/css" href="includes/css/styles.css" rel="stylesheet" />' );
+print_header ();
 
 echo '
     <h2>' . translate( 'Administrative Tools' ) . '</h2>

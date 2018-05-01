@@ -28,7 +28,7 @@ for ( $i = 0, $cnt = count ( $exp ); $i < $cnt; $i++ ) {
 
 $groups = get_groups( $user );
 
-print_header( '', '', '', true, false, true );
+print_header ( [],'' '',true,false,true );
 
 echo '
     <script>';

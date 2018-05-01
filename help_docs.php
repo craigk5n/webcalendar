@@ -1,4 +1,4 @@
-<?php // $Id: help_docs.php,v 1.5 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
@@ -8,7 +8,7 @@ if ( empty ( $SERVER_SOFTWARE ) )
 if ( empty ( $HTTP_USER_AGENT ) )
   $HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 
-print_header ( '', '', '', true );
+print_header ( [],'','',true );
 
 echo $helpListStr . '
     <h2>' . translate ( 'WebCalendar Documentation' ) . '</h2>

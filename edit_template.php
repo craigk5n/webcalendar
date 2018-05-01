@@ -102,7 +102,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
   }
 }
 
-print_header ( '', '', '', true );
+print_header ( [],'','',true );
 /*
 echo 'report_id: ' . $report_id . '<br />
 report_name: ' . $report_name . '<br />

@@ -132,7 +132,7 @@ if ( is_dir ( $dir ) ) {
 $currenttab = getPostValue ( 'currenttab', 'settings' );
 $currenttab = ( empty( $currenttab ) ? 'settings' : $currenttab );
 
-print_header ( ['js/translate.js.php','js/admin.js','js/visible.js'], '',
+print_header ( ['js/admin.js','js/visible.js'], '',
   'onload="init_admin();showTab( \'' . $currenttab . '\' );"' );
 
 if ( ! $error ) {

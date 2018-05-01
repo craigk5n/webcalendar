@@ -23,7 +23,7 @@ else {
   }
 }
 
-print_header ( '', '', '', true );
+print_header ( [],'','',true );
 echo '
     <form action="group_edit_handler.php" method="post">
       <h2>';

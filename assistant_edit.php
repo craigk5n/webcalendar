@@ -10,7 +10,7 @@ if ( empty ( $login ) || $login == '__public__' ) {
 if ( $user != $login )
   $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
 
-print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
+print_header ( [], $GROUPS_ENABLED !== 'Y' ? '' :
   '<script type="text/javascript" src="includes/js/assistant_edit.js"></script>' );
 echo '
     <form action="assistant_edit_handler.php" method="post" '

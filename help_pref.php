@@ -2,7 +2,7 @@
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
+print_header ( [],'','',true );
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'Preferences' ) . '</h2>
     <h3>' . translate ( 'Settings' ) . '</h3>

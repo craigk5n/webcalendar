@@ -1,8 +1,8 @@
-<?php // $Id: help_admin.php,v 1.33 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
-print_header ( '', '', '', true );
+print_header ( [],'','',true );
 echo $helpListStr . '
     <h2>' . translate ( 'Help' ) . ': ' . translate ( 'System Settings' )
  . '</h2>
