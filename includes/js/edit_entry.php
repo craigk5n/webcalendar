@@ -4,13 +4,13 @@ global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
 
 $user = $arinc[3];
 
-// Craig. This would be a good place to use the Date functions in js/chapman.js
-// These arrays are already set. And translated. Wouldn't have to redo them again.
-// There are other such places, too.
 ?>
 var bydayAr = bymonthdayAr = bysetposAr = [];
-var bydayLabels = ["SU","MO","TU","WE","TH","FR","SA"];
-var bydayTrans = [
+
+/* These are set in translate.js.php
+However, I've changed the names here to match everywhere else.
+var byday_labels = ['SU','MO','TU','WE','TH','FR','SA'];
+var byday_names = [
   "<?php etranslate ( 'SU' ) ?>"
 , "<?php etranslate ( 'MO' ) ?>"
 , "<?php etranslate ( 'TU' ) ?>"
@@ -18,6 +18,8 @@ var bydayTrans = [
 , "<?php etranslate ( 'TH' ) ?>"
 , "<?php etranslate ( 'FR' ) ?>"
 , "<?php etranslate ( 'SA' ) ?>"];
+*/
+
 // do a little form verifying
 function validate_and_submit() {
   if ( form.name.value == "" ) {
@@ -28,7 +30,7 @@ function validate_and_submit() {
     showTab( 'details' );
 <?php } ?>
     form.name.focus();
-    alert ( "<?php etranslate ( 'You have not entered a Brief Description', true)?>.");
+    alert ( "<?php etranslate ( 'You have not entered a Brief Description.', true )?>");
     return false;
   }
   if ( form.timetype &&
@@ -91,6 +93,7 @@ function validate_and_submit() {
   var y = form.year.selectedIndex;
   var valy = form.year.options[y].value;
   var c = new Date(valy,valm -1,vald);
+
  if ( c.getDate() != vald ) {
    alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
   form.day.focus();
@@ -347,7 +350,7 @@ function rpttype_weekly() {
    var valy = form.year.options[y].value;
    var c = new Date(valy,valm,vald);
    var dayOfWeek = c.getDay();
-   var rpt_day = bydayLabels[dayOfWeek];
+   var rpt_day = byday_labels[dayOfWeek];
    elements[rpt_day].checked = true;
  }
 }
@@ -456,8 +459,8 @@ function del_selected() {
 }
 
 function toggle_byday( ele ) {
-  var bydaytext = bydayTrans[ele.id.substr(2,1)];
-  var bydayVal = bydayLabels[ele.id.substr(2,1)];
+  var bydaytext = byday_names[ele.id.substr(2,1)];
+  var bydayVal = byday_labels[ele.id.substr(2,1)];
   var tmp = '';
   if (ele.value.length > 4 ) {
     //blank
