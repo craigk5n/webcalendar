@@ -1,4 +1,4 @@
-<?php // $Id: rss_activity_log.php,v 1.9 2010/10/05 17:16:59 cknudsen Exp $
+<?php
 /**
  * Description:
  *  Generates RSS 2.0 output of the activity log.
@@ -34,6 +34,7 @@
  */
 
 include_once 'includes/translate.php';
+include_once 'includes/functions.php';
 require_once 'includes/classes/WebCalendar.class';
 
 $WebCalendar = new WebCalendar( __FILE__ );
@@ -41,7 +42,6 @@ $WebCalendar = new WebCalendar( __FILE__ );
 include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
-include 'includes/functions.php';
 include 'includes/access.php';
 
 $WebCalendar->initializeFirstPhase();
