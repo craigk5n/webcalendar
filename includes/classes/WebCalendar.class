@@ -353,6 +353,19 @@ class WebCalendar {
     define ( 'ONE_DAY',  86400 );
     define ( 'ONE_WEEK', 604800 );
 
+    /* Arrays containing
+     * - the names for the days of the week.
+     * - the short names for the days of the week.
+     * - the labels for BYDAY names for the days of the week.
+     * - the translated BYDAY labels for the days of the week.
+     *
+     * @global array $weekday_names
+     * @global array $week_names
+     * @global array $byday_labels
+     * @global array $byday_names
+     */
+     weekday_name ();
+
     /**
      * Arrays containing the number of days in each month
      * in a leap year and a non-leap year.
@@ -363,20 +376,6 @@ class WebCalendar {
     $ldays_per_month =
     $days_per_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     $ldays_per_month[2] = 29;
-
-    /**
-     * Array containing the short names for the days of the week.
-     *
-     * @global array $weekday_names
-     */
-    $weekday_names = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-    /**
-     * Array containing the BYDAY names for the days of the week.
-     *
-     * @global array $byday_name
-     */
-    $byday_names = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
 
     /**
      * Array containing the number value of the days of the week.
