@@ -1710,8 +1710,8 @@ if ( $can_edit ) {
   if ( ! empty ( $categories ) ) {
     foreach ( $categories as $K => $V ) {
       // None is index -1 and needs to be ignored
-      if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
-          substr ( $form, 0, 4 ) == 'edit' ) ) {
+      if ( $K > 0 && ( ( $V['cat_owner'] == $login || $V['cat_global'] > 0 )
+          || $is_admin || substr ( $form, 0, 4 ) == 'edit' ) ) {
         $tmpStr = $K . '">' . $V['cat_name'];
         echo '<input type="checkbox" name="cat_' . $K . '" ' .
           'id="cat_' . $K . '"><label for="cat_' . $K . '">' .
