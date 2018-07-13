@@ -524,7 +524,12 @@ function dbi_update_blob( $table, $column, $key, $data ) {
 
   if( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 )
     return dbi_execute( $sql . ' = 0x' . bin2hex( $data ) . ' WHERE ' . $key );
-  elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ) {
+  elseif ( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
+    return dbi_execute( $sql . ' = \''
+     . ( function_exists( 'mysqli_real_escape_string' )
+       ? $db_connection_info['connection']->real_escape_string( $data ) : addslashes( $data ) )
+     . '\' WHERE ' . $key );
+  } elseif ( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ) {
     return dbi_execute( $sql . ' = \''
      . ( function_exists( 'mysql_real_escape_string' )
        ? mysql_real_escape_string( $data ) : addslashes( $data ) )
@@ -569,16 +574,18 @@ function dbi_get_blob( $table, $column, $key ) {
   $res =
     dbi_execute( 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $key );
 
-  if( ! $res )
+  if( ! $res ) {
     return false;
+  }
 
   $ret = '';
 
   if( $row = dbi_fetch_row( $res ) ) {
-    if( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0
-        || strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 )
+    if( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 
+        || strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ||
+        strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
       $ret = $row[0];
-    elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
+    } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
       $ret = pg_unescape_bytea ( $row[0] );
     elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
       $ret = sqlite_udf_decode_binary( $row[0] );
