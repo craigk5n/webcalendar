@@ -1,75 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>WebCalendar User Manual</title>
-<style>
-  body {
-    background-color: #FFFFFF;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  a {
-    text-decoration: none;
-  }
-  p {
-    margin: 10px;
-  }
-  dl,
-  ul {
-    margin-left: 10px;
-  }
-  h2 {
-    background-color: #191970;
-    color: #FFFFFF;
-    padding: 5px;
-  }
-  h3 {
-    padding: 5px;
-  }
-  dt {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  pre {
-    font-family: courier, monospace;
-    font-size: 14px;
-    border: 1px solid #0000FF;
-    background-color: #EEEEFF;
-    padding: 4px;
-    margin-left: 25px;
-    margin-right: 25px;
-  }
-  .tip {
-    font-weight: bold;
-    background-color: #FFFF00;
-    padding: 2px;
-  }
-  .note {
-    font-weight: bold;
-    background-color: #87CEFA;
-    padding: 2px;
-  }
-  hr {
-    margin-bottom: 7px;
-  }
-  .valid {
-    border-width: 0px;
-  }
-  .top {
-    text-align: right;
-  }
-  #rpt_matrix td{
-    text-align: center;
-  }
-</style>
-</head>
-<body>
-<h1>WebCalendar User Manual</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WebCalendar User Manual</title>
+    <link href="../includes/css/docs.css" rel="stylesheet">
+  </head>
+  <body id="manual">
+    <h1>WebCalendar User Manual</h1>
 
-<p><strong>WebCalendar Version: 1.1.1</strong></p>
+    <p><strong>WebCalendar Version: 1.2.7</strong></p>
 
 <h2>Table of Contents</h2>
 <ul><li>
@@ -93,7 +32,7 @@
   <a href="#glossary">Glossary</a></li><li>
   <a href="#history">History</a>
 </li></ul>
-<hr />
+<hr>
 
 <h2><a name="intro">Introduction</a></h2>
 <p>WebCalendar is a calendar system. It is intended to be easy to setup and
@@ -113,11 +52,11 @@ respond.</p>
 
 <p>The first public release of WebCalendar was in December of 1999.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="users">Users and Events</a></h2>
 <p>WebCalendar can be configured to operate in either single-user or
-multi-user mode.<br />
+multi-user mode.<br>
 
 <span class="note">Note:</span> If your WebCalendar is a single-user
 configuration, a large portion of this document will not apply.</p>
@@ -127,7 +66,7 @@ is no limit to the number of users that can use WebCalendar (aside from
 system resources such as database space).
 
 Each participant will have a status for the event: "Waiting for Approval,"
-"Approved" or "Rejected."<br />
+"Approved" or "Rejected."<br>
 
 <span class="note">Note:</span> If your WebCalendar is configured to not
 require approvals, then participants will always appear as "Approved" for
@@ -138,7 +77,7 @@ will be "Approved" by default. If you include any other users, then
 their status will be "Waiting for Approval" until they either approve or
 reject the event. If configured to do so, WebCalendar will email participants
 notifying them that there is a new event waiting for approval on his/her
-calendar.<br />
+calendar.<br>
 
 <span class="note">Note:</span> As the creator of the event, you will not
 receive this email notification because your status for the event is
@@ -146,8 +85,8 @@ automatically set to "Approved."</p>
 
 <p>When viewing the details of an event, the status of event participants will be designated as shown below:</p>
 
-<img src="event_status.gif" alt="Event Status Screenshot" />
-<br /><br />
+<img src="event_status.gif" alt="Event Status Screenshot">
+<br><br>
 
 <span class="note">Notes:</span>
 <ul>
@@ -163,7 +102,7 @@ automatically set to "Approved."</p>
   are logged and are viewable by the system administrator.</li>
 </ul>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="repeat">Repeating Events</a></h2>
 
@@ -190,14 +129,14 @@ daily, every other month for monthly, etc.).</p>
 <h3>Daily</h3>
 <p>If you select "Daily", the event will repeat at the same time
 every day until the end date (if specified) or the <em>Number of times</em> is reached. You can also
-select <em>Weekdays  Only</em> to cause the event to skip weekends.<br />
+select <em>Weekdays  Only</em> to cause the event to skip weekends.<br>
 <strong>Expert Mode:</strong> Adds the option to specify individual days of the week (<em>ByDay</em>) as
 well as selecting specific months (<em>ByMonth</em>) that the event will repeat.</p>
 
 <h3>Weekly</h3>
 <p>If you select "Weekly", the event will repeat every week on the day(s)
 selected until the end date (if specified) or until the <em>End</em>. You may select specific ByDay values to
-have your event repeat more than one day per week.<br />
+have your event repeat more than one day per week.<br>
 <strong>Expert Mode:</strong> Adds the option to specify specific months (<em>ByMonth</em>) that
 the event will repeat.</p>
 
@@ -205,7 +144,7 @@ the event will repeat.</p>
 <p>If you select "Monthly (by day)", the event will repeat on the same
 weekday of the month every month until the specified <em>End</em>.
 For example, if the initial date is the second Monday of the month,
-the event will repeat on the second Monday of each month.<br />
+the event will repeat on the second Monday of each month.<br>
 <strong>Expert Mode:</strong> Adds the option to specify individual days of the month (<em>ByDay</em>) as
 well as selecting specific months that the event will repeat. You have the option to select any
 combination of days within the month using the triple-state buttons, for example, you
@@ -223,7 +162,7 @@ day (<em>ByDay</em>) values.</p>
 <p>If you select "Monthly (by date)", the event will repeat on the
 same date of the month every month until the <em>End</em>.
 For example, if you the initial date is May 12th, then the event
-will repeat on June 12th and so on.<br />
+will repeat on June 12th and so on.<br>
 <strong>Expert Mode:</strong> Adds the options to select days of the week (<em>ByDay</em>),
 specific months <em>ByMonthDay</em> to repeat and an option to select specific dates within the
 month (<em>ByMonthDay</em>). With this option you can select any combination of dates within
@@ -235,14 +174,14 @@ the month, for example, the 3rd of each month (3), the 31st (31), the second fro
 using the <em>End</em> and <em>ByDay</em>, then the option (<em>BySetPos</em>) will be applied.
 For example, if you selected MO,TU,WE the normal habit would be to repeat every Monday, Tuesday,
 and Wednesday within the month. Specifying (<em>BySetPos</em>) 7 would narrow the final selection
-to the 7th element of the original set of dates. It's sounds confusing I know...just try programming it :)<br />
+to the 7th element of the original set of dates. It's sounds confusing I know...just try programming it :)<br>
 <strong>Expert Mode:</strong> Adds the option to specify specific months to repeat. Please note that
 (<em>BySetPos</em>) is applied after all other ByXXX values, so selecting (<em>ByMonth</em>) may yield unexpected
 results.</p>
 
 <h3>Yearly</h3>
 <p>If you select "Yearly", the event will repeat on the same date every
-year until the <em>End</em>.<br />
+year until the <em>End</em>.<br>
 <strong>Expert Mode:</strong> Adds the (ByDay), (ByMonth), and (ByMonthDay) as described above.
 These settings are applied to each month specified by the (ByMonth)...basically like the Monthly
 (by Day/Date) options. Also, two user entered values are available. <em>ByWeekNo</em> allows one or
@@ -260,18 +199,18 @@ after all ByXXX values are evaluated.</p>
   <tr><th colspan="12">Available Repeat Option Matrix</th>
   </tr>
   <tr align="center">
-    <td>Repeat&nbsp;/&nbsp;Repeat<br />&nbsp;&nbsp;Type&nbsp;&nbsp;&nbsp;/&nbsp;Options</td>
+    <td>Repeat&nbsp;/&nbsp;Repeat<br>&nbsp;&nbsp;Type&nbsp;&nbsp;&nbsp;/&nbsp;Options</td>
     <td>Ending</td>
     <td>Frequency</td>
-    <td>Weekdays<br />Only </td>
-    <td>Week<br />Start </td>
+    <td>Weekdays<br>Only </td>
+    <td>Week<br>Start </td>
     <td>ByDay</td>
     <td>ByMonth</td>
     <td>ByMonthDay</td>
     <td>BySetPos</td>
     <td>ByWeekNo</td>
     <td>ByYearDay</td>
-    <td>Exclusions/<br />Inclusions</td>
+    <td>Exclusions/<br>Inclusions</td>
   </tr>
   <tr>
     <td>None</td>
@@ -358,7 +297,7 @@ after all ByXXX values are evaluated.</p>
     <td>X</td>
   </tr>
   <tr>
-    <td>Monthly by Day<br />(Expert ) </td>
+    <td>Monthly by Day<br>(Expert ) </td>
     <td>X</td>
     <td>X</td>
     <td>&nbsp;</td>
@@ -386,7 +325,7 @@ after all ByXXX values are evaluated.</p>
     <td>X</td>
   </tr>
   <tr>
-    <td>Monthly by Date<br />(Expert ) </td>
+    <td>Monthly by Date<br>(Expert ) </td>
     <td>X</td>
     <td>X</td>
     <td>&nbsp;</td>
@@ -400,7 +339,7 @@ after all ByXXX values are evaluated.</p>
     <td>X</td>
   </tr>
   <tr>
-    <td>Monthly by<br />Position </td>
+    <td>Monthly by<br>Position </td>
     <td>X</td>
     <td>X</td>
     <td>&nbsp;</td>
@@ -414,8 +353,8 @@ after all ByXXX values are evaluated.</p>
     <td>X</td>
   </tr>
   <tr>
-    <td>Monthly by<br />
-      Position<br />( Expert ) </td>
+    <td>Monthly by<br>
+      Position<br>( Expert ) </td>
     <td>X</td>
     <td>X</td>
     <td>&nbsp;</td>
@@ -475,7 +414,7 @@ after all ByXXX values are evaluated.</p>
   </tr>
 </table>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="publicaccess">Public Access</a></h2>
 <p>If your system is not configured to allow Public Access, you may skip
@@ -490,7 +429,7 @@ to users that aren't logged in, simply select the 'Public Access' user as
 a participant for the event(s).</p>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="subscriptions">Remote Subscriptions</a></h2>
 <p>If your system is not configured to allow Remote Subscriptions,
@@ -507,7 +446,7 @@ or <a href="http://apple.com/ical">Apple's iCal</a>) will be displayed.</p>
 <p>If the 'Public Access' calendar is enabled, the Remote Subscriptions service can be
 enabled by following the same procedure as above in the Public Access preferences panel.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="external">External Users</a></h2>
 <p>If your system is not configured to allow External Users, you may skip this section.</p>
@@ -532,7 +471,7 @@ Joe Smith &lt;jsmith@xxx.com&gt;
 <p>Email addresses within '&lt;' and '&gt;' characters will receive email notifications
 and reminders.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="nonuser">NonUser Calendars</a></h2>
 <p>NonUser Calendars<a href="#g_nonuser">*</a> allow you to
@@ -546,7 +485,7 @@ of a conference room. If used in combination with <a href="#views">views</a>,
 you can quickly &amp; easily view the availability of multiple conference rooms
 on the same page.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="categories">Categories</a></h2>
 <p>If your system is not configured to use categories, you may skip this
@@ -569,7 +508,7 @@ with that category will appear on your calendar.</p>
 <p>If enabled, icons can also be uploaded and assigned to categories to be displayed
 before the event name. You will also be able to choose an icon from existing icons that have already been uploaded. This requires that a folder named <tt>icons</tt> exist in the WebCalendar directory.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="views">Views</a></h2>
 <p>Views<a href="#g_view">*</a> allow you to look at the calendar of one or
@@ -577,7 +516,7 @@ more users (or NonUser Calendars) at the same time. You can create a new
 view by clicking "Views" in the admin panel.</p>
 
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="groups">Groups</a></h2>
 <p>If you system is not configured to use Groups<a href="#g_group">*</a>, you may skip this
@@ -592,7 +531,7 @@ selecting participants for an event.</p>
 This button will popup a user selection window that will allow
 event participants to be selected by group.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="layers">Layers</a></h2>
 <p>Layers<a href="#g_layer">*</a> allow you to overlay one or more calendars
@@ -611,7 +550,7 @@ to "Week" rather than "Month" in your <a href="#pref">Preferences</a>.</p>
 users that you would like to use with layers, you can create more than one
 "Daily" <a href="#views">View</a>.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="boss">Assistant/Boss</a></h2>
 <p>If your system is not configured to allow Assistant Mode, then you may skip
@@ -628,7 +567,7 @@ This link will quickly bring the Assistant to a view of the Boss' calendar.
 When adding an event from this page, the default participant will
 be only the Boss.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="uac">User Access Control</a></h2>
 <p>If your system is not configured to use User Access Control, then you may skip
@@ -643,7 +582,7 @@ of your events.</p>
 
 <p>The <strong>DEFAULT CONFIGURATION</strong> selection will set the access for all users not otherwise granted/restricted access to your calendar.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="pref">Preferences</a></h2>
 <p>Various components of WebCalendar can be customized by modifying your user preferences.</p>
@@ -786,7 +725,7 @@ URL displayed.</dd>
 <dd>Specify the background color for table cells that represent a Saturday or Sunday</dd>
 </dl>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="faq">FAQ</a></h2>
 <!-- cek: leave these comments here... extractfaqs.pl looks for them -->
@@ -817,7 +756,7 @@ URL displayed.</dd>
 
 <p><span class="tip">TIP:</span> WebCalendar setup and configuration issues are documented in the "WebCalendar System Administrator's Guide".</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="licensing">Licensing</a></h2>
 <p>WebCalendar is distributed under the open source
@@ -825,7 +764,7 @@ URL displayed.</dd>
 If you have questions about this license, please read their
 <a href="http://www.gnu.org/licenses/gpl-faq.html">GPL FAQ</a>.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="help">Getting Help</a></h2>
 <p>Try the Help/Troubleshooting forum for WebCalendar, hosted at SourceForge.net:</p>
@@ -834,7 +773,7 @@ If you have questions about this license, please read their
 <p>If you encounter a bug, please check the
 <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>. If you do not see anything similar, submit a new bug.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
-<hr />
+<hr>
 
 <h2><a name="glossary">Glossary</a></h2>
 <dl>
@@ -888,8 +827,7 @@ displayed in blocks of time (set in user <a href="#pref">Preferences</a>)</dd>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <p>
   <a href="http://validator.w3.org/check?uri=referer"><img
-    src="http://www.w3.org/Icons/valid-xhtml10"
-    alt="Valid XHTML 1.0!" class="valid" /></a>
+    src="../images/HTML5_Logo.png" alt="Valid HTML5!"></a>
 </p>
 </body>
 </html>

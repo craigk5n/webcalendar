@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta charset="utf-8"><meta name="referrer" content="no-referrer"><meta name="robots" content="noindex,nofollow"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><link rel="icon" href="http://localhost/phpmyadmin/favicon.ico" type="image/x-icon"><link rel="shortcut icon" href="http://localhost/phpmyadmin/favicon.ico" type="image/x-icon"><link rel="stylesheet" type="text/css" href="../includes/css/docs.css"><title>Print view - phpMyAdmin 4.7.4</title><script data-cfasync="false" type="text/javascript" src="Print%20view%20-%20phpMyAdmin%204.7.4_files/get_scripts.js"></script><script data-cfasync="false" type="text/javascript" src="Print%20view%20-%20phpMyAdmin%204.7.4_files/get_scripts_003.js"></script><script data-cfasync="false" type="text/javascript" src="Print%20view%20-%20phpMyAdmin%204.7.4_files/get_scripts_004.js"></script><script data-cfasync="false" type="text/javascript" src="Print%20view%20-%20phpMyAdmin%204.7.4_files/get_scripts_002.js"></script><script data-cfasync="false" type="text/javascript" src="Print%20view%20-%20phpMyAdmin%204.7.4_files/whitelist.js"></script><script data-cfasync="false" type="text/javascript" src="Print%20view%20-%20phpMyAdmin%204.7.4_files/messages.js"></script><script data-cfasync="false" type="text/javascript" src="Print%20view%20-%20phpMyAdmin%204.7.4_files/get_image.js"></script><script data-cfasync="false" type="text/javascript">// <![CDATA[
+PMA_commonParams.setAll({common_query:"?server=2",opendb_url:"db_structure.php",collation_connection:"utf8mb4_general_ci",lang:"en",server:"2",table:"",db:"test",token:"9d11cef29d436772f9312d64df6efbc9",text_dir:"ltr",show_databases_navigation_as_tree:"1",pma_text_default_tab:"Browse",pma_text_left_default_tab:"Structure",pma_text_left_default_tab2:"",LimitChars:"50",pftext:"P",confirm:"1",LoginCookieValidity:"1440",session_gc_maxlifetime:"1440",logged_in:"1",PMA_VERSION:"4.7.4",auth_type:"cookie",user:"root"});
+ConsoleEnterExecutes=false
+AJAX.scriptHandler.add("jquery/jquery.min.js",0).add("jquery/jquery-migrate-3.0.0.js",0).add("whitelist.php",1).add("sprintf.js",1).add("ajax.js",0).add("keyhandler.js",1).add("jquery/jquery-ui.min.js",0).add("jquery/jquery.cookie.js",0).add("jquery/jquery.mousewheel.js",0).add("jquery/jquery.event.drag-2.2.js",0).add("jquery/jquery-ui-timepicker-addon.js",0).add("jquery/jquery.ba-hashchange-1.3.js",0).add("jquery/jquery.debounce-1.0.5.js",0).add("menu-resizer.js",1).add("cross_framing_protection.js",0).add("rte.js",1).add("tracekit/tracekit.js",1).add("error_report.js",1).add("messages.php",0).add("get_image.js.php",0).add("config.js",1).add("doclinks.js",1).add("functions.js",1).add("navigation.js",1).add("indexes.js",1).add("common.js",1).add("page_settings.js",1).add("shortcuts_handler.js",1).add("codemirror/lib/codemirror.js",0).add("codemirror/mode/sql/sql.js",0).add("codemirror/addon/runmode/runmode.js",0).add("codemirror/addon/hint/show-hint.js",0).add("codemirror/addon/hint/sql-hint.js",0).add("codemirror/addon/lint/lint.js",0).add("codemirror/addon/lint/sql-lint.js",0).add("console.js",1);
+$(function() {AJAX.fireOnload("whitelist.php");AJAX.fireOnload("sprintf.js");AJAX.fireOnload("keyhandler.js");AJAX.fireOnload("menu-resizer.js");AJAX.fireOnload("rte.js");AJAX.fireOnload("tracekit/tracekit.js");AJAX.fireOnload("error_report.js");AJAX.fireOnload("config.js");AJAX.fireOnload("doclinks.js");AJAX.fireOnload("functions.js");AJAX.fireOnload("navigation.js");AJAX.fireOnload("indexes.js");AJAX.fireOnload("common.js");AJAX.fireOnload("page_settings.js");AJAX.fireOnload("shortcuts_handler.js");AJAX.fireOnload("console.js");});
+// ]]></script><noscript><style>html{display:block}</style></noscript></head><body id="wc_db"><noscript><div class="error"><img src="themes/dot.gif" title="" alt="" class="icon ic_s_error" /> Javascript must be enabled past this point!</div></noscript><div id="page_content"><div>
+<h2>webcal_access_function</h2>
+Table comments: Specifies what WebCalendar functions a user can access. 
+Each function has a corresponding numeric value (specified in the file 
+includes/access.php). For example, view event is 0, so the very first 
+character in the cal_permissions column is either a "Y" if this user can
+ view events or a "N" if they cannot.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>User login. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_permissions</td><td class="nowrap" dir="ltr" lang="en">varchar(64)</td><td>No</td><td class="nowrap"></td>    <td>A string of "Y"s and/or "N"s for the various functions.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_login</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_access_user</h2>
+Table comments: Specifies which users can access another user's calendar.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>The
+ current user who is attempting to look at another user's calendar. From
+ &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_other_user <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>The
+ login of the other user whose calendar the current user wants to 
+access. Also, from &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; 
+table.</td>
+</tr><tr><td class="nowrap">cal_can_approve</td><td class="nowrap" dir="ltr" lang="en">smallint(5)</td><td>No</td><td class="nowrap">0</td>    <td>Can current user approve events on the other user's calendar?</td>
+</tr><tr><td class="nowrap">cal_can_edit</td><td class="nowrap" dir="ltr" lang="en">smallint(5)</td><td>No</td><td class="nowrap">0</td>    <td>Can current user edit events on the other user's calendar?</td>
+</tr><tr><td class="nowrap">cal_can_email</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>Yes</td><td class="nowrap">Y</td>    <td>Can current user send emails to other user?</td>
+</tr><tr><td class="nowrap">cal_can_invite</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>No</td><td class="nowrap">Y</td>    <td>Can current user see other user in Participant lists?</td>
+</tr><tr><td class="nowrap">cal_can_view</td><td class="nowrap" dir="ltr" lang="en">smallint(5)</td><td>No</td><td class="nowrap">0</td>    <td>Can current user view events on the other user's calendar?</td>
+</tr><tr><td class="nowrap">cal_see_time_only</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>No</td><td class="nowrap">N</td>    <td>Can current user can only see time of other user?</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_login</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_other_user</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_asst</h2>
+Table comments: Define assistant/boss relationship.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_boss <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Boss login. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_assistant <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Assistant login. Also from &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_boss</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_assistant</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_blob</h2>
+Table comments: This table stores event attachments and comments.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_blob_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Unique identifier for this object.</td>
+</tr><tr><td class="nowrap">cal_description</td><td class="nowrap" dir="ltr" lang="en">varchar(128)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Description of what the object is (subject for comment).</td>
+</tr><tr><td class="nowrap">cal_id</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Event id (if applicable). From &lt;a href="#webcal_entry"&gt;webcal_entry&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_login</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Login of user who created. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_mime_type</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>MIME type of object (as specified by browser during upload (not used for comment).</td>
+</tr><tr><td class="nowrap">cal_mod</td><td class="nowrap" dir="ltr" lang="en">timestamp</td><td>No</td><td class="nowrap">current_timestamp()</td>    <td>When was this added / changed?</td>
+</tr><tr><td class="nowrap">cal_mod_date</td><td class="nowrap" dir="ltr" lang="en">date</td><td>No</td><td class="nowrap"></td>    <td>Date added.</td>
+</tr><tr><td class="nowrap">cal_mod_time</td><td class="nowrap" dir="ltr" lang="en">time</td><td>No</td><td class="nowrap"></td>    <td>Time added.</td>
+</tr><tr><td class="nowrap">cal_name</td><td class="nowrap" dir="ltr" lang="en">varchar(30)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Filename of object (not used for comments).</td>
+</tr><tr><td class="nowrap">cal_size</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Size of object (not used for comments).</td>
+</tr><tr><td class="nowrap">cal_type</td><td dir="ltr" lang="en">enum('A', 'C')</td><td>No</td><td class="nowrap">C</td>    <td>Type of object: C=Comment, A=Attachment.</td>
+</tr><tr><td class="nowrap">cal_blob</td><td class="nowrap" dir="ltr" lang="en">longblob</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Binary data for object.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_blob_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr><tr class="noclick"><td rowspan="2">wb_cl_cd</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_login</td><td></td><td>A</td><td>Yes</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_description</td><td></td><td>A</td><td>Yes</td></tr></tbody></table></div><div>
+<h2>webcal_categories</h2>
+Table comments: Defines user categories. Categories can be specific to a
+ user or global. When a category is global, the cat_owner field will be 
+NULL. (Only an admin user can create a global category.)<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cat_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Unique category id.</td>
+</tr><tr><td class="nowrap">cat_color</td><td class="nowrap" dir="ltr" lang="en">varchar(7)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>RGB color for category.</td>
+</tr><tr><td class="nowrap">cat_name</td><td class="nowrap" dir="ltr" lang="en">varchar(80)</td><td>No</td><td class="nowrap"></td>    <td>Category name.</td>
+</tr><tr><td class="nowrap">cat_owner</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>User
+ login of category owner. From &lt;a 
+href="#webcal_user"&gt;webcal_user&lt;/a&gt; table, if applicable. If 
+this is NULL, then it is a global category.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cat_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_config</h2>
+Table comments: System settings (set by the admin interface in admin.php).<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_setting <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>No</td><td class="nowrap"></td>    <td>System setting.</td>
+</tr><tr><td class="nowrap">cal_value</td><td class="nowrap" dir="ltr" lang="en">varchar(100)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>System setting value.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_setting</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_entry</h2>
+Table comments: Defines a calendar event. Each event in the system has 
+one entry in this table unless the event starts before midnight and ends
+ after midnight. In that case a secondary event will be created with 
+cal_ext_for_id set to the cal_id of the original entry. The following 
+tables contain additional information about each 
+event:&lt;ul&gt;&lt;li&gt;&lt;a 
+href="#webcal_entry_user"&gt;webcal_entry_user&lt;/a&gt; table - lists 
+participants in the event and specifies the status (accepted, rejected) 
+and category of each participant.&lt;/li&gt;&lt;li&gt;&lt;a 
+href="#webcal_entry_repeats"&gt;webcal_entry_repeats&lt;/a&gt; table - 
+contains information if the event repeats.&lt;/li&gt;&lt;li&gt;&lt;a 
+href="#webcal_entry_repeats_not"&gt;webcal_entry_repeats_not&lt;/a&gt; 
+table - specifies which dates the repeating event does not repeat 
+(because they were deleted or modified for just that date by the 
+user.)&lt;/li&gt;&lt;li&gt;&lt;a 
+href="#webcal_entry_log"&gt;webcal_entry_log&lt;/a&gt; table - provides a
+ history of changes to this event.&lt;/li&gt;&lt;li&gt;&lt;a 
+href="#webcal_site_extras"&gt;webcal_site_extras&lt;/a&gt; table - 
+stores event data as defined in site_extras.php (such as reminders and 
+other custom event fields).&lt;/li&gt;&lt;/ul&gt;<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Unique integer id for event.</td>
+</tr><tr><td class="nowrap">cal_access</td><td dir="ltr" lang="en">enum('C', 'P', 'R')</td><td>Yes</td><td class="nowrap">P</td>    <td>"P"
+ = Public, "R" = Private (others cannot see the event), "C" = 
+Confidential (others can see time allocated but not what it is).</td>
+</tr><tr><td class="nowrap">cal_completed</td><td class="nowrap" dir="ltr" lang="en">date</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Date task completed.</td>
+</tr><tr><td class="nowrap">cal_create_by</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Login of user that created the event. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_date</td><td class="nowrap" dir="ltr" lang="en">date</td><td>No</td><td class="nowrap"></td>    <td>Date of event (in YYYYMMDD format).</td>
+</tr><tr><td class="nowrap">cal_datetime</td><td class="nowrap" dir="ltr" lang="en">datetime</td><td>No</td><td class="nowrap"></td>    <td>When is this event scheduled to start?</td>
+</tr><tr><td class="nowrap">cal_due</td><td class="nowrap" dir="ltr" lang="en">datetime</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>When is this task due?</td>
+</tr><tr><td class="nowrap">cal_due_date</td><td class="nowrap" dir="ltr" lang="en">date</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Task due date.</td>
+</tr><tr><td class="nowrap">cal_due_time</td><td class="nowrap" dir="ltr" lang="en">time</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Task due time.</td>
+</tr><tr><td class="nowrap">cal_duration</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Duration of event in minutes.</td>
+</tr><tr><td class="nowrap">cal_ext_for_id</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Used
+ when an event goes past midnight into the next day, in which case an 
+additional entry in this table will use this field to indicate the 
+original event cal_id.</td>
+</tr><tr><td class="nowrap">cal_group_id</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>The parent event id if this event is overriding an occurrence of a repeating event. From this table.</td>
+</tr><tr><td class="nowrap">cal_location</td><td class="nowrap" dir="ltr" lang="en">varchar(100)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Location of event.</td>
+</tr><tr><td class="nowrap">cal_mod</td><td class="nowrap" dir="ltr" lang="en">timestamp</td><td>No</td><td class="nowrap">current_timestamp()</td>    <td>When was this added / changed?</td>
+</tr><tr><td class="nowrap">cal_mod_date</td><td class="nowrap" dir="ltr" lang="en">date</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Date the event was last modified (in YYYYMMDD format).</td>
+</tr><tr><td class="nowrap">cal_mod_time</td><td class="nowrap" dir="ltr" lang="en">time</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Time the event was last modified (in HHMMSS format).</td>
+</tr><tr><td class="nowrap">cal_name</td><td class="nowrap" dir="ltr" lang="en">varchar(80)</td><td>No</td><td class="nowrap"></td>    <td>Brief description of event.</td>
+</tr><tr><td class="nowrap">cal_priority</td><td class="nowrap" dir="ltr" lang="en">tinyint(3)</td><td>Yes</td><td class="nowrap">5</td>    <td>Event priority: 1=High, 9=Low.</td>
+</tr><tr><td class="nowrap">cal_time</td><td class="nowrap" dir="ltr" lang="en">time</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Event start time (in HHMMSS format).</td>
+</tr><tr><td class="nowrap">cal_type</td><td dir="ltr" lang="en">enum('E', 'M', 'T')</td><td>Yes</td><td class="nowrap">E</td>    <td>"E" = Event, "M" = Repeating event, "T" = Task.</td>
+</tr><tr><td class="nowrap">cal_url</td><td class="nowrap" dir="ltr" lang="en">varchar(100)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>URL of event.</td>
+</tr><tr><td class="nowrap">cal_description</td><td class="nowrap" dir="ltr" lang="en">text</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Full description of event.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_entry_categories</h2>
+Table comments: Contains category foreign keys to enable multiple categories for each event or task.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_id</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Id of event from &lt;a href="webcal_entry"&gt;webcal_entry&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cat_id</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Id of category from &lt;a href="webcal_categories"&gt;webcal_categories&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cat_owner</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>User that owns this record. Global categories will be NULL. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cat_order</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Order that user requests their categories appear. Globals are always last.</td>
+</tr></tbody></table></div><div>
+<h2>webcal_entry_ext_user</h2>
+Table comments: External user (no login) for an event.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>From &lt;a href="webcal_entry"&gt;webcal_entry&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_email</td><td class="nowrap" dir="ltr" lang="en">varchar(75)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>external user email (for sending a reminder)</td>
+</tr><tr><td class="nowrap">cal_fullname <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>No</td><td class="nowrap"></td>    <td>external user full name</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_id</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_fullname</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_entry_log</h2>
+Table comments: Activity log for an event.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_log_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Unique id of this log entry.</td>
+</tr><tr><td class="nowrap">cal_date</td><td class="nowrap" dir="ltr" lang="en">date</td><td>No</td><td class="nowrap"></td>    <td>Date (in YYYYMMDD format).</td>
+</tr><tr><td class="nowrap">cal_entry_id</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Event id. From &lt;a href="#webcal_entry"&gt;webcal_entry&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_login</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>User who performed this action. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_mod</td><td class="nowrap" dir="ltr" lang="en">timestamp</td><td>No</td><td class="nowrap">current_timestamp()</td>    <td>When was this added / changed?</td>
+</tr><tr><td class="nowrap">cal_time</td><td class="nowrap" dir="ltr" lang="en">time</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Time (in HHMMSS format).</td>
+</tr><tr><td class="nowrap">cal_type</td><td dir="ltr" lang="en">enum('A', 'C', 'E', 'M', 'R', 'U')</td><td>No</td><td class="nowrap">C</td>    <td>Log
+ types:&lt;ul&gt;&lt;li&gt;C: Created&lt;/li&gt;&lt;li&gt;A: 
+Approved/Confirmed by user&lt;/li&gt;&lt;li&gt;R: Rejected by 
+user&lt;/li&gt;&lt;li&gt;U: Updated by user&lt;/li&gt;&lt;li&gt;M: Mail 
+Notification sent&lt;/li&gt;&lt;li&gt;E: Reminder 
+sent&lt;/li&gt;&lt;/ul&gt;</td>
+</tr><tr><td class="nowrap">cal_user_cal</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>User of calendar affected. Also from &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_text</td><td class="nowrap" dir="ltr" lang="en">text</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Optional text.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_log_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_entry_repeats</h2>
+Table comments: Defines repeating info about an event. The event is 
+defined in &lt;a href="#webcal_entry"&gt;webcal_entry&lt;/a&gt; table.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Event id. From &lt;a href="#webcal_entry"&gt;webcal_entry&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_byday</td><td class="nowrap" dir="ltr" lang="en">varchar(100)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>The following columns are values as specified in RFC2445.</td>
+</tr><tr><td class="nowrap">cal_bymonth</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_bymonthday</td><td class="nowrap" dir="ltr" lang="en">varchar(100)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_bysetpos</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_byweekno</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_byyearday</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_count</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_days</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>NO LONGER USED. We'll leave it in for now.</td>
+</tr><tr><td class="nowrap">cal_end</td><td class="nowrap" dir="ltr" lang="en">date</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>End date for repeating event.</td>
+</tr><tr><td class="nowrap">cal_enddt</td><td class="nowrap" dir="ltr" lang="en">datetime</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>End date and time for repeating event.</td>
+</tr><tr><td class="nowrap">cal_endtime</td><td class="nowrap" dir="ltr" lang="en">time</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>End time for repeating event.</td>
+</tr><tr><td class="nowrap">cal_frequency</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>Yes</td><td class="nowrap">1</td>    <td>Frequency of repeat: 1 = every, 2 = every other, 3 = every 3rd, etc.</td>
+</tr><tr><td class="nowrap">cal_type</td><td class="nowrap" dir="ltr" lang="en">varchar(20)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Type
+ of repeating:&lt;ul&gt;&lt;li&gt;daily - repeats 
+daily&lt;/li&gt;&lt;li&gt;monthlyByDate - repeats on same day of the 
+month&lt;/li&gt;&lt;li&gt;monthlyBySetPos - repeats based on position 
+within other ByXXX values&lt;/li&gt;&lt;li&gt;monthlyByDay - repeats on 
+specified weekday2nd Monday, for example)&lt;/li&gt;&lt;li&gt;weekly - 
+repeats every week&lt;/li&gt;&lt;li&gt;yearly - repeats on same date 
+every year&lt;/li&gt;&lt;/ul&gt;</td>
+</tr><tr><td class="nowrap">cal_wkst</td><td dir="ltr" lang="en">enum('MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU')</td><td>Yes</td><td class="nowrap">MO</td>    <td>Week starts on...</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_entry_repeats_not</h2>
+Table comments: This table specifies which dates in a repeating event 
+have either been deleted, included, or replaced with another event for 
+that day. When replaced, the cal_group_id (I know... not the best name, 
+but it was not being used) column will be set to the original event. 
+That way the user can delete the original event and (at the same time) 
+delete any exception events.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Event id of repeating event. From &lt;a href="#webcal_entry"&gt;webcal_entry&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_date <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">date</td><td>No</td><td class="nowrap"></td>    <td>Date event should not repeat.</td>
+</tr><tr><td class="nowrap">cal_exdate</td><td class="nowrap" dir="ltr" lang="en">tinyint(3)</td><td>No</td><td class="nowrap">1</td>    <td>Indicates whether this record is an exclusion1) or inclusion0).</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_id</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_date</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_entry_user</h2>
+Table comments: This table associates one or more users with an event by
+ the event id. The event can be found in &lt;a 
+href="#webcal_entry"&gt;webcal_entry&lt;/a&gt; table.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Event id. From &lt;a href="#webcal_entry"&gt;webcal_entry&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Participant in the event. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_category</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Category of the event for this user.</td>
+</tr><tr><td class="nowrap">cal_percent</td><td class="nowrap" dir="ltr" lang="en">tinyint(3)</td><td>No</td><td class="nowrap">0</td>    <td>Task percentage of completion for this user's task.</td>
+</tr><tr><td class="nowrap">cal_status</td><td dir="ltr" lang="en">enum('A', 'C', 'D', 'P', 'R', 'W')</td><td>Yes</td><td class="nowrap">A</td>    <td>Status
+ of event for this 
+user:&lt;ul&gt;&lt;li&gt;A=Accepted&lt;/li&gt;&lt;li&gt;C=Completed&lt;/li&gt;&lt;li&gt;D=Deleted&lt;/li&gt;&lt;li&gt;P=In-Progress&lt;/li&gt;&lt;li&gt;R=Rejected/Declined&lt;/li&gt;&lt;li&gt;W=Waiting&lt;/li&gt;&lt;/ul&gt;</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_id</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_login</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_group</h2>
+Table comments: Define a group. Group members can be found in &lt;a 
+href="#webcal_group_user"&gt;webcal_group_user&lt;/a&gt; table.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_group_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Unique group id.</td>
+</tr><tr><td class="nowrap">cal_last_update</td><td class="nowrap" dir="ltr" lang="en">timestamp</td><td>No</td><td class="nowrap">current_timestamp()</td>    <td>Date last updated.</td>
+</tr><tr><td class="nowrap">cal_name</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>No</td><td class="nowrap"></td>    <td>Name of the group.</td>
+</tr><tr><td class="nowrap">cal_owner</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>User login of user that created this group. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_group_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_group_user</h2>
+Table comments: Group members.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_group_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>From &lt;a href="webcal_group"&gt;webcal_group&lt;/a&gt;</td>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>From &lt;a href="webcal_user"&gt;webcal_user&lt;/a&gt;</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_group_id</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_login</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_import</h2>
+Table comments: Used to track import data (one row per import).<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_import_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Unique id for import.</td>
+</tr><tr><td class="nowrap">cal_date</td><td class="nowrap" dir="ltr" lang="en">timestamp</td><td>No</td><td class="nowrap">current_timestamp()</td>    <td>Datetime of import.</td>
+</tr><tr><td class="nowrap">cal_login</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>User who performed the import.</td>
+</tr><tr><td class="nowrap">cal_name</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Name of import (optional).</td>
+</tr><tr><td class="nowrap">cal_type</td><td class="nowrap" dir="ltr" lang="en">varchar(10)</td><td>No</td><td class="nowrap"></td>    <td>Type of import (ical, vcal, palm, outlookcsv).</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_import_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_import_data</h2>
+Table comments: Used to track import data (one row per event).<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Event id in WebCalendar. From &lt;a href="#webcal_entry"&gt;webcal_entry&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>User login. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_external_id</td><td class="nowrap" dir="ltr" lang="en">varchar(200)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>External id used in external calendar system (for example, UID in iCal).</td>
+</tr><tr><td class="nowrap">cal_import_id</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Import id (From &lt;a href="#webcal_import"&gt;webcal_import&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_import_type</td><td class="nowrap" dir="ltr" lang="en">varchar(15)</td><td>No</td><td class="nowrap"></td>    <td>Type of import: "palm", "vcal", "ical" or "outlookcsv".</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_id</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_login</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_nonuser_cals</h2>
+Table comments: Defines non-user calendars.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Unique id for the calendar.</td>
+</tr><tr><td class="nowrap">cal_admin</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>The calendar administrator. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_displayname</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Name to diplay on public or other user's calendars.</td>
+</tr><tr><td class="nowrap">cal_firstname</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Calendar' first name.</td>
+</tr><tr><td class="nowrap">cal_is_public</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>No</td><td class="nowrap">N</td>    <td>Can this nonuser calendar be a public calendar (no login required)?</td>
+</tr><tr><td class="nowrap">cal_lastname</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Calendar's last name.</td>
+</tr><tr><td class="nowrap">cal_url</td><td class="nowrap" dir="ltr" lang="en">varchar(255)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>URL of the remote calendar.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_login</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_reminders</h2>
+Table comments: Stores information about reminders.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td></td>
+</tr><tr><td class="nowrap">cal_action</td><td class="nowrap" dir="ltr" lang="en">varchar(12)</td><td>No</td><td class="nowrap">EMAIL</td>    <td>Action as imported, may be used in the future.</td>
+</tr><tr><td class="nowrap">cal_before</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>No</td><td class="nowrap">Y</td>    <td>Specifies whether reminder is sent before or after selected edge.</td>
+</tr><tr><td class="nowrap">cal_date</td><td class="nowrap" dir="ltr" lang="en">datetime</td><td>No</td><td class="nowrap"></td>    <td>When to send? Use this or cal_offset, but not both.</td>
+</tr><tr><td class="nowrap">cal_duration</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Time in ISO 8601 format that specifies time between repeated reminders.</td>
+</tr><tr><td class="nowrap">cal_last_sent</td><td class="nowrap" dir="ltr" lang="en">datetime</td><td>No</td><td class="nowrap"></td>    <td>Timestamp of last sent reminder.</td>
+</tr><tr><td class="nowrap">cal_offset</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Offset in minutes from the selected edge.</td>
+</tr><tr><td class="nowrap">cal_related</td><td dir="ltr" lang="en">enum('E', 'S')</td><td>No</td><td class="nowrap">S</td>    <td>S=Start, E=End. Specifies which edge of entry this reminder applies to.</td>
+</tr><tr><td class="nowrap">cal_repeats</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Number of times to repeat in addition to original occurrence.</td>
+</tr><tr><td class="nowrap">cal_times_sent</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Number of times this reminder has been sent.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_report</h2>
+Table comments: Defines a custom report created by a user.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_report_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Unique id of this report.</td>
+</tr><tr><td class="nowrap">cal_allow_nav</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>Yes</td><td class="nowrap">Y</td>    <td>Allow user to navigate to different dates with next/previous? ("Y" or "N")</td>
+</tr><tr><td class="nowrap">cal_cat_id</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Category to filter on (optional).</td>
+</tr><tr><td class="nowrap">cal_include_empty</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>Yes</td><td class="nowrap">N</td>    <td>Include empty dates in report ("Y" or "N").</td>
+</tr><tr><td class="nowrap">cal_include_header</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>No</td><td class="nowrap">Y</td>    <td>If cal_report_type is "html", should the default HTML header and trailer be included? ("Y" or "N")</td>
+</tr><tr><td class="nowrap">cal_is_global</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>No</td><td class="nowrap">N</td>    <td>Is this a global report (can it be accessed by other users - "Y" or "N")</td>
+</tr><tr><td class="nowrap">cal_login</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Creator of report.</td>
+</tr><tr><td class="nowrap">cal_mod</td><td class="nowrap" dir="ltr" lang="en">timestamp</td><td>No</td><td class="nowrap">current_timestamp()</td>    <td>Created or last updated.</td>
+</tr><tr><td class="nowrap">cal_report_name</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>No</td><td class="nowrap"></td>    <td>Name of the report.</td>
+</tr><tr><td class="nowrap">cal_report_type</td><td class="nowrap" dir="ltr" lang="en">varchar(20)</td><td>No</td><td class="nowrap"></td>    <td>Format of report (html, plain or csv).</td>
+</tr><tr><td class="nowrap">cal_show_in_trailer</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>Yes</td><td class="nowrap">N</td>    <td>Include a link for this report in the "Go to" section of the navigation in the page trailer? ("Y" or "N")</td>
+</tr><tr><td class="nowrap">cal_time_range</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Time
+ range for report:&lt;ul&gt;&lt;li&gt;0 = tomorrow&lt;/li&gt;&lt;li&gt;1
+ = today&lt;/li&gt;&lt;li&gt;2 = yesterday&lt;/li&gt;&lt;li&gt;3 = day 
+before yesterday&lt;/li&gt;&lt;li&gt;10 = next 
+week&lt;/li&gt;&lt;li&gt;11 = current week&lt;/li&gt;&lt;li&gt;12 = last
+ week&lt;/li&gt;&lt;li&gt;13 = week before last&lt;/li&gt;&lt;li&gt;20 =
+ next week and week after&lt;/li&gt;&lt;li&gt;21 = current week and next
+ week&lt;/li&gt;&lt;li&gt;22 = last week and this 
+week&lt;/li&gt;&lt;li&gt;23 = last two weeks&lt;/li&gt;&lt;li&gt;30 = 
+next month&lt;/li&gt;&lt;li&gt;31 = current month&lt;/li&gt;&lt;li&gt;32
+ = last month&lt;/li&gt;&lt;li&gt;33 = month before 
+last&lt;/li&gt;&lt;li&gt;40 = next year&lt;/li&gt;&lt;li&gt;41 = current
+ year&lt;/li&gt;&lt;li&gt;42 = last year&lt;/li&gt;&lt;li&gt;43 = year 
+before last&lt;/li&gt;&lt;/ul&gt;</td>
+</tr><tr><td class="nowrap">cal_update_date</td><td class="nowrap" dir="ltr" lang="en">date</td><td>No</td><td class="nowrap"></td>    <td>Date created or last updated (in YYYYMMDD format).</td>
+</tr><tr><td class="nowrap">cal_user</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>User calendar to display (NULL indicates current user).</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_report_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_report_template</h2>
+Table comments: Defines one of the templates used for a report. Each 
+report has three templates: &lt;ol&gt;&lt;li&gt;Page template - Defines 
+the entire page (except for header and footer). The following variables 
+can be defined:&lt;ul&gt;&lt;li&gt;${days}&lt;sup&gt;*&lt;/sup&gt; - the
+ HTML of all dates (generated from the Date 
+template)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;Date template - 
+Defines events for one day. If the report is for a week or month, then 
+the results of each day will be concatenated and used as the ${days} 
+variable in the Page template. The following variables can be 
+defined:&lt;ul&gt;&lt;li&gt;${events}&lt;sup&gt;*&lt;/sup&gt; - the HTML
+ of all events for the data (generated from the Event 
+template)&lt;/li&gt;&lt;li&gt;${date} - the 
+date&lt;/li&gt;&lt;li&gt;${fulldate} - date (includes 
+weekday)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;Event template - 
+Defines a single event. The following variables can be defined: 
+&lt;ul&gt;&lt;li&gt;${name}&lt;sup&gt;*&lt;/sup&gt; - Brief Description 
+of event&lt;/li&gt;&lt;li&gt;${description} - Full Description of 
+event&lt;/li&gt;&lt;li&gt;${date} - Date of 
+event&lt;/li&gt;&lt;li&gt;${fulldate} - Date of event (includes 
+weekday)&lt;/li&gt;&lt;li&gt;${time} - Time of event (4:00pm - 
+4:30pm)&lt;/li&gt;&lt;li&gt;${starttime} - Start time of 
+event&lt;/li&gt;&lt;li&gt;${endtime} - End time of 
+event&lt;/li&gt;&lt;li&gt;${duration} - Duration of event (in 
+minutes)&lt;/li&gt;&lt;li&gt;${priority} - Priority of 
+event&lt;/li&gt;&lt;li&gt;${href} - URL to view event 
+details&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;&lt;sup&gt;*&lt;/sup&gt;
+ denotes a required template variable.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_report_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Report id from &lt;a href="webcal_report table"&gt;webcal_report&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_template_type <em>(Primary)</em></td><td dir="ltr" lang="en">enum('D', 'E', 'P')</td><td>No</td><td class="nowrap">P</td>    <td>Type
+ of template:&lt;ul&gt;&lt;li&gt;"P": page template represents entire 
+document&lt;/li&gt;&lt;li&gt;"D": date template represents a single day 
+of events&lt;/li&gt;&lt;li&gt;"E": event template represents a single 
+event&lt;/li&gt;&lt;/ul&gt;</td>
+</tr><tr><td class="nowrap">cal_template_text</td><td class="nowrap" dir="ltr" lang="en">text</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Text of template.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_report_id</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_template_type</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_site_extras</h2>
+Table comments: This table holds data for site extra fields (customized in site_extra.php).<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_date</td><td class="nowrap" dir="ltr" lang="en">date</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Only used for EXTRA_DATE type fields.</td>
+</tr><tr><td class="nowrap">cal_id</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap">0</td>    <td>Event id from &lt;a href="webcal_entry"&gt;webcal_entry&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_name</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>The brief name of this type (first field in $site_extra array).</td>
+</tr><tr><td class="nowrap">cal_remind</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>Yes</td><td class="nowrap">0</td>    <td>How many minutes before event should a reminder be sent.</td>
+</tr><tr><td class="nowrap">cal_type</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>EXTRA_URL, EXTRA_DATE, etc.</td>
+</tr><tr><td class="nowrap">cal_data</td><td class="nowrap" dir="ltr" lang="en">text</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Used to store text data.</td>
+</tr></tbody></table></div><div>
+<h2>webcal_timezones</h2>
+Table comments: This table stores timezones of the world.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">dtend</td><td class="nowrap" dir="ltr" lang="en">varchar(16)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Last date this timezone represents YYYYMMDDTHHMMSSZ format.</td>
+</tr><tr><td class="nowrap">dtstart</td><td class="nowrap" dir="ltr" lang="en">varchar(16)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Earliest date this timezone represents YYYYMMDDTHHMMSSZ format.</td>
+</tr><tr><td class="nowrap">tzid <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(100)</td><td>No</td><td class="nowrap"></td>    <td>Unique name of timezone, try to use Olsen naming conventions.</td>
+</tr><tr><td class="nowrap">vtimezone</td><td class="nowrap" dir="ltr" lang="en">text</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Complete VTIMEZONE text gleaned from imported ics files.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>tzid</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_translations</h2>
+Table comments: Various language translations.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">phrase <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td>The
+ translate / tooltip (phrases) from the code. And the __phrase__ from 
+version 2.0.0. ("latin1" is currently the only choice that is case 
+sensitive.)</td>
+</tr><tr><td class="nowrap">on_page</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>No</td><td class="nowrap"></td>    <td>which code page (sorted alphabetically) has the first occurance of the above phrase.</td>
+</tr><tr><td class="nowrap">English_US</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td>The full English text.</td>
+</tr><tr><td class="nowrap">Afrikaans</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Albanian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Arabic</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Armenian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Azerbaijan</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Basque</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Belarusian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Bulgarian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Catalan</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Chamorro</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Chinese_Big5</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Chinese_GB2312</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Croatian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Czech</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Danish</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Dutch</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Elven</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td>From JRR Tolkien "Hobbit" and "Lord of the Rings".</td>
+</tr><tr><td class="nowrap">Esperanto</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Estonian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Faroese</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Farsi</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Finnish</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">French</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Galician</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Georgian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">German</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Greek</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Hebrew</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Hungarian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Icelandic</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Indonesian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Italian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Japanese</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Klingon</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Korean</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Latvian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Lithuanian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Malaysian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Myanmar</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Norwegian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Persian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Polish</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Portuguese</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Portuguese_BR</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Romanian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Russian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Serbian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Sinhala</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Slovakian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Slovenian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Spanish</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Swedish</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Taiwanese</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Turkish</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Ukrainian</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Vietnamese</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr><tr><td class="nowrap">Welsh</td><td class="nowrap" dir="ltr" lang="en">varchar(300)</td><td>No</td><td class="nowrap"></td>    <td></td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>phrase</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr><tr class="noclick"><td rowspan="1">wt_op</td><td rowspan="1">BTREE</td><td rowspan="1">No</td><td rowspan="1">No</td><td>on_page</td><td></td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_user</h2>
+Table comments: Defines a WebCalendar user.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Unique user login.</td>
+</tr><tr><td class="nowrap">cal_enabled</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>Yes</td><td class="nowrap">Y</td>    <td>Allow admin to disable account? (Y or N)</td>
+</tr><tr><td class="nowrap">cal_is_admin</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>Yes</td><td class="nowrap">N</td>    <td>Is the user a WebCalendar administrator? (Y or N)</td>
+</tr><tr><td class="nowrap">cal_last_login</td><td class="nowrap" dir="ltr" lang="en">timestamp</td><td>No</td><td class="nowrap">current_timestamp()</td>    <td>Date user last logged in.</td>
+</tr><tr><td class="nowrap">cal_mod</td><td class="nowrap" dir="ltr" lang="en">timestamp</td><td>No</td><td class="nowrap">current_timestamp()</td>    <td>User's last log in.</td>
+</tr><tr><td class="nowrap">cal_passwd</td><td class="nowrap" dir="ltr" lang="en">varchar(32)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>The user's password (not used for http.)</td>
+</tr><tr><td class="nowrap">cal_lastname</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_firstname</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_email</td><td class="nowrap" dir="ltr" lang="en">varchar(75)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_telephone</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_address</td><td class="nowrap" dir="ltr" lang="en">varchar(75)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_title</td><td class="nowrap" dir="ltr" lang="en">varchar(75)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_birthday</td><td class="nowrap" dir="ltr" lang="en">int(11)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td></td>
+</tr><tr><td class="nowrap">cal_type</td><td dir="ltr" lang="en">enum('A', 'N', 'S', 'U')</td><td>Yes</td><td class="nowrap">U</td>    <td>Is this an A)dmin, N)on_user, S)ystem, or ordinary U)ser? Will evevtually replace is_admin.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_login</td><td>1</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_user_layers</h2>
+Table comments: Define layers for a user.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Login of owner of this layer from &lt;a href="webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_layeruser <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Login name of user that this layer represents. Also from &lt;a href="webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_color</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Color (preferably in hex) of this layer.</td>
+</tr><tr><td class="nowrap">cal_layerid</td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Unique layer id.</td>
+</tr><tr><td class="nowrap">cal_dups</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>Yes</td><td class="nowrap">N</td>    <td>Show duplicates? (Y or N)</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_login</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_layeruser</td><td>0</td><td>A</td><td>No</td></tr><tr class="noclick"><td rowspan="1">cal_layerid</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_layerid</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_user_pref</h2>
+Table comments: Specify preferences for a user. Most preferences are set
+ via pref.php. Values in this table are loaded after system settings 
+found in &lt;a href="#webcal_config"&gt;webcal_config&lt;/a&gt; table.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>User login from &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_setting <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>No</td><td class="nowrap"></td>    <td>Setting name.</td>
+</tr><tr><td class="nowrap">cal_value <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(100)</td><td>No</td><td class="nowrap"></td>    <td>Value of setting.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="3">PRIMARY</td><td rowspan="3">BTREE</td><td rowspan="3">Yes</td><td rowspan="3">No</td><td>cal_login</td><td></td><td>A</td><td>No</td><td rowspan="3"></td></tr><tr class="noclick"><td>cal_setting</td><td></td><td>A</td><td>No</td></tr><tr class="noclick"><td>cal_value</td><td>3</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_user_template</h2>
+Table comments: This table stores the custom header/stylesheet/trailer. 
+If configured properly, each user (or nonuser cal) can have their own 
+custom header/trailer.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>User login (or nonuser cal name), the default for all users is stored with the username "__webcal__sys__".</td>
+</tr><tr><td class="nowrap">cal_type <em>(Primary)</em></td><td dir="ltr" lang="en">enum('H', 'S', 'T')</td><td>No</td><td class="nowrap"></td>    <td>H)eader, S)tylesheet/script, T)railer.</td>
+</tr><tr><td class="nowrap">cal_template_text</td><td class="nowrap" dir="ltr" lang="en">text</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>Text of template.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_login</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_type</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><div>
+<h2>webcal_view</h2>
+Table comments: A "view" allows a user to put the calendars of multiple 
+users all on one page. A "view" is valid only for the owner (cal_owner) 
+of the view. Users for the view are in &lt;a 
+href="#webcal_view_user"&gt;webcal_view_user&lt;/a&gt; table.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_view_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>Unique view id.</td>
+</tr><tr><td class="nowrap">cal_is_global</td><td dir="ltr" lang="en">enum('N', 'Y')</td><td>No</td><td class="nowrap">N</td>    <td>Is this a global view? (can it be accessed by other users - "Y" or "N")</td>
+</tr><tr><td class="nowrap">cal_name</td><td class="nowrap" dir="ltr" lang="en">varchar(50)</td><td>No</td><td class="nowrap"></td>    <td>Name of view.</td>
+</tr><tr><td class="nowrap">cal_owner</td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>Login name of owner of this view. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_view_type</td><td dir="ltr" lang="en">enum('D', 'M', 'W')</td><td>Yes</td><td class="nowrap"><i>NULL</i></td>    <td>"W" for week view, "D" for day view, "M" for month view.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="1">PRIMARY</td><td rowspan="1">BTREE</td><td rowspan="1">Yes</td><td rowspan="1">No</td><td>cal_view_id</td><td>0</td><td>A</td><td>No</td><td rowspan="1"></td></tr></tbody></table></div><div>
+<h2>webcal_view_user</h2>
+Table comments: Specify users in a view.<br><br><table class="print" width="100%"><tbody><tr><th width="50">Column</th><th width="80">Type</th><th width="40">Null</th><th width="70">Default</th>    <th>Comments</th>
+</tr><tr><td class="nowrap">cal_view_id <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">int(10)</td><td>No</td><td class="nowrap"></td>    <td>view id from &lt;a href="#webcal_view"&gt;webcal_view&lt;/a&gt; table.</td>
+</tr><tr><td class="nowrap">cal_login <em>(Primary)</em></td><td class="nowrap" dir="ltr" lang="en">varchar(25)</td><td>No</td><td class="nowrap"></td>    <td>A user in the view. From &lt;a href="#webcal_user"&gt;webcal_user&lt;/a&gt; table.</td>
+</tr></tbody></table><h3>Indexes</h3><div class="no_indexes_defined hide"><div class="notice"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="" alt="" class="icon ic_s_notice"> No index defined!</div></div><table id="table_index"><thead><tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th><th>Comment</th></tr></thead><tbody><tr class="noclick"><td rowspan="2">PRIMARY</td><td rowspan="2">BTREE</td><td rowspan="2">Yes</td><td rowspan="2">No</td><td>cal_view_id</td><td></td><td>A</td><td>No</td><td rowspan="2"></td></tr><tr class="noclick"><td>cal_login</td><td>0</td><td>A</td><td>No</td></tr></tbody></table></div><p class="print_ignore"><input class="button" id="print" value="Print" type="button"></p></div><div id="selflink" class="print_ignore"><a href="http://localhost/phpmyadmin/db_datadict.php?db=test&amp;table=webcal_view_user&amp;server=2&amp;target=" title="Open new phpMyAdmin window" target="_blank" rel="noopener noreferrer"><img src="Print%20view%20-%20phpMyAdmin%204.7.4_files/dot.gif" title="Open new phpMyAdmin window" alt="Open new phpMyAdmin window" class="icon ic_window-new"></a></div><div class="clearfloat" id="pma_errors"></div><script data-cfasync="false" type="text/javascript">//
+ <![CDATA[
+if (! (history && history.pushState)) PMA_MicroHistory.primer = { url: 
+"db_datadict.php?db=test&table=webcal_view_user&server=2&target=", 
+scripts: 
+[{"name":"jquery\/jquery.min.js","fire":0},{"name":"jquery\/jquery-migrate-3.0.0.js","fire":0},{"name":"whitelist.php","fire":1},{"name":"sprintf.js","fire":1},{"name":"ajax.js","fire":0},{"name":"keyhandler.js","fire":1},{"name":"jquery\/jquery-ui.min.js","fire":0},{"name":"jquery\/jquery.cookie.js","fire":0},{"name":"jquery\/jquery.mousewheel.js","fire":0},{"name":"jquery\/jquery.event.drag-2.2.js","fire":0},{"name":"jquery\/jquery-ui-timepicker-addon.js","fire":0},{"name":"jquery\/jquery.ba-hashchange-1.3.js","fire":0},{"name":"jquery\/jquery.debounce-1.0.5.js","fire":0},{"name":"menu-resizer.js","fire":1},{"name":"cross_framing_protection.js","fire":0},{"name":"rte.js","fire":1},{"name":"tracekit\/tracekit.js","fire":1},{"name":"error_report.js","fire":1},{"name":"messages.php","fire":0},{"name":"get_image.js.php","fire":0},{"name":"config.js","fire":1},{"name":"doclinks.js","fire":1},{"name":"functions.js","fire":1},{"name":"navigation.js","fire":1},{"name":"indexes.js","fire":1},{"name":"common.js","fire":1},{"name":"page_settings.js","fire":1},{"name":"shortcuts_handler.js","fire":1},{"name":"codemirror\/lib\/codemirror.js","fire":0},{"name":"codemirror\/mode\/sql\/sql.js","fire":0},{"name":"codemirror\/addon\/runmode\/runmode.js","fire":0},{"name":"codemirror\/addon\/hint\/show-hint.js","fire":0},{"name":"codemirror\/addon\/hint\/sql-hint.js","fire":0},{"name":"codemirror\/addon\/lint\/lint.js","fire":0},{"name":"codemirror\/addon\/lint\/sql-lint.js","fire":0},{"name":"console.js","fire":1}],
+ menuHash: "f0fa2d03"};
+var debugSQLInfo = 'null';
+AJAX.scriptHandler;
+$(function() {});
+// ]]></script></body></html>

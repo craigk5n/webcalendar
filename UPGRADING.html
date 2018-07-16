@@ -1,86 +1,32 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <title>WebCalendar Upgrading Notes</title>
-    <style>
-      body {
-        background: #FFF;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      a {
-        text-decoration: none;
-      }
-      p {
-        margin: 10px;
-      }
-      dl,
-      ul {
-        margin-left: 10px;
-      }
-      h2,
-      h3 {
-        padding: 5px;
-      }
-      h2 {
-        background: #191970;
-        color: #FFF;
-      }
-      dt {
-        margin-top: 10px;
-        font-weight: bold;
-      }
-      pre {
-        margin-right: 25px;
-        margin-left: 25px;
-        border: 1px solid #00F;
-        padding: 4px;
-        background: #EEF;
-        font-size: 14px;
-        font-family: courier, monospace;
-      }
-      .tip {
-        padding: 2px;
-        background: #FF0;
-        font-weight: bold;
-      }
-      .note {
-        padding: 2px;
-        background: #87CEFA;
-        font-weight: bold;
-      }
-      hr {
-        margin-bottom: 7px;
-      }
-      .valid {
-        border: 0;
-      }
-      .top {
-        text-align: right;
-      }
-    </style>
+    <link href="includes/css/docs.css" rel="stylesheet">
   </head>
-  <body>
+  <body id="upgrading">
     <h1>WebCalendar Upgrading Notes</h1>
 
-    <table border="0" style="margin-left: 50px;">
-    <tr><th style="text-align: right;">WebCalendar Version:</th><td> 1.3.0 </td></tr>
-    <tr><th valign="top" style="text-align: right;">Document Version:</th><td> $Revision$ <br/> $Date$</td>
+    <table>
+      <tr>
+        <th>WebCalendar Version:</th>
+        <td>1.2.7 </td>
+      </tr>
     </table>
 
-    <p style="margin-bottom: 0"><span class="note">Important News:</span> A major
+    <p><span class="note">Important News:</span> A major
     improvement beginning with Version 1.1 is the addition of an automated
     installation script. This script will guide you through the installation
     process and help identify any problem areas that might prevent successful
     installation or operation of WebCalendar.</p>
 
-    <ul style="margin-top: 0">
-      <li style="margin-left: 30px">If upgrading, the script will attempt to
+    <ul>
+      <li>If upgrading, the script will attempt to
       determine your current installation version and bring your database up to
       date.</li>
 
-      <li style="margin-left: 30px">If this is a new installation, the
+      <li>If this is a new installation, the
       installation script will create your database and setup the required
       tables for you. It can then create a default Administrator account and
       add the basic configuration data to get you up and running.</li>
@@ -114,11 +60,11 @@
 
     <h2>Upgrading Steps</h2>
 
-    <p>With the new 1.1 install wizard, you will no longer have to be troubled
-    with uploading SQL files to phpMyAdmin or executing SQL commands yourself.
-    Your database will be upgraded automatically from your current older
+    <p>With the install wizard, you will no longer be troubled
+    with uploading SQL files to phpMyAdmin or executing SQL commands yourself. (For the most part. There are one or two database types that have not been fully implemented, as yet. If you are able to set them up, we'd appreciate the help.)
+    Your database will be upgraded automatically from your current
     WebCalendar installation.  Follow the steps below to upgrade to WebCalendar
-    1.1 from an older version of WebCalendar.
+    1.2.7 from an older version of WebCalendar.
     </p>
 
     <ol>
@@ -130,28 +76,29 @@
                <li>Startup phpMyAdmin </li>
                <li>Select the database from the pulldown on the left under the
                    label "Databases".  (This will be the same database name
-                   used in your <tt>includes/settings.php</tt> file in your
-                   old WebCalendar install.)</li>
+                   used in your <span class="tt">includes/settings.php</span> file in your current WebCalendar installation.)</li>
                <li>Click on the "Export" tab.</li>
-               <li>It's best to use "SQL" for the format so it can be easily imported again.</li>
-               <li>Select "zipped" for compression.  If you don't do this, you will just
-                   see the SQL in your browser window, and you will have to cut and
-                   paste this into a text editor to save it.
-               <li>Click on the "Go" button at the bottom of the page. </li>
+               <li>Select the radio button for "Custom - display all possible options"</li>
+               <li>It's best to use "SQL" for the "Format:" so it can be easily imported again.</li>
+               <li>Under "Tables:" Make sure all the tables are checked as well as both the "structure" and "data" checkboxes for all of them.</li>
+               <li>Under "Output:" Select "Save output to a file".</li>
+               <li>Under "Data creation options" you'll want at least "Function to use when dumping data: INSERT" and "both of the above" radio button.</li>
+               <li>Experiment with the other options to find out what works best for your situation.</li>
+               <li>Click on the "Go" button at the bottom of the page and save the file to your computer. Preferably somewhere you can find it again; like the desktop.</li>
 
              </ul> </li>
           <li>If you have access to a MySQL command line (typically via shell access on a
-              Linux server), you can use the mysqldump command:<br/>
-             &nbsp;&nbsp;<tt>mysqldump -u<b>USERNAME</b> -p<b>PASSWORD</b> <b>DATABASE</b> > dumpfile.sql</tt>
-             <br/>Of course, replace USERNAME, PASSWORD and DATABASE from the values in
-            your <tt>includes/settings.php</tt> file from your old WebCalendar install.
+              Linux server), you can use the mysqldump command:<br>
+             &nbsp;&nbsp;<span class="tt">mysqldump -u<b>USERNAME</b> -p<b>PASSWORD DATABASE</b> > dumpfile.sql</span>
+             <br>Of course, replace USERNAME, PASSWORD and DATABASE from the values in
+            your <span class="tt">includes/settings.php</span> file from your current WebCalendar installation.
          </li>
          </ul></li>
        </li>
 
     <li>Make a backup of your current WebCalendar files on the server.  You would typically
         do this with an FTP client
-        (like <a href="http://filezilla.sourceforge.net/">FileZilla</a>).
+        (like <a href="https://filezilla-project.org/">FileZilla</a>).
     </li>
 
     <li>Install the new WebCalendar files in a <b>new</b> directory on your server.
@@ -160,51 +107,49 @@
         files will create a directory with the current WebCalendar version name in it.
     </li>
     <li><b>Optional:</b>
-        If you prefer to use a simple name (like "webcalendar" rather than "WebCalendar-1.1.6"),
+        If you prefer to use a simple name (like "webcalendar" rather than "WebCalendar-1.2.7"),
         then you can rename the directory after you've installed the files.
         A good way to do this might be to rename your old webcalendar install to
         something like "webcalendar-oldinstall" and rename the new install to be
         the same name as your old one.
-        <br/><b>Note:</b> If you are planning on renaming the directory, it is best to do
+        <br><b>Note:</b> If you are planning on renaming the directory, it is best to do
         this <i>before</i> you proceed to the automated install.
     </li>
 
-    <li>Change the permissions the permissions of the <tt>includes</tt> directory.
+    <li>Change the permissions of the <span class="tt">includes</span> directory.
         If you are doing this from FTP, change directories to the new webcalendar directory
-        and use the following command:<br/>
-        &nbsp;&nbsp;<tt>chmod 777 includes</tt>
-    <li>Change the permissions the permissions of the <tt>icons</tt> directory.
+        and use the following command:<br>
+        &nbsp;&nbsp;<span class="tt">chmod 777 includes</span>
+    <li>Change the permissions of the <span class="tt">icons</span> directory.
         If you are doing this from FTP, change directories to the new webcalendar directory
-        and use the following command:<br/>
-        &nbsp;&nbsp;<tt>chmod 777 icons</tt>
+        and use the following command:<br>
+        &nbsp;&nbsp;<span class="tt">chmod 777 icons</span>
 
-    <li>Download a copy of your old <tt>includes/settings.php</tt> file from the old
+    <li>Download a copy of your old <span class="tt">includes/settings.php</span> file from your current
         WebCalendar install and have it handy so you can enter the same values in your
         upgrade process. </li>
-    <li>Download all files in your old <tt>icons</tt> directory from your old
-        WebCalendar and copy the files into the <tt>icons</tt> directory in
+    <li>Download all files in your old <span class="tt">icons</span> directory from your old
+        WebCalendar and copy the files into the <span class="tt">icons</span> directory in
         the new install directory. </li>
 
    <li>You're now ready to start the install/upgrade wizard.  Point your browser to the
        web server where you have installed the files.   You only need to specify
-       the webcalendar directory to get to the wizard.  Because there is no
-       <tt>includes/settings.php</tt> file in the new install, you will be redirected
+       the webcalendar directory to get to the wizard. Since there is no
+       <span class="tt">includes/settings.php</span> file in the new install, you will be redirected
        to the install/upgrade wizard.</li>
-    
-   <li>Once the wizard is complete, it's a good idea to change your <tt>includes</tt>
+
+   <li>Once the wizard is complete, it's a good idea to change your <span class="tt">includes</span>
        permissions back to what they were originally for better security. </li>
     </ol>
 
-    <hr />
+    <hr>
     <h2>Manual Upgrade Instructions</h2>
 
     <p>Below are the steps needed to manually upgrade from a previous version.
     <b>You can ignore everything below if you use the Automated Installation
     Script.</b>  Select the version of your existing install from the list below.
-    If you are more than one version behind (i.e. the new version is v1.1.6,
-    and you're using 0.9.39), click the "next..." link at the end of each
-    section to move to the next version.
-    Always follow the versions in sequence.</p>
+    If you are more than one version behind (i.e. the new version is v1.2.7,
+    and you're using 1.1.1), you'll need to perform each upgrade in sequence from your current version on up. Don't skip any.</p>
 
     <p><span class="note">Note:</span> Due to large number of database types
     that WebCalendar can support, it would be impractical to list all the SQL
@@ -214,14 +159,19 @@
     database other then MySQL, you may want refer to the appropriate
     upgrade-xxxxx.sql file in the install/sql folder.</p>
 
-    <h2>My previous install was...</h2>
+    <h2>My currently installed version is...</h2>
 
     <ul>
+      <li><a href="UPGRADING.html#from_1.1.3">1.1.3</a></li>
+      <li><a href="UPGRADING.html#from_1.1.2">1.1.2</a></li>
+      <li><a href="UPGRADING.html#from_1.1.1">1.1.1</a></li>
+      <li><a href="UPGRADING.html#from_1.1.0e-CVS">1.1.0e-CVS</a></li>
+      <li><a href="UPGRADING.html#from_1.1.0d-CVS">1.1.0d-CVS</a></li>
+      <li><a href="UPGRADING.html#from_1.1.0c-CVS">1.1.0c-CVS</a></li>
+      <li><a href="UPGRADING.html#from_1.1.0b-CVS">1.1.0b-CVS</a></li>
       <li><a href="UPGRADING.html#from_1.1.0a-CVS">1.1.0-CVS or 1.1.0a-CVS</a></li>
       <li><a href="UPGRADING.html#from_1.0.0">1.0RC3 or 1.0.0</a></li>
-      <li><a href="UPGRADING.html#from_1_0RC2">0.9.45, 1.0RC1 or 1.0RC2</a></li>
-      <li><a href="UPGRADING.html#dot944">0.9.44</a></li>
-      <li><a href="UPGRADING.html#dot943">0.9.43</a></li>
+      <li><a href="UPGRADING.html#from_1_0RC3">0.9.42 or 1.0RC1</a></li>
       <li><a href="UPGRADING.html#dot942">0.9.42</a></li>
       <li><a href="UPGRADING.html#dot941">0.9.41</a></li>
       <li><a href="UPGRADING.html#dot940">0.9.40</a></li>
@@ -238,7 +188,7 @@
       <li><a href="UPGRADING.html#dot9">0.9</a></li>
     </ul>
 
-    <hr />
+    <hr>
     <h2><a id="dot9">To upgrade from v0.9</a></h2>
 
     <p>You need to create the table cal_user_pref in tables.sql. You need to
@@ -246,7 +196,7 @@
     "cal_event_user" in the 0.9 release.</p>
 
     <a href="UPGRADING.html#dot906">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot906">To upgrade from v0.9.01</a></h2>
 
@@ -263,7 +213,7 @@ mysql intranet &lt; commands.sql
     WebCalendar tables.</p>
 
     <a href="UPGRADING.html#dot911">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot911">To upgrade from v0.9.07 - v0.9.11</a></h2>
 
@@ -273,7 +223,7 @@ mysql intranet &lt; commands.sql
     <pre>UPDATE webcal_entry SET cal_time = -1 WHERE cal_time is null;</pre>
 
     <a href="UPGRADING.html#dot913">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot913">To upgrade from v0.9.12 or v0.9.13</a></h2>
 
@@ -292,7 +242,7 @@ CREATE TABLE webcal_entry_repeats (
     </pre>
 
     <a href="UPGRADING.html#dot921">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot921">To upgrade from v0.9.14 - v0.9.21</a></h2>
 
@@ -310,7 +260,7 @@ CREATE TABLE webcal_user_layers (
     </pre>
 
     <a href="UPGRADING.html#dot926">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot926">To upgrade from v0.9.22 - v0.9.26</a></h2>
 
@@ -347,7 +297,7 @@ CREATE TABLE webcal_reminder_log (
     ports/look-a-likes of cron for Windows, so look around.</p>
 
     <a href="UPGRADING.html#dot934">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot934">To upgrade from v0.9.27 - v0.9.34</a></h2>
 
@@ -397,7 +347,7 @@ CREATE TABLE webcal_entry_log (
     </pre>
 
     <a href="UPGRADING.html#dot936">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot936">To upgrade from v0.9.35 or v0.9.36</a></h2>
 
@@ -414,7 +364,7 @@ CREATE TABLE webcal_entry_repeats_not (
     </pre>
 
     <a href="UPGRADING.html#dot937">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot937">To upgrade from v0.9.37</a></h2>
 
@@ -432,7 +382,7 @@ CREATE TABLE webcal_categories (
     </pre>
 
     <a href="UPGRADING.html#dot938">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot938">To upgrade from v0.9.38</a></h2>
 
@@ -445,7 +395,7 @@ DELETE FROM webcal_user_pref WHERE cal_setting LIKE 'DATE_FORMAT%';
     </pre>
 
     <a href="UPGRADING.html#dot939">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot939">To upgrade from v0.9.39</a></h2>
 
@@ -469,7 +419,7 @@ ALTER TABLE webcal_entry ADD cal_ext_for_id INT NULL;
     </pre>
 
     <a href="UPGRADING.html#dot940">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot940">To upgrade from v0.9.40</a></h2>
 
@@ -487,7 +437,7 @@ CREATE TABLE webcal_nonuser_cals (
     </pre>
 
     <a href="UPGRADING.html#dot941">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot941">To upgrade from v0.9.41</a></h2>
 
@@ -527,7 +477,7 @@ CREATE TABLE webcal_import_data (
     </pre>
 
     <a href="UPGRADING.html#dot942">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="dot942">To upgrade from v0.9.42</a></h2>
 
@@ -556,7 +506,7 @@ CREATE TABLE webcal_import_data (
 );
     </pre>
 
-    <p>Next, you will need to run the script found in the <tt>tools</tt>
+    <p>Next, you will need to run the script found in the <span class="tt">tools</span>
     subdirectory. This will convert all your passwords from plain text to md5.
     You can run this from the command line (if you have a standalone version of
     PHP compiled):</p>
@@ -571,18 +521,17 @@ php convert_passwords.php
 
     <pre>http://yourcalendarurl/tools/convert_passwords.php</pre>
 
-    <p>You may safely delete the file <tt>/tools/convert_passwords.php</tt>
+    <p>You may safely delete the file <span class="tt">/tools/convert_passwords.php</span>
     after successfully performing this step.</p>
 
     <p>Delete all webcalendar_login browser cookies. Details should be available
     on your local browser help section.</p>
 
-    <a href="UPGRADING.html#from_1_0RC2">next...</a>
-    <hr />
+    <a href="UPGRADING.html#from_1_0RC3">next...</a>
+    <hr>
+    <h2><a id="from_1_0RC3">To upgrade from v0.9.43 - v1.0RC3</a></h2>
 
-    <h2><a id="from_1_0RC2">To upgrade from v0.9.43 - v1.0RC2</a></h2>
-
-    <p>The <tt>webcal_view</tt> table was modified. Execute the following SQL
+    <p>The <span class="tt">webcal_view</span> table was modified. Execute the following SQL
     to update your database:</p>
 
     <pre>
@@ -600,7 +549,7 @@ UPDATE webcal_view SET cal_is_global = 'N';
     </pre>
 
     <a href="UPGRADING.html#from_1.0.0">next...</a>
-    <hr />
+    <hr>
 
     <h2><a id="from_1.0.0">To upgrade from v1.0RC3 - v1.0.0</a></h2>
 
@@ -631,10 +580,9 @@ CREATE TABLE webcal_user_template (
   PRIMARY KEY ( cal_login, cal_type )
 );
     </pre>
-
-    <hr />
-
-    <h2><a id="from_1.1.0a-CVS">To upgrade from v1.1.0-CVS or v1.1.0a-CVS</a></h2>
+    <a href="UPGRADING.html#from_1.1.0a-CVS">next...</a>
+    <hr>
+    <h2><a id="from_1.1.0a-CVS">To upgrade from 1.1.0-CVS or 1.1.0a-CVS</a></h2>
 
     <p>A new table is needed to support multiple categories. In addition,
     several new columns have been added to webcal_entry and one column added to
@@ -667,15 +615,469 @@ CREATE TABLE webcal_entry_categories (
   cat_owner varchar(25) default NULL
 );
     </pre>
+    <a href="UPGRADING.html#from_1.1.0b-CVS">next...</a>
+    <hr>
+    <h2><a id="from_1.1.0b-CVS">To upgrade from 1.1.0b-CVS</a></h2>
+    <p>We need a new table to handle event attachments and comments. This is the SQL.</p>
+    <pre>
+CREATE TABLE webcal_blob (
+  cal_blob_id INT NOT NULL,
+  cal_description VARCHAR(128) NULL,
+  cal_id INT NULL,
+  cal_login VARCHAR(25) NULL,
+  cal_mime_type VARCHAR(50) NULL,
+  cal_mod_date INT NOT NULL,
+  cal_mod_time INT NOT NULL,
+  cal_name VARCHAR(30) NULL,
+  cal_size INT NULL,
+  cal_type CHAR(1) NOT NULL,
+  cal_blob LONGBLOB,
+  PRIMARY KEY (cal_blob_id)
+);
+    </pre>
+    <a href="UPGRADING.html#from_1.1.0c-CVS">next...</a>
+    <hr>
+    <h2><a id="from_1.1.0c-CVS">upgrading from 1.1.0cCVS</a></h2>
+    <p>We're recreating table webcal_access_user to add several fields.</p>
+    <pre>
+DROP TABLE IF EXISTS webcal_access_user;
+CREATE TABLE webcal_access_user (
+  cal_login VARCHAR(25) NOT NULL,
+  cal_other_user VARCHAR(25) NOT NULL,
+  cal_can_approve INT NOT NULL DEFAULT '0',
+  cal_can_edit INT NOT NULL DEFAULT '0',
+  cal_can_email CHAR(1) DEFAULT 'Y',
+  cal_can_invite CHAR(1) DEFAULT 'Y',
+  cal_can_view INT NOT NULL DEFAULT '0',
+  cal_see_time_only CHAR(1) DEFAULT 'N',
+  PRIMARY KEY (cal_login, cal_other_user)
+);
+    </pre>
+    <a href="UPGRADING.html#from_1.1.0d-CVS">next...</a>
+    <hr>
+    <h2><a id="from_1.1.0d-CVS">upgrading from 1.1.0d-CVS</a></h2>
+    <p>A new table to track reminders. When are they due? Have they been sent?</p>
+    <pre>
+CREATE TABLE webcal_reminders (
+  cal_id INT NOT NULL DEFAULT '0',
+  cal_action VARCHAR(12) NOT NULL DEFAULT 'EMAIL',
+  cal_before CHAR(1) NOT NULL DEFAULT 'Y',
+  cal_date INT NOT NULL DEFAULT '0',
+  cal_duration INT NOT NULL DEFAULT '0',
+  cal_last_sent INT NOT NULL DEFAULT '0',
+  cal_offset INT NOT NULL DEFAULT '0',
+  cal_related CHAR(1) NOT NULL DEFAULT 'S',
+  cal_repeats INT NOT NULL DEFAULT '0',
+  cal_times_sent INT NOT NULL DEFAULT '0',
+  PRIMARY KEY (cal_id)
+);
+    </pre>
+    <a href="UPGRADING.html#from_1.1.0e-CVS">next...</a>
+    <hr>
+    <h2><a id="from_1.1.0e-CVS">Upgrade from 1.1.0e-CVS</a></h2>
+    <p>A new field indicating the URL of a public, or at least a non-user, calendar event.</p>
+    <pre>
+ALTER TABLE webcal_nonuser_cals ADD cal_url VARCHAR(255) DEFAULT NULL;
+    </pre>
+    <a href="UPGRADING.html#from_1.1.1">next...</a>
+    <hr>
+    <h2><a id="from_1.1.1">Upgrade from 1.1.1</a></h2>
+    <p>Add a color for each user category. We are also considering tracking more user data; birthday, phone, etc. As a contact reference as well as an event calendar.</p>
+    <pre>
+ALTER TABLE webcal_categories ADD cat_color VARCHAR(8) DEFAULT NULL;
+ALTER TABLE webcal_user ADD cal_address VARCHAR(75) DEFAULT NULL;
+ALTER TABLE webcal_user ADD cal_birthday INT NULL;
+ALTER TABLE webcal_user ADD cal_enabled CHAR(1) DEFAULT 'Y';
+ALTER TABLE webcal_user ADD cal_last_login INT NULL;
+ALTER TABLE webcal_user ADD cal_telephone VARCHAR(50) DEFAULT NULL;
+ALTER TABLE webcal_user ADD cal_title VARCHAR(75) DEFAULT NULL;
+    </pre>
+    <a href="UPGRADING.html#from_1.1.2">next...</a>
+    <hr>
+    <h2><a id="from_1.1.2">Upgrade from 1.1.2</a></h2>
+    <p>A new table to hold the various timezones of the world. How far from Greenich Mean Time? When does Daylight Savings start / end, if applicable.</p>
+    <pre>
+CREATE TABLE webcal_timezones (
+  tzid varchar(100) NOT NULL default '',
+  dtstart varchar(25) default NULL,
+  dtend varchar(25) default NULL,
+  vtimezone text,
+  PRIMARY KEY (tzid)
+);
+    </pre>
+    <a href="UPGRADING.html#from_1.1.3">next...</a>
+    <hr>
+    <h2><a id="from_1.1.3">Upgrade from 1.1.3</a></h2>
+    <p>// Craig. This LOOKS like an extensive upgrade. However, mostly it's just putting the table / field /*comments*/ from "install/sql/tables-mysql.sql" in the actual database to make maintaining it easier. Also, phpMyAdmin can use the "COMMENT"s to create a replacement for "docs/WebCalendar-Database.html" without the need for "docs/sql2html.pl". Mostly. It isn't quite as clean:<ul><li>there is some unnecessary javascript.</li><li>all the "rowspan='1' is kind of silly.</li><li>It needs to be run through html_entity_decode().</li><li>It doesn't have the list of tables at the top.</li></ul>But, it looks the same otherwise.<br><br>phpMyAdmin "export" puts the "ENGINE" and "CHARSET" in the file, so I included them, too.<br>I am also utilizing MySQL / MariaDB field types such as enum, tinyint, etc. to better show what the field is about.<br><br>Converting from MySQL / Maria to all the other dababase types supported by WebCalendar only takes about 50 lines total, mostly preg_replace() with arrays, in a switch construct. We would only need a single "tables.sql" and a single "upgrade.sql" instead of all the variants. (Work in progress.)<br><br>The new table, "webcal_translations" (not yet used) to hold the various language translations. Eventually would eliminate all the various "translations/*.txt" files. "tools/update_translation.pl" could create the sql files to load it, while creating the *.txt files for the translators.<br><br>I'm also looking at consolidating some fields / tables into webcal_user_pref. Only takes about 100 lines of code changes. Not counting the "/*Consolodate some fields*/" section below. What do you think? bb
+</p>
+    <pre>
+ALTER TABLE webcal_access_user ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Specifies which users can access another user''s calendar.';
+ALTER TABLE webcal_access_user MODIFY cal_see_time_only ENUM('N','Y') NOT NULL DEFAULT 'N' COMMENT 'Can current user can only see time of other user?';
+ALTER TABLE webcal_access_user MODIFY cal_can_view smallint UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Can current user view events on the other user''s calendar?' FIRST;
+ALTER TABLE webcal_access_user MODIFY cal_can_invite ENUM('N','Y') NOT NULL DEFAULT 'Y' COMMENT 'Can current user see other user in Participant lists?' FIRST;
+ALTER TABLE webcal_access_user MODIFY cal_can_email ENUM('N','Y') DEFAULT 'Y' COMMENT 'Can current user send emails to other user?' FIRST;
+ALTER TABLE webcal_access_user MODIFY cal_can_edit smallint UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Can current user edit events on the other user''s calendar?' FIRST;
+ALTER TABLE webcal_access_user MODIFY cal_can_approve smallint UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Can current user approve events on the other user''s calendar?' FIRST;
+ALTER TABLE webcal_access_user MODIFY cal_other_user varchar(25) NOT NULL COMMENT 'The login of the other user whose calendar the current user wants to access. Also, from &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_access_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'The current user who is attempting to look at another user''s calendar. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
 
-    <hr />
+ALTER TABLE webcal_access_function ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Specifies what WebCalendar functions a user can access. Each function has a corresponding numeric value (specified in the file includes/access.php). For example, view event is 0, so the very first character in the cal_permissions column is either a "Y" if this user can view events or a "N" if they cannot.';
+ALTER TABLE webcal_access_function MODIFY cal_login varchar(25) NOT NULL COMMENT 'User login. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_access_function MODIFY cal_permissions varchar(64) NOT NULL COMMENT 'A string of "Y"s and/or "N"s for the various functions.';
+
+ALTER TABLE webcal_asst ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Define assistant/boss relationship.';
+ALTER TABLE webcal_asst MODIFY cal_assistant varchar(25) NOT NULL COMMENT 'Assistant login. Also from &lt;a href="#webcal_user">webcal_user&lt;/a> table.';
+ALTER TABLE webcal_asst MODIFY cal_boss varchar(25) NOT NULL COMMENT 'Boss login. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+
+ALTER TABLE webcal_blob ENGINE MyISAM CHARACTER SET utf8 COMMENT 'This table stores event attachments and comments.';
+ALTER TABLE webcal_blob MODIFY cal_type ENUM('A','C') NOT NULL DEFAULT 'C' COMMENT 'Type of object: C=Comment, A=Attachment.' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_size int UNSIGNED DEFAULT NULL COMMENT 'Size of object (not used for comments).' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_name varchar(30) DEFAULT NULL COMMENT 'Filename of object (not used for comments).' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_mod_time time NOT NULL COMMENT 'Time added.' FIRST;
+ALTER TABLE webcal_blob ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_mime_type varchar(50) DEFAULT NULL COMMENT 'MIME type of object (as specified by browser during upload (not used for comment).' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_login varchar(25) DEFAULT NULL COMMENT 'Login of user who created. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_id int UNSIGNED DEFAULT NULL COMMENT 'Event id (if applicable). From &lt;a href="#webcal_entry">webcal_entry&lt;/a> table.' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_description varchar(128) DEFAULT NULL COMMENT 'Description of what the object is (subject for comment).' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_blob_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier for this object.' FIRST;
+ALTER TABLE webcal_blob MODIFY cal_blob longblob COMMENT 'Binary data for object.';
+ALTER TABLE webcal_blob ADD UNIQUE KEY wb_cl_cd (cal_login,cal_description);
+
+ALTER TABLE webcal_categories ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines user categories. Categories can be specific to a user or global. When a category is global, the cat_owner field will be NULL. (Only an admin user can create a global category.)';
+ALTER TABLE webcal_categories MODIFY cat_name varchar(80) NOT NULL COMMENT 'Category name.' FIRST;
+ALTER TABLE webcal_categories MODIFY cat_color varchar(7) DEFAULT NULL COMMENT 'RGB color for category.' FIRST;
+ALTER TABLE webcal_categories MODIFY cat_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique category id.' FIRST;
+ALTER TABLE webcal_categories MODIFY cat_owner varchar(25) DEFAULT NULL COMMENT 'User login of category owner. From &lt;a href="#webcal_user">webcal_user&lt;/a> table, if applicable. If this is NULL, then it is a global category.';
+
+ALTER TABLE webcal_config ENGINE MyISAM CHARACTER SET utf8 COMMENT 'System settings (set by the admin interface in admin.php).';
+ALTER TABLE webcal_config MODIFY cal_setting varchar(50) NOT NULL COMMENT 'System setting.' FIRST;
+ALTER TABLE webcal_config MODIFY cal_value varchar(100) NULL COMMENT 'System setting value.';
+
+ALTER TABLE webcal_entry ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines a calendar event. Each event in the system has one entry in this table unless the event starts before midnight and ends after midnight. In that case a secondary event will be created with cal_ext_for_id set to the cal_id of the original entry. The following tables contain additional information about each event:&lt;ul>&lt;li>&lt;a href="#webcal_entry_user">webcal_entry_user&lt;/a> table - lists participants in the event and specifies the status (accepted, rejected) and category of each participant.&lt;/li>&lt;li>&lt;a href="#webcal_entry_repeats">webcal_entry_repeats&lt;/a> table - contains information if the event repeats.&lt;/li>&lt;li>&lt;a href="#webcal_entry_repeats_not">webcal_entry_repeats_not&lt;/a> table - specifies which dates the repeating event does not repeat (because they were deleted or modified for just that date by the user.)&lt;/li>&lt;li>&lt;a href="#webcal_entry_log">webcal_entry_log&lt;/a> table - provides a history of changes to this event.&lt;/li>&lt;li>&lt;a href="#webcal_site_extras">webcal_site_extras&lt;/a> table - stores event data as defined in site_extras.php (such as reminders and other custom event fields).&lt;/li>&lt;/ul>';
+ALTER TABLE webcal_entry MODIFY cal_url varchar(100) DEFAULT NULL COMMENT 'URL of event.';
+ALTER TABLE webcal_entry MODIFY cal_type ENUM('E','M','T') DEFAULT 'E' COMMENT '"E" = Event, "M" = Repeating event, "T" = Task.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_time time DEFAULT NULL COMMENT 'Event start time.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_priority tinyint UNSIGNED DEFAULT '5' COMMENT 'Event priority: 1=High, 9=Low.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_name varchar(80) NOT NULL COMMENT 'Brief description of event.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_mod_time time DEFAULT NULL COMMENT 'Time the event was last modified.' FIRST;
+ALTER TABLE webcal_entry ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_location varchar(100) DEFAULT NULL COMMENT 'Location of event.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_group_id int UNSIGNED DEFAULT NULL COMMENT 'The parent event id if this event is overriding an occurrence of a repeating event. From this table.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_ext_for_id int UNSIGNED DEFAULT NULL COMMENT 'Used when an event goes past midnight into the next day, in which case an additional entry in this table will use this field to indicate the original event cal_id.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_duration int UNSIGNED NOT NULL COMMENT 'Duration of event in minutes.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_due_time time DEFAULT NULL COMMENT 'Task due time.' FIRST;
+ALTER TABLE webcal_entry ADD cal_due datetime DEFAULT NULL COMMENT 'When is this task due?' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_due datetime DEFAULT NULL COMMENT 'When is this task due?' FIRST;
+ALTER TABLE webcal_entry ADD cal_datetime datetime NOT NULL COMMENT 'When is this event scheduled to start?' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_datetime datetime NOT NULL COMMENT 'When is this event scheduled to start?' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_date date NOT NULL COMMENT 'Date of event.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_create_by varchar(25) NOT NULL COMMENT 'Login of user that created the event. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_completed date DEFAULT NULL COMMENT 'Date task completed.' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_access ENUM('C','P','R') DEFAULT 'P' COMMENT '"P" = Public, "R" = Private (others cannot see the event), "C" = Confidential (others can see time allocated but not what it is).' FIRST;
+ALTER TABLE webcal_entry MODIFY cal_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique integer id for event.' FIRST;
+UPDATE webcal_entry SET cal_datetime = CONCAT(cal_date,cal_time);
+UPDATE webcal_entry SET cal_due = CONCAT(cal_due_date,cal_due_time);
+
+ALTER TABLE webcal_entry_categories ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Contains category foreign keys to enable multiple categories for each event or task.';
+ALTER TABLE webcal_entry_categories MODIFY cat_owner varchar(25) DEFAULT NULL COMMENT 'User that owns this record. Global categories will be NULL. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_entry_categories MODIFY cat_order int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Order that user requests their categories appear. Globals are always last.';
+ALTER TABLE webcal_entry_categories MODIFY cat_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Id of category from &lt;a href="webcal_categories">webcal_categories&lt;/a> table.' FIRST;
+ALTER TABLE webcal_entry_categories MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Id of event from &lt;a href="webcal_entry">webcal_entry&lt;/a> table.' FIRST;
+
+ALTER TABLE webcal_entry_ext_user ENGINE MyISAM CHARACTER SET utf8 COMMENT 'External user (no login) for an event.';
+ALTER TABLE webcal_entry_ext_user MODIFY cal_fullname varchar(50) NOT NULL COMMENT 'external user full name';
+ALTER TABLE webcal_entry_ext_user MODIFY cal_email varchar(75) NULL COMMENT 'external user email (for sending a reminder)' FIRST;
+ALTER TABLE webcal_entry_ext_user MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'From &lt;a href="webcal_entry">webcal_entry&lt;/a> table.' FIRST;
+
+ALTER TABLE webcal_entry_log ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Activity log for an event.';
+ALTER TABLE webcal_entry_log MODIFY cal_user_cal varchar(25) DEFAULT NULL COMMENT 'User of calendar affected. Also from &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_entry_log MODIFY cal_type ENUM('A','C','E','M','R','U') NOT NULL DEFAULT 'C' COMMENT 'Log types:&lt;ul>&lt;li>C: Created&lt;/li>&lt;li>A: Approved/Confirmed by user&lt;/li>&lt;li>R: Rejected by user&lt;/li>&lt;li>U: Updated by user&lt;/li>&lt;li>M: Mail Notification sent&lt;/li>&lt;li>E: Reminder sent&lt;/li>&lt;/ul>' FIRST;
+ALTER TABLE webcal_entry_log MODIFY cal_time time DEFAULT NULL FIRST;
+ALTER TABLE webcal_entry_log MODIFY cal_text text COMMENT 'Optional text.';
+ALTER TABLE webcal_entry_log ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When was this added / changed?' FIRST;
+ALTER TABLE webcal_entry_log MODIFY cal_login varchar(25) NOT NULL COMMENT 'User who performed this action. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_entry_log MODIFY cal_entry_id int UNSIGNED NOT NULL COMMENT 'Event id. From &lt;a href="#webcal_entry">webcal_entry&lt;/a> table.' FIRST;
+ALTER TABLE webcal_entry_log MODIFY cal_date date NOT NULL FIRST;
+ALTER TABLE webcal_entry_log MODIFY cal_log_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique id of this log entry.' FIRST;
+
+ALTER TABLE webcal_entry_repeats ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines repeating info about an event. The event is defined in &lt;a href="#webcal_entry">webcal_entry&lt;/a> table.';
+ALTER TABLE webcal_entry_repeats MODIFY cal_type varchar(20) DEFAULT NULL COMMENT 'Type of repeating:&lt;ul>&lt;li>daily - repeats daily&lt;/li>&lt;li>monthlyByDate - repeats on same day of the month&lt;/li>&lt;li>monthlyBySetPos - repeats based on position within other ByXXX values&lt;/li>&lt;li>monthlyByDay - repeats on specified weekday, (2nd Monday, for example)&lt;/li>&lt;li>weekly - repeats every week&lt;/li>&lt;li>yearly - repeats on same date every year&lt;/li>&lt;/ul>' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_frequency int UNSIGNED DEFAULT '1' COMMENT 'Frequency of repeat: 1 = every, 2 = every other, 3 = every 3rd, etc.' FIRST;
+ALTER TABLE webcal_entry_repeats ADD cal_enddt datetime DEFAULT NULL COMMENT 'End date and time for repeating event.' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_enddt datetime DEFAULT NULL COMMENT 'End date and time for repeating event.' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_end date DEFAULT NULL COMMENT 'End date for repeating event.' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_wkst ENUM('MO','TU','WE','TH','FR','SA','SU') DEFAULT 'MO' COMMENT 'Week starts on...';
+ALTER TABLE webcal_entry_repeats MODIFY cal_days ENUM('N','Y') DEFAULT NULL COMMENT 'NO LONGER USED. We''ll leave it in for now.' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_count int UNSIGNED DEFAULT NULL FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_byyearday varchar(50) DEFAULT NULL FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_byweekno varchar(50) DEFAULT NULL FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_bysetpos varchar(50) DEFAULT NULL FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_bymonthday varchar(100) DEFAULT NULL FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_bymonth varchar(50) DEFAULT NULL FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_byday varchar(100) DEFAULT NULL COMMENT 'The following columns are values as specified in RFC2445.' FIRST;
+ALTER TABLE webcal_entry_repeats MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Event id. From &lt;a href="#webcal_entry">webcal_entry&lt;/a> table.' FIRST;
+UPDATE webcal_entry_repeats SET cal_enddt = CONCAT(cal_end,cal_endtime);
+
+ALTER TABLE webcal_entry_repeats_not ENGINE MyISAM CHARACTER SET utf8 COMMENT 'This table specifies which dates in a repeating event have either been deleted, included, or replaced with another event for that day. When replaced, the cal_group_id (I know... not the best name, but it was not being used) column will be set to the original event. That way the user can delete the original event and (at the same time) delete any exception events.';
+ALTER TABLE webcal_entry_repeats_not MODIFY cal_date DATE NOT NULL COMMENT 'Date event should not repeat.' FIRST;
+ALTER TABLE webcal_entry_repeats_not MODIFY cal_id int UNSIGNED NOT NULL COMMENT 'Event id of repeating event. From &lt;a href="#webcal_entry">webcal_entry&lt;/a> table.' FIRST;
+ALTER TABLE webcal_entry_repeats_not MODIFY cal_exdate tinyint UNSIGNED NOT NULL DEFAULT '1' COMMENT 'Indicates whether this record is an exclusion1) or inclusion0).';
+
+ALTER TABLE webcal_entry_user ENGINE MyISAM CHARACTER SET utf8 COMMENT 'This table associates one or more users with an event by the event id. The event can be found in &lt;a href="#webcal_entry">webcal_entry&lt;/a> table.';
+ALTER TABLE webcal_entry_user MODIFY cal_status ENUM('A','C','D','P','R','W') DEFAULT 'A' COMMENT 'Status of event for this user:&lt;ul>&lt;li>A=Accepted&lt;/li>&lt;li>C=Completed&lt;/li>&lt;li>D=Deleted&lt;/li>&lt;li>P=In-Progress&lt;/li>&lt;li>R=Rejected/Declined&lt;/li>&lt;li>W=Waiting&lt;/li>&lt;/ul>';
+ALTER TABLE webcal_entry_user MODIFY cal_percent tinyint UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Task percentage of completion for this user''s task.' FIRST;
+ALTER TABLE webcal_entry_user MODIFY cal_category int UNSIGNED DEFAULT NULL COMMENT 'Category of the event for this user.' FIRST;
+ALTER TABLE webcal_entry_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'Participant in the event. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_entry_user MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Event id. From &lt;a href="#webcal_entry">webcal_entry&lt;/a> table.' FIRST;
+
+ALTER TABLE webcal_group ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Define a group. Group members can be found in &lt;a href="#webcal_group_user">webcal_group_user&lt;/a> table.';
+ALTER TABLE webcal_group MODIFY cal_owner varchar(25) DEFAULT NULL COMMENT 'User login of user that created this group. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.';
+ALTER TABLE webcal_group MODIFY cal_name varchar(50) NOT NULL COMMENT 'Name of the group.' FIRST;
+ALTER TABLE webcal_group MODIFY cal_last_update TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date last updated.' FIRST;
+ALTER TABLE webcal_group MODIFY cal_group_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique group id.' FIRST;
+
+ALTER TABLE webcal_group_user ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Group members.';
+ALTER TABLE webcal_group_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'From &lt;a href="webcal_user">webcal_user&lt;/a>';
+ALTER TABLE webcal_group_user MODIFY cal_group_id int UNSIGNED NOT NULL COMMENT 'From &lt;a href="webcal_group">webcal_group&lt;/a>' FIRST;
+
+ALTER TABLE webcal_import ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Used to track import data (one row per import).';
+ALTER TABLE webcal_import MODIFY cal_type varchar(10) NOT NULL COMMENT 'Type of import (ical, vcal, palm, outlookcsv).';
+ALTER TABLE webcal_import MODIFY cal_name varchar(50) DEFAULT NULL COMMENT 'Name of import (optional).' FIRST;
+ALTER TABLE webcal_import MODIFY cal_login varchar(25) DEFAULT NULL COMMENT 'User who performed the import.' FIRST;
+ALTER TABLE webcal_import MODIFY cal_date TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Datetime of import.' FIRST;
+ALTER TABLE webcal_import MODIFY cal_import_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique id for import.' FIRST;
+
+ALTER TABLE webcal_import_data ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Used to track import data (one row per event).';
+ALTER TABLE webcal_import_data MODIFY cal_import_type varchar(15) NOT NULL COMMENT 'Type of import: "palm", "vcal", "ical" or "outlookcsv".';
+ALTER TABLE webcal_import_data MODIFY cal_import_id int UNSIGNED NOT NULL COMMENT 'Import id (From &lt;a href="#webcal_import">webcal_import&lt;/a> table.' FIRST;
+ALTER TABLE webcal_import_data MODIFY cal_external_id varchar(200) DEFAULT NULL COMMENT 'External id used in external calendar system (for example, UID in iCal).' FIRST;
+ALTER TABLE webcal_import_data MODIFY cal_login varchar(25) NOT NULL COMMENT 'User login. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_import_data MODIFY cal_id int UNSIGNED NOT NULL COMMENT 'Event id in WebCalendar. From &lt;a href="#webcal_entry">webcal_entry&lt;/a> table.' FIRST;
+
+ALTER TABLE webcal_nonuser_cals ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines non-user calendars.';
+ALTER TABLE webcal_nonuser_cals MODIFY cal_url varchar(255) DEFAULT NULL COMMENT 'URL of the remote calendar.';
+ALTER TABLE webcal_nonuser_cals MODIFY cal_lastname varchar(25) DEFAULT NULL COMMENT 'Calendar''s last name.' FIRST;
+ALTER TABLE webcal_nonuser_cals MODIFY cal_is_public ENUM('N','Y') NOT NULL DEFAULT 'N' COMMENT 'Can this nonuser calendar be a public calendar (no login required)?' FIRST;
+ALTER TABLE webcal_nonuser_cals MODIFY cal_firstname varchar(25) DEFAULT NULL COMMENT 'Calendar'' first name.' FIRST;
+ALTER TABLE webcal_nonuser_cals ADD cal_displayname varchar(50) DEFAULT NULL COMMENT 'Name to diplay on public or other user''s calendars.' FIRST;
+ALTER TABLE webcal_nonuser_cals MODIFY cal_admin varchar(25) NOT NULL COMMENT 'The calendar administrator. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_nonuser_cals MODIFY cal_login varchar(25) NOT NULL COMMENT 'Unique id for the calendar.' FIRST;
+UPDATE webcal_nonuser_cals SET cal_displayname = CONCAT_WS(' ',cal_firstname,cal_lastname);
+
+ALTER TABLE webcal_reminders ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Stores information about reminders.';
+ALTER TABLE webcal_reminders MODIFY cal_times_sent int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Number of times this reminder has been sent.';
+ALTER TABLE webcal_reminders MODIFY cal_repeats int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Number of times to repeat in addition to original occurrence.' FIRST;
+ALTER TABLE webcal_reminders MODIFY cal_related ENUM('E','S') NOT NULL DEFAULT 'S' COMMENT 'S=Start, E=End. Specifies which edge of entry this reminder applies to.' FIRST;
+ALTER TABLE webcal_reminders MODIFY cal_offset int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Offset in minutes from the selected edge.' FIRST;
+ALTER TABLE webcal_reminders MODIFY cal_last_sent datetime NOT NULL COMMENT 'Timestamp of last sent reminder.' FIRST;
+ALTER TABLE webcal_reminders MODIFY cal_duration int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Time in ISO 8601 format that specifies time between repeated reminders.' FIRST;
+ALTER TABLE webcal_reminders MODIFY cal_date datetime NOT NULL COMMENT 'When to send? Use this or cal_offset, but not both.' FIRST;
+ALTER TABLE webcal_reminders MODIFY cal_before ENUM('N','Y') NOT NULL DEFAULT 'Y' COMMENT 'Specifies whether reminder is sent before or after selected edge.' FIRST;
+ALTER TABLE webcal_reminders MODIFY cal_action varchar(12) NOT NULL DEFAULT 'EMAIL' COMMENT 'Action as imported, may be used in the future.' FIRST;
+ALTER TABLE webcal_reminders MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' FIRST;
+
+ALTER TABLE webcal_report ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines a custom report created by a user.';
+ALTER TABLE webcal_report MODIFY cal_user varchar(25) DEFAULT NULL COMMENT 'User calendar to display (NULL indicates current user).';
+ALTER TABLE webcal_report MODIFY cal_update_date date NOT NULL COMMENT 'Date created or last updated.' FIRST;
+ALTER TABLE webcal_report MODIFY cal_time_range int UNSIGNED NOT NULL COMMENT 'Time range for report:&lt;ul>&lt;li>0 = tomorrow&lt;/li>&lt;li>1 = today&lt;/li>&lt;li>2 = yesterday&lt;/li>&lt;li>3 = day before yesterday&lt;/li>&lt;li>10 = next week&lt;/li>&lt;li>11 = current week&lt;/li>&lt;li>12 = last week&lt;/li>&lt;li>13 = week before last&lt;/li>&lt;li>20 = next week and week after&lt;/li>&lt;li>21 = current week and next week&lt;/li>&lt;li>22 = last week and this week&lt;/li>&lt;li>23 = last two weeks&lt;/li>&lt;li>30 = next month&lt;/li>&lt;li>31 = current month&lt;/li>&lt;li>32 = last month&lt;/li>&lt;li>33 = month before last&lt;/li>&lt;li>40 = next year&lt;/li>&lt;li>41 = current year&lt;/li>&lt;li>42 = last year&lt;/li>&lt;li>43 = year before last&lt;/li>&lt;/ul>' FIRST;
+ALTER TABLE webcal_report MODIFY cal_show_in_trailer ENUM('N','Y') DEFAULT 'N' COMMENT 'Include a link for this report in the "Go to" section of the navigation in the page trailer? ("Y" or "N")' FIRST;
+ALTER TABLE webcal_report MODIFY cal_report_type varchar(20) NOT NULL COMMENT 'Format of report (html, plain or csv).' FIRST;
+ALTER TABLE webcal_report MODIFY cal_report_name varchar(50) NOT NULL COMMENT 'Name of the report.' FIRST;
+ALTER TABLE webcal_report ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Created or last updated.' FIRST;
+ALTER TABLE webcal_report MODIFY cal_login varchar(25) NOT NULL COMMENT 'Creator of report.' FIRST;
+ALTER TABLE webcal_report MODIFY cal_is_global ENUM('N','Y') NOT NULL DEFAULT 'N' COMMENT 'Is this a global report (can it be accessed by other users - "Y" or "N")' FIRST;
+ALTER TABLE webcal_report MODIFY cal_include_header ENUM('N','Y') NOT NULL DEFAULT 'Y' COMMENT 'If cal_report_type is "html", should the default HTML header and trailer be included? ("Y" or "N")' FIRST;
+ALTER TABLE webcal_report MODIFY cal_include_empty ENUM('N','Y') DEFAULT 'N' COMMENT 'Include empty dates in report ("Y" or "N").' FIRST;
+ALTER TABLE webcal_report MODIFY cal_cat_id int UNSIGNED DEFAULT NULL COMMENT 'Category to filter on (optional).' FIRST;
+ALTER TABLE webcal_report MODIFY cal_allow_nav ENUM('N','Y') DEFAULT 'Y' COMMENT 'Allow user to navigate to different dates with next/previous? ("Y" or "N")' FIRST;
+ALTER TABLE webcal_report MODIFY cal_report_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique id of this report.' FIRST;
+
+ALTER TABLE webcal_report_template ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines one of the templates used for a report. Each report has three templates: &lt;ol>&lt;li>Page template - Defines the entire page (except for header and footer). The following variables can be defined:&lt;ul>&lt;li>${days}&lt;sup>*&lt;/sup> - the HTML of all dates (generated from the Date template)&lt;/li>&lt;/ul>&lt;/li>&lt;li>Date template - Defines events for one day. If the report is for a week or month, then the results of each day will be concatenated and used as the ${days} variable in the Page template. The following variables can be defined:&lt;ul>&lt;li>${events}&lt;sup>*&lt;/sup> - the HTML of all events for the data (generated from the Event template)&lt;/li>&lt;li>${date} - the date&lt;/li>&lt;li>${fulldate} - date (includes weekday)&lt;/li>&lt;/ul>&lt;/li>&lt;li>Event template - Defines a single event. The following variables can be defined: &lt;ul>&lt;li>${name}&lt;sup>*&lt;/sup> - Brief Description of event&lt;/li>&lt;li>${description} - Full Description of event&lt;/li>&lt;li>${date} - Date of event&lt;/li>&lt;li>${fulldate} - Date of event (includes weekday)&lt;/li>&lt;li>${time} - Time of event (4:00pm - 4:30pm)&lt;/li>&lt;li>${starttime} - Start time of event&lt;/li>&lt;li>${endtime} - End time of event&lt;/li>&lt;li>${duration} - Duration of event (in minutes)&lt;/li>&lt;li>${priority} - Priority of event&lt;/li>&lt;li>${href} - URL to view event details&lt;/li>&lt;/ul>&lt;/li>&lt;/ol>&lt;sup>*&lt;/sup> denotes a required template variable.';
+ALTER TABLE webcal_report_template MODIFY cal_template_type ENUM('D','E','P') NOT NULL DEFAULT "P" COMMENT 'Type of template:&lt;ul>&lt;li>"P": page template represents entire document&lt;/li>&lt;li>"D": date template represents a single day of events&lt;/li>&lt;li>"E": event template represents a single event&lt;/li>&lt;/ul>' FIRST;
+ALTER TABLE webcal_report_template MODIFY cal_template_text text COMMENT 'Text of template.';
+ALTER TABLE webcal_report_template MODIFY cal_report_id int UNSIGNED NOT NULL COMMENT 'Report id from &lt;a href="webcal_report table">webcal_report&lt;/a> table.' FIRST;
+
+ALTER TABLE webcal_site_extras ENGINE MyISAM CHARACTER SET utf8 COMMENT 'This table holds data for site extra fields (customized in site_extra.php).';
+ALTER TABLE webcal_site_extras MODIFY cal_type int UNSIGNED NOT NULL COMMENT 'EXTRA_URL, EXTRA_DATE, etc.' FIRST;
+ALTER TABLE webcal_site_extras MODIFY cal_remind int UNSIGNED DEFAULT '0' COMMENT 'How many minutes before event should a reminder be sent.' FIRST;
+ALTER TABLE webcal_site_extras MODIFY cal_name varchar(25) NOT NULL COMMENT 'The brief name of this type (first field in $site_extra array).' FIRST;
+ALTER TABLE webcal_site_extras MODIFY cal_id int UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Event id from &lt;a href="webcal_entry">webcal_entry&lt;/a> table.' FIRST;
+ALTER TABLE webcal_site_extras MODIFY cal_date DATE NULL DEFAULT NULL COMMENT 'Only used for EXTRA_DATE type fields.' FIRST;
+ALTER TABLE webcal_site_extras MODIFY cal_data text COMMENT 'Used to store text data.';
+
+ALTER TABLE webcal_timezones ENGINE MyISAM CHARACTER SET utf8 COMMENT 'This table stores timezones of the world.';
+ALTER TABLE webcal_timezones MODIFY vtimezone text COMMENT 'Complete VTIMEZONE text gleaned from imported ics files.';
+ALTER TABLE webcal_timezones MODIFY tzid varchar(100) NOT NULL DEFAULT '' COMMENT 'Unique name of timezone, try to use Olsen naming conventions.' FIRST;
+ALTER TABLE webcal_timezones MODIFY dtstart varchar(16) DEFAULT NULL COMMENT 'Earliest date this timezone represents in YYYYMMDDTHHMMSSZ format.' FIRST;
+ALTER TABLE webcal_timezones MODIFY dtend varchar(16) DEFAULT NULL COMMENT 'Last date this timezone represents in YYYYMMDDTHHMMSSZ format.' FIRST;
+
+DROP TABLE IF EXISTS webcal_translations;
+CREATE TABLE IF NOT EXISTS webcal_translations (
+ phrase varchar(300) CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL COMMENT 'The translate / tooltip (phrases) from the code. And the __phrase__ from version 2.0.0. ("latin1" is currently the only choice that is case sensitive.)',
+ on_page varchar(50) NOT NULL COMMENT 'which code page (sorted alphabetically) has the first occurance of the above phrase.',
+ English_US varchar(300) NOT NULL COMMENT 'The full English text.',
+ Afrikaans varchar(300) NOT NULL,
+ Albanian varchar(300) NOT NULL,
+ Arabic varchar(300) NOT NULL,
+ Armenian varchar(300) NOT NULL,
+ Azerbaijan varchar(300) NOT NULL,
+ Basque varchar(300) NOT NULL,
+ Belarusian varchar(300) NOT NULL,
+ Bulgarian varchar(300) NOT NULL,
+ Catalan varchar(300) NOT NULL,
+ Chamorro varchar(300) NOT NULL,
+ Chinese_Big5 varchar(300) NOT NULL,
+ Chinese_GB2312 varchar(300) NOT NULL,
+ Croatian varchar(300) CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL,
+ Czech varchar(300) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,
+ Danish varchar(300) CHARACTER SET utf8 COLLATE utf8_danish_ci NOT NULL,
+ Dutch varchar(300) NOT NULL,
+ Elven varchar(300) NOT NULL COMMENT 'From JRR Tolkien "Hobbit" and "Lord of the Rings".',
+ Esperanto varchar(300) CHARACTER SET utf8 COLLATE utf8_esperanto_ci NOT NULL,
+ Estonian varchar(300) CHARACTER SET utf8 COLLATE utf8_estonian_ci NOT NULL,
+ Faroese varchar(300) NOT NULL,
+ Farsi varchar(300) NOT NULL,
+ Finnish varchar(300) NOT NULL,
+ French varchar(300) NOT NULL,
+ Galician varchar(300) NOT NULL,
+ Georgian varchar(300) NOT NULL,
+ German varchar(300) CHARACTER SET utf8 COLLATE utf8_german2_ci NOT NULL,
+ Greek varchar(300) NOT NULL,
+ Hebrew varchar(300) NOT NULL,
+ Hungarian varchar(300) CHARACTER SET utf8 COLLATE utf8_hungarian_ci NOT NULL,
+ Icelandic varchar(300) CHARACTER SET utf8 COLLATE utf8_icelandic_ci NOT NULL,
+ Indonesian varchar(300) NOT NULL,
+ Italian varchar(300) NOT NULL,
+ Japanese varchar(300) NOT NULL,
+ Klingon varchar(300) NOT NULL,
+ Korean varchar(300) NOT NULL,
+ Latvian varchar(300) CHARACTER SET utf8 COLLATE utf8_latvian_ci NOT NULL,
+ Lithuanian varchar(300) CHARACTER SET utf8 COLLATE utf8_lithuanian_ci NOT NULL,
+ Malaysian varchar(300) NOT NULL,
+ Myanmar varchar(300) CHARACTER SET utf8 COLLATE utf8_myanmar_ci NOT NULL,
+ Norwegian varchar(300) NOT NULL,
+ Persian varchar(300) CHARACTER SET utf8 COLLATE utf8_persian_ci NOT NULL,
+ Polish varchar(300) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
+ Portuguese varchar(300) NOT NULL,
+ Portuguese_BR varchar(300) NOT NULL,
+ Romanian varchar(300) CHARACTER SET utf8 COLLATE utf8_romanian_ci NOT NULL,
+ Russian varchar(300) NOT NULL,
+ Serbian varchar(300) NOT NULL,
+ Sinhala varchar(300) CHARACTER SET utf8 COLLATE utf8_sinhala_ci NOT NULL,
+ Slovakian varchar(300) CHARACTER SET utf8 COLLATE utf8_slovak_ci NOT NULL,
+ Slovenian varchar(300) CHARACTER SET utf8 COLLATE utf8_slovenian_ci NOT NULL,
+ Spanish varchar(300) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+ Swedish varchar(300) NOT NULL,
+ Taiwanese varchar(300) NOT NULL,
+ Turkish varchar(300) CHARACTER SET utf8 COLLATE utf8_turkish_ci NOT NULL,
+ Ukrainian varchar(300) NOT NULL,
+ Vietnamese varchar(300) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
+ Welsh varchar(300) NOT NULL,
+ PRIMARY KEY (phrase),
+ KEY wt_op (on_page)
+) ENGINE MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Various language translations.';
+
+ALTER TABLE webcal_user ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Defines a WebCalendar user.';
+ALTER TABLE webcal_user ADD cal_type ENUM('A','N','S','U') DEFAULT 'U' COMMENT 'Is this an A)dmin, N)on_user, S)ystem, or ordinary U)ser? Will evevtually replace is_admin.';
+ALTER TABLE webcal_user MODIFY cal_passwd varchar(32) DEFAULT NULL COMMENT 'The user''s password (not used for http.)' FIRST;
+ALTER TABLE webcal_user ADD cal_mod TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'User''s last log in.' FIRST;
+ALTER TABLE webcal_user MODIFY cal_last_login timestamp on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date user last logged in.' FIRST;
+ALTER TABLE webcal_user MODIFY cal_is_admin ENUM('N','Y') DEFAULT 'N' COMMENT 'Is the user a WebCalendar administrator? (Y or N)' FIRST;
+ALTER TABLE webcal_user MODIFY cal_enabled ENUM('N','Y') DEFAULT 'Y' COMMENT 'Allow admin to disable account? (Y or N)' FIRST;
+ALTER TABLE webcal_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'Unique user login.' FIRST;
+UPDATE webcal_user SET cal_type = 'U' WHERE cal_is_admin = 'N';
+UPDATE webcal_user SET cal_type = 'A' WHERE cal_is_admin = 'Y';
+
+ALTER TABLE webcal_user_layers ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Define layers for a user.';
+ALTER TABLE webcal_user_layers MODIFY cal_layerid int UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE COMMENT 'Unique layer id.' FIRST;
+ALTER TABLE webcal_user_layers MODIFY cal_dups ENUM('N','Y') DEFAULT 'N' COMMENT 'Show duplicates? (Y or N)';
+ALTER TABLE webcal_user_layers MODIFY cal_color varchar(25) DEFAULT NULL COMMENT 'Color (preferably in hex) of this layer.' FIRST;
+ALTER TABLE webcal_user_layers MODIFY cal_layeruser varchar(25) NOT NULL COMMENT 'Login name of user that this layer represents. Also from &lt;a href="webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_user_layers MODIFY cal_login varchar(25) NOT NULL COMMENT 'Login of owner of this layer from &lt;a href="webcal_user">webcal_user&lt;/a> table.' FIRST;
+
+/*Consolodate some fields / tables into webcal_user_pref.*/
+DELETE FROM webcal_config WHERE cal_value IS NULL;
+DELETE FROM webcal_user_pref WHERE cal_value IS NULL;
+
+ALTER TABLE webcal_user_pref DROP PRIMARY KEY;
+ALTER TABLE webcal_user_pref ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Specify preferences for a user. Most preferences are set via pref.php. Values in this table are loaded after system settings found in &lt;a href="#webcal_config">webcal_config&lt;/a> table.';
+ALTER TABLE webcal_user_pref MODIFY cal_value varchar(100) NOT NULL COMMENT 'Value of setting.';
+ALTER TABLE webcal_user_pref ADD PRIMARY KEY (cal_login,cal_setting,cal_value);
+
+ALTER TABLE webcal_user_pref MODIFY cal_login varchar(25) DEFAULT '__webcal__sys__';
+INSERT INTO webcal_user_pref (cal_setting, cal_value) SELECT cal_setting, cal_value FROM webcal_config;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'ACCESS_FUNCTIONS' FIRST;
+ALTER TABLE webcal_user_pref MODIFY cal_login varchar(25) NOT NULL COMMENT 'User login from &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_permissions FROM webcal_access_function;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'ASSISTANT';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_boss, cal_assistant FROM webcal_asst;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'GROUP_ID';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_group_id FROM webcal_group_user;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'ADDRESS';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_address FROM webcal_user WHERE cal_address IS NOT NULL;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'BIRTHDAY';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_birthday FROM webcal_user WHERE cal_birthday IS NOT NULL;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'DISPLAY_NAME';
+UPDATE webcal_user_pref SET cal_firstname = '' WHERE cal_firstname IS NULL;
+UPDATE webcal_user_pref SET cal_lastname = '' WHERE cal_lastname IS NULL;
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, TRIM( CONCAT_WS( ' ',cal_firstname,cal_lastname ) ) FROM webcal_user;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'EMAIL';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_email FROM webcal_user WHERE cal_email IS NOT NULL;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'FIRSTNAME';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_firstname FROM webcal_user;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'LASTNAME';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_lastname FROM webcal_user;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'PHONE';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_telephone FROM webcal_user WHERE cal_telephone IS NOT NULL;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'TITLE';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_title FROM webcal_user WHERE cal_title IS NOT NULL;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) DEFAULT 'VIEW_ID';
+INSERT INTO webcal_user_pref (cal_login, cal_value) SELECT cal_login, cal_view_id FROM webcal_view_user;
+
+ALTER TABLE webcal_user_pref MODIFY cal_setting varchar(50) NOT NULL COMMENT 'Setting name.';
+
+/* Once the code gets updated, drop the obsolete fields / tables. */
+/* End consolidating webcal_user_pref */
+
+UPDATE webcal_user_template SET cal_login = '__webcal__sys__' WHERE cal_login = '__system_';
+ALTER TABLE webcal_user_template ENGINE MyISAM CHARACTER SET utf8 COMMENT 'This table stores the custom header/stylesheet/trailer. If configured properly, each user (or nonuser cal) can have their own custom header/trailer.';
+ALTER TABLE webcal_user_template MODIFY cal_type ENUM('H','S','T') NOT NULL COMMENT 'H)eader, S)tylesheet/script, T)railer.' FIRST;
+ALTER TABLE webcal_user_template MODIFY cal_template_text text COMMENT 'Text of template.';
+ALTER TABLE webcal_user_template MODIFY cal_login varchar(25) NOT NULL COMMENT 'User login (or nonuser cal name), the default for all users is stored with the username "__webcal__sys__".' FIRST;
+
+ALTER TABLE webcal_view ENGINE MyISAM CHARACTER SET utf8 COMMENT 'A "view" allows a user to put the calendars of multiple users all on one page. A "view" is valid only for the owner (cal_owner) of the view. Users for the view are in &lt;a href="#webcal_view_user">webcal_view_user&lt;/a> table.';
+ALTER TABLE webcal_view MODIFY cal_view_type ENUM('D','M','W') DEFAULT NULL COMMENT '"W" for week view, "D" for day view, "M" for month view.';
+ALTER TABLE webcal_view MODIFY cal_owner varchar(25) NOT NULL COMMENT 'Login name of owner of this view. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.' FIRST;
+ALTER TABLE webcal_view MODIFY cal_name varchar(50) NOT NULL COMMENT 'Name of view.' FIRST;
+ALTER TABLE webcal_view MODIFY cal_is_global ENUM('N','Y') NOT NULL DEFAULT 'N' COMMENT 'Is this a global view? (can it be accessed by other users - "Y" or "N")' FIRST;
+ALTER TABLE webcal_view MODIFY cal_view_id int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Unique view id.' FIRST;
+
+ALTER TABLE webcal_view_user ENGINE MyISAM CHARACTER SET utf8 COMMENT 'Specify users in a view.';
+ALTER TABLE webcal_view_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'A user in the view. From &lt;a href="#webcal_user">webcal_user&lt;/a> table.';
+ALTER TABLE webcal_view_user MODIFY cal_view_id int UNSIGNED NOT NULL COMMENT 'view id from &lt;a href="#webcal_view">webcal_view&lt;/a> table.' FIRST;
+    </pre>
+
+    <hr><br>
 
     <p>After you complete manually updating your database, you will still need
     to run the <a href="install/index.php">installation script</a> to perform
-    any necessary data changes needed to convert existing data.</p>
+    any necessary data changes needed to convert existing data. Although, I've tried to do that for you in upgrading from 1.1.3, I may have missed something.</p><br>
 
     <p><a href="http://validator.w3.org/check?uri=referer">
-      <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!"
-      class="valid" /></a></p>
+      <img src="../images/HTML5_Logo.png" alt="Valid HTML5!"></a></p><br>
   </body>
 </html>
