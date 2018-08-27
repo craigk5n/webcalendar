@@ -108,8 +108,14 @@ function getPostValue($name, $defVal=NULL, $chkXSS=false) {
  */
 function getGetValue($name) {
   $getName = null;
-  if (isset($_GET) && is_array($_GET) && isset($_GET[$name]))
-    $getName = ( get_magic_quotes_gpc() != 0 ? $_GET[$name] : addslashes($_GET[$name]) );
+  if (isset($_GET) && is_array($_GET) && isset($_GET[$name])) {
+    if ( get_magic_quotes_gpc() != 0 ) {
+      $getName = $_GET[$name];
+    } else {
+      $getName = is_array($_GET[$name]) ? array_map('addslashes', $_GET[$name]) :
+        addslashes($_GET[$name]);
+    }
+  }
   preventHacking ( $name, $getName );
   return $getName;
 }
