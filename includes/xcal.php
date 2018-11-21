@@ -2006,7 +2006,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $subsubstate = ''; // reflect the sub-sub section
   $error = false;
   $line = 0;
-  $event = '';
+  $event = [ ];
   $lines = explode ( "\n", $data );
   $linecnt = count ( $lines );
   for ( $n = 0; $n < $linecnt && ! $error; $n++ ) {
@@ -2164,14 +2164,14 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         $substate = 'none';
         $subsubstate = '';
         // clear out data for new event
-        $event = '';
+        $event = [ ];
       } elseif ( preg_match ( "/^END:VTODO$/i", $buff, $match ) ) {
         if ( $tmp_data = format_ical ( $event ) ) $ical_data[] = $tmp_data;
         $state = 'VCALENDAR';
         $substate = 'none';
         $subsubstate = '';
         // clear out data for new event
-        $event = '';
+        $event = [ ];
         // folded lines?, this shouldn't happen
       } elseif ( preg_match ( '/^\s(\S.*)$/', $buff, $match ) ) {
         if ( $substate != 'none' ) {
@@ -2750,6 +2750,7 @@ function format_ical ( $event ) {
       }
     }
   } // end if rrule
+  //debug: print_r($fevent);
   return $fevent;
 }
 /**
@@ -2879,7 +2880,7 @@ function parse_vcal( $cal_file ) {
           $subsubstate = '';
           if ( $tmp_data = format_vcal( $event ) ) $vcal_data[] = $tmp_data;
           // clear out data for new event
-          $event = '';
+          $event = [ ];
           // TODO: QUOTED-PRINTABLE descriptions
           // folded lines
         } elseif ( preg_match ( '/^[ ]{1}(.+)$/', $buff, $match ) ) {
