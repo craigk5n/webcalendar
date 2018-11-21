@@ -6402,7 +6402,7 @@ function require_valid_referring_url ()
     // Unfortunately, some version of MSIE do not send this info.
     return;
   }
-  if ( ! preg_match ( "@$SERVER_URL@i", $_SERVER['HTTP_REFERER'] ) ) {
+  if ( ! preg_match ( "@$SERVER_URL@", $_SERVER['HTTP_REFERER'] ) ) {
     // Gotcha.  URL of referring page is not the same as our server.
     // This can be an instance of XSRF.
     // (This may also happen when more than address is used for your server.
