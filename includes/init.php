@@ -116,11 +116,13 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $MENU_ENABLED = 'N';
 
   $appStr = generate_application_name( true );
-  // Include includes/css/print_styles.css as a media="print" stylesheet.
-  // When the user clicks on the "Printer Friendly" link, $friendly will be
-  // non-empty, including this as a normal stylesheet so they can see how it
-  // will look when printed. This maintains backwards-compatibility for browsers
-  // that don't support media="print" stylesheets.
+  /* 
+  * Include includes/css/print_styles.css as a media="print" stylesheet.
+  * When the user clicks on the "Printer Friendly" link, $friendly will be
+  * non-empty, including this as a normal stylesheet so they can see how it
+  * will look when printed. This maintains backwards-compatibility for browsers
+  * that don't support media="print" stylesheets.
+  */
   $cs_ar = array( 'css/styles.css', 'css/print_styles.css' );
   $js_ar = array();
 
@@ -232,17 +234,17 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // Add RSS feed for unapproved events if approvals are required
   if( $GLOBALS['REQUIRE_APPROVALS'] == 'Y'
        && $login != '__public__' && $is_admin ) {
-    // Prh .. fix theme change for auth_http which does not set webcal*login
-    //        variables.
-    //
-    //        Pass the logged in user id as login=<whatever> on the URL
-    //        Add css_cache=<cookie setting> to change the URL signature
-    //        to force a fetch from the server rather than from the
-    //        browser cache when the style changes.
-    // Note: we could do all the queries to add the RSS feed for every user
-    // the current user has permissions to approve for, but I'm thinking
-    // that's too many db requests to repeat on every page.
-
+    /* Prh .. fix theme change for auth_http which does not set webcal*login
+    *        variables.
+    *
+    *        Pass the logged in user id as login=<whatever> on the URL
+    *        Add css_cache=<cookie setting> to change the URL signature
+    *        to force a fetch from the server rather than from the
+    *        browser cache when the style changes.
+    * Note: we could do all the queries to add the RSS feed for every user
+    * the current user has permissions to approve for, but I'm thinking
+    * that's too many db requests to repeat on every page.
+    */
     $ret .= $tmp_l . $tmp_f . '?' . filemtime( $tmp_f ) . $tmp . $login . '" />'
      . ( $is_admin && $PUBLIC_ACCESS == 'Y' ? $tmp_l . $tmp_f . '?user=public&'
      . filemtime( $tmp_f ) . $tmp . translate( $PUBLIC_ACCESS_FULLNAME )
