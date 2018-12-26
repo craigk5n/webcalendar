@@ -828,7 +828,7 @@ Username cannot be blank.: Il nome utente non pu&ograve; essere nullo.
 Export: Esporta
 Export format: Formato esportazione
 Include all layers: Includi tutti i livelli
-Include deleted entries: Includi elementi cancellate
+Include deleted entries: Includi elementi cancellati
 Export all dates: Esporta tutte le date
 Start date: Data inizio
 End date: Data fine
@@ -1096,7 +1096,7 @@ theme-reload-help: Per effetto della memorizzazione dei CSS, pu&ograve; essere n
 Page may need to be reloaded for new Theme to take effect: Pu&ograve; essere necessario ricaricare la pagina per applicare il nuovo tema
 display_byproxy-help: Mostra autore effettivo nella scheda elemento
 Display if created by Assistant: Mostra se l'autore &egrave; un assistente
-allow-view-subscriptions-help: Consente di limitare accesso remoto a elementi privati o condfidenziali
+allow-view-subscriptions-help: Consente di limitare accesso remoto a elementi privati o confidenziali
 Allow remote viewing of: Consenti vista da remoto di
 entries: elementi
 
