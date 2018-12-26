@@ -495,7 +495,7 @@ gif 3kb max: (gif 3kB max)
 Search for existing icons: Cerca icone disponibili
 Add: Aggiungi
 Delete: Cancella
-Are you sure you want to delete this entry?: Sei sicuro di voler eliminare questa nota?
+Are you sure you want to delete this entry?: Sei sicuro di voler eliminare questo evento?
 Make New Category: Aggiungi una nuova categoria
 
 ########################################
@@ -565,8 +565,8 @@ hours behind you: ore indietro rispetto a te
 XXX is in a different timezone (ahead): (XXX &egrave; in un fuso orario differente; YYY avanti rispetto a te.<br />&nbsp;ZZZ)
 XXX is in a different timezone (behind): (XXX &egrave; in un fuso orario differente; YYY indietro rispetto a te.<br />&nbsp;ZZZ)
 Time entered here is based on your Timezone.: L'orario inserito qui &egrave; basato sul <b>tuo</b> fuso orario.
-Edit Entry: Modifica Nota
-Add Entry: Aggiungi Nota
+Edit Entry: Modifica evento
+Add Entry: Aggiungi evento
 Details: Dettagli
 Participants: Partecipanti
 Repeat: Ripetizione
@@ -575,7 +575,7 @@ brief-description-help: Questo dovrebbe dare una breve descrizione (circa 20 car
 Brief Description: Descrizione Breve
 full-description-help: Questo dovrebbe dare dettagli completi dell'evento. Questa informazione sar&agrave; mostrata quando l'utente visualizza l'evento.
 Full Description: Descrizione Completa
-access-help: Specifica il livello di accesso dell'evento.<br /> <i>Pubblico</i>: Chiunque pu&ograve; vedere tutti i dettagli dell'evento.  <br /><i>Confidenziale</i>: Gli altri possono vedere che &egrave; presente una nota per quella data e ora, ma non i dettagli relativi.
+access-help: Specifica il livello di accesso dell'evento.<br /> <i>Pubblico</i>: Chiunque pu&ograve; vedere tutti i dettagli dell'evento.  <br /><i>Confidenziale</i>: Gli altri possono vedere che &egrave; presente un evento per quella data e ora, ma non i dettagli relativi.
 Access: Accesso
 priority-help: Specifica la priorit&agrave; dell'evento. Eventi con un alta priorit&agrave; saranno mostrati in grassetto.
 Priority: Priorit&agrave;
@@ -610,7 +610,7 @@ avail_participants-help: Lista dei partecipanti disponibili per questo elemento
 Available: Disponibile
 Find Name: Trova nome
 Resources: Risorse
-participants-help: Elenca i partecipanti di questa nota.
+participants-help: Elenca i partecipanti di questo evento.
 Selected: Selezionato
 Availability: Disponibilit&agrave;
 external-participants-help: Specifica una lista di partecipanti all'evento che sono dei non utenti del calendario. Gli utenti dovrebbero essere listati uno per riga e possono includere un indirizzo e-mail. Se un indirizzo e-mail viene specificato, &egrave; possibile che l'utente riceva notifiche e avvisi
@@ -667,8 +667,8 @@ End/Due: Fine/Termine
 Times: Volte
 Every: Ogni
 CAPTCHA Warning: <b>Attenzione:</b> Impossibile usare <i>CAPTCHA</i> senza l'estensione GD di PHP!<br />
-Delete entry: Cancella nota
-You are not authorized to edit this entry.: Non sei autorizzato a modificare questa nota
+Delete entry: Cancella evento
+You are not authorized to edit this entry.: Non sei autorizzato a modificare questo evento
 
 ########################################
 # Page: edit_entry_handler.php
@@ -1029,12 +1029,12 @@ Emails Will Not Be Sent: Non verrano inviate notifiche via post@
 Reject Selected: Rifiuta selezioanti
 Reject: Rifiuta
 Uncheck All: De-seleziona tutti
-View this entry: Visualizza questa nota
+View this entry: Visualizza questo evento
 No unapproved entries for: Nessun elemento non approvato per
 No unapproved entries for XXX.: Nessun elemento non approvato per: "XXX".
 Unapproved Entries: Eventi non approvati
 Not authorized: Non autorizzato
-Approve this entry?: Approva questa nota?
+Approve this entry?: Approva questo evento?
 Reject this entry?: Rifiuta questo inserimento?
 Approve Selected entries?: Approva elementi selezionati?
 Reject Selected entries?: Rifiuta elementi selezionati?
@@ -1049,7 +1049,7 @@ Access public calendar: Accedi al calendario pubblico
 public: pubblico
 Access XXX calendar: Accesso al calendario XXX
 calendar: calendario
-cookies-note: <b>Nota:</b> Questo applicativo necessita dei cookie abilitati.
+cookies-note: <b>Nota:</b> Questo sito necessita dei cookie abilitati.
 
 ########################################
 # Page: login.php
@@ -1300,12 +1300,12 @@ at: a
 comments: commenti
 Show: Mostra
 Hide: Nascondi
-Approve/Confirm entry: Approva/Conferma nota
+Approve/Confirm entry: Approva/Conferma evento
 Reject entry: Rifiuta evento
 Set category: Setta la categoria
 Copy entry: Copia record
-This will delete this entry for all users.: Questo canceller&agrave; la nota per tutti gli utenti.
-Edit entry: Modifica Nota
+This will delete this entry for all users.: Questo canceller&agrave; l'evento per tutti gli utenti.
+Edit entry: Modifica evento
 Edit repeating entry for all dates: Modifica l'evento per tutte le date
 Delete repeating event for all dates: Cancella l'evento per tutte le date
 Edit entry for this date: Inserisci l'evento per questa data
@@ -1320,7 +1320,7 @@ This will add the entry to your calendar.: Questo aggiunger&agrave; un evento al
 Email all participants: Avvisa tutti i partecipanti via e-mail
 Hide activity log: Nascondi il log delle attivit&agrave;
 Show activity log: Mostra il log delle attivit&agrave;
-Export this entry to: Esporta questa nota in
+Export this entry to: Esporta questo evento in
 Palm Pilot: =
 
 ########################################
@@ -1331,7 +1331,7 @@ Double-click on empty cell to add new entry: Doppio-clic in una cella vuota per 
 ########################################
 # Page: week_details.php
 #
-New Entry: Nuova Nota
+New Entry: Nuovo evento
 
 ########################################
 # Page: includes/access.php
@@ -1511,7 +1511,7 @@ Page: Pagina
 # Page: includes/trailer.php
 #
 My Calendar: Il mio calendario
-Add New Entry: Aggiungi nuova nota
+Add New Entry: Aggiungi nuovo evento
 Add New Task: Aggiungi nuovo compito
 Logout: Esci
 Home: Inizio
