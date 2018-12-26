@@ -255,8 +255,8 @@ limit-appts-number-help: Specifica il massimo numero di eventi che un utente pu&
 Maximum timed events per day: Massimo numero di eventi al giorno
 crossday-help: Se impostato, mostra in giorni separati eventi estesi su pi&ugrave; giorni
 Disable Cross-Day Events: Disabilita eventi multidata
-disable-location-field-help: Imposta "S&igrave;" per rimuovere il campo "Locazione" dalla pagina info evento
-Disable Location field: Disabilita campo Locazione
+disable-location-field-help: Imposta "S&igrave;" per rimuovere il campo "Luogo" dalla pagina info evento
+Disable Location field: Disabilita campo Luogo
 disable-url-field-help: Imposta "S&igrave;" per rimuovere il campo "URL" dalla pagina info evento
 Disable URL field: Disabilita campo URL
 disable-priority-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Priorit&agrave;" dalle pagine di informazione sugli eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
@@ -589,8 +589,8 @@ Date Completed: Data completamento
 percent-help: Percentuale di completamento del compito per questo utente
 Percent Complete: Percentale completamento
 All Percentages: Tutte le percentuali
-location-help: Locazione dell'evento
-Location: Locazione
+location-help: Luogo dell'evento
+Location: Luogo
 url-help: URL dell'evento
 URL: =
 date-help: Specifica la data di un evento.
