@@ -247,7 +247,7 @@ echo '
      <span class="cookies">' . translate ( 'cookies-note' ) . '</span><br />
      <hr />
      <br />
-     <a href="' . $PROGRAM_URL . '" id="programname">' . $PROGRAM_NAME . '</a>'
+     <a href="' . $PROGRAM_URL . '" target="_blank"  id="programname">' . $PROGRAM_NAME . '</a>'
 // Print custom trailer (since we do not call print_trailer function).
  . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'
   ? load_template ( $login, 'T' ) : '' ) . '
