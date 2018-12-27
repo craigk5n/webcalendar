@@ -1344,7 +1344,7 @@ Month View: Vista mese
 Common Trailer: Piede messaggio comune
 User Management: Gestione utenti
 Manage Views: Gestione Viste
-Week View: Visat settimana
+Week View: Vista settimana
 Year View: Vista anno
 Invalid function id: Id funzione non valido
 
