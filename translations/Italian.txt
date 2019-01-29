@@ -1266,7 +1266,7 @@ View Name: Nome della vista
 View Type: Tipo di vista
 Day by Time: Giorno per orario
 Week (Users horizontal): Settimana (Utenti in orizzontale)
-Week by Time: Seetimana per orario
+Week by Time: Settimana per orario
 Week (Users vertical): Settimana (Utenti in verticale)
 Week (Timebar): Settimana (Asse del tempo)
 Month (Timebar): Mese (Asse del tempo)
