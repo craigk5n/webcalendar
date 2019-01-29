@@ -1059,7 +1059,7 @@ Illegal characters in login XXX.: Caratteri non ammessi in accesso <tt>XXX</tt>.
 Invalid login: Login non valido
 Activity login failure: Nome utente: "XXX", IP: "YYY".
 Error XXX: Errore: "XXX".
-You have been logged out.: Sei stato scollegato.
+You have been logged out.: Sessione chiusa.
 Not yet registered? Register here!: Non ancora registrato? Registrati qui!
 
 ########################################
