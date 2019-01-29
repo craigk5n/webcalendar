@@ -255,8 +255,8 @@ limit-appts-number-help: Specifica il massimo numero di eventi che un utente pu&
 Maximum timed events per day: Massimo numero di eventi al giorno
 crossday-help: Se impostato, mostra in giorni separati eventi estesi su pi&ugrave; giorni
 Disable Cross-Day Events: Disabilita eventi multidata
-disable-location-field-help: Imposta "S&igrave;" per rimuovere il campo "Locazione" dalla pagina info evento
-Disable Location field: Disabilita campo Locazione
+disable-location-field-help: Imposta "S&igrave;" per rimuovere il campo "Luogo" dalla pagina info evento
+Disable Location field: Disabilita campo Luogo
 disable-url-field-help: Imposta "S&igrave;" per rimuovere il campo "URL" dalla pagina info evento
 Disable URL field: Disabilita campo URL
 disable-priority-field-help: Selezionare "S&igrave;" rimuover&agrave; il campo "Priorit&agrave;" dalle pagine di informazione sugli eventi, fornendo un'interfaccia pi&ugrave; semplice per i novizi
@@ -495,7 +495,7 @@ gif 3kb max: (gif 3kB max)
 Search for existing icons: Cerca icone disponibili
 Add: Aggiungi
 Delete: Cancella
-Are you sure you want to delete this entry?: Sei sicuro di voler eliminare questa nota?
+Are you sure you want to delete this entry?: Sei sicuro di voler eliminare questo evento?
 Make New Category: Aggiungi una nuova categoria
 
 ########################################
@@ -565,8 +565,8 @@ hours behind you: ore indietro rispetto a te
 XXX is in a different timezone (ahead): (XXX &egrave; in un fuso orario differente; YYY avanti rispetto a te.<br />&nbsp;ZZZ)
 XXX is in a different timezone (behind): (XXX &egrave; in un fuso orario differente; YYY indietro rispetto a te.<br />&nbsp;ZZZ)
 Time entered here is based on your Timezone.: L'orario inserito qui &egrave; basato sul <b>tuo</b> fuso orario.
-Edit Entry: Modifica Nota
-Add Entry: Aggiungi Nota
+Edit Entry: Modifica evento
+Add Entry: Aggiungi evento
 Details: Dettagli
 Participants: Partecipanti
 Repeat: Ripetizione
@@ -575,7 +575,7 @@ brief-description-help: Questo dovrebbe dare una breve descrizione (circa 20 car
 Brief Description: Descrizione Breve
 full-description-help: Questo dovrebbe dare dettagli completi dell'evento. Questa informazione sar&agrave; mostrata quando l'utente visualizza l'evento.
 Full Description: Descrizione Completa
-access-help: Specifica il livello di accesso dell'evento.<br /> <i>Pubblico</i>: Chiunque pu&ograve; vedere tutti i dettagli dell'evento.  <br /><i>Confidenziale</i>: Gli altri possono vedere che &egrave; presente una nota per quella data e ora, ma non i dettagli relativi.
+access-help: Specifica il livello di accesso dell'evento.<br /> <i>Pubblico</i>: Chiunque pu&ograve; vedere tutti i dettagli dell'evento.  <br /><i>Confidenziale</i>: Gli altri possono vedere che &egrave; presente un evento per quella data e ora, ma non i dettagli relativi.
 Access: Accesso
 priority-help: Specifica la priorit&agrave; dell'evento. Eventi con un alta priorit&agrave; saranno mostrati in grassetto.
 Priority: Priorit&agrave;
@@ -589,8 +589,8 @@ Date Completed: Data completamento
 percent-help: Percentuale di completamento del compito per questo utente
 Percent Complete: Percentale completamento
 All Percentages: Tutte le percentuali
-location-help: Locazione dell'evento
-Location: Locazione
+location-help: Luogo dell'evento
+Location: Luogo
 url-help: URL dell'evento
 URL: =
 date-help: Specifica la data di un evento.
@@ -610,7 +610,7 @@ avail_participants-help: Lista dei partecipanti disponibili per questo elemento
 Available: Disponibile
 Find Name: Trova nome
 Resources: Risorse
-participants-help: Elenca i partecipanti di questa nota.
+participants-help: Elenca i partecipanti di questo evento.
 Selected: Selezionato
 Availability: Disponibilit&agrave;
 external-participants-help: Specifica una lista di partecipanti all'evento che sono dei non utenti del calendario. Gli utenti dovrebbero essere listati uno per riga e possono includere un indirizzo e-mail. Se un indirizzo e-mail viene specificato, &egrave; possibile che l'utente riceva notifiche e avvisi
@@ -667,8 +667,8 @@ End/Due: Fine/Termine
 Times: Volte
 Every: Ogni
 CAPTCHA Warning: <b>Attenzione:</b> Impossibile usare <i>CAPTCHA</i> senza l'estensione GD di PHP!<br />
-Delete entry: Cancella nota
-You are not authorized to edit this entry.: Non sei autorizzato a modificare questa nota
+Delete entry: Cancella evento
+You are not authorized to edit this entry.: Non sei autorizzato a modificare questo evento
 
 ########################################
 # Page: edit_entry_handler.php
@@ -828,7 +828,7 @@ Username cannot be blank.: Il nome utente non pu&ograve; essere nullo.
 Export: Esporta
 Export format: Formato esportazione
 Include all layers: Includi tutti i livelli
-Include deleted entries: Includi elementi cancellate
+Include deleted entries: Includi elementi cancellati
 Export all dates: Esporta tutte le date
 Start date: Data inizio
 End date: Data fine
@@ -1029,12 +1029,12 @@ Emails Will Not Be Sent: Non verrano inviate notifiche via post@
 Reject Selected: Rifiuta selezioanti
 Reject: Rifiuta
 Uncheck All: De-seleziona tutti
-View this entry: Visualizza questa nota
+View this entry: Visualizza questo evento
 No unapproved entries for: Nessun elemento non approvato per
 No unapproved entries for XXX.: Nessun elemento non approvato per: "XXX".
 Unapproved Entries: Eventi non approvati
 Not authorized: Non autorizzato
-Approve this entry?: Approva questa nota?
+Approve this entry?: Approva questo evento?
 Reject this entry?: Rifiuta questo inserimento?
 Approve Selected entries?: Approva elementi selezionati?
 Reject Selected entries?: Rifiuta elementi selezionati?
@@ -1049,7 +1049,7 @@ Access public calendar: Accedi al calendario pubblico
 public: pubblico
 Access XXX calendar: Accesso al calendario XXX
 calendar: calendario
-cookies-note: <b>Nota:</b> Questo applicativo necessita dei cookie abilitati.
+cookies-note: <b>Nota:</b> Questo sito necessita dei cookie abilitati.
 
 ########################################
 # Page: login.php
@@ -1059,7 +1059,7 @@ Illegal characters in login XXX.: Caratteri non ammessi in accesso <tt>XXX</tt>.
 Invalid login: Login non valido
 Activity login failure: Nome utente: "XXX", IP: "YYY".
 Error XXX: Errore: "XXX".
-You have been logged out.: Sei stato scollegato.
+You have been logged out.: Sessione chiusa.
 Not yet registered? Register here!: Non ancora registrato? Registrati qui!
 
 ########################################
@@ -1096,7 +1096,7 @@ theme-reload-help: Per effetto della memorizzazione dei CSS, pu&ograve; essere n
 Page may need to be reloaded for new Theme to take effect: Pu&ograve; essere necessario ricaricare la pagina per applicare il nuovo tema
 display_byproxy-help: Mostra autore effettivo nella scheda elemento
 Display if created by Assistant: Mostra se l'autore &egrave; un assistente
-allow-view-subscriptions-help: Consente di limitare accesso remoto a elementi privati o condfidenziali
+allow-view-subscriptions-help: Consente di limitare accesso remoto a elementi privati o confidenziali
 Allow remote viewing of: Consenti vista da remoto di
 entries: elementi
 
@@ -1266,7 +1266,7 @@ View Name: Nome della vista
 View Type: Tipo di vista
 Day by Time: Giorno per orario
 Week (Users horizontal): Settimana (Utenti in orizzontale)
-Week by Time: Seetimana per orario
+Week by Time: Settimana per orario
 Week (Users vertical): Settimana (Utenti in verticale)
 Week (Timebar): Settimana (Asse del tempo)
 Month (Timebar): Mese (Asse del tempo)
@@ -1300,12 +1300,12 @@ at: a
 comments: commenti
 Show: Mostra
 Hide: Nascondi
-Approve/Confirm entry: Approva/Conferma nota
+Approve/Confirm entry: Approva/Conferma evento
 Reject entry: Rifiuta evento
 Set category: Setta la categoria
 Copy entry: Copia record
-This will delete this entry for all users.: Questo canceller&agrave; la nota per tutti gli utenti.
-Edit entry: Modifica Nota
+This will delete this entry for all users.: Questo canceller&agrave; l'evento per tutti gli utenti.
+Edit entry: Modifica evento
 Edit repeating entry for all dates: Modifica l'evento per tutte le date
 Delete repeating event for all dates: Cancella l'evento per tutte le date
 Edit entry for this date: Inserisci l'evento per questa data
@@ -1320,7 +1320,7 @@ This will add the entry to your calendar.: Questo aggiunger&agrave; un evento al
 Email all participants: Avvisa tutti i partecipanti via e-mail
 Hide activity log: Nascondi il log delle attivit&agrave;
 Show activity log: Mostra il log delle attivit&agrave;
-Export this entry to: Esporta questa nota in
+Export this entry to: Esporta questo evento in
 Palm Pilot: =
 
 ########################################
@@ -1331,7 +1331,7 @@ Double-click on empty cell to add new entry: Doppio-clic in una cella vuota per 
 ########################################
 # Page: week_details.php
 #
-New Entry: Nuova Nota
+New Entry: Nuovo evento
 
 ########################################
 # Page: includes/access.php
@@ -1344,7 +1344,7 @@ Month View: Vista mese
 Common Trailer: Piede messaggio comune
 User Management: Gestione utenti
 Manage Views: Gestione Viste
-Week View: Visat settimana
+Week View: Vista settimana
 Year View: Vista anno
 Invalid function id: Id funzione non valido
 
@@ -1511,7 +1511,7 @@ Page: Pagina
 # Page: includes/trailer.php
 #
 My Calendar: Il mio calendario
-Add New Entry: Aggiungi nuova nota
+Add New Entry: Aggiungi nuovo evento
 Add New Task: Aggiungi nuovo compito
 Logout: Esci
 Home: Inizio
