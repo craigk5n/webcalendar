@@ -1246,7 +1246,7 @@ function import_data ( $data, $overwrite, $type ) {
     return false;
 
   foreach ( $data as $Entry ) {
-    flush(); ob_flush(); // send output to browser ASAP
+    flush(); @ob_flush(); // send output to browser ASAP
     // do_debug ( "Entry Array " . print_r ( $Entry, true ) );
     $participants[0] = $calUser;
     // $participants[0] = $login;
