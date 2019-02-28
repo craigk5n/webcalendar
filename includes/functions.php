@@ -4252,8 +4252,8 @@ function load_user_preferences ( $guest = '' ) {
           && ! access_can_access_function( ACCESS_VIEW, $guest ) ) )
       ? '' : ' OR cal_is_global = \'Y\' ' )
      . 'ORDER BY cal_name', [$tmp_login] );
+  $views = [];
   if ( $rows ) {
-    $views = [];
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
       $url = 'view_';
