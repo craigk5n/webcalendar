@@ -11,7 +11,7 @@
     <table>
       <tr>
         <th>WebCalendar Version:</th>
-        <td>1.2.7 </td>
+        <td>1.3.0 </td>
       </tr>
     </table>
 
@@ -40,7 +40,7 @@
     to installation</span>.</p>
 
     <p>Another major upgrade to WebCalendar for v1.1 is the implementation of
-    full timezone support. In previous versions, all date/time data was stored
+    full timezone support. In olders versions, all date/time data was stored
     based on server time and users set their 'time offset' relative to server
     time. Now, all date/time data will be stored in the database as
     Greenwich Mean Time (GMT) and users will be able to select a timezone based
@@ -64,7 +64,13 @@
     with uploading SQL files to phpMyAdmin or executing SQL commands yourself. (For the most part. There are one or two database types that have not been fully implemented, as yet. If you are able to set them up, we'd appreciate the help.)
     Your database will be upgraded automatically from your current
     WebCalendar installation.  Follow the steps below to upgrade to WebCalendar
-    1.2.7 from an older version of WebCalendar.
+    1.3.0 from an older version of WebCalendar.
+
+    </p><p><b>NOTE:</b> You should use the <a href="install/index.php">Launch the Automatic Installation Script</a>
+    instead of doing this manually, but the information below is provided
+    as documentation for those who are interested...
+    All users (including those using the Automatic Installation Script)
+    should create a backup of their database before performing the upgrade.
     </p>
 
     <ol>
