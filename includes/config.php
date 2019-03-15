@@ -95,10 +95,10 @@ function do_config( $fileLoc ) {
   // When changing PROGRAM VERSION, also change it in install/default_config.php
   $PROGRAM_VERSION = 'v1.3.0';
   // Update PROGRAM_DATE with official release data
-  $PROGRAM_DATE = '(from git repo)';
+  $PROGRAM_DATE = '(15 Mar 2019)';
 
   $PROGRAM_NAME = 'WebCalendar ' . "$PROGRAM_VERSION ($PROGRAM_DATE)";
-  $PROGRAM_URL = 'http://www.k5n.us/webcalendar.php';
+  $PROGRAM_URL = 'http://k5n.us/wp/webcalendar/';
   $TROUBLE_URL = 'docs/WebCalendar-SysAdmin.html#trouble';
 
   // Open settings file to read.
