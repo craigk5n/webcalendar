@@ -25,7 +25,19 @@ final class FunctionsTest extends TestCase
   }
 
   public function test_add_dstfree_time() {
-    // TODO
+    // 03/09/2019 @ 12:00pm (UTC) = day before DST starts
+    // adding 1 day should be 23 hours diff
+    $time = 1552132800;
+    $res = add_dstfree_time ( $time, 86400 );
+    $diff = $res - $time;
+    $hours = $diff / 3600;
+    $this->assertEquals ( 23, $hours );
+    // add another day and we should get 24 hours
+    $time += 3600 * 24;
+    $res = add_dstfree_time ( $time, 86400 );
+    $diff = $res - $time;
+    $hours = $diff / 3600;
+    $this->assertEquals ( 24, $hours );
   }
 
   public function test_add_duration() {

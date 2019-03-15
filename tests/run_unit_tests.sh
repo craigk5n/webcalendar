@@ -2,6 +2,6 @@
 #
 # Please add new unit test files below.
 
-phpunit --bootstrap ../includes/functions.php functionsTest.php
+php phpunit-8.0.phar --bootstrap ../includes/functions.php functionsTest.php
 
 exit 0
