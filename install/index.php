@@ -934,7 +934,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
   <body' . ( empty( $onload ) ? '' : ' onload="' . $onload . '"' ) . '>';
 
 if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
-  $class = ( version_compare( phpversion(), '4.1.0', '>=' ) ? '' : 'not' )
+  $class = ( version_compare( phpversion(), '7.1.0', '>=' ) ? '' : 'not' )
    . 'recommended';
   echo '
     <table border="1" width="90%" class="aligncenter">

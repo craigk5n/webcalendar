@@ -152,11 +152,8 @@
 <a name="requirements"></a>
 <h2>System Requirements</h2>
  <ul>
-  <li>PHP 4.1 - PHP 5: some features specific version:
-    <ul>
-      <li>two-way iCalendar sync: PHP 4.3+ </li>
-      <li>hCalendar importing: PHP 5+ </li>
-    </ul>
+  <li>PHP 7.1 or later: PHP 7.0 and 5.X are no longer supported since
+      it has reach <a href="http://php.net/supported-versions.php">end-of-life status</a>
   </li>
   <li>Database (see <a href="#database">below</a>)</li>
   <li>CSS-enabled browser:
@@ -171,27 +168,22 @@
   <li>If not using HTTP-based authentication,
       then browser cookies are required</li>
  </ul>
- <p><strong>Recommended:</strong></p>
- <ul>
-  <li>pilot-link (if exporting to Palm):
-  <a href="http://sourceforge.net/project/?group_id=2158">http://sourceforge.net/project/?group_id=2158</a>&nbsp;<a href="http://sourceforge.net/project/?group_id=2158" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></li>
- </ul>
  <p><a name="database">You must have one of the following databases installed</a>:</p>
  <ul>
-  <li>MySQL</li>
+  <li>MySQL/MariaDB</li>
+  <li>SQLite</li>
   <li>Oracle 8+</li>
   <li>PostgreSQL</li>
   <li>Interbase</li>
   <li>MS SQL Server</li>
-  <li>SQLLite (PHP5)</li>
   <li>IBM DB2 </li>
   <li>ODBC</li>
  </ul>
 
- <p class="ptip"><span class="tip">TIP</span>PHP ODBC includes support for Adabas D, Solid
-   and Sybase SQL Anywhere as well as ODBC. PHP5 comes bundled with
+ <p class="ptip"><span class="tip">TIP</span>
+   PHP comes bundled with
    SQLite support. SQLite is an embedded file-based database. If your
-   hosting service supports PHP5, you should be able to create as
+   hosting service supports PHP, you should be able to create as
    many SQLite databases as you like (since each database is just
    a file).</p>
  <p>For the database you choose, you must have its drivers built into
@@ -199,9 +191,6 @@
   support (which is the default setting when installing PHP).
   See the PHP pages (<a href="http://www.php.net">www.php.net</a>&nbsp;<a href="http://www.php.net" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>)
   for more information on setting up PHP.</p>
- <p>No optional PHP packages (other than MySQL) are required for this
-  application. However, PHP should be compiled with <tt>--enable-track-vars</tt>
-  on some systems.</p>
  <p class="ptip"><span class="tip">TIP</span>If you want to use gradient background
    images, PHP must be compiled with the GD library. </p>
 
@@ -213,8 +202,8 @@
   For traditional HTTP authentication, PHP must be built as an Apache
   module.</p>
  <p>If you are planning on using email reminders, you will need to build
-  PHP as a CGI in order to run the <tt>send_reminders.php</tt> script. I would
-  strongly recommend building a module-based PHP for your web server
+  PHP as a CGI in order to run the <tt>send_reminders.php</tt> script. It
+  is recommended to have a module-based PHP for your web server
   and then a second PHP build to create the CGI version.</p>
  <p class="ptip"><span class="tip">TIP</span> Some Linux distributions come with both a module-based PHP
   with Apache and a standalone PHP binary.
@@ -267,7 +256,7 @@
  <table cellpadding="2">
  <tr><th>Prerequisite Failed</th><th>Recommended Solution</th></tr>
  <tr>
-   <td>PHP 4.1.0 or greater</td>
+   <td>PHP 7.1 or greater</td>
    <td>Upgrade your PHP installation</td>
  </tr>
  <tr>
