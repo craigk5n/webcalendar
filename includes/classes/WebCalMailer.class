@@ -40,7 +40,7 @@ class WebCalMailer extends phpmailer{
     // Turn on SMTP authentication.
     $this->SMTPAuth = ( $SMTP_AUTH == 'Y' );
     $this->SMTPSecure = "tls";
-    $this->SMTPDebug = 2;
+    $this->SMTPDebug = 0;
     $this->Username = $SMTP_USERNAME; // SMTP username.
     $this->Password = $SMTP_PASSWORD; // SMTP password.
   }
