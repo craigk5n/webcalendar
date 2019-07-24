@@ -166,6 +166,8 @@ function delete_events ( $nid ) {
       [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
       [$delete_em[$i]] );
+    dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?',
+      [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
       [$delete_em[$i]] );
     dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
