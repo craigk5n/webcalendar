@@ -30,7 +30,7 @@ function validate_and_submit() {
     showTab( 'details' );
 <?php } ?>
     form.name.focus();
-    alert ( "<?php etranslate ( 'You have not entered a Brief Description.', true )?>");
+    alert ( "<?php etranslate ( 'You have not entered a Brief Description', true )?>");
     return false;
   }
   if ( form.timetype &&
