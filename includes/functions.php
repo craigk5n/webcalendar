@@ -4397,7 +4397,7 @@ function nonuser_load_variables ( $login, $prefix ) {
       $GLOBALS[$prefix . 'login'] = $row[0];
       $GLOBALS[$prefix . 'lastname'] = $row[1];
       $GLOBALS[$prefix . 'firstname'] = $row[2];
-      $GLOBALS[$prefix . 'fullname'] = trim($raw[1] . ' ' . $row[2]);
+      $GLOBALS[$prefix . 'fullname'] = trim($row[1] . ' ' . $row[2]);
       $GLOBALS[$prefix . 'admin'] = $row[3];
       $GLOBALS[$prefix . 'is_public'] = $row[4];
       $GLOBALS[$prefix . 'url'] = $row[5];
