@@ -195,7 +195,7 @@ if ( ! $fit_to_window )
   $tdw = floor ( ( $table_width - $time_w ) / ( $end_ind - $start_ind + 1 ) );
 else
   // %
-  $tdw = floor ( ( 100 - $time_w ) / ( $end_ind - $start_ind + 1 ) );
+  $tdw = floor ( ( 100 - (int)$time_w ) / ( $end_ind - $start_ind + 1 ) );
 
 $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
