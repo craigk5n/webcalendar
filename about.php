@@ -7,10 +7,15 @@ static $data;
 
 if ( empty( $data ) ) {
   //  Read in and format AUTHORS file.
-  $data = preg_replace (
-    ["/\r\n|\n/", '/\s*<.+>+/'],
-    ['<br />'], // If replace is shorter than search, default is empty string.
-  file_get_contents ( 'AUTHORS' ) );
+  $data = file_get_contents ( 'AUTHORS' );
+  $patterns = array ();
+  $replacements = array ();
+  $patterns[0] = "/\r\n|\n/";
+  $replacements[0] = "<br>";
+  // Strip email addresses out
+  $patterns[1] = "<\S*@\S*>";
+  $replacements[1] = "";
+  $data = preg_replace ( $patterns, $replacements, $data );
 }
 print_header ( [], '<link href="includes/css/about.css" rel="stylesheet" />',
   '', true, false, true );
@@ -22,7 +27,7 @@ echo '    <div id="creds">' . ( empty( $credits ) ? '
         translate( 'version XXX' ) ) . '<br />' . $PROGRAM_DATE . '</p></a>
       <br />
       <p>' . translate( 'WebCalendar is a PHP application used...' ) . '</p>' : '' ) . '
-    </div><br />
+    </div>
     <form action="about.php" name="aboutform" id="aboutform" method="post">
       <input type="submit" name="' . ( empty( $credits )
   ? 'Credits" value="' . translate( 'Credits' )
