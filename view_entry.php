@@ -829,6 +829,13 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
       ? ' <a href="docdel.php?blid=' . $a->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
        . '<img src="images/delete.png"/></a>' : '' ) . '<br />';
+    // Show images; limit height to 35% of display screen size.
+    if ( $a->getMimeType() == 'image/jpeg' || $a->getMimeType() == 'image/png' ||
+      $a->getMimeType() == 'image/gif' ) {
+      echo '<br><a href="doc.php?blid=' . $a->getId() .
+      '"><img src="doc.php?blid=' . $a->getId() . '"' .
+      ' style="max-height:35%; width: auto" /></a>';
+    }
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize();
