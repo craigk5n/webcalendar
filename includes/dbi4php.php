@@ -515,10 +515,10 @@ function dbi_update_blob( $table, $column, $key, $data ) {
     array( '"dbi_update_blob"', $GLOBALS['db_type'] ),
     translate( 'Unfortunately, XXX is not implemented for YYY' ) );
 
-  assert( '! empty( $table )' );
-  assert( '! empty( $column )' );
-  assert( '! empty( $key )' );
-  assert( '! empty( $data )' );
+  assert( ! empty( $table ) );
+  assert( ! empty( $column ) );
+  assert( ! empty( $key ) );
+  assert( ! empty( $data ) );
 
   $sql = 'UPDATE ' . $table . ' SET ' . $column;
 
@@ -567,9 +567,9 @@ function dbi_update_blob( $table, $column, $key, $data ) {
 function dbi_get_blob( $table, $column, $key ) {
   global $unavail_DBI_Update_blob, $db_connection_info;
 
-  assert( '! empty( $table )' );
-  assert( '! empty( $column )' );
-  assert( '! empty( $key )' );
+  assert( ! empty( $table ) );
+  assert( ! empty( $column ) );
+  assert( ! empty( $key ) );
 
   $res =
     dbi_execute( 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $key );
