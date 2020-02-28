@@ -415,10 +415,13 @@ if ( ! empty ( $id ) && $id > 0 ) {
   else
     $hour = $time = -1;
 
+  $defusers = getGetValue('defusers');
+  $defusers_ar = array ();
   if ( ! empty ( $defusers ) ) {
-    $tmp_ar = explode ( ',', $defusers );
-    for ( $i = 0, $cnt = count ( $tmp_ar ); $i < $cnt; $i++ ) {
-      $participants[$tmp_ar[$i]] = 1;
+    $defusers_ar = explode ( ',', $defusers );
+    for ( $i = 0, $cnt = count ( $defusers_ar ); $i < $cnt; $i++ ) {
+      $participants[$defusers_ar[$i]] = 1;
+echo "adding $defusers_ar[$i] to participants <br>";
     }
   }
 
@@ -1023,20 +1026,16 @@ if ( $can_edit ) {
             . $f . $q . '</option>';
         }
       } else {
-        if ( ! empty ( $defusers ) && ! empty ( $userlist[$l] ) ) {
-          // Default selection of participants was in the URL.
-          $myusers .= '
-            <option value="' . $l . '">'
+        if ( empty ( $defusers ) && ! empty ( $user ) && ! empty ( $userlist[$l] ) ) {
+          // Default selection of participants was in the URL as 'user=XXX'
+          $myusers .= '<option value="' . $l . '">'
             . $f . $q . '</option>';
-        }
-
-        if ( ! empty ( $user ) && ! empty ( $userlist[$l] ) ) {
-          // Default selection of participants was in the URL.
-          $myusers .= '
-            <option value="' . $l . '">'
-            . $f . $q . '</option>';
-        }
-        if ( ( $l == $login && ! $is_assistant && ! $is_nonuser_admin ) ||
+        } else if ( ! empty ( $defusers ) ) {
+          // Default selection of participants was in the URL as 'defusers=user1,user2'
+          if ( ! empty ( $participants[$l] ) )
+            $myusers .= '<option value="' . $l . '">'
+              . $f . $q . '</option>';
+        } else if ( ( $l == $login && ! $is_assistant && ! $is_nonuser_admin ) ||
             ( ! empty ( $user ) && $l == $user ) )
            // Default selection of participants is logged in user.
           $myusers .= ' <option value="' . $l . '">' . $f . '</option>';
