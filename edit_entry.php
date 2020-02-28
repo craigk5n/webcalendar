@@ -421,7 +421,6 @@ if ( ! empty ( $id ) && $id > 0 ) {
     $defusers_ar = explode ( ',', $defusers );
     for ( $i = 0, $cnt = count ( $defusers_ar ); $i < $cnt; $i++ ) {
       $participants[$defusers_ar[$i]] = 1;
-echo "adding $defusers_ar[$i] to participants <br>";
     }
   }
 
