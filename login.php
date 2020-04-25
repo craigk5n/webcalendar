@@ -167,35 +167,35 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
  . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
   ? load_template ( $login, 'S' ) : '' ) . '
   </head>
-  <body id="login"' . ( $logout ? '' : ' onload="myOnLoad();"' ) . '>'
+  <body id="login"' . ( $logout ? '' : ' onload="myOnLoad();"' ) . '><center>'
 
 // Print custom header (since we do not call print_header function).
  . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y'
   ? load_template ( $login, 'H' ) : '' ) . '
-    <h2>' . $appStr . '</h2>' . ( empty ( $error ) ? '' : '
+    <h2>' . $appStr . '</h2></center>' . ( empty ( $error ) ? '' : '
     <span style="color:#f00; font-weight:bold;">'
    . str_replace ( 'XXX', $error, translate ( 'Error XXX' ) ) . '</span>' )
- . '<br />' . ( $logout ? '
-    <p>' . translate ( 'You have been logged out.' ) . '</p><br /><br />
+ . '' . ( $logout ? '
+    <center><p>' . translate ( 'You have been logged out.' ) . '</p>
     <a class="nav" href="login.php' . ( empty ( $return_path )
     ? '' : '?return_path=' . htmlentities ( $return_path ) ) . '">'
-   . translate ( 'Login' ) . '</a><br /><br /><br />' : '
+   . translate ( 'Login' ) . '</a></center><br /><br /><br />' : '
     <form name="login_form" id="login" action="login.php" method="post" '
    . ' onsubmit="return valid_form( this )">' . ( empty ( $return_path ) ? '' : '
       <input type="hidden" name="return_path" value="'
      . htmlentities ( $return_path ) . '" />' ) . '
-      <table class="aligncenter" id="logintable" cellspacing="10" cellpadding="10">
+      <table class="aligncenter" id="logintable" cellspacing="10" cellpadding="10" align="center">
         <tr>
           <td rowspan="2"><img src="images/login.gif" alt="Login" /></td>
           <td class="alignright"><label for="user">' . translate ( 'Username' )
    . ':</label></td>
-          <td><input name="login" id="user" size="15" maxlength="25" value="'
+          <td><input name="login" id="user" size="20" maxlength="25" value="'
    . ( empty ( $last_login ) ? '' : $last_login ) . '" tabindex="1" /></td>
         </tr>
         <tr>
           <td class="alignright"><label for="password">'
    . translate ( 'Password' ) . ':</label></td>
-          <td><input name="password" id="password" type="password" size="15" '
+          <td><input name="password" id="password" type="password" size="20" '
    . 'maxlength="30" tabindex="2" /></td>
         </tr>
         <tr>
@@ -207,7 +207,7 @@ echo send_doctype ( $appStr ) . ( $logout ? '' : '
    . translate ( 'Save login via cookies so I dont have to login next time.' )
    . '&nbsp;&nbsp;</label>
           </td>
-        </tr>
+        </tr> 
         <tr>
           <td colspan="4" class="aligncenter"><input type="submit" value="'
    . translate ( 'Login' ) . '" tabindex="4" /></td>
@@ -231,7 +231,7 @@ for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
 echo ( $DEMO_MODE == 'Y'
   // This is used on the sourceforge demo page.
   ? '
-    Demo login: user = "demo", password = "demo"<br />' : '' ) . '<br /><br />';
+    Demo login: user = "demo", password = "demo"<br />' : '' ) . '';
 
 if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
   // We can limit what domain is allowed to self register.
@@ -245,12 +245,11 @@ if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
 }
 echo '
      <span class="cookies">' . translate ( 'cookies-note' ) . '</span><br />
-     <hr />
-     <br />
-     <a href="' . $PROGRAM_URL . '" target="_blank" id="programname">' . $PROGRAM_NAME . '</a> <br /> <br />'
+     <a href="' . $PROGRAM_URL . '" target="_blank" id="programname">' . $PROGRAM_NAME . '</a> <br /> <br /> <hr />'
+    .'<center>' 
 // Print custom trailer (since we do not call print_trailer function).
  . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'
-  ? load_template ( $login, 'T' ) : '' ) . '
+  ? load_template ( $login, 'T' ) : '' ) . ' </center>
   </body>
 </html>';
 
