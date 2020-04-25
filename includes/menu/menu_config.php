@@ -97,7 +97,7 @@ $menuExtras[7] = ['item', 'home.png', '', 'http://www.home.com', '_blank']
 /*
 In multiuser calendar, this function print only the personal agenda of the day with event's description and place
 */
-$base_url = "http://" . $_SERVER['HTTP_HOST'] . "/day.php?friendly=1";
+$base_url = ( empty($HTTPS) ? "http://" : "https://" ) . $_SERVER['HTTP_HOST'] . "/day.php?friendly=1";
 //if _get date then &date else base_url
 if(!$_GET["date"]){
 $request_url = $base_url;
