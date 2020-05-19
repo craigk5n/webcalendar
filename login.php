@@ -101,7 +101,9 @@ else {
     if ( user_valid_login ( $login, $password ) ) {
       user_load_variables ( $login, '' );
 
-      $encoded_login = encode_string ( $login . '|' . crypt( $password ) );
+      $salt = chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) )
+       . chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) );
+      $encoded_login = encode_string ( $login . '|' . crypt( $password, $salt ) );
       // If $remember, set login to expire in 365 days.
       $timeStr = ( ! empty ( $remember ) && $remember == 'yes'
         ? time() + 31536000 : 0 );

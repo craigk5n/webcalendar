@@ -3076,7 +3076,7 @@ function get_tasks ( $date, $get_unapproved = true ) {
 
   $ret = [];
   $today = date ( 'Ymd' );
-  for ( $i = 0, $cnt = count ( $tasks ); $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = is_array($tasks) ? count ($tasks) : 0; $i < $cnt; $i++ ) {
     // In case of data corruption (or some other bug...).
     if( empty( $tasks[$i] ) || $tasks[$i]->getID() == ''
         || ( ! $get_unapproved && $tasks[$i]->getStatus() == 'W' ) )

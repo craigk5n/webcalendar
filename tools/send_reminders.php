@@ -167,7 +167,7 @@ if ( $res ) {
 if ( empty ( $GENERAL_USE_GMT ) || $GENERAL_USE_GMT != 'Y' )
   $def_tz = $SERVER_TIMEZONE;
 
-$startdateTS = time ( 0, 0, 0 );
+$startdateTS = time ();
 $enddateTS = $startdateTS + ( $DAYS_IN_ADVANCE * 86400 );
 
 $startdate = date ( 'Ymd', $startdateTS );

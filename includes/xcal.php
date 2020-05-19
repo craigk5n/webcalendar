@@ -239,9 +239,9 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   $eventend = $eventstart + ( $duration * 60 );
   if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0 ) {
     // all day.
+    $dtstart = $date . 'T000000';
     if ( $use_vtimezone && ( $vtimezone_data = get_vtimezone ( $TIMEZONE, $dtstart ) ) ) {
       $vtimezone_exists = true;
-      $dtstart = $date . 'T000000';
       $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $dtstart. "\r\n";
      }else
       $ret .= "DTSTART;VALUE=DATE:$date\r\n";
