@@ -128,7 +128,9 @@ CREATE TABLE webcal_entry_categories (
   /* Globals are always last */
   cat_order INT DEFAULT 0 NOT NULL,
   /* user that owns this record. Global categories will be NULL */
-  cat_owner varchar(25) DEFAULT NULL
+  cat_owner varchar(25) DEFAULT NULL,
+  PRIMARY KEY ( cal_id ),
+  INDEX webcal_entry_categories ( cat_id )
 );
 
 /**

@@ -256,4 +256,9 @@ CREATE TABLE webcal_timezones (
   PRIMARY KEY  ( tzid )
 );
 /*upgrade_v1.3.0*/
+ALTER TABLE webcal_entry_categories
+  ADD PRIMARY KEY(cal_id);
+CREATE INDEX IF NOT EXISTS
+  webcal_entry_categories ON webcal_entry_categories(cat_id);
+/*upgrade_v1.3.1*/
 

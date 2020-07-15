@@ -113,8 +113,8 @@ if ( $action == 'search' ) {
     $sql_params[] = '%' . $words[$i] . '%';
     $sql_params[] = '%' . $words[$i] . '%';
     //echo "SQL:\n$sql\n\n";
-    $res = dbi_execute ( $sql . ' ORDER BY we.cal_date ' . $order
-       . ', we.cal_name', $sql_params );
+    $res = dbi_execute ( $sql . ' ORDER BY we.cal_date ' .
+       ', we.cal_name', $sql_params );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $utitle = str_replace ( ' ', '', strtoupper ( $row[1] ) );
