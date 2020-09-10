@@ -169,7 +169,7 @@ function export_get_attendee( $id, $export ) {
 
   $userlist = user_get_users();
 
-  while ( list ( $key, $row ) = each ( $entry_array ) ) {
+  foreach ($entry_array as $key => $row) {
     // $user[0] = cal_firstname, cal_lastname, cal_email, cal_login
     $userPos = search_users($userlist, $row[0]);
     if ($userPos == -1) {
@@ -187,18 +187,25 @@ function export_get_attendee( $id, $export ) {
       else
       $attendee[$count] .= 'PARTSTAT=';
 
+      // TODO: handle tasks different than events since each have
+      // distinct rules for PARTSTAT.
       switch ( $row[1] ) {
         case 'A':
           $attendee[$count] .= 'ACCEPTED';
           break;
+        case 'C':
+          $attendee[$count] .= 'COMPLETED';
+          break;
+        case 'D':
+          $attendee[$count] .= 'CANCELLED';
+          break;
         case 'R':
           $attendee[$count] .= 'DECLINED';
           break;
+        default: // should not happen
         case 'W':
-          $attendee[$count] .= 'NEEDS-ACTION';
+          $attendee[$count] .= 'TENTATIVE';
           break;
-        default:
-          continue;
       } //end switch
       if ( strcmp( $export, 'vcal' ) == 0 ) {
         $attendee[$count] .= ';ENCODING=QUOTED-PRINTABLE:';
@@ -424,7 +431,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
       //.
       // wrap line if necessary
       $rrule = export_fold_lines ( $rrule );
-      while ( list ( $key, $value ) = each ( $rrule ) ) {
+      foreach ($rrule as $key => $value) {
         $recurrance .= "$value\r\n";
       }
       // If type = manual, undo what we just did and process RDATE && EXDATE.
@@ -440,7 +447,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
         ? ',' . translate ( 'Inclusion Dates' ) . '=' . $rdatesStr
         : 'RDATE;VALUE=DATE:' . implode ( ',', $rdate ) );
         $string = export_fold_lines ( $string );
-        while ( list ( $key, $value ) = each ( $string ) ) {
+        foreach ($string as $key => $value) {
           $recurrance .= "$value\r\n";
         }
       }
@@ -456,7 +463,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
          ? ',' . translate ( 'Exclusion Dates' ) . '=' . $exdatesStr
          : 'EXDATE;VALUE=DATE:' . implode ( ',', $exdate ) );
         $string = export_fold_lines ( $string );
-        while ( list ( $key, $value ) = each ( $string ) ) {
+        foreach ($string as $key => $value) {
           $recurrance .= "$value\r\n";
         }
       }
@@ -646,7 +653,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
     $ret .= 'ACTION:' . $reminder['action'] . "\r\n";
 
     $array = export_fold_lines ( $description, 'utf8' );
-    while ( list ( $key, $value ) = each ( $array ) ) {
+    foreach ($array as $key => $value) {
       $ret .= "$value\r\n";
     }
 
@@ -815,7 +822,7 @@ function export_vcal ( $id ) {
     echo "BEGIN:VCALENDAR\r\n";
     echo generate_prodid ( 'vcs' );
     echo "VERSION:1.0\r\n";
-  } while ( list ( $key, $row ) = each ( $entry_array ) ) {
+  } foreach ($entry_array as $key => $row) {
     $id = $row[0];
     $export_uid = generate_uid();
     $name = $row[1];
@@ -850,7 +857,7 @@ function export_vcal ( $id ) {
     /* UID of the event (folded to 76 char) */
     $export_uid = "UID:$export_uid";
     $array = export_fold_lines ( $export_uid );
-    while ( list ( $key, $value ) = each ( $array ) ) {
+    foreach ($array as $key => $value) {
       echo "$value\r\n";
     }
 
@@ -859,24 +866,24 @@ function export_vcal ( $id ) {
     $name = 'SUMMARY;ENCODING=QUOTED-PRINTABLE:' . $name;
     $array = export_fold_lines ( $name, 'quotedprintable' );
 
-    while ( list ( $key, $value ) = each ( $array ) )
-    echo "$value\r\n";
+    foreach ($array as $key => $value)
+      echo "$value\r\n";
 
     /* DESCRIPTION if any (folded to 76 char) */
     if ( $description != '' ) {
       $description = preg_replace( "/\\\\/", "\\\\\\", $description ); // ??
       $description = 'DESCRIPTION;ENCODING=QUOTED-PRINTABLE:' . $description;
       $array = export_fold_lines ( $description, 'quotedprintable' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      echo "$value\r\n";
+      foreach ($array as $key => $value)
+        echo "$value\r\n";
     } //end if ($description != '')
 
     /* CATEGORIES if any (folded to 76 char) */
     if ( isset ( $categories ) && count ( $categories ) ) {
       $categories = 'CATEGORIES:' . implode ( ';', $categories );
       $array = export_fold_lines ( $categories, 'quotedprintable' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $ret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $ret .= "$value\r\n";
     }
 
     /* CLASS either "PRIVATE", "CONFIDENTIAL, or "PUBLIC" (the default) */
@@ -892,7 +899,7 @@ function export_vcal ( $id ) {
     //$attendcnt = count ( $attendee );
     //for ( $i = 0; $i < $attendcnt; $i++ ) {
     //  $attendee[$i] = export_fold_lines ( $attendee[$i], 'quotedprintable' );
-    //  while ( list ( $key, $value ) = each ( $attendee[$i] ) )
+    //  foreach ($attendee[$i] as $key => $value)
     //  echo "$value\r\n";
     //}
 
@@ -908,7 +915,7 @@ function export_vcal ( $id ) {
     } else {
       echo "END:VTODO\r\n";
     }
-  } //end while (list ($key,$row) = each ( $entry_array))
+  }
   if ( count ( $entry_array ) > 0 )
     echo "END:VCALENDAR\r\n";
 } //end function
@@ -941,7 +948,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   $ret .= "VERSION:2.0\r\n";
   $ret .= "METHOD:PUBLISH\r\n";
 
-  while ( list ( $key, $row ) = each ( $entry_array ) ) {
+  foreach ($entry_array as $key => $row) {
     $id = $row[0];
     $event_uid = generate_uid ( $id );
     $name = $row[1];
@@ -1039,8 +1046,8 @@ function export_ical ( $id = 'all', $attachment = false ) {
 
     /* UID of the event (folded to 76 char) */
     $array = export_fold_lines ( "UID:$event_uid" );
-    while ( list ( $key, $value ) = each ( $array ) )
-    $Vret .= "$value\r\n";
+    foreach ($array as $key => $value)
+      $Vret .= "$value\r\n";
 
     $Vret .= 'LAST-MODIFIED:' . export_get_utc_date ( $moddate,$modtime ) . "\r\n";
 
@@ -1055,39 +1062,39 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $name = 'SUMMARY:' . $name;
     $array = export_fold_lines ( $name, 'utf8' );
 
-    while ( list ( $key, $value ) = each ( $array ) )
-    $Vret .= "$value\r\n";
+    foreach ($array as $key => $value)
+      $Vret .= "$value\r\n";
 
     /* DESCRIPTION if any (folded to 76 char) */
     if ( $description != '' ) {
       $description = 'DESCRIPTION:' . $description;
       $array = export_fold_lines ( $description, 'utf8' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $Vret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $Vret .= "$value\r\n";
     }
 
     /* LOCATION if any (folded to 76 char) */
     if ( $location != '' ) {
       $location = 'LOCATION:' . $location;
       $array = export_fold_lines ( $location, 'utf8' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $Vret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $Vret .= "$value\r\n";
     }
 
     /* URL if any (folded to 76 char) */
     if ( $url != '' ) {
       $url = 'URL:' . $url;
       $array = export_fold_lines ( $url, 'utf8' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $Vret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $Vret .= "$value\r\n";
     }
 
     /* CATEGORIES if any (folded to 76 char) */
     if ( isset ( $categories ) && count ( $categories ) ) {
       $categories = 'CATEGORIES:' . implode ( ',', $categories );
       $array = export_fold_lines ( $categories, 'utf8' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $Vret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $Vret .= "$value\r\n";
     }
 
     /* CLASS either "PRIVATE", "CONFIDENTIAL", or "PUBLIC" (the default) */
@@ -1124,7 +1131,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $attendcnt = count ( $attendee );
     for ( $i = 0; $i < $attendcnt; $i++ ) {
       $attendee[$i] = export_fold_lines ( $attendee[$i], 'utf8' );
-      while ( list ( $key, $value ) = each ( $attendee[$i] ) )
+      foreach ($attendee[$i] as $key => $value)
         $Vret .= "$value\r\n";
     }
     /* Time - all times are utc */
