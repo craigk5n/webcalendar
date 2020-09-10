@@ -177,11 +177,11 @@ function addGroup() {
     //alert ( selNum);
 <?php
   $groups = get_groups ( $user );
-  for ( $i = 0; $i < count ( $groups )  ; $i++ ) {
+  for ( $i = 0; is_array($groups) && $i < count($groups)  ; $i++ ) {
     echo "\n    if ( selNum == $i ) {\n";
-    $res = dbi_execute ( 'SELECT cal_login
-  FROM webcal_group_user
-  WHERE cal_group_id = ?', [$groups[$i]['cal_group_id']] );
+    $res = dbi_execute (
+      'SELECT cal_login FROM webcal_group_user WHERE cal_group_id = ?',
+      [$groups[$i]['cal_group_id']] );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         echo "      selectByLogin ( \"$row[0]\" );\n";

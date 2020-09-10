@@ -143,7 +143,9 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
   --box-default-color: #888888;
 
   --bgcolor: <?php echo $GLOBALS['BGCOLOR']?>;
+<?php if ( ! empty ( $GLOBALS['BGIMAGE'] ) ) { ?>
   --bgimage: <?php echo$GLOBALS['BGIMAGE']; ?>;
+<?php } ?>
   --bgrepeat: <?php echo$GLOBALS['BGREPEAT']; ?>;
   --captions: <?php echo$GLOBALS['CAPTIONS']; ?>;
   --cellbg: <?php echo$GLOBALS['CELLBG']; ?>;
