@@ -5663,7 +5663,9 @@ function set_today ( $date = '' ) {
  */
 function sort_events ( $a, $b ) {
   // Handle untimed events first.
-  if( $a->isUntimed() || $b->isUntimed() )
+  if( $a->isUntimed() && $b->isUntimed() )
+    return strnatcmp( $a->getName(), $b->getName() );
+  else if( $a->isUntimed() || $b->isUntimed() )
     return strnatcmp( $b->isUntimed(), $a->isUntimed() );
 
   $retval = strnatcmp (
