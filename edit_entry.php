@@ -1732,7 +1732,7 @@ if ( $can_edit ) {
 <script type="text/javascript">
 // Initialize tabs
 var views=new ddtabcontent("viewtabs")
-views.setpersist(true)
+views.setpersist(false)
 views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()
 // End init tabs
