@@ -131,13 +131,24 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       </tr>';
 
   for ( $date = $startdate; $date <= $enddate; $date += 86400 ) {
-    $dateYmd = date ( 'Ymd', $date );
+    $d = $date;
+    //date should always be 00 hours entering DST turns this into 01 (end of March)
+    //leaving DST turns into 23 (end of October)
+    $DSTtest = date("H",$d);
+    if ($DSTtest == "23") {
+      $d = $date + 3600;
+    } 
+    if ($DSTtest == "01" ) {
+      $d = $date - 3600;
+    }
+    $dateYmd = date ( 'Ymd', $d );
+    $dateYmd = date ( 'Ymd', $d );
     $todayYmd = date ( 'Ymd', $today );
-    $is_weekend = is_weekend ( $date );
+    $is_weekend = is_weekend ( $d );
     if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
       continue;
 
-    $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS );
+    $weekday = weekday_name ( date ( 'w', $d ), $DISPLAY_LONG_DAYS );
     $class = 'class="' . ( $dateYmd == $todayYmd
       ? 'today"'
       : ( $is_weekend ? 'weekend"' : 'row"' ) );
@@ -145,7 +156,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     // Non-breaking space below keeps event from wrapping prematurely.
     echo '
       <tr>
-        <th ' . $class . '>' . $weekday . '&nbsp;' . date ( 'd', $date ) . '</th>';
+        <th ' . $class . '>' . $weekday . '&nbsp;' . date ( 'd', $d ) . '</th>';
     for ( $i = $j, $k = 0;
       $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $events = $e_save[$i];
