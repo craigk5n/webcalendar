@@ -85,11 +85,14 @@ while ( <> ) {
   $line++;
   #print "Line:$line\n" if ( $verbose );
   if ( $in_create_table ) {
-    if ( /\/\*/ ) {
+    if ( /\/\*+/ ) {
       $cmt = $';
       if ( $cmt =~ /\*\// ) {
         $descr .= ' ' . $`;
       }
+    }
+    elsif ( /INDEX\s/i ) {
+      # ignore for now...
     }
     elsif ( /PRIMARY\s+KEY\s+\((.*)\)/i ) {
       $keys = $1;
@@ -145,6 +148,7 @@ while ( <> ) {
       $descr =~ s/[ \t]+/ /g;
       $descr =~ s/^\s*//;
       $descr =~ s/\s*$//;
+      $descr =~ s/\s\*\s/ /;
       $descr =~ s/<u/\n            <u/g;
       $descr =~ s/<l/\n              <l/g;
       push ( @column_descr, $descr );
@@ -158,7 +162,7 @@ while ( <> ) {
       $in_comment = 0;
       print "End comment.\n" if ( $verbose );
     }
-    elsif ( /\*/ ) {
+    elsif ( /\*+/ ) {
       $descr .= $' . "\n     ";
       print "More comment...\n" if ( $verbose );
     }
@@ -171,7 +175,7 @@ while ( <> ) {
       $descr           = '';
       print "Begin table:$name\n" if ( $verbose );
     }
-    elsif ( /\/*/ ) {
+    elsif ( /\/*+/ ) {
       $in_comment = 1;
       $descr = $';
       print "Begin comment.\n" if ( $verbose );
