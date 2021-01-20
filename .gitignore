@@ -1,3 +1,5 @@
 .htaccess
 includes/htmlarea
 includes/settings.php
+.DS_Store
+mysql-data
