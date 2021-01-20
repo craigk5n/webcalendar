@@ -361,8 +361,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $rem_use_date = ( ! empty ( $reminder['date'] ) );
 
   // Get participants.
-  $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user WHERE cal_id = ?
-    AND cal_status IN ( "A", "W" )', [$id] );
+  $res = dbi_execute ( "SELECT cal_login, cal_status FROM webcal_entry_user WHERE cal_id = ?
+    AND cal_status IN ( 'A', 'W' )", [$id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;

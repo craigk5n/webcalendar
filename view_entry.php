@@ -232,9 +232,8 @@ if ( empty ( $error ) && ! $can_view && !
   for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
     $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
   }
-  $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
-  WHERE cal_id = ?
-    AND cal_status IN ("A","W")', [$id] );
+  $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? ' .
+    'AND cal_status IN (\'A\',\'W\')', [$id] );
   $found_nonuser_cal = $found_reg_user = false;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -260,7 +259,7 @@ if ( ! $can_view && ! empty ( $PUBLIC_ACCESS_DEFAULT_VISIBLE ) &&
   FROM webcal_entry_user
   WHERE cal_id = ?
     AND cal_login = "__public__"
-    AND cal_status IN ("A","W")', [$id] );
+    AND cal_status IN (\'A\',\'W\')', [$id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $row[0] ) && $row[0] == '__public__' ) {
