@@ -7,8 +7,6 @@ $user = $arinc[3];
 ?>
 var bydayAr = bymonthdayAr = bysetposAr = [];
 
-/* These are set in translate.js.php
-However, I've changed the names here to match everywhere else.
 var byday_labels = ['SU','MO','TU','WE','TH','FR','SA'];
 var byday_names = [
   "<?php etranslate ( 'SU' ) ?>"
@@ -18,7 +16,6 @@ var byday_names = [
 , "<?php etranslate ( 'TH' ) ?>"
 , "<?php etranslate ( 'FR' ) ?>"
 , "<?php etranslate ( 'SA' ) ?>"];
-*/
 
 // do a little form verifying
 function validate_and_submit() {
@@ -397,19 +394,27 @@ function showSchedule() {
   }
 }
 
+function yyyymmdd(x) {
+  var y = x.getFullYear().toString();
+  var m = (x.getMonth() + 1).toString();
+  var d = x.getDate().toString();
+  (d.length == 1) && (d = '0' + d);
+  (m.length == 1) && (m = '0' + m);
+  var yyyymmdd = y + m + d;
+  return yyyymmdd;
+}
+
 function add_exception (which) {
  var sign = "-";
  if (which ) {
     sign = "+";
  }
- var ymd = $('except_YMD').value;
- var y = ymd.substr ( 0, 4 );
- var m = ymd.substr ( 4, 2 );
- if ( m.substr ( 0, 1 ) == '0' )
-   m = m.substr = ( 1, 1 );
- var d = ymd.substr ( 6, 2 );
- if ( d.substr ( 0, 1 ) == '0' )
-   d = d.substr = ( 1, 1 );
+ var obj = document.getElementById ('except_year');
+ var y = obj.options[obj.selectedIndex].innerHTML;
+ var obj = document.getElementById ('except_month');
+ var m = obj.selectedIndex + 1;
+ var obj = document.getElementById ('except_day');
+ var d = obj.options[obj.selectedIndex].innerHTML;
 
  var c = new Date(parseInt(y),parseInt(m)-1,parseInt(d));
  if ( c.getDate() != d ) {
@@ -418,7 +423,7 @@ function add_exception (which) {
  }
  //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
  //var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
- var exceptDate = ymd;
+ var exceptDate = yyyymmdd(c);
  var isUnique = true;
  //Test to see if this date is already in the list
   with (form)

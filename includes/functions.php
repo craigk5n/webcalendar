@@ -810,9 +810,9 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
 
   //  $mm_select ... number of month, $month_select name of month
   $month_select = '
-      <select name="' . $prefix . 'month"' . $onchange . '>';
+      <select name="' . $prefix . 'month" id="' . $prefix . 'month"' . $onchange . '>';
   $mm_select = '
-      <select name="' . $prefix . 'month"' . $onchange . '>';
+      <select name="' . $prefix . 'month" id="' . $prefix . 'month"' . $onchange . '>';
   for ( $i = 1; $i < 13; $i++ ) {
     $month_select .= '
         <option value="' . "$i\""
@@ -829,7 +829,7 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   $mm_select .= '
       </select>';
   $yyyy_select = '
-      <select name="' . $prefix . 'year"' . $onchange . '>';
+      <select name="' . $prefix . 'year" id="' . $prefix . 'year"' . $onchange . '>';
   for ( $i = -10; $i < $num_years; $i++ ) {
     $y = $thisyear + $i;
     $yyyy_select .= '

@@ -142,7 +142,7 @@ if ( empty ( $date ) && empty ( $month ) ) {
 }
 
 $BodyX = 'onload="onLoad();"';
-$INC = array ( 'js/edit_entry.php/false/' . $user, 'js/visible.php' );
+$INC = array ( 'js/translate.js.php', 'js/edit_entry.php/false/' . $user, 'js/visible.php' );
 $textareasize = ( $ALLOW_HTML_DESCRIPTION === 'Y' ? '20' : '15' );
 
 // Add Modal Dialog javascript/CSS
@@ -1501,9 +1501,9 @@ if ( $can_edit ) {
               </td>
               <td class="aligntop">
                 <input class="alignleft" type="button" name="addException" value="'
-     . translate ( 'Add Exception' ) . '" onclick="add_exception(0)" /><br />
+     . translate ( 'Add Exception' ) . '..." onclick="add_exception(0)" /><br />
                 <input class="alignleft" type="button" name="addInclusion" value="'
-     . translate ( 'Add Inclusion' ) . '" onclick="add_exception(1)" /><br />
+     . translate ( 'Add Inclusion' ) . '..." onclick="add_exception(1)" /><br />
                 <input class="alignleft" type="button" name="delSelected" value="'
      . translate ( 'Delete Selected' ) . '" onclick="del_selected()" />
               </td>
