@@ -1262,20 +1262,14 @@ if( ! empty( $conflicts ) ) {
     </ul>
     ' // User can confirm conflicts.
   . '<form name="confirm" method="post">';
-  foreach( $_POST as $xkey => $xval ) {
-    if( is_array( $xval ) ) {
+  foreach ($_POST as $xkey => $xval) {
+    if (is_array($xval)) {
       $xkey .= "[]";
-      foreach( $xval as $ykey => $yval ) {
-        if( get_magic_quotes_gpc() )
-          $yval = stripslashes( $yval );
-        // $yval = htmlentities( $yval );
-
+      foreach ($xval as $ykey => $yval) {
         echo '
       <input type="hidden" name="' . $xkey . '" value="' . $yval . '" />';
       }
     } else {
-      if( get_magic_quotes_gpc() )
-        $xval = stripslashes( $xval );
       echo '
       <input type="hidden" name="' . $xkey . '" value="' . $xval . '" />';
     }
@@ -1293,5 +1287,3 @@ if( ! empty( $conflicts ) ) {
 } else
   // Process errors.
   $mail->MailError( $mailerError, $error );
-
-?>

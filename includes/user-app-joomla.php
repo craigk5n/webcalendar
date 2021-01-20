@@ -329,9 +329,6 @@ function user_logged_in () {
   // Generate session id
   $sid = app_get_sid( $_COOKIE[$app_sid] );
 
-  // addslashes if magic_quotes_gpc is off
-  if ( ! get_magic_quotes_gpc () ) $sid = addslashes ( $sid );
-
   // Check to see if the session is still valid
   if (! $login = app_active_session ($sid) ) return false;
 

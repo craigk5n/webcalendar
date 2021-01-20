@@ -56,8 +56,8 @@ print_issue( translate( 'Default admin user password' ),
 $wcDir = '.';
 $wcName = 'WebCalendar toplevel director';
 if ( preg_match( '/(.*).security_audit.php/', __FILE__, $matches ) ) {
-  $wcDir  = $matches[1] . '\\';
-  $wcName = basename( $wcDir );
+  //$wcDir  = $matches[1] . '\\';
+  $wcName = basename(realpath( $wcDir ));
 }
 
 $filePerms   = translate( 'File permissions XXX' );
@@ -65,7 +65,7 @@ $noWriteItem = translate( 'item XXX should not be writable' );
 
 print_issue( str_replace( 'XXX', $wcName, $filePerms ),
   ( ! is__writable( $wcDir ) ),
-  str_replace( 'XXX', htmlentities( $wcDir ), $noWriteItem ) );
+  str_replace('XXX', htmlentities(realpath($wcDir)), $noWriteItem));
 
 // Is the includes directory still writable?
 // Just see if we get an error trying to append to it.
@@ -137,12 +137,6 @@ print_issue( translate( 'Database cache directory location' ), $isOk,
 
 $phpSettingsXXX  = translate( 'PHP Settings XXX' );
 $recommendXXXOff = translate( 'recommend setting XXX Off' );
-
-// Check for magic quotes.
-// See: http://us.php.net/manual/en/security.magicquotes.php
-print_issue( str_replace( 'XXX', 'magic_quotes_gpc', $phpSettingsXXX ),
-  ( get_magic_quotes_gpc() == 0 ),
-  str_replace( 'XXX', 'magic quotes', $recommendXXXOff ) );
 
 // Check for register globals.
 print_issue( str_replace( 'XXX', 'register_globals', $phpSettingsXXX ),

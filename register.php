@@ -134,10 +134,6 @@ if( empty( $error ) && ! empty( $control ) ) {
 
     // Do some checking of user info.
     if( ! empty( $user ) && ! empty( $upassword1 ) ) {
-      if( get_magic_quotes_gpc() ) {
-        $upassword1 = stripslashes( $upassword1 );
-        $user       = stripslashes( $user );
-      }
       $user = trim( $user );
 
       if( $user != addslashes( $user ) )

@@ -87,10 +87,6 @@ if ( $single_user == 'Y' || $use_http_auth )
   do_redirect ( 'index.php' );
 else {
   if ( ! empty ( $login ) && ! empty ( $password ) && ! $logout ) {
-    if ( get_magic_quotes_gpc() ) {
-      $login = stripslashes ( $login );
-      $password = stripslashes ( $password );
-    }
     $login = trim ( $login );
     $badLoginStr = translate ( 'Illegal characters in login XXX.' );
 
