@@ -6235,30 +6235,30 @@ function format_site_extras ( $extras, $filter = '' ) {
     return;
 
   $ret = [];
-  $extra_view = 1;
   foreach ( $site_extras as $site_extra ) {
     $data = '';
     $extra_name = $site_extra[0];
     $extra_desc = $site_extra[1];
     $extra_type = $site_extra[2];
     $extra_arg1 = $site_extra[3];
-    $extra_arg2 = $site_extra[4];
+    $extra_arg2 = $site_extra[4]; // only used in edit pages (not here)
     if ( ! empty ( $site_extra[5] ) && ! empty ( $filter ) )
       $extra_view = $site_extra[5] & $filter;
     if ( ! empty ( $extras[$extra_name] ) && !
-        empty ( $extras[$extra_name]['cal_name'] ) && ! empty ( $extra_view ) ) {
+      empty($extras[$extra_name]['cal_name']) && !empty($extra_desc)) {
       $name = translate ( $extra_desc );
 
-      if ( $extra_type == EXTRA_DATE ) {
-        if ( $extras[$extra_name]['cal_date'] > 0 )
-          $data = date_to_str ( $extras[$extra_name]['cal_date'] );
-      } elseif ( $extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT )
-        $data = nl2br ( $extras[$extra_name]['cal_data'] );
-      elseif ( $extra_type == EXTRA_RADIO && !
-        empty ( $extra_arg1[$extras[$extra_name]['cal_data']] ) )
+      if ($extra_type == EXTRA_DATE) {
+        if ($extras[$extra_name]['cal_date'] > 0)
+          $data = date_to_str($extras[$extra_name]['cal_date']);
+      } elseif (($extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT)
+        && !empty($extras[$extra_name]['cal_data'])) {
+        $data = nl2br($extras[$extra_name]['cal_data']);
+      } elseif ($extra_type == EXTRA_RADIO && !empty($extra_arg1[$extras[$extra_name]['cal_data']])) {
         $data .= $extra_arg1[$extras[$extra_name]['cal_data']];
-      else
+      } elseif (!empty($extras[$extra_name]['cal_data'])) {
         $data .= $extras[$extra_name]['cal_data'];
+      }
 
       $ret[$extra_name] = ['name' => $name, 'data' => $data];
     }
