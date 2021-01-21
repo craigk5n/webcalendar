@@ -553,7 +553,7 @@ echo '
 if ( $can_edit ) {
   $tabs_name = ['details'];
   $tabs_title = [translate ( 'Details' )];
-  if ( $DISABLE_PARTICIPANTS_FIELD != 'Y' ) {
+  if ( $DISABLE_PARTICIPANTS_FIELD != 'Y' || $is_admin) {
     $tabs_name[] = 'participants';
     $tabs_title[] = translate ( 'Participants' );
   }
