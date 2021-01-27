@@ -23,10 +23,10 @@
  */
 include_once 'includes/init.php';
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.class';
-include 'includes/classes/DocList.class';
-include 'includes/classes/AttachmentList.class';
-include 'includes/classes/CommentList.class';
+include 'includes/classes/Doc.php';
+include 'includes/classes/DocList.php';
+include 'includes/classes/AttachmentList.php';
+include 'includes/classes/CommentList.php';
 
 //send_no_cache_header();
 

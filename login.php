@@ -34,7 +34,8 @@ $WebCalendar->initializeSecondPhase();
 load_global_settings();
 
 // Set this true to show "no such user" or "invalid password" on login failures.
-$showLoginFailureReason = false;
+$showLoginFailureReason = (!empty($settings['mode']) && $settings['mode'] = 'dev');
+$message = '';
 
 if ( ! empty ( $last_login ) )
   $login = '';
@@ -51,59 +52,69 @@ $WebCalendar->setLanguage();
 
 // Look for action=logout.
 $logout = false;
-$action = getGetValue ( 'action' );
-if ( ! empty ( $action ) && $action == 'logout' ) {
+$action = getGetValue('action');
+if (!empty($action) && $action == 'logout') {
   $logout = true;
   $return_path = '';
-  SetCookie ( 'webcalendar_login', '', 0 );
-  SetCookie ( 'webcalendar_last_view', '', 0 );
+  SetCookie('webcalendar_login', '', 0);
+  SetCookie('webcalendar_last_view', '', 0);
+  $message = translate('You have been logged out.');
 } else
-if ( empty ( $return_path ) ) {
+if (empty($return_path)) {
   // See if a return path was set.
-  $return_path = get_last_view ( false );
+  $return_path = get_last_view(false);
 }
 
-if ( ! empty ( $return_path ) )
-  $url = $return_path = clean_whitespace ( $return_path );
-else
+if (!empty($return_path)) {
+  $url = $return_path = clean_whitespace($return_path);
+} else {
   $url = 'index.php';
+}
 
 // If Application Name is set to "Title" then get translation.
 // If not, use the Admin defined Application Name.
 $appStr = generate_application_name();
 
-$login = getPostValue ( 'login' );
-$password = getPostValue ( 'password' );
-$remember = getPostValue ( 'remember' );
+$login = getPostValue('login');
+$password = getPostValue('password');
+$remember = getPostValue('remember');
 
 // Calculate path for cookie.
-if ( empty ( $PHP_SELF ) )
+if (empty($PHP_SELF)) {
   $PHP_SELF = $_SERVER['PHP_SELF'];
+}
 
-$cookie_path = str_replace ( 'login.php', '', $PHP_SELF );
+$cookie_path = str_replace('login.php', '', $PHP_SELF);
 
-if ( $single_user == 'Y' || $use_http_auth )
+if ($single_user == 'Y' || $use_http_auth) {
   // No login for single-user mode or when using HTTP authorization.
-  do_redirect ( 'index.php' );
-else {
-  if ( ! empty ( $login ) && ! empty ( $password ) && ! $logout ) {
-    $login = trim ( $login );
-    $badLoginStr = translate ( 'Illegal characters in login XXX.' );
+  do_redirect('index.php');
+} else {
+  if (!empty($login) && !$logout) {
+    $login = trim($login);
+    $badLoginStr = translate('Illegal characters in login XXX.');
 
-    if ( $login != addslashes ( $login ) )
-      die_miserable_death (
-        str_replace ( 'XXX', htmlentities ( $login ), $badLoginStr ) );
+    if ($login != addslashes($login))
+      die_miserable_death(
+        str_replace('XXX', htmlentities($login), $badLoginStr)
+      );
 
-    if ( user_valid_login ( $login, $password ) ) {
-      user_load_variables ( $login, '' );
+    if (empty($password)) {
+      if (empty($error) && $showLoginFailureReason) {
+        $error = translate('You must provide a password.');
+      } else if (empty($error)) {
+        $error = translate('Invalid login');
+      }
+    } else if (user_valid_login($login, $password)) {
+      user_load_variables($login, '');
 
-      $salt = chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) )
-       . chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) );
-      $encoded_login = encode_string ( $login . '|' . crypt( $password, $salt ) );
+      $salt = chr(rand(ord('A'), ord('z')))
+        . chr(rand(ord('A'), ord('z')));
+      $encoded_login = encode_string($login . '|' . crypt($password, $salt));
       // If $remember, set login to expire in 365 days.
-      $timeStr = ( ! empty ( $remember ) && $remember == 'yes'
-        ? time() + 31536000 : 0 );
-      SetCookie ( 'webcalendar_session', $encoded_login, $timeStr, $cookie_path );
+      $timeStr = (!empty($remember) && $remember == 'yes'
+        ? time() + 31536000 : 0);
+      SetCookie('webcalendar_session', $encoded_login, $timeStr, $cookie_path);
 
       // The cookie "webcalendar_login" is provided as a convenience to other
       // apps that may wish to know what was the last calendar login,
@@ -112,37 +123,47 @@ else {
       // used to allow logins within this app. It is used to load user
       // preferences on the login page (before anyone has logged in)
       // if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
-      SetCookie ( 'webcalendar_login', $login, $timeStr, $cookie_path );
+      SetCookie('webcalendar_login', $login, $timeStr, $cookie_path);
 
-      if ( ! empty ( $GLOBALS['newUserUrl'] ) )
+      if (!empty($GLOBALS['newUserUrl'])) {
         $url = $GLOBALS['newUserUrl'];
+      }
 
-      do_redirect ( $url );
+      do_redirect($url);
     } else {
       // Invalid login.
-      if ( empty ( $error ) || ! $showLoginFailureReason )
-        $error = translate ( 'Invalid login', true );
+      if (empty($error) || !$showLoginFailureReason) {
+        $error = translate('Invalid login', true);
+        echo "ERROR: $error"; exit;
+      }
 
-      activity_log ( 0, 'system', '', LOG_LOGIN_FAILURE,
-        str_replace (  ['XXX', 'YYY'],
-           [$login, $_SERVER['REMOTE_ADDR']],
-          translate ( 'Activity login failure' ) ) );
+      activity_log(
+        0,
+        'system',
+        '',
+        LOG_LOGIN_FAILURE,
+        str_replace(
+          ['XXX', 'YYY'],
+          [$login, $_SERVER['REMOTE_ADDR']],
+          translate('Activity login failure')
+        )
+      );
     }
   } else {
     // No login info... just present empty login page.
-    // $error = "Start";
+    //$error = "Start";
   }
   // Delete current user.
-  SetCookie ( 'webcalendar_session', '', 0, $cookie_path );
+  SetCookie('webcalendar_session', '', 0, $cookie_path);
   // In older versions, the cookie path had no trailing slash and NS 4.78
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we also delete the
   // cookie with the trailing slash removed.
-  if ( substr ( $cookie_path, -1 ) == '/' ) {
-    SetCookie ( 'webcalendar_session', '', 0, substr ( $cookie_path, 0, -1 ) );
+  if (substr($cookie_path, -1) == '/') {
+    SetCookie('webcalendar_session', '', 0, substr($cookie_path, 0, -1));
   }
 }
-echo send_doctype ( $appStr );
+echo send_doctype($appStr);
 ?>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -176,14 +197,20 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 ?>
 <div id="login-container" class="container">
 <div class="row">
-  <form id="login-form" class="form" action="" method="post">
-  <!--
-  <div class="alert alert-primary" role="alert">
-  </div>
-  -->
+  <form id="login-form" class="form" action="login.php" method="post">
     <div class="row justify-content-md-center">
-      <h3><?php echo htmlentities($appStr); ?>Login</h3>
+      <h3><?php echo htmlentities($appStr); ?> Login</h3>
     </div>
+  <?php if ( ! empty ( $message )) { ?>
+    <div class="alert alert-info" role="alert">
+      <?php echo $message; ?>
+    </div>
+  <?php } ?>
+  <?php if ( ! empty ( $error )) { ?>
+    <div class="alert alert-warning" role="alert">
+      <?php echo $error; ?>
+    </div>
+  <?php } ?>
     <div class="form-group row">
       <label for="login" class="text-info">Username:</label><br>
       <input type="text" name="login" id="user" class="form-control">
