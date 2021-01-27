@@ -20,9 +20,9 @@
  *
  * What gets called:
  *   - include_once 'includes/translate.php';
- *   - require_once 'includes/classes/WebCalendar.class';
- *   - require_once 'includes/classes/Event.class';
- *   - require_once 'includes/classes/RptEvent.class';
+ *   - require_once 'includes/classes/WebCalendar.php';
+ *   - require_once 'includes/classes/Event.php';
+ *   - require_once 'includes/classes/RptEvent.php';
  *   - include_once 'includes/assert.php';
  *   - include_once 'includes/config.php';
  *   - include_once 'includes/dbi4php.php';
@@ -45,13 +45,14 @@
 
  if( empty( $_SERVER['PHP_SELF'] )
      || ( ! empty( $_SERVER['PHP_SELF'] )
-       && preg_match( '/\/includes\//', $_SERVER['PHP_SELF'] ) ) )
+       && preg_match( '/\/includes\//', $_SERVER['PHP_SELF'] ) ) ) {
   die( 'You cannot access this file directly!' );
+ }
 
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
+require_once 'includes/classes/WebCalendar.php';
+require_once 'includes/classes/Event.php';
+require_once 'includes/classes/RptEvent.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -98,12 +99,11 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   ob_start ();
 
-  if ( defined ( '__WC_INCDIR' ) && is_dir ( __WC_INCDIR ) )
-    $incdir = __WC_INCDIR;
-  elseif ( is_dir ( 'includes' ) )
+  if ( is_dir ( 'includes' ) ) {
     $incdir = 'includes';
-  elseif ( is_dir ( '../includes' ) )
+  } elseif ( is_dir ( '../includes' ) ) {
     $incdir = '../includes';
+  }
 
   $cs_ret = $lang = $menuHtml = $menuScript = '';
 
@@ -124,23 +124,28 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $cs_ar = array( 'css/styles.css', 'css/print_styles.css' );
   $js_ar = array();
 
-  $ret = send_doctype( $appStr ) .
+  $ret = send_doctype( $appStr );
 // Use "normalize.css" to set all browsers, especially IE, to the same baseline.
 // Use "punctuation.css" to start getting punctuation out of the code to where the translators can get at it.
-'
-    <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css" rel="stylesheet">
-    <link href="' . $incdir . '/css/punctuation.css" rel="stylesheet">';
+  //  <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css" rel="stylesheet">
+  //  <link href="' . $incdir . '/css/punctuation.css" rel="stylesheet">';
 
   if( ! $disableAJAX ) {
-    $ret .= '
-    <!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->';
-    if ( is_array ( $includes ) && in_array ( 'JQUERY', $includes ) ) {
-      $js_ar[] = 'js/jquery-1.9.1.min.js';
-      $js_ar[] = 'js/jquery-1.10.1.js';
-    } else {
-      $js_ar[] = 'js/prototype.js';
-      $js_ar[] = 'js/scriptaculous/scriptaculous.js?load=builder,effects';
-    }
+    //if ( is_array ( $includes ) && in_array ( 'JQUERY', $includes ) ) {
+      $ret .= '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ' .
+        'integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>' . "\n" .
+        '<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" ' .
+        'integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>' . "\n";
+    //}
+        //$ret .= '
+    //<!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->';
+    //if ( is_array ( $includes ) && in_array ( 'JQUERY', $includes ) ) {
+    //  $js_ar[] = 'js/jquery-1.9.1.min.js';
+    //  $js_ar[] = 'js/jquery-1.10.1.js';
+    //} else {
+    //  $js_ar[] = 'js/prototype.js';
+    //  $js_ar[] = 'js/scriptaculous/scriptaculous.js?load=builder,effects';
+    //}
   }
 
   // CSS and JS includes needed for the top menu.

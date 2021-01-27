@@ -1,6 +1,6 @@
 <?php
 include_once 'includes/init.php';
-require 'includes/classes/WebCalMailer.class';
+require 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
 $can_edit = $my_event = false;

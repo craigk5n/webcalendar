@@ -2,7 +2,7 @@
 /* Declares the WebCalendar class.
  *
  * @author Adam Roben <adam.roben@gmail.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @copyright Craig Knudsen, <craig@k5n.us>, http://www.k5n.us/
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @package WebCalendar
  */

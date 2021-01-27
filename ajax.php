@@ -4,7 +4,7 @@
  * This is the handler for Ajax httpXmlRequests.
  */
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 

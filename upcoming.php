@@ -98,7 +98,7 @@ foreach( array(
     'Event',
     'RptEvent',
   ) as $i ) {
-  require_once 'includes/classes/' . $i . '.class';
+  require_once 'includes/classes/' . $i . '.php';
 }
 $WebCalendar = new WebCalendar( __FILE__ );
 $WebCalendar->initializeFirstPhase();
@@ -121,7 +121,7 @@ $WebCalendar->initializeSecondPhase();
 //used to determine whether the file is being run independently or
 //as an include file. Change as necessary!
 //Note that if you use any other name than "upcoming.php" you must
-//also change the corresponding line in includes/classes/WebCalendar.class, about
+//also change the corresponding line in includes/classes/WebCalendar.php, about
 //line 54, like this:
 //    '/^(nulogin|login|freebusy|publish|register|rss|upcoming|upcoming-.*|week_ssi|minical|controlpanel)\.php$/' =>
 //Using upcoming-.* allows you to use names like upcoming-1.php, upcoming-2.php etc.

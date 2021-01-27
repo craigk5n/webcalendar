@@ -16,9 +16,9 @@
  * TODO: hide private events of other users.
  */
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
+require_once 'includes/classes/WebCalendar.php';
+require_once 'includes/classes/Event.php';
+require_once 'includes/classes/RptEvent.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -37,10 +37,10 @@ include 'includes/JSON.php';
 include 'includes/ajax.php';
 
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.class';
-include 'includes/classes/DocList.class';
-include 'includes/classes/AttachmentList.class';
-include 'includes/classes/CommentList.class';
+include 'includes/classes/Doc.php';
+include 'includes/classes/DocList.php';
+include 'includes/classes/AttachmentList.php';
+include 'includes/classes/CommentList.php';
 
 $WebCalendar->initializeSecondPhase();
 

@@ -14,7 +14,7 @@ unset ( $_SESSION['webcal_login'] );
 unset ( $_SESSION['webcalendar_session'] );
 
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -138,118 +138,109 @@ else {
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we also delete the
   // cookie with the trailing slash removed.
-  if ( substr ( $cookie_path, -1 ) == '/' )
+  if ( substr ( $cookie_path, -1 ) == '/' ) {
     SetCookie ( 'webcalendar_session', '', 0, substr ( $cookie_path, 0, -1 ) );
+  }
 }
-echo send_doctype ( $appStr ) . ( $logout ? '' : '
-    <script>
-    // Error check login/password.
-      function valid_form ( form ) {
-        if ( form.login.value.length == 0 || form.password.value.length == 0 ) {
-          alert ( \''
-   . translate ( 'You must enter a login and password.', true ) . '\' );
-          return false;
-        }
-        return true;
-      }
-      function myOnLoad() {
-        document.login_form.login.focus();' . ( empty ( $login ) ? '' : '
-        document.login_form.login.select();' ) . ( empty ( $error ) ? '' : '
-        alert ( \'' . $error . '\' );' ) . '
-      }
-    </script>' ) . '
-    <link href="css_cacher.php?login=__public__" rel="stylesheet" />
-    <link href="includes/css/styles.css" rel="stylesheet" />'
-
-// Print custom header (since we do not call print_header function).
- . ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y'
-  ? load_template ( $login, 'S' ) : '' ) . '
-  </head>
-  <body id="login"' . ( $logout ? '' : ' onload="myOnLoad();"' ) . '>'
-
-// Print custom header (since we do not call print_header function).
- . ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y'
-  ? load_template ( $login, 'H' ) : '' ) . '
-    <h2>' . $appStr . '</h2>' . ( empty ( $error ) ? '' : '
-    <span style="color:#f00; font-weight:bold;">'
-   . str_replace ( 'XXX', $error, translate ( 'Error XXX' ) ) . '</span>' )
- . '<br />' . ( $logout ? '
-    <p>' . translate ( 'You have been logged out.' ) . '</p><br /><br />
-    <a class="nav" href="login.php' . ( empty ( $return_path )
-    ? '' : '?return_path=' . htmlentities ( $return_path ) ) . '">'
-   . translate ( 'Login' ) . '</a><br /><br /><br />' : '
-    <form name="login_form" id="login" action="login.php" method="post" '
-   . ' onsubmit="return valid_form( this )">' . ( empty ( $return_path ) ? '' : '
-      <input type="hidden" name="return_path" value="'
-     . htmlentities ( $return_path ) . '" />' ) . '
-      <table class="aligncenter" id="logintable" cellspacing="10" cellpadding="10">
-        <tr>
-          <td rowspan="2"><img src="images/login.gif" alt="Login" /></td>
-          <td class="alignright"><label for="user">' . translate ( 'Username' )
-   . ':</label></td>
-          <td><input name="login" id="user" size="15" maxlength="25" value="'
-   . ( empty ( $last_login ) ? '' : $last_login ) . '" tabindex="1" /></td>
-        </tr>
-        <tr>
-          <td class="alignright"><label for="password">'
-   . translate ( 'Password' ) . ':</label></td>
-          <td><input name="password" id="password" type="password" size="15" '
-   . 'maxlength="30" tabindex="2" /></td>
-        </tr>
-        <tr>
-          <td colspan="3" style="font-size:10px;">
-            <input type="checkbox" name="remember" id="remember" tabindex="3" '
-   . 'value="yes"' . ( ! empty ( $remember ) && $remember == 'yes'
-    ? 'checked="checked"' : '' ) . ' />
-            <label id="save-cookies" for="remember">&nbsp;'
-   . translate ( 'Save login via cookies so I dont have to login next time.' )
-   . '&nbsp;&nbsp;</label>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="4" class="aligncenter"><input type="submit" value="'
-   . translate ( 'Login' ) . '" tabindex="4" /></td>
-        </tr>
-      </table>
-    </form>' ) . ( ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y'
-  ? '<br /><br />
-    <a class="nav" href="index.php">' . translate ( 'Access public calendar' )
-   . '</a><br />' : '' );
-
-$nulist = get_nonuser_cals();
-$accessStr = translate ( 'Access XXX calendar' );
-
-for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
-  if ( $nulist[$i]['cal_is_public'] == 'Y' )
-    echo '
-    <a class="nav" href="nulogin.php?login=' . $nulist[$i]['cal_login'] . '">'
-     . str_replace ( 'XXX', $nulist[$i]['cal_fullname'], $accessStr )
-     . '</a><br />';
-}
-echo ( $DEMO_MODE == 'Y'
-  // This is used on the sourceforge demo page.
-  ? '
-    Demo login: user = "demo", password = "demo"<br />' : '' ) . '<br /><br />';
-
-if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
-  // We can limit what domain is allowed to self register.
-  // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
-  $valid_ip = validate_domain();
-
-  if ( ! empty ( $valid_ip ) )
-    echo '
-    <b><a href="register.php">'
-     . translate ( 'Not yet registered? Register here!' ) . '</a></b><br />';
-}
-echo '
-     <span class="cookies">' . translate ( 'cookies-note' ) . '</span><br />
-     <hr />
-     <br />
-     <a href="' . $PROGRAM_URL . '" target="_blank" id="programname">' . $PROGRAM_NAME . '</a> <br /> <br />'
-// Print custom trailer (since we do not call print_trailer function).
- . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'
-  ? load_template ( $login, 'T' ) : '' ) . '
-  </body>
-</html>';
-
+echo send_doctype ( $appStr );
 ?>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Tiny color: https://github.com/bgrins/TinyColor/ -->
+<script src="includes/js/tinycolor.js"></script>
+<!-- Readable: https://github.com/aramk/readable-color -->
+<script src="includes/js/readable.js"></script>
+
+
+<!--
+<link href="css_cacher.php?login=__public__" rel="stylesheet" />
+<link href="includes/css/styles.css" rel="stylesheet" />
+-->
+<?php
+
+// Print custom header (since we do not call print_header function).
+if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
+  echo load_template ( $login, 'S' );
+}
+?>
+</head>
+<body id="login">
+<?php
+// Print custom header (since we do not call print_header function).
+if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
+  echo load_template ( $login, 'H' );
+}
+?>
+<div id="login-container" class="container">
+<div class="row">
+  <form id="login-form" class="form" action="" method="post">
+  <!--
+  <div class="alert alert-primary" role="alert">
+  </div>
+  -->
+    <div class="row justify-content-md-center">
+      <h3><?php echo htmlentities($appStr); ?>Login</h3>
+    </div>
+    <div class="form-group row">
+      <label for="login" class="text-info">Username:</label><br>
+      <input type="text" name="login" id="user" class="form-control">
+    </div>
+    <div class="form-group row">
+      <label for="password" class="text-info">Password:</label><br>
+      <input type="password" name="password" id="password" class="form-control">
+    </div>
+    <div class="form-group form-check row">
+      <input type="checkbox" class="form-check-input" id="remember-me">
+      <label class="form-check-label" for="exampleCheck1">Remember me</label>
+    </div>
+    <div class="form-group row justify-content-md-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+                
+    <?php // Non-user calendars
+      $nulist = get_nonuser_cals();
+      $accessStr = translate ( 'Access XXX calendar' );
+      for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
+        if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
+          echo '<div id="form_' . $nulist[$i]['cal_login'] . '" class="form-group row">' .
+            '<a class="nav" href="nulogin.php?login=' . $nulist[$i]['cal_login'] . '">'
+            . str_replace ( 'XXX', $nulist[$i]['cal_fullname'], $accessStr )
+            . '</a></div>';
+        }
+      }
+      // Self registration
+      if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
+        // We can limit what domain is allowed to self register.
+        // $self_registration_domain should have this format  "192.168.220.0:255.255.240.0";
+        $valid_ip = validate_domain();
+      
+        if ( ! empty ( $valid_ip ) ) {
+          echo '<div id="register-link" class="form-group"><a href="register.php">'
+           . translate ( 'Not yet registered? Register here!' ) . '</a><</div>';
+        }
+      }
+    ?>
+
+  </form>
+</div>
+</div>
+
+<br>
+
+<?php
+echo '<div id="webcalendarVersion"><a href="' . $PROGRAM_URL . '" target="_blank" id="programname">'
+    . $PROGRAM_NAME . '</a></div>';
+
+// Print custom trailer (since we do not call print_trailer function).
+if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
+  echo load_template ( $login, 'T' );
+}
+?>
+
+<script src="includes/js/jquery/jquery-3.5.1.slim.min.js"></script>
+<script src="includes/js/bootstrap/bootstrap-4.6.0.bundle.min.js"></script>
+</body>
+</html>
