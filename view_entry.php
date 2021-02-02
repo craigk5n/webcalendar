@@ -14,10 +14,10 @@
 include_once 'includes/init.php';
 include 'includes/xcal.php'; // only to display recurrance info
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.class';
-include 'includes/classes/DocList.class';
-include 'includes/classes/AttachmentList.class';
-include 'includes/classes/CommentList.class';
+include 'includes/classes/Doc.php';
+include 'includes/classes/DocList.php';
+include 'includes/classes/AttachmentList.php';
+include 'includes/classes/CommentList.php';
 
 // Make sure this user is allowed to look at this calendar.
 $can_approve = $can_edit = $can_view = false;
@@ -391,17 +391,20 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 
 // get reminders
 $reminder = getReminders ( $id, true );
-echo '
-    <h2>' . $name . ( $is_nonuser_admin ||
+?>
+<div class="container">
+  <div class="row">
+    <div class="col" id="view-event-title"><h2>
+<?php
+
+echo $name . ( $is_nonuser_admin ||
   ( $is_admin && ! empty ( $user ) && $user == '__public__' )
   ? '  ( ' . translate ( 'Admin mode' ) . ' )' : '' )
- . ( $is_assistant ? ' ( ' . translate ( 'Assistant mode' ) . ' )' : '' )
- . '</h2>
-    <table>
-      <tr>
-        <td class="aligntop bold colon" width="10%">' . translate ( 'Description' )
- . '</td>
-        <td>';
+ . ( $is_assistant ? ' ( ' . translate ( 'Assistant mode' ) . ' )' : '' );
+echo "    </h2></div>\n  </div>\n";
+
+echo '<div class="row"><div class="col-3">' . translate ( 'Description' ) . "</div>\n";
+echo '<div class="col-9">';
 
 if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
   $str = $description;
@@ -412,108 +415,112 @@ if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
   echo ( strstr ( $str, '<' ) && strstr ( $str, '>' )
     ? $str // found some html...
     : nl2br ( activate_urls ( $str ) ) );
-} else
+} else {
   echo nl2br ( activate_urls ( htmlspecialchars ( $description ) ) );
+}
+echo '</div><div class="w-100"></div></div>' . "\n";
 
-echo '</td>
-      </tr>' . ( $DISABLE_LOCATION_FIELD != 'Y' && ! empty ( $location ) ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Location' ) . '</td>
-        <td>' . $location . '</td>
-      </tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' && ! empty ( $url ) ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'URL' ) . '</td>
-        <td>' . activate_urls ( $url ) . '</td>
-      </tr>' : '' );
-
-if ( $event_status != 'A' && ! empty ( $event_status ) ) {
-  echo '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Status' ) . '</td>
-        <td>';
-
-  if ( $event_status == 'D' )
-    echo ( $eType == 'task'
-      ? translate ( 'Declined' ) : translate ( 'Deleted' ) );
-  elseif ( $event_status == 'R' )
-    echo translate ( 'Rejected' );
-  elseif ( $event_status == 'W' )
-    echo ( $eType == 'task'
-      ? translate ( 'Needs-Action' ) : translate ( 'Waiting for approval' ) );
-
-  echo '</td>
-      </tr>';
+if ($DISABLE_LOCATION_FIELD != 'Y' && !empty($location)) {
+  echo '<div class="row"><div class="col-3">' . translate('Description') . "</div>\n";
+  echo '<div class="col-9">'  . $location . "</div>\n";
+  echo '<div class="w-100"></div></div>' . "\n";
 }
 
-echo '
-      <tr>
-        <td class="aligntop bold colon">'
- . ( $eType == 'task' ? translate ( 'Start Date' ) : translate ( 'Date' ) )
- . '</td>
-        <td>' . date_to_str ( $display_date ) . ( $eType == 'task' ? '</td>
-      </tr>' . ( $event_time >= 0 ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Start Time' ) . '</td>
-        <td>'
-     . display_time ( $display_date . sprintf ( "%06d", $event_time ), 2 )
-     . '</td>
-      </tr>' : '' ) . '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Due Date' ) . '</td>
-        <td>' . date_to_str ( $due_date ) . '</td>
-      </tr>
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Due Time' ) . '</td>
-        <td>' . display_time ( $due_date . sprintf ( "%06d", $due_time ), 2 )
-   . '</td>
-      </tr>' . ( ! empty ( $cal_completed ) ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Completed' ) . '</td>
-        <td>' . date_to_str ( $cal_completed ) : '' ) : '' ) . '</td>
-      </tr>' . ( $event_repeats ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Repeat Type' ) . '</td>
-        <td>' . export_recurrence_ical ( $id, true ) . '</td>
-      </tr>' : '' ) . ( $eType != 'task' && $event_time >= 0 ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Time' ) . '</td>
-        <td>' . ( $duration == 1440 && $event_time == 0
-    ? translate ( 'All day event' )
-    : display_time ( $display_date . sprintf ( "%06d", $event_time ),
+if (!empty($url)) {
+  echo '<div class="row"><div class="col-3">' . translate('URL') . "</div>\n";
+  echo '<div class="col-9">' . activate_urls($url) . "</div>\n";
+  echo '<div class="w-100"></div></div>' . "\n";
+}
+
+if ($event_status != 'A' && !empty($event_status)) {
+  echo '<div class="row"><div class="col-3">' . translate('Status') . "</div>\n";
+  echo '<div class="col-9">';
+  if ($event_status == 'D')
+    echo ($eType == 'task'
+    ? translate('Declined') : translate('Deleted'));
+  elseif ($event_status == 'R')
+    echo translate('Rejected');
+  elseif ($event_status == 'W')
+    echo ($eType == 'task'
+    ? translate('Needs-Action') : translate('Waiting for approval'));
+  echo '</div><div class="w-100"></div></div>' . "\n";
+}
+
+echo '<div class="row"><div class="col-3">' . ($eType == 'task' ? translate('Start Date') : translate('Date')) . "</div>\n";
+echo '<div class="col-9">' . date_to_str($display_date);
+echo '</div><div class="w-100"></div></div>' . "\n";
+
+if ($eType == 'task') {
+  echo '<div class="row"><div class="col-3">' . translate('Start Time') . "</div>\n";
+  echo '<div class="col-9">' . display_time($display_date . sprintf("%06d", $event_time), 2);
+  echo '</div><div class="w-100"></div></div>' . "\n";
+  echo '<div class="row"><div class="col-3">' . translate('Due Date') . "</div>\n";
+  echo '<div class="col-9">' . date_to_str($due_date);
+  echo '</div><div class="w-100"></div></div>' . "\n";
+  if (!empty($cal_completed)) {
+    echo '<div class="row"><div class="col-3">' . translate('Completed') . "</div>\n";
+    echo '<div class="col-9">' . date_to_str($cal_completed);
+    echo '</div><div class="w-100"></div></div>' . "\n";
+  }
+}
+
+if ($event_repeats) {
+  echo '<div class="row"><div class="col-3">' . translate('Repeat Type') . "</div>\n";
+  echo '<div class="col-9">' . export_recurrence_ical($id, true);
+  echo '</div><div class="w-100"></div></div>' . "\n";
+}
+
+if ($eType != 'task' && $event_time >= 0) {
+  echo '<div class="row"><div class="col-3">' . translate('Start Time') . "</div>\n";
+  echo '<div class="col-9">';
+  echo ($duration == 1440 && $event_time == 0
+    ? translate('All day event')
+    : display_time(
+      $display_date . sprintf("%06d", $event_time),
       // Display TZID if no end time
-      ( empty ( $end_str ) ? 2 : 0 ) )
-     . $end_str ) . '</td>
-      </tr>' : '' );
-
-if ( $duration > 0 && $duration != 1440 ) {
-  $dur_h = intval ( $duration / 60 );
-  $dur_m = $duration - ( $dur_h * 60 );
-  echo '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Duration' ) . '</td>
-        <td>' . ( $dur_h > 0 ? $dur_h . ' ' . translate ( 'hour'
-       . ( $dur_h == 1 ? '' : 's' ) ) . ' ' : '' )
-   . ( $dur_m > 0 ? $dur_m . ' ' . translate ( 'minutes' ) : '' ) . '</td>
-      </tr>';
+      (empty($end_str) ? 2 : 0)
+    )
+    . $end_str);
+  echo '</div><div class="w-100"></div></div>' . "\n";
 }
 
-echo ( $DISABLE_PRIORITY_FIELD != 'Y' ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Priority' ) . '</td>
-        <td>' . $cal_priority . '-' . $pri[ceil($cal_priority/3)] .'</td>
-      </tr>' : '' ) . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Access' ) . '</td>
-        <td>' . ( $cal_access == "P"
-    ? translate ( 'Public' )
-    : ( $cal_access == 'C'
-      ? translate ( 'Confidential' )
-      : translate ( 'Private' ) ) ) . '</td>
-      </tr>' : '' ) . ( $CATEGORIES_ENABLED == 'Y' && ! empty ( $category ) ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Category' ) . '</td>
-        <td>' . $category . '</td>
-      </tr>' : '' );
+if ($duration > 0 && $duration != 1440) {
+  $dur_h = intval($duration / 60);
+  $dur_m = $duration - ($dur_h * 60);
+  echo '<div class="row"><div class="col-3">' . translate('Duration') . "</div>\n";
+  echo '<div class="col-9">';
+  echo ($dur_h > 0 ? $dur_h . ' ' . translate('hour'
+  . ($dur_h == 1 ? '' : 's')) . ' ' : '')
+  . ($dur_m > 0 ? $dur_m . ' ' . translate('minutes') : '');
+  echo '</div><div class="w-100"></div></div>' . "\n";
+}
+
+if ($DISABLE_PRIORITY_FIELD != 'Y') {
+  echo '<div class="row"><div class="col-3">' . translate('Priority') . "</div>\n";
+  echo '<div class="col-9">' . $cal_priority . '-' . $pri[ceil($cal_priority / 3)];
+  echo '</div><div class="w-100"></div></div>' . "\n";
+}
+
+echo '<div class="row"><div class="col-3">' . translate('Access') . "</div>\n";
+echo '<div class="col-9">';
+switch ($cal_access) {
+  case 'P':
+    echo translate('Public');
+    break;
+  case 'C':
+    echo translate('Confidential');
+    break;
+  default:
+    echo translate('Private');
+    break;
+}
+echo '</div><div class="w-100"></div></div>' . "\n";
+
+if ($CATEGORIES_ENABLED == 'Y' && !empty($category)) {
+  echo '<div class="row"><div class="col-3">' . translate('Category') . "</div>\n";
+  echo '<div class="col-9">' . $category;
+  echo '</div><div class="w-100"></div></div>' . "\n";
+}
 
 // Display who originally created event
 // useful if assistant or Admin
@@ -533,89 +540,84 @@ if ( ! empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
   }
 }
 
-if ( $single_user == 'N' && ! empty ( $createby_fullname ) ) {
-  echo '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Created by' ) . '</td>
-        <td>';
-  if ( $is_private && ! access_is_enabled() )
-    echo '[' . translate ( 'Private' ) . ']</td>
-      </tr>';
-  else
-  if ( $is_confidential && ! access_is_enabled() )
-    echo '[' . translate ( 'Confidential' ) . ']</td>
-      </tr>';
-  else {
-    if ( access_is_enabled() )
-      $can_email = access_user_calendar ( 'email', $create_by );
-
-    $pubAccStr = ( $row[0] == '__public__'
-      ? translate ( 'Public Access' ) : $createby_fullname );
-
-    echo ( strlen ( $email_addr ) && $can_email != 'N'
-      ? '<a href="mailto:' . $email_addr . '?subject=' . $subject . '">'
-       . $pubAccStr . '</a>'
-      : $pubAccStr )
-     . $proxy_fullname . '</td>
-      </tr>';
+if ($single_user == 'N' && !empty($createby_fullname)) {
+  echo '<div class="row"><div class="col-3">' . translate('Created by') . "</div>\n";
+  echo '<div class="col-9">' . $category;
+  if ($is_private && !access_is_enabled()) {
+    echo '[' . translate('Private') . ']';
+  } else if ($is_confidential && !access_is_enabled()) {
+    echo '[' . translate('Confidential') . ']';
+  } else {
+    if (access_is_enabled()) {
+      $can_email = access_user_calendar('email', $create_by);
+    }
+    $pubAccStr = ($row[0] == '__public__') ? translate('Public Access') : $createby_fullname;
+    if (strlen($email_addr) && $can_email != 'N') {
+      echo '<a href="mailto:' . $email_addr . '?subject=' . $subject . '">'
+        . $pubAccStr . '</a>';
+    } else {
+      echo $pubAccStr;
+    }
+    echo $proxy_fullname;
   }
+  echo '</div><div class="w-100"></div></div>' . "\n";
 }
 
-echo '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Updated' ) . '</td>
-        <td>'
- . ( ! empty ( $GENERAL_USE_GMT ) && $GENERAL_USE_GMT == 'Y'
-  ? date_to_str ( $mod_date ) . ' ' . display_time ( $mod_date . $mod_time, 3 )
-  : date_to_str ( date ( 'Ymd', date_to_epoch ( $mod_date . $mod_time ) ) )
-   . ' ' . display_time ( $mod_date . $mod_time, 2 ) ) . '</td>
-      </tr>'
+if (!empty($mod_date)) {
+  echo '<div class="row"><div class="col-3">' . translate('Updated') . "</div>\n";
+  echo '<div class="col-9">';
+  //if (!empty($GENERAL_USE_GMT) && $GENERAL_USE_GMT == 'Y') {
+    //echo date_to_str($mod_date) . ' ' . display_time($mod_date . $mod_time, 3);
+  //} else {
+    echo date_to_str(date('Ymd', date_to_epoch($mod_date . $mod_time)))
+      . ' ' . display_time($mod_date . $mod_time, 2);
+  //}
+  echo '</div><div class="w-100"></div></div>' . "\n";
+}
+
 // Display the reminder info if found.
- . ( ! empty ( $reminder ) ? '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Send Reminder' ) . '</td>
-        <td>' . $reminder . '</td>
-      </tr>' : '' );
+if (!empty($reminder)) {
+  echo '<div class="row"><div class="col-3">' . translate('Send Reminder') . "</div>\n";
+  echo '<div class="col-9">' . $reminder;
+  echo '</div><div class="w-100"></div></div>' . "\n";
+}
 
 // load any site-specific fields and display them
-$extras = get_site_extra_fields ( $id );
-$site_extracnt = count ( $site_extras );
-for ( $i = 0; $i < $site_extracnt; $i++ ) {
-  if ( $site_extras[$i] == 'FIELDSET' ) continue;
+$extras = get_site_extra_fields($id);
+$site_extracnt = count($site_extras);
+for ($i = 0; $i < $site_extracnt; $i++) {
+  if ($site_extras[$i] == 'FIELDSET') continue;
   $extra_name = $site_extras[$i][0];
   $extra_type = $site_extras[$i][2];
   $extra_arg1 = $site_extras[$i][3];
   $extra_arg2 = $site_extras[$i][4];
-  if ( ! empty ( $site_extras[$i][5] ) )
+  if (!empty($site_extras[$i][5]))
     $extra_view = $site_extras[$i][5] & EXTRA_DISPLAY_VIEW;
-  if ( ! empty ( $extras[$extra_name]['cal_name'] )  && ! empty ( $extra_view ) ) {
-    echo '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( $site_extras[$i][1] ) . '</td>
-        <td>';
-
-    if ( $extra_type == EXTRA_URL ) {
-      $target = ( ! empty ( $extra_arg1 ) ? ' target="' . $extra_arg1 . '" ' : '' );
-      echo ( strlen ( $extras[$extra_name]['cal_data'] ) ? '<a href="'
-         . $extras[$extra_name]['cal_data'] . '"' . $target . '>'
-         . $extras[$extra_name]['cal_data'] . '</a>' : '' );
-     } elseif ( $extra_type == EXTRA_EMAIL )
-      echo ( strlen ( $extras[$extra_name]['cal_data'] ) ? '<a href="mailto:'
-         . $extras[$extra_name]['cal_data'] . '?subject=' . $subject . '">'
-         . $extras[$extra_name]['cal_data'] . '</a>' : '' );
-    elseif ( $extra_type == EXTRA_DATE )
-      echo ( $extras[$extra_name]['cal_date'] > 0
-        ? date_to_str ( $extras[$extra_name]['cal_date'] ) : '' );
-    elseif ( $extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT )
-      echo nl2br ( $extras[$extra_name]['cal_data'] );
-    elseif ( $extra_type == EXTRA_USER || $extra_type == EXTRA_SELECTLIST
-      || $extra_type == EXTRA_CHECKBOX )
+  if (!empty($extras[$extra_name]['cal_name'])  && !empty($extra_view)) {
+    echo '<div class="row"><div class="col-3">' . translate($site_extras[$i][1]) . "</div>\n";
+    echo '<div class="col-9">';
+    if ($extra_type == EXTRA_URL) {
+      $target = (!empty($extra_arg1) ? ' target="' . $extra_arg1 . '" ' : '');
+      echo (strlen($extras[$extra_name]['cal_data']) ? '<a href="'
+        . $extras[$extra_name]['cal_data'] . '"' . $target . '>'
+        . $extras[$extra_name]['cal_data'] . '</a>' : '');
+    } elseif ($extra_type == EXTRA_EMAIL)
+      echo (strlen($extras[$extra_name]['cal_data']) ? '<a href="mailto:'
+        . $extras[$extra_name]['cal_data'] . '?subject=' . $subject . '">'
+        . $extras[$extra_name]['cal_data'] . '</a>' : '');
+    elseif ($extra_type == EXTRA_DATE)
+      echo ($extras[$extra_name]['cal_date'] > 0
+        ? date_to_str($extras[$extra_name]['cal_date']) : '');
+    elseif ($extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT)
+      echo nl2br($extras[$extra_name]['cal_data']);
+    elseif (
+      $extra_type == EXTRA_USER || $extra_type == EXTRA_SELECTLIST
+      || $extra_type == EXTRA_CHECKBOX
+    )
       echo $extras[$extra_name]['cal_data'];
-    elseif ( $extra_type == EXTRA_RADIO )
+    elseif ($extra_type == EXTRA_RADIO)
       echo $extra_arg1[$extras[$extra_name]['cal_data']];
-
-    echo '</td>
-      </tr>';
+    echo '</div><div class="w-100"></div></div>' . "\n";
   }
 }
 // participants
@@ -630,11 +632,8 @@ if ( $PUBLIC_ACCESS == 'Y' && $login == '__public__' &&
   $show_participants = false;
 
 if ( $single_user == 'N' && $show_participants ) {
-  echo '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Participants' ) . '</td>
-        <td>';
-
+  echo '<div class="row"><div class="col-3">' . translate('Send Reminder') . "</div>\n";
+  echo '<div class="col-9">';
   $num_app = $num_rej = $num_wait = 0;
   if ( $is_private && ! access_is_enabled() )
     echo '[' . translate ( 'Private' ) . ']';
@@ -763,10 +762,7 @@ if ( $single_user == 'N' && $show_participants ) {
         : $tempfullname ) . '</strike> (' . translate ( 'Rejected' ) . ')<br />';
     }
   }
-
-  echo '
-        </td>
-      </tr>';
+  echo '</div><div class="w-100"></div></div>' . "\n";
 } // end participants
 
 $can_edit = ( $can_edit || $is_admin || $is_nonuser_admin &&
@@ -786,16 +782,12 @@ if ( $eType == 'task' ) {
   // allow user to update their task completion percentage
   if ( empty ( $user ) && $readonly != 'Y' && $is_my_event &&
       ( $login != '__public__' ) && ! $is_nonuser && $event_status != 'D' ) {
-    echo '
-      <tr>
-        <td class="aligntop bold">
-          <form action="view_entry.php?id=' . $id
+    echo '<div class="row"><div class="col-3">';
+    echo '<form action="view_entry.php?id=' . $id
      . '" method="post" name="setpercentage">
             <input type="hidden" name="others_complete" value="'
-     . $others_complete . '" />' . translate ( 'Update Task Percentage' ) . '
-        </td>
-        <td>
-            <select name="upercent" id="task_percent">';
+     . $others_complete . '" />' . translate ( 'Update Task Percentage' ) . '</div>';
+     echo '<div class="col-9"><select name="upercent" id="task_percent">';
     for ( $i = 0; $i <= 100; $i += 10 ) {
       echo '
               <option value="' . "$i\" " . ( $login_percentage == $i
@@ -804,18 +796,14 @@ if ( $eType == 'task' ) {
     echo '
             </select>&nbsp;
             <input type="submit" value="' . translate ( 'Update' ) . '" />
-          </form>
-        </td>
-      <tr>';
+          </form>';
+    echo '</div><div class="w-100"></div></div>' . "\n";
   }
 }
 
 if ( Doc::attachmentsEnabled() && $rss_view == false ) {
-  echo '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Attachments' ) . '</td>
-        <td>';
-
+  echo '<div class="row"><div class="col-3">' . translate('Attachments') . "</div>\n";
+  echo '<div class="col-9">';
   $attList = new AttachmentList( $id );
   for ( $i = 0; $i < $attList->getSize(); $i++ ) {
     $a = $attList->getDoc ( $i );
@@ -840,16 +828,13 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
   $num_attach = $attList->getSize();
 
   echo ( $num_attach == 0 ? '
-          ' . translate ( 'None' ) . '<br />' :'' ) . '
-        </td>
-      </tr>';
+          ' . translate ( 'None' ) . '<br />' :'' );
+  echo '</div><div class="w-100"></div></div>' . "\n";
 }
 
 if ( Doc::commentsEnabled() ) {
-  echo '
-      <tr>
-        <td class="aligntop bold colon">' . translate ( 'Comments' ) . '</td>
-        <td>';
+  echo '<div class="row"><div class="col-3">' . translate('Comments') . "</div>\n";
+  echo '<div class="col-9">';
 
   $comList = new CommentList( $id );
   $num_comment = $comList->getSize();
@@ -938,18 +923,17 @@ hideComments();
   }
 
   $num_app = $num_rej = $num_wait = 0;
-
-  echo '</td>
-      </tr>';
+  echo '</div><div class="w-100"></div></div>' . "\n";
 }
 
 $rdate = ( $event_repeats ? '&amp;date=' . $event_date : '' );
 
 $u_url = ( ! empty ( $user ) && $login != $user ? "&amp;user=$user" : '' );
 
-echo '
-    </table>
-    <ul class="nav">';
+echo "</div>\n"; // End of container
+
+echo '<div class="row"><div class="col-12">' . "\n";
+echo '<ul class="list-group">';
 
 // Show a printer-friendly link
 if ( empty ( $friendly ) )
@@ -960,7 +944,7 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve )
   if ( $event_status != 'A' ) {
     $approveStr = translate( 'Approve/Confirm entry' );
     echo '
-        <li><a title="' . $approveStr
+        <li class="list-group-item"><a title="' . $approveStr
      . '" class="nav" href="approve_entry.php?id=' . $id . $u_url
      . '&amp;type=E" onclick="return confirm( \''
      . translate( 'Approve this entry?', true ) . '\' );">'
@@ -969,7 +953,7 @@ if ( ( $is_my_event || $is_nonuser_admin || $is_assistant || $can_approve )
   if ( $event_status != 'R' ) {
     $rejectStr = translate( 'Reject entry' );
     echo '
-        <li><a title="' . $rejectStr
+        <li class="list-group-item"><a title="' . $rejectStr
      . '" class="nav" href="reject_entry.php?id=' . $id . $u_url
      . '&amp;type=E" onclick="return confirm( \''
      . translate( 'Reject this entry?', true ) . '\' );">'
@@ -989,7 +973,7 @@ $can_add_comment = ( Doc::commentsEnabled() && $login != '__public__'
 if ( $can_add_attach && $event_status != 'D' ) {
   $addAttchStr = translate ( 'Add Attachment' );
   echo '
-      <li><a title="' . $addAttchStr
+      <li class="list-group-item"><a title="' . $addAttchStr
    . '" class="nav" href="docadd.php?type=A&amp;id=' . $id
    . $u_url . '">' . $addAttchStr
    . '</a></li>';
@@ -998,7 +982,7 @@ if ( $can_add_attach && $event_status != 'D' ) {
 if ( $can_add_comment && $event_status != 'D' ) {
   $addCommentStr = translate ( 'Add Comment' );
   echo '
-      <li><a title="' . $addCommentStr
+      <li class="list-group-item"><a title="' . $addCommentStr
    . '" class="nav" href="docadd.php?type=C&amp;id=' . $id
    . $u_url . '">' . $addCommentStr
    . '</a></li>';
@@ -1012,7 +996,7 @@ if ( empty ( $user ) && $CATEGORIES_ENABLED == 'Y' && $readonly != 'Y' &&
     $is_nonuser && $event_status != 'D' && ! $can_edit ) {
   $setCatStr = translate ( 'Set category' );
   echo '
-      <li><a title="' . $setCatStr . '" class="nav" href="set_entry_cat.php?id='
+      <li class="list-group-item"><a title="' . $setCatStr . '" class="nav" href="set_entry_cat.php?id='
    . $id . $rdate . '">' . $setCatStr . '</a></li>';
 }
 
@@ -1029,19 +1013,19 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
     $editAllDatesStr = translate ( 'Edit repeating entry for all dates' );
     $deleteAllDatesStr = translate ( 'Delete repeating event for all dates' );
     echo '
-      <li><a title="' . $editAllDatesStr
+      <li class="list-group-item"><a title="' . $editAllDatesStr
      . '" class="nav" href="edit_entry.php?id=' . $id . $u_url . '">'
      . $editAllDatesStr . '</a></li>';
     // Don't allow override of first event
     if ( ! empty ( $date ) && $date != $orig_date ) {
       $editThisDateStr = translate ( 'Edit entry for this date' );
       echo '
-      <li><a title="' . $editThisDateStr . '" class="nav" '
+      <li class="list-group-item"><a title="' . $editThisDateStr . '" class="nav" '
        . 'href="edit_entry.php?id=' . $id . $u_url . $rdate . '&amp;override=1">'
        . $editThisDateStr . '</a></li>';
     }
     echo '
-      <li><a title="' . $deleteAllDatesStr
+      <li class="list-group-item"><a title="' . $deleteAllDatesStr
      . '" class="nav" href="del_entry.php?id=' . $id . $u_url
      . '&amp;override=1" onclick="return confirm( \'' . $areYouSureStr . "\\n\\n"
      . $deleteAllStr . '\' );">' . $deleteAllDatesStr . '</a></li>';
@@ -1049,7 +1033,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
     if ( ! empty ( $date ) && $date != $orig_date ) {
       $deleteOnlyStr = translate ( 'Delete entry only for this date' );
       echo '
-      <li><a title="' . $deleteOnlyStr . '" class="nav" href="del_entry.php?id='
+      <li class="list-group-item"><a title="' . $deleteOnlyStr . '" class="nav" href="del_entry.php?id='
        . $id . $u_url . $rdate . '&amp;override=1" onclick="return confirm( \''
        . $areYouSureStr . "\\n\\n" . $deleteAllStr . '\' );">' . $deleteOnlyStr
        . '</a></li>';
@@ -1063,9 +1047,9 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
       $delete_str = $deleteEntryStr;
     }
     echo '
-      <li><a title="' . $editEntryStr . '" class="nav" href="edit_entry.php?id='
+      <li class="list-group-item"><a title="' . $editEntryStr . '" class="nav" href="edit_entry.php?id='
      . $id . $u_url . '">' . $editEntryStr . '</a></li>
-      <li><a title="' . $delete_str . '" class="nav" href="del_entry.php?id='
+      <li class="list-group-item"><a title="' . $delete_str . '" class="nav" href="del_entry.php?id='
      . $id . $u_url . $rdate . '" onclick="return confirm( \'' . $areYouSureStr
      . "\\n\\n"
      . ( empty ( $user ) || $user == $login || $is_assistant
@@ -1074,7 +1058,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
     echo '</a></li>';
   }
   echo '
-      <li><a title="' . $copyStr . '" class="nav" href="edit_entry.php?id='
+      <li class="list-group-item"><a title="' . $copyStr . '" class="nav" href="edit_entry.php?id='
    . $id . $u_url . '&amp;copy=1">' . $copyStr . '</a></li>';
 } elseif ( $readonly != 'Y' &&
   ( $is_my_event || $is_nonuser_admin || $can_edit ) &&
@@ -1082,7 +1066,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
   $delFromCalStr =
   translate ( 'This will delete the entry from your XXX calendar.', true );
   echo '
-      <li><a title="' . $deleteEntryStr . '" class="nav" href="del_entry.php?id='
+      <li class="list-group-item"><a title="' . $deleteEntryStr . '" class="nav" href="del_entry.php?id='
    . $id . $u_url . $rdate . '" onclick="return confirm( \'' . $areYouSureStr
    . "\\n\\n"
    . str_replace ( 'XXX ',
@@ -1094,7 +1078,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
    . $deleteEntryStr
    . ( $is_assistant ? ' ' . translate ( 'from your boss calendar' ) : '' )
    . '</a></li>
-      <li><a title="' . $copyStr . '" class="nav" href="edit_entry.php?id='
+      <li class="list-group-item"><a title="' . $copyStr . '" class="nav" href="edit_entry.php?id='
    . $id . '&amp;copy=1">' . $copyStr . '</a></li>';
 }
 
@@ -1102,7 +1086,7 @@ if ( $readonly != 'Y' && ! $is_my_event && ! $is_private && !
   $is_confidential && $event_status != 'D' && $login != '__public__' && !
   $is_nonuser )
   echo '
-      <li><a title="' . $addToMineStr . '" class="nav" href="add_entry.php?id='
+      <li class="list-group-item"><a title="' . $addToMineStr . '" class="nav" href="add_entry.php?id='
    . $id . '" onclick="return confirm( \''
    . translate ( 'Do you want to add this entry to your calendar?', true )
    . "\\n\\n" . translate ( 'This will add the entry to your calendar.', true )
@@ -1111,7 +1095,7 @@ if ( $readonly != 'Y' && ! $is_my_event && ! $is_private && !
 if ( $login != '__public__' && count ( $allmails ) > 0 ) {
   $emailAllStr = translate ( 'Email all participants' );
   echo '
-      <li><a title="' . $emailAllStr . '" class="nav" href="mailto:'
+      <li class="list-group-item"><a title="' . $emailAllStr . '" class="nav" href="mailto:'
    . implode ( ',', $allmails ) . '?subject=' . rawurlencode ( $subject ) . '">'
    . $emailAllStr . '</a></li>';
 }
@@ -1123,8 +1107,7 @@ if ( access_is_enabled() )
 if ( $can_show_log ) {
   $hideActivityStr = translate ( 'Hide activity log' );
   $showActivityStr = translate ( 'Show activity log' );
-  echo '
-      <li><a title="'
+  echo '<li class="list-group-item"><a title="'
    . ( ! $show_log
     ? $showActivityStr . '" class="nav" href="view_entry.php?id=' . $id
      . '&amp;log=1">' . $showActivityStr
@@ -1133,8 +1116,6 @@ if ( $can_show_log ) {
    . '</a></li>';
 }
 
-echo '
-    </ul>';
 if ( $can_show_log && $show_log ) {
   $PAGE_SIZE = 25; // number of entries to show at once
   echo generate_activity_log ( $id );
@@ -1150,6 +1131,7 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
   $userStr = ( ! empty ( $user ) ? '<input type="hidden" name="user" value="' .
     $user . '" />' : '' );
   echo <<<EOT
+    <li class="list-group-item">
     <br />
     <form method="post" name="exportform" action="export_handler.php">
       <label for="exformat">{$exportThisStr}:&nbsp;</label>
@@ -1157,9 +1139,13 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
       <input type="hidden" name="id" value="{$id}" />
           {$userStr}
       <input type="submit" value="{$exportStr}" />
-    </form>
+    </form></li>
 EOT;
 }
+echo '</ul>';
+
+echo '</div><div class="w-100"></div></div>' . "\n";
+echo "</div>\n";
 
 echo print_trailer ( empty ( $friendly ) );
 

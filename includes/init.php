@@ -130,12 +130,23 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   //  <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css" rel="stylesheet">
   //  <link href="' . $incdir . '/css/punctuation.css" rel="stylesheet">';
 
+  // TODO: allow option to host bootstrap & jquery locally
+  // TODO: move version info someplace else so we can update boostrap version by updating just one file.
+  $ret .= '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">' .
+    '<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>' .
+    '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>' .
+    '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>' .
+    '<!-- Tiny color: https://github.com/bgrins/TinyColor/ -->' .
+    '<script src="includes/js/tinycolor.js"></script>' .
+    '<!-- Readable: https://github.com/aramk/readable-color -->' .
+    '<script src="includes/js/readable.js"></script>' . "\n";
+
   if( ! $disableAJAX ) {
     //if ( is_array ( $includes ) && in_array ( 'JQUERY', $includes ) ) {
-      $ret .= '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ' .
-        'integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>' . "\n" .
-        '<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" ' .
-        'integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>' . "\n";
+    //  $ret .= '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ' .
+    //    'integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>' . "\n" .
+    //    '<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" ' .
+     //   'integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>' . "\n";
     //}
         //$ret .= '
     //<!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->';

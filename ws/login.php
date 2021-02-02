@@ -10,7 +10,7 @@ define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
 define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 
 include_once __WC_INCLUDEDIR . 'translate.php';
-require_once __WC_CLASSDIR . 'WebCalendar.class';
+require_once __WC_CLASSDIR . 'WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
