@@ -19,14 +19,10 @@ if ( ! $is_admin )
   $user = $login;
 
 $BodyX = 'onload="usermode_handler();"';
-$INC = array ( 'js/visible.php');
-if ( $GROUPS_ENABLED == 'Y' )
-  $INC[] = 'js/views_edit.php/true';
-
-$disableCustom = true;
-
-print_header ( $INC, '', $BodyX, $disableCustom );
+$INC = array('js/visible.php', 'js/views_edit.php');
+print_header( $INC, '', $BodyX );
 ?>
+<div class="container">
 
 <form action="views_edit_handler.php" method="post" name="editviewform">
 <?php
@@ -92,7 +88,7 @@ if ( $newview ) {
 }
 ?>
 
-<table>
+<table class="table">
 <tr><td>
  <label for="viewname" class="colon"><?php etranslate ( 'View Name' )?></label></td><td colspan="3">
  <input name="viewname" id="viewname" size="20" value="<?php echo htmlspecialchars ( $viewname );?>" />
@@ -137,7 +133,7 @@ echo '<tr><td><label class="colon">'
   . "</td></tr>\n";
 ?>
 
-<tr><td colspan="4">
+<tr><td></td><td colspan="3">
 <div id="viewuserlist">
 &nbsp;&nbsp;
  <select name="users[]" id="viewusers" size="10" multiple="multiple">
@@ -166,15 +162,17 @@ echo '<tr><td><label class="colon">'
 </td></tr>
 <tr><td colspan="4" class="aligncenter">
 <br />
-<input type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>" />
+<input class="btn btn-primary" type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>" />
+<a href="views.php" class="btn btn-secondary active">Cancel</a>
 <?php if ( ! $newview ) { ?>
- <input type="submit" name="delete" value="<?php etranslate( 'Delete' )?>" onclick="return confirm( '<?php
-  translate( 'Are you sure you want to delete this entry?' ); ?>' )" />
+ <input class="btn" type="submit" name="delete" value="<?php etranslate( 'Delete' )?>"
+   onclick="return confirm('<?php etranslate( "Are you sure you want to delete this entry?" ); ?>' )" />
 <?php } ?>
 </td></tr>
 </table>
 
 </form>
+</div>
 
-<?php echo print_trailer ( false, true, true ); ?>
+<?php echo print_trailer(); ?>
 
