@@ -39,7 +39,7 @@ echo '
   . 'innerHeight=520,outerWidth=620\' );" />'
   . translate( 'View your current PHP settings' ) . '</a></li>
     </ul>
-    <table id="securityAudit" cellpadding="4">
+    <table class="table" id="securityAudit" cellpadding="4">
       <tr>
         <th>' . translate( 'Security Issue' ) . '</th>
         <th>' . translate( 'Status' ) . '</th>

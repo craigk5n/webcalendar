@@ -1925,15 +1925,15 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
    . '<img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - '
    . translate( 'Activity Log' ) . '" /></a>' )
    . "</$size>" . display_admin_link() . '
-    <table class="embactlog">
-      <tr>
+    <table class="table embactlog">
+      <thead><tr>
         <th class="usr">' . translate ( 'User' ) . '</th>
         <th class="cal">' . translate ( 'Calendar' ) . '</th>
         <th class="scheduled">' . translate ( 'Date' ) . '/'
    . translate ( 'Time' ) . '</th>' . ( $sys || $id ? '' : '
         <th class="dsc">' . translate ( 'Event' ) . '</th>' ) . '
         <th class="action">' . translate ( 'Action' ) . '</th>
-      </tr>';
+      </tr></thead><tbody>';
 
   $sql = 'SELECT wel.cal_login, wel.cal_user_cal, wel.cal_type, wel.cal_date,
     wel.cal_time, wel.cal_text, '
@@ -1990,7 +1990,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
   }
 
   return $ret . '
-    </table>';
+    </tbody></table>';
 }
 
 /**
