@@ -197,6 +197,8 @@ if ( empty ( $error ) && $report_id >= 0 ) {
 
 print_header();
 
+echo '<div class="container">';
+
 if ( ! empty ( $error ) ) {
   echo $error . print_trailer ( false );
   exit;
@@ -384,9 +386,10 @@ echo '
         </tr>
         <tr>
           <td colspan="4">
-            <input type="submit" value="' . translate ( 'Save' ) . '" />'
- . ( $adding_report ? '' : '&nbsp;&nbsp;
-            <input type="submit" name="delete" value="'
+            <input class="btn btn-primary" type="submit" value="' . translate ( 'Save' ) . '" />'
+ . ( $adding_report ? '' : '
+            <a href="report.php" class="btn btn-secondary">' . translate('Cancel') . '</a>
+            <input class="btn btn-danger" type="submit" name="delete" value="'
    . translate ( 'Delete' ) . '" onclick="return confirm( \''
    . translate( 'Are you sure you want to delete this report?' )
    . '\');" />' );
@@ -422,6 +425,7 @@ echo '
       }
 //]]> -->
     </script>
+</div>
 <?php echo print_trailer();
 
 ?>

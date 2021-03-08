@@ -245,14 +245,14 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
         $rep_name = $unnamesStr;
 
       $list .= '
-      <li><a href="edit_report.php?report_id=' . $row[0] . '" class="nav">'
+      <li class="list-group-item"><a href="edit_report.php?report_id=' . $row[0] . '" class="nav">'
        . $rep_name . '</a></li>';
     }
     $list .= '
     </ul>';
     $addurl = 'edit_report.php' . ( $updating_public ? '?public=1' : '' );
     $list .= '
-    <p><a title="' . $addStr . '" href="' . $addurl . '" class="nav">'
+    <p><a class="btn btn-primary" title="' . $addStr . '" href="' . $addurl . '" class="nav">'
      . $addStr . '</a></p>';
     dbi_free_result ( $res );
   } else
@@ -341,6 +341,8 @@ if ( $include_header || ! empty ( $list ) || ! empty ( $error ) ) {
     ? '' : generate_printer_friendly ( 'report.php' ) );
   print_header();
 }
+
+echo '<div class="container">';
 
 if ( empty ( $offset ) || empty ( $report_allow_nav ) || $report_allow_nav != 'Y' )
   $offset = 0;
@@ -495,6 +497,7 @@ echo <<<EOT
     {$adminLinkStr}{$list}
     {$textStr}
     {$printerStr}
+    </div>
     {$trailerStr}
 EOT;
 

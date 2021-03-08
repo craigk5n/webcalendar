@@ -165,7 +165,7 @@ echo '<tr><td><label class="colon">'
 <input class="btn btn-primary" type="submit" name="action" value="<?php if ( $newview ) etranslate ( 'Add' ); else etranslate ( 'Save' ); ?>" />
 <a href="views.php" class="btn btn-secondary active">Cancel</a>
 <?php if ( ! $newview ) { ?>
- <input class="btn" type="submit" name="delete" value="<?php etranslate( 'Delete' )?>"
+ <input class="btn btn-danger" type="submit" name="delete" value="<?php etranslate( 'Delete' )?>"
    onclick="return confirm('<?php etranslate( "Are you sure you want to delete this entry?" ); ?>' )" />
 <?php } ?>
 </td></tr>
