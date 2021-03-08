@@ -147,11 +147,7 @@ $textareasize = ( $ALLOW_HTML_DESCRIPTION === 'Y' ? '20' : '15' );
 
 // Add Modal Dialog javascript/CSS
 $HEAD =
-'<script type="text/javascript" src="includes/js/scriptaculous/scriptaculous.js?load=builder,effects"></script>
-<script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
-<link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css"
-media="screen" />
-<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
+'<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
 <link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
 ';
 
@@ -663,11 +659,11 @@ if ( $can_edit ) {
   }
   echo ( ! empty ( $categories ) && $CATEGORIES_ENABLED == 'Y' ? '
                   <tr>
-                    <td class="tooltip aligntop" title="' . tooltip ( 'category-help' ) . '">
-                      <label for="entry_categories">' . translate ( 'Category' )
-     . ':<br /></label>
-                      <input type="button" value="' . translate ( 'Edit' )
-     . '" onclick="editCats( event )" />
+                    <!-- CATEGORIES -->
+                    <td class="aligntop">
+                      <span>' . translate ( 'Category' )
+     . ':<br /></span>
+                      <button class="btn" type="button" onclick="editCats( event )" />' . translate('Edit') . '</button>
                     </td>
                     <td class="aligntop">
                       <span name="catnames" id="entry_categories" " onclick="editCats( event )" style="cursor: pointer;" />' . $catNames . '</span>
@@ -1701,10 +1697,19 @@ if ( $can_edit ) {
 
 // Create a hidden div tag for editing categories...
 ?>
-<div id="editCatsDiv" style="display: none;">
-  <div id="innerDiv">
-  <form name="editCatForm" id="editCatForm">
-  <?php
+<div class="modal" id="catModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><?php etranslate("Edit Categories");?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form name="editCatForm" id="editCatForm">
+
+      <?php
   if ( ! empty ( $categories ) ) {
     foreach ( $categories as $K => $V ) {
       // None is index -1 and needs to be ignored
@@ -1720,13 +1725,17 @@ if ( $can_edit ) {
       }
     }
   }
-  ?>
-  <center>
-  <input type="button" value="<?php etranslate("Save");?>" onclick="catOkHandler()" />
-  </center>
-  </form>
+  ?>  
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php etranslate("Cancel");?></button>
+        <button type="button" class="btn btn-primary" onclick="catOkHandler()"><?php etranslate("Save");?></button>
+      </div>
+    </div>
   </div>
 </div>
+
 <?php if ( $useTabs ) { ?>
 
 <script type="text/javascript">

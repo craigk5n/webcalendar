@@ -566,7 +566,7 @@ function toggle_rem_when() {
    elements['rem_relatedE'].disabled =
    elements['rem_when_date'].checked;
 
- //$('dateselIcon_reminder').disabled =
+ //$('#dateselIcon_reminder').disabled =
  elements['reminder_year'].disabled =
    elements['reminder_month'].disabled =
    elements['reminder_day'].disabled =
@@ -599,9 +599,7 @@ function toggle_rem_rep() {
 function editCats ( evt ) {
   var obj;
 
-  function catWindowClosed () {
-  }
-  Modalbox.show($('editCatsDiv'), {title: '<?php etranslate('Categories');?>', width: 350, transitions: false, onHide: catWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+  $('#catModal').modal('show');
 
   var cat_ids = elements['cat_id'].value;
   var selected_ids = cat_ids.split ( ',' );
@@ -663,9 +661,12 @@ function catOkHandler () {
 <?php
   }
 ?>
-  $('entry_categories').innerHTML = catNames;
-  $('cat_id').value = catIds;
-  Modalbox.hide ();
+  var cats = $('#entry_categories');
+  cats.html(catNames);
+  var catId = $('#cat_id');
+  catId.val(catIds);
+  console.log("cat_id.value = " + catId.value);
+  $('#catModal').modal('hide');
   return true;
 }
 

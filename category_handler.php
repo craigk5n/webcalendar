@@ -3,7 +3,7 @@ include_once 'includes/init.php';
 require_valid_referring_url ();
 
 $icon_max_size = '6000';
-$icon_path = 'icons/';
+$icon_path = 'wc-icons/';
 
 /**
  * Rename any icons associated with this cat_id.
@@ -14,7 +14,7 @@ function renameIcon ( $id ) {
   $bakIcon .= date ( 'YmdHis' ) . '.gif';
   $catIcon .= $id . '.gif';
   if ( ! file_exists ( $catIcon ) )
-    $catIcon = 'icons/cat-' . $id . '.png';
+    $catIcon = 'wc-icons/cat-' . $id . '.png';
   if ( file_exists ( $catIcon ) )
     rename ( $catIcon, $bakIcon );
 }

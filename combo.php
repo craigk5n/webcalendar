@@ -139,7 +139,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
         <?php echo htmlspecialchars ( $categories[$catId]['cat_name'] ) ?>
         </label></nobr>&nbsp;
       <?php
-      //$catIconFile = 'icons/cat-' . $catId . '.gif';
+      //$catIconFile = 'wc-icons/cat-' . $catId . '.gif';
       //if ( file_exists ( $catIconFile ) )
     }
   }
@@ -357,9 +357,9 @@ var categories = [];
         ', name: "' . $categories[$catId]['cat_name'] . '"' .
         ', color: "' . $categories[$catId]['cat_color'] . '"' .
         ', global: ' . ( $categories[$catId]['cat_global'] ? '0' : '1' );
-      $gifIconFile =  'icons/cat-' . $catId . '.gif';
-      $pngIconFile =  'icons/cat-' . $catId . '.png';
-      $jpgIconFile =  'icons/cat-' . $catId . '.jpg';
+      $gifIconFile =  'wc-icons/cat-' . $catId . '.gif';
+      $pngIconFile =  'wc-icons/cat-' . $catId . '.png';
+      $jpgIconFile =  'wc-icons/cat-' . $catId . '.jpg';
       if ( file_exists ( $gifIconFile ) ) {
         echo ', icon: "' . $gifIconFile . '"';
       } else if ( file_exists ( $pngIconFile ) ) {

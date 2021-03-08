@@ -3534,9 +3534,9 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $time_only = 'N';
   $view_text = translate ( 'View this event' );
 
-  $catIcon = 'icons/cat-' . $getCat . '.gif';
+  $catIcon = 'wc-icons/cat-' . $getCat . '.gif';
   if ( ! file_exists ( $catIcon ) )
-    $catIcon = 'icons/cat-' . $getCat . '.png';
+    $catIcon = 'wc-icons/cat-' . $getCat . '.png';
   $key++;
 
   if( access_is_enabled() ) {
@@ -3690,9 +3690,9 @@ function html_for_event_week_at_a_glance ( $event, $date,
   $time_only = 'N';
   $title = '<a title="';
 
-  $catIcon = 'icons/cat-' . $getCat . '.gif';
+  $catIcon = 'wc-icons/cat-' . $getCat . '.gif';
   if ( ! file_exists ( $catIcon ) )
-    $catIcon = 'icons/cat-' . $getCat . '.png';
+    $catIcon = 'wc-icons/cat-' . $getCat . '.png';
   $key++;
 
   if( access_is_enabled() ) {
@@ -4562,10 +4562,10 @@ function print_color_input_html ( $varname, $title, $varval = '' ) {
             <p><label for="' . $name . '">' . $title
    . ( $title == '' ? '' : ':' )
    . '</label><input type="text" name="' . $name . '" id="' . $name
-   . '" size="7" maxlength="7" value="' . $setting
+   . '" size="8" maxlength="7" value="' . $setting
    . '" onchange="updateColor( this, \'' . $varname
    . '_sample\' );" /><span class="sample" id="' . $varname . '_sample" style="background:'
-   . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor( \''
+   . $setting . ';">&nbsp;&nbsp;&nbsp;</span><input type="button" onclick="selectColor( \''
    . $name . '\', event )" value="' . $select . '" /></p>';
 }
 
@@ -4864,9 +4864,9 @@ function print_entry ( $event, $date ) {
   $catNum = abs( $event->getCategory() );
   $icon = $cal_type . '.gif';
   if ( $catNum > 0 ) {
-    $catIcon = 'icons/cat-' . $catNum . '.gif';
+    $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
     if ( ! file_exists ( $catIcon ) )
-      $catIcon = 'icons/cat-' . $catNum . '.png';
+      $catIcon = 'wc-icons/cat-' . $catNum . '.png';
     if ( ! file_exists ( $catIcon ) )
       $catIcon = '';
   }

@@ -192,9 +192,9 @@ function print_upcoming_event ( $e, $date ) {
       $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
       $catNum = abs ( $e->getCategory() );
       if ( $catNum > 0 ) {
-        $catIcon = 'icons/cat-' . $catNum . '.gif';
+        $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
         if ( ! file_exists ( $catIcon ) )
-          $catIcon = 'icons/cat-' . $catNum . '.png';
+          $catIcon = 'wc-icons/cat-' . $catNum . '.png';
         if ( file_exists ( $catIcon ) )
           echo $link .
             '<img src="' . $catIcon . '" alt="category icon"></a>';

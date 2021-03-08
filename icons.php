@@ -1,6 +1,6 @@
 <?php
 include_once 'includes/init.php';
-$icon_path = 'icons/';
+$icon_path = 'wc-icons/';
 
 $can_edit = ( is_dir ( $icon_path ) &&
   ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) );
