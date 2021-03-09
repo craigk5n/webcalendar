@@ -189,6 +189,7 @@ if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
 ?>
 </head>
 <body id="login">
+<div class="container">
 <?php
 // Print custom header (since we do not call print_header function).
 if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
@@ -266,6 +267,7 @@ if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
   echo load_template ( $login, 'T' );
 }
 ?>
+</div>
 
 <script src="includes/js/jquery/jquery-3.5.1.slim.min.js"></script>
 <script src="includes/js/bootstrap/bootstrap-4.6.0.bundle.min.js"></script>

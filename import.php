@@ -105,7 +105,7 @@ $upload_enabled = ( ! empty( $upload )
 
 print_header ( array ( 'js/export_import.php', 'js/visible.php' ),
   '', 'onload="toggle_import();"' );
-echo '
+echo '<div class="container">
     <h2>' . translate ( 'Import' ) . '&nbsp;<img src="images/help.gif" alt="'
  . translate ( 'Help' ) . '" class="help" onclick="window.open( '
  . "'help_import.php', 'cal_help', '"
@@ -125,7 +125,7 @@ else {
   echo '
     <form action="import_handler.php" method="post" name="importform" '
    . 'enctype="multipart/form-data" onsubmit="return checkExtension()">
-      <table>
+      <table class="table">
         <tr>
           <td><label for="importtype">' . translate ( 'Import format' ) . ':</label></td>
           <td>
@@ -174,8 +174,9 @@ else {
   print_categories();
   echo '
       </table><br />
-      <input type="submit" value="' . translate ( 'Import' ) . '" />
-    </form>';
+      <input class="btn btn-primary" type="submit" value="' . translate ( 'Import' ) . '" />
+    </form>
+    </div>';
 }
 echo print_trailer();
 
