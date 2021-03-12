@@ -326,6 +326,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   . ( $MENU_ENABLED == 'Y' && ! $menuConfig['Above Custom Header']
     ? $menuHtml : '' );
   // TODO convert this to return value.
+  echo '<div class="container">';
 }
 
 /**
@@ -393,7 +394,8 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
     <p><a href="http://validator.w3.org/check?uri=referer">'
      . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
      . 'class="valid" /></a></p>' : '' )/* Close HTML page properly. */ . '
-  </body>
+    </div>
+     </body>
 </html>
 ';
 }

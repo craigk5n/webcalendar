@@ -176,8 +176,7 @@ function list_unapproved ( $user ) {
 } //end list_unapproved()
 print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
 
-echo '
-    <h2>' . translate ( 'Unapproved Entries' ) . '</h2>';
+echo '<h2>' . translate ( 'Unapproved Entries' ) . '</h2>';
 
 $app_user_hash = $app_users = $my_non_users = [];
 $non_users = get_nonuser_cals();

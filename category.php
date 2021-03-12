@@ -49,7 +49,6 @@ $showIconStyle = ( ! empty ( $catIcon ) && file_exists ( $catIcon )
   ? '' : 'display: none;' );
 
 print_header ( array ( 'js/visible.php' ) );
-echo '<div class="container">';
 echo '
     <h2>' . translate ( 'Categories' ) . '</h2>
     ' . display_admin_link( false );
@@ -173,7 +172,6 @@ if ( empty ( $error ) ) {
     <p><a class="btn btn-primary" href="category.php?add=1">' . translate ( 'Make New Category' )
    . '</a></p><br />';
 }
-echo '</div>';
 echo ( ! empty ( $error ) ? print_error ( $error ) : '' ) . print_trailer();
 
 ?>

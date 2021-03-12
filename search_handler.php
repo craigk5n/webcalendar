@@ -251,7 +251,7 @@ if ( $matches > 0 ) {
 } else
   echo translate ( 'No matches found' );
 
-echo ": " . htmlentities ( $keywords ) . '</strong>.</p>';
+echo ": " . htmlentities ( $keywords ) . '</strong></p>';
 
 
 // now sort by number of hits
@@ -259,10 +259,10 @@ if ( empty ( $error ) && empty ( $info ) ) {
   // no mtaches
 } else if ( empty ( $error ) ) {
   echo '
-    <ul>';
+    <ul class="list-group list-group-flush">';
   foreach ( $info as $result ) {
     echo '
-      <li><a class="nav" href="view_entry.php?id=' . $result['id']
+      <li class="list-group-item"><a class="nav" href="view_entry.php?id=' . $result['id']
      . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>';
   }
   echo '
@@ -271,7 +271,7 @@ if ( empty ( $error ) && empty ( $info ) ) {
 echo '
       <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
         . '"  style="margin-left: 13px;" method="post">
-       <input type="submit" value="'
+       <br><input class="btn btn-primary" type="submit" value="'
         . translate ( 'New Search' ) . '" /></form>
     ' . print_trailer ();
 

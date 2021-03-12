@@ -6,7 +6,7 @@ if ( ! $is_admin )
 
 print_header( array( 'js/visible.php' ) );
 
-echo '<div class="container"><h2>' . translate("Manage Views") . '</h2>';
+echo '<h2>' . translate("Manage Views") . '</h2>';
 
 echo display_admin_link();
 
@@ -30,7 +30,6 @@ echo '</ul><div><br><a title="' . translate ( 'Add New View' )
 echo ( $global_found ? '<br />
         *&nbsp;' . translate ( 'Global' ) : '' ) . '<br />
       </div>
-    </div>
     </div>
     ' . print_trailer();
 

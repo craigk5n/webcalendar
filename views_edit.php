@@ -22,7 +22,6 @@ $BodyX = 'onload="usermode_handler();"';
 $INC = array('js/visible.php', 'js/views_edit.php');
 print_header( $INC, '', $BodyX );
 ?>
-<div class="container">
 
 <form action="views_edit_handler.php" method="post" name="editviewform">
 <?php
@@ -172,7 +171,6 @@ echo '<tr><td><label class="colon">'
 </table>
 
 </form>
-</div>
 
 <?php echo print_trailer(); ?>
 

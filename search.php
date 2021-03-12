@@ -49,22 +49,20 @@ echo '    <h2>' . ( $show_advanced ? $advSearchStr : $searchStr ) . '</h2>
     <form action="search_handler.php" method="GET" id="searchformentry" '
  . 'name="searchformentry" style="margin-left: 13px;">
       <input type="hidden" name="advanced" value="' . $show_advanced . '" />
-      <table><tr><td><label for="keywordsadv">' . translate ( 'Keywords' )
+      <table class="table"><tr><td><label for="keywordsadv">' . translate ( 'Keywords' )
  . ':&nbsp;</label></td>
-        <td><input type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
-        <input type="submit" value="' . $searchStr . '" /></td></tr>';
-
-echo '<tr height="30px"><td>&nbsp;</td><td class="aligntop">(' .
-  translate( 'Enter % for all entries' ) . ')</td></tr>';
+        <td><input class="form-control" type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
+        
+        ' . translate( 'Enter % for all entries' ) . '</td></tr>';
 
 if( is_array( $categories ) && $show_advanced ) {
   echo '
         <tr id="catfilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
           <td><label for="cat_filter" class="colon">' . translate( 'Categories' )
-   . '</label></td>
+   . ':</label></td>
           <td>
-            <select name="cat_filter" id="cat_filter">
+            <select class="form-control" name="cat_filter" id="cat_filter">
               <option value=""' . $selected . '>' . translate( 'All' )
    . '</option>';
 
@@ -95,9 +93,9 @@ if( $show_advanced ) {
         <tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
           <td><label for="date_filter" class="colon">' . translate('Filter by Date')
-   . '</label></td>
+   . ':</label></td>
           <td>
-            <select name="date_filter" id="date_filter" onchange="toggleDateRange()">
+            <select class="form-control" name="date_filter" id="date_filter" onchange="toggleDateRange()">
               <option value="0"' . $selected . '>' . translate( 'All Dates' )
    . '</option>
               <option value="1">' . translate( 'Past' ) . '</option>
@@ -148,7 +146,7 @@ if( $show_others ) {
           <td class="aligntop"><label for="usersadv">'
    . translate( 'Users' ) . ':&nbsp;</label></td>
           <td>
-            <select name="users[]" id="usersadv" size="' . $size
+            <select class="form-control" name="users[]" id="usersadv" size="' . $size
    . '" multiple="multiple">';
 
   for( $i = 0; $i < $cnt; $i++ ) {
@@ -166,7 +164,7 @@ if( $show_others ) {
           </td>
         </tr>';
 }
-echo '</table></form>';
+echo '</table><input class="btn btn-primary" type="submit" value="' . $searchStr . '" /></form>';
 ?>
 <script language="JavaScript">
 <!-- <![CDATA[

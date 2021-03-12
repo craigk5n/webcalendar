@@ -342,8 +342,6 @@ if ( $include_header || ! empty ( $list ) || ! empty ( $error ) ) {
   print_header();
 }
 
-echo '<div class="container">';
-
 if ( empty ( $offset ) || empty ( $report_allow_nav ) || $report_allow_nav != 'Y' )
   $offset = 0;
 
@@ -497,7 +495,6 @@ echo <<<EOT
     {$adminLinkStr}{$list}
     {$textStr}
     {$printerStr}
-    </div>
     {$trailerStr}
 EOT;
 

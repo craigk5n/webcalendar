@@ -197,8 +197,6 @@ if ( empty ( $error ) && $report_id >= 0 ) {
 
 print_header();
 
-echo '<div class="container">';
-
 if ( ! empty ( $error ) ) {
   echo $error . print_trailer ( false );
   exit;
@@ -425,7 +423,6 @@ echo '
       }
 //]]> -->
     </script>
-</div>
 <?php echo print_trailer();
 
 ?>

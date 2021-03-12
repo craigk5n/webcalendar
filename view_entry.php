@@ -392,7 +392,6 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 // get reminders
 $reminder = getReminders ( $id, true );
 ?>
-<div class="container">
   <div class="row">
     <div class="col" id="view-event-title"><h2>
 <?php
@@ -1145,7 +1144,6 @@ EOT;
 echo '</ul>';
 
 echo '</div><div class="w-100"></div></div>' . "\n";
-echo "</div>\n";
 
 echo print_trailer ( empty ( $friendly ) );
 
