@@ -102,9 +102,6 @@ function user_logged_in () {
   // First check to see if the user even has a session cookie
   if ( empty ( $sid ) ) return false;
 
-    // addslashes if magic_quotes_gpc is off
-  if ( ! get_magic_quotes_gpc () ) $sid = addslashes ( $sid );
-
   // Check to see if the session is still valid
   if (! $login = pn_active_session( $sid ) ) return false;
 

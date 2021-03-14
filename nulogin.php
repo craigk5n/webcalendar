@@ -55,8 +55,6 @@ if ( empty ( $PHP_SELF ) )
 
 $cookie_path = str_replace ( 'nulogin.php', '', $PHP_SELF );
 // echo "Cookie path: $cookie_path\n";
-if ( get_magic_quotes_gpc() )
-  $login = stripslashes ( $login );
 
 $login = trim ( $login );
 $badLoginStr = translate ( 'Illegal characters in login XXX.' );

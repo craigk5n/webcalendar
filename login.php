@@ -87,10 +87,6 @@ if ( $single_user == 'Y' || $use_http_auth )
   do_redirect ( 'index.php' );
 else {
   if ( ! empty ( $login ) && ! empty ( $password ) && ! $logout ) {
-    if ( get_magic_quotes_gpc() ) {
-      $login = stripslashes ( $login );
-      $password = stripslashes ( $password );
-    }
     $login = trim ( $login );
     $badLoginStr = translate ( 'Illegal characters in login XXX.' );
 
@@ -101,7 +97,9 @@ else {
     if ( user_valid_login ( $login, $password ) ) {
       user_load_variables ( $login, '' );
 
-      $encoded_login = encode_string ( $login . '|' . crypt( $password ) );
+      $salt = chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) )
+       . chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) );
+      $encoded_login = encode_string ( $login . '|' . crypt( $password, $salt ) );
       // If $remember, set login to expire in 365 days.
       $timeStr = ( ! empty ( $remember ) && $remember == 'yes'
         ? time() + 31536000 : 0 );
@@ -247,7 +245,7 @@ echo '
      <span class="cookies">' . translate ( 'cookies-note' ) . '</span><br />
      <hr />
      <br />
-     <a href="' . $PROGRAM_URL . '" id="programname">' . $PROGRAM_NAME . '</a>'
+     <a href="' . $PROGRAM_URL . '" target="_blank" id="programname">' . $PROGRAM_NAME . '</a> <br /> <br />'
 // Print custom trailer (since we do not call print_trailer function).
  . ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y'
   ? load_template ( $login, 'T' ) : '' ) . '

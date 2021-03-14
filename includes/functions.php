@@ -810,9 +810,9 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
 
   //  $mm_select ... number of month, $month_select name of month
   $month_select = '
-      <select name="' . $prefix . 'month"' . $onchange . '>';
+      <select name="' . $prefix . 'month" id="' . $prefix . 'month"' . $onchange . '>';
   $mm_select = '
-      <select name="' . $prefix . 'month"' . $onchange . '>';
+      <select name="' . $prefix . 'month" id="' . $prefix . 'month"' . $onchange . '>';
   for ( $i = 1; $i < 13; $i++ ) {
     $month_select .= '
         <option value="' . "$i\""
@@ -829,7 +829,7 @@ function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   $mm_select .= '
       </select>';
   $yyyy_select = '
-      <select name="' . $prefix . 'year"' . $onchange . '>';
+      <select name="' . $prefix . 'year" id="' . $prefix . 'year"' . $onchange . '>';
   for ( $i = -10; $i < $num_years; $i++ ) {
     $y = $thisyear + $i;
     $yyyy_select .= '
@@ -1720,6 +1720,28 @@ function display_unapproved_events ( $user ) {
   $retval[$user] = $ret;
 
   return $ret;
+}
+/**
+ * Get the request origin.
+ */
+function url_origin($s, $use_forwarded_host = false)
+{
+  $ssl      = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on');
+  $sp       = strtolower($s['SERVER_PROTOCOL']);
+  $protocol = substr($sp, 0, strpos($sp, '/')) . (($ssl) ? 's' : '');
+  $port     = $s['SERVER_PORT'];
+  $port     = ((!$ssl && $port == '80') || ($ssl && $port == '443')) ? '' : ':' . $port;
+  $host     = ($use_forwarded_host && isset($s['HTTP_X_FORWARDED_HOST'])) ? $s['HTTP_X_FORWARDED_HOST'] : (isset($s['HTTP_HOST']) ? $s['HTTP_HOST'] : null);
+  $host     = isset($host) ? $host : $s['SERVER_NAME'] . $port;
+  return $protocol . '://' . $host;
+}
+
+/**
+ * Get the full URL of the current request.
+ */
+function full_url($s, $use_forwarded_host = false)
+{
+  return url_origin($s, $use_forwarded_host) . $s['REQUEST_URI'];
 }
 
 /**
@@ -3076,7 +3098,7 @@ function get_tasks ( $date, $get_unapproved = true ) {
 
   $ret = [];
   $today = date ( 'Ymd' );
-  for ( $i = 0, $cnt = count ( $tasks ); $i < $cnt; $i++ ) {
+  for ( $i = 0, $cnt = is_array($tasks) ? count ($tasks) : 0; $i < $cnt; $i++ ) {
     // In case of data corruption (or some other bug...).
     if( empty( $tasks[$i] ) || $tasks[$i]->getID() == ''
         || ( ! $get_unapproved && $tasks[$i]->getStatus() == 'W' ) )
@@ -4252,8 +4274,8 @@ function load_user_preferences ( $guest = '' ) {
           && ! access_can_access_function( ACCESS_VIEW, $guest ) ) )
       ? '' : ' OR cal_is_global = \'Y\' ' )
      . 'ORDER BY cal_name', [$tmp_login] );
+  $views = [];
   if ( $rows ) {
-    $views = [];
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
       $url = 'view_';
@@ -4397,7 +4419,7 @@ function nonuser_load_variables ( $login, $prefix ) {
       $GLOBALS[$prefix . 'login'] = $row[0];
       $GLOBALS[$prefix . 'lastname'] = $row[1];
       $GLOBALS[$prefix . 'firstname'] = $row[2];
-      $GLOBALS[$prefix . 'fullname'] = trim($raw[1] . ' ' . $row[2]);
+      $GLOBALS[$prefix . 'fullname'] = trim($row[1] . ' ' . $row[2]);
       $GLOBALS[$prefix . 'admin'] = $row[3];
       $GLOBALS[$prefix . 'is_public'] = $row[4];
       $GLOBALS[$prefix . 'url'] = $row[5];
@@ -5663,7 +5685,9 @@ function set_today ( $date = '' ) {
  */
 function sort_events ( $a, $b ) {
   // Handle untimed events first.
-  if( $a->isUntimed() || $b->isUntimed() )
+  if( $a->isUntimed() && $b->isUntimed() )
+    return strnatcmp( $a->getName(), $b->getName() );
+  else if( $a->isUntimed() || $b->isUntimed() )
     return strnatcmp( $b->isUntimed(), $a->isUntimed() );
 
   $retval = strnatcmp (
@@ -6211,30 +6235,30 @@ function format_site_extras ( $extras, $filter = '' ) {
     return;
 
   $ret = [];
-  $extra_view = 1;
   foreach ( $site_extras as $site_extra ) {
     $data = '';
     $extra_name = $site_extra[0];
     $extra_desc = $site_extra[1];
     $extra_type = $site_extra[2];
     $extra_arg1 = $site_extra[3];
-    $extra_arg2 = $site_extra[4];
+    $extra_arg2 = $site_extra[4]; // only used in edit pages (not here)
     if ( ! empty ( $site_extra[5] ) && ! empty ( $filter ) )
       $extra_view = $site_extra[5] & $filter;
     if ( ! empty ( $extras[$extra_name] ) && !
-        empty ( $extras[$extra_name]['cal_name'] ) && ! empty ( $extra_view ) ) {
+      empty($extras[$extra_name]['cal_name']) && !empty($extra_desc)) {
       $name = translate ( $extra_desc );
 
-      if ( $extra_type == EXTRA_DATE ) {
-        if ( $extras[$extra_name]['cal_date'] > 0 )
-          $data = date_to_str ( $extras[$extra_name]['cal_date'] );
-      } elseif ( $extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT )
-        $data = nl2br ( $extras[$extra_name]['cal_data'] );
-      elseif ( $extra_type == EXTRA_RADIO && !
-        empty ( $extra_arg1[$extras[$extra_name]['cal_data']] ) )
+      if ($extra_type == EXTRA_DATE) {
+        if ($extras[$extra_name]['cal_date'] > 0)
+          $data = date_to_str($extras[$extra_name]['cal_date']);
+      } elseif (($extra_type == EXTRA_TEXT || $extra_type == EXTRA_MULTILINETEXT)
+        && !empty($extras[$extra_name]['cal_data'])) {
+        $data = nl2br($extras[$extra_name]['cal_data']);
+      } elseif ($extra_type == EXTRA_RADIO && !empty($extra_arg1[$extras[$extra_name]['cal_data']])) {
         $data .= $extra_arg1[$extras[$extra_name]['cal_data']];
-      else
+      } elseif (!empty($extras[$extra_name]['cal_data'])) {
         $data .= $extras[$extra_name]['cal_data'];
+      }
 
       $ret[$extra_name] = ['name' => $name, 'data' => $data];
     }
@@ -6402,7 +6426,7 @@ function require_valid_referring_url ()
     // Unfortunately, some version of MSIE do not send this info.
     return;
   }
-  if ( ! preg_match ( "@$SERVER_URL@i", $_SERVER['HTTP_REFERER'] ) ) {
+  if ( ! preg_match ( "@$SERVER_URL@", $_SERVER['HTTP_REFERER'] ) ) {
     // Gotcha.  URL of referring page is not the same as our server.
     // This can be an instance of XSRF.
     // (This may also happen when more than address is used for your server.

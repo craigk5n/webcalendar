@@ -118,7 +118,7 @@ if ( $file['size'] > 0 ) {
     echo '
     <br /><br />
     <b>' . translate ( 'Error' ) . ':</b> '
-     . translate( 'There was an error parsing the import file or no events were returned.' )
+     . translate( 'There was an error parsing the import file or no events were returned.' ) . "<br>" . translate("Error") . ": " . htmlentities($errormsg)
      . '<br />';
 } else
   echo '

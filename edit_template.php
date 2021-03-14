@@ -28,8 +28,8 @@ if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) {
 }
 
 if ( $user == '__system__' )
-  assert ( '($is_admin && ! access_is_enabled() ) ||
-    access_can_access_function ( ACCESS_SYSTEM_SETTINGS )' );
+  assert ( ($is_admin && ! access_is_enabled() ) ||
+    access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) );
 
 // Get existing value.
 $res = dbi_execute ( 'SELECT cal_template_text FROM webcal_user_template

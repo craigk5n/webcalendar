@@ -1,0 +1,247 @@
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+  font:16px/1.15 Arial, Helvetica, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+dl,
+ul {
+  margin-left: 10px;
+}
+dt {
+  margin-top: 10px;
+  font-weight: bold;
+}
+h2 {
+  background-color: #191970;
+  color: #FFFFFF;
+}
+h2,
+h3 {
+  padding: 5px;
+}
+hr {
+  margin-bottom: 7px;
+}
+img {
+  border: 0;
+}
+p {
+  margin: 10px;
+}
+pre {
+  background-color: #EEEEFF;
+  margin-right: 25px;
+  margin-left: 25px;
+  border: 1px solid #0000FF;
+  padding: 4px;
+  font: 0.875rem courier, monospace;
+}
+table {
+  border: 0;
+}
+.colorheader {
+  background-color: #000000;
+  color: #FFFFFF;
+  margin-right: 3px;
+  margin-left: 3px;
+  padding: 2px;
+}
+.hide {
+  display: none;
+}
+.newwin {
+  border: 0;
+}
+.note {
+  background-color: #87CEFA;
+  padding: 2px;
+  border: 1px solid #000000;
+  font-weight: bold;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.ptip {
+  background: #DDDDDD;
+  border: 1px solid #AAAAAA;
+  padding: 5px;
+}
+.tip {
+  background-color: #FFFF00;
+  padding: 2px;
+  font-weight: bold;
+}
+.top {
+  text-align: right;
+}
+.tt {
+  font: .85rem monospace;
+}
+.vbottom {
+  vertical-align: bottom;
+}
+.vtop {
+  vertical-align: top;
+}
+#funcs blockquote {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#funcs h3 {
+  background-color: #191970;
+  color: #FFFFFF;
+  padding: 5px;
+}
+#funcs p {
+  margin-top: 2px;
+}
+#funcs ul {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+#funcs .note {
+  background-color: #CCCCCC;
+  color: #000000;
+  padding: 1px;
+}
+#funcs .prompt {
+  font-weight: bold;
+}
+#funcs .tip {
+  margin-right: 10px;
+  border: 1px solid #000000;
+  padding: 1px 5px;
+}
+#guide dt {
+  margin-left: 25px;
+}
+#guide h2 {
+  padding: 5px;
+}
+#guide tr {
+  background-color: #606080;
+  color: #F0F0F0;
+}
+#guide th {
+  background-color: #000000;
+}
+#guide td {
+  vertical-align: top;
+}
+#guide .note,
+#sysadmin .note {
+  background-color: blue;
+  color: #FFFFFF;
+}
+#guide .tip {
+  margin-right: 10px;
+  border: 1px solid #000000;
+  padding: 1px 5px;
+}
+#rpt_matrix td {
+  text-align: center;
+}
+#styling body {
+  padding: 0 40px;
+}
+#styling code {
+  font-weight: bold;
+}
+#styling div.example {
+  width: 350px;
+  margin: 0 auto;
+}
+#styling div.example p {
+  margin: 0px;
+  font-style: italic;
+  font-size: small;
+  text-align: center;
+}
+#styling div.example pre {
+  background-color: #EEEEFF;
+  margin: 0;
+  border: 1px solid blue;
+  padding: 5px;
+}
+#styling dt {
+  font-family: monospace;
+}
+#styling h1,
+#styling h2 {
+  margin-left: -20px;
+}
+#styling p {
+  text-indent: 3ex;
+}
+#styling table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+#styling td {
+  background-color: #DDDDDD;
+  color: #000000;
+  border: 1px solid #BBBBBB;
+  vertical-align: top;
+}
+#styling th,
+#styling td {
+  border: 1px solid gray;
+  padding: 3px;
+}
+#styling td {
+  font-family: monospace;
+}
+#sysadmin dt {
+  margin-top: 20px;
+  margin-left: 25px;
+}
+#sysadmin th {
+  background-color: #EEEEEE;
+  color: #000000;
+  border: 1px solid #CCCCCC;
+}
+#sysadmin .tip {
+  margin-right: 10px;
+  border: 1px solid #000000;
+  padding: 1px 5px;
+}
+#upgrading table {
+  margin-left: 50px;
+}
+#upgrading th {
+  text-align: right;
+}
+#upgrading p:first-of-type {
+   margin-bottom: 0;
+}
+#upgrading tr {
+  background-color: #606080;
+  color: #F0F0F0;
+}
+#upgrading td {
+  vertical-align: top;
+}
+#upgrading ul:first-of-type {
+  margin-top: 0;
+}
+#wc_db table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#wc_db table table,
+#wc_db table th,
+#wc_db table td {
+  border: .1rem solid #000000;
+}
+#wc_db table th {
+  background-color: #E5E5E5;
+  font-weight: bold;
+}
+#wc_db table th,
+#wc_db table td {
+  padding: 0.2rem;
+}

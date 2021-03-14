@@ -64,9 +64,6 @@ function preventHacking ( $name, $instr ) {
 /**
  * Gets the value resulting from an HTTP POST method.
  *
- * <b>Note:</b> The return value will be affected by the value of
- * <var>magic_quotes_gpc</var> in the php.ini file.
- *
  * @param string $name Name used in the HTML form
  * @param string $defVal Value to return if form field is empty
  * @param string $chkXSS Switch to control XSS checking
@@ -75,16 +72,17 @@ function preventHacking ( $name, $instr ) {
  *
  * @see getGetValue
  */
-function getPostValue($name, $defVal=NULL, $chkXSS=false) {
+function getPostValue($name, $defVal = NULL, $chkXSS = false)
+{
   $postName = $defVal;
-  if (isset($_POST) && is_array($_POST) && isset($_POST[$name]))
-    $postName = ( get_magic_quotes_gpc() != 0 ? $_POST[$name] :
-      ( is_array($_POST[$name]) ? array_map('addslashes', $_POST[$name]) :
-      addslashes($_POST[$name]) ) );
+  if (isset($_POST) && is_array($_POST) && isset($_POST[$name])) {
+    $postName =
+      (is_array($_POST[$name]) ? array_map('addslashes', $_POST[$name]) :
+        addslashes($_POST[$name]));
+  }
 
-  $cleanXSS = $chkXSS? chkXSS($postName) : true;
-
-  preventHacking ( $name, $postName );
+  $cleanXSS = $chkXSS ? chkXSS($postName) : true;
+  preventHacking($name, $postName);
   return $cleanXSS ? $postName : NULL;
 }
 
@@ -93,9 +91,6 @@ function getPostValue($name, $defVal=NULL, $chkXSS=false) {
  *
  * Since this function is used in more than one place, with different names,
  * let's make it a separate 'include' file on it's own.
- *
- * <b>Note:</b> The return value will be affected by the value of
- * <var>magic_quotes_gpc</var> in the php.ini file.
  *
  * If you need to enforce a specific input format (such as numeric input), then
  * use the {@link getValue()} function.
@@ -106,19 +101,19 @@ function getPostValue($name, $defVal=NULL, $chkXSS=false) {
  *
  * @see getPostValue
  */
-function getGetValue($name) {
+function getGetValue($name)
+{
   $getName = null;
-  if (isset($_GET) && is_array($_GET) && isset($_GET[$name]))
-    $getName = ( get_magic_quotes_gpc() != 0 ? $_GET[$name] : addslashes($_GET[$name]) );
-  preventHacking ( $name, $getName );
+  if (isset($_GET) && is_array($_GET) && isset($_GET[$name])) {
+    $getName = is_array($_GET[$name]) ? array_map('addslashes', $_GET[$name]) :
+      addslashes($_GET[$name]);
+  }
+  preventHacking($name, $getName);
   return $getName;
 }
 
 /**
  * Gets the value resulting from either HTTP GET method or HTTP POST method.
- *
- * <b>Note:</b> The return value will be affected by the value of
- * <var>magic_quotes_gpc</var> in the php.ini file.
  *
  * <b>Note:</b> If you need to get an integer value, you can use the
  * getIntValue function.
@@ -139,35 +134,28 @@ function getGetValue($name) {
  * @uses getGetValue
  * @uses getPostValue
  */
-function getValue($name, $format = '', $fatal = false) {
-
+function getValue($name, $format = '', $fatal = false)
+{
   $val = getPostValue($name);
   if (!isset($val))
     $val = getGetValue($name);
-// for older PHP versions...
-  if (!isset($val) && get_magic_quotes_gpc() == 1
-          && !empty($GLOBALS[$name]))
-    $val = $GLOBALS[$name];
   if (!isset($val))
     return '';
   if (!empty($format) && !preg_match('/^' . $format . '$/', $val)) {
     // does not match
     if ($fatal) {
       die_miserable_death(translate('Fatal Error') . ': '
-              . translate('Invalid data format for') . $name);
+      . translate('Invalid data format for') . $name);
     }
     // ignore value
     return '';
   }
-  preventHacking ( $name, $val );
+  preventHacking($name, $val);
   return $val;
 }
 
 /**
  * Gets an integer value resulting from an HTTP GET or HTTP POST method.
- *
- * <b>Note:</b> The return value will be affected by the value of
- * <var>magic_quotes_gpc</var> in the php.ini file.
  *
  * @param string $name  Name used in the HTML form or found in the URL
  * @param bool   $fatal Is it considered a fatal error requiring execution to

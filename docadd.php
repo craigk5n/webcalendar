@@ -169,7 +169,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
       cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type,
       cal_mod_date, cal_mod_time, cal_blob ) VALUES
 ( ?,?,?,?,?,?,?,?,?,?,? )', [$nextid, $id, $login,
-        $filename, $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
+        substr($filename,0,30), $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
         date ( 'His' ), NULL] ) )
       $error = db_error();
     else {

@@ -56,7 +56,7 @@ $menuConfig = [
   'Help Contents'=>1,
   'About WebCalendar'=>1,
 'Unapproved Icon'=>1,
-'Printer'=>1,
+'Printer'=>0,
 'Login Fullname'=>1,  //Display user's fullname
 'MENU_DATE_TOP'=>1,   //Display Month/Week/Year Selectors See also $MENU_DATE_TOP
 'Login'=>1,
@@ -93,4 +93,13 @@ $menuExtras[2] = ['menu', 'My Example', '',
 //after all other menus
 $menuExtras[7] = ['item', 'home.png', '', 'http://www.home.com', '_blank']
 */
+
+/*
+In multiuser calendar, this function print only the personal agenda of the day with event's description and place
+*/
+$request_url = full_url ($_SERVER);
+$request_url = $request_url . '?friendly=1&' .
+  (!empty($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '');
+$menuExtras[7] =  array ( 'item', 'printer.png', '', $request_url, '_blank' );
+
 ?>

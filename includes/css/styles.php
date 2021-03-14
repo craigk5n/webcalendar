@@ -143,21 +143,21 @@ defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
   --box-default-color: #888888;
 
   --bgcolor: <?php echo $GLOBALS['BGCOLOR']?>;
+<?php if ( ! empty ( $GLOBALS['BGIMAGE'] ) ) { ?>
   --bgimage: <?php echo$GLOBALS['BGIMAGE']; ?>;
+<?php } ?>
   --bgrepeat: <?php echo$GLOBALS['BGREPEAT']; ?>;
   --captions: <?php echo$GLOBALS['CAPTIONS']; ?>;
   --cellbg: <?php echo$GLOBALS['CELLBG']; ?>;
   --fonts: <?php echo$GLOBALS['FONTS']; ?>;
   --h2color: <?php echo$GLOBALS['H2COLOR']; ?>;
   --haseventsbg: <?php echo$GLOBALS['HASEVENTSBG']; ?>;
-  --minicalfont: <?php echo$GLOBALS['MINICALFONT']; ?>;
-  --minicalwidth: <?php echo$GLOBALS['MINICALWIDTH']; ?>;
+  --minicalfont: <?php echo empty($GLOBALS['MINICALFONT']) ? '11px' : $GLOBALS['MINICALFONT']; ?>;
+  --minicalwidth: <?php echo empty($GLOBALS['MINICALWIDTH']) ? '160px' : $GLOBALS['MINICALWIDTH']; ?>;
   --myevents: <?php echo$GLOBALS['MYEVENTS']; ?>;
-  --nextmonthbg: <?php echo$GLOBALS['NEXTMONTHBG']; ?>;
   --othermonthbg: <?php echo$GLOBALS['OTHERMONTHBG']; ?>;
   --popupfg: <?php echo$GLOBALS['POPUP_FG']; ?>;
   --popupbg: <?php echo$GLOBALS['POPUP_BG']; ?>;
-  --prevmonthbg: <?php echo$GLOBALS['PREVMONTHBG']; ?>;
   --tablebg: <?php echo$GLOBALS['TABLEBG']; ?>;
   --textcolor: <?php echo$GLOBALS['TEXTCOLOR']; ?>;
   --thbg: <?php echo$GLOBALS['THBG']; ?>;

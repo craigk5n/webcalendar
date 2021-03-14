@@ -411,8 +411,7 @@ if ( ! empty ( $menuExtras[2] ) )
 
 // Views Menu
 // translate ( 'My Views' ) translate ( 'Manage Calendar of' );
-if ( $menuConfig['Views'] &&
-  ( $select_user_url != '' || ! empty ( $views_link ) ) ) {
+if ( $menuConfig['Views'] ) {
   //allow us to back out menu if empty
   $tmp1_menuScript = $menuScript;
   jscMenu_menu ( 'Views' );

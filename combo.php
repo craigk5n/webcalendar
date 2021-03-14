@@ -156,7 +156,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
 </tr></table>
 </div>
 
-<ul id="viewtabs" class="shadetabs" style="margin-left: 10px;">
+<ul id="comboviewtabs" class="shadetabs" style="margin-left: 10px;">
 
 <li><a href="#" rel="contentDay" class="selected"><?php etranslate('Day');?></a></li>
 <li><a href="#" rel="contentWeek"><?php etranslate('Week');?></a></li>
@@ -323,7 +323,7 @@ function onLoadInit ()
 }
 
 // Initialize tabs
-var views=new ddtabcontent("viewtabs")
+var views=new ddtabcontent("comboviewtabs")
 views.setpersist(true)
 views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()

@@ -232,9 +232,8 @@ if ( empty ( $error ) && ! $can_view && !
   for ( $i = 0, $cnt = count ( $nonusers ); $i < $cnt; $i++ ) {
     $nonuser_lookup[$nonusers[$i]['cal_login']] = 1;
   }
-  $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
-  WHERE cal_id = ?
-    AND cal_status IN ("A","W")', [$id] );
+  $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user WHERE cal_id = ? ' .
+    'AND cal_status IN (\'A\',\'W\')', [$id] );
   $found_nonuser_cal = $found_reg_user = false;
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
@@ -260,7 +259,7 @@ if ( ! $can_view && ! empty ( $PUBLIC_ACCESS_DEFAULT_VISIBLE ) &&
   FROM webcal_entry_user
   WHERE cal_id = ?
     AND cal_login = "__public__"
-    AND cal_status IN ("A","W")', [$id] );
+    AND cal_status IN (\'A\',\'W\')', [$id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( ! empty ( $row[0] ) && $row[0] == '__public__' ) {
@@ -829,6 +828,13 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
       ? ' <a href="docdel.php?blid=' . $a->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
        . '<img src="images/delete.png"/></a>' : '' ) . '<br />';
+    // Show images; limit height to 35% of display screen size.
+    if ( $a->getMimeType() == 'image/jpeg' || $a->getMimeType() == 'image/png' ||
+      $a->getMimeType() == 'image/gif' ) {
+      echo '<br><a href="doc.php?blid=' . $a->getId() .
+      '"><img src="doc.php?blid=' . $a->getId() . '"' .
+      ' style="max-height:35%; width: auto" /></a>';
+    }
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize();

@@ -47,7 +47,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   WHERE cal_login = ?', [$name] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( $row[0] == $name )
+    if ( $row && $row[0] == $name )
       echo str_replace ( 'XXX', $name,
         translate ( 'Username XXX already exists.', true ) );
   }

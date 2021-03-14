@@ -48,6 +48,7 @@ $WebCalendar->initializeSecondPhase();
 if ( $use_http_auth && empty ( $user ) )
   $user = $login;
 
+$user = getGetValue('user');
 if ( empty ( $user ) ) {
   $arr = explode ( '/', $PHP_SELF );
   $user = $arr[count ( $arr )-1];

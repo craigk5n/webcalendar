@@ -142,7 +142,7 @@ if ( empty ( $date ) && empty ( $month ) ) {
 }
 
 $BodyX = 'onload="onLoad();"';
-$INC = array ( 'js/edit_entry.php/false/' . $user, 'js/visible.php' );
+$INC = array ( 'js/translate.js.php', 'js/edit_entry.php/false/' . $user, 'js/visible.php' );
 $textareasize = ( $ALLOW_HTML_DESCRIPTION === 'Y' ? '20' : '15' );
 
 // Add Modal Dialog javascript/CSS
@@ -361,8 +361,8 @@ if ( ! empty ( $id ) && $id > 0 ) {
   $rem_use_date = ( ! empty ( $reminder['date'] ) );
 
   // Get participants.
-  $res = dbi_execute ( 'SELECT cal_login, cal_status FROM webcal_entry_user WHERE cal_id = ?
-    AND cal_status IN ( "A", "W" )', [$id] );
+  $res = dbi_execute ( "SELECT cal_login, cal_status FROM webcal_entry_user WHERE cal_id = ?
+    AND cal_status IN ( 'A', 'W' )", [$id] );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       $participants[$row[0]] = 1;
@@ -415,10 +415,12 @@ if ( ! empty ( $id ) && $id > 0 ) {
   else
     $hour = $time = -1;
 
+  $defusers = getGetValue('defusers');
+  $defusers_ar = array ();
   if ( ! empty ( $defusers ) ) {
-    $tmp_ar = explode ( ',', $defusers );
-    for ( $i = 0, $cnt = count ( $tmp_ar ); $i < $cnt; $i++ ) {
-      $participants[$tmp_ar[$i]] = 1;
+    $defusers_ar = explode ( ',', $defusers );
+    for ( $i = 0, $cnt = count ( $defusers_ar ); $i < $cnt; $i++ ) {
+      $participants[$defusers_ar[$i]] = 1;
     }
   }
 
@@ -551,7 +553,7 @@ echo '
 if ( $can_edit ) {
   $tabs_name = ['details'];
   $tabs_title = [translate ( 'Details' )];
-  if ( $DISABLE_PARTICIPANTS_FIELD != 'Y' ) {
+  if ( $DISABLE_PARTICIPANTS_FIELD != 'Y' || $is_admin) {
     $tabs_name[] = 'participants';
     $tabs_title[] = translate ( 'Participants' );
   }
@@ -1023,20 +1025,16 @@ if ( $can_edit ) {
             . $f . $q . '</option>';
         }
       } else {
-        if ( ! empty ( $defusers ) && ! empty ( $userlist[$l] ) ) {
-          // Default selection of participants was in the URL.
-          $myusers .= '
-            <option value="' . $l . '">'
+        if ( empty ( $defusers ) && ! empty ( $user ) && ! empty ( $userlist[$l] ) ) {
+          // Default selection of participants was in the URL as 'user=XXX'
+          $myusers .= '<option value="' . $l . '">'
             . $f . $q . '</option>';
-        }
-
-        if ( ! empty ( $user ) && ! empty ( $userlist[$l] ) ) {
-          // Default selection of participants was in the URL.
-          $myusers .= '
-            <option value="' . $l . '">'
-            . $f . $q . '</option>';
-        }
-        if ( ( $l == $login && ! $is_assistant && ! $is_nonuser_admin ) ||
+        } else if ( ! empty ( $defusers ) ) {
+          // Default selection of participants was in the URL as 'defusers=user1,user2'
+          if ( ! empty ( $participants[$l] ) )
+            $myusers .= '<option value="' . $l . '">'
+              . $f . $q . '</option>';
+        } else if ( ( $l == $login && ! $is_assistant && ! $is_nonuser_admin ) ||
             ( ! empty ( $user ) && $l == $user ) )
            // Default selection of participants is logged in user.
           $myusers .= ' <option value="' . $l . '">' . $f . '</option>';
@@ -1503,9 +1501,9 @@ if ( $can_edit ) {
               </td>
               <td class="aligntop">
                 <input class="alignleft" type="button" name="addException" value="'
-     . translate ( 'Add Exception' ) . '" onclick="add_exception(0)" /><br />
+     . translate ( 'Add Exception' ) . '..." onclick="add_exception(0)" /><br />
                 <input class="alignleft" type="button" name="addInclusion" value="'
-     . translate ( 'Add Inclusion' ) . '" onclick="add_exception(1)" /><br />
+     . translate ( 'Add Inclusion' ) . '..." onclick="add_exception(1)" /><br />
                 <input class="alignleft" type="button" name="delSelected" value="'
      . translate ( 'Delete Selected' ) . '" onclick="del_selected()" />
               </td>
@@ -1710,8 +1708,8 @@ if ( $can_edit ) {
   if ( ! empty ( $categories ) ) {
     foreach ( $categories as $K => $V ) {
       // None is index -1 and needs to be ignored
-      if ( $K > 0 && ( $V['cat_owner'] == $login || $is_admin ||
-          substr ( $form, 0, 4 ) == 'edit' ) ) {
+      if ( $K > 0 && ( ( $V['cat_owner'] == $login || $V['cat_global'] > 0 )
+          || $is_admin || substr ( $form, 0, 4 ) == 'edit' ) ) {
         $tmpStr = $K . '">' . $V['cat_name'];
         echo '<input type="checkbox" name="cat_' . $K . '" ' .
           'id="cat_' . $K . '"><label for="cat_' . $K . '">' .
@@ -1734,7 +1732,7 @@ if ( $can_edit ) {
 <script type="text/javascript">
 // Initialize tabs
 var views=new ddtabcontent("viewtabs")
-views.setpersist(true)
+views.setpersist(false)
 views.setselectedClassTarget("link") //"link" or "linkparent"
 views.init()
 // End init tabs

@@ -934,7 +934,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
   <body' . ( empty( $onload ) ? '' : ' onload="' . $onload . '"' ) . '>';
 
 if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
-  $class = ( version_compare( phpversion(), '4.1.0', '>=' ) ? '' : 'not' )
+  $class = ( version_compare( phpversion(), '7.1.0', '>=' ) ? '' : 'not' )
    . 'recommended';
   echo '
     <table border="1" width="90%" class="aligncenter">
@@ -957,7 +957,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . translate( 'Getting Help' ) . '</a></li>
             <li><a href="../UPGRADING.html" target="_docs">'
    . translate( 'Upgrading Guide' ) . '</a></li>
-            <li><a href="http://www.k5n.us/wiki/" target="_docs">'
+            <li><a href="https://github.com/craigk5n/webcalendar/wiki" target="_docs">'
    . translate( 'User Supported Wiki' ) . '</a></li>
           </ul>
         </td>
@@ -968,7 +968,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       </tr>
       <tr>
         <td>'
-   . translate( 'Check to see if PHP 4.1.0 or greater is installed.' ) . '</td>
+   . translate( 'Check to see if PHP 7.1.0 or greater is installed.' ) . '</td>
         <td class="' . $class . '"><img src="' . ( $class == 'recommended'
     ? 'recommended.gif' : 'not_recommended.jpg' ) . '" alt="" />&nbsp;'
    . translate( 'PHP version' ) . ' ' . phpversion() . '</td>

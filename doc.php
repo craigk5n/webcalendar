@@ -24,9 +24,9 @@ else {
 
 if ( empty ( $error ) ) {
   $row = dbi_fetch_row ( $res );
-  if ( ! $row )
+  if ( ! $row ) {
     $error = str_replace ( 'XXX', $blid, $invalidIDStr );
-  else {
+  } else {
     $doc = new Doc( $row );
     $description = $doc->getDescription();
     $filedata = $doc->getData();
@@ -158,6 +158,7 @@ if ( ! empty ( $id ) && empty ( $error ) ) {
   if ( empty ( $error ) && ! $can_view )
     $error = print_not_auth();
 }
+
 
 if ( ! empty ( $error ) ) {
   print_header();
