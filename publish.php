@@ -1,4 +1,4 @@
-<?php // $Id: publish.php,v 1.37 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Description:
  * Creates the iCal output for a single user's calendar so that remote users can

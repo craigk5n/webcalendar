@@ -1,4 +1,4 @@
-<?php // $Id: select_user.php,v 1.36 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 print_header();
 echo '

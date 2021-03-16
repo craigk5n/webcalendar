@@ -48,7 +48,6 @@ import us.k5n.webcalendar.WebCalendarClientListener;
  * and XML is returned.
  *
  * @author Craig Knudsen, craig@k5n.us
- * @version $Id$
  */
 public class Main implements MessageDisplayer, EventDisplayer, UserListener,
     ActionListener, WebCalendarClientListener {

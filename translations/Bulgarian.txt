@@ -6,7 +6,6 @@
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id: Bulgarian.txt,v 1.18 2008/10/13 22:03:04 bbannon Exp $
 # Translation last updated on 04-20-2007
 
 

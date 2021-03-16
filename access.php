@@ -1,7 +1,5 @@
 <?php
 /**
- * $Id: access.php,v 1.60.2.1 2012/02/28 15:43:09 cknudsen Exp $
- *
  * This page is used to manage user access rights.
  *
  * It has three different modes:

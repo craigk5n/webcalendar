@@ -39,7 +39,7 @@
 // webcalendar include directory.
 
 define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
-                 // relative to current working directory.
+// relative to current working directory.
 define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
 define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 $old_path = ini_get ( 'include_path' );

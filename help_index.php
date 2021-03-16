@@ -1,4 +1,4 @@
-<?php // $Id: help_index.php,v 1.29 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 print_header ( '', '', '', true );

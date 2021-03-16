@@ -36,7 +36,6 @@
 #        Translate "May_" to the full month name and "May" to the,
 #        usually three-letter, month abbreviation (like "Oct" for "October").
 #
-# $Id: English-US.txt,v 1.276 2010/10/07 14:59:29 cknudsen Exp $
 # Translation last updated on 11-22-2009
 
 charset: iso-8859-1

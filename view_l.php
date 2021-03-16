@@ -1,4 +1,4 @@
-<?php // $Id: view_l.php,v 1.76 2009/11/22 22:26:18 bbannon Exp $
+<?php
 /**
  * Page Description:
  * This page will display the month "view" with all users's events on the same

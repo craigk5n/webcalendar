@@ -1,4 +1,4 @@
-<?php // $Id: index.php,v 1.17 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 // If not yet logged in, you will be redirected to login.php before

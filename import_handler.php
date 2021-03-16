@@ -1,4 +1,4 @@
-<?php // $Id: import_handler.php,v 1.44 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Description:
  * Loads appropriate import file parser and processes the data returned.

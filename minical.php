@@ -1,4 +1,4 @@
-<?php // $Id: minical.php,v 1.23 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Description:
  * This script is intended to be used inside an IFRAME on another website

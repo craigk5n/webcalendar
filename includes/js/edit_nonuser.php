@@ -1,4 +1,4 @@
-<?php /* $Id: edit_nonuser.php,v 1.10 2007/07/12 19:29:13 bbannon Exp $  */
+<?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 ?>
 var validform = true;

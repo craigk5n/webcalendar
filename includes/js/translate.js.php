@@ -1,4 +1,4 @@
-<?php // $Id: translate.js.php,v 1.8 2010/09/16 01:20:22 cknudsen Exp $
+<?php
 defined( '_ISVALID' ) or die( 'You cannot access this file directly!' );
 
 global $GROUPS_ENABLED, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;

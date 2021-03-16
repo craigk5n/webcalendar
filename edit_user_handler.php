@@ -1,5 +1,4 @@
-<?php // $Id: edit_user_handler.php,v 1.54.2.1 2012/02/28 15:43:10 cknudsen Exp $
-
+<?php
 // There is the potential for a lot of mischief from users trying to access this
 // file in ways they shouldn't. Users may try to type in a URL to get around
 // functions that are not being displayed on the web page to them.

@@ -21,7 +21,6 @@ import javax.swing.text.StyledDocument;
  * outgoing web service traffic.
  *
  * @author Craig Knudsen, craig@k5n.us
- * @version $Id$
  *
  */
 public class WebServiceLogPanel extends JPanel {
