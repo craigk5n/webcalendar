@@ -1,4 +1,3 @@
-// $Id: search.js,v 1.2 2009/12/27 14:26:44 bbannon Exp $
 
 function selectUsers() {
   // Find id of user selection object.

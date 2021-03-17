@@ -1,4 +1,3 @@
-// $Id: ie5.js,v 1.1 2008/12/14 23:37:46 bbannon Exp $
 
 // Array.push & Array.splice got left out of IE 5.
 Array.prototype.push = function() {

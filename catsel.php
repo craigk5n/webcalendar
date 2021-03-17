@@ -1,4 +1,4 @@
-<?php // $Id: catsel.php,v 1.28.2.1 2013/01/24 21:15:09 cknudsen Exp $
+<?php
 include_once 'includes/init.php';
 
 // load user and global cats

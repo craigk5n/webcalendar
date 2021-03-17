@@ -9,7 +9,6 @@ import org.w3c.dom.NodeList;
  * The Reminder objects.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class Reminder {
   Event event = null;

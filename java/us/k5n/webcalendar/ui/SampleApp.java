@@ -35,7 +35,6 @@ import us.k5n.webcalendar.WebCalendarClient;
  * events.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class SampleApp implements MessageDisplayer, EventDisplayer,
     ActionListener {

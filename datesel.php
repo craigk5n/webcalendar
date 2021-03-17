@@ -1,4 +1,4 @@
-<?php // $Id: datesel.php,v 1.57 2009/11/22 16:47:44 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 $fday = getGetValue ( 'fday' );

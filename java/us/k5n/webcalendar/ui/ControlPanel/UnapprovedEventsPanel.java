@@ -40,7 +40,6 @@ import us.k5n.webcalendar.WebCalendarParseException;
  * the public user.
  *
  * @author Craig Knudsen, craig@k5n.us
- * @version $Id$
  *
  */
 public class UnapprovedEventsPanel extends JPanel {

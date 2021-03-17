@@ -1,4 +1,4 @@
-<?php // $Id: validate.php,v 1.26 2009/11/22 16:47:46 bbannon Exp $
+<?php
 /**
  * Do a sanity check. Make sure we can access webcal_config table. We call this
  * right after the first call to dbi_connect()

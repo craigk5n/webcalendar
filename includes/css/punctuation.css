@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* $Id: punctuation.css,v 1.1 2013/05/15 17:48:21 bbannon Exp $ */
 :lang(en) blockquote, :lang(en) q {
   quotes: "“" "”" "‘" "’";
 }

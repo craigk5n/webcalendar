@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php
 /**
  * Description:
  *  Web Service functionality to update, delete or add events.

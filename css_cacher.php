@@ -1,4 +1,4 @@
-<?php // $Id: css_cacher.php,v 1.26 2010/08/22 21:03:25 cknudsen Exp $
+<?php
 define( '_ISVALID', true );
 
 include 'includes/translate.php';

@@ -1,7 +1,6 @@
 # Translated by: Wyn James: wynjames@onetel.net.uk
 # Last update: 03 October 2002
 #
-# $Id: Welsh.txt,v 1.31 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

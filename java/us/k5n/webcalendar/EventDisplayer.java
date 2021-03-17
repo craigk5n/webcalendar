@@ -5,7 +5,6 @@ package us.k5n.webcalendar;
  * server.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public interface EventDisplayer {
 

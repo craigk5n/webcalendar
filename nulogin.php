@@ -1,4 +1,4 @@
-<?php // $Id: nulogin.php,v 1.22 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * This page handles logins for nonuser calendars.
  */

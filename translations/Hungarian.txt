@@ -7,7 +7,6 @@
 # Last updated on 2005-05-31
 # Updated to 1.1 by Istvan Bubreg bubreg_at_freemail_hu
 #
-# $Id: Hungarian.txt,v 1.49 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

@@ -1,4 +1,4 @@
-<?php // $Id: login-app.php,v 1.32 2010/02/03 17:41:22 bbannon Exp $
+<?php
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.class';
 

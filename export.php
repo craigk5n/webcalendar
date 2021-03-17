@@ -1,4 +1,4 @@
-<?php // $Id: export.php,v 1.54.2.1 2013/01/24 21:15:09 cknudsen Exp $
+<?php
 /**
  * Page Description:
  * This page will present the user with forms for exporting calendar events.

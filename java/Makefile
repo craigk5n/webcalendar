@@ -1,5 +1,4 @@
 # WebCalendar java Makefile
-# $Id$
 #
 # Notes:
 # If you add/remove/change the java files that need to be compiled, just

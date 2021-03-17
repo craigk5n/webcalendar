@@ -1,4 +1,3 @@
-$Id: README.webcalendar,v 1.1 2010/08/17 04:11:46 cknudsen Exp $
 
 This directory contains Modalbox code downlaoded from git.
 The prototype.js file from WebCalendar is used instead of a separate one.

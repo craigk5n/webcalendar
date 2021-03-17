@@ -1,4 +1,3 @@
-// $Id: colors.js,v 1.5 2010/02/21 08:27:49 bbannon Exp $
 
 // Predefined Colors
   var

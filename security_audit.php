@@ -1,4 +1,4 @@
-<?php // $Id: security_audit.php,v 1.13 2010/01/24 10:07:07 bbannon Exp $
+<?php
 /**
  * Description:
  *  This page will take look for possible security issues with

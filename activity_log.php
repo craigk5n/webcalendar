@@ -1,4 +1,4 @@
-<?php // $Id: activity_log.php,v 1.55 2009/11/22 16:47:44 bbannon Exp $
+<?php
 /**
  * Description:
  *  Display either the "Activity Log" (for events/tasks) or the

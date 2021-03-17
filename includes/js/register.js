@@ -1,4 +1,3 @@
-// $Id: register.js,v 1.1 2009/12/27 06:16:36 bbannon Exp $
 
 var
   ds = document.selfreg,

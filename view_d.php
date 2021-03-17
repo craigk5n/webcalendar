@@ -1,4 +1,4 @@
-<?php // $Id: view_d.php,v 1.60 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Page Description:
  * Display a timebar view of a single day.

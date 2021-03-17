@@ -5,7 +5,6 @@
 # Ilya G. Teterev <remirran@gmail.com>
 # Last update: Wed Oct 25 14:34:05 IST 2000
 #
-# $Id: Russian.txt,v 1.50 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

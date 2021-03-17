@@ -1,7 +1,6 @@
 # Translated by: Ronny as-salafi <ronny.assalafi@gmail.com>
 # Last update: 28 August 2007
 #
-# $Id: Bahasa_Indonesia.txt,v 1.9 2010/02/21 08:27:49 bbannon Exp $
 # Translation last updated on 10-15-2008
 
 

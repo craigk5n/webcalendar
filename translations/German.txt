@@ -5,7 +5,6 @@
 # Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
 # Last update: 13. April 2010
 #
-# $Id: German.txt,v 1.190 2010/08/15 03:22:08 cknudsen Exp $
 # Translation last updated on 04-13-2010
 
 

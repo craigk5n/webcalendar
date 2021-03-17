@@ -7,7 +7,6 @@ import org.w3c.dom.Node;
  *
  * @see Event
  * @author Craig Knudsen
- * @version $Id$
  */
 public class Participant {
   String login = null;

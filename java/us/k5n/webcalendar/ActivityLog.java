@@ -11,7 +11,6 @@ import org.w3c.dom.NodeList;
  * because the JTable swing component can easily make use of a Vector for a row.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class ActivityLog extends Vector {
   /** Unique login id */

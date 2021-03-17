@@ -10,7 +10,6 @@
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id: Greek.txt,v 1.25.2.1 2012/03/11 19:02:57 cknudsen Exp $
 # Translation last updated on 03-11-2012
 
 

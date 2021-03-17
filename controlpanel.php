@@ -1,6 +1,5 @@
 <?php
-/* $Id: controlpanel.php,v 1.15 2009/10/11 16:29:59 bbannon Exp $
- *
+/**
  * Description:
  * This page generates the JNLP contents
  * that Java Web Start uses to start the application.

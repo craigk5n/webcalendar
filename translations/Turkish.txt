@@ -4,7 +4,6 @@
 # by: Elçin Özel - Can Yýlmaz - Mehmet Benlioðlu
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
-# $Id: Turkish.txt,v 1.38 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 
