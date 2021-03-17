@@ -1,1377 +1,720 @@
-# Bulgarian bg
+# See translations/English-US.txt for instructions.
 #
-# This file was badly corrupted.
-# I used Google translate to re-create it.
-# A native speaker should probably check it.
-# Bruce Bannon <wc@bbannon.net> 17 March 2021
+# Translated by: Malen Malenov malen_malenov@yahoo.com
 #
-(Admin Account Not Found): (Администраторски акаунт не е намерен)
-(Private): (Частно)
-(Requires XXX folder to exist.): (Изисква папка XXX, за да съществува.)
-(Your comments will be emailed to the event creator.): (Вашите коментари ще бъдат изпратени по имейл до създателя на събитието.)
-(Your comments will be emailed to the other participants.): (Вашите коментари ще бъдат изпратени по имейл до останалите участници.)
-(cont.): (продължение)
-(not supported): (Не се поддържа)
-0: 0
-12 hour: 12 часа
-1: 1
-24 hour: 24 часа
-2: 2
-3: 3
-4: 4
-5: 5
-6: 6
-7: 7
-8: 8
-9: 9
-A login must be specified.: Трябва да се посочи вход.
-A new WebCalendar account has been set up for you.: За вас е създаден нов акаунт в WebCalendar.
-AVAILABLE CATEGORIES: НАЛИЧНИ КАТЕГОРИИ
-AVAILABLE THEMES: НАЛИЧНИ ТЕМИ
-About WebCalendar: За WebCalendar
-About: относно
-Access XXX calendar: Достъп до XXX календар
-Access public calendar: Достъп до обществен календар
-Access: Достъп
-Account disabled: Акаунтът е деактивиран
-Account: Сметка
-Action: Действие
-Activity Log: Дневник дейност
-Activity login failure: Потребителско име: "XXX", IP: "YYY".
-Add Attachment: Добави прикачен файл
-Add Comment: Добави коментар
-Add Custom: Добавете персонализиран
-Add Entry: Добавяне на запис
-Add Exception: Добавяне на изключение
-Add Group: Добавяне на група
-Add Icon to Category: Добавяне на икона към категорията
-Add Inclusion: Добавяне на включване
-Add Layer: Добавяне на слой
-Add N hours to: Добавете N часа към
-Add New Entry: Добавяне на нов запис
-Add New Event: Добавяне на ново събитие
-Add New Group: Добавяне на нова група
-Add New NonUser Calendar: Добавете нов непотребителски календар
-Add New Remote Calendar: Добавете нов отдалечен календар
-Add New Task: Добавяне на нова задача
-Add New User: Добавяне на нов потребител
-Add New View: Добавяне на нов изглед
-Add Remote Calendar: Добавяне на отдалечен календар
-Add Report: Добавяне на отчет
-Add User: Добавяне на потребител
-Add View: Добавяне на изглед
-Add event detail: Добавете подробности за събитието
-Add layer: Добавете слой
-Add new report: Добавете нов отчет
-Add to My Calendar: Добавяне към моя календар
-Add/Edit/Delete: Добавяне / Редактиране / Изтриване
-Add: Добавяне
-Adding/Editing Calendar Entries: Добавяне / редактиране на записи в календара
-Additional Comments (optional): Допълнителни коментари (по избор)
-Admin and owner can always add attachments if enabled.: Администраторът и собственикът винаги могат да добавят прикачени файлове, ако са активирани.
-Admin and owner can always add comments if enabled.: Администраторът и собственикът винаги могат да добавят коментари, ако са активирани.
-Admin mode: Административен режим
-Admin: Администратор
-Administrative Tools: Административни пособия
-Administrator: Администратор
-Advanced Search: подробно търсене
-Afrikaans: Африкаанс
-After: След
-Agenda: Дневен ред
-Albanian: Албански
-All Attendees: Всички присъстващи
-All Dates: Всички дати
-All Percentages: Всички проценти
-All day event: Целодневно събитие
-All your database tables appear to be up...: Изглежда, че всички ваши таблици в базата данни са актуални. Можете да преминете към следващата страница и да завършите настройката на WebCalendar.
-All: всичко
-Allow Access to Other Users Calendar: Разрешаване на достъп до календара на други потребители
-Allow HTML in Description: Разрешаване на HTML в описанието
-Allow URL fopen: Разрешаване на отваряне на URL (задължително само ако се използват отдалечени календари)
-Allow comments to events: Разрешаване на коментари за събития
-Allow external file for header/script/trailer: Разрешаване на външен файл за заглавка / скрипт / трейлър
-Allow external users: Разрешаване на външни потребители
-Allow file attachments to events: Разрешаване на прикачени файлове към събития
-Allow public access: Разрешаване на публичен достъп
-Allow remote calendars: Разрешаване на отдалечени календари
-Allow remote publishing: Разрешаване на отдалечено публикуване
-Allow remote subscriptions: Разрешаване на отдалечени абонаменти
-Allow remote viewing of: Разрешаване на дистанционно гледане на
-Allow self-registration: Позволете саморегистриране
-Allow top menu: Разрешаване на горното меню
-Allow user override: Разрешаване на отмяна на потребителя
-Allow user to customize colors: Позволете на потребителя да персонализира цветовете
-Allow user to override header/trailer: Позволете на потребителя да отмени заглавката / ремаркето
-Allow user to use themes: Позволете на потребителя да използва теми
-Allow users to override conflicts: Позволете на потребителите да отменят конфликтите
-Allow viewing other users calendars: Разрешаване на преглед на календари на други потребители
-Allowing XXX user to view other users calendar.: Разрешаване на потребител на XXX да преглежда календара на други потребители.
-Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Позволява фин контрол на потребителския достъп и разрешения. Потребителите могат също да предоставят разрешение по подразбиране и на индивидуално разрешение, ако са упълномощени от администратора:
-Also, please use English rather than XXX.: Също така, моля, използвайте <b> английски </b>, а не XXX.
-Another Users Calendar: Календар на друг потребител
-Anyone: Всеки
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Всичко, импортирано от Palm, ще бъде заменено по време на следващото импортиране (освен ако датата на събитието не е изтекла).
-Anything imported from Palm...: Всичко, импортирано от Palm, ще бъде заменено по време на следващото импортиране (освен ако датата на събитието не е изтекла). Следователно актуализациите трябва да се правят в работния плот на Palm.
-Appearance: Външен вид
-Application Name: Име на приложението
-Application Settings: Настройки на приложението
-Approve Selected entries?: Да се ​​одобри ли избраните записи?
-Approve Selected: Одобряване на избраното
-Approve and Exit: Одобрете и излезте
-Approve and Send: Одобрете и изпратете
-Approve this entry?: Да се ​​одобри ли този запис?
-Approve/Confirm entry: Одобрете / потвърдете въвеждането
-Approve/Confirm: Одобряване / Потвърждаване
-Approve/Reject: Одобряване / отхвърляне
-Approved w/Comments by XXX.: Одобрено с коментари от: XXX.
-Approved: Одобрена
-Apr: Април
-April: април
-Arabic: Арабски
-Are you sure you want to delete events for: Наистина ли искате да изтриете събития за
-Are you sure you want to delete this entry?: Наистина ли искате да изтриете този запис?
-Are you sure you want to delete this layer?: Наистина ли искате да изтриете този слой?
-Are you sure you want to delete this report?: Наистина ли искате да изтриете този отчет?
-Are you sure you want to delete this user?: Наистина ли искате да изтриете този потребител?
-Are you sure you want to delete this?: Наистина ли искате да изтриете това?
-Assistant mode: Асистентски режим
-Assistant: Асистент
-Assistants: Асистенти
-Attachment: Прикачен файл
-Attachments: Прикачени файлове
-Aug: Август
-August: Август
-Auto-refresh calendars: Автоматично опресняване на календари
-Auto-refresh time: Време за автоматично опресняване
-Automatic installation not supported: Автоматичната инсталация не е приложена изцяло за вашия тип база данни. Ще трябва да създадете ръчно необходимите таблици, като използвате предоставения SQL. Моля, щракнете върху <b> Показване на SQL </b>, за да продължите. Изрежете и поставете в прозореца за заявка към вашата база данни.
-Availability: Наличност
-Available: На разположение
-Back to My Calendar: Назад към моя календар
-Back: обратно
-Background Image options: Опции за фоново изображение
-Background Image: Фоново изображение
-Background Repeat: Повторение на фона
-Basic Colors: Основни цветове
-Basque: Баски
-Because you have email disabled, you should remove this file.: Тъй като сте забранили имейла, трябва да премахнете този файл.
-Before: Преди
-Bottom: Отдолу
-Brief Description Length: Кратко описание Дължина
-Brief Description: Кратко описание
-Browser Language Not Found: Езикът на браузъра не е намерен
-Browser-defined: Дефиниран от браузъра
-Bulgarian: български
-Busy: Зает
-CAPTCHA Warning: <b> Предупреждение: </b> Не може да се използва CAPTCHA без разширението GD на PHP! <br>
-Cache cleared from previous SQL!: Кешът е изчистен от предишния SQL!
-Cache error Could not XXX file YYY.: Грешка в кеша: Не можах да XXX файл „YYY“.
-Calendar ID cannot be blank.: Идентификаторът на календара не може да бъде празен.
-Calendar ID: Идент. № на календара
-Calendar: Календар
-Can Email: Може по имейл
-Can Invite: Може да покани
-Can See Time Only: Може да вижда само време
-Cancel: Отказ
-Cannot read timezone file XXX.: Не може да се прочете файлът с часовата зона: XXX.
-Catalan: Каталунски
-Categories enabled: Категориите са активирани
-Categories: Категории
-Category Icon Upload enabled: Икона на категория Качването е активирано
-Category Icon: Икона на категорията
-Category Management: Управление на категории
-Category Name: Име на категория:
-Category: Категория
-Challenge/Response: Предизвикателство / отговор
-Change Password: Промяна на паролата
-Change the date and time of this entry?: Да промените датата и часа на този запис?
-Changes successfully saved: Промените бяха успешно запазени
-Check All: Провери всичко
-Check box to delete ALL events for a user: Поставете отметка в квадратчето, за да изтриете <b> ВСИЧКИ </b> събития за потребител
-Check for event conflicts: Проверете за конфликти на събития
-Check to see if PHP XXX or greater is installed.: Проверете дали PHP XXX или по-нова е инсталирана.
-Checking for events for XXX from date YYY to date ZZZ.: Проверка за събития за XXX от дата YYY до дата ZZZ.
-Chinese (Simplified/GB2312): Китайски (опростен / GB2312)
-Chinese (Traditional/Big5): Китайски (традиционен / голям5)
-Clear All: Изчисти всичко
-Click here to manage reports for the Public Access calendar.: Щракнете тук, за да управлявате отчетите за календара на публичния достъп.
-Click to Select: Щракнете, за да изберете
-Click to add entry: Щракнете, за да добавите запис
-Click to modify layers settings for XXX: Щракнете тук, за да промените настройките на слоевете за XXX календара.
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Щракването върху връзката Редактиране на слоеве в администраторската секция в долната част на страницата ще ви позволи да добавяте / редактирате / изтривате слоеве.
-Color format should be RRGGBB.: Цветният формат трябва да бъде #RRGGBB.
-Color options: Цветни опции
-Color: Цвят
-Colors: Цветове
-Comment: Коментирайте
-Comments XXX: Коментари: XXX
-Comments: Коментари
-Common Trailer: Често ремарке
-Completed: Завършен
-Confidential: Поверително
-Configuration Wizard Password: Парола на съветника за конфигуриране
-Conflict checking months: Месеци за проверка на конфликти
-Conflicting events: Конфликтни събития
-Connection Persistence: Устойчивост на връзката
-Connection Successful...: <b> Връзката е успешна </b> Моля, отидете на следващата страница, за да продължите инсталацията.
-Continue: продължи
-Control Panel: Контролен панел
-Conversion Successful: <b> Преобразуването е успешно </b>
-Convert Data to GMT: Преобразуване на данни в GMT
-Copy entry: Копиране на записа
-Correct your entries and try again.: Коригирайте записите си и опитайте отново.
-Correct your entries or click the Create New...: Коригирайте записите си или щракнете върху бутона <b> Създаване на нов </b>, за да продължите инсталацията.
-Could not find XXX defined in...: Не можах да намеря „XXX“, дефиниран във вашия файл „settings.php“.
-Could not find XXX in DOM.: Не можах да намеря XXX в DOM.
-Could not find XXX.: Не можах да намеря XXX.
-Could not find settings.php file...: Не можах да намеря файла "settings.php". <br> Моля, копирайте "settings.php.orig" в "settings.php" и редактирайте за вашия сайт.
-Count: Броя
-Create Default Admin Account: Създайте администраторски акаунт по подразбиране
-Create Layer: Създаване на слой
-Create New: Създай нов
-Create Settings File Password: Създайте парола за файл с настройки
-Create a new layer to view this calendar.: Създайте нов слой, за да видите този календар.
-Created by: Създадено от
-Credits: Кредити
-Croatian: Хърватски
-Current Color: Текущ цвят
-Current Icons on Server: Текущи икони на сървъра
-Current User: Текущия потребител
-Currently in English only.: В момента само на английски.
-Custom Colors: Персонализирани цветове
-Custom Scripts: Персонализирани скриптове
-Custom header: Персонализиран хедър
-Custom script/stylesheet: Персонализиран скрипт / таблица със стилове
-Custom trailer: Ремарке по поръчка
-Czech: Чешки
-DEFAULT CONFIGURATION: КОНФИГУРАЦИЯ ПО СТАНДАРТ
-Daily: Ежедневно
-Danish: Датски
-Database Cache Directory: Директория за кеш на база данни
-Database Name: Име на базата данни
-Database Settings: Настройки на базата данни
-Database Status: Състояние на базата данни
-Database Type: Тип база данни
-Database cache directory location: Местоположение на директорията за кеш на база данни
-Database error XXX.: Грешка в базата данни: XXX.
-Database error: грешка в базата данни
-Date Completed: Дата на завършване
-Date Selectors position: Позиция на селектори за дата
-Date XXX: Дата: XXX
-Date and Time: Дата и час
-Date format: Формат на датата
-Date range: Период от време
-Date: Дата
-Day View: Дневен изглед
-Day before yesterday: Завчера
-Day by Time: Ден по време
-Day template: Шаблон за ден
-Day: Ден
-Days: Дни
-Db error Could not find event id XXX.: Db грешка: Не можах да намеря идентификатор на събитие XXX.
-Dec: Дек
-December: Декември
-Declined: Отказано
-Default Category: Категория по подразбиране
-Default Client Timezone Selection: Избор на клиентска часова зона по подразбиране
-Default admin user password: По подразбиране администраторска потребителска парола
-Default sender address: Адрес на подателя по подразбиране
-Default user settings: Потребителски настройки по подразбиране
-Delete Entries: Изтриване на записи
-Delete Events: Изтриване на събития
-Delete Selected: Изтрий избраното
-Delete User: Изтриване на потребител
-Delete all events before: Изтрийте всички събития преди
-Delete entry from calendar of XXX: Изтриване на записа от календара на XXX
-Delete entry only for this date: Изтриване на записа само за тази дата
-Delete entry: Изтриване на записа
-Delete layer: Изтриване на слоя
-Delete repeating event for all dates: Изтриване на повтарящо се събитие за всички дати
-Delete: Изтрий
-Deleted: Изтрито
-Deleting events for: Изтриване на събития за
-Deleting users not supported.: Изтриването на потребители не се поддържа.
-Description XXX: Описание: "XXX".
-Description: Описание
-Detailed PHP Info: Подробна информация за PHP
-Details: Подробности
-Development: Развитие
-Disable Access field: Деактивиране на полето за достъп
-Disable Cross-Day Events: Деактивирайте кръстосани събития
-Disable Layers: Деактивирайте слоевете
-Disable Location field: Деактивиране на полето за местоположение
-Disable Participants field: Деактивиране на полето за участници
-Disable Pop-Ups: Деактивирайте изскачащите прозорци
-Disable Priority field: Деактивиране на полето за приоритет
-Disable Repeating field: Деактивиране на повтарящото се поле
-Disable URL field: Деактивиране на полето за URL адрес
-Disabled for demo: Деактивиран за демонстрация
-Disabled: хора с увреждания
-Disabling: Деактивиране
-Display 00 minutes always: Показвайте винаги 00 минути
-Display Common Use Date/Times as GMT: Показвайте датата / часовете за често използване като GMT
-Display Errors: Показване на грешки
-Display Lunar Phases in month view: Показва лунните фази в месечен изглед
-Display Participants in popup: Показване на участниците в изскачащия прозорец
-Display Required SQL: Показване на задължителния SQL
-Display Site Extras in popup: Показване на екстри на сайта в изскачащия прозорец
-Display all days in month view: Показване на всички дни в месечния изглед
-Display category icons: Показване на икони на категории
-Display days with events in bold in month and year views: Показвайте дни със събития с получер шрифт в месечни и годишни изгледи
-Display days with events in bold in year view: Показване на дни със събития с удебелен шрифт в изглед за година
-Display description in printer day view: Показва описание в дневен изглед на принтера
-Display end times on calendars: Показване на крайните часове на календари
-Display event popups: Показване на изскачащи прозорци за събития
-Display if created by Assistant: Показва се, ако е създаден от Асистент
-Display layers: Показване на слоеве
-Display links to events: Показване на връзки към събития
-Display long day names: Показване на имена на дълги дни
-Display small months: Показване на малки месеци
-Display small task list: Показване на малък списък със задачи
-Display tasks in Calendars: Показване на задачи в календари
-Display unapproved: Показването е неодобрено
-Display week number: Показване на номера на седмицата
-Display weekends in week view: Показване на уикендите в седмичен изглед
-Display weekends: Показване на почивните дни
-Do you want to add this entry to your calendar?: Искате ли да добавите този запис към вашия календар?
-Document background: Фон на документа
-Document text: Текст на документа
-Document title: Заглавие на документ
-Documentation: Документация
-Double-click on empty cell to add new entry: Щракнете двукратно върху празна клетка, за да добавите нов запис.
-Due Date: Краен срок
-Due Time: Краен срок
-Due: В следствие
-Duplicate Name XXX: Дублирано име: „XXX“.
-Duplicates: Дубликати
-Duration: Продължителност
-Dutch: Холандски
-E-mail address: Имейл адрес
-ENTRY CATEGORIES: КАТЕГОРИИ ЗА ВХОД
-Edit Custom Header: Редактиране на персонализирана заглавка
-Edit Custom Script/Stylesheet: Редактиране на персонализиран скрипт / таблица със стилове
-Edit Custom Trailer: Редактиране на потребителски трейлър
-Edit Entry: Редактиране на запис
-Edit Event: Редактиране на събитие
-Edit Group: Редактиране на група
-Edit Layer: Редактиране на слой
-Edit Remote Calendar: Редактиране на отдалечен календар
-Edit Report: Редактиране на отчета
-Edit User: Редактиране на потребител
-Edit View: Редактиране на изгледа
-Edit entry for this date: Редактирайте записа за тази дата
-Edit entry: Редактиране на записа
-Edit layer: Редактиране на слой
-Edit repeating entry for all dates: Редактирайте повтарящия се запис за всички дати
-Edit: редактиране
-Elven: Елфически
-Email Mailer: Изпратете имейл
-Email address XXX already exists.: Имейл адрес „XXX“ вече съществува.
-Email address already exists.: Имейл адресът вече съществува.
-Email address cannot be blank.: Имейл адресът не може да бъде празен.
-Email all participants: Изпратете имейл на всички участници
-Email enabled: Имейлът е активиран
-Email format preference: Предпочитание за имейл формат
-Email me event notification: Изпратете ми известие за събитие
-Email: електронна поща
-Emails Will Not Be Sent: Имейлите няма да бъдат изпращани
-Enable FreeBusy publishing: Активирайте публикуването на FreeBusy
-Enable RSS feed: Активиране на RSS емисията
-Enable gradient images for background colors: Активирайте градиентни изображения за цветовете на фона
-Enable layers: Активиране на слоевете
-Enabled: Активирано
-Enabling: Активиране
-End Time: Крайно време
-End date: Крайна дата
-End/Due: Край / Срок
-Ending: Край
-English-US: Английско-американски
-English: Английски
-Enter % for all entries: Въведете% за всички записи
-Enter Characters Seen in Graphic: Въведете символи, видени в графично
-Enter the correct letters and numbers...: Въведете правилните букви и цифри от изображението в текстовото поле. Този малък тест служи като ограничение на достъпа срещу злонамерени ботове. Просто презаредете страницата, ако тази графика е твърде трудна за четене
-Entries created in the Palm Desktop...: Записи, създадени в работния плот на Palm, които не са HotSync'd
-Entries older than the current date: Записи по-стари от текущата дата
-Entry interval: Входен интервал
-Environment: Заобикаляща среда
-Error Converting Timezone: Грешка при преобразуването на часовата зона
-Error Could not find event id XXX in database.: Грешка: Не можах да намеря идентификатор на събитие XXX в базата данни.
-Error Email reminders disabled for user XXX.: Грешка: Напомнянията по имейл са деактивирани за потребител „XXX“.
-Error TIME_SLOTS undefined!: Грешка: TIME_SLOTS недефинирано!
-Error Type not set for activity log!: Грешка: Типът не е зададен за дневник на активността!
-Error Unable to write to file XXX.: Грешка: Не може да се запише във файл XXX.
-Error XXX: Грешка: „XXX“.
-Error adding event XXX.: Грешка при добавяне на събитие: XXX.
-Error approving event XXX.: Грешка при одобряването на събитие: XXX.
-Error connecting to database: Грешка при свързване с база данни
-Error deleting event XXX.: Грешка при изтриване на събитие: XXX.
-Error deleting palm events from webcalendar.: Грешка при изтриването на събития за палми от уебкалендар.
-Error executing query.: Грешка при изпълнение на заявката.
-Error opening cache dir XXX.: Грешка при отваряне на директорията на кеша „XXX“.
-Error rejecting event XXX.: Грешка при отхвърляне на събитие: XXX.
-Error updating table XXX: Грешка при актуализирането на таблица „XXX“: YYY.
-Error you must specify a Single-User Login: Грешка: Трябва да посочите \ nВход за единичен потребител.
-Error: Грешка
-Errors: Грешки
-Estonian: Естонски
-Event Imported: Събитието е импортирано
-Event XXX is already on your calendar.: Събитие XXX вече е във вашия календар.
-Event approved: Събитието е одобрено
-Event created: Събитието е създадено
-Event deleted: Събитието е изтрито
-Event id=XXX YYY already sent.: Идент. № на събитието = XXX „YYY“ вече е изпратено.
-Event id=XXX YYY at ZZZ on AAA.: Идент. № = XXX „YYY“ на ZZZ на AAA.
-Event popup background: Изскачащ фон на събитие
-Event popup text: Изскачащ текст на събитие
-Event rejected by participant: Събитието е отхвърлено от участника
-Event rejected: Събитието е отхвърлено
-Event reminders: Напомняния за събития
-Event template: Шаблон за събитие
-Event that I create: Събитие, което създавам
-Event time is XXX.: Времето за събитие е: XXX.
-Event updated: Събитието е актуализирано
-Event: Събитие
-Events added to my calendar: Събития, добавени към моя календар
-Events from prior import marked as deleted: Събитията от предишния импорт са означени като изтрити
-Events removed from my calendar: Събития са премахнати от моя календар
-Events successfully imported: Събитията са импортирани успешно
-Events updated on my calendar: Събития, актуализирани в моя календар
-Events: Събития
-Every: Всеки
-Exclude private records: Изключете частните записи
-Exclusion Dates: Дати на изключване
-Exclusions: Изключения
-Exit: Изход
-Expert Mode: Експертен режим
-Export all dates: Експортирайте всички дати
-Export format: Формат за експортиране
-Export this entry to: Експортирайте този запис в
-Export: Износ
-External Participants: Външни участници
-External User: Външен потребител
-External users can receive email notifications: Външните потребители могат да получават известия по имейл
-External users can receive email reminders: Външните потребители могат да получават напомняния по имейл
-FAQ: ЧЗВ
-FR: FR
-Failure Reason: <b> Причина за неуспех: </b>
-Fatal Error: Фатална грешка
-Feb: Февр
-February: Февруари
-File Uploads: Качване на файлове
-File exists XXX: Файлът съществува: „XXX“
-File is not a gif image.: Файлът не е GIF изображение.
-File location XXX: Местоположение на файла: „XXX“
-File permissions XXX: Разрешения за файлове: XXX
-File size exceeds maximum.: Размерът на файла надвишава максималния.
-File type does not match Import Format: Типът файл не съответства на формат за импортиране
-Filter by Date: Филтриране по дата
-Find Name: Намери име
-Finished: Готово
-Finnish: Финландски
-First Name: Първо име
-First Quarter Moon: Луна от първа четвърт
-First and last names cannot both be blank.: Името и фамилията не могат да бъдат празни.
-Firstname, Lastname: Име, фамилия
-Fonts: Шрифтове
-For More Information...: За повече информация...
-For questions about WebCalendar security see the forums: За въпроси относно всеки проблем със сигурността на WebCalendar, моля, използвайте форумите на WebCalendar, хоствани на GitHub; <br> XXX> WebCalendar
-Forever: Завинаги
-Found XXX events in time range.: Намерени са XXX събития във времеви диапазон.
-French: Френски
-Frequency: Честота
-Frequently Asked Questions: често задавани въпроси
-Fri: Петък
-Friday: Петък
-From: От
-Full Description: Пълно описание
-Full Moon: Пълнолуние
-Full Path (no backslashes): Пълен път (без наклонени черти)
-GD: GD (необходим за фонове на градиентни изображения)
-Galician: Галисийски
-Generate printer-friendly version: Генерирайте версия, удобна за печат
-German: Немски
-Getting Help: Получаване на помощ
-Getting unapproved for user XXX.: Получаване на неодобрение за потребител „XXX“.
-Global Categories cannot be changed.: Глобалните категории не могат да се променят.
-Global Category: Глобална категория
-Global: Глобален
-Go to: Отидете на
-Go: Отивам
-Grant This User Access to My Calendar: Предоставете на този потребител достъп до моя календар
-Greek: Гръцки
-Group name: Име на групата
-Groups enabled: Групите са активирани
-Groups: Групи
-HTML: HTML
-HTTP-based authentication was detected...: Установено е HTTP-базирано удостоверяване. Удостоверяването на потребителя се обработва от вашия уеб сървър. Трябва да изберете „Уеб сървър“ от списъка с опции за „Удостоверяване на потребителя“ по-долу.
-HTTP-based authentication was not detected...: HTTP-базирано удостоверяване не беше открито. Ще трябва да преконфигурирате вашия уеб сървър, ако искате да изберете „Уеб сървър“ от избора „Удостоверяване на потребителя“ по-долу.
-Hebrew: Иврит
-Hello, XXX.: Здравей, XXX.
-Help Contents: Помощ Съдържание
-Help Index: Индекс за помощ
-Help: Помогне
-Hide activity log: Скриване на дневника на активността
-Hide: Крия
-High: Високо
-Holo (Taiwanese): Холо (тайвански)
-Home URL: Начален URL адрес
-Home: У дома
-Hungarian: Унгарски
-I want to approve events: Искам да одобря събитията
-Icelandic: Исландски
-If checked, events that are duplicates of your events will be shown.: Ако е отметнато, ще се показват събития, които са дубликати на вашите събития.
-If disabled, this user cannot see you in the participants list.: Ако е деактивиран, този потребител не може да ви види в списъка с участници.
-If disabled, this user cannot send you emails.: Ако е деактивиран, този потребител не може да ви изпраща имейли.
-If enabled, this user cannot view the details of any of your entries.: Ако е активиран, този потребител не може да преглежда подробностите за нито един от вашите записи.
-If you received this email in error: Ако сте получили този имейл по погрешка и не сте се регистрирали за акаунт в WebCalendar, можете да пренебрегнете това известие или да отговорите с кратка бележка
-Illegal characters in login XXX.: Недопустими знаци при влизане <tt> XXX </tt>.
-Import Results: Импортиране на резултати
-Import format: Формат за импортиране
-Import: Внос
-Importing events for: Импортиране на събития за
-In this section we will perform...: В този раздел ще извършим промените, за да доведем вашата база данни до необходимото ниво. Ако използвате напълно поддържана база данни, тази стъпка ще бъде извършена автоматично за вас. Ако не, необходимият SQL може да се покаже и трябва да можете да го изрежете и поставите в прозореца на заявката на вашия сървър на база данни.
-Include Path: Включете Път
-Include add event link in views: Включете добавяне на връзка към събитие в изгледите
-Include all layers: Включете всички слоеве
-Include deleted entries: Включете изтрити записи
-Include empty dates: Включете празни дати
-Include iCalendar attachments: Включете iCalendar прикачени файлове
-Include link in menu: Включете връзка в менюто
-Include previous/next links: Включете предишни / следващи връзки
-Include standard header/trailer: Включете стандартен хедър / ремарке
-Include: Включете
-Inclusion Dates: Дати на включване
-Inclusions: Включвания
-Incomplete settings.php file...: Непълен файл settings.php ...
-Index: Индекс
-Indonesian: Индонезийски
-Install Database: Инсталирайте база данни
-Interval: Интервал
-Invalid Color: Невалиден цвят
-Invalid Date: Невалидна дата
-Invalid Event Date: Невалидна дата на събитието
-Invalid Login: Невалидно вписване
-Invalid blob id: Невалиден идентификатор на петна
-Invalid characters in login: Невалидни знаци при влизане.
-Invalid color for document background.: Невалиден цвят за фона на документа.
-Invalid color for document title.: Невалиден цвят на заглавието на документа.
-Invalid color for event popup background.: Невалиден цвят за изскачащ фон на събитие.
-Invalid color for event popup text.: Невалиден цвят за изскачащ текст на събитие.
-Invalid color for table cell background for today.: Невалиден цвят за фона на клетката на таблицата за днес.
-Invalid color for table cell background.: Невалиден цвят за фона на клетката на таблицата.
-Invalid color for table grid.: Невалиден цвят за мрежата на таблицата.
-Invalid color for table header background.: Невалиден цвят за фона на заглавката на таблицата.
-Invalid color for table header text.: Невалиден цвят за заглавния текст на таблицата.
-Invalid color for table text background.: Невалиден цвят за фона на текста на таблицата.
-Invalid color: Невалиден цвят
-Invalid data format for: Невалиден формат на данни за
-Invalid entry id XXX.: Невалиден идентификационен номер на записа: „XXX“.
-Invalid entry id.: Невалиден идентификационен номер на запис.
-Invalid function id: Невалиден идентификатор на функция
-Invalid login: Невалидно вписване
-Invalid report id XXX.: Невалиден идент. № на отчета: „XXX“.
-Invalid report id.: Невалиден идент. № на отчета.
-Invalid setting name XXX.: Невалидно име на настройка „XXX“.
-Invalid user login: Невалиден потребителски вход
-Invalid work hours.: Невалидно работно време.
-Is public calendar: Е публичен календар
-It appears that you have NOT converted...: Изглежда, че НЕ сте преобразували съществуващите си данни от WebCalendar в GMT. Ако имате, можете да игнорирате това известие и да не продължите с преобразуването. Ако това е нова инсталация, можете също да игнорирате това известие.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Той трябва да се намира във вашата директория на Palm в <tt> datebook / datebook.dat </tt> в поддиректория, наречена от вашето потребителско име.
-Italian: Италиански
-JSON error - "XXX".: JSON грешка - „XXX“.
-Jan: Януари
-January: Януари
-Japanese: Японски
-Journal approved: Вестникът е одобрен
-Journal created: Списанието е създадено
-Journal deleted: Дневникът е изтрит
-Journal rejected: Вестникът е отхвърлен
-Journal updated: Вестникът е актуализиран
-Journals: Списания
-Jul: Юли
-July: Юли
-Jun: Юни
-June: юни
-Keywords: Ключови думи
-Korean: Корейски
-LANGUAGE DEFINED: ОПРЕДЕЛЕН ЕЗИК
-Language: Език
-Last Name: Фамилия
-Last Quarter Moon: Луна от последната четвърт
-Last month: Миналия месец
-Last two weeks: Последните две седмици
-Last week and this week: Миналата седмица и тази седмица
-Last week: Миналата седмица
-Last year: Миналата година
-Lastname, Firstname: Фамилия име
-Launch WebCalendar: Стартирайте WebCalendar
-Layer: Слой
-Layers are currently disabled.: Понастоящем слоевете са <b> деактивирани </b>.
-Layers are currently enabled.: Понастоящем слоевете са <b> активирани </b>.
-Layers are useful for displaying...: Слоевете са полезни за показване на събитията на други потребители във вашия собствен календар. Можете да посочите потребителя и цвета, в който ще се показват събитията.
-Layers: Слоеве
-Limit number of timed events per day: Ограничете броя на събитията по време на ден
-Lithuanian: Литовски
-Location: Местоположение
-Login: Влизам
-Logout: Излез от профила си
-Low: Ниска
-Make New Category: Направете нова категория
-Manage Calendar of: Управление на Календар на
-Manage Reports: Управление на отчетите
-Manage Views: Управление на изгледите
-Manage calendar of: Управление на календара на
-Manual: Ръчно
-Manually entering color values: Ръчно въвеждане на цветови стойности
-Mar: Март
-March: Март
-Maximum timed events per day: Максимално времеви събития на ден
-May: Може
-May_: Може
-Medium: Среден
-Menu theme: Тема на менюто
-Mins Before XXX.: Минути преди: XXX.
-Miscellaneous: Разни
-Modified since: Променено от
-Modify Non User Calendar Preferences: Променете предпочитанията за непотребителски календар
-Mon: Понеделник
-Monday: Понеделник
-Month (Timebar): Месец (Timebar)
-Month (on same calendar): Месец (в същия календар)
-Month (side by side): Месец (един до друг)
-Month Days: Месечни дни
-Month View: Месечен изглед
-Month before last: Председмичен месец
-Month: Месец
-Monthly (by date): Месечно (по дата)
-Monthly (by day): Месечно (по дни)
-Monthly (by position): Месечно (по позиция)
-Monthly: Месечно
-Months: Месеци
-My Calendar: Моят календар
-My Profile: Моят профил
-My Reports: Моите отчети
-My Views: Моите възгледи
-My event text: Моят текст на събитието
-NO PREVIEW AVAILABLE: НЯМА НАЛИЧНА ВИЗУАЛИЗАЦИЯ
-NONUSER_PREFIX not set: NONUSER_PREFIX не е зададен в config.php.
-Needs-Action: Нужди-действие
-New Entry: Нов вход
-New Moon: Новолуние
-New Password: нова парола
-New Search: Ново търсене
-New user (self registration): Нов потребител (саморегистриране)
-New user via email (self registration): Нов потребител по имейл (саморегистриране)
-New user via email.: Нов потребител по имейл.
-New user via self-registration.: Нов потребител чрез саморегистриране.
-Next 14 days: Следващите 14 дни
-Next 180 days: Следващите 180 дни
-Next 30 days: Следващите 30 дни
-Next 365 days: Следващите 365 дни
-Next 60 days: Следващите 60 дни
-Next 90 days: Следващите 90 дни
-Next month: Следващият месец
-Next week and week after: Следващата седмица и седмица след това
-Next week: Следващата седмица
-Next year: Следващата година
-Next: Следващия
-No Remote Calendars found: Не са намерени отдалечени календари
-No data returned from: Няма данни, върнати от
-No database actions are required.: Не се изискват действия с база данни.
-No event id specified.: Не е посочен идентификатор на събитие.
-No file: Няма файл
-No login required for HTTP authentication.: Не се изисква влизане за HTTP удостоверяване.
-No login required for single-user mode.: Не се изисква влизане в режим за един потребител.
-No matches found: Няма намерени съвпадения
-No participants found for event id XXX.: Не са намерени участници за идентификатор на събитие: XXX.
-No such nonuser calendar XXX.: Няма такъв непотребен календар: „XXX“.
-No such nonuser calendar: Няма такъв непотребен календар
-No such report id XXX.: Няма такъв идентификационен номер на отчета: „XXX“.
-No unapproved entries for XXX.: Няма неодобрени записи за: „XXX“.
-No user specified.: Не е посочен потребител.
-No users for this view.: Няма потребители за този изглед.
-No: Не
-NonUser Calendars: Непотребителски календари
-None (Single-User): Няма (за един потребител)
-None: Нито един
-Nonuser enabled: Непотребителските календари са активирани
-Nonuser list: Показване в списъка на участниците на
-Nonuser: Непотребителски календари
-Norwegian: Норвежки
-Not authorized (not admin).: Не е упълномощен (не е администратор).
-Not authorized: Неоторизиран
-Not available: Не е наличен
-Not yet registered? Register here!: Все още не сте регистрирани? Регистрирайте се тук!
-Notification sent: Известието е изпратено
-Notification: уведомление
-Nov: Ноем
-November: Ноември
-Number of site_extras XXX.: Брой site_extras: XXX.
-Number of times: Брой пъти
-ODBC Underlying Database: <b> Основна база данни на ODBC: </b>
-OFF: ИЗКЛЮЧЕНО
-OK: Добре
-ON: НА
-Oct: Октомври
-October: Октомври
-Old Color: Стар цвят
-Other: Други
-Override event name/description for public access: Заменете името / описанието на събитието за обществен достъп
-Overwrite Prior Import: Презаписване на предишния импорт
-PHP Settings XXX: Настройки на PHP: "XXX"
-PHP Settings: Настройки на PHP
-PHP Version Check: Проверка на версията на PHP
-PHP version: PHP версия
-Page may need to be reloaded for new Theme to take effect: Може да се наложи презареждане на страницата, за да влезе в сила новата Тема
-Page template: Шаблон за страница
-Page: Страница
-Participant: Участник
-Participants: Участници
-Password (again): Паролата отново):
-Password Accepted: Парола приета
-Password Incorrect: Неправилна парола
-Password Updated: Паролата е актуализирана
-Password has been set: Паролата е зададена.
-Password: Парола
-Passwords do not match!: Паролите не съвпадат!
-Past: Минало
-Pecentage Complete: Процентът завършен
-Percent Complete: Процент завършен
-Percentage Complete: Процент завършен
-Perl script required: Вашата предишна версия на WebCalendar изисква стартиране на PERL скрипт за конвертиране на вашите данни. Моля, стартирайте /tools/upgrade_to_0.9.7.pl, след това се върнете на тази страница, за да продължите.
-Plain Text: Обикновен текст
-Please Test Settings: Моля, тествайте настройките
-Please add a participant: Моля, добавете участник
-Please change includes dir permission: Моля, променете разрешенията за файлове в директорията "включва", за да разрешите писането от други потребители.
-Please change the file permissions of this file.: Моля, променете разрешенията за файла на този файл.
-Please include all the information below when reporting a bug.: Моля, включете цялата информация по-долу, когато съобщавате за грешка.
-Please look on XXX to accept or reject this appointment.: Моля, погледнете на XXX, за да приемете или отхвърлите тази среща.
-Please look on XXX to view this appointment.: Моля, погледнете на XXX, за да видите тази среща.
-Please visit XXX to log in and start using your account!: Моля, посетете "XXX", за да влезете и да започнете да използвате акаунта си!
-Polish: Полски
-Popups: Изскачащи прозорци
-Portuguese/Brazil: Португалски / Бразилия
-Portuguese: Португалски
-Position: Позиция
-Preferences: Предпочитания
-Preferred view: Предпочитан изглед
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Натиснете връзката Деактивиране на слоевете в администраторската секция в долната част на страницата, за да изключите слоевете.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Натиснете връзката Активиране на слоевете в администраторската секция в долната част на страницата, за да включите слоевете.
-Preview delete: Визуализация изтриване
-Preview: Визуализация
-Previous: Предишен
-Printer Friendly: Подходящ за печат
-Priority: Приоритет
-Private: Частен
-Production: Производство
-Program Error No XXX specified!: Грешка в програмата: Не е посочено XXX!
-Public Access calendar: Календар с публичен достъп
-Public Access: Публичен достъп
-Public Calendar: Обществен календар
-Public Preferences: Обществени предпочитания
-Public access can add events: Публичният достъп може да добавя събития
-Public access can view other users: Публичният достъп може да вижда други потребители
-Public access can view participants: Публичният достъп може да вижда участниците
-Public access is default participant: Публичният достъп е участник по подразбиране
-Public access new events require approval: Публичният достъп до нови събития изисква одобрение
-Public access visible by default: Публичният достъп се вижда по подразбиране
-Public: Публично
-Publishing Disabled (Admin): Публикуването е деактивирано (администратор)
-Publishing Disabled (User): Публикуването е деактивирано (потребител)
-Purge deleted only: Изчистването е изтрито само
-Purging events for: Пречистване на събития за
-Range: Обхват
-Read-Only: Само за четене
-Records deleted from XXX: Записите са изтрити от „XXX“.
-Refresh: Обнови
-Registration: Регистрация
-Reject Selected entries?: Да се ​​отхвърлят ли избраните записи?
-Reject Selected: Отхвърляне на избраното
-Reject entry: Отхвърляне на записа
-Reject this entry?: Да отхвърлите този запис?
-Reject: Отхвърлете
-Rejected by XXX.: Отхвърлено от XXX.
-Rejected: Отхвърлено
-Reload: Презаредете
-Remember last login: Запомнете последното влизане
-Remind time is XXX.: Времето за напомняне е: XXX.
-Reminder sent: Напомнянето е изпратено
-Reminder set for event.: Напомнянето е настроено за събитие.
-Reminder: Напомняне
-Reminders for user XXX, login YYY.: Напомняния за потребител „XXX“, вход „YYY“.
-Reminders: Напомняния
-Remote Calendars not enabled: Отдалечените календари не са активирани
-Remote Calendars: Отдалечени календари
-Remove Icon: Премахване на икона:
-Remove: Премахване
-Removed: Премахнато
-Repeat Day: Повторете деня
-Repeat End Date: Повторете крайната дата
-Repeat Type: Тип повторение
-Repeat: Повторете
-Repeated items are imported separately. Prior imports are not overwritten.: Повторените артикули се внасят отделно. Предишният внос не се заменя.
-Report Bug: Подаване на сигнал за грешка
-Report name: Име на доклада
-Reports enabled: Отчетите са активирани
-Reports: Доклади
-Require CAPTCHA validation for public access new events: Изискване на CAPTCHA валидиране за публичен достъп до нови събития
-Require event approvals: Изисквайте одобрения за събития
-Required to View Remote Calendar: Изисква се за преглед на отдалечен календар
-Reset: Нулиране
-Resources: Ресурси
-Restrict self-registration to blacklist: Ограничете саморегистрирането до черен списък
-Restrictions: Ограничения
-Return to Login screen: Върнете се на екрана за вход
-Return to My Preferences: Върнете се в Моите предпочитания
-Return to previous page after processing SQL.: След ръчна обработка на този SQL, ще трябва да се върнете към предишната страница и да тествате отново вашата база данни, така че скриптът да може да открие промените.
-Romanian: Румънски
-Russian: Руски
-SESSION COUNTER: БРОЙКА ЗА СЕСИЯ
-SMTP Authentication: SMTP удостоверяване
-SMTP Host name(s): Имена на SMTP хост
-SMTP Password: SMTP парола
-SMTP Port Number: Номер на SMTP порта
-SMTP Username: SMTP потребителско име
-Safe Mode Allowed Vars: Разрешени безопасни режими (TZ се изисква само ако безопасен режим е включен)
-Safe Mode: Безопасен режим
-Sat: Съб
-Saturday: Събота
-Save Preferences: Запазване на предпочитанията
-Save Settings: Запазване на настройките
-Save login via cookies so I dont have to login next time.: Запазете вход чрез бисквитки, за да не се налага да влизам следващия път.
-Save: Запазете
-Schedule an appointment for XXX.: Насрочете среща за XXX: YYYГ.
-Scheduling Conflict: Конфликт при планиране
-Search Results: Резултати от търсенето
-Search for existing icons: Търсене на съществуващи икони
-Search: Търсене
-Security Audit: Одит на сигурността
-Security Issue: Проблем със сигурността
-Security violation!: Нарушение на сигурността!
-Select All: Избери всичко
-Select None: Изберете Няма
-Select: Изберете
-Selected: Избрано
-Send Reminder: Изпратете напомняне
-Sep: Септември
-September: Септември
-Serbian: Сръбски
-Server Timezone Selection: Избор на часова зона на сървъра
-Server URL is required.: URL адресът на сървъра е задължителен.
-Server URL must end with /.: URL адресът на сървъра трябва да завършва с наклонена черта (/).
-Server URL: URL адрес на сървъра
-Server: Сървър
-Session Check: Проверка на сесията
-Set Category: Задаване на категория
-Set Password: Задайте парола
-Set category: Задайте категория
-Settings: Настройки
-Show activity log: Показване на дневника на активността
-Show: Покажи
-Single-User: Еднопотребителски
-Site Extras: Екстри на сайта
-Site customization: Персонализиране на сайта
-Slovak: Словашки
-Slovenian: Словенски
-Small Task Date: Дата на малката задача
-Source: Източник
-Spanish: Испански
-Specifies the user that you would like to see displayed in your calendar.: Посочва потребителя, който бихте искали да се показва във вашия календар.
-Specify timed event length by: Посочете продължителност на събитието по време от
-Start Date: Начална дата
-Start Time: Начален час
-Start date: Начална дата
-Start: Започнете
-Status: Състояние
-Subject XXX: Тема: „XXX“.
-Subject: Предмет
-Submit: Изпращане
-Subscribe/Publish: Абонирайте се / Публикувайте
-Subtract N hours from: Извадете N часа от
-Successful Login: Успешно влизане
-Sun: Слънце
-Sunday: Неделя
-Supported databases for your PHP installation: Поддържани бази данни за вашата PHP инсталация
-Swedish: Шведски
-System Administrators Guide: Ръководство на системния администратор
-System Log: Системен дневник
-System Settings XXX: Системни настройки: "XXX"
-System Settings: Системни настройки
-System options: Системни опции
-TASKS: ЗАДАЧИ
-Table cell background for current day: Фон на клетката на таблицата за текущия ден
-Table cell background for days with events: Фон на клетката на таблицата за дни със събития
-Table cell background for other month: Фон на таблицата за другия месец
-Table cell background for weekends: Фон на масата за уикендите
-Table cell background: Фон на клетката на таблицата
-Table grid color: Цвят на мрежата на масата
-Table header background: Фон на заглавката на таблицата
-Table header text: Текст на заглавката на таблицата
-Task Due Date: Краен срок на задачата
-Task Name: Име на задачата
-Task approved: Задачата е одобрена
-Task created: Задачата е създадена
-Task deleted: Задачата е изтрита
-Task rejected: Задачата е отхвърлена
-Task updated: Задачата е актуализирана
-Task_Title: Заглавие
-Tasks: Задачи
-Template variables: Шаблонни променливи
-Tentative: Експериментален
-Test Settings: Тестови настройки
-Text to display to public access: Текст за показване за обществен достъп
-The database requires some data input...: Базата данни изисква малко въвеждане на данни Щракнете върху <b> Актуализиране на базата данни </b>, за да завършите надстройката.
-The file permissions of settings.php are set...: Разрешенията за файлове на <b> settings.php </b> са зададени така, че инсталационната програма няма разрешение да я модифицира. Моля, променете разрешенията на файла за следния файл, за да продължите
-The file permissions of the includes directory are set...: Разрешенията за файлове на директорията <b> включва </b> са зададени така, че инсталационната програма няма разрешение за създаване на нов файл. Моля, променете разрешенията на следната директория, за да продължите
-The following conflicts with the suggested time: Следните конфликти с предложеното време
-The following database actions are required: Необходими са следните действия с базата данни
-The following entries will not be imported: Следните записи няма да бъдат импортирани:
-The following error occurred: Възникна следната грешка
-The following formats have been tested: Тествани са следните формати:
-The import file contained no data.: Файлът за импортиране не съдържа данни.
-The password contains illegal characters.: Паролата съдържа незаконни символи.
-The passwords were not identical.: Паролите не бяха идентични.
-The text color of the new layer that will be displayed in your calendar.: Цветът на текста на новия слой, който ще се показва във вашия календар.
-Themes: Теми
-There was an error parsing the import file or no events were returned.: Възникна грешка при синтактичния анализ на файла за импортиране или не бяха върнати събития.
-Therefore, updates should be made in the Palm Desktop.: Следователно актуализациите трябва да се правят в работния плот на Palm.
-This Calendar is not Public.: Този календар не е публичен.
-This Month: Този месец
-This Week: Тази седмица
-This Year: Тази година
-This appears to be a new installation...: Изглежда, че това е нова инсталация. Ако това не е правилно, моля, върнете се на предишната страница и коригирайте настройките си.
-This appears to be an upgrade...: Изглежда, че това е надстройка от версия & nbsp; XXX & nbsp; до & nbsp; YYY.
-This event is XXX.: Това събитие е XXX.
-This event is confidential.: Това събитие е поверително.
-This form will allow you to import entries from the Palm Desktop Datebook.: Този формуляр ще ви позволи да импортирате записи от дневника на Palm Desktop.
-This form will import iCalendar (.ics) events.: Този формуляр ще импортира iCalendar (.ics) събития.
-This form will import vCalendar (.vcs) 1.0 events.: Този формуляр ще импортира събития vCalendar (.vcs) 1.0.
-This installation wizard will guide you...: Този съветник за инсталиране ще ви преведе през настройката на основна инсталация на WebCalendar. <br> За помощ и отстраняване на неизправности вижте: <br>
-This is a reminder for the XXX detailed below.: Това е напомняне за XXX, описано по-долу.
-This is the final step in setting up your WebCalendar Installation.: Това е последната стъпка в настройката на вашата инсталация на WebCalendar.
-This may take several minutes to complete: Това може да отнеме няколко минути.
-This month: Този месец
-This week and next week: Тази и следващата седмица
-This week: Тази седмица
-This will add the entry to your calendar.: Това ще добави записа към вашия календар.
-This will delete the entry from your XXX calendar.: Това ще изтрие записа от вашия XXX календар.
-This will delete the entry from your boss calendar.: Това ще изтрие записа от календара на шефа ви.
-This will delete the entry from your calendar.: Това ще изтрие записа от вашия календар.
-This will delete this entry for all users.: Това ще изтрие този запис за всички потребители.
-This year: Тази година
-Thu: Чет
-Thursday: Четвъртък
-Time XXX: Час: XXX
-Time entered here is based on your Timezone.: Въведеното тук време се базира на <b> вашата </b> часова зона.
-Time format: Времеви формат
-Time interval: Времеви интервал
-Time: Време
-Timed event: Временно събитие
-Times: Времена
-Timezone Conversion Successful: Преобразуването на часовата зона е успешно
-Timezone Conversion: Преобразуване на часовата зона
-Timezone Offset: Отместване на часовата зона
-Timezone Selection: Избор на часова зона
-Title: WebCalendar
-To test the proper operation of sessions...: За да тествате правилната работа на сесиите, презаредете тази страница. Трябва да виждате нарастване на брояча на сесии всеки път.
-Today: Днес
-Tomorrow: Утре
-Top: Връх
-Translated Name (XXX): Преведено име (XXX)
-Troubleshooting: Отстраняване на неизправности
-Tue: Вторник
-Tuesday: Вторник
-Turkish: Турски
-Type: Тип
-URL cannot be blank.: URL адресът не може да бъде празен.
-Unable to update preference: Предпочитанието не може да се актуализира
-Unable to write password to settings.php file: Не може да се напише парола във файла "settings.php".
-Unapproved Entries: Неодобрени записи
-Unapproved Events: Неодобрени събития
-Unapproved Public Events: Неодобрени публични събития
-Unauthorized: Неразрешено
-Uncheck All: Премахнете отметката от Всички
-Undo: Отмяна
-Unfortunately, XXX is not implemented for YYY: За съжаление „XXX“ не се прилага за (YYY).
-Unknown ODBC error.: Неизвестна грешка в ODBC.
-Unknown error saving user: Неизвестна грешка при запазване на потребителя.
-Unknown error.: Неизвестна грешка.
-Unknown: Неизвестно
-Unnamed Event: Без име Събитие
-Unnamed Group: Група без име
-Unnamed Report: Доклад без име
-Unnamed View: Изглед без име
-Unsupported action XXX.: Неподдържано действие: XXX.
-Until: До
-Untimed event: Временно събитие
-Upcoming Events: Предстоящи събития
-Upcoming: Предстои
-Update Database: Актуализиране на базата данни
-Update Task Percentage: Актуализиране на процента на задачата
-Update: Актуализиране
-Updated: Актуализирано
-Upgrading Guide: Ръководство за надграждане
-Upload file: Качи файл
-Upload: Качване
-Use Date/Time: Използвайте дата / час
-Use Offset: Използвайте офсет
-Use end date: Използвайте крайна дата
-Use self-registration email notifications: Генерирайте пароли и ги изпращайте на нови потребители
-User Access Control enabled: Потребителският контрол на достъпа е активиран
-User Access Control: Контрол на потребителския достъп
-User Authentication: Удостоверяване на потребителя
-User Management: Управление на потребители
-User Manager: Потребителски мениджър
-User Sort Order: Поръчка за сортиране на потребителя
-User Supported Wiki: Поддържан от потребителя Wiki
-User removed from participants list.: Потребителят е премахнат от списъка с участници.
-User sees only his groups: Потребителят вижда само своите групи
-User: Потребител
-Username XXX already exists.: Потребителско име "XXX" вече съществува.
-Username XXX does not exist.: Потребителско име "XXX" не съществува.
-Username already exists.: Потребителското име вече съществува.
-Username cannot be blank.: Потребителското име не може да бъде празно.
-Username: Потребителско име
-Users: Потребители
-Variable XXX not found.: Променлива <tt> XXX </tt> не е намерена.
-View Another Users Calendar: Вижте календара на друг потребител
-View Event: Преглед на събитието
-View Name: Преглед на име
-View Type: Тип изглед
-View this entry: Вижте този запис
-View this event: Вижте това събитие
-View this task: Вижте тази задача
-View your current PHP settings: Вижте вашите текущи настройки на PHP
-View: Изглед
-Views: Изгледи
-WE: НИЕ
-Waiting for approval: В очакване на одобрение
-Web Server (detected): Уеб сървър (открит)
-Web Server (not detected): Уеб сървър (не е открит)
-Web-based via WebCalendar (default): Уеб базиран чрез WebCalendar (по подразбиране)
-WebCalendar Documentation: Документация на WebCalendar
-WebCalendar Installation Wizard Step XXX: Съветник за инсталиране на WebCalendar Стъпка XXX
-WebCalendar Setup Wizard: Съветник за настройка на WebCalendar
-WebCalendar is a PHP application used...: WebCalendar е PHP приложение, използвано за поддържане на календар за отделен потребител или интернет / интранет група потребители. Той може да бъде конфигуриран и като календар за събития.
-Wed: Ср
-Wednesday: Сряда
-Week (Timebar): Седмица (Timebar)
-Week (Users horizontal): Седмица (хоризонтални потребители)
-Week (Users vertical): Седмица (вертикални потребители)
-Week Start: Седмица Начало
-Week View: Седмичен изглед
-Week before last: Предната седмица
-Week by Time: Седмица по време
-Week number color: Цвят на номера на седмицата
-Week starts on: Седмицата започва на
-Week: Седмица
-Weekdays Only: Само през делничните дни
-Weekend starts on: Уикендът започва на
-Weekly: Седмично
-Weeks: Седмици
-Welcome to WebCalendar: Добре дошли в WebCalendar
-Welcome: Добре дошли
-Welsh: Уелски
-When I am the boss: Когато съм шеф
-When: Кога
-Work hours: Работни часове
-XXX does not exist: XXX не съществува
-XXX has approved an appointment and added comments.: Одобрена е среща и добавени коментари от XXX.
-XXX has canceled an appointment.: XXX отмени среща.
-XXX has made a new appointment.: XXX направи нова среща.
-XXX has rejected an appointment.: XXX отхвърли среща.
-XXX has updated an appointment.: XXX актуализира среща.
-XXX is in a different timezone (ahead): (XXX е в различна часова зона; ГГГ пред вас. <br> & nbsp; ZZZ)
-XXX is in a different timezone (behind): (XXX е в различна часова зона; ГГГ зад вас. <br> & nbsp; ZZZ)
-XXX is not writable: XXX не може да се записва
-Year View: Годишен изглед
-Year before last: Предишна година
-Year: Година
-Yearly: Годишно
-Yes: Да
-Yesterday: Вчера
-You are not authorized to edit this entry.: Не сте упълномощени да редактирате този запис.
-You are not authorized to edit this task.: Не сте упълномощени да редактирате тази задача.
-You are not authorized.: Не сте упълномощени.
-You can only create one layer for each user.: Можете да създадете само един слой за всеки потребител.
-You cannot create a layer for yourself.: Не можете да създадете слой за себе си.
-You cannot remove admin rights from yourself!: Не можете да премахнете администраторски права от себе си!
-You have XXX unapproved entries: Имате XXX неодобрени записа
-You have been logged out.: Излезли сте.
-You have not added any categories.: Не сте добавили никакви категории.
-You have not entered a Brief Description: Не сте въвели кратко описание.
-You have not entered a password.: Не сте въвели парола.
-You have not entered a valid time of day: Не сте въвели валиден час от деня.
-You may change your password after logging in the first time.: Можете да промените паролата си, след като влезете за първи път.
-You must define XXX in: Трябва да дефинирате „XXX“ във файла „settings.php“.
-You must enter a login and password.: Трябва да въведете потребителско име и парола.
-You must enter one or more search keywords.: Трябва да въведете една или повече ключови думи за търсене.
-You must enter the anti-spam text on the previous page.: Трябва да въведете антиспам текста на предишната страница.
-You must manually create database: Трябва ръчно да създадете база данни.
-You must specify a group name: Трябва да посочите име на група
-You must specify a view name: Трябва да посочите име на изглед
-You should change the password of the default admin user.: Трябва да промените паролата на администратора по подразбиране.
-Your account information will be emailed to you.: Информацията за вашия акаунт ще ви бъде изпратена по имейл.
-Your assistants: Вашите помощници
-Your browser default language is XXX.: Езикът на браузъра ви по подразбиране е „XXX“.
-Your current GMT offset is XXX hours.: Текущият ви офсет по GMT е XXX часа.
-Your current database settings are able to access the database.: Текущите ви настройки на базата данни имат достъп до базата данни.
-Your current database settings are not able...: Текущите ви настройки на базата данни <b> не </b> имат достъп до базата данни или все още не са тествани.
-Your email should arrive shortly.: Вашият имейл трябва да пристигне скоро.
-Your password is XXX.: Паролата ви е: „XXX“.
-Your settings have been saved.: Вашите настройки бяха запазени.
-Your settings.php file appears to be valid.: Вашият файл <b> settings.php </b> изглежда валиден.
-Your suggested time of: Предложеното от вас време на
-Your username is XXX.: Вашето потребителско име е: "XXX".
-a XXX event may not be added to your calendar: Това е XXX събитие и може да не бъде добавено към вашия календар.
-access-help: Указва нивото на достъп на събитието. <ul><li> <em> Публично </em>: Всеки може да види пълните подробности за събитието. </li><li> <em> Поверително </em>: Други могат да видят, че имате запис за тази дата и час, но не и подробности за това какво е. </li> </ul>
-after: след
-again: отново
-allow you to import entries from the Palm...: Този формуляр ще ви позволи да импортирате записи от дневника на Palm Desktop. Той трябва да се намира във вашата директория на Palm в <tt> datebook / datebook.dat </tt> в поддиректория, наречена от вашето потребителско име.
-allow-attachment-help: Позволете на потребителите да добавят прикачени файлове към събития.
-allow-comments-help: Позволете на потребителите да добавят коментари към събития.
-allow-external-users-help: Указва дали потребител, който не е от календара, може да бъде добавен към събитие. Това позволява на потребителите извън календара да бъдат посочени като участници в събитието.
-allow-html-description-help: Ако е активирана, потребителите могат да въвеждат HTML в полето за описание на събитието. Ако не е активирано, HTML таговете ще бъдат екранирани, за да се покажат като обикновен текст. Предупреждение: Активирането на тази функция ще позволи на потребителите да препращат изображения към други уебсайтове.
-allow-public-access-help: Когато е активиран, календарът може да се използва като публичен календар само за четене, който не изисква потребителите да влизат.
-allow-remote-publishing-help: Посочва дали отдалечен iCal клиент може да публикува събития обратно в WebCalendar
-allow-remote-subscriptions-help: Определя дали отдалечените потребители могат да се абонират за вашия календар, като им позволяват да виждат вашите събития в приложение с активиран iCal (като iCal на Apple или Mozilla Calendar).
-allow-self-registration-full-help: Позволете на новите потребители да завършат процеса на саморегистриране онлайн
-allow-self-registration-help: Разрешете на нови потребители да се регистрират
-allow-view-add-help: В изгледите ще бъде включена икона „+“, която позволява на потребителите бързо да добавят събития в календарите на други потребители.
-allow-view-other-help: Указва дали един потребител може да преглежда календара на друг потребител.
-allow-view-subscriptions-help: Позволява ограничаване на отдалечения достъп до частни или поверителни записи
-am: съм
-app-name-help: Посочва името на приложението, което ще се появи в заглавната лента на браузъра за всички страници и на страницата за вход. Стойността, която посочите тук, ще бъде търсена във файла за преводи, което ви позволява да предоставите различни заглавия за различни езици.
-at: в
-authenticate: SMTP грешка: Не може да се удостовери
-auto-refresh-help: Когато е активирано, дневният изглед, седмичният изглед, месечният изглед и списъкът с неодобрени страници автоматично ще се опресняват периодично.
-auto-refresh-time-help: Ако е разрешено автоматично опресняване, това указва времето между всяко опресняване.
-avail_participants-help: Изброява наличните участници в този запис.
-before: преди
-bgimage-help: URL на желаното фоново изображение. Може да е относителна връзка.
-bgrepeat-help: Контролира повтарящото се поведение на фоновото изображение.
-boss-approve-event-help: Посочва дали шефът ще трябва да одобрява събития, добавени от асистенти.
-boss: шеф
-brief-description-help: Това трябва да предостави кратко описание (около 20 знака) на събитието. Това ще представлява събитието при разглеждане на календара.
-by date: по дата
-by day: през деня
-by position: по позиция
-by: от
-bytes: байта
-categories-enabled-help: Позволява поддръжка за категории събития.
-category-help: Определя категорията на събитието.
-colors-help: Всички цветове трябва да бъдат посочени в шестнадесетичен формат "#RRGGBB", където "RR" е шестнадесетичната стойност за червено, "GG" е шестнадесетичната стойност за зелено, а "BB" е шестнадесетичната стойност за синьо.
-comments: коментари
-completed-help: Задачата за дата е изпълнена. Активирано само когато процентът на всички участници е равен на 100%.
-confidential: поверително
-conflict-check-help: Проверете за конфликти на събития (две събития, планирани за едно и също време за един и същи човек). Ако зададете това на "Да", пак ще можете да планирате две събития едновременно, след като потвърдите предупреждение. Ако зададете това на „Не“, няма да се прави проверка за конфликти. Вероятно искате да зададете това на "Да", така че възниква проверка на конфликти.
-conflict-check-override-help: Позволява на потребителите да отменят конфликтите на събития и да планират две или повече събития за едно и също време.
-conflict-months-help: Ако е налице проверка на конфликти („Проверка за конфликти на събития“ е зададена на „Не“), това указва колко месеца в бъдеще трябва да проверяваме за конфликти. Ако установите, че добавянето на събития отнема много време за обработка, намалете този брой.
-conflicts with the following existing calendar entries: конфликти със следните съществуващи записи в календара
-connect_host: SMTP грешка: Не можа да се свърже със SMTP хост:
-consider enabling UAC: Може да помислите за разрешаване на потребителски контрол на достъпа за задаване на привилегии на потребителя.
-cont.: продължение
-cookies-note: <b> Забележка: </b> Това приложение изисква активирани бисквитки.
-could not find event id XXX in database.: не можах да намеря идентификатор на събитие XXX в базата данни.
-could not find event id: не можах да намеря идентификатор на събитие
-crossday-help: Ако е активирана, събитията, които обхващат дни, ще се показват в отделни дни
-custom-header-help: Позволява персонализиран HTML фрагмент да бъде включен в горната част на всяка страница.
-custom-script-help: Позволява въвеждане на персонализиран текст на Javascript или стилове, който ще бъде вмъкнат в секцията "head" на HTML на всяка страница.
-custom-trailer-help: Позволява персонализиран HTML фрагмент да бъде включен в края на всяка страница.
-data_not_accepted: SMTP грешка: Данните не се приемат
-date-format-help: Задава предпочитания формат на датата.
-date-help: Посочва датата на събитието.
-day: ден
-days: дни
-db cache should be inaccessable: Кешът на базата данни трябва да бъде в директория, която не може да бъде достъпна с URL.
-db setup directions...: В този раздел ще настроите и тествате връзка с вашия сървър на база данни. Предоставената информация за акаунта трябва да има ПЪЛНИ разрешения за създаване на бази данни, таблици и потребители. Ако това не е възможно или достъпът до вашата база данни е ограничен, ще трябва да конфигурирате ръчно вашата база данни.
-db_type not defined.: db_type не е дефиниран.
-default-category-help: Посочва категорията, към която трябва да се подразбира ново събитие.
-delete: Изтрий
-denotes administrative user: означава административен потребител
-disable-access-field-help: Избирането на "Да" ще премахне полето "Достъп" от страниците с информация за събитията, осигурявайки по-опростен интерфейс за начинаещи.
-disable-location-field-help: Избирането на "Да" ще премахне полето "Местоположение" от страниците с информация за събитието
-disable-participants-field-help: Избирането на "Да" ще премахне полето "Участници" от страниците с информация за събитията, като попречи на потребителите да добавят други потребители към своите събития. Ако активирате тази опция, може да искате да деактивирате и полето "Разрешаване на преглед на календари на други потребители".
-disable-popups-help: Деактивирайте изскачащите прозорци от изгледите на календара
-disable-priority-field-help: Избирането на "Да" ще премахне полето "Приоритет" от страниците с информация за събитията, осигурявайки по-опростен интерфейс за начинаещи.
-disable-repeating-field-help: Избирането на "Да" ще премахне полето "Повтаряне" при добавяне на събития. Това ще осигури по-опростен интерфейс за начинаещи.
-disable-url-field-help: Избирането на "Да" ще премахне полето "URL" от страниците с информация за събитията
-display-alldays-help: Показва дни от предходния и следващия месец в месечни изгледи, като попълва всички клетки.
-display-desc-print-day-help: Включете описанията на събитията в версията на дневния изглед, подходяща за печат.
-display-end-times-help: Показване на крайните часове на събитието, ако е събитие по време
-display-general-use-gmt-help: Ако е активирана, обичайните дати / часове се показват като GMT
-display-long-daynames-help: Ако е активирана, се показват имената на дълги дни
-display-minutes-help: Ако е активирано, винаги ще се показват минути, завършващи с: 00
-display-sm_month-help: Ако е активирана, показва малки месеци в месечни изгледи
-display-tasks-help: Показване на малък прозорец на задачите в календара за месец и ден
-display-tasks-in-grid-help: Показвайте задачи в календари заедно със събития
-display-unapproved-help: Определя дали неодобрените събития се показват в календара ви. <br> Ако е зададено на "Да", неодобрените събития ще се показват в календара ви (с различен цвят на текста). <br> Ако е зададено на "Не", тогава неодобрени събития трябва да бъдат одобрени, преди да бъдат показани във вашия календар.
-display-week-number-help: Определя дали номерът на седмицата (1-52) да се показва в месечния изглед и седмичния изглед.
-display-week-starts-on: Посочва ден от седмицата, в който започва седмицата. Ако е посочен понеделник, тогава седмичните номера ще бъдат ISO седмични номера.
-display-weekend-starts-on: Задава деня от седмицата, в който да започне почивните дни
-display-weekends-help: Включете уикендите, когато гледате седмица.
-display_byproxy-help: Покажете истинския създател на страницата view_entry
-duration-help: Определя продължителността (в часове: минути) на събитието. <em> Това поле може да остане празно. </em>
-email-boss-notifications-help: Определя дали шефовете получават имейли като известия за събития.
-email-default-sender: Посочва имейл адреса, който да посочите като подател при изпращане на напомняния.
-email-enabled-help: Включете или изключете изпращането на имейли за известия и напомняния. Задайте "не", ако сървърът ви не е правилно настроен да изпраща поща.
-email-event-added: Посочва дали да се изпращат известия по имейл, когато дадено събитие е добавено към вашия календар.
-email-event-create: Посочва дали създателят на записи ще получи имейл
-email-event-deleted: Посочва дали да се изпращат известия по имейл, когато дадено събитие бъде премахнато от календара ви.
-email-event-rejected: Посочва дали да се изпращат известия по имейл, когато участник отхвърли събитие, което е във вашия календар.
-email-event-reminders-help: Посочва дали да се изпращат напомняния за събитие или не.
-email-event-updated: Посочва дали да се изпращат известия по имейл, когато дадено събитие се актуализира в календара ви.
-email-format: Посочете предпочитание за HTML или обикновени текстови съобщения
-email-include-ics: Включете iCalendar ICS файл към имейл съобщение
-email-mailer: Изберете тип имейл (SMTP, PHP поща, sendmail)
-email-smtp-auth: Използвайте SMTP удостоверяване
-email-smtp-host: Име на хост на SMTP сървър (и), разделени със запетаи
-email-smtp-password: SMTP парола, ако използвате удостоверяване
-email-smtp-port: Номер на SMTP порта (обикновено 25)
-email-smtp-username: SMTP потребителско име, ако използвате удостоверяване
-enable-external-header-help: Позволява потребителското ремарке да бъде заредено от външен файл
-enable-gradient-help: Използвайте градиентни цветове за фонове на клетки.
-encoding: Неизвестно кодиране:
-end-time-help: Указва времето, в което се очаква събитието да приключи.
-end: край
-entries: записи
-entry-interval-help: Задава интервал от минути при редактиране на часовете за въвеждане
-event: събитие
-exceeds limit of XXX events per day: надвишава лимита от XXX събития на ден
-execute: Не може да се изпълни:
-export format not defined or incorrect.: форматът за експортиране не е дефиниран или неправилен.
-external-can-receive-notification-help: Когато външните потребители са активирани и използването на имейли е активирано, външните потребители могат да получават известия по имейл, когато събитието е добавено, актуализирано или изтрито (ако е предоставен имейл адресът на външния потребител).
-external-can-receive-reminder-help: Когато външните потребители са активирани и е разрешено използването на имейли, външните потребители могат да получават напомняния по имейл (ако е предоставен имейл адресът на външния потребител).
-external-participants-help: Посочва списък на участниците за събитието, които не са потребители на календара. Потребителите трябва да бъдат изброени по един на ред и могат да включват имейл адрес. Ако е посочен имейл адрес, потребителят има право да получава известия и напомняния.
-file_access: Няма достъп до файл:
-file_open: Грешка във файла Не може да се отвори файл:
-fonts-help: Посочва списък със системни шрифтове, които да се използват (като „Arial, Helvetica & # 26;)
-for non-user calendar: за непотребителски календар
-form: форма
-freebusy-enabled-help: Определя дали наличното време на потребителя може да бъде получено с помощта на стандарта iCal FreeBusy.
-freebusy-url-help: URL адресът за достъп до списъка на FreeBusy на потребителя
-from your boss calendar: от календара на вашия шеф
-from_failed: Следният адрес от адрес не бе успешен:
-full-description-help: Това трябва да допълни подробности за събитието. Тази информация може да се види, когато потребител разглежда събитието.
-gif 3kb max: (gif 3kb макс)
-gradient-colors: Ако се използват градиентни цветове. Това може значително да повлияе на производителността.
-groups-enabled-help: Позволява групова поддръжка, позволявайки на потребителите да избират потребители по групи.
-home-url-help: Посочва началния URL адрес за приложението. Това може да бъде абсолютно или относително
-hour ahead of you: час пред вас
-hour behind you: час зад вас
-hour: час
-hours ahead of you: часове пред вас
-hours behind you: часове след вас
-hours: часа
-icon_upload-enabled-help: Ако е активирана, потребителите могат да качват икони на категории
-import from file: импортиране от файл
-incorrect password: грешна парола
-instantiate: Функцията за поща не може да бъде създадена
-invalid db_type: невалиден db_type
-is in a different timezone than you are. Currently: е в различна часова зона от вас. Понастоящем
-item XXX should not be writable: Следният елемент не трябва да може да се записва: <br> <tt> XXX </tt>
-journal: списание
-kb: kb
-language-help: Указва кой език да се използва.
-limit-appts-help: Позволява на системния администратор да зададе общосистемно ограничение на броя срещи, които един потребител може да има за всеки един ден.
-limit-appts-number-help: Посочва максималния брой събития по време, които потребителят може да има за един ден.
-list potential security issues: Информацията по-долу изброява потенциални проблеми с вашата инсталация на WebCalendar, които могат да бъдат модифицирани, за да направят вашата инсталация по-сигурна.
-location-help: Местоположение на събитието
-lunar-help: Ако е активирана, ще се показват малки икони, представящи лунните фази всеки месец
-mailer_not_supported: mailer не се поддържа
-match found: намерено съвпадение
-matches found: намерени съвпадения
-menu-themes-help: Задава цветовете и стила на горното меню
-minute: минута
-minutes: минути
-month: месец
-more: Повече ▼
-no response from server: няма отговор от сървъра
-no such user: няма такъв потребител
-nonuser-enabled-help: Ако е активирано, администраторите ще имат възможност да добавят непотребителски календари
-nonuser-list-help: Къде да се покажат непотребителните календари в списъка с участници
-on: На
-participants-help: Изброява участниците в този запис.
-percent-help: Процент на изпълнение на задачата за този потребител
-pm: вечерта
-popup-includes-participants-help: Ако е активирано, участниците се показват в изскачащи прозорци.
-popup-includes-siteextras-help: Ако е разрешено, разрешете настройка на персонализирани полета за събития във файла site_extras.php ще се показва в изскачащите прозорци за събития.
-preferred-view-help: Определя изгледа по подразбиране (ден, седмица, месец или година).
-previous version requires updating several tables: Вашата предишна версия на WebCalendar изисква актуализиране на няколко таблици с бази данни.
-priority-help: Определя приоритета на събитието. Събитията с висок приоритет ще бъдат показани с получер шрифт.
-private: частни
-provide_address: Трябва да предоставите поне един имейл адрес на получателя.
-public-access-add-requires-approval-help: Указва дали събитията, добавени чрез акаунта за публичен достъп, изискват одобрение, преди да бъдат показани.
-public-access-can-add-help: Когато е активирано, потребителите, които имат достъп до системата чрез публичен достъп, ще могат да добавят нови събития, но няма да се показват в календара, докато администраторът не одобри новото събитие.
-public-access-captcha-help: Ако е активирано, новите събития, добавени от Public, изискват преминаване на CAPTCHA проверка.
-public-access-default-selected: При добавяне на ново събитие публичният потребител ще бъде избран по подразбиране като участник.
-public-access-default-visible: Събитията от публичния календар автоматично ще се показват във всички календари на потребителите
-public-access-override-help: Позволява имената и описанията на събитията да бъдат скрити в публичния календар
-public-access-override-text-help: Текстът за показване, ако е активирана горната опция. Ако „Не е налично“, то ще бъде преведено.
-public-access-sees-participants-help: Ако е активирана, потребителите, които имат достъп до календара от публичния акаунт, ще могат да виждат участниците в събитието, ако преглеждат подробности за събитие.
-public-access-view-others-help: При достъп до системата с публичен достъп, указва дали потребителят може да преглежда календара на друг потребител на календар.
-public: публично
-recipients_failed: SMTP грешка: Следните получатели не успяха:
-recommend approving new public events: Препоръчваме всички заявки за публични събития да бъдат одобрени.
-recommend setting XXX Off: Препоръчителната настройка за "XXX" е изключена.
-recommend setting allow_url_fopen Off: Препоръчителната настройка за "allow_url_fopen" е изключена, когато отдалечените календари не са активирани.
-recommend using CAPTCHA: CAPTCHA се препоръчва за защита на автоматизирани подавания на събития.
-remember-last-login-help: Когато е активирано, входът на потребителя ще бъде попълнен за него на страницата за вход (но не и паролата) и предпочитанията на потребителя ще бъдат заредени (включително предпочитаните цветове и избор на език).
-remote-publishing-url-help: Показва URL адреса, който да се използва в клиентското приложение iCal за абонамент и публикуване обратно в WebCalendar.
-remote-subscriptions-url-help: Показва URL адреса, който отдалечените потребители трябва да използват, за да се абонират за вашия календар.
-remotes-enabled-help: Позволява на потребителите да зареждат отдалечени ics файлове, използвайки URL
-remove XXX if not using: Ако не използвате файл "XXX", трябва да го изтриете. Или поне да го преместите в нова директория.
-repeat-bydayextended-help: Позволява избор на дата според деня от седмицата.
-repeat-bymonthdayextended-help: Позволява избор на дата въз основа на дата.
-repeat-bysetpos-help: Позволява избор на дата въз основа на позиция в месеца.
-repeat-byweekno-help: Позволява на потребителя да посочи списък със седмици за повторение на събитие (1,2 ... 53, -53, -52 ...- 1).
-repeat-byyearday-help: Позволява на потребителя да посочи списък от годишни дни за повторение на събитие (1,2 ... 366, -366, -365 ...- 1).
-repeat-day-help: Посочва в кои дни от седмицата събитието трябва да се повтаря.
-repeat-end-date-help: Посочва датата, на която събитието трябва да се повтаря до.
-repeat-exceptions-help: Допълнителни дни, в които това събитие трябва или не трябва да се случва.
-repeat-frequency-help: Посочва колко често събитието трябва да се повтаря.
-repeat-month-help: Посочва в кои месеци събитието трябва да се повтори.
-repeat-type-help: Изберете колко често събитието да се повтаря.
-reports-enabled-help: Ако е активирано, потребителите ще виждат раздел „Отчети“ в долната част на всяка страница и ще могат да създават персонализирани отчети. Освен това потребителите на администратор могат да създават глобални отчети, които ще се появяват в долната част на страниците на всички потребители.
-require-approvals-help: Когато е активиран, потребителят трябва да одобри събитие, преди то да се покаже в календара му (освен ако не е активирано Показване на неодобрено). Забележка, ако зададете това на „Не“, няма да изключи одобренията за календара за публичен достъп (ако календарът за публичен достъп е активиран).
-rss-enabled-help: Указва дали календарът на потребителя може да бъде получен от RSS емисия.
-rss-feed-url-help: URL адресът за достъп до RSS емисията
-same as: същото като
-server time: време на сървъра
-server-tz-help: Указва колко часа да се коригира времето от UTC до сървърно време.
-server-url-help: Посочва основния URL адрес за приложението. Това ще бъде включено при изпращане на напомняния и известия по имейл.
-settings.php Status: Състояние на "settings.php"
-start: старт
-subscriptions-enabled-help: Посочва дали отдалечените потребители могат да се абонират за потребителски календар на WebCalendar, като им позволяват да виждат събитията на потребителя на WebCalendar в тяхното приложение с активиран iCal (като iCal на Apple или Mozilla Calendar).
-summary_length-help: Максимална дължина на кратко описание в изгледи на календара
-task: задача
-theme-reload-help: Поради кеширането на CSS може да се наложи презареждане на страница
-themes-help: Позволява масово актуализиране на настройките за конфигурация. Етикетите с малки букви са само за потребителя.
-time prior to work hours...: Въведеното време започва преди предпочитаното от вас работно време. Дали това е правилно?
-time-format-help: Определя кой формат на времето да се използва: <br> <em> 12 часа: </em> Показване на часове като 3:00, 20:30 ч. И т.н. <br> <em> 24 часа: </em> Показване на време като 300, 2030 и т.н.
-time-help: Указва времето на събитието. <ul> <li> „Временно събитие“ (за събитие, което е насрочено за точно определено време в този ден) </li> <li> „Несрочно събитие“ (за събитие, което няма време (като празник) ) </li> <li> „Събитие през целия ден“ (за събитие, което отнема цял ден (като излизане от офиса) </li> </ul>
-time-interval-help: Определя колко дълго ще бъдат часовите блокове в изгледа за седмица и ден.
-timed-evt-len-help: Задава метод на въвеждане за определяне на продължителността на събитие със синхрон.
-to: да се
-tz-help: Указва колко часа да се коригира времето от UTC до местно време.
-uac-enabled-help: Позволява контрол на достъпа на ниво потребител
-unknown-month: неизвестен месец
-unknown-weekday: неизвестен-делничен ден
-upcoming-events-allow-override: Разрешаване на потребителски параметри за предстоящи.php
-upcoming-events-display-caticons: Включете икони на категории в предстоящия.php
-upcoming-events-display-layers: Показване на слоевете в предстоящия.php
-upcoming-events-display-links: Показване на връзки в предстоящия.php
-upcoming-events-display-popups: Показване на изскачащи прозорци на събития в предстоящия.php
-upcoming-events-help: Активирайте предстоящия.php
-url-help: URL адрес на събитието
-use-blacklist-help: Ограничете достъпа до функциите на WebCalendar въз основа на IP адрес
-user-customize-color: Посочва дали потребителите имат право да променят собствената си цветова схема.
-user-sees-his-group-help: Ако е активирано, потребителите няма да виждат потребители на календара, които не са в поне една от техните групи.
-user: потребител
-user_sort-help: Определя реда за сортиране за списъци с потребители и непотребители
-version XXX: версия XXX
-will cause events imported previously...: ще накара събитията, импортирани преди това, които са използвали същия UID като събитие от новия файл за импортиране, да бъдат маркирани като изтрити. Това трябва да позволи импортиране на актуализиран iCalendar файл, без да се създават дубликати.
-word characters only: (може да съдържа само символи с думи; [a-zA-Z_0-9])
-work-hours-help: Определя времевия диапазон за показване за дневния изглед.
-write: пиши
-year: година
-yearly-shows-events-help: В годишния изглед покажете дни, които съдържат събития с удебелен шрифт.
+# Additional translations 'borrowed' from SourceForge project
+# 'The Coolest DHTML Calendar',
+# http://sourceforge.net/projects/jscalendar/
+#
+# Translation last updated on 04-20-2007
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+# A lone equal sign "=" to the right of the FIRST colon ": "
+# indicates that the "translation" is identical to the English text.
+#
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: windows-1251
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: access.php
+#
+Database error: @5H:0 2 1070B0 40==8
+Go: 0?@54
+Save: 0?078
+Public Access: C1;8G5= 4>ABJ?
+Admin: 4<8=8AB@0B>@
+Calendar: 0;5=40@
+Public: C1;8G=>
+Confidential: >=D845=F80;=>
+
+########################################
+# Page: activity_log.php
+#
+Next: !;5420I>
+Previous: @548H=>
+
+########################################
+# Page: add_entry.php
+#
+Error adding event: @5H:0 ?@8 4>102O=5 =0 AJ18B85B>.
+
+########################################
+# Page: admin.php
+#
+Select: 715@8
+Day: 5=
+Week: !54<8F0
+Month: 5A5F
+Year: >48=0
+System Settings: !8AB5<=8 =0AB@>9:8
+Help: ><>I
+Settings: 0AB@>9:8
+Groups: @C?8
+Email: E-mail
+Colors: &25B>25
+app-name-help: ?@545;O 8<5B> =0 ?@8;>65=85B>, :>5B> I5 A5 ?>O2O20 2 B09BJ;-10@0 =0 1@0C75@0 =0 2A8G:8 AB@0=8F8 8 =0 AB@0=8F0B0 70 @538AB@0F8O. !B>9=>ABB0, :>OB> 8715@5B5 BC: I5 1J45 ?>BJ@A5=0 2J2 D09;0 70 ?@52>4 :0B> ?> B>78 =0G8= I5 8 ?>72>;O20 40 >?@545;OB5 @07;8G=8 703;028O 70 @07;8G=8B5 578F8.
+Application Name: <5 =0 ?@8;>65=85B>
+server-url-help: ?@545;O >A=>2=8O URL =0 ?@8;>65=85B>. ">9 I5 1J45 2:;NG20= :>30B> 87?@0I0B5 8725AB8O 8 =0?><=O=8O ?> e-mail.
+language-help: ?@545;O :>9 578: 40 1J45 87?>;720=.
+Language: 78:
+Your browser default language is: > ?>4@0718@0=5, 578:JB =0 0H8O 1@0C75@ 5
+None: 8B> 54=>
+tz-help: ?@545;O A :>;:> G0A0 A5 @07<8=020 2@5<5B> =0 AJ@2J@0 A <5AB=>B> 2@5<5.
+date-format-help: ?@545;O ?@54?>G8B0=8O D>@<0B =0 40B0B0.
+Date format: $>@<0B =0 40B0B0
+display-week-starts-on: ?@545;O 40;8 A54<8F0B0 70?>G20 2 =545;O 8;8 2 ?>=545;=8:. :> 5 871@0= ">=545;=8:", B>3020 =><5@0B0 =0 A54<8F8B5 I5 1J40B AJ>1@075=8 A ISO.
+Week starts on: !54<8F0B0 70?>G20 2
+time-format-help: ?@545;O :>9 2@5<528 D>@<0B 40 1J45 87?>;720=:<br /><i>12-G0A>2:</i> >:0720 2@5<5B> :0B> 3am, 8:30pm 8 B.=.<br /><i>24-G0A>2:</i> >:0720 2@5<5B> :0B> 3.00, 20.30 8 B.=.
+Time format: @5<528 D>@<0B
+12 hour: 12-G0A>2
+24 hour: 24-G0A>2
+Duration: @>4J;68B5;=>AB
+work-hours-help: ?@545;O 2@5<528O >B@O7J:, :>9B> 40 1J45 ?>:0720= ?@8 4=52=8O 873;54.
+Work hours: 01>B=8 G0A>25
+From: B
+to: 4>
+preferred-view-help: ?@545;O 873;54 ?> ?>4@0718@0=5 (45=, A54<8F0, <5A5F 8;8 3>48=0).
+Preferred view: @54?>G8B0= 873;54
+Bottom: 09->B4>;C
+Top: 09->B3>@5
+fonts-help: ?@545;O A?8AJ:JB >B A8AB5<=8 D>=B>25, :>8B> I5 1J40B 87?>;720=8 (:0B> =0?@. "Arial, Helvetica")
+Fonts: $>=B>25
+display-weekends-help: :;NG20=5 =0 C8:5=48B5 2 A54<8G=8O 873;54.
+display-week-number-help: ?@545;O 40;8 =><5@0 =0 A54<8F0B0 (1-52) 40 1J45 ?>:0720= 2 <5A5G=8O 8 A54<8G=8O 873;54.
+Display week number: >:0720=5 =><5@0B0 =0 A54<8F8B5
+allow-view-add-help:  873;548B5 I5 1J45 2:;NG5=0 8:>=0 '+', ?>72>;O20I0 =0 ?>B@518B5;8B5 1J@7> 40 4>102OB AJ18B8O :J< :0;5=40@8B5 =0 4@C38 ?>B@518B5;8.
+Include add event link in views: :;NG20=5 =0 ;8=: ">102O=5 =0 AJ18B85" 2 873;548B5.
+allow-view-other-help: ?@545;O 40;8 ?>B@518B5;OB <>65 40 28640 :0;5=40@0 =0 4@C3 ?>B@518B5;.
+require-approvals-help: >30B> 5 0:B828@0=>, ?>B@518B5;OB B@O120 40 >4>1@8 4045=> AJ18B85 ?@548 B> 40 1J45 ?>:070=> 2 :0;5=40@0 <C (>A25= 0:> =5 5 0:B828@0=> >:0720=5 =0 =5>4>1@5=8B5). 015;565B5, G5 0:> 8715@5B5 "5", B>20 =O<0 40 87:;NG8 >4>1@O20=5B> ?@8 0;5=40@0 A ?C1;8G5= 4>ABJ? (0:> 0;5=40@JB A ?C1;8G5= 4>ABJ? 5 0:B828@0=).
+Require event approvals: 78A:209 >4>1@5=85 70 AJ18B8OB0
+display-unapproved-help: ?@545;O 40;8 =5>4>1@5=8B5 AJ18B8O 1820B ?>:0720=8 2 :0;5=40@0 8.<br /> :> 5 871@0=> "0", B>3020 =5>4>1@5=8B5 AJ18B8O I5 1J40B ?>:0720=8 2 :0;5=40@0 8 (A @07;8G5= F2OB).<br /> :> 5 871@0=> "5", B>3020 =5>4>1@5=8B5 AJ18B8O B@O120 40 1J40B >4>1@5=8 ?@548 40 1J40B ?>:070=8 2 :0;5=40@0 8.
+Display unapproved: >:0720=5 =0 =5>4>1@5=8B5
+conflict-check-help: @>25@:0 70 :>=D;8:B8 =0 AJ18B8O (425 AJ18B8O, =0A@>G5=8 70 54=> 8 AJI> 2@5<5 8 70 548= 8 AJI8 G>25:). :> 8715@5B5 "0", 2A5 >I5 I5 1J45B5 2 AJAB>O=85 40 =0A@>G20B5 425 AJ18B8O 70 54=> 8 AJI> 2@5<5 A;54 :0B> ?>B2J@48B5 ?@54C?@5645=85B>. :> 8715@5B5 "5", =O<0 40 8<0 ?@>25@:0 70 :>=D;8:B8. 5@>OB=> I5 ?>65;05B5 40 8715@5B5 "0" 70 40 <>65 40 8<0 ?@>25@:0 70 :>=D;8:B8.
+Check for event conflicts: @>25@:0 70 :>=D;8:B8 =0 AJ18B8O
+Yes: 0
+No: 5
+conflict-months-help: :> 5 871@0=0 ?@>25@:0 70 :>=D;8:B8 ("@>25@:0 70 :>=D;8:B8 =0 AJ18B8O" 5 =0 "0"), B>20 >?@545;O :>;:> <5A5F0 2 1J45I5B> 1820B ?@>25@O20=8 70 :>=D;8:B8. :> AG8B0B5, G5 4>102O=5B> =0 AJ18B8O >B=5<0 B2J@45 4J;3> 2@5<5, =0<0;5B5 B078 F8D@0.
+Conflict checking months: 5A5F8, :>8B> A5 ?@>25@O20B 70 :>=D;8:B8
+conflict-check-override-help: >72>;O20 =0 ?>B@518B5;8B5 40 83=>@8@0B :>=D;8:B8 =0 AJ18B8O 8 40 =0A@>G20B 425 8;8 ?>25G5 AJ18B8O 70 54=> 8 AJI> 2@5<5.
+Allow users to override conflicts: >B@518B5;8B5 <>30B 40 83=>@8@0B :>=D;8:B8B5
+limit-appts-help: >72>;O20 =0 A8AB5<=8O 04<8=8AB@0B>@ 40 =0;030 ;8<8B =0 FO;0B0 A8AB5<0 ?> >B=>H5=85 =0 1@>O 0=3068<5=B8, :>8B> <>65 40 8<0 2A5:8 548= ?>B@518B5; 70 548= 45=.
+Limit number of timed events per day: 3@0=8G020=5 1@>O =0 =0A@>G5=8B5 AJ18B8O 70 548= 45=
+limit-appts-number-help: ?@545;O <0:A8<0;=8O 1@>9 =0A@>G5=8 AJ18B8O, :>8B> <>65 40 8<0 548= ?>B@518B5; 70 548= 45=
+Maximum timed events per day: 0:A8<C< =0A@>G5=8 AJ18B8O =0 45=
+disable-priority-field-help: @8 871>@ =0 "0" ?>;5B> "@8>@8B5B" 2 AB@0=8F0B0 70 8=D>@<0F8O =0 4045=> AJ18B85 >B?040 :0B> ?> B>78 =0G8= ?@028 8=B5@D59A0 ?>-4>ABJ?5= 70 =0G8=05I8B5.
+Disable Priority field: 570:B828@0=5 =0 ?>;5B> "@8>@8B5B"
+disable-access-field-help: @8 871>@ =0 "0" ?>;5B> ">ABJ?" 2 AB@0=8F0B0 70 8=D>@<0F8O =0 4045=> AJ18B85 >B?040 :0B> ?> B>78 =0G8= ?@028 8=B5@D59A0 ?>-4>ABJ?5= 70 =0G8=05I8B5.
+Disable Access field: 570:B828@0=5 =0 ?>;5B> ">ABJ?"
+disable-participants-field-help: @8 871>@ =0 "0" ?>;5B> "#G0AB=8F8" I5 >B?04=5 >B AB@0=8F0B0 70 8=D>@<0F8O =0 4045=> AJ18B85 :0B> ?> B>78 =0G8= I5 ?>?@5G8 =0 ?>B@518B5;8B5 40 4>102OB 4@C38 ?>B@518B5;8 :J< B5E=8B5 AJ18B8O. :> 0:B828@0B5 B078 2J7<>6=>AB <>65 18 I5 8A:0B5 AJI> B0:0 40 4570:B828@0B5 ?>;5B> "J7<>6=>AB 40 A5 28640B :0;5=40@8B5 =0 4@C38B5 ?>B@518B5;8".
+Disable Participants field: 570:B828@0=5 =0 ?>;5B> "#G0AB=8F8"
+disable-repeating-field-help: @8 871>@ =0 "0" ?>;5B> ">2B>@O5<>AB" I5 >B?04=5 ?@8 4>102O=5 =0 AJ18B8O. ">20 I5 =0?@028 8=B5@D59A0 ?>-4>ABJ?5= 70 =0G8=05I8B5.
+Disable Repeating field: 570:B828@0=5 =0 ?>;5B> ">2B>@O5<>AB"
+remember-last-login-help: >30B> 5 0:B828@0=>, @538AB@0F8>==0B0 8=D>@<0F8O =0 ?>B@518B5;O I5 1J45 ?>?J;=5=0 2<5AB> =53> =0 AB@0=8F0B0 70 @538AB@0F8O (A 87:;NG5=85 =0 ?0@>;0B0) 8 ?>B@518B5;A:8B5 ?@54?>G8B0=8O I5 1J40B 70@545=8 (2:;NG8B5;=> ?@54?>G5B5=8B5 >B BOE F25B>25 8 578:).
+Remember last login: 0?><=8 ?>A;54=8O 2;57J; ?>B@518B5;
+Plugins: ;J3-8=-8
+plugins-enabled-help: :B828@0=5 =0 ?;J3-8= ?@8;>65=8O.
+Enable Plugins: :B828@0=5 =0 ?;J3-8=-8
+plugins-sort-key-help: ?@545;O 15;578 70 A>@B8@0=5 =0 ?;J3-8=-8B5. ">20 ?>72>;O20 ?;J3-8=-8B5 40 A5 ?>O2O20B 2 >?@545;5= @54.
+Plugin: ;J3-8=
+allow-public-access-help: >30B> 5 0:B828@0=>, :0;5=40@JB <>65 40 1J45 87?>;720= :0B> read-only C1;8G5= :0;5=40@, :>9B> =5 878A:20 ?>B@518B5;8B5 40 A5 @538AB@8@0B ?@5420@8B5;=>.
+Allow public access: 07@5H020=5 =0 C1;8G5= 4>ABJ?
+public-access-view-others-help: @8 4>ABJ? 4> A8AB5<0B0 A ?C1;8G5= 4>ABJ? >?@545;O 40;8 ?>B@518B5;OB <>65 40 28640 :0;5=40@0 =0 4@C3 ?>B@518B5; =0 :0;5=40@0.
+Public access can view other users: C1;8G=8OB 4>ABJ? <>65 40 28640 8 4@C38 ?>B@518B5;8
+public-access-can-add-help: >30B> 5 0:B828@0=>, ?>B@518B5;8B5, :>8B> 8<0B 4>ABJ? 4> A8AB5<0B0 G@57 C1;8G=8O 4>ABJ? I5 <>30B 40 4>102OB AJ18B8O, => =O<0 40 A5 ?>O2O20B 2 :0;5=40@0 4>:0B> =O:>9 >B 04<8=8AB@0B>@8B5 =5 >4>1@8 =>2>B> AJ18B85.
+Public access can add events: C1;8G=8OB 4>ABJ? <>65 40 4>102O AJ18B8O
+public-access-add-requires-approval-help: ?@545;O 40;8 AJ18B8OB0, 4>1025=8 G@57 0:0C=B0 70 ?C1;8G5= 4>ABJ? 878A:20B >4>1@5=85 ?@548 40 1J40B ?>:070=8.
+Public access new events require approval: >28B5 AJ18B8O =0 C1;8G=8O 4>ABJ? 878A:20B >4>1@5=85
+groups-enabled-help: :B828@0 ?>44@J6:0B0 =0 3@C?8, :>OB> ?>72>;O20 =0 ?>B@518B5;8B5 40 8718@0B 4@C38 ?>B@518B5;8 A?>@54 3@C?8B5 8<.
+Groups enabled: @C?8B5 A0 0:B828@0=8
+user-sees-his-group-help: >30B> 5 0:B828@0=>, ?>B@518B5;8B5 =O<0 40 28640B ?>B@518B5;8 =0 :0;5=40@0, :>8B> =5 A0 2 ?>=5 54=0 >B B5E=8B5 3@C?8.
+User sees only his groups: >B@518B5;OB 28640 A0<> A2>8B5 3@C?8
+nonuser-enabled-help: :> 5 0:B828@0=>, 04<8=8AB@0B>@8B5 I5 8<0B 2J7<>6=>ABB0 40 4>102OB =5-?>B@518B5;A:8 :0;5=40@8
+Nonuser enabled: 5-?>B@518B5;A:8B5 :0;5=40@8 A0 0:B828@0=8
+nonuser-list-help: J45 40 1J40B ?>:0720=8 =5-?>B@518B5;A:8B5 :0;5=40@8 2 A?8AJ:0 A CG0AB=8F8
+Nonuser list: >:0720=5 2 A?8AJ:0 A CG0AB=8F8
+reports-enabled-help: :> 5 0:B828@0=>, ?>B@518B5;8B5 I5 28640B @0745; ">:;048" 2 4J=>B> =0 2AO:0 AB@0=8F0 8 I5 A0 2 AJAB>O=85 40 AJ74020B A?5F8D8G=8 4>:;048.  4>?J;=5=85, 04<8=8AB@0B82=8B5 ?>B@518B5;8 <>30B 40 AJ74020B 3;>10;=8 4>:;048, :>8B> I5 A5 ?>O2O20B 2 4J=>B> =0 2A8G:8 ?>B@518B5;A:8 AB@0=8F8.
+Reports enabled: >:;048B5 A0 0:B828@0=8
+Allow remote subscriptions: 07@5H020=5 =0 01>=0<5=B >B @07AB>O=85
+categories-enabled-help: :B828@0 ?>44@J6:0B0 =0 :0B53>@88 AJ18B8O.
+Categories enabled: 0B53>@88B5 A0 0:B828@0=8
+allow-external-users-help: @;5751O 40;8 ?>B@518B5; 872J= :0;5=40@8B5 <>65 40 1J45 ?@8102O= :J< AJ18B85. ">20 ?>72>;O20 =0 ?>B@518B5;8 872J= :0;5=40@8B5 40 1J40B >?8A20=8 :0B> CG0AB=8F8 2 4045=> AJ18B85.
+Allow external users: J7<>6=> 5 40 8<0 2J=H=8 ?>B@518B5;8
+external-can-receive-notification-help: >30B> A0 0:B828@0=8 2J=H=8 ?>B@518B5;8 8 87?>;720=5 =0 e-mail, 2J=H=8B5 ?>B@518B5;8 <>30B 40 ?>;CG020B 8725AB8O ?> e-mail :>30B> 1820 4>1025=>, 0:BC0;878@0=> 8;8 87B@8B> 4045=> AJ18B85 (0:> 5 ?>A>G5= e-mail 04@5AJB =0 2J=H=8O ?>B@518B5;).
+External users can receive email notifications: J=H=8B5 ?>B@518B5;8 <>30B 40 ?>;CG020B 8725AB8O ?> e-mail
+external-can-receive-reminder-help: >30B> A0 0:B828@0=8 2J=H=8 ?>B@518B5;8 8 87?>;720=5 =0 e-mail, 2J=H=8B5 ?>B@518B5;8 <>30B 40 ?>;CG020B ?>4A5I0=8O ?> e-mail (0:> 5 ?>A>G5= e-mail 04@5AJB =0 2J=H=8O ?>B@518B5;).
+External users can receive email reminders: J=H=8B5 ?>B@518B5;8 <>30B 40 ?>;CG020B ?>4A5I0=8O ?> e-mail
+email-enabled-help: :;NG20=5 8;8 87:;NG20=5 87?@0I0=5B> =0 e-mail-8 70 8725AB8O 8 ?>4A5I0=8O. 715@5B5 "5" 0:> =0AB@>9:8B5 =0 0H8O AJ@2J@ =5 ?>72>;O20B 87?@0I0=5 =0 e-mail.
+Email enabled: E-mail-JB 5 0:B828@0=
+email-default-sender: ?@545;O e-mail 04@5AJB, :>9B> I5 1J45 ?>A>G5= :0B> "?>40B5;" :>30B> A5 87?@0I0B ?>4A5I0=8O.
+Default sender address: 4@5A =0 ?>40B5;O ?> ?>4@0718@0=5
+Default user settings: >B@518B5;A:8 =0AB@>9:8 ?> ?>4@0718@0=5
+email-event-reminders-help: ?@545;O 40;8 40 1J40B 87?@0I0=8 ?>4A5I0=8O 70 AJ18B8O.
+Event reminders: >4A5I0=8O 70 AJ18B8O
+email-event-added: ?@545;O 40;8 40 1J40B 87?@0I0=8 8725AB8O ?> e-mail :>30B> :J< :0;5=40@0 8 5 4>1025=> AJ18B85.
+Events added to my calendar: J< :0;5=40@0 <8 5 4>1025=> AJ18B85
+email-event-updated: ?@545;O 40;8 40 1J40B 87?@0I0=8 8725AB8O ?> e-mail :>30B> AJ18B85 2 :0;5=40@0 5 18;> 0:BC0;878@0=>.
+Events updated on my calendar:  :0;5=40@0 <8 5 0:BC0;878@0=> AJ18B85
+email-event-deleted: ?@545;O 40;8 40 1J40B 87?@0I0=8 8725AB8O ?> e-mail :>30B> >B :0;5=40@0 5 ?@5<0E=0B> AJ18B85.
+Events removed from my calendar: B :0;5=40@0 <8 5 ?@5<0E=0B> AJ18B85
+email-event-rejected: ?@545;O 40;8 40 1J40B 87?@0I0=8 8725AB8O ?> e-mail :>30B> =O:>9 CG0AB=8: >B:065 AJ18B85, :>5B> 5 =0 0H8O :0;5=40@.
+Event rejected by participant: !J18B85 1820 >BE2J@;5=> >B AB@0=0 =0 CG0AB=8:
+Allow user to customize colors: >B@518B5;8B5 <>30B 40 8718@0B F25B>25
+Document background: $>= =0 4>:C<5=B0
+Document title: 03;0285 =0 4>:C<5=B0
+Document text: "5:AB =0 4>:C<5=B0
+Table grid color: &2OB =0 B01;8G=8O :>=BC@
+Table header background: $>=>2 F2OB =0 B01;8G=8O header
+Table header text: "5:AB =0 B01;8G=8O header
+Table cell background: $>= =0 B01;8G=8B5 :;5B:8
+Table cell background for current day: $>=>2 F2OB =0 B01;8G=0B0 :;5B:0 70 4=5H=8O 45=
+Table cell background for weekends: &2OB =0 B01;8G=8B5 :;5B:8 70 C8:5=48B5
+Event popup background: $>=>2 F2OB 70 popup =0 AJ18B8OB0
+Event popup text: &2OB =0 popup B5:AB0
+
+########################################
+# Page: adminhome.php
+#
+Assistants: A8AB5=B8
+Preferences: @54?>G8B0=8O
+Users: >B@518B5;8
+Account: :0C=B
+Categories: 0B53>@88
+Layers: !;>525
+Reports: >:;048
+Activity Log: 0?8A =0 459AB28OB0
+
+########################################
+# Page: approve_entry.php
+#
+Hello: 4@0259B5
+The subject was: "5<0B0 15H5
+The description is: ?8A0=85B> 5
+Date: 0B0
+Time: @5<5
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: 4<8=8AB@0B>@A:8 @568<
+
+########################################
+# Page: category.php
+#
+Global: ;>10;=0
+Category Name: <5 =0 :0B53>@8OB0
+Color: &2OB
+Add: >102O=5
+Delete: 7B@820=5
+
+########################################
+# Page: catsel.php
+#
+Remove: @5<0E20=5
+Cancel: B<O=0
+
+########################################
+# Page: del_entry.php
+#
+An appointment has been canceled for you by: 0H 0=3068<5=B 15H5 >B<5=5= >B
+
+########################################
+# Page: docadd.php
+#
+Description: ?8A0=85
+
+########################################
+# Page: edit_entry.php
+#
+Edit Entry: 540:B8@0=5 =0 70?8A
+Add Entry: >102O=5 =0 70?8A
+Participants: #G0AB=8F8
+brief-description-help: A83C@O20 :@0B:> >?8A0=85 (>B >:>;> 20 7=0:0) =0 AJ18B85B>. "> I5 ?@54AB02O AJ18B85B> ?@8 ?@53;54 =0 :0;5=40@0.
+Brief Description: @0B:> >?8A0=85
+full-description-help: A83C@O20 ?>4@>1=> >?8A0=85 =0 AJ18B85B>. "078 8=D>@<0F8O <>65 40 1J45 ?>;CG5=0 :>30B> ?>B@518B5;OB ?@53;5640 AJ18B85B>.
+Full Description: J;=> >?8A0=85
+access-help: ?@545;O =82>B> =0 4>ABJ? =0 AJ18B85B>.<br /> <i>C1;8G=></i>: A5:8 <>65 40 2848 ?J;=0B0 8=D>@<0F8O 70 AJ18B85B>.<br /><i>>=D845=F80;=></i>: @C38B5 <>30B 40 284OB, G5 8<0B5 70?;0=C20=> AJ18B85 70 B078 40B0 8 G0A, => =5 8 :0:2> B>G=> 5 B>.
+Access: >ABJ?
+priority-help: ?@545;O ?@8>@8B5B0 =0 AJ18B85B>. !J18B8O A 28A>: ?@8>@8B5B I5 1J40B 87?8A20=8 2 "bold".
+Priority: @8>@8B5B
+High: 28A>:
+Medium: A@545=
+Low: =8AJ:
+category-help: ?@545;O :0B53>@8OB0 =0 AJ18B85B>.
+Category: 0B53>@8O
+date-help: ?@545;O 40B0B0 =0 AJ18B85B>.
+Untimed event: 5-=0A@>G5=> AJ18B85
+Timed event: 0A@>G5=> AJ18B85
+All day event: &5;>4=52=> AJ18B85
+Timezone Offset: '0A>20 @07;8:0
+time-help: ?@545;O 2@5<5B> =0 AJ18B85B>.<br />715@5B5 8;8 "0A@>G5=> AJ18B85" (70 AJ18B85, :>5B> 5 70?;0=C20=> 70 B>G=> >?@545;5= G0A 2 B>78 45=), "5-=0A@>G5=> AJ18B85" (70 AJ18B85, :>5B> =O<0 :>=:@5B5= G0A (:0B> =0?@. ?@07=8:), 8;8 "&5;>4=52=> AJ18B85" (70 AJ18B85, :>5B> B@05 FO; 45= (:0B> =0?@. 40 >BAJAB20H >B >D8A0).
+duration-help: ?@545;O ?@>4J;68B5;=>ABB0 (2 G0A>25:<8=CB8) =0 AJ18B85B>.<br /><i>">20 ?>;5 <>65 40 1J45 >AB025=> ?@07=>.</i>
+hours: G0A>25
+minutes: <8=CB8
+participants-help: @54AB02O A?8AJ: =0 CG0AB=8F8B5 2 AJ18B85B>.
+external-participants-help: ?@545;O A?8AJ:JB A CG0AB=8F8 2 AJ18B85B>, :>8B> =5 A0 ?>B@518B5;8 =0 :0;5=40@0. >B@518B5;8B5 B@O120 40 1J40B 871@>5=8 =0 >B45;=8 @54>25 :0B> <>65 40 1J45 ?>A>G5= 8 e-mail 70 2A5:8. :> 1J45 ?>A>G5= e-mail 04@5A, ?>B@518B5;OB 5 2 AJAB>O=85 40 ?>;CG020 8725AB8O 8 =0?><=O=8O.
+External Participants: J=H=8 CG0AB=8F8
+repeat-type-help: 715@5B5 :>;:> G5AB> B@O120 40 A5 ?>2B0@O AJ18B85B>.<i>65<5A5G=> (?> 45= >B A54<8F0B0)</i> ?>72>;O20 54=> AJ18B85 40 A5 ?>2B0@O 2 ?>A;54=8O ?>=545;=8: =0 2A5:8 <5A5F, B@5B8O G5B2J@BJ: =0 2A5:8 <5A5F 8 B.=. <i>5A5G=> (?> 40B8)</i> ?>72>;O20 4045=> AJ18B85 40 A5 ?>2B0@O =0 AJI8O 45= >B <5A5F0.
+Daily: 654=52=>
+Weekly: 65A54<8G=>
+Monthly: 65<5A5G=>
+by day: ?> 45= >B A54<8F0B0
+by date: ?> 40B8
+Yearly: >48H=>
+repeat-end-date-help: ?@545;O 40B0B0, 4> :>OB> A;5420 40 A5 ?>2B0@O AJ18B85B>.
+Use end date: 7?>;720=5 =0 D8=0;=0 40B0
+Frequency: '5AB>B0
+All: A8G:8
+Send Reminder: 7?@0B8 ?>4A5I0=5
+days: 4=8
+Delete entry: 7B@820=5 =0 70?8A0
+
+########################################
+# Page: edit_entry_handler.php
+#
+A new appointment has been made for you by: 0 0A 15H5 =0A@>G5= =>2 0=3068<5=B >B
+An appointment has been updated by: 0H 0=3068<5=B 15H5 0:BC0;878@0= >B
+The following conflicts with the suggested time: 0;8F5 A0 A;54=8B5 :>=D;8:B8 A ?@54;>65=8O G0A
+Please look on: >;O, ?>3;54=5B5 =0
+to accept or reject this appointment: 40 ?@85<5B5 8;8 >B:065B5 B>78 0=3068<5=B
+to view this appointment: 40 ?@53;540B5 B>78 0=3068<5=B
+Scheduling Conflict: >=D;8:B ?@8 =0A@>G20=5
+Your suggested time of: @54;>65=8OB >B 0A G0A 70
+conflicts with the following existing calendar entries: 2;870 2 :>=D;8:B AJA A;54=8B5 25G5 =0;8G=8 70?8A8 2 :0;5=40@0
+
+########################################
+# Page: edit_layer.php
+#
+Add Layer: >102O=5 =0 A;>9
+Edit Layer: 540:B8@0=5 =0 A;>9
+Source: 7B>G=8:
+Duplicates: C?;8:0B8
+Show layer events that are the same as your own: >:0720=5 =0 A;>528 AJ18B8O, :>8B> AJ2?040B A 0H8B5 A>1AB25=8
+Add to My Calendar: >102O=5 :J< >O :0;5=40@
+Delete layer: 7B@820=5 =0 A;>9
+
+########################################
+# Page: edit_layer_handler.php
+#
+You cannot create a layer for yourself.: 5 <>65B5 40 AJ74020B5 A;>525 70 A0<8B5 A515 A8
+You can only create one layer for each user.: >65B5 40 AJ74045B5 A0<> 548= A;>9 70 2A5:8 ?>B@518B5;
+
+########################################
+# Page: edit_nonusers.php
+#
+Add User: >102O=5 =0 ?>B@518B5;
+Edit User: 540:B8@0=5 =0 ?>B@518B5;
+First Name: <5
+Last Name: $0<8;8O
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Error: @5H:0
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: #B@5
+Today: =5A
+Yesterday: G5@0
+Day before yesterday: =78 45=
+Next week: !;5420I0B0 A54<8F0
+This week: "078 A54<8F0
+Last week: 8=0;0B0 A54<8F0
+Week before last: >-?@548H=0B0 A54<8F0
+Next week and week after: !;5420I0B0 8 ?>-A;5420I0B0 A54<8F0
+This week and next week: "078 8 A;5420I0B0 A54<8F0
+Last week and this week: 8=0;0B0 8 B078 A54<8F0
+Last two weeks: >A;54=8B5 425 A54<8F8
+Next month: !;5420I8O <5A5F
+This month: ">78 <5A5F
+Last month: 8=0;8O <5A5F
+Month before last: >-?@548H=8O <5A5F
+Next year: !;5420I0B0 3>48=0
+This year: "078 3>48=0
+Last year: 8=0;0B0 3>48=0
+Year before last: >-<8=0;0B0 3>48=0
+Invalid report id.: 520;84=> id =0 4>:;040
+Unnamed Report: 578<5=5= 4>:;04
+Add Report: >102O=5 =0 4>:;04
+Edit Report: 540:B8@0=5 =0 4>:;04
+Report name: <5 =0 4>:;040
+User: >B@518B5;
+Current User: 0AB>OI ?>B@518B5;
+Include standard header/trailer: :;NG20=5 =0 AB0=40@B5= header/trailer
+Include previous/next links: :;NG20=5 =0 ?@548H=8/A;5420I8 ;8=:>25
+Include empty dates: :;NG20=5 =0 ?@07=8 40B8
+Date range: 1E20B =0 40B0B0
+Template variables: @><5=;828 =0 <>45;0
+Page template: >45; 70 AB@0=8F0B0
+Day template: >45; 70 45=O
+Event template: >45; 70 AJ18B85B>
+
+########################################
+# Page: edit_report_handler.php
+#
+Variable N not found: @><5=;820B0 N =5 15H5 >B:@8B0
+
+########################################
+# Page: edit_user.php
+#
+Username: >B@518B5;A:> 8<5
+E-mail address: E-mail 04@5A
+Password: 0@>;0
+again: >I5 254=J6
+Enabled: :B828@0=8
+Disabled for demo: 570:B828@0=> 2 45<>-25@A8OB0
+Change Password: !<O=0 =0 ?0@>;0B0
+New Password: >20 ?0@>;0
+Set Password: ?@545;O=5 =0 ?0@>;0
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: 5 5 @07@5H5=> 87B@820=5B> =0 ?>B@518B5;8
+The passwords were not identical.: 25B5 ?0@>;8 =5 AJ2?040B
+You have not entered a password.: 5 AB5 2J25;8 ?0@>;0
+
+########################################
+# Page: export.php
+#
+Export: :A?>@B8@0=5
+Export format: $>@<0B =0 5:A?>@B8@0=5
+Export all dates: :A?>@B8@0=5 =0 2A8G:8 40B8
+Start date: 0G0;=0 40B0
+End date: @09=0 40B0
+Modified since: >48D8F8@0=> A;54
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: $>@<0BJB =0 5:A?>@B8@0=5 =5 5 >?@545;5= 8;8 5 =5?@028;5=
+
+########################################
+# Page: groups.php
+#
+Add New Group: >102O=5 =0 =>20 3@C?0
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: 578<5==0 3@C?0
+Add Group: >102O=5 =0 3@C?0
+Edit Group: 540:B8@0=5 =0 3@C?0
+Group name: <5 =0 3@C?0B0
+Updated: :BC0;878@0=>
+Created by: !J74045=> >B
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: "@O120 40 CB>G=8B5 8<5B> =0 3@C?0B0
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: 2B><0B8G=> 0:BC0;878@0=5 =0 :0;5=40@8B5
+auto-refresh-help: >30B> 5 0:B828@0=0, 4=52=8OB, A54<8G=8OB, <5A5G=8OB 873;54 8 A?8AJ:JB A =5>4>1@5=8 AB@0=8F8 ?5@8>48G5A:8 I5 A5 0:BC0;878@0B 02B><0B8G=>.
+Auto-refresh time: 5@8>4 =0 02B><0B8G=> 0:BC0;878@0=5
+auto-refresh-time-help: :> 02B><0B8G=>B> 0:BC0;878@0=5 5 0:B828@0=>, A B>20 A5 >?@545;O 2@5<5B> <564C 425 0:BC0;870F88.
+Display weekends in week view: >:0720=5 =0 C8:5=48B5 2 A54<8G=8O 873;54
+Time interval: @5<528 8=B5@20;
+time-interval-help: ?@545;O 3>;5<8=0B0 =0 2@5<528B5 1;>:>25 2 A54<8G=8O 8 4=52=8O 873;54.
+Nonuser: 5-?>B@518B5;A:8 :0;5=40@8
+colors-help: A8G:8 F25B>25 B@O120 40 1J40B 2J2545=8 2 E5:A045F8<0;=8O D>@<0B "#RRGGBB", :J45B> "RR" 5 E5:A045F8<0;=0B0 AB>9=>AB 70 G5@25=>, "GG" 5 E5:A045F8<0;=0B0 AB>9=>AB 70 75;5=> 8 "BB" 5 E5:A045F8<0;=0B0 AB>9=>AB 70 A8=L>.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: !J>1I5B5 70 1J3
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: >102O=5/@540:B8@0=5 =0 70?8A8 2 :0;5=40@0
+Repeat Type: 84 ?>2B>@O5<>AB
+Repeat End Date: @09=0 40B0 =0 ?>2B>@5=85
+Repeat Day: 5= =0 ?>2B>@5=85
+
+########################################
+# Page: help_import.php
+#
+Import: <?>@B8@0=5
+
+########################################
+# Page: help_index.php
+#
+Help Index: !J4J@60=85 =0 ><>I
+
+########################################
+# Page: help_layers.php
+#
+Add/Edit/Delete: >102O=5/ 540:B8@0=5/7B@820=5
+
+########################################
+# Page: help_pref.php
+#
+Default Category: 0B53>@8O ?> ?>4@0718@0=5
+default-category-help: ?@545;O :0B53>@8OB0, 2 :>OB> B@O120 40 ?>?040B =>28B5 AJ18B8O ?> ?>4@0718@0=5.
+When I am the boss: >30B> 07 >?@545;O<
+Email me event notification: 7?@0B5B5 <8 8725AB85 ?> E-mail
+I want to approve events: A:0< 40 >4>1@O20< AJ18B8OB0
+Subscribe/Publish: 1>=8@0=5/C1;8:C20=5
+
+########################################
+# Page: import.php
+#
+Disabled: 570:B828@0=8
+
+########################################
+# Page: layers.php
+#
+Layer: !;>9
+Edit layer: 540:B8@0=5 =0 A;>9
+Layers are currently: >=0AB>OI5< A;>525B5 A0
+Disable Layers: 570:B828@0=5 =0 A;>525B5
+Click here: 0B8A=5B5 BC:
+to modify the layers settings for the: 40 1J40B ?@><5=5=8 A;>528B5 =0AB@>9:8 70
+Add layer: >102O=5 =0 A;>9
+
+########################################
+# Page: list_unapproved.php
+#
+View this entry: 86 B>78 70?8A
+Approve/Confirm: 4>1@O20=5/>B2J@64020=5
+Reject: BE2J@;O=5
+Approve this entry?: 4>1@O20=5 =0 70?8A0?
+Reject this entry?: BE2J@;O=5 =0 70?8A0?
+
+########################################
+# Page: login.php
+#
+Invalid login: 520;84=0 @538AB@0F8O
+
+########################################
+# Page: pref.php
+#
+Save Preferences: 0?078 ?@54?>G8B0=8OB0
+hour: G0A
+
+########################################
+# Page: report.php
+#
+This event is confidential.: ">20 AJ18B85 5 :>=D845=F80;=>
+cont.: ?@>4J;6.
+Approved: 4>1@5=
+Deleted: 7B@8B8
+Rejected: BE2J@;5=8
+Waiting for approval: 7G0:20I8 70 >4>1@5=85
+Unknown: 58725AB5=
+to manage reports for the Public Access calendar: 70 40 C?@02;O20B5 4>:;048B5 70 0;5=40@0 A ?C1;8G5= 4>ABJ?
+Add new report: >102O=5 =0 =>2 4>:;04
+Manage Reports: #?@02;5=85 =0 4>:;048B5
+
+########################################
+# Page: search.php
+#
+Advanced Search: !?5F80;878@0=> BJ@A5=5
+Search: "J@A5=5
+Keywords: ;NG>28 4C<8
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: "@O120 40 2J2545B5 54=0 8;8 ?>25G5 :;NG>28 4C<8 70 BJ@A5=5
+Search Results: 57C;B0B8 >B BJ@A5=5B>
+match found: =0<5@5=> AJ>B25BAB285
+matches found: =0<5@5=8 AJ>B25BAB28O
+No matches found: O<0 =0<5@5=8 AJ>B25BAB28O
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: 5 AB5 4>1028;8 =8B> 54=0 :0B53>@8O
+Set Category: 715@8 :0B53>@8O
+
+########################################
+# Page: users.php
+#
+denotes administrative user: >1>7=0G020 04<8=8AB@0B82=8B5 ?>B@518B5;8
+Add New User: >102O=5 =0 =>2 ?>B@518B5;
+
+########################################
+# Page: usersel.php
+#
+Reset: =C;8@0=5
+
+########################################
+# Page: view_entry.php
+#
+Assistant mode: A8AB5=BA:8 @568<
+Status: !B0BCA
+External User: J=H5= ?>B@518B5;
+Approve/Confirm entry: 4>1@O20=5/>B2J@64020=5 =0 70?8A
+Reject entry: BE2J@;O=5 =0 70?8A
+Set category: 71>@ =0 :0B53>@8O
+This will delete this entry for all users.: 7B@820=5 =0 B>78 70?8A 70 2A8G:8 40B8
+Edit entry: 540:B8@0=5 =0 70?8A
+Edit repeating entry for all dates: 540:B8@0=5 =0 ?>2B0@OI A5 70?8A 70 2A8G:8 40B8
+Delete repeating event for all dates: 7B@820=5 =0 ?>2B0@OI> A5 AJ18B85 70 2A8G:8 40B8
+Edit entry for this date: 540:B8@0=5 =0 70?8A 70 B078 40B0
+Delete entry only for this date: 7B@820=5 =0 70?8A A0<> 70 B078 40B0
+This will delete the entry from your calendar.: ">20 I5 87B@85 70?8A0 >B :0;5=40@0 8.
+Do you want to add this entry to your calendar?: 5;05B5 ;8 40 4>1028B5 B>78 70?8A :J< :0;5=0@0 8?
+This will add the entry to your calendar.: ">20 I5 4>1028 70?8A0 :J< :0;5=40@0 8.
+Email all participants: 0?8H8 5-mail 4> 2A8G:8 CG0AB=8F8
+Hide activity log: !:@89 70?8A0 =0 0:B82=>ABB0
+Show activity log: >:068 70?8A =0 0:B82=>ABB0
+Export this entry to: :A?>@B8@0=5 =0 B>78 70?8A 2
+
+########################################
+# Page: includes/access.php
+#
+Manage Views: #?@02;5=85 =0 873;548B5
+
+########################################
+# Page: includes/date_formats.php
+#
+December: 5:5<2@8
+Dec: 5:5<2@8
+
+########################################
+# Page: includes/functions.php
+#
+exceeds limit of XXX events per day: ?@528H020 ;8<8B0 >B XXX AJ18B8O =0 45=
+Event approved: !J18B85B> 5 >4>1@5=>
+Event created: !J18B85B> 5 2J2545=>
+Event deleted: !J18B85B> 5 87B@8B>
+Notification sent: 725AB85B> 5 87?@0B5=>
+Event rejected: !J18B85B> 5 >B:070=>
+Reminder sent: 0?><=O=5B> 5 87?@0B5=>
+Event updated: !J18B85B> 5 0:BC0;878@0=>
+Event: !J18B85
+Action: 59AB285
+Printer Friendly: #4>1=> 70 >B?5G0B20=5
+Generate printer-friendly version: 5=5@8@0=5 =0 873;54, C4>15= 70 >B?5G0B20=5
+January: /=C0@8
+February: $52@C0@8
+March: 0@B
+April: ?@8;
+May_: 09
+June: .=8
+July: .;8
+August: 23CAB
+September: !5?B5<2@8
+October: :B><2@8
+November: >5<2@8
+Jan: /=C0@8
+Feb: $52@C0@8
+Mar: 0@B
+Apr: ?@8;
+May: 09
+Jun: .=8
+Jul: .;8
+Aug: 23CAB
+Sep: !5?B5<2@8
+Oct: :B><2@8
+Nov: >5<2@8
+The following error occurred: >O28 A5 A;54=0B0 3@5H:0
+You are not authorized.: 5 AB5 C?J;=><>I5=8
+Add N hours to: >102O=5 =0 N G0A0 :J<
+Subtract N hours from: 720640=5 =0 N G0A0 >B
+same as: AJI>B> :0B>
+server time: 2@5<5B> =0 AJ@2J@0
+Error approving event: @5H:0 ?@8 >4>1@5=85 =0 AJ18B85B>
+Sunday: 545;O
+Monday: >=545;=8:
+Tuesday: B>@=8:
+Wednesday: !@O40
+Thursday: '5B2J@BJ:
+Friday: 5BJ:
+Saturday: !J1>B0
+Sun: 54
+Mon: >=
+Tue: B>
+Wed: !@O
+Thu: '5B
+Fri: 5B
+Sat: !J1
+
+########################################
+# Page: includes/trailer.php
+#
+Add New Entry: >102O=5 =0 =>2 70?8A
+Logout: 7E>4
+Go to: 48 =0
+Manage calendar of: #?@02;5=85 =0 :0;5=40@0 =0
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: 520;84=0 @538AB@0F8O =0 ?>B@518B5;
+
+########################################
+# Page: includes/xcal.php
+#
+Unnamed Event: 578<5==> AJ18B85
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: 725AB85
+
+########################################
+# Page: includes/js/admin.php
+#
+Server URL is required.: 78A:20 A5 URL =0 AJ@2J@0
+Invalid color for document background.: 520;845= D>=>2 F2OB =0 4>:C<5=B0
+Invalid color for document title.: 520;845= F2OB 70 703;0285 =0 4>:C<5=B0
+Invalid color for table cell background.: 520;845= F2OB 70 B01;8G=8B5 :;5B:8
+Invalid color for table grid.: 520;845= F2OB 70 :>=BC@ =0 B01;8F0B0
+Invalid color for table header background.: 520;845= D>=>2 F2OB 70 B01;8G=8O header
+Invalid color for table text background.: 520;845= F2OB 70 B5:AB0 =0 B01;8F0B0
+Invalid color for event popup background.: 520;845= D>=>2 F2OB 70 popup =0 AJ18B8OB0
+Invalid color for event popup text.: 520;845= F2OB 70 B5:AB 2 popup =0 AJ18B8OB0
+Invalid color for table cell background for today.: 520;845= D>=>2 F2OB 70 B01;8G=0 :;5B:0 70 4=5H=8O 45=
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: 5 AB5 2J25;8 @0B:> >?8A0=85
+The time you have entered begins before your preferred work hours. Is this correct?: @5<5B>, :>5B> AB5 2J25;8 70?>G20 ?@548 ?@54?>G8B0=8B5 >B 0A @01>B=8 G0A>25. ">20 ?@028;=> ;8 5?
+You have not entered a valid time of day: 5 AB5 2J25;8 20;845= G0A
+
+########################################
+# Page: includes/js/edit_layer.php
+#
+Invalid color: 520;845= F2OB
+
+########################################
+# Page: includes/menu/index.php
+#
+Unapproved Events: 5>4>1@5=8 AJ18B8O
+
+########################################
+# Page: tools/send_reminders.php
+#
+Reminder: >4A5I0=5
