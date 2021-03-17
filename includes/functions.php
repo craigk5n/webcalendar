@@ -4343,7 +4343,7 @@ function load_user_preferences ( $guest = '' ) {
  * @return string The name of the specified month.
  */
 function month_name ( $m, $format = 'F' ) {
-  global $lang;
+  global $bydayLabels, $bydayNames, $lang;
   static $local_lang, $month_names, $monthshort_names;
   //.
   // We may have switched languages.
@@ -4381,6 +4381,18 @@ function month_name ( $m, $format = 'F' ) {
       translate ( 'Nov' ),
       translate ( 'Dec' )];
   }
+  // These don't get returned from here, we just want to make sure they get set.
+  // Elimiates setting them in about 10 other files,
+  // half of which reverse $bydayNames and $bydayLabels.
+  $bydayLabels = ['SU','MO','TU','WE','TH','FR','SA'];
+  $bydayNames = [
+    translate ( 'SU' ),
+    translate ( 'MO' ),
+    translate ( 'TU' ),
+    translate ( 'WE' ),
+    translate ( 'TH' ),
+    translate ( 'FR' ),
+    translate ( 'SA' )];
 
   if ( $m >= 0 && $m < 12 )
     return ( $format == 'F' ? $month_names[$m] : $monthshort_names[$m] );
