@@ -50,8 +50,7 @@ function time_selection ( $prefix, $time = '', $trigger = false ) {
     $hour = sprintf ( "%02d", $hour );
   }
   $minute = sprintf ( "%02d", $minute );
-  $ret .= '
-            <select ' . 'name="' . $prefix . 'hour" id="' . $prefix . 'hour" '
+  $ret .= '<select class="col-auto" ' . 'name="' . $prefix . 'hour" id="' . $prefix . 'hour" '
    . $trigger_str . '>';
   for ( $i = 0; $i < $maxhour; $i++ ) {
     $ihour = ( $TIME_FORMAT == '24' ? sprintf ( "%02d", $i ) : $i );
@@ -64,7 +63,7 @@ function time_selection ( $prefix, $time = '', $trigger = false ) {
   }
   $ret .= '
             </select>:
-            <select ' . 'name="' . $prefix . 'minute" id="' . $prefix
+            <select class="col-auto" ' . 'name="' . $prefix . 'minute" id="' . $prefix
    . 'minute" ' . $trigger_str . '>';
   // We use $TIME_SLOTS to populate the minutes pulldown.
   $found = false;
@@ -88,7 +87,7 @@ function time_selection ( $prefix, $time = '', $trigger = false ) {
      . '</label>
             <label><input type="radio" name="' . $prefix . 'ampm" id="'
      . $prefix . 'ampmP" value="12" ' . $pmsel . ' />&nbsp;' . translate ( 'pm' )
-     . '</label>' : '
+     . '</label>&nbsp;' : '
             <input type="hidden" name="' . $prefix . 'ampm" value="0" />' );
 }
 
@@ -146,10 +145,7 @@ $INC = array ( 'js/translate.js.php', 'js/edit_entry.php/false/' . $user, 'js/vi
 $textareasize = ( $ALLOW_HTML_DESCRIPTION === 'Y' ? '20' : '15' );
 
 // Add Modal Dialog javascript/CSS
-$HEAD =
-'<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
-<link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
-';
+$HEAD = '';
 
 $byday = $bymonth = $bymonthday = $bysetpos = $participants =
 $exceptions = $inclusions = $reminder = [];
@@ -562,14 +558,12 @@ if ( $can_edit ) {
     $tabs_title[] = translate ( 'Reminders' );
   }
 
-  $tabs = '<ul id="viewtabs" class="shadetabs" style="margin-left: 10px;">';
+  $tabs = '<ul class="nav nav-tabs">';
   for ( $i = 0, $cnt = count ( $tabs_name ); $i < $cnt; $i++ ) {
-    $tabs .= '<li><a href="#" rel="' . $tabs_name[$i] .
-      '"' . ( $i == 0 ? ' class="selected"' : '' ) .
-      '>' . $tabs_title[$i] . '</a></li>' . "\n";
+    $tabs .= '<li class="nav-item"><a class="nav-link ' .
+    ( $i == 0 ? ' active' : '' ) . '" data-toggle="tab" href="#' . $tabs_name[$i] . '">' . $tabs_title[$i] . '</a></li>';
   }
-  $tabs .= "</ul>\n" .
-    '<div style="border:1px solid gray; width:95%; margin-bottom: 1em; margin-left: 10px; margin-right: 10px; padding: 10px">';
+  $tabs .= "</ul>\n";
   $tabI = 0;
   echo '
     <form action="edit_entry_handler.php" method="post" name="editentryform" '
@@ -591,86 +585,62 @@ if ( $can_edit ) {
       <input type="hidden" name="parent" value="' . $parent . '" />' ) . '
 
 <!-- TABS -->' . ( $useTabs ? $tabs : '' ) . '
-<!-- TABS BODY -->' . ( $useTabs ? '
-  <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">
-<!-- DETAILS -->' : '
-      <fieldset>
-        <legend>' . translate ( 'Details' ) . '</legend>' ) . '
-          <table>
-            <tr>
-              <td class="tooltip" title="'
-   . tooltip ( 'brief-description-help' ) . '"><label for="entry_brief">'
-   . translate ( 'Brief Description' ) . ':</label></td>
-              <td colspan="2"><input type="text" name="name" id="entry_brief" '
-   . 'size="25" value="' . htmlspecialchars ( $name ) . '" /></td>
-            </tr>
-            <tr>
-              <td class="tooltip aligntop" title="'
-   . tooltip ( 'full-description-help' ) . '"><label for="entry_full">'
-   . translate ( 'Full Description' ) . ':</label></td>
-              <td width="60%"><textarea name="description" id="entry_full" rows="'
-   . $textareasize . '" cols="50"' . '>' . htmlspecialchars ( $description )
-   . '</textarea></td>' 
-   . '<td class="aligntop">'
-   . ( ! empty ( $categories ) || $DISABLE_ACCESS_FIELD != 'Y' ||
-    ( $DISABLE_PRIORITY_FIELD != 'Y' )
-    /* New table for extra fields. */ ? '
-                <table width="90%">' : '' )
+<!-- TABS BODY -->' . '
+  <div class="tab-content mb-12">
+  <div class="tab-pane container active" id="' . $tabs_name[$tabI++] . '">
+  <div class="form-group">
+
+  <label for="entry_brief" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'brief-description-help' ) . '">' .
+    translate ( 'Brief Description' ) . ':</label>
+  <input class="form-control" type="text" name="name" id="entry_brief" '
+   . 'size="25" value="' . htmlspecialchars ( $name ) . '" />
+
+   <label for="description" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'full-description-help' ) . '">' .
+   translate ( 'Full Description' ) . ':</label>
+ <textarea class="form-control" rows="5" name="description" id="description">'
+  . htmlspecialchars ( $description ) . '</textarea>'
+             
    . ( $DISABLE_ACCESS_FIELD != 'Y' ? '
-                  <tr>
-                    <td class="tooltip" title="' . tooltip ( 'access-help' )
-     . '"><label for="entry_access">' . translate ( 'Access' ) . ':</label></td>
-                    <td width="80%">
-                      <select name="access" id="entry_access">
-                        <option value="P"' . ( $access == 'P' || !
+    <label for="access" data-toggle="tooltip" data-placement="top" data-html="true" title="' . tooltip ('access-help', '', true) . '">' .
+    translate ( 'Access' ) . ':</label>
+    <select class="form-control" name="access" id="entry_access">'
+    . 'size="25" value="' . htmlspecialchars ( $name ) . '" />
+    <option value="P"' . ( $access == 'P' || !
       strlen ( $access ) ? $selected : '' ) . '>' . translate ( 'Public' )
      . '</option>
                         <option value="R"' . ( $access == 'R' ? $selected : '' )
      . '>' . translate ( 'Private' ) . '</option>
                         <option value="C"' . ( $access == 'C' ? $selected : '' )
      . '>' . translate ( 'Confidential' ) . '</option>
-                      </select>
-                    </td>
-                  </tr>' : '' );
+                      </select>'  : '' );
 
   if ( $DISABLE_PRIORITY_FIELD != 'Y' ) {
-    echo '
-                  <tr>
-                    <td class="tooltip" title="' . tooltip ( 'priority-help' )
-     . '"><label for="entry_prio">' . translate ( 'Priority' )
-     . ':&nbsp;</label></td>
-                    <td>
-                      <select name="priority" id="entry_prio">';
-    $pri = ['',
-      translate ( 'High' ),
-      translate ( 'Medium' ),
-      translate ( 'Low' )];
+    echo '<label for="priority" data-toggle="tooltip" data-placement="top" title="' . tooltip('priority-help') . '">' .
+      translate('Priority') . ':</label>
+      <select class="form-control" name="priority" id="entry_prio">';
+    $pri = [
+      '',
+      translate('High'),
+      translate('Medium'),
+      translate('Low')
+    ];
 
-    for ( $i = 1; $i <= 9; $i++ ) {
-      echo '
-                        <option value="' . $i . '"'
-       . ( $priority == $i ? $selected : '' )
-       . '>' . $i . '-' . $pri[ceil ( $i / 3 )] . '</option>';
+    for ($i = 1; $i <= 9; $i++) {
+      echo '<option value="' . $i . '"'
+      . ($priority == $i ? $selected : '')
+        . '>' . $i . '-' . $pri[ceil($i / 3)] . '</option>';
     }
-    echo '
-                      </select>
-                    </td>
-                  </tr>';
+    echo '</select>';
   }
   echo ( ! empty ( $categories ) && $CATEGORIES_ENABLED == 'Y' ? '
-                  <tr>
-                    <!-- CATEGORIES -->
-                    <td class="aligntop">
-                      <span>' . translate ( 'Category' )
-     . ':<br /></span>
-                      <button class="btn" type="button" onclick="editCats( event )" />' . translate('Edit') . '</button>
-                    </td>
-                    <td class="aligntop">
-                      <span name="catnames" id="entry_categories" " onclick="editCats( event )" style="cursor: pointer;" />' . $catNames . '</span>
-                      <input type="hidden" id="cat_id" name="cat_id" value="' . $catList
-     . '" />
-                    </td>
-                  </tr>' : '' )
+    <!-- CATEGORIES -->
+    <label for="category" data-toggle="tooltip" data-placement="top" title="' . tooltip('category-help') . '">' .
+      translate('Category') . ':</label>
+    <div>
+      <!-- <button class="btn" type="button" onclick="editCats( event )" />' . translate('Edit') . '</button> -->
+      <input type="text" readonly name="catnames" id="entry_categories" " onclick="editCats( event )" style="cursor: pointer;" value="' . $catNames . ( empty($catNames)?'None':'') . '">
+      <input class="form-control" type="hidden" id="cat_id" name="cat_id" value="' . $catList . '" />
+    </div>' : '' )
    . ( ! empty ( $categories ) || $DISABLE_ACCESS_FIELD != 'Y' ||
     ( $DISABLE_PRIORITY_FIELD != 'Y' ) ? '
                 </table>' : '' );
@@ -735,42 +705,33 @@ if ( $can_edit ) {
      . $others_complete . '" />';
   } //end tasks only
 
-  echo '
-              </td>
-            </tr>' . ( $DISABLE_LOCATION_FIELD != 'Y' ? '
-            <tr>
-              <td class="tooltip" title="' . tooltip ( 'location-help' )
-     . '"><label for="entry_location">' . translate ( 'Location' )
-     . ':</label></td>
-              <td colspan="2"><input type="text" name="location" '
-     . 'id="entry_location" size="55" value="' . htmlspecialchars ( $location )
-     . '" /></td>
-            </tr>' : '' ) . ( $DISABLE_URL_FIELD != 'Y' ? '
-            <tr>
-              <td class="tooltip" title="' . tooltip ( 'url-help' )
-     . '"><label for="entry_url">' . translate ( 'URL' ) . ':</label></td>
-              <td colspan="2"><input type="text" name="entry_url" id="entry_url"'
-     . ' size="100" value="' . htmlspecialchars ( $cal_url ) . '" /></td>
-            </tr>' : '' ) . '
-            <tr>
-              <td class="tooltip" title="' . tooltip ( 'date-help' )
-   . '"><label>'
-   . ( $eType == 'task' ? translate ( 'Start Date' ) : translate ( 'Date' ) )
-   . ':</label></td>
-              <td colspan="2">' . date_selection ( '', $cal_date ) . '</td>
-            </tr>
-            <tr>
-              <td';
+  echo ( $DISABLE_LOCATION_FIELD != 'Y' ? '
+    <label for="location" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'location-help' ) . '">' .
+    translate ( 'Location' ) . ':</label>
+    <input class="form-control" type="text" name="location" '
+    . 'id="entry_location" size="55" value="' . htmlspecialchars ( $location )
+    . '" />' : '' ) .
+    
+  ( $DISABLE_URL_FIELD != 'Y' ? '
+    <label for="url" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'url-help' ) . '">' .
+    translate ( 'URL' ) . ':</label>
+    <input class="form-control" type="text" name="entry_url" '
+    . 'id="entry_url" size="100" value="' . htmlspecialchars ( $location )
+    . '" />' : '' ) .
+
+    '<label for="date" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'date-help' ) . '">' .
+    ( $eType == 'task' ? translate ( 'Start Date' ) : translate ( 'Date' ) ) . ':</label>' .
+    date_selection ( '', $cal_date );
 
   if ( $eType != 'task' ) {
     if (! isset($duration) || ! is_numeric($duration))
       $duration = 0;
     $dur_h = intval ( $duration / 60 );
 
-    echo '>&nbsp;</td>
-              <td colspan="2">
-                <select name="timetype" onchange="timetype_handler()">
-                  <option value="U" '
+    echo '<label for="timetype" data-toggle="tooltip" data-placement="top" data-html="true" title="' . tooltip ( 'time-help', '', true ) . '">' .
+    translate ( 'Type' ) . ':</label>
+    <select class="form-control" name="timetype" onchange="timetype_handler()">
+      <option value="U" '
      . ( $allday != 'Y' && $hour == -1 ? $selected : '' ) . '>'
      . translate ( 'Untimed event' ) . '</option>
                   <option value="T" '
@@ -779,52 +740,41 @@ if ( $can_edit ) {
                   <option value="A" '
      . ( $allday == 'Y' ? $selected : '' ) . '>'
      . translate ( 'All day event' ) . '</option>
-                </select>
-              </td>
-            </tr>' . ( empty ( $TZ_notice ) ? '' : '
-            <tr id="timezonenotice">
-              <td class="tooltip" title="'
-       . tooltip ( 'Time entered here is based on your Timezone.' ) . '">'
-       . translate ( 'Timezone Offset' ) . ':</td>
-              <td colspan="2">' . $TZ_notice . '</td>
-            </tr>' ) . '
-            <tr id="timeentrystart" style="visibility:hidden;">
-              <td class="tooltip" title="' . tooltip ( 'time-help' ) . '">'
-     . translate ( 'Time' ) . ':' . '</td>
-              <td colspan="2">' . time_selection ( 'entry_', $cal_time );
+      </select>' .
+      
+      ( empty ( $TZ_notice ) ? '' : '
+        <span cid="timeentrystart" style="visibility:hidden;">
+        <label for="timeentrystart" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'Time entered here is based on your Timezone' ) . '">' .
+        translate ( 'Timezone Offset' ) . ':</label></span>
+        <div>'  . $TZ_notice . '</div>' ) .
+        
+      '<span id="timeentrystart" style="visibility:hidden;">
+        <label for="timeentrystart" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'time-help' ) . '">' .
+        translate ( 'Time' ) . ':</label>' .
+        time_selection ( 'entry_', $cal_time ) . "</span>\n";
 
     if ( $TIMED_EVT_LEN != 'E' ) {
-      echo '
-              </td>
-            </tr>
-            <tr id="timeentryduration" style="visibility:hidden;">
-              <td><span class="tooltip" title="' . tooltip ( 'duration-help' )
-       . '">' . translate ( 'Duration' ) . ':&nbsp;</span></td>
-              <td colspan="2">
-                <input type="text" name="duration_h" id="duration_h" size="2" '
+      echo '<span id="timeentryduration" style="visibility:hidden;">
+          <label for="duration" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'duration-help' ) . '">' .
+          translate("Duration") . ":</label>" .
+          '<input type="text" name="duration_h" id="duration_h" size="2" '
        . 'maxlength="2" value="';
       if ( $allday != 'Y' )
         printf ( "%d", $dur_h );
 
-      echo '" />:
-                <input type="text" name="duration_m" id="duration_m" size="2" '
+      echo '" />:<input type="text" name="duration_m" id="duration_m" size="2" '
        . 'maxlength="2" value="';
       if ( $allday != 'Y' )
         printf ( "%02d", $duration - ( $dur_h * 60 ) );
 
       echo '" />&nbsp;(<label for="duration_h">' . $hoursStr
        . '</label>: <label for="duration_m">' . $minutStr
-       . '</label>)
-              </td>
-            </tr>';
+       . '</label>)<span>';
     } else
-      echo '
-            <span id="timeentryend" class="tooltip" title="'
-       . tooltip ( 'end-time-help' ) . '">&nbsp;-&nbsp;'
+      echo '<span id="timeentryend"><label data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'end-time-help' ) . 
+       '">&nbsp;-&nbsp;'
        . time_selection ( 'end_',
-        ( $id ? add_duration ( $cal_time, $duration ) : $cal_time ) ) . '</span>
-          </td>
-        </tr>';
+        ( $id ? add_duration ( $cal_time, $duration ) : $cal_time ) ) . '</span>';
   } else { // eType == task
     echo ' class="tooltip" title="' . tooltip ( 'time-help' ) . '">'
      . translate ( 'Start Time' ) . ':</td>
@@ -981,13 +931,14 @@ if ( $can_edit ) {
   // end site-specific extra fields
 
   echo ( $useTabs ? '
-    </div>' : '
+    </div></div>' : '
     </fieldset>' ) . '
 
 <!-- PARTICIPANTS -->' . ( $useTabs ? '
-    <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
+    <div class="tab-pane container fade" id="' . $tabs_name[$tabI++] . '">' : '
     <fieldset>
       <legend>' . translate ( 'Participants' ) . '</legend>' ) . '
+      <div class="form-group">
       <table cellpadding="10">';
 
   // Only ask for participants if we are multi-user.
@@ -1091,12 +1042,12 @@ if ( $can_edit ) {
 
     echo '
         <tr title="' . tooltip ( 'avail_participants-help' ) . '">
-          <td class="tooltip aligntop" rowspan="2"><label>'
+          <td class="xtooltip aligntop" rowspan="2"><label>'
      . translate( 'Available' ) . '<br />'
      . translate ( 'Participants' ) . ':</label></td>
           <td class="boxleft boxtop">&nbsp;</td>
           <td colspan="2"class="boxtop boxright">' . translate( 'Find Name' )
-          . '<input type="text" size="20" name="lookup" id="lookup" '
+          . ': <input type="text" size="20" name="lookup" id="lookup" '
      . 'onkeyup="lookupName()" /></td>
         </tr>
         <tr>
@@ -1130,7 +1081,7 @@ if ( $can_edit ) {
           <td colspan="4">&nbsp;</td>
         </tr>
         <tr title="' . tooltip ( 'participants-help' ) . '">
-          <td class="tooltip aligntop"><label>'
+          <td class="Xtooltip aligntop"><label>'
             . translate( 'Selected' ) . '<br />'
             . translate ( 'Participants' ) . ':</label></td>
           <td class="alignleft alignbottom boxtop boxbottom boxleft">&nbsp;</td>
@@ -1148,7 +1099,7 @@ if ( $can_edit ) {
     // External Users
     . ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ? '
         <tr title="' . tooltip ( 'external-participants-help' ) . '">
-          <td class="tooltip aligntop"><label for="entry_extpart">'
+          <td class="Xtooltip aligntop"><label for="entry_extpart">'
        . translate ( 'External Participants' ) . ':</label></td>
           <td colspan="6"><textarea name="externalparticipants" id="entry_extpart" rows="5"'
        . ' cols="75">' . $external_users . '</textarea></td>
@@ -1156,7 +1107,7 @@ if ( $can_edit ) {
   }
 
   echo '
-      </table>' . ( $useTabs ? '
+      </table></div>' . ( $useTabs ? '
     </div>' : '
     </fieldset>' )
 
@@ -1164,16 +1115,13 @@ if ( $can_edit ) {
 <!-- REPEATING INFO -->';
 
   if ( $DISABLE_REPEATING_FIELD != 'Y' ) {
-    echo ( $useTabs ? '
-    <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
-    <fieldset>
-      <legend>' . translate ( 'Repeat' ) . '</legend>' ) . '
+    echo '<div class="tab-pane container fade" id="' . $tabs_name[$tabI++] . '">
       <table cellpadding="3">
         <tr>
-          <td class="tooltip" title="' . tooltip ( 'repeat-type-help' )
+          <td class="xtooltip align-top" title="' . tooltip ( 'repeat-type-help' )
      . '"><label for="rpttype">' . translate ( 'Type' ) . ':</label></td>
           <td colspan="2">
-            <select name="rpt_type" id="rpttype" '
+            <select class="form-control sm-auto" name="rpt_type" id="rpttype" '
      . 'onchange="rpttype_handler(); rpttype_weekly()">
               <option value="none"' . ( strcmp ( $rpt_type, 'none' ) == 0
       ? $selected : '' ) . '>' . translate ( 'None' ) . '</option>
@@ -1205,8 +1153,8 @@ if ( $can_edit ) {
           </td>
         </tr>
         <tr id="rptenddate1" style="visibility:hidden;">
-          <td class="tooltip" title="' . tooltip ( 'repeat-end-date-help' )
-     . '" rowspan="3"><label for="rpt_day">' . translate ( 'Ending' )
+          <td class="xtooltip" title="' . tooltip ( 'repeat-end-date-help' )
+     . '" rowspan="3"><label class="align-top" for="rpt_day">' . translate ( 'Ending' )
      . ':</label></td>
           <td colspan="2" class="boxtop boxright boxleft"><input type="radio" '
      . 'name="rpt_end_use" id="rpt_untilf" value="f" '
@@ -1234,7 +1182,7 @@ if ( $can_edit ) {
         </tr>
         <tr id="rptfreq" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-frequency-help' ) . '">
-          <td class="tooltip"><label for="entry_freq">'
+          <td class="xtooltip"><label for="entry_freq">'
      . translate ( 'Frequency' ) . ':</label></td>
           <td colspan="2">
             <input type="text" name="rpt_freq" id="entry_freq" size="4" '
@@ -1263,7 +1211,7 @@ if ( $can_edit ) {
         </tr>
         <tr id="rptbydayextended" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-bydayextended-help' ) . '">
-          <td class="tooltip"><label>' . translate ( 'ByDay' ) . ':</label></td>
+          <td class="xtooltip"><label class="align-top">' . translate ( 'ByDay' ) . ':</label></td>
           <td colspan="2" class="boxall">
             <input type="hidden" name="bydayList" value="'
      . ( empty ( $bydayStr ) ? '' : $bydayStr ) . '" />
@@ -1339,7 +1287,7 @@ if ( $can_edit ) {
         </tr>
         <tr id="rptbymonth" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-month-help' ) . '">
-          <td class="tooltip">' . translate ( 'ByMonth' ) . ':&nbsp;</td>
+          <td class="align-top xtooltip">' . translate ( 'ByMonth' ) . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bymonth selection. */ . '
             <table cellpadding="5">
@@ -1364,7 +1312,7 @@ if ( $can_edit ) {
         </tr>
         <tr id="rptbysetpos" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-bysetpos-help' ) . '">
-          <td class="tooltip" id="BySetPoslabel">' . translate ( 'BySetPos' )
+          <td class="xtooltip" id="BySetPoslabel">' . translate ( 'BySetPos' )
      . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bysetpos selection. */ . '
@@ -1406,7 +1354,7 @@ if ( $can_edit ) {
       </tr>
       <tr id="rptbymonthdayextended" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-bymonthdayextended-help' ) . '">
-        <td class="tooltip" id="ByMonthDaylabel">' . translate ( 'ByMonthDay' )
+        <td class="xtooltip" id="ByMonthDaylabel">' . translate ( 'ByMonthDay' )
      . ':&nbsp;</td>
         <td colspan="2" class="boxall">'
     /* Display bymonthday extended selection. */ . '
@@ -1464,19 +1412,19 @@ if ( $can_edit ) {
       </tr>
       <tr id="rptbyweekno" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-byweekno-help' ) . '">
-        <td class="tooltip">' . translate ( 'ByWeekNo' ) . ':</td>
+        <td class="xtooltip">' . translate ( 'ByWeekNo' ) . ':</td>
         <td colspan="2"><input type="text" name="byweekno" id="byweekno" '
      . 'size="50" maxlength="100" value="' . $byweekno . '" /></td>
       </tr>
       <tr id="rptbyyearday" style="visibility:hidden;" title="'
      . tooltip ( 'repeat-byyearday-help' ) . '">
-        <td class="tooltip">' . translate ( 'ByYearDay' ) . ':</td>
+        <td class="xtooltip">' . translate ( 'ByYearDay' ) . ':</td>
         <td colspan="2"><input type="text" name="byyearday" id="byyearday" '
      . 'size="50" maxlength="100" value="' . $byyearday . '" /></td>
       </tr>
       <tr id="rptexceptions" style="visibility:visible;" title="'
      . tooltip ( 'repeat-exceptions-help' ) . '">
-        <td class="tooltip"><label>' . translate ( 'Exclusions' ) . '/<br />'
+        <td class="xtooltip"><label class="align-top">' . translate ( 'Exclusions' ) . '/<br />'
      . translate ( 'Inclusions' ) . ':</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
           <table width="250px">
@@ -1496,11 +1444,11 @@ if ( $can_edit ) {
                 </select>
               </td>
               <td class="aligntop">
-                <input class="alignleft" type="button" name="addException" value="'
+                <input class="alignleft btn" type="button" name="addException" value="'
      . translate ( 'Add Exception' ) . '..." onclick="add_exception(0)" /><br />
-                <input class="alignleft" type="button" name="addInclusion" value="'
+                <input class="alignleft btn" type="button" name="addInclusion" value="'
      . translate ( 'Add Inclusion' ) . '..." onclick="add_exception(1)" /><br />
-                <input class="alignleft" type="button" name="delSelected" value="'
+                <input class="alignleft btn" type="button" name="delSelected" value="'
      . translate ( 'Delete Selected' ) . '" onclick="del_selected()" />
               </td>
             </tr>
@@ -1541,13 +1489,13 @@ if ( $can_edit ) {
     $rem_rep_minutes -= ( $rem_rep_hours * 60 );
 
     echo ( $useTabs ? '
-    <div id="' . $tabs_name[$tabI++] . '" class="tabcontent">' : '
+    <div class="tab-pane container fade" id="' . $tabs_name[$tabI++] . '">' : '
     <fieldset>
       <legend>' . translate ( 'Reminders' ) . '</legend>' ) . '
       <table cellpadding="3">
         <thead>
           <tr>
-            <td class="tooltip"><label>' . translate ( 'Send Reminder' )
+            <td class="xtooltip"><label>' . translate ( 'Send Reminder' )
      . ':</label></td>
             <td colspan="3">
               <input type="hidden" name="rem_action" value="'
@@ -1570,7 +1518,7 @@ if ( $can_edit ) {
         </thead>
         <tbody id="reminder_when">
           <tr>
-            <td class="tooltip" rowspan="6"><label>' . translate ( 'When' )
+            <td class="xtooltip" rowspan="6"><label>' . translate ( 'When' )
      . ':</label></td>
             <td class="boxtop boxleft" width="20%"><label><input type="radio" '
      . 'name="rem_when" id="rem_when_date" value="Y" '
@@ -1630,7 +1578,7 @@ if ( $can_edit ) {
         </tbody>
         <tbody id="reminder_repeat">
           <tr>
-            <td class="tooltip" rowspan="2"><label>' . translate ( 'Repeat' )
+            <td class="xtooltip" rowspan="2"><label>' . translate ( 'Repeat' )
      . ':</label></td>
             <td class="boxtop boxleft">&nbsp;&nbsp;&nbsp;<label>'
      . translate ( 'Times' ) . '</label></td>
@@ -1656,7 +1604,7 @@ if ( $can_edit ) {
 <!-- End tabscontent_pete -->' : '
     </fieldset>' );
   }
-  echo $useTabs ? "</div>\n" : '';
+  echo $useTabs ? "</div></div>\n" : '';
 
   if ( file_exists ( 'includes/classes/captcha/captcha.php' ) &&
       $login == '__public__' && !
@@ -1668,29 +1616,21 @@ if ( $can_edit ) {
       etranslate ( 'CAPTCHA Warning' );
   }
 
-  echo '
-      <table>
-        <tr>
-          <td>
-            <script type="text/javascript">
-<!-- <![CDATA[
-              document.writeln ( \'<input type="button" value="'
-   . $saveStr . '" onclick="validate_and_submit()" />\' )
-//]]> -->
-            </script>
-            <noscript><input type="submit" value="' . $saveStr
-   . '" /></noscript>
-          </td>
-        </tr>
-      </table>
-      <input type="hidden" name="participant_list" value="" />
-    </form>';
+  echo '<div class="container">
+        <div class="col-auto"><input type="button" class="form-check btn btn-primary" value="' . $saveStr . '" onclick="validate_and_submit()">';
+        if ( $id > 0 && ( $login == $create_by || $single_user == 'Y' || $is_admin ) ) {
+          echo '
+            <a class="btn btn-danger" href="del_entry.php?id=' . $id . '" onclick="return confirm( \''
+            . translate( 'Are you sure you want to delete this entry?' ) . '\' );">'
+            . translate ( 'Delete entry' ) . '</a><br />';
+        }
+        echo '
+        </div>
+        <input type="hidden" name="participant_list" value="" />
+      </div>
+    </form><br>';
 
-  if ( $id > 0 && ( $login == $create_by || $single_user == 'Y' || $is_admin ) )
-    echo '
-    <a href="del_entry.php?id=' . $id . '" onclick="return confirm( \''
-     . translate( 'Are you sure you want to delete this entry?' ) . '\' );">'
-     . translate ( 'Delete entry' ) . '</a><br />';
+  
 } else
   etranslate( 'You are not authorized to edit this entry.' );
 // end if ( $can_edit )
@@ -1735,19 +1675,12 @@ if ( $can_edit ) {
     </div>
   </div>
 </div>
-
-<?php if ( $useTabs ) { ?>
-
-<script type="text/javascript">
-// Initialize tabs
-var views=new ddtabcontent("viewtabs")
-views.setpersist(false)
-views.setselectedClassTarget("link") //"link" or "linkparent"
-views.init()
-// End init tabs
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
 </script>
-
-<?php }
+<?php
 
 echo print_trailer();
 

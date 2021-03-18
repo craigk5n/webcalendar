@@ -761,15 +761,19 @@ EOT;
 function datesel_Print ( $datename, $ymdValue='' )
 {
   if ( empty ( $ymdValue ) )
-    $ymdValue = date ( 'Ymd' );
+    $ymdValue = date ( 'Y-m-d' );
 
-  return '<input type="hidden" name="' . $datename .
-    '_YMD" id="' . $datename . '_YMD" value="' . $ymdValue . '"/>' .
-    '<span id="' . $datename . '_fmt">' .
-    date_to_str ( $ymdValue ) . '</span> ' .
-    '<img id="dateselIcon_' . $datename .
-    '" class="dateselIcon" onclick="datesel_SelectDate(event,\'' .
-    $datename  . '\' );" src="images/datesel.gif" />';
+  return '<input type="date" name="' . $datename .
+    '_YMD" id="' . $datename . '_YMD" class="form-control" value=' .
+    $ymdValue . '>';
+
+  #return '<input type="hidden" name="' . $datename .
+  #  '_YMD" id="' . $datename . '_YMD" value="' . $ymdValue . '"/>' .
+  #  '<span id="' . $datename . '_fmt">' .
+  #  date_to_str ( $ymdValue ) . '</span> ' .
+  #  '<img id="dateselIcon_' . $datename .
+  #  '" class="dateselIcon" onclick="datesel_SelectDate(event,\'' .
+  #  $datename  . '\' );" src="images/datesel.gif" />';
 }
 
 
@@ -784,7 +788,20 @@ function datesel_Print ( $datename, $ymdValue='' )
  *
  * @return string  HTML for the selection box.
  */
-function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
+function date_selection($prefix, $date, $trigger = false, $num_years = 20)
+{
+  if (empty($date)) {
+    $ymdValue = date('Y-m-d');
+  } else {
+    $ymdValue = date('Y-m-d', strtotime($date));
+  }
+  $trigger_str = (empty($trigger) ? '' : $prefix . 'datechanged();');
+  $onchange = (empty($trigger_str) ? '' : 'onchange="$trigger_str"');
+  return '<input type="date" name="' . $prefix .
+    '_YMD" id="' . $prefix . '_YMD" class="form-control" value=' .
+    $ymdValue . ' ' . $onchange . '>';
+}
+function XXX_date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
   $selected = ' selected="selected"';
   $trigger_str = ( empty( $trigger ) ? '' : $prefix . 'datechanged();' );
   $onchange = ( empty ( $trigger_str ) ? '' : 'onchange="$trigger_str"' );

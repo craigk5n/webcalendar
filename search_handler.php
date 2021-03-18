@@ -92,28 +92,30 @@ if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
 
 //Get advanced filters
-$cat_filter = getPostValue ( 'cat_filter' );
-$extra_filter = getPostValue ( 'extra_filter' );
-$date_filter = getPostValue ( 'date_filter' );
+$cat_filter = getValue ( 'cat_filter' );
+$extra_filter = getValue ( 'extra_filter' );
+$date_filter = getValue ( 'date_filter' );
 
-$from_YMD = getPostValue ( 'from__YMD' );
+$from_YMD = getValue ( 'from__YMD' );
 if ( empty ( $from_YMD ) ) {
   $start_day = $start_month = $start_year = '';
 } else {
-  $start_year = intval ( substr ( $from_YMD, 0, 4 ) );
-  $start_month = intval ( substr ( $from_YMD, 4, 2 ) );
-  $start_day = intval ( substr ( $from_YMD, 6, 2 ) );
+  $d = date_parse($from_YMD);
+  $start_year = $d['year'];
+  $start_month = $d['month'];
+  $start_day = $d['day'];
   if ( $start_year < 1970 )
     $start_year = 1970;
 }
 
-$end_YMD = getPostValue ( 'until__YMD' );
+$end_YMD = getValue ( 'until__YMD' );
 if ( empty ( $end_YMD ) ) {
   $end_day = $end_month = $end_year = '';
 } else {
-  $end_year = intval ( substr ( $end_YMD, 0, 4 ) );
-  $end_month = intval ( substr ( $end_YMD, 4, 2 ) );
-  $end_day = intval ( substr ( $end_YMD, 6, 2 ) );
+  $d = date_parse($end_YMD);
+  $end_year = $d['year'];
+  $end_month = $d['month'];
+  $end_day = $d['day'];
   if ( $end_year < 1970 )
     $end_year = 1970;
 }

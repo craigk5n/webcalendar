@@ -3120,7 +3120,7 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
 function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
   $palmStr = translate ( 'Palm Pilot' );
   return '
-      <select name="format" id="' . $name . '"'
+      <select classs="form-control sm-auto" name="format" id="' . $name . '"'
    . ( empty( $jsaction ) ? '' : 'onchange="' . $jsaction . '();"' ) . '>
         <option value="ical">iCalendar</option>
         <option value="vcal">vCalendar</option>

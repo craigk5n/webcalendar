@@ -1117,7 +1117,9 @@ if ( $can_show_log ) {
 
 if ( $can_show_log && $show_log ) {
   $PAGE_SIZE = 25; // number of entries to show at once
+  echo '<div class="pl-3 pr-3 pt-2 pb-1"><div class="p-1 border">';
   echo generate_activity_log ( $id );
+  echo "</div></div>";
 }
 
 if ( access_can_access_function ( ACCESS_EXPORT ) &&
@@ -1133,11 +1135,13 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
     <li class="list-group-item">
     <br />
     <form method="post" name="exportform" action="export_handler.php">
-      <label for="exformat">{$exportThisStr}:&nbsp;</label>
+      <div class="form-row">
+      <label class="form-inline" for="exformat">{$exportThisStr}:&nbsp;</label>
       {$selectStr}
       <input type="hidden" name="id" value="{$id}" />
           {$userStr}
-      <input type="submit" value="{$exportStr}" />
+      &nbsp; <input class="btn" type="submit" value="{$exportStr}" />
+      </div>
     </form></li>
 EOT;
 }

@@ -83,19 +83,15 @@ function validate_and_submit() {
  if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
 
  //Check if Event date is valid
-  var d = form.day.selectedIndex;
-  var vald = form.day.options[d].value;
-  var m = form.month.selectedIndex;
-  var valm = form.month.options[m].value;
-  var y = form.year.selectedIndex;
-  var valy = form.year.options[y].value;
-  var c = new Date(valy,valm -1,vald);
+  var d = $('#_YMD');
+  try {
+    var date = new Date(d.value);
+  } catch {
+    alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
+    d.focus();
+    return false;
+  }
 
- if ( c.getDate() != vald ) {
-   alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
-  form.day.focus();
-   return false;
- }
  //Repeat Tab enabled, Select all of them
  if ( form.rpttype ) {
    for ( i = 0; i < elements['exceptions[]'].length; i++ ) {
@@ -409,20 +405,12 @@ function add_exception (which) {
  if (which ) {
     sign = "+";
  }
- var obj = document.getElementById ('except_year');
- var y = obj.options[obj.selectedIndex].innerHTML;
- var obj = document.getElementById ('except_month');
- var m = obj.selectedIndex + 1;
- var obj = document.getElementById ('except_day');
- var d = obj.options[obj.selectedIndex].innerHTML;
+ var x = document.getElementById("except__YMD").value;
+ console.log("x="+x);
+ var c = new Date(x);
+ c.setTime( c.getTime() + c.getTimezoneOffset()*60*1000 );
+ console.log("except date: " + x);
 
- var c = new Date(parseInt(y),parseInt(m)-1,parseInt(d));
- if ( c.getDate() != d ) {
-   alert ("<?php etranslate ( 'Invalid Date',true ) ?>");
-   return false;
- }
- //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
- //var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
  var exceptDate = yyyymmdd(c);
  var isUnique = true;
  //Test to see if this date is already in the list
@@ -433,7 +421,7 @@ function add_exception (which) {
          for (i = 0; i < length; i++)
          {
             if ( options[i].text == "-" + exceptDate || options[i].text == "+" + exceptDate ) {
-         isUnique = false;
+            isUnique = false;
          }
      }
    }
@@ -442,6 +430,8 @@ function add_exception (which) {
     elements['exceptions[]'].options[elements['exceptions[]'].length]  = new Option( sign + exceptDate, sign + exceptDate );
     makeVisible ( "select_exceptions" );
     makeInvisible ( "select_exceptions_not" );
+ } else {
+   alert('Date ' + exceptDate + ' already in use');
  }
 }
 function del_selected() {
@@ -521,13 +511,9 @@ function toggle_until() {
   if ( ! form.rpttype ) {
     return;
   }
- //use date
-  elements['rpt_year'].disabled =
-  elements['rpt_month'].disabled =
-  elements['rpt_day'].disabled =
-  elements['rpt_hour'].disabled =
-  elements['rpt_minute'].disabled =
-  ( form.rpt_untilu.checked != true );
+  //use date
+  elements['rpt__YMD'].disabled = elements['rpt_hour'].disabled = elements['rpt_minute'].disabled =
+    (form.rpt_untilu.checked != true);
 
  //use count
  elements['rpt_count'].disabled =
@@ -567,9 +553,7 @@ function toggle_rem_when() {
    elements['rem_when_date'].checked;
 
  //$('#dateselIcon_reminder').disabled =
- elements['reminder_year'].disabled =
-   elements['reminder_month'].disabled =
-   elements['reminder_day'].disabled =
+ elements['reminder__YMD'].disabled =
    elements['reminder_hour'].disabled =
    elements['reminder_minute'].disabled =
   ( elements['rem_when_date'].checked != true );
@@ -662,7 +646,10 @@ function catOkHandler () {
   }
 ?>
   var cats = $('#entry_categories');
-  cats.html(catNames);
+  if (catNames.length == 0) {
+    catNames = "<?php etranslate("None") ?>";
+  }
+  cats.val(catNames);
   var catId = $('#cat_id');
   catId.val(catIds);
   console.log("cat_id.value = " + catId.value);
