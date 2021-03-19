@@ -1041,8 +1041,9 @@ if ( $can_edit ) {
       $size = 4;
 
     echo '
-        <tr title="' . tooltip ( 'avail_participants-help' ) . '">
-          <td class="xtooltip aligntop" rowspan="2"><label>'
+        <tr>
+          <td class="aligntop" rowspan="2">
+          <label for="entry_brief" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'avail_participants-help' ) . '">'
      . translate( 'Available' ) . '<br />'
      . translate ( 'Participants' ) . ':</label></td>
           <td class="boxleft boxtop">&nbsp;</td>
@@ -1080,8 +1081,8 @@ if ( $can_edit ) {
         <tr>
           <td colspan="4">&nbsp;</td>
         </tr>
-        <tr title="' . tooltip ( 'participants-help' ) . '">
-          <td class="Xtooltip aligntop"><label>'
+        <tr>
+          <td class="aligntop"><label data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'participants-help' ) . '">'
             . translate( 'Selected' ) . '<br />'
             . translate ( 'Participants' ) . ':</label></td>
           <td class="alignleft alignbottom boxtop boxbottom boxleft">&nbsp;</td>
@@ -1098,8 +1099,8 @@ if ( $can_edit ) {
         </tr>'
     // External Users
     . ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ? '
-        <tr title="' . tooltip ( 'external-participants-help' ) . '">
-          <td class="Xtooltip aligntop"><label for="entry_extpart">'
+        <tr>
+          <td class="aligntop"><label data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'external-participants-help' ) . '">'
        . translate ( 'External Participants' ) . ':</label></td>
           <td colspan="6"><textarea name="externalparticipants" id="entry_extpart" rows="5"'
        . ' cols="75">' . $external_users . '</textarea></td>
@@ -1118,8 +1119,9 @@ if ( $can_edit ) {
     echo '<div class="tab-pane container fade" id="' . $tabs_name[$tabI++] . '">
       <table cellpadding="3">
         <tr>
-          <td class="xtooltip align-top" title="' . tooltip ( 'repeat-type-help' )
-     . '"><label for="rpttype">' . translate ( 'Type' ) . ':</label></td>
+          <td class="align-top">
+          <label for="rpttype" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'repeat-type-help' ) . '">'
+        . translate ( 'Type' ) . ':</label></td>
           <td colspan="2">
             <select class="form-control sm-auto" name="rpt_type" id="rpttype" '
      . 'onchange="rpttype_handler(); rpttype_weekly()">
@@ -1153,8 +1155,9 @@ if ( $can_edit ) {
           </td>
         </tr>
         <tr id="rptenddate1" style="visibility:hidden;">
-          <td class="xtooltip" title="' . tooltip ( 'repeat-end-date-help' )
-     . '" rowspan="3"><label class="align-top" for="rpt_day">' . translate ( 'Ending' )
+          <td rowspan="3">
+         <label for="rpt_day" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'repeat-end-date-help' ) . '">'
+        . translate ( 'Ending' )
      . ':</label></td>
           <td colspan="2" class="boxtop boxright boxleft"><input type="radio" '
      . 'name="rpt_end_use" id="rpt_untilf" value="f" '
@@ -1180,9 +1183,8 @@ if ( $can_edit ) {
           <td class="boxright boxbottom"><input type="text" name="rpt_count" '
      . 'id="rpt_count" size="4" maxlength="4" value="' . $rpt_count . '" /></td>
         </tr>
-        <tr id="rptfreq" style="visibility:hidden;" title="'
-     . tooltip ( 'repeat-frequency-help' ) . '">
-          <td class="xtooltip"><label for="entry_freq">'
+        <tr id="rptfreq" style="visibility:hidden;">
+          <td><label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'repeat-frequency-help' ) . '">'
      . translate ( 'Frequency' ) . ':</label></td>
           <td colspan="2">
             <input type="text" name="rpt_freq" id="entry_freq" size="4" '
@@ -1209,9 +1211,10 @@ if ( $can_edit ) {
         <tr>
           <td colspan="4"></td>
         </tr>
-        <tr id="rptbydayextended" style="visibility:hidden;" title="'
-     . tooltip ( 'repeat-bydayextended-help' ) . '">
-          <td class="xtooltip"><label class="align-top">' . translate ( 'ByDay' ) . ':</label></td>
+        <tr id="rptbydayextended" style="visibility:hidden;">
+          <td>
+          <label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'repeat-bydayextended-help' ) . '">'
+          . translate ( 'ByDay' ) . ':</label></td>
           <td colspan="2" class="boxall">
             <input type="hidden" name="bydayList" value="'
      . ( empty ( $bydayStr ) ? '' : $bydayStr ) . '" />
@@ -1285,9 +1288,10 @@ if ( $can_edit ) {
         <tr>
           <td colspan="4"></td>
         </tr>
-        <tr id="rptbymonth" style="visibility:hidden;" title="'
-     . tooltip ( 'repeat-month-help' ) . '">
-          <td class="align-top xtooltip">' . translate ( 'ByMonth' ) . ':&nbsp;</td>
+        <tr id="rptbymonth" style="visibility:hidden;">
+          <td class="align-top">
+          <label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'repeat-month-help' ) . '">'
+          . translate ( 'ByMonth' ) . '</label>:&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bymonth selection. */ . '
             <table cellpadding="5">
@@ -1310,9 +1314,9 @@ if ( $can_edit ) {
         <tr>
           <td colspan="4"></td>
         </tr>
-        <tr id="rptbysetpos" style="visibility:hidden;" title="'
-     . tooltip ( 'repeat-bysetpos-help' ) . '">
-          <td class="xtooltip" id="BySetPoslabel">' . translate ( 'BySetPos' )
+        <tr id="rptbysetpos" style="visibility:hidden;">
+          <td id="BySetPoslabel">
+          <label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'repeat-bysetpos-help' ) . '">' . translate ( 'BySetPos' )
      . ':&nbsp;</td>
           <td colspan="2" class="boxall">'
     /* Display bysetpos selection. */ . '
@@ -1352,9 +1356,9 @@ if ( $can_edit ) {
       <tr>
         <td colspan="4"></td>
       </tr>
-      <tr id="rptbymonthdayextended" style="visibility:hidden;" title="'
-     . tooltip ( 'repeat-bymonthdayextended-help' ) . '">
-        <td class="xtooltip" id="ByMonthDaylabel">' . translate ( 'ByMonthDay' )
+      <tr id="rptbymonthdayextended" style="visibility:hidden;">
+        <td class="xtooltip" id="ByMonthDaylabel">
+        <label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'repeat-bymonthdayextended-help' ) . '">'  . translate ( 'ByMonthDay' )
      . ':&nbsp;</td>
         <td colspan="2" class="boxall">'
     /* Display bymonthday extended selection. */ . '
@@ -1410,9 +1414,8 @@ if ( $can_edit ) {
     echo '
        </td>
       </tr>
-      <tr id="rptbyweekno" style="visibility:hidden;" title="'
-     . tooltip ( 'repeat-byweekno-help' ) . '">
-        <td class="xtooltip">' . translate ( 'ByWeekNo' ) . ':</td>
+      <tr id="rptbyweekno" style="visibility:hidden;">
+        <td><label data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'repeat-byweekno-help' ) . '">' . translate ( 'ByWeekNo' ) . ':</td>
         <td colspan="2"><input type="text" name="byweekno" id="byweekno" '
      . 'size="50" maxlength="100" value="' . $byweekno . '" /></td>
       </tr>
@@ -1422,9 +1425,9 @@ if ( $can_edit ) {
         <td colspan="2"><input type="text" name="byyearday" id="byyearday" '
      . 'size="50" maxlength="100" value="' . $byyearday . '" /></td>
       </tr>
-      <tr id="rptexceptions" style="visibility:visible;" title="'
-     . tooltip ( 'repeat-exceptions-help' ) . '">
-        <td class="xtooltip"><label class="align-top">' . translate ( 'Exclusions' ) . '/<br />'
+      <tr id="rptexceptions" style="visibility:visible;">
+        <td><label class="align-top" data-toggle="tooltip" data-placement="top" title="' . tooltip ( 'repeat-exceptions-help' ) . '">'
+         . translate ( 'Exclusions' ) . '/<br />'
      . translate ( 'Inclusions' ) . ':</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
           <table width="250px">
