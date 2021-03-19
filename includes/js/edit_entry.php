@@ -405,11 +405,12 @@ function add_exception (which) {
  if (which ) {
     sign = "+";
  }
+ // NOTE: Using jquery('#except__YMD') inserts extra object stuff that makes the
+ // conversion to the Date object not work properly.
  var x = document.getElementById("except__YMD").value;
- console.log("x="+x);
  var c = new Date(x);
- c.setTime( c.getTime() + c.getTimezoneOffset()*60*1000 );
- console.log("except date: " + x);
+ // Adjust for UTC to local time issue
+ c.setTime(c.getTime() + c.getTimezoneOffset()*60*1000);
 
  var exceptDate = yyyymmdd(c);
  var isUnique = true;
