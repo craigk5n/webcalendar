@@ -12,9 +12,7 @@ $customStr = translate ( 'Custom Colors' );
 $oldStr = translate ( 'Old Color' );
 $okStr = '&nbsp;&nbsp;&nbsp;' . translate ( 'OK' ). '&nbsp;&nbsp;&nbsp;';
 
-print_header( '',
-  '<script type="text/javascript" src="includes/js/colors.js"></script>',
-  'onload="fillhtml(); setInit();"', true, false, true );
+print_header( '','','',true,false,true );
 
 /*
   HTML Color Editor v1.2 (c) 2000 by Sebastian Weber <webersebastian@yahoo.de>
@@ -41,21 +39,24 @@ echo <<<EOT
             <table width="24"
               onclick="setFromSlider(event);">
               <tr>
-                <td id="slider"></td>
+                <td id="slider">
+                </td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
 <!--  BASIC COLORS PALETTE  -->
-          <td class="aligncenter" id="colorchoices"></td>
+          <td class="aligncenter" id="colorchoices">
+          </td>
         </tr>
         <tr>
           <td class="aligncenter">{$customStr}</td>
         </tr>
         <tr>
 <!--  Custom Colors  -->
-          <td class="aligncenter" id="colorcustom"></td>
+          <td class="aligncenter" id="colorcustom">
+          </td>
         </tr>
         <tr>
           <td class="aligncenter"><input type="button" value="{$addcustomStr}"
@@ -104,7 +105,7 @@ echo <<<EOT
         <tr>
           <td colspan="3" class="aligncenter" height="30">
             <input type="button"
-              value="&nbsp;&nbsp;&nbsp;{$okStr}&nbsp;&nbsp;&nbsp;"
+              value="{$okStr}"
               onclick="transferColor(); window.close()"
               />&nbsp;&nbsp;&nbsp;<input type="button"
               value="{$cancelStr}" onclick="window.close()" />
@@ -112,10 +113,9 @@ echo <<<EOT
         </tr>
       </table>
     </form>
-<img id="cross" src="images/cross.gif" alt=""
-  style="position:absolute; left:0; top:0" />
-<img id="sliderarrow" src="images/arrow.gif" alt=""
-  style="position:absolute; left:0; top:0" />
+    <img id="cross" src="images/cross.gif" alt="" style="position:absolute; left:0; top:0" />
+    <img id="sliderarrow" src="images/arrow.gif" alt="" style="position:absolute; left:0; top:0" />
+    <script src="includes/js/colors.js"></script>
   </body>
 </html>
 EOT;
