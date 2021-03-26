@@ -159,37 +159,6 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     //}
   }
 
-  // CSS and JS includes needed for the top menu.
-  if( $MENU_ENABLED == 'Y' ) {
-    $saveBodyX = $BodyX;
-    $BodyX = '';
-    $MENU_THEME = ( ! empty( $MENU_THEME ) && $MENU_THEME != 'none'
-      ? $MENU_THEME : 'default' );
-    $menu_theme = ( $SCRIPT == 'admin.php'
-      && ! empty( $GLOBALS['sys_MENU_THEME'] )
-        ? $GLOBALS['sys_MENU_THEME'] : $MENU_THEME );
-
-    include_once 'includes/menu/index.php';
-
-    $cs_ar[] = 'menu/themes/' . $menu_theme . '/theme.css';
-    $js_ar[] = 'menu/JSCookMenu.js';
-    $js_ar[] = 'menu/themes/' . $menu_theme . '/theme.js';
-    if ( ! empty ( $saveBodyX ) && preg_match ( '/cmDraw/', $BodyX ) ) {
-      // menu code overwrote our BodyX
-      if ( preg_match ( '/onload="(\S+)"/i', $saveBodyX, $matches ) ) {
-        $BodyX = 'onload="' . $matches[1] . '; ' .
-         "cmDraw( 'myMenuID', myMenu, 'hbr', cmTheme, 'Theme' );\"";
-      } else if ( preg_match ( '/cmDraw/', $BodyX ) ) {
-         // handled...  wasn't clobbered
-      } else {
-        die_miserable_death ( 'BodyX error in print_header.  Menu and ' .
-          $self . ' are both setting onload callback.<br/>Old: ' .
-          htmlentities ( $saveBodyX ) . '<br/><br/>New: ' .
-          htmlentities ( $BodyX ) );
-      }
-    }
-  }
-
   if( ! $disableUTIL )
     $js_ar[] = 'js/util.js';
 
@@ -203,7 +172,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // Any other includes?
   if( is_array( $includes ) ) {
     foreach( $includes as $inc ) {
-      $cs_ret .= '<!-- inc \"$inc\" INCLUDED -->' . "\n";
+      $cs_ret .= '<!-- inc "' . $inc . '" INCLUDED -->' . "\n";
       if ( $inc == 'JQUERY' ) {
         // Ignore since we handled it above
         $cs_ret .= '<!-- JQUERY INCLUDED -->' . "\n";
@@ -321,10 +290,11 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     ? $menuHtml : '' )
   // Add custom header if enabled.
   . ( $CUSTOM_HEADER == 'Y' && ! $disableCustom
-    ? load_template( $login, 'H' ) : '' )
-  // Add the top menu if enabled.
-  . ( $MENU_ENABLED == 'Y' && ! $menuConfig['Above Custom Header']
-    ? $menuHtml : '' );
+    ? load_template( $login, 'H' ) : '' );
+  // HTML includes needed for the top menu.
+  if( $MENU_ENABLED == 'Y' ) {
+    include "menu.php";
+  }
   // TODO convert this to return value.
   echo '<div class="container">';
 }
@@ -352,10 +322,12 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
 
   $ret = '';
 
+  // If menu enabled, include JS for Bootstrap v4 submenu.
+  // TODO: Get the submenu working to allow for more dates in the menu.
+  if ($MENU_ENABLED != 'N') {
+    $ret .= '<script src="./includes/js/menu.js"></script>' . "\n";
+  }
   if( $include_nav_links && ! $friendly ) {
-    if( $MENU_ENABLED == 'N' || $MENU_DATE_TOP == 'N' )
-      $ret .= '<div id="dateselector">' . print_menu_dates() . '</div>';
-
     if( $MENU_ENABLED == 'N' )
       include_once 'includes/trailer.php';
   }
@@ -379,8 +351,8 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
     $GLOBALS['ALLOW_HTML_DESCRIPTION'] == 'Y' &&
     in_array ( $GLOBALS['SCRIPT'], $pagesWithFullEditor );
 
-  return $ret . '
-<!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
+  return $ret .
+    '<!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
     ( $includeCkeditor ?
     /* Your choices here are "basic", "standard" or "full". */ '
     <script src="//cdn.ckeditor.com/4.6.0/basic/ckeditor.js"></script>
@@ -395,191 +367,8 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
      . '<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" '
      . 'class="valid" /></a></p>' : '' )/* Close HTML page properly. */ . '
     </div>
-     </body>
-</html>
-';
-}
-/**
- * print_menu_dates (needs description)
- */
-function print_menu_dates( $menu = false ) {
-  global $cat_id, $CATEGORIES_ENABLED, $custom_view, $DATE_FORMAT_MD,
-  $DATE_FORMAT_MY, $DISPLAY_WEEKENDS, $id, $login, $SCRIPT, $thisday,
-  $thismonth, $thisyear, $user, $WEEK_START;
-
-  $goStr = '
-            </select>' . ( $menu ? '' : '
-            <input type="submit" value="' . translate( 'Go' ) . '" />' ) . '
-          </form>';
-  $include_id = false;
-  $option = '
-              <option value="';
-  $ret = $urlArgs = '';
-  // TODO add this to admin and pref.
-  // Change this value to 'Y' to enable staying in custom views.
-  $STAY_IN_VIEW = 'N';
-  $selected = ' selected="selected"';
-  if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) ) {
-    $include_id = true;
-    $monthUrl = $SCRIPT;
-  } else
-  if( access_can_view_page( 'month.php' ) )
-    $monthUrl = 'month.php';
-  else {
-    $monthUrl = $GLOBALS['STARTVIEW'];
-    if( preg_match( '/[?&](\S+)=(\S+)/', $monthUrl, $match ) ) {
-      $monthUrl = $match[0];
-      $urlArgs = '
-              <input type="hidden" name="'
-       . $match[1] . '" value="' . $match[2] . '" />';
-    }
-  }
-
-  $ret .= '
-          <form action="' . $monthUrl
-   . '" method="get" name="SelectMonth" id="month'
-   . ( $menu ? 'menu' : 'form' ) . '"> ' . $urlArgs
-   . ( ! empty( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '" />' : '' )
-   . ( ! empty( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '" />' : '' )
-   . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
-     && ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="'
-     . $cat_id . '" />' : '' ) . '
-            <label for="monthselect"><a '
-   . 'href="javascript:document.SelectMonth.submit()">'
-   . translate( 'Month' ) . '</a>:&nbsp;</label>
-            <select name="date" id="monthselect" '
-   . 'onchange="document.SelectMonth.submit()">';
-
-  $d = ( empty( $thisday ) ? date( 'd' ) : $thisday );
-  $m = ( empty( $thismonth ) ? date( 'm' ) : $thismonth );
-  $y = ( empty( $thisyear ) ? date( 'Y' ) : $thisyear );
-
-  $lastDay = ( $DISPLAY_WEEKENDS == 'N' ? 4 : 6 );
-  $thisdate = date( 'Ymd', mktime( 0, 0, 0, $m, 1, $y ) );
-  $thisweek = date( 'W', mktime( 0, 0, 0, $m, $d, $y ) );
-  $wkstart = get_weekday_before( $y, $m, $d );
-
-  $tmp = mktime( 0, 0, 0, $m - 7, 1, $y );
-  $m = date( 'm', $tmp );
-  $y = date( 'Y', $tmp );
-
-  for( $i = 0; $i < 25; $i++ ) {
-    $m++;
-    if( $m > 12 ) {
-      $m = 1;
-      $y++;
-    }
-    if( $y > 1969 && $y < 2038 ) {
-      $dateYmd = date( 'Ymd', mktime( 0, 0, 0, $m, 1, $y ) );
-      $ret .= $option . $dateYmd . '"'
-       . ( $dateYmd == $thisdate ? $selected : '' ) . '>'
-       . date_to_str( $dateYmd, $DATE_FORMAT_MY, false, true ) . '</option>';
-    }
-  }
-
-  $ret .= $goStr . ( $menu ? '
-        </td>
-        <td class="ThemeMenubackgr ThemeMenu">' : '' );
-
-  if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) )
-    $weekUrl = $SCRIPT;
-  else
-  if( access_can_view_page( 'week.php' ) ) {
-    $urlArgs = '';
-    $weekUrl = 'week.php';
-  } else {
-    $weekUrl = $GLOBALS['STARTVIEW'];
-    if( preg_match( '/[?&](\S+)=(\S+)/', $weekUrl, $match ) ) {
-      $weekUrl = $match[0];
-      $urlArgs = '
-              <input type="hidden" name="'
-       . $match[1] . '" value="' . $match[2] . '" />';
-    }
-  }
-
-  $ret .= '
-          <form action="' . $weekUrl
-   . '" method="get" name="SelectWeek" id="week'
-   . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
-   . ( ! empty( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '" />' : '' )
-   . ( ! empty( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '" />' : '' )
-   . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
-     && ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="'
-     . $cat_id . '" />' : '' ) . '
-            <label for="weekselect"><a '
-   . 'href="javascript:document.SelectWeek.submit()">'
-   . translate( 'Week' ) . '</a>:&nbsp;</label>
-            <select name="date" id="weekselect" '
-   . 'onchange="document.SelectWeek.submit()">';
-
-  $y = ( empty( $thisyear ) ? date( 'Y' ) : $thisyear );
-  for( $i = -5; $i <= 9; $i++ ) {
-    $twkstart = bump_local_timestamp( $wkstart, 0, 0, 0, 0, 7 * $i, 0 );
-    $twkend = bump_local_timestamp( $twkstart, 0, 0, 0, 0, $lastDay, 0 );
-    $dateSYmd = date( 'Ymd', $twkstart );
-    $dateEYmd = date( 'Ymd', $twkend );
-    $dateW = date( 'W', $twkstart + 86400 );
-    if( $twkstart > 0 && $twkend < 2146021200 )
-      $ret .= $option . $dateSYmd . '"'
-       . ( $dateW == $thisweek ? $selected : '' ) . '>'
-       . ( ! empty( $GLOBALS['PULLDOWN_WEEKNUMBER'] )
-         && $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
-        ? '(' . $dateW . ')&nbsp;&nbsp;' : '' ) . sprintf( '%s - %s',
-        date_to_str( $dateSYmd, $DATE_FORMAT_MD, false, true ),
-        date_to_str( $dateEYmd, $DATE_FORMAT_MD, false, true ) ) . '</option>';
-  }
-
-  $ret .= $goStr . ( $menu ? '
-        </td>
-        <td class="ThemeMenubackgr ThemeMenu alignright">' : '' );
-
-  if( $STAY_IN_VIEW == 'Y' && ! empty( $custom_view ) )
-    $yearUrl = $SCRIPT;
-  else
-  if( access_can_view_page( 'year.php' ) ) {
-    $urlArgs = '';
-    $yearUrl = 'year.php';
-  } else {
-    $yearUrl = $GLOBALS['STARTVIEW'];
-    if( preg_match( '/[?&](\S+)=(\S+)/', $yearUrl, $match ) ) {
-      $yearUrl = $match[0];
-      $urlArgs = '
-            <input type="hidden" name="'
-       . $match[1] . '" value="' . $match[2] . '" />';
-    }
-  }
-
-  $ret .= '
-          <form action="' . $yearUrl
-   . '" method="get" name="SelectYear" id="year'
-   . ( $menu ? 'menu' : 'form' ) . '">' . $urlArgs
-   . ( ! empty( $user ) && $user != $login ? '
-            <input type="hidden" name="user" value="' . $user . '" />' : '' )
-   . ( ! empty( $id ) && $include_id ? '
-            <input type="hidden" name="id" value="' . $id . '" />' : '' )
-   . ( ! empty( $cat_id ) && $CATEGORIES_ENABLED == 'Y'
-     && ( ! $user || $user == $login ) ? '
-            <input type="hidden" name="cat_id" value="'
-     . $cat_id . '" />' : '' ) . '
-            <label for="yearselect"><a '
-   . 'href="javascript:document.SelectYear.submit()">'
-   . translate( 'Year' ) . '</a>:&nbsp;</label>
-            <select name="year" id="yearselect" '
-   . 'onchange="document.SelectYear.submit()">';
-
-  for( $i = $y - 2, $cnt = $y + 6; $i < $cnt; $i++ ) {
-    if( $i > 1969 && $i < 2038 )
-      $ret .= $option . $i . '"'
-       . ( $i == $y ? $selected : '' ) . '>' . $i . '</option>';
-  }
-
-  return $ret . $goStr;
+    </body>
+  </html>';
 }
 
 ?>
