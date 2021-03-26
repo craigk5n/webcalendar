@@ -332,7 +332,7 @@ if (empty($thisday))
         </a>
         <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <?php if (!empty($select_user_url)) { ?>
-            <a class="dropdown-item" href="<?php echo $new_entry_url; ?>"><?php etranslate('Another Users Calendar'); ?></a>
+            <a class="dropdown-item" href="<?php echo $select_user_url; ?>"><?php etranslate('Another Users Calendar'); ?></a>
           <?php }
           if ($login != '__public__') {
             if (! empty ($views_link) && $views_linkcnt > 0) { ?>
