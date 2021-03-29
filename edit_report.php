@@ -212,20 +212,15 @@ echo '
  . ( ! $adding_report ? '
       <input type="hidden" name="report_id" value="'
    . $report_id . '" />' : '' ) . '
-      <table class="table">
-        <tr>
-          <td><label for="rpt_name">' . translate ( 'Report name' )
- . ':</label></td>
-          <td><input type="text" name="report_name" id="rpt_name" size="40" '
- . 'maxlength="50" value="' . $report_name . '" /></td>
-        </tr>';
+      <div class="form-inline">
+        <label class="col-sm-2 col-form-label" for="rpt_name">' . translate ('Report Name') . '</label>
+        <input class="form-control" type="text" name="report_name" id="rpt_name" size="40" ' .
+        'maxlength="50" value="' . $report_name . '" /></div>';
 
 if ( $show_participants ) {
-  echo '
-        <tr>
-          <td><label for="rpt_user">' . translate ( 'User' ) . ':</label></td>
-          <td>
-            <select name="report_user" id="rpt_user" size="1">
+  echo '<div class="form-inline">
+    <label class="col-sm-2 col-form-label" for="rpt_user">' . translate ('User') . '</label>
+    <select class="form-control" name="report_user" id="rpt_user" size="1">
               <option value=""' . ( empty ( $report_user ) ? $selected : '' )
    . '>' . translate ( 'Current User' ) . '</option>';
 
@@ -236,55 +231,43 @@ if ( $show_participants ) {
       ? $selected : '' ) . '>' . $userlist[$i]['cal_fullname'] . '</option>';
   }
 
-  echo '
-            </select>
-          </td>
-        </tr>';
+  echo '</select></div>';
 }
 
-echo ( $is_admin ? '
-        <tr>
-          <td><label>' . translate( 'Global' ) . ':</label></td>
-          <td>' . print_radio( 'is_global', '', '',
+echo ( $is_admin ? '<div class="form-inline">
+    <label class="col-sm-2 col-form-label" for="is_global">' . translate ('Global') . '</label>' .
+    print_radio( 'is_global', '', '',
     ( ! empty( $report_is_global ) && $report_is_global == 'Y'
-      ? 'Y' : 'N' ) ) . '</td>
-        </tr>'
+      ? 'Y' : 'N' ) ) . '</div>'
 
   // The report will always be shown in the menu for the creator of the report.
   // For admin users who create a global report,
   // allow option of adding to all users menu.
- . '
-        <tr>
-          <td><label>' . translate( 'Include link in menu' ) . ':</label></td>
-          <td>' . print_radio( 'show_in_trailer', '', '',
-    ( ! empty( $report_show_in_menu ) && $report_show_in_menu == 'Y'
-      ? 'Y' : 'N' ) ) . '</td>
-        </tr>' : '' ) . '
-        <tr>
-          <td><label>' . translate( 'Include standard header/trailer' )
- . ':</label></td>
-          <td>' . print_radio( 'include_header', '', '',
-    ( ! empty( $report_include_header ) && $report_include_header == 'Y'
-      ? 'Y' : 'N' ) ) . '</td>
-        </tr>
-        <tr>
-          <td><label>' . translate( 'Include previous/next links' )
- . ':</label></td>
-          <td>' . print_radio( 'allow_nav', '', '',
+ . '<div class="form-inline">
+    <label class="col-sm-2 col-form-label" for="show_in_trailer">' . translate ('Include link in menu') . '</label>'
+     . print_radio('show_in_trailer', '', '',
+      (! empty($report_show_in_menu) && $report_show_in_menu == 'Y' ? 'Y' : 'N')) . '' : '') . '</div>
+    <div class="form-inline">
+      <label class="col-sm-2 col-form-label" for="include_header">' . translate ('Include standard header/trailer') . '</label>' .
+      print_radio( 'include_header', '', '',
+      (! empty( $report_include_header ) && $report_include_header == 'Y'
+      ? 'Y' : 'N' ) ) . '</div>
+    
+    <div class="form-inline">
+    <label class="col-sm-2 col-form-label" for="allow_nav">' . translate ('Include previous/next links') . '</label>' .
+    print_radio( 'allow_nav', '', '',
     ( ! empty( $report_allow_nav ) && $report_allow_nav == 'Y'
-      ? 'Y' : 'N' ) ) . '</td>
-        </tr>
-        <tr>
-          <td><label>' . translate( 'Include empty dates' ) . ':</label></td>
-          <td>' . print_radio( 'include_empty', '', '',
+      ? 'Y' : 'N' ) ) . '</div>
+
+    <div class="form-inline">
+    <label class="col-sm-2 col-form-label" for="include_empty">' . translate ('Include empty dates') . '</label>' .
+    print_radio( 'include_empty', '', '',
     ( ! empty( $report_include_empty ) && $report_include_empty == 'Y'
-      ? 'Y' : 'N' ) ) . '</td>
-        </tr>
-        <tr>
-          <td><label for="rpt_time_range">' . translate ( 'Date range' )
- . ':</label></td>
-          <td>
-            <select name="time_range" id="rpt_time_range">';
+      ? 'Y' : 'N' ) ) . '</div>
+
+    <div class="form-inline">
+    <label class="col-sm-2 col-form-label" for="rpt_time_range">' . translate ('Date range') . '</label>
+    <select class="form-control" name="time_range" id="rpt_time_range">';
 
 while ( list ( $num, $descr ) = each ( $ranges ) ) {
   echo '
@@ -293,110 +276,84 @@ while ( list ( $num, $descr ) = each ( $ranges ) ) {
    . '>' . $descr . '</option>';
 }
 
-echo '
-            </select>
-          </td>
-        </tr>';
+echo '</select></div>';
+
 
 if ( $CATEGORIES_ENABLED == 'Y' ) {
-  echo '
-        <tr>
-          <td><label for="rpt_cat_id">' . translate ( 'Category' )
-   . ':</label></td>
-          <td>
-            <select name="cat_id" id="rpt_cat_id">
-              <option value="">' . translate ( 'None' ) . '</option>';
+  echo '<div class="form-inline">
+    <label class="col-sm-2 col-form-label" for="cat_id">' . translate ('Category') . '</label>
+    <select class="form-control" name="cat_id" id="rpt_cat_id">
+    <option value="">' . translate ( 'None' ) . '</option>';
 
   while ( list ( $K, $V ) = each ( $categories ) ) {
-    echo '
-              <option value="' . $K . '"' . ( $report_cat_id == $K ? $selected : '' )
+    echo '<option value="' . $K . '"' . ( $report_cat_id == $K ? $selected : '' )
      . '>' . htmlentities ( $V['cat_name'] ) . '</option>';
   }
 
-  echo '
-            </select>
-          </td>
-        </tr>';
+  echo '</select></div>';
+
 } //end $CATEGORIES_ENABLED test
-echo '
-      </table>
-      <table class="table">
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-          <td colspan="2"><label>' . translate ( 'Template variables' )
- . '</label></td>
-        </tr>
-        <tr>
-          <td class="aligntop"><label>' . translate ( 'Page template' )
- . ':</label></td>
-          <td><textarea rows="12" cols="60" name="page_template">'
- . htmlentities ( $page_template, ENT_COMPAT, $charset ) . '</textarea></td>
-          <td class="aligntop cursoradd" colspan="2">';
+echo '<div class="form-inline">
+  <label class="col-sm-2 col-form-label" for="page_template">' . translate ('Page template') . '</label>
+  <textarea class="form-control" rows="12" cols="60" name="page_template">'
+ . htmlentities ( $page_template, ENT_COMPAT, $charset ) . '</textarea>';
+  show_template_vars ('page_template', $page_options);
+echo "</div>\n";
 
-foreach ( $page_options as $option ) {
-  print_options ( 'page_template', $option );
-}
+echo '<div class="form-inline">
+  <label class="col-sm-2 col-form-label" for="day_template">' . translate ('Day template') . '</label>
+  <textarea class="form-control" rows="12" cols="60" name="day_template">'
+  . htmlentities ( $day_template, ENT_COMPAT, $charset ) . '</textarea>';
+ show_template_vars ('day_template', $day_options);
+ echo "</div>\n";
 
-echo '
-          </td>
-        </tr>
-        <tr>
-          <td class="aligntop"><label>' . translate ( 'Day template' )
- . ':</label></td>
-          <td><textarea rows="12" cols="60" name="day_template">'
- . htmlentities ( $day_template, ENT_COMPAT, $charset ) . '</textarea></td>
-          <td class="aligntop cursoradd" colspan="2">';
+//foreach ( $day_options as $option ) {
+// print_options ( 'day_template', $option );
+//}
 
-foreach ( $day_options as $option ) {
-  print_options ( 'day_template', $option );
-}
+echo '<div class="form-inline">
+  <label class="col-sm-2 col-form-label" for="event_template">' . translate ('Event template') . '</label>
+  <textarea class="form-control" rows="12" cols="60" name="event_template" id="event_template">'
+  . htmlentities ( $event_template, ENT_COMPAT, $charset ) . '</textarea>';
+show_template_vars ('event_template', $event_options);
+echo "</div>\n";
 
-echo '
-          </td>
-        </tr>
-        <tr>
-          <td class="aligntop"><label>' . translate ( 'Event template' )
- . ':</label></td>
-          <td><textarea rows="12" cols="60" name="event_template" id="event_template">'
- . htmlentities ( $event_template, ENT_COMPAT, $charset ) . '</textarea></td>
-          <td class="aligntop cursoradd" width="150px">';
+// TODO: Fix support for site extras here...
+//$extra_names = get_site_extras_names( EXTRA_DISPLAY_REPORT );
+//if ( count ( $extra_names ) > 0 )
+//  echo '<div class="form-inline">
+//  <label class="col-sm-2 col-form-label" for="event_template">' . translate ('Site Extras') . '</label>';
 
-foreach ( $event_options as $option ) {
-  print_options ( 'event_template', $option );
-}
+//foreach ( $extra_names as $name ) {
+//  print_options ( 'event_template', 'extra:' . $name );
+//}
 
-echo '
-          </td>
-          <td class="aligntop cursoradd">';
-
-$extra_names = get_site_extras_names( EXTRA_DISPLAY_REPORT );
-if ( count ( $extra_names ) > 0 )
-  echo '
-            <label>' . translate ( 'Site Extras' ) . '</label><br />';
-
-foreach ( $extra_names as $name ) {
-  print_options ( 'event_template', 'extra:' . $name );
-}
-
-echo '
-          </td>
-        </tr>
-        <tr>
-          <td colspan="4">
-            <input class="btn btn-primary" type="submit" value="' . translate ( 'Save' ) . '" />'
+echo '<div class="form-inline mt-1">
+  <input class="btn btn-primary m-1" type="submit" value="' . translate ( 'Save' ) . '" />'
  . ( $adding_report ? '' : '
-            <a href="report.php" class="btn btn-secondary">' . translate('Cancel') . '</a>
-            <input class="btn btn-danger" type="submit" name="delete" value="'
+            <a href="report.php" class="btn btn-secondary m-1">' . translate('Cancel') . '</a>
+            <input class="btn btn-danger m-1" type="submit" name="delete" value="'
    . translate ( 'Delete' ) . '" onclick="return confirm( \''
    . translate( 'Are you sure you want to delete this report?' )
    . '\');" />' );
 
 ?>
-          </td>
-        </tr>
-      </table>
-    </form>
+</div>
+</form>
+<?php
+function show_template_vars($areaname, $vars) {
+  echo '<div class="dropdown show m-1">' .
+    '<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" ' .
+    'data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
+    translate('Template variables') . '</a>' . "\n";
+  echo '<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">';
+  foreach ($vars as $option) {
+    echo '<a class="dropdown-item" onclick="javascript:addMe(\'' . $areaname . '\', \'${' .
+      $option . '}\')">${' . $option . '}</a>' . "\n";
+  }
+  echo '</div></div>';
+}
+?>
     <script>
 <!-- <![CDATA[
     // This script borrowed from phpMyAdmin with some mofification.
@@ -423,6 +380,7 @@ echo '
       }
 //]]> -->
     </script>
+
 <?php echo print_trailer();
 
 ?>
