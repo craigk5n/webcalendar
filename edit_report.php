@@ -307,10 +307,6 @@ echo '<div class="form-inline">
  show_template_vars ('day_template', $day_options);
  echo "</div>\n";
 
-//foreach ( $day_options as $option ) {
-// print_options ( 'day_template', $option );
-//}
-
 echo '<div class="form-inline">
   <label class="col-sm-2 col-form-label" for="event_template">' . translate ('Event template') . '</label>
   <textarea class="form-control" rows="12" cols="60" name="event_template" id="event_template">'
@@ -323,7 +319,6 @@ echo "</div>\n";
 //if ( count ( $extra_names ) > 0 )
 //  echo '<div class="form-inline">
 //  <label class="col-sm-2 col-form-label" for="event_template">' . translate ('Site Extras') . '</label>';
-
 //foreach ( $extra_names as $name ) {
 //  print_options ( 'event_template', 'extra:' . $name );
 //}
