@@ -108,7 +108,7 @@ if ( $action == 'enable' || $action == 'disable' ) {
   else
     ajax_send_error ( $error );
 } else {
-  ajax_send_error ( translate('Unknown error.') );
+  ajax_send_error (translate('Unsupported action') . ': ' . $action);
 }
 
 exit;

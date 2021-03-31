@@ -50,7 +50,9 @@ $LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
 $public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
   translate( 'Click to modify layers settings for XXX' ) );
 
+$headExtras = '<link type="text/css" href="includes/css/bootstrap-colorpicker-3.2.0.css"/>';
 // Add ModalBox javascript/CSS & Tab code
+/*
 $headExtras = '
 <script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
 <link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
@@ -58,8 +60,9 @@ $headExtras = '
 <link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css"
 media="screen" />
 ';
+*/
 
-print_header( array( 'js/translate.js.php', 'js/visible.js/true' ),
+print_header( array( 'js/translate.js.php', 'js/visible.js/true', 'js/bootstrap-colorpicker-3.2.0.js' ),
   $headExtras, 'onload="load_layers();"' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
@@ -92,8 +95,8 @@ else {
   </span>
   &nbsp;&nbsp;
   &nbsp;&nbsp;
-  <input type="button" onclick="return set_layer_status(true);" value=<?php echo $enableLayersStr;?>" id="enablebutton" <?php echo $layers_enabled ? 'disabled="true"' : '';?> />
-  <input type="button" onclick="return set_layer_status(false);" value=<?php etranslate("Disable Layers");?>" <?php echo $layers_enabled ? '' : 'disabled="true"';?> id="disablebutton" />
+  <input class="btn" type="button" onclick="return set_layer_status(true);" value=<?php echo $enableLayersStr;?>" id="enablebutton" <?php echo $layers_enabled ? 'disabled="true"' : '';?> />
+  <input class="btn" type="button" onclick="return set_layer_status(false);" value=<?php etranslate("Disable Layers");?>" <?php echo $layers_enabled ? '' : 'disabled="true"';?> id="disablebutton" />
   </div>
 
 <br /><br />
@@ -103,7 +106,7 @@ else {
 <br />
 
 <div class="layerButtons" style="margin-left: 25px;">
-<input type="button" value="<?php etranslate('Add layer');?>..."
+<input class ="btn" type="button" value="<?php etranslate('Add layer');?>..."
   onclick="return edit_layer(-1)" />
 </div>
 <br />
@@ -158,108 +161,134 @@ if ( $single_user == 'N' ) {
 
 </form>
 
-<div id="editLayerDiv" style="display: none;">
-  <div style="background-color: <?php echo $BGCOLOR;?>; color: <?php echo $TEXTCOLOR;?>; padding: 10px;">
-  <form name="editLayerForm" id="editLayerForm">
-    <input type="hidden" name="editLayerId" id="editLayerId" value="" />
-    <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0" />
-    <table>
-      <tr><td class="tooltip" title="<?php etranslate('Specifies the user that you would like to see displayed in your calendar.');?>"><label><?php echo $sourceStr;?>:</label></td>
-        <td><select id="editLayerSource" name="editLayerSource">
+<div id="edit-layer-dialog" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="edit-layer-title" class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#edit-layer-dialog').hide();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="editLayerForm" id="editLayerForm">
+          <input type="hidden" name="editLayerId" id="editLayerId" value="" />
+          <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0" />
+          <table>
+            <tr><td data-toggle="tooltip" data-placement="top" title="<?php etranslate('Specifies the user that you would like to see displayed in your calendar.');?>"><label><?php echo $sourceStr;?>:</label></td>
+            <td><select class="form-control" id="editLayerSource" name="editLayerSource">
             <?php echo $users;?>
-        </td></tr>
-      <tr><td class="tooltip" title="<?php etranslate('The text color of the new layer that will be displayed in your calendar.');?>"><label><?php echo $colorStr;?>:</label></td>
-        <td><?php echo print_color_input_html ( 'editLayerColor', '',
-            '#000000' );?>
-        </td></tr>
-      <tr><td class="tooltip" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.');?>"><label><?php echo $duplicatesStr;?>:</label></td>
-        <td><input type="checkbox" name="editLayerDups" id="editLayerDups" />
-        </td></tr>
-    </table>
-    <br />
-    <center>
-      <input id="editLayerDeleteButton" type="button" value="<?php etranslate("Delete");?>"
-      onclick="if ( confirm ( '<?php echo $areYouSureStr;?>' ) ) {
-        $('editLayerDelete').setAttribute ( 'value', '1' );
-        edit_window_closed (); Modalbox.hide ();
-        }" />
-    <input type="button" value="<?php etranslate("Save");?>"
-      onclick="edit_window_closed(); Modalbox.hide() " /></center>
-  </form>
+            </td></tr>
+            <tr><td data-toggle="tooltip" data-placement="top" title="<?php etranslate('The text color of the new layer that will be displayed in your calendar.');?>"><label><?php echo $colorStr;?>:</label></td>
+            <td><?php echo print_color_input_html ('editLayerColor', '', '#000000');?>
+            </td></tr>
+            <tr><td data-toggle="tooltip" data-placement="top" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.');?>"><label><?php echo $duplicatesStr;?>:</label></td>
+            <td><input class="form-control" type="checkbox" name="editLayerDups" id="editLayerDups" />
+          </td></tr>
+        </table>
+        <div class="modal-footer">
+          <input class="form-control btn btn-secondary" onclick="$('#edit-layer-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel");?>">
+          <input class="form-control btn btn-danger" id="editLayerDeleteButton" type="button" value="<?php etranslate("Delete");?>"
+            onclick="if ( confirm ( '<?php echo $areYouSureStr;?>' ) ) {
+            $('#editLayerDelete').prop ('value', '1');
+            edit_window_closed ();
+            $('#edit-layer-dialog').hide();
+            }" />
+          <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save");?>"
+          onclick="edit_window_closed(); $('#edit-layer-dialog').hide();" />
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
-
 <script type="text/javascript">
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
+// Color picker init
+$(function () {
+  // Basic instantiation:
+  //$('#editLayerColor').colorpicker();
+  //$('#editLayerColor').on('colorpickerChange', function(event) {
+  //  $('#demo').css('background-color', event.color.toString());
+  //});
+});
+
 var layers = [];
 // Set the LAYER_STATUS value in webcal_user_pref for either the current
 // user or the public user ('__public__') with an AJAX call to
 // layers_ajax.php.
 function set_layer_status (enable)
 {
-  var status = ( enable ? 'enable' : 'disable' );
-  new Ajax.Request('layers_ajax.php',
-  {
-    method:'post',
-    parameters: { action: status<?php
-      if ( $updating_public ) { echo ", public: 1"; }
-    ?> },
-    onSuccess: function( transport ) {
-      var response = transport.responseText || "no response text";
+  var layerstatus = ( enable ? 'enable' : 'disable' );
+
+  $.post('layers_ajax.php',
+    {
+      action: layerstatus
+      <?php
+        if ( $updating_public ) {
+          echo ', public: "1"';
+        }
+      ?>
+    },
+    function(data, status){
+      var stringified = JSON.stringify(data);
+      console.log("set_layer_status Data: " + stringified + "\nStatus: " + status);
       try  {
-        response = transport.responseText.evalJSON();
-      } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        var response = jQuery.parseJSON(stringified);
+        console.log('set_layer_status response=' + response);
+      } catch (err) {
+        alert ('<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err);
         return;
       }
-      if ( response.error ) {
+      if (response.error) {
+        console.log('Ajax error: ' + response);
         alert ( '<?php etranslate("Error");?>:\n\n' + response.message );
       } else {
         //alert("Success! \n\n" + response);
         if ( enable ) {
-          $('layerstatus').innerHTML = '<?php echo $LAYERS_ENABLED;?>';
-          $('enablebutton').setAttribute ( 'disabled', 'true' );
-          $('disablebutton').removeAttribute ( 'disabled' );
-          alert('<?php echo strip_tags ( $LAYERS_ENABLED );?>');
+          $('#layerstatus').html('<?php echo $LAYERS_ENABLED;?>');
+          $('#enablebutton').prop ('disabled', true);
+          $('#disablebutton').prop ('disabled', false);
+          alert('<?php echo strip_tags ($LAYERS_ENABLED);?>');
         } else {
-          $('layerstatus').innerHTML = '<?php echo $LAYERS_DISABLED;?>';
-          $('disablebutton').setAttribute ( 'disabled', 'true' );
-          $('enablebutton').removeAttribute ( 'disabled' );
-          alert('<?php echo strip_tags ( $LAYERS_DISABLED );?>');
+          $('#layerstatus').html('<?php echo $LAYERS_DISABLED;?>');
+          $('#disablebutton').prop ('disabled', true);
+          $('#enablebutton').prop ('disabled', false);
+          alert('<?php echo strip_tags ($LAYERS_DISABLED);?>');
         }
       }
-    },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
-  });
-  return true;
+    });
 }
 
 function load_layers()
 {
   layers = [];
-  $('layerlist').innerHTML = '<?php echo $LOADING;?>';
-  new Ajax.Request('layers_ajax.php',
-  {
-    method:'post',
-    parameters: { action: 'list'<?php
-      if ( $updating_public ) { echo ", public: 1"; }
-    ?> },
-    onSuccess: function( transport ) {
-      if ( ! transport.responseText ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('no response from server');?>' );
-        return;
-      }
-      //alert ( "Response:\n" + transport.responseText );
+  $('#layerlist').html('<?php echo $LOADING;?>');
+  $.post('layers_ajax.php',
+    {
+      action: 'list'
+      <?php
+        if ( $updating_public ) {
+          echo ', public: "1"';
+        }
+      ?>
+    },
+    function(data, status){
+      console.log("Data: " + data + "\nStatus: " + status);
       try  {
-        response = transport.responseText.evalJSON();
+        var response = jQuery.parseJSON(data);
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + transport.responseText );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err);
         return;
       }
       if ( response.error ) {
         alert ( '<?php etranslate('Error');?>: '  + response.message );
         return;
       }
+      console.log('response.layers.length=' + response.layers.length);
       var x = '<table id="layertable" border="1"><th><?php echo $sourceStr;?></th><th><?php echo $colorStr;?></th><th><?php echo $duplicatesStr;?></th></tr>\n';
       for ( var i = 0; i < response.layers.length; i++ ) {
         var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
@@ -275,92 +304,96 @@ function load_layers()
           '</td></tr>\n';
       }
       x += '</table>\n';
-      $('layerlist').innerHTML = x;
-    },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
-  });
-  return true;
+      $('#layerlist').html(x);
+      console.log('x=' + x);
+    });
 }
 
 function edit_window_closed () {
   var layeruser = '<?php echo $layer_user;?>';
-  var o = $('editLayerSource');
-  var source = o.options[o.selectedIndex].value;
-  var color = $('editLayerColor').value;
-  var dups = $('editLayerDups').checked ? 'Y' : 'N';
-  var del = $('editLayerDelete').value;
-  var id = $('editLayerId').value;
-  var action = ( del > 0 ) ? 'delete' : 'save';
-  //alert ( "Sending save...\nid: " + id + "\nlayeruser: " + layeruser +
-  //  "\nsource: " + source + "\ncolor: " + color + "\ndups: " + dups +
-  //  "\ndelete: " + del );
-  new Ajax.Request('layers_ajax.php',
-  {
-    method:'post',
-    parameters: { action: action, id: id, layeruser: layeruser,
-      source: source, color: color, dups: dups },
-    onSuccess: function( transport ) {
-      var response = transport.responseText || "no response text";
+  var source = $('#editLayerSource').val();
+  var color = $('#editLayerColor').val();
+  var dups = $('#editLayerDups').is(':checked') ? 'Y' : 'N';
+  var del = $('#editLayerDelete').val();
+  var id = $('#editLayerId').val();
+  var action = (del > 0 ) ? 'delete' : 'save';
+  console.log ( "Sending save...\nid: " + id + "\nlayeruser: " + layeruser +
+    "\nsource: " + source + "\ncolor: " + color + "\ndups: " + dups +
+    "\ndelete: " + del );
+
+  $.post('layers_ajax.php',
+    {
+      action: action,
+      id: id,
+      layeruser: layeruser,
+      source: source,
+      color: color,
+      dups: dups
+    },
+    function(data, status){
+      var stringified = JSON.stringify(data);
+      console.log("set_layer_status Data: " + stringified + "\nStatus: " + status);
       try  {
-        response = transport.responseText.evalJSON();
+        var response = jQuery.parseJSON(stringified);
+        console.log('set_layer_status response=' + response);
       } catch ( err ) {
-        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err + "\n\n" + response );
+        alert ( '<?php etranslate('Error');?>: <?php etranslate('JSON error');?> - ' + err);
         return;
       }
       if ( response.error ) {
-        alert ( '<?php etranslate("Error");?>:\n\n' + response.message );
-      } else {
-        //alert("Success! \n\n" + response);
-        // Reload layers
-        load_layers();
+        alert ( '<?php etranslate('Error');?>: '  + response.message );
+        return;
       }
-    },
-    onFailure: function() { alert( '<?php etranslate( 'Error' );?>' ) }
-  });
-  return true;
+      // Reload layers
+      load_layers();
+    });
 }
 
 function edit_layer (id)
 {
+  console.log('edit_layer(' + id + ')');
   var titleStr = '';
   if ( id < 0 )
     titleStr = '<?php etranslate('Add Layer');?>';
   else
     titleStr = '<?php etranslate('Edit Layer');?>';
-
-  // While I like the visual effects that you get with transitions enabled,
-  // it causes some of the javascript (setting selectedIndex) to fail for
-  // some reason.  So, it is disabled here.
-  Modalbox.show($('editLayerDiv'), {title: titleStr, width: 375, transitions: false, closeString: '<?php etranslate('Cancel');?>' });
+  $('#edit-layer-title').html(titleStr);
 
   if ( id < 0 ) {
-    $('editLayerDeleteButton').setAttribute ( 'disabled', 'true' );
+    $('#editLayerDeleteButton').prop ('disabled', true);
   } else {
-    $('editLayerDeleteButton').removeAttribute ( 'disabled' );
+    $('#editLayerDeleteButton').prop ('disabled', false);
   }
-  $('editLayerDelete').setAttribute ( "value", 0 );
+  $('#editLayerDelete').prop("value", 0);
   // Find correct user in select list
-  var o = $('editLayerSource');
+  var o = $('#editLayerSource');
+  var optionValues = [];
+  o.each(function() {
+    optionValues.push($(this).val());
+  });
   var found = false;
   if ( id > 0 ) {
+    console.log('id=' + id + "\nlayers=" + layers);
     var n = layers[id]['source'];
-    for ( var i = 0; i < o.options.length; i++ ) {
-      if ( o.options[i].value == n ) {
+    for ( var i = 0; i < optionValues.length; i++ ) {
+      if ( optionValues[i] == n ) {
         o.selectedIndex = i;
       }
     }
   }
-  $('editLayerId').setAttribute ( "value", id );
-  $('editLayerColor').setAttribute ( "value", id < 0 ? '#000000' : layers[id]['color'] );
+  $('#editLayerId').prop ( "value", id );
+  $('#editLayerColor').prop ( "value", id < 0 ? '#000000' : layers[id]['color'] );
   // Also change the background color of the sample.
-  $('editLayerColor_sample').style.background =
-    ( id < 0 ? '#000000' : layers[id]['color'] );
+  //$('#editLayerColor_sample').style.background =
+  //  ( id < 0 ? '#000000' : layers[id]['color'] );
   if ( id < 0 )
-    $('editLayerDups').removeAttribute ( "checked" );
+    $('#editLayerDups').prop ("checked", false);
   else if ( layers[id]['dups'] == 'Y' )
-    $('editLayerDups').setAttribute ( "checked", "checked" );
+    $('#editLayerDups').prop ("checked", true);
   else
-    $('editLayerDups').removeAttribute ( "checked" );
+    $('#editLayerDups').prop ("checked", false);
+
+  $('#edit-layer-dialog').show();
 }
 
 </script>

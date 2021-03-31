@@ -4547,44 +4547,28 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
 }
 
 /**
- * Generates HTML for color chooser options in admin and pref pages.
+ * Generates color input type, now supported in HTML.
  *
  * @param string $varname  the name of the variable to display
  * @param string $title    color description
  * @param string $varval   the default value to display
+ * @param string $id       the id of the html element
  *
  * @return string  HTML for the color selector.
  */
-function print_color_input_html ( $varname, $title, $varval = '' ) {
-  global $prefarray, $s, $SCRIPT;
-  static $select;
-
-  $name = '';
-  $setting = $varval;
-
-  if ( empty ( $select ) )
-    $select = translate ( 'Select' ) . '...';
-
-  if ( $SCRIPT == 'admin.php' ) {
-    $name = 'admin_';
-    $setting = $s[$varname];
-  } elseif ( $SCRIPT == 'pref.php' ) {
-    $name = 'pref_';
-    $setting = $prefarray[$varname];
+function print_color_input_html ( $varname, $title, $varval = '', $id='' ) {
+  $id = empty($id) ? $varname : $id;
+  // TODO: Get the text input box working so users can input RGB values.
+  //$textId = $id . 'RGB';
+  //return '<div class="form-inline"><input class="form-control" id="' . $textId . '" type="text" size="7" value="' . $varval . '"/>' .
+  //  '<input class="form-control" style="height: 2em; width: 4em;" name="' . $varname . '" id="' . $id .
+  //  '" type="color" class="form-control" value="' . $varval . '"' .
+  //  'onchange="var c = $(\'#' . $id . '\').val();' .
+  //  'console.log(\'color=\'+c); var x=$(\'' . $textId . '\'); console.log(\'textId=\'+x); x.attr(\'value\',c); x.trigger(\'change\'); console.log(\'x.val=\'+x.val());"></div>';
+    return '<div class="form-inline">' .
+    '<input class="form-control" style="height: 2em; width: 4em;" name="' . $varname . '" id="' . $id .
+    '" type="color" class="form-control" value="' . $varval . '"></div>';
   }
-
-  $name .= $varname;
-
-  return '
-            <p><label for="' . $name . '">' . $title
-   . ( $title == '' ? '' : ':' )
-   . '</label><input type="text" name="' . $name . '" id="' . $name
-   . '" size="8" maxlength="7" value="' . $setting
-   . '" onchange="updateColor( this, \'' . $varname
-   . '_sample\' );" /><span class="sample" id="' . $varname . '_sample" style="background:'
-   . $setting . ';">&nbsp;&nbsp;&nbsp;</span><input type="button" onclick="selectColor( \''
-   . $name . '\', event )" value="' . $select . '" /></p>';
-}
 
 /**
  * Prints all the calendar entries for the specified user for the specified date.

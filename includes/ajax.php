@@ -1,16 +1,9 @@
 <?php
 /*
- * All functions related to AJAX and JSON processing.
- * We are currently using the JSON.php file found in the includes directory
- * for JSON support. PHP before version 5.2 does not have native JSON
- * support. So, we are using the external implementation for now. We
- * may switch to using the native PHP implementation for supported versions
- * at some time in the future.
+ * All functions related to AJAX and JSON processing.=
  *
- * NOTE: This file also requires JSON.php to be included.
- *
- * @author Craig Knudsen <cknudsen@cknudsen.com>
- * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
+ * @author Craig Knudsen <craig@k5n.us>
+ * @copyright Craig Knudsen, <craig@k5n.us>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
  * @package WebCalendar
  */
@@ -32,13 +25,12 @@ function ajax_send_object ( $objectName, $object, $sendPlainText=false ) {
     Header ( 'Content-Type: text/plain' );
   else
     Header ( 'Content-Type: text/json' );
-  $json = new Services_JSON();
   $ret = [
     "error" => 0,
     "status" => 'OK',
     "message" => '',
     $objectName => $object];
-  echo $json->encode($ret);
+  echo json_encode($ret);
   return true;
 }
 
@@ -58,7 +50,6 @@ function ajax_send_objects ( $objectArray, $sendPlainText=false ) {
     Header ( 'Content-Type: text/plain' );
   else
     Header ( 'Content-Type: text/json' );
-  $json = new Services_JSON();
   $ret = [
     "error" => 0,
     "status" => 'OK',
@@ -66,7 +57,7 @@ function ajax_send_objects ( $objectArray, $sendPlainText=false ) {
   foreach ( $objectArray as $name => $value ) {
     $ret[$name] = $value;
   }
-  echo $json->encode($ret);
+  echo json_encode($ret);
   return true;
 }
 
@@ -84,12 +75,11 @@ function ajax_send_success ( $sendPlainText=false ) {
     Header ( 'Content-Type: text/plain' );
   else
     Header ( 'Content-Type: text/json' );
-  $json = new Services_JSON();
   $ret = [
     "error" => 0,
     "status" => 'OK',
     "message" => ''];
-  echo $json->encode($ret);
+  echo json_encode($ret);
   return true;
 }
 
@@ -110,12 +100,11 @@ function ajax_send_error ( $errorMessage, $sendPlainText=false ) {
     Header ( 'Content-Type: text/plain' );
   else
     Header ( 'Content-Type: text/json' );
-  $json = new Services_JSON();
   $ret = [
     "error" => 1,
     "status" => 'ERROR',
     "message" => $errorMessage];
-  echo $json->encode($ret);
+  echo json_encode($ret);
   return true;
 }
 
