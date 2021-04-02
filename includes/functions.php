@@ -4556,7 +4556,8 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
  *
  * @return string  HTML for the color selector.
  */
-function print_color_input_html ( $varname, $title, $varval = '', $id='' ) {
+function print_color_input_html ($varname, $title, $varval = '', $id='') {
+  global $SCRIPT, $s, $prefarray;
   $id = empty($id) ? $varname : $id;
   // TODO: Get the text input box working so users can input RGB values.
   //$textId = $id . 'RGB';
@@ -4565,9 +4566,21 @@ function print_color_input_html ( $varname, $title, $varval = '', $id='' ) {
   //  '" type="color" class="form-control" value="' . $varval . '"' .
   //  'onchange="var c = $(\'#' . $id . '\').val();' .
   //  'console.log(\'color=\'+c); var x=$(\'' . $textId . '\'); console.log(\'textId=\'+x); x.attr(\'value\',c); x.trigger(\'change\'); console.log(\'x.val=\'+x.val());"></div>';
-    return '<div class="form-inline">' .
+  if ( $SCRIPT == 'admin.php' ) {
+    $name = 'admin_';
+    $setting = $s[$varname];
+  } elseif ( $SCRIPT == 'pref.php' ) {
+    $name = 'pref_';
+    $setting = $prefarray[$varname];
+  } else {
+    $setting = $varval;
+  }
+
+  $name .= $varname;
+  return '<div class="form-inline">' .
+    (empty($title) ? '' : ('<label class="form-control" for="' . $varname . '">' . $title . '</label>')) .
     '<input class="form-control" style="height: 2em; width: 4em;" name="' . $varname . '" id="' . $id .
-    '" type="color" class="form-control" value="' . $varval . '"></div>';
+    '" type="color" value="' . $setting . '"></div>';
   }
 
 /**
