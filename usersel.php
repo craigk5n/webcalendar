@@ -15,7 +15,7 @@ if ( empty ( $form ) ) {
   exit;
 }
 if ( empty ( $listid ) ) {
-  echo str_replace ( 'XXX', translate ( 'listid' ), $progErrStr );
+  echo str_replace ( 'XXX', 'listid', $progErrStr );
   exit;
 }
 
