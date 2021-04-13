@@ -140,7 +140,7 @@ class WebCalendar {
 
 
     // Several files need a no-cache header and some of the same code.
-    $special = ['month.php', 'day.php', 'week.php', 'combo.php',
+    $special = ['month.php', 'day.php', 'week.php',
       'week_details.php', 'year.php', 'minical.php', 'events_ajax.php',
       'users_ajax.php', 'autocomplete_ajax.php'];
     $DMW = in_array ( $SCRIPT, $special );

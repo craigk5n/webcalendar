@@ -5024,7 +5024,8 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
   foreach ( $vals as $K => $V ) {
     $margin = $ind++ == 0 ? 'ml-1' : 'ml-3';
     $ret .= '
-      <input class="form-check-input m-1 ' . $margin . '" type="radio" name="' . $variable . '" value="' . $K . '"'
+      <input class="form-check-input m-1 ' . $margin . '" type="radio" name="' .
+      $variable . '" id="' . $variable . '_' . $K . '" value="' . $K . '"'
      . ( $setting == $K ? $checked : '' ) . $onclickStr . ' />' . $V;
   }
   return $ret;

@@ -450,7 +450,12 @@ if (empty($thisday))
               if ($is_admin && (( ! access_is_enabled () ||
                 ( access_is_enabled () &&
                 access_can_access_function ( ACCESS_USER_MANAGEMENT, $user ) ) ) ) )
-                print_menu_item (translate('User Manager'), 'users.php');
+                print_menu_item (translate('Users'), 'user_mgmt.php');
+            
+              if ($is_admin && (( ! access_is_enabled () ||
+                ( access_is_enabled () &&
+                access_can_access_function ( ACCESS_USER_MANAGEMENT, $user ) ) ) ) )
+                print_menu_item (translate('User Manager') . ' (deprecated)', 'users.php');
             
               if ($is_admin && ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y') {
                 ?><div class="dropdown-divider"></div>

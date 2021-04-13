@@ -50,19 +50,9 @@ $LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
 $public_link = str_replace( 'XXX', $PUBLIC_ACCESS_FULLNAME,
   translate( 'Click to modify layers settings for XXX' ) );
 
-$headExtras = '<link type="text/css" href="includes/css/bootstrap-colorpicker-3.2.0.css"/>';
-// Add ModalBox javascript/CSS & Tab code
-/*
-$headExtras = '
-<script type="text/javascript" src="includes/tabcontent/tabcontent.js"></script>
-<link type="text/css" href="includes/tabcontent/tabcontent.css" rel="stylesheet" />
-<script type="text/javascript" src="includes/js/modalbox/modalbox.js"></script>
-<link rel="stylesheet" href="includes/js/modalbox/modalbox.css" type="text/css"
-media="screen" />
-';
-*/
+$headExtras = '';
 
-print_header( array( 'js/translate.js.php', 'js/visible.js/true', 'js/bootstrap-colorpicker-3.2.0.js' ),
+print_header( array( 'js/translate.js.php', 'js/visible.js/true' ),
   $headExtras, 'onload="load_layers();"' );
 
 if ( $ALLOW_VIEW_OTHER != 'Y' )
@@ -207,15 +197,6 @@ $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
 });
 
-// Color picker init
-$(function () {
-  // Basic instantiation:
-  //$('#editLayerColor').colorpicker();
-  //$('#editLayerColor').on('colorpickerChange', function(event) {
-  //  $('#demo').css('background-color', event.color.toString());
-  //});
-});
-
 var layers = [];
 // Set the LAYER_STATUS value in webcal_user_pref for either the current
 // user or the public user ('__public__') with an AJAX call to
@@ -289,17 +270,15 @@ function load_layers()
         return;
       }
       console.log('response.layers.length=' + response.layers.length);
-      var x = '<table id="layertable" border="1"><th><?php echo $sourceStr;?></th><th><?php echo $colorStr;?></th><th><?php echo $duplicatesStr;?></th></tr>\n';
+      var x = '<table class="table table-striped" id="layertable" border="1"><tr><th><?php echo $sourceStr;?></th><th><?php echo $colorStr;?></th><th><?php echo $duplicatesStr;?></th></tr>\n';
       for ( var i = 0; i < response.layers.length; i++ ) {
-        var cl = ( i % 2 == 0 ) ? 'even' : 'odd';
         var l = response.layers[i];
         layers[l.id] = { id: l.id, source: l.source, color: l.color,
           dups: l.dups, fullname: l.fullname };
         x += '<tr onclick="return edit_layer(' + l.id + ')">' +
-          '<td class="' + cl + '">' + l.fullname + '</td><td class="' +
-          cl + '">' + l.color +
+          '<td>' + l.fullname + '</td><td>' + l.color +
           '<span class="colorsample" style="background-color: ' + l.color +
-          '">&nbsp;</span></td><td class="' + cl + '">' +
+          '">&nbsp;</span></td><td>' +
           ( l.dups == 'Y' ? '<?php echo $yesStr;?>' : '<?php echo $noStr;?>' ) +
           '</td></tr>\n';
       }
