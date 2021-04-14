@@ -806,28 +806,37 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
   $attList = new AttachmentList( $id );
   for ( $i = 0; $i < $attList->getSize(); $i++ ) {
     $a = $attList->getDoc ( $i );
-    echo '
-          ' . $a->getSummary()
+    echo "<div class=\"mt-2 pb-3 p-2 eventattachment\">\n";
+    echo ' ' . $a->getSummary();
+
+    // Dropdown menu for actions on this attachment
+    echo '&nbsp;<div class="btn-group dropleft float-right">' . 
+    '<button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . 
+    '</button><div class="dropdown-menu">';
+    $url = 'doc.php?blid=' . $a->getId();
+    echo '<a class="dropdown-item" href="' . $url . '">' . translate('View') . '</a>';
+    // TODO: Allow editing of an attachment
     // show delete link if user can delete
-    . ( $is_admin || $login == $a->getLogin()
+    echo ( $is_admin || $login == $a->getLogin()
         || user_is_assistant( $login, $a->getLogin() ) || $login == $create_by
-        || user_is_assistant( $login, $create_by )
-      ? ' <a href="docdel.php?blid=' . $a->getId()
+        || user_is_assistant( $login, $create_by ) )
+      ? '<a class="dropdown-item" href="docdel.php?blid=' . $a->getId()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
-       . '<img src="images/delete.png"/></a>' : '' ) . '<br />';
-    // Show images; limit height to 35% of display screen size.
+       . translate('Delete') . '</a>' : '';
+    echo '</div></div>' . "\n";
+    // Show images; limit height to 35% of viewport size.
     if ( $a->getMimeType() == 'image/jpeg' || $a->getMimeType() == 'image/png' ||
       $a->getMimeType() == 'image/gif' ) {
       echo '<br><a href="doc.php?blid=' . $a->getId() .
       '"><img src="doc.php?blid=' . $a->getId() . '"' .
-      ' style="max-height:35%; width: auto" /></a>';
+      ' style="max-height:35vh; width: auto" /></a>';
     }
+    echo "</div>\n";
   }
   $num_app = $num_rej = $num_wait = 0;
   $num_attach = $attList->getSize();
 
-  echo ( $num_attach == 0 ? '
-          ' . translate ( 'None' ) . '<br />' :'' );
+  echo ( $num_attach == 0 ? ' ' . translate ( 'None' ) . '<br />' :'' );
   echo '</div><div class="w-100"></div></div>' . "\n";
 }
 
@@ -839,35 +848,43 @@ if ( Doc::commentsEnabled() ) {
   $num_comment = $comList->getSize();
   $comment_text = '';
   for ( $i = 0; $i < $num_comment; $i++ ) {
+    $comment_text .= "<div class=\"p-2 m-2 eventcomment\">\n";
     $cmt = $comList->getDoc ( $i );
     user_load_variables ( $cmt->getLogin(), 'cmt_' );
     $comment_text .= '
           <strong>' . htmlspecialchars ( $cmt->getDescription() )
      . '</strong> - ' . $cmt_fullname . ' ' . translate ( 'at' ) . ' '
      . date_to_str ( $cmt->getModDate(), '', false, true ) . ' '
-     . display_time ( $cmt->getModTime(), 2 )
+     . display_time ( $cmt->getModTime(), 2 );
+
+    // Dropdown menu for actions on this comment
+    $comment_text .= '&nbsp;<div class="btn-group dropleft float-right">' . 
+    '<button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . 
+    '</button>' . "\n"  . '<div class="dropdown-menu">';
     // show delete link if user can delete
-    . ( $is_admin || $login == $cmt->getLogin()
-        || user_is_assistant( $login, $cmt->getLogin() ) || $login == $create_by
-        || user_is_assistant( $login, $create_by )
-      ? ' <a href="docdel.php?blid=' . $cmt->getId()
-       . '" onclick="return confirm( \'' . $areYouSureStr
-       . '\' );"><img src="images/delete.png"/></a>' : '' )// end show delete link
-     . '<br />
-          <blockquote id="eventcomment">';
-     if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
-       $str = $cmt->getData();
-       $str = str_replace ( '&amp;amp;', '&amp;', $str );
-       // If there is no HTML found, then go ahead and replace
-       // the line breaks ("\n") with the HTML break.
-       $comment_text .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
-         ? $str // found some html...
-         : nl2br ( activate_urls ( $str ) ) );
-     } else {
-       $comment_text .= nl2br ( activate_urls (
-        htmlspecialchars( $cmt->getData() ) ) );
-     }
-     $comment_text .= '</blockquote><div style="clear:both"></div>';
+    if ($is_admin || $login == $cmt->getLogin()
+      || user_is_assistant($login, $cmt->getLogin()) || $login == $create_by
+      || user_is_assistant($login, $create_by)) {
+      $comment_text .= '<a class="dropdown-item" href="docdel.php?blid=' . $cmt->getId()
+      . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
+      . translate('Delete') . '</a>';
+    }
+    $comment_text .= '</div></div><hr>' . "\n";
+    //$comment_text .= '<br />  <blockquote class="eventcomment">';
+    if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
+      $str = $cmt->getData();
+      $str = str_replace ( '&amp;amp;', '&amp;', $str );
+      // If there is no HTML found, then go ahead and replace
+      // the line breaks ("\n") with the HTML break.
+      $comment_text .= ( strstr ( $str, '<' ) && strstr ( $str, '>' )
+        ? $str // found some html...
+        : nl2br ( activate_urls ( $str ) ) );
+    } else {
+      $comment_text .= nl2br ( activate_urls (
+      htmlspecialchars( $cmt->getData() ) ) );
+    }
+    //$comment_text .= '</blockquote><div style="clear:both"></div>';
+    $comment_text .= "</div>\n";
   }
 
   if ( $num_comment == 0 )
@@ -875,9 +892,9 @@ if ( Doc::commentsEnabled() ) {
   else {
     echo '
           ' . $num_comment . ' ' . translate ( 'comments' ) . '
-          <input id="showbutton" type="button" value="' . translate ( 'Show' )
+          <input class="btn" id="showbutton" type="button" value="' . translate ( 'Show' )
      . '" onclick="showComments();" />
-          <input id="hidebutton" type="button" value="' . translate ( 'Hide' )
+          <input class="btn" id="hidebutton" type="button" value="' . translate ( 'Hide' )
      . '" onclick="hideComments();" /><br />
           <div id="comtext">' . $comment_text . '</div>';
     // We could put the following JS in includes/js/view_entry.php,

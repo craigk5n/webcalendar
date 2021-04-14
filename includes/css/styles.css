@@ -1452,7 +1452,12 @@ tr.highlight td {
   margin-top: 3px;
   margin-left: 2px;
 }
-#eventcomment {
+.eventattachment {
+  background-color: var(--cellbg);
+  border:1px solid var(--tablebg);
+  padding:.25rem;
+}
+.eventcomment {
   background-color: var(--cellbg);
   border:1px solid var(--tablebg);
   padding:.25rem;
