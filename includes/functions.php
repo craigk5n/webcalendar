@@ -4566,20 +4566,20 @@ function print_color_input_html ($varname, $title, $varval = '', $id='') {
   //  '" type="color" class="form-control" value="' . $varval . '"' .
   //  'onchange="var c = $(\'#' . $id . '\').val();' .
   //  'console.log(\'color=\'+c); var x=$(\'' . $textId . '\'); console.log(\'textId=\'+x); x.attr(\'value\',c); x.trigger(\'change\'); console.log(\'x.val=\'+x.val());"></div>';
+  $prefix = '';
   if ( $SCRIPT == 'admin.php' ) {
-    $name = 'admin_';
+    $prefix = 'admin_';
     $setting = $s[$varname];
   } elseif ( $SCRIPT == 'pref.php' ) {
-    $name = 'pref_';
+    $prefix = 'pref_';
     $setting = $prefarray[$varname];
   } else {
     $setting = $varval;
   }
 
-  $name .= $varname;
   return '<div class="form-inline">' .
-    (empty($title) ? '' : ('<label class="form-control" for="' . $varname . '">' . $title . '</label>')) .
-    '<input class="form-control" style="height: 2em; width: 4em;" name="' . $varname . '" id="' . $id .
+    (empty($title) ? '' : ('<label class="form-control" for="' . $prefix . $varname . '">' . $title . '</label>')) .
+    '<input class="form-control" style="height: 2em; width: 4em;" name="' . $prefix . $varname . '" id="' . $prefix . $id .
     '" type="color" value="' . $setting . '"></div>';
   }
 
