@@ -308,6 +308,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
   $recurrance = '';
   $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not
     WHERE cal_id = ?';
+  $sep = $simple ? "<br>" : ";";
 
   $res = dbi_execute ( $sql, [$id] );
 
@@ -389,36 +390,36 @@ function export_recurrence_ical ( $id, $simple = false ) {
       }
 
       if ( ! empty ( $interval ) && $interval > 1 )
-        $rrule .= ';' . ( $simple ? translate ( 'Interval' ) : 'INTERVAL' )
+        $rrule .= $sep . ( $simple ? translate ( 'Interval' ) : 'INTERVAL' )
          . "=$interval";
 
       if ( ! empty ( $bymonth ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Months' ) : 'BYMONTH' )
+        $rrule .= $sep . ( $simple ? translate ( 'Months' ) : 'BYMONTH' )
          . "=$bymonth";
 
       if ( ! empty ( $bymonthday ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Month Days' ) : 'BYMONTHDAY' )
+        $rrule .= $sep . ( $simple ? translate ( 'Month Days' ) : 'BYMONTHDAY' )
          . "=$bymonthday";
 
       if ( ! empty ( $byday ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Days' ) : 'BYDAY' )
+        $rrule .= $sep . ( $simple ? translate ( 'Days' ) : 'BYDAY' )
          . "=$byday";
 
       if ( ! empty ( $byweekno ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Weeks' ) : 'BYWEEKNO' )
+        $rrule .= $sep . ( $simple ? translate ( 'Weeks' ) : 'BYWEEKNO' )
          . "=$byweekno";
 
       if ( ! empty ( $bysetpos ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Position' ) : 'BYSETPOS' )
+        $rrule .= $sep . ( $simple ? translate ( 'Position' ) : 'BYSETPOS' )
          . "=$bysetpos";
 
       if ( ! empty ( $wkst ) && $wkst2 != 'MO' )
-        $rrule .= ';' . ( $simple ? translate ( 'Week Start' ) : 'WKST' )
+        $rrule .= $sep . ( $simple ? translate ( 'Week Start' ) : 'WKST' )
          . "=$wkst";
 
       if ( ! empty ( $end ) ) {
         $endtime = ( empty ( $endtime ) ? 0 : $endtime );
-        $rrule .= ';' . ( $simple ? translate ( 'Until' ) : 'UNTIL' ) . '=';
+        $rrule .= $sep . ( $simple ? translate ( 'Until' ) : 'UNTIL' ) . '=';
         $utc = ( $simple
          ? date_to_str ( $end, $DATE_FORMAT_TASK, false ) . ' '
           . display_time ( $endtime )
@@ -426,7 +427,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
         $rrule .= $utc;
       } else
       if ( ! empty ( $cal_count ) && $cal_count != 999 )
-        $rrule .= ';' . ( $simple ? translate ( 'Count' ) : 'COUNT' )
+        $rrule .= $sep . ( $simple ? translate ( 'Count' ) : 'COUNT' )
          . "=$cal_count";
       //.
       // wrap line if necessary
@@ -444,15 +445,13 @@ function export_recurrence_ical ( $id, $simple = false ) {
           $rdatesStr .= date_to_str ( $rdates, $DATE_FORMAT_TASK, false ) . ' ';
         }
         $string = ( $simple
-        ? ',' . translate ( 'Inclusion Dates' ) . '=' . $rdatesStr
+        ? $sep . translate ( 'Inclusion Dates' ) . '=' . $rdatesStr
         : 'RDATE;VALUE=DATE:' . implode ( ',', $rdate ) );
         $string = export_fold_lines ( $string );
         foreach ($string as $key => $value) {
           $recurrance .= "$value\r\n";
         }
       }
-      if ( $simple )
-       $recurrance .= '<br />';
 
       if ( count ( $exdate ) > 0 ) {
         $exdatesStr = '';
@@ -460,7 +459,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
           $exdatesStr .= date_to_str ( $exdates, $DATE_FORMAT_TASK, false ) . ' ';
         }
         $string = ( $simple
-         ? ',' . translate ( 'Exclusion Dates' ) . '=' . $exdatesStr
+         ? $sep . translate ( 'Exclusion Dates' ) . '=' . $exdatesStr
          : 'EXDATE;VALUE=DATE:' . implode ( ',', $exdate ) );
         $string = export_fold_lines ( $string );
         foreach ($string as $key => $value) {

@@ -300,7 +300,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     include "menu.php";
   }
   // TODO convert this to return value.
-  echo '<div class="container">';
+  echo '<div class="container-fluid">';
 }
 
 /**

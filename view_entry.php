@@ -541,7 +541,7 @@ if ( ! empty ( $DISPLAY_CREATED_BYPROXY ) && $DISPLAY_CREATED_BYPROXY == 'Y' ) {
 
 if ($single_user == 'N' && !empty($createby_fullname)) {
   echo '<div class="row"><div class="col-3">' . translate('Created by') . "</div>\n";
-  echo '<div class="col-9">' . $category;
+  echo '<div class="col-9">';
   if ($is_private && !access_is_enabled()) {
     echo '[' . translate('Private') . ']';
   } else if ($is_confidential && !access_is_enabled()) {

@@ -407,7 +407,7 @@ if (empty($thisday))
               if ( $single_user != 'Y' && $readonly != 'Y' ) {
                 if (! access_is_enabled () ||
                   access_can_access_function ( ACCESS_ASSISTANTS, $user ) )
-                  print_menu_item(translate('Assistants', 'assistant_edit.php?user=' . $user ));
+                  print_menu_item(translate('Assistants'), 'assistant_edit.php?user=' . $user);
               }
               if ( ! access_is_enabled () ||
                 access_can_access_function ( ACCESS_PREFERENCES, $user ) )
@@ -433,7 +433,7 @@ if (empty($thisday))
             
               if ($REMOTES_ENABLED == 'Y' && (! access_is_enabled () ||
                 access_can_access_function (ACCESS_IMPORT)))
-                print_menu_item (translate('Remote Calendars'), 'users.php?tab=remotes');
+                print_menu_item (translate('Remote Calendars'), 'remotecal_mgmt.php');
             
               if (! access_is_enabled () ||
                 access_can_access_function (ACCESS_PREFERENCES, $user))
