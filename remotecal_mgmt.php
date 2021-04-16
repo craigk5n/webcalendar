@@ -26,6 +26,10 @@ $noStr = translate('No');
 $noLoginError = translate('Username cannot be blank.');
 $noUrlError = translate('You have not entered a URL.');
 $noTooltip = translate('This remote calendar does not have a layer.  Add a layer for this calendar to view it in your calendar.');
+$sourceStr = translate('Source');
+$colorStr = translate('Color');
+$duplicatesStr = translate('Duplicates');
+
 
 print_header(
     '',
@@ -151,6 +155,40 @@ print_header(
                     <input class="form-control btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
                     <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();" />
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="edit-layer-dialog" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="edit-layer-title" class="modal-title"><?php etranslate('Add Layer'); ?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#edit-layer-dialog').hide();">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="editLayerForm" id="editLayerForm">
+                    <input type="hidden" name="addLayerRemoteCalendarLogin" id="addLayerRemoteCalendarLogin" value="" />
+                    <table>
+                        <tr>
+                            <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('The text color of the new layer that will be displayed in your calendar.'); ?>"><label><?php echo $colorStr; ?>:</label></td>
+                            <td><?php echo print_color_input_html('editLayerColor', '', '#000000'); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
+                            <td><input class="form-control" type="checkbox" name="editLayerDups" id="editLayerDups" />
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="modal-footer">
+                        <input class="form-control btn btn-secondary" onclick="$('#edit-layer-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="edit_layer_window_closed(); $('#edit-layer-dialog').hide();" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -434,6 +472,57 @@ print_header(
                 alert('<?php etranslate('Error'); ?>:' + ex);
             });
     }
+
+    // Add a new layer
+    function add_layer(remoteCalLogin) {
+        console.log('add_layer(' + remoteCalLogin + ')');
+        // Find correct user in select list
+        $('#addLayerRemoteCalendarLogin').val(remoteCalLogin);
+        $('#editLayerColor').prop("value", '#000000'); // default to black
+        // Also change the background color of the sample.
+        //$('#editLayerColor_sample').style.background =
+        //  ( id < 0 ? '#000000' : layers[id]['color'] );
+        $('#editLayerDups').prop("checked", false);
+        $('#edit-layer-dialog').show();
+    }
+
+    // Handler for save in Add Layer window
+    function edit_layer_window_closed() {
+        var layeruser = '<?php echo $login; ?>';
+        var source = $('#addLayerRemoteCalendarLogin').val();
+        var color = $('#editLayerColor').val();
+        var dups = $('#editLayerDups').is(':checked') ? 'Y' : 'N';
+        var action = 'save';
+        console.log("Sending save...\nlayeruser: " + layeruser +
+          "\nsource: " + source + "\ncolor: " + color + "\ndups: " + dups);
+
+        $.post('layers_ajax.php', {
+            action: action,
+            id: -1,
+            layeruser: layeruser,
+            source: source,
+            color: color,
+            dups: dups
+          },
+          function(data, status) {
+            var stringified = JSON.stringify(data);
+            console.log("set_layer_status Data: " + stringified + "\nStatus: " + status);
+            try {
+              var response = jQuery.parseJSON(stringified);
+              console.log('set_layer_status response=' + response);
+            } catch (err) {
+              alert('<?php etranslate('Error'); ?>: <?php etranslate('JSON error'); ?> - ' + err);
+              return;
+            }
+            if (response.error) {
+              alert('<?php etranslate('Error'); ?>: ' + response.message);
+              return;
+            }
+            // Reload users
+            load_users();
+          });
+    }
+
     // Init tooltips
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
