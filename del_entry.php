@@ -211,7 +211,9 @@ if ( $id > 0 && empty ( $error ) ) {
       }
 
       // Now, mark event as deleted for all users.
-      dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = \'D\' WHERE cal_id = ?', [$id] );
+      dbi_execute ( 'UPDATE webcal_entry_user
+  SET cal_status = "D"
+  WHERE cal_id = ?', [$id] );
 
       // Delete External users for this event
       dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?', [$id] );
