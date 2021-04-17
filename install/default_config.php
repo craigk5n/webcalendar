@@ -95,6 +95,7 @@ $webcalConfig = array(
   'MENU_DATE_TOP' => 'Y',
   'MENU_ENABLED' => 'Y',
   'MENU_THEME' => 'default',
+  'MINIMUM_PHP_VERSION' => '7.1.0',
   'MYEVENTS' => '#006000',
   'NONUSER_AT_TOP' => 'Y',
   'NONUSER_ENABLED' => 'Y',
