@@ -69,16 +69,18 @@ function ajax_send_objects ( $objectArray, $sendPlainText=false ) {
  * @param  boolean $sendPlainText  (Optional) Set to true to use plain/text
  *        as the Content-type.
  */
-function ajax_send_success ( $sendPlainText=false ) {
+function ajax_send_success($sendPlainText = false, $message = '')
+{
   // Plain text can be helpful for debugging in the browser.
-  if ( $sendPlainText )
-    Header ( 'Content-Type: text/plain' );
+  if ($sendPlainText)
+    Header('Content-Type: text/plain');
   else
-    Header ( 'Content-Type: text/json' );
+    Header('Content-Type: text/json');
   $ret = [
     "error" => 0,
     "status" => 'OK',
-    "message" => ''];
+    "message" => $message
+  ];
   echo json_encode($ret);
   return true;
 }

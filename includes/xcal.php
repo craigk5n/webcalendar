@@ -1214,7 +1214,7 @@ $Entry[Repeat][WkSt]       =  Day that week starts on (default MO)
 $Entry[Repeat][Count]      =  Number of occurances, may be used instead of UNTIL
 */
 
-function import_data ( $data, $overwrite, $type ) {
+function import_data ( $data, $overwrite, $type, $silent=false ) {
   global $ALLOW_CONFLICTS, $ALLOW_CONFLICT_OVERRIDE, $calUser, $count_con,
   $count_suc, $errormsg, $error_num, $H2COLOR, $importcat, $ImportType,
   $login, $numDeleted, $single_user, $single_user_login, $sqlLog;
@@ -1827,14 +1827,18 @@ function import_data ( $data, $overwrite, $type ) {
     if ( $subType != 'icalclient' && $subType != 'remoteics' ) {
       if ( ! empty ( $error ) && empty ( $overlap ) ) {
         $error_num++;
-        echo print_error ( $error ) . "\n<br />\n";
+        if ($silent) {
+          $errormsg .= $error;
+        } else {
+          echo print_error ( $error ) . "\n<br />\n";
+        }
       }
       if ( $Entry['Duration'] > 0 ) {
         $time = trim( display_time ( '', 0, $Entry['StartTime'] )
            . '-' . display_time ( '', 2, $Entry['EndTime'] ) );
       }
       // Conflicting
-      if ( ! empty ( $overlap ) ) {
+      if ( ! empty ( $overlap ) && !$silent ) {
         echo '<b><h2>' .
         translate ( 'Scheduling Conflict' ) . ': ';
         $count_con++;
@@ -1852,25 +1856,27 @@ function import_data ( $data, $overwrite, $type ) {
         echo ":<ul>\n" . $overlap . "</ul>\n";
       } else {
         // No Conflict
-        if ( $count_suc == 0 ) {
+        if ( $count_suc == 0 && ! $silent ) {
           echo '<b><h2>' .
           translate ( 'Event Imported' ) . ":</h2></b><br />\n";
         }
         $count_suc++;
 
         $dd = $Entry['start_date'];
-        echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
-        echo '" title="' . translate ( 'View this entry' ) . '">';
-        $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
-        $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
-        echo htmlspecialchars ( $Entry['Summary'] ). '</a> (' .
-          date_to_str ( $dd );
+        if (!$silent) {
+          echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
+          echo '" title="' . translate ( 'View this entry' ) . '">';
+          $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
+          $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
+          echo htmlspecialchars ( $Entry['Summary'] ). '</a> (' .
+            date_to_str ( $dd );
 
-        if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
-          echo '&nbsp; ' . translate ( 'All day event' );
-        else if ( ! empty ( $time ) )
-          echo '&nbsp; ' . $time;
-        echo ")<br /><br />\n";
+          if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
+            echo '&nbsp; ' . translate ( 'All day event' );
+          else if ( ! empty ( $time ) )
+            echo '&nbsp; ' . $time;
+          echo ")<br /><br />\n";
+        }
       }
       // Reset Variables
       $overlap = $error = $dd = $time = '';
@@ -1892,7 +1898,11 @@ function import_data ( $data, $overwrite, $type ) {
           }
           dbi_free_result ( $res );
         } else {
-          echo db_error() . "<br />\n";
+          if ($silent) {
+            $errormsg .= "\n" . db_error();
+          } else {
+            echo db_error() . "<br />\n";
+          }
         }
       }
       $oldidcnt = count ( $oldIds );
@@ -1905,6 +1915,23 @@ function import_data ( $data, $overwrite, $type ) {
       }
     }
   }
+}
+
+function curl_download($url) {
+  global $errormsg;
+
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+  $result = curl_exec($ch);
+  if(curl_errno($ch)) {
+    $errormsg .= 'Error: '.curl_error($ch);
+  }
+
+  curl_close ($ch);
+  return $result;
 }
 
 /* Functions from import_ical.php
@@ -1931,10 +1958,28 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $ical_data = [];
   do_debug ( "in parse_ical, file=$cal_file, source=$source" );
   if ( $source == 'file' || $source == 'remoteics' ) {
-    if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
-      $errormsg .= "Can't read temporary file: $cal_file\n";
-      exit();
+    $fd = '';
+    try {
+      $fd = @fopen($cal_file, 'r');
+    } catch (Exception $e) {
+      // send error message if you can
+      $errormsg .= "Cannot read file: $e";
+      return [];
+    } 
+    if (!$fd && stripos($cal_file, "http") == 0) {
+      // Try curl instead so we can ignore cert errors
+      $data = curl_download($cal_file);
+      if (empty($data)) {
+        if (empty($errormsg)) {
+          $errormsg .= "No data returned";
+        }
+        return [];
+      }
     } else {
+      if (!$fd) {
+        $errormsg .= "Error opening file: $cal_file";
+        return $errormsg;
+      }
       // Read in contents of entire file first
       $data = '';
       $line = 0;

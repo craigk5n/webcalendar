@@ -18,12 +18,14 @@ if ($REMOTES_ENABLED != 'Y' || (access_is_enabled() && !access_can_access_functi
 }
 
 $LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
+$cannotLoadStr = translate('You PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.');
 $areYouSure = translate('Are you sure you want to delete this remote calendar?');
 $deleteUserInfo = translate('This will remove all events for this remote calendar.') .
     ' ' . translate('This action cannot be undone.');
 $yesStr = translate('Yes');
 $noStr = translate('No');
 $noLoginError = translate('Username cannot be blank.');
+$invalidIDError = translate('The ID is limited to letters, numbers and underscore only.');
 $noUrlError = translate('You have not entered a URL.');
 $noTooltip = translate('This remote calendar does not have a layer.  Add a layer for this calendar to view it in your calendar.');
 $sourceStr = translate('Source');
@@ -41,6 +43,16 @@ print_header(
 
 
 <h3><?php etranslate('Remote Calendars'); ?></h3>
+
+<?php
+// Make sure allow_url_fopen is enabled.  Otherwise, the ICS URL cannot be downloaded.
+// cannotLoadStr 
+if (!ini_get('allow_url_fopen')) { ?>
+    <div id="main-dialog-load-error" class="alert alert-warning">
+        <span id="loadMessage"><?php echo $cannotLoadStr;?></span>
+        <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
+    </div>
+<?php } ?>
 <!-- Error Alert -->
 <div id="main-dialog-alert" class="alert alert-info" style="display: none">
     <span id="infoMessage"></span>
@@ -53,8 +65,7 @@ print_header(
             <th scope="col">
                 <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?></div>
             </th>
-            <th scope="col"><?php etranslate('First Name') ?></th>
-            <th scope="col"><?php etranslate('Last Name') ?></th>
+            <th scope="col"><?php etranslate('Name') ?></th>
             <th scope="col">
                 <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Calendar user who created this remote calendar') ?>"><?php etranslate('Admin') ?></div>
             </th>
@@ -63,6 +74,8 @@ print_header(
                     <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Enabling allows this remote calendar to be used as a public calendar, and a link directly to it will be displayed on the login page.') ?>"><?php etranslate('Public Access') ?></div>
                 </th>
             <?php } ?>
+            <th scope="col">
+            <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Number of events currently in the remote calendar') ?>"><?php etranslate('Events') ?></div>
             <th scope="col">
                 <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('Calendar URL') ?></div>
             </th>
@@ -102,13 +115,9 @@ print_header(
                         <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
                         <input type="text" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>" />
                     </div>
-                    <div class="form-inline mt-1" id="div-editFirstname">
-                        <label class="col-5 for=" editFirstname"><?php etranslate('First Name') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editFirstname" name="editFirstname" />
-                    </div>
-                    <div class="form-inline mt-1" id="div-editLastname">
-                        <label class="col-5 for=" editLastname"><?php etranslate('Last Name') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editLastname" name="editLastname" />
+                    <div class="form-inline mt-1" id="div-Name">
+                        <label class="col-5 for=" editName"><?php etranslate('Name') ?>: </label>
+                        <input type="text" class="col-7 form-control" id="editName" name="editName" />
                     </div>
                     <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                         <div class="form-inline mt-1" id="div-editPublic">
@@ -205,6 +214,9 @@ print_header(
         // Edit
         ret += "<a class='clickable dropdown-item' onclick=\"return edit_user('" + login +
             "');\"><?php etranslate('Edit'); ?>...</a>";
+        // Reload events
+        ret += "<a class='clickable dropdown-item' onclick=\"return reload_events('" + login +
+            "');\"><?php etranslate('Reload'); ?></a>";
         if (showAddLayer) {
             ret += "<a class='clickable dropdown-item' onclick=\"return add_layer('" + login +
                 "');\"><?php etranslate('Add Layer'); ?>...</a>";
@@ -219,6 +231,32 @@ print_header(
             }
         <?php } ?>
         ret += "</div></div>\n";
+        return ret;
+    }
+
+    // Remove any PHP warnings/errors at the beginning of our response.
+    // Example:
+    // <b>Warning</b>:  Cannot modify header information - headers already sent in <b>/var/www/html/includes/ajax.php</b> on line <b>78</b><br />
+    // {"error":0,"status":"OK","message":"35 events added, 0 events deleted"}
+    function trim_json(str) {
+        console.log("Trimming JSON string: " + str);
+        if (!(typeof str === "string" || str instanceof String)) {
+            console.log("Cannot clean object with trim_json.")
+            return str;
+        }
+        var ret = "";
+        var lines = str.split(/\r?\n/);
+        for (let i = 0; i < lines.length; i++) {
+            if (lines[i].startsWith('<')) {
+                // Ignore
+                console.log("Ignoring HTML in response: " + lines[i]);
+            } else {
+                if ( ret.length == 0)
+                    ret = lines[i];
+                else
+                    ret += lines[i];
+            }
+        }
         return ret;
     }
 
@@ -254,15 +292,16 @@ print_header(
                         public: u.public,
                         url: u.url,
                         fullname: u.fullname,
-                        layercount: u.layercount
+                        layercount: u.layercount,
+                        eventcount: u.eventcount
                     };
                     var tooltip = u.layercount == 0 ? 'data-toggle="tooltip" data-placement="bottom" title="<?php echo $noTooltip; ?>"' : '';
                     var warning = u.layercount == 0 ? '<img class="button-icon-inverse" src="images/open-iconic/svg/warning.svg" />' : '';
                     var id = u.login.substring(0, 5) == '<?php echo $NONUSER_PREFIX; ?>' ? u.login.substring(5) : u.login;
-                    tbody += '<tr><td ' + tooltip + '>' + warning + id + '</td><td>' + (u.firstname == null ? '' : u.firstname) +
-                        '</td><td>' + (u.lastname == null ? '' : u.lastname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
+                    tbody += '<tr><td ' + tooltip + '>' + warning + id + 
+                        '</td><td>' + (u.fullname == null ? '' : u.fullname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
                         <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<?php echo $yesStr; ?>' : '<?php echo $noStr; ?>') +
-                        <?php } ?> '</td><td>' +
+                        <?php } ?> '</td><td>' + u.eventcount + '</td><td>' +
                         (u.url == null ? '' : u.url) +
                         '</td><td>' + user_menu(u.login, u.layercount == 0) + '</td></tr>\n';
                 }
@@ -272,6 +311,66 @@ print_header(
                 $('[data-toggle="tooltip"]').tooltip();
             },
             'json');
+    }
+
+    function reload_events(login) {
+        console.log("Reloading remote cal, login: " + login);
+        var error = '';
+        var message = '';
+
+        $.post('users_ajax.php', {
+                    action: "reload-remote-cal",
+                    login: login
+                },
+                function(data, status) {
+                    //console.log('Data: ' + data);
+                    if (typeof data === "string" || data instanceof String) {
+                        stringified = data;
+                    } else {
+                        stringified = "" + JSON.stringify(data);
+                    }
+                    //console.log("stringified: " + stringified);
+                    var cleaned = trim_json(stringified);
+                    //console.log('Cleaned Data: ' + cleaned);
+                    console.log("reload_events Data: " + stringified + "\nStatus: " + status);
+                    var response = null;
+                    try {
+                        response = jQuery.parseJSON(cleaned);
+                        console.log('reload_events response=' + response);
+                        console.log('response.error=' + response.error);
+                        console.log('response.status=' + response.status);
+                        console.log('response.message=' + response.message);
+                    } catch (err) {
+                        console.log("JSON Error: " + err);
+                        //alert('<?php etranslate('Error'); ?>: <?php etranslate('JSON error'); ?> - ' + err);
+                        error = err;
+                        return;
+                    }
+                    if (response.error) {
+                        console.log("Response error: " + response.error);
+                        error = response.message;
+                        //alert('<?php etranslate('Error'); ?>: ' + response.message);
+                        return;
+                    }
+                    if (error == '') {
+                        if (response.message)
+                            message = ": " + response.message;
+                        console.log("Message: " + message);
+                        // Reload layers
+                        load_users();
+                    }
+                })
+            .done(function() {
+                if (error.length == 0) {
+                    $('#infoMessage').html('<?php echo translate('Remote Calendar successfully reloaded') ?>' + message);
+                    $('#main-dialog-alert').show();
+                } else {
+                    alert('<?php etranslate('Error'); ?>:' + error);
+                }
+            })
+            .fail(function(jqxhr, settings, ex) {
+                alert('<?php etranslate('Error'); ?>:' + ex);
+            });
     }
 
     // Minimal URL validation.
@@ -288,6 +387,25 @@ print_header(
             return true;
         else
             return false;
+    }
+
+    function validateID() {
+        var elem = $("#editUsername").val();
+        console.log("Validate ID: " + elem);
+        // Replace " " with "_"
+        if (elem.match(/ /)) {
+            var newval = elem.replace(/ /g,"_");
+            $("#editUsername").val(newval);
+            console.log("Replacing ID: " + newval);
+        }
+        elem = $("#editUsername").val();
+        var regex = /^\w+$/;
+        if (elem.match(regex))
+            return true;
+        else {
+            console.log("Calendar ID is not valid: " + elem);
+            return false;
+        }
     }
 
     function edit_user(login) {
@@ -307,8 +425,7 @@ print_header(
             $('#editUserAdd').prop("value", "1");
             $('#editUsername').prop("disabled", false);
             $('#editUsername').prop("value", "");
-            $('#editFirstname').prop("value", "");
-            $('#editLastname').prop("value", "");
+            $('#editName').prop("value", "");
             <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                 $('#editPublic_N').prop("checked", true);
             <?php } ?>
@@ -319,8 +436,7 @@ print_header(
             $('#editUserAdd').prop("value", "0");
             $('#editUsername').prop("value", user['login'].substring('<?php echo $NONUSER_PREFIX; ?>'.length));
             $('#editUsername').prop("disabled", true);
-            $('#editFirstname').prop("value", user['firstname']);
-            $('#editLastname').prop("value", user['lastname']);
+            $('#editName').prop("value", user['fullname']);
             <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                 if (user['public'] == 'Y')
                     $('#editPublic_Y').prop("checked", true);
@@ -335,8 +451,8 @@ print_header(
 
     function save_handler() {
         var login = '<?php echo $NONUSER_PREFIX; ?>' + $('#editUsername').val();
-        var firstname = $('#editFirstname').val();
-        var lastname = $('#editLastname').val();
+        var lastname = $('#editName').val();
+        var firstname = '';
         <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
             console.log('editPublic_Y: ' + $('#editPublic_Y').is(':checked'));
             var public = $('#editPublic_Y').is(':checked') ? 'Y' : 'N';
@@ -355,6 +471,12 @@ print_header(
         // Validate URL
         if (!validateURL()) {
             $('#errorMessage').html('<?php echo $noUrlError; ?>');
+            $('#edit-user-dialog-alert').show();
+            return;
+        }
+        // Validate ID
+        if(!validateID()) {
+            $('#errorMessage').html('<?php echo $invalidIDError; ?>');
             $('#edit-user-dialog-alert').show();
             return;
         }
@@ -494,33 +616,33 @@ print_header(
         var dups = $('#editLayerDups').is(':checked') ? 'Y' : 'N';
         var action = 'save';
         console.log("Sending save...\nlayeruser: " + layeruser +
-          "\nsource: " + source + "\ncolor: " + color + "\ndups: " + dups);
+            "\nsource: " + source + "\ncolor: " + color + "\ndups: " + dups);
 
         $.post('layers_ajax.php', {
-            action: action,
-            id: -1,
-            layeruser: layeruser,
-            source: source,
-            color: color,
-            dups: dups
-          },
-          function(data, status) {
-            var stringified = JSON.stringify(data);
-            console.log("set_layer_status Data: " + stringified + "\nStatus: " + status);
-            try {
-              var response = jQuery.parseJSON(stringified);
-              console.log('set_layer_status response=' + response);
-            } catch (err) {
-              alert('<?php etranslate('Error'); ?>: <?php etranslate('JSON error'); ?> - ' + err);
-              return;
-            }
-            if (response.error) {
-              alert('<?php etranslate('Error'); ?>: ' + response.message);
-              return;
-            }
-            // Reload users
-            load_users();
-          });
+                action: action,
+                id: -1,
+                layeruser: layeruser,
+                source: source,
+                color: color,
+                dups: dups
+            },
+            function(data, status) {
+                var stringified = JSON.stringify(data);
+                console.log("set_layer_status Data: " + stringified + "\nStatus: " + status);
+                try {
+                    var response = jQuery.parseJSON(stringified);
+                    console.log('set_layer_status response=' + response);
+                } catch (err) {
+                    alert('<?php etranslate('Error'); ?>: <?php etranslate('JSON error'); ?> - ' + err);
+                    return;
+                }
+                if (response.error) {
+                    alert('<?php etranslate('Error'); ?>: ' + response.message);
+                    return;
+                }
+                // Reload users
+                load_users();
+            });
     }
 
     // Init tooltips

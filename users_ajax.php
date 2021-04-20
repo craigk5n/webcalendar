@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description
  *   Handler for AJAX requests from users_mgmt.php, nonuser_mgmt.php
@@ -22,6 +21,7 @@ include 'includes/' . $user_inc;
 include 'includes/access.php';
 include 'includes/validate.php';
 include 'includes/ajax.php';
+include 'includes/xcal.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -52,12 +52,6 @@ if (!empty($_SERVER['HTTP_REFERER'])) {
   if (!empty($refurl['path']))
     $referer = strrchr($refurl['path'], '/(user_mgmt|resourcecal_mgmt).php');
 }
-#if ($referer != '/user_mgmt.php' && $referer != '/resourcecal_mgmt.php') {
-#  activity_log(0, $login, $login, SECURITY_VIOLATION, 'Hijack attempt:edit_user');
-#  ajax_send_error(translate('Not authorized'));
-#  exit;
-#}
-
 $error = '';
 
 if ($action == 'userlist') {
@@ -157,7 +151,7 @@ if ($action == 'userlist') {
   // Get layers for this user so we can see if the remote calendars are being used as a layer.
   load_user_layers($login, 1);
   $active_layers = [];
-  foreach ( $layers as $layer ) {
+  foreach ($layers as $layer) {
     $active_layers[$layer['cal_layeruser']] = 1;
   }
   // Use JSON to encode our list of remote calendar users.
@@ -168,6 +162,7 @@ if ($action == 'userlist') {
     // Skip public user
     if ($user['cal_login'] != '__public__') {
       $cnt = empty($active_layers[$user['cal_login']]) ? 0 : 1;
+      $event_cnt = get_event_count_for_user($user['cal_login']);
       $ret_users[] =  [
         'login' => $user['cal_login'],
         'lastname' => $user['cal_lastname'],
@@ -176,7 +171,8 @@ if ($action == 'userlist') {
         'public' => empty($user['cal_is_public']) ? 'Y' : $user['cal_is_public'],
         'url' => $user['cal_url'],
         'fullname' => $user['cal_fullname'],
-        'layercount' => $cnt
+        'layercount' => $cnt,
+        'eventcount' => $event_cnt
       ];
       // Not including password hash 'cal_password'
     }
@@ -212,6 +208,42 @@ if ($action == 'userlist') {
     ajax_send_success();
   else
     ajax_send_error($error);
+} else if ($action == 'reload-remote-cal') {
+  // import_data may output stuff, so catch it and discard.
+  ob_start ();
+  if (!ini_get('allow_url_fopen')) {
+    $error = 'Your PHP setting for allow_url_fopen will not allow a remote calendar to be downloaded.';
+  }
+  if (empty($error)) {
+    $username = getPostValue('login');
+    $cals = get_nonuser_cals($login, true);
+    $url = '';
+    $found = 0;
+    for ($i = 0; $i < count($cals); $i++) {
+      if ($cals[$i]['cal_login'] == $username) {
+        $url = $cals[$i]['cal_url'];
+        $found = 1;
+      }
+    }
+    if (!$found) {
+      $error = 'No such remote calendar ' . $username;
+    } else if (empty($url)) {
+      $error = 'Calendar is not a remote calendar';
+    }
+  }
+  $message = '';
+  if (empty($error) && !empty($url)) {
+    $arr = load_remote_calendar($username, $url);
+    $message = $arr[0] . ' ' . translate('events added') . ', ' . $arr[1] . ' ' . translate('events deleted');
+    $error = $arr[2];
+  }
+  ob_end_clean();
+  if ($error == '') {
+    //echo "SUCCESS: $message\n";
+    ajax_send_success(false, $message);
+  } else {
+    ajax_send_error($error);
+  }
 } else {
   ajax_send_error(translate('Unsupported action') . ': ' . $action);
 }
@@ -280,7 +312,7 @@ function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $i
 
   // Check for invalid characters in username
   if (!preg_match('/^[\w]+$/', $username)) {
-    $error = translate('Calendar ID') . ' ' . translate('word characters only') . '.';
+    return translate('Calendar ID') . ' ' . translate('word characters only') . '.';
   }
 
   // Might want to move this into user.php instead of having SQL here... 
@@ -344,6 +376,9 @@ function delete_remote_calendar($username)
     return $notAuthStr;
   }
 
+  // Delete events from this remote calendar.
+  delete_events($username);
+
   // Delete any layers other users may have that point to this user.
   dbi_execute(
     'DELETE FROM webcal_user_layers WHERE cal_layeruser = ?',
@@ -380,3 +415,112 @@ function delete_remote_calendar($username)
 
   return $error;
 }
+
+// Get the number of events the specified username is a participant to.
+function get_event_count_for_user($username)
+{
+  $sql = 'SELECT COUNT(weu.cal_id) FROM webcal_entry_user weu, webcal_entry we ' .
+    'WHERE weu.cal_id = we.cal_id ' .
+    'AND weu.cal_login = ?';
+  //echo "SQL: $sql \nUser: $username\n";
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  //echo "COUNT: "; print_r($rows);
+  if ($rows) {
+    return $rows[0][0];
+  }
+  return 0;
+}
+
+function load_remote_calendar($username, $url)
+{
+  global $login, $errormsg, $error_num, $count_suc, $numDeleted, $calUser;
+
+  // Set global vars used in xcal.php (blech)
+  $data = [];
+  $calUser = $username;
+  $overwrite = true;
+  $type = 'remoteics';
+  $numDeleted = 0;
+  $count_suc = 0;
+  $data = parse_ical($url, $type);
+  //echo "DATA\n"; print_r($data);
+  if (!empty($data) && count($data) > 0 && empty($errormsg)) {
+    // Delete existing events.
+    $numDeleted = delete_events ($username);
+    // Import new events
+    import_data($data, $overwrite, $type, true);
+    activity_log(0, $login, $username, LOG_UPDATE, "Remote calendar reloaded with $count_suc events added, $numDeleted deleted");
+    return [$count_suc, $numDeleted, ''];
+  } else  if (empty($errormsg)) {
+    return [0,0,"No data imported."];
+  }
+  return [$count_suc, $numDeleted, $errormsg];
+}
+
+function delete_events($nid)
+{
+  // Get event ids for all events this user is a participant.
+  $events = get_users_event_ids($nid);
+
+  // Now count number of participants in each event...
+  // If just 1, then save id to be deleted.
+  $delete_em = [];
+  for ($i = 0, $cnt = count($events); $i < $cnt; $i++) {
+    $res = dbi_execute('SELECT COUNT( * ) FROM webcal_entry_user
+  WHERE cal_id = ?', [$events[$i]]);
+    if ($res) {
+      $row = dbi_fetch_row($res);
+      if (!empty($row) && $row[0] == 1)
+        $delete_em[] = $events[$i];
+
+      dbi_free_result($res);
+    }
+  }
+  // Now delete events that were just for this user.
+  for ($i = 0, $cnt = count($delete_em); $i < $cnt; $i++) {
+    dbi_execute(
+      'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_import_data WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_site_extras WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_reminders WHERE cal_id =? ',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_blob WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_entry WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+  }
+  // Delete user participation from events.
+  dbi_execute(
+    'DELETE FROM webcal_entry_user WHERE cal_login = ?',
+    [$nid]
+  );
+
+  return count($delete_em);
+}
+?>
