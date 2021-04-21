@@ -778,8 +778,12 @@ function save_uid_for_event ( $importId, $id, $uid ) {
 // Add an entry in webcal_import. For each import or publish request,
 // we create a single webcal_import row that goes with the many
 // webcal_import_data rows (one for each event).
-function create_import_instance() {
+function create_import_instance($username='') {
   global $login, $prodid;
+
+  if(empty($username)) {
+    $username = $login;
+  }
 
   $name = $prodid;
   $importId = 1;
@@ -1244,7 +1248,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
   }
   $sql = 'INSERT INTO webcal_import ( cal_import_id, cal_name,
     cal_date, cal_type, cal_login ) VALUES ( ?, NULL, ?, ?, ? )';
-  if ( ! dbi_execute ( $sql, [$importId, date ( 'Ymd' ), $type, $login] ) ) {
+  if ( ! dbi_execute ( $sql, [$importId, date ( 'Ymd' ), $type, $calUser] ) ) {
     $errormsg = db_error();
     return;
   }
@@ -1537,7 +1541,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
         $uid = generate_uid ( $id );
         $uid = empty ( $Entry['UID'] ) ? $uid : $Entry['UID'];
         if ( $importId < 0 ) {
-          $importId = create_import_instance();
+          $importId = create_import_instance($calUser);
         }
 
         if ( $ImportType == 'PALMDESKTOP' ) {

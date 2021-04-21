@@ -163,6 +163,7 @@ if ($action == 'userlist') {
     if ($user['cal_login'] != '__public__') {
       $cnt = empty($active_layers[$user['cal_login']]) ? 0 : 1;
       $event_cnt = get_event_count_for_user($user['cal_login']);
+      $last_upd = get_remote_calendar_last_update($user['cal_login']);
       $ret_users[] =  [
         'login' => $user['cal_login'],
         'lastname' => $user['cal_lastname'],
@@ -172,7 +173,8 @@ if ($action == 'userlist') {
         'url' => $user['cal_url'],
         'fullname' => $user['cal_fullname'],
         'layercount' => $cnt,
-        'eventcount' => $event_cnt
+        'eventcount' => $event_cnt,
+        'lastupdated' => empty($last_upd) ? '' : date_to_str($last_upd, '', false)
       ];
       // Not including password hash 'cal_password'
     }
@@ -429,6 +431,20 @@ function get_event_count_for_user($username)
     return $rows[0][0];
   }
   return 0;
+}
+
+// Get the last import date for a remote calendar in YYYYMMDD format or '' for none.
+function get_remote_calendar_last_update($username)
+{
+  $ret = '';
+
+  $sql = 'SELECT MAX(cal_date) FROM webcal_import WHERE cal_login = ?';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  //echo "COUNT for $username: <pre>"; print_r($rows); echo "</pre>";
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+  }
+  return $ret;
 }
 
 function load_remote_calendar($username, $url)

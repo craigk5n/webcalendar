@@ -49,7 +49,7 @@ print_header(
 // cannotLoadStr 
 if (!ini_get('allow_url_fopen')) { ?>
     <div id="main-dialog-load-error" class="alert alert-warning">
-        <span id="loadMessage"><?php echo $cannotLoadStr;?></span>
+        <span id="loadMessage"><?php echo $cannotLoadStr; ?></span>
         <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
     </div>
 <?php } ?>
@@ -67,7 +67,7 @@ if (!ini_get('allow_url_fopen')) { ?>
             </th>
             <th scope="col"><?php etranslate('Name') ?></th>
             <th scope="col">
-                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Calendar user who created this remote calendar') ?>"><?php etranslate('Admin') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Calendar user who created this remote calendar') ?>"><?php etranslate('Created By') ?></div>
             </th>
             <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                 <th scope="col">
@@ -75,7 +75,11 @@ if (!ini_get('allow_url_fopen')) { ?>
                 </th>
             <?php } ?>
             <th scope="col">
-            <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Number of events currently in the remote calendar') ?>"><?php etranslate('Events') ?></div>
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Number of events currently in the remote calendar') ?>"><?php etranslate('Events') ?></div>
+            </th>
+            <th scope="col">
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Date the remote calendar was last updated') ?>"><?php etranslate('Last Updated') ?></div>
+            </th>
             <th scope="col">
                 <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('Calendar URL') ?></div>
             </th>
@@ -113,7 +117,7 @@ if (!ini_get('allow_url_fopen')) { ?>
                     <input type="hidden" name="editUserAdd" id="editUserAdd" value="0" />
                     <div class="form-inline" id="divEditUsername">
                         <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>" />
+                        <input type="text" pattern="[A-Za-z0-9_]+" title="<?php etranslate('word characters only');?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>" />
                     </div>
                     <div class="form-inline mt-1" id="div-Name">
                         <label class="col-5 for=" editName"><?php etranslate('Name') ?>: </label>
@@ -132,7 +136,7 @@ if (!ini_get('allow_url_fopen')) { ?>
 
                     <div class="modal-footer">
                         <input class="form-control btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
+                        <input class="form-control btn btn-primary" data-dismiss="modal" type="submit" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
                     </div>
                 </form>
             </div>
@@ -251,7 +255,7 @@ if (!ini_get('allow_url_fopen')) { ?>
                 // Ignore
                 console.log("Ignoring HTML in response: " + lines[i]);
             } else {
-                if ( ret.length == 0)
+                if (ret.length == 0)
                     ret = lines[i];
                 else
                     ret += lines[i];
@@ -293,15 +297,16 @@ if (!ini_get('allow_url_fopen')) { ?>
                         url: u.url,
                         fullname: u.fullname,
                         layercount: u.layercount,
-                        eventcount: u.eventcount
+                        eventcount: u.eventcount,
+                        lastupdated: u.lastupdated
                     };
                     var tooltip = u.layercount == 0 ? 'data-toggle="tooltip" data-placement="bottom" title="<?php echo $noTooltip; ?>"' : '';
                     var warning = u.layercount == 0 ? '<img class="button-icon-inverse" src="images/open-iconic/svg/warning.svg" />' : '';
                     var id = u.login.substring(0, 5) == '<?php echo $NONUSER_PREFIX; ?>' ? u.login.substring(5) : u.login;
-                    tbody += '<tr><td ' + tooltip + '>' + warning + id + 
+                    tbody += '<tr><td ' + tooltip + '>' + warning + id +
                         '</td><td>' + (u.fullname == null ? '' : u.fullname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
                         <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<?php echo $yesStr; ?>' : '<?php echo $noStr; ?>') +
-                        <?php } ?> '</td><td>' + u.eventcount + '</td><td>' +
+                        <?php } ?> '</td><td>' + u.eventcount + '</td><td>' + u.lastupdated + '</td><td>' +
                         (u.url == null ? '' : u.url) +
                         '</td><td>' + user_menu(u.login, u.layercount == 0) + '</td></tr>\n';
                 }
@@ -394,7 +399,7 @@ if (!ini_get('allow_url_fopen')) { ?>
         console.log("Validate ID: " + elem);
         // Replace " " with "_"
         if (elem.match(/ /)) {
-            var newval = elem.replace(/ /g,"_");
+            var newval = elem.replace(/ /g, "_");
             $("#editUsername").val(newval);
             console.log("Replacing ID: " + newval);
         }
@@ -475,11 +480,14 @@ if (!ini_get('allow_url_fopen')) { ?>
             return;
         }
         // Validate ID
-        if(!validateID()) {
+        if (!validateID()) {
             $('#errorMessage').html('<?php echo $invalidIDError; ?>');
             $('#edit-user-dialog-alert').show();
             return;
         }
+        // Update login in case validateID modified it.
+        login = '<?php echo $NONUSER_PREFIX; ?>' + $('#editUsername').val();
+
         var url = $('#editURL').val();
         if (url.length == 0) {
             $('#errorMessage').html('<?php echo  $noUrlError; ?>');
@@ -584,7 +592,7 @@ if (!ini_get('allow_url_fopen')) { ?>
                     $('#delete-user-dialog').hide();
                     // Reload layers
                     load_users();
-                    $('#infoMessage').html('<?php etranslate('User successfully deleted.') ?>');
+                    $('#infoMessage').html('<?php etranslate('Remote calendar successfully deleted.') ?>');
                     $('#main-dialog-alert').show();
                 } else {
                     alert('<?php etranslate('Error'); ?>: ' + error);
