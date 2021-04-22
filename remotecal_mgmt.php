@@ -25,6 +25,7 @@ $deleteUserInfo = translate('This will remove all events for this remote calenda
 $yesStr = translate('Yes');
 $noStr = translate('No');
 $noLoginError = translate('Username cannot be blank.');
+$noNameError = translate('Name is required');
 $invalidIDError = translate('The ID is limited to letters, numbers and underscore only.');
 $noUrlError = translate('You have not entered a URL.');
 $noTooltip = translate('This remote calendar does not have a layer.  Add a layer for this calendar to view it in your calendar.');
@@ -113,15 +114,21 @@ if (!ini_get('allow_url_fopen')) { ?>
                     <strong><?php etranslate("Error"); ?>!</strong>&nbsp;<span id="errorMessage">A problem has been occurred while submitting your data.</span>
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
-                <form name="editUserForm" id="editUserForm">
+                <form class="needs-validation" novalidate name="editUserForm" id="editUserForm">
                     <input type="hidden" name="editUserAdd" id="editUserAdd" value="0" />
                     <div class="form-inline" id="divEditUsername">
                         <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
-                        <input type="text" pattern="[A-Za-z0-9_]+" title="<?php etranslate('word characters only');?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>" />
+                        <input required type="text" pattern="[A-Za-z0-9_]+" title="<?php etranslate('word characters only'); ?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>" />
+                        <div id="invalid-id-error" class="invalid-feedback text-right">
+                            <?php echo $invalidIDError; ?>
+                        </div>
                     </div>
                     <div class="form-inline mt-1" id="div-Name">
                         <label class="col-5 for=" editName"><?php etranslate('Name') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editName" name="editName" />
+                        <input required type="text" class="col-7 form-control" id="editName" name="editName" />
+                        <div id="invalid-name-error" class="invalid-feedback text-right">
+                            <?php echo $noNameError; ?>
+                        </div>
                     </div>
                     <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?>
                         <div class="form-inline mt-1" id="div-editPublic">
@@ -131,12 +138,15 @@ if (!ini_get('allow_url_fopen')) { ?>
                     <?php } ?>
                     <div class="form-inline mt-1" id="div-editURL">
                         <label class="col-5 for=" editURL" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('URL') ?>: </label>
-                        <input type="email" class="col-7 form-control" id="editURL" name="editURL" />
+                        <input required type="email" class="col-7 form-control" id="editURL" name="editURL" />
+                        <div id="invalid-url-error" class="invalid-feedback text-right">
+                            <?php echo $noUrlError; ?>
+                        </div>
                     </div>
 
                     <div class="modal-footer">
                         <input class="form-control btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="submit" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
+                        <input class="form-control btn btn-primary" data-dismiss="modal" type="buton" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
                     </div>
                 </form>
             </div>
@@ -416,6 +426,9 @@ if (!ini_get('allow_url_fopen')) { ?>
     function edit_user(login) {
         console.log('edit_user(' + login + ')');
         $('#edit-user-dialog-alert').hide();
+        $('#invalid-id-error').hide();
+        $('#invalid-name-error').hide();
+        $('#invalid-url-error').hide();
         // Find correct user in our user list
         var user = null;
         for (var i = 0; i < users.length; i++) {
@@ -465,6 +478,10 @@ if (!ini_get('allow_url_fopen')) { ?>
             var public = 'N';
         <?php } ?>
 
+        $('#invalid-id-error').hide();
+        $('#invalid-name-error').hide();
+        $('#invalid-url-error').hide();
+
         var add = $('#editUserAdd').val();
         if (add == "1") {
             if (login.length == 0) {
@@ -473,27 +490,40 @@ if (!ini_get('allow_url_fopen')) { ?>
                 return;
             }
         }
+
+        var foundError = false;
+        // Name required
+        if ($('#editName').val() == "") {
+            $('#invalid-name-error').show();
+            foundError = true;
+        }
         // Validate URL
         if (!validateURL()) {
-            $('#errorMessage').html('<?php echo $noUrlError; ?>');
-            $('#edit-user-dialog-alert').show();
-            return;
+            //$('#errorMessage').html('<?php echo $noUrlError; ?>');
+            $('#invalid-url-error').show();
+            foundError = true;
         }
         // Validate ID
         if (!validateID()) {
-            $('#errorMessage').html('<?php echo $invalidIDError; ?>');
-            $('#edit-user-dialog-alert').show();
+            //$('#errorMessage').html('<?php echo $invalidIDError; ?>');
+            $('#invalid-id-error').show();
+            foundError = true;
             return;
         }
+
         // Update login in case validateID modified it.
         login = '<?php echo $NONUSER_PREFIX; ?>' + $('#editUsername').val();
 
         var url = $('#editURL').val();
         if (url.length == 0) {
-            $('#errorMessage').html('<?php echo  $noUrlError; ?>');
-            $('#edit-user-dialog-alert').show();
-            return;
+            //$('#errorMessage').html('<?php echo  $noUrlError; ?>');
+            $('#invalid-url-error').show();
+            //$('#edit-user-dialog-alert').show();
+            foundError = true;
         }
+        if (foundError)
+            return;
+
         console.log("Sending save...\nadd " + add + ", login: " + login + "\nfirstname: " + firstname +
             "\nlastname: " + lastname + "\npublic: " + public + "\nurl: " + url);
         var error = '';
