@@ -138,7 +138,7 @@ print_header(
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="edit-password-title" class="modal-title"><?php etranslate('Change Password');?></h5>
+                <h5 id="edit-password-title" class="modal-title"><?php etranslate('Change Password'); ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#edit-password-dialog').hide();">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -266,7 +266,7 @@ print_header(
                     tbody += '<tr><td>' + u.login + '</td><td>' + (u.firstname == null ? '' : u.firstname) +
                         '</td><td>' + (u.lastname == null ? '' : u.lastname) + '</td><td>' + (u.email == null ? '' : u.email) +
                         '</td><td>' +
-                        (u.is_admin == 'Y' ? '<?php echo $yesStr; ?>' : '<?php echo $noStr; ?>') +
+                        (u.is_admin == 'Y' ? '<img class="button-icon-inverse" src="images/open-iconic/svg/check.svg" />' : '') +
                         '</td><td>' + user_menu(u.login) + '</td></tr>\n';
                 }
                 $('#user-tbody').html(tbody);

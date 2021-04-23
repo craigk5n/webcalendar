@@ -79,6 +79,9 @@ function create_event_object ( $commitId, $author, $date, $message ) {
   // commit message.
   $messageLines = explode ( "\n", $message );
   $summary = substr ( $commitId, 0, 6 ) . ' ' . $messageLines[0];
+  if (strlen($summary) > 80) {
+    $summary = substr($summary, 0, 80);
+  }
   $obj['Summary'] = $summary; // Summary of event (string)
   $obj['Description'] = nl2br ( $message ); // Full Description (string)
   $obj['AlarmSet'] = 0; // 1 = true  0 = false

@@ -11,7 +11,7 @@ global $ALLOW_VIEW_OTHER, $BodyX, $CATEGORIES_ENABLED, $DISPLAY_TASKS,
   $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $PUBLIC_ACCESS_CAN_ADD,
   $PUBLIC_ACCESS_OTHERS, $readonly, $REMOTES_ENABLED, $REPORTS_ENABLED,
   $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW, $thisday,
-  $thismonth, $thisyear, $use_http_auth, $user, $views, $OVERRIDE_PUBLIC;
+  $thismonth, $thisyear, $use_http_auth, $user, $user_fullname, $views, $OVERRIDE_PUBLIC;
 
 /* -----------------------------------------------------------------------------
          First figure out what options are on and privileges we have
@@ -34,10 +34,6 @@ $export_url = $import_url = $new_entry_url = $new_task_url = '';
 $search_url = $select_user_url = $unapproved_url = '';
 
 $help_url = 'help_index.php';
-$month_url = 'month.php';
-$today_url = 'day.php';
-$week_url = 'week.php';
-$year_url = 'year.php';
 
 $mycal = (empty($STARTVIEW) ? 'index.php' : $STARTVIEW);
 
@@ -62,11 +58,6 @@ if ($can_add) {
 if ($single_user != 'Y') {
   // Today
   if (!empty($user) && $user != $login) {
-    $month_url .= '?user=' . $user;
-    $today_url .= '?user=' . $user;
-    $week_url .= '?user=' . $user;
-    $year_url .= '?user=' . $user;
-
     if (!empty($new_entry_url))
       $new_entry_url .= (strpos($new_entry_url, '?') !== FALSE ? '&' : '?') . 'user=' . $user;
 
@@ -286,16 +277,16 @@ if (empty($thisday))
         <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="<?php echo $mycal; ?>"><?php etranslate('Home'); ?></a>
           <?php if (access_can_access_function(ACCESS_DAY)) { ?>
-            <a class="dropdown-item" href="<?php echo $today_url; ?>"><?php etranslate('Today'); ?></a>
+            <a class="dropdown-item" href="day.php"><?php etranslate('Today'); ?></a>
           <?php } ?>
           <?php if (access_can_access_function(ACCESS_WEEK)) { ?>
-            <a class="dropdown-item" href="<?php echo $week_url; ?>"><?php etranslate('This Week'); ?></a>
+            <a class="dropdown-item" href="week.php"><?php etranslate('This Week'); ?></a>
           <?php } ?>
           <?php if (access_can_access_function(ACCESS_MONTH)) { ?>
-            <a class="dropdown-item" href="<?php echo $month_url; ?>"><?php etranslate('This Month'); ?></a>
+            <a class="dropdown-item" href="month.php"><?php etranslate('This Month'); ?></a>
           <?php } ?>
           <?php if (access_can_access_function(ACCESS_YEAR)) { ?>
-            <a class="dropdown-item" href="<?php echo $year_url; ?>"><?php etranslate('This Year'); ?></a>
+            <a class="dropdown-item" href="year.php"><?php etranslate('This Year'); ?></a>
           <?php } ?>
         </div>
       </li>
@@ -333,37 +324,37 @@ if (empty($thisday))
         <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <?php if (!empty($select_user_url)) { ?>
             <a class="dropdown-item" href="<?php echo $select_user_url; ?>"><?php etranslate('Another Users Calendar'); ?></a>
-          <?php }
+            <?php }
           if ($login != '__public__') {
-            if (! empty ($views_link) && $views_linkcnt > 0) { ?>
+            if (!empty($views_link) && $views_linkcnt > 0) { ?>
               <h6 class="dropdown-header"><?php etranslate('My Views'); ?></h6>
               <?php
-              for ( $i = 0; $i < $views_linkcnt; $i++ ) {
+              for ($i = 0; $i < $views_linkcnt; $i++) {
                 $name = empty($views_link[$i]['name']) ? translate('Unnamed') : htmlspecialchars($views_link[$i]['name']);
-                ?>
+              ?>
                 <a class="dropdown-item" href="<?php echo $views_link[$i]['url'] ?>"><?php echo $name; ?></a>
-                <?php
+              <?php
               }
             }
 
-            if ( ! empty ( $groups ) ) {?>
+            if (!empty($groups)) { ?>
               <div class="dropdown-divider"></div>
               <h6 class="dropdown-header"><?php etranslate('Manage Calendar of'); ?></h6>
               <?php
-              $groupcnt = count ( $groups );
-              for ( $i = 0; $i < $groupcnt; $i++ ) { ?>
+              $groupcnt = count($groups);
+              for ($i = 0; $i < $groupcnt; $i++) { ?>
                 <a class="dropdown-item" href="<?php echo $groups[$i]['url'] ?>"><?php echo $groups[$i]['name'] ?></a>
-                <?php
+            <?php
               }
             }
             ?><div class="dropdown-divider"></div><?php
-            if (! $is_nonuser && (! access_is_enabled () ||
-              access_can_access_function (ACCESS_VIEW_MANAGEMENT, $user)) && $readonly != 'Y') { ?>
-                <a class="dropdown-item" href="views.php"><?php etranslate('Manage Views') ?></a>
-              <?php
-            }
-          }
-        ?>
+                                                  if (!$is_nonuser && (!access_is_enabled() ||
+                                                    access_can_access_function(ACCESS_VIEW_MANAGEMENT, $user)) && $readonly != 'Y') { ?>
+              <a class="dropdown-item" href="views.php"><?php etranslate('Manage Views') ?></a>
+          <?php
+                                                  }
+                                                }
+          ?>
         </div>
       </li>
 
@@ -372,101 +363,108 @@ if (empty($thisday))
           <?php etranslate('Reports'); ?>
         </a>
         <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <?php if ($is_admin && (! access_is_enabled () ||
-            access_can_access_function (ACCESS_ACTIVITY_LOG, $user ))) { ?>
+          <?php if ($is_admin && (!access_is_enabled() ||
+            access_can_access_function(ACCESS_ACTIVITY_LOG, $user))) { ?>
             <a class="dropdown-item" href="activity_log.php"><?php etranslate('Activity Log'); ?></a>
           <?php } ?>
-          <?php if ($is_admin && (! access_is_enabled () ||
-            access_can_access_function (ACCESS_ACTIVITY_LOG, $user ))) { ?>
+          <?php if ($is_admin && (!access_is_enabled() ||
+            access_can_access_function(ACCESS_ACTIVITY_LOG, $user))) { ?>
             <a class="dropdown-item" href="activity_log.php?system=1"><?php etranslate('System Log'); ?></a>
           <?php } ?>
-          <?php if ( $REPORTS_ENABLED == 'Y') { ?>
+          <?php if ($REPORTS_ENABLED == 'Y') { ?>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header"><?php etranslate('My Reports'); ?></h6>
-            <?php for ($i = 0; $i < $reports_linkcnt; $i++ ) { ?>
-              <a class="dropdown-item" href="<?php echo $reports_link[$i]['url'];?>"><?php echo $reports_link[$i]['name'];?></a>
+            <?php for ($i = 0; $i < $reports_linkcnt; $i++) { ?>
+              <a class="dropdown-item" href="<?php echo $reports_link[$i]['url']; ?>"><?php echo $reports_link[$i]['name']; ?></a>
             <?php } ?>
           <?php } ?>
-          <?php if ($login != '__public__' && ! $is_nonuser && $REPORTS_ENABLED == 'Y' && $readonly != 'Y' &&
-            (! access_is_enabled () || access_can_access_function ( ACCESS_REPORT, $user ))) { ?>
+          <?php if (
+            $login != '__public__' && !$is_nonuser && $REPORTS_ENABLED == 'Y' && $readonly != 'Y' &&
+            (!access_is_enabled() || access_can_access_function(ACCESS_REPORT, $user))
+          ) { ?>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="report.php"><?php etranslate('Manage Reports'); ?></a>
           <?php } ?>
         </div>
       </li>
 
-      <?php if ($login != '__public__' && ! $is_nonuser && $readonly != 'Y') { ?>
+      <?php if ($login != '__public__' && !$is_nonuser && $readonly != 'Y') { ?>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php etranslate('Settings'); ?>
           </a>
           <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <?php
-            // Nonuser Admin Settings.
+            <?php
+            // Normal User Settings.
+            echo '<h6 class="dropdown-header">' . translate('Your Settings') . '</h6>';
+            if (!$is_admin)
+              print_menu_item(translate('My Profile'), 'users.php');
+
+            if (
+              $single_user != 'Y' &&
+              (!access_is_enabled() ||
+                access_can_access_function(ACCESS_ASSISTANTS, $user))
+            )
+              print_menu_item(translate('Assistants'), 'assistant_edit.php');
+
+            if ($CATEGORIES_ENABLED == 'Y' && (!access_is_enabled() ||
+              access_can_access_function(ACCESS_CATEGORY_MANAGEMENT, $user)))
+              print_menu_item(translate('Categories'), 'category.php');
+
+            if (
+              !access_is_enabled() ||
+              access_can_access_function(ACCESS_LAYERS, $user)
+            )
+              print_menu_item(translate('Layers'), 'layers.php');
+
+            if ($REMOTES_ENABLED == 'Y' && (!access_is_enabled() ||
+              access_can_access_function(ACCESS_IMPORT)))
+              print_menu_item(translate('Remote Calendars'), 'remotecal_mgmt.php');
+
+            if (
+              !access_is_enabled() ||
+              access_can_access_function(ACCESS_PREFERENCES, $user)
+            )
+              print_menu_item(translate('Preferences'), 'pref.php');
+
+            // Admin-only settings
+            if (($is_admin && !access_is_enabled()) || (access_is_enabled() &&
+              access_can_access_function(ACCESS_SYSTEM_SETTINGS, $user))) {
+              echo '<div class="dropdown-divider"></div>';
+              echo '<h6 class="dropdown-header">' . translate('Admin Settings') . '</h6>';
+              print_menu_item(translate('System Settings'), 'admin.php');
+              print_menu_item(translate('User Access Control'), 'access.php');
+              print_menu_item(translate('Users'), 'user_mgmt.php');
+              print_menu_item(translate('User Manager') . ' (deprecated)', 'users.php');
+            }
+
+            // Nonuser Admin Settings
             if ($is_nonuser_admin) {
-              if ( $single_user != 'Y' && $readonly != 'Y' ) {
-                if (! access_is_enabled () ||
-                  access_can_access_function ( ACCESS_ASSISTANTS, $user ) )
+              echo '<div class="dropdown-divider"></div>';
+              echo '<h6 class="dropdown-header">' . translate('Settings for') . ' ' . $user_fullname . '</h6>';
+              if ($single_user != 'Y' && $readonly != 'Y') {
+                if (
+                  !access_is_enabled() ||
+                  access_can_access_function(ACCESS_ASSISTANTS, $user)
+                )
                   print_menu_item(translate('Assistants'), 'assistant_edit.php?user=' . $user);
               }
-              if ( ! access_is_enabled () ||
-                access_can_access_function ( ACCESS_PREFERENCES, $user ) )
+              if (
+                !access_is_enabled() ||
+                access_can_access_function(ACCESS_PREFERENCES, $user)
+              )
                 print_menu_item(translate('Preferences'), 'pref.php?user=' . $user);
             }
-            // Normal User Settings.
-            else {
-              if ($single_user != 'Y' &&
-                (! access_is_enabled () ||
-                access_can_access_function ( ACCESS_ASSISTANTS, $user ) ) )
-                print_menu_item ( translate('Assistants'), 'assistant_edit.php' );
-            
-              if ($CATEGORIES_ENABLED == 'Y' && ( ! access_is_enabled () ||
-                access_can_access_function ( ACCESS_CATEGORY_MANAGEMENT, $user ) ) )
-                print_menu_item ( translate('Categories'), 'category.php' );
-            
-              if (! access_is_enabled () ||
-                access_can_access_function ( ACCESS_LAYERS, $user ))
-                print_menu_item (translate('Layers'), 'layers.php');
-            
-              if (! $is_admin)
-                print_menu_item (translate('My Profile'), 'users.php');
-            
-              if ($REMOTES_ENABLED == 'Y' && (! access_is_enabled () ||
-                access_can_access_function (ACCESS_IMPORT)))
-                print_menu_item (translate('Remote Calendars'), 'remotecal_mgmt.php');
-            
-              if (! access_is_enabled () ||
-                access_can_access_function (ACCESS_PREFERENCES, $user))
-                print_menu_item (translate('Preferences'), 'pref.php');
 
-              if (($is_admin && ! access_is_enabled () ) || ( access_is_enabled () &&
-                access_can_access_function ( ACCESS_SYSTEM_SETTINGS, $user ) ) )
-                print_menu_item (translate('System Settings'), 'admin.php');
-        
-              if (access_is_enabled () && ($is_admin ||
-                access_can_access_function (ACCESS_ACCESS_MANAGEMENT, $user)))
-                print_menu_item (translate('User Access Control'), 'access.php');
-        
-              if ($is_admin && (( ! access_is_enabled () ||
-                ( access_is_enabled () &&
-                access_can_access_function ( ACCESS_USER_MANAGEMENT, $user ) ) ) ) )
-                print_menu_item (translate('Users'), 'user_mgmt.php');
-            
-              if ($is_admin && (( ! access_is_enabled () ||
-                ( access_is_enabled () &&
-                access_can_access_function ( ACCESS_USER_MANAGEMENT, $user ) ) ) ) )
-                print_menu_item (translate('User Manager') . ' (deprecated)', 'users.php');
-            
-              if ($is_admin && ! empty ( $PUBLIC_ACCESS ) && $PUBLIC_ACCESS == 'Y') {
-                ?><div class="dropdown-divider"></div>
-                <h6 class="dropdown-header"><?php etranslate('Public Calendar'); ?></h6><?php
-                print_menu_item (translate('Preferences'), 'pref.php?public=1');
-            
-                if ($PUBLIC_ACCESS_CAN_ADD == 'Y' && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y')
-                  print_menu_item (translate('Unapproved Events'), 'list_unapproved.php?user=__public__');
-              }
-            }
-            ?>
+            if ($is_admin && !empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') {
+            ?><div class="dropdown-divider"></div>
+              <h6 class="dropdown-header"><?php etranslate('Public Calendar'); ?></h6><?php
+                                                                                      print_menu_item(translate('Preferences'), 'pref.php?public=1');
+
+                                                                                      if ($PUBLIC_ACCESS_CAN_ADD == 'Y' && $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL == 'Y')
+                                                                                        print_menu_item(translate('Unapproved Events'), 'list_unapproved.php?user=__public__');
+                                                                                    }
+                                                                                      ?>
           </div>
         </li>
       <?php } ?>
@@ -475,25 +473,25 @@ if (empty($thisday))
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php etranslate('Search'); ?>
-         </a>
+          </a>
           <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <?php
-          echo '<a class="form-check"><form class="form-inline" action="search_handler.php'. ( ! empty ( $user ) ? '?users[]=' . $user : '' ) . '" ' .
-            'method="GET"><div class="input-group"><input class="form-control" type="text" name="keywords" size="25" />' . 
-            '<button class="btn btn-primary mr-2 pr-0 pl-2"><img class="button-icon" src="images/open-iconic/svg/magnifying-glass.svg" /></button></div></form></a>';
-          $doAdv = false;
-          // Use UAC if enabled...
-          if (access_is_enabled () && access_can_access_function (ACCESS_ADVANCED_SEARCH)) {
-            $doAdv = true;
-          } else if (! access_is_enabled () && ! $is_nonuser && $login != '__public__') {
-            $doAdv = true;
-          }
-          if ( $doAdv ) {
+            <?php
+            echo '<a class="form-check"><form class="form-inline" action="search_handler.php' . (!empty($user) ? '?users[]=' . $user : '') . '" ' .
+              'method="GET"><div class="input-group"><input class="form-control" type="text" name="keywords" size="25" />' .
+              '<button class="btn btn-primary mr-2 pr-0 pl-2"><img class="button-icon" src="images/open-iconic/svg/magnifying-glass.svg" /></button></div></form></a>';
+            $doAdv = false;
+            // Use UAC if enabled...
+            if (access_is_enabled() && access_can_access_function(ACCESS_ADVANCED_SEARCH)) {
+              $doAdv = true;
+            } else if (!access_is_enabled() && !$is_nonuser && $login != '__public__') {
+              $doAdv = true;
+            }
+            if ($doAdv) {
             ?><div class="dropdown-divider"></div><?php
-            print_menu_item (translate('Advanced Search'), 'search.php?adv=1');
-          }
-          ?>
-         </div>
+                                                  print_menu_item(translate('Advanced Search'), 'search.php?adv=1');
+                                                }
+                                                  ?>
+          </div>
         </li>
       <?php } ?>
 
@@ -508,25 +506,25 @@ if (empty($thisday))
       </li>
 
       <?php
-        // Unapproved Icon if any exist.
-        $unapprovedStr = display_unapproved_events ($is_assistant || $is_nonuser_admin ? $user : $login);
-        if (! empty ($unapprovedStr) && $unapproved_url != '') { ?>
+      // Unapproved Icon if any exist.
+      $unapprovedStr = display_unapproved_events($is_assistant || $is_nonuser_admin ? $user : $login);
+      if (!empty($unapprovedStr) && $unapproved_url != '') { ?>
         <li class="nav-item active">
-            <a class="nav-link" href="<?php echo $unapproved_url;?>"><?php etranslate('Unapproved Events');?></a>
+          <a class="nav-link" href="<?php echo $unapproved_url; ?>"><?php etranslate('Unapproved Events'); ?></a>
         </li>
-        <?php } ?>
+      <?php } ?>
 
-        <?php if ($show_printer) { ?>
-          <li class="nav-item active">
-            <a class="nav-link" href="<?php echo generate_printer_friendly();?>" target="cal_printer_friendly" class="btn btn-primary mr-2 pr-0 pl-2">
+      <?php if ($show_printer) { ?>
+        <li class="nav-item active">
+          <a class="nav-link" href="<?php echo generate_printer_friendly(); ?>" target="cal_printer_friendly" class="btn btn-primary mr-2 pr-0 pl-2">
             <img class="button-icon-inverse" src="images/open-iconic/svg/print.svg" /></a>
-          </li>
-        <?php } ?>
-      
-    </ul>
-    </div>
+        </li>
+      <?php } ?>
 
-    <div class="mx-auto order-0 w-30">
+    </ul>
+  </div>
+
+  <div class="mx-auto order-0 w-30">
     <ul class="navbar-nav mxr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -564,35 +562,35 @@ if (empty($thisday))
               ?>
             </ul>
           </li>
-        **/ ?>
-        <!-- 3 months of prior year -->
-        <h6 class="dropdown-header"><?php echo ($thisyear - 1); ?></h6>
-        <?php
-        for ( $i = 9; $i <= 12; $i++ ) {
-          $date = sprintf ("%04d%02d01", $thisyear - 1, $i);
-          $name = month_name($i - 1);
-          print_month_menu_item($name, $date);
-        } ?>
-        <!-- this year -->
-        <div class="dropdown-divider"></div>
-        <h6 class="dropdown-header"><?php echo $thisyear; ?></h6>
-        <?php for ( $i = 1; $i <= 12; $i++ ) {
-          $date = sprintf ("%04d%02d01", $thisyear, $i);
-          $name = month_name($i - 1);
-          if ($i == $thismonth)
-            $name = '<b>' . $name . '</b>';
-          print_month_menu_item($name, $date);
-        } ?>
-        <!-- 3 months next year -->
-        <div class="dropdown-divider"></div>
-        <h6 class="dropdown-header"><?php echo ($thisyear + 1); ?></h6>
-        <?php for ( $i = 1; $i <= 3; $i++ ) {
-          $date = sprintf ("%04d%02d01", $thisyear + 1, $i);
-          $name = month_name($i - 1);
-          print_month_menu_item($name, $date);
-        } ?>
-        <?php
-        /* Commenting out submenu for now... :-(
+           **/ ?>
+          <!-- 3 months of prior year -->
+          <h6 class="dropdown-header"><?php echo ($thisyear - 1); ?></h6>
+          <?php
+          for ($i = 9; $i <= 12; $i++) {
+            $date = sprintf("%04d%02d01", $thisyear - 1, $i);
+            $name = month_name($i - 1);
+            print_month_menu_item($name, $date);
+          } ?>
+          <!-- this year -->
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header"><?php echo $thisyear; ?></h6>
+          <?php for ($i = 1; $i <= 12; $i++) {
+            $date = sprintf("%04d%02d01", $thisyear, $i);
+            $name = month_name($i - 1);
+            if ($i == $thismonth)
+              $name = '<b>' . $name . '</b>';
+            print_month_menu_item($name, $date);
+          } ?>
+          <!-- 3 months next year -->
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header"><?php echo ($thisyear + 1); ?></h6>
+          <?php for ($i = 1; $i <= 3; $i++) {
+            $date = sprintf("%04d%02d01", $thisyear + 1, $i);
+            $name = month_name($i - 1);
+            print_month_menu_item($name, $date);
+          } ?>
+          <?php
+          /* Commenting out submenu for now... :-(
         <!-- year before -->
         <div class="dropdown-divider"></div>
         <li class="dropdown-submenu">
@@ -641,78 +639,88 @@ if (empty($thisday))
           $thisweek = date('W', mktime(0, 0, 0, $m, $d, $y));
           $wkstart = get_weekday_before($y, $m, $d);
           $y = (empty($thisyear) ? date('Y') : $thisyear);
-          for( $i = -5; $i <= 9; $i++ ) {
+          for ($i = -5; $i <= 9; $i++) {
             $twkstart = bump_local_timestamp($wkstart, 0, 0, 0, 0, 7 * $i, 0);
             $twkend = bump_local_timestamp($twkstart, 0, 0, 0, 0, $lastDay, 0);
-            $dateSYmd = date( 'Ymd', $twkstart );
-            $dateEYmd = date( 'Ymd', $twkend );
-            $dateW = date( 'W', $twkstart + 86400 );
+            $dateSYmd = date('Ymd', $twkstart);
+            $dateEYmd = date('Ymd', $twkend);
+            $dateW = date('W', $twkstart + 86400);
             if ($twkstart > 0 && $twkend < 2146021200) {
-              $name = (! empty( $GLOBALS['PULLDOWN_WEEKNUMBER'])
-                 && $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
+              $name = (!empty($GLOBALS['PULLDOWN_WEEKNUMBER'])
+                && $GLOBALS['PULLDOWN_WEEKNUMBER'] == 'Y'
                 ? '(' . $dateW . ')&nbsp;&nbsp;' : '') .
-                sprintf( '%s - %s',
-                date_to_str($dateSYmd, '__mon__ __dd__', false, true),
-                date_to_str($dateEYmd, '__mon__ __dd__', false, true));
+                sprintf(
+                  '%s - %s',
+                  date_to_str($dateSYmd, '__mon__ __dd__', false, true),
+                  date_to_str($dateEYmd, '__mon__ __dd__', false, true)
+                );
               if ($thisdate >= $dateSYmd && $thisdate <= $dateEYmd)
                 $name = '<b>' . $name . '</b>';
               print_week_menu_item($name, $dateSYmd);
             }
           }
-           ?>
+          ?>
         </ul>
       </li>
-      
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <?php etranslate('Year'); ?>
         </a>
         <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        <!-- 5 years before, 5 years after -->
-        <?php for ( $i = -5; $i <= 5; $i++ ) {
-          $date = sprintf ("%04d%02d01", $thisyear + $i, 1, 1);
-          $name = ($thisyear + $i);
-          if ($i == 0)
-            $name = '<b>' . $name . '</b>';
-          print_year_menu_item($name, $date);
-        } ?>
+          <!-- 5 years before, 5 years after -->
+          <?php for ($i = -5; $i <= 5; $i++) {
+            $date = sprintf("%04d%02d01", $thisyear + $i, 1, 1);
+            $name = ($thisyear + $i);
+            if ($i == 0)
+              $name = '<b>' . $name . '</b>';
+            print_year_menu_item($name, $date);
+          } ?>
         </div>
       </li>
 
     </ul>
-    </div>
+  </div>
 
-    <?php if (! $use_http_auth && $single_user != 'Y') { ?>
+  <?php if (!$use_http_auth && $single_user != 'Y') { ?>
     <div class="navbar-collapse collapse w-20 order-3 dual-collapse2">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown-menu-right">
-        <a class="nav-link" href="<?php echo $logout_url;?>">Logout</a>
-      </li>
-    </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown-menu-right">
+          <a class="nav-link" href="<?php echo $logout_url; ?>">Logout</a>
+        </li>
+      </ul>
     </div>
-    <?php } ?>
+  <?php } ?>
 
   </div>
 </nav>
 
 <?php
 
-function print_year_menu_item($name, $date) {
-  echo '<a class="dropdown-item" href="year.php?date=' . $date . '">' . $name . "</a>\n";
+function print_year_menu_item($name, $date)
+{
+  global $user, $login;
+  echo '<a class="dropdown-item" href="year.php?date=' . $date .
+    ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a>\n";
 }
 
-function print_month_menu_item($name, $date) {
-  echo '<li><a class="dropdown-item" href="month.php?date=' . $date . '">' . $name . "</a></li>\n";
+function print_month_menu_item($name, $date)
+{
+  global $user, $login;
+  echo '<li><a class="dropdown-item" href="month.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
 }
 
-function print_week_menu_item($name, $date) {
-  echo '<li><a class="dropdown-item" href="week.php?date=' . $date . '">' . $name . "</a></li>\n";
+function print_week_menu_item($name, $date)
+{
+  global $user, $login;
+  echo '<li><a class="dropdown-item" href="week.php?date=' . $date . ((empty($user) || $user != $login) ? "&user=$user" : "") . '">' . $name . "</a></li>\n";
 }
 
-function print_menu_item($name, $url, $testCondition=true, $target='') {
-  if($testCondition) {
+function print_menu_item($name, $url, $testCondition = true, $target = '')
+{
+  if ($testCondition) {
     echo '<a class="dropdown-item" href="' . $url . '"';
-    if (!empty ($target)) {
+    if (!empty($target)) {
       echo ' target="' . $target . '"';
     }
     echo '>' . $name . '</a>' . "\n";
