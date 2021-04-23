@@ -22,8 +22,6 @@ $cannotLoadStr = translate('You PHP setting for allow_url_fopen will not allow a
 $areYouSure = translate('Are you sure you want to delete this remote calendar?');
 $deleteUserInfo = translate('This will remove all events for this remote calendar.') .
     ' ' . translate('This action cannot be undone.');
-$yesStr = translate('Yes');
-$noStr = translate('No');
 $noLoginError = translate('Username cannot be blank.');
 $noNameError = translate('Name is required');
 $invalidIDError = translate('The ID is limited to letters, numbers and underscore only.');
@@ -315,7 +313,7 @@ if (!ini_get('allow_url_fopen')) { ?>
                     var id = u.login.substring(0, 5) == '<?php echo $NONUSER_PREFIX; ?>' ? u.login.substring(5) : u.login;
                     tbody += '<tr><td ' + tooltip + '>' + warning + id +
                         '</td><td>' + (u.fullname == null ? '' : u.fullname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
-                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<?php echo $yesStr; ?>' : '<?php echo $noStr; ?>') +
+                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/open-iconic/svg/check.svg" />' : '') +
                         <?php } ?> '</td><td>' + u.eventcount + '</td><td>' + u.lastupdated + '</td><td>' +
                         (u.url == null ? '' : u.url) +
                         '</td><td>' + user_menu(u.login, u.layercount == 0) + '</td></tr>\n';
