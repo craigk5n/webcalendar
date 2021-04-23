@@ -1,4 +1,6 @@
 <?php
+// TODO: THIS IS BROKEN.  It relies on Prototype, and we have switched
+// to jquery.  Needs to be updated...
 /**
  * Description
  *	Handler for AJAX requests for search suggestion (aka autocomplete)
@@ -12,10 +14,6 @@
  *	 suggestions:['Liberia','Libyan Arab Jamahiriya','Liechtenstein','Lithuania'],
  *	 data:['LR','LY','LI','LT']
  *	}
- *
- *   We use JSON for some of the data we send back to the AJAX request.
- *   Because JSON support was not built-in to PHP until 5.2, we have our
- *   own implmentation in includes/JSON.php.
  */
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
@@ -32,7 +30,6 @@ $WebCalendar->initializeFirstPhase();
 include 'includes/' . $user_inc;
 include 'includes/access.php';
 include 'includes/validate.php';
-include 'includes/JSON.php';
 include 'includes/ajax.php';
 
 $WebCalendar->initializeSecondPhase();

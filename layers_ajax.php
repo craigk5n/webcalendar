@@ -2,9 +2,6 @@
 /**
  * Description
  *   Handler for AJAX requests from layers.php.
- *   We use JSON for some of the data we send back to the AJAX request.
- *   Because JSON support was not built-in to PHP until 5.2, we have our
- *   own implmentation in includes/JSON.php.
  */
 include_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
@@ -22,7 +19,6 @@ $WebCalendar->initializeFirstPhase();
 include 'includes/' . $user_inc;
 include 'includes/access.php';
 include 'includes/validate.php';
-include 'includes/JSON.php';
 include 'includes/ajax.php';
 
 $WebCalendar->initializeSecondPhase();
