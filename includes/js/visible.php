@@ -124,53 +124,6 @@ function getScrollingPosition ()
  return position;
 }
 
-//these common function is placed here because all the files that use it
-//also use visibility functions
-function selectDate ( day, month, year, current, evt, form ) {
-  // get currently selected day/month/year
-  monthobj = eval( 'document.' + form.id + '.' + month);
-  curmonth = monthobj.options[monthobj.selectedIndex].value;
-  yearobj = eval( 'document.' + form.id + '.' + year );
-  curyear = yearobj.options[yearobj.selectedIndex].value;
-  date = curyear;
-  evt = evt? evt: window.event;
-  var scrollingPosition = getScrollingPosition ();
-
-  if (typeof evt.pageX != "undefined" &&
-     typeof evt.x != "undefined")
- {
-   mX = evt.pageX + 40;
-   mY = self.screen.availHeight - evt.pageY;
- }
- else
- {
-   mX = evt.clientX + scrollingPosition[0] + 40;
-   mY = evt.clientY + scrollingPosition[1];
- }
-//alert ( mX + ' ' + mY );
-  var MyPosition = 'scrollbars=no,toolbar=no,screenx=' + mX + ',screeny=' + mY + ',left=' + mX + ',top=' + mY ;
-  if ( curmonth < 10 )
-    date += "0";
-  date += curmonth;
-  date += "01";
-  url = "datesel.php?form=" + form.id + "&fday=" + day +
-    "&fmonth=" + month + "&fyear=" + year + "&date=" + date;
-  var colorWindow = window.open (url,"DateSelection","width=300,height=180,"  + MyPosition);
-}
-
-function selectColor ( color, evt ) {
-  url = "colors.php?color=" + color;
-  if (document.getElementById) {
-    mX = evt.clientX   + 40;
-  }
-  else {
-    mX = evt.pageX + 40;
-  }
-  var mY = 100;
-  var MyOptions = 'width=390,height=365,scrollbars=0,left=' + mX + ',top=' + mY + ',screenx=' + mX + ',screeny=' + mY;
-  var colorWindow = window.open (url,"ColorSelection","width=390,height=365," + MyOptions );
-}
-
 function valid_color ( str ) {
  var validColor = /^#[0-9a-fA-F]{3}$|^#[0-9a-fA-F]{6}$/;
 

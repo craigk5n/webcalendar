@@ -88,12 +88,12 @@ $WebCalendar->initializeSecondPhase();
  *                             popup windows, such as color selection)
  * @param bool   $disableStyle Do not include the standard css?
  * @param bool   $disableRSS   Do not include the RSS link
- * @param bool   $disableAJAX  Do not include the prototype.js link
+ * @param bool   $IGNORED      Parameter not used (ignored)
  * @param bool   $disableUTIL  Do not include the util.js link
  */
 function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $disableCustom = false, $disableStyle = false, $disableRSS = false,
-  $disableAJAX = false, $disableUTIL = false ) {
+  $IGNORED = false, $disableUTIL = false ) {
   global $BGCOLOR, $browser, $charset, $CUSTOM_HEADER, $CUSTOM_SCRIPT,
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $is_admin, $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
@@ -144,24 +144,6 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     '<script src="includes/js/tinycolor.js"></script>' .
     '<!-- Readable: https://github.com/aramk/readable-color -->' .
     '<script src="includes/js/readable.js"></script>' . "\n";
-
-  if( ! $disableAJAX ) {
-    //if ( is_array ( $includes ) && in_array ( 'JQUERY', $includes ) ) {
-    //  $ret .= '<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" ' .
-    //    'integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>' . "\n" .
-    //    '<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" ' .
-     //   'integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>' . "\n";
-    //}
-        //$ret .= '
-    //<!--[if IE 5]><script src="includes/js/ie5.js"></script><![endif]-->';
-    //if ( is_array ( $includes ) && in_array ( 'JQUERY', $includes ) ) {
-    //  $js_ar[] = 'js/jquery-1.9.1.min.js';
-    //  $js_ar[] = 'js/jquery-1.10.1.js';
-    //} else {
-    //  $js_ar[] = 'js/prototype.js';
-    //  $js_ar[] = 'js/scriptaculous/scriptaculous.js?load=builder,effects';
-    //}
-  }
 
   if( ! $disableUTIL )
     $js_ar[] = 'js/util.js';

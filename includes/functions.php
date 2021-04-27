@@ -758,22 +758,18 @@ EOT;
  * The CSS ids will be the datename parameter with '_fmt' and '_YMD'
  * appended.
  */
-function datesel_Print ( $datename, $ymdValue='' )
+function datesel_Print($datename, $ymdValue = '')
 {
-  if ( empty ( $ymdValue ) )
-    $ymdValue = date ( 'Y-m-d' );
+  if (empty($ymdValue))
+    $ymdValue = date('Y-m-d');
+  if (strpos($ymdValue, '-') == false && strlen($ymdValue) == 8) {
+    // Convert YYYYMMDD into YYYY-MM-DD
+    $ymdValue = date("Y-m-d", strtotime($ymdValue));
+  }
 
   return '<input type="date" name="' . $datename .
-    '_YMD" id="' . $datename . '_YMD" class="form-control" value=' .
-    $ymdValue . '>';
-
-  #return '<input type="hidden" name="' . $datename .
-  #  '_YMD" id="' . $datename . '_YMD" value="' . $ymdValue . '"/>' .
-  #  '<span id="' . $datename . '_fmt">' .
-  #  date_to_str ( $ymdValue ) . '</span> ' .
-  #  '<img id="dateselIcon_' . $datename .
-  #  '" class="dateselIcon" onclick="datesel_SelectDate(event,\'' .
-  #  $datename  . '\' );" src="images/datesel.gif" />';
+    '_YMD" id="' . $datename . '_YMD" class="form-control" value="' .
+    $ymdValue . '">';
 }
 
 
@@ -798,73 +794,8 @@ function date_selection($prefix, $date, $trigger = false, $num_years = 20)
   $trigger_str = (empty($trigger) ? '' : $prefix . 'datechanged();');
   $onchange = (empty($trigger_str) ? '' : 'onchange="$trigger_str"');
   return '<input type="date" name="' . $prefix .
-    '_YMD" id="' . $prefix . '_YMD" class="form-control" value=' .
-    $ymdValue . ' ' . $onchange . '>';
-}
-function XXX_date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
-  $selected = ' selected="selected"';
-  $trigger_str = ( empty( $trigger ) ? '' : $prefix . 'datechanged();' );
-  $onchange = ( empty ( $trigger_str ) ? '' : 'onchange="$trigger_str"' );
-  if ( strlen ( $date ) != 8 )
-    $date = date ( 'Ymd' );
-
-  $thisyear = $year = substr ( $date, 0, 4 );
-  $thismonth = $month = substr ( $date, 4, 2 );
-  $thisday = $day = substr ( $date, 6, 2 );
-  if ( $thisyear - date ( 'Y' ) >= ( $num_years - 1 ) )
-    $num_years = $thisyear - date ( 'Y' ) + 2;
-
-  $dd_select = '
-      <select name="' . $prefix . 'day" id="' . $prefix . 'day"'
-   . $onchange . '>';
-  for ( $i = 1; $i <= 31; $i++ ) {
-    $dd_select .= '
-        <option value="' . "$i\""
-     . ( $i == substr ( $date, 6, 2 ) ? $selected : '' ) . ">$i" . '</option>';
-  }
-  $dd_select .= '
-      </select>';
-
-  //  $mm_select ... number of month, $month_select name of month
-  $month_select = '
-      <select name="' . $prefix . 'month" id="' . $prefix . 'month"' . $onchange . '>';
-  $mm_select = '
-      <select name="' . $prefix . 'month" id="' . $prefix . 'month"' . $onchange . '>';
-  for ( $i = 1; $i < 13; $i++ ) {
-    $month_select .= '
-        <option value="' . "$i\""
-     . ( $i == substr ( $date, 4, 2 ) ? $selected : '' )
-     . '>' . month_name ( $i - 1, 'M' ) . '</option>';
-
-    $mm_select .= '
-        <option value="' . "$i\""
-     . ( $i == substr( $date, 4, 2 ) ? $selected : '' )
-     . '>' . $i . '</option>';
-  }
-  $month_select .= '
-      </select>';
-  $mm_select .= '
-      </select>';
-  $yyyy_select = '
-      <select name="' . $prefix . 'year" id="' . $prefix . 'year"' . $onchange . '>';
-  for ( $i = -10; $i < $num_years; $i++ ) {
-    $y = $thisyear + $i;
-    $yyyy_select .= '
-        <option value="' . "$y\"" . ( $y == $thisyear ? $selected : '' )
-     . ">$y" . '</option>';
-  }
-  $yyyy_select .= '
-      </select>';
-  $replace_strings = [
-                           '__yyyy__'=>$yyyy_select,
-                           '__month__'=>$month_select,
-                           '__mm__'=>$mm_select,
-                           '__dd__'=>$dd_select];
-  $ret = strtr( translate( 'date_select'), $replace_strings );
-  return $ret . '
-      <input type="button" name="' . $prefix . 'btn" onclick="selectDate( \''
-   . $prefix . 'day\',\'' . $prefix . 'month\',\'' . $prefix . "year','$date'"
-   . ', event, this.form );" value="' . translate ( 'Select' ) . '..." />' . "\n";
+    '_YMD" id="' . $prefix . '_YMD" class="form-control" value="' .
+    $ymdValue . '" ' . $onchange . '>';
 }
 
 /**
