@@ -32,6 +32,20 @@ body{
   color: var(--textcolor);
   font: var(--def-font-size)/1.5 var(--def-font-family);
 }
+div.container-fluid, div.container, nav.navbar,
+  div.dropdown-menu, ul.dropdown-menu {
+  background-color: var(--bgcolor)!important;
+  color: var(--textcolor)!important;
+  font: var(--def-font-size)/1.5 var(--def-font-family)!important;
+}
+body, div.container-fluid, div.container {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+}
+label.text-info {
+  color: var(--textcolor)!important;
+  font: var(--def-font-size)/1.5 var(--def-font-family)!important;
+}
 a {
   color: var(--textcolor);
   text-decoration:none;
@@ -1178,10 +1192,6 @@ tr.highlight td {
 .viewnav {
   width:99%;
   border:0;
-}
-#login {
-  margin-top:1.875rem;
-  margin-bottom:3.125rem;
 }
 #login table,
 #register table {

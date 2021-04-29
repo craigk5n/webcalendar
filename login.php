@@ -174,12 +174,9 @@ echo send_doctype($appStr);
 <script src="includes/js/tinycolor.js"></script>
 <!-- Readable: https://github.com/aramk/readable-color -->
 <script src="includes/js/readable.js"></script>
-
-
-<!--
-<link href="css_cacher.php?login=__public__" rel="stylesheet" />
+<link href="css_cacher.php" rel="stylesheet" />
 <link href="includes/css/styles.css" rel="stylesheet" />
--->
+
 <?php
 
 // Print custom header (since we do not call print_header function).
@@ -246,8 +243,8 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
         $valid_ip = validate_domain();
       
         if ( ! empty ( $valid_ip ) ) {
-          echo '<div id="register-link" class="form-group"><a href="register.php">'
-           . translate ( 'Not yet registered? Register here!' ) . '</a><</div>';
+          echo '<div id="register-link" class="form-group row"><a href="register.php">'
+           . translate ( 'Not yet registered? Register here!' ) . '</a></div>';
         }
       }
     ?>
@@ -269,6 +266,9 @@ if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
 ?>
 </div>
 
+<?php
+// TODO use variable from init.php for these version numbers
+?>
 <script src="includes/js/jquery/jquery-3.5.1.slim.min.js"></script>
 <script src="includes/js/bootstrap/bootstrap-4.6.0.bundle.min.js"></script>
 </body>
