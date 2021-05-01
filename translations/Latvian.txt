@@ -1,0 +1,2387 @@
+# Latvian lv
+#
+# Formāts sastāv no izvēles galvenes:
+#
+# Tulkoja: jūsu vārds un e-pasts
+# Pēdējais atjauninājums: tulkošanas datums
+# (Ieskaitot vadošo "#" un visus iepriekšējo tulkotāju komentārus.
+# PIRMĀ tukšā rindiņa beidzas ar šiem galvenes komentāriem.)
+#
+# Seko tik daudz, cik nepieciešams:
+#
+# Angļu frāze: tulkojums
+# (Viens uz līniju. BEZ vadošā "#".
+# Angļu frāzi: ", ieskaitot kolu": ", nodrošina
+# WebCalendar izstrādātāji. Jūsu daļa ir tulkojums.)
+#
+# Rīku direktorijā ir divi perl skripti, kas jums palīdzēs:
+# - check_translation.pl
+# norāda, vai viss teksts ir veiksmīgi iztulkots.
+# - update_translation.pl
+# parsēs programmas failus, lai atrastu visus tulkotos ('frāzi') un
+# rīka padoms ('frāze'). Tas sakārtos frāzes atbilstoši lapai
+# (fails), kurā ir pirmais gadījums. Pēc izvēles tas var atzīmēt tagu
+# frāzes, kas vēl nav tulkotas, ievietojot
+#  << MISSING >>
+# uz līnijas virs frāzes. Un, ja frāze ir saīsinājums,
+# tajā būs pilns teksts angļu valodā uz rindas zem frāzes.
+#
+# Piezīme. Es mēģinu samazināt kopējo faila lielumu. Ja tulkojums
+# vārds / frāze ir identiska jūsu valodā un angļu valodā, vienkārši izmantojiet zīmi "=".
+#
+# Piezīme: Jūs pamanīsit ierakstu "May_" zemāk. Tam ir savs iemesls.
+# Tulkot "May_" līdz mēneša nosaukumam un "May" uz
+# parasti trīs burtu, mēneša saīsinājums (piemēram, "oktobris" nozīmē "oktobris").
+#
+# Es tam izmantoju Google tulkotāju.
+# Ar to vajadzētu pietikt, kamēr dzimtā valoda to var pārbaudīt.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: versija XXX
+WebCalendar is a PHP application used...: WebCalendar ir PHP lietojumprogramma, ko izmanto, lai uzturētu kalendāru vienam lietotājam vai interneta / iekštīkla lietotāju grupai. To var arī konfigurēt kā notikumu kalendāru.
+Credits: Kredīti
+About: Par
+OK: labi
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Datu bāzes kļūda: XXX.
+DEFAULT CONFIGURATION: KONFigurācija pēc noklusējuma
+Go: Ej
+Save: Saglabāt
+Undo: Atsaukt
+Public Access: Publiska piekļuve
+Admin: Administrators
+User Access Control: Lietotāju piekļuves kontrole
+Allow Access to Other Users Calendar: Atļaut piekļuvi citu lietotāju kalendāram
+Grant This User Access to My Calendar: Piešķiriet šim lietotājam piekļuvi manam kalendāram
+Type: Tips
+Calendar: Kalendārs
+View Event: Skatīt notikumu
+View: Skats
+Edit: Rediģēt
+Approve/Reject: Apstiprināt / noraidīt
+Events: Notikumi
+Tasks: Uzdevumi
+Journals: Žurnāli
+Can Invite: Var uzaicināt
+Can Email: Var e-pastu
+Can See Time Only: Var redzēt tikai laiku
+Assistant: Asistents
+Select All: Izvēlēties visus
+Clear All: Iztīrīt visu
+Public: Publisks
+Confidential: Konfidenciāli
+Private: Privāts
+
+########################################
+# Page: activity_log.php
+#
+Next: Nākamais
+Previous: Iepriekšējais
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: XXX notikums jau ir jūsu kalendārā.
+Invalid entry id XXX.: Nederīgs ieraksta ID: "XXX".
+a XXX event may not be added to your calendar: Šis ir notikums XXX, un to nevar pievienot jūsu kalendāram.
+confidential: konfidenciāli
+private: Privāts
+Error adding event XXX.: Pievienojot notikumu, radās kļūda: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Nederīgs iestatījuma nosaukums “XXX”.
+Select: Atlasiet
+Day: Diena
+Week: Nedēļa
+Month: Mēnesis
+Year: Gads
+Bottom: Apakšā
+Top: Tops
+Anyone: Jebkurš
+Participant: Dalībnieks
+Settings: Iestatījumi
+Groups: Grupas
+NonUser Calendars: NonUser kalendāri
+Other: Cits
+Email: E-pasts
+Colors: Krāsas
+Document background: Dokumenta fons
+Document title: Dokumenta nosaukums
+Document text: Dokumenta teksts
+My event text: Mana pasākuma teksts
+Table grid color: Galda režģa krāsa
+Table header background: Tabulas galvenes fons
+Table header text: Tabulas galvenes teksts
+Table cell background: Tabulas šūnu fons
+Table cell background for current day: Tabulas šūnu fons pašreizējai dienai
+Table cell background for days with events: Galda šūnu fons dienām ar notikumiem
+Table cell background for weekends: Galda šūnu fons nedēļas nogalēm
+Table cell background for other month: Tabulas šūnu fons citam mēnesim
+Week number color: Nedēļas numura krāsa
+Event popup background: Notikuma uznirstošā fona
+Event popup text: Notikuma uznirstošais teksts
+System Settings: Sistēmas iestatījumi
+Help: Palīdzība
+System options: Sistēmas opcijas
+app-name-help: Norāda lietojumprogrammas nosaukumu, kas tiks parādīts pārlūka virsraksta joslā visām lapām un pieteikšanās lapā. Šeit norādītā vērtība tiks meklēta tulkojumu failā, ļaujot jums nodrošināt dažādus nosaukumus dažādām valodām.
+Application Name: Lietojumprogrammas nosaukums
+Translated Name (XXX): Tulkotais vārds (XXX)
+server-url-help: Norāda lietojumprogrammas pamata URL. Tas tiks iekļauts, izsūtot e-pasta atgādinājumus un paziņojumus.
+Server URL: Servera URL
+home-url-help: Norāda lietojumprogrammas mājas URL. Tas var būt absolūts vai relatīvs
+Home URL: Mājas URL
+language-help: Norāda, kuru valodu lietot.
+Language: Valoda
+Your browser default language is XXX.: Jūsu pārlūkprogrammas noklusējuma valoda ir “XXX”.
+Allow user to use themes: Atļaut lietotājam izmantot motīvus
+themes-help: Ļauj masveidā atjaunināt konfigurācijas iestatījumus. Mazie burti ir tikai lietotāja priekšraksti.
+Themes: Tēmas
+AVAILABLE THEMES: PIEEJAMĀS TĒMAS
+None: Nav
+Preview: Priekšskatījums
+Site customization: Vietnes pielāgošana
+custom-script-help: Ļauj ievadīt pielāgotu Javascript vai stila lapas tekstu, kas tiks ievietots katras lapas HTML sadaļā "head".
+Custom script/stylesheet: Pielāgots skripts / stila lapa
+custom-header-help: Ļauj pielāgotu HTML fragmentu iekļaut katras lapas augšdaļā.
+Custom header: Pielāgota galvene
+custom-trailer-help: Katras lapas beigās ļauj iekļaut pielāgotu HTML fragmentu.
+Custom trailer: Pielāgota piekabe
+enable-external-header-help: Ļauj pielāgoto reklāmklipu ielādēt no ārēja faila
+Allow external file for header/script/trailer: Atļaut ārējo failu galvenei / skriptam / piekabei
+Allow user to override header/trailer: Ļaujiet lietotājam ignorēt galveni / piekabi
+Date and Time: Datums un laiks
+server-tz-help: Norāda, cik stundas jāpielāgo laiks no UTC līdz servera laikam.
+Server Timezone Selection: Servera laika joslas izvēle
+tz-help: Norāda, cik stundas pielāgot laiku no UTC līdz vietējam laikam.
+Default Client Timezone Selection: Noklusējuma klienta laika joslas izvēle
+display-general-use-gmt-help: Ja tas ir iespējots, kopējie datumi / laiki tiek rādīti kā GMT
+Display Common Use Date/Times as GMT: Parādīt koplietošanas datumu / laiku kā GMT
+date-format-help: Norāda vēlamo datuma formātu.
+Date format: Datuma formāts
+Small Task Date: Mazā uzdevuma datums
+display-week-starts-on: Norāda nedēļas dienu, kurā nedēļa sākas. Ja pirmdiena ir norādīta, tad nedēļu numuri būs ISO nedēļu numuri.
+Week starts on: Nedēļa sākas
+display-weekend-starts-on: Iestata nedēļas dienu nedēļas nogales sākumam
+Weekend starts on: Nedēļas nogale sākas
+time-format-help: Norāda izmantojamo laika formātu:<br><em>12 stundas:</em> Displeja laiks: 3:00, 20:30 utt.<br><em>24 stundas:</em> Displeja laiks: 300 , 2030. gads utt.
+Time format: Laika formāts
+12 hour: 12 stundas
+24 hour: 24 stundas
+timed-evt-len-help: Norāda ievades metodi laikiestatīta notikuma garuma noteikšanai.
+Specify timed event length by: Norādiet notikuma ilgumu ar
+Duration: Ilgums
+End Time: Beigu laiks
+work-hours-help: Norāda laika diapazonu, kas jāparāda dienas skatā.
+Work hours: Darba laiks
+From: No
+to: uz
+Appearance: Izskats
+preferred-view-help: Norāda noklusējuma skatu (diena, nedēļa, mēnesis vai gads).
+Preferred view: Vēlamais skats
+Allow top menu: Atļaut augšējo izvēlni
+Date Selectors position: Datuma atlasītāju pozīcija
+menu-themes-help: Iestata augšējās izvēlnes krāsas un stilu
+Menu theme: Izvēlnes tēma
+fonts-help: Norāda izmantojamo sistēmas fontu sarakstu (piemēram, "Arial, Helvetica")
+Fonts: Fonti
+display-sm_month-help: Ja tas ir iespējots, mēnesī tiek parādīti mazi mēneši
+Display small months: Rādīt mazos mēnešus
+display-weekends-help: Ietveriet nedēļas nogales, kad skatāties nedēļu.
+Display weekends: Attēlot nedēļas nogales
+display-long-daynames-help: Ja tas ir iespējots, tiek parādīti garo dienu nosaukumi
+Display long day names: Parādīt garo dienu nosaukumus
+display-alldays-help: Parādīt iepriekšējo un nākamo mēnešu dienas mēneša skatījumos, aizpildot visas šūnas.
+Display all days in month view: Parādīt visas dienas mēneša skatā
+display-week-number-help: Norāda, vai nedēļas skaitlis (1–52) jāparāda mēneša un nedēļas skatā.
+Display week number: Parādīt nedēļas numuru
+display-desc-print-day-help: Iekļaujiet notikumu aprakstus printerim draudzīgā dienas skata versijā.
+Display description in printer day view: Parādīt aprakstu printera dienas skatā
+yearly-shows-events-help: Gada skatā parādiet dienas, kurās notikumi ir treknrakstā.
+Display days with events in bold in month and year views: Rādīt dienas ar notikumiem treknrakstā mēneša un gada skatījumos
+display-minutes-help: Ja tas ir iespējots, vienmēr tiks rādītas minūtes, kas beidzas ar: 00
+Display 00 minutes always: Rādīt vienmēr 00 minūtes
+display-end-times-help: Parādīt notikuma beigu laiku, ja notikums ir noteikts
+Display end times on calendars: Parādīt beigu laiku kalendāros
+allow-view-add-help: Skatos tiks iekļauta ikona “+”, kas lietotājiem ļaus ātri pievienot notikumus citu lietotāju kalendāriem.
+Include add event link in views: Skatos iekļaujiet saiti Pievienot notikumu
+lunar-help: Ja tas ir iespējots, katru mēnesi tiks parādītas mazas ikonas, kas apzīmē Mēness fāzes
+Display Lunar Phases in month view: Parādīt Mēness fāzes mēneša skatījumā
+Restrictions: Ierobežojumi
+allow-view-other-help: Norāda, vai viens lietotājs var skatīt cita lietotāja kalendāru.
+Allow viewing other users calendars: Atļaut skatīt citu lietotāju kalendārus
+require-approvals-help: Ja tas ir iespējots, lietotājam ir jāapstiprina notikums, pirms tas tiek parādīts viņu kalendārā (ja vien nav iespējota opcija Displeja neapstiprināšana). Ņemiet vērā, ka iestatot šo vērtību uz “Nē”, publiskās piekļuves kalendāra apstiprinājumi netiks izslēgti (ja ir iespējots publiskās piekļuves kalendārs).
+Require event approvals: Pieprasiet pasākumu apstiprinājumus
+display-unapproved-help: Norāda, vai kalendārā tiek rādīti neapstiprināti notikumi.<br>Ja iestatīts uz “Jā”, tad neapstiprinātie notikumi tiks parādīti jūsu kalendārā (ar citu teksta krāsu).<br>Ja iestatīts uz “Nē”, tad neapstiprināti notikumi ir jāapstiprina, pirms tie tiek parādīti jūsu kalendārā.
+Display unapproved: Displejs nav apstiprināts
+conflict-check-help: Pārbaudiet, vai nav notikumu konfliktu (divi notikumi ir vienlaicīgi ieplānoti vienai un tai pašai personai). Ja iestatīsit šo uz “Jā”, pēc brīdinājuma apstiprināšanas jūs joprojām varēsiet ieplānot divus pasākumus vienlaikus. Ja iestatāt šo vērtību uz “Nē”, konflikti netiks pārbaudīti. Jūs droši vien vēlaties to iestatīt uz “Jā”, tāpēc notiek konfliktu pārbaude.
+Check for event conflicts: Pārbaudiet, vai nav notikumu konfliktu
+Yes: Jā
+No: Nē
+conflict-months-help: Ja notiek konfliktu pārbaude (iestatījums “Pārbaudīt notikumu konfliktus” ir iestatīts uz “Nē”&#41;, tas norāda, cik mēnešus nākotnē mums jāpārbauda, ​​vai nav konfliktu. Ja konstatējat, ka notikumu pievienošana prasa ilgu laiku, lai to apstrādātu , samaziniet šo skaitli.
+Conflict checking months: Konfliktu pārbaudes mēneši
+conflict-check-override-help: Ļauj lietotājiem ignorēt notikumu konfliktus un ieplānot divus vai vairākus notikumus vienlaicīgi.
+Allow users to override conflicts: Ļauj lietotājiem ignorēt konfliktus
+limit-appts-help: Ļauj sistēmas administratoram noteikt visas sistēmas ierobežojumu tikšanās reizēm, kuras viens lietotājs var veikt vienā dienā.
+Limit number of timed events per day: Ierobežot noteikto notikumu skaitu dienā
+limit-appts-number-help: Norāda maksimālo laikiestatīto notikumu skaitu, kāds lietotājam var būt vienā dienā.
+Maximum timed events per day: Maksimālais notikumu skaits dienā
+crossday-help: Ja tas ir iespējots, notikumi, kas ilgst vairākas dienas, tiks parādīti atsevišķās dienās
+Disable Cross-Day Events: Atspējot pārdienu pasākumus
+disable-location-field-help: Atlasot “Jā”, no notikuma informācijas lapām tiks noņemts lauks “Atrašanās vieta”
+Disable Location field: Atspējot lauku Atrašanās vieta
+disable-url-field-help: Atlasot “Jā”, no notikuma informācijas lapām tiks noņemts lauks “URL”
+Disable URL field: Atspējot URL lauku
+disable-priority-field-help: Atlasot “Jā”, notikumu informācijas lapās tiks noņemts lauks “Prioritāte”, nodrošinot vienkāršāku interfeisu iesācējiem.
+Disable Priority field: Atspējot lauku Prioritāte
+disable-access-field-help: Atlasot “Jā”, notikumu informācijas lapās tiks noņemts lauks “Piekļuve”, nodrošinot vienkāršāku interfeisu iesācējiem.
+Disable Access field: Atspējot piekļuves lauku
+disable-participants-field-help: Atlasot “Jā”, laukums “Dalībnieki” tiks noņemts no notikuma informācijas lapām, neļaujot lietotājiem pievienot citiem lietotājiem savus pasākumus. Ja iespējojat šo opciju, varat arī atspējot lauku “Atļaut skatīt cita lietotāja kalendārus”.
+Disable Participants field: Atspējot dalībnieku lauku
+disable-repeating-field-help: Atlasot “Jā”, pievienojot notikumus, tiks noņemts lauks “Atkārtojas”. Tas nodrošinās vienkāršāku interfeisu iesācējiem.
+Disable Repeating field: Atspējot lauku Atkārtot
+allow-html-description-help: Ja tas ir iespējots, lietotāji notikuma apraksta laukā var ievadīt HTML. Ja tas nav iespējots, HTML tagi tiks aizvērti, lai tie parādītos kā vienkāršs teksts. Brīdinājums: iespējojot šo funkciju, lietotāji varēs atsaukties uz attēliem citās vietnēs.
+Allow HTML in Description: Atļaut HTML aprakstā
+Popups: Uznirstošie logi
+disable-popups-help: Atspējojiet uznirstošos logus no kalendāra skatiem
+Disable Pop-Ups: Atspējot uznirstošos logus
+popup-includes-siteextras-help: Ja tas ir iespējots, atļaujiet pielāgoto notikumu lauku iestatīšanu failā site_extras.php parādīsies notikuma uznirstošajos logos.
+Display Site Extras in popup: Parādiet vietnes ekstras uznirstošajā logā
+popup-includes-participants-help: Ja tas ir iespējots, dalībnieki tiek parādīti notikumu uznirstošajos logos.
+Display Participants in popup: Parādīt dalībniekus uznirstošajā logā
+Miscellaneous: Dažādi
+remember-last-login-help: Ja tas būs iespējots, pieteikšanās lapā viņam tiks aizpildīta lietotāja pieteikšanās (bet ne parole), un tiks ielādētas lietotāja preferences (ieskaitot vēlamās krāsas un valodas izvēli).
+Remember last login: Atcerieties pēdējo pieteikšanos
+summary_length-help: Īsā apraksta maksimālais garums kalendāra skatos
+Brief Description Length: Īss apraksts Garums
+user_sort-help: Nosaka lietotāju, neizmantotāju sarakstu kārtošanas secību
+User Sort Order: Lietotāja kārtošanas kārtība
+Lastname, Firstname: Uzvārds Vārds
+Firstname, Lastname: Vārds Uzvārds
+allow-public-access-help: Ja tas ir iespējots, kalendāru var izmantot kā tikai lasāmu publisku kalendāru, kurā lietotājiem nav jāpiesakās.
+Allow public access: Atļaut publisku piekļuvi
+public-access-default-visible: Pasākumi no publiskā kalendāra automātiski parādīsies visu lietotāju kalendāros
+Public access visible by default: Pēc noklusējuma ir redzama publiska piekļuve
+public-access-default-selected: Pievienojot jaunu notikumu, kā dalībnieku pēc noklusējuma tiks izvēlēts publiskais lietotājs.
+Public access is default participant: Publiskā piekļuve ir noklusējuma dalībnieks
+public-access-view-others-help: Piekļūstot sistēmai ar publisku piekļuvi, norāda, vai lietotājs var apskatīt cita kalendāra lietotāja kalendāru.
+Public access can view other users: Publiska piekļuve var skatīt citus lietotājus
+public-access-can-add-help: Ja opcija ir iespējota, lietotāji, kuri piekļūst sistēmai, izmantojot publisko piekļuvi, varēs pievienot jaunus pasākumus, taču tie netiks rādīti kalendārā, kamēr administrators neapstiprinās jauno notikumu.
+Public access can add events: Publiska piekļuve var pievienot pasākumus
+public-access-add-requires-approval-help: Norāda, vai notikumi, kas pievienoti, izmantojot publiskās piekļuves kontu, pirms to parādīšanas ir jāapstiprina.
+Public access new events require approval: Jauni notikumi ir publiski pieejami, tam ir nepieciešams apstiprinājums
+public-access-sees-participants-help: Ja tas ir iespējots, lietotāji, kuri piekļūst kalendāram no publiskā konta, varēs redzēt notikuma dalībniekus, ja viņi skatīs informāciju par notikumu.
+Public access can view participants: Publiska piekļuve var skatīt dalībniekus
+public-access-override-help: Ļauj paslēpt notikumu nosaukumus un aprakstus publiskajā kalendārā
+Override event name/description for public access: Par publisku piekļuvi ignorēt notikuma nosaukumu / aprakstu
+public-access-override-text-help: Teksts, kas jāparāda, ja ir iespējota iepriekš minētā opcija. Ja 'Nav pieejams', tas tiks tulkots.
+Text to display to public access: Teksts, ko parādīt publiskai piekļuvei
+public-access-captcha-help: Ja tas ir iespējots, jauniem, publiski pievienotiem notikumiem ir jānokārto CAPTCHA validācija.
+Require CAPTCHA validation for public access new events: Pieprasiet CAPTCHA validāciju, lai publiski piekļūtu jauniem notikumiem
+uac-enabled-help: Iespējo lietotāja līmeņa piekļuves kontroli
+User Access Control enabled: Lietotāja piekļuves kontrole ir iespējota
+groups-enabled-help: Iespējo grupu atbalstu, ļaujot lietotājiem atlasīt lietotājus pēc grupām.
+Groups enabled: Grupas ir iespējotas
+user-sees-his-group-help: Ja tas ir iespējots, lietotāji neredzēs kalendāra lietotājus, kuri nav vismaz vienā no viņu grupām.
+User sees only his groups: Lietotājs redz tikai savas grupas
+nonuser-enabled-help: Ja tas ir iespējots, administratoriem būs iespēja pievienot kalendārus, kas nav lietotāji
+Nonuser enabled: Neizmantotie kalendāri ir iespējoti
+nonuser-list-help: Kur dalībnieku sarakstā parādīt neizmantotos kalendārus
+Nonuser list: Parādīt dalībnieku sarakstā plkst
+Upcoming Events: Gaidāmie notikumi
+upcoming-events-help: Iespējot upcoming.php
+Enabled: Iespējots
+upcoming-events-allow-override: Atļaut lietotāja paramteram upcoming.php
+Allow user override: Atļaut lietotājam ignorēt
+upcoming-events-display-caticons: Iekļaujiet kategoriju ikonas vietnē upcoming.php
+Display category icons: Parādīt kategoriju ikonas
+upcoming-events-display-layers: Parādīt slāņus upcoming.php
+Display layers: Displeja slāņi
+upcoming-events-display-links: Parādīt saites vietnē upcoming.php
+Display links to events: Parādīt saites uz notikumiem
+upcoming-events-display-popups: Parādīt notikumu uznirstošos logus upcoming.php
+Display event popups: Parādīt notikumu uznirstošos logus
+reports-enabled-help: Ja šī opcija ir iespējota, katras lapas apakšdaļā lietotāji redzēs sadaļu Pārskati un varēs izveidot pielāgotus pārskatus. Turklāt administratora lietotāji var izveidot globālus pārskatus, kas parādīsies visu lietotāju lapu apakšdaļā.
+Reports enabled: Pārskati ir iespējoti
+subscriptions-enabled-help: Norāda, vai attālie lietotāji var abonēt WebCalendar lietotāja kalendāru, ļaujot viņiem redzēt WebCalendar lietotāja notikumus savā iCal iespējotajā lietojumprogrammā (piemēram, Apple iCal vai Mozilla Calendar).
+Allow remote subscriptions: Atļaut attālinātus abonementus
+remotes-enabled-help: Ļauj lietotājiem ielādēt attālos IC failus, izmantojot URL
+Allow remote calendars: Atļaut attālinātos kalendārus
+rss-enabled-help: Norāda, vai lietotāja kalendāru var iegūt no RSS plūsmas.
+Enable RSS feed: Iespējot RSS plūsmu
+categories-enabled-help: Iespējo atbalstu pasākumu kategorijām.
+Categories enabled: Kategorijas ir iespējotas
+icon_upload-enabled-help: Ja tas ir iespējots, lietotāji var augšupielādēt kategoriju ikonas
+Category Icon Upload enabled: Kategorijas ikonas augšupielāde ir iespējota
+(Requires XXX folder to exist.): (Nepieciešama XXX mapes eksistence.)
+display-tasks-help: Parādīt nelielu uzdevumu logu mēneša un dienas kalendārā
+Display small task list: Parādīt nelielu uzdevumu sarakstu
+display-tasks-in-grid-help: Attēlot uzdevumus kalendāros kopā ar notikumiem
+Display tasks in Calendars: Rādīt uzdevumus kalendāros
+allow-external-users-help: Norāda, vai notikumam var pievienot lietotāju, kas nav kalendārs. Tas ļauj lietotājus, kuri nav kalendāra dalībnieki, iekļaut kā pasākuma dalībniekus.
+Allow external users: Atļaut ārējiem lietotājiem
+external-can-receive-notification-help: Kad ir iespējoti ārējie lietotāji un ir iespējota e-pasta lietošana, ārējie lietotāji var saņemt e-pasta paziņojumus, kad notikums tiek pievienots, atjaunināts vai dzēsts (ja ir norādīta ārējā lietotāja e-pasta adrese).
+External users can receive email notifications: Ārējie lietotāji var saņemt e-pasta paziņojumus
+external-can-receive-reminder-help: Kad ir iespējoti ārējie lietotāji un iespējota e-pasta lietošana, ārējie lietotāji var saņemt atgādinājumus par e-pastu (ja ir norādīta ārējā lietotāja e-pasta adrese).
+External users can receive email reminders: Ārējie lietotāji var saņemt atgādinājumus pa e-pastu
+allow-self-registration-help: Atļaut jaunajiem lietotājiem reģistrēties
+Allow self-registration: Atļaut pašreģistrāciju
+use-blacklist-help: Ierobežojiet piekļuvi WebCalendar funkcijām, pamatojoties uz IP adresi
+Restrict self-registration to blacklist: Ierobežojiet pašreģistrāciju tikai melnajā sarakstā
+allow-self-registration-full-help: Ļaujiet jauniem lietotājiem tiešsaistē pabeigt pašreģistrācijas procesu
+Use self-registration email notifications: Ģenerējiet paroles un nosūtiet tos jauniem lietotājiem
+allow-attachment-help: Ļauj lietotājiem pievienot failu pielikumus notikumiem.
+Allow file attachments to events: Atļaut failu pielikumus notikumiem
+Admin and owner can always add attachments if enabled.: Administrators un īpašnieks vienmēr var pievienot pielikumus, ja tie ir iespējoti.
+allow-comments-help: Ļauj lietotājiem pievienot komentārus notikumiem.
+Allow comments to events: Atļaut komentārus notikumiem
+Admin and owner can always add comments if enabled.: Administrators un īpašnieks vienmēr var pievienot komentārus, ja tie ir iespējoti.
+email-enabled-help: Ieslēdziet vai izslēdziet visu e-pasta ziņojumu sūtīšanu, lai saņemtu paziņojumus un atgādinājumus. Iestatiet uz “nē”, ja jūsu serveris nav pareizi iestatīts, lai sūtītu pastu.
+Email enabled: E-pasts ir iespējots
+email-default-sender: Norāda e-pasta adresi, kas jānorāda kā sūtītājs, izsūtot atgādinājumus.
+Default sender address: Noklusējuma sūtītāja adrese
+email-mailer: Izvēlieties e-pasta veidu (SMTP, PHP pasts, sendmail)
+Email Mailer: E-pasts Mailer
+email-smtp-host: SMTP servera (-u) resursdatora nosaukums (-i), atdalot tos ar komatiem
+SMTP Host name(s): SMTP resursdatora nosaukums (-i)
+email-smtp-port: SMTP porta numurs (parasti 25)
+SMTP Port Number: SMTP porta numurs
+email-smtp-auth: Izmantojiet SMTP autentifikāciju
+SMTP Authentication: SMTP autentifikācija
+email-smtp-username: SMTP lietotājvārds, ja izmantojat autentifikāciju
+SMTP Username: SMTP lietotājvārds
+email-smtp-password: SMTP parole, ja izmantojat autentifikāciju
+SMTP Password: SMTP parole
+Default user settings: Noklusētie lietotāja iestatījumi
+email-format: Norādiet priekšroku HTML vai vienkāršām īsziņām
+Email format preference: E-pasta formāta preference
+HTML: =
+Plain Text: Vienkāršs teksts
+email-include-ics: Iekļaujiet e-pasta ziņojumā iCalendar ICS failu
+Include iCalendar attachments: Iekļaujiet iCalendar pielikumus
+email-event-reminders-help: Norāda, vai sūtīt atgādinājumus par notikumiem.
+Event reminders: Atgādinājumi par notikumiem
+email-event-added: Norāda, vai sūtīt e-pasta paziņojumus, kad notikums tiek pievienots jūsu kalendāram.
+Events added to my calendar: Pasākumi ir pievienoti manam kalendāram
+email-event-updated: Norāda, vai sūtīt e-pasta paziņojumus, kad notikums tiek atjaunināts jūsu kalendārā.
+Events updated on my calendar: Pasākumi ir atjaunināti manā kalendārā
+email-event-deleted: Norāda, vai sūtīt e-pasta paziņojumus, ja notikums tiek noņemts no kalendāra.
+Events removed from my calendar: Notikumi ir noņemti no mana kalendāra
+email-event-rejected: Norāda, vai nosūtīt e-pasta paziņojumus, ja dalībnieks noraida notikumu, kas ir jūsu kalendārā.
+Event rejected by participant: Dalībnieks noraidīja pasākumu
+email-event-create: Norāda, vai ierakstu veidotājs saņems e-pastu
+Event that I create: Notikums, kuru es izveidoju
+Color options: Krāsu opcijas
+Allow user to customize colors: Ļaujiet lietotājam pielāgot krāsas
+gradient-colors: Ja tiek iespējotas gradienta krāsas. Tas var ievērojami ietekmēt veiktspēju.
+Enable gradient images for background colors: Iespējot gradienta attēlus fona krāsām
+Not available: Nav pieejams
+Background Image options: Fona attēla opcijas
+bgimage-help: Vēlamā fona attēla URL. Var būt relatīva saikne.
+Background Image: Fona attēls
+bgrepeat-help: Kontrolē fona attēla atkārtotu darbību.
+Background Repeat: Atkārtojiet fonu
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Asistenti
+Preferences: =
+Control Panel: Vadības panelis
+Users: Lietotāji
+Account: Konts
+Categories: Kategorijas
+Views: Skati
+Layers: Slāņi
+Reports: Ziņojumi
+Delete Events: Dzēst notikumus
+Activity Log: Aktivitāšu vēsture
+System Log: Sistēmas žurnāls
+Security Audit: Drošības audits
+Public Preferences: Sabiedrības preferences
+Unapproved Public Events: Neapstiprināti publiski pasākumi
+Administrative Tools: Administratīvie rīki
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Vārda dublikāts: "XXX".
+Username XXX already exists.: Lietotājvārds “XXX” jau pastāv.
+Email address XXX already exists.: E-pasta adrese "XXX" jau pastāv.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Papildu komentāri (pēc izvēles)
+Approve and Send: Apstiprināt un nosūtīt
+Approve and Exit: Apstiprināt un iziet
+(Your comments will be emailed to the event creator.): (Jūsu komentāri tiks nosūtīti pa e-pastu pasākuma veidotājam.)
+Hello, XXX.: Labdien, XXX.
+XXX has approved an appointment and added comments.: Tikšanos apstiprināja un komentārus pievienoja XXX.
+Subject XXX: Temats: "XXX".
+Description XXX: Apraksts: "XXX".
+Date XXX: Datums: XXX
+Time XXX: Laiks: XXX
+Comments XXX: Komentāri: XXX
+Approved w/Comments by XXX.: Apstiprināts ar komentāriem: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Administratora režīms
+Your assistants: Jūsu palīgi
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Nezināma kļūda.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Programmas kļūda: XXX nav norādīts!
+user: lietotājs
+year: gadā
+month: mēnesī
+day: diena
+
+########################################
+# Page: category.php
+#
+Category Icon: Kategorijas ikona
+Global: Globāls
+The permissions for the icons directory are set to read-only: Ikonu direktorija atļaujas ir iestatītas tikai lasīšanai.
+Category Name: Kategorijas nosaukums:
+Color: Krāsa
+Remove Icon: Noņemt ikonu:
+Add Icon to Category: Pievienot ikonu kategorijai
+Upload: Augšupielādēt
+GIF or PNG 6kb max: GIF vai PNG ne vairāk kā 6 KB
+Search for existing icons: Meklējiet esošās ikonas
+Add: Pievienot
+Delete: Dzēst
+Are you sure you want to delete this entry?: Vai tiešām vēlaties dzēst šo ierakstu?
+Make New Category: Izveidot jaunu kategoriju
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Obligāts kategorijas nosaukums
+File size exceeds maximum.: Faila lielums pārsniedz maksimālo.
+File is not a GIF or PNG image: Fails nav GIF vai PNG attēls
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: PIEEJAMĀS KATEGORIJAS
+ENTRY CATEGORIES: IEVADES KATEGORIJAS
+Remove: Noņemt
+Global Category: Globālā kategorija
+Cancel: Atcelt
+
+########################################
+# Page: colors.php
+#
+Add Custom: Pievienot pielāgotu
+Basic Colors: Pamata krāsas
+Current Color: Pašreizējā krāsa
+Custom Colors: Pielāgotas krāsas
+Old Color: Vecā krāsa
+
+########################################
+# Page: combo.php
+#
+Select None: Atlasiet Neviens
+Agenda: Darba kārtība
+Add Task: Pievienot uzdevumu
+Description: Apraksts
+Date: Datums
+Time: Laiks
+Priority: Prioritāte
+Access: Piekļuve
+Created by: Radīts
+Updated: Atjaunināts
+Participants: Dalībnieki
+Attachments: Pielikumi
+Comments: Komentāri
+Brief Description: Īss apraksts
+Full Description: Pilns apraksts
+Category: Kategorija
+Add event detail: Pievienojiet detalizētu informāciju par notikumu
+Start Date: Sākuma datums
+Due Date: Gala termiņš
+Add task detail: Pievienot uzdevuma informāciju
+All: Viss
+Error: Kļūda
+no response from server: no servera nav atbildes
+JSON error: JSON kļūda
+High: Augsts
+Medium: Vidējs
+Low: Zems
+Today: Šodien
+Add Entry: Pievienot ierakstu
+Unnamed Event: Bez nosaukuma notikums
+Unnamed Task: Beznosaukuma uzdevums
+Refresh: atjaunot
+Click to add entry: Noklikšķiniet, lai pievienotu ierakstu
+Name: Nosaukums
+pm: =
+am: esmu
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX atcēla tikšanos.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Nederīgs lāse id
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Pievienot komentāru
+Add Attachment: Pievienot pielikumu
+Subject: Priekšmets
+Comment: Komentēt
+Upload file: Augšupielādēt failu
+
+########################################
+# Page: docdel.php
+#
+Removed: Noņemts
+
+########################################
+# Page: edit_entry.php
+#
+days: dienas
+hours: stundas
+minutes: minūtes
+You are not authorized to edit this task.: Jums nav tiesību rediģēt šo uzdevumu.
+is in a different timezone than you are. Currently: atrodas citā laika joslā nekā jūs. Pašlaik
+hour ahead of you: stundu pirms tevis
+hour behind you: stundu aiz muguras
+hours ahead of you: stundas pirms jums
+hours behind you: stundas aiz jums
+XXX is in a different timezone (ahead): (XXX atrodas citā laika joslā; YYY pirms jums.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX atrodas citā laika joslā; YYY aiz jums.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Šeit ievadītais laiks ir balstīts uz jūsu laika joslu.
+Edit Entry: Rediģēt ierakstu
+Details: Sīkāka informācija
+Repeat: Atkārtojiet
+Reminders: Atgādinājumi
+brief-description-help: Tam vajadzētu sniegt īsu notikuma aprakstu (apmēram 20 rakstzīmes). Apskatot kalendāru, tas attēlos notikumu.
+full-description-help: Tam vajadzētu sniegt pilnīgu informāciju par notikumu. Šo informāciju var redzēt, kad lietotājs skata notikumu.
+access-help: Norāda notikuma piekļuves līmeni. <ul> <li> Publisks: visi var redzēt pilnu informāciju par notikumu.</li> <li> Konfidenciāli: citi var redzēt, ka jums ir ieraksts par šo datumu un laiku, bet nevis informācija par to, kas tas ir.</li></ul>
+priority-help: Norāda notikuma prioritāti. Augstas prioritātes notikumi tiks parādīti treknrakstā.
+category-help: Norāda notikuma kategoriju.
+completed-help: Datuma uzdevums ir pabeigts. Iespējota tikai tad, ja visu dalībnieku procentuālais daudzums ir vienāds ar 100%.
+Date Completed: Pabeigšanas datums
+percent-help: Uzdevuma izpildes procents šim lietotājam
+Percent Complete: Procents pabeigts
+All Percentages: Visi procenti
+location-help: Pasākuma norises vieta
+Location: Atrašanās vieta
+url-help: Notikuma URL
+URL: =
+date-help: Norāda notikuma datumu.
+Untimed event: Neizvēlēts notikums
+Timed event: Laika notikums
+All day event: Visas dienas pasākums
+Timezone Offset: Laika joslas nobīde
+time-help: Norāda notikuma laiku. <ul> <li> "Laika notikums" (notikumam, kas tajā dienā paredzēts konkrētam laikam)</li> <li> "Notikums bez laika" (pasākumam tam nav laika (piemēram, svētku diena) )</li> <li> "Visas dienas pasākums" (pasākumam, kas ilgst visu dienu (piemēram, atrodoties ārpus biroja)</li></ul>
+duration-help: Norāda notikuma ilgumu (stundās; minūtēs). <em>Šo lauku var atstāt tukšu.</em>
+end-time-help: Norāda notikuma beigu laiku.
+Start Time: Sākuma laiks
+Due Time: Termiņš
+Site Extras: Vietnes ekstras
+avail_participants-help: Uzskaita pieejamos šī ieraksta dalībniekus.
+Available: Pieejams
+Find Name: Atrodiet vārdu
+Resources: Resursi
+participants-help: Uzskaita šī ieraksta dalībniekus.
+Selected: Atlasīts
+Availability: Pieejamība
+external-participants-help: Norāda notikuma dalībnieku sarakstu, kuri nav kalendāra lietotāji. Lietotāji katrā rindā ir jānorāda pa vienam un var ietvert e-pasta adresi. Ja ir norādīta e-pasta adrese, lietotājs ir tiesīgs saņemt paziņojumus un atgādinājumus.
+External Participants: Ārējie dalībnieki
+repeat-type-help: Atlasiet, cik bieži notikumam jāatkārto.
+Daily: Katru dienu
+Weekly: Iknedēļas
+Monthly: Katru mēnesi
+by day: pa dienu
+by date: pēc datuma
+by position: pēc amata
+Monthly (by day): Katru mēnesi (pa dienām)
+Monthly (by date): Katru mēnesi (pēc datuma)
+Monthly (by position): Katru mēnesi (pēc pozīcijas)
+Yearly: Katru gadu
+Manual: Manuāli
+Expert Mode: Eksperta režīms
+repeat-end-date-help: Norāda datumu, līdz kuram notikums jāatkārto līdz.
+Ending: Beidzas
+Forever: Uz visiem laikiem
+Use end date: Izmantot beigu datumu
+Number of times: Reižu skaits
+repeat-frequency-help: Norāda, cik bieži notikumam jāatkārto.
+Frequency: Biežums
+Weekdays Only: Tikai darba dienās
+Week Start: Nedēļas sākums
+repeat-bydayextended-help: Ļauj datuma izvēli, pamatojoties uz nedēļas dienu.
+ByDay: Līdz dienai
+repeat-month-help: Norāda, kuros mēnešos notikums jāatkārto.
+ByMonth: Līdz mēnesim
+repeat-bysetpos-help: Ļauj datuma izvēli, pamatojoties uz pozīciju ar mēnesi.
+BySetPos: =
+repeat-bymonthdayextended-help: Ļauj datuma izvēli, pamatojoties uz datumu.
+ByMonthDay: LīdzMēnessDiena
+repeat-byweekno-help: Ļauj lietotājam norādīt nedēļu sarakstu, lai atkārtotu notikumu (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: Ar Nedēļas Nē
+repeat-byyearday-help: Ļauj lietotājam norādīt gada dienu sarakstu, lai atkārtotu notikumu (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Papildu dienas, kurās šim notikumam vajadzētu notikt vai kam nevajadzētu notikt.
+Exclusions: Izslēgšana
+Inclusions: Iekļaušana
+Add Exception: Pievienot izņēmumu
+Add Inclusion: Pievienot iekļaušanu
+Delete Selected: Dzēst atlasīto
+Send Reminder: Sūtīt atgādinājumu
+When: Kad
+Use Date/Time: Izmantot datumu / laiku
+Use Offset: Izmantojiet ofsetu
+Before: Pirms
+After: Pēc
+Start: Sākt
+End/Due: Beigas / Termiņš
+Times: Laiki
+Every: Katrs
+CAPTCHA Warning: Brīdinājums:  bez PHP GD paplašinājuma nevar izmantot CAPTCHA!<br>
+Delete entry: Dzēst ierakstu
+You are not authorized to edit this entry.: Jums nav tiesību rediģēt šo ierakstu.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX ir iecēlis jaunu tikšanos.
+XXX has updated an appointment.: XXX ir atjauninājis tikšanos.
+Security violation!: Drošības pārkāpums!
+You must enter the anti-spam text on the previous page.: Iepriekšējā lapā jāievada anti-spam teksts.
+The following conflicts with the suggested time: Tālāk ir pretrunā ar ieteikto laiku
+User removed from participants list.: Lietotājs ir noņemts no dalībnieku saraksta.
+Please look on XXX to accept or reject this appointment.: Lūdzu, skatiet vietni XXX, lai pieņemtu vai noraidītu šo tikšanos.
+Please look on XXX to view this appointment.: Lūdzu, skatiet vietni XXX, lai skatītu šo tikšanos.
+Scheduling Conflict: Konflikta plānošana
+Your suggested time of: Jūsu ieteiktais laiks
+conflicts with the following existing calendar entries: ir pretrunā ar šādiem esošajiem kalendāra ierakstiem
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX nav iestatīts mapē "config.php".
+word characters only: (var saturēt tikai vārdu rakstzīmes; [a-zA-Z_0-9])
+Add User: Pievienot lietotāju
+Edit User: Rediģēt lietotāju
+Calendar ID: Kalendāra ID
+First Name: Vārds
+Last Name: Uzvārds
+Is public calendar: Ir publisks kalendārs
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Datu bāzes kļūda
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Pievienot attālo kalendāru
+Edit Remote Calendar: Rediģēt attālo kalendāru
+Create Layer: Izveidot slāni
+Reload: Pārlādēt
+Required to View Remote Calendar: Nepieciešams, lai skatītu attālo kalendāru
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Importēt rezultātus
+Events successfully imported: Notikumi veiksmīgi importēti
+Create a new layer to view this calendar.: Lai skatītu šo kalendāru, izveidojiet jaunu slāni.
+Errors: Kļūdas
+There was an error parsing the import file or no events were returned.: Parsējot importēšanas failu, radās kļūda vai neviens notikums netika atgriezts.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Rīt
+Yesterday: Vakar
+Day before yesterday: Aizvakar
+Next week: Nākamnedēļ
+This week: Šonedēļ
+Last week: Pagājušajā nedēļā
+Week before last: Nedēļa pirms pēdējās
+Next week and week after: Nākamā nedēļa un nedēļa pēc tam
+This week and next week: Šonedēļ un nākamnedēļ
+Last week and this week: Pagājušajā nedēļā un šonedēļ
+Last two weeks: Pēdējās divas nedēļas
+Next month: Nākammēnes
+This month: Šis mēnesis
+Last month: Pagājušajā mēnesī
+Month before last: Mēnesi pirms pēdējās
+Next year: Nākamgad
+This year: Šogad
+Last year: Pagājušais gads
+Year before last: Gads pirms pēdējā
+Next 14 days: Nākamās 14 dienas
+Next 30 days: Nākamās 30 dienas
+Next 60 days: Nākamās 60 dienas
+Next 90 days: Nākamās 90 dienas
+Next 180 days: Nākamās 180 dienas
+Next 365 days: Nākamās 365 dienas
+Invalid report id XXX.: Nederīgs pārskata ID: "XXX".
+Unnamed Report: Bez nosaukuma ziņojums
+Add Report: Pievienot pārskatu
+Edit Report: Rediģēt pārskatu
+Report name: Ziņojuma nosaukums
+User: Lietotājs
+Current User: Pašreizējais lietotājs
+Include link in menu: Iekļaut saiti izvēlnē
+Include standard header/trailer: Iekļaujiet standarta galveni / piekabi
+Include previous/next links: Iekļaujiet iepriekšējās / nākamās saites
+Include empty dates: Iekļaujiet tukšus datumus
+Date range: Datumu diapazons
+Template variables: Veidņu mainīgie
+Page template: Lapas veidne
+Day template: Dienas veidne
+Event template: Pasākuma veidne
+Are you sure you want to delete this report?: Vai tiešām vēlaties dzēst šo pārskatu?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Nav šāda pārskata ID: "XXX".
+Variable XXX not found.: Mainīgais XXX nav atrasts.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Rediģēt pielāgoto galveni
+Edit Custom Script/Stylesheet: Rediģēt pielāgoto skriptu / stilu lapu
+Edit Custom Trailer: Rediģēt pielāgoto reklāmklipu
+
+########################################
+# Page: edit_user.php
+#
+Username: Lietotājvārds
+E-mail address: Epasta adrese
+Password: Parole
+again: atkal
+Disabled for demo: Demonstrēšanai atspējots
+Are you sure you want to delete this user?: Vai tiešām vēlaties dzēst šo lietotāju?
+Change Password: Mainīt paroli
+New Password: jauna parole
+Set Password: Uzstādīt paroli
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Lietotāju dzēšana netiek atbalstīta.
+The passwords were not identical.: Paroles nebija identiskas.
+You have not entered a password.: Jūs neesat ievadījis paroli.
+Username cannot be blank.: Lietotājvārds nevar būt tukšs.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Nav atļauts
+
+########################################
+# Page: export.php
+#
+Export: Eksportēt
+Export format: Eksporta formāts
+Include all layers: Iekļaujiet visus slāņus
+Include deleted entries: Iekļaut izdzēstos ierakstus
+Export all dates: Eksportēt visus datumus
+Start date: Sākuma datums
+End date: Beigu datums
+Modified since: Mainīts kopš
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: eksporta formāts nav definēts vai nepareizs.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Nav norādīts neviens lietotājs.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Pievienot jaunu grupu
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Bez nosaukuma grupa
+Add Group: Pievienot grupu
+Edit Group: Rediģēt grupu
+Group name: Grupas nosaukums
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Jums jānorāda grupas nosaukums
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Automātiski atjaunot kalendārus
+auto-refresh-help: Ja tas ir iespējots, dienas skats, nedēļas skats, mēneša skats un neapstiprināto lapu saraksts periodiski automātiski atsvaidzinās.
+Auto-refresh time: Automātiskās atsvaidzināšanas laiks
+auto-refresh-time-help: Ja ir iespējota automātiskā atsvaidzināšana, tas norāda laiku starp katru atsvaidzināšanu.
+Display days with events in bold in year view: Attēlot dienas ar notikumiem treknrakstā gada skatā
+Display weekends in week view: Parādīt nedēļas nogales nedēļas skatā
+Time interval: Laika intervāls
+time-interval-help: Norāda, cik ilgi būs nedēļas un dienas skata laika bloki.
+Nonuser: Nelietotie kalendāri
+user-customize-color: Norāda, vai lietotājiem ir atļauts mainīt savu krāsu shēmu.
+enable-gradient-help: Šūnu foniem izmantojiet gradienta krāsas.
+Manually entering color values: Manuāli ievadot krāsu vērtības
+colors-help: Visas krāsas jānorāda heksadecimālā formātā "#RRGGBB", kur "RR" ir sarkanās krāsas sešpadsmitā vērtība, "GG" ir zaļā sešstūra vērtība un "BB" ir zilās krāsas sešpadsmitā vērtība.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Ziņot par kļūdu
+Please include all the information below when reporting a bug.: Lūdzu, iekļaujiet visu zemāk esošo informāciju, ziņojot par kļūdu.
+Also, please use English rather than XXX.: Lūdzu, izmantojiet arī  angļu valodu , nevis XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar dokumentācija
+Currently in English only.: Pašlaik tikai angļu valodā.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Kalendāra ierakstu pievienošana / rediģēšana
+Repeat Type: Atkārtojiet veidu
+For More Information...: Lai iegūtu vairāk informācijas...
+Repeat End Date: Atkārtojiet beigu datumu
+Repeat Day: Atkārtojiet dienu
+repeat-day-help: Norāda, kurās nedēļas dienās notikums jāatkārto.
+
+########################################
+# Page: help_import.php
+#
+Import: Importēt
+Palm Desktop: Palm darbvirsma
+allow you to import entries from the Palm...: Šī veidlapa ļaus importēt ierakstus no Palm Desktop Datebook. Tam vajadzētu atrasties jūsu Palm direktorijā datebook / datebook.dat apakšdirektorijā, kura nosaukums ir jūsu lietotājvārds.
+The following entries will not be imported: Šie ieraksti netiks importēti:
+Entries older than the current date: Ieraksti, kas vecāki par pašreizējo datumu
+Entries created in the Palm Desktop...: Palm darbvirsmā izveidotie ieraksti, kas nav HotSync'd
+Anything imported from Palm...: Viss, kas tiek importēts no Palm, tiks pārrakstīts nākamā importēšanas laikā (ja vien pasākuma datums nav pagājis). Tāpēc Palm Desktop ir jāveic atjauninājumi.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Šī veidlapa importēs vCalendar (.vcs) 1.0 notikumus.
+The following formats have been tested: Ir pārbaudīti šādi formāti:
+This form will import iCalendar (.ics) events.: Šī veidlapa importēs iCalendar (.ics) notikumus.
+Enabling: Iespējošana
+Overwrite Prior Import: Pārrakstīt iepriekšējo importēšanu
+will cause events imported previously...: izraisīs iepriekš izdzēstus notikumus, kas izmantoja to pašu UID kā notikumu no jaunā importēšanas faila, kā izdzēstus. Tam vajadzētu ļaut importēt atjauninātu iCalendar failu, neveidojot dublikātus.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Palīdzības rādītājs
+About WebCalendar: Par WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Slāņi ir noderīgi citu lietotāju notikumu parādīšanai jūsu kalendārā. Jūs varat norādīt lietotāju un krāsu, kurā notikumi tiks parādīti.
+Add/Edit/Delete: Pievienot / Rediģēt / Dzēst
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Lapas apakšdaļā esošajā administratora sadaļā noklikšķinot uz saites Rediģēt slāņus, varēsit pievienot / rediģēt / dzēst slāņus.
+The text color of the new layer that will be displayed in your calendar.: Jaunā slāņa teksta krāsa, kas tiks parādīta jūsu kalendārā.
+Disabling: Atspējošana
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Lai izslēgtu slāņus, administratora sadaļā lapas apakšdaļā nospiediet saiti Atspējot slāņus.
+Duplicates: Dublikāti
+If checked, events that are duplicates of your events will be shown.: Ja tas ir atzīmēts, tiks parādīti notikumi, kas ir jūsu notikumu dublikāti.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Nospiediet saiti Iespējot slāņus administratora sadaļā lapas apakšdaļā, lai ieslēgtu slāņus.
+Source: Avots
+Specifies the user that you would like to see displayed in your calendar.: Norāda lietotāju, kuru vēlaties redzēt savā kalendārā.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Noklusējuma kategorija
+default-category-help: Norāda kategoriju, kurai pēc noklusējuma jābūt jaunam notikumam.
+When I am the boss: Kad es esmu priekšnieks
+Email me event notification: Nosūtīt man pa e-pastu paziņojumu par pasākumu
+email-boss-notifications-help: Norāda, vai priekšnieki saņem e-pastus kā paziņojumus par notikumiem.
+I want to approve events: Es gribu apstiprināt pasākumus
+boss-approve-event-help: Norāda, vai priekšniekam būs jāapstiprina palīgu pievienotie notikumi.
+Subscribe/Publish: Abonēt / publicēt
+Allow remote publishing: Atļaut attālinātu publicēšanu
+allow-remote-publishing-help: Norāda, vai attālais iCal klients var publicēt notikumus atpakaļ WebCalendar
+remote-publishing-url-help: Parāda URL, kas jāizmanto iCal klienta lietojumprogrammā, lai abonētu un publicētu atpakaļ WebCalendar.
+allow-remote-subscriptions-help: Norāda, vai attāli lietotāji var abonēt jūsu kalendāru, ļaujot viņiem redzēt jūsu notikumus lietojumprogrammā, kurā iespējota iCal (piemēram, Apple iCal vai Mozilla Calendar).
+remote-subscriptions-url-help: Parāda vietrādi URL, kas lietotājiem jāizmanto, lai abonētu jūsu kalendāru.
+Enable FreeBusy publishing: Iespējot FreeBusy publicēšanu
+freebusy-enabled-help: Norāda, vai lietotāja pieejamo laiku var iegūt, izmantojot iCal FreeBusy standartu.
+freebusy-url-help: URL piekļuvei lietotāja FreeBusy sarakstam
+rss-feed-url-help: URL, lai piekļūtu RSS plūsmai
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Ļauj precīzi kontrolēt lietotāju piekļuvi un atļaujas. Lietotāji var arī piešķirt noklusējuma un individuālu atļauju, ja to ir atļāvis administrators.
+If disabled, this user cannot send you emails.: Ja tas ir atspējots, šis lietotājs nevar jums nosūtīt e-pastus.
+If disabled, this user cannot see you in the participants list.: Ja tas ir atspējots, šis lietotājs jūs nevar redzēt dalībnieku sarakstā.
+If enabled, this user cannot view the details of any of your entries.: Ja tas ir iespējots, šis lietotājs nevar skatīt neviena jūsu ieraksta informāciju.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Publicēšana atspējota (administrēšana)
+Publishing Disabled (User): Publicēšana atspējota (lietotājs)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Noklikšķiniet, lai atlasītu
+Current Icons on Server: Pašreizējās ikonas serverī
+
+########################################
+# Page: import.php
+#
+import from file: importēt no faila
+Disabled: Atspējots
+Import format: Importēšanas formāts
+Exclude private records: Izslēdziet privātus ierakstus
+Repeated items are imported separately. Prior imports are not overwritten.: Atkārtoti vienumi tiek importēti atsevišķi. Iepriekšējais imports netiek pārrakstīts.
+
+########################################
+# Page: import_handler.php
+#
+No file: Nav faila
+Error deleting palm events from webcalendar.: Dzēšot palmu notikumus no tīmekļa kalendāra, radās kļūda.
+Events from prior import marked as deleted: Notikumi no iepriekšējas importēšanas atzīmēti kā izdzēsti
+Conflicting events: Konflikti notikumi
+The import file contained no data.: Importa failā nebija datu.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Vai tiešām vēlaties dzēst šo slāni?
+Delete layer: Dzēst slāni
+Edit layer: Rediģēt slāni
+Enable layers: Iespējot slāņus
+Layer: Slānis
+Layers are currently disabled.: Slāņi pašlaik ir atspējoti.
+Layers are currently enabled.: Pašlaik slāņi ir iespējoti.
+Click to modify layers settings for XXX: Noklikšķiniet šeit, lai modificētu XXX kalendāra slāņu iestatījumus.
+Disable Layers: Atspējot slāņus
+Add layer: Pievienojiet slāni
+Add Layer: Pievienot slāni
+Edit Layer: Rediģēt slāni
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Nevar atjaunināt preferenci
+Invalid entry id.: Nederīgs ieraksta ID.
+You cannot create a layer for yourself.: Jūs nevarat izveidot slāni sev.
+You can only create one layer for each user.: Katram lietotājam var izveidot tikai vienu slāni.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Apstiprināt / apstiprināt
+Approve Selected: Apstiprināt atlasīto
+Check All: Pārbaudi visu
+Emails Will Not Be Sent: E-pasta ziņojumi netiks nosūtīti
+Reject Selected: Noraidīt atlasīto
+Reject: Noraidīt
+Uncheck All: Noņemiet atzīmi no visas
+View this entry: Skatīt šo ierakstu
+No unapproved entries for XXX.: Nav neapstiprinātu ierakstu par: XXX.
+Unapproved Entries: Neapstiprināti ieraksti
+Approve this entry?: Vai apstiprināt šo ierakstu?
+Reject this entry?: Vai noraidīt šo ierakstu?
+Approve Selected entries?: Vai apstiprināt atlasītos ierakstus?
+Reject Selected entries?: Vai noraidīt atlasītos ierakstus?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Jums jāievada pieteikšanās un parole.
+Save login via cookies so I dont have to login next time.: Saglabājiet pieteikuminformāciju, izmantojot sīkfailus, lai man nākamreiz nebūtu jāpiesakās
+Login: Pieslēgties
+public: publiski
+Access XXX calendar: Piekļūstiet kalendāram XXX
+cookies-note: Piezīme. Šai lietojumprogrammai ir jāiespējo sīkfaili.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Lietotnē XXX ir nelikumīgas rakstzīmes.
+Invalid login: Nederīga pieteikšanās
+Activity login failure: Lietotājvārds: "XXX", IP: "YYY".
+Error XXX: Kļūda: "XXX".
+You have been logged out.: Jūs esat atteicies.
+Access public calendar: Piekļūstiet publiskajam kalendāram
+Not yet registered? Register here!: Vēl neesat reģistrējies? Reģistrējieties šeit!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Nav šāda neizmantota kalendāra: "XXX".
+This Calendar is not Public.: Šis kalendārs nav publisks.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Pievienot jaunu NonUser kalendāru
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Jānorāda pieteikšanās.
+No such nonuser calendar: Nav šāda neizmantotāja kalendāra
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Nederīga tēma
+Save Preferences: Saglabāt preferences
+Public Access calendar: Publiskās piekļuves kalendārs
+Modify Non User Calendar Preferences: Mainīt citu lietotāju kalendāra preferences
+Return to My Preferences: Atgriezieties sadaļā Manas preferences
+Custom Scripts: Pielāgoti skripti
+Timezone Selection: Laika joslas atlase
+Multiview: =
+entry-interval-help: Rediģējot ievadīšanas laikus, tiek iestatīts minūtes intervāls
+Entry interval: Ieejas intervāls
+hour: stunda
+minute: minūti
+theme-reload-help: CSS kešatmiņas dēļ var būt nepieciešama lapas atkārtota ielāde
+Page may need to be reloaded for new Theme to take effect: Lai jaunā tēma stātos spēkā, tā var būt jāpārlādē
+display_byproxy-help: Parādiet īsto radītāju lapā view_entry
+Display if created by Assistant: Parādīt, ja to izveidojis Asistents
+allow-view-subscriptions-help: Ļauj ierobežot attālo piekļuvi privātiem vai konfidenciāliem ierakstiem
+Allow remote viewing of: Atļaut attālināti skatīt
+entries: ieraksti
+
+########################################
+# Page: purge.php
+#
+Purging events for: Notīrīšanas pasākumi vietnei
+Finished: Pabeigts
+Back: Atpakaļ
+Check box to delete ALL events for a user: Atzīmējiet izvēles rūtiņu, lai dzēstu lietotājam  VISUS  notikumus
+Delete all events before: Dzēst visus iepriekšējos notikumus
+Purge deleted only: Tikai notīrīšana ir izdzēsta
+Preview delete: Priekšskatīt dzēšanu
+Are you sure you want to delete events for: Vai tiešām vēlaties dzēst notikumus domēnam
+Records deleted from XXX: Ieraksti ir izdzēsti no mapes “XXX”.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: E-pasta adrese nevar būt tukša.
+Username already exists.: Lietotājvārds jau eksistē.
+Email address already exists.: E-pasta adrese jau pastāv.
+New user via self-registration.: Jauns lietotājs, veicot pašreģistrāciju.
+A new WebCalendar account has been set up for you.: Jums ir izveidots jauns WebCalendar konts.
+Your username is XXX.: Jūsu lietotājvārds ir: "XXX".
+Your password is XXX.: Jūsu parole ir: "XXX".
+Please visit XXX to log in and start using your account!: Lūdzu, apmeklējiet vietni "XXX", lai pieteiktos un sāktu izmantot savu kontu!
+You may change your password after logging in the first time.: Pēc pirmās reģistrēšanās jūs varat mainīt savu paroli.
+If you received this email in error: Ja saņēmāt šo e-pasta ziņojumu kļūdas dēļ un nepierakstījāties WebCalendar kontā, varat ignorēt šo paziņojumu vai atbildēt ar īsu piezīmi
+Administrator: Administrators
+Welcome: Laipni lūdzam
+New user via email.: Jauns lietotājs pa e-pastu.
+Registration: Reģistrācija
+Welcome to WebCalendar: Laipni lūdzam WebCalendar
+Your email should arrive shortly.: Jūsu e-pasts drīz jāsaņem.
+Return to Login screen: Atgriezties pieteikšanās ekrānā
+Password (again): Paroli, atkal):
+Your account information will be emailed to you.: Jūsu konta informācija tiks nosūtīta jums pa e-pastu.
+Submit: Iesniegt
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Turpināt
+(Your comments will be emailed to the other participants.): (Jūsu komentāri tiks nosūtīti pa e-pastu pārējiem dalībniekiem.)
+XXX has rejected an appointment.: XXX noraidīja tikšanos.
+Rejected by XXX.: Noraidīja XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Pievienot jaunu attālo kalendāru
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Šis notikums ir konfidenciāls.
+(Private): (Privāts)
+(cont.): (turpinājums)
+Approved: Apstiprināts
+Deleted: Izdzēsts
+Rejected: Noraidīts
+Waiting for approval: Gaida apstiprinājumu
+Unknown: Nezināms
+Invalid report id.: Nederīgs pārskata ID.
+Click here to manage reports for the Public Access calendar.: Noklikšķiniet šeit, lai pārvaldītu publiskās piekļuves kalendāra pārskatus.
+Add new report: Pievienot jaunu pārskatu
+Manage Reports: Pārvaldīt pārskatus
+
+########################################
+# Page: search.php
+#
+Advanced Search: Izvērstā meklēšana
+Search: Meklēt
+Keywords: Atslēgvārdi
+Enter % for all entries: Visiem ierakstiem ievadiet%
+Include: Iekļaut
+Filter by Date: Filtrēt pēc datuma
+All Dates: Visi datumi
+Past: Pagātne
+Upcoming: Gaidāms
+Range: Diapazons
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Jums jāievada viens vai vairāki meklēšanas atslēgvārdi.
+Search Results: Meklēšanas rezultāti
+match found: atrasta spēle
+matches found: atrastas spēles
+No matches found: Sakritības nav atrastas
+New Search: Jauna meklēšana
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Tālāk sniegtajā informācijā ir uzskaitītas iespējamās problēmas ar WebCalendar instalēšanu, kuras var mainīt, lai padarītu instalēšanu drošāku.
+For questions about WebCalendar security see the forums: Ja jums ir jautājumi par jebkuru WebCalendar drošības problēmu, lūdzu, izmantojiet WebCalendar forumus, kas mitināti vietnē GitHub.com;<br>XXX
+View your current PHP settings: Skatiet savus pašreizējos PHP iestatījumus
+Security Issue: Drošības jautājums
+Status: Statuss
+Default admin user password: Noklusējuma administratora lietotāja parole
+You should change the password of the default admin user.: Jums vajadzētu nomainīt noklusējuma administratora lietotāja paroli.
+File permissions XXX: Faila atļaujas: XXX
+item XXX should not be writable: Šis vienums nedrīkst būt rakstāms:<br><tt> XXX</tt>
+File exists XXX: Fails pastāv: "XXX"
+Because you have email disabled, you should remove this file.: Tā kā jūsu e-pasts ir atspējots, noņemiet šo failu.
+File location XXX: Faila atrašanās vieta: "XXX"
+remove XXX if not using: Ja neizmantojat failu “XXX”, jums tas jāizdzēš. Vai vismaz pārvietojiet to uz jaunu direktoriju.
+System Settings XXX: Sistēmas iestatījumi: "XXX"
+consider enabling UAC: Varat apsvērt iespēju iespējot lietotāja piekļuves kontroli, lai iestatītu lietotāja privilēģijas.
+recommend approving new public events: Mēs iesakām apstiprināt visus publisko pasākumu iesniegumus.
+recommend using CAPTCHA: CAPTCHA ieteicams apsargāt automātiskos notikumu iesniegumus.
+Database cache directory location: Datu bāzes kešatmiņas direktorija atrašanās vieta
+db cache should be inaccessable: Datu bāzes kešatmiņai jābūt direktorijā, kurai nevar piekļūt ar URL.
+PHP Settings XXX: PHP iestatījumi: "XXX"
+recommend setting XXX Off: Ieteicamais iestatījums “XXX” ir izslēgts.
+recommend setting allow_url_fopen Off: Ieteicamais iestatījuma “allow_url_fopen” iestatījums ir Izslēgts, ja attālinātie kalendāri nav iespējoti.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Skatīt cita lietotāja kalendāru
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Jūs neesat pievienojis nevienu kategoriju.
+Set Category: Iestatīt kategoriju
+Global Categories cannot be changed.: Globālās kategorijas nevar mainīt.
+
+########################################
+# Page: upcoming.php
+#
+more: vairāk
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Attālinātie kalendāri
+denotes administrative user: apzīmē administratīvo lietotāju
+Add New User: Pievienot jaunu lietotāju
+
+########################################
+# Page: usersel.php
+#
+form: formā
+Reset: Atiestatīt
+
+########################################
+# Page: views.php
+#
+Add New View: Pievienot jaunu skatu
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Bez nosaukuma skats
+Add View: Pievienot skatu
+Edit View: Rediģēt skatu
+View Name: Skata nosaukums
+View Type: Skata tips
+Day by Time: Dienu pa laikam
+Week (Users horizontal): Nedēļa (lietotāji horizontāli)
+Week by Time: Nedēļu pēc laika
+Week (Users vertical): Nedēļa (vertikāli lietotāji)
+Week (Timebar): Nedēļa (Timebar)
+Month (Timebar): Mēnesis (Timebar)
+Month (side by side): Mēnesis (blakus)
+Month (on same calendar): Mēnesis (tajā pašā kalendārā)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Jums jānorāda skata nosaukums
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Šim skatam nav lietotāju.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Atjaunināt uzdevuma procentuālo daļu
+Completed: Pabeigts
+Assistant mode: Asistenta režīms
+Declined: Noraidīts
+Needs-Action: Vajadzības-darbība
+by: pēc
+Percentage Complete: Procents pabeigts
+External User: Ārējais lietotājs
+Update: Atjaunināt
+at: plkst
+comments: komentārus
+Show: Parādīt
+Hide: Paslēpt
+Approve/Confirm entry: Apstiprināt / apstiprināt ierakstu
+Reject entry: Noraidīt ierakstu
+Set category: Iestatīt kategoriju
+Add to My Calendar: Pievienot mapei Mans kalendārs
+Copy entry: Kopēt ierakstu
+This will delete this entry for all users.: Tas izdzēsīs šo ierakstu visiem lietotājiem.
+Edit entry: Rediģēt ierakstu
+Edit repeating entry for all dates: Rediģēt atkārtotu ierakstu visiem datumiem
+Delete repeating event for all dates: Dzēst atkārtotu notikumu visiem datumiem
+Edit entry for this date: Rediģēt šī datuma ierakstu
+Delete entry only for this date: Dzēst ierakstu tikai šim datumam
+Delete entry from calendar of XXX: Dzēst ierakstu no XXX kalendāra
+This will delete the entry from your XXX calendar.: Tas izdzēsīs ierakstu no jūsu XXX kalendāra.
+boss: priekšnieks
+This will delete the entry from your boss calendar.: Tas izdzēsīs ierakstu no jūsu priekšnieka kalendāra.
+This will delete the entry from your calendar.: Tas izdzēsīs ierakstu no jūsu kalendāra.
+from your boss calendar: no priekšnieka kalendāra
+Do you want to add this entry to your calendar?: Vai vēlaties pievienot šo ierakstu savam kalendāram?
+This will add the entry to your calendar.: Tādējādi ieraksts tiks pievienots jūsu kalendāram.
+Email all participants: Nosūtīt pa e-pastu visiem dalībniekiem
+Hide activity log: Slēpt darbību žurnālu
+Show activity log: Rādīt darbību žurnālu
+Export this entry to: Eksportēt šo ierakstu uz
+Palm Pilot: Palmu pilots
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Veiciet dubultklikšķi uz tukšas šūnas, lai pievienotu jaunu ierakstu.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Jauns ieraksts
+cont.: turpinājums
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Cita lietotāja kalendārs
+Category Management: Kategoriju vadība
+Day View: Dienas skats
+Edit Event: Rediģēt notikumu
+Month View: Mēneša skats
+Common Trailer: Kopējā piekabe
+User Management: Lietotāju pārvaldība
+Manage Views: Pārvaldīt skatus
+Week View: Nedēļas skats
+Year View: Gada skats
+Invalid function id: Nederīgs funkcijas ID
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Nevarēja atrast failu "settings.php".<br>Lūdzu, kopējiet failu "settings.php.orig" uz "settings.php" un rediģējiet savu vietni.
+Incomplete settings.php file...: Nepabeigts fails "settings.php" ...
+Could not find XXX defined in...: Nevarēja atrast failā “settings.php” definēto “XXX”.
+You must define XXX in: Failā "settings.php" jādefinē "XXX".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Decembris
+Dec: =
+LANGUAGE DEFINED: VALODA NOTEIKTA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Savienojot ar datu bāzi, radās kļūda: "XXX".
+db_type not defined.: db_type nav definēts.
+invalid db_type XXX: nederīgs db_type "" XXX ".
+Cache cleared from previous SQL!: Kešatmiņa ir notīrīta no iepriekšējās SQL!
+Error executing query.: Izpildot vaicājumu, radās kļūda.
+Unfortunately, XXX is not implemented for YYY: Diemžēl “XXX” nav ieviests (YYY).
+Unknown ODBC error.: Nezināma ODBC kļūda.
+Error opening cache dir XXX.: Kļūda, atverot kešatmiņas direktoriju "XXX".
+delete: dzēst
+Cache error Could not XXX file YYY.: Kešatmiņas kļūda: Nevarēja XXX failu “YYY”.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatāla kļūda
+Invalid data format for: Nepareizs datu formāts domēnam
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Kļūda: Darbību žurnālam nav iestatīts tips!
+This event is XXX.: Šis notikums ir XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: pārsniedz XXX notikumu ierobežojumu dienā
+on: ieslēgts
+All Attendees: Visi dalībnieki
+Busy: Aizņemts
+Tentative: Provizorisks
+Schedule an appointment for XXX.: Ieplānojiet tikšanos: XXX: YYY.
+date_select: __dd__ __mēness__ __yyyy__
+Event approved: Pasākums apstiprināts
+Journal approved: Žurnāls apstiprināts
+Task approved: Uzdevums apstiprināts
+Attachment: Pielikums
+Event created: Notikums izveidots
+Journal created: Žurnāls izveidots
+Task created: Uzdevums izveidots
+Event deleted: Notikums ir izdzēsts
+Journal deleted: Žurnāls ir izdzēsts
+Task deleted: Uzdevums ir izdzēsts
+New user via email (self registration): Jauns lietotājs pa e-pastu (pašreģistrēšanās)
+New user (self registration): Jauns lietotājs (pašreģistrēšanās)
+Notification sent: Paziņojums nosūtīts
+Event rejected: Pasākums noraidīts
+Journal rejected: Žurnāls noraidīts
+Task rejected: Uzdevums noraidīts
+Reminder sent: Atgādinājums nosūtīts
+Event updated: Pasākums atjaunināts
+Journal updated: Žurnāls atjaunināts
+Task updated: Uzdevums atjaunināts
+Delete User: Dzēst lietotāju
+WK: =
+TASKS: UZDEVUMI
+Task_Title: Nosaukums
+Due: Termiņš
+Task Name: Uzdevuma nosaukums
+Task Due Date: Uzdevuma izpildes datums
+You have XXX unapproved entries: Jums ir XXX neapstiprināti ieraksti 
+Changes successfully saved: Izmaiņas veiksmīgi saglabātas
+Event: Notikums
+Action: Darbība
+Printer Friendly: Printerim draudzīgs
+Generate printer-friendly version: Izveidot printerim draudzīgu versiju
+after: pēc
+before: pirms
+end: beigas
+start: sākt
+View this event: Skatīt šo notikumu
+View this task: Skatiet šo uzdevumu
+January: Janvāris
+February: Februāris
+March: Martā
+April: Aprīlis
+May_: Maijs
+June: jūnijs
+July: Jūlijs
+August: augusts
+September: Septembris
+October: Oktobris
+November: Novembrī
+Jan: =
+Feb: Februāris
+Mar: Marts
+Apr: =
+May: Maijs
+Jun: Jūnijs
+Jul: Jūl
+Aug: =
+Sep: Sept
+Oct: Okt
+Nov: =
+SU: =
+MO: =
+TU: =
+WE: MĒS
+TH: =
+FR: =
+SA: =
+unknown-month: nezināms mēnesis
+First Quarter Moon: Pirmais ceturksnis Mēness
+Full Moon: Pilnmēness
+Last Quarter Moon: Pēdējā ceturkšņa mēness
+New Moon: Jauns mēness
+Error TIME_SLOTS undefined!: Kļūda: TIME_SLOTS nav definēts!
+The following error occurred: Radās šāda kļūda
+You are not authorized.: Jūs neesat pilnvarots.
+Add N hours to: Pievienojiet N stundas
+Subtract N hours from: No N atņemiet N stundas
+same as: tāds pats kā
+server time: servera laiks
+Cannot read timezone file XXX.: Nevar nolasīt laika joslas failu: XXX.
+Your current GMT offset is XXX hours.: Jūsu pašreizējais GMT nobīde ir XXX stundas.
+Unauthorized: Neatļauts
+Error approving event XXX.: Apstiprinot notikumu, radās kļūda: XXX.
+Error deleting event XXX.: Dzēšot notikumu, radās kļūda: XXX.
+Error rejecting event XXX.: Noraidot notikumu, radās kļūda: XXX.
+Sunday: Svētdiena
+Monday: Pirmdiena
+Tuesday: Otrdiena
+Wednesday: Trešdiena
+Thursday: Ceturtdiena
+Friday: Piektdiena
+Saturday: Sestdiena
+Sun: Saule
+Mon: Pirmd
+Tue: Otrdien
+Wed: Sv
+Thu: Ce
+Fri: Piektdiena
+Sat: Sestd
+unknown-weekday: nezināma-darba diena
+Invalid referring URL: Nederīgs novirzīšanas URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indekss
+Documentation: Dokumentācija
+Page: Lappuse
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Mans kalendārs
+Add New Entry: Pievienot jaunu ierakstu
+Add New Task: Pievienot jaunu uzdevumu
+Logout: Izlogoties
+Home: Mājas
+Back to My Calendar: Atpakaļ uz sadaļu Mans kalendārs
+Go to: Iet uz
+Manage calendar of: Pārvaldīt kalendāru
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Pārlūkprogrammas valoda nav atrasta
+(not supported): (nav atbalstīts)
+Abkhazian: Abhāzietis
+Acoli: =
+Adangme: =
+Adyghe: Adīge
+Afar: =
+Afrihili: =
+Afrikaans: Afrikands
+Ainu: =
+Akan: =
+Akkadian: Akadiešu
+Albanian: Albāņu
+Aleut: Aleuts
+Algonquian: Algonkjans
+Altai (Southern): Altaja (dienvidu)
+Amharic: Amharu
+Angika: =
+Apache: =
+Arabic (Algeria): Arābu (Alžīrija)
+Arabic (Bahrain): Arābu (Bahreina)
+Arabic (Egypt): Arābu (Ēģipte)
+Arabic (Iraq): Arābu (Irāka)
+Arabic (Jordan): Arābu (Jordānija)
+Arabic (Kuwait): Arābu (Kuveita)
+Arabic (Lebanon): Arābu (Libāna)
+Arabic (Libya): Arābu (Lībija)
+Arabic (Morocco): Arābu (Maroka)
+Arabic (Oman): Arābu (omāna)
+Arabic (Qatar): Arābu (Katara)
+Arabic (Saudi Arabia): Arābu (Saūda Arābija)
+Arabic (Syria): Arābu (Sīrija)
+Arabic (Tunisia): Arābu (Tunisija)
+Arabic (U.A.E.): Arābu (U.A.E.)
+Arabic (Yemen): Arābu (Jemena)
+Arabic: Arābu
+Aragonese: Aragoniešu
+Aramaic: Aramiešu
+Arapaho: =
+Arawak: =
+Armenian: Armēņu
+Assamese: Asamieši
+Asturian: Astūriešu
+Athapascan: =
+Avaric: Avariks
+Avestan: Avestāns
+Awadhi: =
+Aymara: Aimāra
+Azerbaijani: Azerbaidžāņu
+Balinese: Baliešu
+Baluchi: Baluči
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Baškīru
+Basque: Basku
+Beja: =
+Belarusian: Baltkrievu
+Bemba: =
+Bengali: Bengāļu valodā
+Bhojpuri: =
+Bihari: =
+Bikol: Bikols
+Bislama: =
+Blackfoot: Melnā pēda
+Blin: Bļin
+Bliss: Svētlaime
+Bosnian: Bosniešu
+Braj: =
+Breton: Bretoņu
+Buginese: Bugīniešu
+Bulgarian: Bulgāru
+Buriat: =
+Burmese: Birmiešu
+Caddo: Kaddo
+Catalan: Katalāņu
+Cebuano: =
+Chagatai: Čagatai
+Chamorro: Čamorro
+Chechen: Čečenu
+Cherokee: Čerokijs
+Cheyenne: Šeinija
+Chibcha: Čibča
+Chichewa: Čičeva
+Chinese (Hong Kong): Ķīniešu (Honkonga)
+Chinese (PRC): Ķīniešu (ĶTR)
+Chinese (Simplified/GB2312): Ķīniešu (vienkāršotā / GB2312) 
+Chinese (Singapore): Ķīniešu (Singapūra)
+Chinese (Taiwan): Ķīniešu (Taivāna)
+Chinese (Traditional/Big5): Ķīniešu (tradicionālā / Big5)
+Chinook: Činuks
+Chipewyan: Čipevjans
+Choctaw: =
+Chuukese: Čukuks
+Chuvash: Čuvašs
+Coptic: Koptu
+Cornish: =
+Corsican: Korsikānis
+Cree: Krī
+Creek: Grīva
+Croatian: Horvātu
+Czech: Čehu
+Dakota: =
+Danish: Dāņu
+Dargwa: Dargva
+Delaware: Delavēra
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Holandiešu (Beļģija)
+Dutch: Holandiešu
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: Efiks
+Ekajuk: =
+Elamite: Elamīts
+English (Australia): Angļu (Austrālija)
+English (Belize): Angļu (Beliza)
+English (Canada): Angļu (Kanāda)
+English (Ireland): Angļu (Īrija)
+English (Jamaica): Angļu (Jamaika)
+English (New Zealand): Angļu (Jaunzēlande)
+English (Philippines): Angļu (Filipīnas)
+English (South Africa): Angļu (Dienvidāfrika)
+English (Trinidad & Tobago): Angļu (Trinidāda un Tobāgo)
+English (United Kingdom): Angļu (Apvienotā Karaliste)
+English (United States): Angļu (Amerikas Savienotās Valstis)
+English (Zimbabwe): Angļu (Zimbabve)
+English: Angļu-ASV
+Erzya: Erzija
+Esperanto: =
+Estonian: Igauņu
+Ewe: Aita
+Ewondo: =
+Fang: Ilknis
+Fanti: =
+Faroese: Farēru salas
+Fijian: Fidži
+Filipino: Filipīniešu
+Finnish: Somu
+Fon: =
+French (Belgium): Franču (Beļģija)
+French (Canada): Franču (Kanāda)
+French (France): Franču (Francija)
+French (Luxembourg): Franču (Luksemburga)
+French (Monaco): Franču (Monako)
+French (Switzerland): Franču (Šveice)
+French: Franču
+Frisian (Eastern): Frīzu (austrumu)
+Frisian (Northern): Frīzu (ziemeļu)
+Frisian (Western): Frīzu (rietumu)
+Frisian: Frīzu
+Friulian: Friulians
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galisiešu valoda
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Jēziņ
+Georgian: Gruzīnu
+German (Austria): Vācu (Austrija)
+German (Germany): Vācu (Vācija)
+German (Liechtenstein): Vācu (Lihtenšteina)
+German (Luxembourg): Vācu (Luksemburga)
+German (Standard): Vācu (standarta)
+German (Switzerland): Vācu (Šveice)
+German: Vācu
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotika
+Grebo: =
+Greek: Grieķu
+Greenlandic: Grenlandes
+Guarani: =
+Gujarati: Gudžarati
+Gwich&#39;in: Gvičins
+Haida: =
+Haitian (Creole): Haitiešu (kreoliešu)
+Haitian: Haitiešu valoda
+Hausa: =
+Hawaiian: Havajiešu
+Hebrew: Ebreju valodā
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hetītu
+Hmong: =
+Holo (Taiwanese): Holo (Taivānas)
+Hungarian: Ungāru
+Hupa: =
+Iban: Ībans
+Icelandic: Islandiešu
+Ido: Jā
+Igbo: =
+Iloko: =
+Indonesian: Indonēziešu
+Ingush: Ingušs
+Inuktitut: =
+Inupiaq: =
+Iranian: Irāņu
+Irish (Gaelic): Īru (gēlu)
+Irish: Īru
+Iroquoian: Irokio
+Italian (Switzerland): Itāļu (Šveice)
+Italian: Itāļu valoda
+Japanese: Japāņu
+Javanese: Javiešu
+Judeo-Arabic: Judeo-arābu
+Judeo-Persian: Jūdu-persiešu
+Kabardian: Kabardietis
+Kabyle: =
+Kachin: Kačins
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: Kara-Kalpaks
+Karachay-Balkar: =
+Karelian: Karēlietis
+Kashmiri: Kašmiri
+Kashubian: Kašubietis
+Kawi: Kavi
+Kazakh: Kazahu
+Khasi: =
+Khmer (Central): Khmeru (centrālā)
+Khmer: Khmeru
+Khotanese: =
+Kikuyu: Kikuju
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: Kirgiza
+Klingon: Klingons
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Korejiešu (Johabs)
+Korean (North): Korejiešu (ziemeļu)
+Korean (South): Korejiešu (dienvidi)
+Korean: Korejiešu
+Kosraean: =
+Kpelle: =
+Kuanyama: Kujanama
+Kumyk: =
+Kurdish: Kurdu
+Kutenai: =
+Kyrgyz: Kirgīzu valoda
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Laosa
+Latin: Latīņu
+Latvian: Latvietis
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lietuviešu
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luksemburgiešu
+Macedonian: Maķedoniešu
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Madagaskaras
+Malay: Malajiešu
+Malayalam: Malajalu
+Maldivian: Maldīvijas
+Maltese: Maltiešu
+Manchu: Mandžu
+Mandar: Mandars
+Mandingo: =
+Manipuri: =
+Manx: Manks
+Maori: =
+Mapuche: Mapuče
+Marathi: Marati
+Mari: =
+Marshallese: Māršala
+Marwari: =
+Masai: =
+Mayan: Maijs
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: Mokša
+Moldavian: Moldāvu
+Mongo: =
+Mongolian: Mongoļu
+Montenegrin: Melnkalnieši
+Moroccan: Marokāņu
+Mossi: =
+Myanmar: Mjanma
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: Navaho
+Ndebele (North): Ndebele (ziemeļi)
+Ndebele (South): Ndebele (dienvidi)
+Ndebele: =
+Ndonga: =
+Neapolitan: Neapolietis
+Nepali: Nepāliešu
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Skandināvu
+Norwegian (Bokmål): Norvēģu (Bokmål)
+Norwegian (Nynorsk): Norvēģu (Nynorsk)
+Norwegian: Norvēģu
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Oksitāņu
+Odia: Odija
+Ojibwa: =
+Oriyia: Oriija
+Oromo: =
+Osage: =
+Ossetic: Osetisks
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Pastu
+Pedi: =
+Persian (Farsi): Persiešu (persiešu)
+Persian (Iran): Persiešu (Irāna)
+Persian: Persiešu
+Phoenician: Feniķietis
+Pohnpeian: =
+Polish: Poļu
+Portuguese: Portugāļu
+Portuguese/Brazil: Portugāle / Brazīlija
+Punjabi (India): Pandžabi (Indija)
+Punjabi (Pakistan): Pandžabi (Pakistāna)
+Punjabi: Pandžabi
+Quechua: Kečua
+Rajasthani: Radžastāna
+Rapanui: =
+Rarotongan: Rarotongans
+Rhaeto-Romanic: Retoromāņu
+Romanian: Rumāņu
+Romansh: =
+Romany: Romieši
+Rundi: =
+Russian (Moldavia: Krievu (Moldāvija
+Russian (Republic of Moldova): Krievu (Moldovas Republika)
+Russian: Krievu
+Sami (Inari): Sāmu (Inari)
+Sami (Lappish): Sāmu (lapiešu)
+Sami (Lule): Sāmu (laula)
+Sami (Northern): Sāmu (ziemeļu)
+Sami (Skolt): =
+Sami (Southern): Sāmu (dienvidu)
+Sami: =
+Samoan: Samoa
+Samoli: =
+Sandawe: Sandvē
+Sango: =
+Sanskrit: Sanskrits
+Santali: =
+Sardinian: Sardīniešu
+Sasak: Sasaks
+Scots (Gaelic): Skotu (gēlu)
+Selkup: =
+Serbian (Upper): Serbu (augšējā)
+Serbian: Serbu
+Serer: =
+Sesotho: Sezoto
+Shan: Šan
+Shona: Šona
+Sichuan Yi: Sičuaņa Yi
+Sicilian: Sicīlietis
+Sindhi: =
+Sinhala: =
+Slavic: Slāvu
+Slovak: Slovāku
+Slovenian: Slovēņu
+Sogdian: Sogdietis
+Somali: Somāliešu
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbiešu (apakšējā)
+Sorbian (Upper): Sorbu (augšējais)
+Sorbian: Sorbietis
+Sotho: =
+Spanish (Argentina): Spāņu (Argentīna)
+Spanish (Bolivia): Spāņu (Bolīvija)
+Spanish (Chile): Spāņu (Čīle)
+Spanish (Colombia): Spāņu (Kolumbija)
+Spanish (Costa Rica): Spāņu (Kostarika)
+Spanish (Dominican Republic): Spāņu (Dominikānas Republika)
+Spanish (Ecuador): Spāņu (Ekvadora)
+Spanish (El Salvador): Spāņu (Salvadora)
+Spanish (Guatemala): Spāņu (Gvatemala)
+Spanish (Honduras): Spāņu (Hondurasa)
+Spanish (Mexico): Spāņu (Meksika)
+Spanish (Nicaragua): Spāņu (Nikaragva)
+Spanish (Panama): Spāņu (Panama)
+Spanish (Paraguay): Spāņu (Paragvaja)
+Spanish (Peru): Spāņu (Peru)
+Spanish (Puerto Rico): Spāņu (Puertoriko)
+Spanish (Spain): Spāņu (Spānija)
+Spanish (Uruguay): Spāņu (Urugvaja)
+Spanish (Venezuela): Spāņu (Venecuēla)
+Spanish: Spāņu
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Šumeru
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: Svahili
+Swati: Svati
+Swedish (Finland): Zviedru (Somija)
+Swedish (Sweden): Zviedru (Zviedrija)
+Swedish: Zviedru
+Syriac: Sīriešu
+Tagalog: Tagalogu
+Tahitian: Taitietis
+Tai: =
+Taiwan: Taivāna
+Tajik: Tadžiku valoda
+Tamashek: =
+Tamil: Tamilu
+Tatar: Tatāru
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Taju
+Tibetan: Tibetiešu
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tongas salas)
+Tonga: =
+Tsimshian: Cimshian
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turku
+Turkmen: Turkmēņi
+Tuvinian: Tuvīnietis
+Twi: =
+Udmurt: Udmurts
+Ugaritic: Ugaritiķis
+Ukrainian: Ukraiņu
+Umbundu: =
+Urdu: Urdu valoda
+Uyghur: Uiguru
+Uzbek: Uzbeku
+Vai: =
+Venda: =
+Vietnamese: Vjetnamiešu
+Volapük: =
+Votic: Balss
+Wakashan: =
+Walloon: Valonija
+Waray: Varejs
+Washo: Vašo
+Welsh: Velsiešu
+Wolaitta: =
+Wolof: Vilofs
+Xhosa: =
+Yakut: Jakuts
+Yao: Jao
+Yapese: Japāņu
+Yiddish: Jidišs
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: Džuaņ
+Zulu: =
+Browser-defined: Pārlūkprogrammas definēts
+event: notikumu
+journal: žurnāls
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Nederīga lietotāja pieteikšanās
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: nepareiza parole
+no such user: Nav šāda lietotāja
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Konts ir atspējots
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Intervāls
+Months: Mēneši
+Month Days: Mēneša dienas
+Days: Dienas
+Weeks: Nedēļas
+Position: Pozīcija
+Until: Līdz
+Count: Skaits
+Inclusion Dates: Iekļaušanas datumi
+Exclusion Dates: Izslēgšanas datumi
+Event Imported: Notikums ir importēts
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: baiti
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Paziņošana
+authenticate: SMTP kļūda: Nevarēja autentificēt
+connect_host: SMTP kļūda: Nevarēja izveidot savienojumu ar SMTP resursdatoru:
+data_not_accepted: SMTP kļūda: dati nav pieņemti
+encoding: Nezināms kodējums:
+execute: Nevarēja izpildīt:
+file_access: Nevarēja piekļūt failam:
+file_open: Faila kļūda Nevarēja atvērt failu:
+from_failed: Neizdevās no adreses:
+instantiate: Nevarēja saīsināt pasta funkciju
+mailer_not_supported: mailer netiek atbalstīts
+provide_address: Jums jānorāda vismaz viena saņēmēja e-pasta adrese.
+recipients_failed: SMTP kļūda: neizdevās šādiem adresātiem:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Ievadiet grafikā redzamās rakstzīmes
+Enter the correct letters and numbers...: Ievadiet pareizos burtus un ciparus no attēla tekstlodziņā. Šis nelielais tests kalpo kā piekļuves ierobežojums ļaunprātīgiem robotiem. Vienkārši ielādējiet lapu, ja šo grafiku ir pārāk grūti nolasīt
+Challenge/Response: Izaicinājums / atbilde
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Vai mainīt šī ieraksta datumu un laiku?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Jūs neesat ievadījis īsu aprakstu
+time prior to work hours...: laiks pirms darba laika ...
+Invalid Event Date: Nederīgs notikuma datums
+Please add a participant: Lūdzu, pievienojiet dalībnieku
+Invalid Date: Nederīgs datums
+You have not entered a valid time of day: Jūs neesat ievadījis derīgu dienas laiku.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Kalendāra ID nevar būt tukšs.
+First and last names cannot both be blank.: Vārds un uzvārds nevar būt tukši.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Nederīga krāsa
+Color format should be RRGGBB.: Krāsu formātam jābūt #RRGGBB.
+URL cannot be blank.: URL nevar būt tukšs.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Faila tips neatbilst importēšanas formātam
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Nederīga dokumenta fona krāsa.
+Invalid color for document title.: Nederīga dokumenta nosaukuma krāsa.
+Invalid color for table cell background.: Nederīga tabulas šūnu fona krāsa.
+Invalid color for table cell background for today.: Nederīga tabulas šūnu fona krāsa šodien.
+Invalid work hours.: Nederīgs darba laiks.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Servera URL ir jābeidzas ar slīpsvītru (/).
+Invalid color for table grid.: Nederīga tabulas režģa krāsa.
+Invalid color for event popup background.: Notikuma uznirstošā fona krāsa nav derīga.
+Invalid color for event popup text.: Notikuma uznirstošā teksta krāsa nav derīga.
+Invalid color for table header text.: Nederīga tabulas galvenes teksta krāsa.
+Invalid color for table header background.: Nederīga tabulas galvenes fona krāsa.
+Server URL is required.: Nepieciešams servera URL.
+Invalid Color: Nederīga krāsa
+Database Name: Datu bāzes nosaukums
+Full Path (no backslashes): Pilns ceļš (bez atpakaļsvītrām)
+The password contains illegal characters.: Parolē ir nelikumīgas rakstzīmes.
+Error you must specify a Single-User Login: Kļūda: jums jānorāda pieteikšanās vienam lietotājam
+Could not find XXX.: Nevarēja atrast pakalpojumu XXX.
+Could not find XXX in DOM.: Nevarēja atrast vietni XXX domēnā DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Šonedēļ
+This Month: Šis mēnesis
+This Year: Šogad
+Exit: Izeja
+Add New Event: Pievienot jaunu notikumu
+Delete Entries: Dzēst ierakstus
+My Views: Mani skati
+Manage Calendar of: Pārvaldīt. Kalendāru
+My Reports: Mani ziņojumi
+My Profile: Mans profils
+Public Calendar: Publiskais kalendārs
+Unapproved Events: Neapstiprināti notikumi
+User Manager: Lietotāju pārvaldnieks
+Help Contents: Palīdzības saturs
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Datu bāzes kešatmiņas katalogs
+Create New: Izveidot jaunu
+Failure Reason: Neveiksmes iemesls:
+You must manually create database: Jums manuāli jāizveido datu bāze.
+Single-User: Viens lietotājs
+Test Settings: Pārbaudīt iestatījumus
+Timezone Conversion Successful: Laika joslas konvertēšana ir veiksmīga
+WebCalendar Installation Wizard Step XXX: WebCalendar instalēšanas vednis XXX. Darbība
+Password Accepted: Parole pieņemta
+Successful Login: Veiksmīga pieteikšanās
+Password Incorrect: Parole nav pareiza
+Invalid Login: Nederīga pieteikšanās
+Display Errors: Displeja kļūdas
+File Uploads: Failu augšupielāde
+Allow URL fopen: Atļaut URL atvēršanu (nepieciešams tikai tad, ja tiek izmantoti attālinātie kalendāri)
+Safe Mode: Drošais režīms
+Safe Mode Allowed Vars: Drošā režīma atļautie varianti (TZ nepieciešams tikai tad, ja drošais režīms ir ieslēgts)
+GD: GD (nepieciešams gradienta attēlu foniem)
+Passwords do not match!: Paroles nesakrīt!
+Unable to write password to settings.php file: Nevar ierakstīt paroli failā "settings.php".
+Password Updated: Parole ir atjaunināta
+Password has been set: Parole ir iestatīta.
+Connection Successful...: Savienojums ir veiksmīgs  Lūdzu, dodieties uz nākamo lapu, lai turpinātu instalēšanu.
+Correct your entries or click the Create New...: Labojiet ierakstus vai noklikšķiniet uz pogas  Izveidot jaunu , lai turpinātu instalēšanu.
+Correct your entries and try again.: Labojiet ierakstus un mēģiniet vēlreiz.
+XXX does not exist: XXX nepastāv
+XXX is not writable: XXX nav rakstāms
+Error Converting Timezone: Konvertējot laika joslu, radās kļūda
+Error Unable to write to file XXX.: Kļūda Nevar rakstīt failā XXX.
+Please change the file permissions of this file.: Lūdzu, mainiet šī faila faila atļaujas.
+Please change includes dir permission: Lūdzu, mainiet direktorija "ietver" failu atļaujas, lai citi lietotāji varētu rakstīt.
+Your settings have been saved.: Jūsu iestatījumi ir saglabāti.
+OFF: IZSLĒGTS
+ON: =
+WebCalendar Setup Wizard: WebCalendar iestatīšanas vednis
+This installation wizard will guide you...: Šis instalēšanas vednis palīdzēs jums iestatīt WebCalendar pamata instalēšanu.<br>Palīdzību un problēmu novēršanu skatiet šeit:<br>
+System Administrators Guide: Sistēmas administratora rokasgrāmata
+Frequently Asked Questions: bieži uzdotie jautājumi
+FAQ: =
+Troubleshooting: Problēmu novēršana
+Getting Help: Palīdzības saņemšana
+Upgrading Guide: Jaunināšanas rokasgrāmata
+User Supported Wiki: Lietotāju atbalstītā Wiki
+PHP Version Check: PHP versijas pārbaude
+Check to see if PHP 7.1.0 or greater is installed.: Pārbaudiet, vai ir instalēta PHP 7.1.0 vai jaunāka versija.
+PHP version: PHP versija
+PHP Settings: PHP iestatījumi
+Detailed PHP Info: Detalizēta PHP informācija
+settings.php Status: "settings.php" Statuss
+Session Check: Sesijas pārbaude
+To test the proper operation of sessions...: Lai pārbaudītu sesiju pareizu darbību, atkārtoti ielādējiet šo lapu. Katru reizi jums vajadzētu redzēt sesijas skaitītāja pieaugumu.
+SESSION COUNTER: SESIJAS Skaitītājs
+The file permissions of settings.php are set...: "Settings.php" faila atļaujas ir iestatītas tā, lai instalētājam nebūtu atļaujas to modificēt. Lūdzu, mainiet šī faila atļaujas, lai turpinātu
+The file permissions of the includes directory are set...: Iekļautā direktorija faila atļaujas ir iestatītas tā, lai instalētājam nebūtu atļaujas izveidot jaunu failu. Lūdzu, mainiet šī direktorija atļaujas, lai turpinātu
+Your settings.php file appears to be valid.: Šķiet, ka jūsu fails "settings.php" ir derīgs.
+Configuration Wizard Password: Konfigurācijas vedņa parole
+Create Settings File Password: Izveidot iestatījumu faila paroli
+db setup directions...: Šajā sadaļā jūs iestatīsit un pārbaudīsit savienojumu ar datu bāzes serveri. Norādītajai konta informācijai jābūt PILNĪGĀM atļaujām, lai izveidotu datu bāzes, tabulas un lietotājus. Ja tas nav iespējams vai piekļuve jūsu datu bāzei ir ierobežota, datu bāze būs jākonfigurē manuāli.
+Database Status: Datu bāzes statuss
+Supported databases for your PHP installation: Atbalstītās datu bāzes jūsu PHP instalēšanai
+Your current database settings are able to access the database.: Jūsu pašreizējie datu bāzes iestatījumi var piekļūt datu bāzei.
+Please Test Settings: Lūdzu, pārbaudiet iestatījumus
+Your current database settings are not able...: Jūsu pašreizējie datu bāzes iestatījumi nevar piekļūt datu bāzei vai vēl nav pārbaudīti.
+Database Settings: Datu bāzes iestatījumi
+Database Type: Datu bāzes tips
+Server: Serveris
+Connection Persistence: Savienojuma noturība
+All your database tables appear to be up...: Šķiet, ka visas jūsu datu bāzes tabulas ir atjauninātas. Jūs varat pāriet uz nākamo lapu un pabeigt WebCalendar iestatīšanu.
+This appears to be a new installation...: Šķiet, ka tā ir jauna instalācija. Ja tas nav pareizi, lūdzu, atgriezieties iepriekšējā lapā un izlabojiet iestatījumus.
+This appears to be an upgrade...: Šķiet, ka tas ir jauninājums no versijas&nbsp;XXX uz&nbsp;YYY.
+The database requires some data input...: Lai pabeigtu jaunināšanu, datu bāzē ir nepieciešama datu ievadīšana.
+In this section we will perform...: Šajā sadaļā mēs veiksim izmaiņas, lai jūsu datu bāzi sasniegtu vajadzīgajā līmenī. Ja izmantojat pilnībā atbalstītu datu bāzi, šī darbība jums tiks veikta automātiski. Ja nē, var parādīt nepieciešamo SQL, un jums vajadzētu būt iespējai to izgriezt un ielīmēt datu bāzes servera vaicājuma logā.
+No database actions are required.: Datu bāzes darbības nav nepieciešamas.
+The following database actions are required: Nepieciešamas šādas datu bāzes darbības
+ODBC Underlying Database: ODBC pamatā esošā datu bāze:
+Automatic installation not supported: Jūsu datu bāzes tipam automātiskā instalēšana nav pilnībā ieviesta. Jums būs manuāli jāizveido nepieciešamās tabulas, izmantojot piegādāto SQL. Lūdzu, noklikšķiniet uz  Parādīt SQL , lai turpinātu. Izgrieziet un ielīmējiet datu bāzes vaicājuma logā.
+This may take several minutes to complete: Tas var aizņemt vairākas minūtes.
+Install Database: Instalēt datu bāzi
+Update Database: Atjaunināt datu bāzi
+Display Required SQL: Parādīt nepieciešamo SQL
+Return to previous page after processing SQL.: Pēc šīs SQL manuālas apstrādes jums būs jāatgriežas iepriekšējā lapā un jāpārbauda datu bāze, lai skripts varētu atklāt izmaiņas.
+This is the final step in setting up your WebCalendar Installation.: Šis ir pēdējais WebCalendar instalēšanas iestatīšanas solis.
+Timezone Conversion: Laika joslas konvertēšana
+It appears that you have NOT converted...: Šķiet, ka jūs NAV konvertējis esošos WebCalendar notikumu datus GMT. Ja jums ir, varat ignorēt šo paziņojumu un neturpināt konvertēšanu. Ja šī ir jauna instalācija, varat arī ignorēt šo paziņojumu.
+Convert Data to GMT: Konvertēt datus GMT
+Application Settings: Lietojumprogrammas iestatījumi
+HTTP-based authentication was not detected...: Netika konstatēta HTTP bāzes autentifikācija. Jums būs jāpārkonfigurē tīmekļa serveris, ja vēlaties atlasīt “Tīmekļa serveris” no zemāk esošās izvēles “Lietotāja autentifikācija”.
+HTTP-based authentication was detected...: Tika konstatēta HTTP bāzes autentifikācija. Lietotāja autentifikāciju apstrādā jūsu tīmekļa serveris. Jums vajadzētu izvēlēties “Tīmekļa serveris” no zemāk esošā “Lietotāju autentifikācijas” izvēles saraksta.
+Create Default Admin Account: Izveidojiet noklusējuma administratora kontu
+(Admin Account Not Found): (Administratora konts nav atrasts)
+User Authentication: Lietotāja autentifikācija
+Web-based via WebCalendar (default): Tīmeklī, izmantojot WebCalendar (noklusējums)
+Web Server (not detected): Tīmekļa serveris (nav atrasts)
+Web Server (detected): Tīmekļa serveris (noteikts)
+None (Single-User): Nav (viens lietotājs)
+Read-Only: Tikai lasīt
+Environment: Vide
+Production: Ražošana
+Development: Attīstība
+Save Settings: Saglabāt iestatījumus
+Launch WebCalendar: Palaidiet WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Atjauninot tabulu "XXX", radās kļūda: YYY.
+Conversion Successful: Reklāmguvums ir veiksmīgs 
+Perl script required: Iepriekšējai WebCalendar versijai datu konvertēšanai ir nepieciešams palaist PERL skriptu. Lūdzu, palaidiet /tools/upgrade_to_0.9.7.pl un pēc tam atgriezieties šajā lapā, lai turpinātu.
+previous version requires updating several tables: Jūsu iepriekšējai WebCalendar versijai ir jāatjaunina vairākas datu bāzes tabulas.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: NAV PIEEJAMA PĀRSKATS
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Veidojot savienojumu ar datu bāzi, radās kļūda
+Include Path: Iekļaut ceļu
+Deleting events for: Notiek notikumu dzēšana
+Importing events for: Notiek notikumu importēšana
+No data returned from: Netika atgriezti dati no
+for non-user calendar: kalendāram, kas nav lietotājs
+No Remote Calendars found: Netika atrasts neviens attālais kalendārs
+Remote Calendars not enabled: Attālie kalendāri nav iespējoti
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: nevarēja atrast notikuma ID
+could not find event id XXX in database.: datu bāzē nevarēja atrast notikuma ID XXX.
+task: uzdevums
+This is a reminder for the XXX detailed below.: Šis ir atgādinājums par XXX, kas sīkāk aprakstīts.
+Pecentage Complete: Pecentage pabeigta
+Reminder: Atgādinājums
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Neatbalstīta darbība: XXX.
+No event id specified.: Nav norādīts notikuma ID.
+Not authorized (not admin).: Nav autorizēts (nav administrators).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Notiek notikumu pārbaude XXX no datuma YYY līdz datumam ZZZ.
+Found XXX events in time range.: Laika diapazonā atrasti XXX notikumi.
+Event id=XXX YYY at ZZZ on AAA.: Notikuma id = XXX "YYY" ZZZ, AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Ļauj XXX lietotājam skatīt cita lietotāja kalendāru.
+Error Email reminders disabled for user XXX.: Kļūda: lietotāja “XXX” e-pasta atgādinājumi ir atspējoti.
+Number of site_extras XXX.: Vietnes_ekstrasu skaits: XXX.
+Reminder set for event.: Atgādinājums iestatīts notikumam.
+Mins Before XXX.: Min. Pirms: XXX.
+Event time is XXX.: Pasākuma laiks ir: XXX.
+Remind time is XXX.: Atgādināšanas laiks ir: XXX.
+Reminders for user XXX, login YYY.: Atgādinājumi lietotājam "XXX", pieteikšanās "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Notiek neapstiprināšana lietotājam "XXX".
+Event id=XXX YYY already sent.: Notikuma id = XXX "YYY" jau ir nosūtīts.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Viena lietotāja režīmam nav nepieciešama pieteikšanās.
+No login required for HTTP authentication.: HTTP autentifikācijai nav nepieciešama pieteikšanās.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Pieteikšanās laikā nav derīgu rakstzīmju.
+Username XXX does not exist.: Lietotājvārds “XXX” nepastāv.
+You cannot remove admin rights from yourself!: Jūs nevarat noņemt administratora tiesības no sevis!
+Unknown error saving user: Saglabājot lietotāju, radās nezināma kļūda.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Netika atrasts neviens dalībnieks notikuma ID: XXX.
+Db error Could not find event id XXX.: Db kļūda: Nevarēja atrast notikuma ID XXX.
+Error Could not find event id XXX in database.: Kļūda: datu bāzē nevarēja atrast notikuma ID XXX.

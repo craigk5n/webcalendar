@@ -1,13 +1,46 @@
-# See translations/English-US.txt for instructions.
+# Korean ko
+#
+# 형식은 선택적 헤더로 구성됩니다.
+#
+# 번역자 : 귀하의 이름과 이메일
+# 마지막 업데이트 : 번역 날짜
+# (앞에있는 "#"및 이전 번역가가 작성한 주석 포함.
+# 첫 번째 빈 줄은이 헤더 주석을 끝냅니다.)
+#
+# 필요한만큼 뒤에 따라옵니다.
+#
+# 영어 구 : 번역
+# (한 줄에. 선행 "#"없이.
+# 콜론 ":"을 포함한 "영어 구문 :"은
+# WebCalendar 개발자. 귀하의 역할은 "번역"입니다.)
+#
+# tools 디렉토리에는 도움이되는 두 개의 perl 스크립트가 있습니다.
+#  -check_translation.pl
+#은 모든 텍스트가 성공적으로 번역되었는지 여부를 나타냅니다.
+#  -update_translation.pl
+# 모든 번역 ( 'phrase')을 찾기 위해 프로그램 파일을 구문 분석하고
+# 툴팁 ( 'phrase'). 페이지에 따라 문구를 정렬합니다.
+# 첫 번째 항목을 포함하는 (파일). 선택적으로 태그를 지정할 수 있습니다.
+#아직 번역되지 않은 구문 # 개
+#  << MISSING >>
+#문구 위 줄에 #. 그리고 그 문구가 약어이면
+# 문구 아래 줄에 전체 영어 텍스트가 포함됩니다.
+#
+# 참고 : 전체 파일 크기를 줄이려고합니다. "번역"이
+# 단어 / 구문이 귀하의 언어와 영어에서 동일합니다. "="기호 만 사용하면됩니다.
+#
+# 참고 : 다음에 대한 항목이 표시됩니다. "May_" 이하. 이에 대한 이유가 있습니다.
+# 번역 "May_"  전체 월 이름과 "May" 로,
+# 일반적으로 3 글자, 월 약어 (예 : "10 월"의 "10 월").
 #
 # Author: Joonyup Jeon <goodwill@wowbook.com>
 # Last updated: 07 June 2000
 #
-# Additional translations 'borrowed' from SourceForge project
-# 'The Coolest DHTML Calendar',
-# http://sourceforge.net/projects/jscalendar/
+# Google 번역을 사용했습니다.
+# 원어민이 확인할 수있을 때까지 충분합니다.
+# Bruce Bannon <wcDev@bbannon.net>
 #
-# Translation last updated on 10-14-2008
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -46,331 +79,2312 @@ __month__ __yyyy__: =
 ########################################
 # Page: about.php
 #
-Title: �� Ķ����
+Title: 웹 캘린더
+version XXX: 버전 XXX
+WebCalendar is a PHP application used...: WebCalendar는 단일 사용자 또는 인터넷 / 인트라넷 사용자 그룹의 캘린더를 유지 관리하는 데 사용되는 PHP 애플리케이션입니다. 이벤트 캘린더로도 구성 할 수 있습니다.
+Credits: 크레딧
+About: 약
+OK: 확인
 
 ########################################
 # Page: access.php
 #
-Go: ����
-Save: ����
-Admin: ����
-Public: ����
-Confidential: ���
-Private: ���ο�
+Database error XXX.: 데이터베이스 오류 : XXX.
+DEFAULT CONFIGURATION: 기본 구성
+Go: 시작
+Save: 저장
+Undo: 실행 취소
+Public Access: 공공 접근
+Admin: 관리
+User Access Control: 사용자 액세스 제어
+Allow Access to Other Users Calendar: 다른 사용자의 캘린더에 대한 액세스 허용
+Grant This User Access to My Calendar: 이 사용자에게 내 캘린더에 대한 액세스 권한 부여
+Type: 유형
+Calendar: 달력
+View Event: 이벤트보기
+View: 전망
+Edit: 편집하다
+Approve/Reject: 승인 / 거부
+Events: 이벤트
+Tasks: 과제
+Journals: 저널
+Can Invite: 초대 가능
+Can Email: 이메일 가능
+Can See Time Only: 시간 만 볼 수 있음
+Assistant: 조수
+Select All: 모두 선택
+Clear All: 모두 지우기
+Public: 공용
+Confidential: 비밀
+Private: 개인용
 
 ########################################
 # Page: activity_log.php
 #
-Next: ����
+Next: 다음
+Previous: 이전
 
 ########################################
 # Page: add_entry.php
 #
-confidential: ���
-private: ���ο�
+Event XXX is already on your calendar.: XXX 이벤트가 이미 캘린더에 있습니다.
+Invalid entry id XXX.: 잘못된 항목 ID : "XXX".
+a XXX event may not be added to your calendar: XXX 이벤트이며 캘린더에 추가 할 수 없습니다.
+confidential: 비밀
+private: 개인용
+Error adding event XXX.: 이벤트 추가 오류 : XXX.
 
 ########################################
 # Page: admin.php
 #
-Week: ��
-Month: ��
-Year: ��
-Settings: ����
-Colors: ����
-Document background: ��� ����
-Document title: ���� ����
-Table cell background: ���̺� �� ��� ����
-Table cell background for current day: ���� ��¥ ǥ�� ����
-Help: ����
-Language: ���
-time-format-help: �ð� ǥ�� ������ �����մϴ�.<br /><i>12 hour:</i>�ð�ǥ�ð� 3am, 8:30pm, ������� ǥ�õ�<br /><i>24 hour:</i>�ð�ǥ�ð� 300, 2030 ������� ǥ�õ�
-Time format: �ð� ǥ�� ����
-Duration: �Ⱓ
-work-hours-help: �Ϻ� ȭ�鿡�� ǥ�ô��ð��� ����
-Work hours: �ٹ� �ð�
-From: ����
-to: ����
-display-week-number-help: ���� ȭ��� �ֺ� ȭ�鿡 �������ΰ�(1~52) ǥ�ÿ��θ� ����.
-Display week number: �������ΰ� ǥ��
-display-unapproved-help: �̽��ε� ��簡 �޷»� ǥ�õ� ���ΰ��� �����մϴ�.<br /> "Yes"�� ������ �̽��ε� ��絵 ǥ�õ˴ϴ�.(�ٸ� �����).<br />"No"�� �����ϸ� �̽��� ���� ���� �Ŀ��� �޷¿� ǥ�õ˴ϴ�.
-Display unapproved: ���ξȵ� ��� ǥ��
-Yes: ��
-No: �ƴϿ�
+Invalid setting name XXX.: 잘못된 설정 이름 "XXX".
+Select: 고르다
+Day: 일
+Week: 주
+Month: 월
+Year: 해
+Bottom: 바닥
+Top: 상단
+Anyone: 누군가
+Participant: 참가자
+Settings: 설정
+Groups: 여러 떼
+NonUser Calendars: 비 사용자 캘린더
+Other: 다른
+Email: 이메일
+Colors: 색상
+Document background: 배경 색상
+Document title: 제목 색상
+Document text: 문서 텍스트
+My event text: 내 이벤트 텍스트
+Table grid color: 표 그리드 색상
+Table header background: 테이블 헤더 배경
+Table header text: 표 헤더 텍스트
+Table cell background: 테이블 셀 배경 색상
+Table cell background for current day: 오늘 날짜 표시 색상
+Table cell background for days with events: 이벤트가있는 날짜의 표 셀 배경
+Table cell background for weekends: 주말 테이블 셀 배경
+Table cell background for other month: 다른 달의 표 셀 배경
+Week number color: 주 번호 색상
+Event popup background: 이벤트 팝업 배경
+Event popup text: 이벤트 팝업 텍스트
+System Settings: 환경 설정
+Help: 도움말
+System options: 시스템 옵션
+app-name-help: 모든 페이지 및 로그인 페이지의 브라우저 제목 표시 줄에 표시 될 애플리케이션의 이름을 지정합니다. 여기에서 지정한 값은 번역 파일에서 조회되므로 다른 언어에 대해 다른 제목을 제공 할 수 있습니다.
+Application Name: 응용 프로그램 이름
+Translated Name (XXX): 번역 된 이름 (XXX)
+server-url-help: 애플리케이션의 기본 URL을 지정합니다. 이메일 알림 및 알림을 보낼 때 포함됩니다.
+Server URL: 서버 URL
+home-url-help: 애플리케이션의 홈 URL을 지정합니다. 절대적이거나 상대적 일 수 있습니다.
+Home URL: 홈 URL
+language-help: 사용할 언어를 지정합니다.
+Language: 언어
+Your browser default language is XXX.: 브라우저 기본 언어는 "XXX"입니다.
+Allow user to use themes: 사용자가 테마를 사용하도록 허용
+themes-help: 구성 설정의 대량 업데이트를 허용합니다. 소문자 레이블은 사용자 환경 설정 전용입니다.
+Themes: 테마
+AVAILABLE THEMES: 사용 가능한 테마
+None: 없음
+Preview: 시사
+Site customization: 사이트 사용자 지정
+custom-script-help: 모든 페이지의 HTML "head"섹션에 삽입 될 사용자 정의 Javascript 또는 스타일 시트 텍스트를 입력 할 수 있습니다.
+Custom script/stylesheet: 사용자 정의 스크립트 / 스타일 시트
+custom-header-help: 모든 페이지의 상단에 사용자 정의 HTML 스 니펫을 포함 할 수 있습니다.
+Custom header: 맞춤 헤더
+custom-trailer-help: 모든 페이지의 끝에 사용자 정의 HTML 스 니펫을 포함 할 수 있습니다.
+Custom trailer: 맞춤 예고편
+enable-external-header-help: 사용자 정의 트레일러를 외부 파일에서로드 할 수 있습니다.
+Allow external file for header/script/trailer: 헤더 / 스크립트 / 트레일러에 대한 외부 파일 허용
+Allow user to override header/trailer: 사용자가 헤더 / 트레일러를 재정의하도록 허용
+Date and Time: 날짜와 시간
+server-tz-help: UTC에서 서버 시간까지 시간을 조정할 시간을 지정합니다.
+Server Timezone Selection: 서버 시간대 선택
+tz-help: UTC에서 현지 시간으로 시간을 조정할 시간을 지정합니다.
+Default Client Timezone Selection: 기본 클라이언트 시간대 선택
+display-general-use-gmt-help: 활성화하면 일반적인 날짜 / 시간이 GMT로 표시됩니다.
+Display Common Use Date/Times as GMT: 일반적인 사용 날짜 / 시간을 GMT로 표시
+date-format-help: 선호하는 날짜 형식을 지정합니다.
+Date format: 날짜 형식
+Small Task Date: 소규모 작업 날짜
+display-week-starts-on: 주가 시작되는 요일을 지정합니다. Monday가 지정된 경우 주 번호는 ISO 주 번호가됩니다.
+Week starts on: 주 시작
+display-weekend-starts-on: 주말이 시작되는 요일을 설정합니다.
+Weekend starts on: 주말 시작
+time-format-help: 시간 표시 형식을 명시합니다.<br><i>12 hour:</i>시간표시가 3am, 8:30pm, 등등으로 표시됨<br><i>24 hour:</i>시간표시가 300, 2030 등등으로 표시됨
+Time format: 시간 표시 형식
+12 hour: 12 시간
+24 hour: 24 시간
+timed-evt-len-help: 시간 제한 이벤트의 길이를 결정하기위한 입력 방법을 지정합니다.
+Specify timed event length by: 시간 제한 이벤트 길이 지정
+Duration: 기간
+End Time: 종료 시간
+work-hours-help: 일별 화면에서 표시대상시간을 명시
+Work hours: 근무 시간
+From: 시작
+to: 종료
+Appearance: 외관
+preferred-view-help: 기본보기 (일, 주, 월 또는 연도)를 지정합니다.
+Preferred view: 선호하는보기
+Allow top menu: 상위 메뉴 허용
+Date Selectors position: 날짜 선택기 위치
+menu-themes-help: 상단 메뉴의 색상과 스타일을 설정합니다
+Menu theme: 메뉴 테마
+fonts-help: 사용할 시스템 글꼴 목록을 지정합니다 (예 : "Arial, Helvetica").
+Fonts: 글꼴
+display-sm_month-help: 활성화하면 월별보기에 작은 달을 표시합니다.
+Display small months: 작은 달 표시
+display-weekends-help: 일주일을 볼 때 주말을 포함합니다.
+Display weekends: 주말 표시
+display-long-daynames-help: 활성화하면 긴 요일 이름이 표시됩니다.
+Display long day names: 긴 날 이름 표시
+display-alldays-help: 월별보기에 이전 및 다음 달을 표시하고 모든 셀을 채 웁니다.
+Display all days in month view: 월별보기에 모든 날짜 표시
+display-week-number-help: 월별 화면과 주별 화면에 몇주차인가(1~52) 표시여부를 명시.
+Display week number: 몇주차인가 표시
+display-desc-print-day-help: 인쇄용 버전의 일별보기에 이벤트 설명을 포함합니다.
+Display description in printer day view: 프린터 일별보기에 설명 표시
+yearly-shows-events-help: 연간보기에서 이벤트가 포함 된 날짜를 굵은 글꼴로 표시합니다.
+Display days with events in bold in month and year views: 월별 및 연도보기에서 이벤트가있는 날짜를 굵게 표시
+display-minutes-help: 활성화하면 : 00으로 끝나는 분이 항상 표시됩니다.
+Display 00 minutes always: 항상 00 분 표시
+display-end-times-help: 시간이 지정된 이벤트 인 경우 이벤트 종료 시간 표시
+Display end times on calendars: 캘린더에 종료 시간 표시
+allow-view-add-help: 보기에 '+'아이콘이 포함되어 사용자가 다른 사용자의 캘린더에 이벤트를 빠르게 추가 할 수 있습니다.
+Include add event link in views: 보기에 이벤트 추가 링크 포함
+lunar-help: 활성화하면 매월 달의 위상을 나타내는 작은 아이콘이 표시됩니다.
+Display Lunar Phases in month view: 월별보기에 달의 위상 표시
+Restrictions: 제한
+allow-view-other-help: 한 사용자가 다른 사용자의 달력을 볼 수 있는지 여부를 지정합니다.
+Allow viewing other users calendars: 다른 사용자의 캘린더보기 허용
+require-approvals-help: 활성화 된 경우 사용자는 일정에 이벤트가 표시되기 전에 이벤트를 승인해야합니다 (승인되지 않은 항목 표시가 활성화되지 않은 경우). 이것을 "아니오"로 설정해도 퍼블릭 액세스 캘린더에 대한 승인이 해제되지 않습니다 (퍼블릭 액세스 캘린더가 활성화 된 경우).
+Require event approvals: 이벤트 승인 필요
+display-unapproved-help: 미승인된 행사가 달력상에 표시될 것인가를 명시합니다.<br>"Yes"로 설정시 미승인된 행사도 표시됩니다.(다른 색깔로).<br>"No"로 설정하면 미승인 행사는 승인 후에만 달력에 표시됩니다.
+Display unapproved: 승인안된 행사 표시
+conflict-check-help: 이벤트 충돌을 확인합니다 (동일한 사람에 대해 같은 시간에 두 개의 이벤트가 예약 됨). 이것을 "예"로 설정하면 경고를 확인한 후 동시에 두 이벤트를 예약 할 수 있습니다. "아니오"로 설정하면 충돌 확인이 수행되지 않습니다. 이것을 "예"로 설정하고 싶을 것이므로 충돌 검사가 발생합니다.
+Check for event conflicts: 이벤트 충돌 확인
+Yes: 예
+No: 아니오
+conflict-months-help: 충돌 확인이있는 경우 ( "이벤트 충돌 확인"이 "아니요"로 설정되어 있으면 앞으로 몇 개월 후 충돌을 확인해야하는지 지정합니다. 추가 이벤트를 처리하는 데 시간이 오래 걸리는 경우) ,이 숫자를 줄이십시오.
+Conflict checking months: 충돌 확인 개월
+conflict-check-override-help: 사용자가 이벤트 충돌을 무시하고 두 개 이상의 이벤트를 동시에 예약 할 수 있습니다.
+Allow users to override conflicts: 사용자가 충돌을 무시하도록 허용
+limit-appts-help: 시스템 관리자가 단일 사용자가 하루에 가질 수있는 약속 수에 대한 시스템 전체 제한을 설정할 수 있습니다.
+Limit number of timed events per day: 하루에 시간이 지정된 이벤트 수 제한
+limit-appts-number-help: 사용자가 하루에 가질 수있는 시간이 지정된 최대 이벤트 수를 지정합니다.
+Maximum timed events per day: 일일 최대 시간 이벤트
+crossday-help: 사용하도록 설정하면 여러 날에 걸친 이벤트가 별도의 날에 표시됩니다.
+Disable Cross-Day Events: 크로스 데이 이벤트 비활성화
+disable-location-field-help: "예"를 선택하면 이벤트 정보 페이지에서 "위치"필드가 제거됩니다.
+Disable Location field: 위치 필드 비활성화
+disable-url-field-help: "예"를 선택하면 이벤트 정보 페이지에서 "URL"필드가 제거됩니다.
+Disable URL field: URL 필드 비활성화
+disable-priority-field-help: "예"를 선택하면 이벤트 정보 페이지에서 "우선 순위"필드가 제거되어 초보자에게 더 간단한 인터페이스를 제공합니다.
+Disable Priority field: 우선 순위 필드 비활성화
+disable-access-field-help: "예"를 선택하면 이벤트 정보 페이지에서 "액세스"필드가 제거되어 초보자를위한 더 간단한 인터페이스를 제공합니다.
+Disable Access field: 액세스 비활성화 필드
+disable-participants-field-help: "예"를 선택하면 이벤트 정보 페이지에서 "참가자"필드가 제거되어 사용자가 다른 사용자를 이벤트에 추가 할 수 없습니다. 이 옵션을 활성화하면 "다른 사용자의 달력보기 허용"필드도 비활성화 할 수 있습니다.
+Disable Participants field: 참가자 필드 비활성화
+disable-repeating-field-help: "예"를 선택하면 이벤트를 추가 할 때 "반복"필드가 제거됩니다. 이것은 초보자에게 더 간단한 인터페이스를 제공합니다.
+Disable Repeating field: 반복 필드 비활성화
+allow-html-description-help: 활성화 된 경우 사용자는 이벤트 설명 필드에 HTML을 입력 할 수 있습니다. 활성화되지 않은 경우 HTML 태그는 일반 텍스트로 표시되도록 이스케이프됩니다. 경고 :이 기능을 활성화하면 사용자가 다른 웹 사이트의 이미지를 참조 할 수 있습니다.
+Allow HTML in Description: 설명에 HTML 허용
+Popups: 팝 업
+disable-popups-help: 캘린더보기에서 팝업 비활성화
+Disable Pop-Ups: 팝업 비활성화
+popup-includes-siteextras-help: 활성화 된 경우 site_extras.php 파일에 설정된 사용자 정의 이벤트 필드 허용이 이벤트 팝업에 표시됩니다.
+Display Site Extras in popup: 팝업에 사이트 추가 정보 표시
+popup-includes-participants-help: 활성화하면 참가자가 이벤트 팝업에 표시됩니다.
+Display Participants in popup: 팝업에 참가자 표시
+Miscellaneous: 여러 가지 잡다한
+remember-last-login-help: 활성화되면 사용자 로그인이 로그인 페이지에 채워지고 (비밀번호는 아님) 사용자의 기본 설정이로드됩니다 (원하는 색상 및 언어 선택 포함).
+Remember last login: 마지막 로그인 기억
+summary_length-help: 달력보기에서 간략한 설명의 최대 길이
+Brief Description Length: 간략한 설명 길이
+user_sort-help: 사용자, 비 사용자 목록의 정렬 순서를 결정합니다.
+User Sort Order: 사용자 정렬 순서
+Lastname, Firstname: 성 이름
+Firstname, Lastname: 이름, 성
+allow-public-access-help: 활성화되면 달력을 사용자가 로그인 할 필요가없는 읽기 전용 공개 달력으로 사용할 수 있습니다.
+Allow public access: 공개 액세스 허용
+public-access-default-visible: 공개 캘린더의 이벤트는 모든 사용자의 캘린더에 자동으로 표시됩니다.
+Public access visible by default: 기본적으로 공개 액세스 표시
+public-access-default-selected: 새 이벤트를 추가 할 때 기본적으로 공개 사용자가 참가자로 선택됩니다.
+Public access is default participant: 공개 액세스는 기본 참가자입니다.
+public-access-view-others-help: 공용 액세스로 시스템에 액세스 할 때 사용자가 다른 달력 사용자의 달력을 볼 수 있는지 여부를 지정합니다.
+Public access can view other users: 공개 액세스는 다른 사용자를 볼 수 있습니다.
+public-access-can-add-help: 활성화되면 공개 액세스를 통해 시스템에 액세스하는 사용자는 새 이벤트를 추가 할 수 있지만 관리자가 새 이벤트를 승인 할 때까지 캘린더에 표시되지 않습니다.
+Public access can add events: 공개 액세스는 이벤트를 추가 할 수 있습니다.
+public-access-add-requires-approval-help: 공개 액세스 계정을 통해 추가 된 이벤트가 표시되기 전에 승인이 필요한지 여부를 지정합니다.
+Public access new events require approval: 공개 액세스 새 이벤트는 승인이 필요합니다.
+public-access-sees-participants-help: 활성화 된 경우 공개 계정에서 캘린더에 액세스하는 사용자는 이벤트 세부 정보를 볼 때 이벤트 참가자를 볼 수 있습니다.
+Public access can view participants: 공개 액세스는 참가자를 볼 수 있습니다.
+public-access-override-help: 공개 캘린더에서 이벤트 이름과 설명을 숨길 수 있습니다.
+Override event name/description for public access: 공개 액세스를위한 이벤트 이름 / 설명 무시
+public-access-override-text-help: 위 옵션이 활성화 된 경우 표시 할 텍스트입니다. '사용 불가'인 경우 번역됩니다.
+Text to display to public access: 공개 액세스에 표시 할 텍스트
+public-access-captcha-help: 활성화 된 경우 Public에 의해 추가 된 새 이벤트는 CAPTCHA 유효성 검사를 통과해야합니다.
+Require CAPTCHA validation for public access new events: 공개 액세스 새 이벤트에 대한 보안 문자 유효성 검사 필요
+uac-enabled-help: 사용자 수준 액세스 제어 가능
+User Access Control enabled: 사용자 액세스 제어 활성화
+groups-enabled-help: 그룹 지원을 활성화하여 사용자가 그룹별로 사용자를 선택할 수 있습니다.
+Groups enabled: 그룹 활성화
+user-sees-his-group-help: 활성화 된 경우 사용자는 그룹 중 하나 이상에 속하지 않은 달력 사용자를 볼 수 없습니다.
+User sees only his groups: 사용자는 자신의 그룹 만 볼 수 있습니다.
+nonuser-enabled-help: 활성화되면 관리자는 비 사용자 캘린더를 추가 할 수 있습니다.
+Nonuser enabled: 비 사용자 캘린더 사용
+nonuser-list-help: 참가자 목록에서 비 사용자 캘린더를 표시 할 위치
+Nonuser list: 참가자 목록에 표시
+Upcoming Events: 다가오는 이벤트
+upcoming-events-help: coming.php 활성화
+Enabled: 활성화 됨
+upcoming-events-allow-override: coming.php에 대한 사용자 매개 변수 허용
+Allow user override: 사용자 재정의 허용
+upcoming-events-display-caticons: coming.php에 카테고리 아이콘 포함
+Display category icons: 카테고리 아이콘 표시
+upcoming-events-display-layers: coming.php에 레이어 표시
+Display layers: 디스플레이 레이어
+upcoming-events-display-links: coming.php에 링크 표시
+Display links to events: 이벤트 링크 표시
+upcoming-events-display-popups: coming.php에 이벤트 팝업 표시
+Display event popups: 이벤트 팝업 표시
+reports-enabled-help: 활성화 된 경우 사용자는 각 페이지 하단에 "보고서"섹션을 볼 수 있으며 사용자 정의 보고서를 만들 수 있습니다. 또한 관리자는 모든 사용자 페이지의 하단에 표시되는 글로벌 보고서를 만들 수 있습니다.
+Reports enabled: 보고서 사용
+subscriptions-enabled-help: 원격 사용자가 WebCalendar 사용자의 캘린더를 구독 할 수 있는지 여부를 지정하여 iCal 지원 응용 프로그램 (예 : Apple의 iCal 또는 Mozilla 캘린더)에서 WebCalendar 사용자의 이벤트를 볼 수 있습니다.
+Allow remote subscriptions: 원격 구독 허용
+remotes-enabled-help: 사용자가 URL을 사용하여 원격 IC 파일을로드 할 수 있습니다.
+Allow remote calendars: 원격 캘린더 허용
+rss-enabled-help: RSS 피드에서 사용자의 달력을 가져올 수 있는지 여부를 지정합니다.
+Enable RSS feed: RSS 피드 활성화
+categories-enabled-help: 이벤트 범주에 대한 지원을 활성화합니다.
+Categories enabled: 카테고리 활성화
+icon_upload-enabled-help: 활성화하면 사용자가 카테고리 아이콘을 업로드 할 수 있습니다.
+Category Icon Upload enabled: 카테고리 아이콘 업로드 사용
+(Requires XXX folder to exist.): (존재하려면 XXX 폴더가 필요합니다.)
+display-tasks-help: 월일 달력에 작은 작업 창 표시
+Display small task list: 작은 작업 목록 표시
+display-tasks-in-grid-help: 이벤트와 함께 캘린더에 작업 표시
+Display tasks in Calendars: 캘린더에 작업 표시
+allow-external-users-help: 캘린더가 아닌 사용자를 이벤트에 추가 할 수 있는지 여부를 지정합니다. 이를 통해 캘린더가 아닌 사용자를 이벤트 참가자로 나열 할 수 있습니다.
+Allow external users: 외부 사용자 허용
+external-can-receive-notification-help: 외부 사용자가 활성화되고 이메일 사용이 활성화 된 경우 외부 사용자는 이벤트가 추가, 업데이트 또는 삭제 될 때 (외부 사용자의 이메일 주소가 제공된 경우) 이메일 알림을받을 수 있습니다.
+External users can receive email notifications: 외부 사용자는 이메일 알림을받을 수 있습니다.
+external-can-receive-reminder-help: 외부 사용자가 활성화되고 이메일 사용이 활성화되면 외부 사용자는 이메일 미리 알림을받을 수 있습니다 (외부 사용자의 이메일 주소가 제공되는 경우).
+External users can receive email reminders: 외부 사용자는 이메일 미리 알림을받을 수 있습니다.
+allow-self-registration-help: 신규 사용자가 자신을 등록하도록 허용
+Allow self-registration: 자체 등록 허용
+use-blacklist-help: IP 주소를 기반으로 WebCalendar 기능에 대한 액세스 제한
+Restrict self-registration to blacklist: 자체 등록을 블랙리스트로 제한
+allow-self-registration-full-help: 신규 사용자가 온라인으로 자체 등록 프로세스를 완료 할 수 있습니다.
+Use self-registration email notifications: 암호를 생성하고 새 사용자에게 보냅니다.
+allow-attachment-help: 사용자가 이벤트에 파일 첨부를 추가 할 수 있습니다.
+Allow file attachments to events: 이벤트에 대한 파일 첨부 허용
+Admin and owner can always add attachments if enabled.: 관리자와 소유자는 활성화 된 경우 항상 첨부 파일을 추가 할 수 있습니다.
+allow-comments-help: 사용자가 이벤트에 댓글을 추가 할 수 있습니다.
+Allow comments to events: 이벤트에 대한 댓글 허용
+Admin and owner can always add comments if enabled.: 관리자와 소유자는 활성화 된 경우 항상 주석을 추가 할 수 있습니다.
+email-enabled-help: 알림 및 미리 알림을 위해 모든 이메일 전송을 켜거나 끕니다. 서버가 메일을 보내도록 올바르게 설정되지 않은 경우 "아니오"로 설정하십시오.
+Email enabled: 이메일 사용
+email-default-sender: 미리 알림을 보낼 때 보낸 사람으로 지정할 이메일 주소를 지정합니다.
+Default sender address: 기본 발신자 주소
+email-mailer: 이메일 유형 선택 (SMTP, PHP 메일, sendmail)
+Email Mailer: 이메일 메일러
+email-smtp-host: 쉼표로 구분 된 SMTP 서버의 호스트 이름
+SMTP Host name(s): SMTP 호스트 이름
+email-smtp-port: SMTP 포트 번호 (일반적으로 25)
+SMTP Port Number: SMTP 포트 번호
+email-smtp-auth: SMTP 인증 사용
+SMTP Authentication: SMTP 인증
+email-smtp-username: 인증을 사용하는 경우 SMTP 사용자 이름
+SMTP Username: SMTP 사용자 이름
+email-smtp-password: 인증을 사용하는 경우 SMTP 비밀번호
+SMTP Password: SMTP 비밀번호
+Default user settings: 기본 사용자 설정
+email-format: HTML 또는 일반 텍스트 메시지에 대한 환경 설정 지정
+Email format preference: 이메일 형식 환경 설정
+HTML: =
+Plain Text: 일반 텍스트
+email-include-ics: 이메일 메시지에 iCalendar ICS 파일 포함
+Include iCalendar attachments: iCalendar 첨부 파일 포함
+email-event-reminders-help: 이벤트 미리 알림을 보낼지 여부를 지정합니다.
+Event reminders: 이벤트 알림
+email-event-added: 일정에 이벤트가 추가 될 때 이메일 알림을 보낼지 여부를 지정합니다.
+Events added to my calendar: 내 캘린더에 추가 된 이벤트
+email-event-updated: 일정에서 이벤트가 업데이트 될 때 전자 메일 알림을 보낼지 여부를 지정합니다.
+Events updated on my calendar: 내 캘린더에 업데이트 된 이벤트
+email-event-deleted: 일정에서 이벤트가 제거 될 때 전자 메일 알림을 보낼지 여부를 지정합니다.
+Events removed from my calendar: 내 캘린더에서 제거 된 이벤트
+email-event-rejected: 참가자가 일정에있는 이벤트를 거부 할 때 이메일 알림을 보낼지 여부를 지정합니다.
+Event rejected by participant: 참가자가 거부 한 이벤트
+email-event-create: 항목 작성자가 이메일을 수신할지 여부를 지정합니다.
+Event that I create: 내가 만드는 이벤트
+Color options: 색상 옵션
+Allow user to customize colors: 사용자가 색상을 사용자 지정할 수 있도록 허용
+gradient-colors: 활성화 된 경우 그라디언트 색상이 사용됩니다. 이는 성능에 큰 영향을 미칠 수 있습니다.
+Enable gradient images for background colors: 배경색에 그라데이션 이미지 사용
+Not available: 사용 불가
+Background Image options: 배경 이미지 옵션
+bgimage-help: 원하는 배경 이미지의 URL입니다. 상대 링크 일 수 있습니다.
+Background Image: 배경 이미지
+bgrepeat-help: 배경 이미지의 반복 동작을 제어합니다.
+Background Repeat: 배경 반복
 
 ########################################
 # Page: adminhome.php
 #
-Preferences: ȯ�� ����
-Users: �����
-Account: ����
+Assistants: 어시스턴트
+Preferences: 환경 설정
+Control Panel: 제어판
+Users: 사용자
+Account: 계정
+Categories: 카테고리
+Views: 견해
+Layers: 레이어
+Reports: 보고서
+Delete Events: 이벤트 삭제
+Activity Log: 활동 로그
+System Log: 시스템 로그
+Security Audit: 보안 감사
+Public Preferences: 공개 환경 설정
+Unapproved Public Events: 승인되지 않은 공개 이벤트
+Administrative Tools: 관리 도구
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: 중복 이름 : "XXX".
+Username XXX already exists.: 사용자 이름 "XXX"이 이미 존재합니다.
+Email address XXX already exists.: 이메일 주소 "XXX"이 이미 존재합니다.
 
 ########################################
 # Page: approve_entry.php
 #
-Hello: �ȳ�!
-Date: ����
-Time: �ð�
+Additional Comments (optional): 추가 설명 (선택 사항)
+Approve and Send: 승인 및 보내기
+Approve and Exit: 승인 및 종료
+(Your comments will be emailed to the event creator.): (귀하의 의견은 이벤트 작성자에게 이메일로 전송됩니다.)
+Hello, XXX.: 안녕하세요, XXX 님.
+XXX has approved an appointment and added comments.: XXX 님이 약속을 승인하고 댓글을 추가했습니다.
+Subject XXX: 제목 : "XXX".
+Description XXX: 설명 : "XXX".
+Date XXX: 날짜 : XXX
+Time XXX: 시간 : XXX
+Comments XXX: 댓글 : XXX
+Approved w/Comments by XXX.: 댓글과 함께 승인 한 사람 : XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: 관리자 모드
+Your assistants: 당신의 비서
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: 알수없는 오류.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: 프로그램 오류 : XXX가 지정되지 않았습니다!
+user: 사용자
+year: 년
+month: 달
+day: 일
 
 ########################################
 # Page: category.php
 #
-Delete: �����
-Are you sure you want to delete this entry?: ������ �� �׸��� ����ðڽ��ϱ�?
+Category Icon: 카테고리 아이콘
+Global: 글로벌
+The permissions for the icons directory are set to read-only: 아이콘 디렉토리에 대한 권한은 읽기 전용으로 설정됩니다.
+Category Name: 카테고리 이름 :
+Color: 색깔
+Remove Icon: 아이콘 제거 :
+Add Icon to Category: 카테고리에 아이콘 추가
+Upload: 업로드
+GIF or PNG 6kb max: GIF 또는 PNG 최대 6kb
+Search for existing icons: 기존 아이콘 검색
+Add: 더하다
+Delete: 지우기
+Are you sure you want to delete this entry?: 정말로 이 항목을 지우시겠습니까?
+Make New Category: 새 카테고리 만들기
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: 카테고리 이름이 필요합니다.
+File size exceeds maximum.: 파일 크기가 최대 값을 초과합니다.
+File is not a GIF or PNG image: 파일이 GIF 또는 PNG 이미지가 아닙니다.
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: 사용 가능한 카테고리
+ENTRY CATEGORIES: 항목 카테고리
+Remove: 없애다
+Global Category: 글로벌 카테고리
+Cancel: 취소
+
+########################################
+# Page: colors.php
+#
+Add Custom: 사용자 지정 추가
+Basic Colors: 기본 색상
+Current Color: 현재 색상
+Custom Colors: 맞춤 색상
+Old Color: 올드 컬러
+
+########################################
+# Page: combo.php
+#
+Select None: 선택 안함
+Agenda: 의제
+Add Task: 작업 추가
+Description: 설명
+Date: 일자
+Time: 시각
+Priority: 우선 순위
+Access: 접근
+Created by: 작성자:
+Updated: 갱신된
+Participants: 참가자
+Attachments: 첨부 파일
+Comments: 코멘트
+Brief Description: 요약 설명
+Full Description: 상세 설명
+Category: 범주
+Add event detail: 이벤트 세부 정보 추가
+Start Date: 시작일
+Due Date: 마감일
+Add task detail: 작업 세부 정보 추가
+All: 모두
+Error: 오류
+no response from server: 서버에서 응답 없음
+JSON error: JSON 오류
+High: 높음
+Medium: 중간
+Low: 낮음
+Today: 오늘
+Add Entry: 항목 추가
+Unnamed Event: 이름없는 행사
+Unnamed Task: 이름이없는 작업
+Refresh: 새롭게 하다
+Click to add entry: 항목을 추가하려면 클릭
+Name: 이름
+pm: 오후
+am: 오전
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX 님이 약속을 취소했습니다.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: 잘못된 Blob ID
 
 ########################################
 # Page: docadd.php
 #
-Description: ����
+Add Comment: 댓글 추가
+Add Attachment: 첨부 파일 추가
+Subject: 제목
+Comment: 논평
+Upload file: 파일 업로드
+
+########################################
+# Page: docdel.php
+#
+Removed: 제거됨
 
 ########################################
 # Page: edit_entry.php
 #
-minutes: ��
-Edit Entry: �׸� ����
-Add Entry: �׸� �߰�
-Participants: ������
-brief-description-help: ����� ������ ����(�� 20��)�Դϴ�. �޷»��� ��縦 ��Ÿ���ϴ�.
-Brief Description: ��� ����
-full-description-help: ����� �ڼ��� �����Դϴ�.
-Full Description: �� ����
-access-help: ����� ���� ������ ����.<br /> <i>����</i>: ��� ����� ����� ���� ������� �� �� ����.<br /><i>���</i>: Ÿ ����ڴ� ���ڿ� �ð��� �� �� ������ ���� ������ �� �� ����.
-Access: ����
-priority-help: ��� �켱���� ����. ���� �켱������ ���� ���� �۾��� ǥ�õ˴ϴ�.
-Priority: �켱 ����
-High: ����
-Medium: �߰�
-Low: ����
-date-help: ������� ��Ÿ���ϴ�.
-time-help: ��� �ð��Դϴ�.<br /><i>�� �׸��� ����� �� �ֽ��ϴ�.</i>
-duration-help: ���Ⱓ ����(�д���)<br /><i>�� �׸��� ����� �� �ֽ��ϴ�.</i>
-participants-help: �������� ��� ǥ��.
-Delete entry: �׸� �����
-You are not authorized to edit this entry.: �� �׸��� ������ ������ �����ϴ�.
+days: 일
+hours: 시간
+minutes: 분
+You are not authorized to edit this task.: 이 작업을 편집 할 권한이 없습니다.
+is in a different timezone than you are. Currently: 귀하와 다른 시간대에 있습니다. 현재
+hour ahead of you: 너보다 한 시간 앞서
+hour behind you: 한 시간 뒤
+hours ahead of you: 너보다 몇 시간 앞서
+hours behind you: 몇 시간 뒤에
+XXX is in a different timezone (ahead): (XXX는 다른 시간대에 있습니다. YYY는 사용자보다 앞서 있습니다.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX는 다른 시간대에 있으며 YYY는 뒤에 있습니다.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: 여기에 입력 한 시간은 시간대를 기준으로합니다.
+Edit Entry: 항목 편집
+Details: 세부
+Repeat: 반복
+Reminders: 미리 알림
+brief-description-help: 행사의 간략한 설명(약 20자)입니다. 달력상의 행사를 나타냅니다.
+full-description-help: 행사의 자세한 설명입니다.
+access-help: 행사의 접근 수준을 명시.<br><i>공용</i>: 모든 사람이 행사의 세부 내용까지 볼 수 있음.<br><i>비밀</i>: 타 사용자는 일자와 시각을 볼 수 있으나 세부 사항은 볼 수 없음.
+priority-help: 행사 우선순위 명시. 높은 우선순위의 행사는 굵은 글씨로 표시됩니다.
+category-help: 이벤트의 범주를 지정합니다.
+completed-help: 작업이 완료된 날짜입니다. 모든 참가자 비율이 100 % 인 경우에만 활성화됩니다.
+Date Completed: 완료 날짜
+percent-help: 이 사용자의 작업 완료율
+Percent Complete: 완료율
+All Percentages: 모든 백분율
+location-help: 이벤트 장소
+Location: 위치
+url-help: 이벤트 URL
+URL: =
+date-help: 행사일을 나타냅니다.
+Untimed event: 시간 제한이없는 이벤트
+Timed event: 시간 제한 이벤트
+All day event: 하루 종일 이벤트
+Timezone Offset: 시간대 오프셋
+time-help: 행사 시각입니다.<br><i>이 항목은 비워둘 수 있습니다.</i>
+duration-help: 행사기간 명시(분단위)<br><i>이 항목은 비워둘 수 있습니다.</i>
+end-time-help: 이벤트가 종료 될 것으로 예상되는 시간을 지정합니다.
+Start Time: 시작 시간
+Due Time: 마감 시간
+Site Extras: 사이트 추가
+avail_participants-help: 이 항목의 사용 가능한 참가자를 나열합니다.
+Available: 유효한
+Find Name: 이름 찾기
+Resources: 자원
+participants-help: 참가자의 목록 표시.
+Selected: 선택된
+Availability: 유효성
+external-participants-help: 달력 사용자가 아닌 이벤트에 대한 참가자 목록을 지정합니다. 사용자는 한 줄에 하나씩 나열되어야하며 이메일 주소를 포함 할 수 있습니다. 이메일 주소가 지정된 경우 사용자는 알림 및 미리 알림을받을 수 있습니다.
+External Participants: 외부 참가자
+repeat-type-help: 이벤트를 얼마나 자주 반복할지 선택하십시오.
+Daily: 매일
+Weekly: 주간
+Monthly: 월간 간행물
+by day: 하루에
+by date: 날짜 별
+by position: 위치 별
+Monthly (by day): 매월 (일별)
+Monthly (by date): 매월 (날짜 별)
+Monthly (by position): 월간 (위치 별)
+Yearly: 매년
+Manual: 설명서
+Expert Mode: 전문가 모드
+repeat-end-date-help: 이벤트가 반복되는 날짜를 지정합니다.
+Ending: 종결
+Forever: 영원히
+Use end date: 종료일 사용
+Number of times: 횟수
+repeat-frequency-help: 이벤트가 반복되어야하는 빈도를 지정합니다.
+Frequency: 회수
+Weekdays Only: 평일 만
+Week Start: 주 시작
+repeat-bydayextended-help: 요일을 기준으로 날짜를 선택할 수 있습니다.
+ByDay: =
+repeat-month-help: 이벤트가 반복되어야하는 달을 지정합니다.
+ByMonth: =
+repeat-bysetpos-help: 월별 위치에 따라 날짜를 선택할 수 있습니다.
+BySetPos: =
+repeat-bymonthdayextended-help: 날짜를 기준으로 날짜를 선택할 수 있습니다.
+ByMonthDay: =
+repeat-byweekno-help: 사용자가 이벤트를 반복 할 주 목록을 지정할 수 있습니다 (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: 사용자가 이벤트를 반복 할 연일 목록을 지정할 수 있습니다 (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: 이 이벤트가 발생하거나 발생하지 않아야하는 추가 날짜입니다.
+Exclusions: 제외
+Inclusions: 포함 사항
+Add Exception: 예외 추가
+Add Inclusion: 포함 추가
+Delete Selected: 선택된 것을 지워 라
+Send Reminder: 알림 보내기
+When: 언제
+Use Date/Time: 날짜 / 시간 사용
+Use Offset: 오프셋 사용
+Before: 전에
+After: 후
+Start: 스타트
+End/Due: 종료 / 기한
+Times: 타임스
+Every: 마다
+CAPTCHA Warning: 경고 : PHP의 GD 확장없이 CAPTCHA를 사용할 수 없습니다!<br>
+Delete entry: 항목 지우기
+You are not authorized to edit this entry.: 이 항목을 편집할 권한이 없습니다.
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: �� ����� �����Ǿ����ϴ�. ������:
-The following conflicts with the suggested time: ���� ������ ���õ� �ð��� ��Ĩ�ϴ�.
-Please look on: ������ ���캼 ��-
-to accept or reject this appointment: �� ����� �����ϰų� ����
-to view this appointment: �� ����� ����
-Your suggested time of: ������ �ð�
-conflicts with the following existing calendar entries: ������ ���� �׸�� ��Ĩ�ϴ�.
+XXX has made a new appointment.: XXX 님이 새 약속을 정했습니다.
+XXX has updated an appointment.: XXX 님이 약속을 업데이트했습니다.
+Security violation!: 보안 위반!
+You must enter the anti-spam text on the previous page.: 이전 페이지에서 스팸 방지 텍스트를 입력해야합니다.
+The following conflicts with the suggested time: 다음 사항은 제시된 시간과 겹칩니다.
+User removed from participants list.: 참가자 목록에서 사용자가 제거되었습니다.
+Please look on XXX to accept or reject this appointment.: 이 약속을 수락하거나 거부하려면 XXX을 확인하세요.
+Please look on XXX to view this appointment.: 이 약속을 보려면 XXX을 확인하세요.
+Scheduling Conflict: 일정 충돌
+Your suggested time of: 제안한 시간
+conflicts with the following existing calendar entries: 다음과 같은 항목과 겹칩니다.
 
 ########################################
 # Page: edit_nonusers.php
 #
-Add User: ����� �߰�
-Edit User: ����� ����
-First Name: �̸�
-Last Name: ��
+NONUSER_PREFIX not set: NONUSER_PREFIX가 "config.php"에 설정되지 않았습니다.
+word characters only: (단어 문자 만 포함 할 수 있습니다. [a-zA-Z_0-9])
+Add User: 사용자 추가
+Edit User: 사용자 편집
+Calendar ID: 캘린더 ID
+First Name: 이름
+Last Name: 성
+Is public calendar: 공개 캘린더
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: 데이터베이스 오류
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: 원격 캘린더 추가
+Edit Remote Calendar: 원격 달력 편집
+Create Layer: 레이어 생성
+Reload: 새로 고침
+Required to View Remote Calendar: 원격 달력을 보는 데 필요
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: ����
+Import Results: 결과 가져 오기
+Events successfully imported: 이벤트를 성공적으로 가져 왔습니다.
+Create a new layer to view this calendar.: 이 캘린더를 보려면 새 레이어를 만드세요.
+Errors: 오류
+There was an error parsing the import file or no events were returned.: 가져 오기 파일을 구문 분석하는 중에 오류가 발생했거나 이벤트가 리턴되지 않았습니다.
 
 ########################################
 # Page: edit_report.php
 #
-Today: ����
-Next month: ���� ��
-Current User: �� �����
+Tomorrow: 내일
+Yesterday: 어제
+Day before yesterday: 그저께
+Next week: 다음주
+This week: 이번 주
+Last week: 지난주
+Week before last: 지난 주
+Next week and week after: 다음 주 및 다음 주
+This week and next week: 이번 주와 다음 주
+Last week and this week: 지난주와 이번주
+Last two weeks: 지난 2 주
+Next month: 다음 달
+This month: 이번 달
+Last month: 지난 달
+Month before last: 지난달 전
+Next year: 내년
+This year: 올해
+Last year: 작년
+Year before last: 지난 1 년 전
+Next 14 days: 다음 14 일
+Next 30 days: 다음 30 일
+Next 60 days: 다음 60 일
+Next 90 days: 다음 90 일
+Next 180 days: 다음 180 일
+Next 365 days: 다음 365 일
+Invalid report id XXX.: 잘못된 보고서 ID : "XXX".
+Unnamed Report: 이름이없는 보고서
+Add Report: 보고서 추가
+Edit Report: 보고서 수정
+Report name: 보고서 이름
+User: 사용자
+Current User: 현 사용자
+Include link in menu: 메뉴에 링크 포함
+Include standard header/trailer: 표준 헤더 / 트레일러 포함
+Include previous/next links: 이전 / 다음 링크 포함
+Include empty dates: 빈 날짜 포함
+Date range: 날짜 범위
+Template variables: 템플릿 변수
+Page template: 페이지 템플릿
+Day template: 일 템플릿
+Event template: 이벤트 템플릿
+Are you sure you want to delete this report?: 이 보고서를 삭제 하시겠습니까?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: 해당 보고서 ID가 없습니다 : "XXX".
+Variable XXX not found.: 변수 XXX을 찾을 수 없습니다.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: 사용자 정의 헤더 편집
+Edit Custom Script/Stylesheet: 사용자 정의 스크립트 / 스타일 시트 편집
+Edit Custom Trailer: 맞춤 예고편 수정
 
 ########################################
 # Page: edit_user.php
 #
-E-mail address: E-mail �ּ�
-Password: ��й�ȣ
-Change Password: ��й�ȣ ����
-New Password: �� ��й�ȣ
-Set Password: ��й�ȣ ����
+Username: 사용자 이름
+E-mail address: E-mail 주소
+Password: 비밀번호
+again: 다시
+Disabled for demo: 데모 용으로 비활성화 됨
+Are you sure you want to delete this user?: 이 사용자를 삭제 하시겠습니까?
+Change Password: 비밀번호 변경
+New Password: 새 비밀번호
+Set Password: 비밀번호 설정
 
 ########################################
 # Page: edit_user_handler.php
 #
-You have not entered a password.: ��ȣ�� �Է����� �ʾҽ��ϴ�.
+Deleting users not supported.: 사용자 삭제는 지원되지 않습니다.
+The passwords were not identical.: 암호가 동일하지 않았습니다.
+You have not entered a password.: 암호를 입력하지 않았습니다.
+Username cannot be blank.: 사용자 이름은 비워 둘 수 없습니다.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: 승인되지 않음
+
+########################################
+# Page: export.php
+#
+Export: 수출
+Export format: 내보내기 형식
+Include all layers: 모든 레이어 포함
+Include deleted entries: 삭제 된 항목 포함
+Export all dates: 모든 날짜 내보내기
+Start date: 시작일
+End date: 종료일
+Modified since: 이후 수정
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: 내보내기 형식이 정의되지 않았거나 올바르지 않습니다.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: 사용자가 지정되지 않았습니다.
+
+########################################
+# Page: groups.php
+#
+Add New Group: 새 그룹 추가
 
 ########################################
 # Page: group_edit.php
 #
-Updated: ���ŵ�
-Created by: �ۼ���:
+Unnamed Group: 이름이없는 그룹
+Add Group: 그룹 추가
+Edit Group: 그룹 편집
+Group name: 그룹 이름
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: 그룹 이름을 지정해야합니다.
 
 ########################################
 # Page: help_admin.php
 #
-colors-help: ��� ������ "#RRGGBB" ���� 16���� �������� ǥ���ؾ� �մϴ�. "RR" �� ����, "GG"�� ���, "BB"�� û���� 16���� ���Դϴ�.
+Auto-refresh calendars: 캘린더 자동 새로 고침
+auto-refresh-help: 활성화되면 일보기, 주보기, 월보기 및 승인되지 않은 페이지 목록이 모두 주기적으로 자동으로 새로 고쳐집니다.
+Auto-refresh time: 자동 새로 고침 시간
+auto-refresh-time-help: 자동 새로 고침이 활성화 된 경우 각 새로 고침 사이의 시간을 지정합니다.
+Display days with events in bold in year view: 연도 별보기에서 굵게 이벤트가있는 요일 표시
+Display weekends in week view: 주별보기에 주말 표시
+Time interval: 시간 간격
+time-interval-help: 주간보기 및 일보기에서 시간 블록이 유지되는 기간을 지정합니다.
+Nonuser: 비 사용자 캘린더
+user-customize-color: 사용자가 자신의 색 구성표를 수정할 수 있는지 여부를 지정합니다.
+enable-gradient-help: 셀 배경에 그라데이션 색상을 사용합니다.
+Manually entering color values: 수동으로 색상 값 입력
+colors-help: 모든 색상은 "#RRGGBB" 같은 16진수 형식으로 표시해야 합니다. "RR" 은 적색, "GG"는 녹색, "BB"는 청색의 16진수 값입니다.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: 버그를 제보하기
+Please include all the information below when reporting a bug.: 버그를보고 할 때 아래 정보를 모두 포함하십시오.
+Also, please use English rather than XXX.: 또한 XXX 대신  영어를 사용하세요.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar 문서
+Currently in English only.: 현재 영어로만 제공됩니다.
 
 ########################################
 # Page: help_edit_entry.php
 #
-Adding/Editing Calendar Entries: �޷� �׸��� �߰�/����
+Adding/Editing Calendar Entries: 달력 항목의 추가/편집
+Repeat Type: 반복 유형
+For More Information...: 자세한 내용은...
+Repeat End Date: 종료일 반복
+Repeat Day: 반복 일
+repeat-day-help: 이벤트가 반복되어야하는 요일을 지정합니다.
+
+########################################
+# Page: help_import.php
+#
+Import: 수입
+Palm Desktop: Palm 데스크탑
+allow you to import entries from the Palm...: 이 양식을 사용하면 Palm Desktop Datebook에서 항목을 가져올 수 있습니다. 사용자 이름으로 명명 된 하위 디렉토리의 datebook / datebook.dat에있는 Palm 디렉토리에 있어야합니다.
+The following entries will not be imported: 다음 항목은 가져 오지 않습니다.
+Entries older than the current date: 현재 날짜보다 오래된 항목
+Entries created in the Palm Desktop...: HotSync되지 않은 Palm Desktop에서 생성 된 항목
+Anything imported from Palm...: Palm에서 가져온 모든 항목은 다음 가져 오기 중에 덮어 쓰게됩니다 (이벤트 날짜가 지나지 않은 경우). 따라서 Palm Desktop에서 업데이트해야합니다.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: 이 양식은 vCalendar (.vcs) 1.0 이벤트를 가져옵니다.
+The following formats have been tested: 다음 형식이 테스트되었습니다.
+This form will import iCalendar (.ics) events.: 이 양식은 iCalendar (.ics) 이벤트를 가져옵니다.
+Enabling: 활성화
+Overwrite Prior Import: 이전 가져 오기 덮어 쓰기
+will cause events imported previously...: 새 가져 오기 파일의 이벤트와 동일한 UID를 사용하는 이전에 가져온 이벤트가 삭제 된 것으로 표시됩니다. 이렇게하면 중복을 생성하지 않고 업데이트 된 iCalendar 파일을 가져올 수 있습니다.
 
 ########################################
 # Page: help_index.php
 #
-Help Index: ���� ����
+Help Index: 도움말 목차
+About WebCalendar: WebCalendar 정보
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: 레이어는 자신의 캘린더에 다른 사용자의 이벤트를 표시하는 데 유용합니다. 이벤트가 표시되는 사용자 및 색상을 지정할 수 있습니다.
+Add/Edit/Delete: 추가 / 편집 / 삭제
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: 페이지 하단의 관리 섹션에서 레이어 편집 링크를 클릭하면 레이어를 추가 / 편집 / 삭제할 수 있습니다.
+The text color of the new layer that will be displayed in your calendar.: 캘린더에 표시 될 새 레이어의 텍스트 색상입니다.
+Disabling: 비활성화
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: 페이지 하단의 관리 섹션에서 레이어 비활성화 링크를 눌러 레이어를 끕니다.
+Duplicates: 중복
+If checked, events that are duplicates of your events will be shown.: 선택하면 이벤트와 중복되는 이벤트가 표시됩니다.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: 페이지 하단의 관리 섹션에서 레이어 활성화 링크를 눌러 레이어를 켭니다.
+Source: 출처
+Specifies the user that you would like to see displayed in your calendar.: 달력에 표시 할 사용자를 지정합니다.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: 기본 카테고리
+default-category-help: 새 이벤트의 기본값이되는 카테고리를 지정합니다.
+When I am the boss: 내가 보스 일 때
+Email me event notification: 이벤트 알림 이메일 받기
+email-boss-notifications-help: 보스가 이벤트 알림으로 이메일을 수신하는지 여부를 지정합니다.
+I want to approve events: 이벤트를 승인하고 싶습니다
+boss-approve-event-help: 보스가 보조자가 추가 한 이벤트를 승인해야하는지 여부를 지정합니다.
+Subscribe/Publish: 구독 / 게시
+Allow remote publishing: 원격 게시 허용
+allow-remote-publishing-help: 원격 iCal 클라이언트가 이벤트를 WebCalendar에 다시 게시 할 수 있는지 여부를 지정합니다.
+remote-publishing-url-help: WebCalendar에 다시 구독 및 게시하기 위해 iCal 클라이언트 응용 프로그램에서 사용할 URL을 표시합니다.
+allow-remote-subscriptions-help: 원격 사용자가 캘린더를 구독 할 수 있는지 여부를 지정하여 iCal 지원 응용 프로그램 (예 : Apple의 iCal 또는 Mozilla 캘린더)에서 이벤트를 볼 수 있습니다.
+remote-subscriptions-url-help: 원격 사용자가 캘린더를 구독하는 데 사용해야하는 URL을 표시합니다.
+Enable FreeBusy publishing: FreeBusy 게시 활성화
+freebusy-enabled-help: iCal FreeBusy 표준을 사용하여 사용자의 사용 가능한 시간을 얻을 수 있는지 여부를 지정합니다.
+freebusy-url-help: 사용자의 FreeBusy 목록에 액세스하기위한 URL
+rss-feed-url-help: RSS 피드에 액세스하기위한 URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: 사용자 액세스 및 권한을 세밀하게 제어 할 수 있습니다. 사용자는 관리자가 승인 한 경우 기본 및 개별 권한을 부여 할 수도 있습니다.
+If disabled, this user cannot send you emails.: 비활성화 된 경우이 사용자는 이메일을 보낼 수 없습니다.
+If disabled, this user cannot see you in the participants list.: 비활성화 된 경우이 사용자는 참가자 목록에서 귀하를 볼 수 없습니다.
+If enabled, this user cannot view the details of any of your entries.: 활성화 된 경우이 사용자는 항목의 세부 정보를 볼 수 없습니다.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): 게시 비활성화 (관리자)
+Publishing Disabled (User): 게시 비활성화 (사용자)
+
+########################################
+# Page: icons.php
+#
+Click to Select: 클릭하여 선택
+Current Icons on Server: 서버의 현재 아이콘
+
+########################################
+# Page: import.php
+#
+import from file: 파일에서 가져 오기
+Disabled: 장애인
+Import format: 가져 오기 형식
+Exclude private records: 개인 기록 제외
+Repeated items are imported separately. Prior imports are not overwritten.: 반복되는 항목은 별도로 가져옵니다. 이전 가져 오기는 덮어 쓰지 않습니다.
+
+########################################
+# Page: import_handler.php
+#
+No file: 파일 없음
+Error deleting palm events from webcalendar.: 웹 캘린더에서 손바닥 이벤트를 삭제하는 중에 오류가 발생했습니다.
+Events from prior import marked as deleted: 삭제 된 것으로 표시된 이전 가져 오기의 이벤트
+Conflicting events: 충돌하는 이벤트
+The import file contained no data.: 가져 오기 파일에 데이터가 없습니다.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: 이 레이어를 삭제 하시겠습니까?
+Delete layer: 레이어 삭제
+Edit layer: 레이어 편집
+Enable layers: 레이어 활성화
+Layer: 층
+Layers are currently disabled.: 현재 레이어가 비활성화되어 있습니다.
+Layers are currently enabled.: 현재 레이어가 활성화되어 있습니다.
+Click to modify layers settings for XXX: XXX 캘린더의 레이어 설정을 수정하려면 여기를 클릭하세요.
+Disable Layers: 레이어 비활성화
+Add layer: 레이어 추가
+Add Layer: 레이어 추가
+Edit Layer: 레이어 편집
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: 환경 설정을 업데이트 할 수 없습니다.
+Invalid entry id.: 잘못된 항목 ID입니다.
+You cannot create a layer for yourself.: 자신을위한 레이어를 만들 수 없습니다.
+You can only create one layer for each user.: 각 사용자에 대해 하나의 레이어 만 만들 수 있습니다.
 
 ########################################
 # Page: list_unapproved.php
 #
-View this entry: �׸� ����
-Approve this entry?: �� �׸��� ������.
+Approve/Confirm: 승인 / 확인
+Approve Selected: 선택 승인
+Check All: 모두 확인
+Emails Will Not Be Sent: 이메일이 전송되지 않습니다
+Reject Selected: 선택 거부
+Reject: 받지 않다
+Uncheck All: 모두 선택 취소
+View this entry: 항목 보기
+No unapproved entries for XXX.: "XXX"에 대한 승인되지 않은 항목이 없습니다.
+Unapproved Entries: 승인되지 않은 항목
+Approve this entry?: 이 항목을 승인함.
+Reject this entry?: 이 항목을 거부 하시겠습니까?
+Approve Selected entries?: 선택한 항목을 승인 하시겠습니까?
+Reject Selected entries?: 선택한 항목을 거부 하시겠습니까?
 
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: ���̵�� ��й�ȣ�� �Է��ؾ� �մϴ�.
-Save login via cookies so I dont have to login next time.: �������� �α��� �� �ʿ䰡 ������ �α��� ���� ����.
-Login: �α���
-cookies-note: <b>��:</b> ��Ű�� �ٷ� �� �ִ� �������� �ʿ��մϴ�.
+You must enter a login and password.: 아이디와 비밀번호를 입력해야 합니다.
+Save login via cookies so I dont have to login next time.: 다음번에 로그인 할 필요가 없도록 로그인 정보 저장.
+Login: 로그인
+public: 공공의
+Access XXX calendar: XXX 캘린더에 액세스
+cookies-note: 주: 쿠키를 다룰 수 있는 브라우저가 필요합니다.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: 로그인 XXX에 잘못된 문자가 있습니다.
+Invalid login: 로그인 오류
+Activity login failure: 사용자 이름 : "XXX", IP : "YYY".
+Error XXX: 오류 : "XXX".
+You have been logged out.: 로그 아웃되었습니다.
+Access public calendar: 공개 캘린더에 액세스
+Not yet registered? Register here!: 아직 등록하지 않으셨습니까? 여기에서 등록하세요!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: 사용자가 아닌 캘린더가 없습니다 : "XXX".
+This Calendar is not Public.: 이 캘린더는 공개되지 않습니다.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: 새 비 사용자 캘린더 추가
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: 로그인을 지정해야합니다.
+No such nonuser calendar: 그러한 비 사용자 캘린더 없음
 
 ########################################
 # Page: pref.php
 #
-Save Preferences: ȯ�漳�� ����
+Invalid theme: 잘못된 테마
+Save Preferences: 환경설정 저장
+Public Access calendar: 공개 액세스 캘린더
+Modify Non User Calendar Preferences: 비 사용자 달력 기본 설정 수정
+Return to My Preferences: 내 환경 설정으로 돌아 가기
+Custom Scripts: 커스텀 스크립트
+Timezone Selection: 시간대 선택
+Multiview: 멀티 뷰 :
+entry-interval-help: 입력 시간 편집시 분 간격 설정
+Entry interval: 입장 간격
+hour: 시
+minute: 분
+theme-reload-help: CSS 캐싱으로 인해 페이지 새로 고침이 필요할 수 있습니다.
+Page may need to be reloaded for new Theme to take effect: 새 테마를 적용하려면 페이지를 새로 고침해야 할 수 있습니다.
+display_byproxy-help: view_entry 페이지에 실제 제작자 표시
+Display if created by Assistant: 어시스턴트가 만든 경우 표시
+allow-view-subscriptions-help: 개인 또는 기밀 항목에 대한 원격 액세스를 제한 할 수 있습니다.
+Allow remote viewing of: 원격보기 허용
+entries: 항목
+
+########################################
+# Page: purge.php
+#
+Purging events for: 이벤트 제거
+Finished: 끝마친
+Back: 뒤
+Check box to delete ALL events for a user: 사용자의  모든 이벤트를 삭제하는 확인란
+Delete all events before: 이전에 모든 이벤트 삭제
+Purge deleted only: 삭제 된 항목 만 제거
+Preview delete: 삭제 미리보기
+Are you sure you want to delete events for: 에 대한 이벤트를 삭제 하시겠습니까?
+Records deleted from XXX: "XXX"에서 레코드가 삭제되었습니다.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: 이메일 주소는 비워 둘 수 없습니다.
+Username already exists.: 사용자 이름이 이미 존재합니다.
+Email address already exists.: 이메일 주소가 이미 존재합니다.
+New user via self-registration.: 자체 등록을 통한 신규 사용자.
+A new WebCalendar account has been set up for you.: 새로운 WebCalendar 계정이 설정되었습니다.
+Your username is XXX.: 귀하의 사용자 이름은 "XXX"입니다.
+Your password is XXX.: 비밀번호는 "XXX"입니다.
+Please visit XXX to log in and start using your account!: "XXX"를 방문하여 로그인하고 계정을 사용하십시오!
+You may change your password after logging in the first time.: 처음 로그인 한 후 비밀번호를 변경할 수 있습니다.
+If you received this email in error: 이 이메일을 잘못 받았으며 WebCalendar 계정에 가입하지 않은 경우이 알림을 무시하거나 짧은 메모로 회신 할 수 있습니다.
+Administrator: 관리자
+Welcome: 어서 오십시오
+New user via email.: 이메일을 통한 새 사용자.
+Registration: 기재
+Welcome to WebCalendar: WebCalendar에 오신 것을 환영합니다
+Your email should arrive shortly.: 이메일이 곧 도착할 것입니다.
+Return to Login screen: 로그인 화면으로 돌아 가기
+Password (again): 비밀번호 (다시) :
+Your account information will be emailed to you.: 귀하의 계정 정보가 이메일로 전송됩니다.
+Submit: 제출
+
+########################################
+# Page: reject_entry.php
+#
+Continue: 계속하다
+(Your comments will be emailed to the other participants.): (귀하의 의견은 다른 참가자에게 이메일로 전송됩니다.)
+XXX has rejected an appointment.: XXX 님이 약속을 거부했습니다.
+Rejected by XXX.: XXX에 의해 거부되었습니다.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: 새 원격 캘린더 추가
 
 ########################################
 # Page: report.php
 #
-This event is confidential.: �� ���� ����׸��Դϴ�.
+This event is confidential.: 이 행사는 비밀항목입니다.
+(Private): (은밀한)
+(cont.): (계속)
+Approved: 승인 됨
+Deleted: 삭제
+Rejected: 거부 됨
+Waiting for approval: 승인 대기 중
+Unknown: 알 수 없는
+Invalid report id.: 잘못된 보고서 ID입니다.
+Click here to manage reports for the Public Access calendar.: 공개 액세스 캘린더에 대한 보고서를 관리하려면 여기를 클릭하십시오.
+Add new report: 새 보고서 추가
+Manage Reports: 보고서 관리
 
 ########################################
 # Page: search.php
 #
-Search: �˻�
-Keywords: �˻���
+Advanced Search: 고급 검색
+Search: 검색
+Keywords: 검색어
+Enter % for all entries: 모든 항목에 대해 % 입력
+Include: 포함
+Filter by Date: 날짜로 필터링
+All Dates: 모든 날짜
+Past: 과거
+Upcoming: 예정
+Range: 범위
 
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: �˻�� �Է��ϼž� �մϴ�.
-Search Results: �˻� ���
-match found: �׸� �߰�
-matches found: �׸� �߰�
-No matches found: ã�� �׸� ����
+You must enter one or more search keywords.: 검색어를 입력하셔야 합니다.
+Search Results: 검색 결과
+match found: 항목 발견
+matches found: 항목 발견
+No matches found: 찾은 항목 없음
+New Search: 새로운 검색
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: 아래 정보는 WebCalendar 설치의 잠재적 인 문제를 나열하여 설치를보다 안전하게하기 위해 수정할 수 있습니다.
+For questions about WebCalendar security see the forums: WebCalendar 보안 문제에 대한 질문은 GitHub.com에서 호스팅되는 WebCalendar 포럼을 사용하십시오.<br>XXX
+View your current PHP settings: 현재 PHP 설정보기
+Security Issue: 보안 문제
+Status: 상태
+Default admin user password: 기본 관리자 비밀번호
+You should change the password of the default admin user.: 기본 관리자의 비밀번호를 변경해야합니다.
+File permissions XXX: 파일 권한 : XXX
+item XXX should not be writable: 다음 항목은 쓸 수 없어야합니다.<br><tt> XXX</tt>
+File exists XXX: 파일이 있습니다 : "XXX"
+Because you have email disabled, you should remove this file.: 이메일이 비활성화되었으므로이 파일을 제거해야합니다.
+File location XXX: 파일 위치 : "XXX"
+remove XXX if not using: "XXX"파일을 사용하지 않는 경우 삭제해야합니다. 또는 적어도 새 디렉토리로 이동하십시오.
+System Settings XXX: 시스템 설정 : "XXX"
+consider enabling UAC: 사용자 권한을 설정하기 위해 사용자 액세스 제어를 활성화하는 것을 고려할 수 있습니다.
+recommend approving new public events: 모든 공개 이벤트 제출을 승인하는 것이 좋습니다.
+recommend using CAPTCHA: CAPTCHA는 자동화 된 이벤트 제출을 다시 보호하기 위해 권장됩니다.
+Database cache directory location: 데이터베이스 캐시 디렉토리 위치
+db cache should be inaccessable: 데이터베이스 캐시는 URL로 액세스 할 수없는 디렉토리에 있어야합니다.
+PHP Settings XXX: PHP 설정 : "XXX"
+recommend setting XXX Off: "XXX"에 대한 권장 설정은 Off입니다.
+recommend setting allow_url_fopen Off: 원격 달력이 활성화되지 않은 경우 "allow_url_fopen"에 대한 권장 설정은 Off입니다.
 
 ########################################
 # Page: select_user.php
 #
-View Another Users Calendar: �ٸ� ������� �޷� ����
+View Another Users Calendar: 다른 사용자의 달력 보기
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: 카테고리를 추가하지 않았습니다.
+Set Category: 카테고리 설정
+Global Categories cannot be changed.: 글로벌 카테고리는 변경할 수 없습니다.
+
+########################################
+# Page: upcoming.php
+#
+more: 더
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: �����ڸ� ��Ÿ��
-Add New User: �� ����� �߰�
+Remote Calendars: 원격 캘린더
+denotes administrative user: 관리자를 나타냄
+Add New User: 새 사용자 추가
+
+########################################
+# Page: usersel.php
+#
+form: 형태
+Reset: 초기화
+
+########################################
+# Page: views.php
+#
+Add New View: 새보기 추가
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: 이름없는보기
+Add View: 보기 추가
+Edit View: 보기 편집
+View Name: 이름보기
+View Type: 보기 유형
+Day by Time: 시간별
+Week (Users horizontal): 주 (가로 사용자)
+Week by Time: 시간별 주
+Week (Users vertical): 주 (사용자 카테고리)
+Week (Timebar): 주 (타임 바)
+Month (Timebar): 월 (타임 바)
+Month (side by side): 월 (나란히)
+Month (on same calendar): 월 (동일한 달력)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: 보기 이름을 지정해야합니다.
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: 이보기에 대한 사용자가 없습니다.
 
 ########################################
 # Page: view_entry.php
 #
-Approve/Confirm entry: �� �׸��� ����/Ȯ����
-This will delete this entry for all users.: ��� ����ڵ鿡���� �� �׸��� �������ϴ�.
-Edit entry: �׸� ����
+Update Task Percentage: 작업 백분율 업데이트
+Completed: 완료
+Assistant mode: 어시스턴트 모드
+Declined: 거부 됨
+Needs-Action: 조치 필요
+by: 으로
+Percentage Complete: 완료율
+External User: 외부 사용자
+Update: 최신 정보
+at: ...에서
+comments: 코멘트
+Show: 보여 주다
+Hide: 숨는 장소
+Approve/Confirm entry: 이 항목을 승인/확인함
+Reject entry: 항목 거부
+Set category: 카테고리 설정
+Add to My Calendar: 내 캘린더에 추가
+Copy entry: 항목 복사
+This will delete this entry for all users.: 모든 사용자들에서도 이 항목이 지워집니다.
+Edit entry: 항목 편집
+Edit repeating entry for all dates: 모든 날짜에 대한 반복 항목 편집
+Delete repeating event for all dates: 모든 날짜에 대해 반복되는 이벤트 삭제
+Edit entry for this date: 이 날짜에 대한 항목 편집
+Delete entry only for this date: 이 날짜에 대한 항목 만 삭제
+Delete entry from calendar of XXX: XXX의 캘린더에서 항목 삭제
+This will delete the entry from your XXX calendar.: XXX 캘린더에서 항목이 삭제됩니다.
+boss: 사장님'
+This will delete the entry from your boss calendar.: 상사의 캘린더에서 항목이 삭제됩니다.
+This will delete the entry from your calendar.: 캘린더에서 항목이 삭제됩니다.
+from your boss calendar: 상사의 달력에서
+Do you want to add this entry to your calendar?: 이 항목을 캘린더에 추가 하시겠습니까?
+This will add the entry to your calendar.: 캘린더에 항목이 추가됩니다.
+Email all participants: 모든 참가자에게 이메일 보내기
+Hide activity log: 활동 기록 숨기기
+Show activity log: 활동 로그 표시
+Export this entry to: 이 항목 내보내기
+Palm Pilot: 팜 파일럿
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: 새 항목을 추가하려면 빈 셀을 두 번 클릭하십시오.
 
 ########################################
 # Page: week_details.php
 #
-New Entry: �� �׸�
+New Entry: 새 항목
+cont.: 계속
 
 ########################################
 # Page: includes/access.php
 #
-Another Users Calendar: �ٸ� ����� �޷�
+Another Users Calendar: 다른 사용자 달력
+Category Management: 카테고리 관리
+Day View: 일보기
+Edit Event: 이벤트 수정
+Month View: 월별보기
+Common Trailer: 일반 예고편
+User Management: 사용자 관리
+Manage Views: 보기 관리
+Week View: 주간보기
+Year View: 년보기
+Invalid function id: 잘못된 기능 ID
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: "settings.php"파일을 찾을 수 없습니다.<br>"settings.php.orig"를 "settings.php"에 복사하고 사이트에 맞게 편집하십시오.
+Incomplete settings.php file...: 불완전한 "settings.php"파일 ...
+Could not find XXX defined in...: "settings.php"파일에 정의 된 "XXX"를 찾을 수 없습니다.
+You must define XXX in: "settings.php"파일에 "XXX"를 정의해야합니다.
 
 ########################################
 # Page: includes/date_formats.php
 #
-December: 12��
-Dec: 12��
+December: 12월
+Dec: 12월
+LANGUAGE DEFINED: 언어 정의
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: 데이터베이스 연결 오류 : "XXX".
+db_type not defined.: db_type이 정의되지 않았습니다.
+invalid db_type XXX: db_type ""XXX "가 잘못되었습니다.
+Cache cleared from previous SQL!: 이전 SQL에서 캐시가 지워졌습니다!
+Error executing query.: 쿼리를 실행하는 동안 오류가 발생했습니다.
+Unfortunately, XXX is not implemented for YYY: 불행히도 "XXX"는 (YYY)에 대해 구현되지 않았습니다.
+Unknown ODBC error.: 알 수없는 ODBC 오류입니다.
+Error opening cache dir XXX.: 캐시 디렉토리 "XXX"를 여는 동안 오류가 발생했습니다.
+delete: 지우다
+Cache error Could not XXX file YYY.: 캐시 오류 : 파일 "YYY"를 XXX 할 수 없습니다.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: 치명적 오류
+Invalid data format for: 에 대한 잘못된 데이터 형식
 
 ########################################
 # Page: includes/functions.php
 #
-WK: ��
-Printer Friendly: �μ�� ȭ��
-Generate printer-friendly version: �μ�� ȭ�� ����
-January: 1��
-February: 2��
-March: 3��
-April: 4��
-May_: 5��
-June: 6��
-July: 7��
-August: 8��
-September: 9��
-October: 10��
-November: 11��
-Jan: 1��
-Feb: 2��
-Mar: 3��
-Apr: 4��
-May: 5��
-Jun: 6��
-Jul: 7��
-Aug: 8��
-Sep: 9��
-Oct: 10��
-Nov: 11��
-The following error occurred: ������ ���� ���� �߻�:
-You are not authorized.: ������ �����ϴ�:
-Unauthorized: ���� ����
-Error approving event: ��� ���� �� ����
-Sunday: �Ͽ���
-Monday: ������
-Tuesday: ȭ����
-Wednesday: ������
-Thursday: �����
-Friday: �ݿ���
-Saturday: �����
-Sun: ��
-Mon: ��
-Tue: ȭ
-Wed: ��
-Thu: ��
-Fri: ��
-Sat: ��
+Error Type not set for activity log!: 오류 : 활동 로그에 대해 유형이 설정되지 않았습니다!
+This event is XXX.: 이 이벤트는 XXX입니다.
+Conf.: =
+exceeds limit of XXX events per day: 일일 이벤트 한도 인 XXX 개를 초과합니다.
+on: 의 위에
+All Attendees: 모든 참석자
+Busy: 바쁜
+Tentative: 시험
+Schedule an appointment for XXX.: XXX : YYY에 대한 약속을 예약하십시오.
+date_select: __dd__ __ 월 __ __yyyy__
+Event approved: 이벤트 승인
+Journal approved: 저널 승인
+Task approved: 작업 승인
+Attachment: 부착
+Event created: 이벤트 생성
+Journal created: 저널 생성
+Task created: 작업이 생성되었습니다.
+Event deleted: 이벤트가 삭제되었습니다.
+Journal deleted: 저널이 삭제되었습니다.
+Task deleted: 작업이 삭제되었습니다.
+New user via email (self registration): 이메일을 통한 신규 사용자 (자체 등록)
+New user (self registration): 신규 사용자 (자체 등록)
+Notification sent: 알림을 보냈습니다.
+Event rejected: 이벤트가 거부되었습니다.
+Journal rejected: 저널이 거부되었습니다.
+Task rejected: 작업이 거부되었습니다.
+Reminder sent: 알림을 보냈습니다.
+Event updated: 이벤트 업데이트
+Journal updated: 저널이 업데이트되었습니다.
+Task updated: 작업이 업데이트되었습니다.
+Delete User: 사용자 삭제
+WK: 주
+TASKS: 작업
+Task_Title: 표제
+Due: 정당한
+Task Name: 작업 이름
+Task Due Date: 작업 기한
+You have XXX unapproved entries: 승인되지 않은 항목이 XXX 개 있습니다.
+Changes successfully saved: 변경 사항이 성공적으로 저장되었습니다.
+Event: 행사
+Action: 동작
+Printer Friendly: 인쇄용 화면
+Generate printer-friendly version: 인쇄용 화면 생성
+after: 후
+before: 전에
+end: 종료
+start: 스타트
+View this event: 이 이벤트보기
+View this task: 이 작업보기
+January: 1월
+February: 2월
+March: 3월
+April: 4월
+May_: 5월
+June: 6월
+July: 7월
+August: 8월
+September: 9월
+October: 10월
+November: 11월
+Jan: 1월
+Feb: 2월
+Mar: 3월
+Apr: 4월
+May: 5월
+Jun: 6월
+Jul: 7월
+Aug: 8월
+Sep: 9월
+Oct: 10월
+Nov: 11월
+SU: =
+MO: =
+TU: =
+WE: 우리
+TH: =
+FR: =
+SA: =
+unknown-month: 알 수없는 달
+First Quarter Moon: 첫 번째 분기 문
+Full Moon: 보름달
+Last Quarter Moon: 지난 분기
+New Moon: 뉴 문
+Error TIME_SLOTS undefined!: 오류 : TIME_SLOTS가 정의되지 않았습니다!
+The following error occurred: 다음과 같은 오류 발생:
+You are not authorized.: 권한이 없습니다:
+Add N hours to: N 시간 추가
+Subtract N hours from: 다음에서 N 시간 빼기
+same as: 같은
+server time: 서버 시간
+Cannot read timezone file XXX.: 시간대 파일을 읽을 수 없습니다 : XXX.
+Your current GMT offset is XXX hours.: 현재 GMT 오프셋은 XXX 시간입니다.
+Unauthorized: 권한 없음
+Error approving event XXX.: 이벤트 승인 오류 : XXX.
+Error deleting event XXX.: 이벤트 삭제 오류 : XXX.
+Error rejecting event XXX.: 이벤트 거부 오류 : XXX.
+Sunday: 일요일
+Monday: 월요일
+Tuesday: 화요일
+Wednesday: 수요일
+Thursday: 목요일
+Friday: 금요일
+Saturday: 토요일
+Sun: 일
+Mon: 월
+Tue: 화
+Wed: 수
+Thu: 목
+Fri: 금
+Sat: 토
+unknown-weekday: 알 수없는 평일
+Invalid referring URL: 잘못된 참조 URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: 인덱스
+Documentation: 선적 서류 비치
+Page: 페이지
 
 ########################################
 # Page: includes/trailer.php
 #
-Add New Entry: �� �׸� �߰�
-Back to My Calendar: �� �޷����� ���ư���
-Go to: ����
+My Calendar: 내 캘린더
+Add New Entry: 새 항목 추가
+Add New Task: 새 작업 추가
+Logout: 로그 아웃
+Home: 집
+Back to My Calendar: 내 달력으로 돌아가기
+Go to: 가기
+Manage calendar of: 캘린더 관리
 
 ########################################
 # Page: includes/translate.php
 #
-event: ���
+Browser Language Not Found: 브라우저 언어를 찾을 수 없음
+(not supported): (지원되지 않음)
+Abkhazian: 압하지야 어
+Acoli: 아 콜리
+Adangme: =
+Adyghe: =
+Afar: 멀리
+Afrihili: =
+Afrikaans: 아프리카 어
+Ainu: 아이누
+Akan: 아칸
+Akkadian: =
+Albanian: 알바니아
+Aleut: =
+Algonquian: =
+Altai (Southern): 알타이 (남부)
+Amharic: 암하라 어
+Angika: =
+Apache: =
+Arabic (Algeria): 아랍어 (알제리)
+Arabic (Bahrain): 아랍어 (바레인)
+Arabic (Egypt): 아랍어 (이집트)
+Arabic (Iraq): 아랍어 (이라크)
+Arabic (Jordan): 아랍어 (요르단)
+Arabic (Kuwait): 아랍어 (쿠웨이트)
+Arabic (Lebanon): 아랍어 (레바논)
+Arabic (Libya): 아랍어 (리비아)
+Arabic (Morocco): 아랍어 (모로코)
+Arabic (Oman): 아랍어 (오만)
+Arabic (Qatar): 아랍어 (카타르)
+Arabic (Saudi Arabia): 아랍어 (사우디 아라비아)
+Arabic (Syria): 아랍어 (시리아)
+Arabic (Tunisia): 아랍어 (튀니지)
+Arabic (U.A.E.): 아랍어 (U.A.E.)
+Arabic (Yemen): 아랍어 (예멘)
+Arabic: 아라비아 말
+Aragonese: 아라곤 어
+Aramaic: 아람 말
+Arapaho: 아라 파호
+Arawak: =
+Armenian: 아르메니아 사람
+Assamese: 아삼 어
+Asturian: 아스투리아스
+Athapascan: =
+Avaric: =
+Avestan: 아베 스탄
+Awadhi: 아 와디
+Aymara: 아이 마라
+Azerbaijani: 아제르바이잔
+Balinese: 발리어
+Baluchi: 발 루치
+Bambara: 밤 바라
+Bamileke: =
+Banda: 반다
+Basa: 바사
+Bashkir: =
+Basque: 바스크 사람
+Beja: 베자
+Belarusian: 벨라루스 어
+Bemba: =
+Bengali: 벵골 사람
+Bhojpuri: =
+Bihari: 비하리
+Bikol: 비콜
+Bislama: 비슬 라마
+Blackfoot: 블랙 풋
+Blin: 블린
+Bliss: 다시 없는 기쁨
+Bosnian: 보스니아 어
+Braj: =
+Breton: 브르타뉴 어
+Buginese: 부 기어
+Bulgarian: 불가리아 사람
+Buriat: =
+Burmese: 버마 사람
+Caddo: =
+Catalan: 카탈로니아 사람
+Cebuano: =
+Chagatai: 차가 타이
+Chamorro: 차모로
+Chechen: 체첸
+Cherokee: 체로키
+Cheyenne: 샤이엔
+Chibcha: =
+Chichewa: 치체와
+Chinese (Hong Kong): 중국어 (홍콩)
+Chinese (PRC): 중국어 (PRC)
+Chinese (Simplified/GB2312): 중국어 (간체 / GB2312) 
+Chinese (Singapore): 중국어 (싱가포르)
+Chinese (Taiwan): 중국어 (대만)
+Chinese (Traditional/Big5): 중국어 (번체 / Big5)
+Chinook: 치누크
+Chipewyan: =
+Choctaw: 촉토
+Chuukese: =
+Chuvash: 추 바시
+Coptic: 콥트 말
+Cornish: 콘월 말
+Corsican: 코르시카 어
+Cree: 크리
+Creek: 작은 만
+Croatian: 크로아티아어
+Czech: 체코 사람
+Dakota: 다코타
+Danish: 덴마크 말
+Dargwa: =
+Delaware: 델라웨어
+Dinka: 딩카
+Dogri: 도그 리
+Dogrib: =
+Duala: =
+Dutch (Belgium): 네덜란드어 (벨기에)
+Dutch: 네덜란드 사람
+Dyula: 듈라
+Dzongkha: 종카
+Edo: 에도
+Efik: 에픽
+Ekajuk: =
+Elamite: 엘라 마이트
+English (Australia): 영어 (호주)
+English (Belize): 영어 (벨리즈)
+English (Canada): 영어 (캐나다)
+English (Ireland): 영어 (아일랜드)
+English (Jamaica): 영어 (자메이카)
+English (New Zealand): 영어 (뉴질랜드)
+English (Philippines): 영어 (필리핀)
+English (South Africa): 영어 (남아프리카)
+English (Trinidad & Tobago): 영어 (트리니다드 토바고)
+English (United Kingdom): 영어 (영국)
+English (United States): 영어 (미국)
+English (Zimbabwe): 영어 (짐바브웨)
+English: 영어-미국
+Erzya: =
+Esperanto: 에스페란토 말
+Estonian: 에스토니아 사람
+Ewe: 암양
+Ewondo: 에원도
+Fang: 송곳니
+Fanti: 판티
+Faroese: 페로 어
+Fijian: 피지
+Filipino: 필리핀어
+Finnish: 핀란드어
+Fon: 폰
+French (Belgium): 프랑스어 (벨기에)
+French (Canada): 프랑스어 (캐나다)
+French (France): 프랑스어 (프랑스)
+French (Luxembourg): 프랑스어 (룩셈부르크)
+French (Monaco): 프랑스어 (모나코)
+French (Switzerland): 프랑스어 (스위스)
+French: 프랑스 국민
+Frisian (Eastern): 프리지아 어 (동부)
+Frisian (Northern): 프리지아 어 (북부)
+Frisian (Western): 프리지아 어 (서부)
+Frisian: 프리지아 어
+Friulian: =
+Fulah: 풀라
+Ga: =
+Galibi: 갈리 비
+Galician: 갈리시아어
+Ganda: 간다
+Gayo: 가요
+Gbaya: =
+Geez: 이런
+Georgian: 조르지아 주 사람
+German (Austria): 독일어 (오스트리아)
+German (Germany): 독일어 (독일)
+German (Liechtenstein): 독일어 (리히텐슈타인)
+German (Luxembourg): 독일어 (룩셈부르크)
+German (Standard): 독일어 (표준)
+German (Switzerland): 독일어 (스위스)
+German: 독일 사람
+Gilbertese: =
+Gondi: 곤디
+Gorontalo: =
+Gothic: 고딕
+Grebo: =
+Greek: 그리스 어
+Greenlandic: 그린란드 어
+Guarani: 과라니
+Gujarati: 구자라트 어
+Gwich&#39;in: Gwich'in
+Haida: 하이다
+Haitian (Creole): 아이 티어 (크리올 어)
+Haitian: 아이티 섬 사람
+Hausa: 하우사
+Hawaiian: 하와이안
+Hebrew: 헤브라이 사람
+Herero: =
+Hiligaynon: =
+Hindi: 힌디 어
+Hiri Motu: 히리 모투
+Hittite: 히타이트
+Hmong: 몽
+Holo (Taiwanese): Holo (대만어)
+Hungarian: 헝가리 인
+Hupa: =
+Iban: 이반
+Icelandic: 아이슬란드 어
+Ido: 나는한다
+Igbo: =
+Iloko: 일 로코
+Indonesian: 인도네시아 인
+Ingush: =
+Inuktitut: =
+Inupiaq: 이 누피 아크
+Iranian: 이란
+Irish (Gaelic): 아일랜드어 (게 일어)
+Irish: 아일랜드의
+Iroquoian: =
+Italian (Switzerland): 이탈리아어 (스위스)
+Italian: 이탈리아 사람
+Japanese: 일본어
+Javanese: 자바어
+Judeo-Arabic: 유대-아랍어
+Judeo-Persian: 유대-페르시아어
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: 칼 미크
+Kamba: =
+Kannada: 칸나다어
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: 카렐 리안
+Kashmiri: 카시미르 말
+Kashubian: =
+Kawi: 카위
+Kazakh: 카자흐어
+Khasi: 카시
+Khmer (Central): 크메르어 (중부)
+Khmer: 크메르어
+Khotanese: =
+Kikuyu: =
+Kimbundu: 김 분두
+Kinyarwanda: 키냐 르완다 어
+Kirghiz: 키르기즈 사람
+Klingon: 클링 온
+Komi: 코미
+Kongo: 콩고
+Konkani: =
+Korean (Johab): 한국어 (Johab)
+Korean (North): 한국어 (북부)
+Korean (South): 한국어 (남한)
+Korean: 한국어
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: 쿠르드어
+Kutenai: 쿠테 나이
+Kyrgyz: 키르기스
+Ladino: 라 디노
+Lahnda: =
+Lamba: 람바
+Lao: 라오 어
+Latin: 라틴어
+Latvian: 라트비아 사람
+Lezghian: 레즈 기안
+Limburgan: =
+Lingala: 링 갈라
+Lithuanian: 리투아니아 사람
+Lojban: =
+Lozi: 로지
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: 룩셈부르크 어
+Macedonian: 마케도니아 어
+Madurese: =
+Magahi: 마 가히
+Maithili: 마이 틸리
+Makasar: 마카 사르
+Malagasy: 마다가스카르 사람
+Malay: 말레이 사람
+Malayalam: 말라 얄 람어
+Maldivian: 몰디브
+Maltese: 몰티즈
+Manchu: 청어
+Mandar: 만다
+Mandingo: 만 딩고
+Manipuri: =
+Manx: 맨 섬 사람
+Maori: 마오리족
+Mapuche: 마 푸체
+Marathi: 마라 티어
+Mari: 마리
+Marshallese: 마샬
+Marwari: 마르 와리
+Masai: 마사이
+Mayan: 마야
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: 미 낭카 바우
+Mirandese: =
+Mohawk: 모 호크
+Moksha: 목샤
+Moldavian: 몰다비아 사람
+Mongo: 몽고
+Mongolian: 몽고 어
+Montenegrin: 몬테네그로 사람
+Moroccan: 모로코 사람
+Mossi: =
+Myanmar: 미얀마
+Māori: 마오리족
+N&#39;Ko: N'Ko
+Nauru: 나우루
+Navajo: 나바호 어
+Ndebele (North): 은데 벨레 (북부)
+Ndebele (South): 은데 벨레 (남부)
+Ndebele: =
+Ndonga: =
+Neapolitan: 나폴리
+Nepali: 네팔어
+Nias: =
+Niuean: =
+Nogai: 노가이
+Norse: 고대 스칸디나비아 인
+Norwegian (Bokmål): 노르웨이어 (복몰)
+Norwegian (Nynorsk): 노르웨이어 (뉘 노르 스크)
+Norwegian: 노르웨이 인
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: 오크 어
+Odia: =
+Ojibwa: 오지 브와
+Oriyia: =
+Oromo: 오 로모
+Osage: 오세이지
+Ossetic: 골조
+Pahlavi: 팔라 비
+Palauan: 팔라우
+Pali: 팔리 어
+Pampanga: 팜 팡가
+Pangasinan: 팡 가시 난
+Panjabi: 판자비
+Papiamento: 파 피아 멘토
+Pashto: 파슈토어
+Pedi: 페디
+Persian (Farsi): 페르시아어 (페르시아어)
+Persian (Iran): 페르시아어 (이란)
+Persian: 페르시아 인
+Phoenician: 페니키아 인
+Pohnpeian: 폰 페이
+Polish: 광택
+Portuguese: 포르투갈 인
+Portuguese/Brazil: 포르투갈어 / 브라질
+Punjabi (India): 펀자 브어 (인도)
+Punjabi (Pakistan): 펀자 브어 (파키스탄)
+Punjabi: =
+Quechua: 케 추아 어
+Rajasthani: 라자스탄
+Rapanui: 라파 누이
+Rarotongan: 라로 통간
+Rhaeto-Romanic: =
+Romanian: 루마니아 사람
+Romansh: =
+Romany: 집시
+Rundi: =
+Russian (Moldavia: 러시아어 (Moldavia
+Russian (Republic of Moldova): 러시아어 (몰도바 공화국)
+Russian: 러시아인
+Sami (Inari): 사미 (이나 리)
+Sami (Lappish): =
+Sami (Lule): 사미 (룰)
+Sami (Northern): 사 미어 (북부)
+Sami (Skolt): 사미 (Skolt)
+Sami (Southern): 사 미어 (남부)
+Sami: 사미
+Samoan: 사모아
+Samoli: 사 몰리
+Sandawe: =
+Sango: 상고
+Sanskrit: 산스크리트
+Santali: =
+Sardinian: 사르디니아 사람
+Sasak: 사삭
+Scots (Gaelic): 스코틀랜드 어 (게 일어)
+Selkup: =
+Serbian (Upper): 세르비아어 (상단)
+Serbian: 세르비아 사람
+Serer: =
+Sesotho: 세 소토
+Shan: =
+Shona: 쇼나
+Sichuan Yi: 이 쓰촨
+Sicilian: 시칠리아
+Sindhi: 신디
+Sinhala: 신 할라 어
+Slavic: 슬라브어
+Slovak: 슬로바키아 사람
+Slovenian: 슬로베니아
+Sogdian: =
+Somali: 소말리아
+Somani: 소 마니
+Songhai: 송하이
+Soninke: =
+Sorbian (Lower): 소르 비아 어 (낮은)
+Sorbian (Upper): 소르 비아 어 (상단)
+Sorbian: 소르 비아 어
+Sotho: 소토
+Spanish (Argentina): 스페인어 (아르헨티나)
+Spanish (Bolivia): 스페인어 (볼리비아)
+Spanish (Chile): 스페인어 (칠레)
+Spanish (Colombia): 스페인어 (콜롬비아)
+Spanish (Costa Rica): 스페인어 (코스타리카)
+Spanish (Dominican Republic): 스페인어 (도미니카 공화국)
+Spanish (Ecuador): 스페인어 (에콰도르)
+Spanish (El Salvador): 스페인어 (엘살바도르)
+Spanish (Guatemala): 스페인어 (과테말라)
+Spanish (Honduras): 스페인어 (온두라스)
+Spanish (Mexico): 스페인어 (멕시코)
+Spanish (Nicaragua): 스페인어 (니카라과)
+Spanish (Panama): 스페인어 (파나마)
+Spanish (Paraguay): 스페인어 (파라과이)
+Spanish (Peru): 스페인어 (페루)
+Spanish (Puerto Rico): 스페인어 (푸에르토 리코)
+Spanish (Spain): 스페인어 (스페인)
+Spanish (Uruguay): 스페인어 (우루과이)
+Spanish (Venezuela): 스페인어 (베네수엘라)
+Spanish: 스페인의
+Sranan Tongo: 스 라난 통고
+Sukuma: 스 쿠마
+Sumerian: 수메르어
+Sundanese: 순 다어
+Susu: 수수
+Sutu: =
+Swahili: 스와힐리어
+Swati: =
+Swedish (Finland): 스웨덴어 (핀란드)
+Swedish (Sweden): 스웨덴어 (스웨덴)
+Swedish: 스웨덴어
+Syriac: 시리아
+Tagalog: 타갈로그어
+Tahitian: 타히티
+Tai: 타이
+Taiwan: 대만
+Tajik: 타직
+Tamashek: =
+Tamil: 타밀 사람
+Tatar: 타타르
+Telugu: 텔루구 어
+Tereno: =
+Tetum: =
+Thai: 태국어
+Tibetan: 티베트어
+Tigre: =
+Tigrinya: 티 그리 냐
+Timne: =
+Tlingit: =
+Tok Pisin: 톡 피신
+Tokelau: 토켈 라우
+Tonga (Nytmhasa): 통가 어 (Nytmhasa)
+Tonga (Tonga Islands): 통가 (통가 제도)
+Tonga: 통가
+Tsimshian: 침 쉬안
+Tsonga: =
+Tswana: 츠와 나
+Tumbuka: 툼 부카
+Turkish: 터키어
+Turkmen: 투르크멘 말
+Tuvinian: 투비 니안
+Twi: =
+Udmurt: 우드 무 르트
+Ugaritic: 우가 리트 어
+Ukrainian: 우크라이나 인
+Umbundu: 움 분두
+Urdu: 우르두어
+Uyghur: 위구르어
+Uzbek: 우즈벡
+Vai: 바이
+Venda: =
+Vietnamese: 베트남어
+Volapük: =
+Votic: 보틱
+Wakashan: 와카 산
+Walloon: 왈론 사람
+Waray: 와 레이
+Washo: =
+Welsh: 웨일스 말
+Wolaitta: =
+Wolof: 월 로프
+Xhosa: 코사
+Yakut: 야 쿠트
+Yao: 야오
+Yapese: =
+Yiddish: 이디시어
+Yorùbá: 요 루바
+Yupik: 유픽
+Zande: 잔데
+Zapotec: =
+Zaza: 자자
+Zenaga: =
+Zhuang: =
+Zulu: 줄루 족
+Browser-defined: 브라우저 정의
+event: 행사
+journal: 일지
+0: =
+1: =
+2: =
+3: 삼
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: 잘못된 사용자 로그인
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: 잘못된 비밀번호
+no such user: 그런 사용자 없음
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: 비활성화 된 계정
 
 ########################################
 # Page: includes/xcal.php
 #
-Unnamed Event: �̸����� ���
+Interval: 간격
+Months: 개월
+Month Days: 월 일
+Days: 일
+Weeks: 주
+Position: 위치
+Until: 까지
+Count: 카운트
+Inclusion Dates: 포함 날짜
+Exclusion Dates: 제외 날짜
+Event Imported: 가져온 이벤트
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: 바이트
+kb: KB
+Mb: =
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
 #
-Notification: �뺸
+Notification: 통보
+authenticate: SMTP 오류 : 인증 할 수 없습니다.
+connect_host: SMTP 오류 : SMTP 호스트에 연결할 수 없습니다.
+data_not_accepted: SMTP 오류 : 데이터가 허용되지 않습니다.
+encoding: 알 수없는 인코딩 :
+execute: 실행할 수 없음 :
+file_access: 파일에 액세스 할 수 없습니다 :
+file_open: 파일 오류 파일을 열 수 없습니다 :
+from_failed: 다음 보낸 사람 주소가 실패했습니다.
+instantiate: 메일 기능을 인스턴스화 할 수 없습니다.
+mailer_not_supported: 우편물은 지원되지 않습니다
+provide_address: 수신자 이메일 주소를 하나 이상 제공해야합니다.
+recipients_failed: SMTP 오류 : 다음 수신자가 실패했습니다.
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/classes/captcha/captcha.php
 #
-Invalid color for document background.: ��� ���� Ʋ��
-Invalid color for document title.: ���� ���� Ʋ��
-Invalid color for table cell background.: ���̺� �� ���� Ʋ��
-Invalid color for table cell background for today.: ���� ��¥ ǥ�� ���� Ʋ��
-Color format should be RRGGBB.: ���� ������ '#RRGGBB' �̾�� �մϴ�. ��)"#FF0000" (����)
+Enter Characters Seen in Graphic: 그래픽에 표시된 문자 입력
+Enter the correct letters and numbers...: 이미지의 정확한 문자와 숫자를 텍스트 상자에 입력합니다. 이 작은 테스트는 악성 봇에 대한 액세스 제한 역할을합니다. 이 그래픽이 읽기 어려운 경우 페이지를 새로 고침하세요.
+Challenge/Response: 도전 / 대응
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: 이 항목의 날짜와 시간을 변경 하시겠습니까?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: ��� ������ �Է����� �ʾҽ��ϴ�.
-You have not entered a valid time of day: ��ȿ�� ����/�ð��� �ƴմϴ�.
+You have not entered a Brief Description: 간단한 설명을 입력하지 않았습니다.
+time prior to work hours...: 근무 시간 전 시간 ...
+Invalid Event Date: 잘못된 이벤트 날짜
+Please add a participant: 참가자를 추가하십시오
+Invalid Date: 잘못된 날짜
+You have not entered a valid time of day: 유효한 시간을 입력하지 않았습니다.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: 캘린더 ID는 비워 둘 수 없습니다.
+First and last names cannot both be blank.: 성과 이름은 모두 비워 둘 수 없습니다.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: 잘못된 색상
+Color format should be RRGGBB.: 색상 형식은 #RRGGBB 여야합니다.
+URL cannot be blank.: URL은 비워 둘 수 없습니다.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: 파일 형식이 가져 오기 형식과 일치하지 않습니다.
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: 배경 색상 틀림
+Invalid color for document title.: 제목 색상 틀림
+Invalid color for table cell background.: 테이블 셀 배경색 틀림
+Invalid color for table cell background for today.: 오늘 날짜 표시 색상 틀림
+Invalid work hours.: 근무 시간이 잘못되었습니다.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: 서버 URL은 슬래시 (/)로 끝나야합니다.
+Invalid color for table grid.: 표 그리드의 색상이 잘못되었습니다.
+Invalid color for event popup background.: 이벤트 팝업 배경 색상이 잘못되었습니다.
+Invalid color for event popup text.: 이벤트 팝업 텍스트의 색상이 잘못되었습니다.
+Invalid color for table header text.: 테이블 헤더 텍스트의 색상이 잘못되었습니다.
+Invalid color for table header background.: 표 헤더 배경 색상이 잘못되었습니다.
+Server URL is required.: 서버 URL이 필요합니다.
+Invalid Color: 잘못된 색상
+Database Name: 데이터베이스 이름
+Full Path (no backslashes): 전체 경로 (백 슬래시 없음)
+The password contains illegal characters.: 비밀번호에 잘못된 문자가 있습니다.
+Error you must specify a Single-User Login: 단일 사용자 로그인을 지정해야하는 오류
+Could not find XXX.: XXX을 찾을 수 없습니다.
+Could not find XXX in DOM.: DOM에서 XXX을 찾을 수 없습니다.
 
 ########################################
 # Page: includes/menu/index.php
 #
-Unapproved Events: �̽��� ���
+This Week: 이번 주
+This Month: 이번 달
+This Year: 올해
+Exit: 출구
+Add New Event: 새 이벤트 추가
+Delete Entries: 항목 삭제
+My Views: 내 견해
+Manage Calendar of: 캘린더 관리
+My Reports: 내 보고서
+My Profile: 내 프로필
+Public Calendar: 공개 캘린더
+Unapproved Events: 미승인 행사
+User Manager: 사용자 관리자
+Help Contents: 도움말 내용
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: 데이터베이스 캐시 디렉토리
+Create New: 새로 만들기
+Failure Reason: 실패 이유 :
+You must manually create database: 데이터베이스를 수동으로 생성해야합니다.
+Single-User: 단일 사용자
+Test Settings: 테스트 설정
+Timezone Conversion Successful: 시간대 변환 성공
+WebCalendar Installation Wizard Step XXX: WebCalendar 설치 마법사 단계 XXX
+Password Accepted: 수락 된 암호
+Successful Login: 성공적인 로그인
+Password Incorrect: 비밀번호 오류
+Invalid Login: 로그인 오류
+Display Errors: 오류 표시
+File Uploads: 파일 업로드
+Allow URL fopen: URL fopen 허용 (원격 캘린더를 사용하는 경우에만 필요)
+Safe Mode: 안전 모드
+Safe Mode Allowed Vars: 안전 모드 허용 변수 (안전 모드가 켜져있는 경우에만 TZ 필요)
+GD: GD (그라디언트 이미지 배경에 필요)
+Passwords do not match!: 비밀번호가 일치하지 않습니다!
+Unable to write password to settings.php file: "settings.php"파일에 암호를 쓸 수 없습니다.
+Password Updated: 비밀번호 업데이트
+Password has been set: 비밀번호가 설정되었습니다.
+Connection Successful...: 연결 성공 설치를 계속하려면 다음 페이지로 이동하십시오.
+Correct your entries or click the Create New...: 항목을 수정하거나  새로 만들기 버튼을 클릭하여 설치를 계속하십시오.
+Correct your entries and try again.: 항목을 수정하고 다시 시도하십시오.
+XXX does not exist: XXX이 존재하지 않습니다.
+XXX is not writable: XXX은 쓸 수 없습니다.
+Error Converting Timezone: 시간대 변환 오류
+Error Unable to write to file XXX.: 오류 XXX 파일에 쓸 수 없습니다.
+Please change the file permissions of this file.: 이 파일의 파일 권한을 변경하십시오.
+Please change includes dir permission: 다른 사용자가 쓸 수 있도록 "includes"디렉토리의 파일 권한을 변경하십시오.
+Your settings have been saved.: 설정이 저장되었습니다.
+OFF: 떨어져서
+ON: 의 위에
+WebCalendar Setup Wizard: WebCalendar 설정 마법사
+This installation wizard will guide you...: 이 설치 마법사는 기본 WebCalendar 설치 설정을 안내합니다.<br>도움말 및 문제 해결은 다음을 참조하십시오.<br>
+System Administrators Guide: 시스템 관리자 가이드
+Frequently Asked Questions: 자주 묻는 질문
+FAQ: 자주하는 질문
+Troubleshooting: 문제 해결
+Getting Help: 도움을 받다
+Upgrading Guide: 업그레이드 가이드
+User Supported Wiki: 사용자 지원 위키
+PHP Version Check: PHP 버전 확인
+Check to see if PHP 7.1.0 or greater is installed.: PHP 7.1.0 이상이 설치되어 있는지 확인하십시오.
+PHP version: PHP 버전
+PHP Settings: PHP 설정
+Detailed PHP Info: 자세한 PHP 정보
+settings.php Status: "settings.php"상태
+Session Check: 세션 확인
+To test the proper operation of sessions...: 세션이 제대로 작동하는지 테스트하려면이 페이지를 새로 고침하세요. 세션 카운터가 매번 증가하는 것을 볼 수 있습니다.
+SESSION COUNTER: 세션 카운터
+The file permissions of settings.php are set...: "settings.php"의 파일 권한은 설치 프로그램이 수정할 권한이 없도록 설정되어 있습니다. 계속하려면 다음 파일의 파일 권한을 변경하십시오.
+The file permissions of the includes directory are set...: include 디렉토리의 파일 권한은 설치 프로그램이 새 파일을 생성 할 권한이 없도록 설정됩니다. 계속하려면 다음 디렉토리의 권한을 변경하십시오.
+Your settings.php file appears to be valid.: "settings.php"파일이 유효한 것 같습니다.
+Configuration Wizard Password: 구성 마법사 비밀번호
+Create Settings File Password: 설정 파일 비밀번호 생성
+db setup directions...: 이 섹션에서는 데이터베이스 서버에 대한 연결을 설정하고 테스트합니다. 제공된 계정 정보에는 데이터베이스, 테이블 및 사용자를 생성 할 수있는 전체 권한이 있어야합니다. 이것이 불가능하거나 데이터베이스 액세스가 제한된 경우 데이터베이스를 수동으로 구성해야합니다.
+Database Status: 데이터베이스 상태
+Supported databases for your PHP installation: PHP 설치에 지원되는 데이터베이스
+Your current database settings are able to access the database.: 현재 데이터베이스 설정은 데이터베이스에 액세스 할 수 있습니다.
+Please Test Settings: 설정을 테스트하십시오
+Your current database settings are not able...: 현재 데이터베이스 설정이 데이터베이스에 액세스 할 수 없거나 아직 테스트되지 않았습니다.
+Database Settings: 데이터베이스 설정
+Database Type: 데이터베이스 유형
+Server: 섬기는 사람
+Connection Persistence: 연결 지속성
+All your database tables appear to be up...: 모든 데이터베이스 테이블이 최신 상태로 나타납니다. 다음 페이지로 이동하여 WebCalendar 설정을 완료 할 수 있습니다.
+This appears to be a new installation...: 이것은 새로운 설치 인 것 같습니다. 이것이 맞지 않으면 이전 페이지로 돌아가 설정을 수정하십시오.
+This appears to be an upgrade...: 버전&nbsp;XXX에서&nbsp;YYY 로의 업그레이드 인 것 같습니다.
+The database requires some data input...: 데이터베이스에 일부 데이터 입력이 필요합니다. 데이터베이스 업데이트를 클릭하여 업그레이드를 완료합니다.
+In this section we will perform...: 이 섹션에서는 데이터베이스를 필요한 수준으로 올리기 위해 변경을 수행합니다. 완전히 지원되는 데이터베이스를 사용하는 경우이 단계가 자동으로 수행됩니다. 그렇지 않은 경우 필요한 SQL이 표시 될 수 있으며 데이터베이스 서버 쿼리 창에 잘라내어 붙여 넣을 수 있습니다.
+No database actions are required.: 데이터베이스 작업이 필요하지 않습니다.
+The following database actions are required: 다음 데이터베이스 작업이 필요합니다.
+ODBC Underlying Database: ODBC 기본 데이터베이스 :
+Automatic installation not supported: 데이터베이스 유형에 대해 자동 설치가 완전히 구현되지 않았습니다. 제공된 SQL을 사용하여 필요한 테이블을 수동으로 생성해야합니다. 계속하려면  SQL 표시를 클릭하십시오. 잘라내어 데이터베이스 쿼리 창에 붙여 넣습니다.
+This may take several minutes to complete: 완료하는 데 몇 분 정도 걸릴 수 있습니다.
+Install Database: 데이터베이스 설치
+Update Database: 데이터베이스 업데이트
+Display Required SQL: 필수 SQL 표시
+Return to previous page after processing SQL.: 이 SQL을 수동으로 처리 한 후 스크립트가 변경 사항을 감지 할 수 있도록 이전 페이지로 돌아가 데이터베이스를 다시 테스트해야합니다.
+This is the final step in setting up your WebCalendar Installation.: 이것은 WebCalendar 설치 설정의 마지막 단계입니다.
+Timezone Conversion: 시간대 변환
+It appears that you have NOT converted...: 기존 WebCalendar 이벤트 데이터를 GMT로 변환하지 않은 것 같습니다. 이 경우이 알림을 무시하고 전환을 진행하지 않을 수 있습니다. 새로 설치하는 경우이 알림을 무시할 수도 있습니다.
+Convert Data to GMT: 데이터를 GMT로 변환
+Application Settings: 어플리케이션 설정
+HTTP-based authentication was not detected...: HTTP 기반 인증이 감지되지 않았습니다. 아래의 '사용자 인증'선택 항목에서 '웹 서버'를 선택하려면 웹 서버를 다시 구성해야합니다.
+HTTP-based authentication was detected...: HTTP 기반 인증이 감지되었습니다. 사용자 인증은 웹 서버에서 처리됩니다. 아래의 '사용자 인증'선택 목록에서 '웹 서버'를 선택해야합니다.
+Create Default Admin Account: 기본 관리자 계정 만들기
+(Admin Account Not Found): (관리자 계정을 찾을 수 없음)
+User Authentication: 사용자 인증
+Web-based via WebCalendar (default): WebCalendar를 통한 웹 기반 (기본값)
+Web Server (not detected): 웹 서버 (감지되지 않음)
+Web Server (detected): 웹 서버 (감지 됨)
+None (Single-User): 없음 (단일 사용자)
+Read-Only: 읽기 전용
+Environment: 환경
+Production: 생산
+Development: 개발
+Save Settings: 설정 저장
+Launch WebCalendar: WebCalendar 시작
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: 표 'XXX'업데이트 오류 : YYY.
+Conversion Successful: 전환 성공
+Perl script required: WebCalendar의 이전 버전은 데이터를 변환하기 위해 PERL 스크립트를 실행해야합니다. /tools/upgrade_to_0.9.7.pl을 실행 한 다음이 페이지로 돌아가 계속하십시오.
+previous version requires updating several tables: 이전 버전의 WebCalendar에서는 여러 데이터베이스 테이블을 업데이트해야합니다.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: 미리보기를 사용할 수 없습니다.
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: 데이터베이스에 연결하는 동안 오류가 발생했습니다.
+Include Path: 경로 포함
+Deleting events for: 에 대한 이벤트 삭제
+Importing events for: 이벤트 가져 오기
+No data returned from: 반환 된 데이터 없음
+for non-user calendar: 비 사용자 캘린더 용
+No Remote Calendars found: 원격 캘린더를 찾을 수 없습니다.
+Remote Calendars not enabled: 원격 캘린더가 활성화되지 않았습니다.
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: 이벤트 ID를 찾을 수 없습니다.
+could not find event id XXX in database.: 데이터베이스에서 이벤트 ID XXX을 (를) 찾을 수 없습니다.
+task: 직무
+This is a reminder for the XXX detailed below.: 아래에 자세히 설명 된 XXX에 대한 알림입니다.
+Pecentage Complete: 페 센티 지 완료
+Reminder: 조언
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: 지원되지 않는 작업 : XXX.
+No event id specified.: 지정된 이벤트 ID가 없습니다.
+Not authorized (not admin).: 권한이 없습니다 (관리자가 아님).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: YYY부터 ZZZ까지 XXX에 대한 이벤트를 확인합니다.
+Found XXX events in time range.: 시간 범위에서 XXX 개의 이벤트를 찾았습니다.
+Event id=XXX YYY at ZZZ on AAA.: AAA의 ZZZ에서 이벤트 ID = XXX "YYY".
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX 사용자가 다른 사용자의 캘린더를 볼 수 있도록 허용합니다.
+Error Email reminders disabled for user XXX.: 오류 : 사용자 "XXX"에 대한 이메일 알림이 비활성화되었습니다.
+Number of site_extras XXX.: 사이트 _ 확장자 수 : XXX.
+Reminder set for event.: 이벤트에 대한 알림이 설정되었습니다.
+Mins Before XXX.: 이전 분 : XXX.
+Event time is XXX.: 이벤트 시간은 XXX입니다.
+Remind time is XXX.: 알림 시간 : XXX.
+Reminders for user XXX, login YYY.: 사용자 "XXX"에 대한 알림, 로그인 "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: 사용자 "XXX"에 대한 승인이 취소되었습니다.
+Event id=XXX YYY already sent.: 이벤트 ID = XXX "YYY"가 이미 전송되었습니다.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: 단일 사용자 모드에는 로그인이 필요하지 않습니다.
+No login required for HTTP authentication.: HTTP 인증에는 로그인이 필요하지 않습니다.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: 로그인에 잘못된 문자가 있습니다.
+Username XXX does not exist.: 사용자 이름 "XXX"가 존재하지 않습니다.
+You cannot remove admin rights from yourself!: 자신의 관리자 권한을 제거 할 수 없습니다!
+Unknown error saving user: 사용자 저장 중 알 수없는 오류입니다.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: 이벤트 ID : XXX에 대한 참가자가 없습니다.
+Db error Could not find event id XXX.: Db 오류 : 이벤트 ID XXX을 (를) 찾을 수 없습니다.
+Error Could not find event id XXX in database.: 오류 : 데이터베이스에서 이벤트 ID XXX을 (를) 찾을 수 없습니다.

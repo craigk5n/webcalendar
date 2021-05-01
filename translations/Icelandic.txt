@@ -1,9 +1,46 @@
-# See translations/English-US.txt for instructions.
+# Icelandic is
+#
+# Sniðið samanstendur af valfrjálsum haus:
+#
+# Þýtt af: nafn þitt og netfang
+# Síðasta uppfærsla: dagsetning þýðingar
+# (Þ.mt leiðandi „#“ og allar athugasemdir sem fyrri þýðendur hafa sett fram.
+# FYRSTA auða línan endar þessar athugasemdir við hausinn.)
+#
+# Fylgt eftir af eins mörgum og þörf er á:
+#
+# Ensk orðasamband: þýðing
+# (Einn í línu. ÁN leiðandi „#“.
+# „Enska setningin:“, þar með talinn ristill “:“, er veitt af
+# WebCalendar verktaki. Þinn hluti er „þýðingin“.)
+#
+# Verkfæraskráin inniheldur tvö perl forskriftir til að hjálpa þér:
+# - check_translation.pl
+# gefur til kynna hvort tekist hafi að þýða allan texta.
+# - update_translation.pl
+# mun flokka forritaskrárnar til að finna alla þýða ('frasa') og
+# tooltip ('phrase'). Það mun raða setningunum í samræmi við síðuna
+# (skrá) sem inniheldur fyrstu uppákomuna. Valfrjálst getur það merkt
+# setningar sem eru ekki ennþá þýddar með því að setja
+#  << MISSING >>
+# á línunni fyrir ofan setninguna. Og, ef setningin er skammstöfun,
+# það mun innihalda enska textann á línunni fyrir neðan setninguna.
+#
+# Athugið: Ég er að reyna að minnka heildarstærð skráar. Ef „þýðingin“
+# orð / setning er eins á þínu tungumáli og ensku, notaðu bara „=“ tákn.
+#
+# Athugasemd: Þú munt taka eftir færslunni fyrir „May_“ hér að neðan. Það er ástæða fyrir þessu.
+# Þýddu „May_“ að fullu mánaðarnafninu og „May“ til,
+# venjulega þriggja stafa, skammstöfun í mánuði (eins og "október" fyrir "október").
 #
 # Translated by: Kristofer Arnar Einarsson kristofer@kristofer.com
 # Last update: 18 August 2000
 #
-# Translation last updated on 10-14-2008
+# Ég notaði Google translate fyrir þetta.
+# Það ætti að duga þar til móðurmáli getur staðfest það.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -43,376 +80,2311 @@ __month__ __yyyy__: =
 # Page: about.php
 #
 Title: VefDagatal
+version XXX: útgáfa XXX
+WebCalendar is a PHP application used...: WebCalendar er PHP forrit notað til að halda dagatali fyrir einn notanda eða internet / innra net hóp notenda. Það er einnig hægt að stilla það sem viðburðadagatal.
+Credits: Einingar
+About: Um það bil
+OK: Allt í lagi
 
 ########################################
 # Page: access.php
 #
+Database error XXX.: Gagnagrunnsvilla: XXX.
+DEFAULT CONFIGURATION: STANDARLEG SAMSETNING
 Go: Velja
 Save: Vista
-Admin: Stj�rnandi
+Undo: Afturkalla
+Public Access: Aðgangur almennings
+Admin: Stjórnandi
+User Access Control: Aðgangsstýring notanda
+Allow Access to Other Users Calendar: Leyfa aðgang að dagatali annarra notenda
+Grant This User Access to My Calendar: Veittu þessum notanda aðgang að dagatalinu mínu
+Type: Tegund
+Calendar: Dagatal
+View Event: Skoða viðburð
+View: Útsýni
+Edit: Breyta
+Approve/Reject: Samþykkja / hafna
+Events: Viðburðir
+Tasks: Verkefni
+Journals: Tímarit
+Can Invite: Get boðið
+Can Email: Getur sent tölvupóst
+Can See Time Only: Get aðeins séð tíma
+Assistant: Aðstoðarmaður
+Select All: Velja allt
+Clear All: Hreinsa allt
 Public: Allir
-Confidential: Tr�na�arm�l
+Confidential: Trúnaðarmál
 Private: Einka
+
+########################################
+# Page: activity_log.php
+#
+Next: Næst
+Previous: Fyrri
 
 ########################################
 # Page: add_entry.php
 #
-confidential: tr�na�arm�l
+Event XXX is already on your calendar.: Atburður XXX er þegar á dagatalinu þínu.
+Invalid entry id XXX.: Ógilt færsluauðkenni: „XXX“.
+a XXX event may not be added to your calendar: Þetta er XXX viðburður og ekki er víst að það verði bætt við dagatalið þitt.
+confidential: trúnaðarmál
 private: einka
+Error adding event XXX.: Villa við að bæta viðburði: XXX.
 
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Ógilt stillingarheiti „XXX“.
 Select: Velja
 Day: Dagur
 Week: Vika
-Month: M�nu�ur
-Year: �r
+Month: Mánuður
+Year: Ár
+Bottom: Neðst
+Top: Toppur
+Anyone: Hver sem er
+Participant: Þátttakandi
 Settings: Stillingar
+Groups: Hópar
+NonUser Calendars: Notendadagatöl
+Other: Annað
+Email: Tölvupóstur
 Colors: Litir
 Document background: Bakgrunnur
 Document title: Titill
-Table cell background: Bakgrunnur d�lka
-Table cell background for current day: Bakgrunnur d�lka n�verandi dags
-Help: Hj�lp
-language-help: Tilgreinir tungum�l.
-Language: Tungum�l
+Document text: Skjalatexti
+My event text: Atburðatexti minn
+Table grid color: Litur töflureits
+Table header background: Bakgrunnur töfluhausa
+Table header text: Texti töfluhausa
+Table cell background: Bakgrunnur dálka
+Table cell background for current day: Bakgrunnur dálka núverandi dags
+Table cell background for days with events: Tafla klefi bakgrunnur fyrir daga með atburðum
+Table cell background for weekends: Bakgrunnur borðfrumna um helgar
+Table cell background for other month: Bakgrunnur borðfruma fyrir annan mánuð
+Week number color: Vikunúmer litur
+Event popup background: Popups bakgrunnur viðburðar
+Event popup text: Uppsprettutexti viðburðar
+System Settings: Kerfisstillingar
+Help: Hjálp
+System options: Kerfisvalkostir
+app-name-help: Tilgreinir heiti forritsins sem mun birtast í titilstiku vafrans fyrir allar síður og á innskráningarsíðunni. Gildið sem þú tilgreinir hér verður flett upp í þýðingaskránni sem gerir þér kleift að útvega mismunandi titla fyrir mismunandi tungumál.
+Application Name: Umsóknarheiti
+Translated Name (XXX): Þýtt nafn (XXX)
+server-url-help: Tilgreinir grunnslóð fyrir forritið. Þetta verður innifalið þegar sendar eru áminningar og tilkynningar í tölvupósti.
+Server URL: Vefslóð miðlara
+home-url-help: Tilgreinir heimaslóð fyrir forritið. Þetta getur verið algjört eða afstætt
+Home URL: Heimaslóð
+language-help: Tilgreinir tungumál.
+Language: Tungumál
+Your browser default language is XXX.: Sjálfgefið tungumál vafrans þíns er „XXX“.
+Allow user to use themes: Leyfa notanda að nota þemu
+themes-help: Leyfir fjöldauppfærslu á stillingum. Smástafir eru eingöngu notendaforrit.
+Themes: Þemu
+AVAILABLE THEMES: TILGÖNG ÞEMA
 None: Engin
-display-week-starts-on: Tilgreinir hvort vikan byrjar � sunnudegi e�a m�nudegi. Ef m�nudagur er valinn munu vikun�merin � ISO viku n�mer.
-Week starts on: Vika byrjar �
-time-format-help: Tilgreinir � hva�a t�masni� � a� nota:<br /><i>12 t�ma:</i> Birtir t�ma sem 3fh, 8:30eh, o.s.frv.<br /><i>24 t�ma:</i> Birtir t�ma sem 300, 2030, o.s.frv.
+Preview: Forskoða
+Site customization: Sérsniðin staður
+custom-script-help: Leyfir færslu á sérsniðnum Javascript eða stílblaðatexta sem verður settur í HTML „haus“ hluta hverrar síðu.
+Custom script/stylesheet: Sérsniðið handrit / stílblað
+custom-header-help: Leyfir að sérsniðinn HTML bútur sé tekinn upp efst á hverri síðu.
+Custom header: Sérsniðinn haus
+custom-trailer-help: Leyfir að sérsniðinn HTML bútur sé tekinn með í lok hverrar síðu.
+Custom trailer: Sérsniðinn kerru
+enable-external-header-help: Leyfir að hlaða sérsniðna kerru úr ytri skrá
+Allow external file for header/script/trailer: Leyfa utanaðkomandi skrá fyrir haus / handrit / eftirvagn
+Allow user to override header/trailer: Leyfa notanda að hnekkja haus / kerru
+Date and Time: Dagsetning og tími
+server-tz-help: Tilgreinir hve marga klukkutíma á að stilla tímann frá UTC í miðlaratíma.
+Server Timezone Selection: Val á tímabelti miðlara
+tz-help: Tilgreinir hversu margar klukkustundir á að stilla tímann frá UTC að staðartíma.
+Default Client Timezone Selection: Sjálfgefið val tímabeltis viðskiptavinar
+display-general-use-gmt-help: Ef það er virkt eru algengar dagsetningar / tímar sýndir sem GMT
+Display Common Use Date/Times as GMT: Birta algengan notkunardag / tíma sem GMT
+date-format-help: Tilgreinir valið dagsetningarsnið.
+Date format: Dagsetningarsnið
+Small Task Date: Lítil verkdagsetning
+display-week-starts-on: Tilgreinir hvort vikan byrjar á sunnudegi eða mánudegi. Ef mánudagur er valinn munu vikunúmerin á ISO viku númer.
+Week starts on: Vika byrjar á
+display-weekend-starts-on: Stillir vikudaginn fyrir helgar sem byrja
+Weekend starts on: Helgin byrjar þann
+time-format-help: Tilgreinir á hvaða tímasnið á að nota:<br><i>12 tíma:</i> Birtir tíma sem 3fh, 8:30eh, o.s.frv.<br><i>24 tíma:</i> Birtir tíma sem 300, 2030, o.s.frv.
 Time format: Klukka
-12 hour: 12 t�ma
-24 hour: 24 t�ma
+12 hour: 12 tíma
+24 hour: 24 tíma
+timed-evt-len-help: Tilgreinir innsláttaraðferð til að ákvarða lengd tímabundins atburðar.
+Specify timed event length by: Tilgreindu tímalengd atburðarlengd eftir
 Duration: Lengd
-work-hours-help: Tilgreinir vinnut�ma sem � a� birta.
-Work hours: Vinnut�mi
-From: Fr�
+End Time: Lokatími
+work-hours-help: Tilgreinir vinnutíma sem á að birta.
+Work hours: Vinnutími
+From: Frá
 to: til
-preferred-view-help: Tilgreinir sj�lfgefi� val (Dagur, vika, m�nu�ur e�a �r).
+Appearance: Útlit
+preferred-view-help: Tilgreinir sjálfgefið val (Dagur, vika, mánuður eða ár).
 Preferred view: Birting
-display-week-number-help: Tilgreinir hvort vikun�mer (1-52) eigi a� birtast � m�na�ar og viku vali.
-Display week number: Birta n�mer viku
-display-unapproved-help: Tilgreinir hvort birta eigi �sam�ykkt atri�i � dagatali.<br /> Ef "J�", eru �sam�ykkt atri�i birt � dagatali (� ��rum lit).<br /> Ef "Nei", ver�ur a� sam�ykkta atri�i til �ess a� �au birtist � dagatali.
-Display unapproved: Birta �sam�ykkt
-Yes: J�
+Allow top menu: Leyfa toppvalmynd
+Date Selectors position: Staða dagsetningarvalda
+menu-themes-help: Stillir liti og stíl efstu valmyndarinnar
+Menu theme: Matseðill þema
+fonts-help: Tilgreinir lista yfir kerfisgerð sem á að nota (eins og „Arial, Helvetica“)
+Fonts: Skírnarfontur
+display-sm_month-help: Ef það er virkt, birtir það litla mánuði í mánaðarskoðunum
+Display small months: Sýna litla mánuði
+display-weekends-help: Láttu helgar fylgja þegar þú skoðar viku.
+Display weekends: Sýna helgar
+display-long-daynames-help: Ef það er virkt birtast nöfn langra daga
+Display long day names: Sýna langan daganöfn
+display-alldays-help: Birtu fyrri og næstu mánaða daga í mánaðarskoðunum og fylltu allar frumur.
+Display all days in month view: Sýna alla daga í mánaðarskoðun
+display-week-number-help: Tilgreinir hvort vikunúmer (1-52) eigi að birtast í mánaðar og viku vali.
+Display week number: Birta númer viku
+display-desc-print-day-help: Láttu lýsingar á atburði fylgja prentvænri útgáfu af dagsútsýni.
+Display description in printer day view: Sýnið lýsingu í dagsskjá prentara
+yearly-shows-events-help: Á ársskoðuninni skaltu birta daga sem innihalda atburði með feitletruðu letri.
+Display days with events in bold in month and year views: Sýna daga með feitletrun í mánuðum og ári
+display-minutes-help: Ef það er virkt, birtast alltaf mínútur sem enda með: 00
+Display 00 minutes always: Sýnið alltaf 00 mínútur
+display-end-times-help: Sýna lokatíma viðburðar ef tímasettur atburður
+Display end times on calendars: Sýna lokatíma á dagatalum
+allow-view-add-help: A '+' tákn verður innifalið í skoðunum, sem gerir notendum kleift að bæta viðburðum fljótt við dagatal annarra notenda.
+Include add event link in views: Láttu hlekkinn bæta við viðburði fylgja skoðunum
+lunar-help: Ef það er virkt, birtast lítil tákn sem tákna tunglstig í hverjum mánuði
+Display Lunar Phases in month view: Sýna tunglstig í mánaðarskoðun
+Restrictions: Takmarkanir
+allow-view-other-help: Tilgreinir hvort notandi megi skoða dagatal annars notanda.
+Allow viewing other users calendars: Leyfa að skoða dagatöl annarra notenda
+require-approvals-help: Þegar það er virkt verður notandi að samþykkja atburði áður en hann birtist á dagatalinu sínu (nema skjár ósamþykktur sé virkur). Athugið að setja þetta á „Nei“ mun ekki slökkva á samþykki fyrir dagatali almennings aðgangs (ef dagatal almennings aðgangs er virkt).
+Require event approvals: Krefjast samþykkis viðburðar
+display-unapproved-help: Tilgreinir hvort birta eigi ósamþykkt atriði í dagatali.<br>Ef "Já", eru ósamþykkt atriði birt á dagatali (í öðrum lit).<br>Ef "Nei", verður að samþykkta atriði til þess að þau birtist á dagatali.
+Display unapproved: Birta ósamþykkt
+conflict-check-help: Athugaðu hvort átök séu á viðburði (tveir viðburðir áætlaðir á sama tíma fyrir sama aðila). Ef þú stillir þetta á „Já“ geturðu samt skipulagt tvo viðburði á sama tíma eftir að þú hefur staðfest viðvörun. Ef þú stillir þetta á „Nei“ verður engin athugun á átökum gerð. Þú vilt líklega setja þetta á „Já“, svo árekstrarathugun á sér stað.
+Check for event conflicts: Athugaðu hvort atburðir stangist á
+Yes: Já
 No: Nei
+conflict-months-help: Ef árekstrareftirlit er til staðar („Athugaðu hvort atburðarátök séu“ er stillt á „Nei“ & # 41; þetta tilgreinir hve marga mánuði í framtíðinni við ættum að athuga hvort átök séu. Ef þér finnst það taka langan tíma að bæta við atburði , fækka þessum fjölda.
+Conflict checking months: Árekstrareftirlit mánaða
+conflict-check-override-help: Leyfir notendum að hnekkja átökum viðburða og skipuleggja tvo eða fleiri viðburði á sama tíma.
+Allow users to override conflicts: Leyfa notendum að hnekkja átökum
+limit-appts-help: Leyfir kerfisstjóranum að setja kerfisbundin takmörk á fjölda stefnumóta sem einn notandi getur haft á hverjum degi.
+Limit number of timed events per day: Takmarka fjölda tímasettra viðburða á dag
+limit-appts-number-help: Tilgreinir hámarksfjölda tímasettra atburða sem notandi getur haft á einum degi.
+Maximum timed events per day: Hámarks tímasettir viðburðir á dag
+crossday-help: Ef það er virkt munu atburðir sem spanna daga birtast á aðskildum dögum
+Disable Cross-Day Events: Slökkva á krossdegisviðburðum
+disable-location-field-help: Með því að velja „Já“ verður svæðið „Staðsetning“ fjarlægt af upplýsingasíðum viðburða
+Disable Location field: Slökkva á reit fyrir staðsetningu
+disable-url-field-help: Með því að velja „Já“ verður „URL“ reiturinn fjarlægður af upplýsingasíðum viðburða
+Disable URL field: Slökkva á vefslóðareit
+disable-priority-field-help: Með því að velja „Já“ verður „Forgangur“ reiturinn fjarlægður af upplýsingasíðum viðburða, sem býður upp á einfaldara viðmót fyrir byrjendur.
+Disable Priority field: Slökkva á forgangsreit
+disable-access-field-help: Með því að velja „Já“ verður „Aðgangur“ reiturinn fjarlægður af upplýsingasíðum viðburða og einfaldari viðmót fyrir nýliða.
+Disable Access field: Slökkva á aðgangsreit
+disable-participants-field-help: Með því að velja „Já“ verður svæðið „Þátttakendur“ fjarlægt af upplýsingasíðum viðburða og kemur í veg fyrir að notendur geti bætt öðrum notendum við viðburði sína. Ef þú gerir þennan möguleika virkan gætirðu líka gert óvirkan reitinn „Leyfa að skoða dagatöl annarra notenda“.
+Disable Participants field: Slökkva á reitnum fyrir þátttakendur
+disable-repeating-field-help: Með því að velja „Já“ verður svæðið „Endurtaka“ fjarlægt þegar viðburðum er bætt við. Þetta mun veita einfaldara viðmót fyrir byrjendur.
+Disable Repeating field: Slökkva á endurteknum reit
+allow-html-description-help: Ef það er virkt geta notendur slegið inn HTML í atburðarlýsingareitinn. Ef það er ekki virkt sleppur HTML merkið þannig að það birtist sem venjulegur texti. Viðvörun: Að virkja þennan eiginleika gerir notendum kleift að vísa í myndir á öðrum vefsíðum.
+Allow HTML in Description: Leyfa HTML í lýsingu
+Popups: =
+disable-popups-help: Slökkva á sprettiglugga frá dagbókarskoðunum
+Disable Pop-Ups: Slökkva á sprettiglugga
+popup-includes-siteextras-help: Ef það er virkt skaltu leyfa uppsetningu á sérsniðnum atburðarreitum í skránni site_extras.php í sprettiglugga viðburða.
+Display Site Extras in popup: Sýna auka staður í sprettiglugga
+popup-includes-participants-help: Ef það er virkt eru þátttakendur birtir í sprettiglugga viðburða.
+Display Participants in popup: Sýna þátttakendur í sprettiglugga
+Miscellaneous: Ýmislegt
+remember-last-login-help: Þegar það er virkt verður innskráning notandans fyllt út fyrir þá á innskráningarsíðunni (en ekki lykilorðinu) og óskir notandans hlaðnir (þ.m.t. valinn litur þeirra og tungumálaval).
+Remember last login: Mundu eftir síðustu innskráningu
+summary_length-help: Hámarkslengd stuttrar lýsingar í dagbókarskoðunum
+Brief Description Length: Stutt lýsing Lengd
+user_sort-help: Ákvarðar röðun fyrir notendur, Nonuser lista
+User Sort Order: Raðröð notenda
+Lastname, Firstname: Seinna nafn fyrra nafn
+Firstname, Lastname: Fornafn Eftirnafn
+allow-public-access-help: Þegar það er virkt er hægt að nota dagatalið sem skriflaust almenningardagatal sem krefst ekki þess að notendur skrái sig inn.
+Allow public access: Leyfa almenningi aðgang
+public-access-default-visible: Atburðir úr almenna dagatalinu birtast sjálfkrafa á dagatölum allra notenda
+Public access visible by default: Almennur aðgangur er sýnilegur sjálfgefið
+public-access-default-selected: Þegar nýjum viðburði er bætt við verður almenningur notandi valinn sem sjálfgefinn þátttakandi.
+Public access is default participant: Aðgangur almennings er sjálfgefinn þátttakandi
+public-access-view-others-help: Þegar aðgangur er að kerfinu með almenningsaðgangi er tilgreint hvort notandinn geti skoðað dagatal annars dagatalnotanda.
+Public access can view other users: Aðgangur almennings getur skoðað aðra notendur
+public-access-can-add-help: Þegar það er virkt geta notendur sem fá aðgang að kerfinu með almenningsaðgangi bætt við nýjum viðburðum en þeir munu ekki mæta í dagatalinu fyrr en stjórnandi samþykkir nýja atburðinn.
+Public access can add events: Aðgangur almennings getur bætt viðburðum
+public-access-add-requires-approval-help: Tilgreinir hvort atburðir sem bætt er við með aðgangi almennings þurfa samþykki áður en þeir eru sýndir.
+Public access new events require approval: Aðgangur almennings að nýjum atburðum þarf samþykki
+public-access-sees-participants-help: Ef það er virkt geta notendur sem fá aðgang að dagatalinu frá almenna reikningnum séð þátttakendur ef þeir skoða upplýsingar um viðburð.
+Public access can view participants: Aðgangur almennings getur skoðað þátttakendur
+public-access-override-help: Leyfir að atburðarheiti og lýsingum sé falið á almenna dagatalinu
+Override event name/description for public access: Hnekkja heiti / lýsingu viðburðar til að fá aðgang að almenningi
+public-access-override-text-help: Textinn sem á að sýna ef ofangreindur valkostur er virkur. Ef „Ekki tiltækt“ verður það þýtt.
+Text to display to public access: Texti til að sýna almenningi aðgang
+public-access-captcha-help: Ef það er virkt þurfa nýir viðburðir sem almenningur bætir við að fara með CAPTCHA löggildingu.
+Require CAPTCHA validation for public access new events: Krefjast CAPTCHA staðfestingar fyrir aðgang almennings að nýjum viðburðum
+uac-enabled-help: Virkjar aðgangsstýringu á notendastigi
+User Access Control enabled: Aðgangsstýring notanda virk
+groups-enabled-help: Gerir kleift að styðja hópinn og leyfa notendum að velja notendur eftir hópum.
+Groups enabled: Hópar virkjaðir
+user-sees-his-group-help: Ef það er virkt sjá notendur ekki dagatalnotendur sem eru ekki í að minnsta kosti einum af sínum hópum.
+User sees only his groups: Notandi sér aðeins sína hópa
+nonuser-enabled-help: Ef það er virkt munu stjórnendur hafa möguleika á að bæta við dagatölum sem ekki eru notendur
+Nonuser enabled: Nonuser dagatöl virkt
+nonuser-list-help: Hvar á að birta dagatölin sem ekki eru notendur í þátttökulistanum
+Nonuser list: Sýnt á þátttakendalista kl
+Upcoming Events: Viðburðir á næstunni
+upcoming-events-help: Virkja upcoming.php
+Enabled: Virkt
+upcoming-events-allow-override: Leyfa notendaskipan fyrir komandi.php
+Allow user override: Leyfa að hnekkja notanda
+upcoming-events-display-caticons: Láttu flokkatákn fylgja með í kommandi.php
+Display category icons: Sýna flokkatákn
+upcoming-events-display-layers: Sýnið lög í væntanlegu.php
+Display layers: Sýna lög
+upcoming-events-display-links: Sýna krækjur í upcoming.php
+Display links to events: Birtu krækjur á viðburði
+upcoming-events-display-popups: Sýna sprettiglugga viðburða í komandi.php
+Display event popups: Sýna sprettiglugga viðburða
+reports-enabled-help: Ef það er virkt munu notendur sjá hlutann „Skýrslur“ neðst á hverri síðu og fá að búa til sérsniðnar skýrslur. Að auki geta admin notendur búið til alþjóðlegar skýrslur sem munu birtast neðst á síðum allra notenda.
+Reports enabled: Skýrslur virkar
+subscriptions-enabled-help: Tilgreinir hvort fjarnotendur geta gerst áskrifendur að dagatali notanda WebCalendar og leyft þeim að sjá atburði notanda WebCalendar í iCal-virku forriti sínu (svo sem iCal eða Mozilla dagatal Apple).
+Allow remote subscriptions: Leyfa fjaráskrift
+remotes-enabled-help: Leyfir notendum að hlaða ytri IIC skrár með URL
+Allow remote calendars: Leyfa ytri dagatal
+rss-enabled-help: Tilgreinir hvort hægt sé að fá dagatal notanda úr RSS straumi.
+Enable RSS feed: Virkja RSS straum
+categories-enabled-help: Virkjar stuðning fyrir viðburðarflokka.
+Categories enabled: Flokkar virkir
+icon_upload-enabled-help: Ef það er virkt geta notendur hlaðið upp flokkatáknum
+Category Icon Upload enabled: Flokkun táknflokks hlaðið upp
+(Requires XXX folder to exist.): (Krefst þess að XXX mappa sé til.)
+display-tasks-help: Birta litla verkefnaglugga á mánaðar- og dagatali
+Display small task list: Birta litla verkefnalista
+display-tasks-in-grid-help: Sýna verkefni í dagatölum ásamt atburðum
+Display tasks in Calendars: Sýna verkefni í dagatölum
+allow-external-users-help: Tilgreinir hvort bæta megi notanda utan dagatals við viðburð. Þetta gerir notendum utan dagatals kleift að vera skráðir sem þátttakendur í viðburðinum.
+Allow external users: Leyfa utanaðkomandi notendum
+external-can-receive-notification-help: Þegar kveikt er á ytri notendum og netnotkun er virk geta ytri notendur fengið tilkynningar í tölvupósti þegar atburðinum er bætt við, uppfært eða eytt (ef netfang ytri notandans er gefið upp).
+External users can receive email notifications: Utanaðkomandi notendur geta fengið tilkynningar í tölvupósti
+external-can-receive-reminder-help: Þegar ytri notendur eru virkjaðir og netnotkun er virk geta ytri notendur fengið áminningar í tölvupósti (ef netfang ytri notandans er gefið upp).
+External users can receive email reminders: Utanaðkomandi notendur geta fengið áminningar í tölvupósti
+allow-self-registration-help: Leyfa nýjum notendum að skrá sig
+Allow self-registration: Leyfa sjálfsskráningu
+use-blacklist-help: Takmarkaðu aðgang að aðgerðum WebCalendar byggðar á IP-tölu
+Restrict self-registration to blacklist: Takmarkaðu sjálfsskráningu við svartan lista
+allow-self-registration-full-help: Leyfa nýjum notendum að ljúka sjálfskráningarferlinu á netinu
+Use self-registration email notifications: Búðu til lykilorð og sendu til nýrra notenda
+allow-attachment-help: Leyfa notendum að bæta viðhengjum við skrá.
+Allow file attachments to events: Leyfa skráarviðhengi við atburði
+Admin and owner can always add attachments if enabled.: Stjórnandi og eigandi geta alltaf bætt viðhengjum ef þau eru virk.
+allow-comments-help: Leyfa notendum að bæta við athugasemdum við viðburði.
+Allow comments to events: Leyfa athugasemdir við atburði
+Admin and owner can always add comments if enabled.: Stjórnandi og eigandi geta alltaf bætt við athugasemdum ef það er virkt.
+email-enabled-help: Kveiktu eða slökktu á öllum sendingum tölvupósts til tilkynningar og áminningar. Stilltu á „nei“ ef netþjónninn þinn er ekki rétt stilltur til að senda póst.
+Email enabled: Tölvupóstur virkur
+email-default-sender: Tilgreinir netfangið sem á að tilgreina sem sendandi þegar áminningar eru sendar.
+Default sender address: Sjálfgefið heimilisfang sendanda
+email-mailer: Veldu tegund tölvupósts (SMTP, PHP póstur, sendmail)
+Email Mailer: Tölvupóstur póstur
+email-smtp-host: Gestgjafanafn SMTP netþjóna eða aðskilin með kommum
+SMTP Host name(s): SMTP vélarheiti
+email-smtp-port: SMTP gáttarnúmer (venjulega 25)
+SMTP Port Number: SMTP gáttarnúmer
+email-smtp-auth: Notaðu SMTP auðkenningu
+SMTP Authentication: SMTP auðkenning
+email-smtp-username: SMTP notandanafn ef þú notar auðkenningu
+SMTP Username: SMTP notandanafn
+email-smtp-password: SMTP lykilorð ef þú notar auðkenningu
+SMTP Password: SMTP lykilorð
+Default user settings: Sjálfgefnar notandastillingar
+email-format: Tilgreindu val á HTML eða textaskilaboðum
+Email format preference: Val á sniði tölvupósts
+HTML: =
+Plain Text: Einfaldur texti
+email-include-ics: Láttu iCalendar ICS skrá fylgja tölvupósti
+Include iCalendar attachments: Láttu fylgja með iCalendar viðhengi
+email-event-reminders-help: Tilgreinir hvort senda eigi áminningar um atburði eða ekki.
+Event reminders: Áminningar um atburði
+email-event-added: Tilgreinir hvort senda eigi tilkynningar í tölvupósti þegar atburði er bætt við dagatalið þitt.
+Events added to my calendar: Atburðum bætt við dagatalið mitt
+email-event-updated: Tilgreinir hvort senda eigi tilkynningar í tölvupósti þegar atburður er uppfærður í dagatalinu þínu.
+Events updated on my calendar: Viðburðir uppfærðir á dagatalinu mínu
+email-event-deleted: Tilgreinir hvort senda eigi tilkynningar í tölvupósti þegar atburður er fjarlægður úr dagatalinu þínu.
+Events removed from my calendar: Atburðir fjarlægðir úr dagatalinu mínu
+email-event-rejected: Tilgreinir hvort senda eigi tilkynningar í tölvupósti þegar þátttakandi hafnar atburði sem er á dagatalinu þínu.
+Event rejected by participant: Atburði hafnað af þátttakanda
+email-event-create: Tilgreinir hvort höfundur færslna fái tölvupóst
+Event that I create: Atburður sem ég bý til
+Color options: Litavalkostir
+Allow user to customize colors: Leyfa notanda að aðlaga liti
+gradient-colors: Ef notaðir eru hallandi litir. Þetta getur haft mikil áhrif á árangur.
+Enable gradient images for background colors: Virkja hallamyndir fyrir bakgrunnslit
+Not available: Ekki í boði
+Background Image options: Bakgrunnsmyndarmöguleikar
+bgimage-help: Vefslóð bakgrunnsmyndar sem óskað er eftir. Getur verið afstæður hlekkur.
+Background Image: Bakgrunnsmynd
+bgrepeat-help: Stýrir endurtekinni hegðun bakgrunnsmyndar.
+Background Repeat: Bakgrunnur Endurtaktu
 
 ########################################
 # Page: adminhome.php
 #
+Assistants: Aðstoðarmenn
 Preferences: Stilla
+Control Panel: Stjórnborð
 Users: Notendur
 Account: Reikningur
+Categories: Flokkar
+Views: Útsýni
+Layers: Lag
+Reports: Skýrslur
+Delete Events: Eyða atburðum
+Activity Log: Virkisdagskrá
+System Log: Kerfisskrá
+Security Audit: Öryggisendurskoðun
+Public Preferences: Opinberar óskir
+Unapproved Public Events: Ósamþykktir opinberir viðburðir
+Administrative Tools: Stjórnsýsluverkfæri
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Afrit heiti: „XXX“.
+Username XXX already exists.: Notandanafnið „XXX“ er þegar til.
+Email address XXX already exists.: Netfangið „XXX“ er þegar til.
 
 ########################################
 # Page: approve_entry.php
 #
-Hello: Hall�
-Date: Dags
-Time: T�mi
+Additional Comments (optional): Viðbótar athugasemdir (valfrjálst)
+Approve and Send: Samþykkja og senda
+Approve and Exit: Samþykkja og hætta
+(Your comments will be emailed to the event creator.): (Athugasemdir þínar verða sendar tölvupósti til höfundar viðburðarins.)
+Hello, XXX.: Halló, XXX.
+XXX has approved an appointment and added comments.: Samþykkt hefur verið samþykkt og XXX bætt við athugasemdum.
+Subject XXX: Efni: „XXX“.
+Description XXX: Lýsing: „XXX“.
+Date XXX: Dagsetning: XXX
+Time XXX: Tími: XXX
+Comments XXX: Athugasemdir: XXX
+Approved w/Comments by XXX.: Samþykkt m / athugasemdum: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Stjórnandi háttur
+Your assistants: Aðstoðarmenn þínir
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Óþekkt villa.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Forritavilla: Engin XXX tilgreind!
+user: notandi
+year: ári
+month: mánuði
+day: dagur
 
 ########################################
 # Page: category.php
 #
-Delete: Ey�a
-Are you sure you want to delete this entry?: Viltu �rugglega ey�a �essu atri�i?
+Category Icon: Flokkatákn
+Global: Alheims
+The permissions for the icons directory are set to read-only: Heimildir fyrir táknaskrána eru stilltar á skrifvarinn.
+Category Name: Flokkanafn:
+Color: Litur
+Remove Icon: Fjarlægja tákn:
+Add Icon to Category: Bættu táknmynd við flokk
+Upload: Hlaða inn
+GIF or PNG 6kb max: GIF eða PNG 6kb hámark
+Search for existing icons: Leitaðu að núverandi táknum
+Add: Bæta við
+Delete: Eyða
+Are you sure you want to delete this entry?: Viltu örugglega eyða þessu atriði?
+Make New Category: Búðu til nýjan flokk
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Flokkanafn er krafist
+File size exceeds maximum.: Skráarstærð er meiri en hámark.
+File is not a GIF or PNG image: Skráin er ekki GIF eða PNG mynd
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: FÁANLEG FLOKKAR
+ENTRY CATEGORIES: INNGANGaflokkar
+Remove: Fjarlægðu
+Global Category: Alheimsflokkur
+Cancel: Hætta við
+
+########################################
+# Page: colors.php
+#
+Add Custom: Bæta við sérsniðnum
+Basic Colors: Grunnlitir
+Current Color: Núverandi litur
+Custom Colors: Sérsniðnir litir
+Old Color: =
+
+########################################
+# Page: combo.php
+#
+Select None: Veldu Ekkert
+Agenda: Dagskrá
+Add Task: Bæta við verkefni
+Description: Lýsing
+Date: Dags
+Time: Tími
+Priority: Forgangur
+Access: Aðgangur
+Created by: Gert af
+Updated: Uppfært
+Participants: Þátttakendur
+Attachments: Viðhengi
+Comments: Athugasemdir
+Brief Description: Stutt skrýring
+Full Description: Full skýring
+Category: Flokkur
+Add event detail: Bæta við smáatriðum viðburðar
+Start Date: Upphafsdagur
+Due Date: Gjalddagi
+Add task detail: Bættu við smáatriðum verkefna
+All: Allt
+Error: Villa
+no response from server: ekkert svar frá netþjóni
+JSON error: JSON villa
+High: Hár
+Medium: Meðal
+Low: Lágur
+Today: Í dag
+Add Entry: Bæta við
+Unnamed Event: Ónafngreint atriði
+Unnamed Task: Nafnlaust verkefni
+Refresh: Hressa
+Click to add entry: Smelltu til að bæta við færslu
+Name: Nafn
+pm: eh
+am: fh
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX hefur hætt við tíma.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Ógilt auðkenni auðkennis
 
 ########################################
 # Page: docadd.php
 #
-Description: L�sing
+Add Comment: Bæta við athugasemd
+Add Attachment: Bæta við viðhengi
+Subject: Efni
+Comment: Athugasemd
+Upload file: Hlaða inn skrá
+
+########################################
+# Page: docdel.php
+#
+Removed: Fjarlægð
 
 ########################################
 # Page: edit_entry.php
 #
-am: fh
-pm: eh
-minutes: m�n�tur
-Edit Entry: Breyta atri�i
-Add Entry: B�ta vi�
-Participants: ��tttakendur
-brief-description-help: H�r � a� vera stutt l�sing (u.�.b 20 stafir) atri�is. �etta mun vera einkenni atri�is � dagatali.
-Brief Description: Stutt skr�ring
-full-description-help: H�r � a� vera full l�sing atri�is. Uppl�singarnar er h�gt a� sj� �egar atri�i er sko�a�.
-Full Description: Full sk�ring
-access-help: Tilgreinir a�gang a� atri�i.<br /> <i>Allir</i>: Allir geta s�� fulla l�singu atri�is.<br /><i>Tr�na�arm�l</i>: A�rir sj� a� vi�komandi hefur atri�i � tilgreindum t�ma en sj� ekkert um efni�.
-Access: A�gangur
-priority-help: Tilgreinir forgang atri�is. Atri�i me� h�an forgang eru birt me� feitu letri.
-Priority: Forgangur
-High: H�r
-Medium: Me�al
-Low: L�gur
-date-help: Tilgreinir dagsetningu atri�is.
-time-help: Tilgreinir t�ma atri�is.<br /><i>�essu svi�i m� sleppa.</i>
-duration-help: Tilgreinir ��tla�a lengd (� m�n�tum) atri�is.<br /><i>�essu svi�i m� sleppa.</i>
-participants-help: F� fram �� sem koma a� atri�i.
-repeat-type-help: Velja hversu oft endurtaka � atbur�inn.<i>M�na�arlega (eftir degi)</i> gerir kleift a� endurtaka atri�i fyrsta m�nudag m�na�ar, �ri�ja �ri�judag o.s.frv. <i>M�na�arlega (eftir dags)</i> gerir kleift a� endurtaka atri�i � sama m�na�ardegi.
+days: daga
+hours: klukkustundir
+minutes: mínútur
+You are not authorized to edit this task.: Þú hefur ekki heimild til að breyta þessu verkefni.
+is in a different timezone than you are. Currently: er á öðru tímabelti en þú ert. Eins og er
+hour ahead of you: klukkutíma á undan þér
+hour behind you: klukkutíma á eftir þér
+hours ahead of you: klukkustundum á undan þér
+hours behind you: klukkustundum á eftir þér
+XXX is in a different timezone (ahead): (XXX er á öðru tímabelti; ÁÁÁ á undan þér.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX er á öðru tímabelti; ÁÁÁ bakvið þig.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Tíminn sem er sleginn inn hér er byggður á tímabeltinu.
+Edit Entry: Breyta atriði
+Details: Upplýsingar
+Repeat: Endurtaktu
+Reminders: Áminningar
+brief-description-help: Hér á að vera stutt lýsing (u.þ.b 20 stafir) atriðis. Þetta mun vera einkenni atriðis í dagatali.
+full-description-help: Hér á að vera full lýsing atriðis. Upplýsingarnar er hægt að sjá þegar atriði er skoðað.
+access-help: Tilgreinir aðgang að atriði.<br><i>Allir</i>: Allir geta séð fulla lýsingu atriðis.<br><i>Trúnaðarmál</i>: Aðrir sjá að viðkomandi hefur atriði á tilgreindum tíma en sjá ekkert um efnið.
+priority-help: Tilgreinir forgang atriðis. Atriði með háan forgang eru birt með feitu letri.
+category-help: Tilgreinir flokk viðburðarins.
+completed-help: Dagsetningarverkefni er lokið. Aðeins virkt þegar hlutfall allra þátttakenda er jafnt og 100%.
+Date Completed: Dagsetningu lokið
+percent-help: Verkefnahlutfall fyrir þennan notanda
+Percent Complete: Hlutfall lokið
+All Percentages: Allar prósentur
+location-help: Staðsetning viðburðar
+Location: Staðsetning
+url-help: Slóð atburðar
+URL: Slóð
+date-help: Tilgreinir dagsetningu atriðis.
+Untimed event: Ótímabær atburður
+Timed event: Tímasettur atburður
+All day event: Allan daginn viðburð
+Timezone Offset: Jöfnun tímabeltis
+time-help: Tilgreinir tíma atriðis.<br><i>Þessu sviði má sleppa.</i>
+duration-help: Tilgreinir áætlaða lengd (í mínútum) atriðis.<br><i>Þessu sviði má sleppa.</i>
+end-time-help: Tilgreinir tímann sem búist er við að atburðinum ljúki.
+Start Time: Byrjunartími
+Due Time: Réttur tími
+Site Extras: Auka staður
+avail_participants-help: Listi yfir tiltæka þátttakendur þessarar færslu.
+Available: Laus
+Find Name: Finndu nafn
+Resources: Auðlindir
+participants-help: Fá fram þá sem koma að atriði.
+Selected: Valið
+Availability: Framboð
+external-participants-help: Tilgreinir lista yfir þátttakendur fyrir viðburðinn sem eru ekki dagatalnotendur. Notendur ættu að vera skráðir á hverja línu og geta innihaldið netfang. Ef netfang er tilgreint er notandinn gjaldgengur til að fá tilkynningar og áminningar.
+External Participants: Utanaðkomandi þátttakendur
+repeat-type-help: Velja hversu oft endurtaka á atburðinn.<i>Mánaðarlega (eftir degi)</i> gerir kleift að endurtaka atriði fyrsta mánudag mánaðar, þriðja þriðjudag o.s.frv. <i>Mánaðarlega (eftir dags)</i> gerir kleift að endurtaka atriði á sama mánaðardegi.
 Daily: Daglega
 Weekly: Vikulega
-Monthly: M�na�arlega
+Monthly: Mánaðarlega
 by day: eftir degi
 by date: eftir dags
-Yearly: �rlega
-repeat-end-date-help: Tilgreinir dagsetningu sem endurtaka � atri�i �anga� til.
+by position: eftir stöðu
+Monthly (by day): Mánaðarlega (eftir degi)
+Monthly (by date): Mánaðarlega (eftir dagsetningu)
+Monthly (by position): Mánaðarlega (eftir stöðu)
+Yearly: Árlega
+Manual: Handbók
+Expert Mode: Sérfræðingur háttur
+repeat-end-date-help: Tilgreinir dagsetningu sem endurtaka á atriði þangað til.
+Ending: Enda
+Forever: Að eilífu
 Use end date: Loka dags
-repeat-frequency-help: Tilgreinir hversu oft � a� endurtaka atri�i. 1 er sj�lfgefi� fyrir hvert skipti. Me� �v� a� velja 2 er h�gt a� l�ta atri�i gerast a�ra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern m�nu� (ef valin <i>Endurtekning</i> er <i>M�na�arlega</i>), o.s.frv.
-Frequency: T��ni
-Delete entry: Ey�a atri�i
-You are not authorized to edit this entry.: �� hefur ekki r�ttindi til �ess a� breyta �essu atri�i
+Number of times: Fjöldi sinnum
+repeat-frequency-help: Tilgreinir hversu oft á að endurtaka atriði. 1 er sjálfgefið fyrir hvert skipti. Með því að velja 2 er hægt að láta atriði gerast aðra hverja viku (ef valin <i>Endurtekning</i> er <i>Vikulega</i>), annan hvern mánuð (ef valin <i>Endurtekning</i> er <i>Mánaðarlega</i>), o.s.frv.
+Frequency: Tíðni
+Weekdays Only: Aðeins virka daga
+Week Start: Vikubyrjun
+repeat-bydayextended-help: Leyfir val á dagsetningu miðað við vikudag.
+ByDay: =
+repeat-month-help: Tilgreinir hvaða mánuði atburðurinn ætti að endurtaka.
+ByMonth: =
+repeat-bysetpos-help: Leyfir val á dagsetningu miðað við stöðu með mánuðinum.
+BySetPos: =
+repeat-bymonthdayextended-help: Leyfir val á dagsetningu miðað við dagsetningu.
+ByMonthDay: =
+repeat-byweekno-help: Leyfir notanda að tilgreina lista yfir vikur til að endurtaka atburði (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Leyfir notanda að tilgreina lista yfir árdaga til að endurtaka atburði (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Viðbótardaga sem þessi atburður ætti eða ætti ekki að eiga sér stað þann.
+Exclusions: Undanþágur
+Inclusions: Innifalið
+Add Exception: Bæta við undanþágu
+Add Inclusion: Bæta við þátttöku
+Delete Selected: Eyða völdum
+Send Reminder: Senda áminningu
+When: Hvenær
+Use Date/Time: Notaðu dagsetningu / tíma
+Use Offset: Notaðu Offset
+Before: Áður
+After: Eftir
+Start: Byrjaðu
+End/Due: Lok / gjalddagi
+Times: Tímar
+Every: Sérhver
+CAPTCHA Warning: Viðvörun:  Get ekki notað CAPTCHA án GD viðbótar PHP!<br>
+Delete entry: Eyða atriði
+You are not authorized to edit this entry.: Þú hefur ekki réttindi til þess að breyta þessu atriði
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: N�r fundur hefur veri� b�inn til af
-The following conflicts with the suggested time: Eftirfarandi stangast � vi� t�ma
-Please look on: Vinsamlegast sko�i�
-to accept or reject this appointment: til a� sta�festa e�a hafna �essum fundi
-to view this appointment: til a� sko�a fund
+XXX has made a new appointment.: XXX hefur pantað nýja tíma.
+XXX has updated an appointment.: XXX hefur uppfært tíma.
+Security violation!: Öryggisbrot!
+You must enter the anti-spam text on the previous page.: Þú verður að slá inn ruslpósttexta á fyrri síðu.
+The following conflicts with the suggested time: Eftirfarandi stangast á við tíma
+User removed from participants list.: Notandi fjarlægður af þátttökulista.
+Please look on XXX to accept or reject this appointment.: Vinsamlegast horfðu á XXX til að samþykkja eða hafna þessum tíma.
+Please look on XXX to view this appointment.: Vinsamlegast leitaðu á XXX til að skoða þessa stefnumót.
 Scheduling Conflict: =
-Your suggested time of: Uppgefinn t�mi
-conflicts with the following existing calendar entries: stangast � vi� eftirfarandi atri�i
+Your suggested time of: Uppgefinn tími
+conflicts with the following existing calendar entries: stangast á við eftirfarandi atriði
 
 ########################################
 # Page: edit_nonusers.php
 #
-Add User: N�r notandi
+NONUSER_PREFIX not set: NONUSER_PREFIX hefur ekki verið stillt í „config.php“.
+word characters only: (getur aðeins innihaldið orðstafi; [a-zA-Z_0-9])
+Add User: Nýr notandi
 Edit User: Breyta notanda
+Calendar ID: Auðkenni dagatals
 First Name: Fornafn
 Last Name: Eftirnafn
+Is public calendar: Er opinber dagatal
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Gagnagrunnur villa
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Bæta við ytra dagatali
+Edit Remote Calendar: Breyttu ytra dagatali
+Create Layer: Búðu til lag
+Reload: Endurhlaða
+Required to View Remote Calendar: Nauðsynlegt að skoða ytra dagatal
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Villa
+Import Results: Flytja niðurstöður
+Events successfully imported: Atburðir tókst að flytja inn
+Create a new layer to view this calendar.: Búðu til nýtt lag til að skoða þetta dagatal.
+Errors: Villur
+There was an error parsing the import file or no events were returned.: Villa kom upp við þáttun á innflutningsskránni eða engum atburðum skilað.
 
 ########################################
 # Page: edit_report.php
 #
-Current User: N�verandi notandi
+Tomorrow: Á morgun
+Yesterday: Í gær
+Day before yesterday: Í fyrradag
+Next week: Næsta vika
+This week: Í þessari viku
+Last week: Síðustu viku
+Week before last: Vika áður en síðast
+Next week and week after: Næsta vika og vika á eftir
+This week and next week: Þessa vikuna og næstu viku
+Last week and this week: Síðasta vika og þessi vika
+Last two weeks: Síðustu tvær vikur
+Next month: Næsta mánuði
+This month: Í þessum mánuði
+Last month: Í síðasta mánuði
+Month before last: Mánuður fyrir síðasta
+Next year: Á næsta ári
+This year: Þetta ár
+Last year: Síðasta ár
+Year before last: Ár áður en síðast
+Next 14 days: Næstu 14 dagar
+Next 30 days: Næstu 30 dagar
+Next 60 days: Næstu 60 dagar
+Next 90 days: Næstu 90 dagar
+Next 180 days: Næstu 180 dagar
+Next 365 days: Næstu 365 dagar
+Invalid report id XXX.: Ógilt auðkenni skýrslu: „XXX“.
+Unnamed Report: Ónefndar skýrslur
+Add Report: Bæta við skýrslu
+Edit Report: Breyta skýrslu
+Report name: Skýrsluheiti
+User: Notandi
+Current User: Núverandi notandi
+Include link in menu: Láttu hlekkinn fylgja í valmyndinni
+Include standard header/trailer: Hafa venjulegan haus / kerru með
+Include previous/next links: Láttu fyrri / næsta hlekki fylgja með
+Include empty dates: Láttu tómar dagsetningar fylgja með
+Date range: Dagsetningartímabil
+Template variables: Sniðmátabreytur
+Page template: Síðu sniðmát
+Day template: Dags sniðmát
+Event template: Atburðasniðmát
+Are you sure you want to delete this report?: Ertu viss um að þú viljir eyða þessari skýrslu?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Ekkert slíkt skýrsluauðkenni: „XXX“.
+Variable XXX not found.: Breytan XXX fannst ekki.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Breyttu sérsniðnum haus
+Edit Custom Script/Stylesheet: Breyttu sérsniðnu handriti / stílblaði
+Edit Custom Trailer: Breyta sérsniðnum kerru
 
 ########################################
 # Page: edit_user.php
 #
 Username: Notandanafn
-E-mail address: T�lvup�stur
-Password: Lykilor�
+E-mail address: Tölvupóstur
+Password: Lykilorð
 again: aftur
-Change Password: Breyta lykilor�i
-New Password: N�tt lykilor�
+Disabled for demo: Óvirkt vegna kynningar
+Are you sure you want to delete this user?: Ertu viss um að þú viljir eyða þessum notanda?
+Change Password: Breyta lykilorði
+New Password: Nýtt lykilorð
 Set Password: Breyta
 
 ########################################
 # Page: edit_user_handler.php
 #
-The passwords were not identical.: Lykilor�in passa ekki saman
-You have not entered a password.: Lykilor� vantar
+Deleting users not supported.: Að eyða notendum sem ekki eru studdir.
+The passwords were not identical.: Lykilorðin passa ekki saman
+You have not entered a password.: Lykilorð vantar
+Username cannot be blank.: Notandanafn má ekki vera autt.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Óheimilt
 
 ########################################
 # Page: export.php
 #
 Export: Flytja
-Export format: Sni� til a� flytja �
+Export format: Snið til að flytja á
+Include all layers: Láttu öll lög fylgja með
+Include deleted entries: Láttu fella brott færslur
+Export all dates: Flytja út allar dagsetningar
 Start date: Byrjun dags
 End date: Endir dags
-Modified since: Breytt s��an
+Modified since: Breytt síðan
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: útflutningsform ekki skilgreint eða rangt.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Enginn notandi tilgreindur.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Bæta við nýjum hópi
 
 ########################################
 # Page: group_edit.php
 #
-Updated: Uppf�rt
-Created by: Gert af
+Unnamed Group: Ónefndur hópur
+Add Group: Bæta við hóp
+Edit Group: Breyta hópi
+Group name: Hópur heiti
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Þú verður að tilgreina nafn hópsins
 
 ########################################
 # Page: help_admin.php
 #
-colors-help: Alla liti � a� skilgreina me� "#RRGGBB" hex sni�i �ar sem "RR" er hex gildi� fyrir rau�an, "GG" er hex gildi fyrir gr�nan, og "BB" er hex gildi fyrir bl�an.
+Auto-refresh calendars: Endurnýja dagatal sjálfkrafa
+auto-refresh-help: Þegar það er virkt munu dagsskoðun, vikuskoðun, mánaðarskoðun og listi yfir ósamþykktar síður allt sjálfkrafa hressa sig reglulega.
+Auto-refresh time: Sjálfvirk endurnýjunartími
+auto-refresh-time-help: Ef sjálfvirk hressing er virk, tilgreinir þetta tímann milli hverrar hressingar.
+Display days with events in bold in year view: Sýnið daga með atburðum feitletraðir í ársskoðun
+Display weekends in week view: Sýna helgar í vikuútsýni
+Time interval: Tímabil
+time-interval-help: Tilgreinir hversu langir tímaraðir verða í vikuskjánum og dagsskjánum.
+Nonuser: Nonuser dagatöl
+user-customize-color: Tilgreinir hvort notendum sé heimilt að breyta eigin litasamsetningu.
+enable-gradient-help: Notaðu hallandi liti fyrir klefi bakgrunn.
+Manually entering color values: Sláðu inn litagildi handvirkt
+colors-help: Alla liti á að skilgreina með "#RRGGBB" hex sniði þar sem "RR" er hex gildið fyrir rauðan, "GG" er hex gildi fyrir grænan, og "BB" er hex gildi fyrir bláan.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Tilkynntu villu
+Please include all the information below when reporting a bug.: Vinsamlegast láttu allar upplýsingar fylgja hér að neðan þegar tilkynnt er um villu.
+Also, please use English rather than XXX.: Vinsamlegast notaðu  ensku  frekar en XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Skjalfesting WebCalendar
+Currently in English only.: Sem stendur aðeins á ensku.
 
 ########################################
 # Page: help_edit_entry.php
 #
-Adding/Editing Calendar Entries: B�ta vi�/Ey�a atri�um � dagatali
+Adding/Editing Calendar Entries: Bæta við/Eyða atriðum í dagatali
 Repeat Type: Tegund endurtekningar
+For More Information...: Fyrir meiri upplýsingar...
 Repeat End Date: Lok endurtekningar
 Repeat Day: Endurtekning
-repeat-day-help: Tilgreinir � hva�a vikudegi � a� endurtaka atri�i. �etta � a�eins vi� um �egar valin <i>Endurtekning</i> er <i>Vikulega</i>.
+repeat-day-help: Tilgreinir á hvaða vikudegi á að endurtaka atriði. Þetta á aðeins við um þegar valin <i>Endurtekning</i> er <i>Vikulega</i>.
+
+########################################
+# Page: help_import.php
+#
+Import: Flytja inn
+Palm Desktop: =
+allow you to import entries from the Palm...: Þetta eyðublað gerir þér kleift að flytja inn færslur úr Palm Desktop gagnabókinni. Það ætti að vera staðsett í Palm skránni þinni í dagbók / datebook.dat í undirmöppu sem heitir af notendanafni þínu.
+The following entries will not be imported: Eftirfarandi færslur verða ekki fluttar inn:
+Entries older than the current date: Færslur eldri en núverandi dagsetning
+Entries created in the Palm Desktop...: Færslur búnar til á Palm Desktop og hafa ekki verið HotSync'd
+Anything imported from Palm...: Allt sem flutt er inn frá Palm verður skrifað yfir við næsta innflutning (nema dagsetning atburðarins sé liðin). Þess vegna ætti að gera uppfærslur á Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Þetta form mun flytja inn vCalendar (.vcs) 1.0 viðburði.
+The following formats have been tested: Eftirfarandi snið hafa verið prófuð:
+This form will import iCalendar (.ics) events.: Þetta eyðublað flytur inn iCalendar (.ics) viðburði.
+Enabling: Virkja
+Overwrite Prior Import: Yfirskrifa fyrri innflutning
+will cause events imported previously...: mun valda því að atburðir sem áður voru fluttir inn, sem notuðu sömu UID og atburður úr nýju innflutningsskránni, voru merktir sem eytt. Þetta ætti að leyfa að flytja inn uppfærða iCalendar skrá án þess að búa til afrit.
 
 ########################################
 # Page: help_index.php
 #
 Help Index: Efnisyfirlit
+About WebCalendar: Um WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Lög eru gagnleg til að sýna viðburði annarra notenda í þínu dagatali. Þú getur tilgreint notandann og litinn sem atburðirnir verða sýndir í.
+Add/Edit/Delete: Bæta við / breyta / eyða
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Með því að smella á tengilinn Breyta lögum í stjórnunarhlutanum neðst á síðunni er hægt að bæta við / breyta / eyða lögum.
+The text color of the new layer that will be displayed in your calendar.: Textalitur nýja lagsins sem birtist í dagatalinu þínu.
+Disabling: Slökkt
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Ýttu á hlekkinn Slökkva á lögum í stjórnunarhlutanum neðst á síðunni til að slökkva á lögum.
+Duplicates: Afrit
+If checked, events that are duplicates of your events will be shown.: Ef hakað er við þá verða viðburðir sem eru afrit af atburðunum þínum sýndir.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Ýttu á hlekkinn Virkja lög í stjórnunarhlutanum neðst á síðunni til að kveikja á lögum.
+Source: Heimild
+Specifies the user that you would like to see displayed in your calendar.: Tilgreinir notandann sem þú vilt sjá birtan í dagatalinu þínu.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Sjálfgefinn flokkur
+default-category-help: Tilgreinir flokkinn sem nýr viðburður ætti að vera sjálfgefinn í.
+When I am the boss: Þegar ég er yfirmaður
+Email me event notification: Sendu mér tilkynningu um viðburð
+email-boss-notifications-help: Tilgreinir hvort yfirmenn fá tölvupóst sem tilkynningar um atburði.
+I want to approve events: Ég vil samþykkja atburði
+boss-approve-event-help: Tilgreinir hvort yfirmanni verði gert að samþykkja atburði sem aðstoðarmenn bæta við.
+Subscribe/Publish: Gerast áskrifandi / birta
+Allow remote publishing: Leyfa fjarútgáfu
+allow-remote-publishing-help: Tilgreinir hvort ytri iCal viðskiptavinur geti birt atburði aftur á WebCalendar
+remote-publishing-url-help: Sýnir slóðina sem á að nota í iCal viðskiptavinaforritinu til að gerast áskrifandi og birta aftur á WebCalendar.
+allow-remote-subscriptions-help: Tilgreinir hvort fjarlægir notendur geta gerst áskrifendur að dagatalinu þínu og leyfa þeim að sjá viðburði þína í iCal-virku forriti (svo sem iCal eða Mozilla Calendar frá Apple).
+remote-subscriptions-url-help: Birtir slóðina sem notendur sem fjarlægir ættu að nota til að gerast áskrifandi að dagatalinu þínu.
+Enable FreeBusy publishing: Virkja útgáfu FreeBusy
+freebusy-enabled-help: Tilgreinir hvort fáanlegur tími notanda sé hægt að fá með iCal FreeBusy staðlinum.
+freebusy-url-help: Slóðin til að fá aðgang að FreeBusy listanum
+rss-feed-url-help: Slóðin til að fá aðgang að RSS straumnum
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Gerir ráð fyrir fínum stjórn á aðgangi notenda og heimildum. Notendur geta einnig veitt sjálfgefið og leyfilegt fyrir hvern einstakling ef stjórnandi hefur heimilað það.
+If disabled, this user cannot send you emails.: Ef hann er óvirkur getur þessi notandi ekki sent þér tölvupóst.
+If disabled, this user cannot see you in the participants list.: Ef hann er óvirkur getur þessi notandi ekki séð þig á þátttökulistanum.
+If enabled, this user cannot view the details of any of your entries.: Ef það er virkt getur þessi notandi ekki skoðað upplýsingar um neinar færslur þínar.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Útgáfa óvirk (stjórnandi)
+Publishing Disabled (User): Útgáfa óvirk (notandi)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Smelltu til að velja
+Current Icons on Server: Núverandi tákn á netþjóni
+
+########################################
+# Page: import.php
+#
+import from file: flytja inn úr skrá
+Disabled: Öryrkjar
+Import format: Innflutningsform
+Exclude private records: Útiloka einkaskrár
+Repeated items are imported separately. Prior imports are not overwritten.: Endurteknir hlutir eru fluttir inn sérstaklega. Fyrri innflutningur er ekki ofskrifaður.
+
+########################################
+# Page: import_handler.php
+#
+No file: Engin skrá
+Error deleting palm events from webcalendar.: Villa kom upp við að eyða lófaviðburði af vefdagatali.
+Events from prior import marked as deleted: Atburðir frá fyrri innflutningi merktir sem eytt
+Conflicting events: Misvísandi atburðir
+The import file contained no data.: Innflutningsskráin innihélt engin gögn.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Ertu viss um að þú viljir eyða þessu lagi?
+Delete layer: Eyða lagi
+Edit layer: Breyta lagi
+Enable layers: Virkja lög
+Layer: Lag
+Layers are currently disabled.: Lög eru sem stendur óvirk.
+Layers are currently enabled.: Lög eru virk sem stendur.
+Click to modify layers settings for XXX: Smelltu hér til að breyta lögum stillingum fyrir XXX dagatalið.
+Disable Layers: Slökkva á lögum
+Add layer: Bæta við lagi
+Add Layer: Bæta við lagi
+Edit Layer: Breyta lagi
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Ekki er hægt að uppfæra kjör
+Invalid entry id.: Ógilt færsluauðkenni.
+You cannot create a layer for yourself.: Þú getur ekki búið til lag fyrir sjálfan þig.
+You can only create one layer for each user.: Þú getur aðeins búið til eitt lag fyrir hvern notanda.
 
 ########################################
 # Page: list_unapproved.php
 #
-Approve/Confirm: Sam�ykkja/Sta�festa
+Approve/Confirm: Samþykkja/Staðfesta
+Approve Selected: Samþykkt valið
+Check All: Athugaðu allt
+Emails Will Not Be Sent: Tölvupóstur verður ekki sendur
+Reject Selected: Hafna valið
 Reject: Hafna
-View this entry: Sko�a
-Approve this entry?: Sam�ykkja?
-Reject this entry?: Hafna �essu atri�i?
+Uncheck All: Taktu hakið úr öllum
+View this entry: Skoða
+No unapproved entries for XXX.: Engar ósamþykktar færslur fyrir: „XXX“.
+Unapproved Entries: Ósamþykktar færslur
+Approve this entry?: Samþykkja?
+Reject this entry?: Hafna þessu atriði?
+Approve Selected entries?: Samþykkja valdar færslur?
+Reject Selected entries?: Hafna völdum færslum?
 
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: �� ver�ur a� sl� inn notandanafn og lykilor�
-Save login via cookies so I dont have to login next time.: Vista uppl�singar me� k�kum
-Login: Skr� inn
-cookies-note: <b>Athugi�:</b> K�kur ver�a a� vera virkar
+You must enter a login and password.: Þú verður að slá inn notandanafn og lykilorð
+Save login via cookies so I dont have to login next time.: Vista upplýsingar með kökum
+Login: Skrá inn
+public: almenningi
+Access XXX calendar: Fáðu aðgang að XXX dagatalinu
+cookies-note: Athugið: Kökur verða að vera virkar
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Ólöglegir stafir í innskráningu XXX.
+Invalid login: Ógild Innskráning
+Activity login failure: Notandanafn: „XXX“, IP: „ÁÁÁÁ“.
+Error XXX: Villa: „XXX“.
+You have been logged out.: Þú hefur verið skráður út.
+Access public calendar: Aðgangur að almennu dagatali
+Not yet registered? Register here!: Ekki ennþá skráð? Skráðu þig hér!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Ekkert slíkt dagatal sem ekki er notandi: „XXX“.
+This Calendar is not Public.: Þetta dagatal er ekki opinbert.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Bæta við nýju dagatali utan notanda
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Tilgreina þarf innskráningu.
+No such nonuser calendar: Ekkert slíkt dagatal sem ekki er notandi
 
 ########################################
 # Page: pref.php
 #
+Invalid theme: Ógilt þema
 Save Preferences: Vista stillingar
+Public Access calendar: Almanaksdagatal
+Modify Non User Calendar Preferences: Breyttu dagbókarkjörum sem ekki eru notendur
+Return to My Preferences: Fara aftur í mínar óskir
+Custom Scripts: Sérsniðin handrit
+Timezone Selection: Val á tímabelti
+Multiview: =
+entry-interval-help: Stillir mínútu millibili þegar breytingartíma er breytt
+Entry interval: Innkomubil
+hour: klukkustund
+minute: mínútu
+theme-reload-help: Vegna CSS skyndiminnis getur verið nauðsynlegt að endurhlaða síðu
+Page may need to be reloaded for new Theme to take effect: Það gæti þurft að endurhlaða síðuna til að nýtt þema taki gildi
+display_byproxy-help: Sýndu raunverulegan skapara á view_entry síðu
+Display if created by Assistant: Sýna ef búið er til af aðstoðarmanninum
+allow-view-subscriptions-help: Leyfir að takmarka fjaraðgang að lokuðum eða trúnaðarfærslum
+Allow remote viewing of: Leyfa fjarskoðun á
+entries: færslur
+
+########################################
+# Page: purge.php
+#
+Purging events for: Hreinsunarviðburðir fyrir
+Finished: Lokið
+Back: Aftur
+Check box to delete ALL events for a user: Gátreitur til að eyða  ÖLLUM  viðburðum fyrir notanda
+Delete all events before: Eyða öllum viðburðum áður
+Purge deleted only: Hreinsun eingöngu eytt
+Preview delete: Forskoða eyða
+Are you sure you want to delete events for: Ertu viss um að þú viljir eyða viðburðum fyrir
+Records deleted from XXX: Skrám eytt úr „XXX“.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Netfangið getur ekki verið autt.
+Username already exists.: Notandanafn er þegar til.
+Email address already exists.: Netfang er þegar til.
+New user via self-registration.: Nýr notandi með sjálfskráningu.
+A new WebCalendar account has been set up for you.: Nýr WebCalendar reikningur hefur verið settur upp fyrir þig.
+Your username is XXX.: Notandanafn þitt er: „XXX“.
+Your password is XXX.: Lykilorðið þitt er: „XXX“.
+Please visit XXX to log in and start using your account!: Vinsamlegast farðu á „XXX“ til að skrá þig inn og byrja að nota reikninginn þinn!
+You may change your password after logging in the first time.: Þú getur breytt lykilorðinu þínu eftir að hafa skráð þig inn í fyrsta skipti.
+If you received this email in error: Ef þú fékkst þennan tölvupóst fyrir mistök og skráðir þig ekki á WebCalendar reikning, gætirðu hunsað þessa tilkynningu eða svarað með stuttri athugasemd
+Administrator: Stjórnandi
+Welcome: Velkominn
+New user via email.: Nýr notandi með tölvupósti.
+Registration: Skráning
+Welcome to WebCalendar: Verið velkomin í WebCalendar
+Your email should arrive shortly.: Netfangið þitt ætti að berast fljótlega.
+Return to Login screen: Fara aftur á Innskráningarskjáinn
+Password (again): Lykilorð aftur):
+Your account information will be emailed to you.: Reikningsupplýsingar þínar verða sendar þér í tölvupósti.
+Submit: Sendu inn
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Haltu áfram
+(Your comments will be emailed to the other participants.): (Athugasemdir þínar verða sendar tölvupósti til hinna þátttakendanna.)
+XXX has rejected an appointment.: XXX hefur hafnað tíma.
+Rejected by XXX.: Hafnað af XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Bættu við nýju ytra dagatali
 
 ########################################
 # Page: report.php
 #
-This event is confidential.: �etta er tr�na�arm�l
-Rejected: Hafna�
+This event is confidential.: Þetta er trúnaðarmál
+(Private): (Einkamál)
+(cont.): (frh.)
+Approved: Samþykkt
+Deleted: Eytt
+Rejected: Hafnað
+Waiting for approval: Beðið eftir samþykki
+Unknown: Óþekktur
+Invalid report id.: Ógilt auðkenni auðkennis.
+Click here to manage reports for the Public Access calendar.: Smelltu hér til að stjórna skýrslum fyrir dagatal almennings.
+Add new report: Bæta við nýrri skýrslu
+Manage Reports: Stjórna skýrslum
 
 ########################################
 # Page: search.php
 #
+Advanced Search: Ítarleg leit
 Search: Leit
-Keywords: Leitaror�
+Keywords: Leitarorð
+Enter % for all entries: Sláðu inn% fyrir allar færslur
+Include: Hafa með
+Filter by Date: Sía eftir dagsetningu
+All Dates: Allar dagsetningar
+Past: Fortíð
+Upcoming: Framundan
+Range: Svið
 
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: �� ver�ur a� sl� inn amk eitt leitaror�
-Search Results: Ni�ursta�a leitar
+You must enter one or more search keywords.: Þú verður að slá inn amk eitt leitarorð
+Search Results: Niðurstaða leitar
 match found: fannst
 matches found: fundust
 No matches found: Ekkert fannst
+New Search: Ný leit
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Upplýsingarnar hér að neðan telja upp möguleg vandamál með uppsetningu þína á WebCalendar sem gætu verið breytt til að gera uppsetningu þína öruggari.
+For questions about WebCalendar security see the forums: Fyrir spurningar um öll öryggisvandamál WebCalendar, vinsamlegast notaðu WebCalendar spjallborðin sem hýst eru á GitHub.com;<br>XXX
+View your current PHP settings: Skoðaðu núverandi PHP stillingar
+Security Issue: Öryggismál
+Status: Staða
+Default admin user password: Sjálfgefið lykilorð admin notanda
+You should change the password of the default admin user.: Þú ættir að breyta lykilorði sjálfgefins admin notanda.
+File permissions XXX: Skráheimildir: XXX
+item XXX should not be writable: Eftirfarandi atriði ætti ekki að vera skrifanlegt:<br><tt> XXX</tt>
+File exists XXX: Skráin er til: „XXX“
+Because you have email disabled, you should remove this file.: Þar sem þú ert með tölvupóst óvirkan ættirðu að fjarlægja þessa skrá.
+File location XXX: Staðsetning skráar: „XXX“
+remove XXX if not using: Ef þú ert ekki að nota skrána „XXX“ ættirðu að eyða henni. Eða, að minnsta kosti, færa það í nýja skrá.
+System Settings XXX: Kerfisstillingar: „XXX“
+consider enabling UAC: Þú gætir viljað íhuga að gera aðgangsstýringu notanda kleift að stilla notandaréttindi.
+recommend approving new public events: Við mælum með að allar opinberar uppákomur séu samþykktar.
+recommend using CAPTCHA: Mælt er með CAPTCHA til að standa vörð um sjálfvirkar viðburði.
+Database cache directory location: Staðsetning gagnasafns skyndiminni
+db cache should be inaccessable: Skyndiminni gagnagrunnsins ætti að vera í skrá sem ekki er hægt að nálgast með vefslóð.
+PHP Settings XXX: PHP stillingar: „XXX“
+recommend setting XXX Off: Ráðlagður stilling fyrir „XXX“ er Slökkt.
+recommend setting allow_url_fopen Off: Ráðlagður stilling fyrir „allow_url_fopen“ er slökkt þegar fjaratöl eru ekki virk.
 
 ########################################
 # Page: select_user.php
 #
-View Another Users Calendar: Sko�a dagatal annarra
+View Another Users Calendar: Skoða dagatal annarra
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Þú hefur ekki bætt við neinum flokkum.
+Set Category: Setja flokk
+Global Categories cannot be changed.: Ekki er hægt að breyta alþjóðaflokkum.
+
+########################################
+# Page: upcoming.php
+#
+more: meira
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: t�knar stj�rnanda
-Add New User: B�ta n�jum notanda vi�
+Remote Calendars: Fjaratímatal
+denotes administrative user: táknar stjórnanda
+Add New User: Bæta nýjum notanda við
+
+########################################
+# Page: usersel.php
+#
+form: =
+Reset: Endurstilla
+
+########################################
+# Page: views.php
+#
+Add New View: Bæta við nýrri sýn
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Nafnlaust útsýni
+Add View: Bæta við útsýni
+Edit View: =
+View Name: Skoða nafn
+View Type: Skoða gerð
+Day by Time: Dag eftir tíma
+Week (Users horizontal): Vika (notendur láréttir)
+Week by Time: Vika eftir tíma
+Week (Users vertical): Vika (notendur lóðréttir)
+Week (Timebar): Vika (tímastika)
+Month (Timebar): Mánuður (tímastika)
+Month (side by side): Mánuður (hlið við hlið)
+Month (on same calendar): Mánuður (á sama dagatali)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Þú verður að tilgreina nafn útsýnis
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Engir notendur fyrir þessa skoðun.
 
 ########################################
 # Page: view_entry.php
 #
-Approve/Confirm entry: Sam�ykkja/Sta�festa atri�i
-Reject entry: Hafna atri�i
-This will delete this entry for all users.: Atri�i ver�ur eytt hj� �llum notendum.
-Edit entry: Breyta atri�i
+Update Task Percentage: Uppfæra verkhlutfall
+Completed: Lokið
+Assistant mode: Aðstoðarstilling
+Declined: Hafnaði
+Needs-Action: Þarfir-aðgerð
+by: eftir
+Percentage Complete: Hlutfall lokið
+External User: Utanaðkomandi notandi
+Update: Uppfærsla
+at: kl
+comments: athugasemdir
+Show: Sýna
+Hide: Fela
+Approve/Confirm entry: Samþykkja/Staðfesta atriði
+Reject entry: Hafna atriði
+Set category: Setja flokk
+Add to My Calendar: Bæta við dagatalið mitt
+Copy entry: Afritaðu færslu
+This will delete this entry for all users.: Atriði verður eytt hjá öllum notendum.
+Edit entry: Breyta atriði
+Edit repeating entry for all dates: Breyttu endurtekningu fyrir allar dagsetningar
+Delete repeating event for all dates: Eyða endurteknum atburði fyrir allar dagsetningar
+Edit entry for this date: Breyttu færslu fyrir þessa dagsetningu
+Delete entry only for this date: Eyddu aðeins færslu fyrir þessa dagsetningu
+Delete entry from calendar of XXX: Eyða færslu úr XXX dagatalinu
+This will delete the entry from your XXX calendar.: Þetta eyðir færslunni úr XXX dagatalinu þínu.
+boss: yfirmaður
+This will delete the entry from your boss calendar.: Þetta mun eyða færslunni úr dagatali yfirmanns þíns.
+This will delete the entry from your calendar.: Þetta eyðir færslunni úr dagatalinu þínu.
+from your boss calendar: úr dagatali yfirmanns þíns
+Do you want to add this entry to your calendar?: Viltu bæta þessari færslu við dagatalið þitt?
+This will add the entry to your calendar.: Þetta mun bæta færslunni við dagatalið þitt.
+Email all participants: Sendu öllum þátttakendum tölvupóst
+Hide activity log: Fela athafnaskrá
+Show activity log: Sýna aðgerðarskrá
+Export this entry to: Flytja þessa færslu út til
 Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Tvísmelltu á tóma reitinn til að bæta við nýrri færslu.
 
 ########################################
 # Page: week_details.php
 #
-New Entry: N�tt atri�i
+New Entry: Nýtt atriði
+cont.: frh.
 
 ########################################
 # Page: includes/access.php
 #
 Another Users Calendar: Dagatal annarra
+Category Management: Flokkastjórnun
+Day View: Dagsýn
+Edit Event: Breyta viðburði
+Month View: Mánaðarskoðun
+Common Trailer: =
+User Management: Notendastjórnun
+Manage Views: Stjórna skoðunum
+Week View: Vikusýn
+Year View: Ársskoðun
+Invalid function id: Ógilt auðkenni
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Gat ekki fundið „settings.php“ skrá.<br>Vinsamlegast afritaðu „settings.php.orig“ í „settings.php“ og breyttu fyrir síðuna þína.
+Incomplete settings.php file...: Ófullnægjandi „settings.php“ skrá ...
+Could not find XXX defined in...: Gat ekki fundið „XXX“ skilgreint í „settings.php“ skránni þinni.
+You must define XXX in: Þú verður að skilgreina „XXX“ í „settings.php“ skránni.
 
 ########################################
 # Page: includes/date_formats.php
 #
 December: Desember
 Dec: Des
+LANGUAGE DEFINED: TAKMÁL skilgreint
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Villa við að tengjast gagnagrunni: „XXX“.
+db_type not defined.: db_type ekki skilgreint.
+invalid db_type XXX: ógilt db_type „„ XXX “.
+Cache cleared from previous SQL!: Skyndiminni hreinsað frá fyrri SQL!
+Error executing query.: Villa við framkvæmd fyrirspurnar.
+Unfortunately, XXX is not implemented for YYY: Því miður er „XXX“ ekki útfærð fyrir (ÁÁÁ).
+Unknown ODBC error.: Óþekkt ODBC villa.
+Error opening cache dir XXX.: Villa við að opna skyndiminnið "XXX".
+delete: eyða
+Cache error Could not XXX file YYY.: Skyndiminni villa: Gat ekki XXX skrá „ÁÁÁ“.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Banvæn mistök
+Invalid data format for: Ógilt gagnasnið fyrir
 
 ########################################
 # Page: includes/functions.php
 #
-Printer Friendly: Prentv�nt
-Generate printer-friendly version: B�a til prentv�na �tg�fu
-January: Jan�ar
-February: Febr�ar
+Error Type not set for activity log!: Villa: Sláðu inn ekki stillt fyrir virkni!
+This event is XXX.: Þessi viðburður er XXX.
+Conf.: =
+exceeds limit of XXX events per day: fer yfir hámark XXX viðburða á dag
+on: á
+All Attendees: Allir þátttakendur
+Busy: Upptekinn
+Tentative: Bráðabirgða
+Schedule an appointment for XXX.: Skipuleggðu tíma fyrir XXX: ÁÁÁ.
+date_select: =
+Event approved: Viðburður samþykktur
+Journal approved: Tímarit samþykkt
+Task approved: Verkefni samþykkt
+Attachment: Viðhengi
+Event created: Atburður búinn til
+Journal created: Tímarit stofnað
+Task created: Verkefni búið til
+Event deleted: Atburði eytt
+Journal deleted: Dagbók eytt
+Task deleted: Verkefni eytt
+New user via email (self registration): Nýr notandi með tölvupósti (sjálfskráning)
+New user (self registration): Nýr notandi (sjálfskráning)
+Notification sent: Tilkynning send
+Event rejected: Atburði hafnað
+Journal rejected: Tímariti hafnað
+Task rejected: Verkefni hafnað
+Reminder sent: Áminning send
+Event updated: Viðburður uppfærður
+Journal updated: Tímarit uppfært
+Task updated: Verkefni uppfært
+Delete User: Eyða notanda
+WK: =
+TASKS: VERKEFNI
+Task_Title: Titill
+Due: Á gjalddaga
+Task Name: Verkefni Heiti
+Task Due Date: Gjalddagi verks
+You have XXX unapproved entries: Þú ert með XXX ósamþykktar færslur 
+Changes successfully saved: Breytingar vistaðar
+Event: Atburður
+Action: Aðgerð
+Printer Friendly: Prentvænt
+Generate printer-friendly version: Búa til prentvæna útgáfu
+after: eftir
+before: áður
+end: enda
+start: byrja
+View this event: Skoðaðu þennan atburð
+View this task: Skoðaðu þetta verkefni
+January: Janúar
+February: Febrúar
 March: Mars
-April: Apr�l
-May_: Ma�
-June: J�n�
-July: J�l�
-August: �g�st
+April: Apríl
+May_: Maí
+June: Júní
+July: Júlí
+August: Ágúst
 September: =
-October: Okt�ber
-November: N�vember
+October: Október
+November: Nóvember
 Jan: =
 Feb: =
 Mar: =
 Apr: =
-May: Ma�
-Jun: J�n
-Jul: J�l
-Aug: �g�
+May: Maí
+Jun: Jún
+Jul: Júl
+Aug: Ágú
 Sep: =
 Oct: Okt
-Nov: N�v
+Nov: Nóv
+SU: =
+MO: MÁ
+TU: ÞR
+WE: MI
+TH: FI
+FR: FÖ
+SA: L
+unknown-month: óþekktur-mánuður
+First Quarter Moon: Fyrsta ársfjórðungi tungl
+Full Moon: Fullt tungl
+Last Quarter Moon: Síðasta ársfjórðungstungl
+New Moon: Nýtt tungl
+Error TIME_SLOTS undefined!: Villa: TIME_SLOTS óskilgreint!
 The following error occurred: Eftirfarandi villa kom upp
-You are not authorized.: �� hefur ekki heimild
-Error approving event: Villa vi� sam�ykkt atri�is
+You are not authorized.: Þú hefur ekki heimild
+Add N hours to: Bæta N klukkustundum við
+Subtract N hours from: Dragðu frá N klukkustundum frá
+same as: eins og
+server time: tími miðlara
+Cannot read timezone file XXX.: Get ekki lesið tímabeltisskrá: XXX.
+Your current GMT offset is XXX hours.: Núverandi GMT-móti þitt er XXX klukkustundir.
+Unauthorized: Óheimilt
+Error approving event XXX.: Villa við samþykki viðburðar: XXX.
+Error deleting event XXX.: Villa við að eyða atburði: XXX.
+Error rejecting event XXX.: Villa við að hafna atburði: XXX.
 Sunday: Sunnudagur
-Monday: M�nudagur
-Tuesday: �ri�judagur
-Wednesday: Mi�vikudagur
+Monday: Mánudagur
+Tuesday: Þriðjudagur
+Wednesday: Miðvikudagur
 Thursday: Fimmtudagur
-Friday: F�studagur
+Friday: Föstudagur
 Saturday: Laugardagur
 Sun: =
-Mon: M�n
-Tue: �ri
-Wed: Mi�
+Mon: Mán
+Tue: Þri
+Wed: Mið
 Thu: Fim
-Fri: F�s
+Fri: Fös
 Sat: Lau
+unknown-weekday: óþekktur-virkur dagur
+Invalid referring URL: Ógild vefslóð sem vísar til
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Vísitala
+Documentation: Skjalagerð
+Page: Bls
 
 ########################################
 # Page: includes/trailer.php
 #
-My Calendar: Dagatali� mitt
-Add New Entry: B�ta vi�
-Logout: Skr� �t
-Back to My Calendar: Aftur � mitt dagatal
-Go to: Fara �
+My Calendar: Dagatalið mitt
+Add New Entry: Bæta við
+Add New Task: Bæta við nýju verkefni
+Logout: Skrá út
+Home: Heim
+Back to My Calendar: Aftur í mitt dagatal
+Go to: Fara í
+Manage calendar of: Stjórna dagatali
 
 ########################################
 # Page: includes/translate.php
 #
-event: atbur�ur
+Browser Language Not Found: Tungumál vafra fannst ekki
+(not supported): (ekki stutt)
+Abkhazian: Abkasískt
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Afríku
+Ainu: =
+Akan: =
+Akkadian: Akkadískt
+Albanian: Albanska
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Suður)
+Amharic: Amharískt
+Angika: =
+Apache: =
+Arabic (Algeria): Arabíska (Alsír)
+Arabic (Bahrain): Arabíska (Barein)
+Arabic (Egypt): Arabíska (Egyptaland)
+Arabic (Iraq): Arabíska (Írak)
+Arabic (Jordan): Arabíska (Jórdanía)
+Arabic (Kuwait): Arabíska (Kúveit)
+Arabic (Lebanon): Arabíska (Líbanon)
+Arabic (Libya): Arabíska (Líbýa)
+Arabic (Morocco): Arabíska (Marokkó)
+Arabic (Oman): Arabíska (óman)
+Arabic (Qatar): Arabíska (Katar)
+Arabic (Saudi Arabia): Arabískt (Sádí Arabía)
+Arabic (Syria): Arabíska (Sýrland)
+Arabic (Tunisia): Arabíska (Túnis)
+Arabic (U.A.E.): Arabíska (U.A.E.)
+Arabic (Yemen): Arabíska (Jemen)
+Arabic: Arabísku
+Aragonese: Aragóneska
+Aramaic: Arameískt
+Arapaho: =
+Arawak: =
+Armenian: Armenskur
+Assamese: Assamska
+Asturian: Astúríska
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Aserbaídsjan
+Balinese: Balíneska
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Baskneska
+Beja: =
+Belarusian: Hvíta-Rússneska
+Bemba: =
+Bengali: Bengalska
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Svartfótur
+Blin: =
+Bliss: Sæl
+Bosnian: Bosníu
+Braj: =
+Breton: Bretónska
+Buginese: Búgískur
+Bulgarian: Búlgarska
+Buriat: =
+Burmese: =
+Caddo: Kaddó
+Catalan: Katalónska
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Tsjetsjenska
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Kínverska (Hong Kong)
+Chinese (PRC): Kínverska (PRC)
+Chinese (Simplified/GB2312): Kínverska (einfölduð / GB2312) 
+Chinese (Singapore): Kínverska (Singapore)
+Chinese (Taiwan): Kínverska (Taívan)
+Chinese (Traditional/Big5): Kínverska (hefðbundin / stór5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Koptískur
+Cornish: Kornískt
+Corsican: Korsíkan
+Cree: =
+Creek: lækur
+Croatian: Króatíska
+Czech: Tékkneska
+Dakota: =
+Danish: Danska
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Hollenska (Belgía)
+Dutch: Hollenska
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamít
+English (Australia): Enska (Ástralía)
+English (Belize): Enska (Belís)
+English (Canada): Enska (Kanada)
+English (Ireland): Enska (Írland)
+English (Jamaica): Enska (Jamaíka)
+English (New Zealand): Enska (Nýja Sjáland)
+English (Philippines): Enska (Filippseyjar)
+English (South Africa): Enska (Suður-Afríka)
+English (Trinidad & Tobago): Enska (Trínidad og Tóbagó)
+English (United Kingdom): Enska (Bretland)
+English (United States): Enska (Bandaríkin)
+English (Zimbabwe): Enska (Simbabve)
+English: Enska-BNA
+Erzya: =
+Esperanto: Esperantó
+Estonian: eistneska, eisti, eistneskur
+Ewe: Æg
+Ewondo: Evondó
+Fang: =
+Fanti: =
+Faroese: Færeyingar
+Fijian: =
+Filipino: Filippseyska
+Finnish: Finnska
+Fon: =
+French (Belgium): Franska (Belgía)
+French (Canada): Franska (Kanada)
+French (France): Franska (Frakkland)
+French (Luxembourg): Franska (Lúxemborg)
+French (Monaco): Franska (Mónakó)
+French (Switzerland): Franska (sviss)
+French: Franska
+Frisian (Eastern): Frískt (austur)
+Frisian (Northern): Frísneska (norður)
+Frisian (Western): Frísneska (vestræna)
+Frisian: Frísneska
+Friulian: Fríúlska
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galisískur
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Sjáðu
+Georgian: Georgískur
+German (Austria): Þýska (Austurríki)
+German (Germany): Þýska (þýska)
+German (Liechtenstein): Þýska (Liechtenstein)
+German (Luxembourg): Þýska (lúxemborg)
+German (Standard): Þýska (staðall)
+German (Switzerland): Þýska (sviss)
+German: þýska, Þjóðverji, þýskur
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotnesk
+Grebo: Grebó
+Greek: Gríska
+Greenlandic: Grænlenska
+Guarani: =
+Gujarati: Gújaratí
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haítískt (kreólskt)
+Haitian: Haítískur
+Hausa: =
+Hawaiian: Hawaii
+Hebrew: Hebreska
+Herero: =
+Hiligaynon: Hígaynon
+Hindi: Hindí
+Hiri Motu: =
+Hittite: Hetíta
+Hmong: =
+Holo (Taiwanese): Holo (Tævan)
+Hungarian: ungverska, Ungverji, ungverskur
+Hupa: =
+Iban: =
+Icelandic: Íslenska
+Ido: =
+Igbo: Ígbó
+Iloko: =
+Indonesian: Indónesískt
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Íran
+Irish (Gaelic): Írska (gelíska)
+Irish: Írar
+Iroquoian: =
+Italian (Switzerland): Ítalska (sviss)
+Italian: Ítalska
+Japanese: Japönsk
+Javanese: Java
+Judeo-Arabic: Júdó-arabískt
+Judeo-Persian: Júdó-Persi
+Kabardian: Kabardískt
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: Karelska
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Mið)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Kóreska (Johab)
+Korean (North): Kóreska (norður)
+Korean (South): Kóreska (suður)
+Korean: Kóreska
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kúrda
+Kutenai: =
+Kyrgyz: Kirgisar
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Laó
+Latin: =
+Latvian: Lettneska
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Litháen
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Lúxemborgískt
+Macedonian: Makedónska
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: =
+Malayalam: =
+Maldivian: Maldivískt
+Maltese: Maltneska
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: Maórí
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldavíu
+Mongo: Mongó
+Mongolian: Mongólska
+Montenegrin: Svartfjallalandi
+Moroccan: Marokkó
+Mossi: =
+Myanmar: Mjanmar
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Norður)
+Ndebele (South): Ndebele (Suður)
+Ndebele: =
+Ndonga: =
+Neapolitan: Napólískur
+Nepali: Nepalska
+Nias: Nías
+Niuean: =
+Nogai: =
+Norse: Norrænt
+Norwegian (Bokmål): Norska (bokmål)
+Norwegian (Nynorsk): Norska (nýnorska)
+Norwegian: Norskt
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: =
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: Papíamentó
+Pashto: =
+Pedi: =
+Persian (Farsi): Persneska (farsi)
+Persian (Iran): Persneska (Íran)
+Persian: Persneska
+Phoenician: Fönikíumaður
+Pohnpeian: =
+Polish: Pólska
+Portuguese: Portúgalska
+Portuguese/Brazil: Portúgalska / Brasilía
+Punjabi (India): Punjabi (Indland)
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhetó-rómönsk
+Romanian: Rúmenska
+Romansh: Rómverska
+Romany: Rómanía
+Rundi: Rúundi
+Russian (Moldavia: Rússneska (Moldavía
+Russian (Republic of Moldova): Rússneska (Lýðveldið Moldóva)
+Russian: Rússneskt
+Sami (Inari): =
+Sami (Lappish): Sami (lappískur)
+Sami (Lule): =
+Sami (Northern): Sami (norður)
+Sami (Skolt): =
+Sami (Southern): Sami (Suður)
+Sami: =
+Samoan: Samóa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanskrít
+Santali: =
+Sardinian: Sardinískt
+Sasak: =
+Scots (Gaelic): Skotar (gelíska)
+Selkup: =
+Serbian (Upper): Serbneska (efri)
+Serbian: Serbneska
+Serer: =
+Sesotho: Sesótó
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sikileyska
+Sindhi: =
+Sinhala: =
+Slavic: Slavískur
+Slovak: Slóvakía
+Slovenian: Slóvenska
+Sogdian: =
+Somali: Sómalska
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbíska (neðri)
+Sorbian (Upper): Sorbíska (efri)
+Sorbian: Sorbneska
+Sotho: =
+Spanish (Argentina): Spænska (Argentína)
+Spanish (Bolivia): Spænska (Bólivía)
+Spanish (Chile): Spænska (Chile)
+Spanish (Colombia): Spænska (Kólumbía)
+Spanish (Costa Rica): Spænska (Costa Rica)
+Spanish (Dominican Republic): Spænska (Dóminíska lýðveldið)
+Spanish (Ecuador): Spænska (Ekvador)
+Spanish (El Salvador): Spænska (El Salvador)
+Spanish (Guatemala): Spænska (Gvatemala)
+Spanish (Honduras): Spænska (Hondúras)
+Spanish (Mexico): Spænska (Mexíkó)
+Spanish (Nicaragua): Spænska (Níkaragva)
+Spanish (Panama): Spænska (Panama)
+Spanish (Paraguay): Spænska (Paragvæ)
+Spanish (Peru): Spænska (perú)
+Spanish (Puerto Rico): Spænska (Puerto Rico)
+Spanish (Spain): Spænska (spánn)
+Spanish (Uruguay): Spænska (Úrúgvæ)
+Spanish (Venezuela): Spænska (Venesúela)
+Spanish: spænska, spænskt
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumerískur
+Sundanese: Sundanískur
+Susu: =
+Sutu: Sútú
+Swahili: Svahílí
+Swati: =
+Swedish (Finland): Sænska (Finnland)
+Swedish (Sweden): Sænska (Svíþjóð)
+Swedish: Sænska
+Syriac: Sýrlendingur
+Tagalog: =
+Tahitian: Tahítískar
+Tai: =
+Taiwan: Taívan
+Tajik: Tadsjikska
+Tamashek: =
+Tamil: Tamílska
+Tatar: =
+Telugu: Telúgú
+Tereno: =
+Tetum: =
+Thai: Taílenska
+Tibetan: Tíbeta
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): =
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Tyrkneska
+Turkmen: Túrkmenska
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Úgarítískur
+Ukrainian: Úkraínska
+Umbundu: =
+Urdu: Úrdú
+Uyghur: Újúgur
+Uzbek: Úsbeki
+Vai: =
+Venda: =
+Vietnamese: Víetnamska
+Volapük: =
+Votic: Atkvæðamikil
+Wakashan: =
+Walloon: Vallónska
+Waray: =
+Washo: =
+Welsh: Velska
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Jiddíska
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Vafraskilgreindur
+event: atburður
+journal: dagbók
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Ógilt notandinnskráning
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: Rangt lykilorð
+no such user: enginn slíkur notandi
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Reikningur óvirkur
 
 ########################################
 # Page: includes/xcal.php
 #
-MO: M�
-TU: �R
-WE: MI
-TH: FI
-FR: F�
-SA: L
-SU: =
-Unnamed Event: �nafngreint atri�i
+Interval: Tímabil
+Months: Mánuðum
+Month Days: Mánudagar
+Days: Dagar
+Weeks: Vikur
+Position: Staða
+Until: Þangað til
+Count: Telja
+Inclusion Dates: Innifalningsdagsetningar
+Exclusion Dates: Útilokunardagsetningar
+Event Imported: Viðburður fluttur inn
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bæti
+kb: =
+Mb: =
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Tilkynning
+authenticate: SMTP villa: Gat ekki staðfest
+connect_host: SMTP villa: Gat ekki tengst SMTP gestgjafa:
+data_not_accepted: SMTP villa: Gögn ekki samþykkt
+encoding: Óþekkt kóðun:
+execute: Gat ekki framkvæmt:
+file_access: Gat ekki fengið aðgang að skrá:
+file_open: Skráavilla Gat ekki opnað skrá:
+from_failed: Eftirfarandi frá netfangi mistókst:
+instantiate: Gat ekki komið tölvupósti í gang
+mailer_not_supported: póstur er ekki studdur
+provide_address: Þú verður að gefa upp að minnsta kosti eitt netfang viðtakanda.
+recipients_failed: SMTP villa: Eftirfarandi viðtakendur mistókust:
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/classes/captcha/captcha.php
 #
-Invalid color for document background.: �l�glegur litur � bakgrunni
-Invalid color for document title.: �l�glegur litur � titli
-Invalid color for table cell background.: �l�glegur litur � bakgrunni taflna
-Invalid color for table cell background for today.: �l�glegur litur � bakgrunni taflna n�verandi dags
-Color format should be RRGGBB.: Form lita � a� vera '#RRGGBB'
+Enter Characters Seen in Graphic: Sláðu inn stafi sem sjást á mynd
+Enter the correct letters and numbers...: Sláðu inn rétta stafi og tölur úr myndinni í textareitinn. Þessi litla prófun þjónar sem takmörkun á aðgangi gegn illgjarnum vélmennum. Endurhladdaðu einfaldlega síðuna ef þessi mynd er of erfitt að lesa
+Challenge/Response: Áskorun / viðbrögð
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Breyta dagsetningu og tíma þessarar færslu?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Stutta l�singu vantar
-You have not entered a valid time of day: Rangur t�mi sleginn inn
+You have not entered a Brief Description: Þú hefur ekki slegið inn stutta lýsingu
+time prior to work hours...: tíma fyrir vinnutíma ...
+Invalid Event Date: Ógildur viðburðardagur
+Please add a participant: Vinsamlegast bættu þátttakanda við
+Invalid Date: Ógild dagsetning
+You have not entered a valid time of day: Þú hefur ekki slegið inn gildan tíma dags.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Auðkenni dagatals getur ekki verið autt.
+First and last names cannot both be blank.: Fornafn og eftirnafn geta ekki bæði verið auð.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Ógildur litur
+Color format should be RRGGBB.: Litasnið ætti að vera #RRGGBB.
+URL cannot be blank.: Slóðin getur ekki verið auður.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Skráargerð passar ekki við innflutningssnið
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Ólöglegur litur í bakgrunni
+Invalid color for document title.: Ólöglegur litur í titli
+Invalid color for table cell background.: Ólöglegur litur í bakgrunni taflna
+Invalid color for table cell background for today.: Ólöglegur litur í bakgrunni taflna núverandi dags
+Invalid work hours.: Ógildur vinnutími.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Vefslóð miðlara verður að enda með skástriki (/).
+Invalid color for table grid.: Ógildur litur fyrir borðgrind.
+Invalid color for event popup background.: Ógildur litur fyrir sprettiglugga bakgrunns.
+Invalid color for event popup text.: Ógildur litur fyrir sprettiglugga viðburðar.
+Invalid color for table header text.: Ógildur litur fyrir texta fyrirsagnar töflu.
+Invalid color for table header background.: Ógildur litur fyrir bakgrunn fyrir töfluhaus.
+Server URL is required.: Vefslóð netþjóns er krafist.
+Invalid Color: Ógildur litur
+Database Name: Nafn gagnagrunns
+Full Path (no backslashes): Heil leið (engin afturför)
+The password contains illegal characters.: Lykilorðið inniheldur ólöglega stafi.
+Error you must specify a Single-User Login: Villa þú verður að tilgreina innskráningu fyrir einn notanda
+Could not find XXX.: Gat ekki fundið XXX.
+Could not find XXX in DOM.: Gat ekki fundið XXX í DOM.
 
 ########################################
 # Page: includes/menu/index.php
 #
-Unapproved Events: �sam�ykkt atri�i
+This Week: Í þessari viku
+This Month: Í þessum mánuði
+This Year: Þetta ár
+Exit: Útgangur
+Add New Event: Bæta við nýjum viðburði
+Delete Entries: Eyða færslum
+My Views: Skoðanir mínar
+Manage Calendar of: Stjórna dagatali
+My Reports: Skýrslur mínar
+My Profile: Prófílinn minn
+Public Calendar: Opinber dagatal
+Unapproved Events: Ósamþykkt atriði
+User Manager: Notendastjóri
+Help Contents: Hjálparinnihald
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Gagnagrunnur skyndiminni skrá
+Create New: Búa til nýtt
+Failure Reason: Ástæða bilunar:
+You must manually create database: Þú verður að búa til gagnagrunn handvirkt.
+Single-User: Einstaklingur
+Test Settings: Prófstillingar
+Timezone Conversion Successful: Umbreyting tímabeltis tókst
+WebCalendar Installation Wizard Step XXX: Uppsetningarhjálp WebCalendar skref XXX
+Password Accepted: Lykilorð samþykkt
+Successful Login: Árangursrík innskráning
+Password Incorrect: Lykilorð rangt
+Invalid Login: Ógild Innskráning
+Display Errors: Sýna villur
+File Uploads: Skráupphal
+Allow URL fopen: Leyfa slóð að opna vefslóð (aðeins krafist ef notuð eru ytri dagatal)
+Safe Mode: =
+Safe Mode Allowed Vars: Safe Mode leyfðir Vars (TZ aðeins krafist ef Safe Mode er á)
+GD: GD (nauðsynlegt fyrir bakgrunnsmyndir á stigi)
+Passwords do not match!: Lykilorð passa ekki saman!
+Unable to write password to settings.php file: Ekki er hægt að skrifa lykilorð í „settings.php“ skrána.
+Password Updated: Lykilorð uppfært
+Password has been set: Lykilorð hefur verið valið.
+Connection Successful...: Tenging tókst  Farðu á næstu síðu til að halda áfram uppsetningu.
+Correct your entries or click the Create New...: Leiðréttu færslurnar þínar eða smelltu á hnappinn  Búa til nýjan  til að halda áfram uppsetningu.
+Correct your entries and try again.: Leiðréttu færslurnar þínar og reyndu aftur.
+XXX does not exist: XXX er ekki til
+XXX is not writable: XXX er ekki skrifanlegt
+Error Converting Timezone: Villa við að umbreyta tímabelti
+Error Unable to write to file XXX.: Villa Ekki er hægt að skrifa í skrá XXX.
+Please change the file permissions of this file.: Vinsamlegast breyttu skráheimildum þessarar skráar.
+Please change includes dir permission: Vinsamlegast breyttu skráarheimildum í „inniheldur“ skránni þinni til að leyfa ritun annarra notenda.
+Your settings have been saved.: Stillingar þínar hafa verið vistaðar.
+OFF: AF
+ON: Kveikt
+WebCalendar Setup Wizard: Uppsetningarhjálp WebCalendar
+This installation wizard will guide you...: Þessi uppsetningarhjálp mun leiðbeina þér um að setja upp grunnuppsetningu WebCalendar.<br>Sjá:<br>um hjálp og bilanaleit
+System Administrators Guide: Handbók kerfisstjóra
+Frequently Asked Questions: Algengar spurningar
+FAQ: Algengar spurningar
+Troubleshooting: Bilanagreining
+Getting Help: Að fá hjálp
+Upgrading Guide: Uppfærsluhandbók
+User Supported Wiki: Notandi studdur Wiki
+PHP Version Check: PHP útgáfuathugun
+Check to see if PHP 7.1.0 or greater is installed.: Athugaðu hvort PHP 7.1.0 eða nýrri búnaður er uppsettur.
+PHP version: PHP útgáfa
+PHP Settings: PHP stillingar
+Detailed PHP Info: Ítarlegar PHP upplýsingar
+settings.php Status: „settings.php“ Staða
+Session Check: Þingsskoðun
+To test the proper operation of sessions...: Til að prófa rétta notkun funda skaltu endurhlaða þessa síðu. Þú ættir að sjá aukningu þingsins í hvert skipti.
+SESSION COUNTER: ÞINGTALARI
+The file permissions of settings.php are set...: Skráheimildir „settings.php“ eru þannig stilltar að uppsetningaraðilinn hefur ekki heimild til að breyta því. Vinsamlegast breyttu skráarheimildum eftirfarandi skráar til að halda áfram
+The file permissions of the includes directory are set...: Skráheimildir skráarsafnsins eru þannig stilltar að uppsetningaraðilinn hefur ekki heimild til að búa til nýja skrá. Vinsamlegast breyttu heimildum eftirfarandi möppu til að halda áfram
+Your settings.php file appears to be valid.: "Settings.php" skráin þín virðist vera gild.
+Configuration Wizard Password: Lykilorð fyrir stillingarhjálp
+Create Settings File Password: Búðu til lykilorð fyrir skráarstillingar
+db setup directions...: Í þessum hluta muntu setja upp og prófa tengingu við gagnagrunnþjóninn þinn. Reikningsupplýsingarnar sem gefnar eru ættu að hafa FULL heimild til að búa til gagnagrunna, töflur og notendur. Ef þetta er ekki mögulegt, eða aðgangur að gagnagrunni þínum er takmarkaður, verður þú að stilla gagnagrunninn þinn handvirkt.
+Database Status: Gagnagrunnur Staða
+Supported databases for your PHP installation: Stuðnings gagnasöfn fyrir PHP uppsetningu þína
+Your current database settings are able to access the database.: Núverandi gagnagrunnstillingar þínar hafa aðgang að gagnagrunninum.
+Please Test Settings: Vinsamlegast prófaðu stillingar
+Your current database settings are not able...: Núverandi gagnagrunnstillingar þínar hafa ekki aðgang að gagnagrunninum eða hafa ekki enn verið prófaðar.
+Database Settings: Gagnasafnsstillingar
+Database Type: Gagnasafnsgerð
+Server: Netþjónn
+Connection Persistence: Tenging þrautseigja
+All your database tables appear to be up...: Allar gagnagrunnstöflurnar þínar virðast vera uppfærðar. Þú getur haldið áfram á næstu síðu og lokið uppsetningu WebCalendar þíns.
+This appears to be a new installation...: Þetta virðist vera ný uppsetning. Ef þetta er ekki rétt skaltu fara aftur á fyrri síðu og leiðrétta stillingar þínar.
+This appears to be an upgrade...: Þetta virðist vera uppfærsla frá útgáfu&nbsp;XXX&nbsp;í&nbsp;ÁÁÁ.
+The database requires some data input...: Gagnagrunnurinn krefst gagnainntaks Smelltu á Uppfæra gagnagrunn til að ljúka uppfærslunni.
+In this section we will perform...: Í þessum kafla munum við framkvæma breytingarnar til að færa gagnagrunninn upp á nauðsynlegt stig. Ef þú ert að nota gagnagrunn sem er að fullu studdur verður þetta skref framkvæmt sjálfkrafa fyrir þig. Ef ekki er hægt að birta nauðsynlegt SQL og þú ættir að geta klippt og límt það í fyrirspurnarglugga gagnagrunnsþjónsins.
+No database actions are required.: Engar aðgerðir gagnagrunns eru nauðsynlegar.
+The following database actions are required: Eftirfarandi gagnagrunnsaðgerðir eru nauðsynlegar
+ODBC Underlying Database: ODBC undirliggjandi gagnagrunnur:
+Automatic installation not supported: Sjálfvirk uppsetning hefur ekki verið framkvæmd að fullu fyrir gagnagrunn þinn. Þú verður að búa til tilskildar töflur handvirkt með SQL sem fylgir. Vinsamlegast smelltu á  Sýna SQL  til að halda áfram. Klipptu úr og límdu inn í fyrirspurnarglugga gagnagrunnsins.
+This may take several minutes to complete: Þetta getur tekið nokkrar mínútur.
+Install Database: Settu upp gagnagrunn
+Update Database: Uppfæra gagnagrunn
+Display Required SQL: Sýna nauðsynlegt SQL
+Return to previous page after processing SQL.: Eftir að hafa unnið þessa SQL handvirkt þarftu að fara aftur á fyrri síðu og prófa gagnagrunninn aftur svo að handritið greini breytingarnar.
+This is the final step in setting up your WebCalendar Installation.: Þetta er lokaskrefið í að setja upp WebCalendar uppsetninguna þína.
+Timezone Conversion: Umbreyting tímabeltis
+It appears that you have NOT converted...: Svo virðist sem þú hafir EKKI breytt núverandi WebCalendar viðburðargögnum þínum í GMT. Ef þú hefur það geturðu hunsað þessa tilkynningu og ekki haldið áfram með umbreytinguna. Ef þetta er ný uppsetning geturðu einnig hunsað þessa tilkynningu.
+Convert Data to GMT: Umbreyta gögnum í GMT
+Application Settings: Umsóknarstillingar
+HTTP-based authentication was not detected...: HTTP-byggð sannvottun fannst ekki. Þú verður að endurstilla vefþjóninn þinn ef þú vilt velja 'Vefþjónn' úr 'Notendavottun' fyrir neðan.
+HTTP-based authentication was detected...: HTTP-byggð sannprófun greindist. Staðfesting notanda er meðhöndluð af vefþjóninum þínum. Þú ættir að velja 'Web Server' af listanum yfir 'User Authentication' val hér að neðan.
+Create Default Admin Account: Búðu til sjálfgefinn stjórnandareikning
+(Admin Account Not Found): (Stjórnandi reikningur fannst ekki)
+User Authentication: Sannvottun notanda
+Web-based via WebCalendar (default): Vefbundið um WebCalendar (sjálfgefið)
+Web Server (not detected): Vefþjónn (ekki greindur)
+Web Server (detected): Vefþjónn (greindur)
+None (Single-User): Enginn (einn notandi)
+Read-Only: Lesið aðeins
+Environment: Umhverfi
+Production: Framleiðsla
+Development: Þróun
+Save Settings: Vista stillingar
+Launch WebCalendar: Ræstu WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Villa við að uppfæra töflu „XXX“: ÁÁÁ.
+Conversion Successful: Umskipti tókst 
+Perl script required: Fyrri útgáfa þín af WebCalendar þarf að keyra PERL handrit til að umbreyta gögnunum þínum. Vinsamlegast keyrðu /tools/upgrade_to_0.9.7.pl og farðu síðan aftur á þessa síðu til að halda áfram.
+previous version requires updating several tables: Fyrri útgáfa þín af WebCalendar þarf að uppfæra nokkrar gagnagrunnstöflur.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ENGIN FORSÝNING Í boði
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Villa við að tengjast gagnagrunni
+Include Path: Hafa leið með
+Deleting events for: Eyðir viðburðum fyrir
+Importing events for: Flytur inn viðburði fyrir
+No data returned from: Engin gögn skilað frá
+for non-user calendar: fyrir dagatal utan notenda
+No Remote Calendars found: Engar ytri dagatal fundust
+Remote Calendars not enabled: Fjaratímatöl ekki virk
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: gat ekki fundið atburðarauðkenni
+could not find event id XXX in database.: gat ekki fundið atburðarauðkenni XXX í gagnagrunninum.
+task: verkefni
+This is a reminder for the XXX detailed below.: Þetta er áminning fyrir XXX sem lýst er hér að neðan.
+Pecentage Complete: Pecentage lokið
+Reminder: Áminning
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Óstudd aðgerð: XXX.
+No event id specified.: Ekkert atburðarauðkenni tilgreint.
+Not authorized (not admin).: Ekki heimild (ekki stjórnandi).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Leitar að viðburðum fyrir XXX frá degi YYY til dagsetning ZZZ.
+Found XXX events in time range.: Fann XXX viðburði á tímabili.
+Event id=XXX YYY at ZZZ on AAA.: Atburðarauðkenni = XXX „ÁÁÁ“ í ZZZ á AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Leyfir XXX notanda að skoða dagatal annars notanda.
+Error Email reminders disabled for user XXX.: Villa: Áminning tölvupósts óvirk fyrir notandann „XXX“.
+Number of site_extras XXX.: Fjöldi vefsíðnaextra: XXX.
+Reminder set for event.: Áminning stillt fyrir viðburð.
+Mins Before XXX.: Mín áður: XXX.
+Event time is XXX.: Viðburðartími er: XXX.
+Remind time is XXX.: Áminningartími er: XXX.
+Reminders for user XXX, login YYY.: Áminning fyrir notandann „XXX“, skráðu þig inn „ÁÁÁÁ“.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Ósamþykkt fyrir notanda „XXX“.
+Event id=XXX YYY already sent.: Atburðarauðkenni = XXX „YYY“ þegar sent.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Engin innskráning er krafist fyrir einn notanda.
+No login required for HTTP authentication.: Engin innskráning krafist fyrir HTTP auðkenningu.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Ógildir stafir í innskráningu.
+Username XXX does not exist.: Notandanafnið „XXX“ er ekki til.
+You cannot remove admin rights from yourself!: Þú getur ekki fjarlægt stjórnandaréttindi frá þér!
+Unknown error saving user: Óþekkt villa við vistun notanda.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Engir þátttakendur fundust fyrir atburðarauðkenni: XXX.
+Db error Could not find event id XXX.: Db villa: Gat ekki fundið atburðarauðkenni XXX.
+Error Could not find event id XXX in database.: Villa: Gat ekki fundið atburðarauðkenni XXX í gagnagrunninum.

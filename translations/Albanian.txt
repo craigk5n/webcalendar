@@ -1,10 +1,42 @@
-# See translations/English-US.txt for instructions.
+# Albanian sq
 #
-# Translations by Rigels Gordani rige@hotmail.com, February 2004,
-# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
-# http://sourceforge.net/projects/jscalendar/
+# Formati përbëhet nga një titull opsional:
 #
-# Translation last updated on 10-15-2008
+# Përkthyer nga: emri dhe emaili juaj
+# Azhurnimi i fundit: data e përkthimit
+# (Përfshirë "#" kryesor dhe çdo koment të bërë nga përkthyesit e mëparshëm.
+# Vija e parë e zbrazët përfundon këto komente të kryefjalës.)
+#
+# Ndiqet nga aq sa ka nevojë:
+#
+# Fraza angleze: përkthim
+# (Një në një rresht. PA "#" kryesor.
+# "Fraza angleze:", përfshirë zorrën e trashë ":", sigurohet nga
+# Zhvilluesit e WebCalendar. Pjesa juaj është "përkthimi".)
+#
+# Drejtoria e mjeteve përmban dy skripta perl për t'ju ndihmuar:
+# - check_translation.pl
+# tregon nëse i gjithë teksti është përkthyer me sukses.
+# - update_translation.pl
+# do të analizojë skedarët e programit për të gjetur të gjitha përkthimet ('fraza') dhe
+# udhëzues ('fraza'). Do të rregullojë frazat sipas faqes
+# (skedar) që përmban shfaqjen e parë. Opsionale, ajo mund të etiketojë
+# fraza që nuk janë përkthyer ende duke vendosur
+#  << MISSING >>
+# në vijën sipër frazës. Dhe, nëse fraza është një shkurtim,
+# do të përfshijë tekstin e plotë anglisht në rreshtin poshtë frazës.
+#
+# Shënim: Po përpiqem të zvogëloj madhësinë e përgjithshme të skedarit. Nëse "përkthimi"
+# fjala / fraza është identike në gjuhën tuaj dhe anglisht, thjesht përdorni një shenjë "=".
+#
+# Shënim: Më poshtë do të vini re shënimin për "May_". Ka një arsye për këtë.
+# Përkthejeni "May_" në emrin e plotë të muajit dhe "May" në,
+#
+# zakonisht shkurtim me tre shkronja, muaj (si "Tetor" për "Tetor").# Kam përdorur Google translate për këtë.
+# Duhet të mjaftojë derisa një folës vendas të mund ta verifikojë atë.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -41,71 +73,2314 @@ __month__ __yyyy__: =
 
 
 ########################################
+# Page: about.php
+#
+Title: Kalendari në internet
+version XXX: versioni XXX
+WebCalendar is a PHP application used...: WebCalendar është një aplikacion PHP që përdoret për të mbajtur një kalendar për një përdorues të vetëm ose një grup përdoruesish të internetit / intranetit. Mund të konfigurohet gjithashtu si një kalendar i ngjarjeve.
+Credits: Kreditë
+About: Rreth
+OK: Ne rregull
+
+########################################
 # Page: access.php
 #
-Calendar: Kalendarin
+Database error XXX.: Gabim në bazën e të dhënave: XXX.
+DEFAULT CONFIGURATION: KONFIGURIMI DEFAULT
+Go: Shko
+Save: Ruaj
+Undo: Zhbëj
+Public Access: Aksesi publik
+Admin: Administratori
+User Access Control: Kontrolli i Hyrjes së Përdoruesit
+Allow Access to Other Users Calendar: Lejo hyrjen në kalendarin e përdoruesve të tjerë
+Grant This User Access to My Calendar: Jepi këtij përdoruesi hyrje në kalendarin tim
+Type: Lloji
+Calendar: Kalendar
+View Event: Shikoni Ngjarjen
+View: Pamje
+Edit: Redakto
+Approve/Reject: Miratoni / Refuzoni
+Events: Ngjarjet
+Tasks: Detyrat
+Journals: Revista
+Can Invite: Mund të Ftojë
+Can Email: Mund Email
+Can See Time Only: Mund të Shikoj Vetëm Kohën
+Assistant: Asistent
+Select All: Selektoj të gjitha
+Clear All: Pastroji të gjitha
+Public: Publike
+Confidential: Konfidenciale
+Private: =
+
+########################################
+# Page: activity_log.php
+#
+Next: Tjetra
+Previous: E mëparshme
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Ngjarja XXX është tashmë në kalendarin tuaj.
+Invalid entry id XXX.: ID e pavlefshme e hyrjes: "XXX".
+a XXX event may not be added to your calendar: Kjo është një ngjarje XXX dhe mund të mos shtohet në kalendarin tuaj.
+confidential: konfidenciale
+private: =
+Error adding event XXX.: Gabim në shtimin e ngjarjes: XXX.
 
 ########################################
 # Page: admin.php
 #
-Month: Muaji
+Invalid setting name XXX.: Emër i pavlefshëm cilësimi "XXX".
+Select: Zgjidhni
+Day: Dita
+Week: Javë
+Month: Muaj
 Year: Viti
+Bottom: Fund
+Top: =
+Anyone: Çdokush
+Participant: Pjesëmarrës
+Settings: Cilësimet
+Groups: Grupet
+NonUser Calendars: Kalendarë të JoPërdoruesit
+Other: Të tjera
+Email: =
+Colors: Ngjyrat
+Document background: Sfondi i dokumentit
+Document title: Titulli i dokumentit
+Document text: Teksti i dokumentit
+My event text: Teksti im i ngjarjes
+Table grid color: Ngjyra e rrjetës së tryezës
+Table header background: Sfondi i kokës së tryezës
+Table header text: Teksti i kreut të tabelës
+Table cell background: Sfondi i qelizës së tryezës
+Table cell background for current day: Sfondi i qelizave të tryezës për ditën aktuale
+Table cell background for days with events: Sfondi i qelizave të tryezës për ditë me ngjarje
+Table cell background for weekends: Sfondi i qelizave të tryezës për fundjavat
+Table cell background for other month: Sfondi i qelizave të tryezës për muajin tjetër
+Week number color: Ngjyra e numrit të javës
+Event popup background: Sfondi i dritares së ngjarjes
+Event popup text: Teksti popup i ngjarjes
+System Settings: Cilësimet e sistemit
+Help: Ndihmoni
+System options: Opsionet e sistemit
+app-name-help: Përcakton emrin e aplikacionit që do të shfaqet në shiritin e titullit të shfletuesit për të gjitha faqet dhe në faqen e hyrjes. Vlera që specifikoni këtu do të kërkohet në skedarin e përkthimeve duke ju lejuar të siguroni tituj të ndryshëm për gjuhë të ndryshme.
+Application Name: Emri i aplikacionit
+Translated Name (XXX): Emri i përkthyer (XXX)
+server-url-help: Përcakton URL-në bazë për aplikacionin. Kjo do të përfshihet kur dërgoni përkujtesa dhe njoftime me email.
+Server URL: URL e serverit
+home-url-help: Përcakton URL-në e shtëpisë për aplikacionin. Kjo mund të jetë absolute ose relative
+Home URL: URL e shtëpisë
+language-help: Përcakton se cilën gjuhë të përdorë.
+Language: Gjuhe
+Your browser default language is XXX.: Gjuha e paracaktuar e shfletuesit tuaj është "XXX".
+Allow user to use themes: Lejoni përdoruesin të përdorë tema
+themes-help: Lejon azhurnimin masiv të cilësimeve të konfigurimit. Etiketat me shkronja të vogla janë vetëm parapëlqehen nga përdoruesit.
+Themes: Temat
+AVAILABLE THEMES: TEMAT E DISPONUESHME
+None: Asnje
+Preview: Paraqitje
+Site customization: Përshtatja e faqes
+custom-script-help: Lejon hyrjen e tekstit personal të Javascript ose fletës së stileve që do të futet në seksionin HTML "kokë" të çdo faqe.
+Custom script/stylesheet: Skenari / stili i personalizuar
+custom-header-help: Lejon që një pjesë e personalizuar HTML të përfshihet në krye të çdo faqeje.
+Custom header: Header me porosi
+custom-trailer-help: Lejon që një pjesë e personalizuar HTML të përfshihet në fund të çdo faqeje.
+Custom trailer: Rimorkio e personalizuar
+enable-external-header-help: Lejon që rimorkio e personalizuar të ngarkohet nga një skedar i jashtëm
+Allow external file for header/script/trailer: Lejo skedarin e jashtëm për titull / skenar / rimorkio
+Allow user to override header/trailer: Lejoni që përdoruesi të anashkalojë titullin / rimorkion
+Date and Time: Data dhe ora
+server-tz-help: Përcakton sa orë për të rregulluar kohën nga UTC në kohën e serverit.
+Server Timezone Selection: Zgjedhja e zonës orare të serverit
+tz-help: Përcakton sa orë për të rregulluar kohën nga UTC në kohën lokale.
+Default Client Timezone Selection: Zgjedhja e zonës orare të klientit të parazgjedhur
+display-general-use-gmt-help: Nëse aktivizohet, datat / orët e zakonshme shfaqen si GMT
+Display Common Use Date/Times as GMT: Shfaqni datën / orët e përdorimit të zakonshëm si GMT
+date-format-help: Përcakton formatin e preferuar të datës.
+Date format: Formati i datës
+Small Task Date: Data e Detyrave të Vogla
+display-week-starts-on: Përcakton ditën e javës që fillon java. Nëse specifikohet e hëna, atëherë numrat e javës do të jenë numrat e javëve ISO.
+Week starts on: Java fillon në
+display-weekend-starts-on: Vendos ditën e javës për fundjavat për të filluar
+Weekend starts on: Fundjava fillon në
+time-format-help: Përcakton formatin e orës që duhet përdorur:<br><em>12 orë:</em> Afatet e shfaqjes në 3 të mëngjesit, 8:30 pasdite, etj.<br><em>24 orë:</em> Afatet e shfaqjes si 300 , 2030, etj.
+Time format: Formati i kohës
+12 hour: 12 ore
+24 hour: 24 ore
+timed-evt-len-help: Specifikon metodën e hyrjes për përcaktimin e gjatësisë së një ngjarje me kohë.
+Specify timed event length by: Specifikoni gjatësinë me kohë të ngjarjes nga
+Duration: Kohëzgjatja
+End Time: Koha e Fundit
+work-hours-help: Përcakton intervalin kohor për t'u shfaqur për pamjen ditore.
+Work hours: Orët e punës
+From: Nga
+to: te
+Appearance: Pamja e jashtme
+preferred-view-help: Përcakton pamjen e paracaktuar (Dita, Java, Muaji ose Viti).
+Preferred view: Pamja e preferuar
+Allow top menu: Lejo menunë e sipërme
+Date Selectors position: Pozicioni i përzgjedhësve të datave
+menu-themes-help: Vendos ngjyrat dhe stilin e menusë së sipërme
+Menu theme: Tema e menusë
+fonts-help: Specifikon një listë të shkronjave të sistemit për t'u përdorur (të tilla si "Arial, Helvetica")
+Fonts: Shkronjat
+display-sm_month-help: Nëse është e aktivizuar, shfaq muaj të vegjël në pamjet muaj
+Display small months: Shfaq muaj të vegjël
+display-weekends-help: Përfshini fundjavat kur shikoni një javë.
+Display weekends: Shfaq fundjavat
+display-long-daynames-help: Nëse është e aktivizuar, shfaqen emrat e ditëve të gjata
+Display long day names: Shfaq emrat e ditëve të gjata
+display-alldays-help: Shfaqni muajt e mëparshëm dhe të ardhshëm në pamjet e muajit, duke mbushur të gjitha qelizat.
+Display all days in month view: Shfaq të gjitha ditët në pamje muaji
+display-week-number-help: Përcakton nëse numri i javës (1-52) duhet të shfaqet në pamjen e muajit dhe atë të javës.
+Display week number: Shfaq numrin e javës
+display-desc-print-day-help: Përfshini përshkrimet e ngjarjeve në versionin printer të pamjes ditore.
+Display description in printer day view: Shfaq përshkrimin në pamjen ditore të printerit
+yearly-shows-events-help: Në pamjen vjetore, shfaq ditët që përmbajnë ngjarje me një shkronjë të theksuar.                 
+Display days with events in bold in month and year views: Shfaq ditët me ngjarje me shkronja të theksuara në muaj dhe vit
+display-minutes-help: Nëse është e aktivizuar, minutat që mbarojnë me: 00 do të shfaqen gjithmonë
+Display 00 minutes always: Shfaq 00 minuta gjithmonë
+display-end-times-help: Shfaq kohën e mbarimit të ngjarjes nëse është ngjarja me kohë
+Display end times on calendars: Shfaq kohën e mbarimit në kalendar
+allow-view-add-help: Një ikonë '+' do të përfshihet në pamjet, duke i lejuar përdoruesit të shtojnë shpejt ngjarjet në kalendarët e përdoruesve të tjerë.
+Include add event link in views: Përfshini shtoni lidhjen e ngjarjes në pamje
+lunar-help: Nëse aktivizohet, do të shfaqë ikona të vogla që përfaqësojnë fazat hënore çdo muaj
+Display Lunar Phases in month view: Shfaq Fazat Hënore në pamje muaji
+Restrictions: Kufizimet
+allow-view-other-help: Përcakton nëse një përdorues mund të shikojë kalendarin e një përdoruesi tjetër.
+Allow viewing other users calendars: Lejoni të shikoni kalendarët e përdoruesve të tjerë
+require-approvals-help: Kur aktivizohet, një përdorues duhet të miratojë një ngjarje para se të shfaqet në kalendarin e tij (nëse nuk është i aktivizuar Shfaqja e pa aprovuar). Shënimi duke vendosur këtë në "Jo" nuk do të çaktivizojë miratimet për kalendarin e Hyrjes Publike (nëse është aktivizuar kalendari i Hyrjes Publike).                                     
+Require event approvals: Kërkoni miratimet e ngjarjeve
+display-unapproved-help: Përcakton nëse ngjarjet e pa aprovuara shfaqen në kalendarin tuaj.<br>Nëse vendoset në "Po", atëherë ngjarjet e pa aprovuara do të shfaqen në kalendarin tuaj (me një ngjyrë tjetër teksti).<br>Nëse vendoset në "Jo", atëherë ngjarjet e pa aprovuara duhet të aprovohen para se të shfaqen në kalendarin tuaj.
+Display unapproved: Shfaqja e pa aprovuar
+conflict-check-help: Kontrolloni për konflikte ngjarjesh (dy ngjarje të planifikuara në të njëjtën kohë për të njëjtin person). Nëse e vendosni këtë në "Po", përsëri do të jeni në gjendje të caktoni dy ngjarje në të njëjtën kohë pasi të keni konfirmuar një paralajmërim. Nëse e vendosni këtë në "Jo", nuk do të bëhet kontroll për konflikte. Ju ndoshta dëshironi ta vendosni në "Po", kështu që ndodh kontrolli i konfliktit.
+Check for event conflicts: Kontrolloni për konflikte ngjarjesh
+Yes: po
+No: Jo
+conflict-months-help: Nëse kontrolli i konfliktit është në vend ("Kontrolloni për konfliktet e ngjarjeve" është vendosur në "Jo"&#41;, kjo përcakton se sa muaj në të ardhmen duhet të kontrollojmë për konflikte. Nëse zbuloni se shtimi i ngjarjeve kërkon një kohë të gjatë për t'u përpunuar , zvogëlo këtë numër.
+Conflict checking months: Muaji i kontrollit të konfliktit
+conflict-check-override-help: Lejon përdoruesit të anashkalojnë konfliktet e ngjarjeve dhe të caktojnë dy ose më shumë ngjarje për të njëjtën kohë.
+Allow users to override conflicts: Lejoni përdoruesit të anulojnë konfliktet
+limit-appts-help: Lejon që administratori i sistemit të vendosë një kufi të sistemit për numrin e takimeve që një përdorues i vetëm mund të ketë në çdo ditë të vetme.
+Limit number of timed events per day: Limitoni numrin e ngjarjeve me kohë në ditë
+limit-appts-number-help: Përcakton numrin maksimal të ngjarjeve me kohë që një përdorues mund të ketë në një ditë të vetme.
+Maximum timed events per day: Ngjarjet me kohë maksimale në ditë
+crossday-help: Nëse është e aktivizuar, ngjarjet që shtrihen në ditë do të shfaqen në ditë të ndara
+Disable Cross-Day Events: Çaktivizo Ngjarjet Ndër-Ditore
+disable-location-field-help: Përzgjedhja e "Po" do të heqë fushën "Vendndodhja" nga faqet e informacionit të ngjarjes
+Disable Location field: Çaktivizo fushën e Vendndodhjes
+disable-url-field-help: Përzgjedhja e "Po" do të heqë fushën "URL" nga faqet e informacionit të ngjarjes
+Disable URL field: Çaktivizo fushën URL
+disable-priority-field-help: Përzgjedhja e "Po" do të heqë fushën "Prioritet" nga faqet e informacionit të ngjarjes, duke siguruar një ndërfaqe më të thjeshtë për fillestarët.
+Disable Priority field: Çaktivizo fushën e përparësisë
+disable-access-field-help: Përzgjedhja e "Po" do të heqë fushën "Access" nga faqet e informacionit të ngjarjes, duke siguruar një ndërfaqe më të thjeshtë për fillestarët.
+Disable Access field: Çaktivizo fushën e Hyrjes
+disable-participants-field-help: Përzgjedhja e "Po" do të heqë fushën "Pjesëmarrës" nga faqet e informacionit të ngjarjes, duke mos lejuar që përdoruesit të shtojnë përdorues të tjerë në ngjarjet e tyre. Nëse e aktivizoni këtë mundësi, mund të dëshironi të çaktivizoni gjithashtu fushën "Lejo shikimin e kalendarëve të përdoruesit tjetër".
+Disable Participants field: Çaktivizo fushën e Pjesëmarrësve
+disable-repeating-field-help: Zgjedhja e "Po" do të heqë fushën "Përsëritja" kur shtoni ngjarje. Kjo do të sigurojë një ndërfaqe më të thjeshtë për fillestarët.
+Disable Repeating field: Çaktivizo fushën e përsëritjes
+allow-html-description-help: Nëse aktivizohet, përdoruesit mund të fusin HTML në fushën e përshkrimit të ngjarjes. Nëse nuk aktivizohet, etiketat HTML do të shpëtojnë në mënyrë që të shfaqen si tekst i thjeshtë. Paralajmërim: Aktivizimi i kësaj veçorie do t'i lejojë përdoruesit të referojnë imazhe në faqet e internetit të tjera.
+Allow HTML in Description: Lejoni HTML në përshkrim
+Popups: Dritare
+disable-popups-help: Çaktivizo dritaret e dritareve nga pamjet e kalendarit
+Disable Pop-Ups: Çaktivizo Pop-Ups
+popup-includes-siteextras-help: Nëse është e aktivizuar, lejoni konfigurimin e fushave të personalizuara të ngjarjeve në skedarin site_extras.php do të shfaqen në dritaret e dritares.
+Display Site Extras in popup: Shfaq faqet shtesë të faqes në dritare
+popup-includes-participants-help: Nëse është e aktivizuar, pjesëmarrësit shfaqen në dritaret e hapura.
+Display Participants in popup: Shfaqni pjesëmarrësit në dritare
+Miscellaneous: Të ndryshme
+remember-last-login-help: Kur aktivizohet, hyrja e përdoruesit do të plotësohet për ta në faqen e hyrjes (por jo fjalëkalimin) dhe preferencat e përdoruesit do të ngarkohen (përfshirë ngjyrat e tyre të preferuara dhe zgjedhjen e gjuhës).  
+Remember last login: Mos harroni hyrjen e fundit
+summary_length-help: Gjatësia maksimale e përshkrimit të shkurtër në pamjet e kalendarit
+Brief Description Length: Përshkrimi i shkurtër Gjatësia
+user_sort-help: Përcakton renditjen e renditjes për përdoruesit, listat jo përdoruese
+User Sort Order: Renditja e Rendit të Përdoruesit
+Lastname, Firstname: Mbiemri Emri
+Firstname, Lastname: Emri Mbiemri
+allow-public-access-help: Kur aktivizohet, kalendari mund të përdoret si një kalendar publik vetëm për lexim që nuk kërkon që përdoruesit të identifikohen.
+Allow public access: Lejo hyrjen në publik
+public-access-default-visible: Ngjarjet nga kalendari publik do të shfaqen automatikisht në të gjithë kalendarët e përdoruesve
+Public access visible by default: Hyrja publike e dukshme si parazgjedhje
+public-access-default-selected: Kur shtoni një ngjarje të re, përdoruesi publik do të zgjidhet si paraprakisht si pjesëmarrës.
+Public access is default participant: Hyrja publike është pjesëmarrëse e paracaktuar
+public-access-view-others-help: Kur hyni në sistem me qasje publike, specifikon nëse përdoruesi mund të shikojë kalendarin e një përdoruesi tjetër të kalendarit.
+Public access can view other users: Hyrja publike mund të shikojë përdoruesit e tjerë
+public-access-can-add-help: Kur të aktivizohet, përdoruesit që hyjnë në sistem përmes Hyrjes Publike do të jenë në gjendje të shtojnë ngjarje të reja, por ato nuk do të shfaqen në kalendar derisa një administrator të miratojë ngjarjen e re.
+Public access can add events: Aksesi publik mund të shtojë ngjarje
+public-access-add-requires-approval-help: Përcakton nëse ngjarjet e shtuara përmes llogarisë së aksesit publik kërkojnë miratim para se të shfaqen.
+Public access new events require approval: Hyrja në publik e ngjarjeve të reja kërkon miratim
+public-access-sees-participants-help: Nëse aktivizohet, përdoruesit që hyjnë në kalendar nga llogaria publike do të mund të shohin pjesëmarrësit e ngjarjes nëse shikojnë detajet e një ngjarjeje.
+Public access can view participants: Hyrja publike mund të shikojë pjesëmarrësit
+public-access-override-help: Lejon që emrat dhe përshkrimet e ngjarjeve të fshihen në kalendarin publik
+Override event name/description for public access: Anulo emrin / përshkrimin e ngjarjes për qasje në publik
+public-access-override-text-help: Teksti që do të shfaqet nëse opsioni i mësipërm është i aktivizuar. Nëse 'Nuk disponohet', do të përkthehet.
+Text to display to public access: Tekst për tu shfaqur në aksesin publik
+public-access-captcha-help: Nëse aktivizohet, ngjarjet e reja të shtuara nga Publiku kërkojnë kalimin e një vlefshmërie CAPTCHA.
+Require CAPTCHA validation for public access new events: Kërkoni vërtetimin e CAPTCHA për aksesin e publikut në ngjarje të reja
+uac-enabled-help: Mundëson kontrollin e hyrjes në nivelin e përdoruesit
+User Access Control enabled: Kontrolli i hyrjes së përdoruesit është aktivizuar
+groups-enabled-help: Mundëson mbështetjen e grupeve, duke i lejuar përdoruesit të zgjedhin përdoruesit sipas grupeve.
+Groups enabled: Grupet janë aktivizuar
+user-sees-his-group-help: Nëse aktivizohet, përdoruesit nuk do të shohin përdoruesit e kalendarit që nuk janë në të paktën një nga grupet e tyre.
+User sees only his groups: Përdoruesi sheh vetëm grupet e tij
+nonuser-enabled-help: Nëse është i aktivizuar, administratorët do të kenë mundësinë të shtojnë kalendarë jo përdorues
+Nonuser enabled: Kalendarët e Përdoruesve të Aktivizuar
+nonuser-list-help: Ku të shfaqni kalendarët jo përdorues në listën e pjesëmarrësve
+Nonuser list: Shfaq në listën e pjesëmarrësve në
+Upcoming Events: Ngjarje të ardhshme
+upcoming-events-help: Aktivizo ardhshëm.php
+Enabled: Aktivizuar
+upcoming-events-allow-override: Lejoni përdoruesin për përdoruesin e ardhshëm.php
+Allow user override: Lejo anulimin e përdoruesit
+upcoming-events-display-caticons: Përfshini ikonat e kategorive në آینده.php
+Display category icons: Shfaq ikonat e kategorive
+upcoming-events-display-layers: Shfaq shtresat në e ardhshme.php
+Display layers: Shfaq shtresat
+upcoming-events-display-links: Shfaq lidhjet në ardhjen.php
+Display links to events: Shfaq lidhjet për ngjarjet
+upcoming-events-display-popups: Shfaq dritaret e dritareve të ngjarjeve në ardhjen.php
+Display event popups: Shfaq dritaret e hapura të ngjarjes
+reports-enabled-help: Nëse aktivizohet, përdoruesit do të shohin një seksion "Raporte" në fund të secilës faqe dhe do të lejohen të krijojnë raporte të personalizuara. Për më tepër, përdoruesit e administratorit mund të krijojnë raporte globale që do të shfaqen në fund të faqeve të të gjithë përdoruesve. 
+Reports enabled: Raportet janë aktivizuar
+subscriptions-enabled-help: Përcakton nëse përdoruesit e largët mund të regjistrohen në një kalendar të përdoruesit të WebCalendar, duke i lejuar ata të shohin ngjarjet e përdoruesit të WebCalendar në aplikacionin e tyre të aktivizuar për iCal (të tilla si iCal ose Mozilla Calendar i Apple).
+Allow remote subscriptions: Lejo pajtimet në distancë
+remotes-enabled-help: Lejon përdoruesit të ngarkojnë skedarë të largët ics duke përdorur URL  
+Allow remote calendars: Lejoni kalendarët e largët
+rss-enabled-help: Përcakton nëse kalendari i një përdoruesi mund të merret nga një burim RSS.
+Enable RSS feed: Aktivizo burimin RSS
+categories-enabled-help: Mundëson mbështetjen për kategoritë e ngjarjeve.
+Categories enabled: Kategoritë janë aktivizuar
+icon_upload-enabled-help: Nëse aktivizohet, përdoruesit mund të ngarkojnë ikona të kategorisë
+Category Icon Upload enabled: Ikona e kategorisë Aktivizimi i aktivizuar
+(Requires XXX folder to exist.): (Kërkon që dosja XXX të ekzistojë.)
+display-tasks-help: Shfaq dritaren e vogël të detyrave në kalendarin e muajit dhe ditës
+Display small task list: Shfaq listën e detyrave të vogla
+display-tasks-in-grid-help: Shfaq detyrat në kalendarë së bashku me ngjarjet
+Display tasks in Calendars: Shfaq detyrat në Kalendar
+allow-external-users-help: Përcakton nëse një përdorues jo-kalendarik mund të shtohet në një ngjarje. Kjo lejon që përdoruesit jo-kalendarikë të renditen si pjesëmarrës të ngjarjes.
+Allow external users: Lejoni përdorues të jashtëm
+external-can-receive-notification-help: Kur përdoruesit e jashtëm janë të aktivizuar dhe përdorimi i postës elektronike është i aktivizuar, përdoruesit e jashtëm mund të marrin njoftime me email kur ngjarja shtohet, azhurnohet ose fshihet (nëse ofrohet adresa e postës elektronike të përdoruesit të jashtëm).
+External users can receive email notifications: Përdoruesit e jashtëm mund të marrin njoftime me email
+external-can-receive-reminder-help: Kur përdoruesit e jashtëm janë të aktivizuar dhe përdorimi i postës elektronike është i aktivizuar, përdoruesit e jashtëm mund të marrin përkujtues email (nëse ofrohet adresa e postës elektronike të përdoruesit të jashtëm).
+External users can receive email reminders: Përdoruesit e jashtëm mund të marrin kujtesa me email
+allow-self-registration-help: Lejoni përdoruesit e rinj të regjistrohen vetë
+Allow self-registration: Lejoni vetë-regjistrimin
+use-blacklist-help: Kufizoni aksesin në funksionet e WebCalendar bazuar në adresën IP
+Restrict self-registration to blacklist: Kufizoni vetëregjistrimin në listën e zezë
+allow-self-registration-full-help: Lejoni përdoruesit e rinj të kryejnë procesin e vetë-regjistrimit on-line
+Use self-registration email notifications: Gjeneroni fjalëkalime dhe dërgojuni përdoruesve të rinj
+allow-attachment-help: Lejoni përdoruesit të shtojnë bashkëngjitjet e skedarëve në ngjarje.
+Allow file attachments to events: Lejoni bashkëngjitjet e skedarëve në ngjarje
+Admin and owner can always add attachments if enabled.: Administratori dhe pronari gjithmonë mund të shtojnë bashkëngjitje nëse aktivizohen.
+allow-comments-help: Lejoni përdoruesit të shtojnë komente për ngjarjet.
+Allow comments to events: Lejoni komentet për ngjarjet
+Admin and owner can always add comments if enabled.: Administratori dhe pronari gjithmonë mund të shtojnë komente nëse janë të aktivizuara.
+email-enabled-help: Aktivizoni ose çaktivizoni të gjithë dërgimin e postës elektronike për njoftim dhe alarm rikujtues. Vendosni në "jo", nëse serveri juaj nuk është konfiguruar siç duhet për të dërguar postë.
+Email enabled: Emaili i aktivizuar
+email-default-sender: Përcakton adresën e postës elektronike për të specifikuar si dërguesi kur dërgoni përkujtesa.
+Default sender address: Adresa e paracaktuar e dërguesit
+email-mailer: Zgjidhni llojin e postës elektronike (SMTP, postë PHP, sendmail)
+Email Mailer: Postues elektronik
+email-smtp-host: Emri i hostit (serverëve) të serverit (veve) SMTP të ndara me presje
+SMTP Host name(s): Emri i hostit SMTP
+email-smtp-port: Numri i Portës SMTP (normalisht 25)
+SMTP Port Number: Numri i Portës SMTP
+email-smtp-auth: Përdorni vërtetimin SMTP
+SMTP Authentication: Vërtetimi i SMTP
+email-smtp-username: Emri i përdoruesit SMTP nëse përdorni vërtetimin
+SMTP Username: Emri i përdoruesit SMTP
+email-smtp-password: Fjalëkalimi SMTP nëse përdorni vërtetimin
+SMTP Password: Fjalëkalimi SMTP
+Default user settings: Cilësimet e parazgjedhura të përdoruesit
+email-format: Specifikoni preferencën për HTML ose mesazhe me tekst të thjeshtë
+Email format preference: Preferenca e formatit të postës elektronike
+HTML: =
+Plain Text: Teksti i thjeshtë
+email-include-ics: Përfshini një skedar iCalendar ICS për të dërguar mesazh me email
+Include iCalendar attachments: Përfshini bashkëngjitje iCalendar
+email-event-reminders-help: Përcakton nëse do të dërgojnë ose jo rikujtesa të ngjarjes.
+Event reminders: Kujtesat e ngjarjeve
+email-event-added: Përcakton nëse do të dërgoni ose jo njoftime me email kur një ngjarje shtohet në kalendarin tuaj.
+Events added to my calendar: Ngjarjet e shtuara në kalendarin tim
+email-event-updated: Përcakton nëse do të dërgoni ose jo njoftime me email kur një ngjarje azhurnohet në kalendarin tuaj.
+Events updated on my calendar: Ngjarjet të azhurnuara në kalendarin tim
+email-event-deleted: Përcakton nëse do të dërgoni ose jo njoftime me email kur një ngjarje hiqet nga kalendari juaj.
+Events removed from my calendar: Ngjarjet u hoqën nga kalendari im
+email-event-rejected: Përcakton nëse do të dërgojë ose jo njoftime me email kur një pjesëmarrës refuzon një ngjarje që është në kalendarin tënd.
+Event rejected by participant: Ngjarja u refuzua nga pjesëmarrësi
+email-event-create: Përcakton nëse krijuesi i shënimeve do të marrë një email
+Event that I create: Ngjarje që krijoj
+Color options: Opsionet e ngjyrave
+Allow user to customize colors: Lejoni përdoruesin të personalizojë ngjyrat
+gradient-colors: Nëse është aktivizuar përdoren ngjyrat e gradientit. Kjo mund të ndikojë shumë në performancën.
+Enable gradient images for background colors: Aktivizo imazhet gradient për ngjyrat e sfondit
+Not available: I padisponueshem
+Background Image options: Opsionet e imazhit në sfond
+bgimage-help: URL e imazhit të dëshiruar të sfondit. Mund të jetë lidhje relative.
+Background Image: Imazhi i sfondit
+bgrepeat-help: Kontrollon sjelljen e përsëritur të imazhit në sfond.
+Background Repeat: Përsëritni sfondin
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Asistentë
+Preferences: Preferencat
+Control Panel: Paneli i kontrollit
+Users: Përdoruesit
+Account: Llogari
+Categories: Kategoritë
+Views: Pikëpamjet
+Layers: Shtresat
+Reports: Raportet
+Delete Events: Fshi Ngjarjet
+Activity Log: Regjistri i aktivitetit
+System Log: Regjistri i sistemit
+Security Audit: Kontrolli i Sigurisë
+Public Preferences: Preferencat Publike
+Unapproved Public Events: Ngjarje Publike të pa aprovuara
+Administrative Tools: Mjete administrative
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Emri dublikatë: "XXX".
+Username XXX already exists.: Emri i përdoruesit "XXX" ekziston tashmë.
+Email address XXX already exists.: Adresa e emailit "XXX" ekziston tashmë.
 
 ########################################
 # Page: approve_entry.php
 #
-Date: Daten
+Additional Comments (optional): Komente shtesë (opsionale)
+Approve and Send: Miratoni dhe dërgoni
+Approve and Exit: Miratoni dhe dilni
+(Your comments will be emailed to the event creator.): (Komentet tuaja do t'i dërgohen me postë elektronike krijuesit të ngjarjes.)
+Hello, XXX.: Përshëndetje, XXX.
+XXX has approved an appointment and added comments.: Një takim është miratuar dhe komentet janë shtuar nga XXX.
+Subject XXX: Subjekti: "XXX".
+Description XXX: Përshkrimi: "XXX".
+Date XXX: Data: XXX
+Time XXX: Koha: XXX
+Comments XXX: Komente: XXX
+Approved w/Comments by XXX.: Miratuar w / Komentet nga: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Modaliteti i administratorit
+Your assistants: Asistentët tuaj
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Gabim i panjohur.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Gabimi i programit: Nuk specifikohet XXX!
+user: përdorues
+year: viti
+month: muaj
+day: ditë
+
+########################################
+# Page: category.php
+#
+Category Icon: Ikona e kategorisë
+Global: Globale
+The permissions for the icons directory are set to read-only: Lejet për drejtorinë e ikonave janë vendosur vetëm për lexim.
+Category Name: Emri i kategorisë:
+Color: Ngjyrë
+Remove Icon: Hiq ikonën:
+Add Icon to Category: Shto ikonë te Kategoria
+Upload: Ngarkoni
+GIF or PNG 6kb max: GIF ose PNG 6kb maks
+Search for existing icons: Kërkoni për ikonat ekzistuese
+Add: Shto
+Delete: Fshij
+Are you sure you want to delete this entry?: Je i sigurt që dëshiron ta fshish këtë hyrje?
+Make New Category: Bëni Kategori të Re
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Kërkohet emri i kategorisë
+File size exceeds maximum.: Madhësia e skedarit tejkalon maksimumin.
+File is not a GIF or PNG image: Skedari nuk është një imazh GIF ose PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: Kategoritë e disponueshme
+ENTRY CATEGORIES: KATEGORIT E HYRJES
+Remove: Hiq
+Global Category: Kategoria Globale
+Cancel: Anulo
+
+########################################
+# Page: colors.php
+#
+Add Custom: Shto Custom
+Basic Colors: Ngjyrat themelore
+Current Color: Ngjyra aktuale
+Custom Colors: Ngjyrat e personalizuara
+Old Color: Ngjyra e Vjetër
+
+########################################
+# Page: combo.php
+#
+Select None: Zgjidhni Asnjë
+Agenda: Agjenda
+Add Task: Shto detyrën
+Description: Përshkrim
+Date: Data
 Time: Koha
+Priority: Prioriteti
+Access: Aksesi
+Created by: Krijuar nga
+Updated: Përditësuar
+Participants: Pjesëmarrësit
+Attachments: Bashkëngjitjet
+Comments: Komente
+Brief Description: Përshkrim i shkurtër
+Full Description: Përshkrimi i plotë
+Category: Kategoria
+Add event detail: Shtoni detajet e ngjarjes
+Start Date: Data e fillimit
+Due Date: Data e duhur
+Add task detail: Shtoni detajet e detyrës
+All: Të gjitha
+Error: Gabim
+no response from server: asnjë përgjigje nga serveri
+JSON error: Gabim JSON
+High: I lartë
+Medium: Mesatare
+Low: I ulët
+Today: Sot
+Add Entry: Shto hyrjen
+Unnamed Event: Ngjarje pa emër
+Unnamed Task: Detyra pa emër
+Refresh: Rifresko
+Click to add entry: Klikoni për të shtuar hyrjen
+Name: Emrin
+pm: pasdite
+am: jam
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX ka anuluar një takim.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: ID e pavlefshme e pikës
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Shto koment
+Add Attachment: Shto bashkëngjitje
+Subject: Lënda
+Comment: Komento
+Upload file: Ngarko skedarin
+
+########################################
+# Page: docdel.php
+#
+Removed: U hoq
+
+########################################
+# Page: edit_entry.php
+#
+days: ditë
+hours: orë
+minutes: minuta
+You are not authorized to edit this task.: Ju nuk jeni i autorizuar për të redaktuar këtë detyrë.
+is in a different timezone than you are. Currently: është në një zonë tjetër kohore nga sa jeni. Aktualisht
+hour ahead of you: orë përpara jush
+hour behind you: ore mbrapa jush
+hours ahead of you: orë përpara jush
+hours behind you: orë pas jush
+XXX is in a different timezone (ahead): (XXX është në një zonë tjetër kohore; YYY përpara jush.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX është në një zonë tjetër kohore; YYY pas jush.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Koha e futur këtu bazohet në Zonën tuaj të Kohës.
+Edit Entry: Redakto Hyrjen
+Details: Detajet
+Repeat: Përsëriteni
+Reminders: Rikujtesa
+brief-description-help: Kjo duhet të sigurojë një përshkrim të shkurtër (rreth 20 karaktere) të ngjarjes. Kjo do të përfaqësojë ngjarjen kur shikoni kalendarin.
+full-description-help: Kjo duhet të plotësojë detajet e ngjarjes. Ky informacion mund të shihet kur një përdorues shikon ngjarjen.
+access-help: Specifikon nivelin e hyrjes së ngjarjes. <ul> <li> Publiku: Gjithkush mund të shohë detajet e plota të ngjarjes.</li> <li> Konfidenciale: Të tjerët mund të shohin që ju keni një shënim për atë datë dhe kohë, por jo detajet e asaj që është.</li></ul>
+priority-help: Përcakton përparësinë e ngjarjes. Ngjarjet me përparësi të lartë do të shfaqen me shkronja të zeza.
+category-help: Specifikon kategorinë e ngjarjes.
+completed-help: Detyra e datës është përfunduar. Aktivizohet vetëm kur përqindja e pjesëmarrësve është e barabartë me 100%.
+Date Completed: Data e përfundimit
+percent-help: Përqindja e përfundimit të detyrës për këtë përdorues
+Percent Complete: Përqindja e plotë
+All Percentages: Të gjitha përqindjet
+location-help: Vendndodhja e ngjarjes
+Location: Vendndodhja
+url-help: URL e ngjarjes
+URL: URL-ja
+date-help: Përcakton datën e ngjarjes.
+Untimed event: Ngjarje e papare
+Timed event: Ngjarje me kohë
+All day event: Ngjarja gjithë ditën
+Timezone Offset: Kompensimi i zonës kohore
+time-help: Specifikon kohën e ngjarjes. <ul> <li> "Ngjarje me kohë" (për një ngjarje që është planifikuar për një kohë të caktuar atë ditë)</li> <li> "Ngjarje pa afat" (për një ngjarje kjo nuk ka kohë (si pushime) )</li> <li> "Ngjarja gjithë ditën" (për një ngjarje që zgjat gjithë ditën (si të jesh jashtë zyrës)</li></ul>
+duration-help: Përcakton kohëzgjatjen (në orë; minuta) të ngjarjes. <em>Kjo fushë mund të lihet bosh.</em>
+end-time-help: Përcakton kohën kur ngjarja pritet të përfundojë.
+Start Time: Koha e nisjes
+Due Time: Koha e duhur
+Site Extras: Faqet shtesë
+avail_participants-help: Rendit pjesëmarrësit në dispozicion të kësaj hyrje.
+Available: Në dispozicion
+Find Name: Gjeni emrin
+Resources: Burimet
+participants-help: Rendit pjesëmarrësit në këtë hyrje.
+Selected: Zgjedhur
+Availability: Disponueshmëria
+external-participants-help: Përcakton një listë të pjesëmarrësve për ngjarjen që nuk janë përdorues të kalendarit. Përdoruesit duhet të renditen një për çdo rresht dhe mund të përfshijnë një adresë emaili. Nëse specifikohet një adresë emaili, përdoruesi ka të drejtë të marrë njoftime dhe lajmërime.
+External Participants: Pjesëmarrësit e Jashtëm
+repeat-type-help: Zgjidhni sa shpesh ngjarja duhet të përsëritet. 
+Daily: Çdo ditë
+Weekly: Çdo javë
+Monthly: Mujore
+by day: nga dita
+by date: sipas datës
+by position: nga pozicioni
+Monthly (by day): Mujore (me ditë)
+Monthly (by date): Mujore (sipas datës)
+Monthly (by position): Mujore (sipas pozicionit)
+Yearly: Çdo vit
+Manual: =
+Expert Mode: Modaliteti i ekspertit
+repeat-end-date-help: Përcakton datën kur ngjarja duhet të përsëritet deri në. 
+Ending: Përfundimi
+Forever: Përgjithmonë
+Use end date: Përdorni datën e përfundimit
+Number of times: Numri i herëve
+repeat-frequency-help: Përcakton sa shpesh ngjarja duhet të përsëritet. 
+Frequency: Frekuenca
+Weekdays Only: Vetëm ditët e javës
+Week Start: Fillimi i Javës
+repeat-bydayextended-help: Lejon zgjedhjen e datës bazuar në ditën e javës.  
+ByDay: Nga dita
+repeat-month-help: Specifikon se në cilët muaj duhet të përsëritet ngjarja. 
+ByMonth: Nga Muaji
+repeat-bysetpos-help: Lejon zgjedhjen e datës bazuar në pozicionin në muaj. 
+BySetPos: Nga BySetPos
+repeat-bymonthdayextended-help: Lejon zgjedhjen e datës bazuar në datën.  
+ByMonthDay: =
+repeat-byweekno-help: Lejon përdoruesin të përcaktojë një listë javësh për të përsëritur ngjarjen (1,2 ... 53, -53, -52 ...- 1). 
+ByWeekNo: Nga JavaJo
+repeat-byyearday-help: Lejon përdoruesin të specifikojë një listë të ditëve të vitit për të përsëritur ngjarjen (1,2 ... 366, -366, -365 ...- 1). 
+ByYearDay: NgaDitaViti
+repeat-exceptions-help: Ditë shtesë në të cilat kjo ngjarje duhet ose nuk duhet të ndodhë në. 
+Exclusions: Përjashtimet
+Inclusions: Përfshirjet
+Add Exception: Shto përjashtim
+Add Inclusion: Shto përfshirjen
+Delete Selected: Fshij të zgjedhur
+Send Reminder: Dërgo Reminder
+When: Kur
+Use Date/Time: Përdorni datën / orën
+Use Offset: Përdorni kompensimin
+Before: Para
+After: Pas
+Start: Fillo
+End/Due: Fundi / Afati i duhur
+Times: Kohët
+Every: Çdo
+CAPTCHA Warning: Paralajmërim:  Nuk mund të përdoret CAPTCHA pa shtrirjen GD të PHP!<br>
+Delete entry: Fshi hyrjen
+You are not authorized to edit this entry.: Ju nuk jeni i autorizuar të redaktoni këtë shënim.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX ka bërë një takim të ri.
+XXX has updated an appointment.: XXX ka përditësuar një takim.
+Security violation!: Shkelje e sigurisë!
+You must enter the anti-spam text on the previous page.: Ju duhet të futni tekstin anti-spam në faqen e mëparshme.
+The following conflicts with the suggested time: Konfliktet në vijim me kohën e sugjeruar
+User removed from participants list.: Përdoruesi u hoq nga lista e pjesëmarrësve.
+Please look on XXX to accept or reject this appointment.: Ju lutemi shikoni në XXX për të pranuar ose refuzuar këtë takim.
+Please look on XXX to view this appointment.: Ju lutemi shikoni në XXX për të parë këtë takim.
+Scheduling Conflict: Programimi i konfliktit
+Your suggested time of: Koha juaj e sugjeruar e
+conflicts with the following existing calendar entries: bie ndesh me shënimet ekzistuese të kalendarit
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX nuk është vendosur në "config.php".
+word characters only: (mund të përmbajë vetëm karaktere fjalësh; [a-zA-Z_0-9])
+Add User: Shto përdorues
+Edit User: Redakto përdoruesin
+Calendar ID: ID e kalendarit
+First Name: Emri
+Last Name: Mbiemri
+Is public calendar: Calendarshtë kalendar publik
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Gabim në bazën e të dhënave
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Shto Kalendarin e Largët
+Edit Remote Calendar: Redakto Kalendarin e Largët
+Create Layer: Krijo një shtresë
+Reload: Ringarkoj
+Required to View Remote Calendar: Kërkohet për të parë kalendarin e largët
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Rezultatet e Importit
+Events successfully imported: Ngjarjet u importuan me sukses
+Create a new layer to view this calendar.: Krijoni një shtresë të re për të parë këtë kalendar.
+Errors: Gabimet
+There was an error parsing the import file or no events were returned.: Kishte një gabim gjatë analizimit të skedarit të importit ose asnjë ngjarje nuk u kthye.
 
 ########################################
 # Page: edit_report.php
 #
-Today: Sot
-Next month: Muaji i ardhshem
-Next year: Viti i ardhshem
+Tomorrow: Nesër
+Yesterday: Dje
+Day before yesterday: Pardje
+Next week: Javen tjeter
+This week: Këtë javë
+Last week: Javen e shkuar
+Week before last: Një javë para së kaluarës
+Next week and week after: Javën tjetër dhe javën pas
+This week and next week: Këtë javë dhe javën tjetër
+Last week and this week: Javën e kaluar dhe këtë javë
+Last two weeks: Dy javët e fundit
+Next month: Muajin tjeter
+This month: Këtë muaj
+Last month: Muajin e kaluar
+Month before last: Një muaj para fundit
+Next year: Vitin tjeter
+This year: Kete vit
+Last year: Vitin e kaluar
+Year before last: Viti para fundit
+Next 14 days: 14 ditët e ardhshme
+Next 30 days: 30 ditët e ardhshme
+Next 60 days: 60 ditët e ardhshme
+Next 90 days: 90 ditët e ardhshme
+Next 180 days: 180 ditët e ardhshme
+Next 365 days: 365 ditët e ardhshme
+Invalid report id XXX.: ID e pavlefshme e raportit: "XXX".
+Unnamed Report: Raporti pa emër
+Add Report: Shto raportin
+Edit Report: Redakto raportin
+Report name: Raporto emrin
+User: Përdorues
+Current User: Përdoruesi aktual
+Include link in menu: Përfshi lidhjen në meny
+Include standard header/trailer: Përfshini titullin / rimorkion standarde
+Include previous/next links: Përfshini lidhjet e mëparshme / të ardhshme
+Include empty dates: Përfshini datat boshe
+Date range: Diapazoni i datës
+Template variables: Variablat e modelit
+Page template: Shablloni i faqes
+Day template: Shablloni i ditës
+Event template: Shablloni i ngjarjes
+Are you sure you want to delete this report?: Je i sigurt që dëshiron ta fshish këtë raport?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Asnjë ID i tillë i raportit: "XXX".
+Variable XXX not found.: Ndryshorja XXX nuk u gjet.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Redakto Header-in e personalizuar
+Edit Custom Script/Stylesheet: Redakto Skriptin / Fletën e Stileve të personalizuara
+Edit Custom Trailer: Redakto rimorkion e personalizuar
+
+########################################
+# Page: edit_user.php
+#
+Username: Emri i përdoruesit
+E-mail address: Adresa e postës elektronike
+Password: Fjalëkalimi
+again: përsëri
+Disabled for demo: Paaftësi për demonstrim
+Are you sure you want to delete this user?: Je i sigurt që dëshiron ta fshish këtë përdorues?
+Change Password: Ndrysho fjalekalimin
+New Password: Fjalëkalim i ri
+Set Password: Vendosni fjalëkalimin
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Fshirja e përdoruesve nuk mbështetet.
+The passwords were not identical.: Fjalëkalimet nuk ishin identike.
+You have not entered a password.: Ju nuk keni futur një fjalëkalim.
+Username cannot be blank.: Emri i përdoruesit nuk mund të jetë bosh.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Nuk është i autorizuar
+
+########################################
+# Page: export.php
+#
+Export: Eksporto
+Export format: Formati i eksportit
+Include all layers: Përfshini të gjitha shtresat
+Include deleted entries: Përfshini shënimet e fshira
+Export all dates: Eksportoni të gjitha datat
+Start date: Data e fillimit
+End date: Data e përfundimit
+Modified since: Modifikuar që prej
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: formati i eksportit nuk është i përcaktuar ose i pasaktë.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Asnjë përdorues i specifikuar.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Shto një grup të ri
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Grupi pa emër
+Add Group: Shto grupin
+Edit Group: Redakto grupin
+Group name: Emri i grupit
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Ju duhet të specifikoni një emër grupi
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Rifresko automatikisht kalendarët
+auto-refresh-help: Kur aktivizohet, pamja e ditës, pamja e javës, pamja e muajit dhe lista e faqeve të pa aprovuara automatikisht do të rifreskohen periodikisht.
+Auto-refresh time: Koha e rifreskimit automatik
+auto-refresh-time-help: Nëse aktivizohet rifreskimi automatik, kjo përcakton kohën midis çdo rifreskimi.
+Display days with events in bold in year view: Shfaq ditët me ngjarje me shkronja të zeza në pamje të vitit
+Display weekends in week view: Shfaq fundjavat në pamje javore
+Time interval: Interval kohor
+time-interval-help: Përcakton sa do të zgjasin blloqet kohore në pamjen e javës dhe pamjen ditore.
+Nonuser: Kalendarë jo përdorues
+user-customize-color: Përcakton nëse përdoruesit lejohen të modifikojnë skemën e tyre të ngjyrave.
+enable-gradient-help: Përdorni ngjyrat gradiente për sfondet e qelizave.
+Manually entering color values: Futja manuale e vlerave të ngjyrave
+colors-help: Të gjitha ngjyrat duhet të specifikohen në formatin heksadecimal "#RRGGBB", ku "RR" është vlera magji për të kuqen, "GG" është vlera magji për jeshile, dhe "BB" është vlera magji për blunë.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Raporto Bug
+Please include all the information below when reporting a bug.: Ju lutemi përfshini të gjitha informacionet më poshtë kur raportoni një defekt në kod.
+Also, please use English rather than XXX.: Gjithashtu, ju lutemi përdorni  anglisht  në vend të XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Dokumentacioni i Kalendarit Web
+Currently in English only.: Aktualisht vetëm në anglisht.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Shtimi / Redaktimi i Hyrjeve në Kalendar
+Repeat Type: Lloji i përsëritur
+For More Information...: Për më shumë informacion...
+Repeat End Date: Përsëriteni datën e përfundimit
+Repeat Day: Dita e Përsëritjes
+repeat-day-help: Specifikon se cilat ditë të javës ngjarja duhet të përsëritet. 
+
+########################################
+# Page: help_import.php
+#
+Import: Importit
+Palm Desktop: Desktop palme
+allow you to import entries from the Palm...: Kjo formë do t'ju lejojë të importoni shënime nga Palm Desktop Datebook. Duhet të vendoset në direktorinë tuaj Palm në datebook / datebook.dat në një nëndrejtori të emëruar nga emri juaj i përdoruesit.
+The following entries will not be imported: Shënimet e mëposhtme nuk do të importohen:
+Entries older than the current date: Regjistrime më të vjetra se data aktuale
+Entries created in the Palm Desktop...: Hyrjet e krijuara në Palm Desktop që nuk janë HotSync'd
+Anything imported from Palm...: Çdo gjë e importuar nga Palm do të mbishkruhet gjatë importit tjetër (nëse nuk ka kaluar data e ngjarjes). Prandaj, azhurnimet duhet të bëhen në Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Kjo formë do të importojë vCalendar (.vcs) 1.0 ngjarje.
+The following formats have been tested: Janë testuar formatet e mëposhtme:
+This form will import iCalendar (.ics) events.: Kjo formë do të importojë ngjarje iCalendar (.ics).
+Enabling: Mundësimi
+Overwrite Prior Import: Mbishkruaj importin paraprak
+will cause events imported previously...: do të bëjë që ngjarjet e importuara më parë, që përdorën të njëjtën UID si një ngjarje nga skedari i ri i importit, të shënohen si të fshira. Kjo duhet të lejojë të importohet një skedar i azhurnuar iCalendar pa krijuar dublikata.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Indeksi i Ndihmës
+About WebCalendar: Rreth WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Shtresat janë të dobishme për të shfaqur ngjarjet e përdoruesve të tjerë në kalendarin tuaj. Ju mund të specifikoni përdoruesin dhe ngjyrën në të cilën do të shfaqen ngjarjet.
+Add/Edit/Delete: Shto / Redakto / Fshi
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Klikimi në lidhjen Redakto shtresat në seksionin administrator në fund të faqes do t'ju lejojë të shtoni / modifikoni / fshini shtresat.
+The text color of the new layer that will be displayed in your calendar.: Ngjyra e tekstit të shtresës së re që do të shfaqet në kalendarin tuaj.
+Disabling: Paaftësi
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Shtypni lidhjen Disable Layers në seksionin administrator në fund të faqes për të fikur shtresat.
+Duplicates: Dublikatat
+If checked, events that are duplicates of your events will be shown.: Nëse është zgjedhur, do të shfaqen ngjarjet që janë dublikata të ngjarjeve tuaja.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Shtypni lidhjen Aktivizo shtresat në seksionin administrator në fund të faqes për të aktivizuar shtresat.
+Source: Burimi
+Specifies the user that you would like to see displayed in your calendar.: Përcakton përdoruesin që dëshironi të shihni të shfaqur në kalendarin tuaj.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Kategoria e paracaktuar
+default-category-help: Specifikon kategorinë në të cilën një ngjarje e re duhet të vendosë si parazgjedhje.
+When I am the boss: Kur jam shefi
+Email me event notification: Më dërgoni me email njoftimin e ngjarjes
+email-boss-notifications-help: Përcakton nëse bosët marrin email si njoftime për ngjarje.
+I want to approve events: Unë dua të miratoj ngjarjet
+boss-approve-event-help: Përcakton nëse shefit do t'i kërkohet të miratojë ngjarjet e shtuara nga asistentët.
+Subscribe/Publish: Abonohuni / Publikoni
+Allow remote publishing: Lejo botimin në distancë
+allow-remote-publishing-help: Specifikon nëse një klient iCal i largët mund të publikojë ngjarje përsëri në WebCalendar
+remote-publishing-url-help: Shfaq URL-në për t'u përdorur në aplikacionin e klientit iCal për t'u pajtuar dhe për të botuar përsëri në WebCalendar.  
+allow-remote-subscriptions-help: Përcakton nëse përdoruesit e largët mund të regjistrohen në kalendarin tuaj, duke i lejuar ata të shohin ngjarjet tuaja në një aplikacion të aktivizuar nga iCal (të tilla si iCal i Apple ose Kalendari Mozilla).
+remote-subscriptions-url-help: Shfaq URL-në që përdoruesit e largët duhet të përdorin për t'u pajtuar në kalendarin tuaj.  
+Enable FreeBusy publishing: Aktivizo botimin e FreeBusy
+freebusy-enabled-help: Përcakton nëse koha në dispozicion e një përdoruesi mund të merret duke përdorur standardin iCal FreeBusy.
+freebusy-url-help: URL për hyrjen në listën e përdoruesit FreeBusy
+rss-feed-url-help: URL për të hyrë në burimin RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Lejon një kontroll të imët të hyrjes dhe lejeve të përdoruesit. Përdoruesit mund të japin gjithashtu parazgjedhje dhe leje individuale nëse autorizohen nga administratori
+If disabled, this user cannot send you emails.: Nëse është i paaftë, ky përdorues nuk mund t'ju dërgojë email.
+If disabled, this user cannot see you in the participants list.: Nëse është i paaftë, ky përdorues nuk mund t'ju shohë në listën e pjesëmarrësve.
+If enabled, this user cannot view the details of any of your entries.: Nëse është aktivizuar, ky përdorues nuk mund të shikojë detajet e ndonjë prej shënimeve tuaja.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Publikimi është i paaftë (administratori)
+Publishing Disabled (User): Publikimi është i paaftë (përdoruesi)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Klikoni për të zgjedhur
+Current Icons on Server: Ikona aktuale në server
+
+########################################
+# Page: import.php
+#
+import from file: import nga skedari
+Disabled: Me aftësi të kufizuara
+Import format: Formati i importit
+Exclude private records: Përjashto të dhënat private
+Repeated items are imported separately. Prior imports are not overwritten.: Artikujt e përsëritur importohen veç e veç. Importet e mëparshme nuk mbishkruhen.
+
+########################################
+# Page: import_handler.php
+#
+No file: Asnjë skedar
+Error deleting palm events from webcalendar.: Gabim në fshirjen e ngjarjeve të palmës nga kalendari i uebit.
+Events from prior import marked as deleted: Ngjarjet nga importi paraprak shënohen si të fshira
+Conflicting events: Ngjarje konfliktuale
+The import file contained no data.: Skedari i importit nuk përmbante të dhëna.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Je i sigurt që dëshiron ta fshish këtë shtresë?
+Delete layer: Fshi shtresën
+Edit layer: Ndrysho shtresën
+Enable layers: Aktivizo shtresat
+Layer: Avokat
+Layers are currently disabled.: Shtresat aktualisht janë me aftësi të kufizuara.
+Layers are currently enabled.: Shtresat janë aktivizuar aktualisht.
+Click to modify layers settings for XXX: Klikoni këtu për të modifikuar cilësimet e shtresave për kalendarin XXX.                                                    
+Disable Layers: Çaktivizo shtresat
+Add layer: Shto shtresë
+Add Layer: Shto shtresën
+Edit Layer: Ndrysho Shtresën
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Preferenca nuk mund të azhurnohet
+Invalid entry id.: ID e hyrjes së pavlefshme
+You cannot create a layer for yourself.: Ju nuk mund të krijoni një shtresë për veten tuaj.
+You can only create one layer for each user.: Mund të krijoni vetëm një shtresë për secilin përdorues.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Miratoni / Konfirmoni
+Approve Selected: Miratimi i zgjedhur
+Check All: Kontrolloni të gjitha
+Emails Will Not Be Sent: Email-et nuk do të dërgohen
+Reject Selected: Refuzo të zgjedhur
+Reject: Refuzo
+Uncheck All: Hiq të gjitha
+View this entry: Shikoni këtë shënim
+No unapproved entries for XXX.: Asnjë shënim i pa aprovuar për: "XXX".
+Unapproved Entries: Hyrjet e pa aprovuara
+Approve this entry?: Të miratohet kjo hyrje?
+Reject this entry?: Të refuzohet kjo hyrje?
+Approve Selected entries?: Të aprovohen shënimet e zgjedhura?
+Reject Selected entries?: Të refuzohen shënimet e zgjedhura?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Ju duhet të vendosni një hyrje dhe fjalëkalim.
+Save login via cookies so I dont have to login next time.: Ruaj hyrjen përmes cookies në mënyrë që të mos më duhet të identifikohem herën tjetër
+Login: Hyrja
+public: publike
+Access XXX calendar: Hyni në kalendarin XXX
+cookies-note: Shënim: Ky aplikacion kërkon që cookies të jenë të aktivizuara.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Karakteret e paligjshëm në hyrjen XXX.
+Invalid login: Hyrje e pa vlefshme
+Activity login failure: Emri i përdoruesit: "XXX", IP: "YYY".
+Error XXX: Gabim: "XXX".
+You have been logged out.: Ju keni dalë nga llogaria.
+Access public calendar: Hyni në kalendarin publik
+Not yet registered? Register here!: Nuk jeni regjistruar akoma? Regjistrohuni këtu!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Asnjë kalendar i tillë jo përdorues: "XXX".
+This Calendar is not Public.: Ky Kalendar nuk është Publik.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Shto kalendar të ri jo përdorues
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Duhet të specifikohet një hyrje.
+No such nonuser calendar: Asnjë kalendar i tillë jo përdorues
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Temë e pavlefshme
+Save Preferences: Ruaj Preferencat
+Public Access calendar: Kalendari i Hyrjes Publike
+Modify Non User Calendar Preferences: Modifikoni Preferencat e Kalendarit Jo Përdorues
+Return to My Preferences: Kthehuni te Preferencat e Mia
+Custom Scripts: Shkrimet e personalizuara
+Timezone Selection: Përzgjedhja e zonës kohore
+Multiview: Shumëpamje:
+entry-interval-help: Vendos intervalin minutë kur redaktoni kohën e hyrjes
+Entry interval: Intervali i hyrjes
+hour: orë
+minute: minutë
+theme-reload-help: Për shkak të memorizimit CSS, mund të kërkohet një ringarkim faqe
+Page may need to be reloaded for new Theme to take effect: Faqja mund të ketë nevojë të rimbushet që Tema e re të hyjë në fuqi
+display_byproxy-help: Shfaq krijuesin e vërtetë në faqen view_entry
+Display if created by Assistant: Shfaq nëse krijohet nga "Asistenti"
+allow-view-subscriptions-help: Lejon kufizimin e hyrjes në distancë të shënimeve private ose konfidenciale
+Allow remote viewing of: Lejoni shikimin në distancë të
+entries: hyrjet
+
+########################################
+# Page: purge.php
+#
+Purging events for: Ngjarje pastrimi për
+Finished: Mbaroi
+Back: Mbrapa
+Check box to delete ALL events for a user: Kutia e zgjedhjes për të fshirë  T ALL GJITHA  ngjarjet për një përdorues
+Delete all events before: Fshi të gjitha ngjarjet më parë
+Purge deleted only: Pastrimi u fshi vetëm
+Preview delete: Shiko paraprakisht fshirjen
+Are you sure you want to delete events for: Jeni i sigurt që dëshironi të fshini ngjarjet për të
+Records deleted from XXX: Regjistrimet u fshinë nga "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Adresa e emailit nuk mund të jetë bosh.
+Username already exists.: Emri i përdoruesit tashmë ekziston.
+Email address already exists.: Adresa e emailit ekziston tashmë.
+New user via self-registration.: Përdorues i ri përmes vetë-regjistrimit.
+A new WebCalendar account has been set up for you.: Një llogari e re WebCalendar është konfiguruar për ju.
+Your username is XXX.: Emri juaj i përdoruesit është: "XXX".
+Your password is XXX.: Fjalëkalimi juaj është: "XXX".
+Please visit XXX to log in and start using your account!: Ju lutemi vizitoni "XXX" për t'u identifikuar dhe për të filluar përdorimin e llogarisë tuaj!
+You may change your password after logging in the first time.: Ju mund të ndryshoni fjalëkalimin tuaj pasi të keni hyrë për herë të parë.
+If you received this email in error: Nëse e keni marrë këtë email gabimisht dhe nuk jeni regjistruar në një llogari WebCalendar, mund ta shpërfillni këtë njoftim, ose të përgjigjeni me një shënim të shkurtër
+Administrator: Administratori
+Welcome: Mirëseardhje
+New user via email.: Përdorues i ri përmes postës elektronike.
+Registration: Regjistrimi
+Welcome to WebCalendar: Mirësevini në WebCalendar
+Your email should arrive shortly.: Emaili juaj duhet të mbërrijë së shpejti.
+Return to Login screen: Kthehuni në ekranin e hyrjes
+Password (again): Fjalëkalimi (përsëri):
+Your account information will be emailed to you.: Informacioni i llogarisë tuaj do t'ju dërgohet me email.
+Submit: Paraqit
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Vazhdoni
+(Your comments will be emailed to the other participants.): (Komentet tuaja do të dërgohen me email për pjesëmarrësit e tjerë.)
+XXX has rejected an appointment.: XXX ka refuzuar një takim.
+Rejected by XXX.: Refuzuar nga XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Shto kalendarin e ri të largët
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Kjo ngjarje është konfidenciale.
+(Private): =
+(cont.): (vazhdim)
+Approved: Miratuar
+Deleted: Fshihet
+Rejected: Refuzohet
+Waiting for approval: Duke pritur për miratim
+Unknown: E panjohur
+Invalid report id.: ID e raportit e pavlefshme
+Click here to manage reports for the Public Access calendar.: Klikoni këtu për të menaxhuar raportet për kalendarin e Hyrjes Publike.
+Add new report: Shto raport të ri
+Manage Reports: Menaxho Raportet
+
+########################################
+# Page: search.php
+#
+Advanced Search: kërkim i avancuar
+Search: Kërko
+Keywords: Fjalë kyçe
+Enter % for all entries: Vendos% për të gjitha shënimet
+Include: Përfshini
+Filter by Date: Filtro sipas datës
+All Dates: Të gjitha datat
+Past: E kaluara
+Upcoming: E ardhshme
+Range: Diapazoni
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Duhet të fusni një ose më shumë fjalë kyçe të kërkimit.
+Search Results: Rezultatet e Kërkimit
+match found: ndeshja u gjet
+matches found: ndeshjet e gjetura
+No matches found: Nuk u gjet asnjë ndeshje
+New Search: Kërkim i ri
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Informacioni më poshtë rendit çështjet e mundshme me instalimin tuaj WebCalendar që mund të modifikohen për ta bërë instalimin tuaj më të sigurt.
+For questions about WebCalendar security see the forums: Për pyetje në lidhje me ndonjë çështje të sigurisë në WebCalendar, ju lutemi përdorni forume WebCalendar të organizuara në GitHub.com;<br>XXX
+View your current PHP settings: Shikoni cilësimet tuaja aktuale të PHP
+Security Issue: Çështja e Sigurisë
+Status: Statusi
+Default admin user password: Fjalëkalimi i parazgjedhur i përdoruesit të administratorit
+You should change the password of the default admin user.: Ju duhet të ndryshoni fjalëkalimin e përdoruesit të parazgjedhur të administratorit.
+File permissions XXX: Lejet e skedarit: XXX
+item XXX should not be writable: Artikulli i mëposhtëm nuk duhet të shkruhet:<br><tt> XXX</tt>
+File exists XXX: Skedari ekziston: "XXX"
+Because you have email disabled, you should remove this file.: Meqenëse e keni postën elektronike të çaktivizuar, duhet ta hiqni këtë skedar.
+File location XXX: Vendndodhja e skedarit: "XXX"
+remove XXX if not using: Nëse nuk po përdorni skedarin "XXX", duhet ta fshini. Ose, të paktën, zhvendoseni atë në një direktori të re.  
+System Settings XXX: Cilësimet e sistemit: "XXX"
+consider enabling UAC: Ju mund të dëshironi të merrni në konsideratë mundësimin e Kontrollit të Hyrjes së Përdoruesit për të vendosur privilegjet e përdoruesit.
+recommend approving new public events: Ne rekomandojmë që të gjitha paraqitjet e ngjarjeve publike të aprovohen.
+recommend using CAPTCHA: CAPTCHA rekomandohet të ruajë përsëri paraqitjet e automatizuara të ngjarjeve.  
+Database cache directory location: Vendndodhja e bazës së të dhënave cache
+db cache should be inaccessable: Data e fshehtë e bazës së të dhënave duhet të jetë në një direktori që nuk mund të arrihet me një URL.
+PHP Settings XXX: Cilësimet e PHP: "XXX"
+recommend setting XXX Off: Cilësimi i rekomanduar për "XXX" është Joaktiv.
+recommend setting allow_url_fopen Off: Cilësimi i rekomanduar për "allow_url_fopen" është Joaktiv kur kalendarët e largët nuk janë të aktivizuar.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Shikoni Kalendarin e Një Përdoruesi tjetër
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Ju nuk keni shtuar asnjë kategori.
+Set Category: Cakto kategorinë
+Global Categories cannot be changed.: Kategoritë Globale nuk mund të ndryshohen.
+
+########################################
+# Page: upcoming.php
+#
+more: më shumë
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Kalendarë të largët
+denotes administrative user: tregon përdoruesin administrativ
+Add New User: Shto përdorues të ri
+
+########################################
+# Page: usersel.php
+#
+form: formë
+Reset: Rivendos
+
+########################################
+# Page: views.php
+#
+Add New View: Shto pamje të re
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Pamje pa emër
+Add View: Shto pamje
+Edit View: Redakto pamjen
+View Name: Shiko emrin
+View Type: Lloji i pamjes
+Day by Time: Dita nga Koha
+Week (Users horizontal): Java (Përdoruesit horizontale)
+Week by Time: Java nga Koha
+Week (Users vertical): Java (Përdoruesit vertikalë)
+Week (Timebar): Java (Koha)
+Month (Timebar): Muaji (Shiriti i kohës)
+Month (side by side): Muaji (krah për krah)
+Month (on same calendar): Muaji (në të njëjtin kalendar)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Ju duhet të specifikoni një emër pamjeje
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Asnjë përdorues për këtë pamje.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Përditësoni përqindjen e detyrës
+Completed: Përfunduar
+Assistant mode: Modaliteti i asistentit
+Declined: I refuzuar
+Needs-Action: Nevojat-Veprimi
+by: nga
+Percentage Complete: Përqindja e plotë
+External User: Përdorues i Jashtëm
+Update: Azhurnoni
+at: në
+comments: komentet
+Show: Shfaqje
+Hide: Fshih
+Approve/Confirm entry: Miratoni / Konfirmoni hyrjen
+Reject entry: Refuzo hyrjen
+Set category: Cakto kategorinë
+Add to My Calendar: Shto në Kalendarin tim
+Copy entry: Kopjoni hyrjen
+This will delete this entry for all users.: Kjo do të fshijë këtë shënim për të gjithë përdoruesit.
+Edit entry: Redakto hyrjen
+Edit repeating entry for all dates: Redaktoni hyrjen përsëritëse për të gjitha datat
+Delete repeating event for all dates: Fshi ngjarjen përsëritëse për të gjitha datat
+Edit entry for this date: Redakto hyrjen për këtë datë
+Delete entry only for this date: Fshi hyrjen vetëm për këtë datë
+Delete entry from calendar of XXX: Fshi hyrjen nga kalendari i XXX
+This will delete the entry from your XXX calendar.: Kjo do të fshijë hyrjen nga kalendari juaj XXX.
+boss: shefi '
+This will delete the entry from your boss calendar.: Kjo do të fshijë hyrjen nga kalendari i shefit tuaj.
+This will delete the entry from your calendar.: Kjo do të fshijë hyrjen nga kalendari juaj.
+from your boss calendar: nga kalendari i shefit tuaj
+Do you want to add this entry to your calendar?: Dëshironi ta shtoni këtë shënim në kalendarin tuaj?
+This will add the entry to your calendar.: Kjo do të shtojë hyrjen në kalendarin tuaj.
+Email all participants: Dërgoni me email të gjithë pjesëmarrësit
+Hide activity log: Fshih regjistrin e aktivitetit
+Show activity log: Shfaq regjistrin e aktivitetit
+Export this entry to: Eksportoni këtë hyrje në
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Klikoni dy herë në qelizën bosh për të shtuar hyrjen e re.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Hyrje e re
+cont.: vazhdim
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kalendari tjetër i përdoruesit
+Category Management: Menaxhimi i kategorisë
+Day View: Pamja e ditës
+Edit Event: Redakto Ngjarjen
+Month View: Pamja e muajit
+Common Trailer: Rimorkio e zakonshme
+User Management: Menaxhimi i Përdoruesit
+Manage Views: Menaxho pamjet
+Week View: Pamja e Javës
+Year View: Pamja e Vitit
+Invalid function id: ID e funksionit të pavlefshëm
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Nuk mund të gjesh skedarin "settings.php".<br>Ju lutemi kopjoni "settings.php.orig" në "settings.php" dhe ndryshoni për sitin tuaj.
+Incomplete settings.php file...: Skedari jo i plotë "settings.php" ...
+Could not find XXX defined in...: Nuk mund të gjesh "XXX" të përcaktuar në skedarin tënd "settings.php".
+You must define XXX in: Ju duhet të përcaktoni "XXX" në skedarin "settings.php".
 
 ########################################
 # Page: includes/date_formats.php
 #
-December: Dhjetor"
-Dec: Dhj
+December: Dhjetor
+Dec: Dhjetor
+LANGUAGE DEFINED: GJUHA P DERCAKTUAR
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Gabim në lidhjen me bazën e të dhënave: "XXX".
+db_type not defined.: lloji db_ nuk përcaktohet.
+invalid db_type XXX: tip i pavlefshëm db_type "" XXX ".
+Cache cleared from previous SQL!: Cache u pastrua nga SQL e mëparshme!
+Error executing query.: Gabim në ekzekutimin e pyetjes.
+Unfortunately, XXX is not implemented for YYY: Fatkeqësisht, "XXX" nuk është implementuar për (VVV).
+Unknown ODBC error.: Gabim i panjohur ODBC.
+Error opening cache dir XXX.: Gabim në hapjen e memorjes së fshehtë "XXX".
+delete: fshij
+Cache error Could not XXX file YYY.: Gabim i memorjes: Nuk mund të skedohet XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Gabim fatal
+Invalid data format for: Format i pavlefshëm i të dhënave për
 
 ########################################
 # Page: includes/functions.php
 #
-WK: Java
+Error Type not set for activity log!: Gabim: Lloji nuk është vendosur për regjistrin e aktivitetit!
+This event is XXX.: Kjo ngjarje është XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: tejkalon kufirin e XXX ngjarjeve në ditë
+on: në
+All Attendees: Të gjithë të pranishmit
+Busy: I zënë
+Tentative: E paramenduar
+Schedule an appointment for XXX.: Programoni një takim për XXX: YYY.
+date_select: =
+Event approved: Ngjarja u miratua
+Journal approved: Fletorja e aprovuar
+Task approved: Detyra u miratua
+Attachment: Bashkëngjitje
+Event created: Ngjarja u krijua
+Journal created: Ditari u krijua
+Task created: Detyra u krijua
+Event deleted: Ngjarja u fshi
+Journal deleted: Ditari u fshi
+Task deleted: Detyra u fshi
+New user via email (self registration): Përdorues i ri përmes postës elektronike (vetëregjistrimi)
+New user (self registration): Përdorues i ri (vetëregjistrimi)
+Notification sent: Njoftimi u dërgua
+Event rejected: Ngjarja u refuzua
+Journal rejected: Revista refuzohet
+Task rejected: Detyra u refuzua
+Reminder sent: Kujtesa u dërgua
+Event updated: Ngjarja u azhurnua
+Journal updated: Revista u azhurnua
+Task updated: Detyra u azhurnua
+Delete User: Fshi përdoruesin
+WK: =
+TASKS: DETYRA
+Task_Title: Titulli
+Due: Për shkak të
+Task Name: Emri i detyrës
+Task Due Date: Detyra Data e Pritjes
+You have XXX unapproved entries: Ju keni XXX hyrje të pa aprovuara 
+Changes successfully saved: Ndryshimet u ruajtën me sukses
+Event: Ngjarja
+Action: Veprimi
+Printer Friendly: =
+Generate printer-friendly version: Gjeneroni një version miqësor për printerin
+after: pas
+before: para
+end: fundi
+start: filloj
+View this event: Shikoni këtë ngjarje
+View this task: Shikoni këtë detyrë
 January: Janar
 February: Shkurt
-March: Mars
+March: marsh
 April: Prill
-May_: Maj
-June: Qeshor
+May_: Mund
+June: Qershor
 July: Korrik
 August: Gusht
 September: Shtator
 October: Tetor
-November: Nentor
-Jan: =
-Feb: Shk
-Mar: =
-Apr: Pri
-May: Maj
-Jun: Qes
-Jul: Kor
-Aug: Gus
-Sep: Sht
-Oct: Tet
-Nov: Nen
-Sunday: E Diele
-Monday: E Hene
-Tuesday: E Marte
-Wednesday: E Merkure
-Friday: E Premte
-Saturday: E Shtune
-Sun: Die
-Mon: Hen
-Tue: Mar
-Wed: Mer
-Thu: Enj
-Fri: Pre
-Sat: Sht
+November: Nëntori
+Jan: Janar
+Feb: Shkurt
+Mar: Mars
+Apr: Prill
+May: Mund
+Jun: Qershor
+Jul: Korrik
+Aug: Gusht
+Sep: Shtator
+Oct: Tetor
+Nov: Nëntor
+SU: =
+MO: =
+TU: =
+WE: NE
+TH: =
+FR: =
+SA: =
+unknown-month: muaj i panjohur
+First Quarter Moon: Hëna e Tremujorit të Parë
+Full Moon: Hena e plote
+Last Quarter Moon: Hëna e Tremujorit të Fundit
+New Moon: Hënë e re
+Error TIME_SLOTS undefined!: Gabim: TIME_SLOTS i papërcaktuar!
+The following error occurred: Ndodhi gabimi i mëposhtëm
+You are not authorized.: Ju nuk jeni i autorizuar.
+Add N hours to: Shtoni N orë në
+Subtract N hours from: Zbrit N orë nga
+same as: e njejta si
+server time: koha e serverit
+Cannot read timezone file XXX.: Skedari i zonës orare nuk mund të lexohet: XXX.
+Your current GMT offset is XXX hours.: Kompensimi juaj aktual GMT është XXX orë.
+Unauthorized: I paautorizuar
+Error approving event XXX.: Gabim në miratimin e ngjarjes: XXX.
+Error deleting event XXX.: Gabim në fshirjen e ngjarjes: XXX.
+Error rejecting event XXX.: Gabim në refuzimin e ngjarjes: XXX.
+Sunday: E diel
+Monday: E hënë
+Tuesday: E marte
+Wednesday: E merkure
+Thursday: E enjte
+Friday: E premte
+Saturday: E shtune
+Sun: Dielli
+Mon: E hënë
+Tue: E martë
+Wed: E mërkurë
+Thu: E enjte
+Fri: E premte
+Sat: E shtun
+unknown-weekday: ditën e panjohur të javës
+Invalid referring URL: URL e referimit e pavlefshme
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indeksi
+Documentation: Dokumentacioni
+Page: Faqja
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Kalendari im
+Add New Entry: Shto hyrjen e re
+Add New Task: Shto detyrë të re
+Logout: Shkyç
+Home: Shtëpi
+Back to My Calendar: Kthehu te Kalendari Im
+Go to: Shko te
+Manage calendar of: Menaxho kalendarin e
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Gjuha e shfletuesit nuk u gjet
+(not supported): (nuk mbështetet)
+Abkhazian: Abhazisht
+Acoli: =
+Adangme: =
+Adyghe: Adighe
+Afar: Larg
+Afrihili: =
+Afrikaans: Afrikanisht                       
+Ainu: =
+Akan: =
+Akkadian: Akad
+Albanian: Shqiptare                         
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Jugor)
+Amharic: Amarike
+Angika: =
+Apache: =
+Arabic (Algeria): Arabisht (Algjeri)
+Arabic (Bahrain): Arabisht (Bahrein)
+Arabic (Egypt): Arabisht (Egjipt)
+Arabic (Iraq): Arabisht (Irak)
+Arabic (Jordan): Arabisht (jordan)
+Arabic (Kuwait): Arabisht (Kuvajt)
+Arabic (Lebanon): Arabisht (Liban)
+Arabic (Libya): Arabisht (Libi)
+Arabic (Morocco): Arabisht (Marok)
+Arabic (Oman): Arabisht (Oman)
+Arabic (Qatar): Arabisht (Katar)
+Arabic (Saudi Arabia): Arabisht (Arabia Saudite)
+Arabic (Syria): Arabisht (Siria)
+Arabic (Tunisia): Arabisht (tunizi)
+Arabic (U.A.E.): Arabisht (U.A.E.)
+Arabic (Yemen): Arabisht (jemen)
+Arabic: Arabisht                          
+Aragonese: Aragonase
+Aramaic: Aramaik
+Arapaho: =
+Arawak: Aravak
+Armenian: Armene
+Assamese: Asamase
+Asturian: =
+Athapascan: Athapaskan
+Avaric: Avariç
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerbajxhanas
+Balinese: Balinez
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Baskisht                          
+Beja: =
+Belarusian: Bjellorusisht
+Bemba: =
+Bengali: Bengalisht
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Këmbë e zezë
+Blin: =
+Bliss: Lumturi
+Bosnian: Boshnjak
+Braj: =
+Breton: Bretonisht
+Buginese: Bugineze
+Bulgarian: Bullgare                          
+Buriat: =
+Burmese: Burmanisht
+Caddo: Kado
+Catalan: Katalanisht                       
+Cebuano: =
+Chagatai: =
+Chamorro: Kamorro
+Chechen: Çeçen
+Cherokee: =
+Cheyenne: Kajene
+Chibcha: Çibçe
+Chichewa: =
+Chinese (Hong Kong): Kinezisht (Hong Kong)
+Chinese (PRC): Kinezisht (PRC)
+Chinese (Simplified/GB2312): Kinezisht (e thjeshtuar / GB2312) 
+Chinese (Singapore): Kinezisht (Singapor)
+Chinese (Taiwan): Kinezisht (Tajvan)
+Chinese (Traditional/Big5): Kinezisht (Tradicionale / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: Çoktavë
+Chuukese: =
+Chuvash: =
+Coptic: Koptik
+Cornish: Kornishisht
+Corsican: Korsikan
+Cree: =
+Creek: Përroi
+Croatian: Kroate
+Czech: Çeke
+Dakota: =
+Danish: Daneze
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Hollandisht (Belgjikë)
+Dutch: Holandez
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamit
+English (Australia): Anglisht (Australi)
+English (Belize): Anglisht (Belize)
+English (Canada): Anglisht (Kanada)
+English (Ireland): Anglisht (Irlandë)
+English (Jamaica): Anglisht (xhamajka)
+English (New Zealand): Anglisht (Zelanda e Re)
+English (Philippines): Anglisht (Filipine)
+English (South Africa): Anglisht (Afrika e Jugut)
+English (Trinidad & Tobago): Anglisht (Trinidad & Tobago)
+English (United Kingdom): Anglisht (Mbretëria e Bashkuar)
+English (United States): Anglisht (Shtetet e Bashkuara)
+English (Zimbabwe): Anglisht (Zimbabve)
+English: Anglisht-SH.B.A.
+Erzya: =
+Esperanto: =
+Estonian: Estonez
+Ewe: =
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Faroisht
+Fijian: Fixhian
+Filipino: Filipinase
+Finnish: Finlandisht
+Fon: =
+French (Belgium): Frëngjisht (Belgjikë)
+French (Canada): Frëngjisht (Kanada)
+French (France): Frëngjisht (Francë)
+French (Luxembourg): Frëngjisht (Luksemburg)
+French (Monaco): Frëngjisht (Monako)
+French (Switzerland): Frëngjisht (Zvicër)
+French: Frëngjisht
+Frisian (Eastern): Friziane (Lindore)
+Frisian (Northern): Friziane (Veriore)
+Frisian (Western): Frizian (Perëndimor)
+Frisian: Frizian
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galike
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Gjeorgjian
+German (Austria): Gjermanisht (Austri)
+German (Germany): Gjermanisht (gjermani)
+German (Liechtenstein): Gjermanisht (Lihtenshtajni)
+German (Luxembourg): Gjermanisht (luksemburg)
+German (Standard): Gjermanisht (standard)
+German (Switzerland): Gjermanisht (zvicër)
+German: Gjermanisht
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotik
+Grebo: =
+Greek: Greke
+Greenlandic: Grenlandez
+Guarani: =
+Gujarati: Guxharatisht
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitian (Kreol)
+Haitian: Haitianisht
+Hausa: Hause
+Hawaiian: Havai
+Hebrew: Hebraisht
+Herero: =
+Hiligaynon: Hipilik
+Hindi: Hindisht
+Hiri Motu: =
+Hittite: Hitit
+Hmong: =
+Holo (Taiwanese): Holo (Tajvanisht)
+Hungarian: Hungarez
+Hupa: =
+Iban: =
+Icelandic: Islandez
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Indonezisht
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: =
+Irish (Gaelic): Irlandez (galik)
+Irish: Irlandez
+Iroquoian: =
+Italian (Switzerland): Italisht (Zvicër)
+Italian: Italiane
+Japanese: Japoneze
+Javanese: Javanez
+Judeo-Arabic: Judeo-Arabisht
+Judeo-Persian: Judeo-persisht
+Kabardian: =
+Kabyle: Kabile
+Kachin: =
+Kalaallisut: =
+Kalmyk: Kalmik
+Kamba: =
+Kannada: Kanada
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: Kareliane
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Kazak
+Khasi: Karakteri
+Khmer (Central): Khmer (Qendror)
+Khmer: =
+Khotanese: Khotanez
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: Kiniaruanda
+Kirghiz: Kirgize
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreane (Johab)
+Korean (North): Koreane (veriore)
+Korean (South): Koreane (Jugore)
+Korean: Koreane
+Kosraean: Kosraane
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurde
+Kutenai: =
+Kyrgyz: Kirgize
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Latinisht
+Latvian: Letonisht
+Lezghian: Lezgiane
+Limburgan: =
+Lingala: =
+Lithuanian: Lituaneze
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luksemburgase
+Macedonian: Maqedonas
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: Malajzisht
+Malayalam: Malajalameze
+Maldivian: =
+Maltese: Malteze
+Manchu: Mançu
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Manks
+Maori: =
+Mapuche: =
+Marathi: Maratisht
+Mari: =
+Marshallese: Marshalleze
+Marwari: =
+Masai: =
+Mayan: Maja
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldavisht
+Mongo: =
+Mongolian: Mongolisht
+Montenegrin: Malazeze
+Moroccan: Marokene
+Mossi: =
+Myanmar: Mianmar
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (në Veri)
+Ndebele (South): Ndebele (Jug)
+Ndebele: =
+Ndonga: =
+Neapolitan: Napolitane
+Nepali: Nepalisht
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Norvegjisht
+Norwegian (Bokmål): Norvegjez (bokmal)
+Norwegian (Nynorsk): Norvegjeze (norokase)
+Norwegian: Norvegjeze
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Oksitane
+Odia: =
+Ojibwa: =
+Oriyia: Orijia
+Oromo: =
+Osage: =
+Ossetic: Osetik
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: Panxhabisht
+Papiamento: Papianishte
+Pashto: Pushto
+Pedi: =
+Persian (Farsi): Persisht (persisht)
+Persian (Iran): Persisht (Iran)
+Persian: Persisht
+Phoenician: Fenikas
+Pohnpeian: =
+Polish: Polake
+Portuguese: Portugez
+Portuguese/Brazil: Portugeze / Brazil
+Punjabi (India): Punxhabi (Indi)
+Punjabi (Pakistan): Panxhabisht (Pakistan)
+Punjabi: Punxhabi
+Quechua: Keçua
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rato-romanik
+Romanian: Rumune
+Romansh: Romanisht
+Romany: Romak
+Rundi: =
+Russian (Moldavia: Ruse (Moldavia)
+Russian (Republic of Moldova): Ruse (Republika e Moldavisë)
+Russian: Rusisht
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Veriore)
+Sami (Skolt): =
+Sami (Southern): Sami (Jugor)
+Sami: =
+Samoan: Samoane
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanskrite
+Santali: =
+Sardinian: Sardeze
+Sasak: =
+Scots (Gaelic): Skocez (Galike)
+Selkup: =
+Serbian (Upper): Serbisht (sipër)
+Serbian: Serbe
+Serer: =
+Sesotho: Sesoto
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: =
+Sindhi: =
+Sinhala: =
+Slavic: Sllave
+Slovak: Sllovake
+Slovenian: Sllovene
+Sogdian: =
+Somali: Somalisht
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbishte (e poshtme)
+Sorbian (Upper): Sorbisht (sipër)
+Sorbian: Sorbishte
+Sotho: =
+Spanish (Argentina): Spanjisht (Argjentinë)
+Spanish (Bolivia): Spanjisht (Bolivi)
+Spanish (Chile): Spanjisht (Kili)
+Spanish (Colombia): Spanjisht (Kolumbi)
+Spanish (Costa Rica): Spanjisht (Kosta Rika)
+Spanish (Dominican Republic): Spanjisht (Republika Dominikane)
+Spanish (Ecuador): Spanjisht (Ekuador)
+Spanish (El Salvador): Spanjisht (El Salvador)
+Spanish (Guatemala): Spanjisht (Guatemalë)
+Spanish (Honduras): Spanjisht (Honduras)
+Spanish (Mexico): Spanjisht (Meksikë)
+Spanish (Nicaragua): Spanjisht (Nikaragua)
+Spanish (Panama): Spanjisht (Panama)
+Spanish (Paraguay): Spanjisht (Paraguai)
+Spanish (Peru): Spanjisht (Peru)
+Spanish (Puerto Rico): Spanjisht (Porto Riko)
+Spanish (Spain): Spanjisht (Spanjë)
+Spanish (Uruguay): Spanjisht (Uruguaj)
+Spanish (Venezuela): Spanjisht (Venezuelë)
+Spanish: Spanjisht
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumerisht
+Sundanese: Sundanez
+Susu: =
+Sutu: =
+Swahili: Suahilisht
+Swati: =
+Swedish (Finland): Suedisht (Finlandë)
+Swedish (Sweden): Suedisht (Suedi)
+Swedish: Suedisht
+Syriac: Siriake
+Tagalog: Tagalogisht
+Tahitian: Tahiti
+Tai: =
+Taiwan: Tajvani
+Tajik: Taxhikisht
+Tamashek: =
+Tamil: Tamilisht
+Tatar: Tatarisht
+Telugu: Teluge
+Tereno: =
+Tetum: =
+Thai: Tajlandez
+Tibetan: Tibetiane
+Tigre: Tigër
+Tigrinya: Tigrinja
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Ishujt Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: turk
+Turkmen: =
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Ugaritike
+Ukrainian: Ukrainas
+Umbundu: =
+Urdu: =
+Uyghur: Ujgure
+Uzbek: Uzbekisht
+Vai: =
+Venda: =
+Vietnamese: Vietnameze
+Volapük: Volakisht
+Votic: Votik
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: Larje
+Welsh: Uellsit
+Wolaitta: =
+Wolof: Ujqër
+Xhosa: =
+Yakut: Jakut
+Yao: =
+Yapese: Japese
+Yiddish: Jidish
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Përcaktuar nga shfletuesi
+event: ngjarje
+journal: ditar
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Hyrja e pavlefshme e përdoruesit
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: Fjalëkalim i pasaktë
+no such user: asnjë përdorues i tillë
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Llogaria është çaktivizuar
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Intervali
+Months: Muaj
+Month Days: Ditët e Muajit
+Days: Ditë
+Weeks: Javë
+Position: Pozicioni
+Until: Deri sa
+Count: Numëro
+Inclusion Dates: Datat e Përfshirjes
+Exclusion Dates: Datat e Përjashtimit
+Event Imported: Ngjarja u importua
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bajte
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Njoftim
+authenticate: Gabim SMTP: Nuk mund të vërtetohet
+connect_host: Gabim SMTP: Nuk mund të lidhet me hostin SMTP:
+data_not_accepted: Gabim SMTP: Të dhënat nuk pranohen
+encoding: Kodimi i panjohur:
+execute: Nuk mund të ekzekutohet:
+file_access: Nuk mund të aksesoj skedarin:
+file_open: Gabimi i skedarit nuk mund të hapë skedarin:
+from_failed: Adresa e mëposhtme Nga: dështoi:
+instantiate: Funksioni i postës nuk mund të çastëzohej
+mailer_not_supported: postuesi nuk mbështetet
+provide_address: Duhet të jepni të paktën një adresë emaili të marrësit.
+recipients_failed: Gabim SMTP: Marrësit e mëposhtëm dështuan:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Vendosni Karakteret e Parë në Grafik
+Enter the correct letters and numbers...: Futni shkronjat dhe numrat e saktë nga figura në kutinë e tekstit. Ky test i vogël shërben si kufizim i hyrjes ndaj robotëve me qëllim të keq. Thjesht ringarko faqen nëse kjo grafikë është shumë e vështirë për tu lexuar
+Challenge/Response: Sfida / Përgjigja
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Të ndryshohet data dhe koha e kësaj hyrjeje?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Ju nuk keni futur një përshkrim të shkurtër
+time prior to work hours...: koha para orarit të punës ...
+Invalid Event Date: Data e pavlefshme e ngjarjes
+Please add a participant: Ju lutemi shtoni një pjesëmarrës
+Invalid Date: Data e pavlefshme
+You have not entered a valid time of day: Ju nuk keni futur një kohë të vlefshme të ditës
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ID-ja e kalendarit nuk mund të jetë bosh.
+First and last names cannot both be blank.: Emrat dhe mbiemrat nuk mund të jenë bosh.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Ngjyra e pavlefshme
+Color format should be RRGGBB.: Formati i ngjyrës duhet të jetë "#RRGGBB".
+URL cannot be blank.: URL nuk mund të jetë bosh.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Lloji i skedarit nuk përputhet me Formatin e Importit
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Ngjyrë e pavlefshme për sfondin e dokumentit.
+Invalid color for document title.: Ngjyrë e pavlefshme për titullin e dokumentit.
+Invalid color for table cell background.: Ngjyrë e pavlefshme për sfondin e qelizës së tryezës.
+Invalid color for table cell background for today.: Ngjyra e pavlefshme për sfondin e qelizave të tryezës për sot.
+Invalid work hours.: Orët e pavlefshme të punës.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL-ja e serverit duhet të përfundojë me një prerje (/).
+Invalid color for table grid.: Ngjyra e pavlefshme për rrjetin e tryezës.
+Invalid color for event popup background.: Ngjyrë e pavlefshme për sfondin e dritares së ngjarjes.
+Invalid color for event popup text.: Ngjyrë e pavlefshme për tekstin e shfaqjes së ngjarjes.
+Invalid color for table header text.: Ngjyrë e pavlefshme për tekstin e kokës së tabelës.
+Invalid color for table header background.: Ngjyrë e pavlefshme për sfondin e kokës së tryezës.
+Server URL is required.: Kërkohet URL e serverit.
+Invalid Color: Ngjyra e pavlefshme
+Database Name: Emri i bazës së të dhënave
+Full Path (no backslashes): Shtegu i plotë (pa kthim prapa)
+The password contains illegal characters.: Fjalëkalimi përmban karaktere të paligjshme.
+Error you must specify a Single-User Login: Gabim duhet të specifikoni një hyrje të një përdoruesi të vetëm
+Could not find XXX.: XXX nuk mund të gjendej.
+Could not find XXX in DOM.: XXX nuk mund të gjendej në DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Këtë javë
+This Month: Këtë muaj
+This Year: Kete vit
+Exit: Dalja
+Add New Event: Shto Ngjarje të Re
+Delete Entries: Fshi shënimet
+My Views: Pikëpamjet e mia
+Manage Calendar of: Menaxho Kalendarin e
+My Reports: Raportet e Mia
+My Profile: Profili im
+Public Calendar: Kalendari Publik
+Unapproved Events: Ngjarje të paprovuara
+User Manager: Menaxheri i Përdoruesit
+Help Contents: Përmbajtja e ndihmës
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Drejtoria e Cache-it të bazës së të dhënave
+Create New: Krijoni të reja
+Failure Reason: Arsyeja e dështimit:
+You must manually create database: Ju duhet të krijoni manualisht bazën e të dhënave.
+Single-User: Përdorues i vetëm
+Test Settings: Cilësimet e Testit
+Timezone Conversion Successful: Konvertimi i zonës kohore i suksesshëm
+WebCalendar Installation Wizard Step XXX: Magjistari i Instalimit të Kalendarit Web Hapi XXX
+Password Accepted: Fjalëkalimi u pranua
+Successful Login: Hyrja me sukses
+Password Incorrect: Fjalëkalimi i pasaktë
+Invalid Login: Hyrje e pa vlefshme
+Display Errors: Gabimet e Shfaqjes
+File Uploads: Ngarkimet e skedarëve
+Allow URL fopen: Lejo hapjen e URL-së (kërkohet vetëm nëse përdoren Kalendarët e Largët)
+Safe Mode: Modaliteti i Sigurt
+Safe Mode Allowed Vars: Moda e Sigurt Lejohet Vars (Kërkohet TZ vetëm nëse Modaliteti i Sigurt është Aktiv)
+GD: GD (nevojitet për Sfondet e Gradient Image)
+Passwords do not match!: Fjalëkalimet nuk përputhen!
+Unable to write password to settings.php file: I pazoti mund të shkruajë fjalëkalimin në skedarin "settings.php".
+Password Updated: Fjalëkalimi u azhurnua
+Password has been set: Fjalëkalimi është vendosur.
+Connection Successful...: Lidhja është e suksesshme  Ju lutemi shkoni në faqen tjetër për të vazhduar instalimin.
+Correct your entries or click the Create New...: Korrigjo shënimet e tua ose kliko butonin  Krijo të Re  për të vazhduar instalimin.
+Correct your entries and try again.: Korrigjo shënimet e tua dhe provo përsëri.
+XXX does not exist: XXX nuk ekziston
+XXX is not writable: XXX nuk mund të shkruhet
+Error Converting Timezone: Gabim në konvertimin e zonës orare
+Error Unable to write to file XXX.: Gabim Nuk mund të shkruhet në skedarin XXX.
+Please change the file permissions of this file.: Ju lutemi ndryshoni lejet e skedarit të këtij skedari.
+Please change includes dir permission: Ju lutemi ndryshoni lejet e skedarit të drejtorisë suaj "përfshin" për të lejuar shkrimin nga përdoruesit e tjerë.
+Your settings have been saved.: Cilësimet tuaja janë ruajtur.
+OFF: =
+ON: =
+WebCalendar Setup Wizard: Magjistari i Konfigurimit të WebCalendar
+This installation wizard will guide you...: Ky magjistar i instalimit do t'ju udhëzojë përmes konfigurimit të një instalimi bazë WebCalendar.<br>Për ndihmë dhe zgjidhjen e problemeve shih:<br>
+System Administrators Guide: Udhëzuesi i Administratorit të Sistemit
+Frequently Asked Questions: Pyetjet e bëra më shpesh
+FAQ: =
+Troubleshooting: Zgjidhja e problemeve
+Getting Help: Marrja e Ndihmës
+Upgrading Guide: Udhëzues për azhurnimin
+User Supported Wiki: Wiki i mbështetur nga përdoruesit
+PHP Version Check: Kontrolloni versionin PHP
+Check to see if PHP 7.1.0 or greater is installed.: Kontrolloni nëse PHP 7.1.0 ose më i madh është instaluar.
+PHP version: Versioni PHP
+PHP Settings: Cilësimet e PHP
+Detailed PHP Info: Informacion i hollësishëm për PHP
+settings.php Status: "settings.php" Statusi
+Session Check: Kontrolli i Sesionit
+To test the proper operation of sessions...: Për të provuar funksionimin e duhur të seancave, ringarko këtë faqe. Ju duhet të shihni shtimin e numëruesit të seancës çdo herë.
+SESSION COUNTER: KOMPANIA E SESIONIT
+The file permissions of settings.php are set...: Lejet e skedarit të "settings.php" janë vendosur në mënyrë që instaluesi të mos ketë leje për ta modifikuar atë. Ju lutemi ndryshoni lejet e skedarit të skedarit vijues për të vazhduar
+The file permissions of the includes directory are set...: Lejet e skedarit të direktorisë përfshin janë vendosur në mënyrë që instaluesi të mos ketë leje për të krijuar një skedar të ri. Ju lutemi ndryshoni lejet e direktorisë vijuese për të vazhduar
+Your settings.php file appears to be valid.: Skedari juaj "settings.php" duket të jetë i vlefshëm.
+Configuration Wizard Password: Fjalëkalimi i magjistarit të konfigurimit
+Create Settings File Password: Krijoni Fjalëkalimin e Skedarit të Cilësimeve
+db setup directions...: Në këtë seksion do të vendosni dhe provoni një lidhje me serverin tuaj të bazës së të dhënave. Informacioni i dhënë nga llogaria duhet të ketë leje të PLOT për të krijuar baza të të dhënave, tabela dhe përdorues. Nëse kjo nuk është e mundur, ose qasja juaj në bazën e të dhënave është e kufizuar, do t'ju duhet të konfiguroni manualisht bazën e të dhënave tuaja.
+Database Status: Statusi i bazës së të dhënave
+Supported databases for your PHP installation: Bazat e të dhënave të mbështetura për instalimin tuaj PHP
+Your current database settings are able to access the database.: Cilësimet tuaja aktuale të bazës së të dhënave janë në gjendje të hyjnë në bazën e të dhënave.
+Please Test Settings: Ju lutemi Testoni Cilësimet
+Your current database settings are not able...: Cilësimet tuaja aktuale të bazës së të dhënave nuk janë në gjendje të hyjnë në bazën e të dhënave ose nuk janë testuar ende.
+Database Settings: Cilësimet e bazës së të dhënave
+Database Type: Lloji i bazës së të dhënave
+Server: Serveri
+Connection Persistence: Këmbëngulja e Lidhjes
+All your database tables appear to be up...: Të gjitha tabelat e bazës së të dhënave tuaja duket se janë të azhurnuara. Ju mund të kaloni në faqen tjetër dhe të përfundoni konfigurimin tuaj të WebCalendar.
+This appears to be a new installation...: Ky duket të jetë një instalim i ri. Nëse kjo nuk është e saktë, ju lutemi kthehuni në faqen e mëparshme dhe korrigjoni cilësimet tuaja.
+This appears to be an upgrade...: Kjo duket të jetë një azhurnim nga versioni&nbsp;XXX&nbsp;në&nbsp;YYY.
+The database requires some data input...: Baza e të dhënave kërkon disa futje të të dhënave. Klikoni Përditëso Baza e të Dhënave për të përfunduar azhurnimin.
+In this section we will perform...: Në këtë pjesë do të kryejmë ndryshimet për të sjellë bazën e të dhënave tuaja në nivelin e kërkuar. Nëse jeni duke përdorur një bazë të dhënash të mbështetur plotësisht, ky hap do të kryhet automatikisht për ju. Nëse jo, SQL e kërkuar mund të shfaqet dhe ju duhet të jeni në gjendje ta shkurtoni dhe ngjisni atë në dritaren e kërkimit të serverit të bazës së të dhënave.
+No database actions are required.: Nuk kërkohen veprime të bazës së të dhënave.
+The following database actions are required: Kërkohen veprimet e mëposhtme të bazës së të dhënave
+ODBC Underlying Database: Baza e të dhënave ODBC:
+Automatic installation not supported: Instalimi automatik nuk është implementuar plotësisht për llojin tuaj të bazës së të dhënave. Ju do të duhet të krijoni manualisht tabelat e kërkuara duke përdorur SQL të furnizuar. Ju lutemi klikoni  Shfaq SQL  për të vazhduar. Pritini dhe ngjitni në dritaren e kërkimit të bazës së të dhënave tuaja.
+This may take several minutes to complete: Kjo mund të zgjasë disa minuta për të përfunduar.
+Install Database: Instalo bazën e të dhënave
+Update Database: Azhurnoni bazën e të dhënave
+Display Required SQL: Shfaq SQL të Kërkuara
+Return to previous page after processing SQL.: Pasi të keni përpunuar manualisht këtë SQL, do të duhet të ktheheni në faqen e mëparshme dhe të rishfaqni bazën e të dhënave tuaja në mënyrë që skenari të zbulojë ndryshimet.
+This is the final step in setting up your WebCalendar Installation.: Ky është hapi i fundit në konfigurimin e Instalimit tuaj të WebCalendar.
+Timezone Conversion: Konvertimi i zonës kohore
+It appears that you have NOT converted...: Duket se ju NUK i keni konvertuar të dhënat tuaja ekzistuese të ngjarjes WebCalendar në GMT. Nëse e keni, mund ta injoroni këtë njoftim dhe të mos vazhdoni me konvertimin. Nëse ky është një instalim i ri, mund ta injoroni gjithashtu këtë njoftim.
+Convert Data to GMT: Shndërroni të dhënat në GMT
+Application Settings: Cilësimet e Aplikimit
+HTTP-based authentication was not detected...: Vërtetimi i bazuar në HTTP nuk u zbulua. Do të duhet të rikonfiguroni serverin tuaj të internetit nëse dëshironi të zgjidhni "Web Server" nga zgjedhjet "Authentication User" më poshtë.
+HTTP-based authentication was detected...: U vërtetua vërtetimi i bazuar në HTTP. Vërtetimi i përdoruesit po trajtohet nga serveri juaj i internetit. Ju duhet të zgjidhni "Web Server" nga lista e zgjedhjeve "Authentication User" më poshtë.
+Create Default Admin Account: Krijoni llogari të parazgjedhur të administratorit
+(Admin Account Not Found): (Llogaria e administratorit nuk u gjet)
+User Authentication: Vërtetimi i përdoruesit
+Web-based via WebCalendar (default): Bazuar në internet përmes WebCalendar (parazgjedhur)
+Web Server (not detected): Web server (nuk zbulohet)
+Web Server (detected): Serveri i uebit (zbuluar)
+None (Single-User): Asnjë (Përdorues i vetëm)
+Read-Only: Lexo vetem
+Environment: Mjedisi
+Production: Prodhimi
+Development: Zhvillimi
+Save Settings: Ruaj cilësimet
+Launch WebCalendar: Hapni Kalendarin e Uebit
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Gabim në azhurnimin e tabelës "XXX": YYY.
+Conversion Successful: Konvertimi i suksesshëm 
+Perl script required: Versioni juaj i mëparshëm i WebCalendar kërkon ekzekutimin e një skenari PERL për të kthyer të dhënat tuaja. Ju lutemi ekzekutoni /tools/upgrade_to_0.9.7.pl pastaj kthehuni në këtë faqe për të vazhduar.
+previous version requires updating several tables: Versioni juaj i mëparshëm i WebCalendar kërkon azhurnimin e disa tabelave të bazës së të dhënave.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ASNJ P PARAQITJE N AV dispozicion
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Gabim në lidhjen me bazën e të dhënave
+Include Path: Përfshi rrugën
+Deleting events for: Fshirja e ngjarjeve për
+Importing events for: Importimi i ngjarjeve për
+No data returned from: Asnjë e dhënë nuk u kthye nga
+for non-user calendar: për kalendarin jo përdorues
+No Remote Calendars found: Nuk u gjet asnjë kalendar i largët
+Remote Calendars not enabled: Kalendarët në distancë nuk janë aktivizuar
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: nuk mund të gjente id-në e ngjarjes
+could not find event id XXX in database.: nuk mund të gjente id të ngjarjes XXX në bazën e të dhënave.
+task: detyrë
+This is a reminder for the XXX detailed below.: Kjo është një kujtesë për XXX e detajuar më poshtë.
+Pecentage Complete: Pensioni i plotë
+Reminder: Kujtesë
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Veprim i pambështetur: XXX.
+No event id specified.: Asnjë ID i ngjarjes nuk është specifikuar.
+Not authorized (not admin).: Nuk është i autorizuar (jo administratori).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Po kontrollon për ngjarje për XXX nga data YYY deri në datën ZZZ.
+Found XXX events in time range.: Gjeten XXX ngjarje në intervalin kohor.
+Event id=XXX YYY at ZZZ on AAA.: ID e ngjarjes = XXX "VVV" në ZZZ në AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Lejimi i përdoruesit XXX për të parë kalendarin e përdoruesit tjetër.
+Error Email reminders disabled for user XXX.: Gabim: Kujtesat me email janë çaktivizuar për përdoruesin "XXX".
+Number of site_extras XXX.: Numri i site_extras: XXX.
+Reminder set for event.: Kujtesa është caktuar për ngjarjen.
+Mins Before XXX.: Para para: XXX.
+Event time is XXX.: Koha e ngjarjes është: XXX.
+Remind time is XXX.: Koha e kujtimit është: XXX.
+Reminders for user XXX, login YYY.: Kujtesat për përdoruesin "XXX", identifikohu "VVV".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Po miratohet për përdoruesin "XXX".
+Event id=XXX YYY already sent.: ID e ngjarjes = XXX "YYY" është dërguar tashmë.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Nuk kërkohet hyrje për mënyrën me një përdorues.
+No login required for HTTP authentication.: Nuk kërkohet hyrje për vërtetimin e HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Karaktere të pavlefshëm në hyrje.
+Username XXX does not exist.: Emri i përdoruesit "XXX" nuk ekziston.
+You cannot remove admin rights from yourself!: Ju nuk mund të hiqni të drejtat e administratorit nga vetja juaj!
+Unknown error saving user: Gabim i panjohur gjatë kursimit të përdoruesit.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Asnjë pjesëmarrës nuk u gjet për ID-në e ngjarjes: XXX.
+Db error Could not find event id XXX.: Gabim në bazën e të dhënave: Nuk mund të gjej id të ngjarjes XXX.
+Error Could not find event id XXX in database.: Gabim: ID-ja e ngjarjes XXX nuk mund të gjendet në bazën e të dhënave.

@@ -1,20 +1,43 @@
-# See translations/English-US.txt for instructions.
+# Catalan ca
 #
-# Translated by:
-#       Tradu�t
-#       traduit.com
-#       info@traduit.com
-# Last update: 12 May 2004
+# El format consisteix en una capçalera opcional:
 #
-# Translations for page: includes/classes/WebCalMailer.class
-# By Ivan: web AT microstudi DOT com
-# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+# Traduït per: el vostre nom i correu electrònic
+# Última actualització: data de la traducció
+# (Incloent el "#" principal i qualsevol comentari fet per traductors anteriors.
+# La PRIMERA línia en blanc finalitza aquests comentaris de capçalera.)
 #
-# Additional translations 'borrowed' from SourceForge project
-# 'The Coolest DHTML Calendar',
-# http://sourceforge.net/projects/jscalendar/
+# Seguit de tants com calgui:
 #
-# Translation last updated on 10-15-2008
+# Frase en anglès: traducció
+# (Un a una línia. SENSE el "#" principal.
+# La "frase en anglès:", inclosos els dos punts ":", la proporciona el
+# Desenvolupadors de WebCalendar. La vostra part és la "traducció".)
+#
+# El directori d'eines conté dos scripts perl per ajudar-vos:
+# - check_translation.pl
+# indica si tot el text s'ha traduït correctament.
+# - update_translation.pl
+# analitzarà els fitxers del programa per trobar tots els traductors ('frase') i
+# descripció emergent ("frase"). Organitzarà les frases segons la pàgina
+# (fitxer) que conté la primera ocurrència. Opcionalment, pot etiquetar el fitxer
+# frases que encara no es tradueixen posant
+#  << MISSING >>
+# a la línia que hi ha a sobre de la frase. I, si la frase és una abreviatura,
+# inclourà el text complet en anglès a la línia de sota de la frase.
+#
+# Nota: Intento reduir la mida global del fitxer. Si la "traducció"
+# paraula / frase és idèntica en el vostre idioma i en anglès, només cal que utilitzeu un signe "=".
+#
+# Nota: notareu l'entrada següent per a "Maig_". Hi ha una raó per això.
+# Tradueix "May_" al nom del mes complet i "May" al,
+# normalment, abreviatura de tres lletres i mesos (com ara "Oct" per a "Octubre").
+#
+# He utilitzat Google Translate per a això.
+# Ha de ser suficient fins que un parlant nadiu ho pugui verificar.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -54,377 +77,724 @@ __month__ __yyyy__: =
 # Page: about.php
 #
 Title: =
+version XXX: versió XXX
+WebCalendar is a PHP application used...: WebCalendar és una aplicació PHP que s’utilitza per mantenir un calendari per a un sol usuari o un grup d’usuaris d’internet / intranet. També es pot configurar com a calendari d'esdeveniments.
+Credits: Crèdits
+About: Sobre
+OK: D'acord
 
 ########################################
 # Page: access.php
 #
-Database error: Error de base de dades
-Go: V�s
+Database error XXX.: Error de base de dades: XXX.
+DEFAULT CONFIGURATION: CONFIGURACIÓ PER IMFACCIÓ
+Go: Vaja
 Save: Desa
-Public Access: Acc�s p�blic
+Undo: Desfés
+Public Access: Accés públic
 Admin: Administrador
+User Access Control: Control d’accés d’usuari
+Allow Access to Other Users Calendar: Permet l'accés al calendari d'altres usuaris
+Grant This User Access to My Calendar: Concedeix a aquest usuari accés al meu calendari
+Type: Tipus
 Calendar: Calendari
+View Event: Veure esdeveniment
+View: Veure
 Edit: Edita
-Public: P�blic
+Approve/Reject: Aprovar / Rebutjar
+Events: Esdeveniments
+Tasks: Tasques
+Journals: Revistes
+Can Invite: Es pot convidar
+Can Email: Pot enviar un correu electrònic
+Can See Time Only: Només es pot veure el temps
+Assistant: Ajudant
+Select All: Seleccionar tot
+Clear All: Esborra-ho tot
+Public: Públic
 Confidential: Confidencial
 Private: Privat
 
 ########################################
 # Page: activity_log.php
 #
-Next: Seg�ent
+Next: Pròxim
 Previous: Anterior
 
 ########################################
 # Page: add_entry.php
 #
+Event XXX is already on your calendar.: L'esdeveniment XXX ja és al vostre calendari.
+Invalid entry id XXX.: Identificador d'entrada no vàlid: "XXX".
+a XXX event may not be added to your calendar: Es tracta d'un esdeveniment XXX i és possible que no s'afegeixi al calendari.
 confidential: confidencial
 private: privat
-Error adding event: Error en afegir un esdeveniment
+Error adding event XXX.: Error en afegir l'esdeveniment: XXX.
 
 ########################################
 # Page: admin.php
 #
-Select: Selecciona
+Invalid setting name XXX.: El nom de configuració "XXX" no és vàlid.
+Select: Seleccioneu
 Day: Dia
 Week: Setmana
 Month: Mes
-Year: Any
-Bottom: Final
-Top: Inici
-Settings: Par�metres
+Year: Curs
+Bottom: Part inferior
+Top: Superior
+Anyone: Ningú
+Participant: =
+Settings: Configuració
 Groups: Grups
-NonUser Calendars: Calendaris no d'usuari
-Email: Correu electr�nic
+NonUser Calendars: Calendaris no usuaris
+Other: Altres
+Email: Correu electrònic
 Colors: =
 Document background: Fons del document
-Document title: T�tol del document
+Document title: Títol del document
 Document text: Text del document
-Table grid color: Color de la taula
-Table header background: Color del fons de la cap�alera de la taula
-Table header text: Text cap�alera taula
-Table cell background: Fons de la cel�la de la taula
-Table cell background for current day: Fons de la cel�la del dia actual
-Table cell background for weekends: Fons de les cel�les de caps de setmana
-Event popup background: Fons del requadre emergent de l'esdeveniment
-Event popup text: Text del missatge emergent de l'esdeveniment
-System Settings: Configuraci� del sistema
+My event text: Text del meu esdeveniment
+Table grid color: Color de la quadrícula de la taula
+Table header background: Fons de capçalera de taula
+Table header text: Text de capçalera de taula
+Table cell background: Fons de cel·la de taula
+Table cell background for current day: Fons de cel·la de taula per al dia actual
+Table cell background for days with events: Fons de cel·la de taula durant dies amb esdeveniments
+Table cell background for weekends: Fons de cel·la de taula per als caps de setmana
+Table cell background for other month: Fons de la cel·la de la taula per a l’altre mes
+Week number color: Color del número de la setmana
+Event popup background: Fons emergent de l'esdeveniment
+Event popup text: Text emergent de l'esdeveniment
+System Settings: Ajustos del sistema
 Help: Ajuda
-app-name-help: Especifica el nom de l'aplicaci� que es mostrar� a la barra de t�tol del navegador a totes les p�gines i a la p�gina d'entrada. A l'arxiu de traduccions es mirar� el valor que s'especifiqui aqu� per poder oferir t�tols diferents per a diverses lleng�es.
-Application Name: Nom de l'aplicaci�
-server-url-help: Especifica la URL principal de l'aplicaci�. Aix� s'inclour� en enviar recordatoris i notificacions per correu electr�nic.
+System options: Opcions del sistema
+app-name-help: Especifica el nom de l'aplicació que apareixerà a la barra de títol del navegador per a totes les pàgines i a la pàgina d'inici de sessió. El valor que especifiqueu aquí es buscarà al fitxer de traduccions, cosa que us permetrà proporcionar diferents títols per a diferents idiomes.
+Application Name: Nom de l'aplicació
+Translated Name (XXX): Nom traduït (XXX)
+server-url-help: Especifica l'URL base de l'aplicació. Això s'inclourà quan s'enviïn recordatoris i notificacions per correu electrònic.
 Server URL: URL del servidor
-language-help: Especifica l'idioma que s'utilitza.
-Language: Idioma
-Your browser default language is: L'idioma per defecte del teu navegador �s
+home-url-help: Especifica l'URL d'inici de l'aplicació. Això pot ser absolut o relatiu
+Home URL: URL inicial
+language-help: Especifica quin idioma s'ha d'utilitzar.
+Language: Llenguatge
+Your browser default language is XXX.: L'idioma predeterminat del navegador és "XXX".
+Allow user to use themes: Permetre a l'usuari utilitzar temes
+themes-help: Permet actualitzar massivament els paràmetres de configuració. Les etiquetes en minúscules només són preferències de l'usuari.
+Themes: Temes
+AVAILABLE THEMES: TEMES DISPONIBLES
 None: Cap
-custom-script-help: Permet introduir JavaScript o text de full d'estil personalitzats que s'incerir� a la cap�alera HTML de cada p�gina.
-Custom script/stylesheet: Script/full d'estil personalitzat
-custom-header-help: Permet incloure un fragment HTML personalitzat a l'inici de cada p�gina.
-Custom header: Cap�alera personalitzada
-custom-trailer-help: Permet incloure un fragment HTML personalitzat al peu de cada p�gina.
-Custom trailer: Peu personalitzat
-tz-help: Especifica les hores de difer�ncia per ajustar l'hora del servidor a l'hora local
-date-format-help: Especifica el format preferit de la data.
-Date format: Format de la data
-display-week-starts-on: Especifica si la setmana comen�a diumenge o dilluns Si s'especifica dilluns, aleshores els n�meros de setmana seran un n�mero de setmana ISO.
-Week starts on: La setmana comen�a
-time-format-help: Especifica el format d'hora que s'utilitza:<br /><i>12 hores:</i> Mostra les hores com a 3am, 8:30pm, etc.<br /><i>24 hores:</i> Mostra les hores com a 300, 2030, etc.
-Time format: Format d'hora
+Preview: Vista prèvia
+Site customization: Personalització del lloc
+custom-script-help: Permet l'entrada de text Javascript o full d'estil personalitzat que s'inserirà a la secció HTML "cap" de cada pàgina.
+Custom script/stylesheet: Script / full d'estil personalitzat
+custom-header-help: Permet incloure un fragment HTML personalitzat a la part superior de cada pàgina.
+Custom header: Capçalera personalitzada
+custom-trailer-help: Permet incloure un fragment HTML personalitzat al final de cada pàgina.
+Custom trailer: Remolc personalitzat
+enable-external-header-help: Permet carregar el tràiler personalitzat des d'un fitxer extern
+Allow external file for header/script/trailer: Permet un fitxer extern per a capçalera / script / tràiler
+Allow user to override header/trailer: Permetre que l'usuari anul·li la capçalera / el tràiler
+Date and Time: Data i hora
+server-tz-help: Especifica quantes hores cal ajustar el temps des de l’UTC fins al servidor.
+Server Timezone Selection: Selecció de zona horària del servidor
+tz-help: Especifica quantes hores cal ajustar el temps des de l’UTC fins a l’hora local.
+Default Client Timezone Selection: Selecció de zona horària per defecte del client
+display-general-use-gmt-help: Si està activat, les dates i hores habituals es mostraran com a GMT
+Display Common Use Date/Times as GMT: Mostra la data / hores d'ús comú com a GMT
+date-format-help: Especifica el format de data preferit.
+Date format: Format de data
+Small Task Date: Data de la tasca petita
+display-week-starts-on: Especifica el dia de la setmana que comença la setmana. Si s’especifica el dilluns, els números de la setmana seran els números de la setmana ISO.
+Week starts on: Comença la setmana
+display-weekend-starts-on: Estableix el dia de la setmana per començar els caps de setmana
+Weekend starts on: El cap de setmana comença
+time-format-help: Especifica quin format d’hora s’ha d’utilitzar:<br><em>12 hores:</em> Mostra les hores com a 3:00, 20:30, etc.<br><em>24 hores:</em> Mostra com 300 , 2030, etc.
+Time format: Format d’hora
 12 hour: 12 hores
 24 hour: 24 hores
+timed-evt-len-help: Especifica el mètode d'entrada per determinar la durada d'un esdeveniment temporitzat.
+Specify timed event length by: Especifiqueu la durada de l'esdeveniment temporitzat per
 Duration: Durada
-work-hours-help: Especifica l'interval de temps que es mostrar� a la visualitzaci� de dia.
+End Time: Temps esgotat
+work-hours-help: Especifica l'interval de temps que es mostrarà per a la visualització del dia.
 Work hours: Horari laboral
-From: Des de les
-to: a les
-preferred-view-help: Especifica la visualitzaci� per defecte (Dia, Setmana, Mes, o Any).
-Preferred view: Visualitzaci� preferida
-fonts-help: Especifica una llista de tipus de lletra del sistema que es vol fer servir (com ara "Arial,Helvetica")
+From: Des de
+to: a
+Appearance: Aspecte
+preferred-view-help: Especifica la visualització per defecte (Dia, Setmana, Mes o Any).
+Preferred view: Vista preferida
+Allow top menu: Permetre el menú superior
+Date Selectors position: Posició de selectors de dates
+menu-themes-help: Estableix els colors i l'estil del menú superior
+Menu theme: Tema del menú
+fonts-help: Especifica una llista de tipus de lletra del sistema a utilitzar (com ara "Arial, Helvetica")
 Fonts: Tipus de lletra
-display-weekends-help: Inclou caps de setmana quan es visualitzen les setmanes.
-display-week-number-help: Especifica si el n�mero de setmana (1-52) es mostra a la visualitzaci� de mes i a la de setmana.
-Display week number: Mostra n�mero de setmana
-display-desc-print-day-help: Inclou la descripci� dels esdeveniments a la versi� per imprimir de la visualitzaci� de dia.
-Display description in printer day view: Descripci� a la versi� per imprimir de la visualitzaci� de dia
-yearly-shows-events-help: En la visualitzaci� d'any, mostra en negreta els dies amb esdeveniments.
-allow-view-add-help: S'inclour� una icona '+' a les visualitzacions, permetent als usuaris afegir esdeveniments r�pidament als calendaris d'altres usuaris.
-Include add event link in views: Inclou a les visualitzacions enlla� per afegir esdeveniment
-allow-view-other-help: Especifica si un usuari pot visualitzar el calendari d'un altre usuari.
-Allow viewing other users calendars: Permet veure els calendaris d'altres usuaris
-require-approvals-help: Si est� activat, l'usuari ha d'aprovar l'esdeveniment abans que es mostri en el seu ( llevat que s'hagi activat Mostrar pendents d'aprovar). Fixeu-vos que configurar-ho a "No", no ocultar� les aprovacions per al calendari d'Acc�s P�blic (si el calendari d'Acc�s P�blic est� habilitat).
-Require event approvals: Requereix aprovaci� d'esdeveniments
-display-unapproved-help: Especifica si els esdeveniments pendents d'aprovaci� es mostren al calendari.<br /> Si s'ajusta a "S�", els esdeveniments pendents d'aprovaci� es mostraran al calendari (amb el text en un color diferent).<br /> Si s'ajusta a "No", aleshores cal aprovar abans els esdeveniments pendents abans que no es mostrin al calendari.
-Display unapproved: Mostra pendents d'aprovar
-conflict-check-help: Comprova els conflictes entre esdeveniments (dos esdeveniments programats per a la mateixa hora i la mateixa persona). Si ho configures com a "S�", podr�s planificar igualment dos esdeveniments alhora despr�s de confirmar un av�s. Si ho configures com a "no", no es comprovaran els possibles conflictes entre esdeveniments. Probablement vulguis posar "S�", a fi que es produeixin les comprovacions.
-Check for event conflicts: Comprova conflictes entre esdeveniments
-Yes: S�
+display-sm_month-help: Si està activat, mostra mesos petits en visualitzacions mensuals
+Display small months: Mostra mesos petits
+display-weekends-help: Incloeu els caps de setmana quan vegeu una setmana.
+Display weekends: Mostra els caps de setmana
+display-long-daynames-help: Si està activat, es mostren els noms de dies llargs
+Display long day names: Mostra noms de dies llargs
+display-alldays-help: Mostra els dies del mes anterior i el següent en visualitzacions de mes, omplint totes les cel·les.
+Display all days in month view: Mostra tots els dies a la vista mensual
+display-week-number-help: Especifica si el número de la setmana (1-52) s'ha de mostrar a la vista del mes i la vista de la setmana.
+Display week number: Mostra el número de la setmana
+display-desc-print-day-help: Incloeu descripcions d'esdeveniments a la versió per imprimir de la vista diària.
+Display description in printer day view: Mostra la descripció a la vista de dia de la impressora
+yearly-shows-events-help: A la visualització anual, mostreu els dies que contenen esdeveniments amb una lletra en negreta.
+Display days with events in bold in month and year views: Mostra dies amb esdeveniments en negreta a les visualitzacions de mes i any
+display-minutes-help: Si està activat, sempre es mostraran els minuts que acaben amb: 00
+Display 00 minutes always: Mostra sempre 00 minuts
+display-end-times-help: Mostra les hores de finalització de l'esdeveniment si es produeix un esdeveniment temporitzat
+Display end times on calendars: Mostra els horaris de finalització als calendaris
+allow-view-add-help: S'inclourà una icona "+" a les visualitzacions, que permetrà als usuaris afegir esdeveniments ràpidament als calendaris d'altres usuaris.
+Include add event link in views: Inclou l'enllaç d'afegir esdeveniment a les visualitzacions
+lunar-help: Si està activat, es mostraran petites icones que representen les fases lunars cada mes
+Display Lunar Phases in month view: Mostra les fases lunars a la vista mensual
+Restrictions: Restriccions
+allow-view-other-help: Especifica si un usuari pot veure el calendari d'un altre usuari.
+Allow viewing other users calendars: Permet visualitzar els calendaris d'altres usuaris
+require-approvals-help: Quan està activat, l’usuari ha d’aprovar un esdeveniment abans que es mostri al calendari (tret que estigui activada la pantalla no aprovada). Tingueu en compte que definiu-ho a "No" no s'apagaran les aprovacions per al calendari d'accés públic (si el calendari d'accés públic està activat).
+Require event approvals: Requereix aprovacions d'esdeveniments
+display-unapproved-help: Especifica si es mostren esdeveniments no aprovats al calendari.<br>Si es defineix a "Sí", els esdeveniments no aprovats es mostraran al calendari (amb un color de text diferent).<br>Si es defineix a "No", llavors els esdeveniments no aprovats s'han d'aprovar abans que es mostrin al calendari.
+Display unapproved: Visualització no aprovada
+conflict-check-help: Comproveu si hi ha conflictes d’esdeveniments (dos esdeveniments programats a la mateixa hora per a la mateixa persona). Si ho definiu com a "Sí", podreu programar dos esdeveniments al mateix temps després de confirmar una advertència. Si ho definiu com a "No", no es farà cap comprovació de conflictes. És probable que vulgueu establir-lo en "Sí", de manera que es produeix la comprovació de conflictes.
+Check for event conflicts: Comproveu si hi ha conflictes d’esdeveniments
+Yes: Sí
 No: =
-conflict-months-help: Si est� posada la comprovaci� de conflictes ("Comprova conflictes entre esdeveniments" est� configurat com a "No"), aqu� s'especifica el nombre de mesos endavant que cal fer aquesta comprovaci�. Si trobes que afegir esdeveniments triga molt a processar-se, redueix aquest n�mero.
-Conflict checking months: Mesos de comprovaci� de conflictes
-conflict-check-override-help: Permet als usuaris sobreescriure conflictes i programar dos o m�s esdeveniments alhora.
-Allow users to override conflicts: Permet els usuaris sobreescriure conflictes
-limit-appts-help: Permet que l'administrador del sistema pugui marcar a tot el sistema un l�mit per al nombre d'esdeveniments que cada usuari pugui tenir en un sol dia.
-Limit number of timed events per day: Nombre l�mit d'esdeveniments amb hora en un dia
-limit-appts-number-help: Especifica el nombre m�xim d'esdeveniments amb hora que un usuari pot tenir en un sol dia.
-Maximum timed events per day: M�xim d'esdeveniments amb hora en un dia
-disable-priority-field-help: Si es selecciona "S�", s'eliminar� el camp "Prioritat" de les p�gines d'informaci� de l'esdeveniment, tot oferint una interf�cie m�s simple per als novells.
+conflict-months-help: Si hi ha una comprovació de conflictes (l'opció "Comprova si hi ha conflictes d'esdeveniments" s'estableix a "No", s'especifica quants mesos en el futur hauríem de comprovar si hi ha conflictes. Si creieu que afegir esdeveniments triga molt a processar-se , reduïu aquest nombre.
+Conflict checking months: Mesos de control de conflictes
+conflict-check-override-help: Permet als usuaris anul·lar els conflictes d'esdeveniments i programar dos o més esdeveniments alhora.
+Allow users to override conflicts: Permetre als usuaris anul·lar els conflictes
+limit-appts-help: Permet a l’administrador del sistema establir un límit a tot el sistema pel que fa al nombre de cites que pot tenir un sol usuari cada dia.
+Limit number of timed events per day: Limiteu el nombre d'esdeveniments temporitzats per dia
+limit-appts-number-help: Especifica el nombre màxim d'esdeveniments temporitzats que pot tenir un usuari en un sol dia.
+Maximum timed events per day: Esdeveniments màxims temporitzats per dia
+crossday-help: Si està activat, els esdeveniments que abastin dies es mostraran en dies separats
+Disable Cross-Day Events: Desactiva els esdeveniments de diversos dies
+disable-location-field-help: Si seleccioneu "Sí", se suprimirà el camp "Ubicació" de les pàgines d'informació de l'esdeveniment
+Disable Location field: Desactiva el camp Ubicació
+disable-url-field-help: Si seleccioneu "Sí", se suprimirà el camp "URL" de les pàgines d'informació de l'esdeveniment
+Disable URL field: Desactiva el camp URL
+disable-priority-field-help: Si seleccioneu "Sí", s'eliminarà el camp "Prioritat" de les pàgines d'informació d'esdeveniments, proporcionant una interfície més senzilla per a principiants.
 Disable Priority field: Desactiva el camp Prioritat
-disable-access-field-help: Si es selecciona "S�", s'eliminar� el camp "Acc�s" de les p�gines d'informaci� de l'esdeveniment, tot oferint una interf�cie m�s simple per als novells.
-Disable Access field: Desactiva el camp Acc�s
-disable-participants-field-help: Si es selecciona "S�", s'eliminar� el camp "Participants" de les p�gines d'informaci� de l'esdeveniment, tot oferint una interf�cie m�s simple per als novells. Si habiliteu aquesta opci�, potser tamb� vulgueu desactivar el camp "Permet visualitzar els calendaris d'altres usuaris".
+disable-access-field-help: Si seleccioneu "Sí", s'eliminarà el camp "Accés" de les pàgines d'informació de l'esdeveniment, proporcionant una interfície més senzilla per a principiants.
+Disable Access field: Desactiva el camp d'accés
+disable-participants-field-help: Si seleccioneu "Sí", se suprimirà el camp "Participants" de les pàgines d'informació de l'esdeveniment, cosa que impedirà als usuaris afegir altres usuaris als seus esdeveniments. Si activeu aquesta opció, també podeu desactivar el camp "Permet visualitzar els calendaris d'altres usuaris".
 Disable Participants field: Desactiva el camp Participants
-disable-repeating-field-help: Si es selecciona "S�", s'eliminar� el camp "Repetici�" en afegir esdeveniments. Aix� facilitar� una interf�cie m�s simple per als novells.
-Disable Repeating field: Desactiva el camp Repetici�
-allow-html-description-help: Si est� habilitat, els usuaris poden introduir HTML al camp de descripci� de l'esdeveniment. Si no s'habilita, s'ignoraran les etiquetes HTML i es mostrar� com a text net. Av�s: Activar aquesta opci� permet els usuaris vincular imatges d'altres llocs web.
-Allow HTML in Description: Permet HTML a la Descripci�
-popup-includes-siteextras-help: Si est� habilitat, als missatges emergents es mostrar� la configuraci� de permetre personalitzar camps d'esdeveniment al fitxer site_extras.php.
-Display Site Extras in popup: Mostra els Extres del Lloc al requadre emergent
-remember-last-login-help: Quan est� habilitat, la identificaci� de l'usuari s'omplir� autom�ticament a la p�gina d'entrada (per� no la contrasenya), i es carregaran les prefer�ncies de l'usuari (incloent-hi les prefer�ncies de colors i idioma).
-Remember last login: Recorda la darrera identificaci�
-allow-public-access-help: Si est� activat, el calendari es pot fer servir com un calendari p�blic nom�s de lectura que no requereix identificaci� d'usuaris.
-Allow public access: Permetre l'acc�s p�blic
-public-access-view-others-help: En cas d'acc�s p�blic, s'especifica si l'usuari pot veure el calendari d'un altre usuari.
-Public access can view other users: L'acc�s p�blic pot visualitzar altres usuaris
-public-access-can-add-help: Si est� habilitat, els usuaris que accedeixen al sistema mitjan�ant l'Acc�s P�blic podran afegir nous esdeveniments, per� no es mostraran al calendari fins que un administrador l'aprovi.
-Public access can add events: Acc�s P�blic pot afegir esdeveniments
-public-access-add-requires-approval-help: Especifica si els esdeveniments afegits a trav�s del compte d'acc�s p�blic requereix aprovaci� abans de mostrar-se.
-Public access new events require approval: Cal aprovar els esdeveniments nous d'acc�s p�blic
-public-access-sees-participants-help: Si est� habilitat, els usuaris que accedeixen al calendari des del compte p�blic podran veure els participants de l'esdeveniment si en visualitzen els detalls.
-Public access can view participants: L'acc�s p�blic pot veure els participants
-groups-enabled-help: Habilita el suport de grups, permetent que els usuaris seleccionin usuaris per grups.
-Groups enabled: Grups habilitats
-user-sees-his-group-help: Si est� habilitat, els usuaris no veuran els usuaris de calendari que no estiguin almenys en un dels seus grups.
-User sees only his groups: L'usuari nom�s veu els seus grups
-nonuser-enabled-help: Si est� habilitat, els administradors tindran l'opci� d'afegir calendaris no d'usuari
-Nonuser enabled: Calendaris No d'Usuari Habilitats
-nonuser-list-help: On mostrar els calendaris no d'usuari a la llista de participants
-Nonuser list: Mostra la llista de participants a
-Enabled: Habilitat
-reports-enabled-help: Si est� habilitat, els usuaris veuran una secci� "Informes" al peu de cada p�gina i podran crear informes personalitzats. Addicionalment, els usuaris administradors poden crear informes globals que es mostraran al peu de les p�gines de tots els usuaris.
-Reports enabled: Informes habilitats
-subscriptions-enabled-help: Especifica si els usuaris remots es poden subscriure al calendari d'un usuari de WebCalendar, permetent-los veure els esdeveniments de l'usuari WebCalendar a la seva aplicaci� d'iCal (com ara l'iCal d'Apple o el Mozilla Calendar).
-Allow remote subscriptions: Permet subscripcions remotes
-categories-enabled-help: Habilita el suport per a les categories d'esdeveniments
-Categories enabled: Categories habilitades
-allow-external-users-help: Especifica si es pot afegir a un esdeveniment un no-usuari de calendari. Permet incloure com a participants d'un esdeveniment no-usuaris de calendari.
-Allow external users: Permet usuaris externs
-external-can-receive-notification-help: Quan s'habiliten els usuaris externs i l'�s de correu electr�nic, els usuaris externs poden rebre notificacions per correu electr�nic en afegir, actualitzar o esborrar un esdeveniment (si se'n facilita l'adre�a electr�nica).
-External users can receive email notifications: Els usuaris externs poden rebre notificacions per correu electr�nic
-external-can-receive-reminder-help: Quan els usuaris externs i l'�s de correu electr�nic estan habilitats, els usuaris externs poden rebre recordatoris per correu electr�nic (si es facilita l'adre�a electr�nica de l'usuari extern).
-External users can receive email reminders: Els usuaris externs poden rebre recordatoris per correu electr�nic
-email-enabled-help: Activa o desactiva tots els enviaments de correu electr�nic per a notificacions o recordatoris. Posa "No" si el teu servidor no est� configurat adequadament per enviar correu.
-Email enabled: Correu electr�nic habilitat
-email-default-sender: Especifica l'adre�a electr�nica que constar� com a remitent en enviar recordatoris.
-Default sender address: Adre�a remitent per defecte
-Default user settings: Par�metres usuari per defecte
-email-event-reminders-help: Especifica si s'envien o no recordatoris d'esdeveniments.
-Event reminders: Recordatoris d'esdeveniment
-email-event-added: Especifica si s'envien o no notificacions per correu electr�nic quan s'afegeixi un esdeveniment al teu calendari.
+disable-repeating-field-help: Si seleccioneu "Sí", s'eliminarà el camp "Repetint" quan s'afegeixen esdeveniments. Això proporcionarà una interfície més senzilla per a principiants.
+Disable Repeating field: Desactiva el camp Repetició
+allow-html-description-help: Si està activat, els usuaris poden introduir HTML al camp de descripció de l'esdeveniment. Si no està activat, les etiquetes HTML s'escaparan de manera que apareguin com a text pla. Advertiment: si activeu aquesta funció, els usuaris podran fer referència a imatges en altres llocs web.
+Allow HTML in Description: Permet HTML a la descripció
+Popups: Pop ups
+disable-popups-help: Desactiveu les finestres emergents de les visualitzacions del calendari
+Disable Pop-Ups: Desactiva les finestres emergents
+popup-includes-siteextras-help: Si està activat, permeteu que la configuració de camps d'esdeveniments personalitzats al fitxer site_extras.php es mostri a les finestres emergents de l'esdeveniment.
+Display Site Extras in popup: Mostra els extres del lloc en una finestra emergent
+popup-includes-participants-help: Si està activat, els participants es mostraran a les finestres emergents de l'esdeveniment.
+Display Participants in popup: Mostra els participants en una finestra emergent
+Miscellaneous: Divers
+remember-last-login-help: Quan estigui activat, s'iniciarà l'inici de sessió de l'usuari a la pàgina d'inici de sessió (però no la contrasenya) i es carregaran les preferències de l'usuari (inclosos els colors i la selecció d'idioma preferits).
+Remember last login: Recordeu l’últim inici de sessió
+summary_length-help: Longitud màxima de la Breu descripció a les vistes del calendari
+Brief Description Length: Breu descripció Longitud
+user_sort-help: Determina l'ordre de classificació per a llistes d'usuaris i no usuaris
+User Sort Order: Ordre d’ordenació de l’usuari
+Lastname, Firstname: Cognom Nom
+Firstname, Lastname: Nom cognom
+allow-public-access-help: Quan està activat, el calendari es pot utilitzar com a calendari públic de només lectura que no requereix que els usuaris iniciïn sessió.
+Allow public access: Permet l'accés públic
+public-access-default-visible: Els esdeveniments del calendari públic apareixeran automàticament a tots els calendaris dels usuaris
+Public access visible by default: Accés públic visible per defecte
+public-access-default-selected: En afegir un esdeveniment nou, l'usuari públic se seleccionarà per defecte com a participant.
+Public access is default participant: L’accés públic és el participant per defecte
+public-access-view-others-help: Quan accedeix al sistema amb accés públic, especifica si l'usuari pot veure el calendari d'un altre usuari del calendari.
+Public access can view other users: L’accés públic pot visualitzar altres usuaris
+public-access-can-add-help: Quan estigui activat, els usuaris que accedeixin al sistema mitjançant Accés públic podran afegir esdeveniments nous, però no apareixeran al calendari fins que un administrador no ho aprovi.
+Public access can add events: L’accés públic pot afegir esdeveniments
+public-access-add-requires-approval-help: Especifica si els esdeveniments afegits a través del compte d'accés públic requereixen aprovació abans de mostrar-se.
+Public access new events require approval: Els esdeveniments nous per accedir al públic requereixen aprovació
+public-access-sees-participants-help: Si està activat, els usuaris que accedeixin al calendari des del compte públic podran veure els participants de l'esdeveniment si veuen els detalls d'un esdeveniment.
+Public access can view participants: L’accés públic pot veure els participants
+public-access-override-help: Permet amagar noms i descripcions d'esdeveniments al calendari públic
+Override event name/description for public access: Substitueix el nom / descripció de l'esdeveniment per a l'accés públic
+public-access-override-text-help: El text que es mostrarà si l'opció anterior està activada. Si "No està disponible", es traduirà.
+Text to display to public access: Text per mostrar a l'accés públic
+public-access-captcha-help: Si està activat, els esdeveniments nous afegits per Public requereixen passar una validació CAPTCHA.
+Require CAPTCHA validation for public access new events: Requereix validació CAPTCHA per a l'accés públic a nous esdeveniments
+uac-enabled-help: Activa el control d'accés a nivell d'usuari
+User Access Control enabled: Control d'accés d'usuari habilitat
+groups-enabled-help: Permet l'assistència de grups, que permet als usuaris seleccionar usuaris per grups.
+Groups enabled: Grups activats
+user-sees-his-group-help: Si està activat, els usuaris no veuran usuaris del calendari que no formin part d'almenys en un dels seus grups.
+User sees only his groups: L'usuari només veu els seus grups
+nonuser-enabled-help: Si està activat, els administradors tindran l'opció d'afegir calendaris que no siguin usuaris
+Nonuser enabled: Calendaris per a no usuaris habilitats
+nonuser-list-help: On es mostren els calendaris de no usuaris a la llista de participants
+Nonuser list: Mostra a la llista de participants a
+Upcoming Events: Pròxims esdeveniments
+upcoming-events-help: Activa próximament.php
+Enabled: Activat
+upcoming-events-allow-override: Permetre el paràmetre d'usuari per a coming.php
+Allow user override: Permet la substitució de l'usuari
+upcoming-events-display-caticons: Inclou les icones de categoria a coming.php
+Display category icons: Mostra les icones de la categoria
+upcoming-events-display-layers: Mostra capes a próxim.php
+Display layers: Mostra capes
+upcoming-events-display-links: Mostra els enllaços a next.php
+Display links to events: Mostra enllaços a esdeveniments
+upcoming-events-display-popups: Mostra les finestres emergents d'esdeveniments a próxim.php
+Display event popups: Mostra les finestres emergents d'esdeveniments
+reports-enabled-help: Si està activat, els usuaris veuran una secció "Informes" a la part inferior de cada pàgina i se'ls permetrà crear informes personalitzats. A més, els usuaris administradors poden crear informes globals que apareixeran a la part inferior de totes les pàgines dels usuaris.
+Reports enabled: Informes activats
+subscriptions-enabled-help: Especifica si els usuaris remots poden subscriure's al calendari d'un usuari de WebCalendar, cosa que els permet veure els esdeveniments de l'usuari de WebCalendar a la seva aplicació habilitada per a iCal (com ara iCal d'Apple o Mozilla Calendar).
+Allow remote subscriptions: Permetre subscripcions remotes
+remotes-enabled-help: Permet als usuaris carregar fitxers ICS remots mitjançant URL
+Allow remote calendars: Permetre calendaris remots
+rss-enabled-help: Especifica si es pot obtenir el calendari d'un usuari a partir d'un canal RSS.
+Enable RSS feed: Activa el canal RSS
+categories-enabled-help: Permet l'assistència de categories d'esdeveniments.
+Categories enabled: Les categories estan activades
+icon_upload-enabled-help: Si està activat, els usuaris poden penjar icones de categoria
+Category Icon Upload enabled: S'ha activat la càrrega d'icones de categoria
+(Requires XXX folder to exist.): (Cal que existeixi la carpeta XXX.)
+display-tasks-help: Mostra una petita finestra de tasques al calendari mensual i diari
+Display small task list: Mostra la llista de tasques petites
+display-tasks-in-grid-help: Mostra les tasques als calendaris juntament amb els esdeveniments
+Display tasks in Calendars: Mostra les tasques als calendaris
+allow-external-users-help: Especifica si es pot afegir un usuari que no sigui del calendari a un esdeveniment. Això permet que els usuaris que no siguin calendari es mostrin com a participants de l'esdeveniment.
+Allow external users: Permetre usuaris externs
+external-can-receive-notification-help: Quan els usuaris externs estan habilitats i l'ús del correu electrònic està habilitat, els usuaris externs poden rebre notificacions per correu electrònic quan s'afegeixi, s'actualitzi o se suprimeixi l'esdeveniment (si es proporciona l'adreça electrònica de l'usuari extern).
+External users can receive email notifications: Els usuaris externs poden rebre notificacions per correu electrònic
+external-can-receive-reminder-help: Quan els usuaris externs estan habilitats i l'ús del correu electrònic està habilitat, els usuaris externs poden rebre recordatoris de correu electrònic (si es proporciona l'adreça de correu electrònic de l'usuari extern).
+External users can receive email reminders: Els usuaris externs poden rebre recordatoris per correu electrònic
+allow-self-registration-help: Permetre als usuaris nous registrar-se
+Allow self-registration: Permetre l’autoregistre
+use-blacklist-help: Limiteu l'accés a les funcions de WebCalendar en funció de l'adreça IP
+Restrict self-registration to blacklist: Restringeix l’autoregistre a la llista negra
+allow-self-registration-full-help: Permetre als usuaris nous que completin el procés d’autoregistre en línia
+Use self-registration email notifications: Genereu contrasenyes i envieu-les a usuaris nous
+allow-attachment-help: Permetre als usuaris afegir fitxers adjunts a esdeveniments.
+Allow file attachments to events: Permetre fitxers adjunts de fitxers a esdeveniments
+Admin and owner can always add attachments if enabled.: L'administrador i el propietari sempre poden afegir fitxers adjunts si estan activats.
+allow-comments-help: Permetre als usuaris afegir comentaris als esdeveniments.
+Allow comments to events: Permetre comentaris a esdeveniments
+Admin and owner can always add comments if enabled.: L'administrador i el propietari sempre poden afegir comentaris si estan activats.
+email-enabled-help: Activeu o desactiveu tots els enviaments de correu electrònic per a notificacions i recordatoris. Establiu-lo a "no", si el vostre servidor no està configurat correctament per enviar correu.
+Email enabled: Correu electrònic activat
+email-default-sender: Especifica l'adreça de correu electrònic que cal especificar com a remitent en enviar recordatoris.
+Default sender address: Adreça predeterminada del remitent
+email-mailer: Trieu el tipus de correu electrònic (SMTP, correu PHP, sendmail)
+Email Mailer: Correu electrònic
+email-smtp-host: Nom (s) d'amfitrió (s) de servidor (s) SMTP separats per comes
+SMTP Host name(s): Nom (s) d'amfitrió SMTP
+email-smtp-port: Número de port SMTP (normalment 25)
+SMTP Port Number: Número de port SMTP
+email-smtp-auth: Utilitzeu l’autenticació SMTP
+SMTP Authentication: Autenticació SMTP
+email-smtp-username: Nom d'usuari SMTP si utilitzeu l'autenticació
+SMTP Username: Nom d'usuari SMTP
+email-smtp-password: Contrasenya SMTP si utilitzeu l'autenticació
+SMTP Password: Contrasenya SMTP
+Default user settings: Configuració predeterminada de l'usuari
+email-format: Especifiqueu la preferència per als missatges HTML o de text pla
+Email format preference: Preferència de format de correu electrònic
+HTML: =
+Plain Text: Text simple
+email-include-ics: Incloeu un fitxer ICS iCalendar al missatge de correu electrònic
+Include iCalendar attachments: Incloeu fitxers adjunts d'iCalendar
+email-event-reminders-help: Especifica si cal enviar o no recordatoris d'esdeveniments.
+Event reminders: Recordatoris d'esdeveniments
+email-event-added: Especifica si cal enviar o no notificacions per correu electrònic quan s'afegeixi un esdeveniment al calendari.
 Events added to my calendar: Esdeveniments afegits al meu calendari
-email-event-updated: Especifica si s'envien o no notificacions per correu electr�nic quan s'actualitzi un esdeveniment al teu calendari.
+email-event-updated: Especifica si enviar o no notificacions per correu electrònic quan s'actualitzi un esdeveniment al calendari.
 Events updated on my calendar: Esdeveniments actualitzats al meu calendari
-email-event-deleted: Especifica si s'envien o no notificacions per correu electr�nic quan s'esborra un esdeveniment del teu calendari.
-Events removed from my calendar: Esdeveniments esborrats del meu calendari
-email-event-rejected: Especifica si s'envien o no notificacions per correu electr�nic quan un participant rebutgi un esdeveniment del teu calendari.
+email-event-deleted: Especifica si cal enviar o no notificacions per correu electrònic quan se suprimeixi un esdeveniment del calendari.
+Events removed from my calendar: Esdeveniments eliminats del meu calendari
+email-event-rejected: Especifica si enviar o no notificacions per correu electrònic quan un participant rebutgi un esdeveniment del vostre calendari.
 Event rejected by participant: Esdeveniment rebutjat pel participant
-Allow user to customize colors: Permet que l'usuari personalitzi els colors
+email-event-create: Especifica si el creador de les entrades rebrà un correu electrònic
+Event that I create: Esdeveniment que creo
+Color options: Opcions de color
+Allow user to customize colors: Permetre a l'usuari personalitzar els colors
+gradient-colors: Si està activat, s'utilitzen colors de degradat. Això pot afectar molt el rendiment.
+Enable gradient images for background colors: Activeu les imatges de degradat per als colors de fons
+Not available: No disponible
+Background Image options: Opcions de la imatge de fons
+bgimage-help: URL de la imatge de fons desitjada. Pot ser un enllaç relatiu.
+Background Image: Imatge de fons
+bgrepeat-help: Controla el comportament repetitiu de la imatge de fons.
+Background Repeat: Repetiu el fons
 
 ########################################
 # Page: adminhome.php
 #
 Assistants: Assistents
-Preferences: Prefer�ncies
+Preferences: Preferències
+Control Panel: Panell de control
 Users: Usuaris
 Account: Compte
 Categories: =
-Views: Visualitzacions
+Views: Vistes
 Layers: Capes
 Reports: Informes
 Delete Events: Suprimeix esdeveniments
 Activity Log: Registre d'activitats
-Public Preferences: Prefer�ncies p�bliques
-Unapproved Public Events: Esdeveniments p�blics pendents d'aprovar
+System Log: Registre del sistema
+Security Audit: Auditoria de seguretat
+Public Preferences: Preferències públiques
+Unapproved Public Events: Esdeveniments públics no aprovats
 Administrative Tools: Eines administratives
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Nom duplicat: "XXX".
+Username XXX already exists.: El nom d'usuari "XXX" ja existeix.
+Email address XXX already exists.: L'adreça de correu electrònic "XXX" ja existeix.
 
 ########################################
 # Page: approve_entry.php
 #
-Hello: Hola
-The subject was: L'assumpte era
-The description is: La descripci� �s
-Date: Data
-Time: Hora
+Additional Comments (optional): Comentaris addicionals (opcional)
+Approve and Send: Aprova i envia
+Approve and Exit: Aprova i surt
+(Your comments will be emailed to the event creator.): (Els vostres comentaris s'enviaran per correu electrònic al creador de l'esdeveniment.)
+Hello, XXX.: Hola, XXX.
+XXX has approved an appointment and added comments.: XXX ha aprovat una cita i ha afegit comentaris per part de XXX.
+Subject XXX: Assumpte: "XXX".
+Description XXX: Descripció: "XXX".
+Date XXX: Data: XXX
+Time XXX: Hora: XXX
+Comments XXX: Comentaris: XXX
+Approved w/Comments by XXX.: Aprovat amb comentaris de: XXX.
 
 ########################################
 # Page: assistant_edit.php
 #
-Admin mode: Mode administrador
-Your assistants: Els vostres assistents
+Admin mode: Mode d'administració
+Your assistants: Els vostres ajudants
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Error desconegut.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Error de programa: no s'ha especificat cap XXX.
+user: usuari
+year: curs
+month: mes
+day: dia
 
 ########################################
 # Page: category.php
 #
+Category Icon: Icona de categoria
 Global: =
-Category Name: Nom de categoria
+The permissions for the icons directory are set to read-only: Els permisos per al directori d'icones s'estableixen en només lectura.
+Category Name: Nom de la categoria:
 Color: =
+Remove Icon: Suprimeix la icona:
+Add Icon to Category: Afegeix una icona a la categoria
+Upload: Pujar
+GIF or PNG 6kb max: GIF o PNG com a màxim 6 KB
+Search for existing icons: Cerqueu icones existents
 Add: Afegeix
 Delete: Suprimeix
 Are you sure you want to delete this entry?: Esteu segur que voleu suprimir aquesta entrada?
-Make New Category: Afegir nova categoria
+Make New Category: Crea nova categoria
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: El nom de la categoria és obligatori
+File size exceeds maximum.: La mida del fitxer supera el màxim.
+File is not a GIF or PNG image: El fitxer no és una imatge GIF ni PNG
 
 ########################################
 # Page: catsel.php
 #
+AVAILABLE CATEGORIES: CATEGORIES DISPONIBLES
+ENTRY CATEGORIES: CATEGORIES D'ENTRADA
 Remove: Elimina
-Cancel: Cancel�la
+Global Category: Categoria global
+Cancel: Cancel · lar
+
+########################################
+# Page: colors.php
+#
+Add Custom: Afegeix personalitzat
+Basic Colors: Colors bàsics
+Current Color: Color actual
+Custom Colors: Colors personalitzats
+Old Color: Color antic
+
+########################################
+# Page: combo.php
+#
+Select None: No seleccioneu Cap
+Agenda: =
+Add Task: Afegeix una tasca
+Description: Descripció
+Date: Data
+Time: Temps
+Priority: Prioritat
+Access: Accés
+Created by: Creat per
+Updated: Actualitzat
+Participants: =
+Attachments: Arxius adjunts
+Comments: Comentaris
+Brief Description: Breu descripció
+Full Description: Descripció completa
+Category: Categoria
+Add event detail: Afegiu els detalls de l'esdeveniment
+Start Date: Data d'inici
+Due Date: Data de venciment
+Add task detail: Afegiu els detalls de la tasca
+All: Tots
+Error: =
+no response from server: cap resposta del servidor
+JSON error: Error JSON
+High: Alt
+Medium: Mitjà
+Low: baix
+Today: Avui
+Add Entry: Afegeix entrada
+Unnamed Event: Esdeveniment sense nom
+Unnamed Task: Tasca sense nom
+Refresh: Actualització
+Click to add entry: Feu clic per afegir l'entrada
+Name: Nom
+pm: =
+am: sóc
 
 ########################################
 # Page: del_entry.php
 #
-An appointment has been canceled for you by: S'ha cancel�lat una cita cancel�la per a tu per
+XXX has canceled an appointment.: XXX ha cancel·lat una cita.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Identificador de blob no vàlid
 
 ########################################
 # Page: docadd.php
 #
-Description: Descripci�
+Add Comment: Afegeix un comentari
+Add Attachment: Afegeix un fitxer adjunt
+Subject: Assignatura
+Comment: Comenta
+Upload file: Penja el document
+
+########################################
+# Page: docdel.php
+#
+Removed: Eliminat
 
 ########################################
 # Page: edit_entry.php
 #
-am: =
-pm: =
 days: dies
 hours: hores
 minutes: minuts
-Edit Entry: Edita Entrada
-Add Entry: Afegeix una entrada
-Participants: =
-brief-description-help: Aquest camp permet una descripci� breu (d'uns 20 car�cters) de l'esdeveniment. Aix� �s com es mostrar� l'esdeveniment en visualitzar el calendari.
-Brief Description: Descripci� breu
-full-description-help: Aqu� cal completar els detalls de l'esdeveniment. Es pot veure aquesta informaci� quan un usuari visualitza l'esdeveniment.
-Full Description: Descripci� completa
-access-help: Especifica el nivell d'acc�s de l'esdeveniment.<br /> <i>P�blic</i>: Tothom pot veure tots els detalls de l'esdeveniment.<br /><i>Confidencial</i>: Els altres poden veure la teva entrada per a aquella data i hora, per� no poden veure'n els detalls.
-Access: Acc�s
-priority-help: Especifica la prioritat de l'esdeveniment. Els esdeveniments de prioritat alta es mostraran en negreta.
-Priority: Prioritat
-High: Alta
-Medium: Mitjana
-Low: Baixa
+You are not authorized to edit this task.: No esteu autoritzat a editar aquesta tasca.
+is in a different timezone than you are. Currently: es troba en una zona horària diferent a la que sou. Actualment
+hour ahead of you: hora per davant
+hour behind you: hora darrere teu
+hours ahead of you: hores per davant
+hours behind you: hores enrere
+XXX is in a different timezone (ahead): (XXX es troba en una zona horària diferent; AAAA per davant de vosaltres.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX és en una zona horària diferent; AAAA darrere teu.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: El temps introduït aquí es basa en la vostra zona horària.
+Edit Entry: Edita l'entrada
+Details: Detalls
+Repeat: Repetiu
+Reminders: Recordatoris
+brief-description-help: Això hauria de proporcionar una descripció breu (uns 20 caràcters) de l'esdeveniment. Això representarà l'esdeveniment en visualitzar el calendari.
+full-description-help: Això hauria de completar els detalls de l'esdeveniment. Aquesta informació es pot veure quan un usuari veu l'esdeveniment.
+access-help: Especifica el nivell d'accés de l'esdeveniment. <ul> <li> Públic: tothom pot veure els detalls complets de l'esdeveniment.</li> <li> Confidencial: altres poden veure que teniu una entrada per a aquesta data i hora, però no els detalls de què es tracta.</li></ul>
+priority-help: Especifica la prioritat de l'esdeveniment. Els esdeveniments d'alta prioritat es mostraran en negreta.
 category-help: Especifica la categoria de l'esdeveniment.
-Category: Categoria
+completed-help: Data de finalització de la tasca. Activat només quan el percentatge de participants és igual al 100%.
+Date Completed: Data de finalització
+percent-help: Percentatge de realització de tasques per a aquest usuari
+Percent Complete: Percentatge complet
+All Percentages: Tots els percentatges
+location-help: Ubicació de l'esdeveniment
+Location: Ubicació
+url-help: URL de l'esdeveniment
 URL: =
 date-help: Especifica la data de l'esdeveniment.
-Untimed event: Esdeveniment sense hora
-Timed event: Esdeveniment amb hora
-All day event: Esdeveniment de dia complet
-Timezone Offset: Franja hor�ria
-time-help: Especifica l'hora de l'esdeveniment.<br />Seleccioneu "Esdeveniment amb hora" (per a un esdeveniment programat per a una hora determinada del dia), o b� "Esdeveniment sense hora" (per a un esdeveniment sense hora determinada (com ara un festiu), o b� "Esdeveniment dia complet" (per a un esdeveniment que ocupa tot el dia, com ara haver de sortir fora de l'oficina).
-duration-help: Especifica la durada (en hores:minuts) de l'esdeveniment.<br /><i>Aquest camp es pot deixar en blanc.</i>
-participants-help: Mostra la llista de participants en aquesta entrada.
-external-participants-help: Especifica una llista de participants per a l'esdeveniment que no s�n usuaris de calendari. S'indicaran un usuari per l�nia i s'en pot incloure una adre�a de correu electr�nic. Si s'especifica una adre�a electr�nica, l'usuari podr� rebre notificacions i recordatoris
+Untimed event: Esdeveniment sense temps
+Timed event: Esdeveniment temporitzat
+All day event: Esdeveniment durant tot el dia
+Timezone Offset: Desplaçament de la zona horària
+time-help: Especifica l'hora de l'esdeveniment. <ul> <li> "Esdeveniment temporitzat" (per a un esdeveniment programat per a una hora específica aquell dia)</li> <li> "Esdeveniment sense temps" (per a un esdeveniment que no té una hora (com un dia festiu) )</li> <li> "Esdeveniment tot el dia" (per a un esdeveniment que dura tot el dia (com estar fora de l'oficina)</li></ul>
+duration-help: Especifica la durada (en hores; minuts) de l'esdeveniment. <em>Aquest camp es pot deixar en blanc.</em>
+end-time-help: Especifica el temps que s'espera que finalitzi l'esdeveniment.
+Start Time: L'hora d'inici
+Due Time: En el moment oportú
+Site Extras: Extres del lloc
+avail_participants-help: Enumera els participants disponibles en aquesta entrada.
+Available: Disponible
+Find Name: Cerca el nom
+Resources: Recursos
+participants-help: Enumera els participants d'aquesta entrada.
+Selected: Seleccionat
+Availability: Disponibilitat
+external-participants-help: Especifica una llista de participants de l'esdeveniment que no són usuaris del calendari. Els usuaris haurien d’enumerar-ne un per línia i poden incloure una adreça de correu electrònic. Si s’especifica una adreça de correu electrònic, l’usuari pot rebre notificacions i recordatoris.
 External Participants: Participants externs
-repeat-type-help: Seleccioneu amb quina assidu�tat caldria repetir l'esdeveniment. <i>Mensualment (per dia)</i> permet repetir un esdeveniment cada primer dilluns de mes, 3r dijous de mes, etc. <i>Mensualment (per data)</i> permet repetir un esdeveniment el mateix dia de cada mes.
-Daily: Di�riament
+repeat-type-help: Seleccioneu amb quina freqüència s'ha de repetir l'esdeveniment.
+Daily: Diàriament
 Weekly: Setmanalment
-Monthly: Mensualment
-by day: per dia
+Monthly: Mensual
+by day: de dia
 by date: per data
+by position: per posició
+Monthly (by day): Mensual (de dia)
+Monthly (by date): Mensual (per data)
+Monthly (by position): Mensual (per posició)
 Yearly: Anualment
-repeat-end-date-help: Especifica la data fins a la qual cal repetir l'esdeveniment.
-Use end date: Utilitza data final
-repeat-frequency-help: Especifica amb quina assidu�tat cal repetir l'esdeveniment. El valor per defecte 1 indica que es repetir� cada vegada. Si s'especifica 2, l'esdeveniment es repetir� cada dues setmanes (si el <i>Tipus de repetici�</i> est� configurat com a <i>Setmanalment</i>), cada dos mesos (si el <i>Tipus de repetici�</i> est� configurat com a <i>Mensualment</i>), etc.
-Frequency: Freq��ncia
-All: Totes
-Send Reminder: Envia recordatori
-Delete entry: Suprimeix l'entrada
-You are not authorized to edit this entry.: No tens autoritzaci� per editar aquesta entrada
+Manual: =
+Expert Mode: Mode expert
+repeat-end-date-help: Especifica la data fins a la qual s'ha de repetir l'esdeveniment.
+Ending: Acabant
+Forever: Per sempre
+Use end date: Utilitzeu la data de finalització
+Number of times: Nombre de vegades
+repeat-frequency-help: Especifica la freqüència amb què s’ha de repetir l’esdeveniment.
+Frequency: Freqüència
+Weekdays Only: Només entre setmana
+Week Start: Inici de la setmana
+repeat-bydayextended-help: Permet seleccionar la data segons el dia de la setmana.
+ByDay: =
+repeat-month-help: Especifica en quins mesos s’ha de repetir l’esdeveniment.
+ByMonth: Per mes
+repeat-bysetpos-help: Permet seleccionar la data segons la posició del mes.
+BySetPos: =
+repeat-bymonthdayextended-help: Permet seleccionar la data en funció de la data.
+ByMonthDay: =
+repeat-byweekno-help: Permet a l'usuari especificar una llista de setmanes per repetir l'esdeveniment (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Permet a l'usuari especificar una llista de dies de l'any per repetir l'esdeveniment (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Dies addicionals en què aquest esdeveniment s'hauria de fer o no.
+Exclusions: =
+Inclusions: =
+Add Exception: Afegeix una excepció
+Add Inclusion: Afegiu inclusió
+Delete Selected: Suprimeix els seleccionats
+Send Reminder: Enviar recordatori
+When: Quan
+Use Date/Time: Utilitzeu Data / Hora
+Use Offset: Utilitzeu Offset
+Before: Abans
+After: Després
+Start: Començar
+End/Due: Final / Venciment
+Times: Temps
+Every: Cada
+CAPTCHA Warning: Advertiment:  No es pot utilitzar CAPTCHA sense l'extensió GD de PHP.<br>
+Delete entry: Esborra l'entrada
+You are not authorized to edit this entry.: No teniu autorització per editar aquesta entrada.
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: T'ha estat assignada una nova cita per
-An appointment has been updated by: Una cita ha estat actualitzada per
-The following conflicts with the suggested time: Hi ha un conflicte amb l'hora suggerida
-Please look on: Sisplau comprova
-to accept or reject this appointment: per acceptar o rebutjar aquesta cita
-to view this appointment: per visualitzar aquesta cita
-Scheduling Conflict: Conflicte en la planificaci�
-Your suggested time of: La teva hora suggerida de
-conflicts with the following existing calendar entries: provoca un conflicte amb les seg�ents entrades actuals del calendari
-
-########################################
-# Page: edit_layer.php
-#
-Add Layer: Afegeix una capa
-Edit Layer: Edita la capa
-Source: Font
-Duplicates: Duplicats
-Show layer events that are the same as your own: Mostra els esdeveniments de capa que coincideixen amb els teus
-Add to My Calendar: Afegeix al meu Calendari
-Delete layer: Suprimeix la capa
-
-########################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself.: No pots crear una capa per a tu mateix
-You can only create one layer for each user.: Nom�s es pot crear una capa per usuari
+XXX has made a new appointment.: XXX ha fet una nova cita.
+XXX has updated an appointment.: XXX ha actualitzat una cita.
+Security violation!: Infracció de la seguretat
+You must enter the anti-spam text on the previous page.: Heu d'introduir el text antispam a la pàgina anterior.
+The following conflicts with the suggested time: Els següents conflictes amb el temps suggerit
+User removed from participants list.: Usuari eliminat de la llista de participants.
+Please look on XXX to accept or reject this appointment.: Consulteu XXX per acceptar o rebutjar aquesta cita.
+Please look on XXX to view this appointment.: Consulteu XXX per veure aquesta cita.
+Scheduling Conflict: Programació de conflictes
+Your suggested time of: La vostra hora suggerida de
+conflicts with the following existing calendar entries: entra en conflicte amb les següents entrades de calendari existents
 
 ########################################
 # Page: edit_nonusers.php
 #
-NONUSER_PREFIX not set: No s'ha configurat NONUSER_PREFIX a config.php.
-Add User: Afegir usuari
-Edit User: Edita usuari
-Calendar ID: ID de Calendari
+NONUSER_PREFIX not set: NONUSER_PREFIX no s'ha definit a "config.php".
+word characters only: (només pot contenir caràcters de paraules; [a-zA-Z_0-9])
+Add User: Afegeix un usuari
+Edit User: Edita l'usuari
+Calendar ID: Identificador de calendari
 First Name: Nom
 Last Name: Cognom
+Is public calendar: És calendari públic
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Error de base de dades
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Afegiu un calendari remot
+Edit Remote Calendar: Edita el calendari remot
+Create Layer: Crea una capa
+Reload: Recarregar
+Required to View Remote Calendar: Obligatori per visualitzar el calendari remot
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: =
-Import Results: Importar resultats
+Import Results: Importa els resultats
 Events successfully imported: Esdeveniments importats correctament
+Create a new layer to view this calendar.: Creeu una capa nova per veure aquest calendari.
 Errors: =
-There was an error parsing the import file or no events were returned.: S'ha produ�t un error en processar el fitxer d'importaci� o no s'ha recuperat cap esdeveniment
+There was an error parsing the import file or no events were returned.: S'ha produït un error en analitzar el fitxer d'importació o no s'han retornat esdeveniments.
 
 ########################################
 # Page: edit_report.php
 #
-Tomorrow: Dem�
-Today: Avui
+Tomorrow: Demà
 Yesterday: Ahir
 Day before yesterday: Abans d'ahir
-Next week: Propera setmana
+Next week: Pròxima setmana
 This week: Aquesta setmana
-Last week: Setmana passada
-Week before last: Setmana abans de la darrera
-Next week and week after: Propera setmana i la seg�ent
-This week and next week: Aquesta setmana i la seg�ent
-Last week and this week: Setmana passada i aquesta
-Last two weeks: Les darreres dues setmanes
-Next month: Mes vinent
+Last week: La setmana passada
+Week before last: Setmana abans de l’última
+Next week and week after: La setmana que ve i la setmana següent
+This week and next week: Aquesta setmana i la propera
+Last week and this week: La setmana passada i aquesta setmana
+Last two weeks: Darreres dues setmanes
+Next month: El mes que ve
 This month: Aquest mes
-Last month: Mes passat
-Month before last: Mes abans de l'�ltim
-Next year: Any vinent
+Last month: El mes passat
+Month before last: Mes abans de l’últim
+Next year: L'any que vé
 This year: Aquest any
-Last year: Any passat
-Year before last: Any abans de l'�ltim
-Invalid report id.: Id d'informe inv�lida
+Last year: L'any passat
+Year before last: Any abans de l’últim
+Next 14 days: Els propers 14 dies
+Next 30 days: Els propers 30 dies
+Next 60 days: Els propers 60 dies
+Next 90 days: Els propers 90 dies
+Next 180 days: Els propers 180 dies
+Next 365 days: Els propers 365 dies
+Invalid report id XXX.: Identificador d'informe no vàlid: "XXX".
 Unnamed Report: Informe sense nom
-Add Report: Afegir Informe
-Edit Report: Edita Informe
-Report name: Informe Program class as used by the window manager
+Add Report: Afegeix informe
+Edit Report: Edita l'informe
+Report name: Nom de l'informe
 User: Usuari
 Current User: Usuari actual
-Include standard header/trailer: Inclou encap�alament/peu est�ndard
-Include previous/next links: Inclou enlla�os anterior/seg�ent
+Include link in menu: Inclou l'enllaç al menú
+Include standard header/trailer: Incloeu capçalera / tràiler estàndard
+Include previous/next links: Incloeu enllaços anteriors / següents
 Include empty dates: Inclou dates buides
-Date range: Abast de data
+Date range: Interval de dates
 Template variables: Variables de plantilla
-Page template: Plantilla de p�gina
+Page template: Plantilla de pàgina
 Day template: Plantilla de dia
 Event template: Plantilla d'esdeveniment
 Are you sure you want to delete this report?: Esteu segur que voleu suprimir aquest informe?
@@ -432,382 +802,702 @@ Are you sure you want to delete this report?: Esteu segur que voleu suprimir aqu
 ########################################
 # Page: edit_report_handler.php
 #
-Variable N not found: No s'ha trobat la variable N
+No such report id XXX.: No hi ha cap identificador d'informe: "XXX".
+Variable XXX not found.: No s'ha trobat la variable XXX.
 
 ########################################
 # Page: edit_template.php
 #
-Edit Custom Header: Edita Encap�alament Personalitzat
-Edit Custom Script/Stylesheet: Edita Script/Full d'estil personalitzat
-Edit Custom Trailer: Edita Peu Personalitzat
+Edit Custom Header: Edita la capçalera personalitzada
+Edit Custom Script/Stylesheet: Editeu un guió personalitzat / full d'estils
+Edit Custom Trailer: Edita el tràiler personalitzat
 
 ########################################
 # Page: edit_user.php
 #
 Username: Nom d'usuari
-E-mail address: Adre�a electr�nica
+E-mail address: Correu electrònic
 Password: Contrasenya
-again: una altra vegada
-Disabled for demo: Inhabilitat per a la demo
+again: de nou
+Disabled for demo: Desactivat per a la demostració
+Are you sure you want to delete this user?: Esteu segur que voleu suprimir aquest usuari?
 Change Password: Canvia la contrasenya
-New Password: Nova contrasenya
-Set Password: Defineix la contrasenya
+New Password: nova contrasenya
+Set Password: Estableix la contrasenya
 
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported.: L'eliminaci� d'usuaris no est� suportada
-The passwords were not identical.: Les contrasenyes no eren id�ntiques
-You have not entered a password.: No has introdu�t cap contrasenya
+Deleting users not supported.: La supressió d'usuaris no és compatible.
+The passwords were not identical.: Les contrasenyes no eren idèntiques.
+You have not entered a password.: No heu introduït cap contrasenya.
+Username cannot be blank.: El nom d'usuari no pot estar en blanc.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: No autoritzat
 
 ########################################
 # Page: export.php
 #
 Export: Exporta
-Export format: Format d'exportaci�
+Export format: Format d’exportació
+Include all layers: Inclou totes les capes
+Include deleted entries: Inclou les entrades suprimides
 Export all dates: Exporta totes les dates
-Start date: Data inicial
-End date: Data final
+Start date: Data d'inici
+End date: Data de finalització
 Modified since: Modificat des de
 
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect.: format d'exportaci� no definit o incorrecte
+export format not defined or incorrect.: format d’exportació no definit o incorrecte.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: No s'ha especificat cap usuari.
 
 ########################################
 # Page: groups.php
 #
-Add New Group: Afegeix grup nou
+Add New Group: Afegeix un grup nou
 
 ########################################
 # Page: group_edit.php
 #
 Unnamed Group: Grup sense nom
 Add Group: Afegeix un grup
-Edit Group: Edita Grup
-Group name: Nom de grup
-Updated: Actualitzat
-Created by: Creat per
+Edit Group: Edita el grup
+Group name: Nom del grup
 
 ########################################
 # Page: group_edit_handler.php
 #
-You must specify a group name: Cal especificar un nom de grup
+You must specify a group name: Heu d'especificar un nom de grup
 
 ########################################
 # Page: help_admin.php
 #
-Auto-refresh calendars: Auto-refrescament de calendaris
-auto-refresh-help: Si est� activat, les p�gines per a visualitzaci� de dia, setmana, mes, i amb la llista de pendents d'aprovar es refrescaran totes peri�dicament.
-Auto-refresh time: Interval d'auto-refrescament
-auto-refresh-time-help: Si l'auto Auto-refrescament est� habilitat, aqu� s'especifica l'interval entre cada refrescament.
-Display days with events in bold in year view: Mostra en negreta els esdeveniments en la visualitzaci� d'any
-Display weekends in week view: Caps de setmana a la visualitzaci� de setmana
+Auto-refresh calendars: Actualitzeu automàticament els calendaris
+auto-refresh-help: Quan estigui activat, la vista de dia, la de setmana, la de mes i la llista de pàgines no aprovades es renovaran automàticament periòdicament.
+Auto-refresh time: Temps d’actualització automàtica
+auto-refresh-time-help: Si l'actualització automàtica està habilitada, s'especifica el temps entre cada actualització.
+Display days with events in bold in year view: Mostra dies amb esdeveniments en negreta a la vista d'any
+Display weekends in week view: Mostra els caps de setmana en vista de setmana
 Time interval: Interval de temps
-time-interval-help: Especifica la durada dels blocs horaris en la visualitzaci� de setmana.
-Nonuser: Calendaris no d'usuari
-colors-help: Cal especificar tots els colors en format hexadecimal "#RRGGBB" en qu� "RR" �s el valor hexadecimal per al vermell, "GG" el valor per al verd, i "BB" per al blau.
+time-interval-help: Especifica el temps que duraran els blocs de temps a la vista setmanal i visualització diària.
+Nonuser: Calendaris per a no usuaris
+user-customize-color: Especifica si els usuaris poden modificar el seu propi esquema de colors.
+enable-gradient-help: Utilitzeu colors degradats per als fons de les cel·les.
+Manually entering color values: Introducció manual de valors de color
+colors-help: Tots els colors s’han d’especificar en format hexadecimal "#RRGGBB" on "RR" és el valor hexadecimal del vermell, "GG" és el valor hexadecimal del verd i "BB" és el valor hexadecimal del blau.
 
 ########################################
 # Page: help_bug.php
 #
-Report Bug: Notifica l'error
+Report Bug: Informa d'un error
+Please include all the information below when reporting a bug.: Si us plau, incloeu tota la informació següent quan informeu d’un error.
+Also, please use English rather than XXX.: A més, utilitzeu  anglès  en lloc de XXX. 
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Documentació del calendari web
+Currently in English only.: Actualment només en anglès.
 
 ########################################
 # Page: help_edit_entry.php
 #
-Adding/Editing Calendar Entries: Afegir/Editar entrades de calendari
-Repeat Type: Tipus de repetici�
-Repeat End Date: Data final de repetici�
-Repeat Day: Dia de repetici�
-repeat-day-help: Especifica quins dies de la setmana cal repetir l'esdeveniment Aquest camp nom�s s'ha de fer servir quan <i>Tipus de repetici�</i> est� configurat com a <i>Setmanalment</i>.
+Adding/Editing Calendar Entries: Afegir / editar entrades de calendari
+Repeat Type: Repetiu el tipus
+For More Information...: Per obtenir més informació ...
+Repeat End Date: Repetiu la data de finalització
+Repeat Day: Repetiu el dia
+repeat-day-help: Especifica els dies de la setmana que s'ha de repetir l'esdeveniment.
 
 ########################################
 # Page: help_import.php
 #
-Import: Importa
+Import: Importar
 Palm Desktop: =
-This form will allow you to import entries from the Palm Desktop Datebook.: Aquest formulari et permet importar entrades des del Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Hauria d'estar en el teu directori Palm a <tt>datebook/datebook.dat</tt> en un subdirectori amb el teu nom d'usuari.
-The following entries will not be imported: Les entrades seg�ents no s'importaran
+allow you to import entries from the Palm...: Aquest formulari us permetrà importar entrades del registre de dates de Palm Desktop. Hauria de trobar-se al directori Palm de la databook / datebook.dat d’un subdirectori anomenat pel vostre nom d’usuari.
+The following entries will not be imported: No s’importaran les entrades següents:
 Entries older than the current date: Entrades anteriors a la data actual
-Entries created in the Palm Desktop...: Entrades creades al Palm Desktop que no han estat sincronitzades mitjan�ant HotSync
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Qualsevol cosa importada des del Palm quedar� sobreescrita durant la propera importaci� (llevat que ja s'hagi superat la data de l'esdeveniment).
-Therefore, updates should be made in the Palm Desktop.: Per tant, caldria realitzar les actualitzacions al Palm Desktop.
+Entries created in the Palm Desktop...: Entrades creades al Palm Desktop que no han estat HotSync'd
+Anything imported from Palm...: Qualsevol cosa importada de Palm se sobreescriurà durant la següent importació (tret que hagi passat la data de l'esdeveniment). Per tant, les actualitzacions s’han de fer a Palm Desktop.
 vCal: =
-This form will import vCalendar (.vcs) 1.0 events.: Aquest formulari importa esdeveniments de vCalendar 1.0 (.vcs).
-The following formats have been tested: S'han comprovat els formats seg�ents
-This form will import iCalendar (.ics) events.: Aquest formulari importa esdeveniments d'iCalendar (.ics)
-Enabling: Activa
-Overwrite Prior Import: Sobreescriu Importaci� Pr�via
+This form will import vCalendar (.vcs) 1.0 events.: Aquest formulari importarà esdeveniments vCalendar (.vcs) 1.0.
+The following formats have been tested: S'han provat els formats següents:
+This form will import iCalendar (.ics) events.: Aquest formulari importarà esdeveniments iCalendar (.ics).
+Enabling: Habilitant
+Overwrite Prior Import: Sobreescriu la importació anterior
+will cause events imported previously...: farà que els esdeveniments importats anteriorment, que utilitzen el mateix UID que un esdeveniment del fitxer d'importació nou, es marquin com a suprimits. Això hauria de permetre importar un fitxer iCalendar actualitzat sense crear duplicats.
 
 ########################################
 # Page: help_index.php
 #
-Help Index: �ndex de l'ajuda
+Help Index: Índex d’ajuda
+About WebCalendar: Quant a WebCalendar
 
 ########################################
 # Page: help_layers.php
 #
-Add/Edit/Delete: Afegeix/Edita/Suprimeix
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: En clicar l'enlla� Edita Capes a la secci� d'administraci� al peu de la p�gina podr�s afegir/editar/suprimir capes.
-The text color of the new layer that will be displayed in your calendar.: El color de text de la nova capa que es mostrar� al teu calendari.
-Disabling: Desactiva
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Pitja l'enlla� Desactivar Capes a la secci� d'administraci� al peu de la p�gina a fir de desactivar les capes.
-If checked, events that are duplicates of your events will be shown.: Si est� activat, es mostraran els esdeveniments coincidents.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Pitja l'enlla� Activar Capes a la secci� d'administraci� al peu de la p�gina a fir de activar les capes.
-Specifies the user that you would like to see displayed in your calendar.: Especifica l'usuari que t'agradaria que es mostr�s al teu calendari.
+Layers are useful for displaying...: Les capes són útils per mostrar els esdeveniments d'altres usuaris al vostre propi calendari. Podeu especificar l’usuari i el color en què es mostraran els esdeveniments.
+Add/Edit/Delete: Afegeix / Edita / Suprimeix
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: En fer clic a l’enllaç Edita capes de la secció d’administració de la part inferior de la pàgina, podreu afegir / editar / eliminar capes.
+The text color of the new layer that will be displayed in your calendar.: El color del text de la nova capa que es mostrarà al calendari.
+Disabling: Desactivant
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Premeu l’enllaç Desactiva capes a la secció d’administrador a la part inferior de la pàgina per desactivar les capes.
+Duplicates: Duplicats
+If checked, events that are duplicates of your events will be shown.: Si està marcat, es mostraran els esdeveniments que són duplicats dels vostres esdeveniments.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Premeu l'enllaç Habilita capes a la secció d'administrador a la part inferior de la pàgina per activar les capes.
+Source: Font
+Specifies the user that you would like to see displayed in your calendar.: Especifica l'usuari que voleu que es mostri al calendari.
 
 ########################################
 # Page: help_pref.php
 #
 Default Category: Categoria per defecte
-default-category-help: Especifica la categoria per defecte de cada nou esdeveniment.
-When I am the boss: Quan s�c <i>qui talla el bacall�</i>
-Email me event notification: Notificaci� per correu electr�nic
-I want to approve events: Vull aprovar els esdeveniments
-Subscribe/Publish: Subscriu-te/Publica
-allow-remote-subscriptions-help: Especifica si els usuaris remots es poden subscriure al teu calendari, permetent-los de veure el teu calendari amb una aplicaci� habilitada per a iCal (com ara l'Ical d'Apple o el Mozilla Calendar).
-remote-subscriptions-url-help: Mostra la URL que haurien de fer servir els usuaris remots per subscriure's al teu calendari.
+default-category-help: Especifica la categoria a la qual un esdeveniment nou hauria de ser predeterminat.
+When I am the boss: Quan sóc el cap
+Email me event notification: Envieu-me per correu electrònic una notificació d’esdeveniment
+email-boss-notifications-help: Especifica si els caps reben correus electrònics com a notificacions d'esdeveniments.
+I want to approve events: Vull aprovar esdeveniments
+boss-approve-event-help: Especifica si el cap haurà d'aprovar els esdeveniments afegits pels assistents.
+Subscribe/Publish: Subscriure / Publicar
+Allow remote publishing: Permet la publicació remota
+allow-remote-publishing-help: Especifica si un client iCal remot pot publicar esdeveniments de nou a WebCalendar
+remote-publishing-url-help: Mostra l'URL que s'ha d'utilitzar a l'aplicació client iCal tant per subscriure's com per publicar-los de nou a WebCalendar.
+allow-remote-subscriptions-help: Especifica si els usuaris remots es poden subscriure al vostre calendari, cosa que els permet veure els vostres esdeveniments en una aplicació compatible amb iCal (com ara iCal d'Apple o Mozilla Calendar).
+remote-subscriptions-url-help: Mostra l'URL que els usuaris remots han d'utilitzar per subscriure's al vostre calendari.
+Enable FreeBusy publishing: Activa la publicació de FreeBusy
+freebusy-enabled-help: Especifica si es pot obtenir el temps disponible d'un usuari mitjançant l'estàndard iCal FreeBusy.
+freebusy-url-help: L'URL per accedir a la llista FreeBusy de l'usuari
+rss-feed-url-help: L'URL per accedir al canal RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Permet controlar bé l'accés i els permisos de l'usuari. Els usuaris també poden concedir permís per defecte i per autorització individual si l'administrador ho autoritza.
+If disabled, this user cannot send you emails.: Si està desactivat, aquest usuari no us pot enviar correus electrònics.
+If disabled, this user cannot see you in the participants list.: Si està desactivat, aquest usuari no us podrà veure a la llista de participants.
+If enabled, this user cannot view the details of any of your entries.: Si està activat, aquest usuari no podrà veure els detalls de cap de les vostres entrades.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Publicació desactivada (administrador)
+Publishing Disabled (User): Publicació desactivada (usuari)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Feu clic per seleccionar
+Current Icons on Server: Icones actuals al servidor
 
 ########################################
 # Page: import.php
 #
-Disabled: Inhabilitat
-Exclude private records: Exclou registres privats
+import from file: importació de fitxer
+Disabled: Desactivat
+Import format: Format d’importació
+Exclude private records: Exclou els registres privats
+Repeated items are imported separately. Prior imports are not overwritten.: Els articles repetits s’importen per separat. Les importacions anteriors no se sobreescriuen.
 
 ########################################
 # Page: import_handler.php
 #
-Events from prior import marked as deleted: Esdeveniments de la importaci� anterior marcats com a eliminats
-Conflicting events: Esdeveniments en conflicte
-The import file contained no data.: El fitxer d'importaci� no cont� cap dada
+No file: Cap fitxer
+Error deleting palm events from webcalendar.: Error en suprimir esdeveniments palm del calendari web.
+Events from prior import marked as deleted: Esdeveniments de la importació anterior marcats com a suprimits
+Conflicting events: Esdeveniments conflictius
+The import file contained no data.: El fitxer d'importació no contenia dades.
 
 ########################################
 # Page: layers.php
 #
+Are you sure you want to delete this layer?: Esteu segur que voleu suprimir aquesta capa?
+Delete layer: Suprimeix la capa
+Edit layer: Edita la capa
+Enable layers: Activa les capes
 Layer: Capa
-Edit layer: Edita capa
-Are you sure you want to delete this layer?: Esteu segur que voleu suprimir aquest capa?
+Layers are currently disabled.: Les capes estan desactivades actualment.
+Layers are currently enabled.: Les capes estan activades actualment.
+Click to modify layers settings for XXX: Feu clic aquí per modificar la configuració de capes del calendari XXX.
 Disable Layers: Desactiva les capes
-Add layer: Afegeix capa
+Add layer: Afegiu capa
+Add Layer: Afegeix capa
+Edit Layer: Edita la capa
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: No es pot actualitzar la preferència
+Invalid entry id.: Identificador d'entrada no vàlid.
+You cannot create a layer for yourself.: No podeu crear cap capa per vosaltres mateixos.
+You can only create one layer for each user.: Només podeu crear una capa per a cada usuari.
 
 ########################################
 # Page: list_unapproved.php
 #
-Approve/Confirm: Aprova/Confirma
-Reject: Rebutja
-View this entry: Visualitza aquesta entrada
-Approve this entry?: Vols aprovar aquesta entrada?
-Reject this entry?: Rebutges aquesta entrada?
+Approve/Confirm: Aprova / Confirma
+Approve Selected: Aprova els seleccionats
+Check All: Marqueu-ho tot
+Emails Will Not Be Sent: No s’enviaran correus electrònics
+Reject Selected: Rebutja la selecció
+Reject: Rebutjar
+Uncheck All: Desmarqueu-ho tot
+View this entry: Veure aquesta entrada
+No unapproved entries for XXX.: No hi ha entrades no aprovades per a: "XXX".
+Unapproved Entries: Entrades no aprovades
+Approve this entry?: Voleu aprovar aquesta entrada?
+Reject this entry?: Voleu rebutjar aquesta entrada?
+Approve Selected entries?: Voleu aprovar les entrades seleccionades?
+Reject Selected entries?: Voleu rebutjar les entrades seleccionades?
 
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: Cal introduir un usuari i contrasenya
-Save login via cookies so I dont have to login next time.: Desa la identificaci� mitjan�ant galetes per no haver d'introduir-ho la propera vegada
-Login: Entrada
-Access public calendar: Calendari d'acc�s p�blic
-cookies-note: <b>Nota:</b>: Aquesta aplicaci� requereix tenir les galetes habilitades.
+You must enter a login and password.: Heu d'introduir un inici de sessió i una contrasenya.
+Save login via cookies so I dont have to login next time.: Deseu l'inici de sessió mitjançant galetes, de manera que no he d'iniciar sessió la propera vegada
+Login: iniciar Sessió
+public: públic
+Access XXX calendar: Accediu al calendari XXX
+cookies-note: Nota: Aquesta aplicació requereix que s’habilitin les cookies.
 
 ########################################
 # Page: login.php
 #
-Invalid login: Usuari inv�lid
+Illegal characters in login XXX.: Caràcters il·legals a l'inici de sessió XXX.
+Invalid login: Accés incorrecte
+Activity login failure: Nom d'usuari: "XXX", IP: "AAAA".
+Error XXX: =
+You have been logged out.: Heu tancat la sessió.
+Access public calendar: Accediu al calendari públic
+Not yet registered? Register here!: Encara no està registrat? Registra't aquí!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: No hi ha cap calendari no usuari: "XXX".
+This Calendar is not Public.: Aquest calendari no és públic.
 
 ########################################
 # Page: nonusers.php
 #
-Add New NonUser Calendar: Afegeix Nou Calendari de No-Usuari
+Add New NonUser Calendar: Afegiu un nou calendari no usuari
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Cal especificar un inici de sessió.
+No such nonuser calendar: No hi ha aquest calendari de no usuari
 
 ########################################
 # Page: pref.php
 #
-Save Preferences: Desa Prefer�ncies
-hour: hora
+Invalid theme: El tema no és vàlid
+Save Preferences: Desa les preferències
+Public Access calendar: Calendari d'accés públic
+Modify Non User Calendar Preferences: Modifiqueu les preferències del calendari que no siguin usuaris
+Return to My Preferences: Torna a Les meves preferències
+Custom Scripts: Scripts personalitzats
+Timezone Selection: Selecció de zona horària
+Multiview: Multivista:
+entry-interval-help: Estableix un interval de minuts en editar els temps d'entrada
+Entry interval: Interval d'entrada
+hour: hores
+minute: minut
+theme-reload-help: A causa de la memòria cau de CSS, pot ser necessària una recàrrega de la pàgina
+Page may need to be reloaded for new Theme to take effect: És possible que hagi de tornar a carregar la pàgina perquè el nou tema tingui efecte
+display_byproxy-help: Mostra el creador real a la pàgina view_entry
+Display if created by Assistant: Mostra si el crea l'Assistent
+allow-view-subscriptions-help: Permet restringir l'accés remot a les entrades privades o confidencials
+Allow remote viewing of: Permet la visualització remota de
+entries: entrades
 
 ########################################
 # Page: purge.php
 #
-Purging events for: Depura els esdeveniments per a
-Finished: Ha finalitzat
-Check box to delete ALL events for a user: Marca la casella per suprimir <b>TOTS</b> els esdeveniments d'un usuari
-Delete all events before: Suprimeix tots els esdeveniments abans de
-Are you sure you want to delete events for: Esteu segur que voleu suprimir els esdeveniments per a
+Purging events for: Purga d'esdeveniments per a
+Finished: Acabat
+Back: esquena
+Check box to delete ALL events for a user: Marqueu la casella de selecció per suprimir  TOTS  els esdeveniments d’un usuari
+Delete all events before: Suprimiu tots els esdeveniments anteriors
+Purge deleted only: La purga només s'ha suprimit
+Preview delete: Previsualitza la supressió
+Are you sure you want to delete events for: Esteu segur que voleu suprimir esdeveniments per a
+Records deleted from XXX: Registres suprimits de "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: L'adreça de correu electrònic no pot estar en blanc.
+Username already exists.: El nom d'usuari ja existeix.
+Email address already exists.: L’adreça de correu electrònic ja existeix.
+New user via self-registration.: Usuari nou mitjançant autoregistre.
+A new WebCalendar account has been set up for you.: S'ha configurat un nou compte de WebCalendar.
+Your username is XXX.: El vostre nom d'usuari és: "XXX".
+Your password is XXX.: La vostra contrasenya és: "XXX".
+Please visit XXX to log in and start using your account!: Visiteu "XXX" per iniciar la sessió i començar a utilitzar el vostre compte.
+You may change your password after logging in the first time.: Podeu canviar la vostra contrasenya després d’iniciar la sessió la primera vegada.
+If you received this email in error: Si heu rebut aquest missatge de correu electrònic per error i no us heu registrat per obtenir un compte de WebCalendar, podeu ignorar aquest avís o respondre amb una nota breu.
+Administrator: Administrador
+Welcome: Benvingut
+New user via email.: Usuari nou per correu electrònic.
+Registration: Inscripció
+Welcome to WebCalendar: Benvingut a WebCalendar
+Your email should arrive shortly.: El vostre correu electrònic hauria d’arribar en breu.
+Return to Login screen: Torna a la pantalla d'inici de sessió
+Password (again): Contrasenya (de nou):
+Your account information will be emailed to you.: La informació del vostre compte us serà enviada per correu electrònic.
+Submit: Presentar
 
 ########################################
 # Page: reject_entry.php
 #
-An appointment has been rejected by: Una cita ha estat rebutjatda per
+Continue: Continua
+(Your comments will be emailed to the other participants.): (Els vostres comentaris s’enviaran per correu electrònic als altres participants.)
+XXX has rejected an appointment.: XXX ha rebutjat una cita.
+Rejected by XXX.: Rebutjat per XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Afegeix un calendari remot nou
 
 ########################################
 # Page: report.php
 #
-This event is confidential.: Aquest esdeveniment �s confidencial
-cont.: =
+This event is confidential.: Aquest esdeveniment és confidencial.
+(Private): (Privat)
+(cont.): =
 Approved: Aprovat
 Deleted: Suprimit
-Rejected: Rebutjat
-Waiting for approval: Pendent d'aprovaci�
+Rejected: Rebutjada
+Waiting for approval: A l'espera de l'aprovació
 Unknown: Desconegut
-Click here: Fes clic
-to manage reports for the Public Access calendar: per gestionar informes per al calendari d'Acc�s P�blic
-Add new report: Afegir informe nou
-Manage Reports: Gestiona informes
+Invalid report id.: Identificador d'informe no vàlid.
+Click here to manage reports for the Public Access calendar.: Feu clic aquí per gestionar els informes del calendari d'accés públic.
+Add new report: Afegiu un informe nou
+Manage Reports: Gestiona els informes
 
 ########################################
 # Page: search.php
 #
-Advanced Search: Recerca avan�ada
+Advanced Search: cerca avançada
 Search: Cerca
-Keywords: Mots clau
+Keywords: Paraules clau
+Enter % for all entries: Introduïu el% per a totes les entrades
+Include: Incloure
+Filter by Date: Filtra per data
+All Dates: Totes les dates
+Past: Passat
+Upcoming: Properament
+Range: Rang
 
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: Cal introduir un o m�s mots clau de cerca
+You must enter one or more search keywords.: Heu d'introduir una o més paraules clau de cerca.
 Search Results: Resultats de la cerca
-match found: coincid�ncia trobada
-matches found: coincid�ncies trobades
-No matches found: No s'han trobat coincid�ncies
+match found: coincidència trobada
+matches found: coincidències trobades
+No matches found: No s'han trobat coincidències
+New Search: Nova cerca
 
 ########################################
 # Page: security_audit.php
 #
+list potential security issues: La informació següent mostra els possibles problemes relacionats amb la instal·lació de WebCalendar que es podrien modificar per fer la instal·lació més segura.
+For questions about WebCalendar security see the forums: Per a preguntes sobre qualsevol problema de seguretat de WebCalendar, utilitzeu els fòrums de WebCalendar allotjats a GitHub.com;<br>XXX
+View your current PHP settings: Consulteu la configuració actual de PHP
+Security Issue: Problema de seguretat
 Status: Estat
+Default admin user password: Contrasenya d'usuari d'administrador per defecte
+You should change the password of the default admin user.: Heu de canviar la contrasenya de l'usuari d'administrador predeterminat.
+File permissions XXX: Permisos de fitxer: XXX
+item XXX should not be writable: No s'ha d'escriure l'element següent:<br><tt> XXX</tt>
+File exists XXX: El fitxer existeix: "XXX"
+Because you have email disabled, you should remove this file.: Com que teniu el correu electrònic desactivat, heu d'eliminar aquest fitxer.
+File location XXX: Ubicació del fitxer: "XXX"
+remove XXX if not using: Si no utilitzeu el fitxer "XXX", heu de suprimir-lo. O, si més no, moveu-lo a un directori nou.
+System Settings XXX: Configuració del sistema: "XXX"
+consider enabling UAC: Us recomanem que activeu el control d’accés d’usuari per establir privilegis d’usuari.
+recommend approving new public events: Recomanem que s'aprovin totes les presentacions d'esdeveniments públics.
+recommend using CAPTCHA: Es recomana CAPTCHA per protegir els enviaments automàtics d'esdeveniments.
+Database cache directory location: Ubicació del directori de memòria cau de la base de dades
+db cache should be inaccessable: La memòria cau de la base de dades hauria d’estar en un directori al qual no es pot accedir amb un URL.
+PHP Settings XXX: Configuració de PHP: "XXX"
+recommend setting XXX Off: La configuració recomanada per a "XXX" està desactivada.
+recommend setting allow_url_fopen Off: La configuració recomanada per a "allow_url_fopen" està desactivada quan els calendaris remots no estan habilitats.
 
 ########################################
 # Page: select_user.php
 #
-View Another Users Calendar: Visualitza el calendari d'un altre usuari
+View Another Users Calendar: Veure el calendari d'un altre usuari
 
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: No has afegit cap categoria
-Set Category: Fixa Categoria
+You have not added any categories.: No heu afegit cap categoria.
+Set Category: Estableix la categoria
+Global Categories cannot be changed.: Les categories globals no es poden canviar.
+
+########################################
+# Page: upcoming.php
+#
+more: més
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: vol dir usuari administratiu
-Add New User: Afegeix usuari nou
+Remote Calendars: Calendaris remots
+denotes administrative user: indica l'usuari administratiu
+Add New User: Afegeix un usuari nou
 
 ########################################
 # Page: usersel.php
 #
-Reset: Reinicialitza
+form: forma
+Reset: Restableix
 
 ########################################
 # Page: views.php
 #
-Add New View: Afegeix Visualitzaci� Nova
+Add New View: Afegeix una vista nova
 
 ########################################
 # Page: views_edit.php
 #
-Unnamed View: Visualitzaci� sense nom
-Add View: Afegeix visualitzaci�
-Edit View: Edita visualitzaci�
-View Name: Nom de visualitzaci�
-View Type: Tipus de visualitzaci�
-Week (Users horizontal): Setmana (Usuaris horitzontal)
-Week (Users vertical): Setmana (Usuaris vertical)
-Week (Timebar): Setmana (L�nia del temps)
-Month (side by side): Mes (de costat)
-Month (on same calendar): Mes (del mateix calendari)
+Unnamed View: Vista sense nom
+Add View: Afegeix una vista
+Edit View: Edita la visualització
+View Name: Mostra el nom
+View Type: Tipus de visualització
+Day by Time: Dia a temps
+Week (Users horizontal): Setmana (usuaris horitzontals)
+Week by Time: Setmana per Temps
+Week (Users vertical): Setmana (usuaris verticals)
+Week (Timebar): Setmana (barra de temps)
+Month (Timebar): Mes (barra de temps)
+Month (side by side): Mes (costat a costat)
+Month (on same calendar): Mes (al mateix calendari)
 
 ########################################
 # Page: views_edit_handler.php
 #
-You must specify a view name: Cal especificar un nom de visualitzaci�
+You must specify a view name: Heu d'especificar un nom de vista
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: No hi ha usuaris per a aquesta visualització.
 
 ########################################
 # Page: view_entry.php
 #
+Update Task Percentage: Actualitza el percentatge de tasques
+Completed: Completat
 Assistant mode: Mode assistent
+Declined: Rebutjat
+Needs-Action: Necessitats-Acció
+by: per
+Percentage Complete: Percentatge complet
 External User: Usuari extern
-Approve/Confirm entry: Aprova/Confirma entrada
-Reject entry: Rebutja entrada
-Set category: Fixa categoria
-This will delete this entry for all users.: Aix� suprimir� aquesta entrada per a tots els usuaris.
-Edit entry: Edita entrada
-Edit repeating entry for all dates: Edita entrada amb repetici� per a totes les dates
-Delete repeating event for all dates: Suprimeix l'esdeveniment per a totes les dates
-Edit entry for this date: Edita entrada per a aquesta data
-Delete entry only for this date: Suprimeix l'entrada nom�s per a aquesta data
-This will delete the entry from your calendar.: Suprimeix l'entrada del teu calendari.
-Do you want to add this entry to your calendar?: Vols afegir aquesta entrada al teu calendari?
-This will add the entry to your calendar.: Afegeix l'entrada al teu calendari.
-Email all participants: Envia un correu electr�nic a tots els participants
-Hide activity log: Oculta el registre d'activitat
-Show activity log: Mostra el registre d'activitat
-Export this entry to: Exporta aquesta entrada a
+Update: Actualització
+at: a
+comments: comentaris
+Show: Espectacle
+Hide: Amaga
+Approve/Confirm entry: Aprova / Confirma l'entrada
+Reject entry: Rebutja l'entrada
+Set category: Estableix la categoria
+Add to My Calendar: Afegeix a El meu calendari
+Copy entry: Copia l'entrada
+This will delete this entry for all users.: Això suprimirà aquesta entrada per a tots els usuaris.
+Edit entry: Edita l'entrada
+Edit repeating entry for all dates: Edita l'entrada que es repeteix per a totes les dates
+Delete repeating event for all dates: Suprimeix l'esdeveniment que es repeteix de totes les dates
+Edit entry for this date: Edita l'entrada d'aquesta data
+Delete entry only for this date: Suprimeix l'entrada només per a aquesta data
+Delete entry from calendar of XXX: Suprimeix l'entrada del calendari de XXX
+This will delete the entry from your XXX calendar.: Això suprimirà l'entrada del vostre calendari XXX.
+boss: cap '
+This will delete the entry from your boss calendar.: Això suprimirà l'entrada del calendari del vostre cap.
+This will delete the entry from your calendar.: Això suprimirà l'entrada del calendari.
+from your boss calendar: del calendari del vostre cap
+Do you want to add this entry to your calendar?: Voleu afegir aquesta entrada al vostre calendari?
+This will add the entry to your calendar.: Això afegirà l'entrada al vostre calendari.
+Email all participants: Envia per correu electrònic a tots els participants
+Hide activity log: Amaga el registre d'activitats
+Show activity log: Mostra el registre d’activitats
+Export this entry to: Exporteu aquesta entrada a
 Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Feu doble clic a la cel·la buida per afegir una entrada nova.
 
 ########################################
 # Page: week_details.php
 #
-New Entry: Nova Entrada
+New Entry: Nova entrada
+cont.: =
 
 ########################################
 # Page: includes/access.php
 #
 Another Users Calendar: Calendari d'un altre usuari
-Manage Views: Gestiona Visualitzacions
+Category Management: Gestió de categories
+Day View: Vista del dia
+Edit Event: Edita l'esdeveniment
+Month View: Vista mensual
+Common Trailer: Tràiler comú
+User Management: Gestió d’usuaris
+Manage Views: Gestiona les visualitzacions
+Week View: Vista setmanal
+Year View: Vista de l'any
+Invalid function id: Identificador de funció no vàlid
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: No s'ha pogut trobar el fitxer "settings.php".<br>Copieu "settings.php.orig" a "settings.php" i editeu-lo per al vostre lloc.
+Incomplete settings.php file...: Fitxer "settings.php" incomplet ...
+Could not find XXX defined in...: No s'ha pogut trobar "XXX" definit al fitxer "settings.php".
+You must define XXX in: Heu de definir "XXX" al fitxer "settings.php".
 
 ########################################
 # Page: includes/date_formats.php
 #
 December: Desembre
 Dec: Des
+LANGUAGE DEFINED: IDIOMA DEFINIT
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Error en connectar-se a la base de dades: "XXX".
+db_type not defined.: db_type no definit.
+invalid db_type XXX: db_type "" XXX "no vàlid.
+Cache cleared from previous SQL!: La memòria cau s'ha esborrat de l'SQL anterior.
+Error executing query.: Error en executar la consulta.
+Unfortunately, XXX is not implemented for YYY: Malauradament, "XXX" no està implementat per a (AAAA).
+Unknown ODBC error.: Error ODBC desconegut.
+Error opening cache dir XXX.: S'ha produït un error en obrir el directori de memòria cau "XXX".
+delete: esborrar
+Cache error Could not XXX file YYY.: Error de la memòria cau: no s'ha pogut arxivar XXX "AAAA".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Error fatal
+Invalid data format for: Format de dades no vàlid per a
 
 ########################################
 # Page: includes/functions.php
 #
-exceeds limit of XXX events per day: excedeix el l�mit de XXX esdeveniments per dia.
+Error Type not set for activity log!: Error: el tipus no s'ha definit per al registre d'activitat.
+This event is XXX.: Aquest esdeveniment és XXX.
+Conf.: =
+exceeds limit of XXX events per day: supera el límit de XXX esdeveniments al dia
+on: encès
+All Attendees: Tots els assistents
+Busy: Ocupat
+Tentative: Temptatiu
+Schedule an appointment for XXX.: Programa una cita per a XXX: AAAA.
+date_select: __dd__ __mont__ __yyyy__
 Event approved: Esdeveniment aprovat
+Journal approved: Diari aprovat
+Task approved: Tasca aprovada
+Attachment: Adjunt
 Event created: Esdeveniment creat
-Event deleted: Esdeveniment eliminat
-Notification sent: Notificaci� enviada
+Journal created: Diari creat
+Task created: Tasca creada
+Event deleted: Esdeveniment suprimit
+Journal deleted: Diari suprimit
+Task deleted: Tasca suprimida
+New user via email (self registration): Usuari nou per correu electrònic (autoregistre)
+New user (self registration): Usuari nou (autoregistre)
+Notification sent: Notificació enviada
 Event rejected: Esdeveniment rebutjat
+Journal rejected: Diari rebutjat
+Task rejected: Tasca rebutjada
 Reminder sent: Recordatori enviat
 Event updated: Esdeveniment actualitzat
-WK: st
+Journal updated: Diari actualitzat
+Task updated: Tasca actualitzada
+Delete User: Suprimeix l'usuari
+WK: =
+TASKS: TASQUES
+Task_Title: Títol
+Due: Venciment
+Task Name: Nom de la tasca
+Task Due Date: Data de venciment de la tasca
+You have XXX unapproved entries: Teniu XXX entrades no aprovades 
+Changes successfully saved: Els canvis s'han desat correctament
 Event: Esdeveniment
-Action: Acci�
-Printer Friendly: Versi� per a impressora
-Generate printer-friendly version: Generar versi� per a impressora
+Action: Acció
+Printer Friendly: Per imprimir
+Generate printer-friendly version: Genereu una versió per imprimir
+after: després
+before: abans
+end: final
+start: començar
+View this event: Veure aquest esdeveniment
+View this task: Veure aquesta tasca
 January: Gener
 February: Febrer
-March: Mar�
+March: Març
 April: Abril
 May_: Maig
-June: Juny
+June: juny
 July: Juliol
 August: Agost
 September: Setembre
 October: Octubre
-November: Novembre
-Jan: Gen
-Feb: =
-Mar: =
+November: de novembre
+Jan: Gener
+Feb: Febrer
+Mar: desfigurar
 Apr: Abr
-May: Mai
-Jun: =
-Jul: =
-Aug: Ago
+May: Maig
+Jun: Juny
+Jul: Juliol
+Aug: Agost
 Sep: Set
-Oct: =
-Nov: =
-The following error occurred: S'ha produ�t un error
-You are not authorized.: No tens autoritzaci�
-Add N hours to: Afegir N hores a
+Oct: Octubre
+Nov: Novembre
+SU: =
+MO: =
+TU: =
+WE: NOSALTRES
+TH: =
+FR: =
+SA: =
+unknown-month: mes desconegut
+First Quarter Moon: Lluna del primer quart
+Full Moon: Lluna plena
+Last Quarter Moon: Darrera quarta de lluna
+New Moon: Lluna nova
+Error TIME_SLOTS undefined!: Error: TIME_SLOTS sense definir.
+The following error occurred: S'ha produït l'error següent
+You are not authorized.: No esteu autoritzat.
+Add N hours to: Afegiu N hores a
 Subtract N hours from: Restar N hores de
-same as: igual que
+same as: el mateix que
 server time: hora del servidor
-Error approving event: Error en aprovar esdeveniment
+Cannot read timezone file XXX.: No es pot llegir el fitxer de zona horària: XXX.
+Your current GMT offset is XXX hours.: El vostre desplaçament actual de GMT és de XXX hores.
+Unauthorized: No autoritzat
+Error approving event XXX.: Error en aprovar l'esdeveniment: XXX.
+Error deleting event XXX.: Error en suprimir l'esdeveniment: XXX.
+Error rejecting event XXX.: Error en rebutjar l'esdeveniment: XXX.
 Sunday: Diumenge
 Monday: Dilluns
 Tuesday: Dimarts
@@ -815,86 +1505,883 @@ Wednesday: Dimecres
 Thursday: Dijous
 Friday: Divendres
 Saturday: Dissabte
-Sun: Dg
-Mon: Dl
-Tue: Dm
-Wed: Dx
-Thu: Dj
-Fri: Dv
+Sun: Sol
+Mon: Dilluns
+Tue: Dim
+Wed: Dim
+Thu: Dij
+Fri: Divendres
 Sat: Ds
+unknown-weekday: dia-setmana desconegut
+Invalid referring URL: URL de referència no vàlid
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Índex
+Documentation: Documentació
+Page: Pàgina
 
 ########################################
 # Page: includes/trailer.php
 #
-My Calendar: El meu Calendari
-Add New Entry: Afegeix entrada nova
-Logout: Sortida
-Back to My Calendar: Endarrere al meu Calendari
-Go to: V�s a
-Manage calendar of: Gestiona calendari de
+My Calendar: El meu calendari
+Add New Entry: Afegeix una entrada nova
+Add New Task: Afegeix una tasca nova
+Logout: Tancar sessió
+Home: Inici
+Back to My Calendar: Torna a El meu calendari
+Go to: Anar a
+Manage calendar of: Gestiona el calendari de
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: No s'ha trobat l'idioma del navegador
+(not supported): (no compatible)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Lluny
+Afrihili: =
+Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: Acadià
+Albanian: Albanès
+Aleut: =
+Algonquian: Algonquí
+Altai (Southern): Altai (sud)
+Amharic: Amàric
+Angika: =
+Apache: Apatxe
+Arabic (Algeria): Àrab (Algèria)
+Arabic (Bahrain): Àrab (Bahrain)
+Arabic (Egypt): Àrab (Egipte)
+Arabic (Iraq): Àrab (Iraq)
+Arabic (Jordan): Àrab (Jordània)
+Arabic (Kuwait): Àrab (Kuwait)
+Arabic (Lebanon): Àrab (Líban)
+Arabic (Libya): Àrab (Líbia)
+Arabic (Morocco): Àrab (Marroc)
+Arabic (Oman): Àrab (Oman)
+Arabic (Qatar): Àrab (Qatar)
+Arabic (Saudi Arabia): Àrab (Aràbia Saudita)
+Arabic (Syria): Àrab (Síria)
+Arabic (Tunisia): Àrab (Tunísia)
+Arabic (U.A.E.): Àrab (EUA)
+Arabic (Yemen): Àrab (Iemen)
+Arabic: Àrab
+Aragonese: Aragonès
+Aramaic: Arameu
+Arapaho: =
+Arawak: =
+Armenian: Armeni
+Assamese: Assamès
+Asturian: Asturià
+Athapascan: Atapascà
+Avaric: Àvar
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerí
+Balinese: Balinès
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Basc
+Beja: =
+Belarusian: Bielorús
+Bemba: =
+Bengali: Bengalí
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Peu negre
+Blin: =
+Bliss: Felicitat
+Bosnian: Bosnià
+Braj: =
+Breton: Bretó
+Buginese: Buginès
+Bulgarian: Búlgar
+Buriat: =
+Burmese: Birmanes
+Caddo: =
+Catalan: Català
+Cebuano: Cebuà
+Chagatai: =
+Chamorro: =
+Chechen: Txetxè
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Xinès (Hong Kong)
+Chinese (PRC): Xinès (RPC)
+Chinese (Simplified/GB2312): Xinès (simplificat / GB2312) 
+Chinese (Singapore): Xinès (Singapur)
+Chinese (Taiwan): Xinès (Taiwan)
+Chinese (Traditional/Big5): Xinès (tradicional / gran 5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Copta
+Cornish: Còrnic
+Corsican: Cors
+Cree: =
+Creek: =
+Croatian: Croata
+Czech: Txec
+Dakota: =
+Danish: Danès
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Neerlandès (Bèlgica)
+Dutch: Neerlandès
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamita
+English (Australia): Anglès (Austràlia)
+English (Belize): Anglès (Belize)
+English (Canada): Anglès (Canadà)
+English (Ireland): Anglès (Irlanda)
+English (Jamaica): Anglès (Jamaica)
+English (New Zealand): Anglès (Nova Zelanda)
+English (Philippines): Anglès (Filipines)
+English (South Africa): Anglès (Sud-àfrica)
+English (Trinidad & Tobago): Anglès (Trinitat i Tobago)
+English (United Kingdom): Anglès (Regne Unit)
+English (United States): Anglès (Estats Units)
+English (Zimbabwe): Anglès (Zimbabwe)
+English: Anglès-EUA
+Erzya: =
+Esperanto: =
+Estonian: Estonià
+Ewe: Ovella
+Ewondo: =
+Fang: Ullal
+Fanti: =
+Faroese: Feroès
+Fijian: Fijià
+Filipino: Filipí
+Finnish: Finès
+Fon: =
+French (Belgium): Francès (Bèlgica)
+French (Canada): Francès (Canadà)
+French (France): Francès (França)
+French (Luxembourg): Francès (Luxemburg)
+French (Monaco): Francès (Mònaco)
+French (Switzerland): Francès (Suïssa)
+French: Francès
+Frisian (Eastern): Frisó (oriental)
+Frisian (Northern): Frisó (nord)
+Frisian (Western): Frisó (occidental)
+Frisian: Frisó
+Friulian: Friülà
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Gallec
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Caram
+Georgian: Georgià
+German (Austria): Alemany (Àustria)
+German (Germany): Alemany (Alemanya)
+German (Liechtenstein): Alemany (Liechtenstein)
+German (Luxembourg): Alemany (Luxemburg)
+German (Standard): Alemany (estàndard)
+German (Switzerland): Alemany (Suïssa)
+German: Alemany
+Gilbertese: Gilbertès
+Gondi: =
+Gorontalo: =
+Gothic: Gòtic
+Grebo: =
+Greek: Grec
+Greenlandic: Groenlandès
+Guarani: Guaraní
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitian (crioll)
+Haitian: Haitiana
+Hausa: =
+Hawaiian: Hawaià
+Hebrew: Hebreu
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hitita
+Hmong: =
+Holo (Taiwanese): Holo (taiwanès)
+Hungarian: Hongarès
+Hupa: =
+Iban: =
+Icelandic: Islandès
+Ido: Faig
+Igbo: =
+Iloko: =
+Indonesian: Indonesi
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iranià
+Irish (Gaelic): Irlandès (gaèlic)
+Irish: Irlandès
+Iroquoian: Iroquià
+Italian (Switzerland): Italià (Suïssa)
+Italian: Italià
+Japanese: Japonès
+Javanese: Javanès
+Judeo-Arabic: Judeoàrab
+Judeo-Persian: Judeopersa
+Kabardian: Kabardià
+Kabyle: Cabil
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: Carelià
+Kashmiri: Caixmir
+Kashubian: Caixubi
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (central)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: Kirguís
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Coreà (Johab)
+Korean (North): Coreà (nord)
+Korean (South): Coreà (sud)
+Korean: Coreà
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurd
+Kutenai: =
+Kyrgyz: Kirguís
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Llatí
+Latvian: Letó
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lituà
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luxemburguès
+Macedonian: Macedoni
+Madurese: Maduresa
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malgaix
+Malay: Malai
+Malayalam: =
+Maldivian: Maldiviana
+Maltese: Maltès
+Manchu: Manxú
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: Maorí
+Mapuche: Maputxe
+Marathi: =
+Mari: =
+Marshallese: Marshallès
+Marwari: =
+Masai: =
+Mayan: Maia
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: Mirandès
+Mohawk: =
+Moksha: =
+Moldavian: Moldava
+Mongo: =
+Mongolian: Mongol
+Montenegrin: Montenegrí
+Moroccan: Marroquí
+Mossi: =
+Myanmar: =
+Māori: Maori
+N&#39;Ko: No
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (nord)
+Ndebele (South): Ndebele (sud)
+Ndebele: =
+Ndonga: =
+Neapolitan: Napolità
+Nepali: Nepalès
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Nòrdic
+Norwegian (Bokmål): Noruec (bokmål)
+Norwegian (Nynorsk): Noruec (nynorsk)
+Norwegian: Noruec
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Occità
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Ossètic
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: Pangasinà
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Persa (farsi)
+Persian (Iran): Persa (Iran)
+Persian: Persa
+Phoenician: Fenici
+Pohnpeian: =
+Polish: Polonès
+Portuguese: Portuguès
+Portuguese/Brazil: Portuguès / Brasil
+Punjabi (India): Punjabi (Índia)
+Punjabi (Pakistan): =
+Punjabi: Panjabi
+Quechua: Quítxua
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Retoromànic
+Romanian: Romanès
+Romansh: Romàntic
+Romany: Romaní
+Rundi: =
+Russian (Moldavia: Rus (Moldàvia
+Russian (Republic of Moldova): Rus (República de Moldàvia)
+Russian: Rus
+Sami (Inari): =
+Sami (Lappish): Sami (lapó)
+Sami (Lule): =
+Sami (Northern): Sami (nord)
+Sami (Skolt): =
+Sami (Southern): Sami (sud)
+Sami: =
+Samoan: Samoà
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sànscrit
+Santali: =
+Sardinian: Sard
+Sasak: =
+Scots (Gaelic): Escocès (gaèlic)
+Selkup: =
+Serbian (Upper): Serbi (superior)
+Serbian: Serbi
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sicilià
+Sindhi: =
+Sinhala: Cingalès
+Slavic: Eslau
+Slovak: Eslovac
+Slovenian: Eslovè
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sòrab (inferior)
+Sorbian (Upper): Sòrab (superior)
+Sorbian: Sòrab
+Sotho: =
+Spanish (Argentina): Espanyol (Argentina)
+Spanish (Bolivia): Espanyol (Bolívia)
+Spanish (Chile): Espanyol (Xile)
+Spanish (Colombia): Espanyol (Colòmbia)
+Spanish (Costa Rica): Espanyol (Costa Rica)
+Spanish (Dominican Republic): Espanyol (República Dominicana)
+Spanish (Ecuador): Espanyol (Equador)
+Spanish (El Salvador): Espanyol (El Salvador)
+Spanish (Guatemala): Espanyol (Guatemala)
+Spanish (Honduras): Espanyol (Hondures)
+Spanish (Mexico): Espanyol (Mèxic)
+Spanish (Nicaragua): Espanyol (Nicaragua)
+Spanish (Panama): Espanyol (Panamà)
+Spanish (Paraguay): Espanyol (Paraguai)
+Spanish (Peru): Espanyol (Perú)
+Spanish (Puerto Rico): Espanyol (Puerto Rico)
+Spanish (Spain): Espanyol (Espanya)
+Spanish (Uruguay): Espanyol (Uruguai)
+Spanish (Venezuela): Espanyol (Veneçuela)
+Spanish: Espanyol
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumeri
+Sundanese: Sundanès
+Susu: =
+Sutu: =
+Swahili: Suahili
+Swati: =
+Swedish (Finland): Suec (Finlàndia)
+Swedish (Sweden): Suec (Suècia)
+Swedish: Suec
+Syriac: Siríac
+Tagalog: Tagalo
+Tahitian: Tahitiana
+Tai: =
+Taiwan: =
+Tajik: Tadjik
+Tamashek: =
+Tamil: Tàmil
+Tatar: Tàtara
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Tailandès
+Tibetan: Tibetà
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Illes Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turc
+Turkmen: Turcomans
+Tuvinian: Tuvins
+Twi: =
+Udmurt: =
+Ugaritic: Ugarític
+Ukrainian: Ucraïnès
+Umbundu: =
+Urdu: Urdú
+Uyghur: Uigur
+Uzbek: =
+Vai: =
+Venda: =
+Vietnamese: Vietnamita
+Volapük: =
+Votic: Vòtic
+Wakashan: =
+Walloon: Való
+Waray: =
+Washo: =
+Welsh: Gal·lès
+Wolaitta: =
+Wolof: Wòlof
+Xhosa: Xosa
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: Zulú
+Browser-defined: Definit pel navegador
+event: esdeveniment
+journal: revista
+0: =
+1: =
+2: =
+3: 3 
+4: 4 
+5: 5 
+6: 6 
+7: 7 
+8: 8 
+9: 9 
 
 ########################################
 # Page: includes/user-imap.php
 #
-Invalid user login: Identificaci� d'usuari inv�lida
+Invalid user login: Inici de sessió d'usuari no vàlid
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: contrasenya incorrecta
+no such user: No hi ha tal usuari
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Compte bloquejat
 
 ########################################
 # Page: includes/xcal.php
 #
-Unnamed Event: Esdeveniment sense nom
+Interval: =
+Months: Mesos
+Month Days: Mes Dies
+Days: Dies
+Weeks: Setmanes
+Position: Posició
+Until: Fins al
+Count: Compta
+Inclusion Dates: Dates d’inclusió
+Exclusion Dates: Dates d’exclusió
 Event Imported: Esdeveniment importat
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: =
+kb: =
+Mb: =
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
 #
-Notification: Notificaci�
-authenticate: Error SMTP: No s\'hapogut autenticar.
-connect_host: Error SMTP: No es pot connectar al servidor SMTP.
-data_not_accepted: Error SMTP: Dades no acceptades.
-encoding: Codificaci� desconeguda:
-execute: No es pot executar:
-file_access: No es pot accedir a l\'arxiu:
-file_open: Error d\'Arxiu: No es pot obrir l\'arxiu:
-from_failed: La(s) seg�ent(s) adreces de remitent han fallat:
-instantiate: No s\'ha pogut crear una inst�ncia de la funci� Mail.
-mailer_not_supported: mailer no est� suportat
-provide_address: S\'ha de proveir almenys una adre�a d\'email com a destinatari.
-recipients_failed: Error SMTP: Els seg�ents destinataris han fallat:
+Notification: Notificació
+authenticate: Error SMTP: no s'ha pogut autenticar
+connect_host: Error SMTP: no s'ha pogut connectar a l'amfitrió SMTP:
+data_not_accepted: Error SMTP: dades no acceptades
+encoding: Codificació desconeguda:
+execute: No s'ha pogut executar:
+file_access: No s'ha pogut accedir al fitxer:
+file_open: Error de fitxer No s'ha pogut obrir el fitxer:
+from_failed: Ha fallat la següent adreça de sortida:
+instantiate: No s'ha pogut instanciar la funció de correu
+mailer_not_supported: mailer no és compatible
+provide_address: Heu de proporcionar com a mínim una adreça de correu electrònic del destinatari.
+recipients_failed: Error SMTP: han fallat els destinataris següents:
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/classes/captcha/captcha.php
 #
-Server URL is required.: Cal URL de Servidor
-Server URL must end with /.: La URL del Servidor ha d'acabar amb '/'
-Invalid color for document background.: Color inv�lid per al fons del document
-Invalid color for document title.: Color inv�lid per al t�tol del document
-Invalid color for table cell background.: Color inv�lid per al fons de cel�les de taula
-Invalid color for table grid.: Color inv�lid per a la graella de la taula
-Invalid color for table header background.: Color inv�lid per al fons de la cap�alera de la taula
-Invalid color for table text background.: Color inv�lid per al fons del text de la taula
-Invalid color for event popup background.: Color inv�lid per al fons d'un missatge emergent
-Invalid color for event popup text.: Color inv�lid per al text del missatge emergent
-Invalid color for table cell background for today.: Color inv�lid per al fons de la cel�la d'avui
-Color format should be RRGGBB.: El format del color hauria de ser '#RRGGBB'
+Enter Characters Seen in Graphic: Introduïu els caràcters vists al gràfic
+Enter the correct letters and numbers...: Introduïu les lletres i els números correctes de la imatge al quadre de text. Aquesta petita prova serveix com a restricció d’accés contra robots malintencionats. Simplement torneu a carregar la pàgina si aquest gràfic és massa difícil de llegir
+Challenge/Response: Repte / Resposta
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Voleu canviar la data i l'hora d'aquesta entrada?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: No has introdu�t cap Descripci� Breu
-time prior to work hours...: L'hora introdu�da comen�a abans de les teves hores laborals indicades a les prefer�ncies �s correcte?
-You have not entered a valid time of day: No has introdu�t cap hora v�lida
+You have not entered a Brief Description: No heu introduït una breu descripció
+time prior to work hours...: temps previ a l’horari laboral ...
+Invalid Event Date: Data de l'esdeveniment no vàlida
+Please add a participant: Afegiu un participant
+Invalid Date: Data no vàlida
+You have not entered a valid time of day: No heu introduït una hora vàlida del dia
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/js/edit_nonuser.php
 #
-Invalid color: Color inv�lid
+Calendar ID cannot be blank.: L'identificador de calendari no pot estar en blanc.
+First and last names cannot both be blank.: Els dos noms i cognoms no poden quedar en blanc.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: El color no és vàlid
+Color format should be RRGGBB.: El format de color ha de ser "#RRGGBB".
+URL cannot be blank.: L'URL no es pot deixar en blanc.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: El tipus de fitxer no coincideix amb el format d’importació
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: El color no és vàlid per al fons del document.
+Invalid color for document title.: El color no és vàlid per al títol del document.
+Invalid color for table cell background.: El color no és vàlid per al fons de la cel·la de la taula.
+Invalid color for table cell background for today.: El color no és vàlid per al fons de la cel·la de la taula per avui.
+Invalid work hours.: Hores de treball no vàlides.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: L'URL del servidor ha d'acabar amb una barra inclinada (/).
+Invalid color for table grid.: El color no és vàlid per a la quadrícula de la taula.
+Invalid color for event popup background.: El color no és vàlid per al fons emergent de l'esdeveniment.
+Invalid color for event popup text.: El color no és vàlid per al text emergent de l'esdeveniment.
+Invalid color for table header text.: El color no és vàlid per al text de la capçalera de la taula.
+Invalid color for table header background.: El color no és vàlid per al fons de la capçalera de la taula.
+Server URL is required.: L'URL del servidor és obligatori.
+Invalid Color: El color no és vàlid
+Database Name: Nom de la base de dades
+Full Path (no backslashes): Camí complet (sense barres invertides)
+The password contains illegal characters.: La contrasenya conté caràcters il·legals.
+Error you must specify a Single-User Login: Error: heu d'especificar un inici de sessió d'un sol usuari
+Could not find XXX.: No s'ha pogut trobar XXX.
+Could not find XXX in DOM.: No s'ha pogut trobar XXX a DOM.
 
 ########################################
 # Page: includes/menu/index.php
 #
-Unapproved Events: Esdeveniments pendents d'aprovar
+This Week: Aquesta setmana
+This Month: Aquest mes
+This Year: Aquest any
+Exit: Surt
+Add New Event: Afegeix un esdeveniment nou
+Delete Entries: Suprimeix les entrades
+My Views: Les meves opinions
+Manage Calendar of: Gestiona el calendari de
+My Reports: Els meus informes
+My Profile: El meu perfil
+Public Calendar: Calendari públic
+Unapproved Events: Esdeveniments no aprovats
+User Manager: Gestor d’usuaris
+Help Contents: Ajuda Contingut
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Directori de memòria cau de base de dades
+Create New: Crea un nou
+Failure Reason: Motiu del fracàs:
+You must manually create database: Heu de crear manualment la base de dades.
+Single-User: Un sol usuari
+Test Settings: Configuració de la prova
+Timezone Conversion Successful: Conversió de zona horària correcta
+WebCalendar Installation Wizard Step XXX: Assistent d'instal·lació de WebCalendar Pas XXX
+Password Accepted: Contrasenya acceptada
+Successful Login: Inici de sessió correcte
+Password Incorrect: Contrasenya incorrecta
+Invalid Login: Accés incorrecte
+Display Errors: Mostra els errors
+File Uploads: Càrregues de fitxers
+Allow URL fopen: Permet obrir URL (obligatori només si s'utilitzen calendaris remots)
+Safe Mode: Mode segur
+Safe Mode Allowed Vars: Es permet el mode segur de Vars (només es necessita TZ si el mode segur està activat)
+GD: GD (necessari per a fons d'imatge de degradat)
+Passwords do not match!: Les contrasenyes no coincideixen!
+Unable to write password to settings.php file: No es pot escriure la contrasenya al fitxer "settings.php".
+Password Updated: S'ha actualitzat la contrasenya
+Password has been set: La contrasenya s'ha definit.
+Connection Successful...: Connexió satisfactòria  Aneu a la pàgina següent per continuar la instal·lació.
+Correct your entries or click the Create New...: Corregiu les entrades o feu clic al botó  Crea nou  per continuar la instal·lació.
+Correct your entries and try again.: Corregiu les vostres entrades i torneu-ho a provar.
+XXX does not exist: XXX no existeix
+XXX is not writable: XXX no es pot escriure
+Error Converting Timezone: Error en convertir la zona horària
+Error Unable to write to file XXX.: Error No es pot escriure al fitxer XXX.
+Please change the file permissions of this file.: Canvieu els permisos d'aquest fitxer.
+Please change includes dir permission: Canvieu els permisos de fitxer del directori "inclou" per permetre que altres usuaris puguin escriure.
+Your settings have been saved.: La vostra configuració s'ha desat.
+OFF: DESACTIVAT
+ON: ACTIVAT
+WebCalendar Setup Wizard: Assistent de configuració de WebCalendar
+This installation wizard will guide you...: Aquest assistent d'instal·lació us guiarà per configurar una instal·lació bàsica de WebCalendar.<br>Per obtenir ajuda i resolució de problemes, consulteu:<br>
+System Administrators Guide: Guia de l'administrador del sistema
+Frequently Asked Questions: Preguntes freqüents
+FAQ: Preguntes freqüents
+Troubleshooting: Resolució de problemes
+Getting Help: Obtenir ajuda
+Upgrading Guide: Guia d'actualització
+User Supported Wiki: Wiki suportat per l'usuari
+PHP Version Check: Comprovació de la versió de PHP
+Check to see if PHP 7.1.0 or greater is installed.: Comproveu si hi ha instal·lat PHP 7.1.0 o superior.
+PHP version: Versió PHP
+PHP Settings: Configuració de PHP
+Detailed PHP Info: Informació detallada de PHP
+settings.php Status: Estat "settings.php"
+Session Check: Comprovació de la sessió
+To test the proper operation of sessions...: Per provar el bon funcionament de les sessions, torneu a carregar aquesta pàgina. Hauríeu de veure l'increment del comptador de sessions cada vegada.
+SESSION COUNTER: COMPTADOR DE SESSIONS
+The file permissions of settings.php are set...: Els permisos de fitxer de "settings.php" s'estableixen perquè l'instal·lador no tingui permís per modificar-lo. Canvieu els permisos del fitxer següent per continuar
+The file permissions of the includes directory are set...: Els permisos de fitxer del directori inclouen es defineixen de manera que l'instal·lador no té permís per crear un fitxer nou. Canvieu els permisos del directori següent per continuar
+Your settings.php file appears to be valid.: Sembla que el fitxer "settings.php" és vàlid.
+Configuration Wizard Password: Contrasenya de l’assistent de configuració
+Create Settings File Password: Crea una contrasenya de fitxer de configuració
+db setup directions...: En aquesta secció configurareu i provareu una connexió amb el vostre servidor de base de dades. La informació del compte proporcionada hauria de tenir permisos COMPLETS per crear bases de dades, taules i usuaris. Si això no és possible o l'accés a la vostra base de dades és limitat, haureu de configurar-la manualment.
+Database Status: Estat de la base de dades
+Supported databases for your PHP installation: Bases de dades compatibles per a la vostra instal·lació de PHP
+Your current database settings are able to access the database.: La configuració actual de la base de dades pot accedir a la base de dades.
+Please Test Settings: Proveu la configuració
+Your current database settings are not able...: La configuració actual de la base de dades no pot accedir a la base de dades o encara no s'ha provat.
+Database Settings: Configuració de la base de dades
+Database Type: Tipus de base de dades
+Server: Servidor
+Connection Persistence: Persistència de connexió
+All your database tables appear to be up...: Totes les taules de la vostra base de dades semblen estar actualitzades. Podeu passar a la pàgina següent i completar la configuració del WebCalendar.
+This appears to be a new installation...: Sembla que és una instal·lació nova. Si això no és correcte, torneu a la pàgina anterior i corregiu la vostra configuració.
+This appears to be an upgrade...: Sembla que és una actualització de la versió&nbsp;XXX&nbsp;a&nbsp;AAAA.
+The database requires some data input...: La base de dades requereix una entrada de dades Feu clic a Actualitza la base de dades per completar l'actualització.
+In this section we will perform...: En aquesta secció realitzarem els canvis per portar la vostra base de dades al nivell requerit. Si feu servir una base de dades totalment compatible, aquest pas es realitzarà automàticament. Si no, es pot mostrar l'SQL requerit i hauríeu de ser capaç de tallar-lo i enganxar-lo a la finestra de consulta del servidor de base de dades.
+No database actions are required.: No cal fer accions a la base de dades.
+The following database actions are required: Es requereixen les accions de base de dades següents
+ODBC Underlying Database: Base de dades subjacent ODBC:
+Automatic installation not supported: La instal·lació automàtica no s'ha implementat completament per al vostre tipus de base de dades. Haureu de crear manualment les taules necessàries mitjançant l'SQL subministrat. Feu clic a  Mostra SQL  per continuar. Talla i enganxa a la finestra de consulta de la base de dades.
+This may take several minutes to complete: Això pot trigar uns quants minuts a completar-se.
+Install Database: Instal·leu la base de dades
+Update Database: Actualitza la base de dades
+Display Required SQL: Mostra el SQL requerit
+Return to previous page after processing SQL.: Després de processar manualment aquest SQL, haureu de tornar a la pàgina anterior i tornar a provar la base de dades perquè l'script pugui detectar els canvis.
+This is the final step in setting up your WebCalendar Installation.: Aquest és l'últim pas per configurar la instal·lació de WebCalendar.
+Timezone Conversion: Conversió de zona horària
+It appears that you have NOT converted...: Sembla que NO heu convertit les dades existents de l'esdeveniment de WebCalendar a GMT. Si ho feu, podeu ignorar aquest avís i no continuar amb la conversió. Si es tracta d’una instal·lació nova, també podeu ignorar aquest avís.
+Convert Data to GMT: Convertiu dades a GMT
+Application Settings: Configuració de l'aplicació
+HTTP-based authentication was not detected...: No s'ha detectat l'autenticació basada en HTTP. Haureu de tornar a configurar el servidor web si voleu seleccionar "Servidor web" a les opcions "Autenticació d'usuari" que hi ha a continuació.
+HTTP-based authentication was detected...: S'ha detectat l'autenticació basada en HTTP. El servidor web gestiona l'autenticació d'usuaris. Heu de seleccionar "Servidor web" a la llista de "Autenticació d'usuari" que es mostra a continuació.
+Create Default Admin Account: Creeu un compte d'administrador predeterminat
+(Admin Account Not Found): (No s'ha trobat el compte d'administrador)
+User Authentication: Autenticació d'usuari
+Web-based via WebCalendar (default): Basat en web mitjançant WebCalendar (predeterminat)
+Web Server (not detected): Servidor web (no detectat)
+Web Server (detected): Servidor web (detectat)
+None (Single-User): Cap (usuari únic)
+Read-Only: Llegeix només
+Environment: Medi ambient
+Production: Producció
+Development: Desenvolupament
+Save Settings: Desa la configuració
+Launch WebCalendar: Inicieu WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Error en actualitzar la taula "XXX": AAAA.
+Conversion Successful: Conversió realitzada correctament 
+Perl script required: La vostra versió anterior de WebCalendar requereix executar un script PERL per convertir les vostres dades. Executeu /tools/upgrade_to_0.9.7.pl i torneu a aquesta pàgina per continuar.
+previous version requires updating several tables: La vostra versió anterior de WebCalendar requereix actualitzar diverses taules de bases de dades.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: NO HI HA VISTA PRÈVIA DISPONIBLE
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Error en connectar-se a la base de dades
+Include Path: Inclou el camí
+Deleting events for: Eliminació d'esdeveniments per a
+Importing events for: Importació d'esdeveniments per a
+No data returned from: No es van retornar dades
+for non-user calendar: per al calendari que no sigui usuari
+No Remote Calendars found: No s'ha trobat cap calendari remot
+Remote Calendars not enabled: Els calendaris remots no estan habilitats
 
 ########################################
 # Page: tools/send_reminders.php
 #
+could not find event id: no s'ha pogut trobar l'identificador d'esdeveniment
+could not find event id XXX in database.: no s'ha pogut trobar l'identificador d'esdeveniment XXX a la base de dades.
+task: tasca
+This is a reminder for the XXX detailed below.: Aquest és un recordatori per al XXX que es detalla a continuació.
+Pecentage Complete: Pecentatge complet
 Reminder: Recordatori
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Acció no compatible: XXX.
+No event id specified.: No s'ha especificat cap identificador d'esdeveniment.
+Not authorized (not admin).: No autoritzat (no administrador).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: S'estan cercant esdeveniments per a XXX des de la AAAA fins a la data ZZZ.
+Found XXX events in time range.: S'han trobat XXX esdeveniments en un interval de temps.
+Event id=XXX YYY at ZZZ on AAA.: Identificador d'esdeveniment = XXX "YYY" a ZZZ a AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Permetre que l'usuari XXX vegi el calendari d'altres usuaris.
+Error Email reminders disabled for user XXX.: Error: els recordatoris de correu electrònic estan desactivats per a l'usuari "XXX".
+Number of site_extras XXX.: Nombre de llocs_extres: XXX.
+Reminder set for event.: Recordatori definit per a l'esdeveniment.
+Mins Before XXX.: Mins abans: XXX.
+Event time is XXX.: L'hora de l'esdeveniment és: XXX.
+Remind time is XXX.: El temps de recordatori és: XXX.
+Reminders for user XXX, login YYY.: Recordatoris per a l'usuari "XXX", inici de sessió "AAAA".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: No s'aprova per a l'usuari "XXX".
+Event id=XXX YYY already sent.: Identificador de l'esdeveniment = XXX "AAAA" ja s'ha enviat.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: No cal iniciar sessió per al mode d'un sol usuari.
+No login required for HTTP authentication.: No cal iniciar sessió per a l'autenticació HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Caràcters no vàlids a l'inici de sessió.
+Username XXX does not exist.: El nom d'usuari "XXX" no existeix.
+You cannot remove admin rights from yourself!: No podeu eliminar els drets d'administrador de vosaltres mateixos.
+Unknown error saving user: Error desconegut en desar l'usuari.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: No s'ha trobat cap participant per a l'identificador de l'esdeveniment: XXX.
+Db error Could not find event id XXX.: Error de la base de dades: no s'ha trobat l'identificador d'esdeveniment XXX.
+Error Could not find event id XXX in database.: Error: no s'ha pogut trobar l'identificador d'esdeveniment XXX a la base de dades.

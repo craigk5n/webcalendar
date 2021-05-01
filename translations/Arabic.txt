@@ -1,0 +1,2387 @@
+# Arabic ar
+#
+# يتكون التنسيق من رأس اختياري:
+#
+# مترجم: اسمك وبريدك الإلكتروني
+# التحديث الأخير: تاريخ الترجمة
+# (بما في ذلك "#" البادئة وأي تعليقات أدلى بها المترجمون السابقون.
+# ينتهي السطر الفارغ الأول من تعليقات الرأس هذه.)
+#
+# متبوعًا بأكبر عدد ممكن:
+#
+# العبارة الإنجليزية: ترجمة
+# (واحد إلى سطر. بدون البادئة "#".
+# يتم توفير "العبارة الإنجليزية:" ، بما في ذلك النقطتين ":" ، بواسطة
+# مطورو WebCalendar. الجزء الخاص بك هو "الترجمة".)
+#
+# يحتوي دليل الأدوات على نصي بيرل لمساعدتك:
+# - check_translation.pl
+# يشير إلى ما إذا تمت ترجمة النص بالكامل بنجاح.
+# - update_translation.pl
+# سيحلل ملفات البرنامج للعثور على جميع ملفات الترجمة ("العبارة") و
+# tooltip ("العبارة"). سيتم ترتيب العبارات وفقًا للصفحة
+# (ملف) يحتوي على أول حدث. اختياريًا ، يمكنه وضع علامة على ملف
+# عبارات لم تتم ترجمتها بعد بوضعها
+#  << MISSING >>
+# على السطر فوق العبارة. وإذا كانت العبارة اختصار ،
+# سيتضمن النص الإنجليزي الكامل في السطر الموجود أسفل العبارة.
+#
+# ملاحظة: أحاول تقليص الحجم الكلي للملف. إذا كانت "الترجمة"
+# كلمة / عبارة متطابقة في لغتك والإنجليزية ، ما عليك سوى استخدام علامة "=".
+#
+# ملاحظة: ستلاحظ إدخال "May_" أدناه. هناك سبب لذلك.
+# ترجم "May_" إلى اسم الشهر بالكامل و "May" إلى ،
+# عادةً ما يكون الاختصار المكون من ثلاثة أحرف ، والشهر (مثل "أكتوبر" لـ "أكتوبر").
+#
+# لقد استخدمت مترجم جوجل لهذا الغرض.
+# يجب أن يكون كافيا حتى يتمكن المتحدث الأصلي من التحقق من ذلك.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: rtl
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: الإصدار XXX
+WebCalendar is a PHP application used...: WebCalendar هو تطبيق PHP يستخدم للاحتفاظ بالتقويم لمستخدم واحد أو لمجموعة من مستخدمي الإنترنت / الإنترانت. يمكن أيضًا تكوينه كتقويم حدث.
+Credits: الاعتمادات
+About: حول
+OK: موافق
+
+########################################
+# Page: access.php
+#
+Database error XXX.: خطأ في قاعدة البيانات: XXX.
+DEFAULT CONFIGURATION: التكوين الافتراضي
+Go: يذهب
+Save: يحفظ
+Undo: الغاء التحميل
+Public Access: الوصول العام
+Admin: مسؤل
+User Access Control: التحكم في وصول المستخدم
+Allow Access to Other Users Calendar: السماح بالوصول إلى تقويم المستخدمين الآخرين
+Grant This User Access to My Calendar: منح هذا المستخدم حق الوصول إلى التقويم الخاص بي
+Type: اكتب
+Calendar: تقويم
+View Event: عرض المناسبة
+View: رأي
+Edit: يحرر
+Approve/Reject: الموافقة / الرفض
+Events: الأحداث
+Tasks: مهام
+Journals: المجلات
+Can Invite: يمكن أن تدعو
+Can Email: يمكن إرسال بريد إلكتروني
+Can See Time Only: يمكن رؤية الوقت فقط
+Assistant: مساعد
+Select All: اختر الكل
+Clear All: امسح الكل
+Public: عامة
+Confidential: مؤتمن
+Private: خاص
+
+########################################
+# Page: activity_log.php
+#
+Next: التالي
+Previous: سابق
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: الحدث XXX موجود بالفعل في التقويم الخاص بك.
+Invalid entry id XXX.: معرف إدخال غير صالح: "XXX".
+a XXX event may not be added to your calendar: هذا حدث XXX ولا يمكن إضافته إلى التقويم الخاص بك.
+confidential: مؤتمن
+private: نشر
+Error adding event XXX.: خطأ في إضافة الحدث: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: اسم الإعداد غير صالح "XXX".
+Select: يختار
+Day: يوم
+Week: أسبوع
+Month: شهر
+Year: سنة
+Bottom: قاع
+Top: قمة
+Anyone: أي واحد
+Participant: مشارك
+Settings: إعدادات
+Groups: مجموعات
+NonUser Calendars: تقاويم غير المستخدمين
+Other: آخر
+Email: بريد الالكتروني
+Colors: الألوان
+Document background: وثيقة الخلفية
+Document title: عنوان المستند
+Document text: نص المستند
+My event text: نص الحدث الخاص بي
+Table grid color: لون شبكة الجدول
+Table header background: خلفية رأس الجدول
+Table header text: نص رأس الجدول
+Table cell background: خلفية خلية الجدول
+Table cell background for current day: خلفية خلية الجدول لليوم الحالي
+Table cell background for days with events: خلفية خلية الجدول للأيام مع الأحداث
+Table cell background for weekends: خلفية خلية الجدول لعطلات نهاية الأسبوع
+Table cell background for other month: خلفية خلية الجدول لشهر آخر
+Week number color: لون رقم الأسبوع
+Event popup background: حدث الخلفية المنبثقة
+Event popup text: نص منبثق للحدث
+System Settings: اعدادات النظام
+Help: مساعدة
+System options: خيارات النظام
+app-name-help: يحدد اسم التطبيق الذي سيظهر في شريط عنوان المتصفح لجميع الصفحات وعلى صفحة تسجيل الدخول. سيتم البحث عن القيمة التي تحددها هنا في ملف الترجمات مما يسمح لك بتقديم عناوين مختلفة للغات مختلفة.
+Application Name: اسم التطبيق
+Translated Name (XXX): الاسم المترجم (XXX)
+server-url-help: يحدد عنوان URL الأساسي للتطبيق. سيتم تضمين هذا عند إرسال تذكيرات البريد الإلكتروني والإشعارات.
+Server URL: عنوان URL للخادم
+home-url-help: يحدد عنوان URL الرئيسي للتطبيق. يمكن أن يكون هذا مطلقًا أو نسبيًا
+Home URL: عنوان URL للصفحة الرئيسية
+language-help: يحدد اللغة التي سيتم استخدامها.
+Language: لغة
+Your browser default language is XXX.: اللغة الافتراضية لمتصفحك هي "XXX".
+Allow user to use themes: السماح للمستخدم باستخدام السمات
+themes-help: يسمح بالتحديث الشامل لإعدادات التكوين. تسميات الأحرف الصغيرة هي تفضيلات المستخدم فقط.
+Themes: ثيمات
+AVAILABLE THEMES: الموضوعات المتاحة
+None: لا أحد
+Preview: معاينة
+Site customization: تخصيص الموقع
+custom-script-help: يسمح بإدخال جافا سكريبت مخصص أو نص ورقة أنماط سيتم إدراجه في قسم "رأس" HTML في كل صفحة.
+Custom script/stylesheet: نص مخصص / ورقة أنماط
+custom-header-help: يسمح بتضمين مقتطف HTML مخصص في أعلى كل صفحة.
+Custom header: رأس مخصص
+custom-trailer-help: يسمح بتضمين مقتطف HTML مخصص في نهاية كل صفحة.
+Custom trailer: مقطورة مخصصة
+enable-external-header-help: يسمح بتحميل المقطع الدعائي المخصص من ملف خارجي
+Allow external file for header/script/trailer: السماح بملف خارجي للرأس / النص / المقطع الدعائي
+Allow user to override header/trailer: السماح للمستخدم بتجاوز الرأس / المقطع الدعائي
+Date and Time: التاريخ و الوقت
+server-tz-help: يحدد عدد الساعات لضبط الوقت من التوقيت العالمي المنسق إلى وقت الخادم.
+Server Timezone Selection: تحديد المنطقة الزمنية للخادم
+tz-help: يحدد عدد الساعات لضبط الوقت من التوقيت العالمي المنسق (UTC) إلى التوقيت المحلي.
+Default Client Timezone Selection: تحديد المنطقة الزمنية للعميل الافتراضي
+display-general-use-gmt-help: في حالة التمكين ، يتم عرض التواريخ / الأوقات الشائعة على أنها GMT
+Display Common Use Date/Times as GMT: عرض تاريخ / أوقات الاستخدام الشائع كـ GMT
+date-format-help: يحدد تنسيق التاريخ المفضل.
+Date format: صيغة التاريخ
+Small Task Date: تاريخ المهمة الصغيرة
+display-week-starts-on: يحدد يوم الأسبوع الذي يبدأ به الأسبوع. إذا تم تحديد يوم الاثنين ، فستكون أرقام الأسبوع عبارة عن أرقام أسبوع ISO.
+Week starts on: يبدأ الأسبوع في
+display-weekend-starts-on: يحدد يوم الأسبوع لبدء عطلات نهاية الأسبوع
+Weekend starts on: تبدأ عطلة نهاية الأسبوع في
+time-format-help: تحدد تنسيق الوقت المطلوب استخدامه:<br><em>12 ساعة:</em> عرض الأوقات على أنها 3 صباحًا و 8:30 مساءً وما إلى ذلك.<br><em>24 ساعة:</em> أوقات العرض 300 ، 2030 ، إلخ.
+Time format: تنسيق الوقت
+12 hour: 12 ساعة
+24 hour: 24 ساعة
+timed-evt-len-help: يحدد أسلوب الإدخال لتحديد طول الحدث المحدد بوقت.
+Specify timed event length by: حدد مدة الحدث المحدد بوقت بـ
+Duration: مدة
+End Time: وقت النهاية
+work-hours-help: يحدد النطاق الزمني المطلوب عرضه لعرض اليوم.
+Work hours: ساعات العمل
+From: من
+to: إلى
+Appearance: مظهر
+preferred-view-help: يحدد طريقة العرض الافتراضية (يوم أو أسبوع أو شهر أو سنة).
+Preferred view: العرض المفضل
+Allow top menu: السماح بالقائمة العلوية
+Date Selectors position: موقف محدد التاريخ
+menu-themes-help: يضبط ألوان ونمط القائمة العلوية
+Menu theme: سمة القائمة
+fonts-help: تحديد قائمة بخطوط النظام المراد استخدامها (مثل "Arial، Helvetica")
+Fonts: الخطوط
+display-sm_month-help: في حالة التمكين ، يعرض الشهور الصغيرة في مشاهدات الشهر
+Display small months: عرض الأشهر الصغيرة
+display-weekends-help: تضمين عطلات نهاية الأسبوع عند مشاهدة أسبوع.
+Display weekends: عرض عطلات نهاية الأسبوع
+display-long-daynames-help: في حالة التمكين ، يتم عرض أسماء الأيام الطويلة
+Display long day names: عرض أسماء الأيام الطويلة
+display-alldays-help: عرض الأيام السابقة والتالية في عروض الشهر ، وملء جميع الخلايا.
+Display all days in month view: عرض كل الأيام في عرض الشهر
+display-week-number-help: يحدد ما إذا كان يجب عرض رقم الأسبوع (1-52) في عرض الشهر وعرض الأسبوع.
+Display week number: عرض رقم الأسبوع
+display-desc-print-day-help: قم بتضمين أوصاف الأحداث في نسخة صالحة للطباعة من عرض اليوم.
+Display description in printer day view: عرض الوصف في عرض اليوم للطابعة
+yearly-shows-events-help: في العرض السنوي ، اعرض الأيام التي تحتوي على أحداث بخط عريض.
+Display days with events in bold in month and year views: عرض الأيام مع الأحداث بخط عريض في مشاهدات الشهر والسنة
+display-minutes-help: في حالة التمكين ، سيتم دائمًا عرض الدقائق التي تنتهي بـ: 00
+Display 00 minutes always: عرض 00 دقيقة دائما
+display-end-times-help: عرض أوقات انتهاء الحدث إذا تم توقيت الحدث
+Display end times on calendars: عرض أوقات الانتهاء في التقويمات
+allow-view-add-help: سيتم تضمين رمز "+" في طرق العرض ، مما يسمح للمستخدمين بإضافة الأحداث بسرعة إلى تقاويم المستخدمين الآخرين.
+Include add event link in views: تضمين إضافة ارتباط الحدث في وجهات النظر
+lunar-help: في حالة التمكين ، سيتم عرض رموز صغيرة تمثل مراحل القمر كل شهر
+Display Lunar Phases in month view: عرض مراحل القمر في عرض الشهر
+Restrictions: قيود
+allow-view-other-help: يحدد ما إذا كان يمكن لمستخدم واحد عرض تقويم مستخدم آخر.
+Allow viewing other users calendars: السماح بعرض تقاويم المستخدم الآخر
+require-approvals-help: عند التمكين ، يجب على المستخدم الموافقة على حدث قبل عرضه في التقويم الخاص به (ما لم يتم تمكين العرض غير المعتمد). لاحظ أن تعيين هذا على "لا" لن يؤدي إلى إيقاف الموافقات لتقويم الوصول العام (إذا تم تمكين تقويم الوصول العام).
+Require event approvals: تتطلب موافقات الحدث
+display-unapproved-help: لتحديد ما إذا كان سيتم عرض الأحداث غير الموافق عليها في التقويم الخاص بك.<br>إذا تم التعيين على "نعم" ، فسيتم عرض الأحداث غير المعتمدة في التقويم الخاص بك (بلون نص مختلف).<br>إذا تم التعيين على "لا" ، إذن يجب الموافقة على الأحداث غير المعتمدة قبل عرضها في التقويم الخاص بك.
+Display unapproved: عرض غير موافق عليه
+conflict-check-help: تحقق من وجود تعارضات في الأحداث (حدثان مجدولان في نفس الوقت لنفس الشخص). إذا قمت بتعيين هذا على "نعم" ، فستظل قادرًا على جدولة حدثين في نفس الوقت بعد تأكيد التحذير. إذا قمت بتعيين هذا على "لا" ، فلن يتم التحقق من التعارضات. ربما تريد تعيين هذا على "نعم" ، لذلك يتم التحقق من التعارض.
+Check for event conflicts: تحقق من وجود تعارضات في الأحداث
+Yes: نعم
+No: لا
+conflict-months-help: إذا كان التحقق من التعارض في مكانه (تم تعيين "التحقق من تعارض الأحداث" على "لا" & # 41 ؛ ، فهذا يحدد عدد الأشهر المقبلة التي يجب أن نتحقق فيها من التعارضات. إذا وجدت أن إضافة الأحداث تستغرق وقتًا طويلاً للمعالجة ، قم بتقليل هذا الرقم.
+Conflict checking months: شهور التحقق من الصراع
+conflict-check-override-help: يسمح للمستخدمين بإلغاء تعارض الأحداث وجدولة حدثين أو أكثر في نفس الوقت.
+Allow users to override conflicts: السماح للمستخدمين بتجاوز التعارضات
+limit-appts-help: يسمح لمسؤول النظام بتعيين حد على مستوى النظام لعدد المواعيد التي يمكن لمستخدم واحد الحصول عليها في أي يوم واحد.
+Limit number of timed events per day: الحد من عدد الأحداث الموقوتة في اليوم الواحد
+limit-appts-number-help: يحدِّد الحد الأقصى لعدد الأحداث الموقوتة التي يمكن أن يحصل عليها المستخدم في يوم واحد.
+Maximum timed events per day: الحد الأقصى من الأحداث الموقوتة في اليوم الواحد
+crossday-help: في حالة التمكين ، سيتم عرض الأحداث التي تمتد على مدار أيام في أيام منفصلة
+Disable Cross-Day Events: تعطيل الأحداث عبر اليوم
+disable-location-field-help: سيؤدي تحديد "نعم" إلى إزالة حقل "الموقع" من صفحات معلومات الحدث
+Disable Location field: تعطيل حقل الموقع
+disable-url-field-help: سيؤدي تحديد "نعم" إلى إزالة حقل "URL" من صفحات معلومات الحدث
+Disable URL field: تعطيل حقل URL
+disable-priority-field-help: سيؤدي تحديد "نعم" إلى إزالة حقل "الأولوية" من صفحات معلومات الحدث ، مما يوفر واجهة أبسط للمبتدئين.
+Disable Priority field: تعطيل حقل الأولوية
+disable-access-field-help: سيؤدي تحديد "نعم" إلى إزالة حقل "الوصول" من صفحات معلومات الحدث ، مما يوفر واجهة أبسط للمبتدئين.
+Disable Access field: تعطيل الوصول إلى المجال
+disable-participants-field-help: سيؤدي تحديد "نعم" إلى إزالة حقل "المشاركون" من صفحات معلومات الحدث ، مما يمنع المستخدمين من إضافة مستخدمين آخرين إلى أحداثهم. إذا قمت بتمكين هذا الخيار ، فقد ترغب أيضًا في تعطيل حقل "السماح بعرض تقاويم المستخدم الآخر" أيضًا.
+Disable Participants field: حقل تعطيل المشاركين
+disable-repeating-field-help: اختيار "نعم" سيزيل حقل "التكرار" عند إضافة الأحداث. سيوفر هذا واجهة أبسط للمبتدئين.
+Disable Repeating field: تعطيل حقل التكرار
+allow-html-description-help: في حالة التمكين ، يمكن للمستخدمين إدخال HTML في حقل وصف الحدث. في حالة عدم التمكين ، سيتم إهمال علامات HTML بحيث تظهر كنص عادي. تحذير: سيسمح تمكين هذه الميزة للمستخدمين بالإشارة إلى الصور الموجودة على مواقع الويب الأخرى.
+Allow HTML in Description: السماح بتنسيق HTML في الوصف
+Popups: تظهر ظهور مفاجئ
+disable-popups-help: تعطيل النوافذ المنبثقة من عروض التقويم
+Disable Pop-Ups: تعطيل النوافذ المنبثقة
+popup-includes-siteextras-help: في حالة التمكين ، اسمح بإعداد حقول الحدث المخصصة في ملف site_extras.php سيتم عرضه في النوافذ المنبثقة للحدث.
+Display Site Extras in popup: عرض إضافات الموقع في النافذة المنبثقة
+popup-includes-participants-help: في حالة التمكين ، يتم عرض المشاركين في النوافذ المنبثقة للحدث.
+Display Participants in popup: عرض المشاركين في نافذة منبثقة
+Miscellaneous: متفرقات
+remember-last-login-help: عند التمكين ، سيتم ملء معلومات تسجيل دخول المستخدم لهم في صفحة تسجيل الدخول (ولكن ليس كلمة المرور) ، وسيتم تحميل تفضيلات المستخدم (بما في ذلك الألوان المفضلة واختيار اللغة).
+Remember last login: تذكر آخر تسجيل دخول
+summary_length-help: الحد الأقصى لطول "الوصف الموجز" في مشاهدات التقويم
+Brief Description Length: وصف موجز الطول
+user_sort-help: يحدد ترتيب الفرز لقوائم المستخدمين وغير المستخدمين
+User Sort Order: ترتيب فرز المستخدم
+Lastname, Firstname: اسم العائلة الاسم الأول
+Firstname, Lastname: الاسم الاول الاسم الاخير
+allow-public-access-help: عند التمكين ، يمكن استخدام التقويم كتقويم عام للقراءة فقط لا يتطلب من المستخدمين تسجيل الدخول.
+Allow public access: السماح بالوصول العام
+public-access-default-visible: ستظهر الأحداث من التقويم العام تلقائيًا في جميع تقاويم المستخدمين
+Public access visible by default: الوصول العام مرئي بشكل افتراضي
+public-access-default-selected: عند إضافة حدث جديد ، سيتم تحديد المستخدم العام افتراضيًا كمشارك.
+Public access is default participant: الوصول العام هو مشارك افتراضي
+public-access-view-others-help: عند الوصول إلى النظام بوصول عام ، يحدد ما إذا كان يمكن للمستخدم عرض التقويم الخاص بمستخدم تقويم آخر.
+Public access can view other users: يمكن الوصول العام عرض المستخدمين الآخرين
+public-access-can-add-help: عند التمكين ، سيتمكن المستخدمون الذين يصلون إلى النظام من خلال الوصول العام من إضافة أحداث جديدة ، لكنهم لن يظهروا في التقويم حتى يوافق المسؤول على الحدث الجديد.
+Public access can add events: يمكن الوصول العام إضافة الأحداث
+public-access-add-requires-approval-help: يحدد ما إذا كانت الأحداث المضافة عبر حساب الوصول العام تتطلب الموافقة قبل عرضها.
+Public access new events require approval: تتطلب الأحداث الجديدة الوصول العام الموافقة
+public-access-sees-participants-help: في حالة التمكين ، سيتمكن المستخدمون الذين يدخلون إلى التقويم من الحساب العام من رؤية المشاركين في الحدث إذا عرضوا تفاصيل الحدث.
+Public access can view participants: يمكن الوصول العام عرض المشاركين
+public-access-override-help: يسمح بإخفاء أسماء الأحداث وأوصافها في التقويم العام
+Override event name/description for public access: تجاوز اسم / وصف الحدث للوصول العام
+public-access-override-text-help: النص المراد عرضه إذا تم تمكين الخيار أعلاه. إذا كان "غير متوفر" ، فسيتم ترجمته.
+Text to display to public access: نص لعرضه للوصول العام
+public-access-captcha-help: في حالة التمكين ، تتطلب الأحداث الجديدة التي يضيفها الجمهور اجتياز التحقق من صحة CAPTCHA.
+Require CAPTCHA validation for public access new events: طلب التحقق من صحة CAPTCHA للوصول العام إلى الأحداث الجديدة
+uac-enabled-help: لتمكين التحكم في الوصول على مستوى المستخدم
+User Access Control enabled: تم تمكين التحكم في وصول المستخدم
+groups-enabled-help: يتيح دعم المجموعة ، مما يسمح للمستخدمين بتحديد المستخدمين حسب المجموعات.
+Groups enabled: تمكين المجموعات
+user-sees-his-group-help: في حالة التمكين ، لن يرى المستخدمون مستخدمي التقويم الذين ليسوا في مجموعة واحدة على الأقل من مجموعاتهم.
+User sees only his groups: يرى المستخدم فقط مجموعاته
+nonuser-enabled-help: في حالة التمكين ، سيكون لدى المسؤولين خيار إضافة تقاويم لغير المستخدمين
+Nonuser enabled: تم تمكين التقويمات لغير المستخدمين
+nonuser-list-help: مكان عرض تقاويم غير المستخدمين في قائمة المشاركين
+Nonuser list: عرض في قائمة المشاركين في
+Upcoming Events: الأحداث القادمة
+upcoming-events-help: قم بتمكين next.php
+Enabled: ممكن
+upcoming-events-allow-override: السماح لمعلمة المستخدم لـ next.php
+Allow user override: السماح بتجاوز المستخدم
+upcoming-events-display-caticons: قم بتضمين أيقونات الفئات في next.php
+Display category icons: عرض رموز الفئات
+upcoming-events-display-layers: عرض الطبقات في next.php
+Display layers: طبقات العرض
+upcoming-events-display-links: عرض الروابط في next.php
+Display links to events: عرض روابط الأحداث
+upcoming-events-display-popups: عرض النوافذ المنبثقة للحدث في next.php
+Display event popups: عرض الأحداث المنبثقة
+reports-enabled-help: في حالة التمكين ، سيرى المستخدمون قسم "التقارير" أسفل كل صفحة وسيسمح لهم بإنشاء تقارير مخصصة. بالإضافة إلى ذلك ، يمكن للمستخدمين المسؤولين إنشاء تقارير عامة ستظهر في الجزء السفلي من جميع صفحات المستخدمين.
+Reports enabled: تم تمكين التقارير
+subscriptions-enabled-help: يحدد ما إذا كان بإمكان المستخدمين البعيدين الاشتراك في تقويم مستخدم WebCalendar ، مما يسمح لهم بمشاهدة أحداث مستخدم WebCalendar في تطبيقهم الذي يدعم iCal (مثل Apple's iCal أو Mozilla Calendar).
+Allow remote subscriptions: السماح بالاشتراكات البعيدة
+remotes-enabled-help: يسمح للمستخدمين بتحميل ملفات ics عن بعد باستخدام URL
+Allow remote calendars: السماح بالتقويمات البعيدة
+rss-enabled-help: يحدد ما إذا كان يمكن الحصول على تقويم المستخدم من موجز RSS.
+Enable RSS feed: تمكين موجز RSS
+categories-enabled-help: تمكن من دعم فئات الحدث.
+Categories enabled: تم تمكين الفئات
+icon_upload-enabled-help: في حالة التمكين ، يمكن للمستخدمين تحميل رموز الفئات
+Category Icon Upload enabled: تم تمكين تحميل رمز الفئة
+(Requires XXX folder to exist.): (يتطلب وجود مجلد XXX.)
+display-tasks-help: عرض نافذة مهمة صغيرة في تقويم الشهر واليوم
+Display small task list: اعرض قائمة المهام الصغيرة
+display-tasks-in-grid-help: اعرض المهام في التقويمات جنبًا إلى جنب مع الأحداث
+Display tasks in Calendars: اعرض المهام في التقويمات
+allow-external-users-help: يحدِّد ما إذا كان يمكن إضافة مستخدم بخلاف مستخدم التقويم إلى حدث أم لا. يتيح ذلك إدراج المستخدمين غير المدرجين في التقويم كمشاركين في الحدث.
+Allow external users: السماح للمستخدمين الخارجيين
+external-can-receive-notification-help: عند تمكين المستخدمين الخارجيين وتمكين استخدام البريد الإلكتروني ، يمكن للمستخدمين الخارجيين تلقي إشعارات بالبريد الإلكتروني عند إضافة الحدث أو تحديثه أو حذفه (إذا تم توفير عنوان البريد الإلكتروني للمستخدم الخارجي).
+External users can receive email notifications: يمكن للمستخدمين الخارجيين تلقي إشعارات البريد الإلكتروني
+external-can-receive-reminder-help: عند تمكين المستخدمين الخارجيين وتمكين استخدام البريد الإلكتروني ، يمكن للمستخدمين الخارجيين تلقي تذكيرات بالبريد الإلكتروني (إذا تم توفير عنوان البريد الإلكتروني للمستخدم الخارجي).
+External users can receive email reminders: يمكن للمستخدمين الخارجيين تلقي تذكيرات بالبريد الإلكتروني
+allow-self-registration-help: السماح للمستخدمين الجدد بتسجيل أنفسهم
+Allow self-registration: السماح بالتسجيل الذاتي
+use-blacklist-help: تقييد الوصول إلى وظائف WebCalendar استنادًا إلى عنوان IP
+Restrict self-registration to blacklist: قصر التسجيل الذاتي على القائمة السوداء
+allow-self-registration-full-help: السماح للمستخدمين الجدد بإكمال عملية التسجيل الذاتي عبر الإنترنت
+Use self-registration email notifications: توليد كلمات المرور وإرسالها إلى مستخدمين جدد
+allow-attachment-help: السماح للمستخدمين بإضافة ملفات المرفقات إلى الأحداث.
+Allow file attachments to events: السماح بمرفقات الملف للأحداث
+Admin and owner can always add attachments if enabled.: يمكن للمسؤول والمالك دائمًا إضافة المرفقات إذا تم تمكينه.
+allow-comments-help: السماح للمستخدمين بإضافة التعليقات على الأحداث.
+Allow comments to events: السماح بالتعليقات على الأحداث
+Admin and owner can always add comments if enabled.: يمكن للمسؤول والمالك دائمًا إضافة التعليقات إذا تم تمكينه.
+email-enabled-help: قم بتشغيل أو إيقاف تشغيل كل إرسال رسائل البريد الإلكتروني للإشعارات والتذكيرات. اضبط على "لا" ، إذا لم يتم إعداد الخادم الخاص بك بشكل صحيح لإرسال البريد.
+Email enabled: تمكين البريد الإلكتروني
+email-default-sender: يحدد عنوان البريد الإلكتروني المراد تحديده باعتباره المرسل عند إرسال التذكيرات.
+Default sender address: عنوان المرسل الافتراضي
+email-mailer: اختر نوع البريد الإلكتروني (SMTP ، PHP mail ، sendmail)
+Email Mailer: البريد الإلكتروني الارسال
+email-smtp-host: اسم (أسماء) مضيف خادم (خوادم) SMTP مفصولة بفواصل
+SMTP Host name(s): اسم (أسماء) مضيف SMTP
+email-smtp-port: رقم منفذ SMTP (عادة 25)
+SMTP Port Number: رقم منفذ SMTP
+email-smtp-auth: استخدم مصادقة SMTP
+SMTP Authentication: مصادقة SMTP
+email-smtp-username: اسم مستخدم SMTP في حالة استخدام المصادقة
+SMTP Username: اسم مستخدم SMTP
+email-smtp-password: كلمة مرور SMTP في حالة استخدام المصادقة
+SMTP Password: كلمة مرور SMTP
+Default user settings: إعدادات المستخدم الافتراضية
+email-format: حدد التفضيل لرسائل HTML أو الرسائل النصية العادية
+Email format preference: تفضيل تنسيق البريد الإلكتروني
+HTML: لغة البرمجة
+Plain Text: نص عادي
+email-include-ics: قم بتضمين ملف iCalendar ICS في رسالة بريد إلكتروني
+Include iCalendar attachments: تضمين مرفقات iCalendar
+email-event-reminders-help: تحدد ما إذا كنت تريد إرسال تذكيرات بالحدث أم لا.
+Event reminders: تذكير الحدث
+email-event-added: تحدد ما إذا كنت تريد إرسال إشعارات بالبريد الإلكتروني أم لا عند إضافة حدث إلى التقويم الخاص بك.
+Events added to my calendar: تمت إضافة الأحداث إلى التقويم الخاص بي
+email-event-updated: تحدد ما إذا كنت تريد إرسال إشعارات بالبريد الإلكتروني أم لا عندما يتم تحديث حدث في التقويم الخاص بك.
+Events updated on my calendar: تم تحديث الأحداث في التقويم الخاص بي
+email-event-deleted: تحدد ما إذا كنت تريد إرسال إشعارات بالبريد الإلكتروني أم لا عند إزالة حدث من التقويم الخاص بك.
+Events removed from my calendar: تمت إزالة الأحداث من التقويم الخاص بي
+email-event-rejected: تحدد ما إذا كنت تريد إرسال إعلامات بالبريد الإلكتروني أم لا عندما يرفض أحد المشاركين حدثًا موجودًا في التقويم الخاص بك.
+Event rejected by participant: تم رفض الحدث من قبل المشارك
+email-event-create: يحدد ما إذا كان منشئ الإدخالات سيتلقى بريدًا إلكترونيًا أم لا
+Event that I create: الحدث الذي أقوم بإنشائه
+Color options: خيارات الألوان
+Allow user to customize colors: السماح للمستخدم بتخصيص الألوان
+gradient-colors: إذا تم تمكين ألوان التدرج المستخدمة. يمكن أن يؤثر هذا بشكل كبير على الأداء.
+Enable gradient images for background colors: تمكين الصور المتدرجة لألوان الخلفية
+Not available: غير متوفر
+Background Image options: خيارات صورة الخلفية
+bgimage-help: عنوان URL لصورة الخلفية المطلوبة. قد يكون ارتباط نسبي.
+Background Image: الصورة الخلفية
+bgrepeat-help: يتحكم في تكرار سلوك صورة الخلفية.
+Background Repeat: تكرار الخلفية
+
+########################################
+# Page: adminhome.php
+#
+Assistants: مساعدين
+Preferences: التفضيلات
+Control Panel: لوحة التحكم
+Users: المستخدمون
+Account: حساب
+Categories: فئات
+Views: الآراء
+Layers: طبقات
+Reports: التقارير
+Delete Events: حذف الأحداث
+Activity Log: سجل النشاطات
+System Log: سجل النظام
+Security Audit: التدقيق الأمني
+Public Preferences: التفضيلات العامة
+Unapproved Public Events: الأحداث العامة غير المعتمدة
+Administrative Tools: الأدوات الإدارية
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: اسم مكرر: "XXX".
+Username XXX already exists.: اسم المستخدم "XXX" موجود بالفعل.
+Email address XXX already exists.: عنوان البريد الإلكتروني "XXX" موجود بالفعل.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): تعليقات إضافية: (اختياري)
+Approve and Send: الموافقة والإرسال
+Approve and Exit: الموافقة والخروج
+(Your comments will be emailed to the event creator.): (سيتم إرسال تعليقاتك بالبريد الإلكتروني إلى منشئ الحدث.)
+Hello, XXX.: مرحبًا XXX.
+XXX has approved an appointment and added comments.: تمت الموافقة على موعد وإضافة التعليقات بواسطة XXX.
+Subject XXX: الموضوع: "XXX".
+Description XXX: الوصف: "XXX".
+Date XXX: التاريخ: XXX
+Time XXX: الوقت: XXX
+Comments XXX: التعليقات: XXX
+Approved w/Comments by XXX.: تمت الموافقة عليه مع التعليقات بواسطة: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: وضع المسؤول
+Your assistants: مساعديك
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: خطأ غير معروف.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: خطأ في البرنامج: لم يتم تحديد XXX!
+user: المستعمل
+year: عام
+month: شهر
+day: يوم
+
+########################################
+# Page: category.php
+#
+Category Icon: رمز الفئة
+Global: عالمي
+The permissions for the icons directory are set to read-only: تم تعيين أذونات دليل الرموز للقراءة فقط.
+Category Name: اسم التصنيف:
+Color: اللون
+Remove Icon: إزالة الرمز:
+Add Icon to Category: إضافة أيقونة إلى الفئة
+Upload: تحميل
+GIF or PNG 6kb max: GIF أو PNG 6 كيلوبايت كحد أقصى
+Search for existing icons: ابحث عن الرموز الموجودة
+Add: يضيف
+Delete: حذف
+Are you sure you want to delete this entry?: هل أنت متأكد أنك تريد حذف هذا الإدخال؟
+Make New Category: اصنع فئة جديدة
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: مطلوب اسم الفئة
+File size exceeds maximum.: حجم الملف يتجاوز الحد الأقصى.
+File is not a GIF or PNG image: الملف ليس صورة GIF أو PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: الفئات المتوفرة
+ENTRY CATEGORIES: فئات الدخول
+Remove: يزيل
+Global Category: الفئة العالمية
+Cancel: يلغي
+
+########################################
+# Page: colors.php
+#
+Add Custom: إضافة مخصص
+Basic Colors: الألوان الأساسية
+Current Color: اللون الحالي
+Custom Colors: ألوان العرف
+Old Color: اللون القديم
+
+########################################
+# Page: combo.php
+#
+Select None: لا تختر شيء
+Agenda: جدول أعمال
+Add Task: إضافة مهمة
+Description: وصف
+Date: تاريخ
+Time: وقت
+Priority: أفضلية
+Access: وصول
+Created by: انشأ من قبل
+Updated: محدث
+Participants: مشاركون
+Attachments: المرفقات
+Comments: تعليقات
+Brief Description: وصف مختصر
+Full Description: وصف كامل
+Category: فئة
+Add event detail: أضف تفاصيل الحدث
+Start Date: تاريخ البدء
+Due Date: تاريخ الاستحقاق
+Add task detail: أضف تفاصيل المهمة
+All: الجميع
+Error: خطأ
+no response from server: لا توجد استجابة من الخادم
+JSON error: خطأ JSON
+High: متوسط
+Medium: واسطة
+Low: قليل
+Today: اليوم
+Add Entry: إضافة إدخال
+Unnamed Event: حدث بدون اسم
+Unnamed Task: مهمة بدون اسم
+Refresh: ينعش
+Click to add entry: انقر لإضافة إدخال
+Name: اسم
+pm: مساء
+am: صباحا
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: ألغى XXX موعدًا.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: معرف blob غير صالح
+
+########################################
+# Page: docadd.php
+#
+Add Comment: أضف تعليق
+Add Attachment: إضافة مرفق
+Subject: موضوعات
+Comment: تعليق
+Upload file: رفع ملف
+
+########################################
+# Page: docdel.php
+#
+Removed: إزالة
+
+########################################
+# Page: edit_entry.php
+#
+days: أيام
+hours: ساعات
+minutes: محضر جلسة
+You are not authorized to edit this task.: أنت غير مصرح لك لتحرير هذه المهمة.
+is in a different timezone than you are. Currently: تقع في منطقة زمنية مختلفة عن تلك المنطقة الزمنية. حاليا
+hour ahead of you: أمامك بساعة
+hour behind you: ساعة خلفك
+hours ahead of you: أمامك بساعات
+hours behind you: ساعات خلفك
+XXX is in a different timezone (ahead): (يقع XXX في منطقة زمنية مختلفة ؛ أمامك YYY.<br>& nbsp ؛ ZZZ)
+XXX is in a different timezone (behind): (XXX في منطقة زمنية مختلفة ؛ YYY خلفك.<br>& nbsp ؛ ZZZ)
+Time entered here is based on your Timezone.: الوقت الذي تم إدخاله هنا يعتمد على منطقتك الزمنية.
+Edit Entry: تحرير دخول
+Details: تفاصيل
+Repeat: يكرر
+Reminders: تذكير
+brief-description-help: يجب أن يوفر هذا وصفًا موجزًا ​​(حوالي 20 حرفًا) للحدث. سيمثل هذا الحدث عند عرض التقويم.
+full-description-help: يجب أن يكمل هذا تفاصيل الحدث. يمكن رؤية هذه المعلومات عندما يشاهد المستخدم الحدث.
+access-help: يحدد مستوى الوصول إلى الحدث. <ul> <li> عام: يمكن للجميع مشاهدة التفاصيل الكاملة للحدث.</li> <li> سري: يمكن للآخرين معرفة أن لديك إدخالًا لهذا التاريخ والوقت ، ولكن لا تفاصيل ما هو عليه.</li></ul>
+priority-help: يحدد أولوية الحدث. سيتم عرض الأحداث ذات الأولوية العالية بخط عريض.
+category-help: يحدد فئة الحدث.
+completed-help: تاريخ اكتمال المهمة. يتم التمكين فقط عندما تساوي نسبة جميع المشاركين 100٪.
+Date Completed: تاريخ الانتهاء
+percent-help: نسبة إنجاز المهمة لهذا المستخدم
+Percent Complete: في المئة كاملة
+All Percentages: جميع النسب المئوية
+location-help: موقع الحدث
+Location: موقع
+url-help: عنوان URL للحدث
+URL: =
+date-help: يحدد تاريخ الحدث.
+Untimed event: حدث غير محدد التوقيت
+Timed event: حدث موقوت
+All day event: حدث طوال اليوم
+Timezone Offset: إزاحة المنطقة الزمنية
+time-help: يحدد وقت الحدث. <ul> <li> "حدث محدد بوقت" (لحدث تمت جدولته في وقت محدد في ذلك اليوم)</li> <li> "حدث غير محدد بوقت" (لحدث ليس له وقت (مثل عطلة )</li> <li> "حدث طوال اليوم" (لحدث يستمر طوال اليوم (مثل التواجد خارج المكتب)</li></ul>
+duration-help: يحدد مدة الحدث (بالساعات والدقائق). <em>يمكن ترك هذا الحقل فارغًا.</em>
+end-time-help: يحدد الوقت المتوقع لانتهاء الحدث.
+Start Time: وقت البدء
+Due Time: عند الوقت
+Site Extras: إضافات الموقع
+avail_participants-help: يسرد المشاركين المتاحين لهذا الإدخال.
+Available: متاح
+Find Name: البحث عن الاسم
+Resources: موارد
+participants-help: يسرد المشاركين في هذا الإدخال.
+Selected: المحدد
+Availability: التوفر
+external-participants-help: تحدد قائمة المشاركين في الحدث من غير مستخدمي التقويم. يجب أن يتم سرد المستخدمين واحد في كل سطر ويمكن أن يتضمن عنوان بريد إلكتروني. إذا تم تحديد عنوان بريد إلكتروني ، يكون المستخدم مؤهلاً لتلقي الإشعارات والتذكيرات.
+External Participants: المشاركون الخارجيون
+repeat-type-help: حدد عدد مرات تكرار الحدث.
+Daily: يوميا
+Weekly: أسبوعي
+Monthly: شهريا
+by day: في اليوم
+by date: حسب التاريخ
+by position: حسب الموضع
+Monthly (by day): شهريا (باليوم)
+Monthly (by date): شهريًا (حسب التاريخ)
+Monthly (by position): شهريًا (حسب الموقع)
+Yearly: سنوي
+Manual: يدوي
+Expert Mode: وضع الخبراء
+repeat-end-date-help: يحدد التاريخ الذي يجب أن يتكرر فيه الحدث.
+Ending: تنتهي
+Forever: إلى الأبد
+Use end date: استخدم تاريخ الانتهاء
+Number of times: عدد الاوقات
+repeat-frequency-help: يحدد عدد مرات تكرار الحدث.
+Frequency: تكرر
+Weekdays Only: أيام الأسبوع فقط
+Week Start: بداية الأسبوع
+repeat-bydayextended-help: يسمح بتحديد التاريخ على أساس يوم من الأسبوع.
+ByDay: في اليوم
+repeat-month-help: يحدد الأشهر التي يجب أن يتكرر فيها الحدث.
+ByMonth: شهريا
+repeat-bysetpos-help: يسمح بتحديد التاريخ على أساس الموقف في الشهر.
+BySetPos: =
+repeat-bymonthdayextended-help: يسمح بتحديد التاريخ على أساس التاريخ.
+ByMonthDay: =
+repeat-byweekno-help: يسمح للمستخدم بتحديد قائمة الأسابيع لتكرار الحدث (1،2 ... 53 ، -53 ، -52 ...- 1).
+ByWeekNo: حسب الأسبوع
+repeat-byyearday-help: يسمح للمستخدم بتحديد قائمة بأيام السنة لتكرار الحدث (1،2 ... 366 ، -366 ، -365 ...- 1).
+ByYearDay: حسب العام
+repeat-exceptions-help: الأيام الإضافية التي يجب أو لا ينبغي أن يحدث فيها هذا الحدث.
+Exclusions: الاستثناءات
+Inclusions: الادراج
+Add Exception: إضافة استثناء
+Add Inclusion: أضف التضمين
+Delete Selected: احذف المختار
+Send Reminder: يرسل تذكير
+When: متي
+Use Date/Time: استخدام التاريخ / الوقت
+Use Offset: استخدم الأوفست
+Before: قبل
+After: بعد، بعدما
+Start: بداية
+End/Due: النهاية / الاستحقاق
+Times: مرات
+Every: كل
+CAPTCHA Warning: تحذير:</b> لا يمكن استخدام CAPTCHA بدون امتداد PHP GD!<br>
+Delete entry: حذف المدخلات
+You are not authorized to edit this entry.: أنت غير مصرح لك لتعديل هذا الإدخال.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: حدد XXX موعدًا جديدًا.
+XXX has updated an appointment.: قام XXX بتحديث موعد.
+Security violation!: اختراق الامن!
+You must enter the anti-spam text on the previous page.: يجب عليك إدخال نص مكافحة البريد العشوائي في الصفحة السابقة.
+The following conflicts with the suggested time: يتعارض التالي مع الوقت المقترح
+User removed from participants list.: تمت إزالة المستخدم من قائمة المشاركين.
+Please look on XXX to accept or reject this appointment.: الرجاء البحث على XXX لقبول هذا الموعد أو رفضه.
+Please look on XXX to view this appointment.: يرجى إلقاء نظرة على XXX لعرض هذا الموعد.
+Scheduling Conflict: تضارب المواعيد
+Your suggested time of: الوقت المقترح لك
+conflicts with the following existing calendar entries: يتعارض مع إدخالات التقويم الحالية التالية
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: لم يتم تعيين NONUSER_PREFIX في "config.php".
+word characters only: (يمكن أن يحتوي على أحرف كلمات فقط ؛ [a-zA-Z_0-9])
+Add User: إضافة مستخدم
+Edit User: تحرير العضو
+Calendar ID: معرف التقويم
+First Name: الاسم الاول
+Last Name: الكنية
+Is public calendar: هو تقويم عام
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: خطأ في قاعدة البيانات
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: أضف التقويم البعيد
+Edit Remote Calendar: تحرير التقويم البعيد
+Create Layer: إنشاء طبقة
+Reload: إعادة تحميل
+Required to View Remote Calendar: مطلوب لعرض التقويم البعيد
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: نتائج الاستيراد
+Events successfully imported: تم استيراد الأحداث بنجاح
+Create a new layer to view this calendar.: قم بإنشاء طبقة جديدة لعرض هذا التقويم.
+Errors: أخطاء
+There was an error parsing the import file or no events were returned.: حدث خطأ أثناء تحليل ملف الاستيراد أو أنه لم يتم إرجاع أي أحداث.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: غدا
+Yesterday: أمس
+Day before yesterday: أول أمس
+Next week: الاسبوع القادم
+This week: هذا الاسبوع
+Last week: الاسبوع الماضي
+Week before last: الأسبوع قبل الماضي
+Next week and week after: الأسبوع القادم والأسبوع بعد ذلك
+This week and next week: هذا الأسبوع والأسبوع القادم
+Last week and this week: الأسبوع الماضي وهذا الأسبوع
+Last two weeks: الاسبوعين الماضيين
+Next month: الشهر القادم
+This month: هذا الشهر
+Last month: الشهر الماضي
+Month before last: الشهر قبل الماضي
+Next year: العام القادم
+This year: هذه السنة
+Last year: العام الماضي
+Year before last: سنه قبل الماضيه
+Next 14 days: الـ 14 يومًا القادمة
+Next 30 days: الثلاثين يومًا القادمة
+Next 60 days: 60 يومًا القادمة
+Next 90 days: 90 يومًا القادمة
+Next 180 days: الـ 180 يومًا القادمة
+Next 365 days: 365 يومًا القادمة
+Invalid report id XXX.: معرّف التقرير غير صالح: "XXX".
+Unnamed Report: تقرير بدون اسم
+Add Report: إضافة تقرير
+Edit Report: تحرير التقرير
+Report name: تقرير اسم
+User: مستخدم
+Current User: المستخدم الحالي
+Include link in menu: تضمين ارتباط في القائمة
+Include standard header/trailer: تضمين رأس / مقطورة قياسية
+Include previous/next links: قم بتضمين الروابط السابقة / التالية
+Include empty dates: قم بتضمين تواريخ فارغة
+Date range: نطاق الموعد
+Template variables: متغيرات القالب
+Page template: قالب الصفحة
+Day template: قالب اليوم
+Event template: نموذج الحدث
+Are you sure you want to delete this report?: هل أنت متأكد أنك تريد حذف هذا التقرير؟
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: لا يوجد معرّف تقرير من هذا القبيل: "XXX".
+Variable XXX not found.: لم يتم العثور على المتغير XXX.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: تحرير رأس مخصص
+Edit Custom Script/Stylesheet: تحرير البرنامج النصي / ورقة الأنماط المخصصة
+Edit Custom Trailer: تحرير مقطورة مخصصة
+
+########################################
+# Page: edit_user.php
+#
+Username: اسم المستخدم
+E-mail address: عنوان بريد الكتروني
+Password: كلمة المرور
+again: تكرارا
+Disabled for demo: معطل للعرض
+Are you sure you want to delete this user?: هل أنت متأكد أنك تريد حذف هذا المستخدم؟
+Change Password: تغيير كلمة المرور
+New Password: كلمة السر الجديدة
+Set Password: ضبط كلمة السر
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: حذف المستخدمين غير مدعوم.
+The passwords were not identical.: لم تكن كلمات المرور متطابقة.
+You have not entered a password.: لم تدخل كلمة المرور.
+Username cannot be blank.: اسم المستخدم لا يمكن أن يكون فارغا.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: غير مخول
+
+########################################
+# Page: export.php
+#
+Export: يصدر
+Export format: تنسيق التصدير
+Include all layers: قم بتضمين كل الطبقات
+Include deleted entries: تضمين الإدخالات المحذوفة
+Export all dates: تصدير جميع التواريخ
+Start date: تاريخ البدء
+End date: تاريخ الانتهاء
+Modified since: تم التعديل منذ ذلك الحين
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: تنسيق التصدير غير محدد أو غير صحيح.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: لم يتم تحديد مستخدم.
+
+########################################
+# Page: groups.php
+#
+Add New Group: أضف مجموعة جديدة
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: مجموعة بدون اسم
+Add Group: أضف مجموعة
+Edit Group: تحرير المجموعة
+Group name: أسم المجموعة
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: يجب عليك تحديد اسم المجموعة
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: التحديث التلقائي للتقويمات
+auto-refresh-help: عند التمكين ، سيتم تحديث كل من عرض اليوم وعرض الأسبوع وعرض الشهر وقائمة الصفحات غير المعتمدة جميعها تلقائيًا بشكل دوري.
+Auto-refresh time: وقت التحديث التلقائي
+auto-refresh-time-help: إذا تم تمكين التحديث التلقائي ، فإن هذا يحدد الوقت بين كل تحديث.
+Display days with events in bold in year view: عرض الأيام مع الأحداث بخط عريض في عرض السنة
+Display weekends in week view: عرض عطلات نهاية الأسبوع في عرض الأسبوع
+Time interval: الفاصل الزمني
+time-interval-help: يحدّد المدة التي ستكون فيها الكتل الزمنية في عرض الأسبوع وعرض اليوم.
+Nonuser: تقاويم غير المستخدمين
+user-customize-color: يحدد ما إذا كان يُسمح للمستخدمين بتعديل نظام الألوان الخاص بهم.
+enable-gradient-help: استخدم ألوان متدرجة لخلفيات الخلايا.
+Manually entering color values: إدخال قيم اللون يدويًا
+colors-help: يجب تحديد كل الألوان بتنسيق "#RRGGBB" السداسي عشري حيث "RR" هي القيمة السداسية العشرية للأحمر ، و "GG" هي القيمة السداسية العشرية للأخضر ، و "BB" هي القيمة السداسية العشرية للأزرق.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: تقرير الشوائب
+Please include all the information below when reporting a bug.: الرجاء تضمين جميع المعلومات أدناه عند الإبلاغ عن خطأ.
+Also, please use English rather than XXX.: الرجاء أيضًا استخدام  الإنجليزية</b> بدلاً من XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: وثائق WebCalendar
+Currently in English only.: حاليًا باللغة الإنجليزية فقط.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: إضافة / تحرير إدخالات التقويم
+Repeat Type: كرر النوع
+For More Information...: للمزيد من المعلومات...
+Repeat End Date: كرر تاريخ الانتهاء
+Repeat Day: كرر اليوم
+repeat-day-help: يحدد أيام الأسبوع التي يجب أن يتكرر فيها الحدث.
+
+########################################
+# Page: help_import.php
+#
+Import: يستورد
+Palm Desktop: بالم ديسكتوب
+allow you to import entries from the Palm...: سيسمح لك هذا النموذج باستيراد إدخالات من Palm Desktop Datebook. يجب أن يكون موجودًا في دليل Palm الخاص بك في datebook / datebook.dat في دليل فرعي مسمى باسم المستخدم الخاص بك.
+The following entries will not be imported: لن يتم استيراد الإدخالات التالية:
+Entries older than the current date: إدخالات أقدم من التاريخ الحالي
+Entries created in the Palm Desktop...: الإدخالات التي تم إنشاؤها في Palm Desktop والتي لم تكن HotSync'd
+Anything imported from Palm...: ستتم الكتابة فوق أي شيء مستورد من Palm أثناء الاستيراد التالي (ما لم يمر تاريخ الحدث). لذلك ، يجب إجراء التحديثات في Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: سيقوم هذا النموذج باستيراد أحداث vCalendar (.vcs) 1.0.
+The following formats have been tested: تم اختبار التنسيقات التالية:
+This form will import iCalendar (.ics) events.: سيقوم هذا النموذج باستيراد أحداث iCalendar (.ics).
+Enabling: التمكين
+Overwrite Prior Import: الكتابة فوق الاستيراد المسبق
+will cause events imported previously...: سيؤدي إلى الأحداث التي تم استيرادها مسبقًا ، والتي استخدمت نفس المعرف الفريد كحدث من ملف الاستيراد الجديد ، ليتم تمييزها على أنها محذوفة. يجب أن يسمح هذا باستيراد ملف iCalendar محدث دون إنشاء نسخ مكررة.
+
+########################################
+# Page: help_index.php
+#
+Help Index: فهرس المساعدة
+About WebCalendar: حول WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: الطبقات مفيدة لعرض أحداث المستخدمين الآخرين في التقويم الخاص بك. يمكنك تحديد المستخدم واللون الذي سيتم عرض الأحداث به.
+Add/Edit/Delete: إضافة / تحرير / حذف
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: سيسمح لك النقر فوق ارتباط تحرير الطبقات في قسم المسؤول في أسفل الصفحة بإضافة / تحرير / حذف الطبقات.
+The text color of the new layer that will be displayed in your calendar.: لون نص الطبقة الجديدة التي سيتم عرضها في التقويم الخاص بك.
+Disabling: التعطيل
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: اضغط على رابط تعطيل الطبقات في قسم المسؤول أسفل الصفحة لإيقاف تشغيل الطبقات.
+Duplicates: مكرر
+If checked, events that are duplicates of your events will be shown.: إذا تم تحديده ، فسيتم عرض الأحداث المكررة من أحداثك.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: اضغط على رابط تمكين الطبقات في قسم المسؤول أسفل الصفحة لتشغيل الطبقات.
+Source: مصدر
+Specifies the user that you would like to see displayed in your calendar.: تحدد المستخدم الذي ترغب في رؤيته معروضًا في التقويم الخاص بك.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: الفئة الافتراضية
+default-category-help: يحدد الفئة التي يجب أن يكون الحدث الجديد افتراضيًا لها.
+When I am the boss: عندما أكون الرئيس
+Email me event notification: أرسل لي إشعار الحدث
+email-boss-notifications-help: يحدد ما إذا كان الرؤساء يتلقون رسائل البريد الإلكتروني كإخطارات بالأحداث.
+I want to approve events: أريد الموافقة على الأحداث
+boss-approve-event-help: يحدد ما إذا كان الرئيس سيُطلب منه الموافقة على الأحداث التي أضافها المساعدون.
+Subscribe/Publish: اشترك / انشر
+Allow remote publishing: السماح بالنشر عن بعد
+allow-remote-publishing-help: تحدد ما إذا كان بإمكان عميل iCal البعيد نشر الأحداث مرة أخرى إلى WebCalendar
+remote-publishing-url-help: يعرض عنوان URL المراد استخدامه في تطبيق عميل iCal للاشتراك والنشر مرة أخرى إلى WebCalendar.
+allow-remote-subscriptions-help: يحدد ما إذا كان بإمكان المستخدمين البعيدين الاشتراك في التقويم الخاص بك ، مما يسمح لهم بمشاهدة الأحداث الخاصة بك في تطبيق يدعم iCal (مثل iCal من Apple أو Mozilla Calendar).
+remote-subscriptions-url-help: يعرض عنوان URL البعيد الذي يجب على المستخدمين استخدامه للاشتراك في التقويم الخاص بك.
+Enable FreeBusy publishing: تمكين النشر FreeBusy
+freebusy-enabled-help: يحدد ما إذا كان يمكن الحصول على الوقت المتاح للمستخدم باستخدام معيار iCal FreeBusy.
+freebusy-url-help: عنوان URL للوصول إلى قائمة FreeBusy الخاصة بالمستخدم
+rss-feed-url-help: عنوان URL للوصول إلى موجز RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: يسمح بالتحكم الدقيق في وصول المستخدم والأذونات. يمكن للمستخدمين أيضًا منح إذن افتراضي ولكل فرد إذا أذن به المسؤول
+If disabled, this user cannot send you emails.: إذا تم تعطيله ، فلن يتمكن هذا المستخدم من إرسال رسائل بريد إلكتروني إليك.
+If disabled, this user cannot see you in the participants list.: إذا تم تعطيله ، فلن يتمكن هذا المستخدم من رؤيتك في قائمة المشاركين.
+If enabled, this user cannot view the details of any of your entries.: في حالة التمكين ، لا يمكن لهذا المستخدم عرض تفاصيل أي من إدخالاتك.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): النشر معطل (المسؤول)
+Publishing Disabled (User): نشر معطل (مستخدم)
+
+########################################
+# Page: icons.php
+#
+Click to Select: انقر لتحديد
+Current Icons on Server: الرموز الحالية على الخادم
+
+########################################
+# Page: import.php
+#
+import from file: استيراد من ملف
+Disabled: معاق
+Import format: تنسيق الاستيراد
+Exclude private records: استبعاد السجلات الخاصة
+Repeated items are imported separately. Prior imports are not overwritten.: يتم استيراد العناصر المتكررة بشكل منفصل. لا يتم الكتابة فوق الواردات السابقة.
+
+########################################
+# Page: import_handler.php
+#
+No file: لا ملف
+Error deleting palm events from webcalendar.: خطأ في حذف أحداث الكف من webcalendar.
+Events from prior import marked as deleted: تم وضع علامة على الأحداث من الاستيراد السابق على أنها محذوفة
+Conflicting events: أحداث متضاربة
+The import file contained no data.: ملف الاستيراد لا يحتوي على بيانات.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: هل أنت متأكد أنك تريد حذف هذه الطبقة؟
+Delete layer: احذف الطبقة
+Edit layer: تحرير الطبقة
+Enable layers: تمكين الطبقات
+Layer: طبقة
+Layers are currently disabled.: الطبقات معطلة حاليًا.
+Layers are currently enabled.: الطبقات ممكّنة حاليًا.
+Click to modify layers settings for XXX: انقر هنا لتعديل إعدادات الطبقات لتقويم XXX.
+Disable Layers: تعطيل الطبقات
+Add layer: أضف طبقة
+Add Layer: أضف طبقة
+Edit Layer: تحرير الطبقة
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: تعذر تحديث التفضيل
+Invalid entry id.: معرف إدخال غير صالح.
+You cannot create a layer for yourself.: لا يمكنك إنشاء طبقة لنفسك.
+You can only create one layer for each user.: يمكنك فقط إنشاء طبقة واحدة لكل مستخدم.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: الموافقة / التأكيد
+Approve Selected: الموافقة المختارة
+Check All: تحقق من الكل
+Emails Will Not Be Sent: لن يتم إرسال رسائل البريد الإلكتروني
+Reject Selected: رفض المحدد
+Reject: يرفض
+Uncheck All: الغاءالكل
+View this entry: عرض هذا الدخول
+No unapproved entries for XXX.: لا توجد إدخالات غير معتمدة لـ: "XXX".
+Unapproved Entries: إدخالات غير معتمدة
+Approve this entry?: هل توافق على هذا الإدخال؟
+Reject this entry?: رفض هذا الدخول؟
+Approve Selected entries?: الموافقة على الإدخالات المختارة؟
+Reject Selected entries?: رفض الإدخالات المحددة؟
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: يجب عليك إدخال اسم المستخدم وكلمة المرور.
+Save login via cookies so I dont have to login next time.: احفظ تسجيل الدخول عبر ملفات تعريف الارتباط حتى لا أضطر إلى تسجيل الدخول في المرة القادمة
+Login: تسجيل الدخول
+public: عامة
+Access XXX calendar: الوصول إلى تقويم XXX
+cookies-note: ملاحظة: يتطلب هذا التطبيق تمكين ملفات تعريف الارتباط.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: أحرف غير شرعية في XXX تسجيل الدخول.
+Invalid login: تسجيل الدخول غير صالح
+Activity login failure: اسم المستخدم: "XXX" ، IP: "YYY".
+Error XXX: الخطأ: "XXX".
+You have been logged out.: لقد تم تسجيل الخروج.
+Access public calendar: الوصول إلى التقويم العام
+Not yet registered? Register here!: غير مسجل بعد؟ سجل هنا!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: لا يوجد تقويم غير مستخدم: "XXX".
+This Calendar is not Public.: هذا التقويم ليس عام.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: إضافة تقويم جديد لغير المستخدمين
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: يجب تحديد تسجيل الدخول.
+No such nonuser calendar: لا يوجد مثل هذا التقويم لغير المستخدمين
+
+########################################
+# Page: pref.php
+#
+Invalid theme: مظهر غير صالح
+Save Preferences: حفظ التفضيلات
+Public Access calendar: تقويم الوصول العام
+Modify Non User Calendar Preferences: تعديل تفضيلات التقويم لغير المستخدم
+Return to My Preferences: ارجع إلى تفضيلاتي
+Custom Scripts: البرامج النصية المخصصة
+Timezone Selection: تحديد المنطقة الزمنية
+Multiview: عرض متعدد:
+entry-interval-help: يضبط الفاصل الزمني للدقائق عند تحرير أوقات الدخول
+Entry interval: الفاصل الزمني للدخول
+hour: ساعة
+minute: دقيقة
+theme-reload-help: بسبب التخزين المؤقت لـ CSS ، قد يلزم إعادة تحميل الصفحة
+Page may need to be reloaded for new Theme to take effect: قد تحتاج الصفحة إلى إعادة تحميلها حتى يتم تفعيل المظهر الجديد
+display_byproxy-help: اعرض المبدع الحقيقي على صفحة view_entry
+Display if created by Assistant: عرض إذا تم إنشاؤه بواسطة المساعد
+allow-view-subscriptions-help: يسمح بتقييد الوصول عن بعد إلى الإدخالات الخاصة أو السرية
+Allow remote viewing of: السماح بالمشاهدة عن بعد لـ
+entries: إدخالات
+
+########################################
+# Page: purge.php
+#
+Purging events for: أحداث التطهير لـ
+Finished: تم الانتهاء من
+Back: خلف
+Check box to delete ALL events for a user: خانة اختيار لحذف  جميع</b> الأحداث للمستخدم
+Delete all events before: حذف كافة الأحداث من قبل
+Purge deleted only: تم حذف التطهير فقط
+Preview delete: معاينة الحذف
+Are you sure you want to delete events for: هل أنت متأكد أنك تريد حذف الأحداث الخاصة بـ
+Records deleted from XXX: تم حذف السجلات من "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: لا يمكن أن يكون عنوان البريد الإلكتروني فارغًا.
+Username already exists.: اسم المستخدم موجود بالفعل.
+Email address already exists.: عنوان البريد الإلكتروني موجود بالفعل.
+New user via self-registration.: مستخدم جديد عن طريق التسجيل الذاتي.
+A new WebCalendar account has been set up for you.: تم إعداد حساب WebCalendar جديد لك.
+Your username is XXX.: اسم المستخدم الخاص بك هو: "XXX".
+Your password is XXX.: كلمة المرور الخاصة بك هي: "XXX".
+Please visit XXX to log in and start using your account!: يرجى زيارة "XXX" لتسجيل الدخول والبدء في استخدام حسابك!
+You may change your password after logging in the first time.: يمكنك تغيير كلمة المرور الخاصة بك بعد تسجيل الدخول لأول مرة.
+If you received this email in error: إذا تلقيت هذا البريد الإلكتروني عن طريق الخطأ ولم تشترك في حساب WebCalendar ، فيمكنك تجاهل هذا الإشعار أو الرد بملاحظة قصيرة
+Administrator: مدير
+Welcome: أهلا بك
+New user via email.: مستخدم جديد عبر البريد الإلكتروني.
+Registration: تسجيل
+Welcome to WebCalendar: مرحبًا بك في WebCalendar
+Your email should arrive shortly.: يجب أن يصل بريدك الإلكتروني قريبًا.
+Return to Login screen: العودة إلى شاشة تسجيل الدخول
+Password (again): أدخل كلمة السر مرة أخرى):
+Your account information will be emailed to you.: سيتم إرسال معلومات حسابك عبر البريد الإلكتروني إليك.
+Submit: يقدم
+
+########################################
+# Page: reject_entry.php
+#
+Continue: يكمل
+(Your comments will be emailed to the other participants.): (سيتم إرسال تعليقاتك بالبريد الإلكتروني إلى المشاركين الآخرين.)
+XXX has rejected an appointment.: لقد رفض XXX موعدًا.
+Rejected by XXX.: رفضه XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: إضافة تقويم جديد عن بعد
+
+########################################
+# Page: report.php
+#
+This event is confidential.: هذا الحدث سري.
+(Private): (خاص)
+(cont.): (تابع)
+Approved: وافق
+Deleted: تم الحذف
+Rejected: مرفوض
+Waiting for approval: بانتظار الموافقة
+Unknown: مجهول
+Invalid report id.: معرّف تقرير غير صالح.
+Click here to manage reports for the Public Access calendar.: انقر هنا لإدارة التقارير لتقويم الوصول العام.
+Add new report: إضافة تقرير جديد
+Manage Reports: إدارة التقارير
+
+########################################
+# Page: search.php
+#
+Advanced Search: البحث المتقدم
+Search: بحث
+Keywords: الكلمات الدالة
+Enter % for all entries: أدخل٪ لجميع الإدخالات
+Include: يشمل
+Filter by Date: تصفية حسب التاريخ
+All Dates: كل التواريخ
+Past: ماضي
+Upcoming: القادمة
+Range: نطاق
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: يجب عليك إدخال كلمة بحث رئيسية واحدة أو أكثر.
+Search Results: نتائج البحث
+match found: وجد تطابق
+matches found: تم العثور على مباريات
+No matches found: لم يتم العثور على تطابق
+New Search: بحث جديد
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: تسرد المعلومات الواردة أدناه المشكلات المحتملة في تثبيت WebCalendar التي يمكن تعديلها لجعل التثبيت أكثر أمانًا.
+For questions about WebCalendar security see the forums: لطرح أسئلة حول أي مشكلة تتعلق بأمان WebCalendar ، الرجاء استخدام منتديات WebCalendar المستضافة على GitHub.com ؛<br>XXX
+View your current PHP settings: عرض إعدادات PHP الحالية الخاصة بك
+Security Issue: مشكلة أمنية
+Status: حالة
+Default admin user password: كلمة مرور مستخدم المسؤول الافتراضية
+You should change the password of the default admin user.: يجب عليك تغيير كلمة مرور المستخدم المسؤول الافتراضي.
+File permissions XXX: أذونات الملف: XXX
+item XXX should not be writable: يجب ألا يكون العنصر التالي قابلاً للكتابة:<br><tt> XXX</tt>
+File exists XXX: الملف موجود: "XXX"
+Because you have email disabled, you should remove this file.: نظرًا لتعطيل البريد الإلكتروني ، يجب عليك إزالة هذا الملف.
+File location XXX: موقع الملف: "XXX"
+remove XXX if not using: إذا كنت لا تستخدم ملف "XXX" ، فيجب حذفه. أو ، على الأقل ، انقله إلى دليل جديد.
+System Settings XXX: إعدادات النظام: "XXX"
+consider enabling UAC: قد ترغب في التفكير في تمكين التحكم في وصول المستخدم لتعيين امتيازات المستخدم.
+recommend approving new public events: نوصي بالموافقة على جميع عمليات الإرسال للحدث العام.
+recommend using CAPTCHA: يوصى باستخدام اختبار CAPTCHA للحماية من عمليات إرسال الأحداث الآلية.
+Database cache directory location: موقع دليل ذاكرة التخزين المؤقت لقاعدة البيانات
+db cache should be inaccessable: يجب أن تكون ذاكرة التخزين المؤقت لقاعدة البيانات في دليل لا يمكن الوصول إليه باستخدام عنوان URL.
+PHP Settings XXX: إعدادات PHP: "XXX"
+recommend setting XXX Off: الإعداد الموصى به لـ "XXX" قيد إيقاف التشغيل.
+recommend setting allow_url_fopen Off: يتم إيقاف الإعداد الموصى به لـ "allow_url_fopen" عندما لا يتم تمكين التقويمات البعيدة.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: عرض تقويم مستخدم آخر
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: لم تقم بإضافة أي فئات.
+Set Category: تعيين الفئة
+Global Categories cannot be changed.: لا يمكن تغيير الفئات العالمية.
+
+########################################
+# Page: upcoming.php
+#
+more: أكثر
+
+########################################
+# Page: users.php
+#
+Remote Calendars: التقويمات البعيدة
+denotes administrative user: يدل على المستخدم الإداري
+Add New User: إضافة مستخدم جديد
+
+########################################
+# Page: usersel.php
+#
+form: شكل
+Reset: إعادة ضبط
+
+########################################
+# Page: views.php
+#
+Add New View: إضافة طريقة عرض جديدة
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: عرض بدون اسم
+Add View: إضافة طريقة عرض
+Edit View: تحرير عرض
+View Name: عرض الاسم
+View Type: نوع العرض
+Day by Time: يوما بعد يوم
+Week (Users horizontal): أسبوع (المستخدمون أفقيًا)
+Week by Time: أسبوع بوقت
+Week (Users vertical): أسبوع (قطاع المستخدمين)
+Week (Timebar): أسبوع (شريط زمني)
+Month (Timebar): شهر (شريط زمني)
+Month (side by side): شهر (جنبًا إلى جنب)
+Month (on same calendar): الشهر (في نفس التقويم)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: يجب عليك تحديد اسم عرض
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: لا مستخدمين لهذا الرأي.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: تحديث النسبة المئوية للمهمة
+Completed: مكتمل
+Assistant mode: وضع المساعد
+Declined: رفض
+Needs-Action: يحتاج للعمل
+by: بواسطة
+Percentage Complete: النسبة المئوية للاكتمال
+External User: مستخدم خارجي
+Update: تحديث
+at: في
+comments: تعليقات
+Show: تبين
+Hide: إخفاء
+Approve/Confirm entry: الموافقة / تأكيد الإدخال
+Reject entry: رفض الدخول
+Set category: تعيين الفئة
+Add to My Calendar: أضف إلى التقويم الخاص بي
+Copy entry: نسخ الدخول
+This will delete this entry for all users.: سيؤدي هذا إلى حذف هذا الإدخال لجميع المستخدمين.
+Edit entry: تحرير دخول
+Edit repeating entry for all dates: تحرير الإدخال المتكرر لجميع التواريخ
+Delete repeating event for all dates: حذف تكرار الحدث لجميع التواريخ
+Edit entry for this date: تحرير الإدخال لهذا التاريخ
+Delete entry only for this date: حذف الإدخال لهذا التاريخ فقط
+Delete entry from calendar of XXX: حذف الإدخال من تقويم XXX
+This will delete the entry from your XXX calendar.: سيؤدي هذا إلى حذف الإدخال من تقويم XXX الخاص بك.
+boss: رئيس'
+This will delete the entry from your boss calendar.: سيؤدي هذا إلى حذف الإدخال من تقويم رئيسك.
+This will delete the entry from your calendar.: سيؤدي هذا إلى حذف الإدخال من التقويم الخاص بك.
+from your boss calendar: من تقويم مديرك
+Do you want to add this entry to your calendar?: هل تريد إضافة هذا الإدخال إلى التقويم الخاص بك؟
+This will add the entry to your calendar.: سيؤدي هذا إلى إضافة الإدخال إلى التقويم الخاص بك.
+Email all participants: أرسل جميع المشاركين بالبريد الإلكتروني
+Hide activity log: إخفاء سجل النشاط
+Show activity log: إظهار سجل النشاط
+Export this entry to: تصدير هذا الإدخال إلى
+Palm Pilot: طيار النخيل
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: انقر نقرًا مزدوجًا فوق خلية فارغة لإضافة إدخال جديد.
+
+########################################
+# Page: week_details.php
+#
+New Entry: دخول جديد
+cont.: تابع
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: تقويم مستخدم آخر
+Category Management: إدارة الفئات
+Day View: عرض اليوم
+Edit Event: تحرير الحدث
+Month View: عرض الشهر
+Common Trailer: مقطورة مشتركة
+User Management: إدارةالمستخدم
+Manage Views: إدارة طرق العرض
+Week View: عرض الأسبوع
+Year View: عرض العام
+Invalid function id: معرف وظيفة غير صالح
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: تعذر العثور على ملف "settings.php".<br>يرجى نسخ "settings.php.orig" إلى "settings.php" وتعديلها لموقعك.
+Incomplete settings.php file...: ملف "settings.php" غير كامل ...
+Could not find XXX defined in...: تعذر العثور على "XXX" المحدد في ملف "settings.php".
+You must define XXX in: يجب تحديد "XXX" في ملف "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: ديسمبر
+Dec: ديسمبر
+LANGUAGE DEFINED: تحديد اللغة
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: خطأ في الاتصال بقاعدة البيانات: "XXX".
+db_type not defined.: db_type غير معرّف.
+invalid db_type XXX: نوع db_type غير صالح "" XXX ".
+Cache cleared from previous SQL!: تم مسح ذاكرة التخزين المؤقت من SQL السابقة!
+Error executing query.: خطأ في تنفيذ الاستعلام.
+Unfortunately, XXX is not implemented for YYY: للأسف ، لم يتم تنفيذ "XXX" لـ (YYY).
+Unknown ODBC error.: خطأ ODBC غير معروف.
+Error opening cache dir XXX.: خطأ في فتح دليل ذاكرة التخزين المؤقت "XXX".
+delete: حذف
+Cache error Could not XXX file YYY.: خطأ في ذاكرة التخزين المؤقت: تعذر ملف XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: خطأ فادح
+Invalid data format for: تنسيق البيانات غير صالح لـ
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: خطأ: لم يتم تعيين النوع لسجل النشاط!
+This event is XXX.: هذا الحدث هو XXX.
+Conf.: أسيوط.
+exceeds limit of XXX events per day: يتجاوز حد XXX من الأحداث في اليوم
+on: تشغيل
+All Attendees: جميع الحاضرين
+Busy: مشغول
+Tentative: متردد
+Schedule an appointment for XXX.: حدد موعدًا لـ XXX: YYY.
+date_select: =
+Event approved: تمت الموافقة على الحدث
+Journal approved: المجلة المعتمدة
+Task approved: تمت الموافقة على المهمة
+Attachment: المرفق
+Event created: تم إنشاء الحدث
+Journal created: تم إنشاء المجلة
+Task created: تم إنشاء المهمة
+Event deleted: تم حذف الحدث
+Journal deleted: تم حذف المجلة
+Task deleted: تم حذف المهمة
+New user via email (self registration): مستخدم جديد عبر البريد الإلكتروني (التسجيل الذاتي)
+New user (self registration): مستخدم جديد (تسجيل ذاتي)
+Notification sent: تم إرسال الإخطار
+Event rejected: الحدث مرفوض
+Journal rejected: رفضت المجلة
+Task rejected: تم رفض المهمة
+Reminder sent: تم إرسال التذكير
+Event updated: تم تحديث الحدث
+Journal updated: تم تحديث المجلة
+Task updated: تم تحديث المهمة
+Delete User: مسح المستخدم
+WK: =
+TASKS: مهام
+Task_Title: لقب
+Due: حق
+Task Name: اسم المهمة
+Task Due Date: تاريخ استحقاق المهمة
+You have XXX unapproved entries: لديك XXX من الإدخالات غير المعتمدة
+Changes successfully saved: تم حفظ التغييرات بنجاح
+Event: هدف
+Action: فعل
+Printer Friendly: للطباعة
+Generate printer-friendly version: قم بإنشاء نسخة مناسبة للطباعة
+after: بعد، بعدما
+before: قبل
+end: نهاية
+start: بداية
+View this event: اعرض هذا الحدث
+View this task: اعرض هذه المهمة
+January: يناير
+February: شهر فبراير
+March: مارس
+April: أبريل
+May_: يمكن
+June: يونيو
+July: تموز
+August: أغسطس
+September: سبتمبر
+October: اكتوبر
+November: شهر نوفمبر
+Jan: يناير
+Feb: فبراير
+Mar: مارس
+Apr: أبريل
+May: يمكن
+Jun: يونيو
+Jul: يوليو
+Aug: أغسطس
+Sep: سبتمبر
+Oct: أكتوبر
+Nov: نوفمبر
+SU: =
+MO: =
+TU: =
+WE: نحن
+TH: ذ
+FR: =
+SA: =
+unknown-month: شهر غير معروف
+First Quarter Moon: الربع الأول من القمر
+Full Moon: اكتمال القمر
+Last Quarter Moon: آخر ربع قمر
+New Moon: قمر جديد
+Error TIME_SLOTS undefined!: خطأ: TIME_SLOTS غير محدد!
+The following error occurred: حدث الخطأ التالي
+You are not authorized.: أنك غير مخول.
+Add N hours to: أضف N ساعة إلى
+Subtract N hours from: اطرح N ساعة من
+same as: مثل
+server time: وقت الخادم
+Cannot read timezone file XXX.: لا يمكن قراءة ملف المنطقة الزمنية: XXX.
+Your current GMT offset is XXX hours.: معادلة توقيت غرينتش الحالية هي XXX ساعة.
+Unauthorized: غير مصرح
+Error approving event XXX.: خطأ في الموافقة على الحدث: XXX.
+Error deleting event XXX.: خطأ في حذف الحدث: XXX.
+Error rejecting event XXX.: خطأ في رفض الحدث: XXX.
+Sunday: الأحد
+Monday: الاثنين
+Tuesday: يوم الثلاثاء
+Wednesday: الأربعاء
+Thursday: يوم الخميس
+Friday: جمعة
+Saturday: السبت
+Sun: شمس
+Mon: الإثنين
+Tue: الثلاثاء
+Wed: الأربعاء
+Thu: خميس
+Fri: الجمعة
+Sat: جلس
+unknown-weekday: يوم غير معروف من أيام الأسبوع
+Invalid referring URL: عنوان URL للإحالة غير صالح
+
+########################################
+# Page: includes/help_list.php
+#
+Index: فهرس
+Documentation: توثيق
+Page: صفحة
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: تقويمي
+Add New Entry: أضف مدخل جديد
+Add New Task: إضافة مهمة جديدة
+Logout: تسجيل خروج
+Home: الصفحة الرئيسية
+Back to My Calendar: العودة إلى التقويم الخاص بي
+Go to: اذهب إلى
+Manage calendar of: إدارة تقويم
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: لغة المتصفح غير موجودة
+(not supported): (غير مدعوم)
+Abkhazian: أبخازيا
+Acoli: أكولي
+Adangme: =
+Adyghe: أديغي
+Afar: عفار
+Afrihili: الأفريهيلية
+Afrikaans: الأفريكانية
+Ainu: عينو
+Akan: أكان
+Akkadian: الأكادية
+Albanian: الألبانية
+Aleut: أليوت
+Algonquian: ألجونكويان
+Altai (Southern): التاي (الجنوبية)
+Amharic: الأمهرية
+Angika: أنجيكا
+Apache: اباتشي
+Arabic (Algeria): العربية (الجزائر)
+Arabic (Bahrain): العربية (البحرين)
+Arabic (Egypt): العربية (مصر)
+Arabic (Iraq): العربية (العراق)
+Arabic (Jordan): العربية (الأردن)
+Arabic (Kuwait): العربية (الكويت)
+Arabic (Lebanon): العربية (لبنان)
+Arabic (Libya): العربية (ليبيا)
+Arabic (Morocco): العربية (المغرب)
+Arabic (Oman): العربية (عمان)
+Arabic (Qatar): العربية (قطر)
+Arabic (Saudi Arabia): العربية (المملكة العربية السعودية)
+Arabic (Syria): العربية (سوريا)
+Arabic (Tunisia): العربية (تونس)
+Arabic (U.A.E.): العربية (الإمارات العربية المتحدة)
+Arabic (Yemen): العربية (اليمن)
+Arabic: عربي
+Aragonese: أراغون
+Aramaic: الآرامية
+Arapaho: أراباهو
+Arawak: ارواك
+Armenian: أرميني
+Assamese: الأسامية
+Asturian: أستوريان
+Athapascan: أثاباسكان
+Avaric: أفاريك
+Avestan: افستان
+Awadhi: العوضي
+Aymara: ايمارا
+Azerbaijani: الأذربيجانية
+Balinese: بالي
+Baluchi: البلوشي
+Bambara: بامبارا
+Bamileke: باميليك
+Banda: باندا
+Basa: باسا
+Bashkir: بشكير
+Basque: الباسك
+Beja: البجا
+Belarusian: البيلاروسية
+Bemba: بمبا
+Bengali: البنغالية
+Bhojpuri: بوجبوري
+Bihari: البيهارية
+Bikol: بيكول
+Bislama: بيسلاما
+Blackfoot: بلاكفوت
+Blin: بلين
+Bliss: النعيم
+Bosnian: البوسنية
+Braj: برج
+Breton: بريتون
+Buginese: البوجينية
+Bulgarian: البلغارية
+Buriat: بريات
+Burmese: البورمية
+Caddo: كادو
+Catalan: الكاتالونية
+Cebuano: السيبيونو
+Chagatai: تشاجاتاي
+Chamorro: تشامورو
+Chechen: الشيشان
+Cherokee: شيروكي
+Cheyenne: شايان
+Chibcha: تشيبشا
+Chichewa: شيشيوا
+Chinese (Hong Kong): الصينية (هونج كونج)
+Chinese (PRC): الصينية (جمهورية الصين الشعبية)
+Chinese (Simplified/GB2312): الصينية (المبسطة / GB2312) 
+Chinese (Singapore): الصينية (سنغافورة)
+Chinese (Taiwan): الصينية (تايوان)
+Chinese (Traditional/Big5): الصينية (تقليدية / كبيرة 5)
+Chinook: شينوك
+Chipewyan: شيبيويان
+Choctaw: الشوكتو
+Chuukese: تشوكيزي
+Chuvash: تشوفاش
+Coptic: قبطي
+Cornish: كورنيش
+Corsican: كورسيكا
+Cree: كري
+Creek: جدول
+Croatian: الكرواتية
+Czech: التشيكية
+Dakota: داكوتا
+Danish: دانماركي
+Dargwa: دارجوا
+Delaware: ديلاوير
+Dinka: دينكا
+Dogri: دوجري
+Dogrib: دوجريب
+Duala: دوالا
+Dutch (Belgium): الهولندية (بلجيكا)
+Dutch: اللغة الهولندية
+Dyula: ديولا
+Dzongkha: =
+Edo: ايدو
+Efik: افيك
+Ekajuk: اكاجوك
+Elamite: العيلاميت
+English (Australia): الإنجليزية (أستراليا)
+English (Belize): الإنجليزية (بليز)
+English (Canada): الإنجليزية (كندا)
+English (Ireland): الإنجليزية (أيرلندا)
+English (Jamaica): الإنجليزية (جامايكا)
+English (New Zealand): الإنجليزية (نيوزيلندا)
+English (Philippines): الإنجليزية (الفلبين)
+English (South Africa): الإنجليزية (جنوب إفريقيا)
+English (Trinidad & Tobago): الإنجليزية (ترينيداد وتوباغو)
+English (United Kingdom): الإنجليزية (المملكة المتحدة)
+English (United States): انجليزية الولايات المتحدة)
+English (Zimbabwe): الإنجليزية (زمبابوي)
+English: الإنجليزية-الولايات المتحدة
+Erzya: ارزيا
+Esperanto: اسبرانتو
+Estonian: الإستونية
+Ewe: نعجة
+Ewondo: إيوندو
+Fang: فانغ
+Fanti: فانتي
+Faroese: فارويز
+Fijian: فيجي
+Filipino: الفلبينية
+Finnish: الفنلندية
+Fon: فون
+French (Belgium): الفرنسية (بلجيكا)
+French (Canada): الفرنسية (كندا)
+French (France): فرنسا الفرنسية)
+French (Luxembourg): الفرنسية (لوكسمبورغ)
+French (Monaco): الفرنسية (موناكو)
+French (Switzerland): الفرنسية (سويسرا)
+French: فرنسي
+Frisian (Eastern): الفريزية (الشرقية)
+Frisian (Northern): الفريزية (الشمالية)
+Frisian (Western): الفريزية (الغربية)
+Frisian: الفريزيان
+Friulian: فريوليان
+Fulah: فولا
+Ga: جا
+Galibi: غاليبي
+Galician: الجاليكية
+Ganda: غاندا
+Gayo: جايو
+Gbaya: جباية
+Geez: الجيز
+Georgian: الجورجية
+German (Austria): الألمانية (النمسا)
+German (Germany): الألمانية ألمانيا)
+German (Liechtenstein): الألمانية (ليختنشتاين)
+German (Luxembourg): الألمانية (لوكسمبورغ)
+German (Standard): ألماني (قياسي)
+German (Switzerland): الألمانية (سويسرا)
+German: ألمانية
+Gilbertese: جيلبرتيس
+Gondi: جوندي
+Gorontalo: جورونتالو
+Gothic: القوطية
+Grebo: غريبو
+Greek: اليونانية
+Greenlandic: جرينلاند
+Guarani: غواراني
+Gujarati: الغوجاراتية
+Gwich&#39;in: جويتشين
+Haida: هيدا
+Haitian (Creole): الكريولية الهايتية)
+Haitian: الهايتية
+Hausa: الهوسا
+Hawaiian: هاواي
+Hebrew: اللغة العبرية
+Herero: هيريرو
+Hiligaynon: هيليغاينون
+Hindi: هندي
+Hiri Motu: هيري موتو
+Hittite: حثى
+Hmong: همونغ
+Holo (Taiwanese): هولو (تايوانية)
+Hungarian: المجرية
+Hupa: هوبا
+Iban: ايبان
+Icelandic: ايسلندي
+Ido: أفعل
+Igbo: الإيغبو
+Iloko: إيلوكو
+Indonesian: الأندونيسية
+Ingush: إنغوشيا
+Inuktitut: إينوكتيتوت
+Inupiaq: =
+Iranian: إيراني
+Irish (Gaelic): الأيرلندية بالغالية)
+Irish: إيرلندي
+Iroquoian: إيروكوايان
+Italian (Switzerland): الإيطالية (سويسرا)
+Italian: إيطالي
+Japanese: اليابانية
+Javanese: الجاوية
+Judeo-Arabic: اليهودية العربية
+Judeo-Persian: اليهودية الفارسية
+Kabardian: قبرديان
+Kabyle: منطقة القبائل
+Kachin: كاشين
+Kalaallisut: كالاليسوت
+Kalmyk: كالميك
+Kamba: كامبا
+Kannada: الكانادا
+Kanuri: كانوري
+Kara-Kalpak: كارا كالباك
+Karachay-Balkar: قراشاي بلكار
+Karelian: كاريليان
+Kashmiri: كشميري
+Kashubian: كاشوبيان
+Kawi: كاوي
+Kazakh: الكازاخستانية
+Khasi: خاسي
+Khmer (Central): الخميرية (وسط)
+Khmer: الخمير
+Khotanese: خوتانيز
+Kikuyu: كيكويو
+Kimbundu: كيمبوندو
+Kinyarwanda: كينيارواندا
+Kirghiz: قيرغيز
+Klingon: كلينجون
+Komi: كومي
+Kongo: كونغو
+Konkani: الكونكانية
+Korean (Johab): كوري (جوهاب)
+Korean (North): الكورية (الشمالية)
+Korean (South): الكورية (الجنوبية)
+Korean: الكورية
+Kosraean: الكوسرايين
+Kpelle: =
+Kuanyama: كوانياما
+Kumyk: كوميك
+Kurdish: كردي
+Kutenai: كوتيني
+Kyrgyz: قيرغيزستان
+Ladino: لادينو
+Lahnda: لاندا
+Lamba: لامبا
+Lao: لاو
+Latin: لاتيني
+Latvian: لاتفيا
+Lezghian: ليزغيان
+Limburgan: ليمبورغان
+Lingala: اللينغالا
+Lithuanian: الليتوانية
+Lojban: لوجبان
+Lozi: لوزي
+Luba-Katanga: لوبا كاتانغا
+Luba-Lulua: لوبا لولوا
+Luiseno: لويسينو
+Lunda: لوندا
+Luo: لوه
+Lushai: لوشاي
+Luxembourghish: لوكسمبورغ
+Macedonian: المقدونية
+Madurese: مادوريس
+Magahi: ماقاهي
+Maithili: المايثيلي
+Makasar: ماكاسار
+Malagasy: مدغشقر
+Malay: لغة الملايو
+Malayalam: المالايالامية
+Maldivian: جزر المالديف
+Maltese: المالطية
+Manchu: مانشو
+Mandar: ماندار
+Mandingo: ماندينغو
+Manipuri: مانيبوري
+Manx: مانكس
+Maori: الماوري
+Mapuche: مابوتشي
+Marathi: الماراثى
+Mari: ماري
+Marshallese: مارشال
+Marwari: مرواري
+Masai: الماساي
+Mayan: المايا
+Mende: ميندي
+Mi&#39;kmaq: ميكماق
+Minangkabau: مينانجكاباو
+Mirandese: ميرانديز
+Mohawk: الموهوك
+Moksha: موكشا
+Moldavian: مولدوفا
+Mongo: مونجو
+Mongolian: المنغولية
+Montenegrin: الجبل الأسود
+Moroccan: مغربي
+Mossi: موسي
+Myanmar: ميانمار
+Māori: الماوري
+N&#39;Ko: N'Ko
+Nauru: ناورو
+Navajo: نافاجو
+Ndebele (North): نديبيلي (الشمال)
+Ndebele (South): نديبيلي (الجنوب)
+Ndebele: نديبيلي
+Ndonga: ندونغا
+Neapolitan: نابولي
+Nepali: النيبالية
+Nias: نياس
+Niuean: نيوي
+Nogai: نوجاي
+Norse: نورس
+Norwegian (Bokmål): النرويجية (بوكمال)
+Norwegian (Nynorsk): النرويجية (نينورسك)
+Norwegian: النرويجية
+Nyamwezi: نيامويزي
+Nyankole: نيانكول
+Nyoro: نيورو
+Nzima: نزيما
+Occitan: الأوكيتان
+Odia: الأودية
+Ojibwa: اوجيبوا
+Oriyia: أوريا
+Oromo: أورومو
+Osage: أوساج
+Ossetic: أوسيتيك
+Pahlavi: بهلوي
+Palauan: بالاوان
+Pali: بالي
+Pampanga: بامبانجا
+Pangasinan: بانجاسينان
+Panjabi: بنجابي
+Papiamento: بابيامنتو
+Pashto: الباشتو
+Pedi: بيدي
+Persian (Farsi): الفارسية (الفارسية)
+Persian (Iran): الفارسية (إيران)
+Persian: اللغة الفارسية
+Phoenician: فينيقية
+Pohnpeian: بوهنبيان
+Polish: تلميع
+Portuguese: البرتغالية
+Portuguese/Brazil: البرتغالية (البرازيل
+Punjabi (India): البنجابية (الهند)
+Punjabi (Pakistan): البنجابية (باكستان)
+Punjabi: البنجابية
+Quechua: الكيتشوا
+Rajasthani: راجاستان
+Rapanui: رابا نوي
+Rarotongan: راروتونجان
+Rhaeto-Romanic: رايتو رومانيك
+Romanian: روماني
+Romansh: رومانش
+Romany: روماني
+Rundi: روندي
+Russian (Moldavia: الروسية (مولدافيا
+Russian (Republic of Moldova): الروسية (جمهورية مولدوفا)
+Russian: الروسية
+Sami (Inari): سامي (عناري)
+Sami (Lappish): سامي (لابيش)
+Sami (Lule): سامي (لولي)
+Sami (Northern): سامي (شمال)
+Sami (Skolt): سامي (سكولت)
+Sami (Southern): سامي (الجنوبية)
+Sami: سامي
+Samoan: ساموا
+Samoli: سامولي
+Sandawe: =
+Sango: سانجو
+Sanskrit: السنسكريتية
+Santali: السنتالية
+Sardinian: سردينيا
+Sasak: ساساك
+Scots (Gaelic): الاسكتلنديين (الغيلية)
+Selkup: سيلكوب
+Serbian (Upper): الصربية (العليا)
+Serbian: الصربية
+Serer: سيرير
+Sesotho: سيسوتو
+Shan: شان
+Shona: شونا
+Sichuan Yi: سيتشوان يي
+Sicilian: صقلية
+Sindhi: السندية
+Sinhala: السنهالية
+Slavic: السلافية
+Slovak: السلوفاكية
+Slovenian: السلوفينية
+Sogdian: صغديان
+Somali: صومالي
+Somani: سوماني
+Songhai: سونغهاي
+Soninke: سونينكي
+Sorbian (Lower): الصوربية (السفلى)
+Sorbian (Upper): الصوربية (العلوي)
+Sorbian: الصوربية
+Sotho: سوتو
+Spanish (Argentina): الإسبانية (الأرجنتين)
+Spanish (Bolivia): الإسبانية (بوليفيا)
+Spanish (Chile): الأسبانية (تشيلي)
+Spanish (Colombia): الإسبانية (كولومبيا)
+Spanish (Costa Rica): الأسبانية (كوستاريكا)
+Spanish (Dominican Republic): الإسبانية (جمهورية الدومينيكان)
+Spanish (Ecuador): الإسبانية (الإكوادور)
+Spanish (El Salvador): الأسبانية (السلفادور)
+Spanish (Guatemala): الأسبانية (غواتيمالا)
+Spanish (Honduras): الإسبانية (هندوراس)
+Spanish (Mexico): الإسبانية (المكسيك)
+Spanish (Nicaragua): الأسبانية (نيكاراغوا)
+Spanish (Panama): الإسبانية (بنما)
+Spanish (Paraguay): الأسبانية (باراغواي)
+Spanish (Peru): الإسبانية (بيرو)
+Spanish (Puerto Rico): الأسبانية (بورتوريكو)
+Spanish (Spain): الإسبانية (إسبانيا)
+Spanish (Uruguay): الأسبانية (أوروغواي)
+Spanish (Venezuela): الإسبانية (فنزويلا)
+Spanish: الأسبانية
+Sranan Tongo: سرانان تونجو
+Sukuma: سوكوما
+Sumerian: السومرية
+Sundanese: السوندانيز
+Susu: سوسو
+Sutu: سوتو
+Swahili: السواحيلية
+Swati: سواتي
+Swedish (Finland): السويدية (فنلندا)
+Swedish (Sweden): السويدية (السويد)
+Swedish: السويدية
+Syriac: السريانية
+Tagalog: تاغالوغ
+Tahitian: التاهيتي
+Tai: تاي
+Taiwan: تايوان
+Tajik: طاجيك
+Tamashek: تماشك
+Tamil: التاميل
+Tatar: التتار
+Telugu: التيلجو
+Tereno: تيرينو
+Tetum: التيتوم
+Thai: التايلاندية
+Tibetan: التبتية
+Tigre: تيغري
+Tigrinya: التيغرينيا
+Timne: تيمن
+Tlingit: تلينجيت
+Tok Pisin: توك بيسين
+Tokelau: توكيلاو
+Tonga (Nytmhasa): تونغا (نيتماسا)
+Tonga (Tonga Islands): تونغا (جزر تونغا)
+Tonga: تونغا
+Tsimshian: تسيمشيان
+Tsonga: تسونجا
+Tswana: التسوانا
+Tumbuka: تومبوكا
+Turkish: اللغة التركية
+Turkmen: التركمان
+Tuvinian: التوفينية
+Twi: توي
+Udmurt: الأدمرت
+Ugaritic: الأوغاريتية
+Ukrainian: الأوكرانية
+Umbundu: أومبوندو
+Urdu: الأردية
+Uyghur: الأويغور
+Uzbek: أوزبكي
+Vai: فاي
+Venda: فيندا
+Vietnamese: فيتنامي
+Volapük: فولابوك
+Votic: =
+Wakashan: واكشان
+Walloon: الوالون
+Waray: =
+Washo: واشو
+Welsh: تهرب من دفع الرهان
+Wolaitta: =
+Wolof: الولوف
+Xhosa: خوسا
+Yakut: ياقوت
+Yao: ياو
+Yapese: يابيزي
+Yiddish: اليديشية
+Yorùbá: يوروبا
+Yupik: يوبيك
+Zande: زاندي
+Zapotec: زابوتيك
+Zaza: ظاظا
+Zenaga: زيناغا
+Zhuang: تشوانغ
+Zulu: الزولو
+Browser-defined: محدد بالمستعرض
+event: حدث
+journal: مجلة
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: تسجيل دخول المستخدم غير صالح
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: كلمة سر خاطئة
+no such user: لا يوجد مثل هذا المستخدم
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: الحساب معطل
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: فترة
+Months: شهور
+Month Days: أيام الشهر
+Days: أيام
+Weeks: أسابيع
+Position: موقع
+Until: حتى
+Count: عدد
+Inclusion Dates: تواريخ التضمين
+Exclusion Dates: تواريخ الاستبعاد
+Event Imported: حدث مستورد
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: بايت
+kb: كيلو بايت
+Mb: ميغا بايت
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: تنبيه
+authenticate: SMTP خطأ: لا يمكن مصادقة
+connect_host: خطأ SMTP: تعذر الاتصال بمضيف SMTP:
+data_not_accepted: خطأ SMTP: البيانات غير مقبولة
+encoding: ترميز غير معروف:
+execute: تعذر التنفيذ:
+file_access: تعذر الوصول إلى الملف:
+file_open: خطأ ملف تعذر فتح الملف:
+from_failed: ما يلي من عنوان فشل:
+instantiate: لا يمكن مثيل وظيفة البريد الإلكتروني
+mailer_not_supported: الارسال غير معتمد
+provide_address: يجب عليك تقديم عنوان بريد إلكتروني واحد على الأقل للمستلم.
+recipients_failed: خطأ SMTP: فشل المستلمون التالون:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: أدخل الأحرف التي شوهدت في الرسم
+Enter the correct letters and numbers...: أدخل الأحرف والأرقام الصحيحة من الصورة في مربع النص. يعمل هذا الاختبار الصغير كتقييد وصول ضد برامج الروبوت الضارة. ما عليك سوى إعادة تحميل الصفحة إذا كانت قراءة هذا الرسم صعبة للغاية
+Challenge/Response: قبل التحدي
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: تغيير تاريخ ووقت هذا الإدخال؟
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: لم تقم بإدخال وصف موجز
+time prior to work hours...: الوقت قبل ساعات العمل ...
+Invalid Event Date: تاريخ الحدث غير صالح
+Please add a participant: الرجاء إضافة مشارك
+Invalid Date: تاريخ غير صالح
+You have not entered a valid time of day: لم تدخل وقتًا صالحًا من اليوم.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: لا يمكن أن يكون معرّف التقويم فارغًا.
+First and last names cannot both be blank.: لا يمكن أن يكون كلا الاسمين الأول والأخير فارغين.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: لون غير صالح
+Color format should be RRGGBB.: يجب أن يكون تنسيق اللون #RRGGBB.
+URL cannot be blank.: لا يمكن أن يكون عنوان URL فارغًا.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: نوع الملف لا يتطابق مع تنسيق الاستيراد
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: لون غير صالح لخلفية المستند.
+Invalid color for document title.: لون غير صالح لعنوان الوثيقة.
+Invalid color for table cell background.: لون غير صالح لخلفية خلية الجدول.
+Invalid color for table cell background for today.: لون غير صالح لخلفية خلية الجدول لهذا اليوم.
+Invalid work hours.: ساعات العمل غير صالحة.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: يجب أن ينتهي عنوان URL للخادم بشرطة مائلة (/).
+Invalid color for table grid.: لون غير صالح لشبكة الجدول.
+Invalid color for event popup background.: لون غير صالح للخلفية المنبثقة للحدث.
+Invalid color for event popup text.: لون غير صالح للنص المنبثق للحدث.
+Invalid color for table header text.: لون غير صالح لنص رأس الجدول.
+Invalid color for table header background.: لون غير صالح لخلفية رأس الجدول.
+Server URL is required.: عنوان URL للخادم مطلوب.
+Invalid Color: لون غير صالح
+Database Name: اسم قاعدة البيانات
+Full Path (no backslashes): مسار كامل (بدون خطوط مائلة عكسية)
+The password contains illegal characters.: تحتوي كلمة المرور على أحرف غير قانونية.
+Error you must specify a Single-User Login: خطأ يجب عليك تحديد تسجيل دخول لمستخدم واحد
+Could not find XXX.: تعذر العثور على XXX.
+Could not find XXX in DOM.: تعذر العثور على XXX في DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: هذا الاسبوع
+This Month: هذا الشهر
+This Year: هذه السنة
+Exit: مخرج
+Add New Event: أضف حدث جديد
+Delete Entries: حذف الإدخالات
+My Views: آرائي
+Manage Calendar of: إدارة تقويم
+My Reports: تقاريري
+My Profile: ملفي
+Public Calendar: التقويم العام
+Unapproved Events: أحداث غير معتمدة
+User Manager: مدير المستخدمين
+Help Contents: مساعدة محتويات
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: دليل ذاكرة التخزين المؤقت لقاعدة البيانات
+Create New: خلق جديد إبداع جديد
+Failure Reason: سبب الفشل:
+You must manually create database: يجب عليك إنشاء قاعدة البيانات يدويًا.
+Single-User: مستخدم واحد
+Test Settings: إعدادات الاختبار
+Timezone Conversion Successful: تم تحويل المنطقة الزمنية بنجاح
+WebCalendar Installation Wizard Step XXX: معالج تثبيت WebCalendar الخطوة XXX
+Password Accepted: قبول كلمة المرور
+Successful Login: تسجيل ناجح
+Password Incorrect: كلمة المرور خاطئة
+Invalid Login: تسجيل الدخول غير صالح
+Display Errors: عرض الأخطاء
+File Uploads: تحميلات الملف
+Allow URL fopen: السماح بـ URL fopen (مطلوب فقط في حالة استخدام التقويمات البعيدة)
+Safe Mode: الوضع الآمن
+Safe Mode Allowed Vars: الوضع الآمن المسموح به Vars (مطلوب TZ فقط في حالة تشغيل الوضع الآمن)
+GD: GD (مطلوب لخلفيات الصور المتدرجة)
+Passwords do not match!: كلمة المرور غير مطابقة!
+Unable to write password to settings.php file: غير قادر على كتابة كلمة المرور إلى ملف "settings.php".
+Password Updated: تم تحديث كلمة السر
+Password has been set: تم تعيين كلمة المرور.
+Connection Successful...: تم الاتصال بنجاح</b> الرجاء الانتقال إلى الصفحة التالية لمتابعة التثبيت.
+Correct your entries or click the Create New...: قم بتصحيح إدخالاتك أو انقر فوق الزر  إنشاء جديد</b> لمتابعة التثبيت.
+Correct your entries and try again.: صحح إدخالاتك وحاول مرة أخرى.
+XXX does not exist: XXX غير موجود
+XXX is not writable: XXX غير قابل للكتابة
+Error Converting Timezone: خطأ في تحويل المنطقة الزمنية
+Error Unable to write to file XXX.: خطأ تعذر الكتابة إلى ملف XXX.
+Please change the file permissions of this file.: الرجاء تغيير أذونات الملف لهذا الملف.
+Please change includes dir permission: الرجاء تغيير أذونات الملف الخاصة بدليل "include" للسماح للمستخدمين الآخرين بالكتابة.
+Your settings have been saved.: تم حفظ إعداداتك.
+OFF: إيقاف
+ON: تشغيل
+WebCalendar Setup Wizard: معالج إعداد WebCalendar
+This installation wizard will guide you...: سيرشدك معالج التثبيت هذا خلال إعداد تثبيت WebCalendar أساسي.<br>للحصول على تعليمات واستكشاف الأخطاء وإصلاحها ، راجع:<br>
+System Administrators Guide: دليل مسؤول النظام
+Frequently Asked Questions: أسئلة مكررة
+FAQ: التعليمات
+Troubleshooting: استكشاف الأخطاء وإصلاحها
+Getting Help: الحصول على مساعدة
+Upgrading Guide: دليل الترقية
+User Supported Wiki: دعم ويكي المستخدم
+PHP Version Check: التحقق من إصدار PHP
+Check to see if PHP 7.1.0 or greater is installed.: تحقق لمعرفة ما إذا تم تثبيت PHP 7.1.0 أو إصدار أحدث.
+PHP version: نسخة PHP
+PHP Settings: إعدادات PHP
+Detailed PHP Info: معلومات مفصلة PHP
+settings.php Status: حالة "settings.php"
+Session Check: فحص الجلسة
+To test the proper operation of sessions...: لاختبار التشغيل الصحيح للجلسات ، أعد تحميل هذه الصفحة. يجب أن ترى زيادة عداد الجلسة في كل مرة.
+SESSION COUNTER: عداد الجلسة
+The file permissions of settings.php are set...: يتم تعيين أذونات ملف "settings.php" بحيث لا يمتلك المثبت إذنًا لتعديله. يرجى تغيير أذونات الملف للمتابعة
+The file permissions of the includes directory are set...: يتم تعيين أذونات الملف الخاصة بدليل include بحيث لا يمتلك المثبت إذنًا لإنشاء ملف جديد. الرجاء تغيير أذونات الدليل التالي للمتابعة
+Your settings.php file appears to be valid.: يبدو أن ملف "settings.php" الخاص بك صالح.
+Configuration Wizard Password: كلمة مرور معالج التكوين
+Create Settings File Password: إنشاء كلمة مرور ملف الإعدادات
+db setup directions...: في هذا القسم ، ستقوم بإعداد واختبار الاتصال بخادم قاعدة البيانات. يجب أن تحتوي معلومات الحساب المقدمة على أذونات كاملة لإنشاء قواعد البيانات والجداول والمستخدمين. إذا لم يكن ذلك ممكنًا ، أو كان الوصول إلى قاعدة البيانات محدودًا ، فسيتعين عليك تكوين قاعدة البيانات يدويًا.
+Database Status: حالة قاعدة البيانات
+Supported databases for your PHP installation: قواعد البيانات المدعومة لتثبيت PHP الخاص بك
+Your current database settings are able to access the database.: إعدادات قاعدة البيانات الحالية الخاصة بك قادرة على الوصول إلى قاعدة البيانات.
+Please Test Settings: يرجى اختبار الإعدادات
+Your current database settings are not able...: إعدادات قاعدة البيانات الحالية غير قادرة على الوصول إلى قاعدة البيانات أو لم يتم اختبارها بعد.
+Database Settings: إعدادات قاعدة البيانات
+Database Type: نوع قاعدة البيانات
+Server: الخادم
+Connection Persistence: استمرار الاتصال
+All your database tables appear to be up...: يبدو أن جميع جداول قاعدة البيانات لديك محدّثة. يمكنك المتابعة إلى الصفحة التالية وإكمال إعداد WebCalendar الخاص بك.
+This appears to be a new installation...: يبدو أن هذا تثبيت جديد. إذا لم يكن هذا صحيحًا ، فيرجى الرجوع إلى الصفحة السابقة وتصحيح إعداداتك.
+This appears to be an upgrade...: يبدو أن هذا ترقية من الإصدار & nbsp؛ XXX & nbsp؛ إلى & nbsp؛ YYY.
+The database requires some data input...: تتطلب قاعدة البيانات إدخال بعض البيانات انقر فوق تحديث قاعدة البيانات لإكمال الترقية.
+In this section we will perform...: في هذا القسم ، سنقوم بإجراء التغييرات لرفع قاعدة البيانات الخاصة بك إلى المستوى المطلوب. إذا كنت تستخدم قاعدة بيانات مدعومة بالكامل ، فسيتم تنفيذ هذه الخطوة تلقائيًا نيابة عنك. إذا لم يكن الأمر كذلك ، فيمكن عرض SQL المطلوب ويجب أن تكون قادرًا على قصه ولصقه في نافذة استعلام خادم قاعدة البيانات.
+No database actions are required.: لا توجد إجراءات قاعدة البيانات المطلوبة.
+The following database actions are required: إجراءات قاعدة البيانات التالية مطلوبة
+ODBC Underlying Database: قاعدة بيانات ODBC الأساسية:
+Automatic installation not supported: لم يتم تنفيذ التثبيت التلقائي بالكامل لنوع قاعدة البيانات الخاصة بك. سيكون عليك إنشاء الجداول المطلوبة يدويًا باستخدام SQL المزود. الرجاء النقر فوق  عرض SQL  للمتابعة. قص ولصق في نافذة استعلام قاعدة البيانات الخاصة بك.
+This may take several minutes to complete: قد يستغرق هذا عدة دقائق حتى يكتمل.
+Install Database: قم بتثبيت قاعدة البيانات
+Update Database: تحديث قاعدة البيانات
+Display Required SQL: العرض مطلوب SQL
+Return to previous page after processing SQL.: بعد معالجة SQL هذا يدويًا ، ستحتاج إلى العودة إلى الصفحة السابقة وإعادة اختبار قاعدة البيانات الخاصة بك حتى يتمكن البرنامج النصي من اكتشاف التغييرات.
+This is the final step in setting up your WebCalendar Installation.: هذه هي الخطوة الأخيرة في إعداد تثبيت WebCalendar الخاص بك.
+Timezone Conversion: تحويل المنطقة الزمنية
+It appears that you have NOT converted...: يبدو أنك لم تقم بتحويل بيانات حدث WebCalendar الحالية إلى GMT. إذا كان لديك ، فيمكنك تجاهل هذا الإشعار وعدم متابعة التحويل. إذا كان هذا تثبيتًا جديدًا ، فيمكنك أيضًا تجاهل هذا الإشعار.
+Convert Data to GMT: تحويل البيانات إلى GMT
+Application Settings: إعدادات التطبيق
+HTTP-based authentication was not detected...: لم يتم الكشف عن المصادقة المستندة إلى HTTP. ستحتاج إلى إعادة تكوين خادم الويب الخاص بك إذا كنت ترغب في تحديد "خادم الويب" من خيارات "مصادقة المستخدم" أدناه.
+HTTP-based authentication was detected...: تم الكشف عن المصادقة المستندة إلى HTTP. يتم التعامل مع مصادقة المستخدم بواسطة خادم الويب الخاص بك. يجب عليك تحديد "خادم الويب" من قائمة اختيارات "مصادقة المستخدم" أدناه.
+Create Default Admin Account: إنشاء حساب المسؤول الافتراضي
+(Admin Account Not Found): (حساب المسؤول غير موجود)
+User Authentication: مصادقة المستخدم
+Web-based via WebCalendar (default): مستند إلى الويب عبر WebCalendar (افتراضي)
+Web Server (not detected): خادم الويب (لم يتم الكشف عنه)
+Web Server (detected): خادم الويب (تم الكشف عنه)
+None (Single-User): لا شيء (مستخدم واحد)
+Read-Only: يقرأ فقط
+Environment: بيئة
+Production: إنتاج
+Development: تطوير
+Save Settings: احفظ التغييرات
+Launch WebCalendar: قم بتشغيل WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: خطأ في تحديث الجدول "XXX": YYY.
+Conversion Successful: التحويل ناجح</b>
+Perl script required: يتطلب الإصدار السابق من WebCalendar تشغيل برنامج PERL النصي لتحويل بياناتك. يرجى تشغيل /tools/upgrade_to_0.9.7.pl ثم العودة إلى هذه الصفحة للمتابعة.
+previous version requires updating several tables: يتطلب الإصدار السابق من WebCalendar تحديث العديد من جداول قاعدة البيانات.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: لا تتوفر معاينة
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: خطأ في الاتصال بقاعدة البيانات
+Include Path: تضمين المسار
+Deleting events for: حذف الأحداث لـ
+Importing events for: استيراد الأحداث لـ
+No data returned from: لم يتم إرجاع أي بيانات من
+for non-user calendar: لتقويم غير المستخدم
+No Remote Calendars found: لم يتم العثور على تقاويم بعيدة
+Remote Calendars not enabled: لم يتم تمكين التقويمات البعيدة
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: لا يمكن العثور على معرف الحدث
+could not find event id XXX in database.: تعذر العثور على معرف الحدث XXX في قاعدة البيانات.
+task: مهمة
+This is a reminder for the XXX detailed below.: هذا تذكير لـ XXX المفصل أدناه.
+Pecentage Complete: النسبة الكاملة
+Reminder: تذكير
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: إجراء غير مدعوم: XXX.
+No event id specified.: لم يتم تحديد معرف الحدث.
+Not authorized (not admin).: غير مصرح به (ليس مشرفًا).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: التحقق من الأحداث لـ XXX من تاريخ YYY حتى تاريخ ZZZ.
+Found XXX events in time range.: تم العثور على XXX من الأحداث في النطاق الزمني.
+Event id=XXX YYY at ZZZ on AAA.: معرّف الحدث = XXX "YYY" في ZZZ على AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: السماح لمستخدم XXX بمشاهدة تقويم المستخدم الآخر.
+Error Email reminders disabled for user XXX.: خطأ: تم تعطيل تذكيرات البريد الإلكتروني للمستخدم "XXX".
+Number of site_extras XXX.: عدد عناصر_موقع_الموقع: XXX.
+Reminder set for event.: تم تعيين تذكير للحدث.
+Mins Before XXX.: قبل دقيقة: XXX.
+Event time is XXX.: وقت الحدث هو: XXX.
+Remind time is XXX.: وقت التذكير هو: XXX.
+Reminders for user XXX, login YYY.: تذكير للمستخدم "XXX" ، تسجيل الدخول "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: الحصول على الموافقة للمستخدم "XXX".
+Event id=XXX YYY already sent.: تم إرسال معرف الحدث = XXX "YYY" بالفعل.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: لا يلزم تسجيل الدخول لوضع المستخدم الفردي.
+No login required for HTTP authentication.: لا يلزم تسجيل الدخول لمصادقة HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: أحرف غير صالحة في تسجيل الدخول.
+Username XXX does not exist.: اسم المستخدم "XXX" غير موجود.
+You cannot remove admin rights from yourself!: لا يمكنك إزالة حقوق المسؤول من نفسك!
+Unknown error saving user: خطأ غير معروف في حفظ المستخدم.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: لم يتم العثور على مشاركين لمعرف الحدث: XXX.
+Db error Could not find event id XXX.: خطأ Db: تعذر العثور على معرف الحدث XXX.
+Error Could not find event id XXX in database.: خطأ: تعذر العثور على معرف الحدث XXX في قاعدة البيانات.

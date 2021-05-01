@@ -1,10 +1,43 @@
-# See translations/English-US.txt for instructions.
+# Lithuanian lt
 #
-# Translated by: Martynas Majeris, <martynas@solmetra.lt>, March 2005,
-# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
-# http://sourceforge.net/projects/jscalendar/
+# Formatas susideda iš pasirinktines antraštes:
 #
-# Translation last updated on 10-14-2008
+# Išverte: jusu vardas ir el. Pašto adresas
+# Paskutinis atnaujinimas: vertimo data
+# (Iskaitant pagrindini „#“ ir visus ankstesniu verteju komentarus.
+# PIRMOJI tušcia eilute baigia šiuos antraštes komentarus.)
+#
+# Seka tiek, kiek reikia:
+#
+# Fraze angliškai: vertimas
+# (Vienas prie eilutes. BE priekinio „#“.
+# „Angliška fraze:“, iskaitant dvitaški „:“, pateikia
+# „WebCalendar“ kurejai. Jusu dalis yra „vertimas“.)
+#
+# Irankiu kataloge yra du „Perl“ scenarijai, kurie jums pades:
+# - check_translation.pl
+# nurodo, ar visas tekstas sekmingai išverstas.
+# - update_translation.pl
+# išanalizuos programos failus, kad surastu visus išverstus ('fraze') ir
+# patarimas ('fraze'). Jis sutvarkys frazes pagal puslapi
+# (failas), kuriame yra pirmasis ivykis. Pasirinktinai jis gali žymeti
+# frazes, kurios dar neišverstos idejus
+#  << MISSING >>
+# eiluteje virš frazes. Jei fraze yra santrumpa,
+# eiluteje po fraze bus visas tekstas angliškai.
+#
+# Pastaba: bandau sumažinti bendra failo dydi. Jei „vertimas“
+# žodis / fraze yra identiški jusu ir anglu kalbomis, tiesiog naudokite ženkla „=“.
+#
+# Pastaba: Jus pastebesite "May_" žemiau. Tam yra priežastis.
+# Išversti "May_" iki viso menesio pavadinimo ir "May" i,
+# paprastai triju raidžiu menesio santrumpa (pvz., „Spalis“ reiškia „Spalis“).
+#
+# Tam naudojau „Google Translate“.
+# To turetu pakakti, kol gimtoji kalba gali tai patvirtinti.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -16,7 +49,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: Windows-1257
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -41,65 +74,2314 @@ __month__ __yyyy__: =
 
 
 ########################################
+# Page: about.php
+#
+Title: „WebCalendar“
+version XXX: XXX versija
+WebCalendar is a PHP application used...: „WebCalendar“ yra PHP programa, naudojama tvarkyti vieno vartotojo ar interneto / intraneto vartotoju grupes kalendoriu. Jis taip pat gali buti sukonfiguruotas kaip ivykiu kalendorius.
+Credits: Kreditai
+About: Apie
+OK: Gerai
+
+########################################
 # Page: access.php
 #
-Calendar: Kalendori�
+Database error XXX.: Duomenu bazes klaida: XXX.
+DEFAULT CONFIGURATION: Numatytasis konfiguravimas
+Go: Eik
+Save: Sutaupyti
+Undo: Atšaukti
+Public Access: Visuomenes prieiga
+Admin: Administratorius
+User Access Control: Vartotojo prieigos kontrole
+Allow Access to Other Users Calendar: Leisti prieiga prie kitu vartotoju kalendoriaus
+Grant This User Access to My Calendar: Suteikite šiam vartotojui prieiga prie Mano kalendoriaus
+Type: Tipas
+Calendar: Kalendorius
+View Event: Žiureti ivyki
+View: Vaizdas
+Edit: Redaguoti
+Approve/Reject: Patvirtinti / atmesti
+Events: Ivykiai
+Tasks: Užduotys
+Journals: Žurnalai
+Can Invite: Gali pakviesti
+Can Email: Ar gali el
+Can See Time Only: Gali matyti tik laika
+Assistant: Asistentas
+Select All: Pasirinkti viska
+Clear All: Išvalyti viska
+Public: Viešas
+Confidential: Konfidencialu
+Private: Privatus
+
+########################################
+# Page: activity_log.php
+#
+Next: Kitas
+Previous: Ankstesnis
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Ivykis XXX jau yra jusu kalendoriuje.
+Invalid entry id XXX.: Neteisingas irašo ID: „XXX“.
+a XXX event may not be added to your calendar: Tai yra „XXX“ ivykis ir jo negalima prideti prie jusu kalendoriaus.
+confidential: konfidencialu
+private: privatus
+Error adding event XXX.: Pridedant ivyki ivyko klaida: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Netinkamas nustatymo pavadinimas „XXX“.
+Select: Pasirinkite
+Day: Diena
+Week: Savaite
+Month: Menuo
+Year: Metai
+Bottom: Apacia
+Top: I viršu
+Anyone: Bet kas
+Participant: Dalyvis
+Settings: Nustatymai
+Groups: Grupes
+NonUser Calendars: „NonUser“ kalendoriai
+Other: Kita
+Email: El
+Colors: Spalvos
+Document background: Dokumento fonas
+Document title: Dokumento pavadinimas
+Document text: Dokumento tekstas
+My event text: Mano ivykio tekstas
+Table grid color: Stalo tinklelio spalva
+Table header background: Lenteles antraštes fonas
+Table header text: Lenteles antraštes tekstas
+Table cell background: Lenteles langelio fonas
+Table cell background for current day: Lenteles langeliu fonas dabartinei dienai
+Table cell background for days with events: Lenteles langelio fonas dienoms su ivykiais
+Table cell background for weekends: Stalo langeliu fonas savaitgaliams
+Table cell background for other month: Lenteles langelio fonas kitam menesiui
+Week number color: Savaites numerio spalva
+Event popup background: Ivykio iššokantis fonas
+Event popup text: Ivykio iššokantis tekstas
+System Settings: Sistemos nustatymai
+Help: Pagalba
+System options: Sistemos parinktys
+app-name-help: Nurodo programos pavadinima, kuris bus rodomas visu puslapiu naršykles antraštes juostoje ir prisijungimo puslapyje. Verte, kuria nurodete cia, bus ieškoma vertimu faile, kad galetumete pateikti skirtingus pavadinimus skirtingomis kalbomis.
+Application Name: Programos pavadinimas
+Translated Name (XXX): Išverstas vardas (XXX)
+server-url-help: Nurodo pagrindini programos URL. Tai bus itraukta siunciant el. Pašto priminimus ir pranešimus.
+Server URL: Serverio URL
+home-url-help: Nurodo pagrindini programos URL. Tai gali buti absoliutus arba santykinis
+Home URL: Pagrindinis URL
+language-help: Nurodo, kuria kalba naudoti.
+Language: Kalba
+Your browser default language is XXX.: Jusu naršykles numatytoji kalba yra „XXX“.
+Allow user to use themes: Leisti vartotojui naudoti temas
+themes-help: Leidžia masiškai atnaujinti konfiguracijos nustatymus. Mažosiomis raidemis pažymetos etiketes yra tik vartotojo išankstines.
+Themes: Temos
+AVAILABLE THEMES: TURIMOS TEMOS
+None: Ne vienas
+Preview: Peržiura
+Site customization: Svetaines pritaikymas
+custom-script-help: Leidžia ivesti pasirinktini „Javascript“ ar stiliaus lapo teksta, kuris bus iterptas i kiekvieno puslapio HTML skilti „head“.
+Custom script/stylesheet: Tinkintas scenarijus / stiliaus lapas
+custom-header-help: Leidžia tinkinta HTML fragmenta itraukti i kiekvieno puslapio viršuje.
+Custom header: Tinkinta antrašte
+custom-trailer-help: Leidžia kiekvieno puslapio pabaigoje itraukti tinkinta HTML fragmenta.
+Custom trailer: Pasirinktine priekaba
+enable-external-header-help: Leidžia priskirta anonsa ikelti iš išorinio failo
+Allow external file for header/script/trailer: Leisti išorini antraštes / scenarijaus / priekabos faila
+Allow user to override header/trailer: Leisti vartotojui nepaisyti antraštes / priekabos
+Date and Time: Data ir laikas
+server-tz-help: Nurodo, kiek valandu reikia koreguoti laika nuo UTC iki serverio laiko.
+Server Timezone Selection: Serverio laiko juostos pasirinkimas
+tz-help: Nurodo, kiek valandu reikia koreguoti laika nuo UTC iki vietinio laiko.
+Default Client Timezone Selection: Numatytasis kliento laiko juostos pasirinkimas
+display-general-use-gmt-help: Jei igalinta, bendros datos / laikai rodomi kaip GMT
+Display Common Use Date/Times as GMT: Rodyti bendrojo naudojimo data / laika kaip GMT
+date-format-help: Nurodo pageidaujama datos formata.
+Date format: Datos formatas
+Small Task Date: Mažos užduoties data
+display-week-starts-on: Nurodo savaites diena, kuria savaite prasideda. Jei nurodomas pirmadienis, savaites skaiciai bus ISO savaites skaiciai.
+Week starts on: Savaite prasideda
+display-weekend-starts-on: Nustato savaites dienos pradžia savaitgaliams
+Weekend starts on: Savaitgalis prasideda
+time-format-help: Nurodo, kuri laiko formata naudoti:<br><em>12 valandu:</em> rodymo laikas kaip 3:00, 20:30 ir kt.<br><em>24 valandos:</em> rodymo laikas yra 300 , 2030 ir kt.
+Time format: Laiko formatas
+12 hour: 12 valandu
+24 hour: 24 valandos
+timed-evt-len-help: Nurodo ivesties metoda nustatant ivykio laika.
+Specify timed event length by: Nurodykite ivykio laika pagal laika
+Duration: Trukme
+End Time: Pabaigos laikas
+work-hours-help: Nurodo dienos rodini, kuri reikia rodyti dienos rodinyje.
+Work hours: Darbo valandos
+From: Nuo
+to: i
+Appearance: Išvaizda
+preferred-view-help: Nurodo numatytaji rodini (diena, savaite, menuo arba metai).
+Preferred view: Pageidaujamas vaizdas
+Allow top menu: Leisti viršutini meniu
+Date Selectors position: Data parinkeju pozicija
+menu-themes-help: Nustato viršutinio meniu spalvas ir stiliu
+Menu theme: Meniu tema
+fonts-help: Nurodo naudojamu sistemos šriftu saraša (pvz., „Arial, Helvetica“)
+Fonts: Šriftai
+display-sm_month-help: Jei igalinta, rodomi maži menesio menesio rodiniai
+Display small months: Rodyti mažus menesius
+display-weekends-help: I savaitgalius itraukite žiuredami savaite.
+Display weekends: Rodyti savaitgalius
+display-long-daynames-help: Jei igalinta, rodomi ilgu dienu pavadinimai
+Display long day names: Rodyti ilgu dienu pavadinimus
+display-alldays-help: Rodyti ankstesniu ir kitu menesiu dienas menesio rodiniuose užpildydami visas langelius.
+Display all days in month view: Rodyti visas dienas menesio rodinyje
+display-week-number-help: Nurodo, ar savaites skaicius (1–52) turetu buti rodomas menesio ir savaites vaizduose.
+Display week number: Rodyti savaites numeri
+display-desc-print-day-help: Itraukite ivykiu aprašymus i spausdintuvo pritaikyta dienos rodinio versija.
+Display description in printer day view: Pateikti apraša spausdintuvo dienos rodinyje
+yearly-shows-events-help: Metiniame rodinyje rodykite dienas, kuriose ivykiai yra paryškinti.
+Display days with events in bold in month and year views: Parodykite dienas su ivykiais paryškintais menesio ir metu rodiniais
+display-minutes-help: Jei igalinta, visada bus rodomos minutes, kurios baigiasi: 00
+Display 00 minutes always: Visada rodyti 00 minuciu
+display-end-times-help: Rodyti ivykio pabaigos laika, jei ivykis yra numatytas
+Display end times on calendars: Rodyti pabaigos laika kalendoriuose
+allow-view-add-help: „+“ Piktograma bus itraukta i rodinius, leidžianti vartotojams greitai prideti ivykius prie kitu vartotoju kalendoriu.
+Include add event link in views: Itraukite ivykio nuoroda i rodinius
+lunar-help: Jei igalinta, kiekviena menesi bus rodomos mažos piktogramos, žymincios menulio fazes
+Display Lunar Phases in month view: Menulio fazes rodyti menesio rodinyje
+Restrictions: Apribojimai
+allow-view-other-help: Nurodo, ar vienas vartotojas gali peržiureti kito vartotojo kalendoriu.
+Allow viewing other users calendars: Leisti peržiureti kitu naudotoju kalendorius
+require-approvals-help: Kai igalinta, vartotojas turi patvirtinti ivyki, kol jis bus rodomas jo kalendoriuje (nebent ijungta Rodyti nepatvirtinta). Atminkite, kad nustate tai i „Ne“, viešosios prieigos kalendoriaus patvirtinimai nebus išjungti (jei igalintas viešosios prieigos kalendorius).
+Require event approvals: Reikalauti ivykiu patvirtinimu
+display-unapproved-help: Nurodo, ar nepatvirtinti ivykiai rodomi jusu kalendoriuje.<br>Jei nustatyta kaip „Taip“, nepatvirtinti ivykiai bus rodomi jusu kalendoriuje (kita teksto spalva).<br>Jei nustatyta kaip „Ne“, tada nepatvirtinti ivykiai turi buti patvirtinti prieš juos rodant jusu kalendoriuje.
+Display unapproved: Ekranas nepatvirtintas
+conflict-check-help: Patikrinkite, ar nera ivykiu konfliktu (du ivykiai numatyti tam paciam laikui tam paciam asmeniui). Jei tai nustatysite i „Taip“, patvirtine perspejima vis tiek galesite planuoti du ivykius vienu metu. Jei nustatysite tai i „Ne“, konfliktai nebus tikrinami. Tikriausiai norite tai nustatyti kaip „Taip“, todel ivyksta konfliktu tikrinimas.
+Check for event conflicts: Patikrinkite, ar nera ivykiu konfliktu
+Yes: Taip
+No: Ne
+conflict-months-help: Jei tikrinamas konfliktas („Tikrinti ivykiu konfliktus“ nustatyta i „Ne“&#41;, tai nurodo, kiek menesiu i prieki turetume patikrinti, ar nera konfliktu. Jei pastebite, kad ivykiu pridejimas užtrunka ilgai , sumažinkite ši skaiciu.
+Conflict checking months: Konfliktu tikrinimo menesiai
+conflict-check-override-help: Leidžia vartotojams nepaisyti ivykiu konfliktu ir planuoti du ar daugiau ivykiu tuo paciu metu.
+Allow users to override conflicts: Leisti vartotojams nepaisyti konfliktu
+limit-appts-help: Leidžia sistemos administratoriui nustatyti visos sistemos paskyrimu, kuriuos vienas vartotojas gali atlikti bet kuria diena, skaiciaus apribojima.
+Limit number of timed events per day: Riboti ivykiu, kuriu laikas pagal laika, skaiciu per diena
+limit-appts-number-help: Nurodo maksimalu laiko ivykiu, kuriuos vartotojas gali tureti per viena diena, skaiciu.
+Maximum timed events per day: Maksimalus ivykiu laikas per diena
+crossday-help: Jei igalinta, dienu trukmes ivykiai bus rodomi atskiromis dienomis
+Disable Cross-Day Events: Išjungti keliu dienu ivykius
+disable-location-field-help: Pasirinkus „Taip“, laukas „Vieta“ bus pašalintas iš ivykio informacijos puslapiu
+Disable Location field: Išjungti vietos lauka
+disable-url-field-help: Pasirinkus „Taip“, laukas „URL“ bus pašalintas iš ivykio informacijos puslapiu
+Disable URL field: Išjungti URL lauka
+disable-priority-field-help: Pasirinkus „Taip“, laukas „Prioritetas“ bus pašalintas iš ivykiu informacijos puslapiu, o tai bus paprastesne sasaja naujokams.
+Disable Priority field: Išjungti prioritetini lauka
+disable-access-field-help: Pasirinkus „Taip“, laukas „Prieiga“ bus pašalintas iš ivykiu informacijos puslapiu, o tai bus paprastesne sasaja naujokams.
+Disable Access field: Išjungti prieigos lauka
+disable-participants-field-help: Pasirinkus „Taip“, laukas „Dalyviai“ bus pašalintas iš ivykiu informacijos puslapiu, todel vartotojai negales prie savo renginiu prideti kitu vartotoju. Jei igalinsite šia parinkti, taip pat galite išjungti lauka „Leisti peržiureti kito vartotojo kalendorius“.
+Disable Participants field: Išjungti dalyviu lauka
+disable-repeating-field-help: Pasirinkus „Taip“, pridedant ivykius bus pašalintas laukas „Pasikartojantis“. Tai suteiks paprastesne sasaja pradedantiesiems.
+Disable Repeating field: Išjungti pasikartojanti lauka
+allow-html-description-help: Jei igalinta, vartotojai gali ivesti HTML ivykio aprašymo lauke. Jei nebus igalinta, HTML žymos bus išvengtos, kad butu rodomos kaip paprastas tekstas. Ispejimas: ijunge šia funkcija vartotojai gales remtis vaizdais kitose svetainese.
+Allow HTML in Description: Leisti HTML apraše
+Popups: Iššokanciu langu
+disable-popups-help: Neleisti iššokanciu langu iš kalendoriaus rodiniu
+Disable Pop-Ups: Išjungti iššokanciuosius langus
+popup-includes-siteextras-help: Jei igalinta, leiskite pasirinktiniu ivykiu lauku saranka faile site_extras.php rodyti ivykio iššokanciuose languose.
+Display Site Extras in popup: Rodyti iššokanciame tinklalapyje esancius priedus
+popup-includes-participants-help: Jei igalinta, dalyviai rodomi ivykio iššokanciuose languose.
+Display Participants in popup: Rodyti dalyvius iššokanciajame lange
+Miscellaneous: Ivairus
+remember-last-login-help: Kai bus ijungta, prisijungimo puslapyje bus užpildytas vartotojo prisijungimas (bet ne slaptažodis), o vartotojo nuostatos bus ikeltos (iskaitant ju pageidaujamas spalvas ir kalbos pasirinkima).
+Remember last login: Prisiminti paskutini prisijungima
+summary_length-help: Didžiausias trumpo aprašymo ilgis kalendoriaus rodiniuose
+Brief Description Length: Trumpas aprašymas Ilgis
+user_sort-help: Nustato naudotoju, nenaudotoju sarašu rušiavimo tvarka
+User Sort Order: Vartotojo rušiavimo tvarka
+Lastname, Firstname: Pavarde Vardas
+Firstname, Lastname: Vardas Pavarde
+allow-public-access-help: Kai igalinta, kalendorius gali buti naudojamas kaip tik skaitomas viešasis kalendorius, nereikalaujantis, kad vartotojai prisijungtu.
+Allow public access: Leisti viešai naudotis
+public-access-default-visible: Ivykiai iš viešojo kalendoriaus bus automatiškai rodomi visu vartotoju kalendoriuose
+Public access visible by default: Pagal numatytuosius nustatymus matoma viešoji prieiga
+public-access-default-selected: Pridedant nauja ivyki, pagal nutylejima dalyvis bus pasirinktas viešasis vartotojas.
+Public access is default participant: Viešoji prieiga yra numatytasis dalyvis
+public-access-view-others-help: Kai prieiga prie sistemos yra prieinama viešai, nurodo, ar vartotojas gali peržiureti kito kalendoriaus vartotojo kalendoriu.
+Public access can view other users: Vieša prieiga gali peržiureti kitus vartotojus
+public-access-can-add-help: Kai igalinta, vartotojai, kurie prieina prie sistemos per viešaja prieiga, gales prideti nauju ivykiu, taciau jie nebus rodomi kalendoriuje, kol administratorius nepatvirtins naujo ivykio.
+Public access can add events: Vieša prieiga gali prideti ivykiu
+public-access-add-requires-approval-help: Nurodo, ar ivykius, pridetus per viešosios prieigos paskyra, reikia patvirtinti prieš juos rodant.
+Public access new events require approval: Norint viešai prieiti prie nauju renginiu, reikia patvirtinimo
+public-access-sees-participants-help: Jei igalinta, vartotojai, kurie prieina kalendoriu iš viešosios paskyros, gales matyti ivykio dalyvius, jei jie peržiures išsamia ivykio informacija.
+Public access can view participants: Dalyvius gali peržiureti vieša prieiga
+public-access-override-help: Leidžia paslepti ivykiu pavadinimus ir aprašus viešajame kalendoriuje
+Override event name/description for public access: Nepaisyti ivykio pavadinimo / aprašo, kad butu galima viešai naudotis
+public-access-override-text-help: Tekstas, rodomas, jei igalinta aukšciau nurodyta parinktis. Jei „Nera“, jis bus išverstas.
+Text to display to public access: Tekstas, rodomas viešai prieigai
+public-access-captcha-help: Jei tai igalinta, naujiems „Public“ pridetiems ivykiams reikia perduoti CAPTCHA patvirtinima.
+Require CAPTCHA validation for public access new events: Reikalauti CAPTCHA patvirtinimo, kad visuomene galetu pasiekti naujus ivykius
+uac-enabled-help: Igalina vartotojo lygio prieigos valdyma
+User Access Control enabled: Ijungta vartotojo prieigos kontrole
+groups-enabled-help: Igalina grupiu palaikyma, leidžiant vartotojams pasirinkti vartotojus pagal grupes.
+Groups enabled: Igalintos grupes
+user-sees-his-group-help: Jei igalinta, vartotojai nematys kalendoriaus naudotoju, kurie nera bent vienoje iš ju grupiu.
+User sees only his groups: Vartotojas mato tik savo grupes
+nonuser-enabled-help: Jei igalinta, administratoriai tures galimybe prideti nenaudojamu kalendoriu
+Nonuser enabled: Nenaudojami kalendoriai igalinti
+nonuser-list-help: Kur rodyti nenaudotoju kalendorius dalyviu saraše
+Nonuser list: Rodyti dalyviu saraše
+Upcoming Events: Artimiausi renginiai
+upcoming-events-help: Igalinti upcoming.php
+Enabled: Ijungtas
+upcoming-events-allow-override: Leisti vartotojo paramteri „upcoming.php“
+Allow user override: Leisti naudotojui nepaisyti
+upcoming-events-display-caticons: Itraukite kategorijos piktogramas i upcoming.php
+Display category icons: Rodyti kategorijos piktogramas
+upcoming-events-display-layers: Rodyti sluoksnius upcoming.php
+Display layers: Rodyti sluoksnius
+upcoming-events-display-links: Rodyti nuorodas upcoming.php
+Display links to events: Rodyti nuorodas i ivykius
+upcoming-events-display-popups: Rodyti ivykiu iššokancius langus upcoming.php
+Display event popups: Rodyti ivykiu iššokanciuosius langus
+reports-enabled-help: Jei igalinta, kiekvieno puslapio apacioje vartotojai pamatys skilti „Ataskaitos“ ir gales kurti tinkintas ataskaitas. Be to, administratoriaus vartotojai gali sukurti visuotines ataskaitas, kurios bus rodomos visu vartotoju puslapiu apacioje.
+Reports enabled: Ataskaitos igalintos
+subscriptions-enabled-help: Nurodo, ar nuotoliniai vartotojai gali užsiprenumeruoti „WebCalendar“ vartotojo kalendoriu, leidžiant jiems matyti „WebCalendar“ vartotojo ivykius programoje, kurioje igalinta „iCal“ (pvz., „Apple“ „iCal“ ar „Mozilla“ kalendorius).
+Allow remote subscriptions: Leisti nuotolines prenumeratas
+remotes-enabled-help: Leidžia vartotojams ikelti nuotolinius IC failus naudojant URL
+Allow remote calendars: Leisti nuotolinius kalendorius
+rss-enabled-help: Nurodo, ar vartotojo kalendoriu galima gauti iš RSS sklaidos kanalo.
+Enable RSS feed: Igalinti RSS kanala
+categories-enabled-help: Igalina ivykiu kategoriju palaikyma.
+Categories enabled: Kategorijos igalintos
+icon_upload-enabled-help: Jei igalinta, vartotojai gali ikelti kategoriju piktogramas
+Category Icon Upload enabled: Kategorijos piktogramos ikelimas igalintas
+(Requires XXX folder to exist.): (Reikia, kad butu XXX aplankas.)
+display-tasks-help: Rodyti nedideli užduociu langa menesio ir dienos kalendoriuje
+Display small task list: Rodyti mažu užduociu saraša
+display-tasks-in-grid-help: Rodyti užduotis kalendoriuose kartu su ivykiais
+Display tasks in Calendars: Rodyti užduotis kalendoriuose
+allow-external-users-help: Nurodo, ar prie ivykio galima prideti ne kalendoriaus vartotoja. Tai leidžia ne kalendoriaus vartotojus itraukti i ivykio dalyvius.
+Allow external users: Leisti išoriniams vartotojams
+external-can-receive-notification-help: Kai igalinti išoriniai vartotojai ir ijungtas el. Pašto naudojimas, išoriniai vartotojai gali gauti el. Pašto pranešimus, kai ivykis pridedamas, atnaujinamas arba ištrinamas (jei nurodomas išorinio vartotojo el. Pašto adresas).
+External users can receive email notifications: Išoriniai vartotojai gali gauti el. Pašto pranešimus
+external-can-receive-reminder-help: Kai igalinti išoriniai vartotojai ir ijungtas el. Pašto naudojimas, išoriniai vartotojai gali gauti el. Pašto priminimus (jei nurodomas išorinio vartotojo el. Pašto adresas).
+External users can receive email reminders: Išoriniai vartotojai gali gauti priminimus el. Paštu
+allow-self-registration-help: Leiskite naujiems vartotojams užsiregistruoti
+Allow self-registration: Leisti savarankiškai registruotis
+use-blacklist-help: Apriboti prieiga prie „WebCalendar“ funkciju pagal IP adresa
+Restrict self-registration to blacklist: Apsiribokite saviregistracija tik juoduoju sarašu
+allow-self-registration-full-help: Leiskite naujiems vartotojams internetu atlikti saviregistravimo procesa
+Use self-registration email notifications: Generuokite slaptažodžius ir siuskite naujiems vartotojams
+allow-attachment-help: Leisti vartotojams prideti failu priedus prie ivykiu.
+Allow file attachments to events: Leisti failu priedus prie ivykiu
+Admin and owner can always add attachments if enabled.: Administratorius ir savininkas visada gali prideti priedu, jei jie igalinti.
+allow-comments-help: Leisti vartotojams prideti komentaru prie ivykiu.
+Allow comments to events: Leisti komentuoti ivykius
+Admin and owner can always add comments if enabled.: Administratorius ir savininkas visada gali prideti komentaru, jei tai igalinta.
+email-enabled-help: Ijunkite arba išjunkite visus el. Laišku siuntimo pranešimus ir priminimus. Jei jusu serveris nera tinkamai nustatytas siusti laiškus, nustatykite i „ne“.
+Email enabled: El. Paštas igalintas
+email-default-sender: Nurodo el. Pašto adresa, kuri norite nurodyti kaip siunteja, kai siunciate priminimus.
+Default sender address: Numatytasis siuntejo adresas
+email-mailer: Pasirinkite el. Pašto tipa (SMTP, PHP paštas, sendmail)
+Email Mailer: El. Pašto laiškininkas
+email-smtp-host: SMTP serverio (-iu) kompiuterio pavadinimas (-ai), atskirtas kableliais
+SMTP Host name(s): SMTP pagrindinio kompiuterio pavadinimas (-ai)
+email-smtp-port: SMTP prievado numeris (paprastai 25)
+SMTP Port Number: SMTP prievado numeris
+email-smtp-auth: Naudokite SMTP autentifikavima
+SMTP Authentication: SMTP autentifikavimas
+email-smtp-username: SMTP vartotojo vardas, jei naudojate autentifikavima
+SMTP Username: SMTP vartotojo vardas
+email-smtp-password: SMTP slaptažodis, jei naudojate autentifikavima
+SMTP Password: SMTP slaptažodis
+Default user settings: Numatytieji vartotojo nustatymai
+email-format: Nurodykite HTML ar paprasto teksto pranešimu nuostata
+Email format preference: El. Pašto formato nuostata
+HTML: =
+Plain Text: Paprastas tekstas
+email-include-ics: I el. Pašto pranešima itraukite „iCalendar“ ICS faila
+Include iCalendar attachments: Itraukite „iCalendar“ priedus
+email-event-reminders-help: Nurodo, ar siusti ivykiu priminimus, ar ne.
+Event reminders: Ivykio priminimai
+email-event-added: Nurodo, ar siusti el. Pašto pranešimus, kai ivykis pridedamas prie jusu kalendoriaus.
+Events added to my calendar: I mano kalendoriu itraukti ivykiai
+email-event-updated: Nurodo, ar siusti el. Pašto pranešimus, kai ivykis atnaujinamas jusu kalendoriuje.
+Events updated on my calendar: Ivykiai atnaujinti mano kalendoriuje
+email-event-deleted: Nurodo, ar siusti el. Pašto pranešimus, kai ivykis pašalinamas iš jusu kalendoriaus.
+Events removed from my calendar: Ivykiai pašalinti iš mano kalendoriaus
+email-event-rejected: Nurodo, ar siusti el. Pašto pranešimus, kai dalyvis atmeta jusu kalendoriuje esanti ivyki.
+Event rejected by participant: Rengini atmete dalyvis
+email-event-create: Nurodo, ar irašu kurejas gaus el. Laiška
+Event that I create: Renginys, kuri kuriu
+Color options: Spalvu variantai
+Allow user to customize colors: Leisti vartotojui pritaikyti spalvas
+gradient-colors: Jei igalintos gradiento spalvos, naudojamos. Tai gali labai paveikti našuma.
+Enable gradient images for background colors: Igalinti fono spalvu gradiento vaizdus
+Not available: Nepasiekiamas
+Background Image options: Fono paveikslelio parinktys
+bgimage-help: Norimo fono paveikslelio URL. Gali buti santykinis ryšys.
+Background Image: Fono paveikslelis
+bgrepeat-help: Valdo pakartotini fono vaizdo elgesi.
+Background Repeat: Pakartokite fona
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Padejejai
+Preferences: Nuostatos
+Control Panel: Kontroles skydelis
+Users: Vartotojai
+Account: Saskaita
+Categories: Kategorijos
+Views: Peržiuros
+Layers: Sluoksniai
+Reports: Ataskaitos
+Delete Events: Ištrinti ivykius
+Activity Log: veiklos žurnalas
+System Log: Sistemos žurnalas
+Security Audit: Saugumo auditas
+Public Preferences: Visuomenes nuostatos
+Unapproved Public Events: Nepatvirtinti vieši renginiai
+Administrative Tools: Administravimo irankiai
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Pasikartojantis vardas: „XXX“.
+Username XXX already exists.: Vartotojo vardas „XXX“ jau yra.
+Email address XXX already exists.: El. Pašto adresas „XXX“ jau yra.
 
 ########################################
 # Page: approve_entry.php
 #
-Date: Pasirinkite dat�
+Additional Comments (optional): Papildomos pastabos (neprivaloma)
+Approve and Send: Patvirtinti ir siusti
+Approve and Exit: Patvirtinti ir išeiti
+(Your comments will be emailed to the event creator.): (Jusu komentarai bus išsiusti el. Paštu renginio kurejui.)
+Hello, XXX.: Sveiki, XXX.
+XXX has approved an appointment and added comments.: Susitikima patvirtino ir komentarus pridejo XXX.
+Subject XXX: Tema: „XXX“.
+Description XXX: Aprašymas: „XXX“.
+Date XXX: Data: XXX
+Time XXX: Laikas: XXX
+Comments XXX: Komentarai: XXX
+Approved w/Comments by XXX.: Patvirtinta su komentarais: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Administratoriaus režimas
+Your assistants: Jusu padejejai
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Nežinoma klaida.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Programos klaida: nenurodytas XXX!
+user: Vartotojas
+year: metus
+month: menesi
+day: diena
+
+########################################
+# Page: category.php
+#
+Category Icon: Kategorijos piktograma
+Global: Visuotinis
+The permissions for the icons directory are set to read-only: Piktogramu katalogo teises nustatomos tik skaityti.
+Category Name: Kategorijos pavadinimas:
+Color: Spalva
+Remove Icon: Pašalinti piktograma:
+Add Icon to Category: Prideti piktograma prie kategorijos
+Upload: Ikelti
+GIF or PNG 6kb max: GIF arba PNG ne daugiau kaip 6 kb
+Search for existing icons: Ieškokite esamu piktogramu
+Add: Papildyti
+Delete: Ištrinti
+Are you sure you want to delete this entry?: Ar tikrai norite ištrinti ši iraša?
+Make New Category: Padaryti nauja kategorija
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Butinas kategorijos pavadinimas
+File size exceeds maximum.: Failo dydis viršija maksimalu dydi.
+File is not a GIF or PNG image: Failas nera GIF ar PNG vaizdas
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: GALIMOS KATEGORIJOS
+ENTRY CATEGORIES: IEJIMO KATEGORIJOS
+Remove: Pašalinti
+Global Category: Visuotine kategorija
+Cancel: Atšaukti
+
+########################################
+# Page: colors.php
+#
+Add Custom: Prideti pasirinktini
+Basic Colors: Pagrindines spalvos
+Current Color: Dabartine spalva
+Custom Colors: Pasirinktines spalvos
+Old Color: Senoji spalva
+
+########################################
+# Page: combo.php
+#
+Select None: Pasirinkite Nera
+Agenda: Darbotvarke
+Add Task: Prideti užduoti
+Description: apibudinimas
+Date: Data
+Time: Laikas
+Priority: Prioritetas
+Access: Prieiga
+Created by: Sukurta
+Updated: Atnaujinta
+Participants: Dalyviai
+Attachments: Priedai
+Comments: Komentarai
+Brief Description: Trumpas aprašymas
+Full Description: Pilnas aprašymas
+Category: Kategorija
+Add event detail: Prideti išsamia ivykio informacija
+Start Date: Pradžios data
+Due Date: Terminas
+Add task detail: Prideti užduoties informacija
+All: Viskas
+Error: Klaida
+no response from server: nera serverio atsakymo
+JSON error: JSON klaida
+High: Aukštas
+Medium: Vidutinis
+Low: Žemas
+Today: Šiandien
+Add Entry: Prideti iraša
+Unnamed Event: Neivardytas ivykis
+Unnamed Task: Neivardinta užduotis
+Refresh: Atnaujinti
+Click to add entry: Spustelekite noredami prideti iraša
+Name: vardas
+pm: =
+am: esu
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX atšauke susitikima.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Neteisingas demes ID
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Prideti komentara
+Add Attachment: Prideti prieda
+Subject: Tema
+Comment: Pakomentuokite
+Upload file: Ikelti faila
+
+########################################
+# Page: docdel.php
+#
+Removed: Pašalinta
+
+########################################
+# Page: edit_entry.php
+#
+days: dienu
+hours: valandos
+minutes: minuciu
+You are not authorized to edit this task.: Jus nesate igalioti redaguoti šios užduoties.
+is in a different timezone than you are. Currently: yra kita laiko juosta nei jus. Šiuo metu
+hour ahead of you: valanda prieš tave
+hour behind you: valanda už taves
+hours ahead of you: valandos prieš tave
+hours behind you: valandos už taves
+XXX is in a different timezone (ahead): (XXX yra kitoje laiko juostoje; YYY prieš jus.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX yra skirtingoje laiko juostoje; YYY už jusu.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Cia irašytas laikas priklauso nuo jusu laiko juostos.
+Edit Entry: Redaguoti iraša
+Details: Išsami informacija
+Repeat: Pakartokite
+Reminders: Priminimai
+brief-description-help: Tai turetu pateikti trumpa ivykio aprašyma (apie 20 simboliu). Tai parodys ivyki žiurint kalendoriu.
+full-description-help: Tai turetu pateikti išsamia ivykio informacija. Šia informacija galima pamatyti, kai vartotojas peržiuri ivyki.
+access-help: Nurodo ivykio prieigos lygi. <ul> <li> Vieša: visi gali matyti visa išsamia ivykio informacija.</li> <li> konfidencialu: kiti gali matyti, kad turite iraša ta data ir laikas, bet ne tai, kas tai yra.</li></ul>
+priority-help: Nurodo ivykio prioriteta. Aukšto prioriteto ivykiai bus paryškinti.
+category-help: Nurodo ivykio kategorija.
+completed-help: Data užduotis atlikta. Ijungiama tik tada, kai visu dalyviu procentas yra lygus 100%.
+Date Completed: Užbaigimo data
+percent-help: Šio vartotojo užduoties atlikimo procentas
+Percent Complete: Procentas baigtas
+All Percentages: Visi procentai
+location-help: Renginio vieta
+Location: Vieta
+url-help: Ivykio URL
+URL: =
+date-help: Nurodo ivykio data.
+Untimed event: Nenumatytas ivykis
+Timed event: Laiku ivykis
+All day event: Visos dienos renginys
+Timezone Offset: Laiko juostos poslinkis
+time-help: Nurodo ivykio laika. <ul> <li> „Laiku ivykis“ (ivykiui, kuris ta diena numatytas konkreciu laiku)</li> <li> „Neivykis“ (ivykiui tai nera laikas (pvz., atostogos) )</li> <li> „Visos dienos ivykis“ (renginiui, kuris trunka visa diena (pvz., budamas ne biure)</li></ul>
+duration-help: Nurodo ivykio trukme (valandomis; minutemis). <em>Ši lauka galima palikti tušcia.</em>
+end-time-help: Nurodo numatoma ivykio pabaigos laika.
+Start Time: Pradžios laikas
+Due Time: Laiku
+Site Extras: Svetaines priedai
+avail_participants-help: Išvardija galimus šio irašo dalyvius.
+Available: Yra
+Find Name: Raskite varda
+Resources: Ištekliai
+participants-help: Išvardija šio irašo dalyvius.
+Selected: Pasirinkta
+Availability: Prieinamumas
+external-participants-help: Nurodo ivykio dalyviu, kurie nera kalendoriaus vartotojai, saraša. Vartotojai turetu buti nurodomi po viena kiekvienoje eiluteje ir gali nurodyti el. Pašto adresa. Jei nurodomas el. Pašto adresas, vartotojas gali gauti pranešimus ir priminimus.
+External Participants: Išores dalyviai
+repeat-type-help: Pasirinkite, kaip dažnai ivykis turetu kartotis.
+Daily: Kasdien
+Weekly: Kas savaite
+Monthly: Kas menesi
+by day: diena
+by date: pagal data
+by position: pagal pozicija
+Monthly (by day): Kas menesi (pagal diena)
+Monthly (by date): Kas menesi (pagal data)
+Monthly (by position): Kas menesi (pagal pozicija)
+Yearly: Kasmet
+Manual: Rankinis
+Expert Mode: Eksperto lygis
+repeat-end-date-help: Nurodo data, iki kurios ivykis turetu kartotis.
+Ending: Pabaiga
+Forever: Amžinai
+Use end date: Naudokite pabaigos data
+Number of times: Kartu skaicius
+repeat-frequency-help: Nurodo, kaip dažnai ivykis turetu kartotis.
+Frequency: Dažnis
+Weekdays Only: Tik darbo dienomis
+Week Start: Savaites pradžia
+repeat-bydayextended-help: Leidžia pasirinkti data pagal savaites diena.
+ByDay: Iki dienos
+repeat-month-help: Nurodo, kuriais menesiais ivykis turetu kartotis.
+ByMonth: Iki menesio
+repeat-bysetpos-help: Leidžia pasirinkti data, atsižvelgiant i menesio padeti.
+BySetPos: „BySetPos“
+repeat-bymonthdayextended-help: Leidžia pasirinkti data pagal data.
+ByMonthDay: Iki menesio dienos
+repeat-byweekno-help: Leidžia vartotojui nurodyti ivykiu kartojimo savaiciu saraša (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: ByWeekNe
+repeat-byyearday-help: Leidžia vartotojui nurodyti metu dienu saraša pakartoti ivyki (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: Iki metu dienos
+repeat-exceptions-help: Papildomos dienos, kurias turetu ivykti šis ivykis.
+Exclusions: Išimtys
+Inclusions: Itraukimai
+Add Exception: Prideti išimti
+Add Inclusion: Prideti itraukima
+Delete Selected: Išštrinti pasirinktus
+Send Reminder: Siusti priminima
+When: Kada
+Use Date/Time: Naudokite data / laika
+Use Offset: Naudokite poslinki
+Before: Anksciau
+After: Po
+Start: Pradeti
+End/Due: Pabaiga / Terminas
+Times: Laikai
+Every: Kiekvienas
+CAPTCHA Warning: Ispejimas:  negalima naudoti CAPTCHA be PHP GD pletinio!<br>
+Delete entry: Ištrinti iraša
+You are not authorized to edit this entry.: Jus neturite teises redaguoti šio irašo.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX paskyre nauja susitikima.
+XXX has updated an appointment.: XXX atnaujino susitikima.
+Security violation!: Saugumo pažeidimas!
+You must enter the anti-spam text on the previous page.: Ankstesniame puslapyje turite ivesti anti-spam teksta.
+The following conflicts with the suggested time: Šie prieštarauja siulomam laikui
+User removed from participants list.: Vartotojas pašalintas iš dalyviu sarašo.
+Please look on XXX to accept or reject this appointment.: Jei norite priimti ar atmesti ši susitikima, žiurekite „XXX“.
+Please look on XXX to view this appointment.: Jei norite peržiureti ši susitikima, žiurekite „XXX“.
+Scheduling Conflict: Suplanuoti konflikta
+Your suggested time of: Jusu siulomas laikas
+conflicts with the following existing calendar entries: nesuderinama su šiais esamais kalendoriaus irašais
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX nebuvo nustatytas „config.php“.
+word characters only: (gali buti tik žodžiu simboliai; [a-zA-Z_0-9])
+Add User: Prideti naudotoja
+Edit User: Redaguoti vartotoja
+Calendar ID: Kalendoriaus ID
+First Name: Pirmas vardas
+Last Name: Pavarde
+Is public calendar: Yra viešas kalendorius
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Duomenu bazes klaida
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Prideti nuotolini kalendoriu
+Edit Remote Calendar: Redaguoti nuotolini kalendoriu
+Create Layer: Sukurti sluoksni
+Reload: Ikelkite iš naujo
+Required to View Remote Calendar: Butina norint peržiureti nuotolini kalendoriu
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Importuoti rezultatus
+Events successfully imported: Ivykiai sekmingai importuoti
+Create a new layer to view this calendar.: Sukurkite nauja sluoksni, kad galetumete peržiureti ši kalendoriu.
+Errors: Klaidos
+There was an error parsing the import file or no events were returned.: Analizuojant importo faila ivyko klaida arba ivykiai nebuvo gražinti.
 
 ########################################
 # Page: edit_report.php
 #
-Today: �iandien
-Next month: Kitas m�nuo
-Next year: Kiti metai
+Tomorrow: Rytoj
+Yesterday: Vakar
+Day before yesterday: Užvakar
+Next week: Kita savaite
+This week: Šia savaite
+Last week: Praeita savaite
+Week before last: Savaite prieš paskutine
+Next week and week after: Kita savaite ir po jos
+This week and next week: Šia ir kita savaite
+Last week and this week: Praeita savaite ir šia savaite
+Last two weeks: Paskutines dvi savaites
+Next month: Kita menesi
+This month: Ši menesi
+Last month: Praeita menesi
+Month before last: Menuo prieš paskutini
+Next year: Kitais metais
+This year: Šiais metais
+Last year: Praeitais metais
+Year before last: Metai prieš paskutini
+Next 14 days: Kitos 14 dienu
+Next 30 days: Kitas 30 dienu
+Next 60 days: Kitas 60 dienu
+Next 90 days: Kitos 90 dienu
+Next 180 days: Kitas 180 dienu
+Next 365 days: Kitos 365 dienos
+Invalid report id XXX.: Neteisingas ataskaitos ID: „XXX“.
+Unnamed Report: Bevardis pranešimas
+Add Report: Prideti ataskaita
+Edit Report: Redaguoti ataskaita
+Report name: Pranešti pavadinima
+User: Vartotojas
+Current User: Dabartinis vartotojas
+Include link in menu: Itraukti nuoroda i meniu
+Include standard header/trailer: Itraukite standartine antrašte / priekaba
+Include previous/next links: Itraukite ankstesnes / kitas nuorodas
+Include empty dates: Itraukite tušcias datas
+Date range: Data asortimentas
+Template variables: Šabloniniai kintamieji
+Page template: Puslapio šablonas
+Day template: Dienos šablonas
+Event template: Renginio šablonas
+Are you sure you want to delete this report?: Ar tikrai norite ištrinti šia ataskaita?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Nera tokio pranešimo ID: „XXX“.
+Variable XXX not found.: Kintamasis XXX nerastas.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Redaguoti pasirinktine antrašte
+Edit Custom Script/Stylesheet: Redaguoti pasirinktini scenariju / stiliu
+Edit Custom Trailer: Redaguoti pasirinktini anonsa
+
+########################################
+# Page: edit_user.php
+#
+Username: Vartotojo vardas
+E-mail address: Elektroninio pašto adresas
+Password: Slaptažodis
+again: vel
+Disabled for demo: Išjungta del demonstracines versijos
+Are you sure you want to delete this user?: Ar tikrai norite ištrinti ši vartotoja?
+Change Password: Pakeisti slaptažodi
+New Password: Naujas Slaptažodis
+Set Password: Nustatyti slaptažodi
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Nepalaikomi vartotojai.
+The passwords were not identical.: Slaptažodžiai nebuvo tapatus.
+You have not entered a password.: Jus neivedete slaptažodžio.
+Username cannot be blank.: Vartotojo vardas negali buti tušcias.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Neleidžiama
+
+########################################
+# Page: export.php
+#
+Export: Eksportuoti
+Export format: Eksporto formatas
+Include all layers: Itraukite visus sluoksnius
+Include deleted entries: Itraukti ištrintus irašus
+Export all dates: Eksportuoti visas datas
+Start date: Pradžios data
+End date: Pabaigos data
+Modified since: Pakeista nuo
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: eksporto formatas nera apibrežtas arba neteisingas.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Nenurodytas vartotojas.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Prideti nauja grupe
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Bevarde grupe
+Add Group: Prideti grupe
+Edit Group: Redaguoti grupe
+Group name: Grupes pavadinimas
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Turite nurodyti grupes pavadinima
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Automatiškai atnaujinti kalendorius
+auto-refresh-help: Kai ijungta, dienos, savaites, menesio ir nepatvirtintu puslapiu rodiniai periodiškai automatiškai atnaujinami.
+Auto-refresh time: Automatinio atnaujinimo laikas
+auto-refresh-time-help: Jei ijungtas automatinis atnaujinimas, tai nurodo laika tarp kiekvieno atnaujinimo.
+Display days with events in bold in year view: Dienos, kuriose renginiai paryškinti paryškintai, rodomi metu rodinyje
+Display weekends in week view: Rodyti savaitgalius savaites vaizde
+Time interval: Laiko intervalas
+time-interval-help: Nurodo, kiek laiko trukmes bus savaites ir dienos rodinyje.
+Nonuser: Nenaudojantys kalendoriai
+user-customize-color: Nurodo, ar vartotojams leidžiama keisti savo spalvu schema.
+enable-gradient-help: Langeliu fonams naudokite gradiento spalvas.
+Manually entering color values: Neautomatiškai ivedant spalvu vertes
+colors-help: Visos spalvos turetu buti nurodytos „#RRGGBB“ šešioliktainiu formatu, kur „RR“ yra raudonos spalvos šešiakampe reikšme, „GG“ - žalios spalvos šešiakampes reikšme, o „BB“ - melynos spalvos šešiakampe reikšme.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Pranešti apie klaida
+Please include all the information below when reporting a bug.: Praneškite apie žemiau pateikta informacija apie klaida.
+Also, please use English rather than XXX.: Be to, naudokite  anglu kalba , o ne „XXX“.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: „WebCalendar“ dokumentacija
+Currently in English only.: Šiuo metu tik anglu kalba.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Kalendoriaus irašu pridejimas / redagavimas
+Repeat Type: Pakartokite tipa
+For More Information...: Daugiau informacijos...
+Repeat End Date: Pakartokite pabaigos data
+Repeat Day: Pakartokite diena
+repeat-day-help: Nurodo, kuriomis savaites dienomis ivykis turetu kartotis.
+
+########################################
+# Page: help_import.php
+#
+Import: Importuoti
+Palm Desktop: „Palm“ darbalaukis
+allow you to import entries from the Palm...: Ši forma leis importuoti irašus iš „Palm Desktop Datebook“. Jis turetu buti jusu „Palm“ kataloge, „datebook / datebook.dat“ kataloge, pavadintame jusu vartotojo vardu.
+The following entries will not be imported: Šie irašai nebus importuoti:
+Entries older than the current date: Irašai, vyresni nei dabartine data
+Entries created in the Palm Desktop...: „Palm“ darbalaukyje sukurti irašai, kurie nebuvo „HotSync“
+Anything imported from Palm...: Viskas, importuota iš „Palm“, bus perrašyta kito importavimo metu (nebent ivykio data praejo). Todel reiketu atnaujinti „Palm“ darbalaukyje.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Ši forma importuos „vCalendar“ (.vcs) 1.0 ivykius.
+The following formats have been tested: Buvo išbandyti šie formatai:
+This form will import iCalendar (.ics) events.: Ši forma importuos „iCalendar“ (.ics) ivykius.
+Enabling: Leidžianti
+Overwrite Prior Import: Perrašyti ankstesni importavima
+will cause events imported previously...: anksciau importuoti ivykiai, kuriuose buvo naudojamas tas pats UID kaip ivykyje iš naujo importo failo, bus pažymeti kaip ištrinti. Tai turetu leisti importuoti atnaujinta „iCalendar“ faila nesukuriant dublikatu.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Pagalbos rodykle
+About WebCalendar: Apie „WebCalendar“
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Sluoksniai yra naudingi rodant kitu vartotoju ivykius jusu paciu kalendoriuje. Galite nurodyti vartotoja ir spalva, kurioje bus rodomi ivykiai.
+Add/Edit/Delete: Prideti / redaguoti / ištrinti
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Puslapio apacioje esancioje administratoriaus skiltyje spusteleje nuoroda Redaguoti sluoksnius, galesite prideti / redaguoti / ištrinti sluoksnius.
+The text color of the new layer that will be displayed in your calendar.: Naujojo sluoksnio, kuris bus rodomas jusu kalendoriuje, teksto spalva.
+Disabling: Išjungimas
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Noredami išjungti sluoksnius, paspauskite nuoroda Išjungti sluoksnius administratoriaus skiltyje puslapio apacioje.
+Duplicates: Dublikatai
+If checked, events that are duplicates of your events will be shown.: Jei pažymeta, bus rodomi ivykiai, kurie yra jusu ivykiu kopijos.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Noredami ijungti sluoksnius, puslapio apacioje esanciame administratoriaus skyriuje paspauskite nuoroda Igalinti sluoksnius.
+Source: Šaltinis
+Specifies the user that you would like to see displayed in your calendar.: Nurodo vartotoja, kuri norite matyti savo kalendoriuje.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Numatytoji kategorija
+default-category-help: Nurodo kategorija, pagal kuria numatytas naujas ivykis.
+When I am the boss: Kai aš esu viršininkas
+Email me event notification: Siusti man el. Laiška apie ivyki
+email-boss-notifications-help: Nurodo, ar viršininkai gauna el. Laiškus kaip pranešimus apie ivykius.
+I want to approve events: Noriu patvirtinti renginius
+boss-approve-event-help: Nurodo, ar viršininkas tures patvirtinti asistentu pridetus ivykius.
+Subscribe/Publish: Prenumeruoti / paskelbti
+Allow remote publishing: Leisti nuotolini skelbima
+allow-remote-publishing-help: Nurodo, ar nuotolinis „iCal“ klientas gali paskelbti ivykius atgal i „WebCalendar“
+remote-publishing-url-help: Rodo URL, kuri reikia naudoti „iCal“ kliento programoje ir prenumeruojant, ir skelbiant atgal „WebCalendar“.
+allow-remote-subscriptions-help: Nurodo, ar nuotoliniai vartotojai gali užsiprenumeruoti jusu kalendoriu, leidžiant jiems matyti jusu ivykius programoje, kurioje igalinta „iCal“ (pvz., „Apple iCal“ ar „Mozilla“ kalendorius).
+remote-subscriptions-url-help: Rodomas URL, kuri nuotoliniai vartotojai turetu naudoti noredami užsiprenumeruoti jusu kalendoriu.
+Enable FreeBusy publishing: Igalinti „FreeBusy“ leidyba
+freebusy-enabled-help: Nurodo, ar galima gauti vartotojo turima laika naudojant „iCal FreeBusy“ standarta.
+freebusy-url-help: URL prieigai prie vartotojo „FreeBusy“ sarašo
+rss-feed-url-help: URL, norint pasiekti RSS kanala
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Leidžia tiksliai kontroliuoti vartotojo prieiga ir leidimus. Vartotojai taip pat gali suteikti numatytaji ir individualu leidima, jei tai suteikia administratorius.
+If disabled, this user cannot send you emails.: Jei ji išjungta, šis vartotojas negali jums siusti el. Laišku.
+If disabled, this user cannot see you in the participants list.: Jei ji išjungta, šis vartotojas nemato jusu dalyviu saraše.
+If enabled, this user cannot view the details of any of your entries.: Jei igalinta, šis vartotojas negali peržiureti išsamios informacijos apie bet kuri jusu iraša.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Leidimas išjungtas (administratorius)
+Publishing Disabled (User): Leidimas išjungtas (vartotojas)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Spustelekite ir pasirinkite
+Current Icons on Server: Dabartines piktogramos serveryje
+
+########################################
+# Page: import.php
+#
+import from file: importuoti iš failo
+Disabled: Išjungta
+Import format: Importo formatas
+Exclude private records: Išskirkite privacius irašus
+Repeated items are imported separately. Prior imports are not overwritten.: Pakartotiniai elementai importuojami atskirai. Ankstesnis importas neperrašomas.
+
+########################################
+# Page: import_handler.php
+#
+No file: Nera failo
+Error deleting palm events from webcalendar.: Ištrinant delno ivykius iš internetinio kalendoriaus ivyko klaida.
+Events from prior import marked as deleted: Ivykiai iš ankstesnio importavimo pažymeti kaip ištrinti
+Conflicting events: Konfliktiški ivykiai
+The import file contained no data.: Importavimo faile nebuvo jokiu duomenu.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Ar tikrai norite ištrinti ši sluoksni?
+Delete layer: Ištrinti sluoksni
+Edit layer: Redaguoti sluoksni
+Enable layers: Igalinti sluoksnius
+Layer: Sluoksnis
+Layers are currently disabled.: Sluoksniai šiuo metu yra išjungti.
+Layers are currently enabled.: Sluoksniai šiuo metu igalinti.
+Click to modify layers settings for XXX: Spustelekite cia, jei norite modifikuoti „XXX“ kalendoriaus sluoksniu nustatymus.
+Disable Layers: Išjungti sluoksnius
+Add layer: Prideti sluoksni
+Add Layer: Prideti sluoksni
+Edit Layer: Redaguoti sluoksni
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Nepavyko atnaujinti nuostatos
+Invalid entry id.: Neteisingas irašo ID.
+You cannot create a layer for yourself.: Jus negalite sukurti sluoksnio sau.
+You can only create one layer for each user.: Kiekvienam vartotojui galite sukurti tik viena sluoksni.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Patvirtinti / patvirtinti
+Approve Selected: Patvirtinti pasirinkta
+Check All: Viska Patikrink
+Emails Will Not Be Sent: El. Laiškai nebus išsiusti
+Reject Selected: Atmesti pasirinkta
+Reject: Atmesti
+Uncheck All: Atžymek visus
+View this entry: Peržiurekite ši iraša
+No unapproved entries for XXX.: Nera nepatvirtintu irašu, skirtu „XXX“.
+Unapproved Entries: Nepatvirtinti irašai
+Approve this entry?: Patvirtinti ši iraša?
+Reject this entry?: Atmesti ši iraša?
+Approve Selected entries?: Patvirtinti pasirinktus irašus?
+Reject Selected entries?: Atmesti pasirinktus irašus?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Turite ivesti prisijungimo varda ir slaptažodi.
+Save login via cookies so I dont have to login next time.: Išsaugokite prisijungima naudodami slapukus, kad nereiketu prisijungti kita karta
+Login: Prisijungti
+public: visuomenes
+Access XXX calendar: Prieiga prie „XXX“ kalendoriaus
+cookies-note: Pastaba: šiai programai reikalingi slapukai.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Neteiseti simboliai prisijungiant prie „XXX“.
+Invalid login: Neteisingas prisijungimas
+Activity login failure: Vartotojo vardas: „XXX“, IP: „YYY“.
+Error XXX: Klaida: „XXX“.
+You have been logged out.: Jus buvote atjungtas.
+Access public calendar: Pasiekite viešaji kalendoriu
+Not yet registered? Register here!: Dar neužsiregistravote? Registruotis cia!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Nera tokio nenaudojamo kalendoriaus: „XXX“.
+This Calendar is not Public.: Šis kalendorius nera viešas.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Prideti nauja „NonUser“ kalendoriu
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Butina nurodyti prisijungima.
+No such nonuser calendar: Nera tokio nenaudotojo kalendoriaus
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Neteisinga tema
+Save Preferences: Išsaugoti nuostatas
+Public Access calendar: Viešosios prieigos kalendorius
+Modify Non User Calendar Preferences: Keisti ne vartotojo kalendoriaus nuostatas
+Return to My Preferences: Grižkite i „Mano nuostatos“
+Custom Scripts: Pasirinktiniai scenarijai
+Timezone Selection: Laiko juostos pasirinkimas
+Multiview: Daugialypis vaizdas:
+entry-interval-help: Nustatomas minutes intervalas redaguojant irašo laika
+Entry interval: Ivažiavimo intervalas
+hour: valanda
+minute: =
+theme-reload-help: Del CSS talpyklos gali reiketi iš naujo ikelti puslapi
+Page may need to be reloaded for new Theme to take effect: Gali tekti iš naujo ikelti puslapi, kad jis isigaliotu
+display_byproxy-help: „View_entry“ puslapyje parodykite tikraji kureja
+Display if created by Assistant: Rodyti, jei ji sukure Padejejas
+allow-view-subscriptions-help: Leidžia riboti nuotoline prieiga prie privaciu ar konfidencialiu irašu
+Allow remote viewing of: Leisti nuotoliniu budu peržiureti
+entries: irašai
+
+########################################
+# Page: purge.php
+#
+Purging events for: Valomi renginiai
+Finished: Baigta
+Back: Atgal
+Check box to delete ALL events for a user: Pažymekite langeli, jei norite ištrinti  VISUS  vartotojo ivykius
+Delete all events before: Ištrinkite visus ankstesnius ivykius
+Purge deleted only: Tik valymas ištrintas
+Preview delete: Peržiureti ištrinti
+Are you sure you want to delete events for: Ar tikrai norite ištrinti „“ ivykius
+Records deleted from XXX: Irašai ištrinti iš „XXX“.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: El. Pašto adresas negali buti tušcias.
+Username already exists.: Vardas jau egzistuoja.
+Email address already exists.: El. Pašto adresas jau yra.
+New user via self-registration.: Naujas vartotojas per saves registracija.
+A new WebCalendar account has been set up for you.: Jums nustatyta nauja „WebCalendar“ paskyra.
+Your username is XXX.: Jusu vartotojo vardas yra: „XXX“.
+Your password is XXX.: Jusu slaptažodis yra: „XXX“.
+Please visit XXX to log in and start using your account!: Apsilankykite „XXX“, kad prisijungtumete ir pradetumete naudoti savo saskaita!
+You may change your password after logging in the first time.: Pirma karta prisijunge galite pakeisti slaptažodi.
+If you received this email in error: Jei ši el. Laiška gavote per klaida ir neprisiregistravote gauti „WebCalendar“ paskyros, galite nepaisyti šio pranešimo arba atsakyti trumpu užrašu
+Administrator: Administratorius
+Welcome: Sveiki
+New user via email.: Naujas vartotojas el. Paštu.
+Registration: Registracija
+Welcome to WebCalendar: Sveiki atvyke i „WebCalendar“
+Your email should arrive shortly.: Jusu el. Paštas netrukus turetu buti gautas.
+Return to Login screen: Grižti i prisijungimo ekrana
+Password (again): Slaptažodis (dar karta):
+Your account information will be emailed to you.: Jusu paskyros informacija bus išsiusta jums el. Paštu.
+Submit: Pateikti
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Testi
+(Your comments will be emailed to the other participants.): (Jusu komentarai bus išsiusti el. Paštu kitiems dalyviams.)
+XXX has rejected an appointment.: XXX atmete susitikima.
+Rejected by XXX.: Atmete XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Prideti nauja nuotolini kalendoriu
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Šis ivykis yra konfidencialus.
+(Private): (Privatus)
+(cont.): (tesinys)
+Approved: Patvirtinta
+Deleted: Ištrinta
+Rejected: Atstumtas
+Waiting for approval: Laukia patvirtinimo
+Unknown: Nežinoma
+Invalid report id.: Neteisingas ataskaitos ID.
+Click here to manage reports for the Public Access calendar.: Spustelekite cia, jei norite tvarkyti „Public Access“ kalendoriaus ataskaitas.
+Add new report: Prideti nauja ataskaita
+Manage Reports: Tvarkyti ataskaitas
+
+########################################
+# Page: search.php
+#
+Advanced Search: Išplestine paieška
+Search: Paieška
+Keywords: Raktažodžiai
+Enter % for all entries: Visiems irašams iveskite%
+Include: Itraukti
+Filter by Date: Filtruoti pagal data
+All Dates: Visos datos
+Past: Praeitis
+Upcoming: Busimi
+Range: diapazonas
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Turite ivesti viena ar daugiau paieškos raktiniu žodžiu.
+Search Results: Paieškos rezultatai
+match found: rastas atitikmuo
+matches found: rasta atitikmenu
+No matches found: Nerasta jokiu atitikmenu
+New Search: Nauja paieška
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Toliau pateiktoje informacijoje pateikiamos galimos „WebCalendar“ diegimo problemos, kurias galima modifikuoti, kad jusu diegimas butu saugesnis.
+For questions about WebCalendar security see the forums: Jei turite klausimu apie bet kuria „WebCalendar“ saugumo problema, naudokite „WebCalendar“ forumus, esancius GitHub.com;<br>XXX
+View your current PHP settings: Peržiurekite savo dabartinius PHP nustatymus
+Security Issue: Saugumo problema
+Status: Statusas
+Default admin user password: Numatytasis administratoriaus vartotojo slaptažodis
+You should change the password of the default admin user.: Turetumete pakeisti numatytojo administratoriaus vartotojo slaptažodi.
+File permissions XXX: Failo leidimai: XXX
+item XXX should not be writable: Šis elementas neturetu buti rašomas:<br><tt> XXX</tt>
+File exists XXX: Failas egzistuoja: „XXX“
+Because you have email disabled, you should remove this file.: Kadangi jusu el. Paštas išjungtas, turetumete pašalinti ši faila.
+File location XXX: Failo vieta: „XXX“
+remove XXX if not using: Jei nenaudojate failo „XXX“, turetumete ji ištrinti. Arba bent jau perkelkite ji i nauja kataloga.
+System Settings XXX: Sistemos nustatymai: „XXX“
+consider enabling UAC: Galbut noresite igalinti Vartotojo prieigos valdyma, kad nustatytumete vartotojo privilegijas.
+recommend approving new public events: Mes rekomenduojame patvirtinti visus viešu renginiu pateikimus.
+recommend using CAPTCHA: CAPTCHA rekomenduojama apsaugoti nuo automatiniu ivykiu pateikimo.
+Database cache directory location: Duomenu bazes talpyklos katalogo vieta
+db cache should be inaccessable: Duomenu bazes talpykla turetu buti kataloge, i kuri negalima patekti naudojant URL.
+PHP Settings XXX: PHP nustatymai: „XXX“
+recommend setting XXX Off: Rekomenduojamas „XXX“ nustatymas yra išjungtas.
+recommend setting allow_url_fopen Off: Rekomenduojamas „allow_url_fopen“ nustatymas yra išjungtas, kai nuotoliniai kalendoriai neigalinti.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Peržiurekite kito vartotojo kalendoriu
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Nepridejote jokiu kategoriju.
+Set Category: Nustatyti kategorija
+Global Categories cannot be changed.: Visuotiniu kategoriju keisti negalima.
+
+########################################
+# Page: upcoming.php
+#
+more: daugiau
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Nuotoliniai kalendoriai
+denotes administrative user: žymi administracini vartotoja
+Add New User: Prideti nauja vartotoja
+
+########################################
+# Page: usersel.php
+#
+form: forma
+Reset: Atstatyti
+
+########################################
+# Page: views.php
+#
+Add New View: Prideti nauja rodini
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Bevardis vaizdas
+Add View: Prideti rodini
+Edit View: Redaguoti rodini
+View Name: Peržiureti varda
+View Type: Vaizdo tipas
+Day by Time: Diena po laiko
+Week (Users horizontal): Savaite (vartotojai horizontaliai)
+Week by Time: Savaite po laiko
+Week (Users vertical): Savaite (vertikalus naudotojai)
+Week (Timebar): Savaite („Timebar“)
+Month (Timebar): Menuo (laiko juosta)
+Month (side by side): Menuo (vienas šalia kito)
+Month (on same calendar): Menuo (tame paciame kalendoriuje)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Turite nurodyti rodinio pavadinima
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Nera šio rodinio naudotoju.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Atnaujinti užduoties procenta
+Completed: Baigta
+Assistant mode: Padejejo režimas
+Declined: Atmesta
+Needs-Action: Poreikiai-veiksmas
+by: pateike
+Percentage Complete: Procentas baigtas
+External User: Išorinis vartotojas
+Update: Atnaujinti
+at: prie
+comments: komentarus
+Show: Rodyti
+Hide: Slepti
+Approve/Confirm entry: Patvirtinti / patvirtinti iraša
+Reject entry: Atmesti iraša
+Set category: Nustatyti kategorija
+Add to My Calendar: Prideti prie Mano kalendoriaus
+Copy entry: Kopijuoti iraša
+This will delete this entry for all users.: Tai ištrins ši iraša visiems vartotojams.
+Edit entry: Redaguoti iraša
+Edit repeating entry for all dates: Redaguokite pasikartojanti iraša visoms datoms
+Delete repeating event for all dates: Ištrinkite pasikartojanti ivyki visomis datomis
+Edit entry for this date: Redaguoti šios datos iraša
+Delete entry only for this date: Ištrinti tik šios datos iraša
+Delete entry from calendar of XXX: Ištrinti iraša iš „XXX“ kalendoriaus
+This will delete the entry from your XXX calendar.: Tai ištrins iraša iš jusu „XXX“ kalendoriaus.
+boss: bosas'
+This will delete the entry from your boss calendar.: Tai ištrins iraša iš viršininko kalendoriaus.
+This will delete the entry from your calendar.: Tai ištrins iraša iš jusu kalendoriaus.
+from your boss calendar: iš viršininko kalendoriaus
+Do you want to add this entry to your calendar?: Ar norite itraukti ši iraša i savo kalendoriu?
+This will add the entry to your calendar.: Tai prides iraša prie jusu kalendoriaus.
+Email all participants: Siusti el. Laiška visiems dalyviams
+Hide activity log: Slepti veiklos žurnala
+Show activity log: Rodyti veiklos žurnala
+Export this entry to: Eksportuoti ši iraša i
+Palm Pilot: Palmiu lakunas
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Dukart spustelekite tušcia langeli, kad pridetumete nauja iraša.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Naujas iejimas
+cont.: tesinys
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Kito vartotojo kalendorius
+Category Management: Kategorijos valdymas
+Day View: Dienos vaizdas
+Edit Event: Redaguoti ivyki
+Month View: Menesio vaizdas
+Common Trailer: Bendras anonsas
+User Management: Vartotojo valdymas
+Manage Views: Tvarkyti rodinius
+Week View: Savaites vaizdas
+Year View: Metu vaizdas
+Invalid function id: Neteisingas funkcijos ID
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Nepavyko rasti failo „settings.php“.<br>Nukopijuokite „settings.php.orig“ i „settings.php“ ir redaguokite savo svetaine.
+Incomplete settings.php file...: Nebaigtas failas „settings.php“ ...
+Could not find XXX defined in...: Nepavyko rasti failo „settings.php“ apibrežto „XXX“.
+You must define XXX in: Turite apibrežti „XXX“ faile „settings.php“.
 
 ########################################
 # Page: includes/date_formats.php
 #
-December: Gruodis
-Dec: Gru
+December: Gruodžio men
+Dec: Gruodžio men
+LANGUAGE DEFINED: KALBA NUSTATYTA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Prisijungiant prie duomenu bazes ivyko klaida: „XXX“.
+db_type not defined.: db_type neapibrežtas.
+invalid db_type XXX: neteisingas db_type "" XXX ".
+Cache cleared from previous SQL!: Talpykla išvalyta iš ankstesnes SQL!
+Error executing query.: Klaida vykdant užklausa.
+Unfortunately, XXX is not implemented for YYY: Deja, „XXX“ neidiegta (YYY).
+Unknown ODBC error.: Nežinoma ODBC klaida.
+Error opening cache dir XXX.: Klaida atidarant talpyklos direktorija „XXX“.
+delete: Ištrinti
+Cache error Could not XXX file YYY.: Talpyklos klaida: nepavyko XXX failo „YYY“.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Lemtinga klaida
+Invalid data format for: Netinkamas duomenu formatas
 
 ########################################
 # Page: includes/functions.php
 #
-WK: sav
-January: Sausis
-February: Vasaris
+Error Type not set for activity log!: Klaida: Veiklos žurnale tipas nenustatytas!
+This event is XXX.: Šis ivykis yra XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: viršija XXX ivykiu per diena limita
+on: ant
+All Attendees: Visi dalyviai
+Busy: Užsiemes
+Tentative: Preliminarus
+Schedule an appointment for XXX.: Suplanuokite susitikima XXX: YYY.
+date_select: =
+Event approved: Renginys patvirtintas
+Journal approved: Žurnalas patvirtintas
+Task approved: Užduotis patvirtinta
+Attachment: Priedas
+Event created: Sukurtas ivykis
+Journal created: Žurnalas sukurtas
+Task created: Užduotis sukurta
+Event deleted: Ivykis ištrintas
+Journal deleted: Žurnalas ištrintas
+Task deleted: Užduotis ištrinta
+New user via email (self registration): Naujas vartotojas el. Paštu (savarankiška registracija)
+New user (self registration): Naujas vartotojas (savarankiška registracija)
+Notification sent: Pranešimas išsiustas
+Event rejected: Ivykis atmestas
+Journal rejected: Žurnalas atmestas
+Task rejected: Užduotis atmesta
+Reminder sent: Priminimas išsiustas
+Event updated: Ivykis atnaujintas
+Journal updated: Žurnalas atnaujintas
+Task updated: Užduotis atnaujinta
+Delete User: Ištrinti vartotoja
+WK: =
+TASKS: UŽDUOTYS
+Task_Title: Pavadinimas
+Due: Terminas
+Task Name: Užduoties pavadinimas
+Task Due Date: Užduoties terminas
+You have XXX unapproved entries: Turite XXX nepatvirtintus irašus 
+Changes successfully saved: Pakeitimai sekmingai išsaugoti
+Event: Ivykis
+Action: Veiksmas
+Printer Friendly: Tinka spausdintuvui
+Generate printer-friendly version: Generuoti spausdintuvui pritaikyta versija
+after: po to
+before: prieš tai
+end: galas
+start: pradžia
+View this event: Peržiurekite ši ivyki
+View this task: Peržiurekite šia užduoti
+January: Sausio men
+February: Vasario men
 March: Kovas
 April: Balandis
-May_: Gegu��
-June: Bir�elis
-July: Liepa
-August: Rugpj�tis
-September: Rugs�jis
-October: Spalis
-November: Lapkritis
-Jan: Sau
-Feb: Vas
-Mar: Kov
-Apr: Bal
-May: Geg
-Jun: Bir
-Jul: Lie
-Aug: Rgp
-Sep: Rgs
-Oct: Spa
-Nov: Lap
+May_: Geguže
+June: Birželio men
+July: Liepos men
+August: Rugpjutis
+September: Rugsejo men
+October: Spalio men
+November: Lapkricio men
+Jan: =
+Feb: Vasario men
+Mar: Kovas
+Apr: Balandžio men
+May: Geguže
+Jun: Birželio men
+Jul: Liepos men
+Aug: Rugpjucio men
+Sep: Rugsejo men
+Oct: Spalio men
+Nov: Lapkritis
+SU: =
+MO: =
+TU: =
+WE: MES
+TH: =
+FR: =
+SA: =
+unknown-month: nežinomas menuo
+First Quarter Moon: Pirmojo ketvircio menulis
+Full Moon: Pilnatis
+Last Quarter Moon: Paskutinis ketvircio menulis
+New Moon: Jaunatis
+Error TIME_SLOTS undefined!: Klaida: TIME_SLOTS neapibrežta!
+The following error occurred: Ivyko ši klaida
+You are not authorized.: Jus nesate igaliotas.
+Add N hours to: Pridekite prie N valandu
+Subtract N hours from: Atimkite N valandas iš
+same as: taip pat kaip
+server time: serverio laikas
+Cannot read timezone file XXX.: Nepavyko nuskaityti laiko juostos failo: XXX.
+Your current GMT offset is XXX hours.: Dabartinis jusu GMT poslinkis yra XXX valandos.
+Unauthorized: Neteisetas
+Error approving event XXX.: Patvirtinant ivyki ivyko klaida: XXX.
+Error deleting event XXX.: Ištrinant ivyki ivyko klaida: XXX.
+Error rejecting event XXX.: Klaida atmetant ivyki: XXX.
 Sunday: Sekmadienis
 Monday: Pirmadienis
 Tuesday: Antradienis
-Wednesday: Tre�iadienis
+Wednesday: Treciadienis
 Thursday: Ketvirtadienis
-Friday: Pentadienis
-Saturday: �e�tadienis
-Sun: Sek
-Mon: Pir
-Tue: Ant
-Wed: Tre
-Thu: Ket
-Fri: Pen
-Sat: �e�
+Friday: Penktadienis
+Saturday: Šeštadienis
+Sun: Saule
+Mon: Pirm
+Tue: Antradienis
+Wed: Treciadienis
+Thu: Ketvirtadienis
+Fri: Penktadienis
+Sat: Šešt
+unknown-weekday: nežinoma savaites diena
+Invalid referring URL: Netinkamas persiuntimo URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indeksas
+Documentation: Dokumentacija
+Page: Puslapis
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Mano kalendorius
+Add New Entry: Prideti nauja iraša
+Add New Task: Prideti nauja užduoti
+Logout: Atsijungti
+Home: Namai
+Back to My Calendar: Grižti i Mano kalendoriu
+Go to: Eiti i
+Manage calendar of: Tvarkyti. Kalendoriu
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Naršykles kalba nerasta
+(not supported): (nepalaikomas)
+Abkhazian: Abchazų
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Toli
+Afrihili: =
+Afrikaans: Afrikanu kalba
+Ainu: =
+Akan: Akanas
+Akkadian: Akadų
+Albanian: Albanu
+Aleut: Aleutas
+Algonquian: Algonkianas
+Altai (Southern): Altajaus (pietų)
+Amharic: Amharų kalba
+Angika: =
+Apache: =
+Arabic (Algeria): Arabų (Alžyras)
+Arabic (Bahrain): Arabų (Bahreinas)
+Arabic (Egypt): Arabų (Egiptas)
+Arabic (Iraq): Arabų (Irakas)
+Arabic (Jordan): Arabų (Jordanija)
+Arabic (Kuwait): Arabų (Kuveitas)
+Arabic (Lebanon): Arabų (Libanas)
+Arabic (Libya): Arabų (Libija)
+Arabic (Morocco): Arabų (Marokas)
+Arabic (Oman): Arabų (omanas)
+Arabic (Qatar): Arabų (Kataras)
+Arabic (Saudi Arabia): Arabų (Saudo Arabija)
+Arabic (Syria): Arabų (Sirija)
+Arabic (Tunisia): Arabų (Tunisas)
+Arabic (U.A.E.): Arabų k. (JAV)
+Arabic (Yemen): Arabų (Jemenas)
+Arabic: arabiškas
+Aragonese: Aragoniečių
+Aramaic: Aramėjų
+Arapaho: =
+Arawak: Arawakas
+Armenian: Armėnų
+Assamese: Asamiečių
+Asturian: Astūriškas
+Athapascan: Atapaskanietis
+Avaric: Avarikas
+Avestan: Avestanas
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerbaidžanietis
+Balinese: Baliečių
+Baluchi: Baluči
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Baškiras
+Basque: Basku kalba
+Beja: =
+Belarusian: Baltarusių
+Bemba: =
+Bengali: Bengalų k
+Bhojpuri: =
+Bihari: =
+Bikol: „Bikol“
+Bislama: =
+Blackfoot: Juodoji pėda
+Blin: Blinas
+Bliss: Palaima
+Bosnian: Bosnių
+Braj: =
+Breton: Bretonų
+Buginese: Buginas
+Bulgarian: Bulgaru
+Buriat: Buriatas
+Burmese: Birmiečių
+Caddo: Kaddo
+Catalan: Katalonu
+Cebuano: =
+Chagatai: Čagatai
+Chamorro: =
+Chechen: Čečėnai
+Cherokee: Čerokis
+Cheyenne: Šajena
+Chibcha: Čibča
+Chichewa: =
+Chinese (Hong Kong): Kinų (Honkongas)
+Chinese (PRC): Kinų (KLR)
+Chinese (Simplified/GB2312): Kinu (supaprastinta / GB2312) 
+Chinese (Singapore): Kinų (Singapūras)
+Chinese (Taiwan): Kinų (Taivanas)
+Chinese (Traditional/Big5): Kinu (tradicinis / didelis5)
+Chinook: Chinookas
+Chipewyan: Čipevianas
+Choctaw: =
+Chuukese: =
+Chuvash: Čuvašas
+Coptic: Koptų
+Cornish: Kornvalio
+Corsican: Korsikietis
+Cree: =
+Creek: Upelis
+Croatian: Kroatu
+Czech: Ceku
+Dakota: =
+Danish: Danu
+Dargwa: =
+Delaware: Delaveras
+Dinka: =
+Dogri: =
+Dogrib: Dogribas
+Duala: =
+Dutch (Belgium): Olandų (Belgija)
+Dutch: Olandu
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: Ekajukas
+Elamite: Elamitas
+English (Australia): Anglų (Australija)
+English (Belize): Anglų (Belizas)
+English (Canada): Anglų (Kanada)
+English (Ireland): Anglų (Airija)
+English (Jamaica): Anglų (Jamaika)
+English (New Zealand): Anglų (Naujoji Zelandija)
+English (Philippines): Anglų (Filipinai)
+English (South Africa): Anglų (Pietų Afrika)
+English (Trinidad & Tobago): Anglų (Trinidadas ir Tobagas)
+English (United Kingdom): Anglų (Jungtinė Karalystė)
+English (United States): Anglų (JAV)
+English (Zimbabwe): Anglų (Zimbabvė)
+English: Anglu-JAV
+Erzya: =
+Esperanto: Esperanto k
+Estonian: Estu
+Ewe: Avelė
+Ewondo: =
+Fang: Iltis
+Fanti: =
+Faroese: Fareriečiai
+Fijian: Fidžio
+Filipino: Filipinietis
+Finnish: Suomiu
+Fon: =
+French (Belgium): Prancūzų (Belgija)
+French (Canada): Prancūzų (Kanada)
+French (France): Prancūzų (Prancūzija)
+French (Luxembourg): Prancūzų (Liuksemburgas)
+French (Monaco): Prancūzų (Monakas)
+French (Switzerland): Prancūzų (Šveicarija)
+French: Prancuzu kalba
+Frisian (Eastern): Frizas (rytų)
+Frisian (Northern): Frizas (šiaurinis)
+Frisian (Western): Frizų (vakarų)
+Frisian: Frizas
+Friulian: Friulianas
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galisu
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Geezas
+Georgian: Gruzinas
+German (Austria): Vokiečių (Austrija)
+German (Germany): Vokiečių (Vokietija)
+German (Liechtenstein): Vokiečių (Lichtenšteinas)
+German (Luxembourg): Vokiečių (Liuksemburgas)
+German (Standard): Vokiečių (standartinė)
+German (Switzerland): Vokiečių (Šveicarija)
+German: Vokieciu kalba
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotika
+Grebo: =
+Greek: Graiku
+Greenlandic: Grenlandijos
+Guarani: =
+Gujarati: Gudžarati
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitiečių (kreolų)
+Haitian: Haitiečių
+Hausa: =
+Hawaiian: Havajiečių
+Hebrew: Hebraju kalba
+Herero: Herojus
+Hiligaynon: =
+Hindi: Hindi k
+Hiri Motu: =
+Hittite: Hetitas
+Hmong: Hmongas
+Holo (Taiwanese): Holo (taivanieciu)
+Hungarian: Vengru
+Hupa: =
+Iban: Ibanas
+Icelandic: Islandu
+Ido: Aš darau
+Igbo: =
+Iloko: =
+Indonesian: Indonezieciu
+Ingush: Ingušas
+Inuktitut: =
+Inupiaq: =
+Iranian: Iranietis
+Irish (Gaelic): Airių (gaelių)
+Irish: Airių
+Iroquoian: =
+Italian (Switzerland): Italų (Šveicarija)
+Italian: Italu
+Japanese: Japonu
+Javanese: Javiečių
+Judeo-Arabic: Žydų-arabų
+Judeo-Persian: Žydas-persas
+Kabardian: Kabardianas
+Kabyle: =
+Kachin: Kachinas
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: Kara-Kalpakas
+Karachay-Balkar: =
+Karelian: Karelietis
+Kashmiri: Kašmiras
+Kashubian: Kašubas
+Kawi: =
+Kazakh: Kazachas
+Khasi: =
+Khmer (Central): Khmerai (centrinė)
+Khmer: Khmerai
+Khotanese: Chotanese
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: Kirgizas
+Klingon: Klingonas
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Korėjiečių (Johabas)
+Korean (North): Korėjiečių (šiaurė)
+Korean (South): Korėjiečių (pietų)
+Korean: Korejieciu
+Kosraean: Kosrainietis
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurdų
+Kutenai: Kaipai
+Kyrgyz: Kirgizai
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Laosas
+Latin: Lotynų kalba
+Latvian: Latvių
+Lezghian: Lezghianas
+Limburgan: Limburganas
+Lingala: =
+Lithuanian: Lietuvis
+Lojban: Lojbanas
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Liuksemburgiečių
+Macedonian: Makedonų
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: Makasaras
+Malagasy: Madagaskaras
+Malay: Malajiečių
+Malayalam: Malajalam
+Maldivian: Maldyvų
+Maltese: Maltiečių
+Manchu: Mandžu
+Mandar: Mandaras
+Mandingo: =
+Manipuri: =
+Manx: Manksas
+Maori: Maoriai
+Mapuche: Mapučė
+Marathi: Maratų kalba
+Mari: =
+Marshallese: Maršalo
+Marwari: =
+Masai: =
+Mayan: Majų
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: Mokša
+Moldavian: Moldavų
+Mongo: =
+Mongolian: Mongolų
+Montenegrin: Juodkalnijos
+Moroccan: Marokietis
+Mossi: =
+Myanmar: Mianmaras
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: Navahas
+Ndebele (North): Ndebele (šiaurė)
+Ndebele (South): Ndebele (pietūs)
+Ndebele: =
+Ndonga: =
+Neapolitan: Neapolietis
+Nepali: Nepalo
+Nias: =
+Niuean: Niueanas
+Nogai: =
+Norse: Norvegų
+Norwegian (Bokmål): Norvegų (Bokmål)
+Norwegian (Nynorsk): Norvegų (Nynorsk)
+Norwegian: Norvegu
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Okitanų kalba
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: „Oromo“
+Osage: =
+Ossetic: Osetinė
+Pahlavi: =
+Palauan: Palauanas
+Pali: =
+Pampanga: =
+Pangasinan: Pangasinanas
+Panjabi: =
+Papiamento: =
+Pashto: Puštonas
+Pedi: =
+Persian (Farsi): Persų (persų)
+Persian (Iran): Persų (Iranas)
+Persian: Persų
+Phoenician: Finikietis
+Pohnpeian: Pohnpeianas
+Polish: lenkas
+Portuguese: Portugalu
+Portuguese/Brazil: Portugalų / Brazilija
+Punjabi (India): Pandžabi (Indija)
+Punjabi (Pakistan): Pandžabi (Pakistanas)
+Punjabi: =
+Quechua: Kečua
+Rajasthani: Radžastanas
+Rapanui: =
+Rarotongan: Rarotonganas
+Rhaeto-Romanic: Retoromiškai
+Romanian: Rumunu
+Romansh: =
+Romany: Romėnai
+Rundi: =
+Russian (Moldavia: Rusų (Moldavija
+Russian (Republic of Moldova): Rusų (Moldovos Respublika)
+Russian: Rusu
+Sami (Inari): Sami (inari)
+Sami (Lappish): Samių (lapų)
+Sami (Lule): Samių (liulė)
+Sami (Northern): Samių (šiaurės)
+Sami (Skolt): =
+Sami (Southern): Samių (pietų)
+Sami: Samiai
+Samoan: Samoa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanskrito kalba
+Santali: =
+Sardinian: Sardinijos
+Sasak: Sasakas
+Scots (Gaelic): Škotų (gaelių)
+Selkup: Selkupas
+Serbian (Upper): Serbų (viršutinė)
+Serbian: Serbu
+Serer: =
+Sesotho: Sezoto
+Shan: Šanas
+Shona: Šona
+Sichuan Yi: Sičuanas Yi
+Sicilian: Sicilietis
+Sindhi: =
+Sinhala: =
+Slavic: Slaviškas
+Slovak: Slovaku
+Slovenian: Slovenu
+Sogdian: Sogdietis
+Somali: Somalietis
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbų (žemutinė)
+Sorbian (Upper): Sorbų (viršutinė)
+Sorbian: Sorbų
+Sotho: =
+Spanish (Argentina): Ispanų (Argentina)
+Spanish (Bolivia): Ispanų (Bolivija)
+Spanish (Chile): Ispanų (Čilė)
+Spanish (Colombia): Ispanų (Kolumbija)
+Spanish (Costa Rica): Ispanų (Kosta Rika)
+Spanish (Dominican Republic): Ispanų (Dominikos Respublika)
+Spanish (Ecuador): Ispanų (Ekvadoras)
+Spanish (El Salvador): Ispanų (Salvadoras)
+Spanish (Guatemala): Ispanų (Gvatemala)
+Spanish (Honduras): Ispanų (Hondūras)
+Spanish (Mexico): Ispanų (Meksika)
+Spanish (Nicaragua): Ispanų (Nikaragva)
+Spanish (Panama): Ispanų (Panama)
+Spanish (Paraguay): Ispanų (Paragvajus)
+Spanish (Peru): Ispanų (Peru)
+Spanish (Puerto Rico): Ispanų (Puerto Rikas)
+Spanish (Spain): Ispanų (Ispanija)
+Spanish (Uruguay): Ispanų (Urugvajus)
+Spanish (Venezuela): Ispanų (Venesuela)
+Spanish: Ispanu
+Sranan Tongo: Srananas Tongo
+Sukuma: =
+Sumerian: Šumerų
+Sundanese: Sundanietis
+Susu: =
+Sutu: =
+Swahili: Svahili kalba
+Swati: Svati
+Swedish (Finland): Švedų (Suomija)
+Swedish (Sweden): Švedų (Švedija)
+Swedish: Švedu
+Syriac: Sirų
+Tagalog: Tagalogas
+Tahitian: Taitietis
+Tai: =
+Taiwan: Taivanas
+Tajik: Tadžikų kalba
+Tamashek: Tamašekas
+Tamil: Tamilų
+Tatar: Totorius
+Telugu: Telugų k
+Tereno: =
+Tetum: Tetumas
+Thai: Tajų
+Tibetan: Tibetiečių
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: Tlingitas
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tongos salos)
+Tonga: =
+Tsimshian: Cimsų
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turku
+Turkmen: Turkmėnų
+Tuvinian: Tuuviniečių
+Twi: =
+Udmurt: Udmurtas
+Ugaritic: Ugaritas
+Ukrainian: Ukrainietis
+Umbundu: =
+Urdu: Urdu kalba
+Uyghur: Uigūrų
+Uzbek: Uzbekų
+Vai: =
+Venda: =
+Vietnamese: Vietnamiečių
+Volapük: =
+Votic: Balsas
+Wakashan: =
+Walloon: Valonija
+Waray: =
+Washo: =
+Welsh: Valu kalba
+Wolaitta: =
+Wolof: Vilkas
+Xhosa: =
+Yakut: Jakutas
+Yao: Jao
+Yapese: =
+Yiddish: Jidiš
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: Džuanas
+Zulu: =
+Browser-defined: Naršykles apibrežta
+event: ivykis
+journal: žurnalas
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Neteisingas vartotojo prisijungimas
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: Neteisingas slaptažodis
+no such user: tokio vartotojo nera
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Paskyra išjungta
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Intervalas
+Months: Menesiu
+Month Days: Menesio dienos
+Days: Dienos
+Weeks: Savaites
+Position: Pozicija
+Until: Iki
+Count: Grafas
+Inclusion Dates: Itraukimo datos
+Exclusion Dates: Išskyrimo datos
+Event Imported: Ivykis importuotas
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: baitu
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Pranešimas
+authenticate: SMTP klaida: nepavyko patvirtinti
+connect_host: SMTP klaida: Nepavyko prisijungti prie SMTP pagrindinio kompiuterio:
+data_not_accepted: SMTP klaida: duomenys nepriimami
+encoding: Nežinomas kodavimas:
+execute: Nepavyko ivykdyti:
+file_access: Nepavyko pasiekti failo:
+file_open: Failo klaida Nepavyko atidaryti failo:
+from_failed: Nepavyko pateikti šio adreso:
+instantiate: Nepavyko užmegzti pašto funkcijos
+mailer_not_supported: pašto programa nepalaikoma
+provide_address: Turite nurodyti bent viena gavejo el. Pašto adresa.
+recipients_failed: SMTP klaida: Šiems gavejams nepavyko:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Iveskite simbolius, matomus grafikoje
+Enter the correct letters and numbers...: I teksto laukeli iveskite teisingas atvaizdo raides ir skaicius. Šis nedidelis bandymas yra kenkejišku robotu prieigos apribojimas. Tiesiog perkelkite puslapi, jei šia grafika per sunku perskaityti
+Challenge/Response: Iššukis / atsakymas
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Keisti šio irašo data ir laika?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Jus neivedete trumpo aprašymo
+time prior to work hours...: laikas iki darbo valandu ...
+Invalid Event Date: Neteisinga ivykio data
+Please add a participant: Pridėkite dalyvį
+Invalid Date: Neteisinga data
+You have not entered a valid time of day: Neįvedėte tinkamo dienos laiko
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Kalendoriaus ID laukas negali būti tuščias.
+First and last names cannot both be blank.: Vardas ir pavardė negali būti tušti.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Netinkama spalva
+Color format should be RRGGBB.: Spalvų formatas turėtų būti „#RRGGBB“.
+URL cannot be blank.: URL negali buti tušcias.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Failo tipas neatitinka importo formato
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Netinkama dokumento fono spalva.
+Invalid color for document title.: Netinkama dokumento pavadinimo spalva.
+Invalid color for table cell background.: Netinkama lenteles langelio fono spalva.
+Invalid color for table cell background for today.: Netinkama šios dienos lenteles langelio fono spalva.
+Invalid work hours.: Neteisingas darbo laikas.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Serverio URL turi baigtis pasviruoju brukšniu (/).
+Invalid color for table grid.: Netinkama stalo tinklelio spalva.
+Invalid color for event popup background.: Netinkama ivykio iššokanciojo fono spalva.
+Invalid color for event popup text.: Netinkama ivykio iššokancio teksto spalva.
+Invalid color for table header text.: Netinkama lenteles antraštes teksto spalva.
+Invalid color for table header background.: Netinkama lenteles antraštes fono spalva.
+Server URL is required.: Butinas serverio URL.
+Invalid Color: Netinkama spalva
+Database Name: Duomenu bazes pavadinimas
+Full Path (no backslashes): Visas kelias (be atgalinių brūkšnių)
+The password contains illegal characters.: Slaptažodyje yra neteisetu simboliu.
+Error you must specify a Single-User Login: Klaida: turite nurodyti prisijungimą vienam vartotojui
+Could not find XXX.: Nepavyko rasti XXX.
+Could not find XXX in DOM.: Nepavyko rasti XXX DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Šia savaite
+This Month: Ši menesi
+This Year: Šiais metais
+Exit: Išeiti
+Add New Event: Prideti nauja ivyki
+Delete Entries: Ištrinti irašus
+My Views: Mano nuomones
+Manage Calendar of: Tvarkyti. Kalendoriu
+My Reports: Mano ataskaitos
+My Profile: Mano profilis
+Public Calendar: Viešasis kalendorius
+Unapproved Events: Nepatvirtinti ivykiai
+User Manager: Vartotoju tvarkykle
+Help Contents: Pagalbos turinys
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Duomenu bazes talpyklos katalogas
+Create New: Sukurk nauja
+Failure Reason: Nesekmes priežastis:
+You must manually create database: Duomenu baze turite sukurti rankiniu budu.
+Single-User: Vienkartinis vartotojas
+Test Settings: Testo nustatymai
+Timezone Conversion Successful: Laiko juostos konvertavimas sekmingas
+WebCalendar Installation Wizard Step XXX: „WebCalendar“ diegimo vedlys XXX žingsnis
+Password Accepted: Slaptažodis priimtas
+Successful Login: Sekmingas prisijungimas
+Password Incorrect: Slaptažodis neteisingas
+Invalid Login: Neteisingas prisijungimas
+Display Errors: Ekrano klaidos
+File Uploads: Failu ikelimas
+Allow URL fopen: Leisti URL atidaryti (butina tik tada, jei naudojami nuotoliniai kalendoriai)
+Safe Mode: Saugus režimas
+Safe Mode Allowed Vars: Saugaus režimo leidžiami variantai (TZ reikia tik tada, kai ijungtas saugusis režimas)
+GD: GD (reikalingas gradiento vaizdo fonams)
+Passwords do not match!: Slaptažodžiai nesutampa!
+Unable to write password to settings.php file: Nepavyko irašyti slaptažodžio i faila „settings.php“.
+Password Updated: Slaptažodis atnaujintas
+Password has been set: Slaptažodis nustatytas.
+Connection Successful...: Prisijungimas sekmingas  Noredami testi diegima, eikite i kita puslapi.
+Correct your entries or click the Create New...: Ištaisykite irašus arba spustelekite mygtuka  Sukurti nauja , jei norite testi diegima.
+Correct your entries and try again.: Ištaisykite irašus ir bandykite dar karta.
+XXX does not exist: XXX neegzistuoja
+XXX is not writable: XXX negalima rašyti
+Error Converting Timezone: Konvertuojant laiko juosta ivyko klaida
+Error Unable to write to file XXX.: Klaida Nepavyko rašyti i faila XXX.
+Please change the file permissions of this file.: Pakeiskite šio failo failo teises.
+Please change includes dir permission: Pakeiskite katalogo „apima“ failu teises, kad kiti vartotojai galetu rašyti.
+Your settings have been saved.: Jusu nustatymai išsaugoti.
+OFF: IŠJUNGTA
+ON: IJUNGTA
+WebCalendar Setup Wizard: „WebCalendar“ sarankos vedlys
+This installation wizard will guide you...: Šis diegimo vedlys pades nustatyti pagrindini „WebCalendar“ diegima.<br>Pagalbos ir trikciu šalinimo ieškokite:<br>
+System Administrators Guide: Sistemos administratoriaus vadovas
+Frequently Asked Questions: Dažnai užduodami klausimai
+FAQ: DUK
+Troubleshooting: Problemu sprendimas
+Getting Help: Gauti pagalbos
+Upgrading Guide: Atnaujinimo vadovas
+User Supported Wiki: Vartotojo palaikoma „Wiki“
+PHP Version Check: PHP versijos tikrinimas
+Check to see if PHP 7.1.0 or greater is installed.: Patikrinkite, ar idiegta PHP 7.1.0 ar naujesne versija.
+PHP version: PHP versija
+PHP Settings: PHP nustatymai
+Detailed PHP Info: Išsami PHP informacija
+settings.php Status: "settings.php" busena
+Session Check: Sesijos patikrinimas
+To test the proper operation of sessions...: Noredami išbandyti tinkama sesiju veikima, iš naujo ikelkite ši puslapi. Kiekviena karta turetumete pamatyti seanso skaitiklio prieaugi.
+SESSION COUNTER: SESIJOS Skaitiklis
+The file permissions of settings.php are set...: „Settings.php“ failo leidimai nustatomi taip, kad diegimo programa neturetu leidimo jo keisti. Noredami testi, pakeiskite šio failo leidimus
+The file permissions of the includes directory are set...: Itraukimo katalogo failo leidimai nustatomi taip, kad diegimo programa neturetu leidimo kurti nauja faila. Noredami testi, pakeiskite šio katalogo teises
+Your settings.php file appears to be valid.: Panašu, kad jusu failas „settings.php“ galioja.
+Configuration Wizard Password: Konfiguravimo vedlio slaptažodis
+Create Settings File Password: Sukurti nustatymu failo slaptažodi
+db setup directions...: Šiame skyriuje nustatysite ir išbandysite ryši su savo duomenu bazes serveriu. Pateiktoje paskyros informacijoje turetu buti VISI leidimai kurti duomenu bazes, lenteles ir vartotojus. Jei tai neimanoma arba jusu prieiga prie duomenu bazes yra ribota, turesite rankiniu budu sukonfiguruoti savo duomenu baze.
+Database Status: Duomenu bazes busena
+Supported databases for your PHP installation: Palaikomos jusu PHP diegimo duomenu bazes
+Your current database settings are able to access the database.: Dabartiniai jusu duomenu bazes nustatymai gali pasiekti duomenu baze.
+Please Test Settings: Patikrinkite nustatymus
+Your current database settings are not able...: Dabartiniai jusu duomenu bazes nustatymai negali pasiekti duomenu bazes arba dar nebuvo išbandyti.
+Database Settings: Duomenu bazes nustatymai
+Database Type: Duomenu bazes tipas
+Server: Serveris
+Connection Persistence: Ryšio atkaklumas
+All your database tables appear to be up...: Visos jusu duomenu bazes lenteles yra atnaujintos. Galite pereiti i kita puslapi ir užbaigti „WebCalendar“ saranka.
+This appears to be a new installation...: Panašu, kad tai nauja instaliacija. Jei tai neteisinga, grižkite i ankstesni puslapi ir ištaisykite nustatymus.
+This appears to be an upgrade...: Panašu, kad tai yra versijos&nbsp;XXX versija i&nbsp;YYY.
+The database requires some data input...: Duomenu bazei reikalingi tam tikri duomenu ivedimai Noredami baigti naujinima, spustelekite Atnaujinti duomenu baze.
+In this section we will perform...: Šiame skyriuje atliksime pakeitimus, kad jusu duomenu baze butu pakelta iki reikiamo lygio. Jei naudojate visiškai palaikoma duomenu baze, šis veiksmas jums bus atliktas automatiškai. Jei ne, galima rodyti reikiama SQL ir turetumete sugebeti ja iškirpti ir iklijuoti i savo duomenu bazes serverio užklausos langa.
+No database actions are required.: Duomenu bazes veiksmai nereikalingi.
+The following database actions are required: Butini šie duomenu bazes veiksmai
+ODBC Underlying Database: ODBC pagrindine duomenu baze:
+Automatic installation not supported: Automatinis diegimas nebuvo iki galo idiegtas jusu duomenu bazes tipui. Reikalingas lenteles turesite rankiniu budu sukurti naudodami pateikta SQL. Noredami testi, spustelekite  Rodyti SQL . Iškirpti ir iklijuoti i duomenu bazes užklausos langa.
+This may take several minutes to complete: Tai gali užtrukti kelias minutes.
+Install Database: Idiekite duomenu baze
+Update Database: Atnaujinti duomenu baze
+Display Required SQL: Rodyti reikalinga SQL
+Return to previous page after processing SQL.: Rankiniu budu apdoroje šia SQL turesite grižti i ankstesni puslapi ir iš naujo išbandyti savo duomenu baze, kad scenarijus galetu aptikti pakeitimus.
+This is the final step in setting up your WebCalendar Installation.: Tai yra paskutinis žingsnis nustatant „WebCalendar“ diegima.
+Timezone Conversion: Laiko juostos konvertavimas
+It appears that you have NOT converted...: Panašu, kad NEGALITE konvertuoti esamu „WebCalendar“ ivykiu duomenu i GMT. Jei turite, galite nepaisyti šio pranešimo ir nebevykdyti konversijos. Jei tai nauja instaliacija, taip pat galite nepaisyti šio pranešimo.
+Convert Data to GMT: Konvertuoti duomenis i GMT
+Application Settings: Programos parametrai
+HTTP-based authentication was not detected...: HTTP autentifikavimas nebuvo aptiktas. Turesite iš naujo sukonfiguruoti savo žiniatinklio serveri, jei norite pasirinkti „Žiniatinklio serveris“ iš toliau pateiktu „Vartotojo autentifikavimo“ pasirinkimu.
+HTTP-based authentication was detected...: Aptiktas HTTP pagristas autentifikavimas. Vartotojo tapatybe tvarko jusu žiniatinklio serveris. Turetumete pasirinkti „Žiniatinklio serveris“ iš žemiau pateikto „Vartotojo autentifikavimo“ pasirinkimu sarašo.
+Create Default Admin Account: Sukurkite numatytaja administratoriaus paskyra
+(Admin Account Not Found): (Administratoriaus paskyra nerasta)
+User Authentication: Vartotojo autentifikavimas
+Web-based via WebCalendar (default): Internetu per „WebCalendar“ (numatytasis nustatymas)
+Web Server (not detected): Žiniatinklio serveris (neaptiktas)
+Web Server (detected): Žiniatinklio serveris (aptiktas)
+None (Single-User): Nera (vieno vartotojo)
+Read-Only: Tik skaitymui
+Environment: Aplinka
+Production: Gamyba
+Development: Pletra
+Save Settings: Išsaugoti nustatymus
+Launch WebCalendar: Paleiskite „WebCalendar“
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Atnaujinant lentele „XXX“ ivyko klaida: YYY.
+Conversion Successful: Sekminga konversija 
+Perl script required: Ankstesnei „WebCalendar“ versijai norint paleisti duomenis, reikia paleisti PERL scenariju. Paleiskite /tools/upgrade_to_0.9.7.pl, tada grižkite i ši puslapi ir teskite.
+previous version requires updating several tables: Ankstesnei „WebCalendar“ versijai reikia atnaujinti kelias duomenu bazes lenteles.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: PERŽIURA NEGALIMA
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Prisijungiant prie duomenu bazes ivyko klaida
+Include Path: Itraukti kelia
+Deleting events for: Ištrinami ivykiai, skirti
+Importing events for: Importuojami ivykiai, skirti
+No data returned from: Iš duomenu negražinta
+for non-user calendar: ne vartotojo kalendoriui
+No Remote Calendars found: Nerasta jokiu nuotoliniu kalendoriu
+Remote Calendars not enabled: Nuotoliniai kalendoriai neigalinti
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: nepavyko rasti ivykio ID
+could not find event id XXX in database.: nepavyko rasti ivykio ID XXX duomenu bazeje.
+task: užduotis
+This is a reminder for the XXX detailed below.: Tai yra „XXX“ priminimas, išsamiai aprašytas toliau.
+Pecentage Complete: Pensentage baigtas
+Reminder: Priminimas
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Nepalaikomas veiksmas: XXX.
+No event id specified.: Nenurodytas ivykio ID.
+Not authorized (not admin).: Neigaliotas (nera administratorius).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Tikrinama XXX ivykiu nuo YYY datos iki ZZZ datos.
+Found XXX events in time range.: Rasta XXX ivykiu laiko diapazone.
+Event id=XXX YYY at ZZZ on AAA.: Ivykio ID = XXX „YYY“ ZZZ, AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX vartotojui leidžiama peržiureti kito vartotojo kalendoriu.
+Error Email reminders disabled for user XXX.: Klaida: el. Pašto priminimai išjungti vartotojui „XXX“.
+Number of site_extras XXX.: „Site_extras“ skaicius: XXX.
+Reminder set for event.: Priminimas nustatytas ivykiui.
+Mins Before XXX.: Minios prieš: XXX.
+Event time is XXX.: Ivykio laikas: XXX.
+Remind time is XXX.: Priminimo laikas yra: XXX.
+Reminders for user XXX, login YYY.: Priminimai vartotojui „XXX“, prisijunkite „YYY“.
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Gaunama nepatvirtinta naudotojui „XXX“.
+Event id=XXX YYY already sent.: Ivykio ID = XXX „YYY“ jau išsiustas.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Vieno vartotojo režimui prisijungti nereikia.
+No login required for HTTP authentication.: HTTP autentifikavimui nereikia prisijungti.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Netinkami simboliai prisijungiant.
+Username XXX does not exist.: Vartotojo vardo „XXX“ nera.
+You cannot remove admin rights from yourself!: Jus negalite pašalinti administratoriaus teisiu iš saves!
+Unknown error saving user: Nežinoma klaida išsaugant naudotoja.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Nerasta dalyviu pagal ivykio ID: XXX.
+Db error Could not find event id XXX.: Duomenų bazės klaida: nepavyko rasti įvykio ID XXX.
+Error Could not find event id XXX in database.: Klaida: Duomenų bazėje nepavyko rasti įvykio ID XXX.

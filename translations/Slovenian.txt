@@ -1,10 +1,43 @@
-# See translations/English-US.txt for instructions.
+# Slovenian sl
 #
-# Translations by David Milost <mercy@volja.net>, January 2004.
-# 'borrowed' from SourceForge project 'The Coolest DHTML Calendar',
-# http://sourceforge.net/projects/jscalendar/
+# Oblika je sestavljena iz neobvezne glave:
 #
-# Translation last updated on 10-14-2008
+# Prevedel: vaše ime in e-pošta
+# Zadnja posodobitev: datum prevoda
+# (Vključno z vodilno "#" in morebitnimi komentarji prejšnjih prevajalcev.
+# PRVA prazna vrstica konča te komentarje v glavi.)
+#
+# Sledi toliko, kolikor je potrebno:
+#
+# Angleška fraza: prevod
+# (Ena v vrstico. BREZ vodilnega "#".
+# "Angleški stavek:", vključno z dvopičjem ":", vsebuje
+# Razvijalci WebCalendar. Vaš del je "prevod".)
+#
+# Imenik orodij vsebuje dva skripta perl, ki vam pomagata:
+# - check_translation.pl
+# označuje, ali je bilo celotno besedilo uspešno prevedeno.
+# - update_translation.pl
+# bo razčlenil programske datoteke, da bo našel vse prevode ('fraza') in
+# tooltip ('fraza'). Stavke bo razvrstila glede na stran
+# (datoteka), ki vsebuje prvo pojavitev. Po želji lahko označi
+# besedne zveze, ki še niso prevedene s postavitvijo
+#  << MISSING >>
+# v vrstici nad besedno zvezo. In če je stavek okrajšava,
+# vključevalo bo celotno angleško besedilo v vrstici pod besedno zvezo.
+#
+# Opomba: Poskušam zmanjšati celotno velikost datoteke. Če je "prevod"
+# beseda / fraza je v vašem jeziku in angleščini enaka, samo uporabite znak "=".
+#
+# Opomba: Opazili boste vnos za "Mau_" spodaj. Za to obstaja razlog.
+#  Prevesti "May_" na polno mesečno ime in "May" do,
+# običajno trimestna, mesečna okrajšava (na primer "oktober" za "oktober").
+#
+# Za to sem uporabil Google translate.
+# Dovolj bi moralo biti, dokler ga izvorni govornik ne preveri.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -16,7 +49,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: ISO-8859-2
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -41,40 +74,1385 @@ __month__ __yyyy__: =
 
 
 ########################################
+# Page: about.php
+#
+Title: =
+version XXX: različica XXX
+WebCalendar is a PHP application used...: WebCalendar je PHP aplikacija, ki se uporablja za vzdrževanje koledarja za enega uporabnika ali internetno / intranetno skupino uporabnikov. Lahko ga nastavite tudi kot koledar dogodkov.
+Credits: Zasluge
+About: O tem
+OK: v redu
+
+########################################
 # Page: access.php
 #
-Calendar: koledarju
+Database error XXX.: Napaka zbirke podatkov: XXX.
+DEFAULT CONFIGURATION: PRIROČNA KONFIGURACIJA
+Go: Pojdi
+Save: Shrani
+Undo: Razveljavi
+Public Access: Javni dostop
+Admin: Skrbnik
+User Access Control: Nadzor uporabniškega dostopa
+Allow Access to Other Users Calendar: Dovoli dostop do koledarja drugih uporabnikov
+Grant This User Access to My Calendar: Odobrite uporabniku dostop do mojega koledarja
+Type: Tip
+Calendar: Koledar
+View Event: Ogled dogodka
+View: Pogled
+Edit: Uredi
+Approve/Reject: Odobri / zavrni
+Events: Dogodki
+Tasks: Naloge
+Journals: Časopisi
+Can Invite: Lahko povabi
+Can Email: Lahko Email
+Can See Time Only: Lahko vidi samo čas
+Assistant: Pomočnik
+Select All: Izberi vse
+Clear All: Počisti vse
+Public: Javno
+Confidential: Zaupno
+Private: Zasebno
+
+########################################
+# Page: activity_log.php
+#
+Next: Naslednji
+Previous: Prejšnji
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Dogodek XXX je že v vašem koledarju.
+Invalid entry id XXX.: Neveljaven ID vnosa: "XXX".
+a XXX event may not be added to your calendar: To je dogodek XXX in ga morda ne boste dodali v svoj koledar.
+confidential: zaupno
+private: zasebno
+Error adding event XXX.: Napaka pri dodajanju dogodka: XXX.
 
 ########################################
 # Page: admin.php
 #
-Month: mesec
-Year: leto
+Invalid setting name XXX.: Neveljavno ime nastavitve "XXX".
+Select: Izberite
+Day: Dan
+Week: Teden
+Month: Mesec
+Year: Leto
+Bottom: Spodaj
+Top: Na vrh
+Anyone: Kdorkoli
+Participant: Udeleženec
+Settings: Nastavitve
+Groups: Skupine
+NonUser Calendars: Neuporabniški koledarji
+Other: Drugo
+Email: E-naslov
+Colors: Barve
+Document background: Ozadje dokumenta
+Document title: Naslov dokumenta
+Document text: Besedilo dokumenta
+My event text: Besedilo mojega dogodka
+Table grid color: Barva mreže tabele
+Table header background: Ozadje glave tabele
+Table header text: Besedilo glave tabele
+Table cell background: Ozadje celice tabele
+Table cell background for current day: Ozadje celice tabele za tekoči dan
+Table cell background for days with events: Ozadje celice tabele za dneve z dogodki
+Table cell background for weekends: Ozadje celice mize za vikende
+Table cell background for other month: Ozadje celice tabele za drugi mesec
+Week number color: Barva številke tedna
+Event popup background: Pojavno ozadje dogodka
+Event popup text: Pojavno besedilo dogodka
+System Settings: Sistemske nastavitve
+Help: Pomoč
+System options: Sistemske možnosti
+app-name-help: Določa ime aplikacije, ki se bo pojavilo v naslovni vrstici brskalnika za vse strani in na strani za prijavo. Vrednost, ki jo navedete tukaj, bo prikazana v datoteki s prevodi, ki vam omogoča, da navedete različne naslove za različne jezike.
+Application Name: Ime aplikacije
+Translated Name (XXX): Prevedeno ime (XXX)
+server-url-help: Določa osnovni URL za aplikacijo. To bo vključeno pri pošiljanju e-poštnih opomnikov in obvestil.
+Server URL: URL strežnika
+home-url-help: Določa domači URL za aplikacijo. To je lahko absolutno ali relativno
+Home URL: Domači URL
+language-help: Določa, kateri jezik uporabiti.
+Language: Jezik
+Your browser default language is XXX.: Privzeti jezik vašega brskalnika je "XXX".
+Allow user to use themes: Dovoli uporabniku uporabo tem
+themes-help: Omogoča množično posodabljanje konfiguracijskih nastavitev. Nalepke z malimi črkami so samo uporabniške.
+Themes: Teme
+AVAILABLE THEMES: DOSTUPNE TEME
+None: Nobenega
+Preview: Predogled
+Site customization: Prilagajanje strani
+custom-script-help: Omogoča vnos besedila Javascripta ali sloga po meri, ki bo vstavljeno v odsek "glava" HTML na vsaki strani.
+Custom script/stylesheet: Skript / slog po meri
+custom-header-help: Omogoča vključitev delčka HTML po meri na vrh vsake strani.
+Custom header: Glava po meri
+custom-trailer-help: Omogoča vključitev delčka HTML po meri na konec vsake strani.
+Custom trailer: Prikolica po meri
+enable-external-header-help: Omogoča nalaganje priklopnika po meri iz zunanje datoteke
+Allow external file for header/script/trailer: Dovoli zunanjo datoteko za glavo / skript / napovednik
+Allow user to override header/trailer: Dovoli uporabniku, da preglasi glavo / napovednik
+Date and Time: Datum in čas
+server-tz-help: Določa, koliko ur je treba prilagoditi čas od UTC do časa strežnika.
+Server Timezone Selection: Izbira časovnega pasu strežnika
+tz-help: Določa, koliko ur je treba prilagoditi čas od UTC na lokalni čas.
+Default Client Timezone Selection: Privzeta izbira časovnega pasu odjemalca
+display-general-use-gmt-help: Če je omogočeno, so običajni datumi / časi prikazani kot GMT
+Display Common Use Date/Times as GMT: Prikažite datum / čas običajne uporabe kot GMT
+date-format-help: Določa želeno obliko datuma.
+Date format: Format datuma
+Small Task Date: Datum majhne naloge
+display-week-starts-on: Določa dan v tednu, v katerem se začne teden. Če je naveden ponedeljek, bodo tedenske številke tedenske številke ISO.
+Week starts on: Teden se začne
+display-weekend-starts-on: Nastavi dan v tednu, ko se začnejo vikendi
+Weekend starts on: Konec tedna se začne
+time-format-help: Določa, kateri časovni format uporabiti:<br><em>12 ur:</em> Prikaz časov kot 3:00, 20:30 itd.<br><em>24 ur:</em> Prikaz časov kot 300 , 2030 itd.
+Time format: Časovna oblika
+12 hour: 12 ur
+24 hour: 24 ur
+timed-evt-len-help: Določa način vnosa za določanje dolžine časovno določenega dogodka.
+Specify timed event length by: Določite časovno določeno dolžino dogodka za
+Duration: Trajanje
+End Time: Končni čas
+work-hours-help: Določa časovno obdobje za prikaz dnevnega pogleda.
+Work hours: Delovni čas
+From: Od
+to: do
+Appearance: Videz
+preferred-view-help: Določi privzeti pogled (dan, teden, mesec ali leto).
+Preferred view: Prednostni pogled
+Allow top menu: Dovoli zgornji meni
+Date Selectors position: Položaj izbirnikov datuma
+menu-themes-help: Nastavi barve in slog zgornjega menija
+Menu theme: Tema menija
+fonts-help: Določa seznam sistemskih pisav, ki jih je treba uporabiti (na primer "Arial, Helvetica")
+Fonts: Pisave
+display-sm_month-help: Če je omogočeno, prikaže majhne mesece v pogledih mesecev
+Display small months: Prikaži majhne mesece
+display-weekends-help: Med ogled tedna vključite vikende.
+Display weekends: Prikaži vikende
+display-long-daynames-help: Če je omogočeno, se prikažejo imena dolgih dni
+Display long day names: Prikaži imena dolgih dni
+display-alldays-help: Prikažite prejšnje in naslednje mesece v pogledih meseca, tako da zapolnite vse celice.
+Display all days in month view: Prikaz vseh dni v mesečnem pogledu
+display-week-number-help: Določa, ali naj bo številka tedna (1-52) prikazana v mesečnem pogledu in tedenskem pogledu.
+Display week number: Prikaz številke tedna
+display-desc-print-day-help: Vključite opise dogodkov v tiskalniku prijazno različico dnevnega pogleda.
+Display description in printer day view: Prikažite opis v dnevnem pogledu tiskalnika
+yearly-shows-events-help: V letnem pogledu prikažite dneve, ki vsebujejo dogodke s krepko pisavo.
+Display days with events in bold in month and year views: Prikažite dneve z dogodki v krepkem tisku v mesecih in letih
+display-minutes-help: Če je omogočeno, bodo vedno prikazane minute, ki se končajo z: 00
+Display 00 minutes always: Prikažite vedno 00 minut
+display-end-times-help: Prikaži končne čase dogodka, če je dogodek časovno omejen
+Display end times on calendars: Prikažite končne čase na koledarjih
+allow-view-add-help: V pogledih bo vključena ikona '+', ki uporabnikom omogoča hitro dodajanje dogodkov v koledarje drugih uporabnikov.
+Include add event link in views: V poglede vključite povezavo za dodajanje dogodka
+lunar-help: Če je omogočena, se bodo mesečno prikazovale majhne ikone, ki predstavljajo lunine faze
+Display Lunar Phases in month view: Prikažite lunine faze v mesečnem pogledu
+Restrictions: Omejitve
+allow-view-other-help: Določa, ali si lahko en uporabnik ogleda koledar drugega uporabnika.
+Allow viewing other users calendars: Dovoli ogled koledarjev drugih uporabnikov
+require-approvals-help: Ko je omogočen, mora uporabnik odobriti dogodek, preden je prikazan v svojem koledarju (razen če je omogočen prikaz neodobren). Opomba, če to nastavite na »Ne«, ne bo izklopila odobritev koledarja javnega dostopa (če je koledar javnega dostopa omogočen).
+Require event approvals: Zahtevajte odobritve dogodkov
+display-unapproved-help: Določa, ali bodo neodobreni dogodki prikazani v vašem koledarju.<br>Če je nastavljeno na "Da", bodo neodobreni dogodki prikazani v vašem koledarju (v drugi barvi besedila).<br>Če je nastavljeno na "Ne", potem neodobrene dogodke je treba odobriti, preden so prikazani v vašem koledarju.
+Display unapproved: Zaslon ni odobren
+conflict-check-help: Preverite konflikte dogodkov (dva dogodka, načrtovana hkrati za isto osebo). Če to nastavite na "Da", boste po potrditvi opozorila še vedno lahko načrtovali dva dogodka hkrati. Če to nastavite na "Ne", preverjanje konfliktov ne bo izvedeno. Verjetno želite to nastaviti na "Da", zato pride do preverjanja konfliktov.
+Check for event conflicts: Preverite, ali so navzkrižja dogodkov
+Yes: Da
+No: Ne
+conflict-months-help: Če je preverjanje konfliktov vzpostavljeno (»Preveri konflikte dogodkov« je nastavljeno na »Ne«&#41;, to določa, koliko mesecev v prihodnosti bi morali preveriti, ali obstajajo konflikti. Če ugotovite, da dodajanje dogodkov traja dolgo , zmanjšajte to število.
+Conflict checking months: Meseci preverjanja konfliktov
+conflict-check-override-help: Uporabnikom omogoča preglasitev konfliktov dogodkov in načrtovanje dveh ali več dogodkov hkrati.
+Allow users to override conflicts: Dovoli uporabnikom, da preglasijo konflikte
+limit-appts-help: Omogoča skrbniku sistema, da nastavi sistemsko omejitev števila sestankov, ki jih lahko en uporabnik opravi na kateri koli dan.
+Limit number of timed events per day: Omejite število časovno določenih dogodkov na dan
+limit-appts-number-help: Določa največje število časovnih dogodkov, ki jih ima lahko uporabnik v enem dnevu.
+Maximum timed events per day: Najdaljši časovni dogodki na dan
+crossday-help: Če je omogočeno, bodo dogodki, ki zajemajo dneve, prikazani ločeno
+Disable Cross-Day Events: Onemogoči čezdnevne dogodke
+disable-location-field-help: Če izberete »Da«, boste s strani z informacijami o dogodkih odstranili polje »Lokacija«
+Disable Location field: Onemogoči polje Lokacija
+disable-url-field-help: Če izberete »Da«, boste s strani z informacijami o dogodkih odstranili polje »URL«
+Disable URL field: Onemogoči polje URL
+disable-priority-field-help: Če izberete »Da«, boste s strani z informacijami o dogodkih odstranili polje »Prednost« in tako zagotovili preprostejši vmesnik za začetnike.
+Disable Priority field: Onemogoči polje Prioriteta
+disable-access-field-help: Če izberete »Da«, boste s strani z informacijami o dogodkih odstranili polje »Dostop« in tako zagotovili preprostejši vmesnik za začetnike.
+Disable Access field: Polje Onemogoči dostop
+disable-participants-field-help: Če izberete »Da«, boste s strani z informacijami o dogodkih odstranili polje »Udeleženci« in uporabnikom preprečili dodajanje drugih uporabnikov na svoje dogodke. Če omogočite to možnost, boste morda želeli onemogočiti tudi polje »Dovoli ogled koledarjev drugih uporabnikov«.
+Disable Participants field: Polje Onemogoči udeležence
+disable-repeating-field-help: Če izberete »Da«, boste pri dodajanju dogodkov odstranili polje »Ponavljanje«. To bo zagotovilo preprostejši vmesnik za začetnike.
+Disable Repeating field: Onemogoči ponavljanje polja
+allow-html-description-help: Če je omogočeno, lahko uporabniki v polje za opis dogodka vnesejo HTML. Če ni omogočena, bodo oznake HTML umaknjene, tako da bodo prikazane kot navadno besedilo. Opozorilo: Če omogočite to funkcijo, lahko uporabniki sklicujejo slike na drugih spletnih mestih.
+Allow HTML in Description: Dovoli HTML v opisu
+Popups: =
+disable-popups-help: Onemogoči pojavna okna iz pogledov koledarja
+Disable Pop-Ups: Onemogoči pojavna okna
+popup-includes-siteextras-help: Če je omogočeno, dovolite, da se v pojavnih oknih dogodkov prikažejo nastavitve polj po meri v datoteki site_extras.php.
+Display Site Extras in popup: Prikaži dodatke spletnega mesta v pojavnem oknu
+popup-includes-participants-help: Če je omogočeno, so udeleženci prikazani v pojavnih oknih.
+Display Participants in popup: Prikaži udeležence v pojavnem oknu
+Miscellaneous: Razno
+remember-last-login-help: Ko je omogočena, bo uporabniška prijava zanje izpolnjena na prijavni strani (ne pa tudi gesla) in uporabniške nastavitve bodo naložene (vključno z njihovimi želenimi barvami in izbiro jezika).
+Remember last login: Zapomni si zadnjo prijavo
+summary_length-help: Najdaljša dolžina kratkega opisa v pogledih koledarja
+Brief Description Length: Kratek opis Dolžina
+user_sort-help: Določa vrstni red razvrščanja za sezname uporabnikov in uporabnikov
+User Sort Order: Uporabniški vrstni red
+Lastname, Firstname: Priimek Ime
+Firstname, Lastname: Ime priimek
+allow-public-access-help: Ko je koledar omogočen, se lahko uporablja kot javni koledar, ki je samo za branje in za katerega uporabniki ne zahtevajo prijave.
+Allow public access: Dovoli javni dostop
+public-access-default-visible: Dogodki iz javnega koledarja bodo samodejno prikazani na vseh koledarjih uporabnikov
+Public access visible by default: Javni dostop je privzeto viden
+public-access-default-selected: Ob dodajanju novega dogodka bo javni uporabnik privzeto izbran kot udeleženec.
+Public access is default participant: Javni dostop je privzeti udeleženec
+public-access-view-others-help: Pri dostopu do sistema z javnim dostopom določa, ali si lahko uporabnik ogleda koledar drugega uporabnika koledarja.
+Public access can view other users: Javni dostop lahko vidi druge uporabnike
+public-access-can-add-help: Ko je omogočeno, bodo uporabniki, ki dostopajo do sistema prek javnega dostopa, lahko dodajali nove dogodke, vendar se v koledarju ne bodo prikazali, dokler skrbnik ne odobri novega dogodka.
+Public access can add events: Javni dostop lahko dodaja dogodke
+public-access-add-requires-approval-help: Določa, ali je treba dogodke, dodane prek računa za javni dostop, odobriti pred prikazom.
+Public access new events require approval: Javni dostop do novih dogodkov zahteva odobritev
+public-access-sees-participants-help: Če je omogočeno, bodo uporabniki, ki dostopajo do koledarja iz javnega računa, lahko videli udeležence dogodka, če si bodo ogledali podrobnosti o dogodku.
+Public access can view participants: Javni dostop lahko vidi udeležence
+public-access-override-help: Omogoča skrivanje imen in opisov dogodkov v javnem koledarju
+Override event name/description for public access: Prevedi ime / opis dogodka za javni dostop
+public-access-override-text-help: Besedilo, ki se prikaže, če je zgornja možnost omogočena. Če ni na voljo, bo prevedeno.
+Text to display to public access: Besedilo za javni dostop
+public-access-captcha-help: Če je omogočeno, novi dogodki, ki jih doda Public, zahtevajo preverjanje veljavnosti CAPTCHA.
+Require CAPTCHA validation for public access new events: Zahtevajte potrditev CAPTCHA za javni dostop do novih dogodkov
+uac-enabled-help: Omogoča nadzor dostopa na ravni uporabnika
+User Access Control enabled: Uporabniški nadzor dostopa je omogočen
+groups-enabled-help: Omogoča skupinsko podporo, ki uporabnikom omogoča izbiro uporabnikov po skupinah.
+Groups enabled: Skupine so omogočene
+user-sees-his-group-help: Če je omogočeno, uporabniki ne bodo videli uporabnikov koledarja, ki niso v vsaj eni od njihovih skupin.
+User sees only his groups: Uporabnik vidi samo svoje skupine
+nonuser-enabled-help: Če je omogočeno, bodo skrbniki lahko dodajali neuporabne koledarje
+Nonuser enabled: Neuporabniški koledarji so omogočeni
+nonuser-list-help: Kje prikazati neuporabne koledarje na seznamu udeležencev
+Nonuser list: Prikaz na seznamu udeležencev na
+Upcoming Events: Prihajajoči dogodki
+upcoming-events-help: Omogoči prihajajoči.php
+Enabled: Omogočeno
+upcoming-events-allow-override: Dovoli uporabniškemu parametru za prihajajoči.php
+Allow user override: Dovoli preglasitev uporabnika
+upcoming-events-display-caticons: V prihajajoči.php vključite ikone kategorij
+Display category icons: Prikaži ikone kategorij
+upcoming-events-display-layers: Prikaži sloje v prihajajočem.php
+Display layers: Prikaži sloje
+upcoming-events-display-links: Prikaži povezave v prihajajočem.php
+Display links to events: Prikaži povezave do dogodkov
+upcoming-events-display-popups: Prikaži pojavna okna dogodkov v prihajajočem.php
+Display event popups: Prikaži pojavna okna dogodkov
+reports-enabled-help: Če je omogočeno, bodo uporabniki na dnu vsake strani videli razdelek »Poročila« in lahko bodo ustvarjali poročila po meri. Poleg tega lahko skrbniški uporabniki ustvarijo globalna poročila, ki bodo prikazana na dnu vseh strani uporabnikov.
+Reports enabled: Poročila omogočena
+subscriptions-enabled-help: Določa, ali se lahko oddaljeni uporabniki naročijo na koledar uporabnika WebCalendar, kar jim omogoča ogled dogodkov uporabnika WebCalendar v njihovi aplikaciji, ki podpira iCal (na primer Appleov iCal ali Mozilla Calendar).
+Allow remote subscriptions: Dovoli oddaljene naročnine
+remotes-enabled-help: Uporabnikom omogoča nalaganje oddaljenih datotek ics z uporabo URL-ja
+Allow remote calendars: Dovoli oddaljene koledarje
+rss-enabled-help: Določa, ali je mogoče uporabniški koledar dobiti iz vira RSS.
+Enable RSS feed: Omogoči vir RSS
+categories-enabled-help: Omogoča podporo za kategorije dogodkov.
+Categories enabled: Kategorije so omogočene
+icon_upload-enabled-help: Če je omogočeno, lahko uporabniki naložijo ikone kategorij
+Category Icon Upload enabled: Nalaganje ikone kategorije omogočeno
+(Requires XXX folder to exist.): (Za obstoj mape XXX.)
+display-tasks-help: Prikaži majhno okno opravila na mesečnem in dnevnem koledarju
+Display small task list: Prikaži majhen seznam opravil
+display-tasks-in-grid-help: Prikažite opravila v koledarjih skupaj z dogodki
+Display tasks in Calendars: Prikaži naloge v koledarjih
+allow-external-users-help: Določa, ali je mogoče nekoga koledarja dodati v dogodek. To omogoča uporabnikom, ki niso koledarji, na seznamu udeležencev dogodka.
+Allow external users: Dovoli zunanjim uporabnikom
+external-can-receive-notification-help: Ko so zunanji uporabniki omogočeni in je omogočena uporaba e-pošte, lahko zunanji uporabniki prejemajo e-poštna obvestila, ko je dogodek dodan, posodobljen ali izbrisan (če je naveden e-poštni naslov zunanjega uporabnika).
+External users can receive email notifications: Zunanji uporabniki lahko prejemajo e-poštna obvestila
+external-can-receive-reminder-help: Ko so zunanji uporabniki omogočeni in je omogočena uporaba e-pošte, lahko zunanji uporabniki prejmejo e-poštne opomnike (če je naveden e-poštni naslov zunanjega uporabnika).
+External users can receive email reminders: Zunanji uporabniki lahko prejemajo opomnike po e-pošti
+allow-self-registration-help: Dovolite novim uporabnikom, da se sami registrirajo
+Allow self-registration: Dovoli samoregistracijo
+use-blacklist-help: Omejite dostop do funkcij WebCalendar glede na naslov IP
+Restrict self-registration to blacklist: Omejite samoregistracijo na črni seznam
+allow-self-registration-full-help: Omogočite novim uporabnikom, da sami zaključijo postopek samoregistracije
+Use self-registration email notifications: Ustvari gesla in jih pošlji novim uporabnikom
+allow-attachment-help: Dovoli uporabnikom, da dodajajo priloge datotek dogodkom.
+Allow file attachments to events: Dovoli priloge datotek dogodkom
+Admin and owner can always add attachments if enabled.: Skrbnik in lastnik lahko vedno dodata priloge, če je to omogočeno.
+allow-comments-help: Dovoli uporabnikom dodajanje komentarjev na dogodke.
+Allow comments to events: Dovoli komentarje dogodkov
+Admin and owner can always add comments if enabled.: Skrbnik in lastnik lahko vedno dodata komentarje, če je to omogočeno.
+email-enabled-help: Vklopite ali izklopite pošiljanje e-pošte za obvestila in opomnike. Nastavite na "ne", če vaš strežnik ni pravilno nastavljen za pošiljanje pošte.
+Email enabled: E-pošta omogočena
+email-default-sender: Določa e-poštni naslov, ki ga želite določiti kot pošiljatelja pri pošiljanju opomnikov.
+Default sender address: Privzeti naslov pošiljatelja
+email-mailer: Izberite vrsto e-pošte (SMTP, PHP pošta, sendmail)
+Email Mailer: Pošiljatelj e-pošte
+email-smtp-host: Imena gostiteljev strežnikov SMTP, ločenih z vejicami
+SMTP Host name(s): Imena gostitelja SMTP
+email-smtp-port: Številka vrat SMTP (običajno 25)
+SMTP Port Number: Številka vrat SMTP
+email-smtp-auth: Uporabite overjanje SMTP
+SMTP Authentication: Preverjanje pristnosti SMTP
+email-smtp-username: Uporabniško ime SMTP, če uporabljate overjanje
+SMTP Username: Uporabniško ime SMTP
+email-smtp-password: Geslo SMTP, če uporabljate preverjanje pristnosti
+SMTP Password: Geslo SMTP
+Default user settings: Privzete uporabniške nastavitve
+email-format: Določite prednost za sporočila HTML ali navadna besedila
+Email format preference: Nastavitev oblike e-pošte
+HTML: =
+Plain Text: Golo besedilo
+email-include-ics: V e-poštno sporočilo vključite datoteko ICS iCalendar
+Include iCalendar attachments: Vključite priloge iCalendar
+email-event-reminders-help: Določa, ali naj se opomniki o dogodkih pošiljajo ali ne.
+Event reminders: Opomniki za dogodke
+email-event-added: Določa, ali naj se e-poštna obvestila pošiljajo, ko je dogodek dodan v koledar.
+Events added to my calendar: Dogodki, dodani v moj koledar
+email-event-updated: Določa, ali naj se e-poštna obvestila pošiljajo, ko se dogodek posodobi v koledarju.
+Events updated on my calendar: Dogodki posodobljeni na mojem koledarju
+email-event-deleted: Določa, ali naj se e-poštna obvestila pošiljajo, ko je dogodek odstranjen iz koledarja.
+Events removed from my calendar: Dogodki odstranjeni iz mojega koledarja
+email-event-rejected: Določa, ali naj pošlje e-poštna obvestila, ko udeleženec zavrne dogodek v vašem koledarju.
+Event rejected by participant: Udeleženec je dogodek zavrnil
+email-event-create: Določa, ali bo ustvarjalec vnosov prejel e-pošto
+Event that I create: Dogodek, ki ga ustvarim
+Color options: Barvne možnosti
+Allow user to customize colors: Dovoli uporabniku, da prilagodi barve
+gradient-colors: Če so omogočene prelivne barve. To lahko močno vpliva na uspešnost.
+Enable gradient images for background colors: Omogoči prelivne slike za barve ozadja
+Not available: Ni na voljo
+Background Image options: Možnosti slike za ozadje
+bgimage-help: URL želene slike v ozadju. Morda je relativna povezava.
+Background Image: Slika ozadja
+bgrepeat-help: Nadzira ponavljanje obnašanja slike v ozadju.
+Background Repeat: Ponovitev ozadja
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Pomočniki
+Preferences: Preference
+Control Panel: Nadzorna plošča
+Users: Uporabniki
+Account: račun
+Categories: Kategorije
+Views: Pogledi
+Layers: Plasti
+Reports: Poročila
+Delete Events: Izbriši dogodke
+Activity Log: Dnevnik aktivnosti
+System Log: Sistemski dnevnik
+Security Audit: Revizija varnosti
+Public Preferences: Javne nastavitve
+Unapproved Public Events: Neodobreni javni dogodki
+Administrative Tools: Skrbniška orodja
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Podvojeno ime: "XXX".
+Username XXX already exists.: Uporabniško ime "XXX" že obstaja.
+Email address XXX already exists.: E-poštni naslov "XXX" že obstaja.
 
 ########################################
 # Page: approve_entry.php
 #
-Date: datum
+Additional Comments (optional): Dodatni komentarji (neobvezno)
+Approve and Send: Odobrite in pošljite
+Approve and Exit: Odobri in zapusti
+(Your comments will be emailed to the event creator.): (Vaši komentarji bodo poslani ustvarjalcu dogodka po e-pošti.)
+Hello, XXX.: Pozdravljeni, XXX.
+XXX has approved an appointment and added comments.: Dogovor je bil odobren, XXX pa je dodal komentarje.
+Subject XXX: Zadeva: "XXX".
+Description XXX: Opis: "XXX".
+Date XXX: Datum: XXX
+Time XXX: Čas: XXX
+Comments XXX: Komentarji: XXX
+Approved w/Comments by XXX.: Odobreno s komentarji: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Skrbniški način
+Your assistants: Vaši pomočniki
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Neznana napaka.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Napaka programa: XXX ni določen!
+user: uporabnik
+year: leto
+month: mesec
+day: dan
+
+########################################
+# Page: category.php
+#
+Category Icon: Ikona kategorije
+Global: Globalno
+The permissions for the icons directory are set to read-only: Dovoljenja za imenik ikon so nastavljena na samo za branje.
+Category Name: Ime kategorije:
+Color: Barva
+Remove Icon: Odstrani ikono:
+Add Icon to Category: Dodaj ikono v kategorijo
+Upload: Naloži
+GIF or PNG 6kb max: GIF ali PNG 6kb največ
+Search for existing icons: Poiščite obstoječe ikone
+Add: Dodaj
+Delete: Izbriši
+Are you sure you want to delete this entry?: Ali ste prepričani, da želite izbrisati ta vnos?
+Make New Category: Ustvari novo kategorijo
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Ime kategorije je obvezno
+File size exceeds maximum.: Velikost datoteke presega največjo.
+File is not a GIF or PNG image: Datoteka ni slika GIF ali PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: RAZPOLOŽLJIVE KATEGORIJE
+ENTRY CATEGORIES: KATEGORIJE VSTOPA
+Remove: Odstrani
+Global Category: Globalna kategorija
+Cancel: Prekliči
+
+########################################
+# Page: colors.php
+#
+Add Custom: Dodaj po meri
+Basic Colors: Osnovne barve
+Current Color: Trenutna barva
+Custom Colors: Barve po meri
+Old Color: Stara barva
+
+########################################
+# Page: combo.php
+#
+Select None: Izberite Brez
+Agenda: Dnevni red
+Add Task: Dodaj opravilo
+Description: Opis
+Date: Datum
+Time: Čas
+Priority: Prednostna naloga
+Access: Dostop
+Created by: Ustvaril
+Updated: Posodobljeno
+Participants: Udeleženci
+Attachments: Priloge
+Comments: Komentarji
+Brief Description: Kratek opis
+Full Description: Celoten opis
+Category: Kategorija
+Add event detail: Dodajte podrobnosti o dogodku
+Start Date: Začetni datum
+Due Date: Rok
+Add task detail: Dodajte podrobnosti o nalogi
+All: Vse
+Error: Napaka
+no response from server: ni odgovora strežnika
+JSON error: Napaka JSON
+High: Visoko
+Medium: Srednje
+Low: Nizko
+Today: Danes
+Add Entry: Dodaj vnos
+Unnamed Event: Neimenovani dogodek
+Unnamed Task: Neimenovana naloga
+Refresh: Osveži
+Click to add entry: Kliknite, če želite dodati vnos
+Name: Ime
+pm: popoldan
+am: sem
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX je odpovedal sestanek.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Neveljaven ID bloba
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Dodaj komentar
+Add Attachment: Dodaj prilogo
+Subject: Predmet
+Comment: Komentiraj
+Upload file: Naloži datoteko
+
+########################################
+# Page: docdel.php
+#
+Removed: Odstranjeno
+
+########################################
+# Page: edit_entry.php
+#
+days: dnevi
+hours: ure
+minutes: minut
+You are not authorized to edit this task.: Nimate pooblastila za urejanje te naloge.
+is in a different timezone than you are. Currently: je v drugačnem časovnem pasu kot vi. Trenutno
+hour ahead of you: uro pred vami
+hour behind you: uro za vami
+hours ahead of you: ur pred vami
+hours behind you: ure za vami
+XXX is in a different timezone (ahead): (XXX je v drugem časovnem pasu; YYY je pred vami.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX je v drugem časovnem pasu; YYY za vami.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Tu vneseni čas temelji na vašem časovnem pasu.
+Edit Entry: Uredi vnos
+Details: Podrobnosti
+Repeat: Ponovite
+Reminders: Opomniki
+brief-description-help: Ta naj vsebuje kratek opis (približno 20 znakov) dogodka. To bo predstavljalo dogodek med ogledom koledarja.
+full-description-help: To bi moralo vsebovati podrobnosti o dogodku. Te informacije si lahko ogledate, ko si uporabnik ogleda dogodek.
+access-help: Določa raven dostopa do dogodka. <ul> <li> Javno: vsi si lahko ogledajo vse podrobnosti o dogodku.</li> <li> Zaupno: drugi lahko vidijo, da imate vnos za ta datum in uro, vendar ne podrobnosti o tem, kaj je.</li></ul>
+priority-help: Določa prioriteto dogodka. Dogodki z visoko prioriteto bodo prikazani krepko.
+category-help: Določa kategorijo dogodka.
+completed-help: Datum je končan. Omogočeno samo, če je odstotek vseh udeležencev enak 100%.
+Date Completed: Datum zaključka
+percent-help: Odstotek dokončanja opravila za tega uporabnika
+Percent Complete: Odstotek dokončan
+All Percentages: Vsi odstotki
+location-help: Lokacija dogodka
+Location: Lokacija
+url-help: URL dogodka
+URL: =
+date-help: Določa datum dogodka.
+Untimed event: Neomejen dogodek
+Timed event: Časovni dogodek
+All day event: Celodnevni dogodek
+Timezone Offset: Odmik časovnega pasu
+time-help: Določa čas dogodka. <ul> <li> "Časovni dogodek" (za dogodek, ki je načrtovan za določen čas na ta dan)</li> <li> "Neomejen dogodek" (za dogodek, ki nima časa (na primer praznik) )</li> <li> "Celodnevni dogodek" (za dogodek, ki traja ves dan (na primer zunaj pisarne)</li></ul>
+duration-help: Določa trajanje (v urah; minutah) dogodka. <em>To polje lahko pustite prazno.</em>
+end-time-help: Določa čas, ko naj bi se dogodek končal.
+Start Time: Začetni čas
+Due Time: Rok
+Site Extras: Dodatek za spletno mesto
+avail_participants-help: Našteje razpoložljive udeležence tega vnosa.
+Available: Na voljo
+Find Name: Poišči ime
+Resources: Viri
+participants-help: Našteje udeležence tega vnosa.
+Selected: Izbrano
+Availability: Razpoložljivost
+external-participants-help: Določa seznam udeležencev dogodka, ki niso uporabniki koledarja. Uporabniki naj bodo navedeni po eno v vrstico in lahko vključujejo e-poštni naslov. Če je naveden e-poštni naslov, je uporabnik upravičen do prejemanja obvestil in opomnikov.
+External Participants: Zunanji udeleženci
+repeat-type-help: Izberite, kako pogosto naj se dogodek ponavlja.
+Daily: Vsak dan
+Weekly: Tedensko
+Monthly: Mesečno
+by day: podnevi
+by date: po datumu
+by position: po položaju
+Monthly (by day): Mesečno (po dnevih)
+Monthly (by date): Mesečno (po datumu)
+Monthly (by position): Mesečno (po položaju)
+Yearly: Letno
+Manual: Priročnik
+Expert Mode: Strokovni način
+repeat-end-date-help: Določa datum, do katerega naj se dogodek ponavlja.
+Ending: Konec
+Forever: Za vedno
+Use end date: Uporabite končni datum
+Number of times: Število krat
+repeat-frequency-help: Določa, kako pogosto naj se dogodek ponovi.
+Frequency: Pogostost
+Weekdays Only: Samo ob delavnikih
+Week Start: Začetek tedna
+repeat-bydayextended-help: Omogoča izbiro datuma glede na dan v tednu.
+ByDay: Podnevi
+repeat-month-help: Določa, v katerih mesecih naj se dogodek ponovi.
+ByMonth: =
+repeat-bysetpos-help: Omogoča izbiro datuma glede na položaj v mesecu.
+BySetPos: =
+repeat-bymonthdayextended-help: Omogoča izbiro datuma glede na datum.
+ByMonthDay: =
+repeat-byweekno-help: Uporabniku omogoča, da določi seznam tednov za ponovitev dogodka (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: V tednu št
+repeat-byyearday-help: Uporabniku omogoča, da določi seznam dni v letu za ponovitev dogodka (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Dodatni dnevi, ko bi se ta dogodek moral ali ne sme zgoditi.
+Exclusions: Izključitve
+Inclusions: Vključitve
+Add Exception: Dodaj izjemo
+Add Inclusion: Dodaj vključitev
+Delete Selected: Izbriši izbrano
+Send Reminder: Pošlji opomnik
+When: Kdaj
+Use Date/Time: Uporabite datum / čas
+Use Offset: Uporabite Offset
+Before: Prej
+After: Po
+Start: Začni
+End/Due: Konec / zapadlost
+Times: Časi
+Every: Vsak
+CAPTCHA Warning: Opozorilo:  CAPTCHA ni mogoče uporabiti brez razširitve GD za PHP!<br>
+Delete entry: Izbriši vnos
+You are not authorized to edit this entry.: Nimate dovoljenja za urejanje tega vnosa.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX se je dogovoril za nov sestanek.
+XXX has updated an appointment.: XXX je posodobil sestanek.
+Security violation!: Kršitev varnosti!
+You must enter the anti-spam text on the previous page.: Besedilo za zaščito pred neželeno pošto morate vnesti na prejšnji strani.
+The following conflicts with the suggested time: Naslednje nasprotuje predlaganemu času
+User removed from participants list.: Uporabnik odstranjen s seznama udeležencev.
+Please look on XXX to accept or reject this appointment.: Prosimo, poglejte na XXX, če želite sprejeti ali zavrniti ta sestanek.
+Please look on XXX to view this appointment.: Oglejte si XXX, da si ogledate ta sestanek.
+Scheduling Conflict: Načrtovanje konflikta
+Your suggested time of: Predlagani čas
+conflicts with the following existing calendar entries: je v sporu z naslednjimi obstoječimi koledarskimi vnosi
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX ni bil nastavljen v "config.php".
+word characters only: (lahko vsebuje samo besedne znake; [a-zA-Z_0-9])
+Add User: Dodaj uporabnika
+Edit User: Uredi uporabnika
+Calendar ID: ID koledarja
+First Name: Ime
+Last Name: Priimek
+Is public calendar: Je javni koledar
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Napaka baze podatkov
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Dodaj oddaljeni koledar
+Edit Remote Calendar: Uredi oddaljeni koledar
+Create Layer: Ustvari sloj
+Reload: Ponovno naloži
+Required to View Remote Calendar: Potrebno za ogled oddaljenega koledarja
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Uvozi rezultate
+Events successfully imported: Dogodki so bili uspešno uvoženi
+Create a new layer to view this calendar.: Ustvari novo plast za ogled tega koledarja.
+Errors: Napake
+There was an error parsing the import file or no events were returned.: Pri razčlenjevanju uvozne datoteke je prišlo do napake ali niso bili vrnjeni nobeni dogodki.
 
 ########################################
 # Page: edit_report.php
 #
-Today: Danes
+Tomorrow: Jutri
+Yesterday: Včeraj
+Day before yesterday: Predvčerajšnjim
+Next week: Naslednji teden
+This week: Ta teden
+Last week: Prejšnji teden
+Week before last: Predlani
+Next week and week after: Naslednji teden in naslednji teden
+This week and next week: Ta teden in naslednji teden
+Last week and this week: Prejšnji teden in ta teden
+Last two weeks: Zadnja dva tedna
 Next month: Naslednji mesec
+This month: Ta mesec
+Last month: Prejšnji mesec
+Month before last: Mesec pred zadnjim
 Next year: Naslednje leto
+This year: To leto
+Last year: Lansko leto
+Year before last: Predlani
+Next 14 days: Naslednjih 14 dni
+Next 30 days: Naslednjih 30 dni
+Next 60 days: Naslednjih 60 dni
+Next 90 days: Naslednjih 90 dni
+Next 180 days: Naslednjih 180 dni
+Next 365 days: Naslednjih 365 dni
+Invalid report id XXX.: Neveljaven ID poročila: "XXX".
+Unnamed Report: Neimenovano poročilo
+Add Report: Dodaj poročilo
+Edit Report: Uredi poročilo
+Report name: Ime poročila
+User: Uporabnik
+Current User: Trenutni uporabnik
+Include link in menu: Vključi povezavo v meni
+Include standard header/trailer: Vključite standardno glavo / prikolico
+Include previous/next links: Vključi prejšnje / naslednje povezave
+Include empty dates: Vključite prazne datume
+Date range: Časovno obdobje
+Template variables: Spremenljivke predloge
+Page template: Predloga strani
+Day template: Predloga za dan
+Event template: Predloga za dogodek
+Are you sure you want to delete this report?: Ali ste prepričani, da želite izbrisati to poročilo?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Nobenega takega ID-ja poročila: "XXX".
+Variable XXX not found.: Spremenljivke XXX ni mogoče najti.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Uredi glavo po meri
+Edit Custom Script/Stylesheet: Urejanje skripta po meri / slogovnega lista
+Edit Custom Trailer: Uredi napovednik po meri
+
+########################################
+# Page: edit_user.php
+#
+Username: Uporabniško ime
+E-mail address: Email naslov
+Password: Geslo
+again: ponovno
+Disabled for demo: Onemogočeno za predstavitev
+Are you sure you want to delete this user?: Ali ste prepričani, da želite izbrisati tega uporabnika?
+Change Password: Spremeni geslo
+New Password: novo geslo
+Set Password: Nastavi geslo
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Brisanje uporabnikov ni podprto.
+The passwords were not identical.: Gesli nista bili enaki.
+You have not entered a password.: Niste vnesli gesla.
+Username cannot be blank.: Uporabniško ime ne sme biti prazno.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ni dovoljeno
+
+########################################
+# Page: export.php
+#
+Export: Izvozi
+Export format: Izvozi obliko
+Include all layers: Vključi vse sloje
+Include deleted entries: Vključi izbrisane vnose
+Export all dates: Izvozi vse datume
+Start date: Začetni datum
+End date: Končni datum
+Modified since: Spremenjeno od
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: oblika izvoza ni definirana ali napačna.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Uporabnik ni naveden.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Dodaj novo skupino
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Neimenovana skupina
+Add Group: Dodaj skupino
+Edit Group: Uredi skupino
+Group name: Ime skupine
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Navesti morate ime skupine
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Samodejno osveži koledarje
+auto-refresh-help: Ko je omogočen, se dnevni, tedenski, mesečni in seznam neodobrenih strani samodejno občasno samodejno osvežijo.
+Auto-refresh time: Čas samodejnega osveževanja
+auto-refresh-time-help: Če je omogočena samodejna osvežitev, to določa čas med vsako osvežitvijo.
+Display days with events in bold in year view: Prikažite dneve z dogodki krepko v pogledu leta
+Display weekends in week view: Prikažite vikende v tedenskem pogledu
+Time interval: Časovni interval
+time-interval-help: Določa, kako dolgi bodo časovni bloki v pogledu tedna in dneva.
+Nonuser: Neuporabniški koledarji
+user-customize-color: Določa, ali lahko uporabniki spremenijo lastno barvno shemo.
+enable-gradient-help: Za ozadja celic uporabite prelivne barve.
+Manually entering color values: Ročno vnašanje barvnih vrednosti
+colors-help: Vse barve je treba navesti v šestnajstiški obliki zapisa "#RRGGBB", kjer je "RR" šestnajstiška vrednost za rdečo, "GG" je šestnajstiška vrednost za zeleno, "BB" pa šestnajstiška vrednost za modro.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Prijavi napako
+Please include all the information below when reporting a bug.: Pri prijavi napake vključite vse spodnje informacije.
+Also, please use English rather than XXX.: Uporabite tudi  angleščino  in ne XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Dokumentacija WebCalendar
+Currently in English only.: Trenutno samo v angleščini.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Dodajanje / urejanje vnosov v koledarju
+Repeat Type: Ponovi vrsto
+For More Information...: Za več informacij...
+Repeat End Date: Ponovite končni datum
+Repeat Day: Dan ponovitve
+repeat-day-help: Določa, v katerih dneh v tednu naj se dogodek ponovi.
+
+########################################
+# Page: help_import.php
+#
+Import: Uvozi
+Palm Desktop: =
+allow you to import entries from the Palm...: Ta obrazec vam omogoča uvoz vnosov iz Palm Desktop Datebook. Moral bi biti v vašem imeniku Palm v datebook / datebook.dat v podimeniku, imenovanem z vašim uporabniškim imenom.
+The following entries will not be imported: Naslednji vnosi ne bodo uvoženi:
+Entries older than the current date: Vnosi, starejši od trenutnega datuma
+Entries created in the Palm Desktop...: Vnosi, ustvarjeni na namizju Palm, ki niso bili HotSync'd
+Anything imported from Palm...: Vse, kar je uvoženo iz Palma, bo med naslednjim uvozom prepisano (razen če datum dogodka ni minil). Zato je treba posodobitve izvajati na namizju Palm.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Ta obrazec bo uvozil dogodke vCalendar (.vcs) 1.0.
+The following formats have been tested: Preizkušeni so bili naslednji formati:
+This form will import iCalendar (.ics) events.: Ta obrazec bo uvozil dogodke iCalendar (.ics).
+Enabling: Omogočanje
+Overwrite Prior Import: Prepiši predhodni uvoz
+will cause events imported previously...: bo povzročil, da so bili predhodno uvoženi dogodki, ki so uporabili isti UID kot dogodek iz nove uvozne datoteke, označeni kot izbrisani. To naj omogoči uvoz posodobljene datoteke iCalendar brez ustvarjanja dvojnikov.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Kazalo pomoči
+About WebCalendar: O spletnem koledarju
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Sloji so uporabni za prikaz dogodkov drugih uporabnikov v vašem koledarju. Določite lahko uporabnika in barvo, v kateri bodo prikazani dogodki.
+Add/Edit/Delete: Dodaj / uredi / izbriši
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Če kliknete povezavo Uredi sloje v skrbniškem odseku na dnu strani, boste lahko dodajali / urejali / brisali sloje.
+The text color of the new layer that will be displayed in your calendar.: Barva besedila nove plasti, ki bo prikazana v koledarju.
+Disabling: Onemogočanje
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Pritisnite povezavo Onemogoči sloje v skrbniškem odseku na dnu strani, da izklopite sloje.
+Duplicates: Dvojniki
+If checked, events that are duplicates of your events will be shown.: Če je označeno, bodo prikazani dogodki, ki so dvojniki vaših dogodkov.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Pritisnite povezavo Omogoči sloje v skrbniškem odseku na dnu strani, da vklopite sloje.
+Source: Vir
+Specifies the user that you would like to see displayed in your calendar.: Določa uporabnika, ki bi ga radi videli v vašem koledarju.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Privzeta kategorija
+default-category-help: Določa kategorijo, za katero naj bi bil privzet nov dogodek.
+When I am the boss: Ko sem šef
+Email me event notification: Pošlji mi obvestilo o dogodku po e-pošti
+email-boss-notifications-help: Določa, ali bodo šefi prejemali e-pošto kot obvestila o dogodkih.
+I want to approve events: Želim odobriti dogodke
+boss-approve-event-help: Določa, ali bo šef moral odobriti dogodke, ki jih dodajo pomočniki.
+Subscribe/Publish: Naročite se / objavite
+Allow remote publishing: Dovoli objavljanje na daljavo
+allow-remote-publishing-help: Določa, ali lahko oddaljeni odjemalec iCal objavi dogodke nazaj v WebCalendar
+remote-publishing-url-help: Prikaže URL za uporabo v odjemalski aplikaciji iCal za naročanje in objavljanje nazaj v WebCalendar.
+allow-remote-subscriptions-help: Določa, ali se lahko oddaljeni uporabniki naročijo na vaš koledar, kar jim omogoča ogled vaših dogodkov v aplikaciji, ki podpira iCal (na primer Appleov iCal ali Mozilla Calendar).
+remote-subscriptions-url-help: Prikaže URL, ki bi ga morali uporabiti oddaljeni uporabniki za naročanje na vaš koledar.
+Enable FreeBusy publishing: Omogoči objavljanje FreeBusy
+freebusy-enabled-help: Določa, ali je mogoče uporabnikov razpoložljivi čas pridobiti s standardom iCal FreeBusy.
+freebusy-url-help: URL za dostop do uporabnikovega seznama FreeBusy
+rss-feed-url-help: URL za dostop do vira RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Omogoča natančen nadzor uporabniškega dostopa in dovoljenj. Uporabniki lahko podelijo tudi privzeto in posamezno dovoljenje, če ga pooblasti skrbnik.
+If disabled, this user cannot send you emails.: Če je onemogočen, vam ta uporabnik ne more pošiljati e-pošte.
+If disabled, this user cannot see you in the participants list.: Če je onemogočen, vas ta uporabnik ne more videti na seznamu udeležencev.
+If enabled, this user cannot view the details of any of your entries.: Če je omogočen, si ta uporabnik ne more ogledati podrobnosti nobenega vnosa.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Objavljanje onemogočeno (skrbnik)
+Publishing Disabled (User): Objavljanje onemogočeno (uporabnik)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Kliknite za izbiro
+Current Icons on Server: Trenutne ikone na strežniku
+
+########################################
+# Page: import.php
+#
+import from file: uvoz iz datoteke
+Disabled: Onemogočeno
+Import format: Uvozi obliko
+Exclude private records: Izključite zasebne evidence
+Repeated items are imported separately. Prior imports are not overwritten.: Ponavljajoči se predmeti se uvažajo ločeno. Predhodni uvoz se ne prepiše.
+
+########################################
+# Page: import_handler.php
+#
+No file: Ni datoteke
+Error deleting palm events from webcalendar.: Napaka pri brisanju dogodkov dlani iz spletnega koledarja.
+Events from prior import marked as deleted: Dogodki iz predhodnega uvoza so bili označeni kot izbrisani
+Conflicting events: Nasprotujoči si dogodki
+The import file contained no data.: Uvozna datoteka ni vsebovala podatkov.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Ali ste prepričani, da želite izbrisati to plast?
+Delete layer: Izbriši plast
+Edit layer: Uredi plast
+Enable layers: Omogoči sloje
+Layer: Sloj
+Layers are currently disabled.: Plasti so trenutno onemogočene.
+Layers are currently enabled.: Plasti so trenutno omogočene.
+Click to modify layers settings for XXX: Kliknite tukaj, če želite spremeniti nastavitve slojev za koledar XXX.
+Disable Layers: Onemogoči sloje
+Add layer: Dodaj plast
+Add Layer: Dodaj sloj
+Edit Layer: Uredi sloj
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Nastavitev ni mogoče posodobiti
+Invalid entry id.: Neveljaven ID vnosa.
+You cannot create a layer for yourself.: Ne morete ustvariti sloja zase.
+You can only create one layer for each user.: Za vsakega uporabnika lahko ustvarite samo en sloj.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Odobri / potrdi
+Approve Selected: Odobri izbrano
+Check All: Preveri vse
+Emails Will Not Be Sent: E-poštna sporočila ne bodo poslana
+Reject Selected: Zavrni izbrano
+Reject: Zavrni
+Uncheck All: Počistite vse
+View this entry: Oglejte si ta vnos
+No unapproved entries for XXX.: Ni neodobrenih vnosov za: "XXX".
+Unapproved Entries: Neodobreni vnosi
+Approve this entry?: Ali želite odobriti ta vnos?
+Reject this entry?: Želite zavrniti ta vnos?
+Approve Selected entries?: Ali želite odobriti izbrane vnose?
+Reject Selected entries?: Zavrniti izbrane vnose?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Vnesti morate uporabniško ime in geslo.
+Save login via cookies so I dont have to login next time.: Shranite prijavo s piškotki, da se mi naslednjič ne bo treba prijaviti
+Login: Vpiši se
+public: javnosti
+Access XXX calendar: Dostop do koledarja XXX
+cookies-note: Opomba: Ta aplikacija zahteva, da so piškotki omogočeni.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Nezakoniti znaki v prijavi XXX.
+Invalid login: Neveljaven vpis
+Activity login failure: Uporabniško ime: "XXX", IP: "LLL".
+Error XXX: Napaka: "XXX".
+You have been logged out.: Odjavljeni ste bili.
+Access public calendar: Dostop do javnega koledarja
+Not yet registered? Register here!: Še niste registrirani? Registrirajte se tukaj!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Nobenega neuporabljenega koledarja ni: "XXX".
+This Calendar is not Public.: Ta koledar ni javen.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Dodaj nov koledar za uporabnike
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Navesti je treba prijavo.
+No such nonuser calendar: Nobenega takega neuporabljenega koledarja ni
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Neveljavna tema
+Save Preferences: Shrani nastavitve
+Public Access calendar: Koledar za javni dostop
+Modify Non User Calendar Preferences: Spreminjanje nastavitev koledarja, ki ni uporabniški
+Return to My Preferences: Vrnite se na Moje nastavitve
+Custom Scripts: Skripti po meri
+Timezone Selection: Izbira časovnega pasu
+Multiview: =
+entry-interval-help: Nastavi minutni interval med urejanjem vnosnih časov
+Entry interval: Vstopni interval
+hour: uro
+minute: minuta
+theme-reload-help: Zaradi predpomnjenja CSS bo morda potrebno ponovno nalaganje strani
+Page may need to be reloaded for new Theme to take effect: Za začetek veljavnosti nove teme bo morda treba stran znova naložiti
+display_byproxy-help: Prikaz pravega ustvarjalca na strani view_entry
+Display if created by Assistant: Prikaži, če ga je ustvaril Pomočnik
+allow-view-subscriptions-help: Omogoča omejevanje oddaljenega dostopa do zasebnih ali zaupnih vnosov
+Allow remote viewing of: Omogoči oddaljeni ogled
+entries: vnosi
+
+########################################
+# Page: purge.php
+#
+Purging events for: Čiščenje dogodkov za
+Finished: Dokončano
+Back: Nazaj
+Check box to delete ALL events for a user: Potrditveno polje za brisanje  VSEH  dogodkov za uporabnika
+Delete all events before: Izbriši vse dogodke prej
+Purge deleted only: Čiščenje samo izbrisano
+Preview delete: Izbriši predogled
+Are you sure you want to delete events for: Ali ste prepričani, da želite izbrisati dogodke za
+Records deleted from XXX: Zapisi izbrisani iz »XXX«.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: E-poštni naslov ne sme biti prazen.
+Username already exists.: Uporabniško ime že obstaja.
+Email address already exists.: E-poštni naslov že obstaja.
+New user via self-registration.: Novi uporabnik s samoregistracijo.
+A new WebCalendar account has been set up for you.: Za vas je bil vzpostavljen nov račun WebCalendar.
+Your username is XXX.: Vaše uporabniško ime je: "XXX".
+Your password is XXX.: Vaše geslo je: "XXX".
+Please visit XXX to log in and start using your account!: Obiščite "XXX", da se prijavite in začnete uporabljati svoj račun!
+You may change your password after logging in the first time.: Geslo lahko spremenite po prvi prijavi.
+If you received this email in error: Če ste to e-poštno sporočilo prejeli pomotoma in se niste prijavili za račun WebCalendar, lahko tega obvestila prezrete ali odgovorite s kratko opombo
+Administrator: Skrbnik
+Welcome: Dobrodošli
+New user via email.: Novi uporabnik po e-pošti.
+Registration: Registracija
+Welcome to WebCalendar: Dobrodošli v WebCalendar
+Your email should arrive shortly.: Vaše e-poštno sporočilo naj bi prispelo kmalu.
+Return to Login screen: Vrnite se na zaslon za prijavo
+Password (again): Geslo, še enkrat):
+Your account information will be emailed to you.: Podatki o vašem računu vam bodo poslani po elektronski pošti.
+Submit: Pošlji
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Nadaljujte
+(Your comments will be emailed to the other participants.): (Vaši komentarji bodo poslani ostalim udeležencem.)
+XXX has rejected an appointment.: XXX je zavrnil sestanek.
+Rejected by XXX.: XXX zavrnil.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Dodaj nov oddaljeni koledar
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Ta dogodek je zaupen.
+(Private): (Zasebno)
+(cont.): (nadaljevanje)
+Approved: Odobreno
+Deleted: Izbrisano
+Rejected: Zavrnjeno
+Waiting for approval: Čakam na odobritev
+Unknown: Neznano
+Invalid report id.: Neveljaven ID poročila.
+Click here to manage reports for the Public Access calendar.: Kliknite tukaj za upravljanje poročil za koledar javnega dostopa.
+Add new report: Dodaj novo poročilo
+Manage Reports: Upravljanje poročil
+
+########################################
+# Page: search.php
+#
+Advanced Search: napredno iskanje
+Search: Iskanje
+Keywords: Ključne besede
+Enter % for all entries: Vnesite% za vse vnose
+Include: Vključi
+Filter by Date: Filtriraj po datumu
+All Dates: Vsi datumi
+Past: Preteklo
+Upcoming: Prihajajoče
+Range: Doseg
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Vnesti morate eno ali več iskalnih ključnih besed.
+Search Results: Rezultati iskanja
+match found: najdeno ujemanje
+matches found: najdenih zadetkov
+No matches found: Ni zadetkov
+New Search: Novo iskanje
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Spodnje informacije navajajo morebitne težave z namestitvijo WebCalendar, ki bi jih lahko spremenili, da bi bila vaša namestitev varnejša.
+For questions about WebCalendar security see the forums: Za vprašanja o kateri koli varnostni težavi WebCalendar, prosimo, uporabite forume WebCalendar, ki gostujejo na GitHub.com;<br>XXX
+View your current PHP settings: Oglejte si trenutne nastavitve PHP
+Security Issue: Vprašanje varnosti
+Status: Stanje
+Default admin user password: Privzeto geslo skrbniškega uporabnika
+You should change the password of the default admin user.: Spremeniti morate geslo privzetega skrbniškega uporabnika.
+File permissions XXX: Dovoljenja za datoteke: XXX
+item XXX should not be writable: Naslednji element ne sme biti zapisljiv:<br><tt> XXX</tt>
+File exists XXX: Datoteka obstaja: "XXX"
+Because you have email disabled, you should remove this file.: Ker je e-pošta onemogočena, morate to datoteko odstraniti.
+File location XXX: Lokacija datoteke: "XXX"
+remove XXX if not using: Če ne uporabljate datoteke "XXX", jo morate izbrisati. Ali pa ga vsaj premaknite v nov imenik.
+System Settings XXX: Sistemske nastavitve: "XXX"
+consider enabling UAC: Morda boste želeli razmisliti o omogočanju nadzora dostopa uporabnika za nastavitev uporabniških pravic.
+recommend approving new public events: Priporočamo, da se odobrijo vse prijave za javne prireditve.
+recommend using CAPTCHA: CAPTCHA je priporočljiva za zaščito pred samodejnimi oddajami dogodkov.
+Database cache directory location: Lokacija imenika predpomnilnika zbirke podatkov
+db cache should be inaccessable: Predpomnilnik baze podatkov mora biti v imeniku, do katerega ni mogoče dostopati z URL-jem.
+PHP Settings XXX: Nastavitve PHP: "XXX"
+recommend setting XXX Off: Priporočena nastavitev za "XXX" je izključena.
+recommend setting allow_url_fopen Off: Priporočena nastavitev za »allow_url_fopen« je izključena, če oddaljeni koledarji niso omogočeni.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Oglejte si koledar drugega uporabnika
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Niste dodali nobene kategorije.
+Set Category: Nastavi kategorijo
+Global Categories cannot be changed.: Globalnih kategorij ni mogoče spremeniti.
+
+########################################
+# Page: upcoming.php
+#
+more: več
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Koledarji na daljavo
+denotes administrative user: označuje skrbniškega uporabnika
+Add New User: Dodaj novega uporabnika
+
+########################################
+# Page: usersel.php
+#
+form: oblika
+Reset: Ponastaviti
+
+########################################
+# Page: views.php
+#
+Add New View: Dodaj nov pogled
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Pogled brez imena
+Add View: Dodaj pogled
+Edit View: Uredi pogled
+View Name: Pogled imena
+View Type: Vrsta pogleda
+Day by Time: Iz dneva v čas
+Week (Users horizontal): Teden (vodoravni uporabniki)
+Week by Time: Teden po čas
+Week (Users vertical): Teden (navpični uporabniki)
+Week (Timebar): Teden (časovna vrstica)
+Month (Timebar): Mesec (časovna vrstica)
+Month (side by side): Mesec (drug ob drugem)
+Month (on same calendar): Mesec (v istem koledarju)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Navesti morate ime pogleda
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Za ta pogled ni uporabnikov.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Posodobi odstotek naloge
+Completed: Dokončano
+Assistant mode: Pomočniški način
+Declined: Zavrnjeno
+Needs-Action: Potrebe po akciji
+by: avtor
+Percentage Complete: Odstotek dokončan
+External User: Zunanji uporabnik
+Update: Nadgradnja
+at: ob
+comments: komentarji
+Show: Pokaži
+Hide: Skrij
+Approve/Confirm entry: Odobritev / potrditev vnosa
+Reject entry: Zavrni vnos
+Set category: Nastavi kategorijo
+Add to My Calendar: Dodaj v moj koledar
+Copy entry: Kopiraj vnos
+This will delete this entry for all users.: S tem boste izbrisali ta vnos za vse uporabnike.
+Edit entry: Uredi vnos
+Edit repeating entry for all dates: Uredite ponavljajoči se vnos za vse datume
+Delete repeating event for all dates: Izbriši ponavljajoči se dogodek za vse datume
+Edit entry for this date: Uredite vnos za ta datum
+Delete entry only for this date: Izbriši vnos samo za ta datum
+Delete entry from calendar of XXX: Izbriši vnos iz koledarja XXX
+This will delete the entry from your XXX calendar.: S tem boste izbrisali vnos iz koledarja XXX.
+boss: šef
+This will delete the entry from your boss calendar.: S tem boste izbrisali vnos iz koledarja šefa.
+This will delete the entry from your calendar.: S tem boste vnos izbrisali iz koledarja.
+from your boss calendar: iz koledarja šefa
+Do you want to add this entry to your calendar?: Ali želite dodati ta vnos v svoj koledar?
+This will add the entry to your calendar.: To bo dodalo vnos v vaš koledar.
+Email all participants: Pošljite e-pošto vsem udeležencem
+Hide activity log: Skrij dnevnik dejavnosti
+Show activity log: Pokaži dnevnik dejavnosti
+Export this entry to: Izvoz tega vnosa v
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Dvokliknite prazno celico, da dodate nov vnos.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Nov vnos
+cont.: nadaljevanje
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Koledar drugega uporabnika
+Category Management: Upravljanje kategorij
+Day View: Dnevni pogled
+Edit Event: Uredi dogodek
+Month View: Mesečni pogled
+Common Trailer: Skupna prikolica
+User Management: Upravljanje uporabnikov
+Manage Views: Upravljanje pogledov
+Week View: Tedenski pogled
+Year View: Pogled leta
+Invalid function id: Neveljaven ID funkcije
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Datoteke "settings.php" ni bilo mogoče najti.<br>Kopirajte "settings.php.orig" v "settings.php" in jo uredite za svoje spletno mesto.
+Incomplete settings.php file...: Nepopolna datoteka "settings.php" ...
+Could not find XXX defined in...: V datoteki »settings.php« ni bilo mogoče najti »XXX«.
+You must define XXX in: V datoteki "settings.php" morate določiti "XXX".
 
 ########################################
 # Page: includes/date_formats.php
 #
 December: =
 Dec: =
+LANGUAGE DEFINED: DOLOČEN JEZIK
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Napaka pri povezovanju z bazo podatkov: "XXX".
+db_type not defined.: db_type ni definiran.
+invalid db_type XXX: neveljaven db_type "" XXX ".
+Cache cleared from previous SQL!: Predpomnilnik je izbrisan iz prejšnjega SQL-a!
+Error executing query.: Napaka pri izvajanju poizvedbe.
+Unfortunately, XXX is not implemented for YYY: Žal »XXX« ni izveden za (LLL).
+Unknown ODBC error.: Neznana napaka ODBC.
+Error opening cache dir XXX.: Napaka pri odpiranju direktorija predpomnilnika "XXX".
+delete: izbriši
+Cache error Could not XXX file YYY.: Napaka predpomnilnika: XXX datoteke "LLL" ni bilo mogoče.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Usodna napaka
+Invalid data format for: Neveljavna oblika podatkov za
 
 ########################################
 # Page: includes/functions.php
 #
-WK: Te
-January: Januar
-February: Februar
+Error Type not set for activity log!: Napaka: vrsta ni nastavljena za dnevnik dejavnosti!
+This event is XXX.: Ta dogodek je XXX.
+Conf.: =
+exceeds limit of XXX events per day: presega omejitev XXX dogodkov na dan
+on: na
+All Attendees: Vsi udeleženci
+Busy: Zaseden
+Tentative: Okvirno
+Schedule an appointment for XXX.: Načrtujte sestanek za XXX: LLL.
+date_select: __dd__ __mesec__ __llll__
+Event approved: Dogodek odobren
+Journal approved: Časopis odobren
+Task approved: Naloga odobrena
+Attachment: Priponka
+Event created: Dogodek ustvarjen
+Journal created: Časopis ustvarjen
+Task created: Naloga je ustvarjena
+Event deleted: Dogodek izbrisan
+Journal deleted: Časopis izbrisan
+Task deleted: Naloga je izbrisana
+New user via email (self registration): Novi uporabnik po e-pošti (samoregistracija)
+New user (self registration): Nov uporabnik (samoregistracija)
+Notification sent: Obvestilo poslano
+Event rejected: Dogodek zavrnjen
+Journal rejected: Časopis zavrnjen
+Task rejected: Naloga zavrnjena
+Reminder sent: Opomnik je poslan
+Event updated: Dogodek posodobljen
+Journal updated: Časopis posodobljen
+Task updated: Naloga je posodobljena
+Delete User: Izbriši uporabnika
+WK: =
+TASKS: NALOGE
+Task_Title: Naslov
+Due: Zaradi
+Task Name: Ime naloge
+Task Due Date: Datum zapadlosti naloge
+You have XXX unapproved entries: Imate XXX neodobrenih vnosov
+Changes successfully saved: Spremembe so bile uspešno shranjene
+Event: Dogodek
+Action: Ukrepanje
+Printer Friendly: Tiskalniku prijazno
+Generate printer-friendly version: Ustvari tiskalniku prijazno različico
+after: po
+before: prej
+end: konec
+start: začetek
+View this event: Oglejte si ta dogodek
+View this task: Oglejte si to nalogo
+January: Januarja
+February: Februarja
 March: Marec
 April: =
 May_: Maj
@@ -85,16 +1463,41 @@ September: =
 October: Oktober
 November: =
 Jan: =
-Feb: =
+Feb: Februar
 Mar: =
 Apr: =
 May: Maj
-Jun: =
+Jun: Junij
 Jul: =
 Aug: Avg
-Sep: =
+Sep: September
 Oct: Okt
 Nov: =
+SU: =
+MO: =
+TU: =
+WE: MI
+TH: =
+FR: =
+SA: =
+unknown-month: neznan-mesec
+First Quarter Moon: Luna iz prve četrtine
+Full Moon: Polna luna
+Last Quarter Moon: Luna v zadnji četrtini
+New Moon: Nova Luna
+Error TIME_SLOTS undefined!: Napaka: TIME_SLOTS nedefinirano!
+The following error occurred: Prišlo je do naslednje napake
+You are not authorized.: Niste pooblaščeni.
+Add N hours to: Dodajte N ur
+Subtract N hours from: Odštejte N ur
+same as: enako kot
+server time: čas strežnika
+Cannot read timezone file XXX.: Datoteke s časovnim pasom ni mogoče prebrati: XXX.
+Your current GMT offset is XXX hours.: Vaš trenutni odmik po GMT je XXX ur.
+Unauthorized: Nepooblaščeno
+Error approving event XXX.: Napaka pri odobritvi dogodka: XXX.
+Error deleting event XXX.: Napaka pri brisanju dogodka: XXX.
+Error rejecting event XXX.: Napaka pri zavrnitvi dogodka: XXX.
 Sunday: Nedelja
 Monday: Ponedeljek
 Tuesday: Torek
@@ -102,10 +1505,883 @@ Wednesday: Sreda
 Thursday: Četrtek
 Friday: Petek
 Saturday: Sobota
-Sun: Ned
+Sun: Sonce
 Mon: Pon
-Tue: Tor
+Tue: Torek
 Wed: Sre
 Thu: Čet
 Fri: Pet
-Sat: Sob
+Sat: Sobota
+unknown-weekday: neznan-delovni dan
+Invalid referring URL: Neveljaven referenčni URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Kazalo
+Documentation: Dokumentacija
+Page: Stran
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Moj koledar
+Add New Entry: Dodaj nov vnos
+Add New Task: Dodaj novo opravilo
+Logout: Odjava
+Home: Domov
+Back to My Calendar: Nazaj na moj koledar
+Go to: Pojdi do
+Manage calendar of: Upravljanje koledarja za
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Jezika brskalnika ni mogoče najti
+(not supported): (ne podpira)
+Abkhazian: Abhaški
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Od daleč
+Afrihili: =
+Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: Akadski
+Albanian: Albanski
+Aleut: =
+Algonquian: =
+Altai (Southern): Altaj (južni)
+Amharic: Amharščina
+Angika: =
+Apache: Apač
+Arabic (Algeria): Arabščina (Alžirija)
+Arabic (Bahrain): Arabščina (Bahrajn)
+Arabic (Egypt): Arabščina (Egipt)
+Arabic (Iraq): Arabščina (Irak)
+Arabic (Jordan): Arabščina (Jordanija)
+Arabic (Kuwait): Arabščina (kuvajt)
+Arabic (Lebanon): Arabščina (Libanon)
+Arabic (Libya): Arabščina (Libija)
+Arabic (Morocco): Arabščina (Maroko)
+Arabic (Oman): Arabščina (oman)
+Arabic (Qatar): Arabščina (Katar)
+Arabic (Saudi Arabia): Arabščina (Saudova Arabija)
+Arabic (Syria): Arabščina (Sirija)
+Arabic (Tunisia): Arabščina (Tunizija)
+Arabic (U.A.E.): Arabščina (Združene države Amerike)
+Arabic (Yemen): Arabščina (Jemen)
+Arabic: arabsko
+Aragonese: Aragonski
+Aramaic: Aramejsko
+Arapaho: =
+Arawak: =
+Armenian: Armensko
+Assamese: Asamski
+Asturian: Asturijski
+Athapascan: =
+Avaric: Avarski
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerbajdžanski
+Balinese: Balijsko
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Baškir
+Basque: Baskovščina
+Beja: =
+Belarusian: Beloruski
+Bemba: =
+Bengali: Bengalščina
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: blaženost
+Bosnian: Bosanski
+Braj: =
+Breton: Bretonski
+Buginese: Bugijski
+Bulgarian: Bolgarščina
+Buriat: =
+Burmese: Birmanci
+Caddo: =
+Catalan: Katalonski
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Čečenski
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Kitajščina (Hong Kong)
+Chinese (PRC): Kitajščina (LRK)
+Chinese (Simplified/GB2312): Kitajščina (poenostavljena / GB2312) 
+Chinese (Singapore): Kitajščina (Singapur)
+Chinese (Taiwan): Kitajščina (Tajvan)
+Chinese (Traditional/Big5): Kitajščina (tradicionalna / velika5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: Čuvaš
+Coptic: Koptski
+Cornish: =
+Corsican: Korziška
+Cree: =
+Creek: potok
+Croatian: Hrvaški
+Czech: Češko
+Dakota: =
+Danish: Danski
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Nizozemščina (Belgija)
+Dutch: Nizozemsko
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Angleščina (Avstralija)
+English (Belize): Angleščina (Belize)
+English (Canada): Angleščina (Kanada)
+English (Ireland): Angleščina (Irska)
+English (Jamaica): Angleščina (Jamajka)
+English (New Zealand): Angleščina (Nova Zelandija)
+English (Philippines): Angleščina (Filipini)
+English (South Africa): Angleščina (Južna Afrika)
+English (Trinidad & Tobago): Angleščina (Trinidad in Tobago)
+English (United Kingdom): Angleščina (Združeno kraljestvo)
+English (United States): Angleščina (ZDA)
+English (Zimbabwe): Angleščina (Zimbabve)
+English: Angleško-ameriški
+Erzya: =
+Esperanto: =
+Estonian: Estonski
+Ewe: Ovca
+Ewondo: =
+Fang: Očnjak
+Fanti: =
+Faroese: Ferski
+Fijian: Fidžijski
+Filipino: =
+Finnish: Finski
+Fon: =
+French (Belgium): Francoščina (Belgija)
+French (Canada): Francoščina (Kanada)
+French (France): Francoščina (Francija)
+French (Luxembourg): Francoščina (luksemburg)
+French (Monaco): Francoščina (Monako)
+French (Switzerland): Francoščina (Švica)
+French: Francosko
+Frisian (Eastern): Frizijska (vzhodna)
+Frisian (Northern): Frizijska (severna)
+Frisian (Western): Frizijska (zahodna)
+Frisian: Frizijsko
+Friulian: Furlanščina
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galicijsko
+Ganda: =
+Gayo: =
+Gbaya: Gbaja
+Geez: Joj
+Georgian: Gruzijski
+German (Austria): Nemščina (Avstrija)
+German (Germany): Nemščina (Nemčija)
+German (Liechtenstein): Nemščina (Lihtenštajn)
+German (Luxembourg): Nemščina (luksemburg)
+German (Standard): Nemščina (standardno)
+German (Switzerland): Nemščina (Švica)
+German: Nemško
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotsko
+Grebo: =
+Greek: Grški
+Greenlandic: Grenlandski
+Guarani: =
+Gujarati: Gudžaratski
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitijski (kreolski)
+Haitian: Haitijski
+Hausa: =
+Hawaiian: Havajski
+Hebrew: Hebrejščina
+Herero: =
+Hiligaynon: =
+Hindi: Hindujščina
+Hiri Motu: =
+Hittite: Hetit
+Hmong: =
+Holo (Taiwanese): Holo (tajvanski)
+Hungarian: Madžarsko
+Hupa: =
+Iban: =
+Icelandic: Islandski
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Indonezijski
+Ingush: Inguška
+Inuktitut: =
+Inupiaq: =
+Iranian: Iranski
+Irish (Gaelic): Irski (galski)
+Irish: Irski
+Iroquoian: Irokejski
+Italian (Switzerland): Italijanščina (Švica)
+Italian: Italijansko
+Japanese: Japonski
+Javanese: Javanski
+Judeo-Arabic: Judeo-arabščina
+Judeo-Persian: Judeo-perzijsko
+Kabardian: Kabardijski
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: Karelski
+Kashmiri: Kašmirski
+Kashubian: Kašubski
+Kawi: =
+Kazakh: Kazahstanski
+Khasi: =
+Khmer (Central): Kmerska (osrednja)
+Khmer: Kmerski
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: Kirgiz
+Klingon: Klingonski
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Korejski (Johab)
+Korean (North): Korejski (severni)
+Korean (South): Korejska (južna)
+Korean: Korejski
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurdsko
+Kutenai: =
+Kyrgyz: Kirgiški
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Latinsko
+Latvian: Latvijski
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Litovsko
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luksemburški
+Macedonian: Makedonski
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malgaški
+Malay: Malajski
+Malayalam: Malajalam
+Maldivian: Maldivijski
+Maltese: Malteščina
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: Maratščina
+Mari: =
+Marshallese: Maršalec
+Marwari: =
+Masai: Masaji
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldavski
+Mongo: =
+Mongolian: Mongolski
+Montenegrin: Črnogorski
+Moroccan: Maroški
+Mossi: =
+Myanmar: Mjanmar
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (sever)
+Ndebele (South): Ndebele (jug)
+Ndebele: =
+Ndonga: =
+Neapolitan: Neapeljski
+Nepali: Nepalsko
+Nias: =
+Niuean: Niuejski
+Nogai: =
+Norse: Nordijski
+Norwegian (Bokmål): Norveščina (bokmal)
+Norwegian (Nynorsk): Norveščina (nynorsk)
+Norwegian: Norveški
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Okcitanski
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Osetski
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Paštu
+Pedi: =
+Persian (Farsi): Perzijščina (farsi)
+Persian (Iran): Perzijščina (Iran)
+Persian: Perzijsko
+Phoenician: Feničanski
+Pohnpeian: =
+Polish: Poljski
+Portuguese: Portugalščina
+Portuguese/Brazil: Portugalščina / Brazilija
+Punjabi (India): Pandžabi (Indija)
+Punjabi (Pakistan): Pandžabi (Pakistan)
+Punjabi: Pandžabski
+Quechua: Kečua
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Retoromanski
+Romanian: Romunski
+Romansh: Retoromanščina
+Romany: Romi
+Rundi: =
+Russian (Moldavia: Ruščina (Moldavija
+Russian (Republic of Moldova): Ruščina (Republika Moldavija)
+Russian: Rusko
+Sami (Inari): =
+Sami (Lappish): Sami (laponsko)
+Sami (Lule): =
+Sami (Northern): Saami (severna)
+Sami (Skolt): Samščina (skolt)
+Sami (Southern): Samski (južni)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanskrt
+Santali: =
+Sardinian: Sardinski
+Sasak: =
+Scots (Gaelic): Škotska (galska)
+Selkup: =
+Serbian (Upper): Srbščina (zgornja)
+Serbian: Srbsko
+Serer: =
+Sesotho: Sezoto
+Shan: =
+Shona: Šona
+Sichuan Yi: Sečuan Yi
+Sicilian: Sicilijanski
+Sindhi: =
+Sinhala: =
+Slavic: Slovanski
+Slovak: Slovaški
+Slovenian: Slovenščina
+Sogdian: =
+Somali: Somalijski
+Somani: Somanski
+Songhai: =
+Soninke: =
+Sorbian (Lower): Lužiščinščina (spodnja)
+Sorbian (Upper): Lužiško (zgornja)
+Sorbian: Lužiški jezik
+Sotho: =
+Spanish (Argentina): Španščina (Argentina)
+Spanish (Bolivia): Španščina (Bolivija)
+Spanish (Chile): Španščina (Čile)
+Spanish (Colombia): Španščina (Kolumbija)
+Spanish (Costa Rica): Španščina (Kostarika)
+Spanish (Dominican Republic): Španščina (Dominikanska republika)
+Spanish (Ecuador): Španščina (Ekvador)
+Spanish (El Salvador): Španščina (El Salvador)
+Spanish (Guatemala): Španščina (Gvatemala)
+Spanish (Honduras): Španščina (Honduras)
+Spanish (Mexico): Španščina (Mehika)
+Spanish (Nicaragua): Španščina (Nikaragva)
+Spanish (Panama): Španščina (Panama)
+Spanish (Paraguay): Španščina (paragvaj)
+Spanish (Peru): Španščina (Peru)
+Spanish (Puerto Rico): Španščina (Portoriko)
+Spanish (Spain): Španščina (Španija)
+Spanish (Uruguay): Španščina (urugvaj)
+Spanish (Venezuela): Španščina (Venezuela)
+Spanish: španski
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumersko
+Sundanese: Sundanec
+Susu: =
+Sutu: =
+Swahili: Svahili
+Swati: =
+Swedish (Finland): Švedščina (Finska)
+Swedish (Sweden): Švedščina (Švedska)
+Swedish: Švedsko
+Syriac: Sirsko
+Tagalog: =
+Tahitian: Tahitijski
+Tai: =
+Taiwan: Tajvan
+Tajik: Tadžikistansko
+Tamashek: Tamašek
+Tamil: Tamilsko
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Tajski
+Tibetan: Tibetanski
+Tigre: =
+Tigrinya: Tigrinja
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (otoki Tonga)
+Tonga: =
+Tsimshian: Cimshian
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turški
+Turkmen: =
+Tuvinian: Tuvinski
+Twi: =
+Udmurt: =
+Ugaritic: Ugaritsko
+Ukrainian: Ukrajinski
+Umbundu: =
+Urdu: =
+Uyghur: Ujgurski
+Uzbek: Uzbekistansko
+Vai: =
+Venda: =
+Vietnamese: Vietnamski
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: Valonski
+Waray: =
+Washo: =
+Welsh: Valižanščina
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: Jakutski
+Yao: Jao
+Yapese: =
+Yiddish: Jidiš
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Določen v brskalniku
+event: dogodek
+journal: revija
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Neveljavna prijava uporabnika
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: napačno geslo
+no such user: ni takega uporabnika
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Račun onemogočen
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: =
+Months: Meseci
+Month Days: Mesečni dnevi
+Days: Dnevi
+Weeks: Tedni
+Position: Položaj
+Until: Do takrat
+Count: Štetje
+Inclusion Dates: Datumi vključitve
+Exclusion Dates: Datumi izključitve
+Event Imported: Dogodek je uvožen
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: bajtov
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Obvestilo
+authenticate: Napaka SMTP: avtentičnosti ni bilo mogoče preveriti
+connect_host: Napaka SMTP: Ni se bilo mogoče povezati z gostiteljem SMTP:
+data_not_accepted: Napaka SMTP: Podatki niso sprejeti
+encoding: Neznano kodiranje:
+execute: Ni bilo mogoče izvesti:
+file_access: Do datoteke ni bilo mogoče dostopati:
+file_open: Napaka datoteke. Datoteke ni bilo mogoče odpreti:
+from_failed: Naslednji naslov z naslova ni uspel:
+instantiate: Funkcije pošte ni bilo mogoče ustvariti
+mailer_not_supported: mailer ni podprt
+provide_address: Navesti morate vsaj en e-poštni naslov prejemnika.
+recipients_failed: Napaka SMTP: Naslednji prejemniki niso uspeli:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Vnesite znake, ki jih vidite na sliki
+Enter the correct letters and numbers...: V besedilno polje vnesite pravilne črke in številke s slike. Ta majhen test služi kot omejitev dostopa zlonamernim robotom. Preprosto znova naložite stran, če je ta grafika pretežka za branje
+Challenge/Response: Izziv / odziv
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Ali želite spremeniti datum in čas tega vnosa?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Niste vnesli kratkega opisa
+time prior to work hours...: čas pred delovnim časom ...
+Invalid Event Date: Neveljaven datum dogodka
+Please add a participant: Dodajte udeleženca
+Invalid Date: Neveljaven datum
+You have not entered a valid time of day: Niste vnesli veljavnega dnevnega časa.
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Polje ID koledarja ne sme biti prazno.
+First and last names cannot both be blank.: Imena in priimka ne smeta biti prazna.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Neveljavna barva
+Color format should be RRGGBB.: Barvna oblika mora biti #RRGGBB.
+URL cannot be blank.: URL ne sme biti prazen.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Vrsta datoteke se ne ujema z obliko uvoza
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Neveljavna barva za ozadje dokumenta.
+Invalid color for document title.: Neveljavna barva naslova dokumenta.
+Invalid color for table cell background.: Neveljavna barva za ozadje celice tabele.
+Invalid color for table cell background for today.: Neveljavna barva ozadja celice tabele za danes.
+Invalid work hours.: Neveljaven delovni čas.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL strežnika se mora končati s poševnico (/).
+Invalid color for table grid.: Neveljavna barva mreže tabele.
+Invalid color for event popup background.: Neveljavna barva za pojavno ozadje dogodka.
+Invalid color for event popup text.: Neveljavna barva pojavnega besedila dogodka.
+Invalid color for table header text.: Neveljavna barva besedila v glavi tabele.
+Invalid color for table header background.: Neveljavna barva ozadja glave tabele.
+Server URL is required.: Zahtevan je URL strežnika.
+Invalid Color: Neveljavna barva
+Database Name: Ime baze podatkov
+Full Path (no backslashes): Celotna pot (brez poševnic nazaj)
+The password contains illegal characters.: Geslo vsebuje nedovoljene znake.
+Error you must specify a Single-User Login: Napaka. Navesti morate prijavo za enega uporabnika
+Could not find XXX.: XXX ni bilo mogoče najti.
+Could not find XXX in DOM.: V DOM-u ni bilo mogoče najti XXX.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Ta teden
+This Month: Ta mesec
+This Year: To leto
+Exit: Izhod
+Add New Event: Dodaj nov dogodek
+Delete Entries: Izbriši vnose
+My Views: Moji pogledi
+Manage Calendar of: Upravljanje koledarja za
+My Reports: Moja poročila
+My Profile: Moj profil
+Public Calendar: Javni koledar
+Unapproved Events: Neodobreni dogodki
+User Manager: Upravitelj uporabnikov
+Help Contents: Vsebina pomoči
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Imenik predpomnilnika zbirke podatkov
+Create New: Ustvari novo
+Failure Reason: Razlog neuspeha:
+You must manually create database: Bazo podatkov morate ustvariti ročno.
+Single-User: En uporabnik
+Test Settings: Preizkusne nastavitve
+Timezone Conversion Successful: Pretvorba časovnega pasu uspešna
+WebCalendar Installation Wizard Step XXX: Čarovnik za namestitev WebCalendar, korak XXX
+Password Accepted: Geslo sprejeto
+Successful Login: Uspešna prijava
+Password Incorrect: Napačno geslo
+Invalid Login: Neveljaven vpis
+Display Errors: Prikaz napak
+File Uploads: Nalaganje datotek
+Allow URL fopen: Dovoli odpiranje URL-jev (obvezno le, če se uporabljajo oddaljeni koledarji)
+Safe Mode: Varni način
+Safe Mode Allowed Vars: Varni način dovoljeni Vars (TZ obvezen samo, če je varni način vklopljen)
+GD: GD (potreben za ozadja slike Gradient)
+Passwords do not match!: Geslo se ne ujema!
+Unable to write password to settings.php file: V datoteko "settings.php" ni mogoče zapisati gesla.
+Password Updated: Geslo posodobljeno
+Password has been set: Geslo je nastavljeno.
+Connection Successful...: Povezava uspešna  Za nadaljevanje namestitve pojdite na naslednjo stran.
+Correct your entries or click the Create New...: Popravite svoje vnose ali kliknite gumb  Ustvari novo , če želite nadaljevati z namestitvijo.
+Correct your entries and try again.: Popravite svoje vnose in poskusite znova.
+XXX does not exist: XXX ne obstaja
+XXX is not writable: XXX ni mogoče zapisati
+Error Converting Timezone: Napaka pri pretvorbi časovnega pasu
+Error Unable to write to file XXX.: Napaka Ne morem zapisati v datoteko XXX.
+Please change the file permissions of this file.: Spremenite dovoljenja za datoteko.
+Please change includes dir permission: Spremenite dovoljenja za datoteke v imeniku "vključuje", da bodo drugi uporabniki lahko pisali.
+Your settings have been saved.: Vaše nastavitve so shranjene.
+OFF: IZKLOPLJENO
+ON: VKLOPLJENO
+WebCalendar Setup Wizard: Čarovnik za nastavitev WebCalendar
+This installation wizard will guide you...: Ta čarovnik za namestitev vas bo vodil skozi nastavitev osnovne namestitve WebCalendar.<br>Za pomoč in odpravljanje težav glejte:<br>
+System Administrators Guide: Vodnik sistemskega skrbnika
+Frequently Asked Questions: Pogosto zastavljena vprašanja
+FAQ: Pogosta vprašanja
+Troubleshooting: Odpravljanje težav
+Getting Help: Pridobivanje pomoči
+Upgrading Guide: Vodnik za nadgradnjo
+User Supported Wiki: Uporabnik podpira Wiki
+PHP Version Check: Preverjanje različice PHP
+Check to see if PHP 7.1.0 or greater is installed.: Preverite, ali je nameščen PHP 7.1.0 ali novejši.
+PHP version: Različica PHP
+PHP Settings: Nastavitve PHP
+Detailed PHP Info: Podrobne informacije o PHP
+settings.php Status: Stanje "settings.php"
+Session Check: Preverjanje seje
+To test the proper operation of sessions...: Če želite preizkusiti pravilno delovanje sej, znova naložite to stran. Vsakokrat bi morali videti, kako se števec sej poveča.
+SESSION COUNTER: ŠTETNIK SEJE
+The file permissions of settings.php are set...: Dovoljenja za datoteke »settings.php« so nastavljena tako, da namestitveni program nima dovoljenja za njegovo spreminjanje. Če želite nadaljevati, spremenite dovoljenja za datoteko naslednje datoteke
+The file permissions of the includes directory are set...: Dovoljenja za datoteke imenika vključuje so nastavljena tako, da namestitveni program nima dovoljenja za ustvarjanje nove datoteke. Če želite nadaljevati, spremenite dovoljenja naslednjega imenika
+Your settings.php file appears to be valid.: Vaša datoteka "settings.php" je videti veljavna.
+Configuration Wizard Password: Geslo čarovnika za konfiguracijo
+Create Settings File Password: Ustvari geslo za nastavitvene datoteke
+db setup directions...: V tem razdelku boste nastavili in preizkusili povezavo s strežnikom baz podatkov. Dostavljeni podatki o računu bi morali imeti FULL dovoljenja za ustvarjanje baz podatkov, tabel in uporabnikov. Če to ni mogoče ali je dostop do vaše baze podatkov omejen, boste morali ročno konfigurirati svojo bazo podatkov.
+Database Status: Stanje zbirke podatkov
+Supported databases for your PHP installation: Podprte zbirke podatkov za namestitev PHP
+Your current database settings are able to access the database.: Do trenutnih nastavitev baze podatkov lahko dostopate do baze podatkov.
+Please Test Settings: Preverite nastavitve
+Your current database settings are not able...: Trenutne nastavitve baze podatkov ne morejo dostopati do baze podatkov ali še niso bile preizkušene.
+Database Settings: Nastavitve zbirke podatkov
+Database Type: Vrsta zbirke podatkov
+Server: Strežnik
+Connection Persistence: Vztrajnost povezave
+All your database tables appear to be up...: Zdi se, da so vse tabele zbirke podatkov posodobljene. Lahko nadaljujete na naslednjo stran in dokončate nastavitev spletnega koledarja.
+This appears to be a new installation...: Zdi se, da gre za novo namestitev. Če to ni pravilno, se vrnite na prejšnjo stran in popravite svoje nastavitve.
+This appears to be an upgrade...: Zdi se, da gre za nadgradnjo z različice&nbsp;XXX&nbsp;na&nbsp;LLL.
+The database requires some data input...: Baza podatkov zahteva nekaj vnosa podatkov. Za posodobitev kliknite Posodobi bazo podatkov.
+In this section we will perform...: V tem poglavju bomo izvedli spremembe, da bomo vašo bazo podatkov postavili na zahtevano raven. Če uporabljate popolnoma podprto bazo podatkov, se ta korak izvede samodejno za vas. V nasprotnem primeru se lahko prikaže zahtevani SQL in ga lahko izrežete in prilepite v okno za poizvedbe strežnika baz podatkov.
+No database actions are required.: Dejanja baze podatkov niso potrebna.
+The following database actions are required: Zahtevana so naslednja dejanja baze podatkov
+ODBC Underlying Database: Osnovna zbirka podatkov ODBC:
+Automatic installation not supported: Samodejna namestitev za vašo bazo podatkov ni bila v celoti izvedena. Zahtevane tabele boste morali ročno ustvariti z uporabo priloženega SQL. Za nadaljevanje kliknite  Prikaži SQL . Izrežite in prilepite v okno za poizvedbo baze podatkov.
+This may take several minutes to complete: To lahko traja nekaj minut.
+Install Database: Namestite zbirko podatkov
+Update Database: Posodobi bazo podatkov
+Display Required SQL: Prikaži zahtevani SQL
+Return to previous page after processing SQL.: Po ročni obdelavi tega SQL se boste morali vrniti na prejšnjo stran in znova preizkusiti svojo bazo podatkov, da bo skript zaznal spremembe.
+This is the final step in setting up your WebCalendar Installation.: To je zadnji korak pri nastavitvi namestitve WebCalendar.
+Timezone Conversion: Pretvorba časovnega pasu
+It appears that you have NOT converted...: Zdi se, da obstoječih podatkov o dogodkih WebCalendar Niste pretvorili v GMT. Če je, lahko to obvestilo prezrete in ne nadaljujete s pretvorbo. Če gre za novo namestitev, lahko to obvestilo tudi prezrete.
+Convert Data to GMT: Pretvori podatke v GMT
+Application Settings: Nastavitve aplikacije
+HTTP-based authentication was not detected...: Preverjanje pristnosti na osnovi HTTP ni bilo zaznano. Če želite med spodnjimi možnostmi »Preverjanje pristnosti uporabnika« izbrati »Spletni strežnik«, boste morali znova konfigurirati svoj spletni strežnik.
+HTTP-based authentication was detected...: Zaznana je bila overitev na osnovi HTTP. Preverjanje pristnosti uporabnika opravlja vaš spletni strežnik. Na spodnjem seznamu možnosti »Preverjanje pristnosti uporabnika« izberite »Spletni strežnik«.
+Create Default Admin Account: Ustvari privzeti skrbniški račun
+(Admin Account Not Found): (Skrbniškega računa ni mogoče najti)
+User Authentication: Preverjanje pristnosti uporabnika
+Web-based via WebCalendar (default): Splet prek WebCalendar (privzeto)
+Web Server (not detected): Spletni strežnik (ni zaznan)
+Web Server (detected): Spletni strežnik (zaznan)
+None (Single-User): Brez (en uporabnik)
+Read-Only: Le za branje
+Environment: Okolje
+Production: Proizvodnja
+Development: Razvoj
+Save Settings: Shrani nastavitve
+Launch WebCalendar: Zaženite WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Napaka pri posodabljanju tabele "XXX": LLL.
+Conversion Successful: Pretvorba uspešna 
+Perl script required: Vaša prejšnja različica WebCalendar zahteva pretvorbo skripta PERL za pretvorbo podatkov. Zaženite /tools/upgrade_to_0.9.7.pl in se nato vrnite na to stran, da nadaljujete.
+previous version requires updating several tables: Vaša prejšnja različica WebCalendar zahteva posodobitev več tabel zbirke podatkov.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: PREDHOD NI NA VOLJO
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Napaka pri povezovanju z bazo podatkov
+Include Path: Vključi pot
+Deleting events for: Brisanje dogodkov za
+Importing events for: Uvažanje dogodkov za
+No data returned from: Podatki niso vrnjeni iz
+for non-user calendar: za ne-uporabniški koledar
+No Remote Calendars found: Najden ni bil noben oddaljeni koledar
+Remote Calendars not enabled: Koledarji na daljavo niso omogočeni
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: ni bilo mogoče najti ID-ja dogodka
+could not find event id XXX in database.: ni mogel najti ID-ja dogodka XXX v bazi podatkov.
+task: naloga
+This is a reminder for the XXX detailed below.: To je opomnik za XXX, podrobno opisan spodaj.
+Pecentage Complete: Odstotek dokončan
+Reminder: Opomnik
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Nepodprto dejanje: XXX.
+No event id specified.: ID dogodka ni določen.
+Not authorized (not admin).: Ni pooblaščen (ni skrbnik).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Preverjanje dogodkov za XXX od datuma LLL do datuma ZZZ.
+Found XXX events in time range.: Najdenih XXX dogodkov v časovnem obdobju.
+Event id=XXX YYY at ZZZ on AAA.: ID dogodka = XXX "LLL" na ZZZ na AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Uporabniku XXX omogoča ogled koledarja drugih uporabnikov.
+Error Email reminders disabled for user XXX.: Napaka: e-poštni opomniki so onemogočeni za uporabnika »XXX«.
+Number of site_extras XXX.: Število ekstraktov spletnega mesta: XXX.
+Reminder set for event.: Opomnik je nastavljen za dogodek.
+Mins Before XXX.: Minut prej: XXX.
+Event time is XXX.: Čas dogodka je: XXX.
+Remind time is XXX.: Čas opomnika je: XXX.
+Reminders for user XXX, login YYY.: Opomniki za uporabnika "XXX", prijava "LLL".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Neodobren za uporabnika »XXX«.
+Event id=XXX YYY already sent.: ID dogodka = XXX "LLL" je že poslano.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Prijava za en uporabniški način ni potrebna.
+No login required for HTTP authentication.: Za overjanje HTTP ni potrebna prijava.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Neveljavni znaki pri prijavi.
+Username XXX does not exist.: Uporabniško ime "XXX" ne obstaja.
+You cannot remove admin rights from yourself!: Sami ne morete odstraniti skrbniških pravic!
+Unknown error saving user: Neznana napaka pri shranjevanju uporabnika.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Za ID dogodka ni bilo mogoče najti udeležencev: XXX.
+Db error Could not find event id XXX.: Napaka Db: ID-ja dogodka XXX ni bilo mogoče najti.
+Error Could not find event id XXX in database.: Napaka: V bazi podatkov ni bilo mogoče najti ID-ja dogodka XXX.

@@ -1,11 +1,43 @@
-# See translations/English-US.txt for instructions.
+# German de
 #
-# Translator: Ralph Bo&szligler <vertrieb'at'sylphen.com>,
-# Peter Huetmannsberger <huetmann'at'site38.ping.at>
-# Updated many, many times by Markus Egartner <edv'at'kh-hallein.at>
-# Last update: 13. April 2010
+# Das Format besteht aus einem optionalen Header:
 #
-# Translation last updated on 04-13-2010
+# Übersetzt von: Ihrem Namen und Ihrer E-Mail-Adresse
+# Letzte Aktualisierung: das Datum der Übersetzung
+# (Einschließlich des führenden "#" und aller Kommentare früherer Übersetzer.
+# Die ERSTE leere Zeile beendet diese Header-Kommentare.)
+#
+# Gefolgt von so vielen wie nötig:
+#
+# Englische Phrase: Übersetzung
+# (Eins zu einer Zeile. OHNE das führende "#".
+# Die "englische Phrase:", einschließlich des Doppelpunkts ":", wird von der bereitgestellt
+# WebCalendar-Entwickler. Ihr Teil ist die "Übersetzung".)
+#
+# Das Tools-Verzeichnis enthält zwei Perl-Skripte, die Ihnen helfen sollen:
+# - check_translation.pl
+# gibt an, ob der gesamte Text erfolgreich übersetzt wurde.
+# - update_translation.pl
+# analysiert die Programmdateien, um alle zu übersetzenden ('Phrase') und zu finden
+# Tooltip ('Phrase'). Die Sätze werden entsprechend der Seite angeordnet
+# (Datei), die das erste Vorkommen enthält. Optional kann es das markieren
+# Sätze, die noch nicht durch Putten übersetzt wurden
+#  << MISSING >>
+# in der Zeile über der Phrase. Und wenn der Ausdruck eine Abkürzung ist,
+# Es wird den vollständigen englischen Text in der Zeile unter der Phrase enthalten.
+#
+# Hinweis: Ich versuche, die Gesamtdateigröße zu reduzieren. Wenn die "Übersetzung"
+# Wort / Satz ist in Ihrer Sprache und in Englisch identisch. Verwenden Sie einfach ein "=" - Zeichen.
+#
+# Hinweis: Sie werden den Eintrag für "May_" unten bemerken. Dafür gibt es einen Grund.
+# Übersetzen Sie "May_" in den vollständigen Monatsnamen und "May" in den,
+# normalerweise dreistellige Monatsabkürzung (wie "Okt" für "Oktober").
+#
+# Ich habe dafür Google Übersetzer verwendet.
+# Es sollte ausreichen, bis ein Muttersprachler dies überprüfen kann.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -204,7 +236,7 @@ Display weekends: Wochenenden anzeigen
 display-long-daynames-help: Falls aktiviert, werden lange Wochentagsnamen angezeigt
 Display long day names: Lange Wochentagsnamen anzeigen
 display-alldays-help: Zeigt und bef&uuml;llt die Tage des vorhergehenden und folgenden Monats in der aktuellen Monatsansichten
-Display all days in month view: Anzeigen <b>aller</b> Tage in der Monatsansicht
+Display all days in month view: Anzeigen aller Tage in der Monatsansicht
 display-week-number-help: Gibt an, ob die Wochennummer (1-52) in der Monats- und Wochenansicht angezeigt werden soll.
 Display week number: Wochennummer anzeigen
 display-desc-print-day-help: Beinhaltet in der Druckansicht die Beschreibungen der Termine in der Tagesansicht
@@ -444,6 +476,11 @@ Admin mode: Administratormodus
 Your assistants: Ihre Assistenten
 
 ########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Unbekannter Fehler
+
+########################################
 # Page: availability.php
 #
 Program Error No XXX specified!: Programmfehler No. XXX spezifiziert!
@@ -457,12 +494,13 @@ day: Tag
 #
 Category Icon: Icon f&uuml;r Kategorie
 Global: Allgemein
+The permissions for the icons directory are set to read-only: Die Berechtigungen für das Symbolverzeichnis sind schreibgeschützt.
 Category Name: Name der Kategorie
 Color: Farbe
 Remove Icon: Icon entfernen
 Add Icon to Category: Icon f&uuml;r Kategorie hinzuf&uuml;gen
 Upload: Hochladen
-gif 3kb max: gif max. 3kb gro&szlig;
+GIF or PNG 6kb max: GIF oder PNG 6kb max
 Search for existing icons: Suche nach bereits vorhandenen Icons
 Add: Hinzuf&uuml;gen
 Delete: L&ouml;schen
@@ -472,8 +510,9 @@ Make New Category: Neue Kategorie erstellen
 ########################################
 # Page: category_handler.php
 #
+Category name is required: Kategoriename ist erforderlich
 File size exceeds maximum.: Dateigr&ouml;&szlig;e &uuml;bersteigt Maximum
-File is not a gif image.: Datei ist kein &#34;gif&#34-Bild.
+File is not a GIF or PNG image: Datei ist kein GIF- oder PNG-Bild
 
 ########################################
 # Page: catsel.php
@@ -498,6 +537,7 @@ Old Color: Alte Farben
 #
 Select None: Keine Auswahl
 Agenda: Terminplanung
+Add Task: Aufgabe hinzufügen
 Description: Beschreibung
 Date: Datum
 Time: Uhrzeit
@@ -512,6 +552,9 @@ Brief Description: Kurzbeschreibung
 Full Description: Ausf&uuml;hrliche Beschreibung
 Category: Kategorie
 Add event detail: Termindetails hinzuf&uuml;gen
+Start Date: Startdatum
+Due Date: F&auml;lligkeitsdatum
+Add task detail: Aufgabendetails hinzufügen
 All: Alle
 Error: Fehler
 no response from server: keine R&uuml;ckantwort vom Server
@@ -522,8 +565,10 @@ Low: Niedrig
 Today: Heute
 Add Entry: Eintrag hinzuf&uuml;gen
 Unnamed Event: Unbenannter Termin
+Unnamed Task: Unbenannte Aufgabe
 Refresh: Aktualisieren
 Click to add entry: Klicken um Eintrag hinzuf&uuml;gen
+Name: =
 pm: Nachmittag
 am: Vormittag
 
@@ -563,9 +608,9 @@ hour ahead of you: Stunde vor Ihnen
 hour behind you: Stunde nach Ihnen
 hours ahead of you: Stunden vor Ihnen
 hours behind you: Stunden nach Ihnen
-XXX is in a different timezone (ahead): (XXX ist in einer anderen Zeitzone; YYY vor Ihrer.<br />&nbsp;ZZZ)
-XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; YYY hinter Ihrer.<br />&nbsp;ZZZ)
-Time entered here is based on your Timezone.: Die eingegebene Zeit basiert auf <b>Ihre</b> Zeitzone.
+XXX is in a different timezone (ahead): (XXX ist in einer anderen Zeitzone; YYY vor Ihrer.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX ist in einer anderen Zeitzone; YYY hinter Ihrer.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Die eingegebene Zeit basiert auf Ihre Zeitzone.
 Edit Entry: Eintrag &auml;ndern
 Details: Beschreibung
 Repeat: Wiederholung
@@ -579,13 +624,12 @@ completed-help: Datumaufgabe ist abgeschlossen. Nur aktiv, wenn alle Teilnehmer 
 Date Completed: Datum f&uuml;hrte durch
 percent-help: Aufgabenbeendigungsprozentsatz f&uuml;r diesen Benutzer
 Percent Complete: Prozent erledigt
-All Percentages: <u><b>Erf&uuml;llungsgrad der Aufgabe in %</b></u>
+All Percentages: <u>Erf&uuml;llungsgrad der Aufgabe in %</u>
 location-help: Ort des Termines
 Location: Ort
 url-help: URL des Termins
 URL: =
 date-help: Gibt das Datum des Termines an.
-Start Date: Startdatum
 Untimed event: Termin OHNE Zeitangabe
 Timed event: Termin MIT Zeitangabe
 All day event: Termin f&uuml;r den GANZEN Tag
@@ -594,7 +638,6 @@ time-help: Gibt die Uhrzeit des Termines an. Kann leer gelassen werden.
 duration-help: Gibt die Dauer des Termines in Minuten an. Kann leer gelassen werden.
 end-time-help: Definiert die Zeit des Termines als Endzeitpunkt.
 Start Time: Startzeit
-Due Date: F&auml;lligkeitsdatum
 Due Time: F&auml;lligkeitszeit
 Site Extras: Extrafelder
 avail_participants-help: Liste der verf&uuml;gbaren Teilnehmer dieses Eintrags.
@@ -624,7 +667,7 @@ Ending: Ende
 Forever: Immer
 Use end date: Ende an diesem Tag
 Number of times: Anzahl der Zeiten
-repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist&nbsp; &#34;1&#34;,  der Termin wird immer wiederholt. Wenn sie&nbsp; &#34;2&#34; ausw&auml;hlen wird der Termin jede 2. Woche wiederholt (wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist), jeden 2. Monat (wenn Art der Wiederholung auf Monatlich gesetzt ist), etc.
+repeat-frequency-help: Gibt an wie oft ein Termin wiederholt werden soll. Standard ist&nbsp;&#34;1&#34;,  der Termin wird immer wiederholt. Wenn sie&nbsp;&#34;2&#34; ausw&auml;hlen wird der Termin jede 2. Woche wiederholt (wenn Art der Wiederholung auf W&ouml;chentlich gesetzt ist), jeden 2. Monat (wenn Art der Wiederholung auf Monatlich gesetzt ist), etc.
 Frequency: H&auml;ufigkeit
 Weekdays Only: Nur Wochentage
 Week Start: Wochenstart
@@ -656,7 +699,7 @@ Start: Beginn
 End/Due: Ende&#47;Bis
 Times: Wie oft
 Every: Jeden
-CAPTCHA Warning: <b>Warnung:</b> CAPTCHA ben&ouml;tigt die PHP-Erweiterung &#39;GD&#39;!<br />
+CAPTCHA Warning: Warnung: CAPTCHA ben&ouml;tigt die PHP-Erweiterung &#39;GD&#39;!<br>
 Delete entry: Eintrag l&ouml;schen
 You are not authorized to edit this entry.: Sie haben keine Berechtigung diesen Eintrag zu &auml;ndern.
 
@@ -793,7 +836,7 @@ Username cannot be blank.: Benutzername darf nicht leer sein.
 ########################################
 # Page: events_ajax.php
 #
-Unknown error.: Unbekannter Fehler
+Not authorized: Keine Berechtigung
 
 ########################################
 # Page: export.php
@@ -857,7 +900,7 @@ colors-help: Alle Farben k&ouml;nnen im Format &#34;#RRGGBB&#34; eingegeben werd
 #
 Report Bug: Fehlermeldung
 Please include all the information below when reporting a bug.: Wenn Sie einen Fehler melden wollen, f&uuml;gen Sie die unten aufgef&uuml;hrten Informationen bei.
-Also, please use English rather than XXX.: Bitte verwenden Sie <b>Englisch</b> anstatt XXX.
+Also, please use English rather than XXX.: Bitte verwenden Sie Englisch anstatt XXX.
 
 ########################################
 # Page: help_docs.php
@@ -891,7 +934,7 @@ The following formats have been tested: Folgende Formate wurden getestet
 This form will import iCalendar (.ics) events.: Dieses Formular importiert iCalendar (.ics) - Eintr&auml;ge.
 Enabling: Aktivieren
 Overwrite Prior Import: Vorigen Import &uuml;berschreiben
-will cause events imported previously...: bewirkt, da&szlig; vorige <b>&#34;importierte Termine&#34;</b>, welche die <u>selbe UID</u> verwenden, als <b>&#34;gel&ouml;scht&#34;</b> markiert sind. Das erm&ouml;glicht ein importieren einer aktuellen iCalendar Datei <b>ohne Duplikate</b> zu erzeugen.
+will cause events imported previously...: bewirkt, da&szlig; vorige &#34;importierte Termine&#34;, welche die <u>selbe UID</u> verwenden, als &#34;gel&ouml;scht&#34; markiert sind. Das erm&ouml;glicht ein importieren einer aktuellen iCalendar Datei ohne Duplikate zu erzeugen.
 
 ########################################
 # Page: help_index.php
@@ -981,8 +1024,8 @@ Delete layer: Layer l&ouml;schen
 Edit layer: Layer &auml;ndern
 Enable layers: Layers aktivieren
 Layer: =
-Layers are currently disabled.: Layers sind derzeit <b>inaktiv</b>.
-Layers are currently enabled.: Layers sind derzeit <b>aktiv</b>.
+Layers are currently disabled.: Layers sind derzeit inaktiv.
+Layers are currently enabled.: Layers sind derzeit aktiv.
 Click to modify layers settings for XXX: Hier klicken um die Layereinstellungen f&uuml;r den XXX-Kalender zu &auml;ndern.
 Disable Layers: Layers abschalten
 Add layer: Layer hinzuf&uuml;gen
@@ -1010,7 +1053,6 @@ Uncheck All: Nichts markieren
 View this entry: Eintrag ansehen
 No unapproved entries for XXX.: Keine unbest&auml;tigten Eintr&auml;ge f&uuml;r &#39;XXX&#39;
 Unapproved Entries: Unbest&auml;tigte Eintr&auml;ge
-Not authorized: Keine Berechtigung
 Approve this entry?: Diesen Eintrag best&auml;tigen?
 Reject this entry?: Eintrag ablehnen?
 Approve Selected entries?: Best&auml;tige ausgew&auml;hlte Eintr&auml;ge?
@@ -1024,7 +1066,7 @@ Save login via cookies so I dont have to login next time.: Login in Cookies absp
 Login: Anmelden
 public: &ouml;ffentlich
 Access XXX calendar: Zugang XXX Kalender
-cookies-note: <b>Hinweis:</b> F&uuml;r diese Anwendung mu&szlig; ihr Browser Cookies akzeptieren.
+cookies-note: Hinweis: F&uuml;r diese Anwendung mu&szlig; ihr Browser Cookies akzeptieren.
 
 ########################################
 # Page: login.php
@@ -1057,12 +1099,14 @@ No such nonuser calendar: Kein(e) &#39;Zentrale(r)&#39;-Kalender
 ########################################
 # Page: pref.php
 #
+Invalid theme: Ungültiges Thema
 Save Preferences: Voreinstellungen speichern
 Public Access calendar: &Ouml;ffentlicher Kalender
 Modify Non User Calendar Preferences: &Auml;ndern der Einstellungen von Zentralen Kalendern
 Return to My Preferences: Zur&uuml;ck zu meinen Einstellungen
 Custom Scripts: Eigene Scripte
 Timezone Selection: Auswahl der Zeitzone
+Multiview: =
 entry-interval-help: Setzt Minutenintervall beim &Auml;ndern eingetragener Zeiten
 Entry interval: Eintragsintervall
 hour: Stunde
@@ -1081,7 +1125,7 @@ entries: Eintr&auml;ge
 Purging events for: L&ouml;sche Termine f&uuml;r
 Finished: Abgeschlossen
 Back: Zur&uuml;ck
-Check box to delete ALL events for a user: Aktivieren zum L&ouml;schen <b>ALLER</b> Termine f&uuml;r diesen Teilnehmer
+Check box to delete ALL events for a user: Aktivieren zum L&ouml;schen ALLER Termine f&uuml;r diesen Teilnehmer
 Delete all events before: L&ouml;sche alle Termine vor dem
 Purge deleted only: L&ouml;sche nur die &#39;markiert gel&ouml;schten Eintr&auml;ge&#39; endg&uuml;ltig
 Preview delete: Nur Vorschau der zu l&ouml;schenden Termine
@@ -1169,14 +1213,14 @@ New Search: Neue Suche
 # Page: security_audit.php
 #
 list potential security issues: Die folgenden Informationen weisen auf m&ouml;gliche Probleme im Bezug mit Ihrer WebKalender-Installation hin. Diese k&ouml;nnen jedoch ge&auml;ndert werden, um Ihre Installation sicherer gegen etwaige Angriffe zu machen.
-For questions about WebCalendar security see the forums: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
+For questions about WebCalendar security see the forums: F&uuml;r Fragen rund um die Sicherheit des WebKalenders, verwenden Sie bitte das WebCalendar-Forum welches auf SourceForge.net zu finden ist.<br><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
 View your current PHP settings: Anzeigen ihrer PHP-Informationen
 Security Issue: Sicherheitsoptionen
 Status: =
 Default admin user password: Grundeinstellung des admin user Passwortes
 You should change the password of the default admin user.: Sie sollten das Passwort des admin user &auml;ndern.
 File permissions XXX: Dateirechte: XXX
-item XXX should not be writable: Der folgende Eintrag soll als &#39;schreibgesch&uuml;tzt&#39; gesetzt werden: <br /><tt>XXX</tt>
+item XXX should not be writable: Der folgende Eintrag soll als &#39;schreibgesch&uuml;tzt&#39; gesetzt werden:<br><tt>XXX</tt>
 File exists XXX: Datei exisitert: "XXX"
 Because you have email disabled, you should remove this file.: Sie sollten diese Datei l&ouml;schen, da Sie die Emailfunktion deaktiviert haben.
 File location XXX: Ort der Datei: "XXX"
@@ -1188,8 +1232,8 @@ recommend using CAPTCHA: Es wird CAPTCHA empfohlen, zum Schutz gegen automatisie
 Database cache directory location: Ort des Datenbank-Cache-Verzeichnis
 db cache should be inaccessable: Das Datenbank-Cache-Verzeichnis soll in einem Verzeichnis angelegt werden, das &uuml;ber eine URL-Eingabe nicht direkt aufgerufen werden kann.
 PHP Settings XXX: PHP Einstellungen: "XXX"
-recommend setting XXX Off: Die empfohlene Einstellung f&uuml;r "XXX" ist <b>Aus (Off)</b>.
-recommend setting allow_url_fopen Off: Die empfohlene Einstellung f&uuml;r "<b>allow_url_fopen</b>" ist <b>Aus (Off)</b>, wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist.
+recommend setting XXX Off: Die empfohlene Einstellung f&uuml;r "XXX" ist Aus (Off).
+recommend setting allow_url_fopen Off: Die empfohlene Einstellung f&uuml;r "allow_url_fopen" ist Aus (Off), wenn die Option Remote-Kalender (externe andere Kalender) deaktiviert ist.
 
 ########################################
 # Page: select_user.php
@@ -1219,7 +1263,6 @@ Add New User: Neuen Benutzer hinzuf&uuml;gen
 # Page: usersel.php
 #
 form: Blatt
-listid: &#39;Listen-Id&#39;
 Reset: Zur&uuml;cksetzen
 
 ########################################
@@ -1346,11 +1389,9 @@ Cache cleared from previous SQL!: Cache wird von voriger SQL geleert!
 Error executing query.: Fehler beim Ausf&uuml;hren des Query
 Unfortunately, XXX is not implemented for YYY: Ungew&ouml;hnlich, &#34;XXX&#34; ist nicht (f&uuml;r YYY) implementiert.
 Unknown ODBC error.: Unbekannter ODBC Fehler
-Cannot execute SQLite3 command XXX: kann SQLite3 Befehl XXX nicht ausf&uuml;hren
-write: schreiben
-Cache error Could not XXX file YYY.: Cache-Fehler, kann Datei YYY nicht XXX.
 Error opening cache dir XXX.: Fehler beim &Ouml;ffnen des Cache-Verzeichnisses &#34;XXX&#34;.
 delete: l&ouml;schen
+Cache error Could not XXX file YYY.: Cache-Fehler, kann Datei YYY nicht XXX.
 
 ########################################
 # Page: includes/formvars.php
@@ -1398,7 +1439,7 @@ Task_Title: Aufgabentitel
 Due: F&auml;llig
 Task Name: Aufgabe
 Task Due Date: Abgabefrist
-You have XXX unapproved entries: Anzahl der unbest&auml;tigten Eintr&auml;ge&#058; <b>&rArr; &quot;XXX&quot;</b>
+You have XXX unapproved entries: Anzahl der unbest&auml;tigten Eintr&auml;ge&#058; &rArr; &quot;XXX&quot;
 Changes successfully saved: &Auml;nderungen erfolgreich gespeichert
 Event: Termin
 Action: Aktion
@@ -1432,6 +1473,13 @@ Aug: =
 Sep: Sept
 Oct: Okt
 Nov: =
+SU: SO
+MO: =
+TU: DI
+WE: MI
+TH: DO
+FR: =
+SA: =
 unknown-month: unbekannter Monat
 First Quarter Moon: Mond des ersten Viertels
 Full Moon: Vollmond
@@ -1465,6 +1513,7 @@ Thu: Do
 Fri: Fr
 Sat: Sa
 unknown-weekday: unbekannter Wochentag
+Invalid referring URL: Ungültige verweisende URL
 
 ########################################
 # Page: includes/help_list.php
@@ -1490,49 +1539,506 @@ Manage calendar of: Kalender verwalten von
 #
 Browser Language Not Found: Browsersprache nicht gefunden
 (not supported): (nicht unterst&uuml;tzt)
-English: Englisch
-English-US: Englisch-US
+Abkhazian: Abchasisch
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: In der Ferne
+Afrihili: =
 Afrikaans: Afrikanisch
+Ainu: =
+Akan: =
+Akkadian: =
 Albanian: Albanisch
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (südlich)
+Amharic: Amharisch
+Angika: =
+Apache: =
+Arabic (Algeria): Arabisch (Algerien)
+Arabic (Bahrain): Arabisch (Bahrain)
+Arabic (Egypt): Arabisch (Ägypten)
+Arabic (Iraq): Arabisch (Irak)
+Arabic (Jordan): Arabisch (Jordanien)
+Arabic (Kuwait): Arabisch (Kuwait)
+Arabic (Lebanon): Arabisch (Libanon)
+Arabic (Libya): Arabisch (Libyen)
+Arabic (Morocco): Arabisch (Marokko)
+Arabic (Oman): Arabisch (Oman)
+Arabic (Qatar): Arabisch (Katar)
+Arabic (Saudi Arabia): Arabisch (Saudi-Arabien)
+Arabic (Syria): Arabisch (Syrien)
+Arabic (Tunisia): Arabisch (Tunesien)
+Arabic (U.A.E.): Arabisch (U.A.E.)
+Arabic (Yemen): Arabisch (Jemen)
 Arabic: Arabisch
+Aragonese: Aragonesisch
+Aramaic: Aramäisch
+Arapaho: =
+Arawak: =
+Armenian: Armenisch
+Assamese: Assamesisch
+Asturian: Asturier
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Aserbaidschanisch
+Balinese: Balinesisch
+Baluchi: Belutschi
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Baschkirisch
 Basque: Baskisch
+Beja: =
+Belarusian: Belarussisch
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: Glückseligkeit
+Bosnian: bosnisch
+Braj: =
+Breton: Bretonisch
+Buginese: =
 Bulgarian: Bulgarisch
+Buriat: =
+Burmese: birmanisch
+Caddo: =
 Catalan: Katalanisch
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Tschetschenisch
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Chinesisch (Hong Kong)
+Chinese (PRC): Chinesisch (VR China)
 Chinese (Simplified/GB2312): Chinesisch (Einfach&#47;GB2312)
+Chinese (Singapore): Chinesisch (Singapur)
+Chinese (Taiwan): Chinesisch (Taiwan)
 Chinese (Traditional/Big5): Chinesisch (Traditionel&#47;Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: Tschuwaschisch
+Coptic: koptisch
+Cornish: kornisch
+Corsican: Korsisch
+Cree: =
+Creek: Bach
 Croatian: Kroatisch
 Czech: Tschechisch
+Dakota: =
 Danish: D&auml;nisch
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Niederländisch (Belgien)
 Dutch: Holl&auml;ndisch
-Elven: Elfisch (Tolkiens Elfensprache)
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Englisch (Australien)
+English (Belize): Englisch (Belize)
+English (Canada): Englisch (Kanada)
+English (Ireland): Englisch (Irland)
+English (Jamaica): Englisch (Jamaika)
+English (New Zealand): Englisch (Neuseeland)
+English (Philippines): Englisch (Philippinen)
+English (South Africa): Englisch (Südafrika)
+English (Trinidad & Tobago): Englisch (Trinidad & Tobago)
+English (United Kingdom): Englisches Vereinigtes Königreich)
+English (United States): Englisch (USA)
+English (Zimbabwe): Englisch (Simbabwe)
+English: Englisch
+Erzya: =
+Esperanto: =
 Estonian: Estnisch
+Ewe: Mutterschaf
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Färöer
+Fijian: Fidschianisch
+Filipino: Philippinisch
 Finnish: Finnisch
+Fon: =
+French (Belgium): Französisch (Belgien)
+French (Canada): Französisch (Kanada)
+French (France): Französisch Frankreich)
+French (Luxembourg): Französisch (Luxemburg)
+French (Monaco): Französisch (Monaco)
+French (Switzerland): Französisch (Schweiz)
 French: Franz&ouml;sisch
+Frisian (Eastern): Friesisch (Ost)
+Frisian (Northern): Friesisch (Nord)
+Frisian (Western): Friesisch (westlich)
+Frisian: Friesisch
+Friulian: Friaulisch
+Fulah: =
+Ga: =
+Galibi: =
 Galician: G&auml;lisch
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Meine Güte
+Georgian: georgisch
+German (Austria): Deutsch (Österreich)
+German (Germany): Deutsches Deutschland)
+German (Liechtenstein): Deutsch (Liechtenstein)
+German (Luxembourg): Deutsch (Luxemburg)
+German (Standard): Deutsch (Standard)
+German (Switzerland): Deutsch (Schweiz)
 German: Deutsch
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: gotisch
+Grebo: =
 Greek: Griechisch
+Greenlandic: Grönländisch
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitianer (kreolisch)
+Haitian: haitianisch
+Hausa: =
+Hawaiian: hawaiisch
 Hebrew: Hebr&auml;isch
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hethiter
+Hmong: =
 Holo (Taiwanese): Taiwanesisch
 Hungarian: Ungarisch
+Hupa: =
+Iban: =
 Icelandic: Isl&auml;ndisch
+Ido: Ich mache
+Igbo: =
+Iloko: =
 Indonesian: Indonesisch
+Ingush: Ingusch
+Inuktitut: =
+Inupiaq: =
+Iranian: iranisch
+Irish (Gaelic): Irisch-Gälisch)
+Irish: irisch
+Iroquoian: Irokesen
+Italian (Switzerland): Italienisch (Schweiz)
 Italian: Italienisch
 Japanese: Japanisch
+Javanese: Javanisch
+Judeo-Arabic: Judeo-Arabisch
+Judeo-Persian: Judeo-Persisch
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: Kalmück
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: Karatschai-Balkar
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Kasachisch
+Khasi: =
+Khmer (Central): Khmer (Zentral)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: Kirgisisch
+Klingon: Klingonisch
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreanisch (Johab)
+Korean (North): Koreanisch (Nord)
+Korean (South): Koreanisch (Süd)
 Korean: Koreanisch
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: kurdisch
+Kutenai: =
+Kyrgyz: Kirgisisch
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Latein
+Latvian: lettisch
+Lezghian: =
+Limburgan: =
+Lingala: =
 Lithuanian: Lithauisch
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luxemburgisch
+Macedonian: mazedonisch
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Madagassisch
+Malay: malaiisch
+Malayalam: =
+Maldivian: Malediven
+Maltese: maltesisch
+Manchu: Mandschu
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: Massai
+Mayan: Maya-
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldauisch
+Mongo: =
+Mongolian: mongolisch
+Montenegrin: Montenegrinisch
+Moroccan: marokkanisch
+Mossi: =
+Myanmar: =
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Nord)
+Ndebele (South): Ndebele (Süd)
+Ndebele: =
+Ndonga: =
+Neapolitan: Neapolitaner
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Nordisch
+Norwegian (Bokmål): Norwegisch (Bokmål)
+Norwegian (Nynorsk): Norwegisch (Nynorsk)
 Norwegian: Norwegisch
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Okzitanisch
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Ossetisch
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Paschtu
+Pedi: =
+Persian (Farsi): Persisch (Persisch)
+Persian (Iran): Persisch (Iran)
+Persian: persisch
+Phoenician: phönizisch
+Pohnpeian: =
 Polish: Polnisch
 Portuguese: Portugiesisch
-Portuguese/Brazil: Portugiesisch&#47;Brasilianisch
+Portuguese/Brazil: Portugiesisch (Brasilien
+Punjabi (India): Punjabi (Indien)
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Rhätoromanisch
 Romanian: Rum&auml;nisch
+Romansh: Rätoromanisch
+Romany: Roma
+Rundi: =
+Russian (Moldavia: Russisch (Moldawien
+Russian (Republic of Moldova): Russisch (Republik Moldau)
 Russian: Russisch
+Sami (Inari): =
+Sami (Lappish): Sami (lappisch)
+Sami (Lule): =
+Sami (Northern): Sami (Nord)
+Sami (Skolt): =
+Sami (Southern): Sami (Süd)
+Sami: =
+Samoan: Samoaner
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sardinisch
+Sasak: =
+Scots (Gaelic): Schotten (Gälisch)
+Selkup: =
+Serbian (Upper): Serbisch (Ober)
 Serbian: Serbisch
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: sizilianisch
+Sindhi: =
+Sinhala: Singhalesisch
+Slavic: Slawisch
 Slovak: Slowakisch
 Slovenian: Slowenisch
+Sogdian: =
+Somali: somali
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Unter)
+Sorbian (Upper): Sorbisch (Ober)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Spanisch (Argentinien)
+Spanish (Bolivia): Spanisch (Bolivien)
+Spanish (Chile): Spanisch (Chile)
+Spanish (Colombia): Spanisch (Kolumbien)
+Spanish (Costa Rica): Spanisch (Costa Rica)
+Spanish (Dominican Republic): Spanisch (Dominikanische Republik)
+Spanish (Ecuador): Spanisch (Ecuador)
+Spanish (El Salvador): Spanisch (El Salvador)
+Spanish (Guatemala): Spanisch (Guatemala)
+Spanish (Honduras): Spanisch (Honduras)
+Spanish (Mexico): Spanisch (Mexiko)
+Spanish (Nicaragua): Spanisch (Nicaragua)
+Spanish (Panama): Spanisch (Panama)
+Spanish (Paraguay): Spanisch (Paraguay)
+Spanish (Peru): Spanisch (Peru)
+Spanish (Puerto Rico): Spanisch (Puerto Rico)
+Spanish (Spain): Spanisch (Spanien)
+Spanish (Uruguay): Spanisch (Uruguay)
+Spanish (Venezuela): Spanisch (Venezuela)
 Spanish: Spanisch
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumerisch
+Sundanese: Sundanesisch
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Schwedisch (Finnland)
+Swedish (Sweden): Schwedisch (Schweden)
 Swedish: Schwedisch
+Syriac: Syrisch
+Tagalog: =
+Tahitian: Tahitianer
+Tai: =
+Taiwan: =
+Tajik: Tadschikisch
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibetisch
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tonga-Inseln)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
 Turkish: T&uuml;rkisch
+Turkmen: Turkmenen
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Ugaritisch
+Ukrainian: ukrainisch
+Umbundu: =
+Urdu: =
+Uyghur: Uigurisch
+Uzbek: Usbekisch
+Vai: =
+Venda: =
+Vietnamese: Vietnamesisch
+Volapük: =
+Votic: Votisch
+Wakashan: =
+Walloon: wallonisch
+Waray: =
+Washo: =
 Welsh: Wallisisch
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: Jakut
+Yao: =
+Yapese: =
+Yiddish: Jiddisch
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: Zulu-
 Browser-defined: Browser-definiert
 event: Termin
 journal: Journal
@@ -1566,13 +2072,6 @@ Account disabled: Konto deaktiviert
 ########################################
 # Page: includes/xcal.php
 #
-MO: =
-TU: DI
-WE: MI
-TH: DO
-FR: =
-SA: =
-SU: SO
 Interval: =
 Months: Monate
 Month Days: Monatstage
@@ -1619,35 +2118,35 @@ Challenge/Response: Aufforderung/Beantwortung
 ########################################
 # Page: includes/js/availability.php
 #
-Change the date and time of this entry?: Datum und Uhrzeit f&uuml;r diesen Eintrag &auml;ndern?
+Change the date and time of this entry?: Datum und Uhrzeit dieses Eintrags ändern?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
 You have not entered a Brief Description: Sie haben keine Kurzbeschreibung eingegeben
-time prior to work hours...: Die eingetragene Zeit beginnt vor der normalen Arbeitszeit. Ist das richtig?
+time prior to work hours...: Zeit vor Arbeitszeit ...
 Invalid Event Date: Ung&uuml;tiges Datum f&uuml;r Termin
-Please add a participant: Bitte einen Teilnehmer hinzuf&uuml;gen
+Please add a participant: Bitte fügen Sie einen Teilnehmer hinzu
 Invalid Date: Ung&uuml;ltiges Datum
-You have not entered a valid time of day: Sie haben keine g&uuml;ltige Zeit f&uuml;r diesen Tag eingetragen
+You have not entered a valid time of day: Sie haben keine gültige Tageszeit eingegeben.
 
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID cannot be blank.: Kalender-ID darf nicht leer sein.
-First and last names cannot both be blank.: Beide, Vor- und Nachname, d&uuml;rfen nicht leer sein.
+Calendar ID cannot be blank.: Die Kalender-ID darf nicht leer sein.
+First and last names cannot both be blank.: Vor- und Nachname dürfen nicht beide leer sein.
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
 Invalid color: Ung&uuml;ltige Farbe
-Color format should be RRGGBB.: Farbformat sollte &#39;#RRGGBB&#39; sein.
+Color format should be RRGGBB.: Das Farbformat sollte #RRGGBB sein.
 URL cannot be blank.: URL darf nicht leer sein.
 
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: Dateityp passt nicht mit dem Import-Format &uuml;berein
+File type does not match Import Format: Der Dateityp stimmt nicht mit dem Importformat überein
 
 ########################################
 # Page: includes/js/pref.php
@@ -1662,19 +2161,19 @@ Invalid work hours.: Ung&uuml;ltige Arbeitszeit.
 # Page: includes/js/translate.js.php
 #
 Server URL must end with /.: Server URL mu&szlig; mit einem &#39;&#47;&#39; enden.
-Invalid color for table grid.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Gitter.
-Invalid color for event popup background.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Hintergrund.
-Invalid color for event popup text.: Ung&uuml;ltige Farbe f&uuml;r Terminerinnerungs-Text.
-Invalid color for table header text.: Ung&uuml;ltige Farbe f&uuml;r den Kopfzeilentext
-Invalid color for table header background.: Ung&uuml;ltige Farbe f&uuml;r Tabellen-Kopfzeile Hintergrund.
+Invalid color for table grid.: Ungültige Farbe für Tabellenraster.
+Invalid color for event popup background.: Ungültige Farbe für Ereignis-Popup-Hintergrund.
+Invalid color for event popup text.: Ungültige Farbe für Ereignis-Popup-Text.
+Invalid color for table header text.: Ungültige Farbe für Tabellenkopfzeilentext.
+Invalid color for table header background.: Ungültige Farbe für Tabellenkopfhintergrund.
 Server URL is required.: Server URL wird ben&ouml;tigt.
 Invalid Color: Ung&uuml;ltige Farbe
 Database Name: Datenbankname
-Full Path (no backslashes): Volle Pfadangabe (ohne Backslashes)
+Full Path (no backslashes): Voller Pfad (keine Backslashes)
 The password contains illegal characters.: Das Kennwort beinhaltet unzul&auml;ssige Zeichen
-Error you must specify a Single-User Login: Sie m&uuml;ssen ein\nSingle-User Login festlegen.
-Could not find XXX.: Kann XXX nicht finden.
-Could not find XXX in DOM.: Kann XXX im DOM nicht finden.
+Error you must specify a Single-User Login: Fehler Sie müssen eine Einzelbenutzeranmeldung angeben
+Could not find XXX.: XXX konnte nicht gefunden werden.
+Could not find XXX in DOM.: XXX in DOM konnte nicht gefunden werden.
 
 ########################################
 # Page: includes/menu/index.php
@@ -1719,8 +2218,8 @@ Passwords do not match!: Kennw&ouml;rter stimmen nicht &uuml;berein!
 Unable to write password to settings.php file: Kennwort kann nicht in die &#39;settings.php&#39;-Datei geschrieben werden
 Password Updated: Kennwort upgedated
 Password has been set: Kennwort wurde gesetzt
-Connection Successful...: <b>Verbindung erfolgreich</b> Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
-Correct your entries or click the Create New...: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf <b>Neu erstellen</b> Button um die Installation fortzufahren.
+Connection Successful...: Verbindung erfolgreich Bitte f&uuml;hren Sie den n&auml;chsten Schritt aus um mit der Installation fortzufahren
+Correct your entries or click the Create New...: Korrigieren Sie Ihre Eintr&auml;ge oder klicken Sie auf Neu erstellen Button um die Installation fortzufahren.
 Correct your entries and try again.: Korrigieren Sie Ihre Eintr&auml;ge und versuchen Sie es erneut.
 XXX does not exist: XXX existiert nicht
 XXX is not writable: XXX ist nicht beschreibbar
@@ -1741,7 +2240,7 @@ Getting Help: Hilfe erhalten (in Englisch)
 Upgrading Guide: Upgrade-Anleitung (in Englisch)
 User Supported Wiki: Benutzer unterst&uuml;tztes Wiki (mehrsprachig)
 PHP Version Check: PHP Versions&uuml;berpr&uuml;fung
-Check to see if PHP 4.1.0 or greater is installed.: &Uuml;berpr&uuml;fung ob PHP 4.1.0 oder h&ouml;her installiert ist.
+Check to see if PHP 7.1.0 or greater is installed.: Überprüfen Sie, ob PHP 7.1.0 oder höher installiert ist.
 PHP version: PHP Version
 PHP Settings: PHP Einstellungen
 Detailed PHP Info: Detailierte PHP Information
@@ -1749,9 +2248,9 @@ settings.php Status: &#39;settings.php&#39; Status
 Session Check: Session &Uuml;berpr&uuml;fung
 To test the proper operation of sessions...: Zum Testen, ob die Funktionen der Sessions richtig funktionieren, laden Sie diese Seite neu. Kontrollieren Sie ob der Sessionz&auml;hler jedesmal weiterz&auml;hlt
 SESSION COUNTER: Sessionz&auml;hler
-The file permissions of settings.php are set...: Die Dateirechte von <b>settings.php</b> sind so gesetzt, da&szlig; der Installer keine Rechte zur &Auml;nderung besitzt. Bitte &auml;ndern Sie die Zugriffsrechte der Datei um fortzufahren
-The file permissions of the includes directory are set...: Die Zugriffsrechte von <b>includes</b> Verzeichnis sind so gesetzt, da&szlig; der Installer keine Rechte zum Erstellen von neuen Dateien hat. Bitte &auml;ndern Sie die Zugriffsrechte des Verzeichnisses um fortzufahren.
-Your settings.php file appears to be valid.: Ihre <b>settings.php</b> Datei scheint g&uuml;ltig zu sein.
+The file permissions of settings.php are set...: Die Dateirechte von settings.php sind so gesetzt, da&szlig; der Installer keine Rechte zur &Auml;nderung besitzt. Bitte &auml;ndern Sie die Zugriffsrechte der Datei um fortzufahren
+The file permissions of the includes directory are set...: Die Zugriffsrechte von includes Verzeichnis sind so gesetzt, da&szlig; der Installer keine Rechte zum Erstellen von neuen Dateien hat. Bitte &auml;ndern Sie die Zugriffsrechte des Verzeichnisses um fortzufahren.
+Your settings.php file appears to be valid.: Ihre settings.php Datei scheint g&uuml;ltig zu sein.
 Configuration Wizard Password: Assistenten - Konfigurationspasswort
 Create Settings File Password: Erzeuge Kennwort f&uuml;r die Settings Datei
 db setup directions...: In diesem Abschnitt stellen (und &uuml;berpr&uuml;fen) Sie die Verbindung zum Datenbankserver her. Die gelieferten Kontoinformationen sollten VOLLE Erlaubnis haben um Datenbanken, Tabellen und Benutzer zu erstellen. Wenn dies nicht m&ouml;glich oder Ihr Datenbankzugriff begrenzt ist, m&uuml;ssen Sie manuell Ihre Datenbank justieren.
@@ -1759,7 +2258,7 @@ Database Status: Datenbank Status
 Supported databases for your PHP installation: Unterst&uuml;zte Datenbanken f&uuml;r Ihre PHP Installation
 Your current database settings are able to access the database.: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie in der Lage auf Ihre Datenbank zuzugreifen.
 Please Test Settings: Bitte testen Sie Ihre Einstellungen
-Your current database settings are not able...: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie <b>nicht</b> in der Lage auf die Datenbank zuzugreifen, oder ist noch nicht getestet worden (dr&uuml;cken Sie auf den &#39;Einstellungen-testen&#39;-Knopf)
+Your current database settings are not able...: Mit Ihren derzeitigen Datenbankeinstellungen sind Sie nicht in der Lage auf die Datenbank zuzugreifen, oder ist noch nicht getestet worden (dr&uuml;cken Sie auf den &#39;Einstellungen-testen&#39;-Knopf)
 Database Settings: Datenbankeinstellungen
 Database Type: Art der Datenbank
 Server: =
@@ -1767,12 +2266,12 @@ Connection Persistence: Permanente Verbindung
 All your database tables appear to be up...: Alle Ihre Datenbanktabellen scheinen auf den neuesten Stand gebracht zu sein. Sie k&ouml;nnen mit dem n&auml;chsten Schritt fortfahren um
 This appears to be a new installation...: Diese scheint, eine neue Installation zu sein. Wenn dies nicht richtig ist, bitte Gehen Sie zur&uuml;ck zur vorigen Seite und korrigieren Sie Ihre Einstellungen.
 This appears to be an upgrade...: Dieses scheint ein Upgrade zu sein von der Version&nbsp;XXX&nbsp;auf&nbsp;YYY.
-The database requires some data input...: Die Datenbank erfodert einige Dateneingaben. Klicken Sie auf <b>Update Database</b> um das Upgrade zu vervollst&auml;ndigen.
+The database requires some data input...: Die Datenbank erfodert einige Dateneingaben. Klicken Sie auf Update Database um das Upgrade zu vervollst&auml;ndigen.
 In this section we will perform...: In diesem Abschnitt f&uuml;hren wir die angeforderten Datenbank&auml;nderungen durch um Ihre Datenbank auf den aktuellen Stand zu bringen. Wenn Sie eine v&ouml;llig unterst&uuml;tzte Datenbank benutzen, wird dieser Schritt automatisch f&uuml;r Sie durchgef&uuml;hrt. Wenn nicht, kann das ben&ouml;tigte SQL-Skript angezeigt werden und sollten dann in der Lage sein, dieses in Ihr Datenbankabfragefenster zu kopieren und danach auszuf&uuml;hren.
 No database actions are required.: Kein Datenbankeingriff erforderlich
 The following database actions are required: Folgende Datenbankt&auml;tigkeiten sind erforderlich
 ODBC Underlying Database: ODBC zugrundeliegende Datenbank
-Automatic installation not supported: Eine komplett automatisierte Installation wird von Ihrem verwendeten Datenbanktyps nicht vollst&auml;ndig unterst&uuml;tzt. Sie m&uuml;ssen die erforderlichen Tabellen mit den mitgelieferten SQL manuell erstellen. Bitte Klicken <b>Ben&ouml;tigte SQL anzeigen</b> um fortzufahren. Ausschneiden &amp; Einf&uml;gen in Ihrem Datenbankabfragefenster.
+Automatic installation not supported: Eine komplett automatisierte Installation wird von Ihrem verwendeten Datenbanktyps nicht vollst&auml;ndig unterst&uuml;tzt. Sie m&uuml;ssen die erforderlichen Tabellen mit den mitgelieferten SQL manuell erstellen. Bitte Klicken Ben&ouml;tigte SQL anzeigen um fortzufahren. Ausschneiden &amp; Einf&uml;gen in Ihrem Datenbankabfragefenster.
 This may take several minutes to complete: Die Fertigstellung kann einige Minuten dauern
 Install Database: Datenbank installieren
 Update Database: Datenbank updaten
@@ -1803,7 +2302,7 @@ Launch WebCalendar: Webkalender starten
 # Page: install/install_functions.php
 #
 Error updating table XXX: Fehler beim Aktualisieren der Tabelle XXX
-Conversion Successful: <b>Konvertierung Erfolgreich</b>
+Conversion Successful: Konvertierung Erfolgreich
 Perl script required: Ihre vorhergehende Version des Webkalenders erfordert das Durchf&uuml;hren eines PERL Skriptes um Ihre Dateien umzuwandeln. &#39;/tools/upgrade_to_0.9.7.pl&#39; bitte laufen lassen danach zu dieser Seite zur&uuml;ckkehren um fortzufahren.
 previous version requires updating several tables: Ihre vorige Version des Webkalenders erfordert einige Tabellen&auml;nderungen
 
@@ -1884,5 +2383,5 @@ Unknown error saving user: Unbekannter Fehler beim Speichern des Benutzers
 # Page: ws/ws.php
 #
 No participants found for event id XXX.: Keine(n) Teilnehmer f&uuml;r Termin-Id XXX gefunden.
-Db error Could not find event id XXX.: Db-Fehler, Termin-Id XXX nicht gefunden.
-Error Could not find event id XXX in database.: Fehler, Termin-Id XXX in der Datenbank nicht gefunden
+Db error Could not find event id XXX.: Datenbankfehler: Ereignis-ID XXX konnte nicht gefunden werden.
+Error Could not find event id XXX in database.: Fehler: Ereignis-ID XXX konnte in der Datenbank nicht gefunden werden.

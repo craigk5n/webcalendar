@@ -1,17 +1,46 @@
-# See translations/English-US.txt for instructions.
+# Finnish fi
 #
-# Finnish translation by Juha-Matti �berg (juffe@liveware.fi)
+# Muoto koostuu valinnaisesta otsikosta:
+#
+# Kääntäjä: nimesi ja sähköpostiosoitteesi
+# Viimeisin päivitys: käännöksen päivämäärä
+# (Sisältää edellisen "#" ja mahdollisten edellisten kääntäjien kommentit.
+# ENSIMMÄINEN tyhjä rivi päättää nämä otsikkokommentit.)
+#
+# Seurataan niin monta kuin tarvitaan:
+#
+# Englanninkielinen lause: käännös
+# (Yksi riville. ILMAN etureunaa "#".
+# "Englanninkielinen lause:", mukaan lukien kaksoispiste ":", tarjoaa
+# WebCalendar-kehittäjää. Sinun osasi on "käännös".)
+#
+# Työkaluhakemisto sisältää kaksi perl-komentosarjaa, jotka auttavat sinua:
+# - check_translation.pl
+# osoittaa, onko kaikki teksti käännetty onnistuneesti.
+# - update_translation.pl
+# jäsentää ohjelmatiedostot löytääksesi kaikki käännökset ('lause') ja
+# työkaluvinkki ('lause'). Se järjestää lauseet sivun mukaan
+# (tiedosto), joka sisältää ensimmäisen esiintymän. Vaihtoehtoisesti se voi tunnistaa
+# lausetta, joita ei ole vielä käännetty laittamalla
+#  << MISSING >>
+# rivillä lauseen yläpuolella. Ja jos lause on lyhenne,
+# se sisältää kokonaisen englanninkielisen tekstin lauseen alla olevalla rivillä.
+#
+# Huomaa: Yritän pienentää tiedostojen kokoa. Jos "käännös"
+# sana / lause on identtinen kielelläsi ja englannissasi, käytä vain "=" -merkkiä.
+#
+# Huomaa: Huomaat merkinnän "May_" alla. Tähän on syy.
+# Käännä "May_" koko kuukauden nimeksi ja "May"
+# yleensä kolmen kirjaimen, kuukauden lyhenne (kuten "lokakuu" sanoille "lokakuu").
+#
+# Finnish translation by Juha-Matti Åberg (juffe@liveware.fi)
 # Updated for WebCal 1.0RC2 by Jussi Siponen (jussi.siponen@posiona.com)
 #
-# Translations for page: includes/classes/WebCalMailer.class
-# By Jyry Kuukanen
-# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+# Käytin tähän Google-käännöstä.
+# Sen pitäisi riittää, kunnes äidinkielenään puhuva voi vahvistaa sen.
+# Bruce Bannon <wcDev@bbannon.net>
 #
-# Additional translations 'borrowed' from SourceForge project
-# 'The Coolest DHTML Calendar',
-# http://sourceforge.net/projects/jscalendar/
-#
-# Translation last updated on 10-15-2008
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -51,17 +80,40 @@ __month__ __yyyy__: =
 # Page: about.php
 #
 Title: =
+version XXX: versio XXX
+WebCalendar is a PHP application used...: WebCalendar on PHP-sovellus, jota käytetään ylläpitämään kalenteria yhdelle käyttäjälle tai Internet / intranet-käyttäjäryhmälle. Se voidaan myös määrittää tapahtumakalenteriksi.
+Credits: Laajuus
+About: Noin
+OK: =
 
 ########################################
 # Page: access.php
 #
-Database error: Tietokantavirhe
+Database error XXX.: Tietokantavirhe: XXX.
+DEFAULT CONFIGURATION: OLETUSMÄÄRITTELY
 Go: Mene
 Save: Talleta
-Public Access: Yleinen k�ytt�
-Admin: Yll�pito
+Undo: Kumoa
+Public Access: Yleinen käyttö
+Admin: Ylläpito
+User Access Control: Käyttäjän pääsyn hallinta
+Allow Access to Other Users Calendar: Salli pääsy muiden käyttäjien kalenteriin
+Grant This User Access to My Calendar: Myönnä tälle käyttäjälle pääsy kalenteriini
+Type: Tyyppi
 Calendar: Kalenteri
+View Event: Näytä tapahtuma
+View: Näytä
 Edit: Muokkaa
+Approve/Reject: Hyväksy / hylkää
+Events: Tapahtumat
+Tasks: Tehtävät
+Journals: Lehdet
+Can Invite: Voi kutsua
+Can Email: Voi lähettää sähköpostia
+Can See Time Only: Voi nähdä vain ajan
+Assistant: Avustaja
+Select All: Valitse kaikki
+Clear All: Tyhjennä
 Public: Julkinen
 Confidential: Luottamuksellinen
 Private: Yksityinen
@@ -75,307 +127,632 @@ Previous: Edellinen
 ########################################
 # Page: add_entry.php
 #
+Event XXX is already on your calendar.: Tapahtuma XXX on jo kalenterissasi.
+Invalid entry id XXX.: Virheellinen merkinnän tunnus: "XXX".
+a XXX event may not be added to your calendar: Tämä on XXX-tapahtuma, eikä sitä voi lisätä kalenteriisi.
 confidential: luottamuksellinen
 private: yksityinen
-Error adding event: Virhe merkint�� lis�tt�ess�
+Error adding event XXX.: Tapahtumaa lisättäessä tapahtui virhe: XXX.
 
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Virheellinen asetuksen nimi "XXX".
 Select: Valitse
-Day: P�iv�
+Day: Päivä
 Week: Viikko
 Month: Kuukausi
 Year: Vuosi
 Bottom: Alhaalla
-Top: Ylh��ll�
+Top: Ylhäällä
+Anyone: Kuka tahansa
+Participant: Osallistuja
 Settings: Yleisasetukset
-Groups: Ryhm�t
-NonUser Calendars: Ei-kenenk��n kalenterit
+Groups: Ryhmät
+NonUser Calendars: Ei-kenenkään kalenterit
 Other: Muut
-Email: S�hk�posti-ilmoitukset
-Colors: V�rit
+Email: Sähköposti-ilmoitukset
+Colors: Värit
 Document background: Sivun pohja
 Document title: Sivun otsikko
 Document text: Sivun teksti
+My event text: Tapahtumani teksti
 Table grid color: Sivun taulukoiden viivat
 Table header background: Taulukon otsikon tausta
 Table header text: Taulukon otsikko
 Table cell background: Taulukon tausta
-Table cell background for current day: Kuluvan p�iv�n tausta
+Table cell background for current day: Kuluvan päivän tausta
+Table cell background for days with events: Taulukon solujen tausta tapahtumapäiviä varten
 Table cell background for weekends: Taulukon solut viikonlopuille
+Table cell background for other month: Taulukon solujen tausta toista kuukautta varten
+Week number color: Viikon numeron väri
 Event popup background: Tapahtuma-popupin tausta
 Event popup text: Tapahtuma-popupin teksti
-System Settings: J�rjestelm�n asetukset
+System Settings: Järjestelmän asetukset
 Help: Ohjeita
-app-name-help: Asettaa kalenterisovelluksen "titlen" joka n�kyy sivulla, kun kalenteria k�ytet��n
+System options: Järjestelmäasetukset
+app-name-help: Asettaa kalenterisovelluksen "titlen" joka näkyy sivulla, kun kalenteria käytetään
 Application Name: Sovelluksen nimi
-server-url-help: Asettaa perus-URL -osoitteen kalenterisovellukselle. T�t� k�ytet��n l�hetett�ess� s�hk�postia tapahtuman osallistujille.
+Translated Name (XXX): Käännetty nimi (XXX)
+server-url-help: Asettaa perus-URL -osoitteen kalenterisovellukselle. Tätä käytetään lähetettäessä sähköpostia tapahtuman osallistujille.
 Server URL: Palvelimen URL
-language-help: M��rittelee k�ytett�v�n kielen.
+home-url-help: Määrittää sovelluksen koti-URL-osoitteen. Tämä voi olla absoluuttinen tai suhteellinen
+Home URL: Koti-URL
+language-help: Määrittelee käytettävän kielen.
 Language: Kieli
-Your browser default language is: Selaimen oletuskieli on
+Your browser default language is XXX.: Selaimesi oletuskieli on "XXX".
+Allow user to use themes: Salli käyttäjän käyttää teemoja
+themes-help: Sallii kokoonpanoasetusten massapäivityksen. Pienet kirjaimet ovat vain käyttäjän etuliitteitä.
+Themes: Teemat
+AVAILABLE THEMES: SAATAVAT TEEMAT
 None: Ei toistuva
+Preview: Esikatselu
+Site customization: Sivuston mukauttaminen
+custom-script-help: Sallii mukautetun Javascriptin tai tyylitaulukon tekstin syöttämisen, joka lisätään jokaisen sivun HTML-pääosaan.
 Custom script/stylesheet: Oma skripti/tyylisivu
-Custom header: Oma yl�tunniste
+custom-header-help: Antaa mukautetun HTML-koodinpätkän sisällyttää jokaisen sivun yläosaan.
+Custom header: Oma ylätunniste
+custom-trailer-help: Antaa mukautetun HTML-koodinpätkän sisällyttää jokaisen sivun loppuun.
 Custom trailer: Oma alatunniste
-tz-help: M��ritt�� aikavy�hykkeen
-date-format-help: M��ritt�� p�iv�n esitysmuodon.
-Date format: P�iv�yksen muoto
-display-week-starts-on: M��rittelee viikon alkamisp�iv�ksi joko sunnuntai tai maanantai. Jos maanantai valittu, niin viikonnumero lasketaan ISO-j�rjestelm�n mukaisesti.
-Week starts on: Viikon ensimm�inen p�iv�
-time-format-help: M��rittelee ajan esitysmuodon,<br /><i>12 tuntia</i><br /><i>24 tuntia</i>
+enable-external-header-help: Antaa mukautetun perävaunun ladata ulkoisesta tiedostosta
+Allow external file for header/script/trailer: Salli ulkoinen tiedosto otsikkoon / komentosarjaan / perävaunuun
+Allow user to override header/trailer: Anna käyttäjän ohittaa otsikko / perävaunu
+Date and Time: Päivämäärä ja aika
+server-tz-help: Määrittää, kuinka monta tuntia aikaa muuttaa UTC: sta palvelimen aikaan.
+Server Timezone Selection: Palvelimen aikavyöhykkeen valinta
+tz-help: Määrittää aikavyöhykkeen
+Default Client Timezone Selection: Oletusasiakkaan aikavyöhykkeen valinta
+display-general-use-gmt-help: Jos tämä on käytössä, yleiset päivämäärät / ajat näytetään GMT: nä
+Display Common Use Date/Times as GMT: Näytä yleisen käytön päivämäärä / kellonaika GMT: nä
+date-format-help: Määrittää päivän esitysmuodon.
+Date format: Päiväyksen muoto
+Small Task Date: Pieni tehtävän päivämäärä
+display-week-starts-on: Määrittelee viikon alkamispäiväksi joko sunnuntai tai maanantai. Jos maanantai valittu, niin viikonnumero lasketaan ISO-järjestelmän mukaisesti.
+Week starts on: Viikon ensimmäinen päivä
+display-weekend-starts-on: Asettaa viikonpäivän alkavan viikonpäivän
+Weekend starts on: Viikonloppu alkaa
+time-format-help: Määrittelee ajan esitysmuodon,<br><i>12 tuntia</i><br><i>24 tuntia</i>
 Time format: Ajan esitystapa
 12 hour: 12 tuntia
 24 hour: 24 tuntia
-Specify timed event length by: M��rit� tapahtuman kesto ilmoittamalla
+timed-evt-len-help: Määrittää syöttötavan ajastetun tapahtuman pituuden määrittämiseksi.
+Specify timed event length by: Määritä tapahtuman kesto ilmoittamalla
 Duration: Kesto
-End Time: P��ttymisaika
-work-hours-help: M��rittelee p�iv�n�kym�ss� esitett�v�t tunnit.
-Work hours: Ty�tunnit
+End Time: Päättymisaika
+work-hours-help: Määrittelee päivänäkymässä esitettävät tunnit.
+Work hours: Työtunnit
 From: Alkaen
 to: ulottuen
-preferred-view-help: M��rittelee oletusn�kym�n (P�iv�, Viikko, Kuukausi tai Vuosi).
-Preferred view: Oletusn�kym�
-fonts-help: M��ritt�� k�ytett�v�t j�rjestelm�fontit (esim. "Arial, Helvetica")
+Appearance: Ulkomuoto
+preferred-view-help: Määrittelee oletusnäkymän (Päivä, Viikko, Kuukausi tai Vuosi).
+Preferred view: Oletusnäkymä
+Allow top menu: Salli ylävalikko
+Date Selectors position: Päivämäärän valitsinten sijainti
+menu-themes-help: Asettaa päävalikon värit ja tyylin
+Menu theme: Valikkoteema
+fonts-help: Määrittää käytettävät järjestelmäfontit (esim. "Arial, Helvetica")
 Fonts: Fontit
-display-weekends-help: N�yt� viikonloput viikkoa katseltaessa.
-display-week-number-help: M��rittelee n�ytet��nk� viikonnumero (1-52) kuukausi- ja viikkon�kym�ss�.
-Display week number: N�yt� viikonnumero
-Display description in printer day view: N�yt� kuvaus p�iv�n tulostusn�kym�ss�
-allow-view-add-help: Asettaa '+'-merkin ilmestym��n n�kymiin, jolloin k�ytt�j� voi helposti lis�t� uuden tapahtuman toisen(kin) k�ytt�j�n kalenteriin.
-Include add event link in views: Lis�� linkki "Lis�� tapahtuma" kaikkiin n�kymiin
-allow-view-other-help: M��ritt��, salliiko kalenteri k�ytt�j�n tarkastella toisen k�ytt�j�n kalenteria.
-Allow viewing other users calendars: Salli muiden henkil�iden kalenterien tarkastelu
-require-approvals-help: Jos p��ll�, k�ytt�j�n on vahvistettava tapahtuma ennenkuin se n�kyy kalenterissa.
+display-sm_month-help: Jos tämä on käytössä, näyttää pienet kuukaudet kuukausinäkymissä
+Display small months: Näytä pienet kuukaudet
+display-weekends-help: Näytä viikonloput viikkoa katseltaessa.
+Display weekends: Näytä viikonloppuisin
+display-long-daynames-help: Jos tämä on käytössä, pitkien päivien nimet näytetään
+Display long day names: Näytä pitkien päivien nimet
+display-alldays-help: Näytä edellisen ja seuraavan kuukauden päivät kuukausinäkymissä täyttämällä kaikki solut.
+Display all days in month view: Näytä kaikki päivät kuukausinäkymässä
+display-week-number-help: Määrittelee näytetäänkö viikonnumero (1-52) kuukausi- ja viikkonäkymässä.
+Display week number: Näytä viikonnumero
+display-desc-print-day-help: Sisällytä tapahtumakuvaukset tulostimen ystävälliseen päiväkuvan versioon.
+Display description in printer day view: Näytä kuvaus päivän tulostusnäkymässä
+yearly-shows-events-help: Näytä vuosinäkymässä päivät, jotka sisältävät tapahtumia lihavoituna.
+Display days with events in bold in month and year views: Näytä päivät, joissa tapahtumia on lihavoitu, kuukauden ja vuoden näkymissä
+display-minutes-help: Jos tämä on käytössä, minuutit, jotka päättyvät: 00, näytetään aina
+Display 00 minutes always: Näytä aina 00 minuuttia
+display-end-times-help: Näytä tapahtuman lopetusajat, jos tapahtuma on ajastettu
+Display end times on calendars: Näytä lopetusajat kalenterissa
+allow-view-add-help: Asettaa '+'-merkin ilmestymään näkymiin, jolloin käyttäjä voi helposti lisätä uuden tapahtuman toisen(kin) käyttäjän kalenteriin.
+Include add event link in views: Lisää linkki "Lisää tapahtuma" kaikkiin näkymiin
+lunar-help: Jos tämä on käytössä, se näyttää pienet kuvakkeet, jotka edustavat kuun vaiheita joka kuukausi
+Display Lunar Phases in month view: Näytä kuun vaiheet kuukausinäkymässä
+Restrictions: Rajoitukset
+allow-view-other-help: Määrittää, salliiko kalenteri käyttäjän tarkastella toisen käyttäjän kalenteria.
+Allow viewing other users calendars: Salli muiden henkilöiden kalenterien tarkastelu
+require-approvals-help: Jos päällä, käyttäjän on vahvistettava tapahtuma ennenkuin se näkyy kalenterissa.
 Require event approvals: Vaadi tapahtumien vahvistus
-display-unapproved-help: M��rittelee n�ytet��nk� hyv�ksym�tt�m�t tapahtumat kalenterissa.<br />Jos valittu "Kyll�", niin hyv�ksym�tt�m�t tapahtumat n�ytet��n (eri v�rill�).<br />Jos valittu "Ei", niin tapahtumat tulee hyv�ksy� ennenkuin ne n�kyv�t kalenterissa.
-Display unapproved: N�yt� hyv�ksym�tt�m�t tapahtumat
+display-unapproved-help: Määrittelee näytetäänkö hyväksymättömät tapahtumat kalenterissa.<br>Jos valittu "Kyllä", niin hyväksymättömät tapahtumat näytetään (eri värillä).<br>Jos valittu "Ei", niin tapahtumat tulee hyväksyä ennenkuin ne näkyvät kalenterissa.
+Display unapproved: Näytä hyväksymättömät tapahtumat
 conflict-check-help: Tarkista tapahtumien konfliktit
 Check for event conflicts: Tarkista tapahtumien konfliktit
-Yes: Kyll�
+Yes: Kyllä
 No: Ei
-conflict-months-help: Kuinka monen kuukauden p��h�n tarkistetaan konfliktit.
+conflict-months-help: Kuinka monen kuukauden päähän tarkistetaan konfliktit.
 Conflict checking months: Konfliktit, montako kuukautta tarkistetaan
 conflict-check-override-help: Salli konfliktien ylikirjoitus.
 Allow users to override conflicts: Salli konfliktien ylikirjoitus
-limit-appts-help: Asettaa maksimiarvon p�iv�n tapahtumien lukum��r�lle.
-Limit number of timed events per day: Salli max # tapahtumaa / p�iv�
-limit-appts-number-help: Asettaa maksimim��r�n p�iv�n ajoitetuille tapahtumille p�iv�ss�
-Maximum timed events per day: Salli max # ajoitettua tapahtumaa / p�iv�
-disable-priority-field-help: Poistaa t�rkeys-kent�n k�yt�st�.
-Disable Priority field: Poista t�rkeys-kentt� k�yt�st�
-disable-access-field-help: Poistaa access-kent�n k�yt�st�, jolloin n�kym� on noviiseille selke�mpi
-Disable Access field: Poista access-kentt� (selke�mpi aloittelijoille)
-disable-participants-field-help: Poistaa mahdollisuuden lis�t� muita henkil�it� tapahtumaan osallisiksi.
-Disable Participants field: Poista muiden henkil�iden lis�ys tapahtumaan
+limit-appts-help: Asettaa maksimiarvon päivän tapahtumien lukumäärälle.
+Limit number of timed events per day: Salli max # tapahtumaa / päivä
+limit-appts-number-help: Asettaa maksimimäärän päivän ajoitetuille tapahtumille päivässä
+Maximum timed events per day: Salli max # ajoitettua tapahtumaa / päivä
+crossday-help: Jos tämä on käytössä, päiviä kestävät tapahtumat näytetään erillisinä päivinä
+Disable Cross-Day Events: Poista ristipäivän tapahtumat käytöstä
+disable-location-field-help: Jos valitset Kyllä, Paikka-kenttä poistetaan tapahtuman tietosivuilta
+Disable Location field: Poista Sijainti-kenttä käytöstä
+disable-url-field-help: Jos valitset Kyllä, URL-kenttä poistetaan tapahtuman tietosivuilta
+Disable URL field: Poista URL-kenttä käytöstä
+disable-priority-field-help: Poistaa tärkeys-kentän käytöstä.
+Disable Priority field: Poista tärkeys-kenttä käytöstä
+disable-access-field-help: Poistaa access-kentän käytöstä, jolloin näkymä on noviiseille selkeämpi
+Disable Access field: Poista access-kenttä (selkeämpi aloittelijoille)
+disable-participants-field-help: Poistaa mahdollisuuden lisätä muita henkilöitä tapahtumaan osallisiksi.
+Disable Participants field: Poista muiden henkilöiden lisäys tapahtumaan
 disable-repeating-field-help: Poistaa toistettavien tapahtumien mahdollisuuden.
-Disable Repeating field: Poista toistettavat tapahtumat k�yt�st�.
+Disable Repeating field: Poista toistettavat tapahtumat käytöstä.
+allow-html-description-help: Jos tämä on käytössä, käyttäjät voivat kirjoittaa HTML-koodin tapahtuman kuvauskenttään. Jos sitä ei ole otettu käyttöön, HTML-tunnisteet vältetään, jotta ne näkyvät pelkkänä tekstinä. Varoitus: Tämän ominaisuuden ottaminen käyttöön antaa käyttäjien viitata kuviin muilla verkkosivustoilla.
 Allow HTML in Description: Salli HTML kuvauksissa
-Display Site Extras in popup: N�yt� palvelukohtaiset lisukkeet ponnahdusikkunassa
+Popups: Ponnahdusikkunat
+disable-popups-help: Poista ponnahdusikkunat käytöstä kalenterinäkymistä
+Disable Pop-Ups: Poista ponnahdusikkunat käytöstä
+popup-includes-siteextras-help: Jos tämä on käytössä, salli mukautettujen tapahtumakenttien määritys site_extras.php-tiedostossa näkyvät tapahtuman ponnahdusikkunoissa.
+Display Site Extras in popup: Näytä palvelukohtaiset lisukkeet ponnahdusikkunassa
+popup-includes-participants-help: Jos tämä on käytössä, osallistujat näytetään tapahtuman ponnahdusikkunoissa.
+Display Participants in popup: Näytä osallistujat ponnahdusikkunassa
+Miscellaneous: Sekalaiset
 remember-last-login-help: Muistaa edellisen kirjauksesi ja asetuksesi.
 Remember last login: Muista edellinen kirjaus
-allow-public-access-help: Sallii tapahtuman n�kymisen kaikille
-Allow public access: Salli yleinen k�ytt�
-public-access-view-others-help: M��ritt��, voiko k�ytt�j� katsella toisen henkil�n tapahtumia.
+summary_length-help: Lyhyen kuvauksen enimmäispituus kalenterinäkymissä
+Brief Description Length: Lyhyt kuvaus Pituus
+user_sort-help: Määrittää käyttäjä- ja ei-luetteloiden lajittelujärjestyksen
+User Sort Order: Käyttäjän lajittelujärjestys
+Lastname, Firstname: Sukunimi Etunimi
+Firstname, Lastname: Etunimi Sukunimi
+allow-public-access-help: Sallii tapahtuman näkymisen kaikille
+Allow public access: Salli yleinen käyttö
+public-access-default-visible: Julkisen kalenterin tapahtumat näkyvät automaattisesti kaikkien käyttäjien kalentereissa
+Public access visible by default: Julkinen pääsy näkyy oletusarvoisesti
+public-access-default-selected: Kun lisäät uuden tapahtuman, julkinen käyttäjä valitaan oletusarvoisesti osallistujaksi.
+Public access is default participant: Julkinen pääsy on oletusosallistuja
+public-access-view-others-help: Määrittää, voiko käyttäjä katsella toisen henkilön tapahtumia.
 Public access can view other users: Salli tapahtuman tarkastelu kaikille
-public-access-can-add-help: Sallii yleisten k�ytt�jien lis�t� tapahtumia, mutta kalenteri ei n�yt� tapahtumaa, ennenkuin p��k�ytt�j� on vahvistanut sen.
-Public access can add events: Yleiset k�ytt�j�t voivat lis�t� tapahtumia
-public-access-add-requires-approval-help: Yleisten k�ytt�jien tapahtumalis�ykset vaativat vahvistuksen
-Public access new events require approval: Yleisten k�ytt�jien uudet tapahtumat vaativat vahvistuksen
-Public access can view participants: Yleiset k�ytt�j�t n�kev�t osallistujat
-groups-enabled-help: Sallii ryhmien k�yt�n.
-Groups enabled: Ryhm�t k�yt�ss�
-user-sees-his-group-help: K�ytt�j� n�kee vain k�ytt�j�t omissa ryhmiss��n.
-User sees only his groups: Vain k�ytt�j�t omissa ryhmiss�
-nonuser-enabled-help: Jos k�yt�ss�, p��k�ytt�j� voi lis�t� kalentereita, jotka eiv�t kuulu kenellek��n k�ytt�j�lle
-Nonuser enabled: Ei-kenenk��n kalenterit k�yt�ss�
-Nonuser list: N�yt� osallistujaluettelossa
-Enabled: K�yt�ss�
-Reports enabled: Raportit k�yt�ss�
+public-access-can-add-help: Sallii yleisten käyttäjien lisätä tapahtumia, mutta kalenteri ei näytä tapahtumaa, ennenkuin pääkäyttäjä on vahvistanut sen.
+Public access can add events: Yleiset käyttäjät voivat lisätä tapahtumia
+public-access-add-requires-approval-help: Yleisten käyttäjien tapahtumalisäykset vaativat vahvistuksen
+Public access new events require approval: Yleisten käyttäjien uudet tapahtumat vaativat vahvistuksen
+public-access-sees-participants-help: Jos tämä on käytössä, käyttäjät, jotka käyttävät kalenteria julkiselta tililtä, ??voivat nähdä tapahtuman osallistujat, jos he katsovat tapahtuman tietoja.
+Public access can view participants: Yleiset käyttäjät näkevät osallistujat
+public-access-override-help: Sallii tapahtumien nimien ja kuvausten piilottamisen julkisessa kalenterissa
+Override event name/description for public access: Ohita tapahtuman nimi / kuvaus julkista käyttöä varten
+public-access-override-text-help: Näytettävä teksti, jos yllä oleva vaihtoehto on käytössä. Jos 'Ei saatavilla', se käännetään.
+Text to display to public access: Teksti, joka näytetään julkisesti
+public-access-captcha-help: Jos tämä on käytössä, Julkisen lisäämät uudet tapahtumat edellyttävät CAPTCHA-vahvistuksen läpäisemistä.
+Require CAPTCHA validation for public access new events: Vaadi CAPTCHA-vahvistus uusien tapahtumien julkiseen käyttöön
+uac-enabled-help: Mahdollistaa käyttäjätason kulunvalvonnan
+User Access Control enabled: Käyttäjien pääsynvalvonta käytössä
+groups-enabled-help: Sallii ryhmien käytön.
+Groups enabled: Ryhmät käytössä
+user-sees-his-group-help: Käyttäjä näkee vain käyttäjät omissa ryhmissään.
+User sees only his groups: Vain käyttäjät omissa ryhmissä
+nonuser-enabled-help: Jos käytössä, pääkäyttäjä voi lisätä kalentereita, jotka eivät kuulu kenellekään käyttäjälle
+Nonuser enabled: Ei-kenenkään kalenterit käytössä
+nonuser-list-help: Missä ei-käyttäjien kalenterit näytetään osallistujaluettelossa
+Nonuser list: Näytä osallistujaluettelossa
+Upcoming Events: Tulevat tapahtumat
+upcoming-events-help: Ota upcoming.php käyttöön
+Enabled: Käytössä
+upcoming-events-allow-override: Salli käyttäjän paramter tulevalle.php-tiedostolle
+Allow user override: Salli käyttäjän ohitus
+upcoming-events-display-caticons: Sisällytä luokan kuvakkeet upcoming.php-tiedostoon
+Display category icons: Näytä luokan kuvakkeet
+upcoming-events-display-layers: Näytä kerrokset upcoming.php-tiedostossa
+Display layers: Näytä tasot
+upcoming-events-display-links: Näytä linkit upcoming.php: ssä
+Display links to events: Näytä linkit tapahtumiin
+upcoming-events-display-popups: Näytä tapahtuman ponnahdusikkunat upcoming.php-tiedostossa
+Display event popups: Näytä tapahtuman ponnahdusikkunat
+reports-enabled-help: Jos tämä on käytössä, käyttäjät näkevät "Raportit" -osion jokaisen sivun alaosassa ja saavat luoda mukautettuja raportteja. Lisäksi järjestelmänvalvojan käyttäjät voivat luoda yleisiä raportteja, jotka näkyvät kaikkien käyttäjien sivujen alaosassa.
+Reports enabled: Raportit käytössä
+subscriptions-enabled-help: Määrittää, voivatko etäkäyttäjät tilata WebCalendar-käyttäjän kalenterin, jolloin he voivat nähdä WebCalendar-käyttäjän tapahtumat iCal-yhteensopivassa sovelluksessaan (kuten Applen iCal tai Mozilla Calendar).
 Allow remote subscriptions: Salli ulkopuoliset tilaukset
-categories-enabled-help: Salli tapahtumaluokkien k�ytt�.
-Categories enabled: Tapahtumaluokat k�yt�ss�
-allow-external-users-help: M��ritt�� salliiko kalenteri sellaisen henkil�n lis��misen tapahtumaan, joka ei k�yt� kalenteria.
-Allow external users: Salli ulkopuoliset k�ytt�j�t lis�tt�v�ksi tapahtumiin
-external-can-receive-notification-help: Sallii tiedotteen l�hetyksen kalenterin ulkopuolisille henkil�ille.
-External users can receive email notifications: Ulkopuoliset k�ytt�j�t saavat tiedotteita tapahtumasta
-external-can-receive-reminder-help: Ulkopuoliset k�ytt�j�t saavat s�hk�postimuistutuksia tapahtumista.
-External users can receive email reminders: Ulkopuoliset k�ytt�j�t saavat muistutuksia
-email-enabled-help: Salli s�hk�postitiedotteiden l�hetys
-Email enabled: S�hk�postitiedotteet k�yt�ss�
-email-default-sender: L�hett�j� s�hk�postiviesteiss�
-Default sender address: L�hett�j�n oletusosoite
-Default user settings: K�ytt�j�n oletusasetukset
-email-event-reminders-help: M��rittelee l�hetet��nk� tapahtumamuistutuksia vai ei
+remotes-enabled-help: Antaa käyttäjien ladata ics-etätiedostoja URL-osoitteen avulla
+Allow remote calendars: Salli etäkalenterit
+rss-enabled-help: Määrittää, voidaanko käyttäjän kalenteri hankkia RSS-syötteestä.
+Enable RSS feed: Ota RSS-syöte käyttöön
+categories-enabled-help: Salli tapahtumaluokkien käyttö.
+Categories enabled: Tapahtumaluokat käytössä
+icon_upload-enabled-help: Jos tämä on käytössä, käyttäjät voivat ladata luokan kuvakkeita
+Category Icon Upload enabled: Luokkakuvakkeen lataus käytössä
+(Requires XXX folder to exist.): (Edellyttää XXX-kansion olemassaoloa.)
+display-tasks-help: Näytä pieni tehtäväikkuna kuukauden ja päivän kalenterissa
+Display small task list: Näytä pieni tehtäväluettelo
+display-tasks-in-grid-help: Näytä kalentereissa tehtävät yhdessä tapahtumien kanssa
+Display tasks in Calendars: Näytä tehtävät kalentereissa
+allow-external-users-help: Määrittää salliiko kalenteri sellaisen henkilön lisäämisen tapahtumaan, joka ei käytä kalenteria.
+Allow external users: Salli ulkopuoliset käyttäjät lisättäväksi tapahtumiin
+external-can-receive-notification-help: Sallii tiedotteen lähetyksen kalenterin ulkopuolisille henkilöille.
+External users can receive email notifications: Ulkopuoliset käyttäjät saavat tiedotteita tapahtumasta
+external-can-receive-reminder-help: Ulkopuoliset käyttäjät saavat sähköpostimuistutuksia tapahtumista.
+External users can receive email reminders: Ulkopuoliset käyttäjät saavat muistutuksia
+allow-self-registration-help: Salli uusien käyttäjien rekisteröityä itse
+Allow self-registration: Salli itsensä rekisteröinti
+use-blacklist-help: Rajoita pääsyä WebCalendar-toimintoihin IP-osoitteen perusteella
+Restrict self-registration to blacklist: Rajoita itsensä rekisteröinti mustalle listalle
+allow-self-registration-full-help: Salli uusien käyttäjien suorittaa itserekisteröinti verkossa
+Use self-registration email notifications: Luo salasanoja ja lähetä uusille käyttäjille
+allow-attachment-help: Salli käyttäjien lisätä tiedostoliitteitä tapahtumiin.
+Allow file attachments to events: Salli tiedostoliitteet tapahtumiin
+Admin and owner can always add attachments if enabled.: Järjestelmänvalvoja ja omistaja voivat aina lisätä liitteitä, jos ne ovat käytössä.
+allow-comments-help: Salli käyttäjien lisätä kommentteja tapahtumiin.
+Allow comments to events: Salli kommentit tapahtumiin
+Admin and owner can always add comments if enabled.: Järjestelmänvalvoja ja omistaja voivat aina lisätä kommentteja, jos ne ovat käytössä.
+email-enabled-help: Salli sähköpostitiedotteiden lähetys
+Email enabled: Sähköpostitiedotteet käytössä
+email-default-sender: Lähettäjä sähköpostiviesteissä
+Default sender address: Lähettäjän oletusosoite
+email-mailer: Valitse sähköpostityyppi (SMTP, PHP-posti, sendmail)
+Email Mailer: Lähetä sähköpostia
+email-smtp-host: SMTP-palvelimen isäntänimi (t) pilkuilla erotettuna
+SMTP Host name(s): SMTP-isäntänimi (t)
+email-smtp-port: SMTP-porttinumero (yleensä 25)
+SMTP Port Number: SMTP-porttinumero
+email-smtp-auth: Käytä SMTP-todennusta
+SMTP Authentication: SMTP-todennus
+email-smtp-username: SMTP-käyttäjätunnus, jos käytät todennusta
+SMTP Username: SMTP-käyttäjätunnus
+email-smtp-password: SMTP-salasana, jos käytät todennusta
+SMTP Password: SMTP-salasana
+Default user settings: Käyttäjän oletusasetukset
+email-format: Määritä HTML- tai pelkkien tekstiviestien ensisijaisuus
+Email format preference: Sähköpostimuoto-asetus
+HTML: =
+Plain Text: Pelkkä teksti
+email-include-ics: Sisällytä iCalendar ICS -tiedosto sähköpostiviestiin
+Include iCalendar attachments: Sisällytä iCalendar-liitteet
+email-event-reminders-help: Määrittelee lähetetäänkö tapahtumamuistutuksia vai ei
 Event reminders: Tapahtumamuistutukset
-email-event-added: M��rittelee l�hetet��nk� s�hk�postilla tiedote lis�tyist� kalenterimerkinn�ist�.
-Events added to my calendar: Kalenterimerkint�j� lis�tty
-email-event-updated: M��rittelee l�hetet��nk� s�hk�postilla tiedote muutetuista kalenterimerkinn�ist�.
-Events updated on my calendar: Kalenterimerkint�j� muutettu
-email-event-deleted: M��rittelee l�hetet��nk� s�hk�postilla tiedote poistetuista kalenterimerkinn�ist�.
-Events removed from my calendar: Kalenterimerkint�j� poistettu
-email-event-rejected: M��rittelee l�hetet��nk� s�hk�postilla tiedote ryhm�n j�senten hylk��mist� kalenterimerkinn�ist�.
-Event rejected by participant: Ryhm�n j�sen hylk�si tapahtuman
-Allow user to customize colors: Salli k�ytt�jien muokata v�rej�
+email-event-added: Määrittelee lähetetäänkö sähköpostilla tiedote lisätyistä kalenterimerkinnöistä.
+Events added to my calendar: Kalenterimerkintöjä lisätty
+email-event-updated: Määrittelee lähetetäänkö sähköpostilla tiedote muutetuista kalenterimerkinnöistä.
+Events updated on my calendar: Kalenterimerkintöjä muutettu
+email-event-deleted: Määrittelee lähetetäänkö sähköpostilla tiedote poistetuista kalenterimerkinnöistä.
+Events removed from my calendar: Kalenterimerkintöjä poistettu
+email-event-rejected: Määrittelee lähetetäänkö sähköpostilla tiedote ryhmän jäsenten hylkäämistä kalenterimerkinnöistä.
+Event rejected by participant: Ryhmän jäsen hylkäsi tapahtuman
+email-event-create: Määrittää, saako merkintöjen luoja sähköpostia
+Event that I create: Luomani tapahtuma
+Color options: Värivaihtoehdot
+Allow user to customize colors: Salli käyttäjien muokata värejä
+gradient-colors: Jos käytössä on kaltevuusvärejä, käytetään. Tämä voi vaikuttaa suuresti suorituskykyyn.
+Enable gradient images for background colors: Ota gradienttikuvat käyttöön taustaväreille
+Not available: Ei saatavilla
+Background Image options: Taustakuvan asetukset
+bgimage-help: Halutun taustakuvan URL-osoite. Voi olla suhteellinen yhteys.
+Background Image: Taustakuva
+bgrepeat-help: Ohjaa taustakuvan toistuvaa käyttäytymistä.
+Background Repeat: Toista tausta
 
 ########################################
 # Page: adminhome.php
 #
 Assistants: Avustajat
 Preferences: Asetukset
-Users: K�ytt�j�t
-Account: K�ytt�j�n tiedot
+Control Panel: Ohjauspaneeli
+Users: Käyttäjät
+Account: Käyttäjän tiedot
 Categories: Tapahtumaluokat
-Views: N�kym�t
+Views: Näkymät
 Layers: Tasoja
 Reports: Raportit
 Delete Events: Poistetut tapahtumat
-Activity Log: K�ytt�kirjanpito
+Activity Log: Käyttökirjanpito
+System Log: Järjestelmäloki
+Security Audit: Tietoturvatarkastus
 Public Preferences: Julkiset asetukset
-Unapproved Public Events: Hyv�ksym�tt�mi� julkisia tapahtumia
-Administrative Tools: Hallintaty�kalut
+Unapproved Public Events: Hyväksymättömiä julkisia tapahtumia
+Administrative Tools: Hallintatyökalut
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Nimen kaksoiskappale: "XXX".
+Username XXX already exists.: Käyttäjätunnus "XXX" on jo olemassa.
+Email address XXX already exists.: Sähköpostiosoite "XXX" on jo olemassa.
 
 ########################################
 # Page: approve_entry.php
 #
-Hello: Hei
-The subject was: Otsikko
-The description is: Puuttuva kuvaus on
-Date: Pvm
-Time: Klo
+Additional Comments (optional): Lisäkommentit (valinnainen)
+Approve and Send: Hyväksy ja lähetä
+Approve and Exit: Hyväksy ja poistu
+(Your comments will be emailed to the event creator.): (Kommenttisi lähetetään sähköpostitse tapahtuman tekijälle.)
+Hello, XXX.: Hei, XXX.
+XXX has approved an appointment and added comments.: XXX on hyväksynyt tapaamisen ja lisännyt kommentit.
+Subject XXX: Aihe: "XXX".
+Description XXX: Kuvaus: "XXX".
+Date XXX: Päivämäärä: XXX
+Time XXX: Aika: XXX
+Comments XXX: Kommentit: XXX
+Approved w/Comments by XXX.: Hyväksytty / kommentit: XXX.
 
 ########################################
 # Page: assistant_edit.php
 #
-Admin mode: P��k�ytt�j�-tila
+Admin mode: Pääkäyttäjä-tila
+Your assistants: Avustajat
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Tuntematon virhe.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Ohjelmavirhe: Ei XXX määritetty!
+user: käyttäjä
+year: vuosi
+month: kuukausi
+day: päivä
 
 ########################################
 # Page: category.php
 #
+Category Icon: Luokan kuvake
 Global: Globaali
+The permissions for the icons directory are set to read-only: Kuvakehakemiston käyttöoikeudet on asetettu vain luku -tilaan.
 Category Name: Tapahtumaluokan nimi
-Color: V�ri
-Add: Lis��
+Color: Väri
+Remove Icon: Poista kuvake:
+Add Icon to Category: Lisää kuvake luokkaan
+Upload: Lähetä
+GIF or PNG 6kb max: GIF tai PNG enintään 6 kt
+Search for existing icons: Etsi olemassa olevia kuvakkeita
+Add: Lisää
 Delete: Poista
-Are you sure you want to delete this entry?: Haluatko varmasti poistaa t�m�n merkinn�n?
-Make New Category: Lis�� uusi tapahtumaluokka
+Are you sure you want to delete this entry?: Haluatko varmasti poistaa tämän merkinnän?
+Make New Category: Lisää uusi tapahtumaluokka
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Luokan nimi vaaditaan
+File size exceeds maximum.: Tiedoston koko ylittää enimmäismäärän.
+File is not a GIF or PNG image: Tiedosto ei ole GIF- tai PNG-kuva
 
 ########################################
 # Page: catsel.php
 #
+AVAILABLE CATEGORIES: SAATAVAT LUOKAT
+ENTRY CATEGORIES: OSALLISTUMISLUOKAT
 Remove: Poista
+Global Category: Yleinen luokka
 Cancel: Kumoa
+
+########################################
+# Page: colors.php
+#
+Add Custom: Lisää mukautettu
+Basic Colors: Perusvärit
+Current Color: Nykyinen väri
+Custom Colors: Mukautetut värit
+Old Color: Vanha väri
+
+########################################
+# Page: combo.php
+#
+Select None: Älä valitse mitään
+Agenda: Esityslista
+Add Task: Lisää tehtävä
+Description: Kuvaus
+Date: Pvm
+Time: Klo
+Priority: Tärkeys
+Access: Saantioikeus
+Created by: Luonut
+Updated: Päivittänyt
+Participants: Ryhmän jäsenet
+Attachments: Liitteet
+Comments: Kommentit
+Brief Description: Selite
+Full Description: Selitys
+Category: Tapahtumaluokka
+Add event detail: Lisää tapahtuman tiedot
+Start Date: Aloituspäivämäärä
+Due Date: Eräpäivä
+Add task detail: Lisää tehtävän tiedot
+All: Kaikki
+Error: Virhe
+no response from server: ei vastausta palvelimelta
+JSON error: JSON-virhe
+High: Tärkeä
+Medium: Normaali
+Low: Vähäinen
+Today: Tänään
+Add Entry: Lisää merkintä
+Unnamed Event: Nimetön merkintä
+Unnamed Task: Nimetön tehtävä
+Refresh: virkistää
+Click to add entry: Napsauta lisätäksesi merkinnän
+Name: Nimi
+pm: =
+am: =
 
 ########################################
 # Page: del_entry.php
 #
-An appointment has been canceled for you by: Kalenterimerkint�si poisti
+XXX has canceled an appointment.: XXX on peruuttanut tapaamisen.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Virheellinen möykky id
 
 ########################################
 # Page: docadd.php
 #
-Description: Kuvaus
+Add Comment: Lisää kommentti
+Add Attachment: Lisää LIITE
+Subject: Aihe
+Comment: Kommentti
+Upload file: Lataa tiedosto
+
+########################################
+# Page: docdel.php
+#
+Removed: Poistettu
 
 ########################################
 # Page: edit_entry.php
 #
-am: =
-pm: =
-days: p�iv��
+days: päivää
 hours: tuntia
 minutes: minuuttia
-Edit Entry: Muokkaa merkint��
-Add Entry: Lis�� merkint�
+You are not authorized to edit this task.: Sinulla ei ole oikeutta muokata tätä tehtävää.
+is in a different timezone than you are. Currently: on eri aikavyöhykkeellä kuin sinä. Tällä hetkellä
+hour ahead of you: tunti ennen sinua
+hour behind you: tunnin takana
+hours ahead of you: tuntia ennen sinua
+hours behind you: tunteja takanasi
+XXX is in a different timezone (ahead): (XXX on eri aikavyöhykkeellä; VVV ennen sinua.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX on eri aikavyöhykkeellä; YYY takanasi.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Tähän syötetty aika perustuu aikavyöhykkeeseesi.
+Edit Entry: Muokkaa merkintää
 Details: Tiedot
-Participants: Ryhm�n j�senet
 Repeat: Toistuvuus
-brief-description-help: Kalenterimerkinn�n otsikko (noin 20 merkki�). N�ytet��n kalenteritaulukossa.
-Brief Description: Selite
-full-description-help: Sis�lt�� tapahtuman tiedot. N�m� n�ytet��n kun k�ytt�j� katsoo kalenterimerkinn�n tietoja.
-Full Description: Selitys
-access-help: M��rittelee tapahtuman n�kyvyyden.<br /> <i>Julkinen</i>: Kaikki n�kev�t kaikki tapahtuman tiedot.<br /><i>Luottamuksellinen</i>: Muut n�kev�t vain tapahtuman p�iv�m��r�n ja ajan, mutta ei muita tietoja.
-Access: Saantioikeus
-priority-help: M��rittelee tapahtuman t�rkeyden. T�rkeimm�t n�ytet��n lihavoituna.
-Priority: T�rkeys
-High: T�rke�
-Medium: Normaali
-Low: V�h�inen
-category-help: M��ritt�� tapahtumalle tapahtumaluokan.
-Category: Tapahtumaluokka
+Reminders: Muistutukset
+brief-description-help: Kalenterimerkinnän otsikko (noin 20 merkkiä). Näytetään kalenteritaulukossa.
+full-description-help: Sisältää tapahtuman tiedot. Nämä näytetään kun käyttäjä katsoo kalenterimerkinnän tietoja.
+access-help: Määrittelee tapahtuman näkyvyyden.<br><i>Julkinen</i>: Kaikki näkevät kaikki tapahtuman tiedot.<br><i>Luottamuksellinen</i>: Muut näkevät vain tapahtuman päivämäärän ja ajan, mutta ei muita tietoja.
+priority-help: Määrittelee tapahtuman tärkeyden. Tärkeimmät näytetään lihavoituna.
+category-help: Määrittää tapahtumalle tapahtumaluokan.
+completed-help: Päivämäärätehtävä on valmis. Käytössä vain, kun kaikkien osallistujien prosenttiosuus on 100%.
+Date Completed: Valmistumispäivä
+percent-help: Tämän käyttäjän tehtävän suorittamisprosentti
+Percent Complete: Prosentti valmis
+All Percentages: Kaikki prosentit
+location-help: Tapahtuman sijainti
+Location: Sijainti
+url-help: Tapahtuman URL-osoite
 URL: =
-date-help: M��rittelee tapahtuman p�iv�m��r�n.
+date-help: Määrittelee tapahtuman päivämäärän.
 Untimed event: Ajoittamaton tapahtuma
 Timed event: Ajoitettu tapahtuma
-All day event: Koko p�iv�n kest�v� tapahtuma
+All day event: Koko päivän kestävä tapahtuma
 Timezone Offset: Aikaero
-time-help: M��rittelee tapahtuman ajan.<br /><i>(Voidaan j�tt�� tyhj�ksi)</i>
-duration-help: M��rittelee tapahtuman keston (tunteina ja minuutteina).<br /><i>(Voidaan j�tt�� tyhj�ksi)</i>
+time-help: Määrittelee tapahtuman ajan.<br><i>(Voidaan jättää tyhjäksi)</i>
+duration-help: Määrittelee tapahtuman keston (tunteina ja minuutteina).<br><i>(Voidaan jättää tyhjäksi)</i>
+end-time-help: Määrittää ajan, jonka tapahtuman odotetaan päättyvän.
+Start Time: Aloitusaika
+Due Time: Eräpäivä
+Site Extras: Sivuston lisäominaisuudet
+avail_participants-help: Luetteloi tämän merkinnän käytettävissä olevat osallistujat.
+Available: Saatavilla
+Find Name: Etsi nimi
+Resources: Resurssit
 participants-help: Luetteloi tapahtuman osanottajat.
-external-participants-help: M��ritt�� listan ulkoisista tapahtuman osallistujista.
+Selected: Valittu
+Availability: Saatavuus
+external-participants-help: Määrittää listan ulkoisista tapahtuman osallistujista.
 External Participants: Ulkoisia osallistujia
-repeat-type-help: Valitaan kuinka usein tapahtuma toistetaan.<i>Kuukausittain (viikonp�iv�n mukaan)</i> mahdollistaa merkinn�n toistamisen
-Daily: P�ivitt�in
+repeat-type-help: Valitaan kuinka usein tapahtuma toistetaan.<i>Kuukausittain (viikonpäivän mukaan)</i> mahdollistaa merkinnän toistamisen
+Daily: Päivittäin
 Weekly: Viikottain
 Monthly: Kuukausittainen
-by day: viikonp�iv�n mukaan
-by date: p�iv�n mukaan
+by day: viikonpäivän mukaan
+by date: päivän mukaan
+by position: sijainnin mukaan
+Monthly (by day): Kuukausittain (päivittäin)
+Monthly (by date): Kuukausittain (päivämäärän mukaan)
+Monthly (by position): Kuukausittain (sijainnin mukaan)
 Yearly: Vuosittain
-repeat-end-date-help: M��rittelee p�iv�m��r�n mihin asti tapahtumaa toistetaan.
-Use end date: K�yt� lopetusp�iv��
-repeat-frequency-help: M��rittelee tapahtuman toistotiheyden. Oletusarvo 1 tarkoittaa toistoa joka kerta, 2 joka toinen kerta (esim. joka toinen viikko tai kuukausi), jne.
+Manual: Manuaalinen
+Expert Mode: Asiantuntijatila
+repeat-end-date-help: Määrittelee päivämäärän mihin asti tapahtumaa toistetaan.
+Ending: Loppu
+Forever: Ikuisesti
+Use end date: Käytä lopetuspäivää
+Number of times: Useita kertoja
+repeat-frequency-help: Määrittelee tapahtuman toistotiheyden. Oletusarvo 1 tarkoittaa toistoa joka kerta, 2 joka toinen kerta (esim. joka toinen viikko tai kuukausi), jne.
 Frequency: Toistuvuus
-All: Kaikki
-Send Reminder: L�het� muistutus
-Delete entry: Poista merkint�
-You are not authorized to edit this entry.: Sinulla ei ole oikeutta muokata t�t� merkint��
+Weekdays Only: Vain arkisin
+Week Start: Viikon alku
+repeat-bydayextended-help: Sallii päivämäärän valinnan viikonpäivän perusteella.
+ByDay: =
+repeat-month-help: Määrittää, minkä kuukausien tapahtuman tulisi toistaa.
+ByMonth: Kuukausi
+repeat-bysetpos-help: Sallii päivämäärän valinnan kuukauden sijainnin mukaan.
+BySetPos: =
+repeat-bymonthdayextended-help: Sallii päivämäärän valinnan päivämäärän perusteella.
+ByMonthDay: Kuukaudeksi
+repeat-byweekno-help: Antaa käyttäjän määrittää luettelon viikoista tapahtuman toistamiseksi (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: ByViikkoNe
+repeat-byyearday-help: Antaa käyttäjän määrittää luettelon vuoden päivistä tapahtuman toistamiseksi (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Lisäpäivät, joina tämän tapahtuman pitäisi tai ei pitäisi tapahtua.
+Exclusions: Poissulkemiset
+Inclusions: Mukautukset
+Add Exception: Lisää poikkeus
+Add Inclusion: Lisää sisällyttäminen
+Delete Selected: Poista valitut
+Send Reminder: Lähetä muistutus
+When: Kun
+Use Date/Time: Käytä päivämäärä / aika
+Use Offset: Käytä Offset
+Before: Ennen
+After: Jälkeen
+Start: alkaa
+End/Due: Loppu / eräpäivä
+Times: Ajat
+Every: Joka
+CAPTCHA Warning: Varoitus:  CAPTCHA: ta ei voi käyttää ilman PHP: n GD-laajennusta!<br>
+Delete entry: Poista merkintä
+You are not authorized to edit this entry.: Sinulla ei ole oikeutta muokata tätä merkintää
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: Sinulle on lis�tty uusi kalenterimerkint� -
-An appointment has been updated by: Kalenterimerkint�� on muutettu -
-The following conflicts with the suggested time: Ehdotettuna aikana on seuraavat muut merkinn�t
-Please look on: Tarkista
-to accept or reject this appointment: ja hyv�ksy tai hylk�� merkint�
-to view this appointment: tarkista kalenterimerkint�
+XXX has made a new appointment.: XXX on varannut uuden tapaamisen.
+XXX has updated an appointment.: XXX on päivittänyt tapaamisen.
+Security violation!: Turvallisuusrikkomus!
+You must enter the anti-spam text on the previous page.: Sinun on syötettävä roskapostin estoteksti edelliselle sivulle.
+The following conflicts with the suggested time: Ehdotettuna aikana on seuraavat muut merkinnät
+User removed from participants list.: Käyttäjä poistettiin osallistujaluettelosta.
+Please look on XXX to accept or reject this appointment.: Hyväksy tai hylkää tämä tapaaminen katsomalla XXX.
+Please look on XXX to view this appointment.: Katsokaa tätä tapaamista katsomalla XXX.
 Scheduling Conflict: Aikataulussa ristiriita
 Your suggested time of: Ehdottamasi aika
-conflicts with the following existing calendar entries: on ristiriidassa seuraavien merkint�jen kanssa
-
-########################################
-# Page: edit_layer.php
-#
-Add Layer: Lis�� taso
-Edit Layer: Muokattava taso
-Source: L�hde
-Duplicates: P��llekk�isi�
-Show layer events that are the same as your own: N�yt� kaikki tason tapahtumat, jotka ovat samoja kuin omat
-Add to My Calendar: Lis�� kalenteriin
-Delete layer: Poista taso
-
-########################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself.: Et voi luoda tasoa itsellesi
-You can only create one layer for each user.: Voit luoda vain yhden tason k�ytt�j�� kohti
+conflicts with the following existing calendar entries: on ristiriidassa seuraavien merkintöjen kanssa
 
 ########################################
 # Page: edit_nonusers.php
 #
-NONUSER_PREFIX not set: NONUSER_PREFIX ei m��ritetty tiedostossa config.php.
-Add User: Lis�� k�ytt�j�
-Edit User: Muokkaa k�ytt�j�ntietoja
+NONUSER_PREFIX not set: NONUSER_PREFIX ei määritetty tiedostossa config.php.
+word characters only: (voi sisältää vain sanamerkkejä; [a-zA-Z_0-9])
+Add User: Lisää käyttäjä
+Edit User: Muokkaa käyttäjäntietoja
 Calendar ID: Kalenterin nimi
 First Name: Etunimi
 Last Name: Sukunimi
+Is public calendar: Onko julkinen kalenteri
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Tietokantavirhe
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Lisää etäkalenteri
+Edit Remote Calendar: Muokkaa etäkalenteria
+Create Layer: Luo taso
+Reload: Lataa uudelleen
+Required to View Remote Calendar: Vaaditaan etäkalenterin tarkastelemiseen
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Virhe
 Import Results: Tuonnin tulokset
 Events successfully imported: Tuodut tapahtumat
+Create a new layer to view this calendar.: Luo uusi kerros nähdäksesi tämän kalenterin.
 Errors: Virheet
 There was an error parsing the import file or no events were returned.: Virhe luettaessa tuontitiedostoa tai ei tapahtumia
 
@@ -383,46 +760,53 @@ There was an error parsing the import file or no events were returned.: Virhe lu
 # Page: edit_report.php
 #
 Tomorrow: Huomenna
-Today: T�n��n
 Yesterday: Eilen
-Day before yesterday: Toissap�iv�n�
+Day before yesterday: Toissapäivänä
 Next week: Ensi viikolla
-This week: T�ll� viikolla
+This week: Tällä viikolla
 Last week: Viime viikolla
 Week before last: Toissaviikolla
-Next week and week after: Ensi- ja sit� seuraava viikko
-This week and next week: T�m�- ja ensiviikko
-Last week and this week: T�m� ja edellinen viikko
+Next week and week after: Ensi- ja sitä seuraava viikko
+This week and next week: Tämä- ja ensiviikko
+Last week and this week: Tämä ja edellinen viikko
 Last two weeks: Viimeiset kaksi viikkoa
 Next month: Ensi kuussa
-This month: T�ss� kuussa
+This month: Tässä kuussa
 Last month: Viimekuussa
 Month before last: Toissakuussa
 Next year: Seuraava vuosi
-This year: T�m� vuosi
+This year: Tämä vuosi
 Last year: Viime vuosi
 Year before last: Toissavuosi
-Invalid report id.: Raportti-id ei kelpaa
-Unnamed Report: Nimet�n raportti
-Add Report: Lis�� raportti
+Next 14 days: Seuraavat 14 päivää
+Next 30 days: Seuraavat 30 päivää
+Next 60 days: Seuraavat 60 päivää
+Next 90 days: Seuraavat 90 päivää
+Next 180 days: Seuraavat 180 päivää
+Next 365 days: Seuraavat 365 päivää
+Invalid report id XXX.: Virheellinen raporttitunnus: "XXX".
+Unnamed Report: Nimetön raportti
+Add Report: Lisää raportti
 Edit Report: Muokkaa raporttia
 Report name: Raportin nimi
-User: K�ytt�j�
-Current User: K�ytt�j�
-Include standard header/trailer: Lis�� vakio yl�- ja alatunniste
-Include previous/next links: Lis�� edellinen/seuraava -linkit
-Include empty dates: N�yt� tyhj�t p�iv�t
-Date range: P�iv�m��r�rajaus
+User: Käyttäjä
+Current User: Käyttäjä
+Include link in menu: Sisällytä linkki valikkoon
+Include standard header/trailer: Lisää vakio ylä- ja alatunniste
+Include previous/next links: Lisää edellinen/seuraava -linkit
+Include empty dates: Näytä tyhjät päivät
+Date range: Päivämäärärajaus
 Template variables: Sivupohjan muuttujat
 Page template: Sivupohja
-Day template: P�iv�raportin pohja
+Day template: Päiväraportin pohja
 Event template: Tapahtumaraportin pohja
-Are you sure you want to delete this report?: Haluatko varmasti poistaa t�m�n raportin?
+Are you sure you want to delete this report?: Haluatko varmasti poistaa tämän raportin?
 
 ########################################
 # Page: edit_report_handler.php
 #
-Variable N not found: Muuttujaa N ei l�ydy
+No such report id XXX.: Ei tällaista raporttitunnusta: "XXX".
+Variable XXX not found.: Muuttujaa XXX ei löydy.
 
 ########################################
 # Page: edit_template.php
@@ -434,11 +818,12 @@ Edit Custom Trailer: Muokkaa oma alatunniste
 ########################################
 # Page: edit_user.php
 #
-Username: K�ytt�j�tunnus
-E-mail address: S�hk�posti
+Username: Käyttäjätunnus
+E-mail address: Sähköposti
 Password: Salasana
 again: uudestaan
-Disabled for demo: Toiminto ei k�yt�ss� (demoversio)
+Disabled for demo: Toiminto ei käytössä (demoversio)
+Are you sure you want to delete this user?: Haluatko varmasti poistaa tämän käyttäjän?
 Change Password: Vaihda salasana
 New Password: Uusi salasana
 Set Password: Aseta salasana
@@ -446,203 +831,361 @@ Set Password: Aseta salasana
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported.: K�ytt�jien poisto ei ole tuettuna j�rjestelm�ss�
-The passwords were not identical.: Salasanat eiv�t vastaa toisiaan
-You have not entered a password.: salasanaa ei ole sy�tetty
+Deleting users not supported.: Käyttäjien poisto ei ole tuettuna järjestelmässä
+The passwords were not identical.: Salasanat eivät vastaa toisiaan
+You have not entered a password.: salasanaa ei ole syötetty
+Username cannot be blank.: Käyttäjätunnus ei voi olla tyhjä.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ei sallittu
 
 ########################################
 # Page: export.php
 #
 Export: Talleta
 Export format: Tallennusmuoto
-Export all dates: Talleta kaikki p�iv�ysmerkinn�t
-Start date: Alkup�iv�
-End date: Lopetustusp�iv�
+Include all layers: Sisällytä kaikki kerrokset
+Include deleted entries: Sisällytä poistetut merkinnät
+Export all dates: Talleta kaikki päiväysmerkinnät
+Start date: Alkupäivä
+End date: Lopetustuspäivä
 Modified since: Viimeksi muokattu
 
 ########################################
 # Page: export_handler.php
 #
-export format not defined or incorrect.: vientimuotoa ei m��ritelty tai se ei kelpaa
+export format not defined or incorrect.: vientimuotoa ei määritelty tai se ei kelpaa
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Ei käyttäjää määritetty.
 
 ########################################
 # Page: groups.php
 #
-Add New Group: Lis�� uusi ryhm�
+Add New Group: Lisää uusi ryhmä
 
 ########################################
 # Page: group_edit.php
 #
-Unnamed Group: Nimet�n ryhm�
-Add Group: Lis�� ryhm�
-Edit Group: Muokkaa ryhm��
-Group name: Ryhm�n nimi
-Updated: P�ivitt�nyt
-Created by: Luonut
+Unnamed Group: Nimetön ryhmä
+Add Group: Lisää ryhmä
+Edit Group: Muokkaa ryhmää
+Group name: Ryhmän nimi
 
 ########################################
 # Page: group_edit_handler.php
 #
-You must specify a group name: Sinun t�ytyy m��ritt�� ryhm�lle nimi
+You must specify a group name: Sinun täytyy määrittää ryhmälle nimi
 
 ########################################
 # Page: help_admin.php
 #
-Auto-refresh calendars: P�ivit� kalenterit automaattisesti
-auto-refresh-help: P�ivitt�� n�kym�t automaattisesti.
-Auto-refresh time: Tauko p�ivitysten v�lill�
-auto-refresh-time-help: Tauko p�ivitysten v�lill�.
-Display days with events in bold in year view: N�yt� p�iv�t, joilla on tapahtumia, lihavoituina vuosin�kym�ss�
-Display weekends in week view: N�yt� viikonloput viikkoa katseltaessa
+Auto-refresh calendars: Päivitä kalenterit automaattisesti
+auto-refresh-help: Päivittää näkymät automaattisesti.
+Auto-refresh time: Tauko päivitysten välillä
+auto-refresh-time-help: Tauko päivitysten välillä.
+Display days with events in bold in year view: Näytä päivät, joilla on tapahtumia, lihavoituina vuosinäkymässä
+Display weekends in week view: Näytä viikonloput viikkoa katseltaessa
 Time interval: Aikajakso
-time-interval-help: M��ritt�� viikko- sek� p�iv�n�kymien aikablokit.
-Nonuser: Ei-kenenk��n kalenterit
-colors-help: Kaikki v�rit m��ritell��n koodaamalla ne heksadesimaalinumeroksi #RRGGBB-muotoon. (RR-punainen, GG-vihre� ja BB-sininen arvo (00-FF)).
+time-interval-help: Määrittää viikko- sekä päivänäkymien aikablokit.
+Nonuser: Ei-kenenkään kalenterit
+user-customize-color: Määrittää, saavatko käyttäjät muokata omaa värimaailmaansa.
+enable-gradient-help: Käytä kaltevuusvärejä solujen taustoissa.
+Manually entering color values: Väriarvojen syöttäminen manuaalisesti
+colors-help: Kaikki värit määritellään koodaamalla ne heksadesimaalinumeroksi #RRGGBB-muotoon. (RR-punainen, GG-vihreä ja BB-sininen arvo (00-FF)).
 
 ########################################
 # Page: help_bug.php
 #
 Report Bug: Ilmoita bugista
+Please include all the information below when reporting a bug.: Ilmoita virheestä ilmoittamalla kaikki alla olevat tiedot.
+Also, please use English rather than XXX.: Käytä myös  englantia  eikä XXX: ta.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar-dokumentaatio
+Currently in English only.: Tällä hetkellä vain englanniksi.
 
 ########################################
 # Page: help_edit_entry.php
 #
-Adding/Editing Calendar Entries: Lis��/Muuta kalenterimerkint�j�
+Adding/Editing Calendar Entries: Lisää/Muuta kalenterimerkintöjä
 Repeat Type: Toiston tyyppi
-Repeat End Date: Toiston lopetusp�iv�
-Repeat Day: Toista viikonp�ivitt�in
-repeat-day-help: M��rittelee viikonp�iv�, joina tapahtumaa toistetaan. K�ytett�viss� vain kun <i>Toistotyypiksi</i> on asetettu <i>Viikottain</i>.
+For More Information...: Lisätietoja...
+Repeat End Date: Toiston lopetuspäivä
+Repeat Day: Toista viikonpäivittäin
+repeat-day-help: Määrittelee viikonpäivä, joina tapahtumaa toistetaan. Käytettävissä vain kun <i>Toistotyypiksi</i> on asetettu <i>Viikottain</i>.
 
 ########################################
 # Page: help_import.php
 #
 Import: Tuo
 Palm Desktop: Palm PDA
-This form will allow you to import entries from the Palm Desktop Datebook.: T�ll� lomakkeella voit tuoda tapahtumamerkint�j� Palm PDA:stasi.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Sen pit�isi olla Palmissasi hakemistossa <tt>datebook/datebook.dat</tt> k�ytt�j�tunnuksesi mukaisesti nimetyss� alihakemistossa.
+allow you to import entries from the Palm...: Tämän lomakkeen avulla voit tuoda merkintöjä Palm Desktopin päiväkirjasta. Sen pitäisi sijaita Palm-hakemistossa datebook / datebook.dat-sovelluksessa käyttäjänimesi nimeämässä alihakemistossa.
 The following entries will not be imported: Seuraavia tapahtumia ei tuoda
-Entries older than the current date: Kuluvaa p�iv�� vanhemmat tapahtumat
-Entries created in the Palm Desktop...: Palmissa luodut tapahtumat, joita ei ole synkronoitu HotSync:ll�
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Kaikki Palmista tuodut tapahtumat pyyhkiytyv�t seuraavassa tuonnissa (ellei tapahtuma ole jo mennyt ohi).
-Therefore, updates should be made in the Palm Desktop.: Siksi p�ivitykset tulisi tehd� Palmin kautta.
+Entries older than the current date: Kuluvaa päivää vanhemmat tapahtumat
+Entries created in the Palm Desktop...: Palmissa luodut tapahtumat, joita ei ole synkronoitu HotSync:llä
+Anything imported from Palm...: Kaikki Palmista tuodut tiedot korvataan seuraavan tuonnin aikana (ellei tapahtuman päivämäärä ole kulunut). Siksi päivitykset tulisi tehdä Palm-työpöydälle.
 vCal: =
-This form will import vCalendar (.vcs) 1.0 events.: Tuo vCalendar (.vcs) 1.0 t�ll� lomakkeella
+This form will import vCalendar (.vcs) 1.0 events.: Tuo vCalendar (.vcs) 1.0 tällä lomakkeella
 The following formats have been tested: Seuraavat tiedostomuodot on testattu
-This form will import iCalendar (.ics) events.: Tuo iCalendar (.ics) t�ll� lomakkeella
-Enabling: Otetaan k�ytt��n
+This form will import iCalendar (.ics) events.: Tuo iCalendar (.ics) tällä lomakkeella
+Enabling: Otetaan käyttöön
 Overwrite Prior Import: Tuo ylikirjoittaen
+will cause events imported previously...: aiheuttaa aiemmin tuotuja tapahtumia, jotka käyttivät samaa UID: tä kuin tapahtuma uudesta tuontitiedostosta, merkitään poistetuiksi. Tämän pitäisi sallia päivitetyn iCalendar-tiedoston tuominen luomatta kaksoiskappaleita.
 
 ########################################
 # Page: help_index.php
 #
 Help Index: Ohjehakemisto
+About WebCalendar: Tietoja WebCalendarista
 
 ########################################
 # Page: help_layers.php
 #
-Add/Edit/Delete: Lis��/Muokkaa/Poista
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Painamalla "Muokkaa tasoja"-painiketta p��k�ytt�j�-osiossa sivun lopussa antaa sinulle mahdollisuuden lis�t�/muokata/poistaa tasoja.
-The text color of the new layer that will be displayed in your calendar.: Uuden tason tekstin v�ri
-Disabling: Poistetaan k�yt�st�
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Paina 'Poistetaan k�yt�st�'-linkki� p��k�ytt�j�-osassa sivun alareunassa asettaaksesi tasot pois k�yt�st�
-If checked, events that are duplicates of your events will be shown.: Jos valittuna, n�ytt�� my�s ne tapahtumat jotka ovat duplikaatteja omistasi.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Paina 'Otetaan k�ytt��n'-linkki� p��k�ytt�j�-kohdassa sivun alaosassa asettaaksesi tasot k�ytt��n
-Specifies the user that you would like to see displayed in your calendar.: M��ritt�� k�ytt�j�n jonka haluat n�hd� omassa kalenterissasi.
+Layers are useful for displaying...: Tasot ovat hyödyllisiä muiden käyttäjien tapahtumien näyttämiseen omassa kalenterissasi. Voit määrittää käyttäjän ja värin, jossa tapahtumat näkyvät.
+Add/Edit/Delete: Lisää/Muokkaa/Poista
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Painamalla "Muokkaa tasoja"-painiketta pääkäyttäjä-osiossa sivun lopussa antaa sinulle mahdollisuuden lisätä/muokata/poistaa tasoja.
+The text color of the new layer that will be displayed in your calendar.: Uuden tason tekstin väri
+Disabling: Poistetaan käytöstä
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Paina 'Poistetaan käytöstä'-linkkiä pääkäyttäjä-osassa sivun alareunassa asettaaksesi tasot pois käytöstä
+Duplicates: Päällekkäisiä
+If checked, events that are duplicates of your events will be shown.: Jos valittuna, näyttää myös ne tapahtumat jotka ovat duplikaatteja omistasi.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Paina 'Otetaan käyttöön'-linkkiä pääkäyttäjä-kohdassa sivun alaosassa asettaaksesi tasot käyttöön
+Source: Lähde
+Specifies the user that you would like to see displayed in your calendar.: Määrittää käyttäjän jonka haluat nähdä omassa kalenterissasi.
 
 ########################################
 # Page: help_pref.php
 #
 Default Category: Oletusluokka
-default-category-help: M��ritt�� tapahtumaluokan johon uusi tapahtuma lis�t��n
+default-category-help: Määrittää tapahtumaluokan johon uusi tapahtuma lisätään
 When I am the boss: Jos olen esimies
-Email me event notification: L�het� muistutus s�hk�postilla
-I want to approve events: Min� annan hyv�ksynn�t tapahtumille
+Email me event notification: Lähetä muistutus sähköpostilla
+email-boss-notifications-help: Määrittää, saavatko pomot sähköpostiviestejä tapahtumailmoituksina.
+I want to approve events: Minä annan hyväksynnät tapahtumille
+boss-approve-event-help: Määrittää, vaaditaanko pomo hyväksymään avustajien lisäämät tapahtumat.
 Subscribe/Publish: Tilaa/Julkaise
+Allow remote publishing: Salli etäjulkaisu
+allow-remote-publishing-help: Määrittää, voiko iCal-etäasiakas julkaista tapahtumia takaisin WebCalendariin
+remote-publishing-url-help: Näyttää URL-osoitteen, jota iCal-asiakassovelluksessa käytetään sekä tilaamiseen että takaisin julkaisemiseen WebCalendariin.
+allow-remote-subscriptions-help: Määrittää, voivatko etäkäyttäjät tilata kalenterisi, jolloin he voivat nähdä tapahtumasi iCal-yhteensopivassa sovelluksessa (kuten Applen iCal- tai Mozilla-kalenteri).
+remote-subscriptions-url-help: Näyttää URL-osoitteen, jonka käyttäjien tulisi käyttää kalenterisi tilaamiseen.
+Enable FreeBusy publishing: Ota FreeBusy-julkaisu käyttöön
+freebusy-enabled-help: Määrittää, saadaanko käyttäjän käytettävissä oleva aika iCal FreeBusy -standardin avulla.
+freebusy-url-help: URL-osoite käyttäjän FreeBusy-luetteloon pääsemiseksi
+rss-feed-url-help: RSS-syötteen käyttämisen URL-osoite
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Mahdollistaa käyttäjien käyttöoikeuksien ja käyttöoikeuksien tarkan hallinnan. Käyttäjät voivat myös myöntää oletusarvoisen ja yksittäisen käyttöoikeuden järjestelmänvalvojan luvalla.
+If disabled, this user cannot send you emails.: Jos tämä ei ole käytössä, tämä käyttäjä ei voi lähettää sinulle sähköpostia.
+If disabled, this user cannot see you in the participants list.: Jos tämä on poistettu käytöstä, tämä käyttäjä ei näe sinua osallistujien luettelossa.
+If enabled, this user cannot view the details of any of your entries.: Jos tämä on käytössä, tämä käyttäjä ei voi tarkastella minkä tahansa syötteesi tietoja.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Julkaisu poistettu käytöstä (järjestelmänvalvoja)
+Publishing Disabled (User): Julkaisu ei käytössä (käyttäjä)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Napsauta valitaksesi
+Current Icons on Server: Palvelimen nykyiset kuvakkeet
 
 ########################################
 # Page: import.php
 #
-Disabled: Poistettu k�yt�st�
+import from file: tuo tiedostosta
+Disabled: Poistettu käytöstä
 Import format: Tuontitiedon muoto
-Exclude private records: Ei yksityisi� merkint�j�
+Exclude private records: Ei yksityisiä merkintöjä
+Repeated items are imported separately. Prior imports are not overwritten.: Toistuvat tuotteet tuodaan erikseen. Aikaisempaa tuontia ei korvata.
 
 ########################################
 # Page: import_handler.php
 #
+No file: Ei tiedostoa
+Error deleting palm events from webcalendar.: Virhe poistettaessa kämmentapahtumia verkkokalenterista.
 Events from prior import marked as deleted: Tuonnissa poistetut tapahtumat
-Conflicting events: P��llekk�iset tapahtumat
+Conflicting events: Päällekkäiset tapahtumat
 The import file contained no data.: Tuontitiedostossa ei ollut tapahtumia
 
 ########################################
 # Page: layers.php
 #
-Layer: Taso
+Are you sure you want to delete this layer?: Haluatko poistaa tämän tason?
+Delete layer: Poista taso
 Edit layer: Muokkaa tasoa
-Are you sure you want to delete this layer?: Haluatko poistaa t�m�n tason?
-Disable Layers: Poista tasot k�yt�st�
-Add layer: Lis�tt�v� taso
+Enable layers: Ota tasot käyttöön
+Layer: Taso
+Layers are currently disabled.: Tasot ovat tällä hetkellä poissa käytöstä.
+Layers are currently enabled.: Tasot ovat tällä hetkellä käytössä.
+Click to modify layers settings for XXX: Napsauta tätä, jos haluat muokata XXX-kalenterin tasojen asetuksia.
+Disable Layers: Poista tasot käytöstä
+Add layer: Lisättävä taso
+Add Layer: Lisää taso
+Edit Layer: Muokattava taso
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Asetusta ei voi päivittää
+Invalid entry id.: Virheellinen merkinnän tunnus.
+You cannot create a layer for yourself.: Et voi luoda tasoa itsellesi
+You can only create one layer for each user.: Voit luoda vain yhden tason käyttäjää kohti
 
 ########################################
 # Page: list_unapproved.php
 #
-Approve/Confirm: Hyv�ksy/Vahvista
-Reject: Hylk��
-View this entry: N�yt� merkint�
-Approve this entry?: Hyv�ksyt��nk� merkint�?
-Reject this entry?: Hyl�t��nk� merkint�?
+Approve/Confirm: Hyväksy/Vahvista
+Approve Selected: Hyväksy valittu
+Check All: Tarkista kaikki
+Emails Will Not Be Sent: Sähköposteja ei lähetetä
+Reject Selected: Hylkää valittu
+Reject: Hylkää
+Uncheck All: Poista valinta kaikista
+View this entry: Näytä merkintä
+No unapproved entries for XXX.: Ei hylättyjä merkintöjä kohteelle "XXX".
+Unapproved Entries: Hyväksymättömät merkinnät
+Approve this entry?: Hyväksytäänkö merkintä?
+Reject this entry?: Hylätäänkö merkintä?
+Approve Selected entries?: Hyväksytäänkö valitut merkinnät?
+Reject Selected entries?: Hylätäänkö valitut merkinnät?
 
 ########################################
 # Page: login-app.php
 #
-You must enter a login and password.: Sy�t� k�ytt�j�tunnus ja salasana
-Save login via cookies so I dont have to login next time.: Kirjaa minut automaattisesti sis��n
+You must enter a login and password.: Syötä käyttäjätunnus ja salasana
+Save login via cookies so I dont have to login next time.: Kirjaa minut automaattisesti sisään
 Login: Kirjoittaudu
-Access public calendar: Salli yleinen kalenteri
-cookies-note: <b>Huom:</b> T�t� sovellusta k�ytett�ess� (joulu)piparien pit�� olla k�yt�ss�.
+public: julkinen
+Access XXX calendar: Käytä XXX-kalenteria
+cookies-note: Huom: Tätä sovellusta käytettäessä (joulu)piparien pitää olla käytössä.
 
 ########################################
 # Page: login.php
 #
-Invalid login: Kirjoittauminen j�rjestelm��n ei onnistunut
+Illegal characters in login XXX.: Laittomat merkit kirjautumisessa XXX.
+Invalid login: Kirjoittauminen järjestelmään ei onnistunut
+Activity login failure: Käyttäjätunnus: "XXX", IP: "YYY".
+Error XXX: Virhe: "XXX".
+You have been logged out.: Olet kirjautunut ulos.
+Access public calendar: Salli yleinen kalenteri
+Not yet registered? Register here!: Etkö ole vielä rekisteröitynyt? Rekisteröidy täällä!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Ei tällaista ei-käyttäjän kalenteria: "XXX".
+This Calendar is not Public.: Tämä kalenteri ei ole julkinen.
 
 ########################################
 # Page: nonusers.php
 #
-Add New NonUser Calendar: Lis�� uusi ulkoinen k�ytt�j�
+Add New NonUser Calendar: Lisää uusi ulkoinen käyttäjä
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Sisäänkirjautuminen on määritettävä.
+No such nonuser calendar: Ei tällaista ei-käyttäjän kalenteria
 
 ########################################
 # Page: pref.php
 #
+Invalid theme: Virheellinen teema
 Save Preferences: Talleta asetukset
+Public Access calendar: Julkisen pääsyn kalenteri
+Modify Non User Calendar Preferences: Muokkaa muiden kuin käyttäjän kalenteriasetuksia
+Return to My Preferences: Palaa Omat asetukset -kohtaan
+Custom Scripts: Mukautetut komentosarjat
+Timezone Selection: Aikavyöhykkeen valinta
+Multiview: Monikatselu:
+entry-interval-help: Asettaa minuuttivälin syöteaikoja muokattaessa
+Entry interval: Sisääntuloväli
 hour: tuntia
+minute: minuutti
+theme-reload-help: CSS-välimuistin takia sivun lataaminen saattaa olla tarpeen
+Page may need to be reloaded for new Theme to take effect: Sivu on ehkä ladattava uudelleen, jotta uusi teema tulee voimaan
+display_byproxy-help: Näytä todellinen luoja view_entry -sivulla
+Display if created by Assistant: Näytä, jos Assistant on luonut sen
+allow-view-subscriptions-help: Mahdollistaa etäkäytön rajoittamisen yksityisille tai luottamuksellisille tiedoille
+Allow remote viewing of: Salli kohteen etäkatselu
+entries: merkinnät
 
 ########################################
 # Page: purge.php
 #
 Purging events for: Tuhotaan tapahtumia kohteesta
 Finished: Valmis
-Check box to delete ALL events for a user: Laita rasti ruutuun poistaaksesi <b>KAIKKI</b> k�ytt�j�n tapahtumat
+Back: Takaisin
+Check box to delete ALL events for a user: Laita rasti ruutuun poistaaksesi KAIKKI käyttäjän tapahtumat
 Delete all events before: Poista tapahtumat ennen
-Are you sure you want to delete events for: Haluatko varmasti poistaa kaikki tapahtumat k�ytt�j�lt�
+Purge deleted only: Vain puhdistus poistettu
+Preview delete: Esikatselu poistaa
+Are you sure you want to delete events for: Haluatko varmasti poistaa kaikki tapahtumat käyttäjältä
+Records deleted from XXX: Tietueet poistettu kansiosta XXX.
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Sähköpostiosoite ei voi olla tyhjä.
+Username already exists.: Käyttäjätunnus on jo olemassa.
+Email address already exists.: Sähköpostiosoite on jo olemassa.
+New user via self-registration.: Uusi käyttäjä itserekisteröinnin kautta.
+A new WebCalendar account has been set up for you.: Uusi WebCalendar-tili on määritetty sinulle.
+Your username is XXX.: Käyttäjänimesi on: "XXX".
+Your password is XXX.: Salasanasi on: "XXX".
+Please visit XXX to log in and start using your account!: Käy osoitteessa "XXX" kirjautua sisään ja aloita tilisi käyttö!
+You may change your password after logging in the first time.: Voit vaihtaa salasanasi kirjautumisen jälkeen ensimmäisen kerran.
+If you received this email in error: Jos sait tämän sähköpostin virheellisesti etkä kirjautunut WebCalendar-tilille, voit jättää tämän ilmoituksen huomiotta tai vastata lyhyellä huomautuksella
+Administrator: Järjestelmänvalvoja
+Welcome: Tervetuloa
+New user via email.: Uusi käyttäjä sähköpostitse.
+Registration: Rekisteröinti
+Welcome to WebCalendar: Tervetuloa WebCalendariin
+Your email should arrive shortly.: Sähköpostisi pitäisi saapua pian.
+Return to Login screen: Palaa kirjautumisnäyttöön
+Password (again): Salasana uudestaan):
+Your account information will be emailed to you.: Tilisi tiedot lähetetään sinulle sähköpostitse.
+Submit: Lähetä
 
 ########################################
 # Page: reject_entry.php
 #
-An appointment has been rejected by: Kalenterimerkint� on hyl�tty
+Continue: Jatkaa
+(Your comments will be emailed to the other participants.): (Kommenttisi lähetetään sähköpostitse muille osallistujille.)
+XXX has rejected an appointment.: XXX on hylännyt tapaamisen.
+Rejected by XXX.: XXX hylkäsi.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Lisää uusi etäkalenteri
 
 ########################################
 # Page: report.php
 #
-This event is confidential.: Luottamuksellinen merkint�
-cont.: jatk.
-Approved: Hyv�ksytty
+This event is confidential.: Luottamuksellinen merkintä
+(Private): (Yksityinen)
+(cont.): (jatkuu)
+Approved: Hyväksytty
 Deleted: Poistettu
-Rejected: Hyl�tty
-Waiting for approval: Odottaa hyv�ksymist�
+Rejected: Hylätty
+Waiting for approval: Odottaa hyväksymistä
 Unknown: Ei tiedossa
-Click here: Napsauta t�st�
-to manage reports for the Public Access calendar: hallinnoidaksesi Julkisen kalenterin raportteja
-Add new report: Lis�� uusi raportti
+Invalid report id.: Raportti-id ei kelpaa
+Click here to manage reports for the Public Access calendar.: Napsauta tätä, jos haluat hallinnoida Public Access -kalenterin raportteja.
+Add new report: Lisää uusi raportti
 Manage Reports: Hallinnoi raportteja
 
 ########################################
@@ -651,130 +1194,273 @@ Manage Reports: Hallinnoi raportteja
 Advanced Search: Laajennettu haku
 Search: Etsi
 Keywords: Hakusanat
+Enter % for all entries: Syötä% kaikille merkinnöille
+Include: Sisältää
+Filter by Date: Suodata päivämäärän mukaan
+All Dates: Kaikki päivät
+Past: Menneisyyttä
+Upcoming: Tulossa
+Range: Alue
 
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: Sy�t� yksi tai useampi hakusana
+You must enter one or more search keywords.: Syötä yksi tai useampi hakusana
 Search Results: Haun tulokset
-match found: kohde l�ytyi
-matches found: kohdetta l�ytyi
-No matches found: Kohteita ei l�ytynyt
+match found: kohde löytyi
+matches found: kohdetta löytyi
+No matches found: Kohteita ei löytynyt
+New Search: Uusi haku
 
 ########################################
 # Page: security_audit.php
 #
+list potential security issues: Alla olevissa tiedoissa luetellaan WebCalendar-asennuksen mahdolliset ongelmat, joita voidaan muokata asennuksen parantamiseksi.
+For questions about WebCalendar security see the forums: Jos sinulla on kysyttävää WebCalendar-tietoturvaongelmista, käytä GitHub.com-sivustolla isännöityjä WebCalendar-foorumeita;<br>XXX
+View your current PHP settings: Tarkastele nykyisiä PHP-asetuksiasi
+Security Issue: Turvallisuuskysymys
 Status: Tila
+Default admin user password: Oletus järjestelmänvalvojan käyttäjän salasana
+You should change the password of the default admin user.: Sinun tulisi vaihtaa järjestelmänvalvojan oletuskäyttäjän salasana.
+File permissions XXX: Tiedoston oikeudet: XXX
+item XXX should not be writable: Seuraavan kohteen ei pitäisi olla kirjoitettavissa:<br><tt> XXX</tt>
+File exists XXX: Tiedosto on olemassa: "XXX"
+Because you have email disabled, you should remove this file.: Koska sähköposti on poistettu käytöstä, poista tämä tiedosto.
+File location XXX: Tiedoston sijainti: "XXX"
+remove XXX if not using: Jos et käytä tiedostoa "XXX", poista se. Tai ainakin siirrä se uuteen hakemistoon.
+System Settings XXX: Järjestelmäasetukset: "XXX"
+consider enabling UAC: Voit halutessasi sallia käyttäjien pääsyn valvonnan käyttäjien oikeuksien asettamiseksi.
+recommend approving new public events: Suosittelemme, että kaikki julkisten tapahtumien ehdotukset hyväksytään.
+recommend using CAPTCHA: CAPTCHA: ta suositellaan automaattisten tapahtumalähetysten suojaamiseen.
+Database cache directory location: Tietokannan välimuistihakemiston sijainti
+db cache should be inaccessable: Tietokannan välimuistin tulisi olla hakemistossa, johon ei voida käyttää URL-osoitetta.
+PHP Settings XXX: PHP-asetukset: "XXX"
+recommend setting XXX Off: "XXX": n suositeltu asetus on Ei käytössä.
+recommend setting allow_url_fopen Off: Suositeltu asetus "allow_url_fopen" on pois päältä, kun etäkalenterit eivät ole käytössä.
 
 ########################################
 # Page: select_user.php
 #
-View Another Users Calendar: N�yt� toisen k�ytt�j�n kalenteri
+View Another Users Calendar: Näytä toisen käyttäjän kalenteri
 
 ########################################
 # Page: set_entry_cat.php
 #
-You have not added any categories.: Et ole lis�nnyt tapahtumaluokkia
+You have not added any categories.: Et ole lisännyt tapahtumaluokkia
 Set Category: Aseta luokka
+Global Categories cannot be changed.: Yleisiä luokkia ei voi muuttaa.
+
+########################################
+# Page: upcoming.php
+#
+more: lisää
 
 ########################################
 # Page: users.php
 #
-denotes administrative user: tarvitaan p��k�ytt�j�n oikeudet
-Add New User: Lis�� uusi k�ytt�j�
+Remote Calendars: Etäkalenterit
+denotes administrative user: tarvitaan pääkäyttäjän oikeudet
+Add New User: Lisää uusi käyttäjä
 
 ########################################
 # Page: usersel.php
 #
+form: muodossa
 Reset: Resetoi
 
 ########################################
 # Page: views.php
 #
-Add New View: Lis�� uusi n�kym�
+Add New View: Lisää uusi näkymä
 
 ########################################
 # Page: views_edit.php
 #
-Unnamed View: Nimet�n n�kym�
-Add View: Lis�� n�kym�
-Edit View: Muokkaa n�kym��
-View Name: N�kym�n nimi
-View Type: N�kym�n tyyppi
-Week (Users horizontal): Viikko (k�ytt�j�t vaaka-akselilla)
-Week (Users vertical): Viikko (k�ytt�j�t pystyakselilla)
+Unnamed View: Nimetön näkymä
+Add View: Lisää näkymä
+Edit View: Muokkaa näkymää
+View Name: Näkymän nimi
+View Type: Näkymän tyyppi
+Day by Time: Päivä kerrallaan
+Week (Users horizontal): Viikko (käyttäjät vaaka-akselilla)
+Week by Time: Viikko kerrallaan
+Week (Users vertical): Viikko (käyttäjät pystyakselilla)
 Week (Timebar): Viikko (aikajana)
+Month (Timebar): Kuukausi (Timebar)
 Month (side by side): Kuukausi (rinnakkain)
 Month (on same calendar): Kuukausi (samassa kalenterissa)
 
 ########################################
 # Page: views_edit_handler.php
 #
-You must specify a view name: Sinun t�ytyy m��ritt�� n�kym�n nimi
+You must specify a view name: Sinun täytyy määrittää näkymän nimi
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Ei käyttäjiä tälle näkymälle.
 
 ########################################
 # Page: view_entry.php
 #
+Update Task Percentage: Päivitä tehtävän prosenttiosuus
+Completed: Valmistunut
 Assistant mode: Avustaja-tila
-External User: Ulkoinen k�ytt�j�
-Approve/Confirm entry: Hyv�ksy/Vahvista merkint�
-Reject entry: Hylk�� merkint�
+Declined: Hylätty
+Needs-Action: Tarpeet-toiminta
+by: mennessä
+Percentage Complete: Prosentti valmis
+External User: Ulkoinen käyttäjä
+Update: Päivittää
+at: klo
+comments: kommentteja
+Show: Näytä
+Hide: Piilottaa
+Approve/Confirm entry: Hyväksy/Vahvista merkintä
+Reject entry: Hylkää merkintä
 Set category: Aseta luokka
-This will delete this entry for all users.: T�m� merkint� poistetaan kaikilta k�ytt�jilt�.
-Edit entry: Muokkaa merkint��
-Edit repeating entry for all dates: Muokkaa toistuvaa entry� kaikille p�iville
-Delete repeating event for all dates: Poista toistuvat tapahtumat kaikilta p�ivilt�
-Edit entry for this date: Muokkaa t�m�n p�iv�n entry�
-Delete entry only for this date: Poista vain t�m�n p�iv�n entryt
-This will delete the entry from your calendar.: Poistetaan merkint� kalenteristasi.
-Do you want to add this entry to your calendar?: Haluatko lis�t� t�m�n merkinn�n kalenteriisi?
-This will add the entry to your calendar.: Lis�t��n merkint� kalenteriisi.
-Email all participants: L�het� s�hk�postia kaikille osallistujille
+Add to My Calendar: Lisää kalenteriin
+Copy entry: Kopioi merkintä
+This will delete this entry for all users.: Tämä merkintä poistetaan kaikilta käyttäjiltä.
+Edit entry: Muokkaa merkintää
+Edit repeating entry for all dates: Muokkaa toistuvaa entryä kaikille päiville
+Delete repeating event for all dates: Poista toistuvat tapahtumat kaikilta päiviltä
+Edit entry for this date: Muokkaa tämän päivän entryä
+Delete entry only for this date: Poista vain tämän päivän entryt
+Delete entry from calendar of XXX: Poista merkintä kalenterista XXX
+This will delete the entry from your XXX calendar.: Tämä poistaa merkinnän XXX-kalenteristasi.
+boss: pomo'
+This will delete the entry from your boss calendar.: Tämä poistaa merkinnän pomosi kalenterista.
+This will delete the entry from your calendar.: Poistetaan merkintä kalenteristasi.
+from your boss calendar: pomosi kalenterista
+Do you want to add this entry to your calendar?: Haluatko lisätä tämän merkinnän kalenteriisi?
+This will add the entry to your calendar.: Lisätään merkintä kalenteriisi.
+Email all participants: Lähetä sähköpostia kaikille osallistujille
 Hide activity log: Piilota aktiviteettiloki
-Show activity log: N�yt� aktiviteettiloki
-Export this entry to: L�het� t�m� tapahtuma
+Show activity log: Näytä aktiviteettiloki
+Export this entry to: Lähetä tämä tapahtuma
 Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Kaksoisnapsauta tyhjää solua lisätäksesi uuden merkinnän.
 
 ########################################
 # Page: week_details.php
 #
-New Entry: Uusi merkit�
+New Entry: Uusi merkitä
+cont.: jatk.
 
 ########################################
 # Page: includes/access.php
 #
-Another Users Calendar: Toisen k�ytt�j�n kalenteri
-Manage Views: Hallitse n�kymi�
+Another Users Calendar: Toisen käyttäjän kalenteri
+Category Management: Luokan hallinta
+Day View: Päivänäkymä
+Edit Event: Muokkaa tapahtumaa
+Month View: Kuukausinäkymä
+Common Trailer: Yhteinen traileri
+User Management: Käyttäjien hallinta
+Manage Views: Hallitse näkymiä
+Week View: Viikkonäkymä
+Year View: Vuosi
+Invalid function id: Virheellinen funktion tunnus
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Tiedostoa "settings.php" ei löydy.<br>Kopioi "settings.php.orig" tiedostoon "settings.php" ja muokkaa sivustoasi.
+Incomplete settings.php file...: Keskeneräinen "settings.php" -tiedosto ...
+Could not find XXX defined in...: Tiedostoa "XXX" ei löydy määritetystä "settings.php" -tiedostostasi.
+You must define XXX in: Sinun on määritettävä "XXX" tiedostossa "settings.php".
 
 ########################################
 # Page: includes/date_formats.php
 #
 December: Joulukuu
 Dec: Joulu
+LANGUAGE DEFINED: KIELI MÄÄRITELTY
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Virhe yhdistettäessä tietokantaan: "XXX".
+db_type not defined.: db_typeä ei määritelty.
+invalid db_type XXX: virheellinen db_type "" XXX ".
+Cache cleared from previous SQL!: Välimuisti tyhjennetty edellisestä SQL: stä!
+Error executing query.: Virhe kyselyn suorittamisessa.
+Unfortunately, XXX is not implemented for YYY: Valitettavasti XXX ei ole otettu käyttöön (YYY).
+Unknown ODBC error.: Tuntematon ODBC-virhe.
+Error opening cache dir XXX.: Virhe avaamalla välimuistin "XXX".
+delete: poistaa
+Cache error Could not XXX file YYY.: Välimuistivirhe: XXX-tiedostoa YYY ei voitu lähettää.
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Kohtalokas virhe
+Invalid data format for: Virheellinen tietomuoto kohteelle
 
 ########################################
 # Page: includes/functions.php
 #
-exceeds limit of XXX events per day: ylitt�� sallitun tapahtumien m��r�n p�iv�ss�
-Event approved: Tapahtuma hyv�ksytty
+Error Type not set for activity log!: Virhe: Tyyppiä ei ole asetettu toimintalokille!
+This event is XXX.: Tämä tapahtuma on XXX.
+Conf.: =
+exceeds limit of XXX events per day: ylittää sallitun tapahtumien määrän päivässä
+on: päällä
+All Attendees: Kaikki osallistujat
+Busy: Kiireinen
+Tentative: Alustava
+Schedule an appointment for XXX.: Aikataulu XXX: VVV.
+date_select: __dd__ __kuukausi__ __yyyy__
+Event approved: Tapahtuma hyväksytty
+Journal approved: Lehti hyväksytty
+Task approved: Tehtävä hyväksytty
+Attachment: Liite
 Event created: Tapahtuma luotu
+Journal created: Päiväkirja luotu
+Task created: Tehtävä luotu
 Event deleted: Tapahtuma poistettu
-Notification sent: Tiedote l�hetetty
-Event rejected: Tapahtuma hyl�tty
-Reminder sent: Muistuttaja l�hetetty
-Event updated: Tapahtuma p�ivitetty
+Journal deleted: Päiväkirja poistettu
+Task deleted: Tehtävä poistettu
+New user via email (self registration): Uusi käyttäjä sähköpostitse (itse rekisteröinti)
+New user (self registration): Uusi käyttäjä (itse rekisteröinti)
+Notification sent: Tiedote lähetetty
+Event rejected: Tapahtuma hylätty
+Journal rejected: Lehti hylätty
+Task rejected: Tehtävä hylätty
+Reminder sent: Muistuttaja lähetetty
+Event updated: Tapahtuma päivitetty
+Journal updated: Päiväkirja päivitetty
+Task updated: Tehtävä päivitetty
+Delete User: Poista käyttäjä
 WK: Vko
+TASKS: TEHTÄVÄT
+Task_Title: Otsikko
+Due: Erääntyy
+Task Name: Tehtävän nimi
+Task Due Date: Tehtävän eräpäivä
+You have XXX unapproved entries: Sinulla on XXX hylättyä merkintää 
+Changes successfully saved: Muutokset tallennettu
 Event: Tapahtuma
 Action: Toiminto
 Printer Friendly: Tulostusversio
 Generate printer-friendly version: Luo tulostusversio
+after: jälkeen
+before: ennen
+end: loppuun
+start: alkaa
+View this event: Näytä tämä tapahtuma
+View this task: Näytä tämä tehtävä
 January: Tammikuu
 February: Helmikuu
 March: Maaliskuu
 April: Huhtikuu
 May_: Toukokuu
-June: Kes�kuu
-July: Hein�kuu
+June: Kesäkuu
+July: Heinäkuu
 August: Elokuu
 September: Syyskuu
 October: Lokakuu
@@ -784,19 +1470,37 @@ Feb: Helmi
 Mar: Maalis
 Apr: Huhti
 May: Touko
-Jun: Kes�
-Jul: Hein�
+Jun: Kesä
+Jul: Heinä
 Aug: Elo
 Sep: Syys
 Oct: Loka
 Nov: Marras
+SU: =
+MO: =
+TU: =
+WE: ME
+TH: =
+FR: =
+SA: =
+unknown-month: tuntematon kuukausi
+First Quarter Moon: Ensimmäisen vuosineljänneksen kuu
+Full Moon: Täysikuu
+Last Quarter Moon: Viimeisen vuosineljänneksen kuu
+New Moon: Uusi kuu
+Error TIME_SLOTS undefined!: Virhe: TIME_SLOTS undefined!
 The following error occurred: Tapahtui virhe
-You are not authorized.: K�ytt�oikeus puuttuu
-Add N hours to: Lis�� N tuntia
-Subtract N hours from: v�henn� N tuntia
+You are not authorized.: Käyttöoikeus puuttuu
+Add N hours to: Lisää N tuntia
+Subtract N hours from: vähennä N tuntia
 same as: sama kuin
 server time: palvelimen aika
-Error approving event: Merkint�� ei hyv�ksytty
+Cannot read timezone file XXX.: Aikavyöhyketiedostoa ei voi lukea: XXX.
+Your current GMT offset is XXX hours.: Nykyinen GMT-siirtymäsi on XXX tuntia.
+Unauthorized: Luvaton
+Error approving event XXX.: Virhe tapahtuman hyväksymisessä: XXX.
+Error deleting event XXX.: Tapahtuman poistamisessa tapahtui virhe: XXX.
+Error rejecting event XXX.: Virhe hylätessä tapahtumaa: XXX.
 Sunday: Sunnuntai
 Monday: Maanantai
 Tuesday: Tiistai
@@ -811,32 +1515,584 @@ Wed: Ke
 Thu: To
 Fri: Pe
 Sat: La
+unknown-weekday: tuntematon arkipäivä
+Invalid referring URL: Virheellinen viittaava URL-osoite
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Indeksi
+Documentation: Dokumentointi
+Page: Sivu
 
 ########################################
 # Page: includes/trailer.php
 #
 My Calendar: Kalenteri
-Add New Entry: Lis�� uusi merkint�
+Add New Entry: Lisää uusi merkintä
+Add New Task: Lisää uusi tehtävä
 Logout: Lopeta
+Home: Koti
 Back to My Calendar: Palaa kalenterisivulle
 Go to: Siirry
-Manage calendar of: Hallitse henkil�n kalenteria
+Manage calendar of: Hallitse henkilön kalenteria
 
 ########################################
 # Page: includes/translate.php
 #
+Browser Language Not Found: Selaimen kieltä ei löydy
+(not supported): (ei tueta)
+Abkhazian: Abhasialainen
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Kaukana
+Afrihili: =
+Afrikaans: afrikaans
+Ainu: =
+Akan: =
+Akkadian: Akkadi
+Albanian: Albanialainen
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (etelä)
+Amharic: Amhara
+Angika: =
+Apache: =
+Arabic (Algeria): Arabia (Algeria)
+Arabic (Bahrain): Arabia (Bahrain)
+Arabic (Egypt): Arabia (Egypti)
+Arabic (Iraq): Arabia (Irak)
+Arabic (Jordan): Arabia (Jordania)
+Arabic (Kuwait): Arabia (Kuwait)
+Arabic (Lebanon): Arabia (Libanon)
+Arabic (Libya): Arabia (Libya)
+Arabic (Morocco): Arabia (Marokko)
+Arabic (Oman): Arabia (Oman)
+Arabic (Qatar): Arabia (Qatar)
+Arabic (Saudi Arabia): Arabia (Saudi-Arabia)
+Arabic (Syria): Arabia (Syyria)
+Arabic (Tunisia): Arabia (Tunisia)
+Arabic (U.A.E.): Arabia (U.A.E.)
+Arabic (Yemen): Arabia (Jemen)
+Arabic: arabialainen
+Aragonese: Aragonialainen
+Aramaic: Aramea
+Arapaho: =
+Arawak: =
+Armenian: Armenialainen
+Assamese: Assamilaiset
+Asturian: Asturialainen
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerbaidžanilainen
+Balinese: Balilainen
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Baskiri
+Basque: baski
+Beja: =
+Belarusian: Valkovenäläinen
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Musta jalka
+Blin: =
+Bliss: autuus
+Bosnian: Bosnia
+Braj: =
+Breton: Bretoni
+Buginese: Bugilainen
+Bulgarian: Bulgaria
+Buriat: =
+Burmese: Burmalainen
+Caddo: =
+Catalan: Katalaani
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Tšetšeeni
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Kiina (Hong Kong)
+Chinese (PRC): Kiina (Kiina)
+Chinese (Simplified/GB2312): Kiina (yksinkertaistettu / GB2312) 
+Chinese (Singapore): Kiina (Singapore)
+Chinese (Taiwan): Kiina (Taiwan)
+Chinese (Traditional/Big5): Kiina (perinteinen / iso5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Kopti
+Cornish: =
+Corsican: Korsikalainen
+Cree: =
+Creek: Puro
+Croatian: Kroatialainen
+Czech: Tšekki
+Dakota: =
+Danish: Tanskan kieli
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Hollanti (Belgia)
+Dutch: Hollannin kieli
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamiitti
+English (Australia): Englanti (Australia)
+English (Belize): Englanti (Belize)
+English (Canada): Englanti (Kanada)
+English (Ireland): Englanti (Irlanti)
+English (Jamaica): Englanti (Jamaika)
+English (New Zealand): Englanti (Uusi-Seelanti)
+English (Philippines): Englanti (Filippiinit)
+English (South Africa): Englanti (Etelä-Afrikka)
+English (Trinidad & Tobago): Englanti (Trinidad ja Tobago)
+English (United Kingdom): Englanti Yhdistynyt kuningaskunta)
+English (United States): Englanti (Yhdysvallat)
+English (Zimbabwe): Englanti (Zimbabwe)
+English: Englanti me
+Erzya: =
+Esperanto: =
+Estonian: Virolainen
+Ewe: Uuhi
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Färsaarten
+Fijian: Fidži
+Filipino: Filippiiniläinen
+Finnish: Suomalainen
+Fon: =
+French (Belgium): Ranska (Belgia)
+French (Canada): Ranska (Kanada)
+French (France): Ranska (Ranska)
+French (Luxembourg): Ranska (Luxemburg)
+French (Monaco): Ranska (Monaco)
+French (Switzerland): Ranska (Sveitsi)
+French: Ranskan kieli
+Frisian (Eastern): Friisi (itäinen)
+Frisian (Northern): Friisi (pohjoinen)
+Frisian (Western): Friisi (länsi)
+Frisian: friisi
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galicialainen
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Georgialainen
+German (Austria): Saksa (Itävalta)
+German (Germany): Saksa (Saksa)
+German (Liechtenstein): Saksa (Liechtenstein)
+German (Luxembourg): Saksa (Luxemburg)
+German (Standard): Saksa (vakio)
+German (Switzerland): Saksa (Sveitsi)
+German: Saksan kieli
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: gotiikka
+Grebo: =
+Greek: Kreikka
+Greenlandic: Grönlantilainen
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitin (kreoli)
+Haitian: Haitin kieli
+Hausa: =
+Hawaiian: havaijilainen
+Hebrew: heprealainen
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Heettiläiset
+Hmong: =
+Holo (Taiwanese): Holo (taiwanilainen)
+Hungarian: Unkarin kieli
+Hupa: =
+Iban: =
+Icelandic: Islantilainen
+Ido: Tahdon
+Igbo: =
+Iloko: =
+Indonesian: Indonesia
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iranilainen
+Irish (Gaelic): Iiri (gaeli)
+Irish: Irlantilainen
+Iroquoian: =
+Italian (Switzerland): Italia (Sveitsi)
+Italian: italialainen
+Japanese: japanilainen
+Javanese: Jaava
+Judeo-Arabic: Judeo-arabia
+Judeo-Persian: Juutalais-persialainen
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: Karjalainen
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Kazakstan
+Khasi: =
+Khmer (Central): Khmer (Keski)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Korea (Johab)
+Korean (North): Korea (pohjoinen)
+Korean (South): Korea (etelä)
+Korean: Korealainen
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurdi
+Kutenai: =
+Kyrgyz: Kirgisia
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: latinan kieli
+Latvian: Latvialainen
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Liettua
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luxemburgilainen
+Macedonian: Makedonialainen
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Madagaskari
+Malay: Malaiji
+Malayalam: Malajalam
+Maldivian: Malediivit
+Maltese: Malta
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldova
+Mongo: =
+Mongolian: Mongolialainen
+Montenegrin: Montenegro
+Moroccan: Marokkolainen
+Mossi: =
+Myanmar: =
+Māori: Maori
+N&#39;Ko: Ei
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (pohjoinen)
+Ndebele (South): Ndebele (etelä)
+Ndebele: =
+Ndonga: =
+Neapolitan: napolilainen
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Norjalainen
+Norwegian (Bokmål): Norja (bokmål)
+Norwegian (Nynorsk): Norja (Nynorsk)
+Norwegian: Norjan kieli
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Ossetinen
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Pastu
+Pedi: =
+Persian (Farsi): Persia (farsi)
+Persian (Iran): Persia (Iran)
+Persian: Persia
+Phoenician: Foinikialainen
+Pohnpeian: =
+Polish: Kiillottaa
+Portuguese: Portugalin kieli
+Portuguese/Brazil: Portugali / Brasilia
+Punjabi (India): Punjabi (Intia)
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: Ketšua
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Retoromaani
+Romanian: Romania
+Romansh: =
+Romany: Roomalainen
+Rundi: =
+Russian (Moldavia: Venäjä (Moldova
+Russian (Republic of Moldova): Venäjä (Moldovan tasavalta)
+Russian: Venäjän kieli
+Sami (Inari): Saami (Inari)
+Sami (Lappish): Saamen kieli
+Sami (Lule): Saami (luula)
+Sami (Northern): Saami (pohjoinen)
+Sami (Skolt): Saami (kolta)
+Sami (Southern): Saami (etelä)
+Sami: =
+Samoan: Samoa
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sanskritin kieli
+Santali: =
+Sardinian: Sardinialainen
+Sasak: =
+Scots (Gaelic): Skotti (gaeli)
+Selkup: =
+Serbian (Upper): Serbia (ylempi)
+Serbian: Serbia
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Sisilialainen
+Sindhi: =
+Sinhala: =
+Slavic: slaavilainen
+Slovak: Slovakian
+Slovenian: Sloveeni
+Sogdian: =
+Somali: somali
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbi (alempi)
+Sorbian (Upper): Sorbi (ylempi)
+Sorbian: Sorbi
+Sotho: =
+Spanish (Argentina): Espanja (Argentiina)
+Spanish (Bolivia): Espanja (Bolivia)
+Spanish (Chile): Espanja (Chile)
+Spanish (Colombia): Espanja (Kolumbia)
+Spanish (Costa Rica): Espanja (Costa Rica)
+Spanish (Dominican Republic): Espanja (Dominikaaninen tasavalta)
+Spanish (Ecuador): Espanja (Ecuador)
+Spanish (El Salvador): Espanja (El Salvador)
+Spanish (Guatemala): Espanja (Guatemala)
+Spanish (Honduras): Espanja (Honduras)
+Spanish (Mexico): Espanja (Meksiko)
+Spanish (Nicaragua): Espanja (Nicaragua)
+Spanish (Panama): Espanja (Panama)
+Spanish (Paraguay): Espanja (Paraguay)
+Spanish (Peru): Espanja (Peru)
+Spanish (Puerto Rico): Espanja (Puerto Rico)
+Spanish (Spain): Espanja (Espanja)
+Spanish (Uruguay): Espanja (Uruguay)
+Spanish (Venezuela): Espanja (Venezuela)
+Spanish: Espanja
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumerilainen
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Ruotsi (Suomi)
+Swedish (Sweden): Ruotsi (Ruotsi)
+Swedish: Ruotsin kieli
+Syriac: Syyrialainen
+Tagalog: Tagalogi
+Tahitian: Tahitilainen
+Tai: =
+Taiwan: =
+Tajik: Tadžiki
+Tamashek: =
+Tamil: Tamili
+Tatar: Tataari
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: Thaimaalainen
+Tibetan: Tiibetiläinen
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tongan saaret)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Turkki
+Turkmen: Turkmenia
+Tuvinian: Tuvinilainen
+Twi: =
+Udmurt: Udmurtti
+Ugaritic: =
+Ukrainian: Ukraina
+Umbundu: =
+Urdu: =
+Uyghur: Uiguuri
+Uzbek: uzbekki
+Vai: =
+Venda: =
+Vietnamese: vietnam
+Volapük: =
+Votic: Ääni
+Wakashan: =
+Walloon: Vallonia
+Waray: =
+Washo: =
+Welsh: Walesin
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: Jakut
+Yao: =
+Yapese: =
+Yiddish: Jiddiš
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: zulu
+Browser-defined: Selaimen määrittelemä
 event: tapahtuma
+journal: päiväkirja
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
 
 ########################################
 # Page: includes/user-imap.php
 #
-Invalid user login: V��r� k�ytt�j�nimi
+Invalid user login: Väärä käyttäjänimi
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: väärä salasana
+no such user: ei tällaista käyttäjää
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Tili poistettu käytöstä
 
 ########################################
 # Page: includes/xcal.php
 #
-Unnamed Event: Nimet�n merkint�
+Interval: Intervalli
+Months: Kuukaudet
+Month Days: Kuukauden päivät
+Days: Päivää
+Weeks: Viikkoa
+Position: Sijainti
+Until: Siihen asti kun
+Count: Kreivi
+Inclusion Dates: Sisällyttämispäivämäärät
+Exclusion Dates: Poissulkemispäivämäärät
 Event Imported: Tapahtuma tuotu
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: tavua
+kb: =
+Mb: =
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
@@ -856,39 +2112,279 @@ provide_address: Aseta v&auml;hint&auml;&auml;n yksi vastaanottajan s&auml;hk&ou
 recipients_failed: SMTP-virhe: seuraava vastaanottaja osoite on virheellinen.
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/classes/captcha/captcha.php
 #
-Server URL is required.: Palvelimien URL on pakollinen
-Server URL must end with /.: Palvelimen URL t�ytyy p��tty� merkkiin '/'
-Invalid color for document background.: Taustav�ri on virheellinen
-Invalid color for document title.: Otsikon v�ri on virheellinen
-Invalid color for table cell background.: Ruudukon taustav�ri on virheellinen
-Invalid color for table grid.: Taulukon ruutuviivojen v�ri on virheellinen
-Invalid color for table header background.: Otsikon taustav�ri on virheellinen
-Invalid color for table text background.: Tekstin taustav�ri on virheellinen
-Invalid color for event popup background.: Popup-ikkunan taustav�ri on virheellinen
-Invalid color for event popup text.: Popup-ikkunan tekstin v�ri on virheellinen
-Invalid color for table cell background for today.: Kuluvan p�iv�n taustav�ri on virheellinen
-Color format should be RRGGBB.: V�rikoodin tulee olla muotoa '#RRGGBB'
+Enter Characters Seen in Graphic: Syötä graafisesti näkyvät merkit
+Enter the correct letters and numbers...: Kirjoita oikeat kirjaimet ja numerot kuvasta tekstikenttään. Tämä pieni testi toimii pääsyn rajoituksena haittaohjelmia vastaan. Lataa sivu yksinkertaisesti, jos tätä kuvaa on liian vaikea lukea
+Challenge/Response: Haaste / vastaus
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Vaihdetaanko tämän merkinnän päivämäärä ja aika?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Selite puuttuu
-time prior to work hours...: Alkuaika on ennen normaalin ty�ajan alkua. Onko se oikein?
-You have not entered a valid time of day: Kellonaika puuttuu
+You have not entered a Brief Description: Et ole kirjoittanut lyhyttä kuvausta
+time prior to work hours...: aika ennen työaikaa ...
+Invalid Event Date: Virheellinen tapahtuman päivämäärä
+Please add a participant: Lisää osallistuja
+Invalid Date: Väärä päivämäärä
+You have not entered a valid time of day: Et ole antanut kelvollista kellonaikaa.
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/js/edit_nonuser.php
 #
-Invalid color: Virheellinen v�rikoodi
+Calendar ID cannot be blank.: Kalenterin tunnus ei voi olla tyhjä.
+First and last names cannot both be blank.: Etu- ja sukunimet eivät voi olla tyhjät.
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Virheellinen värikoodi
+Color format should be RRGGBB.: Värimuodon tulee olla #RRGGBB.
+URL cannot be blank.: URL-osoite ei voi olla tyhjä.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Tiedostotyyppi ei vastaa tuontimuotoa
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Taustaväri on virheellinen
+Invalid color for document title.: Otsikon väri on virheellinen
+Invalid color for table cell background.: Ruudukon taustaväri on virheellinen
+Invalid color for table cell background for today.: Kuluvan päivän taustaväri on virheellinen
+Invalid work hours.: Virheellinen työaika.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Palvelimen URL täytyy päättyä merkkiin '/'
+Invalid color for table grid.: Virheellinen taulukoruudukon väri.
+Invalid color for event popup background.: Virheellinen tapahtuman ponnahdusikkunan väri.
+Invalid color for event popup text.: Virheellinen tapahtuman ponnahdusikkunan väri.
+Invalid color for table header text.: Taulukon otsikkotekstin väri on virheellinen.
+Invalid color for table header background.: Taulukon otsikon taustan väri on virheellinen.
+Server URL is required.: Palvelimien URL on pakollinen
+Invalid Color: Virheellinen väri
+Database Name: Tietokannan nimi
+Full Path (no backslashes): Koko polku (ei taaksepäin viivoja)
+The password contains illegal characters.: Salasana sisältää laittomia merkkejä.
+Error you must specify a Single-User Login: Virhe sinun on määritettävä yhden käyttäjän kirjautuminen
+Could not find XXX.: XXX ei löytynyt.
+Could not find XXX in DOM.: XXX ei löytynyt verkkotunnuksesta DOM.
 
 ########################################
 # Page: includes/menu/index.php
 #
-Unapproved Events: Hyv�ksym�tt�m�t tapahtumat
+This Week: Tämä viikko
+This Month: Tässä kuussa
+This Year: Tämä vuosi
+Exit: Lopeta
+Add New Event: Lisää uusi tapahtuma
+Delete Entries: Poista merkinnät
+My Views: Omat näkymät
+Manage Calendar of: Hallinnoi käyttäjän kalenteria
+My Reports: Omat raportit
+My Profile: Profiilini
+Public Calendar: Julkinen kalenteri
+Unapproved Events: Hyväksymättömät tapahtumat
+User Manager: Käyttäjien hallinta
+Help Contents: Ohjeen sisältö
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Tietokannan välimuistihakemisto
+Create New: Luo uusi
+Failure Reason: Epäonnistumisen syy:
+You must manually create database: Sinun on luotava tietokanta manuaalisesti.
+Single-User: Yhden käyttäjän
+Test Settings: Testiasetukset
+Timezone Conversion Successful: Aikavyöhykkeen muuntaminen onnistui
+WebCalendar Installation Wizard Step XXX: Ohjattu WebCalendar-asennustoiminto Vaihe XXX
+Password Accepted: Salasana hyväksytty
+Successful Login: Onnistunut sisäänkirjautuminen
+Password Incorrect: Salasana väärin
+Invalid Login: Virheellinen kirjautuminen
+Display Errors: Näytön virheet
+File Uploads: Tiedostojen lataus
+Allow URL fopen: Salli URL-osoitteen avaaminen (vaaditaan vain, jos etäkalentereita käytetään)
+Safe Mode: Turva tila
+Safe Mode Allowed Vars: Vikasietotilassa sallitut muunnokset (TZ vaaditaan vain, jos vikasietotila on päällä)
+GD: GD (tarvitaan gradienttikuvien taustoille)
+Passwords do not match!: Salasanat eivät täsmää!
+Unable to write password to settings.php file: Salasanaa ei voi kirjoittaa "settings.php" -tiedostoon.
+Password Updated: Salasana päivitetty
+Password has been set: Salasana on asetettu.
+Connection Successful...: Yhteys onnistui  Siirry seuraavalle sivulle jatkaaksesi asennusta.
+Correct your entries or click the Create New...: Korjaa merkinnät tai jatka asennusta napsauttamalla  Luo uusi  -painiketta.
+Correct your entries and try again.: Korjaa merkinnät ja yritä uudelleen.
+XXX does not exist: XXX ei ole olemassa
+XXX is not writable: XXX ei ole kirjoitettavissa
+Error Converting Timezone: Virhe muuntamalla aikavyöhykettä
+Error Unable to write to file XXX.: Virhe tiedostoon XXX ei voi kirjoittaa.
+Please change the file permissions of this file.: Muuta tämän tiedoston tiedostojen käyttöoikeuksia.
+Please change includes dir permission: Muuta "sisältää" -hakemiston tiedostojen käyttöoikeuksia, jotta muut käyttäjät voivat kirjoittaa.
+Your settings have been saved.: Asetuksesi on tallennettu.
+OFF: VINOSSA
+ON: PÄÄLLÄ
+WebCalendar Setup Wizard: Ohjattu WebCalendar-asennusohjelma
+This installation wizard will guide you...: Tämä ohjattu asennustoiminto opastaa WebCalendar-perusasennuksen määrittämisessä.<br>Katso ohjeet ja vianmääritys:<br>
+System Administrators Guide: Järjestelmänvalvojan opas
+Frequently Asked Questions: Usein Kysytyt Kysymykset
+FAQ: UKK
+Troubleshooting: Ongelmien karttoittaminen
+Getting Help: Saada apua
+Upgrading Guide: Päivitysopas
+User Supported Wiki: Käyttäjän tukema Wiki
+PHP Version Check: PHP-version tarkistus
+Check to see if PHP 7.1.0 or greater is installed.: Tarkista, onko PHP 7.1.0 tai uudempi asennettu.
+PHP version: PHP-versio
+PHP Settings: PHP-asetukset
+Detailed PHP Info: Yksityiskohtaiset PHP-tiedot
+settings.php Status: "settings.php" Tila
+Session Check: Istunnon tarkistus
+To test the proper operation of sessions...: Testaa istuntojen asianmukainen toiminta lataamalla tämä sivu uudelleen. Sinun pitäisi nähdä istuntolaskurin lisäys joka kerta.
+SESSION COUNTER: ISTUNNON LASKURI
+The file permissions of settings.php are set...: "Settings.php" -tiedoston käyttöoikeudet on asetettu siten, että asennusohjelmalla ei ole lupaa muokata sitä. Muuta seuraavan tiedoston tiedostojen käyttöoikeuksia jatkaaksesi
+The file permissions of the includes directory are set...: Sisältää-hakemiston tiedostojen käyttöoikeudet on asetettu siten, että asennusohjelmalla ei ole lupaa luoda uutta tiedostoa. Muuta seuraavan hakemiston käyttöoikeuksia jatkaaksesi
+Your settings.php file appears to be valid.: "Settings.php" -tiedostosi näyttää olevan kelvollinen.
+Configuration Wizard Password: Ohjatun määritystoiminnon salasana
+Create Settings File Password: Luo asetustiedoston salasana
+db setup directions...: Tässä osiossa määritetään ja testataan yhteys tietokantapalvelimeen. Toimitetuilla tilitiedoilla tulisi olla TÄYDETTÄVÄT oikeudet tietokantojen, taulukoiden ja käyttäjien luomiseen. Jos tämä ei ole mahdollista tai tietokantasi käyttöoikeus on rajoitettu, sinun on määritettävä tietokanta manuaalisesti.
+Database Status: Tietokannan tila
+Supported databases for your PHP installation: Tuetut tietokannat PHP-asennuksellesi
+Your current database settings are able to access the database.: Nykyiset tietokanta-asetuksesi voivat käyttää tietokantaa.
+Please Test Settings: Testaa asetukset
+Your current database settings are not able...: Nykyiset tietokantasi asetukset eivät pääse tietokantaan tai niitä ei ole vielä testattu.
+Database Settings: Tietokannan asetukset
+Database Type: Tietokannan tyyppi
+Server: Palvelin
+Connection Persistence: Yhteyden pysyvyys
+All your database tables appear to be up...: Kaikki tietokantataulukot näyttävät olevan ajan tasalla. Voit siirtyä seuraavalle sivulle ja viimeistellä WebCalendar-asetuksesi.
+This appears to be a new installation...: Tämä näyttää olevan uusi asennus. Jos tämä ei ole oikein, palaa edelliselle sivulle ja korjaa asetukset.
+This appears to be an upgrade...: Tämä näyttää olevan päivitys versiosta XXX&nbsp;versioon YYY.
+The database requires some data input...: Tietokanta vaatii jonkin verran tietoja. Päivitä päivitys napsauttamalla Päivitä tietokanta.
+In this section we will perform...: Tässä osiossa teemme muutokset tietokannan nostamiseksi vaaditulle tasolle. Jos käytät täysin tuettua tietokantaa, tämä vaihe suoritetaan automaattisesti sinulle. Jos ei, vaadittu SQL voidaan näyttää ja sinun pitäisi pystyä leikkaamaan ja liittämään se tietokantapalvelimen kyselyikkunaan.
+No database actions are required.: Tietokantatoimintoja ei vaadita.
+The following database actions are required: Seuraavat tietokantatoiminnot vaaditaan
+ODBC Underlying Database: ODBC: n taustalla oleva tietokanta:
+Automatic installation not supported: Automaattista asennusta ei ole täysin toteutettu tietokantatyypillesi. Sinun on luotava vaaditut taulukot manuaalisesti mukana toimitetulla SQL: llä. Napsauta  Näytä SQL  jatkaaksesi. Leikkaa ja liitä tietokannan kyselyikkunaan.
+This may take several minutes to complete: Tämä saattaa kestää useita minuutteja.
+Install Database: Asenna tietokanta
+Update Database: Päivitä tietokanta
+Display Required SQL: Näytä vaadittu SQL
+Return to previous page after processing SQL.: Kun olet käsitellyt tämän SQL: n manuaalisesti, sinun on palattava edelliselle sivulle ja testattava tietokanta uudelleen, jotta komentosarja tunnistaa muutokset.
+This is the final step in setting up your WebCalendar Installation.: Tämä on viimeinen vaihe WebCalendar-asennuksen määrittämisessä.
+Timezone Conversion: Aikavyöhykkeen muunnos
+It appears that you have NOT converted...: Vaikuttaa siltä, ??että et ole muuttanut olemassa olevaa WebCalendar-tapahtumadataa GMT: ksi. Jos sinulla on, voit jättää tämän ilmoituksen huomiotta etkä jatka muuntamista. Jos tämä on uusi asennus, voit myös ohittaa tämän ilmoituksen.
+Convert Data to GMT: Muunna tiedot GMT: ksi
+Application Settings: Sovellusasetukset
+HTTP-based authentication was not detected...: HTTP-pohjaista todennusta ei havaittu. Sinun on määritettävä verkkopalvelimesi uudelleen, jos haluat valita 'Verkkopalvelin' alla olevista 'Käyttäjän todennus' -vaihtoehdoista.
+HTTP-based authentication was detected...: HTTP-pohjainen todennus havaittiin. Verkkopalvelimesi käsittelee käyttäjän todennusta. Sinun tulisi valita 'Verkkopalvelin' alla olevasta 'Käyttäjän todennus' -valintaluettelosta.
+Create Default Admin Account: Luo järjestelmänvalvojan oletustili
+(Admin Account Not Found): (Järjestelmänvalvojan tiliä ei löydy)
+User Authentication: Käyttäjän todennus
+Web-based via WebCalendar (default): Web-pohjainen WebCalendarin kautta (oletus)
+Web Server (not detected): Verkkopalvelin (ei havaittu)
+Web Server (detected): Verkkopalvelin (havaittu)
+None (Single-User): Ei mitään (yhden käyttäjän)
+Read-Only: Lue ainoastaan
+Environment: Ympäristö
+Production: Tuotanto
+Development: Kehitys
+Save Settings: Tallenna asetukset
+Launch WebCalendar: Käynnistä WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Virhe päivitettäessä taulukkoa XXX: YYY.
+Conversion Successful: Tulos onnistunut 
+Perl script required: Aikaisempi WebCalendar-versiosi edellyttää PERL-komentosarjan suorittamista tietojen muuntamiseksi. Suorita /tools/upgrade_to_0.9.7.pl ja palaa sitten tälle sivulle jatkaaksesi.
+previous version requires updating several tables: Aikaisempi WebCalendar-versiosi edellyttää useiden tietokantataulukoiden päivittämistä.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ESIKATSELUA EI OLE SAATAVILLA
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Virhe yhdistettäessä tietokantaan
+Include Path: Sisällytä polku
+Deleting events for: Poistetaan tapahtumia kohteelle
+Importing events for: Tuodaan tapahtumia kohteelle
+No data returned from: Tietoja ei palautettu
+for non-user calendar: ei-käyttäjän kalenterille
+No Remote Calendars found: Etäkalentereita ei löytynyt
+Remote Calendars not enabled: Etäkalentereita ei ole otettu käyttöön
 
 ########################################
 # Page: tools/send_reminders.php
 #
+could not find event id: tapahtuman tunnusta ei löytynyt
+could not find event id XXX in database.: Tapahtumatunnusta XXX ei löytynyt tietokannasta.
+task: tehtävä
+This is a reminder for the XXX detailed below.: Tämä on muistutus XXX: sta, joka on kuvattu alla.
+Pecentage Complete: Pententage valmis
 Reminder: Muistutus
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Toiminta, jota ei tueta: XXX.
+No event id specified.: Tapahtumatunnusta ei määritetty.
+Not authorized (not admin).: Ei valtuutettua (ei järjestelmänvalvojaa).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Tarkistetaan XXX tapahtumia päivämäärästä YYY - ZZZ.
+Found XXX events in time range.: Löytyi XXX tapahtumaa aikavälillä.
+Event id=XXX YYY at ZZZ on AAA.: Tapahtuman tunnus = XXX "YYY" ZZZ: ssä AAA: lla.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Sallitaan XXX käyttäjän tarkastella toisen käyttäjän kalenteria.
+Error Email reminders disabled for user XXX.: Virhe: Sähköpostimuistutukset poistettu käytöstä käyttäjältä "XXX".
+Number of site_extras XXX.: Sivuston_extrojen määrä: XXX.
+Reminder set for event.: Muistutus asetettu tapahtumalle.
+Mins Before XXX.: Minut ennen: XXX.
+Event time is XXX.: Tapahtuman aika on: XXX.
+Remind time is XXX.: Muistutusaika on: XXX.
+Reminders for user XXX, login YYY.: Muistutukset käyttäjälle "XXX", kirjaudu sisään "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Käyttäjä "XXX" hylätään.
+Event id=XXX YYY already sent.: Tapahtuman tunnus = XXX "YYY" on jo lähetetty.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Sisäänkirjautumista ei vaadita yhden käyttäjän tilassa.
+No login required for HTTP authentication.: HTTP-todennukseen ei vaadita kirjautumista.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Virheelliset merkit kirjautumisessa.
+Username XXX does not exist.: Käyttäjätunnusta "XXX" ei ole olemassa.
+You cannot remove admin rights from yourself!: Et voi poistaa järjestelmänvalvojan oikeuksia itseltäsi!
+Unknown error saving user: Tuntematon virhe käyttäjän tallennuksessa.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Tapahtuman tunnukselle: XXX ei löytynyt osallistujia.
+Db error Could not find event id XXX.: Db-virhe: Tapahtumatunnusta XXX ei löytynyt.
+Error Could not find event id XXX in database.: Virhe: Tapahtumatunnusta XXX ei löydy tietokannasta.

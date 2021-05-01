@@ -1,4 +1,37 @@
-# See translations/English-US.txt for instructions.
+# Hungarian hu
+#
+# A formátum egy választható fejlécből áll:
+#
+# Fordította: az Ön neve és e-mail címe
+# Utolsó frissítés: a fordítás dátuma
+# (Beleértve a vezető "#" -t és a korábbi fordítók által tett esetleges megjegyzéseket.
+# A ELSŐ üres sor fejezi be ezeket a fejléc megjegyzéseket.)
+#
+# Minél többen követik:
+#
+# Angol kifejezés: fordítás
+# (Egytől egy sorig. A vezető "#" NÉLKÜL.
+# Az "angol kifejezést:", beleértve a kettőspontot:: ", a
+# WebCalendar fejlesztők. Ön a "fordítás".)
+#
+# Az Eszközök könyvtár két perl szkriptet tartalmaz, amelyek segítenek:
+# - check_translation.pl
+# azt jelzi, hogy az összes szöveget sikerült-e lefordítani.
+# - update_translation.pl
+# elemzi a programfájlokat, hogy megtalálja az összes lefordított szót ('kifejezés') és
+# eszköztipp ('kifejezés'). Az oldal szerint rendezi a kifejezéseket
+# (fájl), amely az első előfordulást tartalmazza. Opcionálisan megcímkézheti a
+# olyan kifejezés, amelyet még nem fordítottak le
+#  << MISSING >>
+# a kifejezés feletti sorban. És ha a kifejezés rövidítés,
+# a kifejezés alatti sorban a teljes angol szöveget tartalmazza.
+#
+# Megjegyzés: Megpróbálom csökkenteni a teljes fájlméretet. Ha a "fordítás"A
+# szó / kifejezés megegyezik az Ön nyelvén és angolul, csak használjon "=" jelet.
+#
+# Megjegyzés: Észre fogja venni a "May_" lent. Ennek oka van.
+# Fordít "May_" a teljes hónap nevére és "May" hoz,
+#  általában hárombetűs, havi rövidítés (például "október" az "október" kifejezésre).
 #
 # Translated by: Gyorgy Baffia <gyorgy@baffia.hu>, 05 Sep 2001
 #
@@ -7,7 +40,11 @@
 # Last updated on 2005-05-31
 # Updated to 1.1 by Istvan Bubreg bubreg_at_freemail_hu
 #
-# Translation last updated on 10-14-2008
+# Ehhez a Google fordítót használtam.
+# Elegendőnek kell lennie, amíg anyanyelvi beszélő nem tudja igazolni.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -19,7 +56,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: UTF-8
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -47,16 +84,23 @@ __month__ __yyyy__: __yyyy__ __month__
 # Page: about.php
 #
 Title: WebNaptár
+version XXX: XXX verzió
+WebCalendar is a PHP application used...: A WebCalendar egy PHP alkalmazás, amelyet naptár fenntartására használnak egyetlen felhasználó vagy egy internetes / intranetes felhasználói csoport számára. Eseménynaptárként is konfigurálható.
+Credits: Hitelek
+About: Ról ről
+OK: rendben
 
 ########################################
 # Page: access.php
 #
-Database error: Adatbázis hiba
+Database error XXX.: Adatbázis-hiba: XXX.
 DEFAULT CONFIGURATION: ALAPÉRTELMEZETT BEÁLLÍTÁSOK
 Go: Mehet
 Save: Mentés
+Undo: Visszavonás
 Public Access: Nyilvános naptár
 Admin: Adminisztráció
+User Access Control: Felhasználói hozzáférés-vezérlés
 Allow Access to Other Users Calendar: Hozzáférés engedélyezése más felhasználóknak
 Grant This User Access to My Calendar: Hozzáférés engedélyezése a naptáramhoz
 Type: Típus
@@ -87,13 +131,17 @@ Previous: Elõzõ
 ########################################
 # Page: add_entry.php
 #
+Event XXX is already on your calendar.: A (z) XXX esemény már szerepel a naptárában.
+Invalid entry id XXX.: Érvénytelen bejegyzés-azonosító: "XXX".
+a XXX event may not be added to your calendar: Ez egy XXX esemény, ezért nem adható hozzá a naptárhoz.
 confidential: bizalmas
 private: magán
-Error adding event: Esemény hozzáadási hiba
+Error adding event XXX.: Hiba történt az esemény hozzáadásakor: XXX.
 
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Érvénytelen beállításnév (XXX).
 Select: Válassz
 Day: Nap
 Week: Hét
@@ -121,26 +169,29 @@ Table cell background for current day: Táblacella háttere a MAI napra
 Table cell background for days with events: Táblacella háttere eseménnyel rendelkező napokra
 Table cell background for weekends: Táblacellák háttere hétvégén
 Table cell background for other month: Táblacella háttere más hónapokhoz
+Week number color: Hét száma színe
 Event popup background: Felugró eseményablak háttere
 Event popup text: Felugró eseményablak szövegszíne
 System Settings: Rendszerbeállítások
 Help: Súgó
+System options: Rendszeropciók
 app-name-help: Megadhatsz egy programnevet, ami a böngészõ címsorában jelenik meg, illetve a bejelentkezéskor. Az itt megadott érték lefordításra kerül, így a különbözõ nyelvekhez különbözõ programnevet adhatsz meg.
 Application Name: Programnév
-Translated Name: Lefordított név
+Translated Name (XXX): Lefordított név (XXX)
 server-url-help: A program alap URL-je, mely az email emlékeztetõkben és értesítésekben jelenik meg.
 Server URL: Szerver URL
 home-url-help: Az alkalmazás alap-URLjének beállítása. Abszolút vagy relatív útvonal lehet
 Home URL: Alap URL
 language-help: Megadja, hogy milyen nyelvet akarsz használni.
 Language: Nyelv
-Your browser default language is: A böngészõd alapértelmezett nyelve
+Your browser default language is XXX.: A böngésző alapértelmezett nyelve "XXX".
 Allow user to use themes: A felhasználó használhat témákat
 themes-help: Beállítások tömeges módosítása. A kisbetűs cimkék csak felhasználó színtűek.
 Themes: Témák
 AVAILABLE THEMES: ELÉRHETŐ TÉMÁK
 None: Nincs
 Preview: Előnézet
+Site customization: A webhely testreszabása
 custom-script-help: Egyedi Javascript vagy stíluslap megadását teszi lehetõvé, amely minden HTML oldal "head" részébe kerül.
 Custom script/stylesheet: Egyedi szkript/stíluslap
 custom-header-help: Egy csipetnyi egyedi HTML beszúrását teszi lehetõvé minden oldal tetejére.
@@ -149,14 +200,22 @@ custom-trailer-help: Egy csipetnyi egyedi HTML beszúrását teszi lehetõvé mi
 Custom trailer: Egyedi lábléc
 enable-external-header-help: Egyedi előzetes betöltése fájlból
 Allow external file for header/script/trailer: Külső fájl engedélyezése a fejléchez/parancsokhoz/előzeteshez
-tz-help: Megadja a szerver és a helyi idõzóna közötti eltérést órában.
+Allow user to override header/trailer: Engedje meg a felhasználónak, hogy felülírja a fejlécet / pótkocsit
+Date and Time: Dátum és idő
+server-tz-help: Megadja, hogy hány órát kell beállítani az UTC és a kiszolgáló közötti időre.
 Server Timezone Selection: Szerver időzóna választás
+tz-help: Megadja a szerver és a helyi idõzóna közötti eltérést órában.
+Default Client Timezone Selection: Alapértelmezett kliens időzóna kiválasztása
+display-general-use-gmt-help: Ha engedélyezve van, a közös dátumok / idők GMT-ként jelennek meg
 Display Common Use Date/Times as GMT: Dátumok/idők megjelenítése GMT szerint
 date-format-help: Megadja a kívánt dátumformátumot.
 Date format: Dátumformátum
+Small Task Date: Kis feladat dátuma
 display-week-starts-on: Megadja, hogy a hetek Vasárnap vagy Hétfõn kezdõdjenek. Hétfõ esetén a hetek számozása ISO szerint történik.
 Week starts on: Hetek elsõ napja
-time-format-help: Megadja, hogy melyik formátumot használod:<br /><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.<br /><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
+display-weekend-starts-on: Beállítja a hét napját a hétvégék kezdetére
+Weekend starts on: A hétvége kezdődik
+time-format-help: Megadja, hogy melyik formátumot használod:<br><i>12 órás:</i> Az idõpontok du 3:30 formában jelennek meg.<br><i>24 órás:</i> Idõpontok 20:30 formában jelennek meg.
 Time format: Idõpont formátum
 12 hour: 12 órás
 24 hour: 24 órás
@@ -168,9 +227,11 @@ work-hours-help: A napi nézetben megjelenõ idõintervallumot adja meg.
 Work hours: Munkaidõ
 From: Kezdete
 to: vége
+Appearance: Kinézet
 preferred-view-help: Az alapértelmezett nézetet adja meg (Napi, Heti, Havi vagy Éves).
 Preferred view: Kedvenc nézet
 Allow top menu: Felső menüsor bekapcsolása
+Date Selectors position: Dátumválasztók pozíciója
 menu-themes-help: A felső menü színének és stílusának beállítása
 Menu theme: Menü téma
 fonts-help: A használandó betûkészletek listája (például "Arial, Helvetica").
@@ -179,6 +240,8 @@ display-sm_month-help: Ha engedélyezve van, rövid hónapok jelennek meg a hón
 Display small months: Rövid hónapok kiírása
 display-weekends-help: Hétvégék megjelennek-e heti nézetben.
 Display weekends: Hétvégék megjelenítése
+display-long-daynames-help: Ha engedélyezve van, akkor a hosszú napok neve jelenik meg
+Display long day names: Hosszú napok nevének megjelenítése
 display-alldays-help: Megjelennek az előző és a következő hónap napjai, minden cella ki lesz töltve
 Display all days in month view: Minden nap megjelenítése hónap nézetben
 display-week-number-help: Megadja, hogy a havi és a heti nézetben megjelenjenek-e a hetek számai (1-52).
@@ -187,15 +250,20 @@ display-desc-print-day-help: Eseményleírások megjelenítése a napi nyomtatá
 Display description in printer day view: Leírás megjelenítése napi nyomtatási nézetben
 yearly-shows-events-help: Éves nézetben vastag betûvel jelennek meg azok a napok, amelyeken van valami esemény.
 Display days with events in bold in month and year views: Eseménnyel rendelkező napok kiemelése havi és éves nézetben megjelenítése
+display-minutes-help: Ha engedélyezve van, a: 00-val végződő percek mindig megjelennek
+Display 00 minutes always: Mindig jelenítsen meg 00 percet
+display-end-times-help: Időzített esemény esetén jelenítse meg az esemény befejezési idejét
+Display end times on calendars: Jelenítse meg a befejezési időket a naptárakban
 allow-view-add-help: Minden nézetben megjelenik egy '+' ikon, mellyel másik felhasználók naptárába lehet gyorsan eseményeket felvenni.
 Include add event link in views: Esemény hozzáadása link minden nézetben
 lunar-help: A holdfázisok kis ikonok formájában jelennek meg
 Display Lunar Phases in month view: Holdfázisok megjelenítése hónap nézetben
+Restrictions: Korlátozások
 allow-view-other-help: Megadja, hogy egyik felhasználó láthatja-e a másik naptárát.
 Allow viewing other users calendars: Más felhasználók naptárának megtekintése
 require-approvals-help: Bekapcsolva a felhasználónak jóvá kell hagynia az eseményt, mielõtt megjelenne a naptárában (hacsak a jóváhagyás nélküliek megjelenítése nincs bekapcsolva). Megjegyzés: ha ezt kikapcsolod, attól még a nyilvános naptár eseményeit jóvá kell hagynod (már ha a nyilvános naptár be van kapcsolva).
 Require event approvals: Események jóváhagyásának megkövetelése
-display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<br /> Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<br /> Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
+display-unapproved-help: Megadja, hogy a jóváhagyatlan események megjelenjenek-e.<br>Ha "Igen", a jóváhagyatlan események megjelennek (más színnel).<br>Ha "Nem", az eseményeket jóvá kell hagyni ahhoz, hogy megjelenjenek a naptáradban.
 Display unapproved: Jóváhagyás nélküliek megjelenítése
 conflict-check-help: Esemény-ütközések ellenõrzése (ugyanazon felhasználó két eseménye idõben fedi egymást). Ha "Igen"-re állítod, csak egy jóváhagyás után vehetsz fel két eseményt ugyanarra az idõre. Ha "Nem"-re állítod, nem lesz ilyen ellenõrzés. Valószínûleg "Igen"-re akarod állítani, hogy legyen ellenõrzés.
 Check for event conflicts: Esemény-ütközések ellenõrzése
@@ -209,8 +277,12 @@ limit-appts-help: Lehetõvé teszi a rendszergazda számára, hogy mindenki szá
 Limit number of timed events per day: Idõzített események számának korlátozása
 limit-appts-number-help: Megadja a felhasználónként felvehetõ napi események maximális számát.
 Maximum timed events per day: Idõzített események maximális száma
+crossday-help: Ha engedélyezve van, a napokon átívelő események külön napokon jelennek meg
+Disable Cross-Day Events: Tiltsa le a napközi eseményeket
 disable-location-field-help: Ha Igen-re állítod, a Helyszín mező nem lesz elérhető
 Disable Location field: Helyszín mező kikapacsolása
+disable-url-field-help: Az „Igen” kiválasztásával eltávolítja az „URL” mezőt az eseményinformációs oldalakról
+Disable URL field: Letiltja az URL mezőt
 disable-priority-field-help: Bekapcsolása eltünteti a "prioritás" mezõt az esemény oldaláról, ezzel egyszerûbbé téve a felületet kezdõk számára.
 Disable Priority field: Prioritás mezõ letiltása
 disable-access-field-help: Bekapcsolása eltünteti az "elérés" mezõt az esemény oldaláról, ezzel egyszerûbbé téve a felületet kezdõk számára.
@@ -221,16 +293,22 @@ disable-repeating-field-help: Bekapcsolása eltünteti az "ismétlõdõ" mezõt 
 Disable Repeating field: Ismétlõdõ mezõ letiltása
 allow-html-description-help: Bekapcsolva a felhasználól az esemény leírása mezõbe HTML kódot is írhatnak. Kikapcsolva a HTML kódok sima szövegként jelennek meg. Figyelem: ha bekapcsolod, más weboldalakon levõ képekre is lehet hivatkozni.
 Allow HTML in Description: HTML engedélyezése a leírásban
+Popups: Felugró ablakok
 disable-popups-help: Felugró ablakok kikapcsolása naptár nézetben
 Disable Pop-Ups: Felugró ablakok kikapcsolása
 popup-includes-siteextras-help: Bekapcsolva az események felbukkanó ablakaiban a site_extras.php fájlban beállított egyedi mezõk is megjelennek.
 Display Site Extras in popup: Helyi extrák megjelenítése a felbukkanó ablakban
 popup-includes-participants-help: Résztvevők megjelenítése a felugrókban
 Display Participants in popup: Résztvevők kiírása felugróban
+Miscellaneous: Vegyes
 remember-last-login-help: Bekapcsolva a bejelenkezési ablakban kitöltésre kerül a felhasználó neve (a jelszava nem), és a beállításai betöltõdnek (beleértve a színeket és a nyelvet).
 Remember last login: Utolsó bejelentkezés megjegyzése
 summary_length-help: A rövid leírás mező hossza a naptárban
 Brief Description Length: Rövid leírás hossza
+user_sort-help: Meghatározza a rendezési sorrendet a Felhasználók, a Nem használók listákhoz
+User Sort Order: Felhasználói rendezés
+Lastname, Firstname: Vezetéknév Keresztnév
+Firstname, Lastname: Keresztnév családnév
 allow-public-access-help: Bekapcsolva megjelenik egy csak olvasható nyilvános naptár jelenik meg, melyhez be sem kell jelentkezni.
 Allow public access: Nyilvános elérés
 public-access-default-visible: A nyilvános naptár eseményei automatikusan megjelennek az összes felhasználó naptárában
@@ -249,6 +327,8 @@ public-access-override-help: Események nevének és leírásának elrejtése a 
 Override event name/description for public access: Események nevének és leírásának elrejtése a nyilvános naptárban
 public-access-override-text-help: A megjelenő szöveg a fenti opció bekapcsolásakor. Ha 'Nem elérhető', le lesz fordítva.
 Text to display to public access: Szöveg publikus hozzáféréshez
+public-access-captcha-help: Ha engedélyezve van, a Public által hozzáadott új eseményekhez CAPTCHA érvényesítés szükséges.
+Require CAPTCHA validation for public access new events: Új események nyilvános hozzáféréséhez CAPTCHA érvényesítést igényel
 uac-enabled-help: Engedélyezi a felhasználónkénti hozzáférés-szabályozást
 User Access Control enabled: Felhasználói jogok kezelésének bekapcsolása
 groups-enabled-help: Csoporttámogatás engedélyezése, mely lehetõvé teszi felhasználók csoportonkénti kiválasztását.
@@ -259,17 +339,32 @@ nonuser-enabled-help: Bekapcsolva az adminisztrátorok létrehozhatnak felhaszn�
 Nonuser enabled: Felhasználó nélküli naptárak engedélyezése
 nonuser-list-help: Megadja, hogy a felhasználó nélküli naptárak hol jelenjenek meg a résztvevõk listájában.
 Nonuser list: Résztvevõk listájában való megjelenés
+Upcoming Events: Közelgő események
+upcoming-events-help: Engedélyezze az upcoming.php fájlt
 Enabled: Engedélyezve
+upcoming-events-allow-override: Engedélyezze a felhasználói paramter használatát az upcoming.php fájlhoz
+Allow user override: Engedélyezze a felhasználó felülírását
+upcoming-events-display-caticons: A kategóriaikonokat vegye fel az upcoming.php fájlba
+Display category icons: Kategória ikonok megjelenítése
+upcoming-events-display-layers: Rétegek megjelenítése az upcoming.php fájlban
+Display layers: Rétegek megjelenítése
+upcoming-events-display-links: Linkek megjelenítése az upcoming.php fájlban
+Display links to events: Linkek megjelenítése az eseményekhez
+upcoming-events-display-popups: Az esemény felugró ablakainak megjelenítése az upcoming.php fájlban
+Display event popups: Esemény felugró ablakok megjelenítése
 reports-enabled-help: Bekapcsolva a felhasználók minden oldal alján látnak egy "Jelentések" részt és létrehozhatnak egyedi jelentéseket, továbbá az adminisztrátorok létrehozhatnak globális jelentéseket, melyek megjelennek minden felhasználó oldalainak alján.
 Reports enabled: Jelentések engedélyezése
 subscriptions-enabled-help: Megadja, hogy távoli felhasználók feliratkozhatnak-e egy WebCalendar felhasználó naptárjához, így lehetõvé téve számukra annak egy iCal-kompatibilis programban (mint például Apple iCal vagy Mozilla Calendar) való megtekintését.
 Allow remote subscriptions: Távoli feliratkozás engedélyezése
+remotes-enabled-help: Lehetővé teszi a felhasználók számára, hogy távoli ICS fájlokat töltsenek be az URL segítségével
+Allow remote calendars: Távoli naptárak engedélyezése
 rss-enabled-help: A fellhasználói naptárak elérése RSS-en
 Enable RSS feed: RSS csatorna engedélyezése
 categories-enabled-help: Eseménykategóriák támogatásának engedélyezése.
 Categories enabled: Kategóriák engedélyezése
 icon_upload-enabled-help: Ha bekapcsolod, a felhasználók feltölthetnek kategória-ikonokat
 Category Icon Upload enabled: Kategória ikon feltöltés engedélyezése
+(Requires XXX folder to exist.): (XXX mappának kell lennie.)
 display-tasks-help: Kis feladatlista megjelenítése havi és napi nézetben
 Display small task list: Rövid feladatlista megjelenítése
 display-tasks-in-grid-help: Feladatok megjelenítése naptárakban
@@ -309,9 +404,12 @@ SMTP Username: SMTP Felhasználónév
 email-smtp-password: SMTP jelszó ha van authentikáció
 SMTP Password: SMTP Jelszó
 Default user settings: Alapértelmezett felhasználói beállítások
+email-format: Adja meg a HTML vagy az egyszerű szöveges üzenetek preferenciáját
 Email format preference: Email formátum beállításai
 HTML: =
 Plain Text: Egyszerű szöveg
+email-include-ics: Csatoljon egy iCalendar ICS fájlt az e-mail üzenethez
+Include iCalendar attachments: Tartalmazza az iCalendar mellékleteket
 email-event-reminders-help: Kérsz-e email emlékeztetõt az eseményrõl.
 Event reminders: Esemény emlékeztetõk
 email-event-added: Kérsz-e email emlékeztetõt a saját naptáradba bejegyzett új eseményrõl.
@@ -322,10 +420,18 @@ email-event-deleted: Kérsz-e email emlékeztetõt a saját naptáradból törö
 Events removed from my calendar: Esemény törlése a saját naptárból
 email-event-rejected: Kérsz-e email emlékeztetõt a saját naptáradból elutasított eseményekrõl.
 Event rejected by participant: Esemény elutasítása a résztvevõk által
+email-event-create: Megadja, hogy a bejegyzések készítője e-mailt kap-e
+Event that I create: Az általam létrehozott esemény
+Color options: Színbeállítások
 Allow user to customize colors: Felhasználók beállíthatják a színeket
 gradient-colors: színátmenetek
 Enable gradient images for background colors: Színátmenetek engedélyezése
 Not available: Nem elérhető
+Background Image options: Háttérkép beállításai
+bgimage-help: A kívánt háttérkép URL-je. Relatív kapcsolat lehet.
+Background Image: Háttérkép
+bgrepeat-help: A háttérkép ismételt viselkedését vezérli.
+Background Repeat: Ismételje meg a hátteret
 
 ########################################
 # Page: adminhome.php
@@ -341,6 +447,8 @@ Layers: Rétegek
 Reports: Riportok
 Delete Events: Események törlése
 Activity Log: Tevékenységi napló
+System Log: Rendszernapló
+Security Audit: Biztonsági ellenőrzés
 Public Preferences: Nyilvános beállítások
 Unapproved Public Events: Jóváhagyás nélküli nyilvános események
 Administrative Tools: Adminisztrációs eszközök
@@ -348,8 +456,9 @@ Administrative Tools: Adminisztrációs eszközök
 ########################################
 # Page: ajax.php
 #
-Username already exists.: A felhasználónév foglalt
-Email address already exists.: Az Email cím már létezik
+Duplicate Name XXX: Ismétlődő név: "XXX".
+Username XXX already exists.: A (z) "XXX" felhasználónév már létezik.
+Email address XXX already exists.: A (z) "XXX" e-mail cím már létezik.
 
 ########################################
 # Page: approve_entry.php
@@ -358,13 +467,14 @@ Additional Comments (optional): További megjegyzések (opcionális)
 Approve and Send: Elfogadás és küldés
 Approve and Exit: Elfogadás és kilépés
 (Your comments will be emailed to the event creator.): (az események benne lesznek a készítőnek küldendő emailben)
-Hello: Szia
-An appointment has been approved and comments added by: Egy találkozót elfogadott és megjegyzést írt
-The subject was: A tárgy
-The description is: Leírás
-Date: Dátum
-Time: Idõ
-Comments: Megjegyzések
+Hello, XXX.: Helló, XXX.
+XXX has approved an appointment and added comments.: A találkozót jóváhagyta, és megjegyzéseit hozzáadta XXX.
+Subject XXX: Tárgy: "XXX".
+Description XXX: Leírás: "XXX".
+Date XXX: Dátum: XXX
+Time XXX: Idő: XXX
+Comments XXX: Megjegyzések: XXX
+Approved w/Comments by XXX.: Jóváhagyta és megjegyzéseket írta: XXX.
 
 ########################################
 # Page: assistant_edit.php
@@ -373,8 +483,17 @@ Admin mode: Adminisztrációs mód
 Your assistants: Titkáraid
 
 ########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Ismeretlen hiba.
+
+########################################
 # Page: availability.php
 #
+Program Error No XXX specified!: Programhiba: Nincs megadva XXX!
+user: felhasználó
+year: év
+month: hónap
 day: nap
 
 ########################################
@@ -382,11 +501,13 @@ day: nap
 #
 Category Icon: Kategória ikon
 Global: Globális
+The permissions for the icons directory are set to read-only: Az ikonok könyvtárának engedélyei csak olvashatóra vannak állítva.
 Category Name: Kategórianév
 Color: Szín
 Remove Icon: Ikon eltávolítása
 Add Icon to Category: Ikon felvétele a kategóriába
 Upload: Feltöltés
+GIF or PNG 6kb max: GIF vagy PNG max. 6 kb
 Search for existing icons: Keresés a létező ikonok között
 Add: Hozzáadás
 Delete: Törlés
@@ -396,8 +517,9 @@ Make New Category: Új kategória hozzáadása
 ########################################
 # Page: category_handler.php
 #
+Category name is required: A kategória neve kötelező
 File size exceeds maximum.: A fájlméret túllépi a megengedettet
-File is not a gif image.: A fájl nem gif kép
+File is not a GIF or PNG image: A fájl nem GIF vagy PNG kép
 
 ########################################
 # Page: catsel.php
@@ -409,9 +531,63 @@ Global Category: Globális kategória
 Cancel: Mégsem
 
 ########################################
+# Page: colors.php
+#
+Add Custom: =
+Basic Colors: Alapszínek
+Current Color: Aktuális szín
+Custom Colors: Egyedi színek
+Old Color: Régi szín
+
+########################################
+# Page: combo.php
+#
+Select None: Válassza a Nincs elemet
+Agenda: Napirend
+Add Task: Feladat hozzáadása
+Description: Leírás
+Date: Dátum
+Time: Idõ
+Priority: Prioritás
+Access: Hozzáférés
+Created by: Létrehozta
+Updated: Frissítve
+Participants: Résztvevők
+Attachments: Mellékletek
+Comments: Megjegyzések
+Brief Description: Rövid leírás
+Full Description: Teljes leírás
+Category: Kategória
+Add event detail: Adja hozzá az esemény részleteit
+Start Date: Kezdő dátum
+Due Date: Esedékesség dátuma
+Add task detail: Adja meg a feladat részleteit
+All: Összes
+Error: Hiba
+no response from server: nincs válasz a szervertől
+JSON error: JSON hiba
+High: Magas
+Medium: Közepes
+Low: Alacsony
+Today: Mai nap
+Add Entry: Új bejegyzés
+Unnamed Event: Névtelen esemény
+Unnamed Task: Névtelen feladat
+Refresh: Frissítés
+Click to add entry: Kattintson a bejegyzés hozzáadásához
+Name: Név
+pm: du
+am: de
+
+########################################
 # Page: del_entry.php
 #
-An appointment has been canceled for you by: Egy találkozót lemondott veled
+XXX has canceled an appointment.: XXX lemondott egy találkozót.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Érvénytelen blob id
 
 ########################################
 # Page: docadd.php
@@ -421,7 +597,6 @@ Add Attachment: Új melléklet
 Subject: Tárgy
 Comment: MEgjegyzés
 Upload file: Fájl feltöltés
-Description: Leírás
 
 ########################################
 # Page: docdel.php
@@ -431,59 +606,70 @@ Removed: Eltávolítva
 ########################################
 # Page: edit_entry.php
 #
-am: de
-pm: du
 days: nap
 hours: óra
 minutes: perc
 You are not authorized to edit this task.: Nem szerkesztheted ezt a feladatot
 is in a different timezone than you are. Currently: más időzónában van mint te. Éppen
+hour ahead of you: órával előtted
+hour behind you: órával mögötted
 hours ahead of you: hátralévő órák
 hours behind you: eltelt órák
+XXX is in a different timezone (ahead): (XXX más időzónában van; YYY előtted áll.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX más időzónában van; YYY mögötted.<br>&nbsp;ZZZ)
 Time entered here is based on your Timezone.: Az itt megadott idő az időzóna alapján
 Edit Entry: Bejegyzés szerkesztése
-Add Entry: Új bejegyzés
 Details: Részletek
-Participants: Résztvevők
 Repeat: Ismétlődés
 Reminders: Emlékeztetők
 brief-description-help: Ez az esemény rövid leírása (kb. 20 karakter).
-Brief Description: Rövid leírás
 full-description-help: Ez az esemény teljes leírása. Ez fog megjelenni, ha valaki megnézni az eseményt.
-Full Description: Teljes leírás
-access-help: Specifies the access level of the event.<br /> <em>Public</em>: Everyone can see the full details of the event.<br /><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
-Access: Hozzáférés
-Priority: Prioritás
-High: Magas
-Medium: Közepes
-Low: Alacsony
-Category: Kategória
+access-help: Specifies the access level of the event.<br><em>Public</em>: Everyone can see the full details of the event.<br><em>Confidential</em>: Others can see that you have an entry for that date and time, but not the details of what it is.
+priority-help: Megadja az esemény prioritását. A kiemelt fontosságú események félkövéren kerülnek megjelenítésre.
+category-help: Megadja az esemény kategóriáját.
+completed-help: A feladat befejezésének dátuma. Csak akkor engedélyezett, ha az összes résztvevő százaléka 100%.
+Date Completed: Teljesítés dátuma
+percent-help: A feladat teljesítési százaléka ehhez a felhasználóhoz
 Percent Complete: Készültésgi fok
+All Percentages: Minden százalék
 location-help: Esemény helyszíne
 Location: Helyszín
+url-help: Esemény URL-je
 URL: =
 date-help: Az esemény dátuma
-Start Date: Kezdő dátum
 Untimed event: Idő nélküli esemény
 Timed event: Időzített esemény
 All day event: Egész napos esemény
 Timezone Offset: Idõzóna eltérés
+time-help: Megadja az esemény időpontját. <ul> <li> "Időzített esemény" (egy eseményre, amelyet az adott napon egy adott időpontra terveznek)</li> <li> "Időzítetlen esemény" (egy eseménynek ennek nincs ideje (például ünnep) )</li> <li> "Egész napos esemény" (egész napra szóló esemény (például az irodán kívül tartózkodás)</li></ul>
+duration-help: Megadja az esemény időtartamát (órában; percben). <em>Ez a mező üresen hagyható.</em>
+end-time-help: Megadja az esemény várható befejezésének idejét.
 Start Time: Kezdő idő
-Due Date: Esedékesség dátuma
 Due Time: Esedékesség ideje
+Site Extras: Webhely extrák
+avail_participants-help: Felsorolja a bejegyzés elérhető résztvevőit.
+Available: Elérhető
+Find Name: Keresse meg a nevet
+Resources: Erőforrások
 participants-help: Bejegyzés résztvevőinek listája
 Selected: Kiválasztott
 Availability: Elérhetőség
+external-participants-help: Megadja az esemény azon résztvevőinek listáját, akik nem naptári felhasználók. A felhasználókat soronként fel kell tüntetni, és e-mail címet is megadhatnak. Ha meg van adva egy e-mail cím, akkor a felhasználó jogosult értesítések és emlékeztetők fogadására.
 External Participants: Külső résztvevők
+repeat-type-help: Válassza ki, hogy milyen gyakran ismételje meg az eseményt.
 Daily: Naponta
 Weekly: Hetente
 Monthly: Havonta
 by day: naponként
 by date: dátumonként
 by position: pozíciónként
+Monthly (by day): Havonta (nap szerint)
+Monthly (by date): Havonta (dátum szerint)
+Monthly (by position): Havonta (pozíció szerint)
 Yearly: Évente
 Manual: Kézzel
 Expert Mode: Haladó mód
+repeat-end-date-help: Megadja a dátumot, ameddig az eseménynek meg kell ismételnie.
 Ending: Vége
 Forever: Örökké
 Use end date: Befejező dátum használata
@@ -492,8 +678,19 @@ repeat-frequency-help: =
 Frequency: Gyakoriság
 Weekdays Only: Csak munkanapokon
 Week Start: Hét kezdete
-All: Összes
+repeat-bydayextended-help: Lehetővé teszi a dátum kiválasztását a hét napja alapján.
+ByDay: Nappal
+repeat-month-help: Megadja, hogy az esemény mely hónapokban ismétlődjön meg.
 ByMonth: Havonta
+repeat-bysetpos-help: Lehetővé teszi a dátum kiválasztását a hónap melletti pozíció alapján.
+BySetPos: =
+repeat-bymonthdayextended-help: Dátum alapján lehet kiválasztani a dátumot.
+ByMonthDay: ByHónapNap
+repeat-byweekno-help: Lehetővé teszi a felhasználó számára, hogy meghatározza az esemény megismétléséhez szükséges hetek listáját (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: HetiNem
+repeat-byyearday-help: Lehetővé teszi a felhasználó számára, hogy meghatározza az esemény megismétléséhez szükséges napok listáját (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: További napok, amelyeken ennek az eseménynek történnie kell, vagy nem.
 Exclusions: Kivételek
 Inclusions: Belefoglalások
 Add Exception: Új kivétel
@@ -509,38 +706,24 @@ Start: Kezdet
 End/Due: Vége/Esedékes
 Times: Hányszor
 Every: Minden
+CAPTCHA Warning: Figyelem:  A PHP GD kiterjesztése nélkül nem használható a CAPTCHA!<br>
 Delete entry: Bejegyzés törlése
 You are not authorized to edit this entry.: Nincs jogosultságod a szerkesztéshez
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: Egy új tennivalót írt be számodra
-An appointment has been updated by: Egy tennivalót módosított
+XXX has made a new appointment.: XXX új találkozót rendelt.
+XXX has updated an appointment.: XXX frissített egy találkozót.
+Security violation!: Biztonsági megsértés!
+You must enter the anti-spam text on the previous page.: Az előző oldalon meg kell adnia a spamellenes szöveget.
 The following conflicts with the suggested time: A következők ütköznek a tervezett idővel
-Please look on: Légyszíves nézd meg
-to accept or reject this appointment: -ban, hogy megfelelõ-e Neked ez az idõpont
-to view this appointment: -ban a találkozó részleteit
+User removed from participants list.: Felhasználó eltávolítva a résztvevők listájáról.
+Please look on XXX to accept or reject this appointment.: Kérjük, nézze meg a XXX oldalt, hogy elfogadja vagy elutasítsa ezt a találkozót.
+Please look on XXX to view this appointment.: Kérjük, nézze meg a XXX oldalt a találkozó megtekintéséhez.
 Scheduling Conflict: Ütemezési ütközés
 Your suggested time of: Az általad javasolt
 conflicts with the following existing calendar entries: -es idõpont ütközik a következõ eseményekkel
-
-########################################
-# Page: edit_layer.php
-#
-Add Layer: Réteg hozzáadása
-Edit Layer: Réteg módosítása
-Source: Forrás
-Duplicates: Másolatok
-Show layer events that are the same as your own: A sajátjaiddal megegyezõ események megmutatása
-Add to My Calendar: Hozzáadás a saját naptárhoz
-Delete layer: Réteg törlése
-
-########################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself.: Nem hozhatsz létre réteget saját magadnak
-You can only create one layer for each user.: Csak egy réteget hozhatsz létre felhasználónként
 
 ########################################
 # Page: edit_nonusers.php
@@ -555,11 +738,25 @@ Last Name: Keresztnév
 Is public calendar: Publikus naptár
 
 ########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Adatbázis hiba
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Távoli naptár hozzáadása
+Edit Remote Calendar: Távoli naptár szerkesztése
+Create Layer: Létrehozása
+Reload: Újratöltés
+Required to View Remote Calendar: Távoli naptár megtekintéséhez szükséges
+
+########################################
 # Page: edit_remotes_handler.php
 #
-Error: Hiba
 Import Results: Import eredménye
 Events successfully imported: események rendben importálva.
+Create a new layer to view this calendar.: Hozzon létre egy új réteget a naptár megtekintéséhez.
 Errors: Hibák
 There was an error parsing the import file or no events were returned.: Hiba történt az importálandó fájl feldolgozásakor, vagy nem volt benne esemény
 
@@ -567,7 +764,6 @@ There was an error parsing the import file or no events were returned.: Hiba tö
 # Page: edit_report.php
 #
 Tomorrow: Holnap
-Today: Mai nap
 Yesterday: Tegnap
 Day before yesterday: Tegnapelõtt
 Next week: Következõ héten
@@ -592,13 +788,14 @@ Next 60 days: Következő 60 nap
 Next 90 days: Következő 90 nap
 Next 180 days: Következő 180 nap
 Next 365 days: Következő 365 nap
-Invalid report id.: Érvénytelen riport id
+Invalid report id XXX.: Érvénytelen jelentésazonosító: "XXX".
 Unnamed Report: Névtelen jelentés
 Add Report: Jelentés hozzáadása
 Edit Report: Jelentés szerkesztése
 Report name: Jelentés neve
 User: Felhasználó
 Current User: Felhasználó
+Include link in menu: Link beillesztése a menübe
 Include standard header/trailer: Standard fejléc/lábléc beszúrása
 Include previous/next links: Elõzõ/következõ linkek beszúrása
 Include empty dates: Üres dátumok beszúrása
@@ -612,7 +809,8 @@ Are you sure you want to delete this report?: Valóban törölni akarod ezt a je
 ########################################
 # Page: edit_report_handler.php
 #
-Variable N not found: N változót nem találom
+No such report id XXX.: Nincs ilyen jelentésazonosító: "XXX".
+Variable XXX not found.: A XXX változó nem található.
 
 ########################################
 # Page: edit_template.php
@@ -643,11 +841,17 @@ You have not entered a password.: Nem írtad be a jelszót
 Username cannot be blank.: A felhasználónév nem lehet üres
 
 ########################################
+# Page: events_ajax.php
+#
+Not authorized: Nincs jogosultságod
+
+########################################
 # Page: export.php
 #
 Export: =
 Export format: Exportálás formátuma
 Include all layers: Tartlamazzon minden réteget
+Include deleted entries: Tartalmazza a törölt bejegyzéseket
 Export all dates: Minden dátum exportálása
 Start date: Kezdõ dátum
 End date: Befejezõ dátum
@@ -657,6 +861,11 @@ Modified since: Módosítva
 # Page: export_handler.php
 #
 export format not defined or incorrect.: nem adtál meg exportformátumot, vagy az hibás
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Nincs megadva felhasználó.
 
 ########################################
 # Page: groups.php
@@ -670,8 +879,6 @@ Unnamed Group: Névtelen csoport
 Add Group: Csoport hozzáadása
 Edit Group: Csoport szerkesztése
 Group name: Csoportnév
-Updated: Frissítve
-Created by: Létrehozta
 
 ########################################
 # Page: group_edit_handler.php
@@ -690,6 +897,8 @@ Display weekends in week view: Hétvégék megjelenítése hét nézetben
 Time interval: Idõköz
 time-interval-help: Heti és napi nézetben megadja az idõblokkok hosszát.
 Nonuser: Felhasználó nélküli naptárak
+user-customize-color: Megadja, hogy a felhasználók módosíthatják-e saját színvilágukat.
+enable-gradient-help: Használjon gradiens színeket a cellahátterekhez.
 Manually entering color values: Színkódok megadása kézzel
 colors-help: A színeket "#RRGGBB" hexadecimális formátumban kell megadni, ahol az "RR" a vörös, a "GG" a zöld, a "BB" a kék szín értékét adja meg.
 
@@ -697,12 +906,21 @@ colors-help: A színeket "#RRGGBB" hexadecimális formátumban kell megadni, aho
 # Page: help_bug.php
 #
 Report Bug: Hibabejelentés
+Please include all the information below when reporting a bug.: Kérjük, a hiba bejelentésekor adja meg az összes információt.
+Also, please use English rather than XXX.: Ezenkívül használja az  angol  szót a XXX helyett.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar dokumentáció
+Currently in English only.: Jelenleg csak angolul.
 
 ########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Naptárbejegyzések hozzáadása/módosítása
 Repeat Type: Ismétlés típusa
+For More Information...: További információért...
 Repeat End Date: Ismétlés vége
 Repeat Day: Ismétlés napja
 repeat-day-help: Megadja, hogy a hét melyik napján ismétlődjön az esemény
@@ -712,18 +930,24 @@ repeat-day-help: Megadja, hogy a hét melyik napján ismétlődjön az esemény
 #
 Import: =
 Palm Desktop: =
+allow you to import entries from the Palm...: Ez az űrlap lehetővé teszi a bejegyzések importálását a Palm Desktop Datebookból. A Palmbook könyvtárában kell lennie a datebook / datebook.dat fájlban, a felhasználóneve által megnevezett alkönyvtárban.
 The following entries will not be imported: A következõ bejegyzések nem importálhatók
 Entries older than the current date: Mainál régebbi bejegyzések
 Entries created in the Palm Desktop...: A Palm Desktopon létrehozott bejegyzések, amiket még nem HotSync-eltél
+Anything imported from Palm...: A Palmból importáltakat felülírják a következő importálás során (hacsak az esemény dátuma nem telt el). Ezért a Palm Desktopon frissítéseket kell végrehajtani.
 vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Ez az űrlap importálja a vCalendar (.vcs) 1.0 eseményeket.
+The following formats have been tested: A következő formátumokat teszteltük:
 This form will import iCalendar (.ics) events.: Ezen az ûrlapon tudsz iCalendar (.ics) eseményeket importálni.
 Enabling: Engedélyezés
 Overwrite Prior Import: Elõzõ import felülírása
+will cause events imported previously...: a korábban importált eseményeket, amelyek ugyanazt az UID-t használták, mint az új import fájl eseményei, töröltként jelölik. Ennek lehetővé kell tennie egy frissített iCalendar fájl importálását másolatok létrehozása nélkül.
 
 ########################################
 # Page: help_index.php
 #
 Help Index: Súgó tartalomjegyzék
+About WebCalendar: A WebCalendarról
 
 ########################################
 # Page: help_layers.php
@@ -734,8 +958,10 @@ Clicking the Edit Layers link in the admin section at the bottom of the page wil
 The text color of the new layer that will be displayed in your calendar.: A naptáradban megjelenõ új réteg szövegszíne.
 Disabling: Letiltás
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Az oldal alján az adminisztrációs részben kattints a Rétegek letiltása linkre a rétegek kikapcsolásához.
+Duplicates: Másolatok
 If checked, events that are duplicates of your events will be shown.: Bejelölve megjeleníti azokat az eseményeket, melyek a te eseményeid másolatai.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Az oldal alján az adminisztrációs részben kattints a Rétegek engedélyezése linkre a rétegek bekapcsolásához.
+Source: Forrás
 Specifies the user that you would like to see displayed in your calendar.: Megadja, hogy mely felhasználót szeretnéd megjeleníteni a naptáradban.
 
 ########################################
@@ -782,6 +1008,7 @@ Current Icons on Server: Ikonok a szerveren
 ########################################
 # Page: import.php
 #
+import from file: import fájlból
 Disabled: Letiltva
 Import format: Import formátum
 Exclude private records: Saját rekordok kizárása
@@ -790,6 +1017,8 @@ Repeated items are imported separately. Prior imports are not overwritten.: Az i
 ########################################
 # Page: import_handler.php
 #
+No file: Nincs fájl
+Error deleting palm events from webcalendar.: Hiba történt a tenyéresemények törlésével a webnaptárból.
 Events from prior import marked as deleted: elõzõ importból származó eredmények töröltnek jelzése
 Conflicting events: Ütközõ események
 The import file contained no data.: Az importálandó fájl nem tartalmaz adatot.
@@ -797,23 +1026,44 @@ The import file contained no data.: Az importálandó fájl nem tartalmaz adatot
 ########################################
 # Page: layers.php
 #
-Layer: Réteg
-Edit layer: Réteg módosítása
 Are you sure you want to delete this layer?: Biztos törölni akarod ezt a réteget?
+Delete layer: Réteg törlése
+Edit layer: Réteg módosítása
+Enable layers: Rétegek engedélyezése
+Layer: Réteg
+Layers are currently disabled.: A rétegek jelenleg le vannak tiltva.
+Layers are currently enabled.: A rétegek jelenleg engedélyezve vannak.
+Click to modify layers settings for XXX: Ide kattintva módosíthatja a XXX naptár rétegbeállításait.
 Disable Layers: Rétegek tiltása
 Add layer: Réteg hozzáadása
+Add Layer: Réteg hozzáadása
+Edit Layer: Réteg módosítása
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Nem lehet frissíteni a beállítást
+Invalid entry id.: Érvénytelen bejegyzés-azonosító.
+You cannot create a layer for yourself.: Nem hozhatsz létre réteget saját magadnak
+You can only create one layer for each user.: Csak egy réteget hozhatsz létre felhasználónként
 
 ########################################
 # Page: list_unapproved.php
 #
 Approve/Confirm: Jóváhagyás/Beleegyezés
+Approve Selected: A kiválasztott jóváhagyása
+Check All: Ellenőrizni mind
+Emails Will Not Be Sent: Az e-maileket nem küldjük el
+Reject Selected: A kiválasztott elutasítása
 Reject: Elutasítás
+Uncheck All: Minden választás törlése
 View this entry: Bejegyzés megtekintése
-No unapproved entries for: Nincs jóváhagyás nélküli bejegyzés
+No unapproved entries for XXX.: Nincsenek jóváhagyatlan bejegyzések a következőhöz: "XXX".
 Unapproved Entries: Jóváhagyás nélküli bejegyzések
-Not authorized: Nincs jogosultságod
 Approve this entry?: Jóváhagyod ezt a bejegyzést?
 Reject this entry?: Elutasítod ezt a bejegyzést?
+Approve Selected entries?: Jóváhagyja a kijelölt bejegyzéseket?
+Reject Selected entries?: Elutasítja a kijelölt bejegyzéseket?
 
 ########################################
 # Page: login-app.php
@@ -821,22 +1071,25 @@ Reject this entry?: Elutasítod ezt a bejegyzést?
 You must enter a login and password.: Add meg az azonosítódat és jelszavadat
 Save login via cookies so I dont have to login next time.: A bejelentkezési jelszó mentése, így errõl a géprõl legközelebb nem kell megadni
 Login: Bejelentkezés
-Access public calendar: Nyilvános naptár elérése
-calendar: naptár
-cookies-note: <b>Megjegyzés:</b> A sütiket engedélyezni kell a naptár használatához.
+public: nyilvános
+Access XXX calendar: Hozzáférés a XXX naptárhoz
+cookies-note: Megjegyzés: A sütiket engedélyezni kell a naptár használatához.
 
 ########################################
 # Page: login.php
 #
-Illegal characters in login: Illegális karakter a felhasználónévben
+Illegal characters in login XXX.: Illegális karakterek a XXX bejelentkezéskor.
 Invalid login: Érvénytelen azonosító
+Activity login failure: Felhasználónév: "XXX", IP: "YYY".
+Error XXX: Hiba: "XXX".
 You have been logged out.: Sikeresen kijelentkeztél
+Access public calendar: Nyilvános naptár elérése
 Not yet registered? Register here!: Még nem regisztráltál ? Tedd meg itt!
 
 ########################################
 # Page: minical.php
 #
-No such nonuser calendar: Nincs felhasználó nélküli naptár
+No such nonuser calendar XXX.: Nincs ilyen nem felhasználói naptár: "XXX".
 This Calendar is not Public.: Ez a naptár nem nyilvános
 
 ########################################
@@ -845,15 +1098,33 @@ This Calendar is not Public.: Ez a naptár nem nyilvános
 Add New NonUser Calendar: Új felhasználó nélküli naptár hozzáadása
 
 ########################################
+# Page: nulogin.php
+#
+A login must be specified.: A bejelentkezést meg kell adni.
+No such nonuser calendar: Nincs felhasználó nélküli naptár
+
+########################################
 # Page: pref.php
 #
+Invalid theme: Érvénytelen téma
 Save Preferences: Beállítások mentése
+Public Access calendar: Nyilvános hozzáférésű naptár
+Modify Non User Calendar Preferences: A nem felhasználói naptárbeállítások módosítása
+Return to My Preferences: Térjen vissza a Saját beállítások oldalra
 Custom Scripts: Egyéni parancsfájlok
 Timezone Selection: Időzóna kiválasztás
+Multiview: =
+entry-interval-help: Percintervallumot állít be a belépési idők módosításakor
+Entry interval: Belépési intervallum
 hour: óra
 minute: perc
+theme-reload-help: A CSS gyorsítótárazás miatt szükség lehet egy oldal újratöltésére
+Page may need to be reloaded for new Theme to take effect: Előfordulhat, hogy új oldalt kell betölteni, hogy az új téma életbe lépjen
 display_byproxy-help: Az eredeti szerző megjelenítése a view_entry oldalon
 Display if created by Assistant: Megjelenítés, ha titkár hozta létre
+allow-view-subscriptions-help: Lehetővé teszi a privát vagy bizalmas bejegyzésekhez való távoli hozzáférés korlátozását
+Allow remote viewing of: A (z) távoli megtekintésének engedélyezése
+entries: bejegyzés
 
 ########################################
 # Page: purge.php
@@ -861,24 +1132,29 @@ Display if created by Assistant: Megjelenítés, ha titkár hozta létre
 Purging events for: A következõ eseményeinek törlése:
 Finished: Kész
 Back: =
-Check box to delete ALL events for a user: Jelöld be a felhasználó <b>ÖSSZES</b> eseményének törléséhez
+Check box to delete ALL events for a user: Jelöld be a felhasználó ÖSSZES eseményének törléséhez
 Delete all events before: Az összes ezelõtti esemény törlése
+Purge deleted only: Csak az öblítés törölve
 Preview delete: Törlendők előnézete
 Are you sure you want to delete events for: Biztosan törölni akarod a következõ felhasználó eseményeit:
+Records deleted from XXX: A (z) "XXX" mappából törölt rekordok.
 
 ########################################
 # Page: register.php
 #
 Email address cannot be blank.: Az Email cím nem lehet üres
+Username already exists.: A felhasználónév foglalt
+Email address already exists.: Az Email cím már létezik
+New user via self-registration.: Új felhasználó önregisztráció útján.
 A new WebCalendar account has been set up for you.: Az új WebNaptár hozzáférés létrehozva
-Your username is: A felhasználóneved
-Your password is: A jelszavad
-Please visit: Kérlek keresd fel
-to log in and start using your account: a bejelentkezéshez
+Your username is XXX.: A felhasználóneved: "XXX".
+Your password is XXX.: Jelszava: "XXX".
+Please visit XXX to log in and start using your account!: Kérjük, látogasson el a (z) "XXX" oldalra a bejelentkezéshez és a fiókja használatának megkezdéséhez!
 You may change your password after logging in the first time.: A jelszavad az első bejelentkezés után megváltoztathatod
 If you received this email in error: Ha tévedésből kaptad ezt a levelet és nem íratkoztál fel WebNaptárba, hagyd figyelmen kívül, vagy írj rövid választ
 Administrator: Adminisztrátor
 Welcome: Üdvözöllek
+New user via email.: Új felhasználó e-mailben.
 Registration: Regisztráció
 Welcome to WebCalendar: Üdvözöllek a WebNaptárban
 Your email should arrive shortly.: Az emailed hamaorsan megérkezik
@@ -892,20 +1168,27 @@ Submit: Elküld
 #
 Continue: Folytatás
 (Your comments will be emailed to the other participants.): (A megjegyzés el lesz küldve emailben a többi résztvevőnek)
-An appointment has been rejected by: Egy találkozót elutasított
+XXX has rejected an appointment.: XXX elutasított egy találkozót.
+Rejected by XXX.: XXX elutasította.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Új távoli naptár hozzáadása
 
 ########################################
 # Page: report.php
 #
 This event is confidential.: Ez az esemény bizalmas
-cont.: folyt.
+(Private): (Magán)
+(cont.): (folytatás)
 Approved: Jóváhagyva
 Deleted: Törölve
 Rejected: Elutasítva
 Waiting for approval: Jóváhagyásra vár
 Unknown: Ismeretlen
-Click here: Itt
-to manage reports for the Public Access calendar: kezelheti a nyilvános naptár jelentéseit
+Invalid report id.: Érvénytelen riport id
+Click here to manage reports for the Public Access calendar.: Kattintson ide a Public Access naptár jelentéseinek kezeléséhez.
 Add new report: Új jelentés hozzáadása
 Manage Reports: Jelentések kezelése
 
@@ -915,6 +1198,13 @@ Manage Reports: Jelentések kezelése
 Advanced Search: Bõvített keresés
 Search: Keresés
 Keywords: Kulcsszavak
+Enter % for all entries: Írja be a% -ot az összes bejegyzéshez
+Include: Tartalmazza
+Filter by Date: Szűrés dátum szerint
+All Dates: Minden dátum
+Past: Múlt
+Upcoming: Közelgő
+Range: Hatótávolság
 
 ########################################
 # Page: search_handler.php
@@ -924,11 +1214,33 @@ Search Results: Találatok
 match found: egyezést találtam
 matches found: egyezést találtam
 No matches found: Nincs találat
+New Search: Új keresés
 
 ########################################
 # Page: security_audit.php
 #
+list potential security issues: Az alábbi információk felsorolják a WebCalendar telepítésével kapcsolatos esetleges problémákat, amelyek módosíthatók a telepítés biztonságosabbá tétele érdekében.
+For questions about WebCalendar security see the forums: Ha bármilyen kérdése van a WebCalendar biztonsági problémáival kapcsolatban, kérjük, használja a GitHub.com webhelyen tárolt WebCalendar fórumokat;<br>XXX
+View your current PHP settings: Tekintse meg az aktuális PHP-beállításokat
+Security Issue: Biztonsági probléma
 Status: Állapot
+Default admin user password: Alapértelmezett rendszergazdai jelszó
+You should change the password of the default admin user.: Meg kell változtatnia az alapértelmezett rendszergazda felhasználó jelszavát.
+File permissions XXX: Fájlengedélyek: XXX
+item XXX should not be writable: A következő elem nem írható:<br><tt> XXX</tt>
+File exists XXX: Fájl létezik: "XXX"
+Because you have email disabled, you should remove this file.: Mivel letiltotta az e-mailt, akkor távolítsa el ezt a fájlt.
+File location XXX: A fájl helye: "XXX"
+remove XXX if not using: Ha nem a (z) "XXX" fájlt használja, akkor törölnie kell. Vagy legalább helyezze át egy új könyvtárba.
+System Settings XXX: Rendszerbeállítások: "XXX"
+consider enabling UAC: Fontolja meg a felhasználói hozzáférés-vezérlés engedélyezését a felhasználói jogosultságok beállításához.
+recommend approving new public events: Javasoljuk, hogy minden nyilvános rendezvény beküldését hagyják jóvá.
+recommend using CAPTCHA: A CAPTCHA ajánlott az automatikus eseménybeküldések védelme érdekében.
+Database cache directory location: Adatbázis gyorsítótár könyvtár helye
+db cache should be inaccessable: Az adatbázis gyorsítótárának olyan könyvtárban kell lennie, amelyhez URL-címmel nem lehet hozzáférni.
+PHP Settings XXX: PHP beállítások: "XXX"
+recommend setting XXX Off: A (z) "XXX" ajánlott beállítása Ki.
+recommend setting allow_url_fopen Off: Az "allow_url_fopen" ajánlott beállítása ki van kapcsolva, ha a távoli naptárak nincsenek engedélyezve.
 
 ########################################
 # Page: select_user.php
@@ -950,12 +1262,14 @@ more: tovább
 ########################################
 # Page: users.php
 #
+Remote Calendars: Távoli naptárak
 denotes administrative user: adminisztrátor
 Add New User: Új felhasználó hozzáadása
 
 ########################################
 # Page: usersel.php
 #
+form: forma
 Reset: Alaphelyzet
 
 ########################################
@@ -1002,13 +1316,14 @@ by: =
 Percentage Complete: Készültségi fok
 External User: Külső felhasználó
 Update: =
-Attachments: Mellékletek
+at: nál nél
 comments: megjegyzések
 Show: Mutat
 Hide: Elrejt
 Approve/Confirm entry: Bejegyzés jóváhagyása/Beleegyezés
 Reject entry: Bejegyzés elutasítása
 Set category: Kategória beállítása
+Add to My Calendar: Hozzáadás a saját naptárhoz
 Copy entry: Bejegyzés másolása
 This will delete this entry for all users.: Ez a bejegyzés minden felhasználó számára törölve lesz.
 Edit entry: Bejegyzés módosítása
@@ -1016,7 +1331,12 @@ Edit repeating entry for all dates: Az összes dátum ismétlõdõ bejegyzésén
 Delete repeating event for all dates: Az összes dátum ismétlõdõ bejegyzésének törlése
 Edit entry for this date: Ezen dátum bejegyzésének szerkesztése
 Delete entry only for this date: Ezen dátum bejegyzésének törlése
+Delete entry from calendar of XXX: Bejegyzés törlése a (z) XXX naptárából
+This will delete the entry from your XXX calendar.: Ez törli a bejegyzést a XXX naptárból.
+boss: főnök'
+This will delete the entry from your boss calendar.: Ezzel törli a bejegyzést a főnöke naptárából.
 This will delete the entry from your calendar.: A bejegyzés törölve lesz a naptáradból.
+from your boss calendar: főnöke naptárából
 Do you want to add this entry to your calendar?: Hozzá akarod adni ezt a bejegyzést a saját naptáradhoz?
 This will add the entry to your calendar.: A bejegyzés hozzá lesz adva a saját naptáradhoz.
 Email all participants: Email minden résztvevõnek
@@ -1034,6 +1354,7 @@ Double-click on empty cell to add new entry: Kattints duplán egy üres cellán 
 # Page: week_details.php
 #
 New Entry: Új bejegyzés
+cont.: folyt.
 
 ########################################
 # Page: includes/access.php
@@ -1048,6 +1369,15 @@ User Management: Felhasználó kezelés
 Manage Views: Nézetek kezelése
 Week View: Heti nézet
 Year View: Év nézet
+Invalid function id: Érvénytelen függvényazonosító
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Nem található a "settings.php" fájl.<br>Kérjük, másolja a "settings.php.orig" fájlt a "settings.php" fájlba, és szerkessze a webhelyén.
+Incomplete settings.php file...: Hiányos "settings.php" fájl ...
+Could not find XXX defined in...: A (z) "XXX" nem található a "settings.php" fájlban.
+You must define XXX in: Meg kell határoznia az "XXX" értéket a "settings.php" fájlban.
 
 ########################################
 # Page: includes/date_formats.php
@@ -1057,19 +1387,38 @@ Dec: =
 LANGUAGE DEFINED: NYELV ALAPJÁN
 
 ########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Hiba történt az adatbázishoz való csatlakozáskor: "XXX".
+db_type not defined.: db_type nincs meghatározva.
+invalid db_type XXX: érvénytelen db_type "" XXX ".
+Cache cleared from previous SQL!: Gyorsítótár törölve a korábbi SQL-ből!
+Error executing query.: Hiba történt a lekérdezés végrehajtása során.
+Unfortunately, XXX is not implemented for YYY: Sajnos a (z) "XXX" nincs megvalósítva (YYY).
+Unknown ODBC error.: Ismeretlen ODBC hiba.
+Error opening cache dir XXX.: Hiba történt a (z) "XXX" gyorsítótár megnyitása során.
+delete: töröl
+Cache error Could not XXX file YYY.: Gyorsítótárhiba: Nem sikerült a "YYY" XXX fájlt feltölteni.
+
+########################################
 # Page: includes/formvars.php
 #
 Fatal Error: Súlyos hiba
+Invalid data format for: Érvénytelen adatformátum a következőhöz:
 
 ########################################
 # Page: includes/functions.php
 #
-This event is private: Ez privát esemény
+Error Type not set for activity log!: Hiba: A tevékenységnaplóhoz nincs beállítva a típus!
+This event is XXX.: Ez az esemény XXX.
 Conf.: Biz.
 exceeds limit of XXX events per day: túllépte a napi XXX esemény korlátját
+on: tovább
 All Attendees: Minden meghívott
 Busy: Elfoglalt
 Tentative: Esetleg
+Schedule an appointment for XXX.: Időpont egyeztetés időpontja: XXX: YYY.
+date_select: __dd__ __hónap _ _yyyy__
 Event approved: Esemény jóváhagyva
 Journal approved: Napló elfogadva
 Task approved: Feladat elfogadva
@@ -1080,6 +1429,8 @@ Task created: Feladat létrehozva
 Event deleted: Esemény törölve
 Journal deleted: Napló törölve
 Task deleted: Feladat törölve
+New user via email (self registration): Új felhasználó e-mailben (önregisztráció)
+New user (self registration): Új felhasználó (önregisztráció)
 Notification sent: Értesítés elküldve
 Event rejected: Esemény elutasítva
 Journal rejected: Napló elutasítva
@@ -1088,6 +1439,7 @@ Reminder sent: Emlékeztetõ elküldve
 Event updated: Esemény frissítve
 Journal updated: Napló frissítve
 Task updated: Feladat frissítve
+Delete User: Felhasználó törlése
 WK: H
 TASKS: FELADATOK
 Task_Title: Cím
@@ -1128,14 +1480,31 @@ Aug: =
 Sep: Szept
 Oct: Okt
 Nov: =
+SU: =
+MO: =
+TU: =
+WE: MI
+TH: =
+FR: =
+SA: =
+unknown-month: ismeretlen hónap
+First Quarter Moon: Első negyed Hold
+Full Moon: Telihold
+Last Quarter Moon: Utolsó negyed Hold
+New Moon: Újhold
+Error TIME_SLOTS undefined!: Hiba: TIME_SLOTS undefined!
 The following error occurred: A következõ hiba történt
 You are not authorized.: Nincs jogosultságod
-Add N hours to: adj N �r�t
-Subtract N hours from: vonj ki N �r�t
-same as: adj 0 �r�t
-server time: a szerver idej�hez
-Your current GMT offset is: Az aktuális eltolás a GMT-től
-Error approving event: Hiba az esemény jóváhagyásakor
+Add N hours to: adj N 󲡴
+Subtract N hours from: vonj ki N 󲡴
+same as: adj 0 󲡴
+server time: a szerver idej騥z
+Cannot read timezone file XXX.: Nem olvasható az időzónafájl: XXX.
+Your current GMT offset is XXX hours.: A jelenlegi GMT-eltolás XXX óra.
+Unauthorized: Jogosulatlan
+Error approving event XXX.: Hiba történt az esemény jóváhagyása során: XXX.
+Error deleting event XXX.: Hiba történt az esemény törlésekor: XXX.
+Error rejecting event XXX.: Hiba történt az esemény elutasításakor: XXX.
 Sunday: Vasárnap
 Monday: Hétfõ
 Tuesday: Kedd
@@ -1150,6 +1519,15 @@ Wed: Sze
 Thu: Csü
 Fri: Pé
 Sat: Szo
+unknown-weekday: ismeretlen-hétköznap
+Invalid referring URL: Érvénytelen hivatkozó URL
+
+########################################
+# Page: includes/help_list.php
+#
+Index: =
+Documentation: Dokumentáció
+Page: Oldal
 
 ########################################
 # Page: includes/trailer.php
@@ -1167,41 +1545,520 @@ Manage calendar of: A következõ naptárának kezelése
 # Page: includes/translate.php
 #
 Browser Language Not Found: A böngésző nyelve nem található
-not supported: nem támogatott
-English: angol
-English-US: Angol-US
+(not supported): (Nem támogatott)
+Abkhazian: Abház
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Messze
+Afrihili: =
+Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: Akkád
+Albanian: albán
+Aleut: =
+Algonquian: =
+Altai (Southern): Altáj (déli)
+Amharic: Amhara
+Angika: =
+Apache: =
+Arabic (Algeria): Arab (Algéria)
+Arabic (Bahrain): Arab (Bahrein)
+Arabic (Egypt): Arab (Egyiptom)
+Arabic (Iraq): Arab (Irak)
+Arabic (Jordan): Arab (Jordánia)
+Arabic (Kuwait): Arab (Kuvait)
+Arabic (Lebanon): Arab (Libanon)
+Arabic (Libya): Arab (Líbia)
+Arabic (Morocco): Arab (Marokkó)
+Arabic (Oman): Arab (omán)
+Arabic (Qatar): Arab (Katar)
+Arabic (Saudi Arabia): Arab (Szaúd-Arábia)
+Arabic (Syria): Arab (Szíria)
+Arabic (Tunisia): Arab (Tunézia)
+Arabic (U.A.E.): Arab (Egyesült Államok)
+Arabic (Yemen): Arab (Jemen)
+Arabic: arab
+Aragonese: Aragóniai
+Aramaic: arameus
+Arapaho: =
+Arawak: =
+Armenian: örmény
+Assamese: Aszám
+Asturian: Asztriai
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: azerbajdzsáni
+Balinese: Balinéz
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: Baskír
 Basque: baszk
+Beja: =
+Belarusian: Belorusz
+Bemba: =
+Bengali: bengáli
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Fekete láb
+Blin: =
+Bliss: Boldogság
+Bosnian: Bosnyák
+Braj: =
+Breton: =
+Buginese: =
 Bulgarian: bolgár
+Buriat: =
+Burmese: burmai
+Caddo: =
 Catalan: katalán
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Csecsen
+Cherokee: =
+Cheyenne: Sejen
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Kínai (Hong Kong)
+Chinese (PRC): Kínai (Kína)
 Chinese (Simplified/GB2312): kínai (GB2312)
+Chinese (Singapore): Kínai (Szingapúr)
+Chinese (Taiwan): Kínai (Tajvan)
 Chinese (Traditional/Big5): kínai (tradicionális/Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: Csukese
+Chuvash: Csuvas
+Coptic: kopt
+Cornish: cornwalli
+Corsican: Korzikai
+Cree: =
+Creek: Patak
+Croatian: horvát
 Czech: cseh
+Dakota: =
 Danish: dán
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Holland (Belgium)
 Dutch: holland
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Angol (Ausztrália)
+English (Belize): Angol (Belize)
+English (Canada): Angol (Kanada)
+English (Ireland): Angol (Írország)
+English (Jamaica): Angol (Jamaica)
+English (New Zealand): Angol (Új-Zéland)
+English (Philippines): Angol (Fülöp-szigetek)
+English (South Africa): Angol (Dél-Afrika)
+English (Trinidad & Tobago): Angol (Trinidad és Tobago)
+English (United Kingdom): Angol Egyesült Királyság)
+English (United States): Angol (Egyesült Államok)
+English (Zimbabwe): Angol (Zimbabwe)
+English: angol
+Erzya: =
+Esperanto: eszperantó
 Estonian: észt
+Ewe: Anyajuh
+Ewondo: =
+Fang: agyar
+Fanti: =
+Faroese: Feröeri
+Fijian: Fidzsi
+Filipino: Filippínó
 Finnish: finn
+Fon: =
+French (Belgium): Francia (Belgium)
+French (Canada): Francia (Kanada)
+French (France): Francia (Franciaország)
+French (Luxembourg): Francia (Luxemburg)
+French (Monaco): Francia (Monaco)
+French (Switzerland): Francia (Svájc)
 French: francia
+Frisian (Eastern): Fríz (keleti)
+Frisian (Northern): Fríz (északi)
+Frisian (Western): Fríz (nyugati)
+Frisian: fríz
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
 Galician: galíciai
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: grúz
+German (Austria): Német (Ausztria)
+German (Germany): Német (német)
+German (Liechtenstein): Német (Liechtenstein)
+German (Luxembourg): Német (Luxemburg)
+German (Standard): Német (standard)
+German (Switzerland): Német (Svájc)
 German: német
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: gótikus
+Grebo: =
 Greek: Görög
+Greenlandic: Grönlandi
+Guarani: =
+Gujarati: Gudzsaráti
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haiti (kreol)
+Haitian: haiti
+Hausa: =
+Hawaiian: Hawaii
+Hebrew: héber
+Herero: =
+Hiligaynon: =
+Hindi: hindi
+Hiri Motu: =
+Hittite: Hettita
+Hmong: =
 Holo (Taiwanese): holo (taiwani)
 Hungarian: magyar
+Hupa: =
+Iban: =
 Icelandic: izlandi
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: indonéz
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: iráni
+Irish (Gaelic): Ír (gael)
+Irish: ír
+Iroquoian: Irokó
+Italian (Switzerland): Olasz (Svájc)
 Italian: olasz
 Japanese: japán
+Javanese: jávai
+Judeo-Arabic: Zsidó-arab
+Judeo-Persian: Zsidó-perzsa
+Kabardian: Kabardianus
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: Karacsáj-Balkár
+Karelian: karéliai
+Kashmiri: Kasmiri
+Kashubian: Kasubian
+Kawi: =
+Kazakh: kazah
+Khasi: =
+Khmer (Central): Khmer (Közép)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: kirgiz
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreai (Johab)
+Korean (North): Koreai (északi)
+Korean (South): Koreai (dél)
 Korean: koreai
+Kosraean: Kosraii
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: kurd
+Kutenai: =
+Kyrgyz: Kirgiz
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: latin
+Latvian: lett
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: litván
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luxemburgi
+Macedonian: Macedón
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: madagaszkári
+Malay: maláj
+Malayalam: =
+Maldivian: Maldív
+Maltese: máltai
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: Maszáj
+Mayan: Maja
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: Moksa
+Moldavian: moldvai
+Mongo: =
+Mongolian: mongol
+Montenegrin: montenegrói
+Moroccan: marokkói
+Mossi: =
+Myanmar: Mianmar
+Māori: =
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (északi)
+Ndebele (South): Ndebele (dél)
+Ndebele: =
+Ndonga: =
+Neapolitan: nápolyi
+Nepali: nepáli
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Norvég
+Norwegian (Bokmål): Norvég (bokmål)
+Norwegian (Nynorsk): Norvég (Nynorsk)
 Norwegian: norvég
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Okszitán
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Oszét
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: Pastu
+Pedi: =
+Persian (Farsi): Perzsa (perzsa)
+Persian (Iran): Perzsa (Irán)
+Persian: perzsa
+Phoenician: föníciai
+Pohnpeian: =
 Polish: lengyel
 Portuguese: portugál
-Portuguese/Brazil: brazil portugál
+Portuguese/Brazil: Portugál / brazil
+Punjabi (India): Pandzsábi (India)
+Punjabi (Pakistan): Pandzsábi (pakisztáni)
+Punjabi: pandzsábi
+Quechua: Kecsua
+Rajasthani: Radzsasztáni
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Retoromán
 Romanian: Román
+Romansh: =
+Romany: roma
+Rundi: =
+Russian (Moldavia: Orosz (Moldova
+Russian (Republic of Moldova): Orosz (Moldovai Köztársaság)
 Russian: orosz
+Sami (Inari): Számi (inari)
+Sami (Lappish): Számi (lapp)
+Sami (Lule): Számi (lule)
+Sami (Northern): Számi (északi)
+Sami (Skolt): =
+Sami (Southern): Számi (déli)
+Sami: =
+Samoan: Szamoai
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: szanszkrit
+Santali: =
+Sardinian: szardíniai
+Sasak: =
+Scots (Gaelic): Skót (gael)
+Selkup: =
+Serbian (Upper): Szerb (felső)
+Serbian: szerb
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: Szecsuán Yi
+Sicilian: szicíliai
+Sindhi: Szindhi
+Sinhala: Szingaléz
+Slavic: szláv
+Slovak: szlovák
+Slovenian: szlovén
+Sogdian: =
+Somali: Szomáliai
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Szorb (alsó)
+Sorbian (Upper): Szorb (felső)
+Sorbian: Szorb
+Sotho: =
+Spanish (Argentina): Spanyol (Argentína)
+Spanish (Bolivia): Spanyol (Bolívia)
+Spanish (Chile): Spanyol (Chile)
+Spanish (Colombia): Spanyol (Kolumbia)
+Spanish (Costa Rica): Spanyol (Costa Rica)
+Spanish (Dominican Republic): Spanyol (Dominikai Köztársaság)
+Spanish (Ecuador): Spanyol (Ecuador)
+Spanish (El Salvador): Spanyol (Salvador)
+Spanish (Guatemala): Spanyol (Guatemala)
+Spanish (Honduras): Spanyol (Honduras)
+Spanish (Mexico): Spanyol (Mexikó)
+Spanish (Nicaragua): Spanyol (Nicaragua)
+Spanish (Panama): Spanyol (Panama)
+Spanish (Paraguay): Spanyol (Paraguay)
+Spanish (Peru): Spanyol (Peru)
+Spanish (Puerto Rico): Spanyol (Puerto Rico)
+Spanish (Spain): Spanyol (spanyol)
+Spanish (Uruguay): Spanyol (Uruguay)
+Spanish (Venezuela): Spanyol (Venezuela)
 Spanish: spanyol
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumér
+Sundanese: =
+Susu: =
+Sutu: =
+Swahili: Szuahéli
+Swati: =
+Swedish (Finland): Svéd (finn)
+Swedish (Sweden): Svéd (svéd)
 Swedish: svéd
+Syriac: Szír
+Tagalog: =
+Tahitian: Tahiti
+Tai: =
+Taiwan: Tajvan
+Tajik: Tadzsik
+Tamashek: =
+Tamil: tamil
+Tatar: tatár
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibeti
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tonga-szigetek)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
 Turkish: török
+Turkmen: Türkmén
+Tuvinian: Tuvini
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: ukrán
+Umbundu: =
+Urdu: urdu
+Uyghur: Ujgur
+Uzbek: üzbég
+Vai: =
+Venda: =
+Vietnamese: vietnami
+Volapük: =
+Votic: Vótikus
+Wakashan: =
+Walloon: vallon
+Waray: =
+Washo: =
 Welsh: Welszi
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: Jakut
+Yao: =
+Yapese: =
+Yiddish: jiddis
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: zulu
+Browser-defined: Böngésző által definiált
 event: esemény
 journal: napló
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
 
 ########################################
 # Page: includes/user-imap.php
@@ -1215,9 +2072,23 @@ incorrect password: hibás jelszó
 no such user: nincs ilyen felhasználó
 
 ########################################
+# Page: includes/user.php
+#
+Account disabled: Fiók korlátozva
+
+########################################
 # Page: includes/xcal.php
 #
-Unnamed Event: Névtelen esemény
+Interval: Intervallum
+Months: Hónapok
+Month Days: Hónapok
+Days: Napok
+Weeks: Hetek
+Position: Pozíció
+Until: Amíg
+Count: Számol
+Inclusion Dates: Felvételi dátumok
+Exclusion Dates: Kizárási dátumok
 Event Imported: Esemény importálva
 
 ########################################
@@ -1245,46 +2116,71 @@ provide_address: Legalább egy címzettet meg kell adnod
 recipients_failed: SMTP Error~ A következő címzett hibás~
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/classes/captcha/captcha.php
 #
-Server URL is required.: Szerver URL-t meg kell adni
-Server URL must end with /.: Szerver URL-nek '/'-rel kell végzõdnie
-Invalid work hours.: Érvénytelen munkaidõ
-Invalid color for document background.: Érvénytelen háttérszín
-Invalid color for document title.: Érvénytelen címsorszín
-Invalid color for table cell background.: Érvénytelen táblacella-háttérszín
-Invalid color for table grid.: Érvénytelen táblarács-szín
-Invalid color for table header background.: Érvénytelen táblafejléc-háttérszín
-Invalid color for table text background.: Érvénytelen táblaszöveg-háttérszín
-Invalid color for event popup background.: Érvénytelen felugró eseményablak-háttérszín
-Invalid color for event popup text.: Érvénytelen felugró eseményablak-szövegszín
-Invalid color for table cell background for today.: Érvénytelen táblacella-háttérszín a MAI napra
-Color format should be RRGGBB.: A színeket '#RRGGBB' formátumban kell megadni
+Enter Characters Seen in Graphic: Írja be a Grafikusan látott karaktereket
+Enter the correct letters and numbers...: Írja be a megfelelő betűket és számokat a képből a szövegmezőbe. Ez a kis teszt hozzáférési korlátozásként szolgál a rosszindulatú botok ellen. Egyszerűen töltse be újra az oldalt, ha ez a grafika túl nehezen olvasható
+Challenge/Response: Kihívás / válasz
 
 ########################################
 # Page: includes/js/availability.php
 #
-Change the date and time of this entry?: Változzon a bejegyzés dátuma és ideje?
+Change the date and time of this entry?: Módosítja a bejegyzés dátumát és idejét?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Nem írtál rövid leírást
-time prior to work hours...: Az idõpont, amit megadtál, munkaidõn kívül van. Jó így?
+You have not entered a Brief Description: Nem adott meg rövid leírást
+time prior to work hours...: munkaidő előtti idő ...
 Invalid Event Date: Érvénytelen esemény dátum
-Please add a participant: Kérlek adj meg egy résztvevőt
+Please add a participant: Kérjük, vegyen fel egy résztvevőt
 Invalid Date: Érvénytelen dátum
-You have not entered a valid time of day: Érvénytelen időt adtál meg
+You have not entered a valid time of day: Nem adott meg érvényes napszakot
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: A Naptár azonosítója nem lehet üres.
+First and last names cannot both be blank.: A kereszt- és a vezetéknév nem lehet üres.
+
+########################################
+# Page: includes/js/edit_remotes.php
 #
 Invalid color: Érvénytelen szín
+Color format should be RRGGBB.: A színformátumnak "#RRGGBB" legyen.
+URL cannot be blank.: Az URL nem lehet üres.
 
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: A fájl formátuma miatt nem importálható
+File type does not match Import Format: A fájltípus nem egyezik az Import formátummal
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Érvénytelen háttérszín
+Invalid color for document title.: Érvénytelen címsorszín
+Invalid color for table cell background.: Érvénytelen táblacella-háttérszín
+Invalid color for table cell background for today.: Érvénytelen táblacella-háttérszín a MAI napra
+Invalid work hours.: Érvénytelen munkaidõ
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Szerver URL-nek '/'-rel kell végzõdnie
+Invalid color for table grid.: Érvénytelen szín a táblázat rácsához.
+Invalid color for event popup background.: Az esemény előugró hátterének színe érvénytelen.
+Invalid color for event popup text.: Az esemény felugró szövegének színe érvénytelen.
+Invalid color for table header text.: Érvénytelen szín a táblázat fejlécének szövege számára.
+Invalid color for table header background.: Érvénytelen szín a táblázat fejlécének hátteréhez.
+Server URL is required.: Szerver URL-t meg kell adni
+Invalid Color: Érvénytelen szín
+Database Name: Adatbázis név
+Full Path (no backslashes): Teljes út (nincs visszavágás)
+The password contains illegal characters.: A jelszó illegális karaktereket tartalmaz.
+Error you must specify a Single-User Login: Hiba, ha meg kell adnia az egyfelhasználós bejelentkezést
+Could not find XXX.: Nem található a XXX.
+Could not find XXX in DOM.: Nem található XXX a DOM-ban.
 
 ########################################
 # Page: includes/menu/index.php
@@ -1292,6 +2188,7 @@ File type does not match Import Format: A fájl formátuma miatt nem importálha
 This Week: Heti nézet
 This Month: Hónap nézet
 This Year: Egész év
+Exit: Kijárat
 Add New Event: Új esemény
 Delete Entries: Bejegyzések törlése
 My Views: Saját nézetek
@@ -1301,22 +2198,197 @@ My Profile: Saját profil
 Public Calendar: Nyilvános naptár
 Unapproved Events: Jóváhagyás nélküli események
 User Manager: Felhasználó karbantartás
+Help Contents: Súgó tartalma
 
 ########################################
 # Page: install/index.php
 #
+Database Cache Directory: Adatbázis gyorsítótár könyvtár
+Create New: Újat készíteni
 Failure Reason: Hibaok
+You must manually create database: Manuálisan kell létrehoznia az adatbázist.
+Single-User: Egyfelhasználós
+Test Settings: Tesztbeállítások
+Timezone Conversion Successful: Az időzóna konvertálása sikeres
+WebCalendar Installation Wizard Step XXX: WebCalendar telepítővarázsló XXX. Lépés
+Password Accepted: Jelszó elfogadva
 Successful Login: Sikeres bejelentkezés
+Password Incorrect: Helytelen jelszó
 Invalid Login: Érvénytelen bejelentkezés
-needed for Gradient Image Backgrounds: =
-Passwords do not match: A jelszavak különbözők
+Display Errors: Megjelenítési hibák
+File Uploads: Fájlfeltöltések
+Allow URL fopen: URL fopen engedélyezése (csak távoli naptárak használata esetén szükséges)
+Safe Mode: Biztonságos mód
+Safe Mode Allowed Vars: Csökkentett módban engedélyezett Vars (TZ csak akkor szükséges, ha a Biztonságos mód be van kapcsolva)
+GD: GD (a színátmenetes kép hátteréhez szükséges)
+Passwords do not match!: A jelszavak nem egyeznek!
 Unable to write password to settings.php file: =
+Password Updated: Jelszó frissítve
 Password has been set: Jelszó beállítva
-Connection Successful: Kapcsolódás sikeres
+Connection Successful...: Sikeres kapcsolat  A telepítés folytatásához lépjen a következő oldalra.
+Correct your entries or click the Create New...: Javítsa a bejegyzéseket, vagy kattintson a  Új létrehozása  gombra a telepítés folytatásához.
+Correct your entries and try again.: Javítsa ki a bejegyzéseket, és próbálja újra.
+XXX does not exist: A XXX nem létezik
+XXX is not writable: A XXX nem írható
+Error Converting Timezone: Hiba történt az időzóna átalakításakor
+Error Unable to write to file XXX.: Hiba Nem lehet írni a XXX fájlba.
+Please change the file permissions of this file.: Kérjük, módosítsa a fájl fájlengedélyeit.
+Please change includes dir permission: Kérjük, módosítsa az "tartalmazza" könyvtár fájlengedélyeit, hogy más felhasználók is írhassák.
+Your settings have been saved.: Beállításait elmentette.
+OFF: KI
+ON: TOVÁBB
+WebCalendar Setup Wizard: WebCalendar telepítővarázsló
+This installation wizard will guide you...: Ez a telepítővarázsló végigvezeti Önt a WebCalendar alapvető telepítésének beállításán.<br>Segítségért és hibaelhárításért lásd:<br>
+System Administrators Guide: Rendszergazda útmutató
+Frequently Asked Questions: Gyakran Ismételt Kérdések
+FAQ: GYIK
+Troubleshooting: Hibaelhárítás
+Getting Help: Segítség kérése
+Upgrading Guide: Frissítési útmutató
+User Supported Wiki: Felhasználó által támogatott Wiki
+PHP Version Check: PHP verzióellenőrzés
+Check to see if PHP 7.1.0 or greater is installed.: Ellenőrizze, hogy a PHP 7.1.0 vagy újabb telepítve van-e.
+PHP version: PHP verzió
+PHP Settings: PHP beállítások
+Detailed PHP Info: Részletes PHP információk
+settings.php Status: "settings.php" Állapot
+Session Check: Munkamenet ellenőrzése
+To test the proper operation of sessions...: A munkamenetek megfelelő működésének teszteléséhez töltse be újra ezt az oldalt. Minden alkalommal látnia kell a munkamenet-számláló növekményét.
+SESSION COUNTER: ÜLÉSSZÁMLÁLÓ
+The file permissions of settings.php are set...: A "settings.php" fájljogosultságai úgy vannak beállítva, hogy a telepítőnek nincs engedélye annak módosítására. A folytatáshoz módosítsa a következő fájl fájlengedélyeit
+The file permissions of the includes directory are set...: A include könyvtár fájlengedélyeit úgy állítják be, hogy a telepítőnek nincs engedélye új fájl létrehozására. A folytatáshoz kérjük, módosítsa a következő könyvtár engedélyeit
+Your settings.php file appears to be valid.: Úgy tűnik, hogy a "settings.php" fájlja érvényes.
+Configuration Wizard Password: Konfigurációs varázsló jelszava
+Create Settings File Password: Hozza létre a Beállítások fájl jelszavát
+db setup directions...: Ebben a szakaszban beállítja és teszteli a kapcsolatot az adatbázis-kiszolgálóval. A megadott fiókinformációknak TELJES jogosultsággal kell rendelkezniük adatbázisok, táblák és felhasználók létrehozásához. Ha ez nem lehetséges, vagy az adatbázis-hozzáférése korlátozott, akkor manuálisan kell konfigurálnia az adatbázist.
+Database Status: Adatbázis állapota
+Supported databases for your PHP installation: Támogatott adatbázisok a PHP telepítéséhez
+Your current database settings are able to access the database.: A jelenlegi adatbázis-beállítások hozzáférhetnek az adatbázishoz.
+Please Test Settings: Kérjük, ellenőrizze a Beállításokat
+Your current database settings are not able...: A jelenlegi adatbázis-beállítások nem férnek hozzá az adatbázishoz, vagy még nem tesztelték őket.
+Database Settings: Adatbázis beállítások
+Database Type: Adatbázis típusa
+Server: szerver
+Connection Persistence: Kapcsolati kitartás
+All your database tables appear to be up...: Úgy tűnik, hogy az összes adatbázis-táblája naprakész. Folytathatja a következő oldalt, és befejezheti a WebCalendar beállítását.
+This appears to be a new installation...: Úgy tűnik, hogy ez egy új telepítés. Ha ez nem megfelelő, kérjük, térjen vissza az előző oldalra, és javítsa ki a beállításokat.
+This appears to be an upgrade...: Úgy tűnik, ez egy frissítés a (z)&nbsp;XXX verzióról&nbsp;YYY.
+The database requires some data input...: Az adatbázis némi adatbevitelt igényel A frissítés befejezéséhez kattintson az Adatbázis frissítése gombra.
+In this section we will perform...: Ebben a részben elvégezzük a változtatásokat, hogy az adatbázis a kívánt szintre kerüljön. Ha teljesen támogatott adatbázist használ, akkor ez a lépés automatikusan végrehajtásra kerül. Ha nem, akkor megjelenik a szükséges SQL, és képesnek kell lennie arra, hogy kivágja és beillessze az adatbázis-kiszolgáló lekérdezési ablakába.
+No database actions are required.: Nincs szükség adatbázis-műveletekre.
+The following database actions are required: A következő adatbázis-műveletek szükségesek
+ODBC Underlying Database: ODBC mögöttes adatbázis:
+Automatic installation not supported: Az automatikus telepítés nincs teljesen megvalósítva az adatbázis típusához. A szükséges táblákat manuálisan kell létrehoznia a mellékelt SQL segítségével. A folytatáshoz kattintson az  SQL megjelenítése  elemre. Vágás és beillesztés az adatbázis lekérdezési ablakába.
+This may take several minutes to complete: Ez több percig is eltarthat.
+Install Database: Telepítse az adatbázist
 Update Database: Adatbázis frissítése
+Display Required SQL: A szükséges SQL megjelenítése
+Return to previous page after processing SQL.: Az SQL kézi feldolgozása után vissza kell térnie az előző oldalra, és újra tesztelnie kell az adatbázist, hogy a parancsfájl fel tudja ismerni a változásokat.
+This is the final step in setting up your WebCalendar Installation.: Ez a WebCalendar telepítésének utolsó lépése.
+Timezone Conversion: Időzóna átalakítás
+It appears that you have NOT converted...: Úgy tűnik, hogy NEM konvertálta a meglévő WebCalendar eseményadatokat GMT-re. Ha van, figyelmen kívül hagyhatja ezt az értesítést, és nem folytatja az átalakítást. Ha ez egy új telepítés, akkor figyelmen kívül hagyhatja ezt az értesítést is.
+Convert Data to GMT: Adatok konvertálása GMT-re
+Application Settings: Alkalmazás beállítások
+HTTP-based authentication was not detected...: A HTTP-alapú hitelesítést nem sikerült észlelni. Át kell állítania a webszervert, ha az alábbi „Felhasználói hitelesítés” lehetőségek közül a „Webkiszolgáló” lehetőséget választja.
+HTTP-based authentication was detected...: HTTP-alapú hitelesítést észleltünk. A felhasználói hitelesítést a webszerver kezeli. Az alábbi „Felhasználói hitelesítés” lehetőségek listájából válassza a „Webkiszolgáló” lehetőséget.
+Create Default Admin Account: Alapértelmezett rendszergazdai fiók létrehozása
+(Admin Account Not Found): (A rendszergazdai fiók nem található)
+User Authentication: Felhasználói hitelesítés
+Web-based via WebCalendar (default): Webalapú a WebCalendar segítségével (alapértelmezett)
+Web Server (not detected): Webkiszolgáló (nem található)
+Web Server (detected): Webkiszolgáló (észlelve)
+None (Single-User): Nincs (egyfelhasználós)
+Read-Only: Csak olvasható
+Environment: Környezet
+Production: Termelés
+Development: Fejlődés
+Save Settings: Beállítások mentése
+Launch WebCalendar: Indítsa el a WebCalendar alkalmazást
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Hiba történt a (z) "XXX" táblázat frissítésekor: YYY.
+Conversion Successful: Sikeres konverzió 
+Perl script required: A WebCalendar előző verziójához PERL szkript futtatása szükséges az adatok konvertálásához. Kérjük, futtassa az /tools/upgrade_to_0.9.7.pl fájlt, majd térjen vissza erre az oldalra a folytatáshoz.
+previous version requires updating several tables: A WebCalendar előző verziójához több adatbázis-tábla frissítése szükséges.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: NINCS ELÉRHETŐ ELŐNÉZET
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Hiba történt az adatbázishoz való csatlakozáskor
+Include Path: Tartalmazza az elérési utat
+Deleting events for: Események törlése a következőhöz:
+Importing events for: Események importálása a következőhöz:
+No data returned from: Nem érkezett adat innen
+for non-user calendar: nem felhasználói naptárhoz
+No Remote Calendars found: Nem található távoli naptár
+Remote Calendars not enabled: A távoli naptárak nincsenek engedélyezve
 
 ########################################
 # Page: tools/send_reminders.php
 #
+could not find event id: nem található eseményazonosító
+could not find event id XXX in database.: nem található a (z) XXX eseményazonosító az adatbázisban.
 task: feladat
+This is a reminder for the XXX detailed below.: Ez egy emlékeztető az alábbiakban részletezett XXX-hoz.
+Pecentage Complete: =
 Reminder: Emlékeztetõ
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Nem támogatott művelet: XXX.
+No event id specified.: Nincs megadva eseményazonosító.
+Not authorized (not admin).: Nincs engedélyezve (nem admin).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: A XXX eseményeinek ellenőrzése YYY-tól ZZZ-ig.
+Found XXX events in time range.: XXX eseményt talált az időtartományban.
+Event id=XXX YYY at ZZZ on AAA.: Esemény id = XXX "YYY" a ZZZ-n, AAA-n.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Engedélyezi a XXX felhasználónak a többi felhasználó naptárának megtekintését.
+Error Email reminders disabled for user XXX.: Hiba: E-mail emlékeztetők letiltva a (z) "XXX" felhasználó számára.
+Number of site_extras XXX.: A site_extras száma: XXX.
+Reminder set for event.: Emlékeztető beállítva az eseményhez.
+Mins Before XXX.: Min. Előtt: XXX.
+Event time is XXX.: Az esemény ideje: XXX.
+Remind time is XXX.: Emlékeztető idő: XXX.
+Reminders for user XXX, login YYY.: Emlékeztetők a "XXX" felhasználóhoz, jelentkezzen be "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Nem engedélyezett a (z) "XXX" felhasználó számára.
+Event id=XXX YYY already sent.: Esemény id = XXX "YYY" már elküldve.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Az egyfelhasználós módhoz nincs szükség bejelentkezésre.
+No login required for HTTP authentication.: A HTTP-hitelesítéshez nincs szükség bejelentkezésre.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Érvénytelen karakterek a bejelentkezéskor.
+Username XXX does not exist.: A (z) "XXX" felhasználónév nem létezik.
+You cannot remove admin rights from yourself!: Nem távolíthatja el magáról az adminisztrátori jogokat!
+Unknown error saving user: Ismeretlen hiba a felhasználó mentésekor.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Nem található résztvevő a (z) XXX eseményazonosítóhoz.
+Db error Could not find event id XXX.: Adatbázis-hiba: Nem található a (z) XXX eseményazonosító.
+Error Could not find event id XXX in database.: Hiba: Nem található a (z) XXX eseményazonosító az adatbázisban.

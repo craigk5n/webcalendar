@@ -1,0 +1,2387 @@
+# Armenian hy
+#
+# Ձևաչափը բաղկացած է ընտրովի վերնագրից.
+#
+# Թարգմանեց ՝ ձեր անունն ու էլ
+# Վերջին թարմացումը. Թարգմանության ամսաթիվը
+# (Ներառյալ առաջատար «#» - ը և նախորդ թարգմանիչների կողմից արված ցանկացած մեկնաբանություն:
+# ԱՌԱԻՆ դատարկ տողն ավարտում է այս վերնագրի մեկնաբանությունը:)
+#
+# Հետևում են այնքան, որքան անհրաժեշտ է.
+#
+# Անգլերեն արտահայտություն
+# (Մեկից մի տող. ԱՌԱՆ առաջատար «#»:
+# "Անգլերեն արտահայտությունը.", Ներառյալ "" հաստ կետը ", տրամադրվում է
+# WebCalendar մշակողներ: Ձեր մասը «թարգմանությունն» է:)
+#
+# Գործիքների գրացուցակը պարունակում է երկու perl սցենար ՝ ձեզ օգնելու համար.
+# - check_translation.pl
+# նշում է, արդյոք ամբողջ տեքստը հաջողությամբ թարգմանվել է:
+# - update_translation.pl
+# –ը վերլուծելու է ծրագրի ֆայլերը ՝ գտնելու բոլոր թարգմանությունները («արտահայտություն») և
+# գործիքների հուշում («արտահայտություն»): Այն կկազմակերպի արտահայտությունները ըստ էջի
+# (ֆայլ), որը պարունակում է առաջին պատահարը: Ptionանկության դեպքում, այն կարող է հատկորոշել այն
+# արտահայտություններ, որոնք դեռ թարգմանված չեն դնելով
+#  << MISSING >>
+# արտահայտության վերեւի տողի վրա: Եվ, եթե արտահայտությունը հապավում է,
+# այն կներառի ամբողջ անգլերեն անգլերեն տեքստը արտահայտության տակ գտնվող տողում:
+#
+# Նշում. Ես փորձում եմ կրճատել ֆայլի ընդհանուր չափը: Եթե ​​«թարգմանությունը»
+# բառը / արտահայտությունը նույնական է ձեր լեզվով և անգլերենով, պարզապես օգտագործեք «=» նշան:
+#
+# Նշում. «May_» -ի գրառումը դուք կնկատեք ստորև: Սրա պատճառը կա:
+# «May_» -ը թարգմանել ամբողջ ամսվա անվանումին և «May» -ը ՝
+# սովորաբար երեք տառից բաղկացած, ամսվա հապավումը (ինչպես «հոկտեմբեր» -ը նշանակում է «հոկտեմբեր»):
+#
+# Դրա համար ես օգտագործել եմ Google- ի թարգմանությունը:
+# Այն պետք է բավարար լինի, քանի դեռ բնիկ խոսողը չի կարող ստուգել այն:
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: Վեբ-օրացույց
+version XXX: XXX տարբերակը
+WebCalendar is a PHP application used...: WebCalendar- ը PHP ծրագիր է, որն օգտագործվում է մեկ օգտվողի կամ օգտագործողների ինտերնետ / ներբանկային խմբի համար օրացույց պահելու համար: Այն կարող է նաև կազմաձևվել որպես իրադարձությունների օրացույց:
+Credits: Վարկեր
+About: Մասին
+OK: լավ
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Տվյալների շտեմարանի սխալ ՝ XXX:
+DEFAULT CONFIGURATION: ԴԵՖԱԼԹ ԿԱՌՈՒՅ
+Go: Գնա
+Save: Խնայել
+Undo: Հետարկել
+Public Access: Հանրային մատչում
+Admin: Ադմինիստրատոր
+User Access Control: Օգտագործողի մուտքի վերահսկում
+Allow Access to Other Users Calendar: Թույլատրել մուտքը այլ օգտվողների օրացույց
+Grant This User Access to My Calendar: Այս օգտվողին տրամադրեք իմ օրացույցը
+Type: Տիպ
+Calendar: Օրացույց
+View Event: Դիտել իրադարձությունը
+View: Դիտել
+Edit: Խմբագրել
+Approve/Reject: Հաստատել / մերժել
+Events: Իրադարձություններ
+Tasks: Առաջադրանքներ
+Journals: Ամսագրեր
+Can Invite: Կարող է հրավիրել
+Can Email: Կարող եք էլ
+Can See Time Only: Կարող է տեսնել միայն ժամանակը
+Assistant: Օգնական
+Select All: Ընտրել բոլորը
+Clear All: Մաքրել բոլորը
+Public: Հանրային
+Confidential: Գաղտնի
+Private: Մասնավոր
+
+########################################
+# Page: activity_log.php
+#
+Next: Հաջորդը
+Previous: Նախորդ
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: XXX իրադարձությունն արդեն ձեր օրացույցում է:
+Invalid entry id XXX.: Մուտքի անվավեր ID ՝ «XXX»:
+a XXX event may not be added to your calendar: ይህ የ XXX ክስተት ነው እና ወደ የቀን መቁጠሪያዎ ላይታከል ይችላል።
+confidential: ሚስጥራዊ
+private: մասնավոր
+Error adding event XXX.: Սխալ ՝ իրադարձությունն ավելացնելիս. XXX:
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: «XXX» կարգավորման անվավեր անուն:
+Select: Ընտրեք
+Day: Օր
+Week: Շաբաթ
+Month: Ամիս
+Year: Տարի
+Bottom: Ներքևում
+Top: Գագաթ
+Anyone: Յուրաքանչյուրը
+Participant: Մասնակից
+Settings: Կարգավորումներ
+Groups: Խմբեր
+NonUser Calendars: NonUser օրացույցեր
+Other: Այլ
+Email: Էլ
+Colors: Գույներ
+Document background: Փաստաթղթի ֆոն
+Document title: Փաստաթղթի անվանումը
+Document text: Փաստաթղթի տեքստ
+My event text: Իմ միջոցառման տեքստը
+Table grid color: Սեղանի ցանցի գույնը
+Table header background: Աղյուսակի վերնագրի ֆոն
+Table header text: Աղյուսակի վերնագրի տեքստ
+Table cell background: Սեղանի բջջային ֆոն
+Table cell background for current day: Սեղանի բջիջների ֆոնը ընթացիկ օրվա համար
+Table cell background for days with events: Սեղանի բջիջների ֆոնը `իրադարձություններով օրեր շարունակ
+Table cell background for weekends: Հանգստյան օրերին սեղանի բջիջների ֆոնը
+Table cell background for other month: Սեղանի բջիջների ֆոնը մյուս ամսվա համար
+Week number color: Շաբաթվա համարի գույնը
+Event popup background: Իրադարձության պատուհանի ֆոն
+Event popup text: Իրադարձության ելնող տեքստ
+System Settings: Համակարգի կարգավորումներ
+Help: Օգնություն
+System options: Համակարգի ընտրանքներ
+app-name-help: ለሁሉም ገጾች እና በመግቢያ ገጹ ላይ በአሳሹ አርዕስት አሞሌ ውስጥ የሚታየውን የመተግበሪያውን ስም ይገልጻል። እዚህ የገለጹት ዋጋ ለተለያዩ ቋንቋዎች የተለያዩ ርዕሶችን እንዲያቀርቡ በሚያስችልዎት የትርጉሞች ፋይል ውስጥ ይታያል ፡፡
+Application Name: Դիմումի անվանումը
+Translated Name (XXX): Թարգմանված անուն (XXX)
+server-url-help: Նշում է ծրագրի հիմնական URL- ն: Սա կներառվի էլփոստով հիշեցումներ և ծանուցումներ ուղարկելու ժամանակ:
+Server URL: Սերվերի URL
+home-url-help: Նշում է հավելվածի տան URL- ը: Սա կարող է լինել բացարձակ կամ հարաբերական
+Home URL: Տան URL
+language-help: Նշում է, թե որ լեզուն պետք է օգտագործել:
+Language: Լեզու
+Your browser default language is XXX.: የእርስዎ አሳሽ ነባሪ ቋንቋ "XXX" ነው።
+Allow user to use themes: Թույլ տվեք օգտվողին օգտագործել թեմաներ
+themes-help: Թույլ է տալիս զանգվածային թարմացնել կազմաձևման կարգավորումները: Փոքր տառերով պիտակները միայն օգտագործողի նախապատվություններն են:
+Themes: Թեմաներ
+AVAILABLE THEMES: Հասանելի թեմաներ
+None: Ոչ ոք
+Preview: Նախադիտում
+Site customization: Կայքի անհատականացում
+custom-script-help: Թույլ է տալիս մուտքագրել անհատական ​​Javascript- ի կամ ոճաթերթի տեքստ, որը կտեղադրվի յուրաքանչյուր էջի HTML «գլուխ» բաժնում:
+Custom script/stylesheet: Հատուկ սցենար / ոճաթերթ
+custom-header-help: Թույլ է տալիս յուրաքանչյուր HTML էջի վերևում ներառել անհատական ​​HTML հատված:
+Custom header: Պատվերով վերնագիր
+custom-trailer-help: Թույլ է տալիս յուրաքանչյուր էջի վերջում ներառել հատուկ HTML հատված:
+Custom trailer: Պատվերով կցորդ
+enable-external-header-help: Թույլ է տալիս պատվերով կցորդը բեռնել արտաքին ֆայլից
+Allow external file for header/script/trailer: Արտաքին ֆայլը թույլատրել վերնագրի / սցենարի / կցորդի համար
+Allow user to override header/trailer: Թույլ տվեք օգտվողին չեղարկել վերնագիրը / կցորդը
+Date and Time: Ամսաթիվը և ժամանակը
+server-tz-help: Նշում է, թե քանի ժամ է UTC- ից սերվերի ժամանակը հարմարեցնելու համար:
+Server Timezone Selection: Սերվերի ժամային գոտու ընտրություն
+tz-help: Նշում է, թե քանի ժամ է հարմարվելու ժամանակը UTC- ից տեղական ժամանակին:
+Default Client Timezone Selection: Հաճախորդի կանխադրված ժամային գոտու ընտրություն
+display-general-use-gmt-help: Միացված լինելու դեպքում ընդհանուր ամսաթվերը / ժամերը ցուցադրվում են որպես GMT
+Display Common Use Date/Times as GMT: Commonուցադրեք ընդհանուր օգտագործման ամսաթիվը / ժամանակը GMT- ով
+date-format-help: Նշում է նախընտրած ամսաթվի ձևաչափը:
+Date format: Ամսաթվի ձևաչափը
+Small Task Date: Փոքր առաջադրանքի ամսաթիվ
+display-week-starts-on: Նշում է շաբաթվա օրը, որի շաբաթը սկսվում է: Եթե ​​նշված է երկուշաբթի օրը, ապա շաբաթվա համարները կլինեն ISO շաբաթվա համարներ:
+Week starts on: Շաբաթը սկսվում է
+display-weekend-starts-on: Սահմանում է շաբաթվա օրերը հանգստյան օրերի մեկնարկի համար
+Weekend starts on: Շաբաթվա վերջը սկսվում է
+time-format-help: Նշում է, թե որ ժամանակի ձևաչափն է օգտագործել.<br><em>12 ժամ:</em> Displayուցադրման ժամանակները `առավոտյան 3-ը, երեկոյան 8:30-ը և այլն:<br><em>24 ժամ: , 2030 և այլն:
+Time format: Timeամանակի ձևաչափ
+12 hour: 12 ժամ
+24 hour: 24 ժամ
+timed-evt-len-help: Specամանակահատված իրադարձության տևողությունը որոշելու համար սահմանում է մուտքագրման մեթոդը:
+Specify timed event length by: Նշեք միջոցառման ժամանակի տևողությունը ըստ
+Duration: Տեւողությունը
+End Time: Ավարտի ժամանակը
+work-hours-help: Նշում է օրվա դիտման համար ցուցադրվող ժամանակահատվածը:
+Work hours: Աշխատանքային ժամեր
+From: Սկսած
+to: դեպի
+Appearance: Արտաքին տեսք
+preferred-view-help: Նշում է լռելյայն տեսքը (օր, շաբաթ, ամիս կամ տարի):
+Preferred view: Նախընտրելի տեսք
+Allow top menu: Թույլ տալ վերին ցանկը
+Date Selectors position: Ամսաթիվ Ընտրողների դիրքը
+menu-themes-help: Սահմանում է վերին ցանկի գույներն ու ոճը
+Menu theme: Uաշացանկի թեման
+fonts-help: Նշում է օգտագործման համակարգի տառատեսակների ցուցակը (օրինակ `« Arial, Helvetica »)
+Fonts: Տառատեսակներ
+display-sm_month-help: Միացված լինելու դեպքում, ամսվա դիտումներում ցուցադրվում են փոքր ամիսներ
+Display small months: Smallուցադրել փոքր ամիսներ
+display-weekends-help: Մեկ շաբաթ դիտելիս ներառեք հանգստյան օրերը:
+Display weekends: Displayուցադրել հանգստյան օրերը
+display-long-daynames-help: Միացված լինելու դեպքում ցուցադրվում են երկար օրվա անուններ
+Display long day names: Displayուցադրել երկար օրվա անուններ
+display-alldays-help: Previousուցադրել նախորդ և հաջորդ ամիսները ամիսների դիտումներում ՝ լրացնելով բոլոր բջիջները:
+Display all days in month view: Displayուցադրել բոլոր օրերը ամսվա տեսքով
+display-week-number-help: Նշում է, թե արդյոք շաբաթվա համարը (1-52) պետք է ցուցադրվի ամսվա և շաբաթվա տեսքում:
+Display week number: Displayուցադրել շաբաթվա համարը
+display-desc-print-day-help: Ներառեք իրադարձությունների նկարագրությունները տպագրական օրվա տարբերակով:
+Display description in printer day view: Descriptionուցադրել նկարագրությունը տպիչի օրվա տեսքով
+yearly-shows-events-help: Տարեկան տեսադաշտում ցուցադրեք օրեր, որոնք պարունակում են իրադարձություններ ՝ համարձակ տառատեսակով:
+Display days with events in bold in month and year views: Displayուցադրեք օրերը ՝ ամսվա և տարվա դիտումներով թավ տառերով
+display-minutes-help: Միացված լինելու դեպքում, 00-ով ավարտվող րոպեները միշտ կցուցադրվեն
+Display 00 minutes always: Միշտ ցուցադրեք 00 րոպե
+display-end-times-help: Eventուցադրել իրադարձության ավարտի ժամանակները, եթե ժամանակավոր է իրադարձությունը
+Display end times on calendars: Endուցադրեք վերջնաժամկետները օրացույցերում
+allow-view-add-help: የ '+' አዶ በእይታዎች ውስጥ ይካተታል ፣ ይህም ተጠቃሚዎች በሌሎች ተጠቃሚዎች የቀን መቁጠሪያዎች ላይ ክስተቶችን በፍጥነት እንዲያክሉ ያስችላቸዋል።
+Include add event link in views: Ներառեք դիտումների մեջ միջոցառման հղումը
+lunar-help: Միացված լինելու դեպքում ամեն ամիս կցուցադրվեն լուսնային փուլերը ներկայացնող փոքր պատկերակներ
+Display Lunar Phases in month view: Monthուցադրել լուսնային փուլերը ամսվա տեսքով
+Restrictions: Սահմանափակումներ
+allow-view-other-help: አንድ ተጠቃሚ የሌላ ተጠቃሚ የቀን መቁጠሪያን ማየት ይችል እንደሆነ ይገልጻል።
+Allow viewing other users calendars: Թույլատրել դիտել այլ օգտվողի օրացույցերը
+require-approvals-help: Միացնելուց հետո օգտվողը պետք է հաստատի մի իրադարձություն, նախքան այն ցուցադրվի իր օրացույցում (եթե միացված չէ Display unapproved): Նշումը սա «Ոչ» -ով դնելը չի ​​անջատի Հանրային մուտքի օրացույցի հաստատումները (եթե Հանրային մուտքի օրացույցը միացված է):
+Require event approvals: Պահանջել միջոցառման հաստատումներ
+display-unapproved-help: Նշում է, թե արդյոք չհաստատված իրադարձությունները ցուցադրվում են ձեր օրացույցում:<br>Եթե դրված է «Այո», ապա չհաստատված իրադարձությունները կցուցադրվեն ձեր օրացույցում (այլ տեքստի գույնով):<br>Եթե դրված է «Ոչ», ապա չհաստատված իրադարձությունները պետք է հաստատվեն նախքան դրանք ցուցադրվեն ձեր օրացույցում:
+Display unapproved: Displayուցադրումը հաստատված չէ
+conflict-check-help: የክስተት ግጭቶችን ይፈትሹ (ለተመሳሳይ ሰው በተመሳሳይ ጊዜ የታቀዱ ሁለት ክስተቶች) ፡፡ ይህንን ወደ “አዎ” ካቀናጁ ማስጠንቀቂያውን ካረጋገጡ በኋላ አሁንም ሁለት ዝግጅቶችን በአንድ ጊዜ ማቀድ ይችላሉ ፡፡ ይህንን ወደ “አይ” ካዘጋጁት የግጭቶች ምርመራ አይደረግም ፡፡ ምናልባት ይህንን ወደ “አዎ” ማቀናበር ይፈልጉ ይሆናል ፣ ስለሆነም የግጭት ፍተሻ ይከሰታል ፡፡
+Check for event conflicts: Ստուգեք իրադարձությունների բախումներ
+Yes: Այո
+No: Ոչ
+conflict-months-help: የግጭት ፍተሻ በቦታው ካለ (“የዝግጅት ግጭቶችን ይፈትሹ” ወደ “አይ” ተቀናብሯል & # 41; ፣ ይህ ለወደፊቱ ስንት ወራቶች ግጭቶችን መፈተሽ እንዳለብን ይገልጻል። ክስተቶችን ማከል ረጅም ጊዜ የሚወስድ ሆኖ ካገኘ ፣ ይህን ቁጥር ይቀንሱ።
+Conflict checking months: Հակամարտությունների ստուգման ամիսներ
+conflict-check-override-help: ተጠቃሚዎች የክስተት ግጭቶችን እንዲሽሩ እና ሁለት ወይም ከዚያ በላይ ክስተቶችን በተመሳሳይ ጊዜ መርሃግብር እንዲያደርጉ ያስችላቸዋል።
+Allow users to override conflicts: Թույլ տվեք օգտվողներին գերադասել բախումները
+limit-appts-help: Թույլ է տալիս համակարգի ադմինիստրատորին սահմանել համակարգի կողմից սահմանված սահմանափակումներ, որոնք կարող է ունենալ մեկ օգտվող մեկ օրվա ընթացքում:
+Limit number of timed events per day: Սահմանափակեք օրական իրադարձությունների քանակը
+limit-appts-number-help: Նշում է առավելագույն ժամանակահատվածի իրադարձությունները, որոնք օգտվողը կարող է ունենալ մեկ օրվա ընթացքում:
+Maximum timed events per day: Օրվա ընթացքում առավելագույն ժամկետային իրադարձություններ
+crossday-help: ከነቃ ቀናትን የሚቆዩ ክስተቶች በተናጠል ቀናት ይታያሉ
+Disable Cross-Day Events: Անջատեք միջօրյա միջոցառումները
+disable-location-field-help: «Այո» -ի ընտրությամբ «Տեղադրության» դաշտը կհեռացվի իրադարձությունների տեղեկատվության էջերից
+Disable Location field: Անջատել Տեղադրության դաշտը
+disable-url-field-help: «Այո» -ի ընտրությամբ «URL» դաշտը կհեռացվի իրադարձությունների տեղեկատվության էջերից
+Disable URL field: Անջատեք URL դաշտը
+disable-priority-field-help: «Այո» -ի ընտրությամբ «Առաջնահերթություն» դաշտը կհեռացվի իրադարձությունների տեղեկատվության էջերից ՝ սկսնակների համար ապահովելով ավելի պարզ ինտերֆեյս:
+Disable Priority field: Անջատել Գերակայության դաշտը
+disable-access-field-help: «Այո» -ի ընտրությամբ «Մուտք» դաշտը կհեռացվի իրադարձությունների տեղեկատվության էջերից ՝ սկսնակների համար ապահովելով ավելի պարզ ինտերֆեյս:
+Disable Access field: Անջատել մուտքի դաշտը
+disable-participants-field-help: «Այո» -ի ընտրությամբ «Մասնակիցներ» դաշտը կհեռացվի իրադարձությունների տեղեկատվության էջերից ՝ թույլ չտալով օգտվողներին այլ օգտվողներ ավելացնել իրենց միջոցառումներին: Եթե ​​այս տարբերակը միացնեք, գուցե ցանկանաք անջատել նաև «Թույլատրել դիտել այլ օգտվողի օրացույցերը» դաշտը:
+Disable Participants field: Անջատել Մասնակիցների դաշտը
+disable-repeating-field-help: Ընտրելով «Այո», իրադարձությունները ավելացնելիս «Կրկնվող» դաշտը կհեռացվի: Սա կապահովի ավելի պարզ ինտերֆեյս սկսնակների համար:
+Disable Repeating field: Անջատեք Կրկնվող դաշտը
+allow-html-description-help: ከነቃ ተጠቃሚዎች በክስተት መግለጫው መስክ ኤችቲኤምኤል ማስገባት ይችላሉ። ካልነቃ የኤችቲኤምኤል መለያዎች እንደ ቀላል ጽሑፍ እንዲታዩ ይድናሉ። ማስጠንቀቂያ-ይህንን ባህሪ ማንቃት ተጠቃሚዎች በሌሎች ድርጣቢያዎች ላይ ምስሎችን ለማጣቀስ ያስችላቸዋል ፡፡
+Allow HTML in Description: Թույլատրել HTML- ին նկարագրության մեջ
+Popups: Թռուցիկներ
+disable-popups-help: Անջատեք պատուհանները օրացույցի դիտումներից
+Disable Pop-Ups: Անջատեք փոփ-թռիչքները
+popup-includes-siteextras-help: Եթե ​​միացված է, թույլ տվեք, որ իրադարձության պատվերով դաշտերի տեղադրումը site_extras.php ֆայլում կցուցադրվեն իրադարձությունների պատուհաններում:
+Display Site Extras in popup: Siteուցադրել կայքի հավելումները պատուհանում
+popup-includes-participants-help: Միացված լինելու դեպքում մասնակիցները ցուցադրվում են իրադարձությունների պատուհանում:
+Display Participants in popup: Displayուցադրել մասնակիցներին պատուհանում
+Miscellaneous: Տարատեսակ
+remember-last-login-help: Միացնելուց հետո մուտքի էջում նրա համար լրացվում է օգտագործողի մուտքը (բայց ոչ գաղտնաբառը), և բեռնվում են օգտվողի նախընտրությունները (ներառյալ նախընտրած գույները և լեզվի ընտրությունը):
+Remember last login: Հիշեք վերջին մուտքը
+summary_length-help: Օրացույցի դիտումներում Համառոտ նկարագրության առավելագույն երկարությունը
+Brief Description Length: Համառոտ նկարագրություն Երկարություն
+user_sort-help: Որոշում է տեսակավորման կարգը User, Nonuser ցուցակների համար
+User Sort Order: Օգտագործողի տեսակավորման պատվեր
+Lastname, Firstname: Ազգանունը անունը
+Firstname, Lastname: Անուն ազգանուն
+allow-public-access-help: ሲነቃ ፣ የቀን መቁጠሪያው ተጠቃሚዎች እንዲገቡ የማይፈልግ እንደ ተነባቢ-ብቻ የህዝብ የቀን መቁጠሪያ ሆኖ ሊያገለግል ይችላል።
+Allow public access: Թույլատրել հանրության մուտքը
+public-access-default-visible: Հանրային օրացույցից իրադարձություններն ավտոմատ կերպով կհայտնվեն բոլոր օգտագործողների օրացույցերում
+Public access visible by default: Լռելյայնորեն տեսանելի է հանրային հասանելիությունը
+public-access-default-selected: Նոր իրադարձություն ավելացնելիս հանրային օգտագործողը նախնական կարգով կընտրվի որպես մասնակից:
+Public access is default participant: Հանրային մուտքը լռելյայն մասնակից է
+public-access-view-others-help: Հասարակական մուտքով համակարգ մուտք գործելիս նշում է, թե արդյոք օգտվողը կարող է դիտել օրացույցի մեկ այլ օգտագործողի օրացույցը:
+Public access can view other users: Հանրային մուտքը կարող է դիտել այլ օգտվողների
+public-access-can-add-help: Միացնելուց հետո, հանրային մուտքի միջոցով համակարգ մուտք գործած օգտվողները կկարողանան ավելացնել նոր իրադարձություններ, բայց դրանք չեն հայտնվի օրացույցում, քանի դեռ ադմինիստրատորը չի հաստատել նոր իրադարձությունը:
+Public access can add events: Հանրային մուտքը կարող է իրադարձություններ ավելացնել
+public-access-add-requires-approval-help: Նշում է, թե արդյոք հանրային մուտքի հաշվի միջոցով ավելացված իրադարձությունները պահանջում են հաստատում նախքան ցուցադրվելը:
+Public access new events require approval: Հանրության մուտքի նոր իրադարձությունները հաստատման կարիք ունեն
+public-access-sees-participants-help: Միացված լինելու դեպքում, հանրային հաշվից օրացույց մուտք գործող օգտվողները կկարողանան տեսնել միջոցառման մասնակիցներին, եթե դիտեն իրադարձության մանրամասները:
+Public access can view participants: Հանրային մուտքը կարող է դիտել մասնակիցներին
+public-access-override-help: Թույլ է տալիս իրադարձությունների անունները և նկարագրությունները թաքցնել հանրային օրացույցում
+Override event name/description for public access: Անտեսել միջոցառման անունը / նկարագրությունը հանրության մուտքի համար
+public-access-override-text-help: Տեքստը, որը պետք է ցուցադրվի, եթե վերը նշված տարբերակը միացված է: Եթե ​​«Հասանելի չէ», այն կթարգմանվի:
+Text to display to public access: Տեքստ `հանրային մուտքի համար ցուցադրելու համար
+public-access-captcha-help: Հնարավորության դեպքում, Հանրայինի կողմից ավելացված նոր իրադարձությունները պահանջում են անցնել CAPTCHA վավերացում:
+Require CAPTCHA validation for public access new events: Պահանջեք CAPTCHA- ի վավերացում `հանրության մուտքի նոր իրադարձությունների համար
+uac-enabled-help: Թույլ է տալիս օգտագործողի մակարդակի մուտքի վերահսկումը
+User Access Control enabled: Օգտագործողի մուտքի վերահսկումը միացված է
+groups-enabled-help: Հնարավորություն է տալիս խմբային աջակցություն ՝ թույլ տալով օգտվողներին ընտրել օգտվողներին ըստ խմբերի:
+Groups enabled: Խմբերը միացված են
+user-sees-his-group-help: Միացված լինելու դեպքում օգտվողները չեն տեսնի օրացույցի օգտվողներ, որոնք իրենց խմբերից գոնե մեկում չեն:
+User sees only his groups: Օգտատերը տեսնում է միայն իր խմբերը
+nonuser-enabled-help: Միացված լինելու դեպքում ադմինիստրատորները հնարավորություն կունենան ավելացնել չօգտագործողների օրացույցները
+Nonuser enabled: Չօգտագործողների օրացույցները միացված են
+nonuser-list-help: Որտեղ ցուցադրել չօգտագործողների օրացույցերը մասնակիցների ցուցակում
+Nonuser list: Participantsուցադրել մասնակիցների ցուցակում
+Upcoming Events: Սպասվող իրադարձություններ
+upcoming-events-help: Միացնել მომავალი.php
+Enabled: Միացված է
+upcoming-events-allow-override: Թույլատրել օգտվողի պարամետրերը آینده.php- ի համար
+Allow user override: Թույլատրել օգտագործողի անտեսումը
+upcoming-events-display-caticons: Ապագա կատեգորիայի պատկերակները ներառեք آینده. Php- ում
+Display category icons: Displayուցադրել կատեգորիայի պատկերակները
+upcoming-events-display-layers: Layersուցադրեք շերտերը coming.php- ում
+Display layers: Displayուցադրել շերտերը
+upcoming-events-display-links: Linksուցադրեք հղումները آینده. Php- ում
+Display links to events: Displayուցադրել իրադարձությունների հղումները
+upcoming-events-display-popups: Eventուցադրել իրադարձության պատուհանները եկող.php- ում
+Display event popups: Eventուցադրել իրադարձության պատուհանները
+reports-enabled-help: Միացված լինելու դեպքում յուրաքանչյուր էջի ներքևում օգտվողները կտեսնեն «Հաշվետվություններ» բաժինը և կթույլատրվեն ստեղծել հարմարեցված հաշվետվություններ: Բացի այդ, ադմինիստրատորի օգտվողները կարող են ստեղծել գլոբալ հաշվետվություններ, որոնք կհայտնվեն բոլոր օգտագործողների էջերի ներքևում:
+Reports enabled: Հաշվետվությունները միացված են
+subscriptions-enabled-help: Նշում է, թե արդյոք հեռավոր օգտվողները կարող են բաժանորդագրվել WebCalendar- ի օգտվողի օրացույցին `թույլ տալով նրանց տեսնել WebCalendar- ի օգտվողի իրադարձությունները իրենց iCal- ի հնարավոր ծրագրում (օրինակ` Apple- ի iCal կամ Mozilla Calendar):
+Allow remote subscriptions: Թույլատրել հեռավոր բաժանորդագրությունները
+remotes-enabled-help: Թույլ է տալիս օգտվողներին բեռնել հեռավոր ics ֆայլեր ՝ օգտագործելով URL
+Allow remote calendars: Թույլատրել հեռավոր օրացույցերը
+rss-enabled-help: Նշում է, թե արդյոք օգտագործողի օրացույցը կարելի է ստանալ RSS հոսքից:
+Enable RSS feed: Միացնել RSS հոսքը
+categories-enabled-help: ለክስተት ምድቦች ድጋፍን ያነቃል።
+Categories enabled: Կատեգորիաները միացված են
+icon_upload-enabled-help: Միացված լինելու դեպքում օգտվողները կարող են վերբեռնել կատեգորիայի պատկերակները
+Category Icon Upload enabled: Կատեգորիայի պատկերակի վերբեռնումը միացված է
+(Requires XXX folder to exist.): (Պահանջվում է XXX պանակ):
+display-tasks-help: Taskուցադրել առաջադրանքների փոքր պատուհանը ամսվա և օրվա օրացույցում
+Display small task list: Displayուցադրել փոքր առաջադրանքների ցուցակը
+display-tasks-in-grid-help: Իրադարձությունների հետ միասին օրացույցերում ցուցադրել առաջադրանքները
+Display tasks in Calendars: Tasksուցադրել առաջադրանքները Օրացույցներում
+allow-external-users-help: የቀን መቁጠሪያ ያልሆነ ተጠቃሚ ወደ አንድ ክስተት መታከል ይችል እንደሆነ ይገልጻል። ይህ የቀን መቁጠሪያ ያልሆኑ ተጠቃሚዎች እንደ ክስተት ተሳታፊዎች እንዲዘረዘሩ ያስችላቸዋል።
+Allow external users: Թույլատրել արտաքին օգտագործողներին
+external-can-receive-notification-help: Երբ արտաքին օգտվողները միացված են, և էլփոստի օգտագործումը միացված է, արտաքին օգտվողները կարող են էլփոստով ծանուցումներ ստանալ, երբ միջոցառումը ավելացվում է, թարմացվում կամ ջնջվում է (եթե տրամադրվում է արտաքին օգտվողի էլ.
+External users can receive email notifications: Արտաքին օգտվողները կարող են էլփոստով ծանուցումներ ստանալ
+external-can-receive-reminder-help: Երբ արտաքին օգտվողները միացված են, և էլփոստի օգտագործումը միացված է, արտաքին օգտվողները կարող են ստանալ էլփոստի հիշեցումներ (եթե տրամադրվում է արտաքին օգտվողի էլ. Փոստի հասցեն):
+External users can receive email reminders: Արտաքին օգտվողները կարող են ստանալ էլփոստի հիշեցումներ
+allow-self-registration-help: አዲስ ተጠቃሚዎች እራሳቸውን እንዲመዘገቡ ይፍቀዱ
+Allow self-registration: Թույլատրել ինքնագրանցումը
+use-blacklist-help: Սահմանափակեք մուտք դեպի WebCalendar գործառույթներ ՝ հիմնված IP հասցեի վրա
+Restrict self-registration to blacklist: Սահմանափակել ինքնագրումը սեւ ցուցակում
+allow-self-registration-full-help: አዳዲስ ተጠቃሚዎች በመስመር ላይ የራስ ምዝገባ ሂደቱን እንዲያጠናቅቁ ይፍቀዱላቸው
+Use self-registration email notifications: Ստեղծեք գաղտնաբառեր և ուղարկեք նոր օգտվողներին
+allow-attachment-help: ተጠቃሚዎች የፋይል አባሪዎችን በክስተቶች ላይ እንዲያክሉ ይፍቀዱላቸው ፡፡
+Allow file attachments to events: Թույլատրել ֆայլերի կցորդները իրադարձություններին
+Admin and owner can always add attachments if enabled.: Վարիչը և սեփականատերը միացված են միշտ կարող են հավելվածներ ավելացնել:
+allow-comments-help: ተጠቃሚዎች አስተያየቶችን በክስተቶች ላይ እንዲያክሉ ይፍቀዱላቸው ፡፡
+Allow comments to events: Թույլատրել մեկնաբանությունները իրադարձություններին
+Admin and owner can always add comments if enabled.: Միացված լինելու դեպքում ադմինիստրատորը և սեփականատերը միշտ կարող են մեկնաբանություններ ավելացնել:
+email-enabled-help: Միացնել կամ անջատել ծանուցումների և հիշեցումների համար էլ. Փոստի ուղարկումը: Սահմանեք «ոչ», եթե ձեր սերվերը պատշաճ կերպով կարգավորված չէ նամակ ուղարկելու համար:
+Email enabled: Էլ.փոստը միացված է
+email-default-sender: Նշում է էլ. Փոստի հասցեն ՝ հիշեցումներ ուղարկելու ժամանակ որպես ուղարկող նշելու համար:
+Default sender address: Ուղարկողի լռելյայն հասցեն
+email-mailer: Ընտրեք էլփոստի տեսակը (SMTP, PHP փոստ, sendmail)
+Email Mailer: Էլ.փոստով փոստատար
+email-smtp-host: SMTP սերվերի (ներ) ի սերվերի (սերվերների) անունը բաժանված է ստորակետերով
+SMTP Host name(s): SMTP սերվերի անուն (ներ)
+email-smtp-port: SMTP նավահանգստի համարը (սովորաբար 25)
+SMTP Port Number: SMTP նավահանգստի համարը
+email-smtp-auth: Օգտագործեք SMTP իսկությունը
+SMTP Authentication: SMTP նույնականացում
+email-smtp-username: SMTP Մականուն, եթե օգտագործում է նույնականացում
+SMTP Username: SMTP անուն
+email-smtp-password: SMTP գաղտնաբառ, եթե օգտագործում է նույնականացում
+SMTP Password: SMTP գաղտնաբառ
+Default user settings: Օգտատիրոջ կանխադրված կարգավորումներ
+email-format: Նշեք HTML կամ պարզ տեքստային հաղորդագրությունների նախապատվությունը
+Email format preference: Էլ.փոստի ձևաչափի նախապատվություն
+HTML: =
+Plain Text: Պարզ տեքստ
+email-include-ics: Ներառեք iCalendar ICS ֆայլ էլեկտրոնային հաղորդագրության համար
+Include iCalendar attachments: Ներառեք iCalendar հավելվածները
+email-event-reminders-help: Նշում է միջոցառման հիշեցումներ ուղարկել-չուղարկելը:
+Event reminders: Իրադարձությունների հիշեցումներ
+email-event-added: Նշում է `էլ. Փոստով ծանուցումներ ուղարկե՞լ, թե ոչ, երբ իրադարձություն ավելացվում է ձեր օրացույցում:
+Events added to my calendar: Միջոցառումներն ավելացվեցին իմ օրացույցում
+email-event-updated: Նշում է, թե արդյոք ձեր օրացույցում ինչ-որ իրադարձություն թարմացվում է `էլփոստով ծանուցումներ ուղարկել-չուղարկել:
+Events updated on my calendar: Իմ օրացույցում թարմացված իրադարձությունները
+email-event-deleted: Նշում է `էլեկտրոնային փոստով ծանուցումներ ուղարկել-չուղարկել, երբ իրադարձությունը հանվում է ձեր օրացույցից:
+Events removed from my calendar: Իրադարձությունները հանվել են իմ օրացույցից
+email-event-rejected: Նշում է ՝ էլեկտրոնային ծանուցումներ ուղարկել-չուղարկել, երբ մասնակիցը մերժում է ձեր օրացույցում պարունակվող իրադարձությունը:
+Event rejected by participant: Մասնակիցը մերժեց միջոցառումը
+email-event-create: Նշում է, թե արդյոք գրառումները ստեղծողը նամակ կստանա
+Event that I create: Իրադարձություն, որը ես ստեղծում եմ
+Color options: Գույնի ընտրանքներ
+Allow user to customize colors: Թույլ տվեք օգտվողին անհատականացնել գույները
+gradient-colors: Եթե ​​միացված է գրադիենտ գույներ են օգտագործվում: Սա կարող է մեծապես ազդել կատարման վրա:
+Enable gradient images for background colors: Միացնել գրադիենտ պատկերները ֆոնի գույների համար
+Not available: Անհասանելի
+Background Image options: Ֆոնային պատկերի ընտրանքներ
+bgimage-help: የተፈለገውን የጀርባ ምስል ዩ.አር.ኤል. አንጻራዊ አገናኝ ሊሆን ይችላል።
+Background Image: Ֆոնային պատկեր
+bgrepeat-help: የጀርባ ምስል ድገም ባህሪን ይቆጣጠራል።
+Background Repeat: Ֆոնի կրկնություն
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Օգնականներ
+Preferences: Նախապատվություններ
+Control Panel: Կառավարման վահանակ
+Users: Օգտագործողներ
+Account: Հաշիվ
+Categories: Կատեգորիաներ
+Views: Դիտումներ
+Layers: Շերտեր
+Reports: Զեկույցներ
+Delete Events: Deleteնջել իրադարձությունները
+Activity Log: Գործունեության տեղեկամատյան
+System Log: Համակարգի մատյան
+Security Audit: Անվտանգության աուդիտ
+Public Preferences: Հանրային նախապատվություններ
+Unapproved Public Events: Չհաստատված հանրային իրադարձություններ
+Administrative Tools: Վարչական գործիքներ
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Կրկնօրինակ անուն ՝ «XXX»:
+Username XXX already exists.: Մականուն «XXX» արդեն գոյություն ունի:
+Email address XXX already exists.: «XXX» էլփոստի հասցեն արդեն գոյություն ունի:
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Լրացուցիչ մեկնաբանություններ (ըստ ցանկության)
+Approve and Send: Հաստատել և ուղարկել
+Approve and Exit: Հաստատել և դուրս գալ
+(Your comments will be emailed to the event creator.): (Ձեր մեկնաբանությունը էլեկտրոնային փոստով կուղարկվի միջոցառման ստեղծողին):
+Hello, XXX.: Ողջույն, XXX:
+XXX has approved an appointment and added comments.: Նշումը հաստատվել է, և մեկնաբանություններն ավելացվել են XXX- ի կողմից:
+Subject XXX: Թեմա ՝ «XXX»:
+Description XXX: Նկարագրություն ՝ «XXX»:
+Date XXX: Ամսաթիվ ՝ XXX
+Time XXX: Timeամանակը ՝ XXX
+Comments XXX: Մեկնաբանություններ ՝ XXX
+Approved w/Comments by XXX.: Հաստատված է / մեկնաբանությունները ՝ XXX- ի:
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Ադմինիստրատիվ ռեժիմ
+Your assistants: የእርስዎ ረዳቶች
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Անհայտ սխալ.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Erրագրի սխալ. Ոչ մի XXX նշված չէ:
+user: օգտագործող
+year: տարի
+month: ամիս
+day: օր
+
+########################################
+# Page: category.php
+#
+Category Icon: Կատեգորիայի պատկերակ
+Global: Համաշխարհային
+The permissions for the icons directory are set to read-only: Սրբապատկերների գրացուցակի թույլտվությունները դրված են միայն կարդալու համար:
+Category Name: Կատեգորիայի անվանումը:
+Color: Գույնը
+Remove Icon: Հեռացնել պատկերակը ՝
+Add Icon to Category: Ավելացնել պատկերակ կատեգորիայի մեջ
+Upload: Վերբեռնել
+GIF or PNG 6kb max: GIF կամ PNG 6 կբ առավելագույնը
+Search for existing icons: Որոնել առկա պատկերակները
+Add: Ավելացնել
+Delete: Նջել
+Are you sure you want to delete this entry?: Վստա՞հ եք, որ ցանկանում եք ջնջել այս գրառումը:
+Make New Category: Կատարել նոր կատեգորիա
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Կատեգորիայի անվանումը պարտադիր է
+File size exceeds maximum.: Ֆայլի չափը գերազանցում է առավելագույնը:
+File is not a GIF or PNG image: Ֆայլը GIF կամ PNG պատկեր չէ
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: ՄԱՏՉԵԼԻ ԿԱՏԵԳՈՐԻԱՆԵՐ
+ENTRY CATEGORIES: ՄՈՒՏՔԻ ԿԱՏԵԳՈՐԻԱՆԵՐ
+Remove: Հեռացնել
+Global Category: Համաշխարհային կատեգորիա
+Cancel: Չեղարկել
+
+########################################
+# Page: colors.php
+#
+Add Custom: Ավելացնել Պատվերով
+Basic Colors: Հիմնական գույներ
+Current Color: Ընթացիկ գույնը
+Custom Colors: Պատվերով գույներ
+Old Color: Հին գույնը
+
+########################################
+# Page: combo.php
+#
+Select None: Ընտրեք Ոչ մեկը
+Agenda: Օրակարգ
+Add Task: Ավելացնել առաջադրանք
+Description: Նկարագրություն
+Date: Ամսաթիվ
+Time: Ամանակ
+Priority: Գերակայություն
+Access: Մուտք
+Created by: Ստեղծեց
+Updated: Թարմացվել է
+Participants: Մասնակիցներ
+Attachments: Կցորդներ
+Comments: Մեկնաբանություններ
+Brief Description: Համառոտ նկարագրությունը
+Full Description: Ամբողջական նկարագրություն
+Category: Կատեգորիա
+Add event detail: Ավելացնել իրադարձության մանրամասները
+Start Date: Մեկնարկի ամսաթիվ
+Due Date: Վերջնաժամկետ
+Add task detail: Ավելացնել առաջադրանքի մանրամասնություն
+All: Բոլորը
+Error: Սխալ
+no response from server: սերվերից ոչ մի պատասխան
+JSON error: JSON սխալ
+High: Բարձր
+Medium: Միջին
+Low: Ածր
+Today: Այսօր
+Add Entry: Ավելացնել գրառում
+Unnamed Event: Անանուն իրադարձություն
+Unnamed Task: Անանուն առաջադրանք
+Refresh: Թարմացնել
+Click to add entry: Կտտացրեք մուտքն ավելացնելու համար
+Name: Անուն
+pm: երեկոյան
+am: ነኝ
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX- ը չեղարկել է նշանակումը:
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Blob- ի անվավեր ID
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Ավելացնել մեկնաբանություն
+Add Attachment: Ավելացնել կցորդ
+Subject: Առարկա
+Comment: Մեկնաբանություն
+Upload file: Ներբեռնել ֆայլ
+
+########################################
+# Page: docdel.php
+#
+Removed: Հեռացված
+
+########################################
+# Page: edit_entry.php
+#
+days: օրեր
+hours: ժամեր
+minutes: րոպե
+You are not authorized to edit this task.: Դուք իրավասու չեք խմբագրել այս խնդիրը:
+is in a different timezone than you are. Currently: գտնվում է այլ ժամային գոտում, քան դուք եք: Ներկայումս
+hour ahead of you: քեզնից ժամ առաջ
+hour behind you: ժամ ետեւումդ
+hours ahead of you: ձեզանից ժամեր առաջ
+hours behind you: քեզանից ժամեր ետ
+XXX is in a different timezone (ahead): (XXX- ը այլ ժամային գոտում է. YYY- ն ձեզանից առաջ է:<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX- ը ժամային այլ գոտում է. YYY- ն հետևում է ձեզ:<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Այստեղ մուտքագրված ժամանակը հիմնված է ձեր zամային գոտու վրա:
+Edit Entry: Խմբագրել գրառումը
+Details: Մանրամասները
+Repeat: Կրկնել
+Reminders: Հիշեցումներ
+brief-description-help: ይህ የዝግጅቱን አጭር መግለጫ (ወደ 20 ያህል ቁምፊዎች) ማቅረብ አለበት ፡፡ የቀን መቁጠሪያውን ሲመለከቱ ይህ ክስተቱን ይወክላል።
+full-description-help: Սա պետք է լրացնի իրադարձության մանրամասները: Այս տեղեկատվությունը կարելի է տեսնել, երբ օգտվողը դիտում է իրադարձությունը:
+access-help: የዝግጅቱን የመድረሻ ደረጃን ይገልጻል። <ul> <li> ህዝባዊ: - ሁሉም ሰው የዝግጅቱን ሙሉ ዝርዝር ማየት ይችላል። ምን እንደ ሆነ ዝርዝሩ አይደለም።</li></ul>
+priority-help: Նշում է միջոցառման առաջնահերթությունը: Բարձր առաջնահերթ իրադարձությունները կցուցադրվեն թավ տառերով:
+category-help: የዝግጅቱን ምድብ ይገልጻል።
+completed-help: የቀን ሥራ ተጠናቅቋል። ሁሉም ተሳታፊዎች መቶኛ ከ 100% ጋር እኩል ሲሆኑ ብቻ ነቅቷል።
+Date Completed: Ավարտման ամսաթիվը
+percent-help: Առաջադրանքի կատարման տոկոսը այս օգտվողի համար
+Percent Complete: Տոկոսն ավարտված է
+All Percentages: Բոլոր տոկոսները
+location-help: Իրադարձության վայրը
+Location: Որտեղից
+url-help: Իրադարձության URL
+URL: =
+date-help: Նշում է միջոցառման օրը:
+Untimed event: Անժամանակ իրադարձություն
+Timed event: Edամանակահատված իրադարձություն
+All day event: Ամբողջ օրվա իրադարձություն
+Timezone Offset: Zամանակային գոտու փոխհատուցում
+time-help: Նշում է միջոցառման ժամանակը: <ul> <li> «Timամանակահատված իրադարձություն» (իրադարձության համար, որը նախատեսված է այդ օրը հատուկ ժամին)</li> <li> «Անժամանակ իրադարձություն» (իրադարձության համար դա ժամանակ չունի (արձակուրդի պես) )</li> <li> «Ամբողջ օրվա իրադարձություն» (միջոցառման համար, որը տևում է ամբողջ օրը (օրինակ `գրասենյակից դուրս լինելը)</li></ul>
+duration-help: Նշում է միջոցառման տևողությունը (ժամերով; րոպեներով): <em>Այս դաշտը կարող է դատարկ մնալ:</em>
+end-time-help: Նշում է միջոցառման ավարտի ժամանակը:
+Start Time: Մեկնարկի ժամանակը
+Due Time: Ժամանակի ընթացքում
+Site Extras: Կայքի հավելումներ
+avail_participants-help: የዚህን ግቤት ተሳታፊዎች ይዘረዝራል ፡፡
+Available: Առկա է
+Find Name: Գտեք անուն
+Resources: Ռեսուրսներ
+participants-help: Lուցակում է այս գրառման մասնակիցներին:
+Selected: Ընտրված է
+Availability: Հասանելիություն
+external-participants-help: Նշում է միջոցառման մասնակիցների ցուցակը, որոնք օրացույցի օգտվող չեն: Օգտագործողները պետք է նշվեն մեկ տողում և կարող են ներառել էլ. Փոստի հասցե: Եթե ​​նշվում է էլ. Փոստի հասցեն, օգտվողը իրավասու է ծանուցումներ և հիշեցումներ ստանալու համար:
+External Participants: Արտաքին մասնակիցներ
+repeat-type-help: Ընտրեք, թե որքան հաճախ պետք է կրկնել իրադարձությունը:
+Daily: Ամեն օր
+Weekly: Շաբաթական
+Monthly: Ամսական
+by day: በቀን
+by date: በቀን
+by position: በአቀማመጥ
+Monthly (by day): Ամսական (ըստ օրվա)
+Monthly (by date): Ամսական (ըստ ամսաթվի)
+Monthly (by position): Ամսական (ըստ դիրքի)
+Yearly: Տարեկան
+Manual: Ձեռնարկ
+Expert Mode: Փորձագիտական ​​ռեժիմ
+repeat-end-date-help: Նշում է այն օրը, երբ իրադարձությունը պետք է կրկնի մինչև:
+Ending: Ավարտվում է
+Forever: Ընդմիշտ
+Use end date: Օգտագործեք ավարտի ամսաթիվը
+Number of times: Numberամանակների քանակը
+repeat-frequency-help: Նշում է, թե որքան հաճախ պետք է իրադարձությունը կրկնել:
+Frequency: Հաճախականություն
+Weekdays Only: Միայն աշխատանքային օրերին
+Week Start: Շաբաթվա մեկնարկը
+repeat-bydayextended-help: Թույլ է տալիս ամսաթվի ընտրությունը `շաբաթվա օրվա հիման վրա:
+ByDay: =
+repeat-month-help: Նշում է, թե որ ամիսներին պետք է կրկնել իրադարձությունը:
+ByMonth: Ամսվա
+repeat-bysetpos-help: Թույլ է տալիս ամսաթվի ընտրությունը `հիմնված ամսվա դիրքի վրա:
+BySetPos: BySetPos- ի կողմից
+repeat-bymonthdayextended-help: Թույլ է տալիս ամսաթվի ընտրությունը `ելնելով ամսաթվից:
+ByMonthDay: =
+repeat-byweekno-help: Թույլ է տալիս օգտվողին նշել միջոցառումը կրկնելու շաբաթների ցուցակը (1,2 ... 53, -53, -52 ...- 1):
+ByWeekNo: =
+repeat-byyearday-help: Թույլ է տալիս օգտվողին նշել իրադարձությունների կրկնելու տարվա օրերի ցուցակը (1,2 ... 366, -366, -365 ...- 1):
+ByYearDay: =
+repeat-exceptions-help: Լրացուցիչ օրեր, երբ այս իրադարձությունը պետք է տեղի ունենա կամ չպետք է տեղի ունենա:
+Exclusions: Բացառություններ
+Inclusions: Ներառումներ
+Add Exception: Ավելացնել բացառություն
+Add Inclusion: Ավելացնել ներառումը
+Delete Selected: Deleteնջել ընտրվածը
+Send Reminder: Ուղարկել հիշեցում
+When: Երբ
+Use Date/Time: Օգտագործեք Ամսաթիվը / ժամանակը
+Use Offset: Օգտագործեք օֆսեթ
+Before: Նախքան
+After: Դրանից հետո
+Start: Սկսեք
+End/Due: Ավարտ / Պատճառ
+Times: Timesամանակներ
+Every: Ամեն
+CAPTCHA Warning: ingգուշացում. Հնարավոր չէ օգտագործել CAPTCHA առանց PHP- ի GD ընդլայնման:<br>
+Delete entry: Entryնջել մուտքը
+You are not authorized to edit this entry.: Դուք իրավասու չեք խմբագրել այս գրառումը:
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX- ը նոր հանդիպում է նշանակել:
+XXX has updated an appointment.: XXX- ը թարմացրել է նշանակումը:
+Security violation!: Անվտանգության խախտում:
+You must enter the anti-spam text on the previous page.: በቀድሞው ገጽ ላይ ጸረ-አይፈለጌ መልእክት ጽሑፍ ማስገባት አለብዎት።
+The following conflicts with the suggested time: Հետևյալ հակասությունները առաջարկվող ժամանակի հետ
+User removed from participants list.: Մասնակիցը հանվել է մասնակիցների ցուցակից:
+Please look on XXX to accept or reject this appointment.: Խնդրում ենք նայեք XXX- ին ՝ այս նշանակումն ընդունելու կամ մերժելու համար:
+Please look on XXX to view this appointment.: Այս հանդիպումը դիտելու համար խնդրում ենք այցելել XXX:
+Scheduling Conflict: Կոնֆլիկտի պլանավորում
+Your suggested time of: የተጠቆሙበት ጊዜ
+conflicts with the following existing calendar entries: ከሚከተሉት የቀን መቁጠሪያ ግቤቶች ጋር ግጭቶች
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX- ը չի դրվել «config.php» - ում:
+word characters only: (կարող է պարունակել միայն բառերի նիշեր. [a-zA-Z_0-9])
+Add User: Ավելացնել օգտագործող
+Edit User: Խմբագրել օգտագործողին
+Calendar ID: Օրացույցի ID
+First Name: Անուն
+Last Name: Ազգանուն
+Is public calendar: Հանրային օրացույց է
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Շտեմարանի սխալ
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Ավելացնել հեռավոր օրացույց
+Edit Remote Calendar: Խմբագրել հեռակա օրացույցը
+Create Layer: Ստեղծեք շերտ
+Reload: Վերաբեռնել
+Required to View Remote Calendar: Պահանջվում է հեռավոր օրացույցը դիտելու համար
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Ներմուծման արդյունքներ
+Events successfully imported: Իրադարձությունները հաջողությամբ ներմուծվեցին
+Create a new layer to view this calendar.: Ստեղծեք նոր շերտ այս օրացույցը դիտելու համար:
+Errors: Սխալներ
+There was an error parsing the import file or no events were returned.: Ներմուծման ֆայլը վերլուծելիս տեղի է ունեցել սխալ, կամ որևէ իրադարձություն չի վերադարձվել:
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Վաղը
+Yesterday: Երեկ
+Day before yesterday: Նախանցյալ օրը
+Next week: Հաջորդ շաբաթ
+This week: Այս շաբաթ
+Last week: Անցած շաբաթ
+Week before last: Անցյալ շաբաթից առաջ
+Next week and week after: Հաջորդ շաբաթ և հաջորդ շաբաթ
+This week and next week: Այս շաբաթ և հաջորդ շաբաթ
+Last week and this week: Անցյալ շաբաթ և այս շաբաթ
+Last two weeks: Վերջին երկու շաբաթ
+Next month: Հաջորդ ամիս
+This month: Այս ամիս
+Last month: Անցած ամիս
+Month before last: Նախորդ ամիսը
+Next year: Հաջորդ տարի
+This year: Այս տարի
+Last year: Անցած տարի
+Year before last: Անցյալ տարի
+Next 14 days: Հաջորդ 14 օր
+Next 30 days: Հաջորդ 30 օր
+Next 60 days: Հաջորդ 60 օր
+Next 90 days: Հաջորդ 90 օրը
+Next 180 days: Հաջորդ 180 օրը
+Next 365 days: Հաջորդ 365 օր
+Invalid report id XXX.: Հաշվետվության անվավեր ID ՝ «XXX»:
+Unnamed Report: Անանուն զեկույց
+Add Report: Ավելացնել զեկույց
+Edit Report: Խմբագրել զեկույցը
+Report name: Հաղորդել անունը
+User: Օգտագործող
+Current User: Ընթացիկ օգտատեր
+Include link in menu: Ներառեք հղումը ընտրացանկում
+Include standard header/trailer: Ներառեք ստանդարտ վերնագիր / կցորդ
+Include previous/next links: Ներառեք նախորդ / հաջորդ հղումները
+Include empty dates: Ներառեք դատարկ ամսաթվերը
+Date range: Ամսաթիվը
+Template variables: Կաղապարի փոփոխականներ
+Page template: Էջի ձևանմուշ
+Day template: Օրվա ձևանմուշ
+Event template: Իրադարձության ձևանմուշ
+Are you sure you want to delete this report?: Վստա՞հ եք, որ ցանկանում եք ջնջել այս զեկույցը:
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Նման հաշվետվության ID չկա. «XXX»:
+Variable XXX not found.: XXX փոփոխական չի գտնվել
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Խմբագրել Պատվերով վերնագիրը
+Edit Custom Script/Stylesheet: Խմբագրել անհատական ​​սցենարը / ոճաթերթը
+Edit Custom Trailer: Խմբագրել հարմարեցված կցորդը
+
+########################################
+# Page: edit_user.php
+#
+Username: Օգտագործողի անունը
+E-mail address: Էլեկտրոնային հասցե
+Password: Գաղտնաբառ
+again: እንደገና
+Disabled for demo: Անջատված է ցուցադրման համար
+Are you sure you want to delete this user?: Վստա՞հ եք, որ ցանկանում եք ջնջել այս օգտագործողին:
+Change Password: Փոխել գաղտնաբառը
+New Password: նոր ծածկագիր
+Set Password: Սահմանեք գաղտնաբառը
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Օգտատերերի ջնջումը չի ապահովվում:
+The passwords were not identical.: Գաղտնաբառերը նույնական չէին:
+You have not entered a password.: የይለፍ ቃል አያስገቡም።
+Username cannot be blank.: Մականունը չի կարող դատարկ լինել:
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Լիազորված չէ
+
+########################################
+# Page: export.php
+#
+Export: Արտահանում
+Export format: Արտահանման ձևաչափ
+Include all layers: Ներառեք բոլոր շերտերը
+Include deleted entries: Ներառեք ջնջված գրառումները
+Export all dates: Արտահանեք բոլոր ամսաթվերը
+Start date: Մեկնարկի ամսաթիվ
+End date: Ավարտման ամսաթիվը
+Modified since: Փոփոխված է, քանի որ
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: արտահանման ձևաչափը սահմանված կամ սխալ չէ:
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Ոչ մի օգտվող նշված չէ:
+
+########################################
+# Page: groups.php
+#
+Add New Group: Ավելացնել նոր խումբ
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Անանուն խումբ
+Add Group: Ավելացնել խումբ
+Edit Group: Խմբագրել խումբը
+Group name: Խմբի անվանումը
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: የቡድን ስም መጥቀስ አለብዎት
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Օրացույցների ավտոմատ թարմացում
+auto-refresh-help: ሲነቃ የቀን ዕይታ ፣ የሳምንቱ ዕይታ ፣ የወሩ እይታ እና ያልተፈቀዱ ገጾች ዝርዝር ሁሉም በየወቅቱ ራሳቸውን ያድሳሉ ፡፡
+Auto-refresh time: Ավտոմատ թարմացնելու ժամանակը
+auto-refresh-time-help: ራስ-ማደስ ከነቃ ይህ በእያንዳንዱ አድስ መካከል ያለውን ጊዜ ይገልጻል።
+Display days with events in bold in year view: Displayուցադրեք օրերը ՝ տարվա կտրվածքով համարձակներով
+Display weekends in week view: Weekendուցադրեք հանգստյան օրերը շաբաթվա տեսանկյունից
+Time interval: Timeամանակի ընդմիջում
+time-interval-help: Նշում է, թե որքան կտևեն շաբաթվա և օրվա տեսքի ժամանակային բլոկները:
+Nonuser: Չօգտագործողի օրացույցներ
+user-customize-color: Նշում է, թե արդյոք օգտվողներին թույլատրվում է փոփոխել իրենց գունային սխեման:
+enable-gradient-help: Բջջային ֆոնի համար օգտագործեք գրադիենտ գույներ:
+Manually entering color values: Ձեռքով մուտքագրելով գունային արժեքներ
+colors-help: ሁሉም ቀለሞች በ "#RRGGBB" hexadecimal ቅርጸት መጠቀስ አለባቸው "RR" ለቀይ የሄክስ እሴት ፣ "ጂጂ" ለአረንጓዴ የሄክስ እሴት ፣ እና "ቢቢ" ደግሞ ለሄክስክስ ሰማያዊ
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Հայտնեք սխալի մասին
+Please include all the information below when reporting a bug.: Վրիպակի մասին հաղորդելիս խնդրում ենք ներառել ստորև ներկայացված բոլոր տեղեկությունները:
+Also, please use English rather than XXX.: Բացի այդ, օգտագործեք  անգլերեն այլ ոչ թե XXX:
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: WebCalendar- ի փաստաթղթավորում
+Currently in English only.: Ներկայումս միայն անգլերեն:
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Օրացույցի գրառումների ավելացում / խմբագրում
+Repeat Type: Կրկնել տեսակը
+For More Information...: Լրացուցիչ տեղեկությունների համար...
+Repeat End Date: Կրկնել ավարտի ամսաթիվը
+Repeat Day: Կրկնել օր
+repeat-day-help: Նշում է, թե շաբաթվա որ օրերին պետք է միջոցառումը կրկնել:
+
+########################################
+# Page: help_import.php
+#
+Import: Ներմուծում
+Palm Desktop: Արմավենու աշխատասեղան
+allow you to import entries from the Palm...: ይህ ቅጽ ከዘንባባ ዴስክቶፕ የቀን መጽሐፍ ግቤቶችን ለማስመጣት ያስችልዎታል። በተጠቃሚ ስምዎ በተሰየመ ንዑስ ማውጫ ውስጥ ባለው የቀን መጽሐፍ / datebook.dat ውስጥ ባለው የፓልም ማውጫዎ ውስጥ መቀመጥ አለበት ፡፡
+The following entries will not be imported: Հետևյալ գրառումները չեն ներկրվելու.
+Entries older than the current date: Գրառումներ ավելի հին, քան ընթացիկ ամսաթիվը
+Entries created in the Palm Desktop...: Palm Desktop- ում ստեղծված գրառումները, որոնք HotSync'd չեն եղել
+Anything imported from Palm...: Palm- ից ներմուծված ցանկացած բան կվերագրվի հաջորդ ներմուծման ընթացքում (եթե միջոցառման ամսաթիվը չի լրացել): Հետեւաբար, թարմացումները պետք է կատարվեն Palm Desktop- ում:
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Այս ձևը ներմուծելու է vCalendar (.vcs) 1.0 իրադարձություն:
+The following formats have been tested: Հետևյալ ձևաչափերը փորձարկվել են.
+This form will import iCalendar (.ics) events.: Այս ձևը ներմուծելու է iCalendar (.ics) միջոցառումներ:
+Enabling: Հնարավորություն տալով
+Overwrite Prior Import: Վերագրել նախնական ներմուծումը
+will cause events imported previously...: կհանգեցնի այն բանի, որ նախկինում ներմուծված իրադարձությունները, որոնք օգտագործել են նույն UID- ը, որպես իրադարձություն նոր ներմուծման ֆայլից, նշվում են որպես ջնջված: Սա պետք է հնարավորություն տա ներմուծել նորացված iCalendar ֆայլ ՝ առանց կրկնօրինակներ ստեղծելու:
+
+########################################
+# Page: help_index.php
+#
+Help Index: Օգնության ինդեքս
+About WebCalendar: WebCalendar- ի մասին
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Շերտերն օգտակար են ձեր սեփական օրացույցում այլ օգտվողների իրադարձությունները ցուցադրելու համար: Կարող եք նշել օգտագործողին և գույնով, որով ցուցադրվելու են իրադարձությունները:
+Add/Edit/Delete: Ավելացնել / խմբագրել / ջնջել
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Էջի ներքևում գտնվող ադմինիստրատորի բաժնում կտտացնելով Խմբագրել շերտերը կտտացնեն շերտերը ավելացնել / խմբագրել / ջնջել:
+The text color of the new layer that will be displayed in your calendar.: Նոր շերտի տեքստի գույնը, որը կցուցադրվի ձեր օրացույցում:
+Disabling: Անջատելը
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Սեղմեք «Անջատել շերտերը» հղումը էջի ներքևի ադմինիստրատորի բաժնում ՝ շերտերն անջատելու համար:
+Duplicates: Կրկնօրինակներ
+If checked, events that are duplicates of your events will be shown.: Եթե ​​ստուգված է, կցուցադրվեն իրադարձություններ, որոնք կրկնօրինակում են ձեր իրադարձությունները:
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Էջերը ներքևում սեղմելու համար սեղմեք Միացնել շերտերը ադմինիստրատորի բաժնում:
+Source: Աղբյուր
+Specifies the user that you would like to see displayed in your calendar.: Նշում է այն օգտագործողին, որը կցանկանայիք տեսնել ձեր օրացույցում:
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Լռելյայն կատեգորիա
+default-category-help: Նշում է այն կատեգորիան, որին պետք է դադարի նոր իրադարձություն:
+When I am the boss: Երբ ես շեֆն եմ
+Email me event notification: Ուղարկել ինձ իրադարձության մասին ծանուցում
+email-boss-notifications-help: Նշում է, եթե ղեկավարները նամակներ են ստանում որպես իրադարձությունների ծանուցումներ:
+I want to approve events: Ես ուզում եմ հաստատել իրադարձությունները
+boss-approve-event-help: አለቃው በረዳቶች የታከሉ ዝግጅቶችን እንዲያፀድቅ ይፈለግ እንደሆነ ይገልጻል ፡፡
+Subscribe/Publish: Բաժանորդագրվել / Հրապարակել
+Allow remote publishing: Թույլատրել հեռակա հրապարակումը
+allow-remote-publishing-help: አንድ የርቀት አይካካል ደንበኛ ክስተቶችን ወደ ድር ካላንደር እንደገና ማተም ከቻለ ይገልጻል
+remote-publishing-url-help: Disուցադրում է URL- ը, որը պետք է օգտագործվի iCal հաճախորդի դիմումում `ինչպես բաժանորդագրվելու, այնպես էլ WebCalendar- ում կրկին հրապարակելու համար:
+allow-remote-subscriptions-help: የርቀት ተጠቃሚዎች ቀን መቁጠሪያዎን መመዝገብ ከቻሉ ይገልጻል ፣ ይህም ክስተቶችዎን በ iCal የነቃ መተግበሪያ ውስጥ እንዲያዩ ያስችላቸዋል (እንደ አፕል አይካካል ወይም ሞዚላ የቀን መቁጠሪያ ያሉ) ፡፡
+remote-subscriptions-url-help: Disուցադրում է URL- ի հեռավոր օգտվողները, որոնք պետք է օգտագործեն ձեր օրացույցին բաժանորդագրվելու համար:
+Enable FreeBusy publishing: Միացնել FreeBusy- ի հրապարակումը
+freebusy-enabled-help: Նշում է, թե արդյոք օգտագործողի մատչելի ժամանակը կարելի է ստանալ iCal FreeBusy ստանդարտի միջոցով:
+freebusy-url-help: Օգտագործողի FreeBusy ցուցակ մուտք գործելու URL
+rss-feed-url-help: RSS հոսքը մուտք գործելու URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Թույլ է տալիս մանրակրկիտ վերահսկել օգտագործողի մուտքն ու թույլտվությունները: Օգտագործողները կարող են նաև տրամադրել լռելյայն և յուրաքանչյուր անհատական ​​թույլտվություն, եթե ադմինիստրատորը թույլատրել է
+If disabled, this user cannot send you emails.: Եթե ​​անջատված է, այս օգտվողը չի կարող ձեզ էլ-նամակներ ուղարկել:
+If disabled, this user cannot see you in the participants list.: Եթե ​​անջատված է, այս օգտվողը չի կարող տեսնել ձեզ մասնակիցների ցուցակում:
+If enabled, this user cannot view the details of any of your entries.: Միացված լինելու դեպքում այս օգտվողը չի կարող դիտել ձեր ցանկացած գրառման մանրամասները:
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Հրապարակումը հաշմանդամ է (Ադմինիստրատոր)
+Publishing Disabled (User): Հրապարակումը հաշմանդամ է (օգտվող)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Կտտացրեք ընտրելու համար
+Current Icons on Server: Ընթացիկ պատկերակները սերվերում
+
+########################################
+# Page: import.php
+#
+import from file: ներմուծում ֆայլից
+Disabled: Անաշխատունակ
+Import format: Ներմուծման ձևաչափ
+Exclude private records: Բացառել անձնական գրառումները
+Repeated items are imported separately. Prior imports are not overwritten.: Կրկնվող իրերը ներմուծվում են առանձին: Նախորդ ներմուծումը չի վերագրանցվում:
+
+########################################
+# Page: import_handler.php
+#
+No file: Ոչ մի ֆայլ
+Error deleting palm events from webcalendar.: Սխալ ՝ արմավենու միջոցառումները վեբօրացույցից ջնջելիս:
+Events from prior import marked as deleted: Նախնական ներմուծումից իրադարձությունները նշվել են որպես ջնջված
+Conflicting events: Հակասական իրադարձություններ
+The import file contained no data.: Ներմուծման ֆայլը տվյալներ չի պարունակում:
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Վստա՞հ եք, որ ցանկանում եք ջնջել այս շերտը:
+Delete layer: Deleteնջել շերտը
+Edit layer: Խմբագրել շերտը
+Enable layers: Միացնել շերտերը
+Layer: Շերտը
+Layers are currently disabled.: Շերտերն այժմ անջատված են:
+Layers are currently enabled.: Շերտերն այժմ միացված են:
+Click to modify layers settings for XXX: Սեղմեք այստեղ ՝ XXX օրացույցի շերտերի կարգավորումները փոփոխելու համար:
+Disable Layers: Անջատել շերտերը
+Add layer: Ավելացնել շերտ
+Add Layer: Ավելացնել շերտ
+Edit Layer: Խմբագրել շերտը
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Հնարավոր չէ թարմացնել նախապատվությունը
+Invalid entry id.: Մուտքի անվավեր ID:
+You cannot create a layer for yourself.: Դուք չեք կարող ձեզ համար շերտ ստեղծել:
+You can only create one layer for each user.: Յուրաքանչյուր օգտվողի համար կարող եք ստեղծել միայն մեկ շերտ:
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Հաստատել / հաստատել
+Approve Selected: Հաստատել ընտրվածը
+Check All: Ստուգեք բոլորը
+Emails Will Not Be Sent: Էլ.փոստերը չեն ուղարկվի
+Reject Selected: Մերժել ընտրվածը
+Reject: Մերժել
+Uncheck All: Ապանշել բոլորը
+View this entry: Դիտեք այս գրառումը
+No unapproved entries for XXX.: «XXX» - ի համար չհաստատված գրառումներ չկան:
+Unapproved Entries: Չհաստատված գրառումներ
+Approve this entry?: Հաստատե՞լ այս մուտքը:
+Reject this entry?: Մերժե՞լ այս գրառումը
+Approve Selected entries?: Հաստատե՞լ ընտրված գրառումները
+Reject Selected entries?: Մերժե՞լ ընտրված գրառումները:
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: መግቢያ እና የይለፍ ቃል ማስገባት አለብዎት
+Save login via cookies so I dont have to login next time.: Մուտքը պահեք քուքիների միջոցով, որպեսզի հաջորդ անգամ ստիպված չլինեմ մուտք գործել
+Login: Մուտք
+public: հանրային
+Access XXX calendar: Մուտք գործեք XXX օրացույց
+cookies-note: ማሳሰቢያ-ይህ መተግበሪያ ኩኪዎችን እንዲነቃ ይፈልጋል።
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: XXX մուտքի անօրինական նիշերը
+Invalid login: Անվավեր Մուտք
+Activity login failure: Մականուն ՝ «XXX», IP ՝ «YYY»:
+Error XXX: Սխալ. «XXX»:
+You have been logged out.: ዘግተው ወጥተዋል ፡፡
+Access public calendar: Մուտք գործեք հանրային օրացույց
+Not yet registered? Register here!: Դեռ գրանցված չե՞ք: Գրանցվեք այստեղ
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Չօգտագործողների նման օրացույց չկա. «XXX»:
+This Calendar is not Public.: Այս Օրացույցը Հանրային չէ:
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Ավելացնել ոչ օգտվողների նոր օրացույց
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Պետք է մուտքագրվի մուտք:
+No such nonuser calendar: Նման չօգտագործողների օրացույց չկա
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Անվավեր թեմա
+Save Preferences: Պահել նախապատվությունները
+Public Access calendar: Հանրային մուտքի օրացույց
+Modify Non User Calendar Preferences: Փոփոխել ոչ օգտագործողի օրացույցի նախապատվությունները
+Return to My Preferences: Վերադարձեք իմ նախասիրություններին
+Custom Scripts: Հատուկ սցենարներ
+Timezone Selection: Timeամանակային գոտու ընտրություն
+Multiview: Բազմատեսակ.
+entry-interval-help: Սահմանում է րոպեի ընդմիջումը մուտքի ժամանակները խմբագրելու ժամանակ
+Entry interval: Մուտքի ընդմիջում
+hour: ժամ
+minute: րոպե
+theme-reload-help: CSS- ի պահուստավորման պատճառով կարող է պահանջվել էջի վերաբեռնում
+Page may need to be reloaded for new Theme to take effect: Հնարավոր է, որ էջը պետք է վերաբեռնվի, որպեսզի նոր Թեման ուժի մեջ մտնի
+display_byproxy-help: Displayուցադրել իրական ստեղծողին view_entry էջում
+Display if created by Assistant: Displayուցադրել, եթե Օգնականն է ստեղծել
+allow-view-subscriptions-help: ወደ የግል ወይም ምስጢራዊ ግቤቶች የርቀት መዳረሻን መገደብ ይፈቅዳል
+Allow remote viewing of: Թույլատրել հեռակա դիտումը
+entries: գրառումները
+
+########################################
+# Page: purge.php
+#
+Purging events for: Մաքրման միջոցառումներ
+Finished: Ավարտվեց
+Back: Վերադառնալ
+Check box to delete ALL events for a user: Օգտագործողի համար  ԲՈԼՈՐ իրադարձությունները ջնջելու համար նշեք վանդակը
+Delete all events before: Նախկինում ջնջեք բոլոր իրադարձությունները
+Purge deleted only: Մաքրումը միայն ջնջված է
+Preview delete: Նախադիտել ջնջումը
+Are you sure you want to delete events for: Համոզվա՞ծ եք, որ ցանկանում եք ջնջել իրադարձությունները
+Records deleted from XXX: Գրառումները ջնջված են «XXX» - ից:
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Էլ.փոստի հասցեն չի կարող դատարկ լինել:
+Username already exists.: Մականուն արդեն գոյություն ունի.
+Email address already exists.: Էլ.փոստի հասցեն արդեն գոյություն ունի:
+New user via self-registration.: Նոր օգտվող ՝ ինքնագրանցման միջոցով:
+A new WebCalendar account has been set up for you.: Ձեզ համար ստեղծվել է նոր WebCalendar հաշիվ:
+Your username is XXX.: የተጠቃሚ ስምዎ “XXX” ነው።
+Your password is XXX.: የእርስዎ የይለፍ ቃል “XXX” ነው።
+Please visit XXX to log in and start using your account!: Խնդրում ենք այցելել «XXX» ՝ մուտք գործելու համար և սկսելու օգտագործել ձեր հաշիվը:
+You may change your password after logging in the first time.: ለመጀመሪያ ጊዜ ከገቡ በኋላ የይለፍ ቃልዎን መለወጥ ይችላሉ ፡፡
+If you received this email in error: Եթե ​​դուք սխալ եք ստացել այս էլ.փոստը և չեք գրանցվել WebCalendar հաշվում, կարող եք անտեսել այս ծանուցումը կամ պատասխանել կարճ գրությամբ
+Administrator: Ադմինիստրատոր
+Welcome: Բարի գալուստ
+New user via email.: Էլեկտրոնային փոստով նոր օգտվող:
+Registration: Գրանցում
+Welcome to WebCalendar: Բարի գալուստ WebCalendar
+Your email should arrive shortly.: ኢሜልዎ በቅርቡ መምጣት አለበት።
+Return to Login screen: Վերադառնալ Մուտքի էկրան
+Password (again): Գաղտնաբառ (կրկին):
+Your account information will be emailed to you.: የመለያዎ መረጃ በኢሜል ይላክልዎታል።
+Submit: Ներկայացնել
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Շարունակել
+(Your comments will be emailed to the other participants.): (Ձեր մեկնաբանությունները էլեկտրոնային փոստով կուղարկվեն մյուս մասնակիցներին):
+XXX has rejected an appointment.: XXX- ը մերժել է նշանակումը:
+Rejected by XXX.: XXX- ը մերժեց:
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Ավելացնել նոր հեռավոր օրացույց
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Այս միջոցառումը գաղտնի է:
+(Private): (Մասնավոր)
+(cont.): (շարունակություն)
+Approved: Հաստատված է
+Deleted: Նջված է
+Rejected: Մերժված է
+Waiting for approval: Սպասում է հաստատման
+Unknown: Անհայտ
+Invalid report id.: Հաշվետվության անվավեր ID:
+Click here to manage reports for the Public Access calendar.: Սեղմեք այստեղ ՝ Հանրային մուտքի օրացույցի հաշվետվությունները կառավարելու համար:
+Add new report: Ավելացնել նոր զեկույց
+Manage Reports: Կառավարեք հաշվետվությունները
+
+########################################
+# Page: search.php
+#
+Advanced Search: Ընդլայնված որոնում
+Search: Որոնում
+Keywords: Հիմնաբառեր
+Enter % for all entries: Մուտքագրեք% բոլոր գրառումների համար
+Include: Ներառում
+Filter by Date: Filտել ըստ Ամսաթվի
+All Dates: Բոլոր ամսաթվերը
+Past: Անցյալ
+Upcoming: Առաջիկա
+Range: Լեռնաշղթա
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: አንድ ወይም ከዚያ በላይ የፍለጋ ቁልፍ ቃላት ማስገባት አለብዎት።
+Search Results: Որոնման արդյունքները
+match found: համընկնումը գտնվել է
+matches found: գտնված համընկնումները
+No matches found: Համընկնումներ չեն գտնվել
+New Search: Նոր որոնում
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Ստորև բերված տեղեկատվությունը թվարկում է ձեր WebCalendar- ի տեղադրման հետ կապված հնարավոր խնդիրները, որոնք կարող են փոփոխվել `ձեր տեղադրումն ավելի անվտանգ դարձնելու համար:
+For questions about WebCalendar security see the forums: WebCalendar անվտանգության ցանկացած խնդրի վերաբերյալ հարցերի համար օգտագործեք GitHub.com կայքում տեղադրված WebCalendar ֆորումները.<br>XXX
+View your current PHP settings: Դիտեք ձեր ընթացիկ PHP կարգավորումները
+Security Issue: Անվտանգության խնդիր
+Status: Կարգավիճակ
+Default admin user password: Լռելյայն ադմինիստրատորի օգտագործողի գաղտնաբառը
+You should change the password of the default admin user.: የነባሪውን የአስተዳዳሪ ተጠቃሚ የይለፍ ቃል መለወጥ አለብዎት።
+File permissions XXX: Ֆայլի թույլտվություններ ՝ XXX
+item XXX should not be writable: Հետևյալ կետը չպետք է գրելի լինի.<br><tt> XXX</tt>
+File exists XXX: Ֆայլը գոյություն ունի. «XXX»
+Because you have email disabled, you should remove this file.: Քանի որ ձեր էլ.փոստը կասեցված է, դուք պետք է հեռացնեք այս ֆայլը:
+File location XXX: Ֆայլի գտնվելու վայրը. «XXX»
+remove XXX if not using: Եթե ​​չեք օգտագործում «XXX» ֆայլը, ապա այն պետք է ջնջեք: Կամ, գոնե, տեղափոխեք այն նոր գրացուցակում:
+System Settings XXX: Համակարգի կարգավորումներ. «XXX»
+consider enabling UAC: የተጠቃሚ መብቶችን ለማቀናበር የተጠቃሚ መዳረሻ ቁጥጥርን ማንቃት ሊያስቡበት ይፈልጉ ይሆናል።
+recommend approving new public events: Խորհուրդ ենք տալիս հաստատել հանրային միջոցառումների բոլոր հայտերը:
+recommend using CAPTCHA: CAPTCHA- ին խորհուրդ է տրվում պահպանել կրկին ավտոմատացված իրադարձությունների ներկայացումները:
+Database cache directory location: Շտեմարանի քեշի գրացուցակի գտնվելու վայրը
+db cache should be inaccessable: Տվյալների շտեմարանի քեշը պետք է լինի գրացուցակում, որը հնարավոր չէ մուտք գործել URL- ով:
+PHP Settings XXX: PHP կարգավորումներ. «XXX»
+recommend setting XXX Off: «XXX» - ի առաջարկվող պարամետրն անջատված է:
+recommend setting allow_url_fopen Off: «Allow_url_fopen» - ի առաջարկվող պարամետրն անջատված է, երբ հեռավոր օրացույցերը միացված չեն:
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Դիտեք մեկ այլ օգտվողի օրացույցը
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: ምንም ምድቦችን አላከሉም።
+Set Category: Սահմանել կատեգորիան
+Global Categories cannot be changed.: Համաշխարհային կատեգորիաները հնարավոր չէ փոխել:
+
+########################################
+# Page: upcoming.php
+#
+more: ավելին
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Հեռակա օրացույցներ
+denotes administrative user: նշանակում է վարչական օգտագործող
+Add New User: Ավելացնել նոր օգտվող
+
+########################################
+# Page: usersel.php
+#
+form: ձև
+Reset: Վերականգնել
+
+########################################
+# Page: views.php
+#
+Add New View: Ավելացնել նոր տեսք
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Անանուն տեսք
+Add View: Ավելացնել տեսք
+Edit View: Խմբագրել տեսքը
+View Name: Դիտել անունը
+View Type: Տեսքի տեսակը
+Day by Time: Օր առ ժամանակ
+Week (Users horizontal): Շաբաթ (օգտվողների հորիզոնական)
+Week by Time: Շաբաթ առ ժամանակ
+Week (Users vertical): Շաբաթ (օգտվողների ուղղահայաց)
+Week (Timebar): Շաբաթ (ժամանակի տող)
+Month (Timebar): Ամիս (ժամանակի տող)
+Month (side by side): Ամիս (կողք կողքի)
+Month (on same calendar): Ամիս (նույն օրացույցում)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: የእይታ ስም መለየት አለብዎት
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Այս տեսակետի համար օգտվողներ չկան:
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Թարմացրեք առաջադրանքի տոկոսը
+Completed: Ավարտված է
+Assistant mode: Օգնականի ռեժիմ
+Declined: Մերժվել է
+Needs-Action: Կարիքների գործողություն
+by: በ
+Percentage Complete: Տոկոսն ամբողջությամբ
+External User: Արտաքին օգտվող
+Update: Թարմացնել
+at: በ
+comments: አስተያየቶች
+Show: Ցուցադրում
+Hide: Թաքցնել
+Approve/Confirm entry: Հաստատել / հաստատել մուտքը
+Reject entry: Մերժել մուտքը
+Set category: Սահմանել կատեգորիա
+Add to My Calendar: Ավելացնել Իմ Օրացույցում
+Copy entry: Պատճենել մուտքը
+This will delete this entry for all users.: Սա կջնջի այս գրառումը բոլոր օգտվողների համար:
+Edit entry: Խմբագրել մուտքը
+Edit repeating entry for all dates: Խմբագրել կրկնվող գրառումը բոլոր ամսաթվերի համար
+Delete repeating event for all dates: Deleteնջեք կրկնող իրադարձությունը բոլոր ամսաթվերի համար
+Edit entry for this date: Խմբագրել մուտքը այս ամսաթվի համար
+Delete entry only for this date: Entryնջել մուտքը միայն այս ամսաթվի համար
+Delete entry from calendar of XXX: Deleteնջել մուտքը XXX օրացույցից
+This will delete the entry from your XXX calendar.: Սա կջնջի մուտքը ձեր XXX օրացույցից:
+boss: አለቃ
+This will delete the entry from your boss calendar.: Սա կջնջի գրառումը ձեր ղեկավարի օրացույցից:
+This will delete the entry from your calendar.: Սա կջնջի գրառումը ձեր օրացույցից:
+from your boss calendar: ձեր ղեկավարի օրացույցից
+Do you want to add this entry to your calendar?: Entryանկանու՞մ եք այս գրառումն ավելացնել ձեր օրացույցում:
+This will add the entry to your calendar.: Սա կավելացնի գրառումը ձեր օրացույցում:
+Email all participants: Ուղարկեք էլ. Փոստով բոլոր մասնակիցներին
+Hide activity log: Թաքցնել գործունեության գրանցամատյանը
+Show activity log: Activityույց տալ գործունեության գրանցամատյանը
+Export this entry to: Արտահանեք այս գրառումը
+Palm Pilot: Արմավենու օդաչու
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Կրկնակի սեղմեք դատարկ բջիջի վրա ՝ նոր գրառում ավելացնելու համար:
+
+########################################
+# Page: week_details.php
+#
+New Entry: Նոր մուտք
+cont.: ተቃዋሚ
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Մեկ այլ օգտվողի օրացույց
+Category Management: Կատեգորիայի կառավարում
+Day View: Օրվա դիտում
+Edit Event: Խմբագրել իրադարձությունը
+Month View: Ամսվա դիտում
+Common Trailer: Ընդհանուր թրեյլեր
+User Management: Օգտագործողի կառավարում
+Manage Views: Կառավարել դիտումները
+Week View: Շաբաթվա դիտում
+Year View: Տարվա տեսակ
+Invalid function id: Գործառույթի անվավեր ID
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Չհաջողվեց գտնել «settings.php» ֆայլը:<br>Խնդրում ենք պատճենել «settings.php.orig» - ը «settings.php» - ում և խմբագրել ձեր կայքի համար:
+Incomplete settings.php file...: «Settings.php» թերի ֆայլ ...
+Could not find XXX defined in...: Չհաջողվեց գտնել «XXX» - ը, որը սահմանված է ձեր «settings.php» ֆայլում:
+You must define XXX in: በ "settings.php" ፋይል ውስጥ "XXX" ን መግለፅ አለብዎት።
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Դեկտեմբեր
+Dec: Դեկտեմբեր
+LANGUAGE DEFINED: ԼԵAGEՈՒՆ Սահմանված է
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Տվյալների շտեմարանին միանալու սխալ. «XXX»:
+db_type not defined.: db_type- ը սահմանված չէ:
+invalid db_type XXX: անվավեր db_type "" XXX ":
+Cache cleared from previous SQL!: Քեշը մաքրված է նախորդ SQL- ից:
+Error executing query.: Հարցում կատարելու սխալ:
+Unfortunately, XXX is not implemented for YYY: XXXավոք, «XXX» - ը չի իրականացվում (YYY) համար:
+Unknown ODBC error.: Անհայտ ODBC սխալ:
+Error opening cache dir XXX.: Չհաջողվեց բացել քեշի «XXX» դիրքը:
+delete: ջնջել
+Cache error Could not XXX file YYY.: Քեշի սխալ. Հնարավոր չէ XXX ֆայլ «YYY»:
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Ճակատագրական սխալ
+Invalid data format for: Տվյալների անվավեր ձևաչափը համար
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Սխալ. Գործողության գրանցամատյանի համար տեսակը չի սահմանվել:
+This event is XXX.: Այս միջոցառումը XXX է:
+Conf.: Կոնֆ.
+exceeds limit of XXX events per day: գերազանցում է օրական XXX իրադարձության սահմանը
+on: վրա
+All Attendees: Բոլոր ներկաները
+Busy: Զբաղված
+Tentative: Փորձական
+Schedule an appointment for XXX.: Scամանակացույց նշանակեք XXX- ի համար. YYY:
+date_select: __dd__ __ ամիս__ __yyyy__
+Event approved: Միջոցառումը հաստատված է
+Journal approved: Ամսագիրը հաստատված է
+Task approved: Առաջադրանքը հաստատված է
+Attachment: Կցորդ
+Event created: Իրադարձությունը ստեղծվեց
+Journal created: Ստեղծվել է ամսագիր
+Task created: Առաջադրանքը ստեղծվեց
+Event deleted: Իրադարձությունը ջնջվեց
+Journal deleted: Ամսագիրը ջնջվել է
+Task deleted: Առաջադրանքը ջնջվեց
+New user via email (self registration): Նոր օգտվող էլ. Փոստով (ինքնագրանցում)
+New user (self registration): Նոր օգտվող (ինքնագրանցում)
+Notification sent: Ificationանուցումն ուղարկվել է
+Event rejected: Միջոցառումը մերժվեց
+Journal rejected: Ամսագիրը մերժվեց
+Task rejected: Առաջադրանքը մերժվեց
+Reminder sent: Հիշեցումն ուղարկված է
+Event updated: Միջոցառումը թարմացվել է
+Journal updated: Ամսագիրը թարմացվել է
+Task updated: Առաջադրանքը թարմացվել է
+Delete User: Deleteնջել օգտագործողին
+WK: =
+TASKS: ԽՆԴԻՐՆԵՐ
+Task_Title: Կոչում
+Due: Պատշաճ
+Task Name: Առաջադրանքի անվանումը
+Task Due Date: Առաջադրանքի կատարման ամսաթիվը
+You have XXX unapproved entries: Դուք ունեք XXX չհաստատված գրառում 
+Changes successfully saved: Փոփոխությունները հաջողությամբ պահվեցին
+Event: Իրադարձություն
+Action: Գործողություն
+Printer Friendly: Տպիչ
+Generate printer-friendly version: Ստեղծեք տպիչի համար հարմար տարբերակ
+after: በኋላ
+before: ከዚህ በፊት
+end: վերջ
+start: սկսել
+View this event: Դիտեք այս իրադարձությունը
+View this task: Դիտեք այս առաջադրանքը
+January: Հունվար
+February: Փետրվար
+March: Մարտ
+April: Ապրիլ
+May_: Մայիս
+June: Հունիս
+July: Հուլիս
+August: Օգոստոս
+September: Սեպտեմբեր
+October: Հոկտեմբեր
+November: Նոյեմբեր
+Jan: Janան
+Feb: Փետր
+Mar: Մար
+Apr: Ապրիլ
+May: Մայիս
+Jun: Հունիս
+Jul: Հուլիս
+Aug: Օգոստ
+Sep: Սեպտ
+Oct: Հոկտեմբեր
+Nov: Նոյ
+SU: ՍՈՒ
+MO: ՄՈ
+TU: ՄՄ
+WE: ՄԵՆՔ
+TH: Թ
+FR: =
+SA: Ս.Ա.
+unknown-month: անհայտ ամիս
+First Quarter Moon: Լուսնի առաջին եռամսյակ
+Full Moon: Լիալուսին
+Last Quarter Moon: Լուսնի վերջին եռամսյակ
+New Moon: Նորալուսին
+Error TIME_SLOTS undefined!: Սխալ. TIME_SLOTS չսահմանված է:
+The following error occurred: Հետևյալ սխալը տեղի է ունեցել
+You are not authorized.: Դուք լիազորված չեք
+Add N hours to: N ժամին ավելացնել
+Subtract N hours from: N ժամից հանել
+same as: նույնը, ինչ
+server time: սերվերի ժամանակը
+Cannot read timezone file XXX.: Հնարավոր չէ կարդալ ժամային գոտու ֆայլը ՝ XXX:
+Your current GMT offset is XXX hours.: የአሁኑ የእርስዎ GMT ማካካሻ XXX ሰዓታት ነው።
+Unauthorized: Չարտոնված
+Error approving event XXX.: Միջոցառումը հաստատելու սխալ. XXX:
+Error deleting event XXX.: Միջոցառումը ջնջելու սխալ. XXX:
+Error rejecting event XXX.: Միջոցառումը մերժելու սխալ. XXX:
+Sunday: Կիրակի
+Monday: Երկուշաբթի
+Tuesday: Երեքշաբթի
+Wednesday: Չորեքշաբթի
+Thursday: Հինգշաբթի
+Friday: Ուրբաթ
+Saturday: Շաբաթ օրը
+Sun: Արև
+Mon: Երկ
+Tue: Երք
+Wed: ամուսնացնել
+Thu: Հինգշաբթի
+Fri: Ուրբաթ
+Sat: Շաբաթ
+unknown-weekday: անհայտ-աշխատանքային օր
+Invalid referring URL: Ուղղորդող URL- ն անվավեր է
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Ցուցիչ
+Documentation: Փաստաթղթավորում
+Page: Էջ
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Իմ Օրացույցը
+Add New Entry: Ավելացնել նոր գրառում
+Add New Task: Ավելացնել նոր առաջադրանք
+Logout: Դուրս գալ
+Home: տուն
+Back to My Calendar: Վերադառնալ իմ օրացույց
+Go to: Գնալ
+Manage calendar of: Կառավարել օրացույցը
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Brննարկչի լեզուն չի գտնվել
+(not supported): (չի ապահովվում)
+Abkhazian: Աբխազական
+Acoli: Ակոլի
+Adangme: Ադանգմե
+Adyghe: Ադիգե
+Afar: Հեռու
+Afrihili: Աֆրիհիլի
+Afrikaans: Աֆրիկաանս
+Ainu: Աինու
+Akan: Ական
+Akkadian: Աքքադական
+Albanian: Ալբանացի
+Aleut: Ալեուտ
+Algonquian: Ալգոնկույան
+Altai (Southern): Ալթայ (հարավային)
+Amharic: Ամհարերեն
+Angika: Անգիկա
+Apache: Ապաչի
+Arabic (Algeria): Արաբերեն (Ալժիր)
+Arabic (Bahrain): Արաբերեն (Բահրեյն)
+Arabic (Egypt): Արաբերեն (Եգիպտոս)
+Arabic (Iraq): Արաբերեն (Իրաք)
+Arabic (Jordan): Արաբերեն (Հորդանան)
+Arabic (Kuwait): Արաբերեն (Քուվեյթ)
+Arabic (Lebanon): Արաբերեն (Լիբանան)
+Arabic (Libya): Արաբերեն (Լիբիա)
+Arabic (Morocco): Արաբերեն (Մարոկկո)
+Arabic (Oman): Արաբերեն (Օման)
+Arabic (Qatar): Արաբերեն (Քաթար)
+Arabic (Saudi Arabia): Արաբերեն (Սաուդյան Արաբիա)
+Arabic (Syria): Արաբերեն (Սիրիա)
+Arabic (Tunisia): Արաբերեն (Թունիս)
+Arabic (U.A.E.): Արաբերեն (U.A.E.)
+Arabic (Yemen): Արաբերեն (Եմեն)
+Arabic: Արաբերեն
+Aragonese: Արագոնյան
+Aramaic: Արամեերեն
+Arapaho: Արապահո
+Arawak: Արավակ
+Armenian: հայերեն
+Assamese: Ասամերեն
+Asturian: Աստուրերեն
+Athapascan: Աթապասկան
+Avaric: Ավարիական
+Avestan: Ավեստական
+Awadhi: Ավադհի
+Aymara: Այմարա
+Azerbaijani: Ադրբեջաներեն
+Balinese: Բալիներեն
+Baluchi: Բալուչի
+Bambara: Բամբարա
+Bamileke: Բամիլեկե
+Banda: Բանդա
+Basa: Բասա
+Bashkir: Բաշկիրերեն
+Basque: Բասկերեն
+Beja: Բեժա
+Belarusian: Բելառուսերեն
+Bemba: Բեմբա
+Bengali: Բենգալերեն
+Bhojpuri: Բհոջպուրի
+Bihari: Բիհարի
+Bikol: Բիկոլ
+Bislama: Բիսլամա
+Blackfoot: Սեւ ոտք
+Blin: Բլին
+Bliss: Երանություն
+Bosnian: Բոսնիացի
+Braj: Բրաջ
+Breton: Բրետոներեն
+Buginese: Բուգիներեն
+Bulgarian: Բուլղարերեն
+Buriat: Բուրիաթ
+Burmese: Բիրմայական
+Caddo: Կադո
+Catalan: Կատալաներեն
+Cebuano: Սեբուանո
+Chagatai: Չագատայ
+Chamorro: Չամորրո
+Chechen: Չեչեն
+Cherokee: Չերոկի
+Cheyenne: Չեյեն
+Chibcha: Չիբչա
+Chichewa: Չիչեվա
+Chinese (Hong Kong): Չինարեն (Հոնկոնգ)
+Chinese (PRC): Չինարեն (ՉCՀ)
+Chinese (Simplified/GB2312): Չինարեն (պարզեցված / GB2312) 
+Chinese (Singapore): Չինարեն (Սինգապուր)
+Chinese (Taiwan): Չինարեն (Թայվան)
+Chinese (Traditional/Big5): Չինարեն (ավանդական / մեծ 5)
+Chinook: Չինուկ
+Chipewyan: Չիպեվյան
+Choctaw: =
+Chuukese: Չուուկեզե
+Chuvash: Չուվաշերեն
+Coptic: Ղպտիական
+Cornish: Կորնու
+Corsican: Կորսիկացի
+Cree: Կրե
+Creek: Քրիք
+Croatian: Խորվաթերեն
+Czech: Չեխերեն
+Dakota: Դակոտա
+Danish: Դանիերեն
+Dargwa: Դարգվա
+Delaware: Դելավեր
+Dinka: Դինկա
+Dogri: Դոգրի
+Dogrib: Դոգրիբ
+Duala: Դուալա
+Dutch (Belgium): Հոլանդերեն (Բելգիա)
+Dutch: Հոլանդերեն
+Dyula: Դյուլա
+Dzongkha: Ձոնգխա
+Edo: Էդո
+Efik: Էֆիկ
+Ekajuk: Եկաջուկ
+Elamite: Էլամացի
+English (Australia): Անգլերեն (Ավստրալիա)
+English (Belize): Անգլերեն (Բելիզ)
+English (Canada): Անգլերեն (Կանադա)
+English (Ireland): Անգլերեն (Իռլանդիա)
+English (Jamaica): Անգլերեն (amaամայկա)
+English (New Zealand): Անգլերեն (Նոր Zeելանդիա)
+English (Philippines): Անգլերեն (Ֆիլիպիններ)
+English (South Africa): Անգլերեն (Հարավային Աֆրիկա)
+English (Trinidad & Tobago): Անգլերեն (Տրինիդադ և Տոբագո)
+English (United Kingdom): Անգլերեն (Միացյալ Թագավորություն)
+English (United States): Անգլերեն (Միացյալ Նահանգներ)
+English (Zimbabwe): Անգլերեն (imbիմբաբվե)
+English: Անգլերեն-ԱՄՆ
+Erzya: Էրզյա
+Esperanto: Էսպերանտո
+Estonian: Էստոնական
+Ewe: =
+Ewondo: Էվոնդո
+Fang: Ժանիք
+Fanti: Ֆանտի
+Faroese: Ֆարյորերեն
+Fijian: Ֆիջիացի
+Filipino: Ֆիլիպիներեն
+Finnish: Ֆիններեն
+Fon: Ֆոն
+French (Belgium): Ֆրանսերեն (Բելգիա)
+French (Canada): Ֆրանսերեն (Կանադա)
+French (France): Ֆրանսերեն (Ֆրանսիա)
+French (Luxembourg): Ֆրանսերեն (Լյուքսեմբուրգ)
+French (Monaco): Ֆրանսերեն (Մոնակո)
+French (Switzerland): Ֆրանսերեն (Շվեյցարիա)
+French: Ֆրանսերեն
+Frisian (Eastern): Ֆրիզերեն (արևելյան)
+Frisian (Northern): Ֆրիզերեն (հյուսիսային)
+Frisian (Western): Ֆրիզերեն (արևմտյան)
+Frisian: Ֆրիզերեն
+Friulian: Ֆրիուլյան
+Fulah: Ֆուլահ
+Ga: Գա
+Galibi: Գալիբի
+Galician: Գալիսիերեն
+Ganda: Գանդա
+Gayo: Գայո
+Gbaya: Գբայա
+Geez: Գիզ
+Georgian: Վրացական
+German (Austria): Գերմաներեն (Ավստրիա)
+German (Germany): Գերմաներեն (Գերմանիա)
+German (Liechtenstein): Գերմաներեն (Լիխտենշտեյն)
+German (Luxembourg): Գերմաներեն (Լյուքսեմբուրգ)
+German (Standard): Գերմաներեն (ստանդարտ)
+German (Switzerland): Գերմաներեն (Շվեյցարիա)
+German: Գերմանական
+Gilbertese: Գիլբերտեզ
+Gondi: Գոնդին
+Gorontalo: Գորոնտալո
+Gothic: Գոթական
+Grebo: Գրեբո
+Greek: Հունական
+Greenlandic: Գրենլանդերեն
+Guarani: Գուարանի
+Gujarati: Գուջարաթի
+Gwich&#39;in: Գվիչինը
+Haida: Հայդա
+Haitian (Creole): Հաիթի (կրեոլերեն)
+Haitian: Հաիթերեն
+Hausa: Հաուսա
+Hawaiian: Հավայան
+Hebrew: Եբրայերեն
+Herero: Հերերո
+Hiligaynon: Հիլիգան
+Hindi: Հինդի
+Hiri Motu: Հիրի Մոտու
+Hittite: Խեթական
+Hmong: Հմոնգ
+Holo (Taiwanese): Հոլո (թայվանական)
+Hungarian: Հունգարացի
+Hupa: Հուպա
+Iban: Իբան
+Icelandic: Իսլանդերեն
+Ido: Համաձայն եմ
+Igbo: Իգբո
+Iloko: Իլոկո
+Indonesian: Ինդոնեզերեն
+Ingush: Ինգուշ
+Inuktitut: Ինուկտիտուտ
+Inupiaq: =
+Iranian: Իրանական
+Irish (Gaelic): Իռլանդերեն (գելական)
+Irish: Իռլանդական
+Iroquoian: Իրոքուան
+Italian (Switzerland): Իտալերեն (Շվեյցարիա)
+Italian: Իտալերեն
+Japanese: Ճապոներեն
+Javanese: Ճավայերեն
+Judeo-Arabic: Հուդա-արաբերեն
+Judeo-Persian: Հուդա-պարսկական
+Kabardian: Կաբարդյան
+Kabyle: Կաբիլյան
+Kachin: Կաչին
+Kalaallisut: Կալալիսուտ
+Kalmyk: Կալմիկերեն
+Kamba: Կամբա
+Kannada: Կաննադա
+Kanuri: Կանուրի
+Kara-Kalpak: Կարա-Կալպակ
+Karachay-Balkar: Կարաչա-բալկարյան
+Karelian: Կարելեան
+Kashmiri: Քաշմիրերեն
+Kashubian: Քաշուբյան
+Kawi: Կաուի
+Kazakh: Ղազախերեն
+Khasi: Քասի
+Khmer (Central): Քմերերեն (կենտրոնական)
+Khmer: Քմերական
+Khotanese: Խոտանես
+Kikuyu: Կիկույու
+Kimbundu: Կիմբունդու
+Kinyarwanda: Քինյարվանդա
+Kirghiz: Ղրղզերեն
+Klingon: Կլինգոն
+Komi: Կոմի
+Kongo: Կոնգո
+Konkani: Կոնկանի
+Korean (Johab): Կորեերեն (Johab)
+Korean (North): Կորեերեն (հյուսիսային)
+Korean (South): Կորեերեն (հարավ)
+Korean: Կորեերեն
+Kosraean: Կոսրեյան
+Kpelle: Կպելե
+Kuanyama: Կուանյամա
+Kumyk: Կումիկ
+Kurdish: Քրդական
+Kutenai: Կուտենայ
+Kyrgyz: Ղրղզերեն
+Ladino: Լադինո
+Lahnda: Լանդա
+Lamba: Լամբա
+Lao: Լաո
+Latin: Լատիներեն
+Latvian: Լատվիերեն
+Lezghian: Լեզգեան
+Limburgan: Լիմբուրգան
+Lingala: Լինգալա
+Lithuanian: Լիտվերեն
+Lojban: Լոջբան
+Lozi: Լոզին
+Luba-Katanga: Լուբա-Կատանգա
+Luba-Lulua: Լուբա-Լուլուա
+Luiseno: Լուիզենո
+Lunda: Լունդա
+Luo: Լուո
+Lushai: Լուսայ
+Luxembourghish: Լյուքսեմբուրգերեն
+Macedonian: Մակեդոնական
+Madurese: Մադուրես
+Magahi: Մագահի
+Maithili: Մաիթիլի
+Makasar: Մակասար
+Malagasy: Մալագասերեն
+Malay: Մալայերեն
+Malayalam: Մալայալամերեն
+Maldivian: Մալդիվյան
+Maltese: Մալթերեն
+Manchu: Մանչու
+Mandar: Մանդար
+Mandingo: Մանդինգո
+Manipuri: Մանիպուրի
+Manx: Մանսերեն
+Maori: Մաորի
+Mapuche: Մապուչե
+Marathi: Մարաթի
+Mari: Մարի
+Marshallese: Մարշալցի
+Marwari: Մարվարի
+Masai: Մասայի
+Mayan: Մայա
+Mende: Մենդե
+Mi&#39;kmaq: Միքմաք
+Minangkabau: Մինանգկաբաու
+Mirandese: Միրանդեզ
+Mohawk: Մոհակ
+Moksha: Մոկշա
+Moldavian: Մոլդովական
+Mongo: Մոնգո
+Mongolian: Մոնղոլական
+Montenegrin: Չեռնոգորական
+Moroccan: Մարոկացի
+Mossi: Մոսսի
+Myanmar: Մյանմար
+Māori: Մաորի
+N&#39;Ko: Ն'Կո
+Nauru: Նաուրու
+Navajo: Նավահո
+Ndebele (North): Նդեբելե (հյուսիս)
+Ndebele (South): Նդեբելե (հարավ)
+Ndebele: Նդեբելե
+Ndonga: Նդոնգա
+Neapolitan: Նեապոլիտանական
+Nepali: Նեպալերեն
+Nias: Նիաս
+Niuean: Նիուէական
+Nogai: Նոգայ
+Norse: Նորվեգացի
+Norwegian (Bokmål): Նորվեգերեն (բոկկմալերեն)
+Norwegian (Nynorsk): Նորվեգերեն (նորվեգերեն)
+Norwegian: Նորվեգերեն
+Nyamwezi: Նյամվեզի
+Nyankole: Նյանկոլե
+Nyoro: Նյորո
+Nzima: Նզիմա
+Occitan: Օքսիտաներեն
+Odia: Օդիա
+Ojibwa: Օջիբվա
+Oriyia: Օրիյա
+Oromo: Օրոմո
+Osage: Օսաժ
+Ossetic: Օսերեն
+Pahlavi: Պահլավի
+Palauan: Պալաուան
+Pali: Պալի
+Pampanga: Պամպանգա
+Pangasinan: Պանգասինան
+Panjabi: Փանջաբերեն
+Papiamento: Պապիմաներեն
+Pashto: Փուշթու
+Pedi: Պեդի
+Persian (Farsi): Պարսկերեն (պարսկերեն)
+Persian (Iran): Պարսկերեն (Իրան)
+Persian: Պարսկերեն
+Phoenician: Փյունիկացի
+Pohnpeian: =
+Polish: Լեհերեն
+Portuguese: Պորտուգալերեն
+Portuguese/Brazil: Պորտուգալերեն / Բրազիլիա
+Punjabi (India): Փենջաբի (Հնդկաստան)
+Punjabi (Pakistan): Փենջաբի (Պակիստան)
+Punjabi: Փենջաբերեն
+Quechua: Քեչուա
+Rajasthani: Ռաջաստանին
+Rapanui: Ռապանուի
+Rarotongan: Ռարոտոնգան
+Rhaeto-Romanic: Ռետո-հռոմեական
+Romanian: Ռումիներեն
+Romansh: Ռոմանշերեն
+Romany: Ռումինական
+Rundi: Ռունդի
+Russian (Moldavia: Ռուսերեն (Մոլդավիա)
+Russian (Republic of Moldova): Ռուսաստան (Մոլդովայի Հանրապետություն)
+Russian: Ռուսերեն
+Sami (Inari): Սամի (ինարի)
+Sami (Lappish): Սամի (լապշերեն)
+Sami (Lule): Սամի (լյուլե)
+Sami (Northern): Սամի (հյուսիսային)
+Sami (Skolt): Սամի (սկոլտ)
+Sami (Southern): Սամի (հարավային)
+Sami: Սամի
+Samoan: Սամոական
+Samoli: Սամոլի
+Sandawe: Սանդավե
+Sango: Սանգո
+Sanskrit: Սանսկրիտ
+Santali: Սանտալի
+Sardinian: Սարդիներեն
+Sasak: Սասակ
+Scots (Gaelic): Շոտլանդական (գելական)
+Selkup: Սելկուպ
+Serbian (Upper): Սերբերեն (վերին)
+Serbian: Սերբերեն
+Serer: Սերեր
+Sesotho: Սեսոտո
+Shan: Շան
+Shona: Շոնա
+Sichuan Yi: Սիչուան Յի
+Sicilian: Սիցիլիական
+Sindhi: Սինդհի
+Sinhala: Սինհալերեն
+Slavic: Սլավոնական
+Slovak: Սլովակերեն
+Slovenian: Սլովեներեն
+Sogdian: Սողդեան
+Somali: Սոմալիերեն
+Somani: Սոմանական
+Songhai: Սոնգհայ
+Soninke: Սոնինկե
+Sorbian (Lower): Սորբերեն (ստորին)
+Sorbian (Upper): Սորբերեն (վերին)
+Sorbian: Սորբերեն
+Sotho: Սոտո
+Spanish (Argentina): Իսպաներեն (Արգենտինա)
+Spanish (Bolivia): Իսպաներեն (Բոլիվիա)
+Spanish (Chile): Իսպաներեն (Չիլի)
+Spanish (Colombia): Իսպաներեն (Կոլումբիա)
+Spanish (Costa Rica): Իսպաներեն (Կոստա Ռիկա)
+Spanish (Dominican Republic): Իսպաներեն (Դոմինիկյան Հանրապետություն)
+Spanish (Ecuador): Իսպաներեն (Էկվադոր)
+Spanish (El Salvador): Իսպաներեն (Սալվադոր)
+Spanish (Guatemala): Իսպաներեն (Գվատեմալա)
+Spanish (Honduras): Իսպաներեն (Հոնդուրաս)
+Spanish (Mexico): Իսպաներեն (Մեքսիկա)
+Spanish (Nicaragua): Իսպաներեն (Նիկարագուա)
+Spanish (Panama): Իսպաներեն (Պանամա)
+Spanish (Paraguay): Իսպաներեն (Պարագվայ)
+Spanish (Peru): Իսպաներեն (Պերու)
+Spanish (Puerto Rico): Իսպաներեն (Պուերտո Ռիկո)
+Spanish (Spain): Իսպաներեն (Իսպանիա)
+Spanish (Uruguay): Իսպաներեն (Ուրուգվայ)
+Spanish (Venezuela): Իսպաներեն (Վենեսուելա)
+Spanish: Իսպաներեն
+Sranan Tongo: Սրանան տոնգո
+Sukuma: Սուկումա
+Sumerian: Շումերերեն
+Sundanese: Սունդաներեն
+Susu: Սուսու
+Sutu: Սուտու
+Swahili: Սուահիլի
+Swati: Սվատի
+Swedish (Finland): Շվեդերեն (Ֆինլանդիա)
+Swedish (Sweden): Շվեդերեն (Շվեդիա)
+Swedish: Շվեդերեն
+Syriac: Սիրիական
+Tagalog: Տագալոգերեն
+Tahitian: Թաիթերեն
+Tai: Թայի
+Taiwan: Թայվան
+Tajik: Տաջիկ
+Tamashek: Թամաշեկ
+Tamil: Թամիլերեն
+Tatar: Թաթարերեն
+Telugu: Թելուգու
+Tereno: Տերենո
+Tetum: Տետում
+Thai: Թայերեն
+Tibetan: Տիբեթական
+Tigre: Տիգր
+Tigrinya: Տիգրինյա
+Timne: Թիմնե
+Tlingit: Թլինգիտ
+Tok Pisin: Տոկ Պիսին
+Tokelau: Տոկելաու
+Tonga (Nytmhasa): Տոնգա (նիտմհասա)
+Tonga (Tonga Islands): Տոնգա (Տոնգայի կղզիներ)
+Tonga: Թոնգա
+Tsimshian: Imիմշեան
+Tsonga: Ցոնգա
+Tswana: Ցվանա
+Tumbuka: Թումբուկա
+Turkish: Թուրքերեն
+Turkmen: Թուրքմեն
+Tuvinian: Թուվինյան
+Twi: Թվի
+Udmurt: Ուդմուրտ
+Ugaritic: Ուգարիտային
+Ukrainian: Ուկրաինացի
+Umbundu: Ումբունդու
+Urdu: Ուրդու
+Uyghur: Ույղուր
+Uzbek: Ուզբեկ
+Vai: Վայ
+Venda: Վենդա
+Vietnamese: Վիետնամերեն
+Volapük: Վոլապոլիկ
+Votic: Վոտիկ
+Wakashan: Վակաշան
+Walloon: Վալոնյան
+Waray: Վեյրա
+Washo: Վաշո
+Welsh: Ուելսերեն
+Wolaitta: Վոլայտա
+Wolof: Վոլոֆ
+Xhosa: Քսոսա
+Yakut: Յակուտ
+Yao: Յաո
+Yapese: Յապեզե
+Yiddish: Իդիշ
+Yorùbá: Յորիբա
+Yupik: Յուպիկ
+Zande: Զանդե
+Zapotec: Otապոտեկ
+Zaza: Զազա
+Zenaga: Enaենագա
+Zhuang: Huուանգ
+Zulu: Զուլուսերեն
+Browser-defined: Owsննարկչի կողմից սահմանված
+event: իրադարձություն
+journal: օրագիր
+0: =
+1: =
+2: =
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Օգտատիրոջ անվավեր մուտք
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: սխալ գաղտնաբառ
+no such user: այդպիսի օգտվող չկա
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Հաշիվն անջատված է
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Ընդմիջում
+Months: Ամիսներ
+Month Days: Ամսվա օրեր
+Days: Օրեր
+Weeks: Շաբաթներ
+Position: Դիրք
+Until: Մինչև
+Count: Հաշվել
+Inclusion Dates: Ներառման ամսաթվերը
+Exclusion Dates: Բացառման ամսաթվերը
+Event Imported: Իրադարձությունը ներմուծված է
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: ባይት
+kb: կբ
+Mb: Մբ
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Անուցում
+authenticate: የ SMTP ስህተት ማረጋገጥ አልተቻለም
+connect_host: የ SMTP ስህተት ከ SMTP አስተናጋጅ ጋር መገናኘት አልተቻለም
+data_not_accepted: SMTP սխալ. Տվյալները չեն ընդունվում
+encoding: Անհայտ կոդավորում.
+execute: Հնարավոր չէ կատարել
+file_access: Հնարավոր չէ մուտք գործել ֆայլ.
+file_open: Ֆայլի սխալ Չհաջողվեց բացել ֆայլը.
+from_failed: Հասցեից հետևյալը ձախողվեց.
+instantiate: Չհաջողվեց արագացնել փոստային գործառույթը
+mailer_not_supported: փոստատարը չի աջակցվում
+provide_address: Դուք պետք է տրամադրեք առնվազն մեկ ստացողի էլ. Հասցե:
+recipients_failed: SMTP սխալ. Հետևյալ ստացողները ձախողվեցին.
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Մուտքագրեք գրաֆիկական պատկերներով նիշերը
+Enter the correct letters and numbers...: Պատկերից ճիշտ տառերն ու թվերը մուտքագրեք տեքստի տուփ: Այս փոքր թեստը ծառայում է որպես մուտքի սահմանափակում չարամիտ բոտերի դեմ: Պարզապես վերաբեռնեք էջը, եթե այս գրաֆիկան շատ դժվար է ընթերցել
+Challenge/Response: Մարտահրավեր / պատասխան
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Փոխե՞լ այս գրառման ամսաթիվը և ժամանակը:
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Դուք չեք մուտքագրել համառոտ նկարագրություն
+time prior to work hours...: աշխատանքային ժամերին նախորդող ժամանակը ...
+Invalid Event Date: Իրադարձության անվավեր ամսաթիվը
+Please add a participant: Խնդրում ենք ավելացնել մասնակից
+Invalid Date: Անվավեր ամսաթիվ
+You have not entered a valid time of day: Դուք օրվա ճիշտ ժամանակ չեք մուտքագրել:
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Օրացույցի ID- ն չի կարող դատարկ լինել:
+First and last names cannot both be blank.: Անունը և ազգանունը երկուսն էլ չեն կարող դատարկ լինել:
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Անվավեր գույն
+Color format should be RRGGBB.: Գույնի ձևաչափը պետք է լինի # RRGGBB:
+URL cannot be blank.: URL- ը չի կարող դատարկ լինել:
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Նիշքի տեսակը չի համապատասխանում Ներմուծման ձևաչափին
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Փաստաթղթի ֆոնի համար անվավեր գույն:
+Invalid color for document title.: Փաստաթղթի վերնագրի համար անվավեր գույն:
+Invalid color for table cell background.: Սեղանի բջջային ֆոնի համար անվավեր գույն է:
+Invalid color for table cell background for today.: Սեղանի բջիջների ֆոնի համար անվավեր գույնն այսօրվա համար:
+Invalid work hours.: Անվավեր աշխատանքային ժամեր:
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Սերվերի URL- ն պետք է ավարտվի կտրվածքով (/):
+Invalid color for table grid.: Սեղանի ցանցի համար անվավեր գույն:
+Invalid color for event popup background.: Իրադարձության ելնող ֆոնի համար անվավեր գույն է:
+Invalid color for event popup text.: Իրադարձության ելնող տեքստի անվավեր գույն:
+Invalid color for table header text.: Սեղանի վերնագրի տեքստի անվավեր գույն:
+Invalid color for table header background.: Սեղանի վերնագրի ֆոնի համար անվավեր գույն:
+Server URL is required.: Պահանջվում է սերվերի URL:
+Invalid Color: Անվավեր գույն
+Database Name: Շտեմարանի անվանումը
+Full Path (no backslashes): Լրիվ ուղի (հետադարձ գծի բացակայություն)
+The password contains illegal characters.: Գաղտնաբառը պարունակում է անօրինական նիշեր:
+Error you must specify a Single-User Login: Սխալ. Դուք պետք է նշեք մեկ օգտագործողի մուտք
+Could not find XXX.: Հնարավոր չէ գտնել XXX- ը:
+Could not find XXX in DOM.: Հնարավոր չէ գտնել XXX- ը DOM- ում:
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Այս շաբաթ
+This Month: Այս ամիս
+This Year: Այս տարի
+Exit: Ելք
+Add New Event: Ավելացնել նոր իրադարձություն
+Delete Entries: Deleteնջել գրառումները
+My Views: Իմ տեսակետները
+Manage Calendar of: Կառավարեք Օրացույցը
+My Reports: Իմ հաշվետվությունները
+My Profile: Իմ էջը
+Public Calendar: Հանրային օրացույց
+Unapproved Events: Չհաստատված իրադարձություններ
+User Manager: Օգտագործողի կառավարիչ
+Help Contents: Օգնության բովանդակություն
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Տվյալների բազայի քեշի տեղեկատու
+Create New: Ստեղծել նոր
+Failure Reason: Ձախողման պատճառը.
+You must manually create database: እራስዎ የውሂብ ጎታ መፍጠር አለብዎት።
+Single-User: Մեկ օգտագործող
+Test Settings: Թեստի կարգավորումներ
+Timezone Conversion Successful: Zամանակային գոտու փոխարկումը հաջող է
+WebCalendar Installation Wizard Step XXX: WebCalendar- ի տեղադրման հրաշագործ Քայլ XXX
+Password Accepted: Գաղտնաբառն ընդունված է
+Successful Login: Հաջող մուտք
+Password Incorrect: Գաղտնաբառը սխալ է
+Invalid Login: Անվավեր Մուտք
+Display Errors: Displayուցադրման սխալներ
+File Uploads: Ֆայլի վերբեռնումներ
+Allow URL fopen: Թույլատրել URL- ի բացումը (պարտադիր է միայն այն դեպքում, եթե օգտագործվում են հեռակա օրացույցներ)
+Safe Mode: Անվտանգ ռեժիմ
+Safe Mode Allowed Vars: Անվտանգ ռեժիմ թույլատրված Վարսերը (TZ- ն անհրաժեշտ է միայն այն դեպքում, երբ Անվտանգ ռեժիմը միացված է)
+GD: GD (անհրաժեշտ է գրադիենտ պատկերի ֆոնների համար)
+Passwords do not match!: Գաղտնաբառերը չեն համապատասխանում!
+Unable to write password to settings.php file: Հնարավոր չէ գաղտնաբառ գրել «settings.php» ֆայլում:
+Password Updated: Գաղտնաբառը թարմացվել է
+Password has been set: Գաղտնաբառը դրված է
+Connection Successful...: Կապումը հաջող է Տեղադրումը շարունակելու համար անցեք հաջորդ էջ:
+Correct your entries or click the Create New...: Ուղղեք ձեր գրառումները կամ կտտացրեք  Ստեղծել նոր կոճակին ՝ տեղադրումը շարունակելու համար:
+Correct your entries and try again.: Ուղղեք ձեր գրառումները և կրկին փորձեք:
+XXX does not exist: XXX գոյություն չունի
+XXX is not writable: XXX- ը գրելի չէ
+Error Converting Timezone: Erամանակային գոտին փոխակերպելու սխալ
+Error Unable to write to file XXX.: Սխալ Անհնար է գրել XXX ֆայլում:
+Please change the file permissions of this file.: Խնդրում ենք փոխել այս ֆայլի ֆայլի թույլտվությունները:
+Please change includes dir permission: Փոխեք ձեր «ներառում» գրացուցակի ֆայլի թույլտվությունները `այլ օգտվողների կողմից գրելու թույլտվության համար:
+Your settings have been saved.: የእርስዎ ቅንብሮች ተቀምጠዋል
+OFF: Անջատված է
+ON: ՎՐԱ
+WebCalendar Setup Wizard: =
+This installation wizard will guide you...: Տեղադրման այս կախարդը կօգնի ձեզ կարգավորել հիմնական WebCalendar- ի տեղադրումը:<br>Օգնության և խնդիրների լուծման համար տես ՝<br>
+System Administrators Guide: Համակարգի ադմինիստրատորի ուղեցույց
+Frequently Asked Questions: Հաճախակի տրվող հարցեր
+FAQ: ՀՏՀ
+Troubleshooting: Խնդիրների լուծում
+Getting Help: Օգնություն ստանալու
+Upgrading Guide: Ուղեցույցի արդիականացում
+User Supported Wiki: Օգտատիրոջ կողմից աջակցվող Վիքի
+PHP Version Check: PHP տարբերակի ստուգում
+Check to see if PHP 7.1.0 or greater is installed.: Ստուգեք ՝ արդյոք տեղադրված է PHP 7.1.0 կամ ավելի բարձր տարբերակ:
+PHP version: PHP տարբերակ
+PHP Settings: PHP կարգավորումներ
+Detailed PHP Info: PHP- ի մանրամասն տեղեկատվություն
+settings.php Status: "settings.php" Կարգավիճակ
+Session Check: Նիստի ստուգում
+To test the proper operation of sessions...: Նիստերի պատշաճ աշխատանքը փորձարկելու համար վերաբեռնեք այս էջը: Դուք պետք է ամեն անգամ տեսնեք նստաշրջանի հաշվիչի ավելացումը:
+SESSION COUNTER: ՆՍՏԱԳՈՒՅ
+The file permissions of settings.php are set...: «Settings.php» - ի ֆայլի թույլտվությունները դրված են այնպես, որ տեղադրողը չունենա այն փոփոխելու թույլտվություն: Շարունակելու համար փոխեք հետևյալ ֆայլի ֆայլի թույլտվությունները
+The file permissions of the includes directory are set...: Ներառված գրացուցակի ֆայլի թույլտվությունները դրված են այնպես, որ տեղադրողը չունի նոր ֆայլ ստեղծելու թույլտվություն: Շարունակելու համար փոխեք հետևյալ գրացուցակի թույլտվությունները
+Your settings.php file appears to be valid.: የእርስዎ “settings.php” ፋይል ልክ የሆነ ይመስላል።
+Configuration Wizard Password: Կազմաձեւի կախարդի գաղտնաբառ
+Create Settings File Password: Ստեղծեք Պարամետրեր Ֆայլի գաղտնաբառ
+db setup directions...: Այս բաժնում դուք կստեղծեք և ստուգեք կապը ձեր տվյալների բազայի սերվերի հետ: Մատուցվող հաշվի տեղեկատվությունը պետք է ունենա FULL թույլտվություններ տվյալների շտեմարաններ, աղյուսակներ և օգտվողներ ստեղծելու համար: Եթե ​​դա անհնար է, կամ ձեր տվյալների շտեմարանի հասանելիությունը սահմանափակ է, դուք ստիպված կլինեք ձեռքով կարգավորել ձեր տվյալների բազան:
+Database Status: Շտեմարանի կարգավիճակ
+Supported databases for your PHP installation: Աջակցվող շտեմարաններ ձեր PHP- ի տեղադրման համար
+Your current database settings are able to access the database.: የእርስዎ የአሁኑ የመረጃ ቋት (ዳታቤዝ) ቅንብሮች የመረጃ ቋቱን (ዳታቤዝ) ማግኘት ይችላሉ
+Please Test Settings: Խնդրում ենք ստուգել կարգավորումները
+Your current database settings are not able...: የእርስዎ የአሁኑ የመረጃ ቋት (ዳታቤዝ) ቅንብሮች የመረጃ ቋቱን (ዳታቤዙ) መድረስ አይችሉም ወይም ገና አልተፈተኑም ፡፡
+Database Settings: Շտեմարանի կարգավորումներ
+Database Type: Շտեմարանի տեսակը
+Server: Սերվեր
+Connection Persistence: Միացման համառություն
+All your database tables appear to be up...: Ձեր տվյալների շտեմարանի բոլոր աղյուսակները կարծես թե արդիական են: Կարող եք անցնել հաջորդ էջ և ավարտել ձեր WebCalendar- ի կարգավորումը:
+This appears to be a new installation...: Սա, կարծես, նոր տեղադրում է: Եթե ​​դա ճիշտ չէ, վերադարձեք նախորդ էջ և ուղղեք ձեր կարգավորումները:
+This appears to be an upgrade...: Սա, կարծես, արդիականացում է&nbsp;XXX&nbsp;տարիքից&nbsp;
+The database requires some data input...: Տվյալների բազան պահանջում է որոշակի տվյալների մուտքագրում Սեղմեք թարմացնել շտեմարանը ՝ արդիականացումն ավարտելու համար:
+In this section we will perform...: Այս բաժնում մենք կկատարենք փոփոխությունները ՝ ձեր տվյալների բազան պահանջվող մակարդակի հասցնելու համար: Եթե ​​դուք օգտագործում եք լիովին աջակցվող շտեմարան, այս քայլը կկատարվի ինքնաբերաբար ձեզ համար: Եթե ​​ոչ, անհրաժեշտ SQL- ն կարող է ցուցադրվել, և դուք պետք է կարողանաք այն կտրել և տեղադրել այն ձեր տվյալների բազայի սերվերի հարցման պատուհանում:
+No database actions are required.: Տվյալների շտեմարանի գործողություններ չեն պահանջվում:
+The following database actions are required: Պահանջվում են տվյալների շտեմարանի հետևյալ գործողությունները
+ODBC Underlying Database: ODBC հիմքում ընկած տվյալների շտեմարան.
+Automatic installation not supported: Ավտոմատ տեղադրումը լիովին չի կատարվել ձեր տվյալների բազայի տեսակի համար: Դուք ստիպված կլինեք ձեռքով ստեղծել անհրաժեշտ աղյուսակները `օգտագործելով մատակարարված SQL- ը: Շարունակելու համար սեղմեք  Displayուցադրել SQL : Կտրեք և տեղադրեք ձեր տվյալների բազայի հարցման պատուհանում:
+This may take several minutes to complete: Դա կարող է տևել մի քանի րոպե:
+Install Database: Տեղադրեք շտեմարանը
+Update Database: Թարմացնել տվյալների շտեմարանը
+Display Required SQL: Displayուցադրել պահանջվող SQL
+Return to previous page after processing SQL.: Այս SQL- ը ձեռքով մշակելուց հետո դուք պետք է վերադառնաք նախորդ էջ և կրկին փորձեք ձեր տվյալների բազան, որպեսզի սցենարը կարողանա հայտնաբերել փոփոխությունները:
+This is the final step in setting up your WebCalendar Installation.: Սա ձեր WebCalendar- ի տեղադրման կարգավորման վերջին քայլն է:
+Timezone Conversion: Zամանակային գոտու փոխարկում
+It appears that you have NOT converted...: Պարզվում է, որ Դուք ՉԵՔ վերափոխել ձեր առկա WebCalendar իրադարձության տվյալները GMT- ի: Եթե ​​ունեք, կարող եք անտեսել այս ծանուցումը և չշարունակել փոխարկումը: Եթե ​​սա նոր տեղադրում է, կարող եք նաև անտեսել այս ծանուցումը:
+Convert Data to GMT: Տվյալները փոխարկել GMT- ի
+Application Settings: Applicationրագրի կարգավորումներ
+HTTP-based authentication was not detected...: HTTP- ի վրա հիմնված իսկությունը չի հայտնաբերվել: Ձեզ հարկավոր է վերակազմակերպել ձեր վեբ սերվերը, եթե ցանկանում եք ներքևում գտնվող «Օգտագործողի վավերացման» ընտրություններից ընտրել «Վեբ սերվեր»:
+HTTP-based authentication was detected...: Հայտնաբերվել է HTTP- ի վրա հիմնված նույնականացում: Օգտագործողի վավերացումը կարգավորվում է ձեր վեբ սերվերի կողմից: Ստորև պետք է ընտրեք «Վեբ սերվեր» «Օգտագործողի վավերացման» ընտրությունների ցուցակից:
+Create Default Admin Account: Ստեղծեք կանխադրված ադմինիստրատորի հաշիվ
+(Admin Account Not Found): (Վարչի հաշիվը չի գտնվել)
+User Authentication: Օգտագործողի նույնականացում
+Web-based via WebCalendar (default): Վեբ-օրացույցի միջոցով հիմնված ցանց (նախնական)
+Web Server (not detected): Վեբ սերվեր (չի հայտնաբերվել)
+Web Server (detected): Վեբ սերվեր (հայտնաբերված)
+None (Single-User): Ոչ մեկը (մեկ օգտագործող)
+Read-Only: Միայն կարդալու համար
+Environment: Շրջակա միջավայր
+Production: Արտադրություն
+Development: Զարգացում
+Save Settings: Պահել կարգավորումները
+Launch WebCalendar: Գործարկել WebCalendar- ը
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: «XXX» աղյուսակը թարմացնելիս սխալ է.
+Conversion Successful: Փոխակերպումը հաջող է
+Perl script required: WebCalendar- ի ձեր նախորդ տարբերակը պահանջում է գործարկել PERL սկրիպտ ՝ ձեր տվյալները փոխելու համար: Խնդրում ենք գործարկել /tools/upgrade_to_0.9.7.pl, այնուհետև վերադառնալ այս էջը ՝ շարունակելու համար:
+previous version requires updating several tables: WebCalendar- ի ձեր նախորդ տարբերակը պահանջում է թարմացնել տվյալների բազայի մի քանի աղյուսակներ:
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: ՆԱԽԱՊԱՏՐԱՍՏՈՒՄ ՉԿԱ
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Տվյալների շտեմարանին միանալու սխալ
+Include Path: Ներառեք ուղին
+Deleting events for: Իրադարձությունների ջնջում
+Importing events for: Իրադարձությունների ներմուծում ՝
+No data returned from: Այստեղից ոչ մի տվյալ չի վերադարձվել
+for non-user calendar: ոչ օգտագործողի օրացույցի համար
+No Remote Calendars found: Հեռակա օրացույցներ չեն գտնվել
+Remote Calendars not enabled: Հեռակա օրացույցերը միացված չեն
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: የክስተት መታወቂያ ማግኘት አልቻለም
+could not find event id XXX in database.: በክስተት ውስጥ የክስተት መታወቂያ XXX ማግኘት አልቻለም።
+task: առաջադրանք
+This is a reminder for the XXX detailed below.: Ստորև մանրամասն ներկայացված հիշեցումը XXX- ի համար:
+Pecentage Complete: Pententage Complete
+Reminder: Հիշեցում
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Չաջակցվող գործողություն ՝ XXX:
+No event id specified.: Նշված չէ որևէ իրադարձության ID:
+Not authorized (not admin).: Լիազորված չէ (ոչ ադմինիստրատոր):
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: YYY ամսաթվից մինչև ZZZ ամսաթվից սկսած իրադարձությունների ստուգում:
+Found XXX events in time range.: Գտնվել է XXX իրադարձություն ժամանակի սահմաններում:
+Event id=XXX YYY at ZZZ on AAA.: Միջոցառման id = XXX «YYY» ZZZ- ում ՝ AAA- ով:
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: XXX օգտվողին թույլ տալ դիտել այլ օգտվողի օրացույցը:
+Error Email reminders disabled for user XXX.: Սխալ. Էլփոստի հիշեցումներն անջատված են «XXX» օգտվողի համար:
+Number of site_extras XXX.: Կայքի_էքստրաների քանակը ՝ XXX:
+Reminder set for event.: Հիշեցումը սահմանվել է միջոցառման համար:
+Mins Before XXX.: Նախկինում `XXX:
+Event time is XXX.: Իրադարձության ժամանակը ՝ XXX:
+Remind time is XXX.: Հիշեցման ժամանակը ՝ XXX:
+Reminders for user XXX, login YYY.: Հիշեցումներ «XXX» օգտվողի համար, մուտք գործեք «YYY»:
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: «XXX» օգտվողի համար անթույլատրելի է:
+Event id=XXX YYY already sent.: Իրադարձության id = XXX «YYY» - ն արդեն ուղարկված է:
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Անհատականացված ռեժիմի համար մուտքի անհրաժեշտություն չկա:
+No login required for HTTP authentication.: HTTP վավերացման համար մուտքի անհրաժեշտություն չկա:
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Մուտք գործելու անվավեր նիշեր:
+Username XXX does not exist.: Մականուն «XXX» գոյություն չունի:
+You cannot remove admin rights from yourself!: Դուք չեք կարող ինքներդ հեռացնել ադմինիստրատորի իրավունքները:
+Unknown error saving user: Օգտատիրոջը փրկելու անհայտ սխալ:
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Մասնակիցներ չեն գտնվել միջոցառման ID- ի համար ՝ XXX:
+Db error Could not find event id XXX.: Db սխալ. Չհաջողվեց գտնել միջոցառման ID XXX:
+Error Could not find event id XXX in database.: Սխալ. Տվյալների շտեմարանում չի հաջողվել գտնել XXX իրադարձության ID- ն:

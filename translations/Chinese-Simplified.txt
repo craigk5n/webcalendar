@@ -1,0 +1,2388 @@
+# Chinese (Simplified) zh
+# GB2312
+#
+#格式包含一个可选的标头：
+#
+#翻译人：您的姓名和电子邮件
+#最后更新：翻译日期
+#（包括开头的“#”和以前的翻译人员所做的任何评论。
+#FIRST空行结束这些标题注释。）
+#
+#后跟所需数量：
+#
+#英语短语：翻译
+#（一行）。不带前导“#”。
+#“英文词组：”（包括冒号“：”）由
+#WebCalendar开发人员。您的职责就是“翻译”。）
+#
+#tools目录包含两个perl脚本来帮助您：
+#  -check_translation.pl
+#指示是否已成功翻译所有文本。
+#  -update_translation.pl
+#将解析程序文件以查找所有翻译（'phrase'）和
+#工具提示（'phrase'）。它将根据页面排列短语
+#（文件）包含第一次出现。 （可选）它可以标记
+#个尚未通过放置翻译的词组
+#  << MISSING >>
+# 词组上方的#号。而且，如果该短语是缩写，
+#它将在该短语下方的行中包含完整的英文文本。
+#
+#注意：我正在尝试减少文件的总大小。如果“翻译”
+#个单词/词组在您的语言和英语中是相同的，只需使用“ =”符号即可。
+#
+#注意：您会注意到下面的“ May_”条目。有一个原因。
+#将“ May_”翻译成完整的月份名称，将“ May”翻译成
+#通常是三个字母，一个月的缩写（例如“ Oct”表示“ October”）。
+#
+# 我为此使用了Google翻译。
+# 直到以母语为母语的人可以验证为止。
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: __mm __ / __ dd __ / __ yyyy__
+__month__ __dd__: __月__ __dd__
+__month__ __dd__, __yyyy__: __month__ __dd__，__yyyy__
+__month__ __yyyy__: __月__ __yyyy__
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: 时区转换
+version XXX: XXX版本
+WebCalendar is a PHP application used...: WebCalendar文档
+Credits: 学分
+About: 关于
+OK: 好的
+
+########################################
+# Page: access.php
+#
+Database error XXX.: 数据库错误：XXX。
+DEFAULT CONFIGURATION: 默认配置
+Go: 去
+Save: 救
+Undo: 未经批准的公共活动
+Public Access: 公共访问
+Admin: 行政
+User Access Control: 使用结束日期
+Allow Access to Other Users Calendar: 允许访问其他用户的日历
+Grant This User Access to My Calendar: 授予该用户访问我的日历的权限
+Type: 周二
+Calendar: 日历
+View Event: 文达
+View: 查看此活动
+Edit: 编辑
+Approve/Reject: 批准/拒绝
+Events: 大事记
+Tasks: 任务被拒绝
+Journals: 期刊
+Can Invite: 可以邀请
+Can Email: 可以电邮
+Can See Time Only: 只能看到时间
+Assistant: 助手
+Select All: 全选
+Clear All: 全部清除
+Public: 上市
+Confidential: 机密的
+Private: 私人的
+
+########################################
+# Page: activity_log.php
+#
+Next: 下一个
+Previous: 以前的
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: 您的日历上已经有活动XXX。
+Invalid entry id XXX.: 无效的输入ID：“ XXX”。
+a XXX event may not be added to your calendar: 这是XXX个事件，可能不会添加到您的日历中。
+confidential: 机密的
+private: 私人的
+Error adding event XXX.: 添加事件“ XXX”时出错。
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: 无效的设置名称“ XXX”。
+Select: 选择
+Day: 天
+Week: 星期
+Month: 月
+Year: 年
+Bottom: 底部
+Top: 要测试会话的正确操作，请重新加载此页面。您应该每次看到会话计数器增加。
+Anyone: 任何人
+Participant: 参加者
+Settings: 设定值
+Groups: 团体
+NonUser Calendars: 非用户日历
+Other: 其他
+Email: 电子邮件
+Colors: 颜色
+Document background: 文件背景
+Document title: 文件名
+Document text: 文件文字
+My event text: 我的活动文字
+Table grid color: 其他月份的表格单元格背景
+Table header background: 周末的表格单元格背景
+Table header text: 表格单元格背景
+Table cell background: 表格单元格背景有事件的日子
+Table cell background for current day: 任务
+Table cell background for days with events: TH
+Table cell background for weekends: 当天的表格单元格背景
+Table cell background for other month: TU
+Week number color: 周数颜色
+Event popup background: 事件弹出背景
+Event popup text: 事件弹出文字
+System Settings: 系统管理员指南
+Help: 帮助
+System options: 系统日志
+app-name-help: 指定将出现在所有页面的浏览器标题栏中和登录页面上的应用程序的名称。您在此处指定的值将在翻译文件中查找，使您可以为不同的语言提供不同的标题。
+Application Name: 应用名称
+Translated Name (XXX): 今天
+server-url-help: 指定应用程序的基本URL。发送电子邮件提醒和通知时将包括此内容。
+Server URL: 服务器网址
+home-url-help: 指定应用程序的主URL。这可以是绝对的也可以是相对的
+Home URL: 起始网址
+language-help: 指定要使用的语言。
+Language: 语言
+Your browser default language is XXX.: 您的浏览器默认语言是“ XXX”。
+Allow user to use themes: 允许用户使用主题
+themes-help: 允许批量更新配置设置。小写标签仅用于用户偏好。
+Themes: 密码不相同。
+AVAILABLE THEMES: 可用主题
+None: 没有
+Preview: 预览
+Site customization: 网站定制
+custom-script-help: 允许输入将自定义Javascript或样式表文本插入到每个页面的HTML“ head”部分中。
+Custom script/stylesheet: 自定义脚本/样式表
+custom-header-help: 允许将自定义HTML代码段包含在每个页面的顶部。
+Custom header: 自定义标题
+custom-trailer-help: 允许在每个页面的末尾包含自定义HTML代码段。
+Custom trailer: 定制拖车
+enable-external-header-help: 允许自定义预告片从外部文件加载
+Allow external file for header/script/trailer: 允许外部文件包含标题/脚本/尾部
+Allow user to override header/trailer: 允许用户覆盖标题/尾部
+Date and Time: 日期和时间
+server-tz-help: 指定将时间从UTC调整为服务器时间的小时数。
+Server Timezone Selection: 服务器时区选择
+tz-help: 指定将UTC时间调整为本地时间的小时数。
+Default Client Timezone Selection: 默认客户端时区选择
+display-general-use-gmt-help: 如果启用，则通用日期/时间将显示为格林尼治标准时间
+Display Common Use Date/Times as GMT: 将常用日期/时间显示为GMT
+date-format-help: 指定首选日期格式。
+Date format: 日期格式
+Small Task Date: 小任务日期
+display-week-starts-on: 指定星期几开始的星期几。如果指定了星期一，则星期数将是ISO星期数。
+Week starts on: 周开始于
+display-weekend-starts-on: 设置每周的星期几开始
+Weekend starts on: 周末开始于
+time-format-help: 指定要使用的时间格式：<br><em>12小时：</em>将时间显示为3 am、8:30pm等。<br><em>24小时：</em>将时间显示为300 ，2030等
+Time format: 蒂格雷
+12 hour: 12小时
+24 hour: 24小时
+timed-evt-len-help: 指定用于确定定时事件长度的输入方法。
+Specify timed event length by: 来源
+Duration: 期间
+End Time: 时间结束
+work-hours-help: 指定要为日视图显示的时间范围。
+Work hours: 工作时间
+From: 从
+to: 到
+Appearance: 外貌
+preferred-view-help: 指定默认视图（日，周，月或年）。
+Preferred view: 首选的观点
+Allow top menu: 允许顶层菜单
+Date Selectors position: 日期选择器位置
+menu-themes-help: 设置顶部菜单的颜色和样式
+Menu theme: 菜单主题
+fonts-help: 指定要使用的系统字体的列表（例如“ Arial，Helvetica”）
+Fonts: 字型
+display-sm_month-help: 如果启用，则在月视图中显示较小的月份
+Display small months: 显示小个月
+display-weekends-help: 查看一周时包括周末。
+Display weekends: 周末展示
+display-long-daynames-help: 如果启用，则显示长日名称
+Display long day names: 显示长日名称
+display-alldays-help: 在月视图中显示前几个月和下个月的日子，填满所有单元格。
+Display all days in month view: 在月视图中显示所有天数
+display-week-number-help: 指定是否在月视图和周视图中显示星期数（1-52）。
+Display week number: 显示星期数
+display-desc-print-day-help: 在便于打印的日视图中包含事件描述。
+Display description in printer day view: 在打印机日视图中显示说明
+yearly-shows-events-help: 在年度视图上，以粗体显示包含事件的日期。
+Display days with events in bold in month and year views: 在月份和年份视图中以粗体显示事件的日期
+display-minutes-help: 如果启用，则始终显示以：00结尾的分钟
+Display 00 minutes always: 始终显示00分钟
+display-end-times-help: 如果是定时事件，则显示事件结束时间
+Display end times on calendars: 在日历上显示结束时间
+allow-view-add-help: 视图中将包含一个“ +”图标，使用户可以将事件快速添加到其他用户的日历中。
+Include add event link in views: 在视图中包括添加事件链接
+lunar-help: 如果启用，将每月显示代表月相的小图标
+Display Lunar Phases in month view: 在月视图中显示月相
+Restrictions: 限制
+allow-view-other-help: 指定一个用户是否可以查看另一用户的日历。
+Allow viewing other users calendars: 允许查看其他用户的日历
+require-approvals-help: 启用后，用户必须批准事件才能在日历上显示该事件（除非启用了“显示未经批准的显示”）。请注意，将此设置为“否”将不会关闭对公共访问日历的批准（如果启用了公共访问日历）。
+Require event approvals: 需要活动批准
+display-unapproved-help: 指定是否在日历中显示未批准的事件。<br>如果设置为“是”，则将在日历中显示未批准的事件（以不同的文本颜色）。<br>如果设置为“否”，则未经批准的活动必须先获得批准，然后才能显示在您的日历中。
+Display unapproved: 显示未批准
+conflict-check-help: 检查事件冲突（为同一个人同时安排了两个事件）。如果将此设置为“是”，则确认警告后仍然可以同时安排两个事件。如果将其设置为“否”，则不会进行冲突检查。您可能要将其设置为“是”，因此发生冲突检查。
+Check for event conflicts: 检查事件冲突
+Yes: 是的
+No: 不
+conflict-months-help: 如果进行了冲突检查（“检查事件冲突”设置为“否”），这指定了我们应该在未来几个月检查冲突。如果发现添加事件需要花费很长时间，请减少此数量。
+Conflict checking months: 冲突检查月
+conflict-check-override-help: 允许用户覆盖事件冲突并同时安排两个或多个事件。
+Allow users to override conflicts: 允许用户覆盖冲突
+limit-appts-help: 允许系统管理员为单个用户在任何一天可以拥有的约会数量设置系统范围的限制。
+Limit number of timed events per day: 限制每天定时事件的数量
+limit-appts-number-help: 指定用户在一天内可以发生的最大定时事件数。
+Maximum timed events per day: 每天最多定时事件
+crossday-help: 如果启用，则跨越几天的事件将在不同的日期显示
+Disable Cross-Day Events: 禁用跨日活动
+disable-location-field-help: 选择“是”将从事件信息页面中删除“位置”字段
+Disable Location field: 禁用位置字段
+disable-url-field-help: 选择“是”将从事件信息页面中删除“ URL”字段
+Disable URL field: 禁用URL字段
+disable-priority-field-help: 选择“是”将从事件信息页面中删除“优先级”字段，从而为新手提供更简单的界面。
+Disable Priority field: 禁用优先级字段
+disable-access-field-help: 选择“是”将从事件信息页面中删除“访问”字段，从而为新手提供了更简单的界面。
+Disable Access field: 禁用访问字段
+disable-participants-field-help: 选择“是”将从事件信息页面中删除“参与者”字段，从而阻止用户将其他用户添加到他们的事件中。如果启用此选项，则可能还需要禁用“允许查看其他用户的日历”字段。
+Disable Participants field: 禁用参与者字段
+disable-repeating-field-help: 添加事件时，选择“是”将删除“重复”字段。这将为新手提供一个更简单的界面。
+Disable Repeating field: 禁用重复字段
+allow-html-description-help: 如果启用，则用户可以在事件描述字段中输入HTML。如果未启用，HTML标记将被转义以显示为纯文本。警告：启用此功能将允许用户参考其他网站上的图像。
+Allow HTML in Description: 在说明中允许HTML
+Popups: 弹出窗口
+disable-popups-help: 禁用日历视图中的弹出窗口
+Disable Pop-Ups: 禁用弹出窗口
+popup-includes-siteextras-help: 如果启用，则将在事件弹出窗口中显示site_extras.php文件中的允许自定义事件字段设置。
+Display Site Extras in popup: 在弹出窗口中显示网站附加信息
+popup-includes-participants-help: 如果启用，则参与者将显示在事件弹出窗口中。
+Display Participants in popup: 在弹出窗口中显示参与者
+Miscellaneous: 各种各样的
+remember-last-login-help: 启用后，将在登录页面上为用户填写用户的登录名（而不是密码），并且将加载用户的首选项（包括他们的首选颜色和语言选择）。
+Remember last login: 记住上次登录
+summary_length-help: 日历视图中“简要说明”的最大长度
+Brief Description Length: 简要说明长度
+user_sort-help: 确定用户，非用户列表的排序顺序
+User Sort Order: 用户认证
+Lastname, Firstname: 姓，名
+Firstname, Lastname: 名，姓
+allow-public-access-help: 启用后，该日历可用作不需要用户登录的只读公共日历。
+Allow public access: 允许公众访问
+public-access-default-visible: 公共日历中的事件将自动显示在所有用户的日历中
+Public access visible by default: 默认情况下可见公共访问
+public-access-default-selected: 添加新事件时，默认情况下将选择公共用户作为参与者。
+Public access is default participant: 公共访问是默认参与者
+public-access-view-others-help: 在具有公共访问权限的系统上访问时，指定用户是否可以查看另一个日历用户的日历。
+Public access can view other users: 公开访问可以查看其他用户
+public-access-can-add-help: 启用后，通过“公共访问”访问系统的用户将能够添加新事件，但是只有在管理员批准新事件后，它们才会显示在日历中。
+Public access can add events: 公共访问可以添加事件
+public-access-add-requires-approval-help: 指定通过公共访问帐户添加的事件在显示之前是否需要批准。
+Public access new events require approval: 公开访问新事件需要批准
+public-access-sees-participants-help: 如果启用，则从公共帐户访问日历的用户将能够查看事件参与者（如果他们查看事件的详细信息）。
+Public access can view participants: 公开访问可以查看参与者
+public-access-override-help: 允许在公共日历上隐藏事件名称和描述
+Override event name/description for public access: 覆盖事件名称/描述以供公共访问
+public-access-override-text-help: 如果启用了以上选项，则显示的文本。如果“不可用”，它将被翻译。
+Text to display to public access: 模板变量
+public-access-captcha-help: 如果启用，则由Public添加的新事件需要通过CAPTCHA验证。
+Require CAPTCHA validation for public access new events: 需要CAPTCHA验证才能进行公共访问新事件
+uac-enabled-help: 启用用户级别的访问控制
+User Access Control enabled: 使用偏移
+groups-enabled-help: 启用组支持，允许用户按组选择用户。
+Groups enabled: 已启用群组
+user-sees-his-group-help: 如果启用，则用户将不会看到至少不在其组之一中的日历用户。
+User sees only his groups: 用户排序顺序
+nonuser-enabled-help: 如果启用，则管理员可以选择添加非用户日历
+Nonuser enabled: 启用非用户日历
+nonuser-list-help: 参与者列表中非用户日历的显示位置
+Nonuser list: 在以下位置的参与者列表中显示
+Upcoming Events: 不支持的操作：XXX。
+upcoming-events-help: 启用即将发布的.php
+Enabled: 已启用
+upcoming-events-allow-override: 允许用户参数即将使用
+Allow user override: 允许用户覆盖
+upcoming-events-display-caticons: 在即将发布的php中添加类别图标
+Display category icons: 显示类别图标
+upcoming-events-display-layers: 在即将到来的.php中显示图层
+Display layers: 显示层
+upcoming-events-display-links: 显示即将到来的链接
+Display links to events: 显示事件的链接
+upcoming-events-display-popups: 在即将到来的.php中显示事件弹出窗口
+Display event popups: 显示事件弹出窗口
+reports-enabled-help: 如果启用，则用户将在每个页面的底部看到“报告”部分，并被允许创建自定义报告。此外，管理员用户可以创建全局报告，该报告将显示在所有用户页面的底部。
+Reports enabled: 启用报告
+subscriptions-enabled-help: 指定远程用户是否可以订阅WebCalendar用户的日历，从而允许他们在启用iCal的应用程序（如Apple的iCal或Mozilla日历）中查看WebCalendar用户的事件。
+Allow remote subscriptions: 允许远程订阅
+remotes-enabled-help: 允许用户使用URL加载远程ics文件
+Allow remote calendars: 允许远程日历
+rss-enabled-help: 指定是否可以从RSS feed获得用户的日历。
+Enable RSS feed: 启用RSS提要
+categories-enabled-help: 启用对事件类别的支持。
+Categories enabled: 类别已启用
+icon_upload-enabled-help: 如果启用，用户可以上传类别图标
+Category Icon Upload enabled: 类别图标上传已启用
+(Requires XXX folder to exist.): （需要存在XXX文件夹。）
+display-tasks-help: 在月和日日历上显示小任务窗口
+Display small task list: 显示小任务列表
+display-tasks-in-grid-help: 在日历中显示任务以及事件
+Display tasks in Calendars: 在日历中显示任务
+allow-external-users-help: 指定是否可以将非日历用户添加到事件中。这允许将非日历用户列为事件参与者。
+Allow external users: 允许外部用户
+external-can-receive-notification-help: 启用外部用户并启用电子邮件使用后，添加，更新或删除事件（如果提供了外部用户的电子邮件地址）时，外部用户可以接收电子邮件通知。
+External users can receive email notifications: 外部用户可以接收电子邮件通知
+external-can-receive-reminder-help: 启用外部用户并启用电子邮件使用后，外部用户可以接收电子邮件提醒（如果提供了外部用户的电子邮件地址）。
+External users can receive email reminders: 外部用户可以收到电子邮件提醒
+allow-self-registration-help: 允许新用户注册自己
+Allow self-registration: 允许自我注册
+use-blacklist-help: 根据IP地址限制对WebCalendar功能的访问
+Restrict self-registration to blacklist: 将自我注册限制为黑名单
+allow-self-registration-full-help: 允许新用户在线完成自我注册过程
+Use self-registration email notifications: 使用日期/时间
+allow-attachment-help: 允许用户向事件添加文件附件。
+Allow file attachments to events: 允许事件附加文件
+Admin and owner can always add attachments if enabled.: 管理员和所有者可以始终添加附件（如果启用）。
+allow-comments-help: 允许用户向事件添加评论。
+Allow comments to events: 允许对事件发表评论
+Admin and owner can always add comments if enabled.: 如果启用，管理员和所有者可以随时添加评论。
+email-enabled-help: 打开或关闭所有发送电子邮件的通知和提醒。如果服务器未正确设置为发送邮件，则设置为“ no”。
+Email enabled: 已启用电子邮件
+email-default-sender: 指定发送提醒时指定为发件人的电子邮件地址。
+Default sender address: 默认发件人地址
+email-mailer: 选择电子邮件类型（SMTP，PHP邮件，sendmail）
+Email Mailer: 电子邮件信箱
+email-smtp-host: SMTP服务器的主机名，以逗号分隔
+SMTP Host name(s): SMTP主机名
+email-smtp-port: SMTP端口号（通常为25）
+SMTP Port Number: SMTP端口号
+email-smtp-auth: 使用SMTP验证
+SMTP Authentication: SMTP验证
+email-smtp-username: SMTP用户名（如果使用身份验证）
+SMTP Username: SMTP用户名
+email-smtp-password: SMTP密码（如果使用身份验证）
+SMTP Password: SMTP密码
+Default user settings: 默认用户设置
+email-format: 指定HTML或纯文本消息的首选项
+Email format preference: 电子邮件格式首选项
+HTML: 的HTML
+Plain Text: 纯文本
+email-include-ics: 在电子邮件中包含iCalendar ICS文件
+Include iCalendar attachments: 包括iCalendar附件
+email-event-reminders-help: 指定是否发送事件提醒。
+Event reminders: 活动提醒
+email-event-added: 指定将事件添加到日历时是否发送电子邮件通知。
+Events added to my calendar: 活动已添加到我的日历中
+email-event-updated: 指定在日历上更新事件时是否发送电子邮件通知。
+Events updated on my calendar: 我日历上的活动已更新
+email-event-deleted: 指定从日历中删除事件后是否发送电子邮件通知。
+Events removed from my calendar: 活动已从我的日历中删除
+email-event-rejected: 指定当参与者拒绝您日历中的事件时是否发送电子邮件通知。
+Event rejected by participant: 活动被参与者拒绝
+email-event-create: 指定条目的创建者是否将收到电子邮件
+Event that I create: 我创建的活动
+Color options: 颜色选择
+Allow user to customize colors: 允许用户自定义颜色
+gradient-colors: 如果启用，则使用渐变颜色。这会极大地影响性能。
+Enable gradient images for background colors: 为背景色启用渐变图像
+Not available: 无法使用
+Background Image options: 背景图片选项
+bgimage-help: 所需背景图片的网址。可能是相对链接。
+Background Image: 背景图像
+bgrepeat-help: 控制背景图像的重复行为。
+Background Repeat: 背景重复
+
+########################################
+# Page: adminhome.php
+#
+Assistants: 助教
+Preferences: 优先
+Control Panel: 控制面板
+Users: 此用户名已存在。
+Account: 帐户
+Categories: 分类目录
+Views: 查看此任务
+Layers: 层数
+Reports: 报告书
+Delete Events: 删除活动
+Activity Log: 活动日志
+System Log: 斯瓦希里语
+Security Audit: 安全审核
+Public Preferences: 公开偏好
+Unapproved Public Events: 无法将密码写入“ settings.php”文件。
+Administrative Tools: 管理工具
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: 重复名称：“ XXX”。
+Username XXX already exists.: 用户已从参与者列表中删除。
+Email address XXX already exists.: 电子邮件地址“ XXX”已存在。
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): 附加注释（可选）
+Approve and Send: 批准并发送
+Approve and Exit: 批准并退出
+(Your comments will be emailed to the event creator.): （您的评论将通过电子邮件发送给活动创建者。）
+Hello, XXX.: 你好，XXX。
+XXX has approved an appointment and added comments.: 约会已获批准，并且XXX添加了评论。
+Subject XXX: 开始日期
+Description XXX: 说明：“ XXX”。
+Date XXX: 日期：XXX
+Time XXX: 周四
+Comments XXX: 评论：XXX
+Approved w/Comments by XXX.: 批准者：有XXX条评论。
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: 管理员模式
+Your assistants: 您的助手
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: 遗憾的是，（YYY）未实现“ XXX”。
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: 程序错误：未指定XXX！
+user: 用户
+year: 年
+month: 月
+day: 天
+
+########################################
+# Page: category.php
+#
+Category Icon: 分类图标
+Global: 全球的
+The permissions for the icons directory are set to read-only: 导入文件不包含任何数据。
+Category Name: 分类名称：
+Color: 颜色
+Remove Icon: 删除图标：
+Add Icon to Category: 将图标添加到类别
+Upload: 更新
+GIF or PNG 6kb max: GIF或PNG（最大6kb）
+Search for existing icons: 搜索现有图标
+Add: 添加
+Delete: 删除
+Are you sure you want to delete this entry?: 您确定要删除该条目吗？
+Make New Category: 制作新类别
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: 类别名称为必填项
+File size exceeds maximum.: 档案大小超过上限。
+File is not a GIF or PNG image: 文件不是GIF或PNG图像
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: 可用类别
+ENTRY CATEGORIES: 进入类别
+Remove: 消除
+Global Category: 全球类别
+Cancel: 取消
+
+########################################
+# Page: colors.php
+#
+Add Custom: 添加自定义
+Basic Colors: 基本颜色
+Current Color: 当前颜色
+Custom Colors: 自定义颜色
+Old Color: 旧颜色
+
+########################################
+# Page: combo.php
+#
+Select None: 选择无
+Agenda: 议程
+Add Task: 添加任务
+Description: 描述
+Date: 日期
+Time: 在此处输入的时间基于您的时区。
+Priority: 优先
+Access: 使用权
+Created by: 由...制作
+Updated: 更新数据库
+Participants: 参加者
+Attachments: 附件
+Comments: 评论
+Brief Description: 简要描述;简介
+Full Description: 详细描述
+Category: 类别
+Add event detail: 添加活动详细信息
+Start Date: 西班牙语
+Due Date: 到期日
+Add task detail: 添加任务详细信息
+All: 全部
+Error: 错误
+no response from server: 服务器无响应
+JSON error: JSON错误
+High: 高的
+Medium: 中等的
+Low: 低的
+Today: 时区选择
+Add Entry: 添加条目
+Unnamed Event: 未知错误保存用户。
+Unnamed Task: 未命名事件
+Refresh: 刷新
+Click to add entry: 点击添加条目
+Name: 姓名
+pm: 下午
+am: 是
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX已取消约会。
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: 无效的Blob ID
+
+########################################
+# Page: docadd.php
+#
+Add Comment: 添加评论
+Add Attachment: 添加附件
+Subject: 开始
+Comment: 评论
+Upload file: 更新
+
+########################################
+# Page: docdel.php
+#
+Removed: 已移除
+
+########################################
+# Page: edit_entry.php
+#
+days: 天
+hours: 小时
+minutes: 分钟
+You are not authorized to edit this task.: 您无权编辑此任务。
+is in a different timezone than you are. Currently: 与您所在的时区不同。目前
+hour ahead of you: 提前一个小时
+hour behind you: 落后你一个小时
+hours ahead of you: 提前几个小时
+hours behind you: 落后你几个小时
+XXX is in a different timezone (ahead): （XXX在不同的时区； YYY在您前面。<br>＆Zb）
+XXX is in a different timezone (behind): （XXX在另一个时区； YYY在您身后。<br>ZZZ）
+Time entered here is based on your Timezone.: 周四
+Edit Entry: 编辑条目
+Details: 细节
+Repeat: 重复
+Reminders: 提醒事项
+brief-description-help: 这应该提供事件的简短描述（约20个字符）。在查看日历时，它将代表事件。
+full-description-help: 这应该完成事件的详细信息。当用户查看事件时，可以看到此信息。
+access-help: 指定事件的访问级别。 <ul> <li> <em>公开</em>：每个人都可以看到该事件的全部详细信息。</li> <li> <em>机密</em>：其他人可以看到您有该日期和时间的条目，但没有关于它的详细信息。</li></ul>
+priority-help: 指定事件的优先级。高优先级事件将以粗体显示。
+category-help: 指定事件的类别。
+completed-help: 日期任务完成。仅当所有参与者的百分比等于100％时启用。
+Date Completed: 完成日期
+percent-help: 该用户的任务完成百分比
+Percent Complete: 完成百分比
+All Percentages: 所有百分比
+location-help: 活动地点
+Location: 地点
+url-help: 活动网址
+URL: 土库曼人
+date-help: 指定事件的日期。
+Untimed event: 未命名的视图
+Timed event: 时间格式
+All day event: 全天的活动
+Timezone Offset: 时报
+time-help: 指定事件的时间。 <ul> <li>“定时事件”（针对当天安排在特定时间的事件）</li> <li>“未定时事件”（针对没有时间的事件（例如假期） ）</li> <li>“全天活动”（对于需要一整天的活动（例如不在办公室）</li></ul>
+duration-help: 指定事件的持续时间（小时；分钟）。 <em>该字段可以留空。</em>
+end-time-help: 指定事件预计结束的时间。
+Start Time: 指定您希望看到的日历中显示的用户。
+Due Time: 截至日期
+Site Extras: 网站附加
+avail_participants-help: 列出该条目的可用参与者。
+Available: 可用的
+Find Name: 查找姓名
+Resources: 资源
+participants-help: 列出该条目的参与者。
+Selected: 已选
+Availability: 可用性
+external-participants-help: 指定不是日历用户的事件参与者列表。用户应该每行列出一位，并且可以包含一个电子邮件地址。如果指定了电子邮件地址，则该用户有资格接收通知和提醒。
+External Participants: 外部参与者
+repeat-type-help: 选择事件应多久重复一次。
+Daily: 日常
+Weekly: 每周
+Monthly: 每月一次
+by day: 按天
+by date: 按日期
+by position: 按位置
+Monthly (by day): 每月（按天）
+Monthly (by date): 每月（按日期）
+Monthly (by position): 每月（按职位）
+Yearly: 每年
+Manual: 手动的
+Expert Mode: 专家模式
+repeat-end-date-help: 指定事件应重复到的日期。
+Ending: 结尾
+Forever: 永远
+Use end date: 乌尔都语
+Number of times: 次数
+repeat-frequency-help: 指定事件应重复的频率。
+Frequency: 频率
+Weekdays Only: 仅工作日
+Week Start: 周（时间栏）
+repeat-bydayextended-help: 允许根据星期几选择日期。
+ByDay: 拜拜
+repeat-month-help: 指定事件应重复的月份。
+ByMonth: 按月
+repeat-bysetpos-help: 允许根据位置和月份选择日期。
+BySetPos: =
+repeat-bymonthdayextended-help: 允许根据日期选择日期。
+ByMonthDay: =
+repeat-byweekno-help: 允许用户指定重复事件的周数列表（1,2 ... 53，-53，-52 ...- 1）。
+ByWeekNo: 周刊
+repeat-byyearday-help: 允许用户指定要重复事件的年日列表（1,2 ... 366，-366，-365 ...- 1）。
+ByYearDay: 年前一天
+repeat-exceptions-help: 此事件应该或不应该发生的其他日子。
+Exclusions: 排除项目
+Inclusions: 内含物
+Add Exception: 添加例外
+Add Inclusion: 添加包含
+Delete Selected: 删除所选
+Send Reminder: 发送提醒
+When: 什么时候
+Use Date/Time: 上载
+Use Offset: 上索布族
+Before: 前
+After: 后
+Start: 开始日期
+End/Due: 结束/到期
+Times: 时间间隔
+Every: 每一个
+CAPTCHA Warning: 警告：没有PHP的GD扩展名，无法使用CAPTCHA！<br>
+Delete entry: 删除条目
+You are not authorized to edit this entry.: 您无权编辑此条目。
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX已重新任命。
+XXX has updated an appointment.: XXX已更新约会。
+Security violation!: 违反安全规定！
+You must enter the anti-spam text on the previous page.: 您必须在上一页输入反垃圾邮件文本。
+The following conflicts with the suggested time: 该数据库需要一些数据输入单击更新数据库以完成升级。
+User removed from participants list.: 用户管理员
+Please look on XXX to accept or reject this appointment.: 请查看“ XXX”以接受或拒绝此约会。
+Please look on XXX to view this appointment.: 请在XXX上查看此约会。
+Scheduling Conflict: 安排冲突
+Your suggested time of: 您的建议时间
+conflicts with the following existing calendar entries: 与以下现有日历条目冲突
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: 尚未在config.php中设置NONUSER_PREFIX。
+word characters only: （只能包含文字字符； [a-zA-Z_0-9]）
+Add User: 添加用户
+Edit User: 编辑用户
+Calendar ID: 日历编号
+First Name: 名
+Last Name: 姓
+Is public calendar: 是公共日历
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: 数据库错误
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: 添加远程日历
+Edit Remote Calendar: 编辑远程日历
+Create Layer: 创建图层
+Reload: 重装
+Required to View Remote Calendar: 查看远程日历所需
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: 导入结果
+Events successfully imported: 活动已成功导入
+Create a new layer to view this calendar.: 创建一个新层以查看此日历。
+Errors: 失误
+There was an error parsing the import file or no events were returned.: 图标目录的权限设置为只读。
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Web日历
+Yesterday: 昨天
+Day before yesterday: 前天
+Next week: 下周
+This week: 这可能需要几分钟才能完成。
+Last week: 上个星期
+Week before last: 周（用户垂直）
+Next week and week after: 下周和之后的一周
+This week and next week: 这是设置WebCalendar安装的最后一步。
+Last week and this week: 上周和本周
+Last two weeks: 最近两周
+Next month: 下个月
+This month: 这是对下面详细介绍的XXX的提醒。
+Last month: 上个月
+Month before last: 前一个月
+Next year: 明年
+This year: 这将从您老板的日历中删除该条目。
+Last year: 去年
+Year before last: 前一年
+Next 14 days: 接下来的14天
+Next 30 days: 接下来的30天
+Next 60 days: 接下来的60天
+Next 90 days: 接下来的90天
+Next 180 days: 接下来的180天
+Next 365 days: 接下来的365天
+Invalid report id XXX.: 无效的报告ID：“ XXX”。
+Unnamed Report: 未知
+Add Report: 新增报告
+Edit Report: 编辑报告
+Report name: 报告名称
+User: 用户支持的Wiki
+Current User: 当前用户
+Include link in menu: 在菜单中包含链接
+Include standard header/trailer: 包括标准的页眉/预告片
+Include previous/next links: 包括上一个/下一个链接
+Include empty dates: 包括空日期
+Date range: 日期范围
+Template variables: 任务
+Page template: 页面模板
+Day template: 天模板
+Event template: 活动模板
+Are you sure you want to delete this report?: 您确定要删除此报告吗？
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: 没有这样的报告ID：“ XXX”。
+Variable XXX not found.: 用户数
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: 编辑自定义标题
+Edit Custom Script/Stylesheet: 编辑自定义脚本/样式表
+Edit Custom Trailer: 编辑自定义预告片
+
+########################################
+# Page: edit_user.php
+#
+Username: 用户名“ XXX”不存在。
+E-mail address: 电子邮件地址
+Password: 密码
+again: 再次
+Disabled for demo: 禁用演示
+Are you sure you want to delete this user?: 您确定要删除该用户吗？
+Change Password: 更改密码
+New Password: 新密码
+Set Password: 设置密码
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: 不支持删除用户。
+The passwords were not identical.: 已测试以下格式：
+You have not entered a password.: 您尚未输入密码。
+Username cannot be blank.: 用户名“ XXX”已存在。
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: 未经授权
+
+########################################
+# Page: export.php
+#
+Export: 出口
+Export format: 汇出格式
+Include all layers: 包括所有图层
+Include deleted entries: 包括已删除的条目
+Export all dates: 导出所有日期
+Start date: 通过以下方式指定定时事件的长度
+End date: 结束日期
+Modified since: 修改自
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: 导出格式未定义或不正确。
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: 未指定用户。
+
+########################################
+# Page: groups.php
+#
+Add New Group: 新增群组
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: 未知错误。
+Add Group: 新增群组
+Edit Group: 编辑组
+Group name: 组名
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: 您必须指定组名
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: 自动刷新日历
+auto-refresh-help: 启用后，日视图，周视图，月视图和未批准列表列表将全部自动定期刷新。
+Auto-refresh time: 自动刷新时间
+auto-refresh-time-help: 如果启用了自动刷新，这将指定每次刷新之间的时间。
+Display days with events in bold in year view: 在年视图中以粗体显示事件的日期
+Display weekends in week view: 在周视图中显示周末
+Time interval: 时间：XXX
+time-interval-help: 指定周视图和日视图中的时间段将有多长时间。
+Nonuser: 非用户日历
+user-customize-color: 指定是否允许用户修改自己的配色方案。
+enable-gradient-help: 对单元格背景使用渐变颜色。
+Manually entering color values: 手动输入颜色值
+colors-help: 所有颜色都应以“ #RRGGBB”十六进制格式指定，其中“ RR”是红色的十六进制值，“ GG”是绿色的十六进制值，而“ BB”是蓝色的十六进制值。
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: 报告软件缺陷
+Please include all the information below when reporting a bug.: 报告错误时，请包括以下所有信息。
+Also, please use English rather than XXX.: 另外，请使用<strong>英语</strong>而不是XXX。
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Web服务器（检测到）
+Currently in English only.: 目前仅英文。
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: 添加/编辑日历条目
+Repeat Type: 重复类型
+For More Information...: 欲获得更多信息...
+Repeat End Date: 重复结束日期
+Repeat Day: 重复一天
+repeat-day-help: 指定事件应该在一周的哪几天重复。
+
+########################################
+# Page: help_import.php
+#
+Import: 进口
+Palm Desktop: Palm台式机
+allow you to import entries from the Palm...: 该表格将允许您从Palm Desktop Datebook导入条目。它应位于您的用户名命名的子目录中的<tt> datebook / datebook.dat</tt>的Palm目录中。
+The following entries will not be imported: 设置includes目录的文件许可权，以便安装程序没有创建新文件的许可权。请更改以下目录的权限以继续
+Entries older than the current date: 早于当前日期的条目
+Entries created in the Palm Desktop...: 在Palm Desktop中创建的尚未进行HotSync的条目
+Anything imported from Palm...: 从Palm导入的任何内容都将在下次导入期间被覆盖（除非事件日期已过）。因此，应在Palm Desktop中进行更新。
+vCal: 卡尔
+This form will import vCalendar (.vcs) 1.0 events.: 这个活动是XXX。
+The following formats have been tested: 需要执行以下数据库操作
+This form will import iCalendar (.ics) events.: 这似乎是从XXX版本升级到YYY的升级。
+Enabling: 启用
+Overwrite Prior Import: 覆盖先前的导入
+will cause events imported previously...: 将导致以前导入的事件（与从新的导入文件使用的UID相同的UID）被标记为已删除。这应该允许导入更新的iCalendar文件而不会创建重复文件。
+
+########################################
+# Page: help_index.php
+#
+Help Index: 帮助索引
+About WebCalendar: 关于WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: 图层对于在您自己的日历中显示其他用户的事件很有用。您可以指定事件的用户和颜色。
+Add/Edit/Delete: 添加/编辑/删除
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: 点击页面底部“管理”部分中的“编辑图层”链接，即可添加/编辑/删除图层。
+The text color of the new layer that will be displayed in your calendar.: 密码包含非法字符。
+Disabling: 禁用
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: 按页面底部管理部分中的“禁用图层”链接以关闭图层。
+Duplicates: 重复项
+If checked, events that are duplicates of your events will be shown.: 如果选中，将显示与您的事件重复的事件。
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: 按页面底部管理部分中的“启用图层”链接以打开图层。
+Source: 资源
+Specifies the user that you would like to see displayed in your calendar.: 索比亚人
+
+########################################
+# Page: help_pref.php
+#
+Default Category: 默认类别
+default-category-help: 指定新事件应默认为的类别。
+When I am the boss: 当我当老板
+Email me event notification: 通过电子邮件发送给我事件通知
+email-boss-notifications-help: 指定老板是否接收电子邮件作为事件通知。
+I want to approve events: 我想批准活动
+boss-approve-event-help: 指定是否需要老板批准助手添加的事件。
+Subscribe/Publish: 主题：“ XXX”。
+Allow remote publishing: 允许远程发布
+allow-remote-publishing-help: 指定远程iCal客户端是否可以将事件发布回WebCalendar
+remote-publishing-url-help: 显示要在iCal客户端应用程序中用于订阅和发布回WebCalendar的URL。
+allow-remote-subscriptions-help: 指定远程用户是否可以订阅您的日历，从而允许他们在启用了iCal的应用程序（例如Apple的iCal或Mozilla日历）中查看您的事件。
+remote-subscriptions-url-help: 显示远程用户用于订阅日历的URL。
+Enable FreeBusy publishing: 启用FreeBusy发布
+freebusy-enabled-help: 指定是否可以使用iCal FreeBusy标准获取用户的可用时间。
+freebusy-url-help: 访问用户的“忙碌”列表的URL
+rss-feed-url-help: 用于访问RSS提要的URL
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: 允许对用户访问和权限进行精细控制。如果得到管理员的授权，用户还可以授予默认权限和每个人的权限：
+If disabled, this user cannot send you emails.: 如果禁用，则该用户无法向您发送电子邮件。
+If disabled, this user cannot see you in the participants list.: 如果禁用，则该用户将无法在参与者列表中看到您。
+If enabled, this user cannot view the details of any of your entries.: 如果启用，此用户将无法查看您的任何条目的详细信息。
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): 发布已禁用（管理员）
+Publishing Disabled (User): 禁用发布（用户）
+
+########################################
+# Page: icons.php
+#
+Click to Select: 单击选择
+Current Icons on Server: 服务器上的当前图标
+
+########################################
+# Page: import.php
+#
+import from file: 从文件导入
+Disabled: 残障人士
+Import format: 导入格式
+Exclude private records: 排除私人记录
+Repeated items are imported separately. Prior imports are not overwritten.: 重复的项目将分别导入。先前的导入不会被覆盖。
+
+########################################
+# Page: import_handler.php
+#
+No file: 没有文件
+Error deleting palm events from webcalendar.: 从webcalendar删除Palm事件时出错。
+Events from prior import marked as deleted: 先前导入的事件标记为已删除
+Conflicting events: 冲突事件
+The import file contained no data.: 以下条目将不会导入：
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: 您确定要删除此层吗？
+Delete layer: 删除图层
+Edit layer: 编辑图层
+Enable layers: 启用图层
+Layer: 层
+Layers are currently disabled.: 图层目前<strong>已禁用</strong>。
+Layers are currently enabled.: 图层目前已<strong>启用</strong>。
+Click to modify layers settings for XXX: 单击此处修改XXX日历的图层设置。
+Disable Layers: 禁用图层
+Add layer: 添加图层
+Add Layer: 添加图层
+Edit Layer: 编辑图层
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: 网址不能为空。
+Invalid entry id.: 无效的条目ID。
+You cannot create a layer for yourself.: 您不能为自己创建一个图层。
+You can only create one layer for each user.: 您只能为每个用户创建一个图层。
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: 批准/确认
+Approve Selected: 批准选择
+Check All: 选择所有
+Emails Will Not Be Sent: 电子邮件将不会发送
+Reject Selected: 拒绝选择
+Reject: 拒绝
+Uncheck All: 未经批准的活动
+View this entry: 查看活动
+No unapproved entries for XXX.: 没有以下任何未经批准的条目：“ XXX”。
+Unapproved Entries: 乌克兰
+Approve this entry?: 批准该条目？
+Reject this entry?: 拒绝此项？
+Approve Selected entries?: 批准选定的条目？
+Reject Selected entries?: 拒绝所选条目？
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: 您必须输入登录名和密码。
+Save login via cookies so I dont have to login next time.: 通过Cookie保存登录信息，因此下次无需登录
+Login: 登录
+public: 上市
+Access XXX calendar: 存取XXX日历
+cookies-note: 注意：此应用程序需要启用cookie。
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: 登录<tt> XXX</tt>中的非法字符。
+Invalid login: 登录无效
+Activity login failure: 用户名：“ XXX”，IP：“ YYY”。
+Error XXX: 错误：“ XXX”。
+You have been logged out.: 您已注销。
+Access public calendar: 访问公共日历
+Not yet registered? Register here!: 尚未注册？在这里注册！
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: 没有这样的非用户日历：“ XXX”。
+This Calendar is not Public.: 新图层的文字颜色将显示在您的日历中。
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: 添加新的非用户日历
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: 必须指定登录名。
+No such nonuser calendar: 没有这样的非用户日历
+
+########################################
+# Page: pref.php
+#
+Invalid theme: 无效的主题
+Save Preferences: 保存首选项
+Public Access calendar: 公共访问日历
+Modify Non User Calendar Preferences: 修改非用户日历首选项
+Return to My Preferences: 返回我的首选项
+Custom Scripts: 自定义脚本
+Timezone Selection: 时区转换成功
+Multiview: 多视图：
+entry-interval-help: 设置编辑输入时间时的分钟间隔
+Entry interval: 进入间隔
+hour: 小时
+minute: 分钟
+theme-reload-help: 由于CSS缓存，可能需要重新加载页面
+Page may need to be reloaded for new Theme to take effect: 页面可能需要重新加载才能使新主题生效
+display_byproxy-help: 在view_entry页面上显示真正的创建者
+Display if created by Assistant: 如果由助手创建则显示
+allow-view-subscriptions-help: 允许限制对私有或机密条目的远程访问
+Allow remote viewing of: 允许远程查看
+entries: 参赛作品
+
+########################################
+# Page: purge.php
+#
+Purging events for: 清除事件
+Finished: 完成的
+Back: 后退
+Check box to delete ALL events for a user: 复选框以删除用户的ALL事件
+Delete all events before: 删除之前的所有事件
+Purge deleted only: 清除仅删除
+Preview delete: 预览删除
+Are you sure you want to delete events for: 您确定要删除以下事件吗？
+Records deleted from XXX: 记录已从“ XXX”中删除。
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: 电子邮件地址不能为空。
+Username already exists.: 用户
+Email address already exists.: 电子邮件地址已存在。
+New user via self-registration.: 通过自我注册的新用户。
+A new WebCalendar account has been set up for you.: 已经为您设置了一个新的WebCalendar帐户。
+Your username is XXX.: 您的用户名是：“ XXX”。
+Your password is XXX.: 您的密码是：“ XXX”。
+Please visit XXX to log in and start using your account!: 请访问“ XXX”以登录并开始使用您的帐户！
+You may change your password after logging in the first time.: 您可以在首次登录后更改密码。
+If you received this email in error: 如果您错误地收到此电子邮件，并且没有注册WebCalendar帐户，则可以忽略此通知，或者以简短的注释回复
+Administrator: 行政人员
+Welcome: 欢迎
+New user via email.: 通过电子邮件的新用户。
+Registration: 登记
+Welcome to WebCalendar: 欢迎使用WebCalendar
+Your email should arrive shortly.: 您的电子邮件很快就会到达。
+Return to Login screen: 返回登录画面
+Password (again): 再次输入密码：
+Your account information will be emailed to you.: 您的帐户信息将通过电子邮件发送给您。
+Submit: 状态
+
+########################################
+# Page: reject_entry.php
+#
+Continue: 继续
+(Your comments will be emailed to the other participants.): （您的评论将通过电子邮件发送给其他参与者。）
+XXX has rejected an appointment.: XXX拒绝了约会。
+Rejected by XXX.: 被XXX拒绝。
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: 添加新的远程日历
+
+########################################
+# Page: report.php
+#
+This event is confidential.: 这似乎是新安装。如果不正确，请返回上一页并更正您的设置。
+(Private): （私人的）
+(cont.): （续）
+Approved: 得到正式认可的
+Deleted: 已删除
+Rejected: 拒绝了
+Waiting for approval: 沃拉普克
+Unknown: 未知的ODBC错误。
+Invalid report id.: 无效的报告ID。
+Click here to manage reports for the Public Access calendar.: 单击此处管理“公共访问”日历的报告。
+Add new report: 新增报告
+Manage Reports: 管理报告
+
+########################################
+# Page: search.php
+#
+Advanced Search: 高级搜索
+Search: 搜索
+Keywords: 关键字词
+Enter % for all entries: 为所有条目输入％
+Include: 包括
+Filter by Date: 按日期筛选
+All Dates: 所有日期
+Past: 过去的
+Upcoming: 直到
+Range: 范围
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: 您必须输入一个或多个搜索关键字。
+Search Results: 搜索结果
+match found: 找到匹配项
+matches found: 找到匹配项
+No matches found: 找不到匹配项
+New Search: 新搜寻
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: 以下信息列出了WebCalendar安装的潜在问题，可以对其进行修改以使安装更加安全。
+For questions about WebCalendar security see the forums: 有关任何WebCalendar安全问题的问题，请使用SourceForge.net上托管的WebCalendar论坛；<br><a http://sourceforge.net/forum/forum.php?forum_id=11587> WebCalendar</a>
+View your current PHP settings: 查看此条目
+Security Issue: 安全问题
+Status: 开始时间
+Default admin user password: 默认管理员用户密码
+You should change the password of the default admin user.: 您应该更改默认管理员用户的密码。
+File permissions XXX: 档案权限：XXX
+item XXX should not be writable: 以下项目不可写：<br><tt> XXX</tt>
+File exists XXX: 文件存在：“ XXX”
+Because you have email disabled, you should remove this file.: 因为您已禁用电子邮件，所以应删除此文件。
+File location XXX: 档案位置：“ XXX”
+remove XXX if not using: 如果您没有使用文件“ XXX”，则应将其删除。或者至少将其移动到新目录。
+System Settings XXX: 瑞典
+consider enabling UAC: 您可能需要考虑启用用户访问控制来设置用户权限。
+recommend approving new public events: 我们建议批准所有公共活动提交的内容。
+recommend using CAPTCHA: 建议CAPTCHA防止再次提交自动事件。
+Database cache directory location: 数据库缓存目录位置
+db cache should be inaccessable: 数据库缓存应位于无法使用URL访问的目录中。
+PHP Settings XXX: PHP设置：“ XXX”
+recommend setting XXX Off: 建议的“ XXX”设置为关闭。
+recommend setting allow_url_fopen Off: 未启用远程日历时，“ allow_url_fopen”的建议设置为“关”。
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: 找不到变量<tt> XXX</tt>。
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: 您尚未添加任何类别。
+Set Category: 设置类别
+Global Categories cannot be changed.: 全局类别无法更改。
+
+########################################
+# Page: upcoming.php
+#
+more: 更多的
+
+########################################
+# Page: users.php
+#
+Remote Calendars: 远程日历
+denotes administrative user: 表示管理用户
+Add New User: 添加新用户
+
+########################################
+# Page: usersel.php
+#
+form: 形式
+Reset: 重置
+
+########################################
+# Page: views.php
+#
+Add New View: 新增检视
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: 未命名组
+Add View: 新增检视
+Edit View: 编辑视图
+View Name: 越南文
+View Type: 查看其他用户的日历
+Day by Time: 逐日
+Week (Users horizontal): 星期三
+Week by Time: 每周时间
+Week (Users vertical): 周三
+Week (Timebar): WebCalendar是一个PHP应用程序，用于维护单个用户或Internet / Intranet用户组的日历。也可以将其配置为事件日历。
+Month (Timebar): 月（时间栏）
+Month (side by side): 月（并排）
+Month (on same calendar): 月（在同一日历上）
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: 您必须指定视图名称
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: 此视图没有用户。
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: 即将举行的活动
+Completed: 完全的
+Assistant mode: 助手模式
+Declined: 拒绝
+Needs-Action: 需要行动
+by: 经过
+Percentage Complete: 完成百分比
+External User: 外部使用者
+Update: 即将来临
+at: 在
+comments: 评论
+Show: 展示
+Hide: 隐藏
+Approve/Confirm entry: 批准/确认输入
+Reject entry: 拒绝进入
+Set category: 设置类别
+Add to My Calendar: 添加到我的日历
+Copy entry: 复制条目
+This will delete this entry for all users.: 这将从您的XXX日历中删除该条目。
+Edit entry: 编辑条目
+Edit repeating entry for all dates: 编辑所有日期的重复条目
+Delete repeating event for all dates: 删除所有日期的重复活动
+Edit entry for this date: 修改此日期的条目
+Delete entry only for this date: 仅删除该日期的条目
+Delete entry from calendar of XXX: 从XXX的日历中删除条目
+This will delete the entry from your XXX calendar.: 本周和下周
+boss: 老板'
+This will delete the entry from your boss calendar.: 本星期
+This will delete the entry from your calendar.: 这会将条目添加到您的日历中。
+from your boss calendar: 从你老板的日历上
+Do you want to add this entry to your calendar?: 您是否要将此条目添加到您的日历中？
+This will add the entry to your calendar.: 这个月
+Email all participants: 给所有参与者发送电子邮件
+Hide activity log: 隐藏活动日志
+Show activity log: 显示活动日志
+Export this entry to: 将此条目导出到
+Palm Pilot: 掌上电脑
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: 双击空白单元格以添加新条目。
+
+########################################
+# Page: week_details.php
+#
+New Entry: 新条目
+cont.: 续
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: 另一个用户的日历
+Category Management: 分类管理
+Day View: 日视图
+Edit Event: 编辑活动
+Month View: 月视图
+Common Trailer: 普通预告片
+User Management: 启用了用户访问控制
+Manage Views: 管理检视
+Week View: 周（用户水平）
+Year View: 年度检视
+Invalid function id: 无效的功能ID
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: 找不到“ settings.php”文件。<br>请将“ settings.php.orig”复制到“ settings.php”，然后为您的网站进行编辑。
+Incomplete settings.php file...: settings.php文件不完整...
+Could not find XXX defined in...: 在您的“ settings.php”文件中找不到“ XXX”。
+You must define XXX in: 您必须在“ settings.php”文件中定义“ XXX”。
+
+########################################
+# Page: includes/date_formats.php
+#
+December: 十二月
+Dec: 十二月
+LANGUAGE DEFINED: 语言定义
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: 连接数据库“ XXX”时出错。
+db_type not defined.: db_type未定义。
+invalid db_type XXX: 无效的db_type“” XXX“。
+Cache cleared from previous SQL!: 从以前的SQL中清除了缓存！
+Error executing query.: 执行查询时出错。
+Unfortunately, XXX is not implemented for YYY: 未经授权
+Unknown ODBC error.: 取消所有
+Error opening cache dir XXX.: 打开缓存目录“ XXX”时出错。
+delete: 删除
+Cache error Could not XXX file YYY.: 缓存错误：无法XXX文件“ YYY”。
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: 致命错误
+Invalid data format for: 的数据格式无效
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: 错误：未为活动日志设置类型！
+This event is XXX.: 今年
+Conf.: Conf。
+exceeds limit of XXX events per day: 每天超过XXX个活动的限制
+on: 在
+All Attendees: 所有参会者
+Busy: 忙
+Tentative: 塔塔尔族
+Schedule an appointment for XXX.: 安排XXX：YYY的约会。
+date_select: =
+Event approved: 活动已获批准
+Journal approved: 期刊批准
+Task approved: 泰米尔语
+Attachment: 依恋
+Event created: 活动已创建
+Journal created: 日记创建
+Task created: 任务截止日期
+Event deleted: 活动已删除
+Journal deleted: 日志已删除
+Task deleted: 任务名称
+New user via email (self registration): 通过电子邮件新用户（自行注册）
+New user (self registration): 新用户（自行注册）
+Notification sent: 通知已发送
+Event rejected: 活动被拒绝
+Journal rejected: 日记被拒绝
+Task rejected: 任务已批准
+Reminder sent: 提醒已发送
+Event updated: 活动已更新
+Journal updated: 期刊已更新
+Task updated: 任务已创建
+Delete User: 删除用户
+WK: 观看次数
+TASKS: 系统设置：“ XXX”
+Task_Title: 任务已删除
+Due: 到期的
+Task Name: 塔吉克
+Task Due Date: 表格标题文字
+You have XXX unapproved entries: 您有XXX个未批准的条目
+Changes successfully saved: 更改已成功保存
+Event: 事件
+Action: 行动
+Printer Friendly: 打印机友好
+Generate printer-friendly version: 生成打印机友好版本
+after: 后
+before: 前
+end: 结尾
+start: 开始
+View this event: 查看名称
+View this task: 查看类型
+January: 一月
+February: 二月
+March: 行进
+April: 四月
+May_: 可能
+June: 六月
+July: 七月
+August: 八月
+September: 九月
+October: 十月
+November: 十一月
+Jan: 一月
+Feb: 二月
+Mar: 三月
+Apr: 四月
+May: 可能
+Jun: 君
+Jul: 七月
+Aug: 八月
+Sep: 九月
+Oct: 十月
+Nov: 十一月
+SU: 苏
+MO: =
+TU: 系统选项
+WE: 看法
+TH: 系统设置
+FR: 阻燃剂
+SA: 南非
+unknown-month: 未知月份
+First Quarter Moon: 第一季月球
+Full Moon: 满月
+Last Quarter Moon: 最后一刻
+New Moon: 新月
+Error TIME_SLOTS undefined!: 错误：TIME_SLOTS未定义！
+The following error occurred: 以下与建议的时间有冲突
+You are not authorized.: 您没有权限。
+Add N hours to: 向添加N小时
+Subtract N hours from: 学科
+same as: 与...一样
+server time: 服务器时间
+Cannot read timezone file XXX.: 无法读取时区文件：XXX。
+Your current GMT offset is XXX hours.: 您当前的GMT偏移时间为XXX小时。
+Unauthorized: 未经批准的参赛作品
+Error approving event XXX.: 错误批准事件：XXX。
+Error deleting event XXX.: 删除事件“ XXX”时出错。
+Error rejecting event XXX.: 错误拒绝事件：XXX。
+Sunday: 成功登录
+Monday: 周一
+Tuesday: 特松加
+Wednesday: WebCalendar安装向导
+Thursday: 这将为所有用户删除该条目。
+Friday: 星期五
+Saturday: 周六
+Sun: 订阅/发布
+Mon: 周一
+Tue: 故障排除
+Wed: WebCalendar安装向导步骤XXX
+Thu: 这将从您的日历中删除该条目。
+Fri: 周五
+Sat: 周六
+unknown-weekday: 未知工作日
+Invalid referring URL: 无效的引荐网址
+
+########################################
+# Page: includes/help_list.php
+#
+Index: 指数
+Documentation: 文献资料
+Page: 页
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: 我的日历
+Add New Entry: 添加新条目
+Add New Task: 添加新任务
+Logout: 登出
+Home: 家
+Back to My Calendar: 返回我的日历
+Go to: 去
+Manage calendar of: 管理的日历
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: 找不到浏览器语言
+(not supported): （不支持）
+Abkhazian: 阿布哈兹人
+Acoli: 阿科利
+Adangme: 阿当梅
+Adyghe: 阿迪格
+Afar: 远方
+Afrihili: 阿夫里希利
+Afrikaans: 南非语
+Ainu: 爱奴
+Akan: 阿寒
+Akkadian: 阿卡德语
+Albanian: 阿尔巴尼亚语
+Aleut: 阿鲁特
+Algonquian: 阿尔冈奎安
+Altai (Southern): 阿尔泰（南部）
+Amharic: 阿姆哈拉语
+Angika: 安吉卡
+Apache: 阿帕奇
+Arabic (Algeria): 阿拉伯文（阿尔及利亚）
+Arabic (Bahrain): 阿拉伯文（巴林）
+Arabic (Egypt): 阿拉伯文（埃及）
+Arabic (Iraq): 阿拉伯文（伊拉克）
+Arabic (Jordan): 阿拉伯语（约旦）
+Arabic (Kuwait): 阿拉伯文（科威特）
+Arabic (Lebanon): 阿拉伯语（黎巴嫩）
+Arabic (Libya): 阿拉伯文（利比亚）
+Arabic (Morocco): 阿拉伯文（摩洛哥）
+Arabic (Oman): 阿拉伯文（阿曼）
+Arabic (Qatar): 阿拉伯语（卡塔尔）
+Arabic (Saudi Arabia): 阿拉伯语（沙特阿拉伯）
+Arabic (Syria): 阿拉伯语（叙利亚）
+Arabic (Tunisia): 阿拉伯文（突尼斯）
+Arabic (U.A.E.): 阿拉伯文（阿联酋）
+Arabic (Yemen): 阿拉伯文（也门）
+Arabic: 阿拉伯
+Aragonese: 阿拉贡人
+Aramaic: 阿拉姆语
+Arapaho: 阿拉帕霍
+Arawak: 阿拉瓦克
+Armenian: 亚美尼亚人
+Assamese: 阿萨姆语
+Asturian: 阿斯图里亚斯人
+Athapascan: 阿萨帕斯坎
+Avaric: 阿瓦里奇
+Avestan: =
+Awadhi: 阿瓦地
+Aymara: 艾马拉
+Azerbaijani: 阿塞拜疆人
+Balinese: 巴厘语
+Baluchi: uch路支
+Bambara: 班巴拉
+Bamileke: 巴米尔克
+Banda: 班达
+Basa: 巴沙
+Bashkir: 巴什基尔
+Basque: 巴斯克
+Beja: 贝雅
+Belarusian: 白俄罗斯语
+Bemba: 本巴
+Bengali: 孟加拉
+Bhojpuri: 博普里
+Bihari: 比哈里
+Bikol: 比科尔
+Bislama: 比斯拉马
+Blackfoot: 黑脚
+Blin: 布林
+Bliss: 极乐
+Bosnian: 波斯尼亚人
+Braj: 布拉吉
+Breton: 布列塔尼
+Buginese: 布吉尼斯
+Bulgarian: 保加利亚语
+Buriat: 布里亚特
+Burmese: 缅甸人
+Caddo: 卡多
+Catalan: 加泰罗尼亚语
+Cebuano: =
+Chagatai: 查加泰
+Chamorro: 查莫罗
+Chechen: 车臣
+Cherokee: 切诺基
+Cheyenne: 夏安
+Chibcha: =
+Chichewa: 奇切瓦
+Chinese (Hong Kong): 中文（香港）
+Chinese (PRC): 中文（中国）
+Chinese (Simplified/GB2312): 简体中文/ GB2312
+Chinese (Singapore): 中文（新加坡）
+Chinese (Taiwan): 中文（台湾）
+Chinese (Traditional/Big5): 中文（繁体/大五）
+Chinook: 契努克族
+Chipewyan: 奇佩维扬
+Choctaw: 乔克托
+Chuukese: =
+Chuvash: 楚瓦什
+Coptic: 科普特人
+Cornish: 康沃尔语
+Corsican: 科西嘉人
+Cree: 克里
+Creek: 溪
+Croatian: 克罗地亚语
+Czech: 捷克文
+Dakota: 达科他州
+Danish: 丹麦文
+Dargwa: 达格瓦
+Delaware: 特拉华州
+Dinka: 丁卡
+Dogri: 多格里
+Dogrib: 狗肋骨
+Duala: 对偶
+Dutch (Belgium): 荷兰语（比利时）
+Dutch: 荷兰语
+Dyula: 尤拉
+Dzongkha: 宗卡
+Edo: 江户
+Efik: 埃菲克
+Ekajuk: 叶卡朱克
+Elamite: lam石
+English (Australia): 英文（澳洲）
+English (Belize): 英文（伯利兹）
+English (Canada): 英文（加拿大）
+English (Ireland): 英文（爱尔兰）
+English (Jamaica): 英文（牙买加）
+English (New Zealand): 英文（纽西兰）
+English (Philippines): 英文（菲律宾）
+English (South Africa): 英语（南非）
+English (Trinidad & Tobago): 英文（特立尼达和多巴哥）
+English (United Kingdom): 英文（英国）
+English (United States): 英语（美国）
+English (Zimbabwe): 英文（津巴布韦）
+English: 英语
+Erzya: =
+Esperanto: 世界语
+Estonian: 爱沙尼亚语
+Ewe: 母羊
+Ewondo: 江户堂
+Fang: ang
+Fanti: 芬蒂
+Faroese: 法罗语
+Fijian: 斐济人
+Filipino: 菲律宾语
+Finnish: 芬兰
+Fon: 丰
+French (Belgium): 法语（比利时）
+French (Canada): 法语（加拿大）
+French (France): 法语（法国）
+French (Luxembourg): 法语（卢森堡）
+French (Monaco): 法语（摩纳哥）
+French (Switzerland): 法语（瑞士）
+French: 法语
+Frisian (Eastern): 弗里斯兰语（东部）
+Frisian (Northern): 弗里斯兰语（北部）
+Frisian (Western): 弗里斯兰语（西语）
+Frisian: 弗里斯兰语
+Friulian: 弗留利
+Fulah: 富拉
+Ga: 嘎
+Galibi: 加利比
+Galician: 加利西亚人
+Ganda: 甘达
+Gayo: 加约
+Gbaya: =
+Geez: 吉兹
+Georgian: 格鲁吉亚人
+German (Austria): 德语（奥地利）
+German (Germany): 德文（德国）
+German (Liechtenstein): 德语（列支敦士登）
+German (Luxembourg): 德语（卢森堡）
+German (Standard): 德语（标准）
+German (Switzerland): 德语（瑞士）
+German: 德语
+Gilbertese: 吉尔伯特斯（Gilbertese）
+Gondi: 贡迪
+Gorontalo: 哥伦打洛
+Gothic: 哥特
+Grebo: 格里波
+Greek: 希腊语
+Greenlandic: 格陵兰的
+Guarani: 瓜拉尼
+Gujarati: 古吉拉特语
+Gwich&#39;in: 格威金
+Haida: 海达
+Haitian (Creole): 海地（克里奥尔语）
+Haitian: 海地
+Hausa: 豪萨
+Hawaiian: 夏威夷人
+Hebrew: 希伯来语
+Herero: 赫雷罗
+Hiligaynon: 希利盖农
+Hindi: 印地语
+Hiri Motu: 希里·莫图（Hiri Motu）
+Hittite: 赫梯人
+Hmong: 苗族
+Holo (Taiwanese): 霍洛（台湾人）
+Hungarian: 匈牙利
+Hupa: 胡帕
+Iban: 伊班
+Icelandic: 冰岛的
+Ido: 我做
+Igbo: 伊博
+Iloko: 伊洛子
+Indonesian: 印度尼西亚
+Ingush: 因古什
+Inuktitut: 因纽特人
+Inupiaq: 因纽皮克
+Iranian: 伊朗人
+Irish (Gaelic): 爱尔兰文（盖尔语）
+Irish: 爱尔兰人
+Iroquoian: 易洛魁人
+Italian (Switzerland): 义大利文（瑞士）
+Italian: 义大利文
+Japanese: 日本人
+Javanese: 爪哇语
+Judeo-Arabic: 阿拉伯阿拉伯语
+Judeo-Persian: 犹太人波斯语
+Kabardian: 卡巴第人
+Kabyle: 卡比尔
+Kachin: 克钦族
+Kalaallisut: 卡拉利柳特（Kalaallisut）
+Kalmyk: 卡尔梅克
+Kamba: 坎巴
+Kannada: 卡纳达语
+Kanuri: 卡努里
+Kara-Kalpak: 卡拉卡尔帕克
+Karachay-Balkar: 卡拉恰伊-巴尔卡尔
+Karelian: 卡累利阿人
+Kashmiri: 克什米尔人
+Kashubian: 卡舒边
+Kawi: 卡维
+Kazakh: 哈萨克语
+Khasi: 卡西
+Khmer (Central): 高棉语（中部）
+Khmer: 高棉语
+Khotanese: 和田人
+Kikuyu: 菊久
+Kimbundu: 金文杜
+Kinyarwanda: =
+Kirghiz: 吉尔吉斯
+Klingon: 克林贡
+Komi: 香美
+Kongo: 金刚
+Konkani: 康卡尼
+Korean (Johab): 韩语（Johab）
+Korean (North): 韩语（北部）
+Korean (South): 韩国语（南部）
+Korean: 韩国人
+Kosraean: 朝鲜语
+Kpelle: 凯佩尔
+Kuanyama: 宽山
+Kumyk: 库米克
+Kurdish: 库尔德
+Kutenai: 库特奈
+Kyrgyz: 吉尔吉斯
+Ladino: 拉迪诺
+Lahnda: 兰达
+Lamba: 兰巴
+Lao: 老挝
+Latin: 拉丁
+Latvian: 拉脱维亚语
+Lezghian: 勒兹吉安人
+Limburgan: 林堡
+Lingala: 林加拉
+Lithuanian: 立陶宛语
+Lojban: 洛班
+Lozi: 洛兹
+Luba-Katanga: 卢巴加丹加
+Luba-Lulua: 卢巴卢鲁阿
+Luiseno: 路易丝诺
+Lunda: 隆达
+Luo: o
+Lushai: 路沙
+Luxembourghish: 卢森堡语
+Macedonian: 马其顿语
+Madurese: 马杜雷塞
+Magahi: 玛加希
+Maithili: 迈提利
+Makasar: 马卡萨尔
+Malagasy: 马尔加什
+Malay: 马来语
+Malayalam: 马拉雅拉姆语
+Maldivian: 马尔代夫
+Maltese: 马耳他语
+Manchu: 满族
+Mandar: 曼达
+Mandingo: 曼丁哥
+Manipuri: 曼尼普里
+Manx: 曼克斯
+Maori: 毛利人
+Mapuche: 马普切
+Marathi: 马拉地语
+Mari: 马里
+Marshallese: 马歇尔人
+Marwari: 马瓦里
+Masai: 马赛
+Mayan: 玛雅人
+Mende: 门德
+Mi&#39;kmaq: 米克马格
+Minangkabau: =
+Mirandese: 米兰德斯人
+Mohawk: 莫霍克族
+Moksha: 莫沙
+Moldavian: 摩尔达维亚人
+Mongo: 蒙哥
+Mongolian: 蒙
+Montenegrin: 黑山
+Moroccan: 摩洛哥人
+Mossi: 莫西
+Myanmar: 缅甸
+Māori: 毛利人
+N&#39;Ko: 恩科
+Nauru: 瑙鲁
+Navajo: 纳瓦霍人
+Ndebele (North): 恩德贝勒（北部）
+Ndebele (South): 恩德贝勒（南部）
+Ndebele: 恩德贝勒
+Ndonga: 恩东加
+Neapolitan: 那不勒斯
+Nepali: 尼泊尔文
+Nias: 尼亚斯
+Niuean: 纽安
+Nogai: 野井井
+Norse: 北欧语
+Norwegian (Bokmål): 挪威文（Bokmål）
+Norwegian (Nynorsk): 挪威文（尼诺斯克）
+Norwegian: 挪威
+Nyamwezi: =
+Nyankole: =
+Nyoro: 夜郎
+Nzima: 尼兹玛
+Occitan: 欧舒丹
+Odia: 奥迪亚
+Ojibwa: 奥吉布瓦
+Oriyia: 奥里耶
+Oromo: 奥罗莫
+Osage: 欧塞奇
+Ossetic: 听觉的
+Pahlavi: 巴列维
+Palauan: uan琉
+Pali: 帕里
+Pampanga: 邦板牙
+Pangasinan: 潘加西南
+Panjabi: 潘贾比
+Papiamento: 帕皮阿门托
+Pashto: 普什图语
+Pedi: 佩迪
+Persian (Farsi): 波斯语（波斯语）
+Persian (Iran): 波斯文（伊朗）
+Persian: 波斯语
+Phoenician: 腓尼基人
+Pohnpeian: 庞贝安
+Polish: 抛光
+Portuguese: 葡萄牙语
+Portuguese/Brazil: 腐败/巴西
+Punjabi (India): 旁遮普（印度）
+Punjabi (Pakistan): 旁遮普（巴基斯坦）
+Punjabi: 旁遮普语
+Quechua: 盖丘亚族
+Rajasthani: 拉贾斯坦尼
+Rapanui: 拉帕努伊
+Rarotongan: 拉罗汤岸
+Rhaeto-Romanic: 修罗罗马式
+Romanian: 罗马尼亚语
+Romansh: 罗曼什
+Romany: 罗曼尼
+Rundi: 润迪
+Russian (Moldavia: 俄语（摩尔达维亚
+Russian (Republic of Moldova): 俄语（摩尔多瓦共和国）
+Russian: 俄语
+Sami (Inari): 萨米（稻荷）
+Sami (Lappish): 萨米（拉普兰）
+Sami (Lule): 萨米（Lule）
+Sami (Northern): 萨米语（北部）
+Sami (Skolt): 萨米（Skolt）
+Sami (Southern): 萨米语（南部）
+Sami: 萨米族
+Samoan: 萨摩亚人
+Samoli: 萨莫里
+Sandawe: 桑达威
+Sango: 三乡
+Sanskrit: 梵文
+Santali: 桑塔利
+Sardinian: 撒丁岛
+Sasak: 萨萨克
+Scots (Gaelic): 苏格兰人（盖尔语）
+Selkup: =
+Serbian (Upper): 塞尔维亚文（上）
+Serbian: 塞尔维亚
+Serer: =
+Sesotho: 塞索托
+Shan: 山
+Shona: 庄名
+Sichuan Yi: 四川彝族
+Sicilian: 西西里人
+Sindhi: 信地
+Sinhala: 僧伽罗语
+Slavic: 斯拉夫
+Slovak: 斯洛伐克文
+Slovenian: 斯洛文尼亚文
+Sogdian: 索格迪安
+Somali: 索马里
+Somani: 索马尼
+Songhai: 松海
+Soninke: 索宁克
+Sorbian (Lower): 索比亚人（下）
+Sorbian (Upper): 索布语（上）
+Sorbian: 索比亚人
+Sotho: 索托
+Spanish (Argentina): 西班牙语（阿根廷）
+Spanish (Bolivia): 西班牙语（玻利维亚）
+Spanish (Chile): 西班牙语（智利）
+Spanish (Colombia): 西班牙语（哥伦比亚）
+Spanish (Costa Rica): 西班牙语（哥斯达黎加）
+Spanish (Dominican Republic): 西班牙语（多米尼加共和国）
+Spanish (Ecuador): 西班牙语（厄瓜多尔）
+Spanish (El Salvador): 西班牙语（萨尔瓦多）
+Spanish (Guatemala): 西班牙语（危地马拉）
+Spanish (Honduras): 西班牙语（洪都拉斯）
+Spanish (Mexico): 西班牙语（墨西哥）
+Spanish (Nicaragua): 西班牙语（尼加拉瓜）
+Spanish (Panama): 西班牙语（巴拿马）
+Spanish (Paraguay): 西班牙语（巴拉圭）
+Spanish (Peru): 西班牙语（秘鲁）
+Spanish (Puerto Rico): 西班牙语（波多黎各）
+Spanish (Spain): 西班牙语（西班牙）
+Spanish (Uruguay): 西班牙语（乌拉圭）
+Spanish (Venezuela): 西班牙语（委内瑞拉）
+Spanish: 西班牙语
+Sranan Tongo: 斯兰南汤戈
+Sukuma: uku间
+Sumerian: 苏美尔人
+Sundanese: dan他
+Susu: 苏苏
+Sutu: 苏图
+Swahili: 斯瓦希里语
+Swati: 斯瓦蒂
+Swedish (Finland): 瑞典语（芬兰）
+Swedish (Sweden): 瑞典文（瑞典）
+Swedish: PHP安装支持的数据库
+Syriac: 叙利亚语
+Tagalog: 他加禄语
+Tahitian: 大溪地
+Tai: 泰
+Taiwan: 台湾
+Tajik: 塔吉克
+Tamashek: 塔马舍克
+Tamil: 泰米尔语
+Tatar: 塔塔尔族
+Telugu: 泰卢固语
+Tereno: 特雷诺
+Tetum: =
+Thai: 泰国
+Tibetan: 藏
+Tigre: 蒂格雷
+Tigrinya: 提格里尼亚
+Timne: 蒂姆（Timne）
+Tlingit: 特林吉特
+Tok Pisin: 托皮辛
+Tokelau: 托克劳
+Tonga (Nytmhasa): 汤加（宁萨哈）
+Tonga (Tonga Islands): 汤加（汤加群岛）
+Tonga: 汤加
+Tsimshian: 尖沙咀
+Tsonga: 特松加
+Tswana: 茨瓦纳
+Tumbuka: 通布卡
+Turkish: 茨瓦纳
+Turkmen: 土库曼人
+Tuvinian: 图维尼安
+Twi: 特威
+Udmurt: 乌德穆特
+Ugaritic: 乌加里蒂奇
+Ukrainian: 乌克兰
+Umbundu: 翁布杜
+Urdu: 乌尔都语
+Uyghur: 维吾尔族
+Uzbek: 乌兹别克语
+Vai: 奥钢联
+Venda: 文达
+Vietnamese: 越南文
+Volapük: 沃拉普克
+Votic: =
+Wakashan: 和歌山
+Walloon: 瓦隆
+Waray: 瓦雷
+Washo: o
+Welsh: 威尔士语
+Wolaitta: 沃莱塔
+Wolof: 沃洛夫
+Xhosa: 科萨
+Yakut: 雅库特
+Yao: 姚明
+Yapese: =
+Yiddish: 意第绪语
+Yorùbá: 约鲁巴
+Yupik: 尤皮克
+Zande: 赞德
+Zapotec: =
+Zaza: 扎扎
+Zenaga: 泽永
+Zhuang: 壮族
+Zulu: 祖鲁族
+Browser-defined: 浏览器定义
+event: 事件
+journal: 杂志
+0: =
+1: 1个
+2: 2个
+3: =
+4: =
+5: =
+6: =
+7: =
+8: =
+9: =
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: 无效的用户登录
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: 密码错误
+no such user: 没有这样的用户
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: 帐户已禁用
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: 间隔
+Months: 月数
+Month Days: 月日
+Days: 天
+Weeks: 周数
+Position: 位置
+Until: 未命名的任务
+Count: 数数
+Inclusion Dates: 收录日期
+Exclusion Dates: 排除日期
+Event Imported: 活动已导入
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: 个字节
+kb: 千位
+Mb: 兆字节
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: 通知
+authenticate: SMTP错误：无法验证
+connect_host: SMTP错误：无法连接到SMTP主机：
+data_not_accepted: SMTP错误：数据不被接受
+encoding: 未知编码：
+execute: 无法执行：
+file_access: 无法访问文件：
+file_open: 文件错误无法打开文件：
+from_failed: 以下发件人地址失败：
+instantiate: 无法实例化邮件功能
+mailer_not_supported: 不支持邮件
+provide_address: 您必须至少提供一个收件人电子邮件地址。
+recipients_failed: SMTP错误：以下收件人失败：
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: 输入图形中看到的字符
+Enter the correct letters and numbers...: 从图像中输入正确的字母和数字到文本框中。此小测试可作为对恶意漫游器的访问限制。如果此图形难以阅读，只需重新加载页面
+Challenge/Response: 挑战/回应
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: 更改此项的日期和时间？
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: 您尚未输入简要说明
+time prior to work hours...: 工作时间之前的时间...
+Invalid Event Date: 无效的活动日期
+Please add a participant: 请添加参与者
+Invalid Date: 失效日期
+You have not entered a valid time of day: 您尚未输入有效时间
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: 日历ID不能为空。
+First and last names cannot both be blank.: 名和姓不能都为空。
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: 颜色无效
+Color format should be RRGGBB.: 颜色格式应为“ #RRGGBB”。
+URL cannot be blank.: 土耳其
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: 文件类型与引入格式不匹配
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: 文档背景颜色无效。
+Invalid color for document title.: 文档标题的颜色无效。
+Invalid color for table cell background.: 表格单元格背景的颜色无效。
+Invalid color for table cell background for today.: 今日表格单元格背景的颜色无效。
+Invalid work hours.: 无效的工作时间。
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: 服务器URL必须以斜杠（/）结尾。
+Invalid color for table grid.: 表格网格的颜色无效。
+Invalid color for event popup background.: 事件弹出背景的颜色无效。
+Invalid color for event popup text.: 事件弹出文字的颜色无效。
+Invalid color for table header text.: 表格标题文字的颜色无效。
+Invalid color for table header background.: 表格标题背景的颜色无效。
+Server URL is required.: 服务器URL是必需的。
+Invalid Color: 无效的颜色
+Database Name: 数据库名称
+Full Path (no backslashes): 全路径（无反斜杠）
+The password contains illegal characters.: 发生以下错误
+Error you must specify a Single-User Login: 错误，您必须指定单用户登录
+Could not find XXX.: 找不到XXX。
+Could not find XXX in DOM.: 在DOM中找不到XXX。
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: 解析导入文件时出错，或者未返回任何事件。
+This Month: 主题
+This Year: 此日历不是公开的。
+Exit: 出口
+Add New Event: 新增活动
+Delete Entries: 删除条目
+My Views: 我的看法
+Manage Calendar of: 管理的日历
+My Reports: 我的报告
+My Profile: 我的简历
+Public Calendar: 公开日历
+Unapproved Events: 无法更新首选项
+User Manager: 用户访问控制
+Help Contents: 帮助内容
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: 数据库缓存目录
+Create New: 创建新的
+Failure Reason: 失败原因：
+You must manually create database: 您必须手动创建数据库。
+Single-User: 单用户
+Test Settings: 泰卢固语
+Timezone Conversion Successful: 时间
+WebCalendar Installation Wizard Step XXX: Web服务器（未检测到）
+Password Accepted: 接受密码
+Successful Login: 提交
+Password Incorrect: 密码错误
+Invalid Login: 登录无效
+Display Errors: 显示错误
+File Uploads: 文件上传
+Allow URL fopen: 允许URL打开（仅在使用远程日历时才需要）
+Safe Mode: 安全模式
+Safe Mode Allowed Vars: 安全模式允许的Vars（仅在安全模式打开时才需要TZ）
+GD: GD（渐变图像背景所需）
+Passwords do not match!: 密码不匹配！
+Unable to write password to settings.php file: 网址
+Password Updated: 密码已更新
+Password has been set: 密码已设置。
+Connection Successful...: 连接成功，请转到下一页继续安装。
+Correct your entries or click the Create New...: 请更正您的输入，或单击新建>按钮继续安装。
+Correct your entries and try again.: 请更正您的输入，然后重试。
+XXX does not exist: XXX不存在
+XXX is not writable: XXX不可写
+Error Converting Timezone: 转换时区时出错
+Error Unable to write to file XXX.: 错误无法写入文件XXX。
+Please change the file permissions of this file.: 请更改该文件的文件权限。
+Please change includes dir permission: 请更改“包含”目录的文件许可权，以允许其他用户进行写操作。
+Your settings have been saved.: 你的设置已保存。
+OFF: 离开
+ON: 在
+WebCalendar Setup Wizard: 通过WebCalendar基于Web（默认）
+This installation wizard will guide you...: 此事件是机密的。
+System Administrators Guide: 苏图
+Frequently Asked Questions: 经常问的问题
+FAQ: 常问问题
+Troubleshooting: 明天
+Getting Help: 获得帮助
+Upgrading Guide: 更新任务百分比
+User Supported Wiki: 用户管理
+PHP Version Check: PHP版本检查
+Check to see if PHP 7.1.0 or greater is installed.: 检查是否安装了PHP 7.1.0或更高版本。
+PHP version: PHP版本
+PHP Settings: PHP设置
+Detailed PHP Info: 详细的PHP信息
+settings.php Status: “ settings.php”状态
+Session Check: 会话检查
+To test the proper operation of sessions...: 时区偏移
+SESSION COUNTER: 会话计数器
+The file permissions of settings.php are set...: 显示给公众访问的文字
+The file permissions of the includes directory are set...: 泰国
+Your settings.php file appears to be valid.: 您的settings.php文件似乎有效。
+Configuration Wizard Password: 配置向导密码
+Create Settings File Password: 创建设置文件密码
+db setup directions...: 在本节中，您将建立并测试与数据库服务器的连接。提供的帐户信息应具有创建数据库，表和用户的完整权限。如果这是不可能的，或者您的数据库访问受到限制，则必须手动配置数据库。
+Database Status: 数据库状态
+Supported databases for your PHP installation: 太阳
+Your current database settings are able to access the database.: 您当前的数据库设置能够访问该数据库。
+Please Test Settings: 请测试设置
+Your current database settings are not able...: 您当前的数据库设置不能不能访问数据库或尚未经过测试。
+Database Settings: 数据库设置
+Database Type: 数据库类型
+Server: 服务器
+Connection Persistence: 连接持久性
+All your database tables appear to be up...: 您的所有数据库表似乎都是最新的。您可以继续下一页并完成WebCalendar的设置。
+This appears to be a new installation...: 这个月
+This appears to be an upgrade...: 本星期
+The database requires some data input...: 测试设定
+In this section we will perform...: 在本节中，我们将执行更改以使您的数据库达到所需的级别。如果您使用的是受完全支持的数据库，则将自动为您执行此步骤。如果没有，则可以显示所需的SQL，您应该可以将其剪切并粘贴到数据库服务器查询窗口中。
+No database actions are required.: 无需数据库操作。
+The following database actions are required: 设置settings.php的文件许可权，以便安装程序无权对其进行修改。请更改以下文件的文件许可权以继续
+ODBC Underlying Database: ODBC基础数据库：
+Automatic installation not supported: 您的数据库类型尚未完全实现自动安装。您将必须使用提供的SQL手动创建所需的表。请点击显示SQL继续。剪切并粘贴到数据库查询窗口中。
+This may take several minutes to complete: 此安装向导将指导您完成基本的WebCalendar安装。<br>有关帮助和疑难解答，请参见：<br>
+Install Database: 安装数据库
+Update Database: 未定时事件
+Display Required SQL: 显示所需的SQL
+Return to previous page after processing SQL.: 手动处理此SQL之后，您需要返回上一页并重新测试数据库，以便脚本可以检测到更改。
+This is the final step in setting up your WebCalendar Installation.: 此表单将导入vCalendar（.vcs）1.0事件。
+Timezone Conversion: 定时事件
+It appears that you have NOT converted...: 似乎您尚未将现有的WebCalendar事件数据转换为GMT。如果有的话，您可以忽略此通知，而不进行转换。如果这是新安装，则您也可以忽略此通知。
+Convert Data to GMT: 将数据转换为GMT
+Application Settings: 应用程序设置
+HTTP-based authentication was not detected...: 未检测到基于HTTP的身份验证。如果希望从下面的“用户身份验证”选项中选择“ Web服务器”，则需要重新配置Web服务器。
+HTTP-based authentication was detected...: 检测到基于HTTP的身份验证。您的Web服务器正在处理用户身份验证。您应该从下面的“用户身份验证”选项列表中选择“ Web服务器”。
+Create Default Admin Account: 创建默认管理员帐户
+(Admin Account Not Found): （未找到管理员帐户）
+User Authentication: 生成密码并发送给新用户
+Web-based via WebCalendar (default): 瓦隆
+Web Server (not detected): 等待批准
+Web Server (detected): WK
+None (Single-User): 无（单用户）
+Read-Only: 只读
+Environment: 环境
+Production: 生产
+Development: 发展
+Save Settings: 保存设置
+Launch WebCalendar: 启动WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: 更新表“ XXX”时出错：YYY。
+Conversion Successful: 转换成功
+Perl script required: 您以前的WebCalendar版本需要运行PERL脚本来转换您的数据。请运行/tools/upgrade_to_0.9.7.pl，然后返回此页面继续。
+previous version requires updating several tables: 您以前的WebCalendar版本需要更新几个数据库表。
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: 预览不可用
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: 连接数据库时出错
+Include Path: 包含路径
+Deleting events for: 删除事件
+Importing events for: 导入事件
+No data returned from: 没有数据返回
+for non-user calendar: 对于非用户日历
+No Remote Calendars found: 找不到远程日历
+Remote Calendars not enabled: 远程日历未启用
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: 找不到事件ID
+could not find event id XXX in database.: 在数据库中找不到事件ID XXX。
+task: 任务
+This is a reminder for the XXX detailed below.: 此表单将导入iCalendar（.ics）事件。
+Pecentage Complete: 完成百分比
+Reminder: 提醒
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: 未命名报告
+No event id specified.: 未指定事件ID。
+Not authorized (not admin).: 未经授权（非管理员）。
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: 检查从日期YYY到日期ZZZ的XXX事件。
+Found XXX events in time range.: 在时间范围内找到XXX个事件。
+Event id=XXX YYY at ZZZ on AAA.: AAA上ZZZ的事件ID = XXX“ YYY”。
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: 允许XXX用户查看其他用户的日历。
+Error Email reminders disabled for user XXX.: 错误：用户“ XXX”的电子邮件提醒已禁用。
+Number of site_extras XXX.: site_extras的数量：XXX。
+Reminder set for event.: 为事件设置提醒。
+Mins Before XXX.: 分钟前：XXX。
+Event time is XXX.: 活动时间是：XXX。
+Remind time is XXX.: 提醒时间是：XXX。
+Reminders for user XXX, login YYY.: 提醒用户“ XXX”，登录“ YYY”。
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: 未获得用户“ XXX”的批准。
+Event id=XXX YYY already sent.: 事件ID = XXX“ YYY”已发送。
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: 单用户模式无需登录。
+No login required for HTTP authentication.: HTTP身份验证无需登录。
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: 登录中的无效字符。
+Username XXX does not exist.: 用户只能看到他的组
+You cannot remove admin rights from yourself!: 您无法从自己删除管理员权限！
+Unknown error saving user: 撤消
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: 找不到活动ID为XXX的参与者。
+Db error Could not find event id XXX.: 数据库错误：找不到事件ID XXX。
+Error Could not find event id XXX in database.: 错误：在数据库中找不到事件ID XXX。

@@ -1,7 +1,70 @@
-# Translated by: Wyn James: wynjames@onetel.net.uk
-# Last update: 03 October 2002
+# Welsh cy
 #
-# Translation last updated on 10-14-2008
+# Mae'r fformat yn cynnwys pennawd dewisol:
+#
+# Cyfieithwyd gan: eich enw a'ch e-bost
+# Diweddariad diwethaf: dyddiad y cyfieithu
+# (Gan gynnwys y "#" blaenllaw ac unrhyw sylwadau a wnaed gan gyfieithwyr blaenorol.
+# Mae'r llinell wag GYNTAF yn dod â'r sylwadau pennawd hyn i ben.)
+#
+# Wedi'i ddilyn gan gynifer ag sydd angen:
+#
+# Ymadrodd Saesneg: cyfieithu
+# (Un i linell. HEB y "#" blaenllaw.
+# Darperir yr "ymadrodd Saesneg:", gan gynnwys y colon ":", gan y
+# Datblygwyr WebCalendar. Eich rhan chi yw'r "cyfieithiad".)
+#
+# Mae'r cyfeirlyfr offer yn cynnwys dwy sgript perl i'ch helpu chi:
+# - check_translation.pl
+# yn nodi a yw'r holl destun wedi'i gyfieithu'n llwyddiannus.
+# - update_translation.pl
+# Bydd # yn dosrannu ffeiliau'r rhaglen i ddod o hyd i'r holl gyfieithu ('ymadrodd') a
+# tooltip ('ymadrodd'). Bydd yn trefnu'r ymadroddion yn ôl y dudalen
+# (ffeil) sy'n cynnwys y ddeiliadaeth gyntaf. Yn ddewisol, gall dagio'r
+# ymadroddion nad ydyn nhw eto wedi'u cyfieithu trwy eu rhoi
+# Swedish sv
+#
+# Formatet består av en valfri rubrik:
+#
+# Översatt av: ditt namn och e-post
+# Senaste uppdatering: datum för översättning
+# (Inklusive det ledande "#" och eventuella kommentarer från tidigare översättare.
+# Den FÖRSTA tomma raden avslutar dessa rubrikkommentarer.)
+#
+# Följt av så många som behövs:
+#
+# Engelska frasen: översättning
+# (En till en rad. UTAN det ledande "#".
+# Den "engelska frasen:", inklusive kolon ":", tillhandahålls av
+# WebCalendar-utvecklare. Din del är "översättningen".)
+#
+# Verktygskatalogen innehåller två perl-skript som hjälper dig:
+# - check_translation.pl
+# indikerar om all text har översatts.
+# - update_translation.pl
+# analyserar programfilerna för att hitta alla översättningar ('fraser') och
+# tooltip ('fras'). Det ordnar fraserna enligt sidan
+# (fil) som innehåller den första förekomsten. Alternativt kan den märka
+# fraser som ännu inte översatts genom att sätta
+#  << MISSING >>
+# på raden ovanför frasen. Och om frasen är en förkortning,
+# den kommer att innehålla den fullständiga engelska texten på raden under frasen.
+#
+# Obs! Jag försöker minska den totala filstorleken. Om "översättningen"
+# ord / fras är identiskt på ditt språk och engelska, använd bara ett "=" tecken.
+#
+# Obs: Du kommer att märka posten för "May_" Nedan. Det finns en anledning till detta.
+#  Översätt "Mau_" till hela månadens namn och "May" till,
+# vanligtvis tre bokstäver, månad förkortning (som "oktober" för "oktober").
+#
+# Translated by: Bernt Sjöström <bernt@sjostrom.pchemma.nu>
+# Last update: 11 november 2004
+#
+# Jag använde Google translate för detta.
+# Det borde räcka tills en modersmål kan verifiera det.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -41,16 +104,40 @@ __month__ __yyyy__: =
 # Page: about.php
 #
 Title: Calendar We
+version XXX: fersiwn XXX
+WebCalendar is a PHP application used...: Mae WebCalendar yn gymhwysiad PHP a ddefnyddir i gynnal calendr ar gyfer defnyddiwr sengl neu grŵp o ddefnyddwyr rhyngrwyd / mewnrwyd. Gellir ei ffurfweddu hefyd fel calendr digwyddiadau.
+Credits: Credydau
+About: Am
+OK: iawn
 
 ########################################
 # Page: access.php
 #
-Database error: Gwall cronfa ddata
+Database error XXX.: Gwall cronfa ddata: XXX.
+DEFAULT CONFIGURATION: CADARNHAU DIFFYG
 Go: Ewch
 Save: Arbed
+Undo: Dadwneud
 Public Access: Calendr Cyhoeddus
 Admin: Gweinyddu
+User Access Control: Rheoli Mynediad i Ddefnyddwyr
+Allow Access to Other Users Calendar: Caniatáu Mynediad i Galendr Defnyddwyr Eraill
+Grant This User Access to My Calendar: Caniatáu Mynediad i'r Defnyddiwr hwn i'm Calendr
+Type: Math
 Calendar: Calendr
+View Event: Gweld y Digwyddiad
+View: Gweld
+Edit: Golygu
+Approve/Reject: Cymeradwyo / Gwrthod
+Events: Digwyddiadau
+Tasks: Tasgau
+Journals: Cyfnodolion
+Can Invite: Yn gallu Gwahodd
+Can Email: Yn gallu E-bostio
+Can See Time Only: Yn gallu Gweld Amser yn Unig
+Assistant: Cynorthwyydd
+Select All: Dewiswch Bawb
+Clear All: Clirio Pawb
 Public: Cyhoeddus
 Confidential: Cyfrinachol
 Private: Preifat
@@ -64,68 +151,139 @@ Previous: Blaenorol
 ########################################
 # Page: add_entry.php
 #
+Event XXX is already on your calendar.: Mae Digwyddiad XXX eisoes ar eich calendr.
+Invalid entry id XXX.: Id mynediad annilys: "XXX".
+a XXX event may not be added to your calendar: Digwyddiad XXX yw hwn ac efallai na fydd yn cael ei ychwanegu at eich calendr.
 confidential: cyfrinachol
 private: preifat
-Error adding event: Camgymeriad wrth ychwanegu digwyddiad
+Error adding event XXX.: Digwyddiad ychwanegu gwall: XXX.
 
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Enw lleoliad annilys "XXX".
 Select: Dewis
 Day: Dydd
 Week: Wythnos
 Month: Mis
 Year: Blwyddyn
+Bottom: Gwaelod
+Top: Uchaf
+Anyone: Unrhyw un
+Participant: Cyfranogwr
 Settings: Gosodiadau
 Groups: Grwpiau
+NonUser Calendars: Calendrau NonUser
+Other: Arall
 Email: E-bost
 Colors: Lliwiau
 Document background: Cefndir y ddogfen
 Document title: Teitl y Ddogfen
 Document text: Testun y Ddogfen
+My event text: Testun fy nigwyddiad
 Table grid color: Lliw grid y tabl
 Table header background: Lliw cefndir pennawd y tabl
 Table header text: Lliw testun y pennawd i'r tabl
 Table cell background: Lliw cefndir celloedd y tabl
 Table cell background for current day: Lliw cefndir celloedd y tabl am y diwrnod presennol
+Table cell background for days with events: Cefndir celloedd bwrdd am ddyddiau gyda digwyddiadau
 Table cell background for weekends: Lliw cefndir celloedd y tabl dros y penwythnosau
+Table cell background for other month: Cefndir celloedd bwrdd ar gyfer mis arall
+Week number color: Lliw rhif wythnos
 Event popup background: Lliw cefndir 'popup'
 Event popup text: Lliw testun 'popup'
 System Settings: Gosodiad System
 Help: =
+System options: Opsiynau system
 app-name-help: Mae hwn yn dynodi enw'r cymwysiad (application) a fydd yn ymddangos ym mar teitl y porwr am bob tudalen a'r tudalen mewngofnodi yn ogystal. Mi fydd yr hyn yr ydych yn cofnodi yma yn cael ei gymharu a chynnwys y ffeil cyfieithiadiau gan ganiatau i chi roi teitlau amrywiol i ieithoedd gwahanol.
 Application Name: Enw'r Cymwysiad (Application)
+Translated Name (XXX): Enw wedi'i Gyfieithu (XXX)
 server-url-help: Mae hwn yn dynodi y URL sylfaen i'r cymwysiad (application). Cynnhywsir hwn wrth anfon e-byst sydd yn atgoffa neu yn nodi.
 Server URL: URL y gweinydd
+home-url-help: Yn nodi'r URL cartref ar gyfer y cais. Gall hyn fod yn berthynas absoliwt neu'n gymharol
+Home URL: URL cartref
 language-help: Mae hwn yn dynodi pa iaith i'w defnyddio.
 Language: Iaith
-Your browser default language is: Iaith arferol eich porwr yw
+Your browser default language is XXX.: Iaith ddiofyn eich porwr yw "XXX".
+Allow user to use themes: Caniatáu i'r defnyddiwr ddefnyddio themâu
+themes-help: Yn caniatáu diweddariad torfol o osodiadau cyfluniad. Mae labeli llythrennau bach yn rhai defnyddiwr yn unig.
+Themes: Themâu
+AVAILABLE THEMES: THEMIAU SYDD AR GAEL
 None: Dim
+Preview: Rhagolwg
+Site customization: Addasu safle
+custom-script-help: Yn caniatáu mewnbynnu testun arfer Javascript neu ddalen arddull a fydd yn cael ei fewnosod yn adran "pen" HTML pob tudalen.
+Custom script/stylesheet: Sgript / taflen arddull personol
+custom-header-help: Yn caniatáu cynnwys pyt HTML wedi'i deilwra ar frig pob tudalen.
+Custom header: Pennawd Custom
+custom-trailer-help: Yn caniatáu cynnwys pyt HTML wedi'i deilwra ar ddiwedd pob tudalen.
+Custom trailer: Trelar personol
+enable-external-header-help: Yn caniatáu i'r trelar arfer gael ei lwytho o ffeil allanol
+Allow external file for header/script/trailer: Caniatáu ffeil allanol ar gyfer pennawd / sgript / trelar
+Allow user to override header/trailer: Caniatáu i'r defnyddiwr ddiystyru pennawd / trelar
+Date and Time: Dyddiad ac Amser
+server-tz-help: Yn nodi sawl awr i addasu'r amser o UTC i amser gweinydd.
+Server Timezone Selection: Dewis Ardal Amser Gweinydd
+tz-help: Yn nodi sawl awr i addasu'r amser o UTC i amser lleol.
+Default Client Timezone Selection: Dewis Ardal Amser Cleient Rhagosodedig
+display-general-use-gmt-help: Os yw wedi'i alluogi, mae dyddiadau / amseroedd cyffredin yn cael eu harddangos fel GMT
+Display Common Use Date/Times as GMT: Arddangos Dyddiad / Amseroedd Defnydd Cyffredin fel GMT
 date-format-help: Mae hwn yn dynodi y fformat dyddiad arferol.
 Date format: Fformat dyddiad
+Small Task Date: Dyddiad Tasg Bach
 display-week-starts-on: Mae hwn yn dynodi a yw wythnosau i ddechrau ar ddydd Sul neu Llun. Os dynoder dydd Llun, yna defnyddir rhifau wythnos system ISO.
 Week starts on: Wythnos yn dechrau ar ddydd
-time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio:<br /><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.<br /><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
+display-weekend-starts-on: Yn gosod diwrnod yr wythnos i'r penwythnosau ddechrau
+Weekend starts on: Penwythnos yn cychwyn ymlaen
+time-format-help: Mae hwn yn dynodi y fformat amser i'w ddefnyddio:<br><i>12 awr:</i> Dangoser amserau megis 3am, 8:30pm, ac ati.<br><i>24 awr:</i> Dangoser amserau megis 300, 2030, ac ati.
 Time format: Fformat amser
 12 hour: 12 awr
 24 hour: 24 awr
+timed-evt-len-help: Yn nodi'r dull mewnbwn ar gyfer pennu hyd digwyddiad wedi'i amseru.
+Specify timed event length by: Nodwch hyd y digwyddiad wedi'i amseru erbyn
 Duration: Parhad
+End Time: Amser Diwedd
 work-hours-help: Mae hwn yn dynodi ystod yr amser a ddangosir yn y golwg dyddiol.
 Work hours: Oriau gweithio
 From: O
 to: hyd
+Appearance: Ymddangosiad
 preferred-view-help: Mae hwn yn dynodi y golwg arferol (Dydd, Wythnos, Mis, neu Blwyddyn).
 Preferred view: Golwg ffafriedig
+Allow top menu: Caniatáu dewislen uchaf
+Date Selectors position: Dyddiad Swydd y dewiswyr
+menu-themes-help: Yn gosod lliwiau ac arddull y ddewislen uchaf
+Menu theme: Thema'r ddewislen
 fonts-help: Mae hwn yn dangos rhestr o ffontiau'r system a ellir eu defnyddio (megis "Arial, Helvetica")
 Fonts: Ffontiau
+display-sm_month-help: Os yw wedi'i alluogi, mae'n arddangos golygfeydd bach o fisoedd
+Display small months: Arddangos misoedd bach
 display-weekends-help: Cynnhwysir penwythnosau yn y golwg wythnosol.
+Display weekends: Arddangos penwythnosau
+display-long-daynames-help: Os yw wedi'i alluogi, mae enwau diwrnod hir yn cael eu harddangos
+Display long day names: Arddangos enwau diwrnod hir
+display-alldays-help: Arddangos golygfeydd o'r misoedd blaenorol a'r misoedd nesaf mewn mis, gan lenwi'r holl gelloedd.
+Display all days in month view: Arddangos trwy'r dydd yng ngolwg y mis
 display-week-number-help: Mae hwn yn dynodi os y dylid dangos rhif yr wythnos (1-52) yn y golwg misol neu wythnosol.
 Display week number: Dangoser rhif yr wythnos
+display-desc-print-day-help: Cynhwyswch ddisgrifiadau digwyddiadau mewn fersiwn argraffydd-gyfeillgar o olwg dydd.
+Display description in printer day view: Disgrifiad arddangos yng ngolwg diwrnod yr argraffydd
+yearly-shows-events-help: Ar yr olwg flynyddol, diwrnodau arddangos sy'n cynnwys digwyddiadau mewn ffont beiddgar.
+Display days with events in bold in month and year views: Diwrnodau arddangos gyda digwyddiadau mewn print trwm mewn golygfeydd mis a blwyddyn
+display-minutes-help: Os yw wedi'i alluogi, bydd cofnodion sy'n gorffen gyda: 00 bob amser yn cael eu harddangos
+Display 00 minutes always: Arddangos 00 munud bob amser
+display-end-times-help: Arddangos amseroedd gorffen digwyddiadau os yw'r digwyddiad wedi'i amseru
+Display end times on calendars: Arddangos amseroedd gorffen ar galendrau
+allow-view-add-help: Bydd eicon '+' yn cael ei gynnwys mewn golygfeydd, sy'n caniatáu i ddefnyddwyr ychwanegu digwyddiadau at galendrau defnyddwyr eraill yn gyflym.
+Include add event link in views: Cynhwyswch ychwanegu dolen digwyddiadau mewn golygfeydd
+lunar-help: Os yw wedi'i alluogi, bydd yn arddangos eiconau bach sy'n cynrychioli'r cyfnodau lleuad bob mis
+Display Lunar Phases in month view: Arddangos Cyfnodau Lunar yng ngolwg y mis
+Restrictions: Cyfyngiadau
 allow-view-other-help: Mae hwn yn penderfynnu a yw un defnyddiwr yn gallu gwylio calendr defnyddiwr arall.
 Allow viewing other users calendars: Caniatad i wylio calendr rhywun arall
 require-approvals-help: Pan mae hwn yn cael ei ddefnyddio rhaid i'r defnyddwr cymeradwyo digwyddiad cyn iddo gael ei ddangos ar ei calendr (os nad yw 'Dangos heb Cymeradwyaeth' ymlaen) Noder wrth gosod hwn i 'Na' ni fydd hwn yn hepgor ar yr angen i cymeradwyo digwyddiadau i'r Calendr Cyhoeddus (os yw'r Calendr Cyhoeddus wedi ei 'alluogi').
 Require event approvals: Cymeradwyaeth i ddigwyddiadau'n angenrheidiol
-display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br /> Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br /> Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
+display-unapproved-help: Mae hwn yn dynodi a yw digwyddiadau heb cymeradwyaeth yn cael eu dangos yn eich calendr.<br>Os goseder i "Ie", Yna fe ddangosir digwyddiadau heb cymeradwyaeth yn eich calendr (mewn lliw gwahanaol).<br>Os gosoder i "Na", yna mae angen cymeradwyo digwyddiadau cyn iddynt gael eu dangos ar eich calendr.
 Display unapproved: Dangoser digwyddiadau heb cymeradwyaeth
 conflict-check-help: Mae hwn yn rhybuddio am gwrthdrawiadau rhwng digwyddiadau (dau digwyddiad wedi eu dynodi am yr un amser ar calendr un person). Os y dewisir "Ie", mi fydd hi dal yn bosib i drefnu dau digwyddiad ar yr un amser os y rhoddir cadarnhad ar ol rhybudd. Os y dewisir "Na", ni fydd yna unrhyw rybudd o gwrthdrawiadau rhwng digwyddiadau. Mae hi'n arferol yn well i gosod hwn i "Ie", felly bod modd osgoi gwrthdrawiadau.
 Check for event conflicts: Edrycher am gwrthdrawiadau rhwng digwyddiadau
@@ -133,6 +291,18 @@ Yes: Ie
 No: Na
 conflict-months-help: Os yr edrycher am gwrthdrawiadau ("Edrycher am gwrthdrawiadau rhwng digwyddiadau" wedi ei osod i "Na"), mae hwn yn dynodi faint o fisoedd i'r dyfodol yr edrychir am wrthdrawiadau. Os yw ychwanegu digwyddiadau yn cymryd amser hir, yna gostyngwch y rhif yma.
 Conflict checking months: Nifer y misoedd i edrych am gwrthdrawiadau
+conflict-check-override-help: Yn caniatáu i ddefnyddwyr ddiystyru gwrthdaro digwyddiadau ac amserlennu dau neu fwy o ddigwyddiadau am yr un amser.
+Allow users to override conflicts: Caniatáu i ddefnyddwyr ddiystyru gwrthdaro
+limit-appts-help: Yn caniatáu i weinyddwr y system osod terfyn system gyfan ar nifer yr apwyntiadau y gall un defnyddiwr eu cael ar unrhyw ddiwrnod.
+Limit number of timed events per day: Cyfyngu ar nifer y digwyddiadau wedi'u hamseru bob dydd
+limit-appts-number-help: Yn nodi'r nifer uchaf o ddigwyddiadau wedi'u hamseru y gall defnyddiwr eu cael mewn un diwrnod.
+Maximum timed events per day: Uchafswm digwyddiadau wedi'u hamseru bob dydd
+crossday-help: Os yw wedi'i alluogi, bydd digwyddiadau sy'n rhychwantu diwrnodau yn cael eu harddangos ar ddiwrnodau ar wahân
+Disable Cross-Day Events: Analluoga Digwyddiadau Traws-Ddydd
+disable-location-field-help: Bydd dewis "Ydw" yn tynnu'r maes "Lleoliad" oddi ar dudalennau gwybodaeth digwyddiadau
+Disable Location field: Analluoga maes Lleoliad
+disable-url-field-help: Bydd dewis "Ydw" yn tynnu'r maes "URL" oddi ar dudalennau gwybodaeth digwyddiadau
+Disable URL field: Analluoga maes URL
 disable-priority-field-help: Os y dewisir "Ie" yna ceir gwared a'r dewis o "Blaenoriaeth" o'r tudalennau gwybodaeth am digwyddiad, gan wneud pethau'n haws i bobl heb profiad o'r meddalwedd.
 Disable Priority field: Dim dewis o Blaenoriaeth
 disable-access-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Mynediad" oddi wrth tudalennau gwybodaeth am ddigwyddiad, gan wneud pethau'n haws i bobl heb brofiad o'r meddalwedd.
@@ -141,26 +311,125 @@ disable-participants-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn "Cyfrano
 Disable Participants field: Dim Cyfranogwyr
 disable-repeating-field-help: Wrth dewis "Ie" ceir gwared a'r optiwn i "Ailgyflawni" wrth ychwanegu digywddiadau. Mi fydd hyn yn gwneud pethau'n haws i bobl heb profiad o'r meddalwedd.
 Disable Repeating field: Dim Ailgyflawni
+allow-html-description-help: Os yw wedi'i alluogi, gall defnyddwyr nodi HTML ym maes disgrifio'r digwyddiad. Os na chaiff ei alluogi, bydd y tagiau HTML yn cael eu dianc er mwyn ymddangos fel testun plaen. Rhybudd: Bydd galluogi'r nodwedd hon yn caniatáu i ddefnyddwyr gyfeirio delweddau ar wefannau eraill.
+Allow HTML in Description: Caniatáu HTML mewn Disgrifiad
+Popups: =
+disable-popups-help: Analluoga naidlenni o olygfeydd calendr
+Disable Pop-Ups: Analluoga Pop-ups
+popup-includes-siteextras-help: Os yw wedi'i alluogi, caniatáu i feysydd digwyddiadau wedi'u gosod yn y ffeil site_extras.php gael eu harddangos mewn ffenestri naid digwyddiadau.
+Display Site Extras in popup: Arddangos Safleoedd Ychwanegol mewn naidlen
+popup-includes-participants-help: Os yw wedi'i alluogi, mae'r cyfranogwyr yn cael eu harddangos mewn ffenestri naid digwyddiadau.
+Display Participants in popup: Arddangos Cyfranogwyr yn naidlen
+Miscellaneous: Amrywiol
 remember-last-login-help: Pan y defnyddir hwn mi fydd mewngofnodiad y defnyddiwr yn cael ei lenwi drostynt ar y dudalen mewngofnodi (ond nid y gair cydd), a mi fydd hoff dewisiadau'r defnyddiwr yn cael eu llwytho (gan gynnwys ei hoff lliwiau a dewis o iaith).
 Remember last login: Cofier y mewngofnodiad diwethaf
+summary_length-help: Uchafswm hyd y Disgrifiad Byr mewn golygfeydd calendr
+Brief Description Length: Hyd Disgrifiad Byr
+user_sort-help: Yn pennu trefn didoli ar gyfer rhestrau Defnyddiwr, Nonuser
+User Sort Order: Gorchymyn Trefnu Defnyddwyr
+Lastname, Firstname: Enw olaf Enw cyntaf
+Firstname, Lastname: Enw cyntaf Enw olaf
 allow-public-access-help: Pan y dewisir yr optiwn yma gall y calendr yma ond cael ei ddefnyddio fel calendr cyhoeddus a ellir ei ddarllen yn unig, a sydd ddim yn gofyn i ddefnyddwyr i mewngofnodi.
 Allow public access: Caniatewch mynediad i'r cyhoedd
+public-access-default-visible: Bydd digwyddiadau o'r calendr cyhoeddus yn ymddangos yn awtomatig ar galendrau pob defnyddiwr
+Public access visible by default: Mynediad cyhoeddus i'w weld yn ddiofyn
+public-access-default-selected: Wrth ychwanegu digwyddiad newydd, bydd y defnyddiwr cyhoeddus yn cael ei ddewis yn ddiofyn fel cyfranogwr.
+Public access is default participant: Mae mynediad cyhoeddus yn gyfranogwr diofyn
 public-access-view-others-help: Wrth cael mynediad cyhoeddus i'r system, mae hwn yn dynodi a yw'r defnyddiwr yn gallu gwylio calendrau defnydwyr eraill.
 Public access can view other users: Rhywrai gyda mynediad cyhoeddus yn gallu gwylio calendrau defnyddwyr eraill
 public-access-can-add-help: Pan ymlaen, mi fydd defnyddwyr sydd wedi cael Mynediad Cyhoeddus i'r system yn gallu ychwanegu digwyddiadau newydd, ond ni fyddent yn dangos ar y Calendr Cyhoeddus nes bod gweinyddwr yn cymeradwyo'r digwyddiad newydd.
 Public access can add events: Gall rhai gyda Mynediad Cyhoeddus ychwanegu digwyddiad
+public-access-add-requires-approval-help: Yn nodi a oes angen cymeradwyo digwyddiadau a ychwanegir trwy'r cyfrif mynediad cyhoeddus cyn eu harddangos.
+Public access new events require approval: Mae angen cymeradwyo digwyddiadau newydd mynediad cyhoeddus
+public-access-sees-participants-help: Os yw wedi'i alluogi, bydd defnyddwyr sy'n cyrchu'r calendr o'r cyfrif cyhoeddus yn gallu gweld cyfranogwyr y digwyddiad os ydyn nhw'n gweld manylion digwyddiad.
+Public access can view participants: Gall mynediad cyhoeddus weld cyfranogwyr
+public-access-override-help: Yn caniatáu i enwau a disgrifiadau digwyddiadau gael eu cuddio ar y calendr cyhoeddus
+Override event name/description for public access: Diystyru enw / disgrifiad y digwyddiad ar gyfer mynediad cyhoeddus
+public-access-override-text-help: Y testun i'w arddangos os yw'r opsiwn uchod wedi'i alluogi. Os 'Ddim ar gael', bydd yn cael ei gyfieithu.
+Text to display to public access: Testun i'w arddangos i'r cyhoedd
+public-access-captcha-help: Os yw wedi'i alluogi, mae angen pasio dilysiad CAPTCHA ar gyfer digwyddiadau newydd a ychwanegir gan y Cyhoedd.
+Require CAPTCHA validation for public access new events: Ei gwneud yn ofynnol i ddilysiad CAPTCHA gael mynediad cyhoeddus i ddigwyddiadau newydd
+uac-enabled-help: Yn galluogi rheolaeth mynediad ar lefel defnyddiwr
+User Access Control enabled: Rheoli Mynediad i Ddefnyddwyr wedi'i alluogi
 groups-enabled-help: Os y dewisir hwn ceir cymorth grwp, gan ganiatau i ddefnyddwyr i ddewis defnyddwyr eraill wrth eu grwpiau.
 Groups enabled: Grwpiau
 user-sees-his-group-help: Os y dewisir hwn, ni fydd defnyddiwr yn gallu gweld digwyddiadau defnyddwyr eraill nad ydynt yn bodoli yn o leiaf un o grwpiau y defnyddiwr.
 User sees only his groups: Defnyddiwr yn gweld ei grwpiau yn unig
+nonuser-enabled-help: Os yw wedi'i alluogi, bydd gan edmygwyr yr opsiwn i ychwanegu calendrau nonuser
+Nonuser enabled: Calendrau Nonuser wedi'u Galluogi
+nonuser-list-help: Ble i arddangos y calendrau nonuser yn y rhestr cyfranogwyr
+Nonuser list: Arddangos yn rhestr y cyfranogwyr yn
+Upcoming Events: Digwyddiadau i ddod
+upcoming-events-help: Galluogi sydd ar ddod.php
 Enabled: Ymlaen
+upcoming-events-allow-override: Caniatáu paramter defnyddiwr ar gyfer sydd ar ddod.php
+Allow user override: Caniatáu i'r defnyddiwr ddiystyru
+upcoming-events-display-caticons: Cynhwyswch eiconau categori yn y dyfodol.php
+Display category icons: Arddangos eiconau categori
+upcoming-events-display-layers: Arddangos haenau yn y dyfodol.php
+Display layers: Haenau arddangos
+upcoming-events-display-links: Arddangos dolenni yn y dyfodol.php
+Display links to events: Arddangos dolenni i ddigwyddiadau
+upcoming-events-display-popups: Arddangos ffenestri naid yn y dyfodol.php
+Display event popups: Arddangos popups digwyddiadau
+reports-enabled-help: Os cânt eu galluogi, bydd defnyddwyr yn gweld adran "Adroddiadau" ar waelod pob tudalen a chaniateir iddynt greu adroddiadau arfer. Yn ogystal, gall defnyddwyr gweinyddol greu adroddiadau byd-eang a fydd yn ymddangos ar waelod tudalennau pob defnyddiwr.
+Reports enabled: Adroddiadau wedi'u galluogi
+subscriptions-enabled-help: Yn nodi a all defnyddwyr anghysbell danysgrifio i galendr defnyddiwr WebCalendar, gan ganiatáu iddynt weld digwyddiadau defnyddiwr WebCalendar yn eu cymhwysiad wedi'i alluogi gan iCal (fel iCal Apple neu Calendr Mozilla).
+Allow remote subscriptions: Caniatáu tanysgrifiadau o bell
+remotes-enabled-help: Yn caniatáu i ddefnyddwyr lwytho ffeiliau ics o bell gan ddefnyddio URL
+Allow remote calendars: Caniatáu calendrau anghysbell
+rss-enabled-help: Yn nodi a ellir cael calendr defnyddiwr o borthiant RSS.
+Enable RSS feed: Galluogi porthiant RSS
 categories-enabled-help: Mae hwn yn caniatau i digwyddiadau cael ei gosod mewn dosbarthiadau.
 Categories enabled: Dosbarthiadau
+icon_upload-enabled-help: Os yw wedi'i alluogi, gall defnyddwyr uwchlwytho eiconau categori
+Category Icon Upload enabled: Llwythiad Eicon Categori wedi'i alluogi
+(Requires XXX folder to exist.): (Angen ffolder XXX i fodoli.)
+display-tasks-help: Arddangos ffenestr dasg fach ar galendr mis a dydd
+Display small task list: Arddangos rhestr dasgau bach
+display-tasks-in-grid-help: Arddangos tasgau mewn calendrau ynghyd â digwyddiadau
+Display tasks in Calendars: Arddangos tasgau mewn Calendrau
+allow-external-users-help: Yn nodi a ellir ychwanegu defnyddiwr nad yw'n galendr at ddigwyddiad. Mae hyn yn caniatáu i ddefnyddwyr nad ydynt yn rhai calendr gael eu rhestru fel cyfranogwyr digwyddiadau.
+Allow external users: Caniatáu i ddefnyddwyr allanol
+external-can-receive-notification-help: Pan fydd defnyddwyr allanol yn cael eu galluogi a defnyddio e-bost yn cael ei alluogi, gall defnyddwyr allanol dderbyn hysbysiadau e-bost pan fydd y digwyddiad yn cael ei ychwanegu, ei ddiweddaru neu ei ddileu (os darperir cyfeiriad e-bost y defnyddiwr allanol).
+External users can receive email notifications: Gall defnyddwyr allanol dderbyn hysbysiadau e-bost
+external-can-receive-reminder-help: Pan fydd defnyddwyr allanol wedi'u galluogi a defnyddio e-bost yn cael ei alluogi, gall defnyddwyr allanol dderbyn nodiadau atgoffa e-bost (os darperir cyfeiriad e-bost y defnyddiwr allanol).
+External users can receive email reminders: Gall defnyddwyr allanol dderbyn nodiadau atgoffa e-bost
+allow-self-registration-help: Caniatáu i ddefnyddwyr newydd gofrestru eu hunain
+Allow self-registration: Caniatáu hunan-gofrestru
+use-blacklist-help: Cyfyngu mynediad i swyddogaethau WebCalendar yn seiliedig ar gyfeiriad IP
+Restrict self-registration to blacklist: Cyfyngu hunan-gofrestru i'r rhestr ddu
+allow-self-registration-full-help: Caniatáu i ddefnyddwyr newydd gwblhau'r broses hunan-gofrestru ar-lein
+Use self-registration email notifications: Cynhyrchu cyfrineiriau a'u hanfon at ddefnyddwyr newydd
+allow-attachment-help: Caniatáu i ddefnyddwyr ychwanegu atodiadau ffeiliau i ddigwyddiadau.
+Allow file attachments to events: Caniatáu atodiadau ffeiliau i ddigwyddiadau
+Admin and owner can always add attachments if enabled.: Gall gweinyddwr a pherchennog ychwanegu atodiadau bob amser os yw wedi'i alluogi.
+allow-comments-help: Caniatáu i ddefnyddwyr ychwanegu sylwadau at ddigwyddiadau.
+Allow comments to events: Caniatáu sylwadau i ddigwyddiadau
+Admin and owner can always add comments if enabled.: Gall y gweinyddwr a'r perchennog ychwanegu sylwadau bob amser os yw wedi'i alluogi.
 email-enabled-help: Defnyddir hwn i dewis a oes modd anfon e-byst i atgoffa defnyddwyr o digwyddiad. Gosoder i "na", os yw'r gweinydd ddim yn medru anfon e-byst yn y ffordd yma.
 Email enabled: Anfoner E-byst
 email-default-sender: Mae hwn yn dynodi cyfeiriad e-bost yr anfonwr wrth anfon e-byst atgoffa allan.
 Default sender address: Cyfeiriad e-bost danfonwr arferol
+email-mailer: Dewiswch fath e-bost (SMTP, post PHP, anfon)
+Email Mailer: E-bost Mailer
+email-smtp-host: Enw (au) gwesteiwr gweinydd (au) SMTP wedi'u gwahanu gan atalnodau
+SMTP Host name(s): Enw (au) Gwesteiwr SMTP
+email-smtp-port: Rhif Porthladd SMTP (25 fel arfer)
+SMTP Port Number: Rhif Porthladd SMTP
+email-smtp-auth: Defnyddiwch Ddilysu SMTP
+SMTP Authentication: Dilysu SMTP
+email-smtp-username: Enw Defnyddiwr SMTP os ydych chi'n defnyddio Dilysu
+SMTP Username: Enw Defnyddiwr SMTP
+email-smtp-password: Cyfrinair SMTP os ydych chi'n defnyddio Dilysu
+SMTP Password: Cyfrinair SMTP
 Default user settings: Dewisiadau arferol y defnyddiwr
+email-format: Nodwch hoffter o negeseuon HTML neu destun plaen
+Email format preference: Dewis fformat e-bost
+HTML: =
+Plain Text: Testun plaen
+email-include-ics: Cynhwyswch ffeil ICS iCalendar i neges e-bost
+Include iCalendar attachments: Cynhwyswch atodiadau iCalendar
 email-event-reminders-help: Mae hwn yn dynodi a ddylid anfon e-byst i atgoffa defnyddwyr o ddigwyddiadau.
 Event reminders: Atgofion o ddigwyddiadau
 email-event-added: Mae hwn yn dynodi a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os yr ychwanegir digwyddiad i'ch calendr.
@@ -171,147 +440,404 @@ email-event-deleted: Mae hwn yn penderfynnu a ddylid anfon rhybudd ar ffurf e-bo
 Events removed from my calendar: Digwyddiadau a ddiddymwyd o fy nghalendr
 email-event-rejected: Mae hwn yn penderfynnu a ddylid anfon rhybudd ar ffurf e-bost at bawb yr effeithir arnynt os yw defnyddiwr yn gwrthod derbyn digwyddiad sydd ar eich calendr.
 Event rejected by participant: Digwyddiad wedi ei wrthod gan ddefnyddiwr
+email-event-create: Yn nodi a fydd crëwr y cofnodion yn derbyn e-bost
+Event that I create: Digwyddiad rydw i'n ei greu
+Color options: Opsiynau lliw
 Allow user to customize colors: Caniatad i ddefnyddwyr dewis eu lliwiau
+gradient-colors: Os defnyddir lliwiau graddiant wedi'u galluogi. Gall hyn effeithio'n fawr ar berfformiad.
+Enable gradient images for background colors: Galluogi delweddau graddiant ar gyfer lliwiau cefndir
+Not available: Dim ar gael
+Background Image options: Cefndir Opsiynau Delwedd
+bgimage-help: URL y ddelwedd gefndir a ddymunir. Gall fod yn gyswllt cymharol.
+Background Image: Delwedd Cefndir
+bgrepeat-help: Yn rheoli ymddygiad ailadroddus delwedd gefndir.
+Background Repeat: Ailadrodd Cefndir
 
 ########################################
 # Page: adminhome.php
 #
+Assistants: Cynorthwywyr
 Preferences: Hoff Dewisiadau
+Control Panel: Panel Rheoli
 Users: Defnyddwyr
 Account: Cyfrif
 Categories: Dosbarthiadau
 Views: Golygfeydd
 Layers: Haenau
+Reports: Adroddiadau
+Delete Events: Dileu Digwyddiadau
 Activity Log: Log Actifedd
+System Log: Log System
+Security Audit: Archwiliad Diogelwch
+Public Preferences: Dewisiadau Cyhoeddus
+Unapproved Public Events: Digwyddiadau Cyhoeddus Heb eu Cymeradwyo
+Administrative Tools: Offer Gweinyddol
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Enw Dyblyg: "XXX".
+Username XXX already exists.: Mae enw defnyddiwr "XXX" eisoes yn bodoli.
+Email address XXX already exists.: Mae cyfeiriad e-bost "XXX" eisoes yn bodoli.
 
 ########################################
 # Page: approve_entry.php
 #
-Hello: Helo
-The subject was: Y pwnc oedd
-The description is: Y disgrifiad yw
-Date: Dyddiad
-Time: Amser
+Additional Comments (optional): Sylwadau Ychwanegol (dewisol)
+Approve and Send: Cymeradwyo ac Anfon
+Approve and Exit: Cymeradwyo ac Ymadael
+(Your comments will be emailed to the event creator.): (Bydd eich sylwadau yn cael eu hanfon trwy e-bost at grewr y digwyddiad.)
+Hello, XXX.: Helo, XXX.
+XXX has approved an appointment and added comments.: Mae apwyntiad wedi'i gymeradwyo ac mae sylwadau wedi'u hychwanegu gan XXX.
+Subject XXX: Testun: "XXX".
+Description XXX: Disgrifiad: "XXX".
+Date XXX: Dyddiad: XXX
+Time XXX: Amser: XXX
+Comments XXX: Sylwadau: XXX
+Approved w/Comments by XXX.: Cymeradwywyd w / Sylwadau gan: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Modd gweinyddol
+Your assistants: Eich cynorthwywyr
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Gwall anhysbys.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Gwall y Rhaglen: Dim XXX wedi'i nodi!
+user: defnyddiwr
+year: flwyddyn
+month: mis
+day: Dydd
 
 ########################################
 # Page: category.php
 #
+Category Icon: Eicon Categori
 Global: Hollfydol
+The permissions for the icons directory are set to read-only: Disgwylir i'r caniatâd ar gyfer y cyfeiriadur eiconau ddarllen yn unig.
 Category Name: Enw Dosbarth
 Color: Lliw
+Remove Icon: Dileu Eicon:
+Add Icon to Category: Ychwanegu Eicon i'r Categori
+Upload: Llwythiad i fyny
+GIF or PNG 6kb max: GIF neu PNG 6kb ar y mwyaf
+Search for existing icons: Chwilio am eiconau sy'n bodoli eisoes
 Add: Ychwanegu
 Delete: Dileu
 Are you sure you want to delete this entry?: A ydych yn siwr eich bod eisiau dileu y digwyddiad yma?
 Make New Category: Ychwanegwch Dosbarth newydd
 
 ########################################
+# Page: category_handler.php
+#
+Category name is required: Mae angen enw'r categori
+File size exceeds maximum.: Mae maint y ffeil yn fwy na'r uchafswm.
+File is not a GIF or PNG image: Nid delwedd GIF na PNG yw'r ffeil
+
+########################################
 # Page: catsel.php
 #
+AVAILABLE CATEGORIES: CATEGORIESAU SYDD AR GAEL
+ENTRY CATEGORIES: CATEGORIESAU MYNEDIAD
 Remove: Dileu
+Global Category: Categori Byd-eang
 Cancel: Dileu
+
+########################################
+# Page: colors.php
+#
+Add Custom: Ychwanegu Custom
+Basic Colors: Lliwiau Sylfaenol
+Current Color: Lliw Cyfredol
+Custom Colors: Lliwiau Custom
+Old Color: Hen Lliw
+
+########################################
+# Page: combo.php
+#
+Select None: Dewiswch Dim
+Agenda: =
+Add Task: Ychwanegu Tasg
+Description: Disgrifiad
+Date: Dyddiad
+Time: Amser
+Priority: Blaenoriaeth
+Access: Caniatad
+Created by: Crewyd gan
+Updated: Newidwyd
+Participants: Cyfranogwyr
+Attachments: Atodiadau
+Comments: Sylwadau
+Brief Description: Disgrifiad Byr
+Full Description: Disgrifiad llawn
+Category: Dosbarth
+Add event detail: Ychwanegwch fanylion y digwyddiad
+Start Date: Dyddiad cychwyn
+Due Date: Dyddiad Dyladwy
+Add task detail: Ychwanegwch fanylion tasg
+All: Pob
+Error: Camgymeriad
+no response from server: dim ymateb gan y gweinydd
+JSON error: Gwall JSON
+High: Uchel
+Medium: Canolig
+Low: Isel
+Today: Heddiw
+Add Entry: Ychwanegu Digwyddiad
+Unnamed Event: Digwyddiad di-enw
+Unnamed Task: Tasg Dienw
+Refresh: Adnewyddu
+Click to add entry: Cliciwch i ychwanegu cofnod
+Name: Enw
+pm: =
+am: =
 
 ########################################
 # Page: del_entry.php
 #
-An appointment has been canceled for you by: Mae digwyddiad wedi ei dileu drostoch gan
+XXX has canceled an appointment.: Mae XXX wedi canslo apwyntiad.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id blob annilys
 
 ########################################
 # Page: docadd.php
 #
-Description: Disgrifiad
+Add Comment: Ychwanegu Sylw
+Add Attachment: Ychwanegu Ymlyniad
+Subject: Pwnc
+Comment: Sylw
+Upload file: Llwythwch ffeil
+
+########################################
+# Page: docdel.php
+#
+Removed: Wedi'i dynnu
 
 ########################################
 # Page: edit_entry.php
 #
-am: =
-pm: =
 days: diwrnod
 hours: awr
 minutes: munud
+You are not authorized to edit this task.: Nid oes gennych awdurdod i olygu'r dasg hon.
+is in a different timezone than you are. Currently: mewn cylch amser gwahanol nag yr ydych chi. Ar hyn o bryd
+hour ahead of you: awr o'ch blaen
+hour behind you: awr y tu ôl i chi
+hours ahead of you: oriau o'ch blaen
+hours behind you: oriau y tu ôl i chi
+XXX is in a different timezone (ahead): (Mae XXX mewn cylch amser gwahanol; YYY o'ch blaen.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (Mae XXX mewn cylch amser gwahanol; YYY y tu ôl i chi.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Mae'r amser a nodir yma yn seiliedig ar eich Ardal Amser.
 Edit Entry: Newid Digwyddiad
-Add Entry: Ychwanegu Digwyddiad
-Participants: Cyfranogwyr
+Details: Manylion
+Repeat: Ailadroddwch
+Reminders: Nodiadau atgoffa
 brief-description-help: Defnyddir hwn i roi disgrifiad byr (tua 20 llythyren) o'r digwyddiad. Dangosir y wybodaeth yn uniongyrchol ar y calendr.
-Brief Description: Disgrifiad Byr
 full-description-help: Defnyddir hwn i gwblhau manylion y digwyddiad. Mi all y defnyddiwr weld y wybodaeth yma wrth iddynt glicio ar y digwyddiad neu trwy symud y llygoden dros y digwyddiad.
-Full Description: Disgrifiad llawn
-access-help: Mae hwn yn dynodi lefel caniatad y digwyddiad.<br /> <i>Cyhoeddus</i>: Mae pawb yn gallu gweld holl fanylion y digwyddiad.<br /><i>Cyfrinachol</i>: Gall eraill gweld fod ganddoch digwyddiad am amser a dyddiad penodol, ond nid ydynt yn gallu gweld y manylion.
-Access: Caniatad
+access-help: Mae hwn yn dynodi lefel caniatad y digwyddiad.<br><i>Cyhoeddus</i>: Mae pawb yn gallu gweld holl fanylion y digwyddiad.<br><i>Cyfrinachol</i>: Gall eraill gweld fod ganddoch digwyddiad am amser a dyddiad penodol, ond nid ydynt yn gallu gweld y manylion.
 priority-help: Mae hwn yn dynodi blaenoriaeth y digwyddiad. Mi fydd digwyddiadau gyda blaenoriaeth uchel yn cael ei dangos gyda llythrennau bras.
-Priority: Blaenoriaeth
-High: Uchel
-Medium: Canolig
-Low: Isel
 category-help: Mae hwn yn dynodi dosbarth y digwyddiad.
-Category: Dosbarth
+completed-help: Dyddiad cwblhau'r dasg. Dim ond wedi'i alluogi pan fydd canran yr holl gyfranogwyr yn hafal i 100%.
+Date Completed: Dyddiad Cwblhau
+percent-help: Canran cwblhau tasg ar gyfer y defnyddiwr hwn
+Percent Complete: Canran Wedi'i Gwblhau
+All Percentages: Pob Canran
+location-help: Lleoliad y digwyddiad
+Location: Lleoliad
+url-help: URL y digwyddiad
+URL: =
 date-help: Mae hwn yn dynodi dyddiad y digwyddiad.
-time-help: Mae hwn yn dynodi amser y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
-duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad.<br /><i>Mi ellir gadael hwn yn wag.</i>
+Untimed event: Digwyddiad heb ei gyfyngu
+Timed event: Digwyddiad wedi'i amseru
+All day event: Digwyddiad trwy'r dydd
+Timezone Offset: Gwrthbwyso Amserlen
+time-help: Mae hwn yn dynodi amser y digwyddiad.<br><i>Mi ellir gadael hwn yn wag.</i>
+duration-help: Mae hwn yn dynodi (mewn Oriau:Munudau) parhad y digwyddiad.<br><i>Mi ellir gadael hwn yn wag.</i>
+end-time-help: Yn nodi'r amser y disgwylir i'r digwyddiad ddod i ben.
+Start Time: Amser Cychwyn
+Due Time: Amser Dyladwy
+Site Extras: Ychwanegiadau Safle
+avail_participants-help: Yn rhestru'r cyfranogwyr sydd ar gael yn y cofnod hwn.
+Available: Ar gael
+Find Name: Dewch o Hyd i Enw
+Resources: Adnoddau
 participants-help: Rhestrir y defnyddwyr sydd a cofnod o'r digwyddiad.
+Selected: Wedi'i ddewis
+Availability: Argaeledd
+external-participants-help: Yn nodi rhestr o gyfranogwyr ar gyfer y digwyddiad nad ydynt yn ddefnyddwyr calendr. Dylai'r defnyddwyr gael eu rhestru un fesul llinell a gallant gynnwys cyfeiriad e-bost. Os nodir cyfeiriad e-bost, mae'r defnyddiwr yn gymwys i dderbyn hysbysiadau a nodiadau atgoffa.
+External Participants: Cyfranogwyr Allanol
 repeat-type-help: Dewiswch pa more aml y dylsai'r digwyddiad ailgyflawni. Wrth dewis <i>Misol (wrth dydd o'r wythnos)</i> mi all digwyddiad ailgyflawni ar y Llun 1af o'r mis, 3ydd Iau o'r mis, ayyb. Wrth dewis <i>Misol (wrth dyddiad)</i> mi all digwyddiad ailgyflawni ar yr un diwrnod o'r mis (e.e. y 3ydd)
 Daily: Dyddiol
 Weekly: Wythnosol
 Monthly: Misol
 by day: wrth dydd yr wythnos
 by date: wrth dyddiad
+by position: yn ôl safle
+Monthly (by day): Yn fisol (yn ystod y dydd)
+Monthly (by date): Yn fisol (yn ôl dyddiad)
+Monthly (by position): Yn fisol (yn ôl swydd)
 Yearly: Blynyddol
+Manual: Llawlyfr
+Expert Mode: Modd Arbenigol
 repeat-end-date-help: Mae hwn yn dynodi y dyddiad olaf y gall y digwyddiad ailgyflawni hyd iddi.
+Ending: Yn dod i ben
+Forever: Am byth
 Use end date: Mae angen diwrnod diwethaf
+Number of times: Nifer o weithiau
 repeat-frequency-help: Mae hwn yn dynodi pa mor aml bydd y digwyddiad yn ailgyflawni. Wrth dewis 1 mi fydd y digwyddiad yn digwydd pob tro. Wrth dewis 2 mi fydd y digwyddiad yn digwydd bob yn ail wythnos (os yw <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Wythnosol</i>), neu bob yn ail mis (os yw <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Misol</i>), ayyb.
 Frequency: Amlder
-All: Pob
+Weekdays Only: Dyddiau'r Wythnos yn Unig
+Week Start: Cychwyn Wythnos
+repeat-bydayextended-help: Yn caniatáu dewis dyddiad yn seiliedig ar ddiwrnod yr wythnos.
+ByDay: =
+repeat-month-help: Yn nodi ym mha fisoedd y dylai'r digwyddiad ailadrodd.
+ByMonth: =
+repeat-bysetpos-help: Yn caniatáu dewis dyddiad yn seiliedig ar safle gyda'r mis.
+BySetPos: =
+repeat-bymonthdayextended-help: Yn caniatáu dewis dyddiad yn seiliedig ar ddyddiad.
+ByMonthDay: =
+repeat-byweekno-help: Yn caniatáu i'r defnyddiwr nodi rhestr o wythnosau i ailadrodd digwyddiad (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Yn caniatáu i'r defnyddiwr nodi rhestr o ddyddiau blwyddyn i ailadrodd digwyddiad (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Diwrnodau ychwanegol y dylai'r digwyddiad hwn ddigwydd neu na ddylent ddigwydd.
+Exclusions: Gwaharddiadau
+Inclusions: Cynhwysiadau
+Add Exception: Ychwanegu Eithriad
+Add Inclusion: Ychwanegu Cynhwysiant
+Delete Selected: Dileu Dethol
 Send Reminder: Anfoner atgofiad
+When: Pryd
+Use Date/Time: Defnyddiwch Ddyddiad / Amser
+Use Offset: Defnyddiwch Gwrthbwyso
+Before: Cyn
+After: Ar ôl
+Start: Dechrau
+End/Due: Diwedd / Dyladwy
+Times: Amserau
+Every: Pob
+CAPTCHA Warning: Rhybudd:  Ni ellir defnyddio CAPTCHA heb estyniad GD PHP!<br>
 Delete entry: Dileu digwyddiad
 You are not authorized to edit this entry.: Nid oes ganddo chi yr awdurdod i newid y digwyddiad yma
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: Mae digwyddiad newydd wedi ei greu i chi gan
-An appointment has been updated by: Mae digwyddiad wedi ei newid gan
+XXX has made a new appointment.: Mae XXX wedi gwneud apwyntiad newydd.
+XXX has updated an appointment.: Mae XXX wedi diweddaru apwyntiad.
+Security violation!: Torri diogelwch!
+You must enter the anti-spam text on the previous page.: Rhaid i chi nodi'r testun gwrth-sbam ar y dudalen flaenorol.
 The following conflicts with the suggested time: Mae'r canlynol yn gwrthdaro gyda'r amser awgrymiedig
-Please look on: Edrychwch ar
-to accept or reject this appointment: i derbyn neu gwrthod y digwyddiad yma
-to view this appointment: i wylio'r digwyddiad yma
+User removed from participants list.: Tynnwyd y defnyddiwr oddi ar y rhestr cyfranogwyr.
+Please look on XXX to accept or reject this appointment.: Edrychwch ar XXX i dderbyn neu wrthod yr apwyntiad hwn.
+Please look on XXX to view this appointment.: Edrychwch ar XXX i weld yr apwyntiad hwn.
 Scheduling Conflict: Gwrthdrawiad Amserlen
 Your suggested time of: Mae eich amser awgrymiedig o
 conflicts with the following existing calendar entries: yn gwrthdaro gyda'r digwyddiadau canlynol sydd yn bodoli eisoes
 
 ########################################
-# Page: edit_layer.php
-#
-Add Layer: Ychwanegu Haen
-Edit Layer: Newid Haen
-Source: Ffynhonell
-Duplicates: Dyblygiadau
-Show layer events that are the same as your own: Dangoser digwyddiadau haen sydd yn union fel rhai eich hunan
-Add to My Calendar: Ychwanegu i Fy Nghalendr
-Delete layer: Dileu haen
-
-########################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself.: Ni allwch greu haen i'ch digwyddiadau chi
-You can only create one layer for each user.: Allwch ond creu un haen i pob defnyddiwr
-
-########################################
 # Page: edit_nonusers.php
 #
+NONUSER_PREFIX not set: Nid yw NONUSER_PREFIX wedi'i osod yn "config.php".
+word characters only: (dim ond nodau geiriau y gallant eu cynnwys; [a-zA-Z_0-9])
 Add User: Ychwanegu Defnyddiwr
 Edit User: Newid Defnyddiwr
+Calendar ID: ID Calendr
 First Name: Enw Cyntaf
 Last Name: Cyfenw
+Is public calendar: A yw calendr cyhoeddus
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Gwall cronfa ddata
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Ychwanegu Calendr o Bell
+Edit Remote Calendar: Golygu Calendr Anghysbell
+Create Layer: Creu Haen
+Reload: Ail-lwytho
+Required to View Remote Calendar: Yn ofynnol i Weld y Calendr o Bell
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Camgymeriad
+Import Results: Canlyniadau Mewnforio
+Events successfully imported: Mewnforiwyd digwyddiadau yn llwyddiannus
+Create a new layer to view this calendar.: Creu haen newydd i weld y calendr hwn.
+Errors: Gwallau
+There was an error parsing the import file or no events were returned.: Roedd gwall yn dosrannu'r ffeil fewnforio neu ni ddychwelwyd unrhyw ddigwyddiadau.
 
 ########################################
 # Page: edit_report.php
 #
+Tomorrow: Yfory
+Yesterday: Ddoe
+Day before yesterday: Diwrnod cyn ddoe
+Next week: Wythnos nesaf
+This week: Wythnos yma
+Last week: Wythnos diwethaf
+Week before last: Wythnos cyn ddiwethaf
+Next week and week after: Wythnos nesaf ac wythnos ar ôl
+This week and next week: Yr wythnos hon a'r wythnos nesaf
+Last week and this week: Yr wythnos diwethaf a'r wythnos hon
+Last two weeks: Bythefnos diwethaf
+Next month: Mis nesaf
+This month: Y mis yma
+Last month: Mis diwethaf
+Month before last: Mis cyn diwethaf
+Next year: Blwyddyn nesaf
+This year: Eleni
+Last year: Blwyddyn diwethaf
+Year before last: Blwyddyn cyn ddiwethaf
+Next 14 days: 14 diwrnod nesaf
+Next 30 days: 30 diwrnod nesaf
+Next 60 days: 60 diwrnod nesaf
+Next 90 days: 90 diwrnod nesaf
+Next 180 days: 180 diwrnod nesaf
+Next 365 days: 365 diwrnod nesaf
+Invalid report id XXX.: Adroddiad annilys id: "XXX".
+Unnamed Report: Adroddiad Dienw
+Add Report: Ychwanegu Adroddiad
+Edit Report: Golygu Adroddiad
+Report name: Enw'r adroddiad
 User: Defnyddiwr
 Current User: Defnyddiwr presennol
+Include link in menu: Cynnwys dolen yn y ddewislen
+Include standard header/trailer: Cynhwyswch bennawd / trelar safonol
+Include previous/next links: Cynhwyswch ddolenni blaenorol / nesaf
+Include empty dates: Cynhwyswch ddyddiadau gwag
+Date range: Ystod dyddiad
+Template variables: Newidynnau templed
+Page template: Templed tudalen
+Day template: Templed dydd
+Event template: Templed digwyddiad
+Are you sure you want to delete this report?: Ydych chi'n siŵr eich bod chi am ddileu'r adroddiad hwn?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Dim adroddiad o'r fath id: "XXX".
+Variable XXX not found.: XXX amrywiol heb ei ddarganfod.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Golygu Pennawd Custom
+Edit Custom Script/Stylesheet: Golygu Custom Script / Taflen Steiliau
+Edit Custom Trailer: Golygu Custom Trailer
 
 ########################################
 # Page: edit_user.php
@@ -321,6 +847,7 @@ E-mail address: Cyfeiriad E-bost
 Password: Gair Cydd
 again: eto
 Disabled for demo: Dim yn gweithio yn yr arddangosiad
+Are you sure you want to delete this user?: Ydych chi'n siŵr eich bod chi am ddileu'r defnyddiwr hwn?
 Change Password: Newid Gair Cydd
 New Password: Gair Cydd Newydd
 Set Password: Gosod Gair Cydd
@@ -331,16 +858,34 @@ Set Password: Gosod Gair Cydd
 Deleting users not supported.: Ni chanieteir diddymu defnyddwyr
 The passwords were not identical.: Nid yw'r geiriau cyfrin yn cyfateb
 You have not entered a password.: Nid ydych wedi cynnig gair cydd
+Username cannot be blank.: Ni all enw defnyddiwr fod yn wag.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Heb awdurdod
 
 ########################################
 # Page: export.php
 #
 Export: Allforio
 Export format: Fformat Allforio
+Include all layers: Cynhwyswch yr holl haenau
+Include deleted entries: Cynhwyswch gofnodion wedi'u dileu
 Export all dates: Allforio pob dyddiad
 Start date: Dyddiad cyntaf
 End date: Dyddiad olaf
 Modified since: Newidwyd ers
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: fformat allforio heb ei ddiffinio nac yn anghywir.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Dim defnyddiwr wedi'i nodi.
 
 ########################################
 # Page: groups.php
@@ -354,8 +899,11 @@ Unnamed Group: Grwp Di-enw
 Add Group: Ychwanegu Grwp
 Edit Group: Newid Grwp
 Group name: Enw grwp
-Updated: Newidwyd
-Created by: Crewyd gan
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Rhaid i chi nodi enw grŵp
 
 ########################################
 # Page: help_admin.php
@@ -364,21 +912,35 @@ Auto-refresh calendars: Calendr yn adfywio yn awtomatig
 auto-refresh-help: Pan ymlaen, mae'r golwg dyddiol, wythnosol neu misol, a rhestr tudalennau heb cymeradwyaeth, yn cael eu adfywio yn awtomatig yn rheolaidd.
 Auto-refresh time: Amser i adfywio'n awtomatig
 auto-refresh-time-help: Os yw adfywio awtomatig yn cael ei ddefnyddio, yna mae hwn yn pendefynnu'r amser rhwng pob adfywiad.
+Display days with events in bold in year view: Diwrnodau arddangos gyda digwyddiadau mewn print trwm yng ngolwg y flwyddyn
 Display weekends in week view: Dangoser penwythnosau yn y golwg wythnosol
 Time interval: Ystod Amser
 time-interval-help: Mae hwn yn dynodi hyd y blociau amser yn y golwg wythnosol a'r golwg dyddiol.
+Nonuser: Calendrau Nonuser
+user-customize-color: Yn nodi a yw defnyddwyr yn cael addasu eu cynllun lliw eu hunain.
+enable-gradient-help: Defnyddiwch liwiau graddiant ar gyfer cefndiroedd celloedd.
+Manually entering color values: Mynd i mewn i werthoedd lliw â llaw
 colors-help: Dylsai pob lliw gael ei dynodi trwy fformat hexadecimal "#RRGGBB" ble mae "RR" yn cynrychioli coch mewn hex, "GG" yn cynrychioli gwyrdd mewn hex, ac mae "BB" yn cynrychioli glas mewn hex.
 
 ########################################
 # Page: help_bug.php
 #
 Report Bug: Cofnodi Problem
+Please include all the information below when reporting a bug.: Cofiwch gynnwys yr holl wybodaeth isod wrth riportio nam.
+Also, please use English rather than XXX.: Hefyd, defnyddiwch  Saesneg  yn hytrach na XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Dogfennaeth WebCalendar
+Currently in English only.: Yn Saesneg yn unig ar hyn o bryd.
 
 ########################################
 # Page: help_edit_entry.php
 #
 Adding/Editing Calendar Entries: Ychwanegu/Newid Digwyddiadau Calendr
 Repeat Type: Amlder Ailgyflawni
+For More Information...: Am fwy o wybodaeth...
 Repeat End Date: Diwrnod olaf a ailgyflawnir
 Repeat Day: Diwrnod yr ailgyflawniad
 repeat-day-help: Mae hwn yn dynodi pa ddiwrnodau o'r wythnos y bydd y digwyddiad yn ailgyflawni arnynt. Defnyddir hwn ond pan fod <i>Amlder Ailgyflawni</i> wedi ei osod i <i>Wythnosol</i>.
@@ -386,23 +948,40 @@ repeat-day-help: Mae hwn yn dynodi pa ddiwrnodau o'r wythnos y bydd y digwyddiad
 ########################################
 # Page: help_import.php
 #
+Import: Mewnforio
+Palm Desktop: Penbwrdd Palmwydd
+allow you to import entries from the Palm...: Bydd y ffurflen hon yn caniatáu ichi fewnforio cofnodion o'r Palm Desktop Datebook. Dylai gael ei leoli yn eich cyfeirlyfr Palmwydd yn datebook / datebook.dat mewn is-gyfeiriadur a enwir gan eich enw defnyddiwr.
+The following entries will not be imported: Ni fydd y cofnodion canlynol yn cael eu mewnforio:
+Entries older than the current date: Cofrestriadau sy'n hŷn na'r dyddiad cyfredol
+Entries created in the Palm Desktop...: Cofrestriadau a grëwyd yn y Palm Desktop nad ydynt wedi bod yn HotSync'd
+Anything imported from Palm...: Bydd unrhyw beth a fewnforir o Palm yn cael ei drosysgrifo yn ystod y mewnforio nesaf (oni bai bod dyddiad y digwyddiad wedi mynd heibio). Felly, dylid gwneud diweddariadau yn y Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Bydd y ffurflen hon yn mewnforio digwyddiadau vCalendar (.vcs) 1.0.
+The following formats have been tested: Profwyd y fformatau canlynol:
+This form will import iCalendar (.ics) events.: Bydd y ffurflen hon yn mewnforio digwyddiadau iCalendar (.ics).
 Enabling: Defnyddiwch
+Overwrite Prior Import: Ysgrifennu Mewnforio Blaenorol
+will cause events imported previously...: yn achosi i ddigwyddiadau a fewnforiwyd yn flaenorol, a ddefnyddiodd yr un UID â digwyddiad o'r ffeil fewnforio newydd, gael eu marcio fel rhai wedi'u dileu. Dylai hyn ganiatáu mewnforio ffeil iCalendar wedi'i diweddaru heb greu dyblygu.
 
 ########################################
 # Page: help_index.php
 #
 Help Index: Indecs Cymorth
+About WebCalendar: Am WebCalendar
 
 ########################################
 # Page: help_layers.php
 #
+Layers are useful for displaying...: Mae haenau'n ddefnyddiol ar gyfer arddangos digwyddiadau defnyddwyr eraill yn eich calendr eich hun. Gallwch chi nodi'r defnyddiwr a'r lliw y bydd y digwyddiadau'n cael ei arddangos ynddo.
 Add/Edit/Delete: Ychwanegu/Newid/Dileu
 Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Wrth glicio ar y cyswllt Newid Haenau yn yr adran weinyddol ar waelod y dudalen fe ganieteir i chi ychwanegu, newid neu dileu haenau.
 The text color of the new layer that will be displayed in your calendar.: Lliw testun yr haen newydd yn cael ei ddangos ar eich calendr.
 Disabling: Anablwch
 Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Gwasgwch y cyswllt Anablwch Haenau yn yr adran weinyddol ar waelod y tudalen i beidio a defnyddio haenau.
+Duplicates: Dyblygiadau
 If checked, events that are duplicates of your events will be shown.: Os dewisir, mi fydd digwyddiadau sydd yr un fath a'ch digwyddiadau chi yn cael ei dangos.
 Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Gwasgwch y cyswllt Defnyddiwch Haenau yn yr adran weinyddol ar waelod y tudalen er mwyn defnyddio haenau.
+Source: Ffynhonell
 Specifies the user that you would like to see displayed in your calendar.: Mae hwn yn dynodi y defnyddiwr yr hoffech dangos ei ddigwyddiadau ar eich calendr.
 
 ########################################
@@ -410,29 +989,101 @@ Specifies the user that you would like to see displayed in your calendar.: Mae h
 #
 Default Category: Dosbarth Arferol
 default-category-help: Mae hwn yn dynodi pa dosbarth y bydd digwyddiad newydd yn perthyn i yn arferol.
+When I am the boss: Pan fi yw'r bos
+Email me event notification: E-bostiwch hysbysiad digwyddiad ataf
+email-boss-notifications-help: Yn nodi a yw penaethiaid yn derbyn e-byst fel hysbysiadau digwyddiadau.
+I want to approve events: Rwyf am gymeradwyo digwyddiadau
+boss-approve-event-help: Yn nodi a fydd yn ofynnol i'r pennaeth gymeradwyo digwyddiadau a ychwanegir gan gynorthwywyr.
+Subscribe/Publish: Tanysgrifio / Cyhoeddi
+Allow remote publishing: Caniatáu cyhoeddi o bell
+allow-remote-publishing-help: Yn nodi a all cleient iCal anghysbell gyhoeddi digwyddiadau yn ôl i WebCalendar
+remote-publishing-url-help: Yn arddangos yr URL i'w ddefnyddio yn y cais cleient iCal ar gyfer tanysgrifio a chyhoeddi yn ôl i WebCalendar.
+allow-remote-subscriptions-help: Yn nodi a all defnyddwyr anghysbell danysgrifio i'ch calendr, gan ganiatáu iddynt weld eich digwyddiadau mewn cymhwysiad wedi'i alluogi gan iCal (fel iCal Apple neu Calendr Mozilla).
+remote-subscriptions-url-help: Yn arddangos yr URL y dylai defnyddwyr anghysbell ei ddefnyddio i danysgrifio i'ch calendr.
+Enable FreeBusy publishing: Galluogi cyhoeddi FreeBusy
+freebusy-enabled-help: Yn nodi a ellir cael yr amser sydd ar gael gan ddefnyddiwr gan ddefnyddio safon iCal FreeBusy.
+freebusy-url-help: Yr URL ar gyfer cyrchu rhestr FreeBusy y defnyddiwr
+rss-feed-url-help: Yr URL i gael mynediad i'r porthiant RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Yn caniatáu ar gyfer rheoli mynediad a chaniatâd defnyddwyr yn iawn. Gall defnyddwyr hefyd roi caniatâd diofyn a fesul caniatâd unigol os caiff ei awdurdodi gan y gweinyddwr.
+If disabled, this user cannot send you emails.: Os yw'n anabl, ni all y defnyddiwr hwn anfon e-byst atoch.
+If disabled, this user cannot see you in the participants list.: Os yw'n anabl, ni all y defnyddiwr hwn eich gweld yn rhestr y cyfranogwyr.
+If enabled, this user cannot view the details of any of your entries.: Os yw wedi'i alluogi, ni all y defnyddiwr hwn weld manylion unrhyw un o'ch cofnodion.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Cyhoeddi Anabl (Gweinyddiaeth)
+Publishing Disabled (User): Cyhoeddi Anabl (Defnyddiwr)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Cliciwch i Dewis
+Current Icons on Server: Eiconau Cyfredol ar y Gweinydd
 
 ########################################
 # Page: import.php
 #
+import from file: mewnforio o'r ffeil
 Disabled: Ymaith
+Import format: Fformat mewnforio
+Exclude private records: Peidiwch â chynnwys cofnodion preifat
+Repeated items are imported separately. Prior imports are not overwritten.: Mae eitemau wedi'u hailadrodd yn cael eu mewnforio ar wahân. Nid yw mewnforion blaenorol wedi'u trosysgrifo.
+
+########################################
+# Page: import_handler.php
+#
+No file: Dim ffeil
+Error deleting palm events from webcalendar.: Gwall dileu digwyddiadau palmwydd o webcalendar.
+Events from prior import marked as deleted: Digwyddiadau o fewnforio blaenorol wedi'u marcio fel rhai wedi'u dileu
+Conflicting events: Digwyddiadau gwrthdaro
+The import file contained no data.: Nid oedd y ffeil fewnforio yn cynnwys unrhyw ddata.
 
 ########################################
 # Page: layers.php
 #
-Layer: Haen
-Edit layer: Newid haen
 Are you sure you want to delete this layer?: A ydych y siwr eich bod eisiau dileu'r haen yma?
+Delete layer: Dileu haen
+Edit layer: Newid haen
+Enable layers: Galluogi haenau
+Layer: Haen
+Layers are currently disabled.: Mae haenau yn anabl ar hyn o bryd.
+Layers are currently enabled.: Mae haenau wedi'u galluogi ar hyn o bryd.
+Click to modify layers settings for XXX: Cliciwch yma i addasu gosodiadau'r haenau ar gyfer y calendr XXX.
 Disable Layers: Dim haenau
 Add layer: Ychwanegu haen
+Add Layer: Ychwanegu Haen
+Edit Layer: Newid Haen
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Methu diweddaru dewis
+Invalid entry id.: Id mynediad annilys.
+You cannot create a layer for yourself.: Ni allwch greu haen i'ch digwyddiadau chi
+You can only create one layer for each user.: Allwch ond creu un haen i pob defnyddiwr
 
 ########################################
 # Page: list_unapproved.php
 #
 Approve/Confirm: Cymeradwywch
+Approve Selected: Dewis Cymeradwy
+Check All: Gwiriwch Bawb
+Emails Will Not Be Sent: Ni Anfonir E-byst
+Reject Selected: Gwrthod Dewiswyd
 Reject: Gwrthod
+Uncheck All: Dad-diciwch Bawb
 View this entry: Gwyliwch y digwyddiad hwn
+No unapproved entries for XXX.: Dim cofnodion anghymeradwy ar gyfer: "XXX".
+Unapproved Entries: Cofrestriadau Heb eu Cymeradwyo
 Approve this entry?: Cymeradwywch y digwyddiad hwn?
 Reject this entry?: Gwrthodwch y digwyddiad hwn?
+Approve Selected entries?: Cymeradwyo cofnodion dethol?
+Reject Selected entries?: Gwrthod Cofnodion Dethol?
 
 ########################################
 # Page: login-app.php
@@ -440,33 +1091,126 @@ Reject this entry?: Gwrthodwch y digwyddiad hwn?
 You must enter a login and password.: Rhaid i chi cynnig mewngofnodiad a gair cydd
 Save login via cookies so I dont have to login next time.: Arbedwch fy mewngofnodiad trwy 'cookies' fel nad oes raid i mi mewngofnodi y tro nesaf
 Login: Mewngofnodiad
-Access public calendar: Calendr Cyhoeddus
-cookies-note: <b>Note:</b> Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwedd yma redeg.
+public: cyhoeddus
+Access XXX calendar: Cyrchu calendr XXX
+cookies-note: Note: Mae'n hanfodol bod 'cookies' yn gweithio i'r meddalwedd yma redeg.
 
 ########################################
 # Page: login.php
 #
+Illegal characters in login XXX.: Cymeriadau anghyfreithlon wrth fewngofnodi XXX.
 Invalid login: Mewngofnodiad annilys
+Activity login failure: Enw defnyddiwr: "XXX", IP: "YYY".
+Error XXX: Gwall: "XXX".
+You have been logged out.: Rydych chi wedi allgofnodi.
+Access public calendar: Calendr Cyhoeddus
+Not yet registered? Register here!: Heb gofrestru eto? Cofrestrwch yma!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Dim calendr nonuser o'r fath: "XXX".
+This Calendar is not Public.: Nid yw'r Calendr hwn yn Gyhoeddus.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Ychwanegu Calendr Newydd NonUser
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Rhaid nodi mewngofnodi.
+No such nonuser calendar: Dim calendr nonuser o'r fath
 
 ########################################
 # Page: pref.php
 #
+Invalid theme: Thema annilys
 Save Preferences: Arbed Dewisiadau
+Public Access calendar: Calendr Mynediad Cyhoeddus
+Modify Non User Calendar Preferences: Addasu Dewisiadau Calendr Di-ddefnyddiwr
+Return to My Preferences: Dychwelwch at Fy Dewisiadau
+Custom Scripts: Sgriptiau Custom
+Timezone Selection: Dewis Ardal Amser
+Multiview: =
+entry-interval-help: Yn gosod egwyl munud wrth olygu amseroedd mynediad
+Entry interval: Cyfnod mynediad
 hour: awr
+minute: munud
+theme-reload-help: Oherwydd caching CSS, efallai y bydd angen ail-lwytho tudalen
+Page may need to be reloaded for new Theme to take effect: Efallai y bydd angen ail-lwytho tudalen er mwyn i'r Thema newydd ddod i rym
+display_byproxy-help: Arddangos y crëwr go iawn ar dudalen view_entry
+Display if created by Assistant: Arddangos os caiff ei greu gan Gynorthwyydd
+allow-view-subscriptions-help: Yn caniatáu cyfyngu mynediad o bell i gofnodion Preifat neu Gyfrinachol
+Allow remote viewing of: Caniatáu gwylio o bell
+entries: cofnodion
+
+########################################
+# Page: purge.php
+#
+Purging events for: Digwyddiadau glanhau ar gyfer
+Finished: Gorffennwyd
+Back: Yn ôl
+Check box to delete ALL events for a user: Blwch gwirio i ddileu  POB  digwyddiad ar gyfer defnyddiwr
+Delete all events before: Dileu pob digwyddiad o'r blaen
+Purge deleted only: Purge wedi'i ddileu yn unig
+Preview delete: Rhagolwg dileu
+Are you sure you want to delete events for: Ydych chi'n siŵr eich bod chi am ddileu digwyddiadau ar gyfer
+Records deleted from XXX: Cofnodion wedi'u dileu o "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Ni all cyfeiriad e-bost fod yn wag.
+Username already exists.: Mae enw defnyddiwr eisoes yn bodoli.
+Email address already exists.: Mae cyfeiriad e-bost yn bodoli eisoes.
+New user via self-registration.: Defnyddiwr newydd trwy hunan-gofrestru.
+A new WebCalendar account has been set up for you.: Mae cyfrif WebCalendar newydd wedi'i sefydlu ar eich cyfer chi.
+Your username is XXX.: Eich enw defnyddiwr yw: "XXX".
+Your password is XXX.: Eich cyfrinair yw: "XXX".
+Please visit XXX to log in and start using your account!: Ewch i "XXX" i fewngofnodi a dechrau defnyddio'ch cyfrif!
+You may change your password after logging in the first time.: Gallwch newid eich cyfrinair ar ôl mewngofnodi y tro cyntaf.
+If you received this email in error: Os gwnaethoch dderbyn yr e-bost hwn trwy gamgymeriad ac na wnaethoch gofrestru ar gyfer cyfrif WebCalendar, gallwch ddiystyru'r hysbysiad hwn, neu ateb gyda nodyn byr
+Administrator: Gweinyddwr
+Welcome: Croeso
+New user via email.: Defnyddiwr newydd trwy e-bost.
+Registration: Cofrestru
+Welcome to WebCalendar: Croeso i WebCalendar
+Your email should arrive shortly.: Dylai eich e-bost gyrraedd yn fuan.
+Return to Login screen: Dychwelwch i'r sgrin Mewngofnodi
+Password (again): Cyfrinair (eto):
+Your account information will be emailed to you.: Bydd eich gwybodaeth gyfrif yn cael ei e-bostio atoch chi.
+Submit: Cyflwyno
 
 ########################################
 # Page: reject_entry.php
 #
-An appointment has been rejected by: Gwrthodwyd digwyddiad gan
+Continue: Parhewch
+(Your comments will be emailed to the other participants.): (Bydd eich sylwadau yn cael eu hanfon trwy e-bost at y cyfranogwyr eraill.)
+XXX has rejected an appointment.: Mae XXX wedi gwrthod apwyntiad.
+Rejected by XXX.: Gwrthodwyd gan XXX.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Ychwanegu Calendr Anghysbell Newydd
 
 ########################################
 # Page: report.php
 #
 This event is confidential.: Mae'r digwyddiad yma yn gyfrinachol
+(Private): (Preifat)
+(cont.): (parhad)
+Approved: Cymeradwywyd
 Deleted: Diddymwyd
 Rejected: Gwrthodwyd
 Waiting for approval: Aros as cymeradwyaeth
-Click here: Cliciwch yma
+Unknown: Anhysbys
+Invalid report id.: Adroddiad annilys id.
+Click here to manage reports for the Public Access calendar.: Cliciwch yma i reoli adroddiadau ar gyfer y calendr Mynediad Cyhoeddus.
+Add new report: Ychwanegu adroddiad newydd
+Manage Reports: Rheoli Adroddiadau
 
 ########################################
 # Page: search.php
@@ -474,6 +1218,13 @@ Click here: Cliciwch yma
 Advanced Search: Chwiliad Manwl
 Search: Chwiliad
 Keywords: Allweddeiriau
+Enter % for all entries: Rhowch% ar gyfer pob cais
+Include: Cynhwyswch
+Filter by Date: Hidlo yn ôl Dyddiad
+All Dates: Pob Dyddiad
+Past: Gorffennol
+Upcoming: Ar ddod
+Range: Ystod
 
 ########################################
 # Page: search_handler.php
@@ -483,11 +1234,33 @@ Search Results: Canlyniadau Archwiliad
 match found: Darganfyddwyd ateb cyfatebol
 matches found: Darganfyddwyd atebion cyfatebol
 No matches found: Dim byd yn cyfateb
+New Search: Chwilio Newydd
 
 ########################################
 # Page: security_audit.php
 #
+list potential security issues: Mae'r wybodaeth isod yn rhestru problemau posibl gyda'ch gosodiad WebCalendar y gellid ei addasu i wneud eich gosodiad yn fwy diogel.
+For questions about WebCalendar security see the forums: Am gwestiynau am unrhyw fater diogelwch WebCalendar, defnyddiwch y fforymau WebCalendar a gynhelir ar GitHub.com;<br>XXX
+View your current PHP settings: Gweld eich gosodiadau PHP cyfredol
+Security Issue: Mater Diogelwch
 Status: Statws
+Default admin user password: Cyfrinair defnyddiwr gweinyddol diofyn
+You should change the password of the default admin user.: Dylech newid cyfrinair y defnyddiwr gweinyddol diofyn.
+File permissions XXX: Caniatadau ffeil: XXX
+item XXX should not be writable: Ni ddylid ysgrifennu'r eitem ganlynol:<br><tt> XXX</tt>
+File exists XXX: Mae'r ffeil yn bodoli: "XXX"
+Because you have email disabled, you should remove this file.: Oherwydd bod gennych e-bost yn anabl, dylech gael gwared ar y ffeil hon.
+File location XXX: Lleoliad ffeil: "XXX"
+remove XXX if not using: Os nad ydych yn defnyddio ffeil "XXX", dylech ei dileu. Neu, o leiaf, ei symud i gyfeiriadur newydd.
+System Settings XXX: Gosodiadau System: "XXX"
+consider enabling UAC: Efallai yr hoffech ystyried galluogi Rheoli Mynediad i Ddefnyddwyr i osod breintiau defnyddwyr.
+recommend approving new public events: Rydym yn argymell bod pob cyflwyniad digwyddiad cyhoeddus yn cael ei gymeradwyo.
+recommend using CAPTCHA: Argymhellir CAPTCHA i warchod cyflwyniadau digwyddiadau awtomataidd eto.
+Database cache directory location: Lleoliad cyfeiriadur storfa cronfa ddata
+db cache should be inaccessable: Dylai storfa'r gronfa ddata fod mewn cyfeiriadur na ellir ei gyrchu gydag URL.
+PHP Settings XXX: Gosodiadau PHP: "XXX"
+recommend setting XXX Off: Mae'r gosodiad a argymhellir ar gyfer "XXX" i ffwrdd.
+recommend setting allow_url_fopen Off: Mae'r gosodiad a argymhellir ar gyfer "allow_url_fopen" i ffwrdd pan na chaiff calendrau anghysbell eu galluogi.
 
 ########################################
 # Page: select_user.php
@@ -499,16 +1272,24 @@ View Another Users Calendar: Gwylio Calendr Defnyddiwr arall
 #
 You have not added any categories.: Nid ydych wedi ychwanegu unrhyw dosbarthiadau
 Set Category: Gosod Dosbarth
+Global Categories cannot be changed.: Ni ellir newid Categorïau Byd-eang.
+
+########################################
+# Page: upcoming.php
+#
+more: mwy
 
 ########################################
 # Page: users.php
 #
+Remote Calendars: Calendrau Anghysbell
 denotes administrative user: Dynoder defnyddiwr gweinyddol
 Add New User: Ychwanegu Defnyddiwr Newydd
 
 ########################################
 # Page: usersel.php
 #
+form: ffurf
 Reset: Ail-osod
 
 ########################################
@@ -524,58 +1305,179 @@ Add View: Ychwanegu Golwg
 Edit View: Newid Golwg
 View Name: Enw Golwg
 View Type: Math Golwg
+Day by Time: O ddydd i ddydd
+Week (Users horizontal): Wythnos (Defnyddwyr yn llorweddol)
+Week by Time: Wythnos yn ôl Amser
+Week (Users vertical): Wythnos (Defnyddwyr yn fertigol)
+Week (Timebar): Wythnos (Bar Amser)
+Month (Timebar): Mis (Bar Amser)
+Month (side by side): Mis (ochr yn ochr)
+Month (on same calendar): Mis (ar yr un calendr)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Rhaid i chi nodi enw gweld
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Dim defnyddwyr ar gyfer y farn hon.
 
 ########################################
 # Page: view_entry.php
 #
+Update Task Percentage: Diweddaru Canran y Dasg
+Completed: Wedi'i gwblhau
+Assistant mode: Modd cynorthwyol
+Declined: Dirywio
+Needs-Action: Anghenion-Gweithredu
+by: gan
+Percentage Complete: Canran Wedi'i Gwblhau
+External User: Defnyddiwr Allanol
+Update: Diweddariad
+at: yn
+comments: sylwadau
+Show: Sioe
+Hide: Cuddio
 Approve/Confirm entry: Cymeradwyo digwyddiad
 Reject entry: Gwrthod digwyddiad
 Set category: Gosod dosbarth
+Add to My Calendar: Ychwanegu i Fy Nghalendr
+Copy entry: Copi cofnod
 This will delete this entry for all users.: Fydd hwn yn dileu y digwyddiad dros pob defnyddiwr.
 Edit entry: Newid digwyddiad
 Edit repeating entry for all dates: Newid digwyddiad a ail-adroddir am pob dyddiad
 Delete repeating event for all dates: Dileu digwyddiad a ail-adroddir am pob dyddiad
 Edit entry for this date: Newid digwyddiad am y dyddiad yma'n unig
 Delete entry only for this date: Dileu digwyddiad am y dyddiad yma'n unig
+Delete entry from calendar of XXX: Dileu cofnod o galendr XXX
+This will delete the entry from your XXX calendar.: Bydd hyn yn dileu'r cofnod o'ch calendr XXX.
+boss: bos '
+This will delete the entry from your boss calendar.: Bydd hyn yn dileu'r cofnod o galendr eich pennaeth.
 This will delete the entry from your calendar.: Fydd hwn yn dileu y digwyddiad o'ch calendr.
+from your boss calendar: o galendr eich pennaeth
 Do you want to add this entry to your calendar?: A ydych eisiau ychwanegu'r digwyddiad yma i'ch calendr?
 This will add the entry to your calendar.: Fydd hwn yn ychwanegu'r digwyddiad yma i'ch calendr.
 Email all participants: E-bost at bob aelod
 Hide activity log: Cyddio cofnod gweithgarwch
 Show activity log: Dangos cofnod gweithgarwch
+Export this entry to: Allforiwch y cofnod hwn i
 Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Cliciwch ddwywaith ar gell wag i ychwanegu cofnod newydd.
 
 ########################################
 # Page: week_details.php
 #
 New Entry: Digwyddiad newydd
+cont.: parhad.
 
 ########################################
 # Page: includes/access.php
 #
 Another Users Calendar: Calendr defnyddiwr arall
+Category Management: Rheoli Categori
+Day View: Golwg Dydd
+Edit Event: Golygu Digwyddiad
+Month View: Golwg Mis
+Common Trailer: Trelar Cyffredin
+User Management: Rheoli Defnyddwyr
 Manage Views: Rheolwch golygfeydd
+Week View: Golwg Wythnos
+Year View: Golwg Blwyddyn
+Invalid function id: Swyddogaeth annilys id
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Methu dod o hyd i ffeil "settings.php".<br>Copïwch "settings.php.orig" i "settings.php" a golygu ar gyfer eich gwefan.
+Incomplete settings.php file...: Ffeil "settings.php" anghyflawn ...
+Could not find XXX defined in...: Methu dod o hyd i "XXX" wedi'i ddiffinio yn eich ffeil "settings.php".
+You must define XXX in: Rhaid i chi ddiffinio "XXX" yn y ffeil "settings.php".
 
 ########################################
 # Page: includes/date_formats.php
 #
 December: Rhagfyr
 Dec: Rha
+LANGUAGE DEFINED: IAITH A DDIFFINIR
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Gwall wrth gysylltu â'r gronfa ddata: "XXX".
+db_type not defined.: db_type heb ei ddiffinio.
+invalid db_type XXX: db_type annilys "" XXX ".
+Cache cleared from previous SQL!: Cache wedi'i glirio o SQL blaenorol!
+Error executing query.: Gwall wrth weithredu ymholiad.
+Unfortunately, XXX is not implemented for YYY: Yn anffodus, ni weithredir "XXX" ar gyfer (YYY).
+Unknown ODBC error.: Gwall ODBC anhysbys.
+Error opening cache dir XXX.: Gwall wrth agor storfa dir "XXX".
+delete: dileu
+Cache error Could not XXX file YYY.: Gwall storfa: Methu ffeil XXX "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Gwall Angheuol
+Invalid data format for: Fformat data annilys ar gyfer
 
 ########################################
 # Page: includes/functions.php
 #
+Error Type not set for activity log!: Gwall: Math heb ei osod ar gyfer log gweithgaredd!
+This event is XXX.: Y digwyddiad hwn yw XXX.
+Conf.: Hyder.
+exceeds limit of XXX events per day: yn fwy na'r terfyn o ddigwyddiadau XXX y dydd
+on: ymlaen
+All Attendees: Pawb yn bresennol
+Busy: Prysur
+Tentative: Cynhyrfus
+Schedule an appointment for XXX.: Trefnwch apwyntiad ar gyfer XXX: BBBB.
+date_select: =
 Event approved: Cymeradwywyd Digwyddiad
+Journal approved: Dyddiadur wedi'i gymeradwyo
+Task approved: Tasg wedi'i chymeradwyo
+Attachment: Ymlyniad
 Event created: Ychwanegwyd Digwyddiad
+Journal created: Dyddiadur wedi'i greu
+Task created: Tasg wedi'i chreu
 Event deleted: Diddymwyd Digwyddiad
+Journal deleted: Dyddiadur wedi'i ddileu
+Task deleted: Tasg wedi'i dileu
+New user via email (self registration): Defnyddiwr newydd trwy e-bost (hunan-gofrestru)
+New user (self registration): Defnyddiwr newydd (hunan-gofrestru)
 Notification sent: Anfonwyd Hysbysiad
 Event rejected: Gwrthodwyd Digwyddiad
+Journal rejected: Gwrthodwyd y cyfnodolyn
+Task rejected: Gwrthodwyd y dasg
 Reminder sent: Anfonwyd Atgofiad
 Event updated: Diweddarwyd Digwyddiad
+Journal updated: Dyddiadur wedi'i ddiweddaru
+Task updated: Diweddarwyd y dasg
+Delete User: Dileu Defnyddiwr
+WK: =
+TASKS: TASGAU
+Task_Title: Teitl
+Due: Yn ddyledus
+Task Name: Enw'r Dasg
+Task Due Date: Dyddiad Dyladwy Tasg
+You have XXX unapproved entries: Mae gennych XXX cofnodion anghymeradwy
+Changes successfully saved: Llwyddwyd i gadw'r newidiadau
 Event: Digwyddiad
 Action: Gweithred
 Printer Friendly: Addas i'w brintio
 Generate printer-friendly version: Cynhyrchu fersiwn addas i'w brintio
+after: ar ôl
+before: o'r blaen
+end: diwedd
+start: dechrau
+View this event: Gweld y digwyddiad hwn
+View this task: Gweld y dasg hon
 January: Ionawr
 February: Chwefror
 March: Mawrth
@@ -598,9 +1500,31 @@ Aug: Awst
 Sep: Medi
 Oct: Hydref
 Nov: Tachwedd
+SU: UM
+MO: =
+TU: =
+WE: =
+TH: =
+FR: =
+SA: =
+unknown-month: anhysbys-mis
+First Quarter Moon: Lleuad Chwarter Cyntaf
+Full Moon: Lleuad llawn
+Last Quarter Moon: Lleuad Chwarter Olaf
+New Moon: Lleuad newydd
+Error TIME_SLOTS undefined!: Gwall: TIME_SLOTS heb ei ddiffinio!
 The following error occurred: Mae'r camgymeriad canlynol wedi digwydd
 You are not authorized.: Dim awdurdod
-Error approving event: Camgymeriad wrth cymeradwyo digwyddiad
+Add N hours to: Ychwanegu N oriau i
+Subtract N hours from: Tynnwch N oriau o
+same as: yr un peth a
+server time: amser gweinydd
+Cannot read timezone file XXX.: Methu darllen ffeil parth amser: XXX.
+Your current GMT offset is XXX hours.: Eich gwrthbwyso GMT cyfredol yw XXX awr.
+Unauthorized: Heb awdurdod
+Error approving event XXX.: Gwall wrth gymeradwyo digwyddiad: XXX.
+Error deleting event XXX.: Gwall dileu digwyddiad: XXX.
+Error rejecting event XXX.: Gwall gwrthod digwyddiad: XXX.
 Sunday: Sul
 Monday: Llun
 Tuesday: Mawrth
@@ -615,15 +1539,546 @@ Wed: Mer
 Thu: Iau
 Fri: Gwe
 Sat: Sad
+unknown-weekday: anhysbys-yn ystod yr wythnos
+Invalid referring URL: URL cyfeirio annilys
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Mynegai
+Documentation: Dogfennaeth
+Page: Tudalen
 
 ########################################
 # Page: includes/trailer.php
 #
 My Calendar: Fy Nghalendr
 Add New Entry: Ychwanegwch digwyddiad newydd
+Add New Task: Ychwanegu Tasg Newydd
 Logout: Allgofnodiad
+Home: Hafan
 Back to My Calendar: Nol i Fy Nghalendr
 Go to: Ewch i
+Manage calendar of: Rheoli calendr o
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Iaith Porwr Heb ei Darganfod
+(not supported): (heb gefnogaeth)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
+Afrikaans: Affricaneg
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Albaneg
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (De)
+Amharic: Amhareg
+Angika: =
+Apache: =
+Arabic (Algeria): Arabeg (Algeria)
+Arabic (Bahrain): Arabeg (Bahrain)
+Arabic (Egypt): Arabeg (yr Aifft)
+Arabic (Iraq): Arabeg (Irac)
+Arabic (Jordan): Arabeg (Gwlad Iorddonen)
+Arabic (Kuwait): Arabeg (Kuwait)
+Arabic (Lebanon): Arabeg (Libanus)
+Arabic (Libya): Arabeg (Libya)
+Arabic (Morocco): Arabeg (Moroco)
+Arabic (Oman): Arabeg (Oman)
+Arabic (Qatar): Arabeg (Qatar)
+Arabic (Saudi Arabia): Arabeg (Saudi Arabia)
+Arabic (Syria): Arabeg (Syria)
+Arabic (Tunisia): Arabeg (Tiwnisia)
+Arabic (U.A.E.): Arabeg (U.A.E.)
+Arabic (Yemen): Arabeg (Yemen)
+Arabic: Arabeg
+Aragonese: Aragoneg
+Aramaic: Aramaeg
+Arapaho: =
+Arawak: =
+Armenian: Armeneg
+Assamese: Asameg
+Asturian: Astwriaidd
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Aserbaijani
+Balinese: Balïaidd
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
+Basque: Basgeg
+Beja: =
+Belarusian: Belarwseg
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: =
+Blin: =
+Bliss: =
+Bosnian: Bosnia
+Braj: =
+Breton: Llydaweg
+Buginese: =
+Bulgarian: Bwlgaria
+Buriat: =
+Burmese: Byrmaneg
+Caddo: =
+Catalan: Catalaneg
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: =
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Tsieineaidd (Hong Kong)
+Chinese (PRC): Tsieineaidd (PRC)
+Chinese (Simplified/GB2312): Tsieineaidd (Syml / GB2312)
+Chinese (Singapore): Tsieineaidd (Singapore)
+Chinese (Taiwan): Tsieineaidd (Taiwan)
+Chinese (Traditional/Big5): Tsieineaidd (Traddodiadol / Mawr5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Coptig
+Cornish: Cernyweg
+Corsican: =
+Cree: =
+Creek: =
+Croatian: Croateg
+Czech: Tsiec
+Dakota: =
+Danish: Daneg
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Iseldireg (Gwlad Belg)
+Dutch: Iseldireg
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Saesneg (Awstralia)
+English (Belize): Saesneg (Belize)
+English (Canada): Saesneg (Canada)
+English (Ireland): Saesneg (Iwerddon)
+English (Jamaica): Saesneg (Jamaica)
+English (New Zealand): Saesneg (Seland Newydd)
+English (Philippines): Saesneg (Philippines)
+English (South Africa): Saesneg (De Affrica)
+English (Trinidad & Tobago): Saesneg (Trinidad & Tobago)
+English (United Kingdom): Saesneg (Y Deyrnas Unedig)
+English (United States): Saesneg (Unol Daleithiau)
+English (Zimbabwe): Saesneg (Zimbabwe)
+English: Saesneg
+Erzya: =
+Esperanto: =
+Estonian: Estoneg
+Ewe: Mamog
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Ffaro
+Fijian: Ffijïaidd
+Filipino: Ffilipineg
+Finnish: Ffinneg
+Fon: =
+French (Belgium): Ffrangeg (Gwlad Belg)
+French (Canada): Ffrangeg (Canada)
+French (France): Ffrangeg (Ffrainc)
+French (Luxembourg): Ffrangeg (Lwcsembwrg)
+French (Monaco): Ffrangeg (Monaco)
+French (Switzerland): Ffrangeg (y Swistir)
+French: Ffrangeg
+Frisian (Eastern): Ffriseg (Dwyrain)
+Frisian (Northern): Ffriseg (Gogledd)
+Frisian (Western): Ffriseg (Gorllewinol)
+Frisian: Ffriseg
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galisia
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Sioraidd
+German (Austria): Almaeneg (Awstria)
+German (Germany): Almaeneg (Yr Almaen)
+German (Liechtenstein): Almaeneg (Liechtenstein)
+German (Luxembourg): Almaeneg (Lwcsembwrg)
+German (Standard): Almaeneg (Safon)
+German (Switzerland): Almaeneg (Y Swistir)
+German: Almaeneg
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gothig
+Grebo: =
+Greek: Groeg
+Greenlandic: Ynys Las
+Guarani: Gwarant
+Gujarati: Gwjarati
+Gwich&#39;in: Gwich & # 39; yn
+Haida: =
+Haitian (Creole): =
+Haitian: =
+Hausa: =
+Hawaiian: =
+Hebrew: Hebraeg
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hethiad
+Hmong: =
+Holo (Taiwanese): =
+Hungarian: Hwngari
+Hupa: =
+Iban: =
+Icelandic: Gwlad yr Iâ
+Ido: =
+Igbo: =
+Iloko: =
+Indonesian: Indonesia
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iranaidd
+Irish (Gaelic): Gwyddeleg (Gaeleg)
+Irish: Gwyddeleg
+Iroquoian: =
+Italian (Switzerland): Eidaleg (y Swistir)
+Italian: Eidaleg
+Japanese: Japaneaidd
+Javanese: Jafanese
+Judeo-Arabic: Judeo-Arabeg
+Judeo-Persian: Judeo-Persia
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: =
+Khasi: =
+Khmer (Central): Khmer (Canolog)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Corea (Johab)
+Korean (North): Corea (Gogledd)
+Korean (South): Corea (De)
+Korean: Corea
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Cwrdeg
+Kutenai: =
+Kyrgyz: Cirgise
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: Lladin
+Latvian: Latfia
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Lithwaneg
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Lwcsembwrg
+Macedonian: Macedoneg
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Malagasi
+Malay: Maleieg
+Malayalam: =
+Maldivian: =
+Maltese: Malteg
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: Manaweg
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: =
+Mende: =
+Mi&#39;kmaq: Mi & # 39; kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: =
+Mongolian: Mongoleg
+Montenegrin: =
+Moroccan: Moroco
+Mossi: =
+Myanmar: =
+Māori: =
+N&#39;Ko: N & # 39; Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Gogledd)
+Ndebele (South): Ndebele (De)
+Ndebele: =
+Ndonga: =
+Neapolitan: Napoli
+Nepali: =
+Nias: =
+Niuean: =
+Nogai: =
+Norse: Llychlynnaidd
+Norwegian (Bokmål): Norwyeg (Bokmål)
+Norwegian (Nynorsk): Norwyeg (Nynorsk)
+Norwegian: Norwyeg
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: =
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Ossetig
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Perseg (Farsi)
+Persian (Iran): Persia (Iran)
+Persian: Persia
+Phoenician: =
+Pohnpeian: =
+Polish: Pwyleg
+Portuguese: Portiwgaleg
+Portuguese/Brazil: Portiwgaleg / Brasil
+Punjabi (India): =
+Punjabi (Pakistan): Punjabi (Pacistan)
+Punjabi: Pwnjabi
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Rwmaneg
+Romansh: =
+Romany: Romani
+Rundi: =
+Russian (Moldavia: Rwseg (Moldavia
+Russian (Republic of Moldova): Rwseg (Gweriniaeth Moldofa)
+Russian: Rwseg
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (Gogledd)
+Sami (Skolt): =
+Sami (Southern): Sami (De)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Sansgrit
+Santali: =
+Sardinian: =
+Sasak: =
+Scots (Gaelic): Albanwyr (Gaeleg)
+Selkup: =
+Serbian (Upper): Serbeg (Uchaf)
+Serbian: Serbeg
+Serer: Gweledydd
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: =
+Sindhi: =
+Sinhala: =
+Slavic: Slafaidd
+Slovak: Slofacia
+Slovenian: Slofenia
+Sogdian: =
+Somali: Somalïaidd
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Is)
+Sorbian (Upper): Sorbian (Uchaf)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Sbaeneg (Yr Ariannin)
+Spanish (Bolivia): Sbaeneg (Bolivia)
+Spanish (Chile): Sbaeneg (Chile)
+Spanish (Colombia): Sbaeneg (Colombia)
+Spanish (Costa Rica): Sbaeneg (Costa Rica)
+Spanish (Dominican Republic): Sbaeneg (Gweriniaeth Ddominicaidd)
+Spanish (Ecuador): Sbaeneg (Ecwador)
+Spanish (El Salvador): Sbaeneg (El Salvador)
+Spanish (Guatemala): Sbaeneg (Guatemala)
+Spanish (Honduras): Sbaeneg (Honduras)
+Spanish (Mexico): Sbaeneg (Mecsico)
+Spanish (Nicaragua): Sbaeneg (Nicaragua)
+Spanish (Panama): Sbaeneg (Panama)
+Spanish (Paraguay): Sbaeneg (Paraguay)
+Spanish (Peru): Sbaeneg (Periw)
+Spanish (Puerto Rico): Sbaeneg (Puerto Rico)
+Spanish (Spain): Sbaeneg (Sbaen)
+Spanish (Uruguay): Sbaeneg (Uruguay)
+Spanish (Venezuela): Sbaeneg (Venezuela)
+Spanish: Sbaeneg
+Sranan Tongo: =
+Sukuma: =
+Sumerian: =
+Sundanese: Sundaneg
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Sweden (Y Ffindir)
+Swedish (Sweden): Sweden (Sweden)
+Swedish: Sweden
+Syriac: Syrieg
+Tagalog: =
+Tahitian: =
+Tai: =
+Taiwan: =
+Tajik: Tajice
+Tamashek: =
+Tamil: =
+Tatar: =
+Telugu: =
+Tereno: =
+Tetum: Tetwm
+Thai: =
+Tibetan: Tibet
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Ynysoedd Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Twrceg
+Turkmen: =
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: Wcreineg
+Umbundu: =
+Urdu: Wrdw
+Uyghur: =
+Uzbek: Wsbeceg
+Vai: =
+Venda: =
+Vietnamese: Fietnam
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: Walŵn
+Waray: =
+Washo: =
+Welsh: Cymraeg
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: Iddew-Almaeneg
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Diffiniwyd porwr
+event: digwyddiad
+journal: cyfnodolyn
+0: 0                                                    
+1: 1                                                    
+2: 2                                                    
+3: 3                                                    
+4: 4                                                    
+5: 5                                                    
+6: 6                                                    
+7: 7                                                    
+8: 8                                                    
+9: 9                                                    
 
 ########################################
 # Page: includes/user-imap.php
@@ -631,49 +2086,329 @@ Go to: Ewch i
 Invalid user login: Mewngofnodiad defnyddiwr annilys
 
 ########################################
+# Page: includes/user-nis.php
+#
+incorrect password: cyfrinair anghywir
+no such user: dim defnyddiwr o'r fath
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Cyfrif yn anabl
+
+########################################
 # Page: includes/xcal.php
 #
-Unnamed Event: Digwyddiad di-enw
+Interval: Cyfnod
+Months: Misoedd
+Month Days: Dyddiau Mis
+Days: Dyddiau
+Weeks: Wythnosau
+Position: Swydd
+Until: Tan
+Count: Cyfrif
+Inclusion Dates: Dyddiadau Cynhwysiant
+Exclusion Dates: Dyddiadau Gwahardd
+Event Imported: Digwyddiad wedi'i Fewnforio
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: beit
+kb: =
+Mb: =
 
 ########################################
 # Page: includes/classes/WebCalMailer.class
 #
 Notification: Rhybydd
+authenticate: Gwall SMTP: Ni ellid dilysu
+connect_host: Gwall SMTP: Methu cysylltu â gwesteiwr SMTP:
+data_not_accepted: Gwall SMTP: Ni dderbynnir data
+encoding: Amgodio anhysbys:
+execute: Methu gweithredu:
+file_access: Methu cyrchu'r ffeil:
+file_open: Gwall Ffeil Methu agor ffeil:
+from_failed: Methodd y cyfeiriad O canlynol:
+instantiate: Methu cychwyn swyddogaeth post ar unwaith
+mailer_not_supported: ni chefnogir mailer
+provide_address: Rhaid i chi ddarparu o leiaf un cyfeiriad e-bost derbynnydd.
+recipients_failed: Gwall SMTP: Methodd y derbynwyr canlynol:
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/classes/captcha/captcha.php
 #
-Server URL is required.: Mae angen URL y gweinydd
-Server URL must end with /.: Rhaid i URL y gweinydd orffen gyda '/'
-Invalid color for document background.: Lliw annerbyniol fel cefndir i'r ddogfen
-Invalid color for document title.: Lliw annerbyniol fel teitl y ddogfen
-Invalid color for table cell background.: Lliw annerbyniol fel cefndir y gell tabl
-Invalid color for table grid.: Lliw annerbyniol fel grid y tabl
-Invalid color for table header background.: Lliw annerbyniol fel cefndir pennawd y tabl
-Invalid color for table text background.: Lliw annerbyniol fel cefndir testun y table
-Invalid color for event popup background.: Lliw annerbyniol fel cefndir digwyddiad ar ffurf popup
-Invalid color for event popup text.: Lliw annerbyniol fel testun digwyddiad ar ffurf popup
-Invalid color for table cell background for today.: Lliw annerbyniol fel cefndir cell tabl heddiw
-Color format should be RRGGBB.: Mae angen fformat lliw megis '#RRGGBB'
+Enter Characters Seen in Graphic: Rhowch Gymeriadau a welir mewn Graffig
+Enter the correct letters and numbers...: Rhowch y llythrennau a'r rhifau cywir o'r ddelwedd yn y blwch testun. Mae'r prawf bach hwn yn gweithredu fel cyfyngiad mynediad yn erbyn bots maleisus. Yn syml, ail-lwythwch y dudalen os yw'r graffig hwn yn rhy anodd ei ddarllen
+Challenge/Response: Her / Ymateb
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Newid dyddiad ac amser y cofnod hwn?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Mae angen Disgrifiad Byr
-The time you have entered begins before your preferred work hours. Is this correct?: Mae'r amser yr ydych wedi dynodi yn cychwyn cyn yr oriau gwaith yr ydych wedi dewis. A yw hyn yn gywir?
+You have not entered a Brief Description: Nid ydych wedi nodi Disgrifiad Byr
+time prior to work hours...: amser cyn oriau gwaith ...
+Invalid Event Date: Dyddiad Digwyddiad Annilys
+Please add a participant: Ychwanegwch gyfranogwr
+Invalid Date: Dyddiad Annilys
 You have not entered a valid time of day: Nid yw'r amser yr ydych wedi dynodi yn gywir
 
 ########################################
-# Page: includes/js/edit_layer.php
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: Ni all ID y Calendr fod yn wag.
+First and last names cannot both be blank.: Ni all enwau cyntaf ac olaf fod yn wag.
+
+########################################
+# Page: includes/js/edit_remotes.php
 #
 Invalid color: Lliw annerbyniol
+Color format should be RRGGBB.: Mae angen fformat lliw megis '#RRGGBB'
+URL cannot be blank.: Ni all URL fod yn wag.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Nid yw'r math o ffeil yn cyfateb i Fformat Mewnforio
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Lliw annerbyniol fel cefndir i'r ddogfen
+Invalid color for document title.: Lliw annerbyniol fel teitl y ddogfen
+Invalid color for table cell background.: Lliw annerbyniol fel cefndir y gell tabl
+Invalid color for table cell background for today.: Lliw annerbyniol fel cefndir cell tabl heddiw
+Invalid work hours.: Oriau gwaith annilys.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: Rhaid i URL y gweinydd orffen gyda '/'
+Invalid color for table grid.: Lliw annilys ar gyfer grid bwrdd.
+Invalid color for event popup background.: Lliw annilys ar gyfer cefndir naidlen y digwyddiad.
+Invalid color for event popup text.: Lliw annilys ar gyfer testun naidlen y digwyddiad.
+Invalid color for table header text.: Lliw annilys ar gyfer testun pennawd bwrdd.
+Invalid color for table header background.: Lliw annilys ar gyfer cefndir pennawd bwrdd.
+Server URL is required.: Mae angen URL y gweinydd
+Invalid Color: Lliw Annilys
+Database Name: Enw Cronfa Ddata
+Full Path (no backslashes): Llwybr Llawn (dim backslashes)
+The password contains illegal characters.: Mae'r cyfrinair yn cynnwys nodau anghyfreithlon.
+Error you must specify a Single-User Login: Gwall mae'n rhaid i chi nodi Mewngofnodi Defnyddiwr Sengl
+Could not find XXX.: Methu dod o hyd i XXX.
+Could not find XXX in DOM.: Methu dod o hyd i XXX yn DOM.
 
 ########################################
 # Page: includes/menu/index.php
 #
+This Week: Wythnos yma
+This Month: Y mis yma
+This Year: Eleni
+Exit: Allanfa
+Add New Event: Ychwanegu Digwyddiad Newydd
+Delete Entries: Dileu Cofrestriadau
+My Views: Fy Barn
+Manage Calendar of: Rheoli Calendr o
+My Reports: Fy Adroddiadau
+My Profile: Fy mhroffil
+Public Calendar: Calendr Cyhoeddus
 Unapproved Events: Digwyddiadau heb Cymeradwyaeth
+User Manager: Rheolwr Defnyddiwr
+Help Contents: Cynnwys Cymorth
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Cyfeiriadur Cache Cronfa Ddata
+Create New: Creu Newydd
+Failure Reason: Rheswm Methiant:
+You must manually create database: Rhaid i chi greu cronfa ddata â llaw.
+Single-User: Defnyddiwr Sengl
+Test Settings: Gosodiadau Prawf
+Timezone Conversion Successful: Trosi Ardal Amser yn Llwyddiannus
+WebCalendar Installation Wizard Step XXX: Dewin Gosod WebCalendar Cam XXX
+Password Accepted: Derbyniwyd Cyfrinair
+Successful Login: Mewngofnodi Llwyddiannus
+Password Incorrect: Cyfrinair Anghywir
+Invalid Login: Mewngofnodi Annilys
+Display Errors: Gwallau Arddangos
+File Uploads: Llwythiadau Ffeil
+Allow URL fopen: Caniatáu URL fopen (yn ofynnol dim ond os defnyddir Calendrau o Bell)
+Safe Mode: Modd-Diogel
+Safe Mode Allowed Vars: Vars a Ganiateir Modd Diogel (mae angen TZ dim ond os yw'r Modd Diogel ymlaen)
+GD: GD (ei angen ar gyfer Cefndiroedd Delwedd Graddiant)
+Passwords do not match!: Nid yw cyfrineiriau'n cyfateb!
+Unable to write password to settings.php file: Methu ysgrifennu cyfrinair i ffeil "settings.php".
+Password Updated: Diweddarwyd Cyfrinair
+Password has been set: Mae cyfrinair wedi'i osod.
+Connection Successful...: Cysylltiad yn Llwyddiannus  Ewch i'r dudalen nesaf i barhau i'w osod.
+Correct your entries or click the Create New...: Cywirwch eich cofnodion neu cliciwch y botwm  Creu Newydd  i barhau i'w osod.
+Correct your entries and try again.: Cywirwch eich ceisiadau a rhoi cynnig arall arni.
+XXX does not exist: Nid yw XXX yn bodoli
+XXX is not writable: Nid oes modd ysgrifennu XXX
+Error Converting Timezone: Gwall Trosi Amserlen
+Error Unable to write to file XXX.: Gwall Methu ysgrifennu i ffeil XXX.
+Please change the file permissions of this file.: Newidiwch ganiatâd ffeil y ffeil hon.
+Please change includes dir permission: Newidiwch ganiatâd ffeiliau eich cyfeiriadur "yn cynnwys" i ganiatáu i ddefnyddwyr eraill ysgrifennu.
+Your settings have been saved.: Mae eich gosodiadau wedi'u cadw.
+OFF: I ffwrdd
+ON: AR
+WebCalendar Setup Wizard: Dewin Gosod WebCalendar
+This installation wizard will guide you...: Bydd y dewin gosod hwn yn eich tywys trwy sefydlu gosodiad WebCalendar sylfaenol.<br>Am gymorth a datrys problemau gweler:<br>
+System Administrators Guide: Canllaw Gweinyddwr System
+Frequently Asked Questions: Cwestiynau Cyffredin
+FAQ: Cwestiynau Cyffredin
+Troubleshooting: Datrys Problemau
+Getting Help: Cael Cymorth
+Upgrading Guide: Canllaw Uwchraddio
+User Supported Wiki: Wici â Chefnogaeth Defnyddiwr
+PHP Version Check: Gwiriad Fersiwn PHP
+Check to see if PHP 7.1.0 or greater is installed.: Gwiriwch i weld a yw PHP 7.1.0 neu fwy wedi'i osod.
+PHP version: Fersiwn PHP
+PHP Settings: Gosodiadau PHP
+Detailed PHP Info: Gwybodaeth PHP fanwl
+settings.php Status: Statws "settings.php"
+Session Check: Gwiriad Sesiwn
+To test the proper operation of sessions...: I brofi gweithrediad priodol sesiynau, ail-lwythwch y dudalen hon. Dylech weld cynyddiad cownter y sesiwn bob tro.
+SESSION COUNTER: GWLAD SESIWN
+The file permissions of settings.php are set...: Gosodir caniatâd ffeiliau "settings.php" fel nad oes gan y gosodwr ganiatâd i'w addasu. Newidiwch ganiatâd ffeiliau'r ffeil ganlynol i barhau
+The file permissions of the includes directory are set...: Mae caniatâd ffeiliau'r cyfeiriadur cynnwys yn cael ei osod fel nad oes gan y gosodwr ganiatâd i greu ffeil newydd. Newidiwch ganiatâd y cyfeiriadur canlynol i barhau
+Your settings.php file appears to be valid.: Mae'n ymddangos bod eich ffeil "settings.php" yn ddilys.
+Configuration Wizard Password: Cyfrinair Dewin Cyfluniad
+Create Settings File Password: Creu Cyfrinair Ffeil Gosodiadau
+db setup directions...: Yn yr adran hon byddwch yn sefydlu ac yn profi cysylltiad â'ch gweinydd cronfa ddata. Dylai'r wybodaeth gyfrif a gyflenwir fod â chaniatâd LLAWN i greu cronfeydd data, tablau a defnyddwyr. Os nad yw hyn yn bosibl, neu os yw mynediad eich cronfa ddata yn gyfyngedig, bydd yn rhaid i chi ffurfweddu'ch cronfa ddata â llaw.
+Database Status: Statws Cronfa Ddata
+Supported databases for your PHP installation: Cronfeydd data â chymorth ar gyfer eich gosodiad PHP
+Your current database settings are able to access the database.: Mae gosodiadau cyfredol eich cronfa ddata yn gallu cyrchu'r gronfa ddata.
+Please Test Settings: Profwch y Gosodiadau
+Your current database settings are not able...: Nid yw gosodiadau cyfredol eich cronfa ddata yn gallu cyrchu'r gronfa ddata neu nid ydynt wedi'u profi eto.
+Database Settings: Gosodiadau Cronfa Ddata
+Database Type: Math o Gronfa Ddata
+Server: Gweinydd
+Connection Persistence: Dyfalbarhad Cysylltiad
+All your database tables appear to be up...: Mae'n ymddangos bod eich holl dablau cronfa ddata yn gyfredol. Gallwch symud ymlaen i'r dudalen nesaf a chwblhau eich setup WebCalendar.
+This appears to be a new installation...: Mae'n ymddangos bod hwn yn osodiad newydd. Os nad yw hyn yn gywir, ewch yn ôl i'r dudalen flaenorol a chywiro'ch gosodiadau.
+This appears to be an upgrade...: Ymddengys bod hwn yn uwchraddiad o fersiwn&nbsp;XXX&nbsp;i&nbsp;BBBB.
+The database requires some data input...: Mae'r gronfa ddata yn gofyn am rywfaint o fewnbwn data Cliciwch ar y Gronfa Ddata Diweddaru i gyflawni'r uwchraddiad.
+In this section we will perform...: Yn yr adran hon byddwn yn cyflawni'r newidiadau i ddod â'ch cronfa ddata i'r lefel ofynnol. Os ydych chi'n defnyddio cronfa ddata â chefnogaeth lawn, bydd y cam hwn yn cael ei berfformio'n awtomatig i chi. Os na, gellir arddangos yr SQL gofynnol a dylech allu ei dorri a'i gludo i mewn i ffenestr ymholiad gweinydd eich cronfa ddata.
+No database actions are required.: Nid oes angen cymryd camau cronfa ddata.
+The following database actions are required: Mae angen y camau gweithredu cronfa ddata canlynol
+ODBC Underlying Database: Cronfa Ddata Sylfaenol ODBC:
+Automatic installation not supported: Nid yw gosodiad awtomatig wedi'i weithredu'n llawn ar gyfer eich math o gronfa ddata. Bydd yn rhaid i chi greu'r tablau gofynnol â llaw gan ddefnyddio'r SQL a gyflenwir. Cliciwch  Arddangos SQL  i barhau. Torri a Gludo i mewn i ffenestr ymholiad eich cronfa ddata.
+This may take several minutes to complete: Gall hyn gymryd sawl munud i'w gwblhau.
+Install Database: Gosod Cronfa Ddata
+Update Database: Cronfa Ddata Diweddaru
+Display Required SQL: Arddangos Angenrheidiol SQL
+Return to previous page after processing SQL.: Ar ôl prosesu'r SQL hwn â llaw, bydd angen i chi ddychwelyd i'r dudalen flaenorol ac ailbrofi'ch cronfa ddata fel y gall y sgript ganfod y newidiadau.
+This is the final step in setting up your WebCalendar Installation.: Dyma'r cam olaf wrth sefydlu'ch Gosod WebCalendar.
+Timezone Conversion: Trosi Ardal Amser
+It appears that you have NOT converted...: Mae'n ymddangos NAD ydych wedi trosi eich data digwyddiadau WebCalendar presennol i GMT. Os oes gennych chi, gallwch anwybyddu'r rhybudd hwn a pheidio â bwrw ymlaen â'r trawsnewid. Os yw hwn yn osodiad newydd, gallwch anwybyddu'r rhybudd hwn hefyd.
+Convert Data to GMT: Trosi Data i GMT
+Application Settings: Gosodiadau Cais
+HTTP-based authentication was not detected...: Ni chanfuwyd dilysiad wedi'i seilio ar HTTP. Bydd angen i chi ail-gyflunio'ch gweinydd gwe os ydych chi am ddewis 'Web Server' o'r dewisiadau 'Dilysu Defnyddiwr' isod.
+HTTP-based authentication was detected...: Canfuwyd dilysiad wedi'i seilio ar HTTP. Mae dilysu defnyddiwr yn cael ei drin gan eich gweinydd gwe. Dylech ddewis 'Web Server' o'r rhestr o ddewisiadau 'Dilysu Defnyddiwr' isod.
+Create Default Admin Account: Creu Cyfrif Gweinyddol Diofyn
+(Admin Account Not Found): (Ni ddarganfuwyd Cyfrif Gweinyddol)
+User Authentication: Dilysu Defnyddiwr
+Web-based via WebCalendar (default): Ar y we trwy WebCalendar (diofyn)
+Web Server (not detected): Gweinydd Gwe (heb ei ganfod)
+Web Server (detected): Gweinydd Gwe (wedi'i ganfod)
+None (Single-User): Dim (Defnyddiwr Sengl)
+Read-Only: Darllen yn unig
+Environment: Amgylchedd
+Production: Cynhyrchu
+Development: Datblygiad
+Save Settings: Cadw Gosodiadau
+Launch WebCalendar: Lansio WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Gwall wrth ddiweddaru tabl "XXX": BBBB.
+Conversion Successful: Trosi yn Llwyddiannus 
+Perl script required: Mae eich fersiwn flaenorol o WebCalendar yn gofyn am redeg sgript PERL i drosi'ch data. Os gwelwch yn dda rhedeg /tools/upgrade_to_0.9.7.pl yna dychwelwch i'r dudalen hon i barhau.
+previous version requires updating several tables: Mae angen diweddaru sawl tabl cronfa ddata ar gyfer eich fersiwn flaenorol o WebCalendar.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: DIM RHAGOLYG AR GAEL
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Gwall wrth gysylltu â'r gronfa ddata
+Include Path: Cynnwys Llwybr
+Deleting events for: Dileu digwyddiadau ar gyfer
+Importing events for: Mewnforio digwyddiadau ar gyfer
+No data returned from: Ni ddychwelwyd unrhyw ddata
+for non-user calendar: ar gyfer calendr nad yw'n ddefnyddiwr
+No Remote Calendars found: Ni ddarganfuwyd Calendrau o Bell
+Remote Calendars not enabled: Calendrau o bell heb eu galluogi
 
 ########################################
 # Page: tools/send_reminders.php
 #
+could not find event id: ni allai ddod o hyd i id digwyddiad
+could not find event id XXX in database.: ni allai ddod o hyd i ddigwyddiad id XXX yn y gronfa ddata.
+task: dasg
+This is a reminder for the XXX detailed below.: Mae hwn yn atgoffa ar gyfer y XXX y manylir arno isod.
+Pecentage Complete: Pecentage Wedi'i gwblhau
 Reminder: Atgofiad
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Gweithredu heb gefnogaeth: XXX.
+No event id specified.: Ni nodwyd id digwyddiad.
+Not authorized (not admin).: Heb awdurdod (ddim yn weinyddol).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Gwirio am ddigwyddiadau ar gyfer XXX o'r dyddiad YYY hyd yma ZZZ.
+Found XXX events in time range.: Wedi dod o hyd i ddigwyddiadau XXX yn yr ystod amser.
+Event id=XXX YYY at ZZZ on AAA.: Digwyddiad id = XXX "YYY" yn ZZZ ar AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Caniatáu i ddefnyddiwr XXX weld calendr defnyddiwr arall.
+Error Email reminders disabled for user XXX.: Gwall: Nodiadau atgoffa e-bost wedi'u hanalluogi ar gyfer defnyddiwr "XXX".
+Number of site_extras XXX.: Nifer y safle_extras: XXX.
+Reminder set for event.: Nodyn atgoffa wedi'i osod ar gyfer y digwyddiad.
+Mins Before XXX.: Munud Cyn: XXX.
+Event time is XXX.: Amser y digwyddiad yw: XXX.
+Remind time is XXX.: Yr amser atgoffa yw: XXX.
+Reminders for user XXX, login YYY.: Nodiadau atgoffa ar gyfer defnyddiwr "XXX", mewngofnodi "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Cymeradwyo heb ei gymeradwyo ar gyfer defnyddiwr "XXX".
+Event id=XXX YYY already sent.: Digwyddiad id = XXX "YYY" wedi'i anfon eisoes.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Nid oes angen mewngofnodi ar gyfer modd un defnyddiwr.
+No login required for HTTP authentication.: Nid oes angen mewngofnodi ar gyfer dilysu HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Cymeriadau annilys mewn mewngofnodi.
+Username XXX does not exist.: Nid yw'r enw defnyddiwr "XXX" yn bodoli.
+You cannot remove admin rights from yourself!: Ni allwch dynnu hawliau gweinyddol oddi wrthych chi'ch hun!
+Unknown error saving user: Defnyddiwr arbed gwall anhysbys.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Ni ddaethpwyd o hyd i unrhyw gyfranogwyr ar gyfer id digwyddiad: XXX.
+Db error Could not find event id XXX.: Gwall Db: Methu dod o hyd i ddigwyddiad id XXX.
+Error Could not find event id XXX in database.: Gwall: Methu dod o hyd i ddigwyddiad id XXX yn y gronfa ddata.

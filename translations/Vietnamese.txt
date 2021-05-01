@@ -1,0 +1,2387 @@
+# Vietnamese vi
+#
+# Định dạng bao gồm một tiêu đề tùy chọn:
+#
+# Dịch bởi: tên và email của bạn
+# Cập nhật lần cuối: ngày dịch
+# (Bao gồm cả "#" ở đầu và bất kỳ nhận xét nào do những người dịch trước đó đưa ra.
+# Dòng trống ĐẦU TIÊN kết thúc các nhận xét tiêu đề này.)
+#
+# Tiếp theo là nhiều khi cần thiết:
+#
+# Cụm từ tiếng Anh: bản dịch
+# (Từ một đến một dòng. KHÔNG CÓ "#" ở đầu.
+# "Cụm từ tiếng Anh:", bao gồm dấu hai chấm ":", được cung cấp bởi
+# Nhà phát triển WebCalendar. Phần của bạn là "bản dịch".)
+#
+# Thư mục công cụ chứa hai tập lệnh perl để giúp bạn:
+# - check_translation.pl
+# cho biết nếu tất cả văn bản đã được dịch thành công.
+# - update_translation.pl
+# sẽ phân tích cú pháp các tệp chương trình để tìm tất cả các bản dịch ('cụm từ') và
+# tooltip ('cụm từ'). Nó sẽ sắp xếp các cụm từ theo trang
+# (tệp) chứa lần xuất hiện đầu tiên. Tùy chọn, nó có thể gắn thẻ
+# cụm từ chưa được dịch bằng cách đặt
+#  << MISSING >>
+# trên dòng phía trên cụm từ. Và, nếu cụm từ là viết tắt,
+# nó sẽ bao gồm toàn văn tiếng Anh ở dòng bên dưới cụm từ.
+#
+# Lưu ý: Tôi đang cố gắng cắt giảm kích thước tệp tổng thể. Nếu "bản dịch"
+# từ / cụm từ giống hệt ngôn ngữ của bạn và tiếng Anh, chỉ cần sử dụng dấu "=".
+#
+# Lưu ý: Bạn sẽ thấy mục nhập cho "May_" phía dưới. Có một lý do cho việc này.
+#  Phiên dịch "May_" sang tên đầy đủ của tháng và "May" với,
+# thường là viết tắt của ba chữ cái, tháng (như "Tháng 10" cho "Tháng 10").
+#
+# Tôi đã sử dụng Google dịch cho việc này.
+# Nó chỉ đủ cho đến khi một người bản ngữ có thể xác minh nó.
+# Bruce Bannon <wcDev@bbannon.net>
+#
+# Translation last updated on 05-01-2021
+
+
+################################################################################
+#                       DO NOT "TRANSLATE" THIS SECTION                        #
+################################################################################
+
+# A lone equal sign "=" to the right of the colon, such as "charset: =",
+# indicates that the "translation" is identical to the English text.
+
+# Specify a charset (will be sent within meta tag for each page).
+
+charset: =
+
+# "direction" need only be changed if using a right to left language.
+# Options are: ltr (left to right, default) or rtl (right to left).
+
+direction: =
+
+# In the date formats, change only the format of the terms.
+# For example in German.txt the proper "translation" would be
+#   __month__ __dd__, __yyyy__: __dd__. __month__ __yyyy__
+
+#  Select elements for date specification.
+#  ex)2008-10-13
+#     __yyyy__ ... 2008, __mm__ ... 10, __month__ ... October, __dd__ ... 13
+
+__mm__/__dd__/__yyyy__: =
+__month__ __dd__: =
+__month__ __dd__, __yyyy__: =
+__month__ __yyyy__: =
+
+################################################################################
+################################################################################
+
+
+########################################
+# Page: about.php
+#
+Title: =
+version XXX: phiên bản XXX
+WebCalendar is a PHP application used...: WebCalendar là một ứng dụng PHP được sử dụng để duy trì lịch cho một người dùng hoặc một nhóm người dùng internet / mạng nội bộ. Nó cũng có thể được cấu hình như là một sự kiện lịch.
+Credits: Tín dụng
+About: Trong khoảng
+OK: đồng ý
+
+########################################
+# Page: access.php
+#
+Database error XXX.: Lỗi cơ sở dữ liệu: XXX.
+DEFAULT CONFIGURATION: CẤU HÌNH MẶC ĐỊNH
+Go: Đi
+Save: Tiết kiệm
+Undo: Hoàn tác
+Public Access: Quyền truy cập công khai
+Admin: quản trị viên
+User Access Control: Kiểm soát truy cập người dùng
+Allow Access to Other Users Calendar: Cho phép truy cập vào lịch của người dùng khác
+Grant This User Access to My Calendar: Cấp quyền truy cập cho người dùng này vào Lịch của tôi
+Type: Kiểu
+Calendar: Lịch
+View Event: xem sự kiện
+View: Lượt xem
+Edit: Biên tập
+Approve/Reject: Chấp thuận / Từ chối
+Events: Sự kiện
+Tasks: Nhiệm vụ
+Journals: Tạp chí
+Can Invite: Có thể mời
+Can Email: Có thể gửi email
+Can See Time Only: Chỉ có thể xem thời gian
+Assistant: Phụ tá
+Select All: Chọn tất cả
+Clear All: Làm sạch tất cả
+Public: Công cộng
+Confidential: Bí mật
+Private: Riêng tư
+
+########################################
+# Page: activity_log.php
+#
+Next: Kế tiếp
+Previous: Trước
+
+########################################
+# Page: add_entry.php
+#
+Event XXX is already on your calendar.: Sự kiện XXX đã có trên lịch của bạn.
+Invalid entry id XXX.: Id mục nhập không hợp lệ: "XXX".
+a XXX event may not be added to your calendar: Đây là sự kiện XXX và có thể không được thêm vào lịch của bạn.
+confidential: bí mật
+private: riêng tư
+Error adding event XXX.: Lỗi khi thêm sự kiện: XXX.
+
+########################################
+# Page: admin.php
+#
+Invalid setting name XXX.: Tên cài đặt "XXX" không hợp lệ.
+Select: Lựa chọn
+Day: ngày
+Week: Tuần
+Month: tháng
+Year: Năm
+Bottom: Dưới cùng
+Top: Hàng đầu
+Anyone: Bất kỳ ai
+Participant: Người tham gia
+Settings: Cài đặt
+Groups: Các nhóm
+NonUser Calendars: Lịch không phải của người dùng
+Other: Khác
+Email: E-mail
+Colors: Màu sắc
+Document background: Nền tài liệu
+Document title: Tiêu đề tài liệu
+Document text: Văn bản tài liệu
+My event text: Văn bản sự kiện của tôi
+Table grid color: Màu lưới bảng
+Table header background: Nền tiêu đề bảng
+Table header text: Văn bản tiêu đề bảng
+Table cell background: Nền ô bảng
+Table cell background for current day: Nền ô bảng cho ngày hiện tại
+Table cell background for days with events: Nền ô bảng cho những ngày có sự kiện
+Table cell background for weekends: Nền ô bảng cho các ngày cuối tuần
+Table cell background for other month: Nền ô bảng cho tháng khác
+Week number color: Màu số tuần
+Event popup background: Nền cửa sổ bật lên sự kiện
+Event popup text: Văn bản bật lên sự kiện
+System Settings: Cài đặt hệ thống
+Help: Cứu giúp
+System options: Tùy chọn hệ thống
+app-name-help: Chỉ định tên của ứng dụng sẽ xuất hiện trên thanh tiêu đề của trình duyệt cho tất cả các trang và trên trang đăng nhập. Giá trị bạn chỉ định ở đây sẽ được tra cứu trong tệp bản dịch cho phép bạn cung cấp các tiêu đề khác nhau cho các ngôn ngữ khác nhau.
+Application Name: Tên ứng dụng
+Translated Name (XXX): Tên đã dịch (XXX)
+server-url-help: Chỉ định URL cơ sở cho ứng dụng. Điều này sẽ được bao gồm khi gửi lời nhắc và thông báo qua email.
+Server URL: URL máy chủ
+home-url-help: Chỉ định URL trang chủ cho ứng dụng. Đây có thể là tuyệt đối hoặc tương đối
+Home URL: URL trang chủ
+language-help: Chỉ định ngôn ngữ sẽ sử dụng.
+Language: Ngôn ngữ
+Your browser default language is XXX.: Ngôn ngữ mặc định của trình duyệt của bạn là "XXX".
+Allow user to use themes: Cho phép người dùng sử dụng các chủ đề
+themes-help: Cho phép cập nhật hàng loạt cài đặt cấu hình. Nhãn chữ thường chỉ dành cho người dùng.
+Themes: Chủ đề
+AVAILABLE THEMES: CÁC CHỦ ĐỀ CÓ SN
+None: không ai
+Preview: Xem trước
+Site customization: Tùy chỉnh trang web
+custom-script-help: Cho phép nhập văn bản Javascript hoặc biểu định kiểu tùy chỉnh sẽ được chèn vào phần "đầu" HTML của mỗi trang.
+Custom script/stylesheet: Tập lệnh / biểu định kiểu tùy chỉnh
+custom-header-help: Cho phép đưa đoạn mã HTML tùy chỉnh vào đầu mỗi trang.
+Custom header: Tiêu đề tùy chỉnh
+custom-trailer-help: Cho phép đưa đoạn mã HTML tùy chỉnh vào cuối mỗi trang.
+Custom trailer: Đoạn giới thiệu tùy chỉnh
+enable-external-header-help: Cho phép tải đoạn giới thiệu tùy chỉnh từ tệp bên ngoài
+Allow external file for header/script/trailer: Cho phép tệp bên ngoài cho tiêu đề / tập lệnh / đoạn giới thiệu
+Allow user to override header/trailer: Cho phép người dùng ghi đè tiêu đề / đoạn giới thiệu
+Date and Time: Ngày và giờ
+server-tz-help: Chỉ định bao nhiêu giờ để điều chỉnh thời gian từ UTC sang giờ máy chủ.
+Server Timezone Selection: Lựa chọn múi giờ máy chủ
+tz-help: Chỉ định bao nhiêu giờ để điều chỉnh thời gian từ UTC sang giờ địa phương.
+Default Client Timezone Selection: Lựa chọn múi giờ khách hàng mặc định
+display-general-use-gmt-help: Nếu được bật, ngày / giờ phổ biến được hiển thị dưới dạng GMT
+Display Common Use Date/Times as GMT: Hiển thị Ngày / Giờ Sử dụng Phổ biến theo GMT
+date-format-help: Chỉ định định dạng ngày ưa thích.
+Date format: Định dạng ngày tháng
+Small Task Date: Ngày nhiệm vụ nhỏ
+display-week-starts-on: Chỉ định ngày trong tuần mà tuần đó bắt đầu. Nếu thứ Hai được chỉ định, thì số tuần sẽ là số tuần ISO.
+Week starts on: Tuần bắt đầu vào
+display-weekend-starts-on: Đặt ngày trong tuần để các ngày cuối tuần bắt đầu
+Weekend starts on: Cuối tuần bắt đầu vào
+time-format-help: Chỉ định định dạng thời gian sẽ sử dụng:<br><em>12 giờ:</em> Hiển thị thời gian là 3 giờ sáng, 8 giờ 30 tối, v.v.<br><em>24 giờ:</em> Hiển thị thời gian là 300 , Năm 2030, v.v.
+Time format: Định dạng thời gian
+12 hour: 12 giờ                                               
+24 hour: 24 giờ                                               
+timed-evt-len-help: Chỉ định phương thức nhập để xác định độ dài của một sự kiện được định thời gian.
+Specify timed event length by: Chỉ định thời lượng sự kiện được tính giờ theo
+Duration: Thời lượng
+End Time: Thời gian kết thúc
+work-hours-help: Chỉ định phạm vi thời gian để hiển thị cho chế độ xem ngày.
+Work hours: Giờ làm việc
+From: Từ
+to: đến
+Appearance: Xuất hiện
+preferred-view-help: Chỉ định chế độ xem mặc định (Ngày, Tuần, Tháng hoặc Năm).
+Preferred view: Chế độ xem ưa thích
+Allow top menu: Cho phép menu trên cùng
+Date Selectors position: Vị trí của bộ chọn ngày
+menu-themes-help: Đặt màu sắc và kiểu của menu trên cùng
+Menu theme: Chủ đề menu
+fonts-help: Chỉ định danh sách các phông chữ hệ thống để sử dụng (chẳng hạn như "Arial, Helvetica")
+Fonts: Phông chữ
+display-sm_month-help: Nếu được bật, sẽ hiển thị các tháng nhỏ trong chế độ xem tháng
+Display small months: Hiển thị các tháng nhỏ
+display-weekends-help: Bao gồm các ngày cuối tuần khi xem một tuần.
+Display weekends: Hiển thị các ngày cuối tuần
+display-long-daynames-help: Nếu được bật, tên ngày dài sẽ được hiển thị
+Display long day names: Hiển thị tên ngày dài
+display-alldays-help: Hiển thị các ngày trước đó và tháng tiếp theo trong chế độ xem tháng, lấp đầy tất cả các ô.
+Display all days in month view: Hiển thị tất cả các ngày trong chế độ xem tháng
+display-week-number-help: Chỉ định xem số tuần (1-52) có được hiển thị trong chế độ xem tháng và chế độ xem tuần hay không.
+Display week number: Hiển thị số tuần
+display-desc-print-day-help: Bao gồm mô tả sự kiện trong phiên bản xem ngày thân thiện với máy in.
+Display description in printer day view: Hiển thị mô tả trong chế độ xem ngày của máy in
+yearly-shows-events-help: Trên giao diện hàng năm, hiển thị các ngày có chứa các sự kiện bằng phông chữ đậm.
+Display days with events in bold in month and year views: Hiển thị ngày với các sự kiện được in đậm trong chế độ xem tháng và năm
+display-minutes-help: Nếu được bật, phút kết thúc bằng: 00 sẽ luôn được hiển thị
+Display 00 minutes always: Hiển thị 00 phút luôn
+display-end-times-help: Hiển thị thời gian kết thúc sự kiện nếu sự kiện được hẹn giờ
+Display end times on calendars: Hiển thị thời gian kết thúc trên lịch
+allow-view-add-help: Biểu tượng '+' sẽ được bao gồm trong chế độ xem, cho phép người dùng nhanh chóng thêm sự kiện vào lịch của người dùng khác.
+Include add event link in views: Bao gồm thêm liên kết sự kiện trong chế độ xem
+lunar-help: Nếu được bật, sẽ hiển thị các biểu tượng nhỏ đại diện cho các pha Mặt Trăng mỗi tháng
+Display Lunar Phases in month view: Hiển thị các giai đoạn âm lịch trong chế độ xem tháng
+Restrictions: Những hạn chế
+allow-view-other-help: Chỉ định liệu một người dùng có thể xem lịch của người dùng khác hay không.
+Allow viewing other users calendars: Cho phép xem lịch của người dùng khác
+require-approvals-help: Khi được bật, người dùng phải phê duyệt sự kiện trước khi sự kiện đó được hiển thị trên lịch của họ (trừ khi Hiển thị không được phê duyệt được bật). Lưu ý rằng việc đặt cài đặt này thành "Không" sẽ không tắt các phê duyệt cho lịch Truy cập Công cộng (nếu lịch Truy cập Công cộng được bật).
+Require event approvals: Yêu cầu phê duyệt sự kiện
+display-unapproved-help: Chỉ định xem các sự kiện chưa được phê duyệt có được hiển thị trong lịch của bạn hay không.<br>Nếu được đặt thành "Có", thì các sự kiện chưa được phê duyệt sẽ được hiển thị trong lịch của bạn (bằng màu văn bản khác).<br>Nếu được đặt thành "Không", thì các sự kiện chưa được phê duyệt phải được phê duyệt trước khi chúng được hiển thị trong lịch của bạn.
+Display unapproved: Hiển thị không được phê duyệt
+conflict-check-help: Kiểm tra xung đột sự kiện (hai sự kiện được lên lịch cùng một lúc cho cùng một người). Nếu bạn đặt tùy chọn này thành "Có", bạn vẫn có thể lên lịch hai sự kiện cùng lúc sau khi xác nhận cảnh báo. Nếu bạn đặt giá trị này thành "Không", việc kiểm tra xung đột sẽ không được thực hiện. Bạn có thể muốn đặt điều này thành "Có", vì vậy việc kiểm tra xung đột xảy ra.
+Check for event conflicts: Kiểm tra xung đột sự kiện
+Yes: Đúng
+No: Không
+conflict-months-help: Nếu kiểm tra xung đột được thực hiện ("Kiểm tra xung đột sự kiện" được đặt thành "Không" & # 41 ;, điều này chỉ định bao nhiêu tháng trong tương lai, chúng tôi sẽ kiểm tra xung đột. Nếu bạn thấy việc thêm sự kiện mất nhiều thời gian để xử lý , giảm con số này.
+Conflict checking months: Tháng kiểm tra xung đột
+conflict-check-override-help: Cho phép người dùng ghi đè xung đột sự kiện và lên lịch cho hai hoặc nhiều sự kiện cùng một lúc.
+Allow users to override conflicts: Cho phép người dùng ghi đè xung đột
+limit-appts-help: Cho phép quản trị viên hệ thống đặt giới hạn trên toàn hệ thống về số lượng cuộc hẹn mà một người dùng có thể có vào bất kỳ ngày nào.
+Limit number of timed events per day: Giới hạn số lượng sự kiện được hẹn giờ mỗi ngày
+limit-appts-number-help: Chỉ định số lượng sự kiện theo thời gian tối đa mà người dùng có thể có trong một ngày.
+Maximum timed events per day: Sự kiện được tính giờ tối đa mỗi ngày
+crossday-help: Nếu được bật, các sự kiện kéo dài nhiều ngày sẽ được hiển thị vào các ngày riêng biệt
+Disable Cross-Day Events: Tắt sự kiện trong ngày
+disable-location-field-help: Chọn "Có" sẽ xóa trường "Vị trí" khỏi các trang thông tin sự kiện
+Disable Location field: Tắt trường Vị trí
+disable-url-field-help: Chọn "Có" sẽ xóa trường "URL" khỏi các trang thông tin sự kiện
+Disable URL field: Vô hiệu hóa trường URL
+disable-priority-field-help: Chọn "Có" sẽ loại bỏ trường "Ưu tiên" khỏi các trang thông tin sự kiện, cung cấp giao diện đơn giản hơn cho người mới.
+Disable Priority field: Tắt trường Ưu tiên
+disable-access-field-help: Chọn "Có" sẽ loại bỏ trường "Truy cập" khỏi các trang thông tin sự kiện, cung cấp giao diện đơn giản hơn cho người mới.
+Disable Access field: Vô hiệu hóa trường Truy cập
+disable-participants-field-help: Chọn "Có" sẽ xóa trường "Người tham gia" khỏi các trang thông tin sự kiện, ngăn người dùng thêm người dùng khác vào sự kiện của họ. Nếu bạn bật tùy chọn này, bạn cũng có thể muốn tắt trường "Cho phép xem lịch của người dùng khác".
+Disable Participants field: Tắt trường Người tham gia
+disable-repeating-field-help: Chọn "Có" sẽ loại bỏ trường "Lặp lại" khi thêm sự kiện. Điều này sẽ cung cấp một giao diện đơn giản hơn cho người mới.
+Disable Repeating field: Tắt trường Lặp lại
+allow-html-description-help: Nếu được bật, người dùng có thể nhập HTML vào trường mô tả sự kiện. Nếu không được bật, các thẻ HTML sẽ bị thoát để xuất hiện dưới dạng văn bản thuần túy. Cảnh báo: Bật tính năng này sẽ cho phép người dùng tham khảo hình ảnh trên các trang web khác.
+Allow HTML in Description: Cho phép HTML trong Mô tả
+Popups: Cửa sổ bật lên
+disable-popups-help: Tắt cửa sổ bật lên khỏi chế độ xem lịch
+Disable Pop-Ups: Tắt cửa sổ bật lên
+popup-includes-siteextras-help: Nếu được bật, cho phép thiết lập các trường sự kiện tùy chỉnh trong tệp site_extras.php sẽ được hiển thị trong cửa sổ bật lên sự kiện.
+Display Site Extras in popup: Hiển thị thông tin bổ sung về trang web trong cửa sổ bật lên
+popup-includes-participants-help: Nếu được bật, những người tham gia sẽ được hiển thị trong cửa sổ bật lên của sự kiện.
+Display Participants in popup: Hiển thị Người tham gia trong cửa sổ bật lên
+Miscellaneous: Điều khoản khác
+remember-last-login-help: Khi được kích hoạt, thông tin đăng nhập của người dùng sẽ được điền cho họ trên trang đăng nhập (nhưng không phải mật khẩu) và tùy chọn của người dùng sẽ được tải (bao gồm cả màu sắc ưa thích và lựa chọn ngôn ngữ của họ).
+Remember last login: Nhớ lần đăng nhập cuối cùng
+summary_length-help: Độ dài tối đa của Mô tả ngắn gọn trong chế độ xem lịch
+Brief Description Length: Độ dài mô tả ngắn gọn
+user_sort-help: Xác định thứ tự sắp xếp cho danh sách Người dùng, Không phải người dùng
+User Sort Order: Thứ tự sắp xếp của người dùng
+Lastname, Firstname: Họ và tên
+Firstname, Lastname: Họ, Tên
+allow-public-access-help: Khi được bật, lịch có thể được sử dụng như một lịch công khai chỉ đọc mà không yêu cầu người dùng đăng nhập.
+Allow public access: Cho phép truy cập công khai
+public-access-default-visible: Các sự kiện từ lịch công khai sẽ tự động xuất hiện trên lịch của tất cả người dùng
+Public access visible by default: Quyền truy cập công khai hiển thị theo mặc định
+public-access-default-selected: Khi thêm một sự kiện mới, người dùng công khai sẽ được chọn làm người tham gia theo mặc định.
+Public access is default participant: Quyền truy cập công khai là người tham gia mặc định
+public-access-view-others-help: Khi truy cập hệ thống với quyền truy cập công khai, chỉ định xem người dùng có thể xem lịch của người dùng lịch khác hay không.
+Public access can view other users: Quyền truy cập công khai có thể xem những người dùng khác
+public-access-can-add-help: Khi được bật, người dùng truy cập hệ thống thông qua Quyền truy cập Công khai sẽ có thể thêm các sự kiện mới, nhưng chúng sẽ không hiển thị trong lịch cho đến khi quản trị viên phê duyệt sự kiện mới.
+Public access can add events: Quyền truy cập công khai có thể thêm sự kiện
+public-access-add-requires-approval-help: Chỉ định xem các sự kiện được thêm qua tài khoản truy cập công cộng có cần phê duyệt hay không trước khi hiển thị.
+Public access new events require approval: Quyền truy cập công khai các sự kiện mới yêu cầu phê duyệt
+public-access-sees-participants-help: Nếu được bật, người dùng truy cập lịch từ tài khoản công khai sẽ có thể xem những người tham gia sự kiện nếu họ xem chi tiết của một sự kiện.
+Public access can view participants: Quyền truy cập công khai có thể xem những người tham gia
+public-access-override-help: Cho phép ẩn tên sự kiện và mô tả trên lịch công khai
+Override event name/description for public access: Ghi đè tên / mô tả sự kiện để truy cập công khai
+public-access-override-text-help: Văn bản sẽ hiển thị nếu tùy chọn trên được bật. Nếu 'Không có sẵn', nó sẽ được dịch.
+Text to display to public access: Văn bản để hiển thị cho quyền truy cập công khai
+public-access-captcha-help: Nếu được bật, các sự kiện mới do Công khai thêm yêu cầu phải vượt qua xác thực CAPTCHA.
+Require CAPTCHA validation for public access new events: Yêu cầu xác thực CAPTCHA để truy cập công khai các sự kiện mới
+uac-enabled-help: Cho phép kiểm soát truy cập cấp người dùng
+User Access Control enabled: Đã bật Kiểm soát Quyền truy cập của Người dùng
+groups-enabled-help: Cho phép hỗ trợ nhóm, cho phép người dùng chọn người dùng theo nhóm.
+Groups enabled: Các nhóm đã được bật
+user-sees-his-group-help: Nếu được bật, người dùng sẽ không thấy những người dùng lịch không thuộc ít nhất một trong các nhóm của họ.
+User sees only his groups: Người dùng chỉ thấy các nhóm của mình
+nonuser-enabled-help: Nếu được bật, quản trị viên sẽ có tùy chọn để thêm lịch không phải của người dùng
+Nonuser enabled: Lịch không phải của người dùng đã được bật
+nonuser-list-help: Vị trí hiển thị lịch không phải người dùng trong danh sách người tham gia
+Nonuser list: Hiển thị trong danh sách người tham gia tại
+Upcoming Events: sự kiện sắp tới
+upcoming-events-help: Bật sắp tới.php
+Enabled: Đã bật
+upcoming-events-allow-override: Cho phép thông số người dùng cho sắp tới.php
+Allow user override: Cho phép ghi đè người dùng
+upcoming-events-display-caticons: Bao gồm các biểu tượng danh mục trong sắp tới.php
+Display category icons: Hiển thị các biểu tượng danh mục
+upcoming-events-display-layers: Hiển thị các lớp trong sắp tới.php
+Display layers: Hiển thị các lớp
+upcoming-events-display-links: Hiển thị các liên kết trong sắp tới.php
+Display links to events: Hiển thị các liên kết đến các sự kiện
+upcoming-events-display-popups: Hiển thị cửa sổ bật lên sự kiện trong sắp tới.php
+Display event popups: Hiển thị cửa sổ bật lên sự kiện
+reports-enabled-help: Nếu được bật, người dùng sẽ thấy phần "Báo cáo" ở cuối mỗi trang và sẽ được phép tạo báo cáo tùy chỉnh. Ngoài ra, người dùng quản trị có thể tạo các báo cáo toàn cầu sẽ xuất hiện ở cuối tất cả các trang của người dùng.
+Reports enabled: Đã bật báo cáo
+subscriptions-enabled-help: Chỉ định xem người dùng từ xa có thể đăng ký lịch của người dùng WebCalendar hay không, cho phép họ xem các sự kiện của người dùng WebCalendar trong ứng dụng hỗ trợ iCal của họ (chẳng hạn như Lịch iCal của Apple hoặc Mozilla).
+Allow remote subscriptions: Cho phép đăng ký từ xa
+remotes-enabled-help: Cho phép người dùng tải các tệp ics từ xa bằng URL
+Allow remote calendars: Cho phép lịch từ xa
+rss-enabled-help: Chỉ định xem lịch của người dùng có thể được lấy từ nguồn cấp dữ liệu RSS hay không.
+Enable RSS feed: Bật nguồn cấp dữ liệu RSS
+categories-enabled-help: Cho phép hỗ trợ cho các danh mục sự kiện.
+Categories enabled: Đã bật danh mục
+icon_upload-enabled-help: Nếu được bật, người dùng có thể tải lên các biểu tượng danh mục
+Category Icon Upload enabled: Đã bật Tải lên Biểu tượng Danh mục
+(Requires XXX folder to exist.): (Yêu cầu thư mục XXX tồn tại.)
+display-tasks-help: Hiển thị cửa sổ nhiệm vụ nhỏ trên lịch tháng và ngày
+Display small task list: Hiển thị danh sách nhiệm vụ nhỏ
+display-tasks-in-grid-help: Hiển thị các nhiệm vụ trong lịch cùng với các sự kiện
+Display tasks in Calendars: Hiển thị công việc trong Lịch
+allow-external-users-help: Chỉ định xem có thể thêm người dùng không phải lịch vào sự kiện hay không. Điều này cho phép người dùng không sử dụng lịch được liệt kê là người tham gia sự kiện.
+Allow external users: Cho phép người dùng bên ngoài
+external-can-receive-notification-help: Khi người dùng bên ngoài được bật và sử dụng email được bật, người dùng bên ngoài có thể nhận thông báo qua email khi sự kiện được thêm, cập nhật hoặc xóa (nếu địa chỉ email của người dùng bên ngoài được cung cấp).
+External users can receive email notifications: Người dùng bên ngoài có thể nhận thông báo qua email
+external-can-receive-reminder-help: Khi người dùng bên ngoài được bật và sử dụng email được bật, người dùng bên ngoài có thể nhận được lời nhắc qua email (nếu địa chỉ email của người dùng bên ngoài được cung cấp).
+External users can receive email reminders: Người dùng bên ngoài có thể nhận được lời nhắc qua email
+allow-self-registration-help: Cho phép người dùng mới tự đăng ký
+Allow self-registration: Cho phép tự đăng ký
+use-blacklist-help: Giới hạn quyền truy cập vào các chức năng của WebCalendar dựa trên địa chỉ IP
+Restrict self-registration to blacklist: Hạn chế tự đăng ký vào danh sách đen
+allow-self-registration-full-help: Cho phép người dùng mới hoàn tất quá trình tự đăng ký trực tuyến
+Use self-registration email notifications: Tạo mật khẩu và gửi cho người dùng mới
+allow-attachment-help: Cho phép người dùng thêm tệp đính kèm vào các sự kiện.
+Allow file attachments to events: Cho phép tệp đính kèm vào các sự kiện
+Admin and owner can always add attachments if enabled.: Quản trị viên và chủ sở hữu luôn có thể thêm tệp đính kèm nếu được bật.
+allow-comments-help: Cho phép người dùng thêm nhận xét vào các sự kiện.
+Allow comments to events: Cho phép nhận xét cho các sự kiện
+Admin and owner can always add comments if enabled.: Quản trị viên và chủ sở hữu luôn có thể thêm nhận xét nếu được bật.
+email-enabled-help: Bật hoặc tắt tất cả tính năng gửi email để nhận thông báo và lời nhắc. Đặt thành "không", nếu máy chủ của bạn không được thiết lập đúng cách để gửi thư.
+Email enabled: Đã bật email
+email-default-sender: Chỉ định địa chỉ email để chỉ định làm người gửi khi gửi lời nhắc.
+Default sender address: Địa chỉ người gửi mặc định
+email-mailer: Chọn loại email (SMTP, PHP mail, sendmail)
+Email Mailer: Người gửi thư qua email
+email-smtp-host: (Các) tên máy chủ của (các) máy chủ SMTP được phân tách bằng dấu phẩy
+SMTP Host name(s): (Các) tên máy chủ SMTP
+email-smtp-port: Số cổng SMTP (thường là 25)
+SMTP Port Number: Số cổng SMTP
+email-smtp-auth: Sử dụng Xác thực SMTP
+SMTP Authentication: Xác thực SMTP
+email-smtp-username: Tên người dùng SMTP nếu sử dụng Xác thực
+SMTP Username: Tên người dùng SMTP
+email-smtp-password: Mật khẩu SMTP nếu sử dụng Xác thực
+SMTP Password: Mật khẩu SMTP
+Default user settings: Cài đặt người dùng mặc định
+email-format: Chỉ định tùy chọn cho HTML hoặc tin nhắn văn bản thuần túy
+Email format preference: Tùy chọn định dạng email
+HTML: =
+Plain Text: Văn bản thô
+email-include-ics: Bao gồm tệp iCalendar ICS vào email
+Include iCalendar attachments: Bao gồm các tệp đính kèm iCalendar
+email-event-reminders-help: Chỉ định có gửi lời nhắc sự kiện hay không.
+Event reminders: Lời nhắc sự kiện
+email-event-added: Chỉ định có gửi thông báo qua email khi một sự kiện được thêm vào lịch của bạn hay không.
+Events added to my calendar: Các sự kiện đã được thêm vào lịch của tôi
+email-event-updated: Chỉ định có gửi thông báo qua email khi một sự kiện được cập nhật trên lịch của bạn hay không.
+Events updated on my calendar: Các sự kiện được cập nhật trên lịch của tôi
+email-event-deleted: Chỉ định có gửi thông báo qua email khi một sự kiện bị xóa khỏi lịch của bạn hay không.
+Events removed from my calendar: Sự kiện đã bị xóa khỏi lịch của tôi
+email-event-rejected: Chỉ định có gửi thông báo qua email khi người tham gia từ chối một sự kiện có trên lịch của bạn hay không.
+Event rejected by participant: Sự kiện bị từ chối bởi người tham gia
+email-event-create: Chỉ định liệu người tạo các mục có nhận được email hay không
+Event that I create: Sự kiện mà tôi tạo
+Color options: Tùy chọn màu sắc
+Allow user to customize colors: Cho phép người dùng tùy chỉnh màu sắc
+gradient-colors: Nếu màu gradient được bật sẽ được sử dụng. Điều này có thể ảnh hưởng lớn đến hiệu suất.
+Enable gradient images for background colors: Bật hình ảnh gradient cho màu nền
+Not available: Không có sẵn
+Background Image options: Tùy chọn hình nền
+bgimage-help: URL của hình nền mong muốn. Có thể là liên kết tương đối.
+Background Image: Hình nền
+bgrepeat-help: Kiểm soát hành vi lặp lại của hình nền.
+Background Repeat: Bối cảnh Lặp lại
+
+########################################
+# Page: adminhome.php
+#
+Assistants: Trợ lý
+Preferences: Sở thích
+Control Panel: Bảng điều khiển
+Users: Người dùng
+Account: Tài khoản
+Categories: Thể loại
+Views: Lượt xem
+Layers: Lớp
+Reports: Báo cáo
+Delete Events: Xóa sự kiện
+Activity Log: Hoạt động đăng nhập
+System Log: Nhật ký hệ thống
+Security Audit: Kiểm toán an ninh
+Public Preferences: Sở thích công khai
+Unapproved Public Events: Sự kiện công khai không được chấp thuận
+Administrative Tools: Công cụ quản trị
+
+########################################
+# Page: ajax.php
+#
+Duplicate Name XXX: Tên trùng lặp: "XXX".
+Username XXX already exists.: Tên người dùng "XXX" đã tồn tại.
+Email address XXX already exists.: Địa chỉ email "XXX" đã tồn tại.
+
+########################################
+# Page: approve_entry.php
+#
+Additional Comments (optional): Nhận xét khác: (tùy chọn)
+Approve and Send: Phê duyệt và gửi
+Approve and Exit: Phê duyệt và Thoát
+(Your comments will be emailed to the event creator.): (Nhận xét của bạn sẽ được gửi qua email cho người tạo sự kiện.)
+Hello, XXX.: Xin chào, XXX.
+XXX has approved an appointment and added comments.: Cuộc hẹn đã được chấp thuận và các nhận xét được XXX thêm vào.
+Subject XXX: Chủ đề: "XXX".
+Description XXX: Mô tả: "XXX".
+Date XXX: Ngày: XXX
+Time XXX: Thời gian: XXX
+Comments XXX: Nhận xét: XXX
+Approved w/Comments by XXX.: Được chấp thuận với / Nhận xét bởi: XXX.
+
+########################################
+# Page: assistant_edit.php
+#
+Admin mode: Chế độ quản trị viên
+Your assistants: Trợ lý của bạn
+
+########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Lỗi không xác định.
+
+########################################
+# Page: availability.php
+#
+Program Error No XXX specified!: Lỗi chương trình: Không có XXX được chỉ định!
+user: người sử dụng
+year: năm
+month: tháng
+day: ngày
+
+########################################
+# Page: category.php
+#
+Category Icon: Biểu tượng thể loại
+Global: Toàn cầu
+The permissions for the icons directory are set to read-only: Quyền cho thư mục biểu tượng được đặt thành chỉ đọc.
+Category Name: Tên danh mục:
+Color: Màu sắc
+Remove Icon: Xóa biểu tượng:
+Add Icon to Category: Thêm biểu tượng vào danh mục
+Upload: Tải lên
+GIF or PNG 6kb max: GIF hoặc PNG tối đa 6kb
+Search for existing icons: Tìm kiếm các biểu tượng hiện có
+Add: Thêm vào
+Delete: Xóa bỏ
+Are you sure you want to delete this entry?: Bạn có chắc chắn muốn xóa mục này không?
+Make New Category: Tạo danh mục mới
+
+########################################
+# Page: category_handler.php
+#
+Category name is required: Tên danh mục là bắt buộc
+File size exceeds maximum.: Kích thước tệp vượt quá tối đa.
+File is not a GIF or PNG image: Tệp không phải là hình ảnh GIF hoặc PNG
+
+########################################
+# Page: catsel.php
+#
+AVAILABLE CATEGORIES: CÁC DANH MỤC CÓ SN
+ENTRY CATEGORIES: NHẬP CÁC DANH MỤC
+Remove: Tẩy
+Global Category: Danh mục toàn cầu
+Cancel: Huỷ bỏ
+
+########################################
+# Page: colors.php
+#
+Add Custom: Thêm tùy chỉnh
+Basic Colors: Màu cơ bản
+Current Color: Màu hiện tại
+Custom Colors: Màu sắc tùy chỉnh
+Old Color: Màu cũ
+
+########################################
+# Page: combo.php
+#
+Select None: Chọn Không có
+Agenda: Chương trình nghị sự
+Add Task: Thêm nhiệm vụ
+Description: Sự miêu tả
+Date: Ngày
+Time: Thời gian
+Priority: Sự ưu tiên
+Access: Truy cập
+Created by: Được tạo bởi
+Updated: Đã cập nhật
+Participants: Những người tham gia
+Attachments: Tập tin đính kèm
+Comments: Bình luận
+Brief Description: Mô tả ngắn gọn
+Full Description: Mô tả đầy đủ
+Category: thể loại
+Add event detail: Thêm chi tiết sự kiện
+Start Date: Ngày bắt đầu
+Due Date: Ngày đáo hạn
+Add task detail: Thêm chi tiết nhiệm vụ
+All: Tất cả
+Error: lỗi
+no response from server: không có phản hồi từ máy chủ
+JSON error: Lỗi JSON
+High: Cao
+Medium: Trung bình
+Low: Thấp
+Today: Hôm nay
+Add Entry: Thêm mục nhập
+Unnamed Event: Sự kiện không tên
+Unnamed Task: Nhiệm vụ không tên
+Refresh: Làm tươi
+Click to add entry: Nhấp để thêm mục nhập
+Name: Tên
+pm: buổi chiều
+am: là
+
+########################################
+# Page: del_entry.php
+#
+XXX has canceled an appointment.: XXX đã hủy một cuộc hẹn.
+
+########################################
+# Page: doc.php
+#
+Invalid blob id: Id blob không hợp lệ
+
+########################################
+# Page: docadd.php
+#
+Add Comment: Thêm bình luận
+Add Attachment: Thêm bản đính kèm
+Subject: Môn học
+Comment: Bình luận
+Upload file: Cập nhật dử liệu
+
+########################################
+# Page: docdel.php
+#
+Removed: Đã xóa
+
+########################################
+# Page: edit_entry.php
+#
+days: ngày
+hours: giờ
+minutes: phút
+You are not authorized to edit this task.: Bạn không được phép chỉnh sửa tác vụ này.
+is in a different timezone than you are. Currently: ở múi giờ khác với bạn. Hiện tại
+hour ahead of you: trước bạn một giờ
+hour behind you: giờ sau bạn
+hours ahead of you: hàng giờ trước bạn
+hours behind you: hàng giờ sau bạn
+XXX is in a different timezone (ahead): (XXX ở múi giờ khác; trước bạn là YYY.<br>&nbsp;ZZZ)
+XXX is in a different timezone (behind): (XXX ở múi giờ khác; YYY sau bạn.<br>&nbsp;ZZZ)
+Time entered here is based on your Timezone.: Thời gian được nhập ở đây dựa trên Múi giờ của bạn.
+Edit Entry: Chỉnh sửa mục nhập
+Details: Chi tiết
+Repeat: Nói lại
+Reminders: Nhắc nhở
+brief-description-help: Điều này sẽ cung cấp một mô tả ngắn (khoảng 20 ký tự) về sự kiện. Điều này sẽ đại diện cho sự kiện khi xem lịch.
+full-description-help: Điều này sẽ hoàn thành chi tiết của sự kiện. Thông tin này có thể được nhìn thấy khi người dùng xem sự kiện.
+access-help: Chỉ định cấp độ truy cập của sự kiện. <ul> <li> Công khai: Mọi người có thể xem toàn bộ chi tiết của sự kiện.</li> <li> Bảo mật: Những người khác có thể thấy rằng bạn có mục nhập cho ngày và giờ đó, nhưng không phải chi tiết về nó là gì.</li></ul>
+priority-help: Chỉ định mức độ ưu tiên của sự kiện. Các sự kiện có mức độ ưu tiên cao sẽ được in đậm.
+category-help: Chỉ định danh mục của sự kiện.
+completed-help: Ngày hoàn thành nhiệm vụ. Chỉ được bật khi tỷ lệ phần trăm tất cả người tham gia bằng 100%.
+Date Completed: Ngày hoàn thành
+percent-help: Phần trăm hoàn thành nhiệm vụ cho người dùng này
+Percent Complete: Hoàn thành toàn bộ
+All Percentages: Tất cả các phần trăm
+location-help: Vị trí sự kiện
+Location: Vị trí
+url-help: URL sự kiện
+URL: =
+date-help: Chỉ định ngày của sự kiện.
+Untimed event: Sự kiện không có thời hạn
+Timed event: Sự kiện đã định thời gian
+All day event: Sự kiện cả ngày
+Timezone Offset: Chênh lệch múi giờ
+time-help: Chỉ định thời gian của sự kiện. <ul> <li> "Sự kiện theo thời gian" (cho một sự kiện được lên lịch vào một thời gian cụ thể vào ngày đó)</li> <li> "Sự kiện không hẹn giờ" (cho một sự kiện không có thời gian (như ngày lễ )</li> <li> "Sự kiện cả ngày" (đối với sự kiện diễn ra cả ngày (như không có mặt tại văn phòng)</li></ul>
+duration-help: Chỉ định thời lượng (theo giờ; phút) của sự kiện. <em>Trường này có thể để trống.</em>
+end-time-help: Chỉ định thời gian sự kiện dự kiến ​​kết thúc.
+Start Time: Thời gian bắt đầu
+Due Time: Thời gian đến hạn
+Site Extras: Trang web bổ sung
+avail_participants-help: Liệt kê những người tham gia có sẵn của mục này.
+Available: Có sẵn
+Find Name: Tìm tên
+Resources: Tài nguyên
+participants-help: Liệt kê những người tham gia mục này.
+Selected: Đã chọn
+Availability: khả dụng
+external-participants-help: Chỉ định danh sách những người tham gia sự kiện không phải là người dùng lịch. Những người dùng phải được liệt kê trên mỗi dòng và có thể bao gồm một địa chỉ email. Nếu địa chỉ email được chỉ định, người dùng đủ điều kiện nhận thông báo và lời nhắc.
+External Participants: Người tham gia bên ngoài
+repeat-type-help: Chọn tần suất sự kiện sẽ lặp lại.
+Daily: hằng ngày
+Weekly: Hàng tuần
+Monthly: Hàng tháng
+by day: theo ngày
+by date: theo ngày
+by position: theo chức vụ
+Monthly (by day): Hàng tháng (theo ngày)
+Monthly (by date): Hàng tháng (theo ngày)
+Monthly (by position): Hàng tháng (theo vị trí)
+Yearly: Hàng năm
+Manual: Thủ công
+Expert Mode: Chế độ chuyên gia
+repeat-end-date-help: Chỉ định ngày sự kiện sẽ lặp lại cho đến khi nào.
+Ending: Kết thúc
+Forever: Mãi mãi
+Use end date: Sử dụng ngày kết thúc
+Number of times: Số lần
+repeat-frequency-help: Chỉ định tần suất sự kiện sẽ lặp lại.
+Frequency: Tần số
+Weekdays Only: Chỉ các ngày trong tuần
+Week Start: Tuần bắt đầu
+repeat-bydayextended-help: Cho phép chọn ngày dựa trên ngày trong tuần.
+ByDay: =
+repeat-month-help: Chỉ định tháng mà sự kiện sẽ lặp lại.
+ByMonth: =
+repeat-bysetpos-help: Cho phép chọn ngày dựa trên vị trí trong tháng.
+BySetPos: =
+repeat-bymonthdayextended-help: Cho phép chọn ngày dựa trên ngày.
+ByMonthDay: =
+repeat-byweekno-help: Cho phép người dùng chỉ định danh sách các tuần lặp lại sự kiện (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Cho phép người dùng chỉ định danh sách các ngày trong năm để lặp lại sự kiện (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Những ngày bổ sung mà sự kiện này nên hoặc không nên xảy ra vào.
+Exclusions: Loại trừ
+Inclusions: Bao gồm
+Add Exception: Thêm ngoại lệ
+Add Inclusion: Thêm bao gồm
+Delete Selected: Xóa đã chọn
+Send Reminder: Gửi lời nhắc
+When: Khi nào
+Use Date/Time: Ngày / giờ sử dụng
+Use Offset: Sử dụng bù đắp
+Before: Trước
+After: Sau
+Start: Khởi đầu
+End/Due: Kết thúc / Đến hạn
+Times: =
+Every: Mỗi
+CAPTCHA Warning: Cảnh báo:  Không thể sử dụng CAPTCHA mà không có phần mở rộng GD của PHP!<br>
+Delete entry: Xóa mục nhập
+You are not authorized to edit this entry.: Bạn không được phép chỉnh sửa mục này.
+
+########################################
+# Page: edit_entry_handler.php
+#
+XXX has made a new appointment.: XXX đã có một cuộc hẹn mới.
+XXX has updated an appointment.: XXX đã cập nhật một cuộc hẹn.
+Security violation!: Vi phạm an ninh!
+You must enter the anti-spam text on the previous page.: Bạn phải nhập văn bản chống thư rác trên trang trước.
+The following conflicts with the suggested time: Các xung đột sau đây với thời gian được đề xuất
+User removed from participants list.: Người dùng bị xóa khỏi danh sách người tham gia.
+Please look on XXX to accept or reject this appointment.: Vui lòng xem XXX để chấp nhận hoặc từ chối cuộc hẹn này.
+Please look on XXX to view this appointment.: Vui lòng xem trên XXX để xem cuộc hẹn này.
+Scheduling Conflict: Xung đột lịch trình
+Your suggested time of: Thời gian đề xuất của bạn về
+conflicts with the following existing calendar entries: xung đột với các mục lịch hiện có sau đây
+
+########################################
+# Page: edit_nonusers.php
+#
+NONUSER_PREFIX not set: NONUSER_PREFIX chưa được đặt trong "config.php".
+word characters only: (chỉ có thể chứa các ký tự từ; [a-zA-Z_0-9])
+Add User: Thêm người dùng
+Edit User: Người dùng biên tập
+Calendar ID: ID lịch
+First Name: Tên đầu tiên
+Last Name: Họ
+Is public calendar: Lịch công cộng
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Lỗi cơ sở dữ liệu
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Thêm lịch từ xa
+Edit Remote Calendar: Chỉnh sửa lịch từ xa
+Create Layer: Tạo lớp
+Reload: Nạp lại
+Required to View Remote Calendar: Yêu cầu để xem lịch từ xa
+
+########################################
+# Page: edit_remotes_handler.php
+#
+Import Results: Nhập kết quả
+Events successfully imported: Các sự kiện đã được nhập thành công
+Create a new layer to view this calendar.: Tạo một lớp mới để xem lịch này.
+Errors: Lỗi
+There was an error parsing the import file or no events were returned.: Đã xảy ra lỗi khi phân tích cú pháp tệp nhập hoặc không có sự kiện nào được trả lại.
+
+########################################
+# Page: edit_report.php
+#
+Tomorrow: Ngày mai
+Yesterday: Hôm qua
+Day before yesterday: Ngày hôm kia
+Next week: Tuần tới
+This week: Tuần này
+Last week: Tuần trước
+Week before last: Tuần trước cuối cùng
+Next week and week after: Tuần sau và tuần sau
+This week and next week: Tuần này và tuần sau
+Last week and this week: Tuần trước và tuần này
+Last two weeks: Hai tuần trước
+Next month: Tháng tiếp theo
+This month: Tháng này
+Last month: Tháng trước
+Month before last: Tháng trước cuối cùng
+Next year: Năm sau
+This year: Năm nay
+Last year: Năm ngoái
+Year before last: Năm trước cuối cùng
+Next 14 days: 14 ngày tới
+Next 30 days: 30 ngày tới
+Next 60 days: 60 ngày tới
+Next 90 days: 90 ngày tới
+Next 180 days: 180 ngày tới
+Next 365 days: 365 ngày tới
+Invalid report id XXX.: Id báo cáo không hợp lệ: "XXX".
+Unnamed Report: Báo cáo không tên
+Add Report: Thêm báo cáo
+Edit Report: Chỉnh sửa Báo cáo
+Report name: Tên báo cáo
+User: Người sử dụng
+Current User: Người dùng hiện tại
+Include link in menu: Bao gồm liên kết trong menu
+Include standard header/trailer: Bao gồm tiêu đề / đoạn giới thiệu tiêu chuẩn
+Include previous/next links: Bao gồm các liên kết trước đó / tiếp theo
+Include empty dates: Bao gồm các ngày trống
+Date range: Phạm vi ngày
+Template variables: Các biến mẫu
+Page template: Mẫu trang
+Day template: Mẫu ngày
+Event template: Mẫu sự kiện
+Are you sure you want to delete this report?: Bạn có chắc chắn muốn xóa báo cáo này không?
+
+########################################
+# Page: edit_report_handler.php
+#
+No such report id XXX.: Không có id báo cáo như vậy: "XXX".
+Variable XXX not found.: Không tìm thấy biến XXX.
+
+########################################
+# Page: edit_template.php
+#
+Edit Custom Header: Chỉnh sửa tiêu đề tùy chỉnh
+Edit Custom Script/Stylesheet: Chỉnh sửa Tập lệnh / Biểu định kiểu tùy chỉnh
+Edit Custom Trailer: Chỉnh sửa đoạn giới thiệu tùy chỉnh
+
+########################################
+# Page: edit_user.php
+#
+Username: tên tài khoản
+E-mail address: Địa chỉ email
+Password: Mật khẩu
+again: lần nữa
+Disabled for demo: Bị vô hiệu hóa cho bản demo
+Are you sure you want to delete this user?: Bạn có chắc chắn muốn xóa người dùng này không?
+Change Password: Đổi mật khẩu
+New Password: mật khẩu mới
+Set Password: Đặt mật khẩu
+
+########################################
+# Page: edit_user_handler.php
+#
+Deleting users not supported.: Xóa người dùng không được hỗ trợ.
+The passwords were not identical.: Mật khẩu không giống nhau.
+You have not entered a password.: Bạn chưa nhập mật khẩu.
+Username cannot be blank.: Tên người dùng không thể để trống.
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Không được ủy quyền
+
+########################################
+# Page: export.php
+#
+Export: Xuất khẩu
+Export format: Định dạng xuất khẩu
+Include all layers: Bao gồm tất cả các lớp
+Include deleted entries: Bao gồm các mục đã xóa
+Export all dates: Xuất tất cả các ngày
+Start date: Ngày bắt đầu
+End date: Ngày cuối
+Modified since: Đã sửa đổi từ
+
+########################################
+# Page: export_handler.php
+#
+export format not defined or incorrect.: định dạng xuất không được xác định hoặc không chính xác.
+
+########################################
+# Page: freebusy.php
+#
+No user specified.: Không có người dùng nào được chỉ định.
+
+########################################
+# Page: groups.php
+#
+Add New Group: Thêm nhóm mới
+
+########################################
+# Page: group_edit.php
+#
+Unnamed Group: Nhóm không tên
+Add Group: Thêm nhóm
+Edit Group: Chỉnh sửa nhóm
+Group name: Tên nhóm
+
+########################################
+# Page: group_edit_handler.php
+#
+You must specify a group name: Bạn phải chỉ định tên nhóm
+
+########################################
+# Page: help_admin.php
+#
+Auto-refresh calendars: Tự động làm mới lịch
+auto-refresh-help: Khi được bật, chế độ xem ngày, chế độ xem tuần, chế độ xem tháng và danh sách các trang chưa được phê duyệt sẽ tự động làm mới theo định kỳ.
+Auto-refresh time: Thời gian tự động làm mới
+auto-refresh-time-help: Nếu Tự động làm mới được bật, điều này sẽ chỉ định thời gian giữa mỗi lần làm mới.
+Display days with events in bold in year view: Hiển thị ngày với các sự kiện được in đậm trong chế độ xem năm
+Display weekends in week view: Hiển thị các ngày cuối tuần trong chế độ xem tuần
+Time interval: Khoảng thời gian
+time-interval-help: Chỉ định các khối thời gian trong chế độ xem tuần và chế độ xem ngày sẽ là bao lâu.
+Nonuser: Lịch không phải của người dùng
+user-customize-color: Chỉ định xem người dùng có được phép sửa đổi bảng màu của riêng họ hay không.
+enable-gradient-help: Sử dụng màu gradient cho nền ô.
+Manually entering color values: Nhập các giá trị màu theo cách thủ công
+colors-help: Tất cả các màu phải được chỉ định ở định dạng thập lục phân "#RRGGBB" trong đó "RR" là giá trị hex cho màu đỏ, "GG" là giá trị hex cho màu xanh lục và "BB" là giá trị hex cho màu xanh lam.
+
+########################################
+# Page: help_bug.php
+#
+Report Bug: Báo cáo lỗi
+Please include all the information below when reporting a bug.: Vui lòng bao gồm tất cả thông tin bên dưới khi báo cáo lỗi.
+Also, please use English rather than XXX.: Ngoài ra, vui lòng sử dụng  tiếng Anh  thay vì XXX.
+
+########################################
+# Page: help_docs.php
+#
+WebCalendar Documentation: Tài liệu Lịch sử Web
+Currently in English only.: Hiện tại chỉ có bằng tiếng Anh.
+
+########################################
+# Page: help_edit_entry.php
+#
+Adding/Editing Calendar Entries: Thêm / Chỉnh sửa Mục nhập Lịch
+Repeat Type: Loại lặp lại
+For More Information...: Để biết thêm thông tin...
+Repeat End Date: Lặp lại ngày kết thúc
+Repeat Day: Ngày lặp lại
+repeat-day-help: Chỉ định những ngày nào trong tuần mà sự kiện sẽ lặp lại.
+
+########################################
+# Page: help_import.php
+#
+Import: Nhập khẩu
+Palm Desktop: Máy tính để bàn Palm
+allow you to import entries from the Palm...: Biểu mẫu này sẽ cho phép bạn nhập các mục nhập từ Palm Desktop Datebook. Nó phải được đặt trong thư mục Palm của bạn trong datebook / datebook.dat trong một thư mục con được đặt tên theo tên người dùng của bạn.
+The following entries will not be imported: Các mục sau sẽ không được nhập:
+Entries older than the current date: Các mục cũ hơn ngày hiện tại
+Entries created in the Palm Desktop...: Các mục được tạo trong Palm Desktop chưa được HotSync'd
+Anything imported from Palm...: Mọi thứ được nhập từ Palm sẽ bị ghi đè trong lần nhập tiếp theo (trừ khi ngày diễn ra sự kiện đã qua). Do đó, các bản cập nhật nên được thực hiện trong Palm Desktop.
+vCal: =
+This form will import vCalendar (.vcs) 1.0 events.: Biểu mẫu này sẽ nhập các sự kiện vCalendar (.vcs) 1.0.
+The following formats have been tested: Các định dạng sau đã được thử nghiệm:
+This form will import iCalendar (.ics) events.: Biểu mẫu này sẽ nhập các sự kiện iCalendar (.ics).
+Enabling: Cho phép
+Overwrite Prior Import: Ghi đè Nhập trước
+will cause events imported previously...: sẽ khiến các sự kiện đã nhập trước đó, đã sử dụng cùng một UID như một sự kiện từ tệp nhập mới, được đánh dấu là đã xóa. Điều này sẽ cho phép nhập tệp iCalendar đã cập nhật mà không tạo bản sao.
+
+########################################
+# Page: help_index.php
+#
+Help Index: Chỉ mục trợ giúp
+About WebCalendar: Giới thiệu về WebCalendar
+
+########################################
+# Page: help_layers.php
+#
+Layers are useful for displaying...: Các lớp rất hữu ích để hiển thị các sự kiện của người dùng khác trong lịch của riêng bạn. Bạn có thể chỉ định người dùng và màu sắc mà các sự kiện sẽ được hiển thị.
+Add/Edit/Delete: Thêm / Chỉnh sửa / Xóa
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Nhấp vào liên kết Chỉnh sửa Lớp trong phần quản trị ở cuối trang sẽ cho phép bạn thêm / chỉnh sửa / xóa các lớp.
+The text color of the new layer that will be displayed in your calendar.: Màu văn bản của lớp mới sẽ được hiển thị trong lịch của bạn.
+Disabling: Vô hiệu hóa
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Nhấn liên kết Tắt lớp trong phần quản trị ở cuối trang để tắt lớp.
+Duplicates: Trùng lặp
+If checked, events that are duplicates of your events will be shown.: Nếu được chọn, các sự kiện trùng lặp với các sự kiện của bạn sẽ được hiển thị.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Nhấn vào liên kết Bật lớp trong phần quản trị ở cuối trang để bật lớp.
+Source: Nguồn
+Specifies the user that you would like to see displayed in your calendar.: Chỉ định người dùng mà bạn muốn xem được hiển thị trong lịch của bạn.
+
+########################################
+# Page: help_pref.php
+#
+Default Category: Danh mục Mặc định
+default-category-help: Chỉ định danh mục mà một sự kiện mới sẽ mặc định.
+When I am the boss: Khi tôi là ông chủ
+Email me event notification: Gửi email cho tôi thông báo sự kiện
+email-boss-notifications-help: Chỉ định xem sếp có nhận được email dưới dạng thông báo sự kiện hay không.
+I want to approve events: Tôi muốn phê duyệt các sự kiện
+boss-approve-event-help: Chỉ định liệu sếp có được yêu cầu phê duyệt các sự kiện do trợ lý thêm vào hay không.
+Subscribe/Publish: Đăng ký / Xuất bản
+Allow remote publishing: Cho phép xuất bản từ xa
+allow-remote-publishing-help: Chỉ định liệu một ứng dụng khách iCal từ xa có thể xuất bản các sự kiện trở lại WebCalendar hay không
+remote-publishing-url-help: Hiển thị URL để sử dụng trong ứng dụng khách iCal cho cả việc đăng ký và xuất bản trở lại WebCalendar.
+allow-remote-subscriptions-help: Chỉ định xem người dùng từ xa có thể đăng ký lịch của bạn hay không, cho phép họ xem các sự kiện của bạn trong ứng dụng hỗ trợ iCal (chẳng hạn như iCal của Apple hoặc Lịch Mozilla).
+remote-subscriptions-url-help: Hiển thị URL mà người dùng từ xa nên sử dụng để đăng ký lịch của bạn.
+Enable FreeBusy publishing: Bật xuất bản FreeBusy
+freebusy-enabled-help: Chỉ định xem có thể lấy được thời gian rảnh của người dùng hay không bằng cách sử dụng tiêu chuẩn iCal FreeBusy.
+freebusy-url-help: URL để truy cập danh sách FreeBusy của người dùng
+rss-feed-url-help: URL để truy cập nguồn cấp dữ liệu RSS
+
+########################################
+# Page: help_uac.php
+#
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Cho phép kiểm soát tốt quyền truy cập và quyền của người dùng. Người dùng cũng có thể cấp quyền mặc định và cho từng cá nhân nếu được quản trị viên cho phép.
+If disabled, this user cannot send you emails.: Nếu bị vô hiệu hóa, người dùng này không thể gửi email cho bạn.
+If disabled, this user cannot see you in the participants list.: Nếu bị vô hiệu hóa, người dùng này không thể nhìn thấy bạn trong danh sách người tham gia.
+If enabled, this user cannot view the details of any of your entries.: Nếu được bật, người dùng này không thể xem chi tiết của bất kỳ mục nhập nào của bạn.
+
+########################################
+# Page: icalclient.php
+#
+Publishing Disabled (Admin): Đã vô hiệu hóa xuất bản (Quản trị viên)
+Publishing Disabled (User): Đã vô hiệu hóa xuất bản (Người dùng)
+
+########################################
+# Page: icons.php
+#
+Click to Select: Bấm để chọn
+Current Icons on Server: Các biểu tượng hiện tại trên máy chủ
+
+########################################
+# Page: import.php
+#
+import from file: nhập từ tệp
+Disabled: Tàn tật
+Import format: Nhập định dạng
+Exclude private records: Loại trừ hồ sơ riêng tư
+Repeated items are imported separately. Prior imports are not overwritten.: Các mặt hàng lặp lại được nhập riêng. Các lần nhập trước không bị ghi đè.
+
+########################################
+# Page: import_handler.php
+#
+No file: Không có tập tin
+Error deleting palm events from webcalendar.: Lỗi khi xóa sự kiện cọ khỏi lịch web.
+Events from prior import marked as deleted: Các sự kiện từ lần nhập trước được đánh dấu là đã xóa
+Conflicting events: Sự kiện xung đột
+The import file contained no data.: Tệp nhập không chứa dữ liệu.
+
+########################################
+# Page: layers.php
+#
+Are you sure you want to delete this layer?: Bạn có chắc chắn muốn xóa lớp này không?
+Delete layer: Xóa lớp
+Edit layer: Chỉnh sửa lớp
+Enable layers: Bật các lớp
+Layer: Lớp
+Layers are currently disabled.: Các lớp hiện đang bị vô hiệu hóa.
+Layers are currently enabled.: Các lớp hiện đang được bật.
+Click to modify layers settings for XXX: Nhấp vào đây để sửa đổi cài đặt lớp cho lịch XXX.
+Disable Layers: Tắt lớp
+Add layer: Thêm lớp
+Add Layer: Thêm lớp
+Edit Layer: Chỉnh sửa lớp
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Không thể cập nhật tùy chọn
+Invalid entry id.: Id mục nhập không hợp lệ.
+You cannot create a layer for yourself.: Bạn không thể tạo một lớp cho chính mình.
+You can only create one layer for each user.: Bạn chỉ có thể tạo một lớp cho mỗi người dùng.
+
+########################################
+# Page: list_unapproved.php
+#
+Approve/Confirm: Phê duyệt / Xác nhận
+Approve Selected: Phê duyệt đã chọn
+Check All: Kiểm tra tất cả
+Emails Will Not Be Sent: Email sẽ không được gửi
+Reject Selected: Từ chối đã chọn
+Reject: Từ chối
+Uncheck All: Bỏ chọn tất cả
+View this entry: Xem mục này
+No unapproved entries for XXX.: Không có mục nhập chưa được phê duyệt nào cho: "XXX".
+Unapproved Entries: Mục nhập chưa được phê duyệt
+Approve this entry?: Phê duyệt mục này?
+Reject this entry?: Từ chối mục này?
+Approve Selected entries?: Phê duyệt các mục đã chọn?
+Reject Selected entries?: Từ chối các mục đã chọn?
+
+########################################
+# Page: login-app.php
+#
+You must enter a login and password.: Bạn phải nhập thông tin đăng nhập và mật khẩu.
+Save login via cookies so I dont have to login next time.: Lưu thông tin đăng nhập qua cookie để tôi không phải đăng nhập vào lần sau
+Login: Đăng nhập
+public: công cộng
+Access XXX calendar: Truy cập lịch XXX
+cookies-note: Lưu ý: Ứng dụng này yêu cầu bật cookie.
+
+########################################
+# Page: login.php
+#
+Illegal characters in login XXX.: Ký tự không hợp lệ trong đăng nhập XXX.
+Invalid login: Đăng nhập không hợp lệ
+Activity login failure: Tên người dùng: "XXX", IP: "YYY".
+Error XXX: Lỗi: "XXX".
+You have been logged out.: Bạn đã được đăng xuất.
+Access public calendar: Truy cập lịch công khai
+Not yet registered? Register here!: Vẫn chưa được đăng ký? Đăng ký ở đây!
+
+########################################
+# Page: minical.php
+#
+No such nonuser calendar XXX.: Không có lịch không phải người dùng như vậy: "XXX".
+This Calendar is not Public.: Lịch này không công khai.
+
+########################################
+# Page: nonusers.php
+#
+Add New NonUser Calendar: Thêm lịch không người dùng mới
+
+########################################
+# Page: nulogin.php
+#
+A login must be specified.: Đăng nhập phải được chỉ định.
+No such nonuser calendar: Không có lịch không phải của người dùng như vậy
+
+########################################
+# Page: pref.php
+#
+Invalid theme: Chủ đề không hợp lệ
+Save Preferences: Lưu tùy chọn
+Public Access calendar: Lịch truy cập công khai
+Modify Non User Calendar Preferences: Sửa đổi tùy chọn lịch không phải người dùng
+Return to My Preferences: Quay lại Sở thích của tôi
+Custom Scripts: Tập lệnh tùy chỉnh
+Timezone Selection: Lựa chọn múi giờ
+Multiview: =
+entry-interval-help: Đặt khoảng thời gian phút khi chỉnh sửa thời gian nhập
+Entry interval: Khoảng thời gian nhập cảnh
+hour: giờ
+minute: phút
+theme-reload-help: Do bộ nhớ đệm CSS, có thể yêu cầu tải lại trang
+Page may need to be reloaded for new Theme to take effect: Trang có thể cần được tải lại để Chủ đề mới có hiệu lực
+display_byproxy-help: Hiển thị người sáng tạo thực sự trên trang view_entry
+Display if created by Assistant: Hiển thị nếu được tạo bởi Trợ lý
+allow-view-subscriptions-help: Cho phép hạn chế quyền truy cập từ xa vào các mục nhập Riêng tư hoặc Bí mật
+Allow remote viewing of: Cho phép xem từ xa
+entries: mục
+
+########################################
+# Page: purge.php
+#
+Purging events for: Sự kiện thanh lọc cho
+Finished: Đã kết thúc
+Back: Trở lại
+Check box to delete ALL events for a user: Hộp kiểm để xóa sự kiện  TẤT CẢ  cho người dùng
+Delete all events before: Xóa tất cả các sự kiện trước đó
+Purge deleted only: Chỉ xóa đã xóa
+Preview delete: Xem trước xóa
+Are you sure you want to delete events for: Bạn có chắc chắn muốn xóa các sự kiện cho
+Records deleted from XXX: Hồ sơ đã bị xóa khỏi "XXX".
+
+########################################
+# Page: register.php
+#
+Email address cannot be blank.: Địa chỉ email không được để trống.
+Username already exists.: Tên này đã có người dùng.
+Email address already exists.: Địa chỉ email đã tồn tại.
+New user via self-registration.: Người dùng mới thông qua tự đăng ký.
+A new WebCalendar account has been set up for you.: Một tài khoản WebCalendar mới đã được thiết lập cho bạn.
+Your username is XXX.: Tên người dùng của bạn là: "XXX".
+Your password is XXX.: Mật khẩu của bạn là: "XXX".
+Please visit XXX to log in and start using your account!: Vui lòng truy cập "XXX" để đăng nhập và bắt đầu sử dụng tài khoản của bạn!
+You may change your password after logging in the first time.: Bạn có thể thay đổi mật khẩu của mình sau khi đăng nhập lần đầu tiên.
+If you received this email in error: Nếu bạn nhận được email này do nhầm lẫn và không đăng ký tài khoản WebCalendar, bạn có thể bỏ qua thông báo này hoặc trả lời bằng một ghi chú ngắn
+Administrator: Người quản lý
+Welcome: Chào mừng
+New user via email.: Người dùng mới qua email.
+Registration: Đăng ký
+Welcome to WebCalendar: Chào mừng bạn đến với WebCalendar
+Your email should arrive shortly.: Email của bạn sẽ sớm đến nơi.
+Return to Login screen: Quay lại màn hình Đăng nhập
+Password (again): Nhập lại mật khẩu):
+Your account information will be emailed to you.: Thông tin tài khoản của bạn sẽ được gửi qua email cho bạn.
+Submit: Gửi đi
+
+########################################
+# Page: reject_entry.php
+#
+Continue: Tiếp tục
+(Your comments will be emailed to the other participants.): (Nhận xét của bạn sẽ được gửi qua email cho những người tham gia khác.)
+XXX has rejected an appointment.: XXX đã từ chối một cuộc hẹn.
+Rejected by XXX.: Bị XXX từ chối.
+
+########################################
+# Page: remotes.php
+#
+Add New Remote Calendar: Thêm lịch từ xa mới
+
+########################################
+# Page: report.php
+#
+This event is confidential.: Sự kiện này là bí mật.
+(Private): (Riêng tư)
+(cont.): (tiếp)
+Approved: Tán thành
+Deleted: Đã xóa
+Rejected: Từ chối
+Waiting for approval: Chờ phê duyệt
+Unknown: không xác định
+Invalid report id.: Id báo cáo không hợp lệ.
+Click here to manage reports for the Public Access calendar.: Bấm vào đây để quản lý các báo cáo cho lịch Truy cập Công cộng.
+Add new report: Thêm báo cáo mới
+Manage Reports: Quản lý báo cáo
+
+########################################
+# Page: search.php
+#
+Advanced Search: tìm kiếm nâng cao
+Search: Tìm kiếm
+Keywords: Từ khóa
+Enter % for all entries: Nhập% cho tất cả các mục nhập
+Include: Bao gồm
+Filter by Date: Lọc theo ngày
+All Dates: Tất cả các ngày
+Past: Quá khứ
+Upcoming: Sắp tới
+Range: Phạm vi
+
+########################################
+# Page: search_handler.php
+#
+You must enter one or more search keywords.: Bạn phải nhập một hoặc nhiều từ khóa tìm kiếm.
+Search Results: kết quả tìm kiếm
+match found: Trùng khớp
+matches found: trận đấu được tìm thấy
+No matches found: Lọc kết quả tìm thấy
+New Search: Tìm kiếm mới
+
+########################################
+# Page: security_audit.php
+#
+list potential security issues: Thông tin bên dưới liệt kê các sự cố tiềm ẩn với cài đặt WebCalendar của bạn có thể được sửa đổi để giúp cài đặt của bạn an toàn hơn.
+For questions about WebCalendar security see the forums: Đối với các câu hỏi về bất kỳ vấn đề bảo mật WebCalendar, vui lòng sử dụng các diễn đàn WebCalendar được lưu trữ trên GitHub.com;<br>XXX
+View your current PHP settings: Xem cài đặt PHP hiện tại của bạn
+Security Issue: Vấn đề an ninh
+Status: Trạng thái
+Default admin user password: Mật khẩu người dùng quản trị mặc định
+You should change the password of the default admin user.: Bạn nên thay đổi mật khẩu của người dùng quản trị mặc định.
+File permissions XXX: Quyền đối với tệp: XXX
+item XXX should not be writable: Mục sau không được ghi:<br><tt> XXX</tt>
+File exists XXX: Tệp tồn tại: "XXX"
+Because you have email disabled, you should remove this file.: Vì bạn đã tắt email, bạn nên xóa tệp này.
+File location XXX: Vị trí tệp: "XXX"
+remove XXX if not using: Nếu bạn không sử dụng tệp "XXX", bạn nên xóa nó. Hoặc, ít nhất, hãy chuyển nó sang một thư mục mới.
+System Settings XXX: Cài đặt hệ thống: "XXX"
+consider enabling UAC: Bạn có thể muốn xem xét việc bật Kiểm soát truy cập của người dùng để đặt các đặc quyền của người dùng.
+recommend approving new public events: Chúng tôi khuyên bạn nên chấp thuận tất cả các bài gửi sự kiện công khai.
+recommend using CAPTCHA: CAPTCHA được khuyến nghị để bảo vệ các lần gửi sự kiện tự động không rõ ràng.
+Database cache directory location: Vị trí thư mục bộ nhớ đệm cơ sở dữ liệu
+db cache should be inaccessable: Bộ nhớ cache của cơ sở dữ liệu phải nằm trong một thư mục không thể truy cập bằng URL.
+PHP Settings XXX: Cài đặt PHP: "XXX"
+recommend setting XXX Off: Cài đặt đề xuất cho "XXX" đang Tắt.
+recommend setting allow_url_fopen Off: Cài đặt được đề xuất cho "allow_url_fopen" bị Tắt khi lịch từ xa không được bật.
+
+########################################
+# Page: select_user.php
+#
+View Another Users Calendar: Xem lịch của người dùng khác
+
+########################################
+# Page: set_entry_cat.php
+#
+You have not added any categories.: Bạn chưa thêm bất kỳ danh mục nào.
+Set Category: Đặt danh mục
+Global Categories cannot be changed.: Danh mục Toàn cầu không thể thay đổi.
+
+########################################
+# Page: upcoming.php
+#
+more: hơn
+
+########################################
+# Page: users.php
+#
+Remote Calendars: Lịch từ xa
+denotes administrative user: biểu thị người dùng quản trị
+Add New User: Thêm người dùng mới
+
+########################################
+# Page: usersel.php
+#
+form: hình thức
+Reset: Cài lại
+
+########################################
+# Page: views.php
+#
+Add New View: Thêm chế độ xem mới
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Chế độ xem không tên
+Add View: Thêm chế độ xem
+Edit View: Chỉnh sửa chế độ xem
+View Name: Xem tên
+View Type: Dạng xem
+Day by Time: Từng ngày
+Week (Users horizontal): Tuần (Người dùng theo chiều ngang)
+Week by Time: Tuần theo thời gian
+Week (Users vertical): Tuần (Ngành dọc người dùng)
+Week (Timebar): Tuần (Thanh thời gian)
+Month (Timebar): Tháng (Thanh thời gian)
+Month (side by side): Tháng (cạnh nhau)
+Month (on same calendar): Tháng (trên cùng một lịch)
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Bạn phải chỉ định một tên chế độ xem
+
+########################################
+# Page: view_d.php
+#
+No users for this view.: Không có người dùng cho chế độ xem này.
+
+########################################
+# Page: view_entry.php
+#
+Update Task Percentage: Cập nhật phần trăm nhiệm vụ
+Completed: Đã hoàn thành
+Assistant mode: Chế độ trợ lý
+Declined: Suy giảm
+Needs-Action: Cần hành động
+by: bởi
+Percentage Complete: Phần trăm hoàn thành
+External User: Người dùng bên ngoài
+Update: Cập nhật
+at: tại
+comments: bình luận
+Show: Chỉ
+Hide: Ẩn giấu
+Approve/Confirm entry: Phê duyệt / Xác nhận mục nhập
+Reject entry: Từ chối mục nhập
+Set category: Đặt danh mục
+Add to My Calendar: Thêm vào Lịch của tôi
+Copy entry: Sao chép mục nhập
+This will delete this entry for all users.: Thao tác này sẽ xóa mục nhập này cho tất cả người dùng.
+Edit entry: Chỉnh sửa mục nhập
+Edit repeating entry for all dates: Chỉnh sửa mục nhập lặp lại cho tất cả các ngày
+Delete repeating event for all dates: Xóa sự kiện lặp lại cho tất cả các ngày
+Edit entry for this date: Chỉnh sửa mục nhập cho ngày này
+Delete entry only for this date: Chỉ xóa mục nhập cho ngày này
+Delete entry from calendar of XXX: Xóa mục nhập khỏi lịch của XXX
+This will delete the entry from your XXX calendar.: Thao tác này sẽ xóa mục nhập khỏi lịch XXX của bạn.
+boss: Ông chủ'
+This will delete the entry from your boss calendar.: Thao tác này sẽ xóa mục nhập khỏi lịch của sếp của bạn.
+This will delete the entry from your calendar.: Thao tác này sẽ xóa mục nhập khỏi lịch của bạn.
+from your boss calendar: từ lịch của sếp
+Do you want to add this entry to your calendar?: Bạn có muốn thêm mục này vào lịch của mình không?
+This will add the entry to your calendar.: Điều này sẽ thêm mục nhập vào lịch của bạn.
+Email all participants: Gửi email cho tất cả những người tham gia
+Hide activity log: Ẩn nhật ký hoạt động
+Show activity log: Hiển thị nhật ký hoạt động
+Export this entry to: Xuất mục nhập này sang
+Palm Pilot: =
+
+########################################
+# Page: view_m.php
+#
+Double-click on empty cell to add new entry: Bấm đúp vào ô trống để thêm mục nhập mới.
+
+########################################
+# Page: week_details.php
+#
+New Entry: Lối đi mới
+cont.: tiếp theo.
+
+########################################
+# Page: includes/access.php
+#
+Another Users Calendar: Lịch của người dùng khác
+Category Management: Quản lý danh mục
+Day View: Xem trong ngày
+Edit Event: Chỉnh sửa sự kiện
+Month View: Xem tháng
+Common Trailer: Đoạn giới thiệu chung
+User Management: Quản lý người dùng
+Manage Views: Quản lý chế độ xem
+Week View: Xem theo tuần
+Year View: Xem năm
+Invalid function id: Id chức năng không hợp lệ
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Không thể tìm thấy tệp "settings.php".<br>Vui lòng sao chép "settings.php.orig" vào "settings.php" và chỉnh sửa cho trang web của bạn.
+Incomplete settings.php file...: Tệp "settings.php" chưa hoàn thành ...
+Could not find XXX defined in...: Không thể tìm thấy "XXX" được xác định trong tệp "settings.php" của bạn.
+You must define XXX in: Bạn phải xác định "XXX" trong tệp "settings.php".
+
+########################################
+# Page: includes/date_formats.php
+#
+December: Tháng mười hai
+Dec: Tháng mười hai
+LANGUAGE DEFINED: NGÔN NGỮ ĐƯỢC ĐỊNH NGHĨA
+
+########################################
+# Page: includes/dbi4php.php
+#
+Error connecting to database XXX: Lỗi kết nối với cơ sở dữ liệu: "XXX".
+db_type not defined.: db_type không được xác định.
+invalid db_type XXX: db_type không hợp lệ "" XXX ".
+Cache cleared from previous SQL!: Đã xóa bộ nhớ cache khỏi SQL trước!
+Error executing query.: Lỗi khi thực thi truy vấn.
+Unfortunately, XXX is not implemented for YYY: Rất tiếc, "XXX" không được triển khai cho (YYY).
+Unknown ODBC error.: Lỗi ODBC không xác định.
+Error opening cache dir XXX.: Lỗi khi mở dir bộ nhớ cache "XXX".
+delete: xóa bỏ
+Cache error Could not XXX file YYY.: Lỗi bộ nhớ cache: Không thể XXX tệp "YYY".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Lỗi nghiêm trọng
+Invalid data format for: Định dạng dữ liệu không hợp lệ cho
+
+########################################
+# Page: includes/functions.php
+#
+Error Type not set for activity log!: Lỗi: Loại không được đặt cho nhật ký hoạt động!
+This event is XXX.: Sự kiện này là XXX.
+Conf.: Lời thú nhận.
+exceeds limit of XXX events per day: vượt quá giới hạn XXX sự kiện mỗi ngày
+on: trên
+All Attendees: Tất cả người tham dự
+Busy: Bận
+Tentative: Mang tính thăm dò
+Schedule an appointment for XXX.: Lên lịch một cuộc hẹn cho XXX: YYY.
+date_select: __dd__ __tháng _ __yyyy__
+Event approved: Sự kiện đã được phê duyệt
+Journal approved: Tạp chí đã được phê duyệt
+Task approved: Nhiệm vụ đã được phê duyệt
+Attachment: Tập tin đính kèm
+Event created: Sự kiện đã được tạo
+Journal created: Tạp chí đã tạo
+Task created: Tác vụ đã tạo
+Event deleted: Sự kiện đã bị xóa
+Journal deleted: Tạp chí đã bị xóa
+Task deleted: Đã xóa công việc
+New user via email (self registration): Người dùng mới qua email (tự đăng ký)
+New user (self registration): Người dùng mới (tự đăng ký)
+Notification sent: Đã gửi thông báo
+Event rejected: Sự kiện bị từ chối
+Journal rejected: Tạp chí bị từ chối
+Task rejected: Nhiệm vụ bị từ chối
+Reminder sent: Đã gửi lời nhắc
+Event updated: Đã cập nhật sự kiện
+Journal updated: Đã cập nhật tạp chí
+Task updated: Đã cập nhật công việc
+Delete User: Xóa người dùng
+WK: =
+TASKS: NHIỆM VỤ
+Task_Title: Tiêu đề
+Due: Đến hạn
+Task Name: Tên nhiệm vụ
+Task Due Date: Ngày đến hạn của Nhiệm vụ
+You have XXX unapproved entries: Bạn có XXX mục nhập chưa được phê duyệt
+Changes successfully saved: Các thay đổi đã được lưu thành công
+Event: Biến cố
+Action: Hoạt động
+Printer Friendly: Thân thiện với Máy in
+Generate printer-friendly version: Tạo phiên bản thân thiện với máy in
+after: sau
+before: trước
+end: kết thúc
+start: khởi đầu
+View this event: Xem sự kiện này
+View this task: Xem nhiệm vụ này
+January: tháng Giêng
+February: Tháng hai
+March: tháng Ba
+April: Tháng tư
+May_: có thể
+June: Tháng sáu
+July: Tháng bảy
+August: tháng Tám
+September: Tháng Chín
+October: Tháng Mười
+November: Tháng mười một
+Jan: tháng một
+Feb: Tháng hai
+Mar: =
+Apr: Tháng tư
+May: có thể
+Jun: Tháng sáu
+Jul: Thg 7
+Aug: Tháng 8
+Sep: Tháng chín
+Oct: Tháng 10
+Nov: Tháng mười một
+SU: =
+MO: =
+TU: =
+WE: CHÚNG TÔI
+TH: THỨ TỰ
+FR: =
+SA: =
+unknown-month: tháng không xác định
+First Quarter Moon: Trăng đầu tháng
+Full Moon: Trăng tròn
+Last Quarter Moon: Trăng cuối tuần
+New Moon: Trăng non
+Error TIME_SLOTS undefined!: Lỗi: TIME_SLOTS không xác định!
+The following error occurred: Đã xảy ra lỗi sau
+You are not authorized.: Bạn không được ủy quyền.
+Add N hours to: Thêm N giờ vào
+Subtract N hours from: Trừ N giờ cho
+same as: giống như
+server time: thời gian máy chủ
+Cannot read timezone file XXX.: Không thể đọc tệp múi giờ: XXX.
+Your current GMT offset is XXX hours.: Thời gian bù giờ GMT hiện tại của bạn là XXX giờ.
+Unauthorized: Không được phép
+Error approving event XXX.: Lỗi khi phê duyệt sự kiện: XXX.
+Error deleting event XXX.: Lỗi khi xóa sự kiện: XXX.
+Error rejecting event XXX.: Lỗi khi từ chối sự kiện: XXX.
+Sunday: chủ nhật
+Monday: Thứ hai
+Tuesday: Thứ ba
+Wednesday: Thứ tư
+Thursday: Thứ năm
+Friday: Thứ sáu
+Saturday: ngày thứ bảy
+Sun: mặt trời
+Mon: Thứ hai
+Tue: Thứ ba
+Wed: Thứ Tư
+Thu: =
+Fri: T6
+Sat: Đã ngồi
+unknown-weekday: ngày trong tuần không xác định
+Invalid referring URL: URL giới thiệu không hợp lệ
+
+########################################
+# Page: includes/help_list.php
+#
+Index: Mục lục
+Documentation: Tài liệu
+Page: Trang
+
+########################################
+# Page: includes/trailer.php
+#
+My Calendar: Lịch của tôi
+Add New Entry: Thêm mục nhập mới
+Add New Task: Thêm công việc mới
+Logout: Đăng xuất
+Home: Trang Chủ
+Back to My Calendar: Quay lại Lịch của tôi
+Go to: Đi đến
+Manage calendar of: Quản lý lịch của
+
+########################################
+# Page: includes/translate.php
+#
+Browser Language Not Found: Không tìm thấy ngôn ngữ trình duyệt
+(not supported): (không được hỗ trợ)
+Abkhazian: =
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: Xa
+Afrihili: =
+Afrikaans: Người Afrikaans
+Ainu: =
+Akan: =
+Akkadian: =
+Albanian: Người Albanian
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (Miền Nam)
+Amharic: =
+Angika: =
+Apache: =
+Arabic (Algeria): Tiếng Ả Rập (Algeria)
+Arabic (Bahrain): Tiếng Ả Rập (Bahrain)
+Arabic (Egypt): Tiếng Ả Rập (Ai Cập)
+Arabic (Iraq): Tiếng Ả Rập (Iraq)
+Arabic (Jordan): Tiếng Ả Rập (Jordan)
+Arabic (Kuwait): Tiếng Ả Rập (Kuwait)
+Arabic (Lebanon): Tiếng Ả Rập (Lebanon)
+Arabic (Libya): Tiếng Ả Rập (Libya)
+Arabic (Morocco): Tiếng Ả Rập (Maroc)
+Arabic (Oman): Tiếng Ả Rập (Oman)
+Arabic (Qatar): Tiếng Ả Rập (Qatar)
+Arabic (Saudi Arabia): Tiếng Ả Rập (Ả Rập Xê Út)
+Arabic (Syria): Tiếng Ả Rập (Syria)
+Arabic (Tunisia): Tiếng Ả Rập (Tunisia)
+Arabic (U.A.E.): Tiếng Ả Rập (U.A.E.)
+Arabic (Yemen): Tiếng Ả Rập (Yemen)
+Arabic: tiếng Ả Rập
+Aragonese: Aragon
+Aramaic: Tiếng A-ram
+Arapaho: =
+Arawak: =
+Armenian: Tiếng Armenia
+Assamese: Tiếng Assam
+Asturian: Người Asturian
+Athapascan: =
+Avaric: =
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Azerbaijan
+Balinese: Người Bali
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: Gấu trúc
+Basa: Cá ba sa
+Bashkir: =
+Basque: Xứ Basque
+Beja: =
+Belarusian: Người Belarus
+Bemba: =
+Bengali: Tiếng Bengali
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Chân đen
+Blin: =
+Bliss: Phúc lạc
+Bosnian: Người Bosnia
+Braj: =
+Breton: =
+Buginese: =
+Bulgarian: Người Bungari
+Buriat: =
+Burmese: Miến Điện
+Caddo: =
+Catalan: =
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Chechnya
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Tiếng Trung (Hồng Kông)
+Chinese (PRC): Tiếng Trung (CHND Trung Hoa)
+Chinese (Simplified/GB2312): Tiếng Trung (Giản thể / GB2312)
+Chinese (Singapore): Tiếng Trung (Singapore)
+Chinese (Taiwan): Tiếng Trung (Đài Loan)
+Chinese (Traditional/Big5): Tiếng Trung (Phồn thể / Big5)
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: =
+Cornish: Ngô
+Corsican: =
+Cree: =
+Creek: Lạch nhỏ
+Croatian: Người Croatia
+Czech: Tiếng Séc
+Dakota: =
+Danish: người Đan Mạch
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Tiếng Hà Lan (Bỉ)
+Dutch: Tiếng hà lan
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: =
+English (Australia): Tiếng Anh (Úc)
+English (Belize): Tiếng Anh (Belize)
+English (Canada): Tiếng Anh (Canada)
+English (Ireland): Tiếng Anh (Ireland)
+English (Jamaica): Tiếng Anh (Jamaica)
+English (New Zealand): Tiếng Anh (New Zealand)
+English (Philippines): Tiếng Anh (Philippines)
+English (South Africa): Tiếng Anh (Nam Phi)
+English (Trinidad & Tobago): Tiếng Anh (Trinidad & Tobago)
+English (United Kingdom): Tiếng Anh (Vương quốc Anh)
+English (United States): Tiếng Anh (Hoa Kỳ)
+English (Zimbabwe): Tiếng Anh (Zimbabwe)
+English: Tiếng Anh
+Erzya: =
+Esperanto: =
+Estonian: Người Estonia
+Ewe: Cừu cái
+Ewondo: =
+Fang: Răng nanh
+Fanti: =
+Faroese: =
+Fijian: =
+Filipino: Người Phi Luật Tân
+Finnish: Phần lan
+Fon: =
+French (Belgium): Tiếng Pháp (Bỉ)
+French (Canada): Tiếng Pháp (Canada)
+French (France): Tiếng Pháp nước Pháp)
+French (Luxembourg): Tiếng Pháp (Luxembourg)
+French (Monaco): Tiếng Pháp (Monaco)
+French (Switzerland): Tiếng Pháp (Thụy Sĩ)
+French: người Pháp
+Frisian (Eastern): Frisian (miền Đông)
+Frisian (Northern): Frisian (miền Bắc)
+Frisian (Western): Frisian (phương Tây)
+Frisian: =
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
+Galician: Galicia
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: =
+Georgian: Người Gruzia
+German (Austria): Tiếng Đức (Áo)
+German (Germany): Tiếng Đức (Đức)
+German (Liechtenstein): Tiếng Đức (Liechtenstein)
+German (Luxembourg): Tiếng Đức (Luxembourg)
+German (Standard): Tiếng Đức (Tiêu chuẩn)
+German (Switzerland): Tiếng Đức (Thụy Sĩ)
+German: tiếng Đức
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: =
+Grebo: =
+Greek: người Hy Lạp
+Greenlandic: =
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich & # 39; in
+Haida: =
+Haitian (Creole): Haiti (tiếng Creole)
+Haitian: Haiti
+Hausa: =
+Hawaiian: Người Hawaii
+Hebrew: Tiếng Do Thái
+Herero: =
+Hiligaynon: =
+Hindi: Tiếng Hindi
+Hiri Motu: =
+Hittite: =
+Hmong: =
+Holo (Taiwanese): Holo (tiếng Đài Loan)
+Hungarian: người Hungary
+Hupa: =
+Iban: =
+Icelandic: Tiếng Iceland
+Ido: Tôi làm
+Igbo: =
+Iloko: =
+Indonesian: Người Indonesia
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Người Iran
+Irish (Gaelic): Tiếng Ailen (tiếng Gaelic)
+Irish: Người Ailen
+Iroquoian: =
+Italian (Switzerland): Ý (Thụy Sĩ)
+Italian: người Ý
+Japanese: tiếng Nhật
+Javanese: Người Java
+Judeo-Arabic: Tiếng Judeo-Ả Rập
+Judeo-Persian: =
+Kabardian: =
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: Tiếng Kannada
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: =
+Kashmiri: =
+Kashubian: =
+Kawi: =
+Kazakh: Tiếng Kazakh
+Khasi: =
+Khmer (Central): Tiếng Khmer (miền Trung)
+Khmer: Khơ me
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Tiếng Hàn Quốc (Johab)
+Korean (North): Hàn Quốc (Bắc)
+Korean (South): Hàn Quốc (Nam)
+Korean: Hàn Quốc
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Người Kurd
+Kutenai: =
+Kyrgyz: =
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: Lào
+Latin: =
+Latvian: Người Latvia
+Lezghian: =
+Limburgan: =
+Lingala: =
+Lithuanian: Tiếng Lithuania
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: =
+Macedonian: Người Macedonian
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: =
+Malay: Tiếng Mã Lai
+Malayalam: =
+Maldivian: Người Maldives
+Maltese: cây nho
+Manchu: Mãn Châu
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: Tiếng Maori
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Người Maya
+Mende: =
+Mi&#39;kmaq: Mi & # 39; kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: =
+Mongo: =
+Mongolian: Tiếng Mông Cổ
+Montenegrin: Montenegro
+Moroccan: Maroc
+Mossi: =
+Myanmar: =
+Māori: Người Maori
+N&#39;Ko: Không
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Bắc)
+Ndebele (South): Ndebele (Nam)
+Ndebele: =
+Ndonga: =
+Neapolitan: =
+Nepali: Tiếng Nepal
+Nias: =
+Niuean: =
+Nogai: =
+Norse: =
+Norwegian (Bokmål): Tiếng Na Uy (Bokmål)
+Norwegian (Nynorsk): Tiếng Na Uy (Nynorsk)
+Norwegian: Nauy
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Tiếng Occitan
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Đái tháo đường
+Pahlavi: =
+Palauan: =
+Pali: Tiếng Pali
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Tiếng Ba Tư (tiếng Farsi)
+Persian (Iran): Tiếng Ba Tư (Iran)
+Persian: Tiếng ba tư
+Phoenician: Người Phoenicia
+Pohnpeian: =
+Polish: đánh bóng
+Portuguese: Người Bồ Đào Nha
+Portuguese/Brazil: Tiếng Bồ Đào Nha / Brazil
+Punjabi (India): Punjabi (Ấn Độ)
+Punjabi (Pakistan): Tiếng Punjabi (Pakistan)
+Punjabi: Tiếng Punjabi
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: =
+Romanian: Tiếng Rumani
+Romansh: =
+Romany: =
+Rundi: =
+Russian (Moldavia: Tiếng Nga (Moldavia
+Russian (Republic of Moldova): Tiếng Nga (Cộng hòa Moldova)
+Russian: tiếng Nga
+Sami (Inari): =
+Sami (Lappish): =
+Sami (Lule): =
+Sami (Northern): Sami (miền Bắc)
+Sami (Skolt): =
+Sami (Southern): Sami (Miền Nam)
+Sami: =
+Samoan: =
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: Tiếng Phạn
+Santali: Tiếng Santali
+Sardinian: Sardinia
+Sasak: =
+Scots (Gaelic): Tiếng Scotland (tiếng Gaelic)
+Selkup: =
+Serbian (Upper): Tiếng Serbia (Thượng)
+Serbian: Tiếng Serbia
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: Tứ Xuyên Yi
+Sicilian: =
+Sindhi: =
+Sinhala: =
+Slavic: Tiếng Slavic
+Slovak: Tiếng Slovak
+Slovenian: Người Slovenia
+Sogdian: =
+Somali: =
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbian (Thấp hơn)
+Sorbian (Upper): Sorbian (Thượng)
+Sorbian: =
+Sotho: =
+Spanish (Argentina): Tiếng Tây Ban Nha (Argentina)
+Spanish (Bolivia): Tiếng Tây Ban Nha (Bolivia)
+Spanish (Chile): Tiếng Tây Ban Nha (Chile)
+Spanish (Colombia): Tiếng Tây Ban Nha (Colombia)
+Spanish (Costa Rica): Tiếng Tây Ban Nha (Costa Rica)
+Spanish (Dominican Republic): Tiếng Tây Ban Nha (Cộng hòa Dominica)
+Spanish (Ecuador): Tiếng Tây Ban Nha (Ecuador)
+Spanish (El Salvador): Tiếng Tây Ban Nha (El Salvador)
+Spanish (Guatemala): Tiếng Tây Ban Nha (Guatemala)
+Spanish (Honduras): Tiếng Tây Ban Nha (Honduras)
+Spanish (Mexico): Tiếng Tây Ban Nha (Mexico)
+Spanish (Nicaragua): Tiếng Tây Ban Nha (Nicaragua)
+Spanish (Panama): Tiếng Tây Ban Nha (Panama)
+Spanish (Paraguay): Tiếng Tây Ban Nha (Paraguay)
+Spanish (Peru): Tiếng Tây Ban Nha (Peru)
+Spanish (Puerto Rico): Tiếng Tây Ban Nha (Puerto Rico)
+Spanish (Spain): Spanish (Tây Ban Nha)
+Spanish (Uruguay): Tiếng Tây Ban Nha (Uruguay)
+Spanish (Venezuela): Tiếng Tây Ban Nha (Venezuela)
+Spanish: người Tây Ban Nha
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Người Sumer
+Sundanese: Tiếng Sundan
+Susu: Tố Tố
+Sutu: =
+Swahili: Tiếng Swahili
+Swati: =
+Swedish (Finland): Tiếng Thụy Điển (Phần Lan)
+Swedish (Sweden): Thụy Điển (Thụy Điển)
+Swedish: Tiếng Thụy Điển
+Syriac: =
+Tagalog: =
+Tahitian: =
+Tai: =
+Taiwan: Đài loan
+Tajik: =
+Tamashek: =
+Tamil: =
+Tatar: Người Tatar
+Telugu: Tiếng Telugu
+Tereno: =
+Tetum: =
+Thai: Tiếng thái
+Tibetan: Tây tạng
+Tigre: =
+Tigrinya: =
+Timne: Thời gian
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Quần đảo Tonga)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
+Turkish: Thổ nhĩ kỳ
+Turkmen: Người Thổ Nhĩ Kỳ
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: =
+Ukrainian: Người Ukraina
+Umbundu: =
+Urdu: Tiếng Urdu
+Uyghur: Người Uyghur
+Uzbek: Tiếng Uzbek
+Vai: =
+Venda: =
+Vietnamese: Tiếng Việt
+Volapük: =
+Votic: =
+Wakashan: =
+Walloon: =
+Waray: =
+Washo: =
+Welsh: người xứ Wales
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: =
+Yiddish: =
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
+Browser-defined: Trình duyệt xác định
+event: biến cố
+journal: tạp chí
+0: 0                                               
+1: 1                                               
+2: 2                                               
+3: 3                                               
+4: 4                                               
+5: 5                                               
+6: 6                                               
+7: 7                                               
+8: 8                                               
+9: 9                                               
+
+########################################
+# Page: includes/user-imap.php
+#
+Invalid user login: Đăng nhập người dùng không hợp lệ
+
+########################################
+# Page: includes/user-nis.php
+#
+incorrect password: mật khẩu không đúng
+no such user: không có người dùng như vậy
+
+########################################
+# Page: includes/user.php
+#
+Account disabled: Tài khoản bị vô hiệu hóa
+
+########################################
+# Page: includes/xcal.php
+#
+Interval: Khoảng thời gian
+Months: Tháng
+Month Days: Ngày tháng
+Days: Ngày
+Weeks: Tuần
+Position: Chức vụ
+Until: Cho đến khi
+Count: Đếm
+Inclusion Dates: Ngày bao gồm
+Exclusion Dates: Ngày loại trừ
+Event Imported: Sự kiện đã được nhập
+
+########################################
+# Page: includes/classes/Doc.class
+#
+bytes: byte
+kb: =
+Mb: =
+
+########################################
+# Page: includes/classes/WebCalMailer.class
+#
+Notification: Thông báo
+authenticate: lỗi SMTP: KHÔNG THỂ XÁC THỰC
+connect_host: Lỗi SMTP: Không thể kết nối với máy chủ SMTP:
+data_not_accepted: Lỗi SMTP: Dữ liệu không được chấp nhận
+encoding: Mã hóa không xác định:
+execute: Không thể thực thi:
+file_access: Không thể truy cập tệp:
+file_open: Lỗi tệp Không thể mở tệp:
+from_failed: Địa chỉ Từ sau không thành công:
+instantiate: Không thể khởi tạo chức năng thư
+mailer_not_supported: bưu phẩm không được hỗ trợ
+provide_address: Bạn phải cung cấp ít nhất một địa chỉ email người nhận.
+recipients_failed: Lỗi SMTP: Những người nhận sau không thành công:
+
+########################################
+# Page: includes/classes/captcha/captcha.php
+#
+Enter Characters Seen in Graphic: Nhập các nhân vật được nhìn thấy trong đồ họa
+Enter the correct letters and numbers...: Nhập các chữ cái và số chính xác từ hình ảnh vào hộp văn bản. Thử nghiệm nhỏ này coi như hạn chế quyền truy cập đối với các chương trình độc hại. Chỉ cần tải lại trang nếu hình ảnh này quá khó đọc
+Challenge/Response: Trả lời thách thức
+
+########################################
+# Page: includes/js/availability.php
+#
+Change the date and time of this entry?: Thay đổi ngày và giờ của mục này?
+
+########################################
+# Page: includes/js/edit_entry.php
+#
+You have not entered a Brief Description: Bạn chưa nhập Mô tả ngắn gọn
+time prior to work hours...: thời gian trước giờ làm việc ...
+Invalid Event Date: Ngày sự kiện không hợp lệ
+Please add a participant: Vui lòng thêm một người tham gia 
+Invalid Date: Ngày không hợp lệ
+You have not entered a valid time of day: Bạn chưa nhập thời gian hợp lệ trong ngày. 
+
+########################################
+# Page: includes/js/edit_nonuser.php
+#
+Calendar ID cannot be blank.: ID lịch không được để trống. 
+First and last names cannot both be blank.: Cả họ và tên không được để trống. 
+
+########################################
+# Page: includes/js/edit_remotes.php
+#
+Invalid color: Màu không hợp lệ
+Color format should be RRGGBB.: Định dạng màu phải là #RRGGBB. 
+URL cannot be blank.: URL không được để trống.
+
+########################################
+# Page: includes/js/export_import.php
+#
+File type does not match Import Format: Loại tệp không khớp với Định dạng Nhập 
+
+########################################
+# Page: includes/js/pref.php
+#
+Invalid color for document background.: Màu nền tài liệu không hợp lệ.
+Invalid color for document title.: Màu không hợp lệ cho tiêu đề tài liệu.
+Invalid color for table cell background.: Màu nền ô bảng không hợp lệ.
+Invalid color for table cell background for today.: Màu nền ô bảng cho ngày hôm nay không hợp lệ.
+Invalid work hours.: Giờ làm việc không hợp lệ.
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL máy chủ phải kết thúc bằng dấu gạch chéo (/).
+Invalid color for table grid.: Màu không hợp lệ cho lưới bảng.
+Invalid color for event popup background.: Màu không hợp lệ cho nền cửa sổ bật lên sự kiện.
+Invalid color for event popup text.: Màu không hợp lệ cho văn bản bật lên sự kiện.
+Invalid color for table header text.: Màu không hợp lệ cho văn bản tiêu đề bảng.
+Invalid color for table header background.: Màu không hợp lệ cho nền tiêu đề bảng.
+Server URL is required.: URL máy chủ là bắt buộc.
+Invalid Color: Màu không hợp lệ
+Database Name: Tên cơ sở dữ liệu
+Full Path (no backslashes): Đường dẫn đầy đủ (không có dấu gạch chéo ngược) 
+The password contains illegal characters.: Mật khẩu chứa các ký tự không hợp lệ.
+Error you must specify a Single-User Login: Lỗi: Bạn phải chỉ định Đăng nhập một người dùng
+Could not find XXX.: Không thể tìm thấy XXX.
+Could not find XXX in DOM.: Không thể tìm thấy XXX trong DOM.
+
+########################################
+# Page: includes/menu/index.php
+#
+This Week: Tuần này
+This Month: Tháng này
+This Year: Năm nay
+Exit: Lối ra
+Add New Event: Thêm sự kiện mới
+Delete Entries: Xóa mục nhập
+My Views: Quan điểm của tôi
+Manage Calendar of: Quản lý lịch của
+My Reports: Báo cáo của tôi
+My Profile: Thông tin của tôi
+Public Calendar: Lịch công cộng
+Unapproved Events: Sự kiện không được chấp thuận
+User Manager: Quản lý người dùng
+Help Contents: Nội dung trợ giúp
+
+########################################
+# Page: install/index.php
+#
+Database Cache Directory: Thư mục bộ nhớ đệm cơ sở dữ liệu
+Create New: Tạo mới
+Failure Reason: Lý do thất bại:
+You must manually create database: Bạn phải tạo cơ sở dữ liệu theo cách thủ công.
+Single-User: Một người dùng
+Test Settings: Cài đặt kiểm tra
+Timezone Conversion Successful: Chuyển đổi múi giờ thành công
+WebCalendar Installation Wizard Step XXX: Trình hướng dẫn Cài đặt WebCalendar Bước XXX
+Password Accepted: Mật khẩu được chấp nhận
+Successful Login: Đăng nhập thành công
+Password Incorrect: Mật khẩu không đúng
+Invalid Login: Đăng nhập không hợp lệ
+Display Errors: Lỗi hiển thị
+File Uploads: Tải lên tệp
+Allow URL fopen: Cho phép mở URL (chỉ bắt buộc nếu Lịch từ xa được sử dụng)
+Safe Mode: Chế độ an toàn
+Safe Mode Allowed Vars: Chế độ an toàn được phép Vars (chỉ yêu cầu TZ nếu Chế độ an toàn được bật)
+GD: GD (cần thiết cho Nền hình ảnh Gradient)
+Passwords do not match!: Mật khẩu không phù hợp!
+Unable to write password to settings.php file: Không thể ghi mật khẩu vào tệp "settings.php".
+Password Updated: Mật khẩu được cập nhật
+Password has been set: Mật khẩu đã được đặt.
+Connection Successful...: Kết nối thành công  Vui lòng chuyển đến trang tiếp theo để tiếp tục cài đặt.
+Correct your entries or click the Create New...: Sửa các mục nhập của bạn hoặc nhấp vào nút  Tạo Mới  để tiếp tục cài đặt.
+Correct your entries and try again.: Hãy sửa các mục nhập của bạn và thử lại.
+XXX does not exist: XXX không tồn tại
+XXX is not writable: XXX không thể ghi
+Error Converting Timezone: Lỗi khi chuyển đổi múi giờ
+Error Unable to write to file XXX.: Lỗi Không thể ghi vào tệp XXX.
+Please change the file permissions of this file.: Vui lòng thay đổi quyền tệp của tệp này.
+Please change includes dir permission: Vui lòng thay đổi quyền đối với tệp trong thư mục "bao gồm" của bạn để cho phép người dùng khác viết.
+Your settings have been saved.: Cài đặt của bạn đã được lưu.
+OFF: TẮT
+ON: TRÊN
+WebCalendar Setup Wizard: Trình hướng dẫn thiết lập lịch web
+This installation wizard will guide you...: Trình hướng dẫn cài đặt này sẽ hướng dẫn bạn cách thiết lập cài đặt WebCalendar cơ bản.<br>Để được trợ giúp và khắc phục sự cố, hãy xem:<br>
+System Administrators Guide: Hướng dẫn của Quản trị viên Hệ thống
+Frequently Asked Questions: Các câu hỏi thường gặp
+FAQ: Câu hỏi thường gặp
+Troubleshooting: Xử lý sự cố
+Getting Help: Tìm sự giúp đỡ
+Upgrading Guide: Hướng dẫn nâng cấp
+User Supported Wiki: Người dùng hỗ trợ Wiki
+PHP Version Check: Kiểm tra phiên bản PHP
+Check to see if PHP 7.1.0 or greater is installed.: Kiểm tra xem PHP 7.1.0 trở lên đã được cài đặt chưa.
+PHP version: Phiên bản PHP
+PHP Settings: Cài đặt PHP
+Detailed PHP Info: Thông tin PHP chi tiết
+settings.php Status: Trạng thái "settings.php"
+Session Check: Kiểm tra phiên
+To test the proper operation of sessions...: Để kiểm tra hoạt động thích hợp của các phiên, hãy tải lại trang này. Bạn sẽ thấy bộ đếm phiên tăng lên mỗi lần.
+SESSION COUNTER: BỘ ĐẾM PHẦN
+The file permissions of settings.php are set...: Các quyền đối với tệp "settings.php" được đặt để trình cài đặt không có quyền sửa đổi nó. Vui lòng thay đổi quyền đối với tệp của tệp sau để tiếp tục
+The file permissions of the includes directory are set...: Quyền đối với tệp của thư mục bao gồm được đặt để trình cài đặt không có quyền tạo tệp mới. Vui lòng thay đổi quyền của thư mục sau để tiếp tục
+Your settings.php file appears to be valid.: Tệp "settings.php" của bạn có vẻ hợp lệ.
+Configuration Wizard Password: Mật khẩu trình hướng dẫn cấu hình
+Create Settings File Password: Tạo mật khẩu tệp cài đặt
+db setup directions...: Trong phần này, bạn sẽ thiết lập và kiểm tra kết nối với máy chủ cơ sở dữ liệu của mình. Thông tin tài khoản được cung cấp phải có đầy đủ quyền để tạo cơ sở dữ liệu, bảng và người dùng. Nếu điều này không thể thực hiện được hoặc quyền truy cập cơ sở dữ liệu của bạn bị hạn chế, bạn sẽ phải cấu hình cơ sở dữ liệu của mình theo cách thủ công.
+Database Status: Trạng thái cơ sở dữ liệu
+Supported databases for your PHP installation: Cơ sở dữ liệu được hỗ trợ để cài đặt PHP của bạn
+Your current database settings are able to access the database.: Cài đặt cơ sở dữ liệu hiện tại của bạn có thể truy cập cơ sở dữ liệu.
+Please Test Settings: Vui lòng kiểm tra cài đặt
+Your current database settings are not able...: Cài đặt cơ sở dữ liệu hiện tại của bạn không thể truy cập cơ sở dữ liệu hoặc chưa được kiểm tra.
+Database Settings: Cài đặt cơ sở dữ liệu
+Database Type: Loại cơ sở dữ liệu
+Server: Người phục vụ
+Connection Persistence: Độ bền kết nối
+All your database tables appear to be up...: Tất cả các bảng cơ sở dữ liệu của bạn dường như được cập nhật. Bạn có thể chuyển sang trang tiếp theo và hoàn tất thiết lập WebCalendar của mình.
+This appears to be a new installation...: Đây dường như là một cài đặt mới. Nếu điều này không chính xác, vui lòng quay lại trang trước và chỉnh sửa cài đặt của bạn.
+This appears to be an upgrade...: Đây dường như là bản nâng cấp từ phiên bản&nbsp;XXX&nbsp;lên&nbsp;YYY.
+The database requires some data input...: Cơ sở dữ liệu yêu cầu một số đầu vào dữ liệu Nhấp vào Cập nhật Cơ sở dữ liệu để hoàn tất nâng cấp.
+In this section we will perform...: Trong phần này, chúng tôi sẽ thực hiện các thay đổi để đưa cơ sở dữ liệu của bạn lên mức cần thiết. Nếu bạn đang sử dụng cơ sở dữ liệu được hỗ trợ đầy đủ, bước này sẽ được thực hiện tự động cho bạn. Nếu không, SQL được yêu cầu có thể được hiển thị và bạn có thể cắt và dán nó vào cửa sổ truy vấn máy chủ cơ sở dữ liệu của mình.
+No database actions are required.: Không có hành động cơ sở dữ liệu được yêu cầu.
+The following database actions are required: Các hành động cơ sở dữ liệu sau là bắt buộc
+ODBC Underlying Database: Cơ sở dữ liệu cơ bản của ODBC:
+Automatic installation not supported: Cài đặt tự động chưa được triển khai đầy đủ cho loại cơ sở dữ liệu của bạn. Bạn sẽ phải tạo thủ công các bảng cần thiết bằng cách sử dụng SQL được cung cấp. Vui lòng nhấp vào  SQL hiển thị  để tiếp tục. Cắt và Dán vào cửa sổ truy vấn cơ sở dữ liệu của bạn.
+This may take several minutes to complete: Quá trình này có thể mất vài phút để hoàn thành.
+Install Database: Cài đặt cơ sở dữ liệu
+Update Database: Cập nhật cơ sở dữ liệu
+Display Required SQL: Hiển thị SQL bắt buộc
+Return to previous page after processing SQL.: Sau khi xử lý thủ công SQL này, bạn sẽ cần quay lại trang trước và kiểm tra lại cơ sở dữ liệu của mình để tập lệnh có thể phát hiện các thay đổi.
+This is the final step in setting up your WebCalendar Installation.: Đây là bước cuối cùng trong việc thiết lập Cài đặt WebCalendar của bạn.
+Timezone Conversion: Chuyển đổi múi giờ
+It appears that you have NOT converted...: Có vẻ như bạn CHƯA chuyển đổi dữ liệu sự kiện WebCalendar hiện có của mình sang GMT. Nếu có, bạn có thể bỏ qua thông báo này và không tiếp tục chuyển đổi. Nếu đây là một cài đặt mới, bạn cũng có thể bỏ qua thông báo này.
+Convert Data to GMT: Chuyển đổi dữ liệu sang GMT
+Application Settings: Cài đặt ứng dụng
+HTTP-based authentication was not detected...: Xác thực dựa trên HTTP không được phát hiện. Bạn sẽ cần phải cấu hình lại máy chủ web của mình nếu bạn muốn chọn 'Máy chủ web' từ các lựa chọn 'Xác thực người dùng' bên dưới.
+HTTP-based authentication was detected...: Xác thực dựa trên HTTP đã được phát hiện. Xác thực người dùng đang được xử lý bởi máy chủ web của bạn. Bạn nên chọn 'Máy chủ Web' từ danh sách các lựa chọn 'Xác thực Người dùng' bên dưới.
+Create Default Admin Account: Tạo tài khoản quản trị mặc định
+(Admin Account Not Found): (Không tìm thấy tài khoản quản trị viên)
+User Authentication: Xác thực Người dùng
+Web-based via WebCalendar (default): Dựa trên web qua WebCalendar (mặc định)
+Web Server (not detected): Máy chủ Web (không được phát hiện)
+Web Server (detected): Máy chủ Web (đã phát hiện)
+None (Single-User): Không có (Người dùng đơn)
+Read-Only: Chỉ đọc
+Environment: Môi trường
+Production: Sản xuất
+Development: Phát triển
+Save Settings: Lưu các thiết lập
+Launch WebCalendar: Khởi chạy WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Lỗi khi cập nhật bảng "XXX": YYY.
+Conversion Successful: Chuyển đổi Thành công 
+Perl script required: Phiên bản WebCalendar trước của bạn yêu cầu chạy tập lệnh PERL để chuyển đổi dữ liệu của bạn. Vui lòng chạy /tools/upgrade_to_0.9.7.pl sau đó quay lại trang này để tiếp tục.
+previous version requires updating several tables: Phiên bản WebCalendar trước của bạn yêu cầu cập nhật một số bảng cơ sở dữ liệu.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: KHÔNG CÓ XEM TRƯỚC
+
+########################################
+# Page: tools/reload_remotes.php
+#
+Error connecting to database: Lỗi khi kết nối với cơ sở dữ liệu
+Include Path: Bao gồm đường dẫn
+Deleting events for: Xóa sự kiện cho
+Importing events for: Nhập sự kiện cho
+No data returned from: Không có dữ liệu nào được trả lại từ
+for non-user calendar: cho lịch không phải của người dùng
+No Remote Calendars found: Không tìm thấy Lịch từ xa
+Remote Calendars not enabled: Lịch từ xa không được bật
+
+########################################
+# Page: tools/send_reminders.php
+#
+could not find event id: không thể tìm thấy id sự kiện
+could not find event id XXX in database.: không thể tìm thấy id sự kiện XXX trong cơ sở dữ liệu.
+task: bài tập
+This is a reminder for the XXX detailed below.: Đây là lời nhắc cho XXX được nêu chi tiết bên dưới.
+Pecentage Complete: Pecentage hoàn thành
+Reminder: Nhắc nhở
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Hành động không được hỗ trợ: XXX.
+No event id specified.: Không có id sự kiện nào được chỉ định.
+Not authorized (not admin).: Không được ủy quyền (không phải quản trị viên).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Kiểm tra các sự kiện cho XXX từ ngày YYY đến ngày ZZZ.
+Found XXX events in time range.: Đã tìm thấy XXX sự kiện trong phạm vi thời gian.
+Event id=XXX YYY at ZZZ on AAA.: Sự kiện id = XXX "YYY" tại ZZZ trên AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Cho phép người dùng XXX xem lịch của người dùng khác.
+Error Email reminders disabled for user XXX.: Lỗi: Đã tắt lời nhắc qua email đối với người dùng "XXX".
+Number of site_extras XXX.: Số lượng site_extras: XXX.
+Reminder set for event.: Đã đặt lời nhắc cho sự kiện.
+Mins Before XXX.: Phút trước: XXX.
+Event time is XXX.: Thời gian sự kiện là: XXX.
+Remind time is XXX.: Thời gian nhắc là: XXX.
+Reminders for user XXX, login YYY.: Nhắc nhở cho người dùng "XXX", đăng nhập "YYY".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Chưa được phê duyệt cho người dùng "XXX".
+Event id=XXX YYY already sent.: Id sự kiện = XXX "YYY" đã được gửi.
+
+########################################
+# Page: ws/login.php
+#
+No login required for single-user mode.: Không cần đăng nhập cho chế độ một người dùng.
+No login required for HTTP authentication.: Không cần đăng nhập để xác thực HTTP.
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Các ký tự đăng nhập không hợp lệ.
+Username XXX does not exist.: Tên người dùng "XXX" không tồn tại.
+You cannot remove admin rights from yourself!: Bạn không thể xóa quyền quản trị viên khỏi chính mình!
+Unknown error saving user: Lỗi không xác định khi lưu người dùng.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Không tìm thấy người tham gia cho id sự kiện: XXX.
+Db error Could not find event id XXX.: Lỗi db: Không thể tìm thấy id sự kiện XXX. 
+Error Could not find event id XXX in database.: Lỗi: Không thể tìm thấy id sự kiện XXX trong cơ sở dữ liệu. 

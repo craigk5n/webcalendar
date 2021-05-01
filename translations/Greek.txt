@@ -1,4 +1,37 @@
-# See translations/English-US.txt for instructions.
+# Greek el
+#
+# Η μορφή αποτελείται από μια προαιρετική κεφαλίδα:
+#
+# Μεταφράστηκε από: το όνομα και το email σας
+# Τελευταία ενημέρωση: η ημερομηνία μετάφρασης
+# (Συμπεριλαμβανομένων των κορυφαίων "#" και τυχόν σχόλια από προηγούμενους μεταφραστές.
+# Η ΠΡΩΤΗ κενή γραμμή τερματίζει αυτά τα σχόλια κεφαλίδας.)
+#
+# Ακολουθεί όσα χρειάζεται:
+#
+# Αγγλική φράση: μετάφραση
+# (Ένα προς μια γραμμή. ΧΩΡΙΣ το αρχικό "#".
+# Η "αγγλική φράση:", συμπεριλαμβανομένου του παχέος εντέρου ":", παρέχεται από το
+# Προγραμματιστές WebCalendar. Το μέρος σας είναι η "μετάφραση".)
+#
+# Ο κατάλογος εργαλείων περιέχει δύο σενάρια perl για να σας βοηθήσει:
+# - check_translation.pl
+# υποδεικνύει εάν όλο το κείμενο έχει μεταφραστεί με επιτυχία.
+# - update_translation.pl
+# Το θα αναλύσει τα αρχεία προγράμματος για να βρει όλες τις μεταφράσεις («φράση») και
+# επεξήγηση εργαλείου ('φράση'). Θα τακτοποιήσει τις φράσεις σύμφωνα με τη σελίδα
+# (αρχείο) που περιέχει την πρώτη εμφάνιση. Προαιρετικά, μπορεί να προσθέσει ετικέτα στο
+# φράσεις που δεν έχουν μεταφραστεί ακόμη με την τοποθέτηση
+#  << MISSING >>
+# στη γραμμή πάνω από τη φράση. Και, εάν η φράση είναι συντομογραφία,
+# θα περιλαμβάνει το πλήρες αγγλικό κείμενο στη γραμμή κάτω από τη φράση.
+#
+# Σημείωση: Προσπαθώ να μειώσω το συνολικό μέγεθος του αρχείου. Εάν η "μετάφραση"
+# η λέξη / φράση είναι πανομοιότυπη στη γλώσσα σας και στα Αγγλικά, απλώς χρησιμοποιήστε το σύμβολο "=".
+#
+# Σημείωση: Θα παρατηρήσετε την καταχώριση για το "May_" παρακάτω. Υπάρχει λόγος για αυτό.
+# Μετάφραση "May_" στο όνομα του πλήρους μήνα και "May" στο,
+# συνήθως συντομογραφία τριών γραμμάτων, μήνας (όπως "Οκτ" για "Οκτώβριος").
 #
 # Χρησιμοποιείστε το αρχείο αυτό για να μεταφράσετε το Ημερολόγιο σε άλλη
 # γλώσσα. Η μορφή είναι "Αγγλικό κείμενο: Μεταφρασμένο κείμενο"
@@ -6,11 +39,11 @@
 # Μεταφραστής: Παύλος Γκέσος cham_gss@hotmail.com
 # Τελευταία ενημέρωση: 10 Μαρ 2006
 #
-# Additional translations 'borrowed' from SourceForge project
-# 'The Coolest DHTML Calendar',
-# http://sourceforge.net/projects/jscalendar/
+# Χρησιμοποίησα τη μετάφραση Google για αυτό.
+# Θα πρέπει να αρκεί έως ότου ένας εγγενής ομιλητής μπορεί να το επιβεβαιώσει.
+# Bruce Bannon <wcDev@bbannon.net>
 #
-# Translation last updated on 03-11-2012
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -22,7 +55,7 @@
 
 # Specify a charset (will be sent within meta tag for each page).
 
-charset: UTF-8
+charset: =
 
 # "direction" need only be changed if using a right to left language.
 # Options are: ltr (left to right, default) or rtl (right to left).
@@ -99,11 +132,7 @@ Previous: Προηγούμενα
 #
 Event XXX is already on your calendar.: Το γεγονός XXX είναι ήδη στο ημερολόγιό σας.
 Invalid entry id XXX.: Λανθασμένη καταχώριση id: "XXX".
-#
-# << MISSING >>
-# a XXX event may not be added to your calendar:
-# English text: This is a XXX event and may not be added to your calendar.
-#
+a XXX event may not be added to your calendar: Πρόκειται για ένα συμβάν XXX και ενδέχεται να μην προστεθεί στο ημερολόγιό σας.
 confidential: εμπιστευτικό
 private: ιδιωτικό
 Error adding event XXX.: Σφάλμα προσθήκης γεγονότος: XXX.
@@ -172,16 +201,10 @@ enable-external-header-help: =
 Allow external file for header/script/trailer: Επιτρέπεται εξωτερικό αρχείο για επικεφαλίδα/σενάριο εντολών/υποσέλιδο
 Allow user to override header/trailer: Επιτρέπεται η παράκαμψη της επικεφαλίδας/υποσέδιδου
 Date and Time: Ημερομηνία και Ώρα
-#
-# << MISSING >>
-# server-tz-help:
-# English text: Specifies how many hours to adjust the time from UTC to server time.
-#
+server-tz-help: Καθορίζει πόσες ώρες για την προσαρμογή του χρόνου από το UTC στο χρόνο διακομιστή.
 Server Timezone Selection: Επιλογή διακομιστή ζώνης ώρας
 tz-help: Specifies how many hours to adjust the time from server time to local time.
-#
-# << MISSING >>
-# Default Client Timezone Selection:
+Default Client Timezone Selection: Προεπιλεγμένη επιλογή ζώνης ώρας πελάτη
 display-general-use-gmt-help: =
 Display Common Use Date/Times as GMT: Εμφάνιση συχνά χρησιμοποιούμενων Ημερομηνιών/Ωρών ως GMT
 date-format-help: =
@@ -442,9 +465,7 @@ Email address XXX already exists.: Η διεύθυνση Email "XXX" υπάρχ�
 Additional Comments (optional): Πρόσθετα σχόλια (προαιρετικά)
 Approve and Send: Έγκριση και αποστολή
 Approve and Exit: Έγκριση και έξοδος
-#
-# << MISSING >>
-# (Your comments will be emailed to the event creator.):
+(Your comments will be emailed to the event creator.): (Τα σχόλιά σας θα σταλούν μέσω email στον δημιουργό της εκδήλωσης.)
 Hello, XXX.: Γεια σου, XXX.
 XXX has approved an appointment and added comments.: =
 Subject XXX: Θέμα: "XXX".
@@ -479,17 +500,13 @@ day: =
 #
 Category Icon: Εικονίδιο κατηγορίας
 Global: Καθολική
-#
-# << MISSING >>
-# The permissions for the icons directory are set to read-only:
+The permissions for the icons directory are set to read-only: Τα δικαιώματα για τον κατάλογο εικονιδίων έχουν οριστεί μόνο για ανάγνωση.
 Category Name: Όνομα κατηγορίας:
 Color: Χρώμα
 Remove Icon: Αφαίρεση εικονιδίου:
 Add Icon to Category: Προσθήκη εικονιδίου στην κατηγορία
 Upload: Φόρτωση
-#
-# << MISSING >>
-# GIF or PNG 3kb max:
+GIF or PNG 6kb max: Μέγ. GIF ή PNG 6kb
 Search for existing icons: Αναζήτηση για υπάρχοντα εικονίδια
 Add: Προσθήκη
 Delete: Διαγραφή
@@ -501,9 +518,7 @@ Make New Category: Δημιουργία νέας κατηγορίας
 #
 Category name is required: Το όνομα της κατηγορίας είναι απαραίτητο
 File size exceeds maximum.: Το μέγεθος του αρχείου είναι μεγαλύτερο από το μέγιστο επιτρεπόμενο.
-#
-# << MISSING >>
-# File is not a GIF or PNG image:
+File is not a GIF or PNG image: Το αρχείο δεν είναι εικόνα GIF ή PNG
 
 ########################################
 # Page: catsel.php
@@ -526,15 +541,9 @@ Old Color: Παλιό χρώμα
 ########################################
 # Page: combo.php
 #
-#
-# << MISSING >>
-# Select None:
-#
-# << MISSING >>
-# Agenda:
-#
-# << MISSING >>
-# Add Task:
+Select None: Επιλέξτε Κανένα
+Agenda: Ημερήσια διάταξη
+Add Task: Προσθήκη εργασίας
 Description: Περιγραφή
 Date: Ημερομηνία
 Time: Ώρα
@@ -548,40 +557,24 @@ Comments: Σχόλια
 Brief Description: Σύντομη περιγραφή
 Full Description: Πλήρης περιγραφή
 Category: Κατηγορία
-#
-# << MISSING >>
-# Add event detail:
+Add event detail: Προσθήκη λεπτομέρειας συμβάντος
 Start Date: Ημερομηνία έναρξης
 Due Date: =
-#
-# << MISSING >>
-# Add task detail:
+Add task detail: Προσθέστε λεπτομέρειες εργασίας
 All: Όλες οι
 Error: =
-#
-# << MISSING >>
-# no response from server:
-#
-# << MISSING >>
-# JSON error:
+no response from server: καμία απάντηση από το διακομιστή
+JSON error: Σφάλμα JSON
 High: Υψηλή
 Medium: Μεσαία
 Low: Χαμηλή
 Today: Σήμερα
 Add Entry: Προσθήκη καταχώρισης
 Unnamed Event: Ανώνυμο γεγονός
-#
-# << MISSING >>
-# Unnamed Task:
-#
-# << MISSING >>
-# Refresh:
-#
-# << MISSING >>
-# Click to add entry:
-#
-# << MISSING >>
-# Name:
+Unnamed Task: Ανώνυμη εργασία
+Refresh: Φρεσκάρω
+Click to add entry: Κάντε κλικ για προσθήκη καταχώρησης
+Name: Ονομα
 pm: μμ
 am: πμ
 
@@ -615,16 +608,14 @@ Removed: Αφαιρέθηκε
 days: ημέρες
 hours: ώρες
 minutes: λεπτά
-#
-# << MISSING >>
-# You are not authorized to edit this task.:
+You are not authorized to edit this task.: Δεν έχετε εξουσιοδότηση να επεξεργαστείτε αυτήν την εργασία.
 is in a different timezone than you are. Currently: =
 hour ahead of you: =
 hour behind you: =
 hours ahead of you: =
 hours behind you: =
-XXX is in a different timezone (ahead): (XXX is in a different timezone; XXX ahead of you.<br />&nbsp;XXX)
-XXX is in a different timezone (behind): (XXX is in a different timezone; XXX behind you.<br />&nbsp;XXX)
+XXX is in a different timezone (ahead): (XXX is in a different timezone; XXX ahead of you.<br>&nbsp;XXX)
+XXX is in a different timezone (behind): (XXX is in a different timezone; XXX behind you.<br>&nbsp;XXX)
 Time entered here is based on your Timezone.: =
 Edit Entry: Επεξεργασία καταχώρισης
 Details: Λεπτομέρειες
@@ -655,20 +646,10 @@ end-time-help: =
 Start Time: Ώρα έναρξης
 Due Time: =
 Site Extras: =
-#
-# << MISSING >>
-# avail_participants-help:
-# English text: Lists the available participants of this entry.
-#
-#
-# << MISSING >>
-# Available:
-#
-# << MISSING >>
-# Find Name:
-#
-# << MISSING >>
-# Resources:
+avail_participants-help: Παραθέτει τους διαθέσιμους συμμετέχοντες αυτής της συμμετοχής.
+Available: Διαθέσιμος
+Find Name: Βρείτε όνομα
+Resources: Πόροι
 participants-help: =
 Selected: Επιλεγμένο
 Availability: Διαθεσιμότητα
@@ -774,9 +755,7 @@ Required to View Remote Calendar: =
 #
 Import Results: =
 Events successfully imported: =
-#
-# << MISSING >>
-# Create a new layer to view this calendar.:
+Create a new layer to view this calendar.: Δημιουργήστε ένα νέο επίπεδο για να δείτε αυτό το ημερολόγιο.
 Errors: =
 There was an error parsing the import file or no events were returned.: Σφάλμα κατά την ανάλυση του αρχείου εισαγωγής ή δεν υπήρχαν γεγονότα
 
@@ -888,6 +867,11 @@ export format not defined or incorrect.: το format εξαγωγής δεν ο�
 No user specified.: =
 
 ########################################
+# Page: groups.php
+#
+Add New Group: Προσθήκη νέας ομάδας
+
+########################################
 # Page: group_edit.php
 #
 Unnamed Group: Ανώνυμ ομάδα
@@ -899,11 +883,6 @@ Group name: Όνομα ομάδας
 # Page: group_edit_handler.php
 #
 You must specify a group name: Πρέπει να καθορίσετε ένα όνομα ομάδας
-
-########################################
-# Page: groups.php
-#
-Add New Group: Προσθήκη νέας ομάδας
 
 ########################################
 # Page: help_admin.php
@@ -950,30 +929,18 @@ repeat-day-help: =
 #
 Import: Εισαγωγή
 Palm Desktop: =
-#
-# << MISSING >>
-# allow you to import entries from the Palm...:
-# English text: This form will allow you to import entries from the Palm Desktop Datebook. It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.
-#
+allow you to import entries from the Palm...: Αυτή η φόρμα θα σας επιτρέψει να εισαγάγετε καταχωρήσεις από το Palm Desktop Datebook. Θα πρέπει να βρίσκεται στον κατάλογο Palm σας στο datebook / datebook.dat σε έναν υποκατάλογο που ονομάζεται από το όνομα χρήστη σας.
 The following entries will not be imported: The following entries will not be imported
 Entries older than the current date: =
 Entries created in the Palm Desktop...: =
-#
-# << MISSING >>
-# Anything imported from Palm...:
-# English text: Anything imported from Palm will be overwritten during the next import (unless the event date has passed). Therefore, updates should be made in the Palm Desktop.
-#
+Anything imported from Palm...: Οτιδήποτε εισάγεται από το Palm θα αντικατασταθεί κατά την επόμενη εισαγωγή (εκτός αν έχει παρέλθει η ημερομηνία του συμβάντος). Επομένως, οι ενημερώσεις πρέπει να γίνονται στο Palm Desktop.
 vCal: =
 This form will import vCalendar (.vcs) 1.0 events.: Η σελίδα αυτή εισάγει γεγονότα από vCalendar (.vcs) 1.0
 The following formats have been tested: The following formats have been tested
 This form will import iCalendar (.ics) events.: Η σελίδα αυτή εισάγει γεγονότα από iCalendar (.ics)
 Enabling: Ενεργοποίηση
 Overwrite Prior Import: Αντικατάσταση προηγούμενης εισαγωγής
-#
-# << MISSING >>
-# will cause events imported previously...:
-# English text: will cause events imported previously, that used the same UID as an event from the new import file, to be marked as deleted. This should allow an updated iCalendar file to be imported without creating duplicates.
-#
+will cause events imported previously...: θα προκαλέσει τα συμβάντα που έχουν εισαχθεί προηγουμένως, που χρησιμοποίησαν το ίδιο UID με ένα συμβάν από το νέο αρχείο εισαγωγής, να επισημανθούν ως διαγραμμένα. Αυτό θα επιτρέψει την εισαγωγή ενός ενημερωμένου αρχείου iCalendar χωρίς δημιουργία αντιγράφων.
 
 ########################################
 # Page: help_index.php
@@ -1040,9 +1007,7 @@ Current Icons on Server: =
 ########################################
 # Page: import.php
 #
-#
-# << MISSING >>
-# import from file:
+import from file: εισαγωγή από αρχείο
 Disabled: Απενεργοποιημένες
 Import format: Μορφή εισαγωγής
 Exclude private records: Αποκλεισμών ιδιωτικών εγγραφών
@@ -1065,21 +1030,9 @@ Delete layer: Διαγραφή στρώσης
 Edit layer: Επεξεργασία στρώσης
 Enable layers: Ενεργοποίηση στρώσεων
 Layer: Στρώση
-#
-# << MISSING >>
-# Layers are currently disabled.:
-# English text: Layers are currently <strong>disabled</strong>.
-#
-#
-# << MISSING >>
-# Layers are currently enabled.:
-# English text: Layers are currently <strong>enabled</strong>.
-#
-#
-# << MISSING >>
-# Click to modify layers settings for XXX:
-# English text: Click here to modify the layers settings for the XXX calendar.
-#
+Layers are currently disabled.: Επίπεδα είναι απενεργοποιημένα αυτήν τη στιγμή.
+Layers are currently enabled.: Επί του παρόντος, τα επίπεδα είναι ενεργοποιημένα.
+Click to modify layers settings for XXX: Κάντε κλικ εδώ για να τροποποιήσετε τις ρυθμίσεις επιπέδων για το ημερολόγιο XXX.
 Disable Layers: Απενεργοποίηση στρώσεων
 Add layer: Προσθήκη στρώσης
 Add Layer: Προσθήκη στρώσης
@@ -1119,23 +1072,15 @@ Save login via cookies so I dont have to login next time.: Αποθήκευση 
 Login: Σύνδεση
 public: δημόσιο
 Access XXX calendar: Πρόσβαση στο XXX ημερολόγιο
-cookies-note: <b>Σημείωση:</b> Αυτή η εφαρμογή απαιτεί την ενεργοποίηση των cookies
+cookies-note: Σημείωση: Αυτή η εφαρμογή απαιτεί την ενεργοποίηση των cookies
 
 ########################################
 # Page: login.php
 #
 Illegal characters in login XXX.: Μη έγκυροι χαρακτήρες στη σύνδεση XXX.
 Invalid login: Μη έγκυρη σύνδεση
-#
-# << MISSING >>
-# Activity login failure:
-# English text: Username: "XXX", IP: "YYY".
-#
-#
-# << MISSING >>
-# Error XXX:
-# English text: Error: "XXX".
-#
+Activity login failure: Όνομα χρήστη: "XXX", IP: "YYY".
+Error XXX: Σφάλμα: "XXX".
 You have been logged out.: Έχετε αποσυνδεθεί
 Access public calendar: Πρόσβαση δημόσιου ημερολογίου
 Not yet registered? Register here!: Δεν έχετε ακόμη εγγραφεί; Μπορείτε να το κάνετε τώρα εδώ!
@@ -1154,9 +1099,7 @@ Add New NonUser Calendar: Προσθήκη ημερολογίου μη χρήσ�
 ########################################
 # Page: nulogin.php
 #
-#
-# << MISSING >>
-# A login must be specified.:
+A login must be specified.: Πρέπει να καθοριστεί μια σύνδεση.
 No such nonuser calendar: =
 
 ########################################
@@ -1169,9 +1112,7 @@ Modify Non User Calendar Preferences: Τροποποίηση προτιμήσε�
 Return to My Preferences: Επιστροφή στις προτιμήσεις μου
 Custom Scripts: Προσαρμοσμένα σενάρια εντολών
 Timezone Selection: Επιλογή ζώνης ώρας
-#
-# << MISSING >>
-# Multiview:
+Multiview: Πολλαπλή προβολή:
 entry-interval-help: Ορίστε διάστημα σε λεπτά καθώς επεξεργάζεστε τους χρόνους μιας καταχώρισης
 Entry interval: Χρονικό διάστημα καταχώρισης
 hour: ώρα
@@ -1190,16 +1131,12 @@ entries: καταχωρίσεις
 Purging events for: Εκκαθάριση γεγονότων για
 Finished: Ολοκληρώθηκε
 Back: Πίσω
-Check box to delete ALL events for a user: Επιλέξτε το πλαίσιο για να διαγράψετε <b>ΟΛΑ</b> τα γεγονότα του χρήστη
+Check box to delete ALL events for a user: Επιλέξτε το πλαίσιο για να διαγράψετε ΟΛΑ τα γεγονότα του χρήστη
 Delete all events before: Διαγραφή όλων των γεγονότων πριν
 Purge deleted only: Εκκαθάριση μόνο των διεγραμμένων
 Preview delete: Προεπισκόπηση διαγραφής
 Are you sure you want to delete events for: Είστε σίγουρος ότι θέλθετε να διαγράψετε γεγονότα για
-#
-# << MISSING >>
-# Records deleted from XXX:
-# English text: Records deleted from "XXX".
-#
+Records deleted from XXX: Οι εγγραφές διαγράφηκαν από το "XXX".
 
 ########################################
 # Page: register.php
@@ -1230,12 +1167,8 @@ Submit: Υποβολή
 #
 Continue: =
 (Your comments will be emailed to the other participants.): =
-#
-# << MISSING >>
-# XXX has rejected an appointment.:
-#
-# << MISSING >>
-# Rejected by XXX.:
+XXX has rejected an appointment.: Ο XXX απέρριψε ένα ραντεβού.
+Rejected by XXX.: Απορρίφθηκε από το XXX.
 
 ########################################
 # Page: remotes.php
@@ -1285,88 +1218,28 @@ New Search: =
 ########################################
 # Page: security_audit.php
 #
-#
-# << MISSING >>
-# list potential security issues:
-# English text: The information below lists potential issues with your WebCalendar installation that could be modified to make your installation more secure.
-#
-#
-# << MISSING >>
-# For questions about WebCalendar security see the forums:
-# English text: For questions about any WebCalendar security issue, please use the WebCalendar forums hosted on SourceForge.net;<br /><a http://sourceforge.net/forum/forum.php?forum_id=11587>WebCalendar</a>
-#
+list potential security issues: Οι παρακάτω πληροφορίες αναφέρουν πιθανά ζητήματα με την εγκατάσταση του WebCalendar που θα μπορούσαν να τροποποιηθούν για να κάνουν την εγκατάστασή σας πιο ασφαλή.
+For questions about WebCalendar security see the forums: Για ερωτήσεις σχετικά με οποιοδήποτε ζήτημα ασφάλειας του WebCalendar, χρησιμοποιήστε τα φόρουμ WebCalendar που φιλοξενούνται στο GitHub.com;<br>XXX
 View your current PHP settings: Προβάλλετε τις τρέχουσες ρυθμίσεις PHP.
 Security Issue: Θέμα ασφαλείας
 Status: Κατάσταση
 Default admin user password: Κωδικός πρόσβασης προκαθορισμένου διαχειριστή
 You should change the password of the default admin user.: Θα πρέπει να αλλάξετε τον κωδικό πρόσβασης του προκαθορισμένου διαχειριστή.
-#
-# << MISSING >>
-# File permissions XXX:
-# English text: File permissions: XXX
-#
-#
-# << MISSING >>
-# item XXX should not be writable:
-# English text: The following item should not be writable:<br /><tt>XXX</tt>
-#
-#
-# << MISSING >>
-# File exists XXX:
-# English text: File exists: "XXX"
-#
+File permissions XXX: Άδειες αρχείων: XXX
+item XXX should not be writable: Το ακόλουθο στοιχείο δεν πρέπει να είναι εγγράψιμο:<br><tt> XXX</tt>
+File exists XXX: Το αρχείο υπάρχει: "XXX"
 Because you have email disabled, you should remove this file.: Επειδή έχετε απενεργοποιημένο email, θα πρέπει να αφαιρέσετε αυτό το αρχείο.
-#
-# << MISSING >>
-# File location XXX:
-# English text: File location: "XXX"
-#
-#
-# << MISSING >>
-# remove XXX if not using:
-# English text: If you are not using file "XXX", you should delete it. Or, at least, move it to a new directory.
-#
-#
-# << MISSING >>
-# System Settings XXX:
-# English text: System Settings: "XXX"
-#
-#
-# << MISSING >>
-# consider enabling UAC:
-# English text: You may want to consider enabling User Access Control to set user privileges.
-#
-#
-# << MISSING >>
-# recommend approving new public events:
-# English text: We recommend that all public event submissions be approved.
-#
-#
-# << MISSING >>
-# recommend using CAPTCHA:
-# English text: CAPTCHA is recommended to guard againt automated event submissions.
-#
+File location XXX: Τοποθεσία αρχείου: "XXX"
+remove XXX if not using: Εάν δεν χρησιμοποιείτε το αρχείο "XXX", θα πρέπει να το διαγράψετε. Ή, τουλάχιστον, μετακινήστε το σε έναν νέο κατάλογο.
+System Settings XXX: Ρυθμίσεις συστήματος: "XXX"
+consider enabling UAC: Μπορεί να θέλετε να ενεργοποιήσετε τον Έλεγχο πρόσβασης χρήστη για να ορίσετε δικαιώματα χρήστη.
+recommend approving new public events: Συνιστούμε να εγκριθούν όλες οι υποβολές δημόσιων εκδηλώσεων.
+recommend using CAPTCHA: Συνιστάται το CAPTCHA να προστατεύει ξανά τις αυτόματες υποβολές συμβάντων.
 Database cache directory location: Τοποθεσία καταλόγου κρυφής μνήμης της βάσης δεδομένων
-#
-# << MISSING >>
-# db cache should be inaccessable:
-# English text: The database cache should be in a directory that cannot be accessed with a URL.
-#
-#
-# << MISSING >>
-# PHP Settings XXX:
-# English text: PHP Settings: "XXX"
-#
-#
-# << MISSING >>
-# recommend setting XXX Off:
-# English text: The recommended setting for "XXX" is Off.
-#
-#
-# << MISSING >>
-# recommend setting allow_url_fopen Off:
-# English text: The recommended setting for "allow_url_fopen" is Off when remote calendars are not enabled.
-#
+db cache should be inaccessable: Η προσωρινή μνήμη της βάσης δεδομένων πρέπει να βρίσκεται σε έναν κατάλογο στον οποίο δεν είναι δυνατή η πρόσβαση με μια διεύθυνση URL.
+PHP Settings XXX: Ρυθμίσεις PHP: "XXX"
+recommend setting XXX Off: Η προτεινόμενη ρύθμιση για το "XXX" είναι απενεργοποιημένη.
+recommend setting allow_url_fopen Off: Η προτεινόμενη ρύθμιση για το "allow_url_fopen" είναι απενεργοποιημένη όταν δεν είναι ενεργοποιημένα απομακρυσμένα ημερολόγια.
 
 ########################################
 # Page: select_user.php
@@ -1396,8 +1269,34 @@ Add New User: Προσθήκη νέου χρήστη
 # Page: usersel.php
 #
 form: =
-listid: =
 Reset: =
+
+########################################
+# Page: views.php
+#
+Add New View: Προσθήκη νέας προβολής
+
+########################################
+# Page: views_edit.php
+#
+Unnamed View: Ανώνυμη προβολή
+Add View: Προσθήκη προβολής
+Edit View: Επεξεργασία προβολής
+View Name: Όνομα προβολής
+View Type: Είδος προβολής
+Day by Time: =
+Week (Users horizontal): =
+Week by Time: =
+Week (Users vertical): =
+Week (Timebar): =
+Month (Timebar): =
+Month (side by side): =
+Month (on same calendar): =
+
+########################################
+# Page: views_edit_handler.php
+#
+You must specify a view name: Θα πρέπει να ορίσετε ένα όνομα προβολής
 
 ########################################
 # Page: view_d.php
@@ -1451,33 +1350,6 @@ Palm Pilot: =
 Double-click on empty cell to add new entry: Double-click on empty cell to add new entry
 
 ########################################
-# Page: views.php
-#
-Add New View: Προσθήκη νέας προβολής
-
-########################################
-# Page: views_edit.php
-#
-Unnamed View: Ανώνυμη προβολή
-Add View: Προσθήκη προβολής
-Edit View: Επεξεργασία προβολής
-View Name: Όνομα προβολής
-View Type: Είδος προβολής
-Day by Time: =
-Week (Users horizontal): =
-Week by Time: =
-Week (Users vertical): =
-Week (Timebar): =
-Month (Timebar): =
-Month (side by side): =
-Month (on same calendar): =
-
-########################################
-# Page: views_edit_handler.php
-#
-You must specify a view name: Θα πρέπει να ορίσετε ένα όνομα προβολής
-
-########################################
 # Page: week_details.php
 #
 New Entry: Νέα καταχώριση
@@ -1516,35 +1388,16 @@ LANGUAGE DEFINED: =
 ########################################
 # Page: includes/dbi4php.php
 #
-#
-# << MISSING >>
-# Error connecting to database XXX:
+Error connecting to database XXX: Σφάλμα σύνδεσης με βάση δεδομένων: "XXX".
 db_type not defined.: =
-#
-# << MISSING >>
-# invalid db_type XXX:
+invalid db_type XXX: άκυρος db_type "" XXX ".
 Cache cleared from previous SQL!: =
 Error executing query.: =
-#
-# << MISSING >>
-# Unfortunately, XXX is not implemented for YYY:
-# English text: Unfortunately, "XXX" is not implemented for (YYY).
-#
+Unfortunately, XXX is not implemented for YYY: Δυστυχώς, το "XXX" δεν εφαρμόζεται για (YYY).
 Unknown ODBC error.: =
-#
-# << MISSING >>
-# Cannot execute SQLite3 command XXX:
-#
-# << MISSING >>
-# Error opening cache dir XXX.:
-# English text: Error opening cache dir "XXX".
-#
+Error opening cache dir XXX.: Σφάλμα κατά το άνοιγμα της προσωρινής μνήμης dir "XXX".
 delete: =
-#
-# << MISSING >>
-# Cache error Could not XXX file YYY.:
-# English text: Cache error: Could not XXX file "YYY".
-#
+Cache error Could not XXX file YYY.: Σφάλμα προσωρινής μνήμης: Δεν ήταν δυνατό το αρχείο XXX "YYY".
 
 ########################################
 # Page: includes/formvars.php
@@ -1564,11 +1417,7 @@ All Attendees: Όλοι οι συμμετέχοντες
 Busy: Απασχολημένος
 Tentative: Προσωρινός
 Schedule an appointment for XXX.: Προγραμματισμός συνάντησης για XXX:XXX.
-#
-# << MISSING >>
-# date_select:
-# English text: __dd__ __month__ __yyyy__
-#
+date_select: =
 Event approved: Αποδοχή γεγονότος
 Journal approved: Αποδοχή ημερολογίου
 Task approved: Αποδοχή εργασίας
@@ -1630,6 +1479,13 @@ Aug: Αυγ
 Sep: Σεπ
 Oct: Οκτ
 Nov: Νοε
+SU: ΚΥ
+MO: ΔΕ
+TU: ΤΡ
+WE: ΤΕ
+TH: ΠΕ
+FR: ΠΑ
+SA: ΣΑ
 unknown-month: =
 First Quarter Moon: =
 Full Moon: =
@@ -1663,7 +1519,7 @@ Thu: Πεμ
 Fri: Παρ
 Sat: Σαβ
 unknown-weekday: =
-Invalid referring URL: Invalid referring URL
+Invalid referring URL: =
 
 ########################################
 # Page: includes/help_list.php
@@ -1688,52 +1544,507 @@ Manage calendar of: Διαχείριση ημερολογίου του
 # Page: includes/translate.php
 #
 Browser Language Not Found: =
-#
-# << MISSING >>
-# (not supported):
-English: =
-English-US: =
+(not supported): (Δεν υποστηρίζεται)
+Abkhazian: Αμπχαζιανά
+Acoli: Ακόλη
+Adangme: =
+Adyghe: =
+Afar: Μακρυά
+Afrihili: Αφριχίλι
 Afrikaans: =
+Ainu: =
+Akan: Ακάν
+Akkadian: Ακαδιάν
 Albanian: =
+Aleut: =
+Algonquian: Αλγκονκιάν
+Altai (Southern): Αλτάι (Νότια)
+Amharic: Αμαρικά
+Angika: Άγκικα
+Apache: Απάχης
+Arabic (Algeria): Αραβικά (Αλγερία)
+Arabic (Bahrain): Αραβικά (Μπαχρέιν)
+Arabic (Egypt): Αραβικά (Αίγυπτος)
+Arabic (Iraq): Αραβικά (Ιράκ)
+Arabic (Jordan): Αραβικά (Ιορδανία)
+Arabic (Kuwait): Αραβικά (Κουβέιτ)
+Arabic (Lebanon): Αραβικά (Λίβανος)
+Arabic (Libya): Αραβικά (Λιβύη)
+Arabic (Morocco): Αραβικά (Μαρόκο)
+Arabic (Oman): Αραβικά (Ομάν)
+Arabic (Qatar): Αραβικά (Κατάρ)
+Arabic (Saudi Arabia): Αραβικά (Σαουδική Αραβία)
+Arabic (Syria): Αραβικά (Συρία)
+Arabic (Tunisia): Αραβικά (Τυνησία)
+Arabic (U.A.E.): Αραβικά (Η.Π.Α.)
+Arabic (Yemen): Αραβικά (Υεμένη)
 Arabic: =
+Aragonese: Αραγονικά
+Aramaic: Αραμαϊκά
+Arapaho: Αράπαχο
+Arawak: =
+Armenian: αρμενικός
+Assamese: Ασαμέ
+Asturian: Αστουριανή
+Athapascan: Αθαπασκάν
+Avaric: =
+Avestan: =
+Awadhi: Αουάντι
+Aymara: Αϊμάρα
+Azerbaijani: Αζερμπαϊτζάν
+Balinese: Μπαλί
+Baluchi: Μπαλούτσι
+Bambara: Μπαμπάρα
+Bamileke: Μπαμιλέκ
+Banda: Μπάντα
+Basa: Μπάσα
+Bashkir: Μπασκκίρ
 Basque: =
+Beja: Μπέτζα
+Belarusian: Λευκορωσικά
+Bemba: Μπέμπα
+Bengali: Μπενγκάλι
+Bhojpuri: =
+Bihari: Μπιχάρι
+Bikol: Μπικολ
+Bislama: Μπισλάμα
+Blackfoot: μαυροπόδαρος
+Blin: Μπλιν
+Bliss: Ευδαιμονία
+Bosnian: Βοσνιακά
+Braj: Μπρατζ
+Breton: Βρετάνη
+Buginese: =
 Bulgarian: =
+Buriat: Μπουριάτ
+Burmese: Βιρμανίας
+Caddo: Κάδντο
 Catalan: =
+Cebuano: Κεμπούνο
+Chagatai: Τσαγκατάι
+Chamorro: Χαμόρο
+Chechen: Τσετσέν
+Cherokee: Τσερόκι
+Cheyenne: Τσεγιέν
+Chibcha: Τσίμπα
+Chichewa: Τσιτσewa
+Chinese (Hong Kong): Κινέζικα (Χονγκ Κονγκ)
+Chinese (PRC): Κινέζικα (ΛΔΚ)
 Chinese (Simplified/GB2312): =
+Chinese (Singapore): Κινέζικα (Σιγκαπούρη)
+Chinese (Taiwan): Κινέζικα (Ταϊβάν)
 Chinese (Traditional/Big5): =
+Chinook: Τσίνκοκ
+Chipewyan: =
+Choctaw: =
+Chuukese: Τσουούκε
+Chuvash: Τσουβάς
+Coptic: Κοπτικός
+Cornish: Κορνουάλη
+Corsican: Κορσικανός
+Cree: Κρέι
+Creek: Ποταμάκι
 Croatian: =
 Czech: =
+Dakota: Ντακότα
 Danish: =
+Dargwa: Ντάργουα
+Delaware: Ντέλαγουερ
+Dinka: Ντίνκα
+Dogri: Ντόγκρι
+Dogrib: Ντογκρίμπ
+Duala: Ντουάλα
+Dutch (Belgium): Ολλανδικά (Βέλγιο)
 Dutch: =
-Elven: =
+Dyula: Δυούλα
+Dzongkha: Τζόνγκκα
+Edo: Έντο
+Efik: Έφικ
+Ekajuk: Εκάκουκ
+Elamite: Ελαμίτης
+English (Australia): Αγγλικά (Αυστραλία)
+English (Belize): Αγγλικά (Μπελίζ)
+English (Canada): Αγγλικά (Καναδάς)
+English (Ireland): Αγγλικά (Ιρλανδία)
+English (Jamaica): Αγγλικά (Τζαμάικα)
+English (New Zealand): Αγγλικά (Νέα Ζηλανδία)
+English (Philippines): Αγγλικά (Φιλιππίνες)
+English (South Africa): Αγγλικά (Νότια Αφρική)
+English (Trinidad & Tobago): Αγγλικά (Τρινιντάντ & Τομπάγκο)
+English (United Kingdom): Αγγλικά (Ηνωμένο Βασίλειο)
+English (United States): Αγγλικά Ηνωμένες Πολιτείες)
+English (Zimbabwe): Αγγλικά (Ζιμπάμπουε)
+English: =
+Erzya: Έρτζια
+Esperanto: εσπεράντο
 Estonian: =
+Ewe: Προβατίνα
+Ewondo: =
+Fang: Δόντι ζώου
+Fanti: Φάντι
+Faroese: Φερόε
+Fijian: Φίτζι
+Filipino: Φιλιππίνος
 Finnish: =
+Fon: Φον
+French (Belgium): Γαλλικά (Βέλγιο)
+French (Canada): Γαλλικά (Καναδάς)
+French (France): Γαλλικά (Γαλλία)
+French (Luxembourg): Γαλλικά (Λουξεμβούργο)
+French (Monaco): Γαλλικά (Μονακό)
+French (Switzerland): Γαλλικά (Ελβετία)
 French: =
+Frisian (Eastern): Frisian (Ανατολική)
+Frisian (Northern): Frisian (Βόρεια)
+Frisian (Western): Frisian (Δυτική)
+Frisian: =
+Friulian: Φρουλιάν
+Fulah: Φούλα
+Ga: Γα
+Galibi: Γκαλίμπι
 Galician: =
+Ganda: Γκάντα
+Gayo: Γκάο
+Gbaya: Γκάμπια
+Geez: Γεια!
+Georgian: Γεωργιανά
+German (Austria): Γερμανικά (Αυστρία)
+German (Germany): Γερμανικά (Γερμανία)
+German (Liechtenstein): Γερμανικά (Λιχτενστάιν)
+German (Luxembourg): Γερμανικά (Λουξεμβούργο)
+German (Standard): Γερμανικά (στάνταρ)
+German (Switzerland): Γερμανικά (Ελβετία)
 German: =
+Gilbertese: =
+Gondi: Γκόντι
+Gorontalo: Γκοροντάλο
+Gothic: γοτθικός
+Grebo: Γκρέμπο
 Greek: =
+Greenlandic: Γροιλανδία
+Guarani: Γκουαράνι
+Gujarati: Γκουτζαράτι
+Gwich&#39;in: Γκουιτσίν
+Haida: Χίντα
+Haitian (Creole): Αϊτινά (κρεόλ)
+Haitian: Αϊτής
+Hausa: =
+Hawaiian: Χαβάης
 Hebrew: =
+Herero: Ήρωας
+Hiligaynon: Χίλιγκιν
+Hindi: Χίντι
+Hiri Motu: =
+Hittite: Χετίτης
+Hmong: Χονγκ
 Holo (Taiwanese): =
 Hungarian: =
+Hupa: Χούπα
+Iban: Ιμπάν
 Icelandic: =
+Ido: Δέχομαι
+Igbo: =
+Iloko: Ιλόκο
 Indonesian: =
+Ingush: Ίνγκους
+Inuktitut: Ινουκτιτούτ
+Inupiaq: =
+Iranian: Ιρανός
+Irish (Gaelic): Ιρλανδικά (Γαελικά)
+Irish: ιρλανδικός
+Iroquoian: Ιροκινό
+Italian (Switzerland): Ιταλικά (Ελβετία)
 Italian: =
 Japanese: =
+Javanese: Ιάβας
+Judeo-Arabic: Ιουδαϊκά-Αραβικά
+Judeo-Persian: Ιουδαίο-Περσικό
+Kabardian: Καμπαρντίν
+Kabyle: Καμπάιλ
+Kachin: Κάτσιν
+Kalaallisut: Καλαάλισουτ
+Kalmyk: Καλύμ
+Kamba: Κάμπα
+Kannada: Κανάντα
+Kanuri: Κανούρι
+Kara-Kalpak: Κάρα-Καλπάκ
+Karachay-Balkar: =
+Karelian: Καρελιανός
+Kashmiri: Κασμίρ
+Kashubian: =
+Kawi: Κάουι
+Kazakh: Καζακστάν
+Khasi: =
+Khmer (Central): Χμερ (Κεντρική)
+Khmer: Χμερ
+Khotanese: Χοτάνη
+Kikuyu: =
+Kimbundu: Κιμπούντου
+Kinyarwanda: Κινιαρβάντα
+Kirghiz: Κιργιζ
+Klingon: Κλίνγκον
+Komi: Κόμι
+Kongo: Κονγκό
+Konkani: Κόνκαν
+Korean (Johab): Κορεάτικα (Johab)
+Korean (North): Κορεάτικα (Βόρεια)
+Korean (South): Κορεάτικα (Νότια)
 Korean: =
+Kosraean: Κοσραϊνός
+Kpelle: Κπέλε
+Kuanyama: Κουανιάμα
+Kumyk: Κουμίκ
+Kurdish: Κουρδικά
+Kutenai: Κουτενάι
+Kyrgyz: Κιργιζία
+Ladino: Λαντίνο
+Lahnda: Λάχνα
+Lamba: Λάμπα
+Lao: Λάο
+Latin: λατινικά
+Latvian: Λετονικά
+Lezghian: Λεζιανό
+Limburgan: =
+Lingala: Λίνγκαλα
 Lithuanian: =
+Lojban: Λοτζμπάν
+Lozi: Λόζι
+Luba-Katanga: Λούμπα-Κατάγκα
+Luba-Lulua: Λούμπα-Λουλού
+Luiseno: Λουίσενο
+Lunda: Λούντα
+Luo: Λούο
+Lushai: Λουσάι
+Luxembourghish: Λουξεμβούργο
+Macedonian: Μακεδόνας
+Madurese: =
+Magahi: Μαγκάι
+Maithili: Μαϊθίλι
+Makasar: Μακάσαρ
+Malagasy: Μαδαγασκάρη
+Malay: Μαλαισίας
+Malayalam: Μαλαγιαλάμ
+Maldivian: Μαλδίβια
+Maltese: μαλτέζος
+Manchu: Μάντσου
+Mandar: Μαντάρ
+Mandingo: Μάντινγκο
+Manipuri: Μανιπούρι
+Manx: Μανξ
+Maori: Μάορι
+Mapuche: Μαπούτσε
+Marathi: Μαράθι
+Mari: Μαρί
+Marshallese: Μάρσαλ
+Marwari: Μαρουάρι
+Masai: Μασάι
+Mayan: Μάγια
+Mende: Μέντε
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: Μινγκαμπάουου
+Mirandese: =
+Mohawk: Μοχάουκ
+Moksha: Μόκσα
+Moldavian: Μολδαβίας
+Mongo: Μόνγκο
+Mongolian: Μογγόλος
+Montenegrin: Μαυροβούνιο
+Moroccan: μαροκινός
+Mossi: Μόσι
+Myanmar: Μιανμάρ
+Māori: Μαορί
+N&#39;Ko: Νκο
+Nauru: Ναουρού
+Navajo: Ναβάχο
+Ndebele (North): Ndebele (Βόρεια)
+Ndebele (South): Ndebele (Νότια)
+Ndebele: Ντέμπλε
+Ndonga: Νδόνγκα
+Neapolitan: Ναπολιτάνιος
+Nepali: Νεπάλ
+Nias: Νας
+Niuean: Νιούε
+Nogai: Νόγκι
+Norse: Νορμανδός
+Norwegian (Bokmål): Νορβηγικά (Bokmål)
+Norwegian (Nynorsk): Νορβηγικά (Nynorsk)
 Norwegian: =
+Nyamwezi: Νιαμοβάζι
+Nyankole: Νιανκόλε
+Nyoro: Νιόρο
+Nzima: Νζίμα
+Occitan: Οξιτανικά
+Odia: Οδία
+Ojibwa: =
+Oriyia: Οριά
+Oromo: Ορόμο
+Osage: =
+Ossetic: Οστικός
+Pahlavi: Παχλάβι
+Palauan: Παλάουαν
+Pali: Πάλι
+Pampanga: =
+Pangasinan: =
+Panjabi: Παντζάμπι
+Papiamento: =
+Pashto: =
+Pedi: Πεδί
+Persian (Farsi): Περσικά (Φαρσί)
+Persian (Iran): Περσικά (Ιράν)
+Persian: περσικός
+Phoenician: φοινικικός
+Pohnpeian: =
 Polish: =
 Portuguese: =
-Portuguese/Brazil: =
+Portuguese/Brazil: Πορτογαλικά / Βραζιλία
+Punjabi (India): Punjabi (Ινδία)
+Punjabi (Pakistan): Punjabi (Πακιστάν)
+Punjabi: Παντζάμπια
+Quechua: Κουτσούα
+Rajasthani: Ρατζαστάνι
+Rapanui: Ραπανούι
+Rarotongan: Ραροτόνγκα
+Rhaeto-Romanic: Ραϊτο-Ρωμανικός
 Romanian: =
+Romansh: Ρωμαίος
+Romany: αθίγγανος
+Rundi: Ρούντι
+Russian (Moldavia: Ρωσικά (Μολδαβία)
+Russian (Republic of Moldova): Ρωσικά (Δημοκρατία της Μολδαβίας)
 Russian: =
+Sami (Inari): Σάμη (Ίναρι)
+Sami (Lappish): Σάμη (Lappish)
+Sami (Lule): Σάμη (Lule)
+Sami (Northern): Σάμη (Βόρεια)
+Sami (Skolt): Σάμη (Skolt)
+Sami (Southern): Σάμη (Νότια)
+Sami: Σάμη
+Samoan: Σάμου
+Samoli: Σαμόλι
+Sandawe: Σαντάου
+Sango: Σάνγκο
+Sanskrit: σανσκριτική
+Santali: Σαντάλι
+Sardinian: Σαρδηνικά
+Sasak: Σασάκ
+Scots (Gaelic): Σκωτσέζικα (Γαελικά)
+Selkup: =
+Serbian (Upper): Σερβικά (Άνω)
 Serbian: =
+Serer: Σέρερ
+Sesotho: Σεσότο
+Shan: Σαν
+Shona: Σόνα
+Sichuan Yi: Σιτσουάν Γι
+Sicilian: Σικελός
+Sindhi: Σίντι
+Sinhala: Σινχάλα
+Slavic: σλαυικός
 Slovak: =
 Slovenian: =
+Sogdian: Σόγκντιαν
+Somali: Σομαλικά
+Somani: Σομανοί
+Songhai: Σονγκάι
+Soninke: Σονίνκε
+Sorbian (Lower): Σορβικά (Κάτω)
+Sorbian (Upper): Σορβικά (Άνω)
+Sorbian: Σορβιά
+Sotho: Σόθο
+Spanish (Argentina): Ισπανικά (Αργεντινή)
+Spanish (Bolivia): Ισπανικά (Βολιβία)
+Spanish (Chile): Ισπανικά (Χιλή)
+Spanish (Colombia): Ισπανικά (Κολομβία)
+Spanish (Costa Rica): Ισπανικά (Κόστα Ρίκα)
+Spanish (Dominican Republic): Ισπανικά (Δομινικανή Δημοκρατία)
+Spanish (Ecuador): Ισπανικά (Ισημερινός)
+Spanish (El Salvador): Ισπανικά (Ελ Σαλβαδόρ)
+Spanish (Guatemala): Ισπανικά (Γουατεμάλα)
+Spanish (Honduras): Ισπανικά (Ονδούρα)
+Spanish (Mexico): Ισπανικά (Μεξικό)
+Spanish (Nicaragua): Ισπανικά (Νικαράγουα)
+Spanish (Panama): Ισπανικά (Παναμάς)
+Spanish (Paraguay): Ισπανικά (Παραγουάη)
+Spanish (Peru): Ισπανικά (Περού)
+Spanish (Puerto Rico): Ισπανικά (Πουέρτο Ρίκο)
+Spanish (Spain): Ισπανικά (Ισπανία)
+Spanish (Uruguay): Ισπανικά (Ουρουγουάη)
+Spanish (Venezuela): Ισπανικά (Βενεζουέλα)
 Spanish: =
+Sranan Tongo: Σράναν Τόνγκο
+Sukuma: Σουκούμα
+Sumerian: Σουμερίων
+Sundanese: Σουντάνικα
+Susu: Σούσου
+Sutu: Σούτου
+Swahili: Σουαχίλι
+Swati: Σουάτι
+Swedish (Finland): Σουηδικά (Φινλανδία)
+Swedish (Sweden): Σουηδικά (Σουηδία)
 Swedish: =
+Syriac: Συριακός
+Tagalog: Ταγκαλόγκ
+Tahitian: Ταϊτιάν
+Tai: Τάι
+Taiwan: Ταϊβάν
+Tajik: Τατζικικά
+Tamashek: Ταμάσεκ
+Tamil: Ταμίλ
+Tatar: ταρτάριος
+Telugu: Τελούγκου
+Tereno: Τερένο
+Tetum: Τέτομ
+Thai: Ταϊλανδέζικα
+Tibetan: Θιβετιανά
+Tigre: Τίγρε
+Tigrinya: Τιγκρίνια
+Timne: Τιμ
+Tlingit: =
+Tok Pisin: Τοκ Πίσιν
+Tokelau: Τοκελάου
+Tonga (Nytmhasa): Τόνγκα (Nytmhasa)
+Tonga (Tonga Islands): Τόνγκα (Νησιά Τόνγκα)
+Tonga: Τόνγκα
+Tsimshian: Τσίμσιν
+Tsonga: Τόνγκα
+Tswana: Τσουάνα
+Tumbuka: Τομπούκα
 Turkish: =
+Turkmen: Τούρμεν
+Tuvinian: Τουβινιανά
+Twi: =
+Udmurt: Ούντμουρτ
+Ugaritic: Ουγκαριτικό
+Ukrainian: Ουκρανός
+Umbundu: =
+Urdu: Ουρντού
+Uyghur: Ουιγούρ
+Uzbek: Ουζμπεκιστάν
+Vai: Βάι
+Venda: Βέντα
+Vietnamese: Βιετναμέζικα
+Volapük: =
+Votic: =
+Wakashan: Βακασάν
+Walloon: Βαλλονία
+Waray: Γουάρε
+Washo: Ουάσο
 Welsh: =
+Wolaitta: =
+Wolof: =
+Xhosa: Ξόσα
+Yakut: Γιακούτ
+Yao: Γιάο
+Yapese: =
+Yiddish: γερμανοεβραϊκή διάλεκτος
+Yorùbá: Γιορμπά
+Yupik: Γιούπικ
+Zande: Ζάντε
+Zapotec: =
+Zaza: Ζάζα
+Zenaga: Ζενάγκα
+Zhuang: Ζουάνγκ
+Zulu: Ζουλού
 Browser-defined: =
 event: =
 journal: =
@@ -1762,20 +2073,11 @@ no such user: δεν υπάρχει τέτοιος χρήστης
 ########################################
 # Page: includes/user.php
 #
-#
-# << MISSING >>
-# Account disabled:
+Account disabled: Ο λογαριασμός απενεργοποιήθηκε
 
 ########################################
 # Page: includes/xcal.php
 #
-MO: ΔΕ
-TU: ΤΡ
-WE: ΤΕ
-TH: ΠΕ
-FR: ΠΑ
-SA: ΣΑ
-SU: ΚΥ
 Interval: Διάστημα
 Months: Μήνες
 Month Days: Μήνας Ημέρες
@@ -1816,49 +2118,41 @@ recipients_failed: =
 # Page: includes/classes/captcha/captcha.php
 #
 Enter Characters Seen in Graphic: =
-#
-# << MISSING >>
-# Enter the correct letters and numbers...:
-# English text: Enter the correct letters and numbers from the image into the text box. This small test serves as access restriction against malicious bots. Simply reload the page if this graphic is too hard to read
-#
+Enter the correct letters and numbers...: Εισαγάγετε τα σωστά γράμματα και αριθμούς από την εικόνα στο πλαίσιο κειμένου. Αυτό το μικρό τεστ χρησιμεύει ως περιορισμός πρόσβασης σε κακόβουλα bots. Απλώς φορτώστε ξανά τη σελίδα εάν αυτό το γραφικό είναι πολύ δύσκολο να διαβαστεί
 Challenge/Response: =
 
 ########################################
 # Page: includes/js/availability.php
 #
-Change the date and time of this entry?: =
+Change the date and time of this entry?: Αλλαγή της ημερομηνίας και της ώρας αυτής της καταχώρησης;
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: You have not entered a Brief Description
-#
-# << MISSING >>
-# time prior to work hours...:
-# English text: The time you have entered begins before your preferred work hours. Is this correct?
-#
+You have not entered a Brief Description: Δεν έχετε εισαγάγει μια σύντομη περιγραφή
+time prior to work hours...: ώρα πριν από τις ώρες εργασίας ...
 Invalid Event Date: =
-Please add a participant: =
+Please add a participant: Προσθέστε έναν συμμετέχοντα
 Invalid Date: =
-You have not entered a valid time of day: You have not entered a valid time of day
+You have not entered a valid time of day: Δεν έχετε εισαγάγει έγκυρη ώρα της ημέρας.
 
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID cannot be blank.: Το ID του ημερολογίου δεν μπορεί να είναι κενό.
-First and last names cannot both be blank.: Το όνομα και το επώνυμο δεν μπορεί να είναι κενά.
+Calendar ID cannot be blank.: Το αναγνωριστικό ημερολογίου δεν μπορεί να είναι κενό.
+First and last names cannot both be blank.: Το όνομα και το επώνυμο δεν μπορούν να είναι και τα δύο κενά.
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
 Invalid color: Μη έγκυρο χρώμα
-Color format should be RRGGBB.: Color format should be '#RRGGBB'.
+Color format should be RRGGBB.: Η μορφή χρώματος πρέπει να είναι #RRGGBB.
 URL cannot be blank.: =
 
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: =
+File type does not match Import Format: Ο τύπος αρχείου δεν ταιριάζει με τη μορφή εισαγωγής
 
 ########################################
 # Page: includes/js/pref.php
@@ -1873,27 +2167,19 @@ Invalid work hours.: =
 # Page: includes/js/translate.js.php
 #
 Server URL must end with /.: Server URL must end with '/'.
-Invalid color for table grid.: =
-Invalid color for event popup background.: =
-Invalid color for event popup text.: =
-#
-# << MISSING >>
-# Invalid color for table header text.:
-Invalid color for table header background.: =
+Invalid color for table grid.: Μη έγκυρο χρώμα για πλέγμα πίνακα.
+Invalid color for event popup background.: Μη έγκυρο χρώμα για το αναδυόμενο φόντο του συμβάντος.
+Invalid color for event popup text.: Μη έγκυρο χρώμα για το αναδυόμενο κείμενο συμβάντος.
+Invalid color for table header text.: Μη έγκυρο χρώμα για κείμενο κεφαλίδας πίνακα.
+Invalid color for table header background.: Μη έγκυρο χρώμα για φόντο κεφαλίδας πίνακα.
 Server URL is required.: =
-#
-# << MISSING >>
-# Invalid Color:
+Invalid Color: Μη έγκυρο χρώμα
 Database Name: =
-Full Path (no backslashes): =
+Full Path (no backslashes): Πλήρης διαδρομή (χωρίς ανάστροφη κάθετο)
 The password contains illegal characters.: =
-Error you must specify a Single-User Login: Error you must specify a\nSingle-User Login
-#
-# << MISSING >>
-# Could not find XXX.:
-#
-# << MISSING >>
-# Could not find XXX in DOM.:
+Error you must specify a Single-User Login: Σφάλμα που πρέπει να καθορίσετε μια σύνδεση με έναν χρήστη
+Could not find XXX.: Δεν ήταν δυνατή η εύρεση του XXX.
+Could not find XXX in DOM.: Δεν ήταν δυνατή η εύρεση του XXX στο DOM.
 
 ########################################
 # Page: includes/menu/index.php
@@ -1924,178 +2210,74 @@ Single-User: =
 Test Settings: =
 Timezone Conversion Successful: =
 WebCalendar Installation Wizard Step XXX: =
-#
-# << MISSING >>
-# Password Accepted:
+Password Accepted: Αποδεκτός κωδικός πρόσβασης
 Successful Login: =
-#
-# << MISSING >>
-# Password Incorrect:
+Password Incorrect: Λάθος κωδικός
 Invalid Login: =
-#
-# << MISSING >>
-# Display Errors:
-#
-# << MISSING >>
-# File Uploads:
-#
-# << MISSING >>
-# Allow URL fopen:
-# English text: Allow URL fopen (required only if Remote Calendars are used)
-#
-#
-# << MISSING >>
-# Safe Mode:
-#
-# << MISSING >>
-# Safe Mode Allowed Vars:
-# English text: Safe Mode Allowed Vars (TZ required only if Safe Mode is On)
-#
-#
-# << MISSING >>
-# GD:
-# English text: GD (needed for Gradient Image Backgrounds)
-#
-#
-# << MISSING >>
-# Passwords do not match!:
+Display Errors: Σφάλματα οθόνης
+File Uploads: Μεταφορτώσεις αρχείων
+Allow URL fopen: Να επιτρέπεται η δημιουργία διεύθυνσης URL (απαιτείται μόνο εάν χρησιμοποιούνται απομακρυσμένα ημερολόγια)
+Safe Mode: Λειτουργία ασφαλείας
+Safe Mode Allowed Vars: Επιτρεπόμενα Vars ασφαλούς λειτουργίας (απαιτείται TZ μόνο εάν η ασφαλής λειτουργία είναι ενεργοποιημένη)
+GD: GD (απαιτείται για φόντο με κλίση εικόνας)
+Passwords do not match!: Οι κωδικοί πρόσβασης δεν ταιριάζουν!
 Unable to write password to settings.php file: Unable to write password to settings.php file
-#
-# << MISSING >>
-# Password Updated:
+Password Updated: Ο κωδικός πρόσβασης ενημερώθηκε
 Password has been set: Password has been set
-#
-# << MISSING >>
-# Connection Successful...:
-# English text: <b>Connection Successful</b> Please go to next page to continue installation.
-#
-#
-# << MISSING >>
-# Correct your entries or click the Create New...:
-# English text: Correct your entries or click the <b>Create New</b> button to continue installation.
-#
-#
-# << MISSING >>
-# Correct your entries and try again.:
-#
-# << MISSING >>
-# XXX does not exist:
-#
-# << MISSING >>
-# XXX is not writable:
+Connection Successful...: Επιτυχής σύνδεση  Μεταβείτε στην επόμενη σελίδα για να συνεχίσετε την εγκατάσταση.
+Correct your entries or click the Create New...: Διορθώστε τις καταχωρίσεις σας ή κάντε κλικ στο κουμπί  Δημιουργία νέου  για να συνεχίσετε την εγκατάσταση.
+Correct your entries and try again.: Διορθώστε τις καταχωρίσεις σας και δοκιμάστε ξανά.
+XXX does not exist: Το XXX δεν υπάρχει
+XXX is not writable: Το XXX δεν είναι εγγράψιμο
 Error Converting Timezone: =
 Error Unable to write to file XXX.: =
-#
-# << MISSING >>
-# Please change the file permissions of this file.:
+Please change the file permissions of this file.: Αλλάξτε τα δικαιώματα αρχείου αυτού του αρχείου.
 Please change includes dir permission: Please change the file permissions of your includes directory to allow writing by other users
-#
-# << MISSING >>
-# Your settings have been saved.:
-#
-# << MISSING >>
-# OFF:
-#
-# << MISSING >>
-# ON:
-#
-# << MISSING >>
-# WebCalendar Setup Wizard:
+Your settings have been saved.: Οι ρυθμίσεις σας έχουν αποθηκευτεί.
+OFF: ΜΑΚΡΙΑ ΑΠΟ
+ON: ΕΠΙ
+WebCalendar Setup Wizard: Οδηγός εγκατάστασης WebCalendar
 This installation wizard will guide you...: This installation wizard will guide you through setting up a basic WebCalendar installation. For help and troubleshooting see
-#
-# << MISSING >>
-# System Administrators Guide:
-# English text: System Administrator's Guide
-#
-#
-# << MISSING >>
-# Frequently Asked Questions:
-#
-# << MISSING >>
-# FAQ:
-#
-# << MISSING >>
-# Troubleshooting:
-#
-# << MISSING >>
-# Getting Help:
-#
-# << MISSING >>
-# Upgrading Guide:
-#
-# << MISSING >>
-# User Supported Wiki:
+System Administrators Guide: Οδηγός διαχειριστή συστήματος
+Frequently Asked Questions: Συχνές Ερωτήσεις
+FAQ: Συχνές ερωτήσεις
+Troubleshooting: Αντιμετώπιση προβλημάτων
+Getting Help: Λαμβάνω βοήθεια
+Upgrading Guide: Οδηγός αναβάθμισης
+User Supported Wiki: Υποστηριζόμενο από το χρήστη Wiki
 PHP Version Check: =
-#
-# << MISSING >>
-# Check to see if PHP 4.1.0 or greater is installed.:
+Check to see if PHP 7.1.0 or greater is installed.: Ελέγξτε αν είναι εγκατεστημένη η PHP 7.1.0 ή μεγαλύτερη.
 PHP version: =
 PHP Settings: =
 Detailed PHP Info: =
-#
-# << MISSING >>
-# settings.php Status:
-# English text: "settings.php" Status
-#
+settings.php Status: Κατάσταση "settings.php"
 Session Check: =
-#
-# << MISSING >>
-# To test the proper operation of sessions...:
-# English text: To test the proper operation of sessions, reload this page. You should see the session counter increment each time.
-#
+To test the proper operation of sessions...: Για να ελέγξετε τη σωστή λειτουργία των περιόδων σύνδεσης, φορτώστε ξανά αυτήν τη σελίδα. Θα πρέπει να βλέπετε την αύξηση του μετρητή συνεδρίας κάθε φορά.
 SESSION COUNTER: =
-The file permissions of settings.php are set...: The file permissions of <b>settings.php</b> are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
-The file permissions of the includes directory are set...: The file permissions of the <b>includes</b> directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
-#
-# << MISSING >>
-# Your settings.php file appears to be valid.:
-# English text: Your <b>settings.php</b> file appears to be valid.
-#
+The file permissions of settings.php are set...: The file permissions of settings.php are set so that the installer does not have permission to modify it. Please change the file permissions of the following file to continue.
+The file permissions of the includes directory are set...: The file permissions of the includes directory are set so that the installer does not have permission to create a new file. Please change the permissions of the following directory to continue.
+Your settings.php file appears to be valid.: Το αρχείο "settings.php" φαίνεται να είναι έγκυρο.
 Configuration Wizard Password: =
 Create Settings File Password: =
 db setup directions...: =
 Database Status: =
 Supported databases for your PHP installation: =
-#
-# << MISSING >>
-# Your current database settings are able to access the database.:
+Your current database settings are able to access the database.: Οι τρέχουσες ρυθμίσεις βάσης δεδομένων μπορούν να έχουν πρόσβαση στη βάση δεδομένων.
 Please Test Settings: =
-Your current database settings are not able...: Your current database settings are <b>not</b> able to access the database or have not yet been tested
+Your current database settings are not able...: Your current database settings are not able to access the database or have not yet been tested
 Database Settings: =
 Database Type: Είδος βάσης δεδομένων
 Server: =
 Connection Persistence: =
-#
-# << MISSING >>
-# All your database tables appear to be up...:
-# English text: All your database tables appear to be up to date. You may proceed to the next page and complete your WebCalendar setup.
-#
-#
-# << MISSING >>
-# This appears to be a new installation...:
-# English text: This appears to be a new installation. If this is not correct, please go back to the previous page and correct your settings.
-#
-#
-# << MISSING >>
-# This appears to be an upgrade...:
-# English text: This appears to be an upgrade from version&nbsp;XXX&nbsp;to&nbsp;YYY.
-#
-#
-# << MISSING >>
-# The database requires some data input...:
-# English text: The database requires some data input Click <b>Update Database</b> to complete the upgrade.
-#
-#
-# << MISSING >>
-# In this section we will perform...:
-# English text: In this section we will perform the changes to bring your database up to the required level. If you are using a fully supported database, this step will be performed automatically for you. If not, the required SQL can be displayed and you should be able to cut and paste it into your database server query window.
-#
-#
-# << MISSING >>
-# No database actions are required.:
+All your database tables appear to be up...: Όλοι οι πίνακες βάσης δεδομένων σας φαίνεται να είναι ενημερωμένοι. Μπορείτε να προχωρήσετε στην επόμενη σελίδα και να ολοκληρώσετε τη ρύθμιση του ημερολογίου Web.
+This appears to be a new installation...: Αυτό φαίνεται να είναι μια νέα εγκατάσταση. Εάν αυτό δεν είναι σωστό, επιστρέψτε στην προηγούμενη σελίδα και διορθώστε τις ρυθμίσεις σας.
+This appears to be an upgrade...: Αυτό φαίνεται να αποτελεί αναβάθμιση από την έκδοση&nbsp;XXX&nbsp;σε&nbsp;ΕΕΕΕ.
+The database requires some data input...: Η βάση δεδομένων απαιτεί κάποια εισαγωγή δεδομένων Κάντε κλικ στο Ενημέρωση βάσης δεδομένων για να ολοκληρώσετε την αναβάθμιση.
+In this section we will perform...: Σε αυτήν την ενότητα θα πραγματοποιήσουμε τις αλλαγές για να φέρουμε τη βάση δεδομένων σας στο απαιτούμενο επίπεδο. Εάν χρησιμοποιείτε μια πλήρως υποστηριζόμενη βάση δεδομένων, αυτό το βήμα θα εκτελεστεί αυτόματα για εσάς. Εάν όχι, μπορεί να εμφανιστεί το απαιτούμενο SQL και θα πρέπει να μπορείτε να το κόψετε και να το επικολλήσετε στο παράθυρο ερωτήματος του διακομιστή βάσης δεδομένων.
+No database actions are required.: Δεν απαιτούνται ενέργειες βάσης δεδομένων.
 The following database actions are required: =
 ODBC Underlying Database: ODBC Underlying Database
-Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the SQL supplied. Please click <b>Display SQL</b> to continue. Cut &amp; Paste into your database query window.
+Automatic installation not supported: Automatic installation has not been fully implemented for your database type. You will have to manually create the required tables using the SQL supplied. Please click Display SQL to continue. Cut &amp; Paste into your database query window.
 This may take several minutes to complete: This may take several minutes to complete
 Install Database: =
 Update Database: =
@@ -2103,19 +2285,13 @@ Display Required SQL: =
 Return to previous page after processing SQL.: After manually processing this sql, you will need to return to the previous page and retest your database so that the script can detect the changes.
 This is the final step in setting up your WebCalendar Installation.: =
 Timezone Conversion: =
-#
-# << MISSING >>
-# It appears that you have NOT converted...:
-# English text: It appears that you have NOT converted your existing WebCalendar event data to GMT. If you have, you may ignore this notice and not proceed with the conversion. If this is a new installation, you may also ignore this notice.
-#
+It appears that you have NOT converted...: Φαίνεται ότι ΔΕΝ έχετε μετατρέψει τα υπάρχοντα δεδομένα συμβάντος WebCalendar σε GMT. Εάν έχετε, μπορείτε να αγνοήσετε αυτήν την ειδοποίηση και να μην προχωρήσετε στη μετατροπή. Εάν πρόκειται για νέα εγκατάσταση, μπορείτε επίσης να αγνοήσετε αυτήν την ειδοποίηση.
 Convert Data to GMT: =
 Application Settings: =
 HTTP-based authentication was not detected...: =
 HTTP-based authentication was detected...: =
 Create Default Admin Account: =
-#
-# << MISSING >>
-# (Admin Account Not Found):
+(Admin Account Not Found): (Ο λογαριασμός διαχειριστή δεν βρέθηκε)
 User Authentication: =
 Web-based via WebCalendar (default): =
 Web Server (not detected): Διακομιστής (δεν εντοπίστηκε)
@@ -2173,15 +2349,9 @@ Not authorized (not admin).: =
 ########################################
 # Page: ws/get_events.php
 #
-#
-# << MISSING >>
-# Checking for events for XXX from date YYY to date ZZZ.:
+Checking for events for XXX from date YYY to date ZZZ.: Έλεγχος για εκδηλώσεις για το XXX από την ημερομηνία YYY έως την ημερομηνία ZZZ.
 Found XXX events in time range.: =
-#
-# << MISSING >>
-# Event id=XXX YYY at ZZZ on AAA.:
-# English text: Event id=XXX "YYY" at ZZZ on AAA.
-#
+Event id=XXX YYY at ZZZ on AAA.: Αναγνωριστικό συμβάντος = XXX "YYY" στο ZZZ στο AAA.
 
 ########################################
 # Page: ws/get_reminders.php
@@ -2193,21 +2363,13 @@ Reminder set for event.: =
 Mins Before XXX.: =
 Event time is XXX.: =
 Remind time is XXX.: =
-#
-# << MISSING >>
-# Reminders for user XXX, login YYY.:
-# English text: Reminders for user "XXX", login "YYY".
-#
+Reminders for user XXX, login YYY.: Υπενθυμίσεις για τον χρήστη "XXX", συνδεθείτε "YYY".
 
 ########################################
 # Page: ws/get_unapproved.php
 #
 Getting unapproved for user XXX.: =
-#
-# << MISSING >>
-# Event id=XXX YYY already sent.:
-# English text: Event id=XXX "YYY" already sent.
-#
+Event id=XXX YYY already sent.: Το αναγνωριστικό συμβάντος = XXX "YYY" έχει ήδη σταλεί.
 
 ########################################
 # Page: ws/login.php
@@ -2227,5 +2389,5 @@ Unknown error saving user: =
 # Page: ws/ws.php
 #
 No participants found for event id XXX.: =
-Db error Could not find event id XXX.: =
-Error Could not find event id XXX in database.: =
+Db error Could not find event id XXX.: Σφάλμα db: Δεν ήταν δυνατή η εύρεση του αναγνωριστικού συμβάντος XXX.
+Error Could not find event id XXX in database.: Σφάλμα: Δεν ήταν δυνατή η εύρεση του αναγνωριστικού συμβάντος XXX στη βάση δεδομένων.

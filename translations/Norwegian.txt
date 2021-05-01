@@ -1,14 +1,48 @@
-# See translations/English-US.txt for instructions.
+# Norwegian no
 #
-# Original translation: P�l L�berg/Magni Ons�ien <initio@initio.no>
+# Formatet består av en valgfri overskrift:
+#
+# Oversatt av: navnet ditt og e-postadressen din
+# Siste oppdatering: datoen for oversettelsen
+# (Inkludert de ledende "#" og eventuelle kommentarer fra tidligere oversettere.
+# Den FØRSTE tomme linjen avslutter disse overskriftskommentarene.)
+#
+# Etterfulgt av så mange som nødvendig:
+#
+# Engelsk setning: oversettelse
+# (En til en linje. UTEN den ledende "#".
+# Den "engelske setningen:", inkludert kolon ":", er levert av
+# WebCalendar-utviklere. Din del er "oversettelsen".)
+#
+# Verktøykatalogen inneholder to perl-skript som hjelper deg:
+# - check_translation.pl
+# indikerer om all tekst er oversatt.
+# - update_translation.pl
+# vil analysere programfilene for å finne alle translate ('frase') og
+# verktøytips ('frase'). Det vil ordne setningene i henhold til siden
+# (fil) som inneholder den første forekomsten. Eventuelt kan den merke
+# setninger som ennå ikke er oversatt ved å sette
+#  << MISSING >>
+# på linjen over uttrykket. Og hvis uttrykket er en forkortelse,
+# den inkluderer den fulle engelske teksten på linjen under uttrykket.
+#
+# Merk: Jeg prøver å kutte ned på den totale filstørrelsen. Hvis "oversettelsen"
+# word / phrase er identisk på ditt språk og engelsk, bruk bare et "=" tegn.
+#
+# Merk: Du vil legge merke til oppføringen for "May_" under. Det er en grunn til dette.
+#  Oversette "May_" til hele månedsnavnet og "May" til,
+# vanligvis tre bokstaver, måned forkortelse (som "oktober" for "oktober").
+#
+# Original translation: Pål Løberg/Magni Onsøien <initio@initio.no>
 #
 # Updated since 2002 by Hans Fredrik Nordhaug <hansfn@users.sourceforge.net>
 # Last update: 09-24-20085
 #
-# Translations for page: includes/classes/WebCalMailer.class
-# loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
+# Jeg brukte Google translate for dette.
+# Det bør være tilstrekkelig til en morsmål kan bekrefte det.
+# Bruce Bannon <wcDev@bbannon.net>
 #
-# Translation last updated on 10-14-2008
+# Translation last updated on 05-01-2021
 
 
 ################################################################################
@@ -48,8 +82,8 @@ __month__ __yyyy__: =
 # Page: about.php
 #
 Title: =
-version: versjon
 version XXX: versjon XXX
+WebCalendar is a PHP application used...: WebCalendar er et PHP-program som brukes til å vedlikeholde en kalender for en enkelt bruker eller en internett / intranettgruppe av brukere. Den kan også konfigureres som en hendelseskalender.
 Credits: Bidragsytere
 About: Om
 OK: =
@@ -57,8 +91,9 @@ OK: =
 ########################################
 # Page: access.php
 #
-Database error: Feil i databasen
-Go: G� til
+Database error XXX.: Databasefeil: XXX.
+DEFAULT CONFIGURATION: STANDARDKONFIGURASJON
+Go: Gå til
 Save: Lagre
 Undo: Angre
 Public Access: Offentlig tilgang
@@ -80,7 +115,7 @@ Can Email: Kan sende e-post
 Can See Time Only: Kan kun se tiden
 Assistant: Assistent
 Select All: Velg alle
-Clear All: T�m alle
+Clear All: Tøm alle
 Public: Offentlig
 Confidential: Privat
 Private: Privat
@@ -94,19 +129,22 @@ Previous: Forrige
 ########################################
 # Page: add_entry.php
 #
+Event XXX is already on your calendar.: Arrangement XXX er allerede i kalenderen din.
 Invalid entry id XXX.: Ugyldig ID XXX for aktivitet
+a XXX event may not be added to your calendar: Dette er en XXX-begivenhet og kan ikke legges til i kalenderen din.
 confidential: privat
 private: privat
-Error adding event: Feil ved innlegging av avtale
+Error adding event XXX.: Feil ved legging av hendelse: XXX.
 
 ########################################
 # Page: admin.php
 #
+Invalid setting name XXX.: Ugyldig innstillingsnavn "XXX".
 Select: Velg
 Day: Dag
 Week: Uke
-Month: M�ned
-Year: �r
+Month: Måned
+Year: År
 Bottom: Bunn
 Top: Topp
 Anyone: Hvem som helst
@@ -125,46 +163,61 @@ Table grid color: Farge for tabellgridet
 Table header background: Farge for tabellheaderen
 Table header text: Tekst i tabellheaderen
 Table cell background: Tabellcellebakgrunn
-Table cell background for current day: Tabellbakgrunn for innev�rende dag
+Table cell background for current day: Tabellbakgrunn for inneværende dag
 Table cell background for days with events: Tabellcellebakgrunn for dager med aktiviteter
 Table cell background for weekends: Tabellcellebakgrunn for helger
-Table cell background for other month: Tabellcellebakgrunn for andre m�neder
+Table cell background for other month: Tabellcellebakgrunn for andre måneder
 Week number color: Ukenummerfarge
 Event popup background: Bakgrunn for aktivitetspopup
 Event popup text: Tekst for aktivitetspopup
 System Settings: Systeminnstillinger
 Help: Hjelp
 System options: Systemvalg
-app-name-help: Setter navnet p� programmet. Dette vil vises i nettlesertittelen for alle sider.
+app-name-help: Setter navnet på programmet. Dette vil vises i nettlesertittelen for alle sider.
 Application Name: Programnavn
-server-url-help: Setter base-URLen for programmet. Denne vil bli inkludert ved utsending av p�minnelser p� e-post.
+Translated Name (XXX): Oversatt navn (XXX)
+server-url-help: Setter base-URLen for programmet. Denne vil bli inkludert ved utsending av påminnelser på e-post.
 Server URL: URL for serveren
-language-help: Angir hvilket spr�k som skal brukes.
-Language: Spr�k
-Your browser default language is: Standardspr�k i nettleseren din er
+home-url-help: Spesifiserer hjem-URL for applikasjonen. Dette kan være absolutt eller relativt
+Home URL: Hjem-URL
+language-help: Angir hvilket språk som skal brukes.
+Language: Språk
+Your browser default language is XXX.: Nettlesers standardspråk er "XXX".
+Allow user to use themes: La brukeren bruke temaer
+themes-help: Tillater masseoppdatering av konfigurasjonsinnstillinger. Små etiketter er bare brukerpreferanser.
 Themes: Tema
 AVAILABLE THEMES: TILGJENGELIGE TEMA
 None: Aldri
-Preview: Forh�ndsvisning
-custom-script-help: Tillat innsetting av egendefinert skript eller stilsett i HTML "head"-seksjonen p� hver side.
+Preview: Forhåndsvisning
+Site customization: Tilpasning av nettstedet
+custom-script-help: Tillat innsetting av egendefinert skript eller stilsett i HTML "head"-seksjonen på hver side.
 Custom script/stylesheet: Egendefinert skript/stilsett
-custom-header-help: Tillatt innsetting av egendefinert HTML-kode p� toppen av hver side.
+custom-header-help: Tillatt innsetting av egendefinert HTML-kode på toppen av hver side.
 Custom header: Egendefinert hode
-custom-trailer-help: Tillatt innsetting av egendefinert HTML-kode p� slutten av hver side.
+custom-trailer-help: Tillatt innsetting av egendefinert HTML-kode på slutten av hver side.
 Custom trailer: Egendefinert fot
+enable-external-header-help: Lar den tilpassede traileren lastes fra en ekstern fil
+Allow external file for header/script/trailer: Tillat ekstern fil for topptekst / skript / trailer
+Allow user to override header/trailer: La brukeren overstyre topptekst / tilhenger
 Date and Time: Dato og tid
-tz-help: Angir hvor mange timer servertid m� justeres i forhold til lokaltid.
+server-tz-help: Spesifiserer hvor mange timer du skal justere tiden fra UTC til servertid.
 Server Timezone Selection: Tidssonevalg for tjener
+tz-help: Angir hvor mange timer servertid må justeres i forhold til lokaltid.
+Default Client Timezone Selection: Standard klients tidssonevalg
+display-general-use-gmt-help: Hvis aktivert, vises vanlige datoer / klokkeslett som GMT
+Display Common Use Date/Times as GMT: Vis vanlig bruksdato / klokkeslett som GMT
 date-format-help: Angir datoformatet.
 Date format: Datoformat
-display-week-starts-on: Vis om uka starter mandag eller s�ndag.
-Week starts on: Uken starter p�
-Weekend starts on: Helga starter p�
+Small Task Date: Liten oppgavedato
+display-week-starts-on: Vis om uka starter mandag eller søndag.
+Week starts on: Uken starter på
+display-weekend-starts-on: Stiller inn ukedagen for at helgene skal starte
+Weekend starts on: Helga starter på
 time-format-help: Skal tiden vises i 12 eller 24-timer.
 Time format: Tidsformat
 12 hour: 12 timer
 24 hour: 24 timer
-timed-evt-len-help: Angir input-metode for avgj�ring av lengde for en tidsbegrenset aktivitet
+timed-evt-len-help: Angir input-metode for avgjøring av lengde for en tidsbegrenset aktivitet
 Specify timed event length by: Oppgi tidsbegrensede aktiviteters lengde ved
 Duration: Varighet
 End Time: Avslutningstidspunkt
@@ -173,30 +226,40 @@ Work hours: Arbeidstimer
 From: Fra
 to: til
 Appearance: Utseende
-preferred-view-help: Angir standardvisning (dag, uke, m�ned eller �r).
+preferred-view-help: Angir standardvisning (dag, uke, måned eller år).
 Preferred view: Foretrukket visning
 Allow top menu: Tillat toppmeny
 Date Selectors position: Posisjon for datovelger
+menu-themes-help: Angir farger og stil på toppmenyen
 Menu theme: Menytema
 fonts-help: Angir en liste med systemskrifter som skal brukes (som "Arial, Helvetica")
 Fonts: Skrifter
-Display small months: Vis sm� m�neder
-display-weekends-help: Inkluder helg n�r uker skal vises
+display-sm_month-help: Hvis det er aktivert, vises små måneder i månedvisninger
+Display small months: Vis små måneder
+display-weekends-help: Inkluder helg når uker skal vises
 Display weekends: Vis helger
+display-long-daynames-help: Hvis aktivert, vises navn på lange dager
 Display long day names: Vis lange navn for dagene
-Display all days in month view: Vis alle dagene i m�nedvisning
-display-week-number-help: Angir om ukenumre skal v�re p�klistret ukevisningene.
+display-alldays-help: Vis forrige og neste månedsdag i månedsvisninger, og fyll alle celler.
+Display all days in month view: Vis alle dagene i månedvisning
+display-week-number-help: Angir om ukenumre skal være påklistret ukevisningene.
 Display week number: Vis ukenummer
 display-desc-print-day-help: Inkluder aktivitetsbeskrivelser i utskriftsvennlig versjon av dagvisning.
 Display description in printer day view: Vis aktivitetsbeskrivelser i utskriftsvennlig dagvisning
-yearly-shows-events-help: Vis dager med aktiviteter i fetskrift for �rsvisning.
-Display days with events in bold in month and year views: Vis dager med aktiviteter i fetskrift for m�neds- og �rsvisning.
+yearly-shows-events-help: Vis dager med aktiviteter i fetskrift for årsvisning.
+Display days with events in bold in month and year views: Vis dager med aktiviteter i fetskrift for måneds- og årsvisning.
+display-minutes-help: Hvis aktivert, vil alltid minutter som slutter med: 00 vises
+Display 00 minutes always: Vis alltid 00 minutter
+display-end-times-help: Vis sluttider for begivenhet hvis tidsbestemt hendelse
+Display end times on calendars: Vis sluttider på kalendere
 allow-view-add-help: Et '+' ikon vil bli inkludert i oversikter, slik at brukere fort kan legge til aktiviteter i andre brukere sine kalendere.
-Include add event link in views: Inkluder lenke for � legge til aktiviteter i oversikter
+Include add event link in views: Inkluder lenke for å legge til aktiviteter i oversikter
+lunar-help: Hvis det er aktivert, vil det vises små ikoner som representerer månefasene hver måned
+Display Lunar Phases in month view: Vis månefaser i månedsvisning
 Restrictions: Begrensninger
 allow-view-other-help: Setter om en bruker kan se en annen bruker sin kalender.
 Allow viewing other users calendars: Tillat visning av andre brukere sine kalendere
-require-approvals-help: Hvis aktivert, s� m� en bruker godkjenne en aktivitet f�r den vises i deres kalender (hvis ikke "Vis ikke-godkjent" er aktivert).
+require-approvals-help: Hvis aktivert, så må en bruker godkjenne en aktivitet før den vises i deres kalender (hvis ikke "Vis ikke-godkjent" er aktivert).
 Require event approvals: Krev godkjenning av aktiviteter
 display-unapproved-help: Angir om din kalender skal vise ikke-godkendte aktiviteter.
 Display unapproved: Vis ikke-godkjente.
@@ -204,92 +267,168 @@ conflict-check-help: Sjekk for konflikter mellom aktiviteter, dvs to aktiviteter
 Check for event conflicts: Sjekk for konflikter mellom aktiviteter
 Yes: Ja
 No: Nei
-conflict-months-help: Hvis sjekking for konflikter er aktivert, s� vil denne sette hvor mange m�neder frem i tid vi skal sjekke for konflikter. Hvis du oppdager at det tar lang tid � legge til en aktivitet, s� b�r du redusere dette tallet.
-Conflict checking months: Antall m�neder med sjekking for konflikter
-conflict-check-override-help: Tillater brukere � overstyre aktivitetskonflikter og planlegge to eller flere aktiviteter p� samme tid.
-Allow users to override conflicts: Tillat brukere � overstyre aktivitetskonflikter
-limit-appts-help: Tillater systemadministratoren � sette en �vre grense for antall aktiviteter en enkelt bruker ha p� hver enkelt dag.
+conflict-months-help: Hvis sjekking for konflikter er aktivert, så vil denne sette hvor mange måneder frem i tid vi skal sjekke for konflikter. Hvis du oppdager at det tar lang tid å legge til en aktivitet, så bør du redusere dette tallet.
+Conflict checking months: Antall måneder med sjekking for konflikter
+conflict-check-override-help: Tillater brukere å overstyre aktivitetskonflikter og planlegge to eller flere aktiviteter på samme tid.
+Allow users to override conflicts: Tillat brukere å overstyre aktivitetskonflikter
+limit-appts-help: Tillater systemadministratoren å sette en øvre grense for antall aktiviteter en enkelt bruker ha på hver enkelt dag.
 Limit number of timed events per day: Begrens antall aktiviteter med tidsangivelse per dag
-limit-appts-number-help: Angir maskimalt antall aktiviteter med tidsangivelse en bruker kan ha p� en enkelt dag.
+limit-appts-number-help: Angir maskimalt antall aktiviteter med tidsangivelse en bruker kan ha på en enkelt dag.
 Maximum timed events per day: Maksimalt antall aktiviteter med tidsangivelse per dag
-disable-priority-field-help: Valget "Ja" vil fjerne prioritetsfeltet fra sider med aktivitetsinformasjon, og dermed gj�re det enklere for nybegynnere.
+crossday-help: Hvis aktivert, vil hendelser som spenner over dager vises på separate dager
+Disable Cross-Day Events: Deaktiver hendelser på tvers
+disable-location-field-help: Hvis du velger "Ja", fjernes "Plassering" -feltet fra sidene for hendelsesinformasjon
+Disable Location field: Deaktiver plasseringsfeltet
+disable-url-field-help: Hvis du velger "Ja", fjernes "URL" -feltet fra hendelsesinformasjonssidene
+Disable URL field: Deaktiver URL-felt
+disable-priority-field-help: Valget "Ja" vil fjerne prioritetsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
 Disable Priority field: Deaktiver prioritetsfeltet
-disable-access-field-help: Valget "Ja" vil fjerne tilgangsfeltet fra sider med aktivitetsinformasjon, og dermed gj�re det enklere for nybegynnere.
+disable-access-field-help: Valget "Ja" vil fjerne tilgangsfeltet fra sider med aktivitetsinformasjon, og dermed gjøre det enklere for nybegynnere.
 Disable Access field: Deaktiver tilgangsfeltet
-disable-participants-field-help: Valget "Ja" vil fjerne deltagerfeltet fra sider med aktivitetsinformasjon, og dermed hindre brukere fra � legge til andre bruker p� deres aktiviteter. Hvis du aktiverer denne opsjonen, vil du kanskje ogs� deaktivere feltet for "Tillat visning av andre brukere sine kalendere".
+disable-participants-field-help: Valget "Ja" vil fjerne deltagerfeltet fra sider med aktivitetsinformasjon, og dermed hindre brukere fra å legge til andre bruker på deres aktiviteter. Hvis du aktiverer denne opsjonen, vil du kanskje også deaktivere feltet for "Tillat visning av andre brukere sine kalendere".
 Disable Participants field: Deaktiver deltagerfeltet
-disable-repeating-field-help: Valget "Ja" vil fjerne repetisjonsfeltet n�r man legger til en aktivitet, og dermed gj�re det enklere for nybegynnere.
+disable-repeating-field-help: Valget "Ja" vil fjerne repetisjonsfeltet når man legger til en aktivitet, og dermed gjøre det enklere for nybegynnere.
 Disable Repeating field: Deaktiver repetisjonsfeltet
-allow-html-description-help: Setter om en bruker kan skrive HTML-kode i aktivitetsbeskrivelsene. Advarsel: Hvis tillat, kan brukere referere til bilder p� andre nettsteder.
+allow-html-description-help: Setter om en bruker kan skrive HTML-kode i aktivitetsbeskrivelsene. Advarsel: Hvis tillat, kan brukere referere til bilder på andre nettsteder.
 Allow HTML in Description: Tillat HTML-kode i beskrivelser
 Popups: Sprettoppvinduer
-disable-popups-help: Sl� av sprettoppvinduer fra kalendervisning
-Disable Pop-Ups: Sl� av sprettoppvinduer
+disable-popups-help: Slå av sprettoppvinduer fra kalendervisning
+Disable Pop-Ups: Slå av sprettoppvinduer
 popup-includes-siteextras-help: Hvis aktivert, vil egendefinert felter i site_extras.php bli vist i aktivitetssprettopp.
 Display Site Extras in popup: Vis nettstedstillegg i sprettoppvindu
 popup-includes-participants-help: Hvis aktivert, vises deltagere i sprettoppvinduene for aktiviteter
 Display Participants in popup: Vis deltagere i sprettoppvindu
 Miscellaneous: Diverse
-remember-last-login-help: Hvis aktivert, vil brukerens navn bli fylt ut p� innloggingssiden og preferansene lastet inn.
+remember-last-login-help: Hvis aktivert, vil brukerens navn bli fylt ut på innloggingssiden og preferansene lastet inn.
 Remember last login: Husk siste innlogging
+summary_length-help: Maksimal lengde på kort beskrivelse i kalendervisninger
+Brief Description Length: Kort beskrivelse Lengde
+user_sort-help: Bestemmer sorteringsrekkefølge for bruker, Nonuser-lister
+User Sort Order: Sorteringsrekkefølge for bruker
+Lastname, Firstname: Etternavn Fornavn
+Firstname, Lastname: Fornavn Etternavn
 allow-public-access-help: Hvis aktivert, vil kalender kunne bli brukt som en kun lesbar offentlig kalender som ikke krever innlogging.
 Allow public access: Tillatt offentlig tilgang
 public-access-default-visible: Aktitiviteter i den offentlig kalenderen blir vist automatisk i alle brukere sine kalendere
 Public access visible by default: Offentlig tilgang synlig som standard
-public-access-default-selected: N�r en ny aktivitet blir lagt til, vil som standard den offentlig brukeren bli valgt som deltager
+public-access-default-selected: Når en ny aktivitet blir lagt til, vil som standard den offentlig brukeren bli valgt som deltager
 Public access is default participant: Offentlig tilgang er standard deltager
-public-access-view-others-help: Setter om en bruker kan se kalenderen til en annen bruker n�r han bruker offentlig tilgang.
+public-access-view-others-help: Setter om en bruker kan se kalenderen til en annen bruker når han bruker offentlig tilgang.
 Public access can view other users: Offentlig tilgang kan se andre brukere
-public-access-can-add-help: Hvis aktivert, kan brukere med offentlig tilgang legge til aktivieter, men de vil ikke vises i kalenderen f�r administrator har godkjent aktiviteten.
+public-access-can-add-help: Hvis aktivert, kan brukere med offentlig tilgang legge til aktivieter, men de vil ikke vises i kalenderen før administrator har godkjent aktiviteten.
 Public access can add events: Offentlig tilgang kan legge til aktiviteter
-public-access-add-requires-approval-help: Angir om aktiviteter lagt til ved hjelp av konto for offentlig tilgang krever godkjenning f�r de blir vist.
+public-access-add-requires-approval-help: Angir om aktiviteter lagt til ved hjelp av konto for offentlig tilgang krever godkjenning før de blir vist.
 Public access new events require approval: Nye aktitiviteter ved offentlig tilgang krever godkjenning
 public-access-sees-participants-help: Hvis aktivert, kan brukere med offentlig tilgang se aktivitetsdeltagerne (ved detaljert visning).
 Public access can view participants: Offentlig tilgang kan se deltagere
-groups-enabled-help: Aktiverer gruppest�tte, tillater brukerne � velge brukere ved gruppe
+public-access-override-help: Tillater at hendelsesnavn og beskrivelser blir skjult i den offentlige kalenderen
+Override event name/description for public access: Overstyr hendelsesnavn / beskrivelse for offentlig tilgang
+public-access-override-text-help: Teksten som skal vises hvis alternativet ovenfor er aktivert. Hvis 'Ikke tilgjengelig', blir det oversatt.
+Text to display to public access: Tekst som skal vises for offentlig tilgang
+public-access-captcha-help: Hvis dette er aktivert, krever nye hendelser som er lagt til av Public, at CAPTCHA-validering sendes.
+Require CAPTCHA validation for public access new events: Krev CAPTCHA-validering for offentlig tilgang til nye hendelser
+uac-enabled-help: Aktiverer tilgangskontroll på brukernivå
+User Access Control enabled: Brukertilgangskontroll aktivert
+groups-enabled-help: Aktiverer gruppestøtte, tillater brukerne å velge brukere ved gruppe
 Groups enabled: Grupper aktivert
-user-sees-his-group-help: Hvis aktivert, s� vil brukerne ikke se kalendere som ikke er i minst en av deres grupper
+user-sees-his-group-help: Hvis aktivert, så vil brukerne ikke se kalendere som ikke er i minst en av deres grupper
 User sees only his groups: Bruker ser bare sine grupper
-nonuser-enabled-help: Hvis aktivert, s� vil administratorer ha muligheten til � legge til ikke-bruker kalendere
+nonuser-enabled-help: Hvis aktivert, så vil administratorer ha muligheten til å legge til ikke-bruker kalendere
 Nonuser enabled: Ikke-bruker kalendere aktivert
 nonuser-list-help: Hvor ikke-bruker kalendere skal vises i deltagerlisten
 Nonuser list: Vis i deltagerlisten ved
+Upcoming Events: Kommende arrangementer
+upcoming-events-help: Aktiver kommende.php
 Enabled: Aktivert
-reports-enabled-help: Hvis aktivert, s� vil brukere se en "Rapporter"-seksjon
+upcoming-events-allow-override: Tillat brukerparameter for upcoming.php
+Allow user override: Tillat brukeroverstyring
+upcoming-events-display-caticons: Inkluder kategoriikoner i upcoming.php
+Display category icons: Vis kategoriikoner
+upcoming-events-display-layers: Vis lag i kommende.php
+Display layers: Vis lag
+upcoming-events-display-links: Vis lenker i kommende.php
+Display links to events: Vis lenker til hendelser
+upcoming-events-display-popups: Vis popup-vinduer i kommende.php
+Display event popups: Vis popup-vinduer
+reports-enabled-help: Hvis aktivert, så vil brukere se en "Rapporter"-seksjon
 Reports enabled: Rapporter aktivert
-subscriptions-enabled-help: Angir om eksterne brukere kan abonnere p� en brukers kalender og tillate dem � se brukerens aktiviteter i en applikasjon som st�tter iCal (som Apple sin iCal eller Mozilla Calendar).
+subscriptions-enabled-help: Angir om eksterne brukere kan abonnere på en brukers kalender og tillate dem å se brukerens aktiviteter i en applikasjon som støtter iCal (som Apple sin iCal eller Mozilla Calendar).
 Allow remote subscriptions: Tillat eksterne abonnenter
-rss-enabled-help: Angir om en brukers kalender kan hentes fra en RSS-str�m
-Enable RSS feed: Aktiver RSS-str�m
-categories-enabled-help: Velger st�tte for aktivitetskategorier
+remotes-enabled-help: Lar brukere laste eksterne ics-filer ved hjelp av URL
+Allow remote calendars: Tillat eksterne kalendere
+rss-enabled-help: Angir om en brukers kalender kan hentes fra en RSS-strøm
+Enable RSS feed: Aktiver RSS-strøm
+categories-enabled-help: Velger støtte for aktivitetskategorier
 Categories enabled: Kategorier aktivert
-allow-external-users-help: Angir om en ikke-kalender bruker kan bli lagt til en aktivitet. Dette muliggj�r ikke-kalender brukere til � bli listed som deltagere p� en aktivitet.
+icon_upload-enabled-help: Hvis aktivert, kan brukere laste opp kategoriikoner
+Category Icon Upload enabled: Kategoriikonopplasting aktivert
+(Requires XXX folder to exist.): (Krever at XXX-mappen skal eksistere.)
+display-tasks-help: Vis lite oppgavevindu på måned og dagskalender
+Display small task list: Vis liten oppgaveliste
+display-tasks-in-grid-help: Vis oppgaver i kalendere sammen med hendelser
+Display tasks in Calendars: Vis oppgaver i kalendere
+allow-external-users-help: Angir om en ikke-kalender bruker kan bli lagt til en aktivitet. Dette muliggjør ikke-kalender brukere til å bli listed som deltagere på en aktivitet.
 Allow external users: Tillat eksterne (ikke-kalender) brukere
-external-can-receive-notification-help: N�r eksterne brukere er aktivert (og e-post er aktivert), kan eksterne brukere motta e-postmeldinger n�r aktiviteten blir lagt til, oppdatert eller slettet (hvis den eksterne brukerens e-postadresse er oppgitt).
+external-can-receive-notification-help: Når eksterne brukere er aktivert (og e-post er aktivert), kan eksterne brukere motta e-postmeldinger når aktiviteten blir lagt til, oppdatert eller slettet (hvis den eksterne brukerens e-postadresse er oppgitt).
 External users can receive email notifications: Eksterne brukere kan motta e-postmeldinger
-external-can-receive-reminder-help: N�r eksterne brukere er aktivert (og e-post er aktivert), kan eksterne brukere motta e-postp�minnelser (hvis den eksterne brukerens e-postadresse er oppgitt).
-External users can receive email reminders: Eksterne brukere kan motta e-postp�minnelser
-email-enabled-help: Sl� sending av e-post for p�minnelser av eller p�. Velg "nei" hvis serveren din ikke er satt opp til � sende e-post
+external-can-receive-reminder-help: Når eksterne brukere er aktivert (og e-post er aktivert), kan eksterne brukere motta e-postpåminnelser (hvis den eksterne brukerens e-postadresse er oppgitt).
+External users can receive email reminders: Eksterne brukere kan motta e-postpåminnelser
+allow-self-registration-help: Tillat nye brukere å registrere seg selv
+Allow self-registration: Tillat egenregistrering
+use-blacklist-help: Begrens tilgangen til WebCalendar-funksjoner basert på IP-adresse
+Restrict self-registration to blacklist: Begrens egenregistrering til svarteliste
+allow-self-registration-full-help: Tillat nye brukere å fullføre selvregistreringsprosessen online
+Use self-registration email notifications: Generer passord og send til nye brukere
+allow-attachment-help: Tillat brukere å legge til filvedlegg til hendelser.
+Allow file attachments to events: Tillat filvedlegg til hendelser
+Admin and owner can always add attachments if enabled.: Administrator og eier kan alltid legge til vedlegg hvis aktivert.
+allow-comments-help: Tillat brukere å legge til kommentarer til hendelser.
+Allow comments to events: Tillat kommentarer til hendelser
+Admin and owner can always add comments if enabled.: Administrator og eier kan alltid legge til kommentarer hvis de er aktivert.
+email-enabled-help: Slå sending av e-post for påminnelser av eller på. Velg "nei" hvis serveren din ikke er satt opp til å sende e-post
 Email enabled: E-post aktivert
-email-default-sender: Setter e-postadresse som skal brukes som avsender ved utsending av p�minnelse
+email-default-sender: Setter e-postadresse som skal brukes som avsender ved utsending av påminnelse
 Default sender address: Standard avsenderadresse
+email-mailer: Velg e-posttype (SMTP, PHP mail, sendmail)
+Email Mailer: Send e-post til e-post
+email-smtp-host: Vertsnavn (er) til SMTP-server (e) atskilt med komma
+SMTP Host name(s): SMTP-vertsnavn (er)
+email-smtp-port: SMTP-portnummer (normalt 25)
+SMTP Port Number: SMTP-portnummer
+email-smtp-auth: Bruk SMTP-godkjenning
+SMTP Authentication: SMTP-godkjenning
+email-smtp-username: SMTP-brukernavn hvis du bruker godkjenning
+SMTP Username: SMTP brukernavn
+email-smtp-password: SMTP-passord hvis du bruker godkjenning
+SMTP Password: SMTP-passord
 Default user settings: Standard brukerinnstillinger
-email-event-reminders-help: Angir om det skal sendes aktivitetsp�minnelser.
-Event reminders: Aktivitetsp�minnelser
-email-event-added: Angir om e-postmelding skal sendes n�r en aktitivitet blir lagt til din kalender.
+email-format: Angi preferanse for HTML- eller tekstmeldinger
+Email format preference: E-postformatpreferanse
+HTML: =
+Plain Text: Vanlig tekst
+email-include-ics: Inkluder en iCalendar ICS-fil til e-postmelding
+Include iCalendar attachments: Inkluder iCalendar-vedlegg
+email-event-reminders-help: Angir om det skal sendes aktivitetspåminnelser.
+Event reminders: Aktivitetspåminnelser
+email-event-added: Angir om e-postmelding skal sendes når en aktitivitet blir lagt til din kalender.
 Events added to my calendar: Aktiviteter lagt til min kalender
-email-event-updated: Angir om e-postmelding skal sendes n�r en aktitivitet blir oppdatert i din kalender.
+email-event-updated: Angir om e-postmelding skal sendes når en aktitivitet blir oppdatert i din kalender.
 Events updated on my calendar: Aktiviteter oppdatert i min kalender
-email-event-deleted: Angir om e-postmelding skal sendes n�r en aktitivitet blir fjernet fra din kalender.
+email-event-deleted: Angir om e-postmelding skal sendes når en aktitivitet blir fjernet fra din kalender.
 Events removed from my calendar: Aktiviteter fjernet fra min kalender
-email-event-rejected: Angir om e-postmelding skal sendes n�r en deltager avviser en aktivitet som er i din kalender.
+email-event-rejected: Angir om e-postmelding skal sendes når en deltager avviser en aktivitet som er i din kalender.
 Event rejected by participant: Aktivitet avvist av deltager
+email-event-create: Angir om skaperen av oppføringene vil motta en e-post
+Event that I create: Arrangement som jeg lager
 Color options: Fargevalg
-Allow user to customize colors: Tillat bruker � tilpasse farger
+Allow user to customize colors: Tillat bruker å tilpasse farger
+gradient-colors: Hvis aktivert, brukes gradientfarger. Dette kan i stor grad påvirke ytelsen.
 Enable gradient images for background colors: Aktiver bilder med fargeovergang for bakgrunnsfarger
 Not available: Ikke tilgjengelig
 Background Image options: Valg for bakgrunnsbilde
+bgimage-help: URL til ønsket bakgrunnsbilde. Kan være relativ lenke.
 Background Image: Bakgrunnsbilde
+bgrepeat-help: Kontrollerer gjentatt oppførsel av bakgrunnsbilde.
 Background Repeat: Repitering av bakgrunn
 
 ########################################
@@ -307,31 +446,33 @@ Reports: Rapporter
 Delete Events: Slett aktiviteter
 Activity Log: Aktivitetslogg
 System Log: Systemlogg
+Security Audit: Sikkerhetsrevisjon
 Public Preferences: Offentlige innstillinger
 Unapproved Public Events: Ikke-godkjente offentlige aktiviteter
-Administrative Tools: Administrasjonsverkt�y
+Administrative Tools: Administrasjonsverktøy
 
 ########################################
 # Page: ajax.php
 #
-Username already exists.: Brukernavnet eksisterer allerede.
-Email address already exists.: E-postadresse eksisterer allerede.
+Duplicate Name XXX: Duplikatnavn: "XXX".
+Username XXX already exists.: Brukernavnet "XXX" eksisterer allerede.
+Email address XXX already exists.: E-postadressen "XXX" eksisterer allerede.
 
 ########################################
 # Page: approve_entry.php
 #
 Additional Comments (optional): Ekstra kommentarer (frivillig)
-Hello: Hei
+Approve and Send: Godkjenn og send
+Approve and Exit: Godkjenn og avslutt
+(Your comments will be emailed to the event creator.): (Kommentarene dine blir sendt til skaperen av arrangementet.)
 Hello, XXX.: Hei, XXX!
-The subject was: Emnet var
+XXX has approved an appointment and added comments.: En avtale er godkjent og kommentarer lagt til av XXX.
 Subject XXX: Emne: XXX
-The description is: Beskrivelsen er
 Description XXX: Beskrivelse: XXX
-Date: Dato
 Date XXX: Dato: XXX
-Time: Klokken
 Time XXX: Tid: XXX
-Comments: Kommentarer
+Comments XXX: Kommentarer: XXX
+Approved w/Comments by XXX.: Godkjent m / kommentarer av: XXX.
 
 ########################################
 # Page: assistant_edit.php
@@ -340,14 +481,17 @@ Admin mode: Administratormodus
 Your assistants: Dine assistenter
 
 ########################################
+# Page: autocomplete_ajax.php
+#
+Unknown error.: Ukjent feil.
+
+########################################
 # Page: availability.php
 #
-Program Error: Programfeil
-No XXX specified!: Ingen XXX oppgitt!
 Program Error No XXX specified!: Programfeil - ingen XXX oppgitt!
 user: bruker
-year: �r
-month: m�ned
+year: år
+month: måned
 day: dag
 
 ########################################
@@ -355,28 +499,33 @@ day: dag
 #
 Category Icon: Ikon for kategori
 Global: =
+The permissions for the icons directory are set to read-only: Tillatelsene for ikonkatalogen er satt til skrivebeskyttet.
 Category Name: Kategorinavn
 Color: Farge
 Remove Icon: Fjern ikon
 Add Icon to Category: Legg til ikon for kategori
 Upload: Last opp
-gif 3kb max: GIF maks 3Kb
-Search for existing icons: S�k etter eksisterende ikoner
+GIF or PNG 6kb max: GIF eller PNG 6 kb maks
+Search for existing icons: Søk etter eksisterende ikoner
 Add: Legg til
 Delete: Slett
-Are you sure you want to delete this entry?: Er du sikker p� at du vil slette denne aktiviteten?
+Are you sure you want to delete this entry?: Er du sikker på at du vil slette denne aktiviteten?
 Make New Category: Legg til ny kategori
 
 ########################################
 # Page: category_handler.php
 #
+Category name is required: Kategorinavn er obligatorisk
 File size exceeds maximum.: Filen er for stor
-File is not a gif image.: Filen er ikke et GIF-bilde
+File is not a GIF or PNG image: Filen er ikke et GIF- eller PNG-bilde
 
 ########################################
 # Page: catsel.php
 #
+AVAILABLE CATEGORIES: TILGJENGELIGE KATEGORIER
+ENTRY CATEGORIES: INNGANGKATEGORIER
 Remove: Fjern
+Global Category: Global kategori
 Cancel: Avbryt
 
 ########################################
@@ -384,14 +533,53 @@ Cancel: Avbryt
 #
 Add Custom: Legg til tilpasset
 Basic Colors: Basisfarger
-Current Color: N�v�rende farge
+Current Color: Nåværende farge
 Custom Colors: Tilpassede farger
 Old Color: Gammel farge
 
 ########################################
+# Page: combo.php
+#
+Select None: Velg ingen
+Agenda: Dagsorden
+Add Task: Legg til oppgave
+Description: Beskrivelse
+Date: Dato
+Time: Klokken
+Priority: Prioritet
+Access: Tilgang
+Created by: Opprettet av
+Updated: Oppdatert
+Participants: Deltakere
+Attachments: Vedlegg
+Comments: Kommentarer
+Brief Description: Kort beskrivelse
+Full Description: Full beskrivelse
+Category: Kategori
+Add event detail: Legg til hendelsesdetaljer
+Start Date: Startdato
+Due Date: Avslutningsdato
+Add task detail: Legg til oppgavedetaljer
+All: Alle
+Error: Feil
+no response from server: ikke noe svar fra serveren
+JSON error: JSON-feil
+High: Høy
+Medium: =
+Low: Lav
+Today: I dag
+Add Entry: Legg til aktivitet
+Unnamed Event: Aktivitet uten navn
+Unnamed Task: Navnlig oppgave
+Refresh: Forfriske
+Click to add entry: Klikk for å legge til oppføring
+Name: Navn
+pm: =
+am: =
+
+########################################
 # Page: del_entry.php
 #
-An appointment has been canceled for you by: En avtale har blitt avlyst for deg av
 XXX has canceled an appointment.: XXX har avlyst en avtale.
 
 ########################################
@@ -407,7 +595,6 @@ Add Attachment: Legg til vedlegg
 Subject: Emne
 Comment: Kommentar
 Upload file: Last opp fil
-Description: Beskrivelse
 
 ########################################
 # Page: docdel.php
@@ -417,12 +604,10 @@ Removed: Fjernet
 ########################################
 # Page: edit_entry.php
 #
-am: =
-pm: =
 days: dager
 hours: timer
 minutes: minutter
-You are not authorized to edit this task.: Du er ikke autorsiert til � redigere denne oppgaven
+You are not authorized to edit this task.: Du er ikke autorsiert til å redigere denne oppgaven
 is in a different timezone than you are. Currently: er i en annen tidssone enn deg. Er
 hour ahead of you: time foran deg
 hour behind you: time etter deg
@@ -430,40 +615,40 @@ hours ahead of you: timer foran deg
 hours behind you: timer etter deg
 XXX is in a different timezone (ahead): XXX er i en annen tidssone (foran)
 XXX is in a different timezone (behind): XXX er i en annen tidssone (etter)
-Time entered here is based on your Timezone.: Tid skrevet her er basert p� din tidssone.
+Time entered here is based on your Timezone.: Tid skrevet her er basert på din tidssone.
 Edit Entry: Endre aktiviteten
-Add Entry: Legg til aktivitet
 Details: Detaljer
-Participants: Deltakere
 Repeat: Gjentagelse
-Reminders: P�mindelser
-brief-description-help: Her skal det st� en kort beskrivelse av aktiviteten - den blir vist n�r man st�r over aktiviteten i oversiktskalenderen.
-Brief Description: Kort beskrivelse
-full-description-help: Her kan det st� en komplett beskrivelse av aktiviteten.
-Full Description: Full beskrivelse
+Reminders: Påmindelser
+brief-description-help: Her skal det stå en kort beskrivelse av aktiviteten - den blir vist når man står over aktiviteten i oversiktskalenderen.
+full-description-help: Her kan det stå en komplett beskrivelse av aktiviteten.
 access-help: Angi om aktiviteten skal kunne sees av alle eller om den er fortrolig.
-Access: Tilgang
 priority-help: Angi aktivitetens prioritet.
-Priority: Prioritet
-High: H�y
-Medium: =
-Low: Lav
 category-help: Setter kategorien for aktiviteten
-Category: Kategori
+completed-help: Datooppgave er fullført. Bare aktivert når alle deltakernes prosentandel er lik 100%.
+Date Completed: Dato fullført
+percent-help: Prosent for fullføring av oppgave for denne brukeren
+Percent Complete: Prosent fullført
+All Percentages: Alle prosentandeler
+location-help: Arrangementsted
+Location: plassering
+url-help: URL for arrangementet
 URL: Adresse
 date-help: Angir dato for aktiviteten.
-Start Date: Startdato
 Untimed event: Aktivitet uten tidsangivelse
 Timed event: Aktivitet med tidsangivelse
 All day event: Fulldagsaktivitet
 Timezone Offset: Tidssoneavvik
-time-help: Angir tidspunkt for aktiviteten.<br /><i>Dette feltet trenger ikke v�re utfylt.</i>
-duration-help: I dette feltet kan du angi varigheten p� aktiviteten<br /><i>Dette feltet trenger ikke v�re utfylt.</i>
+time-help: Angir tidspunkt for aktiviteten.<br><i>Dette feltet trenger ikke være utfylt.</i>
+duration-help: I dette feltet kan du angi varigheten på aktiviteten<br><i>Dette feltet trenger ikke være utfylt.</i>
 end-time-help: Angir tidspunktet aktiviteten forventes avsluttet.
 Start Time: Starttidspunkt
-Due Date: Avslutningsdato
 Due Time: Avslutningstid
 Site Extras: Nettstedsekstra
+avail_participants-help: Viser tilgjengelige deltakere i denne oppføringen.
+Available: Tilgjengelig
+Find Name: Finn navn
+Resources: Ressurser
 participants-help: Vis deltagerne i dette innlegget.
 Selected: Valgt
 Availability: Tilgjengelighet
@@ -472,14 +657,14 @@ External Participants: Eksterne deltagere
 repeat-type-help: Hvor ofte skal aktiviteten gjentas.
 Daily: Daglig
 Weekly: Ukentlig
-Monthly: M�nedlig
+Monthly: Månedlig
 by day: etter dag
 by date: etter dato
 by position: etter posisjon
-Monthly (by day): M�nedlig (etter dag)
-Monthly (by date): M�nedlig (etter dato)
-Monthly (by position): M�nedlig (etter posisjon)
-Yearly: �rlig
+Monthly (by day): Månedlig (etter dag)
+Monthly (by date): Månedlig (etter dato)
+Monthly (by position): Månedlig (etter posisjon)
+Yearly: Årlig
 Manual: Manuelt
 Expert Mode: Ekspertmodus
 repeat-end-date-help: Angir sluttdato for gjentakelse av denne aktiviteten.
@@ -491,80 +676,85 @@ repeat-frequency-help: Hvor ofte skal aktiviteten gjentas? Tallet 1 viser at det
 Frequency: Hyppighet
 Weekdays Only: Kun ukedager
 Week Start: Ukestart
-All: Alle
+repeat-bydayextended-help: Tillater datavalg basert på ukedag.
+ByDay: Om dagen
+repeat-month-help: Spesifiserer hvilke måneder hendelsen skal gjenta om.
+ByMonth: =
+repeat-bysetpos-help: Tillater valg av dato basert på posisjon med måned.
+BySetPos: =
+repeat-bymonthdayextended-help: Tillater valg av dato basert på dato.
+ByMonthDay: =
+repeat-byweekno-help: Lar brukeren spesifisere en liste over uker som skal gjentas hendelsen (1,2 ... 53, -53, -52 ...- 1).
+ByWeekNo: =
+repeat-byyearday-help: Lar brukeren spesifisere en liste over årsdager for å gjenta hendelse (1,2 ... 366, -366, -365 ...- 1).
+ByYearDay: =
+repeat-exceptions-help: Ytterligere dager som denne hendelsen skal eller ikke skal finne sted den.
 Exclusions: Ekskluderinger
 Inclusions: Inkluderinger
 Add Exception: Legg til unntak
 Add Inclusion: Legg til inkludering
-Send Reminder: Send p�minnelse
-When: N�r
+Delete Selected: Slett valgte
+Send Reminder: Send påminnelse
+When: Når
 Use Date/Time: Bruk dato/tid
 Use Offset: Bruk forskyvning
-Before: F�r
+Before: Før
 After: Etter
 Start: =
 End/Due: Slutt
 Times: Tider
 Every: Hver
-CAPTCHA Warning: <b>Advarsel:</b> Kan ikke bruk CAPTCHA uten PHPs GD-utvidelse!<br />
+CAPTCHA Warning: Advarsel: Kan ikke bruk CAPTCHA uten PHPs GD-utvidelse!<br>
 Delete entry: Slett aktiviteten
-You are not authorized to edit this entry.: Du har ikke lov � redigere denne aktiviteten
+You are not authorized to edit this entry.: Du har ikke lov å redigere denne aktiviteten
 
 ########################################
 # Page: edit_entry_handler.php
 #
-A new appointment has been made for you by: En ny avtale er opprettet for deg av
 XXX has made a new appointment.: XXX har opprettet en ny avtale.
-An appointment has been updated by: En avtale har blitt oppdatert av
 XXX has updated an appointment.: XXX har oppdatert en avtale.
 Security violation!: Sikkerhetsbrudd
-You must enter the anti-spam text on the previous page.: Du m� skrive inn anti-spam teksten p� forrige side.
-The following conflicts with the suggested time: F�lgende aktiviteter er i konflikt med det foresl�tte tidspunktet
+You must enter the anti-spam text on the previous page.: Du må skrive inn anti-spam teksten på forrige side.
+The following conflicts with the suggested time: Følgende aktiviteter er i konflikt med det foreslåtte tidspunktet
 User removed from participants list.: Bruker fjernet fra deltagerliste.
-Please look on: Vennligst se p�
-to accept or reject this appointment: for � akseptere eller avvise avtalen
-to view this appointment: for � se denne avtalen
-Please look on XXX to accept or reject this appointment.: Sjekk XXX for � akseptere eller avvise denne avtalen.
-Please look on XXX to view this appointment.: Sjekk XXX for � vise denne avtalen.
+Please look on XXX to accept or reject this appointment.: Sjekk XXX for å akseptere eller avvise denne avtalen.
+Please look on XXX to view this appointment.: Sjekk XXX for å vise denne avtalen.
 Scheduling Conflict: Tidskonflikt
-Your suggested time of: Den foresl�tte tiden for
+Your suggested time of: Den foreslåtte tiden for
 conflicts with the following existing calendar entries: er i konflikt med eksisterende avtaler
-
-########################################
-# Page: edit_layer.php
-#
-Add Layer: Legg til lag
-Edit Layer: Editer lag
-Source: Kilde
-Duplicates: Duplikater
-Show layer events that are the same as your own: Vis lag som er lik dine egne
-Add to My Calendar: Legg til kalenderen min
-Delete layer: Slett lag
-
-########################################
-# Page: edit_layer_handler.php
-#
-You cannot create a layer for yourself.: Du kan ikke lag et lag for deg selv
-You can only create one layer for each user.: Du kan bare lag et lag per bruker
 
 ########################################
 # Page: edit_nonusers.php
 #
 NONUSER_PREFIX not set: NONUSER_PREFIX har ikke blitt satt i config.php.
-word characters only: kan kun inneholde tall og bokstaver (a-�, A-�, 0-9)
+word characters only: kan kun inneholde tall og bokstaver (a-å, A-Å, 0-9)
 Add User: Ny bruker
 Edit User: Rediger bruker
 Calendar ID: Kalender-ID
 First Name: Fornavn
 Last Name: Etternavn
+Is public calendar: Er offentlig kalender
+
+########################################
+# Page: edit_nonusers_handler.php
+#
+Database error: Feil i databasen
+
+########################################
+# Page: edit_remotes.php
+#
+Add Remote Calendar: Legg til ekstern kalender
+Edit Remote Calendar: Rediger ekstern kalender
+Create Layer: Lag lag
+Reload: Last inn på nytt
+Required to View Remote Calendar: Nødvendig for å vise ekstern kalender
 
 ########################################
 # Page: edit_remotes_handler.php
 #
-Error: Feil
 Import Results: Importeringsresultat
 Events successfully imported: Aktiviteter vellykket importert
-Create a new layer to view this calendar.: Opprett et nytt lag for � vise denne kalenderen
+Create a new layer to view this calendar.: Opprett et nytt lag for å vise denne kalenderen
 Errors: Feil
 There was an error parsing the import file or no events were returned.: Det oppstod en feil ved behandling av den importerte filen eller ingen aktiviteter ble returnert
 
@@ -572,38 +762,38 @@ There was an error parsing the import file or no events were returned.: Det opps
 # Page: edit_report.php
 #
 Tomorrow: I morgen
-Today: I dag
-Yesterday: I g�r
-Day before yesterday: Dagen f�r i g�r
+Yesterday: I går
+Day before yesterday: Dagen før i går
 Next week: Neste uke
 This week: Denne uka
 Last week: Forrige uke
-Week before last: Uken f�r forrige
+Week before last: Uken før forrige
 Next week and week after: Neste uke og uka etter
 This week and next week: Denne uka og uka etter
 Last week and this week: Forrige uke og denne uka
 Last two weeks: To siste uker
-Next month: Neste m�ned
-This month: Denne m�neden
-Last month: Forrige m�ned
-Month before last: M�neden f�r forrie
-Next year: Neste �r
-This year: Dette �ret
-Last year: Forrige �r
-Year before last: �ret f�r forrige
+Next month: Neste måned
+This month: Denne måneden
+Last month: Forrige måned
+Month before last: Måneden før forrie
+Next year: Neste år
+This year: Dette året
+Last year: Forrige år
+Year before last: Året før forrige
 Next 14 days: Neste 14 dager
 Next 30 days: Neste 30 dager
 Next 60 days: Neste 60 dager
 Next 90 days: Neste 90 dager
 Next 180 days: Neste 180 dager
 Next 365 days: Neste 365 dager
-Invalid report id.: Ugyldig rapport-ID
+Invalid report id XXX.: Ugyldig rapport-ID: "XXX".
 Unnamed Report: Rapport uten navn
 Add Report: Legg til rapport
 Edit Report: Rediger rapport
 Report name: Rapportnavn
 User: Bruker
-Current User: N�v�rende bruker
+Current User: Nåværende bruker
+Include link in menu: Inkluder lenke i menyen
 Include standard header/trailer: Inkluder standard hode/for
 Include previous/next links: Inkluder forrige/neste lenker
 Include empty dates: Inkluder tomme datoer
@@ -612,13 +802,12 @@ Template variables: Variabler for malen
 Page template: Mal for siden
 Day template: Mal for dag
 Event template: Mal for aktivitet
-Are you sure you want to delete this report?: Er du sikker p� at du vil slette denne rapporten?
+Are you sure you want to delete this report?: Er du sikker på at du vil slette denne rapporten?
 
 ########################################
 # Page: edit_report_handler.php
 #
 No such report id XXX.: Ingen rapport med ID XXX.
-Variable N not found: Variablen N ble ikke funnet
 Variable XXX not found.: Variablen <tt>XXX</tt> ble ikke funnet
 
 ########################################
@@ -636,7 +825,7 @@ E-mail address: E-postadresse
 Password: Passord
 again: igjen
 Disabled for demo: Deaktivert for demo
-Are you sure you want to delete this user?: Er du sikker p� at du vil slette denne brukeren?
+Are you sure you want to delete this user?: Er du sikker på at du vil slette denne brukeren?
 Change Password: Endre passord
 New Password: Nytt passord
 Set Password: Sett passord
@@ -644,10 +833,15 @@ Set Password: Sett passord
 ########################################
 # Page: edit_user_handler.php
 #
-Deleting users not supported.: Sletting av brukere er ikke st�ttet
+Deleting users not supported.: Sletting av brukere er ikke støttet
 The passwords were not identical.: Passordene var ikke identiske
 You have not entered a password.: Du har ikke oppgitt passord
-Username cannot be blank.: Brukernavn m� fylles ut
+Username cannot be blank.: Brukernavn må fylles ut
+
+########################################
+# Page: events_ajax.php
+#
+Not authorized: Ikke autorisert
 
 ########################################
 # Page: export.php
@@ -683,41 +877,41 @@ Unnamed Group: Ikke navngitt gruppe
 Add Group: Legg til gruppe
 Edit Group: Rediger gruppe
 Group name: Gruppenavn
-Updated: Oppdatert
-Created by: Opprettet av
 
 ########################################
 # Page: group_edit_handler.php
 #
-You must specify a group name: Du m� angi et gruppenavn
+You must specify a group name: Du må angi et gruppenavn
 
 ########################################
 # Page: help_admin.php
 #
 Auto-refresh calendars: Oppdater kalendere automatisk
-auto-refresh-help: Hvis aktivert, vil dagsvisning, ukesvisning, m�nedsvisning og liste med ikke godkjente aktiviteter oppdateres automatisk periodisk.
+auto-refresh-help: Hvis aktivert, vil dagsvisning, ukesvisning, månedsvisning og liste med ikke godkjente aktiviteter oppdateres automatisk periodisk.
 Auto-refresh time: Auto-oppdateringsintervall
-auto-refresh-time-help: Hvis auto-oppdatering er aktivert, s� setter denne tiden mellom hver oppdatering.
-Display days with events in bold in year view: Viser dager med aktiviteter i fetskrift for �rvisning
+auto-refresh-time-help: Hvis auto-oppdatering er aktivert, så setter denne tiden mellom hver oppdatering.
+Display days with events in bold in year view: Viser dager med aktiviteter i fetskrift for årvisning
 Display weekends in week view: Viser helg i ukevisning
 Time interval: Tidsinterval
-time-interval-help: Angir hvor lang blokken med tid i uke- og dagvisning skal v�re.
+time-interval-help: Angir hvor lang blokken med tid i uke- og dagvisning skal være.
 Nonuser: Ikke-bruker kalendere
-user-customize-color: Angir om brukere har lov � endre deres eget fargeskjema.
+user-customize-color: Angir om brukere har lov å endre deres eget fargeskjema.
 enable-gradient-help: Bruk gradert fargeovergang for tabellbakgrunn.
 Manually entering color values: Skriv inn fargeverdier manuelt
-colors-help: Alle farger skal skrives inn som #RRGGBB hvor RR er hexkoden for r�dt, GG er hexkoden for gr�nn og BB er hexkoden for den bl� fargeen.
+colors-help: Alle farger skal skrives inn som #RRGGBB hvor RR er hexkoden for rødt, GG er hexkoden for grønn og BB er hexkoden for den blå fargeen.
 
 ########################################
 # Page: help_bug.php
 #
 Report Bug: Rapporter feil
+Please include all the information below when reporting a bug.: Ta med all informasjonen nedenfor når du rapporterer en feil.
+Also, please use English rather than XXX.: Bruk også  engelsk  i stedet for XXX.
 
 ########################################
 # Page: help_docs.php
 #
 WebCalendar Documentation: Dokumentasjon for WebCalendar
-Currently in English only.: For �yeblikket kun p� engelsk
+Currently in English only.: For øyeblikket kun på engelsk
 
 ########################################
 # Page: help_edit_entry.php
@@ -727,24 +921,25 @@ Repeat Type: Gjenta type
 For More Information...: For mer informasjon ...
 Repeat End Date: Gjenta sluttdato
 Repeat Day: Gjenta dato
-repeat-day-help: Hvilke ukedager skal aktiviteten gjentas p�.
+repeat-day-help: Hvilke ukedager skal aktiviteten gjentas på.
 
 ########################################
 # Page: help_import.php
 #
 Import: Importer
 Palm Desktop: =
-This form will allow you to import entries from the Palm Desktop Datebook.: Dette skjemaet gj�r det mulig for deg � importere oppf�ringer fra Palm Desktop Datebook.
-It should be located in your Palm directory in <tt>datebook/datebook.dat</tt> in a subdirectory named by your username.: Den b�r finnes i din Palm katalog i <tt>datebook/datebook.dat</tt> i en underkatalog med ditt brukernavn.
-The following entries will not be imported: F�lgende oppf�ringer vil ikke bli importert
-Entries older than the current date: Oppf�ringer eldre enn n�v�rende dato
-Entries created in the Palm Desktop...: Oppf�ringer opprettet i Palm Desktop-en som ikke har blitt HotSync&#39;d
-Anything imported from Palm will be overwritten during the next import (unless the event date has passed).: Alt som blir importert fra Palm vil bli overskrevet ved neste import (hvis ikke aktivitetsdatoen har passert)
-Therefore, updates should be made in the Palm Desktop.: Derfor b�r oppdatering bli gjort i Palm Desktop-en.
+allow you to import entries from the Palm...: Dette skjemaet lar deg importere oppføringer fra Palm Desktop Datebook. Den skal være plassert i Palm-katalogen din i datebook / datebook.dat i en underkatalog navngitt av brukernavnet ditt.
+The following entries will not be imported: Følgende oppføringer vil ikke bli importert
+Entries older than the current date: Oppføringer eldre enn nåværende dato
+Entries created in the Palm Desktop...: Oppføringer opprettet i Palm Desktop-en som ikke har blitt HotSync&#39;d
+Anything imported from Palm...: Alt som importeres fra Palm blir overskrevet under neste import (med mindre hendelsesdatoen har gått). Derfor bør oppdateringer gjøres på Palm Desktop.
 vCal: =
-The following formats have been tested: F�lgende formater har blitt testet
+This form will import vCalendar (.vcs) 1.0 events.: Dette skjemaet importerer vCalendar (.vcs) 1.0-hendelser.
+The following formats have been tested: Følgende formater har blitt testet
+This form will import iCalendar (.ics) events.: Dette skjemaet importerer iCalendar (.ics) hendelser.
 Enabling: Aktiverer
 Overwrite Prior Import: Skriv over tidligere importering
+will cause events imported previously...: vil føre til at hendelser importert tidligere, som brukte samme UID som en hendelse fra den nye importfilen, ble merket som slettet. Dette skal tillate at en oppdatert iCalendar-fil importeres uten å opprette duplikater.
 
 ########################################
 # Page: help_index.php
@@ -755,13 +950,16 @@ About WebCalendar: Om WebCalendar
 ########################################
 # Page: help_layers.php
 #
+Layers are useful for displaying...: Lag er nyttige for å vise andre brukeres hendelser i din egen kalender. Du kan spesifisere brukeren og fargen hendelsene skal vises i.
 Add/Edit/Delete: Legg til/Rediger/Slett
-Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ved � klikke p� "Rediger lag" i Admin seksjonen nederst p� siden kan du legge til/redigere/slette lag.
+Clicking the Edit Layers link in the admin section at the bottom of the page will allow you to add/edit/delete layers.: Ved å klikke på "Rediger lag" i Admin seksjonen nederst på siden kan du legge til/redigere/slette lag.
 The text color of the new layer that will be displayed in your calendar.: Tekstfargen for det nye laget som vil bli vist in din kalender.
 Disabling: Deaktiverer
-Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Klikk "Deaktiver lag" i Admin seksjonen nederst p� siden for � sl� av lag.
+Press the Disable Layers link in the admin section at the bottom of the page to turn off layers.: Klikk "Deaktiver lag" i Admin seksjonen nederst på siden for å slå av lag.
+Duplicates: Duplikater
 If checked, events that are duplicates of your events will be shown.: Hvis merket av, vil aktiviteter som er duplikater av dine aktiviteter bli vist.
-Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Klikk "Aktiver lag" i Admin seksjonen nederst p� siden for � sl� p� lag.
+Press the Enable Layers link in the admin section at the bottom of the page to turn on layers.: Klikk "Aktiver lag" i Admin seksjonen nederst på siden for å slå på lag.
+Source: Kilde
 Specifies the user that you would like to see displayed in your calendar.: Angir brukeren du vil ha vist i din kalender.
 
 ########################################
@@ -769,19 +967,26 @@ Specifies the user that you would like to see displayed in your calendar.: Angir
 #
 Default Category: Standardkategori
 default-category-help: Angir den kategorien en ny aktivitet skal ha som standard
-When I am the boss: N�r jeg er sjefen
-Email me event notification: Send meg aktivitetsp�minnelser p� e-post
-email-boss-notifications-help: Angir om sjefer mottar aktivitetsp�minnelser som e-post
+When I am the boss: Når jeg er sjefen
+Email me event notification: Send meg aktivitetspåminnelser på e-post
+email-boss-notifications-help: Angir om sjefer mottar aktivitetspåminnelser som e-post
 I want to approve events: Jeg vil godkjenne aktiviteter
-boss-approve-event-help: Angir om sjefen m� godkjenne aktiviteter lagt til av assistenter.
+boss-approve-event-help: Angir om sjefen må godkjenne aktiviteter lagt til av assistenter.
 Subscribe/Publish: Abonnere/publisere
-allow-remote-subscriptions-help: Angir om eksterne brukere kan abonnere p� din kalender og dermed tillate dem � se dine aktiviteter i en applikasjon som st�tter iCal (som Apple sin iCal eller Mozilla Calendar).
-remote-subscriptions-url-help: Viser adressen som eksterne brukere skal bruke for � abonnere p� din kalender.
-rss-feed-url-help: URL-en for RSS-str�mmen
+Allow remote publishing: Tillat ekstern publisering
+allow-remote-publishing-help: Spesifiserer om en ekstern iCal-klient kan publisere hendelser tilbake til WebCalendar
+remote-publishing-url-help: Viser URL-en som skal brukes i iCal-klientprogrammet for både abonnement og publisering tilbake til WebCalendar.
+allow-remote-subscriptions-help: Angir om eksterne brukere kan abonnere på din kalender og dermed tillate dem å se dine aktiviteter i en applikasjon som støtter iCal (som Apple sin iCal eller Mozilla Calendar).
+remote-subscriptions-url-help: Viser adressen som eksterne brukere skal bruke for å abonnere på din kalender.
+Enable FreeBusy publishing: Aktiver FreeBusy-publisering
+freebusy-enabled-help: Spesifiserer om en brukers tilgjengelige tid kan oppnås ved å bruke iCal FreeBusy-standarden.
+freebusy-url-help: URL-en for tilgang til brukerens FreeBusy-liste
+rss-feed-url-help: URL-en for RSS-strømmen
 
 ########################################
 # Page: help_uac.php
 #
+Allows for fine control of user access and permissions. Users can also grant default and per individual permission if authorized by the administrator.: Tillater fin kontroll av brukertilgang og tillatelser. Brukere kan også gi standard og per individuell tillatelse hvis de er godkjent av administratoren.
 If disabled, this user cannot send you emails.: Hvis deaktivert, kan ikke denne brukeren sende deg e-post.
 If disabled, this user cannot see you in the participants list.: Hvis deaktivert, kan ikke denne brukeren se deg i deltagerlisten.
 If enabled, this user cannot view the details of any of your entries.: Hvis aktivert, kan ikke denne brukeren se detaljene for noen av dine aktiviteter.
@@ -795,20 +1000,23 @@ Publishing Disabled (User): Publisering deaktivert (bruker)
 ########################################
 # Page: icons.php
 #
-Click to Select: Klikk for � velge
-Current Icons on Server: N�v�rende ikoner p� tjeneren
+Click to Select: Klikk for å velge
+Current Icons on Server: Nåværende ikoner på tjeneren
 
 ########################################
 # Page: import.php
 #
+import from file: importer fra fil
 Disabled: Deaktivert
 Import format: Importeringsformat
-Exclude private records: Utelat private oppf�ringer
+Exclude private records: Utelat private oppføringer
 Repeated items are imported separately. Prior imports are not overwritten.: Gjentatte element blir importert separat. Tidligere importer blir ikke overskrevet.
 
 ########################################
 # Page: import_handler.php
 #
+No file: Ingen fil
+Error deleting palm events from webcalendar.: Feil ved sletting av palmehendelser fra webkalenderen.
 Events from prior import marked as deleted: Aktiviteter fra tidligere importering markert som slettede
 Conflicting events: Aktiviteter som kolliderer
 The import file contained no data.: Den importerte filen inneholdt ikke noen data
@@ -816,11 +1024,26 @@ The import file contained no data.: Den importerte filen inneholdt ikke noen dat
 ########################################
 # Page: layers.php
 #
-Layer: Lag
+Are you sure you want to delete this layer?: Er du sikker på du vil slette dette laget?
+Delete layer: Slett lag
 Edit layer: Editer lag
-Are you sure you want to delete this layer?: Er du sikker p� du vil slette dette laget?
+Enable layers: Aktiver lag
+Layer: Lag
+Layers are currently disabled.: Lag er for øyeblikket deaktivert.
+Layers are currently enabled.: Lag er for øyeblikket aktivert.
+Click to modify layers settings for XXX: Klikk her for å endre laginnstillingene for XXX-kalenderen.
 Disable Layers: Deaktiver lag
 Add layer: Legg til lag
+Add Layer: Legg til lag
+Edit Layer: Editer lag
+
+########################################
+# Page: layers_ajax.php
+#
+Unable to update preference: Kan ikke oppdatere preferanser
+Invalid entry id.: Ugyldig ID for akitivitet
+You cannot create a layer for yourself.: Du kan ikke lag et lag for deg selv
+You can only create one layer for each user.: Du kan bare lag et lag per bruker
 
 ########################################
 # Page: list_unapproved.php
@@ -833,10 +1056,8 @@ Reject Selected: Avvis valgte
 Reject: Avvis
 Uncheck All: Fjern kryss fra alle
 View this entry: Vis aktiviteten
-No unapproved entries for: Ingen ikke-godkjente aktiviteter for
 No unapproved entries for XXX.: Ingen ikke-godkjente aktiviteter for XXX.
 Unapproved Entries: Ikke-godkjente aktiviteter
-Not authorized: Ikke autorisert
 Approve this entry?: Godkjenn aktiviteten?
 Reject this entry?: Avvis denne aktiviteten?
 Approve Selected entries?: Godkjenn valgte aktiviteter?
@@ -848,23 +1069,24 @@ Reject Selected entries?: Avvis valgte aktiviteter?
 You must enter a login and password.: Vennligst oppgi brukernavn og passord
 Save login via cookies so I dont have to login next time.: Husk brukernavn til neste gang
 Login: Logg inn
-Access public calendar: G� til offentlig kalender
 public: offentlig
-Access XXX calendar: G� til XXX kalender
-calendar: kalender
-cookies-note: <b>OBS:</b> Programmet krever at "cookies" er sl�tt p�
+Access XXX calendar: Gå til XXX kalender
+cookies-note: OBS: Programmet krever at "cookies" er slått på
 
 ########################################
 # Page: login.php
 #
-Illegal characters in login: Ugyldig tegn i innlogging
 Illegal characters in login XXX.: Ugyldig tegn i innlogging XXX.
 Invalid login: Ugyldig innlogging
+Activity login failure: Brukernavn: "XXX", IP: "ÅÅÅ".
+Error XXX: Feil: "XXX".
+You have been logged out.: Du har blitt logget ut.
+Access public calendar: Gå til offentlig kalender
+Not yet registered? Register here!: Ikke registrert ennå? Registrer her!
 
 ########################################
 # Page: minical.php
 #
-No such nonuser calendar: Ingen slik ikke-bruker kalender
 No such nonuser calendar XXX.: Ingen slik ikke-bruker kalender: XXX
 This Calendar is not Public.: Denne kalenderen er ikke offentlig
 
@@ -874,44 +1096,69 @@ This Calendar is not Public.: Denne kalenderen er ikke offentlig
 Add New NonUser Calendar: Legg til ny ikke-bruker kalender
 
 ########################################
+# Page: nulogin.php
+#
+A login must be specified.: En pålogging må spesifiseres.
+No such nonuser calendar: Ingen slik ikke-bruker kalender
+
+########################################
 # Page: pref.php
 #
+Invalid theme: Ugyldig tema
 Save Preferences: Lagre innstillinger
+Public Access calendar: Offentlig tilgangskalender
+Modify Non User Calendar Preferences: Endre ikke-bruker kalenderinnstillinger
+Return to My Preferences: Gå tilbake til Mine preferanser
+Custom Scripts: Egendefinerte skript
+Timezone Selection: Valg av tidssone
+Multiview: =
+entry-interval-help: Angir minuttintervall når du redigerer inngangstider
+Entry interval: Inngangsintervall
 hour: time
 minute: minutt
+theme-reload-help: På grunn av CSS-hurtigbufring kan det være nødvendig å laste siden på nytt
+Page may need to be reloaded for new Theme to take effect: Siden må kanskje lastes inn på nytt for at nytt tema skal tre i kraft
+display_byproxy-help: Vis den virkelige skaperen på view_entry-siden
+Display if created by Assistant: Vis hvis den er opprettet av assistenten
+allow-view-subscriptions-help: Tillater å begrense ekstern tilgang til private eller konfidensielle oppføringer
+Allow remote viewing of: Tillat fjernvisning av
+entries: innganger
 
 ########################################
 # Page: purge.php
 #
 Purging events for: Sletter aktiviteter for
 Finished: Ferdig
-Check box to delete ALL events for a user: Marker i boksen hvis <b>ALLE</b> aktiviteter skal slettes
-Delete all events before: Slett alle aktiviteter f�r
-Preview delete: Forh�ndsvisning for sletting
+Back: Tilbake
+Check box to delete ALL events for a user: Marker i boksen hvis ALLE aktiviteter skal slettes
+Delete all events before: Slett alle aktiviteter før
+Purge deleted only: Rensing er bare slettet
+Preview delete: Forhåndsvisning for sletting
 Are you sure you want to delete events for: Er du sikker
+Records deleted from XXX: Postene er slettet fra "XXX".
 
 ########################################
 # Page: register.php
 #
-Email address cannot be blank.: E-postadresse kan ikke v�re tom.
+Email address cannot be blank.: E-postadresse kan ikke være tom.
+Username already exists.: Brukernavnet eksisterer allerede.
+Email address already exists.: E-postadresse eksisterer allerede.
 New user via self-registration.: Ny bruker via selvregistrering.
 A new WebCalendar account has been set up for you.: En ny WebCalendar-konto har blitt opprettet for deg.
-Your username is: Ditt brukernavn er XXX.
 Your username is XXX.: Ditt brukernavn er: XXX
-Your password is: Ditt passord er
 Your password is XXX.: Ditt passord er: XXX
-Please visit: Bes�k
-to log in and start using your account: for � logge inn og starte � bruke kontoen din
-Please visit XXX to log in and start using your account!: Bes�k "XXX" for � logge inn og starte � bruke kontoen din
+Please visit XXX to log in and start using your account!: Besøk "XXX" for å logge inn og starte å bruke kontoen din
+You may change your password after logging in the first time.: Du kan endre passordet ditt etter at du har logget inn første gang.
+If you received this email in error: Hvis du mottok denne e-posten feilaktig og ikke registrerte deg for en WebCalendar-konto, kan du se bort fra denne meldingen, eller svare med et kort notat
 Administrator: =
 Welcome: Velkommen
 New user via email.: Ny bruker via e-post.
 Registration: Registrering
 Welcome to WebCalendar: Velkommen til WebCalendar
-Your email should arrive shortly.: E-posten din b�r komme om en kort stund.
-Return to Login screen: G� tilbake til innloggingsskjermen
+Your email should arrive shortly.: E-posten din bør komme om en kort stund.
+Return to Login screen: Gå tilbake til innloggingsskjermen
 Password (again): Passord (igjen)
-Your account information will be emailed to you.: Kontoinformasjonen din blir sendt deg p� e-post.
+Your account information will be emailed to you.: Kontoinformasjonen din blir sendt deg på e-post.
 Submit: Send inn
 
 ########################################
@@ -919,7 +1166,8 @@ Submit: Send inn
 #
 Continue: Fortsett
 (Your comments will be emailed to the other participants.): (Din kommentarer blir sendt til de andre deltagerne.)
-An appointment has been rejected by: En avtale har blitt avvist av
+XXX has rejected an appointment.: XXX har avvist en avtale.
+Rejected by XXX.: Avvist av XXX.
 
 ########################################
 # Page: remotes.php
@@ -931,25 +1179,23 @@ Add New Remote Calendar: Legg til ekstern kalender
 #
 This event is confidential.: Denne aktiviteten er privat
 (Private): (Privat)
-cont.: forts.
 (cont.): (forts.)
 Approved: Godkjent
 Deleted: Slettet
 Rejected: Avvist
-Waiting for approval: Venter p� godkjenning
+Waiting for approval: Venter på godkjenning
 Unknown: Ukjent
-Click here: Klikk her
-to manage reports for the Public Access calendar: for � administrere kalenderen med offentlig tilgang
-Click here to manage reports for the Public Access calendar.: Klikk her for � administrere rapporter for kalenderen med offentlig tilgang
+Invalid report id.: Ugyldig rapport-ID
+Click here to manage reports for the Public Access calendar.: Klikk her for å administrere rapporter for kalenderen med offentlig tilgang
 Add new report: Legg til ny rapport
 Manage Reports: Administrer rapporter
 
 ########################################
 # Page: search.php
 #
-Advanced Search: Avansert s�k
-Search: S�k
-Keywords: N�kkelord
+Advanced Search: Avansert søk
+Search: Søk
+Keywords: Nøkkelord
 Enter % for all entries: Skriv % for alle aktivitetene
 Include: Inkluder
 Filter by Date: Filtrer etter dato
@@ -961,16 +1207,38 @@ Range: Intervall
 ########################################
 # Page: search_handler.php
 #
-You must enter one or more search keywords.: Vennligst oppgi ett eller flere s�keord
-Search Results: S�keresultat
+You must enter one or more search keywords.: Vennligst oppgi ett eller flere søkeord
+Search Results: Søkeresultat
 match found: treff funnet
 matches found: treff funnet
 No matches found: Ingen treff funnet
+New Search: Nytt søk
 
 ########################################
 # Page: security_audit.php
 #
+list potential security issues: Informasjonen nedenfor viser potensielle problemer med WebCalendar-installasjonen din som kan endres for å gjøre installasjonen din mer sikker.
+For questions about WebCalendar security see the forums: For spørsmål om ethvert WebCalendar-sikkerhetsproblem, vennligst bruk WebCalendar-forumene som er vert på GitHub.com;<br>XXX
+View your current PHP settings: Se dine nåværende PHP-innstillinger
+Security Issue: Sikkerhetsproblem
 Status: =
+Default admin user password: Standard administratorpassord
+You should change the password of the default admin user.: Du bør endre passordet til standard adminbruker.
+File permissions XXX: Filtillatelser: XXX
+item XXX should not be writable: Følgende element skal ikke kunne skrives:<br><tt> XXX</tt>
+File exists XXX: Filen eksisterer: "XXX"
+Because you have email disabled, you should remove this file.: Fordi du har deaktivert e-post, bør du fjerne denne filen.
+File location XXX: Filplassering: "XXX"
+remove XXX if not using: Hvis du ikke bruker filen "XXX", bør du slette den. Eller flytt det i det minste til en ny katalog.
+System Settings XXX: Systeminnstillinger: "XXX"
+consider enabling UAC: Det kan være lurt å vurdere å aktivere brukertilgangskontroll for å angi brukerrettigheter.
+recommend approving new public events: Vi anbefaler at alle innleveringer til offentlige arrangementer godkjennes.
+recommend using CAPTCHA: CAPTCHA anbefales å beskytte mot automatiserte hendelsesinnleveringer.
+Database cache directory location: Database cache katalog plassering
+db cache should be inaccessable: Databasecachen skal være i en katalog som ikke er tilgjengelig med en URL.
+PHP Settings XXX: PHP-innstillinger: "XXX"
+recommend setting XXX Off: Den anbefalte innstillingen for "XXX" er Av.
+recommend setting allow_url_fopen Off: Den anbefalte innstillingen for "allow_url_fopen" er Av når eksterne kalendere ikke er aktivert.
 
 ########################################
 # Page: select_user.php
@@ -980,7 +1248,6 @@ View Another Users Calendar: Se en annen brukers kalender
 ########################################
 # Page: set_entry_cat.php
 #
-Invalid entry id.: Ugyldig ID for akitivitet
 You have not added any categories.: Du har ikke lagt til noen kategorier
 Set Category: Sett kategori
 Global Categories cannot be changed.: Globale kategorier kan ikke endres
@@ -993,12 +1260,14 @@ more: mer
 ########################################
 # Page: users.php
 #
+Remote Calendars: Eksterne kalendere
 denotes administrative user: indikerer administrator
 Add New User: Opprett bruker
 
 ########################################
 # Page: usersel.php
 #
+form: skjema
 Reset: =
 
 ########################################
@@ -1012,21 +1281,21 @@ Add New View: Legg til ny oversikt
 Unnamed View: Ikke navngitt oversikt
 Add View: Legg til oversikt
 Edit View: Redigere oversikt
-View Name: Navn p� oversikt
+View Name: Navn på oversikt
 View Type: Oversiktstype
 Day by Time: Dag etter tid
 Week (Users horizontal): Uke (brukere horisontalt)
 Week by Time: Uke etter tid
 Week (Users vertical): Uke (brukere vertikalt)
 Week (Timebar): Uke (tidsbar)
-Month (Timebar): M�ned (tidsbar)
-Month (side by side): M�ned (side ved side)
-Month (on same calendar): M�ned (i samme kalender)
+Month (Timebar): Måned (tidsbar)
+Month (side by side): Måned (side ved side)
+Month (on same calendar): Måned (i samme kalender)
 
 ########################################
 # Page: views_edit_handler.php
 #
-You must specify a view name: Du m� angi et oversiktnavn
+You must specify a view name: Du må angi et oversiktnavn
 
 ########################################
 # Page: view_d.php
@@ -1037,7 +1306,7 @@ No users for this view.: Ingen brukere for denne visningen
 # Page: view_entry.php
 #
 Update Task Percentage: Oppdater oppgaveprosent
-Completed: Fullf�rt
+Completed: Fullført
 Assistant mode: Assistent modus
 Declined: Avvist
 Needs-Action: Krever-handling
@@ -1045,7 +1314,6 @@ by: av
 Percentage Complete: Prosent ferdig
 External User: Ekstern bruker
 Update: Oppdater
-Attachments: Vedlegg
 at: ved
 comments: kommentarer
 Show: Vis
@@ -1053,6 +1321,7 @@ Hide: Skjul
 Approve/Confirm entry: Godkjenn/bekreft aktiviteten
 Reject entry: Avvis aktiviteten
 Set category: Sett kategori
+Add to My Calendar: Legg til kalenderen min
 Copy entry: Kopier aktiviteten
 This will delete this entry for all users.: Dette vil slette aktiviteten for alle brukerene
 Edit entry: Endre aktiviteten
@@ -1060,6 +1329,7 @@ Edit repeating entry for all dates: Rediger repeterende aktivitet for alle datoe
 Delete repeating event for all dates: Slett repeterende aktiviteter for alle datoer
 Edit entry for this date: Rediger aktiviteten for denne datoen
 Delete entry only for this date: Slett aktiviteten for denne datoen
+Delete entry from calendar of XXX: Slett oppføringen fra kalenderen på XXX
 This will delete the entry from your XXX calendar.: Dette vil slette aktiviteten fra din XXX kalender.
 boss: sjef
 This will delete the entry from your boss calendar.: Dette vil slette aktiviteten fra sjefen din sin kalender.
@@ -1076,12 +1346,13 @@ Palm Pilot: =
 ########################################
 # Page: view_m.php
 #
-Double-click on empty cell to add new entry: Dobbelklikk i en tom celle for � legge til en aktivitet
+Double-click on empty cell to add new entry: Dobbelklikk i en tom celle for å legge til en aktivitet
 
 ########################################
 # Page: week_details.php
 #
 New Entry: Ny aktivitet
+cont.: forts.
 
 ########################################
 # Page: includes/access.php
@@ -1090,55 +1361,97 @@ Another Users Calendar: Se en annen brukers kalender
 Category Management: Kategoriadministrasjon
 Day View: Dagsoversikt
 Edit Event: Rediger aktivitet
-Month View: M�nedsoversikt
+Month View: Månedsoversikt
+Common Trailer: Vanlig trailer
 User Management: Brukeradministrasjon
 Manage Views: Kontroller oversikter
 Week View: Ukesvisning
-Year View: �rsvising
+Year View: Årsvising
 Invalid function id: Ugyldig ID for funksjon
+
+########################################
+# Page: includes/config.php
+#
+Could not find settings.php file...: Fant ikke "settings.php" -filen.<br>Kopier "settings.php.orig" til "settings.php" og rediger for nettstedet ditt.
+Incomplete settings.php file...: Ufullstendig "settings.php" -fil ...
+Could not find XXX defined in...: Fant ikke "XXX" definert i filen "settings.php".
+You must define XXX in: Du må definere "XXX" i "settings.php" -filen.
 
 ########################################
 # Page: includes/date_formats.php
 #
 December: Desember
 Dec: Des
+LANGUAGE DEFINED: SPRÅK DEFINERT
 
 ########################################
 # Page: includes/dbi4php.php
 #
-Error connecting to database: Klarte ikke koble til databasen
+Error connecting to database XXX: Feil ved tilkobling til databasen: "XXX".
 db_type not defined.: db_type ikke definert
-invalid db_type: ugyldig db_type
-Cache cleared from previous SQL!: Hurtiglager t�mt for tidligere SQL!
-Error executing query.: Feil ved utf�ring av sp�rring
-Unfortunately, XXX is not implemented for: Dessverre er ikke XXX implementert for
+invalid db_type XXX: ugyldig db_type "" XXX ".
+Cache cleared from previous SQL!: Hurtiglager tømt for tidligere SQL!
+Error executing query.: Feil ved utføring av spørring
+Unfortunately, XXX is not implemented for YYY: Dessverre er ikke "XXX" implementert for (ÅÅÅ).
 Unknown ODBC error.: Ukjent ODBC-feil.
-Unknown error.: Ukjent feil.
-write: skrive
-Error opening cache dir: Klarte ikke �pne hurtiglagringsmappe
+Error opening cache dir XXX.: Feil ved åpning av hurtigbufferen dir "XXX".
 delete: slette
+Cache error Could not XXX file YYY.: Cache-feil: Kunne ikke XXX-filen "ÅÅÅ".
+
+########################################
+# Page: includes/formvars.php
+#
+Fatal Error: Fatal feil
+Invalid data format for: Ugyldig dataformat for
 
 ########################################
 # Page: includes/functions.php
 #
-exceeds limit of XXX events per day: overg�r grense p� XXX aktiviteter per dag
+Error Type not set for activity log!: Feil: Type ikke angitt for aktivitetslogg!
+This event is XXX.: Denne hendelsen er XXX.
+Conf.: Konf.
+exceeds limit of XXX events per day: overgår grense på XXX aktiviteter per dag
+on: på
 All Attendees: Alle deltagere
 Busy: Opptatt
 Tentative: Tentativ
+Schedule an appointment for XXX.: Planlegg en avtale for XXX: ÅÅÅ.
+date_select: =
 Event approved: Aktivitet godkjent
+Journal approved: Tidsskrift godkjent
+Task approved: Oppgave godkjent
+Attachment: Vedlegg
 Event created: Aktivitet lagd
+Journal created: Journal opprettet
+Task created: Oppgave opprettet
 Event deleted: Aktivitet slettet
+Journal deleted: Journal slettet
+Task deleted: Oppgave slettet
+New user via email (self registration): Ny bruker via e-post (egenregistrering)
+New user (self registration): Ny bruker (egenregistrering)
 Notification sent: Medling sendt
 Event rejected: Aktivitet avvist
-Reminder sent: P�minnelse sendt
+Journal rejected: Journal avvist
+Task rejected: Oppgave avvist
+Reminder sent: Påminnelse sendt
 Event updated: Aktivitet oppdatert
+Journal updated: Journal oppdatert
+Task updated: Oppgave oppdatert
+Delete User: Slett bruker
+WK: =
+TASKS: OPPGAVER
+Task_Title: Tittel
+Due: Forfall
+Task Name: Oppgavenavn
+Task Due Date: Oppgavens forfallsdato
+You have XXX unapproved entries: Du har XXX oppføringer som ikke er godkjent 
 Changes successfully saved: Vellykket lagring av endringer
 Event: Aktitivitet
 Action: Handling
 Printer Friendly: Utskriftsvennlig
 Generate printer-friendly version: Vis som utskriftsvennlig side
 after: etter
-before: f�r
+before: før
 end: slutt
 start: =
 View this event: Vis denne aktiviteten
@@ -1165,28 +1478,47 @@ Aug: =
 Sep: =
 Oct: Okt
 Nov: =
-unknown-month: ukjent-m�ned
-The following error occurred: F�lgende feil oppstod
+SU: SØ
+MO: MA
+TU: TI
+WE: ON
+TH: TO
+FR: =
+SA: LØ
+unknown-month: ukjent-måned
+First Quarter Moon: Første kvartalsmåne
+Full Moon: Fullmåne
+Last Quarter Moon: =
+New Moon: Nymåne
+Error TIME_SLOTS undefined!: Feil: TIME_SLOTS udefinert!
+The following error occurred: Følgende feil oppstod
 You are not authorized.: Du har ikke tillatelse
 Add N hours to: Legg til N timer til
 Subtract N hours from: Trekk fra N timer fra
 same as: samme som
 server time: servertid
-Error approving event: Feil ved godkjenning av aktivitet
-Sunday: S�ndag
+Cannot read timezone file XXX.: Kan ikke lese tidssonefilen: XXX.
+Your current GMT offset is XXX hours.: Din nåværende GMT forskyvning er XXX timer.
+Unauthorized: Uautorisert
+Error approving event XXX.: Feil ved godkjenning av hendelse: XXX.
+Error deleting event XXX.: Feil ved sletting av hendelse: XXX.
+Error rejecting event XXX.: Feil ved avvisning av hendelse: XXX.
+Sunday: Søndag
 Monday: Mandag
 Tuesday: Tirsdag
 Wednesday: Onsdag
 Thursday: Torsdag
 Friday: Fredag
-Saturday: L�rdag
-Sun: S�n
+Saturday: Lørdag
+Sun: Søn
 Mon: Man
 Tue: Tir
 Wed: Ons
 Thu: Tor
 Fri: Fre
-Sat: L�r
+Sat: Lør
+unknown-weekday: ukjent ukedag
+Invalid referring URL: Ugyldig henvisnings-URL
 
 ########################################
 # Page: includes/help_list.php
@@ -1200,59 +1532,518 @@ Page: Side
 #
 My Calendar: Min kalender
 Add New Entry: Legg til aktivitet
+Add New Task: Legg til ny oppgave
 Logout: Logg ut
+Home: Hjem
 Back to My Calendar: Tilbake til min kalender
-Go to: G� til
+Go to: Gå til
 Manage calendar of: Administrer kalenderen for
 
 ########################################
 # Page: includes/translate.php
 #
-Browser Language Not Found: Nettleserens spr�k ble ikke funnet
-not supported: Ikke st�ttet
-English: Engelsk
-English-US: Engelsk-US
+Browser Language Not Found: Nettleserens språk ble ikke funnet
+(not supported): (ikke støttet)
+Abkhazian: Abkasisk
+Acoli: =
+Adangme: =
+Adyghe: =
+Afar: =
+Afrihili: =
 Afrikaans: =
+Ainu: =
+Akan: =
+Akkadian: Akkadisk
 Albanian: Albansk
+Aleut: =
+Algonquian: =
+Altai (Southern): Altai (sør)
+Amharic: Amharisk
+Angika: =
+Apache: =
+Arabic (Algeria): Arabisk (Algerie)
+Arabic (Bahrain): Arabisk (Bahrain)
+Arabic (Egypt): Arabisk (Egypt)
+Arabic (Iraq): Arabisk (irak)
+Arabic (Jordan): Arabisk (Jordan)
+Arabic (Kuwait): Arabisk (Kuwait)
+Arabic (Lebanon): Arabisk (Libanon)
+Arabic (Libya): Arabisk (Libya)
+Arabic (Morocco): Arabisk (Marokko)
+Arabic (Oman): Arabisk (oman)
+Arabic (Qatar): Arabisk (Qatar)
+Arabic (Saudi Arabia): Arabisk (Saudi-Arabia)
+Arabic (Syria): Arabisk (Syria)
+Arabic (Tunisia): Arabisk (tunisia)
+Arabic (U.A.E.): Arabisk (U.A.E.)
+Arabic (Yemen): Arabisk (jemen)
 Arabic: Arabisk
+Aragonese: =
+Aramaic: Arameisk
+Arapaho: =
+Arawak: =
+Armenian: Armensk
+Assamese: Assameser
+Asturian: Asturisk
+Athapascan: =
+Avaric: Avarisk
+Avestan: =
+Awadhi: =
+Aymara: =
+Azerbaijani: Aserbajdsjansk
+Balinese: Balinesisk
+Baluchi: =
+Bambara: =
+Bamileke: =
+Banda: =
+Basa: =
+Bashkir: =
 Basque: Baskisk
+Beja: =
+Belarusian: Hviterussisk
+Bemba: =
+Bengali: =
+Bhojpuri: =
+Bihari: =
+Bikol: =
+Bislama: =
+Blackfoot: Svartfot
+Blin: =
+Bliss: lykksalighet
+Bosnian: Bosnisk
+Braj: =
+Breton: Bretonsk
+Buginese: Buginesisk
 Bulgarian: Bulgarsk
+Buriat: =
+Burmese: Burmesisk
+Caddo: =
 Catalan: Katalansk
+Cebuano: =
+Chagatai: =
+Chamorro: =
+Chechen: Tsjetsjensk
+Cherokee: =
+Cheyenne: =
+Chibcha: =
+Chichewa: =
+Chinese (Hong Kong): Kinesisk (Hong Kong)
+Chinese (PRC): Kinesisk (PRC)
 Chinese (Simplified/GB2312): Kinesisk med enkle tegn
+Chinese (Singapore): Kinesisk (Singapore)
+Chinese (Taiwan): Kinesisk (Taiwan)
 Chinese (Traditional/Big5): Kinesisk
+Chinook: =
+Chipewyan: =
+Choctaw: =
+Chuukese: =
+Chuvash: =
+Coptic: Koptisk
+Cornish: =
+Corsican: Korsikansk
+Cree: =
+Creek: lita elv, bekk
 Croatian: Kroatisk
 Czech: Tsjekkisk
+Dakota: =
 Danish: Dansk
+Dargwa: =
+Delaware: =
+Dinka: =
+Dogri: =
+Dogrib: =
+Duala: =
+Dutch (Belgium): Nederlandsk (Belgia)
 Dutch: Nederlansk
-Elven: Alvisk
+Dyula: =
+Dzongkha: =
+Edo: =
+Efik: =
+Ekajuk: =
+Elamite: Elamitt
+English (Australia): Engelsk (Australia)
+English (Belize): Engelsk (Belize)
+English (Canada): Engelsk (Canada)
+English (Ireland): Engelsk (irland)
+English (Jamaica): Engelsk (Jamaica)
+English (New Zealand): Engelsk (New Zealand)
+English (Philippines): Engelsk (Filippinene)
+English (South Africa): Engelsk (Sør-Afrika)
+English (Trinidad & Tobago): Engelsk (Trinidad og Tobago)
+English (United Kingdom): Engelsk (Storbritannia)
+English (United States): Engelsk, forente stater)
+English (Zimbabwe): Engelsk (Zimbabwe)
+English: Engelsk
+Erzya: =
+Esperanto: =
 Estonian: Estisk
+Ewe: Tack
+Ewondo: =
+Fang: =
+Fanti: =
+Faroese: Færøysk
+Fijian: =
+Filipino: Filippinsk
 Finnish: Finsk
+Fon: =
+French (Belgium): Fransk (Belgia)
+French (Canada): Fransk (Canada)
+French (France): Fransk (Frankrike)
+French (Luxembourg): Fransk (Luxembourg)
+French (Monaco): Fransk (Monaco)
+French (Switzerland): Fransk (Sveits)
 French: Fransk
+Frisian (Eastern): Frisisk (øst)
+Frisian (Northern): Frisisk (nord)
+Frisian (Western): Frisisk (vestlig)
+Frisian: Frisisk
+Friulian: =
+Fulah: =
+Ga: =
+Galibi: =
 Galician: Galisisk
+Ganda: =
+Gayo: =
+Gbaya: =
+Geez: Jøss
+Georgian: Georgisk
+German (Austria): Tysk (østerrike)
+German (Germany): Tysk (tyskland)
+German (Liechtenstein): Tysk (Liechtenstein)
+German (Luxembourg): Tysk (luxembourg)
+German (Standard): Tysk (standard)
+German (Switzerland): Tysk (Sveits)
 German: Tysk
+Gilbertese: =
+Gondi: =
+Gorontalo: =
+Gothic: Gotisk
+Grebo: =
 Greek: Gresk
+Greenlandic: Grønlandsk
+Guarani: =
+Gujarati: =
+Gwich&#39;in: Gwich'in
+Haida: =
+Haitian (Creole): Haitisk (kreolsk)
+Haitian: Haitisk
+Hausa: =
+Hawaiian: Hawaiisk
 Hebrew: Hebraisk
+Herero: =
+Hiligaynon: =
+Hindi: =
+Hiri Motu: =
+Hittite: Hetittisk
+Hmong: =
 Holo (Taiwanese): Taiwansk
 Hungarian: Ungarsk
+Hupa: =
+Iban: =
 Icelandic: Islandsk
+Ido: Jeg gjør
+Igbo: =
+Iloko: =
 Indonesian: Indonesisk
+Ingush: =
+Inuktitut: =
+Inupiaq: =
+Iranian: Iransk
+Irish (Gaelic): Irsk (gælisk)
+Irish: irsk
+Iroquoian: =
+Italian (Switzerland): Italiensk (Sveits)
 Italian: Italiensk
 Japanese: Japansk
+Javanese: Javanesisk
+Judeo-Arabic: Jødisk-arabisk
+Judeo-Persian: Jødisk-persisk
+Kabardian: Kabardisk
+Kabyle: =
+Kachin: =
+Kalaallisut: =
+Kalmyk: =
+Kamba: =
+Kannada: =
+Kanuri: =
+Kara-Kalpak: =
+Karachay-Balkar: =
+Karelian: Karelsk
+Kashmiri: =
+Kashubian: Kasjubisk
+Kawi: =
+Kazakh: Kasakhisk
+Khasi: =
+Khmer (Central): Khmer (sentralt)
+Khmer: =
+Khotanese: =
+Kikuyu: =
+Kimbundu: =
+Kinyarwanda: =
+Kirghiz: =
+Klingon: =
+Komi: =
+Kongo: =
+Konkani: =
+Korean (Johab): Koreansk (Johab)
+Korean (North): Koreansk (nord)
+Korean (South): Koreansk (sør)
 Korean: Koreansk
+Kosraean: =
+Kpelle: =
+Kuanyama: =
+Kumyk: =
+Kurdish: Kurdisk
+Kutenai: =
+Kyrgyz: Kirgisisk
+Ladino: =
+Lahnda: =
+Lamba: =
+Lao: =
+Latin: =
+Latvian: Lettisk
+Lezghian: =
+Limburgan: =
+Lingala: =
 Lithuanian: Litauisk
+Lojban: =
+Lozi: =
+Luba-Katanga: =
+Luba-Lulua: =
+Luiseno: =
+Lunda: =
+Luo: =
+Lushai: =
+Luxembourghish: Luxembourgsk
+Macedonian: Makedonsk
+Madurese: =
+Magahi: =
+Maithili: =
+Makasar: =
+Malagasy: Madagaskisk
+Malay: Malaysisk
+Malayalam: =
+Maldivian: =
+Maltese: Maltesisk
+Manchu: =
+Mandar: =
+Mandingo: =
+Manipuri: =
+Manx: =
+Maori: =
+Mapuche: =
+Marathi: =
+Mari: =
+Marshallese: =
+Marwari: =
+Masai: =
+Mayan: Maya
+Mende: =
+Mi&#39;kmaq: Mi'kmaq
+Minangkabau: =
+Mirandese: =
+Mohawk: =
+Moksha: =
+Moldavian: Moldavisk
+Mongo: =
+Mongolian: Mongolsk
+Montenegrin: =
+Moroccan: Marokkansk
+Mossi: =
+Myanmar: =
+Māori: Maori
+N&#39;Ko: N'Ko
+Nauru: =
+Navajo: =
+Ndebele (North): Ndebele (Nord)
+Ndebele (South): Ndebele (Sør)
+Ndebele: =
+Ndonga: =
+Neapolitan: Napolitansk
+Nepali: Nepalesisk
+Nias: =
+Niuean: =
+Nogai: =
+Norse: norrønt
+Norwegian (Bokmål): Norsk (bokmål)
+Norwegian (Nynorsk): Norsk (nynorsk)
 Norwegian: Norsk
+Nyamwezi: =
+Nyankole: =
+Nyoro: =
+Nzima: =
+Occitan: Occitansk
+Odia: =
+Ojibwa: =
+Oriyia: =
+Oromo: =
+Osage: =
+Ossetic: Ossetisk
+Pahlavi: =
+Palauan: =
+Pali: =
+Pampanga: =
+Pangasinan: =
+Panjabi: =
+Papiamento: =
+Pashto: =
+Pedi: =
+Persian (Farsi): Persisk (farsi)
+Persian (Iran): Persisk (Iran)
+Persian: Persisk
+Phoenician: Fønikisk
+Pohnpeian: =
 Polish: Polsk
 Portuguese: Portugisisk
-Portuguese/Brazil: Portugisisk/Brasiliansk
+Portuguese/Brazil: Portugisisk / Brasil
+Punjabi (India): =
+Punjabi (Pakistan): =
+Punjabi: =
+Quechua: =
+Rajasthani: =
+Rapanui: =
+Rarotongan: =
+Rhaeto-Romanic: Retoromansk
 Romanian: Rumensk
+Romansh: Romansk
+Romany: =
+Rundi: =
+Russian (Moldavia: Russisk (Moldavia
+Russian (Republic of Moldova): Russisk (Republikken Moldova)
 Russian: Russisk
+Sami (Inari): Samisk (Inari)
+Sami (Lappish): Samisk (lappisk)
+Sami (Lule): Samisk (Lule)
+Sami (Northern): Samisk (nord)
+Sami (Skolt): Samisk (skolt)
+Sami (Southern): Samisk (sør)
+Sami: Samisk
+Samoan: Samoansk
+Samoli: =
+Sandawe: =
+Sango: =
+Sanskrit: =
+Santali: =
+Sardinian: Sardinsk
+Sasak: =
+Scots (Gaelic): Skotsk (gælisk)
+Selkup: =
+Serbian (Upper): Serbisk (øvre)
 Serbian: Serbisk
+Serer: =
+Sesotho: =
+Shan: =
+Shona: =
+Sichuan Yi: =
+Sicilian: Siciliansk
+Sindhi: =
+Sinhala: =
+Slavic: Slavisk
 Slovak: Slovakisk
 Slovenian: Slovakisk
+Sogdian: =
+Somali: Somalisk
+Somani: =
+Songhai: =
+Soninke: =
+Sorbian (Lower): Sorbisk (nedre)
+Sorbian (Upper): Sorbisk (øvre)
+Sorbian: Sorbisk
+Sotho: =
+Spanish (Argentina): Spansk (Argentina)
+Spanish (Bolivia): Spansk (Bolivia)
+Spanish (Chile): Spansk (Chile)
+Spanish (Colombia): Spansk (Colombia)
+Spanish (Costa Rica): Spansk (Costa Rica)
+Spanish (Dominican Republic): Spansk (Dominikanske republikk)
+Spanish (Ecuador): Spansk (Ecuador)
+Spanish (El Salvador): Spansk (El Salvador)
+Spanish (Guatemala): Spansk (Guatemala)
+Spanish (Honduras): Spansk (Honduras)
+Spanish (Mexico): Spansk (Mexico)
+Spanish (Nicaragua): Spansk (Nicaragua)
+Spanish (Panama): Spansk (Panama)
+Spanish (Paraguay): Spansk (Paraguay)
+Spanish (Peru): Spansk (Peru)
+Spanish (Puerto Rico): Spansk (Puerto Rico)
+Spanish (Spain): Spansk (Spania)
+Spanish (Uruguay): Spansk (Uruguay)
+Spanish (Venezuela): Spansk (Venezuela)
 Spanish: Spansk
+Sranan Tongo: =
+Sukuma: =
+Sumerian: Sumerisk
+Sundanese: Sundanesisk
+Susu: =
+Sutu: =
+Swahili: =
+Swati: =
+Swedish (Finland): Svensk (Finland)
+Swedish (Sweden): Svensk (Sverige)
 Swedish: Svensk
+Syriac: Syrisk
+Tagalog: =
+Tahitian: Tahitisk
+Tai: =
+Taiwan: =
+Tajik: Tadsjikisk
+Tamashek: =
+Tamil: =
+Tatar: Tatarisk
+Telugu: =
+Tereno: =
+Tetum: =
+Thai: =
+Tibetan: Tibetansk
+Tigre: =
+Tigrinya: =
+Timne: =
+Tlingit: =
+Tok Pisin: =
+Tokelau: =
+Tonga (Nytmhasa): =
+Tonga (Tonga Islands): Tonga (Tongaøyene)
+Tonga: =
+Tsimshian: =
+Tsonga: =
+Tswana: =
+Tumbuka: =
 Turkish: Tyrkisk
+Turkmen: =
+Tuvinian: =
+Twi: =
+Udmurt: =
+Ugaritic: Ugarittisk
+Ukrainian: Ukrainsk
+Umbundu: =
+Urdu: =
+Uyghur: =
+Uzbek: Usbekisk
+Vai: =
+Venda: =
+Vietnamese: Vietnamesisk
+Volapük: =
+Votic: Votisk
+Wakashan: =
+Walloon: Wallonisk
+Waray: =
+Washo: =
 Welsh: Walisisk
+Wolaitta: =
+Wolof: =
+Xhosa: =
+Yakut: =
+Yao: =
+Yapese: Japansk
+Yiddish: Jiddisk
+Yorùbá: =
+Yupik: =
+Zande: =
+Zapotec: =
+Zaza: =
+Zenaga: =
+Zhuang: =
+Zulu: =
 Browser-defined: Nettleser-definert
 event: aktivitet
 journal: =
@@ -1279,24 +2070,23 @@ incorrect password: feil passord
 no such user: ingen slik bruker
 
 ########################################
+# Page: includes/user.php
+#
+Account disabled: Kontoen er deaktivert
+
+########################################
 # Page: includes/xcal.php
 #
-MO: MA
-TU: TI
-WE: ON
-TH: TO
-FR: =
-SA: L�
-SU: S�
 Interval: Intervall
-Months: M�neder
-Month Days: M�neder dager
+Months: Måneder
+Month Days: Måneder dager
 Days: Dager
 Weeks: Uker
 Position: Posisjon
 Until: Inntil
 Count: Antall
-Unnamed Event: Aktivitet uten navn
+Inclusion Dates: Inkluderingsdatoer
+Exclusion Dates: Ekskluderingsdatoer
 Event Imported: Aktivitet importert
 
 ########################################
@@ -1309,84 +2099,93 @@ Mb: MB
 ########################################
 # Page: includes/classes/WebCalMailer.class
 #
-Notification: P�minnelse
+Notification: Påminnelse
 authenticate: SMTP Feil: Kunne ikke authentisere.
 connect_host: SMTP Feil: Kunne ikke koble til SMTP host.
 data_not_accepted: SMTP Feil: Data ble ikke akseptert.
 encoding: Ukjent encoding:
-execute: Kunne ikke utf�re:
-file_access: Kunne ikke f� tilgang til filen:
-file_open: Fil feil: Kunne ikke �pne filen:
-from_failed: F�lgende Fra feilet:
+execute: Kunne ikke utføre:
+file_access: Kunne ikke få tilgang til filen:
+file_open: Fil feil: Kunne ikke åpne filen:
+from_failed: Følgende Fra feilet:
 instantiate: Kunne ikke instantiate mail funksjonen.
 mailer_not_supported: mailer er ikke supportert.
-provide_address: Du m� ha med minst enmottager adresse.
-recipients_failed: SMTP Feil: F�lgende mottagere feilet:
+provide_address: Du må ha med minst enmottager adresse.
+recipients_failed: SMTP Feil: Følgende mottagere feilet:
 
 ########################################
-# Page: includes/js/admin.php
+# Page: includes/classes/captcha/captcha.php
 #
-Server URL is required.: URL for server er p�krevd
-Server URL must end with /.: URL for server m� slutte p� '/'
-Invalid work hours.: Ugyldige arbeidstid
-Invalid color for document background.: Ugyldig bakgrunnsfarge
-Invalid color for document title.: Ugyldig tittelfarge
-Invalid color for table cell background.: Ugyldig farge for tabellbakgrunn
-Invalid color for table grid.: Ugyldig farge for tabellrutenett
-Invalid color for table header background.: Ugyldig farge for bakgrunnen i tabellheaderen
-Invalid color for table text background.: Ugyldig farge for bakgrunnen til tabellteksten
-Invalid color for event popup background.: Ugyldig farge for bakgrunnen i aktivitetspopups
-Invalid color for event popup text.: Ugyldig farge for teksten i aktivitetspopups
-Invalid color for table cell background for today.: Ugyldig farge for dagens tabellbakgrunn
-Color format should be RRGGBB.: Fargen skal skrives som '#RRGGBB'
+Enter Characters Seen in Graphic: Skriv inn tegn sett i grafikk
+Enter the correct letters and numbers...: Skriv inn riktige bokstaver og tall fra bildet i tekstboksen. Denne lille testen fungerer som tilgangsbegrensning mot ondsinnede roboter. Bare last inn siden på nytt hvis denne grafikken er for vanskelig å lese
+Challenge/Response: Utfordring / respons
 
 ########################################
 # Page: includes/js/availability.php
 #
-Change the date and time of this entry?: Endre datoen og tiden for denne aktiviteten?
+Change the date and time of this entry?: Vil du endre dato og klokkeslett for denne oppføringen?
 
 ########################################
 # Page: includes/js/edit_entry.php
 #
-You have not entered a Brief Description: Du har ikke oppgitt noen kort beskrivelse
-time prior to work hours...: Tidspunktet du har angitt er f�r din foretrukne arbeidstid. Er dette korrekt?
+You have not entered a Brief Description: Du har ikke angitt en kort beskrivelse
+time prior to work hours...: tid før arbeidstid ...
 Invalid Event Date: Ugyldig aktivitetsdato
-Please add a participant: Legg til en deltager
+Please add a participant: Vennligst legg til en deltaker
 Invalid Date: Ugyldig dato
-You have not entered a valid time of day: Du har ikke oppgitt noe gyldig tidspunkt
-
-########################################
-# Page: includes/js/edit_layer.php
-#
-Invalid color: Ugyldig farge
+You have not entered a valid time of day: Du har ikke angitt et gyldig tidspunkt på dagen.
 
 ########################################
 # Page: includes/js/edit_nonuser.php
 #
-Calendar ID cannot be blank.: ID for kalender kan ikke v�re tom.
-First and last names cannot both be blank.: For- og etternavn kan ikke begge v�re tomme.
+Calendar ID cannot be blank.: Kalender-ID kan ikke være tom.
+First and last names cannot both be blank.: For- og etternavn kan ikke begge være blanke.
 
 ########################################
 # Page: includes/js/edit_remotes.php
 #
-URL cannot be blank.: URL kan ikke v�re tom.
+Invalid color: Ugyldig farge
+Color format should be RRGGBB.: Fargeformat skal være #RRGGBB.
+URL cannot be blank.: URL kan ikke være tom.
 
 ########################################
 # Page: includes/js/export_import.php
 #
-File type does not match Import Format: Filtype stemmer ikke med importeringsformat
+File type does not match Import Format: Filtype samsvarer ikke med importformat
 
 ########################################
-# Page: includes/js/visible.php
+# Page: includes/js/pref.php
 #
+Invalid color for document background.: Ugyldig bakgrunnsfarge
+Invalid color for document title.: Ugyldig tittelfarge
+Invalid color for table cell background.: Ugyldig farge for tabellbakgrunn
+Invalid color for table cell background for today.: Ugyldig farge for dagens tabellbakgrunn
+Invalid work hours.: Ugyldige arbeidstid
+
+########################################
+# Page: includes/js/translate.js.php
+#
+Server URL must end with /.: URL for server må slutte på '/'
+Invalid color for table grid.: Ugyldig farge for bordrutenett.
+Invalid color for event popup background.: Ugyldig farge for popup-bakgrunn for hendelsen.
+Invalid color for event popup text.: Ugyldig farge for popup-tekst for hendelsen.
+Invalid color for table header text.: Ugyldig farge for tabelloverskriftstekst.
+Invalid color for table header background.: Ugyldig farge for tabellhode bakgrunn.
+Server URL is required.: URL for server er påkrevd
 Invalid Color: Ugyldig farge
+Database Name: Databasenavn
+Full Path (no backslashes): Full sti (ingen tilbakeslag)
+The password contains illegal characters.: Passordet inneholder ulovlige tegn.
+Error you must specify a Single-User Login: Feil du må angi en enkeltbrukerpålogging
+Could not find XXX.: Fant ikke XXX.
+Could not find XXX in DOM.: Fant ikke XXX i DOM.
 
 ########################################
 # Page: includes/menu/index.php
 #
 This Week: Denne uka
-This Month: Denne m�neden
-This Year: Dette �ret
+This Month: Denne måneden
+This Year: Dette året
 Exit: Avslutt
 Add New Event: Legg til ny aktivitet
 Delete Entries: Slett aktiviteter
@@ -1402,25 +2201,125 @@ Help Contents: Innhold
 ########################################
 # Page: install/index.php
 #
-Create New: Opprett ny
 Database Cache Directory: Hurtiglagermappe for databasen
-Database Name: Databasenavn
+Create New: Opprett ny
 Failure Reason: Feilet fordi
+You must manually create database: Du må opprette databasen manuelt
 Single-User: Enkelbruker
 Test Settings: Test innstillinger
 Timezone Conversion Successful: Vellykket konvertering av tidssone
-WebCalendar Installation Wizard: WebCalendar installasjonsveileder
-Step: Steg
 WebCalendar Installation Wizard Step XXX: WebCalendar installasjonsveileder steg XXX
-You must manually create database: Du m� opprette databasen manuelt
+Password Accepted: Passord akseptert
 Successful Login: Vellykket innlogging
+Password Incorrect: Feil passord
 Invalid Login: Ugyldig innlogging
-Error Unable to write to file: Klarte ikke skrive til fil
+Display Errors: Skjermfeil
+File Uploads: Filopplastinger
+Allow URL fopen: Tillat URL-fopen (kun nødvendig hvis eksterne kalendere brukes)
+Safe Mode: Sikkerhetsmodus
+Safe Mode Allowed Vars: Safe Mode Tillatt Vars (TZ kreves bare hvis Safe Mode er på)
+GD: GD (nødvendig for bakgrunnsbilde med gradient)
+Passwords do not match!: Passordene er ikke like!
+Unable to write password to settings.php file: Kan ikke skrive passord til "settings.php" -filen.
+Password Updated: Passord oppdatert
+Password has been set: Passord er satt.
+Connection Successful...: Tilkobling vellykket  Gå til neste side for å fortsette installasjonen.
+Correct your entries or click the Create New...: Korriger oppføringene dine, eller klikk på knappen  Opprett ny  for å fortsette installasjonen.
+Correct your entries and try again.: Korriger oppføringene og prøv igjen.
+XXX does not exist: XXX eksisterer ikke
+XXX is not writable: XXX er ikke skrivbar
+Error Converting Timezone: Feil ved konvertering av tidssone
 Error Unable to write to file XXX.: Klarte ikke skrive til fil XXX.
+Please change the file permissions of this file.: Endre filtillatelsene til denne filen.
+Please change includes dir permission: Endre filtillatelsene i "inkluderer" -katalogen for å tillate skriving av andre brukere.
+Your settings have been saved.: Dine innstillinger har blitt lagret.
+OFF: AV
+ON: PÅ
+WebCalendar Setup Wizard: Veiviser for konfigurering av WebCalendar
+This installation wizard will guide you...: Denne installasjonsveiviseren vil guide deg gjennom å sette opp en grunnleggende WebCalendar-installasjon.<br>For hjelp og feilsøking, se:<br>
+System Administrators Guide: Systemadministratorveiledning
+Frequently Asked Questions: ofte stilte spørsmål
+FAQ: =
+Troubleshooting: Feilsøking
+Getting Help: Får hjelp
+Upgrading Guide: Oppgraderingsguide
+User Supported Wiki: Brukerstøttet Wiki
+PHP Version Check: PHP versjonskontroll
+Check to see if PHP 7.1.0 or greater is installed.: Sjekk om PHP 7.1.0 eller nyere er installert.
+PHP version: PHP-versjon
+PHP Settings: PHP-innstillinger
+Detailed PHP Info: Detaljert PHP-informasjon
+settings.php Status: =
+Session Check: Sesjonskontroll
+To test the proper operation of sessions...: Last denne siden på nytt for å teste riktig bruk av økter. Du bør se økningstellerøkningen hver gang.
+SESSION COUNTER: SESSJETELLER
+The file permissions of settings.php are set...: Filtillatelsene til "settings.php" er satt slik at installasjonsprogrammet ikke har tillatelse til å endre det. Endre filtillatelsene til følgende fil for å fortsette
+The file permissions of the includes directory are set...: Filtillatelsene til den inkluderte katalogen er satt slik at installasjonsprogrammet ikke har tillatelse til å opprette en ny fil. Endre tillatelsene til følgende katalog for å fortsette
+Your settings.php file appears to be valid.: Filen din "settings.php" ser ut til å være gyldig.
+Configuration Wizard Password: Konfigurasjonsveiviserpassord
+Create Settings File Password: Opprett innstillingsfilpassord
+db setup directions...: I denne delen vil du sette opp og teste en forbindelse til databaseserveren. Kontoinformasjonen som leveres skal ha FULL tillatelse til å opprette databaser, tabeller og brukere. Hvis dette ikke er mulig, eller databasetilgangen din er begrenset, må du konfigurere databasen manuelt.
+Database Status: Databasestatus
+Supported databases for your PHP installation: Støttede databaser for PHP-installasjonen
+Your current database settings are able to access the database.: De nåværende databaseinnstillingene dine har tilgang til databasen.
+Please Test Settings: Test innstillingene
+Your current database settings are not able...: De nåværende databaseinnstillingene dine har ikke tilgang til databasen eller er ennå ikke testet.
+Database Settings: Databaseinnstillinger
+Database Type: Databastype
+Server: =
+Connection Persistence: Tilkoblingspersistens
+All your database tables appear to be up...: Alle databasetabellene ser ut til å være oppdatert. Du kan gå videre til neste side og fullføre konfigurasjonen av WebCalendar.
+This appears to be a new installation...: Dette ser ut til å være en ny installasjon. Hvis dette ikke er riktig, kan du gå tilbake til forrige side og rette innstillingene.
+This appears to be an upgrade...: Dette ser ut til å være en oppgradering fra versjon&nbsp;XXX&nbsp;til&nbsp;ÅÅÅ.
+The database requires some data input...: Databasen krever noe datainngang. Klikk Oppdater database for å fullføre oppgraderingen.
+In this section we will perform...: I denne delen vil vi utføre endringene for å bringe databasen din til ønsket nivå. Hvis du bruker en fullt støttet database, vil dette trinnet utføres automatisk for deg. Hvis ikke, kan den nødvendige SQL vises, og du bør kunne kutte og lime den inn i spørreskjermbildet til databaseserveren.
+No database actions are required.: Ingen databasehandlinger er påkrevd.
+The following database actions are required: Følgende databasehandlinger kreves
+ODBC Underlying Database: ODBC underliggende database:
+Automatic installation not supported: Automatisk installasjon er ikke implementert fullt ut for databasetypen din. Du må opprette de nødvendige tabellene manuelt ved hjelp av den medfølgende SQL-en. Klikk  Vis SQL  for å fortsette. Klipp og lim inn i spørringsvinduet for databasen.
+This may take several minutes to complete: Dette kan ta flere minutter å fullføre.
+Install Database: Installer database
+Update Database: Oppdatere database
+Display Required SQL: Vis påkrevd SQL
+Return to previous page after processing SQL.: Etter å ha behandlet denne SQL manuelt, må du gå tilbake til forrige side og teste databasen på nytt slik at skriptet kan oppdage endringene.
+This is the final step in setting up your WebCalendar Installation.: Dette er det siste trinnet i å konfigurere WebCalendar-installasjonen.
+Timezone Conversion: Konvertering av tidssone
+It appears that you have NOT converted...: Det ser ut til at du IKKE har konvertert dine eksisterende WebCalendar-hendelsesdata til GMT. Hvis du har det, kan du ignorere denne meldingen og ikke fortsette med konverteringen. Hvis dette er en ny installasjon, kan du også ignorere denne meldingen.
+Convert Data to GMT: Konverter data til GMT
+Application Settings: Applikasjon innstillinger
+HTTP-based authentication was not detected...: HTTP-basert autentisering ble ikke oppdaget. Du må konfigurere webserveren din på nytt hvis du ønsker å velge "Web Server" fra "User Authentication" -valgene nedenfor.
+HTTP-based authentication was detected...: HTTP-basert autentisering ble oppdaget. Brukerautentisering håndteres av webserveren din. Du bør velge "Web Server" fra listen over "User Authentication" -valg nedenfor.
+Create Default Admin Account: Opprett standard administratorkonto
+(Admin Account Not Found): (Administratorkonto ikke funnet)
+User Authentication: Bruker autentisering
+Web-based via WebCalendar (default): Nettbasert via WebCalendar (standard)
+Web Server (not detected): Webserver (ikke oppdaget)
+Web Server (detected): Webserver (oppdaget)
+None (Single-User): Ingen (enbruker)
+Read-Only: Skrivebeskyttet
+Environment: Miljø
+Production: Produksjon
+Development: Utvikling
+Save Settings: Lagre innstillinger
+Launch WebCalendar: Start WebCalendar
+
+########################################
+# Page: install/install_functions.php
+#
+Error updating table XXX: Feil ved oppdatering av tabellen "XXX": ÅÅÅ.
+Conversion Successful: Konvertering vellykket 
+Perl script required: Din forrige versjon av WebCalendar krever at du kjører et PERL-skript for å konvertere dataene dine. Kjør /tools/upgrade_to_0.9.7.pl og gå tilbake til denne siden for å fortsette.
+previous version requires updating several tables: Din forrige versjon av WebCalendar krever oppdatering av flere databasetabeller.
+
+########################################
+# Page: themes/theme_inc.php
+#
+NO PREVIEW AVAILABLE: INGEN FORHÅNDSVISNING TILGJENGELIG
 
 ########################################
 # Page: tools/reload_remotes.php
 #
+Error connecting to database: Klarte ikke koble til databasen
 Include Path: Inkluderingssti
 Deleting events for: Sletter aktiviteter for
 Importing events for: Importer aktiviteter for
@@ -1435,12 +2334,59 @@ Remote Calendars not enabled: Eksterne kalendere er ikke aktivert
 could not find event id: klarte ikke finne ID for aktivitet
 could not find event id XXX in database.: klarte ikke finne ID XX for aktivitet i databasen.
 task: oppgave
-This is a reminder for the XXX detailed below.: Dette er en p�minnelse om XXX beskrevet nedenfor.
-Pecentage Complete: Prosent fullf�rt
-Reminder: P�minnelse
+This is a reminder for the XXX detailed below.: Dette er en påminnelse om XXX beskrevet nedenfor.
+Pecentage Complete: Prosent fullført
+Reminder: Påminnelse
+
+########################################
+# Page: ws/event_mod.php
+#
+Unsupported action XXX.: Handling som ikke støttes: XXX.
+No event id specified.: Ingen hendelses-ID er spesifisert.
+Not authorized (not admin).: Ikke autorisert (ikke administrator).
+
+########################################
+# Page: ws/get_events.php
+#
+Checking for events for XXX from date YYY to date ZZZ.: Ser etter hendelser for XXX fra dato YYY til date ZZZ.
+Found XXX events in time range.: Fant XXX hendelser i tidsrommet.
+Event id=XXX YYY at ZZZ on AAA.: Hendelses-id = XXX "ÅÅÅ" på ZZZ på AAA.
+
+########################################
+# Page: ws/get_reminders.php
+#
+Allowing XXX user to view other users calendar.: Tillater XXX-brukere å se andre brukeres kalender.
+Error Email reminders disabled for user XXX.: Feil: E-postpåminnelser deaktivert for brukeren "XXX".
+Number of site_extras XXX.: Antall side_extras: XXX.
+Reminder set for event.: Påminnelse satt for arrangementet.
+Mins Before XXX.: Min. Før: XXX.
+Event time is XXX.: Arrangementstid er: XXX.
+Remind time is XXX.: Påminnelsestiden er: XXX.
+Reminders for user XXX, login YYY.: Påminnelser for brukeren "XXX", logg inn "ÅÅÅ".
+
+########################################
+# Page: ws/get_unapproved.php
+#
+Getting unapproved for user XXX.: Ikke godkjent for brukeren "XXX".
+Event id=XXX YYY already sent.: Hendelses-id = XXX "ÅÅÅ" allerede sendt.
 
 ########################################
 # Page: ws/login.php
 #
-No login required for single-user mode.: Innlogging ikke n�dvendig i enkelbruker-modus
-No login required for HTTP authentication.: Innlogging ikke n�dvendig ved HTTP-autentisering
+No login required for single-user mode.: Innlogging ikke nødvendig i enkelbruker-modus
+No login required for HTTP authentication.: Innlogging ikke nødvendig ved HTTP-autentisering
+
+########################################
+# Page: ws/user_mod.php
+#
+Invalid characters in login: Ugyldige tegn i påloggingen.
+Username XXX does not exist.: Brukernavnet "XXX" eksisterer ikke.
+You cannot remove admin rights from yourself!: Du kan ikke fjerne administratorrettigheter fra deg selv!
+Unknown error saving user: Ukjent feil ved lagring av bruker.
+
+########################################
+# Page: ws/ws.php
+#
+No participants found for event id XXX.: Ingen deltakere funnet for hendelses-ID: XXX.
+Db error Could not find event id XXX.: Db-feil: Fant ikke hendelses-ID XXX.
+Error Could not find event id XXX in database.: Feil: Fant ikke hendelses-ID XXX i databasen.
