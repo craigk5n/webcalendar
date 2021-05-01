@@ -233,7 +233,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $info[$matches]['id'] = $row[0];
-        $info[$matches]['text'] = $row[1] . ' ( ' . date_to_str( $row[2] ) . ' )';
+        $info[$matches]['text'] = $row[1] . ' (' . date_to_str( $row[2] ) . ')';
         $info[$matches]['user'] = $row[3];
 
         $matches++;

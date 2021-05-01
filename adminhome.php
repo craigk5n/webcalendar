@@ -48,7 +48,21 @@ if ( $is_nonuser_admin ) {
   }
 
   $names[] = ( $is_admin ? translate ( 'Users' ) : translate ( 'Account' ) );
-  $links[] = 'users.php';
+  $links[] = 'user_mgmt.php';
+
+  if ( $REMOTES_ENABLED == 'Y' && (( $is_admin && ! $accessEnabled )
+      || ( $accessEnabled
+      && access_can_access_function(ACCESS_IMPORT)))) {
+    $names[] = translate ( 'Remote Calendars' );
+    $links[] = 'remotecal_mgmt.php';
+  }
+
+  if ( $NONUSER_ENABLED == 'Y' && (( $is_admin && ! $accessEnabled )
+      || ( $accessEnabled
+      && access_can_access_function(ACCESS_USER_MANAGEMENT)))) {
+    $names[] = translate ( 'Resource Calendars' );
+    $links[] = 'resourcecal_mgmt.php';
+  }
 
   if ( $accessEnabled
       && access_can_access_function( ACCESS_ACCESS_MANAGEMENT ) ) {

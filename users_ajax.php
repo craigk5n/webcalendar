@@ -246,6 +246,48 @@ if ($action == 'userlist') {
   } else {
     ajax_send_error($error);
   }
+} else if ($action == 'resource-cal-list') {
+  // Use JSON to encode our list of resource calendars (aka "nonuser" calendars).
+  $userlist = get_nonuser_cals();
+  //echo "<pre>"; print_r($userlist); echo "</pre>"; exit;
+  $ret_users = [];
+  foreach ($userlist as $user) {
+    // Skip public user && and ignore those with URL (remote calendars)
+    if ($user['cal_login'] != '__public__' && empty($user['cal_url'])) {
+      $event_cnt = get_event_count_for_user($user['cal_login']);
+      $ret_users[] =  [
+        'login' => $user['cal_login'],
+        'lastname' => $user['cal_lastname'],
+        'firstname' => $user['cal_firstname'],
+        'admin' => $user['cal_admin'],
+        'public' => empty($user['cal_is_public']) ? 'Y' : $user['cal_is_public'],
+        'url' => $user['cal_url'],
+        'fullname' => $user['cal_fullname'],
+        'eventcount' => $event_cnt
+      ];
+      // Not including password hash 'cal_password'
+    }
+  }
+  ajax_send_object('users', $ret_users, $sendPlainText);
+} else if ($action == 'save-resource-cal') {
+  // Verify access to this page is allowed.
+  if (! $is_admin) {
+    $error = $notAuthStr;
+  }
+  if (empty($error)) {
+    $error = save_resource_calendar(
+      getPostValue('add') == '1' ? true : false,
+      getPostValue('login'),
+      getPostValue('lastname'),
+      getPostValue('firstname'),
+      getPostValue('public'),
+      getPostValue('admin'),
+    );
+  }
+  if ($error == '')
+    ajax_send_success();
+  else
+    ajax_send_error($error);
 } else {
   ajax_send_error(translate('Unsupported action') . ': ' . $action);
 }
@@ -298,14 +340,22 @@ function save_user($add, $user, $lastname, $firstname, $is_admin, $enabled, $ema
   }
 }
 
+// Add or update a resource calendar
+function save_resource_calendar($isAdd, $username, $lastname, $firstname, $ispublic, $admin) {
+  // A Resource Calendar is identical in the database to a Remote Calendar except that
+  // the URL is empty and you can specify the Admin (owner).  A Remote Calendar is always
+  // owned by an Admin user.
+  return save_remote_calendar($isAdd, $username, $lastname, $firstname, null, $ispublic, $admin);
+}
+
 // Add or update a remote calendar.
-function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $ispublic)
+function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $ispublic, $owner='')
 {
   global $login, $PUBLIC_ACCESS;
   $error = '';
 
-  // This remote calendar cannot be used as a public calendar if Public Access is
-  // not enabld in settings.
+  // This calendar cannot be used as a public calendar if Public Access is
+  // not enabled in settings.
   if (empty($PUBLIC_ACCESS) || $PUBLIC_ACCESS != 'Y') {
     $ispublic = 'N';
   } else if (empty($ispublic) || $ispublic != 'Y') {
@@ -327,6 +377,10 @@ function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $i
     $query_params[] = $firstname;
     $sql .= ', cal_url = ?';
     $query_params[] = $url;
+    if (!empty($owner)) {
+      $sql .= ', cal_admin = ?';
+      $query_params[] = $owner;
+    }
     $sql .= ', cal_is_public = ?';
     $query_params[] = $ispublic;
     // NOTE: We don't update the 'admin' of the remote calendar.
@@ -334,7 +388,7 @@ function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $i
     $sql .= ' WHERE cal_login = ?';
     $query_params[] = $username;
 
-    if (!dbi_execute($sql, $query_params)) {
+    if (!dbi_execute($sql, $query_params, false, false)) {
       $error = db_error();
     } else {
       activity_log(
@@ -347,14 +401,23 @@ function save_remote_calendar($isAdd, $username, $lastname, $firstname, $url, $i
     }
     return $error;
   } else if (empty($error)) {
+    // If no owner set, use the current user
+    if (empty($owner)) {
+      $owner = $login;
+    }
     // Add
     if (!dbi_execute(
       'INSERT INTO webcal_nonuser_cals (cal_login, ' .
         'cal_firstname, cal_lastname, cal_admin, cal_is_public, cal_url) ' .
         'VALUES ( ?, ?, ?, ?, ?, ? )',
-      [$username, $firstname, $lastname, $login, $ispublic, $url]
+      [$username, $firstname, $lastname, $owner, $ispublic, $url], false, false
     )) {
-      $error = db_error();
+      $error = dbi_error();
+      if(stripos($error, "uplicate")>0) {
+        $error = translate('Calendar ID already in use');
+      } else {
+        $error = db_error();
+      }
     } else {
       activity_log(
         0,
@@ -436,8 +499,6 @@ function get_event_count_for_user($username)
 // Get the last import date for a remote calendar in YYYYMMDD format or '' for none.
 function get_remote_calendar_last_update($username)
 {
-  $ret = '';
-
   $sql = 'SELECT MAX(cal_date) FROM webcal_import WHERE cal_login = ?';
   $rows = dbi_get_cached_rows($sql, [$username]);
   //echo "COUNT for $username: <pre>"; print_r($rows); echo "</pre>";

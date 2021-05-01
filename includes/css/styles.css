@@ -38,6 +38,12 @@ div.container-fluid, div.container, nav.navbar,
   color: var(--textcolor)!important;
   font: var(--def-font-size)/1.5 var(--def-font-family)!important;
 }
+div.dropdown-divider {
+  border-top: 1px solid var(--box-default-color)!important;
+}
+li.nav-link {
+  border-top: 1px solid var(--box-default-color)!important;
+}
 body, div.container-fluid, div.container {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */

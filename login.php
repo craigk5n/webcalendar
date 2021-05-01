@@ -225,17 +225,21 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
                 
+    <div id="public-calendar-list">
     <?php // Non-user calendars
       $nulist = get_nonuser_cals();
+      $remotelist = get_nonuser_cals('', true);
+      $cals = array_merge($nulist, $remotelist);
       $accessStr = translate ( 'Access XXX calendar' );
-      for ( $i = 0, $cnt = count ( $nulist ); $i < $cnt; $i++ ) {
-        if ( $nulist[$i]['cal_is_public'] == 'Y' ) {
-          echo '<div id="form_' . $nulist[$i]['cal_login'] . '" class="form-group row">' .
-            '<a class="nav" href="nulogin.php?login=' . $nulist[$i]['cal_login'] . '">'
-            . str_replace ( 'XXX', $nulist[$i]['cal_fullname'], $accessStr )
-            . '</a></div>';
+      for ( $i = 0, $cnt = count ( $cals ); $i < $cnt; $i++ ) {
+        if ( $cals[$i]['cal_is_public'] == 'Y' ) {
+          echo '<li id="form_' . $cals[$i]['cal_login'] . '" class="form-group row">' .
+            '<a class="nav" href="nulogin.php?login=' . $cals[$i]['cal_login'] . '">'
+            . str_replace ( 'XXX', $cals[$i]['cal_fullname'], $accessStr )
+            . '</a></li>';
         }
       }
+      echo "</div>\n";
       // Self registration
       if ( ! empty ( $ALLOW_SELF_REGISTRATION ) && $ALLOW_SELF_REGISTRATION == 'Y' ) {
         // We can limit what domain is allowed to self register.

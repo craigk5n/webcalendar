@@ -60,7 +60,7 @@ function list_unapproved ( $user ) {
   user_load_variables ( $user, 'temp_' );
 
   $rssLink = '<a href="rss_unapproved.php?user=' .
-    htmlspecialchars ( $user ) . '"><img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - ' .
+    htmlspecialchars ( $user ) . '"><img class="button-icon-inverse" src="images/open-iconic/svg/rss.svg" alt="RSS 2.0 - ' .
     htmlspecialchars ( $temp_fullname ) . '" /></a>';
 
   $count = 0;

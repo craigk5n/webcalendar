@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This page handles managing a user's layers
  * and works with layer_ajax.php to make changes.
@@ -106,11 +105,6 @@ else {
       <input class="btn" type="button" value="<?php etranslate('Add layer'); ?>..." onclick="return edit_layer(-1)" />
     </div>
     <br />
-
-    <!--
-<input type="button" value="Refresh"
-  onclick="return load_layers()" /> <br />
--->
 
   <?php
 }

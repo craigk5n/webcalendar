@@ -54,6 +54,6 @@ else {
   }
 }
 
-echo error_check ( 'users.php', false );
+echo error_check ( 'groups.php', false );
 
 ?>

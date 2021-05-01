@@ -11,7 +11,8 @@ global $ALLOW_VIEW_OTHER, $BodyX, $CATEGORIES_ENABLED, $DISPLAY_TASKS,
   $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $PUBLIC_ACCESS_CAN_ADD,
   $PUBLIC_ACCESS_OTHERS, $readonly, $REMOTES_ENABLED, $REPORTS_ENABLED,
   $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW, $thisday,
-  $thismonth, $thisyear, $use_http_auth, $user, $user_fullname, $views, $OVERRIDE_PUBLIC;
+  $thismonth, $thisyear, $use_http_auth, $user, $user_fullname, $views, 
+  $OVERRIDE_PUBLIC, $GROUPS_ENABLED;
 
 /* -----------------------------------------------------------------------------
          First figure out what options are on and privileges we have
@@ -417,10 +418,6 @@ if (empty($thisday))
             )
               print_menu_item(translate('Layers'), 'layers.php');
 
-            if ($REMOTES_ENABLED == 'Y' && (!access_is_enabled() ||
-              access_can_access_function(ACCESS_IMPORT)))
-              print_menu_item(translate('Remote Calendars'), 'remotecal_mgmt.php');
-
             if (
               !access_is_enabled() ||
               access_can_access_function(ACCESS_PREFERENCES, $user)
@@ -433,9 +430,18 @@ if (empty($thisday))
               echo '<div class="dropdown-divider"></div>';
               echo '<h6 class="dropdown-header">' . translate('Admin Settings') . '</h6>';
               print_menu_item(translate('System Settings'), 'admin.php');
-              print_menu_item(translate('User Access Control'), 'access.php');
               print_menu_item(translate('Users'), 'user_mgmt.php');
-              print_menu_item(translate('User Manager') . ' (deprecated)', 'users.php');
+              if ($NONUSER_ENABLED == 'Y' || (access_is_enabled()
+                && access_can_access_function(ACCESS_USER_MANAGEMENT))) {
+                print_menu_item(translate('Resource Calendars'), 'resourcecal_mgmt.php');
+              }
+              if ($REMOTES_ENABLED == 'Y' && (!access_is_enabled() ||
+                access_can_access_function(ACCESS_IMPORT))) {
+                print_menu_item(translate('Remote Calendars'), 'remotecal_mgmt.php');
+              }
+              if (!empty($GROUPS_ENABLED) && $GROUPS_ENABLED == 'Y') {
+                print_menu_item(translate('Groups'), 'groups.php');
+              }
             }
 
             // Nonuser Admin Settings
