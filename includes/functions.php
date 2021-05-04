@@ -2541,41 +2541,74 @@ function get_entries ( $date, $get_unapproved = true ) {
 /**
  * Gets all the groups a user is authorized to see
  *
- *
  * @param string $user        Subject User
- *
  *
  * @return array  Array of Groups.
  */
-function get_groups ( $user ) {
-  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS,
-  $is_nonuser_admin, $is_assistant, $login;
+function get_groups($user, $includeUserlist=false)
+{
+  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS, $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX,
+    $is_nonuser_admin, $is_assistant, $login, $is_admin;
 
-  if ( empty( $GROUPS_ENABLED ) || $GROUPS_ENABLED != 'Y' )
+  if (empty($GROUPS_ENABLED) || $GROUPS_ENABLED != 'Y')
     return false;
 
-  $owner = ( $is_nonuser_admin || $is_assistant ? $user : $login );
+  $owner = ($is_nonuser_admin || $is_assistant ? $user : $login);
 
   // Load list of groups.
-  $sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
- $sql_params = [];
- if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-   $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
-     AND wgu.cal_login = ?';
+  $sql = 'SELECT wg.cal_group_id, wg.cal_name, wg.cal_owner, ' .
+    'wg.cal_last_update FROM webcal_group wg';
+  $sql_params = [];
+  if ($USER_SEES_ONLY_HIS_GROUPS == 'Y' && !$is_admin) {
+    $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
+      AND wgu.cal_login = ?';
     $sql_params[] = $owner;
- }
+  }
 
-  $res = dbi_execute ( $sql . ' ORDER BY wg.cal_name', $sql_params );
+  $res = dbi_execute($sql . ' ORDER BY wg.cal_name', $sql_params);
 
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-     $groups[] = [
+  $groups = [];
+  if ($res) {
+    while ($row = dbi_fetch_row($res)) {
+      $groups[] = [
         'cal_group_id' => $row[0],
-       'cal_name' => $row[1]];
+        'cal_name' => $row[1],
+        'cal_owner' => $row[2],
+        'cal_last_update' => $row[3]
+      ];
     }
-   dbi_free_result ( $res );
- }
- return $groups;
+    dbi_free_result($res);
+  }
+
+  if ($includeUserlist) {
+    $users = user_get_users();
+    $users_by_name = [];
+    foreach ($users as $user) {
+      $users_by_name[$user['cal_login']] = $user;
+    }
+    $user_by_name['__public__'] = [
+      'cal_login' => '__public__',
+      'cal_fullname' => $PUBLIC_ACCESS_FULLNAME
+    ];
+    // Also include Remote and Resource calendars in case the group contains one
+    $resourceCals = get_nonuser_cals($login, false);
+    $remoteCals = get_nonuser_cals($login, true);
+    $others = array_merge($resourceCals, $remoteCals);
+    foreach ($others as $other) {
+      $users_by_name[$other['cal_login']] = $other;
+    }
+
+    for ($i = 0; $i < count($groups); $i++) {
+      $users = [];
+      $sql = 'SELECT cal_login FROM webcal_group_user WHERE cal_group_id = ? ORDER BY cal_login';
+      $res = dbi_execute($sql, [$groups[$i]['cal_group_id']]);
+      while ($row = dbi_fetch_row($res)) {
+        $users[] = $users_by_name[$row[0]];
+      }
+      $groups[$i]['cal_users'] = $users;
+    }
+  }
+  return $groups;
 }
 
 /**
@@ -2836,7 +2869,14 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
-
+      $fullname = '';
+      if (!empty($row[1]))
+        $fullname = $row[1];
+      if (!empty($row[2])) {
+        if(!empty($fullname))
+          $fullname .= ' ';
+        $fullname .= $row[2];
+      }
       $ret[$count++] = [
         'cal_login' => $row[0],
         'cal_lastname' => $row[1],
@@ -2844,8 +2884,7 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
         'cal_admin' => $row[3],
         'cal_is_public' => $row[4],
         'cal_url' => $row[5],
-        'cal_fullname' => ( strlen ( $row[1] . $row[2] )
-          ? "$row[2] $row[1]" : $row[0] )];
+        'cal_fullname' => $fullname ];
     }
   }
   // If user access control enabled,

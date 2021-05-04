@@ -288,6 +288,48 @@ if ($action == 'userlist') {
     ajax_send_success();
   else
     ajax_send_error($error);
+} else if ($action == 'group-list') {
+  // Use JSON to encode our list of groups.
+  $groups = get_groups($login, true);
+  $ret_groups = [];
+  foreach ($groups as $group) {
+    $ret_groups[] =  [
+      'group_id' => $group['cal_group_id'],
+      'name' => $group['cal_name'],
+      'owner' => $group['cal_owner'],
+      'last_update' => empty($group['cal_last_update']) ? '' : date_to_str($group['cal_last_update'], '', false),
+      'users' => $group['cal_users']
+    ];
+  }
+  ajax_send_object('groups', $ret_groups, $sendPlainText);
+} else if ($action == 'save-group') {
+  $ret = save_group(
+    getPostValue('add') == '1' ? true : false,
+    getPostValue('id'),
+    getPostValue('name'),
+    getPostValue('users')
+  );
+  $error = $ret[0];
+  $msg = $ret[1];
+  if ($error == '')
+    ajax_send_success(false, $msg);
+  else
+    ajax_send_error($error);
+} else if ($action == 'delete-group') {
+  $id = getPostValue('id');
+  if (empty($id)) {
+    $error = "Missing Group Id from delete request";
+  } else {
+    // Delete this group.
+    dbi_execute ( 'DELETE FROM webcal_group WHERE cal_group_id = ? ',
+      [$id] );
+    dbi_execute ( 'DELETE FROM webcal_group_user WHERE cal_group_id = ? ',
+     [$id] );
+  }
+  if ($error == '')
+    ajax_send_success();
+  else
+    ajax_send_error($error);
 } else {
   ajax_send_error(translate('Unsupported action') . ': ' . $action);
 }
@@ -599,5 +641,85 @@ function delete_events($nid)
   );
 
   return count($delete_em);
+}
+
+// Add or update a group.
+function save_group($isAdd, $id, $name, $users) {
+  global $login;
+  $error = '';
+  $dateYmd = date('Ymd');
+  $msg = 'None';
+
+  // Might want to move this into user.php instead of having SQL here... 
+  if (!$isAdd) {
+    // Updating
+    $query_params = [];
+    $sql = 'UPDATE webcal_group SET cal_name = ?';
+    $query_params[] = $name;
+    $sql .= ', cal_last_update = ?';
+    $query_params[] = $dateYmd;
+    $sql .= ' WHERE cal_group_id = ?';
+    $query_params[] = $id;
+    if (!dbi_execute($sql, $query_params, false, false)) {
+      $error = db_error();
+    } else {
+      activity_log(
+        0,
+        $login,
+        $login,
+        LOG_USER_UPDATE,
+        'Updated group: ' . $name
+      );
+      $msg = 'Group updated.';
+    }
+  } else {
+    // Get next id
+    $id = 1;
+    $sql = 'SELECT MAX(cal_group_id) FROM webcal_group';
+    $res = dbi_execute($sql);
+    if ($res) {
+      if ($row = dbi_fetch_row($res)) {
+        $id = $row[0] + 1;
+      }
+      dbi_free_result($res);
+    }
+    // Add
+    if (!dbi_execute(
+      'INSERT INTO webcal_group (cal_group_id, cal_name, cal_owner, cal_last_update) ' .
+      'VALUES ( ?, ?, ?, ?)',
+      [$id, $name, $login, $dateYmd]
+    )) {
+      $error = dbi_error();
+    } else {
+      activity_log(
+        0,
+        $login,
+        $login,
+        LOG_USER_ADD,
+        'Added new group: ' . $name
+      );
+      $msg = 'Group added.';
+    }
+  }
+
+  // Now delete old group members and add new ones.
+  if (empty($error)) {
+    $msg .= ' Users added:';
+    if (!$isAdd) {
+      dbi_execute('DELETE FROM webcal_group_user where cal_group_id = ?', [$id]);
+    }
+    foreach (explode(' ',
+      $users
+    ) as $user) {
+      $msg .= ' ' . $user;
+      dbi_execute(
+        'INSERT INTO webcal_group_user (cal_group_id, cal_login) ' .
+        'VALUES (?,?)',
+        [$id, $user]
+      );
+    }
+  }
+
+  return [$error, $msg];
 }
 ?>

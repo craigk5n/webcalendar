@@ -473,8 +473,7 @@ function user_get_users ( $publicOnly=false ) {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
-        $fullname = ( $order1 == 'cal_lastname, cal_firstname,' ?
-           "$row[1] $row[2]" : "$row[2] $row[1]" );
+        $fullname = "$row[2] $row[1]";
       else
         $fullname = $row[0];
       $ret[$count++] = [
