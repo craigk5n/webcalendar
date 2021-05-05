@@ -340,16 +340,16 @@ if( ! empty( $action ) && $action == 'install' ) {
       case 'ibase':
       case 'mssql':
       case 'oracle':
-        $install_filename .= $db_type . '.sql';
+        $install_filename .= $db_type;
         break;
       case 'ibm_db2':
-        $install_filename .= 'db2.sql';
+        $install_filename .= 'db2';
         break;
       case 'odbc':
-        $install_filename .= $_SESSION['odbc_db'] . '.sql';
+        $install_filename .= $_SESSION['odbc_db'];
         break;
       case 'postgresql':
-        $install_filename .= 'postgres.sql';
+        $install_filename .= 'postgres';
         break;
       case 'sqlite':
         include_once 'sql/tables-sqlite.php';
@@ -362,9 +362,11 @@ if( ! empty( $action ) && $action == 'install' ) {
         $install_filename = '';
         break;
       default:
-        $install_filename .= 'mysql.sql';
+        $install_filename .= 'mysql';
     }
-    db_populate( $install_filename, $display_sql );
+    if ( ! empty ( $install_filename ) ) {
+      db_populate ( "$install_filename.sql", $display_sql );
+    }
   }
   if( empty( $display_sql ) ) {
     // Convert passwords to md5 hashes if needed.
@@ -779,8 +781,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
  . translate( 'charset' ) . '" />
     <script>
 <!-- <![CDATA[
-      var xlate = [];
-      xlate[\'invalidColor\'] = \'' . translate( 'Invalid Color', true ) . '\';
+      var xlate = xlate || [];
+      xlate[\'Invalid Color\'] = \'' . translate ( 'Invalid Color', true ) . '\';
 ' . ( empty( $_SESSION['validuser'] ) ? '' : '
       function testPHPInfo() {
         var url = "index.php?action=phpinfo";
@@ -934,8 +936,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
   <body' . ( empty( $onload ) ? '' : ' onload="' . $onload . '"' ) . '>';
 
 if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
-  $class = ( version_compare( phpversion(), '7.1.0', '>=' ) ? '' : 'not' )
-   . 'recommended';
+  $class = ( version_compare ( phpversion (), $MINIMUM_PHP_VERSION, '>=' )
+    ? '' : 'not' ) . 'recommended';
   echo '
     <table border="1" width="90%" class="aligncenter">
       <tr>
@@ -967,8 +969,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . translate( 'PHP Version Check' ) . '</th>
       </tr>
       <tr>
-        <td>'
-   . translate( 'Check to see if PHP 7.1.0 or greater is installed.' ) . '</td>
+        <td>' . str_replace ( 'XXX', $MINIMUM_PHP_VERSION,
+    translate ( 'Check to see if PHP XXX or greater is installed.' ) ) . '</td>
         <td class="' . $class . '"><img src="' . ( $class == 'recommended'
     ? 'recommended.gif' : 'not_recommended.jpg' ) . '" alt="" />&nbsp;'
    . translate( 'PHP version' ) . ' ' . phpversion() . '</td>
