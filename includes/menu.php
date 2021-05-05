@@ -365,6 +365,10 @@ if (empty($thisday))
         </a>
         <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <?php if ($is_admin && (!access_is_enabled() ||
+            access_can_access_function(ACCESS_SECURITY_AUDIT, $user))) { ?>
+            <a class="dropdown-item" href="security_audit.php"><?php etranslate('Security Audit'); ?></a>
+          <?php } ?>
+          <?php if ($is_admin && (!access_is_enabled() ||
             access_can_access_function(ACCESS_ACTIVITY_LOG, $user))) { ?>
             <a class="dropdown-item" href="activity_log.php"><?php etranslate('Activity Log'); ?></a>
           <?php } ?>
