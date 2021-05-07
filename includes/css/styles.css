@@ -237,8 +237,8 @@ ul a {
   border-style:groove;
   padding:0 .5rem;
 }
-.weeknumber {
-  color: var(--weeknumber);
+td.weekcell {
+  background-color: var(--weeknumber);
   font-size:.625rem;
   text-decoration:none;
 }
@@ -641,6 +641,43 @@ tr.highlight td {
   border-bottom:0;
   padding:0;
 }
+
+/* Settings/Preferences month preview for color.
+ * We have to override the values set in styles.php for
+ * some of these in the preview month since styles.php doesn't
+ * use variables because of the gradient functions in use.
+ */
+#admin table#month_main td.today,
+#pref table#month_main td.today {
+  background-color: var(--todaycellbg) !important;
+}
+#admin table#month_main td.weekend,
+#pref table#month_main td.weekend {
+  background-color: var(--weekendbg) !important;
+}
+#admin table#month_main td.othermonth,
+#pref table#month_main td.othermonth {
+  background-color: var(--othermonthbg) !important;
+}
+#admin table#month_main th,
+#admin table#month_main th.weekend,
+#pref table#month_main th,
+#pref table#month_main th.weekend {
+  background-color: var(--thbg) !important;
+}
+#admin table#month_main td,
+#pref table#month_main td {
+  background-color: var(--cellbg) !important;
+}
+#admin table#month_main td.hasevents,
+#pref table#month_main td.hasevents {
+  background-color: var(--haseventsbg) !important;
+}
+#admin table#month_main td.weekcell,
+#pref table#month_main td.weekcell {
+  background-color: var(--weeknumber) !important;
+}
+
 #admin table,
 #pref table {
   vertical-align:top;
@@ -660,6 +697,10 @@ tr.highlight td {
 #pref .main td,
 #pref .main th {
   font-size:.75rem;
+}
+#admin #month_main, #monthtitle {
+  width: 45%;
+  float: right;
 }
 #admin .empty,
 #pref .empty {

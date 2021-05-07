@@ -4526,7 +4526,7 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
  *
  * @return string  HTML for the color selector.
  */
-function print_color_input_html ($varname, $title, $varval = '', $id='') {
+function print_color_input_html ($varname, $title, $varval = '', $id='', $tag='div', $class='form-inline', $onchange = '') {
   global $SCRIPT, $s, $prefarray;
   $id = empty($id) ? $varname : $id;
   // TODO: Get the text input box working so users can input RGB values.
@@ -4547,10 +4547,11 @@ function print_color_input_html ($varname, $title, $varval = '', $id='') {
     $setting = $varval;
   }
 
-  return '<div class="form-inline">' .
-    (empty($title) ? '' : ('<label class="form-control" for="' . $prefix . $varname . '">' . $title . '</label>')) .
+  return '<' . $tag . ' class="form-inline">' .
+  (empty($title) ? '' : ('<label class="' . $class . '" for="' . $prefix . $varname . '">' . $title . '</label>')) .
     '<input class="form-control" style="height: 2em; width: 4em;" name="' . $prefix . $varname . '" id="' . $prefix . $id .
-    '" type="color" value="' . $setting . '"></div>';
+    '" type="color" value="' . $setting . '"' . (empty($onchange) ? '' : ' onchange="' . $onchange . '()"') .
+    '></' . $tag . '>';
   }
 
 /**

@@ -221,7 +221,7 @@ body {
   <?php echo background_css( $GLOBALS['TODAYCELLBG'], 100 ); ?>
 }
 #admin .main td.weekcell,
-#month .main td.weekcell,
+#monthx .main td.weekcell,
 #pref .main td.weekcell,
 #viewl .main td.weekcell {
   <?php echo background_css( $GLOBALS['THBG'], 50 ); ?>

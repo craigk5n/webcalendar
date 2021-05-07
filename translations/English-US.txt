@@ -70,7 +70,7 @@ Current Icons: Current Icons
 ########################################
 # Page: minical.php
 #
-No such nonuser calendar XXX.: No such nonuser calendar: "XXX".
+No such nonuser calendar XXX.: No such resource calendar: "XXX".
 This Calendar is not Public.: This Calendar is not Public.
 
 ########################################
@@ -870,11 +870,11 @@ Groups enabled: Groups enabled
 groups-enabled-help: Enables group support, allowing users to select users by groups.
 User sees only his groups: User sees only his groups
 user-sees-his-group-help: If enabled, users will not see calendar users that are not in at least one of their groups.
-Nonuser: Nonuser Calendars
-Nonuser enabled: Nonuser Calendars Enabled
-nonuser-enabled-help: If enabled, admins will have the option to add nonuser calendars
-Nonuser list: Display in participants list at
-nonuser-list-help: Where to display the nonuser calendars in the participant list
+Nonuser: Resource Calendars
+Nonuser enabled: Resource Calendars Enabled
+resource-enabled-help: If enabled, admins will have the option to add resource calendars
+Display in participants list at: Display in participants list at
+nonuser-list-help: Where to display the resource calendars in the participant list
 Other: Other
 Allow external users: Allow external users
 allow-external-users-help: Specifies whether a non-calendar user can be added to an event. This allows non-calendar users to be listed as event participants.
@@ -1201,7 +1201,7 @@ popup-includes-participants-help: If enabled, participants are displayed in even
 Display Participants in popup: Display Participants in popup
 summary_length-help: Maximum length of Brief Description in calendar views
 Brief Description Length: Brief Description Length
-user_sort-help: Determines sort order for User, Nonuser lists
+user_sort-help: Determines sort order for User, Resource lists
 User Sort Order: User Sort Order
 Lastname, Firstname: Lastname, Firstname
 Firstname, Lastname: Firstname, Lastname
@@ -1267,7 +1267,7 @@ Background Repeat: Background Repeat
 # Page: nulogin.php
 #
 A login must be specified.: A login must be specified.
-No such nonuser calendar: No such nonuser calendar
+No such nonuser calendar: No such resource calendar
 
 ########################################
 # Page: about.php

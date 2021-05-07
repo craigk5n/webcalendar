@@ -1,4 +1,3 @@
-// $Id: admin.js,v 1.3 2010/02/21 08:27:49 bbannon Exp $
 
 function init_admin() {
   attach_handler();
@@ -8,7 +7,6 @@ function init_admin() {
   popup_handler();
   public_handler();
   sr_handler();
-  altps();
 
   return true;
 }
@@ -144,8 +142,10 @@ function sr_handler() {
 function attach_handler() {
   if ( document.prefform.admin_ALLOW_ATTACH[0].checked ) {
     makeVisible( 'at1' );
+    makeVisible( 'at1a' );
   } else {
     makeInvisible( 'at1' );
+    makeInvisible( 'at1a' );
   }
 }
 
@@ -154,8 +154,10 @@ function attach_handler() {
 function comment_handler() {
   if ( document.prefform.admin_ALLOW_COMMENTS[0].checked ) {
     makeVisible( 'com1' );
+    makeVisible( 'com1a' );
   } else {
     makeInvisible( 'com1' );
+    makeInvisible( 'com1a' );
   }
 }
 
@@ -180,11 +182,6 @@ function email_handler() {
   }
 }
 
-//See the showTab function in includes/js/visible.js
-//for common code shared by all pages using the tabbed GUI.
-var tabs = ['', 'settings', 'public', 'uac',
-  'groups', 'nonuser', 'other', 'email', 'colors'];
-
 function showPreview() {
   var theme = document.forms['prefform'].admin_THEME.value.toLowerCase();
 
@@ -196,8 +193,3 @@ function showPreview() {
       'Preview','resizable=yes,scrollbars=yes' );
 }
 
-function setTab( tab ) {
-  document.forms['prefform'].currenttab.value = tab;
-  showTab( tab );
-  return false;
-}
