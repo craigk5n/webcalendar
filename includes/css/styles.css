@@ -77,12 +77,6 @@ fieldset {
 }
 label {
   font-weight:bold;
-  /*font-size:.6875rem;*/
-}
-p,
-input,
-select {
-  /*font-size:.75rem;*/
 }
 textarea {
   /*font-size:.75rem;*/
@@ -642,6 +636,9 @@ tr.highlight td {
   padding:0;
 }
 
+#pref form-group {
+  text-align: left;
+}
 /* Settings/Preferences month preview for color.
  * We have to override the values set in styles.php for
  * some of these in the preview month since styles.php doesn't

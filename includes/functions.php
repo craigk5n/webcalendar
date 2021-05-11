@@ -5041,7 +5041,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
   if ( 0 ) { // Ignore this code for now.
     $tz_value = ( ! $can_setTZ ? substr ( $tz, 12 ) : 0 );
     $ret = '
-        <select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
+        <select class="form-control" name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
     $text_add = translate ( 'Add N hours to' );
     $text_sub = translate ( 'Subtract N hours from' );
     for ( $i = -12; $i <= 13; $i++ ) {
@@ -5075,7 +5075,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
     }
     sort ( $timezones );
     $ret = '
-        <select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
+        <select class="form-control" name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
     for ( $i = 0, $cnt = count ( $timezones ); $i < $cnt; $i++ ) {
       $ret .= '
           <option value="' . $timezones[$i] . '"'
