@@ -94,91 +94,91 @@ function valid_form( form ) {
 // Gets called on page load and when user changes setting for
 // "Disable popup".
 function popup_handler() {
-  if ( document.prefform.admin_DISABLE_POPUPS[0].checked ) {
+  if ($('#admin_DISABLE_POPUPS_Y').is(':checked')) {
     // Popups disabled
-    makeInvisible( 'pop' );
+    $('#pop').hide();
   } else {
     // Popups allowed
-    makeVisible( 'pop' );
+    $('#pop').show();
   }
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow public access".
 function public_handler() {
-  if ( document.prefform.admin_PUBLIC_ACCESS[0].checked ) {
+  if ($('#admin_PUBLIC_ACCESS_Y').is(':checked')) {
     // Public Access enabled
-    makeVisible( 'pa' );
+    $('#pa').show();
   } else {
     // Public Access disabled
-    makeInvisible( 'pa' );
+    $('#pa').hide();
   }
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow external users".
 function eu_handler() {
-  if ( document.prefform.admin_ALLOW_EXTERNAL_USERS[0].checked ) {
+  if ($('#admin_ALLOW_EXTERNAL_USERS_Y').is(':checked')) {
     // External Users enabled
-    makeVisible( 'eu' );
+    $('#eu').show();
   } else {
-    makeInvisible( 'eu' );
+    $('#eu').hide();
   }
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow self registration".
 function sr_handler() {
-  if ( document.prefform.admin_ALLOW_SELF_REGISTRATION[0].checked ) {
+  if ($('#admin_ALLOW_SELF_REGISTRATION_Y').is(':checked')) {
     // Self Registration enabled
-    makeVisible( 'sr' );
+    $('#sr').show();
   } else {
-    makeInvisible( 'sr' );
+    $('#sr').hide();
   }
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow attachments".
 function attach_handler() {
-  if ( document.prefform.admin_ALLOW_ATTACH[0].checked ) {
-    makeVisible( 'at1' );
-    makeVisible( 'at1a' );
+  if ($('#admin_ALLOW_ATTACH_Y').is(':checked')) {
+    $('#at1').show();
+    $('#at1a').show();
   } else {
-    makeInvisible( 'at1' );
-    makeInvisible( 'at1a' );
+    $('#at1').hide();
+    $('#at1a').hide();
   }
 }
 
 // Gets called on page load and when user changes setting for
 // "Allow comments".
 function comment_handler() {
-  if ( document.prefform.admin_ALLOW_COMMENTS[0].checked ) {
-    makeVisible( 'com1' );
-    makeVisible( 'com1a' );
+  if ($('#admin_ALLOW_COMMENTS_Y').is(':checked')) {
+    $('#com1').show();
+    $('#com1a').show();
   } else {
-    makeInvisible( 'com1' );
-    makeInvisible( 'com1a' );
+    $('#com1').hide();
+    $('#com1a').hide();
   }
 }
 
 // Gets called on page load and when user changes setting for
 // "Email enabled".
 function email_handler() {
-  if ( document.prefform.admin_SEND_EMAIL[0].checked ) {
+  if ($('#admin_SEND_EMAIL_Y').is(':checked')) {
     // Email enabled
-    makeVisible( 'em' );
+    $('#em').show();
     if ( document.prefform.admin_EMAIL_MAILER.selectedIndex == 0 ) {
-      makeVisible( 'em_smtp' );
+      $('#em_smtp').show();
       if ( document.prefform.admin_SMTP_AUTH[0].checked ) {
-        makeVisible( 'em_auth' )
+        $('#em_auth').show();
       } else {
-        makeInvisible( 'em_auth' )
+        $('#em_auth').hide();
       }
     } else {
-      makeInvisible( 'em_smtp' );
+      $('#em_smtp').hide();
     }
   } else {
-    makeInvisible( 'em' );
+    $('#em').hide();
   }
 }
 
