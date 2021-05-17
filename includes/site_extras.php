@@ -70,6 +70,7 @@ define ( 'EXTRA_DISPLAY_ALL', 511 );
  Example 1:
    You want to add an URL, a reminder, an email address, an event contact
    (from list of calendar users), and some driving directions.
+*/
 
 $site_extras = [
   'FIELDSET',     // Special case to display Fieldset in edit_entry.php
@@ -135,6 +136,7 @@ $site_extras = [
   ]
 ];
 
+/*
  END EXAMPLES
 
  Define your stuff here...

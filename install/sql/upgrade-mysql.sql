@@ -261,4 +261,6 @@ ALTER TABLE webcal_entry_categories
 CREATE INDEX IF NOT EXISTS
   webcal_entry_categories ON webcal_entry_categories(cat_id);
 /*upgrade_v1.3.1*/
-
+/*update_v1.9.0*/
+ALTER TABLE webcal_import ADD cal_check_date INT NULL;
+ALTER TABLE webcal_import ADD cal_md5 VARCHAR(32) NULL DEFAULT NULL;

@@ -164,6 +164,7 @@ if ($action == 'userlist') {
       $cnt = empty($active_layers[$user['cal_login']]) ? 0 : 1;
       $event_cnt = get_event_count_for_user($user['cal_login']);
       $last_upd = get_remote_calendar_last_update($user['cal_login']);
+      $last_checked = get_remote_calendar_last_checked($user['cal_login']);
       $ret_users[] =  [
         'login' => $user['cal_login'],
         'lastname' => $user['cal_lastname'],
@@ -174,7 +175,8 @@ if ($action == 'userlist') {
         'fullname' => $user['cal_fullname'],
         'layercount' => $cnt,
         'eventcount' => $event_cnt,
-        'lastupdated' => empty($last_upd) ? '' : date_to_str($last_upd, '', false)
+        'lastupdated' => empty($last_upd) ? '' : date_to_str($last_upd, '', false),
+        'lastchecked' => empty($last_checked) ? '' : date_to_str($last_checked, '', false)
       ];
       // Not including password hash 'cal_password'
     }
@@ -236,8 +238,17 @@ if ($action == 'userlist') {
   $message = '';
   if (empty($error) && !empty($url)) {
     $arr = load_remote_calendar($username, $url);
-    $message = $arr[0] . ' ' . translate('events added') . ', ' . $arr[1] . ' ' . translate('events deleted');
-    $error = $arr[2];
+    if (empty($arr[0])) {
+      // Success (or not updated)
+      if (!empty($arr[3])) {
+        $message = $arr[3];
+      } else {
+        $message = $arr[1] . ' ' . translate('events added') . ', ' . $arr[2] . ' ' . translate('events deleted');
+      }
+    } else {
+      // Error
+      $error = $arr[3];
+    }
   }
   ob_end_clean();
   if ($error == '') {
@@ -550,9 +561,47 @@ function get_remote_calendar_last_update($username)
   return $ret;
 }
 
+// Get the last date we attempted an import (but may have skipped it because it was
+// identical to a previous import) for a remote calendar in YYYYMMDD format or '' for none.
+function get_remote_calendar_last_checked($username)
+{
+  $sql = 'SELECT MAX(cal_check_date) FROM webcal_import WHERE cal_login = ?';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+  }
+  return $ret;
+}
+
+// Get the md5 hash of the last successful import.  It the new md5 hash is
+// identical, we can skip the new import.
+function get_remote_calendar_last_md5($username)
+{
+  $sql = 'SELECT cal_md5 FROM webcal_import WHERE cal_login = ? ORDER BY cal_import_id DESC LIMIT 1';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+  }
+  return $ret;
+}
+
+function update_import_check_date($username)
+{
+  $sql = 'SELECT MAX(cal_import_id) FROM webcal_import WHERE cal_login = ?';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+    if (!empty($ret)) {
+      $sql = 'UPDATE webcal_import SET cal_check_date = ? WHERE cal_import_id = ?';
+      dbi_execute($sql, [date('Ymd'), $ret]);
+    }
+  }
+  return $ret;
+}
+
 function load_remote_calendar($username, $url)
 {
-  global $login, $errormsg, $error_num, $count_suc, $numDeleted, $calUser;
+  global $login, $errormsg, $error_num, $count_suc, $numDeleted, $calUser, $importMd5;
 
   // Set global vars used in xcal.php (blech)
   $data = [];
@@ -562,18 +611,28 @@ function load_remote_calendar($username, $url)
   $numDeleted = 0;
   $count_suc = 0;
   $data = parse_ical($url, $type);
-  //echo "DATA\n"; print_r($data);
+  echo "DATA\n"; print_r($data);
+  // Get prior md5 has to see if there has been an update.
+  // New md5 is in global var $importMd5
+  $count = get_event_count_for_user($username);
+  $priorMd5 = get_remote_calendar_last_md5($username);
+  if ($priorMd5 == $importMd5 && $count > 0) {
+    // No changes in remote calendar since we last imported it.  Just skip it.
+    update_import_check_date($username);
+    activity_log(0, $login, $username, LOG_UPDATE, "Remote calendar checked but was identical to previous import");
+    return [0, 0, 0, "Remote calendar not updated since last import."];
+  }
   if (!empty($data) && count($data) > 0 && empty($errormsg)) {
     // Delete existing events.
     $numDeleted = delete_events ($username);
     // Import new events
     import_data($data, $overwrite, $type, true);
     activity_log(0, $login, $username, LOG_UPDATE, "Remote calendar reloaded with $count_suc events added, $numDeleted deleted");
-    return [$count_suc, $numDeleted, ''];
+    return [0, $count_suc, $numDeleted, ''];
   } else  if (empty($errormsg)) {
-    return [0,0,"No data imported."];
+    return [1, 0, 0, "No data imported."];
   }
-  return [$count_suc, $numDeleted, $errormsg];
+  return [empty($errormsg) ? 0 : 1, $count_suc, $numDeleted, $errormsg];
 }
 
 function delete_events($nid)

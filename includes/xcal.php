@@ -1221,7 +1221,7 @@ $Entry[Repeat][Count]      =  Number of occurances, may be used instead of UNTIL
 function import_data ( $data, $overwrite, $type, $silent=false ) {
   global $ALLOW_CONFLICTS, $ALLOW_CONFLICT_OVERRIDE, $calUser, $count_con,
   $count_suc, $errormsg, $error_num, $H2COLOR, $importcat, $ImportType,
-  $login, $numDeleted, $single_user, $single_user_login, $sqlLog;
+  $login, $numDeleted, $single_user, $single_user_login, $sqlLog, $importMd5;
 
   $oldUIDs =
   $oldIds = [];
@@ -1247,8 +1247,8 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
     dbi_free_result ( $res );
   }
   $sql = 'INSERT INTO webcal_import ( cal_import_id, cal_name,
-    cal_date, cal_type, cal_login ) VALUES ( ?, NULL, ?, ?, ? )';
-  if ( ! dbi_execute ( $sql, [$importId, date ( 'Ymd' ), $type, $calUser] ) ) {
+    cal_date, cal_check_date, cal_type, cal_login, cal_md5 ) VALUES ( ?, NULL, ?, ?, ?, ?, ? )';
+  if ( ! dbi_execute ( $sql, [$importId, date ( 'Ymd' ), date ( 'Ymd' ), $type, $calUser, $importMd5] ) ) {
     $errormsg = db_error();
     return;
   }
@@ -1957,8 +1957,9 @@ function curl_download($url) {
  * It did work correctly with PHP 5.0.2.
  */
 function parse_ical ( $cal_file, $source = 'file' ) {
-  global $errormsg, $tz;
+  global $errormsg, $tz, $importMd5;
 
+  $importMd5 = '';
   $ical_data = [];
   do_debug ( "in parse_ical, file=$cal_file, source=$source" );
   if ( $source == 'file' || $source == 'remoteics' ) {
@@ -2042,6 +2043,10 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       exit;
     }
   }
+  // Calculate the md5 hash so the caller can compare it to
+  // the prior import of this calendar.  Sorry, this is
+  // saved to a global variable :-(
+  $importMd5 = md5($data);
   // Now fix folding. According to RFC, lines can fold by having
   // a CRLF and then a single white space character.
   // We will allow it to be CRLF, CR or LF or any repeated sequence

@@ -250,8 +250,9 @@ if (empty($error) && !empty($control)) {
 
 echo send_doctype($appStr);
 
-// TODO: move this file/version stuff to a common place
-?>
+echo $JQUERY;
+
+/*
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -260,6 +261,8 @@ echo send_doctype($appStr);
 <script src="includes/js/tinycolor.js"></script>
 <!-- Readable: https://github.com/aramk/readable-color -->
 <script src="includes/js/readable.js"></script>
+*/
+?>
 <script>
   var validform = false, xlate = [];
   xlate['inputPassword'] = '<?php etranslate('You have not entered a password.', true);?>';

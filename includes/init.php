@@ -98,7 +98,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $DISABLE_POPUPS, $DISPLAY_TASKS, $DISPLAY_WEEKENDS, $FONTS, $friendly,
   $is_admin, $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
-  $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG;
+  $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG,
+  $JQUERY;
 
   ob_start ();
 
@@ -135,7 +136,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   // TODO: allow option to host bootstrap & jquery locally
   // TODO: move version info someplace else so we can update boostrap version by updating just one file.
-  $ret .= 
+  $ret .= $JQUERY;
+  $xret .= 
     '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">' .
     '<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>' .
     '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>' .

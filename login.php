@@ -164,8 +164,10 @@ if ($single_user == 'Y' || $use_http_auth) {
   }
 }
 echo send_doctype($appStr);
-?>
 
+echo $JQUERY;
+
+/*
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -176,8 +178,7 @@ echo send_doctype($appStr);
 <script src="includes/js/readable.js"></script>
 <link href="css_cacher.php" rel="stylesheet" />
 <link href="includes/css/styles.css" rel="stylesheet" />
-
-<?php
+*/
 
 // Print custom header (since we do not call print_header function).
 if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {

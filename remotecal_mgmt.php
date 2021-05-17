@@ -80,6 +80,9 @@ if (!ini_get('allow_url_fopen')) { ?>
                 <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Date the remote calendar was last updated') ?>"><?php etranslate('Last Updated') ?></div>
             </th>
             <th scope="col">
+                <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Date the remote calendar was last checked for an update.  The update may have been skipped if it the remote calendar had not changes since the last update.') ?>"><?php etranslate('Last Checked') ?></div>
+            </th>
+            <th scope="col">
                 <div data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('Calendar URL') ?></div>
             </th>
             <th scope="col">
@@ -306,7 +309,8 @@ if (!ini_get('allow_url_fopen')) { ?>
                         fullname: u.fullname,
                         layercount: u.layercount,
                         eventcount: u.eventcount,
-                        lastupdated: u.lastupdated
+                        lastupdated: u.lastupdated,
+                        lastchecked: u.lastchecked
                     };
                     var tooltip = u.layercount == 0 ? 'data-toggle="tooltip" data-placement="bottom" title="<?php echo $noTooltip; ?>"' : '';
                     var warning = u.layercount == 0 ? '<img class="button-icon-inverse" src="images/open-iconic/svg/warning.svg" />' : '';
@@ -314,7 +318,7 @@ if (!ini_get('allow_url_fopen')) { ?>
                     tbody += '<tr><td ' + tooltip + '>' + warning + id +
                         '</td><td>' + (u.fullname == null ? '' : u.fullname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
                         <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/open-iconic/svg/check.svg" />' : '') +
-                        <?php } ?> '</td><td>' + u.eventcount + '</td><td>' + u.lastupdated + '</td><td>' +
+                        <?php } ?> '</td><td>' + u.eventcount + '</td><td>' + u.lastupdated + '</td><td>' + u.lastchecked + '</td><td>' +
                         (u.url == null ? '' : u.url) +
                         '</td><td>' + user_menu(u.login, u.layercount == 0) + '</td></tr>\n';
                 }
@@ -378,11 +382,11 @@ if (!ini_get('allow_url_fopen')) { ?>
                     $('#infoMessage').html('<?php echo translate('Remote Calendar successfully reloaded') ?>' + message);
                     $('#main-dialog-alert').show();
                 } else {
-                    alert('<?php etranslate('Error'); ?>:' + error);
+                    alert('<?php etranslate('Error'); ?>: ' + error);
                 }
             })
             .fail(function(jqxhr, settings, ex) {
-                alert('<?php etranslate('Error'); ?>:' + ex);
+                alert('<?php etranslate('Error'); ?>: XX' + ex);
             });
     }
 
