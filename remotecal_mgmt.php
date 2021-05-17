@@ -386,7 +386,7 @@ if (!ini_get('allow_url_fopen')) { ?>
                 }
             })
             .fail(function(jqxhr, settings, ex) {
-                alert('<?php etranslate('Error'); ?>: XX' + ex);
+                alert('<?php etranslate('Error'); ?>: ' + ex);
             });
     }
 
