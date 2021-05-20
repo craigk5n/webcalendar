@@ -428,6 +428,15 @@ if (empty($thisday))
             )
               print_menu_item(translate('Preferences'), 'pref.php');
 
+            if ($NONUSER_ENABLED == 'Y' || (access_is_enabled()
+              && access_can_access_function(ACCESS_IMPORT))) {
+              print_menu_item(translate('Resource Calendars'), 'resourcecal_mgmt.php');
+            }
+            if ($REMOTES_ENABLED == 'Y' && (!access_is_enabled() ||
+              access_can_access_function(ACCESS_IMPORT))) {
+              print_menu_item(translate('Remote Calendars'), 'remotecal_mgmt.php');
+            }
+
             // Admin-only settings
             if (($is_admin && !access_is_enabled()) || (access_is_enabled() &&
               access_can_access_function(ACCESS_SYSTEM_SETTINGS, $user))) {
@@ -435,14 +444,6 @@ if (empty($thisday))
               echo '<h6 class="dropdown-header">' . translate('Admin Settings') . '</h6>';
               print_menu_item(translate('System Settings'), 'admin.php');
               print_menu_item(translate('Users'), 'user_mgmt.php');
-              if ($NONUSER_ENABLED == 'Y' || (access_is_enabled()
-                && access_can_access_function(ACCESS_USER_MANAGEMENT))) {
-                print_menu_item(translate('Resource Calendars'), 'resourcecal_mgmt.php');
-              }
-              if ($REMOTES_ENABLED == 'Y' && (!access_is_enabled() ||
-                access_can_access_function(ACCESS_IMPORT))) {
-                print_menu_item(translate('Remote Calendars'), 'remotecal_mgmt.php');
-              }
               if (!empty($GROUPS_ENABLED) && $GROUPS_ENABLED == 'Y') {
                 print_menu_item(translate('Groups'), 'groups.php');
               }

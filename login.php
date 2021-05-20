@@ -195,7 +195,7 @@ if ( ! empty ( $CUSTOM_HEADER ) && $CUSTOM_HEADER == 'Y' ) {
 }
 ?>
 <div id="login-container" class="container">
-<div class="row">
+<div class="row pl-3">
   <form id="login-form" class="form" action="login.php" method="post">
     <div class="row justify-content-md-center">
       <h3><?php echo htmlentities($appStr); ?> Login</h3>

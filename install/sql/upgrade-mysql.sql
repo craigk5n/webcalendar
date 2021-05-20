@@ -264,3 +264,7 @@ CREATE INDEX IF NOT EXISTS
 /*update_v1.9.0*/
 ALTER TABLE webcal_import ADD cal_check_date INT NULL;
 ALTER TABLE webcal_import ADD cal_md5 VARCHAR(32) NULL DEFAULT NULL;
+CREATE INDEX IF NOT EXISTS
+  webcal_import_data_type ON webcal_import_data(cal_import_type);
+CREATE INDEX IF NOT EXISTS
+  webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
