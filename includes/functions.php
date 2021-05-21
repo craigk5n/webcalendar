@@ -2900,6 +2900,108 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
   return $ret;
 }
 
+// Get the number of events the specified username is a participant to.
+function get_event_count_for_user($username)
+{
+  $sql = 'SELECT COUNT(weu.cal_id) FROM webcal_entry_user weu, webcal_entry we ' .
+    'WHERE weu.cal_id = we.cal_id ' .
+    'AND weu.cal_login = ?';
+  //echo "SQL: $sql \nUser: $username\n";
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  //echo "COUNT: "; print_r($rows);
+  if ($rows) {
+    return $rows[0][0];
+  }
+  return 0;
+}
+
+// Get the last import date for a remote calendar in YYYYMMDD format or '' for none.
+function get_remote_calendar_last_update($username)
+{
+  $sql = 'SELECT MAX(cal_date) FROM webcal_import WHERE cal_login = ?';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+  }
+  return $ret;
+}
+
+// Get the last date we attempted an import (but may have skipped it because it was
+// identical to a previous import) for a remote calendar in YYYYMMDD format or '' for none.
+function get_remote_calendar_last_checked($username)
+{
+  $sql = 'SELECT MAX(cal_check_date) FROM webcal_import WHERE cal_login = ?';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+  }
+  return $ret;
+}
+
+// Get the md5 hash of the last successful import.  It the new md5 hash is
+// identical, we can skip the new import.
+function get_remote_calendar_last_md5($username)
+{
+  $sql = 'SELECT cal_md5 FROM webcal_import WHERE cal_login = ? ORDER BY cal_import_id DESC LIMIT 1';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+  }
+  return $ret;
+}
+
+function update_import_check_date($username)
+{
+  $sql = 'SELECT MAX(cal_import_id) FROM webcal_import WHERE cal_login = ?';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+    if (!empty($ret)) {
+      $sql = 'UPDATE webcal_import SET cal_check_date = ? WHERE cal_import_id = ?';
+      dbi_execute($sql, [date('Ymd'), $ret]);
+    }
+  }
+  return $ret;
+}
+
+/**
+ * Load or reload a remote calendar if and only if it has been modified since the last time it was imported.
+ */
+function load_remote_calendar($username, $url)
+{
+  global $login, $errormsg, $error_num, $count_suc, $numDeleted, $calUser, $importMd5;
+
+  // Set global vars used in xcal.php (blech)
+  $data = [];
+  $calUser = $username;
+  $overwrite = true;
+  $type = 'remoteics';
+  $numDeleted = 0;
+  $count_suc = 0;
+  $data = parse_ical($url, $type);
+  // Get prior md5 has to see if there has been an update.
+  // New md5 is in global var $importMd5
+  $count = get_event_count_for_user($username);
+  $priorMd5 = get_remote_calendar_last_md5($username);
+  if ($priorMd5 == $importMd5 && $count > 0) {
+    // No changes in remote calendar since we last imported it.  Just skip it.
+    update_import_check_date($username);
+    activity_log(0, $login, $username, LOG_UPDATE, "Remote calendar checked but was identical to previous import");
+    return [0, 0, 0, "Remote calendar not updated since last import."];
+  }
+  if (!empty($data) && count($data) > 0 && empty($errormsg)) {
+    // Delete existing events.
+    $numDeleted = user_delete_events ($username);
+    // Import new events
+    import_data($data, $overwrite, $type, true);
+    activity_log(0, $login, $username, LOG_UPDATE, "Remote calendar reloaded with $count_suc events added, $numDeleted deleted");
+    return [0, $count_suc, $numDeleted, ''];
+  } else  if (empty($errormsg)) {
+    return [1, 0, 0, "No data imported."];
+  }
+  return [empty($errormsg) ? 0 : 1, $count_suc, $numDeleted, $errormsg];
+}
+
 /**
  * Gets the list of active plugins.
  *
