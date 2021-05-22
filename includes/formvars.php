@@ -41,7 +41,8 @@ function preventHacking ( $name, $instr ) {
     }
     if ( $failed ) {
       die_miserable_death ( translate ( 'Fatal Error' ) . ': '
-         . translate ( 'Invalid data format for' ) . ' ' . $name );
+         . translate ( 'Invalid data format for' ) . ' ' . $name .
+         '<br>Value: ' . htmlspecialchars($instr));
     }
   } else {
     // Not an array
@@ -55,7 +56,8 @@ function preventHacking ( $name, $instr ) {
     }
     if ( $failed ) {
       die_miserable_death ( translate ( 'Fatal Error' ) . ': '
-         . translate ( 'Invalid data format for' ) . ' ' . $name );
+         . translate ( 'Invalid data format for' ) . ' ' . $name .
+         '<br>Value: ' . htmlspecialchars($instr));
     }
   }
 }
@@ -145,7 +147,8 @@ function getValue($name, $format = '', $fatal = false)
     // does not match
     if ($fatal) {
       die_miserable_death(translate('Fatal Error') . ': '
-      . translate('Invalid data format for') . $name);
+      . translate('Invalid data format for') . $name .
+        '<br>Value: ' . htmlspecialchars($val));
     }
     // ignore value
     return '';

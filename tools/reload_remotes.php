@@ -65,7 +65,7 @@ $WebCalendar->initializeSecondPhase();
 // Used for hCal parsing.
 require_once __WC_CLASSDIR . 'hKit/hkit.class.php';
 
-$debug = true; // Set to true to print debug info...
+$debug = false; // Set to true to print debug info...
 
 // Establish a database connection.
 $c = dbi_connect($db_host, $db_login, $db_password, $db_database, true);

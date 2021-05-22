@@ -642,9 +642,9 @@ $tabI = 0;
           <label for="category" data-toggle="tooltip" data-placement="top" title="<?php etooltip('category-help'); ?>">
             <?php etranslate('Category'); ?>:</label>
           <div>
-            <!-- <button class="btn" type="button" onclick="editCats( event )" />' . translate('Edit') . '</button> -->
+            <!-- <button class="btn" type="button" onclick="editCats( event )" /><?php etranslate('Edit');?></button> -->
             <input class="form-control" type="text" readonly name="catnames" id="entry_categories" onclick="editCats(event)" style="cursor: pointer;" value="<?php echo $catNames . (empty($catNames) ? 'None' : ''); ?>" />
-            <input class="form-control" type="hidden" id="cat_id" name="cat_id" value="' . $catList . '" />
+            <input class="form-control" type="hidden" id="cat_id" name="cat_id" value="<?php echo $catList;?>" />
           </div>
         <?php } ?>
 
