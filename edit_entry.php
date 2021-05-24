@@ -1017,16 +1017,18 @@ $tabI = 0;
                 <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick=" selAdd(this);" />
               </fieldset>
             </td>
-            <td>
-              <fieldset class="form-group border p-2">
-                <legend class="w-auto px-2"><?php etranslate('Resources'); ?></legend>
-                <select class="form-control m-1" name="nonuserPart[]" id="res_part" size="<?php echo $size; ?>" multiple="multiple">
-                  <?php echo $nonusers; ?>
-                </select>
-                <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick="selResource(this);" />
-              </fieldset>
-            </td>
-            <?php if ($GROUPS_ENABLED == 'Y') ?>
+            <?php if (!empty($nonusers)) { ?>
+              <td>
+                <fieldset class="form-group border p-2">
+                  <legend class="w-auto px-2"><?php etranslate('Resources'); ?></legend>
+                  <select class="form-control m-1" name="nonuserPart[]" id="res_part" size="<?php echo $size; ?>" multiple="multiple">
+                    <?php echo $nonusers; ?>
+                  </select>
+                  <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick="selResource(this);" />
+                </fieldset>
+              </td>
+            <?php } ?>
+            <?php if ($GROUPS_ENABLED == 'Y') { ?>
             <td>
               <fieldset class="form-group border p-2">
                 <legend class="w-auto px-2"><?php etranslate('Groups'); ?></legend>
@@ -1036,6 +1038,7 @@ $tabI = 0;
                 <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick="selAdd(this);" />
               </fieldset>
             </td>
+            <?php } ?>
           <?php } ?>
           </td>
           </tr>
