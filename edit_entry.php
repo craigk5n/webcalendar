@@ -573,7 +573,7 @@ $tabI = 0;
   <?php } ?>
   <input type="hidden" name="entry_changed" value="" />
   <!-- Are we overriding an entry from a repeating event... -->
-  <?php if (empty($override)) { ?>
+  <?php if (!empty($override)) { ?>
     <input type="hidden" name="override" value="1" />
     <input type="hidden" name="override_date" value="<?php echo $cal_date; ?>" />
   <?php } ?>
