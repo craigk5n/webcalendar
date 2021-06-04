@@ -26,6 +26,7 @@ body {
   width:100%;
   margin:0;
   padding:0;
+  padding-bottom: 0.5em;
 }
 body{
   background-color: var(--bgcolor);
@@ -569,6 +570,10 @@ tr.highlight td {
 .minical caption a {
   color: var(--captions);
   font-weight:bold;
+}
+.minical caption {
+  caption-side: top;
+  text-align: center;
 }
 .minical th {
   border:0 solid var(--bgcolor);
