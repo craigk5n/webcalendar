@@ -33,7 +33,6 @@
      to cover any borders underneath
   */
   z-index:  100;
-  border:    0;
   padding:  1px;
   background-color:  #D0D0D0;
   overflow:  visible;

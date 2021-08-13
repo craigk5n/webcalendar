@@ -28,7 +28,7 @@ lighter blue
 .ThemeMenu,.ThemeSubMenuTable {
   font-family:  arial, verdana, sans-serif;
   font-size:  1em;
-  padding:  0;
+  padding: 0;
   white-space:  nowrap;
   cursor:    default;
   height: 25px;
@@ -44,7 +44,6 @@ lighter blue
      to cover any borders underneath
   */
   z-index:  100;
-  border:    0;
   padding:  1px;
   background-color:  #F1F3F5;
   overflow:  visible;
@@ -57,7 +56,6 @@ lighter blue
 
 .ThemeMainItem,.ThemeMainItemHover,.ThemeMainItemActive,
 .ThemeMenuItem,.ThemeMenuItemHover,.ThemeMenuItemActive {
-  border:    0;
   cursor:    default;
   white-space:  nowrap;
 }
@@ -88,7 +86,7 @@ lighter blue
 }
 
 td.ThemeMainItemHover,td.ThemeMainItemActive {
-  padding:  0px;
+  padding: 0;
   border:  1px solid #000080;
 }
 
@@ -103,7 +101,7 @@ td.ThemeMainItemHover,td.ThemeMainItemActive {
 td.ThemeMainFolderLeft,td.ThemeMainItemLeft {
   padding-top:  2px;
   padding-bottom:  2px;
-  padding-left:  0px;
+  padding-left: 0;
   padding-right:  2px;
   border-top:  1px solid #000080;
   border-bottom:  1px solid #000080;
@@ -125,8 +123,8 @@ td.ThemeMainFolderText,td.ThemeMainItemText {
 td.ThemeMainFolderRight,td.ThemeMainItemRight {
   padding-top:  2px;
   padding-bottom:  2px;
-  padding-left:  0px;
-  padding-right:  0px;
+  padding-left: 0;
+  padding-right: 0;
   border-top:  1px solid #000080;
   border-bottom:  1px solid #000080;
   border-right:  1px solid #000080;
@@ -140,7 +138,6 @@ tr.ThemeMainItem td.ThemeMainItemLeft {
   padding-left:  1px;
   padding-right:  2px;
   white-space:  nowrap;
-  border:    0;
   background-color:  inherit;
 }
 
@@ -150,7 +147,6 @@ tr.ThemeMainItem td.ThemeMainItemText {
   padding-bottom:  3px;
   padding-left:  5px;
   padding-right:  5px;
-  border:    0;
   background-color:  inherit;
 }
 
@@ -158,9 +154,8 @@ tr.ThemeMainItem td.ThemeMainItemRight,
 tr.ThemeMainItem td.ThemeMainFolderRight {
   padding-top:  3px;
   padding-bottom:  3px;
-  padding-left:  0px;
+  padding-left: 0;
   padding-right:  1px;
-  border:    0;
   background-color:  inherit;
 }
 
@@ -192,8 +187,8 @@ tr.ThemeMainItem td.ThemeMainFolderRight {
 .ThemeMenuFolderRight,.ThemeMenuItemRight {
   padding-top:  2px;
   padding-bottom:  2px;
-  padding-left:  0px;
-  padding-right:  0px;
+  padding-left: 0;
+  padding-right: 0;
   border-top:  1px solid #000080;
   border-bottom:  1px solid #000080;
   border-right:  1px solid #000080;
@@ -208,7 +203,7 @@ tr.ThemeMainItem td.ThemeMainFolderRight {
   padding-left:  2px;
   padding-right:  3px;
   white-space:  nowrap;
-  border:   0px;
+  border: 0;
   background-color:  #DDE1E6;
 }
 
@@ -218,7 +213,7 @@ tr.ThemeMainItem td.ThemeMainFolderRight {
   padding-bottom:  3px;
   padding-left:  5px;
   padding-right:  5px;
-  border:    0px;
+  border: 0;
   background-color:  inherit;
 }
 
@@ -226,9 +221,8 @@ tr.ThemeMainItem td.ThemeMainFolderRight {
 .ThemeMenuItem .ThemeMenuItemRight {
   padding-top:  3px;
   padding-bottom:  3px;
-  padding-left:  0px;
+  padding-left: 0;
   padding-right:  1px;
-  border:    0;
   background-color:  inherit;
 }
 
