@@ -650,7 +650,7 @@ function catOkHandler () {
         catNames += ', ';
       }
       catIds += '<?php echo $catid;?>';
-      catNames += '<?php echo $cat['cat_name'];?>';
+      catNames += '<?php echo addslashes($cat['cat_name']);?>';
     }
   } else {
     // Note: this can happen when an admin is editing a user's personal
