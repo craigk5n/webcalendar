@@ -34,7 +34,8 @@ body{
   font: var(--def-font-size)/1.5 var(--def-font-family);
 }
 div.container-fluid, div.container, nav.navbar,
-  div.dropdown-menu, ul.dropdown-menu {
+  div.dropdown-menu, ul.dropdown-menu, .list-group, .list-group-item,
+  .sectioncontent {
   background-color: var(--bgcolor)!important;
   color: var(--textcolor)!important;
   font: var(--def-font-size)/1.5 var(--def-font-family)!important;
@@ -45,10 +46,14 @@ div.dropdown-divider {
 li.nav-link {
   border-top: 1px solid var(--box-default-color)!important;
 }
+/*
+Can't recall why this was added, but it makes the save button appear too far down
+to be seen in some forms.  For now, commenting out.  Probably delete this later...
 body, div.container-fluid, div.container {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
+  min-height: 100%;
+  min-height: 100vh;
 }
+*/
 label.text-info {
   color: var(--textcolor)!important;
   font: var(--def-font-size)/1.5 var(--def-font-family)!important;
