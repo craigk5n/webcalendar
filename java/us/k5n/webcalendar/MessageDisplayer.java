@@ -6,7 +6,6 @@ package us.k5n.webcalendar;
  * incoming message.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public interface MessageDisplayer {
 

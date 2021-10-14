@@ -12,7 +12,6 @@ import org.w3c.dom.NodeList;
  * Common functions.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class Utils {
 

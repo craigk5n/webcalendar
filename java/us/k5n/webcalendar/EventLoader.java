@@ -8,7 +8,6 @@ import java.util.Calendar;
  * Loads a list of events from the server in a thread.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class EventLoader extends Thread {
   private WebCalendarClient client;

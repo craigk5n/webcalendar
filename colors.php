@@ -1,4 +1,4 @@
-<?php // $Id: colors.php,v 1.37 2009/11/22 16:47:44 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 $color = getGetValue ( 'color' );
 if ( empty ( $color ) )

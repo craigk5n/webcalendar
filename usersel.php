@@ -1,4 +1,4 @@
-<?php // $Id: usersel.php,v 1.40 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 
 // input args in URL

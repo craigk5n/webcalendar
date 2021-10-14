@@ -1,4 +1,4 @@
-<?php // $Id: moon_phases.php,v 1.11 2009/11/22 16:47:46 bbannon Exp $
+<?php
 /**
  * Calculate the moonphases for a given year and month.
  *

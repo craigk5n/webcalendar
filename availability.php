@@ -1,4 +1,4 @@
-<?php // $Id: availability.php,v 1.27 2009/11/22 16:47:44 bbannon Exp $
+<?php
 /**
  * Page Description:
  * Display a timebar view of a single day.

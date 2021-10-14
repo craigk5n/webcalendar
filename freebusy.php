@@ -1,4 +1,4 @@
-<?php // $Id: freebusy.php,v 1.35 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Description:
  * Creates the iCal free/busy schedule a single user.

@@ -7,7 +7,6 @@
  * @author Craig Knudsen
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: Doc.class,v 1.11 2011/06/02 12:45:22 rjones6061 Exp $
  * @package WebCalendar
  * @subpackage Doc
  */

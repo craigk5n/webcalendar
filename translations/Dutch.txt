@@ -5,7 +5,6 @@
 #   Arnout Engelen / arnouten@bzzt.net
 #   Oliver Heesakkers / dev@heesakkers.info
 #
-# $Id: Dutch.txt,v 1.64 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-15-2008
 
 

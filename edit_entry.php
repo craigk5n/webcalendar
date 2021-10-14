@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Description:
  * Presents page to edit/add an event/task/journal

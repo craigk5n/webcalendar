@@ -1,4 +1,4 @@
-<?php // $Id: icalclient.php,v 1.42 2010/02/21 08:27:48 bbannon Exp $
+<?php
 /**
  *               WARNING * WARNING * WARNING * WARNING * WARNING
  *                 This script is still considered alpha level.

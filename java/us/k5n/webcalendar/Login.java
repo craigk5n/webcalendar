@@ -11,7 +11,6 @@ import java.net.URLConnection;
  * http-based and web-based setups.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class Login {
   URL url;

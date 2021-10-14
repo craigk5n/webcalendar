@@ -1,4 +1,3 @@
-/* $Id: upgrade-mysql.sql,v 1.28 2009/10/30 11:47:16 bbannon Exp $ */
 /*upgrade_v0.9.14*/
 UPDATE webcal_entry SET cal_time = -1 WHERE cal_time IS NULL;
 ALTER TABLE webcal_entry MODIFY cal_time INT NOT NULL DEFAULT -1;

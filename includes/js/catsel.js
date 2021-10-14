@@ -1,4 +1,3 @@
-// $Id: catsel.js,v 1.3 2009/11/22 16:47:46 bbannon Exp $
 
 function sendCats( cats ) {
   var

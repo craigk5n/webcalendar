@@ -20,7 +20,6 @@ import us.k5n.webcalendar.WebCalendarClient;
  * The ActivityLogPanel creates the Activity Log JPanel display.
  *
  * @author Craig Knudsen, craig@k5n.us
- * @version $Id$
  */
 public class ActivityLogPanel extends JPanel {
   WebCalendarClient client;

@@ -9,8 +9,6 @@
 # Translations for page: includes/classes/WebCalMailer.class
 # loaded from PHPMailer, https://sourceforge.net/projects/phpmailer
 #
-# $Id: Polish-utf8.txt,v 1.1.2.2 2008/09/05 17:59:22 bbannon Exp $
-# 
 # PKaszubski [pkaszubski@gmail.com]
 # Translation completed on 2008-05-07 01:25
 # Translation last updated on 09-05-2008

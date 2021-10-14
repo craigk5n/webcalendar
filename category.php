@@ -1,5 +1,4 @@
-<?php // $Id: category.php,v 1.50.2.1 2013/01/24 21:15:08 cknudsen Exp $
-
+<?php
 include_once 'includes/init.php';
 // Load user and global cats.
 load_user_categories();

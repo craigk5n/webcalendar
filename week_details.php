@@ -1,4 +1,4 @@
-<?php // $Id: week_details.php,v 1.78 2009/11/22 22:26:18 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 send_no_cache_header();
 

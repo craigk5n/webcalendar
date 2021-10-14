@@ -1,6 +1,5 @@
 #!/usr/bin/perl
-# $Id: check_translation.pl,v 1.21 2007/04/09 14:52:30 bbannon Exp $
-#
+/**
 # This tool helps with the translation into other languages by indicating
 # whether all text specified in translate() and tooltip() within the application
 # has a corresponding entry in the translation data file.

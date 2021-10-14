@@ -18,7 +18,6 @@ import org.xml.sax.SAXException;
  * Contains a list of events.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class EventList extends Vector {
   Document document; // XML DOM object

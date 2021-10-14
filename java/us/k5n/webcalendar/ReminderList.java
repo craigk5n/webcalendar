@@ -17,7 +17,6 @@ import org.xml.sax.SAXException;
  * The ReminderList contains the lsit of pending reminders.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class ReminderList extends Vector {
   Document document; // XML DOM object

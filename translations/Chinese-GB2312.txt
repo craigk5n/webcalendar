@@ -3,7 +3,6 @@
 # Translated by: liaobin@jite.net shenyi@jite.net
 # Last update: 2003-8-5
 #
-# $Id: Chinese-GB2312.txt,v 1.37 2008/12/28 16:22:34 bbannon Exp $
 # Translation last updated on 10-15-2008
 
 

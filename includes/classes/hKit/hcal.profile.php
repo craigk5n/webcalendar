@@ -1,7 +1,6 @@
 <?php
 // hcal profile for hkit
 // Hacked together by Ray Jones 06/26/2006
-// $Id: hcal.profile.php,v 1.5 2007/09/17 21:24:36 bbannon Exp $
 
 $this->root_class = 'vevent';
 

@@ -3,7 +3,6 @@
 # Translated by: Kristofer Arnar Einarsson kristofer@kristofer.com
 # Last update: 18 August 2000
 #
-# $Id: Icelandic.txt,v 1.35 2008/10/15 18:19:59 bbannon Exp $
 # Translation last updated on 10-14-2008
 
 

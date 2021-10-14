@@ -24,7 +24,6 @@ import org.xml.sax.SAXException;
  * Defines a client connection instance to the WebCalendar server.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class WebCalendarClient implements MessageDisplayer {
   private URL url;

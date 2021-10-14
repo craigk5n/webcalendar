@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php
 /**
  * Description:
  *   Provides login mechanism for web service clients.

@@ -1,4 +1,4 @@
-<?php // $Id: help_list.php,v 1.9 2009/11/22 16:47:46 bbannon Exp $
+<?php
 /**
  * The file contains a listing of all the current help files in an array.
  * This should make it easier to add new help screens without having to

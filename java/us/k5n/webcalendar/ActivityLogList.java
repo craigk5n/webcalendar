@@ -17,7 +17,6 @@ import org.xml.sax.SAXException;
  * Contains a list of log entries by extending the Vector class.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class ActivityLogList extends Vector {
   Document document; // XML DOM object

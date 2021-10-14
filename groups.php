@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Group Management.
  */
