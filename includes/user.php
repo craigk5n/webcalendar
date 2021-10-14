@@ -56,7 +56,7 @@ function user_valid_login ( $login, $password, $silent=false ) {
       } else {
         // New-Style Secure Password
         $okay = password_verify ( $password, $expected_hash );
-        $rehash = password_needs_rehash ( $hash, PASSWORD_DEFAULT );
+        $rehash = password_needs_rehash ( $expected_hash, PASSWORD_DEFAULT );
       }
       // Upgrade insecurely stored passwords
       if ( $okay && $rehash ){
