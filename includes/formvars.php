@@ -173,7 +173,7 @@ function getGetValue($name, $devVal=NULL, $chkCSS=false)
   }
   $cleanXSS = $chkXSS ? chkXSS($getName) : true;
   preventHacking($name, $getName);
-  return $cleanXSS ? $postName : NULL;
+  return $cleanXSS ? $getName : NULL;
 }
 
 /**
