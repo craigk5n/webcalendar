@@ -22,11 +22,40 @@ function preventHacking_helper($matches) {
   return chr(hexdec($matches[1]));
 }
 function preventHacking ( $name, $instr ) {
+  global $PHP_SELF;
+  $script = basename($PHP_SELF);
+
   $bannedTags = [
     'APPLET', 'BODY', 'EMBED', 'FORM', 'HEAD',
     'HTML', 'IFRAME', 'LINK', 'META', 'NOEMBED',
     'NOFRAMES', 'NOSCRIPT', 'OBJECT', 'SCRIPT'];
   $failed = false;
+
+  // If this is a POST, require a form key to prevent CSRF
+  // Assume all database db changes make use of POST or else
+  // they end in "_handler.php" or are one of a handful of known URLs.
+  if ($script == "login.php" || $script=="register.php" ||
+    $script == "search_handler.php") {
+    // No form token needed
+  } else if ($_SERVER['REQUEST_METHOD'] === 'POST' ||
+    ($_SERVER['REQUEST_METHOD'] === 'GET' &&
+    ($script == 'del_entry.php' ||
+    $script == 'add_entry.php' || $script == 'docdel.php' ||
+    endsWith($script, "_handler.php")))) {
+//echo "KEY CHECK <br>\n";
+    $formKey = $_REQUEST['csrf_form_key'];
+    if ($formKey == $_SESSION['csrf_form_key'] && !empty($_SESSION['csrf_form_key'])) {
+      // Okay to proceed
+//echo "FORM KEY: $formKey \n"; exit;
+    } else {
+      die_miserable_death ( translate ( 'Fatal Error' ) . ': '
+         . translate ( 'Invalid form request' ) );
+    }
+  }
+  //echo "METHOD " . $_SERVER['REQUEST_METHOD'] . "<br>";
+  //echo "PHP_SELF " . $script . "<br>";
+  //print_r ( $_SERVER );
+  //echo "NO ERROR <br>\n"; exit;
 
   if ( is_array ( $instr ) ) {
     for ( $j = 0; $j < count ( $instr ); $j++ ) {
@@ -41,7 +70,7 @@ function preventHacking ( $name, $instr ) {
     }
     if ( $failed ) {
       die_miserable_death ( translate ( 'Fatal Error' ) . ': '
-         . translate ( 'Invalid data format for' ) . ' ' . $name .
+         . translate ( 'Invalid data format for' ) . '&nbsp;' . $name .
          '<br>Value: ' . htmlspecialchars($instr));
     }
   } else {
@@ -60,6 +89,38 @@ function preventHacking ( $name, $instr ) {
          '<br>Value: ' . htmlspecialchars($instr));
     }
   }
+}
+
+// Function to check the string is ends 
+// with given substring or not
+function endsWith($string, $endString)
+{
+  $len = strlen($endString);
+  if ($len == 0) {
+    return true;
+  }
+  return (substr($string, -$len) === $endString);
+}
+
+/**
+  * Generate a key to include in HTML form to prevent CSRF.
+  */
+function getFormKey() {
+  if (!isset($_SESSION['csrf_form_key'])) {
+    $formKey = bin2hex(openssl_random_pseudo_bytes(32));
+    $_SESSION['csrf_form_key'] = $formKey;
+  } else {
+    $formKey = $_SESSION['csrf_form_key'];
+  }
+  return $formKey;
+}
+
+function csrf_form_key() {
+  return '<input type="hidden" name="csrf_form_key" value="' .
+    getFormKey() . '" />' .  "\n";
+}
+function print_form_key() {
+  echo csrf_form_key ();
 }
 
 
@@ -103,15 +164,16 @@ function getPostValue($name, $defVal = NULL, $chkXSS = false)
  *
  * @see getPostValue
  */
-function getGetValue($name)
+function getGetValue($name, $devVal=NULL, $chkCSS=false)
 {
   $getName = null;
   if (isset($_GET) && is_array($_GET) && isset($_GET[$name])) {
     $getName = is_array($_GET[$name]) ? array_map('addslashes', $_GET[$name]) :
       addslashes($_GET[$name]);
   }
+  $cleanXSS = $chkXSS ? chkXSS($getName) : true;
   preventHacking($name, $getName);
-  return $getName;
+  return $cleanXSS ? $postName : NULL;
 }
 
 /**
@@ -190,9 +252,7 @@ function chkXSS($name) {
   global $login;
   $cleanXSS = true;
     //add more array elements as needed
-    foreach (array(
-'Ajax.Request',
- 'onerror') as $i) {
+    foreach (array( 'Ajax.Request', 'onerror') as $i) {
       if (preg_match("/$i/i", $name)) {
         activity_log(0, $login, $login, SECURITY_VIOLATION,
                 'Hijack attempt:' . $i);

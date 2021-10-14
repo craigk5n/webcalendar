@@ -202,6 +202,7 @@ print_header();
   // Comment
 ?>
 <form action="docadd.php" method="post" name="docform">
+<?php print_form_key(); ?>
 <input type="hidden" name="id" value="<?php echo $id?>" />
 <input type="hidden" name="type" value="C" />
 
@@ -223,6 +224,7 @@ print_header();
   // Attachment
 ?>
 <form action="docadd.php" method="post" name="docform" enctype="multipart/form-data">
+<?php print_form_key(); ?>
 <input type="hidden" name="id" value="<?php echo $id?>" />
 <input type="hidden" name="type" value="A" />
 <table>

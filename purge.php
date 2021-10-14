@@ -117,6 +117,7 @@ onclick="history.back()" /></form
 ?>
 
 <form action="purge.php" method="post" name="purgeform" id="purgeform">
+<?php csrf_form_key(); ?>
 <table>
  <tr><td><label for="user" class="colon">
   <?php echo translate ( 'User' );?></label></td>

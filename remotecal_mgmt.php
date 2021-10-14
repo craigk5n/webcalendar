@@ -116,6 +116,7 @@ if (!ini_get('allow_url_fopen')) { ?>
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
                 <form class="needs-validation" novalidate name="editUserForm" id="editUserForm">
+                    <?php print_form_key(); ?>
                     <input type="hidden" name="editUserAdd" id="editUserAdd" value="0" />
                     <div class="form-inline" id="divEditUsername">
                         <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
@@ -169,6 +170,7 @@ if (!ini_get('allow_url_fopen')) { ?>
                 <div class="p-3"><?php echo $areYouSure; ?></div>
                 <div class="p-3 m-3 text-danger"><?php echo $deleteUserInfo; ?></div>
                 <form name="deleteUserForm" id="deleteUserForm">
+                    <?php print_form_key(); ?>
                     <div class="form-inline" id="divdeleteUsername">
                         <label class="col-5" for="deleteUsername"><?php etranslate('Username') ?>: </label>
                         <input disabled="true" type="text" class="col-7 form-control" id="deleteUsername" name="deleteUsername" />
@@ -280,7 +282,8 @@ if (!ini_get('allow_url_fopen')) { ?>
         users = [];
         $('#user-tbody').html('<tr><td colspan="5"><?php echo $LOADING; ?></td></tr>');
         $.post('users_ajax.php', {
-                action: 'remote-cal-list'
+                action: 'remote-cal-list',
+                csrf_form_key: '<?php echo getFormKey(); ?>'
             },
             function(data, status) {
                 var stringified = JSON.stringify(data);
@@ -337,7 +340,8 @@ if (!ini_get('allow_url_fopen')) { ?>
 
         $.post('users_ajax.php', {
                     action: "reload-remote-cal",
-                    login: login
+                    login: login,
+                    csrf_form_key: '<?php echo getFormKey(); ?>'
                 },
                 function(data, status) {
                     //console.log('Data: ' + data);
@@ -537,7 +541,8 @@ if (!ini_get('allow_url_fopen')) { ?>
                     firstname: firstname,
                     lastname: lastname,
                     public: public,
-                    url: url
+                    url: url,
+                    csrf_form_key: '<?php echo getFormKey(); ?>'
                 },
                 function(data, status) {
                     console.log('Data: ' + data);
@@ -598,7 +603,8 @@ if (!ini_get('allow_url_fopen')) { ?>
 
         $.post('users_ajax.php', {
                     action: "delete-remote-cal",
-                    login: login
+                    login: login,
+                    csrf_form_key: '<?php echo getFormKey(); ?>'
                 },
                 function(data, status) {
                     console.log('Data: ' + data);
@@ -664,7 +670,8 @@ if (!ini_get('allow_url_fopen')) { ?>
                 layeruser: layeruser,
                 source: source,
                 color: color,
-                dups: dups
+                dups: dups,
+                csrf_form_key: '<?php echo getFormKey(); ?>'
             },
             function(data, status) {
                 var stringified = JSON.stringify(data);

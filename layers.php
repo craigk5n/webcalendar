@@ -209,7 +209,8 @@ if ($single_user == 'N') {
         var layerstatus = (enable ? 'enable' : 'disable');
 
         $.post('layers_ajax.php', {
-            action: layerstatus
+            action: layerstatus,
+            csrf_form_key: '<?php echo getFormKey(); ?>'
             <?php
             if ($updating_public) {
               echo ', public: "1"';
@@ -250,7 +251,8 @@ if ($single_user == 'N') {
         layers = [];
         $('#layerlist').html('<?php echo $LOADING; ?>');
         $.post('layers_ajax.php', {
-            action: 'list'
+            action: 'list',
+            csrf_form_key: '<?php echo getFormKey(); ?>'
             <?php
             if ($updating_public) {
               echo ', public: "1"';
@@ -311,7 +313,8 @@ if ($single_user == 'N') {
             layeruser: layeruser,
             source: source,
             color: color,
-            dups: dups
+            dups: dups,
+            csrf_form_key: '<?php echo getFormKey(); ?>'
           },
           function(data, status) {
             var stringified = JSON.stringify(data);

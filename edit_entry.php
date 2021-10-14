@@ -101,7 +101,7 @@ $others_complete = 'yes';
 $checked = ' checked="checked"';
 $selected = ' selected="selected"';
 
-$eType = getGetValue('eType');
+$eType = getGetValue('eType','event',true);
 $id    = getGetValue('id');
 
 $copy  = getValue('copy', '[01]');
@@ -567,6 +567,7 @@ $tabI = 0;
 
 ?>
 <form action="edit_entry_handler.php" method="post" name="editentryform" id="editentryform">
+  <?php print_form_key(); ?>
   <input type="hidden" name="eType" value="<?php echo $eType; ?>" />
   <?php if (!empty($id) && (empty($copy) || $copy != '1')) { ?>
     <input type="hidden" name="cal_id" value="<?php echo $id; ?>" />
@@ -1593,7 +1594,7 @@ $tabI = 0;
         <div class="col-auto">
           <input type="button" class="form-check btn btn-primary" value="<?php echo $saveStr; ?>" onclick="validate_and_submit()">
           <?php if ($id > 0 && ($login == $create_by || $single_user == 'Y' || $is_admin)) { ?>
-            <a class="btn btn-danger" href="del_entry.php?id=' <?php echo $id; ?>" onclick="return confirm('<?php etranslate('Are you sure you want to delete this entry?'); ?>');">
+            <a class="btn btn-danger" href="del_entry.php?id=<?php echo $id; ?>&csrf_form_key=<?php echo getFormKey();?>" onclick="return confirm('<?php etranslate('Are you sure you want to delete this entry?'); ?>');">
               <?php etranslate('Delete entry'); ?></a><br />
           <?php } ?>
         </div>

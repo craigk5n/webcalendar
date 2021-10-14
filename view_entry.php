@@ -783,7 +783,7 @@ if ( $eType == 'task' ) {
       ( $login != '__public__' ) && ! $is_nonuser && $event_status != 'D' ) {
     echo '<div class="row"><div class="col-3">';
     echo '<form action="view_entry.php?id=' . $id
-     . '" method="post" name="setpercentage">
+     . '" method="post" name="setpercentage">' . csrf_form_key() . '
             <input type="hidden" name="others_complete" value="'
      . $others_complete . '" />' . translate ( 'Update Task Percentage' ) . '</div>';
      echo '<div class="col-9"><select name="upercent" id="task_percent">';
@@ -821,6 +821,7 @@ if ( Doc::attachmentsEnabled() && $rss_view == false ) {
         || user_is_assistant( $login, $a->getLogin() ) || $login == $create_by
         || user_is_assistant( $login, $create_by ) )
       ? '<a class="dropdown-item" href="docdel.php?blid=' . $a->getId()
+       . '&csrf_form_key=' . csrf_form_key()
        . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
        . translate('Delete') . '</a>' : '';
     echo '</div></div>' . "\n";
@@ -1043,14 +1044,14 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
     echo '
       <li class="list-group-item"><a title="' . $deleteAllDatesStr
      . '" class="nav" href="del_entry.php?id=' . $id . $u_url
-     . '&amp;override=1" onclick="return confirm( \'' . $areYouSureStr . "\\n\\n"
+     . '&amp;override=1&amp;csrf_form_key=' . getFormKey() . '" onclick="return confirm( \'' . $areYouSureStr . "\\n\\n"
      . $deleteAllStr . '\' );">' . $deleteAllDatesStr . '</a></li>';
     // Don't allow deletion of first event
     if ( ! empty ( $date ) && $date != $orig_date ) {
       $deleteOnlyStr = translate ( 'Delete entry only for this date' );
       echo '
       <li class="list-group-item"><a title="' . $deleteOnlyStr . '" class="nav" href="del_entry.php?id='
-       . $id . $u_url . $rdate . '&amp;override=1" onclick="return confirm( \''
+       . $id . $u_url . $rdate . '&amp;override=1&amp;csrf_form_key=' . getFormKey() . '" onclick="return confirm( \''
        . $areYouSureStr . "\\n\\n" . $deleteAllStr . '\' );">' . $deleteOnlyStr
        . '</a></li>';
     }
@@ -1066,7 +1067,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
       <li class="list-group-item"><a title="' . $editEntryStr . '" class="nav" href="edit_entry.php?id='
      . $id . $u_url . '">' . $editEntryStr . '</a></li>
       <li class="list-group-item"><a title="' . $delete_str . '" class="nav" href="del_entry.php?id='
-     . $id . $u_url . $rdate . '" onclick="return confirm( \'' . $areYouSureStr
+     . $id . $u_url . $rdate . '&amp;csrf_form_key=' . getFormKey() . '" onclick="return confirm( \'' . $areYouSureStr
      . "\\n\\n"
      . ( empty ( $user ) || $user == $login || $is_assistant
       ? $deleteAllStr : '' )
@@ -1083,7 +1084,7 @@ if ( $can_edit && $event_status != 'D' && ! $is_nonuser && $readonly != 'Y' ) {
   translate ( 'This will delete the entry from your XXX calendar.', true );
   echo '
       <li class="list-group-item"><a title="' . $deleteEntryStr . '" class="nav" href="del_entry.php?id='
-   . $id . $u_url . $rdate . '" onclick="return confirm( \'' . $areYouSureStr
+   . $id . $u_url . $rdate . '&amp;csrf_form_key=' . getFormKey() . '" onclick="return confirm( \'' . $areYouSureStr
    . "\\n\\n"
    . str_replace ( 'XXX ',
     ( $is_assistant ? translate ( 'boss' ) . ' ' : '' ), $delFromCalStr )
@@ -1102,8 +1103,8 @@ if ( $readonly != 'Y' && ! $is_my_event && ! $is_private && !
   $is_confidential && $event_status != 'D' && $login != '__public__' && !
   $is_nonuser )
   echo '
-      <li class="list-group-item"><a title="' . $addToMineStr . '" class="nav" href="add_entry.php?id='
-   . $id . '" onclick="return confirm( \''
+      <li class="list-group-item"><a title="' . $addToMineStr . '" class="nav" href="add_entry.php?id=' .
+      $id . '&csrf_form_key=' . getFormKey() . '" onclick="return confirm( \''
    . translate ( 'Do you want to add this entry to your calendar?', true )
    . "\\n\\n" . translate ( 'This will add the entry to your calendar.', true )
    . '\' );">' . $addToMineStr . '</a></li>';
@@ -1148,10 +1149,12 @@ if ( access_can_access_function ( ACCESS_EXPORT ) &&
   $selectStr = generate_export_select();
   $userStr = ( ! empty ( $user ) ? '<input type="hidden" name="user" value="' .
     $user . '" />' : '' );
+  $formKey = csrf_form_key();
   echo <<<EOT
     <li class="list-group-item">
     <br />
     <form method="post" name="exportform" action="export_handler.php">
+      ${formKey}
       <div class="form-row">
       <label class="form-inline" for="exformat">{$exportThisStr}:&nbsp;</label>
       {$selectStr}

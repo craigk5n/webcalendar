@@ -1272,6 +1272,7 @@ if( ! empty( $conflicts ) ) {
     </ul>
     ' // User can confirm conflicts.
   . '<form name="confirm" method="post">';
+  print_form_key();
   foreach ($_POST as $xkey => $xval) {
     if (is_array($xval)) {
       $xkey .= "[]";

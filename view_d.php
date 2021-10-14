@@ -60,6 +60,7 @@ $wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 $nextStr = translate ( 'Next' );
 $previousStr = translate ( 'Previous' );
 
+$formKey = csrf_form_key();
 echo <<<EOT
     <div class="viewnav">
       <a title="{$previousStr}" class="prev"
@@ -79,6 +80,7 @@ echo <<<EOT
 
     <!-- Hidden form for booking events -->
     <form action="edit_entry.php" method="post" name="schedule">
+      ${formKey}
       <input type="hidden" name="date"
         value="{$thisyear}{$thismonth}{$thisday}" />
       <input type="hidden" name="defusers" value="{$partStr}" />

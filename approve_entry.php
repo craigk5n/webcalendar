@@ -19,8 +19,9 @@ if ( empty ( $ret ) ) {
   print_header();
   echo '
     <form action="approve_entry.php' . $q_string
-   . '" method="post" name="add_comments">
-      <table cellspacing="5">
+   . '" method="post" name="add_comments">';
+   print_form_key();
+   echo '<table cellspacing="5">
         <tr>
           <td class="aligncenter alignbottom"><h3>'
    . translate ( 'Additional Comments (optional)' ) . '</h3></td>

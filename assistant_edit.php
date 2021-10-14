@@ -14,7 +14,7 @@ print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
   '<script type="text/javascript" src="includes/js/assistant_edit.js"></script>' );
 echo '
     <form action="assistant_edit_handler.php" method="post" '
- . 'name="assistanteditform">' . ( $user ? '
+ . 'name="assistanteditform">' . csrf_form_key() . ( $user ? '
       <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
       <h2>';
 

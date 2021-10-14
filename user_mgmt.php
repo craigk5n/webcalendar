@@ -32,6 +32,8 @@ $noLoginError = translate('Username cannot be blank.');
 $invalidEmail = translate('Invalid email address');
 $passwordsMismatchError = translate('The passwords were not identical.');
 $noPasswordError = translate('You have not entered a password.');
+$invalidFirstName = translate('Invalid first name.');
+$invalidLastName = translate('Invalid last name.');
 
 print_header(
     '',
@@ -235,7 +237,8 @@ print_header(
         users = [];
         $('#user-tbody').html('<tr><td colspan="5"><?php echo $LOADING; ?></td></tr>');
         $.post('users_ajax.php', {
-                action: 'userlist'
+                action: 'userlist',
+                csrf_form_key: '<?php echo getFormKey(); ?>'
             },
             function(data, status) {
                 var stringified = JSON.stringify(data);
@@ -284,6 +287,32 @@ print_header(
         if (elem.length == 0)
             return true;
         if (elem.match(basicEmailRegex))
+            return true;
+        else
+            return false;
+    }
+
+    // Mostly make sure there is no HTML in here.
+    function validateFirstName() {
+        var firstNameRegex = /^[^<>]+$/;
+        var elem = $("#editFirstname").val();
+        // Allow empty
+        if (elem.length == 0)
+            return true;
+        if (elem.match(firstNameRegex))
+            return true;
+        else
+            return false;
+    }
+
+    // Mostly make sure there is no HTML in here.
+    function validateLastName() {
+        var lastNameRegex = /^[^<>]+$/;
+        var elem = $("#editLastname").val();
+        // Allow empty
+        if (elem.length == 0)
+            return true;
+        if (elem.match(lastNameRegex))
             return true;
         else
             return false;
@@ -377,6 +406,16 @@ print_header(
                 return;
             }
         }
+        if (!validateFirstName()&&false) {
+            $('#errorMessage').html('<?php echo $invalidFirstName; ?>');
+            $('#edit-user-dialog-alert').show();
+            return;
+        }
+        if (!validateLastName()&&false) {
+            $('#errorMessage').html('<?php echo $invalidLastName; ?>');
+            $('#edit-user-dialog-alert').show();
+            return;
+        }
         // Validate email
         if (!validateEmail()) {
             $('#errorMessage').html('<?php echo $invalidEmail; ?>');
@@ -395,7 +434,8 @@ print_header(
                     email: email,
                     is_admin: is_admin, // "Y" or "N"
                     enabled: enabled, // "Y" or "N"
-                    password: password1 // For add only
+                    password: password1, // For add only
+                    csrf_form_key: '<?php echo getFormKey(); ?>'
                 },
                 function(data, status) {
                     console.log('Data: ' + data);
@@ -460,7 +500,8 @@ print_header(
         $.post('users_ajax.php', {
                     action: "set-password",
                     login: login,
-                    password: password1
+                    password: password1,
+                    csrf_form_key: '<?php echo getFormKey(); ?>'
                 },
                 function(data, status) {
                     console.log('Data: ' + data);
@@ -513,7 +554,8 @@ print_header(
 
             $.post('users_ajax.php', {
                         action: "delete",
-                        login: login
+                        login: login,
+                        csrf_form_key: '<?php echo getFormKey(); ?>'
                     },
                     function(data, status) {
                         console.log('Data: ' + data);

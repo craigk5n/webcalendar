@@ -207,6 +207,7 @@ echo '
  . ( $adding_report ? translate ( 'Add Report' ) : translate ( 'Edit Report' ) )
  . '</h2>
     <form action="edit_report_handler.php" method="post" name="reportform">'
+ . csrf_form_key()
  . ( $updating_public ? '
       <input type="hidden" name="public" value="1" />' : '' )
  . ( ! $adding_report ? '

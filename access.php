@@ -175,8 +175,9 @@ if( $is_admin ) {
     <h2>' . translate( 'User Access Control' )
    . ( empty( $user_fullname ) ? '' : ': ' . $user_fullname ) . '</h2>
     ' . display_admin_link( false ) . '
-    <form action="access.php" method="post" name="SelectUser">
-      <select name="guser" onchange="document.SelectUser.submit()">'
+    <form action="access.php" method="post" name="SelectUser">';
+  print_form_key();
+  echo '<select name="guser" onchange="document.SelectUser.submit()">'
   // Add a DEFAULT CONFIGURATION to be used as a mask.
   . '
         <option value="__default__"'
@@ -213,8 +214,9 @@ if( ! empty( $guser ) || ! $is_admin ) {
     // defined in access.php.
     assert( count( $order ) == ACCESS_NUMBER_FUNCTIONS );
 
+    echo '<form action="access.php" method="post" id="accessform" name="accessform">';
+    print_form_key();
     echo '
-    <form action="access.php" method="post" id="accessform" name="accessform">
       <input type="hidden" name="auser" value="' . $guser . '" />
       <input type="hidden" name="guser" value="' . $guser . '" />
       <table>
@@ -282,7 +284,9 @@ if( ! empty( $guser ) || ! $is_admin ) {
     $userlist = get_list_of_users( $guser );
     echo '
     <h2 style="margin-bottom: 2px;">' . $pagetitle . '</h2>
-    <form action="access.php" method="post" name="SelectOther">
+    <form action="access.php" method="post" name="SelectOther">';
+    print_form_key();
+    echo '
       <input type="hidden" name="guser" value="' . $guser . '" />
       <select name="otheruser" onchange="document.SelectOther.submit()">'
     // Add a DEFAULT CONFIGURATION to be used as a mask.
@@ -306,8 +310,9 @@ if( ! empty( $guser ) || ! $is_admin ) {
 if( ! empty( $otheruser ) ) {
   if( $allow_view_other ) {
     $typeStr = translate( 'Type' );
+    echo '<form action="access.php" method="post" name="EditOther">';
+    print_form_key();
     echo '
-    <form action="access.php" method="post" name="EditOther">
       <input type="hidden" name="guser" value="' . $guser . '" />
       <input type="hidden" name="otheruser" value="' . $otheruser . '" /><br />
       <table cellpadding="5">

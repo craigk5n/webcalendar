@@ -23,9 +23,12 @@ function save_pref ( $prefs, $src ) {
 
       // Validate key name. Should start with "admin_" and not include
       // any unusual characters that might be an SQL injection attack.
-      if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) )
+      if ( $key == 'csrf_form_key' ) {
+        // Ignore this for validation...
+      } else if ( ! preg_match ( '/admin_[A-Za-z0-9_]+$/', $key ) ) {
         die_miserable_death ( str_replace ( 'XXX', $key,
             translate ( 'Invalid setting name XXX.' ) ) );
+     }
     } else {
       $prefix = 'admin_';
       $setting = $key;
@@ -238,7 +241,7 @@ if ( ! $error ) {
    . '\'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,'
    . 'outerWidth=420\' );" /></h2>
     <form action="admin.php" method="post" onsubmit="return valid_form( this );"'
-   . ' name="prefform">'
+   . ' name="prefform">' . csrf_form_key()
    . display_admin_link() . '
       <input class="btn btn-primary" type="submit" value="' . $saveStr
    . '" name="" /><br /><br />

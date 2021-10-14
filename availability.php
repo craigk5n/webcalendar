@@ -74,7 +74,7 @@ echo '</span><br />
       </div>
     </div><br />
     <form action="availability.php" method="post">
-      ' . daily_matrix ( $date, $users ) . '
+      ' . csrf_form_key() . daily_matrix ( $date, $users ) . '
     </form>
     ' . print_trailer ( false, true, true );
 

@@ -222,7 +222,8 @@ print_header(
         users = [];
         $('#user-tbody').html('<tr><td colspan="5"><?php echo $LOADING; ?></td></tr>');
         $.post('users_ajax.php', {
-                action: 'resource-cal-list'
+                action: 'resource-cal-list',
+                csrf_form_key: '<?php echo getFormKey(); ?>'
             },
             function(data, status) {
                 var stringified = JSON.stringify(data);
@@ -384,7 +385,8 @@ print_header(
                     admin: admin,
                     firstname: firstname,
                     lastname: lastname,
-                    public: public
+                    public: public,
+                    csrf_form_key: '<?php echo getFormKey(); ?>'
                 },
                 function(data, status) {
                     console.log('Data: ' + data);
@@ -443,7 +445,8 @@ print_header(
 
         $.post('users_ajax.php', {
                     action: "delete-resource-cal",
-                    login: login
+                    login: login,
+                    csrf_form_key: '<?php echo getFormKey(); ?>'
                 },
                 function(data, status) {
                     console.log('Data: ' + data);

@@ -79,10 +79,12 @@ if ( ( $add == '1' || ! empty ( $nid ) ) && empty ( $error ) ) {
   $urlValue = ( empty ( $remotestemp_url )
     ? '' : htmlspecialchars ( $remotestemp_url ) );
 
+  $formKey = csrf_form_key();
   echo <<<EOT
     <h2>{$lableStr}</h2>
     <form action="edit_remotes_handler.php" method="post" name="prefform"
       onsubmit="return valid_form( this );">
+      ${formKey}
       <table cellpadding="2">
         <tr>
           <td><label for="calid">{$calIdStr}:</label></td>

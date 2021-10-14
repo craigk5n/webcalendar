@@ -200,7 +200,8 @@ $formaction = preg_replace('/action=reset/', 'action=save', $formaction);
 
 <form action="<?php echo htmlspecialchars($formaction) ?>" method="post" name="prefform">
 <?php
- if ($user)
+print_form_key();
+if ($user)
   echo "<input type=\"hidden\" name=\"user\" value=\"$user\" />\n";
 
 echo display_admin_link();
@@ -210,7 +211,7 @@ $resetConfirm = str_replace("XXX", $user, $resetConfirm);
 <div class="form-row">
 <input class="btn btn-primary mr-2" type="submit" value="<?php etranslate ( 'Save Preferences' )?>" name="" />
 <input type="hidden" name="action" value="save"/>
-<a class="btn btn-secondary mr-2" href="pref.php?action=reset&user=<?php echo $user;?>"
+<a class="btn btn-secondary mr-2" href="pref.php?action=reset&user=<?php echo $user;?>&csrf_form_key=<?php echo getFormKey();?>"
   onclick="return confirm('<?php echo $resetConfirm;?>')"><?php etranslate("Reset Preferences");?></a>
 
 <?php if ( $updating_public ) { ?>

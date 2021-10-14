@@ -45,6 +45,8 @@ $deleteStr = translate('Deleting users not supported.');
 $notIdenticalStr = translate('The passwords were not identical.');
 $noPasswordStr = translate('You have not entered a password.');
 $blankUserStr = translate('Username cannot be blank.');
+$invalidFirstName = translate('Invalid first name.');
+$invalidLastName = translate('Invalid last name.');
 
 // Make sure this is only called from user_mgmt.php
 if (!empty($_SERVER['HTTP_REFERER'])) {
@@ -81,6 +83,12 @@ if ($action == 'userlist') {
       $error = $notAuthStr;
   } else if (!$admin_can_add_user) {
     $error = translate('Unsupported action');
+  }
+  if (addslashes($firstname) != $firstname || strip_tags_content($firstname) != $firstname) {
+    $error = $invalidFirstName;
+  }
+  if (addslashes($lastname) != $lastname || strip_tags_content($lastname) != $lastname) {
+    $error = $invalidLastName;
   }
   if (empty($error)) {
     save_user(
@@ -187,6 +195,12 @@ if ($action == 'userlist') {
   if ($REMOTES_ENABLED != 'Y' || (access_is_enabled() && !access_can_access_function(ACCESS_IMPORT))) {
     $error = $notAuthStr;
   }
+  if (addslashes($firstname) != $firstname || strip_tags_content($firstname) != $firstname) {
+    $error = $invalidFirstName;
+  }
+  if (addslashes($lastname) != $lastname || strip_tags_content($lastname) != $lastname) {
+    $error = $invalidLastName;
+  }
   if (empty($error)) {
     $error = save_remote_calendar(
       getPostValue('add') == '1' ? true : false,
@@ -285,6 +299,12 @@ if ($action == 'userlist') {
   if (! $is_admin) {
     $error = $notAuthStr;
   }
+  if (addslashes($firstname) != $firstname || strip_tags_content($firstname) != $firstname) {
+    $error = $invalidFirstName;
+  }
+  if (addslashes($lastname) != $lastname || strip_tags_content($lastname) != $lastname) {
+    $error = $invalidLastName;
+  }
   if (empty($error)) {
     $error = save_resource_calendar(
       getPostValue('add') == '1' ? true : false,
@@ -348,6 +368,10 @@ if ($action == 'userlist') {
 exit;
 
 
+function strip_tags_content($text) {
+  return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
+}
+
 // Add/Update a user
 // We ignore password params on an update since there is a separate function
 // for updating passwords.
@@ -355,10 +379,17 @@ function save_user($add, $user, $lastname, $firstname, $is_admin, $enabled, $ema
 {
   global $error, $blankUserStr, $login;
 
-  if (addslashes($user) != $user) {
+  if (addslashes($user) != $user || strip_tags_content($user) != $user) {
     $error = 'Invalid characters in login.';
   } else if ($add && empty($user)) {
     $error = $blankUserStr;
+  }
+
+  if (addslashes($firstname) != $firstname || strip_tags_content($firstname) != $firstname) {
+    $error = $invalidFirstName;
+  }
+  if (addslashes($lastname) != $lastname || strip_tags_content($lastname) != $lastname) {
+    $error = $invalidLastName;
   }
 
   if (empty($error) && $add) {

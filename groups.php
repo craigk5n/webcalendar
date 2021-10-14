@@ -172,7 +172,8 @@ print_header(
         groups = [];
         $('#group-tbody').html('<tr><td colspan="5"><?php echo $LOADING; ?></td></tr>');
         $.post('users_ajax.php', {
-                action: 'group-list'
+                action: 'group-list',
+                csrf_form_key: '<?php echo getFormKey(); ?>'
             },
             function(data, status) {
                 var stringified = JSON.stringify(data);
@@ -295,7 +296,8 @@ print_header(
                     action: "save-group",
                     id: id,
                     name: name,
-                    users: users
+                    users: users,
+                    csrf_form_key: '<?php echo getFormKey(); ?>'
                 },
                 function(data, status) {
                     console.log('Data: ' + data);
@@ -357,7 +359,8 @@ print_header(
 
         $.post('users_ajax.php', {
                     action: "delete-group",
-                    id: id
+                    id: id,
+                    csrf_form_key: '<?php echo getFormKey(); ?>'
                 },
                 function(data, status) {
                     console.log('Data: ' + data);

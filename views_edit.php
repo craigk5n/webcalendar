@@ -25,6 +25,7 @@ print_header( $INC, '', $BodyX );
 
 <form action="views_edit_handler.php" method="post" name="editviewform">
 <?php
+print_form_key();
 $newview = true;
 $viewname = $viewtype = '';
 $viewisglobal = 'N';

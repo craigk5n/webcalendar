@@ -273,6 +273,7 @@ if ( empty ( $error ) && empty ( $info ) ) {
 echo '
       <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
         . '"  style="margin-left: 13px;" method="post">
+       ' . print_form_key () . '
        <br><input class="btn btn-primary" type="submit" value="'
         . translate ( 'New Search' ) . '" /></form>
     ' . print_trailer ();
