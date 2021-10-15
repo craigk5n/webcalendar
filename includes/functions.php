@@ -6529,12 +6529,12 @@ function isSecure() {
     || $_SERVER['SERVER_PORT'] == 443;
 }
 
-function sendCookie($name, $value, $expiration=0, $sensitive=true) {
-  $path = '';
+function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
   $domain = '';
+  $httpOnly = true; // don't allow JS access to cookies.
   // If sensitive and HTTPS is supported, set secure to true
   $secure = $sensitive && isSecure();
-  SetCookie ( $name, $value, $expiration, $path, $domain, $secure, false);
+  SetCookie ( $name, $value, $expiration, $path, $domain, $secure, $httpOnly);
 }
 
 ?>

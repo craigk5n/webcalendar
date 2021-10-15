@@ -219,39 +219,4 @@ function showResponse(originalRequest) {
   document.body.style.cursor = 'default';
 }
 
-function altrows() {
-   if( ! document.getElementsByTagName )
-     return false;
 
-   var rows = $$( 'div tbody tr' );
-   for ( var i = 0; i < rows.length; i++ ) {
-     if ( ! rows[i].hasClassName( 'ignore' ) ) {
-       rows[i].onmouseover = function() { $( this ).addClassName( 'alt' ); }
-       rows[i].onmouseout  = function() { $( this ).removeClassName( 'alt' ); }
-    }
-   }
-}
-
-function altps() {
-   if( ! document.getElementsByTagName )
-     return false;
-
-   var rows = $$( 'div p' );
-   for( var i = 0; i < rows.length; i++ ) {
-     if ( ! rows[i].hasClassName( 'ignore' ) ) {
-       rows[i].onmouseover = function() { $( this ).addClassName( 'alt' ); }
-       rows[i].onmouseout  = function() { $( this ).removeClassName( 'alt' ); }
-    }
-   }
-}
-function showFrame(foo,f,section) {
-  document.getElementById(foo).style.display = "block";
-  if (f) { setCookie(foo, "o", section); }
-}
-
-function hideFrame(foo,f,section) {
-  if (document.getElementById(foo)) {
-    document.getElementById(foo).style.display = "none";
-    if (f) { deleteCookie(foo, section); }
-  }
-}
