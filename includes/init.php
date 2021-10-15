@@ -236,7 +236,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
       $webcalendar_csscache = $_COOKIE['webcalendar_csscache'];
     else {
       $webcalendar_csscache = 1;
-      SetCookie( 'webcalendar_csscache', $webcalendar_csscache );
+      sendCookie( 'webcalendar_csscache', $webcalendar_csscache );
     }
     $ret .= '
     <link href="css_cacher.php?login='

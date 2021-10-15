@@ -56,8 +56,8 @@ $action = getGetValue('action');
 if (!empty($action) && $action == 'logout') {
   $logout = true;
   $return_path = '';
-  SetCookie('webcalendar_login', '', 0);
-  SetCookie('webcalendar_last_view', '', 0);
+  sendCookie('webcalendar_login', '', 0);
+  sendCookie('webcalendar_last_view', '', 0);
   $message = translate('You have been logged out.');
 } else
 if (empty($return_path)) {
@@ -114,7 +114,7 @@ if ($single_user == 'Y' || $use_http_auth) {
       // If $remember, set login to expire in 365 days.
       $timeStr = (!empty($remember) && $remember == 'yes'
         ? time() + 31536000 : 0);
-      SetCookie('webcalendar_session', $encoded_login, $timeStr, $cookie_path);
+      sendCookie('webcalendar_session', $encoded_login, $timeStr, $cookie_path);
 
       // The cookie "webcalendar_login" is provided as a convenience to other
       // apps that may wish to know what was the last calendar login,
@@ -123,7 +123,7 @@ if ($single_user == 'Y' || $use_http_auth) {
       // used to allow logins within this app. It is used to load user
       // preferences on the login page (before anyone has logged in)
       // if $REMEMBER_LAST_LOGIN is set to "Y" (in admin.php).
-      SetCookie('webcalendar_login', $login, $timeStr, $cookie_path);
+      sendCookie('webcalendar_login', $login, $timeStr, $cookie_path);
 
       if (!empty($GLOBALS['newUserUrl'])) {
         $url = $GLOBALS['newUserUrl'];
@@ -154,13 +154,13 @@ if ($single_user == 'Y' || $use_http_auth) {
     //$error = "Start";
   }
   // Delete current user.
-  SetCookie('webcalendar_session', '', 0, $cookie_path);
+  sendCookie('webcalendar_session', '', 0, $cookie_path);
   // In older versions, the cookie path had no trailing slash and NS 4.78
   // thinks "path/" and "path" are different, so the line above does not
   // delete the "old" cookie. This prohibits the login. So we also delete the
   // cookie with the trailing slash removed.
   if (substr($cookie_path, -1) == '/') {
-    SetCookie('webcalendar_session', '', 0, substr($cookie_path, 0, -1));
+    sendCookie('webcalendar_session', '', 0, substr($cookie_path, 0, -1));
   }
 }
 echo send_doctype($appStr);

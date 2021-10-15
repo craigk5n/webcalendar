@@ -2624,7 +2624,7 @@ function get_last_view ( $clear=true ) {
     ? str_replace ( '&', '&amp;', $_COOKIE['webcalendar_last_view'] ) : '' );
 
   if ( $clear )
-    SetCookie ( 'webcalendar_last_view', '', 0 );
+    sendCookie ( 'webcalendar_last_view', '', 0 );
 
   return $val;
 }
@@ -5600,7 +5600,7 @@ function remember_this_view ( $view = false ) {
   if ( strstr ( $REQUEST_URI, 'friendly=' ) )
     return;
 
-  SetCookie ( 'webcalendar_last_view', $REQUEST_URI );
+  sendCookie ( 'webcalendar_last_view', $REQUEST_URI );
 
 }
 
@@ -6518,6 +6518,23 @@ function require_valid_referring_url ()
     // WebCalendar anyhow...)
     die_miserable_death ( translate ( 'Invalid referring URL' ) );
   }
+}
+
+/**
+  * Is the current connection using HTTPS rather than HTTP?
+  */
+function isSecure() {
+  return
+    (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || $_SERVER['SERVER_PORT'] == 443;
+}
+
+function sendCookie($name, $value, $expiration=0, $sensitive=true) {
+  $path = '';
+  $domain = '';
+  // If sensitive and HTTPS is supported, set secure to true
+  $secure = $sensitive && isSecure();
+  SetCookie ( $name, $value, $expiration, $path, $domain, $secure, false);
 }
 
 ?>

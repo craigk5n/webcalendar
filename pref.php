@@ -7,7 +7,7 @@ $webcalendar_csscache = 1;
 if  ( isset ( $_COOKIE['webcalendar_csscache'] ) ) {
   $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
 }
-SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
+sendCookie ( 'webcalendar_csscache', $webcalendar_csscache );
 
 function save_pref( $prefs, $src) {
   global $prefuser;

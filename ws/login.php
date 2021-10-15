@@ -63,7 +63,7 @@ else {
        . chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) );
       $encoded_login = encode_string ( $login . '|'
        . crypt ( $password, $salt ) );
-      // SetCookie ( 'webcalendar_session', $encoded_login, 0, $cookie_path );
+      // sendCookie ( 'webcalendar_session', $encoded_login, 0, $cookie_path );
       $out .= '
   <cookieName>webcalendar_session</cookieName>
   <cookieValue>$encoded_login</cookieValue>' . ( $is_admin ? '

@@ -569,7 +569,7 @@ class WebCalendar {
             if ( ! empty ( $login ) && $login != addslashes ( $login ) ) {
               // The following deletes the bad cookie.
               // So, the user just needs to reload.
-              SetCookie ( 'webcalendar_session', '', 0 );
+              sendCookie ( 'webcalendar_session', '', 0 );
               die_miserable_death ( 'Illegal characters in login <tt>'
                  . htmlentities ( $login )
                  . '</tt>. Press browser reload to clear bad cookie.' );
