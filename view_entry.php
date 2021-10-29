@@ -867,7 +867,7 @@ if ( Doc::commentsEnabled() ) {
       || user_is_assistant($login, $cmt->getLogin()) || $login == $create_by
       || user_is_assistant($login, $create_by)) {
       $comment_text .= '<a class="dropdown-item" href="docdel.php?blid=' . $cmt->getId()
-      . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
+      . '&csrf_form_key=' . getFormKey() . '" onclick="return confirm( \'' . $areYouSureStr . '\' );">'
       . translate('Delete') . '</a>';
     }
     $comment_text .= '</div></div><hr>' . "\n";
