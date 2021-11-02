@@ -1421,6 +1421,8 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       if ( ! empty ( $Entry['Location'] ) ) {
         $names[] = 'cal_location';
         $entryclass = $Entry['Location'];
+        if ( strlen ( $entryclass ) > 99 )
+            $entryclass = substr ( $entryclass, 0, 99 );
         $values[] = $entryclass;
       }
 
