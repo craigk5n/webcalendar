@@ -14,8 +14,13 @@ else
 
 load_user_categories();
 
-if ( empty ( $year ) )
-  $year = date ( 'Y' );
+if ( empty ( $year ) ) {
+  if (! empty($date)) {
+    $year = substr($date, 0, 4);
+  } else {
+    $year = date ( 'Y' );
+  }
+}
 
 $thisyear = $year;
 if ( $year != date ( 'Y' ) )
