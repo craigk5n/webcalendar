@@ -92,22 +92,22 @@ if ($REMOTES_ENABLED == 'Y') {
       $calUser = $row[0];
       $cal_url = $row[1];
       $login = $row[2];
-      $overwrite = true;
       $type = 'remoteics';
+      if ($debug) echo "Checking calendar: $cal_url\n";
+      // TODO: Handle hcal data.  Is that still used by anyeone???
+/*
       $data = parse_ical($cal_url, $type);
-      // TODO it may be a vcs file
-      // if ( count ( $data ) == 0 ) {
-      // $data = parse_vcal ( $cal_url );
-      // }
       // we may be processing an hCalendar
-      if (count($data) == 0 && function_exists('simplexml_load_string')) {
+      if (empty($data) == 0 && function_exists('simplexml_load_string')) {
+        if ($debug) echo "  No data found.  Trying hcal...\n";
         $h = new hKit;
         $h->tidy_mode = 'proxy';
         $result = $h->getByURL('hcal', $cal_url);
         $type = 'hcal';
         $data = parse_hcal($result, $type);
       }
-      if (count($data) && empty($errormsg) && !empty($cal_url)) {
+*/
+      if (empty($errormsg) && !empty($cal_url)) {
         if ($debug) {
           echo "Loading calendar \"$calUser\" from URL: $cal_url\n";
         }
