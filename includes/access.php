@@ -80,7 +80,6 @@ define( 'ACCESS_NUMBER_FUNCTIONS', 28 ); // How many function did we define?
 // checks within these files.
 $GLOBALS['page_lookup_ex'] = array(
   'about.php' => 1,
-  'colors.php' => 1,
   'css_cacher.php' => 1,
   'edit_template.php' => 1,
   'icons.php' => 1,
