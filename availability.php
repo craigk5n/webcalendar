@@ -20,14 +20,20 @@ if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
   // not allowed...
   exit;
 
+$noXStr = translate ( 'Program Error No XXX specified!' );
+
 $users = getGetValue ( 'users' );
 $year = getGetValue ( 'year' );
 $month = getGetValue ( 'month' );
 $day = getGetValue ( 'day' );
 
+if ($users != htmlentities($users)) {
+  echo str_replace ( 'XXX', 'users', $noXStr );
+  exit;
+}
+
 // Input args in URL.
 // users: list of comma-separated users.
-$noXStr = translate ( 'Program Error No XXX specified!' );
 if ( empty ( $users ) ) {
   echo str_replace ( 'XXX', translate ( 'user' ), $noXStr );
   exit;
