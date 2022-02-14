@@ -28,9 +28,16 @@ if ( $single_user == 'Y'/* No login for single-user mode.*/ ||
     $use_http_auth )/* No web login for HTTP-based authentication.*/
   die_miserable_death ( print_not_auth() );
 
-$login = getValue ( 'login' );
-if ( empty ( $login ) )
+$login = getValue ('login');
+if (empty($login))
   die_miserable_death( translate( 'A login must be specified.' ) );
+$login2 = chkXSS('login');
+if($login != $login2)
+  die_miserable_death( translate( 'A login must be specified.' ) );
+$badLoginStr = translate('Illegal characters in login XXX.');
+if ($login != addslashes($login) || $login != htmlentities(trim($login)))
+  die_miserable_death( str_replace('XXX', htmlentities($login), $badLoginStr));
+$login = htmlentities(trim($login));
 
 $date = getValue ( 'date' );
 $return_path = getValue ( 'return_path' );
