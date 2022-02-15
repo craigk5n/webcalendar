@@ -8,7 +8,7 @@ CREATE TABLE webcal_user (
   cal_lastname VARCHAR2(25),
   cal_is_admin CHAR(1) DEFAULT 'N',
   cal_last_login INT NULL,
-  cal_passwd VARCHAR2(32),
+  cal_passwd VARCHAR2(255),
   cal_telephone VARCHAR2(50) NULL,
   cal_title VARCHAR2(75) NULL,
   PRIMARY KEY ( cal_login )

@@ -288,3 +288,4 @@ CREATE TABLE webcal_timezones (
   PRIMARY KEY  ( tzid )
 );
 /*upgrade_v1.3.0*/
+ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR2(255) NULL;

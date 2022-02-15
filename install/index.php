@@ -367,14 +367,14 @@ if( ! empty( $action ) && $action == 'install' ) {
     db_populate( $install_filename, $display_sql );
   }
   if( empty( $display_sql ) ) {
-    // Convert passwords to md5 hashes if needed.
+    // Convert passwords to secure hashes if needed.
     $res = dbi_execute( 'SELECT cal_login, cal_passwd FROM webcal_user',
       array(), false, $show_all_errors );
     if( $res ) {
       while( $row = dbi_fetch_row( $res ) ) {
         if( strlen( $row[1] ) < 30 )
           dbi_execute( 'UPDATE webcal_user SET cal_passwd = ?
-            WHERE cal_login = ?', array( md5( $row[1] ), $row[0] ) );
+            WHERE cal_login = ?', array( password_hash( $row[1], PASSWORD_DEFAULT ), $row[0] ) );
       }
       dbi_free_result( $res );
     }
