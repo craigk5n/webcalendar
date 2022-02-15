@@ -124,7 +124,7 @@ else {
   echo '
     <form action="import_handler.php" method="post" name="importform" '
    . 'enctype="multipart/form-data" onsubmit="return checkExtension()">'
-   . print_form_key() . '
+   . csrf_form_key() . '
       <table class="table">
         <tr>
           <td><label for="importtype">' . translate ( 'Import format' ) . ':</label></td>
