@@ -115,7 +115,7 @@ $description  = getValue('desc');
 if (empty($login) || ($login == '__public__' && $id > 0))
   $id = 0;
 
-if (empty($eType))
+if (!in_array($eType, ['event', 'task', 'journal']))
   $eType = 'event';
 
 if (empty($date) && empty($month)) {

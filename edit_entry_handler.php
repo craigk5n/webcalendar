@@ -105,6 +105,8 @@ $due_month = $parsed['month'];
 $due_year  = $parsed['year'];
 
 $eType = getPostValue( 'eType' );
+if (!in_array($eType, ['event', 'task', 'journal']))
+  $eType = 'event';
 
 // entry_changed is calculated client-side with javascript.
 $entry_changed = getPostValue( 'entry_changed' );
