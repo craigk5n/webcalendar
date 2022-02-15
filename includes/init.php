@@ -108,7 +108,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     $incdir = '../includes';
   }
 
-  $cs_ret = $lang = $menuHtml = $menuScript = '';
+  $cs_ret = $lang = '';
 
   // Remember this view if the file is a view_x.php script.
   if( ! strstr( $REQUEST_URI, 'view_entry' ) )
@@ -198,8 +198,6 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
       }
     }
   }
-  // There has to be a way to make "$menuScript" an external file.
-  $ret .= $menuScript;
 
   $tmp   = '" rel="alternate" title="' . $appStr . ' - Unapproved Events - ';
   $tmp_f = 'rss_unapproved.php';
@@ -277,9 +275,6 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     substr( $self, strrpos( $self, '/' ) + 1 ) ) . '"'
   // Add any extra parts to the <body> tag.
   . ( empty( $BodyX ) ? '' : " $BodyX" ) . '>' . "\n"
-  // If menu is enabled, place menu above custom header if desired.
-  . ( $MENU_ENABLED == 'Y' && $menuConfig['Above Custom Header']
-    ? $menuHtml : '' )
   // Add custom header if enabled.
   . ( $CUSTOM_HEADER == 'Y' && ! $disableCustom
     ? load_template( $login, 'H' ) : '' );

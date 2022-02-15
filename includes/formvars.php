@@ -171,7 +171,7 @@ function getGetValue($name, $devVal=NULL, $chkCSS=false)
     $getName = is_array($_GET[$name]) ? array_map('addslashes', $_GET[$name]) :
       addslashes($_GET[$name]);
   }
-  $cleanXSS = $chkXSS ? chkXSS($getName) : true;
+  $cleanXSS = $chkCSS ? chkXSS($getName) : true;
   preventHacking($name, $getName);
   return $cleanXSS ? $getName : NULL;
 }

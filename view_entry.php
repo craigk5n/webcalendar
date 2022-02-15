@@ -396,7 +396,7 @@ $reminder = getReminders ( $id, true );
     <div class="col" id="view-event-title"><h2>
 <?php
 
-echo $name . ( $is_nonuser_admin ||
+echo htmlentities($name) . ( $is_nonuser_admin ||
   ( $is_admin && ! empty ( $user ) && $user == '__public__' )
   ? '  ( ' . translate ( 'Admin mode' ) . ' )' : '' )
  . ( $is_assistant ? ' ( ' . translate ( 'Assistant mode' ) . ' )' : '' );

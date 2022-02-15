@@ -7,7 +7,7 @@ defined('_ISVALID') or die('You cannot access this file directly!');
 global $ALLOW_VIEW_OTHER, $BodyX, $CATEGORIES_ENABLED, $DISPLAY_TASKS,
   $DISPLAY_TASKS_IN_GRID, $fullname, $has_boss, $HOME_LINK, $is_admin,
   $is_assistant, $is_nonuser, $is_nonuser_admin, $login, $login_return_path,
-  $MENU_DATE_TOP, $menuHtml, $menuScript, $NONUSER_ENABLED, $PUBLIC_ACCESS,
+  $MENU_DATE_TOP, $NONUSER_ENABLED, $PUBLIC_ACCESS,
   $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $PUBLIC_ACCESS_CAN_ADD,
   $PUBLIC_ACCESS_OTHERS, $readonly, $REMOTES_ENABLED, $REPORTS_ENABLED,
   $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW, $thisday,
