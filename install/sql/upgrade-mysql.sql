@@ -267,3 +267,4 @@ CREATE INDEX IF NOT EXISTS
   webcal_import_data_type ON webcal_import_data(cal_import_type);
 CREATE INDEX IF NOT EXISTS
   webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
+ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);

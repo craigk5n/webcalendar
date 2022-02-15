@@ -14,7 +14,7 @@ CREATE TABLE webcal_user (
   /* the unique user login */
   cal_login VARCHAR(25) NOT NULL,
   /* the user's password. (not used for http) */
-  cal_passwd VARCHAR(32),
+  cal_passwd VARCHAR(255),
   /* user's last name */
   cal_lastname VARCHAR(25),
   /* user's first name */

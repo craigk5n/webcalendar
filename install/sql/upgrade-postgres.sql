@@ -306,3 +306,4 @@ CREATE TABLE webcal_timezones (
   PRIMARY KEY  ( tzid )
 );
 /*upgrade_v1.3.0*/
+ALTER TABLE webcal_user ALTER COLUMN cal_passwd TYPE VARCHAR(255);
