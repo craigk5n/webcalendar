@@ -260,4 +260,4 @@ ALTER TABLE webcal_entry_categories
 CREATE INDEX IF NOT EXISTS
   webcal_entry_categories ON webcal_entry_categories(cat_id);
 /*upgrade_v1.3.1*/
-
+ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
