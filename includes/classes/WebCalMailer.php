@@ -16,11 +16,14 @@ $inc_path = ( defined( '__WC_INCLUDEDIR' ) ? __WC_INCLUDEDIR : 'includes' );
 if( file_exists( $inc_path . '/xcal.php' ) )
   include_once $inc_path . '/xcal.php'; // Used for ics attachments.
 
-require 'phpmailer/class.phpmailer.php';
-require 'phpmailer/class.smtp.php';
+require 'phpmailer/PHPMailer.php';
+require 'phpmailer/SMTP.php';
+require 'phpmailer/Exception.php';
 
-class WebCalMailer extends phpmailer{
-  var $WordWrap = 75;
+use phpmailer\PHPMailer;
+
+class WebCalMailer {
+  private $mail;
 
   /**
    * Constructor
@@ -29,50 +32,56 @@ class WebCalMailer extends phpmailer{
     global $EMAIL_MAILER, $mailerError,
     $SMTP_AUTH, $SMTP_HOST, $SMTP_PORT, $SMTP_PASSWORD, $SMTP_USERNAME;
 
+    $this->mail = new PHPMailer\PHPMailer(false);
     $mailerError = '';
-    #$this->Version .= ' extended by ' . generate_application_name( false );
-    $this->Host = $SMTP_HOST;
-    $this->Port = $SMTP_PORT;
-    #$this->Mailer = $EMAIL_MAILER;
-    $this->IsSMTP ();
-    $this->CharSet = translate( 'charset' );
+    $this->mail->Host = $SMTP_HOST;
+    $this->mail->Port = $SMTP_PORT;
+    #$this->mail->Mailer = $EMAIL_MAILER;
+    $this->mail->isSMTP ();
+    $this->mail->CharSet = translate( 'charset' );
     // Turn on SMTP authentication.
-    $this->SMTPAuth = ( $SMTP_AUTH == 'Y' );
-    $this->SMTPSecure = "tls";
-    $this->SMTPDebug = 0;
-    $this->Username = $SMTP_USERNAME; // SMTP username.
-    $this->Password = $SMTP_PASSWORD; // SMTP password.
+    $this->mail->SMTPAuth = ( $SMTP_AUTH == 'Y' );
+    $this->mail->SMTPSecure = "tls";
+    $this->mail->SMTPDebug = 0;
+    $this->mail->Username = $SMTP_USERNAME; // SMTP username.
+    $this->mail->Password = $SMTP_PASSWORD; // SMTP password.
+    //$this->mail->SMTPDebug = 4;
+    // TODO: Support OAuth so we can use Gmail when 2FA is enabled.
   }
 
   /**
    * Build email from single via single class call.
+   * Return true if mail was successfully sent.
    */
-  function WC_Send( $from_name, $to_email,
+  function WC_Send($from_name, $to_email,
     $to_name, $subject, $msg, $html = 'N', $from_email = '', $id = '' ) {
 
     if( strlen( $from_email ) ) {
-      $this->SetFrom ( $from_email, $from_name );
-      #$this->From = $from_email;
-      #$this->FromName = $from_name;
+      $this->mail->SetFrom ( $from_email, $from_name );
+      #$this->mail->From = $from_email;
+      #$this->mail->FromName = $from_name;
     } else {
-      $this->SetFrom ( $from_email, $from_name );
-      #$this->From = $from_name;
+      $this->mail->SetFrom ( $from_email, $from_name );
+      #$this->mail->From = $from_name;
     }
 
-    $this->IsHTML( $html == 'Y' );
-    $this->AddAddress( $to_email, unhtmlentities( $to_name, true ) );
+    $this->mail->IsHTML( $html == 'Y' );
+    $this->mail->AddAddress( $to_email, unhtmlentities( $to_name, true ) );
     $this->WCSubject( $subject );
     $this->Body( $msg );
 
     if( ! empty( $id ) )
-      $this->IcsAttach( $id );
+      $this->mail->IcsAttach( $id );
 
-    if ( ! $this->Send() ) {
+    $ret = true;
+    if ( ! $this->mail->Send() ) {
       # TODO: log this...
-      #echo "Mail Error:\n" . $this->ErrorInfo . "\n";
-      #print_r ( $this );
+      #echo "Mail Error:\n" . $this->mail->ErrorInfo . "\n";
+      #print_r ( $this->mail );
+      $ret = false;
     }
     $this->ClearAll();
+    return $ret;
   }
 
   /**
@@ -98,7 +107,7 @@ class WebCalMailer extends phpmailer{
    * Strip slashes from subject and pass thru unhtmlentities.
    */
   function WCSubject( $subject ) {
-    $this->Subject = unhtmlentities( generate_application_name( false ) . ' '
+    $this->mail->Subject = unhtmlentities( generate_application_name( false ) . ' '
        . translate( 'Notification' ) . ': ' . stripslashes( $subject ) );
   }
 
@@ -107,7 +116,7 @@ class WebCalMailer extends phpmailer{
    */
   function Body( $msg ) {
     $msg = stripslashes( $msg );
-    $this->Body = ( $this->ContentType == 'text/html'
+    $this->mail->Body = ( $this->mail->ContentType == 'text/html'
       ? nl2br( $msg ) : unhtmlentities( $msg ) );
   }
 
@@ -116,7 +125,7 @@ class WebCalMailer extends phpmailer{
    */
   function IcsAttach( $id ) {
     if( function_exists( 'export_ical' ) )
-      $this->AddStringAttachment( export_ical( $id, true ),
+      $this->mail->AddStringAttachment( export_ical( $id, true ),
         'WebCalendar.ics', 'base64', 'text/ical' );
   }
 
@@ -124,10 +133,10 @@ class WebCalMailer extends phpmailer{
    * New function to clear ALL attributes.
    */
   function ClearAll() {
-    $this->ClearAddresses();
-    $this->ClearAllRecipients();
-    $this->ClearAttachments();
-    $this->ClearCustomHeaders();
+    $this->mail->ClearAddresses();
+    $this->mail->ClearAllRecipients();
+    $this->mail->ClearAttachments();
+    $this->mail->ClearCustomHeaders();
   }
 
   /**

@@ -1,0 +1,21 @@
+{
+    "name": "k5n/webcalendar",
+    "type": "project",
+    "description": "Multi-user web-based calendar app",
+    "version": "v1.9.0",
+    "homepage": "https://www.k5n.us/webcalendar/",
+    "authors": [
+        {
+            "name": "Craig Knudsen",
+            "email": "craig@k5n.us",
+            "homepage": "https://www.k5n.us",
+            "role": "Project Maintainer / Developer"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.5",
+        "components/jquery": "3.5.*",
+        "twbs/bootstrap": "4.*"
+    },
+    "license": "GPL-2.0-only"
+}

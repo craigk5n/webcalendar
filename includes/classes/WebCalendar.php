@@ -62,7 +62,7 @@ class WebCalendar {
     [
       ['Config', 'PHPDBI'],
       []],
-    '/^send_reminders|reload_remotes\.php$/' =>
+    '/^send_reminders|send_test_email|reload_remotes\.php$/' =>
     [
       ['Config', 'PHPDBI', 'Functions'],
       ['User', 'SiteExtras']],

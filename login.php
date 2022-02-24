@@ -165,20 +165,7 @@ if ($single_user == 'Y' || $use_http_auth) {
 }
 echo send_doctype($appStr);
 
-echo $JQUERY;
-
-/*
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<!-- Tiny color: https://github.com/bgrins/TinyColor/ -->
-<script src="includes/js/tinycolor.js"></script>
-<!-- Readable: https://github.com/aramk/readable-color -->
-<script src="includes/js/readable.js"></script>
-<link href="css_cacher.php" rel="stylesheet" />
-<link href="includes/css/styles.css" rel="stylesheet" />
-*/
+echo $ASSETS;
 
 // Print custom header (since we do not call print_header function).
 if ( ! empty ( $CUSTOM_SCRIPT ) && $CUSTOM_SCRIPT == 'Y' ) {
@@ -274,7 +261,9 @@ if ( ! empty ( $CUSTOM_TRAILER ) && $CUSTOM_TRAILER == 'Y' ) {
 <?php
 // TODO use variable from init.php for these version numbers
 ?>
-<script src="includes/js/jquery/jquery-3.5.1.slim.min.js"></script>
-<script src="includes/js/bootstrap/bootstrap-4.6.0.bundle.min.js"></script>
+<!--
+<script src="vendor/twbs/bootstrap/dist/js/ootstrap.min.js"></script>
+<script src="vendor/twbs/bootstrap/js/dist/index.js"></script>
+-->
 </body>
 </html>

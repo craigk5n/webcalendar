@@ -98,7 +98,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $is_admin, $LANGUAGE, $login, $MENU_ENABLED, $MENU_THEME, $OTHERMONTHBG,
   $POPUP_FG, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $REQUEST_URI, $SCRIPT,
   $self, $TABLECELLFG, $TEXTCOLOR, $THBG, $THFG, $TODAYCELLBG, $WEEKENDBG,
-  $JQUERY;
+  $ASSETS;
 
   ob_start ();
 
@@ -147,9 +147,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     "</script>\n";
  
 
-  // TODO: allow option to host bootstrap & jquery locally
-  // TODO: move version info someplace else so we can update boostrap version by updating just one file.
-  $ret .= $JQUERY;
+  $ret .= $ASSETS;
 
   if( ! $disableUTIL )
     $js_ar[] = 'js/util.js';

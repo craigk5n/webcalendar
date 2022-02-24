@@ -20,6 +20,7 @@
  *     same value (e.g. "v1.0.0") that was defined above.
  *   - Update the version/date in ChangeLog and NEWS files.
  *   - Update UPGRADING.html documentation.
+ *   - Update the version in composer.json.
  *
  * ABOUT VERSION NUMBERS:
  *   From now on, we should only be using "vN.N.N" format for versions.
@@ -56,6 +57,7 @@ include_once '../includes/translate.php';
 include_once '../includes/dbi4php.php';
 include_once '../includes/config.php';
 include_once '../includes/formvars.php';
+include_once '../includes/load_assets.php';
 include_once 'default_config.php';
 include_once 'install_functions.php';
 include_once 'sql/upgrade_matrix.php';
@@ -64,8 +66,8 @@ define( '__WC_BASEDIR', '../' );
 $fileDir = __WC_BASEDIR . 'includes';
 $file    = $fileDir . '/settings.php';
 
-$jquery_install = str_replace ('includes/js',
-      '../includes/js', $JQUERY);
+$jquery_install = str_replace ('pub',
+      '../pub', $ASSETS);
 
 clearstatcache();
 
@@ -1079,7 +1081,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
       if( $doLogin )
         echo '
-          <form action="index.php" method="post" name="dblogin">
+          <form action="index.php" method="post" name="dblogin">' . csrf_form_key() . '
             <table>
               <tr>
                 <th>' . $passwordStr . ':</th>
@@ -1122,7 +1124,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     <table width="90%" class="aligncenter">
       <tr>
         <td class="aligncenter">
-          <form action="index.php?action=switch&amp;page=2" method="post">
+          <form action="index.php?action=switch&amp;page=2" method="post">' . csrf_form_key() . '
             <input class="btn btn-primary" type="submit" value="' . $nextStr . '" />
           </form>
         </td>
@@ -1188,7 +1190,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td>
           <form action="index.php" method="post" name="dbform" '
-   . 'onSubmit="return chkPassword()">
+   . 'onSubmit="return chkPassword()">' . csrf_form_key() . '
             <table class="alignright">
               <tr>
                 <td rowspan="7" width="20%">&nbsp;</td>
@@ -1317,18 +1319,18 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     <table width="90%" class="aligncenter">
       <tr>
         <td class="alignright" width="40%">
-          <form action="index.php?action=switch&amp;page=1" method="post">
+          <form action="index.php?action=switch&amp;page=1" method="post">' . csrf_form_key() . '
             <input class="btn btn-primary" type="submit" value="' . $backStr . '" />
           </form>
         </td>
         <td class="aligncenter" width="20%">
-          <form action="index.php?action=switch&amp;page=3" method="post">
+          <form action="index.php?action=switch&amp;page=3" method="post">' . csrf_form_key() . '
             <input class="btn btn-primary" type="submit" value="' . $nextStr . '" '
    . ( empty( $_SESSION['db_success'] ) ? 'disabled' : '' ) . ' />
           </form>
         </td>
         <td class="alignleft" width="40%">
-          <form action="" method="post">
+          <form action="" method="post">' . csrf_form_key() . '
             <input class="btn btn-secondary" type="button" value="' . $logoutStr . '" '
    . ( empty( $_SESSION['validuser'] ) ? 'disabled' : '' )
    . ' onclick="document.location.href=\'index.php?action=logout\'" />
@@ -1389,7 +1391,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       echo '
       <tr>
         <td id="odbc_db" class="aligncenter" nowrap>
-          <form action="index.php?action=set_odbc_db" method="post" '
+          <form action="index.php?action=set_odbc_db" method="post" ' . csrf_form_key()
        . 'name="set_odbc_db">' . translate( 'ODBC Underlying Database' ) . '
             <select class="form-control" name="odbc_db" onchange="document.set_odbc_db.submit();">
               <option value="ibase"'
@@ -1420,7 +1422,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       ( $settings['db_type'] == 'ibase' || $settings['db_type'] == 'oracle' )
       ? translate( 'Automatic installation not supported' )
       : translate( 'This may take several minutes to complete' ) . '
-          <form action="index.php?action=install" method="post">
+          <form action="index.php?action=install" method="post">' . csrf_form_key() . '
             <input class="btn btn-secondary" type="'
        . ( $_SESSION['old_program_version'] == 'new_install' &&
         empty( $_SESSION['blank_database'] )
@@ -1437,7 +1439,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
        && empty( $_SESSION['blank_database'] ) ? '
       <tr>
         <td class="aligncenter">
-          <form action="index.php?action=install" method="post" name="display">
+          <form action="index.php?action=install" method="post" name="display">' . csrf_form_key() . '
             <input type="hidden" name="install_file" value="'
        . $_SESSION['install_file'] . '" />
             <input type="hidden" name="display_sql" value="1" />
@@ -1458,18 +1460,18 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     <table width="90%" class="aligncenter">
       <tr>
         <td class="alignright" width="40%">
-          <form action="index.php?action=switch&amp;page=2" method="post">
+          <form action="index.php?action=switch&amp;page=2" method="post">' . csrf_form_key() . '
             <input class="btn btn-secondary" type="submit" value="' . $backStr . '" />
           </form>
         </td>
         <td class="aligncenter" width="20%">
-          <form action="index.php?action=switch&amp;page=4" method="post">
+          <form action="index.php?action=switch&amp;page=4" method="post">' . csrf_form_key() . '
             <input class="btn btn-primary" type="submit" value="' . $nextStr . '" '
    . ( empty( $_SESSION['db_updated'] ) ? 'disabled' : '' ) . ' />
           </form>
         </td>
         <td class="alignleft" width="40%">
-          <form action="" method="post">
+          <form action="" method="post">' . csrf_form_key() . '
             <input class="btn btn-secondary" type="button" value="' . $logoutStr . '" '
    . ( empty( $_SESSION['validuser'] ) ? 'disabled' : '' )
    . ' onclick="document.location.href=\'index.php?action=logout\'" />
@@ -1498,7 +1500,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
      . translate( 'Timezone Conversion' ) . '</th>
       <tr>
         <td colspan="2">' . ( $_SESSION['tz_conversion'] != 'Success' ? '
-          <form action="index.php?action=tz_convert" method="post">
+          <form action="index.php?action=tz_convert" method="post">' . csrf_form_key() . '
             <ul><li>'
        . translate( 'It appears that you have NOT converted...' ) . '</li></ul>
             <div class="aligncenter"><input class="btn btn-secondary" type="submit" value="'
@@ -1522,7 +1524,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
           <table width="75%" class="aligncenter">
             <tr>
             <form action="index.php?action=switch&amp;page=4" method="post" '
-   . 'enctype=\'multipart/form-data\' name="form_app_settings">
+   . 'enctype=\'multipart/form-data\' name="form_app_settings">' . csrf_form_key() . '
               <input type="hidden" name="app_settings" value="1" />
               <td class="prompt">' . translate( 'Create Default Admin Account' )
    . ':</td>
