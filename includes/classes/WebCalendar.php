@@ -116,9 +116,9 @@ class WebCalendar {
       unset ( $GLOBALS['user'] );
 
     // Get script name.
-    $self = $_SERVER['PHP_SELF'];
+    $self = htmlspecialchars($_SERVER['PHP_SELF']);
     if ( empty ( $self ) )
-      $self = $PHP_SELF;
+      $self = htmlspecialchars($PHP_SELF);
 
     preg_match ( '/\/(\w+\.php)/', $self, $match );
     $SCRIPT = $match[1];
