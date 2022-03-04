@@ -1,7 +1,7 @@
 WebCalendar README
 ------------------
 
-Project Home Page: http://k5n.us/wp/webcalendar/
+Project Home Page: https://www.k5n.us/webcalendar/
 Project Owner: Craig Knudsen, &#99;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;  
 Documentation:
 - [System Administrator's Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-SysAdmin.html) (Installation instructions, FAQ)
@@ -13,7 +13,19 @@ Developer Resources:
 - [WebCalendar-Database.html](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-Database.html)
 - [WebCalendar-DeveloperGuide.html](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-DeveloperGuide.html)
 
-## Setting up a docker dev environment
+## Installation Instructions
+
+After unzipping your files (or transferring the files to your hosting
+provider, you will need to go to the web-based install script.
+If your files are installed in a "webcalendar" folder under your parent
+web server document root, you can access the script by going to:
+
+    https://yourserverhere/webcalendar/
+
+(Obviously, put the correct server name in above.)  The toplevel URL will
+automatically redirect to the installation wizard.
+
+## Setting Up a Docker Dev Environment
 
 You can setup a docker environment with PHP 7.4 and MariaDb with a few
 steps.

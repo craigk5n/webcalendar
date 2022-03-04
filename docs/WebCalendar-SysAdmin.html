@@ -7,7 +7,7 @@
   </head>
   <body id="sysadmin">
 <h1>WebCalendar System Administrator's Guide</h1>
-<p><strong>WebCalendar Version: 1.3.0</strong></p>
+<p><strong>WebCalendar Version: 1.9.0</strong></p>
 
 <h2>Table of Contents</h2>
 <ul>
@@ -30,7 +30,6 @@
  <li><a href="#appendixC">Appendix C: Setting Up Reminders on Windows</a></li>
  <li><a href="#appendixD">Appendix D: Displaying Upcoming Events on Your Site</a></li>
  <li><a href="#appendixE">Appendix E: How To Configure for LDAP</a></li>
- <li><a href="#appendixF">Appendix F: Manual Installation</a></li>
 </ul>
 <hr>
 
@@ -223,7 +222,7 @@
   your web server will find it. (See your web server documentation for information.)</p>
  <p>By default, unpacking WebCalendar will create its own directory
   when you unpack it. The new directory name will typically
-  contain the version name (such as <tt>WebCalendar-1.3.0</tt>).
+  contain the version name (such as <tt>WebCalendar-1.9.0</tt>).
   You can rename this directory after unpacking the files if you
   prefer a directory name like <tt>calendar</tt> or <tt>webcalendar</tt>.
   Keep in mind that unless you remap the directory (via your web server's
@@ -717,7 +716,7 @@ and the event has been approved.
   <dt>Display Participants in popup</dt>
   <dd>If enabled, event participants will be included in popup details.</dd>
   <dt>Allow HTML in Description</dt>
-  <dd>Allow the use of HTML in the description field when creating events. In addition, with the addition of either of two optional packages (HTMLArea or FCKEditor), you can have a WYSIWYG interface. These packages are available on <a href="http://www.k5n.us/webcalendar.php?topic=Add-Ons">WebCalendar's Home Page</a></dd>
+  <dd>Allow the use of HTML in the description field when creating events. In addition, with the addition of either of two optional packages (HTMLArea or FCKEditor), you can have a WYSIWYG interface. These packages are available on <a href="https://www.k5n.us/webcalendar/webcalendar-add-ons/">WebCalendar's Home Page</a></dd>
   <dt>Allow viewing other user's calendars</dt>
    <dd>If enabled, users will be able to view the calendar of another user</dd>
   <dt>Include add event link in views</dt>
@@ -1203,7 +1202,8 @@ and the event has been approved.
      <li>Add the new language to both the $languages array and the
        $browser_languages arrays defined in <tt>includes/translate.php</tt>.</li>
      <li>Test it out... </li>
-  <li>Post a copy of your translation (along with your changes to <tt>includes/translate.php</tt>) to the <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a> for WebCalendar.</li>
+     <li>Create a <a href="https://github.com/craigk5n/webcalendar/pulls">pull request
+        on Github</a>.
      </ol>
   </dd>
  <dt>How do I update an existing translation?</dt>
@@ -1227,12 +1227,12 @@ and the event has been approved.
        Run the <tt>check_translation.pl</tt> script on your new data file to make
        sure you have all the needed translations:
   <pre><tt>perl check_translation.pl French</tt></pre>
-     Post a copy of your translation to the
-  <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870">SourceForge Patches</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a> for WebCalendar.</dd>
+     Create a <a href="https://github.com/craigk5n/webcalendar/pulls">pull request on Github</a>.
 <dt>During Import, I receive this error: Unknown Timezone: XXXXX defaulting to GMT.</dt>
 <dd>This is a notice that your import file contained unknown timezone information.
   WebCalendar will simply save the event or task as GMT. You are encouraged to
-  submit these notices as <a href="https://sourceforge.net/projects/webcalendar/">Bug Reports to SourceForge</a>, so that WebCalendar can improve its TZID support.</dd>
+  submit these notices as a new <a href="https://github.com/craigk5n/webcalendar/issues">Issue
+  on Github</a>, so that WebCalendar can improve its TZID support.</dd>
 
 <!-- END FAQ -->
  </dl>
@@ -1328,27 +1328,13 @@ and the event has been approved.
   <dd>You will need to add an entry in each of the translation files for any text you add
    into the Custom Event Fields.</dd>
  <dt>How do I get the most recent version of WebCalendar?</dt>
-  <dd>You can download the latest public release from SourceForge's
-  <a href="http://sourceforge.net/project/showfiles.php?group_id=3870">file list for WebCalendar</a>&nbsp;<a href="http://sourceforge.net/project/showfiles.php?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>.
+  <dd>You can download the latest public release from Github:
+  <a href="https://github.com/craigk5n/webcalendar/releases">WebCalendar Releases</a>
   <br>
-    You can download the latest development code from the CVS server using
-  the <a href="http://sourceforge.net/cvs/?group_id=3870">instructions provided by SourceForge</a>&nbsp;<a href="http://sourceforge.net/cvs/?group_id=3870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>. (You will need a CVS client to do this.)</dd>
- <dt>How do I install a patch file listed on SourceForge's
-    <a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870">list of WebCalendar patches</a>&nbsp;<a href="http://sourceforge.net/tracker?group_id=3870&amp;atid=303870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>?</dt>
-  <dd>Most patches are distributed as context diffs. That means they were produced using the UNIX <tt>diff</tt> command with the <tt>-C</tt> option. The patches are intended to be used with the <a href="http://www.fsf.org/software/patch/patch.html">GNU patch</a>&nbsp;<a href="http://www.fsf.org/software/patch/patch.html" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a> program. This program is standard on most Linux systems and can be obtained as part of the <a href="http://www.cygwin.com">Cygwin</a>&nbsp;<a href="http://www.cygwin.com" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a> package for Windows. Mac OS X will have the patch program installed if they install the developer tools CD.</dd>
- <dt>I forgot/lost my admin password. How can I reset it?</dt>
-  <dd>The easiest way is to admin a new admin user and then use that
-    new user to reset the password for your old admin account.
-    Assuming you have deleted the original 'admin' login, you can use
-    the following SQL to insert a new admin user into the database:
-    <pre>INSERT INTO webcal_user ( cal_login, cal_passwd, cal_lastname,
-cal_firstname, cal_is_admin ) VALUES
-( 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator',
-'Default', 'Y' );</pre>
-    This will add a user with login 'admin' and password 'admin' to the database.
-    If you still have a user named 'admin', then replace 'admin' in the above
-    SQL with a different username.
-  </dd>
+    You can download the latest development code from git using the Github repository:
+   <br>
+    <code>git clone https://github.com/craigk5n/webcalendar.git</code>
+   </dd>
  <dt>I get a database error indicating table <tt>webcal_config</tt> does not exist.</dt>
   <dd>This is the first table that WebCalendar tries to access, so it
    typically means one of the following:
@@ -1376,11 +1362,21 @@ cal_firstname, cal_is_admin ) VALUES
 
 <a name="help"></a>
  <h2>Getting Help</h2>
- <p>Try the Help/Troubleshooting forum for WebCalendar, hosted at SourceForge.net:</p>
- <pre><a href="https://sourceforge.net/forum/forum.php?forum_id=11588">https://sourceforge.net/forum/forum.php?forum_id=11588</a>&nbsp;<a href="http://sourceforge.net/forum/forum.php?forum_id=11588" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a></pre>
- <p>If you encounter a bug, please check the
-  <a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870">list of open and pending bugs</a>&nbsp;<a href="http://sourceforge.net/tracker/?group_id=3870&amp;atid=103870" title="Open in new window" target="_new"><img src="newwin.gif" alt="new" class="newwin"></a>.
-  If you do <strong>not</strong> see anything similar, submit a new bug.</p>
+ <p>WebCalendar development is hosted on Github.com.  You can try
+ the following resources available there:</p>
+ <ul>
+   <li><a href="https://github.com/craigk5n/webcalendar">Top-level page at Github</a>:
+     This is main page where you can see the latest source code, check for
+     releases etc. </li>
+   <li><a href="https://github.com/craigk5n/webcalendar/discussions">Discussions</a>:
+     Ask questions about WebCalendar here</li>
+   <li><a href="https://github.com/craigk5n/webcalendar/issues">Issues</a>:
+     Check for open bug reports or report a new bug here</li>
+   <li><a href="https://github.com/craigk5n/webcalendar/wiki">Wiki</a>:
+     The wiki page has some additional help and how-to documentation </li>
+   <li><a href="https://www.k5n.us/webcalendar/">WebCalendar Homage Page</a>:
+     The home page for WebCalendar where you can check for news and other information </li>
+ </ul>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr>
 
@@ -1525,6 +1521,13 @@ following steps to setup WebCalendar.
   <li>Creating the user</li>
   <li>Creating the required tables</li>
  </ol>
+ <p>There are SQL files provided for each of the supported databases.
+    These files are typically used during the web-based installation process.
+    However, you can also manually populate your database using the files
+    which can be found in the <tt>install/sql</tt> directory.
+    Most of the commands below assume you are starting from this directory
+    so that the SQL files (e.g. <tt>tables-oracle.sql</tt>) are in your
+    current directory.</p>
  <p>Follow the steps outlined below for the database you are using.
   When complete, a single user account will be created
   with the <strong>login "admin" and password "admin"</strong>, which you are encouraged
@@ -1600,10 +1603,10 @@ input path/table-ibase.sql;</strong></pre>
   When it comes time to create the tables,
   the <tt>tables-postgres.sql</tt> file should work for most
   databases.</p>
-   <h3 class="colorheader">MSSQL</h3>
+   <h3 class="colorheader">Microsoft SQL Server</h3>
  <p>Create a database, <strong>intranet,</strong>  and add a user, <strong>webcalendar</strong>, to access this database. The user should be granted public, db_datareader,
    and db_datawriter privileges. Open SQL Query Analyzer then open
-   the file <tt>tables-postgres.sql</tt>. Make sure you have identified <strong>intranet</strong> as the target database and Execute the contents of the sql file.</p>
+   the file <tt>tables-mssql.sql</tt>. Make sure you have identified <strong>intranet</strong> as the target database and Execute the contents of the sql file.</p>
           <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 
 <a name="appendixC"></a>
@@ -1646,22 +1649,7 @@ view the UNIX man page for crontab
   target="_blank">this one</a>).</p>
 
 <p>There are many cron packages for Windows available.
-   Below is a list of packages to choose from.
-   (Note: use at your own risk. These links are provided
-   for information only.)</p>
-
-<ul>
-  <li><a href="http://cronw.sourceforge.net/"
-    target="_blank">CRONw</a> (open source) </li>
-  <li><a href="http://www.gold-software.com/VisualCron-review11507.htm"
-    target="_blank">VisualCron</a> (freeware)</li>
-  <li><a href="http://www.nncron.ru"
-    target="_blank">nnCron</a> (freeware and commercial versions)</li>
-  <li><a href="http://surguy.net/articles/icron.xml"
-    target="_blank">iCron</a> </li>
-  <li><a href="http://p.clark.home.mindspring.com/jcron/index.html"
-    target="_blank">jCron</a> (freeware) </li>
-</ul>
+   Try searching Github for one this is currently maintained.</p>
 
 <h3>Using the Windows Task Schedule</h3>
 
@@ -1914,14 +1902,7 @@ and <tt>$ldap_version = '3'</tt>.</p>
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr>
 
-<a name="appendixF"></a>
-<h2>Appendix F: Manual Installation</h2>
-
 <div class="top"><a href="#" target="_top">↑&nbsp;top</a></div>
 <hr>
-<h3>TODO</h3>
-<p>
- <a href="http://validator.w3.org/check?uri=referer"><img
-  src="../images/HTML5_Logo.png" alt="Valid HTML5!"></a></p>
 </body>
 </html>

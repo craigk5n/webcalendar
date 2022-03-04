@@ -1,81 +1,61 @@
 <?php
 include_once 'includes/init.php';
-$icon_path = 'icons/';
+$icon_path = 'wc-icons/';
 
-$can_edit = ( is_dir ( $icon_path ) &&
-  ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) );
+$can_edit = (is_dir($icon_path) &&
+  ($ENABLE_ICON_UPLOADS == 'Y' || $is_admin));
 
-if ( ! $can_edit )
-  do_redirect ( 'category.php' );
+if (!$can_edit)
+  do_redirect('category.php');
 
-print_header ( array ( 'js/visible.php' ), '', '', true );
+print_header(array('js/visible.php', 'js/icons.js'), '', '', true);
 
 $icons = [];
 
-if ( $d = dir ( $icon_path ) ) {
-  while ( false !== ( $entry = $d->read() ) ) {
-    if ( substr ( $entry, -3, 3 ) == 'gif' ) {
+if ($d = dir($icon_path)) {
+  while (false !== ($entry = $d->read())) {
+    $icon_extensions = ['gif', 'GIF', 'png', 'PNG', 'jpg', 'JPG'];
+    if (in_array(substr($entry, -3, 3), $icon_extensions)) {
       $data = '';
-      // We''ll compare the files to eliminate duplicates.
-      $fd = @fopen ( $icon_path . $entry, 'rb' );
-      if ( $fd ) {
+      // We'll compare the files to eliminate duplicates.
+      $fd = @fopen($icon_path . $entry, 'rb');
+      if ($fd) {
+        $icons[] = $entry;
         // We only need to compare the first 1kb.
-        $data .= fgets ( $fd, 1024 );
-        $icons[md5 ( $data )] = $entry;
+        $data .= fgets($fd, 1024);
+        //$icons[md5($data)] = $entry;
+      } else {
+        echo "ERROR: could not open $icon_path<br>\n";
       }
-      fclose ( $fd );
+      fclose($fd);
     }
   }
   $d->close();
   // Remove duplicates and replace keys with 0...n.
-  $icons = array_unique ( $icons );
+  //$icons = array_unique($icons);
   //Convert associative array into numeric array
-  $icons = array_values ( $icons );
-  $title_str = translate ( 'Click to Select' );
+  //$icons = array_values($icons);
+  $title_str = translate('Click to Select');
 
-  ?>
-  <script>
-  <!-- <![CDATA[
-  function sendURL ( url ) {
-    var
-      thisInput = window.opener.document.catform.urlname,
-      thisPic = window.opener.document.images.urlpic,
-      thistr1 = window.opener.document.getElementById ('cat_icon'),
-      thistr2 = window.opener.document.getElementById ('remove_icon');
-    thisInput.value = url.substring (6);
-    thisPic.src = url;
-    thistr1.style.visibility =
-    thistr2.style.visibility = "visible";
-    window.close();
-  }
-  //]]> -->
-  </script>
-
-<?php
+  //echo "<pre>"; print_r($icons); echo "</pre>";
   echo '
     <table class="aligncenter">
-      <tr>
-        <td colspan="8" class="aligncenter"><h2>'
-   . translate ( 'Current Icons on Server' ) . '</h2></td>
-      </tr>
       <tr>';
-  for ( $i = 0, $cnt = count ( $icons ); $i < $cnt; $i++ ) {
+  for ($i = 0, $cnt = count($icons); $i < $cnt; $i++) {
     echo '
-        <td><a href="#" onclick="sendURL( \'' . $icon_path . $icons[$i]
-     . '\' )" ><img src="' . $icon_path . $icons[$i] . '" title="'
-     . $title_str . '" alt="' . $title_str . '" /></a></td>'
-     . ( $i > 0 && $i % 8 == 0 ? '
+        <td><a href="#" onclick="sendURL(\'' . $icon_path . $icons[$i]
+      . '\');" ><img src="' . $icon_path . $icons[$i] . '" title="'
+      . $title_str . '" alt="' . $title_str . '" /></a></td>'
+      . ($i > 0 && $i % 8 == 0 ? '
       </tr>
-      <tr>' : '' );
+      <tr>' : '');
   }
-  echo '
-      </tr>
-      <tr>
-        <td colspan="8" class="aligncenter">' . $title_str . '</td>
-      </tr>
-    </table>
-  </body>
-</html>';
 }
-
-?>
+  ?>
+    </tr>
+    <tr>
+      <td colspan="8" class="aligncenter"><br><?php echo $title_str;?></td>
+    </tr>
+  </table>
+  </body>
+</html>

@@ -3,3 +3,7 @@ includes/htmlarea
 includes/settings.php
 .DS_Store
 mysql-data
+*.sha
+vendor
+*.orig
+*.save

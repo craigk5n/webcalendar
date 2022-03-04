@@ -6,6 +6,11 @@ $PROGRAM_VERSION = 'v1.3.0';
 //array element[1] = sql delete to clean up
 //array element[2] = old program version **The last entry will be the $PROGRAM_VERSION
 //array element[3] = install point in upgrade-mysql.php
+// The following SQL commands will be executed to determine which version
+// of the WebCalendar database we are looking at.  This is only required for
+// really old version of WebCalendar.  Newer versions (1.1 or later) store the current
+// WebCalendar version right in the database.  This is kludge to deal with installations from
+// before then.  YMMV since his has not been tested in many years :-)
 $database_upgrade_matrix = [
   ['INSERT INTO webcal_user_pref VALUES ( "zzz","zzz","zzz" )',
    'DELETE FROM webcal_user_pref WHERE cal_login = "zzz"',
@@ -74,7 +79,6 @@ $database_upgrade_matrix = [
   ['INSERT INTO webcal_timezones ( tzid ) VALUES ( "zzz" )',
    'DELETE FROM webcal_timezones WHERE tzid = "zzz"',
    'v1.1.3', 'upgrade_v1.2.8'],
-
 //don't change this array element
   ['','', $PROGRAM_VERSION, '']
 ];

@@ -4,7 +4,7 @@
  * This is the handler for Ajax httpXmlRequests.
  */
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -27,8 +27,8 @@ load_user_preferences();
 $WebCalendar->setLanguage();
 
 $cat_id = getValue ( 'cat_id', '-?[0-9]*', true );
-$name = getPostValue ( 'name' );
-$page = getPostValue ( 'page' );
+$name = getValue ( 'name' );
+$page = getValue ( 'page' );
 
 // We're processing edit_remotes Calendar ID field.
 if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
@@ -71,6 +71,8 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   $task_filter = ' ORDER BY ' . $column_array[$name % 4]
    . ( $name > 3 ? ' ASC' : ' DESC' );
   echo display_small_tasks ( $cat_id );
+} else {
+  echo "Invalid page: $page \n";
 }
 
 ?>

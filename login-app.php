@@ -1,6 +1,6 @@
 <?php
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -29,14 +29,14 @@ $logout = false;
 if ( ! empty ( $action ) && $action == 'logout' ) {
   $logout = true;
   $return_path = '';
-  SetCookie ( 'webcalendar_last_view', '', 0 );
-  SetCookie ( 'webcalendar_login', '', 0 );
+  sendCookie ( 'webcalendar_last_view', '', 0 );
+  sendCookie ( 'webcalendar_login', '', 0 );
 } else
 if ( empty ( $return_path ) ) {
   // See if a return path was set.
   $return_path = get_last_view();
   if ( ! empty ( $return_path ) )
-    SetCookie ( 'webcalendar_last_view', '', 0 );
+    sendCookie ( 'webcalendar_last_view', '', 0 );
 }
 
 $appStr = generate_application_name();
@@ -83,7 +83,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
  . $login_return_path . '" />
       <table cellpadding="10" class="aligncenter">
         <tr>
-          <td rowspan="2"><img src="images/login.gif" alt="Login" /></td>
+          <td rowspan="2"><img src="images/bootstrap-icons/key-fill.svg" alt="Login" /></td>
           <td class="alignright"><label for="user">' . translate ( 'Username' )
  . ':</label></td>
           <td><input name="' . $app_login_page['username']

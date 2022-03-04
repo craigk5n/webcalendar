@@ -394,12 +394,16 @@ function etranslate ( $str, $decode = '', $type = 'A', $date = '' ) {
  * rather than return the value.
  *
  * @param string $str Text to translate
- * @return string The translated text with all HTML removed
+ * @return string The translated text with all HTML removed (unless allowHtml
+ * is set to true)
  */
-function tooltip( $str, $decode = '' ) {
+function tooltip( $str, $decode = '', $allowHtml=false ) {
   $ret = translate( $str, $decode );
-  $ret = preg_replace( '/<[^>]+>/', '', $ret );
-  return preg_replace( '/"/', "'", $ret );
+  if(!$allowHtml) {
+    $ret = preg_replace( '/<[^>]+>/', '', $ret );
+  }
+  $ret =  preg_replace( '/"/', "&quot;", $ret );
+  return $ret;
 }
 
 /**
@@ -413,8 +417,8 @@ function tooltip( $str, $decode = '' ) {
  * @param string $str Text to translate and print
  * @uses tooltip
  */
-function etooltip ( $str, $decode = '' ) {
-  echo tooltip ( $str, $decode );
+function etooltip ( $str, $decode = '', $allowHtml=false ) {
+  echo tooltip ( $str, $decode, $allowHtml );
 }
 
 /**

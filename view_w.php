@@ -60,16 +60,16 @@ echo '
       <a title="' . $prevStr . '" class="prev" href="view_w.php?id=' . $id
  . '&amp;date=' . sprintf ( "%04d%02d%02d", date ( 'Y', $prev ),
   date ( 'm', $prev ), date ( 'd', $prev ) ) . '">
-        <img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
+        <img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="view_w.php?id=' . $id
  . '&amp;date=' . sprintf ( "%04d%02d%02d", date ( 'Y', $next ),
   date ( 'm', $next ), date ( 'd', $next ) ) . '">
-        <img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+        <img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '" /></a>
       <div class="title">
         <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '',
   false ) . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
  . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br />
-        <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
+        <span class="viewname">' . $view_name . '</span>
       </div>
     </div><br />';
 
@@ -131,7 +131,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       continue;
 
     $class = 'class="' . ( $dateYmd == $todayYmd
-      ? 'today"' : ( $is_weekend ? 'weekend"' : 'row"' ) );
+      ? 'today"' : ( $is_weekend ? 'weekend"' : 'weekday"' ) );
 
     echo '
       <tr>

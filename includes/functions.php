@@ -692,7 +692,7 @@ EOT;
 
     $ret .= '
       <tr>
-        <th class="row" style="width:' . $participant_pct . ';">'
+        <th class="weekday" style="width:' . $participant_pct . ';">'
      . $user_nospace . '</th>';
     $col = 1;
 
@@ -730,12 +730,7 @@ EOT;
       }
     }
 
-    $ret .= '
-      </tr>
-      <tr>
-        <td class="matrix" colspan="' . $cols
-     . '"><img src="images/pix.gif" alt="-" /></td>
-      </tr>';
+    $ret .= '</tr>';
   } // End foreach participant.
   return $ret . <<<EOT
     </table><br />
@@ -758,18 +753,18 @@ EOT;
  * The CSS ids will be the datename parameter with '_fmt' and '_YMD'
  * appended.
  */
-function datesel_Print ( $datename, $ymdValue='' )
+function datesel_Print($datename, $ymdValue = '')
 {
-  if ( empty ( $ymdValue ) )
-    $ymdValue = date ( 'Ymd' );
+  if (empty($ymdValue))
+    $ymdValue = date('Y-m-d');
+  if (strpos($ymdValue, '-') == false && strlen($ymdValue) == 8) {
+    // Convert YYYYMMDD into YYYY-MM-DD
+    $ymdValue = date("Y-m-d", strtotime($ymdValue));
+  }
 
-  return '<input type="hidden" name="' . $datename .
-    '_YMD" id="' . $datename . '_YMD" value="' . $ymdValue . '"/>' .
-    '<span id="' . $datename . '_fmt">' .
-    date_to_str ( $ymdValue ) . '</span> ' .
-    '<img id="dateselIcon_' . $datename .
-    '" class="dateselIcon" onclick="datesel_SelectDate(event,\'' .
-    $datename  . '\' );" src="images/datesel.gif" />';
+  return '<input type="date" name="' . $datename .
+    '_YMD" id="' . $datename . '_YMD" class="form-control" value="' .
+    $ymdValue . '">';
 }
 
 
@@ -784,70 +779,18 @@ function datesel_Print ( $datename, $ymdValue='' )
  *
  * @return string  HTML for the selection box.
  */
-function date_selection ( $prefix, $date, $trigger = false, $num_years = 20 ) {
-  $selected = ' selected="selected"';
-  $trigger_str = ( empty( $trigger ) ? '' : $prefix . 'datechanged();' );
-  $onchange = ( empty ( $trigger_str ) ? '' : 'onchange="$trigger_str"' );
-  if ( strlen ( $date ) != 8 )
-    $date = date ( 'Ymd' );
-
-  $thisyear = $year = substr ( $date, 0, 4 );
-  $thismonth = $month = substr ( $date, 4, 2 );
-  $thisday = $day = substr ( $date, 6, 2 );
-  if ( $thisyear - date ( 'Y' ) >= ( $num_years - 1 ) )
-    $num_years = $thisyear - date ( 'Y' ) + 2;
-
-  $dd_select = '
-      <select name="' . $prefix . 'day" id="' . $prefix . 'day"'
-   . $onchange . '>';
-  for ( $i = 1; $i <= 31; $i++ ) {
-    $dd_select .= '
-        <option value="' . "$i\""
-     . ( $i == substr ( $date, 6, 2 ) ? $selected : '' ) . ">$i" . '</option>';
+function date_selection($prefix, $date, $trigger = false, $num_years = 20)
+{
+  if (empty($date)) {
+    $ymdValue = date('Y-m-d');
+  } else {
+    $ymdValue = date('Y-m-d', strtotime($date));
   }
-  $dd_select .= '
-      </select>';
-
-  //  $mm_select ... number of month, $month_select name of month
-  $month_select = '
-      <select name="' . $prefix . 'month" id="' . $prefix . 'month"' . $onchange . '>';
-  $mm_select = '
-      <select name="' . $prefix . 'month" id="' . $prefix . 'month"' . $onchange . '>';
-  for ( $i = 1; $i < 13; $i++ ) {
-    $month_select .= '
-        <option value="' . "$i\""
-     . ( $i == substr ( $date, 4, 2 ) ? $selected : '' )
-     . '>' . month_name ( $i - 1, 'M' ) . '</option>';
-
-    $mm_select .= '
-        <option value="' . "$i\""
-     . ( $i == substr( $date, 4, 2 ) ? $selected : '' )
-     . '>' . $i . '</option>';
-  }
-  $month_select .= '
-      </select>';
-  $mm_select .= '
-      </select>';
-  $yyyy_select = '
-      <select name="' . $prefix . 'year" id="' . $prefix . 'year"' . $onchange . '>';
-  for ( $i = -10; $i < $num_years; $i++ ) {
-    $y = $thisyear + $i;
-    $yyyy_select .= '
-        <option value="' . "$y\"" . ( $y == $thisyear ? $selected : '' )
-     . ">$y" . '</option>';
-  }
-  $yyyy_select .= '
-      </select>';
-  $replace_strings = [
-                           '__yyyy__'=>$yyyy_select,
-                           '__month__'=>$month_select,
-                           '__mm__'=>$mm_select,
-                           '__dd__'=>$dd_select];
-  $ret = strtr( translate( 'date_select'), $replace_strings );
-  return $ret . '
-      <input type="button" name="' . $prefix . 'btn" onclick="selectDate( \''
-   . $prefix . 'day\',\'' . $prefix . 'month\',\'' . $prefix . "year','$date'"
-   . ', event, this.form );" value="' . translate ( 'Select' ) . '..." />' . "\n";
+  $trigger_str = (empty($trigger) ? '' : $prefix . 'datechanged();');
+  $onchange = (empty($trigger_str) ? '' : 'onchange="$trigger_str"');
+  return '<input type="date" name="' . $prefix .
+    '_YMD" id="' . $prefix . '_YMD" class="form-control" value="' .
+    $ymdValue . '" ' . $onchange . '>';
 }
 
 /**
@@ -1054,7 +997,7 @@ function display_activity_log( $cal_type, $cal_text = '', $break = '<br />&nbsp;
  * @return string  HTML for Admin Home link
  * @global string  (Y/N) Is the Top Menu Enabled
  */
-function display_admin_link ( $break = true ) {
+function display_admin_link($break = true) {
   global $MENU_ENABLED;
 
   $adminStr = translate ( 'Admin' );
@@ -1234,10 +1177,10 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
     ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || $DISPLAY_TASKS == 'Y' ) ? '
         <a title="' . $nextStr . '" class="next" href="' . $name . '.php?'
      . $u_url . 'date=' . $nextYmd . $caturl
-     . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+     . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '" /></a>
         <a title="' . $prevStr . '" class="prev" href="' . $name . '.php?'
      . $u_url . 'date=' . $prevYmd . $caturl
-     . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>' : '' ) . '
+     . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '" /></a>' : '' ) . '
         <div class="title">
           <span class="date">';
 
@@ -1325,10 +1268,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           <th colspan="' . ( $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) . '">
             <a title="' . $prevStr . '" class="prev" href="day.php?' . $u_url
      . 'date=' . $month_ago . $caturl
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+     . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '" /></a>
             <a title="' . $nextStr . '" class="next" href="day.php?' . $u_url
      . 'date=' . $month_ahead . $caturl
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '" /></a>'
      . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
       ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
           </th>
@@ -1345,10 +1288,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           <th colspan="7">
             <a title="' . $prevStr . '" class="prev" href="minical.php?'
      . $u_url . 'date=' . $month_ago
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+     . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '" /></a>
             <a title="' . $nextStr . '" class="next" href="minical.php?'
      . $u_url . 'date=' . $month_ahead
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '" /></a>'
      . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
       ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
           </th>
@@ -1480,11 +1423,11 @@ function display_small_tasks ( $cat_id ) {
     for ( $i = 0; $i < 4; $i++ ) {
       $ajax[$i] = '
         <td class="sorter" onclick="sortTasks( ' . $i . ', ' . $task_cat
-       . ', this )"><img src="images/up.png" style="vertical-align:bottom" /></td>';
+       . ', this )"><img src="images/bootstrap-icons/arrow-up-short.svg" style="vertical-align:bottom" /></td>';
       $ajax[$i + 4] = '
         <td  class="sorter sorterbottom" onclick="sortTasks( ' .
       ( $i + 4 ) . ', ' . $task_cat
-       . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
+       . ', this )"><img src="images/bootstrap-icons/arrow-down-short.svg" style="vertical-align:top" /></td>';
     }
   } else {
     $dueSpacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -1503,7 +1446,7 @@ function display_small_tasks ( $cat_id ) {
         <th colspan="6">' . translate ( 'TASKS' ) . '</th>
         <th class="alignright" colspan="2"><a href="edit_entry.php?' . $u_url
    . 'eType=task' . $caturl
-   . '"><img src="images/new.gif" alt="+" class="new" /></a></th>
+   . '"><img src="images/bootstrap-icons/plus-circle.sv" alt="+" class="new" /></a></th>
       </tr>
       <tr class="header">
         <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
@@ -1922,18 +1865,18 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
   $ret = "<$size>"
    . ( $sys ? translate ( 'System Log' ) : translate ( 'Activity Log' ) )
    . ( $sys ? '' : ' &nbsp;<a href="rss_activity_log.php">'
-   . '<img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - '
+   . '<img src="images/bootstrap-icons/rss-fill.svg" width="14" height="14" alt="RSS 2.0 - '
    . translate( 'Activity Log' ) . '" /></a>' )
-   . "</$size>" . display_admin_link() . '
-    <table class="embactlog">
-      <tr>
+   . "</$size>" . display_admin_link(false) . '
+    <table class="table table-striped mt-2 table-responsive">
+      <thead><tr>
         <th class="usr">' . translate ( 'User' ) . '</th>
         <th class="cal">' . translate ( 'Calendar' ) . '</th>
         <th class="scheduled">' . translate ( 'Date' ) . '/'
    . translate ( 'Time' ) . '</th>' . ( $sys || $id ? '' : '
         <th class="dsc">' . translate ( 'Event' ) . '</th>' ) . '
         <th class="action">' . translate ( 'Action' ) . '</th>
-      </tr>';
+      </tr></thead><tbody>';
 
   $sql = 'SELECT wel.cal_login, wel.cal_user_cal, wel.cal_type, wel.cal_date,
     wel.cal_time, wel.cal_text, '
@@ -1990,7 +1933,7 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
   }
 
   return $ret . '
-    </table>';
+    </tbody></table>';
 }
 
 /**
@@ -2593,41 +2536,74 @@ function get_entries ( $date, $get_unapproved = true ) {
 /**
  * Gets all the groups a user is authorized to see
  *
- *
  * @param string $user        Subject User
- *
  *
  * @return array  Array of Groups.
  */
-function get_groups ( $user ) {
-  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS,
-  $is_nonuser_admin, $is_assistant, $login;
+function get_groups($user, $includeUserlist=false)
+{
+  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS, $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX,
+    $is_nonuser_admin, $is_assistant, $login, $is_admin;
 
-  if ( empty( $GROUPS_ENABLED ) || $GROUPS_ENABLED != 'Y' )
+  if (empty($GROUPS_ENABLED) || $GROUPS_ENABLED != 'Y')
     return false;
 
-  $owner = ( $is_nonuser_admin || $is_assistant ? $user : $login );
+  $owner = ($is_nonuser_admin || $is_assistant ? $user : $login);
 
   // Load list of groups.
-  $sql = 'SELECT wg.cal_group_id, wg.cal_name FROM webcal_group wg';
- $sql_params = [];
- if ( $USER_SEES_ONLY_HIS_GROUPS == 'Y' ) {
-   $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
-     AND wgu.cal_login = ?';
+  $sql = 'SELECT wg.cal_group_id, wg.cal_name, wg.cal_owner, ' .
+    'wg.cal_last_update FROM webcal_group wg';
+  $sql_params = [];
+  if ($USER_SEES_ONLY_HIS_GROUPS == 'Y' && !$is_admin) {
+    $sql .= ', webcal_group_user wgu WHERE wg.cal_group_id = wgu.cal_group_id
+      AND wgu.cal_login = ?';
     $sql_params[] = $owner;
- }
+  }
 
-  $res = dbi_execute ( $sql . ' ORDER BY wg.cal_name', $sql_params );
+  $res = dbi_execute($sql . ' ORDER BY wg.cal_name', $sql_params);
 
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
-     $groups[] = [
+  $groups = [];
+  if ($res) {
+    while ($row = dbi_fetch_row($res)) {
+      $groups[] = [
         'cal_group_id' => $row[0],
-       'cal_name' => $row[1]];
+        'cal_name' => $row[1],
+        'cal_owner' => $row[2],
+        'cal_last_update' => $row[3]
+      ];
     }
-   dbi_free_result ( $res );
- }
- return $groups;
+    dbi_free_result($res);
+  }
+
+  if ($includeUserlist) {
+    $users = user_get_users();
+    $users_by_name = [];
+    foreach ($users as $user) {
+      $users_by_name[$user['cal_login']] = $user;
+    }
+    $user_by_name['__public__'] = [
+      'cal_login' => '__public__',
+      'cal_fullname' => $PUBLIC_ACCESS_FULLNAME
+    ];
+    // Also include Remote and Resource calendars in case the group contains one
+    $resourceCals = get_nonuser_cals($login, false);
+    $remoteCals = get_nonuser_cals($login, true);
+    $others = array_merge($resourceCals, $remoteCals);
+    foreach ($others as $other) {
+      $users_by_name[$other['cal_login']] = $other;
+    }
+
+    for ($i = 0; $i < count($groups); $i++) {
+      $users = [];
+      $sql = 'SELECT cal_login FROM webcal_group_user WHERE cal_group_id = ? ORDER BY cal_login';
+      $res = dbi_execute($sql, [$groups[$i]['cal_group_id']]);
+      while ($row = dbi_fetch_row($res)) {
+        $users[] = $users_by_name[$row[0]];
+      }
+      $groups[$i]['cal_users'] = $users;
+    }
+  }
+  return $groups;
 }
 
 /**
@@ -2643,7 +2619,7 @@ function get_last_view ( $clear=true ) {
     ? str_replace ( '&', '&amp;', $_COOKIE['webcalendar_last_view'] ) : '' );
 
   if ( $clear )
-    SetCookie ( 'webcalendar_last_view', '', 0 );
+    sendCookie ( 'webcalendar_last_view', '', 0 );
 
   return $val;
 }
@@ -2888,7 +2864,14 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
   if ( $rows ) {
     for ( $i = 0, $cnt = count ( $rows ); $i < $cnt; $i++ ) {
       $row = $rows[$i];
-
+      $fullname = '';
+      if (!empty($row[1]))
+        $fullname = $row[1];
+      if (!empty($row[2])) {
+        if(!empty($fullname))
+          $fullname .= ' ';
+        $fullname .= $row[2];
+      }
       $ret[$count++] = [
         'cal_login' => $row[0],
         'cal_lastname' => $row[1],
@@ -2896,8 +2879,7 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
         'cal_admin' => $row[3],
         'cal_is_public' => $row[4],
         'cal_url' => $row[5],
-        'cal_fullname' => ( strlen ( $row[1] . $row[2] )
-          ? "$row[2] $row[1]" : $row[0] )];
+        'cal_fullname' => $fullname ];
     }
   }
   // If user access control enabled,
@@ -2911,6 +2893,108 @@ function get_nonuser_cals ( $user = '', $remote = false ) {
     $ret = $newlist;
   }
   return $ret;
+}
+
+// Get the number of events the specified username is a participant to.
+function get_event_count_for_user($username)
+{
+  $sql = 'SELECT COUNT(weu.cal_id) FROM webcal_entry_user weu, webcal_entry we ' .
+    'WHERE weu.cal_id = we.cal_id ' .
+    'AND weu.cal_login = ?';
+  //echo "SQL: $sql \nUser: $username\n";
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  //echo "COUNT: "; print_r($rows);
+  if ($rows) {
+    return $rows[0][0];
+  }
+  return 0;
+}
+
+// Get the last import date for a remote calendar in YYYYMMDD format or '' for none.
+function get_remote_calendar_last_update($username)
+{
+  $sql = 'SELECT MAX(cal_date) FROM webcal_import WHERE cal_login = ?';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+  }
+  return $ret;
+}
+
+// Get the last date we attempted an import (but may have skipped it because it was
+// identical to a previous import) for a remote calendar in YYYYMMDD format or '' for none.
+function get_remote_calendar_last_checked($username)
+{
+  $sql = 'SELECT MAX(cal_check_date) FROM webcal_import WHERE cal_login = ?';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+  }
+  return $ret;
+}
+
+// Get the md5 hash of the last successful import.  It the new md5 hash is
+// identical, we can skip the new import.
+function get_remote_calendar_last_md5($username)
+{
+  $sql = 'SELECT cal_md5 FROM webcal_import WHERE cal_login = ? ORDER BY cal_import_id DESC LIMIT 1';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+  }
+  return $ret;
+}
+
+function update_import_check_date($username)
+{
+  $sql = 'SELECT MAX(cal_import_id) FROM webcal_import WHERE cal_login = ?';
+  $rows = dbi_get_cached_rows($sql, [$username]);
+  if ($rows && is_array($rows)) {
+    $ret = $rows[0][0];
+    if (!empty($ret)) {
+      $sql = 'UPDATE webcal_import SET cal_check_date = ? WHERE cal_import_id = ?';
+      dbi_execute($sql, [date('Ymd'), $ret]);
+    }
+  }
+  return $ret;
+}
+
+/**
+ * Load or reload a remote calendar if and only if it has been modified since the last time it was imported.
+ */
+function load_remote_calendar($username, $url)
+{
+  global $login, $errormsg, $error_num, $count_suc, $numDeleted, $calUser, $importMd5;
+
+  // Set global vars used in xcal.php (blech)
+  $data = [];
+  $calUser = $username;
+  $overwrite = true;
+  $type = 'remoteics';
+  $numDeleted = 0;
+  $count_suc = 0;
+  $data = parse_ical($url, $type);
+  // Get prior md5 has to see if there has been an update.
+  // New md5 is in global var $importMd5
+  $count = get_event_count_for_user($username);
+  $priorMd5 = get_remote_calendar_last_md5($username);
+  if ($priorMd5 == $importMd5 && $count > 0) {
+    // No changes in remote calendar since we last imported it.  Just skip it.
+    update_import_check_date($username);
+    activity_log(0, $login, $username, LOG_UPDATE, "Remote calendar checked but was identical to previous import");
+    return [0, 0, 0, "Remote calendar not updated since last import."];
+  }
+  if (!empty($data) && count($data) > 0 && empty($errormsg)) {
+    // Delete existing events.
+    $numDeleted = user_delete_events ($username);
+    // Import new events
+    import_data($data, $overwrite, $type, true);
+    activity_log(0, $login, $username, LOG_UPDATE, "Remote calendar reloaded with $count_suc events added, $numDeleted deleted");
+    return [0, $count_suc, $numDeleted, ''];
+  } else  if (empty($errormsg)) {
+    return [1, 0, 0, "No data imported."];
+  }
+  return [empty($errormsg) ? 0 : 1, $count_suc, $numDeleted, $errormsg];
 }
 
 /**
@@ -3534,9 +3618,9 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $time_only = 'N';
   $view_text = translate ( 'View this event' );
 
-  $catIcon = 'icons/cat-' . $getCat . '.gif';
+  $catIcon = 'wc-icons/cat-' . $getCat . '.gif';
   if ( ! file_exists ( $catIcon ) )
-    $catIcon = 'icons/cat-' . $getCat . '.png';
+    $catIcon = 'wc-icons/cat-' . $getCat . '.png';
   $key++;
 
   if( access_is_enabled() ) {
@@ -3579,7 +3663,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   }
 
   if ( $getCalTypeName == 'task' ) {
-    $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
+    $hour_arr[$ind] .= '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="*" /> ';
     $view_text = translate ( 'View this task' );
   }
 
@@ -3690,9 +3774,9 @@ function html_for_event_week_at_a_glance ( $event, $date,
   $time_only = 'N';
   $title = '<a title="';
 
-  $catIcon = 'icons/cat-' . $getCat . '.gif';
+  $catIcon = 'wc-icons/cat-' . $getCat . '.gif';
   if ( ! file_exists ( $catIcon ) )
-    $catIcon = 'icons/cat-' . $getCat . '.png';
+    $catIcon = 'wc-icons/cat-' . $getCat . '.png';
   $key++;
 
   if( access_is_enabled() ) {
@@ -3743,12 +3827,12 @@ function html_for_event_week_at_a_glance ( $event, $date,
     $href = 'href="view_entry.php?id=' . $id . '&amp;date='
      . ( $getClone ? $getClone : $date );
     if ( $getCalTypeName == 'task' ) {
-      $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
+      $hour_arr[$ind] .= '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="*" /> ';
 
       $title .= translate ( 'View this task' );
     } else { // Must be event.
       if ( $isAllDay || $isUntime && $catAlt == '' )
-        $hour_arr[$ind] .= '<img src="images/circle.gif" class="bullet" alt="*" /> ';
+        $hour_arr[$ind] .= '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="*" /> ';
 
       $title .= translate ( 'View this event' );
     }
@@ -3833,43 +3917,6 @@ function html_to_8bits ( $html ) {
   return ( floor( phpversion() ) < 4
    ? $html
    : strtr ( $html, array_flip ( get_html_translation_table ( HTML_ENTITIES ) ) ) );
-}
-
-/**
- * Generates the HTML for an add/edit/delete icon.
- *
- * This function is not yet used. Some of the places that will call it have to
- * be updated to also get the event owner so we know if the current user has
- * access to edit and delete.
- *
- * @param int  $id          Event ID
- * @param bool $can_edit    Can this user edit this event?
- * @param bool $can_delete  Can this user delete this event?
- *
- * @return  HTML for add/edit/delete icon.
- *
- * @ignore
- */
-function icon_text ( $id, $can_edit, $can_delete ) {
-  global $is_admin, $readonly;
-  $deleteStr = translate ( 'Delete entry' );
-  $editEntryStr = translate ( 'Edit entry' );
-  $viewEntryStr = translate ( 'View this entry' );
-
-  return '
-        <a title="' . $viewEntryStr . '" href="view_entry.php?id=' . $id
-   . '"><img src="images/view.gif" alt="' . $viewEntryStr
-   . '" class="icon_text" /></a>' . ( $can_edit && $readonly == 'N' ? '
-        <a title="' . $editEntryStr . '" href="edit_entry.php?id=' . $id
-     . '"><img src="images/edit.gif" alt="' . $editEntryStr
-     . '" class="icon_text" /></a>' : '' )
-   . ( $can_delete && ( $readonly == 'N' || $is_admin ) ? '
-        <a title="' . $deleteStr . '" href="del_entry.php?id=' . $id
-     . '" onclick="return confirm( \''
-     . translate( 'Are you sure you want to delete this entry?' ) . ' '
-     . translate ( 'This will delete this entry for all users.' )
-     . '\' );"><img src="images/delete.gif" alt="' . $deleteStr
-     . '" class="icon_text" /></a>' : '' );
 }
 
 /**
@@ -4530,44 +4577,42 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
 }
 
 /**
- * Generates HTML for color chooser options in admin and pref pages.
+ * Generates color input type, now supported in HTML.
  *
  * @param string $varname  the name of the variable to display
  * @param string $title    color description
  * @param string $varval   the default value to display
+ * @param string $id       the id of the html element
  *
  * @return string  HTML for the color selector.
  */
-function print_color_input_html ( $varname, $title, $varval = '' ) {
-  global $prefarray, $s, $SCRIPT;
-  static $select;
-
-  $name = '';
-  $setting = $varval;
-
-  if ( empty ( $select ) )
-    $select = translate ( 'Select' ) . '...';
-
+function print_color_input_html ($varname, $title, $varval = '', $id='', $tag='div', $class='form-inline', $onchange = '') {
+  global $SCRIPT, $s, $prefarray;
+  $id = empty($id) ? $varname : $id;
+  // TODO: Get the text input box working so users can input RGB values.
+  //$textId = $id . 'RGB';
+  //return '<div class="form-inline"><input class="form-control" id="' . $textId . '" type="text" size="7" value="' . $varval . '"/>' .
+  //  '<input class="form-control" style="height: 2em; width: 4em;" name="' . $varname . '" id="' . $id .
+  //  '" type="color" class="form-control" value="' . $varval . '"' .
+  //  'onchange="var c = $(\'#' . $id . '\').val();' .
+  //  'console.log(\'color=\'+c); var x=$(\'' . $textId . '\'); console.log(\'textId=\'+x); x.attr(\'value\',c); x.trigger(\'change\'); console.log(\'x.val=\'+x.val());"></div>';
+  $prefix = '';
   if ( $SCRIPT == 'admin.php' ) {
-    $name = 'admin_';
+    $prefix = 'admin_';
     $setting = $s[$varname];
   } elseif ( $SCRIPT == 'pref.php' ) {
-    $name = 'pref_';
+    $prefix = 'pref_';
     $setting = $prefarray[$varname];
+  } else {
+    $setting = $varval;
   }
 
-  $name .= $varname;
-
-  return '
-            <p><label for="' . $name . '">' . $title
-   . ( $title == '' ? '' : ':' )
-   . '</label><input type="text" name="' . $name . '" id="' . $name
-   . '" size="7" maxlength="7" value="' . $setting
-   . '" onchange="updateColor( this, \'' . $varname
-   . '_sample\' );" /><span class="sample" id="' . $varname . '_sample" style="background:'
-   . $setting . ';">&nbsp;</span><input type="button" onclick="selectColor( \''
-   . $name . '\', event )" value="' . $select . '" /></p>';
-}
+  return '<' . $tag . ' class="form-inline">' .
+  (empty($title) ? '' : ('<label class="' . $class . '" for="' . $prefix . $varname . '">' . $title . '</label>')) .
+    '<input class="form-control" style="height: 2em; width: 4em;" name="' . $prefix . $varname . '" id="' . $prefix . $id .
+    '" type="color" value="' . $setting . '"' . (empty($onchange) ? '' : ' onchange="' . $onchange . '()"') .
+    '></' . $tag . '>';
+  }
 
 /**
  * Prints all the calendar entries for the specified user for the specified date.
@@ -4622,7 +4667,7 @@ function print_date_entries ( $date, $user, $ssi = false,
      . ( strpos ( 'fullnew', $tmp ) !== false ? '' : ' Quarter' ) . ' Moon' ) );
     $ret = ( $can_add ? '
         <a title="' . $newEntryStr . '" href="edit_entry.php?' . $userCatStr
-       . 'date=' . $date . '"><img src="images/new.gif" alt="' . $newEntryStr
+       . 'date=' . $date . '"><img src="images/bootstrap-icons/plus-circle.svg" alt="' . $newEntryStr
        . '" class="new" /></a>' : '' ) . '
         <a class="dayofmonth" href="day.php?' . $userCatStr . 'date=' . $date
      . '">' . substr ( $date, 6, 2 ) . '</a>' . ( empty ( $tmp )
@@ -4740,7 +4785,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     $time_h = intval ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
-    $ret .= '<tr><th class="row"';
+    $ret .= '<tr><th class="weekday"';
     $ret .= '>'
      . display_time ( ( $time_h * 100 + $time_m ) * 100 ) . '</th>';
     if ( $rowspan > 1 ) {
@@ -4862,11 +4907,11 @@ function print_entry ( $event, $date ) {
    . '><img src="';
 
   $catNum = abs( $event->getCategory() );
-  $icon = $cal_type . '.gif';
+  $icon = "bootstrap-icons/circle-fill.svg";
   if ( $catNum > 0 ) {
-    $catIcon = 'icons/cat-' . $catNum . '.gif';
+    $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
     if ( ! file_exists ( $catIcon ) )
-      $catIcon = 'icons/cat-' . $catNum . '.png';
+      $catIcon = 'wc-icons/cat-' . $catNum . '.png';
     if ( ! file_exists ( $catIcon ) )
       $catIcon = '';
   }
@@ -5006,9 +5051,12 @@ function print_radio ( $variable, $vals = '', $onclick = '', $defIdx = '',
     $variable = 'pref_' . $variable;
   }
   $onclickStr = ( empty( $onclick ) ? '' : ' onclick="' . $onclick . '()"' );
+  $ind = 0;
   foreach ( $vals as $K => $V ) {
+    $margin = $ind++ == 0 ? 'ml-1' : 'ml-3';
     $ret .= '
-      <input type="radio" name="' . $variable . '" value="' . $K . '"'
+      <input class="form-check-input m-1 ' . $margin . '" type="radio" name="' .
+      $variable . '" id="' . $variable . '_' . $K . '" value="' . $K . '"'
      . ( $setting == $K ? $checked : '' ) . $onclickStr . ' />' . $V;
   }
   return $ret;
@@ -5053,7 +5101,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
   if ( 0 ) { // Ignore this code for now.
     $tz_value = ( ! $can_setTZ ? substr ( $tz, 12 ) : 0 );
     $ret = '
-        <select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
+        <select class="form-control" name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
     $text_add = translate ( 'Add N hours to' );
     $text_sub = translate ( 'Subtract N hours from' );
     for ( $i = -12; $i <= 13; $i++ ) {
@@ -5087,7 +5135,7 @@ function print_timezone_select_html ( $prefix, $tz ) {
     }
     sort ( $timezones );
     $ret = '
-        <select name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
+        <select class="form-control" name="' . $prefix . 'TIMEZONE" id="' . $prefix . 'TIMEZONE">';
     for ( $i = 0, $cnt = count ( $timezones ); $i < $cnt; $i++ ) {
       $ret .= '
           <option value="' . $timezones[$i] . '"'
@@ -5510,7 +5558,7 @@ function remember_this_view ( $view = false ) {
   if ( strstr ( $REQUEST_URI, 'friendly=' ) )
     return;
 
-  SetCookie ( 'webcalendar_last_view', $REQUEST_URI );
+  sendCookie ( 'webcalendar_last_view', $REQUEST_URI );
 
 }
 
@@ -5528,15 +5576,9 @@ function send_doctype ( $doc_title = '' ) {
 
   $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 
-  return '<?xml version="1.0" encoding="' . $charset . '"?' . '>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="' . $lang . '" lang="'
-   . $lang . '">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=' . $charset
-   . '" />' . ( empty ( $doc_title ) ? '' : '
-    <title>' . $doc_title . '</title>' );
+  return '<!DOCTYPE html><html><head>' .
+    '<meta http-equiv="Content-Type" content="text/html; charset=' . $charset .
+    '" />' . ( empty ( $doc_title ) ? '' : '<title>' . $doc_title . '</title>' );
 }
 
 /**
@@ -6355,7 +6397,7 @@ function print_error_box ( $msg )
 {
   echo '<div class="warningBox">' .
     '<table><tr><td class="alignmiddle">' .
-    '<img src="images/warning.png" width="40" height="40" class="alignmiddle" alt="' .
+    '<img src="images/bootstrap-icons/exclamation-triangle-fill.svg" width="40" height="40" class="alignmiddle" alt="' .
     translate ( 'Error' ) . '" /></td><td class="alignmiddle">' .
     translate('The permissions for the icons directory are set to read-only') .
     "</td></tr></table></div>\n";
@@ -6434,6 +6476,23 @@ function require_valid_referring_url ()
     // WebCalendar anyhow...)
     die_miserable_death ( translate ( 'Invalid referring URL' ) );
   }
+}
+
+/**
+  * Is the current connection using HTTPS rather than HTTP?
+  */
+function isSecure() {
+  return
+    (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || $_SERVER['SERVER_PORT'] == 443;
+}
+
+function sendCookie($name, $value, $expiration=0, $path='', $sensitive=true) {
+  $domain = '';
+  $httpOnly = true; // don't allow JS access to cookies.
+  // If sensitive and HTTPS is supported, set secure to true
+  $secure = $sensitive && isSecure();
+  SetCookie ( $name, $value, $expiration, $path, $domain, $secure, $httpOnly);
 }
 
 ?>

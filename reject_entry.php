@@ -1,7 +1,7 @@
 <?php
 include_once 'includes/init.php';
 require_valid_referring_url ();
-require ( 'includes/classes/WebCalMailer.class' );
+require ( 'includes/classes/WebCalMailer.php' );
 $mail = new WebCalMailer;
 
 $error = '';
@@ -17,8 +17,9 @@ else {
   echo '
     <form action="reject_entry.php'
    . ( empty ( $_SERVER['QUERY_STRING'] ) ? '' : '?' . $_SERVER['QUERY_STRING'] )
-   . '" method="post" name="add_comments">
-      <table cellspacing="5">
+   . '" method="post" name="add_comments">'.
+  print_form_key ();
+  echo '<table cellspacing="5">
         <tr>
           <td class="aligncenter alignbottom"><h3>'
    . translate ( 'Additional Comments (optional)' ) . '</h3></td>
@@ -37,9 +38,8 @@ else {
    . '</td>
         </tr>
       </table>
-    </form>
-  </body>
-</html>';
+    </form>';
+  echo print_trailer();
   exit;
 }
 

@@ -33,7 +33,7 @@ echo '
         <th colspan="3">' . translate ( 'Categories' ) . '</th>
       </tr>
       <form action="" method="post" name="editCategories" '
- . 'onSubmit="sendCats( this )">
+ . 'onSubmit="sendCats( this )">' . csrf_form_key() . '
       <tr>
         <td class="aligntop">';
 

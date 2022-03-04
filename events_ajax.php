@@ -1,13 +1,9 @@
 <?php
 /**
  * Description
- *   Handler for AJAX requests for viewing events in combo.php,
- *   which provides views for day, week, month, year and agenda and
- *   a view of the task list.
- *
- *   We use JSON for some of the data we send back to the AJAX request.
- *   Because JSON support was not built-in to PHP until 5.2, we have our
- *   own implmentation in includes/JSON.php.
+ *   This was used by combo.php, but we've removed it.  No current
+ *   page is using this, so it may get deleted.  For now, we'll leave it
+ *   here since it may be useful for some new functionality.
  *
  *   Most of the event handling is identical to the non-AJAX PHP pages except
  *   that we store the local user's version of each event's date and time
@@ -16,9 +12,9 @@
  * TODO: hide private events of other users.
  */
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
+require_once 'includes/classes/WebCalendar.php';
+require_once 'includes/classes/Event.php';
+require_once 'includes/classes/RptEvent.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -33,14 +29,13 @@ $WebCalendar->initializeFirstPhase();
 include 'includes/' . $user_inc;
 include 'includes/access.php';
 include 'includes/validate.php';
-include 'includes/JSON.php';
 include 'includes/ajax.php';
 
 // Load Doc classes for attachments and comments
-include 'includes/classes/Doc.class';
-include 'includes/classes/DocList.class';
-include 'includes/classes/AttachmentList.class';
-include 'includes/classes/CommentList.class';
+include 'includes/classes/Doc.php';
+include 'includes/classes/DocList.php';
+include 'includes/classes/AttachmentList.php';
+include 'includes/classes/CommentList.php';
 
 $WebCalendar->initializeSecondPhase();
 

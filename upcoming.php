@@ -98,7 +98,7 @@ foreach( array(
     'Event',
     'RptEvent',
   ) as $i ) {
-  require_once 'includes/classes/' . $i . '.class';
+  require_once 'includes/classes/' . $i . '.php';
 }
 $WebCalendar = new WebCalendar( __FILE__ );
 $WebCalendar->initializeFirstPhase();
@@ -121,7 +121,7 @@ $WebCalendar->initializeSecondPhase();
 //used to determine whether the file is being run independently or
 //as an include file. Change as necessary!
 //Note that if you use any other name than "upcoming.php" you must
-//also change the corresponding line in includes/classes/WebCalendar.class, about
+//also change the corresponding line in includes/classes/WebCalendar.php, about
 //line 54, like this:
 //    '/^(nulogin|login|freebusy|publish|register|rss|upcoming|upcoming-.*|week_ssi|minical|controlpanel)\.php$/' =>
 //Using upcoming-.* allows you to use names like upcoming-1.php, upcoming-2.php etc.
@@ -192,9 +192,9 @@ function print_upcoming_event ( $e, $date ) {
       $UPCOMING_DISPLAY_CAT_ICONS != 'N' ) {
       $catNum = abs ( $e->getCategory() );
       if ( $catNum > 0 ) {
-        $catIcon = 'icons/cat-' . $catNum . '.gif';
+        $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
         if ( ! file_exists ( $catIcon ) )
-          $catIcon = 'icons/cat-' . $catNum . '.png';
+          $catIcon = 'wc-icons/cat-' . $catNum . '.png';
         if ( file_exists ( $catIcon ) )
           echo $link .
             '<img src="' . $catIcon . '" alt="category icon"></a>';

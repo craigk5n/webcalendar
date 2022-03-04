@@ -45,7 +45,7 @@
         <a href="http://www.k5n.us/webcalendar.php">http://www.k5n.us/webcalendar.php</a></p>
       <p><label>Author:</label><a href="http://www.k5n.us">Craig Knudsen</a>,
         <a href="mailto:&#109;&#097;&#105;&#108;&#116;&#111;&#058;&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;">&#67;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;</a></p>
-      <p></p><label>Version:</label>v1.3.0</p>
+      <p></p><label>Version:</label>v1.9.0</p>
     </div>
     <blockquote>
       <p>This file is generated from <tt>tables-mysql.sql</tt>. Below are the
@@ -1190,6 +1190,14 @@
           <td>date of import (YYYYMMDD format)</td>
         </tr>
         <tr>
+          <td>cal_check_date</td>
+          <td>INT</td>
+          <td>&nbsp;</td>
+          <td>Y</td>
+          <td>&nbsp;</td>
+          <td>date of last check to see if remote calendar updated (YYYYMMDD format)</td>
+        </tr>
+        <tr>
           <td>cal_type</td>
           <td>VARCHAR</td>
           <td>10</td>
@@ -1204,6 +1212,14 @@
           <td>Y</td>
           <td>&nbsp;</td>
           <td>user who performed the import</td>
+        </tr>
+        <tr>
+          <td>cal_md5</td>
+          <td>VARCHAR</td>
+          <td>32</td>
+          <td>Y</td>
+          <td>NULL</td>
+          <td>md5 of last import used to see if a new import changes anything</td>
         </tr>
       </table>
     </blockquote>
@@ -1795,7 +1811,7 @@
         <tr>
           <td>cal_passwd</td>
           <td>VARCHAR</td>
-          <td>32</td>
+          <td>255</td>
           <td>Y</td>
           <td>&nbsp;</td>
           <td>the user's password. (not used for http)</td>

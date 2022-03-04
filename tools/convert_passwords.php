@@ -15,7 +15,7 @@
 
 define ( '__WC_INCLUDEDIR', '../includes' );
 
-require_once __WC_INCLUDEDIR . '/classes/WebCalendar.class';
+require_once __WC_INCLUDEDIR . '/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 

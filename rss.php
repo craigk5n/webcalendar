@@ -53,9 +53,9 @@
 $debug = false;
 
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
-require_once 'includes/classes/Event.class';
-require_once 'includes/classes/RptEvent.class';
+require_once 'includes/classes/WebCalendar.php';
+require_once 'includes/classes/Event.php';
+require_once 'includes/classes/RptEvent.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 

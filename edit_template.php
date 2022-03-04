@@ -124,7 +124,8 @@ if ( $user != '__system__' ) {
 }
 
 echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
-    <form action="edit_template.php" method="post" name="reportform">
+    <form action="edit_template.php" method="post" name="reportform">'
+   . csrf_form_key() . '
       <input type="hidden" name="type" value="' . $type . '" />'
    . ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' && !
     empty ( $user ) && $user != '__system__' ? '

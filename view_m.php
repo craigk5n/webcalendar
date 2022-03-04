@@ -50,16 +50,16 @@ print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_m.php?id=' . $id
- . '&amp;date=' . $prevdate . '"><img src="images/leftarrow.gif" alt="'
+ . '&amp;date=' . $prevdate . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="'
  . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="view_m.php?id=' . $id
- . '&amp;date=' . $nextdate . '"><img src="images/rightarrow.gif" alt="'
+ . '&amp;date=' . $nextdate . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="'
  . $nextStr . '" /></a>
       <div class="title">
         <span class="date">';
 printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
 echo '</span><br />
-        <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
+        <span class="viewname">' . $view_name . '</span>
       </div>
     </div><br />';
 
@@ -151,7 +151,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $weekday = weekday_name ( date ( 'w', $d ), $DISPLAY_LONG_DAYS );
     $class = 'class="' . ( $dateYmd == $todayYmd
       ? 'today"'
-      : ( $is_weekend ? 'weekend"' : 'row"' ) );
+      : ( $is_weekend ? 'weekend"' : 'weekday"' ) );
 
     // Non-breaking space below keeps event from wrapping prematurely.
     echo '

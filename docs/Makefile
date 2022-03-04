@@ -22,15 +22,15 @@ INCLUDES = \
  ../import_palmdesktop.php \
  ../includes/access.php \
  ../includes/assert.php \
- ../includes/classes/AttachmentList.class \
- ../includes/classes/CommentList.class \
- ../includes/classes/Doc.class \
- ../includes/classes/DocList.class \
- ../includes/classes/Event.class \
+ ../includes/classes/AttachmentList.php \
+ ../includes/classes/CommentList.php \
+ ../includes/classes/Doc.php \
+ ../includes/classes/DocList.php \
+ ../includes/classes/Event.php \
  ../includes/classes/hkit/hcal.profile.php \
- ../includes/classes/RptEvent.class \
- ../includes/classes/WebCalendar.class \
- ../includes/classes/WebCalMailer.class \
+ ../includes/classes/RptEvent.php \
+ ../includes/classes/WebCalendar.php \
+ ../includes/classes/WebCalMailer.php \
  ../includes/config.php \
  ../includes/dbi4php.php \
  ../includes/dbtable.php \
