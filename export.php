@@ -19,9 +19,11 @@ load_user_categories();
 
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
+$yearAgo = time () - 365 * 24 * 3600;
+$dateYearAgo = date('Ymd', $yearAgo);
 $selected = ' selected="selected" ';
 
-print_header ( array ( 'js/export_import.php', 'js/visible.php' ) );
+print_header('', '', 'onload="updateDateFields();"' );
 echo '<h2>' . translate ( 'Export' ) . '</h2>
     <form action="export_handler.php" method="post" name="exportform" id="exportform">
       ' . print_form_key() . '
@@ -80,7 +82,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="use_all_dates" id="exportall" '
- . 'value="y" onclick="toggle_datefields( \'dateArea\', this );" />
+ . 'value="y" checked="checked" onclick="toggle_datefields( \'dateArea\', this );" />
             <label for="exportall">' . translate ( 'Export all dates' )
  . '</label>
           </td>
@@ -98,8 +100,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
               </tr>
               <tr>
                 <td><label>' . translate ( 'Modified since' ) . ':</label></td>
-                <td>' . date_selection ( 'mod', mktime ( 0, 0, 0,
-                  $datem, date ( 'd' ) - 7, $dateY ) ) . '</td>
+                <td>' . date_selection ( 'mod', $dateYearAgo )  . '</td>
               </tr>
             </table>
           </td>
@@ -109,7 +110,29 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
  . translate ( 'Export' ) . '" /></td>
         </tr>
       </table>
-    </form>
-    ' . print_trailer ();
-
+    </form>';
 ?>
+<script>
+  function updateDateFields () {
+    var displayAll = $('#exportall')[0].checked;
+    if (displayAll) {
+      $('#dateArea').show();
+    } else {
+      $('#dateArea').hide();
+    }
+  }
+  
+  function toggle_datefields( name, ele ) {
+    updateDateFields();
+  }
+
+  function toggel_catfilter() {
+    if ( $('#exformat option:selected').index() == 0 ) {
+      // ICalendar
+      $('#catfilter').show();
+    } else {
+      $('#catfilter').hide();
+    }
+  }
+</script>
+<?php echo print_trailer (); ?>

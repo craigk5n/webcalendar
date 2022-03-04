@@ -212,16 +212,14 @@ if ( empty ( $error ) && empty ( $report_id ) && $login == '__public__' )
 $invalidID = translate ( 'Invalid report id.' );
 if ( empty ( $error ) && empty ( $report_id ) ) {
   $list = '';
-  $sql = 'SELECT cal_report_id, cal_report_name FROM webcal_report
-    WHERE cal_login = ';
+  $sql = 'SELECT cal_report_id, cal_report_name FROM webcal_report WHERE cal_login = ';
   $sql_params = [];
   if ( $is_admin ) {
     if ( ! $updating_public ) {
       if ( $PUBLIC_ACCESS == 'Y' ) {
         $clickStr =
         translate ( 'Click here to manage reports for the Public Access calendar.' );
-        $list .= '
-    <p><a title="' . $clickStr . '" href="report.php?public=1">'
+        $list .= '<p><a title="' . $clickStr . '" href="report.php?public=1">'
          . $clickStr . '</a></p>';
       }
       $sql .= '? OR cal_is_global = \'Y\'';
@@ -234,8 +232,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
   }
   $res = dbi_execute ( $sql . ' ORDER BY cal_update_date DESC, cal_report_name',
     $sql_params );
-  $list .= '
-    <ul>';
+  $list .= '<ul>' . "\n";
   if ( $res ) {
     $addStr = translate ( 'Add new report' );
     $unnamesStr = translate ( 'Unnamed Report' );
@@ -245,7 +242,7 @@ if ( empty ( $error ) && empty ( $report_id ) ) {
         $rep_name = $unnamesStr;
 
       $list .= '
-      <li class="list-group-item"><a href="edit_report.php?report_id=' . $row[0] . '" class="nav">'
+      <li class="nav"><a href="edit_report.php?report_id=' . $row[0] . '" class="nav">'
        . $rep_name . '</a></li>';
     }
     $list .= '

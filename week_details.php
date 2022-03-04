@@ -53,10 +53,10 @@ echo '
     <div class="title">
       <a title="' . $prevStr . '" class="prev" href="week_details.php?' . $u_url
  . 'date=' . date ( 'Ymd', $prev ) . $caturl
- . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>
+ . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="week_details.php?' . $u_url . 'date='
  . date ( 'Ymd', $next ) . $caturl
- . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+ . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '" /></a>
       <span class="date">' . date_to_str ( date ( 'Ymd', $wkstart ), '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
  . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span>'
@@ -90,7 +90,7 @@ for ( $d = 0; $d < 7; $d++ ) {
           <th' . $class . ( $can_add ? '
             <a title="' . $newEntryStr . '" href="edit_entry.php?' . $u_url
      . 'date=' . date ( 'Ymd', $days[$d] )
-     . '"><img src="images/new.gif" class="new" alt="' . $newEntryStr
+     . '"><img src="images/bootstrap-icons/plus-circle.svg" class="new" alt="' . $newEntryStr
      . '" /></a>' : '' ) . '
             <a title="' . $header[$d] . '" href="day.php?' . $u_url . 'date='
    . date ( 'Ymd', $days[$d] ) . $caturl . '">' . $header[$d] . '</a>
@@ -150,7 +150,7 @@ function print_detailed_entry ( $event, $date ) {
   if ( $class == 'layerentry' )
     echo '&amp;user=' . $loginStr;
 
-  echo '<img src="images/circle.gif" class="bullet" alt="view icon" />';
+  echo '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="view icon" />';
   if ( $login != $loginStr && strlen ( $loginStr ) ) {
     if ( $layers ) {
       foreach ( $layers as $layer ) {

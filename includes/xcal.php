@@ -3171,11 +3171,13 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
 }
 /**
  * Generate export select.
+ * NOTE: this function is being depracated since everyone seems to have
+ * settled on iCalendar for import/export.
  */
 function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
   $palmStr = translate ( 'Palm Pilot' );
   return '
-      <select classs="form-control sm-auto" name="format" id="' . $name . '"'
+      <select class="form-inline sm-auto" name="format" id="' . $name . '"'
    . ( empty( $jsaction ) ? '' : 'onchange="' . $jsaction . '();"' ) . '>
         <option value="ical">iCalendar</option>
         <option value="vcal">vCalendar</option>

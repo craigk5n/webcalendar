@@ -307,3 +307,11 @@ CREATE TABLE webcal_timezones (
 );
 /*upgrade_v1.3.0*/
 ALTER TABLE webcal_user ALTER COLUMN cal_passwd TYPE VARCHAR(255);
+CREATE INDEX webcal_entry_categories ON webcal_entry_categories(cat_id);
+/*upgrade_v1.3.1*/
+/*upgrade_v1.9.0*/
+ALTER TABLE webcal_import ADD cal_check_date INT NULL;
+ALTER TABLE webcal_import ADD cal_md5 VARCHAR(32) NULL DEFAULT NULL;
+CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
+CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
+ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);

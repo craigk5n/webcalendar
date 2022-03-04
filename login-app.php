@@ -83,7 +83,7 @@ echo send_doctype ( $appStr ) . ( ! $logout ? '
  . $login_return_path . '" />
       <table cellpadding="10" class="aligncenter">
         <tr>
-          <td rowspan="2"><img src="images/login.gif" alt="Login" /></td>
+          <td rowspan="2"><img src="images/bootstrap-icons/key-fill.svg" alt="Login" /></td>
           <td class="alignright"><label for="user">' . translate ( 'Username' )
  . ':</label></td>
           <td><input name="' . $app_login_page['username']

@@ -135,7 +135,8 @@ if ((access_can_access_function(ACCESS_VIEW, $user) && $ALLOW_VIEW_OTHER != 'N')
 
   for ($i = 0; $i < $view_cnt; $i++) {
     $tmp = [];
-    $tmp['name'] = htmlspecialchars($views[$i]['cal_name'], ENT_QUOTES);
+    // NOTE: We use htmlspecialchars on the name below.
+    $tmp['name'] = $views[$i]['cal_name'];
     $tmp['url'] = str_replace('&amp;', '&', $views[$i]['url'])
       . (empty($thisdate) ? '' : '&date=' . $thisdate);
     $views_link[$i] = $tmp;
@@ -489,7 +490,7 @@ if (empty($thisday))
             <?php
             echo '<a class="form-check"><form class="form-inline" action="search_handler.php' . (!empty($user) ? '?users[]=' . $user : '') . '" ' .
               'method="GET"><div class="input-group"><input class="form-control" type="text" name="keywords" size="25" />' .
-              '<button class="btn btn-primary mr-2 pr-0 pl-2"><img class="button-icon" src="images/open-iconic/svg/magnifying-glass.svg" /></button></div></form></a>';
+              '<button class="btn btn-primary mr-2 pr-0 pl-2"><img class="button-icon" src="images/bootstrap-icons/search.svg" /></button></div></form></a>';
             $doAdv = false;
             // Use UAC if enabled...
             if (access_is_enabled() && access_can_access_function(ACCESS_ADVANCED_SEARCH)) {
@@ -528,7 +529,7 @@ if (empty($thisday))
       <?php if ($show_printer) { ?>
         <li class="nav-item active">
           <a class="nav-link" href="<?php echo generate_printer_friendly(); ?>" target="cal_printer_friendly" class="btn btn-primary mr-2 pr-0 pl-2">
-            <img class="button-icon-inverse" src="images/open-iconic/svg/print.svg" /></a>
+            <img class="button-icon-inverse" src="images/bootstrap-icons/printer.svg" /></a>
         </li>
       <?php } ?>
 

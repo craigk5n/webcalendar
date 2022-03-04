@@ -236,7 +236,7 @@ if ( ! $error ) {
 
   echo '
     <h2>' . translate ( 'System Settings' )
-   . '<img src="images/help.gif" alt="' . translate ( 'Help' )
+   . '<img src="images/bootstrap-icons/question-circle-fill.svg" alt="' . translate ( 'Help' )
    . '" class="help" onclick="window.open( \'help_admin.php\', \'cal_help\', '
    . '\'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,'
    . 'outerWidth=420\' );" /></h2>

@@ -39,7 +39,7 @@ else {
         </tr>
       </table>
     </form>';
-  print_trailer();
+  echo print_trailer();
   exit;
 }
 

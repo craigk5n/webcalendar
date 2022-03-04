@@ -362,14 +362,25 @@ function showSchedule() {
   var cols = <?php echo $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ?>;
   //var w = 140 + ( cols * 31 );
   var w = 760;
-  var h = 180;
+  var h = 300;
   for ( i = 0; i < userlist.length; i++ ) {
-      users += delim + userlist.options[i].value;
-      delim = ',';
-      h += 18;
-    }
+    users += delim + userlist.options[i].value;
+    delim = ',';
+    h += 18;
+  }
   if (users == '') {
     alert("<?php etranslate ( 'Please add a participant', true)?>" );
+    return false;
+  }
+  //var d = $('#_YMD');
+  var d = form.elements['_YMD'];
+  console.log("Date UI: " + d);
+  console.log("Date object: " + d.value);
+  try {
+    var date = new Date(d.value);
+  } catch {
+    alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
+    d.focus();
     return false;
   }
   var mX = 100, mY = 200;
@@ -377,9 +388,10 @@ function showSchedule() {
   var features = MyPosition + ',width='+ w +',height='+ h +',resizable=yes,scrollbars=yes';
   var url = 'availability.php?users=' + users +
            '&form='  + 'editentryform' +
-           '&year='  + form.year.value +
-           '&month=' + form.month.value +
-           '&day='   + form.day.options[form.day.selectedIndex].text;
+           '&year='  + date.getFullYear() +
+           '&month=' + (date.getMonth() + 1) +
+           '&day='   + date.getDate();
+  console.log("URL: " + url);
 
   if (sch_win != null && !sch_win.closed) {
      h = h + 30;

@@ -18,7 +18,7 @@ if ($NONUSER_ENABLED != 'Y' || (access_is_enabled() && !access_can_access_functi
     do_redirect(empty($STARTVIEW) ? 'month.php' : $STARTVIEW);
 }
 
-$LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
+$LOADING = '<center><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></center>';
 $areYouSure = translate('Are you sure you want to delete this resource calendar?');
 $deleteUserInfo = translate('This will remove all events for this resource calendar.') .
     ' ' . translate('This action cannot be undone.');
@@ -128,9 +128,9 @@ print_header(
                         </div>
                     <?php } ?>
 
-                    <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="buton" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
+                    <div class="modal-footer mt-2">
+                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
+                        <input class="btn btn-primary" data-dismiss="modal" type="buton" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
                     </div>
                 </form>
             </div>
@@ -158,9 +158,9 @@ print_header(
                     </div>
                 </form>
                 <br>
-                <div class="modal-footer">
-                    <input class="form-control btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                    <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();" />
+                <div class="modal-footer mt-2">
+                    <input class="btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
+                    <input class="btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();" />
                 </div>
             </div>
         </div>
@@ -254,7 +254,7 @@ print_header(
                     var id = u.login.substring(0, 5) == '<?php echo $NONUSER_PREFIX; ?>' ? u.login.substring(5) : u.login;
                     tbody += '<tr><td>' + id +
                         '</td><td>' + (u.fullname == null ? '' : u.fullname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
-                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/open-iconic/svg/check.svg" />' : '') +
+                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />' : '') +
                         <?php } ?> '</td><td>' + u.eventcount + '</td><td>' +
                         user_menu(u.login) + '</td></tr>\n';
                 }

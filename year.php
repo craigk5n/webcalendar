@@ -111,9 +111,9 @@ print_header();
 echo <<<EOT
     <div class="title">
       <a title="{$prevStr}" class="prev" href="year.php?year={$prevYear}{$userStr}">
-        <img src="images/leftarrow.gif" alt="{$prevStr}" /></a>
+        <img src="images/bootstrap-icons/arrow-left-circle.svg" alt="{$prevStr}" /></a>
       <a title="{$nextStr}" class="next" href="year.php?year={$nextYear}{$userStr}">
-        <img src="images/rightarrow.gif" alt="{$nextStr}" /></a>
+        <img src="images/bootstrap-icons/arrow-right-circle.svg" alt="{$nextStr}" /></a>
       <span class="date">{$thisyear}</span><br />
       <span class="user">{$fullnameStr}</span><br />
       {$asstModeStr}

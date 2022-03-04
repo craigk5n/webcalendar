@@ -23,6 +23,6 @@ echo $helpListStr . '
       <li><a href="http://www.k5n.us/wiki/">WebCalendar Wiki</a></li>
     </ul>';
 
-print_trailer ( false, true, true );
+echo print_trailer ( false, true, true );
 
 ?>

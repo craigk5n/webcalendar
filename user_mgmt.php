@@ -15,7 +15,7 @@ if (empty($login) || $login == '__public__') {
     exit;
 }
 
-$LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
+$LOADING = '<center><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></center>';
 $doUser = (!access_is_enabled() ||
     access_can_access_function(ACCESS_ACCOUNT_INFO));
 $doUsers = ($is_admin ||
@@ -269,7 +269,7 @@ print_header(
                     tbody += '<tr><td>' + u.login + '</td><td>' + (u.firstname == null ? '' : u.firstname) +
                         '</td><td>' + (u.lastname == null ? '' : u.lastname) + '</td><td>' + (u.email == null ? '' : u.email) +
                         '</td><td>' +
-                        (u.is_admin == 'Y' ? '<img class="button-icon-inverse" src="images/open-iconic/svg/check.svg" />' : '') +
+                        (u.is_admin == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />' : '') +
                         '</td><td>' + user_menu(u.login) + '</td></tr>\n';
                 }
                 $('#user-tbody').html(tbody);

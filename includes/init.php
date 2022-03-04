@@ -162,10 +162,10 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   // Any other includes?
   if( is_array( $includes ) ) {
     foreach( $includes as $inc ) {
-      $cs_ret .= '<!-- inc "' . $inc . '" INCLUDED -->' . "\n";
+      //$cs_ret .= '<!-- inc "' . $inc . '" INCLUDED -->' . "\n";
       if ( $inc == 'JQUERY' ) {
         // Ignore since we handled it above
-        $cs_ret .= '<!-- JQUERY INCLUDED -->' . "\n";
+        //$cs_ret .= '<!-- JQUERY INCLUDED -->' . "\n";
       } if( stristr( $inc, '.css' ) ) {
         $i = 'includes/' . $inc;
         // Not added to $cs_ar because I think we want these,
@@ -244,7 +244,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
       $ret .= '
     <link href="' . $i . '" rel="stylesheet"'
        . ( $c == 'css/print_styles.css' && empty( $friendly )
-         ? ' media="print"' : '' ) . ' />';
+         ? ' media="print"' : '' ) . ' />' . "\n";
     }
   }
   echo $ret . $cs_ret
@@ -285,7 +285,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 }
 
 /**
- * Prints the common trailer.
+ * Returns the common trailer.  (DOES NOT print it, unlike print_header.)
  *
  * @param bool $include_nav_links Should the standard navigation links be
  *                                included in the trailer?

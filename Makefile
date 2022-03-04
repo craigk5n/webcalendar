@@ -8,7 +8,11 @@
 PHPMAILER_DIR = includes/classes/phpmailer
 PHPMAILER_VENDOR_DIR = vendor/phpmailer/phpmailer/src
 
-_DEFAULT: _phpmailer includes/load_assets.php
+BOOTSTRAP_ICON_DIR = images/bootstrap-icons
+BOOTSTRAP_ICON_VENDOR_DIR = vendor/twbs/bootstrap-icons/icons
+
+_DEFAULT: _phpmailer includes/load_assets.php \
+	_ICONS
 
 _phpmailer: $(PHPMAILER_DIR)/PHPMailer.php \
 	$(PHPMAILER_DIR)/Exception.php \
@@ -31,8 +35,73 @@ $(PHPMAILER_DIR)/POP3.php: $(PHPMAILER_VENDOR_DIR)/POP3.php
 $(PHPMAILER_DIR)/SMTP.php: $(PHPMAILER_VENDOR_DIR)/SMTP.php
 	cp $< $@
 
+_ICONS: \
+	$(BOOTSTRAP_ICON_DIR)/printer.svg \
+	$(BOOTSTRAP_ICON_DIR)/search.svg \
+	$(BOOTSTRAP_ICON_DIR)/arrow-right-circle.svg \
+	$(BOOTSTRAP_ICON_DIR)/arrow-left-circle.svg \
+	$(BOOTSTRAP_ICON_DIR)/arrow-up-short.svg \
+	$(BOOTSTRAP_ICON_DIR)/arrow-down-short.svg \
+	$(BOOTSTRAP_ICON_DIR)/plus-circle.svg \
+	$(BOOTSTRAP_ICON_DIR)/rss-fill.svg \
+	$(BOOTSTRAP_ICON_DIR)/circle-fill.svg \
+	$(BOOTSTRAP_ICON_DIR)/exclamation-triangle-fill.svg \
+	$(BOOTSTRAP_ICON_DIR)/question-circle-fill.svg \
+	$(BOOTSTRAP_ICON_DIR)/arrow-90deg-up.svg \
+	$(BOOTSTRAP_ICON_DIR)/dash-circle.svg \
+	$(BOOTSTRAP_ICON_DIR)/check-circle.svg \
+	$(BOOTSTRAP_ICON_DIR)/trash.svg \
+	$(BOOTSTRAP_ICON_DIR)/key-fill.svg
 
-includes/load_assets.php: Makefile \
+$(BOOTSTRAP_ICON_DIR)/printer.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/printer.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/search.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/search.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/arrow-right-circle.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/arrow-right-circle.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/arrow-left-circle.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/arrow-left-circle.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/arrow-up-short.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/arrow-up-short.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/arrow-down-short.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/arrow-down-short.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/plus-circle.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/plus-circle.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/rss-fill.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/rss-fill.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/circle-fill.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/circle-fill.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/exclamation-triangle-fill.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/exclamation-triangle-fill.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/question-circle-fill.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/question-circle-fill.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/arrow-90deg-up.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/arrow-90deg-up.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/dash-circle.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/dash-circle.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/check-circle.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/check-circle.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/trash.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/trash.svg
+	cp $< $@
+
+$(BOOTSTRAP_ICON_DIR)/key-fill.svg: $(BOOTSTRAP_ICON_VENDOR_DIR)/key-fill.svg
+	cp $< $@
+
+includes/load_assets.php: \
 	pub/bootstrap.min.css \
 	pub/bootstrap.min.css.sha \
 	pub/bootstrap.bundle.min.js \

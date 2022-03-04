@@ -25,9 +25,9 @@ function usermode_handler ()
 {
   var show = ( document.editviewform.viewuserall[0].checked );
   if ( show ) {
-    makeVisible ( "viewuserlist" );
+    $('#viewuserlist').show();
   } else {
-    makeInvisible ( "viewuserlist" );
+    $('#viewuserlist').hide();
   }
 }
 

@@ -158,84 +158,9 @@ ul a {
   color: #000;
   margin: 20px;
 }
-#tabs,
-#tabscontent {
-  position:relative;
-  width:96%;
-}
-#tabscontent {
-  margin:-.0625rem .125rem;
-  border:.125rem groove #C0C0C0;
-  padding:.5rem;
-  background-color:#F8F8FF;
-  z-index:50;
-}
-.tabfor,
-.tabbak  {
-  position:relative;
-  margin:0 0 0 .1rem;
-  border:.125rem ridge #C0C0C0;
-  border-bottom:.125rem solid #F8F8FF;
-  padding:.2rem .2rem .1rem;
-  -moz-border-radius:.75rem .75rem 0 0;
-       border-radius:.75rem .75rem 0 0;
-}
-.tabfor a,
-.tabbak a {
-  color: var(--h2color);
-  font-weight:bold;
-  /*font-size:.875rem;*/
-}
-.tabbak a {
-  color:#999;
-}
-.tabfor {
-  background-color:#F8F8FF;
-  z-index:51;
-}
-.tabbak {
-  background-color:#E0E0E0;
-  z-index:49;
-}
-#editnonusers,
-#editremotes,
-#editremoteshandler,
-#edituser,
-#groupedit,
-#viewsedit {
-  background-color:#F8F8FF;
-}
 #cat,
-#day dl.desc,
-#grpiframe,
-#nonusersiframe,
-#remotesiframe,
-#tabscontent_boss,
-#tabscontent_colors,
-#tabscontent_email,
-#tabscontent_groups,
-#tabscontent_header,
-#tabscontent_nonuser,
-#tabscontent_nonusers,
-#tabscontent_other,
-#tabscontent_participants,
-#tabscontent_pete,
-#tabscontent_public,
-#tabscontent_reminder,
-#tabscontent_remotes,
-#tabscontent_sched,
-#tabscontent_subscribe,
-#tabscontent_themes,
-#tabscontent_uac,
-#useriframe,
-#viewiframe {
+#day dl.desc, {
   display:none;
-}
-#tabscontent_colors p span,
-.sample {
-  margin:0 .0625rem;
-  border-style:groove;
-  padding:0 .5rem;
 }
 td.weekcell {
   background-color: var(--weeknumber);
@@ -413,7 +338,7 @@ td.matrixappts:hover {
   background-color:#CFC;
 }
 td.matrix {
-  height:1px;
+  height:1px !important;
   background-color:#000;
 }
 .matrix img {
@@ -429,6 +354,10 @@ a.matrix img {
   margin-left:auto;
   border-right:1px solid var(--tablebg);
   border-left:1px solid var(--tablebg);
+  border-bottom:1px solid var(--tablebg);
+}
+.matrixd td {
+  border-bottom: 1px solid var(--tablebg);
 }
 .matrixledge {
   border-left:1px solid #000;
@@ -586,12 +515,12 @@ tr.highlight td {
 }
 .minical th,
 .minical td.empty {
-  background-color: var(--bgcolor);
+  background-color: var(--bgcolor) !important;
   color: var(--textcolor);
   text-align:center;
 }
 .minical th.empty {
-  background-color:transparent;
+  background-color:transparent !important;
 }
 .minical td {
   background-color: var(--cellbg);
@@ -711,8 +640,8 @@ tr.highlight td {
 }
 #admin .empty,
 #pref .empty {
-  border-top:transparent;
-  border-left:transparent;
+  border-top:transparent !important;
+  border-left:transparent !important;
 }
 #admin .main td.weekcell,
 #pref .main td.weekcell {
@@ -737,14 +666,6 @@ tr.highlight td {
 #pref .main th.empty,
 #pref .main th.weekcell {
   width:1%;
-}
-#admin #tabscontent p label,
-#pref #tabscontent p label {
-  clear:left;
-  float:left;
-  width:25%;
-  margin:0;
-  padding:0 .25rem;
 }
 #admin #saver {
   clear:both;
@@ -830,9 +751,9 @@ tr.highlight td {
   border-bottom:1px solid var(--tablebg);
 }
 .glance th.empty {
-  background-color: var(--bgcolor);
-  border-top:1px solid var(--bgcolor);
-  border-left:1px solid var(--bgcolor);
+  background-color: var(--bgcolor) !important;
+  border-top:1px solid var(--bgcolor) !important;
+  border-left:1px solid var(--bgcolor) !important;
 }
 .glance th.row {
   width:14%;
@@ -894,7 +815,7 @@ tr.highlight td {
   width:1%;
   border-top:0;
   border-left:0;
-  background-color:transparent;
+  background-color:transparent !important;
 }
 #month .main td.weekcell,
 #pref .main td.weekcell,
@@ -910,8 +831,8 @@ tr.highlight td {
 #pref .main td.empty,
 #pref .main th.empty {
   width:1%;
-  border-top-color:transparent;
-  border-left-color:transparent;
+  border-top-color:transparent !important;
+  border-left-color:transparent !important;
 }
 #pref .main td.weekcell,
 #pref .main th.weekcell {
@@ -923,10 +844,10 @@ tr.highlight td {
 #viewr .main th.empty,
 #week .main th.empty {
   width:5%;
-  border-top:1px solid var(--bgcolor);
-  border-left:1px solid var(--bgcolor);
-  background-color:none;
-  background-color:transparent;
+  border-top:1px solid var(--bgcolor) !important;
+  border-left:1px solid var(--bgcolor) !important;
+  background-color:transparent !important;
+  background: none;
 }
 #week .main th.row {
   width:5%;
@@ -1329,13 +1250,8 @@ tr.highlight td {
 .bold {
   font-weight:bold;
 }
-#about {
-  background-image:url( ../../images/kn5.jpg );
-  background-repeat:no-repeat;
-}
 #about p {
   margin:.0625rem;
-  color:#333;
 }
 #scroller {
   position:absolute;
@@ -1643,6 +1559,11 @@ table.ThemeMenubar {
   width: 14px;
   height: 14px;
   margin-right: 10px;
+}
+
+.bullet {
+  width: 0.3em;
+  height: 0.3em;
 }
 
 <?php

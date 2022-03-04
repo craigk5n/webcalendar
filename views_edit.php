@@ -19,7 +19,7 @@ if ( ! $is_admin )
   $user = $login;
 
 $BodyX = 'onload="usermode_handler();"';
-$INC = array('js/visible.php', 'js/views_edit.php');
+$INC = array('js/views_edit.php');
 print_header( $INC, '', $BodyX );
 ?>
 

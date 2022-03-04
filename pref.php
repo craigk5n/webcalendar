@@ -190,7 +190,7 @@ $qryStr = ( ! empty ( $_SERVER['QUERY_STRING'] ) ? '?' . $_SERVER['QUERY_STRING'
 $formaction = substr ($self, strrpos($self, '/') + 1) . $qryStr;
 $formaction = preg_replace('/action=reset/', 'action=save', $formaction);
 
-?>&nbsp;<img src="images/help.gif" alt="<?php etranslate ( 'Help' )?>" class="help" onclick="window.open( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
+?>&nbsp;<img src="images/bootstrap-icons/question-circle-fill.svg" alt="<?php etranslate ( 'Help' )?>" class="help" onclick="window.open( 'help_pref.php', 'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420' );" /></h2>
 
 <!-- Message -->
 <div id="main-dialog-message" class="alert alert-info" style="<?php echo (empty($message) ? "display: none" : "display: block");?>"">
@@ -233,6 +233,7 @@ if ( $is_admin && ! $updating_public ) {
 if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
   if ( ( empty ( $user ) || $user == $login ) && ! $updating_public ) {
     $nulist = get_my_nonusers ( $login );
+    if (!empty($nulist)) {
     ?>
     <div class="dropdown">
       <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
@@ -251,6 +252,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
       </div>
     </div>
     <?php
+    }
   } else {
     $linktext = translate ( 'Return to My Preferences' );
     echo "<br><a title=\"$linktext\" class=\"btn btn-secondary\" href=\"pref.php\">&laquo;&nbsp; $linktext </a>";

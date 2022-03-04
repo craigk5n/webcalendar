@@ -692,7 +692,7 @@ EOT;
 
     $ret .= '
       <tr>
-        <th class="row" style="width:' . $participant_pct . ';">'
+        <th class="weekday" style="width:' . $participant_pct . ';">'
      . $user_nospace . '</th>';
     $col = 1;
 
@@ -730,12 +730,7 @@ EOT;
       }
     }
 
-    $ret .= '
-      </tr>
-      <tr>
-        <td class="matrix" colspan="' . $cols
-     . '"><img src="images/pix.gif" alt="-" /></td>
-      </tr>';
+    $ret .= '</tr>';
   } // End foreach participant.
   return $ret . <<<EOT
     </table><br />
@@ -1002,7 +997,7 @@ function display_activity_log( $cal_type, $cal_text = '', $break = '<br />&nbsp;
  * @return string  HTML for Admin Home link
  * @global string  (Y/N) Is the Top Menu Enabled
  */
-function display_admin_link ( $break = true ) {
+function display_admin_link($break = true) {
   global $MENU_ENABLED;
 
   $adminStr = translate ( 'Admin' );
@@ -1182,10 +1177,10 @@ function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
     ( $name != 'month' || $DISPLAY_SM_MONTH == 'N' || $DISPLAY_TASKS == 'Y' ) ? '
         <a title="' . $nextStr . '" class="next" href="' . $name . '.php?'
      . $u_url . 'date=' . $nextYmd . $caturl
-     . '"><img src="images/rightarrow.gif" alt="' . $nextStr . '" /></a>
+     . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '" /></a>
         <a title="' . $prevStr . '" class="prev" href="' . $name . '.php?'
      . $u_url . 'date=' . $prevYmd . $caturl
-     . '"><img src="images/leftarrow.gif" alt="' . $prevStr . '" /></a>' : '' ) . '
+     . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '" /></a>' : '' ) . '
         <div class="title">
           <span class="date">';
 
@@ -1273,10 +1268,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           <th colspan="' . ( $DISPLAY_WEEKNUMBER == true ? 8 : 7 ) . '">
             <a title="' . $prevStr . '" class="prev" href="day.php?' . $u_url
      . 'date=' . $month_ago . $caturl
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+     . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '" /></a>
             <a title="' . $nextStr . '" class="next" href="day.php?' . $u_url
      . 'date=' . $month_ahead . $caturl
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '" /></a>'
      . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
       ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
           </th>
@@ -1293,10 +1288,10 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
           <th colspan="7">
             <a title="' . $prevStr . '" class="prev" href="minical.php?'
      . $u_url . 'date=' . $month_ago
-     . '"><img src="images/leftarrowsmall.gif" alt="' . $prevStr . '" /></a>
+     . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="' . $prevStr . '" /></a>
             <a title="' . $nextStr . '" class="next" href="minical.php?'
      . $u_url . 'date=' . $month_ahead
-     . '"><img src="images/rightarrowsmall.gif" alt="' . $nextStr . '" /></a>'
+     . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="' . $nextStr . '" /></a>'
      . date_to_str ( sprintf ( "%04d%02d%02d", $thisyear, $thismonth, 1 ),
       ( $showyear != '' ? $DATE_FORMAT_MY : '__month__' ), false ) . '
           </th>
@@ -1428,11 +1423,11 @@ function display_small_tasks ( $cat_id ) {
     for ( $i = 0; $i < 4; $i++ ) {
       $ajax[$i] = '
         <td class="sorter" onclick="sortTasks( ' . $i . ', ' . $task_cat
-       . ', this )"><img src="images/up.png" style="vertical-align:bottom" /></td>';
+       . ', this )"><img src="images/bootstrap-icons/arrow-up-short.svg" style="vertical-align:bottom" /></td>';
       $ajax[$i + 4] = '
         <td  class="sorter sorterbottom" onclick="sortTasks( ' .
       ( $i + 4 ) . ', ' . $task_cat
-       . ', this )"><img src="images/down.png" style="vertical-align:top" /></td>';
+       . ', this )"><img src="images/bootstrap-icons/arrow-down-short.svg" style="vertical-align:top" /></td>';
     }
   } else {
     $dueSpacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -1451,7 +1446,7 @@ function display_small_tasks ( $cat_id ) {
         <th colspan="6">' . translate ( 'TASKS' ) . '</th>
         <th class="alignright" colspan="2"><a href="edit_entry.php?' . $u_url
    . 'eType=task' . $caturl
-   . '"><img src="images/new.gif" alt="+" class="new" /></a></th>
+   . '"><img src="images/bootstrap-icons/plus-circle.sv" alt="+" class="new" /></a></th>
       </tr>
       <tr class="header">
         <td rowspan="2" class="sorterbottom">!&nbsp;</td>' . $ajax[0] . '
@@ -1870,10 +1865,10 @@ function generate_activity_log ( $id = '', $sys = false, $startid = '' ) {
   $ret = "<$size>"
    . ( $sys ? translate ( 'System Log' ) : translate ( 'Activity Log' ) )
    . ( $sys ? '' : ' &nbsp;<a href="rss_activity_log.php">'
-   . '<img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - '
+   . '<img src="images/bootstrap-icons/rss-fill.svg" width="14" height="14" alt="RSS 2.0 - '
    . translate( 'Activity Log' ) . '" /></a>' )
-   . "</$size>" . display_admin_link() . '
-    <table class="table embactlog">
+   . "</$size>" . display_admin_link(false) . '
+    <table class="table table-striped mt-2 table-responsive">
       <thead><tr>
         <th class="usr">' . translate ( 'User' ) . '</th>
         <th class="cal">' . translate ( 'Calendar' ) . '</th>
@@ -3668,7 +3663,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   }
 
   if ( $getCalTypeName == 'task' ) {
-    $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
+    $hour_arr[$ind] .= '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="*" /> ';
     $view_text = translate ( 'View this task' );
   }
 
@@ -3832,12 +3827,12 @@ function html_for_event_week_at_a_glance ( $event, $date,
     $href = 'href="view_entry.php?id=' . $id . '&amp;date='
      . ( $getClone ? $getClone : $date );
     if ( $getCalTypeName == 'task' ) {
-      $hour_arr[$ind] .= '<img src="images/task.gif" class="bullet" alt="*" /> ';
+      $hour_arr[$ind] .= '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="*" /> ';
 
       $title .= translate ( 'View this task' );
     } else { // Must be event.
       if ( $isAllDay || $isUntime && $catAlt == '' )
-        $hour_arr[$ind] .= '<img src="images/circle.gif" class="bullet" alt="*" /> ';
+        $hour_arr[$ind] .= '<img src="images/bootstrap-icons/circle-fill.svg" class="bullet" alt="*" /> ';
 
       $title .= translate ( 'View this event' );
     }
@@ -3922,43 +3917,6 @@ function html_to_8bits ( $html ) {
   return ( floor( phpversion() ) < 4
    ? $html
    : strtr ( $html, array_flip ( get_html_translation_table ( HTML_ENTITIES ) ) ) );
-}
-
-/**
- * Generates the HTML for an add/edit/delete icon.
- *
- * This function is not yet used. Some of the places that will call it have to
- * be updated to also get the event owner so we know if the current user has
- * access to edit and delete.
- *
- * @param int  $id          Event ID
- * @param bool $can_edit    Can this user edit this event?
- * @param bool $can_delete  Can this user delete this event?
- *
- * @return  HTML for add/edit/delete icon.
- *
- * @ignore
- */
-function icon_text ( $id, $can_edit, $can_delete ) {
-  global $is_admin, $readonly;
-  $deleteStr = translate ( 'Delete entry' );
-  $editEntryStr = translate ( 'Edit entry' );
-  $viewEntryStr = translate ( 'View this entry' );
-
-  return '
-        <a title="' . $viewEntryStr . '" href="view_entry.php?id=' . $id
-   . '"><img src="images/view.gif" alt="' . $viewEntryStr
-   . '" class="icon_text" /></a>' . ( $can_edit && $readonly == 'N' ? '
-        <a title="' . $editEntryStr . '" href="edit_entry.php?id=' . $id
-     . '"><img src="images/edit.gif" alt="' . $editEntryStr
-     . '" class="icon_text" /></a>' : '' )
-   . ( $can_delete && ( $readonly == 'N' || $is_admin ) ? '
-        <a title="' . $deleteStr . '" href="del_entry.php?id=' . $id
-     . '" onclick="return confirm( \''
-     . translate( 'Are you sure you want to delete this entry?' ) . ' '
-     . translate ( 'This will delete this entry for all users.' )
-     . '\' );"><img src="images/delete.gif" alt="' . $deleteStr
-     . '" class="icon_text" /></a>' : '' );
 }
 
 /**
@@ -4709,7 +4667,7 @@ function print_date_entries ( $date, $user, $ssi = false,
      . ( strpos ( 'fullnew', $tmp ) !== false ? '' : ' Quarter' ) . ' Moon' ) );
     $ret = ( $can_add ? '
         <a title="' . $newEntryStr . '" href="edit_entry.php?' . $userCatStr
-       . 'date=' . $date . '"><img src="images/new.gif" alt="' . $newEntryStr
+       . 'date=' . $date . '"><img src="images/bootstrap-icons/plus-circle.svg" alt="' . $newEntryStr
        . '" class="new" /></a>' : '' ) . '
         <a class="dayofmonth" href="day.php?' . $userCatStr . 'date=' . $date
      . '">' . substr ( $date, 6, 2 ) . '</a>' . ( empty ( $tmp )
@@ -4827,7 +4785,7 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
   for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
     $time_h = intval ( ( $i * $interval ) / 60 );
     $time_m = ( $i * $interval ) % 60;
-    $ret .= '<tr><th class="row"';
+    $ret .= '<tr><th class="weekday"';
     $ret .= '>'
      . display_time ( ( $time_h * 100 + $time_m ) * 100 ) . '</th>';
     if ( $rowspan > 1 ) {
@@ -4949,7 +4907,7 @@ function print_entry ( $event, $date ) {
    . '><img src="';
 
   $catNum = abs( $event->getCategory() );
-  $icon = $cal_type . '.gif';
+  $icon = "bootstrap-icons/circle-fill.svg";
   if ( $catNum > 0 ) {
     $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
     if ( ! file_exists ( $catIcon ) )
@@ -6439,7 +6397,7 @@ function print_error_box ( $msg )
 {
   echo '<div class="warningBox">' .
     '<table><tr><td class="alignmiddle">' .
-    '<img src="images/warning.png" width="40" height="40" class="alignmiddle" alt="' .
+    '<img src="images/bootstrap-icons/exclamation-triangle-fill.svg" width="40" height="40" class="alignmiddle" alt="' .
     translate ( 'Error' ) . '" /></td><td class="alignmiddle">' .
     translate('The permissions for the icons directory are set to read-only') .
     "</td></tr></table></div>\n";

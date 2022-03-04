@@ -17,7 +17,7 @@ if ($REMOTES_ENABLED != 'Y' || (access_is_enabled() && !access_can_access_functi
     do_redirect(empty($STARTVIEW) ? 'month.php' : $STARTVIEW);
 }
 
-$LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
+$LOADING = '<center><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></center>';
 $cannotLoadStr = translate('You PHP setting for allow_url_fopen will not allow a remote calendar to be loaded.');
 $areYouSure = translate('Are you sure you want to delete this remote calendar?');
 $deleteUserInfo = translate('This will remove all events for this remote calendar.') .
@@ -58,7 +58,7 @@ if (!ini_get('allow_url_fopen')) { ?>
     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
 </div>
 <!-- Users loaded via AJAX -->
-<table class="table table-striped" id="user-table">
+<table class="table table-striped table-responsive" id="user-table">
     <thead>
         <tr>
             <th scope="col">
@@ -146,9 +146,9 @@ if (!ini_get('allow_url_fopen')) { ?>
                         </div>
                     </div>
 
-                    <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="buton" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
+                    <div class="modal-footer mt-2">
+                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
+                        <input class="btn btn-primary" data-dismiss="modal" type="buton" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
                     </div>
                 </form>
             </div>
@@ -316,11 +316,11 @@ if (!ini_get('allow_url_fopen')) { ?>
                         lastchecked: u.lastchecked
                     };
                     var tooltip = u.layercount == 0 ? 'data-toggle="tooltip" data-placement="bottom" title="<?php echo $noTooltip; ?>"' : '';
-                    var warning = u.layercount == 0 ? '<img class="button-icon-inverse" src="images/open-iconic/svg/warning.svg" />' : '';
+                    var warning = u.layercount == 0 ? '<img class="button-icon-inverse" src="images/bootstrap-icons/exclamation-triangle-fill.svg" />' : '';
                     var id = u.login.substring(0, 5) == '<?php echo $NONUSER_PREFIX; ?>' ? u.login.substring(5) : u.login;
                     tbody += '<tr><td ' + tooltip + '>' + warning + id +
                         '</td><td>' + (u.fullname == null ? '' : u.fullname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
-                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/open-iconic/svg/check.svg" />' : '') +
+                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />' : '') +
                         <?php } ?> '</td><td>' + u.eventcount + '</td><td>' + u.lastupdated + '</td><td>' + u.lastchecked + '</td><td>' +
                         (u.url == null ? '' : u.url) +
                         '</td><td>' + user_menu(u.login, u.layercount == 0) + '</td></tr>\n';

@@ -26,11 +26,11 @@ function selectUsers() {
 }
 
 function toggleDateRange() {
-  if( document.searchformentry.date_filter.selectedIndex == 3 ) {
-    makeVisible( 'startDate' );
-    makeVisible( 'endDate' );
+  if ($('#date_filter option:selected').index() == 3) {
+    $('#startDate').show();
+    $('#endDate').show();
   } else {
-    makeInvisible( 'startDate');
-    makeInvisible( 'endDate' );
+    $('#startDate').hide();
+    $('#endDate').hide();
   }
 }

@@ -40,7 +40,7 @@ print_header();
 </div>
 
 
-<table class="table table-striped mt-2" id="securityAudit">
+<table class="table table-striped mt-2 table-responsive" id="securityAudit">
   <thead>
     <tr>
       <th scope="col"><?php etranslate('Security Issue'); ?></th>
@@ -256,10 +256,10 @@ function print_issue($description, $isOk, $help)
 {
 
   if ($isOk) {
-    $img = '<img class="button-icon-inverse" src="images/open-iconic/svg/check.svg" />';
+    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />';
     $help = '&nbsp;';
   } else {
-    $img = '<img class="button-icon-inverse" src="images/open-iconic/svg/warning.svg" />';
+    $img = '<img class="button-icon-inverse" src="images/bootstrap-icons/exclamation-triangle-fill.svg" />';
   }
 
   echo '<tr><td>' . $description . '</td>' .

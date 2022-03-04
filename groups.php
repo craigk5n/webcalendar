@@ -19,7 +19,7 @@ if ($is_admin || (access_is_enabled() && access_can_access_function(ACCESS_USER_
 } else {
     do_redirect(empty($STARTVIEW) ? 'month.php' : $STARTVIEW);
 }
-$LOADING = '<center><img src="images/loading_animation.gif" alt="" /></center>';
+$LOADING = '<center><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></center>';
 
 $areYouSure = translate('Are you sure you want to delete this group?');
 $deleteGroupInfo = translate('This action cannot be undone.');

@@ -46,19 +46,19 @@ if ($show_advanced) {
   $INC[] = 'js/visible.js/true';
 }
 
-if ($show_others)
-  $INC[] = 'js/search.js/true';
+$INC[] = 'js/search.js/true';
 
-print_header( $INC );
+print_header($INC, '', 'onload="toggleDateRange();"' );
 ?>
 <h2><?php echo ($show_advanced ? $advSearchStr : $searchStr);?></h2>
 
 <form action="search_handler.php" method="GET" id="searchformentry" name="searchformentry" style="margin-left: 13px;">
+
   <input type="hidden" name="advanced" value="' . $show_advanced . '" />
-  <table class="table">
+  <table class="table table-responsive">
     <tr>
       <td><label for="keywordsadv"><?php etranslate('Keywords');?>:&nbsp;</label></td>
-      <td><input class="form-control" id="querytext" autocomplete="off" type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
+      <td><input class="form-control basicAutoComplete" id="querytext" autocomplete="off" type="text" name="keywords" id="keywordsadv" size="30" />&nbsp;
         <?php etranslate( 'Enter % for all entries' );?></td>
   </tr>
 
@@ -94,8 +94,7 @@ if (count($site_extras) > 0) {
 if ($show_advanced) {
   $startDateYmd = date('Ymd', time() - (90 * 24 * 3600)); // 90 days ago
   $endDateYmd = date('Y-m-d', time() + (90 * 24 * 3600)); // 90 days from now
-  echo '<tr id="datefilter" style="visibility:' . $avdStyle[$show_advanced]
-   . ';">
+  echo '<tr id="datefilter">
           <td><label for="date_filter" class="colon">' . translate('Filter by Date')
    . ':</label></td>
           <td>
@@ -108,14 +107,14 @@ if ($show_advanced) {
             </select>
           </td>
         </tr>
-        <tr id="startDate" style="visibility:hidden">
+        <tr id="startDate">
           <td>&nbsp;&nbsp;<label class="colon">' . translate( 'Start date' )
    . '</label></td>
           <td>'
    . datesel_Print( 'from_', $startDateYmd ) . '
           </td>
         </tr>
-        <tr id="endDate" style="visibility:hidden">
+        <tr id="endDate">
           <td>&nbsp;&nbsp;<label class="colon">' . translate( 'End date' )
    . '</label></td>
           <td>'
@@ -140,12 +139,12 @@ if ($show_others) {
   else
     $size = $cnt;
 
-  echo '
-      <tr id="advlink" style="visibility:' . $avdStyle[!$show_advanced]
-   . ';"><td colspan="2"><a title="' . $advSearchStr
-   . '" href="search.php?adv=1">'
-   . $advSearchStr . '</a></td></tr>
-        <tr  id="adv" style="visibility:' . $avdStyle[$show_advanced]
+  if (! $show_advanced) {
+    echo '<tr id="advlink"><td colspan="2"><a title="' . $advSearchStr
+      . '" href="search.php?adv=1">'
+      . $advSearchStr . '</a></td></tr>';
+  }
+  echo '<tr  id="adv" style="visibility:' . $avdStyle[$show_advanced]
    . ';">
           <td class="aligntop"><label for="usersadv">'
    . translate( 'Users' ) . ':&nbsp;</label></td>
@@ -169,6 +168,7 @@ if ($show_others) {
 }
 echo '</table><input class="btn btn-primary" type="submit" value="' . $searchStr . '" /></form>';
 ?>
+
 <script language="JavaScript">
 // Custom handler since our AJAX query does not match the format expected by
 // the autocomplate handler.
@@ -190,6 +190,7 @@ $('#querytext').autoComplete({
 });
 
 </script>
+
 <?php
-print_trailer ();
+echo print_trailer ();
 ?>

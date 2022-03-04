@@ -20,11 +20,12 @@ if ( $login == '__public__' && ! empty ( $OVERRIDE_PUBLIC ) &&
   $OVERRIDE_PUBLIC == 'Y' ) {
   print_header();
   echo print_not_auth();
-  print_trailer();
+  echo print_trailer();
   exit;
 }
 
 $keywords = getValue ( 'keywords' );
+$origKeywords = str_replace("\\", "", $keywords);
 $advanced = getValue ( 'advanced' );
 
 if ( strlen ( $keywords ) == 0 )
@@ -253,28 +254,24 @@ if ( $matches > 0 ) {
 } else
   echo translate ( 'No matches found' );
 
-echo ": " . htmlentities ( $keywords ) . '</strong></p>';
+echo ": " . htmlentities ($origKeywords, ENT_NOQUOTES) . '</strong></p>';
 
 
 // now sort by number of hits
 if ( empty ( $error ) && empty ( $info ) ) {
   // no mtaches
 } else if ( empty ( $error ) ) {
-  echo '
-    <ul class="list-group list-group-flush">';
+  echo '<ul>';
   foreach ( $info as $result ) {
-    echo '
-      <li class="list-group-item"><a class="nav" href="view_entry.php?id=' . $result['id']
-     . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>';
+    echo '<li class="nav"><a class="nav" href="view_entry.php?id=' . $result['id']
+     . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>' . "\n";
   }
-  echo '
-    </ul>';
+  echo "</ul>\n";
 }
-echo '
-      <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
-        . '"  style="margin-left: 13px;" method="post">
-       ' . print_form_key () . '
-       <br><input class="btn btn-primary" type="submit" value="'
+echo '<form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
+        . '"  style="margin-left: 13px;" method="post">';
+print_form_key ();
+echo '<br><input class="btn btn-primary" type="submit" value="'
         . translate ( 'New Search' ) . '" /></form>
     ' . print_trailer ();
 

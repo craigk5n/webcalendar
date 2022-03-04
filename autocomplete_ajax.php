@@ -6,6 +6,9 @@
  *	(no date range, category, etc.).  This this is a simple search
  *	(not advanced).
  *
+ * Autocomplete URL: https://github.com/xcash/bootstrap-autocomplete
+ * Autocomplete Doc URL: https://bootstrap-autocomplete.readthedocs.io/en/latest/
+ *
  * Must return data in the following format:
  *	{
  *    "error":0,

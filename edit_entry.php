@@ -529,7 +529,7 @@ $eType_label = ' ( ' . translate($eType) . ' )';
 
 ?>
 <h2><?php echo ($id ? translate('Edit Entry') : translate('Add Entry')) . $eType_label; ?>
-  &nbsp;<img src="images/help.gif" alt="<?php etranslate('Help'); ?>" class="help" onclick="window.open('help_edit_entry.php<?php echo empty($id) ? '?add=1' : ''; ?>',
+  &nbsp;<img src="images/bootstrap-icons/question-circle-fill.svg" alt="<?php etranslate('Help'); ?>" class="help" onclick="window.open('help_edit_entry.php<?php echo empty($id) ? '?add=1' : ''; ?>',
   'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
 
 <?php
@@ -728,7 +728,7 @@ $tabI = 0;
           $dur_h = intval($duration / 60); ?>
           <label for="timetype" data-toggle="tooltip" data-placement="top" data-html="true" title="<?php etooltip('time-help', '', true); ?>">
             <?php etranslate('Type'); ?>:</label>
-          <select class="form-control" name="timetype" onchange="timetype_handler()">
+          <select class="form-control" name="timetype" id="timetype" onchange="timetype_handler()">
             <option value="U" <?php echo $allday != 'Y' && $hour == -1 ? $selected : ''; ?>>
               <?php etranslate('Untimed event'); ?></option>
             <option value="T" <?php echo $allday != 'Y' && $hour >= 0 ? $selected : ''; ?>>
@@ -737,15 +737,15 @@ $tabI = 0;
               <?php etranslate('All day event'); ?></option>
           </select>
           <?php if (empty($TZ_notice)) { ?>
-            <span cid="timeentrystart" style="visibility:hidden;">
-              <label for="timeentrystart" data-toggle="tooltip" data-placement="top" title="<?php etooltip('Time entered here is based on your Timezone'); ?>">
+            <span id="timezonenotice" style="visibility:hidden;">
+              <label for="timezonenoticetext" data-toggle="tooltip" data-placement="top" title="<?php etooltip('Time entered here is based on your Timezone'); ?>">
                 <?php etranslate('Timezone Offset'); ?>:</label></span>
           <?php } else { ?>
-            <div><?php echo $TZ_notice; ?></div>
+            <div id="timezonenoticetext"><?php echo $TZ_notice; ?></div>
           <?php } ?>
 
           <div class="form-inline mb-2" id="timeentrystart" style="visibility:hidden;">
-            <label for="timeentrystart" data-toggle="tooltip" data-placement="top" title="<?php etooltip('time-help'); ?>">
+            <label for="entry_hour" data-toggle="tooltip" data-placement="top" title="<?php etooltip('time-help'); ?>">
               <?php etranslate('Time'); ?>:</label>
             <?php echo time_selection('entry_', $cal_time); ?>
           </div>
@@ -1051,9 +1051,7 @@ $tabI = 0;
                   <?php echo $myusers; ?>
                 </select>
                 <input class="btn btn-secondary m-1" name="movelt" type="button" value="<?php etranslate('Remove'); ?>" onclick="selRemove( this );" />
-                <!-- TODO: Fix this...
             <input class="btn btn-secondary m-1" type="button" onclick="showSchedule()" value="<?php etranslate('Availability'); ?>..." />
-            -->
               </fieldset>
             </td>
           </tr>

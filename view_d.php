@@ -65,11 +65,11 @@ echo <<<EOT
     <div class="viewnav">
       <a title="{$previousStr}" class="prev"
         href="view_d.php?id={$id}&amp;date={$prevdate}">
-        <img src="images/leftarrow.gif" class="prev"
+        <img src="images/bootstrap-icons/arrow-left-circle.svg" class="prev"
           alt="{$previousStr}" /></a>
       <a title="{$nextStr}" class="next"
         href="view_d.php?id={$id}&amp;date={$nextdate}">
-        <img src="images/rightarrow.gif" class="next"
+        <img src="images/bootstrap-icons/arrow-right-circle.svg" class="next"
           alt="{$nextStr}" /></a>
       <div class="title">
         <span class="date">{$nowStr}</span><br />
