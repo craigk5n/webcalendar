@@ -84,10 +84,12 @@ if ($action == 'userlist') {
   } else if (!$admin_can_add_user) {
     $error = translate('Unsupported action');
   }
-  if (addslashes($firstname) != $firstname || strip_tags_content($firstname) != $firstname) {
+  $post_firstname = getPostValue('firstname');
+  $post_lastname = getPostValue('lastname');
+  if (addslashes($post_firstname) != $post_firstname || strip_tags_content($post_firstname) != $post_firstname) {
     $error = $invalidFirstName;
   }
-  if (addslashes($lastname) != $lastname || strip_tags_content($lastname) != $lastname) {
+  if (addslashes($post_lastname) != $post_lastname || strip_tags_content($post_lastname) != $post_lastname) {
     $error = $invalidLastName;
   }
   if (empty($error)) {
@@ -369,7 +371,7 @@ exit;
 
 
 function strip_tags_content($text) {
-  return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
+  return strip_tags($text);
 }
 
 // Add/Update a user

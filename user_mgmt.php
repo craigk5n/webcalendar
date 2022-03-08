@@ -94,19 +94,19 @@ print_header(
                     <input type="hidden" name="editUserAdd" id="editUserAdd" value="0" />
                     <div class="form-inline" is="divEditUsername">
                         <label class="col-5" for="editUsername"><?php etranslate('Username') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New username') . ' (' . translate('required') . ')'; ?>" />
+                        <input type="text" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New username') . ' (' . translate('required') . ')'; ?>" MAXLENGTH="25" />
                     </div>
                     <div class="form-inline mt-1" id="div-editFirstname">
                         <label class="col-5 for=" editFirstname"><?php etranslate('First Name') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editFirstname" name="editFirstname" />
+                        <input type="text" class="col-7 form-control" id="editFirstname" name="editFirstname" MAXLENGTH="25" />
                     </div>
                     <div class="form-inline mt-1" id="div-editLastname">
                         <label class="col-5 for=" editLastname"><?php etranslate('Last Name') ?>: </label>
-                        <input type="text" class="col-7 form-control" id="editLastname" name="editLastname" />
+                        <input type="text" class="col-7 form-control" id="editLastname" name="editLastname" MAXLENGTH="25" />
                     </div>
                     <div class="form-inline mt-1" id="div-editEmail">
                         <label class="col-5 for=" editEmail"><?php etranslate('Email') ?>: </label>
-                        <input type="email" class="col-7 form-control" id="editEmail" name="editEmail" />
+                        <input type="email" class="col-7 form-control" id="editEmail" name="editEmail" MAXLENGTH="75" />
                     </div>
                     <div class="form-inline mt-1" id="div-editPassword1">
                         <label class="col-5 for=" editPassword1"><?php etranslate('Password') ?>: </label>
@@ -126,8 +126,8 @@ print_header(
                     </div>
 
                     <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
+                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
+                        <input class="btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
                     </div>
                 </form>
             </div>
@@ -387,9 +387,12 @@ print_header(
         // Only for add
         var password1 = $('#editPassword1').val();
         var password2 = $('#editPassword2').val();
+        var retStatus = 1;
+        var isAdd = 0;
 
         var add = $('#editUserAdd').val();
         if (add == "1") {
+            isAdd = 1;
             if (login.length == 0) {
                 $('#errorMessage').html('<?php echo  $noLoginError; ?>');
                 $('#edit-user-dialog-alert').show();
@@ -446,24 +449,29 @@ print_header(
                         console.log('save_handler response=' + response);
                     } catch (err) {
                         alert('<?php etranslate('Error'); ?>: <?php etranslate('JSON error'); ?> - ' + err);
+                        retStatus = 1;
                         return;
                     }
                     if (response.error) {
                         alert('<?php etranslate('Error'); ?>: ' + response.message);
+                        retStatus = 1;
                         return;
                     }
                     // Close window
                     $('#edit-user-dialog').hide();
                     // Reload layers
                     load_users();
+                    retStatus = 0;
                 },
                 'json').done(function() {
-                if (add) {
-                    $('#infoMessage').html('<?php etranslate('User successfully added.') ?>');
-                } else {
-                    $('#infoMessage').html('<?php etranslate('User successfully updated.') ?>')
+                if (retStatus == 0) {
+                    if (isAdd) {
+                        $('#infoMessage').html('<?php etranslate('User successfully added.') ?>');
+                    } else {
+                        $('#infoMessage').html('<?php etranslate('User successfully updated.') ?>')
+                    }
+                    $('#main-dialog-alert').show();
                 }
-                $('#main-dialog-alert').show();
             })
             .fail(function(jqxhr, settings, ex) {
                 alert('<?php etranslate('Error'); ?>:' + ex);
