@@ -2,7 +2,7 @@
     "name": "k5n/webcalendar",
     "type": "project",
     "description": "Multi-user web-based calendar app",
-    "version": "v1.9.0",
+    "version": "v1.9.1",
     "homepage": "https://www.k5n.us/webcalendar/",
     "authors": [
         {
