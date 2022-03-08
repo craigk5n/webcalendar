@@ -1097,7 +1097,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       else
       if( $forcePassword )
         echo '
-          <form action="index.php" method="post" name="dbpassword">
+          <form action="index.php" method="post" name="dbpassword">' . csrf_form_key () . '
             <table>
               <tr>
                 <th colspan="2" class="header">'
@@ -1393,8 +1393,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       echo '
       <tr>
         <td id="odbc_db" class="aligncenter" nowrap>
-          <form action="index.php?action=set_odbc_db" method="post" ' . csrf_form_key()
-       . 'name="set_odbc_db">' . translate( 'ODBC Underlying Database' ) . '
+          <form action="index.php?action=set_odbc_db" method="post" '
+       . 'name="set_odbc_db">' . csrf_form_key() . translate( 'ODBC Underlying Database' ) . '
             <select class="form-control" name="odbc_db" onchange="document.set_odbc_db.submit();">
               <option value="ibase"'
        . ( $_SESSION['odbc_db'] == 'ibase' ? $selected : '' )
