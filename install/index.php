@@ -405,7 +405,8 @@ if( ! empty( $action ) && $action == 'install' ) {
 
     $_SESSION['blank_database'] = '';
   } //end if $display_sql
-
+  $_SESSION['db_success'] = true;
+  $_SESSION['db_updated'] = true;
 } //end database installation
 
 // Set the value of the underlying database for ODBC connections.
@@ -1640,9 +1641,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
 
 <script>
 $(document).ready(function(){
-  auth_handler();
+  //auth_handler();
 });
 </script>
-</script>
-  </body>
+</body>
 </html>

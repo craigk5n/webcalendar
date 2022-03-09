@@ -1,6 +1,6 @@
 <?php
 //Program Version for this release
-$PROGRAM_VERSION = 'v1.3.0';
+$PROGRAM_VERSION = 'v1.9.1';
 
 //array element[0] = sql insertion testy
 //array element[1] = sql delete to clean up
@@ -72,13 +72,18 @@ $database_upgrade_matrix = [
   ['INSERT INTO webcal_categories ( cat_id, cat_name, cat_color ) VALUES ( "999", "zzz", "#FFFFFF" )',
    'DELETE FROM webcal_categories WHERE cat_id = 999',
    'v1.1.1', 'upgrade_v1.1.2'],
-// Craig. These two tests are identical. Do we really need both?
   ['INSERT INTO webcal_timezones ( tzid ) VALUES ( "zzz" )',
    'DELETE FROM webcal_timezones WHERE tzid = "zzz"',
    'v1.1.2', 'upgrade_v1.1.3'],
-  ['INSERT INTO webcal_timezones ( tzid ) VALUES ( "zzz" )',
-   'DELETE FROM webcal_timezones WHERE tzid = "zzz"',
-   'v1.1.3', 'upgrade_v1.2.8'],
+  // This one is different because it is an index that was added.
+  // Upgrade from 1.1.3 -> 1.3.0
+  ['DROP INDEX webcal_entry_categories ON webcal_entry_categories',
+   'CREATE INDEX webcal_entry_categories ON webcal_entry_categories(cat_id)',
+   'v1.1.3', 'upgrade_v1.3.0'],
+  // Upgrade from 1.3.0 -> 1.9.0
+  ['INSERT INTO webcal_import (cal_import_id, cal_md5, cal_date, cal_type) VALUES (999999, "XXX", 1, "X")',
+   'DELETE FROM webcal_import WHERE cal_import_id = 999999',
+   'v1.3.0', 'upgrade_v1.9.0'],
 //don't change this array element
   ['','', $PROGRAM_VERSION, '']
 ];

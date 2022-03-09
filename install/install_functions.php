@@ -346,16 +346,20 @@ function get_installed_version ( $postinstall = false ) {
   // This data is read from file upgrade_matrix.php.
   for ( $i = 0, $dbCntStr = count ( $database_upgrade_matrix ); $i < $dbCntStr; $i++ ) {
     $sql = $database_upgrade_matrix[$i][0];
+    //echo "SQL: $sql <br>\n";
 
     if ( $sql != '' )
       $res = dbi_execute ( $sql, [], false, $show_all_errors );
     if ( $res ) {
+      //echo "Success on " . $database_upgrade_matrix[$i][2] . "<br>";
       $_SESSION['old_program_version'] = $database_upgrade_matrix[$i + 1][2];
       $_SESSION['install_file'] = $database_upgrade_matrix[$i + 1][3];
       $res = '';
       $sql = $database_upgrade_matrix[$i][1];
       if ( $sql != '' )
         dbi_execute ( $sql, [], false, $show_all_errors );
+    } else {
+      //echo "Failure on " . $database_upgrade_matrix[$i][2] . "<br>";
     }
   }
   $response_msg = ( $_SESSION['old_program_version'] == 'pre-v0.9.07'
