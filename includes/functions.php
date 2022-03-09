@@ -857,12 +857,10 @@ function date_to_str ( $indate, $format = '', $show_weekday = true,
     $indate = date ( 'Ymd' );
 
   // If they have not set a preference yet...
-  if ( $DATE_FORMAT == '' || $DATE_FORMAT == 'LANGUAGE_DEFINED' )
+  if ( $DATE_FORMAT === '' || $DATE_FORMAT === 'LANGUAGE_DEFINED' )
     $DATE_FORMAT = translate ( '__month__ __dd__, __yyyy__' );
-  else if ( $DATE_FORMAT == 'LANGUAGE_DEFINED' &&
-    $forceTranslate && $format != '' && translation_exists ( $format ) ) {
+  elseif ( $forceTranslate && $format !== '' && translation_exists ( $format ) )
     $format = translate ( $format );
-  }
 
   if ( empty ( $format ) )
     $format = $DATE_FORMAT;
