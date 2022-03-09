@@ -128,9 +128,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
   $js_ar = array();
 
   $ret = send_doctype( $appStr );
-// Use "normalize.css" to set all browsers, especially IE, to the same baseline.
 // Use "punctuation.css" to start getting punctuation out of the code to where the translators can get at it.
-  //  <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css" rel="stylesheet">
   //  <link href="' . $incdir . '/css/punctuation.css" rel="stylesheet">';
 
   // Prevent click-jacking by including a "frame-breaker" script in each page that should not be framed.
