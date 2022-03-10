@@ -7,7 +7,7 @@ $webcalendar_csscache = 1;
 if ( isset ( $_COOKIE['webcalendar_csscache'] ) )
   $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
 
-SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
+sendCookie ( 'webcalendar_csscache', $webcalendar_csscache );
 
 $catStr = $color_sets = $currenttab = $datestyle_md = $datestyle_my = '';
 $datestyle_tk = $datestyle_ymd = $lang_list = $menu_theme_list = '';

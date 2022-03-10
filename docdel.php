@@ -16,7 +16,7 @@
  *  TODO: perhaps add email notification on this
  */
 include_once 'includes/init.php';
-include_once 'includes/classes/Doc.class';
+include_once 'includes/classes/Doc.php';
 
 $blid = getValue ( 'blid', '-?[0-9]+', true );
 $can_delete = false; // until proven otherwise

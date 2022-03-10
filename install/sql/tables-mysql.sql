@@ -469,10 +469,14 @@ CREATE TABLE webcal_import (
   cal_name VARCHAR(50) NULL,
   /* date of import (YYYYMMDD format) */
   cal_date INT NOT NULL,
+  /* date of last check to see if remote calendar updated (YYYYMMDD format) */
+  cal_check_date INT NULL,
   /* type of import (ical, vcal, palm, outlookcsv) */
   cal_type VARCHAR(10) NOT NULL,
   /* user who performed the import */
   cal_login VARCHAR(25) NULL,
+  /* md5 of last import used to see if a new import changes anything */
+  cal_md5 VARCHAR(32) NULL DEFAULT NULL,
   PRIMARY KEY ( cal_import_id )
 );
 

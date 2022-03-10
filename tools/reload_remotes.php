@@ -38,18 +38,18 @@
 // you would need to change __WC_INCLUDEDIR to point to the
 // webcalendar include directory.
 
-define( '__WC_BASEDIR', '../' ); // Points to the base WebCalendar directory
+define('__WC_BASEDIR', '../'); // Points to the base WebCalendar directory
 // relative to current working directory.
-define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
-define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
-$old_path = ini_get ( 'include_path' );
-$delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
-ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
+define('__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/');
+define('__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/');
+$old_path = ini_get('include_path');
+$delim = (strstr($old_path, ';') ? ';' : ':');
+ini_set('include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim);
 
 include_once __WC_INCLUDEDIR . 'translate.php';
-require_once __WC_CLASSDIR . 'WebCalendar.class';
+require_once __WC_CLASSDIR . 'WebCalendar.php';
 
-$WebCalendar = new WebCalendar( __FILE__ );
+$WebCalendar = new WebCalendar(__FILE__);
 
 include __WC_INCLUDEDIR . 'config.php';
 include __WC_INCLUDEDIR . 'dbi4php.php';
@@ -68,124 +68,69 @@ require_once __WC_CLASSDIR . 'hKit/hkit.class.php';
 $debug = false; // Set to true to print debug info...
 
 // Establish a database connection.
-$c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
-if ( ! $c ) {
-  echo translate ( 'Error connecting to database' ) . ': ' . dbi_error();
+$c = dbi_connect($db_host, $db_login, $db_password, $db_database, true);
+if (!$c) {
+  echo translate('Error connecting to database') . ': ' . dbi_error();
   exit;
 }
 
 load_global_settings();
 $WebCalendar->setLanguage();
 
-if ( $debug )
-  echo "<br />\n" . translate ( 'Include Path' )
-   . ' =' . ini_get ( 'include_path' ) . "<br />\n";
+if ($debug)
+  echo "<br />\n" . translate('Include Path')
+    . ' =' . ini_get('include_path') . "<br />\n";
 
-if ( $REMOTES_ENABLED == 'Y' ) {
-  $res = dbi_execute ( 'SELECT cal_login, cal_url, cal_admin
-    FROM webcal_nonuser_cals WHERE cal_url IS NOT NULL' );
+if ($REMOTES_ENABLED == 'Y') {
+  $res = dbi_execute('SELECT cal_login, cal_url, cal_admin ' .
+    'FROM webcal_nonuser_cals WHERE cal_url IS NOT NULL');
   $cnt = 0;
-  if ( $res ) {
-    while ( $row = dbi_fetch_row ( $res ) ) {
+  if ($res) {
+    while ($row = dbi_fetch_row($res)) {
       $data = [];
       $cnt++;
       $calUser = $row[0];
       $cal_url = $row[1];
       $login = $row[2];
-      $overwrite = true;
       $type = 'remoteics';
-      $data = parse_ical ( $cal_url, $type );
-      // TODO it may be a vcs file
-      // if ( count ( $data ) == 0 ) {
-      // $data = parse_vcal ( $cal_url );
-      // }
+      if ($debug) echo "Checking calendar: $cal_url\n";
+      // TODO: Handle hcal data.  Is that still used by anyeone???
+/*
+      $data = parse_ical($cal_url, $type);
       // we may be processing an hCalendar
-      if ( count ( $data ) == 0 && function_exists ( 'simplexml_load_string' ) ) {
+      if (empty($data) == 0 && function_exists('simplexml_load_string')) {
+        if ($debug) echo "  No data found.  Trying hcal...\n";
         $h = new hKit;
         $h->tidy_mode = 'proxy';
-        $result = $h->getByURL ( 'hcal', $cal_url );
+        $result = $h->getByURL('hcal', $cal_url);
         $type = 'hcal';
-        $data = parse_hcal ( $result, $type );
+        $data = parse_hcal($result, $type);
       }
-      if ( count ( $data ) && empty ( $errormsg ) ) {
-        // delete existing events
-        if ( $debug )
-          echo "<br />\n" . translate ( 'Deleting events for' )
-           . ": $calUser<br />\n";
-        delete_events ( $calUser );
-        // import new events
-        if ( $debug )
-          echo translate ( 'Importing events for' ) . ": $calUser<br />\n"
-           . translate ( 'From' ) . ": $cal_url<br />\n";
-        import_data ( $data, $overwrite, $type );
-        if ( $debug )
-          echo translate ( 'Events successfully imported' )
-           . ": $count_suc<br /><br />\n";
-      } else { // we didn't receive any data and/or there was an error
-        if ( ! empty ( $errormsg ) )
-          echo $errormsg . "<br />\n";
-
-        if ( count ( $data ) == 0 )
-          echo "<br />\n" . translate ( 'No data returned from' )
-           . ":  $cal_url<br />\n" . translate ( 'for non-user calendar' )
-           . ":  $calUser<br />\n";
+*/
+      if (empty($errormsg) && !empty($cal_url)) {
+        if ($debug) {
+          echo "Loading calendar \"$calUser\" from URL: $cal_url\n";
+        }
+        $arr = load_remote_calendar($calUser, $cal_url);
+        if (empty($arr[0])) {
+          // Success (or not updated)
+          if (!empty($arr[3])) {
+            $message = $arr[3];
+          } else {
+            $message = $arr[1] . ' ' . translate('events added') . ', ' . $arr[2] . ' ' . translate('events deleted');
+          }
+        } else {
+          // Error
+          $error = $arr[3];
+        }
       }
     }
-    dbi_free_result ( $res );
+    dbi_free_result($res);
   }
-  if ( $cnt == 0 )
-    echo "<br />\n" . translate ( 'No Remote Calendars found' );
-} else
-  echo "<br />\n" . translate ( 'Remote Calendars not enabled' );
-// just in case
-$login = '';
-/**
- * delete_events (needs description)
- */
-function delete_events ( $nid ) {
-  // Get event ids for all events this user is a participant
-  $events = get_users_event_ids ( $nid );
-
-  // Now count number of participants in each event...
-  // If just 1, then save id to be deleted
-  $delete_em = [];
-  for ( $i = 0, $cnt = count ( $events ); $i < $cnt; $i++ ) {
-    $res = dbi_execute ( 'SELECT COUNT( * ) FROM webcal_entry_user
-  WHERE cal_id = ?', [$events[$i]] );
-    if ( $res ) {
-      if ( $row = dbi_fetch_row ( $res ) ) {
-        if ( $row[0] == 1 )
-          $delete_em[] = $events[$i];
-      }
-      dbi_free_result ( $res );
-    }
-  }
-  // Now delete events that were just for this user
-  for ( $i = 0, $cnt = count ( $delete_em ); $i < $cnt; $i++ ) {
-    dbi_execute ( 'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
-      [$delete_em[$i]] );
-    dbi_execute ( 'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
-      [$delete_em[$i]] );
-    dbi_execute ( 'DELETE FROM webcal_entry_categories WHERE cal_id = ?',
-      [$delete_em[$i]] );
-    dbi_execute ( 'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
-      [$delete_em[$i]] );
-    dbi_execute ( 'DELETE FROM webcal_import_data WHERE cal_id = ?',
-      [$delete_em[$i]] );
-    dbi_execute ( 'DELETE FROM webcal_site_extras WHERE cal_id = ?',
-      [$delete_em[$i]] );
-    dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
-      [$delete_em[$i]] );
-    dbi_execute ( 'DELETE FROM webcal_reminders WHERE cal_id =? ',
-      [$delete_em[$i]] );
-    dbi_execute ( 'DELETE FROM webcal_blob WHERE cal_id = ?',
-      [$delete_em[$i]] );
-    dbi_execute ( 'DELETE FROM webcal_entry WHERE cal_id = ?',
-      [$delete_em[$i]] );
-  }
-  // Delete user participation from events
-  dbi_execute ( 'DELETE FROM webcal_entry_user WHERE cal_login = ?',
-    [$nid] );
+  if ($cnt == 0)
+    echo "<br />\n" . translate('No Remote Calendars found');
+} else {
+  echo "<br />\n" . translate('Remote Calendars not enabled');
 }
 
 ?>

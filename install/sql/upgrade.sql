@@ -607,5 +607,10 @@ ALTER TABLE webcal_view MODIFY cal_view_id int UNSIGNED NOT NULL AUTO_INCREMENT 
 ALTER TABLE webcal_view_user ENGINE MyISAM CHARACTER SET utf8 COMMENT '<a name="webcal_view_user">''</a>Specify users in a view.';
 ALTER TABLE webcal_view_user MODIFY cal_login varchar(25) NOT NULL COMMENT 'A user in the view. From <a href="#webcal_user">webcal_user</a> table.';
 ALTER TABLE webcal_view_user MODIFY cal_view_id int UNSIGNED NOT NULL COMMENT 'view id from <a href="#webcal_view">webcal_view</a> table.' FIRST;
-/*upgrade_v1.3.1*/
+/*upgrade_v1.9.0*/
+ALTER TABLE webcal_import ADD cal_check_date INT NULL;
+ALTER TABLE webcal_import ADD cal_md5 VARCHAR(32) NULL DEFAULT NULL;
+CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
+CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
+/*upgrade_v1.9.1*/

@@ -21,9 +21,9 @@ function ws_init() {
   define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 
   include_once __WC_INCLUDEDIR . 'translate.php';
-  require_once __WC_CLASSDIR . 'WebCalendar.class';
-  require_once __WC_CLASSDIR . 'Event.class';
-  require_once __WC_CLASSDIR . 'RptEvent.class';
+  require_once __WC_CLASSDIR . 'WebCalendar.php';
+  require_once __WC_CLASSDIR . 'Event.php';
+  require_once __WC_CLASSDIR . 'RptEvent.php';
 
   $WebCalendar = new WebCalendar( __FILE__ );
 

@@ -14,6 +14,7 @@ if ( empty ( $HTTP_USER_AGENT ) )
     <p>' .
   translate ( 'Please include all the information below when reporting a bug.' )
    . ( $LANGUAGE != 'English-US' ? ' '
+// translate ( 'Also, please use English rather than' )
      . str_replace ('XXX', translate ( get_browser_language ( true ) ),
      translate ( 'Also, please use English rather than XXX.' ) ) : '' ) . '</p>
     <form action="https://github.com/craigk5n/webcalendar/issues" target="_new">

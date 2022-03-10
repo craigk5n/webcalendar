@@ -113,12 +113,14 @@ $saveStr = translate ( 'Save' );
 
 print_header ( array ( 'js/set_entry_cat.php/true' ) );
 
+$formKey = csrf_form_key();
 if ( ! empty ( $error ) )
   echo print_error ( $error );
 else {
   echo <<<EOT
     <h2>{$setCatStr}</h2>
     <form action="set_entry_cat.php" method="post" name="selectcategory">
+      ${formKey}
       <input type="hidden" name="date" value="{$date}" />
       <input type="hidden" name="id" value="{$id}" />
       <table cellpadding="5">

@@ -28,8 +28,9 @@ echo '    <div id="creds">' . ( empty( $credits ) ? '
       <br />
       <p>' . translate( 'WebCalendar is a PHP application used...' ) . '</p>' : '' ) . '
     </div>
-    <form action="about.php" name="aboutform" id="aboutform" method="post">
-      <input type="submit" name="' . ( empty( $credits )
+    <form action="about.php" name="aboutform" id="aboutform" method="post">';
+print_form_key();
+echo '<input type="submit" name="' . ( empty( $credits )
   ? 'Credits" value="' . translate( 'Credits' )
   : 'About" value="' . translate( 'About' ) ) . '" />
       <input type="button" id="ok" name="ok" value="' . translate( 'OK' )

@@ -14,7 +14,7 @@ print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
   '<script type="text/javascript" src="includes/js/assistant_edit.js"></script>' );
 echo '
     <form action="assistant_edit_handler.php" method="post" '
- . 'name="assistanteditform">' . ( $user ? '
+ . 'name="assistanteditform">' . csrf_form_key() . ( $user ? '
       <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
       <h2>';
 
@@ -27,12 +27,9 @@ if ( $is_nonuser_admin ) {
   echo translate ( 'Your assistants' );
 
 echo '</h2>
-      ' . display_admin_link() . '
-      <table>
-        <tr>
-          <td class="aligntop colon"><label for="users">' . $assistStr . '</label></td>
-          <td>
-            <select name="users[]" id="users" size="10" multiple="multiple">';
+      ' . display_admin_link() . '</h2>';
+
+echo '<div class="form-inline col-4"><select class="custom-select" name="users[]" id="users" size="10" multiple="multiple">';
 
 // Get list of all users.
 $users = get_my_users();
@@ -57,19 +54,20 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
    . $users[$i]['cal_fullname'] . '</option>';
 }
 
-echo '
-            </select>' . ( $GROUPS_ENABLED == 'Y' ? '
-            <input type="button" onclick="selectUsers()" value="'
-   . translate ( 'Select' ) . '..." />' : '' ) . '
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" class="aligncenter"><br /><input type="submit" '
- . 'name="action" value="' . translate ( 'Save' ) . '" />
-          </td>
-        </tr>
-      </table>
-    </form>
-    ' . print_trailer ();
+echo "</select>\n";
+
+if ( $GROUPS_ENABLED == 'Y' ) {
+  echo '<input class="btn btn-primary" type="button" onclick="selectUsers()" value="'
+   . translate ( 'Select' ) . '..." />';
+}
+ echo "</div>\n";
 
 ?>
+<div class="form-inline col-4 pt-2">
+<input class="btn btn-primary" type="submit" name="action" value="<?php etranslate ( 'Save' );?>" />
+</div>
+
+</form>
+
+<?php echo print_trailer (); ?>
+

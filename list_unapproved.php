@@ -60,7 +60,7 @@ function list_unapproved ( $user ) {
   user_load_variables ( $user, 'temp_' );
 
   $rssLink = '<a href="rss_unapproved.php?user=' .
-    htmlspecialchars ( $user ) . '"><img src="images/rss.png" width="14" height="14" alt="RSS 2.0 - ' .
+    htmlspecialchars ( $user ) . '"><img class="button-icon-inverse" src="images/bootstrap-icons/rss-fill.svg" alt="RSS 2.0 - ' .
     htmlspecialchars ( $temp_fullname ) . '" /></a>';
 
   $count = 0;
@@ -127,16 +127,16 @@ function list_unapproved ( $user ) {
        . '" href="' . $view_link . '.php?id=' . $id . '&amp;user=' . $cal_user
        . '">' . htmlspecialchars ( $name ) . '</a> (' . $eventdate . '):</td>'
       /* approve */ . '
-        <td class="aligncenter"><input type="image" src="images/check.gif" title="'
+        <td class="aligncenter"><input type="image" src="images/bootstrap-icons/check-circle.svg" title="'
        . $appConStr . '" onclick="return do_confirm( \'approve\', \''
        . $cal_user . '\', \'' . $entryID . '\' );" /></td>'
       /* reject */ . '
-        <td class="aligncenter"><input type="image" src="images/rejected.gif" title="'
+        <td class="aligncenter"><input type="image" src="images/bootstrap-icons/dash-circle.svg" title="'
        . $rejectStr . '" onclick="return do_confirm( \'reject\', \''
        . $cal_user . '\', \'' . $entryID . '\' );" /></td>'
       /* delete */
        . ( ! access_is_enabled() || access_user_calendar ( 'edit', $user ) ? '
-        <td class="aligncenter"><input type="image" src="images/delete.png" title="'
+        <td class="aligncenter"><input type="image" src="images/bootstrap-icons/trash.svg" title="'
          . $deleteStr . '" onclick="return do_confirm( \'delete\', \''
          . $cal_user . '\', \'' . $entryID . '\' );\" /></td>' : '' ) . '
       </tr>';
@@ -149,15 +149,15 @@ function list_unapproved ( $user ) {
       $ret .= '
       <tr>
         <td colspan="5" nowrap="nowrap">&nbsp;
-          <img src="images/select.gif" alt="" />
+          <img src="images/bootstrap-icons/arrow-90deg-up.svg" alt="" />
           <label><a title="' . $checkAllStr . '" onclick="check_all( \''
        . $user . '\' );">' . $checkAllStr . '</a> / <a title="' . $uncheckAllStr
        . '" onclick="uncheck_all( \'' . $user . '\' );">' . $uncheckAllStr
        . '</a></label>&nbsp;&nbsp;&nbsp;
-          <input type="image" src="images/check.gif" title="' . $appSelStr
+          <input type="image" src="images/bootstrap-icons/check-circle.svg" title="' . $appSelStr
        . '" onclick="return do_confirm( \'approveSelected\', \'' . $cal_user
        . '\' );" />&nbsp;&nbsp;&nbsp;
-          <input type="image" src="images/rejected.gif" title="' . $rejectSelStr
+          <input type="image" src="images/bootstrap-icons/dash-circle.svg" title="' . $rejectSelStr
        . '" onclick="return do_confirm( \'rejectSelected\', \'' . $cal_user
        . '\' );" />&nbsp;&nbsp;&nbsp;( ' . $emailStr . ' )
         </td>
@@ -176,8 +176,7 @@ function list_unapproved ( $user ) {
 } //end list_unapproved()
 print_header( array( 'js/popups.js/true' ), generate_refresh_meta() );
 
-echo '
-    <h2>' . translate ( 'Unapproved Entries' ) . '</h2>';
+echo '<h2>' . translate ( 'Unapproved Entries' ) . '</h2>';
 
 $app_user_hash = $app_users = $my_non_users = [];
 $non_users = get_nonuser_cals();
@@ -233,6 +232,7 @@ if ( ( $is_assistant || $is_nonuser_admin || $is_admin ||
 echo '
     <form action="list_unapproved.php" name="listunapproved" method="post">
       <table>';
+print_form_key();
 
 for ( $i = 0, $cnt = count ( $app_users ); $i < $cnt; $i++ ) {
   // List unapproved entries for this user.

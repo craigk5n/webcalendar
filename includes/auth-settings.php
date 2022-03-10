@@ -117,20 +117,5 @@ case 'user-app-joomla.php':	// Scheme: Joomla. User must be logged in.
 	// Groups in core_acl_aro_groups table.
 	$app_admin_gid = ['24','25'];
 	break;
-
-case 'user-app-postnuke.php':	// Scheme: PostNuke. User must be logged in.
-	// Location of postnuke config.php file (with trailing slash).
-	$app_path = '/usr/local/www/data/postnuke/';
-
-	// URL to postnuke (with trailing slash).
-	$app_url = 'http://'.$_SERVER['SERVER_NAME'].'/postnuke/';
-
-	// Table Prefix.
-	$pn_table_prefix = 'pn_';
-
-	// Set the group id of the postnuke group you want to be webcal admins.
-	// Default is set to the postnuke 'Admins' group.
-	$pn_admin_gid = '2';
-	break;
 }
 ?>

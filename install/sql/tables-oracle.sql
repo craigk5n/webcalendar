@@ -174,12 +174,16 @@ CREATE TABLE webcal_nonuser_cals (
 );
 CREATE TABLE webcal_import (
   cal_import_id INT NOT NULL,
-  cal_date INT NOT NULL,
-  cal_login VARCHAR2(25) NULL,
   cal_name VARCHAR2(50) NULL,
+  cal_date INT NOT NULL,
+  cal_check_date INT NULL,
   cal_type VARCHAR2(10) NOT NULL,
+  cal_login VARCHAR2(25) NULL,
+  cal_md5 VARCHAR(32) NULL DEFAULT NULL,
   PRIMARY KEY ( cal_import_id )
 );
+CREATE INDEX webcal_import_data_type ON webcal_import_data(cal_import_type);
+CREATE INDEX webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
 CREATE TABLE webcal_import_data (
   cal_id INT NOT NULL,
   cal_login VARCHAR2(25) NOT NULL,
