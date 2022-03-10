@@ -57,7 +57,21 @@ function unhtmlentities ( $string ) {
 function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
   global $can_save, $new_install, $translations;
 
-  $fp = fopen ( $in_file, 'r', false );
+  // Prevent directory traversal attack CWE-23
+  // No ../ are allowed and something has to be requested
+  if ((strpos($in_file, '../') !== false))
+    die_miserable_death('Invalid Request');
+  if (strpos($in_file, "translations/") != 0)
+    die_miserable_death('Invalid Request');
+  $basename = basename($in_file);
+  // Now let's see if the file really exists
+  $path_to_folder = dirname(__FILE__) . '/../translations/';
+  $files_in_folder = @scandir($path_to_folder);
+  if (!in_array($basename, $files_in_folder)) {
+    die_miserable_death('Invalid Request');
+  }
+
+  $fp = fopen ( "translations/" . $basename, 'r', false );
   if ( ! $fp )
     die_miserable_death ( 'Could not open language file: ' . $in_file );
 
@@ -402,8 +416,7 @@ function tooltip( $str, $decode = '', $allowHtml=false ) {
   if(!$allowHtml) {
     $ret = preg_replace( '/<[^>]+>/', '', $ret );
   }
-  $ret =  preg_replace( '/"/', "&quot;", $ret );
-  return $ret;
+  return htmlspecialchars($ret);
 }
 
 /**
