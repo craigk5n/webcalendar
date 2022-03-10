@@ -15,7 +15,7 @@
     "require": {
         "phpmailer/phpmailer": "^6.5",
         "components/jquery": "3.6.*",
-        "twbs/bootstrap": "4.*",
+        "twbs/bootstrap": "5.*",
         "twbs/bootstrap-icons": "1.8.1"
     },
     "license": "GPL-2.0-only"
