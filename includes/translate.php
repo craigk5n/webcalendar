@@ -58,11 +58,6 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
   global $can_save, $new_install, $translations;
 
   // Prevent directory traversal attack CWE-23
-  // No ../ are allowed and something has to be requested
-  if ((strpos($in_file, '../') !== false))
-    die_miserable_death('Invalid Request');
-  if (strpos($in_file, "translations/") != 0)
-    die_miserable_death('Invalid Request');
   $basename = basename($in_file);
   // Now let's see if the file really exists
   $path_to_folder = dirname(__FILE__) . '/../translations/';
@@ -71,9 +66,10 @@ function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
     die_miserable_death('Invalid Request');
   }
 
-  $fp = fopen ( "translations/" . $basename, 'r', false );
+  $f = dirname(__FILE__) . "/../translations/" . $basename;
+  $fp = fopen ($f, 'r', false);
   if ( ! $fp )
-    die_miserable_death ( 'Could not open language file: ' . $in_file );
+    die_miserable_death ( 'Could not open language file: ' . $f );
 
   $inInstallTrans = false;
   $installationTranslations = [];
