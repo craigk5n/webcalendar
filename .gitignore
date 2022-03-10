@@ -1,5 +1,10 @@
+.DS_Store
 .htaccess
+*.orig
+*.save
+*.sha
 includes/htmlarea
 includes/settings.php
-.DS_Store
 mysql-data
+node_modules
+vendor
