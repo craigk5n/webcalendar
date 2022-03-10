@@ -6448,6 +6448,8 @@ function rgb2html($r, $g=-1, $b=-1)
   * would delete an event in webcalendar to the admin.  If the admin user
   * clicks on that link we don't want to actually delete the event.
   */
+  // TODO: This function might not be needed anymore with the addition
+  // of the CSRF tokens in all POST forms (new in WebCalendar 1.9.0).
 function require_valid_referring_url ()
 {
   global $SERVER_URL, $settings;
@@ -6466,12 +6468,14 @@ function require_valid_referring_url ()
     // Unfortunately, some version of MSIE do not send this info.
     return;
   }
-  if ( ! preg_match ( "@$SERVER_URL@", $_SERVER['HTTP_REFERER'] ) ) {
+  if (strpos($SERVER_URL, $_SERVER['HTTP_REFERER']) != 0) {
     // Gotcha.  URL of referring page is not the same as our server.
     // This can be an instance of XSRF.
     // (This may also happen when more than address is used for your server.
     // However, you're not supposed to do that with this version of
     // WebCalendar anyhow...)
+    // You can disable this check by adding the following in your includes/settings.php file:
+    //   disable_referer_check: true
     die_miserable_death ( translate ( 'Invalid referring URL' ) );
   }
 }
