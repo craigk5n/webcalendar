@@ -252,7 +252,8 @@ echo send_doctype($appStr);
 
 echo $ASSETS;
 
-<script>
+echo "<script>\n";
+?>
   var validform = false, xlate = [];
   xlate['inputPassword'] = '<?php etranslate('You have not entered a password.', true);?>';
   xlate['noBlankUsername'] = '<?php etranslate('Username cannot be blank.', true);?>';
