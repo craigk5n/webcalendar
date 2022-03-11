@@ -8,14 +8,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - uses: php-actions/composer@v5
-
+      - name: Install dependencies
+        run: composer install
       - name: PHPUnit Tests
-        uses: php-actions/phpunit@v2
-        env:
-          TEST_NAME: Test Functions
-        with:
-          bootstrap: vendor/autoload.php
-          configuration: test/phpunit.xml
-          args: --coverage-text
+        run: vendor/bin/phpunit -c tests/phpunit.xml
