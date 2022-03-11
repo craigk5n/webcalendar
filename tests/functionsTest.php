@@ -3,6 +3,8 @@
 
 use PHPUnit\Framework\TestCase;
 
+include "../includes/functions.php";
+
 
 /**
  * Unit tests for includes/functions.php
@@ -25,6 +27,8 @@ final class FunctionsTest extends TestCase
   }
 
   public function test_add_dstfree_time() {
+    // Pick a timezone that observes DST
+    date_default_timezone_set ( "America/New_York" );
     // 03/09/2019 @ 12:00pm (UTC) = day before DST starts
     // adding 1 day should be 23 hours diff
     $time = 1552132800;
@@ -155,6 +159,37 @@ final class FunctionsTest extends TestCase
     $this->assertEquals ( 46, calc_time_slot ( '230000', false ) );
     $this->assertEquals ( 47, calc_time_slot ( '235900', false ) );
     $this->assertEquals ( 47, calc_time_slot ( '240000', true ) );
+  }
+
+  function test_encode_decode() {
+    global $offsets;
+
+    // The offsets are Normally calculated in WebCalendar.class.php based on install password
+    $offsets = [1, 34, 240, 101];
+    $STR1 = "How now brown cow";
+    $this->assertEquals($STR1, decode_string(encode_string($STR1)));
+  }
+
+  function test_html2rgb() {
+    $rgb = html2rgb('#ffffff');
+    $this->assertEquals (255, $rgb[0]);
+    $this->assertEquals (255, $rgb[1]);
+    $this->assertEquals (255, $rgb[2]);
+    $rgb = html2rgb('#000000');
+    $this->assertEquals (0, $rgb[0]);
+    $this->assertEquals (0, $rgb[1]);
+    $this->assertEquals (0, $rgb[2]);
+    $rgb = html2rgb('#c0c0c0');
+    $this->assertEquals (192, $rgb[0]);
+    $this->assertEquals (192, $rgb[1]);
+    $this->assertEquals (192, $rgb[2]);
+  }
+
+  function test_rgb2html() {
+    $this->assertEquals ('#ffffff', rgb2html (255, 255, 255));
+    $this->assertEquals ('#000000', rgb2html (0, 0, 0));
+    $this->assertEquals ('#c0c0c0', rgb2html (192, 192, 192));
+    $this->assertEquals ('#ff0000', rgb2html (255, 0, 0));
   }
   
 

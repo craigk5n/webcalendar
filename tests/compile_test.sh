@@ -3,7 +3,7 @@
 # Make sure all PHP files compile successfully.
 
 # Get list of *.php files
-allfiles=`find .. -name "*.php" -print`
+allfiles=`find ../* -name "*.php" -print | grep -v vendor`
 
 tmp=/tmp/phpcompiletest.$$
 
