@@ -158,8 +158,7 @@ ul a {
   color: #000;
   margin: 20px;
 }
-#cat,
-#day dl.desc, {
+#cat, #day dl.desc {
   display:none;
 }
 td.weekcell {
