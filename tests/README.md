@@ -14,9 +14,12 @@ from the top-level WebCalendar directory (not this directory):
     composer update
     ./vendor/bin/phpunit --version
 
-Example usage for a single unit test file in this directory:
+Example usage for a single unit test file started in the toplevel WebCalendar directory:
 
-    ../vendor/bin/phpunit functionsTest.php
+    ./vendor/bin/phpunit functionsTest.php
 
+Example to run all discovered tests:
+
+    ./vendor/bin/phpunit -c tests/phpunit.xml
 
 
