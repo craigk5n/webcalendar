@@ -3,6 +3,7 @@
 *.orig
 *.save
 *.sha
+build
 includes/htmlarea
 includes/settings.php
 mysql-data
