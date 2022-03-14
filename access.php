@@ -31,7 +31,7 @@ $dbErrStr = translate( 'Database error XXX.' );
 $defConfigStr = translate( 'DEFAULT CONFIGURATION' );
 $goStr = '
       </select>
-      <input type="submit" value="' . translate( 'Go' ) . '" />
+      <input class="btn btn-primary" type="submit" value="' . translate( 'Go' ) . '" />
     </form>';
 $saveStr = translate( 'Save' );
 $undoStr = translate( 'Undo' );
@@ -175,7 +175,7 @@ if( $is_admin ) {
     ' . display_admin_link( false ) . '
     <form action="access.php" method="post" name="SelectUser">';
   print_form_key();
-  echo '<select name="guser" onchange="document.SelectUser.submit()">'
+  echo '<select class="form-control-sm" name="guser" onchange="document.SelectUser.submit()">'
   // Add a DEFAULT CONFIGURATION to be used as a mask.
   . '
         <option value="__default__"'
@@ -260,8 +260,8 @@ if( ! empty( $guser ) || ! $is_admin ) {
           </tr>
         </tbody>
       </table>
-      <input type="submit" value="' . $undoStr . '" />
-      <input type="submit" name="submit" value="' . $saveStr . '" />
+      <input class="btn btn-secondary" type="submit" value="' . $undoStr . '" />
+      <input class="btn btn-primary" type="submit" name="submit" value="' . $saveStr . '" />
     </form>';
 
     $pagetitle = translate( 'Allow Access to Other Users Calendar' );
@@ -286,7 +286,7 @@ if( ! empty( $guser ) || ! $is_admin ) {
     print_form_key();
     echo '
       <input type="hidden" name="guser" value="' . $guser . '" />
-      <select name="otheruser" onchange="document.SelectOther.submit()">'
+      <select class="form-control" name="otheruser" onchange="document.SelectOther.submit()">'
     // Add a DEFAULT CONFIGURATION to be used as a mask.
     . '
         <option value="__default__"'
@@ -346,7 +346,7 @@ if( ! empty( $otheruser ) ) {
       echo '
           <tr>
             <td class="boxleft leftpadded' . ( $j > 3 ? ' boxbottom' : '' )
-       . '"><input type="checkbox" value="Y" name=';
+       . '"><input class="form-control-sm" type="checkbox" value="Y" name=';
       if( $j == 1 )
         echo '"invite"'
          . ( ! empty( $op['invite'] ) && $op['invite'] == 'N' ? '' : $checked )
@@ -366,40 +366,40 @@ if( ! empty( $otheruser ) ) {
             <td class="aligncenter boxleft ' . $bottomedge . '">'
        . $access_type[$j] . '</td>
             <td class="aligncenter boxleft pub ' . $bottomedge . '">'
-       . '<input type="checkbox" value="' . $j . '" name="v_' . $j . '"'
+       . '<input class="form-control-sm" type="checkbox" value="' . $j . '" name="v_' . $j . '"'
        . ( ! empty( $op['view'] ) && ( $op['view'] & $j ) ? $checked : '' )
        . ' /></td>
-            <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
+            <td class="conf ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
        . $j * 8 . '" name="v_' . $j * 8 . '"'
        . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 8 ) )
         ? $checked : '' ) . ' /></td>
-            <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
+            <td class="priv ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
        . $j * 64 . '" name="v_' . $j * 64 . '"'
        . ( ! empty( $op['view'] ) && ( $op['view'] & ( $j * 64 ) )
         ? $checked : '' ) . ' /></td>'
        . ( $guser != '__public__' ? '
             <td class="aligncenter boxleft pub ' . $bottomedge . '"><input '
-         . 'type="checkbox" value="' . $j . '" name="e_' . $j . '"'
+         . 'class="form-control-sm" type="checkbox" value="' . $j . '" name="e_' . $j . '"'
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & $j ) ? $checked : '' )
          . ' /></td>
-            <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
+            <td class="conf ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
          . $j * 8 . '" name="e_' . $j * 8 . '"'
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 8 ) )
           ? $checked : '' ) . ' /></td>
-            <td class="priv ' . $bottomedge . '"><input type="checkbox" value="'
+            <td class="priv ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
          . $j * 64 . '" name="e_' . $j * 64 . '"'
          . ( ! empty( $op['edit'] ) && ( $op['edit'] & ( $j * 64 ) )
           ? $checked : '' ) . ' /></td>
             <td class="aligncenter boxleft pub ' . $bottomedge . '"><input '
-         . 'type="checkbox" value="' . $j . '" name="a_' . $j . '"'
+         . 'class="form-control-sm" type="checkbox" value="' . $j . '" name="a_' . $j . '"'
          . ( ! empty( $op['approve'] ) && ( $op['approve'] & $j )
           ? $checked : '' ) . ' /></td>
-            <td class="conf ' . $bottomedge . '"><input type="checkbox" value="'
+            <td class="conf ' . $bottomedge . '"><input class="form-control-sm" type="checkbox" value="'
          . $j * 8 . '" name="a_' . $j * 8 . '"'
          . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 8 ) )
           ? $checked : '' ) . ' /></td>
             <td class="boxright priv ' . $bottomedge
-         . '"><input type="checkbox" value="' . $j * 64 . '" name="a_' . $j * 64
+         . '"><input class="form-control-sm" type="checkbox" value="' . $j * 64 . '" name="a_' . $j * 64
          . '"' . ( ! empty( $op['approve'] ) && ( $op['approve'] & ( $j * 64 ) )
           ? $checked : '' ) . ' /></td>'
         : '' ) . '
@@ -409,11 +409,11 @@ if( ! empty( $otheruser ) ) {
           <tr>
             <td colspan="2" class="boxleft alignright">'
      . ( $otheruser != '__default__' && $otheruser != '__public__' ? '
-              <input type="button" value="' . translate( 'Assistant' )
+              <input class="btn btn-secondary" type="button" value="' . translate( 'Assistant' )
        . '" onclick="selectAll(63);" />&nbsp;&nbsp;' : '' ) . '
-              <input type="button" value="' . translate( 'Select All' )
+              <input class="btn btn-secondary" type="button" value="' . translate( 'Select All' )
      . '" onclick="selectAll(256);" />&nbsp;&nbsp;
-              <input type="button" value="' . translate( 'Clear All' )
+              <input class="btn btn-secondary" type="button" value="' . translate( 'Clear All' )
      . '" onclick="selectAll(0);" />
             </td>
             <td colspan="9" class="boxright">
@@ -431,8 +431,8 @@ if( ! empty( $otheruser ) ) {
   echo '
           <tr>
             <td colspan="11" class="boxleft boxbottom boxright">
-              <input type="submit" value="' . $undoStr . '" />
-              <input type="submit" name="submit" value="' . $saveStr . '" />
+              <input class="btn btn-secondary" type="submit" value="' . $undoStr . '" />
+              <input class="btn btn-primary" type="submit" name="submit" value="' . $saveStr . '" />
             </td>
           </tr>
         </tbody>

@@ -444,6 +444,9 @@ if (empty($thisday))
               echo '<div class="dropdown-divider"></div>';
               echo '<h6 class="dropdown-header">' . translate('Admin Settings') . '</h6>';
               print_menu_item(translate('System Settings'), 'admin.php');
+              if (access_is_enabled() &&
+                access_can_access_function(ACCESS_SYSTEM_SETTINGS, $user))
+                print_menu_item(translate('User Access Control'), 'access.php');
               print_menu_item(translate('Users'), 'user_mgmt.php');
               if (!empty($GROUPS_ENABLED) && $GROUPS_ENABLED == 'Y') {
                 print_menu_item(translate('Groups'), 'groups.php');
