@@ -92,8 +92,7 @@ function user_valid_login ( $login, $password ) {
   }
   else
   {
-    while ( each ( $all_imap_hosts ) )
-    {
+    foreach($all_imap_hosts as $host) {
       $all_imap_ports[] = $imap_port;
     }
   }

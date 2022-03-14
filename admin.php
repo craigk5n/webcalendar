@@ -16,7 +16,7 @@ sendCookie ( 'webcalendar_csscache', $webcalendar_csscache );
 function save_pref ( $prefs, $src ) {
   global $error;
 
-  while ( list ( $key, $value ) = each ( $prefs ) ) {
+  foreach ($prefs as $key => $value) {
     if ( $src == 'post' ) {
       $prefix = substr ( $key, 0, 6 );
       $setting = substr ( $key, 6 );
@@ -151,7 +151,7 @@ if ( ! $error ) {
   }
   $tabs .= "</ul>\n";
   // Move the loops here and combine a few.
-  while ( list ( $key, $val ) = each ( $languages ) ) {
+  foreach ($languages as $key => $val) {
     $lang_list .= $option . $val . '"'
      . ( $val == $s['LANGUAGE'] ? $selected : '' )
      . '>' . $key . '</option>';

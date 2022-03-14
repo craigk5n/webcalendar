@@ -163,17 +163,20 @@ $webcalConfig = array(
  * db_load_config (needs description)
  *
  * This function is defined here because admin.php calls it during startup.
+ * Load default configuration values into the webcal_config table but only
+ * if values are not already there.
  */
 function db_load_config() {
   global $webcalConfig;
 
   $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
 
-  while( list( $key, $val ) = each( $webcalConfig ) ) {
+  foreach ($webcalConfig as $key => $val) {
     $res = dbi_execute( 'SELECT cal_value FROM webcal_config
       WHERE cal_setting = ?', array( $key ), false, false );
-    if( ! $res )
+    if( ! $res ) {
       dbi_execute( $sql, array( $key, $val ) );
+    }
     else { // SQLite returns $res always.
       $row = dbi_fetch_row( $res );
       if( ! isset( $row[0] ) )

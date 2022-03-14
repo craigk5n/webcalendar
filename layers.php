@@ -26,7 +26,7 @@ $res = dbi_execute('SELECT cal_value FROM webcal_user_pref
 
 if ($res) {
   $row = dbi_fetch_row($res);
-  $layers_enabled = ($row[0] == 'Y' ? 1 : 0);
+  $layers_enabled = ($row && !empty($row) && $row[0] == 'Y' ? 1 : 0);
   dbi_free_result($res);
 }
 

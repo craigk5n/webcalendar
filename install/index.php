@@ -342,6 +342,7 @@ if( ! empty( $action ) && $action == 'install' ) {
   $c = dbi_connect( $db_host, $db_login, $db_password, $real_db, false );
   // It's possible that the tables were created manually
   // and we just want to do the database population routines.
+    get_installed_version();
   if( $c && ! empty( $_SESSION['install_file'] ) ) {
     $sess_install = $_SESSION['install_file'];
     $install_filename = ( $sess_install == 'tables' ? 'tables-' : 'upgrade-' );
