@@ -2058,7 +2058,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $data = preg_replace ( "/[\r\n]+[\t ];/", ";", $data );
   $data = preg_replace ( "/[\r\n]+[\t ]:/", ":", $data );
 
-  $data = preg_replace ( "/[\r\n]+[\t ]/", " ", $data );
+  $data = preg_replace ( "/[\r\n]+[\t ]/", "", $data );
   $data = preg_replace ( "/[\r\n]+/", "\n", $data );
   // echo "Data:<br /><pre>$data</pre><p>";
   // reflect the section where we are in the file:
