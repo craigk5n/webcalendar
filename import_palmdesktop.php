@@ -9,7 +9,7 @@ function parse_palmdesktop ( $file, $exc_private = 1 ) {
   $exc_private = EscapeShellArg ( $exc_private );
   exec ( 'perl tools/palm_datebook.pl ' . "$file $exc_private", $Entries );
   $data = [];
-  while ( list ( $line_num, $line ) = each ( $Entries ) ) {
+  foreach ($Entries as $line_num => $line) {
     $data[] = ParseLine ( $line );
   }
   return $data;

@@ -25,7 +25,7 @@ web server document root, you can access the script by going to:
 (Obviously, put the correct server name in above.)  The toplevel URL will
 automatically redirect to the installation wizard.
 
-## Setting Up a Docker Dev Environment
+## Setting Up a Docker Dev Environment (PHP 7.4)
 
 You can setup a docker environment with PHP 7.4 and MariaDb with a few
 steps.
@@ -50,4 +50,28 @@ steps.
 - Follow the guided web-based setup and choose "mysqli" as the database
   type.
 
+## Setting Up a Docker Dev Environment (PHP 8)
+
+You can setup a docker environment with PHP 8 and MariaDb with a few
+steps.
+
+- Build the docker container with `docker-compose -f docker-compose-php8.yml build`
+- Start the containers with `docker-compose -f docker-compose-php8.yml up`
+- In order to grant the proper permissions inside of MariaDb, you
+  will need to run a few MySQL commands.  First shell into the mariadb
+  container: `docker-compose exec db /bin/sh`
+- Start up the db client: `/bin/mariadb -p` (the password will be
+  "Webcalendar.1" as specified in the `docker-compose.yml' file.  You
+  can change it to make your dev environment more secure (before you
+  build the containers in step above).
+- Run the following db commands:
+  ```
+  GRANT ALL PRIVILEGES ON *.* TO webcalendar@localhost IDENTIFIED BY 'Webcalendar.1'  WITH GRANT OPTION; 
+  FLUSH PRIVILEGES;
+  QUIT
+  ```
+- Start up your web browser and go to:
+  [http://localhost:8080/](http://localhost:8080/).
+- Follow the guided web-based setup and choose "mysqli" as the database
+  type.
 

@@ -551,11 +551,18 @@ class WebCalendar {
             // Check for cookie...
             ! empty ( $webcalendar_session ) ) {
           $encoded_login = $webcalendar_session;
-          if ( empty ( $encoded_login ) )
+          if ( empty ( $encoded_login ) ) {
             // Invalid session cookie.
             $session_not_found = true;
-          else {
-            $login_pw = explode( '|', decode_string( $encoded_login ) );
+          } else {
+            $cooie_check = explode('|', decode_string($encoded_login));
+            // First time after switching to PHP8 you may have
+            // incompatible cookies here.
+            if ( empty($cooie_check[0]) || empty($cooie_check[1]))
+              $session_not_found = true;
+          }
+          if (! $session_not_found) {
+            $login_pw = explode('|', decode_string($encoded_login));
             $login = $login_pw[0];
             $cryptpw = $login_pw[1];
 

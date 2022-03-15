@@ -1,6 +1,5 @@
 <?php
 include_once 'includes/init.php';
-require_valid_referring_url ();
 
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 $webcalendar_csscache = 1;
@@ -11,7 +10,7 @@ sendCookie ( 'webcalendar_csscache', $webcalendar_csscache );
 
 function save_pref( $prefs, $src) {
   global $prefuser;
-  while ( list ( $key, $value ) = each ( $prefs ) ) {
+  foreach ($prefs as $key => $value) {
     if ( $src == 'post' ) {
       $setting = substr ( $key, 5 );
       $prefix = substr ( $key, 0, 5 );
@@ -156,7 +155,8 @@ $colors = [
   'POPUP_BG' => translate('Event popup background'),
   'POPUP_FG' => translate('Event popup text')
 ];
-foreach ( $colors as $k => $v ) {
+$color_sets = '';
+foreach ($colors as $k => $v) {
   $handler = 'color_change_handler_' . $k;
   $color_sets .= print_color_input_html ( $k, $v, '', '', 'p', '', $handler );
 }
@@ -297,7 +297,7 @@ if ( $NONUSER_ENABLED == 'Y' || $PUBLIC_ACCESS == 'Y' ) {
 <?php
  define_languages(); //load the language list
  reset ( $languages );
- while ( list ( $key, $val ) = each ( $languages ) ) {
+ foreach ($languages as $key => $val) {
    // Don't allow users to select browser-defined. We want them to pick
    // a language so that when we send reminders (done without the benefit
    // of a browser-preferred language), we'll know which language to use.

@@ -1,6 +1,5 @@
 <?php
 include_once 'includes/init.php';
-require_valid_referring_url ();
 require 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
@@ -931,7 +930,7 @@ if( empty( $error ) ) {
 
   // Check if participants have been removed and send out emails.
   if( ! $newevent && count( $old_status ) > 0 ) {
-    while( list( $old_participant, $dummy ) = each( $old_status ) ) {
+    foreach ($old_status as $old_participant => $dummy) {
       $found_flag = false;
       foreach( $participants as $i ) {
         if( $i == $old_participant ) {

@@ -476,7 +476,7 @@ function get_default_function_access( $page_id, $user ) {
   }
 }
 
-function access_user_calendar( $cal_can_xxx = '', $other_user, $cur_user = '',
+function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
   $type = '', $access = '' ) {
   global $access_other_cals, $access_users, $ADMIN_OVERRIDE_UAC,
   $ALLOW_VIEW_OTHER, $is_admin, $login;

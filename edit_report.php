@@ -270,7 +270,7 @@ echo ( $is_admin ? '<div class="form-inline">
     <label class="col-sm-2 col-form-label" for="rpt_time_range">' . translate ('Date range') . '</label>
     <select class="form-control" name="time_range" id="rpt_time_range">';
 
-while ( list ( $num, $descr ) = each ( $ranges ) ) {
+foreach ($ranges as $num => $descr) {
   echo '
               <option value="' . $num . '"'
    . ( $report_time_range == $num ? $selected : '' )
@@ -286,7 +286,7 @@ if ( $CATEGORIES_ENABLED == 'Y' ) {
     <select class="form-control" name="cat_id" id="rpt_cat_id">
     <option value="">' . translate ( 'None' ) . '</option>';
 
-  while ( list ( $K, $V ) = each ( $categories ) ) {
+  foreach ($categories as $K => $V) {
     echo '<option value="' . $K . '"' . ( $report_cat_id == $K ? $selected : '' )
      . '>' . htmlentities ( $V['cat_name'] ) . '</option>';
   }

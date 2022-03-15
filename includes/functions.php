@@ -2355,7 +2355,7 @@ function get_all_dates ( $date, $rpt_type, $interval = 1, $ByMonth = '',
  *
  * @return array  Dates that match ByDay (YYYYMMDD format).
  */
-function get_byday ( $byday, $cdate, $type = 'month', $date ) {
+function get_byday ( $byday, $cdate, $type, $date ) {
   global $byday_values;
 
   if ( empty ( $byday ) )
@@ -2379,9 +2379,9 @@ function get_byday ( $byday, $cdate, $type = 'month', $date ) {
   } elseif ( $type == 'daily' ) {
     $fday = $lday = $cdate;
     $month = $mth;
-  } else
-    // We'll see if this is needed.
-    return;
+  } else {
+    die_miserable_death('Invalid type "' . $type . '" in get_by_day');
+  }
 
   $fdow = date ( 'w', $fday ); //Day of week first day of $type.
   $ldow = date ( 'w', $lday ); //Day of week last day of $type
@@ -4904,7 +4904,7 @@ function print_entry ( $event, $date ) {
       <a ' . $title . ' class="' . $class . '" id="' . "$linkid\" $href"
    . '><img src="';
 
-  $catNum = abs( $event->getCategory() );
+  $catNum = empty($event->getCategory()) ? 0 : abs($event->getCategory());
   $icon = "bootstrap-icons/circle-fill.svg";
   if ( $catNum > 0 ) {
     $catIcon = 'wc-icons/cat-' . $catNum . '.gif';
@@ -6154,7 +6154,7 @@ function user_has_boss ( $assistant ) {
  *
  * @return string  The HTML for the event popup.
  */
-function build_entry_popup ( $popupid, $user, $description = '', $time,
+function build_entry_popup ( $popupid, $user, $description, $time,
   $site_extras = '', $location = '', $name = '', $id = '', $reminder = '' ) {
   global $ALLOW_HTML_DESCRIPTION, $DISABLE_POPUPS, $login,
   $PARTICIPANTS_IN_POPUP, $popup_fullnames, $popuptemp_fullname,
@@ -6438,46 +6438,6 @@ function rgb2html($r, $g=-1, $b=-1)
   $color .= (strlen($g) < 2?'0':'').$g;
   $color .= (strlen($b) < 2?'0':'').$b;
   return '#'.$color;
-}
-
-/**
-  * Require a valid HTT_REFERER value in the HTTP header.  This will
-  * prevent XSRF (cross-site request forgery).
-  *
-  * For example, suppose a * a "bad guy" sends an email with a link that
-  * would delete an event in webcalendar to the admin.  If the admin user
-  * clicks on that link we don't want to actually delete the event.
-  */
-  // TODO: This function might not be needed anymore with the addition
-  // of the CSRF tokens in all POST forms (new in WebCalendar 1.9.0).
-function require_valid_referring_url ()
-{
-  global $SERVER_URL, $settings;
-
-  // Allow value in settings.php to disable this.  If you run PHP
-  // inside a docker container, you will need to do this since the IP
-  // address will be different.
-  if ( isset ( $settings['disable_referer_check'] ) &&
-    $settings['disable_referer_check'] == 'true' ) {
-    return;
-  }
-
-  if ( empty( $_SERVER['HTTP_REFERER'] ) ) {
-    // Missing the REFERER value
-    //die_miserable_death ( translate ( 'Invalid referring URL' ) );
-    // Unfortunately, some version of MSIE do not send this info.
-    return;
-  }
-  if (strpos($SERVER_URL, $_SERVER['HTTP_REFERER']) != 0) {
-    // Gotcha.  URL of referring page is not the same as our server.
-    // This can be an instance of XSRF.
-    // (This may also happen when more than address is used for your server.
-    // However, you're not supposed to do that with this version of
-    // WebCalendar anyhow...)
-    // You can disable this check by adding the following in your includes/settings.php file:
-    //   disable_referer_check: true
-    die_miserable_death ( translate ( 'Invalid referring URL' ) );
-  }
 }
 
 /**
