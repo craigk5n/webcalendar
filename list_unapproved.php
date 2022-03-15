@@ -16,7 +16,6 @@
  */
 
 include_once 'includes/init.php';
-require_valid_referring_url ();
 send_no_cache_header();
 
 if ( empty ( $user ) )

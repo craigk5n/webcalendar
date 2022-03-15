@@ -13,7 +13,6 @@
  * Admin permissions are checked by the WebCalendar class.
  */
 include_once 'includes/init.php';
-require_valid_referring_url ();
 
 $cur = $error = '';
 $found = $foundOld = false;
