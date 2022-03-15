@@ -22,7 +22,6 @@ include 'includes/config.php';
 include 'includes/dbi4php.php';
 include 'includes/formvars.php';
 include 'includes/functions.php';
-require_valid_referring_url ();
 
 $WebCalendar->initializeFirstPhase();
 

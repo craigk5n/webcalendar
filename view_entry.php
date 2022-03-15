@@ -76,7 +76,6 @@ dbi_free_result ( $res );
 
 // Update the task percentage for this user.
 if ( ! empty ( $_POST ) && $is_my_event ) {
-require_valid_referring_url ();
 $upercent = getPostValue ( 'upercent' );
 if ( $upercent >= 0 && $upercent <= 100 ) {
 dbi_execute ( 'UPDATE webcal_entry_user SET cal_percent = ?

@@ -1,6 +1,5 @@
 <?php
 include_once 'includes/init.php';
-require_valid_referring_url();
 
 $icon_max_size = '6000';
 $icon_path = 'wc-icons/';
