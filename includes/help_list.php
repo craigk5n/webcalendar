@@ -70,7 +70,7 @@ function list_help ( $help_array ) {
   foreach ( $help_array as $lab => $val ) {
     echo '
         <p><label>' . $lab . ':</label> '
-     . ( $val == '0' ? '0' : empty ( $val ) ? '&nbsp;' : $val ) . '</p>';
+     . ( $val == '0' ? '0' : ( empty ( $val ) ? '&nbsp;' : $val ) ) . '</p>';
   }
 }
 
