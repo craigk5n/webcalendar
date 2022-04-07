@@ -337,8 +337,8 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   return $ret .
     '<!-- ' . $GLOBALS['PROGRAM_NAME'] . '     ' . $GLOBALS['PROGRAM_URL'] . ' -->' .
     ( $includeCkeditor ?
-    /* Your choices here are "basic", "standard" or "full". */ '
-    <script src="//cdn.ckeditor.com/4.6.0/basic/ckeditor.js"></script>
+    /* Load local copy of ckeditor */ '
+    <script src="pub/ckeditor/ckeditor.js"></script>
     <script>' .
     /* Use CKEditor for ALL <textarea>. */ '
       CKEDITOR.replaceAll();
