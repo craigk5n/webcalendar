@@ -170,13 +170,17 @@ For reference see: [http://us3.php.net/manual/en/function.htmlentities.php](http
 
 When text is added or updated, requiring new translations, the translations/English-US.txt file should be updated as a minimum. This file will be used as the basis for updating the other language files and needs to be up to date. From within the tools directory, the following command will search through the WebCalendar source files and update the language file specified. Language files should always be committed to CVS in Unix format to save space.
 
-`perl update\_translation.pl English-US.txt`
+`perl update_translation.pl English-US.txt`
 
 ## Frequently Asked Questions
 
-### Why aren't you using ADODB for database access?
+### Why aren't you using [DBA](https://www.php.net/manual/en/book.dba.php),
+[ADODB](https://adodb.org/dokuwiki/doku.php) or some other database
+abstraction layer for database access?
 
-Again, this would be overkill for what we need. ADODB is a fairly large project, so I'm partial to my leaner dbi4php.php solution.
+WebCalendar started before most of these.  I would not be opposed to switching to
+something this will likely be maintained so long as PHP is.
+For now, I'm partial to my fairly lean dbi4php.php solution.
 
 ### Why aren't you using the PEAR database functions?
 
