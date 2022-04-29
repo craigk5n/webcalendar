@@ -60,6 +60,7 @@ steps.  This docker setup differs from the normal WebCalendar docker image
 in that the local WebCalendar files are mounted into the container so
 that changes to your local filesystem will also apply to the WebCalanedar
 files in the container.
+You will need to have cloned the repo to start.
 
 - Build the docker container with
   `docker-compose -f docker/docker-compose-php8-dev.yml build`
@@ -89,6 +90,7 @@ files in the container.
 
 You can setup a docker environment with PHP 7.4 and MariaDb with a few
 steps.
+You will need to have cloned the repo to start.
 
 - Build the docker container with `docker-compose -f docker-compose-php7.yml build`
 - Start the containers with `docker-compose -f docker-compose-php7.yml up`
@@ -111,4 +113,13 @@ steps.
   type.
   Be sure to use the same MariaDb credentials specified above
   (Password _WebCalendar.1_ and Database Name _webcalendar_.)
+
+
+## Developer Notes
+
+- In general, WebCalendar follows a 
+  [GitFlow branching model|https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow].
+  In the past we have not used
+  the typical 'develop' branch and have usually given that branch a different name
+  ('devel-1.2', 'devel-1.3', etc.)
 

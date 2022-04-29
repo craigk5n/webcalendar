@@ -68,6 +68,5 @@ phpdoc/index.html: $(INCLUDES)
 
 # The faqs.html is used on the k5n.us website
 faqs.html: WebCalendar-SysAdmin.html WebCalendar-UserManual.html \
-	WebCalendar-DeveloperGuide.html \
 	extractfaqs.pl
-	perl extractfaqs.pl WebCalendar-SysAdmin.html WebCalendar-UserManual.html WebCalendar-DeveloperGuide.html > faqs.html
+	perl extractfaqs.pl WebCalendar-SysAdmin.html WebCalendar-UserManual.html > faqs.html

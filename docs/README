@@ -12,7 +12,7 @@ WebCalendar-SysAdmin.html
   Instructions for system administrators on installing and configuring
   WebCalendar
 
-WebCalendar-DeveloperGuide.html
+WebCalendar-DeveloperGuide.md
   Guidelines for developers wanting to make changes to WebCalendar
 
 WebCalendar-Functions.html
