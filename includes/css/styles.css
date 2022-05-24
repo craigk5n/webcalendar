@@ -38,7 +38,6 @@ div.container-fluid, div.container, nav.navbar,
   .sectioncontent {
   background-color: var(--bgcolor)!important;
   color: var(--textcolor)!important;
-  font: var(--def-font-size)/1.5 var(--def-font-family)!important;
 }
 div.dropdown-divider {
   border-top: 1px solid var(--box-default-color)!important;
@@ -110,6 +109,10 @@ th {
 }
 td {
   /*font-size:.6875rem;*/
+}
+.nav-link, li.nav-item.dropdown.show, li.nav-item.dropdown.show > ul,
+  #nav-project-menu > a {
+  font-size:.75rem !important;
 }
 ul,
 ul a {
