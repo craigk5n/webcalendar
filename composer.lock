@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d670b37179eec46feb546fa8e15b583",
+    "content-hash": "794a3e0f69b61253b68bd2ee2c2c6055",
     "packages": [
         {
             "name": "components/jquery",
@@ -170,16 +170,16 @@
         },
         {
             "name": "twbs/bootstrap-icons",
-            "version": "v1.8.2",
+            "version": "v1.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/icons.git",
-                "reference": "3e96eef5cf71207d37608532b5f81290d953dd53"
+                "reference": "9bcba3efe7fae552f6425f6f4aaf70590d835482"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/icons/zipball/3e96eef5cf71207d37608532b5f81290d953dd53",
-                "reference": "3e96eef5cf71207d37608532b5f81290d953dd53",
+                "url": "https://api.github.com/repos/twbs/icons/zipball/9bcba3efe7fae552f6425f6f4aaf70590d835482",
+                "reference": "9bcba3efe7fae552f6425f6f4aaf70590d835482",
                 "shasum": ""
             },
             "type": "library",
@@ -201,7 +201,7 @@
                 "icons",
                 "svg"
             ],
-            "time": "2022-05-13T18:12:42+00:00"
+            "time": "2022-05-25T17:57:16+00:00"
         }
     ],
     "packages-dev": [],
