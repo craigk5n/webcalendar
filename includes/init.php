@@ -74,6 +74,49 @@ $WebCalendar->initializeSecondPhase();
 // TODO: Start using composer for dependency management...
 //require_once 'vendor/autoload.php';
 
+// Return the toplevel URL (no path) of the current URL.
+function get_server_top_url () {
+  if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+     $url = "https://";
+  else
+     $url = "http://";
+  // Append the host(domain name, ip) to the URL.
+  $url.= $_SERVER['HTTP_HOST'];
+  return $url;
+}
+
+
+/**
+  * Send HTTP headers.  Would be nice to make some of these configurable
+  * in the admin System Settings.
+  */
+function send_http_headers () {
+  // TODO: Allow a (future) admin settings override some of these cookie settings
+
+  // Prevent click-jacking by including a "frame-breaker" script in each page that should not be framed.
+  // Source: https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html
+  Header("Content-Security-Policy: frame-ancestors 'self'");
+
+  // WebCalendar cannot be loaded in a frame
+  // Options for this cookie: deny, sameorigin, allow-from
+  Header("X-Frame-Options: deny");
+
+  // Marker used by the server to indicate that the MIME types advertised in the
+  // Content-Type headers should be followed and not be changed.
+  // NOTE: Some web servers (e.g. apache2) set this for us, so users may get 2 of these.
+  Header("X-Content-Type-Options: nosniff");
+
+  // Set the Content Security Policy.  WebCalendar specifically bundles required
+  // components like jQuery and Bootstrap so that external resources don't need
+  // to be loaded.  However, if an admin user creates a custom header that loads
+  // external content, this may break.
+  // More info: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+  // TODO: Fix this.  It seems to break CSS, images or something.  I'm trying
+  // to restrict all content to one server, but it's blocking more than it should.
+  //Header("Content-Security-Policy: default-src " . get_server_top_url() .
+  //  "; img-src *; style-src *");
+}
+
 /**
  * Prints the HTML header and opening HTML body tag.
  *
@@ -131,9 +174,8 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 // Use "punctuation.css" to start getting punctuation out of the code to where the translators can get at it.
   //  <link href="' . $incdir . '/css/punctuation.css" rel="stylesheet">';
 
-  // Prevent click-jacking by including a "frame-breaker" script in each page that should not be framed.
-  // Source: https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html
-  Header("Content-Security-Policy: frame-ancestors 'self'"); // TODO: customize this via admin.php
+  send_http_headers ();
+
   $ret .= "\n<style id=\"antiClickjack\">\n  body{display:none !important;}\n</style>\n" .
     "<script type=\"text/javascript\">\n" .
     "  if (self === top) {\n" .
