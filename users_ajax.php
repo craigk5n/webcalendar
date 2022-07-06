@@ -313,7 +313,7 @@ if ($action == 'userlist') {
       getPostValue('lastname'),
       getPostValue('firstname'),
       getPostValue('public'),
-      getPostValue('admin'),
+      getPostValue('admin')
     );
   }
   if ($error == '')
