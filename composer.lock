@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d7655405826fafff30cf298e7e34c4f",
+    "content-hash": "b69ff74382b29edd8d1abe6ece362e7d",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
@@ -2278,16 +2278,16 @@
         },
         {
             "name": "twbs/bootstrap-icons",
-            "version": "v1.8.1",
+            "version": "v1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/icons.git",
-                "reference": "190eb16e74404d27b1772f094ca7de7b37ca7415"
+                "reference": "aa1ede051cd0cbc369be31ea097856e673e3573b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/icons/zipball/190eb16e74404d27b1772f094ca7de7b37ca7415",
-                "reference": "190eb16e74404d27b1772f094ca7de7b37ca7415",
+                "url": "https://api.github.com/repos/twbs/icons/zipball/aa1ede051cd0cbc369be31ea097856e673e3573b",
+                "reference": "aa1ede051cd0cbc369be31ea097856e673e3573b",
                 "shasum": ""
             },
             "type": "library",
@@ -2311,9 +2311,9 @@
             ],
             "support": {
                 "issues": "https://github.com/twbs/icons/issues",
-                "source": "https://github.com/twbs/icons/tree/v1.8.1"
+                "source": "https://github.com/twbs/icons/tree/v1.9.0"
             },
-            "time": "2022-02-08T04:54:22+00:00"
+            "time": "2022-07-13T20:08:59+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -2382,5 +2382,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }
