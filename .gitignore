@@ -3,9 +3,13 @@
 *.orig
 *.save
 *.sha
-build
-includes/htmlarea
+docs/faqs.html
+includes/htmlare*
 includes/settings.php
 mysql-data
 node_modules
+pub
+tests/*.phar
+tests.phpunit.result.cache
 vendor
+wc-icons/cat-*
