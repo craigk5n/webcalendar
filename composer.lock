@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d7655405826fafff30cf298e7e34c4f",
+    "content-hash": "0b07e6c8cc9e72753e425518a11019e7",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
@@ -2223,27 +2223,22 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v4.6.1",
+            "version": "v5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "043a03c95a2ad6738f85b65e53b9dbdfb03b8d10"
+                "reference": "23e50829f958ea1d741d63e2781716be037e4644"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/043a03c95a2ad6738f85b65e53b9dbdfb03b8d10",
-                "reference": "043a03c95a2ad6738f85b65e53b9dbdfb03b8d10",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/23e50829f958ea1d741d63e2781716be037e4644",
+                "reference": "23e50829f958ea1d741d63e2781716be037e4644",
                 "shasum": ""
             },
             "replace": {
                 "twitter/bootstrap": "self.version"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.3.x-dev"
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -2272,9 +2267,9 @@
             ],
             "support": {
                 "issues": "https://github.com/twbs/bootstrap/issues",
-                "source": "https://github.com/twbs/bootstrap/tree/v4.6.1"
+                "source": "https://github.com/twbs/bootstrap/tree/v5.2.1"
             },
-            "time": "2021-10-28T14:45:21+00:00"
+            "time": "2022-09-07T15:31:39+00:00"
         },
         {
             "name": "twbs/bootstrap-icons",
@@ -2382,5 +2377,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }
