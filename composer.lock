@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d7655405826fafff30cf298e7e34c4f",
+    "content-hash": "948062644c8e164368fd4c2cff460f95",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
-            "version": "4.18.0",
+            "version": "4.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ckeditor/ckeditor4-releases.git",
-                "reference": "9335fb40486008aeec9f150574d53f35d3aba9c7"
+                "reference": "f7495b8148ec55a1a01e41bbeab97b4d73d5a6f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/9335fb40486008aeec9f150574d53f35d3aba9c7",
-                "reference": "9335fb40486008aeec9f150574d53f35d3aba9c7",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/f7495b8148ec55a1a01e41bbeab97b4d73d5a6f6",
+                "reference": "f7495b8148ec55a1a01e41bbeab97b4d73d5a6f6",
                 "shasum": ""
             },
             "type": "library",
@@ -52,7 +52,7 @@
                 "source": "https://github.com/ckeditor/ckeditor4",
                 "wiki": "https://ckeditor.com/docs/ckeditor4/latest/"
             },
-            "time": "2022-03-16T10:52:12+00:00"
+            "time": "2022-09-28T13:37:19+00:00"
         },
         {
             "name": "components/jquery",
@@ -2382,5 +2382,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.3.0"
 }
