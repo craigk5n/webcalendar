@@ -375,6 +375,7 @@ email-smtp-port: Numéro de prt SMTP (généralement 25)
 SMTP Port Number: Numéro de port SMTP
 email-smtp-auth: Utiliser l'authentification SMTP
 SMTP Authentication: Authentification SMTP
+Use STARTTLS: Utiliser STARTTLS
 email-smtp-username: Nom d'utilisateur SMTP si utilisation de l'authentification
 SMTP Username: Nom d'utilisateur SMTP
 email-smtp-password: Mot de passe SMTP si utilisation de l'authentification
