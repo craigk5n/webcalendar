@@ -1,6 +1,6 @@
 # Makefile for copying files downloaded using composer into the proper location
 # for use with WebCalendar.
-# We onlt copy the min number of files required from the vendor directory.
+# We only copy the min number of files required from the vendor directory.
 # Also, compute the SHA hash to use with the integrity tag.
 # We don't want WebCalendar releases to bundle every single file in the vendor directory.
 # Also, composer dependency management sucks at asset management.
