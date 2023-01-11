@@ -26,41 +26,14 @@ $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
-require_once __WC_CLASSDIR . 'WebCalendar.php';
-require_once __WC_CLASSDIR . 'Event.php';
-require_once __WC_CLASSDIR . 'RptEvent.php';
-require_once __WC_CLASSDIR . 'WebCalMailer.php';
-
-$WebCalendar = new WebCalendar( __FILE__ );
-
 include __WC_INCLUDEDIR . 'translate.php';
 include __WC_INCLUDEDIR . 'config.php';
 include __WC_INCLUDEDIR . 'dbi4php.php';
 include __WC_INCLUDEDIR . 'formvars.php';
 include __WC_INCLUDEDIR . 'functions.php';
 
-$WebCalendar->initializeFirstPhase();
-
-include __WC_INCLUDEDIR . $user_inc;
-include __WC_INCLUDEDIR . 'site_extras.php';
-
-$WebCalendar->initializeSecondPhase();
-
 $debug = false;// Set to true to print debug info...
 $only_testing = false; // Just pretend to send -- for debugging.
-
-// Establish a database connection.
-$c = dbi_connect ( $db_host, $db_login, $db_password, $db_database, true );
-if ( ! $c ) {
-  echo translate( 'Error connecting to database' ) . ': ' . dbi_error();
-  exit;
-}
-
-load_global_settings();
-
-$WebCalendar->setLanguage();
-
-set_today();
 
 include __WC_INCLUDEDIR . '../install/sql/tables-sqlite3.php';
 
@@ -87,11 +60,15 @@ for ($i = 1; $i < count($argv); $i++) {
 
 echo "SQLite3 output file: $outputFile\n";
 
-$db_name = 'not-required';
-$GLOBALS['db_type'] = 'sqlite3';
-$c = dbi_connect( 'localhost', 'not-required', $db_name, $outputFile, false );
+$db_type = 'sqlite3';
+$db_name = $outputFile;
+$db_host = 'n/a';
+$db_login = 'n/a';
+$db_password = 'n/a';
+$db_persistent = false;
 
-$GLOBALS['db_setup_in_progress'] = true; # don't fail if no tables exist in do_config
+$c = dbi_connect( $db_host, $db_login, $db_password, $db_name, false );
+
 populate_sqlite_db($db_name, $c, false);
 
 echo "SQLite3 database created and populated.\n";
