@@ -36,6 +36,7 @@ $debug = false;// Set to true to print debug info...
 $only_testing = false; // Just pretend to send -- for debugging.
 
 include __WC_INCLUDEDIR . '../install/sql/tables-sqlite3.php';
+include __WC_INCLUDEDIR . '../install/default_config.php';
 
 function fatal($msg) {
   print "Error: $msg\n";
@@ -86,5 +87,8 @@ if ($createAdminAccount) {
   echo "Admin user created: $adminUsername\n";
 }
 
+// Add default settings
+db_load_config();
+echo "Default settings saved in database.\n";
 
 ?>
