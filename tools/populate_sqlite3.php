@@ -91,6 +91,7 @@ $db_name = 'not-required';
 $GLOBALS['db_type'] = 'sqlite3';
 $c = dbi_connect( 'localhost', 'not-required', $db_name, $outputFile, false );
 
+$GLOBALS['db_setup_in_progress'] = true; # don't fail if no tables exist in do_config
 populate_sqlite_db($db_name, $c, false);
 
 echo "SQLite3 database created and populated.\n";

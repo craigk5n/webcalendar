@@ -248,26 +248,28 @@ function do_config( $fileLoc ) {
   // read and required upgrade actions completed.
   $c = @dbi_connect( $db_host, $db_login, $db_password, $db_database, false );
 
-  if( $c ) {
-    $rows = dbi_get_cached_rows( 'SELECT cal_value FROM webcal_config
-      WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
+  if ( empty($GLOBALS['db_setup_in_progress'])) {
+    if( $c ) {
+      $rows = dbi_get_cached_rows( 'SELECT cal_value FROM webcal_config
+        WHERE cal_setting = \'WEBCAL_PROGRAM_VERSION\'' );
 
-    if( ! $rows ) {
+      if( ! $rows ) {
+        header( $locateStr . 'UNKNOWN' );
+        exit;
+      } else {
+        $row = $rows[0];
+
+        if( empty( $row ) || $row[0] != $PROGRAM_VERSION ) {
+          header( $locateStr . '' . ( empty( $row ) ? 'UNKNOWN' : $row[0] ) );
+          exit;
+        }
+      }
+      dbi_close( $c );
+    } else {
+      // Must mean we don't have a settings.php file.
       header( $locateStr . 'UNKNOWN' );
       exit;
-    } else {
-      $row = $rows[0];
-
-      if( empty( $row ) || $row[0] != $PROGRAM_VERSION ) {
-        header( $locateStr . '' . ( empty( $row ) ? 'UNKNOWN' : $row[0] ) );
-        exit;
-      }
     }
-    dbi_close( $c );
-  } else {
-    // Must mean we don't have a settings.php file.
-    header( $locateStr . 'UNKNOWN' );
-    exit;
   }
 
   // We can add extra "nonuser" calendars such as a holiday, corporate,
