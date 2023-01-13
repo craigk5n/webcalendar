@@ -6220,7 +6220,7 @@ function build_entry_popup ( $popupid, $user, $description, $time,
    . ( strlen ( $time )
     ? '<dt>' . translate ( 'Time' ) . ":</dt>\n<dd>$time</dd>\n" : '' )
    . ( ! empty ( $location ) && $details
-    ? '<dt>' . translate ( 'Location' ) . ":</dt>\n<dd> $location</dd>\n" : '' )
+    ? '<dt>' . translate ( 'Location' ) . ":</dt>\n<dd>" . htmlspecialchars($location) . "</dd>\n" : '' )
    . ( ! empty ( $reminder ) && $details
     ? '<dt>' . translate ( 'Send Reminder' ) . ":</dt>\n<dd> $reminder</dd>\n" : '' );
 

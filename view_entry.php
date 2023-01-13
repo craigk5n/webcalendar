@@ -419,8 +419,8 @@ echo nl2br ( activate_urls ( htmlspecialchars ( $description ) ) );
 echo '</div><div class="w-100"></div></div>' . "\n";
 
 if ($DISABLE_LOCATION_FIELD != 'Y' && !empty($location)) {
-echo '<div class="row"><div class="col-3">' . translate('Description') . "</div>\n";
-echo '<div class="col-9">'  . $location . "</div>\n";
+echo '<div class="row"><div class="col-3">' . translate('Location') . "</div>\n";
+echo '<div class="col-9">'  . htmlentities($location) . "</div>\n";
 echo '<div class="w-100"></div></div>' . "\n";
 }
 
