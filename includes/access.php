@@ -13,7 +13,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- * @version $Id: access.php,v 1.54 2011/07/12 19:45:13 rjones6061 Exp $
  * @package WebCalendar
  */
 
@@ -81,11 +80,8 @@ define( 'ACCESS_NUMBER_FUNCTIONS', 28 ); // How many function did we define?
 // checks within these files.
 $GLOBALS['page_lookup_ex'] = array(
   'about.php' => 1,
-  'colors.php' => 1,
   'css_cacher.php' => 1,
   'edit_template.php' => 1,
-  'edit_user.php' => 1,
-  'edit_user_handler.php' => 1,
   'icons.php' => 1,
   'index.php' => 1,
   'js_cacher.php' => 1,
@@ -236,8 +232,7 @@ function access_load_user_permissions( $useCache = true ) {
   $res = dbi_execute( 'SELECT cal_login, cal_other_user, cal_can_view,
     cal_can_edit, cal_can_approve, cal_can_email, cal_can_invite,
     cal_see_time_only FROM webcal_access_user' );
-  assert( '$res' );
-  while( $row = dbi_fetch_row( $res ) ) {
+  while( $res && $row = dbi_fetch_row( $res ) ) {
     // TODO should we set admin_override here to apply to
     // DEFAULT CONFIGURATION only?
     // $admin_override = ( $row[1] == '__default__' && $is_admin
@@ -311,12 +306,12 @@ function access_load_user_functions( $user ) {
   for( $i = 0, $cnt = count( $users ); $i < $cnt && empty( $ret ); $i++ ) {
     $res = dbi_execute( 'SELECT cal_permissions FROM webcal_access_function
       WHERE cal_login = ?', array( $users[$i] ) );
-    assert( '$res' );
+    if ( $res ) {
+      if( $row = dbi_fetch_row( $res ) )
+        $rets[$users[$i]] = $row[0];
 
-    if( $row = dbi_fetch_row( $res ) )
-      $rets[$users[$i]] = $row[0];
-
-    dbi_free_result( $res );
+      dbi_free_result( $res );
+    }
   }
   // If still no setting found, then assume access to everything
   // if an admin user, otherwise access to all non-admin functions.
@@ -351,7 +346,7 @@ function access_init( $user = '' ) {
   if( empty( $user ) && ! empty( $login ) )
     $user = $login;
 
-  assert( '! empty( $user )' );
+  assert( ! empty( $user ) );
 
   $access_user = access_load_user_functions( $user );
 
@@ -378,8 +373,8 @@ function access_can_access_function( $function, $user = '' ) {
   if( empty( $user ) && ! empty( $login ) )
     $user = $login;
 
-  assert( '! empty( $user )' );
-  assert( 'isset( $function )' );
+  assert( ! empty( $user ) );
+  assert( isset( $function ) );
 
   $access = access_load_user_functions( $user );
   $yesno = substr( $access, $function, 1 );
@@ -387,7 +382,7 @@ function access_can_access_function( $function, $user = '' ) {
   if( empty( $yesno ) )
     $yesno = get_default_function_access( $function, $user );
 
-  assert( '! empty( $yesno )' );
+  assert( ! empty( $yesno ) );
 
   return ( $yesno == 'Y' );
 }
@@ -418,12 +413,12 @@ function access_can_view_page( $page = '', $user = '' ) {
   if( empty( $user ) && ! empty( $login ) )
     $user = $login;
 
-  assert( '! empty( $user )' );
+  assert( ! empty( $user ) );
 
   if( empty( $page ) && ! empty( $PHP_SELF ) )
     $page = $PHP_SELF;
 
-  assert( '! empty( $page )' );
+  assert( ! empty( $page ) );
 
   $page = basename( $page );
 
@@ -450,7 +445,7 @@ function access_can_view_page( $page = '', $user = '' ) {
     : // User is not logged in. Need to load info from db now.
     access_load_user_functions( $user ) );
 
-  assert( '! empty( $access )' );
+  assert( ! empty( $access ) );
 
   // If we did not find a page id, then this is also a WebCalendar bug.
   // (Someone needs to add another entry in the $page_lookup[] array.)
@@ -460,7 +455,7 @@ function access_can_view_page( $page = '', $user = '' ) {
   if( empty( $yesno ) )
     $yesno = get_default_function_access( $page_id, $user );
 
-  assert( '! empty( $yesno )' );
+  assert( ! empty( $yesno ) );
   return ( $yesno == 'Y' );
 }
 
@@ -481,7 +476,7 @@ function get_default_function_access( $page_id, $user ) {
   }
 }
 
-function access_user_calendar( $cal_can_xxx = '', $other_user, $cur_user = '',
+function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
   $type = '', $access = '' ) {
   global $access_other_cals, $access_users, $ADMIN_OVERRIDE_UAC,
   $ALLOW_VIEW_OTHER, $is_admin, $login;
@@ -509,8 +504,8 @@ function access_user_calendar( $cal_can_xxx = '', $other_user, $cur_user = '',
       ? 'Y' : CAN_DOALL );
   }
 
-  assert( '! empty( $other_user )' );
-  assert( '! empty( $cur_user )' );
+  assert( ! empty( $other_user ) );
+  assert( ! empty( $cur_user ) );
 
   if( ! access_is_enabled() ) {
     if( ! empty( $ALLOW_VIEW_OTHER ) && $cur_user != '__public__'
@@ -561,6 +556,10 @@ function access_user_calendar( $cal_can_xxx = '', $other_user, $cur_user = '',
       $type_wt = TASK_WT;
 
     $total_wt = $type_wt & $access_wt;
+     
+    if( !is_numeric($ret) )
+    	$ret = 0;
+     
     $ret = ( $ret &$total_wt ? $ret : 0 );
   }
 

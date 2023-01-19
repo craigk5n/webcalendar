@@ -1,6 +1,5 @@
 <?php
 /* Consolidating parts of admin.php and pref.php.
- * $Id: common_admin_pref.php,v 1.5 2007/08/28 01:12:20 bbannon Exp $
  */
 
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
@@ -8,7 +7,7 @@ $webcalendar_csscache = 1;
 if ( isset ( $_COOKIE['webcalendar_csscache'] ) )
   $webcalendar_csscache += $_COOKIE['webcalendar_csscache'];
 
-SetCookie ( 'webcalendar_csscache', $webcalendar_csscache );
+sendCookie ( 'webcalendar_csscache', $webcalendar_csscache );
 
 $catStr = $color_sets = $currenttab = $datestyle_md = $datestyle_my = '';
 $datestyle_tk = $datestyle_ymd = $lang_list = $menu_theme_list = '';
@@ -156,7 +155,7 @@ for ( $i = 0, $cnt = count ( $tabs_ar ); $i < $cnt; $i += 3 ) {
    . $tabs_ar[$i] . '\' );">' . $tabs_ar[$i + 2] . '</a></span>';
 }
 $tmp = ( $prad ? $s['LANGUAGE'] : $prefarray['LANGUAGE'] );
-while ( list ( $key, $val ) = each ( $languages ) ) {
+foreach ($languages as $key => $val) {
   // Don't allow users to select "browser-defined". We want them to pick
   // a language so that when we send reminders (done without the benefit
   // of a browser-preferred language), we'll know which language to use.
@@ -275,7 +274,7 @@ function save_pref ( $prefs, $src ) {
 
   $pos = ( $prad ? 6 : 5 );
 
-  while ( list ( $key, $value ) = each ( $prefs ) ) {
+  foreach ($prefs as $key => $value) {
     if ( $src == 'post' ) {
       $prefix = substr ( $key, 0, $pos );
       $setting = substr ( $key, $pos );

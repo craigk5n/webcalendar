@@ -1,4 +1,4 @@
-<?php /* $Id: views_edit.php,v 1.12 2007/04/08 07:30:52 bbannon Exp $  */ ?>
+
 function selectUsers () {
   var listid = 0;
   for ( i = 0; i < document.editviewform.elements.length; i++ ) {
@@ -25,9 +25,9 @@ function usermode_handler ()
 {
   var show = ( document.editviewform.viewuserall[0].checked );
   if ( show ) {
-    makeVisible ( "viewuserlist" );
+    $('#viewuserlist').show();
   } else {
-    makeInvisible ( "viewuserlist" );
+    $('#viewuserlist').hide();
   }
 }
 

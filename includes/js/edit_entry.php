@@ -4,13 +4,11 @@ global $GROUPS_ENABLED,$WORK_DAY_START_HOUR,$WORK_DAY_END_HOUR;
 
 $user = $arinc[3];
 
-// Craig. This would be a good place to use the Date functions in js/chapman.js
-// These arrays are already set. And translated. Wouldn't have to redo them again.
-// There are other such places, too.
 ?>
 var bydayAr = bymonthdayAr = bysetposAr = [];
-var bydayLabels = ["SU","MO","TU","WE","TH","FR","SA"];
-var bydayTrans = [
+
+var byday_labels = ['SU','MO','TU','WE','TH','FR','SA'];
+var byday_names = [
   "<?php etranslate ( 'SU' ) ?>"
 , "<?php etranslate ( 'MO' ) ?>"
 , "<?php etranslate ( 'TU' ) ?>"
@@ -18,6 +16,7 @@ var bydayTrans = [
 , "<?php etranslate ( 'TH' ) ?>"
 , "<?php etranslate ( 'FR' ) ?>"
 , "<?php etranslate ( 'SA' ) ?>"];
+
 // do a little form verifying
 function validate_and_submit() {
   if ( form.name.value == "" ) {
@@ -28,7 +27,7 @@ function validate_and_submit() {
     showTab( 'details' );
 <?php } ?>
     form.name.focus();
-    alert ( "<?php etranslate ( 'You have not entered a Brief Description', true)?>.");
+    alert ( "<?php etranslate ( 'You have not entered a Brief Description', true )?>");
     return false;
   }
   if ( form.timetype &&
@@ -84,18 +83,15 @@ function validate_and_submit() {
  if (typeof editor != "undefined") editor._textArea.value = editor.getHTML();
 
  //Check if Event date is valid
-  var d = form.day.selectedIndex;
-  var vald = form.day.options[d].value;
-  var m = form.month.selectedIndex;
-  var valm = form.month.options[m].value;
-  var y = form.year.selectedIndex;
-  var valy = form.year.options[y].value;
-  var c = new Date(valy,valm -1,vald);
- if ( c.getDate() != vald ) {
-   alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
-  form.day.focus();
-   return false;
- }
+  var d = $('#_YMD');
+  try {
+    var date = new Date(d.value);
+  } catch {
+    alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
+    d.focus();
+    return false;
+  }
+
  //Repeat Tab enabled, Select all of them
  if ( form.rpttype ) {
    for ( i = 0; i < elements['exceptions[]'].length; i++ ) {
@@ -174,11 +170,11 @@ function addGroup() {
     //alert ( selNum);
 <?php
   $groups = get_groups ( $user );
-  for ( $i = 0; $i < count ( $groups )  ; $i++ ) {
+  for ( $i = 0; is_array($groups) && $i < count($groups)  ; $i++ ) {
     echo "\n    if ( selNum == $i ) {\n";
-    $res = dbi_execute ( 'SELECT cal_login
-  FROM webcal_group_user
-  WHERE cal_group_id = ?', [$groups[$i]['cal_group_id']] );
+    $res = dbi_execute (
+      'SELECT cal_login FROM webcal_group_user WHERE cal_group_id = ?',
+      [$groups[$i]['cal_group_id']] );
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         echo "      selectByLogin ( \"$row[0]\" );\n";
@@ -347,7 +343,7 @@ function rpttype_weekly() {
    var valy = form.year.options[y].value;
    var c = new Date(valy,valm,vald);
    var dayOfWeek = c.getDay();
-   var rpt_day = bydayLabels[dayOfWeek];
+   var rpt_day = byday_labels[dayOfWeek];
    elements[rpt_day].checked = true;
  }
 }
@@ -366,14 +362,25 @@ function showSchedule() {
   var cols = <?php echo $WORK_DAY_END_HOUR - $WORK_DAY_START_HOUR ?>;
   //var w = 140 + ( cols * 31 );
   var w = 760;
-  var h = 180;
+  var h = 300;
   for ( i = 0; i < userlist.length; i++ ) {
-      users += delim + userlist.options[i].value;
-      delim = ',';
-      h += 18;
-    }
+    users += delim + userlist.options[i].value;
+    delim = ',';
+    h += 18;
+  }
   if (users == '') {
     alert("<?php etranslate ( 'Please add a participant', true)?>" );
+    return false;
+  }
+  //var d = $('#_YMD');
+  var d = form.elements['_YMD'];
+  console.log("Date UI: " + d);
+  console.log("Date object: " + d.value);
+  try {
+    var date = new Date(d.value);
+  } catch {
+    alert ("<?php etranslate ( 'Invalid Event Date', true)?>.");
+    d.focus();
     return false;
   }
   var mX = 100, mY = 200;
@@ -381,9 +388,10 @@ function showSchedule() {
   var features = MyPosition + ',width='+ w +',height='+ h +',resizable=yes,scrollbars=yes';
   var url = 'availability.php?users=' + users +
            '&form='  + 'editentryform' +
-           '&year='  + form.year.value +
-           '&month=' + form.month.value +
-           '&day='   + form.day.options[form.day.selectedIndex].text;
+           '&year='  + date.getFullYear() +
+           '&month=' + (date.getMonth() + 1) +
+           '&day='   + date.getDate();
+  console.log("URL: " + url);
 
   if (sch_win != null && !sch_win.closed) {
      h = h + 30;
@@ -394,28 +402,29 @@ function showSchedule() {
   }
 }
 
+function yyyymmdd(x) {
+  var y = x.getFullYear().toString();
+  var m = (x.getMonth() + 1).toString();
+  var d = x.getDate().toString();
+  (d.length == 1) && (d = '0' + d);
+  (m.length == 1) && (m = '0' + m);
+  var yyyymmdd = y + m + d;
+  return yyyymmdd;
+}
+
 function add_exception (which) {
  var sign = "-";
  if (which ) {
     sign = "+";
  }
- var ymd = $('except_YMD').value;
- var y = ymd.substr ( 0, 4 );
- var m = ymd.substr ( 4, 2 );
- if ( m.substr ( 0, 1 ) == '0' )
-   m = m.substr = ( 1, 1 );
- var d = ymd.substr ( 6, 2 );
- if ( d.substr ( 0, 1 ) == '0' )
-   d = d.substr = ( 1, 1 );
+ // NOTE: Using jquery('#except__YMD') inserts extra object stuff that makes the
+ // conversion to the Date object not work properly.
+ var x = document.getElementById("except__YMD").value;
+ var c = new Date(x);
+ // Adjust for UTC to local time issue
+ c.setTime(c.getTime() + c.getTimezoneOffset()*60*1000);
 
- var c = new Date(parseInt(y),parseInt(m)-1,parseInt(d));
- if ( c.getDate() != d ) {
-   alert ("<?php etranslate ( 'Invalid Date',true ) ?>");
-   return false;
- }
- //alert ( c.getFullYear() + " "  + c.getMonth() + " " + c.getDate());
- //var exceptDate = String((c.getFullYear() * 100 + c.getMonth() +1) * 100 + c.getDate());
- var exceptDate = ymd;
+ var exceptDate = yyyymmdd(c);
  var isUnique = true;
  //Test to see if this date is already in the list
   with (form)
@@ -425,7 +434,7 @@ function add_exception (which) {
          for (i = 0; i < length; i++)
          {
             if ( options[i].text == "-" + exceptDate || options[i].text == "+" + exceptDate ) {
-         isUnique = false;
+            isUnique = false;
          }
      }
    }
@@ -434,6 +443,8 @@ function add_exception (which) {
     elements['exceptions[]'].options[elements['exceptions[]'].length]  = new Option( sign + exceptDate, sign + exceptDate );
     makeVisible ( "select_exceptions" );
     makeInvisible ( "select_exceptions_not" );
+ } else {
+   alert('Date ' + exceptDate + ' already in use');
  }
 }
 function del_selected() {
@@ -456,8 +467,8 @@ function del_selected() {
 }
 
 function toggle_byday( ele ) {
-  var bydaytext = bydayTrans[ele.id.substr(2,1)];
-  var bydayVal = bydayLabels[ele.id.substr(2,1)];
+  var bydaytext = byday_names[ele.id.substr(2,1)];
+  var bydayVal = byday_labels[ele.id.substr(2,1)];
   var tmp = '';
   if (ele.value.length > 4 ) {
     //blank
@@ -513,13 +524,9 @@ function toggle_until() {
   if ( ! form.rpttype ) {
     return;
   }
- //use date
-  elements['rpt_year'].disabled =
-  elements['rpt_month'].disabled =
-  elements['rpt_day'].disabled =
-  elements['rpt_hour'].disabled =
-  elements['rpt_minute'].disabled =
-  ( form.rpt_untilu.checked != true );
+  //use date
+  elements['rpt__YMD'].disabled = elements['rpt_hour'].disabled = elements['rpt_minute'].disabled =
+    (form.rpt_untilu.checked != true);
 
  //use count
  elements['rpt_count'].disabled =
@@ -558,10 +565,8 @@ function toggle_rem_when() {
    elements['rem_relatedE'].disabled =
    elements['rem_when_date'].checked;
 
- //$('dateselIcon_reminder').disabled =
- elements['reminder_year'].disabled =
-   elements['reminder_month'].disabled =
-   elements['reminder_day'].disabled =
+ //$('#dateselIcon_reminder').disabled =
+ elements['reminder__YMD'].disabled =
    elements['reminder_hour'].disabled =
    elements['reminder_minute'].disabled =
   ( elements['rem_when_date'].checked != true );
@@ -591,9 +596,7 @@ function toggle_rem_rep() {
 function editCats ( evt ) {
   var obj;
 
-  function catWindowClosed () {
-  }
-  Modalbox.show($('editCatsDiv'), {title: '<?php etranslate('Categories');?>', width: 350, transitions: false, onHide: catWindowClosed, closeString: '<?php etranslate('Cancel');?>' });
+  $('#catModal').modal('show');
 
   var cat_ids = elements['cat_id'].value;
   var selected_ids = cat_ids.split ( ',' );
@@ -642,7 +645,7 @@ function catOkHandler () {
         catNames += ', ';
       }
       catIds += '<?php echo $catid;?>';
-      catNames += '<?php echo $cat['cat_name'];?>';
+      catNames += '<?php echo addslashes($cat['cat_name']);?>';
     }
   } else {
     // Note: this can happen when an admin is editing a user's personal
@@ -655,9 +658,15 @@ function catOkHandler () {
 <?php
   }
 ?>
-  $('entry_categories').innerHTML = catNames;
-  $('cat_id').value = catIds;
-  Modalbox.hide ();
+  var cats = $('#entry_categories');
+  if (catNames.length == 0) {
+    catNames = "<?php etranslate("None") ?>";
+  }
+  cats.val(catNames);
+  var catId = $('#cat_id');
+  catId.val(catIds);
+  console.log("cat_id.value = " + catId.value);
+  $('#catModal').modal('hide');
   return true;
 }
 

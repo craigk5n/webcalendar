@@ -16,7 +16,6 @@ import us.k5n.webcalendar.WebCalendarClient;
  * at the proper time.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class ReminderApp implements MessageDisplayer {
   String appName = "WebCalendar";

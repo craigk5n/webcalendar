@@ -1,4 +1,4 @@
-<?php // $Id$
+<?php
 /**
  * Description:
  *   Provides login mechanism for web service clients.
@@ -10,7 +10,7 @@ define( '__WC_INCLUDEDIR', __WC_BASEDIR . 'includes/' );
 define( '__WC_CLASSDIR', __WC_INCLUDEDIR . 'classes/' );
 
 include_once __WC_INCLUDEDIR . 'translate.php';
-require_once __WC_CLASSDIR . 'WebCalendar.class';
+require_once __WC_CLASSDIR . 'WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -63,7 +63,7 @@ else {
        . chr ( rand ( ord ( 'A' ), ord ( 'z' ) ) );
       $encoded_login = encode_string ( $login . '|'
        . crypt ( $password, $salt ) );
-      // SetCookie ( 'webcalendar_session', $encoded_login, 0, $cookie_path );
+      // sendCookie ( 'webcalendar_session', $encoded_login, 0, $cookie_path );
       $out .= '
   <cookieName>webcalendar_session</cookieName>
   <cookieValue>$encoded_login</cookieValue>' . ( $is_admin ? '

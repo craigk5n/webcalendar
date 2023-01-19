@@ -1,4 +1,4 @@
-<?php // $Id: year.php,v 1.72 2010/02/21 08:27:48 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 send_no_cache_header();
 
@@ -14,8 +14,13 @@ else
 
 load_user_categories();
 
-if ( empty ( $year ) )
-  $year = date ( 'Y' );
+if ( empty ( $year ) ) {
+  if (! empty($date)) {
+    $year = substr($date, 0, 4);
+  } else {
+    $year = date ( 'Y' );
+  }
+}
 
 $thisyear = $year;
 if ( $year != date ( 'Y' ) )
@@ -106,9 +111,9 @@ print_header();
 echo <<<EOT
     <div class="title">
       <a title="{$prevStr}" class="prev" href="year.php?year={$prevYear}{$userStr}">
-        <img src="images/leftarrow.gif" alt="{$prevStr}" /></a>
+        <img src="images/bootstrap-icons/arrow-left-circle.svg" alt="{$prevStr}" /></a>
       <a title="{$nextStr}" class="next" href="year.php?year={$nextYear}{$userStr}">
-        <img src="images/rightarrow.gif" alt="{$nextStr}" /></a>
+        <img src="images/bootstrap-icons/arrow-right-circle.svg" alt="{$nextStr}" /></a>
       <span class="date">{$thisyear}</span><br />
       <span class="user">{$fullnameStr}</span><br />
       {$asstModeStr}

@@ -1,4 +1,4 @@
-<?php // $Id: import_handler.php,v 1.44 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * Description:
  * Loads appropriate import file parser and processes the data returned.
@@ -118,7 +118,7 @@ if ( $file['size'] > 0 ) {
     echo '
     <br /><br />
     <b>' . translate ( 'Error' ) . ':</b> '
-     . translate( 'There was an error parsing the import file or no events were returned.' )
+     . translate( 'There was an error parsing the import file or no events were returned.' ) . "<br>" . translate("Error") . ": " . htmlentities($errormsg)
      . '<br />';
 } else
   echo '

@@ -337,6 +337,8 @@ function get_installed_version ( $postinstall = false ) {
   $_SESSION['blank_database'] = '';
   // We will append the db_type to come up te proper filename.
   $_SESSION['install_file'] = 'tables';
+  //echo "Set install_files in get_installed_version <br>";
+  //echo "install_file = " . $_SESSION['install_file'] . "<br>";
   $_SESSION['old_program_version'] = ( $postinstall
     ? $PROGRAM_VERSION : 'new_install' );
 
@@ -346,32 +348,31 @@ function get_installed_version ( $postinstall = false ) {
   // This data is read from file upgrade_matrix.php.
   for ( $i = 0, $dbCntStr = count ( $database_upgrade_matrix ); $i < $dbCntStr; $i++ ) {
     $sql = $database_upgrade_matrix[$i][0];
+    //echo "SQL: $sql <br>\n";
 
-    if ( $sql != '' )
+    if (empty($sql)) {
+      // We reached the end of database_upgrade_matrix[] with no errors, which 
+      // means the database is structurally up-to-date.
+    } else {
       $res = dbi_execute ( $sql, [], false, $show_all_errors );
-    if ( $res ) {
-      $_SESSION['old_program_version'] = $database_upgrade_matrix[$i + 1][2];
-      $_SESSION['install_file'] = $database_upgrade_matrix[$i + 1][3];
-      $res = '';
-      $sql = $database_upgrade_matrix[$i][1];
-      if ( $sql != '' )
-        dbi_execute ( $sql, [], false, $show_all_errors );
+      if ( $res ) {
+        //echo "Success on " . $database_upgrade_matrix[$i][2] . "<br>";
+        $_SESSION['old_program_version'] = $database_upgrade_matrix[$i + 1][2];
+        $_SESSION['install_file'] = $database_upgrade_matrix[$i + 1][3];
+        //echo "install_file = " . $_SESSION['install_file'] . "<br>";
+        $res = '';
+        $sql = $database_upgrade_matrix[$i][1];
+        if ( $sql != '' )
+          dbi_execute ( $sql, [], false, $show_all_errors );
+      } else {
+        //echo "Failure on " . $database_upgrade_matrix[$i][2] . "<br>";
+        //echo "Failure SQL: $sql <br>";
+      }
     }
   }
   $response_msg = ( $_SESSION['old_program_version'] == 'pre-v0.9.07'
     ? translate ( 'Perl script required' )
     : translate ( 'previous version requires updating several tables' ) );
-  // v1.1 and after will have an entry in webcal_config to make this easier
-  // $res = dbi_execute ( 'SELECT cal_value FROM webcal_config
-  //   WHERE cal_setting = "WEBCAL_PROGRAM_VERSION"', [], false, false );
-  // if ( $res ) {
-  // $row = dbi_fetch_row ( $res );
-  // if ( ! empty ( $row[0] ) ) {
-  // $_SESSION['old_program_version'] = $row[0];
-  // $_SESSION['install_file'] = 'upgrade_' . $row[0];
-  // }
-  // dbi_free_result ( $res );
-  // }
 
   // We need to determine if this is a blank database.
   // This may be due to a manual table setup.
@@ -379,9 +380,9 @@ function get_installed_version ( $postinstall = false ) {
     [], false, $show_all_errors );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
-    if ( isset ( $row[0] ) && $row[0] == 0 )
+    if ( isset ( $row[0] ) && $row[0] == 0 ) {
       $_SESSION['blank_database'] = true;
-    else {
+    } else {
       // Make sure all existing values in config and pref tables are UPPERCASE.
       make_uppercase();
 
@@ -412,9 +413,9 @@ function get_installed_version ( $postinstall = false ) {
     $row = dbi_fetch_row ( $res );
     dbi_free_result ( $res );
     // If not 'Y', prompt user to do conversion from server time to GMT time.
-    if ( ! empty ( $row[0] ) )
+    if ( ! empty ( $row[0] ) ) {
       $_SESSION['tz_conversion'] = $row[0];
-    else { // We'll test if any events even exist.
+    } else { // We'll test if any events even exist.
       $res = dbi_execute ( 'SELECT COUNT( cal_id ) FROM webcal_entry ',
         [], false, $show_all_errors );
       if ( $res ) {
@@ -423,7 +424,6 @@ function get_installed_version ( $postinstall = false ) {
       }
       $_SESSION['tz_conversion'] = ( $row[0] > 0 ? 'NEEDED' : 'Y' );
     }
-    dbi_free_result ( $res );
   }
   // Don't show TZ conversion if blank database.
   if ( $_SESSION['blank_database'] == true )

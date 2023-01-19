@@ -11,7 +11,6 @@
  * @package WebCalendar
  */
 include_once 'includes/init.php';
-require_valid_referring_url ();
 
 $error = '';
 
@@ -20,11 +19,12 @@ if ( $login == '__public__' && ! empty ( $OVERRIDE_PUBLIC ) &&
   $OVERRIDE_PUBLIC == 'Y' ) {
   print_header();
   echo print_not_auth();
-  print_trailer();
+  echo print_trailer();
   exit;
 }
 
 $keywords = getValue ( 'keywords' );
+$origKeywords = str_replace("\\", "", $keywords);
 $advanced = getValue ( 'advanced' );
 
 if ( strlen ( $keywords ) == 0 )
@@ -92,28 +92,30 @@ if ( empty ( $users ) || empty ( $users[0] ) )
   $search_others = false;
 
 //Get advanced filters
-$cat_filter = getPostValue ( 'cat_filter' );
-$extra_filter = getPostValue ( 'extra_filter' );
-$date_filter = getPostValue ( 'date_filter' );
+$cat_filter = getValue ( 'cat_filter' );
+$extra_filter = getValue ( 'extra_filter' );
+$date_filter = getValue ( 'date_filter' );
 
-$from_YMD = getPostValue ( 'from__YMD' );
+$from_YMD = getValue ( 'from__YMD' );
 if ( empty ( $from_YMD ) ) {
   $start_day = $start_month = $start_year = '';
 } else {
-  $start_year = intval ( substr ( $from_YMD, 0, 4 ) );
-  $start_month = intval ( substr ( $from_YMD, 4, 2 ) );
-  $start_day = intval ( substr ( $from_YMD, 6, 2 ) );
+  $d = date_parse($from_YMD);
+  $start_year = $d['year'];
+  $start_month = $d['month'];
+  $start_day = $d['day'];
   if ( $start_year < 1970 )
     $start_year = 1970;
 }
 
-$end_YMD = getPostValue ( 'until__YMD' );
+$end_YMD = getValue ( 'until__YMD' );
 if ( empty ( $end_YMD ) ) {
   $end_day = $end_month = $end_year = '';
 } else {
-  $end_year = intval ( substr ( $end_YMD, 0, 4 ) );
-  $end_month = intval ( substr ( $end_YMD, 4, 2 ) );
-  $end_day = intval ( substr ( $end_YMD, 6, 2 ) );
+  $d = date_parse($end_YMD);
+  $end_year = $d['year'];
+  $end_month = $d['month'];
+  $end_day = $d['day'];
   if ( $end_year < 1970 )
     $end_year = 1970;
 }
@@ -231,7 +233,7 @@ if ( substr ( $keywords, 0, $plen ) == $phrasedelim &&
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
         $info[$matches]['id'] = $row[0];
-        $info[$matches]['text'] = $row[1] . ' ( ' . date_to_str( $row[2] ) . ' )';
+        $info[$matches]['text'] = $row[1] . ' (' . date_to_str( $row[2] ) . ')';
         $info[$matches]['user'] = $row[3];
 
         $matches++;
@@ -251,27 +253,24 @@ if ( $matches > 0 ) {
 } else
   echo translate ( 'No matches found' );
 
-echo ": " . htmlentities ( $keywords ) . '</strong>.</p>';
+echo ": " . htmlentities ($origKeywords, ENT_NOQUOTES) . '</strong></p>';
 
 
 // now sort by number of hits
 if ( empty ( $error ) && empty ( $info ) ) {
   // no mtaches
 } else if ( empty ( $error ) ) {
-  echo '
-    <ul>';
+  echo '<ul>';
   foreach ( $info as $result ) {
-    echo '
-      <li><a class="nav" href="view_entry.php?id=' . $result['id']
-     . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>';
+    echo '<li class="nav"><a class="nav" href="view_entry.php?id=' . $result['id']
+     . '&amp;user=' . $result['user'] . '">' . $result['text'] . '</a></li>' . "\n";
   }
-  echo '
-    </ul>';
+  echo "</ul>\n";
 }
-echo '
-      <form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
-        . '"  style="margin-left: 13px;" method="post">
-       <input type="submit" value="'
+echo '<form action="search.php' . ( ! empty ( $advanced ) ? '?adv=1' : '' )
+        . '"  style="margin-left: 13px;" method="post">';
+print_form_key ();
+echo '<br><input class="btn btn-primary" type="submit" value="'
         . translate ( 'New Search' ) . '" /></form>
     ' . print_trailer ();
 

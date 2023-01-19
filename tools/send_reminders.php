@@ -56,10 +56,10 @@ $old_path = ini_get ( 'include_path' );
 $delim = ( strstr ( $old_path, ';' ) ? ';' : ':' );
 ini_set ( 'include_path', $old_path . $delim . __WC_INCLUDEDIR . $delim );
 
-require_once __WC_CLASSDIR . 'WebCalendar.class';
-require_once __WC_CLASSDIR . 'Event.class';
-require_once __WC_CLASSDIR . 'RptEvent.class';
-require_once __WC_CLASSDIR . 'WebCalMailer.class';
+require_once __WC_CLASSDIR . 'WebCalendar.php';
+require_once __WC_CLASSDIR . 'Event.php';
+require_once __WC_CLASSDIR . 'RptEvent.php';
+require_once __WC_CLASSDIR . 'WebCalMailer.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -167,7 +167,7 @@ if ( $res ) {
 if ( empty ( $GENERAL_USE_GMT ) || $GENERAL_USE_GMT != 'Y' )
   $def_tz = $SERVER_TIMEZONE;
 
-$startdateTS = time ( 0, 0, 0 );
+$startdateTS = time ();
 $enddateTS = $startdateTS + ( $DAYS_IN_ADVANCE * 86400 );
 
 $startdate = date ( 'Ymd', $startdateTS );

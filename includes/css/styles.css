@@ -4,10 +4,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/gpl.html GNU GPL
- *
- * @version $Id: styles.css,v 1.39 2010/10/20 01:28:21 cknudsen Exp $
- * hmmm... How does the version line work on github?
- *
  * @package WebCalendar
  */
 
@@ -30,11 +26,36 @@ body {
   width:100%;
   margin:0;
   padding:0;
+  padding-bottom: 0.5em;
 }
 body{
   background-color: var(--bgcolor);
   color: var(--textcolor);
   font: var(--def-font-size)/1.5 var(--def-font-family);
+}
+div.container-fluid, div.container, nav.navbar,
+  div.dropdown-menu, ul.dropdown-menu, .list-group, .list-group-item,
+  .sectioncontent {
+  background-color: var(--bgcolor)!important;
+  color: var(--textcolor)!important;
+}
+div.dropdown-divider {
+  border-top: 1px solid var(--box-default-color)!important;
+}
+li.nav-link {
+  border-top: 1px solid var(--box-default-color)!important;
+}
+/*
+Can't recall why this was added, but it makes the save button appear too far down
+to be seen in some forms.  For now, commenting out.  Probably delete this later...
+body, div.container-fluid, div.container {
+  min-height: 100%;
+  min-height: 100vh;
+}
+*/
+label.text-info {
+  color: var(--textcolor)!important;
+  font: var(--def-font-size)/1.5 var(--def-font-family)!important;
 }
 a {
   color: var(--textcolor);
@@ -61,12 +82,6 @@ fieldset {
 }
 label {
   font-weight:bold;
-  /*font-size:.6875rem;*/
-}
-p,
-input,
-select {
-  /*font-size:.75rem;*/
 }
 textarea {
   /*font-size:.75rem;*/
@@ -94,6 +109,10 @@ th {
 }
 td {
   /*font-size:.6875rem;*/
+}
+.nav-link, li.nav-item.dropdown.show, li.nav-item.dropdown.show > ul,
+  #nav-project-menu > a {
+  font-size:.75rem !important;
 }
 ul,
 ul a {
@@ -142,87 +161,11 @@ ul a {
   color: #000;
   margin: 20px;
 }
-#tabs,
-#tabscontent {
-  position:relative;
-  width:96%;
-}
-#tabscontent {
-  margin:-.0625rem .125rem;
-  border:.125rem groove #C0C0C0;
-  padding:.5rem;
-  background-color:#F8F8FF;
-  z-index:50;
-}
-.tabfor,
-.tabbak  {
-  position:relative;
-  margin:0 0 0 .1rem;
-  border:.125rem ridge #C0C0C0;
-  border-bottom:.125rem solid #F8F8FF;
-  padding:.2rem .2rem .1rem;
-  -moz-border-radius:.75rem .75rem 0 0;
-       border-radius:.75rem .75rem 0 0;
-}
-.tabfor a,
-.tabbak a {
-  color: var(--h2color);
-  font-weight:bold;
-  /*font-size:.875rem;*/
-}
-.tabbak a {
-  color:#999;
-}
-.tabfor {
-  background-color:#F8F8FF;
-  z-index:51;
-}
-.tabbak {
-  background-color:#E0E0E0;
-  z-index:49;
-}
-#editnonusers,
-#editremotes,
-#editremoteshandler,
-#edituser,
-#groupedit,
-#viewsedit {
-  background-color:#F8F8FF;
-}
-#cat,
-#day dl.desc,
-#grpiframe,
-#nonusersiframe,
-#remotesiframe,
-#tabscontent_boss,
-#tabscontent_colors,
-#tabscontent_email,
-#tabscontent_groups,
-#tabscontent_header,
-#tabscontent_nonuser,
-#tabscontent_nonusers,
-#tabscontent_other,
-#tabscontent_participants,
-#tabscontent_pete,
-#tabscontent_public,
-#tabscontent_reminder,
-#tabscontent_remotes,
-#tabscontent_sched,
-#tabscontent_subscribe,
-#tabscontent_themes,
-#tabscontent_uac,
-#useriframe,
-#viewiframe {
+#cat, #day dl.desc {
   display:none;
 }
-#tabscontent_colors p span,
-.sample {
-  margin:0 .0625rem;
-  border-style:groove;
-  padding:0 .5rem;
-}
-.weeknumber {
-  color: var(--weeknumber);
+td.weekcell {
+  background-color: var(--weeknumber);
   font-size:.625rem;
   text-decoration:none;
 }
@@ -397,7 +340,7 @@ td.matrixappts:hover {
   background-color:#CFC;
 }
 td.matrix {
-  height:1px;
+  height:1px !important;
   background-color:#000;
 }
 .matrix img {
@@ -413,6 +356,10 @@ a.matrix img {
   margin-left:auto;
   border-right:1px solid var(--tablebg);
   border-left:1px solid var(--tablebg);
+  border-bottom:1px solid var(--tablebg);
+}
+.matrixd td {
+  border-bottom: 1px solid var(--tablebg);
 }
 .matrixledge {
   border-left:1px solid #000;
@@ -560,18 +507,22 @@ tr.highlight td {
   color: var(--captions);
   font-weight:bold;
 }
+.minical caption {
+  caption-side: top;
+  text-align: center;
+}
 .minical th {
   border:0 solid var(--bgcolor);
   padding:0 .125rem;
 }
 .minical th,
 .minical td.empty {
-  background-color: var(--bgcolor);
+  background-color: var(--bgcolor) !important;
   color: var(--textcolor);
   text-align:center;
 }
 .minical th.empty {
-  background-color:transparent;
+  background-color:transparent !important;
 }
 .minical td {
   background-color: var(--cellbg);
@@ -625,6 +576,46 @@ tr.highlight td {
   border-bottom:0;
   padding:0;
 }
+
+#pref form-group {
+  text-align: left;
+}
+/* Settings/Preferences month preview for color.
+ * We have to override the values set in styles.php for
+ * some of these in the preview month since styles.php doesn't
+ * use variables because of the gradient functions in use.
+ */
+#admin table#month_main td.today,
+#pref table#month_main td.today {
+  background-color: var(--todaycellbg) !important;
+}
+#admin table#month_main td.weekend,
+#pref table#month_main td.weekend {
+  background-color: var(--weekendbg) !important;
+}
+#admin table#month_main td.othermonth,
+#pref table#month_main td.othermonth {
+  background-color: var(--othermonthbg) !important;
+}
+#admin table#month_main th,
+#admin table#month_main th.weekend,
+#pref table#month_main th,
+#pref table#month_main th.weekend {
+  background-color: var(--thbg) !important;
+}
+#admin table#month_main td,
+#pref table#month_main td {
+  background-color: var(--cellbg) !important;
+}
+#admin table#month_main td.hasevents,
+#pref table#month_main td.hasevents {
+  background-color: var(--haseventsbg) !important;
+}
+#admin table#month_main td.weekcell,
+#pref table#month_main td.weekcell {
+  background-color: var(--weeknumber) !important;
+}
+
 #admin table,
 #pref table {
   vertical-align:top;
@@ -645,10 +636,14 @@ tr.highlight td {
 #pref .main th {
   font-size:.75rem;
 }
+#admin #month_main, #monthtitle {
+  width: 45%;
+  float: right;
+}
 #admin .empty,
 #pref .empty {
-  border-top:transparent;
-  border-left:transparent;
+  border-top:transparent !important;
+  border-left:transparent !important;
 }
 #admin .main td.weekcell,
 #pref .main td.weekcell {
@@ -658,6 +653,8 @@ tr.highlight td {
   text-decoration:none;
   vertical-align:middle;
 }
+#admin #em_smtp { font-size:.85rem; }
+#admin #default-user-settings { font-size:.85rem; }
 #admin .main th.weekcell,
 #pref .main th.weekcell {
   background-color:transparent;
@@ -671,14 +668,6 @@ tr.highlight td {
 #pref .main th.empty,
 #pref .main th.weekcell {
   width:1%;
-}
-#admin #tabscontent p label,
-#pref #tabscontent p label {
-  clear:left;
-  float:left;
-  width:25%;
-  margin:0;
-  padding:0 .25rem;
 }
 #admin #saver {
   clear:both;
@@ -764,9 +753,9 @@ tr.highlight td {
   border-bottom:1px solid var(--tablebg);
 }
 .glance th.empty {
-  background-color: var(--bgcolor);
-  border-top:1px solid var(--bgcolor);
-  border-left:1px solid var(--bgcolor);
+  background-color: var(--bgcolor) !important;
+  border-top:1px solid var(--bgcolor) !important;
+  border-left:1px solid var(--bgcolor) !important;
 }
 .glance th.row {
   width:14%;
@@ -828,7 +817,7 @@ tr.highlight td {
   width:1%;
   border-top:0;
   border-left:0;
-  background-color:transparent;
+  background-color:transparent !important;
 }
 #month .main td.weekcell,
 #pref .main td.weekcell,
@@ -844,8 +833,8 @@ tr.highlight td {
 #pref .main td.empty,
 #pref .main th.empty {
   width:1%;
-  border-top-color:transparent;
-  border-left-color:transparent;
+  border-top-color:transparent !important;
+  border-left-color:transparent !important;
 }
 #pref .main td.weekcell,
 #pref .main th.weekcell {
@@ -857,10 +846,10 @@ tr.highlight td {
 #viewr .main th.empty,
 #week .main th.empty {
   width:5%;
-  border-top:1px solid var(--bgcolor);
-  border-left:1px solid var(--bgcolor);
-  background-color:none;
-  background-color:transparent;
+  border-top:1px solid var(--bgcolor) !important;
+  border-left:1px solid var(--bgcolor) !important;
+  background-color:transparent !important;
+  background: none;
 }
 #week .main th.row {
   width:5%;
@@ -1181,10 +1170,6 @@ tr.highlight td {
   width:99%;
   border:0;
 }
-#login {
-  margin-top:1.875rem;
-  margin-bottom:3.125rem;
-}
 #login table,
 #register table {
   border:1px solid var(--tablebg);
@@ -1267,13 +1252,8 @@ tr.highlight td {
 .bold {
   font-weight:bold;
 }
-#about {
-  background-image:url( images/kn5.jpg );
-  background-repeat:no-repeat;
-}
 #about p {
   margin:.0625rem;
-  color:#333;
 }
 #scroller {
   position:absolute;
@@ -1454,7 +1434,12 @@ tr.highlight td {
   margin-top: 3px;
   margin-left: 2px;
 }
-#eventcomment {
+.eventattachment {
+  background-color: var(--cellbg);
+  border:1px solid var(--tablebg);
+  padding:.25rem;
+}
+.eventcomment {
   background-color: var(--cellbg);
   border:1px solid var(--tablebg);
   padding:.25rem;
@@ -1566,22 +1551,42 @@ table.ThemeMenubar {
   padding-right: 2px;
 }
 
-/* for modalbox */
-#MB_caption {
-  font-size: 16pt !important;
+.button-icon {
+  width: 14px;
+  height: 14px;
+  filter: invert(1);
+  margin-right: 10px;
 }
-#MB_window h3 {
-  margin-top: 0 !important; /* default is 24 (too big) */
-  margin-bottom: 5px !important; /* default is 24 (too big) */
+.button-icon-inverse {
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
 }
 
-/*
- * Autocomplete CSS
- * See includes/js/autocomplete.js for more info.
- */
-.autocomplete-w1 { background:url(../../images/shadow.png) no-repeat bottom right; position:absolute; top:4px; left:3px; /* IE6 fix: */ _background:none; _top:1px; z-index: 11000; }
-.autocomplete-w2 { padding:0 6px 6px 0; }
-.autocomplete { width:300px !important; border:1px solid #999; background-color:#FFF; cursor:default; text-align:left; max-height:350px; overflow:auto; margin:-6px 6px 6px -6px; /* IE specific: */ _height:350px;  _margin:0 6px 6px 0; overflow-x:hidden; }
-.autocomplete .selected { background-color:#F0F0F0; }
-.autocomplete div { padding:2px 5px; white-space:nowrap; }
-.autocomplete strong { font-weight:normal; color:#3399FF; }
+.bullet {
+  width: 0.3em;
+  height: 0.3em;
+}
+
+<?php
+// No 2nd level submenu built into Bootstrap v4.
+// Got this from here: https://ricard.dev/bootstrap-4-second-level-menu-nav/
+?>
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 6px;
+  top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: .1rem;
+  margin-right: .1rem;
+}

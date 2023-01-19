@@ -33,7 +33,7 @@
  */
 
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -127,7 +127,7 @@ $descr = $appStr . ' - ' . translate ( 'Unapproved Entries' ) . ' - ' .
 // header ( 'Content-type: application/rss+xml');
 header ( 'Content-type: text/xml' );
 echo '<?xml version="1.0" encoding="' . $charset . '"?>
-<?xml-stylesheet href="rss-style.css" ?>
+<?xml-stylesheet href="includes/css/rss-style.css" ?>
 <rss version="2.0" xml:lang="' . $lang . '">
   <channel>
     <title><![CDATA[' . $appStr . ']]></title>

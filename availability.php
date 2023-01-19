@@ -1,4 +1,4 @@
-<?php // $Id: availability.php,v 1.27 2009/11/22 16:47:44 bbannon Exp $
+<?php
 /**
  * Page Description:
  * Display a timebar view of a single day.
@@ -20,14 +20,20 @@ if ( $ALLOW_VIEW_OTHER == 'N' && ! $is_admin )
   // not allowed...
   exit;
 
+$noXStr = translate ( 'Program Error No XXX specified!' );
+
 $users = getGetValue ( 'users' );
 $year = getGetValue ( 'year' );
 $month = getGetValue ( 'month' );
 $day = getGetValue ( 'day' );
 
+if ($users != htmlentities($users)) {
+  echo str_replace ( 'XXX', 'users', $noXStr );
+  exit;
+}
+
 // Input args in URL.
 // users: list of comma-separated users.
-$noXStr = translate ( 'Program Error No XXX specified!' );
 if ( empty ( $users ) ) {
   echo str_replace ( 'XXX', translate ( 'user' ), $noXStr );
   exit;
@@ -61,10 +67,10 @@ $prevStr = translate ( 'Previous' );
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="' . $prev_url
- . '"><img src="images/leftarrow.gif" class="prev" alt="'
+ . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" class="prev" alt="'
  . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="' . $next_url
- . '"><img src="images/rightarrow.gif" class="next" alt="'
+ . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" class="next" alt="'
  . $nextStr . '" /></a>
       <div class="title">
         <span class="date">';
@@ -74,7 +80,7 @@ echo '</span><br />
       </div>
     </div><br />
     <form action="availability.php" method="post">
-      ' . daily_matrix ( $date, $users ) . '
+      ' . csrf_form_key() . daily_matrix ( $date, $users ) . '
     </form>
     ' . print_trailer ( false, true, true );
 

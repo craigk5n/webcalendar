@@ -58,15 +58,16 @@ $wday = strftime ( '%w', mktime ( 0, 0, 0, $thismonth, $thisday, $thisyear ) );
 $nextStr = translate ( 'Next' );
 $previousStr = translate ( 'Previous' );
 
+$formKey = csrf_form_key();
 echo <<<EOT
     <div class="viewnav">
       <a title="{$previousStr}" class="prev"
         href="view_d.php?id={$id}&amp;date={$prevdate}">
-        <img src="images/leftarrow.gif" class="prev"
+        <img src="images/bootstrap-icons/arrow-left-circle.svg" class="prev"
           alt="{$previousStr}" /></a>
       <a title="{$nextStr}" class="next"
         href="view_d.php?id={$id}&amp;date={$nextdate}">
-        <img src="images/rightarrow.gif" class="next"
+        <img src="images/bootstrap-icons/arrow-right-circle.svg" class="next"
           alt="{$nextStr}" /></a>
       <div class="title">
         <span class="date">{$nowStr}</span><br />
@@ -77,6 +78,7 @@ echo <<<EOT
 
     <!-- Hidden form for booking events -->
     <form action="edit_entry.php" method="post" name="schedule">
+      ${formKey}
       <input type="hidden" name="date"
         value="{$thisyear}{$thismonth}{$thisday}" />
       <input type="hidden" name="defusers" value="{$partStr}" />

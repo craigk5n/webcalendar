@@ -57,9 +57,19 @@ function unhtmlentities ( $string ) {
 function read_trans_file ( $in_file, $out_file = '', $strip = true ) {
   global $can_save, $new_install, $translations;
 
-  $fp = fopen ( $in_file, 'r', false );
+  // Prevent directory traversal attack CWE-23
+  $basename = basename($in_file);
+  // Now let's see if the file really exists
+  $path_to_folder = dirname(__FILE__) . '/../translations/';
+  $files_in_folder = @scandir($path_to_folder);
+  if (!in_array($basename, $files_in_folder)) {
+    die_miserable_death('Invalid Request');
+  }
+
+  $f = dirname(__FILE__) . "/../translations/" . $basename;
+  $fp = fopen ($f, 'r', false);
   if ( ! $fp )
-    die_miserable_death ( 'Could not open language file: ' . $in_file );
+    die_miserable_death ( 'Could not open language file: ' . $f );
 
   $inInstallTrans = false;
   $installationTranslations = [];
@@ -394,12 +404,15 @@ function etranslate ( $str, $decode = '', $type = 'A', $date = '' ) {
  * rather than return the value.
  *
  * @param string $str Text to translate
- * @return string The translated text with all HTML removed
+ * @return string The translated text with all HTML removed (unless allowHtml
+ * is set to true)
  */
-function tooltip( $str, $decode = '' ) {
+function tooltip( $str, $decode = '', $allowHtml=false ) {
   $ret = translate( $str, $decode );
-  $ret = preg_replace( '/<[^>]+>/', '', $ret );
-  return preg_replace( '/"/', "'", $ret );
+  if(!$allowHtml) {
+    $ret = preg_replace( '/<[^>]+>/', '', $ret );
+  }
+  return htmlspecialchars($ret);
 }
 
 /**
@@ -413,8 +426,8 @@ function tooltip( $str, $decode = '' ) {
  * @param string $str Text to translate and print
  * @uses tooltip
  */
-function etooltip ( $str, $decode = '' ) {
-  echo tooltip ( $str, $decode );
+function etooltip ( $str, $decode = '', $allowHtml=false ) {
+  echo tooltip ( $str, $decode, $allowHtml );
 }
 
 /**

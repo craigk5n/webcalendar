@@ -16,7 +16,6 @@
 # 'The Coolest DHTML Calendar',
 # http://sourceforge.net/projects/jscalendar/
 #
-# $Id: French.txt,v 1.72 2010/02/21 08:27:50 bbannon Exp $
 # Translation last updated on 12-30-2008
 
 
@@ -329,7 +328,7 @@ upcoming-events-display-popups: Afficher les popups pour les événements dans upc
 Display event popups: Afficher les popups des évènements
 reports-enabled-help: Si coché, les utilisateurs verront apparaitre une section « Rapports » au bas de chaque page et pourront créer des rapports personnalisés.  En plus, les administrateurs ont la possibilité de créer des rapports globaux s'affichant au bas de chaque page d'usager.
 Reports enabled: Rapports activés
-subscriptions-enabled-help: Spécifie si l'utilisateur distant peut s'inscrire comme utilisateur de l'agenda partagé WebCalendar, lui permettant ainsi de voir les événements des utilisateurs des applications de type iCal (par exemple l'application iCal d'Apple ou le agenda Mozilla)
+subscriptions-enabled-help: Spécifie si l'utilisateur distant peut s'inscrire comme utilisateur de l'agenda partagé WebCalendar, lui permettant ainsi de voir les événements des utilisateurs des applications de type iCal (par exemple l'application iCal d'Apple ou le calendrier Mozilla)
 Allow remote subscriptions: Autoriser les inscriptions distantes
 remotes-enabled-help: Permet aux utilisateurs de charger des fichiers ics distants via une URL
 Allow remote calendars: Autoriser les agendas distants
@@ -450,6 +449,7 @@ Subject XXX: Sujet : "XXX".
 Description XXX: =
 Date XXX: =
 Time XXX: Heure : XXX
+Time: Heure
 Comments XXX: Commentaires : XXX
 Approved w/Comments by XXX.: Approuvé avec commentaires par : XXX
 
@@ -527,6 +527,7 @@ Add Attachment: Ajouter un fichier joint
 Subject: Sujet
 Comment: Commentaire
 Upload file: Fichier à transférer
+Description: =
 
 ########################################
 # Page: docdel.php
@@ -549,15 +550,24 @@ XXX is in a different timezone (ahead): (XXX est dans un fuseau horaire différen
 XXX is in a different timezone (behind): (XXX est dans un fuseau horaire différent; XXX derrière vous<br />&nbsp;XXX)
 Time entered here is based on your Timezone.: L'heure entrée ici est basée sur votre fuseau horaire
 Edit Entry: Modification de l'événement
+Add Entry: Ajouter un événement
 Details: Détails
+Participants: =
 Repeat: Répétition
 Reminders: Rappels
 brief-description-help: Ceci doit être un résumé (environ 20 caractères) de l'événement. Cette information représentera l'événement quand vous visualiserez l'agenda.
+Brief Description: Description résumée
 full-description-help: Ce sont les détails de l'événement. Cette information peut être vue quand un utilisateur affiche l'événement.
+Full Description: Description détaillée
 access-help: Spécification du niveau d'accès de l'événement.<br /> <i>Public</i>: Tous les utilisateurs peuvent voir les détails de l'événement.<br /><i>Confidentiel</i>: Les utilisateurs peuvent voir que vous avez un événement pour ces date et heure, mais ils ne peuvent pas en consulter les détails.
+Access: Accès
 priority-help: Spécification de la priorité de l'événement. Une haute priorité sera affichée en gras.
+Priority: Priorité
+High: Haute
+Medium: Moyenne
+Low: Basse
 category-help: Définir la catégorie associée à un événement.
-completed-help: Achèvement de la tâche. Activée seulement lorsque tous les pourcentages des participants ont atteind 100%.
+Category: Catégorie
 Date Completed: Date d'achèvement
 percent-help: Pourcentage d'achèvement de la tâche pour cet utilisateur
 Percent Complete: Pourcentage effectué
@@ -608,6 +618,7 @@ Use end date: Utiliser une date de fin
 Number of times: Nombre de fois
 repeat-frequency-help: Spécifie la fréquence de répétition de l'événement. La valeur par défaut 1 indique que l'événement doit survenir à chaque fois.  Si vous choisissez 2, celà indique que l'événement doit survenir toutes les autres semaines (si <i>Type de répétition</i> est sur <i>Hebdomadaire</i>), tous les autres Mois (si <i>Type de répétition</i> est sur <i>Mensuel</i>), etc.
 Frequency: Fréquence
+All: Tout
 Weekdays Only: Week-end seulement
 Week Start: Début de la semaine
 repeat-bydayextended-help: Permet la sélection de date basée sur le jour de la semaine.
@@ -686,6 +697,7 @@ Required to View Remote Calendar: Requis pour visualiser l'agenda distant
 ########################################
 # Page: edit_remotes_handler.php
 #
+Error: Erreur
 Import Results: Résultat de l'importation
 Events successfully imported: Evénements importés avec succès
 Create a new layer to view this calendar.: Créer un nouveau calque pour visualiser cet agenda
@@ -696,6 +708,7 @@ There was an error parsing the import file or no events were returned.: Erreur l
 # Page: edit_report.php
 #
 Tomorrow: Demain
+Today: Aujourd'hui
 Yesterday: Hier
 Day before yesterday: Avant-hier
 Next week: Semaine prochaine
@@ -811,6 +824,8 @@ Unnamed Group: Groupe sans nom
 Add Group: Ajouter un groupe
 Edit Group: Modifier un groupe
 Group name: Nom du groupe
+Updated: Mise à jour
+Created by: Créé par
 
 ########################################
 # Page: group_edit_handler.php
@@ -1563,6 +1578,7 @@ Count: Compter
 Inclusion Dates: Dates de l'inclusion
 Exclusion Dates: Dates de l'exclusion
 Event Imported: Evénement importé
+Unnamed Event: événement sans nom
 
 ########################################
 # Page: includes/classes/Doc.class

@@ -169,7 +169,7 @@ if ( $REQUEST_METHOD == 'POST' ) {
       cal_login, cal_name, cal_description, cal_size, cal_mime_type, cal_type,
       cal_mod_date, cal_mod_time, cal_blob ) VALUES
 ( ?,?,?,?,?,?,?,?,?,?,? )', [$nextid, $id, $login,
-        $filename, $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
+        substr($filename,0,30), $description, $filesize, $mimetype, 'A', date ( 'Ymd' ),
         date ( 'His' ), NULL] ) )
       $error = db_error();
     else {
@@ -202,6 +202,7 @@ print_header();
   // Comment
 ?>
 <form action="docadd.php" method="post" name="docform">
+<?php print_form_key(); ?>
 <input type="hidden" name="id" value="<?php echo $id?>" />
 <input type="hidden" name="type" value="C" />
 
@@ -223,6 +224,7 @@ print_header();
   // Attachment
 ?>
 <form action="docadd.php" method="post" name="docform" enctype="multipart/form-data">
+<?php print_form_key(); ?>
 <input type="hidden" name="id" value="<?php echo $id?>" />
 <input type="hidden" name="type" value="A" />
 <table>

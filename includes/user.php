@@ -41,14 +41,32 @@ function user_valid_login ( $login, $password, $silent=false ) {
   global $error;
   $ret = $enabled = false;
 
-  $sql = 'SELECT cal_login, cal_enabled FROM webcal_user WHERE cal_login = ? AND cal_passwd = ?';
-  $res = dbi_execute ( $sql, [$login, md5 ( $password )] );
+  $sql = 'SELECT cal_login, cal_enabled, cal_passwd FROM webcal_user WHERE cal_login = ?';
+  $res = dbi_execute ( $sql, [$login] );
   if ( $res ) {
     $row = dbi_fetch_row ( $res );
     if ( $row && $row[0] != '' ) {
+      // Check the password
+      $expected_hash = $row[2];
+      if ( strlen ( $expected_hash ) == 32 && ctype_xdigit ( $expected_hash ) ) {
+        // Old-Style MD5 password
+        $supplied_hash = md5 ( $password );
+        $okay = hash_equals ( $supplied_hash, $expected_hash );
+        $rehash = true;
+      } else {
+        // New-Style Secure Password
+        $okay = password_verify ( $password, $expected_hash );
+        $rehash = password_needs_rehash ( $expected_hash, PASSWORD_DEFAULT );
+      }
+      // Upgrade insecurely stored passwords
+      if ( $okay && $rehash ){
+        $new_hash = password_hash ( $password, PASSWORD_DEFAULT );
+        $sql = 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?';
+        dbi_execute ( $sql, [$new_hash, $login] );
+      }
       $enabled = ( $row[1] == 'Y' ? true : false );
       // MySQL seems to do case insensitive matching, so double-check the login.
-      if ( $row[0] == $login )
+      if ( $okay && $row[0] == $login )
         $ret = true; // found login/password
       else if ( ! $silent )
         $error = translate ( 'Invalid login', true ) . ': ' .
@@ -221,7 +239,7 @@ function user_add_user ( $user, $password, $firstname,
   else
     $ulastname = NULL;
   if ( strlen ( $password ) )
-    $upassword = md5 ( $password );
+    $upassword = password_hash ( $password, PASSWORD_DEFAULT );
   else
     $upassword = NULL;
   if ( $admin != 'Y' )
@@ -302,7 +320,7 @@ function user_update_user_password ( $user, $password ) {
   global $error;
 
   $sql = 'UPDATE webcal_user SET cal_passwd = ? WHERE cal_login = ?';
-  if ( ! dbi_execute ( $sql, [md5 ( $password ), $user] ) ) {
+  if ( ! dbi_execute ( $sql, [password_hash ( $password , PASSWORD_DEFAULT ), $user] ) ) {
     $error = db_error();
     return false;
   }
@@ -473,8 +491,7 @@ function user_get_users ( $publicOnly=false ) {
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {
       if ( strlen ( $row[1] ) && strlen ( $row[2] ) )
-        $fullname = ( $order1 == 'cal_lastname, cal_firstname,' ?
-           "$row[1] $row[2]" : "$row[2] $row[1]" );
+        $fullname = "$row[2] $row[1]";
       else
         $fullname = $row[0];
       $ret[$count++] = [
@@ -490,5 +507,71 @@ function user_get_users ( $publicOnly=false ) {
   }
   // No need to call sort_users() as the SQL can sort for us.
   return $ret;
+}
+
+function user_delete_events($username)
+{
+  // Get event ids for all events this user is a participant.
+  $events = get_users_event_ids($username);
+
+  // Now count number of participants in each event...
+  // If just 1, then save id to be deleted.
+  $delete_em = [];
+  for ($i = 0, $cnt = count($events); $i < $cnt; $i++) {
+    $res = dbi_execute('SELECT COUNT( * ) FROM webcal_entry_user ' .
+      'WHERE cal_id = ?', [$events[$i]]);
+    if ($res) {
+      $row = dbi_fetch_row($res);
+      if (!empty($row) && $row[0] == 1)
+        $delete_em[] = $events[$i];
+      dbi_free_result($res);
+    }
+  }
+  // Now delete events that were just for this user.
+  for ($i = 0, $cnt = count($delete_em); $i < $cnt; $i++) {
+    dbi_execute(
+      'DELETE FROM webcal_entry_repeats WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_entry_repeats_not WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_entry_log WHERE cal_entry_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_import_data WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_site_extras WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_reminders WHERE cal_id =? ',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_blob WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+    dbi_execute(
+      'DELETE FROM webcal_entry WHERE cal_id = ?',
+      [$delete_em[$i]]
+    );
+  }
+  // Delete user participation from events.
+  dbi_execute(
+    'DELETE FROM webcal_entry_user WHERE cal_login = ?',
+    [$username]
+  );
+
+  return count($delete_em);
 }
 ?>

@@ -1,4 +1,3 @@
-/* $Id: upgrade-ibase.sql,v 1.30 2009/10/30 11:47:16 bbannon Exp $ */
 /*UPGRADE_V0.9.14*/
 UPDATE WEBCAL_ENTRY SET CAL_TIME = -1 WHERE CAL_TIME IS NULL;
 CREATE TABLE WEBCAL_ENTRY_REPEATS
@@ -303,3 +302,14 @@ CREATE TABLE webcal_TIMEZONES (
 );
 CREATE INDEX IWEBCAL_TIMEZONESNEWINDEX ON WEBCAL_TIMEZONES(TZID);
 /*upgrade_v1.3.0*/
+CREATE INDEX IF NOT EXISTS
+  webcal_entry_categories ON webcal_entry_categories(cat_id);
+/*upgrade_v1.9.0*/
+ALTER TABLE webcal_import ADD cal_check_date INT NULL;
+ALTER TABLE webcal_import ADD cal_md5 VARCHAR(32) NULL DEFAULT NULL;
+CREATE INDEX IF NOT EXISTS
+  webcal_import_data_type ON webcal_import_data(cal_import_type);
+CREATE INDEX IF NOT EXISTS
+  webcal_import_data_ext_id ON webcal_import_data(cal_external_id);
+ALTER TABLE webcal_user MODIFY cal_passwd VARCHAR(255);
+/*upgrade_v1.9.1*/

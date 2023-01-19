@@ -1,4 +1,4 @@
-<?php // $Id: rss_activity_log.php,v 1.9 2010/10/05 17:16:59 cknudsen Exp $
+<?php
 /**
  * Description:
  *  Generates RSS 2.0 output of the activity log.
@@ -34,7 +34,7 @@
  */
 
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -106,7 +106,7 @@ $descr = $appStr . ' - ' . translate ( 'Activity Log' );
 //header ( 'Content-type: application/rss+xml');
 header ( 'Content-type: text/xml' );
 echo '<?xml version="1.0" encoding="' . $charset . '"?>
-<?xml-stylesheet href="rss-style.css" ?>
+<?xml-stylesheet href="includes/css/rss-style.css" ?>
 <rss version="2.0" xml:lang="' . $lang . '">
   <channel>
     <title><![CDATA[' . $appStr . ']]></title>

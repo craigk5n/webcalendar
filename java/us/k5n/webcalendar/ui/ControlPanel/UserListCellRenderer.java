@@ -14,7 +14,6 @@ import us.k5n.webcalendar.User;
  * in the JList. We could also add icons here if we wanted to...
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class UserListCellRenderer extends JLabel implements ListCellRenderer {
 

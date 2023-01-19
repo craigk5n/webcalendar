@@ -49,16 +49,16 @@ print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_m.php?id=' . $id
- . '&amp;date=' . $prevdate . '"><img src="images/leftarrow.gif" alt="'
+ . '&amp;date=' . $prevdate . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="'
  . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="view_m.php?id=' . $id
- . '&amp;date=' . $nextdate . '"><img src="images/rightarrow.gif" alt="'
+ . '&amp;date=' . $nextdate . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="'
  . $nextStr . '" /></a>
       <div class="title">
         <span class="date">';
 printf ( "%s %d", month_name ( $thismonth - 1 ), $thisyear );
 echo '</span><br />
-        <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
+        <span class="viewname">' . $view_name . '</span>
       </div>
     </div><br />';
 
@@ -130,21 +130,32 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
       </tr>';
 
   for ( $date = $startdate; $date <= $enddate; $date += 86400 ) {
-    $dateYmd = date ( 'Ymd', $date );
+    $d = $date;
+    //date should always be 00 hours entering DST turns this into 01 (end of March)
+    //leaving DST turns into 23 (end of October)
+    $DSTtest = date("H",$d);
+    if ($DSTtest == "23") {
+      $d = $date + 3600;
+    } 
+    if ($DSTtest == "01" ) {
+      $d = $date - 3600;
+    }
+    $dateYmd = date ( 'Ymd', $d );
+    $dateYmd = date ( 'Ymd', $d );
     $todayYmd = date ( 'Ymd', $today );
-    $is_weekend = is_weekend ( $date );
+    $is_weekend = is_weekend ( $d );
     if ( $is_weekend && $DISPLAY_WEEKENDS == 'N' )
       continue;
 
-    $weekday = weekday_name ( date ( 'w', $date ), $DISPLAY_LONG_DAYS );
+    $weekday = weekday_name ( date ( 'w', $d ), $DISPLAY_LONG_DAYS );
     $class = 'class="' . ( $dateYmd == $todayYmd
       ? 'today"'
-      : ( $is_weekend ? 'weekend"' : 'row"' ) );
+      : ( $is_weekend ? 'weekend"' : 'weekday"' ) );
 
     // Non-breaking space below keeps event from wrapping prematurely.
     echo '
       <tr>
-        <th ' . $class . '>' . $weekday . '&nbsp;' . date ( 'd', $date ) . '</th>';
+        <th ' . $class . '>' . $weekday . '&nbsp;' . date ( 'd', $d ) . '</th>';
     for ( $i = $j, $k = 0;
       $i < $viewusercnt && $k < $USERS_PER_TABLE; $i++, $k++ ) {
       $events = $e_save[$i];

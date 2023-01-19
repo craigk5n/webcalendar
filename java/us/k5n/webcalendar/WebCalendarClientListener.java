@@ -5,8 +5,6 @@ package us.k5n.webcalendar;
  * and outgoing web service calls to a WebCalendar service.
  *
  * @author Craig Knudsen, craig@k5n.us
- * @version $Id$
- *
  */
 public interface WebCalendarClientListener {
 

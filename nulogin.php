@@ -1,9 +1,9 @@
-<?php // $Id: nulogin.php,v 1.22 2009/11/22 16:47:45 bbannon Exp $
+<?php
 /**
  * This page handles logins for nonuser calendars.
  */
 include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.class';
+require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
@@ -28,9 +28,16 @@ if ( $single_user == 'Y'/* No login for single-user mode.*/ ||
     $use_http_auth )/* No web login for HTTP-based authentication.*/
   die_miserable_death ( print_not_auth() );
 
-$login = getValue ( 'login' );
-if ( empty ( $login ) )
+$login = getValue ('login');
+if (empty($login))
   die_miserable_death( translate( 'A login must be specified.' ) );
+$login2 = chkXSS('login');
+if($login != $login2)
+  die_miserable_death( translate( 'A login must be specified.' ) );
+$badLoginStr = translate('Illegal characters in login XXX.');
+if ($login != addslashes($login) || $login != htmlentities(trim($login)))
+  die_miserable_death( str_replace('XXX', htmlentities($login), $badLoginStr));
+$login = htmlentities(trim($login));
 
 $date = getValue ( 'date' );
 $return_path = getValue ( 'return_path' );
@@ -55,8 +62,6 @@ if ( empty ( $PHP_SELF ) )
 
 $cookie_path = str_replace ( 'nulogin.php', '', $PHP_SELF );
 // echo "Cookie path: $cookie_path\n";
-if ( get_magic_quotes_gpc() )
-  $login = stripslashes ( $login );
 
 $login = trim ( $login );
 $badLoginStr = translate ( 'Illegal characters in login XXX.' );
@@ -69,7 +74,7 @@ if ( $login != addslashes ( $login ) )
 $encoded_login = encode_string ( $login . '|nonuser' );
 
 // set login to expire in 365 days
-SetCookie ( 'webcalendar_session', $encoded_login,
+sendCookie ( 'webcalendar_session', $encoded_login,
   ( ! empty ( $remember ) && $remember == 'yes' ?
   31536000 + time() : 0 ), $cookie_path );
 

@@ -15,7 +15,6 @@ import javax.swing.table.TableCellRenderer;
  * single cell.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class ReadOnlyTable extends JTable implements MouseListener {
   int highlightedRow = -1;

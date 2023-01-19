@@ -29,7 +29,6 @@
  * @author Craig Knudsen <cknudsen@cknudsen.com>
  * @copyright Craig Knudsen, <cknudsen@cknudsen.com>, http://www.k5n.us/cknudsen
  * @license http://www.gnu.org/licenses/lgpl.html GNU LGPL
- * @version $Id: dbi4php.php,v 1.37 2010/04/07 13:39:08 cknudsen Exp $
  * @package WebCalendar
  *
  * History:
@@ -515,16 +514,21 @@ function dbi_update_blob( $table, $column, $key, $data ) {
     array( '"dbi_update_blob"', $GLOBALS['db_type'] ),
     translate( 'Unfortunately, XXX is not implemented for YYY' ) );
 
-  assert( '! empty( $table )' );
-  assert( '! empty( $column )' );
-  assert( '! empty( $key )' );
-  assert( '! empty( $data )' );
+  assert( ! empty( $table ) );
+  assert( ! empty( $column ) );
+  assert( ! empty( $key ) );
+  assert( ! empty( $data ) );
 
   $sql = 'UPDATE ' . $table . ' SET ' . $column;
 
   if( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 )
     return dbi_execute( $sql . ' = 0x' . bin2hex( $data ) . ' WHERE ' . $key );
-  elseif( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ) {
+  elseif ( strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
+    return dbi_execute( $sql . ' = \''
+     . ( function_exists( 'mysqli_real_escape_string' )
+       ? $db_connection_info['connection']->real_escape_string( $data ) : addslashes( $data ) )
+     . '\' WHERE ' . $key );
+  } elseif ( strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ) {
     return dbi_execute( $sql . ' = \''
      . ( function_exists( 'mysql_real_escape_string' )
        ? mysql_real_escape_string( $data ) : addslashes( $data ) )
@@ -562,23 +566,25 @@ function dbi_update_blob( $table, $column, $key, $data ) {
 function dbi_get_blob( $table, $column, $key ) {
   global $unavail_DBI_Update_blob, $db_connection_info;
 
-  assert( '! empty( $table )' );
-  assert( '! empty( $column )' );
-  assert( '! empty( $key )' );
+  assert( ! empty( $table ) );
+  assert( ! empty( $column ) );
+  assert( ! empty( $key ) );
 
   $res =
     dbi_execute( 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $key );
 
-  if( ! $res )
+  if( ! $res ) {
     return false;
+  }
 
   $ret = '';
 
   if( $row = dbi_fetch_row( $res ) ) {
-    if( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0
-        || strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 )
+    if( strcmp( $GLOBALS['db_type'], 'mssql' ) == 0 
+        || strcmp( $GLOBALS['db_type'], 'mysql' ) == 0 ||
+        strcmp( $GLOBALS['db_type'], 'mysqli' ) == 0 ) {
       $ret = $row[0];
-    elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
+    } elseif( strcmp( $GLOBALS['db_type'], 'postgresql' ) == 0 )
       $ret = pg_unescape_bytea ( $row[0] );
     elseif( strcmp( $GLOBALS['db_type'], 'sqlite' ) == 0 )
       $ret = sqlite_udf_decode_binary( $row[0] );
@@ -708,11 +714,6 @@ function dbi_fatal_error( $msg, $doExit = true, $showError = true ) {
  */
 function dbi_escape_string( $string ) {
   global $db_connection_info;
-  // Return the string in original form; all possible escapings by
-  // magic_quotes_gpc (and possibly magic_quotes_sybase) will be rolled back.
-  // But, also, we may roll back escaping we have done ourselves.
-  // (maybe this should be removed)
-  // if( get_magic_quotes_gpc() )
   $string = stripslashes( $string );
   switch( $GLOBALS['db_type'] ) {
     case 'ibase':

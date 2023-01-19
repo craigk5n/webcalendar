@@ -1,6 +1,6 @@
 <?php
 include_once 'includes/init.php';
-require 'includes/classes/WebCalMailer.class';
+require 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
 $can_edit = $my_event = false;
@@ -113,7 +113,7 @@ if ( $id > 0 && empty ( $error ) ) {
     // First, get list of participants (with status Approved or Waiting on approval).
     $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user
   WHERE cal_id = ?
-    AND cal_status IN ( "A", "W" )', [$id] );
+    AND cal_status IN ( \'A\', \'W\' )', [$id] );
     $partlogin = [];
     if ( $res ) {
       while ( $row = dbi_fetch_row ( $res ) ) {
@@ -191,9 +191,7 @@ if ( $id > 0 && empty ( $error ) ) {
           }
           dbi_free_result ( $res );
           for ( $i = 0, $cnt = count ( $ex_events ); $i < $cnt; $i++ ) {
-            $res = dbi_execute ( 'SELECT cal_login
-  FROM webcal_entry_user
-  WHERE cal_id = ?', [$ex_events[$i]] );
+            $res = dbi_execute ( 'SELECT cal_login FROM webcal_entry_user WHERE cal_id = ?', [$ex_events[$i]] );
             if ( $res ) {
               $delusers = [];
               while ( $row = dbi_fetch_row ( $res ) ) {
@@ -204,9 +202,8 @@ if ( $id > 0 && empty ( $error ) ) {
                 // Log the deletion.
                 activity_log ( $ex_events[$i], $login, $delusers[$j],
                   $log_delete, '' );
-                dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ?
-  WHERE cal_id = ?
-    AND cal_login = ?', ['D', $ex_events[$i], $delusers[$j]] );
+                dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = ? WHERE cal_id = ? ' .
+                  ' AND cal_login = ?', ['D', $ex_events[$i], $delusers[$j]] );
               }
             }
           }
@@ -214,13 +211,10 @@ if ( $id > 0 && empty ( $error ) ) {
       }
 
       // Now, mark event as deleted for all users.
-      dbi_execute ( 'UPDATE webcal_entry_user
-  SET cal_status = "D"
-  WHERE cal_id = ?', [$id] );
+      dbi_execute ( 'UPDATE webcal_entry_user SET cal_status = \'D\' WHERE cal_id = ?', [$id] );
 
       // Delete External users for this event
-      dbi_execute ( 'DELETE FROM webcal_entry_ext_user
-  WHERE cal_id = ?', [$id] );
+      dbi_execute ( 'DELETE FROM webcal_entry_ext_user WHERE cal_id = ?', [$id] );
     }
   } else {
     // Not the owner of the event, but participant or noncal_admin.

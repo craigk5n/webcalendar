@@ -18,7 +18,6 @@ class siteExtra {
  * The Event class represents an event.
  *
  * @author Craig Knudsen
- * @version $Id$
  *
  */
 public class Event {

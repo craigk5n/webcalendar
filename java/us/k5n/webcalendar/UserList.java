@@ -17,7 +17,6 @@ import org.xml.sax.SAXException;
  * Contains a list of users.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class UserList extends Vector {
   Document document; // XML DOM object

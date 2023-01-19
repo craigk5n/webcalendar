@@ -13,7 +13,6 @@
  * Admin permissions are checked by the WebCalendar class.
  */
 include_once 'includes/init.php';
-require_valid_referring_url ();
 
 $cur = $error = '';
 $found = $foundOld = false;
@@ -28,8 +27,8 @@ if ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' ) {
 }
 
 if ( $user == '__system__' )
-  assert ( '($is_admin && ! access_is_enabled() ) ||
-    access_can_access_function ( ACCESS_SYSTEM_SETTINGS )' );
+  assert ( ($is_admin && ! access_is_enabled() ) ||
+    access_can_access_function ( ACCESS_SYSTEM_SETTINGS ) );
 
 // Get existing value.
 $res = dbi_execute ( 'SELECT cal_template_text FROM webcal_user_template
@@ -124,7 +123,8 @@ if ( $user != '__system__' ) {
 }
 
 echo '</h2>' . ( ! empty ( $error ) ? print_error ( $error ) : '
-    <form action="edit_template.php" method="post" name="reportform">
+    <form action="edit_template.php" method="post" name="reportform">'
+   . csrf_form_key() . '
       <input type="hidden" name="type" value="' . $type . '" />'
    . ( ! empty ( $ALLOW_USER_HEADER ) && $ALLOW_USER_HEADER == 'Y' && !
     empty ( $user ) && $user != '__system__' ? '

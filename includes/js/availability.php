@@ -1,4 +1,4 @@
-<?php // $Id: availability.php,v 1.18 2009/11/22 16:47:46 bbannon Exp $
+<?php
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
 $month = $arinc[3];
@@ -7,72 +7,45 @@ $year = $arinc[5];
 $parent_form = $arinc[6];
 ?>
 
-// detect browser
-NS4 = (document.layers) ? 1 : 0;
-IE4 = (document.all) ? 1 : 0;
-// W3C stands for the W3C standard, implemented in Mozilla (and Netscape 6) and IE5
-W3C = (document.getElementById) ? 1 : 0;
-
-/*
- * Function is similar to visible.php, but effects the parent
- */
-function makeVisible ( name ) {
-  var ele;
-
-  if ( W3C ) {
-    ele = window.opener.document.getElementById(name);
-  } else if ( NS4 ) {
-    ele = window.opener.document.layers[name];
-  } else { // IE4
-    ele = window.opener.document.all[name];
-  }
-
-  if ( NS4 ) {
-    ele.visibility = "show";
-  } else {  // IE4 & W3C & Mozilla
-    ele.style.visibility = "visible";
-  }
-}
 function schedule_event(hours, minutes) {
   var year =<?php echo $year ?>;
   var month =<?php echo $month ?>;
   var day =<?php echo $day ?>;
   if (confirm("<?php etranslate ( 'Change the date and time of this entry?', true)?>")) {
-    var parentForm = window.opener.document.forms['<?php echo $parent_form ?>'];
-    if ( '<?php echo $parent_form ?>' == 'editentryform') {
-      parentForm.timetype.selectedIndex = 1;
-      //Make time controls visible on parent
-      makeVisible ( "timeentrystart" );
-      if ( parentForm.duration_h ) {
-        makeVisible ( "timeentryduration" );
-      } else {
-        makeVisible ( "timeentryend" );
-      }
+    var parentForm = $('#<?php echo $parent_form;?>', window.parent.document);
+    if ('<?php echo $parent_form ?>' == 'editentryform') {
+      var tt = window.opener.$("#timetype");
+      // Change to "Timed Event".
+      // Calling change() will also invoke the change handler and make certain
+      // input fields (hours, minutes) visible.
+      tt.val('T').change();
+//      //Make time controls visible on parent
+//      window.opener.$('#timeentrystart').show();
+//      if (window.opener.$('#duration_h')) {
+//        window.opener.$('#timeentryduration').show();
+//      } else {
+//        $window.opener.$('#timeentryend').show();
+//      }
     }
-    parentForm.entry_hour.value = hours;
-    if ( hours >  12 ) {
-      if ( parentForm.entry_ampmP ) {
-        parentForm.entry_hour.value = hours - 12;
-        parentForm.entry_ampmP.checked = true;
+    window.opener.$('#entry_hour').val(hours);
+    if (hours >  12) {
+      if (window.opener.$('#entry_ampmP')) {
+        window.opener.$('#entry_hour').val(hours - 12);
+        window.opener.$('#entry_ampmP').prop("checked", true);
       }
     } else {
-      if ( hours == 12 && parentForm.entry_ampmP ) {
-        parentForm.entry_ampmP.checked = true;
+      if (hours == 12 && window.opener.$('#entry_ampmP')) {
+        window.opener.$('#entry_ampmP').prop("checked", true);
       } else {
-        if ( parentForm.entry_ampmA ) {
-          parentForm.entry_ampmA.checked = true;
+        if (window.opener.$('#entry_ampmA')) {
+          window.opener.$('#entry_ampmA').prop("checked", true);
         }
       }
     }
-    if   ( minutes <= 9 ) minutes = '0' + minutes;
-    parentForm.entry_minute.value=minutes;
-    parentForm.day.selectedIndex = day - 1;
-    parentForm.month.selectedIndex = month - 1;
-    for ( i = 0; i < parentForm.year.length; i++ ) {
-      if ( parentForm.year.options[i].value == year ) {
-        parentForm.year.selectedIndex = i;
-      }
-    }
+    window.opener.$('#entry_minute').val(minutes);
+    window.opener.$('#day').attr('selectedIndex', day - 1);
+    window.opener.$('#month').attr('selectedIndex', month - 1);
+    window.opener.$('#year').val(year).change();
     window.close();
   }
 }

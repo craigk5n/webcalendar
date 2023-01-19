@@ -194,7 +194,7 @@ if ( ! $fit_to_window )
   $tdw = floor ( ( $table_width - $time_w ) / ( $end_ind - $start_ind + 1 ) );
 else
   // %
-  $tdw = floor ( ( 100 - $time_w ) / ( $end_ind - $start_ind + 1 ) );
+  $tdw = floor ( ( 100 - (int)$time_w ) / ( $end_ind - $start_ind + 1 ) );
 
 $untimed_found = false;
 $get_unapproved = ( $DISPLAY_UNAPPROVED == 'Y' );
@@ -236,9 +236,9 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
 ?>
 
 <div style="width:99%;">
-<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>" class="prev"><img src="images/leftarrow.gif" alt="<?php etranslate ( 'Previous' )?>" /></a>
+<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $prevdate?>" class="prev"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="<?php etranslate ( 'Previous' )?>" /></a>
 
-<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>" class="next"><img src="images/rightarrow.gif" alt="<?php etranslate ( 'Next' )?>" /></a>
+<a href="view_r.php?id=<?php echo $id?>&amp;date=<?php echo $nextdate?>" class="next"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="<?php etranslate ( 'Next' )?>" /></a>
 <div class="title">
 <span class="date"><?php
   if ( $is_day_view ) {
@@ -248,7 +248,7 @@ $last_slot = (int)( ( $WORK_DAY_END_HOUR * 60 ) / $interval );
       $last_date;
   }
 ?></span><br />
-<span class="viewname"><?php echo htmlspecialchars ( $view_name ) ?></span>
+<span class="viewname"><?php echo $view_name; ?></span>
 <?php
   if ( $DISPLAY_WEEKNUMBER == 'Y' ) {
     echo "<br />\n<span class=\"titleweek\">(" .
@@ -496,7 +496,7 @@ for ( $i = $first_slot; $i <= $last_slot; $i++ ) {
   $time_h = ( int ) ( ( $i * $interval ) / 60 );
   $time_m = ( $i * $interval ) % 60;
   $time = display_time ( ( $time_h * 100 + $time_m ) * 100, 1 );
-  echo "<tr>\n<th class=\"aligntop row\" width=\"$time_w" .
+  echo "<tr>\n<th class=\"aligntop weekday\" width=\"$time_w" .
     '">' . $time . "</th>\n";
 
   for ( $d = $start_ind; $d <= $end_ind; $d++ ) {

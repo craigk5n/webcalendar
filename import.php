@@ -1,4 +1,4 @@
-<?php // $Id: import.php,v 1.59 2010/02/21 08:27:48 bbannon Exp $
+<?php
 /**
  * Page Description:
  * This page will present the user with forms for submitting a data file to import.
@@ -103,10 +103,8 @@ $upload = ini_get ( 'file_uploads' );
 $upload_enabled = ( ! empty( $upload )
    && preg_match( '/(On|1|true|yes)/i', $upload ) );
 
-print_header ( array ( 'js/export_import.php', 'js/visible.php' ),
-  '', 'onload="toggle_import();"' );
-echo '
-    <h2>' . translate ( 'Import' ) . '&nbsp;<img src="images/help.gif" alt="'
+print_header (array('js/import.php'), '', 'onload="toggle_import();"' );
+echo '<h2>' . translate ( 'Import' ) . '&nbsp;<img src="images/bootstrap-icons/question-circle-fill.svg" alt="'
  . translate ( 'Help' ) . '" class="help" onclick="window.open( '
  . "'help_import.php', 'cal_help', '"
  . 'dependent,menubar,scrollbars,height=400,width=400\' );" /></h2>';
@@ -124,15 +122,16 @@ else {
   $yesStr = translate ( 'Yes' );
   echo '
     <form action="import_handler.php" method="post" name="importform" '
-   . 'enctype="multipart/form-data" onsubmit="return checkExtension()">
-      <table>
+   . 'enctype="multipart/form-data" onsubmit="return checkExtension()">'
+   . csrf_form_key() . '
+      <table class="table table-responsive">
         <tr>
           <td><label for="importtype">' . translate ( 'Import format' ) . ':</label></td>
           <td>
             <select name="ImportType" id="importtype" onchange="toggle_import()">
-              <option value="ICAL">iCal</option>
+              <option value="ICAL">iCalendar/ICS</option>
               <option value="PALMDESKTOP">Palm Desktop</option>
-              <option value="VCAL">vCal</option>
+              <option value="VCAL">vCalendar</option>
               <option value="OUTLOOKCSV">Outlook (CSV)</option>
               <option value="GITLOG">Git Log</option>
             </select>
@@ -174,7 +173,7 @@ else {
   print_categories();
   echo '
       </table><br />
-      <input type="submit" value="' . translate ( 'Import' ) . '" />
+      <input class="btn btn-primary" type="submit" value="' . translate ( 'Import' ) . '" />
     </form>';
 }
 echo print_trailer();

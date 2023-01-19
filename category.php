@@ -1,5 +1,4 @@
-<?php // $Id: category.php,v 1.50.2.1 2013/01/24 21:15:08 cknudsen Exp $
-
+<?php
 include_once 'includes/init.php';
 // Load user and global cats.
 load_user_categories();
@@ -9,11 +8,11 @@ if ( $CATEGORIES_ENABLED == 'N' ) {
   exit;
 }
 
-// Verify that permissions allow writing to the "icons" directory.
+// Verify that permissions allow writing to the "wc-icons" directory.
 $canWrite = false;
 $permError = false;
 if ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) {
-  $testFile = "icons/testWrite.txt";
+  $testFile = "wc-icons/testWrite.txt";
   $testFd = @fopen ( $testFile, "w+b", false );
   @fclose ( $testFd );
   $canWrite = file_exists ( $testFile );
@@ -27,7 +26,7 @@ if ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) {
 $catIcon = $catname = $error = $idStr = '';
 $catIconStr = translate ( 'Category Icon' );
 $globalStr = translate ( 'Global' );
-$icon_path = 'icons/';
+$icon_path = 'wc-icons/';
 // If editing, make sure they are editing their own (or they are an admin user).
 if ( ! empty ( $id ) ) {
   if ( empty ( $categories[$id] ) )
@@ -66,79 +65,64 @@ if ( empty ( $add ) )
 if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
   echo '
     <form action="category_handler.php" method="post" name="catform" '
-   . 'enctype="multipart/form-data">' . $idStr . '
-      <table cellspacing="2" cellpadding="3">
-        <tr>
-          <td width="25%"><label for="catname">' . translate ( 'Category Name' )
-   . '</label></td>
-          <td colspan="3"><input type="text" name="catname" size="20" value="'
-   . htmlspecialchars ( $catname ) . '" /></td>
-        </tr>' . ( $is_admin && empty ( $id ) ? '
-        <tr>
-          <td><label for="isglobal">' . $globalStr . ':</label></td>
-          <td colspan="3">
-            <label><input type="radio" name="isglobal" value="N" '
-     . ( ! empty ( $catowner ) || empty ( $id ) ? ' checked = "checked"' : '' )
-     . ' />&nbsp;' . translate ( 'No' ) . '</label>&nbsp;&nbsp;
-            <label><input type="radio" name="isglobal" value="Y" '
-     . ( empty ( $catowner ) && ! empty ( $id ) ? ' checked = "checked"' : '' )
-     . ' />&nbsp;' . translate ( 'Yes' ) . '</label>
-          </td>
-        </tr>' : '' ) . '
-        <tr>
-          <td>'
-   . print_color_input_html ( 'catcolor', translate ( 'Color' ), $catcolor )
-   . '</td>
-        </tr>
-        <tr id="cat_icon" style="' . $showIconStyle . '">
-          <td><label>' . $catIconStr . ':</label></td>
-          <td colspan="3"><img src="' . $catIcon
-   . '" name="urlpic" id="urlpic" alt="' . $catIconStr . '" /></td>
-        </tr>
-        <tr id="remove_icon" style="' . $showIconStyle . '">
-          <td><label for="delIcon">' . translate ( 'Remove Icon' )
-   . '</label></td>
-          <td colspan="3"><input type="checkbox" name="delIcon" value="Y" /></td>
-        </tr>
-        <tr>
-          <td colspan="4">
-            <label for="FileName">' . ( is_dir ( $icon_path ) &&
+    . 'enctype="multipart/form-data">' . csrf_form_key() . $idStr . '
+    <div class="form-inline">
+    <label class="col-sm-3 col-form-label" for="catname">' . translate ('Category Name') . '</label>
+    <input class="form-control" type="text" name="catname" size="20" value="'
+    . htmlspecialchars ($catname) . '" /></div>' .
+    ($is_admin && empty ($id) ? '
+
+    <div class="form-inline"><label class="col-sm-3 col-form-label" for="isglobal">'
+    . $globalStr . ":</label>"
+    . print_radio ( 'isglobal', '', '', (empty ($catowner) && ! empty ($id)) ? 'Y' : 'N', '') .
+    '</div>' : '' ) .
+
+    '<div class="form-inline">
+    <label class="col-sm-3 col-form-label" for="catname">' . translate ('Color') . ':</label>'
+    . print_color_input_html ('catcolor', translate ('Color'), $catcolor) .
+    '</div>';
+
+    // Category icon
+    echo '
+    <div class="form-inline" id="cat_icon" style="' . $showIconStyle . '">
+    <label class="col-sm-3 col-form-label" for="catname">' . translate ('Category Icon') . ':</label>
+    <img src="' . $catIcon . '" name="urlpic" id="urlpic" alt="' . $catIconStr . '" /></div>
+    <div id="remove_icon" class="form-inline" style="' . $showIconStyle . '">
+    <label class="col-sm-3 col-form-label" for="delIcon">' . translate ('Remove Icon') . '</label>
+    <input type="checkbox" name="delIcon" value="Y" /></div>
+    <div class="form-inline">
+    <label class="col-sm-3 col-form-label" for="FileName">' 
+    . ( is_dir ( $icon_path ) &&
     ( ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) && $canWrite )
-    ? translate ( 'Add Icon to Category' ) . '</label><br />&nbsp;&nbsp;&nbsp;'
-     . translate ( 'Upload' ) . '&nbsp;<span style="font-size:small;">'
-     . translate ( 'GIF or PNG 6kb max' ) . '</span>:
-            <input type="file" name="FileName" id="fileupload" size="45" '
+    ? translate ( 'Add Icon to Category' ) . ':</label>
+      <input class="form-control" type="file" name="FileName" id="fileupload" size="45" '
      . 'maxlength="50" value=""/>
-          </td>
-        </tr>
-        </tr>
-          <td colspan="4">
-            <input type="hidden" name="urlname" size="50" />&nbsp;&nbsp;&nbsp;
-            <input type="button" value="'
-     . translate ( 'Search for existing icons' )
-     . '" onclick="window.open( \'icons.php\', \'icons\',\''
-     . 'dependent,menubar=no,scrollbars=n0,height=300,width=400,outerHeight=320'
-     . ',outerWidth=420\' );" />
-          </td>
-        </tr>
-        </tr>
-          <td colspan="4">' : '' ) // end test of ENABLE_ICON_UPLOADS
-  . '
-            <input type="submit" name="action" value="'
-   . ( $add == '1' ? translate ( 'Add' ) : translate ( 'Save' ) ) . '" />'
+     <small class="ml-2">('
+     . translate ('GIF or PNG 6kb max') . ')</small>
+    </div>
+
+    <div class="form-inline p-1">
+    <input type="hidden" id="urlname" name="urlname" size="50" />&nbsp;&nbsp;&nbsp;
+    <input class="btn btn-secondary openBtn" type="button" value="'
+     . translate ( 'Search for existing icons...' )
+     . '" />
+     </div>' : '' ) // end test of ENABLE_ICON_UPLOADS
+  . '<div class="form-inline">
+  <input class="form-control btn btn-primary" type="submit" name="action" value="'
+   . ( $add == '1' ? translate ('Add') : translate ('Save') ) . '" />'
+   . '<a href="category.php" class="form-control btn btn-secondary ml-1">Cancel</a> '
    . ( ! empty ( $id ) ? '
-            <input type="submit" name="delete" value="'
-     . translate ( 'Delete' ) . '" onclick="return confirm( '
+      <input class="form-control btn btn-danger ml-1" type="submit" name="delete" value="'
+     . translate ('Delete') . '" onclick="return confirm( '
      . translate( 'Are you sure you want to delete this entry?', true )
      . '\' )" />' : '' ) . '
-          </td>
-        </tr>
-      </table>
+          </div>
     </form>';
 } else
 if ( empty ( $error ) ) {
   // Displaying Categories.
   $global_found = false;
+  //echo "<pre>"; print_r($categories); echo "</pre>";
   if ( ! empty ( $categories ) ) {
     echo '
     <ul>';
@@ -166,11 +150,39 @@ if ( empty ( $error ) ) {
     echo '
     </ul>';
   }
-  echo ( $global_found ? '<br /><br />
-    <sup>*</sup> ' . $globalStr : '' ) . '
-    <p><a href="category.php?add=1">' . translate ( 'Make New Category' )
-   . '</a></p><br />';
+  echo ( $global_found ? '<sup>*</sup> ' . $globalStr : '' ) . '
+    <br><div class="p-2"><a class="btn btn-primary" href="category.php?add=1">' . translate ( 'Make New Category' )
+   . '</a></div><br />';
 }
+?>
+
+<!-- Icon selectoin modal -->
+<div class="modal fade" id="iconmodal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><?php etranslate('Current Icons');?></h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button id="modalclosebtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$('.openBtn').on('click',function(){
+    $('.modal-body').load('icons.php',function(){
+        $('#iconmodal').modal({show:true});
+    });
+});
+</script>
+
+<?php
 echo ( ! empty ( $error ) ? print_error ( $error ) : '' ) . print_trailer();
 
 ?>

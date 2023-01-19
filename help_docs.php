@@ -1,4 +1,4 @@
-<?php // $Id: help_docs.php,v 1.5 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 include_once 'includes/help_list.php';
 
@@ -23,6 +23,6 @@ echo $helpListStr . '
       <li><a href="http://www.k5n.us/wiki/">WebCalendar Wiki</a></li>
     </ul>';
 
-print_trailer ( false, true, true );
+echo print_trailer ( false, true, true );
 
 ?>

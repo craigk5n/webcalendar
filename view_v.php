@@ -46,16 +46,16 @@ print_header( array( 'js/popups.js/true', 'js/dblclick_add.js/true' ) );
 echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_v.php?id=' . $id
- . '&amp;date=' . $prevdate . '"><img src="images/leftarrow.gif" alt="'
+ . '&amp;date=' . $prevdate . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="'
  . $prevStr . '" /></a>
       <a title="' . $nextStr . '" class="next" href="view_v.php?id=' . $id
- . '&amp;date=' . $nextdate . '"><img src="images/rightarrow.gif" alt="'
+ . '&amp;date=' . $nextdate . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="'
  . $nextStr . '" /></a>
       <div class="title">
         <span class="date">' . date_to_str ( $thisdate, '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
  . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br />
-        <span class="viewname">' . htmlspecialchars ( $view_name ) . '</span>
+        <span class="viewname">' . $view_name . '</span>
       </div>
     </div><br />';
 
@@ -110,7 +110,7 @@ for ( $j = 0; $j < 7; $j += $DAYS_PER_TABLE ) {
     user_load_variables ( $user, 'temp' );
     $body .= '
       <tr>
-        <th class="row" style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
+        <th class="weekday" style="width:' . $tdw . '%;">' . $tempfullname . '</th>';
     for ( $date = $wkstart; $date <= $wkend;
      $date = bump_local_timestamp( $date, 0, 0, 0, 0, 1, 0 ) ) {
       $is_weekend = is_weekend( $date );

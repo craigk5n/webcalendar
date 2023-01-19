@@ -1,4 +1,4 @@
-<?php // $Id: select_user.php,v 1.36 2009/11/22 16:47:45 bbannon Exp $
+<?php
 include_once 'includes/init.php';
 print_header();
 echo '
@@ -27,8 +27,8 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
       $url .= '.php';
   }
   echo '
-    <form action="' . $url . '" method="get" name="SelectUser">
-      <select name="user" onchange="document.SelectUser.submit()">';
+    <form class="form-inline" action="' . $url . '" method="get" name="SelectUser">
+      <select class="form-control" name="user" onchange="document.SelectUser.submit()">';
 
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     // Don't list current user
@@ -41,7 +41,7 @@ if ( ( $ALLOW_VIEW_OTHER != 'Y' && ! $is_admin ) ||
 
   echo '
       </select>
-      <input type="submit" value="' . translate ( 'Go' ) . '" />
+      <input class="btn btn-primary" type="submit" value="' . translate ( 'Go' ) . '" />
     </form>';
 }
 

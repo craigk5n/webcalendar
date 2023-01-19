@@ -1,6 +1,5 @@
 <?php
 include_once 'includes/init.php';
-require_valid_referring_url ();
 
 $error = '';
 
@@ -52,8 +51,8 @@ else {
     if ( getPostValue ( 'viewuserall' ) == 'Y' )
       $users = ['__all__'];
 
-    for ( $i = 0, $cnt = count ( $users );
-      ! empty ( $users ) && $i < $cnt; $i++ ) {
+    $cnt = empty($users) ? 0 : count($users);
+    for ($i = 0; $i < $cnt; $i++ ) {
       dbi_execute ( 'INSERT INTO webcal_view_user ( cal_view_id, cal_login )
         VALUES ( ?, ? )', [$id, $users[$i]] );
     }

@@ -1,0 +1,2 @@
+*.phar
+.phpunit.result.cache

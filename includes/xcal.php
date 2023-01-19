@@ -169,7 +169,7 @@ function export_get_attendee( $id, $export ) {
 
   $userlist = user_get_users();
 
-  while ( list ( $key, $row ) = each ( $entry_array ) ) {
+  foreach ($entry_array as $key => $row) {
     // $user[0] = cal_firstname, cal_lastname, cal_email, cal_login
     $userPos = search_users($userlist, $row[0]);
     if ($userPos == -1) {
@@ -187,18 +187,25 @@ function export_get_attendee( $id, $export ) {
       else
       $attendee[$count] .= 'PARTSTAT=';
 
+      // TODO: handle tasks different than events since each have
+      // distinct rules for PARTSTAT.
       switch ( $row[1] ) {
         case 'A':
           $attendee[$count] .= 'ACCEPTED';
           break;
+        case 'C':
+          $attendee[$count] .= 'COMPLETED';
+          break;
+        case 'D':
+          $attendee[$count] .= 'CANCELLED';
+          break;
         case 'R':
           $attendee[$count] .= 'DECLINED';
           break;
+        default: // should not happen
         case 'W':
-          $attendee[$count] .= 'NEEDS-ACTION';
+          $attendee[$count] .= 'TENTATIVE';
           break;
-        default:
-          continue;
       } //end switch
       if ( strcmp( $export, 'vcal' ) == 0 ) {
         $attendee[$count] .= ';ENCODING=QUOTED-PRINTABLE:';
@@ -239,9 +246,9 @@ function export_time ( $date, $duration, $time, $texport, $vtype = 'E' ) {
   $eventend = $eventstart + ( $duration * 60 );
   if ( $time == 0 && $duration == 1440 && strcmp( $texport, 'ical' ) == 0 ) {
     // all day.
+    $dtstart = $date . 'T000000';
     if ( $use_vtimezone && ( $vtimezone_data = get_vtimezone ( $TIMEZONE, $dtstart ) ) ) {
       $vtimezone_exists = true;
-      $dtstart = $date . 'T000000';
       $ret .= 'DTSTART;TZID=' . $TIMEZONE . ':' . $dtstart. "\r\n";
      }else
       $ret .= "DTSTART;VALUE=DATE:$date\r\n";
@@ -301,6 +308,7 @@ function export_recurrence_ical ( $id, $simple = false ) {
   $recurrance = '';
   $sql = 'SELECT cal_date, cal_exdate FROM webcal_entry_repeats_not
     WHERE cal_id = ?';
+  $sep = $simple ? "<br>" : ";";
 
   $res = dbi_execute ( $sql, [$id] );
 
@@ -382,36 +390,36 @@ function export_recurrence_ical ( $id, $simple = false ) {
       }
 
       if ( ! empty ( $interval ) && $interval > 1 )
-        $rrule .= ';' . ( $simple ? translate ( 'Interval' ) : 'INTERVAL' )
+        $rrule .= $sep . ( $simple ? translate ( 'Interval' ) : 'INTERVAL' )
          . "=$interval";
 
       if ( ! empty ( $bymonth ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Months' ) : 'BYMONTH' )
+        $rrule .= $sep . ( $simple ? translate ( 'Months' ) : 'BYMONTH' )
          . "=$bymonth";
 
       if ( ! empty ( $bymonthday ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Month Days' ) : 'BYMONTHDAY' )
+        $rrule .= $sep . ( $simple ? translate ( 'Month Days' ) : 'BYMONTHDAY' )
          . "=$bymonthday";
 
       if ( ! empty ( $byday ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Days' ) : 'BYDAY' )
+        $rrule .= $sep . ( $simple ? translate ( 'Days' ) : 'BYDAY' )
          . "=$byday";
 
       if ( ! empty ( $byweekno ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Weeks' ) : 'BYWEEKNO' )
+        $rrule .= $sep . ( $simple ? translate ( 'Weeks' ) : 'BYWEEKNO' )
          . "=$byweekno";
 
       if ( ! empty ( $bysetpos ) )
-        $rrule .= ';' . ( $simple ? translate ( 'Position' ) : 'BYSETPOS' )
+        $rrule .= $sep . ( $simple ? translate ( 'Position' ) : 'BYSETPOS' )
          . "=$bysetpos";
 
       if ( ! empty ( $wkst ) && $wkst2 != 'MO' )
-        $rrule .= ';' . ( $simple ? translate ( 'Week Start' ) : 'WKST' )
+        $rrule .= $sep . ( $simple ? translate ( 'Week Start' ) : 'WKST' )
          . "=$wkst";
 
       if ( ! empty ( $end ) ) {
         $endtime = ( empty ( $endtime ) ? 0 : $endtime );
-        $rrule .= ';' . ( $simple ? translate ( 'Until' ) : 'UNTIL' ) . '=';
+        $rrule .= $sep . ( $simple ? translate ( 'Until' ) : 'UNTIL' ) . '=';
         $utc = ( $simple
          ? date_to_str ( $end, $DATE_FORMAT_TASK, false ) . ' '
           . display_time ( $endtime )
@@ -419,12 +427,12 @@ function export_recurrence_ical ( $id, $simple = false ) {
         $rrule .= $utc;
       } else
       if ( ! empty ( $cal_count ) && $cal_count != 999 )
-        $rrule .= ';' . ( $simple ? translate ( 'Count' ) : 'COUNT' )
+        $rrule .= $sep . ( $simple ? translate ( 'Count' ) : 'COUNT' )
          . "=$cal_count";
       //.
       // wrap line if necessary
       $rrule = export_fold_lines ( $rrule );
-      while ( list ( $key, $value ) = each ( $rrule ) ) {
+      foreach ($rrule as $key => $value) {
         $recurrance .= "$value\r\n";
       }
       // If type = manual, undo what we just did and process RDATE && EXDATE.
@@ -437,15 +445,13 @@ function export_recurrence_ical ( $id, $simple = false ) {
           $rdatesStr .= date_to_str ( $rdates, $DATE_FORMAT_TASK, false ) . ' ';
         }
         $string = ( $simple
-        ? ',' . translate ( 'Inclusion Dates' ) . '=' . $rdatesStr
+        ? $sep . translate ( 'Inclusion Dates' ) . '=' . $rdatesStr
         : 'RDATE;VALUE=DATE:' . implode ( ',', $rdate ) );
         $string = export_fold_lines ( $string );
-        while ( list ( $key, $value ) = each ( $string ) ) {
+        foreach ($string as $key => $value) {
           $recurrance .= "$value\r\n";
         }
       }
-      if ( $simple )
-       $recurrance .= '<br />';
 
       if ( count ( $exdate ) > 0 ) {
         $exdatesStr = '';
@@ -453,10 +459,10 @@ function export_recurrence_ical ( $id, $simple = false ) {
           $exdatesStr .= date_to_str ( $exdates, $DATE_FORMAT_TASK, false ) . ' ';
         }
         $string = ( $simple
-         ? ',' . translate ( 'Exclusion Dates' ) . '=' . $exdatesStr
+         ? $sep . translate ( 'Exclusion Dates' ) . '=' . $exdatesStr
          : 'EXDATE;VALUE=DATE:' . implode ( ',', $exdate ) );
         $string = export_fold_lines ( $string );
-        while ( list ( $key, $value ) = each ( $string ) ) {
+        foreach ($string as $key => $value) {
           $recurrance .= "$value\r\n";
         }
       }
@@ -646,7 +652,7 @@ function export_alarm_ical ( $id, $date, $description, $task_complete = true ) {
     $ret .= 'ACTION:' . $reminder['action'] . "\r\n";
 
     $array = export_fold_lines ( $description, 'utf8' );
-    while ( list ( $key, $value ) = each ( $array ) ) {
+    foreach ($array as $key => $value) {
       $ret .= "$value\r\n";
     }
 
@@ -772,8 +778,12 @@ function save_uid_for_event ( $importId, $id, $uid ) {
 // Add an entry in webcal_import. For each import or publish request,
 // we create a single webcal_import row that goes with the many
 // webcal_import_data rows (one for each event).
-function create_import_instance() {
+function create_import_instance($username='') {
   global $login, $prodid;
+
+  if(empty($username)) {
+    $username = $login;
+  }
 
   $name = $prodid;
   $importId = 1;
@@ -815,7 +825,7 @@ function export_vcal ( $id ) {
     echo "BEGIN:VCALENDAR\r\n";
     echo generate_prodid ( 'vcs' );
     echo "VERSION:1.0\r\n";
-  } while ( list ( $key, $row ) = each ( $entry_array ) ) {
+  } foreach ($entry_array as $key => $row) {
     $id = $row[0];
     $export_uid = generate_uid();
     $name = $row[1];
@@ -850,7 +860,7 @@ function export_vcal ( $id ) {
     /* UID of the event (folded to 76 char) */
     $export_uid = "UID:$export_uid";
     $array = export_fold_lines ( $export_uid );
-    while ( list ( $key, $value ) = each ( $array ) ) {
+    foreach ($array as $key => $value) {
       echo "$value\r\n";
     }
 
@@ -859,24 +869,24 @@ function export_vcal ( $id ) {
     $name = 'SUMMARY;ENCODING=QUOTED-PRINTABLE:' . $name;
     $array = export_fold_lines ( $name, 'quotedprintable' );
 
-    while ( list ( $key, $value ) = each ( $array ) )
-    echo "$value\r\n";
+    foreach ($array as $key => $value)
+      echo "$value\r\n";
 
     /* DESCRIPTION if any (folded to 76 char) */
     if ( $description != '' ) {
       $description = preg_replace( "/\\\\/", "\\\\\\", $description ); // ??
       $description = 'DESCRIPTION;ENCODING=QUOTED-PRINTABLE:' . $description;
       $array = export_fold_lines ( $description, 'quotedprintable' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      echo "$value\r\n";
+      foreach ($array as $key => $value)
+        echo "$value\r\n";
     } //end if ($description != '')
 
     /* CATEGORIES if any (folded to 76 char) */
     if ( isset ( $categories ) && count ( $categories ) ) {
       $categories = 'CATEGORIES:' . implode ( ';', $categories );
       $array = export_fold_lines ( $categories, 'quotedprintable' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $ret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $ret .= "$value\r\n";
     }
 
     /* CLASS either "PRIVATE", "CONFIDENTIAL, or "PUBLIC" (the default) */
@@ -892,7 +902,7 @@ function export_vcal ( $id ) {
     //$attendcnt = count ( $attendee );
     //for ( $i = 0; $i < $attendcnt; $i++ ) {
     //  $attendee[$i] = export_fold_lines ( $attendee[$i], 'quotedprintable' );
-    //  while ( list ( $key, $value ) = each ( $attendee[$i] ) )
+    //  foreach ($attendee[$i] as $key => $value)
     //  echo "$value\r\n";
     //}
 
@@ -908,7 +918,7 @@ function export_vcal ( $id ) {
     } else {
       echo "END:VTODO\r\n";
     }
-  } //end while (list ($key,$row) = each ( $entry_array))
+  }
   if ( count ( $entry_array ) > 0 )
     echo "END:VCALENDAR\r\n";
 } //end function
@@ -941,7 +951,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
   $ret .= "VERSION:2.0\r\n";
   $ret .= "METHOD:PUBLISH\r\n";
 
-  while ( list ( $key, $row ) = each ( $entry_array ) ) {
+  foreach ($entry_array as $key => $row) {
     $id = $row[0];
     $event_uid = generate_uid ( $id );
     $name = $row[1];
@@ -1039,8 +1049,8 @@ function export_ical ( $id = 'all', $attachment = false ) {
 
     /* UID of the event (folded to 76 char) */
     $array = export_fold_lines ( "UID:$event_uid" );
-    while ( list ( $key, $value ) = each ( $array ) )
-    $Vret .= "$value\r\n";
+    foreach ($array as $key => $value)
+      $Vret .= "$value\r\n";
 
     $Vret .= 'LAST-MODIFIED:' . export_get_utc_date ( $moddate,$modtime ) . "\r\n";
 
@@ -1055,39 +1065,39 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $name = 'SUMMARY:' . $name;
     $array = export_fold_lines ( $name, 'utf8' );
 
-    while ( list ( $key, $value ) = each ( $array ) )
-    $Vret .= "$value\r\n";
+    foreach ($array as $key => $value)
+      $Vret .= "$value\r\n";
 
     /* DESCRIPTION if any (folded to 76 char) */
     if ( $description != '' ) {
       $description = 'DESCRIPTION:' . $description;
       $array = export_fold_lines ( $description, 'utf8' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $Vret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $Vret .= "$value\r\n";
     }
 
     /* LOCATION if any (folded to 76 char) */
     if ( $location != '' ) {
       $location = 'LOCATION:' . $location;
       $array = export_fold_lines ( $location, 'utf8' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $Vret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $Vret .= "$value\r\n";
     }
 
     /* URL if any (folded to 76 char) */
     if ( $url != '' ) {
       $url = 'URL:' . $url;
       $array = export_fold_lines ( $url, 'utf8' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $Vret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $Vret .= "$value\r\n";
     }
 
     /* CATEGORIES if any (folded to 76 char) */
     if ( isset ( $categories ) && count ( $categories ) ) {
       $categories = 'CATEGORIES:' . implode ( ',', $categories );
       $array = export_fold_lines ( $categories, 'utf8' );
-      while ( list ( $key, $value ) = each ( $array ) )
-      $Vret .= "$value\r\n";
+      foreach ($array as $key => $value)
+        $Vret .= "$value\r\n";
     }
 
     /* CLASS either "PRIVATE", "CONFIDENTIAL", or "PUBLIC" (the default) */
@@ -1124,7 +1134,7 @@ function export_ical ( $id = 'all', $attachment = false ) {
     $attendcnt = count ( $attendee );
     for ( $i = 0; $i < $attendcnt; $i++ ) {
       $attendee[$i] = export_fold_lines ( $attendee[$i], 'utf8' );
-      while ( list ( $key, $value ) = each ( $attendee[$i] ) )
+      foreach ($attendee[$i] as $key => $value)
         $Vret .= "$value\r\n";
     }
     /* Time - all times are utc */
@@ -1208,10 +1218,10 @@ $Entry[Repeat][WkSt]       =  Day that week starts on (default MO)
 $Entry[Repeat][Count]      =  Number of occurances, may be used instead of UNTIL
 */
 
-function import_data ( $data, $overwrite, $type ) {
+function import_data ( $data, $overwrite, $type, $silent=false ) {
   global $ALLOW_CONFLICTS, $ALLOW_CONFLICT_OVERRIDE, $calUser, $count_con,
   $count_suc, $errormsg, $error_num, $H2COLOR, $importcat, $ImportType,
-  $login, $numDeleted, $single_user, $single_user_login, $sqlLog;
+  $login, $numDeleted, $single_user, $single_user_login, $sqlLog, $importMd5;
 
   $oldUIDs =
   $oldIds = [];
@@ -1237,8 +1247,8 @@ function import_data ( $data, $overwrite, $type ) {
     dbi_free_result ( $res );
   }
   $sql = 'INSERT INTO webcal_import ( cal_import_id, cal_name,
-    cal_date, cal_type, cal_login ) VALUES ( ?, NULL, ?, ?, ? )';
-  if ( ! dbi_execute ( $sql, [$importId, date ( 'Ymd' ), $type, $login] ) ) {
+    cal_date, cal_check_date, cal_type, cal_login, cal_md5 ) VALUES ( ?, NULL, ?, ?, ?, ?, ? )';
+  if ( ! dbi_execute ( $sql, [$importId, date ( 'Ymd' ), date ( 'Ymd' ), $type, $calUser, $importMd5] ) ) {
     $errormsg = db_error();
     return;
   }
@@ -1246,7 +1256,7 @@ function import_data ( $data, $overwrite, $type ) {
     return false;
 
   foreach ( $data as $Entry ) {
-    flush(); ob_flush(); // send output to browser ASAP
+    flush(); @ob_flush(); // send output to browser ASAP
     // do_debug ( "Entry Array " . print_r ( $Entry, true ) );
     $participants[0] = $calUser;
     // $participants[0] = $login;
@@ -1411,6 +1421,8 @@ function import_data ( $data, $overwrite, $type ) {
       if ( ! empty ( $Entry['Location'] ) ) {
         $names[] = 'cal_location';
         $entryclass = $Entry['Location'];
+        if ( strlen ( $entryclass ) > 99 )
+            $entryclass = substr ( $entryclass, 0, 99 );
         $values[] = $entryclass;
       }
 
@@ -1531,7 +1543,7 @@ function import_data ( $data, $overwrite, $type ) {
         $uid = generate_uid ( $id );
         $uid = empty ( $Entry['UID'] ) ? $uid : $Entry['UID'];
         if ( $importId < 0 ) {
-          $importId = create_import_instance();
+          $importId = create_import_instance($calUser);
         }
 
         if ( $ImportType == 'PALMDESKTOP' ) {
@@ -1821,14 +1833,18 @@ function import_data ( $data, $overwrite, $type ) {
     if ( $subType != 'icalclient' && $subType != 'remoteics' ) {
       if ( ! empty ( $error ) && empty ( $overlap ) ) {
         $error_num++;
-        echo print_error ( $error ) . "\n<br />\n";
+        if ($silent) {
+          $errormsg .= $error;
+        } else {
+          echo print_error ( $error ) . "\n<br />\n";
+        }
       }
       if ( $Entry['Duration'] > 0 ) {
         $time = trim( display_time ( '', 0, $Entry['StartTime'] )
            . '-' . display_time ( '', 2, $Entry['EndTime'] ) );
       }
       // Conflicting
-      if ( ! empty ( $overlap ) ) {
+      if ( ! empty ( $overlap ) && !$silent ) {
         echo '<b><h2>' .
         translate ( 'Scheduling Conflict' ) . ': ';
         $count_con++;
@@ -1846,25 +1862,27 @@ function import_data ( $data, $overwrite, $type ) {
         echo ":<ul>\n" . $overlap . "</ul>\n";
       } else {
         // No Conflict
-        if ( $count_suc == 0 ) {
+        if ( $count_suc == 0 && ! $silent ) {
           echo '<b><h2>' .
           translate ( 'Event Imported' ) . ":</h2></b><br />\n";
         }
         $count_suc++;
 
         $dd = $Entry['start_date'];
-        echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
-        echo '" title="' . translate ( 'View this entry' ) . '">';
-        $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
-        $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
-        echo htmlspecialchars ( $Entry['Summary'] ). '</a> (' .
-          date_to_str ( $dd );
+        if (!$silent) {
+          echo "<a class=\"entry\" href=\"view_entry.php?id=$id";
+          echo '" title="' . translate ( 'View this entry' ) . '">';
+          $Entry['Summary'] = str_replace( "''", "'", $Entry['Summary'] );
+          $Entry['Summary'] = str_replace( "\\", ' ', $Entry['Summary'] );
+          echo htmlspecialchars ( $Entry['Summary'] ). '</a> (' .
+            date_to_str ( $dd );
 
-        if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
-          echo '&nbsp; ' . translate ( 'All day event' );
-        else if ( ! empty ( $time ) )
-          echo '&nbsp; ' . $time;
-        echo ")<br /><br />\n";
+          if ( isset ( $Entry['AllDay'] )  && $Entry['AllDay'] == 1)
+            echo '&nbsp; ' . translate ( 'All day event' );
+          else if ( ! empty ( $time ) )
+            echo '&nbsp; ' . $time;
+          echo ")<br /><br />\n";
+        }
       }
       // Reset Variables
       $overlap = $error = $dd = $time = '';
@@ -1886,7 +1904,11 @@ function import_data ( $data, $overwrite, $type ) {
           }
           dbi_free_result ( $res );
         } else {
-          echo db_error() . "<br />\n";
+          if ($silent) {
+            $errormsg .= "\n" . db_error();
+          } else {
+            echo db_error() . "<br />\n";
+          }
         }
       }
       $oldidcnt = count ( $oldIds );
@@ -1899,6 +1921,23 @@ function import_data ( $data, $overwrite, $type ) {
       }
     }
   }
+}
+
+function curl_download($url) {
+  global $errormsg;
+
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $url);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 0);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+  $result = curl_exec($ch);
+  if(curl_errno($ch)) {
+    $errormsg .= 'Error: '.curl_error($ch);
+  }
+
+  curl_close ($ch);
+  return $result;
 }
 
 /* Functions from import_ical.php
@@ -1920,15 +1959,34 @@ function import_data ( $data, $overwrite, $type ) {
  * It did work correctly with PHP 5.0.2.
  */
 function parse_ical ( $cal_file, $source = 'file' ) {
-  global $errormsg, $tz;
+  global $errormsg, $tz, $importMd5;
 
+  $importMd5 = '';
   $ical_data = [];
   do_debug ( "in parse_ical, file=$cal_file, source=$source" );
   if ( $source == 'file' || $source == 'remoteics' ) {
-    if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
-      $errormsg .= "Can't read temporary file: $cal_file\n";
-      exit();
+    $fd = '';
+    try {
+      $fd = @fopen($cal_file, 'r');
+    } catch (Exception $e) {
+      // send error message if you can
+      $errormsg .= "Cannot read file: $e";
+      return [];
+    } 
+    if (!$fd && stripos($cal_file, "http") == 0) {
+      // Try curl instead so we can ignore cert errors
+      $data = curl_download($cal_file);
+      if (empty($data)) {
+        if (empty($errormsg)) {
+          $errormsg .= "No data returned";
+        }
+        return [];
+      }
     } else {
+      if (!$fd) {
+        $errormsg .= "Error opening file: $cal_file";
+        return $errormsg;
+      }
       // Read in contents of entire file first
       $data = '';
       $line = 0;
@@ -1987,6 +2045,10 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       exit;
     }
   }
+  // Calculate the md5 hash so the caller can compare it to
+  // the prior import of this calendar.  Sorry, this is
+  // saved to a global variable :-(
+  $importMd5 = md5($data);
   // Now fix folding. According to RFC, lines can fold by having
   // a CRLF and then a single white space character.
   // We will allow it to be CRLF, CR or LF or any repeated sequence
@@ -1996,7 +2058,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $data = preg_replace ( "/[\r\n]+[\t ];/", ";", $data );
   $data = preg_replace ( "/[\r\n]+[\t ]:/", ":", $data );
 
-  $data = preg_replace ( "/[\r\n]+[\t ]/", " ", $data );
+  $data = preg_replace ( "/[\r\n]+[\t ]/", "", $data );
   $data = preg_replace ( "/[\r\n]+/", "\n", $data );
   // echo "Data:<br /><pre>$data</pre><p>";
   // reflect the section where we are in the file:
@@ -2006,7 +2068,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   $subsubstate = ''; // reflect the sub-sub section
   $error = false;
   $line = 0;
-  $event = '';
+  $event = [ ];
   $lines = explode ( "\n", $data );
   $linecnt = count ( $lines );
   for ( $n = 0; $n < $linecnt && ! $error; $n++ ) {
@@ -2164,14 +2226,14 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         $substate = 'none';
         $subsubstate = '';
         // clear out data for new event
-        $event = '';
+        $event = [ ];
       } elseif ( preg_match ( "/^END:VTODO$/i", $buff, $match ) ) {
         if ( $tmp_data = format_ical ( $event ) ) $ical_data[] = $tmp_data;
         $state = 'VCALENDAR';
         $substate = 'none';
         $subsubstate = '';
         // clear out data for new event
-        $event = '';
+        $event = [ ];
         // folded lines?, this shouldn't happen
       } elseif ( preg_match ( '/^\s(\S.*)$/', $buff, $match ) ) {
         if ( $substate != 'none' ) {
@@ -2750,6 +2812,7 @@ function format_ical ( $event ) {
       }
     }
   } // end if rrule
+  //debug: print_r($fevent);
   return $fevent;
 }
 /**
@@ -2879,7 +2942,7 @@ function parse_vcal( $cal_file ) {
           $subsubstate = '';
           if ( $tmp_data = format_vcal( $event ) ) $vcal_data[] = $tmp_data;
           // clear out data for new event
-          $event = '';
+          $event = [ ];
           // TODO: QUOTED-PRINTABLE descriptions
           // folded lines
         } elseif ( preg_match ( '/^[ ]{1}(.+)$/', $buff, $match ) ) {
@@ -3108,11 +3171,13 @@ function fb_export_time ( $date, $duration, $time, $texport ) {
 }
 /**
  * Generate export select.
+ * NOTE: this function is being depracated since everyone seems to have
+ * settled on iCalendar for import/export.
  */
 function generate_export_select ( $jsaction = '', $name = 'exformat' ) {
   $palmStr = translate ( 'Palm Pilot' );
   return '
-      <select name="format" id="' . $name . '"'
+      <select class="form-inline sm-auto" name="format" id="' . $name . '"'
    . ( empty( $jsaction ) ? '' : 'onchange="' . $jsaction . '();"' ) . '>
         <option value="ical">iCalendar</option>
         <option value="vcal">vCalendar</option>

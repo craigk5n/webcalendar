@@ -1,4 +1,4 @@
-<?php // $Id: default_config.php,v 1.75 2009/11/22 16:47:47 bbannon Exp $
+<?php
 /**
  * The file contains a listing of all the current WebCalendar config settings
  * and their default values.
@@ -22,11 +22,11 @@ $webcalConfig = array(
   'ALLOW_USER_HEADER' => 'N',
   'ALLOW_USER_THEMES' => 'Y',
   'ALLOW_VIEW_OTHER' => 'Y',
-  'APPLICATION_NAME' => 'Title',
+  'APPLICATION_NAME' => 'WebCalendar',
   'APPROVE_ASSISTANT_EVENT' => 'Y',
   'AUTO_REFRESH' => 'N',
   'AUTO_REFRESH_TIME' => '0',
-  'BGCOLOR' => '#fff',
+  'BGCOLOR' => '#ffffff',
   'BGIMAGE' => '',
   'BGREPEAT' => 'repeat fixed center',
   'BOLD_DAYS_IN_YEAR' => 'Y',
@@ -85,8 +85,8 @@ $webcalConfig = array(
   'FREEBUSY_ENABLED' => 'N',
   'GENERAL_USE_GMT' => 'Y',
   'GROUPS_ENABLED' => 'N',
-  'H2COLOR' => '#000',
-  'HASEVENTSBG' => '#ff3',
+  'H2COLOR' => '#000000',
+  'HASEVENTSBG' => '#ffff30',
   'IMPORT_CATEGORIES' => 'Y',
   'LANGUAGE' => 'none',
   'LIMIT_APPTS' => 'N',
@@ -103,8 +103,8 @@ $webcalConfig = array(
   'OVERRIDE_PUBLIC_TEXT' => 'Not available',
   'PARTICIPANTS_IN_POPUP' => 'N',
   'PLUGINS_ENABLED' => 'N',
-  'POPUP_BG' => '#fff',
-  'POPUP_FG' => '#000',
+  'POPUP_BG' => '#ffffff',
+  'POPUP_FG' => '#000000',
   'PUBLIC_ACCESS' => 'N',
   'PUBLIC_ACCESS_ADD_NEEDS_APPROVAL' => 'N',
   'PUBLIC_ACCESS_CAN_ADD' => 'N',
@@ -134,27 +134,27 @@ $webcalConfig = array(
   'SMTP_USERNAME' => '',
   'STARTVIEW' => 'month.php',
   'SUMMARY_LENGTH' => '80',
-  'TABLEBG' => '#000',
-  'TEXTCOLOR' => '#000',
-  'THBG' => '#fff',
-  'THFG' => '#000',
+  'TABLEBG' => '#000000',
+  'TEXTCOLOR' => '#000000',
+  'THBG' => '#ffffff',
+  'THFG' => '#000000',
   'TIME_FORMAT' => '12',
   'TIME_SLOTS' => '24',
   'TIME_SPACER' => '&raquo;&nbsp;',
   'TIMED_EVT_LEN' => 'D',
   'TIMEZONE' => 'America/New_York',
-  'TODAYCELLBG' => '#ff3',
+  'TODAYCELLBG' => '#ffff30',
   'UAC_ENABLED' => 'N',
   'USER_PUBLISH_ENABLED' => 'Y',
   'USER_PUBLISH_RW_ENABLED' => 'Y',
   'USER_RSS_ENABLED' => 'N',
   'USER_SEES_ONLY_HIS_GROUPS' => 'Y',
   'USER_SORT_ORDER' => 'cal_lastname, cal_firstname',
-  'WEBCAL_PROGRAM_VERSION' => 'v1.3.0',
+  'WEBCAL_PROGRAM_VERSION' => 'v1.9.1',
   'WEEK_START' => '0',
   'WEEKEND_START' => '6',
   'WEEKENDBG' => '#d0d0d0',
-  'WEEKNUMBER' => '#f63',
+  'WEEKNUMBER' => '#f06030',
   'WORK_DAY_END_HOUR' => '17',
   'WORK_DAY_START_HOUR' => '8'
   );
@@ -163,17 +163,20 @@ $webcalConfig = array(
  * db_load_config (needs description)
  *
  * This function is defined here because admin.php calls it during startup.
+ * Load default configuration values into the webcal_config table but only
+ * if values are not already there.
  */
 function db_load_config() {
   global $webcalConfig;
 
   $sql = 'INSERT INTO webcal_config ( cal_setting, cal_value ) VALUES ( ?, ? )';
 
-  while( list( $key, $val ) = each( $webcalConfig ) ) {
+  foreach ($webcalConfig as $key => $val) {
     $res = dbi_execute( 'SELECT cal_value FROM webcal_config
       WHERE cal_setting = ?', array( $key ), false, false );
-    if( ! $res )
+    if( ! $res ) {
       dbi_execute( $sql, array( $key, $val ) );
+    }
     else { // SQLite returns $res always.
       $row = dbi_fetch_row( $res );
       if( ! isset( $row[0] ) )

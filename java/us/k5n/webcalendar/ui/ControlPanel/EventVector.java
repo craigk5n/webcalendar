@@ -11,7 +11,6 @@ import us.k5n.webcalendar.Participant;
  * for each row).
  *
  * @author Craig Knudsen, craig@k5n.us
- * @version $Id$
  */
 public class EventVector extends Vector {
   private Event event;

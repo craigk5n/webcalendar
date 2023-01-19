@@ -1,4 +1,4 @@
-<?php // $Id: export.php,v 1.54.2.1 2013/01/24 21:15:09 cknudsen Exp $
+<?php
 /**
  * Page Description:
  * This page will present the user with forms for exporting calendar events.
@@ -19,13 +19,15 @@ load_user_categories();
 
 $datem = date ( 'm' );
 $dateY = date ( 'Y' );
+$yearAgo = time () - 365 * 24 * 3600;
+$dateYearAgo = date('Ymd', $yearAgo);
 $selected = ' selected="selected" ';
 
-print_header ( array ( 'js/export_import.php', 'js/visible.php' ) );
-echo '
-    <h2>' . translate ( 'Export' ) . '</h2>
+print_header('', '', 'onload="updateDateFields();"' );
+echo '<h2>' . translate ( 'Export' ) . '</h2>
     <form action="export_handler.php" method="post" name="exportform" id="exportform">
-      <table>
+      ' . print_form_key() . '
+      <table class="table">
         <tr>
           <td><label for="exformat">' . translate ( 'Export format' )
  . ':</label></td>
@@ -80,7 +82,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="use_all_dates" id="exportall" '
- . 'value="y" onclick="toggle_datefields( \'dateArea\', this );" />
+ . 'value="y" checked="checked" onclick="toggle_datefields( \'dateArea\', this );" />
             <label for="exportall">' . translate ( 'Export all dates' )
  . '</label>
           </td>
@@ -98,18 +100,39 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
               </tr>
               <tr>
                 <td><label>' . translate ( 'Modified since' ) . ':</label></td>
-                <td>' . date_selection ( 'mod', mktime ( 0, 0, 0,
-                  $datem, date ( 'd' ) - 7, $dateY ) ) . '</td>
+                <td>' . date_selection ( 'mod', $dateYearAgo )  . '</td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
-          <td colspan="2"><input type="submit" value="'
+          <td colspan="2"><input class="btn btn-primary" type="submit" value="'
  . translate ( 'Export' ) . '" /></td>
         </tr>
       </table>
-    </form>
-    ' . print_trailer ();
-
+    </form>';
 ?>
+<script>
+  function updateDateFields () {
+    var displayAll = $('#exportall')[0].checked;
+    if (displayAll) {
+      $('#dateArea').show();
+    } else {
+      $('#dateArea').hide();
+    }
+  }
+  
+  function toggle_datefields( name, ele ) {
+    updateDateFields();
+  }
+
+  function toggel_catfilter() {
+    if ( $('#exformat option:selected').index() == 0 ) {
+      // ICalendar
+      $('#catfilter').show();
+    } else {
+      $('#catfilter').hide();
+    }
+  }
+</script>
+<?php echo print_trailer (); ?>

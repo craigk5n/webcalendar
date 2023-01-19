@@ -1,8 +1,10 @@
 #!/usr/bin/perl
-# $Id: translation_summary.pl,v 1.9 2008/09/05 18:01:30 bbannon Exp $
 #
 # Examine all translation files to create a report that shows how
 # many translations are missing from each translation file.
+#
+# Usage:
+# 	perl translation_summary.pl
 #
 #######################################################################
 $transdir = '../translations';

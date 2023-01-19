@@ -13,7 +13,6 @@
  * create) will remain unchanged.
  */
 include_once 'includes/init.php';
-require_valid_referring_url ();
 
 // Set this to true do show the SQL at the bottom of the page
 $purgeDebug = false;
@@ -106,7 +105,7 @@ if ( $do_purge ) {
   }
   echo '<h2>...' . translate ( 'Finished' ) . ".</h2>\n";
 ?>
-  <form><input type="button" value="<?php etranslate ( 'Back' )?>"
+  <form><input class="btn btn-primary" type="button" value="<?php etranslate ( 'Back' )?>"
 onclick="history.back()" /></form
 ><?php
   if ( $purgeDebug ) {
@@ -117,10 +116,11 @@ onclick="history.back()" /></form
 ?>
 
 <form action="purge.php" method="post" name="purgeform" id="purgeform">
+<?php echo csrf_form_key(); ?>
 <table>
  <tr><td><label for="user" class="colon">
   <?php echo translate ( 'User' );?></label></td>
- <td><select name="username">
+ <td><select class="form-control" name="username">
 <?php
   $userlist = get_my_users();
   if ($NONUSER_ENABLED == 'Y' ) {
@@ -140,7 +140,7 @@ onclick="history.back()" /></form
  <tr><td><label for="purge_all" class="colon">
   <?php etranslate ( 'Check box to delete ALL events for a user' )?></label></td>
   <td class="alignbottom">
-  <input type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );" />
+  <input class="form-control-sm" type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );" />
  </td></tr>
  <tr id="dateArea"><td><label class="colon">
   <?php etranslate ( 'Delete all events before' );?></label></td><td>
@@ -149,15 +149,15 @@ onclick="history.back()" /></form
  <tr><td><label for="purge_deleted" class="colon">
   <?php etranslate ( 'Purge deleted only' )?></label></td>
   <td class="alignbottom">
-  <input type="checkbox" name="purge_deleted" value="Y" />
+  <input class="form-control-sm" type="checkbox" name="purge_deleted" value="Y" />
  </td></tr>
  <tr><td><label for="preview" class="colon">
   <?php etranslate ( 'Preview delete' )?></label></td>
   <td class="alignbottom">
-  <input type="checkbox" name="preview" value="Y" checked="checked" />
+  <input class="form-control-sm" type="checkbox" name="preview" value="Y" checked="checked" />
  </td></tr>
  <tr><td colspan="2">
-  <input type="submit" name="delete" value="<?php
+  <input class="btn btn-primary" type="submit" name="delete" value="<?php
     echo $deleteStr?>" onclick="return confirm( '<?php
     etranslate ( 'Are you sure you want to delete events for', true);
     ?> ' + document.forms[0].username.value + '?' )" />

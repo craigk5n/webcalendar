@@ -1,10 +1,11 @@
-<?php // $Id: adminhome.php,v 1.45 2010/02/03 17:41:20 bbannon Exp $
+<?php
 /**
  * Page Description:
- *   Serves as the home page for administrative functions.
- *  Input Parameters:
+ *   Serves as the home page for administrative functions.  It's useful when the
+ *   top menu has been disabled in the System Settings.
+ * Input Parameters:
  *   None
- *  Security:
+ * Security:
  *   Users will see different options available on this page.
  */
 include_once 'includes/init.php';
@@ -48,7 +49,26 @@ if ( $is_nonuser_admin ) {
   }
 
   $names[] = ( $is_admin ? translate ( 'Users' ) : translate ( 'Account' ) );
-  $links[] = 'users.php';
+  $links[] = 'user_mgmt.php';
+
+  if ($GROUPS_ENABLED == 'Y' && $is_admin) {
+    $names[] = translate ( 'Groups' );
+    $links[] = 'groups.php';
+  }
+
+  if ( $REMOTES_ENABLED == 'Y' && (( $is_admin && ! $accessEnabled )
+      || ( $accessEnabled
+      && access_can_access_function(ACCESS_IMPORT)))) {
+    $names[] = translate ( 'Remote Calendars' );
+    $links[] = 'remotecal_mgmt.php';
+  }
+
+  if ( $NONUSER_ENABLED == 'Y' && (( $is_admin && ! $accessEnabled )
+      || ( $accessEnabled
+      && access_can_access_function(ACCESS_USER_MANAGEMENT)))) {
+    $names[] = translate ( 'Resource Calendars' );
+    $links[] = 'resourcecal_mgmt.php';
+  }
 
   if ( $accessEnabled
       && access_can_access_function( ACCESS_ACCESS_MANAGEMENT ) ) {

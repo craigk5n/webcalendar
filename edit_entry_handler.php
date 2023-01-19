@@ -1,7 +1,6 @@
-<?php // $Id: edit_entry_handler.php,v 1.204.2.1 2012/02/28 15:43:10 cknudsen Exp $
+<?php
 include_once 'includes/init.php';
-require_valid_referring_url ();
-require 'includes/classes/WebCalMailer.class';
+require 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
 load_user_categories();
@@ -86,21 +85,27 @@ $byweekno       = getPostValue( 'byweekno' );
 $byyearday      = getPostValue( 'byyearday' );
 
 $cat_id           = getValue ( 'cat_id', '-?[0-9,\-]*', true );
-$completed_day    = getPostValue( 'completed_day' );
 $completed_hour   = getPostValue( 'completed_hour' );
 $completed_minute = getPostValue( 'completed_minute' );
-$completed_month  = getPostValue( 'completed_month' );
-$completed_year   = getPostValue( 'completed_year' );
+$ymd = getPostValue('completed_YMD');
+$parsed = date_parse($ymd);
+$completed_day   = $parsed['day'];
+$completed_month = $parsed['month'];
+$completed_year  = $parsed['year'];
 $description      = getPostValue( 'description', '', 'XSS' );
 
 $due_ampm   = getPostValue( 'due_ampm' );
-$due_day    = getPostValue( 'due_day' );
 $due_hour   = getPostValue( 'due_hour' );
 $due_minute = getPostValue( 'due_minute' );
-$due_month  = getPostValue( 'due_month' );
-$due_year   = getPostValue( 'due_year' );
+$ymd = getPostValue('due__YMD');
+$parsed = date_parse($ymd);
+$due_day   = $parsed['day'];
+$due_month = $parsed['month'];
+$due_year  = $parsed['year'];
 
 $eType = getPostValue( 'eType' );
+if (!in_array($eType, ['event', 'task', 'journal']))
+  $eType = 'event';
 
 // entry_changed is calculated client-side with javascript.
 $entry_changed = getPostValue( 'entry_changed' );
@@ -123,24 +128,28 @@ $rem_when        = getPostValue( 'rem_when' );
 
 $reminder        = getPostValue( 'reminder' );
 $reminder_ampm   = getPostValue( 'reminder_ampm' );
-$reminder_day    = getPostValue( 'reminder_day' );
 $reminder_hour   = getPostValue( 'reminder_hour' );
 $reminder_minute = getPostValue( 'reminder_minute' );
-$reminder_month  = getPostValue( 'reminder_month' );
 $reminder_type   = getPostValue( 'reminder_type' );
-$reminder_year   = getPostValue( 'reminder_year' );
+$ymd = getPostValue('reminder__YMD');
+$parsed = date_parse($ymd);
+$reminder_day   = $parsed['day'];
+$reminder_month = $parsed['month'];
+$reminder_year  = $parsed['year'];
 
 $rpt_ampm    = getPostValue( 'rpt_ampm' );
 $rpt_count   = getPostValue( 'rpt_count' );
-$rpt_day     = getPostValue( 'rpt_day' );
 $rpt_end_use = getPostValue( 'rpt_end_use' );
 $rpt_freq    = getPostValue( 'rpt_freq' );
 $rpt_hour    = getPostValue( 'rpt_hour' );
 $rpt_minute  = getPostValue( 'rpt_minute' );
-$rpt_month   = getPostValue( 'rpt_month' );
 $rpt_type    = getPostValue( 'rpt_type' );
-$rpt_year    = getPostValue( 'rpt_year' );
 $rptmode     = getPostValue( 'rptmode' );
+$ymd = getPostValue('rpt__YMD');
+$parsed = date_parse($ymd);
+$rpt_day   = $parsed['day'];
+$rpt_month = $parsed['month'];
+$rpt_year  = $parsed['year'];
 
 $timetype      = getPostValue( 'timetype' );
 $weekdays_only = getPostValue( 'weekdays_only' );
@@ -191,9 +200,11 @@ $end_ampm   = getPostValue( 'end_ampm' );
 $end_hour   = getPostValue( 'end_hour' );
 $end_minute = getPostValue( 'end_minute' );
 
-$day   = getPostValue( 'day' );
-$month = getPostValue( 'month' );
-$year  = getPostValue( 'year' );
+$ymd = getPostValue('_YMD');
+$parsed = date_parse($ymd);
+$day   = $parsed['day'];
+$month = $parsed['month'];
+$year  = $parsed['year'];
 
 $percent = getPostValue( 'percent' );
 
@@ -919,7 +930,7 @@ if( empty( $error ) ) {
 
   // Check if participants have been removed and send out emails.
   if( ! $newevent && count( $old_status ) > 0 ) {
-    while( list( $old_participant, $dummy ) = each( $old_status ) ) {
+    foreach ($old_status as $old_participant => $dummy) {
       $found_flag = false;
       foreach( $participants as $i ) {
         if( $i == $old_participant ) {
@@ -1262,20 +1273,15 @@ if( ! empty( $conflicts ) ) {
     </ul>
     ' // User can confirm conflicts.
   . '<form name="confirm" method="post">';
-  foreach( $_POST as $xkey => $xval ) {
-    if( is_array( $xval ) ) {
+  print_form_key();
+  foreach ($_POST as $xkey => $xval) {
+    if (is_array($xval)) {
       $xkey .= "[]";
-      foreach( $xval as $ykey => $yval ) {
-        if( get_magic_quotes_gpc() )
-          $yval = stripslashes( $yval );
-        // $yval = htmlentities( $yval );
-
+      foreach ($xval as $ykey => $yval) {
         echo '
       <input type="hidden" name="' . $xkey . '" value="' . $yval . '" />';
       }
     } else {
-      if( get_magic_quotes_gpc() )
-        $xval = stripslashes( $xval );
       echo '
       <input type="hidden" name="' . $xkey . '" value="' . $xval . '" />';
     }
@@ -1293,5 +1299,3 @@ if( ! empty( $conflicts ) ) {
 } else
   // Process errors.
   $mail->MailError( $mailerError, $error );
-
-?>

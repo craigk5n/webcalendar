@@ -22,7 +22,6 @@ import us.k5n.webcalendar.WebCalendarClient;
  * The UserDialog class provides a dialog window for editing or adding a user.
  *
  * @author Craig Knudsen
- * @version $Id$
  */
 public class UserDialog extends JDialog {
   WebCalendarClient client = null;
