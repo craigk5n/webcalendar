@@ -292,8 +292,8 @@ function calc_time_slot ( $time, $round_down = false ) {
  */
 function check_for_conflicts ( $dates, $duration, $eventstart,
   $participants, $login, $id ) {
-  global $LIMIT_APPTS, $LIMIT_APPTS_NUMBER, $repeated_events,
-  $single_user, $single_user_login, $jumpdate;
+  global $jumpdate, $LIMIT_APPTS_NUMBER, $LIMIT_APPTS,
+  $repeated_events, $single_user_login, $single_user;
 
   $datecnt = count ( $dates );
   if ( ! $datecnt )
@@ -531,9 +531,9 @@ function combine_and_sort_events ( $ev, $rep ) {
  * @return string  HTML to display matrix.
  */
 function daily_matrix ( $date, $participants, $popup = '' ) {
-  global $CELLBG, $ENTRY_SLOTS, $events, $repeated_events, $TABLEBG, $THBG,
-  $THFG, $thismonth, $thisyear, $TIME_FORMAT, $TODAYCELLBG, $user_fullname,
-  $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
+  global $CELLBG, $ENTRY_SLOTS, $events, $repeated_events, $TABLEBG,
+  $THBG, $THFG, $thismonth, $thisyear, $TIME_FORMAT, $TODAYCELLBG,
+  $user_fullname, $WORK_DAY_END_HOUR, $WORK_DAY_START_HOUR;
 
   $allAttendeesStr = translate ( 'All Attendees' );
   $busy = translate ( 'Busy' );
@@ -1013,9 +1013,9 @@ function display_admin_link($break = true) {
  */
 function display_month( $thismonth, $thisyear, $demo = false,
   $enableDblClick = false ) {
-  global $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS, $DISPLAY_WEEKNUMBER,
-  $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
-  $readonly, $today, $user, $WEEKENDBG, $WEEK_START;
+  global $DISPLAY_ALL_DAYS_IN_MONTH, $DISPLAY_LONG_DAYS,
+  $DISPLAY_WEEKNUMBER, $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS,
+  $PUBLIC_ACCESS_CAN_ADD, $readonly, $today, $user, $WEEKENDBG, $WEEK_START;
 
   $ret = '';
 
@@ -1155,10 +1155,10 @@ function display_month( $thismonth, $thisyear, $demo = false,
  */
 function display_navigation ( $name, $show_arrows = true, $show_cats = true ) {
   global $cat_id, $CATEGORIES_ENABLED, $caturl, $DATE_FORMAT_MY,
-  $DISPLAY_SM_MONTH, $DISPLAY_TASKS, $DISPLAY_WEEKNUMBER, $is_admin,
-  $is_assistant, $is_nonuser_admin, $login, $nextYmd, $nowYmd, $prevYmd,
-  $single_user, $spacer, $thisday, $thismonth, $thisyear, $user, $user_fullname,
-  $wkend, $wkstart;
+  $DISPLAY_SM_MONTH, $DISPLAY_TASKS, $DISPLAY_WEEKNUMBER,
+  $is_admin, $is_assistant, $is_nonuser_admin, $login, $nextYmd,
+  $nowYmd, $prevYmd, $single_user, $spacer, $thisday, $thismonth,
+  $thisyear, $user, $user_fullname, $wkend, $wkstart;
 
   if ( empty ( $name ) )
     return;
@@ -1233,7 +1233,7 @@ function display_small_month ( $thismonth, $thisyear, $showyear,
   global $boldDays, $caturl, $DATE_FORMAT_MY, $DISPLAY_ALL_DAYS_IN_MONTH,
   $DISPLAY_TASKS, $DISPLAY_WEEKNUMBER, $get_unapproved, $login,
   $MINI_TARGET, // Used by minical.php
-  $SCRIPT, $SHOW_EMPTY_WEEKENDS,//Used by year.php
+  $SCRIPT, $SHOW_EMPTY_WEEKENDS, // Used by year.php
   $thisday, // Needed for day.php
   $today, $use_http_auth, $user, $WEEK_START;
 
@@ -1594,8 +1594,8 @@ function display_time ( $time = '', $control = 0, $timestamp = '',
  * @param string $user  Current user login
  */
 function display_unapproved_events ( $user ) {
-  global $is_admin, $is_nonuser, $login, $MENU_ENABLED,
-  $NONUSER_ENABLED, $PUBLIC_ACCESS;
+  global $is_admin, $is_nonuser, $login,
+  $MENU_ENABLED, $NONUSER_ENABLED, $PUBLIC_ACCESS;
   static $retval;
 
   // Don't do this for public access login,
@@ -2540,8 +2540,8 @@ function get_entries ( $date, $get_unapproved = true ) {
  */
 function get_groups($user, $includeUserlist=false)
 {
-  global $GROUPS_ENABLED, $USER_SEES_ONLY_HIS_GROUPS, $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX,
-    $is_nonuser_admin, $is_assistant, $login, $is_admin;
+  global $GROUPS_ENABLED, $is_admin, $is_assistant, $is_nonuser_admin,
+  $login, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME, $USER_SEES_ONLY_HIS_GROUPS;
 
   if (empty($GROUPS_ENABLED) || $GROUPS_ENABLED != 'Y')
     return false;
@@ -2643,9 +2643,9 @@ function get_last_view ( $clear=true ) {
  *    - cal_is_public
  */
 function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' ) {
-  global $GROUPS_ENABLED, $is_admin, $is_nonuser, $is_nonuser_admin, $login,
-  $my_nonuser_array, $my_user_array, $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME,
-  $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER;
+  global $GROUPS_ENABLED, $is_admin, $is_nonuser, $is_nonuser_admin,
+  $login, $my_nonuser_array, $my_user_array, $PUBLIC_ACCESS,
+  $PUBLIC_ACCESS_FULLNAME, $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER;
 
   $this_user = ( empty ( $user ) ? $login : $user );
   // Return the global variable (cached).
@@ -2751,8 +2751,8 @@ function get_my_nonusers ( $user = '', $add_public = false, $reason = 'invite' )
  *    - cal_fullname
  */
 function get_my_users ( $user = '', $reason = 'invite' ) {
-  global $GROUPS_ENABLED, $is_admin, $is_nonuser, $is_nonuser_admin, $login,
-  $my_user_array, $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER;
+  global $GROUPS_ENABLED, $is_admin, $is_nonuser, $is_nonuser_admin,
+  $login, $my_user_array, $USER_SEES_ONLY_HIS_GROUPS, $USER_SORT_ORDER;
 
   $this_user = ( empty ( $user ) ? $login : $user );
   // Return the global variable (cached).
@@ -2845,6 +2845,7 @@ function get_my_users ( $user = '', $reason = 'invite' ) {
  */
 function get_nonuser_cals ( $user = '', $remote = false ) {
   global $is_admin, $USER_SORT_ORDER;
+
   $count = 0;
   $query_params = $ret = [];
   $sql = 'SELECT cal_login, cal_lastname, cal_firstname, cal_admin,
@@ -2962,7 +2963,8 @@ function update_import_check_date($username)
  */
 function load_remote_calendar($username, $url)
 {
-  global $login, $errormsg, $error_num, $count_suc, $numDeleted, $calUser, $importMd5;
+  global $calUser, $count_suc, $error_num,
+  $errormsg, $importMd5, $login, $numDeleted;
 
   // Set global vars used in xcal.php (blech)
   $data = [];
@@ -3595,8 +3597,8 @@ function hextoint ( $val ) {
  */
 function html_for_event_day_at_a_glance ( $event, $date ) {
   global $ALLOW_HTML_DESCRIPTION, $categories, $DISPLAY_DESC_PRINT_DAY,
-  $DISPLAY_END_TIMES, $first_slot, $hour_arr, $last_slot, $layers, $login,
-  $PHP_SELF, $rowspan, $rowspan_arr;
+  $DISPLAY_END_TIMES, $first_slot, $hour_arr, $last_slot,
+  $layers, $login, $PHP_SELF, $rowspan, $rowspan_arr;
   static $key = 0;
 
   $can_access = CAN_DOALL;
@@ -3751,8 +3753,8 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
 function html_for_event_week_at_a_glance ( $event, $date,
   $override_class = '', $show_time = true ) {
   global $categories, $DISPLAY_ICONS, $DISPLAY_TZ, $eventinfo, $first_slot,
-  $hour_arr, $is_assistant, $is_nonuser_admin, $last_slot, $layers, $login,
-  $PHP_SELF, $rowspan, $rowspan_arr, $TIME_SPACER, $user;
+  $hour_arr, $is_assistant, $is_nonuser_admin, $last_slot, $layers,
+  $login, $PHP_SELF, $rowspan, $rowspan_arr, $TIME_SPACER, $user;
   static $key = 0;
 
   $can_access = CAN_DOALL;
@@ -4487,7 +4489,7 @@ function nonuser_load_variables ( $login, $prefix ) {
  * @param int    $cat_id  Category id that should be pre-selected
  */
 function print_category_menu ( $form, $date = '', $cat_id = '' ) {
-  global $categories, $login, $user, $CATEGORIES_ENABLED;
+  global $CATEGORIES_ENABLED, $categories, $login, $user;
 
   if ( empty( $CATEGORIES_ENABLED ) || $CATEGORIES_ENABLED == 'N' )
     return false;
@@ -4547,12 +4549,12 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
     $setting  = $s[$vals[0]];
     $variable = 'admin_' . $vals[0];
   }
-  
+
   if( $SCRIPT == 'pref.php' ) {
     $setting  = $prefarray[$vals[0]];
     $variable = 'pref_' . $vals[0];
   }
-    
+
   $hidden = ( strpos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
     <input type="hidden" name="' . $variable . '" value="N" />' );
 
@@ -4585,7 +4587,8 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
  * @return string  HTML for the color selector.
  */
 function print_color_input_html ($varname, $title, $varval = '', $id='', $tag='div', $class='form-inline', $onchange = '') {
-  global $SCRIPT, $s, $prefarray;
+  global $prefarray, $s, $SCRIPT;
+
   $id = empty($id) ? $varname : $id;
   // TODO: Get the text input box working so users can input RGB values.
   //$textId = $id . 'RGB';
@@ -4626,9 +4629,9 @@ function print_color_input_html ($varname, $title, $varval = '', $id='', $tag='d
  */
 function print_date_entries ( $date, $user, $ssi = false,
   $disallowAddIcon = false ) {
-  global $cat_id, $DISPLAY_TASKS_IN_GRID, $DISPLAY_UNAPPROVED, $events,
-  $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS, $PUBLIC_ACCESS_CAN_ADD,
-  $readonly, $tasks, $WEEK_START;
+  global $cat_id, $DISPLAY_TASKS_IN_GRID, $DISPLAY_UNAPPROVED,
+  $events, $is_admin, $is_nonuser, $login, $PUBLIC_ACCESS,
+  $PUBLIC_ACCESS_CAN_ADD, $readonly, $tasks, $WEEK_START;
   static $newEntryStr;
 
   if ( empty ( $newEntryStr ) )
@@ -4837,8 +4840,8 @@ function print_day_at_a_glance ( $date, $user, $can_add = 0 ) {
  */
 function print_entry ( $event, $date ) {
   global $categories, $DISPLAY_END_TIMES, $DISPLAY_LOCATION,
-  $DISPLAY_TASKS_IN_GRID, $eventinfo, $is_assistant, $is_nonuser_admin,
-  $layers, $login, $PHP_SELF, $TIME_SPACER, $user;
+  $DISPLAY_TASKS_IN_GRID, $eventinfo, $is_assistant,
+  $is_nonuser_admin, $layers, $login, $PHP_SELF, $TIME_SPACER, $user;
 
   static $key = 0;
   static $viewEventStr, $viewTaskStr;
@@ -5167,9 +5170,9 @@ function print_timezone_select_html ( $prefix, $tz ) {
  */
 function query_events ( $user, $want_repeated, $date_filter, $cat_id = '',
   $is_task = false ) {
-  global $db_connection_info, $jumpdate, $layers, $login, $max_until,
+  global $db_connection_info, $jumpdate, $layers, $login,
+  $max_until, $OVERRIDE_PUBLIC_TEXT, $OVERRIDE_PUBLIC,
   $PUBLIC_ACCESS_DEFAULT_VISIBLE, $result, $thismonth, $thisyear;
-  global $OVERRIDE_PUBLIC, $OVERRIDE_PUBLIC_TEXT;
 
   // New multiple categories requires some checking to see if this cat_id is
   // valid for this cal_id. It could be done with nested SQL,
@@ -5650,8 +5653,7 @@ function send_to_preferred_view ( $indate = '', $args = '' ) {
  * @return bool  true = success false = not allowed.
  */
 function set_env ( $val, $setting ) {
-  global $tzOffset;
-  global $tzInitSet;
+  global $tzInitSet, $tzOffset;
 
   // Set SERVER TIMEZONE.
   if ( ! $tzInitSet ) {

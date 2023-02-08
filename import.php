@@ -22,8 +22,8 @@ include_once 'includes/init.php';
  *  - non-admin users this functionality
  */
 function print_user_list() {
-  global $is_admin, $is_assistant, $is_nonuser_admin, $login,
-  $NONUSER_AT_TOP, $NONUSER_ENABLED, $single_user;
+  global $is_admin, $is_assistant, $is_nonuser_admin,
+  $login, $NONUSER_AT_TOP, $NONUSER_ENABLED, $single_user;
 
   if ( $single_user == 'N' && $is_admin ) {
     $userlist = user_get_users();
