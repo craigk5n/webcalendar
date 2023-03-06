@@ -477,7 +477,6 @@ function parse_sql ( $sql ) {
 function db_populate ( $install_filename, $display_sql ) {
   global $show_all_errors, $str_parsed_sql;
 
-echo "in db_populate <br>";
   if ( $install_filename == '' )
     return;
 
