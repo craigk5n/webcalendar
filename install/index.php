@@ -284,6 +284,12 @@ if( ! empty( $fd ) ) {
       $settings[$matches[1]] = $matches[2];
   }
   fclose( $fd );
+
+  if( isset( $settings['config_inc'] ) ) {
+    # Load 3rd party configs from external app
+    require get_full_include_path( $settings['config_inc'] );
+    $settings = do_external_configs( $settings );
+  }
 }
 
 if( isset( $magic ) )
