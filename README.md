@@ -119,8 +119,8 @@ allows tighter integration when using Web Calendar alongside your own website or
 
 The user integration is accomplished by creating a "bridge" script in the `includes` directory, for example,
 `includes/user-app-myapp.php`. There are several functions you will need to define in this script. See the
-built-in integrations for [Joomla|https://github.com/craigk5n/webcalendar/blob/master/includes/user-app-joomla.php]
-and [LDAP|https://github.com/craigk5n/webcalendar/blob/master/includes/user-ldap.php] as examples for the interface
+built-in integrations for [Joomla](https://github.com/craigk5n/webcalendar/blob/master/includes/user-app-joomla.php)
+and [LDAP](https://github.com/craigk5n/webcalendar/blob/master/includes/user-ldap.php) as examples for the interface
 you'll need to implement.
 
 Once the script is created, add the following line to `includes/settings.php`:
