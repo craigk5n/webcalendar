@@ -112,3 +112,31 @@ steps.
   Be sure to use the same MariaDb credentials specified above
   (Password _WebCalendar.1_ and Database Name _webcalendar_.)
 
+## Integrating WebCalendar with External Applications
+
+Web Calendar can be configured to pull user and configuration data from an external application. This
+allows tighter integration when using Web Calendar alongside your own website or application.
+
+The user integration is accomplished by creating a "bridge" script in the `includes` directory, for example,
+`includes/user-app-myapp.php`. There are several functions you will need to define in this script. See the
+built-in integrations for [Joomla|https://github.com/craigk5n/webcalendar/blob/master/includes/user-app-joomla.php]
+and [LDAP|https://github.com/craigk5n/webcalendar/blob/master/includes/user-ldap.php] as examples for the interface
+you'll need to implement.
+
+Once the script is created, add the following line to `includes/settings.php`:
+
+```
+user_inc: user-app-myapp.php
+```
+
+The process is much the same for external configs. Create a script such as `includes/config-app-myapp.php` and define
+a single function in that script called `do_external_configs`. This function receives an associative array of all
+the settings defined in `includes/settings.php`, and should return a new associated array that overrides those settings.
+Then, simply add this line to `includes/settings.php`:
+
+```
+config_inc: config-app-myapp.php
+```
+
+External configs will allow your application to supply, for example, database credentials to Web Calendar, rather than
+these needing to be stored in plain text in the webcalendar directory.
