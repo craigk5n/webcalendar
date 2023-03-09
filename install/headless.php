@@ -19,7 +19,7 @@ include_once __DIR__.'/default_config.php';
 include_once __DIR__.'/install_functions.php';
 include_once __DIR__.'/sql/upgrade_matrix.php';
 
-define( '__WC_BASEDIR', '../' );
+define( '__WC_BASEDIR', __DIR__.'/../' );
 $fileDir = __WC_BASEDIR . 'includes';
 $file    = $fileDir . '/settings.php';
 chdir(__WC_BASEDIR);
