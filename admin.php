@@ -728,6 +728,9 @@ if ( ! $error ) {
    . translate ( 'SMTP Port Number' )
    . ':</label><input type="text" size="4" name="admin_SMTP_PORT" value="'
    . $s['SMTP_PORT'] . '" /></div>
+              <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-smtp-tls' ) . '">'
+   . translate ( 'Use STARTTLS' )
+   . print_radio ( 'SMTP_STARTTLS', '', 'email_handler' ) . '</div>
               <div class="form-inline mt-1 mb-2"><label title="' . tooltip ( 'email-smtp-auth' ) . '">'
    . translate ( 'SMTP Authentication' ) . ':</label>'
    . print_radio ( 'SMTP_AUTH', '', 'email_handler' ) . '</div>

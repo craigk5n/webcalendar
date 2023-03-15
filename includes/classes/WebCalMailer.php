@@ -41,7 +41,7 @@ class WebCalMailer {
     $this->mail->CharSet = translate( 'charset' );
     // Turn on SMTP authentication.
     $this->mail->SMTPAuth = ( $SMTP_AUTH == 'Y' );
-    $this->mail->SMTPSecure = "tls";
+    $this->mail->SMTPSecure = ( isset($SMTP_STARTTLS) && $SMTP_STARTTLS == 'Y' ) ? "tls" : "";
     $this->mail->SMTPDebug = 0;
     $this->mail->Username = $SMTP_USERNAME; // SMTP username.
     $this->mail->Password = $SMTP_PASSWORD; // SMTP password.
