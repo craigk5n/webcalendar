@@ -166,6 +166,12 @@ function do_config( $fileLoc ) {
   $configLines =
   $data = '';
 
+  if( isset( $settings['config_inc'] ) ) {
+    # Load 3rd party configs from external app
+    require get_full_include_path( $settings['config_inc'] );
+    $settings = do_external_configs( $settings );
+  }
+
   // Extract db settings into global vars.
   $db_database = $settings['db_database'];
   $db_host     = $settings['db_host'];

@@ -128,6 +128,7 @@ $webcalConfig = array(
   'SERVER_TIMEZONE' => 'America/New_York',
   'SITE_EXTRAS_IN_POPUP' => 'N',
   'SMTP_AUTH' => 'N',
+  'SMTP_STARTTLS' => 'Y',
   'SMTP_HOST' => 'localhost',
   'SMTP_PASSWORD' => '',
   'SMTP_PORT' => '25',
