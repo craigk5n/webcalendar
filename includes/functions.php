@@ -3602,7 +3602,7 @@ function html_for_event_day_at_a_glance ( $event, $date ) {
   $can_access = CAN_DOALL;
   $end_timestr = $popup_timestr = '';
   $getCalTypeName = $event->getCalTypeName();
-  $getCat = abs( $event->getCategory() );
+  $getCat = $event->getCategory();
   $getClone = $event->getClone();
   $getDesc = $event->getDescription();
   $getLogin = $event->getLogin();
@@ -3758,7 +3758,7 @@ function html_for_event_week_at_a_glance ( $event, $date,
   $can_access = CAN_DOALL;
   $catAlt = $href = $timestr = '';
   $getCalTypeName = $event->getCalTypeName();
-  $getCat = abs( $event->getCategory() );
+  $getCat = $event->getCategory();
   $getClone = $event->getClone();
   $getDatetime = $event->getDatetime();
   $getLoginStr = $event->getLogin();
