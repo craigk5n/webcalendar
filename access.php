@@ -16,7 +16,7 @@
  *  access_N - where N is 0 to ACCESS_NUMBER_FUNCTIONS as defined in
  *             includes/access.php. Each should be either 'Y' or 'N'.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $allow_view_other =
   ( ! empty( $ALLOW_VIEW_OTHER ) && $ALLOW_VIEW_OTHER == 'Y' );

@@ -15,7 +15,7 @@
  *  activity logs. (This is because users may see event details
  *  for other groups that they are not supposed to have access to.)
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 if ( ! $is_admin || ( access_is_enabled()
     && ! access_can_access_function( ACCESS_ACTIVITY_LOG ) ) )

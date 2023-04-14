@@ -1,8 +1,8 @@
 <?php
-include_once 'includes/init.php';
-include_once 'includes/date_formats.php';
+require_once 'includes/init.php';
+require_once 'includes/date_formats.php';
 if ( file_exists ( 'install/default_config.php' ) )
-  include_once 'install/default_config.php';
+  require_once 'install/default_config.php';
 
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 // admin.php will not use this cached CSS, but we want to make sure it's flushed.
@@ -786,7 +786,7 @@ if ( ! $error ) {
             <p style="float:right; width:45%; margin:0; background: var(--background)">
               <p id="monthtitle" class="bold" style="text-align:center; color: var(--h2color)">' . date_to_str ( date ( 'Ymd' ), $DATE_FORMAT_MY, false ) . '</p>'
    . display_month ( date ( 'm' ), date ( 'Y' ), true ) . '
-            
+
 <!-- END EXAMPLE MONTH -->
             <p class="form-inline mt-1 mb-2"><label>' . translate ( 'Allow user to customize colors' )
    . ':</label>' . print_radio ( 'ALLOW_COLOR_CUSTOMIZATION' ) . '</p>

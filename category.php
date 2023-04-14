@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 // Load user and global cats.
 load_user_categories();
 
@@ -91,7 +91,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     <label class="col-sm-3 col-form-label" for="delIcon">' . translate ('Remove Icon') . '</label>
     <input type="checkbox" name="delIcon" value="Y" /></div>
     <div class="form-inline">
-    <label class="col-sm-3 col-form-label" for="FileName">' 
+    <label class="col-sm-3 col-form-label" for="FileName">'
     . ( is_dir ( $icon_path ) &&
     ( ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) && $canWrite )
     ? translate ( 'Add Icon to Category' ) . ':</label>

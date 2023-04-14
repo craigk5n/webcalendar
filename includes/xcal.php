@@ -1972,7 +1972,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       // send error message if you can
       $errormsg .= "Cannot read file: $e";
       return [];
-    } 
+    }
     if (!$fd && stripos($cal_file, "http") == 0) {
       // Try curl instead so we can ignore cert errors
       $data = curl_download($cal_file);

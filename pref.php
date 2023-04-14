@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 // Force the CSS cache to clear by incrementing webcalendar_csscache cookie.
 $webcalendar_csscache = 1;
@@ -122,7 +122,7 @@ if ( $res ) {
 $translation_loaded = false;
 
 //move this include here to allow proper translation
-include 'includes/date_formats.php';
+require_once 'includes/date_formats.php';
 
 // Make sure global values passed to styles.php are for this user.
 // Makes the demo calendar accurate.
@@ -899,4 +899,3 @@ $(document).ready(function(){
 </script>
 
 <?php echo print_trailer(); ?>
-

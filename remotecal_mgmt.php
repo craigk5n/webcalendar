@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Remote Calendar Management. 
+ * Remote Calendar Management.
  * NOTE: Very similar to user_mgmt.php with a lot of code copied from there.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 // Verify access to this page is allowed.
 if (empty($login) || $login == '__public__') {
@@ -45,7 +45,7 @@ print_header(
 
 <?php
 // Make sure allow_url_fopen is enabled.  Otherwise, the ICS URL cannot be downloaded.
-// cannotLoadStr 
+// cannotLoadStr
 if (!ini_get('allow_url_fopen')) { ?>
     <div id="main-dialog-load-error" class="alert alert-warning">
         <span id="loadMessage"><?php echo $cannotLoadStr; ?></span>

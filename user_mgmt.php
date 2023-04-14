@@ -2,12 +2,12 @@
 
 /**
  * User Management.
- * 
+ *
  * See nonuser_mgmt.php for managing NonUser Calendars (Resource Calendars) and remote_mgmt.php for
- * Remote Calendars. 
+ * Remote Calendars.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 if (empty($login) || $login == '__public__') {
     // Do not allow public access.

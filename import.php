@@ -11,7 +11,7 @@
  * So, a user could easily export events from the work calendar and import them
  * into WebCalendar with a category "work".
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 /**
  * Generate the selection list for calendar user selection.

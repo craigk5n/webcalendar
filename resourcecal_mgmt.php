@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Resource Calendar Management. 
+ * Resource Calendar Management.
  * NOTE: Very similar to user_mgmt.php and remotecal_mgmt.php with a lot
  * of code copied from there.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 // Verify access to this page is allowed.
 if (empty($login) || $login == '__public__') {

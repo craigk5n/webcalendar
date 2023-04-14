@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 send_no_cache_header();
 
 //check UAC
@@ -130,5 +130,3 @@ echo <<<EOT
 EOT;
 
 ?>
-
-

@@ -22,7 +22,7 @@
  * Comments:
  *  TODO: add email notification when attachment or comment is added
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $id = getValue ( 'id', '-?[0-9]+' );
 $type = getValue ( 'type' );
@@ -243,4 +243,3 @@ print_header();
 
 <?php }
 echo print_trailer(); ?>
-

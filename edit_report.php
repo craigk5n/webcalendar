@@ -23,7 +23,7 @@
  * can edit/delete report.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 load_user_categories();
 
 $adding_report = false;
@@ -253,7 +253,7 @@ echo ( $is_admin ? '<div class="form-inline">
       print_radio( 'include_header', '', '',
       (! empty( $report_include_header ) && $report_include_header == 'Y'
       ? 'Y' : 'N' ) ) . '</div>
-    
+
     <div class="form-inline">
     <label class="col-sm-2 col-form-label" for="allow_nav">' . translate ('Include previous/next links') . '</label>' .
     print_radio( 'allow_nav', '', '',

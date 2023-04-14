@@ -11,7 +11,7 @@
  * Security:
  * Must be owner of the viewto edit
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $error = '';
 
@@ -73,7 +73,7 @@ if ( ! $newview ) {
 
 }
 
-if ( ! empty( $error ) ) {
+if ( ! empty ( $error ) ) {
   echo print_error( $error ) . print_trailer();
   exit;
 }
@@ -175,4 +175,3 @@ echo '<div class="form-inline"><label class="col-sm-2 col-form-label" for="viewu
 </form>
 
 <?php echo print_trailer(); ?>
-

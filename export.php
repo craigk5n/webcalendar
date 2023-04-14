@@ -6,8 +6,8 @@
  * Input Parameters:
  * None
  */
-include_once 'includes/init.php';
-include_once 'includes/xcal.php';
+require_once 'includes/init.php';
+require_once 'includes/xcal.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {
   // do not allow public access
@@ -121,7 +121,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
       $('#dateArea').hide();
     }
   }
-  
+
   function toggle_datefields( name, ele ) {
     updateDateFields();
   }

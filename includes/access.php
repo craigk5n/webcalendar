@@ -556,10 +556,10 @@ function access_user_calendar( $cal_can_xxx, $other_user, $cur_user = '',
       $type_wt = TASK_WT;
 
     $total_wt = $type_wt & $access_wt;
-     
+
     if( !is_numeric($ret) )
     	$ret = 0;
-     
+
     $ret = ( $ret &$total_wt ? $ret : 0 );
   }
 

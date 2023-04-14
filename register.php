@@ -4,21 +4,21 @@
 unset ( $_SESSION['webcal_login'] );
 unset ( $_SESSION['webcalendar_session'] );
 
-include_once 'includes/translate.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
-include_once 'includes/access.php';
-include 'includes/gradient.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/gradient.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -31,7 +31,7 @@ load_user_preferences('guest');
 
 $WebCalendar->setLanguage();
 
-require 'includes/classes/WebCalMailer.php';
+require_once 'includes/classes/WebCalMailer.php';
 $mail = new WebCalMailer;
 
 /*
@@ -43,7 +43,7 @@ Allow self-registration ($ALLOW_SELF_REGISTRATION = Y):
 Restrict self-registration to blacklist ($SELF_REGISTRATION_BLACKLIST = Y):
   If enabled, admin can configure the includes/blacklist.php to restrict or permit
   self-registration based on the user's IP. This will restrict access to existing
-  users or new user's set up by admin. Details and examples are available in the top 
+  users or new user's set up by admin. Details and examples are available in the top
   of the file.
 Generate passwords and send to new users ($SELF_REGISTRATION_FULL = Y):
   If enabled, self-registration user's will be emailed a randomly generated password
@@ -263,7 +263,7 @@ echo "<script>\n";
 <link href="css_cacher.php?login=__public__" rel="stylesheet" />
 <link href="includes/css/styles.css" rel="stylesheet" />
 
-<?php 
+<?php
  // Print custom header (since we do not call print_header function)
  if (!empty($CUSTOM_SCRIPT) && $CUSTOM_SCRIPT == 'Y') {
    load_template($login, 'S');
@@ -342,7 +342,7 @@ echo "<script>\n";
     </div>
 
     </form>
-<?php } ?>    
+<?php } ?>
 
 <br />
 <span class="cookies"><?php etranslate('cookies-note');?></span><br />

@@ -14,24 +14,24 @@
  *   - tools/send_reminders.php
  *
  * How to use:
- *   1. call include_once 'includes/init.php'; at the top of your script.
+ *   1. call include_once 'includes/init.php' at the top of your script.
  *   2. call any other functions or includes not in this file that you need
  *   3. call the print_header function with proper arguments
  *
  * What gets called:
- *   - include_once 'includes/translate.php';
- *   - require_once 'includes/classes/WebCalendar.php';
+ *   - require_once "includes/$user_inc";
+ *   - require_once 'includes/access.php';
+ *   - require_once 'includes/assert.php';
  *   - require_once 'includes/classes/Event.php';
  *   - require_once 'includes/classes/RptEvent.php';
- *   - include_once 'includes/assert.php';
- *   - include_once 'includes/config.php';
- *   - include_once 'includes/dbi4php.php';
- *   - include_once 'includes/formvars.php';
- *   - include_once 'includes/functions.php';
- *   - include_once "includes/$user_inc";
- *   - include_once 'includes/validate.php';
- *   - include_once 'includes/site_extras.php';
- *   - include_once 'includes/access.php';
+ *   - require_once 'includes/classes/WebCalendar.php';
+ *   - require_once 'includes/config.php';
+ *   - require_once 'includes/dbi4php.php';
+ *   - require_once 'includes/formvars.php';
+ *   - require_once 'includes/functions.php';
+ *   - require_once 'includes/site_extras.php';
+ *   - require_once 'includes/translate.php';
+ *   - require_once 'includes/validate.php';
  *
  * Also, for month.php, day.php, week.php, week_details.php:
  *   - {@link send_no_cache_header()};
@@ -48,26 +48,26 @@
   die( 'You cannot access this file directly!' );
  }
 
-include_once 'includes/translate.php';
-require_once 'includes/classes/WebCalendar.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/Event.php';
 require_once 'includes/classes/RptEvent.php';
+require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include_once 'includes/assert.php';
-include_once 'includes/config.php';
-include_once 'includes/dbi4php.php';
-include_once 'includes/formvars.php';
-include_once 'includes/functions.php';
+require_once 'includes/assert.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include_once 'includes/' . $user_inc;
-include_once 'includes/validate.php';
-include_once 'includes/site_extras.php';
-include_once 'includes/access.php';
-include_once 'includes/gradient.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/gradient.php';
+require_once 'includes/site_extras.php';
+require_once 'includes/validate.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -185,7 +185,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     "      top.location = self.location;\n" .
     "  }\n" .
     "</script>\n";
- 
+
 
   $ret .= $ASSETS;
 
@@ -318,7 +318,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
     ? load_template( $login, 'H' ) : '' );
   // HTML includes needed for the top menu.
   if( $MENU_ENABLED == 'Y' ) {
-    include "menu.php";
+    require_once 'menu.php';
   }
   // TODO convert this to return value.
   echo '<div class="container-fluid">';
@@ -354,7 +354,7 @@ function print_trailer( $include_nav_links = true, $closeDb = true,
   }
   if( $include_nav_links && ! $friendly ) {
     if( $MENU_ENABLED == 'N' )
-      include_once 'includes/trailer.php';
+      require_once 'includes/trailer.php';
   }
 
   $ret .= ( empty( $tret ) ? '' : $tret ) // Data from trailer.

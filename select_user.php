@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 print_header();
 echo '
     <h2>' . translate ( 'View Another Users Calendar' ) . '</h2>';

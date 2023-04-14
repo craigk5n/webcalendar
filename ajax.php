@@ -3,21 +3,21 @@
  * Description
  * This is the handler for Ajax httpXmlRequests.
  */
-include_once 'includes/translate.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
-include 'includes/access.php';
-include 'includes/validate.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/validate.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -65,7 +65,7 @@ if ( $page == 'edit_remotes' || $page == 'edit_nonuser' ) {
   $name = ( empty ( $name ) ? 0 : $name );
   require_once 'includes/classes/Event.class';
   require_once 'includes/classes/RptEvent.class';
-  include_once 'includes/gradient.php';
+  require_once 'includes/gradient.php';
   $column_array = ['we.cal_priority', 'we.cal_name', 'we.cal_due_date', 'weu.cal_percent'];
   $task_filter = ' ORDER BY ' . $column_array[$name % 4]
    . ( $name > 3 ? ' ASC' : ' DESC' );

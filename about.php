@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $credits = getPostValue( 'Credits' );
 static $data;

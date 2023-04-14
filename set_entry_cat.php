@@ -6,7 +6,7 @@
  * for that user. Global categories will be visible by all participants,
  * but can only be added/removed by the owner or an admin in the edit-entry form.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 load_user_categories();
 
 $error = '';

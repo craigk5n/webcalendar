@@ -27,17 +27,18 @@ while( $fileName = readdir( $myDirectory ) ) {
 }
 closedir( $myDirectory );
 
-include_once 'includes/translate.php';
-include_once 'includes/config.php';
-include_once 'includes/dbi4php.php';
-include_once 'includes/formvars.php';
-include_once 'includes/functions.php';
+require_once 'includes/translate.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 do_config( 'includes/settings.php' );
-include_once 'includes/' . $user_inc;
-include_once 'includes/access.php';
-include_once 'includes/validate.php';
-include_once 'includes/gradient.php';
+
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/gradient.php';
+require_once 'includes/validate.php';
 
 header( 'Content-type: text/javascript' );
 header( 'Cache-Control: Public' );

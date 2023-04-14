@@ -19,7 +19,7 @@
  */
 defined ( '_ISVALID' ) or die ( 'You cannot access this file directly!' );
 
-include_once 'auth-settings.php';
+require_once 'auth-settings.php';
 
 // Set some global config variables about your system.
 $admin_can_disable_user = true;

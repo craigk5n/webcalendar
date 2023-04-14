@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 $icon_path = 'wc-icons/';
 
 $can_edit = (is_dir($icon_path) &&

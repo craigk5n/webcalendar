@@ -8,7 +8,7 @@
  * Security:
  *   Users will see different options available on this page.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 define ( 'COLUMNS', 3 );
 

@@ -23,8 +23,8 @@
  * Security:
  * TBD
  */
-include_once 'includes/init.php';
-include_once 'includes/xcal.php';
+require_once 'includes/init.php';
+require_once 'includes/xcal.php';
 $error = $sqlLog = '';
 print_header();
 
@@ -62,13 +62,13 @@ if ( $file['size'] > 0 ) {
     // ADD New modules here:
 /*
     case 'MODULE':
-      include "import_module.php";
+      require_once "import_module.php";
       $data = parse_module ( $_FILES['FileName']['tmp_name'] );
       break;
 */
 
     case 'PALMDESKTOP':
-      include 'import_palmdesktop.php';
+      require_once 'import_palmdesktop.php';
       if ( delete_palm_events ( $login ) != 1 )
         $errormsg = translate ( 'Error deleting palm events from webcalendar.' );
       $data = parse_palmdesktop ( $file['tmp_name'], $exc_private );
@@ -86,14 +86,14 @@ if ( $file['size'] > 0 ) {
       break;
 
     case 'OUTLOOKCSV':
-      include 'import_outlookcsv.php';
+      require_once 'import_outlookcsv.php';
       $data = parse_outlookcsv ( $file['tmp_name'] );
       $type = 'outlookcsv';
       break;
 
     // Output from command: 'git log'
     case 'GITLOG':
-      include "import_gitlog.php";
+      require_once "import_gitlog.php";
       $data = parse_gitlog ( $_FILES['FileName']['tmp_name'] );
       $type = 'gitlog';
       break;

@@ -19,8 +19,8 @@
  * then we remove users not in this user's groups
  * (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 $error = '';
 $USERS_PER_TABLE = 6;
@@ -166,6 +166,6 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
 }
 $user = ''; // reset
 
-echo ( empty( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
+echo ( empty ( $eventinfo ) ? '' : $eventinfo ) . $printerStr . print_trailer();
 
 ?>

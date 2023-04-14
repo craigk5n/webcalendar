@@ -10,7 +10,7 @@
  * http://www.k5n.us/webcalendar.php?topic=Add-Ons
  * for download and install instructions for these packages.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 /**
  * Generate HTML for a time selection for use in a form.
@@ -1579,7 +1579,7 @@ $tabI = 0;
         $login == '__public__' && !empty($ENABLE_CAPTCHA) && $ENABLE_CAPTCHA == 'Y'
       ) {
         if (function_exists('imagecreatetruecolor')) {
-          include_once 'includes/classes/captcha/captcha.php';
+          require_once 'includes/classes/captcha/captcha.php';
           echo captcha::form();
         } else {
           etranslate('CAPTCHA Warning');

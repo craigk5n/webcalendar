@@ -17,8 +17,8 @@
  * user_sees_only_his_groups is enabled, then we remove users not in this user's
  * groups (except for nonuser calendars... which we allow regardless of group).
  */
-include_once 'includes/init.php';
-include_once 'includes/views.php';
+require_once 'includes/init.php';
+require_once 'includes/views.php';
 
 $error = '';
 $USERS_PER_TABLE = 6;
@@ -137,7 +137,7 @@ for ( $j = 0; $j < $viewusercnt; $j += $USERS_PER_TABLE ) {
     $DSTtest = date("H",$d);
     if ($DSTtest == "23") {
       $d = $date + 3600;
-    } 
+    }
     if ($DSTtest == "01" ) {
       $d = $date - 3600;
     }

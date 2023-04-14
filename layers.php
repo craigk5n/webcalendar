@@ -3,7 +3,7 @@
  * This page handles managing a user's layers
  * and works with layer_ajax.php to make changes.
  */
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 send_no_cache_header();
 
 $layer_user = $login;

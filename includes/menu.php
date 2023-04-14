@@ -11,7 +11,7 @@ global $ALLOW_VIEW_OTHER, $BodyX, $CATEGORIES_ENABLED, $DISPLAY_TASKS,
   $PUBLIC_ACCESS_ADD_NEEDS_APPROVAL, $PUBLIC_ACCESS_CAN_ADD,
   $PUBLIC_ACCESS_OTHERS, $readonly, $REMOTES_ENABLED, $REPORTS_ENABLED,
   $REQUIRE_APPROVALS, $show_printer, $single_user, $START_VIEW, $thisday,
-  $thismonth, $thisyear, $use_http_auth, $user, $user_fullname, $views, 
+  $thismonth, $thisyear, $use_http_auth, $user, $user_fullname, $views,
   $OVERRIDE_PUBLIC, $GROUPS_ENABLED;
 
 /* -----------------------------------------------------------------------------
@@ -620,7 +620,7 @@ if (empty($thisday))
               }
             ?>
           </ul>
-        </li> 
+        </li>
         <!-- 2 years before -->
         <li class="dropdown-submenu">
               <a class="dropdown-item dropdown-toggle" href="#"><?php echo ($thisyear-2);?></a>
@@ -634,7 +634,7 @@ if (empty($thisday))
                 }
               ?>
             </ul>
-          </li> 
+          </li>
         */ ?>
         </ul>
       </li>

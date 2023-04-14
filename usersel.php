@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 // input args in URL
 // users:  list of comma-separated users
@@ -33,7 +33,7 @@ print_header( '', '', '', true, false, true );
 echo '
     <script>';
 
-include 'includes/js/usersel.php';
+require_once 'includes/js/usersel.php';
 
 echo '
     </script>

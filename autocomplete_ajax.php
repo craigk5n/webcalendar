@@ -17,22 +17,22 @@
  *    "matches":["Unnamed Event","TEst","test event \"2\" !","test recur","test recur OVERRIDE","Test Event"]
  *  }
  */
-include_once 'includes/translate.php';
+require_once 'includes/translate.php';
 require_once 'includes/classes/WebCalendar.php';
 
 $WebCalendar = new WebCalendar( __FILE__ );
 
-include 'includes/config.php';
-include 'includes/dbi4php.php';
-include 'includes/formvars.php';
-include 'includes/functions.php';
+require_once 'includes/config.php';
+require_once 'includes/dbi4php.php';
+require_once 'includes/formvars.php';
+require_once 'includes/functions.php';
 
 $WebCalendar->initializeFirstPhase();
 
-include 'includes/' . $user_inc;
-include 'includes/access.php';
-include 'includes/validate.php';
-include 'includes/ajax.php';
+require_once "includes/$user_inc";
+require_once 'includes/access.php';
+require_once 'includes/ajax.php';
+require_once 'includes/validate.php';
 
 $WebCalendar->initializeSecondPhase();
 
@@ -69,7 +69,7 @@ if ($action == 'search') {
   // remove double quotes
   $query = str_replace('"', '', $query);
   $words = explode(' ', $query);
-  
+
   $eventTitles = $ret = [];
   $word_cnt = count ( $words );
   for ($i = 0; $i < $word_cnt; $i++) {

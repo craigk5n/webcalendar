@@ -3,7 +3,7 @@
  * Group Management.
  */
 
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 if (
     empty($login) || $login == '__public__' ||
@@ -102,7 +102,7 @@ print_header(
                                 } else {
                                     $users = array_merge(get_my_users(), get_nonuser_cals($login));
                                 }
-                            }   
+                            }
                             foreach ($users as $user) {
                                 echo '<option value="' . htmlspecialchars($user['cal_login']) . '">' . htmlspecialchars($user['cal_fullname']) . "</option>\n";
                             }

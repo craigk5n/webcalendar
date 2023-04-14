@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 $icon_max_size = '6000';
 $icon_path = 'wc-icons/';

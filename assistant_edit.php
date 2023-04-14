@@ -1,5 +1,5 @@
 <?php
-include_once 'includes/init.php';
+require_once 'includes/init.php';
 
 if ( empty ( $login ) || $login == '__public__' ) {
   // Do not allow public access.
@@ -70,4 +70,3 @@ if ( $GROUPS_ENABLED == 'Y' ) {
 </form>
 
 <?php echo print_trailer (); ?>
-
