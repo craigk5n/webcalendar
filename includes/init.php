@@ -99,7 +99,7 @@ function send_http_headers () {
 
   // WebCalendar cannot be loaded in a frame
   // Options for this cookie: deny, sameorigin, allow-from
-  Header("X-Frame-Options: deny");
+  Header("X-Frame-Options: sameorigin");
 
   // Marker used by the server to indicate that the MIME types advertised in the
   // Content-Type headers should be followed and not be changed.
@@ -178,7 +178,7 @@ function print_header( $includes = '', $HeadX = '', $BodyX = '',
 
   $ret .= "\n<style id=\"antiClickjack\">\n  body{display:none !important;}\n</style>\n" .
     "<script type=\"text/javascript\">\n" .
-    "  if (self === top) {\n" .
+    "  if (self.location.hostname === top.location.hostname) {\n" .
     "      var antiClickjack = document.getElementById(\"antiClickjack\");\n" .
     "      antiClickjack.parentNode.removeChild(antiClickjack);\n" .
     "  } else {\n" .
