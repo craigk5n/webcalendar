@@ -354,7 +354,15 @@ function get_installed_version ( $postinstall = false ) {
       // We reached the end of database_upgrade_matrix[] with no errors, which 
       // means the database is structurally up-to-date.
     } else {
-      $res = dbi_execute ( $sql, [], false, $show_all_errors );
+      try{
+        $res = dbi_execute ( $sql, [], false, $show_all_errors );
+      }
+      catch (Exception $e){
+        // Suppress any exceptions; this is only used for testing what version
+        // we are on, so when it fails we know it's before the version that SQL
+        // could have worked on.
+        $res = false;
+      }
       if ( $res ) {
         //echo "Success on " . $database_upgrade_matrix[$i][2] . "<br>";
         $_SESSION['old_program_version'] = $database_upgrade_matrix[$i + 1][2];
