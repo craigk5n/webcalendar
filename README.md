@@ -25,6 +25,16 @@ web server document root, you can access the script by going to:
 (Obviously, put the correct server name in above.)  The toplevel URL will
 automatically redirect to the installation wizard.
 
+Alternatively, there is a headless installation/update script you can run from
+the shell:
+
+```shell
+php webcalendar/install/headless.php
+```
+
+You must create `includes/settings.php` yourself before running the headless
+install script.
+
 ## Running WebCalendar with Docker (PHP 8.1)
 You can use a prebuilt WebCalendar image rather than building it yourself locally.
 You will need to shell into the MariaDb container to grant access.
