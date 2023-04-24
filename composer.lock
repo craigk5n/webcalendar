@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0725e50c50c2919dab61c9c3347a4150",
+    "content-hash": "cd188a47f308a675670af1baac05d69c",
     "packages": [
         {
             "name": "ckeditor/ckeditor",
-            "version": "4.18.0",
+            "version": "4.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ckeditor/ckeditor4-releases.git",
-                "reference": "9335fb40486008aeec9f150574d53f35d3aba9c7"
+                "reference": "af71d07caa2172c53e0e426250e3b0189137915b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/9335fb40486008aeec9f150574d53f35d3aba9c7",
-                "reference": "9335fb40486008aeec9f150574d53f35d3aba9c7",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/af71d07caa2172c53e0e426250e3b0189137915b",
+                "reference": "af71d07caa2172c53e0e426250e3b0189137915b",
                 "shasum": ""
             },
             "type": "library",
@@ -46,7 +46,7 @@
                 "text",
                 "wysiwyg"
             ],
-            "time": "2022-03-16T10:52:12+00:00"
+            "time": "2023-03-22T10:37:38+00:00"
         },
         {
             "name": "components/jquery",
