@@ -36,8 +36,9 @@
    $db->query("CREATE TABLE webcal_access_user ( cal_login VARCHAR(25) NOT NULL, cal_other_user VARCHAR(25) NOT NULL, cal_can_view INT NOT NULL DEFAULT '0', cal_can_edit INT NOT NULL DEFAULT '0', cal_can_approve INT NOT NULL DEFAULT '0', cal_can_invite CHAR(1) NOT NULL DEFAULT 'Y', cal_can_email CHAR(1) NOT NULL DEFAULT 'Y', cal_see_time_only CHAR(1) NOT NULL DEFAULT 'N', PRIMARY KEY ( cal_login, cal_other_user ))");
    $db->query("CREATE TABLE webcal_access_function ( cal_login VARCHAR(25) NOT NULL, cal_permissions VARCHAR(64) NOT NULL, PRIMARY KEY ( cal_login ))");
    $db->query("CREATE TABLE webcal_user_template ( cal_login VARCHAR(25) NOT NULL default '', cal_type CHAR(1) NOT NULL default '', cal_template_text text, PRIMARY KEY  (cal_login,cal_type))");
-   $db->query("CREATE TABLE webcal_entry_categories (cal_id INT NOT NULL default '0', cat_id INT NOT NULL default '0', cat_order INT NOT NULL default '0', cat_owner VARCHAR(25) default NULL, PRIMARY KEY(cal_id))");
+   $db->query("CREATE TABLE webcal_entry_categories (cal_id INT NOT NULL default '0', cat_id INT NOT NULL default '0', cat_order INT NOT NULL default '0', cat_owner VARCHAR(25) default NULL, PRIMARY KEY(cal_id, cat_id))");
    $db->query("CREATE INDEX webcal_entry_categories_cat_id ON webcal_entry_categories(cat_id)");
+   $db->query("CREATE INDEX webcal_entry_categories_cal_id ON webcal_entry_categories(cal_id)");
    $db->query("CREATE TABLE webcal_blob ( cal_blob_id INT NOT NULL, cal_id INT NULL, cal_login VARCHAR(25) NULL, cal_name VARCHAR(30) NULL, cal_description VARCHAR(128) NULL, cal_size INT NULL, cal_mime_type VARCHAR(50) NULL, cal_type CHAR(1) NOT NULL, cal_mod_date INT NOT NULL, cal_mod_time INT NOT NULL, cal_blob BLOB, PRIMARY KEY ( cal_blob_id ))");
    $db->query("CREATE TABLE webcal_timezones (tzid varchar(100) NOT NULL default '', dtstart varchar(25) default NULL, dtend varchar(25) default NULL, vtimezone text, PRIMARY KEY  ( tzid ))");
    #$c->close ();
