@@ -1,0 +1,15 @@
+{
+    "name": "components/normalize.css",
+    "description": "Normalize.css is a customisable CSS file that makes browsers render all elements more consistently and in line with modern standards.",
+    "type": "component",
+    "homepage": "http://necolas.github.com/normalize.css/",
+    "license": "MIT",
+    "extra": {
+        "component": {
+            "name": "normalize-css",
+            "styles": [
+                "normalize.css"
+            ]
+        }
+    }
+}

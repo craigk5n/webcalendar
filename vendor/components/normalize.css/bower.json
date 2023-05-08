@@ -1,0 +1,15 @@
+{
+    "name": "normalize-css",
+    "version": "3.0.3",
+    "description": "normalize.css",
+    "author": "Nicolas Gallagher",
+    "homepage": "http://necolas.github.com/normalize.css/",
+    "main": "normalize.css",
+    "license": "MIT",
+    "ignore": [
+        "CHANGELOG.md",
+        "component.json",
+        "composer.json",
+        "test.html"
+    ]
+}
