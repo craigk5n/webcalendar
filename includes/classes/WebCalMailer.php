@@ -71,7 +71,7 @@ class WebCalMailer {
     $this->Body( $msg );
 
     if( ! empty( $id ) )
-      $this->mail->IcsAttach( $id );
+      $this->IcsAttach( $id );
 
     $ret = true;
     if ( ! $this->mail->Send() ) {
