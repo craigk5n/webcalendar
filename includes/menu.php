@@ -403,7 +403,7 @@ if (empty($thisday))
             // Normal User Settings.
             echo '<h6 class="dropdown-header">' . translate('Your Settings') . '</h6>';
             if (!$is_admin)
-              print_menu_item(translate('My Profile'), 'users.php');
+              print_menu_item(translate('My Profile'), 'user_mgmt.php');
 
             if (
               $single_user != 'Y' &&
