@@ -73,7 +73,7 @@ if( getPostValue( 'otheruser' ) != '' && getPostValue( 'submit' ) == $saveStr ) 
     AND cal_other_user = ?', [$puser, $pouser] );
 
     $approve_total = $edit_total = $view_total = 0;
-    for( $i = 1; $i <= 256; ) {
+    for ( $i = 1; $i < 257; ) {
       $approve_total += getPostValue( 'a_' . $i );
       $edit_total    += getPostValue( 'e_' . $i );
       $view_total    += getPostValue( 'v_' . $i );
@@ -315,20 +315,21 @@ if( ! empty( $otheruser ) ) {
       <table cellpadding="5">
         <tbody>
           <tr>
-            <th class="boxtop boxbottom boxleft" width='
-     . ( $guser == '__public__'
-      ? '"60%" class="aligncenter">' . translate( 'Calendar' ) . '</th>
+            <th class="'
+      . ( $guser === '__public__'
+        ? 'aligncenter" width="60%">' . translate ( 'Calendar' ) . '</th>
             <th class="boxtop boxbottom" width="20%">' . $typeStr . '</th>
             <th class="boxtop boxright boxbottom" colspan="3" width="20%">'
-       . translate( 'View Event' )
-      : '"25%">' . $otheruser_fullname . '</th>
+          . translate ( 'View Event' )
+        : 'boxtop boxbottom boxleft" width="25%">'
+          . $otheruser_fullname . '</th>
             <th class="boxtop boxbottom" width="15%">' . $typeStr . '</th>
-            <th width="15%" colspan="3" class="boxtop boxbottom">'
-       . translate( 'View' ) . '</th>
-            <th width="15%" colspan="3" class="boxtop boxbottom">'
-       . translate( 'Edit' ) . '</th>
-            <th width="15%" colspan="3" class="boxtop boxright boxbottom">'
-       . translate( 'Approve/Reject' ) ) . '</th>
+            <th class="boxtop boxbottom" colspan="3" width="15%">'
+          . translate ( 'View' ) . '</th>
+            <th class="boxtop boxbottom" colspan="3" width="15%">'
+          . translate ( 'Edit' ) . '</th>
+            <th class="boxtop boxright boxbottom" colspan="3" width="15%">'
+          . translate ( 'Approve/Reject' ) ) . '</th>
           </tr>';
 
     $access_type = [
