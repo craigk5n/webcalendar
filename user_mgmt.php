@@ -69,9 +69,11 @@ print_header(
 </table>
 
 <br />
+<?php if ($is_admin && $admin_can_delete_user && access_can_access_function(ACCESS_USER_MANAGEMENT)) { ?>
 <div class="userButtons">
     <input class="btn btn-primary" type="button" value="<?php etranslate('Add User'); ?>..." onclick="return edit_user('')" />
 </div>
+<?php } ?>
 
 <!-- add/edit user modal dialog -->
 <div id="edit-user-dialog" class="modal" tabindex="-1" role="dialog">
@@ -266,11 +268,18 @@ print_header(
                         email: u.email,
                         fullname: u.fullname
                     };
+                    // Show users only to admins and self
+		            <?php if (!$is_admin) { ?>
+			            if (myLogin == u.login) {
+		            <?php } ?>
                     tbody += '<tr><td>' + u.login + '</td><td>' + (u.firstname == null ? '' : u.firstname) +
                         '</td><td>' + (u.lastname == null ? '' : u.lastname) + '</td><td>' + (u.email == null ? '' : u.email) +
                         '</td><td>' +
                         (u.is_admin == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />' : '') +
                         '</td><td>' + user_menu(u.login) + '</td></tr>\n';
+                    <?php if (!$is_admin) { ?>
+                        }
+                    <?php } ?>
                 }
                 $('#user-tbody').html(tbody);
                 //console.log('tbody=' + tbody);
