@@ -1,7 +1,7 @@
 WebCalendar README
 ------------------
 
-Project Home Page: https://www.k5n.us/webcalendar/
+Project Home Page: https://www.k5n.us/webcalendar/  
 Project Owner: Craig Knudsen, &#99;&#114;&#97;&#105;&#103;&#64;&#107;&#53;&#110;&#46;&#117;&#115;  
 Documentation:
 - [System Administrator's Guide](http://htmlpreview.github.io/?https://github.com/craigk5n/webcalendar/blob/master/docs/WebCalendar-SysAdmin.html) (Installation instructions, FAQ)
