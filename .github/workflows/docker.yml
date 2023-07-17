@@ -22,7 +22,7 @@ jobs:
 
       - name: Extract metadata (like version) from the repository
         id: meta
-        uses: docker/metadata-action@v3
+        uses: docker/metadata-action@v4
         with:
           images: ${{ secrets.DOCKER_HUB_USERNAME }}/webcalendar
 
