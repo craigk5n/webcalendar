@@ -4547,12 +4547,12 @@ function print_checkbox( $vals, $id = '', $onchange = '' ) {
     $setting  = $s[$vals[0]];
     $variable = 'admin_' . $vals[0];
   }
-  
+
   if( $SCRIPT == 'pref.php' ) {
     $setting  = $prefarray[$vals[0]];
     $variable = 'pref_' . $vals[0];
   }
-    
+
   $hidden = ( strpos( 'admin.phpref.php', $SCRIPT ) === false ? '' : '
     <input type="hidden" name="' . $variable . '" value="N" />' );
 
@@ -5574,9 +5574,12 @@ function send_doctype ( $doc_title = '' ) {
 
   $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
 
-  return '<!DOCTYPE html><html><head>' .
-    '<meta http-equiv="Content-Type" content="text/html; charset=' . $charset .
-    '" />' . ( empty ( $doc_title ) ? '' : '<title>' . $doc_title . '</title>' );
+  return "<!DOCTYPE html>
+  <html lang=\"$lang\">
+    <head>
+      <meta charset=\"$charset\">"
+    . ( empty ( $doc_title ) ? '' : "
+      <title>$doc_title</title>" );
 }
 
 /**
