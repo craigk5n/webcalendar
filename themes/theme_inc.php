@@ -19,7 +19,7 @@ if ( ! empty ( $PHP_SELF ) && preg_match ( '/\/themes\//', $PHP_SELF ) ) {
   <body>
 EOT;
   echo ( file_exists ( $filename )
-    ? '<img src="' . $filename . '" />'
+    ? '<img src="' . $filename . '">'
     : '<h2>' . $no_preview. '</h2>' ) . '
   </body>
 </html>';

@@ -658,7 +658,7 @@ elseif ( $row[1] == 'W' )
 }
 dbi_free_result ( $res );
 } else
-db_error() . '<br />';
+db_error() . '<br>';
 }
 if ( $eType == 'task' ) {
 echo '
@@ -715,7 +715,7 @@ $allmails[] = $tempemail;
 } else
 echo $tempfullname;
 
-echo '<br />';
+echo '<br>';
 }
 // show external users here...
 if ( ! empty ( $ALLOW_EXTERNAL_USERS ) && $ALLOW_EXTERNAL_USERS == 'Y' ) {
@@ -726,7 +726,7 @@ $externUserStr = translate ( 'External User' );
 for ( $i = 0, $cnt = count ( $ext_users ); $i < $cnt; $i++ ) {
   if ( ! empty ( $ext_users[$i] ) ) {
     echo '
-  ' . $ext_users[$i] . ' (' . $externUserStr . ')<br />';
+  ' . $ext_users[$i] . ' (' . $externUserStr . ')<br>';
     if ( preg_match ( '/mailto: (\S+)"/', $ext_users[$i], $match ) )
       $allmails[] = $match[1];
   }
@@ -746,7 +746,7 @@ $allmails[] = $tempemail;
 } else
 echo $tempfullname;
 
-echo ' (?)<br />';
+echo ' (?)<br>';
 }
 for ( $i = 0; $i < $num_rej; $i++ ) {
 user_load_variables ( $rejected[$i], 'temp' );
@@ -757,7 +757,7 @@ echo '
   <strike>' . ( strlen ( $tempemail ) > 0 && $can_email != 'N'
 ? '<a href="mailto:' . $tempemail . '?subject=' . $subject . '">'
  . $tempfullname . '</a>'
-: $tempfullname ) . '</strike> (' . translate ( 'Rejected' ) . ')<br />';
+: $tempfullname ) . '</strike> (' . translate ( 'Rejected' ) . ')<br>';
 }
 }
 echo '</div><div class="w-100"></div></div>' . "\n";
@@ -784,16 +784,16 @@ echo '<div class="row"><div class="col-3">';
 echo '<form action="view_entry.php?id=' . $id
 . '" method="post" name="setpercentage">' . csrf_form_key() . '
     <input type="hidden" name="others_complete" value="'
-. $others_complete . '" />' . translate ( 'Update Task Percentage' ) . '</div>';
+. $others_complete . '">' . translate ( 'Update Task Percentage' ) . '</div>';
 echo '<div class="col-9"><select name="upercent" id="task_percent">';
 for ( $i = 0; $i <= 100; $i += 10 ) {
 echo '
       <option value="' . "$i\" " . ( $login_percentage == $i
-? ' selected="selected"':'' ) . ' >' . $i . '</option>';
+? ' selected':'' ) . ' >' . $i . '</option>';
 }
 echo '
     </select>&nbsp;
-    <input type="submit" value="' . translate ( 'Update' ) . '" />
+    <input type="submit" value="' . translate ( 'Update' ) . '">
   </form>';
 echo '</div><div class="w-100"></div></div>' . "\n";
 }
@@ -809,8 +809,8 @@ echo "<div class=\"mt-2 pb-3 p-2 eventattachment\">\n";
 echo ' ' . $a->getSummary();
 
 // Dropdown menu for actions on this attachment
-echo '&nbsp;<div class="btn-group dropleft float-right">' . 
-'<button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . 
+echo '&nbsp;<div class="btn-group dropleft float-right">' .
+'<button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 '</button><div class="dropdown-menu">';
 $url = 'doc.php?blid=' . $a->getId();
 echo '<a class="dropdown-item" href="' . $url . '">' . translate('View') . '</a>';
@@ -829,14 +829,14 @@ if ( $a->getMimeType() == 'image/jpeg' || $a->getMimeType() == 'image/png' ||
 $a->getMimeType() == 'image/gif' ) {
 echo '<br><a href="doc.php?blid=' . $a->getId() .
 '"><img src="doc.php?blid=' . $a->getId() . '"' .
-' style="max-height:35vh; width: auto" /></a>';
+' style="max-height:35vh; width: auto"></a>';
 }
 echo "</div>\n";
 }
 $num_app = $num_rej = $num_wait = 0;
 $num_attach = $attList->getSize();
 
-echo ( $num_attach == 0 ? ' ' . translate ( 'None' ) . '<br />' :'' );
+echo ( $num_attach == 0 ? ' ' . translate ( 'None' ) . '<br>' : '' );
 echo '</div><div class="w-100"></div></div>' . "\n";
 }
 
@@ -858,8 +858,8 @@ $comment_text .= '
 . display_time ( $cmt->getModTime(), 2 );
 
 // Dropdown menu for actions on this comment
-$comment_text .= '&nbsp;<div class="btn-group dropleft float-right">' . 
-'<button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . 
+$comment_text .= '&nbsp;<div class="btn-group dropleft float-right">' .
+'<button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' .
 '</button>' . "\n"  . '<div class="dropdown-menu">';
 // show delete link if user can delete
 if ($is_admin || $login == $cmt->getLogin()
@@ -870,7 +870,7 @@ $comment_text .= '<a class="dropdown-item" href="docdel.php?blid=' . $cmt->getId
 . translate('Delete') . '</a>';
 }
 $comment_text .= '</div></div><hr>' . "\n";
-//$comment_text .= '<br />  <blockquote class="eventcomment">';
+//$comment_text .= '<br>  <blockquote class="eventcomment">';
 if ( ! empty ( $ALLOW_HTML_DESCRIPTION ) && $ALLOW_HTML_DESCRIPTION == 'Y' ) {
 $str = $cmt->getData();
 $str = str_replace ( '&amp;amp;', '&amp;', $str );
@@ -888,14 +888,14 @@ $comment_text .= "</div>\n";
 }
 
 if ( $num_comment == 0 )
-echo translate ( 'None' ) . '<br />';
+echo translate ( 'None' ) . '<br>';
 else {
 echo '
   ' . $num_comment . ' ' . translate ( 'comments' ) . '
   <input class="btn" id="showbutton" type="button" value="' . translate ( 'Show' )
-. '" onclick="showComments();" />
+. '" onclick="showComments();">
   <input class="btn" id="hidebutton" type="button" value="' . translate ( 'Hide' )
-. '" onclick="hideComments();" /><br />
+. '" onclick="hideComments();"><br>
   <div id="comtext">' . $comment_text . '</div>';
 // We could put the following JS in includes/js/view_entry.php,
 // but we won't need it in many cases and we don't know whether

@@ -103,11 +103,11 @@ $wizardStr      = translate( 'WebCalendar Installation Wizard Step XXX' );
 
 $failure = $failureStr . '<blockquote>';
 
-$checked = ' checked="checked"';
-$selected= ' selected="selected"';
+$checked = ' checked';
+$selected= ' selected';
 
-$setting_correct_img = '<img src="../images/bootstrap-icons/check-circle.svg" alt="!"/>';
-$setting_wrong_img = '<img src="../images/bootstrap-icons/exclamation-triangle-fill.svg" alt="!"/>';
+$setting_correct_img = '<img src="../images/bootstrap-icons/check-circle.svg" alt="!">';
+$setting_wrong_img = '<img src="../images/bootstrap-icons/exclamation-triangle-fill.svg" alt="!">';
 
 // First pass at settings.php.
 // We need to read it first in order to get the md5 password.
@@ -186,13 +186,13 @@ if( file_exists( $file ) && ! empty( $pwd ) ) {
   if( md5( $pwd ) == $password ) {
     $_SESSION['validuser'] = $password;
     echo translate( 'Password Accepted' ) . '</title>
-    <meta http-equiv="refresh" content="0; index.php" />
+    <meta http-equiv="refresh" content="0; index.php">
   </head>
   <body onLoad="alert( \'' . translate( 'Successful Login', true ) . '\' );">';
   } else
     // Invalid password.
     echo translate( 'Password Incorrect' ) . '</title>
-    <meta http-equiv="refresh" content="0; index.php" />
+    <meta http-equiv="refresh" content="0; index.php">
   </head>
   <body onLoad="alert( \'' . translate( 'Invalid Login', true )
      . '\' ); document.go(-1)">';
@@ -235,7 +235,7 @@ $pwd1 = getPostValue( 'password1' );
 $pwd2 = getPostValue( 'password2' );
 if( file_exists( $file ) && $forcePassword && ! empty( $pwd1 ) ) {
   if( $pwd1 != $pwd2 ) {
-    echo translate( 'Passwords do not match!' ) . '<br />' . "\n";
+    echo translate( 'Passwords do not match!' ) . "<br>\n";
     exit;
   }
   $fd = @fopen( $file, 'a+b', false );
@@ -253,7 +253,7 @@ if( file_exists( $file ) && $forcePassword && ! empty( $pwd1 ) ) {
 <html>
   <head>
     <title>' . translate( 'Password Updated' ) . '</title>
-    <meta http-equiv="refresh" content="0; index.php" />
+    <meta http-equiv="refresh" content="0; index.php">
     <?php echo $jquery_install; ?>
   </head>
   <body onLoad="alert( \''
@@ -748,7 +748,7 @@ if( ! empty( $y ) ) {
 if( ! empty( $x ) || ! empty( $y ) ) {
   if ( $doLogin ) {
     // Hack attempt :-)
-    echo "Bugger off.<br/>"; exit;
+    echo "Bugger off.<br>"; exit;
   }
   $fd = @fopen( $file, 'w+b', false );
 
@@ -764,7 +764,7 @@ if( ! empty( $x ) || ! empty( $y ) ) {
     fwrite( $fd, '<?php' . "\r\n" . '/* updated via install/index.php on '
        . date( 'r' ) . "\r\n" );
     foreach( $settings as $k => $v ) {
-      if( $v != '<br />' && $v != '' )
+      if( $v != '<br>' && $v != '' )
         fwrite( $fd, $k . ': ' . $v . "\r\n" );
     }
     fwrite( $fd, '# end settings.php */' . "\r\n?>\r\n" );
@@ -791,7 +791,7 @@ echo '<!DOCTYPE html>
   <head>
     <title>' . translate( 'WebCalendar Setup Wizard' ) . '</title>
     <meta charset='
- . translate( 'charset' ) . '" />'
+ . translate( 'charset' ) . '">'
     . "\n" . $jquery_install . '
     <script>
 <!-- <![CDATA[
@@ -994,7 +994,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . ( empty( $_SESSION['validuser'] )
     ? '' : '&nbsp;<input name="action" class="btn btn-secondary" type="button" value="'
      . translate( 'Detailed PHP Info' )
-     . '..." onClick="testPHPInfo()" />' ) . '</th>
+     . '..." onClick="testPHPInfo()">' ) . '</th>
       </tr>';
   foreach( $php_settings as $setting ) {
     $ini_get_result = get_php_setting( $setting[1], $setting[3] );
@@ -1094,8 +1094,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <tr>
                 <th>' . $passwordStr . ':</th>
                 <td class="form-inline">
-                  <input class="form-control" name="password" type="password" />
-                  <input class="btn btn-primary ml-1" type="submit" value="' . $loginStr . '" />
+                  <input class="form-control" name="password" type="password">
+                  <input class="btn btn-primary ml-1" type="submit" value="' . $loginStr . '">
                 </td>
               </tr>
             </table>
@@ -1111,15 +1111,15 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               </tr>
               <tr>
                 <th>' . $passwordStr . ':</th>
-                <td><input class="form-control" name="password1" type="password" /></td>
+                <td><input class="form-control" name="password1" type="password"></td>
               </tr>
               <tr>
                 <th>' . translate( 'Password (again)' ) . '</th>
-                <td><input class="form-control" name="password2" type="password" /></td>
+                <td><input class="form-control" name="password2" type="password"></td>
               </tr>
               <tr>
                 <td colspan="2" class="aligncenter"><input class="btn btn-primary" type="submit" value="'
-         . translate( 'Set Password' ) . '" /></td>
+         . translate( 'Set Password' ) . '"></td>
               </tr>
             </table>
           </form>';
@@ -1133,7 +1133,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td class="aligncenter">
           <form action="index.php?action=switch&amp;page=2" method="post">' . csrf_form_key() . '
-            <input class="btn btn-primary" type="submit" value="' . $nextStr . '" />
+            <input class="btn btn-primary" type="submit" value="' . $nextStr . '">
           </form>
         </td>
       </tr>
@@ -1255,25 +1255,25 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td class="prompt"><label for="server">'
    . translate( 'Server' ) . ':</label></td>
                 <td colspan="2"><input class="form-control" name="form_db_host" id="server" '
-   . 'size="20" value="' . ( empty($settings['db_host']) ? '' : $settings['db_host']) . '" /></td>
+   . 'size="20" value="' . ( empty($settings['db_host']) ? '' : $settings['db_host']) . '"></td>
               </tr>
               <tr>
                 <td class="prompt"><label for="login">'
    . $loginStr . ':</label></td>
                 <td colspan="2"><input class="form-control" name="form_db_login" id="login" '
-   . 'size="20" value="' . ( empty($settings['db_login']) ? '' : $settings['db_login']) . '" /></td>
+   . 'size="20" value="' . ( empty($settings['db_login']) ? '' : $settings['db_login']) . '"></td>
               </tr>
               <tr>
                 <td class="prompt"><label for="pass">'
    . $passwordStr . ':</label></td>
                 <td colspan="2"><input class="form-control" name="form_db_password" id="pass" '
-   . 'size="20" value="' . (empty($settings['db_password']) ? '' : $settings['db_password']) . '" /></td>
+   . 'size="20" value="' . (empty($settings['db_password']) ? '' : $settings['db_password']) . '"></td>
               </tr>
               <tr>
                 <td class="prompt" id="db_name"><label for="database">'
    . $databaseNameStr . ':</label></td>
                 <td colspan="2"><input class="form-control" name="form_db_database" id="database" '
-   . 'size="20" value="' . $settings['db_database'] . '" /></td>
+   . 'size="20" value="' . $settings['db_database'] . '"></td>
               </tr>'
   /* This a workaround for postgresql. The db_type should be 'pgsql'
      but 'postgresql' is used in a lot of places...
@@ -1287,14 +1287,14 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td colspan="2">
                   <label><input class="form-control" name="form_db_persistent" value="true" '
      . 'type="radio"' . ( $settings['db_persistent'] == 'true'
-      ? $checked : '' ) . ' />'
+      ? $checked : '' ) . '>'
      . translate( 'Enabled' ) . '</label>&nbsp;&nbsp;&nbsp;&nbsp;
                   <label><input class="form-control" name="form_db_persistent" value="false" '
      . 'type="radio"' . ( $settings['db_persistent'] != 'true'
-      ? $checked : '' ) . ' />' . translate( 'Disabled' ) . '</label>
+      ? $checked : '' ) . '>' . translate( 'Disabled' ) . '</label>
                 </td>
               </tr>' :/* Need to set a default value. */ '
-              <input class="form-control" name="form_db_persistent" value="false" type="hidden" />' );
+              <input class="form-control" name="form_db_persistent" value="false" type="hidden">' );
 
   if( function_exists( 'file_get_contents' ) ) {
     if( empty( $settings['db_cachedir'] ) )
@@ -1304,7 +1304,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <tr>
                 <td class="prompt">' . $cachedirStr . ':</td>
                 <td><input class="form-control" type="text" size="70" name="form_db_cachedir" '
-     . 'id="form_db_cachedir" value="' . $settings['db_cachedir'] . '" /></td>
+     . 'id="form_db_cachedir" value="' . $settings['db_cachedir'] . '"></td>
               </tr>';
   } //end test for file_get_contents
 
@@ -1313,10 +1313,10 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
                 <td class="aligncenter" colspan="3">
                   <input class="btn btn-primary" name="action" type="submit" value="' . $testSettingsStr
      . '" class="' . ( empty( $_SESSION['db_success'] ) ? 'not' : '' )
-     . 'recommended' . '" />' . ( ! empty( $_SESSION['db_noexist'] ) &&
+     . 'recommended' . '">' . ( ! empty( $_SESSION['db_noexist'] ) &&
       empty( $_SESSION['db_success'] ) ? '
                   <input class="btn btn-primary" name="action2" type="submit" value="' . $createNewStr
-       . '" class="recommended" />' : '' ) . '
+       . '" class="recommended">' : '' ) . '
                 </td>
               </tr>
             </table>
@@ -1328,20 +1328,20 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td class="alignright" width="40%">
           <form action="index.php?action=switch&amp;page=1" method="post">' . csrf_form_key() . '
-            <input class="btn btn-primary" type="submit" value="' . $backStr . '" />
+            <input class="btn btn-primary" type="submit" value="' . $backStr . '">
           </form>
         </td>
         <td class="aligncenter" width="20%">
           <form action="index.php?action=switch&amp;page=3" method="post">' . csrf_form_key() . '
             <input class="btn btn-primary" type="submit" value="' . $nextStr . '" '
-   . ( empty( $_SESSION['db_success'] ) ? 'disabled' : '' ) . ' />
+   . ( empty( $_SESSION['db_success'] ) ? 'disabled' : '' ) . '>
           </form>
         </td>
         <td class="alignleft" width="40%">
           <form action="" method="post">' . csrf_form_key() . '
             <input class="btn btn-secondary" type="button" value="' . $logoutStr . '" '
    . ( empty( $_SESSION['validuser'] ) ? 'disabled' : '' )
-   . ' onclick="document.location.href=\'index.php?action=logout\'" />
+   . ' onclick="document.location.href=\'index.php?action=logout\'">
           </form>
         </td>
       </tr>
@@ -1352,8 +1352,8 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
     empty( $_SESSION['blank_database'] ) ) {
     $response_msg = translate( 'All your database tables appear to be up...' );
     $_SESSION['db_updated'] = true;
-    // $response_msg .= '<br />Previous Version: ' .
-    // $_SESSION['old_program_version'] . '<br />
+    // $response_msg .= '<br>Previous Version: ' .
+    // $_SESSION['old_program_version'] . '<br>
     // New Version: ' . $PROGRAM_VERSION;
   } else
     $response_msg = ( $_SESSION['old_program_version'] == 'new_install'
@@ -1436,9 +1436,9 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         empty( $_SESSION['blank_database'] )
         ? 'submit" value="' . translate( 'Install Database' )
         :/* We're doing an upgrade. */ 'hidden" name="install_file" value="'
-         . $_SESSION['install_file'] . '" />
+         . $_SESSION['install_file'] . '">
             <input class="btn btn-secondary" type="submit" value="'
-         . translate( 'Update Database' ) ) . '" />
+         . translate( 'Update Database' ) ) . '">
           </form>' ) . '
         </td>
       </tr>'
@@ -1449,12 +1449,12 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
         <td class="aligncenter">
           <form action="index.php?action=install" method="post" name="display">' . csrf_form_key() . '
             <input type="hidden" name="install_file" value="'
-       . $_SESSION['install_file'] . '" />
-            <input type="hidden" name="display_sql" value="1" />
+       . $_SESSION['install_file'] . '">
+            <input type="hidden" name="display_sql" value="1">
             <input class="btn btn-secondary" type="submit" value="' . translate ( 'Display Required SQL' )
-       . '" /><br />' . ( empty( $str_parsed_sql ) ? '' : '
+       . '"><br>' . ( empty( $str_parsed_sql ) ? '' : '
             <textarea name="displayed_sql" cols="100" rows="12">'
-         . $str_parsed_sql . '</textarea><br />
+         . $str_parsed_sql . '</textarea><br>
             <p class="recommended">'
          . translate( 'Return to previous page after processing SQL.' )
          . '</p>' ) . '
@@ -1469,20 +1469,20 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
       <tr>
         <td class="alignright" width="40%">
           <form action="index.php?action=switch&amp;page=2" method="post">' . csrf_form_key() . '
-            <input class="btn btn-secondary" type="submit" value="' . $backStr . '" />
+            <input class="btn btn-secondary" type="submit" value="' . $backStr . '">
           </form>
         </td>
         <td class="aligncenter" width="20%">
           <form action="index.php?action=switch&amp;page=4" method="post">' . csrf_form_key() . '
             <input class="btn btn-primary" type="submit" value="' . $nextStr . '" '
-   . ( empty( $_SESSION['db_updated'] ) ? 'disabled' : '' ) . ' />
+   . ( empty( $_SESSION['db_updated'] ) ? 'disabled' : '' ) . '>
           </form>
         </td>
         <td class="alignleft" width="40%">
           <form action="" method="post">' . csrf_form_key() . '
             <input class="btn btn-secondary" type="button" value="' . $logoutStr . '" '
    . ( empty( $_SESSION['validuser'] ) ? 'disabled' : '' )
-   . ' onclick="document.location.href=\'index.php?action=logout\'" />
+   . ' onclick="document.location.href=\'index.php?action=logout\'">
           </form>
         </td>
       </tr>
@@ -1512,7 +1512,7 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
             <ul><li>'
        . translate( 'It appears that you have NOT converted...' ) . '</li></ul>
             <div class="aligncenter"><input class="btn btn-secondary" type="submit" value="'
-       . translate( 'Convert Data to GMT' ) . ':" /></div>
+       . translate( 'Convert Data to GMT' ) . ':"></div>
           </form>' : '
           <ul><li>' . $tzSuccessStr . '</li></ul>' ) . '
         </td>
@@ -1533,13 +1533,13 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
             <tr>
             <form action="index.php?action=switch&amp;page=4" method="post" '
    . 'enctype=\'multipart/form-data\' name="form_app_settings">' . csrf_form_key() . '
-              <input type="hidden" name="app_settings" value="1" />
+              <input type="hidden" name="app_settings" value="1">
               <td class="prompt">' . translate( 'Create Default Admin Account' )
    . ':</td>
               <td>
                 <input class="form-control" type="checkbox" name="load_admin" value="Yes"'
    . ( ( $_SESSION['old_program_version'] == 'new_install' )
-    ? $checked : '' ) . ' />' . ( $_SESSION['admin_exists'] == 0 ? '
+    ? $checked : '' ) . '>' . ( $_SESSION['admin_exists'] == 0 ? '
                 <span class="notrecommended"> '
     . translate( '(Admin Account Not Found)' ) . '</span>' : '' ) . '
               </td>
@@ -1548,12 +1548,12 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
               <td class="prompt">' . translate( 'Application Name' ) . ':</td>
               <td><input class="form-control" type="text" size="40" name="form_application_name" '
    . 'id="form_application_name" value="' . $_SESSION['application_name']
-   . '" /></td>
+   . '"></td>
             </tr>
             <tr>
               <td class="prompt">' . translate( 'Server URL' ) . ':</td>
               <td><input class="form-control" type="text" size="40" name="form_server_url" '
-   . 'id="form_server_url" value="' . $_SESSION['server_url'] . '" /></td>
+   . 'id="form_server_url" value="' . $_SESSION['server_url'] . '"></td>
             </tr>
             <tr>
               <td class="prompt">'
@@ -1591,16 +1591,16 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . $loginStr . ':</td>
               <td><input class="form-control" name="form_single_user_login" size="20" value="'
    . ( empty( $settings['single_user_login'] )
-     ? '' : $settings['single_user_login'] ) . '" /></td>
+     ? '' : $settings['single_user_login'] ) . '"></td>
             </tr>
             <tr>
               <td class="prompt">' . translate( 'Read-Only' ) . ':</td>
               <td class="form-inline">
                 <input class="form-control" name="form_readonly" value="true" type="radio"'
-   . ( $settings['readonly'] == 'true' ? $checked : '' ) . ' />'
+   . ( $settings['readonly'] == 'true' ? $checked : '' ) . '>'
    . $yesStr . '&nbsp;&nbsp;&nbsp;&nbsp;
                 <input class="form-control" name="form_readonly" value="false" type="radio"'
-   . ( $settings['readonly'] != 'true' ? $checked : '' ) . ' />' . $noStr . '
+   . ( $settings['readonly'] != 'true' ? $checked : '' ) . '>' . $noStr . '
               </td>
             </tr>
             <tr>
@@ -1624,16 +1624,16 @@ if( empty( $_SESSION['step'] ) || $_SESSION['step'] < 2 ) {
    . ( ! empty( $_SESSION['db_success'] ) && $_SESSION['db_success'] &&
     empty( $dologin ) ? '
               <input name="action" class="btn btn-primary" type="button" value="'
-     . translate( 'Save Settings' ) . '" onClick="return validate();" />'
+     . translate( 'Save Settings' ) . '" onClick="return validate();">'
      . ( ! empty( $_SESSION['old_program_version'] ) &&
       ( $_SESSION['old_program_version'] == $PROGRAM_VERSION ) && !
       empty( $setup_complete ) ? '
               <input class="btn btn-secondary" type="button" name="action2" value="'
        . translate( 'Launch WebCalendar' )
-       . '" onClick="window.open( \'../index.php\', \'webcalendar\' );" />'
+       . '" onClick="window.open( \'../index.php\', \'webcalendar\' );">'
       : '' ) : '' ) . ( ! empty( $_SESSION['validuser'] ) ? '
               <input class="btn btn-secondary" type="button" value="' . $logoutStr
-     . '" onclick="document.location.href=\'index.php?action=logout\'" />'
+     . '" onclick="document.location.href=\'index.php?action=logout\'">'
     : '' ) . '
             </form>
         </td>

@@ -271,7 +271,7 @@ if ( substr ( $format, 0, 4 ) == 'ical' ) {
   echo '
     <h2>' . translate ( 'Export' ) . ' ' . $errorStr . '</h2>
     <span class="bold">' . $errorStr . ':</span> '
-   . translate( 'export format not defined or incorrect.' ) . '<br />
+   . translate( 'export format not defined or incorrect.' ) . '<br>
     ' . print_trailer();
 } //end if ($format == "ical")
 

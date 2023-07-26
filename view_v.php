@@ -48,17 +48,17 @@ echo '
     <div style="width:99%;">
       <a title="' . $prevStr . '" class="prev" href="view_v.php?id=' . $id
  . '&amp;date=' . $prevdate . '"><img src="images/bootstrap-icons/arrow-left-circle.svg" alt="'
- . $prevStr . '" /></a>
+ . $prevStr . '"></a>
       <a title="' . $nextStr . '" class="next" href="view_v.php?id=' . $id
  . '&amp;date=' . $nextdate . '"><img src="images/bootstrap-icons/arrow-right-circle.svg" alt="'
- . $nextStr . '" /></a>
+ . $nextStr . '"></a>
       <div class="title">
         <span class="date">' . date_to_str ( $thisdate, '', false )
  . '&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;'
- . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br />
+ . date_to_str ( date ( 'Ymd', $wkend ), '', false ) . '</span><br>
         <span class="viewname">' . $view_name . '</span>
       </div>
-    </div><br />';
+    </div><br>';
 
 // The table has names across the top and dates for rows. Since we need to spit
 // out an entire row before we can move to the next date, we'll save up all the

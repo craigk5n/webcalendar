@@ -1468,7 +1468,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       $Entry['Description'] = str_replace ( "\;", ";", $Entry['Description'] );
       $Entry['Description'] = str_replace ( "\,", ",", $Entry['Description'] );
       // Mozilla will send this goofy string, so replace it with real html
-      $Entry['Description'] = str_replace ( '=0D=0A=', '<br />',
+      $Entry['Description'] = str_replace ( '=0D=0A=', '<br>',
         $Entry['Description'] );
       $Entry['Description'] = str_replace ( '=0D=0A', '',
         $Entry['Description'] );
@@ -1550,7 +1550,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
             cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
-          $sqlLog .= $sql . "<br />\n";
+          $sqlLog .= $sql . "<br>\n";
           if ( ! dbi_execute ( $sql, [$importId, $id,
                 $calUser, 'palm', $Entry['RecordID']] ) ) {
             $error = db_error();
@@ -1563,7 +1563,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
             cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
-          $sqlLog .= $sql . "<br />\n";
+          $sqlLog .= $sql . "<br>\n";
           if ( ! dbi_execute ( $sql, [$importId, $id, $calUser, 'vcal', $uid] ) ) {
             $error = db_error();
             break;
@@ -1576,7 +1576,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
             cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
-          $sqlLog .= $sql . "<br />\n";
+          $sqlLog .= $sql . "<br>\n";
           if ( ! dbi_execute ( $sql, [$importId, $id, $calUser, 'ical', $uid] ) ) {
             $error = db_error();
             break;
@@ -1589,7 +1589,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           $sql = 'INSERT INTO webcal_import_data ( cal_import_id, cal_id,
             cal_login, cal_import_type, cal_external_id )
             VALUES ( ?, ?, ?, ?, ? )';
-          $sqlLog .= $sql . "<br />\n";
+          $sqlLog .= $sql . "<br>\n";
           if ( ! dbi_execute ( $sql, [$importId, $id, $calUser, 'gitlog', $uid] ) ) {
             $error = db_error();
             break;
@@ -1738,7 +1738,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
 
         if ( ! dbi_execute ( $sql, $sql_params ) ) {
           $error = 'Unable to add to webcal_entry_repeats: '
-           . dbi_error() . "<br /><br />\n<b>SQL:</b> $sql";
+           . dbi_error() . "<br><br>\n<b>SQL:</b> $sql";
           break;
         }
         // Repeating Exceptions...
@@ -1750,7 +1750,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
 
             if ( ! dbi_execute ( $sql, [$id, $ex_date, 1] ) ) {
               $error = 'Unable to add to webcal_entry_repeats_not: ' .
-              dbi_error() . "<br /><br />\n<b>SQL:</b> $sql";
+              dbi_error() . "<br><br>\n<b>SQL:</b> $sql";
               break;
             }
           }
@@ -1764,7 +1764,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
 
             if ( ! dbi_execute ( $sql, [$id, $inc_date, 0] ) ) {
               $error = 'Unable to add to webcal_entry_repeats_not: ' .
-              dbi_error() . "<br /><br />\n<b>SQL:</b> $sql";
+              dbi_error() . "<br><br>\n<b>SQL:</b> $sql";
               break;
             }
           }
@@ -1836,7 +1836,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
         if ($silent) {
           $errormsg .= $error;
         } else {
-          echo print_error ( $error ) . "\n<br />\n";
+          echo print_error ( $error ) . "\n<br>\n";
         }
       }
       if ( $Entry['Duration'] > 0 ) {
@@ -1857,14 +1857,14 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
         echo ' (' . $dd;
         if ( ! empty ( $time ) )
           echo '&nbsp; ' . $time;
-        echo ")<br />\n";
+        echo ")<br>\n";
         etranslate ( 'conflicts with the following existing calendar entries' );
         echo ":<ul>\n" . $overlap . "</ul>\n";
       } else {
         // No Conflict
         if ( $count_suc == 0 && ! $silent ) {
           echo '<b><h2>' .
-          translate ( 'Event Imported' ) . ":</h2></b><br />\n";
+          translate ( 'Event Imported' ) . ":</h2></b><br>\n";
         }
         $count_suc++;
 
@@ -1881,7 +1881,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
             echo '&nbsp; ' . translate ( 'All day event' );
           else if ( ! empty ( $time ) )
             echo '&nbsp; ' . $time;
-          echo ")<br /><br />\n";
+          echo ")<br><br>\n";
         }
       }
       // Reset Variables
@@ -1907,7 +1907,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
           if ($silent) {
             $errormsg .= "\n" . db_error();
           } else {
-            echo db_error() . "<br />\n";
+            echo db_error() . "<br>\n";
           }
         }
       }
@@ -1915,7 +1915,7 @@ function import_data ( $data, $overwrite, $type, $silent=false ) {
       for ( $i = 0; $i < $oldidcnt; $i++ ) {
         $sql = "UPDATE webcal_entry_user SET cal_status = 'D' "
          . "WHERE cal_id = ?";
-        $sqlLog .= $sql . "<br />\n";
+        $sqlLog .= $sql . "<br>\n";
         dbi_execute ( $sql, [$oldIds[$i]] );
         $numDeleted++;
       }
@@ -1972,7 +1972,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       // send error message if you can
       $errormsg .= "Cannot read file: $e";
       return [];
-    } 
+    }
     if (!$fd && stripos($cal_file, "http") == 0) {
       // Try curl instead so we can ignore cert errors
       $data = curl_download($cal_file);
@@ -2017,9 +2017,9 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         do_debug ( "Read $cnt lines of data, but got no data :-(" );
         do_debug( "Informing user of PHP server bug (PHP v" . phpversion() . ")" );
         // Note: Mozilla Calendar does not display this error for some reason.
-        echo '<br /><b>Error:</b> Your PHP server ' . phpversion()
+        echo '<br><b>Error:</b> Your PHP server ' . phpversion()
          . ' seems to have a bug reading stdin. '
-         . 'Try upgrading to a newer PHP release.<br />';
+         . 'Try upgrading to a newer PHP release.<br>';
         exit;
       }
     }
@@ -2053,14 +2053,14 @@ function parse_ical ( $cal_file, $source = 'file' ) {
   // a CRLF and then a single white space character.
   // We will allow it to be CRLF, CR or LF or any repeated sequence
   // so long as there is a single white space character next.
-  // echo "Orig:<br /><pre>$data</pre><br /><br />\n";
-  // Special cases for  stupid Sunbird wrapping every line!
+  // echo "Orig:<br><pre>$data</pre><br><br>\n";
+  // Special cases for stupid Sunbird wrapping every line!
   $data = preg_replace ( "/[\r\n]+[\t ];/", ";", $data );
   $data = preg_replace ( "/[\r\n]+[\t ]:/", ":", $data );
 
   $data = preg_replace ( "/[\r\n]+[\t ]/", "", $data );
   $data = preg_replace ( "/[\r\n]+/", "\n", $data );
-  // echo "Data:<br /><pre>$data</pre><p>";
+  // echo "Data:<br><pre>$data</pre><p>";
   // reflect the section where we are in the file:
   // VEVENT, VTODO, VJORNAL, VFREEBUSY, VTIMEZONE
   $state = 'NONE';
@@ -2087,11 +2087,11 @@ function parse_ical ( $cal_file, $source = 'file' ) {
       // do_debug ( "Product ID: " . $prodid );
     }
     // parser debugging code...
-    // echo "line = $line<br />";
-    // echo "state = $state<br />";
-    // echo "substate = $substate<br />";
-    // echo "subsubstate = $subsubstate<br />";
-    // echo "buff = " . htmlspecialchars ( $buff ) . "<br /><br />\n";
+    // echo "line = $line<br>";
+    // echo "state = $state<br>";
+    // echo "substate = $substate<br>";
+    // echo "subsubstate = $subsubstate<br>";
+    // echo "buff = " . htmlspecialchars ( $buff ) . "<br><br>\n";
     if ( $state == 'VEVENT' || $state == 'VTODO' ) {
       if ( ! empty ( $subsubstate ) ) {
         if ( preg_match ( '/^END.*:(.+)$/i', $buff, $match ) ) {
@@ -2239,7 +2239,7 @@ function parse_ical ( $cal_file, $source = 'file' ) {
         if ( $substate != 'none' ) {
           $event[$substate] .= $match[1];
         } else {
-          $errormsg .= "iCal parse error on line $line:<br />$buff\n";
+          $errormsg .= "iCal parse error on line $line:<br>$buff\n";
           $error = true;
         }
         // For unsupported properties
@@ -2349,7 +2349,7 @@ function parse_hcal ( $hcal_array ) {
       // set default UID
       $event['uid'] = generate_uid ( 1 );
       // parser debugging code...
-      // echo "buff = " . htmlspecialchars ( $buff ) . "<br /><br />\n";
+      // echo "buff = " . htmlspecialchars ( $buff ) . "<br><br>\n";
       if ( $key == 'SUMMARY' ) {
         $substate = 'summary';
         $event[$substate] = $value;
@@ -2744,7 +2744,7 @@ function format_ical ( $event ) {
     // first remove any UNTIL that may have been calculated above
     unset ( $fevent['Repeat']['Until'] );
     // split into pieces
-    // echo "RRULE line: $event[rrule]<br />\n";
+    // echo "RRULE line: $event[rrule]<br>\n";
     $RR = explode ( ';', $event['rrule'] );
     // create an associative array of key-value pairs in $RR2[]
     $rrcnt = count ( $RR );
@@ -2767,7 +2767,7 @@ function format_ical ( $event ) {
           // but don't overwrite Manual setting from above
           if ( $fevent['Repeat']['Frequency'] != 7 )
             $fevent['Repeat']['Frequency'] = 0;
-          echo "Unsupported iCal FREQ value \"$match[1]\"<br />\n";
+          echo "Unsupported iCal FREQ value \"$match[1]\"<br>\n";
           // Abort this import
           return;
         }
@@ -2782,13 +2782,13 @@ function format_ical ( $event ) {
         $fevent['Repeat']['Count'] = $match[1];
       } else if ( preg_match ( "/^BYSECOND=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYSECOND value \"$RR[$i]\"<br />\n";
+        echo "Unsupported iCal BYSECOND value \"$RR[$i]\"<br>\n";
       } else if ( preg_match ( "/^BYMINUTE=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYMINUTE value \"$RR[$i]\"<br />\n";
+        echo "Unsupported iCal BYMINUTE value \"$RR[$i]\"<br>\n";
       } else if ( preg_match ( "/^BYHOUR=(.+)$/i", $RR[$i], $match ) ) {
         // NOT YET SUPPORTED -- TODO
-        echo "Unsupported iCal BYHOUR value \"$RR[$i]\"<br />\n";
+        echo "Unsupported iCal BYHOUR value \"$RR[$i]\"<br>\n";
       } else if ( preg_match ( "/^BYMONTH=(.+)$/i", $RR[$i], $match ) ) {
         // this event repeats during the specified months
         $fevent['Repeat']['ByMonth'] = $match[1];
@@ -2866,7 +2866,7 @@ function parse_vcal( $cal_file ) {
   global $errormsg, $tz;
 
   $vcal_data = [];
-  // echo "Parsing vcal file...<br />\n";
+  // echo "Parsing vcal file...<br>\n";
   if ( ! $fd = @fopen ( $cal_file, 'r' ) ) {
     $errormsg .= "Can't read temporary file: $cal_file\n";
     exit();
@@ -2949,7 +2949,7 @@ function parse_vcal( $cal_file ) {
           if ( $substate != 'none' ) {
             $event[$substate] .= $match[1];
           } else {
-            $errormsg .= "Error in file $cal_file line $line:<br />$buff\n";
+            $errormsg .= "Error in file $cal_file line $line:<br>$buff\n";
             $error = true;
           }
           // For unsupported properties

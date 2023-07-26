@@ -28,12 +28,12 @@ load_user_categories();
 
 $adding_report = false;
 $charset = ( empty ( $LANGUAGE ) ? 'iso-8859-1' : translate ( 'charset' ) );
-$checked = ' checked="checked"';
+$checked = ' checked';
 $error =
  ( empty ( $REPORTS_ENABLED ) || $REPORTS_ENABLED != 'Y' || $login == '__public__'
    ? print_not_auth() : '' );
 $report_id = getValue ( 'report_id', '-?[0-9]+', true );
-$selected = ' selected="selected"';
+$selected = ' selected';
 $show_participants = ( $single_user == 'Y' || $DISABLE_PARTICIPANTS_FIELD == 'Y'
   ? false : true );
 $updating_public = ( $is_admin && ! empty( $public ) && $PUBLIC_ACCESS == 'Y' );
@@ -94,8 +94,8 @@ $day_template = '<dt><b>${date}</b></dt>
 <dd><dl>${events}</dl></dd>';
 
 $event_template = '<dt>${name}</dt>
-<dd><b>' . translate ( 'Date' ) . ':</b> ${date}<br />
-<b>' . translate ( 'Time' ) . ':</b> ${time}<br />
+<dd><b>' . translate ( 'Date' ) . ':</b> ${date}<br>
+<b>' . translate ( 'Time' ) . ':</b> ${time}<br>
 ${description}</dd>
 ';
 
@@ -117,7 +117,7 @@ function print_options ( $textarea, $option ) {
   // Use ASCII values for ${}.
   echo '
             <a onclick="addMe( \'' . $textarea . '\', \'${' . $option
-   . '}\' )">${' . $option . '}</a><br />';
+   . '}\' )">${' . $option . '}</a><br>';
 }
 
 if ( empty ( $error ) && $report_id >= 0 ) {
@@ -209,14 +209,14 @@ echo '
     <form action="edit_report_handler.php" method="post" name="reportform">'
  . csrf_form_key()
  . ( $updating_public ? '
-      <input type="hidden" name="public" value="1" />' : '' )
+      <input type="hidden" name="public" value="1">' : '' )
  . ( ! $adding_report ? '
       <input type="hidden" name="report_id" value="'
-   . $report_id . '" />' : '' ) . '
+   . $report_id . '">' : '' ) . '
       <div class="form-inline">
         <label class="col-sm-2 col-form-label" for="rpt_name">' . translate ('Report Name') . '</label>
         <input class="form-control" type="text" name="report_name" id="rpt_name" size="40" ' .
-        'maxlength="50" value="' . $report_name . '" /></div>';
+        'maxlength="50" value="' . $report_name . '"></div>';
 
 if ( $show_participants ) {
   echo '<div class="form-inline">
@@ -253,7 +253,7 @@ echo ( $is_admin ? '<div class="form-inline">
       print_radio( 'include_header', '', '',
       (! empty( $report_include_header ) && $report_include_header == 'Y'
       ? 'Y' : 'N' ) ) . '</div>
-    
+
     <div class="form-inline">
     <label class="col-sm-2 col-form-label" for="allow_nav">' . translate ('Include previous/next links') . '</label>' .
     print_radio( 'allow_nav', '', '',
@@ -325,13 +325,13 @@ echo "</div>\n";
 //}
 
 echo '<div class="form-inline mt-1">
-  <input class="btn btn-primary m-1" type="submit" value="' . translate ( 'Save' ) . '" />'
+  <input class="btn btn-primary m-1" type="submit" value="' . translate ( 'Save' ) . '">'
  . ( $adding_report ? '' : '
             <a href="report.php" class="btn btn-secondary m-1">' . translate('Cancel') . '</a>
             <input class="btn btn-danger m-1" type="submit" name="delete" value="'
    . translate ( 'Delete' ) . '" onclick="return confirm( \''
    . translate( 'Are you sure you want to delete this report?' )
-   . '\');" />' );
+   . '\');">' );
 
 ?>
 </div>

@@ -81,10 +81,10 @@ function time_selection($prefix, $time = '', $trigger = false)
   return $ret . ($found ? '' : '<option value="' . "$minute\" $selected>$minute" . '</option>') .
     '</select>' . ($TIME_FORMAT == '12' ?
       '<label><input class="form-control" type="radio" name="' . $prefix . 'ampm" id="'
-      . $prefix . 'ampmA" value="0" ' . $amsel . ' />&nbsp;' . translate('am')
+      . $prefix . 'ampmA" value="0" ' . $amsel . '>&nbsp;' . translate('am')
       . '&nbsp;</label><label><input class="form-control" type="radio" name="' . $prefix . 'ampm" id="'
-      . $prefix . 'ampmP" value="12" ' . $pmsel . ' />&nbsp;' . translate('pm')
-      . '</label>&nbsp;' : '<input type="hidden" name="' . $prefix . 'ampm" value="0" />');
+      . $prefix . 'ampmP" value="12" ' . $pmsel . '>&nbsp;' . translate('pm')
+      . '</label>&nbsp;' : '<input type="hidden" name="' . $prefix . 'ampm" value="0">');
 }
 
 $daysStr = translate('days');
@@ -97,8 +97,8 @@ load_user_categories();
 // Make sure this is not a read-only calendar.
 $can_edit = false;
 $others_complete = 'yes';
-$checked = ' checked="checked"';
-$selected = ' selected="selected"';
+$checked = ' checked';
+$selected = ' selected';
 
 $eType = getGetValue('eType','event',true);
 $id    = getGetValue('id');
@@ -437,7 +437,7 @@ if (empty($access))
 if (empty($cal_url))
   $cal_url = '';
 
-if (empty($description) || $description == '<br />')
+if (empty($description) || $description == '<br>')
   $description = '';
 
 if (empty($duration))
@@ -530,7 +530,7 @@ $eType_label = ' ( ' . translate($eType) . ' )';
 ?>
 <h2><?php echo ($id ? translate('Edit Entry') : translate('Add Entry')) . $eType_label; ?>
   &nbsp;<img src="images/bootstrap-icons/question-circle-fill.svg" alt="<?php etranslate('Help'); ?>" class="help" onclick="window.open('help_edit_entry.php<?php echo empty($id) ? '?add=1' : ''; ?>',
-  'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');" /></h2>
+  'cal_help', 'dependent,menubar,scrollbars,height=400,width=400,innerHeight=420,outerWidth=420');"></h2>
 
 <?php
 
@@ -567,23 +567,23 @@ $tabI = 0;
 ?>
 <form action="edit_entry_handler.php" method="post" name="editentryform" id="editentryform">
   <?php print_form_key(); ?>
-  <input type="hidden" name="eType" value="<?php echo $eType; ?>" />
+  <input type="hidden" name="eType" value="<?php echo $eType; ?>">
   <?php if (!empty($id) && (empty($copy) || $copy != '1')) { ?>
-    <input type="hidden" name="cal_id" value="<?php echo $id; ?>" />
+    <input type="hidden" name="cal_id" value="<?php echo $id; ?>">
   <?php } ?>
-  <input type="hidden" name="entry_changed" value="" />
+  <input type="hidden" name="entry_changed" value="">
   <!-- Are we overriding an entry from a repeating event... -->
   <?php if (!empty($override)) { ?>
-    <input type="hidden" name="override" value="1" />
-    <input type="hidden" name="override_date" value="<?php echo $cal_date; ?>" />
+    <input type="hidden" name="override" value="1">
+    <input type="hidden" name="override_date" value="<?php echo $cal_date; ?>">
   <?php } ?>
   <!-- // If assistant, need to remember boss = user. -->
   <?php if ($is_assistant || $is_nonuser_admin || !empty($user)) { ?>
-    <input type="hidden" name="user" value="<?php echo $user; ?>" />
+    <input type="hidden" name="user" value="<?php echo $user; ?>">
   <?php } ?>
   <!-- If has cal_group_id was set, need to set parent = $parent -->
   <?php if (!empty($parent)) { ?>
-    <input type="hidden" name="parent" value="<?php echo $parent; ?>" />
+    <input type="hidden" name="parent" value="<?php echo $parent; ?>">
   <?php } ?>
 
 
@@ -599,7 +599,7 @@ $tabI = 0;
 
         <label for="entry_brief" data-toggle="tooltip" data-placement="top" title="<?php etooltip('brief-description-help'); ?>">
           <?php etranslate('Brief Description'); ?>:</label>
-        <input class="form-control" type="text" name="name" id="entry_brief" size="25" value="<?php echo htmlspecialchars($name); ?>" />
+        <input class="form-control" type="text" name="name" id="entry_brief" size="25" value="<?php echo htmlspecialchars($name); ?>">
         <label for="description" data-toggle="tooltip" data-placement="top" title="<?php etooltip('full-description-help'); ?>">
           <?php etranslate('Full Description'); ?>:</label>
         <textarea class="form-control" rows="5" name="description" id="description"><?php echo htmlspecialchars($description); ?></textarea>
@@ -642,15 +642,15 @@ $tabI = 0;
           <label for="category" data-toggle="tooltip" data-placement="top" title="<?php etooltip('category-help'); ?>">
             <?php etranslate('Category'); ?>:</label>
           <div>
-            <!-- <button class="btn" type="button" onclick="editCats( event )" /><?php etranslate('Edit');?></button> -->
-            <input class="form-control" type="text" readonly name="catnames" id="entry_categories" onclick="editCats(event)" style="cursor: pointer;" value="<?php echo $catNames . (empty($catNames) ? 'None' : ''); ?>" />
-            <input class="form-control" type="hidden" id="cat_id" name="cat_id" value="<?php echo $catList;?>" />
+            <!-- <button class="btn" type="button" onclick="editCats( event )"><?php etranslate('Edit');?></button> -->
+            <input class="form-control" type="text" readonly name="catnames" id="entry_categories" onclick="editCats(event)" style="cursor: pointer;" value="<?php echo $catNames . (empty($catNames) ? 'None' : ''); ?>">
+            <input class="form-control" type="hidden" id="cat_id" name="cat_id" value="<?php echo $catList;?>">
           </div>
         <?php } ?>
 
         <?php if ($eType == 'task') { // Only for tasks.
           $completed_visible = (strlen($completed) ? 'visible' : 'hidden'); ?>
-          <br />
+          <br>
           <table>
             <tr id="completed">
               <td class="tooltip" title="<?php etooltip('completed-help'); ?>">
@@ -703,19 +703,19 @@ $tabI = 0;
               </tr>
             <?php } ?>
           </table>
-          <input type="hidden" name="others_complete" value="<?php echo $others_complete; ?>" />
+          <input type="hidden" name="others_complete" value="<?php echo $others_complete; ?>">
         <?php } /* end tasks only */ ?>
 
         <?php if ($DISABLE_LOCATION_FIELD != 'Y') { ?>
           <label for="location" data-toggle="tooltip" data-placement="top" title="<?php etooltip('location-help'); ?>">
             <?php etranslate('Location'); ?>:</label>
-          <input class="form-control" type="text" name="location" id="entry_location" size="55" value="<?php echo htmlspecialchars($location); ?>" />
+          <input class="form-control" type="text" name="location" id="entry_location" size="55" value="<?php echo htmlspecialchars($location); ?>">
         <?php } ?>
 
         <?php if ($DISABLE_URL_FIELD != 'Y') { ?>
           <label for="url" data-toggle="tooltip" data-placement="top" title="<?php etooltip('url-help'); ?>">
             <?php etranslate('URL'); ?>:</label>
-          <input class="form-control" type="text" name="entry_url" id="entry_url" size="100" value="<?php echo htmlspecialchars($location); ?>" />
+          <input class="form-control" type="text" name="entry_url" id="entry_url" size="100" value="<?php echo htmlspecialchars($location); ?>">
         <?php } ?>
 
         <label for="date" data-toggle="tooltip" data-placement="top" title="<?php etooltip('date-help'); ?>">
@@ -755,10 +755,10 @@ $tabI = 0;
                 <?php etranslate("Duration"); ?>:</label>
               <input class="form-control" type="text" name="duration_h" id="duration_h" size="2" maxlength="2" value="<?php if ($allday != 'Y') {
                                                                                                                           printf("%d", $dur_h);
-                                                                                                                        } ?>" />:
+                                                                                                                        } ?>">:
               <input class="form-control" type="text" name="duration_m" id="duration_m" size="2" maxlength="2" value="<?php if ($allday != 'Y') {
                                                                                                     printf("%02d", $duration - ($dur_h * 60));
-                                                                                                  } ?>" />
+                                                                                                  } ?>">
               &nbsp;(<label for="duration_h"><?php echo $hoursStr; ?></label>: <label for="duration_m"><?php echo $minutStr; ?></label>)
             </div>
           <?php } else { ?>
@@ -807,18 +807,18 @@ $tabI = 0;
             ? $extra_arg2 : $extras[$extra_name]['cal_data']);
 
           echo '<tr><td class="aligntop bold">'
-            . ($extra_type == EXTRA_MULTILINETEXT ? '<br />' : '')
+            . ($extra_type == EXTRA_MULTILINETEXT ? '<br>' : '')
             . translate($extra_descr) . ':</td>
                       <td>';
 
           if ($extra_type == EXTRA_URL)
             echo '<input class="form-control" type="text" size="50" name="' . $extra_name . '" value="'
               . (empty($extras[$extra_name]['cal_data'])
-                ? '' : htmlspecialchars($extras[$extra_name]['cal_data'])) . '" />';
+                ? '' : htmlspecialchars($extras[$extra_name]['cal_data'])) . '">';
           elseif ($extra_type == EXTRA_EMAIL)
             echo '<input class="form-control" type="email" size="30" name="' . $extra_name . '" value="'
               . (empty($extras[$extra_name]['cal_data'])
-                ? '' : htmlspecialchars($extras[$extra_name]['cal_data'])) . '" />';
+                ? '' : htmlspecialchars($extras[$extra_name]['cal_data'])) . '">';
           elseif ($extra_type == EXTRA_DATE)
             echo date_selection(
               $extra_name,
@@ -829,7 +829,7 @@ $tabI = 0;
             $size = ($extra_arg1 > 0 ? $extra_arg1 : 50);
             echo '<input class="form-control" type="text" size="' . $size . '" name="' . $extra_name
               . '" value="' . (empty($extras[$extra_name]['cal_data'])
-                ? '' : htmlspecialchars($extras[$extra_name]['cal_data'])) . '" />';
+                ? '' : htmlspecialchars($extras[$extra_name]['cal_data'])) . '">';
           } elseif ($extra_type == EXTRA_MULTILINETEXT) {
             echo '<textarea class="form-control" rows="' . ($extra_arg2 > 0 ? $extra_arg2 : 5)
               . '" cols="' . ($extra_arg1 > 0 ? $extra_arg1 : 50) . '" name="'
@@ -858,7 +858,7 @@ $tabI = 0;
             if (is_array($extra_arg1)) {
               $extra_arg1cnt = count($extra_arg1);
               if ($extra_arg2 > 0) {
-                $multiselect = ' multiple="multiple" size="'
+                $multiselect = ' multiple size="'
                   . min($extra_arg2, $extra_arg1cnt) . '" ';
                 $isMultiple = '[]';
                 if (!empty($extras))
@@ -1004,7 +1004,7 @@ $tabI = 0;
               <fieldset class="form-group border p-2">
                 <legend class="w-auto px-2"><?php etranslate('Find Name'); ?></legend>
 
-                <input class="form-control" type="text" size="20" name="lookup" id="lookup" onkeyup="lookupName()" />
+                <input class="form-control" type="text" size="20" name="lookup" id="lookup" onkeyup="lookupName()">
               </fieldset>
             </td>
           </tr>
@@ -1012,19 +1012,19 @@ $tabI = 0;
             <td>
               <fieldset class="form-group border p-2">
                 <legend class="w-auto px-2"><?php etranslate('Users'); ?></legend>
-                <select class="form-control m-1" name="participants[]" id="entry_part" size="<?php echo $size; ?>" multiple="multiple"><?php echo $users; ?>
+                <select class="form-control m-1" name="participants[]" id="entry_part" size="<?php echo $size; ?>" multiple><?php echo $users; ?>
                 </select>
-                <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick=" selAdd(this);" />
+                <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick=" selAdd(this);">
               </fieldset>
             </td>
             <?php if (!empty($nonusers)) { ?>
               <td>
                 <fieldset class="form-group border p-2">
                   <legend class="w-auto px-2"><?php etranslate('Resources'); ?></legend>
-                  <select class="form-control m-1" name="nonuserPart[]" id="res_part" size="<?php echo $size; ?>" multiple="multiple">
+                  <select class="form-control m-1" name="nonuserPart[]" id="res_part" size="<?php echo $size; ?>" multiple>
                     <?php echo $nonusers; ?>
                   </select>
-                  <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick="selResource(this);" />
+                  <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick="selResource(this);">
                 </fieldset>
               </td>
             <?php } ?>
@@ -1035,7 +1035,7 @@ $tabI = 0;
                 <select class="form-control m-1" name="groups" id="groups" size="<?php echo $size; ?>" onclick="addGroup()">
                   <?php echo $grouplist; ?>
                 </select>
-                <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick="selAdd(this);" />
+                <input class="btn btn-secondary m-1" name="movert" type="button" value="<?php echo $addStr; ?>" onclick="selAdd(this);">
               </fieldset>
             </td>
             <?php } ?>
@@ -1047,11 +1047,11 @@ $tabI = 0;
               <fieldset class="form-group border p-2">
                 <legend class="w-auto px-2" data-toggle="tooltip" data-placement="top" title="<?php etooltip('participants-help'); ?>"><?php etranslate('Selected Participants'); ?></legend>
 
-                <select class="form-control" name="selectedPart[]" id="sel_part" size="7" multiple="multiple">'
+                <select class="form-control" name="selectedPart[]" id="sel_part" size="7" multiple>'
                   <?php echo $myusers; ?>
                 </select>
-                <input class="btn btn-secondary m-1" name="movelt" type="button" value="<?php etranslate('Remove'); ?>" onclick="selRemove( this );" />
-            <input class="btn btn-secondary m-1" type="button" onclick="showSchedule()" value="<?php etranslate('Availability'); ?>..." />
+                <input class="btn btn-secondary m-1" name="movelt" type="button" value="<?php etranslate('Remove'); ?>" onclick="selRemove( this );">
+            <input class="btn btn-secondary m-1" type="button" onclick="showSchedule()" value="<?php etranslate('Availability'); ?>...">
               </fieldset>
             </td>
           </tr>
@@ -1106,7 +1106,7 @@ $tabI = 0;
           . 'type="checkbox" name="rptmode" id="rptmode" value="y" '
           . 'onclick="rpttype_handler()" '
           . (empty($expert_mode) ? '' : $checked)
-          . ' />' . translate('Expert Mode') . '</label>
+          . '>' . translate('Expert Mode') . '</label>
           </td>
         </tr>
         <tr id="rptenddate1" style="visibility:hidden;">
@@ -1117,36 +1117,36 @@ $tabI = 0;
           <td colspan="2" class="boxtop boxright boxleft"><input type="radio" '
           . 'name="rpt_end_use" id="rpt_untilf" value="f" '
           . (empty($rpt_end) && empty($rpt_count) ? $checked : '')
-          . ' onclick="toggle_until()" /><label for="rpt_untilf">'
+          . ' onclick="toggle_until()"><label for="rpt_untilf">'
           . translate('Forever') . '</label></td>
         </tr>
         <tr id="rptenddate2" style="visibility:hidden;">
           <td class="boxleft"><input type="radio" name="rpt_end_use" '
           . 'id="rpt_untilu" value="u" ' . (empty($rpt_end) ? '' : $checked)
-          . ' onclick="toggle_until()" />&nbsp;<label for="rpt_untilu">'
+          . ' onclick="toggle_until()">&nbsp;<label for="rpt_untilu">'
           . translate('Use end date') . '</label></td>
           <td class="boxright"><span class="end_day_selection" '
           . 'id="rpt_end_day_select">'
           . date_selection('rpt_', ($rpt_end_date ? $rpt_end_date : $cal_date))
-          . '</span><span id="rpt_until_time_date"><br />' . time_selection('rpt_', $rpt_end_time) . '</span></td>
+          . '</span><span id="rpt_until_time_date"><br>' . time_selection('rpt_', $rpt_end_time) . '</span></td>
         </tr>
         <tr id="rptenddate3" style="visibility:hidden;">
           <td class="boxbottom boxleft"><input type="radio" name="rpt_end_use" '
           . 'id="rpt_untilc" value="c" ' . (empty($rpt_count) ? '' : $checked)
-          . ' onclick="toggle_until()" />&nbsp;<label for="rpt_untilc">'
+          . ' onclick="toggle_until()">&nbsp;<label for="rpt_untilc">'
           . translate('Number of times') . '</label></td>
           <td class="boxright boxbottom"><input type="text" name="rpt_count" '
-          . 'id="rpt_count" size="4" maxlength="4" value="' . $rpt_count . '" /></td>
+          . 'id="rpt_count" size="4" maxlength="4" value="' . $rpt_count . '"></td>
         </tr>
         <tr id="rptfreq" style="visibility:hidden;">
           <td><label for="entry_freq" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-frequency-help') . '">'
           . translate('Frequency') . ':</label></td>
           <td colspan="2">
             <input type="text" name="rpt_freq" id="entry_freq" size="4" '
-          . 'maxlength="4" value="' . $rpt_freq . '" />&nbsp;&nbsp;&nbsp;&nbsp;
+          . 'maxlength="4" value="' . $rpt_freq . '">&nbsp;&nbsp;&nbsp;&nbsp;
             <label id="weekdays_only"><input type="checkbox" '
           . 'name="weekdays_only" value="y" '
-          . (empty($weekdays_only) ? '' : $checked) . ' />'
+          . (empty($weekdays_only) ? '' : $checked) . '>'
           . translate('Weekdays Only')
           . '</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span id="rptwkst">
@@ -1172,11 +1172,11 @@ $tabI = 0;
           . translate('ByDay') . ':</label></td>
           <td colspan="2" class="boxall">
             <input type="hidden" name="bydayList" value="'
-          . (empty($bydayStr) ? '' : $bydayStr) . '" />
+          . (empty($bydayStr) ? '' : $bydayStr) . '">
             <input type="hidden" name="bymonthdayList" value="'
-          . (empty($bymonthdayStr) ? '' : $bymonthdayStr) . '" />
+          . (empty($bymonthdayStr) ? '' : $bymonthdayStr) . '">
             <input type="hidden" name="bysetposList" value="'
-          . (empty($bysetposStr) ? '' : $bysetposStr) . '" />
+          . (empty($bysetposStr) ? '' : $bysetposStr) . '">
             <table class="byxxx" cellpadding="2" cellspacing="2" '
           . 'border="1">
               <tr>
@@ -1211,7 +1211,7 @@ $tabI = 0;
             . $byday_names[$rpt_byday_mod] . '" value="'
             . "$byday_names[$rpt_byday_mod]\""
             . (in_array($byday_names[$rpt_byday_mod], $byday) ? $checked : '')
-            . ' /></td>';
+            . '></td>';
         }
         echo '
               </tr>
@@ -1237,7 +1237,7 @@ $tabI = 0;
             echo '
                 <td><input type="button" name="byday" id="_' . $loop_ctr
               . $rpt_byday_mod . '" value="' . $buttonvalue
-              . '" onclick="toggle_byday( this )" /></td>';
+              . '" onclick="toggle_byday( this )"></td>';
           }
           echo '
               </tr>';
@@ -1264,7 +1264,7 @@ $tabI = 0;
           echo '
                 <td><label><input type="checkbox" name="bymonth[]" value="'
             . $rpt_month . '"' . (in_array($rpt_month, $bymonth) ? $checked : '')
-            . ' />&nbsp;' . translate(
+            . '>&nbsp;' . translate(
               date('M', mktime(0, 0, 0, $rpt_month, 1))
             )
             . '</label></td>' . ($rpt_month == 6 ? '
@@ -1311,7 +1311,7 @@ $tabI = 0;
                 <th><label>31</label></th>' : '') . '
                 <td><input type="button" name="bysetpos" id="bysetpos'
             . $loop_ctr . '" value="' . $buttonvalue
-            . '" onclick="toggle_bysetpos( this )" /></td>'
+            . '" onclick="toggle_bysetpos( this )"></td>'
             . ($loop_ctr % 10 == 0 ? '
               </tr>
             <tr>' : '');
@@ -1357,7 +1357,7 @@ $tabI = 0;
             <th><label>31</label></th>' : '') . '
             <td><input type="button" name="bymonthday" id="bymonthday'
             . $loop_ctr . '" value="' . $buttonvalue
-            . '" onclick="toggle_bymonthday( this )" /></td>'
+            . '" onclick="toggle_bymonthday( this )"></td>'
             . ($loop_ctr % 10 == 0 ? '
           </tr>
           <tr>' : '');
@@ -1388,17 +1388,17 @@ $tabI = 0;
       <tr id="rptbyweekno" style="visibility:hidden;">
         <td><label data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-byweekno-help') . '">' . translate('ByWeekNo') . ':</td>
         <td colspan="2"><input type="text" name="byweekno" id="byweekno" '
-          . 'size="50" maxlength="100" value="' . $byweekno . '" /></td>
+          . 'size="50" maxlength="100" value="' . $byweekno . '"></td>
       </tr>
       <tr id="rptbyyearday" style="visibility:hidden;" title="'
           . tooltip('repeat-byyearday-help') . '">
         <td class="xtooltip">' . translate('ByYearDay') . ':</td>
         <td colspan="2"><input type="text" name="byyearday" id="byyearday" '
-          . 'size="50" maxlength="100" value="' . $byyearday . '" /></td>
+          . 'size="50" maxlength="100" value="' . $byyearday . '"></td>
       </tr>
       <tr id="rptexceptions" style="visibility:visible;">
         <td><label class="align-top" data-toggle="tooltip" data-placement="top" title="' . tooltip('repeat-exceptions-help') . '">'
-          . translate('Exclusions') . '/<br />'
+          . translate('Exclusions') . '/<br>'
           . translate('Inclusions') . ':</label></td>
         <td colspan="2" class="boxtop boxright boxbottom boxleft">
           <table width="250px">
@@ -1412,18 +1412,18 @@ $tabI = 0;
                 <label id="select_exceptions_not" style="visibility:'
           . (empty($excepts) ? 'visible' : 'hidden') . ';"></label>
                 <select id="select_exceptions" name="exceptions[]" '
-          . 'multiple="multiple" style="visibility:'
+          . 'multiple style="visibility:'
           . (empty($excepts) ? 'hidden' : 'visible')
           . ';" size="4">' . $excepts . '
                 </select>
               </td>
               <td class="aligntop">
                 <input class="alignleft btn" type="button" name="addException" value="'
-          . translate('Add Exception') . '..." onclick="add_exception(0)" /><br />
+          . translate('Add Exception') . '..." onclick="add_exception(0)"><br>
                 <input class="alignleft btn" type="button" name="addInclusion" value="'
-          . translate('Add Inclusion') . '..." onclick="add_exception(1)" /><br />
+          . translate('Add Inclusion') . '..." onclick="add_exception(1)"><br>
                 <input class="alignleft btn" type="button" name="delSelected" value="'
-          . translate('Delete Selected') . '" onclick="del_selected()" />
+          . translate('Delete Selected') . '" onclick="del_selected()">
               </td>
             </tr>
           </table>
@@ -1469,19 +1469,19 @@ $tabI = 0;
           . ':</label></td>
             <td colspan="3">
               <input type="hidden" name="rem_action" value="'
-          . (empty($reminder['action']) ? 'EMAIL' : $reminder['action']) . '" />
+          . (empty($reminder['action']) ? 'EMAIL' : $reminder['action']) . '">
               <input type="hidden" name="rem_last_sent" value="'
-          . (empty($reminder['last_sent']) ? 0 : $reminder['last_sent']) . '" />
+          . (empty($reminder['last_sent']) ? 0 : $reminder['last_sent']) . '">
               <input type="hidden" name="rem_times_sent" value="'
           . (empty($reminder['times_sent']) ? 0 : $reminder['times_sent'])
-          . '" />
+          . '">
                 <label><input type="radio" name="reminder" '
           . 'id="reminderYes" value="1"'
-          . ($rem_status ? $checked : '') . ' onclick="toggle_reminders()" />'
+          . ($rem_status ? $checked : '') . ' onclick="toggle_reminders()">'
           . translate('Yes') . '</label>&nbsp;
                 <label><input type="radio" name="reminder" '
           . 'id="reminderNo" value="0"'
-          . ($rem_status ? '' : $checked) . ' onclick="toggle_reminders()" />'
+          . ($rem_status ? '' : $checked) . ' onclick="toggle_reminders()">'
           . translate('No') . '</label>
             </td>
           </tr>
@@ -1492,15 +1492,15 @@ $tabI = 0;
           . ':</label></td>
             <td class="boxtop boxleft" width="20%"><label><input type="radio" '
           . 'name="rem_when" id="rem_when_date" value="Y" '
-          . ($rem_use_date ? $checked : '') . ' onclick="toggle_rem_when()" />'
+          . ($rem_use_date ? $checked : '') . ' onclick="toggle_rem_when()">'
           . translate('Use Date/Time') . '&nbsp;</label></td>
-            <td class="boxtop boxright" nowrap="nowrap" colspan="2">'
+            <td class="boxtop boxright" nowrap colspan="2">'
           . date_selection('reminder_', (empty($reminder['date'])
             ? $cal_date : $reminder['date'])) . '</td>
           </tr>
           <tr>
             <td class="boxleft">&nbsp;</td>
-            <td class="boxright" colspan="2" nowrap="nowrap">'
+            <td class="boxright" colspan="2" nowrap>'
           . time_selection('reminder_', (empty($reminder['time'])
             ? $cal_time : $reminder['time'])) . '</td>
           </tr>
@@ -1510,36 +1510,36 @@ $tabI = 0;
           <tr>
             <td class="boxleft"><label><input type="radio" name="rem_when" '
           . 'id="rem_when_offset" value="N" ' . ($rem_use_date ? '' : $checked)
-          . ' onclick="toggle_rem_when()" />' . translate('Use Offset')
+          . ' onclick="toggle_rem_when()">' . translate('Use Offset')
           . '&nbsp;</label></td>
-            <td class="boxright" nowrap="nowrap" colspan="2">
+            <td class="boxright" nowrap colspan="2">
               <label><input type="text" size="2" name="rem_days" value="'
-          . $rem_days . '" />' . $daysStr . '</label>&nbsp;
+          . $rem_days . '">' . $daysStr . '</label>&nbsp;
               <label><input type="text" size="2" name="rem_hours" '
-          . 'value="' . $rem_hours . '" />' . $hoursStr . '</label>&nbsp;
+          . 'value="' . $rem_hours . '">' . $hoursStr . '</label>&nbsp;
               <label><input type="text" size="2" name="rem_minutes" value="'
-          . $rem_minutes . '" />' . $minutStr . '</label>
+          . $rem_minutes . '">' . $minutStr . '</label>
             </td>
           </tr>
           <tr>
             <td class="boxleft">&nbsp;</td>
             <td><label><input type="radio" name="rem_before" '
           . 'id="rem_beforeY" value="Y"'
-          . ($rem_before ? $checked : '') . ' />' . translate('Before')
+          . ($rem_before ? $checked : '') . '>' . translate('Before')
           . '</label>&nbsp;</td>
             <td class="boxright"><label><input type="radio" name="rem_before" '
-          . 'id="rem_beforeN" value="N"' . ($rem_before ? '' : $checked) . ' />'
+          . 'id="rem_beforeN" value="N"' . ($rem_before ? '' : $checked) . '>'
           . translate('After') . '</label></td>
           </tr>
           <tr>
             <td class="boxbottom boxleft">&nbsp;</td>
             <td class="boxbottom"><label><input type="radio" '
           . 'name="rem_related" id="rem_relatedS" value="S"'
-          . ($rem_related ? $checked : '') . ' />'
+          . ($rem_related ? $checked : '') . '>'
           . translate('Start') . '</label>&nbsp;</td>
             <td class="boxright boxbottom"><label><input type="radio" '
           . 'name="rem_related" id="rem_relatedE" value="E"'
-          . ($rem_related ? '' : $checked) . ' />' . translate('End/Due')
+          . ($rem_related ? '' : $checked) . '>' . translate('End/Due')
           . '</label></td>
           </tr>
           <tr>
@@ -1554,18 +1554,18 @@ $tabI = 0;
           . translate('Times') . '</label></td>
             <td class="boxtop boxright" colspan="2"><input type="text" '
           . 'size="2" name="rem_rep_count" value="' . $rem_rep_count
-          . '" onchange="toggle_rem_rep();" /></td>
+          . '" onchange="toggle_rem_rep();"></td>
           </tr>
           <tr id="rem_repeats">
             <td class="boxbottom boxleft">&nbsp;&nbsp;&nbsp;<label>'
           . translate('Every') . '</label></td>
             <td class="boxbottom boxright" colspan="2">
               <label><input type="text" size="2" name="rem_rep_days" value="'
-          . $rem_rep_days . '" />' . $daysStr . '</label>&nbsp;
+          . $rem_rep_days . '">' . $daysStr . '</label>&nbsp;
               <input type="text" size="2" name="rem_rep_hours" value="'
-          . $rem_rep_hours . '" /><label>' . $hoursStr . '</label>&nbsp;
+          . $rem_rep_hours . '"><label>' . $hoursStr . '</label>&nbsp;
               <input type="text" size="2" name="rem_rep_minutes" value="'
-          . $rem_rep_minutes . '" /><label>' . $minutStr . '</label>
+          . $rem_rep_minutes . '"><label>' . $minutStr . '</label>
             </td>
           </tr>
         </tbody>
@@ -1592,10 +1592,10 @@ $tabI = 0;
           <input type="button" class="form-check btn btn-primary" value="<?php echo $saveStr; ?>" onclick="validate_and_submit()">
           <?php if ($id > 0 && ($login == $create_by || $single_user == 'Y' || $is_admin)) { ?>
             <a class="btn btn-danger" href="del_entry.php?id=<?php echo $id; ?>&csrf_form_key=<?php echo getFormKey();?>" onclick="return confirm('<?php etranslate('Are you sure you want to delete this entry?'); ?>');">
-              <?php etranslate('Delete entry'); ?></a><br />
+              <?php etranslate('Delete entry'); ?></a><br>
           <?php } ?>
         </div>
-        <input type="hidden" name="participant_list" value="" />
+        <input type="hidden" name="participant_list" value="">
       </div>
 
 </form>
@@ -1627,7 +1627,7 @@ $tabI = 0;
                   htmlentities($V['cat_name']);
                 if (empty($V['cat_owner']))
                   echo '<sup>*</sup>';
-                echo "</label><br />\n";
+                echo "</label><br>\n";
               }
             }
           }

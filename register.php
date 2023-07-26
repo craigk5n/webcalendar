@@ -43,7 +43,7 @@ Allow self-registration ($ALLOW_SELF_REGISTRATION = Y):
 Restrict self-registration to blacklist ($SELF_REGISTRATION_BLACKLIST = Y):
   If enabled, admin can configure the includes/blacklist.php to restrict or permit
   self-registration based on the user's IP. This will restrict access to existing
-  users or new user's set up by admin. Details and examples are available in the top 
+  users or new user's set up by admin. Details and examples are available in the top
   of the file.
 Generate passwords and send to new users ($SELF_REGISTRATION_FULL = Y):
   If enabled, self-registration user's will be emailed a randomly generated password
@@ -260,10 +260,10 @@ echo "<script>\n";
   xlate['noBlankEmail'] = '<?php etranslate('Email cannot be blank.', true);?>';
   xlate['passwordsNoMatch'] = '<?php etranslate('The passwords were not identical.', true);?>';
 </script>
-<link href="css_cacher.php?login=__public__" rel="stylesheet" />
-<link href="includes/css/styles.css" rel="stylesheet" />
+<link href="css_cacher.php?login=__public__" rel="stylesheet">
+<link href="includes/css/styles.css" rel="stylesheet">
 
-<?php 
+<?php
  // Print custom header (since we do not call print_header function)
  if (!empty($CUSTOM_SCRIPT) && $CUSTOM_SCRIPT == 'Y') {
    load_template($login, 'S');
@@ -294,7 +294,7 @@ echo "<script>\n";
 <?php } else { ?>
   <form action="register.php" method="post" onSubmit="return valid_form()"
     name="selfreg">
-    <input type="hidden" name="control" value="<?php echo $form_control;?>" />
+    <input type="hidden" name="control" value="<?php echo $form_control;?>">
     <div class="form-group row">
       <label for="login" class="text-info"><?php etranslate('Username')?>:</label><br>
       <input type="text" name="user" id="user" class="form-control" value="<?php echo htmlspecialchars($user);?>"
@@ -342,11 +342,11 @@ echo "<script>\n";
     </div>
 
     </form>
-<?php } ?>    
+<?php } ?>
 
-<br />
-<span class="cookies"><?php etranslate('cookies-note');?></span><br />
-<hr />
+<br>
+<span class="cookies"><?php etranslate('cookies-note');?></span><br>
+<hr>
 <a href="<?php echo $PROGRAM_URL;?>" id="programname"><?php echo $PROGRAM_NAME;?></a>
 
 <?php

@@ -183,7 +183,7 @@ function rss_activity_log ( $sys, $entries ) {
       $l_id = $row[8];
       $l_etype = $row[9];
       $l_description = $row[10];
-      // convert lines to <br /> if no HTML formatting found
+      // convert lines to<br> if no HTML formatting found
       if ( strpos ( $l_description, "</" ) == false ) {
         $l_description = nl2br ( $l_description );
       }

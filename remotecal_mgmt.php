@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Remote Calendar Management. 
+ * Remote Calendar Management.
  * NOTE: Very similar to user_mgmt.php with a lot of code copied from there.
  */
 
@@ -45,7 +45,7 @@ print_header(
 
 <?php
 // Make sure allow_url_fopen is enabled.  Otherwise, the ICS URL cannot be downloaded.
-// cannotLoadStr 
+// cannotLoadStr
 if (!ini_get('allow_url_fopen')) { ?>
     <div id="main-dialog-load-error" class="alert alert-warning">
         <span id="loadMessage"><?php echo $cannotLoadStr; ?></span>
@@ -94,9 +94,9 @@ if (!ini_get('allow_url_fopen')) { ?>
     </thead>
 </table>
 
-<br />
+<br>
 <div class="userButtons">
-    <input class="btn btn-primary" type="button" value="<?php etranslate('Add Remote Calendar'); ?>..." onclick="return edit_user('')" />
+    <input class="btn btn-primary" type="button" value="<?php etranslate('Add Remote Calendar'); ?>..." onclick="return edit_user('')">
 </div>
 
 <!-- add/edit user modal dialog -->
@@ -117,17 +117,17 @@ if (!ini_get('allow_url_fopen')) { ?>
                 </div>
                 <form class="needs-validation" novalidate name="editUserForm" id="editUserForm">
                     <?php print_form_key(); ?>
-                    <input type="hidden" name="editUserAdd" id="editUserAdd" value="0" />
+                    <input type="hidden" name="editUserAdd" id="editUserAdd" value="0">
                     <div class="form-inline" id="divEditUsername">
                         <label class="col-5" for="editUsername" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('Unique Calendar ID for remote calendar') ?>"><?php etranslate('Calendar ID') ?>: </label>
-                        <input required type="text" pattern="[A-Za-z0-9_]+" title="<?php etranslate('word characters only'); ?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>" />
+                        <input required type="text" pattern="[A-Za-z0-9_]+" title="<?php etranslate('word characters only'); ?>" class="col-7 form-control" id="editUsername" name="editUsername" placeholder="<?php echo translate('New ID') . ' (' . translate('required') . ')'; ?>">
                         <div id="invalid-id-error" class="invalid-feedback text-right">
                             <?php echo $invalidIDError; ?>
                         </div>
                     </div>
                     <div class="form-inline mt-1" id="div-Name">
                         <label class="col-5 for=" editName"><?php etranslate('Name') ?>: </label>
-                        <input required type="text" class="col-7 form-control" id="editName" name="editName" />
+                        <input required type="text" class="col-7 form-control" id="editName" name="editName">
                         <div id="invalid-name-error" class="invalid-feedback text-right">
                             <?php echo $noNameError; ?>
                         </div>
@@ -140,15 +140,15 @@ if (!ini_get('allow_url_fopen')) { ?>
                     <?php } ?>
                     <div class="form-inline mt-1" id="div-editURL">
                         <label class="col-5 for=" editURL" data-toggle="tooltip" data-placement="bottom" title="<?php etranslate('URL for the ICS file used to import events for this remote calendar') ?>"><?php etranslate('URL') ?>: </label>
-                        <input required type="email" class="col-7 form-control" id="editURL" name="editURL" />
+                        <input required type="email" class="col-7 form-control" id="editURL" name="editURL">
                         <div id="invalid-url-error" class="invalid-feedback text-right">
                             <?php echo $noUrlError; ?>
                         </div>
                     </div>
 
                     <div class="modal-footer mt-2">
-                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="btn btn-primary" data-dismiss="modal" type="buton" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
+                        <input class="btn btn-secondary" onclick="$('#edit-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                        <input class="btn btn-primary" data-dismiss="modal" type="buton" value="<?php etranslate("Save"); ?>" onclick="save_handler();">
                     </div>
                 </form>
             </div>
@@ -173,13 +173,13 @@ if (!ini_get('allow_url_fopen')) { ?>
                     <?php print_form_key(); ?>
                     <div class="form-inline" id="divdeleteUsername">
                         <label class="col-5" for="deleteUsername"><?php etranslate('Username') ?>: </label>
-                        <input disabled="true" type="text" class="col-7 form-control" id="deleteUsername" name="deleteUsername" />
+                        <input disabled type="text" class="col-7 form-control" id="deleteUsername" name="deleteUsername">
                     </div>
                 </form>
                 <br>
                 <div class="modal-footer">
-                    <input class="form-control btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                    <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();" />
+                    <input class="form-control btn btn-secondary" onclick="$('#delete-user-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                    <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();">
                 </div>
             </div>
         </div>
@@ -197,7 +197,7 @@ if (!ini_get('allow_url_fopen')) { ?>
             </div>
             <div class="modal-body">
                 <form name="editLayerForm" id="editLayerForm">
-                    <input type="hidden" name="addLayerRemoteCalendarLogin" id="addLayerRemoteCalendarLogin" value="" />
+                    <input type="hidden" name="addLayerRemoteCalendarLogin" id="addLayerRemoteCalendarLogin" value="">
                     <table>
                         <tr>
                             <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('The text color of the new layer that will be displayed in your calendar.'); ?>"><label><?php echo $colorStr; ?>:</label></td>
@@ -206,13 +206,13 @@ if (!ini_get('allow_url_fopen')) { ?>
                         </tr>
                         <tr>
                             <td style="padding-right: 2em" data-toggle="tooltip" data-placement="top" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
-                            <td><input class="form-control" type="checkbox" name="editLayerDups" id="editLayerDups" />
+                            <td><input class="form-control" type="checkbox" name="editLayerDups" id="editLayerDups">
                             </td>
                         </tr>
                     </table>
                     <div class="modal-footer">
                         <input class="form-control btn btn-secondary" onclick="$('#edit-layer-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="edit_layer_window_closed(); $('#edit-layer-dialog').hide();" />
+                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="edit_layer_window_closed(); $('#edit-layer-dialog').hide();">
                     </div>
                 </form>
             </div>
@@ -253,7 +253,7 @@ if (!ini_get('allow_url_fopen')) { ?>
 
     // Remove any PHP warnings/errors at the beginning of our response.
     // Example:
-    // <b>Warning</b>:  Cannot modify header information - headers already sent in <b>/var/www/html/includes/ajax.php</b> on line <b>78</b><br />
+    // <b>Warning</b>: Cannot modify header information - headers already sent in <b>/var/www/html/includes/ajax.php</b> on line <b>78</b><br>
     // {"error":0,"status":"OK","message":"35 events added, 0 events deleted"}
     function trim_json(str) {
         console.log("Trimming JSON string: " + str);
@@ -316,11 +316,11 @@ if (!ini_get('allow_url_fopen')) { ?>
                         lastchecked: u.lastchecked
                     };
                     var tooltip = u.layercount == 0 ? 'data-toggle="tooltip" data-placement="bottom" title="<?php echo $noTooltip; ?>"' : '';
-                    var warning = u.layercount == 0 ? '<img class="button-icon-inverse" src="images/bootstrap-icons/exclamation-triangle-fill.svg" />' : '';
+                    var warning = u.layercount == 0 ? '<img class="button-icon-inverse" src="images/bootstrap-icons/exclamation-triangle-fill.svg">' : '';
                     var id = u.login.substring(0, 5) == '<?php echo $NONUSER_PREFIX; ?>' ? u.login.substring(5) : u.login;
                     tbody += '<tr><td ' + tooltip + '>' + warning + id +
                         '</td><td>' + (u.fullname == null ? '' : u.fullname) + '</td><td>' + (u.admin == null ? '' : u.admin) +
-                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg" />' : '') +
+                        <?php if (!empty($PUBLIC_ACCESS) && $PUBLIC_ACCESS == 'Y') { ?> '</td><td>' + (u.public == 'Y' ? '<img class="button-icon-inverse" src="images/bootstrap-icons/check-circle.svg">' : '') +
                         <?php } ?> '</td><td>' + u.eventcount + '</td><td>' + u.lastupdated + '</td><td>' + u.lastchecked + '</td><td>' +
                         (u.url == null ? '' : u.url) +
                         '</td><td>' + user_menu(u.login, u.layercount == 0) + '</td></tr>\n';

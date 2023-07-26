@@ -123,7 +123,7 @@ $site_extras = [
                        // List of options (first will be default)
     ["None", "Room 101", "Room 102", "Conf Room 8", "Conf Room 12"],
     12,                // 0=single  >1=multiple && also the maximum size
-                       // <select name="RoomLocation" multiple="multiple" size="12">
+                       // <select name="RoomLocation" multiple size="12">
     EXTRA_DISPLAY_ALL  //Display in all places
   ],
   [
