@@ -29,7 +29,7 @@ sub print_table {
     <h3><a name="' . $name . '">' . $name . '</a></h3>
     <blockquote>';
   $out{ $name } .= '
-      ' . $description . '<br /><br />'
+      ' . $description . '<br><br>'
     if ( defined ( $description ) );
   $out{ $name } .= '
       <table summary="Schema for table ' . $name . '">
@@ -187,9 +187,8 @@ while ( <> ) {
 }
 
 print<<EOF;
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>WebCalendar Database Documentation</title>
     <link href="../includes/css/docs.css" rel="stylesheet">
@@ -244,7 +243,7 @@ print<<EOF;
       <p>If you update the SQL for WebCalendar, use the sql2html.pl script to
       regenerate this file.</p>
     </blockquote>
-    <br /><br />
+    <br><br>
     <h2>List of Tables</h2>
     <ul>
 EOF
@@ -256,11 +255,11 @@ foreach $name ( sort keys ( %out ) ) {
 
 print '
     </ul>
-    <hr />';
+    <hr>';
 
 foreach $name ( sort keys ( %out ) ) {
   print '
-    <br /><br />
+    <br><br>
     ' . $out{ $name };
 }
 
