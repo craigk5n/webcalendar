@@ -75,7 +75,7 @@ for ( $i = 0; $i < 7; $i++ ) {
    . ( date ( 'Ymd', $days[$i] ) == date ( 'Ymd', $today )
     ? $TODAYCELLBG : $THBG )
    . ';">' . weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS )
-   . '<br />' . month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) . ' '
+   . '<br>' . month_name ( date ( 'm', $days[$i] ) - 1, 'M' ) . ' '
    . date ( 'd', $days[$i] ) . '</th>';
 
   $tmpOut2 .= '

@@ -110,8 +110,8 @@ if ( $do_purge ) {
   echo '<h2>...' . translate ( 'Finished' ) . ".</h2>\n";
 ?>
   <form><input class="btn btn-primary" type="button" value="<?php etranslate ( 'Back' )?>"
-onclick="history.back()" /></form>
-<?php
+onclick="history.back()"></form
+><?php
   if ( $purgeDebug ) {
     echo '<div style="border: 1px solid #000;background-color: #FFF;"><tt>'
       . "$sqlLog</tt></div>\n";
@@ -133,7 +133,7 @@ onclick="history.back()" /></form>
   for ( $i = 0, $cnt = count ( $userlist ); $i < $cnt; $i++ ) {
     echo '<option value="' . $userlist[$i]['cal_login'] . '"';
     if ( $login == $userlist[$i]['cal_login'] )
-      echo ' selected="selected"';
+      echo ' selected';
     echo '>' . $userlist[$i]['cal_fullname'] . "</option>\n";
   }
 ?>
@@ -143,7 +143,7 @@ onclick="history.back()" /></form>
  <tr><td><label for="purge_all" class="colon">
   <?php etranslate ( 'Check box to delete ALL events for a user' )?></label></td>
   <td class="alignbottom">
-  <input class="form-control-sm" type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );" />
+  <input class="form-control-sm" type="checkbox" name="purge_all" value="Y" id="purge_all" onclick="toggle_datefields( 'dateArea', this );">
  </td></tr>
  <tr id="dateArea"><td><label class="colon">
   <?php etranslate ( 'Delete all events before' );?></label></td><td>
@@ -152,18 +152,18 @@ onclick="history.back()" /></form>
  <tr><td><label for="purge_deleted" class="colon">
   <?php etranslate ( 'Purge deleted only' )?></label></td>
   <td class="alignbottom">
-  <input class="form-control-sm" type="checkbox" name="purge_deleted" value="Y" />
+  <input class="form-control-sm" type="checkbox" name="purge_deleted" value="Y">
  </td></tr>
  <tr><td><label for="preview" class="colon">
   <?php etranslate ( 'Preview delete' )?></label></td>
   <td class="alignbottom">
-  <input class="form-control-sm" type="checkbox" name="preview" value="Y" checked="checked" />
+  <input class="form-control-sm" type="checkbox" name="preview" value="Y" checked>
  </td></tr>
  <tr><td colspan="2">
    <input class="btn btn-primary" type="submit" name="delete" value="<?php
     echo $deleteStr?>" onclick="return confirm( '<?php
     etranslate ( 'Are you sure you want to delete events for', true);
-    ?> ' + document.forms[0].username.value + '?' )" />
+    ?> ' + document.forms[0].username.value + '?' )">
  </td></tr>
 </table>
 </form>
@@ -206,7 +206,7 @@ function purge_events ( $ids ) {
           ") FROM {$tables[$i][0]}" . $clause;
 
         $res = dbi_execute ( $sql );
-        $sqlLog .= $sql . "<br />\n";
+        $sqlLog .= $sql . "<br>\n";
         if ( $res ) {
           if ( $row = dbi_fetch_row ( $res ) )
             $num[$i] += $row[0];
@@ -214,7 +214,7 @@ function purge_events ( $ids ) {
         }
       } else {
         $sql = "DELETE FROM {$tables[$i][0]}" . $clause;
-        $sqlLog .= $sql . "<br />\n";
+        $sqlLog .= $sql . "<br>\n";
         $res = dbi_execute ( $sql );
         if ( $cal_id == 'ALL' )
           $num[$i] = $allStr;
@@ -228,7 +228,7 @@ function purge_events ( $ids ) {
     $table = $tables[$i][0];
     echo '[' . $previewStr . '] ' .
       str_replace( 'XXX', " $table: {$num[$i]}" , $xxxStr ) .
-      "<br />\n";
+      "<br>\n";
   }
 }
 /**
@@ -238,7 +238,7 @@ function get_ids ( $sql, $ALL = '' ) {
   global $sqlLog;
 
   $ids = [];
-  $sqlLog .= $sql . "<br />\n";
+  $sqlLog .= $sql . "<br>\n";
   $res = dbi_execute ( $sql );
   if ( $res ) {
     while ( $row = dbi_fetch_row ( $res ) ) {

@@ -349,7 +349,7 @@ function create_image ( $file_name, $base = '', $height = '', $percent = '',
     } else
       imagegif ( $image, $file_name );
   } else
-    echo 'No image formats supported!<br />' . "\n";
+    echo 'No image formats supported!<br>' . "\n";
 
   imagedestroy ( $image );
   return;
@@ -373,7 +373,7 @@ function  rgb2hsl ( $rgb ) {
 
   if ( $deltaMax == 0 )      //This is a gray, no chroma...
   {
-     $H = 0;                  //HSL results = 0 ÷ 1
+     $H = 0;                  //HSL results = 0 â‰ˆ 1
      $S = 0;
   }
   else                        //Chromatic data...

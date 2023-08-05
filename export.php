@@ -21,7 +21,7 @@ $datem = date ( 'm' );
 $dateY = date ( 'Y' );
 $yearAgo = time () - 365 * 24 * 3600;
 $dateYearAgo = date('Ymd', $yearAgo);
-$selected = ' selected="selected" ';
+$selected = ' selected ';
 
 print_header('', '', 'onload="updateDateFields();"' );
 echo '<h2>' . translate ( 'Export' ) . '</h2>
@@ -63,7 +63,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="include_layers" id="include_layers" '
-   . 'value="y" />
+   . 'value="y">
             <label for="include_layers">' . translate ( 'Include all layers' )
    . '</label>
           </td>
@@ -73,7 +73,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="include_deleted" id="include_deleted" '
- . 'value="y" />
+ . 'value="y">
             <label for="include_deleted">'
  . translate ( 'Include deleted entries' ) . '</label>
           </td>
@@ -82,7 +82,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
           <td>&nbsp;</td>
           <td>
             <input type="checkbox" name="use_all_dates" id="exportall" '
- . 'value="y" checked="checked" onclick="toggle_datefields( \'dateArea\', this );" />
+ . 'value="y" checked onclick="toggle_datefields( \'dateArea\', this );">
             <label for="exportall">' . translate ( 'Export all dates' )
  . '</label>
           </td>
@@ -107,7 +107,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
         </tr>
         <tr>
           <td colspan="2"><input class="btn btn-primary" type="submit" value="'
- . translate ( 'Export' ) . '" /></td>
+ . translate ( 'Export' ) . '"></td>
         </tr>
       </table>
     </form>';
@@ -121,7 +121,7 @@ echo ( ! empty ( $LAYERS_STATUS ) && $LAYERS_STATUS == 'Y' ? '
       $('#dateArea').hide();
     }
   }
-  
+
   function toggle_datefields( name, ele ) {
     updateDateFields();
   }

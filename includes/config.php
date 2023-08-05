@@ -56,7 +56,7 @@ function die_miserable_death( $error, $anchor='' ) {
   <head><title>{$appStr}: Fatal Error</title></head>
   <body>
     <h2>{$appStr} Error</h2>
-    <p>{$error}</p><hr />
+    <p>{$error}</p><hr>
     <p><a href="{$url}" target="_blank">Troubleshooting Help</a></p>
   </body>
 </html>
@@ -69,7 +69,7 @@ function db_error( $doExit = false, $sql = '' ) {
 
   $ret = str_replace( 'XXX', dbi_error(), translate( 'Database error XXX.' ) )
    . ( ! empty( $settings['mode'] ) && $settings['mode'] == 'dev'
-    && ! empty( $sql ) ? '<br />SQL:<br />' . $sql : '' );
+    && ! empty( $sql ) ? '<br>SQL:<br>' . $sql : '' );
 
   if( $doExit ) {
     echo $ret;

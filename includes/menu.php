@@ -491,8 +491,8 @@ if (empty($thisday))
           <div id="nav-project-menu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <?php
             echo '<a class="form-check"><form class="form-inline" action="search_handler.php' . (!empty($user) ? '?users[]=' . $user : '') . '" ' .
-              'method="GET"><div class="input-group"><input class="form-control" type="text" name="keywords" size="25" />' .
-              '<button class="btn btn-primary mr-2 pr-0 pl-2"><img class="button-icon" src="images/bootstrap-icons/search.svg" /></button></div></form></a>';
+              'method="GET"><div class="input-group"><input class="form-control" type="text" name="keywords" size="25">' .
+              '<button class="btn btn-primary mr-2 pr-0 pl-2"><img class="button-icon" src="images/bootstrap-icons/search.svg"></button></div></form></a>';
             $doAdv = false;
             // Use UAC if enabled...
             if (access_is_enabled() && access_can_access_function(ACCESS_ADVANCED_SEARCH)) {
@@ -531,7 +531,7 @@ if (empty($thisday))
       <?php if ($show_printer) { ?>
         <li class="nav-item active">
           <a class="nav-link" href="<?php echo generate_printer_friendly(); ?>" target="cal_printer_friendly" class="btn btn-primary mr-2 pr-0 pl-2">
-            <img class="button-icon-inverse" src="images/bootstrap-icons/printer.svg" /></a>
+            <img class="button-icon-inverse" src="images/bootstrap-icons/printer.svg"></a>
         </li>
       <?php } ?>
 

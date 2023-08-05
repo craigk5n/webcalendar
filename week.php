@@ -77,7 +77,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
   $weekdays[$i] = weekday_name ( ( $i + $WEEK_START ) % 7, $DISPLAY_LONG_DAYS );
   $dateYmd = date ( 'Ymd', $days[$i] );
 
-  $header[$i] = $weekdays[$i] . '<br />'
+  $header[$i] = $weekdays[$i] . '<br>'
    . date_to_str ( $dateYmd, $DATE_FORMAT_MD, false, true );
 
   // Generate header row.
@@ -130,7 +130,7 @@ for ( $i = $start_ind; $i <= $end_ind; $i++ ) {
         // This will move entries apart that appear in one field,
         // yet start on different hours.
         for ( $u = $diff_start_time; $u > 0; $u-- ) {
-          $hour_arr[$last_row] .= '<br />' . "\n";
+          $hour_arr[$last_row] .= "<br>\n";
         }
         $hour_arr[$last_row] .= $hour_arr[$j];
         $hour_arr[$j] = '';

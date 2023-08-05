@@ -11,17 +11,17 @@ if ( $user != $login )
   $user = ( ( $is_admin || $is_nonuser_admin ) && $user ) ? $user : $login;
 
 print_header( '', ! $GROUPS_ENABLED == 'Y' ? '' :
-  '<script type="text/javascript" src="includes/js/assistant_edit.js"></script>' );
+  '<script src="includes/js/assistant_edit.js"></script>' );
 echo '
     <form action="assistant_edit_handler.php" method="post" '
  . 'name="assistanteditform">' . csrf_form_key() . ( $user ? '
-      <input type="hidden" name="user" value="' . $user . '" />' : '' ) . '
+      <input type="hidden" name="user" value="' . $user . '">' : '' ) . '
       <h2>';
 
 $assistStr = translate ( 'Assistants' );
 if ( $is_nonuser_admin ) {
   nonuser_load_variables ( $user, 'nonuser' );
-  echo $nonuserfullname . ' ' . $assistStr . '<br /><span class="dblHyphens">
+  echo $nonuserfullname . ' ' . $assistStr . '<br><span class="dblHyphens">
       ' . translate ( 'Admin mode' ) . '</span>';
 } else
   echo translate ( 'Your assistants' );
@@ -29,7 +29,7 @@ if ( $is_nonuser_admin ) {
 echo '</h2>
       ' . display_admin_link() . '</h2>';
 
-echo '<div class="form-inline col-4"><select class="custom-select" name="users[]" id="users" size="10" multiple="multiple">';
+echo '<div class="form-inline col-4"><select class="custom-select" name="users[]" id="users" size="10" multiple>';
 
 // Get list of all users.
 $users = get_my_users();
@@ -50,7 +50,7 @@ for ( $i = 0, $cnt = count ( $users ); $i < $cnt; $i++ ) {
     continue;
   echo '
               <option value="' . $u . '"'
-   . ( ! empty ( $assistantuser[$u] ) ? ' selected="selected"' : '' ) . '>'
+   . ( ! empty ( $assistantuser[$u] ) ? ' selected' : '' ) . '>'
    . $users[$i]['cal_fullname'] . '</option>';
 }
 
@@ -58,16 +58,15 @@ echo "</select>\n";
 
 if ( $GROUPS_ENABLED == 'Y' ) {
   echo '<input class="btn btn-primary" type="button" onclick="selectUsers()" value="'
-   . translate ( 'Select' ) . '..." />';
+   . translate ( 'Select' ) . '...">';
 }
  echo "</div>\n";
 
 ?>
 <div class="form-inline col-4 pt-2">
-<input class="btn btn-primary" type="submit" name="action" value="<?php etranslate ( 'Save' );?>" />
+<input class="btn btn-primary" type="submit" name="action" value="<?php etranslate ( 'Save' );?>">
 </div>
 
 </form>
 
 <?php echo print_trailer (); ?>
-

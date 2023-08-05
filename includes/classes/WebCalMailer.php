@@ -100,7 +100,7 @@ class WebCalMailer {
     $this->error_count++;
     // $this->ErrorInfo = $msg;
     // die_miserable_death( $msg );
-    $mailerError .= $msg . '<br />';
+    $mailerError .= $msg . '<br>';
   }
 
   /**

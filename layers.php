@@ -76,7 +76,7 @@ else {
     . translate('Layers') . '&nbsp;<img src="images/bootstrap-icons/question-circle-fill.svg" alt="'
     . translate('Help') . '" class="help" onclick="window.open( '
     . '\'help_layers.php\', \'cal_help\', \'dependent,menubar,scrollbars,'
-    . 'height=400,width=400,innerHeight=420,outerWidth=420\' );" /></h2>
+    . 'height=400,width=400,innerHeight=420,outerWidth=420\' );"></h2>
     ' . display_admin_link();
 
   ?>
@@ -87,20 +87,20 @@ else {
       </span>
       &nbsp;&nbsp;
       &nbsp;&nbsp;
-      <input class="btn btn-primary" type="button" onclick="return set_layer_status(true);" value=<?php echo $enableLayersStr; ?>" id="enablebutton" <?php echo $layers_enabled ? 'disabled="true"' : ''; ?> />
-      <input class="btn btn-secondary" type="button" onclick="return set_layer_status(false);" value=<?php etranslate("Disable Layers"); ?>" <?php echo $layers_enabled ? '' : 'disabled="true"'; ?> id="disablebutton" />
+      <input class="btn btn-primary" type="button" onclick="return set_layer_status(true);" value=<?php echo $enableLayersStr; ?>" id="enablebutton" <?php echo $layers_enabled ? 'disabled' : ''; ?>>
+      <input class="btn btn-secondary" type="button" onclick="return set_layer_status(false);" value=<?php etranslate("Disable Layers"); ?>" <?php echo $layers_enabled ? '' : 'disabled'; ?> id="disablebutton">
     </div>
 
-    <br /><br />
+    <br><br>
 
     <div id="layerlist" style="margin-left: 25px;"> <?php echo $LOADING; ?> </div>
 
-    <br />
+    <br>
 
     <div class="layerButtons" style="margin-left: 25px;">
-      <input class="btn btn-primary" type="button" value="<?php etranslate('Add layer'); ?>..." onclick="return edit_layer(-1)" />
+      <input class="btn btn-primary" type="button" value="<?php etranslate('Add layer'); ?>..." onclick="return edit_layer(-1)">
     </div>
-    <br />
+    <br>
 
   <?php
 }
@@ -158,8 +158,8 @@ if ($single_user == 'N') {
         </div>
         <div class="modal-body">
           <form name="editLayerForm" id="editLayerForm">
-            <input type="hidden" name="editLayerId" id="editLayerId" value="" />
-            <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0" />
+            <input type="hidden" name="editLayerId" id="editLayerId" value="">
+            <input type="hidden" name="editLayerDelete" id="editLayerDelete" value="0">
             <table class="table table-borderless table-responsive">
               <tr>
                 <td data-toggle="tooltip" data-placement="top" title="<?php etranslate('Specifies the user that you would like to see displayed in your calendar.'); ?>"><label><?php echo $sourceStr; ?>:</label></td>
@@ -174,7 +174,7 @@ if ($single_user == 'N') {
               </tr>
               <tr>
                 <td data-toggle="tooltip" data-placement="top" title="<?php etranslate('If checked, events that are duplicates of your events will be shown.'); ?>"><label><?php echo $duplicatesStr; ?>:</label></td>
-                <td><input xclass="form-control" type="checkbox" name="editLayerDups" id="editLayerDups" />
+                <td><input xclass="form-control" type="checkbox" name="editLayerDups" id="editLayerDups">
                 </td>
               </tr>
             </table>
@@ -184,15 +184,15 @@ if ($single_user == 'N') {
             $('#editLayerDelete').prop ('value', '1');
             edit_window_closed ();
             $('#edit-layer-dialog').hide();
-            }" />
-              <input class="btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="edit_window_closed(); $('#edit-layer-dialog').hide();" />
+            }">
+              <input class="btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="edit_window_closed(); $('#edit-layer-dialog').hide();">
             </div>
           </form>
         </div>
       </div>
     </div>
 
-<script type="text/javascript">
+<script>
   $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
   });

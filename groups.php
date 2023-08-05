@@ -61,7 +61,7 @@ print_header(
 </table>
 
 <div class="userButtons">
-    <input class="btn btn-primary" type="button" value="<?php etranslate('Add Group'); ?>..." onclick="return edit_group(0,'')" />
+    <input class="btn btn-primary" type="button" value="<?php etranslate('Add Group'); ?>..." onclick="return edit_group(0,'')">
 </div>
 
 <!-- add/edit group modal dialog -->
@@ -81,11 +81,11 @@ print_header(
                     <button type="button" class="close" onclick="$('.alert').hide()">&times;</button>
                 </div>
                 <form name="editGroupForm" id="editGroupForm">
-                    <input type="hidden" name="editGroupAdd" id="editGroupAdd" value="0" />
-                    <input type="hidden" name="editGroupId" id="editGroupId" value="0" />
+                    <input type="hidden" name="editGroupAdd" id="editGroupAdd" value="0">
+                    <input type="hidden" name="editGroupId" id="editGroupId" value="0">
                     <div class="form-inline" is="divEditName">
                         <label class="col-5" for="editName"><?php etranslate('Group name') ?>: </label>
-                        <input required type="text" class="col-7 form-control" id="editName" name="editName" placeholder="<?php echo translate('New group name') . ' (' . translate('required') . ')'; ?>" />
+                        <input required type="text" class="col-7 form-control" id="editName" name="editName" placeholder="<?php echo translate('New group name') . ' (' . translate('required') . ')'; ?>">
                         <div id="invalid-name-error" class="invalid-feedback text-right">
                             <?php echo $noNameError; ?>
                         </div>
@@ -102,7 +102,7 @@ print_header(
                                 } else {
                                     $users = array_merge(get_my_users(), get_nonuser_cals($login));
                                 }
-                            }   
+                            }
                             foreach ($users as $user) {
                                 echo '<option value="' . htmlspecialchars($user['cal_login']) . '">' . htmlspecialchars($user['cal_fullname']) . "</option>\n";
                             }
@@ -111,8 +111,8 @@ print_header(
                     </div>
 
                     <div class="modal-footer">
-                        <input class="form-control btn btn-secondary" onclick="$('#edit-group-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();" />
+                        <input class="form-control btn btn-secondary" onclick="$('#edit-group-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                        <input class="form-control btn btn-primary" data-dismiss="modal" type="button" value="<?php etranslate("Save"); ?>" onclick="save_handler();">
                     </div>
                 </form>
             </div>
@@ -134,16 +134,16 @@ print_header(
                 <div class="p-3"><?php echo $areYouSure; ?></div>
                 <div class="p-3 m-3 text-danger"><?php echo $deleteGroupInfo; ?></div>
                 <form name="deleteGroupForm" id="deleteGroupForm">
-                    <input type="hidden" name="deleteGroupId" id="deleteGroupId" />
+                    <input type="hidden" name="deleteGroupId" id="deleteGroupId">
                     <div class="form-inline" id="divdeleteGroup">
                         <label class="col-5" for="deleteGroupName"><?php etranslate('Group name') ?>: </label>
-                        <input disabled="true" type="text" class="col-7 form-control" id="deleteGroupName" name="deleteGroupName" />
+                        <input disabled type="text" class="col-7 form-control" id="deleteGroupName" name="deleteGroupName">
                     </div>
                 </form>
                 <br>
                 <div class="modal-footer">
-                    <input class="form-control btn btn-secondary" onclick="$('#delete-group-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>" />
-                    <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();" />
+                    <input class="form-control btn btn-secondary" onclick="$('#delete-group-dialog').hide();" data-dismiss="modal" type="button" value="<?php etranslate("Cancel"); ?>">
+                    <input class="form-control btn btn-danger" type="submit" name="delete" value="<?php etranslate('Delete') ?>" onclick="delete_handler ();">
                 </div>
             </div>
         </div>

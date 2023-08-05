@@ -40,7 +40,7 @@ if ( ! empty ( $id ) ) {
   // Try PNG if GIF not found
   if ( ! file_exists ( $catIcon ) )
     $catIcon = $icon_path . 'cat-' . $id . '.png';
-  $idStr = '<input name="id" type="hidden" value="' . $id . '" />';
+  $idStr = '<input name="id" type="hidden" value="' . $id . '">';
 } else
   $catcolor = '#000000';
 
@@ -69,7 +69,7 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     <div class="form-inline">
     <label class="col-sm-3 col-form-label" for="catname">' . translate ('Category Name') . '</label>
     <input class="form-control" type="text" name="catname" size="20" value="'
-    . htmlspecialchars ($catname) . '" /></div>' .
+    . htmlspecialchars ($catname) . '"></div>' .
     ($is_admin && empty ($id) ? '
 
     <div class="form-inline"><label class="col-sm-3 col-form-label" for="isglobal">'
@@ -86,36 +86,36 @@ if ( ( ( $add == '1' ) || ( ! empty ( $id ) ) ) && empty ( $error ) ) {
     echo '
     <div class="form-inline" id="cat_icon" style="' . $showIconStyle . '">
     <label class="col-sm-3 col-form-label" for="catname">' . translate ('Category Icon') . ':</label>
-    <img src="' . $catIcon . '" name="urlpic" id="urlpic" alt="' . $catIconStr . '" /></div>
+    <img src="' . $catIcon . '" name="urlpic" id="urlpic" alt="' . $catIconStr . '"></div>
     <div id="remove_icon" class="form-inline" style="' . $showIconStyle . '">
     <label class="col-sm-3 col-form-label" for="delIcon">' . translate ('Remove Icon') . '</label>
-    <input type="checkbox" name="delIcon" value="Y" /></div>
+    <input type="checkbox" name="delIcon" value="Y"></div>
     <div class="form-inline">
-    <label class="col-sm-3 col-form-label" for="FileName">' 
+    <label class="col-sm-3 col-form-label" for="FileName">'
     . ( is_dir ( $icon_path ) &&
     ( ( $ENABLE_ICON_UPLOADS == 'Y' || $is_admin ) && $canWrite )
     ? translate ( 'Add Icon to Category' ) . ':</label>
       <input class="form-control" type="file" name="FileName" id="fileupload" size="45" '
-     . 'maxlength="50" value=""/>
+     . 'maxlength="50" value="">
      <small class="ml-2">('
      . translate ('GIF or PNG 6kb max') . ')</small>
     </div>
 
     <div class="form-inline p-1">
-    <input type="hidden" id="urlname" name="urlname" size="50" />&nbsp;&nbsp;&nbsp;
+    <input type="hidden" id="urlname" name="urlname" size="50">&nbsp;&nbsp;&nbsp;
     <input class="btn btn-secondary openBtn" type="button" value="'
      . translate ( 'Search for existing icons...' )
-     . '" />
+     . '">
      </div>' : '' ) // end test of ENABLE_ICON_UPLOADS
   . '<div class="form-inline">
   <input class="form-control btn btn-primary" type="submit" name="action" value="'
-   . ( $add == '1' ? translate ('Add') : translate ('Save') ) . '" />'
+   . ( $add == '1' ? translate ('Add') : translate ('Save') ) . '">'
    . '<a href="category.php" class="form-control btn btn-secondary ml-1">Cancel</a> '
    . ( ! empty ( $id ) ? '
       <input class="form-control btn btn-danger ml-1" type="submit" name="delete" value="'
      . translate ('Delete') . '" onclick="return confirm( '
      . translate( 'Are you sure you want to delete this entry?', true )
-     . '\' )" />' : '' ) . '
+     . '\' )">' : '' ) . '
           </div>
     </form>';
 } else
@@ -145,14 +145,14 @@ if ( empty ( $error ) ) {
       }
 
       echo ( file_exists ( $catIcon ) ? '<img src="' . $catIcon . '" alt="'
-         . $catIconStr . '" title="' . $catIconStr . '" />' : '' ) . '</li>';
+         . $catIconStr . '" title="' . $catIconStr . '">' : '' ) . '</li>';
     }
     echo '
     </ul>';
   }
   echo ( $global_found ? '<sup>*</sup> ' . $globalStr : '' ) . '
     <br><div class="p-2"><a class="btn btn-primary" href="category.php?add=1">' . translate ( 'Make New Category' )
-   . '</a></div><br />';
+   . '</a></div><br>';
 }
 ?>
 
