@@ -88,9 +88,9 @@ unset ( $app_config );
 //  if the session is timed out
 //  returns: login id
 function app_active_session ($sid) {
-  global $app_user_table, $app_session_table, $app_settings_table, $app_sid_lifetime;
-  global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
-  global $c, $db_host, $db_login, $db_password, $db_database;
+  global $app_db, $app_host, $app_login, $app_pass, $app_same_db,
+  $app_session_table, $app_settings_table, $app_sid_lifetime,
+  $app_user_table, $c, $db_database, $db_host, $db_login, $db_password;
 
   // if application is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
@@ -147,9 +147,8 @@ function app_get_sid( $id ) {
 
 //  Updates the session table to set the last access time to now
 function app_update_session($sid) {
-  global $app_session_table;
-  global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
-  global $c, $db_host, $db_login, $db_password, $db_database;
+  global $app_db, $app_host, $app_login, $app_pass, $app_same_db,
+  $app_session_table, $c, $db_database, $db_host, $db_login, $db_password;
 
   // if application is in a separate db, we have to connect to it
   if ($app_same_db != '1') $c = dbi_connect($app_host, $app_login, $app_pass, $app_db);
@@ -179,9 +178,9 @@ function app_cookie_name( $live_site='' ) {
 // Do this search only once per request.
 // returns: array of admin ids
 function get_admins () {
-  global $cached_admins, $app_user_table, $app_admin_gid;
-  global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
-  global $c, $db_host, $db_login, $db_password, $db_database;
+  global $app_admin_gid, $app_db, $app_host, $app_login,
+  $app_pass, $app_same_db, $app_user_table, $c, $cached_admins,
+  $db_database, $db_host, $db_login, $db_password;
 
   if ( ! empty ( $cached_admins ) ) return $cached_admins;
   $cached_admins = [];
@@ -215,9 +214,9 @@ function get_admins () {
 /// Get a list of users and return info in an array.
 // returns: array of users
 function user_get_users ( $publicOnly=false ) {
-  global $PUBLIC_ACCESS, $PUBLIC_ACCESS_FULLNAME, $app_user_table;
-  global $app_host, $app_login, $app_pass, $app_db, $app_same_db;
-  global $c, $db_host, $db_login, $db_password, $db_database;
+  global $app_db, $app_host, $app_login, $app_pass, $app_same_db,
+  $app_user_table, $c, $db_database, $db_host, $db_login,
+  $db_password, $PUBLIC_ACCESS_FULLNAME, $PUBLIC_ACCESS;
 
   $Admins = get_admins ();
   $count = 0;
@@ -263,9 +262,9 @@ function user_get_users ( $publicOnly=false ) {
 //   $user - user login
 //   $prefix - variable prefix to use
 function user_load_variables ( $login, $prefix ) {
-  global $PUBLIC_ACCESS_FULLNAME, $NONUSER_PREFIX, $cached_user_var;
-  global $app_host, $app_login, $app_pass, $app_db, $app_user_table;
-  global $c, $db_host, $db_login, $db_password, $db_database, $app_same_db;
+  global $app_db, $app_host, $app_login, $app_pass, $app_same_db,
+  $app_user_table, $c, $cached_user_var, $db_database, $db_host,
+  $db_login, $db_password, $NONUSER_PREFIX, $PUBLIC_ACCESS_FULLNAME;
 
   if ( ! empty ( $cached_user_var[$login][$prefix] ) )
     return  $cached_user_var[$login][$prefix];

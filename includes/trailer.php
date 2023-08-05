@@ -234,6 +234,7 @@ if ( access_can_access_function ( ACCESS_TRAILER ) ) {
     // Should we use another application's login/logout pages?
     if ( substr ( $GLOBALS['user_inc'], 0, 9 ) == 'user-app-' ) {
       global $app_login_page, $app_logout_page;
+
       $logout_url = $app_logout_page;
       $login_url = 'login-app.php'
        . ( $login_return_path != '' && $app_login_page['return'] != ''
